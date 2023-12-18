@@ -4,6 +4,6 @@ import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk';
 
 export const TUI_REDUCED_MOTION = tuiCreateTokenFromFactory(
     () =>
-        inject(DOCUMENT).defaultView?.matchMedia?.(`(prefers-reduced-motion: reduce)`)
+        inject(DOCUMENT).defaultView?.matchMedia?.('(prefers-reduced-motion: reduce)')
             .matches ?? false,
 );

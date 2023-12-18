@@ -22,12 +22,12 @@ export function migrateBadgeValue({
 
     const elements = findElementsWithAttributeOnTag(
         template,
-        [`[value]`, `value`],
-        [`tui-badge`],
+        ['[value]', 'value'],
+        ['tui-badge'],
     );
 
     elements.forEach(({attrs, sourceCodeLocation}) => {
-        const attr = attrs.find(attr => attr.name === `[value]` || attr.name === `value`);
+        const attr = attrs.find(attr => attr.name === '[value]' || attr.name === 'value');
 
         if (!attr) {
             return;
@@ -42,7 +42,7 @@ export function migrateBadgeValue({
 
         recorder.insertRight(
             insertTo + templateOffset,
-            attr.name === `value` ? attrValue : `{{ ${attrValue} }}`,
+            attr.name === 'value' ? attrValue : `{{ ${attrValue} }}`,
         );
 
         const attrOffset = sourceCodeLocation?.attrs?.[attr.name];

@@ -3,1985 +3,1985 @@ import {RouterModule, Routes} from '@angular/router';
 
 export const ROUTES: Routes = [
     {
-        path: ``,
+        path: '',
         loadChildren: async () =>
-            (await import(`./landing/landing.module`)).LandingModule,
+            (await import('./landing/landing.module')).LandingModule,
         data: {
-            title: `A powerful set of open source components for Angular`,
+            title: 'A powerful set of open source components for Angular',
         },
     },
     // Documentation
     {
-        path: `getting-started`,
+        path: 'getting-started',
         loadChildren: async () =>
-            (await import(`./getting-started/getting-started.module`))
+            (await import('./getting-started/getting-started.module'))
                 .GettingStartedModule,
         data: {
-            title: `Getting started`,
+            title: 'Getting started',
         },
     },
     {
-        path: `browser-support`,
+        path: 'browser-support',
         loadChildren: async () =>
-            (await import(`../info/browsers/browsers.module`)).BrowsersModule,
+            (await import('../info/browsers/browsers.module')).BrowsersModule,
         data: {
-            title: `Browser support`,
+            title: 'Browser support',
         },
     },
     {
-        path: `changelog`,
+        path: 'changelog',
         loadChildren: async () =>
-            (await import(`../info/changelog/changelog.module`)).ChangelogModule,
+            (await import('../info/changelog/changelog.module')).ChangelogModule,
         data: {
-            title: `Changelog`,
+            title: 'Changelog',
         },
     },
     {
-        path: `ssr`,
-        loadChildren: async () => (await import(`../info/ssr/ssr.module`)).SsrModule,
+        path: 'ssr',
+        loadChildren: async () => (await import('../info/ssr/ssr.module')).SsrModule,
         data: {
-            title: `Server Side Rendering (SSR)`,
+            title: 'Server Side Rendering (SSR)',
         },
     },
     {
-        path: `tui-doc`,
-        loadChildren: async () => (await import(`../info/doc/doc.module`)).DocModule,
+        path: 'tui-doc',
+        loadChildren: async () => (await import('../info/doc/doc.module')).DocModule,
         data: {
-            title: `Documentation engine`,
+            title: 'Documentation engine',
         },
     },
     {
-        path: `related`,
+        path: 'related',
         loadChildren: async () =>
-            (await import(`../info/related/related.module`)).RelatedModule,
+            (await import('../info/related/related.module')).RelatedModule,
         data: {
-            title: `Taiga UI family`,
+            title: 'Taiga UI family',
         },
     },
     {
-        path: `testing/jest`,
+        path: 'testing/jest',
         loadChildren: async () =>
-            (await import(`../info/testing/jest/jest.module`)).JestModule,
+            (await import('../info/testing/jest/jest.module')).JestModule,
         data: {
-            title: `Jest`,
+            title: 'Jest',
         },
     },
     {
-        path: `testing/disable-animation`,
+        path: 'testing/disable-animation',
         loadChildren: async () =>
-            (await import(`../info/testing/disable-animation/disable-animation.module`))
+            (await import('../info/testing/disable-animation/disable-animation.module'))
                 .DisableAnimationModule,
         data: {
-            title: `Disable animation`,
+            title: 'Disable animation',
         },
     },
     {
-        path: `testing/screenshot-bot`,
+        path: 'testing/screenshot-bot',
         loadChildren: async () =>
             (
                 await import(
-                    `../info/testing/screenshot-github-bot/screenshot-github-bot.module`
+                    '../info/testing/screenshot-github-bot/screenshot-github-bot.module'
                 )
             ).ScreenshotGithubBotModule,
         data: {
-            title: `Our screenshot bot`,
+            title: 'Our screenshot bot',
         },
     },
     // Customization
     {
-        path: `i18n`,
+        path: 'i18n',
         loadChildren: async () =>
-            (await import(`../customization/i18n/i18n.module`)).I18nModule,
+            (await import('../customization/i18n/i18n.module')).I18nModule,
         data: {
-            title: `I18n`,
+            title: 'I18n',
         },
     },
     {
-        path: `variables`,
+        path: 'variables',
         loadChildren: async () =>
-            (await import(`../customization/variables/variables.module`)).VariablesModule,
+            (await import('../customization/variables/variables.module')).VariablesModule,
         data: {
-            title: `Variables`,
+            title: 'Variables',
         },
     },
     {
-        path: `wrapper`,
+        path: 'wrapper',
         loadChildren: async () =>
-            (await import(`../customization/wrapper/wrapper.module`)).WrapperModule,
+            (await import('../customization/wrapper/wrapper.module')).WrapperModule,
         data: {
-            title: `Wrapper`,
+            title: 'Wrapper',
         },
     },
     {
-        path: `dialog/custom`,
+        path: 'dialog/custom',
         loadChildren: async () =>
-            (await import(`../customization/dialogs/dialogs.module`)).DialogsModule,
+            (await import('../customization/dialogs/dialogs.module')).DialogsModule,
         data: {
-            title: `Custom`,
+            title: 'Custom',
         },
     },
     {
-        path: `dialog/routable`,
+        path: 'dialog/routable',
         loadChildren: async () =>
-            (await import(`../customization/routable/eager/routable-dialog.module`))
+            (await import('../customization/routable/eager/routable-dialog.module'))
                 .RoutableDialogModule,
         data: {
-            title: `Routable`,
+            title: 'Routable',
         },
     },
     {
-        path: `dialog/lazy-routable`,
+        path: 'dialog/lazy-routable',
         loadChildren: async () =>
-            (await import(`../customization/routable/lazy/lazy-routable-dialog.module`))
+            (await import('../customization/routable/lazy/lazy-routable-dialog.module'))
                 .LazyRoutableDialogModule,
         data: {
-            title: `LazyRoutable`,
+            title: 'LazyRoutable',
         },
     },
     {
-        path: `portals`,
+        path: 'portals',
         loadChildren: async () =>
-            (await import(`../customization/portals/portals.module`)).PortalsModule,
+            (await import('../customization/portals/portals.module')).PortalsModule,
         data: {
-            title: `Portals`,
+            title: 'Portals',
         },
     },
     {
-        path: `viewport`,
+        path: 'viewport',
         loadChildren: async () =>
-            (await import(`../customization/viewport/viewport.module`))
+            (await import('../customization/viewport/viewport.module'))
                 .ExampleTuiViewportModule,
         data: {
-            title: `Viewport`,
+            title: 'Viewport',
         },
     },
     // COMPONENTS
     {
-        path: `components/accordion`,
+        path: 'components/accordion',
         loadChildren: async () =>
-            (await import(`../components/accordion/accordion.module`))
+            (await import('../components/accordion/accordion.module'))
                 .ExampleTuiAccordionModule,
         data: {
-            title: `Accordion`,
+            title: 'Accordion',
         },
     },
     {
-        path: `components/action`,
+        path: 'components/action',
         loadChildren: async () =>
-            (await import(`../components/action/action.module`)).ExampleTuiActionModule,
+            (await import('../components/action/action.module')).ExampleTuiActionModule,
         data: {
-            title: `Action`,
+            title: 'Action',
         },
     },
     {
-        path: `components/avatar`,
+        path: 'components/avatar',
         loadChildren: async () =>
-            (await import(`../components/avatar/avatar.module`)).ExampleTuiAvatarModule,
+            (await import('../components/avatar/avatar.module')).ExampleTuiAvatarModule,
         data: {
-            title: `Avatar`,
+            title: 'Avatar',
         },
     },
     {
-        path: `components/badge`,
+        path: 'components/badge',
         loadChildren: async () =>
-            (await import(`../components/badge/badge.module`)).ExampleTuiBadgeModule,
+            (await import('../components/badge/badge.module')).ExampleTuiBadgeModule,
         data: {
-            title: `Badge`,
+            title: 'Badge',
         },
     },
     {
-        path: `components/badged-content`,
+        path: 'components/badged-content',
         loadChildren: async () =>
-            (await import(`../components/badged-content/badged-content.module`))
+            (await import('../components/badged-content/badged-content.module'))
                 .ExampleTuiBadgedContentModule,
         data: {
-            title: `BadgedContent`,
+            title: 'BadgedContent',
         },
     },
     {
-        path: `layout/block-status`,
+        path: 'layout/block-status',
         loadChildren: async () =>
-            (await import(`../components/block-status/block-status.module`))
+            (await import('../components/block-status/block-status.module'))
                 .ExampleTuiBlockStatusModule,
         data: {
-            title: `BlockStatus`,
+            title: 'BlockStatus',
         },
     },
     {
-        path: `experimental/amount`,
+        path: 'experimental/amount',
         loadChildren: async () =>
-            (await import(`../experimental/amount/amount.module`)).ExampleTuiAmountModule,
+            (await import('../experimental/amount/amount.module')).ExampleTuiAmountModule,
         data: {
-            title: `Amount `,
+            title: 'Amount ',
         },
     },
     {
-        path: `experimental/appearance`,
+        path: 'experimental/appearance',
         loadChildren: async () =>
-            (await import(`../experimental/appearance/appearance.module`))
+            (await import('../experimental/appearance/appearance.module'))
                 .ExampleTuiAppearanceModule,
         data: {
-            title: `Appearance`,
+            title: 'Appearance',
         },
     },
     {
-        path: `experimental/avatar`,
+        path: 'experimental/avatar',
         loadChildren: async () =>
-            (await import(`../experimental/avatar/avatar.module`)).ExampleTuiAvatarModule,
+            (await import('../experimental/avatar/avatar.module')).ExampleTuiAvatarModule,
         data: {
-            title: `Avatar `,
+            title: 'Avatar ',
         },
     },
     {
-        path: `experimental/chip`,
+        path: 'experimental/chip',
         loadChildren: async () =>
-            (await import(`../experimental/chip/chip.module`)).ExampleTuiChipModule,
+            (await import('../experimental/chip/chip.module')).ExampleTuiChipModule,
         data: {
-            title: `Chip`,
+            title: 'Chip',
         },
     },
     {
-        path: `experimental/checkbox`,
+        path: 'experimental/checkbox',
         loadChildren: async () =>
-            (await import(`../experimental/checkbox/checkbox.module`))
+            (await import('../experimental/checkbox/checkbox.module'))
                 .ExampleTuiCheckboxModule,
         data: {
-            title: `Checkbox `,
+            title: 'Checkbox ',
         },
     },
     {
-        path: `experimental/radio`,
+        path: 'experimental/radio',
         loadChildren: async () =>
-            (await import(`../experimental/radio/radio.module`)).ExampleTuiRadioModule,
+            (await import('../experimental/radio/radio.module')).ExampleTuiRadioModule,
         data: {
-            title: `Radio `,
+            title: 'Radio ',
         },
     },
     {
-        path: `experimental/title`,
+        path: 'experimental/title',
         loadChildren: async () =>
-            (await import(`../experimental/title/title.module`)).ExampleTuiTitleModule,
+            (await import('../experimental/title/title.module')).ExampleTuiTitleModule,
         data: {
-            title: `Title`,
+            title: 'Title',
         },
     },
     {
-        path: `experimental/toggle`,
+        path: 'experimental/toggle',
         loadChildren: async () =>
-            (await import(`../experimental/toggle/toggle.module`)).ExampleTuiToggleModule,
+            (await import('../experimental/toggle/toggle.module')).ExampleTuiToggleModule,
         data: {
-            title: `Toggle `,
+            title: 'Toggle ',
         },
     },
     {
-        path: `experimental/tooltip`,
+        path: 'experimental/tooltip',
         loadChildren: async () =>
-            (await import(`../experimental/tooltip/tooltip.module`))
+            (await import('../experimental/tooltip/tooltip.module'))
                 .ExampleTuiTooltipModule,
         data: {
-            title: `Tooltip `,
+            title: 'Tooltip ',
         },
     },
     {
-        path: `experimental/card`,
+        path: 'experimental/card',
         loadChildren: async () =>
-            (await import(`../experimental/card/card.module`)).ExampleTuiCardModule,
+            (await import('../experimental/card/card.module')).ExampleTuiCardModule,
         data: {
-            title: `Card`,
+            title: 'Card',
         },
     },
     {
-        path: `experimental/badge`,
+        path: 'experimental/badge',
         loadChildren: async () =>
-            (await import(`../experimental/badge/badge.module`)).ExampleTuiBadgeModule,
+            (await import('../experimental/badge/badge.module')).ExampleTuiBadgeModule,
         data: {
-            title: `Badge `,
+            title: 'Badge ',
         },
     },
     {
-        path: `experimental/badge-notification`,
+        path: 'experimental/badge-notification',
         loadChildren: async () =>
-            (await import(`../experimental/badge-notification/badge-notification.module`))
+            (await import('../experimental/badge-notification/badge-notification.module'))
                 .ExampleTuiBadgeNotificationModule,
         data: {
-            title: `BadgeNotification`,
+            title: 'BadgeNotification',
         },
     },
     {
-        path: `experimental/badged-content`,
+        path: 'experimental/badged-content',
         loadChildren: async () =>
-            (await import(`../experimental/badged-content/badged-content.module`))
+            (await import('../experimental/badged-content/badged-content.module'))
                 .ExampleTuiBadgedContentModule,
         data: {
-            title: `BadgedContent `,
+            title: 'BadgedContent ',
         },
     },
     {
-        path: `experimental/button`,
+        path: 'experimental/button',
         loadChildren: async () =>
-            (await import(`../experimental/button/button.module`)).ExampleTuiButtonModule,
+            (await import('../experimental/button/button.module')).ExampleTuiButtonModule,
         data: {
-            title: `Button `,
+            title: 'Button ',
         },
     },
     {
-        path: `experimental/button-vertical`,
+        path: 'experimental/button-vertical',
         loadChildren: async () =>
-            (await import(`../experimental/button-vertical/button-vertical.module`))
+            (await import('../experimental/button-vertical/button-vertical.module'))
                 .ExampleTuiButtonModule,
         data: {
-            title: `ButtonVertical`,
+            title: 'ButtonVertical',
         },
     },
     {
-        path: `experimental/button-close`,
+        path: 'experimental/button-close',
         loadChildren: async () =>
-            (await import(`../experimental/button-close/button-close.module`))
+            (await import('../experimental/button-close/button-close.module'))
                 .ExampleTuiButtonCloseModule,
         data: {
-            title: `ButtonClose`,
+            title: 'ButtonClose',
         },
     },
     {
-        path: `experimental/cell`,
+        path: 'experimental/cell',
         loadChildren: async () =>
-            (await import(`../experimental/cell/cell.module`)).ExampleTuiCellModule,
+            (await import('../experimental/cell/cell.module')).ExampleTuiCellModule,
         data: {
-            title: `Cell`,
+            title: 'Cell',
         },
     },
     {
-        path: `experimental/compass`,
+        path: 'experimental/compass',
         loadChildren: async () =>
-            (await import(`../experimental/compass/compass.module`))
+            (await import('../experimental/compass/compass.module'))
                 .ExampleTuiCompassModule,
         data: {
-            title: `Compass`,
+            title: 'Compass',
         },
     },
     {
-        path: `experimental/fade`,
+        path: 'experimental/fade',
         loadChildren: async () =>
-            (await import(`../experimental/fade/fade.module`)).ExampleTuiFadeModule,
+            (await import('../experimental/fade/fade.module')).ExampleTuiFadeModule,
         data: {
-            title: `Fade`,
+            title: 'Fade',
         },
     },
     {
-        path: `experimental/icon`,
+        path: 'experimental/icon',
         loadChildren: async () =>
-            (await import(`../experimental/icon/icon.module`)).ExampleTuiIconModule,
+            (await import('../experimental/icon/icon.module')).ExampleTuiIconModule,
         data: {
-            title: `Icon`,
+            title: 'Icon',
         },
     },
     {
-        path: `experimental/progress-segmented`,
+        path: 'experimental/progress-segmented',
         loadChildren: async () =>
-            (await import(`../experimental/progress-segmented/progress-segmented.module`))
+            (await import('../experimental/progress-segmented/progress-segmented.module'))
                 .ExampleTuiProgressSegmentedModule,
         data: {
-            title: `ProgressSegmented`,
+            title: 'ProgressSegmented',
         },
     },
     {
-        path: `experimental/rating`,
+        path: 'experimental/rating',
         loadChildren: async () =>
-            (await import(`../experimental/rating/rating.module`)).ExampleTuiRatingModule,
+            (await import('../experimental/rating/rating.module')).ExampleTuiRatingModule,
         data: {
-            title: `Rating`,
+            title: 'Rating',
         },
     },
     {
-        path: `experimental/sensitive`,
+        path: 'experimental/sensitive',
         loadChildren: async () =>
-            (await import(`../experimental/sensitive/sensitive.module`))
+            (await import('../experimental/sensitive/sensitive.module'))
                 .ExampleTuiSensitiveModule,
         data: {
-            title: `Sensitive`,
+            title: 'Sensitive',
         },
     },
     {
-        path: `experimental/surface`,
+        path: 'experimental/surface',
         loadChildren: async () =>
-            (await import(`../experimental/surface/surface.module`))
+            (await import('../experimental/surface/surface.module'))
                 .ExampleTuiSurfaceModule,
         data: {
-            title: `Surface`,
+            title: 'Surface',
         },
     },
     {
-        path: `experimental/thumbnail-card`,
+        path: 'experimental/thumbnail-card',
         loadChildren: async () =>
-            (await import(`../experimental/thumbnail-card/thumbnail-card.module`))
+            (await import('../experimental/thumbnail-card/thumbnail-card.module'))
                 .ExampleTuiThumbnailCardModule,
         data: {
-            title: `ThumbnailCard `,
+            title: 'ThumbnailCard ',
         },
     },
     {
-        path: `experimental/pin`,
+        path: 'experimental/pin',
         loadChildren: async () =>
-            (await import(`../experimental/pin/pin.module`)).ExampleTuiPinModule,
+            (await import('../experimental/pin/pin.module')).ExampleTuiPinModule,
         data: {
-            title: `Pin`,
+            title: 'Pin',
         },
     },
     {
-        path: `navigation/breadcrumbs`,
+        path: 'navigation/breadcrumbs',
         loadChildren: async () =>
-            (await import(`../components/breadcrumbs/breadcrumbs.module`))
+            (await import('../components/breadcrumbs/breadcrumbs.module'))
                 .ExampleTuiBreadcrumbsModule,
         data: {
-            title: `Breadcrumbs`,
+            title: 'Breadcrumbs',
         },
     },
     {
-        path: `components/button`,
+        path: 'components/button',
         loadChildren: async () =>
-            (await import(`../components/button/button.module`)).ExampleTuiButtonModule,
+            (await import('../components/button/button.module')).ExampleTuiButtonModule,
         data: {
-            title: `Button`,
+            title: 'Button',
         },
     },
     {
-        path: `components/calendar`,
+        path: 'components/calendar',
         loadChildren: async () =>
-            (await import(`../components/calendar/calendar.module`))
+            (await import('../components/calendar/calendar.module'))
                 .ExampleTuiCalendarModule,
         data: {
-            title: `Calendar`,
+            title: 'Calendar',
         },
     },
     {
-        path: `components/carousel`,
+        path: 'components/carousel',
         loadChildren: async () =>
-            (await import(`../components/carousel/carousel.module`))
+            (await import('../components/carousel/carousel.module'))
                 .ExampleTuiCarouselModule,
         data: {
-            title: `Carousel`,
+            title: 'Carousel',
         },
     },
     {
-        path: `components/thumbnail-card`,
+        path: 'components/thumbnail-card',
         loadChildren: async () =>
-            (await import(`../components/thumbnail-card/thumbnail-card.module`))
+            (await import('../components/thumbnail-card/thumbnail-card.module'))
                 .ExampleTuiThumbnailCardModule,
         data: {
-            title: `ThumbnailCard`,
+            title: 'ThumbnailCard',
         },
     },
     {
-        path: `components/checkbox`,
+        path: 'components/checkbox',
         loadChildren: async () =>
-            (await import(`../components/checkbox/checkbox.module`))
+            (await import('../components/checkbox/checkbox.module'))
                 .ExampleTuiCheckboxModule,
         data: {
-            title: `Checkbox`,
+            title: 'Checkbox',
         },
     },
     {
-        path: `components/checkbox-block`,
+        path: 'components/checkbox-block',
         loadChildren: async () =>
-            (await import(`../components/checkbox-block/checkbox-block.module`))
+            (await import('../components/checkbox-block/checkbox-block.module'))
                 .ExampleTuiCheckboxBlockModule,
         data: {
-            title: `CheckboxBlock`,
+            title: 'CheckboxBlock',
         },
     },
     {
-        path: `components/checkbox-labeled`,
+        path: 'components/checkbox-labeled',
         loadChildren: async () =>
-            (await import(`../components/checkbox-labeled/checkbox-labeled.module`))
+            (await import('../components/checkbox-labeled/checkbox-labeled.module'))
                 .ExampleTuiCheckboxLabeledModule,
         data: {
-            title: `CheckboxLabeled`,
+            title: 'CheckboxLabeled',
         },
     },
     {
-        path: `components/primitive-checkbox`,
+        path: 'components/primitive-checkbox',
         loadChildren: async () =>
-            (await import(`../components/primitive-checkbox/primitive-checkbox.module`))
+            (await import('../components/primitive-checkbox/primitive-checkbox.module'))
                 .ExampleTuiPrimitiveCheckboxModule,
         data: {
-            title: `PrimitiveCheckbox`,
+            title: 'PrimitiveCheckbox',
         },
     },
     {
-        path: `components/combo-box`,
+        path: 'components/combo-box',
         loadChildren: async () =>
-            (await import(`../components/combo-box/combo-box.module`))
+            (await import('../components/combo-box/combo-box.module'))
                 .ExampleTuiComboBoxModule,
         data: {
-            title: `ComboBox`,
+            title: 'ComboBox',
         },
     },
     {
-        path: `components/data-list`,
+        path: 'components/data-list',
         loadChildren: async () =>
-            (await import(`../components/data-list/data-list.module`))
+            (await import('../components/data-list/data-list.module'))
                 .ExampleTuiDataListModule,
         data: {
-            title: `DataList`,
+            title: 'DataList',
         },
     },
     {
-        path: `components/data-list-wrapper`,
+        path: 'components/data-list-wrapper',
         loadChildren: async () =>
-            (await import(`../components/data-list-wrapper/data-list-wrapper.module`))
+            (await import('../components/data-list-wrapper/data-list-wrapper.module'))
                 .ExampleTuiDataListWrapperModule,
         data: {
-            title: `DataListWrapper`,
+            title: 'DataListWrapper',
         },
     },
     {
-        path: `components/dialog`,
+        path: 'components/dialog',
         loadChildren: async () =>
-            (await import(`../components/dialog/dialog.module`)).ExampleTuiDialogModule,
+            (await import('../components/dialog/dialog.module')).ExampleTuiDialogModule,
         data: {
-            title: `Dialog`,
+            title: 'Dialog',
         },
     },
     {
-        path: `components/error`,
+        path: 'components/error',
         loadChildren: async () =>
-            (await import(`../components/error/error.module`)).ExampleTuiErrorModule,
+            (await import('../components/error/error.module')).ExampleTuiErrorModule,
         data: {
-            title: `Error`,
+            title: 'Error',
         },
     },
     {
-        path: `components/expand`,
+        path: 'components/expand',
         loadChildren: async () =>
-            (await import(`../components/expand/expand.module`)).ExampleTuiExpandModule,
+            (await import('../components/expand/expand.module')).ExampleTuiExpandModule,
         data: {
-            title: `Expand`,
+            title: 'Expand',
         },
     },
     {
-        path: `components/elastic-container`,
+        path: 'components/elastic-container',
         loadChildren: async () =>
-            (await import(`../components/elastic-container/elastic-container.module`))
+            (await import('../components/elastic-container/elastic-container.module'))
                 .ExampleTuiElasticContainerModule,
         data: {
-            title: `ElasticContainer`,
+            title: 'ElasticContainer',
         },
     },
     {
-        path: `pipes/field-error`,
+        path: 'pipes/field-error',
         loadChildren: async () =>
-            (await import(`../pipes/field-error/field-error.module`))
+            (await import('../pipes/field-error/field-error.module'))
                 .ExampleTuiFieldErrorModule,
         data: {
-            title: `FieldError`,
+            title: 'FieldError',
         },
     },
     {
-        path: `components/input-files`,
+        path: 'components/input-files',
         loadChildren: async () =>
-            (await import(`../components/input-files/input-files.module`))
+            (await import('../components/input-files/input-files.module'))
                 .ExampleTuiFilesModule,
         data: {
-            title: `InputFiles`,
+            title: 'InputFiles',
         },
     },
     {
-        path: `components/group`,
+        path: 'components/group',
         loadChildren: async () =>
-            (await import(`../components/group/group.module`)).ExampleTuiGroupModule,
+            (await import('../components/group/group.module')).ExampleTuiGroupModule,
         data: {
-            path: `tui-group`,
-            title: `Group`,
+            path: 'tui-group',
+            title: 'Group',
         },
     },
     {
-        path: `components/hosted-dropdown`,
+        path: 'components/hosted-dropdown',
         loadChildren: async () =>
-            (await import(`../components/hosted-dropdown/hosted-dropdown.module`))
+            (await import('../components/hosted-dropdown/hosted-dropdown.module'))
                 .ExampleTuiHostedDropdownModule,
         data: {
-            title: `HostedDropdown`,
+            title: 'HostedDropdown',
         },
     },
     {
-        path: `directives/dropdown`,
+        path: 'directives/dropdown',
         loadChildren: async () =>
-            (await import(`../directives/dropdown/dropdown.module`))
+            (await import('../directives/dropdown/dropdown.module'))
                 .ExampleTuiDropdownModule,
         data: {
-            title: `Dropdown`,
+            title: 'Dropdown',
         },
     },
     {
-        path: `directives/dropdown-open`,
+        path: 'directives/dropdown-open',
         loadChildren: async () =>
-            (await import(`../directives/dropdown-open/dropdown-open.module`))
+            (await import('../directives/dropdown-open/dropdown-open.module'))
                 .ExampleTuiDropdownOpenModule,
         data: {
-            title: `DropdownOpen`,
+            title: 'DropdownOpen',
         },
     },
     {
-        path: `directives/dropdown-context`,
+        path: 'directives/dropdown-context',
         loadChildren: async () =>
-            (await import(`../directives/dropdown-context/dropdown-context.module`))
+            (await import('../directives/dropdown-context/dropdown-context.module'))
                 .ExampleTuiDropdownContextModule,
         data: {
-            title: `DropdownContext`,
+            title: 'DropdownContext',
         },
     },
     {
-        path: `directives/dropdown-hover`,
+        path: 'directives/dropdown-hover',
         loadChildren: async () =>
-            (await import(`../directives/dropdown-hover/dropdown-hover.module`))
+            (await import('../directives/dropdown-hover/dropdown-hover.module'))
                 .ExampleTuiDropdownHoverModule,
         data: {
-            title: `DropdownHover`,
+            title: 'DropdownHover',
         },
     },
     {
-        path: `directives/dropdown-selection`,
+        path: 'directives/dropdown-selection',
         loadChildren: async () =>
-            (await import(`../directives/dropdown-selection/dropdown-selection.module`))
+            (await import('../directives/dropdown-selection/dropdown-selection.module'))
                 .ExampleTuiDropdownSelectionModule,
         data: {
-            title: `DropdownSelection`,
+            title: 'DropdownSelection',
         },
     },
     {
-        path: `components/input-inline`,
+        path: 'components/input-inline',
         loadChildren: async () =>
-            (await import(`../components/input-inline/input-inline.module`))
+            (await import('../components/input-inline/input-inline.module'))
                 .ExampleTuiInputInlineModule,
         data: {
-            title: `InputInline`,
+            title: 'InputInline',
         },
     },
     {
-        path: `components/input`,
+        path: 'components/input',
         loadChildren: async () =>
-            (await import(`../components/input/input.module`)).ExampleTuiInputModule,
+            (await import('../components/input/input.module')).ExampleTuiInputModule,
         data: {
-            title: `Input`,
+            title: 'Input',
         },
     },
     {
-        path: `components/input-date`,
+        path: 'components/input-date',
         loadChildren: async () =>
-            (await import(`../components/input-date/input-date.module`))
+            (await import('../components/input-date/input-date.module'))
                 .ExampleTuiInputDateModule,
         data: {
-            title: `InputDate`,
+            title: 'InputDate',
         },
     },
     {
-        path: `components/input-date-multi`,
+        path: 'components/input-date-multi',
         loadChildren: async () =>
-            (await import(`../components/input-date-multi/input-date-multi.module`))
+            (await import('../components/input-date-multi/input-date-multi.module'))
                 .ExampleTuiInputDateMultiModule,
         data: {
-            title: `InputDateMulti`,
+            title: 'InputDateMulti',
         },
     },
     {
-        path: `components/input-card`,
+        path: 'components/input-card',
         loadChildren: async () =>
-            (await import(`../components/input-card/input-card.module`))
+            (await import('../components/input-card/input-card.module'))
                 .ExampleTuiInputCardModule,
         data: {
-            title: `InputCard`,
+            title: 'InputCard',
         },
     },
     {
-        path: `components/input-card-grouped`,
+        path: 'components/input-card-grouped',
         loadChildren: async () =>
-            (await import(`../components/input-card-grouped/input-card-grouped.module`))
+            (await import('../components/input-card-grouped/input-card-grouped.module'))
                 .ExampleTuiInputCardGroupedModule,
         data: {
-            title: `InputCardGrouped`,
+            title: 'InputCardGrouped',
         },
     },
     {
-        path: `components/input-copy`,
+        path: 'components/input-copy',
         loadChildren: async () =>
-            (await import(`../components/input-copy/input-copy.module`))
+            (await import('../components/input-copy/input-copy.module'))
                 .ExampleTuiInputCopyModule,
         data: {
-            title: `InputCopy`,
+            title: 'InputCopy',
         },
     },
     {
-        path: `components/input-count`,
+        path: 'components/input-count',
         loadChildren: async () =>
-            (await import(`../components/input-count/input-count.module`))
+            (await import('../components/input-count/input-count.module'))
                 .ExampleTuiInputCountModule,
         data: {
-            title: `InputCount`,
+            title: 'InputCount',
         },
     },
     {
-        path: `components/input-date-time`,
+        path: 'components/input-date-time',
         loadChildren: async () =>
-            (await import(`../components/input-date-time/input-date-time.module`))
+            (await import('../components/input-date-time/input-date-time.module'))
                 .ExampleTuiInputDateTimeModule,
         data: {
-            title: `InputDateTime`,
+            title: 'InputDateTime',
         },
     },
     {
-        path: `components/input-month`,
+        path: 'components/input-month',
         loadChildren: async () =>
-            (await import(`../components/input-month/input-month.module`))
+            (await import('../components/input-month/input-month.module'))
                 .ExampleInputMonthModule,
         data: {
-            title: `InputMonth`,
+            title: 'InputMonth',
         },
     },
     {
-        path: `components/input-month-range`,
+        path: 'components/input-month-range',
         loadChildren: async () =>
-            (await import(`../components/input-month-range/input-month-range.module`))
+            (await import('../components/input-month-range/input-month-range.module'))
                 .ExampleTuiInputMonthRangeModule,
         data: {
-            title: `InputMonthRange`,
+            title: 'InputMonthRange',
         },
     },
     {
-        path: `components/input-number`,
+        path: 'components/input-number',
         loadChildren: async () =>
-            (await import(`../components/input-number/input-number.module`))
+            (await import('../components/input-number/input-number.module'))
                 .ExampleTuiInputNumberModule,
         data: {
-            title: `InputNumber`,
+            title: 'InputNumber',
         },
     },
     {
-        path: `components/input-password`,
+        path: 'components/input-password',
         loadChildren: async () =>
-            (await import(`../components/input-password/input-password.module`))
+            (await import('../components/input-password/input-password.module'))
                 .ExampleTuiInputPasswordModule,
         data: {
-            title: `InputPassword`,
+            title: 'InputPassword',
         },
     },
     {
-        path: `components/input-phone`,
+        path: 'components/input-phone',
         loadChildren: async () =>
-            (await import(`../components/input-phone/input-phone.module`))
+            (await import('../components/input-phone/input-phone.module'))
                 .ExampleTuiInputPhoneModule,
         data: {
-            title: `InputPhone`,
+            title: 'InputPhone',
         },
     },
     {
-        path: `components/input-range`,
+        path: 'components/input-range',
         loadChildren: async () =>
-            (await import(`../components/input-range/input-range.module`))
+            (await import('../components/input-range/input-range.module'))
                 .ExampleTuiInputRangeModule,
         data: {
-            title: `InputRange`,
+            title: 'InputRange',
         },
     },
     {
-        path: `components/input-date-range`,
+        path: 'components/input-date-range',
         loadChildren: async () =>
-            (await import(`../components/input-date-range/input-date-range.module`))
+            (await import('../components/input-date-range/input-date-range.module'))
                 .ExampleTuiInputDateRangeModule,
         data: {
-            title: `InputDateRange`,
+            title: 'InputDateRange',
         },
     },
     {
-        path: `components/input-slider`,
+        path: 'components/input-slider',
         loadChildren: async () =>
-            (await import(`../components/input-slider/input-slider.module`))
+            (await import('../components/input-slider/input-slider.module'))
                 .ExampleTuiInputSliderModule,
         data: {
-            title: `InputSlider`,
+            title: 'InputSlider',
         },
     },
     {
-        path: `components/input-tag`,
+        path: 'components/input-tag',
         loadChildren: async () =>
-            (await import(`../components/input-tag/input-tag.module`))
+            (await import('../components/input-tag/input-tag.module'))
                 .ExampleTuiInputTagModule,
         data: {
-            title: `InputTag`,
+            title: 'InputTag',
         },
     },
     {
-        path: `components/input-time`,
+        path: 'components/input-time',
         loadChildren: async () =>
-            (await import(`../components/input-time/input-time.module`))
+            (await import('../components/input-time/input-time.module'))
                 .ExampleTuiInputTimeModule,
         data: {
-            title: `InputTime`,
+            title: 'InputTime',
         },
     },
     {
-        path: `components/input-phone-international`,
+        path: 'components/input-phone-international',
         loadChildren: async () =>
             (
                 await import(
-                    `../components/input-phone-international/input-phone-international.module`
+                    '../components/input-phone-international/input-phone-international.module'
                 )
             ).ExampleTuiInputPhoneInternationalModule,
         data: {
-            title: `InputPhoneInternational`,
+            title: 'InputPhoneInternational',
         },
     },
     {
-        path: `components/input-year`,
+        path: 'components/input-year',
         loadChildren: async () =>
-            (await import(`../components/input-year/input-year.module`))
+            (await import('../components/input-year/input-year.module'))
                 .ExampleInputYearModule,
         data: {
-            title: `InputYear`,
+            title: 'InputYear',
         },
     },
     {
-        path: `components/island`,
+        path: 'components/island',
         loadChildren: async () =>
-            (await import(`../components/island/island.module`)).ExampleTuiIslandModule,
+            (await import('../components/island/island.module')).ExampleTuiIslandModule,
         data: {
-            title: `Island`,
+            title: 'Island',
         },
     },
     {
-        path: `components/items-with-more`,
+        path: 'components/items-with-more',
         loadChildren: async () =>
-            (await import(`../components/items-with-more/items-with-more.module`))
+            (await import('../components/items-with-more/items-with-more.module'))
                 .ExampleTuiItemsWithMoreModule,
         data: {
-            title: `ItemsWithMore`,
+            title: 'ItemsWithMore',
         },
     },
     {
-        path: `components/label`,
+        path: 'components/label',
         loadChildren: async () =>
-            (await import(`../components/label/label.module`)).ExampleTuiLabelModule,
+            (await import('../components/label/label.module')).ExampleTuiLabelModule,
         data: {
-            title: `Label`,
+            title: 'Label',
         },
     },
     {
-        path: `components/line-clamp`,
+        path: 'components/line-clamp',
         loadChildren: async () =>
-            (await import(`../components/line-clamp/line-clamp.module`))
+            (await import('../components/line-clamp/line-clamp.module'))
                 .ExampleTuiLineClampModule,
         data: {
-            title: `LineClamp`,
+            title: 'LineClamp',
         },
     },
     {
-        path: `components/link`,
+        path: 'components/link',
         loadChildren: async () =>
-            (await import(`../components/link/link.module`)).ExampleTuiLinkModule,
+            (await import('../components/link/link.module')).ExampleTuiLinkModule,
         data: {
-            title: `Link`,
+            title: 'Link',
         },
     },
     {
-        path: `components/loader`,
+        path: 'components/loader',
         loadChildren: async () =>
-            (await import(`../components/loader/loader.module`)).ExampleTuiLoaderModule,
+            (await import('../components/loader/loader.module')).ExampleTuiLoaderModule,
         data: {
-            title: `Loader`,
+            title: 'Loader',
         },
     },
     {
-        path: `mobile-themes`,
+        path: 'mobile-themes',
         loadChildren: async () =>
-            (await import(`../components/mobile-themes/mobile-themes.module`))
+            (await import('../components/mobile-themes/mobile-themes.module'))
                 .ExampleTuiMobileThemesModule,
         data: {
-            title: `Mobile`,
+            title: 'Mobile',
         },
     },
     {
-        path: `components/notification`,
+        path: 'components/notification',
         loadChildren: async () =>
-            (await import(`../components/notification/notification.module`))
+            (await import('../components/notification/notification.module'))
                 .ExampleTuiNotificationModule,
         data: {
-            title: `Notification`,
+            title: 'Notification',
         },
     },
     {
-        path: `components/push`,
+        path: 'components/push',
         loadChildren: async () =>
-            (await import(`../components/push/push.module`)).ExampleTuiPushModule,
+            (await import('../components/push/push.module')).ExampleTuiPushModule,
         data: {
-            title: `Push`,
+            title: 'Push',
         },
     },
     {
-        path: `components/mobile-dialog`,
+        path: 'components/mobile-dialog',
         loadChildren: async () =>
-            (await import(`../components/mobile-dialog/mobile-dialog.module`))
+            (await import('../components/mobile-dialog/mobile-dialog.module'))
                 .ExampleTuiMobileDialogModule,
         data: {
-            title: `MobileDialog`,
+            title: 'MobileDialog',
         },
     },
     {
-        path: `components/mobile-calendar`,
+        path: 'components/mobile-calendar',
         loadChildren: async () =>
-            (await import(`../components/mobile-calendar/mobile-calendar.module`))
+            (await import('../components/mobile-calendar/mobile-calendar.module'))
                 .ExampleTuiMobileCalendarModule,
         data: {
-            title: `MobileCalendar`,
+            title: 'MobileCalendar',
         },
     },
     {
-        path: `components/pull-to-refresh`,
+        path: 'components/pull-to-refresh',
         loadChildren: async () =>
-            (await import(`../components/pull-to-refresh/pull-to-refresh.module`))
+            (await import('../components/pull-to-refresh/pull-to-refresh.module'))
                 .ExampleTuiPullToRefreshModule,
         data: {
-            title: `PullToRefresh`,
+            title: 'PullToRefresh',
         },
     },
     {
-        path: `components/money`,
+        path: 'components/money',
         loadChildren: async () =>
-            (await import(`../components/money/money.module`)).ExampleTuiMoneyModule,
+            (await import('../components/money/money.module')).ExampleTuiMoneyModule,
         data: {
-            title: `Money`,
+            title: 'Money',
         },
     },
     {
-        path: `components/calendar-month`,
+        path: 'components/calendar-month',
         loadChildren: async () =>
-            (await import(`../components/calendar-month/calendar-month.module`))
+            (await import('../components/calendar-month/calendar-month.module'))
                 .ExampleTuiCalendarMonthModule,
         data: {
-            title: `CalendarMonth`,
+            title: 'CalendarMonth',
         },
     },
     {
-        path: `components/multi-select`,
+        path: 'components/multi-select',
         loadChildren: async () =>
-            (await import(`../components/multi-select/multi-select.module`))
+            (await import('../components/multi-select/multi-select.module'))
                 .ExampleTuiMultiSelectModule,
         data: {
-            title: `MultiSelect`,
+            title: 'MultiSelect',
         },
     },
     {
-        path: `navigation/pagination`,
+        path: 'navigation/pagination',
         loadChildren: async () =>
-            (await import(`../components/pagination/pagination.module`))
+            (await import('../components/pagination/pagination.module'))
                 .ExampleTuiPaginationModule,
         data: {
-            title: `Pagination`,
+            title: 'Pagination',
         },
     },
     {
-        path: `components/radio`,
+        path: 'components/radio',
         loadChildren: async () =>
-            (await import(`../components/radio/radio.module`)).ExampleTuiRadioModule,
+            (await import('../components/radio/radio.module')).ExampleTuiRadioModule,
         data: {
-            title: `Radio`,
+            title: 'Radio',
         },
     },
     {
-        path: `components/radio-block`,
+        path: 'components/radio-block',
         loadChildren: async () =>
-            (await import(`../components/radio-block/radio-block.module`))
+            (await import('../components/radio-block/radio-block.module'))
                 .ExampleTuiRadioBlockModule,
         data: {
-            title: `RadioBlock`,
+            title: 'RadioBlock',
         },
     },
     {
-        path: `components/radio-labeled`,
+        path: 'components/radio-labeled',
         loadChildren: async () =>
-            (await import(`../components/radio-labeled/radio-labeled.module`))
+            (await import('../components/radio-labeled/radio-labeled.module'))
                 .ExampleTuiRadioLabeledModule,
         data: {
-            title: `RadioLabeled`,
+            title: 'RadioLabeled',
         },
     },
     {
-        path: `components/radio-list`,
+        path: 'components/radio-list',
         loadChildren: async () =>
-            (await import(`../components/radio-list/radio-list.module`))
+            (await import('../components/radio-list/radio-list.module'))
                 .ExampleTuiRadioListModule,
         data: {
-            title: `RadioList`,
+            title: 'RadioList',
         },
     },
     {
-        path: `components/rating`,
+        path: 'components/rating',
         loadChildren: async () =>
-            (await import(`../components/rating/rating.module`)).ExampleTuiRatingModule,
+            (await import('../components/rating/rating.module')).ExampleTuiRatingModule,
         data: {
-            title: `Rating`,
+            title: 'Rating',
         },
     },
     {
-        path: `components/range`,
+        path: 'components/range',
         loadChildren: async () =>
-            (await import(`../components/range/range.module`)).ExampleTuiRangeModule,
+            (await import('../components/range/range.module')).ExampleTuiRangeModule,
         data: {
-            title: `Range`,
+            title: 'Range',
         },
     },
     {
-        path: `components/calendar-range`,
+        path: 'components/calendar-range',
         loadChildren: async () =>
-            (await import(`../components/calendar-range/calendar-range.module`))
+            (await import('../components/calendar-range/calendar-range.module'))
                 .ExampleTuiCalendarRangeModule,
         data: {
-            title: `CalendarRange`,
+            title: 'CalendarRange',
         },
     },
     {
-        path: `components/select`,
+        path: 'components/select',
         loadChildren: async () =>
-            (await import(`../components/select/select.module`)).ExampleTuiSelectModule,
+            (await import('../components/select/select.module')).ExampleTuiSelectModule,
         data: {
-            title: `Select`,
+            title: 'Select',
         },
     },
     {
-        path: `components/scrollbar`,
+        path: 'components/scrollbar',
         loadChildren: async () =>
-            (await import(`../components/scrollbar/scrollbar.module`))
+            (await import('../components/scrollbar/scrollbar.module'))
                 .ExampleTuiScrollbarModule,
         data: {
-            title: `Scrollbar`,
+            title: 'Scrollbar',
         },
     },
     {
-        path: `components/sheet`,
+        path: 'components/sheet',
         loadChildren: async () =>
-            (await import(`../components/sheet/sheet.module`)).ExampleTuiSheetModule,
+            (await import('../components/sheet/sheet.module')).ExampleTuiSheetModule,
         data: {
-            title: `Sheet`,
+            title: 'Sheet',
         },
     },
     {
-        path: `components/sheet-dialog`,
+        path: 'components/sheet-dialog',
         loadChildren: async () =>
-            (await import(`../components/sheet-dialog/sheet-dialog.module`))
+            (await import('../components/sheet-dialog/sheet-dialog.module'))
                 .ExampleTuiSheetDialogModule,
         data: {
-            title: `SheetDialog`,
+            title: 'SheetDialog',
         },
     },
     {
-        path: `components/slider`,
+        path: 'components/slider',
         loadChildren: async () =>
-            (await import(`../components/slider/slider.module`)).ExampleTuiSliderModule,
+            (await import('../components/slider/slider.module')).ExampleTuiSliderModule,
         data: {
-            title: `Slider`,
+            title: 'Slider',
         },
     },
     {
-        path: `navigation/stepper`,
+        path: 'navigation/stepper',
         loadChildren: async () =>
-            (await import(`../components/stepper/stepper.module`))
+            (await import('../components/stepper/stepper.module'))
                 .ExampleTuiStepperModule,
         data: {
-            title: `Stepper`,
+            title: 'Stepper',
         },
     },
     {
-        path: `components/preview`,
+        path: 'components/preview',
         loadChildren: async () =>
-            (await import(`../components/preview/preview.module`))
+            (await import('../components/preview/preview.module'))
                 .ExampleTuiPreviewModule,
         data: {
-            title: `Preview`,
+            title: 'Preview',
         },
     },
     {
-        path: `navigation/app-bar`,
+        path: 'navigation/app-bar',
         loadChildren: async () =>
-            (await import(`../components/app-bar/app-bar.module`)).ExampleTuiAppBarModule,
+            (await import('../components/app-bar/app-bar.module')).ExampleTuiAppBarModule,
         data: {
-            title: `AppBar`,
+            title: 'AppBar',
         },
     },
     {
-        path: `navigation/tab-bar`,
+        path: 'navigation/tab-bar',
         loadChildren: async () =>
-            (await import(`../components/tab-bar/tab-bar.module`)).ExampleTuiTabBarModule,
+            (await import('../components/tab-bar/tab-bar.module')).ExampleTuiTabBarModule,
         data: {
-            title: `TabBar`,
+            title: 'TabBar',
         },
     },
     {
-        path: `navigation/tabs`,
+        path: 'navigation/tabs',
         loadChildren: async () =>
-            (await import(`../components/tabs/tabs.module`)).ExampleTuiTabsModule,
+            (await import('../components/tabs/tabs.module')).ExampleTuiTabsModule,
         data: {
-            title: `Tabs`,
+            title: 'Tabs',
         },
     },
     {
-        path: `components/tag`,
+        path: 'components/tag',
         loadChildren: async () =>
-            (await import(`../components/tag/tag.module`)).ExampleTuiTagModule,
+            (await import('../components/tag/tag.module')).ExampleTuiTagModule,
         data: {
-            title: `Tag`,
+            title: 'Tag',
         },
     },
     {
-        path: `components/theme-night`,
+        path: 'components/theme-night',
         loadChildren: async () =>
-            (await import(`../components/theme-night/theme-night.module`))
+            (await import('../components/theme-night/theme-night.module'))
                 .ExampleTuiThemeNightModule,
         data: {
-            title: `ThemeNight`,
+            title: 'ThemeNight',
         },
     },
     {
-        path: `components/textarea`,
+        path: 'components/textarea',
         loadChildren: async () =>
-            (await import(`../components/textarea/textarea.module`))
+            (await import('../components/textarea/textarea.module'))
                 .ExampleTuiTextareaModule,
         data: {
-            title: `Textarea`,
+            title: 'Textarea',
         },
     },
     {
-        path: `components/primitive-textfield`,
+        path: 'components/primitive-textfield',
         loadChildren: async () =>
-            (await import(`../components/primitive-textfield/primitive-textfield.module`))
+            (await import('../components/primitive-textfield/primitive-textfield.module'))
                 .ExampleTuiPrimitiveTextfieldModule,
         data: {
-            title: `PrimitiveTextfield`,
+            title: 'PrimitiveTextfield',
         },
     },
     {
-        path: `components/pdf-viewer`,
+        path: 'components/pdf-viewer',
         loadChildren: async () =>
-            (await import(`../components/pdf-viewer/pdf-viewer.module`))
+            (await import('../components/pdf-viewer/pdf-viewer.module'))
                 .ExampleTuiPdfViewerModule,
         data: {
-            title: `PdfViewer`,
+            title: 'PdfViewer',
         },
     },
     {
-        path: `components/progress-bar`,
+        path: 'components/progress-bar',
         loadChildren: async () =>
-            (await import(`../components/progress-bar/progress-bar.module`))
+            (await import('../components/progress-bar/progress-bar.module'))
                 .ExampleTuiProgressBarModule,
         data: {
-            title: `ProgressBar`,
+            title: 'ProgressBar',
         },
     },
     {
-        path: `components/progress-circle`,
+        path: 'components/progress-circle',
         loadChildren: async () =>
-            (await import(`../components/progress-circle/progress-circle.module`))
+            (await import('../components/progress-circle/progress-circle.module'))
                 .ExampleTuiProgressCircleModule,
         data: {
-            title: `ProgressCircle`,
+            title: 'ProgressCircle',
         },
     },
     {
-        path: `components/progress-segmented`,
+        path: 'components/progress-segmented',
         loadChildren: async () =>
-            (await import(`../components/progress-segmented/progress-segmented.module`))
+            (await import('../components/progress-segmented/progress-segmented.module'))
                 .ExampleTuiProgressSegmentedModule,
         data: {
-            title: `ProgressSegmented`,
+            title: 'ProgressSegmented',
         },
     },
     {
-        path: `components/prompt`,
+        path: 'components/prompt',
         loadChildren: async () =>
-            (await import(`../components/prompt/prompt.module`)).ExampleTuiPromptModule,
+            (await import('../components/prompt/prompt.module')).ExampleTuiPromptModule,
         data: {
-            title: `Prompt`,
+            title: 'Prompt',
         },
     },
     {
-        path: `components/theme-switcher`,
+        path: 'components/theme-switcher',
         loadChildren: async () =>
-            (await import(`../components/theme-switcher/theme-switcher.module`))
+            (await import('../components/theme-switcher/theme-switcher.module'))
                 .ExampleTuiThemeSwitcherModule,
         data: {
-            title: `ThemeSwitcher`,
+            title: 'ThemeSwitcher',
         },
     },
     {
-        path: `components/tiles`,
+        path: 'components/tiles',
         loadChildren: async () =>
-            (await import(`../components/tiles/tiles.module`)).ExampleTuiTilesModule,
+            (await import('../components/tiles/tiles.module')).ExampleTuiTilesModule,
         data: {
-            title: `Tiles`,
+            title: 'Tiles',
         },
     },
     {
-        path: `components/toggle`,
+        path: 'components/toggle',
         loadChildren: async () =>
-            (await import(`../components/toggle/toggle.module`)).ExampleTuiToggleModule,
+            (await import('../components/toggle/toggle.module')).ExampleTuiToggleModule,
         data: {
-            title: `Toggle`,
+            title: 'Toggle',
         },
     },
     {
-        path: `components/tooltip`,
+        path: 'components/tooltip',
         loadChildren: async () =>
-            (await import(`../components/tooltip/tooltip.module`))
+            (await import('../components/tooltip/tooltip.module'))
                 .ExampleTuiTooltipModule,
         data: {
-            title: `Tooltip`,
+            title: 'Tooltip',
         },
     },
     {
-        path: `components/tree`,
+        path: 'components/tree',
         loadChildren: async () =>
-            (await import(`../components/tree/tree.module`)).ExampleTuiTreeModule,
+            (await import('../components/tree/tree.module')).ExampleTuiTreeModule,
         data: {
-            title: `Tree`,
+            title: 'Tree',
         },
     },
     // ICONS
     {
-        path: `icons/overview`,
-        loadChildren: async () => (await import(`../icons/icons.module`)).IconsModule,
+        path: 'icons/overview',
+        loadChildren: async () => (await import('../icons/icons.module')).IconsModule,
         data: {
-            title: `Overview`,
+            title: 'Overview',
         },
     },
     {
-        path: `icons/mapping`,
+        path: 'icons/mapping',
         loadChildren: async () =>
-            (await import(`../icons/icons-mapping/icons-mapping.module`))
+            (await import('../icons/icons-mapping/icons-mapping.module'))
                 .IconsMappingModule,
         data: {
-            title: `Icons mapping`,
+            title: 'Icons mapping',
         },
     },
     {
-        path: `icons/bundled`,
+        path: 'icons/bundled',
         loadChildren: async () =>
-            (await import(`../icons/icons-bundled/icons-bundled.module`))
+            (await import('../icons/icons-bundled/icons-bundled.module'))
                 .IconsBundledModule,
         data: {
-            title: `Icons bundled`,
+            title: 'Icons bundled',
         },
     },
     {
-        path: `icons/customization`,
+        path: 'icons/customization',
         loadChildren: async () =>
-            (await import(`../icons/customization/icons-customization.module`))
+            (await import('../icons/customization/icons-customization.module'))
                 .IconsCustomizationModule,
         data: {
-            title: `Icons customization`,
+            title: 'Icons customization',
         },
     },
     {
-        path: `icons/marker-icon`,
+        path: 'icons/marker-icon',
         loadChildren: async () =>
-            (await import(`../icons/marker-icon/marker-icon.module`))
+            (await import('../icons/marker-icon/marker-icon.module'))
                 .ExampleTuiMarkerIconModule,
         data: {
-            path: `tui-marker-icon`,
-            title: `MarkerIcon`,
+            path: 'tui-marker-icon',
+            title: 'MarkerIcon',
         },
     },
     // FILTER
     {
-        path: `components/filter`,
+        path: 'components/filter',
         loadChildren: async () =>
-            (await import(`../components/filter/filter.module`)).ExampleTuiFilterModule,
+            (await import('../components/filter/filter.module')).ExampleTuiFilterModule,
         data: {
-            title: `Filter`,
+            title: 'Filter',
         },
     },
     // CHARTS
     {
-        path: `charts/arc-chart`,
+        path: 'charts/arc-chart',
         loadChildren: async () =>
-            (await import(`../charts/arc-chart/arc-chart.module`))
+            (await import('../charts/arc-chart/arc-chart.module'))
                 .ExampleTuiArcChartModule,
         data: {
-            title: `ArcChart`,
+            title: 'ArcChart',
         },
     },
     {
-        path: `charts/axes`,
+        path: 'charts/axes',
         loadChildren: async () =>
-            (await import(`../charts/axes/axes.module`)).ExampleTuiAxesModule,
+            (await import('../charts/axes/axes.module')).ExampleTuiAxesModule,
         data: {
-            title: `Axes`,
+            title: 'Axes',
         },
     },
     {
-        path: `charts/bar`,
+        path: 'charts/bar',
         loadChildren: async () =>
-            (await import(`../charts/bar/bar.module`)).ExampleTuiBarModule,
+            (await import('../charts/bar/bar.module')).ExampleTuiBarModule,
         data: {
-            title: `Bar`,
+            title: 'Bar',
         },
     },
     {
-        path: `charts/bar-chart`,
+        path: 'charts/bar-chart',
         loadChildren: async () =>
-            (await import(`../charts/bar-chart/bar-chart.module`))
+            (await import('../charts/bar-chart/bar-chart.module'))
                 .ExampleTuiBarChartModule,
         data: {
-            title: `BarChart`,
+            title: 'BarChart',
         },
     },
     {
-        path: `charts/bar-set`,
+        path: 'charts/bar-set',
         loadChildren: async () =>
-            (await import(`../charts/bar-set/bar-set.module`)).ExampleTuiBarSetModule,
+            (await import('../charts/bar-set/bar-set.module')).ExampleTuiBarSetModule,
         data: {
-            title: `BarSet`,
+            title: 'BarSet',
         },
     },
     {
-        path: `charts/legend-item`,
+        path: 'charts/legend-item',
         loadChildren: async () =>
-            (await import(`../charts/legend-item/legend-item.module`))
+            (await import('../charts/legend-item/legend-item.module'))
                 .ExampleTuiLegendItemModule,
         data: {
-            title: `LegendItem`,
+            title: 'LegendItem',
         },
     },
     {
-        path: `charts/line-chart`,
+        path: 'charts/line-chart',
         loadChildren: async () =>
-            (await import(`../charts/line-chart/line-chart.module`))
+            (await import('../charts/line-chart/line-chart.module'))
                 .ExampleTuiLineChartModule,
         data: {
-            title: `LineChart`,
+            title: 'LineChart',
         },
     },
     {
-        path: `charts/line-days-chart`,
+        path: 'charts/line-days-chart',
         loadChildren: async () =>
-            (await import(`../charts/line-days-chart/line-days-chart.module`))
+            (await import('../charts/line-days-chart/line-days-chart.module'))
                 .ExampleTuiLineDaysChartModule,
         data: {
-            title: `LineDaysChart`,
+            title: 'LineDaysChart',
         },
     },
     {
-        path: `charts/pie-chart`,
+        path: 'charts/pie-chart',
         loadChildren: async () =>
-            (await import(`../charts/pie-chart/pie-chart.module`))
+            (await import('../charts/pie-chart/pie-chart.module'))
                 .ExampleTuiPieChartModule,
         data: {
-            title: `PieChart`,
+            title: 'PieChart',
         },
     },
     {
-        path: `charts/ring-chart`,
+        path: 'charts/ring-chart',
         loadChildren: async () =>
-            (await import(`../charts/ring-chart/ring-chart.module`))
+            (await import('../charts/ring-chart/ring-chart.module'))
                 .ExampleTuiRingChartModule,
         data: {
-            title: `RingChart`,
+            title: 'RingChart',
         },
     },
     // STYLES
     {
-        path: `colors`,
+        path: 'colors',
         loadChildren: async () =>
-            (await import(`../markup/colors/colors.module`)).ColorsModule,
+            (await import('../markup/colors/colors.module')).ColorsModule,
         data: {
-            title: `Colors`,
+            title: 'Colors',
         },
     },
     {
-        path: `form`,
-        loadChildren: async () => (await import(`../markup/form/form.module`)).FormModule,
+        path: 'form',
+        loadChildren: async () => (await import('../markup/form/form.module')).FormModule,
         data: {
-            title: `Form`,
+            title: 'Form',
         },
     },
     {
-        path: `lists`,
+        path: 'lists',
         loadChildren: async () =>
-            (await import(`../markup/lists/lists.module`)).ListsModule,
+            (await import('../markup/lists/lists.module')).ListsModule,
         data: {
-            title: `Lists`,
+            title: 'Lists',
         },
     },
     {
-        path: `shadows`,
+        path: 'shadows',
         loadChildren: async () =>
-            (await import(`../markup/shadows/shadows.module`)).ShadowsModule,
+            (await import('../markup/shadows/shadows.module')).ShadowsModule,
         data: {
-            title: `Shadows`,
+            title: 'Shadows',
         },
     },
     {
-        path: `skeleton`,
+        path: 'skeleton',
         loadChildren: async () =>
-            (await import(`../markup/skeleton/skeleton.module`)).SkeletonModule,
+            (await import('../markup/skeleton/skeleton.module')).SkeletonModule,
         data: {
-            title: `Skeleton`,
+            title: 'Skeleton',
         },
     },
     {
-        path: `spaces`,
+        path: 'spaces',
         loadChildren: async () =>
-            (await import(`../markup/spaces/spaces.module`)).SpacesModule,
+            (await import('../markup/spaces/spaces.module')).SpacesModule,
         data: {
-            title: `Spaces`,
+            title: 'Spaces',
         },
     },
     {
-        path: `tables`,
+        path: 'tables',
         loadChildren: async () =>
-            (await import(`../markup/tables/tables.module`)).TablesModule,
+            (await import('../markup/tables/tables.module')).TablesModule,
         data: {
-            title: `Tables`,
+            title: 'Tables',
         },
     },
     {
-        path: `typography`,
+        path: 'typography',
         loadChildren: async () =>
-            (await import(`../markup/typography/typography.module`)).TypographyModule,
+            (await import('../markup/typography/typography.module')).TypographyModule,
         data: {
-            title: `Typography`,
+            title: 'Typography',
         },
     },
     {
-        path: `breakpoints`,
+        path: 'breakpoints',
         loadChildren: async () =>
-            (await import(`../markup/breakpoints/breakpoints.module`)).BreakpointsModule,
+            (await import('../markup/breakpoints/breakpoints.module')).BreakpointsModule,
         data: {
-            title: `Breakpoints`,
+            title: 'Breakpoints',
         },
     },
     // DIRECTIVES
     {
-        path: `directives/active-zone`,
+        path: 'directives/active-zone',
         loadChildren: async () =>
-            (await import(`../directives/active-zone/active-zone.module`))
+            (await import('../directives/active-zone/active-zone.module'))
                 .ExampleTuiActiveZoneModule,
         data: {
-            title: `ActiveZone`,
+            title: 'ActiveZone',
         },
     },
     {
-        path: `directives/copy-processor`,
+        path: 'directives/copy-processor',
         loadChildren: async () =>
-            (await import(`../directives/copy-processor/copy-processor.module`))
+            (await import('../directives/copy-processor/copy-processor.module'))
                 .ExampleTuiCopyProcessorModule,
         data: {
-            title: `CopyProcessor`,
+            title: 'CopyProcessor',
         },
     },
     {
-        path: `directives/elastic-sticky`,
+        path: 'directives/elastic-sticky',
         loadChildren: async () =>
-            (await import(`../directives/elastic-sticky/elastic-sticky.module`))
+            (await import('../directives/elastic-sticky/elastic-sticky.module'))
                 .ExampleTuiElasticStickyModule,
         data: {
-            title: `ElasticSticky`,
+            title: 'ElasticSticky',
         },
     },
     {
-        path: `directives/element`,
+        path: 'directives/element',
         loadChildren: async () =>
-            (await import(`../directives/element/element.module`))
+            (await import('../directives/element/element.module'))
                 .ExampleTuiElementModule,
         data: {
-            title: `Element`,
+            title: 'Element',
         },
     },
     {
-        path: `directives/for`,
+        path: 'directives/for',
         loadChildren: async () =>
-            (await import(`../directives/for/for.module`)).ExampleTuiForModule,
+            (await import('../directives/for/for.module')).ExampleTuiForModule,
         data: {
-            title: `For`,
+            title: 'For',
         },
     },
     {
-        path: `directives/highlight`,
+        path: 'directives/highlight',
         loadChildren: async () =>
-            (await import(`../directives/highlight/highlight.module`))
+            (await import('../directives/highlight/highlight.module'))
                 .ExampleTuiHighlightModule,
         data: {
-            title: `Highlight`,
+            title: 'Highlight',
         },
     },
     {
-        path: `directives/hint`,
+        path: 'directives/hint',
         loadChildren: async () =>
-            (await import(`../directives/hint/hint.module`)).ExampleTuiHintModule,
+            (await import('../directives/hint/hint.module')).ExampleTuiHintModule,
         data: {
-            title: `Hint`,
+            title: 'Hint',
         },
     },
     {
-        path: `directives/hint-describe`,
+        path: 'directives/hint-describe',
         loadChildren: async () =>
-            (await import(`../directives/hint-describe/hint-describe.module`))
+            (await import('../directives/hint-describe/hint-describe.module'))
                 .ExampleTuiHintDescribeModule,
         data: {
-            title: `HintDescribe`,
+            title: 'HintDescribe',
         },
     },
     {
-        path: `directives/hint-manual`,
+        path: 'directives/hint-manual',
         loadChildren: async () =>
-            (await import(`../directives/hint-manual/hint-manual.module`))
+            (await import('../directives/hint-manual/hint-manual.module'))
                 .ExampleTuiHintManualModule,
         data: {
-            title: `HintManual`,
+            title: 'HintManual',
         },
     },
     {
-        path: `directives/hint-pointer`,
+        path: 'directives/hint-pointer',
         loadChildren: async () =>
-            (await import(`../directives/hint-pointer/hint-pointer.module`))
+            (await import('../directives/hint-pointer/hint-pointer.module'))
                 .ExampleTuiHintPointerModule,
         data: {
-            title: `HintPointer`,
+            title: 'HintPointer',
         },
     },
     {
-        path: `directives/lazy-loading`,
+        path: 'directives/lazy-loading',
         loadChildren: async () =>
-            (await import(`../directives/lazy-loading/lazy-loading.module`))
+            (await import('../directives/lazy-loading/lazy-loading.module'))
                 .ExampleTuiLazyLoadingModule,
         data: {
-            title: `LazyLoading`,
+            title: 'LazyLoading',
         },
     },
     {
-        path: `directives/pan`,
+        path: 'directives/pan',
         loadChildren: async () =>
-            (await import(`../directives/pan/pan.module`)).ExampleTuiPanModule,
+            (await import('../directives/pan/pan.module')).ExampleTuiPanModule,
         data: {
-            title: `Pan`,
+            title: 'Pan',
         },
     },
     {
-        path: `directives/portal`,
+        path: 'directives/portal',
         loadChildren: async () =>
-            (await import(`../directives/portal/portal.module`)).ExampleTuiPortalModule,
+            (await import('../directives/portal/portal.module')).ExampleTuiPortalModule,
         data: {
-            title: `Portal`,
+            title: 'Portal',
         },
     },
     {
-        path: `directives/resizer`,
+        path: 'directives/resizer',
         loadChildren: async () =>
-            (await import(`../directives/resizer/resizer.module`))
+            (await import('../directives/resizer/resizer.module'))
                 .ExampleTuiResizerModule,
         data: {
-            title: `Resizer`,
+            title: 'Resizer',
         },
     },
     {
-        path: `directives/swipe`,
+        path: 'directives/swipe',
         loadChildren: async () =>
-            (await import(`../directives/swipe/swipe.module`)).ExampleTuiSwipeModule,
+            (await import('../directives/swipe/swipe.module')).ExampleTuiSwipeModule,
         data: {
-            title: `Swipe`,
+            title: 'Swipe',
         },
     },
     {
-        path: `directives/let`,
+        path: 'directives/let',
         loadChildren: async () =>
-            (await import(`../directives/let/let.module`)).ExampleTuiLetModule,
+            (await import('../directives/let/let.module')).ExampleTuiLetModule,
         data: {
-            title: `Let`,
+            title: 'Let',
         },
     },
     {
-        path: `directives/zoom`,
+        path: 'directives/zoom',
         loadChildren: async () =>
-            (await import(`../directives/zoom/zoom.module`)).ExampleTuiZoomModule,
+            (await import('../directives/zoom/zoom.module')).ExampleTuiZoomModule,
         data: {
-            title: `Zoom`,
+            title: 'Zoom',
         },
     },
     {
-        path: `directives/overscroll`,
+        path: 'directives/overscroll',
         loadChildren: async () =>
-            (await import(`../directives/overscroll/overscroll.module`))
+            (await import('../directives/overscroll/overscroll.module'))
                 .ExampleTuiOverscrollModule,
         data: {
-            title: `Overscroll`,
+            title: 'Overscroll',
         },
     },
     {
-        path: `directives/present`,
+        path: 'directives/present',
         loadChildren: async () =>
-            (await import(`../directives/present/present.module`))
+            (await import('../directives/present/present.module'))
                 .ExampleTuiPresentModule,
         data: {
-            title: `Present`,
+            title: 'Present',
         },
     },
     {
-        path: `directives/hovered-change`,
+        path: 'directives/hovered-change',
         loadChildren: async () =>
-            (await import(`../directives/hovered-change/hovered-change.module`))
+            (await import('../directives/hovered-change/hovered-change.module'))
                 .ExampleTuiHoveredChangeModule,
         data: {
-            title: `HoveredChange`,
+            title: 'HoveredChange',
         },
     },
     {
-        path: `components/reorder`,
+        path: 'components/reorder',
         loadChildren: async () =>
-            (await import(`../tables/reorder/reorder.module`)).ExampleTuiReorderModule,
+            (await import('../tables/reorder/reorder.module')).ExampleTuiReorderModule,
         data: {
-            title: `ReorderColumns`,
+            title: 'ReorderColumns',
         },
     },
     {
-        path: `components/table`,
+        path: 'components/table',
         loadChildren: async () =>
-            (await import(`../tables/table/table.module`)).ExampleTuiTableModule,
+            (await import('../tables/table/table.module')).ExampleTuiTableModule,
         data: {
-            title: `Table`,
+            title: 'Table',
         },
     },
     {
-        path: `components/table-filters`,
+        path: 'components/table-filters',
         loadChildren: async () =>
-            (await import(`../tables/table-filters/table-filters.module`))
+            (await import('../tables/table-filters/table-filters.module'))
                 .ExampleTuiTableFiltersModule,
         data: {
-            title: `TableFilters`,
+            title: 'TableFilters',
         },
     },
     {
-        path: `components/table-pagination`,
+        path: 'components/table-pagination',
         loadChildren: async () =>
-            (await import(`../tables/table-pagination/table-pagination.module`))
+            (await import('../tables/table-pagination/table-pagination.module'))
                 .ExampleTuiTablePaginationModule,
         data: {
-            title: `TablePagination`,
+            title: 'TablePagination',
         },
     },
     {
-        path: `directives/ripple`,
+        path: 'directives/ripple',
         loadChildren: async () =>
-            (await import(`../directives/ripple/ripple.module`)).ExampleTuiRippleModule,
+            (await import('../directives/ripple/ripple.module')).ExampleTuiRippleModule,
         data: {
-            title: `Ripple`,
+            title: 'Ripple',
         },
     },
     {
-        path: `directives/sidebar`,
+        path: 'directives/sidebar',
         loadChildren: async () =>
-            (await import(`../directives/sidebar/sidebar.module`))
+            (await import('../directives/sidebar/sidebar.module'))
                 .ExampleTuiSidebarModule,
         data: {
-            title: `Sidebar`,
+            title: 'Sidebar',
         },
     },
     {
-        path: `directives/touchable`,
+        path: 'directives/touchable',
         loadChildren: async () =>
-            (await import(`../directives/touchable/touchable.module`))
+            (await import('../directives/touchable/touchable.module'))
                 .ExampleTuiTouchableModule,
         data: {
-            title: `Touchable`,
+            title: 'Touchable',
         },
     },
     {
-        path: `directives/validator`,
+        path: 'directives/validator',
         loadChildren: async () =>
-            (await import(`../directives/validator/validator.module`))
+            (await import('../directives/validator/validator.module'))
                 .ExampleTuiValidatorModule,
         data: {
-            title: `Validator`,
+            title: 'Validator',
         },
     },
     {
-        path: `directives/value-changes`,
+        path: 'directives/value-changes',
         loadChildren: async () =>
-            (await import(`../directives/value-changes/value-changes.module`))
+            (await import('../directives/value-changes/value-changes.module'))
                 .ExampleTuiValueChangesModule,
         data: {
-            title: `ValueChanges`,
+            title: 'ValueChanges',
         },
     },
     {
-        path: `directives/media`,
+        path: 'directives/media',
         loadChildren: async () =>
-            (await import(`../directives/media/media.module`)).ExampleTuiMediaModule,
+            (await import('../directives/media/media.module')).ExampleTuiMediaModule,
         data: {
-            title: `Media`,
+            title: 'Media',
         },
     },
     {
-        path: `directives/mode`,
+        path: 'directives/mode',
         loadChildren: async () =>
-            (await import(`../directives/mode/mode.module`)).ExampleTuiModeModule,
+            (await import('../directives/mode/mode.module')).ExampleTuiModeModule,
         data: {
-            title: `Mode`,
+            title: 'Mode',
         },
     },
     {
-        path: `directives/auto-focus`,
+        path: 'directives/auto-focus',
         loadChildren: async () =>
-            (await import(`../directives/auto-focus/auto-focus.module`))
+            (await import('../directives/auto-focus/auto-focus.module'))
                 .ExampleTuiAutoFocusModule,
         data: {
-            title: `AutoFocus`,
+            title: 'AutoFocus',
         },
     },
     // PIPES
     {
-        path: `pipes/currency`,
+        path: 'pipes/currency',
         loadChildren: async () =>
-            (await import(`../pipes/currency/currency.module`)).ExampleTuiCurrencyModule,
+            (await import('../pipes/currency/currency.module')).ExampleTuiCurrencyModule,
         data: {
-            title: `Currency`,
+            title: 'Currency',
         },
     },
     {
-        path: `pipes/filter`,
+        path: 'pipes/filter',
         loadChildren: async () =>
-            (await import(`../pipes/filter/filter.module`)).ExampleTuiFilterModule,
+            (await import('../pipes/filter/filter.module')).ExampleTuiFilterModule,
         data: {
-            title: `Filter`,
+            title: 'Filter',
         },
     },
     {
-        path: `pipes/filter-by-input`,
+        path: 'pipes/filter-by-input',
         loadChildren: async () =>
-            (await import(`../pipes/filter-by-input/filter-by-input.module`))
+            (await import('../pipes/filter-by-input/filter-by-input.module'))
                 .ExampleTuiFilterByInputModule,
         data: {
-            title: `FilterByInput`,
+            title: 'FilterByInput',
         },
     },
     {
-        path: `pipes/flag`,
+        path: 'pipes/flag',
         loadChildren: async () =>
-            (await import(`../pipes/flag/flag.module`)).ExampleTuiFlagModule,
+            (await import('../pipes/flag/flag.module')).ExampleTuiFlagModule,
         data: {
-            title: `Flag`,
+            title: 'Flag',
         },
     },
     {
-        path: `pipes/format-date`,
+        path: 'pipes/format-date',
         loadChildren: async () =>
-            (await import(`../pipes/format-date/format-date.module`))
+            (await import('../pipes/format-date/format-date.module'))
                 .ExampleTuiFormatDateModule,
         data: {
-            title: `FormatDate`,
+            title: 'FormatDate',
         },
     },
     {
-        path: `pipes/format-number`,
+        path: 'pipes/format-number',
         loadChildren: async () =>
-            (await import(`../pipes/format-number/format-number.module`))
+            (await import('../pipes/format-number/format-number.module'))
                 .ExampleTuiFormatNumberModule,
         data: {
-            title: `FormatNumber`,
+            title: 'FormatNumber',
         },
     },
     {
-        path: `pipes/format-phone`,
+        path: 'pipes/format-phone',
         loadChildren: async () =>
-            (await import(`../pipes/format-phone/format-phone.module`))
+            (await import('../pipes/format-phone/format-phone.module'))
                 .ExampleTuiFormatPhoneModule,
         data: {
-            title: `FormatPhone`,
+            title: 'FormatPhone',
         },
     },
     {
-        path: `pipes/is-present`,
+        path: 'pipes/is-present',
         loadChildren: async () =>
-            (await import(`../pipes/is-present/is-present.module`))
+            (await import('../pipes/is-present/is-present.module'))
                 .ExampleTuiIsPresentModule,
         data: {
-            title: `IsPresent`,
+            title: 'IsPresent',
         },
     },
     {
-        path: `pipes/mapper`,
+        path: 'pipes/mapper',
         loadChildren: async () =>
-            (await import(`../pipes/mapper/mapper.module`)).ExampleTuiMapperModule,
+            (await import('../pipes/mapper/mapper.module')).ExampleTuiMapperModule,
         data: {
-            title: `Mapper`,
+            title: 'Mapper',
         },
     },
     {
-        path: `pipes/stringify`,
+        path: 'pipes/stringify',
         loadChildren: async () =>
-            (await import(`../pipes/stringify/stringify.module`))
+            (await import('../pipes/stringify/stringify.module'))
                 .ExampleTuiStringifyModule,
         data: {
-            title: `Stringify`,
+            title: 'Stringify',
         },
     },
     {
-        path: `pipes/stringify-content`,
+        path: 'pipes/stringify-content',
         loadChildren: async () =>
-            (await import(`../pipes/stringify-content/stringify-content.module`))
+            (await import('../pipes/stringify-content/stringify-content.module'))
                 .ExampleTuiStringifyContentModule,
         data: {
-            title: `StringifyContent`,
+            title: 'StringifyContent',
         },
     },
     // SERVICES
     {
-        path: `services/alert-service`,
+        path: 'services/alert-service',
         loadChildren: async () =>
-            (await import(`../services/alerts/alerts.module`)).ExampleTuiAlertsModule,
+            (await import('../services/alerts/alerts.module')).ExampleTuiAlertsModule,
         data: {
-            title: `AlertService`,
+            title: 'AlertService',
         },
     },
     {
-        path: `services/breakpoint-service`,
+        path: 'services/breakpoint-service',
         loadChildren: async () =>
-            (await import(`../services/breakpoint/breakpoint.module`))
+            (await import('../services/breakpoint/breakpoint.module'))
                 .ExampleTuiBreakpointModule,
         data: {
-            title: `BreakpointService`,
+            title: 'BreakpointService',
         },
     },
     {
-        path: `services/destroy-service`,
+        path: 'services/destroy-service',
         loadChildren: async () =>
-            (await import(`../services/destroy/destroy.module`)).ExampleTuiDestroyModule,
+            (await import('../services/destroy/destroy.module')).ExampleTuiDestroyModule,
         data: {
-            title: `DestroyService`,
+            title: 'DestroyService',
         },
     },
     {
-        path: `services/scroll-service`,
+        path: 'services/scroll-service',
         loadChildren: async () =>
-            (await import(`../services/scroll/scroll.module`)).ExampleTuiScrollModule,
+            (await import('../services/scroll/scroll.module')).ExampleTuiScrollModule,
         data: {
-            title: `ScrollService`,
+            title: 'ScrollService',
         },
     },
     {
-        path: `services/table-bars-service`,
+        path: 'services/table-bars-service',
         loadChildren: async () =>
-            (await import(`../services/table-bar/table-bar.module`))
+            (await import('../services/table-bar/table-bar.module'))
                 .ExampleTuiTableBarModule,
         data: {
-            title: `TableBarService`,
+            title: 'TableBarService',
         },
     },
     {
-        path: `directives/textfield-controller`,
+        path: 'directives/textfield-controller',
         loadChildren: async () =>
             (
                 await import(
-                    `../directives/textfield-controller/textfield-controller.module`
+                    '../directives/textfield-controller/textfield-controller.module'
                 )
             ).ExampleTuiTextfieldControllerModule,
         data: {
-            title: `TextfieldController`,
+            title: 'TextfieldController',
         },
     },
 
     // UTILS
     {
-        path: `utils/math`,
+        path: 'utils/math',
         loadChildren: async () =>
-            (await import(`../utils/math/math.module`)).ExampleMathModule,
+            (await import('../utils/math/math.module')).ExampleMathModule,
         data: {
-            title: `Math`,
+            title: 'Math',
         },
     },
     {
-        path: `utils/format`,
+        path: 'utils/format',
         loadChildren: async () =>
-            (await import(`../utils/format/format.module`)).ExampleFormatModule,
+            (await import('../utils/format/format.module')).ExampleFormatModule,
         data: {
-            title: `Format`,
+            title: 'Format',
         },
     },
     {
-        path: `utils/dom`,
+        path: 'utils/dom',
         loadChildren: async () =>
-            (await import(`../utils/dom/dom.module`)).ExampleDomModule,
+            (await import('../utils/dom/dom.module')).ExampleDomModule,
         data: {
-            title: `DOM`,
+            title: 'DOM',
         },
     },
     {
-        path: `utils/browser`,
+        path: 'utils/browser',
         loadChildren: async () =>
-            (await import(`../utils/browser/browser.module`)).ExampleBrowserModule,
+            (await import('../utils/browser/browser.module')).ExampleBrowserModule,
         data: {
-            title: `Browser`,
+            title: 'Browser',
         },
     },
     {
-        path: `utils/miscellaneous`,
+        path: 'utils/miscellaneous',
         loadChildren: async () =>
-            (await import(`../utils/miscellaneous/miscellaneous.module`))
+            (await import('../utils/miscellaneous/miscellaneous.module'))
                 .ExampleMiscellaneousModule,
         data: {
-            title: `Miscellaneous`,
+            title: 'Miscellaneous',
         },
     },
     {
-        path: `utils/tokens`,
+        path: 'utils/tokens',
         loadChildren: async () =>
-            (await import(`../utils/tokens/tokens.module`)).ExampleTokensModule,
+            (await import('../utils/tokens/tokens.module')).ExampleTokensModule,
         data: {
-            title: `Tokens`,
+            title: 'Tokens',
         },
     },
     {
-        path: `utils/pure`,
+        path: 'utils/pure',
         loadChildren: async () =>
-            (await import(`../utils/pure/pure.module`)).ExampleTuiPureModule,
+            (await import('../utils/pure/pure.module')).ExampleTuiPureModule,
         data: {
-            title: `Pure`,
+            title: 'Pure',
         },
     },
 
     // ANIMATIONS
     {
-        path: `animations`,
+        path: 'animations',
         loadChildren: async () =>
-            (await import(`../animations/animations.module`)).ExampleAnimationsModule,
+            (await import('../animations/animations.module')).ExampleAnimationsModule,
         data: {
-            title: `Animations`,
+            title: 'Animations',
         },
     },
 
     {
-        path: `stackblitz`,
+        path: 'stackblitz',
         loadChildren: async () =>
-            (await import(`./stackblitz/starter/stackblitz-starter.module`))
+            (await import('./stackblitz/starter/stackblitz-starter.module'))
                 .StackblitzStarterModule,
         data: {
-            title: `Stackblitz Starter`,
+            title: 'Stackblitz Starter',
         },
     },
     {
-        path: `cypress`,
+        path: 'cypress',
         loadChildren: async () =>
-            (await import(`../cypress/cypress.module`)).CypressDocPageModule,
+            (await import('../cypress/cypress.module')).CypressDocPageModule,
         data: {
-            title: `Cypress tests 🤫`,
+            title: 'Cypress tests 🤫',
         },
     },
     {
-        path: `**`,
-        redirectTo: ``,
+        path: '**',
+        redirectTo: '',
     },
 ];
 
 @NgModule({
     imports: [
         RouterModule.forRoot(ROUTES, {
-            scrollPositionRestoration: `enabled`,
-            anchorScrolling: `enabled`,
+            scrollPositionRestoration: 'enabled',
+            anchorScrolling: 'enabled',
             scrollOffset: [0, 64],
         }),
     ],

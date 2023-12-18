@@ -9,7 +9,7 @@ import type {TuiTreeAccessor, TuiTreeItemContext, TuiTreeLoader} from './tree.in
  * Controller for tracking value - TuiTreeItemComponent pairs
  */
 export const TUI_TREE_ACCESSOR = new InjectionToken<TuiTreeAccessor<unknown>>(
-    `[TUI_TREE_ACCESSOR]`,
+    '[TUI_TREE_ACCESSOR]',
 );
 
 /**
@@ -20,7 +20,7 @@ export const TUI_TREE_CONTROLLER = tuiCreateToken(TUI_DEFAULT_TREE_CONTROLLER);
 /**
  * A node of a tree view
  */
-export const TUI_TREE_NODE = new InjectionToken(`[TUI_TREE_NODE]`);
+export const TUI_TREE_NODE = new InjectionToken('[TUI_TREE_NODE]');
 
 /**
  * A tree node placeholder for loading
@@ -30,13 +30,13 @@ export const TUI_TREE_LOADING = tuiCreateToken({});
 /**
  * A tree node starting point
  */
-export const TUI_TREE_START = new InjectionToken(`[TUI_TREE_START]`);
+export const TUI_TREE_START = new InjectionToken('[TUI_TREE_START]');
 
 /**
  * A service to load tree progressively
  */
 export const TUI_TREE_LOADER = new InjectionToken<TuiTreeLoader<unknown>>(
-    `[TUI_TREE_LOADER]`,
+    '[TUI_TREE_LOADER]',
 );
 
 /**

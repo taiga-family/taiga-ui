@@ -12,7 +12,7 @@ import {TUI_SHEET_OPTIONS, TuiSheetOptions} from './sheet-options';
  * drop in v4.0
  */
 @Injectable({
-    providedIn: `root`,
+    providedIn: 'root',
 })
 export class TuiSheetService {
     readonly sheets$ = new BehaviorSubject<Array<TuiSheet<any, any>>>([]);

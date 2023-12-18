@@ -29,9 +29,9 @@ function makeScreenshotName(name?: string): string {
     return (
         name ??
         Cypress.currentTest.titlePath
-            .join(`-`)
-            .replace(/\s|-/g, `.`)
-            .replace(/['[\]`()]/g, ``)
+            .join('-')
+            .replace(/\s|-/g, '.')
+            .replace(/['[\]`()]/g, '')
             .toLowerCase()
     );
 }
@@ -42,8 +42,8 @@ export function tuiAddMatchImageSnapshotCommand(
     const matchSnapshotFn = matchImageSnapshotCommand(options);
 
     Cypress.Commands.add(
-        `matchImageSnapshot`,
-        {prevSubject: [`optional`, `element`, `window`, `document`]},
+        'matchImageSnapshot',
+        {prevSubject: ['optional', 'element', 'window', 'document']},
         (
             prevSubject,
             nameOrOptions: string | (Options & TuiSnapshotCommandOptions),

@@ -4,7 +4,7 @@ import {By} from '@angular/platform-browser';
 import {tuiFloor, TuiZoom, TuiZoomModule} from '@taiga-ui/cdk';
 
 // TODO: need mock Touch
-xdescribe(`TuiZoom directive`, () => {
+xdescribe('TuiZoom directive', () => {
     @Component({
         template: `
             <div
@@ -33,23 +33,23 @@ xdescribe(`TuiZoom directive`, () => {
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         testComponent = fixture.componentInstance;
-        testElement = fixture.debugElement.query(By.css(`.main`));
+        testElement = fixture.debugElement.query(By.css('.main'));
 
         fixture.detectChanges();
     });
 
-    it(`pinch`, () => {
-        sendTouchEvent([10, 10], [20, 20], testElement.nativeElement, `touchstart`);
-        sendTouchEvent([5, 5], [25, 25], testElement.nativeElement, `touchmove`);
-        sendTouchEvent([5, 5], [25, 25], testElement.nativeElement, `touchend`);
+    it('pinch', () => {
+        sendTouchEvent([10, 10], [20, 20], testElement.nativeElement, 'touchstart');
+        sendTouchEvent([5, 5], [25, 25], testElement.nativeElement, 'touchmove');
+        sendTouchEvent([5, 5], [25, 25], testElement.nativeElement, 'touchend');
 
         fixture.detectChanges();
 
         expect(tuiFloor(testComponent.scale, 2)).toBe(0.85);
     });
 
-    it(`wheel`, () => {
-        const wheel = new WheelEvent(`wheel`, {deltaY: 1.1});
+    it('wheel', () => {
+        const wheel = new WheelEvent('wheel', {deltaY: 1.1});
 
         testElement.nativeElement.dispatchEvent(wheel);
 

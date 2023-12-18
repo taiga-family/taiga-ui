@@ -21,7 +21,7 @@ export class TuiDialogFormService {
         return defer(() =>
             this.dirty
                 ? this.dialogs.open<boolean>(TUI_PROMPT, {
-                      size: `s`,
+                      size: 's',
                       ...options,
                   })
                 : of(true),

@@ -3,7 +3,7 @@ import {AbstractTuiValueTransformer} from '@taiga-ui/cdk';
 import {TUI_NUMBER_VALUE_TRANSFORMER} from '@taiga-ui/kit';
 
 @Directive({
-    selector: `[absTransformer]`,
+    selector: '[absTransformer]',
     providers: [
         {
             provide: TUI_NUMBER_VALUE_TRANSFORMER,

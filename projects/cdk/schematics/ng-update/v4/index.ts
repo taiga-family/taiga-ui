@@ -33,7 +33,7 @@ function main(options: TuiSchema): Rule {
 export function updateToV4(options: TuiSchema): Rule {
     const t0 = performance.now();
 
-    !options[`skip-logs`] &&
+    !options['skip-logs'] &&
         titleLog(
             `\n\n${START_SYMBOL} Your packages will be updated to @taiga-ui/*@${TAIGA_VERSION}\n`,
         );
@@ -43,7 +43,7 @@ export function updateToV4(options: TuiSchema): Rule {
         () => {
             const executionTime = getExecutionTime(t0, performance.now());
 
-            !options[`skip-logs`] &&
+            !options['skip-logs'] &&
                 titleLog(
                     `${FINISH_SYMBOL} We migrated packages to @taiga-ui/*@${TAIGA_VERSION} in ${executionTime}. \n`,
                 );

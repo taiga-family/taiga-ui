@@ -12,14 +12,14 @@ import {TuiPage1ExampleComponent} from './page-1.component';
         TuiButtonModule,
         RouterModule.forChild([
             {
-                path: ``,
+                path: '',
                 component: TuiPage1ExampleComponent,
                 children: [
                     // step 3: add lazy loading for component module as usual
                     {
-                        path: `path/to/dialog`,
+                        path: 'path/to/dialog',
                         loadChildren: async () =>
-                            (await import(`./dialog-content/dialog-content.module`))
+                            (await import('./dialog-content/dialog-content.module'))
                                 .DialogContentModule,
                     },
                 ],

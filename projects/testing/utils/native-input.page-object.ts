@@ -24,7 +24,7 @@ export class TuiNativeInputPO {
     }
 
     get value(): string {
-        return tuiReplaceNbsp(this.nativeElement?.value ?? ``);
+        return tuiReplaceNbsp(this.nativeElement?.value ?? '');
     }
 
     get focused(): boolean {
@@ -38,7 +38,7 @@ export class TuiNativeInputPO {
 
         if (nativeElement) {
             nativeElement.value = value;
-            nativeElement.dispatchEvent(new Event(`input`, {bubbles: true}));
+            nativeElement.dispatchEvent(new Event('input', {bubbles: true}));
         }
 
         this.fixture.detectChanges();
@@ -52,7 +52,7 @@ export class TuiNativeInputPO {
     }
 
     sendKeydown(key: string): void {
-        this.nativeElement?.dispatchEvent(tuiCreateKeyboardEvent(key, `keydown`));
+        this.nativeElement?.dispatchEvent(tuiCreateKeyboardEvent(key, 'keydown'));
         this.fixture.detectChanges();
     }
 

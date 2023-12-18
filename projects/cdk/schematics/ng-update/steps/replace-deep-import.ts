@@ -13,11 +13,11 @@ import {
 const DEEP_REGEX = /(@taiga-ui\/\w+)\/.*/;
 
 export function replaceDeepImports(options: TuiSchema): void {
-    if (options[`skip-deep-imports`]) {
+    if (options['skip-deep-imports']) {
         return;
     }
 
-    !options[`skip-logs`] &&
+    !options['skip-logs'] &&
         infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} replacing deep imports...`);
 
     const deepImports = getImports(ALL_TS_FILES).filter(imp =>
@@ -25,11 +25,11 @@ export function replaceDeepImports(options: TuiSchema): void {
     );
 
     editImports(deepImports, deepImport => {
-        const specifier = deepImport.moduleSpecifier.replace(DEEP_REGEX, `$1`);
+        const specifier = deepImport.moduleSpecifier.replace(DEEP_REGEX, '$1');
 
         return {moduleSpecifier: specifier};
     });
 
-    !options[`skip-logs`] &&
+    !options['skip-logs'] &&
         successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} deep imports replaced \n`);
 }

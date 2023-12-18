@@ -4,21 +4,21 @@ import {tuiControlValue} from '@taiga-ui/cdk';
 import {tuiSwitchNgDevMode} from '@taiga-ui/testing';
 import {skip} from 'rxjs';
 
-describe(`tuiControlValue`, () => {
-    it(`takes control and starts with its value`, fakeAsync(() => {
-        let actual = ``;
-        const control = new FormControl(`hello`);
+describe('tuiControlValue', () => {
+    it('takes control and starts with its value', fakeAsync(() => {
+        let actual = '';
+        const control = new FormControl('hello');
 
         tuiControlValue<string>(control).subscribe(value => {
             actual = value;
         });
 
-        expect(actual).toBe(`hello`);
+        expect(actual).toBe('hello');
     }));
 
-    it(`takes control and emits its values`, fakeAsync(() => {
-        let actual = ``;
-        const control = new FormControl(`hello`);
+    it('takes control and emits its values', fakeAsync(() => {
+        let actual = '';
+        const control = new FormControl('hello');
 
         tuiControlValue<string>(control)
             .pipe(skip(1))
@@ -26,16 +26,16 @@ describe(`tuiControlValue`, () => {
                 actual = value;
             });
 
-        control.setValue(`test`);
+        control.setValue('test');
 
-        expect(actual).toBe(`test`);
+        expect(actual).toBe('test');
     }));
 
-    describe(`dev mode`, () => {
+    describe('dev mode', () => {
         beforeEach(() => tuiSwitchNgDevMode(true));
 
-        it(`throws an error if there is no valueChanges`, fakeAsync(() => {
-            let actual = ``;
+        it('throws an error if there is no valueChanges', fakeAsync(() => {
+            let actual = '';
 
             tuiControlValue({} as AbstractControl).subscribe({
                 next: () => {},
@@ -44,15 +44,15 @@ describe(`tuiControlValue`, () => {
                 },
             });
 
-            expect(actual).toBe(`Control does not have valueChanges`);
+            expect(actual).toBe('Control does not have valueChanges');
         }));
 
         afterEach(() => tuiSwitchNgDevMode(false));
     });
 
-    describe(`production mode`, () => {
-        it(`throws an error if there is no valueChanges`, fakeAsync(() => {
-            let actual = ``;
+    describe('production mode', () => {
+        it('throws an error if there is no valueChanges', fakeAsync(() => {
+            let actual = '';
 
             tuiControlValue({} as AbstractControl).subscribe({
                 next: () => {},
@@ -61,7 +61,7 @@ describe(`tuiControlValue`, () => {
                 },
             });
 
-            expect(actual).toBe(``);
+            expect(actual).toBe('');
         }));
     });
 });

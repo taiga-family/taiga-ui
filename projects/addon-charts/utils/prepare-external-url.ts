@@ -8,7 +8,7 @@ export function tuiPrepareExternalUrl(
 ): string {
     const url = locationNg
         .prepareExternalUrl(locationNg.path(false))
-        .replace(locationRef.origin, ``);
+        .replace(locationRef.origin, '');
 
     return `url(${url}#${hash})`;
 }

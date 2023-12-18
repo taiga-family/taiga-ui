@@ -3,7 +3,7 @@ import {TuiCountryIsoCode} from '@taiga-ui/i18n';
 
 import {TuiIsoToCountryCodePipe} from '../iso-to-country-code.pipe';
 
-describe(`TuiIsoToCountryCodePipe`, () => {
+describe('TuiIsoToCountryCodePipe', () => {
     let pipe: TuiIsoToCountryCodePipe;
 
     beforeEach(() => {
@@ -14,21 +14,21 @@ describe(`TuiIsoToCountryCodePipe`, () => {
         pipe = TestBed.inject(TuiIsoToCountryCodePipe);
     });
 
-    it(`should transform US iso code to country code`, () => {
+    it('should transform US iso code to country code', () => {
         const transformed = pipe.transform(TuiCountryIsoCode.US);
 
-        expect(transformed).toBe(`+1`);
+        expect(transformed).toBe('+1');
     });
 
-    it(`should transform GB iso code to country code`, () => {
+    it('should transform GB iso code to country code', () => {
         const transformed = pipe.transform(TuiCountryIsoCode.GB);
 
-        expect(transformed).toBe(`+44`);
+        expect(transformed).toBe('+44');
     });
 
-    it(`should transform AU iso code to country code`, () => {
+    it('should transform AU iso code to country code', () => {
         const transformed = pipe.transform(TuiCountryIsoCode.AU);
 
-        expect(transformed).toBe(`+61`);
+        expect(transformed).toBe('+61');
     });
 });

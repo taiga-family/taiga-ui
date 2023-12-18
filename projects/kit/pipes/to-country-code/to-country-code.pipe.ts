@@ -9,7 +9,7 @@ import {
 } from '@taiga-ui/kit/utils';
 
 @Pipe({
-    name: `tuiToCountryCode`,
+    name: 'tuiToCountryCode',
 })
 export class TuiToCountryCodePipe implements PipeTransform {
     constructor(
@@ -37,7 +37,7 @@ export class TuiToCountryCodePipe implements PipeTransform {
                 (value.startsWith(
                     tuiIsoToCountryCode(this.countriesMasks, countryIsoCode).replace(
                         CHAR_PLUS,
-                        ``,
+                        '',
                     ),
                 ) &&
                     value.length + 1 ===

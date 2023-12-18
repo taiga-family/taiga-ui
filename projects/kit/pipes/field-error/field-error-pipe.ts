@@ -16,18 +16,18 @@ function unwrapObservable(
     content: Observable<PolymorpheusContent>,
     context: any,
 ): Observable<TuiValidationError> {
-    return content.pipe(map(error => new TuiValidationError(error || ``, context)));
+    return content.pipe(map(error => new TuiValidationError(error || '', context)));
 }
 
 function defaultError(
     content: PolymorpheusContent,
     context: any,
 ): Observable<TuiValidationError> {
-    return of(new TuiValidationError(content || ``, context));
+    return of(new TuiValidationError(content || '', context));
 }
 
 @Pipe({
-    name: `tuiFieldError`,
+    name: 'tuiFieldError',
     pure: false,
 })
 export class TuiFieldErrorPipe implements PipeTransform, ControlValueAccessor {
@@ -115,7 +115,7 @@ export class TuiFieldErrorPipe implements PipeTransform, ControlValueAccessor {
         const id = order?.find(errorId => controlErrors[errorId]);
         const fallback = Object.keys(controlErrors)[0];
 
-        return id || fallback || ``;
+        return id || fallback || '';
     }
 
     @tuiPure

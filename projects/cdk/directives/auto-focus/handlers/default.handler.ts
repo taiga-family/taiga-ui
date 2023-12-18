@@ -8,7 +8,7 @@ import {map, Observable, race, skipWhile, take, throttleTime, timer} from 'rxjs'
 import {AbstractTuiAutofocusHandler} from './abstract.handler';
 
 const TIMEOUT = 1000;
-const NG_ANIMATION_SELECTOR = `.ng-animating`;
+const NG_ANIMATION_SELECTOR = '.ng-animating';
 
 @Directive()
 export class TuiDefaultAutofocusHandler extends AbstractTuiAutofocusHandler {

@@ -26,6 +26,6 @@ export function replaceTag(
     );
     recorder.insertRight(
         (startTagOffset ?? 0) + templateOffset + START_TAG_OFFSET,
-        `${to} ${addAttributes.join(` `)}`,
+        `${to} ${addAttributes.join(' ')}`,
     );
 }

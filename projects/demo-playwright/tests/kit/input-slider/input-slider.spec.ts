@@ -3,20 +3,20 @@ import {expect, test} from '@playwright/test';
 
 import {CHAR_MINUS} from '../../../utils/common';
 
-test.describe(`InputSlider`, () => {
+test.describe('InputSlider', () => {
     test.use({viewport: {width: 400, height: 500}});
 
-    test.describe(`examples page`, () => {
+    test.describe('examples page', () => {
         let documentationPage!: TuiDocumentationPagePO;
 
         test.beforeEach(async ({page}) => {
-            await tuiGoto(page, `components/input-slider`);
+            await tuiGoto(page, 'components/input-slider');
             documentationPage = new TuiDocumentationPagePO(page);
         });
 
-        test(`typing new value inside text input also change slider position`, async () => {
-            const example = documentationPage.getExample(`#base`);
-            const inputSlider = new TuiInputSliderPO(example.locator(`tui-input-slider`));
+        test('typing new value inside text input also change slider position', async () => {
+            const example = documentationPage.getExample('#base');
+            const inputSlider = new TuiInputSliderPO(example.locator('tui-input-slider'));
 
             const valueToSliderStep = [
                 {value: 5, step: 0},
@@ -37,16 +37,16 @@ test.describe(`InputSlider`, () => {
             }
         });
 
-        test(`pressing ArrowUp/ArrowDown change textInput value and slider position`, async () => {
-            const example = documentationPage.getExample(`#right-label`);
-            const inputSlider = new TuiInputSliderPO(example.locator(`tui-input-slider`));
+        test('pressing ArrowUp/ArrowDown change textInput value and slider position', async () => {
+            const example = documentationPage.getExample('#right-label');
+            const inputSlider = new TuiInputSliderPO(example.locator('tui-input-slider'));
 
             await inputSlider.textfield.clear();
-            await inputSlider.textfield.fill(`0`);
+            await inputSlider.textfield.fill('0');
 
             for (let i = 1; i <= 10; i++) {
                 await inputSlider.textfield.focus();
-                await inputSlider.textfield.press(`ArrowUp`);
+                await inputSlider.textfield.press('ArrowUp');
                 await inputSlider.textfield.blur();
 
                 await expect(inputSlider.textfield).toHaveValue(`${i}`);
@@ -56,7 +56,7 @@ test.describe(`InputSlider`, () => {
 
             for (let i = 9; i >= 0; i--) {
                 await inputSlider.textfield.focus();
-                await inputSlider.textfield.press(`ArrowDown`);
+                await inputSlider.textfield.press('ArrowDown');
                 await inputSlider.textfield.blur();
 
                 await expect(inputSlider.textfield).toHaveValue(`${i}`);
@@ -66,48 +66,48 @@ test.describe(`InputSlider`, () => {
         });
     });
 
-    test.describe(`[valueContent] prop`, () => {
-        test(`hide [valueContent] when input is focused`, async ({page}) => {
+    test.describe('[valueContent] prop', () => {
+        test('hide [valueContent] when input is focused', async ({page}) => {
             await tuiGoto(
                 page,
-                `components/input-slider/API?valueContent=TOP-SECRET&postfix=things&prefix=$`,
+                'components/input-slider/API?valueContent=TOP-SECRET&postfix=things&prefix=$',
             );
 
             const {apiPageExample} = new TuiDocumentationPagePO(page);
             const inputSlider = new TuiInputSliderPO(
-                apiPageExample.locator(`tui-input-slider`),
+                apiPageExample.locator('tui-input-slider'),
             );
 
             await inputSlider.textfield.focus();
             await expect(apiPageExample).toHaveScreenshot(
-                `3-value-content-hide-on-focus.png`,
+                '3-value-content-hide-on-focus.png',
             );
         });
 
-        test(`[valueContent] is not overlapped by [prefix]/[postfix] (input is NOT focused)`, async ({
+        test('[valueContent] is not overlapped by [prefix]/[postfix] (input is NOT focused)', async ({
             page,
         }) => {
             await tuiGoto(
                 page,
-                `components/input-slider/API?valueContent=TOP-SECRET&postfix=things&prefix=$`,
+                'components/input-slider/API?valueContent=TOP-SECRET&postfix=things&prefix=$',
             );
 
             const {apiPageExample} = new TuiDocumentationPagePO(page);
 
             await expect(apiPageExample).toHaveScreenshot(
-                `4-value-content-not-overlapped.png`,
+                '4-value-content-not-overlapped.png',
             );
         });
     });
 
-    test.describe(`[min] prop`, () => {
-        test.describe(`positive numbers`, () => {
+    test.describe('[min] prop', () => {
+        test.describe('positive numbers', () => {
             let inputSlider!: TuiInputSliderPO;
 
             test.beforeEach(async ({page}) => {
                 await tuiGoto(
                     page,
-                    `components/input-slider/API?min=10&max=100&quantum=0.001&steps=90`,
+                    'components/input-slider/API?min=10&max=100&quantum=0.001&steps=90',
                 );
                 const {apiPageExample} = new TuiDocumentationPagePO(page);
 
@@ -116,35 +116,35 @@ test.describe(`InputSlider`, () => {
                 await inputSlider.textfield.clear();
             });
 
-            test(`cannot type number less than [min] property`, async () => {
-                await inputSlider.textfield.fill(`9.999`);
+            test('cannot type number less than [min] property', async () => {
+                await inputSlider.textfield.fill('9.999');
                 await inputSlider.textfield.blur();
-                await expect(inputSlider.textfield).toHaveValue(`10`);
+                await expect(inputSlider.textfield).toHaveValue('10');
             });
 
-            test(`cannot even type minus if [min] is positive`, async () => {
-                await inputSlider.textfield.type(`-11`);
-                await expect(inputSlider.textfield).toHaveValue(`11`);
+            test('cannot even type minus if [min] is positive', async () => {
+                await inputSlider.textfield.type('-11');
+                await expect(inputSlider.textfield).toHaveValue('11');
             });
 
-            test(`cannot set value less than min using ArrowDown`, async () => {
-                await inputSlider.textfield.fill(`11`);
+            test('cannot set value less than min using ArrowDown', async () => {
+                await inputSlider.textfield.fill('11');
 
-                await inputSlider.textfield.press(`ArrowDown`);
-                await expect(inputSlider.textfield).toHaveValue(`10`);
+                await inputSlider.textfield.press('ArrowDown');
+                await expect(inputSlider.textfield).toHaveValue('10');
 
-                await inputSlider.textfield.press(`ArrowDown`);
-                await expect(inputSlider.textfield).toHaveValue(`10`);
+                await inputSlider.textfield.press('ArrowDown');
+                await expect(inputSlider.textfield).toHaveValue('10');
             });
         });
 
-        test.describe(`negative numbers`, () => {
+        test.describe('negative numbers', () => {
             let inputSlider!: TuiInputSliderPO;
 
             test.beforeEach(async ({page}) => {
                 await tuiGoto(
                     page,
-                    `components/input-slider/API?min=-10&max=100&quantum=0.001&steps=90`,
+                    'components/input-slider/API?min=-10&max=100&quantum=0.001&steps=90',
                 );
 
                 const {apiPageExample} = new TuiDocumentationPagePO(page);
@@ -154,24 +154,24 @@ test.describe(`InputSlider`, () => {
                 await inputSlider.textfield.clear();
             });
 
-            test(`can type negative number more than [min]`, async () => {
-                await inputSlider.textfield.type(`-5`);
+            test('can type negative number more than [min]', async () => {
+                await inputSlider.textfield.type('-5');
                 await expect(inputSlider.textfield).toHaveValue(`${CHAR_MINUS}5`);
             });
 
-            test(`cannot type negative number less than [min]`, async () => {
-                await inputSlider.textfield.type(`-11`);
+            test('cannot type negative number less than [min]', async () => {
+                await inputSlider.textfield.type('-11');
                 await expect(inputSlider.textfield).toHaveValue(`${CHAR_MINUS}10`);
             });
         });
 
-        test.describe(`if [min]-property equals to [max]-property`, () => {
+        test.describe('if [min]-property equals to [max]-property', () => {
             let inputSlider!: TuiInputSliderPO;
 
             test.beforeEach(async ({page}) => {
                 await tuiGoto(
                     page,
-                    `components/input-slider/API?min=25&max=25&quantum=1`,
+                    'components/input-slider/API?min=25&max=25&quantum=1',
                 );
 
                 const {apiPageExample} = new TuiDocumentationPagePO(page);
@@ -179,29 +179,29 @@ test.describe(`InputSlider`, () => {
                 inputSlider = new TuiInputSliderPO(apiPageExample);
 
                 await inputSlider.textfield.clear();
-                await inputSlider.textfield.fill(`25`);
+                await inputSlider.textfield.fill('25');
                 await inputSlider.textfield.focus();
             });
 
-            test(`pressing ArrowUp does not change value`, async () => {
-                await inputSlider.textfield.press(`ArrowUp`);
-                await expect(inputSlider.textfield).toHaveValue(`25`);
+            test('pressing ArrowUp does not change value', async () => {
+                await inputSlider.textfield.press('ArrowUp');
+                await expect(inputSlider.textfield).toHaveValue('25');
             });
 
-            test(`pressing ArrowDown does not change value`, async () => {
-                await inputSlider.textfield.press(`ArrowDown`);
-                await expect(inputSlider.textfield).toHaveValue(`25`);
+            test('pressing ArrowDown does not change value', async () => {
+                await inputSlider.textfield.press('ArrowDown');
+                await expect(inputSlider.textfield).toHaveValue('25');
             });
         });
     });
 
-    test(`disables both text field and slider when host component has disabled state`, async ({
+    test('disables both text field and slider when host component has disabled state', async ({
         page,
     }) => {
-        await tuiGoto(page, `components/input-slider/API?min=-10&max=10&disabled=true`);
+        await tuiGoto(page, 'components/input-slider/API?min=-10&max=10&disabled=true');
 
         const {apiPageExample} = new TuiDocumentationPagePO(page);
 
-        await expect(apiPageExample).toHaveScreenshot(`5-disabled-state.png`);
+        await expect(apiPageExample).toHaveScreenshot('5-disabled-state.png');
     });
 });

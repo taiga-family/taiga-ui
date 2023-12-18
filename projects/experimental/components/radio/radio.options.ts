@@ -8,8 +8,8 @@ export interface TuiRadioOptions {
 }
 
 export const TUI_RADIO_DEFAULT_OPTIONS: TuiRadioOptions = {
-    size: `m`,
-    appearance: ({checked}) => (checked ? `primary` : `whiteblock`),
+    size: 'm',
+    appearance: ({checked}) => (checked ? 'primary' : 'whiteblock'),
 };
 
 export const TUI_RADIO_OPTIONS = tuiCreateToken(TUI_RADIO_DEFAULT_OPTIONS);

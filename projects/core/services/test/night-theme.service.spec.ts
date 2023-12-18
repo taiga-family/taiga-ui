@@ -4,8 +4,8 @@ import {take} from 'rxjs';
 
 import {TuiNightThemeService} from '../night-theme.service';
 
-describe(`TuiNightThemeService`, () => {
-    const mock: HTMLDivElement = document.createElement(`div`);
+describe('TuiNightThemeService', () => {
+    const mock: HTMLDivElement = document.createElement('div');
     let service!: TuiNightThemeService;
 
     beforeEach(async () => {
@@ -26,7 +26,7 @@ describe(`TuiNightThemeService`, () => {
         mock.matches = true as any;
     });
 
-    it(`returns actual value`, () => {
+    it('returns actual value', () => {
         let value = false;
 
         service.pipe(take(1)).subscribe(v => {
@@ -36,7 +36,7 @@ describe(`TuiNightThemeService`, () => {
         expect(value).toBe(true);
     });
 
-    it(`fires upon refresh`, () => {
+    it('fires upon refresh', () => {
         let value = false;
 
         service.pipe(take(2)).subscribe(v => {
@@ -44,7 +44,7 @@ describe(`TuiNightThemeService`, () => {
         });
 
         mock.matches = false as any;
-        mock.dispatchEvent(new Event(`change`));
+        mock.dispatchEvent(new Event('change'));
 
         expect(value).toBe(false);
     });

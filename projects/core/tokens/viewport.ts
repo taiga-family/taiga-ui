@@ -10,7 +10,7 @@ export const TUI_VIEWPORT = tuiCreateTokenFromFactory<TuiRectAccessor>(() => {
     const win = inject(WINDOW);
 
     return {
-        type: `viewport`,
+        type: 'viewport',
         getClientRect() {
             const rect = {
                 top: 0,

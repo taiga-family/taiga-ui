@@ -25,7 +25,7 @@ import {
 } from '../../../utils/templates/template-resource';
 import {TemplateResource} from '../../interfaces/template-resource';
 
-const PROPERTY_FOR_DEPRECATED_PIPES = `[color]`;
+const PROPERTY_FOR_DEPRECATED_PIPES = '[color]';
 
 export const DEPRECATED_PROGRESS_PIPES_REG =
     // eslint-disable-next-line unicorn/no-unsafe-regex
@@ -45,8 +45,8 @@ export function replaceProgressColorSegmentsPipe(
         .forEach(progressEl => {
             const oldValue =
                 progressEl.attrs.find(attr => attr.name === PROPERTY_FOR_DEPRECATED_PIPES)
-                    ?.value || ``;
-            const newValue = oldValue.replace(DEPRECATED_PROGRESS_PIPES_REG, ``);
+                    ?.value || '';
+            const newValue = oldValue.replace(DEPRECATED_PROGRESS_PIPES_REG, '');
 
             const attrLocations = progressEl.sourceCodeLocation?.attrs;
 
@@ -65,7 +65,7 @@ export function replaceProgressColorSegmentsPipe(
 
 export function isProgressWithDeprecatedPipe(element: Element): boolean {
     return (
-        element.tagName === `progress` &&
+        element.tagName === 'progress' &&
         element.attrs.some(
             attr =>
                 attr.name === PROPERTY_FOR_DEPRECATED_PIPES &&
@@ -75,7 +75,7 @@ export function isProgressWithDeprecatedPipe(element: Element): boolean {
 }
 
 export function migrateProgress(fileSystem: DevkitFileSystem, options: TuiSchema): void {
-    !options[`skip-logs`] &&
+    !options['skip-logs'] &&
         infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} migrating progress bars...`);
 
     getComponentTemplates(ALL_TS_FILES).forEach(templateResource =>
@@ -86,6 +86,6 @@ export function migrateProgress(fileSystem: DevkitFileSystem, options: TuiSchema
     saveActiveProject();
     setActiveProject(createProject(fileSystem.tree, projectRoot(), ALL_FILES));
 
-    !options[`skip-logs`] &&
+    !options['skip-logs'] &&
         successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} progress bars migrated \n`);
 }

@@ -15,10 +15,10 @@ export class TuiZoomService extends Observable<TuiZoom> {
     ) {
         super(subscriber => {
             merge(
-                tuiTypedFromEvent(nativeElement, `touchstart`, {passive: true}).pipe(
+                tuiTypedFromEvent(nativeElement, 'touchstart', {passive: true}).pipe(
                     filter(({touches}) => touches.length > 1),
                     switchMap(startEvent =>
-                        tuiTypedFromEvent(nativeElement, `touchmove`, {
+                        tuiTypedFromEvent(nativeElement, 'touchmove', {
                             passive: true,
                         }).pipe(
                             tuiPreventDefault(),
@@ -52,11 +52,11 @@ export class TuiZoomService extends Observable<TuiZoom> {
 
                                 return {clientX, clientY, delta, event};
                             }),
-                            takeUntil(tuiTypedFromEvent(nativeElement, `touchend`)),
+                            takeUntil(tuiTypedFromEvent(nativeElement, 'touchend')),
                         ),
                     ),
                 ),
-                tuiTypedFromEvent(nativeElement, `wheel`, {passive: false}).pipe(
+                tuiTypedFromEvent(nativeElement, 'wheel', {passive: false}).pipe(
                     tuiPreventDefault(),
                     map(wheel => ({
                         clientX: wheel.clientX,

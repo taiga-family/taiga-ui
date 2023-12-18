@@ -20,19 +20,19 @@ export class TuiPanService extends Observable<readonly [number, number]> {
     ) {
         super(subscriber => {
             merge(
-                tuiTypedFromEvent(nativeElement, `touchstart`, {passive: true}),
-                tuiTypedFromEvent(nativeElement, `mousedown`),
+                tuiTypedFromEvent(nativeElement, 'touchstart', {passive: true}),
+                tuiTypedFromEvent(nativeElement, 'mousedown'),
             )
                 .pipe(
                     switchMap(() =>
                         merge(
-                            tuiTypedFromEvent(doc, `touchmove`, {
+                            tuiTypedFromEvent(doc, 'touchmove', {
                                 passive: true,
                             }).pipe(
                                 filter(({touches}) => touches.length < 2),
                                 map(({touches}) => touches[0]),
                             ),
-                            tuiTypedFromEvent(doc, `mousemove`),
+                            tuiTypedFromEvent(doc, 'mousemove'),
                         ),
                     ),
                     pairwise(),
@@ -45,8 +45,8 @@ export class TuiPanService extends Observable<readonly [number, number]> {
                     // eslint-disable-next-line rxjs/no-unsafe-takeuntil
                     takeUntil(
                         merge(
-                            tuiTypedFromEvent(doc, `touchend`),
-                            tuiTypedFromEvent(doc, `mouseup`),
+                            tuiTypedFromEvent(doc, 'touchend'),
+                            tuiTypedFromEvent(doc, 'mouseup'),
                         ),
                     ),
                     repeat(),

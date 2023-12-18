@@ -1,3 +1,3 @@
 export function tuiClickOutside(): void {
-    cy.get(`body`).click(0, 0);
+    cy.get('body').click(0, 0);
 }

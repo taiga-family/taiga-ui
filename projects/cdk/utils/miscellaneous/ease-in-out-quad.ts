@@ -4,7 +4,7 @@ export function tuiEaseInOutQuad(t: number): number {
     ngDevMode &&
         tuiAssert.assert(
             t >= 0 && t <= 1,
-            `Input must be between 0 and 1 inclusive but received `,
+            'Input must be between 0 and 1 inclusive but received ',
             t,
         );
 

@@ -2,7 +2,7 @@ import {Pipe, PipeTransform} from '@angular/core';
 import {CHAR_PLUS, tuiAssert} from '@taiga-ui/cdk';
 import {tuiFormatPhone} from '@taiga-ui/core/utils/format';
 
-@Pipe({name: `tuiFormatPhone`})
+@Pipe({name: 'tuiFormatPhone'})
 export class TuiFormatPhonePipe implements PipeTransform {
     /**
      * Formats phone number string of +7XXXXXXXXXX format with adding separator symbols
@@ -14,12 +14,12 @@ export class TuiFormatPhonePipe implements PipeTransform {
     transform(
         value: string,
         countryCode: string = `${CHAR_PLUS}7`,
-        phoneMask: string = `(###) ###-##-##`,
+        phoneMask: string = '(###) ###-##-##',
     ): string {
         ngDevMode &&
             tuiAssert.assert(
                 value !== undefined,
-                `Undefined was passed to tuiFormatPhone pipe`,
+                'Undefined was passed to tuiFormatPhone pipe',
             );
 
         return tuiFormatPhone(value, countryCode, phoneMask);

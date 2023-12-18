@@ -5,8 +5,8 @@ import {TuiDestroyService} from '@taiga-ui/cdk';
 import {fromEvent, takeUntil} from 'rxjs';
 
 @Component({
-    selector: `tui-destroy-example`,
-    templateUrl: `./template.html`,
+    selector: 'tui-destroy-example',
+    templateUrl: './template.html',
     encapsulation,
     changeDetection,
     providers: [TuiDestroyService],
@@ -18,8 +18,8 @@ export class TuiDestroyExample {
         destroy$: TuiDestroyService,
         @Inject(ElementRef) {nativeElement}: ElementRef<HTMLElement>,
     ) {
-        fromEvent(nativeElement, `click`)
+        fromEvent(nativeElement, 'click')
             .pipe(takeUntil(destroy$))
-            .subscribe(() => console.info(`click`));
+            .subscribe(() => console.info('click'));
     }
 }

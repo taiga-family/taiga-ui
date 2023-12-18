@@ -14,8 +14,8 @@ import {getProjects} from './get-projects';
 function hasTaigaIcons(assets: Asset[]): boolean {
     return !!assets?.find(asset =>
         tuiIsString(asset)
-            ? asset.includes(`taiga-ui`)
-            : asset?.input?.includes(`taiga-ui`),
+            ? asset.includes('taiga-ui')
+            : asset?.input?.includes('taiga-ui'),
     );
 }
 
@@ -42,7 +42,7 @@ export function addStylesToAngularJson(
     tree?: Tree,
 ): Rule {
     const MANUAL_MIGRATION_TIPS = `Add styles ${taigaStyles.join(
-        `,`,
+        ',',
     )} to angular.json manually.`;
 
     return updateWorkspace(workspace => {
@@ -60,7 +60,7 @@ export function addStylesToAngularJson(
             let targetOptions;
 
             try {
-                targetOptions = getProjectTargetOptions(project, `build`);
+                targetOptions = getProjectTargetOptions(project, 'build');
             } catch {
                 context.logger.warn(
                     `[WARNING]: No buildable project was found. ${MANUAL_MIGRATION_TIPS}`,
@@ -102,7 +102,7 @@ export function addStylesToAngularJson(
 
             if (tree && stylesToReplace) {
                 addPackageJsonDependency(tree, {
-                    name: `@taiga-ui/styles`,
+                    name: '@taiga-ui/styles',
                     version: TAIGA_VERSION,
                 });
 

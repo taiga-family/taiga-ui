@@ -9,13 +9,13 @@ import {
 } from '../projects/icons/scripts';
 
 (async function main(): Promise<void> {
-    const projectPath = process.argv[2] || `projects/icons`;
+    const projectPath = process.argv[2] || 'projects/icons';
     const iconsSrc = path.resolve(`${projectPath}/src/`);
     const allToCompilePath = path.resolve(`${projectPath}/all-to-compile.ts`);
     const resultAllFile = path.resolve(`${projectPath}/all.ts`);
-    const config = require(require.resolve(`@taiga-ui/prettier-config`)) as Config;
+    const config = require(require.resolve('@taiga-ui/prettier-config')) as Config;
     const svg = require(
-        require.resolve(`@taiga-ui/prettier-config/options/svg`),
+        require.resolve('@taiga-ui/prettier-config/options/svg'),
     ) as Config;
 
     tuiPrepareAllToCompileFile(iconsSrc, allToCompilePath);
@@ -26,23 +26,23 @@ import {
         include: `**/${projectPath}/src/**/*.svg`,
         prt2Options: {
             include: [`**/${projectPath}/**`],
-            exclude: [`**/*.svg`],
+            exclude: ['**/*.svg'],
         },
     });
 
     await tuiPostPrettierFormat({
         file: resultAllFile,
-        config: {...config, parser: `typescript`},
+        config: {...config, parser: 'typescript'},
     });
 
     const icons = readdirSync(iconsSrc)
-        .filter(file => file.endsWith(`.svg`))
+        .filter(file => file.endsWith('.svg'))
         .map(file => `${iconsSrc}/${file}`);
 
     for (const file of icons) {
         await tuiPostPrettierFormat({
             file,
-            config: {...config, ...svg, parser: `angular`},
+            config: {...config, ...svg, parser: 'angular'},
         });
 
         await tuiPostPrettierFormat({
@@ -50,8 +50,8 @@ import {
             config: {
                 ...config,
                 ...svg,
-                parser: `xml`,
-                plugins: [require.resolve(`@prettier/plugin-xml`)],
+                parser: 'xml',
+                plugins: [require.resolve('@prettier/plugin-xml')],
             },
         });
     }

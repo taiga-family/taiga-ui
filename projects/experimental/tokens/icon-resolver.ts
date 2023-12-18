@@ -4,12 +4,12 @@ import {tuiCreateTokenFromFactory, TuiStringHandler} from '@taiga-ui/cdk';
 export const TUI_ICON_RESOLVER = tuiCreateTokenFromFactory<TuiStringHandler<string>>(
     // TODO: Remove backwards compatibility in 4.0
     () => icon =>
-        !icon || icon.includes(`/`)
+        !icon || icon.includes('/')
             ? icon
             : `/assets/taiga-ui/icons/${
-                  icon.includes(`Outline`)
+                  icon.includes('Outline')
                       ? icon
-                      : icon.replace(`Large`, ``).concat(`Outline`)
+                      : icon.replace('Large', '').concat('Outline')
               }.svg`,
 );
 

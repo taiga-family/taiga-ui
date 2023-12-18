@@ -18,7 +18,7 @@ import {
     tuiSvgSrcInterceptors,
 } from '@taiga-ui/core';
 
-describe(`SVG options`, () => {
+describe('SVG options', () => {
     @Component({
         template: `
             <tui-svg [src]="icon"></tui-svg>
@@ -28,7 +28,7 @@ describe(`SVG options`, () => {
         @ViewChild(TuiSvgComponent)
         svgComponent!: TuiSvgComponent;
 
-        icon = ``;
+        icon = '';
     }
 
     let fixture: ComponentFixture<TestComponent> | null = null;
@@ -40,7 +40,7 @@ describe(`SVG options`, () => {
         fixture?.autoDetectChanges();
     };
 
-    describe(`Default behaviour`, () => {
+    describe('Default behaviour', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
                 imports: [TuiSvgModule],
@@ -50,19 +50,19 @@ describe(`SVG options`, () => {
             createComponent();
         });
 
-        it(`tuiIconMySuperIcon`, () => {
-            testComponent!.icon = `tuiIconMySuperIcon`;
+        it('tuiIconMySuperIcon', () => {
+            testComponent!.icon = 'tuiIconMySuperIcon';
             fixture?.detectChanges();
 
             expect(testComponent?.svgComponent.isInnerHTML).toBe(false);
-            expect(testComponent?.svgComponent.src).toBe(`tuiIconMySuperIcon`);
+            expect(testComponent?.svgComponent.src).toBe('tuiIconMySuperIcon');
             expect(testComponent?.svgComponent.use).toBe(
                 `assets/taiga-ui/icons/tuiIconMySuperIcon.svg?v=${TUI_VERSION}#tuiIconMySuperIcon`,
             );
         });
     });
 
-    describe(`TUI_ICONS_PATH`, () => {
+    describe('TUI_ICONS_PATH', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
                 imports: [TuiSvgModule],
@@ -71,7 +71,7 @@ describe(`SVG options`, () => {
                     {
                         provide: TUI_ICONS_PATH,
                         useValue: tuiIconsPathFactory(
-                            `https://taiga-ui.dev/icons/public/`,
+                            'https://taiga-ui.dev/icons/public/',
                         ),
                     },
                 ],
@@ -80,19 +80,19 @@ describe(`SVG options`, () => {
             createComponent();
         });
 
-        it(`tuiIconMySuperIcon`, () => {
-            testComponent!.icon = `tuiIconMySuperIcon`;
+        it('tuiIconMySuperIcon', () => {
+            testComponent!.icon = 'tuiIconMySuperIcon';
             fixture?.detectChanges();
 
             expect(testComponent?.svgComponent.isInnerHTML).toBe(true);
-            expect(testComponent?.svgComponent.src).toBe(`tuiIconMySuperIcon`);
+            expect(testComponent?.svgComponent.src).toBe('tuiIconMySuperIcon');
             expect(testComponent?.svgComponent.use).toBe(
                 `https://taiga-ui.dev/icons/public/tuiIconMySuperIcon.svg?v=${TUI_VERSION}#tuiIconMySuperIcon`,
             );
         });
     });
 
-    describe(`path uses baseUrl`, () => {
+    describe('path uses baseUrl', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
                 imports: [TuiSvgModule],
@@ -100,7 +100,7 @@ describe(`SVG options`, () => {
                 providers: [
                     {
                         provide: TUI_BASE_HREF,
-                        useValue: `/my/app/`,
+                        useValue: '/my/app/',
                     },
                     tuiSvgOptionsProvider({
                         path: (name, baseHref) =>
@@ -112,19 +112,19 @@ describe(`SVG options`, () => {
             createComponent();
         });
 
-        it(`tuiMyIcon`, () => {
-            testComponent!.icon = `tuiMyIcon`;
+        it('tuiMyIcon', () => {
+            testComponent!.icon = 'tuiMyIcon';
             fixture?.detectChanges();
 
             expect(testComponent?.svgComponent.isInnerHTML).toBe(false);
-            expect(testComponent?.svgComponent.src).toBe(`tuiMyIcon`);
+            expect(testComponent?.svgComponent.src).toBe('tuiMyIcon');
             expect(testComponent?.svgComponent.use).toBe(
-                `/my/app/assets/taiga-ui/icons/tuiMyIcon.svg`,
+                '/my/app/assets/taiga-ui/icons/tuiMyIcon.svg',
             );
         });
     });
 
-    describe(`TUI_SVG_SRC_PROCESSOR`, () => {
+    describe('TUI_SVG_SRC_PROCESSOR', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
                 imports: [TuiSvgModule],
@@ -135,7 +135,7 @@ describe(`SVG options`, () => {
                         useFactory:
                             (base: string): TuiStringHandler<string> =>
                             src =>
-                                tuiIsString(src) && src.startsWith(`tuiIconTds`)
+                                tuiIsString(src) && src.startsWith('tuiIconTds')
                                     ? `${base}/${src}.svg`
                                     : src,
                         deps: [TUI_ICONS_PLACE],
@@ -146,31 +146,31 @@ describe(`SVG options`, () => {
             createComponent();
         });
 
-        it(`tuiIconMySuperIcon should be inside use`, () => {
-            testComponent!.icon = `tuiIconMySuperIcon`;
+        it('tuiIconMySuperIcon should be inside use', () => {
+            testComponent!.icon = 'tuiIconMySuperIcon';
             fixture?.detectChanges();
 
             expect(testComponent?.svgComponent.isInnerHTML).toBe(false);
-            expect(testComponent?.svgComponent.src).toBe(`tuiIconMySuperIcon`);
+            expect(testComponent?.svgComponent.src).toBe('tuiIconMySuperIcon');
             expect(testComponent?.svgComponent.use).toBe(
                 `assets/taiga-ui/icons/tuiIconMySuperIcon.svg?v=${TUI_VERSION}#tuiIconMySuperIcon`,
             );
         });
 
-        it(`tuiIconTdsSuperIcon should be inside innerHTML`, () => {
-            testComponent!.icon = `tuiIconTdsSuperIcon`;
+        it('tuiIconTdsSuperIcon should be inside innerHTML', () => {
+            testComponent!.icon = 'tuiIconTdsSuperIcon';
             fixture?.detectChanges();
 
             expect(testComponent?.svgComponent.isInnerHTML).toBe(true);
             expect(testComponent?.svgComponent.src).toBe(
-                `assets/taiga-ui/icons/tuiIconTdsSuperIcon.svg`,
+                'assets/taiga-ui/icons/tuiIconTdsSuperIcon.svg',
             );
         });
     });
 
-    describe(`tuiSvgOptionsProvider -> srcProcessor`, () => {
+    describe('tuiSvgOptionsProvider -> srcProcessor', () => {
         beforeEach(async () => {
-            const path = `assets/hello-world/icons`;
+            const path = 'assets/hello-world/icons';
 
             TestBed.configureTestingModule({
                 imports: [TuiSvgModule],
@@ -179,7 +179,7 @@ describe(`SVG options`, () => {
                     tuiSvgOptionsProvider({
                         path,
                         srcProcessor: src =>
-                            String(src).startsWith(`tuiIconTds`)
+                            String(src).startsWith('tuiIconTds')
                                 ? `${path}/${String(src)}.svg`
                                 : src,
                     }),
@@ -189,29 +189,29 @@ describe(`SVG options`, () => {
             createComponent();
         });
 
-        it(`tuiIconMySuperIcon should be inside use`, () => {
-            testComponent!.icon = `tuiIconMySuperIcon`;
+        it('tuiIconMySuperIcon should be inside use', () => {
+            testComponent!.icon = 'tuiIconMySuperIcon';
             fixture?.detectChanges();
 
             expect(testComponent?.svgComponent.isInnerHTML).toBe(false);
-            expect(testComponent?.svgComponent.src).toBe(`tuiIconMySuperIcon`);
+            expect(testComponent?.svgComponent.src).toBe('tuiIconMySuperIcon');
             expect(testComponent?.svgComponent.use).toBe(
                 `assets/hello-world/icons/tuiIconMySuperIcon.svg?v=${TUI_VERSION}#tuiIconMySuperIcon`,
             );
         });
 
-        it(`tuiIconTdsSuperIcon should be inside innerHTML`, () => {
-            testComponent!.icon = `tuiIconTdsSuperIcon`;
+        it('tuiIconTdsSuperIcon should be inside innerHTML', () => {
+            testComponent!.icon = 'tuiIconTdsSuperIcon';
             fixture?.detectChanges();
 
             expect(testComponent?.svgComponent.isInnerHTML).toBe(true);
             expect(testComponent?.svgComponent.src).toBe(
-                `assets/hello-world/icons/tuiIconTdsSuperIcon.svg`,
+                'assets/hello-world/icons/tuiIconTdsSuperIcon.svg',
             );
         });
     });
 
-    describe(`TUI_SVG_SRC_PROCESSOR + tuiSvgOptionsProvider -> srcProcessor`, () => {
+    describe('TUI_SVG_SRC_PROCESSOR + tuiSvgOptionsProvider -> srcProcessor', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
                 imports: [TuiSvgModule],
@@ -222,19 +222,19 @@ describe(`SVG options`, () => {
                         useFactory:
                             (base: string): TuiStringHandler<string> =>
                             src =>
-                                tuiIsString(src) && src.startsWith(`tuiIconTds`)
+                                tuiIsString(src) && src.startsWith('tuiIconTds')
                                     ? `${base}/${src}.svg`
                                     : src,
                         deps: [TUI_ICONS_PLACE],
                     },
                     tuiSvgOptionsProvider({
                         srcProcessor: src => {
-                            const myCustomPrefix = `icons8::`;
+                            const myCustomPrefix = 'icons8::';
 
                             return String(src).startsWith(myCustomPrefix)
                                 ? `assets/icons/${String(src).replace(
                                       myCustomPrefix,
-                                      ``,
+                                      '',
                                   )}.svg`
                                 : src;
                         },
@@ -245,25 +245,25 @@ describe(`SVG options`, () => {
             createComponent();
         });
 
-        it(`icons8::android`, () => {
-            testComponent!.icon = `icons8::android`;
+        it('icons8::android', () => {
+            testComponent!.icon = 'icons8::android';
             fixture?.detectChanges();
 
             expect(testComponent?.svgComponent.isInnerHTML).toBe(true);
-            expect(testComponent?.svgComponent.src).toBe(`assets/icons/android.svg`);
-            expect(testComponent?.svgComponent.use).toBe(`#assets/icons/android.svg`);
+            expect(testComponent?.svgComponent.src).toBe('assets/icons/android.svg');
+            expect(testComponent?.svgComponent.use).toBe('#assets/icons/android.svg');
         });
 
-        it(`tuiIconTdsSuperIcon and TUI_SVG_SRC_PROCESSOR should be ignored`, () => {
-            testComponent!.icon = `tuiIconTdsSuperIcon`;
+        it('tuiIconTdsSuperIcon and TUI_SVG_SRC_PROCESSOR should be ignored', () => {
+            testComponent!.icon = 'tuiIconTdsSuperIcon';
             fixture?.detectChanges();
 
             expect(testComponent?.svgComponent.isInnerHTML).toBe(false);
-            expect(testComponent?.svgComponent.src).toBe(`tuiIconTdsSuperIcon`);
+            expect(testComponent?.svgComponent.src).toBe('tuiIconTdsSuperIcon');
         });
     });
 
-    describe(`TUI_SVG_SRC_PROCESSOR -> https prefix`, () => {
+    describe('TUI_SVG_SRC_PROCESSOR -> https prefix', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
                 imports: [TuiSvgModule],
@@ -279,16 +279,16 @@ describe(`SVG options`, () => {
             createComponent();
         });
 
-        it(`added http protocol prefix by global processor`, () => {
-            testComponent!.icon = `google.com/test.svg`;
+        it('added http protocol prefix by global processor', () => {
+            testComponent!.icon = 'google.com/test.svg';
             fixture?.detectChanges();
 
             expect(testComponent?.svgComponent.isInnerHTML).toBe(true);
-            expect(testComponent?.svgComponent.src).toBe(`https://google.com/test.svg`);
+            expect(testComponent?.svgComponent.src).toBe('https://google.com/test.svg');
         });
     });
 
-    describe(`TUI_SVG_SRC_PROCESSOR + tuiSvgOptionsProvider`, () => {
+    describe('TUI_SVG_SRC_PROCESSOR + tuiSvgOptionsProvider', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
                 imports: [TuiSvgModule],
@@ -298,36 +298,36 @@ describe(`SVG options`, () => {
                         provide: TUI_SVG_SRC_PROCESSOR,
                         useValue: (src: string): string => `https://${src}`,
                     },
-                    tuiSvgOptionsProvider({path: `assets/taiga-ui/icons/`}),
+                    tuiSvgOptionsProvider({path: 'assets/taiga-ui/icons/'}),
                 ],
             });
             await TestBed.compileComponents();
             createComponent();
         });
 
-        it(`path option always ignored because srcProcessor option override use tag detection`, () => {
-            testComponent!.icon = `google.com/test.svg`;
+        it('path option always ignored because srcProcessor option override use tag detection', () => {
+            testComponent!.icon = 'google.com/test.svg';
             fixture?.detectChanges();
 
             expect(testComponent?.svgComponent.isInnerHTML).toBe(true);
-            expect(testComponent?.svgComponent.src).toBe(`https://google.com/test.svg`);
+            expect(testComponent?.svgComponent.src).toBe('https://google.com/test.svg');
         });
     });
 
-    describe(`multiple source processors`, () => {
+    describe('multiple source processors', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
                 imports: [TuiSvgModule],
                 declarations: [TestComponent],
                 providers: [
-                    tuiSvgOptionsProvider({path: `assets/default-path-to-icons/`}),
+                    tuiSvgOptionsProvider({path: 'assets/default-path-to-icons/'}),
                     tuiSvgSrcInterceptors((src: TuiSafeHtml) =>
-                        String(src).startsWith(`icons8::`)
-                            ? `assets/icons/${String(src).replace(`icons8::`, ``)}.svg`
+                        String(src).startsWith('icons8::')
+                            ? `assets/icons/${String(src).replace('icons8::', '')}.svg`
                             : src,
                     ),
                     tuiSvgSrcInterceptors((src: TuiSafeHtml) =>
-                        String(src).startsWith(`tuiIconTds`)
+                        String(src).startsWith('tuiIconTds')
                             ? `assets/design-tokens/${String(src)}.svg`
                             : src,
                     ),
@@ -337,29 +337,29 @@ describe(`SVG options`, () => {
             createComponent();
         });
 
-        it(`tuiIconMyDefault`, () => {
-            testComponent!.icon = `tuiIconMyDefault`;
+        it('tuiIconMyDefault', () => {
+            testComponent!.icon = 'tuiIconMyDefault';
             fixture?.detectChanges();
 
             expect(testComponent?.svgComponent.isInnerHTML).toBe(false);
-            expect(testComponent?.svgComponent.src).toBe(`tuiIconMyDefault`);
+            expect(testComponent?.svgComponent.src).toBe('tuiIconMyDefault');
         });
 
-        it(`icons8`, () => {
-            testComponent!.icon = `icons8::android`;
+        it('icons8', () => {
+            testComponent!.icon = 'icons8::android';
             fixture?.detectChanges();
 
             expect(testComponent?.svgComponent.isInnerHTML).toBe(true);
-            expect(testComponent?.svgComponent.src).toBe(`assets/icons/android.svg`);
+            expect(testComponent?.svgComponent.src).toBe('assets/icons/android.svg');
         });
 
-        it(`tuiIconTdsSuperToken`, () => {
-            testComponent!.icon = `tuiIconTdsSuperToken`;
+        it('tuiIconTdsSuperToken', () => {
+            testComponent!.icon = 'tuiIconTdsSuperToken';
             fixture?.detectChanges();
 
             expect(testComponent?.svgComponent.isInnerHTML).toBe(true);
             expect(testComponent?.svgComponent.src).toBe(
-                `assets/design-tokens/tuiIconTdsSuperToken.svg`,
+                'assets/design-tokens/tuiIconTdsSuperToken.svg',
             );
         });
     });

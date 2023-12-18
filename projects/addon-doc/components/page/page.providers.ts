@@ -4,7 +4,7 @@ import {TUI_DOC_SEE_ALSO} from '@taiga-ui/addon-doc/tokens';
 /**
  * Array if related page titles
  */
-export const PAGE_SEE_ALSO = new InjectionToken<readonly string[]>(`[PAGE_SEE_ALSO]`);
+export const PAGE_SEE_ALSO = new InjectionToken<readonly string[]>('[PAGE_SEE_ALSO]');
 
 export const PAGE_PROVIDERS: Provider[] = [
     {
@@ -14,14 +14,14 @@ export const PAGE_PROVIDERS: Provider[] = [
             {nativeElement}: ElementRef,
             seeAlsoGroups: ReadonlyArray<readonly string[]>,
         ): readonly string[] => {
-            const currentHeader = nativeElement.getAttribute(`header`);
+            const currentHeader = nativeElement.getAttribute('header');
             const groups =
                 seeAlsoGroups.filter(group => group.includes(currentHeader)) || [];
 
             const seeAlsoSet = new Set(
                 groups
                     .join()
-                    .split(`,`)
+                    .split(',')
                     .filter(component => component && component !== currentHeader),
             );
 

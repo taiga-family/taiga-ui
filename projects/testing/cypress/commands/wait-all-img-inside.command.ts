@@ -7,16 +7,16 @@ export const tuiWaitAllImgInside = (
     const target =
         prevSubject && Cypress.dom.isJquery(prevSubject)
             ? cy.wrap(prevSubject, {log: false})
-            : cy.get(`body`, {log: false});
+            : cy.get('body', {log: false});
 
     target.then($target => {
-        const img = $target.find(`img`);
+        const img = $target.find('img');
 
         if (img.length && enabled) {
             const log = Cypress.log({
-                displayName: `Wait all images`,
-                message: `naturalWidth greaterThan 0`,
-                name: `tuiWaitAllImgInside`,
+                displayName: 'Wait all images',
+                message: 'naturalWidth greaterThan 0',
+                name: 'tuiWaitAllImgInside',
                 autoEnd: false,
                 consoleProps: () => ({
                     prevSubject,
@@ -25,7 +25,7 @@ export const tuiWaitAllImgInside = (
             });
 
             cy.wrap($target, {log: false})
-                .get(`img`, {log: false})
+                .get('img', {log: false})
                 .each((img: JQuery<HTMLImageElement>) => {
                     const nativeImage = img.get(0);
                     const url = nativeImage?.src || nativeImage?.srcset;
@@ -34,7 +34,7 @@ export const tuiWaitAllImgInside = (
                         return;
                     }
 
-                    const offsetParent = img.prop(`offsetParent`);
+                    const offsetParent = img.prop('offsetParent');
 
                     return cy.window({log: false}).then((win: Window) => {
                         const rect = nativeImage.getBoundingClientRect();
@@ -50,7 +50,7 @@ export const tuiWaitAllImgInside = (
                                     win.document.documentElement.clientWidth);
 
                         if (isInViewport) {
-                            if (url.includes(`base64`)) {
+                            if (url.includes('base64')) {
                                 (expect as any)(
                                     nativeImage.naturalWidth,
                                 ).to.be.greaterThan(0);

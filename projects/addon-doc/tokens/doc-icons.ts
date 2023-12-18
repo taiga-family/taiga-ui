@@ -10,11 +10,11 @@ export interface TuiDocIcons {
 }
 
 export const TUI_DOC_DEFAULT_ICONS: TuiDocIcons = {
-    search: `tuiIconSearch`,
-    day: `tuiIconSun`,
-    night: `tuiIconMoon`,
-    code: `tuiIconCode`,
-    menu: `tuiIconMenuLarge`,
+    search: 'tuiIconSearch',
+    day: 'tuiIconSun',
+    night: 'tuiIconMoon',
+    code: 'tuiIconCode',
+    menu: 'tuiIconMenuLarge',
 };
 
 export const TUI_DOC_ICONS = tuiCreateToken(TUI_DOC_DEFAULT_ICONS);

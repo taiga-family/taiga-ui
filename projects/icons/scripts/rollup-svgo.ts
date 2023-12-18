@@ -11,19 +11,19 @@ export interface TuiRollupSvgoConfig {
 }
 
 export function tuiRollupSvgo({
-    include = `**/*.svg`,
+    include = '**/*.svg',
     exclude,
     options,
 }: TuiRollupSvgoConfig = {}): Plugin {
     const filter = createFilter(include, exclude);
 
     return {
-        name: `rollupSvgo`,
+        name: 'rollupSvgo',
         transform(svgString: string, path: string): TransformResult {
             const skip = !filter(path);
 
             if (skip) {
-                console.info(`\x1B[33m%s\x1B[0m`, `[skip]`, path);
+                console.info('\x1B[33m%s\x1B[0m', '[skip]', path);
 
                 return;
             }
@@ -42,8 +42,8 @@ export function tuiRollupSvgo({
 
             if (errorMessage) {
                 console.error(
-                    `\x1B[31m%s\x1B[0m`,
-                    `[error]`,
+                    '\x1B[31m%s\x1B[0m',
+                    '[error]',
                     path,
                     `\n${svgString}`,
                     `\n${errorMessage}`,
@@ -51,11 +51,11 @@ export function tuiRollupSvgo({
                 process.exit(1);
             }
 
-            console.info(`\x1B[32m%s\x1B[0m`, `[success]`, path);
+            console.info('\x1B[32m%s\x1B[0m', '[success]', path);
 
             return {
                 code: `export default ${JSON.stringify(data)}`,
-                map: {mappings: ``},
+                map: {mappings: ''},
             };
         },
     };

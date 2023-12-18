@@ -8,9 +8,9 @@ import {TuiThumbnailCardComponent} from './thumbnail-card.component';
  * @deprecated use {@link TuiThumbnailCardComponent}
  */
 @Component({
-    selector: `tui-card`,
-    templateUrl: `./thumbnail-card.template.html`,
-    styleUrls: [`./thumbnail-card.style.less`],
+    selector: 'tui-card',
+    templateUrl: './thumbnail-card.template.html',
+    styleUrls: ['./thumbnail-card.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiCardComponent extends TuiThumbnailCardComponent {}

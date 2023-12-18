@@ -7,7 +7,7 @@ import {TuiActionHarness} from '@taiga-ui/testing';
 import {TuiActionComponent} from '../action.component';
 import {TuiActionModule} from '../action.module';
 
-describe(`Action`, () => {
+describe('Action', () => {
     @Component({
         template: `
             <button
@@ -54,39 +54,39 @@ describe(`Action`, () => {
         fixture.detectChanges();
     });
 
-    describe(`host element`, () => {
-        it(`can be a button`, async () => {
+    describe('host element', () => {
+        it('can be a button', async () => {
             const action = await loader.getHarness(
-                TuiActionHarness.with({selector: `button`}),
+                TuiActionHarness.with({selector: 'button'}),
             );
 
             expect(action).toBeTruthy();
         });
 
-        it(`can be an anchor`, async () => {
+        it('can be an anchor', async () => {
             const action = await loader.getHarness(
-                TuiActionHarness.with({selector: `a`}),
+                TuiActionHarness.with({selector: 'a'}),
             );
 
             expect(action).toBeTruthy();
         });
     });
 
-    describe(`icon:`, () => {
-        it(`if value is provided, a TuiMarkerIconComponent is displayed`, async () => {
-            testComponent.icon = `tuiIconPrintLarge`;
+    describe('icon:', () => {
+        it('if value is provided, a TuiMarkerIconComponent is displayed', async () => {
+            testComponent.icon = 'tuiIconPrintLarge';
 
             const action = await loader.getHarness(
-                TuiActionHarness.with({selector: `button`}),
+                TuiActionHarness.with({selector: 'button'}),
             );
             const markerIcon = await action.icon();
 
             expect(markerIcon).toBeTruthy();
         });
 
-        it(`if value is not provided, no icon is displayed`, async () => {
+        it('if value is not provided, no icon is displayed', async () => {
             const action = await loader.getHarness(
-                TuiActionHarness.with({selector: `button`}),
+                TuiActionHarness.with({selector: 'button'}),
             );
             const markerIcon = await action.icon();
 
@@ -94,26 +94,26 @@ describe(`Action`, () => {
         });
     });
 
-    describe(`content`, () => {
-        it(`should be displayed inside the component`, async () => {
-            testComponent.text = `Foo`;
+    describe('content', () => {
+        it('should be displayed inside the component', async () => {
+            testComponent.text = 'Foo';
 
             const action = await loader.getHarness(
-                TuiActionHarness.with({selector: `button`}),
+                TuiActionHarness.with({selector: 'button'}),
             );
             const text = await (await action.host()).text();
 
-            expect(text).toBe(`Foo`);
+            expect(text).toBe('Foo');
         });
     });
 
-    describe(`focus`, () => {
-        it(`should handle focus events`, async () => {
+    describe('focus', () => {
+        it('should handle focus events', async () => {
             const action = await loader.getHarness(
-                TuiActionHarness.with({selector: `button`}),
+                TuiActionHarness.with({selector: 'button'}),
             );
 
-            const spy = jest.spyOn(testComponent.component as any, `updateFocused`);
+            const spy = jest.spyOn(testComponent.component as any, 'updateFocused');
 
             await (await action.host()).focus();
             expect(spy).toHaveBeenCalledWith(true);

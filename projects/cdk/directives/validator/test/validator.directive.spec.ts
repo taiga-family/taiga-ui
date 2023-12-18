@@ -4,7 +4,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {TuiValidatorModule} from '@taiga-ui/cdk';
 
-describe(`TuiValidator directive`, () => {
+describe('TuiValidator directive', () => {
     @Component({
         template: `
             <input
@@ -36,12 +36,12 @@ describe(`TuiValidator directive`, () => {
         fixture.detectChanges();
     });
 
-    describe(`adds validator`, () => {
-        it(`valid initially`, () => {
+    describe('adds validator', () => {
+        it('valid initially', () => {
             expect(testComponent.control.valid).toBe(true);
         });
 
-        it(`becomes invalid`, () => {
+        it('becomes invalid', () => {
             testComponent.show = true;
             fixture.detectChanges();
 

@@ -11,8 +11,8 @@ export interface TuiAmountOptions {
 
 export const TUI_AMOUNT_DEFAULT_OPTIONS: TuiAmountOptions = {
     currency: null,
-    currencyAlign: `right`,
-    sign: `negative-only`,
+    currencyAlign: 'right',
+    sign: 'negative-only',
 };
 
 export const TUI_AMOUNT_OPTIONS = tuiCreateToken(TUI_AMOUNT_DEFAULT_OPTIONS);

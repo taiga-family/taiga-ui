@@ -19,7 +19,7 @@ export interface TuiInputDateOptions {
 
 export const TUI_INPUT_DATE_DEFAULT_OPTIONS: TuiInputDateOptions = {
     icon: ({$implicit}) =>
-        $implicit === `s` ? `tuiIconCalendar` : `tuiIconCalendarLarge`,
+        $implicit === 's' ? 'tuiIconCalendar' : 'tuiIconCalendarLarge',
     min: TUI_FIRST_DAY,
     max: TUI_LAST_DAY,
     nativePicker: false,

@@ -14,26 +14,26 @@ const SCROLLBAR_PLACEHOLDER = 17;
 
 @Injectable()
 export class TuiDialogCloseService extends Observable<unknown> {
-    private readonly esc$ = tuiTypedFromEvent(this.doc, `keydown`).pipe(
+    private readonly esc$ = tuiTypedFromEvent(this.doc, 'keydown').pipe(
         filter(event => {
             const target = tuiGetActualTarget(event);
 
             return (
-                event.key === `Escape` &&
+                event.key === 'Escape' &&
                 !event.defaultPrevented &&
                 (this.element.contains(target) || this.isOutside(target))
             );
         }),
     );
 
-    private readonly mousedown$ = tuiTypedFromEvent(this.doc, `mousedown`).pipe(
+    private readonly mousedown$ = tuiTypedFromEvent(this.doc, 'mousedown').pipe(
         filter(
             event =>
                 tuiGetViewportWidth(this.win) - event.clientX > SCROLLBAR_PLACEHOLDER &&
                 this.isOutside(tuiGetActualTarget(event)),
         ),
         switchMap(() =>
-            tuiTypedFromEvent(this.doc, `mouseup`).pipe(
+            tuiTypedFromEvent(this.doc, 'mouseup').pipe(
                 take(1),
                 map(tuiGetActualTarget),
                 filter(target => this.isOutside(target)),

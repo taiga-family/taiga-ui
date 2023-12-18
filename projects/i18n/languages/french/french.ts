@@ -8,7 +8,7 @@ import {TUI_FRENCH_LANGUAGE_CORE} from './core';
 import {TUI_FRENCH_LANGUAGE_KIT} from './kit';
 
 export const TUI_FRENCH_LANGUAGE: TuiLanguage = {
-    name: `french`,
+    name: 'french',
     ...TUI_FRENCH_LANGUAGE_CORE,
     ...TUI_FRENCH_LANGUAGE_KIT,
     ...TUI_FRENCH_LANGUAGE_ADDON_TABLE,

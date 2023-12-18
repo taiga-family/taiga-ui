@@ -30,7 +30,7 @@ function insertPolymorpheus({
 }): void {
     const content = `
 <ng-container *polymorpheusOutlet="${contentVal} as text${
-        contextVal ? `; context: ${contextVal}` : ``
+        contextVal ? `; context: ${contextVal}` : ''
     }">
     {{ text }}
 </ng-container>`;
@@ -48,14 +48,14 @@ function removeOldInputs(
     templateOffset: number,
 ): void {
     const offsets = [
-        ...getInputPropertyOffsets(template, `[content]`, [`*`], el =>
-            hasElementAttribute(el, `polymorpheus-outlet`),
+        ...getInputPropertyOffsets(template, '[content]', ['*'], el =>
+            hasElementAttribute(el, 'polymorpheus-outlet'),
         ),
-        ...getInputPropertyOffsets(template, `[context]`, [`*`], el =>
-            hasElementAttribute(el, `polymorpheus-outlet`),
+        ...getInputPropertyOffsets(template, '[context]', ['*'], el =>
+            hasElementAttribute(el, 'polymorpheus-outlet'),
         ),
-        ...getInputPropertyOffsets(template, `polymorpheus-outlet`, [`*`], el =>
-            hasElementAttribute(el, `polymorpheus-outlet`),
+        ...getInputPropertyOffsets(template, 'polymorpheus-outlet', ['*'], el =>
+            hasElementAttribute(el, 'polymorpheus-outlet'),
         ),
     ];
 
@@ -80,25 +80,25 @@ function insertPolymorpheusWithDefault({
     templateOffset: number;
 }): void {
     const templateVar = defaultTemplateEl.attrs.find(attr =>
-        attr.name.startsWith(`let-`),
+        attr.name.startsWith('let-'),
     );
 
     let templateVarName = templateVar?.name;
 
-    if (templateVarName?.startsWith(`let-`)) {
-        templateVarName = template.match(new RegExp(templateVarName, `i`))?.[0];
+    if (templateVarName?.startsWith('let-')) {
+        templateVarName = template.match(new RegExp(templateVarName, 'i'))?.[0];
     }
 
-    const varName = templateVarName?.replace(`let-`, ``);
+    const varName = templateVarName?.replace('let-', '');
     const attr = `*polymorpheusOutlet="${contentVal} as ${varName}${
-        contextVal ? `; context: ${contextVal}` : ``
+        contextVal ? `; context: ${contextVal}` : ''
     }"`;
 
     replaceTag(
         recorder,
         defaultTemplateEl.sourceCodeLocation,
-        `ng-template`,
-        `ng-container`,
+        'ng-template',
+        'ng-container',
         templateOffset,
         [attr],
     );
@@ -124,15 +124,15 @@ export function migratePolymorpheus({
     const template = getTemplateFromTemplateResource(resource, fileSystem);
     const templateOffset = getTemplateOffset(resource);
 
-    const elements = findElementsWithAttribute(template, `polymorpheus-outlet`);
+    const elements = findElementsWithAttribute(template, 'polymorpheus-outlet');
 
     elements.forEach(element => {
-        const contentVal = element.attrs.find(attr => attr.name === `[content]`)?.value;
-        const contextVal = element.attrs.find(attr => attr.name === `[context]`)?.value;
+        const contentVal = element.attrs.find(attr => attr.name === '[content]')?.value;
+        const contextVal = element.attrs.find(attr => attr.name === '[context]')?.value;
 
         const defaultTemplateEl = findElementsByFn(
             element.childNodes,
-            el => el.tagName === `ng-template`,
+            el => el.tagName === 'ng-template',
         )[0];
 
         if (!contentVal) {

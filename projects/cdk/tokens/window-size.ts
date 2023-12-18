@@ -4,12 +4,12 @@ import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
 import {map, Observable, shareReplay, startWith} from 'rxjs';
 
 export const TUI_WINDOW_SIZE = new InjectionToken<Observable<DOMRect>>(
-    `[TUI_WINDOW_SIZE]`,
+    '[TUI_WINDOW_SIZE]',
     {
         factory: () => {
             const w = inject(WINDOW);
 
-            return tuiTypedFromEvent(w, `resize`).pipe(
+            return tuiTypedFromEvent(w, 'resize').pipe(
                 startWith(null),
                 map(() => {
                     const width = Math.max(w.innerWidth, w.visualViewport?.width || 0);

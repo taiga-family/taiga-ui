@@ -21,7 +21,7 @@ export function migrateRadio({
     const template = getTemplateFromTemplateResource(resource, fileSystem);
     const templateOffset = getTemplateOffset(resource);
 
-    const elements = findElementsByTagName(template, `tui-radio`);
+    const elements = findElementsByTagName(template, 'tui-radio');
 
     elements.forEach(({attrs, sourceCodeLocation}) => {
         if (!sourceCodeLocation) {
@@ -30,9 +30,9 @@ export function migrateRadio({
 
         replaceSizeAttr(attrs, sourceCodeLocation, recorder, templateOffset);
         replaceOpenTag(sourceCodeLocation, recorder, templateOffset, {
-            tag: `tui-radio`,
-            directive: `tuiRadio`,
-            type: `radio`,
+            tag: 'tui-radio',
+            directive: 'tuiRadio',
+            type: 'radio',
         });
         closeStartTag(sourceCodeLocation, recorder, templateOffset);
         removeClosingTag(sourceCodeLocation, recorder, templateOffset);

@@ -11,9 +11,9 @@ export interface TuiToggleOptions {
 
 export const TUI_TOGGLE_DEFAULT_OPTIONS: TuiToggleOptions = {
     showIcons: true,
-    size: `m`,
-    icon: `tuiIconCheck`,
-    appearance: el => (el.checked ? `primary` : `secondary`),
+    size: 'm',
+    icon: 'tuiIconCheck',
+    appearance: el => (el.checked ? 'primary' : 'secondary'),
 };
 
 export const TUI_TOGGLE_OPTIONS = tuiCreateToken(TUI_TOGGLE_DEFAULT_OPTIONS);

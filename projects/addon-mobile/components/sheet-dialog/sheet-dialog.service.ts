@@ -8,7 +8,7 @@ import {TUI_SHEET_DIALOG_OPTIONS, TuiSheetDialogOptions} from './sheet-dialog.op
 const DIALOG = new PolymorpheusComponent(TuiSheetDialogComponent);
 
 @Injectable({
-    providedIn: `root`,
+    providedIn: 'root',
 })
 export class TuiSheetDialogService extends AbstractTuiDialogService<
     TuiSheetDialogOptions<any>

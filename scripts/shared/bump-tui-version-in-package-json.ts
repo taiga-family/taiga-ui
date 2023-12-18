@@ -4,7 +4,7 @@ export function bumpTuiVersionInPackageJson(
     packageJson: Record<string, unknown>,
     version: string,
 ): void {
-    if (`version` in packageJson && tuiIsString(packageJson[`version`])) {
-        packageJson[`version`] = version;
+    if ('version' in packageJson && tuiIsString(packageJson['version'])) {
+        packageJson['version'] = version;
     }
 }

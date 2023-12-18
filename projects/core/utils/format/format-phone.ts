@@ -25,21 +25,21 @@ export function tuiFormatPhone(
     phoneMask: string,
 ): string {
     if (!value) {
-        return ``;
+        return '';
     }
 
     let result = countryCode;
 
-    countryCode = countryCode.replace(/[()]/g, ``);
+    countryCode = countryCode.replace(/[()]/g, '');
 
     if (!value.startsWith(countryCode)) {
-        value = countryCode + value.replace(CHAR_PLUS, ``);
+        value = countryCode + value.replace(CHAR_PLUS, '');
     }
 
-    const splitPhoneMask = phoneMask.split(``);
-    const splitValue = value.slice(countryCode.length).split(``);
+    const splitPhoneMask = phoneMask.split('');
+    const splitValue = value.slice(countryCode.length).split('');
 
-    result += ` `;
+    result += ' ';
 
     if (splitValue.length === 0) {
         return result;
@@ -50,8 +50,8 @@ export function tuiFormatPhone(
             break;
         }
 
-        if (mask === `#`) {
-            result += splitValue[0] || ``;
+        if (mask === '#') {
+            result += splitValue[0] || '';
             splitValue.splice(0, 1);
         } else {
             result += mask;

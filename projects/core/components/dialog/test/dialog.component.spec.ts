@@ -11,7 +11,7 @@ import {TuiDialogModule} from '../dialog.module';
 import {TuiDialogService} from '../dialog.service';
 import {tuiDialogOptionsProvider} from '../dialog.tokens';
 
-describe(`Dialog with TUI_DIALOG_OPTIONS`, () => {
+describe('Dialog with TUI_DIALOG_OPTIONS', () => {
     @Component({
         template: `
             <tui-root></tui-root>
@@ -43,9 +43,9 @@ describe(`Dialog with TUI_DIALOG_OPTIONS`, () => {
         tuiDialogService = TestBed.inject(TuiDialogService);
     });
 
-    describe(`close button`, () => {
-        it(`when closeable = false is absent`, async () => {
-            tuiDialogService.open(`Test`).subscribe();
+    describe('close button', () => {
+        it('when closeable = false is absent', async () => {
+            tuiDialogService.open('Test').subscribe();
             fixture.detectChanges();
 
             const dialog = await loader.getHarness(TuiDialogHarness);

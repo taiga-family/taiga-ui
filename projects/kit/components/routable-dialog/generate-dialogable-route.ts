@@ -6,7 +6,7 @@ import {TuiRoutableDialogComponent} from './routable-dialog.component';
 
 export function tuiGenerateDialogableRoute<I>(
     component: Type<any>,
-    {path = ``, ...dialogOptions}: Partial<TuiDialogOptions<I>> & {path?: string} = {},
+    {path = '', ...dialogOptions}: Partial<TuiDialogOptions<I>> & {path?: string} = {},
 ): Route {
     return {
         path,
@@ -14,10 +14,10 @@ export function tuiGenerateDialogableRoute<I>(
         data: {
             dialog: component,
             backUrl: path
-                .split(`/`)
-                .map(() => `..`)
-                .join(`/`),
-            isLazy: path === ``,
+                .split('/')
+                .map(() => '..')
+                .join('/'),
+            isLazy: path === '',
             dialogOptions,
         },
     };

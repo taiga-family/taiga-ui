@@ -44,9 +44,9 @@ export function replaceImports(
             }
         });
 
-        !options[`skip-logs`] && progressLog(`replacing imports...`, true);
+        !options['skip-logs'] && progressLog('replacing imports...', true);
     });
 
-    !options[`skip-logs`] &&
+    !options['skip-logs'] &&
         successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} imports replaced \n`);
 }

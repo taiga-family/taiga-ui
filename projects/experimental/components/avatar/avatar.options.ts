@@ -9,9 +9,9 @@ export interface TuiAvatarOptions extends TuiAppearanceOptions {
 }
 
 export const TUI_AVATAR_DEFAULT_OPTIONS: TuiAvatarOptions = {
-    appearance: ``,
+    appearance: '',
     round: true,
-    size: `m`,
+    size: 'm',
 };
 
 export const TUI_AVATAR_OPTIONS = tuiCreateToken(TUI_AVATAR_DEFAULT_OPTIONS);

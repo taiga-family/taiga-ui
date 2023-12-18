@@ -3,7 +3,7 @@ import {inject, InjectionToken} from '@angular/core';
 import {EMPTY, from, Observable, shareReplay} from 'rxjs';
 
 export const TUI_FONTS_READY = new InjectionToken<Observable<unknown>>(
-    `[TUI_FONTS_READY]`,
+    '[TUI_FONTS_READY]',
     {
         factory: () =>
             from((inject(DOCUMENT) as any).fonts?.ready || EMPTY).pipe(

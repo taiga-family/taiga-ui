@@ -1,8 +1,8 @@
 import {FormArray, FormControl, FormGroup} from '@angular/forms';
 import {tuiMarkControlAsTouchedAndValidate} from '@taiga-ui/cdk';
 
-describe(`markControlAsTouchedAndValidate`, () => {
-    it(`FormControl`, () => {
+describe('markControlAsTouchedAndValidate', () => {
+    it('FormControl', () => {
         const control = new FormControl();
 
         tuiMarkControlAsTouchedAndValidate(control);
@@ -10,7 +10,7 @@ describe(`markControlAsTouchedAndValidate`, () => {
         expect(control.touched).toBe(true);
     });
 
-    it(`FormGroup`, () => {
+    it('FormGroup', () => {
         const group = new FormGroup({
             control1: new FormControl(),
             control2: new FormControl(),
@@ -18,11 +18,11 @@ describe(`markControlAsTouchedAndValidate`, () => {
 
         tuiMarkControlAsTouchedAndValidate(group);
 
-        expect(group.get(`control1`)!.touched).toBe(true);
-        expect(group.get(`control2`)!.touched).toBe(true);
+        expect(group.get('control1')!.touched).toBe(true);
+        expect(group.get('control2')!.touched).toBe(true);
     });
 
-    it(`With empty form group`, () => {
+    it('With empty form group', () => {
         const group = new FormGroup({});
 
         tuiMarkControlAsTouchedAndValidate(group);
@@ -30,7 +30,7 @@ describe(`markControlAsTouchedAndValidate`, () => {
         expect(group.touched).toBe(true);
     });
 
-    it(`FormArray`, () => {
+    it('FormArray', () => {
         const array = new FormArray([new FormControl(), new FormControl()]);
 
         tuiMarkControlAsTouchedAndValidate(array);
@@ -39,7 +39,7 @@ describe(`markControlAsTouchedAndValidate`, () => {
         expect(array.at(1).touched).toBe(true);
     });
 
-    it(`With empty form array`, () => {
+    it('With empty form array', () => {
         const array = new FormArray([]);
 
         tuiMarkControlAsTouchedAndValidate(array);
@@ -47,7 +47,7 @@ describe(`markControlAsTouchedAndValidate`, () => {
         expect(array.touched).toBe(true);
     });
 
-    it(`With nested form arrays`, () => {
+    it('With nested form arrays', () => {
         const form = new FormGroup({
             control1: new FormControl(),
             control2: new FormControl(),
@@ -62,18 +62,18 @@ describe(`markControlAsTouchedAndValidate`, () => {
 
         tuiMarkControlAsTouchedAndValidate(form);
 
-        expect(form.get(`control1`)!.touched).toBe(true);
-        expect(form.get(`control2`)!.touched).toBe(true);
-        expect(form.get(`control3`)!.touched).toBe(true);
-        expect((form.get(`control3`) as FormArray).at(0).touched).toBe(true);
-        expect((form.get(`control3`) as FormArray).at(1).touched).toBe(true);
-        expect((form.get(`control3`) as FormArray).at(2).touched).toBe(true);
+        expect(form.get('control1')!.touched).toBe(true);
+        expect(form.get('control2')!.touched).toBe(true);
+        expect(form.get('control3')!.touched).toBe(true);
+        expect((form.get('control3') as FormArray).at(0).touched).toBe(true);
+        expect((form.get('control3') as FormArray).at(1).touched).toBe(true);
+        expect((form.get('control3') as FormArray).at(2).touched).toBe(true);
         expect(
-            ((form.get(`control3`) as FormArray).at(1) as FormGroup).get(`control4`)!
+            ((form.get('control3') as FormArray).at(1) as FormGroup).get('control4')!
                 .touched,
         ).toBe(true);
         expect(
-            ((form.get(`control3`) as FormArray).at(2) as FormArray).at(0).touched,
+            ((form.get('control3') as FormArray).at(2) as FormArray).at(0).touched,
         ).toBe(true);
     });
 });

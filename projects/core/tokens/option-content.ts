@@ -7,7 +7,7 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
  */
 export const TUI_OPTION_CONTENT = new InjectionToken<
     PolymorpheusContent<TuiContextWithImplicit<TemplateRef<Record<string, unknown>>>>
->(`[TUI_OPTION_CONTENT]`);
+>('[TUI_OPTION_CONTENT]');
 
 export function tuiAsOptionContent(
     useValue: PolymorpheusContent<

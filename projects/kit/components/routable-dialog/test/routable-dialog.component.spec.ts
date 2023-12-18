@@ -22,7 +22,7 @@ function providerOf(serviceToken: any, mockedService: any): Provider {
     };
 }
 
-@Component({template: ``})
+@Component({template: ''})
 class DialogComponent {}
 
 const DEFAULT_ACTIVATED_ROUTE_MOCK = {
@@ -33,7 +33,7 @@ const DEFAULT_ACTIVATED_ROUTE_MOCK = {
     },
 };
 
-describe(`TuiRoutableDialog`, () => {
+describe('TuiRoutableDialog', () => {
     let fixture: ComponentFixture<TuiRoutableDialogComponent>;
     let tuiDialogService: TuiDialogService;
     let router: Router;
@@ -59,7 +59,7 @@ describe(`TuiRoutableDialog`, () => {
         fixture = TestBed.createComponent(TuiRoutableDialogComponent);
     }
 
-    it(`Dialog content component is passed to the dialog open method, when RoutableDialog is created`, () => {
+    it('Dialog content component is passed to the dialog open method, when RoutableDialog is created', () => {
         createComponent();
 
         fixture.detectChanges();
@@ -72,7 +72,7 @@ describe(`TuiRoutableDialog`, () => {
         ).once();
     });
 
-    it(`dialog options are passed to the dialog open method`, () => {
+    it('dialog options are passed to the dialog open method', () => {
         const dialogOptions = {
             dismissible: true,
         };
@@ -91,7 +91,7 @@ describe(`TuiRoutableDialog`, () => {
         verify(tuiDialogService.open(anything(), deepEqual(dialogOptions))).once();
     });
 
-    it(`Closing the dialog navigates back to the parent route for lazy loaded case`, fakeAsync(() => {
+    it('Closing the dialog navigates back to the parent route for lazy loaded case', fakeAsync(() => {
         createComponent({
             snapshot: {
                 data: {
@@ -103,13 +103,13 @@ describe(`TuiRoutableDialog`, () => {
                 snapshot: {
                     url: [
                         {
-                            path: `path`,
+                            path: 'path',
                         } as unknown as UrlSegment,
                         {
-                            path: `to`,
+                            path: 'to',
                         } as unknown as UrlSegment,
                         {
-                            path: `dialog`,
+                            path: 'dialog',
                         } as unknown as UrlSegment,
                     ],
                 } as unknown as ActivatedRouteSnapshot,
@@ -120,7 +120,7 @@ describe(`TuiRoutableDialog`, () => {
 
         verify(
             router.navigate(
-                deepEqual([`../../..`]),
+                deepEqual(['../../..']),
                 deepEqual({
                     relativeTo: DEFAULT_ACTIVATED_ROUTE_MOCK,
                 }) as unknown as NavigationExtras,
@@ -128,18 +128,18 @@ describe(`TuiRoutableDialog`, () => {
         );
     }));
 
-    it(`Closing the dialog navigates back to the parent route for eager loaded case`, fakeAsync(() => {
+    it('Closing the dialog navigates back to the parent route for eager loaded case', fakeAsync(() => {
         createComponent({
             snapshot: {
                 data: {
                     dialog: DialogComponent,
-                    backUrl: `../../..`,
+                    backUrl: '../../..',
                 } as unknown as Data,
             } as unknown as ActivatedRouteSnapshot,
         });
 
         when(tuiDialogService.open(anything(), anything())).thenReturn(EMPTY);
 
-        verify(router.navigate(deepEqual([`../../..`]), anything()));
+        verify(router.navigate(deepEqual(['../../..']), anything()));
     }));
 });

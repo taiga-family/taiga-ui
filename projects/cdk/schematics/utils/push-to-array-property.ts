@@ -37,7 +37,7 @@ export function pushToObjectArrayProperty(
         return;
     }
 
-    if (typeof index === `number`) {
+    if (typeof index === 'number') {
         importsInitializer.insertElement(index, initializer);
     } else {
         importsInitializer.addElement(initializer);

@@ -4,8 +4,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {delayWhen, of, Subject} from 'rxjs';
 
 @Component({
-    selector: `tui-is-present-example1`,
-    templateUrl: `./template.html`,
+    selector: 'tui-is-present-example1',
+    templateUrl: './template.html',
     encapsulation,
     changeDetection,
 })

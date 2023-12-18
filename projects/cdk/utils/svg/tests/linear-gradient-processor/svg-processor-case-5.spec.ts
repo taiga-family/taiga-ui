@@ -60,8 +60,8 @@ const EXPECTED = `
 </svg>
 `.trim();
 
-describe(`svgLinearGradientProcessor[case5]`, () => {
-    it(`correct replacing ids with some symbols`, () => {
-        expect(tuiSvgLinearGradientProcessor(ACTUAL, `MOCK_ID`)).toEqual(EXPECTED);
+describe('svgLinearGradientProcessor[case5]', () => {
+    it('correct replacing ids with some symbols', () => {
+        expect(tuiSvgLinearGradientProcessor(ACTUAL, 'MOCK_ID')).toEqual(EXPECTED);
     });
 });

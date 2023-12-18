@@ -61,11 +61,11 @@ export const APP_PROVIDERS: Provider[] = [
     {
         provide: APP_BASE_HREF,
         // @note: By default, on webcontainer.io will not be provided APP_BASE_HREF, we use fallback
-        useFactory: () => inject(DOCUMENT).querySelector(`base`)?.href || `/`,
+        useFactory: () => inject(DOCUMENT).querySelector('base')?.href || '/',
     },
     {
         provide: TUI_IS_PLAYWRIGHT,
-        useFactory: () => Boolean(inject(SESSION_STORAGE).getItem(`playwright`)),
+        useFactory: () => Boolean(inject(SESSION_STORAGE).getItem('playwright')),
     },
     {
         provide: HIGHLIGHT_OPTIONS,
@@ -73,15 +73,15 @@ export const APP_PROVIDERS: Provider[] = [
             const isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
 
             return {
-                coreLibraryLoader: async () => import(`highlight.js/lib/core`),
+                coreLibraryLoader: async () => import('highlight.js/lib/core'),
                 lineNumbersLoader: async () =>
                     // SSR ReferenceError: window is not defined
-                    isBrowser ? import(`highlightjs-line-numbers.js`) : Promise.resolve(),
+                    isBrowser ? import('highlightjs-line-numbers.js') : Promise.resolve(),
                 languages: {
                     typescript: async () =>
-                        import(`highlight.js/lib/languages/typescript`),
-                    less: async () => import(`highlight.js/lib/languages/less`),
-                    xml: async () => import(`highlight.js/lib/languages/xml`),
+                        import('highlight.js/lib/languages/typescript'),
+                    less: async () => import('highlight.js/lib/languages/less'),
+                    xml: async () => import('highlight.js/lib/languages/xml'),
                 },
             };
         },
@@ -93,7 +93,7 @@ export const APP_PROVIDERS: Provider[] = [
     {
         provide: TUI_DOC_SOURCE_CODE,
         useValue: ({type, path, header, package: pkg}: TuiDocSourceCodePathOptions) => {
-            const link = `https://github.com/taiga-family/taiga-ui/tree/main/projects`;
+            const link = 'https://github.com/taiga-family/taiga-ui/tree/main/projects';
 
             if (!pkg) {
                 return null;
@@ -102,7 +102,7 @@ export const APP_PROVIDERS: Provider[] = [
             ngDevMode &&
                 tuiAssert.assert(
                     !(type && path),
-                    `Don't use "type" and "path" input params together in tui-doc-page`,
+                    'Don\'t use "type" and "path" input params together in tui-doc-page',
                 );
 
             if (type) {
@@ -120,11 +120,11 @@ export const APP_PROVIDERS: Provider[] = [
     },
     {
         provide: TUI_DOC_TITLE,
-        useValue: `Taiga UI: `,
+        useValue: 'Taiga UI: ',
     },
     {
         provide: TUI_DOC_PAGES,
-        useValue: tuiSortPages(pages, new Set([`Documentation`, `Foundations`, `Icons`])),
+        useValue: tuiSortPages(pages, new Set(['Documentation', 'Foundations', 'Icons'])),
     },
     {
         provide: TUI_DOC_SEE_ALSO,
@@ -178,32 +178,32 @@ export const APP_PROVIDERS: Provider[] = [
         provide: TUI_DOC_URL_STATE_HANDLER,
         deps: [TUI_BASE_HREF],
         useFactory: (baseHref: string) => (tree: UrlTree) =>
-            String(tree).replace(baseHref, ``),
+            String(tree).replace(baseHref, ''),
     },
     {
         provide: TUI_DOC_TYPE_REFERENCE_HANDLER,
         useValue: (type: string) => {
             switch (type) {
-                case `any`:
-                case `null`:
-                case `unknown`:
-                case `undefined`:
-                case `boolean`:
-                case `string`:
-                case `void`:
-                case `number`:
-                case `Map`:
-                case `Set`:
+                case 'any':
+                case 'null':
+                case 'unknown':
+                case 'undefined':
+                case 'boolean':
+                case 'string':
+                case 'void':
+                case 'number':
+                case 'Map':
+                case 'Set':
                     return null;
-                case `CustomEvent`:
-                case `Element`:
+                case 'CustomEvent':
+                case 'Element':
                     return `https://developer.mozilla.org/en-US/docs/Web/API/${type}`;
-                case `PolymorpheusContent`:
-                    return `https://github.com/taiga-family/ng-polymorpheus`;
-                case `TrackByFunction`:
-                    return `https://angular.dev/api/core/TrackByFunction`;
-                case `SafeResourceUrl`:
-                    return `https://angular.dev/api/platform-browser/SafeResourceUrl`;
+                case 'PolymorpheusContent':
+                    return 'https://github.com/taiga-family/ng-polymorpheus';
+                case 'TrackByFunction':
+                    return 'https://angular.dev/api/core/TrackByFunction';
+                case 'SafeResourceUrl':
+                    return 'https://angular.dev/api/platform-browser/SafeResourceUrl';
                 default:
                     return `https://github.com/search?q=%2F%28enum%7Ctype%7Cinterface%7Cclass%7Cfunction%7Cconst%29+${type}%28%3C%7C%5Cs%29%2F+language%3ATypeScript+org%3Ataiga-family&type=code`;
             }

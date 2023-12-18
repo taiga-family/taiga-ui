@@ -3,7 +3,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {TuiFocusedModule} from '@taiga-ui/cdk';
 
-describe(`TuiFocused directive`, () => {
+describe('TuiFocused directive', () => {
     @Component({
         template: `
             <div
@@ -38,20 +38,20 @@ describe(`TuiFocused directive`, () => {
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         testComponent = fixture.componentInstance;
-        testElement = fixture.debugElement.query(By.css(`.main`));
-        otherElement = fixture.debugElement.query(By.css(`.other`));
+        testElement = fixture.debugElement.query(By.css('.main'));
+        otherElement = fixture.debugElement.query(By.css('.other'));
 
         fixture.detectChanges();
     });
 
-    it(`emits "true" when receives focus`, () => {
+    it('emits "true" when receives focus', () => {
         testElement.nativeElement.focus();
         fixture.detectChanges();
 
         expect(testComponent.focused).toBe(true);
     });
 
-    it(`emits "false" when loses focus`, () => {
+    it('emits "false" when loses focus', () => {
         testElement.nativeElement.focus();
         fixture.detectChanges();
         otherElement.nativeElement.focus();

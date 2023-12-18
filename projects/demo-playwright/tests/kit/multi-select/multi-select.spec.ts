@@ -3,19 +3,19 @@ import {expect, Locator, test} from '@playwright/test';
 
 const {describe, beforeEach} = test;
 
-describe(`MultiSelect`, () => {
-    describe(`Examples`, () => {
+describe('MultiSelect', () => {
+    describe('Examples', () => {
         let documentationPage: TuiDocumentationPagePO;
 
         beforeEach(async ({page}) => {
-            await tuiGoto(page, `components/multi-select`);
+            await tuiGoto(page, 'components/multi-select');
 
             documentationPage = new TuiDocumentationPagePO(page);
         });
 
-        test(`does not overflow arrow icon by many tags`, async () => {
-            const example = documentationPage.getExample(`#object-array`);
-            const multiSelect = new TuiMultiSelectPO(example.locator(`tui-multi-select`));
+        test('does not overflow arrow icon by many tags', async () => {
+            const example = documentationPage.getExample('#object-array');
+            const multiSelect = new TuiMultiSelectPO(example.locator('tui-multi-select'));
 
             await multiSelect.textfield.click();
             await expect(multiSelect.dropdown).toBeVisible();
@@ -24,50 +24,50 @@ describe(`MultiSelect`, () => {
             await multiSelect.closeDropdown();
 
             await expect(example).toHaveScreenshot(
-                `01-arrow-icon-not-overflown-by-tags.png`,
+                '01-arrow-icon-not-overflown-by-tags.png',
             );
         });
 
-        test(`multi-select with data list with label`, async () => {
-            const example = documentationPage.getExample(`#datalist`);
+        test('multi-select with data list with label', async () => {
+            const example = documentationPage.getExample('#datalist');
             const multiSelect = new TuiMultiSelectPO(
-                example.locator(`tui-multi-select`).first(),
+                example.locator('tui-multi-select').first(),
             );
 
             await multiSelect.arrow.click();
             await expect(multiSelect.dropdown).toHaveScreenshot(
-                `02-with-data-list__with-label.png`,
+                '02-with-data-list__with-label.png',
             );
         });
 
-        test(`multi-select with data list without label`, async () => {
-            const example = documentationPage.getExample(`#datalist`);
+        test('multi-select with data list without label', async () => {
+            const example = documentationPage.getExample('#datalist');
             const multiSelect = new TuiMultiSelectPO(
-                example.locator(`tui-multi-select`).nth(1),
+                example.locator('tui-multi-select').nth(1),
             );
 
             await multiSelect.arrow.click();
             await expect(multiSelect.dropdown).toHaveScreenshot(
-                `03-with-data-list__without-label.png`,
+                '03-with-data-list__without-label.png',
             );
         });
 
         // TODO: this tests should be written as component testing (+ delete example from demo)
-        test.describe(`Multiselect inside dialog with different textfield sizes`, () => {
+        test.describe('Multiselect inside dialog with different textfield sizes', () => {
             test.use({viewport: {width: 400, height: 400}});
 
-            [`s`, `m`, `l`].forEach((size, index) => {
+            ['s', 'm', 'l'].forEach((size, index) => {
                 test(`multiselect inside dialog with tuiTextfieldSize=${size}`, async ({
                     page,
                 }) => {
                     const example = documentationPage.getExample(
-                        `#multiselect-inside-dialog-with-different-size`,
+                        '#multiselect-inside-dialog-with-different-size',
                     );
 
-                    await example.getByRole(`button`).nth(index).click();
+                    await example.getByRole('button').nth(index).click();
 
                     const multiSelect = new TuiMultiSelectPO(
-                        page.locator(`tui-dialog tui-multi-select`),
+                        page.locator('tui-dialog tui-multi-select'),
                     );
 
                     await multiSelect.arrow.click();
@@ -82,7 +82,7 @@ describe(`MultiSelect`, () => {
         });
     });
 
-    describe(`API page`, () => {
+    describe('API page', () => {
         test.use({viewport: {width: 400, height: 400}});
 
         let documentationPage!: TuiDocumentationPagePO;
@@ -93,12 +93,12 @@ describe(`MultiSelect`, () => {
             documentationPage = new TuiDocumentationPagePO(page);
             apiPageExample = documentationPage.apiPageExample;
             multiSelect = new TuiMultiSelectPO(
-                apiPageExample.locator(`tui-multi-select`),
+                apiPageExample.locator('tui-multi-select'),
             );
         });
 
-        describe(`sizes`, () => {
-            [`s`, `m`, `l`].forEach(size => {
+        describe('sizes', () => {
+            ['s', 'm', 'l'].forEach(size => {
                 test(`tuiTextfieldSize=${size}`, async ({page}) => {
                     await tuiGoto(
                         page,
@@ -116,14 +116,14 @@ describe(`MultiSelect`, () => {
             });
         });
 
-        describe(`Form changes by updateOn`, () => {
+        describe('Form changes by updateOn', () => {
             test.use({viewport: {width: 400, height: 500}});
 
-            ([`submit`, `blur`, `change`] as const).forEach(type => {
+            (['submit', 'blur', 'change'] as const).forEach(type => {
                 test(`updateOn: ${type}`, async ({page}) => {
                     await tuiGoto(
                         page,
-                        `components/multi-select/API?sandboxExpanded=true`,
+                        'components/multi-select/API?sandboxExpanded=true',
                     );
 
                     await documentationPage.selectFormControlUpdateOnMethod(type);
@@ -164,27 +164,27 @@ describe(`MultiSelect`, () => {
             });
         });
 
-        test(`checking that the arrow icon is rotated when enabled tuiTextfieldCleaner`, async ({
+        test('checking that the arrow icon is rotated when enabled tuiTextfieldCleaner', async ({
             page,
         }) => {
-            await tuiGoto(page, `components/multi-select/API?tuiTextfieldCleaner=true`);
+            await tuiGoto(page, 'components/multi-select/API?tuiTextfieldCleaner=true');
 
             await multiSelect.arrow.click();
             await multiSelect.selectOptions([0, 1, 2, 3, 4]);
 
             await documentationPage.prepareApiPageBeforeScreenshot();
-            await expect(page).toHaveScreenshot(`07-multi-select-before-clear.png`);
+            await expect(page).toHaveScreenshot('07-multi-select-before-clear.png');
 
             await multiSelect.arrow.click();
             await multiSelect.cleaner.click();
 
-            await expect(page).toHaveScreenshot(`07-multi-select-after-clear.png`);
+            await expect(page).toHaveScreenshot('07-multi-select-after-clear.png');
         });
 
-        test(`should scroll to end on focus`, async ({page}) => {
+        test('should scroll to end on focus', async ({page}) => {
             await tuiGoto(
                 page,
-                `components/multi-select/API?expandable=false&sandboxWidth=350`,
+                'components/multi-select/API?expandable=false&sandboxWidth=350',
             );
 
             await multiSelect.arrow.click();
@@ -192,7 +192,7 @@ describe(`MultiSelect`, () => {
 
             await documentationPage.prepareApiPageBeforeScreenshot();
             await expect(page).toHaveScreenshot(
-                `08-multi-select-1-before-scroll-to-end.png`,
+                '08-multi-select-1-before-scroll-to-end.png',
             );
 
             await multiSelect.closeDropdown();
@@ -200,14 +200,14 @@ describe(`MultiSelect`, () => {
             await multiSelect.arrow.click();
 
             await expect(page).toHaveScreenshot(
-                `08-multi-select-2-after-scroll-to-end.png`,
+                '08-multi-select-2-after-scroll-to-end.png',
             );
         });
 
-        test(`non-editable multiselect with custom value content`, async ({page}) => {
+        test('non-editable multiselect with custom value content', async ({page}) => {
             await tuiGoto(
                 page,
-                `components/multi-select/API?valueContent$=1&editable=false`,
+                'components/multi-select/API?valueContent$=1&editable=false',
             );
 
             await multiSelect.arrow.click();
@@ -215,7 +215,7 @@ describe(`MultiSelect`, () => {
 
             await documentationPage.prepareApiPageBeforeScreenshot();
 
-            await expect(page).toHaveScreenshot(`09-multi-select-non-editable.png`);
+            await expect(page).toHaveScreenshot('09-multi-select-non-editable.png');
         });
     });
 });

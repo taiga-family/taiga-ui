@@ -6,8 +6,8 @@ import {TuiMobileDialogOptions} from './mobile-dialog-options';
 type TuiMobileDialogDefaultOptions = Omit<TuiMobileDialogOptions<unknown>, 'data'>;
 
 export const TUI_MOBILE_DIALOG_DEFAULT_OPTIONS: TuiMobileDialogDefaultOptions = {
-    label: ``,
-    actions: [`OK`],
+    label: '',
+    actions: ['OK'],
 };
 
 /**

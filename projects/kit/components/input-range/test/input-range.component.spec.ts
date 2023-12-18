@@ -5,7 +5,7 @@ import {CHAR_HYPHEN, CHAR_MINUS} from '@taiga-ui/cdk';
 import {TuiInputRangeComponent, TuiInputRangeModule} from '@taiga-ui/kit';
 import {TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 
-describe(`InputRange`, () => {
+describe('InputRange', () => {
     @Component({
         template: `
             <tui-input-range
@@ -35,7 +35,7 @@ describe(`InputRange`, () => {
         quantum = 5;
         readOnly = false;
         steps = 0;
-        pluralize = {one: `год`, few: `года`, many: `лет`, other: `лет`};
+        pluralize = {one: 'год', few: 'года', many: 'лет', other: 'лет'};
     }
 
     let fixture: ComponentFixture<TestComponent>;
@@ -50,16 +50,16 @@ describe(`InputRange`, () => {
 
     const testContext = {
         get prefix() {
-            return `tui-input-range__`;
+            return 'tui-input-range__';
         },
         get nativeInputAutoId() {
-            return `tui-primitive-textfield__native-input`;
+            return 'tui-primitive-textfield__native-input';
         },
         get valueContentAutoId() {
-            return `tui-primitive-textfield__value`;
+            return 'tui-primitive-textfield__value';
         },
         get valueDecorationAutoId() {
-            return `tui-primitive-textfield__value-decoration`;
+            return 'tui-primitive-textfield__value-decoration';
         },
     };
 
@@ -79,7 +79,7 @@ describe(`InputRange`, () => {
         initializeInputsPO();
     });
 
-    describe(`Default values`, () => {
+    describe('Default values', () => {
         beforeEach(() => {
             testComponent.default = true;
             fixture.autoDetectChanges();
@@ -87,106 +87,106 @@ describe(`InputRange`, () => {
             initializeInputsPO();
         });
 
-        it(`[leftValueContent] is missing`, () => {
+        it('[leftValueContent] is missing', () => {
             expect(getLeftValueContent()).toBeNull();
         });
 
-        it(`[rightValueContent] is missing`, () => {
+        it('[rightValueContent] is missing', () => {
             testComponent.control.setValue([0, 10]);
             fixture.detectChanges();
 
             expect(getRightValueContent()).toBeNull();
         });
 
-        it(`Plural signature missing`, () => {
+        it('Plural signature missing', () => {
             expect(getLeftValueContent()).toBeNull();
             expect(getRightValueContent()).toBeNull();
         });
     });
 
-    describe(`Labels`, () => {
+    describe('Labels', () => {
         beforeEach(() => fixture.autoDetectChanges());
 
-        it(`Plural signature is present`, () => {
-            expect(getLeftValueDecoration()).toContain(`лет`);
-            expect(getRightValueDecoration()).toContain(`год`);
+        it('Plural signature is present', () => {
+            expect(getLeftValueDecoration()).toContain('лет');
+            expect(getRightValueDecoration()).toContain('год');
         });
 
-        it(`[rightValueContent] missing on focus`, () => {
+        it('[rightValueContent] missing on focus', () => {
             testComponent.control.setValue([-10, 10]);
             inputPORight.focus();
 
             expect(getRightValueContent()).toBeNull();
-            expect(getRightValueDecoration()).toBe(`10 лет`);
+            expect(getRightValueDecoration()).toBe('10 лет');
         });
     });
 
-    describe(`quantum`, () => {
+    describe('quantum', () => {
         beforeEach(() => fixture.autoDetectChanges());
 
-        it(`Rounds the left value to the nearest quantum on loss of focus`, () => {
-            inputPOLeft.sendTextAndBlur(`-7`);
+        it('Rounds the left value to the nearest quantum on loss of focus', () => {
+            inputPOLeft.sendTextAndBlur('-7');
 
             expect(testComponent.control.value[0]).toBe(-5);
         });
 
-        it(`Rounds the left value of an input field to the nearest quantum when focus is lost`, () => {
-            inputPOLeft.sendTextAndBlur(`-7`);
+        it('Rounds the left value of an input field to the nearest quantum when focus is lost', () => {
+            inputPOLeft.sendTextAndBlur('-7');
 
             expect(inputPOLeft.value).toBe(`${CHAR_MINUS}5 лет`);
         });
 
-        it(`Rounds the right value to the nearest quantum on loss of focus`, () => {
-            inputPORight.sendTextAndBlur(`7`);
+        it('Rounds the right value to the nearest quantum on loss of focus', () => {
+            inputPORight.sendTextAndBlur('7');
 
             expect(testComponent.control.value[1]).toBe(5);
         });
 
-        it(`Rounds the right value of an input field to the nearest quantum on loss of focus`, () => {
-            inputPORight.sendTextAndBlur(`7`);
+        it('Rounds the right value of an input field to the nearest quantum on loss of focus', () => {
+            inputPORight.sendTextAndBlur('7');
 
-            expect(inputPORight.value).toBe(`5 лет`);
+            expect(inputPORight.value).toBe('5 лет');
         });
 
-        it(`does not rounds to nearest multiple of [quantum] until text field losses focus`, () => {
-            inputPORight.sendText(`8`);
+        it('does not rounds to nearest multiple of [quantum] until text field losses focus', () => {
+            inputPORight.sendText('8');
 
-            expect(inputPORight.value).toBe(`8 лет`);
+            expect(inputPORight.value).toBe('8 лет');
             expect(testComponent.control.value[1]).toBe(10);
 
             inputPORight.blur();
 
-            expect(inputPORight.value).toBe(`10 лет`);
+            expect(inputPORight.value).toBe('10 лет');
             expect(testComponent.control.value[1]).toBe(10);
         });
     });
 
-    describe(`Deleting Values`, () => {
+    describe('Deleting Values', () => {
         beforeEach(() => fixture.autoDetectChanges());
 
-        it(`Doesn't change value when left content is removed`, () => {
-            inputPOLeft.sendTextAndBlur(`-5`);
-            inputPOLeft.sendTextAndBlur(``);
+        it("Doesn't change value when left content is removed", () => {
+            inputPOLeft.sendTextAndBlur('-5');
+            inputPOLeft.sendTextAndBlur('');
 
             expect(testComponent.control.value[0]).toBe(-5);
             expect(inputPOLeft.value).toBe(`${CHAR_MINUS}5 лет`);
         });
 
-        it(`Doesn't change value when deleting right content`, () => {
-            inputPORight.sendTextAndBlur(`5`);
-            inputPORight.sendTextAndBlur(``);
+        it("Doesn't change value when deleting right content", () => {
+            inputPORight.sendTextAndBlur('5');
+            inputPORight.sendTextAndBlur('');
 
             expect(testComponent.control.value[1]).toBe(5);
-            expect(inputPORight.value).toBe(`5 лет`);
+            expect(inputPORight.value).toBe('5 лет');
         });
     });
 
-    describe(`Changing values`, () => {
+    describe('Changing values', () => {
         beforeEach(() => fixture.autoDetectChanges());
 
-        it(`Prevents the left value from exceeding the right value when typing`, () => {
-            inputPORight.sendTextAndBlur(`5`);
-            inputPOLeft.sendTextAndBlur(`123`);
+        it('Prevents the left value from exceeding the right value when typing', () => {
+            inputPORight.sendTextAndBlur('5');
+            inputPOLeft.sendTextAndBlur('123');
 
             expect(testComponent.control.value[0]).toBe(testComponent.control.value[1]);
             expect(inputPOLeft.value).toBe(
@@ -194,11 +194,11 @@ describe(`InputRange`, () => {
             );
         });
 
-        it(`Prevents the right value from becoming less than the left value when leaving the field`, () => {
-            inputPOLeft.sendTextAndBlur(`-5`);
+        it('Prevents the right value from becoming less than the left value when leaving the field', () => {
+            inputPOLeft.sendTextAndBlur('-5');
             fixture.detectChanges();
 
-            inputPORight.sendTextAndBlur(`-10`);
+            inputPORight.sendTextAndBlur('-10');
 
             expect(testComponent.control.value[1]).toBe(testComponent.control.value[0]);
             expect(inputPORight.value).toBe(
@@ -208,33 +208,33 @@ describe(`InputRange`, () => {
             );
         });
 
-        it(`programmatic FormControl updates should also update textfield value`, async () => {
+        it('programmatic FormControl updates should also update textfield value', async () => {
             testComponent.control.patchValue([5, 10]);
             await fixture.whenStable();
 
-            expect(inputPOLeft.value).toBe(`5 лет`);
-            expect(inputPORight.value).toBe(`10 лет`);
+            expect(inputPOLeft.value).toBe('5 лет');
+            expect(inputPORight.value).toBe('10 лет');
         });
     });
 
-    describe(`Format`, () => {
+    describe('Format', () => {
         beforeEach(() => {
             testComponent.max = 100000;
             testComponent.quantum = 0.01;
             fixture.autoDetectChanges();
-            inputPORight.sendTextAndBlur(`12345.67`);
+            inputPORight.sendTextAndBlur('12345.67');
         });
 
-        it(`Formats input`, () => {
-            expect(inputPORight.value).toBe(`12 345,67 лет`);
+        it('Formats input', () => {
+            expect(inputPORight.value).toBe('12 345,67 лет');
         });
 
-        it(`Doesn't format the value`, () => {
+        it("Doesn't format the value", () => {
             expect(testComponent.control.value[1]).toBe(12345.67);
         });
     });
 
-    describe(`Arrows`, () => {
+    describe('Arrows', () => {
         beforeEach(() => {
             testComponent.min = 0;
             testComponent.max = 10;
@@ -243,151 +243,151 @@ describe(`InputRange`, () => {
             fixture.autoDetectChanges();
         });
 
-        describe(`readOnly`, () => {
+        describe('readOnly', () => {
             beforeEach(() => {
                 testComponent.readOnly = true;
                 fixture.detectChanges();
             });
 
-            it(`The up arrow on the left margin does not increase the value`, () => {
-                inputPOLeft.sendKeydown(`arrowUp`);
+            it('The up arrow on the left margin does not increase the value', () => {
+                inputPOLeft.sendKeydown('arrowUp');
 
                 expect(testComponent.control.value[0]).toBe(2);
             });
 
-            it(`Down arrow on left margin does not decrease value`, () => {
-                inputPOLeft.sendKeydown(`arrowDown`);
+            it('Down arrow on left margin does not decrease value', () => {
+                inputPOLeft.sendKeydown('arrowDown');
 
                 expect(testComponent.control.value[0]).toBe(2);
             });
 
-            it(`The up arrow on the right margin does not increase the value`, () => {
-                inputPORight.sendKeydown(`arrowUp`);
+            it('The up arrow on the right margin does not increase the value', () => {
+                inputPORight.sendKeydown('arrowUp');
 
                 expect(testComponent.control.value[1]).toBe(6);
             });
 
-            it(`Down arrow on right margin does not decrease value`, () => {
-                inputPORight.sendKeydown(`arrowDown`);
+            it('Down arrow on right margin does not decrease value', () => {
+                inputPORight.sendKeydown('arrowDown');
 
                 expect(testComponent.control.value[1]).toBe(6);
             });
         });
 
-        describe(`Quantum`, () => {
+        describe('Quantum', () => {
             beforeEach(() => fixture.autoDetectChanges());
 
-            it(`The up arrow on the left margin increases start by a quantum`, () => {
-                inputPOLeft.sendKeydown(`arrowUp`);
+            it('The up arrow on the left margin increases start by a quantum', () => {
+                inputPOLeft.sendKeydown('arrowUp');
 
                 expect(testComponent.control.value[0]).toBe(3);
             });
 
-            it(`The down arrow on the left margin decreases start by a quantum`, () => {
-                inputPOLeft.sendKeydown(`arrowDown`);
+            it('The down arrow on the left margin decreases start by a quantum', () => {
+                inputPOLeft.sendKeydown('arrowDown');
 
                 expect(testComponent.control.value[0]).toBe(1);
             });
 
-            it(`The up arrow on the right margin increases end by a quantum`, () => {
-                inputPORight.sendKeydown(`arrowUp`);
+            it('The up arrow on the right margin increases end by a quantum', () => {
+                inputPORight.sendKeydown('arrowUp');
 
                 expect(testComponent.control.value[1]).toBe(7);
             });
 
-            it(`The down arrow on the right margin decreases end by a quantum`, () => {
-                inputPORight.sendKeydown(`arrowDown`);
+            it('The down arrow on the right margin decreases end by a quantum', () => {
+                inputPORight.sendKeydown('arrowDown');
 
                 expect(testComponent.control.value[1]).toBe(5);
             });
         });
 
-        describe(`Steps`, () => {
+        describe('Steps', () => {
             beforeEach(() => {
                 testComponent.steps = 5;
                 fixture.autoDetectChanges();
             });
 
-            it(`The up arrow on the left margin increases start by one step`, () => {
-                inputPOLeft.sendKeydown(`arrowUp`);
+            it('The up arrow on the left margin increases start by one step', () => {
+                inputPOLeft.sendKeydown('arrowUp');
 
                 expect(testComponent.control.value[0]).toBe(4);
             });
 
-            it(`Down arrow on the left margin decreases start by one step`, () => {
-                inputPOLeft.sendKeydown(`arrowDown`);
+            it('Down arrow on the left margin decreases start by one step', () => {
+                inputPOLeft.sendKeydown('arrowDown');
 
                 expect(testComponent.control.value[0]).toBe(0);
             });
 
-            it(`The up arrow on the right margin increases end by one step`, () => {
-                inputPORight.sendKeydown(`arrowUp`);
+            it('The up arrow on the right margin increases end by one step', () => {
+                inputPORight.sendKeydown('arrowUp');
 
                 expect(testComponent.control.value[1]).toBe(8);
             });
 
-            it(`Down arrow on the right margin decreases end by one step`, () => {
-                inputPORight.sendKeydown(`arrowDown`);
+            it('Down arrow on the right margin decreases end by one step', () => {
+                inputPORight.sendKeydown('arrowDown');
 
                 expect(testComponent.control.value[1]).toBe(4);
             });
         });
 
-        describe(`Limitations`, () => {
+        describe('Limitations', () => {
             beforeEach(() => fixture.autoDetectChanges());
 
-            it(`The up arrow on the left margin does not increase start to a value greater than end`, () => {
+            it('The up arrow on the left margin does not increase start to a value greater than end', () => {
                 testComponent.control.setValue([6, 6]);
-                inputPOLeft.sendKeydown(`arrowUp`);
+                inputPOLeft.sendKeydown('arrowUp');
 
                 expect(testComponent.control.value[0]).toBe(6);
             });
 
-            it(`The down arrow on the left margin does not decrease start to a value less than min`, () => {
+            it('The down arrow on the left margin does not decrease start to a value less than min', () => {
                 testComponent.control.setValue([0, 6]);
-                inputPOLeft.sendKeydown(`arrowDown`);
+                inputPOLeft.sendKeydown('arrowDown');
 
                 expect(testComponent.control.value[0]).toBe(0);
             });
 
-            it(`The up arrow on the right margin does not increase end to a value greater than max`, () => {
+            it('The up arrow on the right margin does not increase end to a value greater than max', () => {
                 testComponent.control.setValue([6, 10]);
-                inputPORight.sendKeydown(`arrowUp`);
+                inputPORight.sendKeydown('arrowUp');
 
                 expect(testComponent.control.value[1]).toBe(10);
             });
 
-            it(`The down arrow on the right margin does not decrease end to a value less than start`, () => {
+            it('The down arrow on the right margin does not decrease end to a value less than start', () => {
                 testComponent.control.setValue([6, 6]);
-                inputPORight.sendKeydown(`arrowDown`);
+                inputPORight.sendKeydown('arrowDown');
 
                 expect(testComponent.control.value[1]).toBe(6);
             });
 
-            it(`Keyboard input does not exceed max`, () => {
-                inputPORight.sendText(`12345`);
+            it('Keyboard input does not exceed max', () => {
+                inputPORight.sendText('12345');
 
-                expect(inputPORight.value).toBe(`10 лет`);
+                expect(inputPORight.value).toBe('10 лет');
             });
 
-            it(`Keyboard input does not exceed min`, () => {
+            it('Keyboard input does not exceed min', () => {
                 testComponent.min = -10;
-                inputPOLeft.sendText(`-123`);
+                inputPOLeft.sendText('-123');
 
                 expect(inputPOLeft.value).toBe(`${CHAR_MINUS}10 лет`);
             });
 
-            it(`Keyboard input does not go beyond value[1]`, () => {
-                inputPOLeft.sendText(`12345`);
+            it('Keyboard input does not go beyond value[1]', () => {
+                inputPOLeft.sendText('12345');
 
-                expect(inputPOLeft.value).toBe(`6 лет`);
+                expect(inputPOLeft.value).toBe('6 лет');
             });
 
-            it(`Keyboard input does not output value[1] beyond value[0]`, () => {
-                inputPORight.sendText(`1`);
+            it('Keyboard input does not output value[1] beyond value[0]', () => {
+                inputPORight.sendText('1');
 
                 expect(inputPORight.value).toBe(
-                    `1 лет`, // this plural form is expected because it is intermediate state and form control is not updated yet
+                    '1 лет', // this plural form is expected because it is intermediate state and form control is not updated yet
                 );
                 expect(testComponent.control.value[1]).toBe(6);
             });
@@ -416,19 +416,19 @@ describe(`InputRange`, () => {
         return pageObject
             .getByAutomationId(testContext.valueDecorationAutoId, leftInputWrapper)
             ?.nativeElement.textContent.trim()
-            .replace(`\n `, ``);
+            .replace('\n ', '');
     }
 
     function getRightValueDecoration(): string {
         return pageObject
             .getByAutomationId(testContext.valueDecorationAutoId, rightInputWrapper)
             ?.nativeElement.textContent.trim()
-            .replace(`\n `, ``);
+            .replace('\n ', '');
     }
 
     function initializeInputsPO(): void {
-        leftInputWrapper = pageObject.getByAutomationId(`tui-input-range__left-input`)!;
-        rightInputWrapper = pageObject.getByAutomationId(`tui-input-range__right-input`)!;
+        leftInputWrapper = pageObject.getByAutomationId('tui-input-range__left-input')!;
+        rightInputWrapper = pageObject.getByAutomationId('tui-input-range__right-input')!;
 
         inputPOLeft = new TuiNativeInputPO(
             fixture,

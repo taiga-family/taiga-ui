@@ -11,8 +11,8 @@ import {EMPTY, filter, identity, map, merge, Observable} from 'rxjs';
 /**
  * Stream of tab activation events
  */
-export const TUI_TAB_EVENT = new InjectionToken<Observable<Event>>(`[TUI_TAB_EVENT]`);
-export const TUI_TAB_ACTIVATE = `tui-tab-activate`;
+export const TUI_TAB_EVENT = new InjectionToken<Observable<Event>>('[TUI_TAB_EVENT]');
+export const TUI_TAB_ACTIVATE = 'tui-tab-activate';
 export const TUI_TAB_PROVIDERS: Provider[] = [
     TuiDestroyService,
     TuiFocusVisibleService,
@@ -41,8 +41,8 @@ export const TUI_TAB_PROVIDERS: Provider[] = [
             return merge(
                 mutationObserver,
                 routerLinkActiveService.pipe(filter(identity)),
-                nativeElement.matches(`button`)
-                    ? tuiTypedFromEvent(nativeElement, `click`)
+                nativeElement.matches('button')
+                    ? tuiTypedFromEvent(nativeElement, 'click')
                     : EMPTY,
             ).pipe(
                 map(() =>

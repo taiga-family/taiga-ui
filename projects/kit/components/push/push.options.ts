@@ -12,12 +12,12 @@ export interface TuiPushOptions {
 }
 
 export const TUI_PUSH_DEFAULT_OPTIONS: TuiPushOptions = {
-    heading: ``,
-    type: ``,
-    timestamp: ``,
-    image: ``,
-    icon: ``,
-    iconColor: ``,
+    heading: '',
+    type: '',
+    timestamp: '',
+    image: '',
+    icon: '',
+    iconColor: '',
     buttons: [],
 };
 

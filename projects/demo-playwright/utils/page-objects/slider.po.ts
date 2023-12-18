@@ -13,7 +13,7 @@ export class TuiSliderPO {
                 parseFloat(
                     globalThis
                         .getComputedStyle(el)
-                        .getPropertyValue(`--tui-slider-fill-percentage`),
+                        .getPropertyValue('--tui-slider-fill-percentage'),
                 ),
             ),
         );
@@ -22,7 +22,7 @@ export class TuiSliderPO {
     async setValue(value: number): Promise<void> {
         await this.host.evaluate((el: HTMLInputElement, newValue: number) => {
             el.value = `${newValue}`;
-            el.dispatchEvent(new Event(`input`));
+            el.dispatchEvent(new Event('input'));
         }, value);
         await expect(this.host).toHaveValue(`${value}`);
     }

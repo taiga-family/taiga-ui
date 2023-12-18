@@ -2,7 +2,7 @@
 
 export function tuiIsCI(): boolean {
     return (
-        process.env.TUI_CI === `true` ||
+        process.env.TUI_CI === 'true' ||
         !!process.env.CI || // Another CI
         !!process.env.GITHUB_ACTION || // Github CI
         !!process.env.GITLAB_CI || // Gitlab CI

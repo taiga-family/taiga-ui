@@ -8,7 +8,7 @@ import {TUI_KAZAKH_LANGUAGE_CORE} from './core';
 import {TUI_KAZAKH_LANGUAGE_KIT} from './kit';
 
 export const TUI_KAZAKH_LANGUAGE: TuiLanguage = {
-    name: `kazakh`,
+    name: 'kazakh',
     ...TUI_KAZAKH_LANGUAGE_CORE,
     ...TUI_KAZAKH_LANGUAGE_KIT,
     ...TUI_KAZAKH_LANGUAGE_ADDON_TABLE,

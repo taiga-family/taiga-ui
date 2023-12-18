@@ -10,7 +10,7 @@ export type TuiBreakpointMediaKey = keyof Omit<TuiMedia, 'tablet'>;
  * Service to provide the current breakpoint based on Taiga UI's media queries
  */
 @Injectable({
-    providedIn: `root`,
+    providedIn: 'root',
 })
 export class TuiBreakpointService extends Observable<TuiBreakpointMediaKey | null> {
     private readonly sorted: number[] = Object.values(this.media).sort((a, b) => a - b);

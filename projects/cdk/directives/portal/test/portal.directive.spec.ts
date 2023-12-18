@@ -4,7 +4,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {TuiDropdownHostModule, TuiPortalModule} from '@taiga-ui/cdk';
 
-describe(`Portal directive`, () => {
+describe('Portal directive', () => {
     @Component({
         template: `
             <tui-dropdown-host></tui-dropdown-host>
@@ -37,18 +37,18 @@ describe(`Portal directive`, () => {
         fixture.detectChanges();
     });
 
-    it(`doesn't show template initially`, () => {
+    it("doesn't show template initially", () => {
         expect(getPortal()).toBeNull();
     });
 
-    it(`shows template when true is passes`, () => {
+    it('shows template when true is passes', () => {
         testComponent.show = true;
         fixture.detectChanges();
 
         expect(getPortal()).not.toBeNull();
     });
 
-    it(`hides template when directive is destroyed`, () => {
+    it('hides template when directive is destroyed', () => {
         testComponent.show = true;
         fixture.detectChanges();
         testComponent.present = false;
@@ -58,6 +58,6 @@ describe(`Portal directive`, () => {
     });
 
     function getPortal(): DebugElement | null {
-        return fixture.debugElement.query(By.css(`#test`));
+        return fixture.debugElement.query(By.css('#test'));
     }
 });

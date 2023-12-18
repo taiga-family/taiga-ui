@@ -11,7 +11,7 @@ export function tuiMouseDragFinishFrom<
     T extends TuiTypedEventTarget<TuiEventWith<DragEvent, T>>,
 >(target: Exclude<T, null>): Observable<TuiEventWith<MouseEvent, T>> {
     return merge(
-        tuiTypedFromEvent(target, `mouseup`),
-        tuiTypedFromEvent(target, `dragend`),
+        tuiTypedFromEvent(target, 'mouseup'),
+        tuiTypedFromEvent(target, 'dragend'),
     );
 }

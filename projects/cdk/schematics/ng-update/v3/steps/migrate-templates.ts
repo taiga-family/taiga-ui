@@ -135,10 +135,10 @@ function replaceBreadcrumbs({
     const template = getTemplateFromTemplateResource(resource, fileSystem);
     const templateOffset = getTemplateOffset(resource);
 
-    const elements = findElementsByTagName(template, `tui-breadcrumbs`);
+    const elements = findElementsByTagName(template, 'tui-breadcrumbs');
 
     elements.forEach(element => {
-        const itemsAttr = element.attrs.find(attr => attr.name === `[items]`);
+        const itemsAttr = element.attrs.find(attr => attr.name === '[items]');
         const itemsValue = itemsAttr?.value;
         const insertTo = element?.sourceCodeLocation?.startTag.endOffset;
 
@@ -162,7 +162,7 @@ function replaceBreadcrumbs({
         );
 
         const {startOffset = 0, endOffset = 0} =
-            element.sourceCodeLocation?.attrs?.[`[items]`] || {};
+            element.sourceCodeLocation?.attrs?.['[items]'] || {};
 
         recorder.remove(templateOffset + startOffset - 1, endOffset - startOffset + 1);
     });
@@ -180,15 +180,15 @@ function replaceFieldError({
     const template = getTemplateFromTemplateResource(resource, fileSystem);
     const templateOffset = getTemplateOffset(resource);
 
-    const elements = findElementsByTagName(template, `tui-field-error`);
+    const elements = findElementsByTagName(template, 'tui-field-error');
 
     elements.forEach(element => {
-        const orderAttr = element.attrs.find(attr => attr.name === `[order]`);
+        const orderAttr = element.attrs.find(attr => attr.name === '[order]');
         const orderVal = orderAttr?.value;
 
         if (orderAttr) {
             const {startOffset = 0, endOffset = 0} =
-                element.sourceCodeLocation?.attrs?.[`[order]`] || {};
+                element.sourceCodeLocation?.attrs?.['[order]'] || {};
 
             recorder.remove(
                 templateOffset + startOffset - 1,
@@ -196,13 +196,13 @@ function replaceFieldError({
             );
         }
 
-        const input = `[error]="${orderVal ?? `[]`} | tuiFieldError | async"`;
+        const input = `[error]="${orderVal ?? '[]'} | tuiFieldError | async"`;
 
         replaceTag(
             recorder,
             element.sourceCodeLocation,
-            `tui-field-error`,
-            `tui-error`,
+            'tui-field-error',
+            'tui-error',
             templateOffset,
             [input],
         );
@@ -211,8 +211,8 @@ function replaceFieldError({
     if (elements.length) {
         addImportToClosestModule(
             resource.componentPath,
-            `TuiErrorModule`,
-            `@taiga-ui/core`,
+            'TuiErrorModule',
+            '@taiga-ui/core',
         );
     }
 }
@@ -226,8 +226,8 @@ function addEditorProviders({
     resource: TemplateResource;
 }): void {
     const template = getTemplateFromTemplateResource(resource, fileSystem);
-    const elements = findElementsByTagName(template, `tui-editor`).filter(
-        element => !hasElementAttribute(element, `new`),
+    const elements = findElementsByTagName(template, 'tui-editor').filter(
+        element => !hasElementAttribute(element, 'new'),
     );
 
     if (elements.length) {
@@ -243,11 +243,11 @@ function addEditorProviders({
             {unique: true},
         );
 
-        addUniqueImport(componentPath, `TUI_EDITOR_EXTENSIONS`, `@taiga-ui/addon-editor`);
+        addUniqueImport(componentPath, 'TUI_EDITOR_EXTENSIONS', '@taiga-ui/addon-editor');
         addUniqueImport(
             componentPath,
-            `defaultEditorExtensions`,
-            `@taiga-ui/addon-editor`,
+            'defaultEditorExtensions',
+            '@taiga-ui/addon-editor',
         );
     }
 }
@@ -284,11 +284,11 @@ function migrateTuiHideSelectedPipe({
 
         const newValue = oldValue.replace(
             HIDE_SELECTED_PIPE_WITH_ARGS_REG,
-            `| tuiHideSelected`,
+            '| tuiHideSelected',
         );
 
         const {startOffset} = attrLocations[name];
-        const valueOffset = templateOffset + startOffset + name.length + `="`.length;
+        const valueOffset = templateOffset + startOffset + name.length + '="'.length;
 
         recorder.remove(valueOffset, oldValue.length);
         recorder.insertRight(valueOffset, newValue);
@@ -313,7 +313,7 @@ function migrateBinaryAttributes({
             el =>
                 el.attrs?.some(
                     attr =>
-                        attr.value === `true` &&
+                        attr.value === 'true' &&
                         attr.name.includes(attrName.toLowerCase()),
                 ),
         );
@@ -385,7 +385,7 @@ function removeV3Inputs({
 }
 
 export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchema): void {
-    !options[`skip-logs`] &&
+    !options['skip-logs'] &&
         infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} migrating templates...`);
 
     const componentWithTemplatesPaths = getComponentTemplates(ALL_TS_FILES);
@@ -417,11 +417,11 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         actions.forEach((action, actionIndex) => {
             const isLastAction = actionIndex === actions.length - 1;
 
-            !options[`skip-logs`] && progressLog(action.name, isLastAction);
+            !options['skip-logs'] && progressLog(action.name, isLastAction);
             action({resource, fileSystem, recorder});
         });
     });
 
-    !options[`skip-logs`] &&
+    !options['skip-logs'] &&
         successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} templates migrated \n`);
 }

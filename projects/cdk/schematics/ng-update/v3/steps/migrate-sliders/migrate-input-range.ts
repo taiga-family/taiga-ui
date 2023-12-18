@@ -16,8 +16,8 @@ import {getComponentTemplates} from '../../../../utils/templates/get-component-t
 import {replaceInputProperty} from '../../../../utils/templates/ng-component-input-manipulations';
 import {TemplateResource} from '../../../interfaces/template-resource';
 
-const MIN_LABELS_MIGRATION_METHOD_NAME = `tuiMigrationInputRangeMinLabel`;
-const MAX_LABELS_MIGRATION_METHOD_NAME = `tuiMigrationInputRangeMaxLabel`;
+const MIN_LABELS_MIGRATION_METHOD_NAME = 'tuiMigrationInputRangeMinLabel';
+const MAX_LABELS_MIGRATION_METHOD_NAME = 'tuiMigrationInputRangeMaxLabel';
 
 function replaceMinLabel(
     templateResource: TemplateResource,
@@ -27,9 +27,9 @@ function replaceMinLabel(
     const wasModified = replaceInputProperty({
         templateResource,
         fileSystem,
-        componentSelector: `tui-input-range`,
-        from: `minLabel`,
-        to: `[leftValueContent]`,
+        componentSelector: 'tui-input-range',
+        from: 'minLabel',
+        to: '[leftValueContent]',
         newValue: MIN_LABELS_MIGRATION_METHOD_NAME,
     });
 
@@ -46,9 +46,9 @@ function replaceMaxLabel(
     const wasModified = replaceInputProperty({
         templateResource,
         fileSystem,
-        componentSelector: `tui-input-range`,
-        from: `maxLabel`,
-        to: `[rightValueContent]`,
+        componentSelector: 'tui-input-range',
+        from: 'maxLabel',
+        to: '[rightValueContent]',
         newValue: MAX_LABELS_MIGRATION_METHOD_NAME,
     });
 
@@ -67,14 +67,14 @@ function addMinMaxLabelMethod(
     if (ngComponent) {
         addUniqueImport(
             ngComponent.getSourceFile().getFilePath(),
-            `TuiContextWithImplicit`,
-            `@taiga-ui/cdk`,
+            'TuiContextWithImplicit',
+            '@taiga-ui/cdk',
         );
 
         addMethods(ngComponent, {
             name: methodName,
-            returnType: `string`,
-            parameters: [{name: `context`, type: `TuiContextWithImplicit<number>`}],
+            returnType: 'string',
+            parameters: [{name: 'context', type: 'TuiContextWithImplicit<number>'}],
             statements: methodCode,
         });
     }
@@ -100,11 +100,11 @@ export function migrateInputRange(
 
     let progressLog = setupProgressLogger({
         total: templateResources.length,
-        prefix: `[replaceMinMaxLabel]`,
+        prefix: '[replaceMinMaxLabel]',
     });
 
     templateResources.forEach(templateResource => {
-        !options[`skip-logs`] && progressLog(templateResource.componentPath);
+        !options['skip-logs'] && progressLog(templateResource.componentPath);
         replaceMinLabel(templateResource, fileSystem, COMPONENTS_WITH_MIN_LABELS);
         replaceMaxLabel(templateResource, fileSystem, COMPONENTS_WITH_MAX_LABELS);
     });
@@ -113,33 +113,33 @@ export function migrateInputRange(
 
     progressLog = setupProgressLogger({
         total: COMPONENTS_WITH_MIN_LABELS.size,
-        prefix: `[COMPONENTS_WITH_MIN_LABELS]`,
+        prefix: '[COMPONENTS_WITH_MIN_LABELS]',
     });
 
     Array.from(COMPONENTS_WITH_MIN_LABELS).forEach(componentPath => {
-        !options[`skip-logs`] && progressLog(componentPath);
+        !options['skip-logs'] && progressLog(componentPath);
         addMinMaxLabelMethod(componentPath, MIN_LABELS_MIGRATION_METHOD_NAME, [
-            `const currentValue = context.$implicit;`,
-            `const minValue = 0; // TODO: (Taiga UI migration) replace with the MIN value of the input-range`,
-            `const minLabelText = "Min"; // TODO: (Taiga UI migration) replace with the required label`,
-            `if (currentValue === minValue) return minLabelText;`,
-            `return String(currentValue);`,
+            'const currentValue = context.$implicit;',
+            'const minValue = 0; // TODO: (Taiga UI migration) replace with the MIN value of the input-range',
+            'const minLabelText = "Min"; // TODO: (Taiga UI migration) replace with the required label',
+            'if (currentValue === minValue) return minLabelText;',
+            'return String(currentValue);',
         ]);
     });
 
     progressLog = setupProgressLogger({
         total: COMPONENTS_WITH_MAX_LABELS.size,
-        prefix: `[COMPONENTS_WITH_MAX_LABELS]`,
+        prefix: '[COMPONENTS_WITH_MAX_LABELS]',
     });
 
     Array.from(COMPONENTS_WITH_MAX_LABELS).forEach(componentPath => {
-        !options[`skip-logs`] && progressLog(componentPath);
+        !options['skip-logs'] && progressLog(componentPath);
         addMinMaxLabelMethod(componentPath, MAX_LABELS_MIGRATION_METHOD_NAME, [
-            `const currentValue = context.$implicit;`,
-            `const maxValue = 100; // TODO: (Taiga UI migration) replace with the MAX value of the input`,
-            `const maxLabelText = "Max"; // TODO: (Taiga UI migration) replace with the required label`,
-            `if (currentValue === maxValue) return maxLabelText;`,
-            `return String(currentValue);`,
+            'const currentValue = context.$implicit;',
+            'const maxValue = 100; // TODO: (Taiga UI migration) replace with the MAX value of the input',
+            'const maxLabelText = "Max"; // TODO: (Taiga UI migration) replace with the required label',
+            'if (currentValue === maxValue) return maxLabelText;',
+            'return String(currentValue);',
         ]);
     });
 }

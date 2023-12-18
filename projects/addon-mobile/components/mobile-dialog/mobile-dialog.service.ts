@@ -10,7 +10,7 @@ import {TuiMobileDialogOptions} from './mobile-dialog-options';
 const DIALOG = new PolymorpheusComponent(TuiMobileDialogComponent);
 
 @Injectable({
-    providedIn: `root`,
+    providedIn: 'root',
 })
 export class TuiMobileDialogService extends AbstractTuiDialogService<
     TuiMobileDialogOptions<any>,

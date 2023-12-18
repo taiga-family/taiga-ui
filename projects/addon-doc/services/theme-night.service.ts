@@ -8,7 +8,7 @@ import {
 } from './theme-night.options';
 
 @Injectable({
-    providedIn: `root`,
+    providedIn: 'root',
 })
 export class TuiThemeNightService extends BehaviorSubject<boolean> {
     constructor(
@@ -18,9 +18,9 @@ export class TuiThemeNightService extends BehaviorSubject<boolean> {
         @Inject(TUI_USE_DEFAULT_NIGHT_THEME) readonly useDefaultNightTheme: boolean,
     ) {
         super(
-            storage.getItem(key) === `true` ||
+            storage.getItem(key) === 'true' ||
                 (storage.getItem(key) === null &&
-                    win.matchMedia(`(prefers-color-scheme: dark)`).matches),
+                    win.matchMedia('(prefers-color-scheme: dark)').matches),
         );
     }
 

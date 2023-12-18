@@ -1,34 +1,34 @@
 import {Pattern} from 'ng-morph';
 
 const EXCLUDE_DIRECTORIES = [
-    `e2e`,
+    'e2e',
     // compiled
-    `scripts`,
-    `dist`,
-    `node_modules`,
-    `coverage`,
-    `dll`,
-    `tmp`,
-    `__build__`,
+    'scripts',
+    'dist',
+    'node_modules',
+    'coverage',
+    'dll',
+    'tmp',
+    '__build__',
     // hidden directories
-    `.rpt2_cache`,
-    `.husky`,
-    `.vscode`,
-    `.idea`,
-    `.github`,
-    `.gitlab`,
-    `.devplatform`,
-    `.angular`,
-    `.tmp`,
-    `.nx`,
-].join(`|`);
+    '.rpt2_cache',
+    '.husky',
+    '.vscode',
+    '.idea',
+    '.github',
+    '.gitlab',
+    '.devplatform',
+    '.angular',
+    '.tmp',
+    '.nx',
+].join('|');
 
 const EXCLUDE_FILE_PATTERNS = [
-    `*__name@dasherize__*`,
-    `*__name@camelize__*`, // schematics templates
-    `*__name@underscore__*`,
-    `*.d`, // typings
-].join(`|`);
+    '*__name@dasherize__*',
+    '*__name@camelize__*', // schematics templates
+    '*__name@underscore__*',
+    '*.d', // typings
+].join('|');
 
 export const ALL_TS_FILES: Pattern = [
     `!(${EXCLUDE_FILE_PATTERNS}).ts`,

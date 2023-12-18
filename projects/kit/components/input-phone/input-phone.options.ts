@@ -8,9 +8,9 @@ export interface TuiInputPhoneOptions {
 }
 
 export const TUI_INPUT_PHONE_DEFAULT_OPTIONS: TuiInputPhoneOptions = {
-    phoneMaskAfterCountryCode: `### ###-##-##`,
+    phoneMaskAfterCountryCode: '### ###-##-##',
     allowText: false,
-    countryCode: `+7`,
+    countryCode: '+7',
 };
 
 /**

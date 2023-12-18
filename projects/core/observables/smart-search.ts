@@ -18,10 +18,10 @@ export function tuiSmartSearch<T>(
             debounceTime(searchDebounceTimeMs),
             scan(
                 (previousSearched, current) =>
-                    previousSearched !== `` && current.startsWith(previousSearched)
+                    previousSearched !== '' && current.startsWith(previousSearched)
                         ? previousSearched
                         : current,
-                ``,
+                '',
             ),
             distinctUntilChanged(),
             switchMap(value => getSearchFunction(value).pipe(startWith(null))),

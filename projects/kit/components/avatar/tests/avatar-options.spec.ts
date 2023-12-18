@@ -6,7 +6,7 @@ import {
     tuiAvatarOptionsProvider,
 } from '@taiga-ui/kit';
 
-describe(`Avatar component options`, () => {
+describe('Avatar component options', () => {
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
 
@@ -26,7 +26,7 @@ describe(`Avatar component options`, () => {
             declarations: [TestComponent],
             providers: [
                 tuiAvatarOptionsProvider({
-                    size: `l`,
+                    size: 'l',
                     autoColor: true,
                     rounded: true,
                 }),
@@ -38,8 +38,8 @@ describe(`Avatar component options`, () => {
         fixture.detectChanges();
     });
 
-    it(`override by custom options`, () => {
-        expect(testComponent.component.size).toBe(`l`);
+    it('override by custom options', () => {
+        expect(testComponent.component.size).toBe('l');
         expect(testComponent.component.autoColor).toBe(true);
         expect(testComponent.component.rounded).toBe(true);
     });

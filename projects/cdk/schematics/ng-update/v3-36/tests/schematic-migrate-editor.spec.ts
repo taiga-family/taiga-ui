@@ -12,7 +12,7 @@ import {join} from 'path';
 
 import {createAngularJson} from '../../../utils/create-angular-json';
 
-const collectionPath = join(__dirname, `../../../migration.json`);
+const collectionPath = join(__dirname, '../../../migration.json');
 
 const COMPONENT_BEFORE = `import { TUI_EDITOR_EXTENSIONS, TUI_ATTACH_FILES_LOADER } from '@taiga-ui/addon-editor';
 
@@ -98,13 +98,13 @@ const PACKAGE_AFTER = `{
     }
 }`;
 
-describe(`ng-update`, () => {
+describe('ng-update', () => {
     let host: UnitTestTree;
     let runner: SchematicTestRunner;
 
     beforeEach(() => {
         host = new UnitTestTree(new HostTree());
-        runner = new SchematicTestRunner(`schematics`, collectionPath);
+        runner = new SchematicTestRunner('schematics', collectionPath);
 
         setActiveProject(createProject(host));
 
@@ -113,17 +113,17 @@ describe(`ng-update`, () => {
         saveActiveProject();
     });
 
-    it(`should migrate addon-editor`, async () => {
+    it('should migrate addon-editor', async () => {
         const tree = await runner
             .runSchematicAsync(
-                `updateToV3_36`,
-                {'skip-logs': process.env[`TUI_CI`] === `true`} as Partial<TuiSchema>,
+                'updateToV3_36',
+                {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
                 host,
             )
             .toPromise();
 
-        expect(tree.readContent(`test/app/test.component.ts`)).toEqual(COMPONENT_AFTER);
-        expect(tree.readContent(`package.json`)).toEqual(PACKAGE_AFTER);
+        expect(tree.readContent('test/app/test.component.ts')).toEqual(COMPONENT_AFTER);
+        expect(tree.readContent('package.json')).toEqual(PACKAGE_AFTER);
     });
 
     afterEach(() => {
@@ -132,11 +132,11 @@ describe(`ng-update`, () => {
 });
 
 function createMainFiles(): void {
-    createSourceFile(`test/app/test.component.ts`, COMPONENT_BEFORE);
+    createSourceFile('test/app/test.component.ts', COMPONENT_BEFORE);
 
-    createSourceFile(`test/app/test.template.html`, `<tui-editor></tui-editor>`);
+    createSourceFile('test/app/test.template.html', '<tui-editor></tui-editor>');
 
     createAngularJson();
 
-    createSourceFile(`package.json`, PACKAGE_BEFORE);
+    createSourceFile('package.json', PACKAGE_BEFORE);
 }

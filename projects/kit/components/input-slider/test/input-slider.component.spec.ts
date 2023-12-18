@@ -29,7 +29,7 @@ class TestComponent {
     @ViewChild(TuiInputSliderComponent)
     component!: TuiInputSliderComponent;
 
-    @ViewChild(`progressPercent`)
+    @ViewChild('progressPercent')
     progressPercentCustomContent!: TemplateRef<Record<string, unknown>>;
 
     control = new FormControl(0);
@@ -38,10 +38,10 @@ class TestComponent {
     max = 100;
     quantum = 10;
     steps = 0;
-    valueContent: unknown = ``;
-    textfieldCustomContent: unknown = ``;
-    prefix = `$`;
-    postfix = `things`;
+    valueContent: unknown = '';
+    textfieldCustomContent: unknown = '';
+    prefix = '$';
+    postfix = 'things';
 
     get percent(): number {
         return Math.round((this.control.value / (this.max - this.min)) * 100);
@@ -50,19 +50,19 @@ class TestComponent {
 
 const testContext = {
     get textInputInsideAutoId() {
-        return `tui-primitive-textfield__native-input`;
+        return 'tui-primitive-textfield__native-input';
     },
 
     get textInputCustomValueAutoId() {
-        return `tui-primitive-textfield__value`;
+        return 'tui-primitive-textfield__value';
     },
 
     get customContentAutoId() {
-        return `tui-primitive-textfield__custom-content`;
+        return 'tui-primitive-textfield__custom-content';
     },
 
     get valueDecorationAutoId() {
-        return `tui-primitive-textfield__value-decoration`;
+        return 'tui-primitive-textfield__value-decoration';
     },
 };
 
@@ -71,7 +71,7 @@ let testComponent: TestComponent;
 let pageObject: TuiPageObject<TestComponent>;
 let inputPO: TuiNativeInputPO;
 
-describe(`InputSlider`, () => {
+describe('InputSlider', () => {
     beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [
@@ -90,11 +90,11 @@ describe(`InputSlider`, () => {
         inputPO = new TuiNativeInputPO(fixture, testContext.textInputInsideAutoId);
     });
 
-    describe(`[quantum] prop`, () => {
+    describe('[quantum] prop', () => {
         beforeEach(async () => {
             testComponent.control = new FormControl(0);
-            testComponent.prefix = ``;
-            testComponent.postfix = ``;
+            testComponent.prefix = '';
+            testComponent.postfix = '';
             testComponent.quantum = 10;
             testComponent.steps = 0;
 
@@ -102,58 +102,58 @@ describe(`InputSlider`, () => {
             await fixture.whenStable();
         });
 
-        it(`Pressing \`Arrow Up\` increases value by \`quantum\`-value if property \`step\` was not provided`, () => {
+        it('Pressing `Arrow Up` increases value by `quantum`-value if property `step` was not provided', () => {
             inputPO.focus();
 
-            inputPO.sendKeydown(`arrowUp`);
+            inputPO.sendKeydown('arrowUp');
             expect(testComponent.control.value).toBe(10);
 
-            inputPO.sendKeydown(`arrowUp`);
+            inputPO.sendKeydown('arrowUp');
             expect(testComponent.control.value).toBe(20);
 
-            inputPO.sendKeydown(`arrowUp`);
+            inputPO.sendKeydown('arrowUp');
             expect(testComponent.control.value).toBe(30);
         });
 
-        it(`Pressing \`Arrow Down\` decreases value by \`quantum\`-value if property \`step\` was not provided`, () => {
+        it('Pressing `Arrow Down` decreases value by `quantum`-value if property `step` was not provided', () => {
             inputPO.focus();
 
-            inputPO.sendKeydown(`arrowDown`);
+            inputPO.sendKeydown('arrowDown');
             expect(testComponent.control.value).toBe(-10);
 
-            inputPO.sendKeydown(`arrowDown`);
+            inputPO.sendKeydown('arrowDown');
             expect(testComponent.control.value).toBe(-20);
 
-            inputPO.sendKeydown(`arrowDown`);
+            inputPO.sendKeydown('arrowDown');
             expect(testComponent.control.value).toBe(-30);
         });
 
-        it(`cannot type decimal number if \`quantum\` is integer`, () => {
+        it('cannot type decimal number if `quantum` is integer', () => {
             testComponent.quantum = 1;
             fixture.detectChanges();
 
-            inputPO.sendTextAndBlur(`0,1234412`);
+            inputPO.sendTextAndBlur('0,1234412');
             expect(testComponent.control.value).toBe(0);
         });
 
-        it(`can type decimal number if \`quantum\` is decimal`, () => {
+        it('can type decimal number if `quantum` is decimal', () => {
             testComponent.quantum = 0.000001;
             fixture.detectChanges();
 
-            inputPO.sendTextAndBlur(`0,123456`);
+            inputPO.sendTextAndBlur('0,123456');
             expect(testComponent.control.value).toBe(0.123456);
         });
 
-        it(`cannot type more digits after comma than digits after comma in \`quantum\``, () => {
+        it('cannot type more digits after comma than digits after comma in `quantum`', () => {
             testComponent.quantum = 0.001;
             fixture.detectChanges();
 
-            inputPO.sendTextAndBlur(`0,123456`);
+            inputPO.sendTextAndBlur('0,123456');
             expect(testComponent.control.value).toBe(0.123);
         });
 
-        describe(`rounds to the nearest \`quantum\` on blur`, () => {
-            describe(`\`quantum\` = 20 | \`max\` = 100 | \`min\` = 0`, () => {
+        describe('rounds to the nearest `quantum` on blur', () => {
+            describe('`quantum` = 20 | `max` = 100 | `min` = 0', () => {
                 beforeEach(async () => {
                     testComponent.quantum = 20;
                     testComponent.min = 0;
@@ -163,40 +163,40 @@ describe(`InputSlider`, () => {
                     await fixture.whenStable();
                 });
 
-                it(`16 => 20`, async () => {
-                    inputPO.sendTextAndBlur(`16`);
+                it('16 => 20', async () => {
+                    inputPO.sendTextAndBlur('16');
                     await fixture.whenStable();
 
                     expect(testComponent.control.value).toBe(20);
-                    expect(inputPO.value).toBe(`20`);
+                    expect(inputPO.value).toBe('20');
                 });
 
-                it(`27 => 20`, async () => {
-                    inputPO.sendTextAndBlur(`27`);
+                it('27 => 20', async () => {
+                    inputPO.sendTextAndBlur('27');
                     await fixture.whenStable();
 
                     expect(testComponent.control.value).toBe(20);
-                    expect(inputPO.value).toBe(`20`);
+                    expect(inputPO.value).toBe('20');
                 });
 
-                it(`42 => 40`, async () => {
-                    inputPO.sendTextAndBlur(`42`);
+                it('42 => 40', async () => {
+                    inputPO.sendTextAndBlur('42');
                     await fixture.whenStable();
 
                     expect(testComponent.control.value).toBe(40);
-                    expect(inputPO.value).toBe(`40`);
+                    expect(inputPO.value).toBe('40');
                 });
 
-                it(`78 => 80`, async () => {
-                    inputPO.sendTextAndBlur(`78`);
+                it('78 => 80', async () => {
+                    inputPO.sendTextAndBlur('78');
                     await fixture.whenStable();
 
                     expect(testComponent.control.value).toBe(80);
-                    expect(inputPO.value).toBe(`80`);
+                    expect(inputPO.value).toBe('80');
                 });
             });
 
-            describe(`\`quantum\` = 0.25 | \`max\` = 10 | \`min\` = -10`, () => {
+            describe('`quantum` = 0.25 | `max` = 10 | `min` = -10', () => {
                 beforeEach(async () => {
                     testComponent.quantum = 0.25;
                     testComponent.min = -10;
@@ -206,40 +206,40 @@ describe(`InputSlider`, () => {
                     await fixture.whenStable();
                 });
 
-                it(`7.59 => 7.50`, async () => {
-                    inputPO.sendTextAndBlur(`7.59`);
+                it('7.59 => 7.50', async () => {
+                    inputPO.sendTextAndBlur('7.59');
                     await fixture.whenStable();
 
                     expect(testComponent.control.value).toBe(7.5);
-                    expect(inputPO.value).toBe(`7,50`);
+                    expect(inputPO.value).toBe('7,50');
                 });
 
-                it(`-2.44 => -2.50`, async () => {
-                    inputPO.sendTextAndBlur(`-2.44`);
+                it('-2.44 => -2.50', async () => {
+                    inputPO.sendTextAndBlur('-2.44');
                     await fixture.whenStable();
 
                     expect(testComponent.control.value).toBe(-2.5);
                     expect(inputPO.value).toBe(`${CHAR_MINUS}2,50`);
                 });
 
-                it(`-9.99 => -10`, async () => {
-                    inputPO.sendTextAndBlur(`-9.99`);
+                it('-9.99 => -10', async () => {
+                    inputPO.sendTextAndBlur('-9.99');
                     await fixture.whenStable();
 
                     expect(testComponent.control.value).toBe(-10);
                     expect(inputPO.value).toBe(`${CHAR_MINUS}10`);
                 });
 
-                it(`4.13 => 4.25`, async () => {
-                    inputPO.sendTextAndBlur(`4.13`);
+                it('4.13 => 4.25', async () => {
+                    inputPO.sendTextAndBlur('4.13');
                     await fixture.whenStable();
 
                     expect(testComponent.control.value).toBe(4.25);
-                    expect(inputPO.value).toBe(`4,25`);
+                    expect(inputPO.value).toBe('4,25');
                 });
             });
 
-            describe(`\`quantum\` = 1000 | \`max\` = 10000 | \`min\` = 1000`, () => {
+            describe('`quantum` = 1000 | `max` = 10000 | `min` = 1000', () => {
                 beforeEach(async () => {
                     testComponent.quantum = 1000;
                     testComponent.min = 1000;
@@ -250,82 +250,82 @@ describe(`InputSlider`, () => {
                     await fixture.whenStable();
                 });
 
-                it(`5_001 => 5_000`, async () => {
-                    inputPO.sendTextAndBlur(`5001`);
+                it('5_001 => 5_000', async () => {
+                    inputPO.sendTextAndBlur('5001');
                     await fixture.whenStable();
 
                     expect(testComponent.control.value).toBe(5_000);
-                    expect(inputPO.value).toBe(`5 000`);
+                    expect(inputPO.value).toBe('5 000');
                 });
 
-                it(`1_499 => 1_000`, async () => {
+                it('1_499 => 1_000', async () => {
                     inputPO.focus();
                     await fixture.whenStable();
 
-                    inputPO.sendText(`1499`);
+                    inputPO.sendText('1499');
                     await fixture.whenStable();
 
                     expect(testComponent.control.value).toBe(1_000);
-                    expect(inputPO.value).toBe(`1 499`);
+                    expect(inputPO.value).toBe('1 499');
 
                     inputPO.blur();
                     await fixture.whenStable();
 
                     expect(testComponent.control.value).toBe(1_000);
-                    expect(inputPO.value).toBe(`1 000`);
+                    expect(inputPO.value).toBe('1 000');
                 });
 
-                it(`2_800 => 3_000`, async () => {
+                it('2_800 => 3_000', async () => {
                     inputPO.focus();
                     await fixture.whenStable();
 
-                    inputPO.sendText(`2800`);
+                    inputPO.sendText('2800');
                     await fixture.whenStable();
 
                     expect(testComponent.control.value).toBe(3_000);
-                    expect(inputPO.value).toBe(`2 800`);
+                    expect(inputPO.value).toBe('2 800');
 
                     inputPO.blur();
                     await fixture.whenStable();
 
                     expect(testComponent.control.value).toBe(3_000);
-                    expect(inputPO.value).toBe(`3 000`);
+                    expect(inputPO.value).toBe('3 000');
                 });
             });
         });
 
-        it(`does not rounds to nearest multiple of [quantum] until text field losses focus`, async () => {
+        it('does not rounds to nearest multiple of [quantum] until text field losses focus', async () => {
             testComponent.quantum = 100;
             testComponent.min = 0;
             testComponent.max = 1000;
             fixture.detectChanges();
 
-            inputPO.sendText(`150`);
+            inputPO.sendText('150');
 
-            expect(inputPO.value).toBe(`150`);
+            expect(inputPO.value).toBe('150');
             expect(testComponent.control.value).toBe(200);
 
             inputPO.blur();
             await fixture.whenStable();
 
-            expect(inputPO.value).toBe(`200`);
+            expect(inputPO.value).toBe('200');
             expect(testComponent.control.value).toBe(200);
         });
     });
 
-    describe(`[valueContent] prop`, () => {
+    describe('[valueContent] prop', () => {
         const customLabel = ({
             $implicit,
         }: TuiContextWithImplicit<number>): number | string => {
             switch ($implicit) {
                 case 100:
-                    return `MAX`;
+                    return 'MAX';
                 case 75:
-                    return `Three quarters`;
+                    return 'Three quarters';
                 case 50:
-                    return `Middle`;
+                    return 'Middle';
                 case 10:
-                    return `TEN`;
+                    return 'TEN';
                 default:
                     return $implicit;
             }
@@ -357,40 +357,40 @@ describe(`InputSlider`, () => {
             expect(getTextInputCustomValue()).toBe(expectedContent);
         };
 
-        it(`100 => MAX`, async () => {
-            await checkValueContent(100, `MAX`);
+        it('100 => MAX', async () => {
+            await checkValueContent(100, 'MAX');
         });
 
-        it(`90 => 90`, async () => {
-            await checkValueContent(90, `90`);
+        it('90 => 90', async () => {
+            await checkValueContent(90, '90');
         });
 
-        it(`78 => 78`, async () => {
-            await checkValueContent(78, `78`);
+        it('78 => 78', async () => {
+            await checkValueContent(78, '78');
         });
 
-        it(`75 => \`Three quarters\``, async () => {
-            await checkValueContent(75, `Three quarters`);
+        it('75 => `Three quarters`', async () => {
+            await checkValueContent(75, 'Three quarters');
         });
 
-        it(`60 => 60`, async () => {
-            await checkValueContent(60, `60`);
+        it('60 => 60', async () => {
+            await checkValueContent(60, '60');
         });
 
-        it(`50 => \`Middle\``, async () => {
-            await checkValueContent(50, `Middle`);
+        it('50 => `Middle`', async () => {
+            await checkValueContent(50, 'Middle');
         });
 
-        it(`30 => 30`, async () => {
-            await checkValueContent(30, `30`);
+        it('30 => 30', async () => {
+            await checkValueContent(30, '30');
         });
 
-        it(`10 => \`Ten\``, async () => {
-            await checkValueContent(10, `TEN`);
+        it('10 => `Ten`', async () => {
+            await checkValueContent(10, 'TEN');
         });
     });
 
-    describe(`[max] prop`, () => {
+    describe('[max] prop', () => {
         beforeEach(() => {
             testComponent.min = -200;
             testComponent.max = 100;
@@ -399,39 +399,39 @@ describe(`InputSlider`, () => {
             fixture.detectChanges();
         });
 
-        it(`cannot type float number more than \`max\` property`, () => {
-            inputPO.sendTextAndBlur(`100.001`);
+        it('cannot type float number more than `max` property', () => {
+            inputPO.sendTextAndBlur('100.001');
             expect(testComponent.control.value).toBe(100);
         });
 
-        it(`cannot type integer number more than \`max\` property`, () => {
-            inputPO.sendTextAndBlur(`150`);
+        it('cannot type integer number more than `max` property', () => {
+            inputPO.sendTextAndBlur('150');
             expect(testComponent.control.value).toBe(100);
         });
 
-        it(`can type large negative number`, () => {
-            inputPO.sendTextAndBlur(`-200`);
+        it('can type large negative number', () => {
+            inputPO.sendTextAndBlur('-200');
             expect(testComponent.control.value).toBe(-200);
         });
 
-        it(`cannot set value more than max using ArrowUp`, async () => {
-            inputPO.sendTextAndBlur(`100`);
+        it('cannot set value more than max using ArrowUp', async () => {
+            inputPO.sendTextAndBlur('100');
 
             await fixture.whenStable();
 
             inputPO.focus();
-            inputPO.sendKeydown(`arrowUp`);
+            inputPO.sendKeydown('arrowUp');
 
             fixture.detectChanges();
             await fixture.whenStable();
 
             expect(testComponent.control.value).toBe(100);
-            expect(inputPO.value).toBe(`$100 things`);
+            expect(inputPO.value).toBe('$100 things');
         });
     });
 
-    describe(`[tuiTextfieldCustomContent] controller`, () => {
-        describe(`progress percent case`, () => {
+    describe('[tuiTextfieldCustomContent] controller', () => {
+        describe('progress percent case', () => {
             beforeEach(() => {
                 testComponent.textfieldCustomContent =
                     testComponent.progressPercentCustomContent;
@@ -442,51 +442,51 @@ describe(`InputSlider`, () => {
                 fixture.detectChanges();
             });
 
-            it(`0 => 0%`, async () => {
-                inputPO.sendTextAndBlur(`0`);
+            it('0 => 0%', async () => {
+                inputPO.sendTextAndBlur('0');
                 await fixture.whenStable();
-                expect(getTextfieldCustomContent()).toBe(`0%`);
+                expect(getTextfieldCustomContent()).toBe('0%');
             });
 
-            it(`1.5 => 15%`, async () => {
-                inputPO.sendTextAndBlur(`1.5`);
+            it('1.5 => 15%', async () => {
+                inputPO.sendTextAndBlur('1.5');
                 await fixture.whenStable();
-                expect(getTextfieldCustomContent()).toBe(`15%`);
+                expect(getTextfieldCustomContent()).toBe('15%');
             });
 
-            it(`4.8 => 48%`, async () => {
-                inputPO.sendTextAndBlur(`4.8`);
+            it('4.8 => 48%', async () => {
+                inputPO.sendTextAndBlur('4.8');
                 await fixture.whenStable();
-                expect(getTextfieldCustomContent()).toBe(`48%`);
+                expect(getTextfieldCustomContent()).toBe('48%');
             });
 
-            it(`6.3 => 63%`, async () => {
-                inputPO.sendTextAndBlur(`6.3`);
+            it('6.3 => 63%', async () => {
+                inputPO.sendTextAndBlur('6.3');
                 await fixture.whenStable();
-                expect(getTextfieldCustomContent()).toBe(`63%`);
+                expect(getTextfieldCustomContent()).toBe('63%');
             });
 
-            it(`8 => 80%`, async () => {
-                inputPO.sendTextAndBlur(`8`);
+            it('8 => 80%', async () => {
+                inputPO.sendTextAndBlur('8');
                 await fixture.whenStable();
-                expect(getTextfieldCustomContent()).toBe(`80%`);
+                expect(getTextfieldCustomContent()).toBe('80%');
             });
 
-            it(`10 => 100%`, async () => {
-                inputPO.sendTextAndBlur(`10`);
+            it('10 => 100%', async () => {
+                inputPO.sendTextAndBlur('10');
                 await fixture.whenStable();
-                expect(getTextfieldCustomContent()).toBe(`100%`);
+                expect(getTextfieldCustomContent()).toBe('100%');
             });
         });
     });
 
-    it(`programmatic FormControl updates should also update textfield value`, async () => {
+    it('programmatic FormControl updates should also update textfield value', async () => {
         testComponent.control.patchValue(42);
 
         fixture.detectChanges();
         await fixture.whenStable();
 
-        expect(inputPO.value).toBe(`$42 things`);
+        expect(inputPO.value).toBe('$42 things');
         expect(testComponent.control.value).toBe(42);
     });
 });
@@ -495,7 +495,7 @@ function getTextInputCustomValue(): string {
     return (
         pageObject
             .getByAutomationId(testContext.textInputCustomValueAutoId)
-            ?.nativeElement.textContent.trim() || ``
+            ?.nativeElement.textContent.trim() || ''
     );
 }
 
@@ -503,13 +503,13 @@ function getTextfieldCustomContent(): string {
     return (
         pageObject
             .getByAutomationId(testContext.customContentAutoId)
-            ?.nativeElement.textContent.trim() || ``
+            ?.nativeElement.textContent.trim() || ''
     );
 }
 
 function getValueDecoration(): string {
     return (
         pageObject.getByAutomationId(testContext.valueDecorationAutoId)?.nativeElement
-            .textContent || ``
+            .textContent || ''
     );
 }

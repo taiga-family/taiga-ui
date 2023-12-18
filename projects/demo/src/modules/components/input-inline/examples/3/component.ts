@@ -5,15 +5,15 @@ import {TUI_IS_E2E, TuiDestroyService, tuiWatch, tuiZoneOptimized} from '@taiga-
 import {Observable, takeUntil, timer} from 'rxjs';
 
 @Component({
-    selector: `tui-input-inline-example-3`,
-    templateUrl: `./template.html`,
-    styleUrls: [`./style.less`],
+    selector: 'tui-input-inline-example-3',
+    templateUrl: './template.html',
+    styleUrls: ['./style.less'],
     encapsulation,
     changeDetection,
     providers: [TuiDestroyService],
 })
 export class TuiInputInlineExample3 implements OnInit {
-    count = `0`;
+    count = '0';
 
     constructor(
         @Inject(ChangeDetectorRef) private readonly cd: ChangeDetectorRef,

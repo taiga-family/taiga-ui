@@ -1,7 +1,7 @@
 import {TuiDialogOptions} from '@taiga-ui/core';
 
 const MOBILE_ALERT_OPTIONS: TuiMobileAlertOptions = {
-    size: `fullscreen`,
+    size: 'fullscreen',
     closeable: false,
 };
 

@@ -6,7 +6,7 @@ import {tuiDispatchOnActive} from '@taiga-ui/testing';
 import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 // TODO: move to cypress component testing
-xdescribe(`Tabs`, () => {
+xdescribe('Tabs', () => {
     @Component({
         template: `
             <tui-tabs [(activeItemIndex)]="activeItemIndex">
@@ -57,43 +57,43 @@ xdescribe(`Tabs`, () => {
         fixture.detectChanges();
         component = fixture.componentInstance;
         buttons = [
-            document.getElementById(`cards`)!,
-            document.getElementById(`tariff`)!,
-            document.getElementById(`calls`)!,
-            document.getElementById(`settings`)!,
+            document.getElementById('cards')!,
+            document.getElementById('tariff')!,
+            document.getElementById('calls')!,
+            document.getElementById('settings')!,
         ];
     });
 
-    it(`Navigation by arrows works when going right`, () => {
+    it('Navigation by arrows works when going right', () => {
         buttons[0].focus();
-        tuiDispatchOnActive(`arrowRight`);
+        tuiDispatchOnActive('arrowRight');
         fixture.detectChanges();
 
         expect(tuiIsNativeFocused(buttons[1])).toBe(true);
     });
 
-    it(`Navigation by arrows works when going left`, () => {
+    it('Navigation by arrows works when going left', () => {
         buttons[1].focus();
-        tuiDispatchOnActive(`arrowLeft`);
+        tuiDispatchOnActive('arrowLeft');
 
         expect(tuiIsNativeFocused(buttons[0])).toBe(true);
     });
 
-    it(`Navigation by arrows skips disabled when going right`, () => {
+    it('Navigation by arrows skips disabled when going right', () => {
         buttons[1].focus();
-        tuiDispatchOnActive(`arrowRight`);
+        tuiDispatchOnActive('arrowRight');
 
         expect(tuiIsNativeFocused(buttons[3])).toBe(true);
     });
 
-    it(`Navigation by arrows skips disabled when going left`, () => {
+    it('Navigation by arrows skips disabled when going left', () => {
         buttons[3].focus();
-        tuiDispatchOnActive(`arrowLeft`);
+        tuiDispatchOnActive('arrowLeft');
 
         expect(tuiIsNativeFocused(buttons[1])).toBe(true);
     });
 
-    it(`Updates activeItemIndex`, () => {
+    it('Updates activeItemIndex', () => {
         buttons[3].click();
 
         expect(component.activeItemIndex).toBe(3);

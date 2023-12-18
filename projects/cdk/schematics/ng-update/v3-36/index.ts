@@ -19,14 +19,14 @@ import {
 import {getFileSystem} from '../utils/get-file-system';
 import {replaceText} from '../utils/replace-text';
 
-const OLD_PACKAGE = `@taiga-ui/addon-editor`;
-const NEW_PACKAGE = `@tinkoff/tui-editor`;
-const NEW_PACKAGE_VERSION = `^1.0.1`;
+const OLD_PACKAGE = '@taiga-ui/addon-editor';
+const NEW_PACKAGE = '@tinkoff/tui-editor';
+const NEW_PACKAGE_VERSION = '^1.0.1';
 
 export function updateToV3_36(options: TuiSchema): Rule {
     return (tree: Tree, context: SchematicContext): void => {
         if (!getPackageJsonDependency(tree, OLD_PACKAGE)) {
-            !options[`skip-logs`] &&
+            !options['skip-logs'] &&
                 titleLog(`${FINISH_SYMBOL} No migrations required for ${OLD_PACKAGE}\n`);
 
             return;
@@ -34,7 +34,7 @@ export function updateToV3_36(options: TuiSchema): Rule {
 
         const fileSystem = getFileSystem(tree);
 
-        !options[`skip-logs`] &&
+        !options['skip-logs'] &&
             infoLog(
                 `${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} replacing imports for ${OLD_PACKAGE}...`,
             );
@@ -48,6 +48,6 @@ export function updateToV3_36(options: TuiSchema): Rule {
         fileSystem.commitEdits();
         saveActiveProject();
 
-        !options[`skip-logs`] && titleLog(`${FINISH_SYMBOL} successfully migrated \n`);
+        !options['skip-logs'] && titleLog(`${FINISH_SYMBOL} successfully migrated \n`);
     };
 }

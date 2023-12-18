@@ -58,7 +58,7 @@ function checkMethod(node: TypeReferenceNode, method: string, message: string): 
 
         if (
             (Node.isPropertyAccessExpression(parent) &&
-                parent.getText().startsWith(`this.`)) ||
+                parent.getText().startsWith('this.')) ||
             Node.isCallExpression(parent)
         ) {
             parent = parent.getParentIfKind(SyntaxKind.PropertyAccessExpression);
@@ -75,40 +75,40 @@ function checkMethod(node: TypeReferenceNode, method: string, message: string): 
 }
 
 export function miscellaneousMigrations(options: TuiSchema): void {
-    !options[`skip-logs`] &&
+    !options['skip-logs'] &&
         infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} miscellaneous migrating...`);
 
     replaceEnumProperty({
-        enumName: `TuiCurrency`,
-        from: `HongKong_dollar`,
-        to: `HongKongDollar`,
+        enumName: 'TuiCurrency',
+        from: 'HongKong_dollar',
+        to: 'HongKongDollar',
     });
     replaceEnumProperty({
-        enumName: `TuiCurrencyCode`,
-        from: `HongKong_dollar`,
-        to: `HongKongDollar`,
+        enumName: 'TuiCurrencyCode',
+        from: 'HongKong_dollar',
+        to: 'HongKongDollar',
     });
     replaceEnumProperty({
-        enumName: `TuiCreditCardAutofillName`,
+        enumName: 'TuiCreditCardAutofillName',
         /**
          * Do not mark `mounth` as incorrect.
          * cspell:ignore mounth
          */
-        from: `CcExp_mounth`,
-        to: `CcExpMonth`,
+        from: 'CcExp_mounth',
+        to: 'CcExpMonth',
     });
     replaceEnumProperty({
-        enumName: `TuiCreditCardAutofillName`,
-        from: `CcExp_year`,
-        to: `CcExpYear`,
+        enumName: 'TuiCreditCardAutofillName',
+        from: 'CcExp_year',
+        to: 'CcExpYear',
     });
 
     addWarningToMethod(
-        `TuiDirectiveStylesService`,
-        `addStyle`,
-        `addStyle method has been removed. Use components approach`,
+        'TuiDirectiveStylesService',
+        'addStyle',
+        'addStyle method has been removed. Use components approach',
     );
 
-    !options[`skip-logs`] &&
+    !options['skip-logs'] &&
         successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} miscellaneous migrated \n`);
 }

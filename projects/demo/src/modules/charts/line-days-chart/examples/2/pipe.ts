@@ -12,7 +12,7 @@ function even<T>(array: readonly T[]): readonly T[] {
 }
 
 @Pipe({
-    name: `labels`,
+    name: 'labels',
 })
 export class LabelsPipe implements PipeTransform {
     constructor(

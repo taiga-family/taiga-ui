@@ -9,7 +9,7 @@ import {BehaviorSubject} from 'rxjs';
  * Service for reusing SVGs without inlining each instance
  */
 @Injectable({
-    providedIn: `root`,
+    providedIn: 'root',
 })
 export class TuiSvgService {
     private originals: Record<string, string> = {};
@@ -48,7 +48,7 @@ export class TuiSvgService {
         const parsed = this.parseSrc(name, src);
 
         if (!parsed) {
-            ngDevMode && tuiAssert.assert(false, `Unable to parse given SVG src`);
+            ngDevMode && tuiAssert.assert(false, 'Unable to parse given SVG src');
 
             return;
         }
@@ -68,7 +68,7 @@ export class TuiSvgService {
         return this.sanitizer.bypassSecurityTrustHtml(
             (this.tuiSanitizer
                 ? this.tuiSanitizer.sanitize(SecurityContext.HTML, src)
-                : this.sanitizer.sanitize(SecurityContext.HTML, src)) || ``,
+                : this.sanitizer.sanitize(SecurityContext.HTML, src)) || '',
         );
     }
 }

@@ -6,7 +6,7 @@ import {
     TuiNumberFormatSettings,
 } from '@taiga-ui/core';
 
-@Pipe({name: `tuiIntegerPart`})
+@Pipe({name: 'tuiIntegerPart'})
 export class TuiIntegerPartPipe implements PipeTransform {
     constructor(
         @Inject(TUI_NUMBER_FORMAT) private readonly numberFormat: TuiNumberFormatSettings,
@@ -22,7 +22,7 @@ export class TuiIntegerPartPipe implements PipeTransform {
         return tuiFormatNumber(rounded, {
             ...this.numberFormat,
             decimalLimit: 0,
-            rounding: `truncate`,
+            rounding: 'truncate',
         });
     }
 }

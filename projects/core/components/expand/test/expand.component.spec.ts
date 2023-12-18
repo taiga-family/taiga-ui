@@ -6,7 +6,7 @@ import {TuiPageObject} from '@taiga-ui/testing';
 
 const ANIMATION_DELAY = 900;
 
-describe(`expand`, () => {
+describe('expand', () => {
     @Component({
         template: `
             <tui-expand
@@ -21,13 +21,13 @@ describe(`expand`, () => {
         `,
     })
     class TestComponent {
-        @ViewChild(`content`)
+        @ViewChild('content')
         content!: ElementRef<HTMLDivElement>;
 
-        @ViewChild(`expand`, {read: ElementRef})
+        @ViewChild('expand', {read: ElementRef})
         expandElement!: ElementRef<HTMLElement>;
 
-        @ViewChild(`expand`)
+        @ViewChild('expand')
         expandComponent!: TuiExpandComponent;
 
         expanded = false;
@@ -50,49 +50,49 @@ describe(`expand`, () => {
         testComponent = fixture.componentInstance;
     });
 
-    describe(`closed by default`, () => {
+    describe('closed by default', () => {
         beforeEach(() => {
             testComponent.expanded = false;
             fixture.detectChanges();
         });
 
-        it(`content is not processed`, () => {
+        it('content is not processed', () => {
             expect(testComponent.content).toBeUndefined();
         });
 
-        describe(`after that expanded changes to true`, () => {
+        describe('after that expanded changes to true', () => {
             beforeEach(() => {
                 testComponent.expanded = true;
                 fixture.detectChanges();
             });
 
-            it(`and the content appears immediately`, () => {
+            it('and the content appears immediately', () => {
                 expect(testComponent.content).toBeDefined();
             });
 
-            it(`and after the end of the animation, the content remains`, fakeAsync(() => {
+            it('and after the end of the animation, the content remains', fakeAsync(() => {
                 tick(ANIMATION_DELAY);
                 expect(testComponent.content).toBeDefined();
             }));
         });
     });
 
-    describe(`open by default`, () => {
+    describe('open by default', () => {
         beforeEach(() => {
             testComponent.expanded = true;
             fixture.detectChanges();
         });
 
-        it(`content is being processed`, () => {
+        it('content is being processed', () => {
             expect(testComponent.content).toBeDefined();
         });
 
-        describe(`after that expanded changes to false`, () => {
-            it(`and the content does not disappear immediately`, () => {
+        describe('after that expanded changes to false', () => {
+            it('and the content does not disappear immediately', () => {
                 expect(testComponent.content).toBeDefined();
             });
 
-            it(`and after the end of the animation, the content disappears`, fakeAsync(() => {
+            it('and after the end of the animation, the content disappears', fakeAsync(() => {
                 expect(testComponent.expandComponent.contentVisible).toBeTruthy();
                 expect(testComponent.content).toBeDefined();
 
@@ -108,7 +108,7 @@ describe(`expand`, () => {
         });
     });
 
-    describe(`async`, () => {
+    describe('async', () => {
         beforeEach(() => {
             testComponent.async = true;
             testComponent.expanded = false;
@@ -117,17 +117,17 @@ describe(`expand`, () => {
             fixture.detectChanges();
         });
 
-        it(`content is being processed`, () => {
+        it('content is being processed', () => {
             expect(testComponent.content).toBeDefined();
         });
 
-        it(`visible loader`, async () => {
+        it('visible loader', async () => {
             await fixture.whenStable();
             fixture.detectChanges();
-            expect(pageObject.getByAutomationId(`tui-loader__loader`)).not.toBeNull();
+            expect(pageObject.getByAutomationId('tui-loader__loader')).not.toBeNull();
         });
 
-        it(`after the TUI_EXPAND_LOADED event, the loader is hidden`, fakeAsync(() => {
+        it('after the TUI_EXPAND_LOADED event, the loader is hidden', fakeAsync(() => {
             const event = new CustomEvent(TUI_EXPAND_LOADED, {bubbles: true});
 
             testComponent.content.nativeElement.dispatchEvent(event);
@@ -135,7 +135,7 @@ describe(`expand`, () => {
             tick(1000 / 60);
             fixture.detectChanges();
 
-            expect(pageObject.getByAutomationId(`tui-loader__loader`)).toBeNull();
+            expect(pageObject.getByAutomationId('tui-loader__loader')).toBeNull();
         }));
     });
 
@@ -144,9 +144,9 @@ describe(`expand`, () => {
      * JSDOM doesn't support native transitionend
      */
     function transitionend(): void {
-        const event = new Event(`transitionend.self`);
+        const event = new Event('transitionend.self');
 
-        (event as any).propertyName = `opacity`;
+        (event as any).propertyName = 'opacity';
         testComponent.expandElement.nativeElement.dispatchEvent(event);
         fixture.detectChanges();
     }

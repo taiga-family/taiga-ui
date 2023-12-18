@@ -1,9 +1,9 @@
 export function tuiHexToRgb(hex: string): [number, number, number] {
     const matches = hex
-        .replace(`#`, ``)
-        .split(``)
+        .replace('#', '')
+        .split('')
         .map((char, _, array) => (array.length === 3 ? char + char : char))
-        .join(``)
+        .join('')
         .match(/.{2}/g);
 
     return matches

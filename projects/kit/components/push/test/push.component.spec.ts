@@ -9,7 +9,7 @@ import {TuiPushModule} from '../push.module';
 import {tuiPushOptionsProvider} from '../push.options';
 import {TuiPushService} from '../push.service';
 
-describe(`Push with TUI_PUSH_OPTIONS`, () => {
+describe('Push with TUI_PUSH_OPTIONS', () => {
     @Component({
         template: `
             <tui-root></tui-root>
@@ -17,14 +17,14 @@ describe(`Push with TUI_PUSH_OPTIONS`, () => {
     })
     class TestComponent {}
 
-    const heading = `Test`;
+    const heading = 'Test';
 
     let fixture: ComponentFixture<TestComponent>;
     let tuiPushService: TuiPushService;
     let pageObject: TuiPageObject<TestComponent>;
 
     function getLabelElement(): DebugElement {
-        return pageObject.getByAutomationId(`tui-push__heading`)!;
+        return pageObject.getByAutomationId('tui-push__heading')!;
     }
 
     beforeEach(async () => {
@@ -45,9 +45,9 @@ describe(`Push with TUI_PUSH_OPTIONS`, () => {
         pageObject = new TuiPageObject(fixture);
     });
 
-    describe(`heading`, () => {
-        it(`correctly shows heading option data`, () => {
-            tuiPushService.open(`Test`).subscribe();
+    describe('heading', () => {
+        it('correctly shows heading option data', () => {
+            tuiPushService.open('Test').subscribe();
             fixture.detectChanges();
 
             const labelElement = getLabelElement();

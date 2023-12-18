@@ -6,18 +6,18 @@ export async function checkChangelogBeforePush(): Promise<string | undefined> {
         output: process.stdout,
     });
 
-    readline.setPrompt(`Check\n./CHANGELOG.md\nand save all fixes. Then press enter`);
+    readline.setPrompt('Check\n./CHANGELOG.md\nand save all fixes. Then press enter');
     readline.prompt();
-    console.info(`\n`);
+    console.info('\n');
 
     return new Promise((resolve: (value?: PromiseLike<string> | string) => void) => {
         let response: string;
 
-        readline.on(`line`, userInput => {
+        readline.on('line', userInput => {
             response = userInput;
             readline.close();
         });
 
-        readline.on(`close`, () => resolve(response));
+        readline.on('close', () => resolve(response));
     });
 }

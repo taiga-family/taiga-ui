@@ -5,7 +5,7 @@ import {defer, from, Observable, shareReplay, switchMap} from 'rxjs';
 import {fromFetch} from 'rxjs/fetch';
 
 @Injectable({
-    providedIn: `root`,
+    providedIn: 'root',
 })
 export class TuiStaticRequestService {
     private readonly cache = new Map<string, Observable<string>>();
@@ -23,7 +23,7 @@ export class TuiStaticRequestService {
         }
 
         const response$ =
-            `AbortController` in this.win || isPlatformServer(this.platformId)
+            'AbortController' in this.win || isPlatformServer(this.platformId)
                 ? fromFetch(url)
                 : /**
                    * Fallback for Firefox 55 and 56

@@ -4,4 +4,4 @@ import {tuiCreateToken} from '@taiga-ui/cdk/utils';
 /**
  * Active date format for Taiga UI
  */
-export const TUI_DATE_FORMAT = tuiCreateToken<TuiDateMode>(`DMY`);
+export const TUI_DATE_FORMAT = tuiCreateToken<TuiDateMode>('DMY');

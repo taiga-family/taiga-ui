@@ -32,7 +32,7 @@ function isValidFocusout(target: any, removedElement: Element | null = null): bo
         // Not due to switching tabs/going to DevTools
         tuiGetDocumentOrShadowRoot(target).activeElement !== target &&
         // Not due to button/input becoming disabled or under disabled fieldset
-        !target.matches(`:disabled`) &&
+        !target.matches(':disabled') &&
         // Not due to element being removed from DOM
         !removedElement?.contains(target)
     );
@@ -40,8 +40,8 @@ function isValidFocusout(target: any, removedElement: Element | null = null): bo
 
 function shadowRootActiveElement(root: Document): Observable<EventTarget | null> {
     return merge(
-        tuiTypedFromEvent(root, `focusin`).pipe(map(({target}) => target)),
-        tuiTypedFromEvent(root, `focusout`).pipe(
+        tuiTypedFromEvent(root, 'focusin').pipe(map(({target}) => target)),
+        tuiTypedFromEvent(root, 'focusout').pipe(
             filter(
                 ({target, relatedTarget}) => !!relatedTarget && isValidFocusout(target),
             ),
@@ -59,11 +59,11 @@ export const TUI_ACTIVE_ELEMENT = tuiCreateTokenFromFactory<
     const removedElement$ = inject(TUI_REMOVED_ELEMENT);
     const win = inject(WINDOW);
     const doc = inject(DOCUMENT);
-    const focusout$ = tuiTypedFromEvent(win, `focusout`);
-    const focusin$ = tuiTypedFromEvent(win, `focusin`);
-    const blur$ = tuiTypedFromEvent(win, `blur`);
-    const mousedown$ = tuiTypedFromEvent(win, `mousedown`);
-    const mouseup$ = tuiTypedFromEvent(win, `mouseup`);
+    const focusout$ = tuiTypedFromEvent(win, 'focusout');
+    const focusin$ = tuiTypedFromEvent(win, 'focusin');
+    const blur$ = tuiTypedFromEvent(win, 'blur');
+    const mousedown$ = tuiTypedFromEvent(win, 'mousedown');
+    const mouseup$ = tuiTypedFromEvent(win, 'mouseup');
 
     return merge(
         focusout$.pipe(
@@ -84,7 +84,7 @@ export const TUI_ACTIVE_ELEMENT = tuiCreateTokenFromFactory<
         ),
         blur$.pipe(
             map(() => doc.activeElement),
-            filter(element => !!element?.matches(`iframe`)),
+            filter(element => !!element?.matches('iframe')),
         ),
         focusin$.pipe(
             switchMap(event => {

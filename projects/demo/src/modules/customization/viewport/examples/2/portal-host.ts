@@ -7,7 +7,7 @@ import {
 import {tuiAsViewport, TuiRectAccessor} from '@taiga-ui/core';
 
 @Component({
-    selector: `portal-host`,
+    selector: 'portal-host',
     template: `
         <ng-content></ng-content>
         <ng-container #viewContainer></ng-container>
@@ -26,7 +26,7 @@ export class PortalHost
     extends AbstractTuiPortalHostComponent
     implements TuiRectAccessor
 {
-    readonly type = `viewport`;
+    readonly type = 'viewport';
 
     getClientRect(): ClientRect {
         return this.el.nativeElement.getBoundingClientRect();

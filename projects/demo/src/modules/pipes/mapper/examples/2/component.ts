@@ -4,8 +4,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTypedMapper} from '@taiga-ui/cdk';
 
 @Component({
-    selector: `tui-mapper-example2`,
-    templateUrl: `./template.html`,
+    selector: 'tui-mapper-example2',
+    templateUrl: './template.html',
     encapsulation,
     changeDetection,
 })

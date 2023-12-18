@@ -16,21 +16,21 @@ function labelsProviderFactory(pages: TuiDocPages): readonly string[] {
  * Page title
  */
 export const NAVIGATION_TITLE = new InjectionToken<Observable<string>>(
-    `[NAVIGATION_TITLE]`,
+    '[NAVIGATION_TITLE]',
 );
 
 /**
  * Navigation sections labels for search
  */
 export const NAVIGATION_LABELS = new InjectionToken<readonly string[]>(
-    `[NAVIGATION_LABELS]`,
+    '[NAVIGATION_LABELS]',
 );
 
 /**
  * Navigation pages
  */
 export const NAVIGATION_ITEMS: InjectionToken<readonly TuiDocPages[]> =
-    new InjectionToken<readonly TuiDocPages[]>(`[NAVIGATION_ITEMS]`);
+    new InjectionToken<readonly TuiDocPages[]>('[NAVIGATION_ITEMS]');
 
 export const NAVIGATION_PROVIDERS: Provider[] = [
     TuiDestroyService,

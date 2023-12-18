@@ -14,7 +14,7 @@ export interface TuiSheetDialogOptions<I = never> {
 }
 
 export const TUI_SHEET_DIALOG_DEFAULT_OPTIONS: TuiSheetDialogDefaultOptions = {
-    label: ``,
+    label: '',
     stops: [],
     initial: 0,
     offset: 16,
