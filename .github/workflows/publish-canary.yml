@@ -1,8 +1,6 @@
 name: ⚠️ Publish canary
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '0 20 * * 1-5' # At UTC 20:00 (MSK 23:00) on every day-of-week from Monday through Friday
 
 jobs:
   build:
