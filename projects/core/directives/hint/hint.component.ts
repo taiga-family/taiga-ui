@@ -36,8 +36,17 @@ import {map, Observable, takeUntil} from 'rxjs';
 import {TuiHintDirective} from './hint.directive';
 import {TuiHintHoverDirective} from './hint-hover.directive';
 import {TuiHintPointerDirective} from './hint-pointer.directive';
+import {TuiHintPositionDirective} from './hint-position.directive';
 
 const GAP = 4;
+
+export const TUI_HINT_PROVIDERS = [
+    TuiDestroyService,
+    TuiPositionService,
+    TuiHoveredService,
+    tuiPositionAccessorFor('hint', TuiHintPositionDirective),
+    tuiRectAccessorFor('hint', TuiHintDirective),
+];
 
 @Component({
     selector: 'tui-hint',
@@ -50,13 +59,7 @@ const GAP = 4;
     `,
     styleUrls: ['./hint.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        TuiDestroyService,
-        TuiPositionService,
-        TuiHoveredService,
-        tuiPositionAccessorFor('hint'),
-        tuiRectAccessorFor('hint', TuiHintDirective),
-    ],
+    providers: TUI_HINT_PROVIDERS,
     animations: [tuiFadeIn],
     host: {
         '[@tuiFadeIn]': 'animation',

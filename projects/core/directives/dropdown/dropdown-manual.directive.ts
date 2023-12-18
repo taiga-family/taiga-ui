@@ -1,24 +1,20 @@
-import {Directive, Input, OnChanges} from '@angular/core';
-import {tuiAsDriver, TuiDriver} from '@taiga-ui/core/abstract';
-import {BehaviorSubject} from 'rxjs';
+import {Directive, inject, Input, OnChanges} from '@angular/core';
+import {tuiAsDriver} from '@taiga-ui/core/abstract';
+
+import {TuiDropdownDriver} from './dropdown.driver';
 
 @Directive({
-    selector: '[tuiDropdown][tuiDropdownManual]',
-    providers: [tuiAsDriver(TuiDropdownManualDirective)],
+    standalone: true,
+    selector: '[tuiDropdownManual]',
+    providers: [TuiDropdownDriver, tuiAsDriver(TuiDropdownDriver)],
 })
-export class TuiDropdownManualDirective extends TuiDriver implements OnChanges {
-    private readonly stream$ = new BehaviorSubject(false);
+export class TuiDropdownManualDirective implements OnChanges {
+    private readonly driver = inject(TuiDropdownDriver);
 
     @Input()
     tuiDropdownManual = false;
 
-    readonly type = 'dropdown';
-
-    constructor() {
-        super(subscriber => this.stream$.subscribe(subscriber));
-    }
-
     ngOnChanges(): void {
-        this.stream$.next(this.tuiDropdownManual);
+        this.driver.next(this.tuiDropdownManual);
     }
 }

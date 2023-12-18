@@ -1,25 +1,51 @@
-import {Directive, Inject, Input, Optional, SkipSelf} from '@angular/core';
-import {TuiHoveredService} from '@taiga-ui/cdk';
-import {tuiAsDriver, TuiDriver} from '@taiga-ui/core/abstract';
-import {delay, merge, Observable, of, share, Subject, switchMap, tap} from 'rxjs';
-
+import {DOCUMENT} from '@angular/common';
 import {
-    TUI_DROPDOWN_HOVER_OPTIONS,
-    TuiDropdownHoverOptions,
-} from './dropdown-hover.options';
+    ContentChild,
+    Directive,
+    ElementRef,
+    HostListener,
+    inject,
+    Input,
+    NgZone,
+} from '@angular/core';
+import {
+    TuiActiveZoneDirective,
+    tuiGetActualTarget,
+    tuiIsElement,
+    tuiTypedFromEvent,
+    tuiZoneOptimized,
+} from '@taiga-ui/cdk';
+import {tuiAsDriver, TuiDriver} from '@taiga-ui/core/abstract';
+import {delay, distinctUntilChanged, map, merge, of, share, switchMap, tap} from 'rxjs';
+
+import {TUI_DROPDOWN_HOVER_OPTIONS} from './dropdown-hover.options';
+import {TuiDropdownOpenDirective} from './dropdown-open.directive';
 
 @Directive({
-    selector: '[tuiDropdownHover]:not(ng-container)',
-    providers: [tuiAsDriver(TuiDropdownHoverDirective), TuiHoveredService],
+    standalone: true,
+    selector: '[tuiDropdownHover]',
+    providers: [TuiActiveZoneDirective, tuiAsDriver(TuiDropdownHoverDirective)],
 })
 export class TuiDropdownHoverDirective extends TuiDriver {
-    private readonly toggle$ = new Subject<boolean>();
-    private readonly stream$ = merge(this.toggle$, this.hovered$).pipe(
-        switchMap(visible =>
-            of(visible).pipe(delay(visible ? this.showDelay : this.hideDelay)),
-        ),
-        tap(visible => {
-            this.hovered = visible;
+    @ContentChild('tuiDropdownHost', {descendants: true, read: ElementRef})
+    private readonly dropdownHost?: ElementRef<HTMLElement>;
+
+    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly doc = inject(DOCUMENT);
+    private readonly options = inject(TUI_DROPDOWN_HOVER_OPTIONS);
+    private readonly activeZone = inject(TuiActiveZoneDirective);
+    private readonly open = inject(TuiDropdownOpenDirective, {optional: true});
+    private readonly stream$ = merge(
+        tuiTypedFromEvent(this.doc, 'mouseover').pipe(map(tuiGetActualTarget)),
+        tuiTypedFromEvent(this.doc, 'mouseout').pipe(map(e => e.relatedTarget)),
+    ).pipe(
+        map(element => tuiIsElement(element) && this.isHovered(element)),
+        distinctUntilChanged(),
+        switchMap(v => of(v).pipe(delay(v ? this.showDelay : this.hideDelay))),
+        tuiZoneOptimized(inject(NgZone)),
+        tap(hovered => {
+            this.hovered = hovered;
+            this.open?.toggle(hovered);
         }),
         share(),
     );
@@ -34,20 +60,22 @@ export class TuiDropdownHoverDirective extends TuiDriver {
 
     readonly type = 'dropdown';
 
-    constructor(
-        @Inject(TuiHoveredService) private readonly hovered$: Observable<boolean>,
-        @Inject(TUI_DROPDOWN_HOVER_OPTIONS)
-        private readonly options: TuiDropdownHoverOptions,
-        @SkipSelf()
-        @Optional()
-        @Inject(TuiDropdownHoverDirective)
-        private readonly parentHover: TuiDropdownHoverDirective | null,
-    ) {
+    constructor() {
         super(subscriber => this.stream$.subscribe(subscriber));
     }
 
-    toggle(visible: boolean): void {
-        this.parentHover?.toggle(visible);
-        this.toggle$.next(visible);
+    @HostListener('click.capture', ['$event'])
+    onClick(event: MouseEvent): void {
+        if (this.hovered && this.open) {
+            event.preventDefault();
+        }
+    }
+
+    private isHovered(element: Element): boolean {
+        const host = this.dropdownHost?.nativeElement || this.el;
+        const hovered = host.contains(element);
+        const child = !this.el.contains(element) && this.activeZone.contains(element);
+
+        return hovered || child;
     }
 }

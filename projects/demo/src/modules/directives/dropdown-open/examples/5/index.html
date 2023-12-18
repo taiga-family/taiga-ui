@@ -1,0 +1,18 @@
+<button
+    icon="tuiIconArrowUpRightLarge"
+    size="s"
+    title="Show details"
+    topRight
+    tuiDropdownCustomPosition
+    tuiDropdownOpen
+    tuiIconButton
+    [tuiDropdown]="content"
+></button>
+<ng-template #content>
+    <div class="dropdown">
+        <h2 class="tui-text_h6">Custom positioning</h2>
+        You can achieve this with
+        <code>tuiAsPositionAccessor</code>
+        helper and a custom directive
+    </div>
+</ng-template>

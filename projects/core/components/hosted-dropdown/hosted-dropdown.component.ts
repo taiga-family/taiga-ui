@@ -74,6 +74,9 @@ export interface TuiHostedDropdownContext
     close(): void;
 }
 
+/**
+ * @deprecated use {@link TuiDropdownOpenDirective} instead
+ */
 @Component({
     selector: 'tui-hosted-dropdown',
     templateUrl: './hosted-dropdown.template.html',

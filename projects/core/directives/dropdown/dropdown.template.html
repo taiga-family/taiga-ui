@@ -3,20 +3,19 @@
     tuiActiveZone
     tuiOverscroll="all"
     class="t-scroll"
-    (tuiHoveredChange)="onHoveredChange($event)"
 >
     <div
         tabindex="0"
-        (focus)="onTopFocus()"
+        (focus)="onTopFocus($event)"
     ></div>
     <div
-        *polymorpheusOutlet="directive.content as text; context: {$implicit: activeZone}"
+        *polymorpheusOutlet="directive.content as text; context: context || {$implicit: activeZone}"
         class="t-primitive"
     >
         {{ text }}
     </div>
     <div
         tabindex="0"
-        (focus)="onBottomFocus()"
+        (focus)="onBottomFocus($event)"
     ></div>
 </tui-scrollbar>

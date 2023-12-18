@@ -286,6 +286,12 @@ export const pages: TuiDocPages = [
             },
             {
                 section: `Tools`,
+                title: `DropdownOpen`,
+                keywords: `dropdown, контекст, выпадашка, дропдаун, меню, menu`,
+                route: `/directives/dropdown-open`,
+            },
+            {
+                section: `Tools`,
                 title: `DropdownContext`,
                 keywords: `dropdown, контекст, выпадашка, дропдаун, Context, right-click`,
                 route: `/directives/dropdown-context`,

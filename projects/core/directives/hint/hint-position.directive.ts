@@ -1,7 +1,6 @@
 import {Directive, Inject, Input} from '@angular/core';
 import {EMPTY_CLIENT_RECT, tuiPure} from '@taiga-ui/cdk';
 import {
-    tuiAsPositionAccessor,
     tuiFallbackRectAccessor,
     TuiPositionAccessor,
     TuiRectAccessor,
@@ -19,8 +18,7 @@ const TOP = 0;
 const LEFT = 1;
 
 @Directive({
-    selector: '[tuiHint]:not([tuiHintCustomPosition]):not(ng-container):not(ng-template)',
-    providers: [tuiAsPositionAccessor(TuiHintPositionDirective)],
+    selector: '[tuiHint]:not(ng-container):not(ng-template)',
 })
 export class TuiHintPositionDirective extends TuiPositionAccessor {
     private readonly points: Record<TuiHintDirection, [number, number]> =

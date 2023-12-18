@@ -1,18 +1,15 @@
 import {
     AfterViewChecked,
-    AfterViewInit,
+    ChangeDetectorRef,
     ComponentRef,
     Directive,
     ElementRef,
-    Inject,
+    inject,
     INJECTOR,
-    Injector,
     Input,
     OnChanges,
     OnDestroy,
-    Optional,
-    Self,
-    Type,
+    TemplateRef,
 } from '@angular/core';
 import {
     TuiActiveZoneDirective,
@@ -29,25 +26,31 @@ import {
 } from '@taiga-ui/core/abstract';
 import {TuiPortalItem} from '@taiga-ui/core/interfaces';
 import {tuiCheckFixedPosition} from '@taiga-ui/core/utils';
-import {PolymorpheusComponent, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable, Subject, takeUntil, throttleTime} from 'rxjs';
+import {
+    PolymorpheusComponent,
+    PolymorpheusContent,
+    PolymorpheusTemplate,
+} from '@tinkoff/ng-polymorpheus';
+import {Subject, takeUntil, throttleTime} from 'rxjs';
 
+import {TuiDropdownDriverDirective} from './dropdown.driver';
 import {TUI_DROPDOWN_COMPONENT} from './dropdown.providers';
-import {TuiDropdownOpenDirective} from './dropdown-open.directive';
+import {TuiDropdownPositionDirective} from './dropdown-position.directive';
 
 @Directive({
-    selector: '[tuiDropdown]:not(ng-container)',
+    standalone: true,
+    selector: '[tuiDropdown]:not(ng-container):not(ng-template)',
     providers: [
         TuiDestroyService,
         tuiAsRectAccessor(TuiDropdownDirective),
         tuiAsVehicle(TuiDropdownDirective),
     ],
     exportAs: 'tuiDropdown',
+    hostDirectives: [TuiDropdownDriverDirective, TuiDropdownPositionDirective],
 })
 export class TuiDropdownDirective
     implements
         AfterViewChecked,
-        AfterViewInit,
         OnDestroy,
         OnChanges,
         TuiPortalItem,
@@ -55,53 +58,43 @@ export class TuiDropdownDirective
         TuiVehicle
 {
     private readonly refresh$ = new Subject<void>();
+    private readonly service = inject(TuiDropdownPortalService);
+    private readonly cdr = inject(ChangeDetectorRef);
 
-    @Input('tuiDropdown')
-    content: PolymorpheusContent<TuiContextWithImplicit<TuiActiveZoneDirective>>;
+    @Input()
+    set tuiDropdown(
+        content: PolymorpheusContent<TuiContextWithImplicit<TuiActiveZoneDirective>>,
+    ) {
+        this.content =
+            content instanceof TemplateRef
+                ? new PolymorpheusTemplate(content, this.cdr)
+                : content;
+    }
+
+    readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    readonly type = 'dropdown';
+    readonly component = new PolymorpheusComponent(
+        inject(TUI_DROPDOWN_COMPONENT),
+        inject(INJECTOR),
+    );
 
     dropdownBoxRef: ComponentRef<unknown> | null = null;
+    content: PolymorpheusContent<TuiContextWithImplicit<TuiActiveZoneDirective>>;
 
-    readonly type = 'dropdown';
-
-    readonly component = new PolymorpheusComponent(this.dropdown, this.injector);
-
-    constructor(
-        @Self() @Inject(TuiDestroyService) destroy$: Observable<unknown>,
-        @Inject(ElementRef) readonly el: ElementRef<HTMLElement>,
-        @Inject(TUI_DROPDOWN_COMPONENT) private readonly dropdown: Type<unknown>,
-        @Inject(INJECTOR) private readonly injector: Injector,
-        @Inject(TuiDropdownPortalService)
-        private readonly dropdownService: TuiDropdownPortalService,
-        @Optional()
-        @Inject(TuiDropdownOpenDirective)
-        private readonly open: TuiDropdownOpenDirective | null,
-    ) {
-        if (this.open && !this.open.dropdown) {
-            this.open.dropdown = this;
-        } else {
-            this.open = null;
-        }
-
-        // Ignore multiple change detection triggers at the same frame
-        this.refresh$.pipe(throttleTime(0), takeUntil(destroy$)).subscribe(() => {
+    readonly sub = this.refresh$
+        .pipe(throttleTime(0), takeUntil(inject(TuiDestroyService, {self: true})))
+        .subscribe(() => {
             this.dropdownBoxRef?.changeDetectorRef.detectChanges();
             this.dropdownBoxRef?.changeDetectorRef.markForCheck();
         });
-    }
 
     @tuiPure
     get position(): 'absolute' | 'fixed' {
-        return tuiCheckFixedPosition(this.el.nativeElement) ? 'fixed' : 'absolute';
+        return tuiCheckFixedPosition(this.el) ? 'fixed' : 'absolute';
     }
 
     ngAfterViewChecked(): void {
         this.refresh$.next();
-    }
-
-    ngAfterViewInit(): void {
-        if (this.open) {
-            this.toggle(this.open.tuiDropdownOpen);
-        }
     }
 
     ngOnChanges(): void {
@@ -112,24 +105,18 @@ export class TuiDropdownDirective
 
     ngOnDestroy(): void {
         this.toggle(false);
-
-        if (this.open) {
-            this.open.dropdown = undefined;
-        }
     }
 
-    getClientRect(): ClientRect {
-        return this.el.nativeElement.getBoundingClientRect();
+    getClientRect(): DOMRect {
+        return this.el.getBoundingClientRect();
     }
 
     toggle(show: boolean): void {
         if (show && this.content && !this.dropdownBoxRef) {
-            this.dropdownBoxRef = this.dropdownService.add(this.component);
-            this.open?.update(true);
+            this.dropdownBoxRef = this.service.add(this.component);
         } else if (!show && this.dropdownBoxRef) {
-            this.dropdownService.remove(this.dropdownBoxRef);
+            this.service.remove(this.dropdownBoxRef);
             this.dropdownBoxRef = null;
-            this.open?.update(false);
         }
     }
 }

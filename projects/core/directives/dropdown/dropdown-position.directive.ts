@@ -1,7 +1,6 @@
-import {Directive, Inject} from '@angular/core';
-import {EMPTY_CLIENT_RECT, tuiPure} from '@taiga-ui/cdk';
+import {Directive, inject} from '@angular/core';
+import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk';
 import {
-    tuiAsPositionAccessor,
     tuiFallbackRectAccessor,
     TuiPositionAccessor,
     TuiRectAccessor,
@@ -10,27 +9,22 @@ import {TUI_VIEWPORT} from '@taiga-ui/core/tokens';
 import {TuiPoint, TuiVerticalDirection} from '@taiga-ui/core/types';
 
 import {TuiDropdownDirective} from './dropdown.directive';
-import {TUI_DROPDOWN_OPTIONS, TuiDropdownOptions} from './dropdown-options.directive';
+import {TUI_DROPDOWN_OPTIONS} from './dropdown-options.directive';
 
-@Directive({
-    selector: '[tuiDropdown]:not([tuiDropdownCustomPosition]):not([tuiDropdownSided])',
-    providers: [tuiAsPositionAccessor(TuiDropdownPositionDirective)],
-})
+@Directive({standalone: true, selector: '[tuiDropdownPosition]'})
 export class TuiDropdownPositionDirective extends TuiPositionAccessor {
+    private readonly options = inject(TUI_DROPDOWN_OPTIONS);
+    private readonly viewport = inject(TUI_VIEWPORT);
+
     private previous?: TuiVerticalDirection;
 
     readonly type = 'dropdown';
+    readonly accessor = tuiFallbackRectAccessor('dropdown')(
+        inject(TuiRectAccessor) as any as readonly TuiRectAccessor[],
+        inject(TuiDropdownDirective),
+    );
 
-    constructor(
-        @Inject(TUI_DROPDOWN_OPTIONS) private readonly options: TuiDropdownOptions,
-        @Inject(TUI_VIEWPORT) private readonly viewport: TuiRectAccessor,
-        @Inject(TuiRectAccessor) private readonly accessors: readonly TuiRectAccessor[],
-        @Inject(TuiDropdownDirective) private readonly directive: TuiDropdownDirective,
-    ) {
-        super();
-    }
-
-    getPosition({width, height}: ClientRect): TuiPoint {
+    getPosition({width, height}: DOMRect): TuiPoint {
         if (!width && !height) {
             this.previous = undefined;
         }
@@ -73,10 +67,5 @@ export class TuiDropdownPositionDirective extends TuiPositionAccessor {
         this.previous = better;
 
         return [position[better], position[align]];
-    }
-
-    @tuiPure
-    get accessor(): TuiRectAccessor {
-        return tuiFallbackRectAccessor('dropdown')(this.accessors, this.directive);
     }
 }

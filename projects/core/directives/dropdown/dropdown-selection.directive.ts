@@ -2,7 +2,7 @@ import {DOCUMENT} from '@angular/common';
 import {
     Directive,
     ElementRef,
-    Inject,
+    inject,
     Input,
     OnDestroy,
     ViewContainerRef,
@@ -29,18 +29,13 @@ import {
 } from '@taiga-ui/core/abstract';
 import {TUI_SELECTION_STREAM} from '@taiga-ui/core/tokens';
 import {tuiGetWordRange} from '@taiga-ui/core/utils';
-import {
-    BehaviorSubject,
-    combineLatest,
-    distinctUntilChanged,
-    map,
-    Observable,
-} from 'rxjs';
+import {BehaviorSubject, combineLatest, distinctUntilChanged, map} from 'rxjs';
 
 import {TuiDropdownDirective} from './dropdown.directive';
 
 @Directive({
-    selector: '[tuiDropdown][tuiDropdownSelection]',
+    standalone: true,
+    selector: '[tuiDropdownSelection]',
     providers: [
         tuiAsDriver(TuiDropdownSelectionDirective),
         tuiAsRectAccessor(TuiDropdownSelectionDirective),
@@ -50,13 +45,17 @@ export class TuiDropdownSelectionDirective
     extends TuiDriver
     implements TuiRectAccessor, OnDestroy
 {
+    private readonly doc = inject(DOCUMENT);
+    private readonly vcr = inject(ViewContainerRef);
+    private readonly dropdown = inject(TuiDropdownDirective);
+    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
     private readonly handler$ = new BehaviorSubject<TuiBooleanHandler<Range>>(
         ALWAYS_TRUE_HANDLER,
     );
 
     private readonly stream$ = combineLatest([
         this.handler$,
-        this.selection$.pipe(
+        inject(TUI_SELECTION_STREAM).pipe(
             map(() => this.getRange()),
             distinctUntilChanged(
                 (x, y) => x.startOffset === y.startOffset && x.endOffset === y.endOffset,
@@ -64,9 +63,7 @@ export class TuiDropdownSelectionDirective
         ),
     ]).pipe(
         map(([handler, range]) => {
-            const contained = this.el.nativeElement.contains(
-                range.commonAncestorContainer,
-            );
+            const contained = this.el.contains(range.commonAncestorContainer);
 
             this.range =
                 contained && tuiIsTextNode(range.commonAncestorContainer)
@@ -77,6 +74,7 @@ export class TuiDropdownSelectionDirective
         }),
     );
 
+    private range = inject(TUI_RANGE);
     private ghost?: HTMLElement;
 
     @Input('tuiDropdownSelectionPosition')
@@ -91,18 +89,11 @@ export class TuiDropdownSelectionDirective
 
     readonly type = 'dropdown';
 
-    constructor(
-        @Inject(TUI_RANGE) private range: Range,
-        @Inject(DOCUMENT) private readonly doc: Document,
-        @Inject(TUI_SELECTION_STREAM) private readonly selection$: Observable<unknown>,
-        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
-        @Inject(ViewContainerRef) private readonly vcr: ViewContainerRef,
-        @Inject(TuiDropdownDirective) private readonly dropdown: TuiDropdownDirective,
-    ) {
+    constructor() {
         super(subscriber => this.stream$.subscribe(subscriber));
     }
 
-    getClientRect(): ClientRect {
+    getClientRect(): DOMRect {
         switch (this.position) {
             case 'tag': {
                 const {commonAncestorContainer} = this.range;
@@ -131,7 +122,7 @@ export class TuiDropdownSelectionDirective
         const active = tuiGetNativeFocused(this.doc);
         const selection = this.doc.getSelection();
         const range =
-            active && tuiIsTextfield(active) && this.el.nativeElement.contains(active)
+            active && tuiIsTextfield(active) && this.el.contains(active)
                 ? this.veryVerySadInputFix(active)
                 : (selection?.rangeCount && selection.getRangeAt(0)) || this.range;
 
@@ -150,12 +141,11 @@ export class TuiDropdownSelectionDirective
      */
     private inDropdown(range: Range): boolean {
         const {startContainer, endContainer} = range;
-        const {nativeElement} = this.el;
         const inDropdown = this.boxContains(range.commonAncestorContainer);
         const hostToDropdown =
-            this.boxContains(endContainer) && nativeElement.contains(startContainer);
+            this.boxContains(endContainer) && this.el.contains(startContainer);
         const dropdownToHost =
-            this.boxContains(startContainer) && nativeElement.contains(endContainer);
+            this.boxContains(startContainer) && this.el.contains(endContainer);
 
         return inDropdown || hostToDropdown || dropdownToHost;
     }
@@ -165,7 +155,7 @@ export class TuiDropdownSelectionDirective
         const {top, left, width, height} = element.getBoundingClientRect();
         const {selectionStart, selectionEnd, value} = element;
         const range = this.doc.createRange();
-        const hostRect = this.el.nativeElement.getBoundingClientRect();
+        const hostRect = this.el.getBoundingClientRect();
 
         ghost.style.top = tuiPx(top - hostRect.top);
         ghost.style.left = tuiPx(left - hostRect.left);

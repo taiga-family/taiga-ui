@@ -1,17 +1,14 @@
-import {Directive, Inject, Input} from '@angular/core';
+import {Directive, inject, Input} from '@angular/core';
 import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk';
-import {
-    tuiAsPositionAccessor,
-    TuiPositionAccessor,
-    TuiRectAccessor,
-} from '@taiga-ui/core/abstract';
+import {tuiAsPositionAccessor, TuiPositionAccessor} from '@taiga-ui/core/abstract';
 import {TUI_VIEWPORT} from '@taiga-ui/core/tokens';
 import {TuiPoint} from '@taiga-ui/core/types';
 
-import {TUI_DROPDOWN_OPTIONS, TuiDropdownOptions} from './dropdown-options.directive';
+import {TUI_DROPDOWN_OPTIONS} from './dropdown-options.directive';
 import {TuiDropdownPositionDirective} from './dropdown-position.directive';
 
 @Directive({
+    standalone: true,
     selector: '[tuiDropdownSided]',
     providers: [
         TuiDropdownPositionDirective,
@@ -19,6 +16,10 @@ import {TuiDropdownPositionDirective} from './dropdown-position.directive';
     ],
 })
 export class TuiDropdownPositionSidedDirective extends TuiPositionAccessor {
+    private readonly options = inject(TUI_DROPDOWN_OPTIONS);
+    private readonly viewport = inject(TUI_VIEWPORT);
+    private readonly vertical = inject(TuiDropdownPositionDirective);
+
     private previous = this.options.direction || 'bottom';
 
     @Input()
@@ -29,16 +30,7 @@ export class TuiDropdownPositionSidedDirective extends TuiPositionAccessor {
 
     readonly type = 'dropdown';
 
-    constructor(
-        @Inject(TUI_DROPDOWN_OPTIONS) private readonly options: TuiDropdownOptions,
-        @Inject(TUI_VIEWPORT) private readonly viewport: TuiRectAccessor,
-        @Inject(TuiDropdownPositionDirective)
-        private readonly vertical: TuiDropdownPositionDirective,
-    ) {
-        super();
-    }
-
-    getPosition(rect: ClientRect): TuiPoint {
+    getPosition(rect: DOMRect): TuiPoint {
         if (this.tuiDropdownSided === false) {
             return this.vertical.getPosition(rect);
         }

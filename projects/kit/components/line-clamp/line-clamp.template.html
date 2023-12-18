@@ -1,6 +1,6 @@
 <div
     *tuiLet="lineClamp$ | async as lineClamp"
-    tuiHintCustomPosition
+    tuiLineClampPosition
     class="t-wrapper"
     [style.-webkit-line-clamp]="lineClamp"
     [style.word-break]="(lineClamp || 0) > 1 ? 'break-word' : 'break-all'"

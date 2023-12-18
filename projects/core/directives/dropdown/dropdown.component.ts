@@ -1,29 +1,37 @@
-import {AnimationOptions} from '@angular/animations';
 import {
     ChangeDetectionStrategy,
     Component,
     ElementRef,
-    Inject,
-    Optional,
-    Self,
+    inject,
+    OnInit,
 } from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
-import {TuiDestroyService, tuiGetClosestFocusable, tuiPx} from '@taiga-ui/cdk';
+import {
+    TuiActiveZoneModule,
+    TuiDestroyService,
+    tuiGetClosestFocusable,
+    tuiIsElement,
+    TuiOverscrollModule,
+    tuiPx,
+} from '@taiga-ui/cdk';
 import {
     tuiPositionAccessorFor,
     TuiRectAccessor,
     tuiRectAccessorFor,
 } from '@taiga-ui/core/abstract';
 import {tuiDropdownAnimation} from '@taiga-ui/core/animations';
+import {TuiScrollbarModule} from '@taiga-ui/core/components/scrollbar';
 import {MODE_PROVIDER} from '@taiga-ui/core/providers';
 import {TuiPositionService, TuiVisualViewportService} from '@taiga-ui/core/services';
 import {TUI_ANIMATION_OPTIONS, TUI_MODE} from '@taiga-ui/core/tokens';
-import {TuiBrightness, TuiPoint} from '@taiga-ui/core/types';
+import {TuiBrightness} from '@taiga-ui/core/types';
+import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import {map, Observable, takeUntil} from 'rxjs';
 
 import {TuiDropdownDirective} from './dropdown.directive';
-import {TuiDropdownHoverDirective} from './dropdown-hover.directive';
-import {TUI_DROPDOWN_OPTIONS, TuiDropdownOptions} from './dropdown-options.directive';
+import {TUI_DROPDOWN_CONTEXT} from './dropdown.providers';
+import {TUI_DROPDOWN_OPTIONS} from './dropdown-options.directive';
+import {TuiDropdownPositionDirective} from './dropdown-position.directive';
 
 /**
  * @description:
@@ -31,7 +39,14 @@ import {TUI_DROPDOWN_OPTIONS, TuiDropdownOptions} from './dropdown-options.direc
  * using default style of white rounded box with a shadow
  */
 @Component({
+    standalone: true,
     selector: 'tui-dropdown',
+    imports: [
+        PolymorpheusModule,
+        TuiActiveZoneModule,
+        TuiOverscrollModule,
+        TuiScrollbarModule,
+    ],
     templateUrl: './dropdown.template.html',
     styleUrls: ['./dropdown.style.less'],
     // @bad TODO: OnPush
@@ -40,7 +55,7 @@ import {TUI_DROPDOWN_OPTIONS, TuiDropdownOptions} from './dropdown-options.direc
     providers: [
         TuiDestroyService,
         TuiPositionService,
-        tuiPositionAccessorFor('dropdown'),
+        tuiPositionAccessorFor('dropdown', TuiDropdownPositionDirective),
         tuiRectAccessorFor('dropdown', TuiDropdownDirective),
         MODE_PROVIDER,
     ],
@@ -51,56 +66,65 @@ import {TUI_DROPDOWN_OPTIONS, TuiDropdownOptions} from './dropdown-options.direc
     },
     animations: [tuiDropdownAnimation],
 })
-export class TuiDropdownComponent {
-    constructor(
-        @Inject(TuiVisualViewportService) visualViewportService: TuiVisualViewportService,
-        @Inject(TuiPositionService) position$: Observable<TuiPoint>,
-        @Self() @Inject(TuiDestroyService) destroy$: Observable<void>,
-        @Inject(TuiDropdownDirective) readonly directive: TuiDropdownDirective,
-        @Inject(TUI_ANIMATION_OPTIONS) readonly animation: AnimationOptions,
-        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
-        @Inject(TuiRectAccessor) private readonly accessor: TuiRectAccessor,
-        @Inject(WINDOW) private readonly win: Window,
-        @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
-        @Inject(TUI_DROPDOWN_OPTIONS) readonly options: TuiDropdownOptions,
-        @Optional()
-        @Inject(TuiDropdownHoverDirective)
-        private readonly hoverDirective: TuiDropdownHoverDirective | null,
-    ) {
-        position$
-            .pipe(
-                map(point =>
-                    this.directive.position === 'fixed'
-                        ? visualViewportService.correct(point)
-                        : point,
-                ),
-                takeUntil(destroy$),
-            )
-            .subscribe(([top, left]) => {
-                this.update(top, left);
-            });
+export class TuiDropdownComponent implements OnInit {
+    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly accessor = inject(TuiRectAccessor);
+    private readonly win = inject(WINDOW);
+    private readonly viewport = inject(TuiVisualViewportService);
 
+    readonly mode$: Observable<TuiBrightness | null> = inject(TUI_MODE);
+    readonly animation = inject(TUI_ANIMATION_OPTIONS);
+    readonly options = inject(TUI_DROPDOWN_OPTIONS);
+    readonly directive = inject(TuiDropdownDirective);
+    readonly context = inject(TUI_DROPDOWN_CONTEXT, {optional: true});
+
+    readonly sub = inject(TuiPositionService)
+        .pipe(
+            map(point =>
+                this.directive.position === 'fixed'
+                    ? this.viewport.correct(point)
+                    : point,
+            ),
+            takeUntil(inject(TuiDestroyService, {self: true})),
+        )
+        .subscribe(([top, left]) => {
+            this.update(top, left);
+        });
+
+    ngOnInit(): void {
         this.updateWidth(this.accessor.getClientRect().width);
     }
 
-    onHoveredChange(hovered: boolean): void {
-        this.hoverDirective?.toggle(hovered);
+    onTopFocus({target, relatedTarget}: FocusEvent): void {
+        if (
+            tuiIsElement(target) &&
+            tuiIsElement(relatedTarget) &&
+            !this.el.contains(relatedTarget)
+        ) {
+            this.moveFocusInside(target, true);
+        } else {
+            this.moveFocusOutside(true);
+        }
     }
 
-    onTopFocus(): void {
-        this.moveFocusOutside(true);
-    }
-
-    onBottomFocus(): void {
-        this.moveFocusOutside(false);
+    onBottomFocus({target, relatedTarget}: FocusEvent): void {
+        if (
+            tuiIsElement(target) &&
+            tuiIsElement(relatedTarget) &&
+            !this.el.contains(relatedTarget)
+        ) {
+            this.moveFocusInside(target, false);
+        } else {
+            this.moveFocusOutside(false);
+        }
     }
 
     private update(top: number, left: number): void {
-        const {style} = this.el.nativeElement;
-        const {right} = this.el.nativeElement.getBoundingClientRect();
+        const {style} = this.el;
+        const {right} = this.el.getBoundingClientRect();
         const {maxHeight, offset} = this.options;
         const {innerHeight} = this.win;
-        const clientRect = this.el.nativeElement.offsetParent?.getBoundingClientRect();
+        const clientRect = this.el.offsetParent?.getBoundingClientRect();
         const {position} = this.directive;
         const rect = this.accessor.getClientRect();
         const offsetX = position === 'fixed' ? 0 : -(clientRect?.left || 0);
@@ -126,7 +150,7 @@ export class TuiDropdownComponent {
     }
 
     private updateWidth(width: number): void {
-        const {style} = this.el.nativeElement;
+        const {style} = this.el;
 
         switch (this.options.limitWidth) {
             case 'min':
@@ -140,13 +164,22 @@ export class TuiDropdownComponent {
         }
     }
 
-    private moveFocusOutside(previous: boolean): void {
-        const {nativeElement} = this.directive.el;
-        const {ownerDocument} = nativeElement;
-        const root = ownerDocument ? ownerDocument.body : nativeElement;
-        let focusable = tuiGetClosestFocusable({initial: nativeElement, root, previous});
+    private moveFocusInside(initial: Element, next: boolean): void {
+        const focusable = tuiGetClosestFocusable({
+            initial,
+            root: this.el,
+            previous: !next,
+        });
 
-        while (focusable !== null && nativeElement.contains(focusable)) {
+        focusable?.focus();
+    }
+
+    private moveFocusOutside(previous: boolean): void {
+        const initial = this.directive.el;
+        const root = initial.ownerDocument.body || initial;
+        let focusable = tuiGetClosestFocusable({initial, root, previous});
+
+        while (focusable !== null && initial.contains(focusable)) {
             focusable = tuiGetClosestFocusable({initial: focusable, root, previous});
         }
 

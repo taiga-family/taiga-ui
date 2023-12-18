@@ -613,6 +613,15 @@ export const ROUTES: Routes = [
         },
     },
     {
+        path: `directives/dropdown-open`,
+        loadChildren: async () =>
+            (await import(`../directives/dropdown-open/dropdown-open.module`))
+                .ExampleTuiDropdownOpenModule,
+        data: {
+            title: `DropdownOpen`,
+        },
+    },
+    {
         path: `directives/dropdown-context`,
         loadChildren: async () =>
             (await import(`../directives/dropdown-context/dropdown-context.module`))
