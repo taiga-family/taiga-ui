@@ -20,6 +20,6 @@ export function tuiProvideRoutePageTab({
         path,
         loadComponent,
         data: {title},
-        children: [{path: `:tab`, loadComponent}],
+        children: [{path: ':tab', loadComponent}],
     };
 }
