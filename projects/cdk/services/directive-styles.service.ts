@@ -1,9 +1,11 @@
 import {
     ComponentFactoryResolver,
+    ComponentRef,
     Inject,
     Injectable,
     INJECTOR,
     Injector,
+    OnDestroy,
     Type,
 } from '@angular/core';
 
@@ -13,8 +15,8 @@ import {
 @Injectable({
     providedIn: `root`,
 })
-export class TuiDirectiveStylesService {
-    private readonly map = new Map<Type<unknown>, unknown>();
+export class TuiDirectiveStylesService implements OnDestroy {
+    private readonly map = new Map<string, ComponentRef<unknown>>();
 
     constructor(
         @Inject(ComponentFactoryResolver)
@@ -23,11 +25,15 @@ export class TuiDirectiveStylesService {
     ) {}
 
     addComponent(component: Type<unknown>): void {
-        if (!this.map.has(component)) {
+        if (!this.map.has(component.name)) {
             this.map.set(
-                component,
+                component.name,
                 this.resolver.resolveComponentFactory(component).create(this.injector),
             );
         }
+    }
+
+    ngOnDestroy(): void {
+        this.map.forEach(value => value.destroy());
     }
 }
