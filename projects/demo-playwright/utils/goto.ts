@@ -27,12 +27,12 @@ export async function tuiGoto(
         globalThis.Math.random = () => 0.42;
     });
     await page.addInitScript(() =>
-        globalThis.sessionStorage.setItem(`playwright`, `true`),
+        globalThis.sessionStorage.setItem('playwright', 'true'),
     );
 
     if (enableNightMode) {
         await page.addInitScript(() =>
-            globalThis.localStorage.setItem(`tuiNight`, `true`),
+            globalThis.localStorage.setItem('tuiNight', 'true'),
         );
     }
 
@@ -40,19 +40,19 @@ export async function tuiGoto(
 
     const response = await page.goto(url, playwrightGotoOptions);
 
-    await expect(page.locator(`app`)).toHaveClass(/_loaded/, {timeout: 15_000});
+    await expect(page.locator('app')).toHaveClass(/_loaded/, {timeout: 15_000});
     await tuiWaitForFonts(page);
 
     if (hideHeader) {
-        await page.locator(`[tuidocheader]`).evaluate(el => el.remove());
+        await page.locator('[tuidocheader]').evaluate(el => el.remove());
     }
 
     if (hideVersionManager) {
-        await page.locator(`version-manager`).evaluate(el => el.remove());
+        await page.locator('version-manager').evaluate(el => el.remove());
     }
 
     if (hideLanguageSwitcher) {
-        await page.locator(`tui-language-switcher`).evaluate(el => el.remove());
+        await page.locator('tui-language-switcher').evaluate(el => el.remove());
     }
 
     return response;

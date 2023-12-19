@@ -8,7 +8,7 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {TuiLoaderComponent} from '../loader.component';
 import {TuiLoaderModule} from '../loader.module';
 
-describe(`Loader`, () => {
+describe('Loader', () => {
     @Component({
         template: `
             <tui-loader
@@ -26,7 +26,7 @@ describe(`Loader`, () => {
         @ViewChild(TuiLoaderComponent, {static: true})
         component!: TuiLoaderComponent;
 
-        @ViewChild(`template`, {static: true})
+        @ViewChild('template', {static: true})
         template: PolymorpheusContent;
 
         custom = false;
@@ -50,15 +50,15 @@ describe(`Loader`, () => {
         fixture.detectChanges();
     });
 
-    describe(`showLoader:`, () => {
-        it(`Loader is shown by default`, async () => {
+    describe('showLoader:', () => {
+        it('Loader is shown by default', async () => {
             const harness = await loader.getHarness(TuiLoaderHarness);
             const shown = await harness.isLoading();
 
             expect(shown).toBe(true);
         });
 
-        it(`With showLoader = false, the loader is shown`, async () => {
+        it('With showLoader = false, the loader is shown', async () => {
             component.custom = true;
             fixture.detectChanges();
 
@@ -69,15 +69,15 @@ describe(`Loader`, () => {
         });
     });
 
-    describe(`Text`, () => {
-        it(`No text`, async () => {
+    describe('Text', () => {
+        it('No text', async () => {
             const harness = await loader.getHarness(TuiLoaderHarness);
             const text = await harness.getText();
 
-            expect(text).toBe(``);
+            expect(text).toBe('');
         });
 
-        it(`If there is \`textContent\`, the text is shown`, async () => {
+        it('If there is `textContent`, the text is shown', async () => {
             component.content = component.template;
             component.custom = true;
             component.showLoader = true;
@@ -86,7 +86,7 @@ describe(`Loader`, () => {
             const harness = await loader.getHarness(TuiLoaderHarness);
             const text = await harness.getText();
 
-            expect(text).toBe(`Loading...`);
+            expect(text).toBe('Loading...');
         });
     });
 });

@@ -1,7 +1,7 @@
 import {TuiComponentHarness} from '@taiga-ui/testing/utils';
 
 export class TuiSvgHarness extends TuiComponentHarness {
-    static hostSelector = `tui-svg`;
+    static hostSelector = 'tui-svg';
 
     async click(): Promise<void> {
         return (await this.host()).click();
@@ -12,12 +12,12 @@ export class TuiSvgHarness extends TuiComponentHarness {
     }
 
     async isInnerHTML(): Promise<boolean> {
-        return !!(await this.locatorForOptional(`div`)());
+        return !!(await this.locatorForOptional('div')());
     }
 
     async getUse(): Promise<string | null> {
         return (
-            (await this.locatorForOptional(`use`)())?.getAttribute(`xlink:href`) ?? null
+            (await this.locatorForOptional('use')())?.getAttribute('xlink:href') ?? null
         );
     }
 }

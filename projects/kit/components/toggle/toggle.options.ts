@@ -21,10 +21,10 @@ export interface TuiToggleOptions {
 export const TUI_TOGGLE_DEFAULT_OPTIONS: TuiToggleOptions = {
     icons: {
         toggleOff({$implicit}: TuiContextWithImplicit<TuiSizeL>): string {
-            return $implicit === `m` ? `tuiIconToggleOff` : `tuiIconToggleOffLarge`;
+            return $implicit === 'm' ? 'tuiIconToggleOff' : 'tuiIconToggleOffLarge';
         },
         toggleOn({$implicit}: TuiContextWithImplicit<TuiSizeL>): string {
-            return $implicit === `m` ? `tuiIconToggleOn` : `tuiIconToggleOnLarge`;
+            return $implicit === 'm' ? 'tuiIconToggleOn' : 'tuiIconToggleOnLarge';
         },
     },
     appearances: {
@@ -33,7 +33,7 @@ export const TUI_TOGGLE_DEFAULT_OPTIONS: TuiToggleOptions = {
     },
     singleColor: false,
     showIcons: false,
-    size: `m`,
+    size: 'm',
 };
 
 /**

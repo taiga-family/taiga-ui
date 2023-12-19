@@ -12,7 +12,7 @@ import {join} from 'path';
 
 import {createAngularJson} from '../../../utils/create-angular-json';
 
-const collectionPath = join(__dirname, `../../../migration.json`);
+const collectionPath = join(__dirname, '../../../migration.json');
 
 const COMPONENT_BEFORE = `
 import { TuiToggleModule } from "@taiga-ui/experimental";
@@ -60,17 +60,17 @@ const TEMPLATE_AFTER = `
     tuiToggle
     type="checkbox"
     [showIcons]="true"
-    ${``}
+    ${''}
 />
 `;
 
-describe(`ng-update`, () => {
+describe('ng-update', () => {
     let host: UnitTestTree;
     let runner: SchematicTestRunner;
 
     beforeEach(() => {
         host = new UnitTestTree(new HostTree());
-        runner = new SchematicTestRunner(`schematics`, collectionPath);
+        runner = new SchematicTestRunner('schematics', collectionPath);
 
         setActiveProject(createProject(host));
 
@@ -79,41 +79,41 @@ describe(`ng-update`, () => {
         saveActiveProject();
     });
 
-    it(`should migrate toggle in template`, async () => {
+    it('should migrate toggle in template', async () => {
         const tree = await runner
             .runSchematicAsync(
-                `updateToV4`,
-                {'skip-logs': process.env[`TUI_CI`] === `true`} as Partial<TuiSchema>,
+                'updateToV4',
+                {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
                 host,
             )
             .toPromise();
 
-        expect(tree.readContent(`test/app/test.template.html`)).toEqual(TEMPLATE_AFTER);
+        expect(tree.readContent('test/app/test.template.html')).toEqual(TEMPLATE_AFTER);
     });
 
-    it(`should migrate toggle references in ts files`, async () => {
+    it('should migrate toggle references in ts files', async () => {
         const tree = await runner
             .runSchematicAsync(
-                `updateToV4`,
-                {'skip-logs': process.env[`TUI_CI`] === `true`} as Partial<TuiSchema>,
+                'updateToV4',
+                {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
                 host,
             )
             .toPromise();
 
-        expect(tree.readContent(`test/app/test.component.ts`)).toEqual(COMPONENT_AFTER);
+        expect(tree.readContent('test/app/test.component.ts')).toEqual(COMPONENT_AFTER);
     });
 
     afterEach(() => resetActiveProject());
 });
 
 function createMainFiles(): void {
-    createSourceFile(`test/app/test.component.ts`, COMPONENT_BEFORE);
+    createSourceFile('test/app/test.component.ts', COMPONENT_BEFORE);
 
-    createSourceFile(`test/app/test.template.html`, TEMPLATE_BEFORE);
+    createSourceFile('test/app/test.template.html', TEMPLATE_BEFORE);
 
     createAngularJson();
     createSourceFile(
-        `package.json`,
-        `{"dependencies": {"@angular/core": "~13.0.0", "@taiga-ui/addon-commerce": "~3.42.0"}}`,
+        'package.json',
+        '{"dependencies": {"@angular/core": "~13.0.0", "@taiga-ui/addon-commerce": "~3.42.0"}}',
     );
 }

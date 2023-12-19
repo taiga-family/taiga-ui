@@ -12,7 +12,7 @@ export const TUI_IS_MOBILE_RES_PROVIDER: Provider = {
         mobile$: Observable<boolean>,
         {nativeElement}: ElementRef,
     ): Observable<boolean> => {
-        nativeElement[`$.class._mobile`] = mobile$;
+        nativeElement['$.class._mobile'] = mobile$;
 
         return mobile$;
     },

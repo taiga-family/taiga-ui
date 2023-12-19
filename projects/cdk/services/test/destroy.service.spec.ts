@@ -2,25 +2,25 @@ import {TuiDestroyService} from '@taiga-ui/cdk';
 import {Observable, of, timer} from 'rxjs';
 import {finalize, takeUntil} from 'rxjs/operators';
 
-describe(`TuiDestroy service`, () => {
+describe('TuiDestroy service', () => {
     let service: TuiDestroyService;
 
     beforeEach(() => {
         service = new TuiDestroyService();
     });
 
-    it(`keeps subscription when alive`, () => {
-        let result = `initial`;
-        const observable$: Observable<string> = of<string>(`test`);
+    it('keeps subscription when alive', () => {
+        let result = 'initial';
+        const observable$: Observable<string> = of<string>('test');
 
         observable$.pipe(takeUntil(service)).subscribe(data => {
             result = data;
         });
 
-        expect(result).toBe(`test`);
+        expect(result).toBe('test');
     });
 
-    it(`completes Observable on destroy`, () => {
+    it('completes Observable on destroy', () => {
         let result = false;
 
         const observable$: Observable<unknown> = timer(2000).pipe(

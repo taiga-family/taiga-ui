@@ -32,12 +32,12 @@ function migrateExpand({
     const template = getTemplateFromTemplateResource(resource, fileSystem);
     const templateOffset = getTemplateOffset(resource);
 
-    const elements = findElementsByTagName(template, `tui-expand`);
+    const elements = findElementsByTagName(template, 'tui-expand');
 
     elements.forEach(element => {
         const templateElement = findElementsByFn(
             element.childNodes,
-            el => el.tagName === `ng-template`,
+            el => el.tagName === 'ng-template',
         )[0];
 
         if (!templateElement) {
@@ -45,7 +45,7 @@ function migrateExpand({
         }
 
         const tuiExpandAttr = templateElement.attrs.find(
-            attr => attr.name === `tuiexpandcontent`,
+            attr => attr.name === 'tuiexpandcontent',
         );
 
         const insertTo = templateElement?.sourceCodeLocation?.startTag.endOffset;
@@ -54,7 +54,7 @@ function migrateExpand({
             return;
         }
 
-        recorder.insertRight(insertTo + templateOffset - 1, ` tuiExpandContent`);
+        recorder.insertRight(insertTo + templateOffset - 1, ' tuiExpandContent');
     });
 }
 
@@ -62,7 +62,7 @@ export function migrateExpandTemplates(
     fileSystem: DevkitFileSystem,
     options: TuiSchema,
 ): void {
-    !options[`skip-logs`] &&
+    !options['skip-logs'] &&
         infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} migrating templates...`);
 
     const componentWithTemplatesPaths = getComponentTemplates(ALL_TS_FILES);
@@ -75,10 +75,10 @@ export function migrateExpandTemplates(
         const path = fileSystem.resolve(getPathFromTemplateResource(resource));
         const recorder = fileSystem.edit(path);
 
-        !options[`skip-logs`] && progressLog(`expand migration`, true);
+        !options['skip-logs'] && progressLog('expand migration', true);
         migrateExpand({resource, fileSystem, recorder});
     });
 
-    !options[`skip-logs`] &&
+    !options['skip-logs'] &&
         successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} templates migrated \n`);
 }

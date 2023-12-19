@@ -6,7 +6,7 @@ import {TuiCardComponent, TuiCardModule} from '@taiga-ui/addon-commerce';
 import {TuiSizeS} from '@taiga-ui/core';
 import {TuiCardHarness} from '@taiga-ui/testing';
 
-describe(`TuiCard`, () => {
+describe('TuiCard', () => {
     @Component({
         template: `
             <tui-card
@@ -21,8 +21,8 @@ describe(`TuiCard`, () => {
         component!: TuiCardComponent;
 
         paymentSystem: unknown | null = null;
-        brandLogo = ``;
-        size: TuiSizeS = `m`;
+        brandLogo = '';
+        size: TuiSizeS = 'm';
     }
 
     let fixture: ComponentFixture<TestComponent>;
@@ -41,9 +41,9 @@ describe(`TuiCard`, () => {
         fixture.detectChanges();
     });
 
-    describe(`paymentSystem`, () => {
-        it(`gets payment system logo`, async () => {
-            testComponent.paymentSystem = `visa`;
+    describe('paymentSystem', () => {
+        it('gets payment system logo', async () => {
+            testComponent.paymentSystem = 'visa';
 
             fixture.detectChanges();
             const tuiCard = await loader.getHarness(TuiCardHarness);
@@ -53,15 +53,15 @@ describe(`TuiCard`, () => {
         });
     });
 
-    describe(`brandLogo`, () => {
-        const logo = `logo`;
+    describe('brandLogo', () => {
+        const logo = 'logo';
 
         beforeEach(() => {
             testComponent.brandLogo = logo;
         });
 
-        it(`is shown if there is and size is m`, async () => {
-            testComponent.size = `m`;
+        it('is shown if there is and size is m', async () => {
+            testComponent.size = 'm';
 
             fixture.detectChanges();
 
@@ -71,8 +71,8 @@ describe(`TuiCard`, () => {
             expect(hasBrandLogo).toBeTruthy();
         });
 
-        it(`is not shown if there is and size is s`, async () => {
-            testComponent.size = `s`;
+        it('is not shown if there is and size is s', async () => {
+            testComponent.size = 's';
 
             fixture.detectChanges();
 

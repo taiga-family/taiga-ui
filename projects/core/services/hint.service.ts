@@ -6,7 +6,7 @@ import {BehaviorSubject} from 'rxjs';
  * Service for displaying hints/tooltips
  */
 @Injectable({
-    providedIn: `root`,
+    providedIn: 'root',
 })
 export class TuiHintService extends BehaviorSubject<readonly TuiPortalItem[]> {
     constructor() {

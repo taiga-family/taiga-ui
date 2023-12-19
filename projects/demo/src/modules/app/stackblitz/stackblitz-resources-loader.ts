@@ -21,12 +21,12 @@ export abstract class AbstractTuiStackblitzResourcesLoader {
             appModuleTsContent,
         ]: string[] = await Promise.all(
             [
-                import(`./project-files/configs.md?raw`),
-                import(`./project-files/src/main.ts.md?raw`),
-                import(`./project-files/src/index.html.md?raw`),
-                import(`./project-files/src/polyfills.ts.md?raw`),
-                import(`./project-files/src/styles.less.md?raw`),
-                import(`./project-files/src/app/app.module.ts.md?raw`),
+                import('./project-files/configs.md?raw'),
+                import('./project-files/src/main.ts.md?raw'),
+                import('./project-files/src/index.html.md?raw'),
+                import('./project-files/src/polyfills.ts.md?raw'),
+                import('./project-files/src/styles.less.md?raw'),
+                import('./project-files/src/app/app.module.ts.md?raw'),
             ].map(tuiRawLoad),
         );
 
@@ -42,7 +42,7 @@ export abstract class AbstractTuiStackblitzResourcesLoader {
 
     static async getReadMeFiles(): Promise<{stackblitzReadMe: string}> {
         const [stackblitzReadMe] = await Promise.all([
-            tuiRawLoad(import(`./project-files/src/app/@stackblitz/README.md?raw`)),
+            tuiRawLoad(import('./project-files/src/app/@stackblitz/README.md?raw')),
         ]);
 
         return {stackblitzReadMe};

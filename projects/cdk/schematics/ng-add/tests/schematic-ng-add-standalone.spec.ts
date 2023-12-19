@@ -18,41 +18,41 @@ import {
 } from '../constants/versions';
 import {TuiSchema} from '../schema';
 
-const collectionPath = join(__dirname, `../../collection.json`);
+const collectionPath = join(__dirname, '../../collection.json');
 
-describe(`ng-add [Standalone]`, () => {
+describe('ng-add [Standalone]', () => {
     let host: UnitTestTree;
     let runner: SchematicTestRunner;
 
     beforeEach(() => {
         host = new UnitTestTree(new HostTree());
-        runner = new SchematicTestRunner(`schematics`, collectionPath);
+        runner = new SchematicTestRunner('schematics', collectionPath);
 
         setActiveProject(createProject(host));
 
         createSourceFile(
-            `package.json`,
-            `{"dependencies": {"@angular/core": "~13.0.0"}}`,
+            'package.json',
+            '{"dependencies": {"@angular/core": "~13.0.0"}}',
         );
         createAngularJson();
         createMainStandaloneFiles();
         saveActiveProject();
     });
 
-    it(`should add main modules in package.json`, async () => {
+    it('should add main modules in package.json', async () => {
         const options: TuiSchema = {
             addSanitizer: false,
             addGlobalStyles: false,
             addDialogsModule: false,
             addAlertModule: false,
             addons: [],
-            project: ``,
-            'skip-logs': process.env[`TUI_CI`] === `true`,
+            project: '',
+            'skip-logs': process.env['TUI_CI'] === 'true',
         };
 
-        const tree = await runner.runSchematicAsync(`ng-add`, options, host).toPromise();
+        const tree = await runner.runSchematicAsync('ng-add', options, host).toPromise();
 
-        expect(tree.readContent(`package.json`)).toBe(
+        expect(tree.readContent('package.json')).toBe(
             `{
   "dependencies": {
     "@angular/core": "~13.0.0",
@@ -65,20 +65,20 @@ describe(`ng-add [Standalone]`, () => {
         );
     });
 
-    it(`should add additional modules in package.json`, async () => {
+    it('should add additional modules in package.json', async () => {
         const options: TuiSchema = {
             addSanitizer: true,
             addGlobalStyles: false,
             addDialogsModule: false,
             addAlertModule: false,
-            addons: [`addon-doc`, `addon-mobile`],
-            project: ``,
-            'skip-logs': process.env[`TUI_CI`] === `true`,
+            addons: ['addon-doc', 'addon-mobile'],
+            project: '',
+            'skip-logs': process.env['TUI_CI'] === 'true',
         };
 
-        const tree = await runner.runSchematicAsync(`ng-add`, options, host).toPromise();
+        const tree = await runner.runSchematicAsync('ng-add', options, host).toPromise();
 
-        expect(tree.readContent(`package.json`)).toBe(
+        expect(tree.readContent('package.json')).toBe(
             `{
   "devDependencies": {
     "@types/dompurify": "${DOMPURIFY_TYPES_VERSION}"
@@ -99,20 +99,20 @@ describe(`ng-add [Standalone]`, () => {
         );
     });
 
-    it(`should add additional modules in package.json and global styles`, async () => {
+    it('should add additional modules in package.json and global styles', async () => {
         const options: TuiSchema = {
             addSanitizer: true,
             addGlobalStyles: true,
             addDialogsModule: false,
             addAlertModule: false,
-            addons: [`addon-doc`, `addon-mobile`],
-            project: ``,
-            'skip-logs': process.env[`TUI_CI`] === `true`,
+            addons: ['addon-doc', 'addon-mobile'],
+            project: '',
+            'skip-logs': process.env['TUI_CI'] === 'true',
         };
 
-        const tree = await runner.runSchematicAsync(`ng-add`, options, host).toPromise();
+        const tree = await runner.runSchematicAsync('ng-add', options, host).toPromise();
 
-        expect(tree.readContent(`package.json`)).toBe(
+        expect(tree.readContent('package.json')).toBe(
             `{
   "devDependencies": {
     "@types/dompurify": "${DOMPURIFY_TYPES_VERSION}"
@@ -134,16 +134,16 @@ describe(`ng-add [Standalone]`, () => {
         );
     });
 
-    it(`should add assets and styles in angular.json`, async () => {
+    it('should add assets and styles in angular.json', async () => {
         const tree = await runner
             .runSchematicAsync(
-                `ng-add-setup-project`,
-                {'skip-logs': process.env[`TUI_CI`] === `true`} as Partial<TuiSchema>,
+                'ng-add-setup-project',
+                {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
                 host,
             )
             .toPromise();
 
-        expect(tree.readContent(`angular.json`)).toBe(`
+        expect(tree.readContent('angular.json')).toBe(`
 {
   "version": 1,
   "defaultProject": "demo",
@@ -172,19 +172,19 @@ describe(`ng-add [Standalone]`, () => {
 }`);
     });
 
-    it(`should add styles without duplicates, taiga styles first`, async () => {
+    it('should add styles without duplicates, taiga styles first', async () => {
         createAngularJson({stylesExist: true});
         saveActiveProject();
 
         const tree = await runner
             .runSchematicAsync(
-                `ng-add-setup-project`,
-                {'skip-logs': process.env[`TUI_CI`] === `true`} as Partial<TuiSchema>,
+                'ng-add-setup-project',
+                {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
                 host,
             )
             .toPromise();
 
-        expect(tree.readContent(`angular.json`)).toBe(`
+        expect(tree.readContent('angular.json')).toBe(`
 {
   "version": 1,
   "defaultProject": "demo",
@@ -214,19 +214,19 @@ describe(`ng-add [Standalone]`, () => {
 }`);
     });
 
-    it(`should add global styles`, async () => {
+    it('should add global styles', async () => {
         createAngularJson({stylesExist: true});
         saveActiveProject();
 
         const tree = await runner
             .runSchematicAsync(
-                `ng-add-setup-project`,
+                'ng-add-setup-project',
                 {addGlobalStyles: true} as Partial<TuiSchema>,
                 host,
             )
             .toPromise();
 
-        expect(tree.readContent(`angular.json`)).toBe(`
+        expect(tree.readContent('angular.json')).toBe(`
 {
   "version": 1,
   "defaultProject": "demo",
@@ -257,22 +257,22 @@ describe(`ng-add [Standalone]`, () => {
 }`);
     });
 
-    it(`Should add Taiga-ui modules and providers to main component`, async () => {
+    it('Should add Taiga-ui modules and providers to main component', async () => {
         const options: TuiSchema = {
             addSanitizer: true,
             addGlobalStyles: false,
             addDialogsModule: true,
             addAlertModule: true,
             addons: [],
-            project: ``,
-            'skip-logs': process.env[`TUI_CI`] === `true`,
+            project: '',
+            'skip-logs': process.env['TUI_CI'] === 'true',
         };
 
         const tree = await runner
-            .runSchematicAsync(`ng-add-setup-project`, options, host)
+            .runSchematicAsync('ng-add-setup-project', options, host)
             .toPromise();
 
-        expect(tree.readContent(`test/app/app.component.ts`)).toBe(
+        expect(tree.readContent('test/app/app.component.ts')).toBe(
             `import { NgDompurifySanitizer } from "@tinkoff/ng-dompurify";
 import { TuiRootModule, TuiDialogModule, TuiAlertModule, TUI_SANITIZER } from "@taiga-ui/core";
 import { Component } from '@angular/core';
@@ -292,30 +292,30 @@ export class AppComponent {
         );
     });
 
-    it(`Should wrap main template with tui-root`, async () => {
+    it('Should wrap main template with tui-root', async () => {
         const tree = await runner
             .runSchematicAsync(
-                `ng-add-setup-project`,
-                {'skip-logs': process.env[`TUI_CI`] === `true`} as Partial<TuiSchema>,
+                'ng-add-setup-project',
+                {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
                 host,
             )
             .toPromise();
 
-        expect(tree.readContent(`test/app/app.template.html`)).toBe(`<tui-root>
+        expect(tree.readContent('test/app/app.template.html')).toBe(`<tui-root>
 <app></app>
 </tui-root>`);
     });
 
-    it(`[Standalone] Should add main providers to bootstrap fn`, async () => {
+    it('[Standalone] Should add main providers to bootstrap fn', async () => {
         const tree = await runner
             .runSchematicAsync(
-                `ng-add-setup-project`,
-                {'skip-logs': process.env[`TUI_CI`] === `true`} as Partial<TuiSchema>,
+                'ng-add-setup-project',
+                {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
                 host,
             )
             .toPromise();
 
-        expect(tree.readContent(`test/main.ts`))
+        expect(tree.readContent('test/main.ts'))
             .toBe(`import { importProvidersFrom } from "@angular/core";
 import { TuiRootModule } from "@taiga-ui/core";
 import { bootstrapApplication } from '@angular/platform-browser';
@@ -333,19 +333,19 @@ bootstrapApplication(AppComponent, {
 `);
     });
 
-    it(`[Standalone] Should add main providers to bootstrap fn (appConfig)`, async () => {
+    it('[Standalone] Should add main providers to bootstrap fn (appConfig)', async () => {
         createMainWithConfig();
         saveActiveProject();
 
         const tree = await runner
             .runSchematicAsync(
-                `ng-add-setup-project`,
-                {'skip-logs': process.env[`TUI_CI`] === `true`} as Partial<TuiSchema>,
+                'ng-add-setup-project',
+                {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
                 host,
             )
             .toPromise();
 
-        expect(tree.readContent(`test/app/app.config.ts`))
+        expect(tree.readContent('test/app/app.config.ts'))
             .toBe(`import { TuiRootModule } from "@taiga-ui/core";
 
 import { ApplicationConfig, importProvidersFrom } from '@angular/core';
@@ -361,19 +361,19 @@ export const appConfig: ApplicationConfig = {
 };`);
     });
 
-    it(`[Standalone] Should add Taiga-ui modules and provideAnimation`, async () => {
+    it('[Standalone] Should add Taiga-ui modules and provideAnimation', async () => {
         createMainWithoutAnimation();
         saveActiveProject();
 
         const tree = await runner
             .runSchematicAsync(
-                `ng-add-setup-project`,
-                {'skip-logs': process.env[`TUI_CI`] === `true`} as Partial<TuiSchema>,
+                'ng-add-setup-project',
+                {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
                 host,
             )
             .toPromise();
 
-        expect(tree.readContent(`test/main.ts`))
+        expect(tree.readContent('test/main.ts'))
             .toBe(`import { importProvidersFrom } from "@angular/core";
 import { provideAnimations } from "@angular/platform-browser/animations";
 import { TuiRootModule } from "@taiga-ui/core";
@@ -398,7 +398,7 @@ bootstrapApplication(AppComponent, {
 
 function createMainStandaloneFiles(): void {
     createSourceFile(
-        `test/main.ts`,
+        'test/main.ts',
         `import { bootstrapApplication } from '@angular/platform-browser';
 import {
   provideRouter,
@@ -416,7 +416,7 @@ bootstrapApplication(AppComponent, {
     );
 
     createSourceFile(
-        `test/app/app.component.ts`,
+        'test/app/app.component.ts',
         `import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
@@ -433,12 +433,12 @@ export class AppComponent {
         {overwrite: true},
     );
 
-    createSourceFile(`test/app/app.template.html`, `<app></app>`, {overwrite: true});
+    createSourceFile('test/app/app.template.html', '<app></app>', {overwrite: true});
 }
 
 function createMainWithoutAnimation(): void {
     createSourceFile(
-        `test/main.ts`,
+        'test/main.ts',
         `import { bootstrapApplication } from '@angular/platform-browser';
 import {
   provideRouter,
@@ -457,7 +457,7 @@ bootstrapApplication(AppComponent, {
 
 function createMainWithConfig(): void {
     createSourceFile(
-        `test/main.ts`,
+        'test/main.ts',
         `import { bootstrapApplication } from '@angular/platform-browser';
 import {
   provideRouter,
@@ -473,7 +473,7 @@ bootstrapApplication(AppComponent, appConfig).catch((err) => console.error(err))
     );
 
     createSourceFile(
-        `test/app/app.config.ts`,
+        'test/app/app.config.ts',
         `
 import { ApplicationConfig } from '@angular/core';
 import {

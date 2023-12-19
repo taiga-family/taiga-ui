@@ -2,14 +2,14 @@ import {tuiSmartSearch} from '@taiga-ui/core';
 import {from, Observable, of} from 'rxjs';
 import {skip, take} from 'rxjs/operators';
 
-describe(`tuiSmartSearch`, () => {
+describe('tuiSmartSearch', () => {
     let source: Observable<string>;
 
     beforeEach(() => {
-        source = from([`search`]);
+        source = from(['search']);
     });
 
-    it(`starts with empty array`, () => {
+    it('starts with empty array', () => {
         let result: unknown;
         const operator = tuiSmartSearch<string>((search: string) =>
             of([`${search}result`]),
@@ -24,7 +24,7 @@ describe(`tuiSmartSearch`, () => {
         expect(result).toEqual([]);
     });
 
-    it(`returns null starting search`, () => {
+    it('returns null starting search', () => {
         let result: unknown;
         const operator = tuiSmartSearch<string>((search: string) =>
             of([`${search}result`]),
@@ -39,7 +39,7 @@ describe(`tuiSmartSearch`, () => {
         expect(result).toBeNull();
     });
 
-    it(`returns search result of function`, () => {
+    it('returns search result of function', () => {
         let result: unknown;
         const operator = tuiSmartSearch<string>((search: string) =>
             of([`${search}result`]),
@@ -52,10 +52,10 @@ describe(`tuiSmartSearch`, () => {
             });
 
         // cspell:disable-next-line
-        expect(result).toEqual([`searchresult`]);
+        expect(result).toEqual(['searchresult']);
     });
 
-    it(`does not emit new value if it starts with previous`, () => {
+    it('does not emit new value if it starts with previous', () => {
         let result: unknown;
         let counter = 0;
 
@@ -66,7 +66,7 @@ describe(`tuiSmartSearch`, () => {
         });
 
         // cspell:disable-next-line
-        source = from([`search`, `searchhh`]);
+        source = from(['search', 'searchhh']);
 
         operator(source).subscribe({
             complete: () => {

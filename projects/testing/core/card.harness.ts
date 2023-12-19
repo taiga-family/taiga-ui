@@ -3,11 +3,11 @@ import {TuiComponentHarness} from '@taiga-ui/testing/utils';
 import {TuiSvgHarness} from './svg.harness';
 
 export class TuiThumbnailCardHarness extends TuiComponentHarness {
-    static hostSelector = `tui-thumbnail-card`;
+    static hostSelector = 'tui-thumbnail-card';
 
     async hasPaymentSystemLogo(): Promise<boolean> {
         const tuiSvg = await this.locatorForOptional(
-            TuiSvgHarness.with({selector: `.t-payment-system-logo`}),
+            TuiSvgHarness.with({selector: '.t-payment-system-logo'}),
         )();
 
         return !!tuiSvg;
@@ -15,7 +15,7 @@ export class TuiThumbnailCardHarness extends TuiComponentHarness {
 
     async hasBrandLogo(): Promise<boolean> {
         const tuiSvg = await this.locatorForOptional(
-            TuiSvgHarness.with({selector: `.t-brand-logo`}),
+            TuiSvgHarness.with({selector: '.t-brand-logo'}),
         )();
 
         return !!tuiSvg;
@@ -26,5 +26,5 @@ export class TuiThumbnailCardHarness extends TuiComponentHarness {
  * @deprecated use {@link TuiThumbnailCardHarness}
  */
 export class TuiCardHarness extends TuiThumbnailCardHarness {
-    static override hostSelector = `tui-card`;
+    static override hostSelector = 'tui-card';
 }

@@ -1,16 +1,16 @@
 import {tuiSetNativeMouseFocused} from '@taiga-ui/cdk';
 
-describe(`tuiSetNativeMouseFocused`, () => {
-    it(`should do nothing if element has no owner document`, () => {
-        const element = document.createElement(`div`);
+describe('tuiSetNativeMouseFocused', () => {
+    it('should do nothing if element has no owner document', () => {
+        const element = document.createElement('div');
 
-        Object.defineProperty(element, `ownerDocument`, {value: undefined});
+        Object.defineProperty(element, 'ownerDocument', {value: undefined});
 
         tuiSetNativeMouseFocused(element);
     });
 
-    it(`should trigger mousedown event if Event function is available`, () => {
-        const element = document.createElement(`div`);
+    it('should trigger mousedown event if Event function is available', () => {
+        const element = document.createElement('div');
         const mockDispatchEvent = jest.fn();
 
         element.dispatchEvent = mockDispatchEvent;
@@ -18,12 +18,12 @@ describe(`tuiSetNativeMouseFocused`, () => {
         tuiSetNativeMouseFocused(element);
 
         expect(mockDispatchEvent).toHaveBeenCalledWith(
-            new Event(`mousedown`, {bubbles: true, cancelable: true}),
+            new Event('mousedown', {bubbles: true, cancelable: true}),
         );
     });
 
-    it(`should trigger mousedown event if Event function is not available`, () => {
-        const element = document.createElement(`div`);
+    it('should trigger mousedown event if Event function is not available', () => {
+        const element = document.createElement('div');
 
         const mockCreateEvent = jest.fn().mockReturnValue({
             initEvent: () => {},
@@ -38,7 +38,7 @@ describe(`tuiSetNativeMouseFocused`, () => {
         // @ts-ignore
         global.Event = undefined;
 
-        Object.defineProperty(element, `ownerDocument`, {value: mockOwnerDocument});
+        Object.defineProperty(element, 'ownerDocument', {value: mockOwnerDocument});
 
         const mockDispatchEvent = jest.fn();
 
@@ -46,14 +46,14 @@ describe(`tuiSetNativeMouseFocused`, () => {
 
         tuiSetNativeMouseFocused(element);
 
-        expect(mockCreateEvent).toHaveBeenCalledWith(`Event`);
+        expect(mockCreateEvent).toHaveBeenCalledWith('Event');
         expect(mockDispatchEvent).toHaveBeenCalled();
 
         global.Event = originEvent;
     });
 
-    it(`should focus on element if focused is true`, () => {
-        const element = document.createElement(`div`);
+    it('should focus on element if focused is true', () => {
+        const element = document.createElement('div');
         const mockFocus = jest.fn();
 
         element.focus = mockFocus;
@@ -63,8 +63,8 @@ describe(`tuiSetNativeMouseFocused`, () => {
         expect(mockFocus).toHaveBeenCalledWith({preventScroll: false});
     });
 
-    it(`should not focus on element if focused is false`, () => {
-        const element = document.createElement(`div`);
+    it('should not focus on element if focused is false', () => {
+        const element = document.createElement('div');
         const mockFocus = jest.fn();
 
         element.focus = mockFocus;
@@ -74,8 +74,8 @@ describe(`tuiSetNativeMouseFocused`, () => {
         expect(mockFocus).not.toHaveBeenCalled();
     });
 
-    it(`should blur element if focused is false`, () => {
-        const element = document.createElement(`div`);
+    it('should blur element if focused is false', () => {
+        const element = document.createElement('div');
         const mockBlur = jest.fn();
 
         element.blur = mockBlur;
@@ -85,8 +85,8 @@ describe(`tuiSetNativeMouseFocused`, () => {
         expect(mockBlur).toHaveBeenCalled();
     });
 
-    it(`should not blur element if focused is true`, () => {
-        const element = document.createElement(`div`);
+    it('should not blur element if focused is true', () => {
+        const element = document.createElement('div');
         const mockBlur = jest.fn();
 
         element.blur = mockBlur;
@@ -96,8 +96,8 @@ describe(`tuiSetNativeMouseFocused`, () => {
         expect(mockBlur).not.toHaveBeenCalled();
     });
 
-    it(`should focus on element without scrolling if preventScroll is true`, () => {
-        const element = document.createElement(`div`);
+    it('should focus on element without scrolling if preventScroll is true', () => {
+        const element = document.createElement('div');
         const mockFocus = jest.fn();
 
         element.focus = mockFocus;

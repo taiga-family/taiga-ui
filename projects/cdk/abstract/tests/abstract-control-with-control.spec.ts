@@ -15,10 +15,10 @@ import {
     TuiControlValueTransformer,
 } from '@taiga-ui/cdk';
 
-describe(`AbstractTuiControl and FormControl`, () => {
+describe('AbstractTuiControl and FormControl', () => {
     @Component({
-        selector: `child`,
-        template: ``,
+        selector: 'child',
+        template: '',
     })
     class ChildComponent {
         constructor(
@@ -29,7 +29,7 @@ describe(`AbstractTuiControl and FormControl`, () => {
     }
 
     @Component({
-        selector: `my-control`,
+        selector: 'my-control',
         template: `
             <child></child>
         `,
@@ -69,7 +69,7 @@ describe(`AbstractTuiControl and FormControl`, () => {
         }
 
         protected getFallbackValue(): string {
-            return `fallback`;
+            return 'fallback';
         }
     }
 
@@ -82,7 +82,7 @@ describe(`AbstractTuiControl and FormControl`, () => {
         @ViewChild(MyControlComponent)
         myControl!: MyControlComponent;
 
-        control = new FormControl(`Hello`);
+        control = new FormControl('Hello');
     }
 
     let fixture: ComponentFixture<TestComponent>;
@@ -99,15 +99,15 @@ describe(`AbstractTuiControl and FormControl`, () => {
         controlInstance = fixture.componentInstance.myControl.child.parent!;
     });
 
-    it(`default behaviour`, () => {
+    it('default behaviour', () => {
         expect(controlInstance).toBeTruthy();
         expect(controlInstance.child.parent).toBeInstanceOf(MyControlComponent);
         expect(controlInstance.readOnly).toBe(false);
-        expect(controlInstance.nativeId).toBe(``);
+        expect(controlInstance.nativeId).toBe('');
 
         expect(controlInstance.getTransformers()).toBeNull();
-        expect(controlInstance.value).toBe(`Hello`);
-        expect(controlInstance.safeCurrentValue).toBe(`Hello`);
+        expect(controlInstance.value).toBe('Hello');
+        expect(controlInstance.safeCurrentValue).toBe('Hello');
         expect(controlInstance.invalid).toBe(false);
         expect(controlInstance.valid).toBe(true);
         expect(controlInstance.touched).toBe(false);
@@ -116,14 +116,14 @@ describe(`AbstractTuiControl and FormControl`, () => {
         expect(controlInstance.control).toBeInstanceOf(FormControl);
     });
 
-    it(`pseudo`, () => {
+    it('pseudo', () => {
         expect(controlInstance.pseudoFocus).toBeNull();
         expect(controlInstance.pseudoHover).toBeNull();
         expect(controlInstance.pseudoActive).toBeNull();
         expect(controlInstance.pseudoInvalid).toBeNull();
     });
 
-    it(`computed`, () => {
+    it('computed', () => {
         expect(controlInstance.computedName).toBeNull();
         expect(controlInstance.computedDisabled).toBe(false);
         expect(controlInstance.computedInvalid).toBe(false);
@@ -140,8 +140,8 @@ describe(`AbstractTuiControl and FormControl`, () => {
         expect(controlInstance.computedFocused).toBe(true);
     });
 
-    it(`focusable`, () => {
-        const focusedChange = jest.spyOn(controlInstance.focusedChange, `emit`);
+    it('focusable', () => {
+        const focusedChange = jest.spyOn(controlInstance.focusedChange, 'emit');
 
         expect(controlInstance.focused).toBe(false);
         expect(controlInstance.focusable).toBe(true);
@@ -163,29 +163,29 @@ describe(`AbstractTuiControl and FormControl`, () => {
         expect(focusedChange).toHaveBeenCalled();
     });
 
-    it(`id`, () => {
-        expect(controlInstance.nativeId).toBe(``);
-        expect(controlInstance.id.startsWith(`tui_interactive_`)).toBeTruthy();
+    it('id', () => {
+        expect(controlInstance.nativeId).toBe('');
+        expect(controlInstance.id.startsWith('tui_interactive_')).toBeTruthy();
     });
 
-    it(`setup value`, () => {
-        expect(controlInstance.value).toBe(`Hello`);
-        expect(controlInstance.safeCurrentValue).toBe(`Hello`);
+    it('setup value', () => {
+        expect(controlInstance.value).toBe('Hello');
+        expect(controlInstance.safeCurrentValue).toBe('Hello');
 
-        controlInstance.value = `5`;
-        expect(controlInstance.value).toBe(`5`);
-        expect(controlInstance.safeCurrentValue).toBe(`5`);
+        controlInstance.value = '5';
+        expect(controlInstance.value).toBe('5');
+        expect(controlInstance.safeCurrentValue).toBe('5');
 
         controlInstance.writeValue(null);
-        expect(controlInstance.value).toBe(`fallback`);
-        expect(controlInstance.safeCurrentValue).toBe(`5`);
+        expect(controlInstance.value).toBe('fallback');
+        expect(controlInstance.safeCurrentValue).toBe('5');
 
-        controlInstance.writeValue(``);
-        expect(controlInstance.value).toBe(``);
-        expect(controlInstance.safeCurrentValue).toBe(`5`);
+        controlInstance.writeValue('');
+        expect(controlInstance.value).toBe('');
+        expect(controlInstance.safeCurrentValue).toBe('5');
     });
 
-    describe(`change detection`, () => {
+    describe('change detection', () => {
         let changeDetectorRef: ChangeDetectorRef;
         let markForCheckSpy: jest.SpyInstance;
 
@@ -193,13 +193,13 @@ describe(`AbstractTuiControl and FormControl`, () => {
             changeDetectorRef = fixture.debugElement.injector.get(ChangeDetectorRef);
             markForCheckSpy = jest.spyOn(
                 changeDetectorRef.constructor.prototype,
-                `markForCheck`,
+                'markForCheck',
             );
 
             markForCheckSpy.mockClear();
         });
 
-        it(`checkControlUpdate`, () => {
+        it('checkControlUpdate', () => {
             expect(markForCheckSpy).not.toHaveBeenCalled();
 
             controlInstance.checkControlUpdate();
@@ -207,7 +207,7 @@ describe(`AbstractTuiControl and FormControl`, () => {
             expect(markForCheckSpy).toHaveBeenCalled();
         });
 
-        it(`setDisabledState`, () => {
+        it('setDisabledState', () => {
             expect(markForCheckSpy).not.toHaveBeenCalled();
             expect(controlInstance.disabled).toBe(false);
 

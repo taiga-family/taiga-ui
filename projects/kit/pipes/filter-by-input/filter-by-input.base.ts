@@ -26,8 +26,8 @@ export abstract class AbstractTuiFilterByInput {
 
     protected get query(): string {
         return this.accessor.nativeFocusableElement
-            ? (this.accessor.nativeFocusableElement as HTMLInputElement).value || ``
-            : ``;
+            ? (this.accessor.nativeFocusableElement as HTMLInputElement).value || ''
+            : '';
     }
 
     @tuiPure

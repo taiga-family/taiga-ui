@@ -10,7 +10,7 @@ import {StackblitzStarterComponent} from './stackblitz-starter.component';
         TuiSvgModule,
         TuiLinkModule,
         TuiLoaderModule,
-        RouterModule.forChild([{path: ``, component: StackblitzStarterComponent}]),
+        RouterModule.forChild([{path: '', component: StackblitzStarterComponent}]),
     ],
     declarations: [StackblitzStarterComponent, StackblitzEditButtonComponent],
     exports: [StackblitzStarterComponent],

@@ -13,33 +13,33 @@ import {join} from 'path';
 import {createAngularJson} from '../../../utils/create-angular-json';
 import {TUI_WARNING_NORMALIZE} from '../steps/replace-styles';
 
-const collectionPath = join(__dirname, `../../../migration.json`);
+const collectionPath = join(__dirname, '../../../migration.json');
 
-describe(`ng-update`, () => {
+describe('ng-update', () => {
     let host: UnitTestTree;
     let runner: SchematicTestRunner;
 
     beforeEach(() => {
         host = new UnitTestTree(new HostTree());
-        runner = new SchematicTestRunner(`schematics`, collectionPath);
+        runner = new SchematicTestRunner('schematics', collectionPath);
 
-        setActiveProject(createProject(host, `/`, `**/**`));
+        setActiveProject(createProject(host, '/', '**/**'));
 
         createMainFiles();
 
         saveActiveProject();
     });
 
-    it(`should rename types`, async () => {
+    it('should rename types', async () => {
         const tree = await runner
             .runSchematicAsync(
-                `updateToV3`,
-                {'skip-logs': process.env[`TUI_CI`] === `true`} as Partial<TuiSchema>,
+                'updateToV3',
+                {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
                 host,
             )
             .toPromise();
 
-        expect(tree.readContent(`test/app/app.component.ts`)).toBe(
+        expect(tree.readContent('test/app/app.component.ts')).toBe(
             `import { Component } from '@angular/core';
 import { some } from '@taiga-ui/kit';
 import { any } from '@taiga-ui/cdk'
@@ -49,12 +49,12 @@ import { unknown } from '@taiga-ui/core'
 export class AppComponent {}`,
         );
 
-        expect(tree.readContent(`test/style.less`)).toBe(
+        expect(tree.readContent('test/style.less')).toBe(
             `${TUI_WARNING_NORMALIZE}\n@import '@taiga-ui/styles/taiga-ui-global.less';`,
         );
 
-        expect(tree.readContent(`test/app/app.template.less`)).toBe(
-            `@import '@taiga-ui/core/styles/taiga-ui-local.less';`,
+        expect(tree.readContent('test/app/app.template.less')).toBe(
+            "@import '@taiga-ui/core/styles/taiga-ui-local.less';",
         );
     });
 
@@ -65,7 +65,7 @@ export class AppComponent {}`,
 
 function createMainFiles(): void {
     createSourceFile(
-        `test/app/app.component.ts`,
+        'test/app/app.component.ts',
         `import { Component } from '@angular/core';
 import { some } from '@taiga-ui/kit/types';
 import { any } from '@taiga-ui/cdk/directives/any'
@@ -75,17 +75,17 @@ import { unknown } from '@taiga-ui/core'
 export class AppComponent {}`,
     );
 
-    createSourceFile(`test/app/app.template.html`, `<app></app>`);
+    createSourceFile('test/app/app.template.html', '<app></app>');
 
     createSourceFile(
-        `test/style.less`,
-        `@import '~@taiga-ui/core/styles/taiga-ui-global';`,
+        'test/style.less',
+        "@import '~@taiga-ui/core/styles/taiga-ui-global';",
     );
     createSourceFile(
-        `test/app/app.template.less`,
-        `@import '~@taiga-ui/core/styles/taiga-ui-local';`,
+        'test/app/app.template.less',
+        "@import '~@taiga-ui/core/styles/taiga-ui-local';",
     );
 
     createAngularJson();
-    createSourceFile(`package.json`, `{"dependencies": {"@angular/core": "~13.0.0"}}`);
+    createSourceFile('package.json', '{"dependencies": {"@angular/core": "~13.0.0"}}');
 }

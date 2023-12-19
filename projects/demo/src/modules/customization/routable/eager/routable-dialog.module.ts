@@ -12,23 +12,23 @@ import {RoutableDialogComponent} from './routable-dialog.component';
         TuiAddonDocModule,
         RouterModule.forChild([
             {
-                path: ``,
+                path: '',
                 component: RoutableDialogComponent,
                 children: [
                     {
-                        path: ``,
+                        path: '',
                         loadChildren: async () =>
-                            (await import(`./examples/1/page-1.module`))
+                            (await import('./examples/1/page-1.module'))
                                 .TuiPage1ExampleModule,
                     },
                     {
-                        path: `NamedOutlet`,
+                        path: 'NamedOutlet',
                         loadChildren: async () =>
-                            (await import(`./examples/2/page-2.module`))
+                            (await import('./examples/2/page-2.module'))
                                 .TuiPage2ExampleModule,
                     },
                     {
-                        path: `Setup`,
+                        path: 'Setup',
                         component: RoutableDialogComponent,
                     },
                 ],

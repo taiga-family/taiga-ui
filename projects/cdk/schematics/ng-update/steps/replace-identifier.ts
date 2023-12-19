@@ -17,12 +17,12 @@ export function replaceIdentifiers(
     options: TuiSchema,
     constants: readonly ReplacementIdentifier[],
 ): void {
-    !options[`skip-logs`] &&
+    !options['skip-logs'] &&
         infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} replacing identifiers...`);
 
     constants.forEach(replaceIdentifier);
 
-    !options[`skip-logs`] &&
+    !options['skip-logs'] &&
         successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} identifiers replaced \n`);
 }
 

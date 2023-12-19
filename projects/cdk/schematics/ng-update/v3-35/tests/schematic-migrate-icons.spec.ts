@@ -12,7 +12,7 @@ import {join} from 'path';
 
 import {createAngularJson} from '../../../utils/create-angular-json';
 
-const collectionPath = join(__dirname, `../../../migration.json`);
+const collectionPath = join(__dirname, '../../../migration.json');
 
 const COMPONENT_BEFORE = `
 import { tuiIconAlertCircleOutline, tuiIconAlertLarge, tuiIconViewListLarge, tuiIconLinkedLarge } from '@taiga-ui/proprietary-icons';
@@ -77,13 +77,13 @@ const TEMPLATE_AFTER = `
 <tui-svg src="tuiIconLinkedLarge" />
 `;
 
-describe(`ng-update`, () => {
+describe('ng-update', () => {
     let host: UnitTestTree;
     let runner: SchematicTestRunner;
 
     beforeEach(() => {
         host = new UnitTestTree(new HostTree());
-        runner = new SchematicTestRunner(`schematics`, collectionPath);
+        runner = new SchematicTestRunner('schematics', collectionPath);
 
         setActiveProject(createProject(host));
 
@@ -92,28 +92,28 @@ describe(`ng-update`, () => {
         saveActiveProject();
     });
 
-    it(`should migrate icons in template`, async () => {
+    it('should migrate icons in template', async () => {
         const tree = await runner
             .runSchematicAsync(
-                `updateToV3_35`,
-                {'skip-logs': process.env[`TUI_CI`] === `true`} as Partial<TuiSchema>,
+                'updateToV3_35',
+                {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
                 host,
             )
             .toPromise();
 
-        expect(tree.readContent(`test/app/test.template.html`)).toEqual(TEMPLATE_AFTER);
+        expect(tree.readContent('test/app/test.template.html')).toEqual(TEMPLATE_AFTER);
     });
 
-    it(`should migrate icons in ts files`, async () => {
+    it('should migrate icons in ts files', async () => {
         const tree = await runner
             .runSchematicAsync(
-                `updateToV3_35`,
-                {'skip-logs': process.env[`TUI_CI`] === `true`} as Partial<TuiSchema>,
+                'updateToV3_35',
+                {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
                 host,
             )
             .toPromise();
 
-        expect(tree.readContent(`test/app/test.component.ts`)).toEqual(COMPONENT_AFTER);
+        expect(tree.readContent('test/app/test.component.ts')).toEqual(COMPONENT_AFTER);
     });
 
     afterEach(() => {
@@ -122,13 +122,13 @@ describe(`ng-update`, () => {
 });
 
 function createMainFiles(): void {
-    createSourceFile(`test/app/test.component.ts`, COMPONENT_BEFORE);
+    createSourceFile('test/app/test.component.ts', COMPONENT_BEFORE);
 
-    createSourceFile(`test/app/test.template.html`, TEMPLATE_BEFORE);
+    createSourceFile('test/app/test.template.html', TEMPLATE_BEFORE);
 
     createAngularJson();
     createSourceFile(
-        `package.json`,
-        `{"dependencies": {"@angular/core": "~13.0.0", "@taiga-ui/proprietary-icons": "~3.29.0"}}`,
+        'package.json',
+        '{"dependencies": {"@angular/core": "~13.0.0", "@taiga-ui/proprietary-icons": "~3.29.0"}}',
     );
 }

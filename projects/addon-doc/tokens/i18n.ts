@@ -10,9 +10,9 @@ import {tuiCreateToken} from '@taiga-ui/cdk';
  * [@string tuiMode tooltip content, @string word 'background', @string 'form value']
  */
 export const TUI_DOC_DEMO_TEXTS = tuiCreateToken<[string, string, string]>([
-    `Read more more about modes: `,
-    `Background`,
-    `Form value`,
+    'Read more more about modes: ',
+    'Background',
+    'Form value',
 ]);
 
 /**
@@ -29,11 +29,11 @@ export const TUI_DOC_DEMO_TEXTS = tuiCreateToken<[string, string, string]>([
 export const TUI_DOC_DOCUMENTATION_TEXTS = tuiCreateToken<
     [string, string, string, string, string]
 >([
-    `Argument`,
-    `Type`,
-    `Name and description`,
-    `Value`,
-    `Learn about our dynamic templates from `,
+    'Argument',
+    'Type',
+    'Name and description',
+    'Value',
+    'Learn about our dynamic templates from ',
 ]);
 
 /**
@@ -46,12 +46,12 @@ export const TUI_DOC_DOCUMENTATION_TEXTS = tuiCreateToken<
  * ]
  */
 export const TUI_DOC_EXAMPLE_TEXTS = tuiCreateToken<[string, string, string]>([
-    `Preview`,
-    `Link to a sample was successfully copied`,
-    `Done`,
+    'Preview',
+    'Link to a sample was successfully copied',
+    'Done',
 ]);
 
-export const TUI_DOC_MENU_TEXT = tuiCreateToken(`Menu`);
-export const TUI_DOC_SEARCH_TEXT = tuiCreateToken(`Search`);
-export const TUI_DOC_SEE_ALSO_TEXT = tuiCreateToken(`See also`);
-export const TUI_DOC_SOURCE_CODE_TEXT = tuiCreateToken(`Source code`);
+export const TUI_DOC_MENU_TEXT = tuiCreateToken('Menu');
+export const TUI_DOC_SEARCH_TEXT = tuiCreateToken('Search');
+export const TUI_DOC_SEE_ALSO_TEXT = tuiCreateToken('See also');
+export const TUI_DOC_SOURCE_CODE_TEXT = tuiCreateToken('Source code');

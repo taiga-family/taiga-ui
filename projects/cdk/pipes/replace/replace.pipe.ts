@@ -1,6 +1,6 @@
 import {Pipe, PipeTransform} from '@angular/core';
 
-@Pipe({name: `tuiReplace`})
+@Pipe({name: 'tuiReplace'})
 export class TuiReplacePipe implements PipeTransform {
     transform(
         value: string | null | undefined,
@@ -12,7 +12,7 @@ export class TuiReplacePipe implements PipeTransform {
                 search,
                 // TS bug: https://github.com/microsoft/TypeScript/issues/22378
                 replaceValue as unknown as string,
-            ) ?? ``
+            ) ?? ''
         );
     }
 }

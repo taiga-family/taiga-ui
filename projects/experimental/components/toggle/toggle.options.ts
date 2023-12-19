@@ -10,8 +10,8 @@ export interface TuiToggleOptions {
 
 export const TUI_TOGGLE_DEFAULT_OPTIONS: TuiToggleOptions = {
     showIcons: true,
-    size: `m`,
-    icon: `tuiIconCheck`,
+    size: 'm',
+    icon: 'tuiIconCheck',
 };
 
 export const TUI_TOGGLE_OPTIONS = tuiCreateToken(TUI_TOGGLE_DEFAULT_OPTIONS);

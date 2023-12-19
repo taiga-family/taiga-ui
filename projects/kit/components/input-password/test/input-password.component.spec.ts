@@ -8,7 +8,7 @@ import {TuiPageObject} from '@taiga-ui/testing';
 import {TuiInputPasswordComponent} from '../input-password.component';
 import {TuiInputPasswordModule} from '../input-password.module';
 
-describe(`InputPassword`, () => {
+describe('InputPassword', () => {
     @Component({
         template: `
             <tui-input-password
@@ -24,7 +24,7 @@ describe(`InputPassword`, () => {
 
         control = new FormControl();
         readOnly = false;
-        size: TuiSizeL | TuiSizeS = `m`;
+        size: TuiSizeL | TuiSizeS = 'm';
     }
 
     let fixture: ComponentFixture<TestComponent>;
@@ -33,7 +33,7 @@ describe(`InputPassword`, () => {
     let pageObject: TuiPageObject<TestComponent>;
 
     function getIcon(): DebugElement | null {
-        return pageObject.getByAutomationId(`tui-password__icon`);
+        return pageObject.getByAutomationId('tui-password__icon');
     }
 
     beforeEach(async () => {
@@ -55,37 +55,37 @@ describe(`InputPassword`, () => {
         fixture.detectChanges();
     });
 
-    describe(`Field visibility`, () => {
-        it(`Initially, the field is type = "password", so only dots are visible when entering`, () => {
+    describe('Field visibility', () => {
+        it('Initially, the field is type = "password", so only dots are visible when entering', () => {
             const inputType = component.inputType;
 
-            expect(inputType).toBe(`password`);
+            expect(inputType).toBe('password');
         });
 
-        it(`When you click on the "Show password" icon, the field becomes type = "text"`, () => {
+        it('When you click on the "Show password" icon, the field becomes type = "text"', () => {
             getIcon()!.nativeElement.click();
 
             const inputType = component.inputType;
 
-            expect(inputType).toBe(`text`);
+            expect(inputType).toBe('text');
         });
 
-        it(`With readOnly, the type field="password"`, () => {
+        it('With readOnly, the type field="password"', () => {
             testComponent.readOnly = true;
             fixture.detectChanges();
 
             const inputType = component.inputType;
 
-            expect(inputType).toBe(`password`);
+            expect(inputType).toBe('password');
         });
 
-        it(`When the field is disabled type="password"`, () => {
+        it('When the field is disabled type="password"', () => {
             testComponent.control.disable();
             fixture.detectChanges();
 
             const inputType = component.inputType;
 
-            expect(inputType).toBe(`password`);
+            expect(inputType).toBe('password');
         });
     });
 });

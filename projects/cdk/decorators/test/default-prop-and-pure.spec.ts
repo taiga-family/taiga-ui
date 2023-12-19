@@ -1,10 +1,10 @@
 import {tuiDefaultProp, tuiPure} from '@taiga-ui/cdk/decorators';
 
-describe(`@tuiDefaultProp and @tuiPure`, () => {
-    it(`Support redefine properties for parent class`, () => {
+describe('@tuiDefaultProp and @tuiPure', () => {
+    it('Support redefine properties for parent class', () => {
         class C {
             @tuiDefaultProp()
-            limitWidth = `__C`;
+            limitWidth = '__C';
 
             constructor(limitWidth: string) {
                 this.limitWidth = limitWidth;
@@ -18,7 +18,7 @@ describe(`@tuiDefaultProp and @tuiPure`, () => {
 
         class B extends C {
             @tuiDefaultProp()
-            override limitWidth = `__B`;
+            override limitWidth = '__B';
 
             @tuiPure
             update(val: string): this {
@@ -47,12 +47,12 @@ describe(`@tuiDefaultProp and @tuiPure`, () => {
             }
         }
 
-        expect(new A(`_A_`).limitWidth).toBe(`__B`);
-        expect(new B(`_B_`).limitWidth).toBe(`__B`);
-        expect(new C(`_C_`).limitWidth).toBe(`_C_`);
+        expect(new A('_A_').limitWidth).toBe('__B');
+        expect(new B('_B_').limitWidth).toBe('__B');
+        expect(new C('_C_').limitWidth).toBe('_C_');
 
-        expect(new A(`_A_`).update(`A`).width).toBe(`A`);
-        expect(new B(`_B_`).update(`B`).width).toBe(`B`);
-        expect(new C(`_C_`).width).toBe(`_C_`);
+        expect(new A('_A_').update('A').width).toBe('A');
+        expect(new B('_B_').update('B').width).toBe('B');
+        expect(new C('_C_').width).toBe('_C_');
     });
 });

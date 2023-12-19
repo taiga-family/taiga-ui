@@ -1,13 +1,13 @@
-function nextTabbable($referenceElement: JQuery, direction = `forward`): JQuery {
-    if (!(direction === `forward` || direction === `backward`)) {
-        throw new Error(`Expected direction to be forward or backward`);
+function nextTabbable($referenceElement: JQuery, direction = 'forward'): JQuery {
+    if (!(direction === 'forward' || direction === 'backward')) {
+        throw new Error('Expected direction to be forward or backward');
     }
 
     const stack = [];
     let element;
 
     const siblingProp =
-        direction === `forward` ? `nextElementSibling` : `previousElementSibling`;
+        direction === 'forward' ? 'nextElementSibling' : 'previousElementSibling';
 
     element = $referenceElement.get(0);
 
@@ -33,7 +33,7 @@ function nextTabbable($referenceElement: JQuery, direction = `forward`): JQuery 
 
         let children = Array.from(element?.children || []);
 
-        if (direction === `forward`) {
+        if (direction === 'forward') {
             children = children.reverse();
         }
 
@@ -46,28 +46,28 @@ function nextTabbable($referenceElement: JQuery, direction = `forward`): JQuery 
 }
 
 function isTabbable($element: JQuery): boolean {
-    const tabIndex = $element.attr(`tabindex`);
+    const tabIndex = $element.attr('tabindex');
 
     return (!tabIndex || parseInt(tabIndex, 10) >= 0) && isFocusable($element);
 }
 
 const DISABLEMENT_ELEMENTS = [
-    `input`,
-    `button`,
-    `select`,
-    `textarea`,
-    `button`,
-    `object`,
+    'input',
+    'button',
+    'select',
+    'textarea',
+    'button',
+    'object',
 ];
 
 function isFocusable($element: JQuery): boolean {
-    const nodeName = $element.prop(`nodeName`)?.toLowerCase() || ``;
+    const nodeName = $element.prop('nodeName')?.toLowerCase() || '';
 
     return (
-        (nodeName === `a` ||
-            !!$element.attr(`tabindex`) ||
-            (DISABLEMENT_ELEMENTS.includes(nodeName) && $element.is(`:enabled`))) &&
-        $element.is(`:visible`)
+        (nodeName === 'a' ||
+            !!$element.attr('tabindex') ||
+            (DISABLEMENT_ELEMENTS.includes(nodeName) && $element.is(':enabled'))) &&
+        $element.is(':visible')
     );
 }
 

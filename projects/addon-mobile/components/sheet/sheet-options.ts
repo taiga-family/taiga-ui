@@ -21,7 +21,7 @@ export interface TuiSheetOptions<I = undefined, O = unknown> {
  * @deprecated: drop in v4.0
  */
 export const TUI_SHEET_DEFAULT_OPTIONS: Omit<TuiSheetOptions, 'data'> = {
-    image: ``,
+    image: '',
     imageSlide: true,
     stops: [],
     initial: 0,

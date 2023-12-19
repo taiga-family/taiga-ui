@@ -20,7 +20,7 @@ import {TUI_STUCK_PROVIDER} from './stuck.provider';
 export const TUI_TABLE_PROVIDERS = [
     {
         provide: INTERSECTION_ROOT_MARGIN,
-        useValue: `10000px 10000px 10000px 0px`,
+        useValue: '10000px 10000px 10000px 0px',
     },
     {
         provide: INTERSECTION_THRESHOLD,

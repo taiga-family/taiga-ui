@@ -14,23 +14,23 @@ import {migrateInputRange} from './migrate-input-range';
 import {migrateInputSlider} from './migrate-input-slider';
 
 export function migrateSliders(fileSystem: DevkitFileSystem, options: TuiSchema): void {
-    !options[`skip-logs`] &&
+    !options['skip-logs'] &&
         infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} migrating sliders...`);
 
-    !options[`skip-logs`] &&
+    !options['skip-logs'] &&
         processLog(
             `${SMALL_TAB_SYMBOL}${SMALL_TAB_SYMBOL}${PROCESSING_SYMBOL}InputSlider...`,
         );
 
     migrateInputSlider(fileSystem, options);
 
-    !options[`skip-logs`] &&
+    !options['skip-logs'] &&
         processLog(
             `${SMALL_TAB_SYMBOL}${SMALL_TAB_SYMBOL}${PROCESSING_SYMBOL}InputRange...`,
         );
 
     migrateInputRange(fileSystem, options);
 
-    !options[`skip-logs`] &&
+    !options['skip-logs'] &&
         successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} sliders migrated \n`);
 }

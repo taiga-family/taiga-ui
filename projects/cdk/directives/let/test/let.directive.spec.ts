@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component, ElementRef, ViewChild} from '@angula
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiLetModule} from '@taiga-ui/cdk';
 
-describe(`Let`, () => {
+describe('Let', () => {
     @Component({
         template: `
             <div
@@ -15,7 +15,7 @@ describe(`Let`, () => {
         changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class TestComponent {
-        @ViewChild(`test`)
+        @ViewChild('test')
         el!: ElementRef;
 
         counter = 0;
@@ -23,7 +23,7 @@ describe(`Let`, () => {
         get getter(): string {
             this.counter++;
 
-            return `!`;
+            return '!';
         }
     }
 
@@ -43,11 +43,11 @@ describe(`Let`, () => {
         fixture.detectChanges();
     });
 
-    it(`Result is shown 3 times`, () => {
-        expect(testComponent.el.nativeElement.textContent!.trim()).toBe(`!!!`);
+    it('Result is shown 3 times', () => {
+        expect(testComponent.el.nativeElement.textContent!.trim()).toBe('!!!');
     });
 
-    it(`Getter is called once`, () => {
+    it('Getter is called once', () => {
         expect(testComponent.counter).toBe(1);
     });
 });

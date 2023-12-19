@@ -7,7 +7,7 @@ import {
     tuiMoneyOptionsProvider,
 } from '@taiga-ui/addon-commerce';
 
-describe(`Money component options`, () => {
+describe('Money component options', () => {
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
 
@@ -28,7 +28,7 @@ describe(`Money component options`, () => {
             providers: [
                 tuiMoneyOptionsProvider({
                     currency: TuiCurrency.Euro,
-                    sign: `never`,
+                    sign: 'never',
                     precision: 1,
                 }),
             ],
@@ -39,13 +39,13 @@ describe(`Money component options`, () => {
         fixture.detectChanges();
     });
 
-    it(`override by custom options`, () => {
-        expect(testComponent.component.currency).toBe(`EUR`);
-        expect(testComponent.component.sign).toBe(`never`);
+    it('override by custom options', () => {
+        expect(testComponent.component.currency).toBe('EUR');
+        expect(testComponent.component.sign).toBe('never');
         expect(testComponent.component.singleColor).toBe(false);
         expect(testComponent.component.precision).toBe(1);
         expect(testComponent.component.colored).toBe(false);
         expect(testComponent.component.red).toBe(false);
-        expect(testComponent.component.signSymbol).toBe(``);
+        expect(testComponent.component.signSymbol).toBe('');
     });
 });

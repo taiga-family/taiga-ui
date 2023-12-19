@@ -2,11 +2,11 @@ const DEFAULT: [number, number, number, number] = [0, 0, 0, 1];
 
 export function tuiParseColor(color: string): [number, number, number, number] {
     const stripped = color
-        .replace(`#`, ``)
-        .replace(`rgba(`, ``)
-        .replace(`rgb(`, ``)
-        .replace(`)`, ``);
-    const array = stripped.split(`,`).map(item => parseFloat(item));
+        .replace('#', '')
+        .replace('rgba(', '')
+        .replace('rgb(', '')
+        .replace(')', '');
+    const array = stripped.split(',').map(item => parseFloat(item));
 
     if (array.length === 4) {
         return array as [number, number, number, number];
@@ -16,7 +16,7 @@ export function tuiParseColor(color: string): [number, number, number, number] {
         return array.concat(1) as [number, number, number, number];
     }
 
-    const matches = stripped.match(new RegExp(`(.{${stripped.length / 3}})`, `g`));
+    const matches = stripped.match(new RegExp(`(.{${stripped.length / 3}})`, 'g'));
 
     if (!matches) {
         return DEFAULT;

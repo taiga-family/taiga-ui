@@ -10,8 +10,8 @@ type FileContent = string;
 function getAllModules(entryPoint: Record<string, unknown>, names: Set<string>): string {
     const modules = Object.keys(entryPoint).reduce((modules, name) => {
         const unique =
-            name.endsWith(`Module`) &&
-            name !== `TuiOrderWeekDaysPipeModule` &&
+            name.endsWith('Module') &&
+            name !== 'TuiOrderWeekDaysPipeModule' &&
             !names.has(name);
 
         if (unique) {
@@ -23,22 +23,22 @@ function getAllModules(entryPoint: Record<string, unknown>, names: Set<string>):
         return modules;
     }, [] as string[]);
 
-    return `${modules.join(`,\n\t\t`)}`;
+    return `${modules.join(',\n\t\t')}`;
 }
 
 export const prepareLess = (content: string): string =>
     content.replace(
         /@import.+taiga-ui-local(.less)?';/g,
-        `@import '@taiga-ui/core/styles/taiga-ui-local.less';`,
+        "@import '@taiga-ui/core/styles/taiga-ui-local.less';",
     );
 
-export const appPrefix = (stringsPart: TemplateStringsArray, path: string = ``): string =>
-    `src/app/${stringsPart.join(``)}${path}`;
+export const appPrefix = (stringsPart: TemplateStringsArray, path: string = ''): string =>
+    `src/app/${stringsPart.join('')}${path}`;
 
 export const stackblitzPrefix = (
     stringsPart: TemplateStringsArray,
-    path: string = ``,
-): string => `src/app/@stackblitz/${stringsPart.join(``)}${path}`;
+    path: string = '',
+): string => `src/app/@stackblitz/${stringsPart.join('')}${path}`;
 
 export const getSupportFiles = <T extends Record<string, string>>(
     files: T,
@@ -107,15 +107,15 @@ export async function getAllTaigaUIModulesFile(
      * */
     const [cdk, core, kit, charts, commerce, mobile, preview, table, tablebars] =
         await Promise.all([
-            import(`@taiga-ui/cdk`),
-            import(`@taiga-ui/core`),
-            import(`@taiga-ui/kit`),
-            import(`@taiga-ui/addon-charts`),
-            import(`@taiga-ui/addon-commerce`),
-            import(`@taiga-ui/addon-mobile`),
-            import(`@taiga-ui/addon-preview`),
-            import(`@taiga-ui/addon-table`),
-            import(`@taiga-ui/addon-tablebars`),
+            import('@taiga-ui/cdk'),
+            import('@taiga-ui/core'),
+            import('@taiga-ui/kit'),
+            import('@taiga-ui/addon-charts'),
+            import('@taiga-ui/addon-commerce'),
+            import('@taiga-ui/addon-mobile'),
+            import('@taiga-ui/addon-preview'),
+            import('@taiga-ui/addon-table'),
+            import('@taiga-ui/addon-tablebars'),
         ]).then(modules => {
             const allModuleNames = new Set<string>();
 
@@ -125,9 +125,9 @@ export async function getAllTaigaUIModulesFile(
     const additionalModulesImports = additionalModules
         .map(
             ([fileName, {className}]) =>
-                `import {${className}} from '../${fileName.replace(`.ts`, ``)}';`,
+                `import {${className}} from '../${fileName.replace('.ts', '')}';`,
         )
-        .join(`\n`);
+        .join('\n');
 
     return `
 import {
@@ -197,7 +197,7 @@ export const ALL_TAIGA_UI_MODULES = [
     /* ADDON-TABLEBARS */
     ${tablebars},
     /* EXAMPLE MODULES */
-    ${additionalModules.map(([, {className}]) => className).join(`,\n\t\t`)}
+    ${additionalModules.map(([, {className}]) => className).join(',\n\t\t')}
 ];
 `;
 }

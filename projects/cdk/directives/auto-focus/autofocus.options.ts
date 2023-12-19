@@ -42,7 +42,7 @@ export function tuiAutoFocusOptionsProvider(
 }
 
 export const TUI_AUTOFOCUS_HANDLER = new InjectionToken<TuiAutofocusHandler>(
-    `[TUI_AUTOFOCUS_HANDLER]`,
+    '[TUI_AUTOFOCUS_HANDLER]',
 );
 
 export const TUI_AUTOFOCUS_PROVIDERS = [

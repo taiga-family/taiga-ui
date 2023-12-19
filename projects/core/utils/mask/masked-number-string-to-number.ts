@@ -10,6 +10,6 @@ export function tuiMaskedNumberStringToNumber(
     thousandSymbol: string,
 ): number {
     return parseFloat(
-        value.split(thousandSymbol).join(``).split(decimalsSymbol).join(`.`),
+        value.split(thousandSymbol).join('').split(decimalsSymbol).join('.'),
     );
 }

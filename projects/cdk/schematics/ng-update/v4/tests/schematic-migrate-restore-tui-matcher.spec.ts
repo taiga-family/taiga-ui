@@ -12,7 +12,7 @@ import {join} from 'path';
 
 import {createAngularJson} from '../../../utils/create-angular-json';
 
-const collectionPath = join(__dirname, `../../../migration.json`);
+const collectionPath = join(__dirname, '../../../migration.json');
 
 const TUI_MATCHER_COMPONENT = `
 import { TuiFilterPipe, TuiMatcher } from '@taiga-ui/cdk';
@@ -106,13 +106,13 @@ const TEMPLATE_AFTER = `
 <div>{{ array | tuiFilter: matcher: 2 }}</div>
 `;
 
-describe(`ng-update`, () => {
+describe('ng-update', () => {
     let host: UnitTestTree;
     let runner: SchematicTestRunner;
 
     beforeEach(() => {
         host = new UnitTestTree(new HostTree());
-        runner = new SchematicTestRunner(`schematics`, collectionPath);
+        runner = new SchematicTestRunner('schematics', collectionPath);
 
         setActiveProject(createProject(host));
 
@@ -121,36 +121,36 @@ describe(`ng-update`, () => {
         saveActiveProject();
     });
 
-    it(`should update TuiMatcher generic parameters`, async () => {
+    it('should update TuiMatcher generic parameters', async () => {
         const tree = await runner
             .runSchematicAsync(
-                `updateToV4`,
-                {'skip-logs': process.env[`TUI_CI`] === `true`} as Partial<TuiSchema>,
+                'updateToV4',
+                {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
                 host,
             )
             .toPromise();
 
-        const componentBefore = tree.readContent(`test/app/tui-matcher.component.ts`);
+        const componentBefore = tree.readContent('test/app/tui-matcher.component.ts');
 
         expect(componentBefore).toEqual(TUI_MATCHER_COMPONENT_AFTER);
-        expect(tree.readContent(`test/app/tui-matcher.component.html`)).toEqual(
+        expect(tree.readContent('test/app/tui-matcher.component.html')).toEqual(
             TEMPLATE_AFTER,
         );
     });
 
-    it(`should rename TuiTypedMatcher`, async () => {
+    it('should rename TuiTypedMatcher', async () => {
         const tree = await runner
             .runSchematicAsync(
-                `updateToV4`,
-                {'skip-logs': process.env[`TUI_CI`] === `true`} as Partial<TuiSchema>,
+                'updateToV4',
+                {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
                 host,
             )
             .toPromise();
 
-        expect(tree.readContent(`test/app/tui-typed-matcher.component.ts`)).toEqual(
+        expect(tree.readContent('test/app/tui-typed-matcher.component.ts')).toEqual(
             TYPED_TUI_MATCHER_COMPONENT_AFTER,
         );
-        expect(tree.readContent(`test/app/tui-typed-matcher.component.html`)).toEqual(
+        expect(tree.readContent('test/app/tui-typed-matcher.component.html')).toEqual(
             TEMPLATE_AFTER,
         );
     });
@@ -159,14 +159,14 @@ describe(`ng-update`, () => {
 });
 
 function createMainFiles(): void {
-    createSourceFile(`test/app/tui-matcher.component.ts`, TUI_MATCHER_COMPONENT);
+    createSourceFile('test/app/tui-matcher.component.ts', TUI_MATCHER_COMPONENT);
     createSourceFile(
-        `test/app/tui-typed-matcher.component.ts`,
+        'test/app/tui-typed-matcher.component.ts',
         TYPED_TUI_MATCHER_COMPONENT,
     );
-    createSourceFile(`test/app/tui-matcher.component.html`, TEMPLATE_BEFORE);
-    createSourceFile(`test/app/tui-typed-matcher.component.html`, TEMPLATE_BEFORE);
+    createSourceFile('test/app/tui-matcher.component.html', TEMPLATE_BEFORE);
+    createSourceFile('test/app/tui-typed-matcher.component.html', TEMPLATE_BEFORE);
 
     createAngularJson();
-    createSourceFile(`package.json`);
+    createSourceFile('package.json');
 }

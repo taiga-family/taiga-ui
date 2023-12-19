@@ -3,7 +3,7 @@ import {environment} from '@demo/environments/environment';
 import {LOCATION} from '@ng-web-apis/common';
 import {TUI_VERSION} from '@taiga-ui/cdk';
 
-@Injectable({providedIn: `root`})
+@Injectable({providedIn: 'root'})
 export class StackblitzDepsService {
     constructor(@Inject(LOCATION) private readonly location: Location) {}
 
@@ -16,8 +16,8 @@ export class StackblitzDepsService {
     }
 
     private async getAngularPackages(): Promise<Record<string, string>> {
-        const {dependencies} = await import(`@demo/root-package`);
-        const ngVersion = `${dependencies[`@angular/cdk`]?.split(`.`)?.[0] ?? ``}.x.x`;
+        const {dependencies} = await import('@demo/root-package');
+        const ngVersion = `${dependencies['@angular/cdk']?.split('.')?.[0] ?? ''}.x.x`;
 
         return {
             '@angular/cdk': ngVersion,
@@ -35,11 +35,11 @@ export class StackblitzDepsService {
 
     private getTaigaPackages(): Record<string, string> {
         const version =
-            this.location.pathname.startsWith(`/next/`) ||
-            this.location.host.endsWith(`web.app`) ||
+            this.location.pathname.startsWith('/next/') ||
+            this.location.host.endsWith('web.app') ||
             !environment.production
-                ? `canary`
-                : `${TUI_VERSION.split(`.`)[0]}.x.x`;
+                ? 'canary'
+                : `${TUI_VERSION.split('.')[0]}.x.x`;
 
         return {
             '@taiga-ui/cdk': version,
@@ -59,27 +59,27 @@ export class StackblitzDepsService {
     }
 
     private async getCommonPackages(): Promise<Record<string, string>> {
-        const {dependencies: demoDeps} = await import(`@taiga-ui/demo/package.json`);
-        const {dependencies: cdkDeps} = await import(`@taiga-ui/cdk/package.json`);
-        const {dependencies: kitDeps} = await import(`@taiga-ui/kit/package.json`);
+        const {dependencies: demoDeps} = await import('@taiga-ui/demo/package.json');
+        const {dependencies: cdkDeps} = await import('@taiga-ui/cdk/package.json');
+        const {dependencies: kitDeps} = await import('@taiga-ui/kit/package.json');
         const {dependencies: rootDeps, devDependencies: rootDevDeps} = await import(
-            `@demo/root-package`
+            '@demo/root-package'
         );
 
         return {
-            '@tinkoff/ng-dompurify': demoDeps[`@tinkoff/ng-dompurify`],
-            '@tinkoff/ng-polymorpheus': cdkDeps[`@tinkoff/ng-polymorpheus`],
-            '@ng-web-apis/common': cdkDeps[`@ng-web-apis/common`],
-            '@tinkoff/ng-event-plugins': cdkDeps[`@tinkoff/ng-event-plugins`],
+            '@tinkoff/ng-dompurify': demoDeps['@tinkoff/ng-dompurify'],
+            '@tinkoff/ng-polymorpheus': cdkDeps['@tinkoff/ng-polymorpheus'],
+            '@ng-web-apis/common': cdkDeps['@ng-web-apis/common'],
+            '@tinkoff/ng-event-plugins': cdkDeps['@tinkoff/ng-event-plugins'],
             '@ng-web-apis/intersection-observer':
-                kitDeps[`@ng-web-apis/intersection-observer`],
-            '@ng-web-apis/resize-observer': cdkDeps[`@ng-web-apis/resize-observer`],
-            '@ng-web-apis/mutation-observer': cdkDeps[`@ng-web-apis/mutation-observer`],
-            '@maskito/angular': kitDeps[`@maskito/angular`],
-            '@maskito/core': kitDeps[`@maskito/core`],
-            '@maskito/kit': kitDeps[`@maskito/kit`],
-            'text-mask-core': kitDeps[`text-mask-core`],
-            'zone.js': rootDeps[`zone.js`],
+                kitDeps['@ng-web-apis/intersection-observer'],
+            '@ng-web-apis/resize-observer': cdkDeps['@ng-web-apis/resize-observer'],
+            '@ng-web-apis/mutation-observer': cdkDeps['@ng-web-apis/mutation-observer'],
+            '@maskito/angular': kitDeps['@maskito/angular'],
+            '@maskito/core': kitDeps['@maskito/core'],
+            '@maskito/kit': kitDeps['@maskito/kit'],
+            'text-mask-core': kitDeps['text-mask-core'],
+            'zone.js': rootDeps['zone.js'],
             dompurify: demoDeps.dompurify,
             rxjs: rootDeps.rxjs,
             typescript: rootDevDeps.typescript,

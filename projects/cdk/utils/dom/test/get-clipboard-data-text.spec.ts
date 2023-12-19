@@ -1,27 +1,27 @@
 import {tuiGetClipboardDataText} from '@taiga-ui/cdk';
 
 // TODO: TypeError: Cannot read properties of undefined (reading 'ownerDocument')
-xdescribe(`getClipboardDataText`, () => {
-    it(`ClipboardData in event`, () => {
-        const data = `copy!`;
+xdescribe('getClipboardDataText', () => {
+    it('ClipboardData in event', () => {
+        const data = 'copy!';
         const clipboardData = new DataTransfer();
 
-        clipboardData.setData(`text/plain`, data);
+        clipboardData.setData('text/plain', data);
 
-        const event = new ClipboardEvent(`copy`, {clipboardData});
+        const event = new ClipboardEvent('copy', {clipboardData});
 
         expect(tuiGetClipboardDataText(event)).toEqual(data);
     });
 
-    it(`ClipboardData not in event`, () => {
-        const event = new Event(`copy`) as unknown as ClipboardEvent;
+    it('ClipboardData not in event', () => {
+        const event = new Event('copy') as unknown as ClipboardEvent;
 
-        Object.defineProperty(event, `target`, {
+        Object.defineProperty(event, 'target', {
             value: {
-                ownerDocument: {defaultView: {clipboardData: {getData: () => `data`}}},
+                ownerDocument: {defaultView: {clipboardData: {getData: () => 'data'}}},
             },
         });
 
-        expect(tuiGetClipboardDataText(event)).toBe(`data`);
+        expect(tuiGetClipboardDataText(event)).toBe('data');
     });
 });

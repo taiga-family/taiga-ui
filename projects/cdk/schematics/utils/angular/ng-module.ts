@@ -14,7 +14,7 @@ export function getNgModules(
     query?: Query<Omit<StructureType<ClassDeclaration>, 'kind'>>,
 ): ClassDeclaration[] {
     return getClasses(pattern, query).filter(
-        declaration => !!declaration.getDecorator(`NgModule`),
+        declaration => !!declaration.getDecorator('NgModule'),
     );
 }
 

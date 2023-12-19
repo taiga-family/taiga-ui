@@ -11,7 +11,7 @@ import {
  * Service to use styles with directives
  */
 @Injectable({
-    providedIn: `root`,
+    providedIn: 'root',
 })
 export class TuiDirectiveStylesService {
     private readonly map = new Map<Type<unknown>, unknown>();

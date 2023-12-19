@@ -67,7 +67,7 @@ function main(options: TuiSchema): Rule {
 
 function addTaigaStyles(options: TuiSchema): Rule {
     return async (tree: Tree, context) => {
-        const proprietary = getPackageJsonDependency(tree, `@taiga-ui/proprietary-core`);
+        const proprietary = getPackageJsonDependency(tree, '@taiga-ui/proprietary-core');
 
         const taigaStyles = proprietary ? [] : [TAIGA_THEME_FONTS];
         const stylesToReplace = {
@@ -77,8 +77,8 @@ function addTaigaStyles(options: TuiSchema): Rule {
 
         if (await isInvalidAngularJson(tree)) {
             context.logger.warn(
-                `[WARNING]: Schematics don't support this version of angular.json.\n` +
-                    `– Add styles ${taigaStyles.join(`,`)} to angular.json manually.\n` +
+                "[WARNING]: Schematics don't support this version of angular.json.\n" +
+                    `– Add styles ${taigaStyles.join(',')} to angular.json manually.\n` +
                     `– Manually replace "${TAIGA_GLOBAL_OLD_STYLE}" with "${TAIGA_GLOBAL_NEW_STYLE}" inside "styles" of angular.json (don't forget to install "@taiga-ui/styles")`,
             );
 
@@ -91,7 +91,7 @@ function addTaigaStyles(options: TuiSchema): Rule {
             taigaStyles,
             existingStyles =>
                 !!existingStyles?.some(
-                    style => typeof style === `string` && style.includes(`tinkoff-theme`),
+                    style => typeof style === 'string' && style.includes('tinkoff-theme'),
                 ),
             stylesToReplace,
             tree,
@@ -102,7 +102,7 @@ function addTaigaStyles(options: TuiSchema): Rule {
 function showNormalizeWarning(): Rule {
     return (tree: Tree, context: SchematicContext): void => {
         try {
-            if (getPackageJsonDependency(tree, `@taiga-ui/styles`)?.version) {
+            if (getPackageJsonDependency(tree, '@taiga-ui/styles')?.version) {
                 context.logger.warn(TUI_WARNING_NORMALIZE);
             }
         } catch {
@@ -114,7 +114,7 @@ function showNormalizeWarning(): Rule {
 export function updateToV3(options: TuiSchema): Rule {
     const t0 = performance.now();
 
-    !options[`skip-logs`] &&
+    !options['skip-logs'] &&
         titleLog(
             `\n\n${START_SYMBOL} Your packages will be updated to @taiga-ui/*@${TAIGA_VERSION}\n`,
         );
@@ -127,7 +127,7 @@ export function updateToV3(options: TuiSchema): Rule {
         () => {
             const executionTime = getExecutionTime(t0, performance.now());
 
-            !options[`skip-logs`] &&
+            !options['skip-logs'] &&
                 titleLog(
                     `${FINISH_SYMBOL} We migrated packages to @taiga-ui/*@${TAIGA_VERSION} in ${executionTime}. \n`,
                 );

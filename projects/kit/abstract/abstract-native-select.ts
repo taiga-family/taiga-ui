@@ -29,7 +29,7 @@ export abstract class AbstractTuiNativeSelect<H = TuiTextfieldHost, T = string> 
         readonly itemsHandlers: TuiItemsHandlers<T>,
     ) {}
 
-    @HostBinding(`id`)
+    @HostBinding('id')
     get id(): string {
         return this.el.nativeElement.id || this.idService.generate();
     }

@@ -15,10 +15,10 @@ export interface TuiMoneyOptions {
 }
 
 export const TUI_MONEY_DEFAULT_OPTIONS: TuiMoneyOptions = {
-    decimal: `not-zero`,
+    decimal: 'not-zero',
     currency: TuiCurrency.Ruble,
-    currencyAlign: `right`,
-    sign: `negative-only`,
+    currencyAlign: 'right',
+    sign: 'negative-only',
     colored: false,
     precision: 2,
     singleColor: false,

@@ -1,21 +1,21 @@
 function isEmptyParamValue(value: string): boolean {
-    return [`undefined`, `null`, `NaN`].includes(value);
+    return ['undefined', 'null', 'NaN'].includes(value);
 }
 
 function isBooleanParamValue(value: string): boolean {
-    return value === `true` || value === `false`;
+    return value === 'true' || value === 'false';
 }
 
 function isNumberParamValue(value: string): boolean {
-    return !!value.trim() && !Number.isNaN(Number(value)) && !value.startsWith(`+`);
+    return !!value.trim() && !Number.isNaN(Number(value)) && !value.startsWith('+');
 }
 
 function isPossibleArray(value: string): boolean {
-    return value.startsWith(`[`) && value.endsWith(`]`);
+    return value.startsWith('[') && value.endsWith(']');
 }
 
 function isPossibleObject(value: string): boolean {
-    return value.startsWith(`{`) && value.endsWith(`}`);
+    return value.startsWith('{') && value.endsWith('}');
 }
 
 export function tuiCoerceValue<T>(
@@ -28,7 +28,7 @@ export function tuiCoerceValue<T>(
     }
 
     if (isBooleanParamValue(prepared)) {
-        return String(prepared) === `true`;
+        return String(prepared) === 'true';
     }
 
     if (isNumberParamValue(prepared)) {

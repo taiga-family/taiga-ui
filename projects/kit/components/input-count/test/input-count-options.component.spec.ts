@@ -9,7 +9,7 @@ import {
 } from '@taiga-ui/kit';
 import {TuiNativeInputPO} from '@taiga-ui/testing';
 
-describe(`InputCount with TUI_INPUT_COUNT_OPTIONS`, () => {
+describe('InputCount with TUI_INPUT_COUNT_OPTIONS', () => {
     @Component({
         template: `
             <tui-input-count
@@ -44,8 +44,8 @@ describe(`InputCount with TUI_INPUT_COUNT_OPTIONS`, () => {
                     useValue: {
                         ...TUI_INPUT_COUNT_DEFAULT_OPTIONS,
                         icons: {
-                            up: `tuiIconChevronUp`,
-                            down: `tuiIconChevronDown`,
+                            up: 'tuiIconChevronUp',
+                            down: 'tuiIconChevronDown',
                         },
                         step,
                         min,
@@ -58,36 +58,36 @@ describe(`InputCount with TUI_INPUT_COUNT_OPTIONS`, () => {
         fixture = TestBed.createComponent(TestComponent);
         testComponent = fixture.componentInstance;
 
-        inputPO = new TuiNativeInputPO(fixture, `tui-primitive-textfield__native-input`);
+        inputPO = new TuiNativeInputPO(fixture, 'tui-primitive-textfield__native-input');
     });
 
-    describe(`A step other than 1 is set`, () => {
+    describe('A step other than 1 is set', () => {
         beforeEach(() => {
             testComponent.control.setValue(6);
             fixture.detectChanges();
         });
 
-        it(`Increase the value by the specified step`, async () => {
+        it('Increase the value by the specified step', async () => {
             testComponent.component.increaseValue();
 
             fixture.detectChanges();
             await fixture.whenStable();
 
-            expect(inputPO.value).toBe(`11`);
+            expect(inputPO.value).toBe('11');
             expect(testComponent.control.value).toBe(11);
         });
 
-        it(`Decrease the value by a given step`, async () => {
+        it('Decrease the value by a given step', async () => {
             testComponent.component.decreaseValue();
 
             fixture.detectChanges();
             await fixture.whenStable();
 
-            expect(inputPO.value).toBe(`1`);
+            expect(inputPO.value).toBe('1');
             expect(testComponent.control.value).toBe(1);
         });
 
-        it(`Cannot make value greater than maxValue`, async () => {
+        it('Cannot make value greater than maxValue', async () => {
             testComponent.component.increaseValue(); // the new value is 11
             testComponent.component.increaseValue(); // the new value would be 16, but it is greater than maxValue
 
@@ -98,7 +98,7 @@ describe(`InputCount with TUI_INPUT_COUNT_OPTIONS`, () => {
             expect(testComponent.control.value).toBe(max);
         });
 
-        it(`Cannot make value less than min`, async () => {
+        it('Cannot make value less than min', async () => {
             testComponent.component.decreaseValue(); // value became === 1
             testComponent.component.decreaseValue(); // the new value would be -4, but it's less than min
 

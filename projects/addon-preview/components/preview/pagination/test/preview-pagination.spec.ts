@@ -3,7 +3,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {TuiPreviewModule, TuiPreviewPaginationComponent} from '@taiga-ui/addon-preview';
 
-describe(`PreviewPagination`, () => {
+describe('PreviewPagination', () => {
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
 
@@ -34,50 +34,50 @@ describe(`PreviewPagination`, () => {
         fixture.detectChanges();
     });
 
-    describe(`Preview pagination`, () => {
-        it(`0 switching to 1`, () => {
+    describe('Preview pagination', () => {
+        it('0 switching to 1', () => {
             testComponent.component.onArrowClick(1);
             fixture.detectChanges();
 
             expect(testComponent.index).toBe(1);
         });
 
-        it(`left arrow disabled`, () => {
+        it('left arrow disabled', () => {
             const arrowLeft = getLeftArrow();
 
-            expect(arrowLeft.hasAttribute(`disabled`)).toBe(true);
+            expect(arrowLeft.hasAttribute('disabled')).toBe(true);
         });
 
-        it(`left arrow enabled`, () => {
+        it('left arrow enabled', () => {
             testComponent.index = 1;
             fixture.detectChanges();
 
             const arrowLeft = getLeftArrow();
 
-            expect(arrowLeft.hasAttribute(`disabled`)).toBe(false);
+            expect(arrowLeft.hasAttribute('disabled')).toBe(false);
         });
 
-        it(`right arrow disabled`, () => {
+        it('right arrow disabled', () => {
             testComponent.index = 10;
             fixture.detectChanges();
 
             const arrowRight = getRightArrow();
 
-            expect(arrowRight.hasAttribute(`disabled`)).toBe(true);
+            expect(arrowRight.hasAttribute('disabled')).toBe(true);
         });
 
-        it(`right arrow enabled`, () => {
+        it('right arrow enabled', () => {
             const arrowRight = getRightArrow();
 
-            expect(arrowRight.hasAttribute(`disabled`)).toBe(false);
+            expect(arrowRight.hasAttribute('disabled')).toBe(false);
         });
     });
 
     function getLeftArrow(): HTMLElement {
-        return fixture.debugElement.query(By.css(`.t-arrow_left`)).nativeElement;
+        return fixture.debugElement.query(By.css('.t-arrow_left')).nativeElement;
     }
 
     function getRightArrow(): HTMLElement {
-        return fixture.debugElement.query(By.css(`.t-arrow_right`)).nativeElement;
+        return fixture.debugElement.query(By.css('.t-arrow_right')).nativeElement;
     }
 });

@@ -3,8 +3,8 @@
  */
 // eslint-disable-next-line no-restricted-syntax
 export enum TuiNotification {
-    Error = `error`,
-    Info = `info`,
-    Success = `success`,
-    Warning = `warning`,
+    Error = 'error',
+    Info = 'info',
+    Success = 'success',
+    Warning = 'warning',
 }

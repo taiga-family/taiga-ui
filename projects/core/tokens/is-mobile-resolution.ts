@@ -19,7 +19,7 @@ export const TUI_IS_MOBILE_RES = tuiCreateTokenFromFactory(() => {
     const win = inject(WINDOW);
     const media = inject(TUI_MEDIA);
 
-    return tuiTypedFromEvent(win, `resize`).pipe(
+    return tuiTypedFromEvent(win, 'resize').pipe(
         share(),
         startWith(null),
         map(() => tuiIsMobile(win, media)),

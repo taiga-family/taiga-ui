@@ -5,8 +5,8 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 type TuiPdfViewerDefaultOptions = Omit<TuiPdfViewerOptions<unknown>, 'data'>;
 
 export const TUI_PDF_VIEWER_DEFAULT_OPTIONS: TuiPdfViewerDefaultOptions = {
-    label: ``,
-    actions: ``,
+    label: '',
+    actions: '',
 };
 
 /**

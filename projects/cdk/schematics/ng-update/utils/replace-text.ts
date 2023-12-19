@@ -12,7 +12,7 @@ export function replaceText(
         let text = file.getFullText();
 
         replaceable.forEach(({from, to}) => {
-            const regexp = new RegExp(from, `g`);
+            const regexp = new RegExp(from, 'g');
 
             if (text.match(regexp)) {
                 text = text.replace(regexp, to);

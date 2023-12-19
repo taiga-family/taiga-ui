@@ -51,10 +51,10 @@ declare global {
     }
 }
 
-Cypress.Commands.add(`getByAutomationId`, id => cy.get(`[automation-id=${id}]`));
-Cypress.Commands.add(`tuiGetByExampleId`, tuiGetDocExample);
+Cypress.Commands.add('getByAutomationId', id => cy.get(`[automation-id=${id}]`));
+Cypress.Commands.add('tuiGetByExampleId', tuiGetDocExample);
 Cypress.Commands.add(
-    `findByAutomationId`,
+    'findByAutomationId',
     {prevSubject: true},
     <S>(subject: S, id: string) =>
         /**
@@ -66,45 +66,45 @@ Cypress.Commands.add(
          */
         cy.wrap(subject, {log: false}).find(`[automation-id=${id}]`),
 );
-Cypress.Commands.add(`tuiVisit`, tuiVisit);
-Cypress.Commands.add(`tuiWaitKitDialog`, tuiWaitKitDialog);
-Cypress.Commands.add(`tuiSetLanguage`, tuiSetLanguage);
-Cypress.Commands.add(`tuiSetNightMode`, tuiSetNightMode);
-Cypress.Commands.add(`tuiWaitCodeHighlight`, tuiWaitCodeHighlight);
-Cypress.Commands.add(`tuiHide`, tuiHide);
-Cypress.Commands.add(`tuiShow`, tuiShow);
-Cypress.Commands.add(`tuiFindByExampleId`, {prevSubject: true}, <S>(subject: S) =>
+Cypress.Commands.add('tuiVisit', tuiVisit);
+Cypress.Commands.add('tuiWaitKitDialog', tuiWaitKitDialog);
+Cypress.Commands.add('tuiSetLanguage', tuiSetLanguage);
+Cypress.Commands.add('tuiSetNightMode', tuiSetNightMode);
+Cypress.Commands.add('tuiWaitCodeHighlight', tuiWaitCodeHighlight);
+Cypress.Commands.add('tuiHide', tuiHide);
+Cypress.Commands.add('tuiShow', tuiShow);
+Cypress.Commands.add('tuiFindByExampleId', {prevSubject: true}, <S>(subject: S) =>
     tuiFindDocExample<S>(subject),
 );
-Cypress.Commands.add(`tuiClickOutside`, tuiClickOutside);
+Cypress.Commands.add('tuiClickOutside', tuiClickOutside);
 Cypress.Commands.add(
-    `tuiWaitBeforeScreenshot`,
-    {prevSubject: [`optional`]},
+    'tuiWaitBeforeScreenshot',
+    {prevSubject: ['optional']},
     tuiWaitBeforeScreenshot,
 );
 Cypress.Commands.add(
-    `tuiWaitBeforeAction`,
-    {prevSubject: [`optional`, `element`, `window`, `document`]},
+    'tuiWaitBeforeAction',
+    {prevSubject: ['optional', 'element', 'window', 'document']},
     tuiWaitBeforeAction,
 );
 Cypress.Commands.add(
-    `tuiTab`,
-    {prevSubject: [`optional`, `element`, `window`, `document`]},
+    'tuiTab',
+    {prevSubject: ['optional', 'element', 'window', 'document']},
     tuiTab,
 );
 Cypress.Commands.add(
-    `tuiScrollIntoView`,
-    {prevSubject: [`optional`, `element`, `window`, `document`]},
+    'tuiScrollIntoView',
+    {prevSubject: ['optional', 'element', 'window', 'document']},
     tuiScrollIntoView,
 );
 Cypress.Commands.add(
-    `tuiFocus`,
-    {prevSubject: [`optional`, `element`, `window`, `document`]},
+    'tuiFocus',
+    {prevSubject: ['optional', 'element', 'window', 'document']},
     tuiFocus,
 );
 Cypress.Commands.add(
-    `tuiWaitAllImgInside`,
-    {prevSubject: [`optional`, `element`, `window`, `document`]},
+    'tuiWaitAllImgInside',
+    {prevSubject: ['optional', 'element', 'window', 'document']},
     tuiWaitAllImgInside,
 );
 

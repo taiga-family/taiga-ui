@@ -12,7 +12,7 @@ export function tuiFormatFractionPart(options: {
         decimalLimit: precision,
     }).split(numberFormat.decimalSeparator)[1];
     const shouldShow =
-        decimal !== `never` && (decimal === `always` || !!parseInt(fraction, 10));
+        decimal !== 'never' && (decimal === 'always' || !!parseInt(fraction, 10));
 
-    return shouldShow ? `${numberFormat.decimalSeparator}${fraction}` : ``;
+    return shouldShow ? `${numberFormat.decimalSeparator}${fraction}` : '';
 }

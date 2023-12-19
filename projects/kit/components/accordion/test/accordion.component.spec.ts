@@ -32,7 +32,7 @@ class Account {
     }
 }
 
-describe(`Accordion`, () => {
+describe('Accordion', () => {
     let fixture: ComponentFixture<TestComponent>;
     let loader: HarnessLoader;
     let accordion: TuiAccordionHarness;
@@ -121,13 +121,13 @@ describe(`Accordion`, () => {
         closeOthers = true;
 
         accounts = [
-            new Account(`Ruble`, 500),
-            new Account(`Dollar`, 237),
-            new Account(`Euro`, 100),
+            new Account('Ruble', 500),
+            new Account('Dollar', 237),
+            new Account('Euro', 100),
         ];
 
         testForm = new FormGroup({
-            name: new FormControl(``),
+            name: new FormControl(''),
             accounts: new FormControl(this.accounts[0]),
         });
     }
@@ -154,72 +154,72 @@ describe(`Accordion`, () => {
         fixture.detectChanges();
     });
 
-    it(`contains title`, async () => {
+    it('contains title', async () => {
         const accordionItem = await accordion.getHarness(TuiAccordionItemHarness);
 
-        expect(await accordionItem.getTitle()).toBe(`Accordion header`);
+        expect(await accordionItem.getTitle()).toBe('Accordion header');
     });
 
-    it(`content is hidden by default`, async () => {
+    it('content is hidden by default', async () => {
         const accordionItem = await accordion.getHarness(TuiAccordionItemHarness);
 
         expect(await accordionItem.getContent()).toBeNull();
     });
 
-    it(`content opens on click`, async () => {
+    it('content opens on click', async () => {
         const accordionItem = await accordion.getHarness(TuiAccordionItemHarness);
 
         await accordionItem.clickHeader();
         expect(await accordionItem.getContent()).not.toBeNull();
     });
 
-    it(`the content was correctly transferred to the content`, async () => {
+    it('the content was correctly transferred to the content', async () => {
         const accordionItem = await accordion.getHarness(TuiAccordionItemHarness);
 
         await accordionItem.clickHeader();
-        expect(await accordionItem.getContent()).toBe(`Accordion content`);
+        expect(await accordionItem.getContent()).toBe('Accordion content');
     });
 
-    it(`default with rounded corners`, async () => {
+    it('default with rounded corners', async () => {
         expect(await accordion.hasRoundedCorners()).toBe(true);
     });
 
-    it(`by default, items have borders on the sides`, async () => {
+    it('by default, items have borders on the sides', async () => {
         const accordionItem = await accordion.getHarness(TuiAccordionItemHarness);
 
-        expect(await accordionItem.getBorders()).toBe(`all`);
+        expect(await accordionItem.getBorders()).toBe('all');
     });
 
-    it(`with borders = top-bottom there are no borders`, async () => {
+    it('with borders = top-bottom there are no borders', async () => {
         const accordionItem = await accordion.getHarness(
-            TuiAccordionItemHarness.with({selector: `#border-top`}),
+            TuiAccordionItemHarness.with({selector: '#border-top'}),
         );
 
-        expect(await accordionItem.getBorders()).toBe(`top-bottom`);
+        expect(await accordionItem.getBorders()).toBe('top-bottom');
     });
 
-    it(`by default there is an arrow`, async () => {
+    it('by default there is an arrow', async () => {
         const accordionItem = await accordion.getHarness(TuiAccordionItemHarness);
 
         expect(await accordionItem.hasArrow()).toBe(true);
     });
 
-    it(`with showArrow = false there is no arrow`, async () => {
+    it('with showArrow = false there is no arrow', async () => {
         const accordionItem = await accordion.getHarness(
-            TuiAccordionItemHarness.with({selector: `#hide-arrow`}),
+            TuiAccordionItemHarness.with({selector: '#hide-arrow'}),
         );
 
         expect(await accordionItem.hasArrow()).toBe(false);
     });
 
-    describe(`Multi-section`, () => {
+    describe('Multi-section', () => {
         beforeEach(async () => {
             accordion = await loader.getHarness(
-                TuiAccordionHarness.with({selector: `#multi-select`}),
+                TuiAccordionHarness.with({selector: '#multi-select'}),
             );
         });
 
-        it(`clicking on the 1st section opens its contents`, async () => {
+        it('clicking on the 1st section opens its contents', async () => {
             const [accordionItem1, accordionItem2] = await accordion.getAllHarnesses(
                 TuiAccordionItemHarness,
             );
@@ -229,7 +229,7 @@ describe(`Accordion`, () => {
             expect(await accordionItem2.getContent()).toBeNull();
         });
 
-        it(`clicking on the 2nd section opens its contents and closes the contents of the 1st`, async () => {
+        it('clicking on the 2nd section opens its contents and closes the contents of the 1st', async () => {
             const [accordionItem1, accordionItem2] = await accordion.getAllHarnesses(
                 TuiAccordionItemHarness,
             );
@@ -243,7 +243,7 @@ describe(`Accordion`, () => {
             expect(await accordionItem2.getContent()).not.toBeNull();
         });
 
-        it(`when closeOthers = false, already open sections are not closed when new ones are opened`, async () => {
+        it('when closeOthers = false, already open sections are not closed when new ones are opened', async () => {
             testComponent.closeOthers = false;
 
             const [accordionItem1, accordionItem2] = await accordion.getAllHarnesses(
@@ -259,7 +259,7 @@ describe(`Accordion`, () => {
             expect(await accordionItem2.getContent()).not.toBeNull();
         });
 
-        it(`pressing the space bar in the input does not close the accordion`, async () => {
+        it('pressing the space bar in the input does not close the accordion', async () => {
             const accordionItem = await accordion.getHarness(TuiAccordionItemHarness);
 
             await accordionItem.clickHeader();
@@ -269,7 +269,7 @@ describe(`Accordion`, () => {
             expect(await accordionItem.getContent()).not.toBeNull();
         });
 
-        it(`in the select inside the content, the dropdown on ESC is correctly closed, the accordion content is not closed`, async () => {
+        it('in the select inside the content, the dropdown on ESC is correctly closed, the accordion content is not closed', async () => {
             const accordionItem = await accordion.getHarness(TuiAccordionItemHarness);
 
             await accordionItem.clickHeader();

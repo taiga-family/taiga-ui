@@ -104,8 +104,8 @@ const EXPECTED = `
 </svg>
 `.trim();
 
-describe(`svgLinearGradientProcessor[case2]`, () => {
-    it(`ignore hex color`, () => {
-        expect(tuiSvgLinearGradientProcessor(ACTUAL, `MOCK_ID`)).toEqual(EXPECTED);
+describe('svgLinearGradientProcessor[case2]', () => {
+    it('ignore hex color', () => {
+        expect(tuiSvgLinearGradientProcessor(ACTUAL, 'MOCK_ID')).toEqual(EXPECTED);
     });
 });

@@ -4,7 +4,7 @@ import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
 import {TuiControlModule} from '@taiga-ui/cdk';
 
-describe(`TuiControlDirective`, () => {
+describe('TuiControlDirective', () => {
     @Component({
         template: `
             <form [formGroup]="form">
@@ -20,7 +20,7 @@ describe(`TuiControlDirective`, () => {
     })
     class TestComponent {
         readonly form = new FormGroup({
-            control: new FormControl(`value`),
+            control: new FormControl('value'),
         });
     }
 
@@ -36,9 +36,9 @@ describe(`TuiControlDirective`, () => {
         fixture.detectChanges();
     });
 
-    it(`works`, () => {
+    it('works', () => {
         expect(
-            fixture.debugElement.query(By.css(`p`)).nativeElement.textContent.trim(),
-        ).toBe(`value`);
+            fixture.debugElement.query(By.css('p')).nativeElement.textContent.trim(),
+        ).toBe('value');
     });
 });

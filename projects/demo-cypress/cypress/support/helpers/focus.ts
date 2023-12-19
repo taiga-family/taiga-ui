@@ -4,6 +4,6 @@ export const tuiFocus = (
     cy
         .wrap($subject, {log: false})
         .focus()
-        .should(`be.focused`)
-        .should(`be.visible`)
+        .should('be.focused')
+        .should('be.visible')
         .tuiWaitBeforeAction();

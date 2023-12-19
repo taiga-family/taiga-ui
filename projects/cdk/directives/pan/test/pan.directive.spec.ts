@@ -4,7 +4,7 @@ import {By} from '@angular/platform-browser';
 import {TuiPanModule} from '@taiga-ui/cdk';
 
 // TODO: Move to cypress, jest doesn't support touch events
-xdescribe(`TuiPan directive`, () => {
+xdescribe('TuiPan directive', () => {
     @Component({
         template: `
             <div
@@ -33,16 +33,16 @@ xdescribe(`TuiPan directive`, () => {
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         testComponent = fixture.componentInstance;
-        testElement = fixture.debugElement.query(By.css(`.main`));
+        testElement = fixture.debugElement.query(By.css('.main'));
 
         fixture.detectChanges();
     });
 
-    it(`emits delta`, () => {
-        sendTouchEvent(0, 0, testElement.nativeElement, `touchstart`);
-        sendTouchEvent(0, 0, testElement.nativeElement, `touchmove`);
-        sendTouchEvent(0, 20, testElement.nativeElement, `touchmove`);
-        sendTouchEvent(0, 20, testElement.nativeElement, `touchend`);
+    it('emits delta', () => {
+        sendTouchEvent(0, 0, testElement.nativeElement, 'touchstart');
+        sendTouchEvent(0, 0, testElement.nativeElement, 'touchmove');
+        sendTouchEvent(0, 20, testElement.nativeElement, 'touchmove');
+        sendTouchEvent(0, 20, testElement.nativeElement, 'touchend');
 
         fixture.detectChanges();
 

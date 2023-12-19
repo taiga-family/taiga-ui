@@ -5,12 +5,12 @@ import {Observable} from 'rxjs';
 import {map, shareReplay, startWith} from 'rxjs/operators';
 
 export const TUI_WINDOW_SIZE = new InjectionToken<Observable<ClientRect>>(
-    `[TUI_WINDOW_SIZE]`,
+    '[TUI_WINDOW_SIZE]',
     {
         factory: () => {
             const w = inject(WINDOW);
 
-            return tuiTypedFromEvent(w, `resize`).pipe(
+            return tuiTypedFromEvent(w, 'resize').pipe(
                 startWith(null),
                 map(() => {
                     const width = Math.max(w.innerWidth, w.visualViewport?.width || 0);

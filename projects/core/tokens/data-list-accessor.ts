@@ -5,7 +5,7 @@ import {TuiDataListAccessor} from '@taiga-ui/core/interfaces';
  * Accessor for data-list options
  */
 export const TUI_DATA_LIST_ACCESSOR = new InjectionToken<TuiDataListAccessor>(
-    `[TUI_DATA_LIST_ACCESSOR]`,
+    '[TUI_DATA_LIST_ACCESSOR]',
 );
 
 export function tuiAsDataListAccessor(useExisting: Type<TuiDataListAccessor>): Provider {

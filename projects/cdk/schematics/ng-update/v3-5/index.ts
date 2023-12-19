@@ -16,7 +16,7 @@ export function updateToV3_5(options: TuiSchema): Rule {
         fileSystem.commitEdits();
         saveActiveProject();
 
-        !options[`skip-logs`] &&
+        !options['skip-logs'] &&
             titleLog(
                 `${FINISH_SYMBOL} We migrated packages to @taiga-ui/*@${TAIGA_VERSION}\n`,
             );

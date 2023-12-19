@@ -3,7 +3,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TuiSliderComponent, TuiSliderModule} from '@taiga-ui/kit';
 
-describe(`Slider`, () => {
+describe('Slider', () => {
     @Component({
         template: `
             <input
@@ -30,19 +30,19 @@ describe(`Slider`, () => {
         `,
     })
     class TestComponent {
-        @ViewChild(`controller`, {static: true, read: ElementRef})
+        @ViewChild('controller', {static: true, read: ElementRef})
         formControllerElementRef!: ElementRef<HTMLInputElement>;
 
-        @ViewChild(`controller`, {static: true})
+        @ViewChild('controller', {static: true})
         formControllerComponentRef!: TuiSliderComponent;
 
-        @ViewChild(`model`, {static: true, read: ElementRef})
+        @ViewChild('model', {static: true, read: ElementRef})
         ngModelElementRef!: ElementRef<HTMLInputElement>;
 
-        @ViewChild(`model`, {static: true})
+        @ViewChild('model', {static: true})
         ngModelComponentRef!: TuiSliderComponent;
 
-        @ViewChild(`nativeUsageAllDefaults`, {static: true})
+        @ViewChild('nativeUsageAllDefaults', {static: true})
         nativeUsageAllDefaultsComponentRef!: TuiSliderComponent;
 
         ngModelValue = 5;
@@ -68,17 +68,17 @@ describe(`Slider`, () => {
         await fixture.whenStable();
     });
 
-    it(`has initial value of "number"-type`, () => {
-        expect(typeof testComponent.formController.value).toBe(`number`);
-        expect(typeof testComponent.ngModelValue).toBe(`number`);
+    it('has initial value of "number"-type', () => {
+        expect(typeof testComponent.formController.value).toBe('number');
+        expect(typeof testComponent.ngModelValue).toBe('number');
     });
 
-    it(`returns "number"-type value on input`, async () => {
+    it('returns "number"-type value on input', async () => {
         expect(testComponent.formController.value).toBe(5);
         expect(testComponent.ngModelValue).toBe(5);
 
-        changeSliderValue(testComponent.formControllerElementRef.nativeElement, `3`);
-        changeSliderValue(testComponent.ngModelElementRef.nativeElement, `3`);
+        changeSliderValue(testComponent.formControllerElementRef.nativeElement, '3');
+        changeSliderValue(testComponent.ngModelElementRef.nativeElement, '3');
 
         fixture.detectChanges();
         await fixture.whenStable();
@@ -87,7 +87,7 @@ describe(`Slider`, () => {
         expect(testComponent.ngModelValue).toBe(3);
     });
 
-    describe(`progress filling`, () => {
+    describe('progress filling', () => {
         const changeValueAndCheck = async (
             newValue: number,
             expectedFillPercentage: string,
@@ -108,7 +108,7 @@ describe(`Slider`, () => {
             ).toBe(expectedFillPercentage);
         };
 
-        describe(`negative \`min\`-prop (min = -10 | max = 20)`, () => {
+        describe('negative `min`-prop (min = -10 | max = 20)', () => {
             beforeEach(async () => {
                 testComponent.min = -10;
                 testComponent.max = 20;
@@ -117,28 +117,28 @@ describe(`Slider`, () => {
                 await fixture.whenStable();
             });
 
-            it(`value = 14 => 80%`, async () => {
-                await changeValueAndCheck(14, `80%`);
+            it('value = 14 => 80%', async () => {
+                await changeValueAndCheck(14, '80%');
             });
 
-            it(`value = 5 => 50%`, async () => {
-                await changeValueAndCheck(5, `50%`);
+            it('value = 5 => 50%', async () => {
+                await changeValueAndCheck(5, '50%');
             });
 
-            it(`value = -1 => 30%`, async () => {
-                await changeValueAndCheck(-1, `30%`);
+            it('value = -1 => 30%', async () => {
+                await changeValueAndCheck(-1, '30%');
             });
 
-            it(`value = -7 => 10%`, async () => {
-                await changeValueAndCheck(-7, `10%`);
+            it('value = -7 => 10%', async () => {
+                await changeValueAndCheck(-7, '10%');
             });
 
-            it(`value = -10 => 0%`, async () => {
-                await changeValueAndCheck(-10, `0%`);
+            it('value = -10 => 0%', async () => {
+                await changeValueAndCheck(-10, '0%');
             });
         });
 
-        describe(`positive \`min\`-prop (min = 50 | max = 250)`, () => {
+        describe('positive `min`-prop (min = 50 | max = 250)', () => {
             beforeEach(async () => {
                 testComponent.min = 50;
                 testComponent.max = 250;
@@ -147,28 +147,28 @@ describe(`Slider`, () => {
                 await fixture.whenStable();
             });
 
-            it(`value = 50 => 0%`, async () => {
-                await changeValueAndCheck(50, `0%`);
+            it('value = 50 => 0%', async () => {
+                await changeValueAndCheck(50, '0%');
             });
 
-            it(`value = 100 => 25%`, async () => {
-                await changeValueAndCheck(100, `25%`);
+            it('value = 100 => 25%', async () => {
+                await changeValueAndCheck(100, '25%');
             });
 
-            it(`value = 130 => 40%`, async () => {
-                await changeValueAndCheck(130, `40%`);
+            it('value = 130 => 40%', async () => {
+                await changeValueAndCheck(130, '40%');
             });
 
-            it(`value = 150 => 50%`, async () => {
-                await changeValueAndCheck(150, `50%`);
+            it('value = 150 => 50%', async () => {
+                await changeValueAndCheck(150, '50%');
             });
 
-            it(`value = 230 => 90%`, async () => {
-                await changeValueAndCheck(230, `90%`);
+            it('value = 230 => 90%', async () => {
+                await changeValueAndCheck(230, '90%');
             });
         });
 
-        it(`is set to zero when \`min\`-property equals to \`max\`-property`, () => {
+        it('is set to zero when `min`-property equals to `max`-property', () => {
             testComponent.min = 25;
             testComponent.max = 25;
             testComponent.formController = new FormControl(25);
@@ -179,53 +179,53 @@ describe(`Slider`, () => {
             expect(
                 getFillPercentage(
                     testComponent.formControllerElementRef.nativeElement,
-                    `0%`,
+                    '0%',
                 ),
-            ).toBe(`0%`);
+            ).toBe('0%');
         });
     });
 
-    describe(`native slider defaults`, () => {
+    describe('native slider defaults', () => {
         // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range#validation
 
-        it(`max === 100`, () => {
+        it('max === 100', () => {
             expect(testComponent.nativeUsageAllDefaultsComponentRef.max).toBe(100);
         });
 
-        it(`min === 0`, () => {
+        it('min === 0', () => {
             expect(testComponent.nativeUsageAllDefaultsComponentRef.min).toBe(0);
         });
 
-        it(`value === 50`, () => {
+        it('value === 50', () => {
             expect(testComponent.nativeUsageAllDefaultsComponentRef.value).toBe(50);
         });
 
-        it(`fill percentage === 50%`, () => {
+        it('fill percentage === 50%', () => {
             expect(testComponent.nativeUsageAllDefaultsComponentRef.valuePercentage).toBe(
                 50,
             );
         });
     });
 
-    it(`max can be 0`, async () => {
+    it('max can be 0', async () => {
         testComponent.min = -100;
         testComponent.max = 0;
         fixture.detectChanges();
 
-        changeSliderValue(testComponent.ngModelElementRef.nativeElement, `-20`);
+        changeSliderValue(testComponent.ngModelElementRef.nativeElement, '-20');
 
         fixture.detectChanges();
         await fixture.whenStable();
 
         expect(testComponent.ngModelComponentRef.max).toBe(0);
         expect(
-            getFillPercentage(testComponent.ngModelElementRef.nativeElement, `80%`),
-        ).toBe(`80%`);
+            getFillPercentage(testComponent.ngModelElementRef.nativeElement, '80%'),
+        ).toBe('80%');
     });
 
     function changeSliderValue(el: HTMLInputElement, newValue: string): void {
         el.value = newValue;
-        el.dispatchEvent(new Event(`input`));
+        el.dispatchEvent(new Event('input'));
     }
 
     /**
@@ -233,7 +233,7 @@ describe(`Slider`, () => {
      */
     function getFillPercentage(sliderEl: HTMLElement, mock: string): string {
         return (
-            getComputedStyle(sliderEl).getPropertyValue(`--tui-slider-fill-percentage`) ||
+            getComputedStyle(sliderEl).getPropertyValue('--tui-slider-fill-percentage') ||
             mock
         );
     }

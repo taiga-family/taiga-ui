@@ -5,7 +5,7 @@ import {tuiFormatSize} from '@taiga-ui/kit/utils';
 import {combineLatest, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
-@Pipe({name: `tuiMaxSizeRejectionError`})
+@Pipe({name: 'tuiMaxSizeRejectionError'})
 export class TuiMaxSizeRejectionErrorPipe implements PipeTransform {
     constructor(
         @Inject(TUI_INPUT_FILE_TEXTS)

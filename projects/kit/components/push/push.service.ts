@@ -5,7 +5,7 @@ import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import {TUI_PUSH_OPTIONS, TuiPushOptions} from './push.options';
 import {TuiPushAlertComponent} from './push-alert.component';
 
-@Injectable({providedIn: `root`})
+@Injectable({providedIn: 'root'})
 export class TuiPushService extends AbstractTuiDialogService<TuiPushOptions, string> {
     protected readonly component = new PolymorpheusComponent(TuiPushAlertComponent);
     protected readonly defaultOptions = inject(TUI_PUSH_OPTIONS);

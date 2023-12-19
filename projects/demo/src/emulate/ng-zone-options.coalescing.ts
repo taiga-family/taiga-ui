@@ -1,5 +1,5 @@
 export const NgZoneOptionsCoalescing = {
-    ngZone: `zone.js` as const,
+    ngZone: 'zone.js' as const,
     /**
      * Optionally specify coalescing event change detections or not.
      * Consider the following case.

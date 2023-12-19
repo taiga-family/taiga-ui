@@ -36,8 +36,8 @@ const EXPECTED = `
 </svg>
 `.trim();
 
-describe(`svgLinearGradientProcessor[case4]`, () => {
-    it(`correct replacing ids more special characters in ID`, () => {
-        expect(tuiSvgLinearGradientProcessor(ACTUAL, `MOCK_ID`)).toEqual(EXPECTED);
+describe('svgLinearGradientProcessor[case4]', () => {
+    it('correct replacing ids more special characters in ID', () => {
+        expect(tuiSvgLinearGradientProcessor(ACTUAL, 'MOCK_ID')).toEqual(EXPECTED);
     });
 });

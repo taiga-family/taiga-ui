@@ -4,8 +4,8 @@ import {getNamedImportReferences} from './get-named-import-references';
 
 export function getStandaloneBootstrapFunction(path: string): CallExpression | null {
     const standaloneBootstrapIdentifier = getNamedImportReferences(
-        `bootstrapApplication`,
-        `@angular/platform-browser`,
+        'bootstrapApplication',
+        '@angular/platform-browser',
         path,
     )
         .map(ref => ref.getParent())

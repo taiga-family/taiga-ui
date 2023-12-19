@@ -1,8 +1,8 @@
 import {Pipe, PipeTransform} from '@angular/core';
 
-@Pipe({name: `tuiIsOptionalPipe`})
+@Pipe({name: 'tuiIsOptionalPipe'})
 export class TuiIsOptionalPipe implements PipeTransform {
     transform(name: string): boolean {
-        return name.includes(`?`);
+        return name.includes('?');
     }
 }

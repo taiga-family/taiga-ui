@@ -40,7 +40,7 @@ export class TuiObscuredService extends Observable<readonly Element[] | null> {
 
         this.obscured$ = merge(
             // delay is added so it will not interfere with other listeners
-            merge(parentsScroll$, fromEvent(win, `resize`)).pipe(delay(0)),
+            merge(parentsScroll$, fromEvent(win, 'resize')).pipe(delay(0)),
             animationFrame$.pipe(throttleTime(POLLING_TIME)),
         ).pipe(
             map(() => tuiGetElementObscures(nativeElement)),

@@ -14,10 +14,10 @@ import {
     TuiControlValueTransformer,
 } from '@taiga-ui/cdk';
 
-describe(`AbstractTuiControl and NgControl not injected in MyControlComponent`, () => {
+describe('AbstractTuiControl and NgControl not injected in MyControlComponent', () => {
     @Component({
-        selector: `child`,
-        template: ``,
+        selector: 'child',
+        template: '',
     })
     class ChildComponent {
         constructor(
@@ -28,7 +28,7 @@ describe(`AbstractTuiControl and NgControl not injected in MyControlComponent`, 
     }
 
     @Component({
-        selector: `my-control`,
+        selector: 'my-control',
         template: `
             <child></child>
         `,
@@ -68,7 +68,7 @@ describe(`AbstractTuiControl and NgControl not injected in MyControlComponent`, 
         }
 
         protected getFallbackValue(): string {
-            return `fallback`;
+            return 'fallback';
         }
     }
 
@@ -100,15 +100,15 @@ describe(`AbstractTuiControl and NgControl not injected in MyControlComponent`, 
         controlInstance = fixture.componentInstance.myControl.child.parent!;
     });
 
-    it(`default behaviour`, () => {
+    it('default behaviour', () => {
         expect(controlInstance).toBeTruthy();
         expect(controlInstance.child.parent).toBeInstanceOf(MyControlComponent);
         expect(controlInstance.readOnly).toBe(false);
-        expect(controlInstance.nativeId).toBe(``);
+        expect(controlInstance.nativeId).toBe('');
 
         expect(controlInstance.getTransformers()).toBeNull();
-        expect(controlInstance.value).toBe(`fallback`);
-        expect(controlInstance.safeCurrentValue).toBe(`fallback`);
+        expect(controlInstance.value).toBe('fallback');
+        expect(controlInstance.safeCurrentValue).toBe('fallback');
         expect(controlInstance.invalid).toBe(false);
         expect(controlInstance.valid).toBe(false);
         expect(controlInstance.touched).toBe(false);
@@ -117,14 +117,14 @@ describe(`AbstractTuiControl and NgControl not injected in MyControlComponent`, 
         expect(controlInstance.control).toBeNull();
     });
 
-    it(`pseudo`, () => {
+    it('pseudo', () => {
         expect(controlInstance.pseudoFocus).toBeNull();
         expect(controlInstance.pseudoHover).toBeNull();
         expect(controlInstance.pseudoActive).toBeNull();
         expect(controlInstance.pseudoInvalid).toBeNull();
     });
 
-    it(`computed`, () => {
+    it('computed', () => {
         expect(controlInstance.computedName).toBeNull();
         expect(controlInstance.computedDisabled).toBe(false);
         expect(controlInstance.computedInvalid).toBe(false);
@@ -141,8 +141,8 @@ describe(`AbstractTuiControl and NgControl not injected in MyControlComponent`, 
         expect(controlInstance.computedFocused).toBe(true);
     });
 
-    it(`focusable`, () => {
-        const focusedChange = jest.spyOn(controlInstance.focusedChange, `emit`);
+    it('focusable', () => {
+        const focusedChange = jest.spyOn(controlInstance.focusedChange, 'emit');
 
         expect(controlInstance.focused).toBe(false);
         expect(controlInstance.focusable).toBe(true);
@@ -164,29 +164,29 @@ describe(`AbstractTuiControl and NgControl not injected in MyControlComponent`, 
         expect(focusedChange).toHaveBeenCalled();
     });
 
-    it(`id`, () => {
-        expect(controlInstance.nativeId).toBe(``);
-        expect(controlInstance.id.startsWith(`tui_interactive_`)).toBeTruthy();
+    it('id', () => {
+        expect(controlInstance.nativeId).toBe('');
+        expect(controlInstance.id.startsWith('tui_interactive_')).toBeTruthy();
     });
 
-    it(`setup value`, () => {
-        expect(controlInstance.value).toBe(`fallback`);
-        expect(controlInstance.safeCurrentValue).toBe(`fallback`);
+    it('setup value', () => {
+        expect(controlInstance.value).toBe('fallback');
+        expect(controlInstance.safeCurrentValue).toBe('fallback');
 
-        controlInstance.value = `5`;
-        expect(controlInstance.value).toBe(`5`);
-        expect(controlInstance.safeCurrentValue).toBe(`fallback`);
+        controlInstance.value = '5';
+        expect(controlInstance.value).toBe('5');
+        expect(controlInstance.safeCurrentValue).toBe('fallback');
 
         controlInstance.writeValue(null);
-        expect(controlInstance.value).toBe(`fallback`);
-        expect(controlInstance.safeCurrentValue).toBe(`fallback`);
+        expect(controlInstance.value).toBe('fallback');
+        expect(controlInstance.safeCurrentValue).toBe('fallback');
 
-        controlInstance.writeValue(``);
-        expect(controlInstance.value).toBe(``);
-        expect(controlInstance.safeCurrentValue).toBe(`fallback`);
+        controlInstance.writeValue('');
+        expect(controlInstance.value).toBe('');
+        expect(controlInstance.safeCurrentValue).toBe('fallback');
     });
 
-    it(`lifecycle`, () => {
+    it('lifecycle', () => {
         expect(controlInstance.ngOnInitTick).toBe(true);
         expect(controlInstance.ngOnDestroyTick).toBe(false);
 
@@ -197,7 +197,7 @@ describe(`AbstractTuiControl and NgControl not injected in MyControlComponent`, 
         expect(testComponent.myControl).toBeUndefined();
     });
 
-    describe(`change detection`, () => {
+    describe('change detection', () => {
         let changeDetectorRef: ChangeDetectorRef;
         let markForCheckSpy: jest.SpyInstance;
 
@@ -205,13 +205,13 @@ describe(`AbstractTuiControl and NgControl not injected in MyControlComponent`, 
             changeDetectorRef = fixture.debugElement.injector.get(ChangeDetectorRef);
             markForCheckSpy = jest.spyOn(
                 changeDetectorRef.constructor.prototype,
-                `markForCheck`,
+                'markForCheck',
             );
 
             markForCheckSpy.mockClear();
         });
 
-        it(`checkControlUpdate`, () => {
+        it('checkControlUpdate', () => {
             expect(markForCheckSpy).not.toHaveBeenCalled();
 
             controlInstance.checkControlUpdate();
@@ -219,7 +219,7 @@ describe(`AbstractTuiControl and NgControl not injected in MyControlComponent`, 
             expect(markForCheckSpy).toHaveBeenCalled();
         });
 
-        it(`setDisabledState`, () => {
+        it('setDisabledState', () => {
             expect(markForCheckSpy).not.toHaveBeenCalled();
             expect(controlInstance.disabled).toBe(false);
 

@@ -28,7 +28,7 @@ const RAW_TS_QUERY = /raw/;
  * Default Angular configurations have rules to compile (uglify) ts/less-files.
  * We don't need any transformations for RAW loading of these files.
  */
-const DO_NOT_MUTATE_RAW_FILE_CONTENTS = [`*.ts`, `*.less`, `*.html`];
+const DO_NOT_MUTATE_RAW_FILE_CONTENTS = ['*.ts', '*.less', '*.html'];
 
 /**
  * [Fixed bug in Node.js 18]
@@ -48,11 +48,12 @@ const DO_NOT_MUTATE_RAW_FILE_CONTENTS = [`*.ts`, `*.less`, `*.html`];
  *
  * instead of:
  */
-const crypto = require(`crypto`);
+const crypto = require('crypto');
+
 const fallbackCreateHash = crypto.createHash;
 
 crypto.createHash = (algorithm: string) =>
-    fallbackCreateHash(algorithm === `md4` ? `sha256` : algorithm);
+    fallbackCreateHash(algorithm === 'md4' ? 'sha256' : algorithm);
 
 export function makeWebpackConfig({server}: Options): WebpackConf {
     const terserPlugin = new TerserPlugin({
@@ -67,7 +68,7 @@ export function makeWebpackConfig({server}: Options): WebpackConf {
                 passes: 3,
                 keep_fnames: false,
                 keep_classnames: false,
-                pure_funcs: [`forwardRef`],
+                pure_funcs: ['forwardRef'],
                 global_defs: GLOBAL_DEFS_FOR_TERSER_WITH_AOT,
             },
             format: {
@@ -78,7 +79,7 @@ export function makeWebpackConfig({server}: Options): WebpackConf {
 
     return (ngConfigs: Configuration): Configuration => {
         const ngRules = [...(ngConfigs.module?.rules || [])].map(rule =>
-            typeof rule === `object` &&
+            typeof rule === 'object' &&
             !!rule &&
             DO_NOT_MUTATE_RAW_FILE_CONTENTS.some(
                 pattern => rule.test instanceof RegExp && rule.test?.test(pattern),
@@ -114,13 +115,13 @@ export function makeWebpackConfig({server}: Options): WebpackConf {
                         {
                             test: /\.(ts|html|css|less|md|svg)$/i,
                             resourceQuery: RAW_TS_QUERY,
-                            type: `asset/source`,
+                            type: 'asset/source',
                         },
                     ],
                 },
-                ...(process.env[`TUI_CI`] === `true` && !server
+                ...(process.env['TUI_CI'] === 'true' && !server
                     ? {
-                          mode: `production`,
+                          mode: 'production',
                           plugins: [terserPlugin],
                           optimization: {minimize: true, minimizer: [terserPlugin]},
                       }

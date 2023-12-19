@@ -5,8 +5,8 @@ import {of, Subject} from 'rxjs';
 import {delayWhen} from 'rxjs/operators';
 
 @Component({
-    selector: `tui-is-present-example1`,
-    templateUrl: `./template.html`,
+    selector: 'tui-is-present-example1',
+    templateUrl: './template.html',
     encapsulation,
     changeDetection,
 })

@@ -4,11 +4,11 @@ import {Routes} from '@angular/router';
 export function tuiGenerateRoutes(type: Type<unknown>): Routes {
     return [
         {
-            path: ``,
+            path: '',
             component: type,
             children: [
                 {
-                    path: `:tab`,
+                    path: ':tab',
                     component: type,
                 },
             ],

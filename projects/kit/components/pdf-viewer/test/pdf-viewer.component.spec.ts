@@ -10,7 +10,7 @@ import {TuiPdfViewerModule} from '../pdf-viewer.module';
 import {tuiPdfViewerOptionsProvider} from '../pdf-viewer.options';
 import {TuiPdfViewerService} from '../pdf-viewer.service';
 
-describe(`Pdf Viewer with TUI_PDF_VIEWER_OPTIONS`, () => {
+describe('Pdf Viewer with TUI_PDF_VIEWER_OPTIONS', () => {
     @Component({
         template: `
             <tui-root></tui-root>
@@ -18,7 +18,7 @@ describe(`Pdf Viewer with TUI_PDF_VIEWER_OPTIONS`, () => {
     })
     class TestComponent {}
 
-    const label = `Test`;
+    const label = 'Test';
 
     let fixture: ComponentFixture<TestComponent>;
     let tuiPdfViewerService: TuiPdfViewerService;
@@ -26,7 +26,7 @@ describe(`Pdf Viewer with TUI_PDF_VIEWER_OPTIONS`, () => {
     let sanitizer: DomSanitizer;
 
     function getLabelElement(): DebugElement {
-        return pageObject.getByAutomationId(`tui-pdf-viewer__label`)!;
+        return pageObject.getByAutomationId('tui-pdf-viewer__label')!;
     }
 
     beforeEach(async () => {
@@ -49,10 +49,10 @@ describe(`Pdf Viewer with TUI_PDF_VIEWER_OPTIONS`, () => {
         sanitizer = TestBed.inject(DomSanitizer);
     });
 
-    describe(`label`, () => {
-        it(`correctly shows label option data`, () => {
+    describe('label', () => {
+        it('correctly shows label option data', () => {
             tuiPdfViewerService
-                .open(sanitizer.bypassSecurityTrustResourceUrl(``))
+                .open(sanitizer.bypassSecurityTrustResourceUrl(''))
                 .subscribe();
             fixture.detectChanges();
 
