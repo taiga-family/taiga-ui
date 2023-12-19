@@ -16,7 +16,7 @@ import {
     providedIn: `root`,
 })
 export class TuiDirectiveStylesService implements OnDestroy {
-    private readonly map = new Map<string, ComponentRef<unknown>>();
+    private readonly map = new Map<Type<unknown>, ComponentRef<unknown>>();
 
     constructor(
         @Inject(ComponentFactoryResolver)
@@ -25,9 +25,9 @@ export class TuiDirectiveStylesService implements OnDestroy {
     ) {}
 
     addComponent(component: Type<unknown>): void {
-        if (!this.map.has(component.name)) {
+        if (!this.map.has(component)) {
             this.map.set(
-                component.name,
+                component,
                 this.resolver.resolveComponentFactory(component).create(this.injector),
             );
         }
