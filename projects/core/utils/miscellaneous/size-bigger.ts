@@ -18,7 +18,7 @@ const SIZES: Record<TuiSizeXXL | TuiSizeXXS, number> = {
  */
 export function tuiSizeBigger(
     size: TuiSizeXXL | TuiSizeXXS,
-    biggerThanSize: TuiSizeXXL | TuiSizeXXS = `s`,
+    biggerThanSize: TuiSizeXXL | TuiSizeXXS = 's',
 ): boolean {
     return SIZES[size] > SIZES[biggerThanSize];
 }

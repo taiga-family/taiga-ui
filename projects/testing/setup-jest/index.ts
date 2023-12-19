@@ -1,6 +1,6 @@
 /// <reference types="jest" />
 
-const {TextEncoder: TextEncoderMock, TextDecoder: TextDecoderMock} = require(`util`);
+const {TextEncoder: TextEncoderMock, TextDecoder: TextDecoderMock} = require('util');
 
 global.TextEncoder = TextEncoderMock;
 global.TextDecoder = TextDecoderMock;
@@ -17,9 +17,9 @@ global.document.execCommand = () => {};
 }));
 
 // Simulate window resize events
-const resizeEvent = document.createEvent(`Event`);
+const resizeEvent = document.createEvent('Event');
 
-resizeEvent.initEvent(`resize`, true, true);
+resizeEvent.initEvent('resize', true, true);
 
 global.window.resizeTo = width => {
     (global.window as any).innerWidth = width || global.window.innerWidth;
@@ -30,27 +30,27 @@ global.window.resizeTo = width => {
 global.URL.createObjectURL = jest.fn(blob => `${blob}`);
 global.URL.revokeObjectURL = jest.fn();
 
-Object.defineProperty(global.window, `CSS`, {value: null});
+Object.defineProperty(global.window, 'CSS', {value: null});
 
-Object.defineProperty(global.window, `getComputedStyle`, {
+Object.defineProperty(global.window, 'getComputedStyle', {
     value: () => ({
-        display: `none`,
-        appearance: [`-webkit-appearance`],
+        display: 'none',
+        appearance: ['-webkit-appearance'],
     }),
 });
 
-Object.defineProperty(global.document, `doctype`, {
-    value: `<!DOCTYPE html>`,
+Object.defineProperty(global.document, 'doctype', {
+    value: '<!DOCTYPE html>',
 });
 
-Object.defineProperty(global.document.body.style, `transform`, {
+Object.defineProperty(global.document.body.style, 'transform', {
     value: () => ({
         enumerable: true,
         configurable: true,
     }),
 });
 
-Object.defineProperty(global.window, `matchMedia`, {
+Object.defineProperty(global.window, 'matchMedia', {
     writable: true,
     value: jest.fn().mockImplementation(query => ({
         matches: false,
@@ -64,12 +64,12 @@ Object.defineProperty(global.window, `matchMedia`, {
     })),
 });
 
-Object.defineProperty(global.document, `elementFromPoint`, {
+Object.defineProperty(global.document, 'elementFromPoint', {
     writable: true,
     value: jest.fn().mockImplementation(() => null),
 });
 
-Object.defineProperty(global.document, `createRange`, {
+Object.defineProperty(global.document, 'createRange', {
     writable: true,
     value: () => {
         const range = new Range();
@@ -96,11 +96,11 @@ Object.defineProperty(global.document, `createRange`, {
     },
 });
 
-Object.defineProperty(window, `scrollTo`, jest.fn());
+Object.defineProperty(window, 'scrollTo', jest.fn());
 
-Object.defineProperty(global.window, `getComputedStyle`, {
+Object.defineProperty(global.window, 'getComputedStyle', {
     value: () => ({
-        getPropertyValue: (_prop: string) => ``,
+        getPropertyValue: (_prop: string) => '',
     }),
 });
 
@@ -142,9 +142,9 @@ global.ClipboardEvent = TransferMockEvent as unknown as typeof ClipboardEvent;
  * resulting in duplicate imports
  * and conflicts resulting in the above error
  */
-if (!(`Zone` in global)) {
-    require(`zone.js`);
-    require(`zone.js/testing`);
+if (!('Zone' in global)) {
+    require('zone.js');
+    require('zone.js/testing');
 }
 
 // @note: build empty entry point

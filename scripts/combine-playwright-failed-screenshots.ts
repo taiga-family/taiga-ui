@@ -7,10 +7,10 @@
 import {createCanvas, loadImage, version} from 'canvas';
 import {readdirSync, writeFileSync} from 'fs';
 
-const FAILED_SCREENSHOTS_PATH = `projects/demo-playwright/tests-results`;
-const DIFF_IMAGE_POSTFIX = `-diff.png`;
+const FAILED_SCREENSHOTS_PATH = 'projects/demo-playwright/tests-results';
+const DIFF_IMAGE_POSTFIX = '-diff.png';
 
-console.info(`canvas:`, version);
+console.info('canvas:', version);
 
 (async function combinePlaywrightFailedScreenshots(
     rootPath = FAILED_SCREENSHOTS_PATH,
@@ -24,7 +24,7 @@ console.info(`canvas:`, version);
     }
 
     const imagesPaths: string[] = filesOrDirs
-        .filter(x => x.isFile() && x.name.endsWith(`.png`))
+        .filter(x => x.isFile() && x.name.endsWith('.png'))
         .map(({name}) => `${rootPath}/${name}`);
     const diffImage = imagesPaths.find(path => path.endsWith(DIFF_IMAGE_POSTFIX));
 
@@ -36,7 +36,7 @@ console.info(`canvas:`, version);
     const totalWidth = images.reduce((acc: number, {width}) => acc + width, 0);
     const maxHeight = Math.max(...images.map(({height}) => height));
     const canvas = createCanvas(totalWidth, maxHeight);
-    const ctx = canvas.getContext(`2d`);
+    const ctx = canvas.getContext('2d');
 
     let prevWidth = 0;
 
@@ -47,8 +47,8 @@ console.info(`canvas:`, version);
             prevWidth += image.width;
         });
 
-    const buffer = canvas.toBuffer(`image/png`);
-    const diffImageName = diffImage.split(`/`).pop()!.replace(DIFF_IMAGE_POSTFIX, ``);
+    const buffer = canvas.toBuffer('image/png');
+    const diffImageName = diffImage.split('/').pop()!.replace(DIFF_IMAGE_POSTFIX, '');
 
     writeFileSync(`${rootPath}/${diffImageName}.diff.png`, buffer);
 })();

@@ -10,7 +10,7 @@ export function getComponentFromIdentifier(
     })[0];
 
     const rootComponentPath =
-        rootImportDeclaration.getModuleSpecifierSourceFile()?.getFilePath() || ``;
+        rootImportDeclaration.getModuleSpecifierSourceFile()?.getFilePath() || '';
 
     return getNgComponents(rootComponentPath, {
         name: identifier.getText(),

@@ -3,7 +3,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {TuiBarSetComponent, TuiBarSetModule} from '@taiga-ui/addon-charts';
 
-describe(`BarSet`, () => {
+describe('BarSet', () => {
     @Component({
         template: `
             <tui-bar-set
@@ -34,22 +34,22 @@ describe(`BarSet`, () => {
         fixture.detectChanges();
     });
 
-    describe(`collapsed`, () => {
-        it(`has multiple bars when false`, () => {
+    describe('collapsed', () => {
+        it('has multiple bars when false', () => {
             expect(
                 fixture.debugElement.queryAll(
-                    By.css(`[automation-id="tui-bar-set__bar"]`),
+                    By.css('[automation-id="tui-bar-set__bar"]'),
                 ).length,
             ).toBe(4);
         });
 
-        it(`has single bar when true`, () => {
+        it('has single bar when true', () => {
             testComponent.collapsed = true;
             fixture.detectChanges();
 
             expect(
                 fixture.debugElement.queryAll(
-                    By.css(`[automation-id="tui-bar-set__bar"]`),
+                    By.css('[automation-id="tui-bar-set__bar"]'),
                 ).length,
             ).toBe(1);
         });

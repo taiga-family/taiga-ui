@@ -9,7 +9,7 @@ import {TUI_DIALOG_OPTIONS} from './dialog.tokens';
 const DIALOG = new PolymorpheusComponent(TuiDialogComponent);
 
 @Injectable({
-    providedIn: `root`,
+    providedIn: 'root',
 })
 export class TuiDialogService extends AbstractTuiDialogService<TuiDialogOptions<any>> {
     protected readonly component = DIALOG;

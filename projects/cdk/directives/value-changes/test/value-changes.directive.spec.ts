@@ -4,7 +4,7 @@ import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
 import {TuiValueChangesModule} from '@taiga-ui/cdk';
 
-describe(`TuiValueChangesDirective`, () => {
+describe('TuiValueChangesDirective', () => {
     @Component({
         template: `
             <form
@@ -43,17 +43,17 @@ describe(`TuiValueChangesDirective`, () => {
         testComponent.controlSpy.mockClear();
         fixture.detectChanges();
 
-        const input = fixture.debugElement.query(By.css(`input`));
+        const input = fixture.debugElement.query(By.css('input'));
 
-        input.nativeElement.value = `Hapica`;
-        input.nativeElement.dispatchEvent(new Event(`input`));
+        input.nativeElement.value = 'Hapica';
+        input.nativeElement.dispatchEvent(new Event('input'));
     });
 
-    it(`works for controls`, () => {
-        expect(testComponent.controlSpy).toHaveBeenCalledWith(`Hapica`);
+    it('works for controls', () => {
+        expect(testComponent.controlSpy).toHaveBeenCalledWith('Hapica');
     });
 
-    it(`works for containers`, () => {
-        expect(testComponent.formSpy).toHaveBeenCalledWith({control: `Hapica`});
+    it('works for containers', () => {
+        expect(testComponent.formSpy).toHaveBeenCalledWith({control: 'Hapica'});
     });
 });

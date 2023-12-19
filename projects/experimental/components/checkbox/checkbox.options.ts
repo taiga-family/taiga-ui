@@ -11,10 +11,10 @@ export interface TuiCheckboxOptions {
 }
 
 export const TUI_CHECKBOX_DEFAULT_OPTIONS: TuiCheckboxOptions = {
-    size: `m`,
+    size: 'm',
     icons: {
-        checked: size => (size === `m` ? `tuiIconCheckLarge` : `tuiIconCheck`),
-        indeterminate: size => (size === `m` ? `tuiIconMinusLarge` : `tuiIconMinus`),
+        checked: size => (size === 'm' ? 'tuiIconCheckLarge' : 'tuiIconCheck'),
+        indeterminate: size => (size === 'm' ? 'tuiIconMinusLarge' : 'tuiIconMinus'),
     },
 };
 

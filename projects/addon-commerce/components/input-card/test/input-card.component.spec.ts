@@ -3,7 +3,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiInputCardComponent, TuiInputCardModule} from '@taiga-ui/addon-commerce';
 
-describe(`InputCard`, () => {
+describe('InputCard', () => {
     @Component({
         template: `
             <tui-input-card
@@ -20,10 +20,10 @@ describe(`InputCard`, () => {
         @ViewChild(TuiInputCardComponent, {static: true})
         component!: TuiInputCardComponent;
 
-        @ViewChild(`customIconTemplateRef`, {read: TemplateRef})
+        @ViewChild('customIconTemplateRef', {read: TemplateRef})
         customIconTemplateRef!: TemplateRef<any>;
 
-        control = new FormControl(``);
+        control = new FormControl('');
 
         onBinChange = jest.fn();
     }
@@ -42,22 +42,22 @@ describe(`InputCard`, () => {
         fixture.detectChanges();
     });
 
-    describe(`autocomplete`, () => {
-        it(`enabled`, () => {
+    describe('autocomplete', () => {
+        it('enabled', () => {
             testComponent.component.autocompleteEnabled = true;
 
-            expect(testComponent.component.autocompleteCard).toBe(`cc-number`);
+            expect(testComponent.component.autocompleteCard).toBe('cc-number');
         });
 
-        it(`disabled`, () => {
+        it('disabled', () => {
             testComponent.component.autocompleteEnabled = false;
 
-            expect(testComponent.component.autocompleteCard).toBe(`off`);
+            expect(testComponent.component.autocompleteCard).toBe('off');
         });
     });
 
-    describe(`focusable`, () => {
-        it(`touched`, () => {
+    describe('focusable', () => {
+        it('touched', () => {
             testComponent.component.onFocused(true);
 
             expect(testComponent.component.control?.touched).toBe(false);
@@ -68,158 +68,158 @@ describe(`InputCard`, () => {
         });
     });
 
-    describe(`binChange`, () => {
-        it(`Less than 6 characters`, () => {
-            testComponent.control.setValue(`12345`);
+    describe('binChange', () => {
+        it('Less than 6 characters', () => {
+            testComponent.control.setValue('12345');
 
             expect(testComponent.onBinChange).not.toHaveBeenCalled();
         });
 
-        it(`6 and more characters`, () => {
-            testComponent.control.setValue(`123456789`);
+        it('6 and more characters', () => {
+            testComponent.control.setValue('123456789');
 
-            expect(testComponent.onBinChange).toHaveBeenCalledWith(`123456`);
+            expect(testComponent.onBinChange).toHaveBeenCalledWith('123456');
         });
 
-        it(`trigger onBinChange only when bin has changed`, () => {
-            testComponent.component.onValueChange(`1234 5678 1111 2222`);
+        it('trigger onBinChange only when bin has changed', () => {
+            testComponent.component.onValueChange('1234 5678 1111 2222');
 
-            expect(testComponent.onBinChange).toHaveBeenCalledWith(`123456`);
-            expect(testComponent.component.value).toBe(`1234567811112222`);
-            expect(testComponent.component.bin).toBe(`123456`);
+            expect(testComponent.onBinChange).toHaveBeenCalledWith('123456');
+            expect(testComponent.component.value).toBe('1234567811112222');
+            expect(testComponent.component.bin).toBe('123456');
 
-            testComponent.component.onValueChange(`2222 4444 5555 6666`);
+            testComponent.component.onValueChange('2222 4444 5555 6666');
             expect(testComponent.onBinChange).toHaveBeenCalledTimes(2);
 
-            testComponent.component.onValueChange(`2222 4444 5555 6666`);
+            testComponent.component.onValueChange('2222 4444 5555 6666');
             expect(testComponent.onBinChange).toHaveBeenCalledTimes(2);
         });
 
-        it(`The value has changed, the first 6 characters are unchanged`, () => {
-            testComponent.control.setValue(`123456789`);
+        it('The value has changed, the first 6 characters are unchanged', () => {
+            testComponent.control.setValue('123456789');
             testComponent.onBinChange.mockClear();
-            testComponent.control.setValue(`123456987`);
+            testComponent.control.setValue('123456987');
 
             expect(testComponent.onBinChange).not.toHaveBeenCalled();
         });
 
-        it(`The value has changed, the first 6 characters have changed`, () => {
-            testComponent.control.setValue(`123456789`);
+        it('The value has changed, the first 6 characters have changed', () => {
+            testComponent.control.setValue('123456789');
             testComponent.onBinChange.mockClear();
-            testComponent.control.setValue(`654321789`);
+            testComponent.control.setValue('654321789');
 
-            expect(testComponent.onBinChange).toHaveBeenCalledWith(`654321`);
+            expect(testComponent.onBinChange).toHaveBeenCalledWith('654321');
         });
 
-        it(`The value has changed to less than 6 characters`, () => {
-            testComponent.control.setValue(`123456789`);
+        it('The value has changed to less than 6 characters', () => {
+            testComponent.control.setValue('123456789');
             testComponent.onBinChange.mockClear();
-            testComponent.control.setValue(`123`);
+            testComponent.control.setValue('123');
 
             expect(testComponent.onBinChange).toHaveBeenCalledWith(null);
         });
     });
 
-    describe(`paymentSystem`, () => {
-        it(`visa`, () => {
-            testComponent.control.setValue(`4111 1111 1111 1111`);
+    describe('paymentSystem', () => {
+        it('visa', () => {
+            testComponent.control.setValue('4111 1111 1111 1111');
 
-            expect(testComponent.component.paymentSystem).toBe(`visa`);
+            expect(testComponent.component.paymentSystem).toBe('visa');
         });
 
-        it(`electron`, () => {
-            testComponent.control.setValue(`4917300800000000`);
+        it('electron', () => {
+            testComponent.control.setValue('4917300800000000');
 
-            expect(testComponent.component.paymentSystem).toBe(`electron`);
+            expect(testComponent.component.paymentSystem).toBe('electron');
         });
 
-        it(`mir`, () => {
-            testComponent.control.setValue(`2200654321000000`);
+        it('mir', () => {
+            testComponent.control.setValue('2200654321000000');
 
-            expect(testComponent.component.paymentSystem).toBe(`mir`);
+            expect(testComponent.component.paymentSystem).toBe('mir');
         });
 
-        it(`mastercard`, () => {
-            testComponent.control.setValue(`5500 0000 0000 0004`);
+        it('mastercard', () => {
+            testComponent.control.setValue('5500 0000 0000 0004');
 
-            expect(testComponent.component.paymentSystem).toBe(`mastercard`);
+            expect(testComponent.component.paymentSystem).toBe('mastercard');
         });
 
-        it(`maestro`, () => {
-            testComponent.control.setValue(`6759649826438453`);
+        it('maestro', () => {
+            testComponent.control.setValue('6759649826438453');
 
-            expect(testComponent.component.paymentSystem).toBe(`maestro`);
-        });
-    });
-
-    describe(`Formatting`, () => {
-        it(`4`, async () => {
-            await testFormat(`1234`, `1234`);
-        });
-
-        it(`7`, async () => {
-            await testFormat(`1234567`, `1234 567`);
-        });
-
-        it(`10`, async () => {
-            await testFormat(`1234567890`, `1234 5678 90`);
-        });
-
-        it(`12`, async () => {
-            await testFormat(`123456789012`, `1234 5678 9012`);
-        });
-
-        it(`13`, async () => {
-            await testFormat(`4000000000000`, `4000 0000 0000 0`);
-        });
-
-        it(`14`, async () => {
-            await testFormat(`40000000000000`, `4000 0000 0000 00`);
-        });
-
-        it(`15`, async () => {
-            await testFormat(`400000000000000`, `4000 0000 0000 000`);
-        });
-
-        it(`16`, async () => {
-            await testFormat(`4000000000000000`, `4000 0000 0000 0000`);
-        });
-
-        it(`17`, async () => {
-            await testFormat(`40000000000000000`, `4000 0000 0000 0000 0`);
-        });
-
-        it(`18`, async () => {
-            await testFormat(`400000000000000000`, `4000 0000 0000 0000 00`);
-        });
-
-        it(`19`, async () => {
-            await testFormat(`4000000000000000000`, `4000 0000 0000 0000 000`);
+            expect(testComponent.component.paymentSystem).toBe('maestro');
         });
     });
 
-    describe(`customIconSource`, () => {
-        beforeEach(() => testComponent.control.setValue(`4111 1111 1111 1111`));
-
-        it(`input-card component has a default icon`, () => {
-            expect(testComponent.control.valid).toBe(true);
-            expect(testComponent.component.icon).toBe(`tuiIconVisaMono`);
-            expect(testComponent.control.value).toBe(`4111 1111 1111 1111`);
+    describe('Formatting', () => {
+        it('4', async () => {
+            await testFormat('1234', '1234');
         });
 
-        it(`input-card component has a tuiIconElectron icon`, () => {
-            testComponent.component.cardSrc = `tuiIconElectron`;
-            expect(testComponent.control.valid).toBe(true);
-            expect(testComponent.component.icon).toBe(`tuiIconElectron`);
-            expect(testComponent.control.value).toBe(`4111 1111 1111 1111`);
+        it('7', async () => {
+            await testFormat('1234567', '1234 567');
         });
 
-        it(`input-card component has an icon source as TemplateRef`, () => {
+        it('10', async () => {
+            await testFormat('1234567890', '1234 5678 90');
+        });
+
+        it('12', async () => {
+            await testFormat('123456789012', '1234 5678 9012');
+        });
+
+        it('13', async () => {
+            await testFormat('4000000000000', '4000 0000 0000 0');
+        });
+
+        it('14', async () => {
+            await testFormat('40000000000000', '4000 0000 0000 00');
+        });
+
+        it('15', async () => {
+            await testFormat('400000000000000', '4000 0000 0000 000');
+        });
+
+        it('16', async () => {
+            await testFormat('4000000000000000', '4000 0000 0000 0000');
+        });
+
+        it('17', async () => {
+            await testFormat('40000000000000000', '4000 0000 0000 0000 0');
+        });
+
+        it('18', async () => {
+            await testFormat('400000000000000000', '4000 0000 0000 0000 00');
+        });
+
+        it('19', async () => {
+            await testFormat('4000000000000000000', '4000 0000 0000 0000 000');
+        });
+    });
+
+    describe('customIconSource', () => {
+        beforeEach(() => testComponent.control.setValue('4111 1111 1111 1111'));
+
+        it('input-card component has a default icon', () => {
+            expect(testComponent.control.valid).toBe(true);
+            expect(testComponent.component.icon).toBe('tuiIconVisaMono');
+            expect(testComponent.control.value).toBe('4111 1111 1111 1111');
+        });
+
+        it('input-card component has a tuiIconElectron icon', () => {
+            testComponent.component.cardSrc = 'tuiIconElectron';
+            expect(testComponent.control.valid).toBe(true);
+            expect(testComponent.component.icon).toBe('tuiIconElectron');
+            expect(testComponent.control.value).toBe('4111 1111 1111 1111');
+        });
+
+        it('input-card component has an icon source as TemplateRef', () => {
             testComponent.component.cardSrc =
                 fixture.componentInstance.customIconTemplateRef;
             expect(testComponent.control.valid).toBe(true);
             expect(testComponent.component.icon).toBeInstanceOf(TemplateRef);
-            expect(testComponent.control.value).toBe(`4111 1111 1111 1111`);
+            expect(testComponent.control.value).toBe('4111 1111 1111 1111');
         });
     });
 
@@ -238,6 +238,6 @@ describe(`InputCard`, () => {
     }
 
     function getValue(): string {
-        return testComponent.component.nativeFocusableElement?.value || ``;
+        return testComponent.component.nativeFocusableElement?.value || '';
     }
 });

@@ -23,7 +23,7 @@ let documentMouseUpIsAlive$: Observable<boolean>;
 let documentMouseDownIsAlive$: Observable<boolean>;
 
 export function tuiFocusVisibleObservable(element: Element): Observable<boolean> {
-    const elementBlur$ = tuiTypedFromEvent(element, `blur`);
+    const elementBlur$ = tuiTypedFromEvent(element, 'blur');
     const {ownerDocument} = element;
 
     if (!ownerDocument) {
@@ -31,14 +31,14 @@ export function tuiFocusVisibleObservable(element: Element): Observable<boolean>
     }
 
     if (!documentMouseDownIsAlive$ || !documentMouseUpIsAlive$) {
-        documentMouseUpIsAlive$ = tuiTypedFromEvent(ownerDocument, `mouseup`, {
+        documentMouseUpIsAlive$ = tuiTypedFromEvent(ownerDocument, 'mouseup', {
             capture: true,
         }).pipe(
             tuiIsAlive(),
             startWith(false),
             shareReplay({bufferSize: 1, refCount: true}),
         );
-        documentMouseDownIsAlive$ = tuiTypedFromEvent(ownerDocument, `mousedown`, {
+        documentMouseDownIsAlive$ = tuiTypedFromEvent(ownerDocument, 'mousedown', {
             capture: true,
         }).pipe(
             tuiIsAlive(),
@@ -50,7 +50,7 @@ export function tuiFocusVisibleObservable(element: Element): Observable<boolean>
     return merge(
         // focus events excluding ones that came right after mouse action
         concat(
-            tuiTypedFromEvent(element, `focus`).pipe(take(1)),
+            tuiTypedFromEvent(element, 'focus').pipe(take(1)),
             // filtering out blur events when element remains focused so that we ignore browser tab focus loss
             elementBlur$.pipe(
                 filter(() => !tuiIsNativeFocused(element)),

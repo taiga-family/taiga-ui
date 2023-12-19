@@ -1,12 +1,12 @@
 import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
-test.describe(`Textarea`, () => {
+test.describe('Textarea', () => {
     test.beforeEach(async ({page}) => {
         await page.setViewportSize({width: 400, height: 600});
     });
 
-    [`m`, `l`].forEach(size => {
+    ['m', 'l'].forEach(size => {
         test(`size of ${size}`, async ({page}) => {
             await tuiGoto(page, `components/textarea/API?tuiTextfieldSize=${size}`);
             const {apiPageExample} = new TuiDocumentationPagePO(page);
@@ -17,20 +17,20 @@ test.describe(`Textarea`, () => {
         });
     });
 
-    test(`line break text`, async ({page}) => {
-        await tuiGoto(page, `components/textarea/API`);
+    test('line break text', async ({page}) => {
+        await tuiGoto(page, 'components/textarea/API');
         const {apiPageExample} = new TuiDocumentationPagePO(page);
-        const textAreaComponent = apiPageExample.locator(`tui-textarea`);
-        const textarea = apiPageExample.getByRole(`textbox`).first();
+        const textAreaComponent = apiPageExample.locator('tui-textarea');
+        const textarea = apiPageExample.getByRole('textbox').first();
 
-        await textarea.fill(`1\n2\n3\n4`);
+        await textarea.fill('1\n2\n3\n4');
 
-        await expect(textAreaComponent).toHaveScreenshot(`textarea-line-break.png`);
+        await expect(textAreaComponent).toHaveScreenshot('textarea-line-break.png');
 
-        await page.locator(`.t-row tui-toggle`).first().click();
+        await page.locator('.t-row tui-toggle').first().click();
 
         await expect(textAreaComponent).toHaveScreenshot(
-            `textarea-line-break-disabled.png`,
+            'textarea-line-break-disabled.png',
         );
     });
 });

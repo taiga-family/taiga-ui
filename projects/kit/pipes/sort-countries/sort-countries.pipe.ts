@@ -5,7 +5,7 @@ import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 @Pipe({
-    name: `tuiSortCountries`,
+    name: 'tuiSortCountries',
 })
 export class TuiSortCountriesPipe implements PipeTransform {
     constructor(

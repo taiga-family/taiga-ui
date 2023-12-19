@@ -8,7 +8,7 @@ import {TUI_TURKISH_LANGUAGE_CORE} from './core';
 import {TUI_TURKISH_LANGUAGE_KIT} from './kit';
 
 export const TUI_TURKISH_LANGUAGE: TuiLanguage = {
-    name: `turkish`,
+    name: 'turkish',
     ...TUI_TURKISH_LANGUAGE_CORE,
     ...TUI_TURKISH_LANGUAGE_KIT,
     ...TUI_TURKISH_LANGUAGE_ADDON_TABLE,

@@ -6,8 +6,8 @@ import {
 } from '@taiga-ui/core';
 import {tuiTestingViewport} from '@taiga-ui/testing';
 
-describe(`viewport`, () => {
-    it(`width/height`, () => {
+describe('viewport', () => {
+    it('width/height', () => {
         tuiTestingViewport(770, 600);
 
         expect(window.document.documentElement.clientWidth).toBe(755);
@@ -20,7 +20,7 @@ describe(`viewport`, () => {
         expect(tuiGetViewportHeight(window)).toBe(600);
     });
 
-    describe(`iPhone X`, () => {
+    describe('iPhone X', () => {
         const emulatedDesktopWidth = 1280;
         const logicalIphoneWidth = 375;
         const mobileBreakPoint = 768;
@@ -37,7 +37,7 @@ describe(`viewport`, () => {
             ).toBe(false);
         });
 
-        it(`isMobile when 'content="width=device-width, initial-scale=1, maximum-scale=1"'`, () => {
+        it('isMobile when \'content="width=device-width, initial-scale=1, maximum-scale=1"\'', () => {
             expect(
                 tuiIsMobile(
                     {
@@ -49,7 +49,7 @@ describe(`viewport`, () => {
             ).toBe(true);
         });
 
-        it(`device-width is not mobile`, () => {
+        it('device-width is not mobile', () => {
             expect(
                 tuiIsMobile(
                     {
@@ -61,7 +61,7 @@ describe(`viewport`, () => {
             ).toBe(false);
         });
 
-        it(`device-width is mobile`, () => {
+        it('device-width is mobile', () => {
             expect(
                 tuiIsMobile(
                     {

@@ -8,8 +8,8 @@ import {overwriteVersion} from './shared/overwrite-version';
 import {syncVersions} from './shared/sync-versions';
 
 (function main(): void {
-    const type = `canary`;
-    const commit = execute(`git rev-parse HEAD`, {}).slice(0, 7);
+    const type = 'canary';
+    const commit = execute('git rev-parse HEAD', {}).slice(0, 7);
     const [major, minor, patch] = version.split(/[.-]/) as [string, string, string];
 
     // construct new version from base version x.y.z to become x.y.z-{type}.{shortSha}
@@ -17,9 +17,9 @@ import {syncVersions} from './shared/sync-versions';
 
     infoLog(`New dev version - ${newVersion}`);
 
-    syncVersions([`./dist`], newVersion, IGNORABLE_TAIGA_PACKAGES);
+    syncVersions(['./dist'], newVersion, IGNORABLE_TAIGA_PACKAGES);
 
-    overwriteVersion(resolve(`./projects/cdk/constants/version.ts`), newVersion);
+    overwriteVersion(resolve('./projects/cdk/constants/version.ts'), newVersion);
 
     execute(
         `npx nx run-many --target publish --all --customTag=${type} --customVersion=${newVersion}`,

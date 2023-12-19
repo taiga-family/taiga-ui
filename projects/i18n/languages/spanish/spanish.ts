@@ -8,7 +8,7 @@ import {TUI_SPANISH_LANGUAGE_CORE} from './core';
 import {TUI_SPANISH_LANGUAGE_KIT} from './kit';
 
 export const TUI_SPANISH_LANGUAGE: TuiLanguage = {
-    name: `spanish`,
+    name: 'spanish',
     ...TUI_SPANISH_LANGUAGE_CORE,
     ...TUI_SPANISH_LANGUAGE_KIT,
     ...TUI_SPANISH_LANGUAGE_ADDON_TABLE,

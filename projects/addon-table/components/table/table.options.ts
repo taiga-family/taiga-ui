@@ -19,12 +19,12 @@ export const TUI_TABLE_DEFAULT_OPTIONS: TuiTableOptions = {
     sticky: false,
     resizable: false,
     open: true,
-    size: `m`,
+    size: 'm',
     direction: 1,
     sortIcons: {
-        asc: `tuiIconSortAscending`,
-        desc: `tuiIconSortDescending`,
-        off: `tuiIconSortOff`,
+        asc: 'tuiIconSortAscending',
+        desc: 'tuiIconSortDescending',
+        off: 'tuiIconSortOff',
     },
 };
 

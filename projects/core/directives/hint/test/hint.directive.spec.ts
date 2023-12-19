@@ -11,7 +11,7 @@ import {TuiHintModule, TuiRootModule} from '@taiga-ui/core';
 
 type Hint = TemplateRef<Record<string, unknown>> | string | null | undefined;
 
-describe(`Hint`, () => {
+describe('Hint', () => {
     @Component({
         template: `
             <tui-root>
@@ -37,7 +37,7 @@ describe(`Hint`, () => {
         ],
     })
     class TestComponent {
-        hint: Hint = `Tooltip text`;
+        hint: Hint = 'Tooltip text';
     }
 
     let fixture: ComponentFixture<TestComponent>;
@@ -54,42 +54,42 @@ describe(`Hint`, () => {
             declarations: [TestComponent],
         });
         await TestBed.compileComponents();
-        document.body.style.margin = `0`;
+        document.body.style.margin = '0';
         fixture = TestBed.createComponent(TestComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });
 
-    it(`Hint is not shown immediately`, () => {
-        getHost().dispatchEvent(new Event(`mouseenter`));
+    it('Hint is not shown immediately', () => {
+        getHost().dispatchEvent(new Event('mouseenter'));
         fixture.detectChanges();
         expect(getTooltip()).toBeNull();
     });
 
-    describe(`Hint`, () => {
+    describe('Hint', () => {
         beforeEach(fakeAsync(() => {
-            getHost().dispatchEvent(new Event(`mouseenter`));
+            getHost().dispatchEvent(new Event('mouseenter'));
             fixture.detectChanges();
             tick(500);
             fixture.detectChanges();
             discardPeriodicTasks();
         }));
 
-        it(`is shown after 500ms`, async () => {
+        it('is shown after 500ms', async () => {
             await fixture.whenStable();
             fixture.detectChanges();
-            expect(getTooltip()?.textContent?.trim()).toBe(`Tooltip text`);
+            expect(getTooltip()?.textContent?.trim()).toBe('Tooltip text');
         });
 
-        it(`is hidden immediately if null is passed as content`, async () => {
+        it('is hidden immediately if null is passed as content', async () => {
             setHint(null);
 
             await fixture.whenStable();
             expect(getTooltip()).toBeNull();
         });
 
-        it(`is hidden after pointer left host with 200ms delay`, fakeAsync(async () => {
-            getHost().dispatchEvent(new Event(`mouseout`));
+        it('is hidden after pointer left host with 200ms delay', fakeAsync(async () => {
+            getHost().dispatchEvent(new Event('mouseout'));
             fixture.detectChanges();
             tick(200);
             fixture.detectChanges();
@@ -100,9 +100,9 @@ describe(`Hint`, () => {
         }));
     });
 
-    describe(`Hint is not shown`, () => {
-        it(`when content is empty string`, fakeAsync(() => {
-            setHintThenEnterMouse(``);
+    describe('Hint is not shown', () => {
+        it('when content is empty string', fakeAsync(() => {
+            setHintThenEnterMouse('');
             tick(500);
             fixture.detectChanges();
             discardPeriodicTasks();
@@ -110,7 +110,7 @@ describe(`Hint`, () => {
             expect(getTooltip()).toBeNull();
         }));
 
-        it(`when content is null`, fakeAsync(() => {
+        it('when content is null', fakeAsync(() => {
             setHintThenEnterMouse(null);
             tick(500);
             fixture.detectChanges();
@@ -122,17 +122,17 @@ describe(`Hint`, () => {
         function setHintThenEnterMouse(hint: Hint): void {
             setHint(hint);
 
-            getHost().dispatchEvent(new Event(`mouseenter`));
+            getHost().dispatchEvent(new Event('mouseenter'));
             fixture.detectChanges();
         }
     });
 
     function getHost(): Element {
-        return document.querySelector(`#hint-host`)!;
+        return document.querySelector('#hint-host')!;
     }
 
     function getTooltip(): Element | null {
-        return document.querySelector(`tui-hint`);
+        return document.querySelector('tui-hint');
     }
 
     function setHint(hint: Hint): void {

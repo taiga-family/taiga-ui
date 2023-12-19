@@ -41,7 +41,7 @@ export class TuiDayRange extends TuiMonthRange {
      */
     static normalizeParse(
         rangeString: string,
-        dateMode: TuiDateMode = `DMY`,
+        dateMode: TuiDateMode = 'DMY',
     ): TuiDayRange {
         const leftDay = TuiDay.normalizeParse(
             rangeString.slice(0, DATE_FILLER_LENGTH),
@@ -97,8 +97,8 @@ export class TuiDayRange extends TuiMonthRange {
     }
 
     override toString(
-        dateFormat: TuiDateMode = `DMY`,
-        dateSeparator: string = `.`,
+        dateFormat: TuiDateMode = 'DMY',
+        dateSeparator: string = '.',
     ): string {
         return this.getFormattedDayRange(dateFormat, dateSeparator);
     }

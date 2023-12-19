@@ -8,20 +8,20 @@ import {BehaviorSubject} from 'rxjs';
 
 export abstract class AbstractExampleTuiDropdown {
     readonly dropdownAlignVariants: readonly TuiDropdownAlign[] = [
-        `left`,
-        `right`,
-        `center`,
+        'left',
+        'right',
+        'center',
     ];
 
     readonly dropdownLimitWidthVariants: readonly TuiDropdownWidth[] = [
-        `fixed`,
-        `min`,
-        `auto`,
+        'fixed',
+        'min',
+        'auto',
     ];
 
     readonly dropdownDirectionVariants: readonly TuiVerticalDirection[] = [
-        `bottom`,
-        `top`,
+        'bottom',
+        'top',
     ];
 
     dropdownAlign = TUI_DROPDOWN_DEFAULT_OPTIONS.align;

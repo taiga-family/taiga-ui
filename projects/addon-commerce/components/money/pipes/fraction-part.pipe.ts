@@ -3,7 +3,7 @@ import {TUI_NUMBER_FORMAT, TuiDecimal, TuiNumberFormatSettings} from '@taiga-ui/
 
 import {tuiFormatFractionPart} from '../utils/format-fraction-part';
 
-@Pipe({name: `tuiFractionPart`})
+@Pipe({name: 'tuiFractionPart'})
 export class TuiFractionPartPipe implements PipeTransform {
     constructor(
         @Inject(TUI_NUMBER_FORMAT) private readonly numberFormat: TuiNumberFormatSettings,

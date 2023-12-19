@@ -12,7 +12,7 @@ import {TuiMultiSelectDirective} from '@taiga-ui/kit/components/multi-select';
 import {AbstractTuiFilterByInput, TuiArrayElement} from './filter-by-input.base';
 
 @Pipe({
-    name: `tuiFilterByInput`,
+    name: 'tuiFilterByInput',
     pure: false,
 })
 export class TuiFilterByInputPipe

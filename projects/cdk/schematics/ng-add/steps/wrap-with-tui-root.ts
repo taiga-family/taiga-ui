@@ -30,15 +30,15 @@ function addTuiRootComponent(
             `Could not read the default template file within the project ${filePath}`,
         );
         context.logger.info(
-            `Consider manually wrapping content of your app with tui-root`,
+            'Consider manually wrapping content of your app with tui-root',
         );
 
         return;
     }
 
     const htmlContent = buffer.toString();
-    const openTag = `<tui-root>\n`;
-    const closeTag = `\n</tui-root>`;
+    const openTag = '<tui-root>\n';
+    const closeTag = '\n</tui-root>';
 
     if (htmlContent.includes(openTag)) {
         return;
@@ -67,8 +67,8 @@ function getAppTemplatePath(mainPath: string): string | undefined {
     const mainModule = getMainModule(mainPath);
     const mainInitializer = getTemplateInitializer(
         mainModule,
-        `NgModule`,
-        `declarations`,
+        'NgModule',
+        'declarations',
     );
 
     if (!Node.isArrayLiteralExpression(mainInitializer)) {
@@ -84,15 +84,15 @@ function getAppTemplatePath(mainPath: string): string | undefined {
 function getTemplatePathFromComponent(component: ClassDeclaration): string {
     const templateInitializer = getTemplateInitializer(
         component,
-        `Component`,
-        `templateUrl`,
+        'Component',
+        'templateUrl',
     );
 
-    const appComponentPath = component.getSourceFile().getFilePath().split(`/`);
+    const appComponentPath = component.getSourceFile().getFilePath().split('/');
 
     return `${appComponentPath
         .splice(0, appComponentPath.length - 1)
-        .join(`/`)}/${templateInitializer?.getText().replace(/['"]/g, ``)}`;
+        .join('/')}/${templateInitializer?.getText().replace(/['"]/g, '')}`;
 }
 
 function getTemplateInitializer(
@@ -130,22 +130,22 @@ export function wrapWithTuiRootComponent(options: TuiSchema): Rule {
             return;
         }
 
-        const buildOptions = getProjectTargetOptions(project, `build`);
+        const buildOptions = getProjectTargetOptions(project, 'build');
 
-        setActiveProject(createProject(tree, `/`, ALL_FILES));
+        setActiveProject(createProject(tree, '/', ALL_FILES));
         const appTemplatePath = getAppTemplatePath(buildOptions.main as string);
 
         saveActiveProject();
 
         if (!appTemplatePath) {
             context.logger.error(
-                `Could not find the default main template file for this project.`,
+                'Could not find the default main template file for this project.',
             );
             context.logger.info(
-                `Consider manually wrapping content of your app with tui-root`,
+                'Consider manually wrapping content of your app with tui-root',
             );
             context.logger.info(
-                `More information at https://taiga-ui.dev/getting-started`,
+                'More information at https://taiga-ui.dev/getting-started',
             );
 
             return;

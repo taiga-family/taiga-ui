@@ -9,7 +9,7 @@ import {TuiMobileDialogModule} from '../mobile-dialog.module';
 import {tuiMobileDialogOptionsProvider} from '../mobile-dialog.options';
 import {TuiMobileDialogService} from '../mobile-dialog.service';
 
-describe(`Mobile Dialog with TUI_MOBILE_DIALOG_OPTIONS`, () => {
+describe('Mobile Dialog with TUI_MOBILE_DIALOG_OPTIONS', () => {
     @Component({
         template: `
             <tui-root></tui-root>
@@ -17,14 +17,14 @@ describe(`Mobile Dialog with TUI_MOBILE_DIALOG_OPTIONS`, () => {
     })
     class TestComponent {}
 
-    const label = `Test`;
+    const label = 'Test';
 
     let fixture: ComponentFixture<TestComponent>;
     let tuiMobileDialogService: TuiMobileDialogService;
     let pageObject: TuiPageObject<TestComponent>;
 
     function getLabelElement(): DebugElement {
-        return pageObject.getByAutomationId(`tui-mobile-dialog__label`)!;
+        return pageObject.getByAutomationId('tui-mobile-dialog__label')!;
     }
 
     beforeEach(async () => {
@@ -46,9 +46,9 @@ describe(`Mobile Dialog with TUI_MOBILE_DIALOG_OPTIONS`, () => {
         pageObject = new TuiPageObject(fixture);
     });
 
-    describe(`label`, () => {
-        it(`correctly shows label option data`, () => {
-            tuiMobileDialogService.open(`Test`).subscribe();
+    describe('label', () => {
+        it('correctly shows label option data', () => {
+            tuiMobileDialogService.open('Test').subscribe();
             fixture.detectChanges();
 
             const labelElement = getLabelElement();

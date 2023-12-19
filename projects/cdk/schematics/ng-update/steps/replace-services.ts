@@ -19,7 +19,7 @@ function replaceService(
     {from, to, replaceMethods}: ReplacementService,
     options: TuiSchema,
 ): void {
-    !options[`skip-logs`] &&
+    !options['skip-logs'] &&
         processLog(
             `${SMALL_TAB_SYMBOL}${SMALL_TAB_SYMBOL}${PROCESSING_SYMBOL}replacing ${from.name}...`,
         );
@@ -64,7 +64,7 @@ function replaceProperties(
 
         if (
             (Node.isPropertyAccessExpression(parent) &&
-                parent.getText().startsWith(`this.`)) ||
+                parent.getText().startsWith('this.')) ||
             Node.isCallExpression(parent)
         ) {
             parent = parent.getParentIfKind(SyntaxKind.PropertyAccessExpression);
@@ -97,11 +97,11 @@ export function replaceServices(
     options: TuiSchema,
     services: readonly ReplacementService[],
 ): void {
-    !options[`skip-logs`] &&
+    !options['skip-logs'] &&
         infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} replacing services...`);
 
     services.forEach(service => replaceService(service, options));
 
-    !options[`skip-logs`] &&
+    !options['skip-logs'] &&
         successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} services replaced \n`);
 }

@@ -9,11 +9,11 @@ export function tuiCreatePhoneMaskExpression(
     phoneMaskAfterCountryCode: string,
 ): Array<RegExp | string> {
     return [
-        ...countryCode.split(``),
-        ` `,
+        ...countryCode.split(''),
+        ' ',
         ...phoneMaskAfterCountryCode
-            .replace(/[^#\- ()]+/g, ``)
-            .split(``)
-            .map(item => (item === `#` ? /\d/ : item)),
+            .replace(/[^#\- ()]+/g, '')
+            .split('')
+            .map(item => (item === '#' ? /\d/ : item)),
     ];
 }

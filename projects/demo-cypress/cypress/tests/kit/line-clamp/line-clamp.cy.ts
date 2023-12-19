@@ -1,53 +1,54 @@
-describe(`LineClamp`, () => {
-    describe(`basic text`, () => {
-        const basicText = `Lorem ipsum Gaudeamus igiturCarpe diem Veni, vidi, vici`;
+describe('LineClamp', () => {
+    describe('basic text', () => {
+        const basicText = 'Lorem ipsum Gaudeamus igiturCarpe diem Veni, vidi, vici';
 
-        it(`linesLimit=1`, () => {
+        it('linesLimit=1', () => {
             cy.tuiVisit(`/components/line-clamp/API?content=${basicText}&linesLimit=1`);
 
-            cy.get(`#demo-content`)
-                .should(`be.visible`)
+            cy.get('#demo-content')
+                .should('be.visible')
                 .tuiWaitBeforeScreenshot()
-                .matchImageSnapshot(`01-[linesLimit=1]-basicText`);
+                .matchImageSnapshot('01-[linesLimit=1]-basicText');
         });
 
-        it(`linesLimit=2`, () => {
+        it('linesLimit=2', () => {
             cy.tuiVisit(`/components/line-clamp/API?content=${basicText}&linesLimit=2`);
 
-            cy.get(`#demo-content`)
-                .should(`be.visible`)
+            cy.get('#demo-content')
+                .should('be.visible')
                 .tuiWaitBeforeScreenshot()
-                .matchImageSnapshot(`02-[linesLimit=2]-basicText`);
+                .matchImageSnapshot('02-[linesLimit=2]-basicText');
         });
     });
 
-    describe(`Very long word`, () => {
-        it(`\`linesLimit=1\` + only long word`, () => {
+    describe('Very long word', () => {
+        it('`linesLimit=1` + only long word', () => {
             cy.tuiVisit(
-                `/components/line-clamp/API?content=Incomprehensibilities&linesLimit=1`,
+                '/components/line-clamp/API?content=Incomprehensibilities&linesLimit=1',
             );
 
-            cy.get(`#demo-content`)
-                .should(`be.visible`)
+            cy.get('#demo-content')
+                .should('be.visible')
                 .tuiWaitBeforeScreenshot()
-                .matchImageSnapshot(`03-[linesLimit=1]-longWord`);
+                .matchImageSnapshot('03-[linesLimit=1]-longWord');
         });
 
-        it(`\`linesLimit=2\` + text with long word on the 2nd line`, () => {
-            const textWithLongWord = `The near incomprehensibility of the instructions made assembling the desk a nightmare.`;
+        it('`linesLimit=2` + text with long word on the 2nd line', () => {
+            const textWithLongWord =
+                'The near incomprehensibility of the instructions made assembling the desk a nightmare.';
 
             cy.tuiVisit(
                 `/components/line-clamp/API?content=${textWithLongWord}&linesLimit=2`,
             );
 
-            cy.get(`#demo-content`)
-                .should(`be.visible`)
+            cy.get('#demo-content')
+                .should('be.visible')
                 .tuiWaitBeforeScreenshot()
-                .matchImageSnapshot(`04-[linesLimit=2]-longWord`);
+                .matchImageSnapshot('04-[linesLimit=2]-longWord');
         });
     });
 
-    describe(`Single line (break-all) and multiple line (break-words)`, () => {
+    describe('Single line (break-all) and multiple line (break-words)', () => {
         [
             {width: 60, linesLimit: 1},
             {width: 60, linesLimit: 3},
@@ -57,26 +58,26 @@ describe(`LineClamp`, () => {
                     `components/line-clamp/API?tuiMode=null&style.maxWidth.px=${width}&linesLimit=${linesLimit}`,
                 );
 
-                cy.get(`#demo-content`)
-                    .should(`be.visible`)
+                cy.get('#demo-content')
+                    .should('be.visible')
                     .tuiWaitBeforeScreenshot()
                     .matchImageSnapshot(`05-[linesLimit=${linesLimit}]-[width=${width}]`);
             });
         });
     });
 
-    describe(`Hovered`, () => {
-        const basicText = `Lorem ipsum Gaudeamus igiturCarpe diem Veni, vidi, vici`;
+    describe('Hovered', () => {
+        const basicText = 'Lorem ipsum Gaudeamus igiturCarpe diem Veni, vidi, vici';
 
-        it(`linesLimit=2 hovered`, () => {
+        it('linesLimit=2 hovered', () => {
             cy.tuiVisit(`/components/line-clamp/API?content=${basicText}&linesLimit=2`);
 
-            cy.get(`#demo-content tui-line-clamp`).realHover();
+            cy.get('#demo-content tui-line-clamp').realHover();
 
-            cy.get(`tui-line-clamp-box`)
-                .should(`be.visible`)
+            cy.get('tui-line-clamp-box')
+                .should('be.visible')
                 .tuiWaitBeforeScreenshot()
-                .matchImageSnapshot(`02-[linesLimit=2]-basicText-hover`);
+                .matchImageSnapshot('02-[linesLimit=2]-basicText-hover');
         });
     });
 });

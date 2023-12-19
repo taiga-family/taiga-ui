@@ -5,5 +5,5 @@
 export function tuiCoerceBooleanProperty(
     value: Record<string, any> | boolean | number | string | null | undefined,
 ): boolean {
-    return value !== null && typeof value !== `undefined` && `${value}` !== `false`;
+    return value !== null && typeof value !== 'undefined' && `${value}` !== 'false';
 }

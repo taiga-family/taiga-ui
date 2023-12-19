@@ -9,9 +9,9 @@ export interface TuiInputTagOptions {
 }
 
 export const TUI_INPUT_TAG_DEFAULT_OPTIONS: TuiInputTagOptions = {
-    separator: `,`,
+    separator: ',',
     uniqueTags: true,
-    tagStatus: `primary`,
+    tagStatus: 'primary',
 };
 
 /**

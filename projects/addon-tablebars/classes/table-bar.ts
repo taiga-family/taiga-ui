@@ -16,7 +16,7 @@ export class TuiTableBar {
         readonly content: PolymorpheusContent<Record<string, any>>,
         options: TuiTableBarOptions = {},
     ) {
-        const {mode = `onLight`, hasCloseButton = false, adaptive = false} = options;
+        const {mode = 'onLight', hasCloseButton = false, adaptive = false} = options;
 
         this.mode = mode;
         this.hasCloseButton = hasCloseButton;

@@ -8,7 +8,7 @@ import {TUI_ANIMATIONS_DURATION} from './animations-duration';
  * Options for Taiga UI animations
  */
 export const TUI_ANIMATION_OPTIONS = tuiCreateTokenFromFactory<AnimationOptions>(() => ({
-    value: ``,
+    value: '',
     params: {
         duration: inject(TUI_ANIMATIONS_DURATION),
     },

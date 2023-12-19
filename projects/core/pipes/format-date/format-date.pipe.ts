@@ -3,7 +3,7 @@ import {TuiFormatDateService} from '@taiga-ui/core/services';
 import {Observable} from 'rxjs';
 
 @Pipe({
-    name: `tuiFormatDate`,
+    name: 'tuiFormatDate',
 })
 export class TuiFormatDatePipe implements PipeTransform {
     constructor(

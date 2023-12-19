@@ -11,15 +11,15 @@ import hljs from 'highlight.js';
 import {Highlight, HighlightLibrary, HighlightLoader} from 'ngx-highlightjs';
 import {BehaviorSubject} from 'rxjs';
 
-describe(`Highlight Directive`, () => {
+describe('Highlight Directive', () => {
     let highlightedCode: string | undefined;
     let component: TestHighlightComponent;
     let directiveElement: DebugElement;
     let directiveInstance: Highlight;
     let fixture: ComponentFixture<TestHighlightComponent>;
     let loader: HighlightLoader;
-    const testJsCode = `console.log(&quot;test&quot;)`;
-    const testHtmlCode = `<div class=&quot;my-class&quot;></div>`;
+    const testJsCode = 'console.log(&quot;test&quot;)';
+    const testHtmlCode = '<div class=&quot;my-class&quot;></div>';
 
     @Component({
         template: `
@@ -52,15 +52,15 @@ describe(`Highlight Directive`, () => {
         fixture.detectChanges();
     }));
 
-    it(`should create highlight directive`, () => {
+    it('should create highlight directive', () => {
         expect(directiveInstance).not.toBeNull();
     });
 
-    it(`should add hljs class`, () => {
-        expect(directiveElement.nativeElement.classList.contains(`hljs`)).toBeTruthy();
+    it('should add hljs class', () => {
+        expect(directiveElement.nativeElement.classList.contains('hljs')).toBeTruthy();
     });
 
-    it(`should highlight given text`, fakeAsync(() => {
+    it('should highlight given text', fakeAsync(() => {
         component.code = testJsCode;
         fixture.detectChanges();
         loader.ready.subscribe((lib: HighlightLibrary) => {
@@ -74,20 +74,20 @@ describe(`Highlight Directive`, () => {
         expect(directiveElement.nativeElement.innerHTML).toBe(highlightedCode);
     }));
 
-    it(`should reset text if empty string was passed`, () => {
-        component.code = ``;
+    it('should reset text if empty string was passed', () => {
+        component.code = '';
         fixture.detectChanges();
-        expect(directiveElement.nativeElement.innerHTML).toBe(``);
+        expect(directiveElement.nativeElement.innerHTML).toBe('');
     });
 
-    it(`should not highlight if code is undefined`, () => {
-        jest.spyOn(directiveInstance, `highlightElement`);
+    it('should not highlight if code is undefined', () => {
+        jest.spyOn(directiveInstance, 'highlightElement');
         component.code = null;
         fixture.detectChanges();
         expect(directiveInstance.highlightElement).not.toHaveBeenCalled();
     });
 
-    it(`should highlight given text and highlight another text when change`, fakeAsync(() => {
+    it('should highlight given text and highlight another text when change', fakeAsync(() => {
         component.code = testJsCode;
         fixture.detectChanges();
         loader.ready.subscribe((lib: HighlightLibrary) => {
@@ -112,14 +112,14 @@ describe(`Highlight Directive`, () => {
         tick(500);
         expect(directiveElement.nativeElement.innerHTML).toBe(highlightedCode);
 
-        component.code = ``;
+        component.code = '';
         fixture.detectChanges();
         tick(300);
-        expect(directiveElement.nativeElement.innerHTML).toBe(``);
+        expect(directiveElement.nativeElement.innerHTML).toBe('');
 
         component.code = null;
         fixture.detectChanges();
         tick(300);
-        expect(directiveElement.nativeElement.innerHTML).toBe(``);
+        expect(directiveElement.nativeElement.innerHTML).toBe('');
     }));
 });

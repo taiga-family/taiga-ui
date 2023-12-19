@@ -7,5 +7,5 @@ import {TUI_REDUCED_MOTION} from '@taiga-ui/core';
  * @deprecated will be remove in v4.0
  */
 export const TUI_DOC_SCROLL_BEHAVIOR = tuiCreateTokenFromFactory<ScrollBehavior>(() =>
-    inject(TUI_REDUCED_MOTION) ? `auto` : `smooth`,
+    inject(TUI_REDUCED_MOTION) ? 'auto' : 'smooth',
 );

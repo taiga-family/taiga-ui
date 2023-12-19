@@ -2,11 +2,11 @@ import {TuiLanguagePreview} from '@taiga-ui/i18n/interfaces';
 
 export const TUI_MALAY_LANGUAGE_ADDON_PREVIEW: TuiLanguagePreview = {
     previewTexts: {
-        rotate: `Putar`,
+        rotate: 'Putar',
     },
     zoomTexts: {
-        zoomOut: `Zum keluar`,
-        zoomIn: `Zum masuk`,
-        reset: `Set semula`,
+        zoomOut: 'Zum keluar',
+        zoomIn: 'Zum masuk',
+        reset: 'Set semula',
     },
 };

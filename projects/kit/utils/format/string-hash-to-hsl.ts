@@ -5,8 +5,8 @@
  */
 // @bad TODO: convert stringHashToHsl to stringHashToRgb
 export function tuiStringHashToHsl(value: string): string {
-    if (value === ``) {
-        return ``;
+    if (value === '') {
+        return '';
     }
 
     let hash = 0;

@@ -12,7 +12,7 @@ import {CHAR_MINUS} from '@taiga-ui/cdk';
 import {TuiDecimal} from '@taiga-ui/core';
 import {TuiPageObject, tuiReplaceNbsp} from '@taiga-ui/testing';
 
-describe(`Money`, () => {
+describe('Money', () => {
     @Component({
         template: `
             <tui-money
@@ -30,9 +30,9 @@ describe(`Money`, () => {
         component!: TuiMoneyComponent;
 
         value = 237;
-        decimal: TuiDecimal = `not-zero`;
+        decimal: TuiDecimal = 'not-zero';
         currency: TuiCurrencyVariants = null;
-        sign: TuiMoneySign = `negative-only`;
+        sign: TuiMoneySign = 'negative-only';
         colored = false;
         precision = 2;
     }
@@ -43,7 +43,7 @@ describe(`Money`, () => {
     let pageObject: TuiPageObject<TestComponent>;
     const testContext = {
         get prefix() {
-            return `tui-money__`;
+            return 'tui-money__';
         },
     };
 
@@ -60,27 +60,27 @@ describe(`Money`, () => {
         component = testComponent.component;
     });
 
-    describe(`currency:`, () => {
-        it(`if null is passed, currency symbol is not shown`, () => {
+    describe('currency:', () => {
+        it('if null is passed, currency symbol is not shown', () => {
             const currency = pageObject.getByAutomationId(
                 `${testContext.prefix}currency`,
             );
 
-            expect(currency?.nativeElement.textContent?.trim()).toBe(``);
+            expect(currency?.nativeElement.textContent?.trim()).toBe('');
         });
 
-        it(`if empty string is passed, currency symbol is not shown`, () => {
-            testComponent.currency = ``;
+        it('if empty string is passed, currency symbol is not shown', () => {
+            testComponent.currency = '';
             fixture.detectChanges();
 
             const currency = pageObject.getByAutomationId(
                 `${testContext.prefix}currency`,
             );
 
-            expect(currency?.nativeElement.textContent?.trim()).toBe(``);
+            expect(currency?.nativeElement.textContent?.trim()).toBe('');
         });
 
-        it(`words with currency code`, () => {
+        it('words with currency code', () => {
             testComponent.currency = TuiCurrencyCode.Dollar;
             fixture.detectChanges();
 
@@ -88,10 +88,10 @@ describe(`Money`, () => {
                 `${testContext.prefix}currency`,
             );
 
-            expect(currency?.nativeElement.textContent?.trim()).toBe(`$`);
+            expect(currency?.nativeElement.textContent?.trim()).toBe('$');
         });
 
-        it(`works with currency name`, () => {
+        it('works with currency name', () => {
             testComponent.currency = TuiCurrency.Dollar;
             fixture.detectChanges();
 
@@ -99,11 +99,11 @@ describe(`Money`, () => {
                 `${testContext.prefix}currency`,
             );
 
-            expect(currency?.nativeElement.textContent?.trim()).toBe(`$`);
+            expect(currency?.nativeElement.textContent?.trim()).toBe('$');
         });
 
-        it(`works with custom currency`, () => {
-            const customCurrency = `CSTM`;
+        it('works with custom currency', () => {
+            const customCurrency = 'CSTM';
 
             testComponent.currency = customCurrency;
             fixture.detectChanges();
@@ -116,16 +116,16 @@ describe(`Money`, () => {
         });
     });
 
-    describe(`decimal:`, () => {
-        it(`zero decimals not shown by default`, () => {
+    describe('decimal:', () => {
+        it('zero decimals not shown by default', () => {
             const fraction = pageObject.getByAutomationId(
                 `${testContext.prefix}fraction-part`,
             );
 
-            expect(fraction?.nativeElement.textContent).toBe(``);
+            expect(fraction?.nativeElement.textContent).toBe('');
         });
 
-        it(`non zero decimals a padded with zeroes by default`, () => {
+        it('non zero decimals a padded with zeroes by default', () => {
             testComponent.value = 237.1;
             fixture.detectChanges();
 
@@ -133,10 +133,10 @@ describe(`Money`, () => {
                 `${testContext.prefix}fraction-part`,
             );
 
-            expect(fraction?.nativeElement.textContent).toBe(`,10`);
+            expect(fraction?.nativeElement.textContent).toBe(',10');
         });
 
-        it(`truncating float values`, () => {
+        it('truncating float values', () => {
             testComponent.value = 8918 + 10333.6 + 3527.78 + 805.62 + 140;
             fixture.detectChanges();
 
@@ -152,10 +152,10 @@ describe(`Money`, () => {
                 tuiReplaceNbsp(
                     `${integer?.nativeElement.textContent}${fraction?.nativeElement.textContent}`,
                 ),
-            ).toBe(`23 724,99`);
+            ).toBe('23 724,99');
         });
 
-        it(`decimals only show 2 digits`, () => {
+        it('decimals only show 2 digits', () => {
             testComponent.value = 237.123;
             fixture.detectChanges();
 
@@ -163,33 +163,33 @@ describe(`Money`, () => {
                 `${testContext.prefix}fraction-part`,
             );
 
-            expect(fraction?.nativeElement.textContent).toBe(`,12`);
+            expect(fraction?.nativeElement.textContent).toBe(',12');
         });
 
-        it(`if ALWAYS is set, zero decimals are shown`, () => {
-            testComponent.decimal = `always`;
+        it('if ALWAYS is set, zero decimals are shown', () => {
+            testComponent.decimal = 'always';
             fixture.detectChanges();
 
             const fraction = pageObject.getByAutomationId(
                 `${testContext.prefix}fraction-part`,
             );
 
-            expect(fraction?.nativeElement.textContent).toBe(`,00`);
+            expect(fraction?.nativeElement.textContent).toBe(',00');
         });
 
-        it(`if Never is set, non zero decimals are not shown`, () => {
+        it('if Never is set, non zero decimals are not shown', () => {
             testComponent.value = 237.123;
-            testComponent.decimal = `never`;
+            testComponent.decimal = 'never';
             fixture.detectChanges();
 
             const fraction = pageObject.getByAutomationId(
                 `${testContext.prefix}fraction-part`,
             );
 
-            expect(fraction?.nativeElement.textContent).toBe(``);
+            expect(fraction?.nativeElement.textContent).toBe('');
         });
 
-        it(`if precision = 4, shows 4 digits of decimal part`, () => {
+        it('if precision = 4, shows 4 digits of decimal part', () => {
             testComponent.value = 237.123;
             testComponent.precision = 4;
             fixture.detectChanges();
@@ -198,18 +198,18 @@ describe(`Money`, () => {
                 `${testContext.prefix}fraction-part`,
             );
 
-            expect(fraction?.nativeElement.textContent).toBe(`,1230`);
+            expect(fraction?.nativeElement.textContent).toBe(',1230');
         });
     });
 
-    describe(`sign:`, () => {
-        it(`by default plus is not shown`, () => {
+    describe('sign:', () => {
+        it('by default plus is not shown', () => {
             const sign = pageObject.getByAutomationId(`${testContext.prefix}sign`);
 
-            expect(sign?.nativeElement.textContent).toBe(``);
+            expect(sign?.nativeElement.textContent).toBe('');
         });
 
-        it(`by default minus is not shown`, () => {
+        it('by default minus is not shown', () => {
             testComponent.value = -237;
             fixture.detectChanges();
 
@@ -218,18 +218,18 @@ describe(`Money`, () => {
             expect(sign?.nativeElement.textContent).toEqual(CHAR_MINUS);
         });
 
-        it(`if set to ALWAYS, plus is shown`, () => {
-            testComponent.sign = `always`;
+        it('if set to ALWAYS, plus is shown', () => {
+            testComponent.sign = 'always';
             fixture.detectChanges();
 
             const sign = pageObject.getByAutomationId(`${testContext.prefix}sign`);
 
-            expect(sign?.nativeElement.textContent).toBe(`+`);
+            expect(sign?.nativeElement.textContent).toBe('+');
         });
 
-        it(`if set to ALWAYS, minus is shown`, () => {
+        it('if set to ALWAYS, minus is shown', () => {
             testComponent.value = -237;
-            testComponent.sign = `always`;
+            testComponent.sign = 'always';
             fixture.detectChanges();
 
             const sign = pageObject.getByAutomationId(`${testContext.prefix}sign`);
@@ -237,27 +237,27 @@ describe(`Money`, () => {
             expect(sign?.nativeElement.textContent).toEqual(CHAR_MINUS);
         });
 
-        it(`if set to Never, plus is not shown`, () => {
-            testComponent.sign = `never`;
+        it('if set to Never, plus is not shown', () => {
+            testComponent.sign = 'never';
             fixture.detectChanges();
 
             const sign = pageObject.getByAutomationId(`${testContext.prefix}sign`);
 
-            expect(sign?.nativeElement.textContent).toBe(``);
+            expect(sign?.nativeElement.textContent).toBe('');
         });
 
-        it(`if set to Never, minus is not shown`, () => {
+        it('if set to Never, minus is not shown', () => {
             testComponent.value = -237;
-            testComponent.sign = `never`;
+            testComponent.sign = 'never';
             fixture.detectChanges();
 
             const sign = pageObject.getByAutomationId(`${testContext.prefix}sign`);
 
-            expect(sign?.nativeElement.textContent).toBe(``);
+            expect(sign?.nativeElement.textContent).toBe('');
         });
 
-        it(`if set to FORCE_NEGATIVE, minus is shown for positive numbers`, () => {
-            testComponent.sign = `force-negative`;
+        it('if set to FORCE_NEGATIVE, minus is shown for positive numbers', () => {
+            testComponent.sign = 'force-negative';
             fixture.detectChanges();
 
             const sign = pageObject.getByAutomationId(`${testContext.prefix}sign`);
@@ -265,9 +265,9 @@ describe(`Money`, () => {
             expect(sign?.nativeElement.textContent).toEqual(CHAR_MINUS);
         });
 
-        it(`if set to FORCE_NEGATIVE, minus is shown for negative numbers`, () => {
+        it('if set to FORCE_NEGATIVE, minus is shown for negative numbers', () => {
             testComponent.value = -237;
-            testComponent.sign = `force-negative`;
+            testComponent.sign = 'force-negative';
             fixture.detectChanges();
 
             const sign = pageObject.getByAutomationId(`${testContext.prefix}sign`);
@@ -275,34 +275,34 @@ describe(`Money`, () => {
             expect(sign?.nativeElement.textContent).toEqual(CHAR_MINUS);
         });
 
-        it(`if set to FORCE_POSITIVE, plus is shown for positive numbers`, () => {
-            testComponent.sign = `force-positive`;
+        it('if set to FORCE_POSITIVE, plus is shown for positive numbers', () => {
+            testComponent.sign = 'force-positive';
             fixture.detectChanges();
 
             const sign = pageObject.getByAutomationId(`${testContext.prefix}sign`);
 
-            expect(sign?.nativeElement.textContent).toBe(`+`);
+            expect(sign?.nativeElement.textContent).toBe('+');
         });
 
-        it(`if set to FORCE_POSITIVE, plus is shown for negative numbers`, () => {
+        it('if set to FORCE_POSITIVE, plus is shown for negative numbers', () => {
             testComponent.value = -237;
-            testComponent.sign = `force-positive`;
+            testComponent.sign = 'force-positive';
             fixture.detectChanges();
 
             const sign = pageObject.getByAutomationId(`${testContext.prefix}sign`);
 
-            expect(sign?.nativeElement.textContent).toBe(`+`);
+            expect(sign?.nativeElement.textContent).toBe('+');
         });
     });
 
-    describe(`colored:`, () => {
-        it(`by default color is not changed for positive numbers`, () => {
+    describe('colored:', () => {
+        it('by default color is not changed for positive numbers', () => {
             const colored = component.red || component.green;
 
             expect(colored).toBe(false);
         });
 
-        it(`by default color is not changed for negative numbers`, () => {
+        it('by default color is not changed for negative numbers', () => {
             testComponent.value = -237;
             fixture.detectChanges();
 
@@ -311,7 +311,7 @@ describe(`Money`, () => {
             expect(colored).toBe(false);
         });
 
-        it(`if set to true, positive numbers are colored in green`, () => {
+        it('if set to true, positive numbers are colored in green', () => {
             testComponent.colored = true;
             fixture.detectChanges();
 
@@ -320,7 +320,7 @@ describe(`Money`, () => {
             expect(colored).toBe(true);
         });
 
-        it(`if set to true, negative numbers are colored in green`, () => {
+        it('if set to true, negative numbers are colored in green', () => {
             testComponent.colored = true;
             testComponent.value = -237;
             fixture.detectChanges();
@@ -330,10 +330,10 @@ describe(`Money`, () => {
             expect(colored).toBe(true);
         });
 
-        it(`if set to true, FORCE_POSITIVE numbers are colored in green`, () => {
+        it('if set to true, FORCE_POSITIVE numbers are colored in green', () => {
             testComponent.colored = true;
             testComponent.value = -237;
-            testComponent.sign = `force-positive`;
+            testComponent.sign = 'force-positive';
             fixture.detectChanges();
 
             const colored = !component.red && component.green;
@@ -341,9 +341,9 @@ describe(`Money`, () => {
             expect(colored).toBe(true);
         });
 
-        it(`if set to true, FORCE_NEGATIVE numbers are colored in red`, () => {
+        it('if set to true, FORCE_NEGATIVE numbers are colored in red', () => {
             testComponent.colored = true;
-            testComponent.sign = `force-negative`;
+            testComponent.sign = 'force-negative';
             fixture.detectChanges();
 
             const colored = component.red && !component.green;
@@ -351,7 +351,7 @@ describe(`Money`, () => {
             expect(colored).toBe(true);
         });
 
-        it(`zero is not colored`, () => {
+        it('zero is not colored', () => {
             testComponent.value = 0;
             fixture.detectChanges();
 
@@ -361,12 +361,12 @@ describe(`Money`, () => {
         });
     });
 
-    it(`if empty string is passed, there is no extra space character`, () => {
-        testComponent.currency = ``;
+    it('if empty string is passed, there is no extra space character', () => {
+        testComponent.currency = '';
         fixture.detectChanges();
 
         const textContent = fixture.debugElement.nativeElement.textContent;
 
-        expect(textContent).toBe(`237`);
+        expect(textContent).toBe('237');
     });
 });

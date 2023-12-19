@@ -9,7 +9,7 @@ import {
 } from './theme.options';
 
 @Injectable({
-    providedIn: `root`,
+    providedIn: 'root',
 })
 export class TuiThemeService extends BehaviorSubject<string> {
     constructor(

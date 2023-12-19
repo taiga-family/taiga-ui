@@ -2,11 +2,11 @@ import {TuiLanguagePreview} from '@taiga-ui/i18n/interfaces';
 
 export const TUI_KAZAKH_LANGUAGE_ADDON_PREVIEW: TuiLanguagePreview = {
     previewTexts: {
-        rotate: `Айналдыру`,
+        rotate: 'Айналдыру',
     },
     zoomTexts: {
-        zoomOut: `Кішірейту`,
-        zoomIn: `Үлкейту`,
-        reset: `Қалпына келтіру`,
+        zoomOut: 'Кішірейту',
+        zoomIn: 'Үлкейту',
+        reset: 'Қалпына келтіру',
     },
 };

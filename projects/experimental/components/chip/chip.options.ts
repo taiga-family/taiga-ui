@@ -8,8 +8,8 @@ export interface TuiChipOptions {
 }
 
 export const TUI_CHIP_DEFAULT_OPTIONS: TuiChipOptions = {
-    size: `s`,
-    appearance: `neutral`,
+    size: 's',
+    appearance: 'neutral',
 };
 
 export const TUI_CHIP_OPTIONS = tuiCreateToken(TUI_CHIP_DEFAULT_OPTIONS);

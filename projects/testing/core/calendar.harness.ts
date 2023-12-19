@@ -5,7 +5,7 @@ import {TuiPrimitiveYearMonthPaginationHarness} from './primitive-year-month-pag
 import {TuiPrimitiveYearPickerHarness} from './primitive-year-picker.harness';
 
 export class TuiCalendarHarness extends TuiComponentHarness {
-    static hostSelector = `tui-calendar`;
+    static hostSelector = 'tui-calendar';
 
     private readonly getPrimitiveYearPickerHarness = this.locatorForOptional(
         TuiPrimitiveYearPickerHarness,
@@ -51,7 +51,7 @@ export class TuiCalendarHarness extends TuiComponentHarness {
 
     async getContentText(): Promise<string> {
         return (
-            (await this.getPrimitiveYearMonthPaginationHarness())?.getContentText() ?? ``
+            (await this.getPrimitiveYearMonthPaginationHarness())?.getContentText() ?? ''
         );
     }
 

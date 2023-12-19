@@ -37,7 +37,7 @@ export async function tuiConvertAllCompileFileToAllFile(config: Options): Promis
                 options: {
                     plugins: [
                         {
-                            name: `preset-default`,
+                            name: 'preset-default',
                             params: {
                                 overrides: {
                                     removeViewBox: false,
@@ -45,7 +45,7 @@ export async function tuiConvertAllCompileFileToAllFile(config: Options): Promis
                                     removeUnknownsAndDefaults: false,
                                     cleanupIds: {},
                                     sortAttrs: {
-                                        xmlnsOrder: `alphabetical`,
+                                        xmlnsOrder: 'alphabetical',
                                     },
                                 },
                             },
@@ -56,14 +56,14 @@ export async function tuiConvertAllCompileFileToAllFile(config: Options): Promis
         ],
     };
 
-    console.info(`\x1B[36m%s\x1B[0m`, `TypeScript options: `, prt2Options);
+    console.info('\x1B[36m%s\x1B[0m', 'TypeScript options: ', prt2Options);
 
     const bundle = await rollup(inputOptions);
 
     await bundle.write({
         banner,
         file: to,
-        format: `es`,
+        format: 'es',
         generatedCode: {
             constBindings: true,
         },

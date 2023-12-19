@@ -8,10 +8,10 @@ import {syncVersions} from './shared/sync-versions';
 
 (function main(): void {
     syncVersions(
-        [`./projects`, `./package-lock.json`],
+        ['./projects', './package-lock.json'],
         version,
         IGNORABLE_TAIGA_PACKAGES,
     );
-    overwriteVersion(resolve(`./projects/cdk/constants/version.ts`), version);
-    execute(`git add .`);
+    overwriteVersion(resolve('./projects/cdk/constants/version.ts'), version);
+    execute('git add .');
 })();

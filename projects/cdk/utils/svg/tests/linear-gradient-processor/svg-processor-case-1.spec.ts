@@ -130,8 +130,8 @@ const EXPECTED = `
 </svg>
 `.trim();
 
-describe(`svgLinearGradientProcessor[case1]`, () => {
-    it(`language specific character inside id attribute`, () => {
-        expect(tuiSvgLinearGradientProcessor(ACTUAL, `MOCK_ID`)).toEqual(EXPECTED);
+describe('svgLinearGradientProcessor[case1]', () => {
+    it('language specific character inside id attribute', () => {
+        expect(tuiSvgLinearGradientProcessor(ACTUAL, 'MOCK_ID')).toEqual(EXPECTED);
     });
 });

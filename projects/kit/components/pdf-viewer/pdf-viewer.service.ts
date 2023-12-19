@@ -14,7 +14,7 @@ type Content<G> = PolymorpheusContent<
 >;
 
 @Injectable({
-    providedIn: `root`,
+    providedIn: 'root',
 })
 export class TuiPdfViewerService extends AbstractTuiDialogService<
     TuiPdfViewerOptions<unknown>

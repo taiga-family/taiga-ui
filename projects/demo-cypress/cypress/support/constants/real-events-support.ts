@@ -7,5 +7,5 @@
  * @see https://github.com/cypress-io/cypress/issues/2839#issuecomment-867411151
  */
 export const BROWSER_SUPPORTS_REAL_EVENTS: Cypress.TestConfigOverrides = {
-    browser: `!firefox`,
+    browser: '!firefox',
 };

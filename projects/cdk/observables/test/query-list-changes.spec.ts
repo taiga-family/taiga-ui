@@ -1,7 +1,7 @@
 import {QueryList} from '@angular/core';
 import {tuiQueryListChanges} from '@taiga-ui/cdk';
 
-describe(`tuiQueryListChanges`, () => {
+describe('tuiQueryListChanges', () => {
     let queryList: QueryList<number>;
 
     beforeEach(() => {
@@ -9,7 +9,7 @@ describe(`tuiQueryListChanges`, () => {
         queryList.reset([1, 2]);
     });
 
-    it(`emits current array on subscription`, () => {
+    it('emits current array on subscription', () => {
         let result: readonly number[] | null = null;
 
         tuiQueryListChanges<number>(queryList).subscribe(data => {
@@ -19,7 +19,7 @@ describe(`tuiQueryListChanges`, () => {
         expect<readonly number[] | null>(result).toEqual([1, 2]);
     });
 
-    it(`emits new array on changes`, () => {
+    it('emits new array on changes', () => {
         let result: readonly number[] | null = null;
 
         tuiQueryListChanges<number>(queryList).subscribe(data => {

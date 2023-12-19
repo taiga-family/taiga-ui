@@ -9,7 +9,7 @@ export interface TuiAvatarOptions {
 
 export const TUI_AVATAR_DEFAULT_OPTIONS: TuiAvatarOptions = {
     round: true,
-    size: `m`,
+    size: 'm',
 };
 
 export const TUI_AVATAR_OPTIONS = tuiCreateToken(TUI_AVATAR_DEFAULT_OPTIONS);

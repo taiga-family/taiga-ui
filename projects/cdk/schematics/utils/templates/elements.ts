@@ -95,7 +95,7 @@ export function findAttributeOnElementWithTag(
     return findElementsWithAttribute(html, name)
         .filter(
             element =>
-                (tagNames.includes(element.tagName) || tagNames.includes(`*`)) &&
+                (tagNames.includes(element.tagName) || tagNames.includes('*')) &&
                 filterFn(element),
         )
         .map(element => getStartOffsetOfAttribute(element, name));

@@ -7,7 +7,7 @@ import {TuiDecimal, tuiNumberFormatProvider} from '@taiga-ui/core';
 import {TuiInputNumberComponent, TuiInputNumberModule} from '@taiga-ui/kit';
 import {TuiNativeInputPO} from '@taiga-ui/testing';
 
-describe(`InputNumber - backward compatibility for separators`, () => {
+describe('InputNumber - backward compatibility for separators', () => {
     @Component({
         template: `
             <ng-container [formGroup]="form">
@@ -26,7 +26,7 @@ describe(`InputNumber - backward compatibility for separators`, () => {
         control = new FormControl(12345.0);
         form = new FormGroup({control: this.control});
 
-        decimal: TuiDecimal = `always`;
+        decimal: TuiDecimal = 'always';
         precision = 2;
     }
 
@@ -35,7 +35,7 @@ describe(`InputNumber - backward compatibility for separators`, () => {
     let component: TuiInputNumberComponent;
     let inputPO: TuiNativeInputPO;
 
-    describe(`Format - {d d d,d}`, () => {
+    describe('Format - {d d d,d}', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
                 imports: [
@@ -54,26 +54,26 @@ describe(`InputNumber - backward compatibility for separators`, () => {
 
             inputPO = new TuiNativeInputPO(
                 fixture,
-                `tui-primitive-textfield__native-input`,
+                'tui-primitive-textfield__native-input',
             );
         });
 
-        it(`comma usage`, () => {
-            inputPO.sendText(`55666,7777`);
+        it('comma usage', () => {
+            inputPO.sendText('55666,7777');
             inputPO.focus();
 
             expect(component.computedValue).toBe(`55${CHAR_NO_BREAK_SPACE}666,77`);
         });
 
-        it(`dot usage`, () => {
-            inputPO.sendText(`55666.7777`);
+        it('dot usage', () => {
+            inputPO.sendText('55666.7777');
             inputPO.focus();
 
             expect(component.computedValue).toBe(`55${CHAR_NO_BREAK_SPACE}666,77`);
         });
     });
 
-    describe(`Format - {d,d,d.d}`, () => {
+    describe('Format - {d,d,d.d}', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
                 imports: [
@@ -84,8 +84,8 @@ describe(`InputNumber - backward compatibility for separators`, () => {
                 declarations: [TestComponent],
                 providers: [
                     tuiNumberFormatProvider({
-                        decimalSeparator: `.`,
-                        thousandSeparator: `,`,
+                        decimalSeparator: '.',
+                        thousandSeparator: ',',
                     }),
                 ],
             });
@@ -97,22 +97,22 @@ describe(`InputNumber - backward compatibility for separators`, () => {
             fixture.detectChanges();
             inputPO = new TuiNativeInputPO(
                 fixture,
-                `tui-primitive-textfield__native-input`,
+                'tui-primitive-textfield__native-input',
             );
         });
 
-        it(`comma usage`, () => {
-            inputPO.sendText(`556,667,777`);
+        it('comma usage', () => {
+            inputPO.sendText('556,667,777');
             inputPO.focus();
 
-            expect(component.computedValue).toBe(`556,667,777.00`);
+            expect(component.computedValue).toBe('556,667,777.00');
         });
 
-        it(`dot usage`, () => {
-            inputPO.sendText(`556,667,777.99`);
+        it('dot usage', () => {
+            inputPO.sendText('556,667,777.99');
             inputPO.focus();
 
-            expect(component.computedValue).toBe(`556,667,777.99`);
+            expect(component.computedValue).toBe('556,667,777.99');
         });
     });
 });

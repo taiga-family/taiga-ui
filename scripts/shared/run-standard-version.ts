@@ -6,9 +6,9 @@ export function runStandardVersion(
     mode: TuiReleaseMode,
     enabledDryRun: boolean,
 ): void {
-    const dryRun = enabledDryRun ? `--dry-run` : ``;
+    const dryRun = enabledDryRun ? '--dry-run' : '';
 
-    if (mode === `prerelease`) {
+    if (mode === 'prerelease') {
         execute(
             `
             npm run release -- \

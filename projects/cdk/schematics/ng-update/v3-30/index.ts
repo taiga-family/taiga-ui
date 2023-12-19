@@ -16,13 +16,13 @@ import {ICONS_TS} from './constants/constants';
 import {ICONS} from './constants/icons';
 
 function hasProprietaryIcons(tree: Tree): boolean {
-    return !!getPackageJsonDependency(tree, `@taiga-ui/proprietary-icons`);
+    return !!getPackageJsonDependency(tree, '@taiga-ui/proprietary-icons');
 }
 
 export function updateToV3_30(options: TuiSchema): Rule {
     return (tree: Tree, _: SchematicContext) => {
         if (!hasProprietaryIcons(tree)) {
-            !options[`skip-logs`] &&
+            !options['skip-logs'] &&
                 titleLog(`${FINISH_SYMBOL} No migrations required\n`);
 
             return;
@@ -32,14 +32,14 @@ export function updateToV3_30(options: TuiSchema): Rule {
 
         replaceImports(ICONS_TS, options);
 
-        !options[`skip-logs`] &&
+        !options['skip-logs'] &&
             infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} replacing strings...`);
         replaceText(ICONS);
 
         fileSystem.commitEdits();
         saveActiveProject();
 
-        !options[`skip-logs`] &&
+        !options['skip-logs'] &&
             titleLog(`${FINISH_SYMBOL} Icons successfully migrated \n`);
     };
 }

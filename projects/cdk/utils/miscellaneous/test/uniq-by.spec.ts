@@ -1,37 +1,37 @@
 import {tuiUniqBy} from '@taiga-ui/cdk';
 
-describe(`uniqBy`, () => {
-    it(`removes entries with repeated key`, () => {
+describe('uniqBy', () => {
+    it('removes entries with repeated key', () => {
         expect(
             tuiUniqBy(
                 [
                     {
                         id: 1,
-                        name: `Test`,
+                        name: 'Test',
                         value: 237,
                     },
                     {
                         id: 2,
-                        name: `Test2`,
+                        name: 'Test2',
                         value: 42,
                     },
                     {
                         id: 1,
-                        name: `Test3`,
+                        name: 'Test3',
                         value: 777,
                     },
                 ],
-                `id`,
+                'id',
             ),
         ).toEqual([
             {
                 id: 1,
-                name: `Test`,
+                name: 'Test',
                 value: 237,
             },
             {
                 id: 2,
-                name: `Test2`,
+                name: 'Test2',
                 value: 42,
             },
         ]);

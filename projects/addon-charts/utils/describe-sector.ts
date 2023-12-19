@@ -1,6 +1,6 @@
 import {tuiToInt, tuiToRadians} from '@taiga-ui/cdk';
 
-const EMPTY = `M 100 0 A 100 100 0 1 1 100 0 L 0 0`;
+const EMPTY = 'M 100 0 A 100 100 0 1 1 100 0 L 0 0';
 
 /**
  * Describes a normalized sector by angles. Normalized meaning it supposed to work with
@@ -20,16 +20,16 @@ export function tuiDescribeSector(startAngle: number, endAngle: number): string 
     const endY = Math.sin(endRad) * 100;
     const largeArcFlag = tuiToInt(endAngle - startAngle > 180);
     const result = [
-        `M`,
+        'M',
         startX,
         startY,
-        `A 100 100 0`,
+        'A 100 100 0',
         largeArcFlag,
         1,
         endX,
         endY,
-        `L 0 0`,
+        'L 0 0',
     ];
 
-    return Number.isNaN(endX) ? EMPTY : result.join(` `);
+    return Number.isNaN(endX) ? EMPTY : result.join(' ');
 }

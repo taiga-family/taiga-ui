@@ -20,7 +20,7 @@ export function tuiCreateUnfinishedValidator(
             nativeInput &&
             tuiIsHTMLElement(nativeInput.nativeFocusableElement) &&
             tuiIsInput(nativeInput.nativeFocusableElement) &&
-            nativeInput.nativeFocusableElement.value !== ``
+            nativeInput.nativeFocusableElement.value !== ''
             ? {unfinished: new TuiValidationError(message)}
             : null;
     };

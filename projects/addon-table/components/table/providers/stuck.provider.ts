@@ -6,7 +6,7 @@ import {map} from 'rxjs/operators';
 /**
  * Stream of sticky stuck events
  */
-export const TUI_STUCK = new InjectionToken<boolean>(`[TUI_STUCK]`);
+export const TUI_STUCK = new InjectionToken<boolean>('[TUI_STUCK]');
 
 export const TUI_STUCK_PROVIDER: Provider = {
     provide: TUI_STUCK,
@@ -19,7 +19,7 @@ export const TUI_STUCK_PROVIDER: Provider = {
             map(([{intersectionRatio}]) => intersectionRatio < 1),
         );
 
-        nativeElement[`$.class._stuck`] = stream$;
+        nativeElement['$.class._stuck'] = stream$;
 
         return stream$;
     },

@@ -10,21 +10,21 @@ export interface TuiNotificationDefaultOptions
 
 /** @deprecated remove export */
 export const STATUS_ICON = {
-    info: `tuiIconInfo`,
-    success: `tuiIconCheckCircle`,
-    error: `tuiIconXCircle`,
-    warning: `tuiIconAlertCircle`,
-    neutral: `tuiIconInfo`,
+    info: 'tuiIconInfo',
+    success: 'tuiIconCheckCircle',
+    error: 'tuiIconXCircle',
+    warning: 'tuiIconAlertCircle',
+    neutral: 'tuiIconInfo',
 } as const;
 
 /** Default values for the notification options. */
 export const TUI_NOTIFICATION_DEFAULT_OPTIONS: TuiNotificationDefaultOptions = {
     autoClose: 3000,
-    label: ``,
-    status: `info`,
+    label: '',
+    status: 'info',
     hasCloseButton: true,
     icon: ({$implicit}) => STATUS_ICON[$implicit],
-    size: `m`,
+    size: 'm',
     hasIcon: true,
     defaultAutoCloseTime: 3000,
 };

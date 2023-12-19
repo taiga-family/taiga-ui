@@ -6,7 +6,7 @@ import {
     tuiLoaderOptionsProvider,
 } from '@taiga-ui/core';
 
-describe(`Loader component options`, () => {
+describe('Loader component options', () => {
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
 
@@ -26,7 +26,7 @@ describe(`Loader component options`, () => {
             declarations: [TestComponent],
             providers: [
                 tuiLoaderOptionsProvider({
-                    size: `xxl`,
+                    size: 'xxl',
                     inheritColor: true,
                     overlay: false,
                 }),
@@ -38,8 +38,8 @@ describe(`Loader component options`, () => {
         fixture.detectChanges();
     });
 
-    it(`override by custom options`, () => {
-        expect(testComponent.component.size).toBe(`xxl`);
+    it('override by custom options', () => {
+        expect(testComponent.component.size).toBe('xxl');
         expect(testComponent.component.inheritColor).toBe(true);
         expect(testComponent.component.overlay).toBe(false);
     });

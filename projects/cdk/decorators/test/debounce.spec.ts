@@ -1,7 +1,7 @@
 import {tuiDebounce} from '@taiga-ui/cdk';
 
-describe(`tuiDebounce`, () => {
-    it(`should debounce method calls`, done => {
+describe('tuiDebounce', () => {
+    it('should debounce method calls', done => {
         class MyClass {
             count = 0;
 

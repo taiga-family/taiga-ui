@@ -28,7 +28,7 @@ export class TuiParentsScrollService extends Observable<Event> {
 
             return merge(
                 ...eventTargets.map<Observable<Event>>(element =>
-                    tuiTypedFromEvent(element, `scroll`),
+                    tuiTypedFromEvent(element, 'scroll'),
                 ),
             );
         });

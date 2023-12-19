@@ -8,7 +8,7 @@ export interface TuiSelectOptions<T> {
 }
 
 export const TUI_SELECT_DEFAULT_OPTIONS: TuiSelectOptions<unknown> = {
-    valueContent: ``,
+    valueContent: '',
 };
 
 /**

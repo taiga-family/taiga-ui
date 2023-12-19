@@ -21,7 +21,7 @@ export function migrateCheckbox({
     const template = getTemplateFromTemplateResource(resource, fileSystem);
     const templateOffset = getTemplateOffset(resource);
 
-    const elements = findElementsByTagName(template, `tui-checkbox`);
+    const elements = findElementsByTagName(template, 'tui-checkbox');
 
     elements.forEach(({attrs, sourceCodeLocation}) => {
         if (!sourceCodeLocation) {
@@ -30,9 +30,9 @@ export function migrateCheckbox({
 
         replaceSizeAttr(attrs, sourceCodeLocation, recorder, templateOffset);
         replaceOpenTag(sourceCodeLocation, recorder, templateOffset, {
-            tag: `tui-checkbox`,
-            directive: `tuiCheckbox`,
-            type: `checkbox`,
+            tag: 'tui-checkbox',
+            directive: 'tuiCheckbox',
+            type: 'checkbox',
         });
         closeStartTag(sourceCodeLocation, recorder, templateOffset);
         removeClosingTag(sourceCodeLocation, recorder, templateOffset);

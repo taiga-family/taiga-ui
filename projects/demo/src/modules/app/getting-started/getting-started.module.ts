@@ -11,7 +11,7 @@ import {GettingStartedComponent} from './getting-started.component';
         TuiDocPageModule,
         RouterModule.forChild([
             {
-                path: ``,
+                path: '',
                 component: GettingStartedComponent,
             },
         ]),

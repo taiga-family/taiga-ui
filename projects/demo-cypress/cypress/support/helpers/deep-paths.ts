@@ -2,21 +2,21 @@
 
 export const DEEP_PATHS = [
     /* CORE */
-    `components/button`,
-    `components/calendar`,
-    `components/group`,
-    `components/link`,
-    `components/notification`,
+    'components/button',
+    'components/calendar',
+    'components/group',
+    'components/link',
+    'components/notification',
     /* KIT */
-    `components/avatar`,
-    `components/badge`,
-    `components/badged-content`,
-    `components/calendar-month`,
-    `components/filter`,
-    `components/island`,
-    `icons/marker-icon`,
-    `navigation/stepper`,
-    `components/toggle`,
+    'components/avatar',
+    'components/badge',
+    'components/badged-content',
+    'components/calendar-month',
+    'components/filter',
+    'components/island',
+    'icons/marker-icon',
+    'navigation/stepper',
+    'components/toggle',
 ];
 
 export const toggleExclusions: Record<string, readonly number[]> = {
@@ -38,12 +38,12 @@ export function tuiMakeCypressDemoSnapshot(
 ): Cypress.Chainable<string> {
     return cy
         .wrap($input, {log: false})
-        .parents(`table.t-table tr`)
-        .find(`[automation-id="tui-documentation__property-name"]`)
+        .parents('table.t-table tr')
+        .find('[automation-id="tui-documentation__property-name"]')
         .then(propertyName$ => propertyName$.text().trim())
         .then(property =>
             cy
-                .get(`#demo-content`)
+                .get('#demo-content')
                 .first()
                 .matchImageSnapshot(`${path}/${stepIndex}-${property}-${optionIndex}`),
         );

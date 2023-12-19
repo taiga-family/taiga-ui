@@ -47,11 +47,11 @@ function getFallbackValue(
         return `(${textValue} | tuiInitials)`;
     }
 
-    return textValue ? `(${textValue} | tuiInitials)` : fallbackValue || ``;
+    return textValue ? `(${textValue} | tuiInitials)` : fallbackValue || '';
 }
 
 function normalizeAttrValue(attrName: string, attrValue: string): string {
-    return attrName.startsWith(`[`) ? attrValue : `'${attrValue}'`;
+    return attrName.startsWith('[') ? attrValue : `'${attrValue}'`;
 }
 
 export function migrateAvatar({
@@ -66,20 +66,20 @@ export function migrateAvatar({
     const template = getTemplateFromTemplateResource(resource, fileSystem);
     const templateOffset = getTemplateOffset(resource);
 
-    const elements = findElementsByTagName(template, `tui-avatar`);
+    const elements = findElementsByTagName(template, 'tui-avatar');
 
     elements.forEach(({attrs, sourceCodeLocation}) => {
         const avatarUrlAttr = attrs.find(
-            attr => attr.name === `[avatarurl]` || attr.name === `avatarurl`,
+            attr => attr.name === '[avatarurl]' || attr.name === 'avatarurl',
         );
         const fallbackAttr = attrs.find(
-            attr => attr.name === `[fallback]` || attr.name === `fallback`,
+            attr => attr.name === '[fallback]' || attr.name === 'fallback',
         );
         const textAttr = attrs.find(
-            attr => attr.name === `[text]` || attr.name === `text`,
+            attr => attr.name === '[text]' || attr.name === 'text',
         );
         const roundedAttr = attrs.find(
-            attr => attr.name === `[rounded]` || attr.name === `rounded`,
+            attr => attr.name === '[rounded]' || attr.name === 'rounded',
         );
 
         if ((!avatarUrlAttr && !textAttr) || !sourceCodeLocation) {
@@ -95,26 +95,26 @@ export function migrateAvatar({
             fallbackAttr?.value &&
             normalizeAttrValue(fallbackAttr.name, fallbackAttr.value);
 
-        const insertTo = sourceCodeLocation.startTag.startOffset + `<tui-avatar`.length;
+        const insertTo = sourceCodeLocation.startTag.startOffset + '<tui-avatar'.length;
 
         if (!insertTo) {
             return;
         }
 
         const mainSrc =
-            urlAttrValue || (textAttrValue ? `${textAttrValue} | tuiInitials` : ``);
+            urlAttrValue || (textAttrValue ? `${textAttrValue} | tuiInitials` : '');
         const fallbackValue = urlAttrValue
             ? getFallbackValue(textAttrValue, fallbackAttrValue)
-            : ``;
+            : '';
         const fallbackSrc =
             urlAttrValue && fallbackValue
                 ? `| tuiFallbackSrc : ${fallbackValue} | async`
-                : ``;
+                : '';
 
         recorder.insertRight(
             insertTo + templateOffset,
-            ` [src]="${mainSrc}${fallbackSrc ? ` ${fallbackSrc}` : ``}"${
-                !roundedAttr ? ` [round]="false"` : ``
+            ` [src]="${mainSrc}${fallbackSrc ? ` ${fallbackSrc}` : ''}"${
+                !roundedAttr ? ' [round]="false"' : ''
             }`,
         );
 
@@ -127,10 +127,10 @@ export function migrateAvatar({
 
         const modules = [
             ...(fallbackModule
-                ? [{moduleName: `TuiFallbackModule`, moduleSpecifier: `@taiga-ui/cdk`}]
+                ? [{moduleName: 'TuiFallbackModule', moduleSpecifier: '@taiga-ui/cdk'}]
                 : []),
             ...(initialsModule
-                ? [{moduleName: `TuiInitialsModule`, moduleSpecifier: `@taiga-ui/cdk`}]
+                ? [{moduleName: 'TuiInitialsModule', moduleSpecifier: '@taiga-ui/cdk'}]
                 : []),
         ];
 

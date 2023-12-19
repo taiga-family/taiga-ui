@@ -6,16 +6,16 @@ import {TUI_IS_ANDROID} from './is-android';
 import {TUI_IS_IOS} from './is-ios';
 
 // TODO: Switch to factory in 4.0
-export const TUI_PLATFORM = tuiCreateToken<TuiPlatform>(`web`);
+export const TUI_PLATFORM = tuiCreateToken<TuiPlatform>('web');
 
 export function tuiPlatformFactory(): TuiPlatform {
     if (inject(TUI_IS_IOS)) {
-        return `ios`;
+        return 'ios';
     }
 
     if (inject(TUI_IS_ANDROID)) {
-        return `android`;
+        return 'android';
     }
 
-    return `web`;
+    return 'web';
 }

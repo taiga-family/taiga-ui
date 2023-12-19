@@ -3,37 +3,37 @@ import {ReplacementAttributeToDirective} from '../../../interfaces';
 export const ATTRS_TO_DIRECTIVE_REPLACE: ReplacementAttributeToDirective[] = [
     {
         componentSelector: [
-            `tui-primitive-textfield`,
-            `tui-input-number`,
-            `tui-input-slider`,
+            'tui-primitive-textfield',
+            'tui-input-number',
+            'tui-input-slider',
         ],
-        inputProperty: `prefix`,
-        directive: `tuiTextfieldPrefix`,
+        inputProperty: 'prefix',
+        directive: 'tuiTextfieldPrefix',
         directiveModule: {
-            name: `TuiTextfieldControllerModule`,
-            moduleSpecifier: `@taiga-ui/core`,
+            name: 'TuiTextfieldControllerModule',
+            moduleSpecifier: '@taiga-ui/core',
         },
     },
     {
         componentSelector: [
-            `tui-primitive-textfield`,
-            `tui-input-number`,
-            `tui-input-slider`,
+            'tui-primitive-textfield',
+            'tui-input-number',
+            'tui-input-slider',
         ],
-        inputProperty: `postfix`,
-        directive: `tuiTextfieldPostfix`,
+        inputProperty: 'postfix',
+        directive: 'tuiTextfieldPostfix',
         directiveModule: {
-            name: `TuiTextfieldControllerModule`,
-            moduleSpecifier: `@taiga-ui/core`,
+            name: 'TuiTextfieldControllerModule',
+            moduleSpecifier: '@taiga-ui/core',
         },
     },
     {
-        componentSelector: [`tui-primitive-textfield`],
-        inputProperty: `filler`,
-        directive: `tuiTextfieldFiller`,
+        componentSelector: ['tui-primitive-textfield'],
+        inputProperty: 'filler',
+        directive: 'tuiTextfieldFiller',
         directiveModule: {
-            name: `TuiTextfieldControllerModule`,
-            moduleSpecifier: `@taiga-ui/core`,
+            name: 'TuiTextfieldControllerModule',
+            moduleSpecifier: '@taiga-ui/core',
         },
     },
 ];

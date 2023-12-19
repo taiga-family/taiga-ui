@@ -10,8 +10,8 @@ export function tuiSortPages<T extends TuiDocPage | TuiDocPageGroup>(
 
     const sortedPages = pages.slice().sort((a, b) => {
         if (
-            excludeSections.has(a.section ?? ``) ||
-            excludeSections.has(b.section ?? ``)
+            excludeSections.has(a.section ?? '') ||
+            excludeSections.has(b.section ?? '')
         ) {
             return 0;
         }

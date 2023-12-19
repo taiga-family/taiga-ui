@@ -7,31 +7,31 @@ import {basename, join} from 'path';
 })();
 
 function generateProjectsUsedIcons(): void {
-    const rootDirectory = process.env.ROOT_FOLDER || `./projects`;
+    const rootDirectory = process.env.ROOT_FOLDER || './projects';
     const excludedFolders = [
-        `demo`,
-        `demo-cypress`,
-        `eslint-plugin`,
-        `taiga-schematics`,
-        `testing`,
-        `test`,
-        `i18n`,
-        `icons`,
-        `schematics`,
+        'demo',
+        'demo-cypress',
+        'eslint-plugin',
+        'taiga-schematics',
+        'testing',
+        'test',
+        'i18n',
+        'icons',
+        'schematics',
     ];
-    const excludedFiles = [`deprecated-icons.ts`, `used-icons.ts`];
-    const excludedNames = [`tuiIconButton`];
+    const excludedFiles = ['deprecated-icons.ts', 'used-icons.ts'];
+    const excludedNames = ['tuiIconButton'];
 
     generateUsedIcons(rootDirectory, {excludedFolders, excludedNames, excludedFiles});
 }
 
 function generateDemoUsedIcons(): void {
-    const rootDirectory = process.env.ROOT_DEMO_FOLDER || `./projects/demo`;
-    const excludedFiles = [`used-icons.ts`];
+    const rootDirectory = process.env.ROOT_DEMO_FOLDER || './projects/demo';
+    const excludedFiles = ['used-icons.ts'];
 
     generateUsedIcons(rootDirectory, {
         excludedFiles,
-        writeTo: `./projects/demo/used-icons.ts`,
+        writeTo: './projects/demo/used-icons.ts',
     });
 }
 
@@ -41,7 +41,7 @@ function generateUsedIcons(
         excludedFolders = [],
         excludedNames = [],
         excludedFiles = [],
-        writeTo = `./projects/cdk/constants/used-icons.ts`,
+        writeTo = './projects/cdk/constants/used-icons.ts',
     }: {
         excludedFiles?: string[];
         excludedFolders?: string[];
@@ -97,7 +97,7 @@ function findTuiIconNames(
                     return;
                 }
 
-                const fileContents = readFileSync(filePath, `utf-8`);
+                const fileContents = readFileSync(filePath, 'utf-8');
                 const tuiIconMatches = fileContents.match(/\btuiIcon\w+(?=\s|'|"|`)/g);
 
                 if (tuiIconMatches) {

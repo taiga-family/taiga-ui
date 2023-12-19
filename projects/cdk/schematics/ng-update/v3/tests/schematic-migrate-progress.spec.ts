@@ -13,7 +13,7 @@ import {join} from 'path';
 import {createAngularJson} from '../../../utils/create-angular-json';
 import {DEPRECATED_PROGRESS_PIPES_REG} from '../steps/migrate-progress';
 
-const collectionPath = join(__dirname, `../../../migration.json`);
+const collectionPath = join(__dirname, '../../../migration.json');
 
 const APP_COMPONENT = `
 @Component({templateUrl: './app.template.html'})
@@ -72,13 +72,13 @@ const TEMPLATE_AFTER = `
 ></progress>
 `;
 
-describe(`migrate progress`, () => {
+describe('migrate progress', () => {
     let host: UnitTestTree;
     let runner: SchematicTestRunner;
 
     beforeEach(() => {
         host = new UnitTestTree(new HostTree());
-        runner = new SchematicTestRunner(`schematics`, collectionPath);
+        runner = new SchematicTestRunner('schematics', collectionPath);
 
         setActiveProject(createProject(host));
 
@@ -87,75 +87,75 @@ describe(`migrate progress`, () => {
         saveActiveProject();
     });
 
-    describe(`migration works`, () => {
-        it(`html`, async () => {
+    describe('migration works', () => {
+        it('html', async () => {
             const tree = await runner
                 .runSchematicAsync(
-                    `updateToV3`,
-                    {'skip-logs': process.env[`TUI_CI`] === `true`} as Partial<TuiSchema>,
+                    'updateToV3',
+                    {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
                     host,
                 )
                 .toPromise();
 
-            expect(tree.readContent(`test/app-with-progress/app.template.html`)).toBe(
+            expect(tree.readContent('test/app-with-progress/app.template.html')).toBe(
                 TEMPLATE_AFTER,
             );
         });
     });
 
-    describe(`DEPRECATED_PROGRESS_PIPES_REG`, () => {
-        it(`colors | tuiProgressColorSegments`, () => {
+    describe('DEPRECATED_PROGRESS_PIPES_REG', () => {
+        it('colors | tuiProgressColorSegments', () => {
             expect(
-                `[tuiProgressColorSegments]="colors | tuiProgressColorSegments"`.replace(
+                '[tuiProgressColorSegments]="colors | tuiProgressColorSegments"'.replace(
                     DEPRECATED_PROGRESS_PIPES_REG,
-                    ``,
+                    '',
                 ),
-            ).toBe(`[tuiProgressColorSegments]="colors"`);
+            ).toBe('[tuiProgressColorSegments]="colors"');
         });
 
-        it(`colors|tuiProgressColorSegments`, () => {
+        it('colors|tuiProgressColorSegments', () => {
             expect(
-                `[tuiProgressColorSegments]="colors|tuiProgressColorSegments"`.replace(
+                '[tuiProgressColorSegments]="colors|tuiProgressColorSegments"'.replace(
                     DEPRECATED_PROGRESS_PIPES_REG,
-                    ``,
+                    '',
                 ),
-            ).toBe(`[tuiProgressColorSegments]="colors"`);
+            ).toBe('[tuiProgressColorSegments]="colors"');
         });
 
-        it(`colors | tuiProgressColorSegments | customPipe`, () => {
+        it('colors | tuiProgressColorSegments | customPipe', () => {
             expect(
-                `[tuiProgressColorSegments]="colors | customPipe | tuiProgressColorSegments"`.replace(
+                '[tuiProgressColorSegments]="colors | customPipe | tuiProgressColorSegments"'.replace(
                     DEPRECATED_PROGRESS_PIPES_REG,
-                    ``,
+                    '',
                 ),
-            ).toBe(`[tuiProgressColorSegments]="colors | customPipe"`);
+            ).toBe('[tuiProgressColorSegments]="colors | customPipe"');
         });
 
-        it(`colors | tuiProgressColorSegmentsAsync | async`, () => {
+        it('colors | tuiProgressColorSegmentsAsync | async', () => {
             expect(
-                `[tuiProgressColorSegments]="colors | tuiProgressColorSegmentsAsync | async"`.replace(
+                '[tuiProgressColorSegments]="colors | tuiProgressColorSegmentsAsync | async"'.replace(
                     DEPRECATED_PROGRESS_PIPES_REG,
-                    ``,
+                    '',
                 ),
-            ).toBe(`[tuiProgressColorSegments]="colors"`);
+            ).toBe('[tuiProgressColorSegments]="colors"');
         });
 
-        it(`colors|tuiProgressColorSegmentsAsync|async`, () => {
+        it('colors|tuiProgressColorSegmentsAsync|async', () => {
             expect(
-                `[tuiProgressColorSegments]="colors | tuiProgressColorSegmentsAsync | async"`.replace(
+                '[tuiProgressColorSegments]="colors | tuiProgressColorSegmentsAsync | async"'.replace(
                     DEPRECATED_PROGRESS_PIPES_REG,
-                    ``,
+                    '',
                 ),
-            ).toBe(`[tuiProgressColorSegments]="colors"`);
+            ).toBe('[tuiProgressColorSegments]="colors"');
         });
 
-        it(`colors | customPipe | tuiProgressColorSegmentsAsync | async`, () => {
+        it('colors | customPipe | tuiProgressColorSegmentsAsync | async', () => {
             expect(
-                `[tuiProgressColorSegments]="colors | customPipe | tuiProgressColorSegmentsAsync | async"`.replace(
+                '[tuiProgressColorSegments]="colors | customPipe | tuiProgressColorSegmentsAsync | async"'.replace(
                     DEPRECATED_PROGRESS_PIPES_REG,
-                    ``,
+                    '',
                 ),
-            ).toBe(`[tuiProgressColorSegments]="colors | customPipe"`);
+            ).toBe('[tuiProgressColorSegments]="colors | customPipe"');
         });
     });
 
@@ -165,8 +165,8 @@ describe(`migrate progress`, () => {
 });
 
 function createMainFiles(): void {
-    createSourceFile(`test/app-with-progress/app.component.ts`, APP_COMPONENT);
-    createSourceFile(`test/app-with-progress/app.template.html`, TEMPLATE_BEFORE);
+    createSourceFile('test/app-with-progress/app.component.ts', APP_COMPONENT);
+    createSourceFile('test/app-with-progress/app.template.html', TEMPLATE_BEFORE);
     createAngularJson();
-    createSourceFile(`package.json`, `{"dependencies": {"@angular/core": "~13.0.0"}}`);
+    createSourceFile('package.json', '{"dependencies": {"@angular/core": "~13.0.0"}}');
 }

@@ -1,3 +1,3 @@
 export function tuiIsFirefox(userAgent: string): boolean {
-    return userAgent.toLowerCase().includes(`firefox`);
+    return userAgent.toLowerCase().includes('firefox');
 }

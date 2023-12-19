@@ -2,10 +2,10 @@ import {Provider} from '@angular/core';
 import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 
 const COMMON_ICONS: TuiCommonIcons = {
-    check: `tuiIconCheck`,
-    close: `tuiIconClose`,
-    error: `tuiIconAlertCircle`,
-    more: `tuiIconChevronRight`,
+    check: 'tuiIconCheck',
+    close: 'tuiIconClose',
+    error: 'tuiIconAlertCircle',
+    more: 'tuiIconChevronRight',
 };
 
 export interface TuiCommonIcons {

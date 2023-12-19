@@ -6,12 +6,12 @@ function makeRandomSalt(): number {
 }
 
 function escapeRegExp(search: string): string {
-    return search.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, `\\$&`);
+    return search.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
 }
 
 function extractLinearGradientIdsFromSvg(svg: string): string[] {
     const ids = (svg.match(/url\(("?)('*)#(.*?)('*)\)/g) ?? []).map(url =>
-        url.slice(4, url.length - 1).replace(/['"#]+/g, ``),
+        url.slice(4, url.length - 1).replace(/['"#]+/g, ''),
     );
 
     return Array.from(new Set(ids));
@@ -23,14 +23,14 @@ function extractLinearGradientIdsFromSvg(svg: string): string[] {
  */
 function setFallbackForGradientFill(svg: string, fallback: string): string {
     try {
-        const tree = new DOMParser().parseFromString(svg, `text/html`);
+        const tree = new DOMParser().parseFromString(svg, 'text/html');
 
         tree.body
-            .querySelectorAll(`[fill^=url]`) // only gradient
+            .querySelectorAll('[fill^=url]') // only gradient
             .forEach(element =>
                 element.setAttribute(
-                    `fill`,
-                    `${element.getAttribute(`fill`)} ${fallback}`.trim(),
+                    'fill',
+                    `${element.getAttribute('fill')} ${fallback}`.trim(),
                 ),
             );
 
@@ -61,7 +61,7 @@ export function tuiSvgLinearGradientProcessor(
      * TODO: remove in v4.0
      * @deprecated
      */
-    fallback: string = `rgba(0, 0, 0, 0.7)`,
+    fallback: string = 'rgba(0, 0, 0, 0.7)',
 ): TuiSafeHtml {
     if (tuiIsString(svg)) {
         const uniqueIds = extractLinearGradientIdsFromSvg(svg);
@@ -70,11 +70,11 @@ export function tuiSvgLinearGradientProcessor(
             const newId = `id_${salt}_${previousId}`;
 
             return newSvg
-                .replace(new RegExp(`"${escapedId}"`, `g`), `"${newId}"`)
-                .replace(new RegExp(`'${escapedId}'`, `g`), `'${newId}'`)
-                .replace(new RegExp(`url\\('#${escapedId}'\\)`, `g`), `url('#${newId}')`)
-                .replace(new RegExp(`url\\("#${escapedId}"\\)`, `g`), `url("#${newId}")`)
-                .replace(new RegExp(`url\\(#${escapedId}\\)`, `g`), `url(#${newId})`);
+                .replace(new RegExp(`"${escapedId}"`, 'g'), `"${newId}"`)
+                .replace(new RegExp(`'${escapedId}'`, 'g'), `'${newId}'`)
+                .replace(new RegExp(`url\\('#${escapedId}'\\)`, 'g'), `url('#${newId}')`)
+                .replace(new RegExp(`url\\("#${escapedId}"\\)`, 'g'), `url("#${newId}")`)
+                .replace(new RegExp(`url\\(#${escapedId}\\)`, 'g'), `url(#${newId})`);
         }, svg);
 
         return setFallbackForGradientFill(rawSvg, fallback);

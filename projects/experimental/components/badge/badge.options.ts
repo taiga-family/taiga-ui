@@ -9,8 +9,8 @@ export interface TuiBadgeOptions {
 }
 
 export const TUI_BADGE_DEFAULT_OPTIONS: TuiBadgeOptions = {
-    size: `l`,
-    appearance: `default`,
+    size: 'l',
+    appearance: 'default',
     dot: false,
 };
 

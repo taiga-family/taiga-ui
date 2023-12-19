@@ -8,7 +8,7 @@ import {TUI_RUSSIAN_LANGUAGE_CORE} from './core';
 import {TUI_RUSSIAN_LANGUAGE_KIT} from './kit';
 
 export const TUI_RUSSIAN_LANGUAGE: TuiLanguage = {
-    name: `russian`,
+    name: 'russian',
     ...TUI_RUSSIAN_LANGUAGE_CORE,
     ...TUI_RUSSIAN_LANGUAGE_KIT,
     ...TUI_RUSSIAN_LANGUAGE_ADDON_COMMERCE,

@@ -45,7 +45,7 @@ export function replaceInputProperty({
     componentSelector,
     from,
     to,
-    newValue = ``,
+    newValue = '',
     filterFn,
 }: {
     componentSelector: string[] | string;
@@ -90,7 +90,7 @@ export function replaceInputProperty({
 
     propertyBindings.forEach(offset => {
         recorder.remove(offset, `[${from}]`.length);
-        recorder.insertRight(offset, to.startsWith(`[`) ? to : `[${to}]`);
+        recorder.insertRight(offset, to.startsWith('[') ? to : `[${to}]`);
     });
 
     propertyValues.forEach(([startOffset, endOffset]) => {
@@ -118,7 +118,7 @@ export function getInputPropertyOffsets(
     return findElementsWithAttribute(html, attrName)
         .filter(
             element =>
-                (tags.includes(element.tagName) || tags.includes(`*`)) &&
+                (tags.includes(element.tagName) || tags.includes('*')) &&
                 filterFn(element),
         )
         .map((element: Element) => {
@@ -145,12 +145,12 @@ export function getInputPropertyValueOffsets(
         template,
         attrName,
         tags,
-    ).map(([start, end]) => [start + attrName.length + `="`.length, end - 1]);
+    ).map(([start, end]) => [start + attrName.length + '="'.length, end - 1]);
     const propertyBindings: Array<[number, number]> = getInputPropertyOffsets(
         template,
         `[${attrName}]`,
         tags,
-    ).map(([start, end]) => [start + `[${attrName}]`.length + `="`.length, end - 1]);
+    ).map(([start, end]) => [start + `[${attrName}]`.length + '="'.length, end - 1]);
 
     return [...stringProperties, ...propertyBindings];
 }

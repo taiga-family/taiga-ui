@@ -4,7 +4,7 @@ import {TUI_COUNTRIES_MASKS} from '@taiga-ui/kit/tokens';
 import {tuiIsoToCountryCode} from '@taiga-ui/kit/utils';
 
 @Pipe({
-    name: `tuiIsoToCountryCode`,
+    name: 'tuiIsoToCountryCode',
 })
 export class TuiIsoToCountryCodePipe implements PipeTransform {
     constructor(

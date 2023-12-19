@@ -11,20 +11,20 @@ import {TuiDecimalSymbol} from '@taiga-ui/core/types';
 
 function addDecimalSymbolIfNeeded(
     value: string,
-    decimalSymbol: TuiDecimalSymbol = `,`,
+    decimalSymbol: TuiDecimalSymbol = ',',
 ): string {
     return !value.includes(decimalSymbol) ? value + decimalSymbol : value;
 }
 
 function calculateSafariCaret(
-    previousValue: string = ``,
+    previousValue: string = '',
     current: string,
     previousCaret: number,
-    decimalSymbol: string = `,`,
+    decimalSymbol: string = ',',
 ): number {
     const tailRegex = new RegExp(`${decimalSymbol}.+`);
-    const previousWithoutTail = previousValue.replace(tailRegex, ``);
-    const currentWithoutTail = current.replace(tailRegex, ``);
+    const previousWithoutTail = previousValue.replace(tailRegex, '');
+    const currentWithoutTail = current.replace(tailRegex, '');
 
     const pasteOrCutOperation =
         Math.abs(previousWithoutTail.length - currentWithoutTail.length) > 2;
@@ -55,7 +55,7 @@ function calculateSafariCaret(
 function calculateChangedTailIndex(previous: string, current: string): number {
     for (let i = 0; i < current.length; i++) {
         if (previous[i] !== current[i]) {
-            return current[i] === `0` ? i : i + 1;
+            return current[i] === '0' ? i : i + 1;
         }
     }
 
@@ -63,7 +63,7 @@ function calculateChangedTailIndex(previous: string, current: string): number {
 }
 
 function calculateCaretGap(
-    previousValue: string = ``,
+    previousValue: string = '',
     current: string,
     thousandSymbol: string,
 ): number {
@@ -86,7 +86,7 @@ function calculateCaretGap(
  */
 export function tuiCreateAutoCorrectedNumberPipe(
     decimalLimit: number = 0,
-    decimalSymbol: TuiDecimalSymbol = `,`,
+    decimalSymbol: TuiDecimalSymbol = ',',
     thousandSymbol: string = CHAR_NO_BREAK_SPACE,
     nativeInput?: HTMLInputElement | null,
     allowNegative?: boolean,
@@ -99,7 +99,7 @@ export function tuiCreateAutoCorrectedNumberPipe(
     const unlucky = (!!nativeInput && tuiIsSafari(nativeInput)) || isIOS;
 
     if (nativeInput && unlucky) {
-        nativeInput.addEventListener(`beforeinput`, () => {
+        nativeInput.addEventListener('beforeinput', () => {
             previousCaret = nativeInput.selectionStart || 0;
         });
     }
@@ -142,7 +142,7 @@ export function tuiCreateAutoCorrectedNumberPipe(
             });
         }
 
-        if (conformedValue === `` || !decimalLimit || !Number.isInteger(decimalLimit)) {
+        if (conformedValue === '' || !decimalLimit || !Number.isInteger(decimalLimit)) {
             return {value: conformedValue};
         }
 
@@ -151,7 +151,7 @@ export function tuiCreateAutoCorrectedNumberPipe(
         const zeroPaddingSize = decimalLimit - decimalPart.length;
 
         return {
-            value: withDecimalSymbol + `0`.repeat(zeroPaddingSize),
+            value: withDecimalSymbol + '0'.repeat(zeroPaddingSize),
         };
     };
 }

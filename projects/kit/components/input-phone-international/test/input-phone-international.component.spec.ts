@@ -17,7 +17,7 @@ import {
 } from '@taiga-ui/kit';
 import {of} from 'rxjs';
 
-describe(`InputPhoneInternational`, () => {
+describe('InputPhoneInternational', () => {
     @Component({
         template: `
             <tui-root>
@@ -34,7 +34,7 @@ describe(`InputPhoneInternational`, () => {
         @ViewChild(TuiInputPhoneInternationalComponent, {static: true})
         component!: TuiInputPhoneInternationalComponent;
 
-        control = new FormControl(`+79110330102`);
+        control = new FormControl('+79110330102');
 
         countries = [
             TuiCountryIsoCode.RU,
@@ -66,7 +66,7 @@ describe(`InputPhoneInternational`, () => {
                 declarations: [TestComponent],
                 providers: [
                     tuiSvgOptionsProvider({
-                        path: (_: string) => `path/tuiIcon.svg#tuiIcon`,
+                        path: (_: string) => 'path/tuiIcon.svg#tuiIcon',
                     }),
                     {
                         provide: TUI_LANGUAGE,
@@ -82,40 +82,40 @@ describe(`InputPhoneInternational`, () => {
         });
     };
 
-    describe(`country codes`, () => {
+    describe('country codes', () => {
         initializeTestModule();
 
-        it(`calculates country code by iso code`, () => {
+        it('calculates country code by iso code', () => {
             const iso = TuiCountryIsoCode.RU;
 
-            expect(component.isoToCountryCode(iso)).toBe(`+7`);
+            expect(component.isoToCountryCode(iso)).toBe('+7');
         });
 
-        it(`correct country code in inputPhoneCountryCode`, () => {
+        it('correct country code in inputPhoneCountryCode', () => {
             component.countryIsoCode = TuiCountryIsoCode.DM;
 
-            expect(component.inputPhoneCountryCode).toBe(`+1(767)`);
+            expect(component.inputPhoneCountryCode).toBe('+1(767)');
         });
     });
 
-    describe(`value`, () => {
+    describe('value', () => {
         initializeTestModule();
 
-        it(`should truncate value if current mask is shorter then previous`, () => {
+        it('should truncate value if current mask is shorter then previous', () => {
             component.onItemClick(TuiCountryIsoCode.UA);
-            expect(testComponent.control.value).toBe(`+380911033010`);
+            expect(testComponent.control.value).toBe('+380911033010');
         });
     });
 
-    describe(`paste`, () => {
+    describe('paste', () => {
         initializeTestModule();
 
-        it(`should set correct country code on paste event`, () => {
+        it('should set correct country code on paste event', () => {
             const data = new DataTransfer();
 
-            data.setData(`text/plain`, `+380123456789`);
+            data.setData('text/plain', '+380123456789');
 
-            const pasteEvent = new ClipboardEvent(`paste`, {
+            const pasteEvent = new ClipboardEvent('paste', {
                 clipboardData: data as unknown as DataTransfer,
             });
 
@@ -124,12 +124,12 @@ describe(`InputPhoneInternational`, () => {
             expect(component.countryIsoCode).toBe(TuiCountryIsoCode.UA);
         });
 
-        it(`should set country code on paste event`, () => {
+        it('should set country code on paste event', () => {
             const data = new DataTransfer();
 
-            data.setData(`text/plain`, `88005553535`);
+            data.setData('text/plain', '88005553535');
 
-            const pasteEvent = new ClipboardEvent(`paste`, {
+            const pasteEvent = new ClipboardEvent('paste', {
                 clipboardData: data as unknown as DataTransfer,
             });
 
@@ -138,14 +138,14 @@ describe(`InputPhoneInternational`, () => {
             expect(component.countryIsoCode).toBe(TuiCountryIsoCode.RU);
         });
 
-        describe(`should set KZ country code on paste event`, () => {
-            [`+7(600)555-3535`, `+7 7272 588300`].forEach(phone => {
+        describe('should set KZ country code on paste event', () => {
+            ['+7(600)555-3535', '+7 7272 588300'].forEach(phone => {
                 it(`${phone}`, () => {
                     const data = new DataTransfer();
 
-                    data.setData(`text/plain`, phone);
+                    data.setData('text/plain', phone);
 
-                    const pasteEvent = new ClipboardEvent(`paste`, {
+                    const pasteEvent = new ClipboardEvent('paste', {
                         clipboardData: data as unknown as DataTransfer,
                     });
 
@@ -156,68 +156,68 @@ describe(`InputPhoneInternational`, () => {
             });
         });
 
-        it(`should replace code 8 on paste event`, () => {
+        it('should replace code 8 on paste event', () => {
             const data = new DataTransfer();
 
-            data.setData(`text/plain`, `88005553535`);
+            data.setData('text/plain', '88005553535');
 
-            const pasteEvent = new ClipboardEvent(`paste`, {
+            const pasteEvent = new ClipboardEvent('paste', {
                 clipboardData: data as unknown as DataTransfer,
             });
 
             component.onPaste(pasteEvent);
 
-            expect(testComponent.control.value).toBe(`+78005553535`);
+            expect(testComponent.control.value).toBe('+78005553535');
         });
 
-        it(`should replace code +8 on paste event`, () => {
+        it('should replace code +8 on paste event', () => {
             const data = new DataTransfer();
 
-            data.setData(`text/plain`, `+89112223344`);
+            data.setData('text/plain', '+89112223344');
 
-            const pasteEvent = new ClipboardEvent(`paste`, {
+            const pasteEvent = new ClipboardEvent('paste', {
                 clipboardData: data as unknown as DataTransfer,
             });
 
             component.onPaste(pasteEvent);
 
-            expect(testComponent.control.value).toBe(`+79112223344`);
+            expect(testComponent.control.value).toBe('+79112223344');
         });
 
-        it(`should update value on paste`, () => {
+        it('should update value on paste', () => {
             const data = new DataTransfer();
 
-            data.setData(`text/plain`, `+380 (12) 345-67-89`);
+            data.setData('text/plain', '+380 (12) 345-67-89');
 
-            const pasteEvent = new ClipboardEvent(`paste`, {
+            const pasteEvent = new ClipboardEvent('paste', {
                 clipboardData: data as unknown as DataTransfer,
             });
 
             component.onPaste(pasteEvent);
 
-            expect(testComponent.control.value).toBe(`+380123456789`);
+            expect(testComponent.control.value).toBe('+380123456789');
         });
 
-        it(`should update value without "+" on paste`, () => {
+        it('should update value without "+" on paste', () => {
             const data = new DataTransfer();
 
-            data.setData(`text/plain`, `380 (12) 345-67-89`);
+            data.setData('text/plain', '380 (12) 345-67-89');
 
-            const pasteEvent = new ClipboardEvent(`paste`, {
+            const pasteEvent = new ClipboardEvent('paste', {
                 clipboardData: data as unknown as DataTransfer,
             });
 
             component.onPaste(pasteEvent);
 
-            expect(testComponent.control.value).toBe(`+380123456789`);
+            expect(testComponent.control.value).toBe('+380123456789');
         });
 
-        it(`should set country code on paste event 8(863)`, () => {
+        it('should set country code on paste event 8(863)', () => {
             const data = new DataTransfer();
 
-            data.setData(`text/plain`, `88635553535`);
+            data.setData('text/plain', '88635553535');
 
-            const pasteEvent = new ClipboardEvent(`paste`, {
+            const pasteEvent = new ClipboardEvent('paste', {
                 clipboardData: data as unknown as DataTransfer,
             });
 
@@ -226,12 +226,12 @@ describe(`InputPhoneInternational`, () => {
             expect(component.countryIsoCode).toBe(TuiCountryIsoCode.RU);
         });
 
-        it(`should set country code on paste event +886`, () => {
+        it('should set country code on paste event +886', () => {
             const data = new DataTransfer();
 
-            data.setData(`text/plain`, `886355535353`);
+            data.setData('text/plain', '886355535353');
 
-            const pasteEvent = new ClipboardEvent(`paste`, {
+            const pasteEvent = new ClipboardEvent('paste', {
                 clipboardData: data as unknown as DataTransfer,
             });
 
@@ -240,28 +240,28 @@ describe(`InputPhoneInternational`, () => {
             expect(component.countryIsoCode).toBe(TuiCountryIsoCode.TW);
         });
 
-        it(`should paste current code + paste value, if code from paste data not found`, () => {
+        it('should paste current code + paste value, if code from paste data not found', () => {
             const data = new DataTransfer();
 
-            data.setData(`text/plain`, `43578`);
+            data.setData('text/plain', '43578');
 
-            const pasteEvent = new ClipboardEvent(`paste`, {
+            const pasteEvent = new ClipboardEvent('paste', {
                 clipboardData: data as unknown as DataTransfer,
             });
 
             component.countryIsoCode = TuiCountryIsoCode.DM;
             component.onPaste(pasteEvent);
 
-            expect(testComponent.control.value).toBe(`+176743578`);
+            expect(testComponent.control.value).toBe('+176743578');
         });
     });
 
-    describe(`programmatically patch`, () => {
+    describe('programmatically patch', () => {
         initializeTestModule();
 
-        it(`should correct update control`, () => {
+        it('should correct update control', () => {
             let result: unknown;
-            const phoneNumber = `+380123456789`;
+            const phoneNumber = '+380123456789';
 
             testComponent.control.valueChanges.subscribe(value => {
                 result = value;
@@ -273,53 +273,53 @@ describe(`InputPhoneInternational`, () => {
         });
     });
 
-    describe(`phone mask after country code`, () => {
+    describe('phone mask after country code', () => {
         initializeTestModule();
 
-        it(`is calculated correctly`, () => {
+        it('is calculated correctly', () => {
             component.countryIsoCode = TuiCountryIsoCode.RU;
 
-            expect(component.phoneMaskAfterCountryCode).toBe(`### ###-##-##`);
+            expect(component.phoneMaskAfterCountryCode).toBe('### ###-##-##');
 
             component.countryIsoCode = TuiCountryIsoCode.KZ;
 
-            expect(component.phoneMaskAfterCountryCode).toBe(`(###) ###-##-##`);
+            expect(component.phoneMaskAfterCountryCode).toBe('(###) ###-##-##');
         });
     });
 
-    describe(`i18n`, () => {
-        describe(`RUSSIAN`, () => {
+    describe('i18n', () => {
+        describe('RUSSIAN', () => {
             initializeTestModule(TUI_RUSSIAN_LANGUAGE);
 
-            it(`displays country names in Russian inside dropdown`, () => {
+            it('displays country names in Russian inside dropdown', () => {
                 getCountrySelector().nativeElement.click();
                 fixture.detectChanges();
 
                 expect(getDropdownCountryNames()).toEqual([
-                    `Россия`,
-                    `Казахстан`,
-                    `Украина`,
-                    `Беларусь (Белоруссия)`,
-                    `Тайвань`,
-                    `Бангладеш`,
+                    'Россия',
+                    'Казахстан',
+                    'Украина',
+                    'Беларусь (Белоруссия)',
+                    'Тайвань',
+                    'Бангладеш',
                 ]);
             });
         });
 
-        describe(`ENGLISH`, () => {
+        describe('ENGLISH', () => {
             initializeTestModule(TUI_ENGLISH_LANGUAGE);
 
-            it(`displays country names in English inside dropdown`, () => {
+            it('displays country names in English inside dropdown', () => {
                 getCountrySelector().nativeElement.click();
                 fixture.detectChanges();
 
                 expect(getDropdownCountryNames()).toEqual([
-                    `Russia`,
-                    `Kazakhstan`,
-                    `Ukraine`,
-                    `Belarus`,
-                    `Taiwan`,
-                    `Bangladesh`,
+                    'Russia',
+                    'Kazakhstan',
+                    'Ukraine',
+                    'Belarus',
+                    'Taiwan',
+                    'Bangladesh',
                 ]);
             });
         });
@@ -327,7 +327,7 @@ describe(`InputPhoneInternational`, () => {
 
     function getDropdownCountryNames(): string[] {
         const countryNameContainers =
-            fixture.debugElement.queryAll(By.css(`.t-country-item-name`)) || [];
+            fixture.debugElement.queryAll(By.css('.t-country-item-name')) || [];
 
         return countryNameContainers.map(
             container => container.nativeElement.textContent?.trim(),
@@ -335,6 +335,6 @@ describe(`InputPhoneInternational`, () => {
     }
 
     function getCountrySelector(): DebugElement {
-        return fixture.debugElement.query(By.css(`.t-country-select input`));
+        return fixture.debugElement.query(By.css('.t-country-select input'));
     }
 });

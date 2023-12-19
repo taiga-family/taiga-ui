@@ -10,21 +10,21 @@ import {
 import {EMPTY, Observable} from 'rxjs';
 import {filter, map, takeUntil} from 'rxjs/operators';
 
-export const RIPPLE_ON = `tuiRippleOn`;
-export const RIPPLE_OFF = `tuiRippleOff`;
+export const RIPPLE_ON = 'tuiRippleOn';
+export const RIPPLE_OFF = 'tuiRippleOff';
 
 /**
  * Stream of ripple elements to add
  */
 export const TUI_RIPPLE_START = new InjectionToken<Observable<HTMLElement>>(
-    `[TUI_RIPPLE_START]`,
+    '[TUI_RIPPLE_START]',
 );
 
 /**
  * Stream of ripple elements to remove
  */
 export const TUI_RIPPLE_END = new InjectionToken<Observable<HTMLElement>>(
-    `[TUI_RIPPLE_END]`,
+    '[TUI_RIPPLE_END]',
 );
 
 export const TUI_RIPPLE_PROVIDERS: Provider[] = [
@@ -40,7 +40,7 @@ export const TUI_RIPPLE_PROVIDERS: Provider[] = [
         ): Observable<HTMLElement> =>
             isIOS || !touchSupported
                 ? EMPTY
-                : tuiTypedFromEvent(nativeElement, `touchstart`).pipe(
+                : tuiTypedFromEvent(nativeElement, 'touchstart').pipe(
                       map(({touches}) => {
                           const {clientX, clientY} = touches[touches.length - 1];
                           const {width, height, top, left} =
@@ -49,12 +49,12 @@ export const TUI_RIPPLE_PROVIDERS: Provider[] = [
                           const dimension = radius * 2;
                           const x = clientX - left - radius;
                           const y = clientY - top - radius;
-                          const ripple = renderer.createElement(`div`);
+                          const ripple = renderer.createElement('div');
 
-                          renderer.addClass(ripple, `tui-ripple`);
+                          renderer.addClass(ripple, 'tui-ripple');
                           renderer.setAttribute(
                               ripple,
-                              `style`,
+                              'style',
                               `width: ${tuiPx(dimension)}; height: ${tuiPx(
                                   dimension,
                               )}; left: ${tuiPx(x)}; top: ${tuiPx(
@@ -77,7 +77,7 @@ export const TUI_RIPPLE_PROVIDERS: Provider[] = [
         ): Observable<EventTarget> =>
             isIOS || !touchSupported
                 ? EMPTY
-                : tuiTypedFromEvent(nativeElement, `animationend`).pipe(
+                : tuiTypedFromEvent(nativeElement, 'animationend').pipe(
                       filter(({animationName}) => animationName === RIPPLE_OFF),
                       map(({target}) => target),
                       filter(tuiIsPresent),

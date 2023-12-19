@@ -15,7 +15,7 @@ import {BehaviorSubject, Observable, of} from 'rxjs';
 
 import {tuiAsyncLoadLanguage} from './utils';
 
-@Injectable({providedIn: `root`})
+@Injectable({providedIn: 'root'})
 export class TuiLanguageSwitcher extends BehaviorSubject<Observable<TuiLanguage>> {
     constructor(
         @Inject(TUI_DEFAULT_LANGUAGE)

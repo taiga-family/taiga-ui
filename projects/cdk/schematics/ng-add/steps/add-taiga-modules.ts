@@ -71,7 +71,7 @@ function addExtraTuiProvidersToRootComponent({
         return;
     }
 
-    const provider = `{provide: TUI_SANITIZER, useClass: NgDompurifySanitizer}`;
+    const provider = '{provide: TUI_SANITIZER, useClass: NgDompurifySanitizer}';
 
     if (standalone) {
         addProviderToComponent(mainClass, provider, {unique: true});
@@ -99,7 +99,7 @@ function addTuiEntitiesToStandalone({
 }): void {
     const [
         rootComponentIdentifier,
-        bootstrapOptions = bootstrapFunction.addArgument(`{providers}: []`),
+        bootstrapOptions = bootstrapFunction.addArgument('{providers}: []'),
     ] = bootstrapFunction.getArguments();
 
     const mainClass = getComponentFromIdentifier(rootComponentIdentifier);
@@ -118,21 +118,21 @@ function addTuiEntitiesToStandalone({
 function addRootTuiProvidersToBootstrapFn(
     bootstrapOptions: ObjectLiteralExpression,
 ): void {
-    const property = bootstrapOptions.getProperty(`providers`) as PropertyAssignment;
+    const property = bootstrapOptions.getProperty('providers') as PropertyAssignment;
     const initializer = property.getInitializer() as ArrayLiteralExpression;
     const providerFrom = initializer
         .getElements()
         .find(
             el =>
                 Node.isCallExpression(el) &&
-                el.getExpression().getText() === `importProvidersFrom`,
+                el.getExpression().getText() === 'importProvidersFrom',
         );
     const provideAnimations = initializer
         .getElements()
         .find(
             el =>
                 Node.isCallExpression(el) &&
-                el.getExpression().getText() === `provideAnimations`,
+                el.getExpression().getText() === 'provideAnimations',
         );
     const modules = [MAIN_MODULE];
 
@@ -149,23 +149,23 @@ function addRootTuiProvidersToBootstrapFn(
     } else {
         pushToObjectArrayProperty(
             bootstrapOptions,
-            `providers`,
-            `importProvidersFrom(TuiRootModule)`,
+            'providers',
+            'importProvidersFrom(TuiRootModule)',
         );
     }
 
     if (!provideAnimations) {
         modules.push({
-            name: `provideAnimations`,
-            packageName: `@angular/platform-browser/animations`,
+            name: 'provideAnimations',
+            packageName: '@angular/platform-browser/animations',
         });
 
-        pushToObjectArrayProperty(bootstrapOptions, `providers`, `provideAnimations()`, {
+        pushToObjectArrayProperty(bootstrapOptions, 'providers', 'provideAnimations()', {
             index: 0,
         });
     }
 
-    [...modules, {name: `importProvidersFrom`, packageName: `@angular/core`}].forEach(
+    [...modules, {name: 'importProvidersFrom', packageName: '@angular/core'}].forEach(
         ({name, packageName}) => {
             addUniqueImport(
                 bootstrapOptions.getSourceFile().getFilePath(),
@@ -230,22 +230,22 @@ export function addTaigaModules(options: TuiSchema): Rule {
 
         if (!project) {
             context.logger.warn(
-                `[WARNING]: Target project not found in current workspace`,
+                '[WARNING]: Target project not found in current workspace',
             );
 
             return;
         }
 
-        const buildOptions = getProjectTargetOptions(project, `build`);
+        const buildOptions = getProjectTargetOptions(project, 'build');
         const mainFilePath = (buildOptions.main || buildOptions.browser) as string;
 
         if (!mainFilePath) {
-            context.logger.error(`[ERROR]: Could not find the project main file`);
+            context.logger.error('[ERROR]: Could not find the project main file');
 
             return;
         }
 
-        setActiveProject(createProject(tree, `/`, ALL_FILES));
+        setActiveProject(createProject(tree, '/', ALL_FILES));
 
         const bootstrapFunction = getStandaloneBootstrapFunction(mainFilePath);
 

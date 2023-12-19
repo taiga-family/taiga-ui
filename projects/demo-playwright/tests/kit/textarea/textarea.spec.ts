@@ -3,15 +3,15 @@ import {expect, test} from '@playwright/test';
 
 const {describe} = test;
 
-describe(`Textarea`, () => {
+describe('Textarea', () => {
     test.use({
         viewport: {width: 400, height: 500},
     });
 
-    test(`correctly shows character with descenders inside placeholder`, async ({
+    test('correctly shows character with descenders inside placeholder', async ({
         page,
     }) => {
-        const placeholder = `qwertypgj_`;
+        const placeholder = 'qwertypgj_';
 
         await tuiGoto(page, `components/textarea/API?placeholder=${placeholder}`);
 
@@ -21,7 +21,7 @@ describe(`Textarea`, () => {
         await textarea.click();
 
         await expect(apiPageExample).toHaveScreenshot(
-            `01-character-with-descenders-inside-placeholder.png`,
+            '01-character-with-descenders-inside-placeholder.png',
         );
     });
 });

@@ -4,7 +4,7 @@ import {By} from '@angular/platform-browser';
 import {TuiElasticStickyModule} from '@taiga-ui/addon-mobile';
 import {TuiScrollbarModule} from '@taiga-ui/core';
 
-describe(`TuiElasticStickyDirective`, () => {
+describe('TuiElasticStickyDirective', () => {
     @Component({
         template: `
             <div
@@ -41,13 +41,13 @@ describe(`TuiElasticStickyDirective`, () => {
         fixture.detectChanges();
     });
 
-    it(`callback is not triggered initially`, () => {
+    it('callback is not triggered initially', () => {
         expect(component.onElastic).not.toHaveBeenCalled();
     });
 
     // TODO: scroll event doesn't work
-    xit(`callback is triggered with 0.5 when half of sticky would be hidden`, done => {
-        fixture.debugElement.query(By.css(`#scroll`)).nativeElement.scrollTop = 75;
+    xit('callback is triggered with 0.5 when half of sticky would be hidden', done => {
+        fixture.debugElement.query(By.css('#scroll')).nativeElement.scrollTop = 75;
         fixture.detectChanges();
 
         setTimeout(() => {
@@ -57,8 +57,8 @@ describe(`TuiElasticStickyDirective`, () => {
     });
 
     // TODO: scroll event doesn't work
-    xit(`callback is triggered with 0 when sticky is fully hidden`, done => {
-        fixture.debugElement.query(By.css(`#scroll`)).nativeElement.scrollTop = 100;
+    xit('callback is triggered with 0 when sticky is fully hidden', done => {
+        fixture.debugElement.query(By.css('#scroll')).nativeElement.scrollTop = 100;
         fixture.detectChanges();
 
         setTimeout(() => {

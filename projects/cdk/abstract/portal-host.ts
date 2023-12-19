@@ -20,7 +20,7 @@ import {AbstractTuiPortalService} from './portal-service';
  */
 @Directive()
 export abstract class AbstractTuiPortalHostComponent {
-    @ViewChild(`viewContainer`, {read: ViewContainerRef})
+    @ViewChild('viewContainer', {read: ViewContainerRef})
     private readonly vcr!: ViewContainerRef;
 
     constructor(

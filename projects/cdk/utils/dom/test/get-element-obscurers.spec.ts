@@ -1,14 +1,14 @@
 import {tuiGetElementObscures} from '@taiga-ui/cdk';
 
-describe(`tuiGetElementObscures`, () => {
+describe('tuiGetElementObscures', () => {
     let element: Element;
 
     beforeEach(() => {
-        element = document.createElement(`div`);
+        element = document.createElement('div');
         document.body.appendChild(element);
     });
 
-    describe(`element has width and height`, () => {
+    describe('element has width and height', () => {
         beforeEach(() => {
             element.getBoundingClientRect = jest.fn().mockImplementation(() => ({
                 height: 500,
@@ -18,22 +18,22 @@ describe(`tuiGetElementObscures`, () => {
             })) as unknown as () => DOMRect;
         });
 
-        it(`should return null if element does not have ownerDocument`, () => {
-            Object.defineProperty(element, `ownerDocument`, {value: undefined});
+        it('should return null if element does not have ownerDocument', () => {
+            Object.defineProperty(element, 'ownerDocument', {value: undefined});
             expect(tuiGetElementObscures(element)).toBeNull();
         });
 
-        it(`should return null if element does not have defaultView`, () => {
-            Object.defineProperty(element, `ownerDocument`, {value: {defaultView: null}});
+        it('should return null if element does not have defaultView', () => {
+            Object.defineProperty(element, 'ownerDocument', {value: {defaultView: null}});
             expect(tuiGetElementObscures(element)).toBeNull();
         });
 
-        it(`should return null if element does not have getBoundingClientRect method`, () => {
+        it('should return null if element does not have getBoundingClientRect method', () => {
             element.getBoundingClientRect = undefined as any;
             expect(tuiGetElementObscures(element)).toBeNull();
         });
 
-        it(`should return null if no elements are found at the calculated points`, () => {
+        it('should return null if no elements are found at the calculated points', () => {
             const {ownerDocument} = element;
             const mockElementFromPoint = ownerDocument.elementFromPoint as jest.Mock;
 
@@ -42,7 +42,7 @@ describe(`tuiGetElementObscures`, () => {
             expect(mockElementFromPoint).toHaveBeenCalledTimes(4);
         });
 
-        it(`should return null if there are no obscuring elements`, () => {
+        it('should return null if there are no obscuring elements', () => {
             const {ownerDocument} = element;
             const mockElementFromPoint = ownerDocument.elementFromPoint as jest.Mock;
 
@@ -57,14 +57,14 @@ describe(`tuiGetElementObscures`, () => {
             expect(mockElementFromPoint).toHaveBeenCalledTimes(4);
         });
 
-        it(`should return only elements not within the initial element`, () => {
+        it('should return only elements not within the initial element', () => {
             const {ownerDocument} = element;
 
             const others = [
-                ownerDocument.createElement(`div`),
-                ownerDocument.createElement(`textarea`),
-                ownerDocument.createElement(`span`),
-                ownerDocument.createElement(`p`),
+                ownerDocument.createElement('div'),
+                ownerDocument.createElement('textarea'),
+                ownerDocument.createElement('span'),
+                ownerDocument.createElement('p'),
             ];
 
             others.forEach(el => document.body.appendChild(el));
@@ -76,7 +76,7 @@ describe(`tuiGetElementObscures`, () => {
                 .mockReturnValueOnce(others[2])
                 .mockReturnValueOnce(others[3]);
 
-            Object.defineProperty(global.document, `elementFromPoint`, {
+            Object.defineProperty(global.document, 'elementFromPoint', {
                 writable: true,
                 value: mockElementFromPoint,
             });
@@ -88,12 +88,12 @@ describe(`tuiGetElementObscures`, () => {
             expect(mockElementFromPoint).toHaveBeenCalledTimes(4);
         });
 
-        it(`should return null instead of an array`, () => {
+        it('should return null instead of an array', () => {
             const {ownerDocument} = element;
             const others = [
-                ownerDocument.createElement(`div`),
-                ownerDocument.createElement(`span`),
-                ownerDocument.createElement(`p`),
+                ownerDocument.createElement('div'),
+                ownerDocument.createElement('span'),
+                ownerDocument.createElement('p'),
             ];
 
             others.forEach(el => document.body.appendChild(el));
@@ -110,7 +110,7 @@ describe(`tuiGetElementObscures`, () => {
         });
     });
 
-    describe(`element hasn't width and height`, () => {
+    describe("element hasn't width and height", () => {
         beforeEach(() => {
             element.getBoundingClientRect = jest.fn().mockImplementation(() => ({
                 height: 0,
@@ -120,7 +120,7 @@ describe(`tuiGetElementObscures`, () => {
             })) as unknown as () => DOMRect;
         });
 
-        it(`should return null`, () => {
+        it('should return null', () => {
             const {ownerDocument} = element;
             const mockElementFromPoint = ownerDocument.elementFromPoint as jest.Mock;
 
@@ -129,7 +129,7 @@ describe(`tuiGetElementObscures`, () => {
             expect(mockElementFromPoint).toHaveBeenCalledTimes(0);
         });
 
-        it(`should return null anyway`, () => {
+        it('should return null anyway', () => {
             const {ownerDocument} = element;
             const mockElementFromPoint = ownerDocument.elementFromPoint as jest.Mock;
 
@@ -144,14 +144,14 @@ describe(`tuiGetElementObscures`, () => {
             expect(mockElementFromPoint).toHaveBeenCalledTimes(0);
         });
 
-        it(`should return null when elements not within the initial element`, () => {
+        it('should return null when elements not within the initial element', () => {
             const {ownerDocument} = element;
 
             const others = [
-                ownerDocument.createElement(`div`),
-                ownerDocument.createElement(`textarea`),
-                ownerDocument.createElement(`span`),
-                ownerDocument.createElement(`p`),
+                ownerDocument.createElement('div'),
+                ownerDocument.createElement('textarea'),
+                ownerDocument.createElement('span'),
+                ownerDocument.createElement('p'),
             ];
 
             others.forEach(el => document.body.appendChild(el));
@@ -163,7 +163,7 @@ describe(`tuiGetElementObscures`, () => {
                 .mockReturnValueOnce(others[2])
                 .mockReturnValueOnce(others[3]);
 
-            Object.defineProperty(global.document, `elementFromPoint`, {
+            Object.defineProperty(global.document, 'elementFromPoint', {
                 writable: true,
                 value: mockElementFromPoint,
             });
@@ -176,10 +176,10 @@ describe(`tuiGetElementObscures`, () => {
     });
 
     afterEach(() => {
-        document.body.innerHTML = ``;
+        document.body.innerHTML = '';
 
         // reset global mock
-        Object.defineProperty(global.document, `elementFromPoint`, {
+        Object.defineProperty(global.document, 'elementFromPoint', {
             writable: true,
             value: jest.fn().mockImplementation(() => null),
         });

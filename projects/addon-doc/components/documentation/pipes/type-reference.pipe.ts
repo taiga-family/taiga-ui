@@ -6,7 +6,7 @@ import {
 import type {TuiDocTypeReferenceParsed} from '@taiga-ui/addon-doc/utils';
 import {TuiHandler, TuiStringHandler} from '@taiga-ui/cdk';
 
-@Pipe({name: `tuiDocTypeReference`})
+@Pipe({name: 'tuiDocTypeReference'})
 export class TuiDocTypeReferencePipe implements PipeTransform {
     constructor(
         @Inject(TUI_DOC_TYPE_REFERENCE_PARSER)
@@ -26,6 +26,6 @@ export class TuiDocTypeReferencePipe implements PipeTransform {
                 extracted,
                 reference: this.linkHandler?.(extracted) ?? null,
             }))
-            .sort((a, b) => b.reference?.localeCompare(a.reference ?? ``) ?? -1);
+            .sort((a, b) => b.reference?.localeCompare(a.reference ?? '') ?? -1);
     }
 }

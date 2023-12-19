@@ -6,7 +6,7 @@ import {tuiIsCI} from './is-ci';
 
 export function setupProgressLogger({
     total,
-    prefix = ``,
+    prefix = '',
     tabs = 2,
 }: {
     prefix?: string;
@@ -32,7 +32,7 @@ export function setupProgressLogger({
         process.stdout.write(SMALL_TAB_SYMBOL.repeat(tabs) + progressLog);
 
         if (isLast && incrementIndex) {
-            process.stdout.write(`\n`);
+            process.stdout.write('\n');
         }
     };
 }

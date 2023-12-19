@@ -1,7 +1,7 @@
 import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
-test.describe(`Viewport`, () => {
+test.describe('Viewport', () => {
     Array.from(
         [
             {width: 767, height: 900},
@@ -14,8 +14,8 @@ test.describe(`Viewport`, () => {
     ).forEach(([index, {width, height}]) => {
         test(`${width}x${height}`, async ({page}) => {
             await page.setViewportSize({width, height});
-            await tuiGoto(page, `/breakpoints`, {hideHeader: true});
-            const example = new TuiDocumentationPagePO(page).getExample(`#usage`);
+            await tuiGoto(page, '/breakpoints', {hideHeader: true});
+            const example = new TuiDocumentationPagePO(page).getExample('#usage');
 
             await expect(example).toHaveScreenshot(
                 `01-0${index + 1}-breakpoints-${width}-${height}-viewport.png`,

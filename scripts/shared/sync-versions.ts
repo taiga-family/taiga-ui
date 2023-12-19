@@ -12,15 +12,15 @@ export function syncVersions(
     ignores: readonly string[] = [],
 ): void {
     const patterns = filesOrDirectories.map(pattern =>
-        pattern.endsWith(`.json`)
+        pattern.endsWith('.json')
             ? pattern
             : `${pattern}/**/*(package.json|package-lock.json)`,
     );
 
     const files = patterns
-        .map(pattern => glob.sync(pattern, {ignore: `**/node_modules/**`}))
+        .map(pattern => glob.sync(pattern, {ignore: '**/node_modules/**'}))
         .flatMap(files => files)
-        .filter(file => !file.includes(`node_modules`));
+        .filter(file => !file.includes('node_modules'));
 
     for (const file of files) {
         const originalJSON = `${JSON.stringify(
@@ -36,7 +36,7 @@ export function syncVersions(
         }
 
         updatePackageJsonStructure({
-            isPackageLockFile: file.endsWith(`-lock.json`),
+            isPackageLockFile: file.endsWith('-lock.json'),
             packageJson,
             prevVersion,
             newVersion,

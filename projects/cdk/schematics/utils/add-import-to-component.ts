@@ -6,7 +6,7 @@ export function addImportToComponent(
     moduleName: string,
     {unique = true}: {unique?: boolean} = {},
 ): void {
-    pushToDecoratorArrayProperty(classDeclaration, `Component`, `imports`, moduleName, {
+    pushToDecoratorArrayProperty(classDeclaration, 'Component', 'imports', moduleName, {
         unique,
         forceToArray: true,
     });

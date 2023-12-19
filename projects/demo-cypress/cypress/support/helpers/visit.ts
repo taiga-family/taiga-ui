@@ -2,7 +2,7 @@ import {waitAllRequests} from '@demo-cypress/support/helpers/wait-requests.util'
 import {stubExternalIcons} from '@demo-cypress/support/stubs/stub-external-icons.util';
 import {stubMetrics} from '@demo-cypress/support/stubs/stub-metrics';
 
-const NEXT_URL_STORAGE_KEY = `env`;
+const NEXT_URL_STORAGE_KEY = 'env';
 const REPEATED_SLASH_REG = /\/\//g;
 
 interface TuiVisitOptions {
@@ -43,11 +43,12 @@ const setBeforeLoadOptions = (
     if (!inIframe) {
         // @ts-ignore window.parent is readonly property
         // eslint-disable-next-line @typescript-eslint/dot-notation
-        win[`parent`] = win;
+        win['parent'] = win;
     }
 };
 
-const MOBILE_USER_AGENT = `Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1`;
+const MOBILE_USER_AGENT =
+    'Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1';
 
 export function tuiVisit(path: string, options: TuiVisitOptions = {}): void {
     const {
@@ -67,11 +68,11 @@ export function tuiVisit(path: string, options: TuiVisitOptions = {}): void {
         pseudoMobile = false,
         waitRenderedFont,
         clock = Date.UTC(2018, 10, 1),
-        rootSelector = `app`,
+        rootSelector = 'app',
     } = options;
 
     if (clock) {
-        cy.clock(clock, [`Date`]);
+        cy.clock(clock, ['Date']);
     }
 
     stubExternalIcons();
@@ -84,28 +85,28 @@ export function tuiVisit(path: string, options: TuiVisitOptions = {}): void {
           );
 
     // eslint-disable-next-line no-restricted-syntax
-    Cypress.on(`uncaught:exception`, () => false);
+    Cypress.on('uncaught:exception', () => false);
 
-    cy.visit(`/`, {
+    cy.visit('/', {
         headers,
         onBeforeLoad: window => {
-            if (headers[`userAgent`]) {
-                Object.defineProperty(window.navigator, `userAgent`, {
-                    value: headers[`userAgent`],
+            if (headers['userAgent']) {
+                Object.defineProperty(window.navigator, 'userAgent', {
+                    value: headers['userAgent'],
                 });
             }
 
             const baseHref =
-                window.document.baseURI.replace(`${window.location.origin}/`, ``) ?? `/`;
-            const nextUrl = `/${baseHref}${encodedPath}`.replace(REPEATED_SLASH_REG, `/`);
+                window.document.baseURI.replace(`${window.location.origin}/`, '') ?? '/';
+            const nextUrl = `/${baseHref}${encodedPath}`.replace(REPEATED_SLASH_REG, '/');
 
             setBeforeLoadOptions(window, {inIframe});
 
             window.localStorage.setItem(NEXT_URL_STORAGE_KEY, nextUrl);
-            window.localStorage.setItem(`tuiNight`, enableNightMode.toString());
+            window.localStorage.setItem('tuiNight', enableNightMode.toString());
 
             if (pseudoMobile) {
-                Object.defineProperty(window.navigator, `userAgent`, {
+                Object.defineProperty(window.navigator, 'userAgent', {
                     value: MOBILE_USER_AGENT,
                 });
             }
@@ -114,66 +115,66 @@ export function tuiVisit(path: string, options: TuiVisitOptions = {}): void {
         if (skipExpectUrl) {
             cy.tuiWaitBeforeScreenshot();
         } else {
-            cy.url().should(`include`, encodedPath);
+            cy.url().should('include', encodedPath);
         }
     });
 
     if (waitAllIcons) {
-        cy.intercept(`*.svg`).as(`icons`);
+        cy.intercept('*.svg').as('icons');
     }
 
-    cy.window().should(`have.property`, `Cypress`);
+    cy.window().should('have.property', 'Cypress');
 
     cy.clearLocalStorage(NEXT_URL_STORAGE_KEY);
 
-    cy.document().its(`fonts.size`).should(`be.greaterThan`, 0);
-    cy.document().its(`fonts.status`).should(`equal`, `loaded`);
+    cy.document().its('fonts.size').should('be.greaterThan', 0);
+    cy.document().its('fonts.status').should('equal', 'loaded');
     cy.document()
         // https://developer.mozilla.org/en-US/docs/Web/API/FontFaceSet/ready
         // The promise will only resolve once the document has completed loading fonts,
         // layout operations are completed, and no further font loads are needed.
         .then(document => (document as any)?.fonts.ready)
-        .then(() => cy.log(`Font loading completed`));
+        .then(() => cy.log('Font loading completed'));
 
     if (waitRenderedFont) {
-        cy.get(`body`, {log: false})
-            .should(`have.css`, `font-family`)
-            .and(`match`, waitRenderedFont);
+        cy.get('body', {log: false})
+            .should('have.css', 'font-family')
+            .and('match', waitRenderedFont);
     }
 
     if (waitAllIcons) {
-        waitAllRequests(`@icons`);
+        waitAllRequests('@icons');
     }
 
-    cy.get(`${rootSelector}._is-cypress-mode`).as(`app`);
+    cy.get(`${rootSelector}._is-cypress-mode`).as('app');
 
     if (hideCursor) {
-        cy.get(`@app`).invoke(`addClass`, `_hide-cursor`);
+        cy.get('@app').invoke('addClass', '_hide-cursor');
     }
 
     if (hideScrollbar) {
-        cy.get(`@app`).invoke(`addClass`, `_hide-scrollbar`);
+        cy.get('@app').invoke('addClass', '_hide-scrollbar');
     }
 
-    cy.get(rootSelector).should(`have.class`, `_loaded`);
+    cy.get(rootSelector).should('have.class', '_loaded');
 
     if (hideHeader) {
-        cy.tuiHide(`[tuidocheader]`);
+        cy.tuiHide('[tuidocheader]');
     }
 
     if (hideNavigation) {
-        cy.tuiHide(`.tui-doc-navigation`);
+        cy.tuiHide('.tui-doc-navigation');
     }
 
     if (hideVersionManager) {
-        cy.tuiHide(`version-manager`);
+        cy.tuiHide('version-manager');
     }
 
     if (hideLanguageSwitcher) {
-        cy.tuiHide(`tui-language-switcher`);
+        cy.tuiHide('tui-language-switcher');
     }
 
     if (hideGetHelpLinks) {
-        cy.tuiHide(`community-links`);
+        cy.tuiHide('community-links');
     }
 }
