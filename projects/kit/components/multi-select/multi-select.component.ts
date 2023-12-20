@@ -61,6 +61,7 @@ import {AbstractTuiNativeMultiSelect} from './native-multi-select/native-multi-s
     templateUrl: './multi-select.template.html',
     styleUrls: ['./multi-select.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {'[class._expandable]': 'rows > 1'},
     providers: [
         tuiAsFocusableItemAccessor(TuiMultiSelectComponent),
         tuiAsControl(TuiMultiSelectComponent),
@@ -93,9 +94,6 @@ export class TuiMultiSelectComponent<T>
         this.itemsHandlers.identityMatcher;
 
     @Input()
-    expandable: TuiMultiSelectOptions<T>['expandable'] = this.options.expandable;
-
-    @Input()
     search: string | null = '';
 
     @Input()
@@ -116,7 +114,7 @@ export class TuiMultiSelectComponent<T>
     tagValidator: TuiBooleanHandler<T> = ALWAYS_TRUE_HANDLER;
 
     @Input()
-    rows = Infinity;
+    rows: TuiMultiSelectOptions<T>['rows'] = this.options.rows;
 
     @Output()
     readonly searchChange = new EventEmitter<string | null>();

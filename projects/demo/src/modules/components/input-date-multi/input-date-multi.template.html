@@ -19,7 +19,6 @@
                 <tui-input-date
                     multiple
                     [disabledItemHandler]="disabledItemHandler"
-                    [expandable]="expandable"
                     [focusable]="focusable"
                     [formControl]="control"
                     [markerHandler]="markerHandler"
@@ -53,13 +52,6 @@
                 Disabled state (use
                 <code>formControl.disable()</code>
                 )
-            </ng-template>
-            <ng-template
-                documentationPropertyName="expandable"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="expandable"
-            >
-                Expandable
             </ng-template>
             <ng-template
                 documentationPropertyMode="input"
@@ -106,9 +98,7 @@
                 [documentationPropertyValues]="rowsVariants"
                 [(documentationPropertyValue)]="rows"
             >
-                A number of visible rows in
-                <code>expandable</code>
-                mode
+                A number of visible rows
             </ng-template>
         </tui-doc-documentation>
         <inherited-documentation [dropdown]="true"></inherited-documentation>

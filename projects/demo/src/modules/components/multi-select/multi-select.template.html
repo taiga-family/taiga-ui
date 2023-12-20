@@ -121,7 +121,6 @@
                 <tui-multi-select
                     [disabledItemHandler]="disabledItemHandler"
                     [editable]="editable"
-                    [expandable]="expandable"
                     [focusable]="focusable"
                     [formControl]="control"
                     [identityMatcher]="identityMatcher"
@@ -218,21 +217,11 @@
             </ng-template>
             <ng-template
                 documentationPropertyMode="input"
-                documentationPropertyName="expandable"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="expandable"
-            >
-                Control height can be expanded to show all tags
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
                 documentationPropertyName="rows"
                 documentationPropertyType="number"
                 [(documentationPropertyValue)]="rows"
             >
-                A number of visible rows in
-                <code>expandable</code>
-                mode
+                A number of visible rows
             </ng-template>
             <ng-template
                 documentationPropertyMode="input"

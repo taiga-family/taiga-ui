@@ -4,8 +4,8 @@
         *tuiLet="items$ | async as items"
         placeholder="Find by ..."
         class="b-form"
-        [expandable]="false"
         [formControl]="testValue"
+        [rows]="1"
         [tuiTextfieldLabelOutside]="true"
         (searchChange)="onSearchChange($event)"
     >

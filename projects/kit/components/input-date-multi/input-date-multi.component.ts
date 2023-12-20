@@ -99,9 +99,6 @@ export class TuiInputDateMultiComponent
     defaultActiveYearMonth = TuiMonth.currentLocal();
 
     @Input()
-    expandable = false;
-
-    @Input()
     inputHidden = false;
 
     @Input()

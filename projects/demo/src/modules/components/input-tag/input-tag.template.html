@@ -77,9 +77,11 @@
             [content]="example8"
         >
             <div class="tui-space_bottom-3">
-                You can limit the number of visible rows in expandable mode with
+                You can limit the number of visible rows with
                 <code>rows</code>
-                input
+                input. Set
+                <code>rows</code>
+                to 1 if you want single-line input with horizontal scrolling.
             </div>
 
             <tui-input-tag-example-8></tui-input-tag-example-8>
@@ -100,7 +102,6 @@
                 <tui-input-tag
                     [disabledItemHandler]="disabledItemHandler"
                     [editable]="editable"
-                    [expandable]="expandable"
                     [focusable]="focusable"
                     [formControl]="control"
                     [inputHidden]="inputHidden"
@@ -201,14 +202,6 @@
             </ng-template>
             <ng-template
                 documentationPropertyMode="input"
-                documentationPropertyName="expandable"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="expandable"
-            >
-                Control height can be expanded to show all tags
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
                 documentationPropertyName="separator"
                 documentationPropertyType="string | RegExp"
                 [documentationPropertyValues]="separatorVariants"
@@ -222,9 +215,7 @@
                 documentationPropertyType="number"
                 [(documentationPropertyValue)]="rows"
             >
-                A number of visible rows in
-                <code>expandable</code>
-                mode
+                A number of visible rows
             </ng-template>
             <ng-template
                 documentationPropertyMode="input"
