@@ -7,7 +7,6 @@ import {
     TuiLanguageSwitcherModule,
 } from '@taiga-ui/addon-doc';
 import {TuiCalendarModule, TuiLinkModule} from '@taiga-ui/core';
-import {MarkdownModule} from 'ngx-markdown';
 
 import {I18nComponent} from './i18n.component';
 
@@ -15,7 +14,6 @@ import {I18nComponent} from './i18n.component';
     imports: [
         CommonModule,
         TuiCalendarModule,
-        MarkdownModule,
         TuiLinkModule,
         TuiAddonDocModule,
         TuiLanguageSwitcherModule,

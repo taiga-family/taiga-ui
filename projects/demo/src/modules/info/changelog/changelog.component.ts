@@ -1,16 +1,11 @@
-import {Component} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {tuiRawLoad} from '@taiga-ui/addon-doc';
-import {of, switchMap} from 'rxjs';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 
 @Component({
     selector: 'changelog',
     templateUrl: './changelog.template.html',
-    styleUrls: ['./changelog.style.less'],
-    changeDetection,
+    styleUrls: ['./changelog.component.less'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChangelogComponent {
-    readonly changelog = of(import('../../../../../../CHANGELOG.md?raw')).pipe(
-        switchMap(tuiRawLoad),
-    );
+    readonly changelog = import('../../../../../../CHANGELOG.md?raw');
 }
