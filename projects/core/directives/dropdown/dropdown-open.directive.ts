@@ -126,14 +126,18 @@ export class TuiDropdownOpenDirective implements OnChanges {
     @HostListener('document:keydown.silent', ['$event'])
     onKeydown({key, target, defaultPrevented}: KeyboardEvent): void {
         if (
-            !defaultPrevented &&
-            tuiIsEditingKey(key) &&
-            this.editable &&
-            tuiIsHTMLElement(target) &&
-            !tuiIsElementEditable(target)
+            defaultPrevented ||
+            !tuiIsEditingKey(key) ||
+            !this.editable ||
+            !this.focused ||
+            !tuiIsHTMLElement(target) ||
+            (tuiIsElementEditable(target) && target !== this.host)
         ) {
-            this.host.focus({preventScroll: true});
+            return;
         }
+
+        this.update(true);
+        this.host.focus({preventScroll: true});
     }
 
     ngOnChanges(): void {

@@ -316,8 +316,45 @@ export const pages: TuiDocPages = [
                 section: 'Tools',
                 title: 'DropdownSelection',
                 keywords:
-                    'dropdown, контекст, selection, выделение, выпадашка, дропдаун, Context',
-                route: '/directives/dropdown-selection',
+                    `контекст, выпадашка, дропдаун, меню, Context, ContextMenu, option,` +
+                    `optGroup, опции, tuiOption, варианты, dropdown, menu`,
+                route: `/components/data-list-wrapper`,
+            },
+            {
+                section: `Components`,
+                title: `HostedDropdown`,
+                keywords: `dropdown, контекст, выпадашка, дропдаун, меню, menu`,
+                route: `/components/hosted-dropdown`,
+            },
+            {
+                section: `Tools`,
+                title: `Dropdown`,
+                keywords: `dropdown, контекст, выпадашка, дропдаун, Context`,
+                route: `/directives/dropdown`,
+            },
+            {
+                section: `Tools`,
+                title: `DropdownOpen`,
+                keywords: `dropdown, hosted, контекст, выпадашка, дропдаун, меню, menu`,
+                route: `/directives/dropdown-open`,
+            },
+            {
+                section: `Tools`,
+                title: `DropdownContext`,
+                keywords: `dropdown, контекст, выпадашка, дропдаун, Context, right-click`,
+                route: `/directives/dropdown-context`,
+            },
+            {
+                section: `Tools`,
+                title: `DropdownHover`,
+                keywords: `dropdown, hover, выпадашка, дропдаун`,
+                route: `/directives/dropdown-hover`,
+            },
+            {
+                section: `Tools`,
+                title: `DropdownSelection`,
+                keywords: `dropdown, контекст, selection, выделение, выпадашка, дропдаун, Context`,
+                route: `/directives/dropdown-selection`,
             },
         ],
     },
@@ -972,6 +1009,12 @@ export const pages: TuiDocPages = [
         title: 'Surface',
         keywords: 'card, container, wrapper, image, blur, overlay',
         route: '/experimental/surface',
+    },
+    {
+        section: `Experimental`,
+        title: `Textfield`,
+        keywords: `form, input, select, textarea, combobox, ввод, форма, поле`,
+        route: `/experimental/textfield`,
     },
     {
         section: 'Experimental',

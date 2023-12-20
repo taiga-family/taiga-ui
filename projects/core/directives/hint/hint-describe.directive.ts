@@ -12,6 +12,7 @@ import {tuiAsDriver, TuiDriver} from '@taiga-ui/core/abstract';
 import {
     debounce,
     distinctUntilChanged,
+    fromEvent,
     map,
     merge,
     of,
@@ -30,13 +31,7 @@ export class TuiHintDescribeDirective extends TuiDriver implements OnChanges {
     private readonly id$ = new ReplaySubject(1);
 
     private readonly stream$ = this.id$.pipe(
-        tuiIfMap(
-            () =>
-                tuiTypedFromEvent(this.doc, 'keydown', {
-                    capture: true,
-                }),
-            tuiIsPresent,
-        ),
+        tuiIfMap(() => fromEvent(this.doc, 'keydown', {capture: true}), tuiIsPresent),
         switchMap(() =>
             this.focused
                 ? of(false)
@@ -53,7 +48,7 @@ export class TuiHintDescribeDirective extends TuiDriver implements OnChanges {
     );
 
     @Input()
-    tuiHintDescribe: string | '' | null = '';
+    tuiHintDescribe?: string | null = '';
 
     readonly type = 'hint';
 

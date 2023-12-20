@@ -1,0 +1,34 @@
+<ng-container *ngIf="directive?.change$ | async"></ng-container>
+<ng-content select="input"></ng-content>
+<ng-content select="select"></ng-content>
+<ng-content select="label"></ng-content>
+<span
+    class="t-content"
+    (waResizeObserver)="side = $event[0].contentRect.width"
+>
+    <ng-content></ng-content>
+    <button
+        *ngIf="options.cleaner"
+        appearance="icon"
+        iconLeft="tuiIconClose"
+        size="xs"
+        tabindex="-1"
+        tuiIconButton
+        class="t-clear"
+        (click)="input!.nativeElement.value = ''"
+        (pointerdown.silent.prevent)="input!.nativeElement.focus()"
+    ></button>
+    <ng-content select="tui-tooltip"></ng-content>
+</span>
+<span class="t-template">
+    <ng-container *polymorpheusOutlet="content as text; context: {$implicit: control?.value, active: focused}">
+        {{ text }}
+    </ng-container>
+</span>
+<input
+    *ngIf="showFiller"
+    aria-hidden="true"
+    disabled
+    class="t-filler"
+    [value]="computedFiller"
+/>
