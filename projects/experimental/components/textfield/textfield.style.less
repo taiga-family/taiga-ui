@@ -1,7 +1,6 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
 :host {
-
     --t-left: 0rem;
     --t-right: 0rem;
     position: relative;
@@ -133,8 +132,8 @@
         appearance: none;
         box-sizing: border-box;
         border: none;
-        border-left: var(--t-left) solid transparent;
-        border-right: calc(var(--t-right) + var(--t-side)) solid transparent;
+        border-inline-start: var(--t-left) solid transparent;
+        border-inline-end: calc(var(--t-right) + var(--t-side)) solid transparent;
         border-radius: inherit;
         padding: inherit;
     }

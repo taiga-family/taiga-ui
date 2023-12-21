@@ -10,7 +10,6 @@ import {
 } from '@taiga-ui/core';
 import {
     TuiIconModule,
-    TuiLabelDirective,
     TuiTextfieldModule,
     TuiTooltipModule,
 } from '@taiga-ui/experimental';
@@ -23,7 +22,6 @@ import {ExampleTuiTextfieldComponent} from './textfield.component';
         CommonModule,
         FormsModule,
         TuiTextfieldModule,
-        TuiLabelDirective,
         TuiTooltipModule,
         TuiNotificationModule,
         TuiPrimitiveTextfieldModule,

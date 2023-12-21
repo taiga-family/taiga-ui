@@ -16,11 +16,11 @@ import {
 } from '@taiga-ui/cdk';
 import {TuiDropdownDirective, tuiDropdownOptionsProvider} from '@taiga-ui/core';
 import {TuiButtonModule} from '@taiga-ui/experimental/components/button';
-import {TuiLabelDirective} from '@taiga-ui/experimental/components/label';
 import {tuiAppearanceOptionsProvider} from '@taiga-ui/experimental/directives/appearance';
 import {TuiIconsDirective} from '@taiga-ui/experimental/directives/icons';
 import {PolymorpheusContent, PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
+import {TuiLabelDirective} from './label.directive';
 import {TuiTextfieldDirective} from './textfield.directive';
 import {TUI_TEXTFIELD_OPTIONS, TuiTextfieldOptionsDirective} from './textfield.options';
 

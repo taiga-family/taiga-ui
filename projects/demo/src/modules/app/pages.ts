@@ -313,44 +313,6 @@ export const pages: TuiDocPages = [
                 route: '/directives/dropdown-hover',
             },
             {
-                section: 'Tools',
-                title: 'DropdownSelection',
-                keywords:
-                    `контекст, выпадашка, дропдаун, меню, Context, ContextMenu, option,` +
-                    `optGroup, опции, tuiOption, варианты, dropdown, menu`,
-                route: `/components/data-list-wrapper`,
-            },
-            {
-                section: `Components`,
-                title: `HostedDropdown`,
-                keywords: `dropdown, контекст, выпадашка, дропдаун, меню, menu`,
-                route: `/components/hosted-dropdown`,
-            },
-            {
-                section: `Tools`,
-                title: `Dropdown`,
-                keywords: `dropdown, контекст, выпадашка, дропдаун, Context`,
-                route: `/directives/dropdown`,
-            },
-            {
-                section: `Tools`,
-                title: `DropdownOpen`,
-                keywords: `dropdown, hosted, контекст, выпадашка, дропдаун, меню, menu`,
-                route: `/directives/dropdown-open`,
-            },
-            {
-                section: `Tools`,
-                title: `DropdownContext`,
-                keywords: `dropdown, контекст, выпадашка, дропдаун, Context, right-click`,
-                route: `/directives/dropdown-context`,
-            },
-            {
-                section: `Tools`,
-                title: `DropdownHover`,
-                keywords: `dropdown, hover, выпадашка, дропдаун`,
-                route: `/directives/dropdown-hover`,
-            },
-            {
                 section: `Tools`,
                 title: `DropdownSelection`,
                 keywords: `dropdown, контекст, selection, выделение, выпадашка, дропдаун, Context`,

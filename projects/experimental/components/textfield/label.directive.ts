@@ -1,8 +1,8 @@
 import {Directive, ElementRef, HostBinding, inject} from '@angular/core';
 import {tuiWithStyles} from '@taiga-ui/cdk';
-import {TuiTextfieldComponent} from '@taiga-ui/experimental/components/textfield';
 
 import {TuiLabelComponent} from './label.component';
+import {TuiTextfieldComponent} from './textfield.component';
 
 @Directive({
     standalone: true,
