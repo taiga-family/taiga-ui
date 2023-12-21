@@ -112,7 +112,7 @@ export class TuiInputDateMultiComponent
     placeholder = '';
 
     @Input()
-    rows = Infinity;
+    rows = 1;
 
     maskitoOptions: MaskitoOptions = maskitoDateOptionsGenerator({
         mode: 'dd/mm/yyyy',

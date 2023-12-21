@@ -182,10 +182,7 @@ describe('MultiSelect', () => {
         });
 
         test('should scroll to end on focus', async ({page}) => {
-            await tuiGoto(
-                page,
-                'components/multi-select/API?expandable=false&sandboxWidth=350',
-            );
+            await tuiGoto(page, 'components/multi-select/API?rows=1&sandboxWidth=350');
 
             await multiSelect.arrow.click();
             await multiSelect.selectOptions([0, 1, 2, 3, 4]);
