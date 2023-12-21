@@ -9,8 +9,8 @@ export interface TuiTextfieldOptions extends TuiAppearanceOptions {
 }
 
 export const TUI_TEXTFIELD_DEFAULT_OPTIONS: TuiTextfieldOptions = {
-    appearance: `textfield`,
-    size: `l`,
+    appearance: 'textfield',
+    size: 'l',
     cleaner: true,
 };
 
@@ -28,7 +28,7 @@ export function tuiTextfieldOptionsProvider(
 
 @Directive({
     standalone: true,
-    selector: `[tuiTextfieldAppearance],[tuiTextfieldSize],[tuiTextfieldCleaner]`,
+    selector: '[tuiTextfieldAppearance],[tuiTextfieldSize],[tuiTextfieldCleaner]',
     providers: [
         {
             provide: TUI_TEXTFIELD_OPTIONS,
@@ -42,12 +42,12 @@ export class TuiTextfieldOptionsDirective
 {
     private readonly options = inject(TUI_TEXTFIELD_OPTIONS, {skipSelf: true});
 
-    @Input(`tuiTextfieldAppearance`)
+    @Input('tuiTextfieldAppearance')
     appearance = this.options.appearance;
 
-    @Input(`tuiTextfieldSize`)
+    @Input('tuiTextfieldSize')
     size = this.options.size;
 
-    @Input(`tuiTextfieldCleaner`)
+    @Input('tuiTextfieldCleaner')
     cleaner = this.options.cleaner;
 }
