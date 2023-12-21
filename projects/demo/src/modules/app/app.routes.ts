@@ -411,12 +411,12 @@ export const ROUTES: Routes = [
         },
     },
     {
-        path: `experimental/textfield`,
+        path: 'experimental/textfield',
         loadChildren: async () =>
-            (await import(`../experimental/textfield/textfield.module`))
+            (await import('../experimental/textfield/textfield.module'))
                 .ExampleTuiTextfieldModule,
         data: {
-            title: `Textfield`,
+            title: 'Textfield',
         },
     },
     {

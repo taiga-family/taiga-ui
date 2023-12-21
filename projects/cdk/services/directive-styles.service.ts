@@ -24,7 +24,7 @@ export function tuiWithStyles(component: Type<unknown>): void {
  * @deprecated use {@link tuiWithStyles} instead
  */
 @Injectable({
-    providedIn: `root`,
+    providedIn: 'root',
 })
 export class TuiDirectiveStylesService {
     readonly map = new Map();

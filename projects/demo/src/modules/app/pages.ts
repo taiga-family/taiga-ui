@@ -313,10 +313,11 @@ export const pages: TuiDocPages = [
                 route: '/directives/dropdown-hover',
             },
             {
-                section: `Tools`,
-                title: `DropdownSelection`,
-                keywords: `dropdown, контекст, selection, выделение, выпадашка, дропдаун, Context`,
-                route: `/directives/dropdown-selection`,
+                section: 'Tools',
+                title: 'DropdownSelection',
+                keywords:
+                    'dropdown, контекст, selection, выделение, выпадашка, дропдаун, Context',
+                route: '/directives/dropdown-selection',
             },
         ],
     },
@@ -973,10 +974,10 @@ export const pages: TuiDocPages = [
         route: '/experimental/surface',
     },
     {
-        section: `Experimental`,
-        title: `Textfield`,
-        keywords: `form, input, select, textarea, combobox, ввод, форма, поле`,
-        route: `/experimental/textfield`,
+        section: 'Experimental',
+        title: 'Textfield',
+        keywords: 'form, input, select, textarea, combobox, ввод, форма, поле',
+        route: '/experimental/textfield',
     },
     {
         section: 'Experimental',
