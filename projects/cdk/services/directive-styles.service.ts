@@ -7,6 +7,7 @@ import {
     Injectable,
     INJECTOR,
     Injector,
+    OnDestroy,
     Type,
 } from '@angular/core';
 
@@ -26,7 +27,7 @@ export function tuiWithStyles(component: Type<unknown>): void {
 @Injectable({
     providedIn: 'root',
 })
-export class TuiDirectiveStylesService {
+export class TuiDirectiveStylesService implements OnDestroy {
     readonly map = new Map();
 
     constructor(
@@ -42,5 +43,9 @@ export class TuiDirectiveStylesService {
                 this.resolver.resolveComponentFactory(component).create(this.injector),
             );
         }
+    }
+
+    ngOnDestroy(): void {
+        this.map.forEach(component => component.destroy());
     }
 }
