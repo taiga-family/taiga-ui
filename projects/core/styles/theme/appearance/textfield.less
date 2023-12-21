@@ -1,0 +1,35 @@
+@import '../../taiga-ui-local.less';
+
+[tuiAppearance][data-appearance='textfield'] {
+    --t-shadow: 0 0.125rem 0.1875rem rgba(0, 0, 0, 0.1);
+    background: var(--tui-base-01);
+    color: var(--tui-text-01);
+    box-shadow: var(--t-shadow);
+    outline: 1px solid var(--tui-base-03);
+    outline-offset: -1px;
+
+    &:valid[data-invalid='true'],
+    &:invalid:not([data-invalid='false']) {
+        outline-color: var(--tui-negative);
+    }
+
+    &:read-only {
+        box-shadow: none;
+        outline-color: var(--tui-base-04) !important;
+    }
+    .transition(~'box-shadow, background, outline-color');
+
+    .appearance-hover({
+        --t-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.16);
+    });
+
+    .appearance-focus({
+        box-shadow: none;
+        outline: 0.125rem solid var(--tui-primary);
+        outline-offset: -0.125rem;
+    });
+
+    .appearance-disabled({
+        box-shadow: none;
+    });
+}

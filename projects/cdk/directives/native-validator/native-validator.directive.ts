@@ -13,7 +13,7 @@ import {AbstractControl, NG_VALIDATORS, Validator} from '@angular/forms';
     ],
 })
 export class TuiNativeValidatorDirective implements Validator {
-    private readonly el: HTMLInputElement = inject(ElementRef).nativeElement;
+    private readonly host: HTMLInputElement = inject(ElementRef).nativeElement;
     private readonly zone = inject(NgZone);
     private control?: AbstractControl;
 
@@ -32,5 +32,9 @@ export class TuiNativeValidatorDirective implements Validator {
         this.zone.runOutsideAngular(() => setTimeout(() => this.handleValidation()));
 
         return null;
+    }
+
+    private get el(): HTMLInputElement {
+        return this.host.querySelector('input,textarea,select') || this.host;
     }
 }

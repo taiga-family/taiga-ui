@@ -411,6 +411,15 @@ export const ROUTES: Routes = [
         },
     },
     {
+        path: 'experimental/textfield',
+        loadChildren: async () =>
+            (await import('../experimental/textfield/textfield.module'))
+                .ExampleTuiTextfieldModule,
+        data: {
+            title: 'Textfield',
+        },
+    },
+    {
         path: 'experimental/thumbnail-card',
         loadChildren: async () =>
             (await import('../experimental/thumbnail-card/thumbnail-card.module'))

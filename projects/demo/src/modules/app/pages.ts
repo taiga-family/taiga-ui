@@ -975,6 +975,12 @@ export const pages: TuiDocPages = [
     },
     {
         section: 'Experimental',
+        title: 'Textfield',
+        keywords: 'form, input, select, textarea, combobox, ввод, форма, поле',
+        route: '/experimental/textfield',
+    },
+    {
+        section: 'Experimental',
         title: 'Title',
         keywords: 'subtitle, заголовок, caption, description, подзаголовок',
         route: '/experimental/title',

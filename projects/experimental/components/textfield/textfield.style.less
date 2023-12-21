@@ -1,0 +1,216 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+:host {
+    --t-left: 0rem;
+    --t-right: 0rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+    cursor: pointer;
+    height: var(--t-height);
+    color: var(--tui-text-03);
+
+    &[data-size='s'] {
+        --t-height: var(--tui-height-s);
+        padding: 0 var(--tui-padding-s);
+        border-radius: var(--tui-radius-m);
+        font: var(--tui-font-text-s);
+
+        &._icon-left {
+            --t-left: 1.25rem;
+        }
+
+        &._icon-right {
+            --t-right: 1.25rem;
+        }
+
+        &:before {
+            margin-inline-start: -0.25rem;
+            margin-inline-end: 0.5rem;
+            font-size: 1rem;
+        }
+
+        &:after {
+            margin-inline-end: -0.175rem;
+            margin-inline-start: 0.25rem;
+            font-size: 1rem;
+        }
+
+        ::ng-deep input {
+            font: var(--tui-font-text-s);
+        }
+
+        .t-content {
+            gap: 0;
+        }
+    }
+
+    &[data-size='m'] {
+        --t-height: var(--tui-height-m);
+        padding: 0 var(--tui-padding-m);
+        border-radius: var(--tui-radius-m);
+        font: var(--tui-font-text-s);
+
+        &._icon-left {
+            --t-left: 1.75rem;
+        }
+
+        &._icon-right {
+            --t-right: 1.75rem;
+        }
+
+        &:before {
+            margin-inline-start: -0.125rem;
+            margin-inline-end: 0.375rem;
+        }
+
+        &:after {
+            margin-inline-start: 0.375rem;
+            margin-inline-end: -0.125rem;
+        }
+
+        ::ng-deep input {
+            font: var(--tui-font-text-s);
+        }
+    }
+
+    &[data-size='l'] {
+        --t-height: var(--tui-height-l);
+        padding: 0 var(--tui-padding-l);
+        border-radius: var(--tui-radius-l);
+        font: var(--tui-font-text-m);
+
+        &._icon-left {
+            --t-left: 2.25rem;
+        }
+
+        &._icon-right {
+            --t-right: 2.25rem;
+        }
+
+        &:before {
+            margin-inline-end: 0.75rem;
+        }
+
+        &:after {
+            margin-inline-start: 0.25rem;
+        }
+
+        ::ng-deep input {
+            font: var(--tui-font-text-m);
+        }
+    }
+
+    &:hover {
+        color: var(--tui-text-02);
+    }
+
+    &:before {
+        z-index: 1;
+    }
+
+    &._disabled:before,
+    &._disabled:after {
+        opacity: var(--tui-disabled-opacity);
+    }
+
+    &._with-label {
+        .t-template,
+        ::ng-deep input {
+            padding-top: calc(var(--t-height) / 3);
+
+            &::placeholder {
+                color: transparent;
+            }
+        }
+    }
+
+    .t-template,
+    ::ng-deep input {
+        .fullsize();
+        appearance: none;
+        box-sizing: border-box;
+        border: none;
+        border-inline-start: var(--t-left) solid transparent;
+        border-inline-end: calc(var(--t-right) + var(--t-side)) solid transparent;
+        border-radius: inherit;
+        padding: inherit;
+    }
+
+    ::ng-deep input {
+        pointer-events: auto;
+
+        &:read-only ~ .t-filler {
+            display: none;
+        }
+
+        &:disabled {
+            & ~ label,
+            & ~ .t-content {
+                opacity: var(--tui-disabled-opacity);
+
+                tui-tooltip {
+                    display: none;
+                }
+            }
+        }
+
+        &:not(:placeholder-shown) {
+            & ~ label {
+                font-size: 0.83em;
+                transform: translateY(-0.7em);
+            }
+
+            &:not(:disabled):not(:read-only)[data-invalid='true'] ~ label,
+            &:invalid:not(:disabled):not(:read-only):not([data-invalid='true']) ~ label {
+                color: var(--tui-negative);
+            }
+
+            &:not(:disabled):not(:read-only:not(._readonly)) ~ .t-content .t-clear {
+                display: flex;
+            }
+        }
+
+        .appearance-focus({
+            &::placeholder {
+                color: var(--tui-text-03);
+            }
+
+            & ~ label {
+                color: var(--tui-text-01) !important;
+                font-size: 0.83em;
+                transform: translateY(-0.7em);
+            }
+        });
+    }
+
+    ::ng-deep label {
+        .transition(all);
+        .text-overflow();
+        position: relative;
+        display: block;
+        flex: 1;
+        font-size: inherit;
+        color: var(--tui-text-02);
+    }
+    .transition(color);
+}
+
+.t-content {
+    display: flex;
+    gap: 0.25rem;
+    margin-inline-start: auto;
+}
+
+.t-clear {
+    display: none;
+    pointer-events: auto;
+}
+
+.t-filler {
+    pointer-events: none;
+    background: none;
+    color: var(--tui-text-03);
+    opacity: 1;
+}

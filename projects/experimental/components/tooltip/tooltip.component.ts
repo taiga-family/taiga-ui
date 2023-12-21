@@ -3,6 +3,7 @@ import {
     Component,
     HostListener,
     Inject,
+    inject,
     Input,
     Optional,
     Self,
@@ -18,6 +19,7 @@ import {
     TuiHintOptions,
     TuiHintOptionsDirective,
 } from '@taiga-ui/core';
+import {TuiTextfieldComponent} from '@taiga-ui/experimental/components/textfield';
 import {TuiAppearanceDirective} from '@taiga-ui/experimental/directives/appearance';
 import {Observable, takeUntil} from 'rxjs';
 
@@ -34,6 +36,7 @@ import {TUI_TOOLTIP_OPTIONS, TuiTooltipOptions} from './tooltip.options';
     inputs: ['content', 'direction', 'appearance', 'showDelay', 'hideDelay'],
 })
 export class TuiTooltipComponent<C = any> extends TuiHintOptionsDirective {
+    private readonly textfield = inject(TuiTextfieldComponent, {optional: true});
     private mode: TuiBrightness | null = null;
 
     @ViewChild(TuiHintHoverDirective)
@@ -60,6 +63,10 @@ export class TuiTooltipComponent<C = any> extends TuiHintOptionsDirective {
         mode$.pipe(takeUntil(destroy$)).subscribe(mode => {
             this.mode = mode;
         });
+    }
+
+    get id(): string {
+        return this.describeId || this.textfield?.id || '';
     }
 
     get computedAppearance(): string {

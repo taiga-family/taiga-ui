@@ -11,6 +11,7 @@ export * from '@taiga-ui/experimental/components/icon';
 export * from '@taiga-ui/experimental/components/pin';
 export * from '@taiga-ui/experimental/components/radio';
 export * from '@taiga-ui/experimental/components/rating';
+export * from '@taiga-ui/experimental/components/textfield';
 export * from '@taiga-ui/experimental/components/thumbnail-card';
 export * from '@taiga-ui/experimental/components/toggle';
 export * from '@taiga-ui/experimental/components/tooltip';
