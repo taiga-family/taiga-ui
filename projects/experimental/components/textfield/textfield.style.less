@@ -139,6 +139,7 @@
     }
 
     ::ng-deep input {
+        .transition(color);
         pointer-events: auto;
 
         &:read-only ~ .t-filler {
@@ -172,17 +173,19 @@
             }
         }
 
-        .appearance-focus({
-            &::placeholder {
-                color: var(--tui-text-03);
-            }
+        &:not(:read-only) {
+            .appearance-focus({
+                &::placeholder {
+                    color: var(--tui-text-03);
+                }
 
-            & ~ label {
-                color: var(--tui-text-01) !important;
-                font-size: 0.83em;
-                transform: translateY(-0.7em);
-            }
-        });
+                & ~ label {
+                    color: var(--tui-text-01) !important;
+                    font-size: 0.83em;
+                    transform: translateY(-0.7em);
+                }
+            });
+        }
     }
 
     ::ng-deep label {
@@ -194,7 +197,6 @@
         font-size: inherit;
         color: var(--tui-text-02);
     }
-    .transition(color);
 }
 
 .t-content {

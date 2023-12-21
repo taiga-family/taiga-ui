@@ -1,6 +1,5 @@
 <ng-container *ngIf="directive?.change$ | async"></ng-container>
 <ng-content select="input"></ng-content>
-<ng-content select="select"></ng-content>
 <ng-content select="label"></ng-content>
 <span
     class="t-content"
@@ -15,8 +14,8 @@
         tabindex="-1"
         tuiIconButton
         class="t-clear"
-        (click)="input!.nativeElement.value = ''"
-        (pointerdown.silent.prevent)="input!.nativeElement.focus()"
+        (click)="clear()"
+        (pointerdown.silent.prevent)="el.focus()"
     ></button>
     <ng-content select="tui-tooltip"></ng-content>
 </span>

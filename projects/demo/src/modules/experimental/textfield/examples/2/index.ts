@@ -3,12 +3,12 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
 @Component({
-    selector: 'tui-textfield-example-1',
+    selector: 'tui-textfield-example-2',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiTextfieldExample1 {
-    value = '';
+export class TuiTextfieldExample2 {
+    value = 'Test';
 }
