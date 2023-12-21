@@ -23,7 +23,7 @@ import {
     tuiDropdownOptionsProvider,
 } from '@taiga-ui/core';
 import {TuiButtonModule} from '@taiga-ui/experimental/components/button';
-import {tuiAppearanceOptionsProvider} from '@taiga-ui/experimental/directives';
+import {tuiAppearanceOptionsProvider} from '@taiga-ui/experimental/directives/appearance';
 import {TuiIconsDirective} from '@taiga-ui/experimental/directives/icons';
 import {PolymorpheusContent, PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import {EMPTY} from 'rxjs';
