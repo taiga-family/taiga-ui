@@ -11,7 +11,7 @@ export interface TuiTextfieldOptions extends TuiAppearanceOptions {
 export const TUI_TEXTFIELD_DEFAULT_OPTIONS: TuiTextfieldOptions = {
     appearance: 'textfield',
     size: 'l',
-    cleaner: false,
+    cleaner: true,
 };
 
 export const TUI_TEXTFIELD_OPTIONS = tuiCreateToken(TUI_TEXTFIELD_DEFAULT_OPTIONS);

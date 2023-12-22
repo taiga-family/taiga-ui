@@ -1,195 +1,46 @@
-<div [tuiTextfieldCleaner]="true">
-    <h2 class="tui-heading-5">Label inside</h2>
-    <tui-textfield
-        *ngFor="let size of sizes"
-        iconLeft="tuiIconSearchLarge"
-        iconRight="tuiIconSettingsLarge"
-        [filler]="filler"
-        [tuiTextfieldSize]="size"
-    >
-        <label tuiLabel>I am a label</label>
-        <input
-            placeholder="I am placeholder"
-            tuiTextfieldd
-            [(ngModel)]="value"
-        />
-        <tui-icon icon="tuiIconBellLarge"></tui-icon>
-        <tui-tooltip content="I am a hint"></tui-tooltip>
-    </tui-textfield>
+<tui-textfield
+    iconLeft="tuiIconSearchLarge"
+    iconRight="tuiIconSettingsLarge"
+>
+    <label tuiLabel>I am a short label</label>
+    <input
+        placeholder="I am placeholder"
+        tuiTextfield
+        [(ngModel)]="value"
+    />
+    <tui-icon icon="tuiIconBellLarge"></tui-icon>
+    <tui-tooltip content="I am a hint"></tui-tooltip>
+</tui-textfield>
 
-    <h2 class="tui-heading-5">Label outside</h2>
-    <label
-        *ngFor="let size of sizes"
-        tuiLabel
-    >
-        For long labels it is better to use label outside as it can wrap to multiple lines
-        <tui-textfield
-            #textfield
-            iconLeft="tuiIconSearchLarge"
-            iconRight="tuiIconSettingsLarge"
-            [filler]="filler"
-            [tuiTextfieldSize]="size"
-        >
-            <input
-                tuiTextfieldd
-                [placeholder]="textfield.focused ? 'I am placeholder' : 'I am a short label'"
-                [(ngModel)]="value"
-            />
-            <tui-icon icon="tuiIconBellLarge"></tui-icon>
-            <tui-tooltip content="I am a hint"></tui-tooltip>
-        </tui-textfield>
-    </label>
-
-    <h2 class="tui-heading-5">Disabled</h2>
-    <tui-textfield
-        iconLeft="tuiIconSearchLarge"
-        iconRight="tuiIconSettingsLarge"
-        [filler]="filler"
-    >
-        <label tuiLabel>I am a label</label>
-        <input
-            placeholder="I am placeholder"
-            tuiTextfieldd
-            [disabled]="true"
-            [(ngModel)]="value"
-        />
-        <tui-icon icon="tuiIconBellLarge"></tui-icon>
-        <tui-tooltip content="I am a hint"></tui-tooltip>
-    </tui-textfield>
-
-    <h2 class="tui-heading-5">Read only</h2>
-    <tui-textfield
-        iconLeft="tuiIconSearchLarge"
-        iconRight="tuiIconSettingsLarge"
-        [filler]="filler"
-    >
-        <label tuiLabel>I am a label</label>
-        <input
-            placeholder="I am placeholder"
-            tuiTextfieldd
-            [readOnly]="true"
-            [(ngModel)]="value"
-        />
-        <tui-icon icon="tuiIconBellLarge"></tui-icon>
-        <tui-tooltip content="I am a hint"></tui-tooltip>
-    </tui-textfield>
-
-    <h2 class="tui-heading-5">Invalid</h2>
-    <tui-textfield
-        iconLeft="tuiIconSearchLarge"
-        iconRight="tuiIconSettingsLarge"
-        [filler]="filler"
-    >
-        <label tuiLabel>I am a label</label>
-        <input
-            placeholder="I am placeholder"
-            tuiTextfieldd
-            [invalid]="true"
-            [(ngModel)]="value"
-        />
-        <tui-icon icon="tuiIconBellLarge"></tui-icon>
-        <tui-tooltip content="I am a hint"></tui-tooltip>
-    </tui-textfield>
+<label tuiLabel>
+    For long labels it is better to use label outside as it can wrap to multiple lines
     <tui-textfield
         #textfield
         iconLeft="tuiIconSearchLarge"
         iconRight="tuiIconSettingsLarge"
-        [filler]="filler"
+        tuiTextfieldSize="m"
     >
         <input
-            tuiTextfieldd
-            [invalid]="true"
+            tuiTextfield
             [placeholder]="textfield.focused ? 'I am placeholder' : 'I am a short label'"
             [(ngModel)]="value"
         />
         <tui-icon icon="tuiIconBellLarge"></tui-icon>
         <tui-tooltip content="I am a hint"></tui-tooltip>
     </tui-textfield>
-</div>
+</label>
 
-<div [tuiTextfieldCleaner]="true">
-    <h2 class="tui-heading-5">&nbsp;</h2>
-    <tui-primitive-textfield
-        *ngFor="let size of sizes"
-        tuiHintContent="I am a hint"
-        tuiTextfieldCustomContent="tuiIconBellLarge"
-        tuiTextfieldIcon="tuiIconSettingsLarge"
-        tuiTextfieldIconLeft="tuiIconSearchLarge"
-        [tuiTextfieldFiller]="filler"
-        [tuiTextfieldSize]="size"
-        [(value)]="value"
-    >
-        I am a label
-    </tui-primitive-textfield>
-
-    <h2 class="tui-heading-5">&nbsp;</h2>
-    <label
-        *ngFor="let size of sizes"
-        tuiLabel
-    >
-        For long labels it is better to use label outside as it can wrap to multiple lines
-        <tui-primitive-textfield
-            tuiHintContent="I am a hint"
-            tuiTextfieldCustomContent="tuiIconBellLarge"
-            tuiTextfieldIcon="tuiIconSettingsLarge"
-            tuiTextfieldIconLeft="tuiIconSearchLarge"
-            [tuiTextfieldFiller]="filler"
-            [tuiTextfieldLabelOutside]="true"
-            [tuiTextfieldSize]="size"
-            [(value)]="value"
-        >
-            I am a label
-        </tui-primitive-textfield>
-    </label>
-
-    <h2 class="tui-heading-5">&nbsp;</h2>
-    <tui-primitive-textfield
-        tuiHintContent="I am a hint"
-        tuiTextfieldCustomContent="tuiIconBellLarge"
-        tuiTextfieldIcon="tuiIconSettingsLarge"
-        tuiTextfieldIconLeft="tuiIconSearchLarge"
-        [disabled]="true"
-        [tuiTextfieldFiller]="filler"
-        [(value)]="value"
-    >
-        I am a label
-    </tui-primitive-textfield>
-
-    <h2 class="tui-heading-5">&nbsp;</h2>
-    <tui-primitive-textfield
-        tuiHintContent="I am a hint"
-        tuiTextfieldCustomContent="tuiIconBellLarge"
-        tuiTextfieldIcon="tuiIconSettingsLarge"
-        tuiTextfieldIconLeft="tuiIconSearchLarge"
-        [readOnly]="true"
-        [tuiTextfieldFiller]="filler"
-        [(value)]="value"
-    >
-        I am a label
-    </tui-primitive-textfield>
-
-    <h2 class="tui-heading-5">&nbsp;</h2>
-    <tui-primitive-textfield
-        tuiHintContent="I am a hint"
-        tuiTextfieldCustomContent="tuiIconBellLarge"
-        tuiTextfieldIcon="tuiIconSettingsLarge"
-        tuiTextfieldIconLeft="tuiIconSearchLarge"
-        [invalid]="true"
-        [tuiTextfieldFiller]="filler"
-        [(value)]="value"
-    >
-        I am a label
-    </tui-primitive-textfield>
-    <tui-primitive-textfield
-        tuiHintContent="I am a hint"
-        tuiTextfieldCustomContent="tuiIconBellLarge"
-        tuiTextfieldIcon="tuiIconSettingsLarge"
-        tuiTextfieldIconLeft="tuiIconSearchLarge"
-        [invalid]="true"
-        [tuiTextfieldFiller]="filler"
-        [tuiTextfieldLabelOutside]="true"
-        [(value)]="value"
-    >
-        I am a label
-    </tui-primitive-textfield>
-</div>
+<tui-textfield
+    #textfield
+    iconLeft="tuiIconSearchLarge"
+    iconRight="tuiIconSettingsLarge"
+    tuiTextfieldSize="s"
+>
+    <input
+        tuiTextfield
+        [placeholder]="textfield.focused ? 'I am placeholder' : 'I am a short label'"
+        [(ngModel)]="value"
+    />
+    <tui-icon icon="tuiIconBellLarge"></tui-icon>
+    <tui-tooltip content="I am a hint"></tui-tooltip>
+</tui-textfield>

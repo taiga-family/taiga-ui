@@ -1,0 +1,13 @@
+<tui-textfield
+    tuiDropdownOpen
+    [tuiDropdown]="dropdown"
+>
+    <label tuiLabel>Start typing</label>
+    <input
+        tuiTextfield
+        [(ngModel)]="value"
+    />
+    <ng-template #dropdown>
+        <tui-data-list-wrapper [items]="items | tuiFilterByInput"></tui-data-list-wrapper>
+    </ng-template>
+</tui-textfield>

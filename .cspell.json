@@ -36,8 +36,7 @@
         "retrowave",
         "replicants",
         "tuiiconbutton",
-        "hitbox",
-        "Textfieldd"
+        "hitbox"
     ],
     "ignoreRegExpList": ["\\(https?://.*?\\)", "\\/{1}.+\\/{1}", "\\%2F.+", "\\%2C.+", "\\ɵ.+", "\\ыва.+"],
     "overrides": [

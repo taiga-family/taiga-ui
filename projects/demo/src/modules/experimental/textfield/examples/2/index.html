@@ -1,0 +1,29 @@
+<tui-textfield iconLeft="tuiIconSearchLarge">
+    <label tuiLabel>Disabled</label>
+    <input
+        tuiTextfield
+        [disabled]="true"
+        [(ngModel)]="value"
+    />
+    <tui-tooltip content="Disabled does not show tooltip"></tui-tooltip>
+</tui-textfield>
+<tui-textfield iconLeft="tuiIconSearchLarge">
+    <label tuiLabel>Read-only</label>
+    <input
+        placeholder="I am placeholder"
+        tuiTextfield
+        [readOnly]="true"
+        [(ngModel)]="value"
+    />
+    <tui-tooltip content="Readonly shows tooltip"></tui-tooltip>
+</tui-textfield>
+<tui-textfield iconLeft="tuiIconSearchLarge">
+    <label tuiLabel>Invalid</label>
+    <input
+        placeholder="I am placeholder"
+        tuiTextfield
+        [invalid]="true"
+        [(ngModel)]="value"
+    />
+    <tui-tooltip content="Can also follow Angular validation"></tui-tooltip>
+</tui-textfield>

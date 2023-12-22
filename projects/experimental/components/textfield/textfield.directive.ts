@@ -7,7 +7,7 @@ import {TuiTextfieldComponent} from './textfield.component';
 
 @Directive({
     standalone: true,
-    selector: 'input[tuiTextfieldd]',
+    selector: 'input[tuiTextfield]',
     host: {
         '[id]': 'input.id || this.idService.generate()',
         '[placeholder]': 'input.placeholder || " "',
