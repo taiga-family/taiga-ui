@@ -3,7 +3,6 @@ import {
     ChangeDetectionStrategy,
     Component,
     ContentChild,
-    ElementRef,
     inject,
     Input,
 } from '@angular/core';
@@ -15,6 +14,7 @@ import {
     TuiFocusableElementAccessor,
     tuiIsNativeFocused,
     TuiNativeValidatorDirective,
+    TuiStringHandler,
 } from '@taiga-ui/cdk';
 import {
     tuiAsDataListHost,
@@ -60,9 +60,6 @@ export interface TuiTextfieldContext<T> extends TuiContextWithImplicit<T> {
         '[attr.data-size]': 'options.size',
         '[class._with-label]': 'label',
         '[class._disabled]': 'el.disabled',
-        '(input)': '0',
-        '(focusin)': '0',
-        '(focusout)': '0',
     },
     hostDirectives: [
         TuiNativeValidatorDirective,
@@ -75,13 +72,13 @@ export interface TuiTextfieldContext<T> extends TuiContextWithImplicit<T> {
 export class TuiTextfieldComponent<T>
     implements TuiDataListHost<T>, TuiFocusableElementAccessor
 {
-    @ContentChild(TuiTextfieldDirective, {read: ElementRef})
-    private readonly input?: ElementRef<HTMLInputElement>;
-
     private readonly dropdown = inject(TuiDropdownOpenDirective, {
         optional: true,
         self: true,
     });
+
+    @ContentChild(TuiTextfieldDirective)
+    readonly directive?: TuiTextfieldDirective;
 
     @ContentChild(TuiLabelDirective)
     readonly label?: unknown;
@@ -90,11 +87,14 @@ export class TuiTextfieldComponent<T>
     filler = '';
 
     @Input()
+    stringify: TuiStringHandler<T> = String;
+
+    @Input()
     content: PolymorpheusContent<TuiTextfieldContext<T>>;
 
     side = 0;
 
-    readonly directive? = inject(TuiTextfieldOptionsDirective, {optional: true});
+    readonly change$ = inject(TuiTextfieldOptionsDirective, {optional: true})?.change$;
     readonly options = inject(TUI_TEXTFIELD_OPTIONS);
     readonly control = inject(NgControl, {optional: true});
 
@@ -105,15 +105,15 @@ export class TuiTextfieldComponent<T>
     }
 
     get el(): HTMLInputElement {
-        if (!this.input) {
+        if (!this.directive) {
             throw new Error('[tuiTextfield] component is required');
         }
 
-        return this.input.nativeElement;
+        return this.directive.el;
     }
 
     get computedFiller(): string {
-        const value = this.input?.nativeElement.value || '';
+        const value = this.el.value || '';
         const filler = value + this.filler.slice(value.length);
 
         return filler.length > value.length ? filler : '';
@@ -124,7 +124,7 @@ export class TuiTextfieldComponent<T>
     }
 
     get focused(): boolean {
-        return !!this.dropdown?.dropdown || tuiIsNativeFocused(this.input?.nativeElement);
+        return !!this.dropdown?.dropdown || tuiIsNativeFocused(this.directive?.el);
     }
 
     get showFiller(): boolean {
@@ -135,13 +135,8 @@ export class TuiTextfieldComponent<T>
         );
     }
 
-    clear(): void {
-        this.el.value = '';
-        this.el.dispatchEvent(new Event('input'));
-    }
-
     handleOption(option: T): void {
-        this.el.value = String(option);
+        this.directive?.setValue(this.stringify(option));
         this.dropdown?.toggle(false);
     }
 }
