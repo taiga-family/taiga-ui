@@ -37,7 +37,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        project: [core, deep, kit]
+        project: [core, kit]
     name: ${{ matrix.project }}
     steps:
       - uses: taiga-family/ci/actions/setup/checkout@v1.50.1
