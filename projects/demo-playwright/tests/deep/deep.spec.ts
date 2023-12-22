@@ -24,7 +24,7 @@ test.describe('Deep', () => {
     deepPaths.forEach(path => {
         test(path, async ({page}) => {
             await tuiMockImages(page);
-            await tuiGoto(page, `${path}/API?sandboxWidth=320`);
+            await tuiGoto(page, `${path}/API`);
 
             const controls = await page.locator('.t-table .t-cell_value').all();
 

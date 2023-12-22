@@ -91,84 +91,83 @@
     [class.t-wrapper_transparent]="!opaque"
 >
     <div
+        #content
         id="demo-content"
         class="t-content"
     >
-        <div #content>
-            <form
-                *ngIf="testForm"
-                class="t-form"
-                [formGroup]="testForm"
+        <form
+            *ngIf="testForm"
+            class="t-form"
+            [formGroup]="testForm"
+        >
+            <div class="t-input-wrapper">
+                <ng-container [ngTemplateOutlet]="template"></ng-container>
+            </div>
+            <button
+                automation-id="tui-demo-button__toggle-details"
+                size="s"
+                tuiButton
+                type="button"
+                class="t-button"
+                [iconRight]="icon"
+                (click)="toggleDetails()"
             >
-                <div class="t-input-wrapper">
-                    <ng-container [ngTemplateOutlet]="template"></ng-container>
-                </div>
-                <button
-                    automation-id="tui-demo-button__toggle-details"
-                    size="s"
-                    tuiButton
-                    type="button"
-                    class="t-button"
-                    [iconRight]="icon"
-                    (click)="toggleDetails()"
-                >
-                    {{ texts[2] }}
-                </button>
-                <ng-template #icon>
-                    <tui-svg
-                        class="t-icon"
-                        [class.t-icon_rotated]="expanded"
-                        [src]="options.iconSmall"
-                    ></tui-svg>
-                </ng-template>
-                <tui-expand
-                    class="t-expand"
-                    [expanded]="expanded"
-                >
-                    <ng-template tuiExpandContent>
-                        <pre class="t-value">Form data: {{ testForm.value | json }}</pre>
-                        <div
-                            tuiGroup
-                            class="t-form-controls"
+                {{ texts[2] }}
+            </button>
+            <ng-template #icon>
+                <tui-svg
+                    class="t-icon"
+                    [class.t-icon_rotated]="expanded"
+                    [src]="options.iconSmall"
+                ></tui-svg>
+            </ng-template>
+            <tui-expand
+                class="t-expand"
+                [expanded]="expanded"
+            >
+                <ng-template tuiExpandContent>
+                    <pre class="t-value">Form data: {{ testForm.value | json }}</pre>
+                    <div
+                        tuiGroup
+                        class="t-form-controls"
+                    >
+                        <tui-select
+                            automation-id="tui-demo-select__expand-update-on"
+                            tuiTextfieldSize="s"
+                            class="t-select"
+                            [ngModel]="updateOn"
+                            [ngModelOptions]="{standalone: true}"
+                            (ngModelChange)="updateOnChange($event)"
                         >
-                            <tui-select
-                                automation-id="tui-demo-select__expand-update-on"
-                                tuiTextfieldSize="s"
-                                class="t-select"
-                                [ngModel]="updateOn"
-                                [ngModelOptions]="{standalone: true}"
-                                (ngModelChange)="updateOnChange($event)"
-                            >
-                                updateOn
-                                <tui-data-list-wrapper
-                                    *tuiDataList
-                                    [items]="updateOnVariants"
-                                ></tui-data-list-wrapper>
-                            </tui-select>
-                            <button
-                                automation-id="tui-demo-button__reset-state"
-                                size="s"
-                                tuiButton
-                                type="reset"
-                                class="tui-group__auto-width-item"
-                            >
-                                Reset
-                            </button>
-                            <button
-                                automation-id="tui-demo-button__submit-state"
-                                size="s"
-                                tuiButton
-                                type="submit"
-                                class="tui-group__auto-width-item"
-                            >
-                                Submit
-                            </button>
-                        </div>
-                    </ng-template>
-                </tui-expand>
-            </form>
-            <ng-content></ng-content>
-        </div>
+                            updateOn
+                            <tui-data-list-wrapper
+                                *tuiDataList
+                                [items]="updateOnVariants"
+                            ></tui-data-list-wrapper>
+                        </tui-select>
+                        <button
+                            automation-id="tui-demo-button__reset-state"
+                            size="s"
+                            tuiButton
+                            type="reset"
+                            class="tui-group__auto-width-item"
+                        >
+                            Reset
+                        </button>
+                        <button
+                            automation-id="tui-demo-button__submit-state"
+                            size="s"
+                            tuiButton
+                            type="submit"
+                            class="tui-group__auto-width-item"
+                        >
+                            Submit
+                        </button>
+                    </div>
+                </ng-template>
+            </tui-expand>
+        </form>
+        <ng-content></ng-content>
     </div>
     <div
         #resizer
