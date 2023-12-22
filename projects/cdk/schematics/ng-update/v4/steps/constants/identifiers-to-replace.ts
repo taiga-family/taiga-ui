@@ -44,4 +44,28 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifier[] = [
         from: {name: 'TuiTextAreaComponent', moduleSpecifier: '@taiga-ui/kit'},
         to: {name: 'TuiTextareaComponent', moduleSpecifier: '@taiga-ui/kit'},
     },
+    {
+        from: {name: 'ArrayElement', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiArrayElement', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {
+            name: 'DocumentationPropertyType',
+            moduleSpecifier: '@taiga-ui/addon-doc',
+        },
+        to: {
+            name: 'TuiDocumentationPropertyType',
+            moduleSpecifier: '@taiga-ui/addon-doc',
+        },
+    },
+    {
+        from: {
+            name: 'RawContentLoader',
+            moduleSpecifier: '@taiga-ui/addon-doc',
+        },
+        to: {
+            name: 'TuiRawContentLoader',
+            moduleSpecifier: '@taiga-ui/addon-doc',
+        },
+    },
 ];

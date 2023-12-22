@@ -20,13 +20,6 @@ const SERIALIZED_SUFFIX = '$';
 
 export type TuiDocumentationPropertyType = 'input-output' | 'input' | 'output' | null;
 
-/**
- * @deprecated: use {@link TuiDocumentationPropertyType}
- * TODO: remove in v4.0
- */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export type DocumentationPropertyType = TuiDocumentationPropertyType;
-
 // @bad TODO: refactor output and value sync
 @Directive({
     selector: 'ng-template[documentationPropertyName]',

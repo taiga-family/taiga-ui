@@ -13,13 +13,6 @@ export type TuiArrayElement<A> = A extends ReadonlyArray<infer T>
         : T
     : never;
 
-/**
- * @deprecated: use {@link TuiArrayElement}
- * TODO: remove in v4.0
- */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export type ArrayElement<A> = TuiArrayElement<A>;
-
 export abstract class AbstractTuiFilterByInput {
     protected abstract readonly accessor: TuiFocusableElementAccessor;
     protected abstract readonly multiSelect: unknown;
