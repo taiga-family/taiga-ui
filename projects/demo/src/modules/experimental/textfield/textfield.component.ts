@@ -21,10 +21,10 @@ export class ExampleTuiTextfieldComponent {
     };
 
     readonly example2: TuiDocExample = {
-        HTML: import('./examples/1/index.html?raw'),
+        HTML: import('./examples/2/index.html?raw'),
     };
 
     readonly example3: TuiDocExample = {
-        HTML: import('./examples/1/index.html?raw'),
+        HTML: import('./examples/3/index.html?raw'),
     };
 }
