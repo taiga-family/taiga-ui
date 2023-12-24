@@ -17,15 +17,11 @@ test.describe('Demo', () => {
                 expect(examples.length).toBeGreaterThan(0);
 
                 for (const example of examples) {
-                    await expect(
-                        example.locator('[automation-id="tui-doc-example"]'),
-                    ).toBeAttached();
+                    await expect(example.getByTestId('tui-doc-example')).toBeAttached();
                 }
             }).toPass();
 
-            const examples = await page
-                .locator('tui-doc-example [automation-id="tui-doc-example"]')
-                .all();
+            const examples = await page.getByTestId('tui-doc-example').all();
 
             for (const [i, example] of examples.entries()) {
                 if (tuiIsFlakyExample(path, i)) {

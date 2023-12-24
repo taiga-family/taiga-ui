@@ -5,25 +5,25 @@ import {tuiHideElement} from '../hide-element';
 export class TuiDocumentationPagePO {
     readonly apiPageExample: Locator = this.page.locator('#demo-content');
 
-    readonly submitFormControlButton = this.apiPageExample.locator(
-        '[automation-id="tui-demo-button__submit-state"]',
+    readonly submitFormControlButton = this.apiPageExample.getByTestId(
+        'tui-demo-button__submit-state',
     );
 
-    readonly resetFormControlButton = this.apiPageExample.locator(
-        '[automation-id="tui-demo-button__reset-state"]',
+    readonly resetFormControlButton = this.apiPageExample.getByTestId(
+        'tui-demo-button__reset-state',
     );
 
     constructor(private readonly page: Page) {}
 
     getExample(selector: string): Locator {
-        return this.page.locator(`${selector} [automation-id="tui-doc-example"]`);
+        return this.page.locator(selector).getByTestId('tui-doc-example');
     }
 
     async selectFormControlUpdateOnMethod(
         method: 'blur' | 'change' | 'submit',
     ): Promise<void> {
-        const selector = this.apiPageExample.locator(
-            '[automation-id="tui-demo-select__expand-update-on"]',
+        const selector = this.apiPageExample.getByTestId(
+            'tui-demo-select__expand-update-on',
         );
 
         await selector.click();

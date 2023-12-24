@@ -8,7 +8,7 @@ export class TuiInputDateTimePO {
 
     async selectDayViaCalendar(day: number): Promise<void> {
         return this.calendar
-            .locator('[automation-id="tui-primitive-calendar__cell"]')
+            .getByTestId('tui-primitive-calendar__cell')
             .filter({hasText: `${day}`})
             .click();
     }

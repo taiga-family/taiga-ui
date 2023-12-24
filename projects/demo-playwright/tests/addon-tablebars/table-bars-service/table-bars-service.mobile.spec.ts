@@ -24,7 +24,7 @@ test.describe('TableBarsService', () => {
             .first();
 
         await showTableBarButton.click();
-        const tableBarExample = page.locator('[automation-id="tui-table-bar__bar"]');
+        const tableBarExample = page.getByTestId('tui-table-bar__bar');
 
         await expect(tableBarExample).toHaveScreenshot(
             '01-table-bars-mobile-service.png',

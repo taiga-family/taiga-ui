@@ -7,7 +7,7 @@ test.describe('PieChart', () => {
 
         const example = new TuiDocumentationPagePO(page).getExample('#labels');
         const pieChartSegments = await example
-            .locator('[automation-id="tui-pie-chart__segment"]')
+            .getByTestId('tui-pie-chart__segment')
             .all();
 
         await expect(example).toHaveScreenshot('01-pie-chart-with-label-no-hover.png');

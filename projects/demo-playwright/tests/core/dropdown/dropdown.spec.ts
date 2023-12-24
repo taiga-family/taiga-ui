@@ -57,9 +57,7 @@ test.describe('Dropdown', () => {
             .click();
         await expect(page).toHaveScreenshot('06-dropdown.png');
 
-        await page
-            .locator("tui-dropdown [automation-id='tui-select__textfield']")
-            .click();
+        await page.locator('tui-dropdown').getByTestId('tui-select__textfield').click();
         await expect(page).toHaveScreenshot('07-dropdown.png');
 
         await page.keyboard.press('Escape');

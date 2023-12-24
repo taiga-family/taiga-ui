@@ -51,7 +51,7 @@ test.describe('Deep', () => {
                         await page.locator('[tuiOption]').nth(defaultOptionIndex).click();
                     } else {
                         await select
-                            .locator('[automation-id=tui-primitive-textfield__cleaner]')
+                            .getByTestId('tui-primitive-textfield__cleaner')
                             .click();
                         await select.click();
                     }
@@ -73,9 +73,7 @@ test.describe('Deep', () => {
 
 async function getDefaultOptionOnApiControl(options: Locator[]): Promise<number | null> {
     for (const [index, option] of options.entries()) {
-        const hasMark = await option
-            .locator('[automation-id=tui-select-option__checkmark]')
-            .all();
+        const hasMark = await option.getByTestId('tui-select-option__checkmark').all();
 
         if (hasMark.length) {
             return index;

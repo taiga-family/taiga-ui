@@ -5,17 +5,15 @@ import {
 } from '@demo-playwright/utils';
 import {expect, Locator, test} from '@playwright/test';
 
-const {describe, beforeEach, use} = test;
-
-describe('InputCardGrouped', () => {
+test.describe('InputCardGrouped', () => {
     let documentationPage: TuiDocumentationPagePO;
 
-    describe('API', () => {
-        use({viewport: {width: 700, height: 800}});
+    test.describe('API', () => {
+        test.use({viewport: {width: 700, height: 800}});
 
         let apiPageExample: Locator;
 
-        beforeEach(({page}) => {
+        test.beforeEach(({page}) => {
             ({apiPageExample} = new TuiDocumentationPagePO(page));
         });
 
@@ -59,10 +57,10 @@ describe('InputCardGrouped', () => {
         });
     });
 
-    describe('Examples', () => {
-        use({viewport: {width: 1280, height: 800}});
+    test.describe('Examples', () => {
+        test.use({viewport: {width: 1280, height: 800}});
 
-        beforeEach(async ({page}) => {
+        test.beforeEach(async ({page}) => {
             await tuiGoto(page, 'components/input-card-grouped');
 
             documentationPage = new TuiDocumentationPagePO(page);
