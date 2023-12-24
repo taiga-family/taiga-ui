@@ -1,60 +1,76 @@
 import {TestBed} from '@angular/core/testing';
 import {WINDOW} from '@ng-web-apis/common';
-
-import {TuiMedia} from '../../interfaces';
-import {TUI_MEDIA} from '../../tokens';
-import {TuiBreakpointService} from '../breakpoint.service';
+import {TuiBreakpointService} from '@taiga-ui/core';
+import {first} from 'rxjs';
 
 describe('TuiBreakpointService', () => {
-    const mock: HTMLDivElement = document.createElement('div');
-    let service: TuiBreakpointService;
-    const mediaMock: TuiMedia = {
-        mobile: 768,
-        desktopSmall: 1024,
-        desktopLarge: 1280,
-    };
-
-    const windowMock: any = {
-        matchMedia: jest
-            .fn()
-            .mockReturnValue({...mock, matches: true, media: '(max-width: 767px)'}),
+    const windowMock = {
+        matchMedia: jest.fn().mockReturnValue({
+            ...document.createElement('div'),
+            matches: true,
+            media: '(max-width: 767px)',
+        }),
         innerWidth: 700,
         addEventListener: jest.fn(),
         removeEventListener: jest.fn(),
-    };
+    } as unknown as Window;
 
-    beforeEach(async () => {
-        TestBed.configureTestingModule({
-            providers: [
-                TuiBreakpointService,
-                {
-                    provide: TUI_MEDIA,
-                    useValue: mediaMock,
-                },
-                {
-                    provide: WINDOW,
-                    useValue: windowMock,
-                },
-            ],
+    let service: TuiBreakpointService;
+
+    describe('<meta name="viewport" content="width=device-width">', () => {
+        beforeEach(async () => {
+            await TestBed.configureTestingModule({
+                providers: [
+                    TuiBreakpointService,
+                    {
+                        provide: WINDOW,
+                        useValue: {
+                            ...windowMock,
+                            document: {documentElement: {clientWidth: 700}},
+                        },
+                    },
+                ],
+            }).compileComponents();
+
+            service = TestBed.inject(TuiBreakpointService);
         });
-        await TestBed.compileComponents();
-        service = TestBed.inject(TuiBreakpointService);
+
+        it('should emit mobile', () => {
+            const observerMock = jest.fn();
+
+            service.pipe(first()).subscribe(observerMock);
+
+            expect(observerMock).toHaveBeenCalledWith('mobile');
+        });
+    });
+
+    describe('<meta name="viewport" content="width=1024px">', () => {
+        beforeEach(async () => {
+            await TestBed.configureTestingModule({
+                providers: [
+                    TuiBreakpointService,
+                    {
+                        provide: WINDOW,
+                        useValue: {
+                            ...windowMock,
+                            document: {documentElement: {clientWidth: 1024}},
+                        },
+                    },
+                ],
+            }).compileComponents();
+
+            service = TestBed.inject(TuiBreakpointService);
+        });
+
+        it('should emit desktopLarge', () => {
+            const observerMock = jest.fn();
+
+            service.pipe(first()).subscribe(observerMock);
+            expect(observerMock).toHaveBeenCalledWith('desktopLarge');
+        });
     });
 
     afterEach(() => {
         jest.clearAllMocks();
-    });
-
-    it('should create', () => {
-        expect(service).toBeTruthy();
-    });
-
-    it('should emit the current breakpoint name when subscribed to', () => {
-        const observerMock = jest.fn();
-
-        const subscription = service.subscribe(observerMock);
-
-        expect(observerMock).toHaveBeenCalledWith('mobile');
-        subscription.unsubscribe();
     });
 });
