@@ -40,6 +40,7 @@ import {TuiComboBoxExample5} from './examples/5';
 import {IndexChangeDirective} from './examples/5/index-change.directive';
 import {TuiComboBoxExample6} from './examples/6';
 import {TuiComboBoxExample7} from './examples/7';
+import {TuiComboBoxExample8} from './examples/8';
 
 @NgModule({
     imports: [
@@ -78,6 +79,7 @@ import {TuiComboBoxExample7} from './examples/7';
         TuiComboBoxExample5,
         TuiComboBoxExample6,
         TuiComboBoxExample7,
+        TuiComboBoxExample8,
         IndexChangeDirective,
     ],
     exports: [ExampleTuiComboBoxComponent],
