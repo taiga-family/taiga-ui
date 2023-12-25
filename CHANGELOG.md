@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.61.0](https://github.com/taiga-family/taiga-ui/compare/v3.59.0...v3.61.0) (2023-12-25)
+
+### Bug Fixes
+
+- **cdk:** `DirectiveStylesService` fix ssr memory leak ([#6288](https://github.com/taiga-family/taiga-ui/issues/6288))
+  ([799e7d6](https://github.com/taiga-family/taiga-ui/commit/799e7d65b52ef8acc72ea43545d46d0de180fd7d))
+- **cdk:** respect client size in `TUI_WINDOW_SIZE` ([#6329](https://github.com/taiga-family/taiga-ui/issues/6329))
+  ([120dd8e](https://github.com/taiga-family/taiga-ui/commit/120dd8e022eb86d31894e5572f329bc6ee508650))
+- **core:** `Calendar` properly react to markers change ([#6258](https://github.com/taiga-family/taiga-ui/issues/6258))
+  ([fcea78d](https://github.com/taiga-family/taiga-ui/commit/fcea78da92d07baa404de0ea47fcf8cfc8cde5e4))
+- **core:** page scrolling jumps to top in Iframe when modal is opened
+  ([#6293](https://github.com/taiga-family/taiga-ui/issues/6293))
+  ([e8ac4ea](https://github.com/taiga-family/taiga-ui/commit/e8ac4ea2220f0ff4807c3b6cef944d61f1d073e0))
+- **kit:** `ComboBox` fix empty string option incorrect behavior
+  ([#6328](https://github.com/taiga-family/taiga-ui/issues/6328))
+  ([1983340](https://github.com/taiga-family/taiga-ui/commit/1983340ae985bf5e59b667c7090dc3ee558e2dee))
+
 ## [3.60.0](https://github.com/taiga-family/taiga-ui/compare/v3.59.0...v3.60.0) (2023-12-18)
 
 ### Bug Fixes
