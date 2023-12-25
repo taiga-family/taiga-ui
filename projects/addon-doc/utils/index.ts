@@ -4,6 +4,7 @@ export * from './generate-routes';
 export * from './inspect';
 export * from './is-page-group';
 export * from './parse-code-block';
+export * from './provide-route-page-tab';
 export * from './raw-load';
 export * from './raw-load-record';
 export * from './sort-pages';
