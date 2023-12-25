@@ -16,6 +16,7 @@ const collectionPath = join(__dirname, '../../../migration.json');
 
 const COMPONENT_BEFORE = `
 import { CommonModule } from "@angular/common";
+import { ArrayElement } from "@taiga-ui/kit";
 
 @Component({
     standalone: true,
@@ -23,9 +24,11 @@ import { CommonModule } from "@angular/common";
     imports: [CommonModule]
 })
 export class TestComponent {
+   some: ArrayElement<string>;
 }`;
 
 const COMPONENT_AFTER = `import { TuiTextfieldControllerModule } from "@taiga-ui/core";
+import { TuiArrayElement } from "@taiga-ui/kit";
 
 import { CommonModule } from "@angular/common";
 
@@ -35,6 +38,7 @@ import { CommonModule } from "@angular/common";
     imports: [CommonModule, TuiTextfieldControllerModule]
 })
 export class TestComponent {
+   some: TuiArrayElement<string>;
 }`;
 
 const TEMPLATE_BEFORE = `
