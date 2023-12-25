@@ -41,6 +41,7 @@ test.describe('Deep', () => {
                     for (const [optionIndex, option] of options.entries()) {
                         await option.focus();
                         await page.keyboard.press('Enter');
+                        await page.waitForLoadState('networkidle');
                         await expect(page.locator('#demo-content')).toHaveScreenshot(
                             `deep-${path}-${index}-select-${selectIndex}-option-${optionIndex}.png`,
                         );
@@ -61,6 +62,7 @@ test.describe('Deep', () => {
 
                 for (const [toggleIndex, toggle] of toggles.entries()) {
                     await toggle.click();
+                    await page.waitForLoadState('networkidle');
                     await expect(page.locator('#demo-content')).toHaveScreenshot(
                         `deep-${path}-${index}-toggles-${toggleIndex}.png`,
                     );
