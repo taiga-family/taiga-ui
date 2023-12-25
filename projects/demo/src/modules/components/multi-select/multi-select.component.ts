@@ -119,8 +119,6 @@ export class ExampleTuiMultiSelectComponent extends AbstractExampleTuiControl {
         new Account('Yuan', 237),
     ];
 
-    expandable = true;
-
     rows = 100;
 
     editable = true;

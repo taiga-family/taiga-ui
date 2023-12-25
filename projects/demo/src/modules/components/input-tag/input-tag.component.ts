@@ -88,8 +88,6 @@ export class ExampleTuiInputTagComponent extends AbstractExampleTuiControl {
 
     editable = true;
 
-    expandable = true;
-
     uniqueTags = true;
 
     readonly separatorVariants = [',', ';', /[\d]/, /[\s,]/];

@@ -74,7 +74,5 @@ export class ExampleTuiInputDateMultiComponent extends AbstractExampleTuiControl
 
     markerHandler: TuiMarkerHandler = this.markerHandlerVariants[0];
 
-    expandable = false;
-
     control = new UntypedFormControl([], Validators.required);
 }

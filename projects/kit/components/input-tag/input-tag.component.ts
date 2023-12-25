@@ -80,6 +80,7 @@ const TAG_VERTICAL_SPACE_REM = 0.125;
     templateUrl: './input-tag.template.html',
     styleUrls: ['./input-tag.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {'[class._expandable]': 'expandable'},
     providers: [
         tuiAsFocusableItemAccessor(TuiInputTagComponent),
         tuiAsControl(TuiInputTagComponent),
@@ -124,11 +125,6 @@ export class TuiInputTagComponent
     tagValidator:
         | TuiBooleanHandler<string>
         | TuiBooleanHandler<TuiStringifiableItem<unknown> | string> = ALWAYS_TRUE_HANDLER;
-
-    // TODO: 4.0 Consider removing and use rows = 1 instead
-    @Input()
-    @HostBinding('class._expandable')
-    expandable = true;
 
     @Input()
     rows = Infinity;
@@ -212,6 +208,10 @@ export class TuiInputTagComponent
 
     get appearance(): string {
         return this.controller.appearance;
+    }
+
+    get expandable(): boolean {
+        return this.rows > 1;
     }
 
     @HostBinding('attr.data-size')
