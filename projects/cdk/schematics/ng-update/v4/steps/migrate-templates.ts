@@ -31,6 +31,7 @@ import {
     migrateAvatar,
     migrateBadgeValue,
     migrateCheckbox,
+    migrateExpandable,
     migrateRadio,
     migrateToggle,
 } from './templates';
@@ -83,6 +84,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         migrateRadio,
         migrateToggle,
         migrateAvatar,
+        migrateExpandable,
     ] as const;
 
     const progressLog = setupProgressLogger({
