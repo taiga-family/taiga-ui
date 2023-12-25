@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
+import {FormControl, FormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiBooleanHandler} from '@taiga-ui/cdk';
@@ -12,8 +12,8 @@ import {TuiBooleanHandler} from '@taiga-ui/cdk';
     changeDetection,
 })
 export class TuiFilterExample1 {
-    readonly form = new UntypedFormGroup({
-        filters: new UntypedFormControl(['Food']),
+    readonly form = new FormGroup({
+        filters: new FormControl(['Food']),
     });
 
     readonly items = [

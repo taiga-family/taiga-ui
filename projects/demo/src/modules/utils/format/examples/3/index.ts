@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
+import {FormControl, FormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiCapitalize} from '@taiga-ui/core';
@@ -12,8 +12,8 @@ import {tuiCapitalize} from '@taiga-ui/core';
     changeDetection,
 })
 export class TuiFormatExample3 {
-    parametersForm = new UntypedFormGroup({
-        value: new UntypedFormControl('roman sEdOv'),
+    parametersForm = new FormGroup({
+        value: new FormControl('roman sEdOv'),
     });
 
     get capitalized(): string {

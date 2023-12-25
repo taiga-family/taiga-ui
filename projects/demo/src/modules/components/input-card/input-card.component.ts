@@ -1,5 +1,5 @@
 import {Component, forwardRef, ViewChild} from '@angular/core';
-import {UntypedFormControl, UntypedFormGroup, Validators} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiCodeCVCLength, tuiCreateLuhnValidator} from '@taiga-ui/addon-commerce';
 import {
@@ -72,13 +72,13 @@ export class ExampleTuiInputCardComponent extends AbstractExampleTuiControl {
 
     autocompleteEnabledExpire = false;
 
-    control = new UntypedFormGroup({
-        card: new UntypedFormControl('', [
+    control = new FormGroup({
+        card: new FormControl('', [
             Validators.required,
             tuiCreateLuhnValidator('Invalid card number'),
         ]),
-        expire: new UntypedFormControl('', Validators.required),
-        cvc: new UntypedFormControl('', Validators.required),
+        expire: new FormControl('', Validators.required),
+        cvc: new FormControl('', Validators.required),
     });
 
     get cardSrc(): string | null {

@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {UntypedFormControl} from '@angular/forms';
+import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_DATE_FORMAT, TUI_DATE_SEPARATOR, TuiDay, TuiDayRange} from '@taiga-ui/cdk';
@@ -15,7 +15,7 @@ import {TUI_DATE_FORMAT, TUI_DATE_SEPARATOR, TuiDay, TuiDayRange} from '@taiga-u
     ],
 })
 export class TuiInputDateRangeExample3 {
-    readonly control = new UntypedFormControl(
+    readonly control = new FormControl(
         new TuiDayRange(new TuiDay(2018, 2, 10), new TuiDay(2018, 3, 20)),
     );
 }

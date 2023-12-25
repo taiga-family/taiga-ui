@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
+import {FormControl, FormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiGetPaymentSystem} from '@taiga-ui/addon-commerce';
@@ -20,8 +20,8 @@ export class TuiMiscellaneousExample4 {
         '4000567890123456',
     ];
 
-    parametersForm = new UntypedFormGroup({
-        cardNumber: new UntypedFormControl(''),
+    parametersForm = new FormGroup({
+        cardNumber: new FormControl(''),
     });
 
     get paymentSystem(): string | null {

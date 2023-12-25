@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {UntypedFormControl} from '@angular/forms';
+import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiBooleanHandler, TuiStringHandler} from '@taiga-ui/cdk';
@@ -15,10 +15,10 @@ interface Item {
     changeDetection,
 })
 export class TuiMultiSelectExample10 {
-    itemStringControl = new UntypedFormControl();
-    itemControl = new UntypedFormControl();
-    itemStringGroupControl = new UntypedFormControl();
-    itemGroupControl = new UntypedFormControl();
+    itemStringControl = new FormControl();
+    itemControl = new FormControl();
+    itemStringGroupControl = new FormControl();
+    itemGroupControl = new FormControl();
 
     items = [
         'Luke Skywalker',

@@ -2,8 +2,8 @@ import {Component, Inject} from '@angular/core';
 import {
     AbstractControl,
     AsyncValidatorFn,
+    FormGroup,
     UntypedFormBuilder,
-    UntypedFormGroup,
     Validators,
 } from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -30,7 +30,7 @@ function asyncValidatorFn(isE2E: boolean): AsyncValidatorFn {
     changeDetection,
 })
 export class TuiFieldErrorPipeExample5 {
-    readonly form: UntypedFormGroup;
+    readonly form: FormGroup;
 
     constructor(
         @Inject(UntypedFormBuilder) private readonly fb: UntypedFormBuilder,

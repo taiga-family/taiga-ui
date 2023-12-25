@@ -1,5 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
-import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
+import {FormControl, FormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {assets} from '@demo/utils';
@@ -100,12 +100,12 @@ export class TuiInputExample4 {
     @ViewChild('avatar')
     private readonly avatar: PolymorpheusContent;
 
-    private readonly user = new UntypedFormControl('');
+    private readonly user = new FormControl('');
 
-    readonly testForm = new UntypedFormGroup({
+    readonly testForm = new FormGroup({
         user: this.user,
-        account: new UntypedFormControl(''),
-        card: new UntypedFormControl(''),
+        account: new FormControl(''),
+        card: new FormControl(''),
     });
 
     lastUser: User | null = null;

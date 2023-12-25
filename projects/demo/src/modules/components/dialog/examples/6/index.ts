@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
+import {FormControl, FormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
@@ -10,8 +10,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiDialogExampleComponent6 {
-    exampleForm = new UntypedFormGroup({
-        exampleControl: new UntypedFormControl(''),
+    exampleForm = new FormGroup({
+        exampleControl: new FormControl(''),
     });
 
     open = false;

@@ -8,7 +8,7 @@ import {
     Optional,
     Self,
 } from '@angular/core';
-import {UntypedFormControl} from '@angular/forms';
+import {FormControl} from '@angular/forms';
 import {Title} from '@angular/platform-browser';
 import {ActivatedRoute, Router, Scroll} from '@angular/router';
 import {TuiDocPage} from '@taiga-ui/addon-doc/interfaces';
@@ -62,7 +62,7 @@ export class TuiDocNavigationComponent {
     openPagesGroupsArr: boolean[] = [];
     active = '';
 
-    readonly search = new UntypedFormControl('');
+    readonly search = new FormControl('');
 
     readonly filtered$ = tuiControlValue<string>(this.search).pipe(
         filter(search => search.trim().length > 2),

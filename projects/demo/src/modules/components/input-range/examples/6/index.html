@@ -2,11 +2,11 @@
     absTransformer
     class="tui-space_bottom-8"
     [formControl]="control"
-    [leftValueContent]="control.value[0] ? '' : 'Today'"
+    [leftValueContent]="control.value?.[0] ? '' : 'Today'"
     [max]="0"
     [min]="-30"
     [pluralize]="pluralize"
-    [rightValueContent]="control.value[1] ? '' : 'Today'"
+    [rightValueContent]="control.value?.[1] ? '' : 'Today'"
 >
     How far back to look
 </tui-input-range>

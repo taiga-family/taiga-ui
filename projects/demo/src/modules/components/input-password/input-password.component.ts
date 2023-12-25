@@ -1,5 +1,5 @@
 import {Component, forwardRef} from '@angular/core';
-import {UntypedFormControl, Validators} from '@angular/forms';
+import {FormControl, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 
@@ -37,5 +37,5 @@ export class ExampleTuiInputPasswordComponent extends AbstractExampleTuiControl 
 
     override maxLength = null;
 
-    control = new UntypedFormControl('', Validators.required);
+    control = new FormControl('', Validators.required);
 }

@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
-import {UntypedFormControl} from '@angular/forms';
+import {FormControl} from '@angular/forms';
 import {tuiCapitalizeFirstLetter, TuiFlagPipe} from '@taiga-ui/core';
 import {TuiCountryIsoCode, TuiLanguageName, TuiLanguageSwitcher} from '@taiga-ui/i18n';
 
@@ -14,9 +14,7 @@ import {TuiCountryIsoCode, TuiLanguageName, TuiLanguageSwitcher} from '@taiga-ui
     ],
 })
 export class TuiLanguageSwitcherComponent {
-    readonly language = new UntypedFormControl(
-        tuiCapitalizeFirstLetter(this.switcher.language),
-    );
+    readonly language = new FormControl(tuiCapitalizeFirstLetter(this.switcher.language));
 
     readonly flags = new Map<TuiLanguageName, TuiCountryIsoCode>([
         ['chinese', TuiCountryIsoCode.CN],

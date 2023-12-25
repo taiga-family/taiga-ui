@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {UntypedFormControl} from '@angular/forms';
+import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {assets} from '@demo/utils';
@@ -46,7 +46,7 @@ export class TuiMultiSelectExample2 {
         startWith(databaseMockData),
     );
 
-    readonly testValue = new UntypedFormControl([databaseMockData[0]]);
+    readonly testValue = new FormControl([databaseMockData[0]]);
 
     onSearchChange(searchQuery: string | null): void {
         this.search$.next(searchQuery);

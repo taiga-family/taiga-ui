@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {UntypedFormControl} from '@angular/forms';
+import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
@@ -10,7 +10,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiInputFilesExample6 {
-    readonly control = new UntypedFormControl();
+    readonly control = new FormControl();
 
     removeFile(): void {
         this.control.setValue(null);
