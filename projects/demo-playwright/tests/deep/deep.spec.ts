@@ -29,6 +29,8 @@ test.describe('Deep', () => {
             const controls = await page.locator('.t-table .t-cell_value').all();
 
             for (const [index, control] of controls.entries()) {
+                await control.scrollIntoViewIfNeeded();
+
                 const selects = (await control.locator('tui-select').all()) ?? [];
 
                 for (const [selectIndex, select] of selects.entries()) {
@@ -39,12 +41,12 @@ test.describe('Deep', () => {
                         await getDefaultOptionOnApiControl(options);
 
                     for (const [optionIndex, option] of options.entries()) {
-                        await option.focus();
-                        await page.keyboard.press('Enter');
-                        await page.waitForLoadState('networkidle');
+                        await option.click();
+
                         await expect(page.locator('#demo-content')).toHaveScreenshot(
                             `deep-${path}-${index}-select-${selectIndex}-option-${optionIndex}.png`,
                         );
+
                         await select.click();
                     }
 
@@ -58,11 +60,12 @@ test.describe('Deep', () => {
                     }
                 }
 
+                await page.waitForTimeout(100); // flaky free
+
                 const toggles = (await control.locator('tui-toggle').all()) ?? [];
 
                 for (const [toggleIndex, toggle] of toggles.entries()) {
                     await toggle.click();
-                    await page.waitForLoadState('networkidle');
                     await expect(page.locator('#demo-content')).toHaveScreenshot(
                         `deep-${path}-${index}-toggles-${toggleIndex}.png`,
                     );
