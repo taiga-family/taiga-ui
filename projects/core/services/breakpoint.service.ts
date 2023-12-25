@@ -35,7 +35,7 @@ export class TuiBreakpointService extends Observable<TuiBreakpointMediaKey | nul
     constructor(
         @Inject(TUI_MEDIA) private readonly media: TuiMedia,
         @Inject(NgZone) private readonly ngZone: NgZone,
-        @Inject(TUI_WINDOW_SIZE) private readonly size$: Observable<ClientRect>,
+        @Inject(TUI_WINDOW_SIZE) private readonly size$: Observable<DOMRect>,
     ) {
         super(subscriber => this.stream$.subscribe(subscriber));
     }
