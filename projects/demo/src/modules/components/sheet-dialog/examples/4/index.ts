@@ -1,5 +1,5 @@
 import {Component, Inject, ViewChild} from '@angular/core';
-import {UntypedFormControl} from '@angular/forms';
+import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {
@@ -45,7 +45,7 @@ export class TuiSheetDialogExample4 {
 
     readonly offset = 16;
 
-    readonly search = new UntypedFormControl('');
+    readonly search = new FormControl('');
 
     readonly users$ = tuiControlValue<string>(this.search).pipe(
         map(search => USERS.filter(user => TUI_DEFAULT_MATCHER(user, search))),

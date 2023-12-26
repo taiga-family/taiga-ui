@@ -1,5 +1,5 @@
 import {Component, forwardRef} from '@angular/core';
-import {UntypedFormControl} from '@angular/forms';
+import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample, tuiDocExcludeProperties} from '@taiga-ui/addon-doc';
 import {TuiSizeL, TuiSizeM} from '@taiga-ui/core';
@@ -75,7 +75,7 @@ export class ExampleTuiTextareaComponent extends AbstractExampleTuiControl {
 
     expandable = false;
 
-    control = new UntypedFormControl();
+    control = new FormControl('');
 
     override readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeM> = ['m', 'l'];
 

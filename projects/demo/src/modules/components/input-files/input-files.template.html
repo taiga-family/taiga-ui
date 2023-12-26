@@ -65,7 +65,7 @@
         <tui-doc-demo>
             <tui-input-files
                 [focusable]="focusable"
-                [formControl]="control"
+                [formControl]="multiple ? multipleControl : control"
                 [label]="label"
                 [link]="link"
                 [maxFileSize]="maxFileSize"
@@ -87,7 +87,7 @@
                 [(expanded)]="expanded"
             >
                 <ng-container *ngIf="multiple; else single">
-                    <ng-container *ngFor="let file of control.valueChanges | async">
+                    <ng-container *ngFor="let file of multipleControl.valueChanges | async">
                         <tui-file
                             *tuiItem
                             [file]="file"

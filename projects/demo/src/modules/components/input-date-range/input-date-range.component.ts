@@ -1,5 +1,5 @@
 import {Component, forwardRef} from '@angular/core';
-import {UntypedFormControl, Validators} from '@angular/forms';
+import {FormControl, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {
@@ -9,6 +9,7 @@ import {
     TuiBooleanHandler,
     TuiDay,
     TuiDayLike,
+    TuiDayRange,
     TuiMonth,
 } from '@taiga-ui/cdk';
 import {TUI_DEFAULT_MARKER_HANDLER, TuiMarkerHandler} from '@taiga-ui/core';
@@ -104,7 +105,7 @@ export class ExampleTuiInputDateRangeComponent extends AbstractExampleTuiControl
 
     disabledItemHandler = this.disabledItemHandlerVariants[0];
 
-    control = new UntypedFormControl(null, Validators.required);
+    control = new FormControl<TuiDayRange | null>(null, Validators.required);
 
     readonly itemsVariants: ReadonlyArray<readonly TuiDayRangePeriod[]> = [
         [],

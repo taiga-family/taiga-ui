@@ -1,7 +1,8 @@
 import {Component} from '@angular/core';
-import {UntypedFormControl} from '@angular/forms';
+import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiCard} from '@taiga-ui/addon-commerce';
 
 @Component({
     selector: 'tui-input-card-grouped-example-4',
@@ -10,7 +11,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiInputCardGroupedExample4 {
-    control = new UntypedFormControl({
+    control = new FormControl<TuiCard | null>({
         card: '',
         expire: '',
         cvc: '***',

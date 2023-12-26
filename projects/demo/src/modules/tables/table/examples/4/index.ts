@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {UntypedFormControl} from '@angular/forms';
+import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiComparator} from '@taiga-ui/addon-table';
@@ -104,7 +104,7 @@ export class TuiTableExample4 {
     readonly direction$ = new BehaviorSubject<-1 | 1>(-1);
     readonly sorter$ = new BehaviorSubject<Key>('name');
 
-    readonly minAge = new UntypedFormControl(21);
+    readonly minAge = new FormControl(21);
 
     readonly request$ = combineLatest([
         this.sorter$,

@@ -1,7 +1,11 @@
 import {Component} from '@angular/core';
-import {UntypedFormControl} from '@angular/forms';
+import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {tuiCardExpireValidator, tuiCardNumberValidator} from '@taiga-ui/addon-commerce';
+import {
+    TuiCard,
+    tuiCardExpireValidator,
+    tuiCardNumberValidator,
+} from '@taiga-ui/addon-commerce';
 
 @Component({
     selector: 'tui-input-card-grouped-example-3',
@@ -9,7 +13,7 @@ import {tuiCardExpireValidator, tuiCardNumberValidator} from '@taiga-ui/addon-co
     changeDetection,
 })
 export class TuiInputCardGroupedExample3 {
-    readonly control = new UntypedFormControl(null, [
+    readonly control = new FormControl<TuiCard | null>(null, [
         tuiCardNumberValidator,
         tuiCardExpireValidator,
     ]);

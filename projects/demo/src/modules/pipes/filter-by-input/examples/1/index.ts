@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
+import {FormControl, FormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
@@ -19,7 +19,7 @@ export class TuiFilterByInputExample1 {
         'Terry Jones',
     ];
 
-    readonly form = new UntypedFormGroup({
-        user: new UntypedFormControl(),
+    readonly form = new FormGroup({
+        user: new FormControl(''),
     });
 }

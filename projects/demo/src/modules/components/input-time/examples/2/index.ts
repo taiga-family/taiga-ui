@@ -1,7 +1,8 @@
 import {Component} from '@angular/core';
-import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
+import {FormControl, FormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiTime} from '@taiga-ui/cdk';
 import {tuiCreateTimePeriods} from '@taiga-ui/kit';
 
 @Component({
@@ -11,8 +12,8 @@ import {tuiCreateTimePeriods} from '@taiga-ui/kit';
     changeDetection,
 })
 export class TuiInputTimeExample2 {
-    readonly testForm = new UntypedFormGroup({
-        testValue: new UntypedFormControl(null),
+    readonly testForm = new FormGroup({
+        testValue: new FormControl<TuiTime | null>(null),
     });
 
     items1 = tuiCreateTimePeriods();

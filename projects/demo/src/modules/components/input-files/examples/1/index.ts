@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {UntypedFormControl} from '@angular/forms';
+import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiFileLike} from '@taiga-ui/kit';
@@ -12,7 +12,7 @@ import {finalize, map, Observable, of, Subject, switchMap, timer} from 'rxjs';
     changeDetection,
 })
 export class TuiInputFilesExample1 {
-    readonly control = new UntypedFormControl();
+    readonly control = new FormControl<TuiFileLike | null>(null);
 
     readonly rejectedFiles$ = new Subject<TuiFileLike | null>();
     readonly loadingFiles$ = new Subject<TuiFileLike | null>();

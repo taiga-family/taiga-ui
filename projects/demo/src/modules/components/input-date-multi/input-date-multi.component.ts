@@ -1,5 +1,5 @@
 import {Component, forwardRef} from '@angular/core';
-import {UntypedFormControl, Validators} from '@angular/forms';
+import {FormControl, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {
@@ -74,5 +74,5 @@ export class ExampleTuiInputDateMultiComponent extends AbstractExampleTuiControl
 
     markerHandler: TuiMarkerHandler = this.markerHandlerVariants[0];
 
-    control = new UntypedFormControl([], Validators.required);
+    control = new FormControl<TuiDay[]>([], Validators.required);
 }

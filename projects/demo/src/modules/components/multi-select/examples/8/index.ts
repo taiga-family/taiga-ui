@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {UntypedFormControl} from '@angular/forms';
+import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiContextWithImplicit} from '@taiga-ui/cdk';
@@ -30,7 +30,7 @@ interface Employee {
     ],
 })
 export class TuiMultiSelectExample8 {
-    readonly testValue = new UntypedFormControl([]);
+    readonly testValue = new FormControl<Employee[]>([]);
 
     readonly items: readonly Employee[] = [
         {id: 42, name: 'John Cleese', dept: {id: 566, title: 'Financial'}},

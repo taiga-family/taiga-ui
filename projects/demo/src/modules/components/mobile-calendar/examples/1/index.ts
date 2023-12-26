@@ -1,5 +1,5 @@
 import {Component, Inject, Injector} from '@angular/core';
-import {UntypedFormControl} from '@angular/forms';
+import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiMobileCalendarDialogComponent} from '@taiga-ui/addon-mobile';
@@ -17,7 +17,7 @@ import {combineLatest, map, Observable} from 'rxjs';
     changeDetection,
 })
 export class TuiMobileCalendarExample1 {
-    private readonly control = new UntypedFormControl(null);
+    private readonly control = new FormControl<TuiDay | null>(null);
 
     private readonly dialog$: Observable<TuiDay> = this.dialogs.open(
         new PolymorpheusComponent(

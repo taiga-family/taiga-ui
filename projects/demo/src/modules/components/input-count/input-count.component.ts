@@ -1,5 +1,5 @@
 import {Component, forwardRef} from '@angular/core';
-import {UntypedFormControl} from '@angular/forms';
+import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiSizeL} from '@taiga-ui/core';
@@ -52,5 +52,5 @@ export class ExampleTuiInputCountComponent extends AbstractExampleTuiControl {
 
     hideButtons = false;
 
-    control = new UntypedFormControl();
+    control = new FormControl<number | null>(null);
 }

@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
+import {FormControl, FormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiPx} from '@taiga-ui/cdk';
@@ -12,8 +12,8 @@ import {tuiPx} from '@taiga-ui/cdk';
     changeDetection,
 })
 export class TuiFormatExample1 {
-    parametersForm = new UntypedFormGroup({
-        value: new UntypedFormControl(11),
+    parametersForm = new FormGroup({
+        value: new FormControl(11),
     });
 
     get px(): string {

@@ -1,5 +1,5 @@
 import {Component, forwardRef} from '@angular/core';
-import {UntypedFormControl} from '@angular/forms';
+import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample, tuiDocExcludeProperties} from '@taiga-ui/addon-doc';
 import {
@@ -170,7 +170,7 @@ export class ExampleTuiMultiSelectComponent extends AbstractExampleTuiControl {
 
     valueContent = this.valueContentVariants[0];
 
-    control = new UntypedFormControl();
+    control = new FormControl<Account[] | null>(null);
 
     readonly disabledItemHandlerVariants: ReadonlyArray<TuiBooleanHandler<Account>> = [
         ALWAYS_FALSE_HANDLER,

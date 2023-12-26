@@ -1,6 +1,6 @@
 import {Clipboard} from '@angular/cdk/clipboard';
 import {Component, ContentChild, Inject, Input, OnInit, Self} from '@angular/core';
-import {UntypedFormControl} from '@angular/forms';
+import {FormControl} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TUI_DEFAULT_MATCHER, TuiDestroyService} from '@taiga-ui/cdk';
@@ -35,7 +35,7 @@ export class IconsGroupComponent implements OnInit {
 
     matcher = TUI_DEFAULT_MATCHER;
 
-    control = new UntypedFormControl('');
+    control = new FormControl<string>('');
 
     search$: Observable<string> = this.route.queryParams.pipe(
         map(queryParams => queryParams['search'] ?? ''),
@@ -55,7 +55,7 @@ export class IconsGroupComponent implements OnInit {
         this.control.valueChanges
             .pipe(
                 debounceTime(500),
-                filter((search: string) => search.length > 2 || search.length === 0),
+                filter(search => !!search && (search.length > 2 || search.length === 0)),
                 map(search => search || null),
                 takeUntil(this.destroy$),
             )

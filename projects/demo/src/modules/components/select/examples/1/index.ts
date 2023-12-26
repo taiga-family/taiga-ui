@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {UntypedFormControl} from '@angular/forms';
+import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
@@ -19,5 +19,5 @@ export class TuiSelectExample1 {
         'Yoda',
     ];
 
-    testValue = new UntypedFormControl();
+    testValue = new FormControl<string | null>(null);
 }

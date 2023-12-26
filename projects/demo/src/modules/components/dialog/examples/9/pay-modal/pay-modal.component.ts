@@ -6,8 +6,9 @@ import {
     Self,
     ViewChild,
 } from '@angular/core';
-import {UntypedFormControl, UntypedFormGroup, Validators} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {
+    TuiCard,
     tuiCardNumberValidator,
     tuiDefaultCardValidator,
     TuiInputCardGroupedComponent,
@@ -37,12 +38,12 @@ export class PayModalComponent implements OnInit {
     @ViewChild('cardGroupedInput')
     private readonly cardGroupedInput?: TuiInputCardGroupedComponent;
 
-    readonly form = new UntypedFormGroup({
-        card: new UntypedFormControl(null, [
+    readonly form = new FormGroup({
+        card: new FormControl<TuiCard | null>(null, [
             Validators.required,
             inputCardGroupedCVCValidator(),
         ]),
-        saveCard: new UntypedFormControl(true),
+        saveCard: new FormControl(true),
     });
 
     cards: AccountCard[] = [];

@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
+import {FormControl, FormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiCurrencyVariants, tuiGetCurrencySymbol} from '@taiga-ui/addon-commerce';
@@ -14,13 +14,13 @@ import {TuiCurrencyVariants, tuiGetCurrencySymbol} from '@taiga-ui/addon-commerc
 export class TuiFormatExample2 {
     readonly items = ['USD', 'RUB', '643', 'KZT', '051', 'KRW', 'CHF', 'EUR', 'GBP'];
 
-    parametersForm = new UntypedFormGroup({
-        currency: new UntypedFormControl(null),
+    parametersForm = new FormGroup({
+        currency: new FormControl<TuiCurrencyVariants>(null),
     });
 
     get currency(): string | null {
         const {currency} = this.parametersForm.value;
 
-        return tuiGetCurrencySymbol(currency as unknown as TuiCurrencyVariants);
+        return currency ? tuiGetCurrencySymbol(currency) : null;
     }
 }

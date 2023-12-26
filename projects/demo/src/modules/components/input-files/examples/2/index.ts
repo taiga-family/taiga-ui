@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {AbstractControl, UntypedFormControl, ValidatorFn} from '@angular/forms';
+import {AbstractControl, FormControl, ValidatorFn} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiValidationError} from '@taiga-ui/cdk';
@@ -12,7 +12,7 @@ import {TuiFileLike} from '@taiga-ui/kit';
     changeDetection,
 })
 export class TuiInputFilesExample2 implements OnInit {
-    readonly control = new UntypedFormControl([], [maxFilesLength(5)]);
+    readonly control = new FormControl<TuiFileLike[]>([], [maxFilesLength(5)]);
     rejectedFiles: readonly TuiFileLike[] = [];
 
     ngOnInit(): void {
@@ -26,9 +26,9 @@ export class TuiInputFilesExample2 implements OnInit {
         this.rejectedFiles = [...this.rejectedFiles, ...(files as TuiFileLike[])];
     }
 
-    removeFile({name}: File): void {
+    removeFile({name}: TuiFileLike): void {
         this.control.setValue(
-            this.control.value?.filter((current: File) => current.name !== name) ?? [],
+            this.control.value?.filter(current => current.name !== name) ?? [],
         );
     }
 

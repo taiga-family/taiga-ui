@@ -1,7 +1,8 @@
 import {Component} from '@angular/core';
-import {UntypedFormControl} from '@angular/forms';
+import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiMonth} from '@taiga-ui/cdk';
 
 @Component({
     selector: 'input-month-example-1',
@@ -10,5 +11,5 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class InputMonthExample1 {
-    readonly control = new UntypedFormControl();
+    readonly control = new FormControl<TuiMonth | null>(null);
 }

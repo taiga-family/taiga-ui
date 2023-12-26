@@ -1,8 +1,8 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {
     AbstractControl,
-    UntypedFormControl,
-    UntypedFormGroup,
+    FormControl,
+    FormGroup,
     ValidationErrors,
     Validators,
 } from '@angular/forms';
@@ -36,13 +36,10 @@ export class TuiFieldErrorPipeExample3 implements OnInit {
     @ViewChild('bigErrorContent')
     bigErrorContent: PolymorpheusContent;
 
-    readonly testValue2 = new UntypedFormControl('');
+    readonly testValue2 = new FormControl('');
 
-    readonly testForm = new UntypedFormGroup({
-        testValue1: new UntypedFormControl('', [
-            Validators.required,
-            this.getSecretValidator(),
-        ]),
+    readonly testForm = new FormGroup({
+        testValue1: new FormControl('', [Validators.required, this.getSecretValidator()]),
         testValue2: this.testValue2,
     });
 

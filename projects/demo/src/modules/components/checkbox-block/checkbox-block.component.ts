@@ -1,5 +1,5 @@
 import {Component, forwardRef} from '@angular/core';
-import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
+import {FormControl, FormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiHorizontalDirection, TuiSizeL, TuiSizeXS} from '@taiga-ui/core';
@@ -50,10 +50,10 @@ export class ExampleTuiCheckboxBlockComponent extends AbstractExampleTuiControl 
 
     currentSize = this.sizes[3];
 
-    readonly control = new UntypedFormGroup({
-        testValue1: new UntypedFormControl(false),
-        testValue2: new UntypedFormControl(),
-        testValue3: new UntypedFormControl(true),
+    readonly control = new FormGroup({
+        testValue1: new FormControl(false),
+        testValue2: new FormControl<boolean | null>(null),
+        testValue3: new FormControl(true),
     });
 
     override get disabled(): boolean {

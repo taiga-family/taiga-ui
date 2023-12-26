@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {UntypedFormControl, Validators} from '@angular/forms';
+import {FormControl, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
@@ -11,7 +11,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiInputExample7 {
-    readonly control = new UntypedFormControl(null, [
+    readonly control = new FormControl('', [
         Validators.required,
         Validators.minLength(5),
     ]);
