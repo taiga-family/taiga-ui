@@ -120,7 +120,7 @@ const config: Config = {
      * A list of reporter names that Jest uses when writing coverage reports.
      * Any istanbul reporter can be used.
      */
-    coverageReporters: ['text', 'lcov', 'clover'],
+    coverageReporters: ['lcov', 'clover'],
 
     /**
      * The directory where Jest should store its cached dependency information.
