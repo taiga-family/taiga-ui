@@ -34,6 +34,21 @@
         </tui-doc-example>
 
         <tui-doc-example
+            id="id"
+            heading="ID only"
+            [content]="example8"
+        >
+            <tui-notification class="tui-space_bottom-4 b-form">
+                If you receive your id to text mapping from the server, you would need to recreate
+                <code>items</code>
+                and
+                <code>stringify</code>
+                when new data comes, so they will be observables and you would need async pipe in the template
+            </tui-notification>
+            <tui-combox-box-example-8></tui-combox-box-example-8>
+        </tui-doc-example>
+
+        <tui-doc-example
             id="wrapper"
             description="With filtering through tuiFilterByInput pipe"
             heading="DataListWrapper"
