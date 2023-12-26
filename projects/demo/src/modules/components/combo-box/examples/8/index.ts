@@ -18,7 +18,7 @@ const DICTIONARY: Dictionary[] = [
 ];
 
 @Component({
-    selector: 'tui-combox-box-example-8',
+    selector: 'tui-combo-box-example-8',
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
