@@ -39,7 +39,10 @@ export class TuiInputTagExample4 {
 
     readonly tagValidator = tagValidator;
 
-    readonly control = new FormControl([], createControlValidator(tagValidator));
+    readonly control = new FormControl<string[]>(
+        [],
+        createControlValidator(tagValidator),
+    );
 
     get filtered(): readonly string[] {
         return this.filterBy(this.search, this.control.value ?? []);

@@ -14,7 +14,7 @@ export class TuiSelectExample3 {
     readonly items = ['https://twitter.com/marsibarsi', 'https://twitter.com/waterplea'];
 
     readonly testForm = new FormGroup({
-        email: new FormControl(null),
+        email: new FormControl<string | null>(null),
         signature: new FormControl(''),
     });
 

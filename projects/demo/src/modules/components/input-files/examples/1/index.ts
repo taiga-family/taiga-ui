@@ -12,7 +12,7 @@ import {finalize, map, Observable, of, Subject, switchMap, timer} from 'rxjs';
     changeDetection,
 })
 export class TuiInputFilesExample1 {
-    readonly control = new FormControl();
+    readonly control = new FormControl<TuiFileLike | null>(null);
 
     readonly rejectedFiles$ = new Subject<TuiFileLike | null>();
     readonly loadingFiles$ = new Subject<TuiFileLike | null>();

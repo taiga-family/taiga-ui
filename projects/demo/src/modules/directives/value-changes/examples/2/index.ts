@@ -13,7 +13,7 @@ import {TuiAlertService} from '@taiga-ui/core';
 export class TuiValueChangesExample2 {
     readonly form = new FormGroup({
         name: new FormControl('', {updateOn: 'blur'}),
-        age: new FormControl(),
+        age: new FormControl<number | null>(null),
     });
 
     constructor(@Inject(TuiAlertService) private readonly alerts: TuiAlertService) {}

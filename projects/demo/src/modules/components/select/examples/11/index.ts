@@ -16,9 +16,9 @@ interface Item {
     changeDetection,
 })
 export class TuiSelectExample11 {
-    itemStringControl = new FormControl();
-    itemGroupControl = new FormControl();
-    itemControl = new FormControl();
+    itemStringControl = new FormControl<string | null>(null);
+    itemGroupControl = new FormControl<string | null>(null);
+    itemControl = new FormControl<Item | null>(null);
 
     items = [
         'Luke Skywalker',

@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiTime} from '@taiga-ui/cdk';
 import {tuiCreateTimePeriods, tuiInputTimeOptionsProvider} from '@taiga-ui/kit';
 
 @Component({
@@ -19,7 +20,7 @@ import {tuiCreateTimePeriods, tuiInputTimeOptionsProvider} from '@taiga-ui/kit';
 })
 export class TuiInputTimeExample3 {
     readonly testForm = new FormGroup({
-        testValue: new FormControl(null),
+        testValue: new FormControl<TuiTime | null>(null),
     });
 
     items1 = tuiCreateTimePeriods();

@@ -105,7 +105,10 @@ export class ExampleTuiInputDateTimeComponent extends AbstractExampleTuiControl 
 
     override cleaner = false;
 
-    readonly control = new FormControl(null, Validators.required);
+    readonly control = new FormControl<[TuiDay | null, TuiTime | null] | null>(
+        null,
+        Validators.required,
+    );
 
     readonly modeVariants: readonly TuiTimeMode[] = ['HH:MM', 'HH:MM:SS', 'HH:MM:SS.MSS'];
 

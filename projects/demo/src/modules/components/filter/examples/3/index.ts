@@ -22,7 +22,7 @@ export class TuiFilterExample3 {
     items = ['Calendar', 'Favorite', 'Messages', 'FAQ', 'Settings'];
 
     form = new FormGroup({
-        filters: new FormControl([]),
+        filters: new FormControl<string[]>([]),
     });
 
     getItemIcon(title: string): string {

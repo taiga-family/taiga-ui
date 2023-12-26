@@ -8,6 +8,7 @@ import {
     TUI_LAST_DAY,
     TuiDay,
     TuiMonth,
+    TuiMonthRange,
 } from '@taiga-ui/cdk';
 import {TuiBooleanHandlerWithContext, TuiMonthContext} from '@taiga-ui/kit';
 
@@ -70,5 +71,5 @@ export class ExampleTuiInputMonthRangeComponent extends AbstractExampleTuiContro
 
     override cleaner = false;
 
-    control = new FormControl(null, Validators.required);
+    control = new FormControl<TuiMonthRange | null>(null, Validators.required);
 }

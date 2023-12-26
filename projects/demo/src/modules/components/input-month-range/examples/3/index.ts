@@ -13,7 +13,7 @@ import {TuiBooleanHandlerWithContext, TuiMonthContext} from '@taiga-ui/kit';
 })
 export class TuiInputMonthRangeExample3 {
     readonly testForm = new FormGroup({
-        testValue: new FormControl(null),
+        testValue: new FormControl<TuiMonthRange | null>(null),
     });
 
     readonly disabledItemHandler: TuiBooleanHandlerWithContext<

@@ -12,7 +12,7 @@ import {TuiInputComponent} from '@taiga-ui/kit';
     changeDetection,
 })
 export class TuiActiveZoneExample1 {
-    readonly control = new FormControl();
+    readonly control = new FormControl('');
 
     childActive = false;
 

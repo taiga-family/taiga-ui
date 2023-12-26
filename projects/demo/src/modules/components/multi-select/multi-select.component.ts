@@ -170,7 +170,7 @@ export class ExampleTuiMultiSelectComponent extends AbstractExampleTuiControl {
 
     valueContent = this.valueContentVariants[0];
 
-    control = new FormControl();
+    control = new FormControl<Account[] | null>(null);
 
     readonly disabledItemHandlerVariants: ReadonlyArray<TuiBooleanHandler<Account>> = [
         ALWAYS_FALSE_HANDLER,

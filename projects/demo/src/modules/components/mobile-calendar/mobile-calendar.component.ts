@@ -9,6 +9,7 @@ import {
     TuiBooleanHandler,
     tuiControlValue,
     TuiDay,
+    TuiDayRange,
 } from '@taiga-ui/cdk';
 import {TUI_CALENDAR_DATE_STREAM} from '@taiga-ui/kit';
 import {Observable} from 'rxjs';
@@ -81,7 +82,7 @@ export class ExampleTuiMobileCalendarComponent {
 
     disabledItemHandler = this.disabledItemHandlerVariants[0];
 
-    control = new FormControl();
+    control = new FormControl<TuiDay | TuiDayRange | null>(null);
 
     stream = tuiControlValue<TuiDay>(this.control);
 }

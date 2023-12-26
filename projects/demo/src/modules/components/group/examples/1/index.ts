@@ -15,7 +15,7 @@ export class TuiGroupExample1 {
 
     testForm = new FormGroup({
         testValue: new FormControl('', Validators.required),
-        multiSelectControl: new FormControl([], Validators.required),
+        multiSelectControl: new FormControl<string[]>([], Validators.required),
         testValue3: new FormControl('', Validators.required),
     });
 }

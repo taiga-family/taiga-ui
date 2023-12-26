@@ -75,7 +75,7 @@ export class ExampleTuiTextareaComponent extends AbstractExampleTuiControl {
 
     expandable = false;
 
-    control = new FormControl();
+    control = new FormControl('');
 
     override readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeM> = ['m', 'l'];
 

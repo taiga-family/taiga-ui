@@ -12,7 +12,7 @@ import {TUI_ARROW} from '@taiga-ui/kit';
 })
 export class TuiHostedDropdownExample4 {
     readonly form = new FormGroup({
-        control: new FormControl([]),
+        control: new FormControl<string[]>([]),
     });
 
     open = false;

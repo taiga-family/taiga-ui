@@ -40,7 +40,7 @@ export class ExampleTuiCheckboxLabeledComponent extends AbstractExampleTuiContro
 
     control = new FormGroup({
         testValue1: new FormControl(false),
-        testValue2: new FormControl(),
+        testValue2: new FormControl<boolean | null>(null),
         testValue3: new FormControl(true),
     });
 

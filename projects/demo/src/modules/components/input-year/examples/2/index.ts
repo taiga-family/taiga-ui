@@ -11,6 +11,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 })
 export class InputYearExample2 {
     readonly testForm = new FormGroup({
-        testValue: new FormControl(null),
+        testValue: new FormControl<number | null>(null),
     });
 }

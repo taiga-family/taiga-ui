@@ -25,7 +25,7 @@ interface Employee {
     ],
 })
 export class TuiSelectExample10 {
-    readonly testValue = new FormControl(null);
+    readonly testValue = new FormControl<Employee | null>(null);
 
     readonly items: readonly Employee[] = [
         {id: 42, name: 'John Cleese', dept: {id: 566, title: 'Financial'}},

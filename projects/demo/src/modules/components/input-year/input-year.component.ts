@@ -53,5 +53,5 @@ export class ExampleInputYearComponent extends AbstractExampleTuiControl {
 
     override cleaner = false;
 
-    control = new FormControl(null, Validators.required);
+    control = new FormControl<number | null>(null, Validators.required);
 }

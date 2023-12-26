@@ -57,7 +57,9 @@ export class ExampleTuiInputFilesComponent extends AbstractExampleTuiControl {
         HTML: import('./examples/6/index.html?raw'),
     };
 
-    readonly control = new FormControl();
+    readonly control = new FormControl<TuiFileLike | null>(null);
+    readonly multipleControl = new FormControl<TuiFileLike[] | null>(null);
+
     link = 'Choose a file';
     label = 'or drop\u00A0it\u00A0here';
     multiple = true;
@@ -83,8 +85,9 @@ export class ExampleTuiInputFilesComponent extends AbstractExampleTuiControl {
     maxFileSize = this.maxFileSizeVariants[2];
 
     removeFile(file: TuiFileLike): void {
-        this.control.setValue(
-            this.control.value.filter((current: File) => current.name !== file.name),
+        this.multipleControl.setValue(
+            this.multipleControl.value?.filter(current => current.name !== file.name) ||
+                null,
         );
     }
 

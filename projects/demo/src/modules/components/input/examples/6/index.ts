@@ -16,7 +16,7 @@ export class TuiInputExample6 {
         name: new FormControl('', Validators.required),
         date: new FormControl(null, Validators.required),
         color: new FormControl(null, Validators.required),
-        quantity: new FormControl(),
+        quantity: new FormControl<number | null>(null),
         sum: new FormControl(255),
     });
 }

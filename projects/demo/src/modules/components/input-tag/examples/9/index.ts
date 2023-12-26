@@ -13,7 +13,7 @@ import {TuiBooleanHandler, TuiDay} from '@taiga-ui/cdk';
     changeDetection,
 })
 export class TuiInputTagExample9 {
-    readonly control = new FormControl([]);
+    readonly control = new FormControl<string[]>([]);
     readonly min = new Date(2000, 0, 1);
     readonly max = new Date(2025, 4, 10);
 

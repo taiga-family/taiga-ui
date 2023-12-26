@@ -19,5 +19,5 @@ export class TuiSelectExample1 {
         'Yoda',
     ];
 
-    testValue = new FormControl();
+    testValue = new FormControl<string | null>(null);
 }

@@ -20,6 +20,6 @@ export class TuiFilterByInputExample1 {
     ];
 
     readonly form = new FormGroup({
-        user: new FormControl(),
+        user: new FormControl(''),
     });
 }

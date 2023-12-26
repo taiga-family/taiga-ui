@@ -110,5 +110,5 @@ export class ExampleTuiInputDateComponent extends AbstractExampleTuiControl {
 
     override cleaner = false;
 
-    control = new FormControl(null, Validators.required);
+    control = new FormControl<TuiDay | null>(null, Validators.required);
 }

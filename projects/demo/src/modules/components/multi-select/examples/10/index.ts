@@ -15,10 +15,10 @@ interface Item {
     changeDetection,
 })
 export class TuiMultiSelectExample10 {
-    itemStringControl = new FormControl();
-    itemControl = new FormControl();
-    itemStringGroupControl = new FormControl();
-    itemGroupControl = new FormControl();
+    itemStringControl = new FormControl<string[]>([]);
+    itemControl = new FormControl<Item[]>([]);
+    itemStringGroupControl = new FormControl<string[]>([]);
+    itemGroupControl = new FormControl<Item[]>([]);
 
     items = [
         'Luke Skywalker',

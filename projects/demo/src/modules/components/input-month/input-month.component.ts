@@ -71,5 +71,5 @@ export class ExampleInputMonthComponent extends AbstractExampleTuiControl {
 
     override cleaner = false;
 
-    control = new FormControl(null, Validators.required);
+    control = new FormControl<TuiMonth | null>(null, Validators.required);
 }

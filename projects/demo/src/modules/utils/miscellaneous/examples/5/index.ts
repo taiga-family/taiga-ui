@@ -15,7 +15,7 @@ export class TuiMiscellaneousExample5 {
     readonly items = ['String', 'null', 'undefined'];
 
     parametersForm = new FormGroup({
-        value: new FormControl(null),
+        value: new FormControl<string | null>(null),
     });
 
     get isPresent(): boolean {

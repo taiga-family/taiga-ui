@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiMonthRange} from '@taiga-ui/cdk';
 
 @Component({
     selector: 'tui-input-month-range-example-2',
@@ -11,6 +12,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 })
 export class TuiInputMonthRangeExample2 {
     readonly testForm = new FormGroup({
-        testValue: new FormControl(null),
+        testValue: new FormControl<TuiMonthRange | null>(null),
     });
 }

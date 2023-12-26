@@ -16,5 +16,5 @@ export class TuiDropdownHoverExample3 {
 
     open = false;
 
-    selected = new FormControl();
+    selected = new FormControl<string | null>(null);
 }

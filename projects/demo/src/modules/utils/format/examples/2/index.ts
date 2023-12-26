@@ -15,12 +15,12 @@ export class TuiFormatExample2 {
     readonly items = ['USD', 'RUB', '643', 'KZT', '051', 'KRW', 'CHF', 'EUR', 'GBP'];
 
     parametersForm = new FormGroup({
-        currency: new FormControl(null),
+        currency: new FormControl<TuiCurrencyVariants>(null),
     });
 
     get currency(): string | null {
         const {currency} = this.parametersForm.value;
 
-        return tuiGetCurrencySymbol(currency as unknown as TuiCurrencyVariants);
+        return currency ? tuiGetCurrencySymbol(currency) : null;
     }
 }

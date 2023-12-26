@@ -12,7 +12,7 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
     changeDetection,
 })
 export class TuiMultiSelectExample9 {
-    readonly testValue = new FormControl([]);
+    readonly testValue = new FormControl<string[]>([]);
 
     readonly items: readonly string[] = [
         'Luke Skywalker',
