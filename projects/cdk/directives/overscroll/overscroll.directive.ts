@@ -1,12 +1,4 @@
-import {
-    Directive,
-    ElementRef,
-    HostBinding,
-    Inject,
-    Input,
-    NgZone,
-    Self,
-} from '@angular/core';
+import {Directive, ElementRef, HostBinding, Inject, Input, Self} from '@angular/core';
 import {tuiTypedFromEvent, tuiZonefree} from '@taiga-ui/cdk/observables';
 import {TuiDestroyService} from '@taiga-ui/cdk/services';
 import {TuiEventWith, TuiOverscrollMode} from '@taiga-ui/cdk/types';
@@ -26,13 +18,12 @@ export class TuiOverscrollDirective {
 
     constructor(
         @Inject(ElementRef) {nativeElement}: ElementRef<HTMLElement>,
-        @Inject(NgZone) zone: NgZone,
         @Self() @Inject(TuiDestroyService) destroy$: Observable<void>,
     ) {
         tuiTypedFromEvent(nativeElement, 'wheel', {passive: false})
             .pipe(
                 filter(() => this.enabled),
-                tuiZonefree(zone),
+                tuiZonefree(),
                 takeUntil(destroy$),
             )
             .subscribe(event => {
@@ -76,7 +67,7 @@ export class TuiOverscrollDirective {
                         }),
                     );
                 }),
-                tuiZonefree(zone),
+                tuiZonefree(),
                 takeUntil(destroy$),
             )
             .subscribe();

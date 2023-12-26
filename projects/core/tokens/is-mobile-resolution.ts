@@ -1,4 +1,4 @@
-import {inject, NgZone} from '@angular/core';
+import {inject} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
 import {
     tuiCreateTokenFromFactory,
@@ -24,6 +24,6 @@ export const TUI_IS_MOBILE_RES = tuiCreateTokenFromFactory(() => {
         startWith(null),
         map(() => tuiIsMobile(win, media)),
         distinctUntilChanged(),
-        tuiZoneOptimized(inject(NgZone)),
+        tuiZoneOptimized(),
     );
 });

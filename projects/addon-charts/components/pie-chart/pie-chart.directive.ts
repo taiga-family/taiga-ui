@@ -1,4 +1,4 @@
-import {Directive, ElementRef, Inject, Input, NgZone, Self} from '@angular/core';
+import {Directive, ElementRef, Inject, Input, Self} from '@angular/core';
 import {ANIMATION_FRAME, PERFORMANCE} from '@ng-web-apis/common';
 import {tuiDescribeSector} from '@taiga-ui/addon-charts/utils';
 import {tuiClamp, TuiDestroyService, tuiEaseInOutQuad, tuiZonefree} from '@taiga-ui/cdk';
@@ -27,7 +27,6 @@ export class TuiPieChartDirective {
 
     constructor(
         @Inject(ElementRef) {nativeElement}: ElementRef<SVGPathElement>,
-        @Inject(NgZone) zone: NgZone,
         @Self() @Inject(TuiDestroyService) destroy$: Observable<unknown>,
         @Inject(PERFORMANCE) performance: Performance,
         @Inject(ANIMATION_FRAME) animationFrame$: Observable<number>,
@@ -54,7 +53,7 @@ export class TuiPieChartDirective {
                         ]),
                     );
                 }),
-                tuiZonefree(zone),
+                tuiZonefree(),
                 takeUntil(destroy$),
             )
             .subscribe(([start, end]) => {

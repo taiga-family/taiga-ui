@@ -6,7 +6,6 @@ import {
     HostListener,
     inject,
     Input,
-    NgZone,
 } from '@angular/core';
 import {
     TuiActiveZoneDirective,
@@ -42,7 +41,7 @@ export class TuiDropdownHoverDirective extends TuiDriver {
         map(element => tuiIsElement(element) && this.isHovered(element)),
         distinctUntilChanged(),
         switchMap(v => of(v).pipe(delay(v ? this.showDelay : this.hideDelay))),
-        tuiZoneOptimized(inject(NgZone)),
+        tuiZoneOptimized(),
         tap(hovered => {
             this.hovered = hovered;
             this.open?.toggle(hovered);

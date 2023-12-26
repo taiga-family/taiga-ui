@@ -1,13 +1,5 @@
 import {DOCUMENT} from '@angular/common';
-import {
-    Directive,
-    ElementRef,
-    Inject,
-    Input,
-    NgZone,
-    Renderer2,
-    Self,
-} from '@angular/core';
+import {Directive, ElementRef, Inject, Input, Renderer2, Self} from '@angular/core';
 import {ANIMATION_FRAME} from '@ng-web-apis/common';
 import {
     POLLING_TIME,
@@ -41,7 +33,6 @@ export class TuiScrollbarDirective {
     tuiScrollbar: TuiOrientation = 'vertical';
 
     constructor(
-        @Inject(NgZone) zone: NgZone,
         @Inject(Renderer2) renderer: Renderer2,
         @Self() @Inject(TuiDestroyService) destroy$: Observable<void>,
         @Inject(ANIMATION_FRAME) animationFrame$: Observable<number>,
@@ -75,7 +66,7 @@ export class TuiScrollbarDirective {
                 }),
             ),
         )
-            .pipe(tuiZonefree(zone), takeUntil(destroy$))
+            .pipe(tuiZonefree(), takeUntil(destroy$))
             .subscribe(([scrollTop, scrollLeft]) => {
                 if (this.tuiScrollbar === 'vertical') {
                     renderer.setProperty(this.element, 'scrollTop', scrollTop);
@@ -88,7 +79,7 @@ export class TuiScrollbarDirective {
             animationFrame$.pipe(throttleTime(POLLING_TIME)),
             tuiScrollFrom(this.element),
         )
-            .pipe(tuiZonefree(zone), takeUntil(destroy$))
+            .pipe(tuiZonefree(), takeUntil(destroy$))
             .subscribe(() => {
                 if (this.tuiScrollbar === 'vertical') {
                     renderer.setStyle(nativeElement, 'top', `${this.thumb * 100}%`);

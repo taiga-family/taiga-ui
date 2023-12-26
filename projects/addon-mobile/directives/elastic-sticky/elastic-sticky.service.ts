@@ -54,7 +54,7 @@ export class TuiElasticStickyService extends Observable<number> {
                     startWith(1),
                     distinctUntilChanged(),
                     skip(1),
-                    tuiZoneOptimized(zone),
+                    tuiZoneOptimized(),
                     takeUntil(destroy$),
                 )
                 .subscribe(subscriber),

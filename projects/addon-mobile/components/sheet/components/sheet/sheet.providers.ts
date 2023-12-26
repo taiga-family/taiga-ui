@@ -1,5 +1,5 @@
 import {DOCUMENT} from '@angular/common';
-import {ElementRef, forwardRef, NgZone, Provider} from '@angular/core';
+import {ElementRef, forwardRef, Provider} from '@angular/core';
 import {
     ALWAYS_FALSE_HANDLER,
     ALWAYS_TRUE_HANDLER,
@@ -30,21 +30,20 @@ export const TUI_SHEET_PROVIDERS: Provider[] = [
     },
     {
         provide: TUI_SHEET_SCROLL,
-        deps: [ElementRef, NgZone, DOCUMENT, TUI_IS_IOS],
+        deps: [ElementRef, DOCUMENT, TUI_IS_IOS],
         useFactory: (
             {nativeElement}: ElementRef<HTMLElement>,
-            zone: NgZone,
             doc: Document,
             isIos: boolean,
         ): Observable<number> =>
             isIos
-                ? iosScrollFactory(nativeElement, doc, zone)
+                ? iosScrollFactory(nativeElement, doc)
                 : merge(
                       tuiTypedFromEvent(nativeElement, 'scroll'),
                       tuiTypedFromEvent(nativeElement, 'load', {capture: true}),
                   ).pipe(
                       map(() => nativeElement.scrollTop),
-                      tuiZonefree(zone),
+                      tuiZonefree(),
                       share(),
                   ),
     },

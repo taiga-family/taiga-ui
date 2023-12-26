@@ -3,7 +3,6 @@ import {
     ElementRef,
     Inject,
     Input,
-    NgZone,
     OnDestroy,
     Optional,
     Output,
@@ -37,13 +36,12 @@ export class TuiActiveZoneDirective implements OnDestroy {
         startWith(false),
         distinctUntilChanged(),
         skip(1),
-        tuiZoneOptimized(this.zone),
+        tuiZoneOptimized(),
     );
 
     constructor(
         @Inject(TUI_ACTIVE_ELEMENT)
         private readonly active$: Observable<Element | null>,
-        @Inject(NgZone) private readonly zone: NgZone,
         @Inject(ElementRef) private readonly el: ElementRef<Element>,
         @Optional()
         @SkipSelf()

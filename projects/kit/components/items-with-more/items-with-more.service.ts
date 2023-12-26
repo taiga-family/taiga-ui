@@ -1,4 +1,4 @@
-import {ElementRef, Inject, Injectable, NgZone} from '@angular/core';
+import {ElementRef, Inject, Injectable} from '@angular/core';
 import {MutationObserverService} from '@ng-web-apis/mutation-observer';
 import {tuiClamp, TuiResizeService, tuiZoneOptimized} from '@taiga-ui/cdk';
 import {distinctUntilChanged, map, merge, Observable, share, throttleTime} from 'rxjs';
@@ -11,12 +11,11 @@ export class TuiItemsWithMoreService extends Observable<number> {
         throttleTime(0),
         map(() => this.getOverflowIndex()),
         distinctUntilChanged(),
-        tuiZoneOptimized(this.zone),
+        tuiZoneOptimized(),
         share(),
     );
 
     constructor(
-        @Inject(NgZone) private readonly zone: NgZone,
         @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
         @Inject(MutationObserverService) private readonly mutation$: Observable<unknown>,
         @Inject(TuiResizeService) private readonly resize$: Observable<unknown>,

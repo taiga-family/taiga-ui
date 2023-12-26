@@ -1,4 +1,3 @@
-import {NgZone} from '@angular/core';
 import {tuiTypedFromEvent, tuiZonefree} from '@taiga-ui/cdk';
 import {
     concat,
@@ -17,7 +16,6 @@ import {
 export function iosScrollFactory(
     element: HTMLElement,
     doc: Document,
-    zone: NgZone,
 ): Observable<number> {
     const load$ = tuiTypedFromEvent(element, 'load', {capture: true});
     const touchstart$ = tuiTypedFromEvent(element, 'touchstart', {passive: true});
@@ -48,7 +46,7 @@ export function iosScrollFactory(
         ),
     );
 
-    return concat(scroll$.pipe(take(1)), result$).pipe(tuiZonefree(zone), share());
+    return concat(scroll$.pipe(take(1)), result$).pipe(tuiZonefree(), share());
 }
 
 // eslint-disable-next-line @typescript-eslint/naming-convention

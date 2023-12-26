@@ -1,4 +1,4 @@
-import {NgZone} from '@angular/core';
+import {inject, NgZone} from '@angular/core';
 import {tuiZonefull} from '@taiga-ui/cdk';
 import {distinctUntilChanged, map, OperatorFunction, pipe} from 'rxjs';
 
@@ -11,7 +11,7 @@ import {distinctUntilChanged, map, OperatorFunction, pipe} from 'rxjs';
  */
 export function tuiZonefulMap<T, R>(
     project: (value: T, index: number) => R,
-    zone: NgZone,
+    zone: NgZone = inject(NgZone),
 ): OperatorFunction<T, R> {
     return pipe(map(project), distinctUntilChanged(), tuiZonefull(zone));
 }

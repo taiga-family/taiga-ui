@@ -1,5 +1,5 @@
 import {DOCUMENT} from '@angular/common';
-import {Directive, ElementRef, Inject, Input, NgZone, Self} from '@angular/core';
+import {Directive, ElementRef, Inject, Input, Self} from '@angular/core';
 import {ANIMATION_FRAME} from '@ng-web-apis/common';
 import {POLLING_TIME} from '@taiga-ui/cdk/constants';
 import {
@@ -31,7 +31,6 @@ export class TuiScrollbarDirective {
     tuiScrollbar: 'horizontal' | 'vertical' = 'vertical';
 
     constructor(
-        @Inject(NgZone) zone: NgZone,
         @Self() @Inject(TuiDestroyService) destroy$: Observable<void>,
         @Inject(ANIMATION_FRAME) animationFrame$: Observable<number>,
         @Inject(TUI_SCROLL_REF) private readonly container: ElementRef<HTMLElement>,
@@ -60,7 +59,7 @@ export class TuiScrollbarDirective {
                 }),
             ),
         )
-            .pipe(tuiZonefree(zone), takeUntil(destroy$))
+            .pipe(tuiZonefree(), takeUntil(destroy$))
             .subscribe(([scrollTop, scrollLeft]) => {
                 if (this.tuiScrollbar === 'vertical') {
                     this.element.scrollTop = scrollTop;
@@ -73,7 +72,7 @@ export class TuiScrollbarDirective {
             animationFrame$.pipe(throttleTime(POLLING_TIME)),
             tuiScrollFrom(this.element),
         )
-            .pipe(tuiZonefree(zone), takeUntil(destroy$))
+            .pipe(tuiZonefree(), takeUntil(destroy$))
             .subscribe(() => {
                 if (this.tuiScrollbar === 'vertical') {
                     nativeElement.style.top = `${this.thumb * 100}%`;

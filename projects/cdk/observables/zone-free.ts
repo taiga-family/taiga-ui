@@ -1,7 +1,9 @@
-import {NgZone} from '@angular/core';
+import {inject, NgZone} from '@angular/core';
 import {MonoTypeOperatorFunction, Observable, pipe} from 'rxjs';
 
-export function tuiZonefull<T>(zone: NgZone): MonoTypeOperatorFunction<T> {
+export function tuiZonefull<T>(
+    zone: NgZone = inject(NgZone),
+): MonoTypeOperatorFunction<T> {
     return source =>
         new Observable(subscriber =>
             source.subscribe({
@@ -12,13 +14,17 @@ export function tuiZonefull<T>(zone: NgZone): MonoTypeOperatorFunction<T> {
         );
 }
 
-export function tuiZonefree<T>(zone: NgZone): MonoTypeOperatorFunction<T> {
+export function tuiZonefree<T>(
+    zone: NgZone = inject(NgZone),
+): MonoTypeOperatorFunction<T> {
     return source =>
         new Observable(subscriber =>
             zone.runOutsideAngular(() => source.subscribe(subscriber)),
         );
 }
 
-export function tuiZoneOptimized<T>(zone: NgZone): MonoTypeOperatorFunction<T> {
+export function tuiZoneOptimized<T>(
+    zone: NgZone = inject(NgZone),
+): MonoTypeOperatorFunction<T> {
     return pipe(tuiZonefree(zone), tuiZonefull(zone));
 }

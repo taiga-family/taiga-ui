@@ -5,7 +5,6 @@ import {
     forwardRef,
     Inject,
     Input,
-    NgZone,
     QueryList,
     Self,
 } from '@angular/core';
@@ -43,7 +42,6 @@ export class TuiLineDaysChartHintDirective implements AfterContentInit {
 
     constructor(
         @Self() @Inject(TuiDestroyService) private readonly destroy$: TuiDestroyService,
-        @Inject(NgZone) private readonly zone: NgZone,
         @Inject(TuiHoveredService) private readonly hovered$: Observable<boolean>,
     ) {}
 
@@ -54,7 +52,7 @@ export class TuiLineDaysChartHintDirective implements AfterContentInit {
         ])
             .pipe(
                 filter(result => !result.some(Boolean)),
-                tuiZonefree(this.zone),
+                tuiZonefree(),
                 takeUntil(this.destroy$),
             )
             .subscribe(() => {

@@ -1,10 +1,4 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    ElementRef,
-    Inject,
-    NgZone,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ElementRef, Inject} from '@angular/core';
 import {ANIMATION_FRAME} from '@ng-web-apis/common';
 import {tuiZoneOptimized} from '@taiga-ui/cdk/observables';
 import {TUI_SCROLL_REF} from '@taiga-ui/cdk/tokens';
@@ -22,11 +16,10 @@ export class TuiScrollControlsComponent {
         map(() => this.scrollbars),
         startWith([false, false]),
         distinctUntilChanged((a, b) => a[0] === b[0] && a[1] === b[1]),
-        tuiZoneOptimized(this.zone),
+        tuiZoneOptimized(),
     );
 
     constructor(
-        @Inject(NgZone) private readonly zone: NgZone,
         @Inject(TUI_SCROLL_REF) private readonly scrollRef: ElementRef<HTMLElement>,
         @Inject(ANIMATION_FRAME) private readonly animationFrame$: Observable<number>,
     ) {}

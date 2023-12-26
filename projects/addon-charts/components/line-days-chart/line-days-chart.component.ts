@@ -5,7 +5,6 @@ import {
     HostBinding,
     Inject,
     Input,
-    NgZone,
     Optional,
     QueryList,
     Self,
@@ -110,7 +109,6 @@ export class TuiLineDaysChartComponent implements AfterViewInit {
         @Inject(TuiLineDaysChartHintDirective)
         private readonly hintDirective: TuiLineDaysChartHintDirective | null,
         @Self() @Inject(TuiDestroyService) private readonly destroy$: TuiDestroyService,
-        @Inject(NgZone) private readonly zone: NgZone,
         @Inject(TuiHoveredService) private readonly hovered$: Observable<boolean>,
         @Inject(TUI_LINE_CHART_OPTIONS) private readonly options: TuiLineChartOptions,
     ) {}
@@ -138,7 +136,7 @@ export class TuiLineDaysChartComponent implements AfterViewInit {
         combineLatest([tuiLineChartDrivers(this.charts), this.hovered$])
             .pipe(
                 filter(result => !result.some(Boolean)),
-                tuiZonefree(this.zone),
+                tuiZonefree(),
                 takeUntil(this.destroy$),
             )
             .subscribe(() => {

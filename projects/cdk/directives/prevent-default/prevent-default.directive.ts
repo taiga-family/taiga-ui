@@ -1,4 +1,4 @@
-import {Directive, ElementRef, Inject, Input, NgZone, OnInit, Self} from '@angular/core';
+import {Directive, ElementRef, Inject, Input, OnInit, Self} from '@angular/core';
 import {tuiPreventDefault, tuiZonefree} from '@taiga-ui/cdk/observables';
 import {TuiDestroyService} from '@taiga-ui/cdk/services';
 import {fromEvent, Observable, takeUntil} from 'rxjs';
@@ -18,13 +18,12 @@ export class TuiPreventDefaultDirective implements OnInit {
 
     constructor(
         @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
-        @Inject(NgZone) private readonly zone: NgZone,
         @Self() @Inject(TuiDestroyService) private readonly destroy$: Observable<void>,
     ) {}
 
     ngOnInit(): void {
         fromEvent(this.el.nativeElement, this.eventName, {passive: false})
-            .pipe(tuiZonefree(this.zone), tuiPreventDefault(), takeUntil(this.destroy$))
+            .pipe(tuiZonefree(), tuiPreventDefault(), takeUntil(this.destroy$))
             .subscribe();
     }
 }

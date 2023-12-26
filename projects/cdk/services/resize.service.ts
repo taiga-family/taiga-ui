@@ -50,7 +50,7 @@ export class TuiResizeService extends ResizeObserverService {
                 ),
             ),
             debounceTime(0),
-            tuiZonefree(zone),
+            tuiZonefree(),
             share(),
             takeUntil(destroy$),
         );

@@ -6,7 +6,6 @@ import {
     forwardRef,
     Inject,
     Input,
-    NgZone,
     QueryList,
     Renderer2,
     Self,
@@ -52,7 +51,6 @@ export class TuiLineChartHintDirective implements AfterViewInit {
     constructor(
         @Inject(Renderer2) private readonly renderer: Renderer2,
         @Self() @Inject(TuiDestroyService) private readonly destroy$: TuiDestroyService,
-        @Inject(NgZone) private readonly zone: NgZone,
         @Inject(TuiHoveredService) private readonly hovered$: Observable<boolean>,
     ) {}
 
@@ -60,7 +58,7 @@ export class TuiLineChartHintDirective implements AfterViewInit {
         combineLatest([tuiLineChartDrivers(this.charts), this.hovered$])
             .pipe(
                 filter(result => !result.some(Boolean)),
-                tuiZonefree(this.zone),
+                tuiZonefree(),
                 takeUntil(this.destroy$),
             )
             .subscribe(() => {

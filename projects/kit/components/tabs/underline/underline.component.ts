@@ -5,7 +5,6 @@ import {
     HostListener,
     Inject,
     Input,
-    NgZone,
 } from '@angular/core';
 import {ANIMATION_FRAME} from '@ng-web-apis/common';
 import {tuiZonefree} from '@taiga-ui/cdk';
@@ -31,7 +30,7 @@ export class TuiUnderlineComponent {
             element
                 ? this.animationFrame$.pipe(
                       map(() => element),
-                      tuiZonefree(this.zone),
+                      tuiZonefree(),
                   )
                 : of(null),
         ),
@@ -67,7 +66,6 @@ export class TuiUnderlineComponent {
 
     constructor(
         @Inject(ElementRef) {nativeElement}: ElementRef,
-        @Inject(NgZone) private readonly zone: NgZone,
         @Inject(ANIMATION_FRAME) private readonly animationFrame$: Observable<number>,
         @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
     ) {

@@ -1,5 +1,5 @@
 import {DOCUMENT} from '@angular/common';
-import {Directive, ElementRef, Inject, Input, NgZone, OnChanges} from '@angular/core';
+import {Directive, ElementRef, Inject, Input, OnChanges} from '@angular/core';
 import {
     tuiIfMap,
     tuiIsNativeFocused,
@@ -44,7 +44,7 @@ export class TuiHintDescribeDirective extends TuiDriver implements OnChanges {
         startWith(false),
         distinctUntilChanged(),
         skip(1),
-        tuiZoneOptimized(this.zone),
+        tuiZoneOptimized(),
     );
 
     @Input()
@@ -53,7 +53,6 @@ export class TuiHintDescribeDirective extends TuiDriver implements OnChanges {
     readonly type = 'hint';
 
     constructor(
-        @Inject(NgZone) private readonly zone: NgZone,
         @Inject(DOCUMENT) private readonly doc: Document,
         @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
     ) {

@@ -1,4 +1,4 @@
-import {ContentChild, Directive, Inject, Input, NgZone} from '@angular/core';
+import {ContentChild, Directive, Inject, Input} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
 import {
     ALWAYS_FALSE_HANDLER,
@@ -66,17 +66,14 @@ export class TuiSheetWrapperDirective {
     @Input()
     tuiSheetWrapper = 16;
 
-    constructor(
-        @Inject(NgZone) private readonly zone: NgZone,
-        @Inject(WINDOW) private readonly win: Window,
-    ) {}
+    constructor(@Inject(WINDOW) private readonly win: Window) {}
 
     @tuiPure
     get overlay$(): Observable<boolean> {
         return this.scroll$.pipe(
             map(y => y + 16 > this.win.innerHeight - this.tuiSheetWrapper),
             distinctUntilChanged(),
-            tuiZonefull(this.zone),
+            tuiZonefull(),
         );
     }
 
@@ -84,7 +81,7 @@ export class TuiSheetWrapperDirective {
     get visible$(): Observable<boolean> {
         return processDragged(this.dragged$, this.scroll$).pipe(
             distinctUntilChanged(),
-            tuiZonefull(this.zone),
+            tuiZonefull(),
         );
     }
 

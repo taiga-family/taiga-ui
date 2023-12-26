@@ -1,12 +1,4 @@
-import {
-    Directive,
-    ElementRef,
-    HostBinding,
-    Inject,
-    Input,
-    NgZone,
-    Self,
-} from '@angular/core';
+import {Directive, ElementRef, HostBinding, Inject, Input, Self} from '@angular/core';
 import {
     MUTATION_OBSERVER_INIT,
     MutationObserverService,
@@ -58,14 +50,13 @@ export class TuiFadeDirective {
         @Inject(TuiResizeService) resize$: Observable<unknown>,
         @Inject(MutationObserverService) mutate$: Observable<unknown>,
         @Inject(ElementRef) element: ElementRef<HTMLElement>,
-        @Inject(NgZone) zone: NgZone,
         @Inject(TuiDirectiveStylesService) directiveStyles: TuiDirectiveStylesService,
     ) {
         const el = element.nativeElement;
 
         directiveStyles.addComponent(TuiFadeComponent);
         merge(resize$, mutate$, fromEvent(el, 'scroll'))
-            .pipe(tuiZonefree(zone), takeUntil(destroy$))
+            .pipe(tuiZonefree(), takeUntil(destroy$))
             .subscribe(() => {
                 el.classList.toggle('_start', !!el.scrollLeft || !!el.scrollTop);
                 el.classList.toggle('_end', this.isEnd(el));

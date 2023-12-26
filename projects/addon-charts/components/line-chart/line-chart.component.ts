@@ -4,7 +4,6 @@ import {
     HostListener,
     Inject,
     Input,
-    NgZone,
     Optional,
     QueryList,
     ViewChildren,
@@ -82,7 +81,6 @@ export class TuiLineChartComponent {
 
     constructor(
         @Inject(TuiIdService) idService: TuiIdService,
-        @Inject(NgZone) private readonly zone: NgZone,
         @Optional()
         @Inject(TuiLineChartHintDirective)
         readonly hintDirective: TuiLineChartHintDirective | null,
@@ -96,7 +94,7 @@ export class TuiLineChartComponent {
 
     @tuiPure
     get hovered$(): Observable<number> {
-        return this.hover$.pipe(distinctUntilChanged(), tuiZoneOptimized(this.zone));
+        return this.hover$.pipe(distinctUntilChanged(), tuiZoneOptimized());
     }
 
     get hintContent(): PolymorpheusContent<TuiLineChartHintContext<TuiPoint>> {

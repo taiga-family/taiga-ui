@@ -1,4 +1,4 @@
-import {Inject, Injectable, NgZone, Optional, Self} from '@angular/core';
+import {Inject, Injectable, Optional, Self} from '@angular/core';
 import {RouterLinkActive} from '@angular/router';
 import {ANIMATION_FRAME} from '@ng-web-apis/common';
 import {TuiDestroyService, tuiZoneOptimized} from '@taiga-ui/cdk';
@@ -18,7 +18,6 @@ export class TuiRouterLinkActiveService extends Observable<boolean> {
         @Optional()
         @Inject(RouterLinkActive)
         routerLinkActive: RouterLinkActive | null,
-        @Inject(NgZone) zone: NgZone,
         @Inject(ANIMATION_FRAME) animationFrame$: Observable<number>,
         @Self() @Inject(TuiDestroyService) destroy$: TuiDestroyService,
     ) {
@@ -29,7 +28,7 @@ export class TuiRouterLinkActiveService extends Observable<boolean> {
               ).pipe(
                   map(() => routerLinkActive.isActive),
                   distinctUntilChanged(),
-                  tuiZoneOptimized(zone),
+                  tuiZoneOptimized(),
                   takeUntil(destroy$),
               )
             : EMPTY;

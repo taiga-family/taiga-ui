@@ -1,4 +1,4 @@
-import {Directive, ElementRef, Inject, NgZone, Output} from '@angular/core';
+import {Directive, ElementRef, Inject, Output} from '@angular/core';
 import {tuiTypedFromEvent, tuiZoneOptimized} from '@taiga-ui/cdk/observables';
 import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
 import {distinctUntilChanged, map, merge, Observable, skip, startWith} from 'rxjs';
@@ -18,7 +18,6 @@ export class TuiFocusedDirective {
     constructor(
         @Inject(ElementRef)
         {nativeElement}: ElementRef<HTMLElement>,
-        @Inject(NgZone) zone: NgZone,
     ) {
         this.tuiFocusedChange = merge(
             tuiTypedFromEvent(nativeElement, 'focusin'),
@@ -28,7 +27,7 @@ export class TuiFocusedDirective {
             startWith(false),
             distinctUntilChanged(),
             skip(1),
-            tuiZoneOptimized(zone),
+            tuiZoneOptimized(),
         );
     }
 }

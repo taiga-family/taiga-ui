@@ -1,4 +1,4 @@
-import {ElementRef, Inject, Injectable, NgZone} from '@angular/core';
+import {ElementRef, Inject, Injectable} from '@angular/core';
 import {ALWAYS_FALSE_HANDLER, ALWAYS_TRUE_HANDLER} from '@taiga-ui/cdk/constants';
 import {tuiTypedFromEvent, tuiZoneOptimized} from '@taiga-ui/cdk/observables';
 import {tuiIsElement} from '@taiga-ui/cdk/utils';
@@ -26,12 +26,9 @@ export class TuiHoveredService extends Observable<boolean> {
             filter(movedOut),
             map(ALWAYS_FALSE_HANDLER),
         ),
-    ).pipe(distinctUntilChanged(), tuiZoneOptimized(this.zone));
+    ).pipe(distinctUntilChanged(), tuiZoneOptimized());
 
-    constructor(
-        @Inject(ElementRef) private readonly el: ElementRef<Element>,
-        @Inject(NgZone) private readonly zone: NgZone,
-    ) {
+    constructor(@Inject(ElementRef) private readonly el: ElementRef<Element>) {
         super(subscriber => this.stream$.subscribe(subscriber));
     }
 }
