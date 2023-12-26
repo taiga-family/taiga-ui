@@ -9,11 +9,13 @@ import {FINISH_SYMBOL, START_SYMBOL, titleLog} from '../../utils/colored-log';
 import {getExecutionTime} from '../../utils/get-execution-time';
 import {projectRoot} from '../../utils/project-root';
 import {replaceIdentifiers} from '../steps/replace-identifier';
+import {showWarnings} from '../steps/show-warnings';
 import {migrateTemplates, restoreTuiMapper, restoreTuiMatcher} from './steps';
+import {MIGRATION_WARNINGS} from './steps/constants';
 import {IDENTIFIERS_TO_REPLACE} from './steps/constants/identifiers-to-replace';
 
 function main(options: TuiSchema): Rule {
-    return (tree: Tree, _context: SchematicContext) => {
+    return (tree: Tree, context: SchematicContext) => {
         const project = createProject(tree, projectRoot(), ALL_FILES);
 
         const fileSystem = project.getFileSystem().fs;
@@ -24,6 +26,7 @@ function main(options: TuiSchema): Rule {
         restoreTuiMatcher(options);
 
         migrateTemplates(fileSystem, options);
+        showWarnings(context, MIGRATION_WARNINGS);
 
         fileSystem.commitEdits();
         saveActiveProject();
