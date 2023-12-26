@@ -40,7 +40,7 @@ export class TuiFilterByInputExample2 {
     readonly stringify = ({name}: User): string => name;
 
     readonly matcherString = (name: string, search: string): boolean =>
-        name.split(' ').pop()!.toLowerCase().startsWith(search.toLowerCase());
+        name.split(' ').pop()?.toLowerCase().startsWith(search.toLowerCase()) ?? false;
 
     readonly matcherUser = (user: User, search: string): boolean =>
         user.name.toLowerCase().startsWith(search.toLowerCase());

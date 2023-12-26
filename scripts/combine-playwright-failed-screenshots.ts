@@ -48,7 +48,7 @@ console.info('canvas:', version);
         });
 
     const buffer = canvas.toBuffer('image/png');
-    const diffImageName = diffImage.split('/').pop()!.replace(DIFF_IMAGE_POSTFIX, '');
+    const diffImageName = diffImage.split('/').pop().replace(DIFF_IMAGE_POSTFIX, '');
 
     writeFileSync(`${rootPath}/${diffImageName}.diff.png`, buffer);
 })();

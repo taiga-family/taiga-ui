@@ -63,7 +63,7 @@ describe('InputPassword', () => {
         });
 
         it('When you click on the "Show password" icon, the field becomes type = "text"', () => {
-            getIcon()!.nativeElement.click();
+            getIcon()?.nativeElement.click();
 
             const inputType = component.inputType;
 

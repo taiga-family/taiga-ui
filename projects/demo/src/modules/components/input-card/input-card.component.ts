@@ -110,16 +110,16 @@ export class ExampleTuiInputCardComponent extends AbstractExampleTuiControl {
     }
 
     isDisabled(control: string): boolean {
-        return this.control.get(control)!.disabled;
+        return this.control.get(control)?.disabled ?? false;
     }
 
     toggleDisabled(value: boolean, control: string): void {
         if (value) {
-            this.control.get(control)!.disable();
+            this.control.get(control)?.disable();
 
             return;
         }
 
-        this.control.get(control)!.enable();
+        this.control.get(control)?.enable();
     }
 }

@@ -18,8 +18,8 @@ describe('markControlAsTouchedAndValidate', () => {
 
         tuiMarkControlAsTouchedAndValidate(group);
 
-        expect(group.get('control1')!.touched).toBe(true);
-        expect(group.get('control2')!.touched).toBe(true);
+        expect(group.get('control1')?.touched).toBe(true);
+        expect(group.get('control2')?.touched).toBe(true);
     });
 
     it('With empty form group', () => {
@@ -62,15 +62,15 @@ describe('markControlAsTouchedAndValidate', () => {
 
         tuiMarkControlAsTouchedAndValidate(form);
 
-        expect(form.get('control1')!.touched).toBe(true);
-        expect(form.get('control2')!.touched).toBe(true);
-        expect(form.get('control3')!.touched).toBe(true);
+        expect(form.get('control1')?.touched).toBe(true);
+        expect(form.get('control2')?.touched).toBe(true);
+        expect(form.get('control3')?.touched).toBe(true);
         expect((form.get('control3') as FormArray).at(0).touched).toBe(true);
         expect((form.get('control3') as FormArray).at(1).touched).toBe(true);
         expect((form.get('control3') as FormArray).at(2).touched).toBe(true);
         expect(
-            ((form.get('control3') as FormArray).at(1) as FormGroup).get('control4')!
-                .touched,
+            ((form.get('control3') as FormArray).at(1) as FormGroup).get('control4')
+                ?.touched,
         ).toBe(true);
         expect(
             ((form.get('control3') as FormArray).at(2) as FormArray).at(0).touched,

@@ -101,7 +101,7 @@ describe('MultiSelect', () => {
 
                 describe('opens the dropdown', () => {
                     it('on click', () => {
-                        getInputTag(pageObject).nativeElement.click();
+                        getInputTag(pageObject)?.nativeElement.click();
                         fixture.detectChanges();
 
                         expect(getDropdown(pageObject)).not.toBeNull();
@@ -119,7 +119,7 @@ describe('MultiSelect', () => {
                     it('in readOnly mode', () => {
                         testComponent.readOnly = true;
                         fixture.detectChanges();
-                        getInputTag(pageObject).nativeElement.click();
+                        getInputTag(pageObject)?.nativeElement.click();
                         fixture.detectChanges();
 
                         expect(getDropdown(pageObject)).toBeNull();
@@ -128,7 +128,7 @@ describe('MultiSelect', () => {
                     it('if control is disabled', () => {
                         testComponent.control.disable();
                         fixture.detectChanges();
-                        getInputTag(pageObject).nativeElement.click();
+                        getInputTag(pageObject)?.nativeElement.click();
                         fixture.detectChanges();
 
                         expect(getDropdown(pageObject)).toBeNull();
@@ -328,13 +328,13 @@ describe('MultiSelect', () => {
 });
 
 function getArrow<T>(pageObject: TuiPageObject<T>): DebugElement | null {
-    return pageObject.getByAutomationId('tui-multi-select__arrow');
+    return pageObject.getByAutomationId('tui-multi-select__arrow') ?? null;
 }
 
-function getInputTag<T>(pageObject: TuiPageObject<T>): DebugElement {
-    return pageObject.getByAutomationId('tui-multi-select__input')!;
+function getInputTag<T>(pageObject: TuiPageObject<T>): DebugElement | null {
+    return pageObject.getByAutomationId('tui-multi-select__input') ?? null;
 }
 
 function getDropdown<T>(pageObject: TuiPageObject<T>): DebugElement | null {
-    return pageObject.getByAutomationId('tui-multi-select__menu');
+    return pageObject.getByAutomationId('tui-multi-select__menu') ?? null;
 }

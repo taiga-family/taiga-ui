@@ -23,8 +23,8 @@ describe('Mobile Dialog with TUI_MOBILE_DIALOG_OPTIONS', () => {
     let tuiMobileDialogService: TuiMobileDialogService;
     let pageObject: TuiPageObject<TestComponent>;
 
-    function getLabelElement(): DebugElement {
-        return pageObject.getByAutomationId('tui-mobile-dialog__label')!;
+    function getLabelElement(): DebugElement | null {
+        return pageObject.getByAutomationId('tui-mobile-dialog__label') ?? null;
     }
 
     beforeEach(async () => {
@@ -54,7 +54,7 @@ describe('Mobile Dialog with TUI_MOBILE_DIALOG_OPTIONS', () => {
             const labelElement = getLabelElement();
 
             expect(labelElement).toBeTruthy();
-            expect(labelElement.nativeElement.textContent.trim()).toBe(label);
+            expect(labelElement?.nativeElement.textContent.trim()).toBe(label);
         });
     });
 });

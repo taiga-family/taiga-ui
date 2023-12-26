@@ -51,12 +51,12 @@ describe('TableBarsHost', () => {
         subscription?.unsubscribe();
     });
 
-    function getBar(): DebugElement {
-        return pageObject.getByAutomationId(`${testContext.prefix}bar`)!;
+    function getBar(): DebugElement | null {
+        return pageObject.getByAutomationId(`${testContext.prefix}bar`) ?? null;
     }
 
-    function getCloseButton(): DebugElement {
-        return pageObject.getByAutomationId(`${testContext.prefix}close-button`)!;
+    function getCloseButton(): DebugElement | null {
+        return pageObject.getByAutomationId(`${testContext.prefix}close-button`) ?? null;
     }
 
     it('Listens to service for adding tableBar', () => {
@@ -93,14 +93,14 @@ describe('TableBarsHost', () => {
 
         fixture.detectChanges();
 
-        expect(getBar().nativeElement.classList.contains('t-bar_light')).toBe(false);
+        expect(getBar()?.nativeElement.classList.contains('t-bar_light')).toBe(false);
     });
 
     it('pi mode: light tableBar light', () => {
         service.open(title, {mode: 'onDark'}).pipe(take(1)).subscribe();
         fixture.detectChanges();
 
-        expect(getBar().nativeElement.classList.contains('t-bar_light')).toBe(true);
+        expect(getBar()?.nativeElement.classList.contains('t-bar_light')).toBe(true);
     });
 
     it('there is no close button by default', () => {
@@ -128,7 +128,7 @@ describe('TableBarsHost', () => {
         subscription = service.open(title, {hasCloseButton: true}).subscribe();
         fixture.detectChanges();
 
-        getCloseButton().nativeElement.click();
+        getCloseButton()?.nativeElement.click();
 
         expect(result).toBeNull();
     });

@@ -76,17 +76,19 @@ describe('Textarea', () => {
         return pageObject.getByAutomationId(`${testContext.prefix}placeholder`);
     }
 
-    function getTooltip(): DebugElement {
-        return pageObject.getByAutomationId(`${testContext.prefix}tooltip`)!;
+    function getTooltip(): DebugElement | null {
+        return pageObject.getByAutomationId(`${testContext.prefix}tooltip`) ?? null;
     }
 
-    function getScrollbar(): HTMLElement {
-        return pageObject.getByAutomationId(`${testContext.prefix}scrollbar`)!
-            .nativeElement;
+    function getScrollbar(): HTMLElement | null {
+        return (
+            pageObject.getByAutomationId(`${testContext.prefix}scrollbar`)
+                ?.nativeElement ?? null
+        );
     }
 
-    function getCounter(): DebugElement {
-        return pageObject.getByAutomationId(`${testContext.prefix}counter`)!;
+    function getCounter(): DebugElement | null {
+        return pageObject.getByAutomationId(`${testContext.prefix}counter`) ?? null;
     }
 
     beforeEach(async () => {
@@ -128,7 +130,7 @@ describe('Textarea', () => {
 
             const maxHeight = component.rows * LINE_HEIGHT_L;
 
-            expect(getScrollbar().style.maxHeight).toEqual(tuiPx(maxHeight));
+            expect(getScrollbar()?.style.maxHeight).toEqual(tuiPx(maxHeight));
         });
 
         it('when rows (10) change, MaxHeight is calculated correctly', () => {
@@ -138,7 +140,7 @@ describe('Textarea', () => {
 
             const maxHeight = component.rows * LINE_HEIGHT_L;
 
-            expect(getScrollbar().style.maxHeight).toEqual(tuiPx(maxHeight));
+            expect(getScrollbar()?.style.maxHeight).toEqual(tuiPx(maxHeight));
         });
 
         it('when rows (15) change, MaxHeight is calculated correctly', () => {
@@ -148,7 +150,7 @@ describe('Textarea', () => {
 
             const maxHeight = component.rows * LINE_HEIGHT_L;
 
-            expect(getScrollbar().style.maxHeight).toEqual(tuiPx(maxHeight));
+            expect(getScrollbar()?.style.maxHeight).toEqual(tuiPx(maxHeight));
         });
 
         it('when expandable is true and the content size increases, the tui-outline height increases', () => {

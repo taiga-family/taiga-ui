@@ -3,6 +3,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiSizeL} from '@taiga-ui/core';
+import {filter} from 'rxjs';
 
 import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
@@ -47,10 +48,9 @@ export class ExampleTuiCheckboxLabeledComponent extends AbstractExampleTuiContro
     constructor() {
         super();
 
-        this.control.get('testValue1')!.valueChanges.subscribe(value => {
-            if (value) {
-                this.control.get('testValue1')!.setValue(false);
-            }
-        });
+        this.control
+            .get('testValue1')
+            ?.valueChanges.pipe(filter(Boolean))
+            .subscribe(() => this.control.get('testValue1')?.setValue(false));
     }
 }

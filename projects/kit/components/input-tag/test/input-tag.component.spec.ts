@@ -73,7 +73,7 @@ describe('InputTag', () => {
     let testComponent: TestComponent;
     let component: TuiInputTagComponent;
     let pageObject: TuiPageObject<TestComponent>;
-    let focusStealer: HTMLElement;
+    let focusStealer: HTMLElement | null = null;
     let inputPO: TuiNativeInputPO;
 
     const testContext = {
@@ -113,7 +113,7 @@ describe('InputTag', () => {
         testComponent = fixture.componentInstance;
         fixture.detectChanges();
         component = testComponent.component;
-        focusStealer = document.querySelector<'button'>('button')!;
+        focusStealer = document.querySelector<'button'>('button');
 
         inputPO = new TuiNativeInputPO(fixture, `${testContext.prefix}native`);
     });
@@ -143,7 +143,7 @@ describe('InputTag', () => {
         });
 
         it('When exiting the field adds input as a tag', async () => {
-            focusStealer.focus();
+            focusStealer?.focus();
             fixture.detectChanges();
 
             await fixture.whenStable();
@@ -154,14 +154,14 @@ describe('InputTag', () => {
 
         it('Does not add empty tags when leaving the field', () => {
             inputPO.sendText('   ');
-            focusStealer.focus();
+            focusStealer?.focus();
             fixture.detectChanges();
 
             expect(component.value.length).toBe(3);
         });
 
         it('When adding a tag on leaving the field, the field is cleared', async () => {
-            focusStealer.focus();
+            focusStealer?.focus();
             fixture.detectChanges();
 
             await fixture.whenStable();
@@ -206,7 +206,7 @@ describe('InputTag', () => {
             inputPO.focus();
             fixture.detectChanges();
             inputPO.sendText('10,5;12,2');
-            focusStealer.focus();
+            focusStealer?.focus();
             fixture.detectChanges();
 
             expect(component.value[1]).toBe('10,5');
@@ -219,7 +219,7 @@ describe('InputTag', () => {
             inputPO.focus();
             fixture.detectChanges();
             inputPO.sendText('1234 567 89');
-            focusStealer.focus();
+            focusStealer?.focus();
             fixture.detectChanges();
 
             expect(component.value[1]).toBe('1234 567 89');
@@ -330,8 +330,8 @@ describe('InputTag', () => {
         it('Clicking on cleaner clears the input field and tags', () => {
             inputPO.sendText('123');
             pageObject
-                .getByAutomationId(`${testContext.prefix}cleaner`)!
-                .nativeElement.click();
+                .getByAutomationId(`${testContext.prefix}cleaner`)
+                ?.nativeElement.click();
 
             expect(component.search).toBe('');
             expect(component.value).toEqual([]);
@@ -361,8 +361,8 @@ describe('InputTag', () => {
 
             expect(
                 tuiIsActive(
-                    pageObject.getByAutomationId(`${testContext.prefix}tag`)!
-                        .nativeElement,
+                    pageObject.getByAutomationId(`${testContext.prefix}tag`)
+                        ?.nativeElement,
                 ),
             ).toBe(true);
         });
@@ -381,8 +381,8 @@ describe('InputTag', () => {
 
             expect(
                 tuiIsActive(
-                    pageObject.getByAutomationId(`${testContext.prefix}tag`)!
-                        .nativeElement,
+                    pageObject.getByAutomationId(`${testContext.prefix}tag`)
+                        ?.nativeElement,
                 ),
             ).toBe(true);
         });

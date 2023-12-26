@@ -57,17 +57,17 @@ describe('Directive TuiProjectClassDirective', () => {
     });
 
     it('if the child does not have the required class, it is not on the host either', () => {
-        expect(getParentElement().classList.contains('_focused')).toBe(false);
+        expect(getParentElement()?.classList.contains('_focused')).toBe(false);
     });
 
     it('if a class appears on the child, it is projected to the host', () => {
         inputPO.focus();
         fixture.detectChanges();
 
-        expect(getParentElement().classList.contains('_focused')).toBe(true);
+        expect(getParentElement()?.classList.contains('_focused')).toBe(true);
     });
 
-    function getParentElement(): HTMLElement {
-        return document.getElementById('parent')!;
+    function getParentElement(): HTMLElement | null {
+        return document.getElementById('parent') ?? null;
     }
 });

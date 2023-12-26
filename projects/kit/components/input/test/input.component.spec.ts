@@ -171,8 +171,8 @@ describe('Input', () => {
         it('The value is substituted when selecting an item from the dropdown', () => {
             inputPO.sendText('ен');
             pageObject
-                .getByAutomationId('tui-data-list-wrapper__option')!
-                .nativeElement.click();
+                .getByAutomationId('tui-data-list-wrapper__option')
+                ?.nativeElement.click();
 
             expect(testComponent.control.value).toBe(ITEMS[0].toString());
         });

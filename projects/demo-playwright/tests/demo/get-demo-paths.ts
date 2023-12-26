@@ -39,7 +39,7 @@ export function tuiGetDemoPathsForE2E(
             flatPages(pages)
                 .filter(
                     page =>
-                        !exclusionSection.includes(page.section!) &&
+                        !exclusionSection.includes(page.section ?? '') &&
                         !exclusionRoutes.includes(page.route),
                 )
                 .map(({route}) => route),

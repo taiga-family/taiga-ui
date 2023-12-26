@@ -128,7 +128,7 @@ export class TuiInputExample4 {
     );
 
     get card(): string | null {
-        const value = this.testForm.get('card')!.value;
+        const value = this.testForm.get('card')?.value ?? null;
 
         if ((value?.length ?? 0) < 7) {
             return null;
@@ -171,6 +171,6 @@ export class TuiInputExample4 {
 
     onSelected(user: User): void {
         this.lastUser = user;
-        this.testForm.get('card')!.setValue(user.card);
+        this.testForm.get('card')?.setValue(user.card);
     }
 }

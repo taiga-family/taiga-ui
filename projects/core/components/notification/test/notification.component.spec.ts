@@ -43,12 +43,12 @@ describe('Notification', () => {
         let testComponent: TestComponent;
         let pageObject: TuiPageObject<TestComponent>;
 
-        function getIcon(): DebugElement {
-            return pageObject.getByAutomationId('tui-notification__icon')!;
+        function getIcon(): DebugElement | null {
+            return pageObject.getByAutomationId('tui-notification__icon') ?? null;
         }
 
-        function getClose(): DebugElement {
-            return pageObject.getByAutomationId('tui-notification__close')!;
+        function getClose(): DebugElement | null {
+            return pageObject.getByAutomationId('tui-notification__close') ?? null;
         }
 
         beforeEach(async () => {
@@ -100,8 +100,8 @@ describe('Notification', () => {
         let fixture: ComponentFixture<TestComponent>;
         let pageObject: TuiPageObject<TestComponent>;
 
-        function getIcon(): DebugElement {
-            return pageObject.getByAutomationId('tui-notification__icon')!;
+        function getIcon(): DebugElement | null {
+            return pageObject.getByAutomationId('tui-notification__icon') ?? null;
         }
 
         beforeEach(async () => {

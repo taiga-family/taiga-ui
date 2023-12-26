@@ -123,8 +123,8 @@ describe('MobileCalendar', () => {
             fixture.autoDetectChanges();
             getToday().click();
             pageObject
-                .getByAutomationId('tui-mobile-calendar__confirm')!
-                .nativeElement.click();
+                .getByAutomationId('tui-mobile-calendar__confirm')
+                ?.nativeElement.click();
 
             const value = testComponent.onConfirm.mock.calls[0][0];
 
@@ -145,8 +145,8 @@ describe('MobileCalendar', () => {
             days[0].nativeElement.click();
             days[1].nativeElement.click();
             pageObject
-                .getByAutomationId('tui-mobile-calendar__confirm')!
-                .nativeElement.click();
+                .getByAutomationId('tui-mobile-calendar__confirm')
+                ?.nativeElement.click();
 
             const value = testComponent.onConfirm.mock.calls[0][0];
 
@@ -156,8 +156,8 @@ describe('MobileCalendar', () => {
         xit('cancel event if null', fakeAsync(() => {
             testComponent.component.value = null;
             pageObject
-                .getByAutomationId('tui-mobile-calendar__confirm')!
-                .nativeElement.click();
+                .getByAutomationId('tui-mobile-calendar__confirm')
+                ?.nativeElement.click();
 
             expect(testComponent.onConfirm).not.toHaveBeenCalled();
             expect(testComponent.onCancel).toHaveBeenCalled();

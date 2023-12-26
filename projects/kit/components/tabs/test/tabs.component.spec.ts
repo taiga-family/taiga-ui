@@ -44,7 +44,7 @@ xdescribe('Tabs', () => {
 
     let fixture: ComponentFixture<TestComponent>;
     let component: TestComponent;
-    let buttons: readonly HTMLElement[];
+    let buttons: ReadonlyArray<HTMLElement | null>;
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
@@ -57,15 +57,15 @@ xdescribe('Tabs', () => {
         fixture.detectChanges();
         component = fixture.componentInstance;
         buttons = [
-            document.getElementById('cards')!,
-            document.getElementById('tariff')!,
-            document.getElementById('calls')!,
-            document.getElementById('settings')!,
+            document.getElementById('cards'),
+            document.getElementById('tariff'),
+            document.getElementById('calls'),
+            document.getElementById('settings'),
         ];
     });
 
     it('Navigation by arrows works when going right', () => {
-        buttons[0].focus();
+        buttons[0]?.focus();
         tuiDispatchOnActive('arrowRight');
         fixture.detectChanges();
 
@@ -73,28 +73,28 @@ xdescribe('Tabs', () => {
     });
 
     it('Navigation by arrows works when going left', () => {
-        buttons[1].focus();
+        buttons[1]?.focus();
         tuiDispatchOnActive('arrowLeft');
 
         expect(tuiIsNativeFocused(buttons[0])).toBe(true);
     });
 
     it('Navigation by arrows skips disabled when going right', () => {
-        buttons[1].focus();
+        buttons[1]?.focus();
         tuiDispatchOnActive('arrowRight');
 
         expect(tuiIsNativeFocused(buttons[3])).toBe(true);
     });
 
     it('Navigation by arrows skips disabled when going left', () => {
-        buttons[3].focus();
+        buttons[3]?.focus();
         tuiDispatchOnActive('arrowLeft');
 
         expect(tuiIsNativeFocused(buttons[1])).toBe(true);
     });
 
     it('Updates activeItemIndex', () => {
-        buttons[3].click();
+        buttons[3]?.click();
 
         expect(component.activeItemIndex).toBe(3);
     });

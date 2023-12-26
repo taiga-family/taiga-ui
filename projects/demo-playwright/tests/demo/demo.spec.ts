@@ -4,7 +4,7 @@ import {expect, test} from '@playwright/test';
 import {tuiIsFlakyExample} from './is-flaky-examples';
 
 test.describe('Demo', () => {
-    const demoPaths: string[] = JSON.parse(process.env['DEMO_PATHS']!);
+    const demoPaths: string[] = JSON.parse(process.env['DEMO_PATHS'] ?? '[]');
 
     demoPaths.forEach(path => {
         test(path, async ({page}) => {

@@ -50,8 +50,8 @@ describe('PrimitiveYearMonthPaginationComponent', () => {
         component = testComponent.component;
     });
 
-    function getYearButton(): DebugElement {
-        return pageObject.getByAutomationId(`${testContext.prefix}year-button`)!;
+    function getYearButton(): DebugElement | null {
+        return pageObject.getByAutomationId(`${testContext.prefix}year-button`) ?? null;
     }
 
     describe('init', () => {

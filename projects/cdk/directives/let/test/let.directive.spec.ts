@@ -44,7 +44,7 @@ describe('Let', () => {
     });
 
     it('Result is shown 3 times', () => {
-        expect(testComponent.el.nativeElement.textContent!.trim()).toBe('!!!');
+        expect(testComponent.el.nativeElement.textContent?.trim()).toBe('!!!');
     });
 
     it('Getter is called once', () => {

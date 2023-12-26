@@ -29,7 +29,7 @@ xdescribe('Range', () => {
         @ViewChild(TuiRangeComponent, {static: true, read: ElementRef})
         el!: ElementRef<HTMLElement>;
 
-        testValue = new FormControl([3, 5]);
+        testValue = new FormControl<readonly [number, number]>([3, 5]);
         max = 11;
         min = 1;
         segments = 10;
@@ -48,12 +48,18 @@ xdescribe('Range', () => {
         },
     };
 
-    function getLeft(): HTMLElement {
-        return pageObject.getByAutomationId(`${testContext.prefix}left`)!.nativeElement;
+    function getLeft(): HTMLElement | null {
+        return (
+            pageObject.getByAutomationId(`${testContext.prefix}left`)?.nativeElement ??
+            null
+        );
     }
 
-    function getRight(): HTMLElement {
-        return pageObject.getByAutomationId(`${testContext.prefix}right`)!.nativeElement;
+    function getRight(): HTMLElement | null {
+        return (
+            pageObject.getByAutomationId(`${testContext.prefix}right`)?.nativeElement ??
+            null
+        );
     }
 
     function getFilledRangeOffset(): {left: string; right: string} {
@@ -85,21 +91,21 @@ xdescribe('Range', () => {
     describe('Changing values', () => {
         describe('Left point', () => {
             it('Pressing the left arrow decreases the value by one step', () => {
-                getLeft().dispatchEvent(keydownArrowLeft);
+                getLeft()?.dispatchEvent(keydownArrowLeft);
 
-                expect(testComponent.testValue.value[0]).toBe(2);
-                expect(testComponent.testValue.value[1]).toBe(5);
+                expect(testComponent.testValue.value?.[0]).toBe(2);
+                expect(testComponent.testValue.value?.[1]).toBe(5);
             });
 
             it('Pressing the right arrow increases the value by one step', () => {
-                getLeft().dispatchEvent(keydownArrowRight);
+                getLeft()?.dispatchEvent(keydownArrowRight);
 
-                expect(testComponent.testValue.value[0]).toBe(4);
-                expect(testComponent.testValue.value[1]).toBe(5);
+                expect(testComponent.testValue.value?.[0]).toBe(4);
+                expect(testComponent.testValue.value?.[1]).toBe(5);
             });
 
             it('Pressing the left arrow correctly paints the strip', () => {
-                getLeft().dispatchEvent(keydownArrowLeft);
+                getLeft()?.dispatchEvent(keydownArrowLeft);
                 fixture.detectChanges();
 
                 expect(getFilledRangeOffset().left).toBe('10%');
@@ -107,7 +113,7 @@ xdescribe('Range', () => {
             });
 
             it('Pressing the right arrow correctly paints the strip', () => {
-                getLeft().dispatchEvent(keydownArrowRight);
+                getLeft()?.dispatchEvent(keydownArrowRight);
                 fixture.detectChanges();
 
                 expect(getFilledRangeOffset().left).toBe('30%');
@@ -117,21 +123,21 @@ xdescribe('Range', () => {
 
         describe('Right point', () => {
             it('Pressing the left arrow decreases the value by one step', () => {
-                getRight().dispatchEvent(keydownArrowLeft);
+                getRight()?.dispatchEvent(keydownArrowLeft);
 
-                expect(testComponent.testValue.value[0]).toBe(3);
-                expect(testComponent.testValue.value[1]).toBe(4);
+                expect(testComponent.testValue.value?.[0]).toBe(3);
+                expect(testComponent.testValue.value?.[1]).toBe(4);
             });
 
             it('Pressing the right arrow increases the value by one step', () => {
-                getRight().dispatchEvent(keydownArrowRight);
+                getRight()?.dispatchEvent(keydownArrowRight);
 
-                expect(testComponent.testValue.value[0]).toBe(3);
-                expect(testComponent.testValue.value[1]).toBe(6);
+                expect(testComponent.testValue.value?.[0]).toBe(3);
+                expect(testComponent.testValue.value?.[1]).toBe(6);
             });
 
             it('Pressing the left arrow correctly paints the strip', () => {
-                getRight().dispatchEvent(keydownArrowLeft);
+                getRight()?.dispatchEvent(keydownArrowLeft);
                 fixture.detectChanges();
 
                 expect(getFilledRangeOffset().left).toBe('20%');
@@ -139,7 +145,7 @@ xdescribe('Range', () => {
             });
 
             it('Pressing the right arrow correctly paints the strip', () => {
-                getRight().dispatchEvent(keydownArrowRight);
+                getRight()?.dispatchEvent(keydownArrowRight);
                 fixture.detectChanges();
 
                 expect(getFilledRangeOffset().left).toBe('20%');
@@ -150,42 +156,42 @@ xdescribe('Range', () => {
         describe('Borders', () => {
             it('Prevents the left border from exceeding the right', () => {
                 testComponent.testValue.setValue([5, 5]);
-                getLeft().dispatchEvent(keydownArrowRight);
+                getLeft()?.dispatchEvent(keydownArrowRight);
                 fixture.detectChanges();
 
-                expect(testComponent.testValue.value[0]).toBe(5);
+                expect(testComponent.testValue.value?.[0]).toBe(5);
             });
 
             it('Prevents the right border from dropping below the left', () => {
                 testComponent.testValue.setValue([5, 5]);
-                getRight().dispatchEvent(keydownArrowLeft);
+                getRight()?.dispatchEvent(keydownArrowLeft);
                 fixture.detectChanges();
 
-                expect(testComponent.testValue.value[1]).toBe(5);
+                expect(testComponent.testValue.value?.[1]).toBe(5);
             });
 
             it('Prevents the value from decreasing below the minimum', () => {
                 testComponent.testValue.setValue([1, 11]);
-                getLeft().dispatchEvent(keydownArrowLeft);
+                getLeft()?.dispatchEvent(keydownArrowLeft);
                 fixture.detectChanges();
 
-                expect(testComponent.testValue.value[0]).toBe(1);
+                expect(testComponent.testValue.value?.[0]).toBe(1);
             });
 
             it('Prevents the value from exceeding the maximum', () => {
                 testComponent.testValue.setValue([1, 11]);
-                getRight().dispatchEvent(keydownArrowRight);
+                getRight()?.dispatchEvent(keydownArrowRight);
                 fixture.detectChanges();
 
-                expect(testComponent.testValue.value[1]).toBe(11);
+                expect(testComponent.testValue.value?.[1]).toBe(11);
             });
 
             it('Adds a value to the closest allowed step', () => {
                 testComponent.testValue.setValue([3.3, 5]);
-                getLeft().dispatchEvent(keydownArrowRight);
+                getLeft()?.dispatchEvent(keydownArrowRight);
                 fixture.detectChanges();
 
-                expect(testComponent.testValue.value[0]).toBe(4);
+                expect(testComponent.testValue.value?.[0]).toBe(4);
             });
         });
 
@@ -199,17 +205,17 @@ xdescribe('Range', () => {
             });
 
             it('Pressing the right arrow increases the value by one step (step = 1)', () => {
-                getLeft().dispatchEvent(keydownArrowRight);
+                getLeft()?.dispatchEvent(keydownArrowRight);
                 fixture.detectChanges();
 
-                expect(testComponent.testValue.value[0]).toBe(1.1);
+                expect(testComponent.testValue.value?.[0]).toBe(1.1);
             });
 
             it('Pressing the left arrow decreases the value by one step', () => {
-                getRight().dispatchEvent(keydownArrowLeft);
+                getRight()?.dispatchEvent(keydownArrowLeft);
                 fixture.detectChanges();
 
-                expect(testComponent.testValue.value[1]).toBe(4.9);
+                expect(testComponent.testValue.value?.[1]).toBe(4.9);
             });
 
             it('Pressing the right arrow increases the value by one step (step = 3)', () => {
@@ -217,10 +223,10 @@ xdescribe('Range', () => {
                 testComponent.step = 3;
                 fixture.detectChanges();
 
-                getLeft().dispatchEvent(keydownArrowRight);
+                getLeft()?.dispatchEvent(keydownArrowRight);
                 fixture.detectChanges();
 
-                expect(testComponent.testValue.value[0]).toBe(3);
+                expect(testComponent.testValue.value?.[0]).toBe(3);
             });
         });
 

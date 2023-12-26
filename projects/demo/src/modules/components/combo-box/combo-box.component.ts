@@ -128,7 +128,7 @@ export class ExampleTuiComboBoxComponent extends AbstractExampleTuiControl {
     readonly strictMatcherVariants: ReadonlyArray<TuiStringMatcher<Account>> = [
         TUI_STRICT_MATCHER as TuiStringMatcher<Account>,
         (item: Account, search: string, stringify: TuiStringHandler<Account>) =>
-            Number.parseInt(stringify(item).match(/\d+/g)![0], 10) ===
+            Number.parseInt(stringify(item).match(/\d+/g)?.[0] ?? '', 10) ===
             Number.parseInt(search, 10),
     ];
 

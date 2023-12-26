@@ -23,8 +23,8 @@ describe('Push with TUI_PUSH_OPTIONS', () => {
     let tuiPushService: TuiPushService;
     let pageObject: TuiPageObject<TestComponent>;
 
-    function getLabelElement(): DebugElement {
-        return pageObject.getByAutomationId('tui-push__heading')!;
+    function getLabelElement(): DebugElement | null {
+        return pageObject.getByAutomationId('tui-push__heading') ?? null;
     }
 
     beforeEach(async () => {
@@ -50,9 +50,7 @@ describe('Push with TUI_PUSH_OPTIONS', () => {
             tuiPushService.open('Test').subscribe();
             fixture.detectChanges();
 
-            const labelElement = getLabelElement();
-
-            expect(labelElement.nativeElement.textContent.trim()).toBe(heading);
+            expect(getLabelElement()?.nativeElement.textContent.trim()).toBe(heading);
         });
     });
 });

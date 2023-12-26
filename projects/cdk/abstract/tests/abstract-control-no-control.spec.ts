@@ -97,7 +97,8 @@ describe('AbstractTuiControl and NgControl not injected in MyControlComponent', 
         fixture.detectChanges();
 
         testComponent = fixture.componentInstance;
-        controlInstance = fixture.componentInstance.myControl.child.parent!;
+        controlInstance = fixture.componentInstance.myControl.child
+            .parent as MyControlComponent;
     });
 
     it('default behaviour', () => {

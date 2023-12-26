@@ -96,7 +96,8 @@ describe('AbstractTuiControl and FormControl', () => {
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         fixture.detectChanges();
-        controlInstance = fixture.componentInstance.myControl.child.parent!;
+        controlInstance = fixture.componentInstance.myControl.child
+            .parent as MyControlComponent;
     });
 
     it('default behaviour', () => {

@@ -61,14 +61,14 @@ describe('Hint', () => {
     });
 
     it('Hint is not shown immediately', () => {
-        getHost().dispatchEvent(new Event('mouseenter'));
+        getHost()?.dispatchEvent(new Event('mouseenter'));
         fixture.detectChanges();
         expect(getTooltip()).toBeNull();
     });
 
     describe('Hint', () => {
         beforeEach(fakeAsync(() => {
-            getHost().dispatchEvent(new Event('mouseenter'));
+            getHost()?.dispatchEvent(new Event('mouseenter'));
             fixture.detectChanges();
             tick(500);
             fixture.detectChanges();
@@ -89,7 +89,7 @@ describe('Hint', () => {
         });
 
         it('is hidden after pointer left host with 200ms delay', fakeAsync(async () => {
-            getHost().dispatchEvent(new Event('mouseout'));
+            getHost()?.dispatchEvent(new Event('mouseout'));
             fixture.detectChanges();
             tick(200);
             fixture.detectChanges();
@@ -122,17 +122,17 @@ describe('Hint', () => {
         function setHintThenEnterMouse(hint: Hint): void {
             setHint(hint);
 
-            getHost().dispatchEvent(new Event('mouseenter'));
+            getHost()?.dispatchEvent(new Event('mouseenter'));
             fixture.detectChanges();
         }
     });
 
-    function getHost(): Element {
-        return document.querySelector('#hint-host')!;
+    function getHost(): Element | null {
+        return document.querySelector('#hint-host') ?? null;
     }
 
     function getTooltip(): Element | null {
-        return document.querySelector('tui-hint');
+        return document.querySelector('tui-hint') ?? null;
     }
 
     function setHint(hint: Hint): void {

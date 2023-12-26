@@ -15,6 +15,6 @@ export class TuiInputPhoneExample1 {
     });
 
     setValue(): void {
-        this.testForm.get('testValue')!.setValue('+79926775676');
+        this.testForm.get('testValue')?.setValue('+79926775676');
     }
 }

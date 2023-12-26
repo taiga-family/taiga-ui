@@ -1,7 +1,7 @@
 import {DOCUMENT} from '@angular/common';
 import {Directive, ElementRef, Inject, Input, NgZone, Self} from '@angular/core';
 import {ANIMATION_FRAME} from '@ng-web-apis/common';
-import {POLLING_TIME} from '@taiga-ui/cdk/constants';
+import {EMPTY_CLIENT_RECT, POLLING_TIME} from '@taiga-ui/cdk/constants';
 import {
     tuiScrollFrom,
     tuiStopPropagation,
@@ -10,7 +10,7 @@ import {
 } from '@taiga-ui/cdk/observables';
 import {TuiDestroyService} from '@taiga-ui/cdk/services';
 import {TUI_SCROLL_REF} from '@taiga-ui/cdk/tokens';
-import {map, merge, Observable, switchMap, takeUntil, throttleTime} from 'rxjs';
+import {EMPTY, map, merge, Observable, switchMap, takeUntil, throttleTime} from 'rxjs';
 
 const MIN_WIDTH = 24;
 
@@ -42,7 +42,9 @@ export class TuiScrollbarDirective {
         const mousedown$ = tuiTypedFromEvent(nativeElement, 'mousedown');
         const mousemove$ = tuiTypedFromEvent(this.doc, 'mousemove');
         const mouseup$ = tuiTypedFromEvent(this.doc, 'mouseup');
-        const mousedownWrapper$ = tuiTypedFromEvent(this.wrapper, 'mousedown');
+        const mousedownWrapper$ = this.wrapper
+            ? tuiTypedFromEvent(this.wrapper, 'mousedown')
+            : EMPTY;
 
         merge(
             mousedownWrapper$.pipe(map(event => this.getScrolled(event, 0.5, 0.5))),
@@ -85,8 +87,8 @@ export class TuiScrollbarDirective {
             });
     }
 
-    private get wrapper(): Element {
-        return this.el.nativeElement.parentElement!;
+    private get wrapper(): Element | null {
+        return this.el.nativeElement.parentElement ?? null;
     }
 
     private get scrolled(): number {
@@ -145,7 +147,8 @@ export class TuiScrollbarDirective {
         offsetHorizontal: number,
     ): [number, number] {
         const {offsetHeight, offsetWidth} = this.el.nativeElement;
-        const {top, left, width, height} = this.wrapper.getBoundingClientRect();
+        const {top, left, width, height} =
+            this.wrapper?.getBoundingClientRect() ?? EMPTY_CLIENT_RECT;
 
         const maxTop = this.element.scrollHeight - height;
         const maxLeft = this.element.scrollWidth - width;

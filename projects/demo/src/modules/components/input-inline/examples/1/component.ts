@@ -23,7 +23,7 @@ export class TuiInputInlineExample1 {
     }
 
     get input4Empty(): boolean {
-        return this.testForm.get('testValue4')!.value === '';
+        return this.testForm.get('testValue4')?.value === '';
     }
 
     onToggleClick(): void {

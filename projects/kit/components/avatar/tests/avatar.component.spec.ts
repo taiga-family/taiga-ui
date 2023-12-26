@@ -46,9 +46,9 @@ describe('Avatar', () => {
         },
     };
 
-    function getAvatar(): HTMLElement {
-        return pageObject.getByAutomationId(`${testContext.prefix}component`)!
-            .nativeElement;
+    function getAvatar(): HTMLElement | null {
+        return pageObject.getByAutomationId(`${testContext.prefix}component`)
+            ?.nativeElement;
     }
 
     beforeEach(async () => {
@@ -96,13 +96,13 @@ describe('Avatar', () => {
     // TODO: Jest doesn't support intersection observe
     xdescribe('Avatar color', () => {
         it('if there is an avatarUrl the color is rgba(0, 0, 0, 0)', () => {
-            expect(getComputedStyle(getAvatar()).backgroundColor).toBe(
+            expect(getComputedStyle(getAvatar() as HTMLElement).backgroundColor).toBe(
                 'rgba(0, 0, 0, 0)',
             );
         });
 
         it('when autoColor is on, the color will be - rgb(160, 170, 228)', () => {
-            expect(getComputedStyle(getAvatar()).backgroundColor).toBe(
+            expect(getComputedStyle(getAvatar() as HTMLElement).backgroundColor).toBe(
                 'rgb(160, 170, 228)',
             );
         });

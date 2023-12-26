@@ -130,7 +130,7 @@ describe('rangeCalendarComponent', () => {
             fixture.detectChanges();
 
             expect(
-                testComponent.control.value.daySame(
+                testComponent.control.value?.daySame(
                     new TuiDayRange(min, startOfMonth.append({day: -1})),
                 ),
             ).toBe(true);
@@ -180,9 +180,11 @@ describe('rangeCalendarComponent', () => {
         return pageObject.getByAutomationId('tui-calendar-range__calendars');
     }
 
-    function getCheckmark(): HTMLElement {
-        return pageObject.getByAutomationId('tui-calendar-range__checkmark')!
-            .nativeElement;
+    function getCheckmark(): HTMLElement | null {
+        return (
+            pageObject.getByAutomationId('tui-calendar-range__checkmark')
+                ?.nativeElement ?? null
+        );
     }
 
     function getItems(): DebugElement[] {

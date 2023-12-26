@@ -58,8 +58,8 @@ describe('Breadcrumbs Wrapper', () => {
         },
     };
 
-    function getBreadcrumbs(): DebugElement {
-        return pageObject.getByAutomationId(`${testContext.prefix}component`)!;
+    function getBreadcrumbs(): DebugElement | null {
+        return pageObject.getByAutomationId(`${testContext.prefix}component`) ?? null;
     }
 
     beforeEach(async () => {
@@ -76,14 +76,14 @@ describe('Breadcrumbs Wrapper', () => {
 
     describe('size:', () => {
         it('default is medium', () => {
-            expect(getBreadcrumbs().attributes['data-size']).toBe('m');
+            expect(getBreadcrumbs()?.attributes['data-size']).toBe('m');
         });
 
         it('large is set for size = "l"', () => {
             testComponent.size = 'l';
             fixture.detectChanges();
 
-            expect(getBreadcrumbs().attributes['data-size']).toBe('l');
+            expect(getBreadcrumbs()?.attributes['data-size']).toBe('l');
         });
     });
 

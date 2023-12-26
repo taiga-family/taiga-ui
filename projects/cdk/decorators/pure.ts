@@ -102,7 +102,9 @@ export function tuiPure(
         throw new TuiPureException();
     }
 
-    const {get, enumerable, value} = descriptor!;
+    const {get, enumerable, value} = descriptor as TypedPropertyDescriptor<
+        (...args: unknown[]) => unknown
+    >;
     const propertyKey = propertyKeyOrContext as string;
 
     if (get) {

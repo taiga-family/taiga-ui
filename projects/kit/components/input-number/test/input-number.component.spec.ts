@@ -104,7 +104,7 @@ describe('InputNumber', () => {
             await fixture.whenStable();
 
             fixture.detectChanges();
-            expect(getNativeInput()!.nativeElement.value).toBe(
+            expect(getNativeInput()?.nativeElement.value).toBe(
                 `1${CHAR_NO_BREAK_SPACE}234`,
             );
         });
@@ -116,7 +116,7 @@ describe('InputNumber', () => {
             await fixture.whenStable();
 
             fixture.detectChanges();
-            expect(getNativeInput()!.nativeElement.value).toBe('12,34');
+            expect(getNativeInput()?.nativeElement.value).toBe('12,34');
         });
 
         it('Default min and max are safe integers', async () => {
@@ -137,7 +137,7 @@ describe('InputNumber', () => {
 
         fixture.detectChanges();
 
-        expect(getNativeInput()!.nativeElement.value).toBe('12');
+        expect(getNativeInput()?.nativeElement.value).toBe('12');
     });
 
     it('There is no minus sign for negative values with min> = 0', async () => {
@@ -146,7 +146,7 @@ describe('InputNumber', () => {
 
         await fixture.whenStable();
 
-        expect(getNativeInput()!.nativeElement.value).toBe(
+        expect(getNativeInput()?.nativeElement.value).toBe(
             `12${CHAR_NO_BREAK_SPACE}345${CHAR_NO_BREAK_SPACE}678`,
         );
     });
@@ -157,7 +157,7 @@ describe('InputNumber', () => {
 
         await fixture.whenStable();
 
-        expect(getNativeInput()!.nativeElement.value).toBe(
+        expect(getNativeInput()?.nativeElement.value).toBe(
             `12${CHAR_NO_BREAK_SPACE}345${CHAR_NO_BREAK_SPACE}678`,
         );
     });
@@ -342,9 +342,8 @@ describe('InputNumber', () => {
 
     it('maxlength is set to 23 by default (18 digits + 5 default separators)', () => {
         fixture.detectChanges();
-        const nativeInput = getNativeInput()!.nativeElement;
 
-        expect(nativeInput.getAttribute('maxlength')).toBe('23');
+        expect(getNativeInput()?.nativeElement?.getAttribute('maxlength')).toBe('23');
     });
 
     describe('When decimal === always', () => {

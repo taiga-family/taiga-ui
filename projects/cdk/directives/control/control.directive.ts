@@ -9,6 +9,6 @@ export class TuiControlDirective {
     constructor(@Inject(NgControl) private readonly ngControl: NgControl) {}
 
     get control(): AbstractControl {
-        return this.ngControl.control!;
+        return this.ngControl.control as AbstractControl;
     }
 }

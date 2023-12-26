@@ -41,7 +41,7 @@ describe('InputDate', () => {
         @ViewChild(TuiInputDateComponent)
         readonly component!: TuiInputDateComponent;
 
-        control = new FormControl(new TuiDay(2017, 2, 1));
+        control = new FormControl<Date | TuiDay>(new TuiDay(2017, 2, 1));
 
         cleaner = false;
 
@@ -198,23 +198,23 @@ describe('InputDate', () => {
         it('accepts yyyy.mm.dd', () => {
             inputPO.sendText('2021.12.23');
 
-            const typedDay = testComponent.control.value;
+            const typedDay = testComponent.control.value as TuiDay;
 
             expect(inputPO.value).toBe('2021.12.23');
-            expect(typedDay.day).toBe(23);
-            expect(typedDay.month).toBe(11);
-            expect(typedDay.year).toBe(2021);
+            expect(typedDay?.day).toBe(23);
+            expect(typedDay?.month).toBe(11);
+            expect(typedDay?.year).toBe(2021);
         });
 
         it('does not accept mm.dd.yyyy (and set min day if it is less min day)', () => {
             inputPO.sendText('12.23.2021');
 
-            const typedDay = testComponent.control.value;
+            const typedDay = testComponent.control.value as TuiDay;
 
             expect(inputPO.value).toBe('1900.01.01');
-            expect(typedDay.day).toBe(1);
-            expect(typedDay.month).toBe(0);
-            expect(typedDay.year).toBe(1900);
+            expect(typedDay?.day).toBe(1);
+            expect(typedDay?.month).toBe(0);
+            expect(typedDay?.year).toBe(1900);
         });
 
         it('sets valid day if date selected via calendar', async () => {
@@ -245,23 +245,23 @@ describe('InputDate', () => {
         it('accepts mm.dd.yyyy', () => {
             inputPO.sendText('12.23.2021');
 
-            const typedDay = testComponent.control.value;
+            const typedDay = testComponent.control.value as TuiDay;
 
             expect(inputPO.value).toBe('12.23.2021');
-            expect(typedDay.day).toBe(23);
-            expect(typedDay.month).toBe(11);
-            expect(typedDay.year).toBe(2021);
+            expect(typedDay?.day).toBe(23);
+            expect(typedDay?.month).toBe(11);
+            expect(typedDay?.year).toBe(2021);
         });
 
         it('does not accept yyyy.mm.dd (and set min day if it is less min day)', () => {
             inputPO.sendText('2021.12.23');
 
-            const typedDay = testComponent.control.value;
+            const typedDay = testComponent.control.value as TuiDay;
 
             expect(inputPO.value).toBe('01.01.1900');
-            expect(typedDay.day).toBe(1);
-            expect(typedDay.month).toBe(0);
-            expect(typedDay.year).toBe(1900);
+            expect(typedDay?.day).toBe(1);
+            expect(typedDay?.month).toBe(0);
+            expect(typedDay?.year).toBe(1900);
         });
 
         it('sets valid day if date selected via calendar', async () => {
@@ -295,23 +295,23 @@ describe('InputDate', () => {
         it('accepts valid mm/dd/yyyy', () => {
             inputPO.sendText('12272021');
 
-            const typedDay = testComponent.control.value;
+            const typedDay = testComponent.control.value as TuiDay;
 
             expect(inputPO.value).toBe('12/27/2021');
-            expect(typedDay.day).toBe(27);
-            expect(typedDay.month).toBe(11);
-            expect(typedDay.year).toBe(2021);
+            expect(typedDay?.day).toBe(27);
+            expect(typedDay?.month).toBe(11);
+            expect(typedDay?.year).toBe(2021);
         });
 
         it('replaces dots by custom separator', () => {
             inputPO.sendText('05.14.1988');
 
-            const typedDay = testComponent.control.value;
+            const typedDay = testComponent.control.value as TuiDay;
 
             expect(inputPO.value).toBe('05/14/1988');
-            expect(typedDay.day).toBe(14);
-            expect(typedDay.month).toBe(4);
-            expect(typedDay.year).toBe(1988);
+            expect(typedDay?.day).toBe(14);
+            expect(typedDay?.month).toBe(4);
+            expect(typedDay?.year).toBe(1988);
         });
     });
 
@@ -408,10 +408,10 @@ describe('InputDate', () => {
     });
 
     function mouseDownOnTextfield(): void {
-        getTextfield()!.nativeElement.dispatchEvent(
+        getTextfield()?.nativeElement.dispatchEvent(
             new MouseEvent('mousedown', {bubbles: true}),
         );
-        getTextfield()!.nativeElement.click();
+        getTextfield()?.nativeElement.click();
         fixture.detectChanges();
     }
 

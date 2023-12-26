@@ -31,8 +31,8 @@ describe('SVG options', () => {
         icon = '';
     }
 
-    let fixture: ComponentFixture<TestComponent> | null = null;
-    let testComponent: TestComponent | null = null;
+    let fixture: ComponentFixture<TestComponent>;
+    let testComponent: TestComponent;
 
     const createComponent: () => void = () => {
         fixture = TestBed.createComponent(TestComponent);
@@ -51,7 +51,7 @@ describe('SVG options', () => {
         });
 
         it('tuiIconMySuperIcon', () => {
-            testComponent!.icon = 'tuiIconMySuperIcon';
+            testComponent.icon = 'tuiIconMySuperIcon';
             fixture?.detectChanges();
 
             expect(testComponent?.svgComponent.isInnerHTML).toBe(false);
@@ -81,7 +81,7 @@ describe('SVG options', () => {
         });
 
         it('tuiIconMySuperIcon', () => {
-            testComponent!.icon = 'tuiIconMySuperIcon';
+            testComponent.icon = 'tuiIconMySuperIcon';
             fixture?.detectChanges();
 
             expect(testComponent?.svgComponent.isInnerHTML).toBe(true);
@@ -113,7 +113,7 @@ describe('SVG options', () => {
         });
 
         it('tuiMyIcon', () => {
-            testComponent!.icon = 'tuiMyIcon';
+            testComponent.icon = 'tuiMyIcon';
             fixture?.detectChanges();
 
             expect(testComponent?.svgComponent.isInnerHTML).toBe(false);
@@ -147,7 +147,7 @@ describe('SVG options', () => {
         });
 
         it('tuiIconMySuperIcon should be inside use', () => {
-            testComponent!.icon = 'tuiIconMySuperIcon';
+            testComponent.icon = 'tuiIconMySuperIcon';
             fixture?.detectChanges();
 
             expect(testComponent?.svgComponent.isInnerHTML).toBe(false);
@@ -158,7 +158,7 @@ describe('SVG options', () => {
         });
 
         it('tuiIconTdsSuperIcon should be inside innerHTML', () => {
-            testComponent!.icon = 'tuiIconTdsSuperIcon';
+            testComponent.icon = 'tuiIconTdsSuperIcon';
             fixture?.detectChanges();
 
             expect(testComponent?.svgComponent.isInnerHTML).toBe(true);
@@ -190,7 +190,7 @@ describe('SVG options', () => {
         });
 
         it('tuiIconMySuperIcon should be inside use', () => {
-            testComponent!.icon = 'tuiIconMySuperIcon';
+            testComponent.icon = 'tuiIconMySuperIcon';
             fixture?.detectChanges();
 
             expect(testComponent?.svgComponent.isInnerHTML).toBe(false);
@@ -201,7 +201,7 @@ describe('SVG options', () => {
         });
 
         it('tuiIconTdsSuperIcon should be inside innerHTML', () => {
-            testComponent!.icon = 'tuiIconTdsSuperIcon';
+            testComponent.icon = 'tuiIconTdsSuperIcon';
             fixture?.detectChanges();
 
             expect(testComponent?.svgComponent.isInnerHTML).toBe(true);
@@ -246,7 +246,7 @@ describe('SVG options', () => {
         });
 
         it('icons8::android', () => {
-            testComponent!.icon = 'icons8::android';
+            testComponent.icon = 'icons8::android';
             fixture?.detectChanges();
 
             expect(testComponent?.svgComponent.isInnerHTML).toBe(true);
@@ -255,7 +255,7 @@ describe('SVG options', () => {
         });
 
         it('tuiIconTdsSuperIcon and TUI_SVG_SRC_PROCESSOR should be ignored', () => {
-            testComponent!.icon = 'tuiIconTdsSuperIcon';
+            testComponent.icon = 'tuiIconTdsSuperIcon';
             fixture?.detectChanges();
 
             expect(testComponent?.svgComponent.isInnerHTML).toBe(false);
@@ -280,7 +280,7 @@ describe('SVG options', () => {
         });
 
         it('added http protocol prefix by global processor', () => {
-            testComponent!.icon = 'google.com/test.svg';
+            testComponent.icon = 'google.com/test.svg';
             fixture?.detectChanges();
 
             expect(testComponent?.svgComponent.isInnerHTML).toBe(true);
@@ -306,7 +306,7 @@ describe('SVG options', () => {
         });
 
         it('path option always ignored because srcProcessor option override use tag detection', () => {
-            testComponent!.icon = 'google.com/test.svg';
+            testComponent.icon = 'google.com/test.svg';
             fixture?.detectChanges();
 
             expect(testComponent?.svgComponent.isInnerHTML).toBe(true);
@@ -338,7 +338,7 @@ describe('SVG options', () => {
         });
 
         it('tuiIconMyDefault', () => {
-            testComponent!.icon = 'tuiIconMyDefault';
+            testComponent.icon = 'tuiIconMyDefault';
             fixture?.detectChanges();
 
             expect(testComponent?.svgComponent.isInnerHTML).toBe(false);
@@ -346,7 +346,7 @@ describe('SVG options', () => {
         });
 
         it('icons8', () => {
-            testComponent!.icon = 'icons8::android';
+            testComponent.icon = 'icons8::android';
             fixture?.detectChanges();
 
             expect(testComponent?.svgComponent.isInnerHTML).toBe(true);
@@ -354,7 +354,7 @@ describe('SVG options', () => {
         });
 
         it('tuiIconTdsSuperToken', () => {
-            testComponent!.icon = 'tuiIconTdsSuperToken';
+            testComponent.icon = 'tuiIconTdsSuperToken';
             fixture?.detectChanges();
 
             expect(testComponent?.svgComponent.isInnerHTML).toBe(true);
@@ -362,10 +362,5 @@ describe('SVG options', () => {
                 'assets/design-tokens/tuiIconTdsSuperToken.svg',
             );
         });
-    });
-
-    afterEach(() => {
-        fixture = null;
-        testComponent = null;
     });
 });

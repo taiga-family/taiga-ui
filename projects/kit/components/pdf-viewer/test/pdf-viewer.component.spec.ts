@@ -25,8 +25,8 @@ describe('Pdf Viewer with TUI_PDF_VIEWER_OPTIONS', () => {
     let pageObject: TuiPageObject<TestComponent>;
     let sanitizer: DomSanitizer;
 
-    function getLabelElement(): DebugElement {
-        return pageObject.getByAutomationId('tui-pdf-viewer__label')!;
+    function getLabelElement(): DebugElement | null {
+        return pageObject.getByAutomationId('tui-pdf-viewer__label') ?? null;
     }
 
     beforeEach(async () => {
@@ -56,7 +56,7 @@ describe('Pdf Viewer with TUI_PDF_VIEWER_OPTIONS', () => {
                 .subscribe();
             fixture.detectChanges();
 
-            expect(getLabelElement()!.nativeElement.textContent.trim()).toBe(label);
+            expect(getLabelElement()?.nativeElement.textContent.trim()).toBe(label);
         });
     });
 });

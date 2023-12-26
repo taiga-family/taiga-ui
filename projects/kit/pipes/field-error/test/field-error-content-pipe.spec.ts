@@ -95,15 +95,15 @@ describe('TuiFieldErrorContentPipe', () => {
     function showHint(): void {
         component.control.markAsTouched();
         fixture.detectChanges();
-        getHost().dispatchEvent(new Event('mouseenter'));
+        getHost()?.dispatchEvent(new Event('mouseenter'));
         fixture.detectChanges();
         tick(500);
         fixture.detectChanges();
         discardPeriodicTasks();
     }
 
-    function getHost(): Element {
-        return document.querySelector('#hint-host')!;
+    function getHost(): Element | null {
+        return document.querySelector('#hint-host') ?? null;
     }
 
     function getTooltip(): Element | null {

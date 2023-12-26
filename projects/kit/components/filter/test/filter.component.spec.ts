@@ -48,7 +48,7 @@ describe('Filter', () => {
 
         disabledItemHandler: TuiBooleanHandler<any> = ALWAYS_FALSE_HANDLER;
 
-        control = new FormControl([]);
+        control = new FormControl<string[]>([]);
 
         items: readonly ItemWithBadge[] | readonly string[] = ARR_STRING;
 
@@ -80,21 +80,21 @@ describe('Filter', () => {
         fixture.detectChanges();
     });
 
-    function getCheckbox(): DebugElement {
-        return pageObject.getByAutomationId(`${testContext.prefix}checkbox`)!;
+    function getCheckbox(): DebugElement | null {
+        return pageObject.getByAutomationId(`${testContext.prefix}checkbox`) ?? null;
     }
 
-    function getContent(): DebugElement {
-        return pageObject.getByAutomationId(`${testContext.prefix}content`)!;
+    function getContent(): DebugElement | null {
+        return pageObject.getByAutomationId(`${testContext.prefix}content`) ?? null;
     }
 
-    function getBadge(): DebugElement {
-        return pageObject.getByAutomationId(`${testContext.prefix}badge`)!;
+    function getBadge(): DebugElement | null {
+        return pageObject.getByAutomationId(`${testContext.prefix}badge`) ?? null;
     }
 
     describe('value', () => {
         it('default absent', () => {
-            expect(testComponent.control.value.length).toBe(0);
+            expect(testComponent.control.value?.length).toBe(0);
         });
 
         it('set from checked items', () => {
@@ -114,7 +114,7 @@ describe('Filter', () => {
 
     describe('content items', () => {
         it('passed correctly if items is an array of strings', () => {
-            expect(getContent().nativeElement.textContent.trim()).toBe(
+            expect(getContent()?.nativeElement.textContent.trim()).toBe(
                 'Clothes and footwear',
             );
         });
@@ -122,7 +122,7 @@ describe('Filter', () => {
         it('passed correctly if items is an array of objects with toString', () => {
             testComponent.items = ARR_OBJECT;
             fixture.detectChanges();
-            expect(getContent().nativeElement.textContent.trim()).toBe(
+            expect(getContent()?.nativeElement.textContent.trim()).toBe(
                 'Focused Zone  10',
             );
         });
@@ -151,13 +151,13 @@ describe('Filter', () => {
             testComponent.items = ARR_OBJECT;
             fixture.detectChanges();
 
-            expect(Number(getBadge().nativeElement.textContent)).toBe(BADGE_VALUE);
+            expect(Number(getBadge()?.nativeElement.textContent)).toBe(BADGE_VALUE);
         });
     });
 
     describe('disabled element', () => {
         it('false by default', () => {
-            expect(getCheckbox().nativeElement.classList.contains('_disabled')).toBe(
+            expect(getCheckbox()?.nativeElement.classList.contains('_disabled')).toBe(
                 false,
             );
         });
@@ -165,7 +165,7 @@ describe('Filter', () => {
         it('present if disabledHandler returned true', () => {
             testComponent.disabledItemHandler = item => item.indexOf('footwear') > -1;
             fixture.detectChanges();
-            expect(getCheckbox().componentInstance.ngControl.isDisabled).toBe(true);
+            expect(getCheckbox()?.componentInstance.ngControl.isDisabled).toBe(true);
         });
     });
 
@@ -174,8 +174,8 @@ describe('Filter', () => {
             testComponent.items = ARR_OBJECT;
             fixture.detectChanges();
 
-            expect(getCheckbox().attributes['data-size']).toBe('m');
-            expect(getBadge().attributes['data-size']).toBe('m');
+            expect(getCheckbox()?.attributes['data-size']).toBe('m');
+            expect(getBadge()?.attributes['data-size']).toBe('m');
         });
 
         it('if s, then both CheckboxBlock and badge have s', () => {
@@ -183,8 +183,8 @@ describe('Filter', () => {
             testComponent.size = 's';
             fixture.detectChanges();
 
-            expect(getCheckbox().attributes['data-size']).toBe('s');
-            expect(getBadge().attributes['data-size']).toBe('s');
+            expect(getCheckbox()?.attributes['data-size']).toBe('s');
+            expect(getBadge()?.attributes['data-size']).toBe('s');
         });
     });
 });

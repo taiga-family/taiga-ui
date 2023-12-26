@@ -97,8 +97,8 @@ describe('InputTime', () => {
         });
 
         it('The initial value in the formControl is issued as an object with the hours and minutes properties', () => {
-            expect(testComponent.control.value.hours).toBe(12);
-            expect(testComponent.control.value.minutes).toBe(30);
+            expect(testComponent.control.value?.hours).toBe(12);
+            expect(testComponent.control.value?.minutes).toBe(30);
         });
     });
 
@@ -116,8 +116,8 @@ describe('InputTime', () => {
         });
 
         it('In the formControl is issued as an object with hours and minutes properties', () => {
-            expect(testComponent.control.value.hours).toBe(22);
-            expect(testComponent.control.value.minutes).toBe(30);
+            expect(testComponent.control.value?.hours).toBe(22);
+            expect(testComponent.control.value?.minutes).toBe(30);
         });
     });
 
@@ -235,9 +235,9 @@ describe('InputTime', () => {
 
         it('The value is substituted when selecting an item from the dropdown', () => {
             inputPO.sendText('03');
-            pageObject.getByAutomationId('tui-input-time__item')!.nativeElement.click();
+            pageObject.getByAutomationId('tui-input-time__item')?.nativeElement.click();
 
-            expect(testComponent.control.value.toString().trim()).toBe(
+            expect(testComponent.control.value?.toString().trim()).toBe(
                 TIMES[6].toString(),
             );
         });
@@ -246,7 +246,7 @@ describe('InputTime', () => {
             it('by default it is false, and the entered value is freely exposed in the control', () => {
                 inputPO.sendText('11:11');
 
-                expect(testComponent.control.value.toString().trim()).toBe('11:11');
+                expect(testComponent.control.value?.toString().trim()).toBe('11:11');
             });
 
             it('with strict = true, the entered value is not set if it is absent in items', () => {
@@ -255,7 +255,7 @@ describe('InputTime', () => {
                 inputPO.sendText('11:11');
                 fixture.detectChanges();
 
-                expect(testComponent.control.value.toString().trim()).not.toBe('11:11');
+                expect(testComponent.control.value?.toString().trim()).not.toBe('11:11');
             });
 
             it('with strict = true, the entered value is added if present in items', () => {
@@ -264,7 +264,7 @@ describe('InputTime', () => {
                 inputPO.sendText('01:30');
                 fixture.detectChanges();
 
-                expect(testComponent.control.value.toString().trim()).toBe('01:30');
+                expect(testComponent.control.value?.toString().trim()).toBe('01:30');
             });
 
             it('with strict = true, the entered value is rounded to the nearest in items', () => {
@@ -273,7 +273,7 @@ describe('InputTime', () => {
                 inputPO.sendText('01:20');
                 fixture.detectChanges();
 
-                expect(testComponent.control.value.toString().trim()).toBe('01:30');
+                expect(testComponent.control.value?.toString().trim()).toBe('01:30');
             });
         });
     });

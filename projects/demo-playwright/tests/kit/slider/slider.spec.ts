@@ -188,7 +188,7 @@ test.describe('Slider', () => {
             });
 
             test('=> 1000', async () => {
-                await tickLabels.at(-1)!.click();
+                await tickLabels.at(-1)?.click();
 
                 await expect(async () => {
                     expect(await slider.value).toBe(1000);
