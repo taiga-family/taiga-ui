@@ -90,11 +90,11 @@
     [class.t-wrapper_gray]="mode === 'onLight'"
     [class.t-wrapper_transparent]="!opaque"
 >
-    <div
-        id="demo-content"
-        class="t-content"
-    >
-        <div #content>
+    <div class="t-content">
+        <div
+            #content
+            id="demo-content"
+        >
             <form
                 *ngIf="testForm"
                 class="t-form"
