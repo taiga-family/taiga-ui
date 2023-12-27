@@ -25,6 +25,7 @@
     decimal="never"
     class="horizontal tui-space_top-4 tui-space_bottom-4"
     [max]="12"
+    [min]="0"
     [step]="1"
     [(ngModel)]="horizontalActiveIndex"
 >
@@ -57,8 +58,9 @@
 
 <tui-input-number
     decimal="never"
-    class="vertical tui-space_top-4"
+    class="input tui-space_top-4"
     [max]="12"
+    [min]="0"
     [step]="1"
     [(ngModel)]="verticalActiveIndex"
 >

@@ -119,7 +119,6 @@
                         decimal="never"
                         [ngModel]="item.quantity"
                         [ngModelOptions]="options"
-                        [step]="1"
                         (ngModelChange)="onValueChange($event, 'quantity', item, pythons)"
                     ></tui-input-number>
                 </td>
@@ -201,7 +200,6 @@
                         decimal="never"
                         [ngModel]="item.quantity"
                         [ngModelOptions]="options"
-                        [step]="1"
                         (ngModelChange)="onValueChange($event, 'quantity', item, starwars)"
                     ></tui-input-number>
                 </td>
