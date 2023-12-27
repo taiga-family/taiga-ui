@@ -1,12 +1,12 @@
 ```ts
-import {TuiPointerHintModule} from '@taiga-ui/core';
+import {TuiHintModule} from '@taiga-ui/core';
 
 // ...
 
 @NgModule({
   imports: [
     // ...
-    TuiPointerHintModule,
+    TuiHintModule,
   ],
   // ...
 })
