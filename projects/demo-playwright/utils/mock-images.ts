@@ -11,7 +11,14 @@ const DEFAULT_MOCKS = [
         ],
         mockImage: `${__dirname}/../stubs/github-avatar.jpeg`,
     },
-    {patterns: [/.*web-api.svg/], mockImage: `${__dirname}/../stubs/web-api.svg`},
+    {
+        patterns: [/.*web-api.svg/],
+        mockImage: `${__dirname}/../stubs/web-api.svg`,
+    },
+    {
+        patterns: [/.*youtube.com.*/, /.*flaticon.com.*/],
+        mockImage: `${__dirname}/../stubs/web-api.svg`,
+    },
 ] as const;
 
 export async function tuiMockImages(

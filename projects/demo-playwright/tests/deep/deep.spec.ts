@@ -28,6 +28,8 @@ test.describe('Deep', () => {
 
             const rows = await page.locator('.t-table .t-row:not(.t-row_header)').all();
 
+            test.setTimeout(10_000 * rows.length);
+
             for (const row of rows) {
                 const select = ((await row.locator('.t-cell_value tui-select').all()) ??
                     [])?.[0];
@@ -49,6 +51,13 @@ test.describe('Deep', () => {
 
                     for (const [index, option] of options.entries()) {
                         await option.click();
+
+                        await page.evaluate(
+                            async () =>
+                                new Promise(resolve => {
+                                    setTimeout(resolve, 500);
+                                }),
+                        );
 
                         await expect(page.locator('#demo-content')).toHaveScreenshot(
                             `deep-${path}__${name}-select-option-${index}.png`,
