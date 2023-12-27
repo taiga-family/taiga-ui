@@ -40,6 +40,9 @@ export async function tuiGoto(
 
     const response = await page.goto(url, playwrightGotoOptions);
 
+    await page.waitForLoadState('domcontentloaded');
+    await page.waitForLoadState('load');
+
     await expect(page.locator('app')).toHaveClass(/_loaded/, {timeout: 15_000});
     await tuiWaitForFonts(page);
 
@@ -54,6 +57,10 @@ export async function tuiGoto(
     if (hideLanguageSwitcher) {
         await page.locator('tui-language-switcher').evaluate(el => el.remove());
     }
+
+    expect(
+        await page.evaluate("matchMedia('(prefers-reduced-motion)').matches"),
+    ).toBeTruthy();
 
     return response;
 }

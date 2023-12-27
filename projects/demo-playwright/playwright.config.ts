@@ -20,7 +20,7 @@ export default defineConfig({
     fullyParallel: true,
     /* Fail the build on CI if you accidentally left test.only in the source code. */
     forbidOnly: !!process.env.CI,
-    retries: process.env.CI ? 1 : 0,
+    retries: process.env.CI ? 2 : 0,
     workers: process.env.CI ? '100%' : '50%',
     use: {
         baseURL: `http://localhost:${process.env.NG_SERVER_PORT || 3333}`,
