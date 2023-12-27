@@ -1,0 +1,46 @@
+.changelog-styles() {
+    &::ng-deep {
+        & > :nth-child(1),
+        & > :nth-child(2) {
+            display: none;
+        }
+
+        > * {
+            margin-left: 1.25rem;
+        }
+
+        & h2[id]:nth-of-type(1) {
+            margin-top: 0;
+        }
+
+        & h3:not([id^='feat']):not([id^='bug']):not([id^='deprecations']) {
+            font-size: 1.75rem;
+            padding-bottom: 0.5em;
+            margin: 2rem 0 0 0;
+            border-bottom: 1px solid var(--tui-base-03);
+        }
+
+        & h3[id^='breaking'] {
+            margin-left: 1.25rem;
+            color: var(--tui-error-fill);
+        }
+
+        & h3[id^='feat']:before {
+            content: '🚀';
+        }
+
+        & h3[id^='bug']:before {
+            content: '🐞';
+        }
+
+        & h3[id^='deprecations']:before {
+            content: '⚠️';
+        }
+
+        & h3[id^='feat']:before,
+        & h3[id^='bug']:before,
+        & h3[id^='deprecations']:before {
+            margin-right: 0.5rem;
+        }
+    }
+}

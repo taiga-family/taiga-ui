@@ -5,7 +5,6 @@ import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiLinkModule} from '@taiga-ui/core';
 import {TuiCheckboxModule} from '@taiga-ui/kit';
-import {MarkdownModule} from 'ngx-markdown';
 
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
 import {ExampleTuiCheckboxComponent} from './checkbox.component';
@@ -20,7 +19,6 @@ import {TuiCheckboxExample2} from './examples/2';
         RouterModule,
         TuiCheckboxModule,
         TuiLinkModule,
-        MarkdownModule,
         TuiAddonDocModule,
         InheritedDocumentationModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiCheckboxComponent)),
