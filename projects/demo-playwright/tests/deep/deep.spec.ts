@@ -50,6 +50,13 @@ test.describe('Deep', () => {
                     for (const [index, option] of options.entries()) {
                         await option.click();
 
+                        await page.evaluate(
+                            async () =>
+                                new Promise(resolve => {
+                                    setTimeout(resolve, 500);
+                                }),
+                        );
+
                         await expect(page.locator('#demo-content')).toHaveScreenshot(
                             `deep-${path}__${name}-select-option-${index}.png`,
                         );
