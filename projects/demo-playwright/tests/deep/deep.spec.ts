@@ -26,48 +26,53 @@ test.describe('Deep', () => {
             await tuiMockImages(page);
             await tuiGoto(page, `${path}/API?sandboxWidth=320`);
 
-            const controls = await page.locator('.t-table .t-cell_value').all();
+            const rows = await page.locator('.t-table .t-row:not(.t-row_header)').all();
 
-            for (const [index, control] of controls.entries()) {
-                await control.scrollIntoViewIfNeeded();
+            for (const row of rows) {
+                const select = ((await row.locator('.t-cell_value tui-select').all()) ??
+                    [])?.[0];
+                const toggle = ((await row.locator('.t-cell_value tui-toggles').all()) ??
+                    [])?.[0];
 
-                const selects = (await control.locator('tui-select').all()) ?? [];
+                const name =
+                    (await row.locator('.t-property code').textContent())?.trim() ?? '';
 
-                for (const [selectIndex, select] of selects.entries()) {
+                if (select) {
+                    await select.scrollIntoViewIfNeeded();
                     await select.click();
 
-                    const options = await page.locator('[tuiOption]').all();
+                    const options = await page
+                        .locator('[automation-id="tui-data-list-wrapper__option"]')
+                        .all();
                     const defaultOptionIndex =
                         await getDefaultOptionOnApiControl(options);
 
-                    for (const [optionIndex, option] of options.entries()) {
+                    for (const [index, option] of options.entries()) {
                         await option.click();
 
                         await expect(page.locator('#demo-content')).toHaveScreenshot(
-                            `deep-${path}-${index}-select-${selectIndex}-option-${optionIndex}.png`,
+                            `deep-${path}__${name}-select-option-${index}.png`,
                         );
 
                         await select.click();
                     }
 
-                    if (defaultOptionIndex !== null) {
-                        await page.locator('[tuiOption]').nth(defaultOptionIndex).click();
+                    const cleaner = ((await select
+                        .locator('[automation-id="tui-primitive-textfield__cleaner"]')
+                        .all()) ?? [])?.[0];
+
+                    if (cleaner) {
+                        await cleaner.click();
                     } else {
-                        await select
-                            .locator('[automation-id=tui-primitive-textfield__cleaner]')
-                            .click();
-                        await select.click();
+                        await options[defaultOptionIndex]?.click();
                     }
                 }
 
-                await page.waitForTimeout(100); // flaky free
-
-                const toggles = (await control.locator('tui-toggle').all()) ?? [];
-
-                for (const [toggleIndex, toggle] of toggles.entries()) {
+                if (toggle) {
+                    await toggle.scrollIntoViewIfNeeded();
                     await toggle.click();
                     await expect(page.locator('#demo-content')).toHaveScreenshot(
-                        `deep-${path}-${index}-toggles-${toggleIndex}.png`,
+                        `deep-${path}__${name}-toggled.png`,
                     );
                     await toggle.click();
                 }
@@ -76,7 +81,7 @@ test.describe('Deep', () => {
     });
 });
 
-async function getDefaultOptionOnApiControl(options: Locator[]): Promise<number | null> {
+async function getDefaultOptionOnApiControl(options: Locator[]): Promise<number> {
     for (const [index, option] of options.entries()) {
         const hasMark = await option
             .locator('[automation-id=tui-select-option__checkmark]')
@@ -87,5 +92,5 @@ async function getDefaultOptionOnApiControl(options: Locator[]): Promise<number 
         }
     }
 
-    return null;
+    return 0;
 }
