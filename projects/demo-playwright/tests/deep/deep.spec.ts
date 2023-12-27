@@ -28,6 +28,8 @@ test.describe('Deep', () => {
 
             const rows = await page.locator('.t-table .t-row:not(.t-row_header)').all();
 
+            test.setTimeout(10_000 * rows.length);
+
             for (const row of rows) {
                 const select = ((await row.locator('.t-cell_value tui-select').all()) ??
                     [])?.[0];
