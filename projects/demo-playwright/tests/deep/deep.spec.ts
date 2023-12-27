@@ -1,30 +1,13 @@
 import {tuiGoto, tuiMockImages} from '@demo-playwright/utils';
-import {expect, Locator, test} from '@playwright/test';
+import {expect, Locator, Page, test} from '@playwright/test';
 
 test.describe('Deep', () => {
-    const deepPaths: string[] = [
-        /* CORE */
-        'components/button',
-        'components/calendar',
-        'components/group',
-        'components/link',
-        'components/notification',
-        /* KIT */
-        'components/avatar',
-        'components/badge',
-        'components/badged-content',
-        'components/calendar-month',
-        'components/filter',
-        'components/island',
-        'icons/marker-icon',
-        'navigation/stepper',
-        'components/toggle',
-    ];
+    const deepPaths: string[] = JSON.parse(process.env['DEMO_PATHS']!);
 
     deepPaths.forEach(path => {
         test(path, async ({page}) => {
             await tuiMockImages(page);
-            await tuiGoto(page, `${path}/API?sandboxWidth=320`);
+            await tuiGoto(page, `${path}/API`);
 
             const rows = await page.locator('.t-table .t-row:not(.t-row_header)').all();
 
@@ -32,8 +15,6 @@ test.describe('Deep', () => {
 
             for (const row of rows) {
                 const select = ((await row.locator('.t-cell_value tui-select').all()) ??
-                    [])?.[0];
-                const toggle = ((await row.locator('.t-cell_value tui-toggles').all()) ??
                     [])?.[0];
 
                 const name =
@@ -59,6 +40,8 @@ test.describe('Deep', () => {
                                 }),
                         );
 
+                        await hideNotifications(page);
+
                         await expect(page.locator('#demo-content')).toHaveScreenshot(
                             `deep-${path}__${name}-select-option-${index}.png`,
                         );
@@ -71,24 +54,40 @@ test.describe('Deep', () => {
                         .all()) ?? [])?.[0];
 
                     if (cleaner) {
-                        await cleaner.click();
+                        await cleaner.click({force: true});
                     } else {
-                        await options[defaultOptionIndex]?.click();
+                        await options[defaultOptionIndex]?.click({force: true});
                     }
+
+                    await page.locator('body').click({force: true});
                 }
+
+                const toggle = ((await row.locator('.t-cell_value tui-toggle').all()) ??
+                    [])?.[0];
 
                 if (toggle) {
                     await toggle.scrollIntoViewIfNeeded();
                     await toggle.click();
+
+                    await hideNotifications(page);
                     await expect(page.locator('#demo-content')).toHaveScreenshot(
                         `deep-${path}__${name}-toggled.png`,
                     );
+
                     await toggle.click();
                 }
             }
         });
     });
 });
+
+async function hideNotifications(page: Page): Promise<void> {
+    const notifications = await page.locator('tui-alert-host > tui-notification').all();
+
+    for (const notification of notifications) {
+        await notification.evaluate(el => el.remove());
+    }
+}
 
 async function getDefaultOptionOnApiControl(options: Locator[]): Promise<number> {
     for (const [index, option] of options.entries()) {
