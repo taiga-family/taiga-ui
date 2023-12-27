@@ -421,12 +421,6 @@ export const pages: TuiDocPages = [
             },
             {
                 section: 'Components',
-                title: 'InputCount',
-                keywords: 'селект, форма, числа, ввод, input, select, count',
-                route: '/components/input-count',
-            },
-            {
-                section: 'Components',
                 title: 'InputDate',
                 keywords:
                     'поле, инпут, форма, ввод, input, календарь, день, ' +

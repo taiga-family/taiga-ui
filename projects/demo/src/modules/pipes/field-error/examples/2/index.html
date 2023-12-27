@@ -38,12 +38,14 @@
     </label>
 
     <label tuiLabel="Minimum number">
-        <tui-input-count
+        <tui-input-number
+            decimal="never"
             formControlName="testValue3"
             tuiTextfieldSize="m"
+            [step]="1"
         >
             number
-        </tui-input-count>
+        </tui-input-number>
 
         <tui-error
             formControlName="testValue3"

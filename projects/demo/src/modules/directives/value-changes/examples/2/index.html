@@ -4,10 +4,12 @@
     (tuiValueChanges)="onChanges($event)"
 >
     <tui-input formControlName="name">Value changes on blur</tui-input>
-    <tui-input-count
+    <tui-input-number
+        decimal="never"
         formControlName="age"
         class="tui-space_top-4"
+        [step]="1"
     >
         Value changes on edit
-    </tui-input-count>
+    </tui-input-number>
 </form>

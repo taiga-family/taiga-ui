@@ -9,12 +9,14 @@
     >
         Find on page
     </tui-input>
-    <tui-input-count
+    <tui-input-number
+        decimal="never"
         class="tui-space_horizontal-3"
         [formControl]="minAge"
+        [step]="1"
     >
         Minimum age
-    </tui-input-count>
+    </tui-input-number>
     <tui-hosted-dropdown [content]="dropdown">
         <button
             size="m"

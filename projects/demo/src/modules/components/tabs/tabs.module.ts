@@ -14,7 +14,7 @@ import {
     TuiScrollbarModule,
     TuiSvgModule,
 } from '@taiga-ui/core';
-import {TuiInputCountModule, TuiTabsModule} from '@taiga-ui/kit';
+import {TuiInputNumberModule, TuiTabsModule} from '@taiga-ui/kit';
 
 import {TuiTabsExample1} from './examples/1';
 import {TuiTabsExample2} from './examples/2';
@@ -33,7 +33,7 @@ import {ExampleTuiTabsComponent} from './tabs.component';
         FormsModule,
         TuiRippleModule,
         TuiTabsModule,
-        TuiInputCountModule,
+        TuiInputNumberModule,
         TuiModeModule,
         TuiNotificationModule,
         TuiSvgModule,

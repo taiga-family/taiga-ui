@@ -720,15 +720,6 @@ export const ROUTES: Routes = [
         },
     },
     {
-        path: 'components/input-count',
-        loadChildren: async () =>
-            (await import('../components/input-count/input-count.module'))
-                .ExampleTuiInputCountModule,
-        data: {
-            title: 'InputCount',
-        },
-    },
-    {
         path: 'components/input-date-time',
         loadChildren: async () =>
             (await import('../components/input-date-time/input-date-time.module'))

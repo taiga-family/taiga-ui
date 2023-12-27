@@ -1,3 +1,4 @@
+import {ALWAYS_TRUE_HANDLER} from '@taiga-ui/cdk';
 import {ChildNode, Element, parseFragment} from 'parse5';
 
 export function findElementsByFn(
@@ -39,8 +40,12 @@ export function findElementsInTemplateByFn(
     return findElementsByFn(document.childNodes, predicateFn);
 }
 
-export function findElementsByTagName(html: string, tagName: string): Element[] {
-    return findElementsInTemplateByFn(html, el => el.tagName === tagName);
+export function findElementsByTagName(
+    html: string,
+    tagName: string,
+    filterFn: (element: Element) => boolean = ALWAYS_TRUE_HANDLER,
+): Element[] {
+    return findElementsInTemplateByFn(html, el => el.tagName === tagName && filterFn(el));
 }
 
 export function findElementsByTagNames(html: string, tagNames: string[]): Element[] {

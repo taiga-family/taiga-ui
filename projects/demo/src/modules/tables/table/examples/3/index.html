@@ -115,11 +115,13 @@
                     *tuiCell="'quantity'"
                     tuiTd
                 >
-                    <tui-input-count
+                    <tui-input-number
+                        decimal="never"
                         [ngModel]="item.quantity"
                         [ngModelOptions]="options"
+                        [step]="1"
                         (ngModelChange)="onValueChange($event, 'quantity', item, pythons)"
-                    ></tui-input-count>
+                    ></tui-input-number>
                 </td>
                 <td
                     *tuiCell="'unit'"
@@ -195,11 +197,13 @@
                     *tuiCell="'quantity'"
                     tuiTd
                 >
-                    <tui-input-count
+                    <tui-input-number
+                        decimal="never"
                         [ngModel]="item.quantity"
                         [ngModelOptions]="options"
+                        [step]="1"
                         (ngModelChange)="onValueChange($event, 'quantity', item, starwars)"
-                    ></tui-input-count>
+                    ></tui-input-number>
                 </td>
                 <td
                     *tuiCell="'unit'"

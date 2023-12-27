@@ -13,6 +13,7 @@ import {TuiValueAccessorModule} from '@taiga-ui/kit/directives';
 import {TuiInputCountComponent} from './input-count.component';
 import {TuiInputCountDirective} from './input-count.directive';
 
+// TODO: 4.0 Delete after updating TuiEditor
 /**
  * @deprecated use {@link TuiInputNumberComponent} with [step] instead
  */
