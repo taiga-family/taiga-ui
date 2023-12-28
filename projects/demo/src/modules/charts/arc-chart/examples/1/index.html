@@ -1,9 +1,11 @@
-<tui-input-count
+<tui-input-number
+    decimal="never"
     class="b-form"
+    [step]="1"
     [(ngModel)]="activeItemIndex"
 >
     activeItemIndex
-</tui-input-count>
+</tui-input-number>
 <div class="wrapper">
     <tui-arc-chart
         size="m"

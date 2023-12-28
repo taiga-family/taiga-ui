@@ -9,7 +9,7 @@ import {
 } from '@taiga-ui/addon-doc';
 import {TuiElementModule, TuiScrollService} from '@taiga-ui/cdk';
 import {TuiButtonModule, TuiScrollbarModule} from '@taiga-ui/core';
-import {TuiInputCountModule} from '@taiga-ui/kit';
+import {TuiInputNumberModule} from '@taiga-ui/kit';
 
 import {TuiScrollExample1} from './examples/1';
 import {ExampleTuiScrollComponent} from './scroll.component';
@@ -19,12 +19,12 @@ import {ExampleTuiScrollComponent} from './scroll.component';
         CommonModule,
         FormsModule,
         TuiElementModule,
-        TuiInputCountModule,
         TuiButtonModule,
         TuiScrollbarModule,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiScrollComponent)),
         TuiTextCodeModule,
+        TuiInputNumberModule,
     ],
     declarations: [ExampleTuiScrollComponent, TuiScrollExample1],
     providers: [TuiScrollService],

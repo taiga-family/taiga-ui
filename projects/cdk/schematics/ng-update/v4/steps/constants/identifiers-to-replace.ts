@@ -45,6 +45,10 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifier[] = [
         to: {name: 'TuiTextareaComponent', moduleSpecifier: '@taiga-ui/kit'},
     },
     {
+        from: {name: 'TuiInputCountModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiInputNumberModule', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
         from: {name: 'ArrayElement', moduleSpecifier: '@taiga-ui/kit'},
         to: {name: 'TuiArrayElement', moduleSpecifier: '@taiga-ui/kit'},
     },

@@ -1,4 +1,4 @@
-import {forwardRef, SkipSelf} from '@angular/core';
+import {forwardRef} from '@angular/core';
 import {
     INTERSECTION_ROOT_MARGIN,
     INTERSECTION_THRESHOLD,
@@ -12,7 +12,6 @@ import {
     TuiAppearance,
     TuiTextfieldAppearanceDirective,
 } from '@taiga-ui/core';
-import {TUI_INPUT_COUNT_OPTIONS, TuiInputCountOptions} from '@taiga-ui/kit';
 
 import {TuiTableDirective} from '../directives/table.directive';
 import {TUI_STUCK_PROVIDER} from './stuck.provider';
@@ -41,14 +40,6 @@ export const TUI_TABLE_PROVIDERS = [
         useValue: {
             labelOutside: true,
         },
-    },
-    {
-        provide: TUI_INPUT_COUNT_OPTIONS,
-        deps: [[new SkipSelf(), TUI_INPUT_COUNT_OPTIONS]],
-        useFactory: (options: TuiInputCountOptions): TuiInputCountOptions => ({
-            ...options,
-            hideButtons: true,
-        }),
     },
     {
         provide: TUI_TEXTFIELD_SIZE,
