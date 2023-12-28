@@ -72,10 +72,13 @@ describe('InputPhone', () => {
 
         it('When focusing on an empty field, the field is set "+7 "', async () => {
             testComponent.control.reset();
+
             fixture.detectChanges();
+            await fixture.whenStable();
+
             inputPO.focus();
             await fixture.whenStable();
-            fixture.detectChanges();
+
             expect(inputPO.value).toBe(`${testComponent.component.countryCode} `);
         });
 

@@ -1,13 +1,33 @@
 <tui-textfield
+    iconRight="tuiIconSearch"
     tuiDropdownOpen
-    [tuiDropdown]="dropdown"
+    [tuiDropdown]="combobox"
 >
     <label tuiLabel>Start typing</label>
     <input
+        placeholder="I am placeholder"
         tuiTextfield
         [(ngModel)]="value"
     />
-    <ng-template #dropdown>
+    <tui-tooltip content="Editable combo-box"></tui-tooltip>
+    <ng-template #combobox>
         <tui-data-list-wrapper [items]="items | tuiFilterByInput"></tui-data-list-wrapper>
+    </ng-template>
+</tui-textfield>
+
+<tui-textfield
+    iconRight="tuiIconChevronDown"
+    tuiDropdownOpen
+    [tuiDropdown]="select"
+>
+    <label tuiLabel>Select from options</label>
+    <select
+        placeholder="I am placeholder"
+        tuiTextfield
+        [(ngModel)]="value"
+    ></select>
+    <tui-tooltip content="Fixed choice select"></tui-tooltip>
+    <ng-template #select>
+        <tui-data-list-wrapper [items]="items"></tui-data-list-wrapper>
     </ng-template>
 </tui-textfield>

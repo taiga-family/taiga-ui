@@ -1,0 +1,16 @@
+<option
+    *ngIf="placeholder && !value; else selected"
+    disabled
+    selected
+    value=""
+>
+    {{ placeholder }}
+</option>
+<ng-template #selected>
+    <option
+        *ngFor="let item of [value]"
+        selected
+    >
+        {{ item }}
+    </option>
+</ng-template>
