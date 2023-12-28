@@ -5,7 +5,6 @@ describe('TuiFormatCardPipe', () => {
 
     it('value is empty', () => {
         expect(pipe.transform()).toBe('');
-        expect(pipe.transform(undefined)).toBe('');
         expect(pipe.transform(null)).toBe('');
         expect(pipe.transform(null, true)).toBe('');
         expect(pipe.transform(undefined, true)).toBe('');
