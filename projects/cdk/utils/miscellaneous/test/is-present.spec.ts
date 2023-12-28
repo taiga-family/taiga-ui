@@ -33,7 +33,7 @@ describe('isPresent', () => {
         });
 
         it('value === undefined', () => {
-            expect(tuiIsPresent(undefined)).toBe(false);
+            expect(tuiIsPresent()).toBe(false);
         });
     });
 });
