@@ -18,6 +18,6 @@
         "express": "4.18.2",
         "less-plugin-npm-import": "2.1.0",
         "showdown": "2.1.0",
-        "terser-webpack-plugin": "5.3.9"
+        "terser-webpack-plugin": "5.3.10"
     }
 }
