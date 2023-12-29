@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, HostBinding, Inject} from '@angular/core';
-import {TuiContextWithImplicit} from '@taiga-ui/cdk';
+import {TuiContext} from '@taiga-ui/cdk';
 import {POLYMORPHEUS_CONTEXT, PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 
 import {TUI_PULL_TO_REFRESH_THRESHOLD} from '../pull-to-refresh.providers';
@@ -18,7 +18,7 @@ const ROTATE_X_MULTIPLIER = 2.3;
 export class TuiMobileLoaderAndroidComponent {
     constructor(
         @Inject(POLYMORPHEUS_CONTEXT)
-        private readonly context: TuiContextWithImplicit<number>,
+        private readonly context: TuiContext<number>,
         @Inject(TUI_PULL_TO_REFRESH_THRESHOLD) private readonly threshold: number,
     ) {}
 

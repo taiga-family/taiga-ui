@@ -21,7 +21,7 @@ import {
     TuiActiveZoneDirective,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    TuiContextWithImplicit,
+    TuiContext,
     TuiFocusableElementAccessor,
     TuiInputMode,
     tuiIsNativeFocused,
@@ -96,7 +96,7 @@ export class TuiInputPhoneComponent
     readonly searchChange = new EventEmitter<string>();
 
     @ContentChild(TuiDataListDirective, {read: TemplateRef})
-    readonly datalist?: TemplateRef<TuiContextWithImplicit<TuiActiveZoneDirective>>;
+    readonly datalist?: TemplateRef<TuiContext<TuiActiveZoneDirective>>;
 
     countryCode = this.options.countryCode;
 

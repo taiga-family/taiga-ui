@@ -15,7 +15,7 @@ import {
     AbstractTuiControl,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    TuiContextWithImplicit,
+    TuiContext,
     TuiFocusableElementAccessor,
     tuiIsNativeFocused,
     TuiNativeFocusableElement,
@@ -71,11 +71,11 @@ export class TuiToggleComponent
         super(control, cdr);
     }
 
-    get iconOn(): PolymorpheusContent<TuiContextWithImplicit<TuiSizeL>> {
+    get iconOn(): PolymorpheusContent<TuiContext<TuiSizeL>> {
         return this.options.icons.toggleOn;
     }
 
-    get iconOff(): PolymorpheusContent<TuiContextWithImplicit<TuiSizeL>> {
+    get iconOff(): PolymorpheusContent<TuiContext<TuiSizeL>> {
         return this.options.icons.toggleOff;
     }
 

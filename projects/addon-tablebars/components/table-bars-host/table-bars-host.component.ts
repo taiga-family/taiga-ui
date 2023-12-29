@@ -1,7 +1,7 @@
 import {AnimationOptions} from '@angular/animations';
 import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
-import {TUI_PARENT_ANIMATION, TuiContextWithImplicit} from '@taiga-ui/cdk';
+import {TUI_PARENT_ANIMATION, TuiContext} from '@taiga-ui/cdk';
 import {
     TUI_ANIMATION_OPTIONS,
     TUI_CLOSE_WORD,
@@ -48,7 +48,7 @@ export class TuiTableBarsHostComponent {
         itemToRemove.close();
     }
 
-    getItemContext(item: TuiTableBar): TuiContextWithImplicit<() => void> {
+    getItemContext(item: TuiTableBar): TuiContext<() => void> {
         return {
             $implicit: () => item.close(),
         };

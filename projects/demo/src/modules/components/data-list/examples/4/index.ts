@@ -1,11 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {
-    TuiContextWithImplicit,
-    TuiIdentityMatcher,
-    TuiStringHandler,
-} from '@taiga-ui/cdk';
+import {TuiContext, TuiIdentityMatcher, TuiStringHandler} from '@taiga-ui/cdk';
 
 const INCOME = {
     name: 'Income',
@@ -53,16 +49,17 @@ export class TuiDataListExample4 {
     readonly identityMatcher: TuiIdentityMatcher<readonly string[]> = (items1, items2) =>
         items1.length === items2.length && items1.every(item => items2.includes(item));
 
-    readonly valueContent: TuiStringHandler<TuiContextWithImplicit<readonly string[]>> =
-        ({$implicit}) => {
-            if (!$implicit.length) {
-                return 'All';
-            }
+    readonly valueContent: TuiStringHandler<TuiContext<readonly string[]>> = ({
+        $implicit,
+    }) => {
+        if (!$implicit.length) {
+            return 'All';
+        }
 
-            const selected = this.items.find(({items}) =>
-                this.identityMatcher($implicit, items),
-            );
+        const selected = this.items.find(({items}) =>
+            this.identityMatcher($implicit, items),
+        );
 
-            return selected ? `${selected.name} only` : `Selected: ${$implicit.length}`;
-        };
+        return selected ? `${selected.name} only` : `Selected: ${$implicit.length}`;
+    };
 }

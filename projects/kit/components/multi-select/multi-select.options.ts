@@ -1,10 +1,10 @@
 import {Provider} from '@angular/core';
-import {TuiContextWithImplicit, tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
+import {TuiContext, tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface TuiMultiSelectOptions<T> {
     readonly rows: number;
-    readonly valueContent: PolymorpheusContent<TuiContextWithImplicit<readonly T[]>>;
+    readonly valueContent: PolymorpheusContent<TuiContext<readonly T[]>>;
 }
 
 export const TUI_MULTI_SELECT_DEFAULT_OPTIONS: TuiMultiSelectOptions<unknown> = {

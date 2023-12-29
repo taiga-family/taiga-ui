@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiContextWithImplicit} from '@taiga-ui/cdk';
+import {TuiContext} from '@taiga-ui/cdk';
 
 @Component({
     selector: 'tui-input-slider-example-5',
@@ -18,9 +18,7 @@ export class TuiInputSliderExample5 {
     readonly smallControl = new FormControl(this.min);
     readonly bigControl = new FormControl(this.max);
 
-    readonly customLabel = ({
-        $implicit,
-    }: TuiContextWithImplicit<number>): number | string => {
+    readonly customLabel = ({$implicit}: TuiContext<number>): number | string => {
         switch ($implicit) {
             case this.max:
                 // eslint-disable-next-line @typescript-eslint/quotes

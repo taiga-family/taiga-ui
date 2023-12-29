@@ -12,7 +12,7 @@ import {
     Self,
     TemplateRef,
 } from '@angular/core';
-import {TuiContextWithImplicit, TuiEventWith, tuiIsNativeFocused} from '@taiga-ui/cdk';
+import {TuiContext, TuiEventWith, tuiIsNativeFocused} from '@taiga-ui/cdk';
 import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
 import {TuiDataListHost} from '@taiga-ui/core/interfaces';
 import {
@@ -63,7 +63,7 @@ export class TuiOptionComponent<T = unknown> implements OnDestroy {
         @Optional()
         @Inject(TUI_OPTION_CONTENT)
         readonly content: PolymorpheusContent<
-            TuiContextWithImplicit<TemplateRef<Record<string, unknown>>>
+            TuiContext<TemplateRef<Record<string, unknown>>>
         > | null,
         @Optional()
         @Inject(forwardRef(() => TuiDataListComponent))

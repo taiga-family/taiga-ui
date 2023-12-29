@@ -1,7 +1,7 @@
 import {Component, forwardRef, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiContextWithImplicit, TuiInputMode, TuiInputType} from '@taiga-ui/cdk';
+import {TuiContext, TuiInputMode, TuiInputType} from '@taiga-ui/cdk';
 import {TUI_HINT_DIRECTIONS, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
@@ -33,7 +33,7 @@ const CUSTOM_SVG_NAME = 'Bell';
 export class ExampleTuiPrimitiveTextfieldComponent extends AbstractExampleTuiInteractive {
     @ViewChild('interactiveContent')
     private readonly interactiveIcon: PolymorpheusContent<
-        TuiContextWithImplicit<TuiSizeL | TuiSizeS>
+        TuiContext<TuiSizeL | TuiSizeS>
     >;
 
     readonly example1: TuiDocExample = {
@@ -132,7 +132,7 @@ export class ExampleTuiPrimitiveTextfieldComponent extends AbstractExampleTuiInt
             : this.customContentSelected;
     }
 
-    get iconContent(): PolymorpheusContent<TuiContextWithImplicit<TuiSizeL | TuiSizeS>> {
+    get iconContent(): PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeS>> {
         if (this.selectedIcon === '') {
             return '';
         }

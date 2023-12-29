@@ -18,7 +18,7 @@ import {
     TUI_DEFAULT_IDENTITY_MATCHER,
     TUI_DEFAULT_STRINGIFY,
     TuiBooleanHandler,
-    TuiContextWithImplicit,
+    TuiContext,
     TuiHandler,
     TuiIdentityMatcher,
     tuiIsNativeFocusedIn,
@@ -62,7 +62,7 @@ export class TuiFilterComponent<T> extends AbstractTuiMultipleControl<T> {
     }
 
     @Input()
-    content: PolymorpheusContent = ({$implicit}: TuiContextWithImplicit<unknown>) =>
+    content: PolymorpheusContent = ({$implicit}: TuiContext<unknown>) =>
         TUI_DEFAULT_STRINGIFY($implicit);
 
     @Input()

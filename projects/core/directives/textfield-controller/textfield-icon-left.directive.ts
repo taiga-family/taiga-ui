@@ -1,7 +1,7 @@
 import {Directive, forwardRef, Input} from '@angular/core';
 import {
     AbstractTuiController,
-    TuiContextWithImplicit,
+    TuiContext,
     tuiCreateTokenFromFactory,
 } from '@taiga-ui/cdk';
 import {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
@@ -22,5 +22,5 @@ export const TUI_TEXTFIELD_ICON_LEFT = tuiCreateTokenFromFactory(
 })
 export class TuiTextfieldIconLeftDirective extends AbstractTuiController {
     @Input('tuiTextfieldIconLeft')
-    iconLeft: PolymorpheusContent<TuiContextWithImplicit<TuiSizeL | TuiSizeS>>;
+    iconLeft: PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeS>>;
 }

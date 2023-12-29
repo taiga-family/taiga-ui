@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiContextWithImplicit} from '@taiga-ui/cdk';
+import {TuiContext} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 @Component({
@@ -23,9 +23,8 @@ export class TuiMultiSelectExample11 {
 
     value: string[] = this.items;
 
-    content: PolymorpheusContent<TuiContextWithImplicit<string[]>> = ({
-        $implicit: {length},
-    }) => `Selected: ${length}`;
+    content: PolymorpheusContent<TuiContext<string[]>> = ({$implicit: {length}}) =>
+        `Selected: ${length}`;
 
     remove(item: string): void {
         this.value = this.value.filter(val => val !== item);

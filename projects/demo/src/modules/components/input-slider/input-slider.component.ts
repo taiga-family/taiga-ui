@@ -2,7 +2,7 @@ import {Component, forwardRef} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiContextWithImplicit} from '@taiga-ui/cdk';
+import {TuiContext} from '@taiga-ui/cdk';
 import {TuiSizeL} from '@taiga-ui/core';
 import {TuiKeySteps} from '@taiga-ui/kit';
 
@@ -78,11 +78,9 @@ export class ExampleTuiInputSliderComponent extends AbstractExampleTuiControl {
     readonly valueContentVariants = [
         '',
         'TOP SECRET',
-        ({$implicit: val}: TuiContextWithImplicit<number>) =>
-            val === this.max ? 'MAX' : val,
-        ({$implicit: val}: TuiContextWithImplicit<number>) =>
-            val === this.min ? 'MIN' : val,
-        ({$implicit: val}: TuiContextWithImplicit<number>) => (val === 5 ? 'FIVE' : val),
+        ({$implicit: val}: TuiContext<number>) => (val === this.max ? 'MAX' : val),
+        ({$implicit: val}: TuiContext<number>) => (val === this.min ? 'MIN' : val),
+        ({$implicit: val}: TuiContext<number>) => (val === 5 ? 'FIVE' : val),
     ];
 
     valueContent = this.valueContentVariants[0];

@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiContextWithImplicit} from '@taiga-ui/cdk';
+import {TuiContext} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 @Component({
@@ -14,9 +14,7 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 export class TuiRatingExample2 {
     value = 0;
 
-    readonly icon: PolymorpheusContent<TuiContextWithImplicit<number>> = ({
-        $implicit,
-    }) => {
+    readonly icon: PolymorpheusContent<TuiContext<number>> = ({$implicit}) => {
         switch ($implicit) {
             case 1:
                 return 'tuiIconFrownLarge';

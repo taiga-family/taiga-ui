@@ -2,7 +2,7 @@ import {Provider} from '@angular/core';
 import {
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
-    TuiContextWithImplicit,
+    TuiContext,
     tuiCreateToken,
     TuiDay,
     tuiProvideOptions,
@@ -11,7 +11,7 @@ import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface TuiInputDateOptions {
-    readonly icon: PolymorpheusContent<TuiContextWithImplicit<TuiSizeL | TuiSizeS>>;
+    readonly icon: PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeS>>;
     readonly max: TuiDay;
     readonly min: TuiDay;
     readonly nativePicker: boolean;

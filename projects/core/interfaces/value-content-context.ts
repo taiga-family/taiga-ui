@@ -1,5 +1,5 @@
-import {TuiContextWithImplicit} from '@taiga-ui/cdk';
+import {TuiContext} from '@taiga-ui/cdk';
 
-export interface TuiValueContentContext<T> extends TuiContextWithImplicit<T> {
+export interface TuiValueContentContext<T> extends TuiContext<T> {
     active: boolean;
 }

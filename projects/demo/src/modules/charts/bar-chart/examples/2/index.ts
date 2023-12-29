@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiContextWithImplicit} from '@taiga-ui/cdk';
+import {TuiContext} from '@taiga-ui/cdk';
 import {tuiFormatNumber} from '@taiga-ui/core';
 
 @Component({
@@ -23,7 +23,7 @@ export class TuiBarChartExample2 {
 
     appearance = 'onDark';
 
-    readonly hint = ({$implicit}: TuiContextWithImplicit<number>): string =>
+    readonly hint = ({$implicit}: TuiContext<number>): string =>
         this.value
             .reduce((result, set) => `${result}$${tuiFormatNumber(set[$implicit])}\n`, '')
             .trim();

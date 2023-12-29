@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiContextWithImplicit, TuiStringHandler} from '@taiga-ui/cdk';
+import {TuiContext, TuiStringHandler} from '@taiga-ui/cdk';
 import {TuiPoint} from '@taiga-ui/core';
 
 @Component({
@@ -24,6 +24,6 @@ export class TuiLineChartExample4 {
 
     readonly singleValue: TuiPoint[] = [[200, 150]];
 
-    readonly hint: TuiStringHandler<TuiContextWithImplicit<TuiPoint>> = ({$implicit}) =>
+    readonly hint: TuiStringHandler<TuiContext<TuiPoint>> = ({$implicit}) =>
         `Vertical: ${$implicit[1]}\nHorizontal: ${$implicit[0]}`;
 }

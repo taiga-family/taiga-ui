@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiContextWithImplicit} from '@taiga-ui/cdk';
+import {TuiContext} from '@taiga-ui/cdk';
 import {tuiItemsHandlersProvider} from '@taiga-ui/kit';
 
 interface Employee {
@@ -22,7 +22,7 @@ interface Employee {
     providers: [
         tuiItemsHandlersProvider({
             identityMatcher: (item1: Employee, item2: Employee) => item1.id === item2.id,
-            stringify: (item: Employee | TuiContextWithImplicit<Employee>) =>
+            stringify: (item: Employee | TuiContext<Employee>) =>
                 'name' in item
                     ? `${item.name} (${item.dept.title})`
                     : `${item.$implicit.name} (${item.$implicit.dept.title})`,

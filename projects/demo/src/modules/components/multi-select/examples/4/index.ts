@@ -1,12 +1,7 @@
 import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {
-    TUI_DEFAULT_MATCHER,
-    TuiContextWithImplicit,
-    TuiHandler,
-    tuiIsNumber,
-} from '@taiga-ui/cdk';
+import {TUI_DEFAULT_MATCHER, TuiContext, TuiHandler, tuiIsNumber} from '@taiga-ui/cdk';
 import {map, Observable, shareReplay, startWith, Subject, switchMap, timer} from 'rxjs';
 
 const DICTIONARY = [
@@ -48,16 +43,18 @@ export class TuiMultiSelectExample4 {
     );
 
     // Stringify mapper that turns IDs to names
-    readonly stringify$: Observable<
-        TuiHandler<TuiContextWithImplicit<number> | number, string>
-    > = this.server$.pipe(
-        map(items => new Map(items.map<[number, string]>(({id, name}) => [id, name]))),
-        startWith(new Map()),
-        map(
-            map => (id: TuiContextWithImplicit<number> | number) =>
-                (tuiIsNumber(id) ? map.get(id) : map.get(id.$implicit)) || 'Loading...',
-        ),
-    );
+    readonly stringify$: Observable<TuiHandler<TuiContext<number> | number, string>> =
+        this.server$.pipe(
+            map(
+                items => new Map(items.map<[number, string]>(({id, name}) => [id, name])),
+            ),
+            startWith(new Map()),
+            map(
+                map => (id: TuiContext<number> | number) =>
+                    (tuiIsNumber(id) ? map.get(id) : map.get(id.$implicit)) ||
+                    'Loading...',
+            ),
+        );
 
     readonly control = new FormControl([2, 3]);
 

@@ -24,7 +24,7 @@ import {
     tuiAsControl,
     tuiAsFocusableItemAccessor,
     TuiBooleanHandler,
-    TuiContextWithImplicit,
+    TuiContext,
     TuiFocusableElementAccessor,
     tuiIsNativeFocused,
     tuiIsString,
@@ -120,9 +120,7 @@ export class TuiMultiSelectComponent<T>
     readonly searchChange = new EventEmitter<string | null>();
 
     @ContentChild(TuiDataListDirective, {read: TemplateRef})
-    readonly datalist: PolymorpheusContent<
-        TuiContextWithImplicit<TuiActiveZoneDirective>
-    >;
+    readonly datalist: PolymorpheusContent<TuiContext<TuiActiveZoneDirective>>;
 
     open = false;
 
@@ -151,9 +149,7 @@ export class TuiMultiSelectComponent<T>
         return this.controller.size;
     }
 
-    get arrow(): PolymorpheusContent<
-        TuiContextWithImplicit<TuiSizeL | TuiSizeM | TuiSizeS>
-    > {
+    get arrow(): PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeM | TuiSizeS>> {
         return this.interactive ? this.arrowMode.interactive : this.arrowMode.disabled;
     }
 
@@ -191,9 +187,7 @@ export class TuiMultiSelectComponent<T>
     }
 
     @tuiPure
-    getStringifier(
-        stringify: TuiStringHandler<T>,
-    ): TuiStringHandler<TuiContextWithImplicit<T>> {
+    getStringifier(stringify: TuiStringHandler<T>): TuiStringHandler<TuiContext<T>> {
         return ({$implicit}) => stringify($implicit);
     }
 

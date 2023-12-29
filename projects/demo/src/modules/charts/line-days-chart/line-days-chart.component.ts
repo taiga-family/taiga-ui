@@ -1,7 +1,7 @@
 import {Component, Inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiContextWithImplicit, TuiDay, TuiStringHandler} from '@taiga-ui/cdk';
+import {TuiContext, TuiDay, TuiStringHandler} from '@taiga-ui/cdk';
 import {TUI_MONTHS} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {map, Observable} from 'rxjs';
@@ -66,7 +66,7 @@ export class ExampleTuiLineDaysChartComponent {
         this.months$.pipe(map(months => [({month, day}) => `${months[month]}, ${day}`]));
 
     readonly hintContentVariants$: Observable<
-        ReadonlyArray<PolymorpheusContent<TuiContextWithImplicit<[TuiDay, number]>>>
+        ReadonlyArray<PolymorpheusContent<TuiContext<[TuiDay, number]>>>
     > = this.months$.pipe(
         map(months => [
             '',
@@ -83,7 +83,7 @@ export class ExampleTuiLineDaysChartComponent {
 
     xStringify: TuiStringHandler<TuiDay> | null = null;
 
-    hintContent: PolymorpheusContent<TuiContextWithImplicit<[TuiDay, number]>> = '';
+    hintContent: PolymorpheusContent<TuiContext<[TuiDay, number]>> = '';
 
     dots = false;
 

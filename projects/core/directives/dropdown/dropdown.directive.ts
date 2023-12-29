@@ -13,7 +13,7 @@ import {
 } from '@angular/core';
 import {
     TuiActiveZoneDirective,
-    TuiContextWithImplicit,
+    TuiContext,
     TuiDestroyService,
     TuiDropdownPortalService,
     tuiPure,
@@ -62,9 +62,7 @@ export class TuiDropdownDirective
     private readonly cdr = inject(ChangeDetectorRef);
 
     @Input()
-    set tuiDropdown(
-        content: PolymorpheusContent<TuiContextWithImplicit<TuiActiveZoneDirective>>,
-    ) {
+    set tuiDropdown(content: PolymorpheusContent<TuiContext<TuiActiveZoneDirective>>) {
         this.content =
             content instanceof TemplateRef
                 ? new PolymorpheusTemplate(content, this.cdr)
@@ -79,7 +77,7 @@ export class TuiDropdownDirective
     );
 
     dropdownBoxRef: ComponentRef<unknown> | null = null;
-    content: PolymorpheusContent<TuiContextWithImplicit<TuiActiveZoneDirective>>;
+    content: PolymorpheusContent<TuiContext<TuiActiveZoneDirective>>;
 
     readonly sub = this.refresh$
         .pipe(throttleTime(0), takeUntil(inject(TuiDestroyService, {self: true})))

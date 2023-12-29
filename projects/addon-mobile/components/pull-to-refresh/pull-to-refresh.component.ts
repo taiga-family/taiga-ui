@@ -11,7 +11,7 @@ import {
 import {
     TUI_IS_IOS,
     TUI_SCROLL_REF,
-    TuiContextWithImplicit,
+    TuiContext,
     TuiDestroyService,
     TuiHandler,
     tuiPx,
@@ -57,7 +57,7 @@ export class TuiPullToRefreshComponent {
         @Inject(TUI_IS_IOS) private readonly isIOS: boolean,
         @Inject(TUI_PULL_TO_REFRESH_THRESHOLD) private readonly threshold: number,
         @Inject(TUI_PULL_TO_REFRESH_COMPONENT)
-        readonly component: PolymorpheusContent<TuiContextWithImplicit<number>>,
+        readonly component: PolymorpheusContent<TuiContext<number>>,
         @Inject(TuiPullToRefreshService) readonly pulling$: Observable<number>,
     ) {
         // Ensure scrolling down is impossible while pulling

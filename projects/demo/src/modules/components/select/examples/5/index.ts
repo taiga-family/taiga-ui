@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiContextWithImplicit, tuiPure, TuiStringHandler} from '@taiga-ui/cdk';
+import {TuiContext, tuiPure, TuiStringHandler} from '@taiga-ui/cdk';
 import {delay, of} from 'rxjs';
 
 interface Python {
@@ -32,11 +32,9 @@ export class TuiSelectExample5 {
     readonly items$ = of(ITEMS).pipe(delay(3000));
 
     @tuiPure
-    stringify(
-        items: readonly Python[],
-    ): TuiStringHandler<TuiContextWithImplicit<number>> {
+    stringify(items: readonly Python[]): TuiStringHandler<TuiContext<number>> {
         const map = new Map(items.map(({id, name}) => [id, name] as [number, string]));
 
-        return ({$implicit}: TuiContextWithImplicit<number>) => map.get($implicit) || '';
+        return ({$implicit}: TuiContext<number>) => map.get($implicit) || '';
     }
 }

@@ -1,3 +1,3 @@
-export interface TuiContextWithImplicit<T> {
+export interface TuiContext<T> {
     $implicit: T;
 }
