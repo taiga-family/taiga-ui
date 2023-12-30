@@ -18,7 +18,7 @@ import {
     TUI_IS_IOS,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    TuiContextWithImplicit,
+    TuiContext,
     TuiFocusableElementAccessor,
     tuiIsNativeFocused,
 } from '@taiga-ui/cdk';
@@ -170,17 +170,15 @@ export class TuiTextareaComponent
         return !!this.controller.customContent;
     }
 
-    get iconLeftContent(): PolymorpheusContent<
-        TuiContextWithImplicit<TuiSizeL | TuiSizeS>
-    > {
+    get iconLeftContent(): PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeS>> {
         return this.controller.iconLeft;
     }
 
-    get iconContent(): PolymorpheusContent<TuiContextWithImplicit<TuiSizeL | TuiSizeS>> {
+    get iconContent(): PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeS>> {
         return this.controller.icon;
     }
 
-    get iconCleaner(): PolymorpheusContent<TuiContextWithImplicit<TuiSizeL | TuiSizeS>> {
+    get iconCleaner(): PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeS>> {
         return this.controller.options.iconCleaner;
     }
 

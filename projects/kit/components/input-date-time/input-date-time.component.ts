@@ -28,7 +28,7 @@ import {
     tuiAsFocusableItemAccessor,
     TuiBooleanHandler,
     tuiClamp,
-    TuiContextWithImplicit,
+    TuiContext,
     tuiDateClamp,
     TuiDateMode,
     TuiDay,
@@ -100,7 +100,7 @@ export class TuiInputDateTimeComponent
 
     open = false;
 
-    readonly type!: TuiContextWithImplicit<TuiActiveZoneDirective>;
+    readonly type!: TuiContext<TuiActiveZoneDirective>;
 
     readonly filler$: Observable<string> = combineLatest([
         this.dateTexts$.pipe(

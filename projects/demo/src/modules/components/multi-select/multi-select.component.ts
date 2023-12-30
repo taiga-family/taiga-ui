@@ -7,7 +7,7 @@ import {
     ALWAYS_TRUE_HANDLER,
     TUI_DEFAULT_STRINGIFY,
     TuiBooleanHandler,
-    TuiContextWithImplicit,
+    TuiContext,
     TuiIdentityMatcher,
     TuiStringHandler,
 } from '@taiga-ui/cdk';
@@ -165,7 +165,7 @@ export class ExampleTuiMultiSelectComponent extends AbstractExampleTuiControl {
     override maxLength = null;
 
     readonly valueContentVariants: ReadonlyArray<
-        PolymorpheusContent<TuiContextWithImplicit<readonly Account[]>>
+        PolymorpheusContent<TuiContext<readonly Account[]>>
     > = ['', ({$implicit: {length}}) => `Selected: ${length}`];
 
     valueContent = this.valueContentVariants[0];

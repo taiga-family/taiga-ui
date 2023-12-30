@@ -72,4 +72,14 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifier[] = [
             moduleSpecifier: '@taiga-ui/addon-doc',
         },
     },
+    {
+        from: {
+            name: 'TuiContextWithImplicit',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+        to: {
+            name: 'TuiContext',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+    },
 ];

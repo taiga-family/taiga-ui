@@ -18,7 +18,7 @@ import {
     TuiActiveZoneDirective,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    TuiContextWithImplicit,
+    TuiContext,
     TuiFocusableElementAccessor,
     tuiIsNativeFocused,
 } from '@taiga-ui/cdk';
@@ -84,9 +84,7 @@ export class TuiSelectComponent<T>
     valueContent: TuiSelectOptions<T>['valueContent'] = this.options.valueContent;
 
     @ContentChild(TuiDataListDirective, {read: TemplateRef})
-    readonly datalist: PolymorpheusContent<
-        TuiContextWithImplicit<TuiActiveZoneDirective>
-    >;
+    readonly datalist: PolymorpheusContent<TuiContext<TuiActiveZoneDirective>>;
 
     constructor(
         @Optional()
@@ -111,9 +109,7 @@ export class TuiSelectComponent<T>
         return this.textfieldSize.size;
     }
 
-    get arrow(): PolymorpheusContent<
-        TuiContextWithImplicit<TuiSizeL | TuiSizeM | TuiSizeS>
-    > {
+    get arrow(): PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeM | TuiSizeS>> {
         return !this.interactive ? this.arrowMode.disabled : this.arrowMode.interactive;
     }
 

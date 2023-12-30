@@ -10,7 +10,7 @@ import {NgControl} from '@angular/forms';
 import {ResizeObserverModule} from '@ng-web-apis/resize-observer';
 import {
     tuiAsFocusableItemAccessor,
-    TuiContextWithImplicit,
+    TuiContext,
     TuiFocusableElementAccessor,
     tuiIsNativeFocused,
     TuiNativeValidatorDirective,
@@ -32,7 +32,7 @@ import {TuiLabelDirective} from './label.directive';
 import {TuiTextfieldDirective} from './textfield.directive';
 import {TUI_TEXTFIELD_OPTIONS, TuiTextfieldOptionsDirective} from './textfield.options';
 
-export interface TuiTextfieldContext<T> extends TuiContextWithImplicit<T> {
+export interface TuiTextfieldContext<T> extends TuiContext<T> {
     readonly active: boolean;
 }
 

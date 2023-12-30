@@ -12,7 +12,7 @@ import {
 import {
     EMPTY_CLIENT_RECT,
     tuiClamp,
-    TuiContextWithImplicit,
+    TuiContext,
     TuiDestroyService,
     TuiHoveredService,
     tuiPure,
@@ -79,7 +79,7 @@ export class TuiHintComponent<C = any> {
         @Inject(TuiRectAccessor) protected readonly accessor: TuiRectAccessor,
         @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
         @Inject(POLYMORPHEUS_CONTEXT)
-        private readonly polymorpheus: TuiContextWithImplicit<TuiPortalItem<C>>,
+        private readonly polymorpheus: TuiContext<TuiPortalItem<C>>,
         @Inject(TuiHintHoverDirective) private readonly hover: TuiHintHoverDirective,
         @Optional()
         @Inject(TuiModeDirective)

@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiContextWithImplicit, TuiStringHandler} from '@taiga-ui/cdk';
+import {TuiContext, TuiStringHandler} from '@taiga-ui/cdk';
 import {TuiPoint} from '@taiga-ui/core';
 
 @Component({
@@ -42,7 +42,6 @@ export class TuiLineChartExample5 {
         ],
     ];
 
-    readonly hint: TuiStringHandler<TuiContextWithImplicit<readonly TuiPoint[]>> = ({
-        $implicit,
-    }) => `${$implicit[0][0]} items:\n\n${$implicit.map(([_, y]) => y).join('$\n')}$`;
+    readonly hint: TuiStringHandler<TuiContext<readonly TuiPoint[]>> = ({$implicit}) =>
+        `${$implicit[0][0]} items:\n\n${$implicit.map(([_, y]) => y).join('$\n')}$`;
 }

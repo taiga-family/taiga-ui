@@ -15,7 +15,7 @@ import {
     tuiAsControl,
     tuiAsFocusableItemAccessor,
     tuiClamp,
-    TuiContextWithImplicit,
+    TuiContext,
     TuiFocusableElementAccessor,
     tuiIsNativeFocused,
     TuiNativeFocusableElement,
@@ -84,7 +84,7 @@ export class TuiInputSliderComponent
     keySteps: TuiKeySteps | null = null;
 
     @Input()
-    valueContent: PolymorpheusContent<TuiContextWithImplicit<number>>;
+    valueContent: PolymorpheusContent<TuiContext<number>>;
 
     /** @deprecated use `tuiTextfieldPrefix` from {@link TuiTextfieldControllerModule} instead */
     @Input('prefix')

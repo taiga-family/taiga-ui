@@ -1,7 +1,7 @@
 import {inject} from '@angular/core';
 import {
     TUI_IS_IOS,
-    TuiContextWithImplicit,
+    TuiContext,
     tuiCreateToken,
     tuiCreateTokenFromFactory,
 } from '@taiga-ui/cdk';
@@ -25,7 +25,7 @@ export const TUI_PULL_TO_REFRESH_THRESHOLD = tuiCreateToken(50);
  * Loading indicator component that gets current pull distance in pixels as context
  */
 export const TUI_PULL_TO_REFRESH_COMPONENT = tuiCreateTokenFromFactory<
-    PolymorpheusContent<TuiContextWithImplicit<number>>
+    PolymorpheusContent<TuiContext<number>>
 >(() => (inject(TUI_IS_IOS) ? TUI_IOS_LOADER : TUI_ANDROID_LOADER));
 
 /**

@@ -28,7 +28,7 @@ import {
     tuiAsControl,
     tuiAsFocusableItemAccessor,
     TuiBooleanHandler,
-    TuiContextWithImplicit,
+    TuiContext,
     TuiFocusableElementAccessor,
     tuiGetActualTarget,
     tuiGetClipboardDataText,
@@ -161,7 +161,7 @@ export class TuiInputTagComponent
     readonly searchChange = new EventEmitter<string>();
 
     @ContentChild(TuiDataListDirective, {read: TemplateRef})
-    readonly datalist?: TemplateRef<TuiContextWithImplicit<TuiActiveZoneDirective>>;
+    readonly datalist?: TemplateRef<TuiContext<TuiActiveZoneDirective>>;
 
     @ViewChild('errorIcon')
     readonly errorIconTemplate?: TemplateRef<Record<string, unknown>>;
@@ -227,15 +227,15 @@ export class TuiInputTagComponent
     }
 
     @HostBinding('class._icon-left')
-    get iconLeft(): PolymorpheusContent<TuiContextWithImplicit<TuiSizeL | TuiSizeS>> {
+    get iconLeft(): PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeS>> {
         return this.controller.iconLeft;
     }
 
-    get icon(): PolymorpheusContent<TuiContextWithImplicit<TuiSizeL | TuiSizeS>> {
+    get icon(): PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeS>> {
         return this.controller.icon;
     }
 
-    get iconCleaner(): PolymorpheusContent<TuiContextWithImplicit<TuiSizeL | TuiSizeS>> {
+    get iconCleaner(): PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeS>> {
         return this.controller.options.iconCleaner;
     }
 

@@ -22,7 +22,7 @@ import {
     EMPTY_ARRAY,
     TUI_IS_MOBILE,
     tuiAsFocusableItemAccessor,
-    TuiContextWithImplicit,
+    TuiContext,
     TuiFocusableElementAccessor,
     tuiIsNativeFocused,
     TuiNativeFocusableElement,
@@ -59,7 +59,7 @@ export class TuiInputFilesComponent
     readonly nativeInput?: TuiInputFilesDirective;
 
     @ContentChild(TemplateRef)
-    readonly template?: TemplateRef<TuiContextWithImplicit<boolean>>;
+    readonly template?: TemplateRef<TuiContext<boolean>>;
 
     @ViewChild('formatRejection')
     readonly formatRejection!: PolymorpheusContent;

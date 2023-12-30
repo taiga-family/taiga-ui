@@ -13,7 +13,7 @@ import {
     AbstractTuiControl,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    TuiContextWithImplicit,
+    TuiContext,
     TuiFocusableElementAccessor,
     TuiInputType,
     TuiNativeFocusableElement,
@@ -71,7 +71,7 @@ export class TuiInputPasswordComponent
         startWith(''),
     );
 
-    readonly type!: TuiContextWithImplicit<TuiSizeL | TuiSizeS>;
+    readonly type!: TuiContext<TuiSizeL | TuiSizeS>;
 
     constructor(
         @Optional()
@@ -109,7 +109,7 @@ export class TuiInputPasswordComponent
         return !!this.textfield?.focused;
     }
 
-    get icon(): PolymorpheusContent<TuiContextWithImplicit<TuiSizeL | TuiSizeS>> {
+    get icon(): PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeS>> {
         return this.isPasswordHidden ? this.options.icons.hide : this.options.icons.show;
     }
 

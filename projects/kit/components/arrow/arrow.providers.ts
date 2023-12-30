@@ -1,17 +1,13 @@
 import {Provider} from '@angular/core';
-import {TuiContextWithImplicit, tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
+import {TuiContext, tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 import {TuiSizeL, TuiSizeM, TuiSizeS} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {TUI_ARROW} from './arrow.component';
 
 export interface TuiArrowMode {
-    readonly disabled: PolymorpheusContent<
-        TuiContextWithImplicit<TuiSizeL | TuiSizeM | TuiSizeS>
-    >;
-    readonly interactive: PolymorpheusContent<
-        TuiContextWithImplicit<TuiSizeL | TuiSizeM | TuiSizeS>
-    >;
+    readonly disabled: PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeM | TuiSizeS>>;
+    readonly interactive: PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeM | TuiSizeS>>;
 }
 
 export const TUI_ARROW_DEFAULT_MODE: TuiArrowMode = {

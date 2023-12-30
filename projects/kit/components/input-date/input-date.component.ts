@@ -28,7 +28,7 @@ import {
     tuiAsControl,
     tuiAsFocusableItemAccessor,
     TuiBooleanHandler,
-    TuiContextWithImplicit,
+    TuiContext,
     tuiDateClamp,
     TuiDateMode,
     TuiDay,
@@ -101,7 +101,7 @@ export class TuiInputDateComponent
 
     open = false;
 
-    readonly type!: TuiContextWithImplicit<TuiActiveZoneDirective>;
+    readonly type!: TuiContext<TuiActiveZoneDirective>;
 
     readonly filler$: Observable<string> = this.dateTexts$.pipe(
         map(dateTexts =>

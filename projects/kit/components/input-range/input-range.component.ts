@@ -19,7 +19,7 @@ import {
     tuiAsControl,
     tuiAsFocusableItemAccessor,
     tuiClamp,
-    TuiContextWithImplicit,
+    TuiContext,
     TuiFocusableElementAccessor,
     tuiIsNativeFocused,
     tuiIsNativeFocusedIn,
@@ -85,10 +85,10 @@ export class TuiInputRangeComponent
     keySteps: TuiKeySteps | null = null;
 
     @Input()
-    leftValueContent: PolymorpheusContent<TuiContextWithImplicit<number>>;
+    leftValueContent: PolymorpheusContent<TuiContext<number>>;
 
     @Input()
-    rightValueContent: PolymorpheusContent<TuiContextWithImplicit<number>>;
+    rightValueContent: PolymorpheusContent<TuiContext<number>>;
 
     @Input()
     pluralize: Record<string, string> | null = null;

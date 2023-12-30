@@ -1,5 +1,5 @@
-import {TuiContextWithImplicit} from '@taiga-ui/cdk';
+import {TuiContext} from '@taiga-ui/cdk';
 
-export interface TuiRowContext<T> extends TuiContextWithImplicit<T> {
+export interface TuiRowContext<T> extends TuiContext<T> {
     readonly index: number;
 }

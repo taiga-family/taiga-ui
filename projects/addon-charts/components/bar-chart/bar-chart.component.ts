@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import {
     EMPTY_QUERY,
-    TuiContextWithImplicit,
+    TuiContext,
     TuiIdService,
     tuiPure,
     tuiSum,
@@ -59,7 +59,7 @@ export class TuiBarChartComponent {
         this.autoIdString = idService.generate();
     }
 
-    get hintContent(): PolymorpheusContent<TuiContextWithImplicit<number>> {
+    get hintContent(): PolymorpheusContent<TuiContext<number>> {
         return this.hintOptions?.content || '';
     }
 
