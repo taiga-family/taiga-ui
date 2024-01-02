@@ -22,6 +22,8 @@ describe('PrimitiveRangeCalendar component', () => {
     let testComponent: TestComponent;
     let component: TuiPrimitiveCalendarRangeComponent;
 
+    beforeAll(() => jest.useFakeTimers().setSystemTime(new Date('2023-01-01')));
+
     beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [TuiPrimitiveCalendarRangeModule, NoopAnimationsModule],
