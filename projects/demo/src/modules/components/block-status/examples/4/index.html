@@ -1,30 +1,46 @@
-<tui-block-status
-    class="card"
-    [card]="true"
->
-    <div
-        tuiSlot="top"
-        class="tui-avatar-stack reversed"
+<div class="container">
+    <tui-block-status
+        class="card"
+        [card]="true"
     >
-        <tui-avatar
-            *ngFor="let user of users"
-            size="l"
-            [autoColor]="true"
-            [rounded]="true"
-            [text]="user"
-        ></tui-avatar>
-    </div>
+        <div
+            tuiSlot="top"
+            class="tui-avatar-stack reversed"
+        >
+            <tui-avatar
+                *ngFor="let user of users"
+                size="l"
+                [autoColor]="true"
+                [rounded]="true"
+                [text]="user"
+            ></tui-avatar>
+        </div>
 
-    You can put other content instead of image using
-    <code>tui-block-content</code>
-    css class
+        You can put other content instead of image using
+        <code>tui-block-content</code>
+        css class
 
-    <button
-        appearance="primary"
-        shape="rounded"
-        size="s"
-        tuiButton
+        <button
+            appearance="primary"
+            shape="rounded"
+            size="s"
+            tuiButton
+        >
+            Got it
+        </button>
+    </tui-block-status>
+
+    <tui-block-status
+        [card]="true"
+        [class.card]="true"
     >
-        Got it
-    </button>
-</tui-block-status>
+        <img
+            alt="Alex Inkin"
+            src="/assets/images/avatar.jpg"
+            tuiSlot="top"
+            class="avatar"
+        />
+
+        <h1>Alex Inkin</h1>
+    </tui-block-status>
+</div>
