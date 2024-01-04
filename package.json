@@ -131,7 +131,7 @@
         "@nx/workspace": "17.2.8",
         "@playwright/test": "1.40.1",
         "@taiga-ui/browserslist-config": "0.4.0",
-        "@taiga-ui/commitlint-config": "0.5.0",
+        "@taiga-ui/commitlint-config": "0.5.1",
         "@taiga-ui/cspell-config": "0.26.0",
         "@taiga-ui/eslint-plugin-experience": "0.46.3",
         "@taiga-ui/prettier-config": "0.7.0",
