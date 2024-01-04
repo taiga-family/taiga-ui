@@ -122,7 +122,7 @@
         "@angular/cli": "15.2.10",
         "@angular/compiler-cli": "15.2.10",
         "@angular/language-service": "15.2.10",
-        "@commitlint/cli": "18.4.3",
+        "@commitlint/cli": "18.4.4",
         "@cypress/webpack-batteries-included-preprocessor": "3.0.2",
         "@cypress/webpack-preprocessor": "6.0.1",
         "@nx/angular": "17.2.8",
