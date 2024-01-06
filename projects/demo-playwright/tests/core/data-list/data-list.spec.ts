@@ -2,9 +2,9 @@ import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
 test.describe('DataList', () => {
-    test.beforeEach(async ({page}) => tuiGoto(page, '/components/data-list'));
-
     test('Custom list', async ({page}) => {
+        await tuiGoto(page, '/components/data-list');
+
         const documentationPagePO = new TuiDocumentationPagePO(page);
         const example = documentationPagePO.getExample('#custom');
 
@@ -15,6 +15,7 @@ test.describe('DataList', () => {
     });
 
     test('Links', async ({page}) => {
+        await tuiGoto(page, '/components/data-list');
         const documentationPagePO = new TuiDocumentationPagePO(page);
         const example = documentationPagePO.getExample('#links');
 
@@ -26,6 +27,8 @@ test.describe('DataList', () => {
 
     test('Submenu', async ({page}) => {
         await page.setViewportSize({width: 750, height: 400});
+        await tuiGoto(page, '/components/data-list');
+
         const documentationPagePO = new TuiDocumentationPagePO(page);
         const example = documentationPagePO.getExample('#submenu');
 
@@ -49,6 +52,8 @@ test.describe('DataList', () => {
     });
 
     test('Form control', async ({page}) => {
+        await tuiGoto(page, '/components/data-list');
+
         const documentationPagePO = new TuiDocumentationPagePO(page);
         const example = documentationPagePO.getExample('#control');
 
@@ -60,6 +65,8 @@ test.describe('DataList', () => {
 
     test('Complex', async ({page}) => {
         await page.setViewportSize({width: 1400, height: 500});
+        await tuiGoto(page, '/components/data-list');
+
         const documentationPagePO = new TuiDocumentationPagePO(page);
         const example = documentationPagePO.getExample('#complex');
 
@@ -118,6 +125,8 @@ test.describe('DataList', () => {
 
     test('Options with long text', async ({page}) => {
         await page.setViewportSize({width: 750, height: 900});
+        await tuiGoto(page, '/components/data-list');
+
         const documentationPagePO = new TuiDocumentationPagePO(page);
         const example = documentationPagePO.getExample('#long-text-options');
 
