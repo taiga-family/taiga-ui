@@ -43,6 +43,9 @@ export class TuiDocumentationPagePO {
         const hideElements = [
             wrapper.locator('header'),
             ...(await wrapper.locator('> .t-content > *:not(tui-doc-demo)').all()),
+            ...(await wrapper.locator('.t-bg-toggle').all()),
+            ...(await this.page.locator('tui-doc-navigation').all()),
+            ...(await this.page.locator('tui-scroll-controls').all()),
         ];
 
         for (const element of hideElements) {
