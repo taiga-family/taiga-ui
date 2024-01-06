@@ -37,26 +37,39 @@ export class TuiDocumentationPagePO {
         return tuiHideElement(this.page.locator('tui-doc-page'));
     }
 
-    async prepareApiPageBeforeScreenshot(): Promise<void> {
-        const wrapper = this.page.locator('tui-doc-page');
+    async hideNavigation(): Promise<void> {
+        return tuiHideElement(this.page.locator('tui-doc-navigation'));
+    }
 
+    async hideScrollControls(): Promise<void> {
+        for (const element of await this.page.locator('tui-scroll-controls').all()) {
+            await tuiHideElement(element);
+        }
+    }
+
+    async prepareApiPageBeforeScreenshot(): Promise<void> {
+        await this.hideScrollControls();
+        await this.hideNavigation();
+        await this.hideContent();
+
+        const wrapper = this.page.locator('tui-doc-page');
         const hideElements = [
             wrapper.locator('header'),
             ...(await wrapper.locator('> .t-content > *:not(tui-doc-demo)').all()),
             ...(await wrapper.locator('.t-bg-toggle').all()),
-            ...(await this.page.locator('tui-doc-navigation').all()),
-            ...(await this.page.locator('tui-scroll-controls').all()),
         ];
 
         for (const element of hideElements) {
             await tuiHideElement(element);
         }
 
-        await this.apiPageExample.evaluate(el => el.scrollIntoView());
-        await expect(async () => {
-            expect(
-                await this.apiPageExample.boundingBox().then(box => box?.y),
-            ).toBeGreaterThanOrEqual(64);
-        }).toPass();
+        if ((await this.apiPageExample.all()).length) {
+            await this.apiPageExample.evaluate(el => el.scrollIntoView());
+            await expect(async () => {
+                expect(
+                    await this.apiPageExample.boundingBox().then(box => box?.y),
+                ).toBeGreaterThanOrEqual(64);
+            }).toPass();
+        }
     }
 }
