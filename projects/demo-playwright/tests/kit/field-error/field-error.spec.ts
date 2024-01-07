@@ -1,9 +1,7 @@
 import {tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
-const {describe} = test;
-
-describe('TuiFieldError', () => {
+test.describe('TuiFieldError', () => {
     test('Errors of invalid control are shown correctly', async ({page}) => {
         await tuiGoto(page, '/pipes/field-error');
 

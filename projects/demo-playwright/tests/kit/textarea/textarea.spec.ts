@@ -1,12 +1,8 @@
 import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
-const {describe} = test;
-
-describe('Textarea', () => {
-    test.use({
-        viewport: {width: 400, height: 500},
-    });
+test.describe('Textarea', () => {
+    test.use({viewport: {width: 400, height: 500}});
 
     test('correctly shows character with descenders inside placeholder', async ({
         page,
