@@ -1,9 +1,7 @@
 import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
-const {describe} = test;
-
-describe('ComboBox', () => {
+test.describe('ComboBox', () => {
     test("Don't allow disabled options to be selected by typing them", async ({page}) => {
         await tuiGoto(page, 'components/combo-box');
 
