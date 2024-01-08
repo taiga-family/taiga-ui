@@ -2,11 +2,11 @@ import {TuiDocumentationPropertyType} from '@taiga-ui/addon-doc/interfaces';
 
 export function tuiGetAttrName(mode: TuiDocumentationPropertyType, name: string): string {
     switch (mode) {
-        case `input`:
+        case 'input':
             return `[${name}]`;
-        case `output`:
+        case 'output':
             return `(${name})`;
-        case `input-output`:
+        case 'input-output':
             return `[(${name})]`;
         default:
             return name;

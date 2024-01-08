@@ -1,26 +1,26 @@
 import {TuiDocumentationPropertyType} from '@taiga-ui/addon-doc';
 
-describe(`tuiRenderProperty`, () => {
+describe('tuiRenderProperty', () => {
     const types: TuiDocumentationPropertyType[] = [
-        `input`,
-        `input-output`,
-        `output`,
+        'input',
+        'input-output',
+        'output',
         null,
     ];
 
-    const values = [`value`, undefined];
+    const values = ['value', undefined];
 
     beforeEach(() => {
-        jest.spyOn(console, `error`);
+        jest.spyOn(console, 'error');
     });
 
-    describe.each(types)(`with type %s`, type => {
-        it.each(values)(`with value %s, should render correct code`, async value => {
+    describe.each(types)('with type %s', type => {
+        it.each(values)('with value %s, should render correct code', async value => {
             jest.resetModules();
-            const {tuiRenderProperty} = await import(`../render-property`);
+            const {tuiRenderProperty} = await import('../render-property');
 
             expect(
-                tuiRenderProperty(`name`, {
+                tuiRenderProperty('name', {
                     type,
                     value,
                 }),
@@ -28,20 +28,20 @@ describe(`tuiRenderProperty`, () => {
         });
     });
 
-    it(`should rethrow uncaught exception`, async () => {
-        jest.mock<typeof import('../attr-name')>(`../attr-name`, () => ({
+    it('should rethrow uncaught exception', async () => {
+        jest.mock<typeof import('../attr-name')>('../attr-name', () => ({
             tuiGetAttrName(): string {
-                throw new Error(`Uncaught error`);
+                throw new Error('Uncaught error');
             },
         }));
         jest.resetModules();
-        const {tuiRenderProperty} = await import(`../render-property`);
+        const {tuiRenderProperty} = await import('../render-property');
 
         expect(() =>
-            tuiRenderProperty(`name`, {
-                type: `input`,
-                value: `test`,
+            tuiRenderProperty('name', {
+                type: 'input',
+                value: 'test',
             }),
-        ).toThrow(`Uncaught error`);
+        ).toThrow('Uncaught error');
     });
 });
