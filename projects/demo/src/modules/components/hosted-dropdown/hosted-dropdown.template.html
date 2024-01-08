@@ -62,12 +62,10 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template
-        documentationTemplateTagName="tui-hosted-dropdown"
-        pageTab
-    >
+    <ng-template pageTab>
         <tui-doc-demo>
             <tui-hosted-dropdown
+                documentationTemplate
                 [canOpen]="canOpen"
                 [content]="template ? dropdown : content"
                 [sided]="sided"
@@ -80,8 +78,8 @@
                 [(open)]="open"
             >
                 <tui-input
+                    documentationTemplate
                     documentationTemplateContent="Start typing"
-                    documentationTemplateTagName="tui-input"
                     class="input"
                     [documentationTemplateBaseProperties]="hostedDropdownBaseProperties"
                     [ngModel]="input"

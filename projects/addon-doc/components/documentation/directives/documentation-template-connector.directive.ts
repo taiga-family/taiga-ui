@@ -1,4 +1,13 @@
-import {Directive, Inject, Input, OnChanges, Optional, Self} from '@angular/core';
+import {
+    Directive,
+    ElementRef,
+    Inject,
+    inject,
+    Input,
+    OnChanges,
+    Optional,
+    Self,
+} from '@angular/core';
 import {
     TuiApiHostTemplate,
     TuiDocumentationProperty,
@@ -10,19 +19,22 @@ import {BehaviorSubject, takeUntil} from 'rxjs';
 import {TuiDocumentationApiHostDirective} from './documentation-api-host.directive';
 
 @Directive({
-    selector: '[documentationTemplateTagName]',
+    selector: '[documentationTemplate],[documentationTemplateTagName]',
     providers: [TuiDestroyService],
 })
 export class TuiDocDocumentationTemplateConnectorDirective implements OnChanges {
+    private readonly defaultTagName =
+        inject(ElementRef<HTMLElement>)?.nativeElement.tagName.toLowerCase() ?? '';
+
     private readonly template$ = new BehaviorSubject<TuiApiHostTemplate>({
-        tagName: '',
+        tagName: this.defaultTagName,
         baseProperties: {},
     });
 
     private readonly content$ = new BehaviorSubject<string>('');
 
     @Input('documentationTemplateTagName')
-    tagName = '';
+    tagName = this.defaultTagName;
 
     @Input('documentationTemplateBaseProperties')
     baseProperties: Record<string, TuiDocumentationProperty> = {};

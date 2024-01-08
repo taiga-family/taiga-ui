@@ -43,8 +43,8 @@
         <tui-doc-demo>
             <ng-container *ngIf="!pseudo; else pseudoLink">
                 <a
+                    documentationTemplate
                     documentationTemplateContent="Link example"
-                    documentationTemplateTagName="a"
                     tuiLink
                     [documentationTemplateBaseProperties]="aBaseProperties"
                     [icon]="icon"
@@ -58,8 +58,8 @@
             </ng-container>
             <ng-template #pseudoLink>
                 <button
+                    documentationTemplate
                     documentationTemplateContent="It is a pseudo-link because it is actually a button"
-                    documentationTemplateTagName="button"
                     tuiLink
                     type="button"
                     [documentationTemplateBaseProperties]="buttonBaseProperties"

@@ -27,7 +27,7 @@
     <ng-template pageTab>
         <tui-doc-demo>
             <tui-axes
-                documentationTemplateTagName="tui-axes"
+                documentationTemplate
                 class="axes"
                 [axisXLabels]="(labels$ | async) || []"
                 [documentationTemplateBaseProperties]="axesBaseProperties"
@@ -35,7 +35,7 @@
                 [verticalLines]="3"
             >
                 <tui-line-days-chart
-                    documentationTemplateTagName="tui-line-days-chart"
+                    documentationTemplate
                     [documentationTemplateApiHost]="lineChartApiHost"
                     [dots]="dots"
                     [height]="height"

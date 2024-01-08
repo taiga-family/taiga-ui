@@ -86,7 +86,7 @@
             <p>
                 <button
                     *ngIf="iconButton; else button"
-                    documentationTemplateTagName="button"
+                    documentationTemplate
                     tuiIconButton
                     type="button"
                     [appearance]="appearance"
@@ -101,8 +101,8 @@
                 ></button>
                 <ng-template #button>
                     <button
+                        documentationTemplate
                         documentationTemplateContent="Content"
-                        documentationTemplateTagName="button"
                         tuiButton
                         type="button"
                         class="tui-space_right-4"

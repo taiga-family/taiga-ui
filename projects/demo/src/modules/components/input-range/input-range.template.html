@@ -111,8 +111,8 @@
     <ng-template pageTab>
         <tui-doc-demo [formGroup]="control | tuiWrapControl">
             <tui-input-range
+                documentationTemplate
                 documentationTemplateContent="Just a very long label. Don't afraid it does not overflow the wrapper, the label is just cut off with ellipsis when it does not fit the wrapper."
-                documentationTemplateTagName="tui-input-range"
                 [formControl]="control"
                 [keySteps]="keySteps"
                 [leftValueContent]="leftValueContent"

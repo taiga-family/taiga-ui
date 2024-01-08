@@ -29,8 +29,8 @@
                 <tui-input-card
                     #inputCardDocumentationApiHost="documentationApiHost"
                     documentationApiHost
+                    documentationTemplate
                     documentationTemplateContent="Card number"
-                    documentationTemplateTagName="tui-input-card"
                     formControlName="card"
                     class="control"
                     [autocompleteEnabled]="autocompleteEnabledCard"
@@ -55,8 +55,8 @@
                 <tui-input-expire
                     #inputExpireDocumentationApiHost="documentationApiHost"
                     documentationApiHost
+                    documentationTemplate
                     documentationTemplateContent="Expire date"
-                    documentationTemplateTagName="tui-input-expire"
                     formControlName="expire"
                     class="control"
                     [autocompleteEnabled]="autocompleteEnabledExpire"
@@ -75,8 +75,8 @@
                 <tui-input-cvc
                     #inputCVCDocumentationApiHost="documentationApiHost"
                     documentationApiHost
+                    documentationTemplate
                     documentationTemplateContent="CVC/CVV"
-                    documentationTemplateTagName="tui-input-cvc"
                     formControlName="cvc"
                     class="control"
                     [autocompleteEnabled]="autocompleteEnabledCVC"
@@ -98,7 +98,7 @@
                 </tui-input-cvc>
                 <tui-error
                     documentationApiHost
-                    documentationTemplateTagName="tui-error"
+                    documentationTemplate
                     formControlName="card"
                     class="error"
                     [documentationTemplateBaseProperties]="errorBaseProperties"
