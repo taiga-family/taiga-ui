@@ -215,51 +215,46 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template
-        documentationApiHost
-        documentationTemplateTagName="tui-input"
-        pageTab
-        [documentationTemplateContent]="inputContent"
-    >
-        <tui-doc-demo [control]="control">
-            <ng-template>
-                <tui-input
-                    [focusable]="focusable"
-                    [formControl]="control"
-                    [pseudoFocus]="pseudoFocused"
-                    [pseudoHover]="pseudoHovered"
-                    [pseudoInvalid]="pseudoInvalid"
-                    [readOnly]="readOnly"
-                    [style.text-align]="textAlign"
-                    [tuiDropdownAlign]="dropdownAlign"
-                    [tuiDropdownDirection]="dropdownDirection"
-                    [tuiDropdownLimitWidth]="dropdownLimitWidth"
-                    [tuiDropdownMaxHeight]="dropdownMaxHeight"
-                    [tuiDropdownMinHeight]="dropdownMinHeight"
-                    [tuiDropdownOffset]="dropdownOffset"
-                    [tuiDropdownOpen]="!!(dropdownOpen | async)"
-                    [tuiHintAppearance]="hintAppearance"
-                    [tuiHintContent]="hintContent"
-                    [tuiHintDirection]="hintDirection"
-                    [tuiTextfieldCleaner]="cleaner"
-                    [tuiTextfieldCustomContent]="customContent"
-                    [tuiTextfieldFiller]="filler"
-                    [tuiTextfieldIcon]="icon"
-                    [tuiTextfieldIconLeft]="iconLeft"
-                    [tuiTextfieldLabelOutside]="labelOutside"
-                    [tuiTextfieldPostfix]="postfix"
-                    [tuiTextfieldPrefix]="prefix"
-                    [tuiTextfieldSize]="size"
-                    (tuiDropdownOpenChange)="dropdownOpen.next($event)"
-                >
-                    Label
-                    <strong>strong text</strong>
-                    <input
-                        tuiTextfield
-                        [placeholder]="placeholder"
-                    />
-                </tui-input>
-            </ng-template>
+    <ng-template pageTab>
+        <tui-doc-demo [formGroup]="control | tuiWrapControl">
+            <tui-input
+                documentationTemplateTagName="tui-input"
+                [documentationTemplateContent]="inputContent"
+                [focusable]="focusable"
+                [formControl]="control"
+                [pseudoFocus]="pseudoFocused"
+                [pseudoHover]="pseudoHovered"
+                [pseudoInvalid]="pseudoInvalid"
+                [readOnly]="readOnly"
+                [style.text-align]="textAlign"
+                [tuiDropdownAlign]="dropdownAlign"
+                [tuiDropdownDirection]="dropdownDirection"
+                [tuiDropdownLimitWidth]="dropdownLimitWidth"
+                [tuiDropdownMaxHeight]="dropdownMaxHeight"
+                [tuiDropdownMinHeight]="dropdownMinHeight"
+                [tuiDropdownOffset]="dropdownOffset"
+                [tuiDropdownOpen]="!!(dropdownOpen | async)"
+                [tuiHintAppearance]="hintAppearance"
+                [tuiHintContent]="hintContent"
+                [tuiHintDirection]="hintDirection"
+                [tuiTextfieldCleaner]="cleaner"
+                [tuiTextfieldCustomContent]="customContent"
+                [tuiTextfieldFiller]="filler"
+                [tuiTextfieldIcon]="icon"
+                [tuiTextfieldIconLeft]="iconLeft"
+                [tuiTextfieldLabelOutside]="labelOutside"
+                [tuiTextfieldPostfix]="postfix"
+                [tuiTextfieldPrefix]="prefix"
+                [tuiTextfieldSize]="size"
+                (tuiDropdownOpenChange)="dropdownOpen.next($event)"
+            >
+                Label
+                <strong>strong text</strong>
+                <input
+                    tuiTextfield
+                    [placeholder]="placeholder"
+                />
+            </tui-input>
         </tui-doc-demo>
         <ng-template
             #itemContent

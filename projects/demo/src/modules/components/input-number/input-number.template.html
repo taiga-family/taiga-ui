@@ -146,45 +146,40 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template
-        documentationApiHost
-        pageTab
-    >
-        <tui-doc-demo [control]="control">
-            <ng-template>
-                <tui-input-number
-                    documentationTemplateContent="Type a sum"
-                    documentationTemplateTagName="tui-input-number"
-                    [decimal]="decimal"
-                    [focusable]="focusable"
-                    [formControl]="control"
-                    [max]="max"
-                    [min]="min"
-                    [postfix]="postfix"
-                    [precision]="precision"
-                    [prefix]="prefix"
-                    [pseudoActive]="pseudoPressed"
-                    [pseudoFocus]="pseudoFocused"
-                    [pseudoHover]="pseudoHovered"
-                    [pseudoInvalid]="pseudoInvalid"
-                    [readOnly]="readOnly"
-                    [step]="step"
-                    [style.text-align]="textAlign"
-                    [tuiHintAppearance]="hintAppearance"
-                    [tuiHintContent]="hintContent"
-                    [tuiHintDirection]="hintDirection"
-                    [tuiTextfieldCleaner]="cleaner"
-                    [tuiTextfieldCustomContent]="customContent"
-                    [tuiTextfieldFiller]="filler"
-                    [tuiTextfieldIconLeft]="iconLeft"
-                    [tuiTextfieldLabelOutside]="labelOutside"
-                    [tuiTextfieldPostfix]="postfix"
-                    [tuiTextfieldPrefix]="prefix"
-                    [tuiTextfieldSize]="size"
-                >
-                    Type a sum
-                </tui-input-number>
-            </ng-template>
+    <ng-template pageTab>
+        <tui-doc-demo [formGroup]="control | tuiWrapControl">
+            <tui-input-number
+                documentationTemplateContent="Type a sum"
+                documentationTemplateTagName="tui-input-number"
+                [decimal]="decimal"
+                [focusable]="focusable"
+                [formControl]="control"
+                [max]="max"
+                [min]="min"
+                [postfix]="postfix"
+                [precision]="precision"
+                [prefix]="prefix"
+                [pseudoActive]="pseudoPressed"
+                [pseudoFocus]="pseudoFocused"
+                [pseudoHover]="pseudoHovered"
+                [pseudoInvalid]="pseudoInvalid"
+                [readOnly]="readOnly"
+                [step]="step"
+                [style.text-align]="textAlign"
+                [tuiHintAppearance]="hintAppearance"
+                [tuiHintContent]="hintContent"
+                [tuiHintDirection]="hintDirection"
+                [tuiTextfieldCleaner]="cleaner"
+                [tuiTextfieldCustomContent]="customContent"
+                [tuiTextfieldFiller]="filler"
+                [tuiTextfieldIconLeft]="iconLeft"
+                [tuiTextfieldLabelOutside]="labelOutside"
+                [tuiTextfieldPostfix]="postfix"
+                [tuiTextfieldPrefix]="prefix"
+                [tuiTextfieldSize]="size"
+            >
+                Type a sum
+            </tui-input-number>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template

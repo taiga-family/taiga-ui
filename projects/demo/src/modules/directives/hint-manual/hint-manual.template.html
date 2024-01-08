@@ -15,18 +15,15 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template
-        documentationApiHost
-        documentationTemplateContent="A strange button"
-        documentationTemplateTagName="button"
-        pageTab
-        [documentationTemplateBaseProperties]="hintBaseProperties"
-    >
+    <ng-template pageTab>
         <tui-doc-demo>
             <button
+                documentationTemplateContent="A strange button"
+                documentationTemplateTagName="button"
                 tuiButton
                 tuiHint="It says 'Hi all!' into console"
                 type="button"
+                [documentationTemplateBaseProperties]="hintBaseProperties"
                 [tuiHintAppearance]="appearance"
                 [tuiHintDirection]="direction"
                 [tuiHintManual]="show"

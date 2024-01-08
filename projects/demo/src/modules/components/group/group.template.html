@@ -74,18 +74,15 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template
-        documentationApiHost
-        documentationTemplateTagName="div"
-        pageTab
-        [documentationTemplateBaseProperties]="groupBaseProperties"
-    >
+    <ng-template pageTab>
         <tui-doc-demo>
             <div
+                documentationTemplateTagName="div"
                 tuiGroup
                 class="group"
                 [adaptive]="adaptive"
                 [collapsed]="collapsed"
+                [documentationTemplateBaseProperties]="groupBaseProperties"
                 [orientation]="orientation"
                 [rounded]="rounded"
                 [size]="size"

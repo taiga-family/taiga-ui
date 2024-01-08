@@ -1,4 +1,4 @@
-import {Directive, Inject, Input, OnChanges, OnInit, Optional, Self} from '@angular/core';
+import {Directive, Inject, Input, OnChanges, Optional, Self} from '@angular/core';
 import {
     TuiApiHostTemplate,
     TuiDocumentationProperty,
@@ -13,7 +13,7 @@ import {TuiDocumentationApiHostDirective} from './documentation-api-host.directi
     selector: '[documentationTemplateTagName]',
     providers: [TuiDestroyService],
 })
-export class TuiDocDocumentationTemplateConnectorDirective implements OnInit, OnChanges {
+export class TuiDocDocumentationTemplateConnectorDirective implements OnChanges {
     private readonly template$ = new BehaviorSubject<TuiApiHostTemplate>({
         tagName: '',
         baseProperties: {},
@@ -31,36 +31,34 @@ export class TuiDocDocumentationTemplateConnectorDirective implements OnInit, On
     content = '';
 
     @Input('documentationTemplateApiHost')
-    apiHost: TuiDocumentationApiHostDirective | null = this.apiHostDirective;
+    apiHost: TuiDocumentationApiHostDirective | null = null;
 
     constructor(
-        @Inject(TuiDocumentationApiHostDirective)
+        @Inject(TuiApiHostService)
         @Optional()
-        readonly apiHostDirective: TuiDocumentationApiHostDirective | null,
+        readonly apiHostService: TuiApiHostService | null,
         @Inject(TuiDestroyService)
         @Self()
         private readonly destroyService: TuiDestroyService,
-    ) {}
+    ) {
+        this.host
+            .setContent(this.content$)
+            .pipe(takeUntil(this.destroyService))
+            .subscribe();
+        this.host
+            .setTemplate(this.template$)
+            .pipe(takeUntil(this.destroyService))
+            .subscribe();
+    }
 
-    get apiHostService(): TuiApiHostService {
-        const host = this.apiHost;
+    get host(): TuiApiHostService {
+        const host = this.apiHost?.apiHostService ?? this.apiHostService;
 
         if (!host) {
             throw new Error('TuiApiHost not provided');
         }
 
-        return host.apiHostService;
-    }
-
-    ngOnInit(): void {
-        this.apiHostService
-            .setContent(this.content$)
-            .pipe(takeUntil(this.destroyService))
-            .subscribe();
-        this.apiHostService
-            .setTemplate(this.template$)
-            .pipe(takeUntil(this.destroyService))
-            .subscribe();
+        return host;
     }
 
     ngOnChanges(): void {

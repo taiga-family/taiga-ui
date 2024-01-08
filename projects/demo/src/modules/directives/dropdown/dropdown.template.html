@@ -62,18 +62,15 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template
-        documentationApiHost
-        documentationTemplateTagName="button"
-        pageTab
-        [documentationTemplateBaseProperties]="dropdownBaseProperties"
-        [documentationTemplateContent]="content"
-    >
+    <ng-template pageTab>
         <tui-doc-demo>
             <span (tuiActiveZoneChange)="onActiveZone($event)">
                 <button
+                    documentationTemplateTagName="button"
                     tuiButton
                     type="button"
+                    [documentationTemplateBaseProperties]="dropdownBaseProperties"
+                    [documentationTemplateContent]="content"
                     [tuiDropdown]="dropdownContent"
                     [tuiDropdownAlign]="dropdownAlign"
                     [tuiDropdownDirection]="dropdownDirection"

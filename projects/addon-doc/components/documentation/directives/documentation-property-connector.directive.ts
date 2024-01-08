@@ -115,19 +115,23 @@ export class TuiDocDocumentationPropertyConnectorDirective<T>
     ngOnChanges(changes: SimpleChanges): void {
         this.changed$.next();
 
-        if ('documentationPropertyValue' in changes) {
-            const change = changes['documentationPropertyValue'];
+        const {documentationPropertyValue, documentationPropertyDefaultValue} = changes;
 
-            if (change.firstChange && !('documentationPropertyDefaultValue' in changes)) {
-                this.documentationPropertyDefaultValue = change.currentValue;
-            }
+        if (
+            documentationPropertyValue?.firstChange &&
+            !documentationPropertyDefaultValue
+        ) {
+            this.documentationPropertyDefaultValue =
+                documentationPropertyValue.currentValue;
         }
 
         this.updateApiHostProperty();
     }
 
     ngOnDestroy(): void {
-        this.onValueChange(this.documentationPropertyDefaultValue!);
+        if (this.documentationPropertyDefaultValue !== undefined) {
+            this.onValueChange(this.documentationPropertyDefaultValue);
+        }
     }
 
     onValueChange(value: T): void {

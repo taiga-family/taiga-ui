@@ -23,29 +23,24 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template
-        documentationApiHost
-        pageTab
-    >
-        <tui-doc-demo [control]="control">
-            <ng-template>
-                <tui-rating
-                    #rating
-                    documentationTemplateTagName="tui-rating"
-                    [documentationTemplateContent]="content"
-                    [formControl]="control"
-                    [iconFilled]="iconFilled"
-                    [iconNormal]="iconNormal"
-                    [max]="max"
-                    [min]="min"
-                    [readOnly]="readOnly"
-                    [style.--tui-rating-gap]="gap"
-                    [style.--tui-rating-size]="size"
-                    [style.color]="color"
-                >
-                    <p class="label">Current rating - {{ rating.value }}</p>
-                </tui-rating>
-            </ng-template>
+    <ng-template pageTab>
+        <tui-doc-demo [formGroup]="control | tuiWrapControl">
+            <tui-rating
+                #rating
+                documentationTemplateTagName="tui-rating"
+                [documentationTemplateContent]="content"
+                [formControl]="control"
+                [iconFilled]="iconFilled"
+                [iconNormal]="iconNormal"
+                [max]="max"
+                [min]="min"
+                [readOnly]="readOnly"
+                [style.--tui-rating-gap]="gap"
+                [style.--tui-rating-size]="size"
+                [style.color]="color"
+            >
+                <p class="label">Current rating - {{ rating.value }}</p>
+            </tui-rating>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template

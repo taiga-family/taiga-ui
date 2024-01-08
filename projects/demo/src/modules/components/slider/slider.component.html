@@ -107,25 +107,20 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template
-        documentationApiHost
-        pageTab
-    >
-        <tui-doc-demo [control]="control">
-            <ng-template>
-                <input
-                    documentationTemplateTagName="input"
-                    tuiSlider
-                    type="range"
-                    [documentationTemplateBaseProperties]="sliderBaseProperties"
-                    [formControl]="control"
-                    [max]="max"
-                    [min]="min"
-                    [segments]="segments"
-                    [size]="size"
-                    [step]="step"
-                />
-            </ng-template>
+    <ng-template pageTab>
+        <tui-doc-demo [formGroup]="control | tuiWrapControl">
+            <input
+                documentationTemplateTagName="input"
+                tuiSlider
+                type="range"
+                [documentationTemplateBaseProperties]="sliderBaseProperties"
+                [formControl]="control"
+                [max]="max"
+                [min]="min"
+                [segments]="segments"
+                [size]="size"
+                [step]="step"
+            />
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template

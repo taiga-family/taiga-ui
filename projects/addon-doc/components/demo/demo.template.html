@@ -75,12 +75,11 @@
             id="demo-content"
         >
             <form
-                *ngIf="testForm"
+                *ngIf="controlContainer"
                 class="t-form"
-                [formGroup]="testForm"
             >
                 <div class="t-input-wrapper">
-                    <ng-container [ngTemplateOutlet]="template"></ng-container>
+                    <ng-container [ngTemplateOutlet]="contentProj"></ng-container>
                 </div>
                 <button
                     automation-id="tui-demo-button__toggle-details"
@@ -105,7 +104,7 @@
                     [expanded]="expanded"
                 >
                     <ng-template tuiExpandContent>
-                        <pre class="t-value">Form data: {{ testForm.value | json }}</pre>
+                        <pre class="t-value">Form data: {{ controlContainer.value | json }}</pre>
                         <div
                             tuiGroup
                             class="t-form-controls"
@@ -146,7 +145,10 @@
                     </ng-template>
                 </tui-expand>
             </form>
-            <ng-content></ng-content>
+            <ng-container
+                *ngIf="!controlContainer"
+                [ngTemplateOutlet]="contentProj"
+            ></ng-container>
         </div>
     </div>
     <div
@@ -156,6 +158,10 @@
         (tuiSizeChange)="updateWidth($event[0])"
     ></div>
 </div>
+
+<ng-template #contentProj>
+    <ng-content></ng-content>
+</ng-template>
 
 <ng-container *ngIf="activeItemIndex === 1">
     <tui-elastic-container

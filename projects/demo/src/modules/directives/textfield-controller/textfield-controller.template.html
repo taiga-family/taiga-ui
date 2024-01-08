@@ -43,23 +43,18 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template
-        documentationApiHost
-        pageTab
-    >
-        <tui-doc-demo [control]="control">
-            <ng-template>
-                <tui-input
-                    documentationTemplateContent="Hello"
-                    documentationTemplateTagName="tui-input"
-                    [formControl]="control"
-                    [tuiTextfieldCleaner]="cleaner"
-                    [tuiTextfieldLabelOutside]="labelOutside"
-                    [tuiTextfieldSize]="size"
-                >
-                    Hello
-                </tui-input>
-            </ng-template>
+    <ng-template pageTab>
+        <tui-doc-demo [formGroup]="control | tuiWrapControl">
+            <tui-input
+                documentationTemplateContent="Hello"
+                documentationTemplateTagName="tui-input"
+                [formControl]="control"
+                [tuiTextfieldCleaner]="cleaner"
+                [tuiTextfieldLabelOutside]="labelOutside"
+                [tuiTextfieldSize]="size"
+            >
+                Hello
+            </tui-input>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template

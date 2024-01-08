@@ -39,57 +39,52 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template
-        documentationApiHost
-        documentationTemplateTagName="tui-radio"
-        pageTab
-        [documentationTemplateBaseProperties]="radioBaseProperties"
-    >
-        <tui-doc-demo [control]="control">
-            <ng-template>
-                <tui-radio
-                    class="tui-space_bottom-3"
-                    [focusable]="focusable"
-                    [formControl]="control"
-                    [identityMatcher]="identityMatcher"
-                    [item]="null"
-                    [pseudoActive]="pseudoPressed"
-                    [pseudoDisabled]="pseudoDisabled"
-                    [pseudoFocus]="pseudoFocused"
-                    [pseudoHover]="pseudoHovered"
-                    [pseudoInvalid]="pseudoInvalid"
-                    [readOnly]="readOnly"
-                    [size]="size"
-                ></tui-radio>
-                <tui-radio
-                    class="tui-space_bottom-3"
-                    [focusable]="focusable"
-                    [formControl]="control"
-                    [identityMatcher]="identityMatcher"
-                    [item]="items[1]"
-                    [pseudoActive]="pseudoPressed"
-                    [pseudoDisabled]="pseudoDisabled"
-                    [pseudoFocus]="pseudoFocused"
-                    [pseudoHover]="pseudoHovered"
-                    [pseudoInvalid]="pseudoInvalid"
-                    [readOnly]="readOnly"
-                    [size]="size"
-                ></tui-radio>
-                <tui-radio
-                    class="tui-space_bottom-3"
-                    [focusable]="focusable"
-                    [formControl]="control"
-                    [identityMatcher]="identityMatcher"
-                    [item]="items[2]"
-                    [pseudoActive]="pseudoPressed"
-                    [pseudoDisabled]="pseudoDisabled"
-                    [pseudoFocus]="pseudoFocused"
-                    [pseudoHover]="pseudoHovered"
-                    [pseudoInvalid]="pseudoInvalid"
-                    [readOnly]="readOnly"
-                    [size]="size"
-                ></tui-radio>
-            </ng-template>
+    <ng-template pageTab>
+        <tui-doc-demo [formGroup]="control | tuiWrapControl">
+            <tui-radio
+                documentationTemplateTagName="tui-radio"
+                class="tui-space_bottom-3"
+                [documentationTemplateBaseProperties]="radioBaseProperties"
+                [focusable]="focusable"
+                [formControl]="control"
+                [identityMatcher]="identityMatcher"
+                [item]="null"
+                [pseudoActive]="pseudoPressed"
+                [pseudoDisabled]="pseudoDisabled"
+                [pseudoFocus]="pseudoFocused"
+                [pseudoHover]="pseudoHovered"
+                [pseudoInvalid]="pseudoInvalid"
+                [readOnly]="readOnly"
+                [size]="size"
+            ></tui-radio>
+            <tui-radio
+                class="tui-space_bottom-3"
+                [focusable]="focusable"
+                [formControl]="control"
+                [identityMatcher]="identityMatcher"
+                [item]="items[1]"
+                [pseudoActive]="pseudoPressed"
+                [pseudoDisabled]="pseudoDisabled"
+                [pseudoFocus]="pseudoFocused"
+                [pseudoHover]="pseudoHovered"
+                [pseudoInvalid]="pseudoInvalid"
+                [readOnly]="readOnly"
+                [size]="size"
+            ></tui-radio>
+            <tui-radio
+                class="tui-space_bottom-3"
+                [focusable]="focusable"
+                [formControl]="control"
+                [identityMatcher]="identityMatcher"
+                [item]="items[2]"
+                [pseudoActive]="pseudoPressed"
+                [pseudoDisabled]="pseudoDisabled"
+                [pseudoFocus]="pseudoFocused"
+                [pseudoHover]="pseudoHovered"
+                [pseudoInvalid]="pseudoInvalid"
+                [readOnly]="readOnly"
+                [size]="size"
+            ></tui-radio>
         </tui-doc-demo>
         <button
             size="m"

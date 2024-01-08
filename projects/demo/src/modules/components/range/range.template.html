@@ -54,23 +54,18 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template
-        documentationApiHost
-        pageTab
-    >
-        <tui-doc-demo [control]="control">
-            <ng-template>
-                <tui-range
-                    documentationTemplateTagName="tui-range"
-                    [formControl]="control"
-                    [keySteps]="keySteps"
-                    [max]="max"
-                    [min]="min"
-                    [segments]="segments"
-                    [size]="size"
-                    [step]="step"
-                ></tui-range>
-            </ng-template>
+    <ng-template pageTab>
+        <tui-doc-demo [formGroup]="control | tuiWrapControl">
+            <tui-range
+                documentationTemplateTagName="tui-range"
+                [formControl]="control"
+                [keySteps]="keySteps"
+                [max]="max"
+                [min]="min"
+                [segments]="segments"
+                [size]="size"
+                [step]="step"
+            ></tui-range>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template

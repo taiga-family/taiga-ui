@@ -62,45 +62,40 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template
-        documentationApiHost
-        pageTab
-    >
-        <tui-doc-demo [control]="control">
-            <ng-template>
-                <tui-input-time
-                    documentationTemplateContent="Input time"
-                    documentationTemplateTagName="tui-input-time"
-                    [disabledItemHandler]="disabledItemHandler"
-                    [focusable]="focusable"
-                    [formControl]="control"
-                    [items]="items"
-                    [itemSize]="itemSize"
-                    [mode]="mode"
-                    [pseudoFocus]="pseudoFocused"
-                    [pseudoHover]="pseudoHovered"
-                    [pseudoInvalid]="pseudoInvalid"
-                    [readOnly]="readOnly"
-                    [strict]="strict"
-                    [style.text-align]="textAlign"
-                    [tuiDropdownAlign]="dropdownAlign"
-                    [tuiDropdownDirection]="dropdownDirection"
-                    [tuiDropdownLimitWidth]="dropdownLimitWidth"
-                    [tuiDropdownMaxHeight]="dropdownMaxHeight"
-                    [tuiDropdownMinHeight]="dropdownMinHeight"
-                    [tuiDropdownOffset]="dropdownOffset"
-                    [tuiHintAppearance]="hintAppearance"
-                    [tuiHintContent]="hintContent"
-                    [tuiHintDirection]="hintDirection"
-                    [tuiTextfieldCleaner]="cleaner"
-                    [tuiTextfieldLabelOutside]="labelOutside"
-                    [tuiTextfieldPostfix]="postfix"
-                    [tuiTextfieldPrefix]="prefix"
-                    [tuiTextfieldSize]="size"
-                >
-                    Input time
-                </tui-input-time>
-            </ng-template>
+    <ng-template pageTab>
+        <tui-doc-demo [formGroup]="control | tuiWrapControl">
+            <tui-input-time
+                documentationTemplateContent="Input time"
+                documentationTemplateTagName="tui-input-time"
+                [disabledItemHandler]="disabledItemHandler"
+                [focusable]="focusable"
+                [formControl]="control"
+                [items]="items"
+                [itemSize]="itemSize"
+                [mode]="mode"
+                [pseudoFocus]="pseudoFocused"
+                [pseudoHover]="pseudoHovered"
+                [pseudoInvalid]="pseudoInvalid"
+                [readOnly]="readOnly"
+                [strict]="strict"
+                [style.text-align]="textAlign"
+                [tuiDropdownAlign]="dropdownAlign"
+                [tuiDropdownDirection]="dropdownDirection"
+                [tuiDropdownLimitWidth]="dropdownLimitWidth"
+                [tuiDropdownMaxHeight]="dropdownMaxHeight"
+                [tuiDropdownMinHeight]="dropdownMinHeight"
+                [tuiDropdownOffset]="dropdownOffset"
+                [tuiHintAppearance]="hintAppearance"
+                [tuiHintContent]="hintContent"
+                [tuiHintDirection]="hintDirection"
+                [tuiTextfieldCleaner]="cleaner"
+                [tuiTextfieldLabelOutside]="labelOutside"
+                [tuiTextfieldPostfix]="postfix"
+                [tuiTextfieldPrefix]="prefix"
+                [tuiTextfieldSize]="size"
+            >
+                Input time
+            </tui-input-time>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template

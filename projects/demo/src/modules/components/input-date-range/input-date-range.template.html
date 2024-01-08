@@ -125,42 +125,37 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template
-        documentationApiHost
-        pageTab
-    >
-        <tui-doc-demo [control]="control">
-            <ng-template>
-                <tui-input-date-range
-                    documentationTemplateContent="Choose dates"
-                    documentationTemplateTagName="tui-input-date-range"
-                    class="b-demo-control"
-                    [defaultViewedMonth]="defaultViewedMonth"
-                    [disabledItemHandler]="disabledItemHandler"
-                    [focusable]="focusable"
-                    [formControl]="control"
-                    [items]="items"
-                    [markerHandler]="markerHandler"
-                    [max]="max"
-                    [maxLength]="maxLength"
-                    [min]="min"
-                    [minLength]="minLength"
-                    [pseudoFocus]="pseudoFocused"
-                    [pseudoHover]="pseudoHovered"
-                    [pseudoInvalid]="pseudoInvalid"
-                    [readOnly]="readOnly"
-                    [style.text-align]="textAlign"
-                    [tuiHintAppearance]="hintAppearance"
-                    [tuiHintContent]="hintContent"
-                    [tuiHintDirection]="hintDirection"
-                    [tuiTextfieldCleaner]="cleaner"
-                    [tuiTextfieldIconLeft]="iconLeft"
-                    [tuiTextfieldLabelOutside]="labelOutside"
-                    [tuiTextfieldSize]="size"
-                >
-                    Choose dates
-                </tui-input-date-range>
-            </ng-template>
+    <ng-template pageTab>
+        <tui-doc-demo [formGroup]="control | tuiWrapControl">
+            <tui-input-date-range
+                documentationTemplateContent="Choose dates"
+                documentationTemplateTagName="tui-input-date-range"
+                class="b-demo-control"
+                [defaultViewedMonth]="defaultViewedMonth"
+                [disabledItemHandler]="disabledItemHandler"
+                [focusable]="focusable"
+                [formControl]="control"
+                [items]="items"
+                [markerHandler]="markerHandler"
+                [max]="max"
+                [maxLength]="maxLength"
+                [min]="min"
+                [minLength]="minLength"
+                [pseudoFocus]="pseudoFocused"
+                [pseudoHover]="pseudoHovered"
+                [pseudoInvalid]="pseudoInvalid"
+                [readOnly]="readOnly"
+                [style.text-align]="textAlign"
+                [tuiHintAppearance]="hintAppearance"
+                [tuiHintContent]="hintContent"
+                [tuiHintDirection]="hintDirection"
+                [tuiTextfieldCleaner]="cleaner"
+                [tuiTextfieldIconLeft]="iconLeft"
+                [tuiTextfieldLabelOutside]="labelOutside"
+                [tuiTextfieldSize]="size"
+            >
+                Choose dates
+            </tui-input-date-range>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template

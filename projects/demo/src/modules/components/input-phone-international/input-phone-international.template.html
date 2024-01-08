@@ -30,40 +30,35 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template
-        documentationApiHost
-        pageTab
-    >
-        <tui-doc-demo [control]="control">
-            <ng-template>
-                <tui-input-phone-international
-                    documentationTemplateContent="Type a phone number"
-                    documentationTemplateTagName="tui-input-phone-international"
-                    [countries]="countries"
-                    [focusable]="focusable"
-                    [formControl]="control"
-                    [pseudoFocus]="pseudoFocused"
-                    [pseudoHover]="pseudoHovered"
-                    [pseudoInvalid]="pseudoInvalid"
-                    [readOnly]="readOnly"
-                    [tuiDropdownDirection]="dropdownDirection"
-                    [tuiDropdownMaxHeight]="dropdownMaxHeight"
-                    [tuiDropdownMinHeight]="dropdownMinHeight"
-                    [tuiDropdownOffset]="dropdownOffset"
-                    [tuiHintAppearance]="hintAppearance"
-                    [tuiHintContent]="hintContent"
-                    [tuiHintDirection]="hintDirection"
-                    [tuiTextfieldCleaner]="cleaner"
-                    [tuiTextfieldFiller]="filler"
-                    [tuiTextfieldLabelOutside]="labelOutside"
-                    [tuiTextfieldPostfix]="postfix"
-                    [tuiTextfieldPrefix]="prefix"
-                    [tuiTextfieldSize]="size"
-                    [(countryIsoCode)]="countryIsoCode"
-                >
-                    Type a phone number
-                </tui-input-phone-international>
-            </ng-template>
+    <ng-template pageTab>
+        <tui-doc-demo [formGroup]="control | tuiWrapControl">
+            <tui-input-phone-international
+                documentationTemplateContent="Type a phone number"
+                documentationTemplateTagName="tui-input-phone-international"
+                [countries]="countries"
+                [focusable]="focusable"
+                [formControl]="control"
+                [pseudoFocus]="pseudoFocused"
+                [pseudoHover]="pseudoHovered"
+                [pseudoInvalid]="pseudoInvalid"
+                [readOnly]="readOnly"
+                [tuiDropdownDirection]="dropdownDirection"
+                [tuiDropdownMaxHeight]="dropdownMaxHeight"
+                [tuiDropdownMinHeight]="dropdownMinHeight"
+                [tuiDropdownOffset]="dropdownOffset"
+                [tuiHintAppearance]="hintAppearance"
+                [tuiHintContent]="hintContent"
+                [tuiHintDirection]="hintDirection"
+                [tuiTextfieldCleaner]="cleaner"
+                [tuiTextfieldFiller]="filler"
+                [tuiTextfieldLabelOutside]="labelOutside"
+                [tuiTextfieldPostfix]="postfix"
+                [tuiTextfieldPrefix]="prefix"
+                [tuiTextfieldSize]="size"
+                [(countryIsoCode)]="countryIsoCode"
+            >
+                Type a phone number
+            </tui-input-phone-international>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template

@@ -31,23 +31,18 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template
-        documentationApiHost
-        pageTab
-    >
-        <tui-doc-demo [control]="control">
-            <ng-template>
-                <tui-input-inline
-                    documentationTemplateContent="Placeholder"
-                    documentationTemplateTagName="tui-input-inline"
-                    class="input"
-                    [formControl]="control"
-                    [maxLength]="maxLength"
-                    [style.float]="textAlign"
-                >
-                    Placeholder
-                </tui-input-inline>
-            </ng-template>
+    <ng-template pageTab>
+        <tui-doc-demo [formGroup]="control | tuiWrapControl">
+            <tui-input-inline
+                documentationTemplateContent="Placeholder"
+                documentationTemplateTagName="tui-input-inline"
+                class="input"
+                [formControl]="control"
+                [maxLength]="maxLength"
+                [style.float]="textAlign"
+            >
+                Placeholder
+            </tui-input-inline>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template

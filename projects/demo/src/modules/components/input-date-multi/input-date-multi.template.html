@@ -13,41 +13,36 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template
-        documentationApiHost
-        documentationTemplateContent="Choose a date"
-        documentationTemplateTagName="tui-input-date"
-        pageTab
-        [documentationTemplateBaseProperties]="inputBaseProperties"
-    >
-        <tui-doc-demo [control]="control">
-            <ng-template>
-                <tui-input-date
-                    multiple
-                    [disabledItemHandler]="disabledItemHandler"
-                    [focusable]="focusable"
-                    [formControl]="control"
-                    [markerHandler]="markerHandler"
-                    [max]="max"
-                    [min]="min"
-                    [pseudoFocus]="pseudoFocused"
-                    [pseudoHover]="pseudoHovered"
-                    [pseudoInvalid]="pseudoInvalid"
-                    [readOnly]="readOnly"
-                    [rows]="rows"
-                    [tuiDropdownOpen]="!!(dropdownOpen | async)"
-                    [tuiHintAppearance]="hintAppearance"
-                    [tuiHintContent]="hintContent"
-                    [tuiHintDirection]="hintDirection"
-                    [tuiTextfieldCleaner]="cleaner"
-                    [tuiTextfieldIconLeft]="iconLeft"
-                    [tuiTextfieldLabelOutside]="labelOutside"
-                    [tuiTextfieldSize]="size"
-                    (tuiDropdownOpenChange)="dropdownOpen.next($event)"
-                >
-                    Choose a date
-                </tui-input-date>
-            </ng-template>
+    <ng-template pageTab>
+        <tui-doc-demo [formGroup]="control | tuiWrapControl">
+            <tui-input-date
+                documentationTemplateContent="Choose a date"
+                documentationTemplateTagName="tui-input-date"
+                multiple
+                [disabledItemHandler]="disabledItemHandler"
+                [documentationTemplateBaseProperties]="inputBaseProperties"
+                [focusable]="focusable"
+                [formControl]="control"
+                [markerHandler]="markerHandler"
+                [max]="max"
+                [min]="min"
+                [pseudoFocus]="pseudoFocused"
+                [pseudoHover]="pseudoHovered"
+                [pseudoInvalid]="pseudoInvalid"
+                [readOnly]="readOnly"
+                [rows]="rows"
+                [tuiDropdownOpen]="!!(dropdownOpen | async)"
+                [tuiHintAppearance]="hintAppearance"
+                [tuiHintContent]="hintContent"
+                [tuiHintDirection]="hintDirection"
+                [tuiTextfieldCleaner]="cleaner"
+                [tuiTextfieldIconLeft]="iconLeft"
+                [tuiTextfieldLabelOutside]="labelOutside"
+                [tuiTextfieldSize]="size"
+                (tuiDropdownOpenChange)="dropdownOpen.next($event)"
+            >
+                Choose a date
+            </tui-input-date>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template

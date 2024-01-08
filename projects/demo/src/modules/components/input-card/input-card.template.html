@@ -23,93 +23,88 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template
-        documentationApiHost
-        pageTab
-    >
-        <tui-doc-demo [control]="control">
-            <ng-template>
-                <form
-                    class="form"
-                    [formGroup]="control"
+    <ng-template pageTab>
+        <tui-doc-demo [formGroup]="control">
+            <div class="form">
+                <tui-input-card
+                    #inputCardDocumentationApiHost="documentationApiHost"
+                    documentationApiHost
+                    documentationTemplateContent="Card number"
+                    documentationTemplateTagName="tui-input-card"
+                    formControlName="card"
+                    class="control"
+                    [autocompleteEnabled]="autocompleteEnabledCard"
+                    [cardSrc]="cardSrc"
+                    [documentationTemplateBaseProperties]="inputCardBaseProperties"
+                    [focusable]="focusable"
+                    [pseudoActive]="pseudoPressed"
+                    [pseudoFocus]="pseudoFocused"
+                    [pseudoHover]="pseudoHovered"
+                    [pseudoInvalid]="pseudoInvalid"
+                    [readOnly]="readOnly"
+                    [tuiHintAppearance]="hintAppearance"
+                    [tuiHintContent]="hintContent"
+                    [tuiHintDirection]="hintDirection"
+                    [tuiTextfieldCleaner]="cleaner"
+                    [tuiTextfieldLabelOutside]="labelOutside"
+                    [tuiTextfieldSize]="size"
+                    (binChange)="binChangeProperty?.emitEvent($event)"
                 >
-                    <tui-input-card
-                        documentationTemplateContent="Card number"
-                        documentationTemplateTagName="tui-input-card"
-                        formControlName="card"
-                        class="control"
-                        [autocompleteEnabled]="autocompleteEnabledCard"
-                        [cardSrc]="cardSrc"
-                        [documentationTemplateApiHost]="inputCardDocumentationApiHost"
-                        [documentationTemplateBaseProperties]="inputCardBaseProperties"
-                        [focusable]="focusable"
-                        [pseudoActive]="pseudoPressed"
-                        [pseudoFocus]="pseudoFocused"
-                        [pseudoHover]="pseudoHovered"
-                        [pseudoInvalid]="pseudoInvalid"
-                        [readOnly]="readOnly"
-                        [tuiHintAppearance]="hintAppearance"
-                        [tuiHintContent]="hintContent"
-                        [tuiHintDirection]="hintDirection"
-                        [tuiTextfieldCleaner]="cleaner"
-                        [tuiTextfieldLabelOutside]="labelOutside"
-                        [tuiTextfieldSize]="size"
-                        (binChange)="binChangeProperty?.emitEvent($event)"
-                    >
-                        Card number
-                    </tui-input-card>
-                    <tui-input-expire
-                        documentationTemplateContent="Expire date"
-                        documentationTemplateTagName="tui-input-expire"
-                        formControlName="expire"
-                        class="control"
-                        [autocompleteEnabled]="autocompleteEnabledExpire"
-                        [documentationTemplateApiHost]="inputExpireDocumentationApiHost"
-                        [documentationTemplateBaseProperties]="inputExpireBaseProperties"
-                        [focusable]="focusable"
-                        [pseudoActive]="pseudoPressed"
-                        [pseudoFocus]="pseudoFocused"
-                        [pseudoHover]="pseudoHovered"
-                        [pseudoInvalid]="pseudoInvalid"
-                        [readOnly]="readOnly"
-                        [tuiTextfieldLabelOutside]="labelOutside"
-                        [tuiTextfieldSize]="size"
-                    >
-                        Expire date
-                    </tui-input-expire>
-                    <tui-input-cvc
-                        documentationTemplateContent="CVC/CVV"
-                        documentationTemplateTagName="tui-input-cvc"
-                        formControlName="cvc"
-                        class="control"
-                        [autocompleteEnabled]="autocompleteEnabledCVC"
-                        [documentationTemplateApiHost]="inputCVCDocumentationApiHost"
-                        [documentationTemplateBaseProperties]="inputCVCBaseProperties"
-                        [focusable]="focusable"
-                        [length]="length"
-                        [pseudoActive]="pseudoPressed"
-                        [pseudoFocus]="pseudoFocused"
-                        [pseudoHover]="pseudoHovered"
-                        [pseudoInvalid]="pseudoInvalid"
-                        [readOnly]="readOnly"
-                        [tuiHintAppearance]="hintAppearanceCVC"
-                        [tuiHintContent]="hintContentCVC"
-                        [tuiHintDirection]="hintDirectionCVC"
-                        [tuiTextfieldLabelOutside]="labelOutside"
-                        [tuiTextfieldSize]="size"
-                    >
-                        CVC/CVV
-                    </tui-input-cvc>
-                    <tui-error
-                        documentationApiHost
-                        documentationTemplateTagName="tui-error"
-                        formControlName="card"
-                        class="error"
-                        [documentationTemplateBaseProperties]="errorBaseProperties"
-                        [error]="[] | tuiFieldError | async"
-                    ></tui-error>
-                </form>
-            </ng-template>
+                    Card number
+                </tui-input-card>
+                <tui-input-expire
+                    #inputExpireDocumentationApiHost="documentationApiHost"
+                    documentationApiHost
+                    documentationTemplateContent="Expire date"
+                    documentationTemplateTagName="tui-input-expire"
+                    formControlName="expire"
+                    class="control"
+                    [autocompleteEnabled]="autocompleteEnabledExpire"
+                    [documentationTemplateBaseProperties]="inputExpireBaseProperties"
+                    [focusable]="focusable"
+                    [pseudoActive]="pseudoPressed"
+                    [pseudoFocus]="pseudoFocused"
+                    [pseudoHover]="pseudoHovered"
+                    [pseudoInvalid]="pseudoInvalid"
+                    [readOnly]="readOnly"
+                    [tuiTextfieldLabelOutside]="labelOutside"
+                    [tuiTextfieldSize]="size"
+                >
+                    Expire date
+                </tui-input-expire>
+                <tui-input-cvc
+                    #inputCVCDocumentationApiHost="documentationApiHost"
+                    documentationApiHost
+                    documentationTemplateContent="CVC/CVV"
+                    documentationTemplateTagName="tui-input-cvc"
+                    formControlName="cvc"
+                    class="control"
+                    [autocompleteEnabled]="autocompleteEnabledCVC"
+                    [documentationTemplateBaseProperties]="inputCVCBaseProperties"
+                    [focusable]="focusable"
+                    [length]="length"
+                    [pseudoActive]="pseudoPressed"
+                    [pseudoFocus]="pseudoFocused"
+                    [pseudoHover]="pseudoHovered"
+                    [pseudoInvalid]="pseudoInvalid"
+                    [readOnly]="readOnly"
+                    [tuiHintAppearance]="hintAppearanceCVC"
+                    [tuiHintContent]="hintContentCVC"
+                    [tuiHintDirection]="hintDirectionCVC"
+                    [tuiTextfieldLabelOutside]="labelOutside"
+                    [tuiTextfieldSize]="size"
+                >
+                    CVC/CVV
+                </tui-input-cvc>
+                <tui-error
+                    documentationApiHost
+                    documentationTemplateTagName="tui-error"
+                    formControlName="card"
+                    class="error"
+                    [documentationTemplateBaseProperties]="errorBaseProperties"
+                    [error]="[] | tuiFieldError | async"
+                ></tui-error>
+            </div>
         </tui-doc-demo>
         <div class="b-full-width tui-space_bottom-6">
             <p>
@@ -123,8 +118,7 @@
             [closeOthers]="false"
         >
             <tui-accordion-item
-                #inputCardDocumentationApiHost="documentationApiHost"
-                documentationApiHost
+                [bindDocumentationTemplates]="[inputCardDocumentationApiHost]"
                 [open]="true"
             >
                 TuiInputCardComponent
@@ -171,8 +165,7 @@
             </tui-accordion-item>
 
             <tui-accordion-item
-                #inputExpireDocumentationApiHost="documentationApiHost"
-                documentationApiHost
+                [bindDocumentationTemplates]="[inputExpireDocumentationApiHost]"
                 [open]="false"
             >
                 TuiInputExpireComponent
@@ -202,8 +195,7 @@
             </tui-accordion-item>
 
             <tui-accordion-item
-                #inputCVCDocumentationApiHost="documentationApiHost"
-                documentationApiHost
+                [bindDocumentationTemplates]="[inputCVCDocumentationApiHost]"
                 [open]="false"
             >
                 TuiInputCVCComponent

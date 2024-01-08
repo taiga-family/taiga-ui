@@ -62,17 +62,14 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template
-        documentationApiHost
-        documentationTemplateTagName="button"
-        pageTab
-        [documentationTemplateBaseProperties]="actionBaseProperties"
-        [documentationTemplateContent]="content"
-    >
+    <ng-template pageTab>
         <tui-doc-demo>
             <button
+                documentationTemplateTagName="button"
                 tuiAction
                 type="button"
+                [documentationTemplateBaseProperties]="actionBaseProperties"
+                [documentationTemplateContent]="content"
                 [icon]="icon"
                 [style.--tui-action-background]="background"
                 [style.--tui-action-color]="color"

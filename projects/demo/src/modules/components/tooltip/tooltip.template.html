@@ -36,18 +36,15 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template
-        documentationApiHost
-        documentationTemplateTagName="tui-tooltip"
-        pageTab
-        [documentationTemplateBaseProperties]="tooltipBaseProperties"
-    >
+    <ng-template pageTab>
         <tui-doc-demo>
             <tui-tooltip
                 content="You data is hidden"
+                documentationTemplateTagName="tui-tooltip"
                 [appearance]="appearance"
                 [describeId]="describeId"
                 [direction]="direction"
+                [documentationTemplateBaseProperties]="tooltipBaseProperties"
                 [hideDelay]="hideDelay"
                 [showDelay]="showDelay"
             ></tui-tooltip>

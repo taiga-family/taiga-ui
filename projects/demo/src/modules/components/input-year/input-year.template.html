@@ -30,37 +30,32 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template
-        documentationApiHost
-        pageTab
-    >
-        <tui-doc-demo [control]="control">
-            <ng-template>
-                <tui-input-year
-                    documentationTemplateContent="Year"
-                    documentationTemplateTagName="tui-input-year"
-                    [disabledItemHandler]="disabledItemHandler"
-                    [focusable]="focusable"
-                    [formControl]="control"
-                    [max]="max"
-                    [min]="min"
-                    [pseudoActive]="pseudoPressed"
-                    [pseudoFocus]="pseudoFocused"
-                    [pseudoHover]="pseudoHovered"
-                    [pseudoInvalid]="pseudoInvalid"
-                    [readOnly]="readOnly"
-                    [style.text-align]="textAlign"
-                    [tuiTextfieldCleaner]="cleaner"
-                    [tuiTextfieldFiller]="filler"
-                    [tuiTextfieldIconLeft]="iconLeft"
-                    [tuiTextfieldLabelOutside]="labelOutside"
-                    [tuiTextfieldPostfix]="postfix"
-                    [tuiTextfieldPrefix]="prefix"
-                    [tuiTextfieldSize]="size"
-                >
-                    Year
-                </tui-input-year>
-            </ng-template>
+    <ng-template pageTab>
+        <tui-doc-demo [formGroup]="control | tuiWrapControl">
+            <tui-input-year
+                documentationTemplateContent="Year"
+                documentationTemplateTagName="tui-input-year"
+                [disabledItemHandler]="disabledItemHandler"
+                [focusable]="focusable"
+                [formControl]="control"
+                [max]="max"
+                [min]="min"
+                [pseudoActive]="pseudoPressed"
+                [pseudoFocus]="pseudoFocused"
+                [pseudoHover]="pseudoHovered"
+                [pseudoInvalid]="pseudoInvalid"
+                [readOnly]="readOnly"
+                [style.text-align]="textAlign"
+                [tuiTextfieldCleaner]="cleaner"
+                [tuiTextfieldFiller]="filler"
+                [tuiTextfieldIconLeft]="iconLeft"
+                [tuiTextfieldLabelOutside]="labelOutside"
+                [tuiTextfieldPostfix]="postfix"
+                [tuiTextfieldPrefix]="prefix"
+                [tuiTextfieldSize]="size"
+            >
+                Year
+            </tui-input-year>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template

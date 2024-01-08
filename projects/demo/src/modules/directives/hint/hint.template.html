@@ -30,13 +30,7 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template
-        documentationApiHost
-        documentationTemplateTagName="span"
-        pageTab
-        [documentationTemplateBaseProperties]="hintBaseProperties"
-        [documentationTemplateContent]="content"
-    >
+    <ng-template pageTab>
         <tui-doc-demo>
             <ng-template #hint>
                 To be accessible, hint should be set to a focusable element. See
@@ -48,6 +42,10 @@
                 </a>
             </ng-template>
             <span
+                documentationApiHost
+                documentationTemplateTagName="span"
+                [documentationTemplateBaseProperties]="hintBaseProperties"
+                [documentationTemplateContent]="content"
                 [tuiHint]="hint"
                 [tuiHintAppearance]="appearance"
                 [tuiHintDescribe]="'qwerty'"

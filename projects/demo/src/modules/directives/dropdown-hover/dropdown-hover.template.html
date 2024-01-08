@@ -41,16 +41,13 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template
-        documentationApiHost
-        documentationTemplateTagName="p"
-        pageTab
-        [documentationTemplateBaseProperties]="dropdownBaseProperties"
-        [documentationTemplateContent]="content"
-    >
+    <ng-template pageTab>
         <tui-doc-demo>
             <p
+                documentationTemplateTagName="p"
                 tuiDropdownHover
+                [documentationTemplateBaseProperties]="dropdownBaseProperties"
+                [documentationTemplateContent]="content"
                 [tuiDropdown]="dropdownContent"
                 [tuiDropdownAlign]="dropdownAlign"
                 [tuiDropdownDirection]="dropdownDirection"

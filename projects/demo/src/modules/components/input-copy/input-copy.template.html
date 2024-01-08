@@ -22,14 +22,11 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template
-        documentationApiHost
-        documentationTemplateContent="Type a text"
-        documentationTemplateTagName="tui-input-copy"
-        pageTab
-    >
+    <ng-template pageTab>
         <tui-doc-demo>
             <tui-input-copy
+                documentationTemplateContent="Type a text"
+                documentationTemplateTagName="tui-input-copy"
                 [focusable]="focusable"
                 [formControl]="control"
                 [messageAppearance]="hintAppearance"

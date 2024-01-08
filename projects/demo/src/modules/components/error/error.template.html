@@ -25,17 +25,13 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template
-        documentationApiHost
-        documentationTemplateTagName=""
-        pageTab
-        [documentationTemplateContent]="selectedError === errorVariants[0] ? '' : errorTemplateContent"
-    >
+    <ng-template pageTab>
         <tui-doc-demo>
             <tui-error
                 #errorDocumentationApiHost="documentationApiHost"
                 documentationApiHost
                 documentationTemplateTagName="tui-error"
+                [documentationTemplateContent]="selectedError === errorVariants[0] ? '' : errorTemplateContent"
                 [error]="error"
             ></tui-error>
         </tui-doc-demo>

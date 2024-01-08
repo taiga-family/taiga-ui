@@ -115,57 +115,52 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template
-        documentationApiHost
-        pageTab
-    >
-        <tui-doc-demo [control]="control">
-            <ng-template>
-                <tui-multi-select
-                    documentationTemplateTagName="tui-multi-select"
+    <ng-template pageTab>
+        <tui-doc-demo [formGroup]="control | tuiWrapControl">
+            <tui-multi-select
+                documentationTemplateTagName="tui-multi-select"
+                [disabledItemHandler]="disabledItemHandler"
+                [documentationTemplateBaseProperties]="multiSelectBaseProperties"
+                [documentationTemplateContent]="content"
+                [editable]="editable"
+                [focusable]="focusable"
+                [formControl]="control"
+                [identityMatcher]="identityMatcher"
+                [placeholder]="exampleText"
+                [pseudoActive]="pseudoPressed"
+                [pseudoFocus]="pseudoFocused"
+                [pseudoHover]="pseudoHovered"
+                [pseudoInvalid]="pseudoInvalid"
+                [readOnly]="readOnly"
+                [rows]="rows"
+                [stringify]="stringify"
+                [tagValidator]="tagValidator"
+                [tuiDropdownAlign]="dropdownAlign"
+                [tuiDropdownDirection]="dropdownDirection"
+                [tuiDropdownLimitWidth]="dropdownLimitWidth"
+                [tuiDropdownMaxHeight]="dropdownMaxHeight"
+                [tuiDropdownMinHeight]="dropdownMinHeight"
+                [tuiDropdownOffset]="dropdownOffset"
+                [tuiDropdownOpen]="!!(dropdownOpen | async)"
+                [tuiHintAppearance]="hintAppearance"
+                [tuiHintContent]="hintContent"
+                [tuiHintDirection]="hintDirection"
+                [tuiTextfieldCleaner]="cleaner"
+                [tuiTextfieldIconLeft]="iconLeft"
+                [tuiTextfieldLabelOutside]="labelOutside"
+                [tuiTextfieldSize]="size"
+                [valueContent]="valueContent"
+                [(search)]="search"
+                (tuiDropdownOpenChange)="dropdownOpen.next($event)"
+            >
+                Choose an account
+                <tui-data-list-wrapper
+                    *tuiDataList
+                    tuiMultiSelectGroup
                     [disabledItemHandler]="disabledItemHandler"
-                    [documentationTemplateBaseProperties]="multiSelectBaseProperties"
-                    [documentationTemplateContent]="content"
-                    [editable]="editable"
-                    [focusable]="focusable"
-                    [formControl]="control"
-                    [identityMatcher]="identityMatcher"
-                    [placeholder]="exampleText"
-                    [pseudoActive]="pseudoPressed"
-                    [pseudoFocus]="pseudoFocused"
-                    [pseudoHover]="pseudoHovered"
-                    [pseudoInvalid]="pseudoInvalid"
-                    [readOnly]="readOnly"
-                    [rows]="rows"
-                    [stringify]="stringify"
-                    [tagValidator]="tagValidator"
-                    [tuiDropdownAlign]="dropdownAlign"
-                    [tuiDropdownDirection]="dropdownDirection"
-                    [tuiDropdownLimitWidth]="dropdownLimitWidth"
-                    [tuiDropdownMaxHeight]="dropdownMaxHeight"
-                    [tuiDropdownMinHeight]="dropdownMinHeight"
-                    [tuiDropdownOffset]="dropdownOffset"
-                    [tuiDropdownOpen]="!!(dropdownOpen | async)"
-                    [tuiHintAppearance]="hintAppearance"
-                    [tuiHintContent]="hintContent"
-                    [tuiHintDirection]="hintDirection"
-                    [tuiTextfieldCleaner]="cleaner"
-                    [tuiTextfieldIconLeft]="iconLeft"
-                    [tuiTextfieldLabelOutside]="labelOutside"
-                    [tuiTextfieldSize]="size"
-                    [valueContent]="valueContent"
-                    [(search)]="search"
-                    (tuiDropdownOpenChange)="dropdownOpen.next($event)"
-                >
-                    Choose an account
-                    <tui-data-list-wrapper
-                        *tuiDataList
-                        tuiMultiSelectGroup
-                        [disabledItemHandler]="disabledItemHandler"
-                        [items]="items"
-                    ></tui-data-list-wrapper>
-                </tui-multi-select>
-            </ng-template>
+                    [items]="items"
+                ></tui-data-list-wrapper>
+            </tui-multi-select>
         </tui-doc-demo>
         <div>
             <p>

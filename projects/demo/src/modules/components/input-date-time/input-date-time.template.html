@@ -108,40 +108,35 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template
-        documentationApiHost
-        pageTab
-    >
-        <tui-doc-demo [control]="control">
-            <ng-template>
-                <tui-input-date-time
-                    documentationTemplateContent="Choose date and time"
-                    documentationTemplateTagName="tui-input-date-time"
-                    [defaultActiveYearMonth]="defaultActiveYearMonth"
-                    [disabledItemHandler]="disabledItemHandler"
-                    [focusable]="focusable"
-                    [formControl]="control"
-                    [max]="max"
-                    [min]="min"
-                    [pseudoFocus]="pseudoFocused"
-                    [pseudoHover]="pseudoHovered"
-                    [pseudoInvalid]="pseudoInvalid"
-                    [readOnly]="readOnly"
-                    [style.text-align]="textAlign"
-                    [timeMode]="mode"
-                    [tuiDropdownOpen]="!!(dropdownOpen | async)"
-                    [tuiHintAppearance]="hintAppearance"
-                    [tuiHintContent]="hintContent"
-                    [tuiHintDirection]="hintDirection"
-                    [tuiTextfieldCleaner]="cleaner"
-                    [tuiTextfieldIconLeft]="iconLeft"
-                    [tuiTextfieldLabelOutside]="labelOutside"
-                    [tuiTextfieldSize]="size"
-                    (tuiDropdownOpenChange)="dropdownOpen.next($event)"
-                >
-                    Choose date and time
-                </tui-input-date-time>
-            </ng-template>
+    <ng-template pageTab>
+        <tui-doc-demo [formGroup]="control | tuiWrapControl">
+            <tui-input-date-time
+                documentationTemplateContent="Choose date and time"
+                documentationTemplateTagName="tui-input-date-time"
+                [defaultActiveYearMonth]="defaultActiveYearMonth"
+                [disabledItemHandler]="disabledItemHandler"
+                [focusable]="focusable"
+                [formControl]="control"
+                [max]="max"
+                [min]="min"
+                [pseudoFocus]="pseudoFocused"
+                [pseudoHover]="pseudoHovered"
+                [pseudoInvalid]="pseudoInvalid"
+                [readOnly]="readOnly"
+                [style.text-align]="textAlign"
+                [timeMode]="mode"
+                [tuiDropdownOpen]="!!(dropdownOpen | async)"
+                [tuiHintAppearance]="hintAppearance"
+                [tuiHintContent]="hintContent"
+                [tuiHintDirection]="hintDirection"
+                [tuiTextfieldCleaner]="cleaner"
+                [tuiTextfieldIconLeft]="iconLeft"
+                [tuiTextfieldLabelOutside]="labelOutside"
+                [tuiTextfieldSize]="size"
+                (tuiDropdownOpenChange)="dropdownOpen.next($event)"
+            >
+                Choose date and time
+            </tui-input-date-time>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template

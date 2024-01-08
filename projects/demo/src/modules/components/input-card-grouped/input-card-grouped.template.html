@@ -50,28 +50,23 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template
-        documentationApiHost
-        documentationTemplateTagName="tui-input-card-grouped"
-        pageTab
-    >
-        <tui-doc-demo [control]="control">
-            <ng-template>
-                <tui-input-card-grouped
-                    [autocompleteEnabled]="autocompleteEnabled"
-                    [cardSrc]="cardSrc"
-                    [codeLength]="codeLength"
-                    [exampleText]="exampleText"
-                    [focusable]="focusable"
-                    [formControl]="control"
-                    [pseudoActive]="pseudoPressed"
-                    [pseudoFocus]="pseudoFocused"
-                    [pseudoHover]="pseudoHovered"
-                    [pseudoInvalid]="pseudoInvalid"
-                    [readOnly]="readOnly"
-                    (binChange)="documentationPropertyBinChange.emitEvent($event)"
-                ></tui-input-card-grouped>
-            </ng-template>
+    <ng-template pageTab>
+        <tui-doc-demo [formGroup]="control | tuiWrapControl">
+            <tui-input-card-grouped
+                documentationTemplateTagName="tui-input-card-grouped"
+                [autocompleteEnabled]="autocompleteEnabled"
+                [cardSrc]="cardSrc"
+                [codeLength]="codeLength"
+                [exampleText]="exampleText"
+                [focusable]="focusable"
+                [formControl]="control"
+                [pseudoActive]="pseudoPressed"
+                [pseudoFocus]="pseudoFocused"
+                [pseudoHover]="pseudoHovered"
+                [pseudoInvalid]="pseudoInvalid"
+                [readOnly]="readOnly"
+                (binChange)="documentationPropertyBinChange.emitEvent($event)"
+            ></tui-input-card-grouped>
         </tui-doc-demo>
         <div class="b-full-width tui-space_bottom-6">
             <p>

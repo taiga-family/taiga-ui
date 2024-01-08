@@ -72,17 +72,14 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template
-        documentationApiHost
-        documentationTemplateTagName="tui-avatar"
-        pageTab
-        [documentationTemplateBaseProperties]="avatarBaseProperties"
-    >
+    <ng-template pageTab>
         <tui-doc-demo>
             <tui-avatar
+                documentationTemplateTagName="tui-avatar"
                 new
                 [autoColor]="autoColor"
                 [avatarUrl]="avatarUrl"
+                [documentationTemplateBaseProperties]="avatarBaseProperties"
                 [fallback]="fallback"
                 [rounded]="rounded"
                 [size]="size"

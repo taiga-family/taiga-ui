@@ -35,6 +35,7 @@ import {TuiIsOptionalPipe} from './pipes/optional.pipe';
 import {TuiIsPrimitivePolymorpheusContentPipe} from './pipes/primitive-polymorpheus-content.pipe';
 import {TuiStripOptionalPipe} from './pipes/strip-optional.pipe';
 import {TuiDocTypeReferencePipe} from './pipes/type-reference.pipe';
+import {TuiWrapControlPipe} from './pipes/wrap-control';
 
 @NgModule({
     imports: [
@@ -71,6 +72,7 @@ import {TuiDocTypeReferencePipe} from './pipes/type-reference.pipe';
         TuiDocDocumentationTemplateConnectorDirective,
         TuiBindDocumentationTemplatesDirective,
         TuiDocumentationApiHostDirective,
+        TuiWrapControlPipe,
     ],
     exports: [
         TuiDocTypeReferencePipe,
@@ -79,6 +81,7 @@ import {TuiDocTypeReferencePipe} from './pipes/type-reference.pipe';
         TuiDocDocumentationTemplateConnectorDirective,
         TuiBindDocumentationTemplatesDirective,
         TuiDocumentationApiHostDirective,
+        TuiWrapControlPipe,
     ],
 })
 export class TuiDocDocumentationModule {}

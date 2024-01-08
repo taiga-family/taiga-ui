@@ -2,19 +2,17 @@ import {Location} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
-    ContentChild,
     ElementRef,
     forwardRef,
+    Host,
     HostBinding,
     HostListener,
     Inject,
     Input,
-    OnInit,
     Optional,
-    TemplateRef,
     ViewChild,
 } from '@angular/core';
-import {AbstractControl, FormGroup} from '@angular/forms';
+import {ControlContainer, FormGroup, FormGroupDirective} from '@angular/forms';
 import {Params, UrlSerializer, UrlTree} from '@angular/router';
 import {TuiDemoParams} from '@taiga-ui/addon-doc/interfaces';
 import {TuiApiHostService} from '@taiga-ui/addon-doc/services';
@@ -50,7 +48,7 @@ const MIN_WIDTH = 160;
         },
     ],
 })
-export class TuiDocDemoComponent implements OnInit {
+export class TuiDocDemoComponent {
     @ViewChild('content')
     private readonly content?: ElementRef<HTMLElement>;
 
@@ -61,15 +59,7 @@ export class TuiDocDemoComponent implements OnInit {
     private _resizeable?: ElementRef<HTMLElement>;
 
     @Input()
-    control: AbstractControl | null = null;
-
-    @Input()
     sticky = true;
-
-    @ContentChild(TemplateRef)
-    readonly template: TemplateRef<Record<string, unknown>> | null = null;
-
-    testForm?: FormGroup;
 
     readonly updateOnVariants = ['change', 'blur', 'submit'] as const;
 
@@ -102,6 +92,10 @@ export class TuiDocDemoComponent implements OnInit {
         @Inject(TuiApiHostService)
         @Optional()
         private readonly apiHostService: TuiApiHostService | null,
+        @Inject(ControlContainer)
+        @Optional()
+        @Host()
+        readonly controlContainer: ControlContainer | null,
     ) {}
 
     get code$(): Observable<string> | undefined {
@@ -134,10 +128,6 @@ export class TuiDocDemoComponent implements OnInit {
         this.updateUrl({sandboxWidth: this.sandboxWidth});
     }
 
-    ngOnInit(): void {
-        this.createForm();
-    }
-
     onModeChange(mode: TuiBrightness | null): void {
         this.mode = mode;
         this.updateUrl({sandboxWidth: this.sandboxWidth});
@@ -157,7 +147,18 @@ export class TuiDocDemoComponent implements OnInit {
     updateOnChange(updateOn: 'blur' | 'change' | 'submit'): void {
         this.updateOn = updateOn;
         this.updateUrl({updateOn});
-        this.createForm();
+
+        const formDirective = this.controlContainer?.formDirective;
+
+        if (formDirective instanceof FormGroupDirective) {
+            const {form} = formDirective;
+
+            formDirective.form = new FormGroup(form.controls, {
+                validators: form.validator,
+                asyncValidators: form.asyncValidator,
+                updateOn,
+            });
+        }
     }
 
     updateWidth(width: number = NaN): void {
@@ -196,14 +197,6 @@ export class TuiDocDemoComponent implements OnInit {
         };
 
         this.locationRef.go(this.urlStateHandler(tree));
-    }
-
-    private createForm(): void {
-        const {control, updateOn} = this;
-
-        if (control) {
-            this.testForm = new FormGroup({testValue: control}, {updateOn});
-        }
     }
 
     private getUrlTree(): UrlTree {

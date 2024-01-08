@@ -15,17 +15,14 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template
-        documentationApiHost
-        documentationTemplateTagName="input"
-        pageTab
-        [documentationTemplateBaseProperties]="hintBaseProperties"
-    >
+    <ng-template pageTab>
         <tui-doc-demo>
             <input
+                documentationTemplateTagName="input"
                 placeholder="My id is 'qwerty'"
                 tuiHint="I will be visible upon keyboard focus"
                 tuiHintDescribe="qwerty"
+                [documentationTemplateBaseProperties]="hintBaseProperties"
                 [tuiHintAppearance]="appearance"
                 [tuiHintDirection]="direction"
             />

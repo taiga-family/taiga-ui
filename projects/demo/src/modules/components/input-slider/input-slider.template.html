@@ -94,45 +94,40 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template
-        documentationApiHost
-        pageTab
-    >
-        <tui-doc-demo [control]="control">
-            <ng-template>
-                <tui-input-slider
-                    documentationTemplateContent="Range"
-                    documentationTemplateTagName="tui-input-slider"
-                    [focusable]="focusable"
-                    [formControl]="control"
-                    [keySteps]="keySteps"
-                    [max]="max"
-                    [min]="min"
-                    [postfix]="postfix"
-                    [prefix]="prefix"
-                    [pseudoActive]="pseudoPressed"
-                    [pseudoFocus]="pseudoFocused"
-                    [pseudoHover]="pseudoHovered"
-                    [pseudoInvalid]="pseudoInvalid"
-                    [quantum]="quantum"
-                    [readOnly]="readOnly"
-                    [segments]="segments"
-                    [steps]="steps"
-                    [tuiHintAppearance]="hintAppearance"
-                    [tuiHintContent]="hintContent"
-                    [tuiHintDirection]="hintDirection"
-                    [tuiTextfieldCleaner]="cleaner"
-                    [tuiTextfieldCustomContent]="customContentSelected"
-                    [tuiTextfieldIconLeft]="iconLeft"
-                    [tuiTextfieldLabelOutside]="labelOutside"
-                    [tuiTextfieldPostfix]="postfix"
-                    [tuiTextfieldPrefix]="prefix"
-                    [tuiTextfieldSize]="size"
-                    [valueContent]="valueContent"
-                >
-                    Range
-                </tui-input-slider>
-            </ng-template>
+    <ng-template pageTab>
+        <tui-doc-demo [formGroup]="control | tuiWrapControl">
+            <tui-input-slider
+                documentationTemplateContent="Range"
+                documentationTemplateTagName="tui-input-slider"
+                [focusable]="focusable"
+                [formControl]="control"
+                [keySteps]="keySteps"
+                [max]="max"
+                [min]="min"
+                [postfix]="postfix"
+                [prefix]="prefix"
+                [pseudoActive]="pseudoPressed"
+                [pseudoFocus]="pseudoFocused"
+                [pseudoHover]="pseudoHovered"
+                [pseudoInvalid]="pseudoInvalid"
+                [quantum]="quantum"
+                [readOnly]="readOnly"
+                [segments]="segments"
+                [steps]="steps"
+                [tuiHintAppearance]="hintAppearance"
+                [tuiHintContent]="hintContent"
+                [tuiHintDirection]="hintDirection"
+                [tuiTextfieldCleaner]="cleaner"
+                [tuiTextfieldCustomContent]="customContentSelected"
+                [tuiTextfieldIconLeft]="iconLeft"
+                [tuiTextfieldLabelOutside]="labelOutside"
+                [tuiTextfieldPostfix]="postfix"
+                [tuiTextfieldPrefix]="prefix"
+                [tuiTextfieldSize]="size"
+                [valueContent]="valueContent"
+            >
+                Range
+            </tui-input-slider>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
