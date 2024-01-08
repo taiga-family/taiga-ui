@@ -39,6 +39,7 @@ test.describe('DataList', () => {
         await page.keyboard.down('ArrowDown');
         await page.waitForTimeout(100);
         await page.keyboard.down('Enter');
+        await page.waitForTimeout(100);
         await expect(page).toHaveScreenshot('03-1-data-list.png');
         await page.keyboard.down('ArrowRight');
         await page.keyboard.down('ArrowDown');
@@ -46,6 +47,7 @@ test.describe('DataList', () => {
         await page.keyboard.down('ArrowDown');
         await page.waitForTimeout(100);
         await page.keyboard.down('Enter');
+        await page.waitForTimeout(100);
         await expect(page).toHaveScreenshot('03-2-data-list.png');
         await page.keyboard.down('ArrowRight');
         await page.keyboard.down('ArrowDown');
@@ -53,6 +55,7 @@ test.describe('DataList', () => {
         await expect(page).toHaveScreenshot('03-3-data-list.png');
         await page.waitForTimeout(100);
         await page.keyboard.down('Enter');
+        await page.waitForTimeout(100);
         await expect(page).toHaveScreenshot('03-4-data-list.png');
     });
 
