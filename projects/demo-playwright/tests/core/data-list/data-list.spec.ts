@@ -35,20 +35,25 @@ test.describe('DataList', () => {
         await example.scrollIntoViewIfNeeded();
         await example.locator('tui-hosted-dropdown').click();
         await documentationPagePO.prepareApiPageBeforeScreenshot();
-
         await page.keyboard.down('ArrowDown');
         await page.keyboard.down('ArrowDown');
+        await page.waitForTimeout(100);
         await page.keyboard.down('Enter');
+        await expect(page).toHaveScreenshot('03-1-data-list.png');
         await page.keyboard.down('ArrowRight');
         await page.keyboard.down('ArrowDown');
         await page.keyboard.down('ArrowDown');
         await page.keyboard.down('ArrowDown');
+        await page.waitForTimeout(100);
         await page.keyboard.down('Enter');
+        await expect(page).toHaveScreenshot('03-2-data-list.png');
         await page.keyboard.down('ArrowRight');
         await page.keyboard.down('ArrowDown');
         await page.keyboard.down('ArrowDown');
-
-        await expect(page).toHaveScreenshot('03-data-list.png');
+        await expect(page).toHaveScreenshot('03-3-data-list.png');
+        await page.waitForTimeout(100);
+        await page.keyboard.down('Enter');
+        await expect(page).toHaveScreenshot('03-4-data-list.png');
     });
 
     test('Form control', async ({page}) => {
