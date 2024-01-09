@@ -12,7 +12,7 @@ test.describe('Deep / Toggle', () => {
             const api = new TuiDocumentationApiPagePO(page);
             const rows = await api.getRows();
 
-            api.setTimeout(rows.length);
+            test.setTimeout(30_000 * rows.length);
 
             for (const row of rows) {
                 const toggle = await api.getToggle(row);
@@ -23,9 +23,12 @@ test.describe('Deep / Toggle', () => {
                 }
 
                 await toggle.scrollIntoViewIfNeeded();
+                await expect(toggle).toBeVisible();
                 await api.focusOnBody();
                 await toggle.click();
+                await api.waitCompleteLoadingImages();
                 await api.hideNotifications();
+
                 await expect(api.apiPageExample).toHaveScreenshot(
                     `deep-${path}__${name}-toggled.png`,
                 );

@@ -12,7 +12,7 @@ test.describe('Deep / Select', () => {
             const api = new TuiDocumentationApiPagePO(page);
             const rows = await api.getRows();
 
-            api.setTimeout(rows.length);
+            test.setTimeout(30_000 * rows.length);
 
             for (const row of rows) {
                 const select = await api.getSelect(row);
@@ -23,18 +23,21 @@ test.describe('Deep / Select', () => {
                 }
 
                 await select.scrollIntoViewIfNeeded();
+                await expect(select).toBeVisible();
                 await api.focusOnBody();
-                await page.waitForTimeout(100);
                 await select.click();
 
                 const options = await api.getOptions();
                 const defaultIndex = await api.getDefaultSelectedOptionIndex(options);
 
                 for (const [index, option] of options.entries()) {
-                    await option.click();
-                    await page.waitForTimeout(200);
-                    await api.hideNotifications();
+                    await expect(option).toBeVisible();
+
+                    await option.focus();
+                    await page.keyboard.down('Enter');
                     await api.focusOnBody();
+                    await api.hideNotifications();
+                    await api.waitCompleteLoadingImages();
 
                     await expect(api.apiPageExample).toHaveScreenshot(
                         `deep-${path}__${name}-select-option-${index}.png`,
@@ -43,16 +46,13 @@ test.describe('Deep / Select', () => {
                     await select.click();
                 }
 
-                await api.focusOnBody();
-                await select.click();
-                await page.waitForTimeout(200);
-
                 const cleaner = await api.getCleaner(select);
 
                 if (cleaner) {
                     await cleaner.click();
-                } else {
-                    await options[defaultIndex]?.click();
+                } else if (options[defaultIndex]) {
+                    await options[defaultIndex].focus();
+                    await page.keyboard.down('Enter');
                 }
 
                 await api.focusOnBody();
