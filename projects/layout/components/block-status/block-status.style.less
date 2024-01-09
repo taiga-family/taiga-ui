@@ -28,7 +28,7 @@ tui-block-status {
         }
     }
 
-    .t-block-text {
+    .t-block-text:not(:empty) {
         font: var(--tui-font-text-m);
         color: var(--tui-text-02);
         margin-bottom: 2rem;
@@ -39,7 +39,7 @@ tui-block-status {
         }
     }
 
-    .t-block-actions {
+    .t-block-actions:not(:empty) {
         display: flex;
         flex-direction: column;
         align-items: center;

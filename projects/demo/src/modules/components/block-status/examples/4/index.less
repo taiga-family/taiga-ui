@@ -1,3 +1,19 @@
+.container {
+    display: flex;
+    gap: 1rem;
+
+    :host-context(tui-root._mobile) & {
+        flex-direction: column;
+    }
+}
+
 .card {
     background-color: var(--tui-base-02);
+    height: auto;
+}
+
+.avatar[tuiSlot='top'] {
+    width: 6.25rem;
+    height: 6.25rem;
+    border-radius: 50%;
 }
