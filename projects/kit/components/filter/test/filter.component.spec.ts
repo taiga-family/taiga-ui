@@ -170,21 +170,21 @@ describe('Filter', () => {
     });
 
     describe('size', () => {
-        it('if m, then both CheckboxBlock and badge have m', () => {
+        it('if m, then CheckboxBlock have m and badge have l', () => {
             testComponent.items = ARR_OBJECT;
             fixture.detectChanges();
 
             expect(getCheckbox().attributes['data-size']).toBe('m');
-            expect(getBadge().attributes['data-size']).toBe('m');
+            expect(getBadge().attributes['data-size']).toBe('l');
         });
 
-        it('if s, then both CheckboxBlock and badge have s', () => {
+        it('if s, then CheckboxBlock have s and badge have m', () => {
             testComponent.items = ARR_OBJECT;
             testComponent.size = 's';
             fixture.detectChanges();
 
             expect(getCheckbox().attributes['data-size']).toBe('s');
-            expect(getBadge().attributes['data-size']).toBe('s');
+            expect(getBadge().attributes['data-size']).toBe('m');
         });
     });
 });

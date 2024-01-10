@@ -29,7 +29,7 @@ import {
 } from './constants';
 import {
     migrateAvatar,
-    migrateBadgeValue,
+    migrateBadge,
     migrateCheckbox,
     migrateExpandable,
     migrateRadio,
@@ -79,7 +79,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         getAction({action: replaceTags, requiredData: TAGS_TO_REPLACE}),
         getAction({action: replaceAttrs, requiredData: ATTRS_TO_REPLACE}),
         getAction({action: removeInputs, requiredData: INPUTS_TO_REMOVE}),
-        migrateBadgeValue,
+        migrateBadge,
         migrateCheckbox,
         migrateRadio,
         migrateToggle,

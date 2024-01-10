@@ -10,6 +10,7 @@ export * from './element-ref';
 export * from './first-day-of-week';
 export * from './i18n';
 export * from './icon-place';
+export * from './icon-resolver';
 export * from './icons';
 export * from './icons-path';
 export * from './is-mobile-resolution';

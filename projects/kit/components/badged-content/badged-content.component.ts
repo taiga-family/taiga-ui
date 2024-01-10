@@ -1,11 +1,11 @@
 import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/core';
 import {tuiIsNumber, tuiIsString, tuiPx} from '@taiga-ui/cdk';
-import {tuiSizeBigger, TuiSizeL, TuiSizeXS, TuiSizeXXL} from '@taiga-ui/core';
+import {tuiSizeBigger, TuiSizeS, TuiSizeXL, TuiSizeXS, TuiSizeXXL} from '@taiga-ui/core';
 import {TuiStatus} from '@taiga-ui/kit/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 const BADGE_SIZE = {
-    xs: 'xs',
+    xs: 's',
     s: 's',
     m: 's',
     l: 'm',
@@ -50,7 +50,7 @@ export class TuiBadgedContentComponent {
         return !this.contentBottom && this.colorBottom ? this.colorBottom : '';
     }
 
-    get badgeSize(): TuiSizeL | TuiSizeXS {
+    get badgeSize(): TuiSizeS | TuiSizeXL {
         return BADGE_SIZE[this.size];
     }
 

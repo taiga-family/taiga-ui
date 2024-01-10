@@ -8,8 +8,7 @@ import {
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {TuiNativeValidatorDirective} from '@taiga-ui/cdk';
-import {TuiSizeS} from '@taiga-ui/core';
-import {TuiAppearanceDirective} from '@taiga-ui/experimental/directives/appearance';
+import {TuiAppearanceDirective, TuiSizeS} from '@taiga-ui/core';
 
 import {TUI_RADIO_OPTIONS} from './radio.options';
 

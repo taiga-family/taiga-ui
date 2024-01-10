@@ -3,15 +3,20 @@ import {TuiDirectiveStylesService} from '@taiga-ui/cdk';
 import {
     TuiAppearanceDirective,
     tuiAppearanceOptionsProvider,
-} from '@taiga-ui/experimental/directives/appearance';
-import {TuiIconsDirective} from '@taiga-ui/experimental/directives/icons';
+    TuiIconsDirective,
+} from '@taiga-ui/core';
 
 import {TuiBadgeComponent} from './badge.component';
 import {TUI_BADGE_OPTIONS, TuiBadgeOptions} from './badge.options';
 
 @Directive({
+    standalone: true,
     selector: 'tui-badge,[tuiBadge]',
     providers: [tuiAppearanceOptionsProvider(TUI_BADGE_OPTIONS)],
+    host: {
+        '[class._dot]': 'dot',
+        '[attr.data-size]': 'size',
+    },
     hostDirectives: [
         {
             directive: TuiAppearanceDirective,
@@ -26,11 +31,6 @@ import {TUI_BADGE_OPTIONS, TuiBadgeOptions} from './badge.options';
             inputs: ['iconLeft', 'iconRight'],
         },
     ],
-    host: {
-        tuiBadgeNew: '',
-        '[class._dot]': 'dot',
-        '[attr.data-size]': 'size',
-    },
 })
 export class TuiBadgeDirective {
     @Input()

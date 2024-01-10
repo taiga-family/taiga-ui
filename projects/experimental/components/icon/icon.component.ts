@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, Inject, Input} from '@angular/core';
 import {TuiStringHandler} from '@taiga-ui/cdk';
-import {TUI_ICON_RESOLVER} from '@taiga-ui/experimental/tokens';
+import {TUI_ICON_RESOLVER} from '@taiga-ui/core';
 
 @Component({
     selector: 'tui-icon',

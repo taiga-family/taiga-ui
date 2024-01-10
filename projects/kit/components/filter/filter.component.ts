@@ -23,8 +23,15 @@ import {
     TuiIdentityMatcher,
     tuiIsNativeFocusedIn,
 } from '@taiga-ui/cdk';
-import {TuiSizeL, TuiSizeXS} from '@taiga-ui/core';
+import {TuiSizeL, TuiSizeS, TuiSizeXL, TuiSizeXS} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+
+const badgeSizeMap: Record<TuiSizeL | TuiSizeXS, TuiSizeS | TuiSizeXL> = {
+    xs: 's',
+    s: 'm',
+    m: 'l',
+    l: 'xl',
+};
 
 // @bad TODO: Add active zone to track focus
 @Component({
@@ -70,6 +77,10 @@ export class TuiFilterComponent<T> extends AbstractTuiMultipleControl<T> {
 
     get focused(): boolean {
         return tuiIsNativeFocusedIn(this.el.nativeElement);
+    }
+
+    get badgeSize(): TuiSizeS | TuiSizeXL {
+        return badgeSizeMap[this.size];
     }
 
     onCheckbox(value: boolean, item: T): void {

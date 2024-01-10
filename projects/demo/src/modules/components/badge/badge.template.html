@@ -4,14 +4,7 @@
     type="components"
 >
     <ng-template pageTab>
-        <div class="tui-space_bottom-3">
-            Badges show text and number values. Number values may show new message or notifications.
-        </div>
-
-        <p>
-            Use badges to attract attention to a new or updated content. Number values may also be with "+" sign that
-            shows that number is more than maximum value to show.
-        </p>
+        <p>Component for displaying text, pictures and icons.</p>
 
         <tui-doc-example
             id="base"
@@ -22,67 +15,97 @@
         </tui-doc-example>
 
         <tui-doc-example
-            id="size"
-            heading="Sizes and hoverable"
+            id="sizes"
+            heading="Sizes"
             [content]="example2"
         >
             <tui-badge-example-2></tui-badge-example-2>
         </tui-doc-example>
 
         <tui-doc-example
-            id="custom"
-            heading="Custom"
+            id="content-type"
+            heading="Content type (mobile platform)"
             [content]="example3"
         >
             <tui-badge-example-3></tui-badge-example-3>
         </tui-doc-example>
 
         <tui-doc-example
-            id="icons"
-            heading="With icon"
+            id="fade"
+            heading="Long value"
             [content]="example4"
         >
             <tui-badge-example-4></tui-badge-example-4>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="custom"
+            heading="Customization"
+            [content]="example5"
+        >
+            <tui-badge-example-5></tui-badge-example-5>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="options"
+            heading="Options with DI"
+            [content]="example6"
+        >
+            <tui-badge-example-6></tui-badge-example-6>
         </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
         <tui-doc-demo>
             <p>
-                <ng-container *ngIf="withIcon; else withoutIcon">
-                    <tui-badge
-                        [hoverable]="hoverable"
-                        [size]="size"
-                        [status]="status"
-                        [value]="values[value]"
-                    >
-                        <tui-svg src="tuiIconHelpCircle"></tui-svg>
-                    </tui-badge>
-                </ng-container>
-                <ng-template #withoutIcon>
-                    <tui-badge
-                        [hoverable]="hoverable"
-                        [size]="size"
-                        [status]="status"
-                        [value]="values[value]"
-                    ></tui-badge>
-                </ng-template>
+                <tui-badge
+                    *ngIf="contentType === 'with icon'"
+                    iconLeft="tuiIconCheck"
+                    [appearance]="appearance"
+                    [dot]="dot"
+                    [size]="size"
+                >
+                    <div tuiFade>Taiga UI</div>
+                </tui-badge>
+
+                <tui-badge
+                    *ngIf="contentType === 'text'"
+                    [appearance]="appearance"
+                    [dot]="dot"
+                    [size]="size"
+                >
+                    Taiga UI
+                </tui-badge>
+
+                <img
+                    *ngIf="contentType === 'image'"
+                    alt="market"
+                    src="assets/images/avatar.jpg"
+                    tuiBadge
+                    [appearance]="appearance"
+                    [dot]="dot"
+                    [size]="size"
+                />
             </p>
-            with icon
-            <tui-toggle
-                class="tui-space_horizontal-2"
-                [singleColor]="true"
-                [(ngModel)]="withIcon"
-            ></tui-toggle>
         </tui-doc-demo>
+        <label
+            tuiLabel="Content type"
+            class="tui-space_vertical-3"
+        >
+            <tui-radio-list
+                orientation="horizontal"
+                [items]="contentTypeVariants"
+                [(ngModel)]="contentType"
+            ></tui-radio-list>
+        </label>
         <tui-doc-documentation>
             <ng-template
                 documentationPropertyMode="input"
-                documentationPropertyName="hoverable"
+                documentationPropertyName="dot"
                 documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="hoverable"
+                [(documentationPropertyValue)]="dot"
             >
-                Enable hovered state
+                Show dot on the left side
             </ng-template>
             <ng-template
                 documentationPropertyMode="input"
@@ -95,21 +118,12 @@
             </ng-template>
             <ng-template
                 documentationPropertyMode="input"
-                documentationPropertyName="status"
+                documentationPropertyName="appearance"
                 documentationPropertyType="TuiStatus"
-                [documentationPropertyValues]="statusVariants"
-                [(documentationPropertyValue)]="status"
+                [documentationPropertyValues]="appearanceVariants"
+                [(documentationPropertyValue)]="appearance"
             >
-                Status changes badge color
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="value"
-                documentationPropertyType="string | number"
-                [documentationPropertyValues]="valueVariants"
-                [(documentationPropertyValue)]="value"
-            >
-                Value. If value is a number and is more than 99, it will be replaced with &laquo;99+&raquo;
+                Appearance
             </ng-template>
         </tui-doc-documentation>
     </ng-template>
@@ -117,11 +131,7 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                <p>
-                    Import
-                    <code>TuiBadgeModule</code>
-                    into a module where you want to use our component
-                </p>
+                <p>Import module:</p>
 
                 <tui-doc-code
                     filename="my.module.ts"

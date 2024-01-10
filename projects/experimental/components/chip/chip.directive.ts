@@ -1,15 +1,15 @@
 import {Directive, Inject, Input} from '@angular/core';
 import {TuiDirectiveStylesService} from '@taiga-ui/cdk';
-import {TuiSizeXXS} from '@taiga-ui/core';
+import {
+    TuiAppearanceDirective,
+    tuiAppearanceOptionsProvider,
+    TuiIconsDirective,
+    TuiSizeXXS,
+} from '@taiga-ui/core';
 import {tuiAvatarOptionsProvider} from '@taiga-ui/experimental/components/avatar';
 import {tuiButtonOptionsProvider} from '@taiga-ui/experimental/components/button';
 import {tuiCheckboxOptionsProvider} from '@taiga-ui/experimental/components/checkbox';
 import {tuiToggleOptionsProvider} from '@taiga-ui/experimental/components/toggle';
-import {
-    TuiAppearanceDirective,
-    tuiAppearanceOptionsProvider,
-} from '@taiga-ui/experimental/directives/appearance';
-import {TuiIconsDirective} from '@taiga-ui/experimental/directives/icons';
 
 import {TuiChipComponent} from './chip.component';
 import {TUI_CHIP_OPTIONS, TuiChipOptions} from './chip.options';

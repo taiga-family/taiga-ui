@@ -1,7 +1,6 @@
 import {Provider} from '@angular/core';
 import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
-import {TuiSizeXXL, TuiSizeXXS} from '@taiga-ui/core';
-import {TuiAppearanceOptions} from '@taiga-ui/experimental/directives/appearance';
+import {TuiAppearanceOptions, TuiSizeXXL, TuiSizeXXS} from '@taiga-ui/core';
 
 export interface TuiAvatarOptions extends TuiAppearanceOptions {
     readonly round: boolean;

@@ -16,7 +16,6 @@ import {
     TuiAvatarModule,
     TuiAvatarStackModule,
     TuiBadgedContentModule,
-    TuiBadgeModule,
     TuiBadgeNotificationModule,
     TuiButtonModule,
     TuiCellModule,
@@ -30,6 +29,7 @@ import {
     TuiToggleModule,
 } from '@taiga-ui/experimental';
 import {
+    TuiBadgeDirective,
     TuiDataListWrapperModule,
     TuiProgressModule,
     TuiSelectModule,
@@ -50,7 +50,7 @@ import {TuiCellExample7} from './examples/7';
         FormsModule,
         TuiAvatarModule,
         TuiAvatarStackModule,
-        TuiBadgeModule,
+        TuiBadgeDirective,
         TuiBadgeNotificationModule,
         TuiBadgedContentModule,
         TuiCellModule,

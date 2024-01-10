@@ -22,10 +22,10 @@
             <tui-badge
                 size="m"
                 class="badge"
-                [hoverable]="true"
-                [status]="filtered.length ? 'success' : 'error'"
-                [value]="filtered.length.toString()"
-            ></tui-badge>
+                [appearance]="filtered.length ? 'success' : 'error'"
+            >
+                {{ filtered.length.toString() }}
+            </tui-badge>
         </div>
         <p
             *ngIf="!filtered.length"

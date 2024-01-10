@@ -17,14 +17,14 @@ import {
     TuiStringHandler,
 } from '@taiga-ui/cdk';
 import {
+    tuiAppearanceOptionsProvider,
     tuiAsDataListHost,
     TuiDataListHost,
     TuiDropdownOpenDirective,
     tuiDropdownOptionsProvider,
+    TuiIconsDirective,
 } from '@taiga-ui/core';
 import {TuiButtonModule} from '@taiga-ui/experimental/components/button';
-import {tuiAppearanceOptionsProvider} from '@taiga-ui/experimental/directives/appearance';
-import {TuiIconsDirective} from '@taiga-ui/experimental/directives/icons';
 import {PolymorpheusContent, PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import {EMPTY} from 'rxjs';
 

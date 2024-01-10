@@ -11,8 +11,7 @@ import {
     TuiPaymentSystem,
 } from '@taiga-ui/addon-commerce';
 import {TuiStringHandler} from '@taiga-ui/cdk';
-import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {TUI_ICON_RESOLVER} from '@taiga-ui/experimental/tokens';
+import {TUI_ICON_RESOLVER, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 
 @Component({
     selector: 'tui-thumbnail-card',

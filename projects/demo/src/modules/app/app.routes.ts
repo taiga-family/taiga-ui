@@ -216,9 +216,9 @@ export const ROUTES: Routes = [
         },
     },
     {
-        path: 'experimental/appearance',
+        path: 'components/appearance',
         loadChildren: async () =>
-            (await import('../experimental/appearance/appearance.module'))
+            (await import('../directives/appearance/appearance.module'))
                 .ExampleTuiAppearanceModule,
         data: {
             title: 'Appearance',
@@ -288,14 +288,6 @@ export const ROUTES: Routes = [
             (await import('../experimental/card/card.module')).ExampleTuiCardModule,
         data: {
             title: 'Card',
-        },
-    },
-    {
-        path: 'experimental/badge',
-        loadChildren: async () =>
-            (await import('../experimental/badge/badge.module')).ExampleTuiBadgeModule,
-        data: {
-            title: 'Badge ',
         },
     },
     {
