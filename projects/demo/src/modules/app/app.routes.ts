@@ -216,7 +216,7 @@ export const ROUTES: Routes = [
         },
     },
     {
-        path: 'directives/appearance',
+        path: 'components/appearance',
         loadChildren: async () =>
             (await import('../directives/appearance/appearance.module'))
                 .ExampleTuiAppearanceModule,

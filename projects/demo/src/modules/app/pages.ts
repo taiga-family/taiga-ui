@@ -1012,10 +1012,10 @@ export const pages: TuiDocPages = [
         route: '/experimental/amount',
     },
     {
-        section: 'Experimental',
+        section: 'Components',
         title: 'Appearance',
         keywords: 'colors, css, theme, custom, style',
-        route: '/experimental/appearance',
+        route: '/components/appearance',
     },
     {
         section: 'Experimental',
