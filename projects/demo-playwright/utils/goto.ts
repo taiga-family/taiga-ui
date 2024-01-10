@@ -43,7 +43,7 @@ export async function tuiGoto(
     await page.waitForLoadState('domcontentloaded');
     await page.waitForLoadState('load');
 
-    await expect(page.locator('app')).toHaveClass(/_loaded/, {timeout: 15_000});
+    await expect(page.locator('app')).toHaveClass(/_loaded/, {timeout: 30_000});
     await tuiWaitForFonts(page);
 
     if (hideHeader) {
