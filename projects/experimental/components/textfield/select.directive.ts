@@ -3,7 +3,7 @@ import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {NAVIGATOR} from '@ng-web-apis/common';
 import {TuiNativeValidatorDirective} from '@taiga-ui/cdk';
-import {TuiAppearanceDirective} from '@taiga-ui/experimental/directives/appearance';
+import {TuiAppearanceDirective} from '@taiga-ui/core';
 
 import {TuiTextfieldDirective} from './textfield.directive';
 

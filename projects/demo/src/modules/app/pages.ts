@@ -870,12 +870,6 @@ export const pages: TuiDocPages = [
         subPages: [
             {
                 section: 'Experimental',
-                title: 'Badge ',
-                keywords: 'бэдж, бейдж, овал, badge, нотификация',
-                route: '/experimental/badge',
-            },
-            {
-                section: 'Experimental',
                 title: 'BadgeNotification',
                 keywords: 'бэдж, бейдж, circle, круг, badge, alert, нотификация',
                 route: '/experimental/badge-notification',

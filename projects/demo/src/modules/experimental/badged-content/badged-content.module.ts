@@ -7,13 +7,12 @@ import {TuiNotificationModule} from '@taiga-ui/core';
 import {
     TuiAvatarModule,
     TuiBadgedContentModule,
-    TuiBadgeModule,
     TuiBadgeNotificationModule,
     TuiButtonModule,
     TuiFallbackSrcModule,
     TuiIconModule,
 } from '@taiga-ui/experimental';
-import {TuiInputModule} from '@taiga-ui/kit';
+import {TuiBadgeDirective, TuiInputModule} from '@taiga-ui/kit';
 
 import {ExampleTuiBadgedContentComponent} from './badged-content.component';
 import {TuiBadgedContentExample1} from './examples/1';
@@ -25,7 +24,7 @@ import {TuiBadgedContentExample3} from './examples/3';
         CommonModule,
         TuiBadgeNotificationModule,
         TuiIconModule,
-        TuiBadgeModule,
+        TuiBadgeDirective,
         TuiBadgedContentModule,
         TuiAvatarModule,
         TuiFallbackSrcModule,

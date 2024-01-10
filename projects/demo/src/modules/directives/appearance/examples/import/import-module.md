@@ -1,6 +1,6 @@
 ```ts
 import {NgModule} from '@angular/core';
-import {TuiAppearanceDirective} from '@taiga-ui/experimental';
+import {TuiAppearanceDirective} from '@taiga-ui/core';
 // ...
 
 @NgModule({

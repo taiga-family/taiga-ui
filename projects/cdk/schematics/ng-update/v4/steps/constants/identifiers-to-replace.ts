@@ -14,7 +14,11 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifier[] = [
     },
     {
         from: {name: 'TuiBadgeModule', moduleSpecifier: '@taiga-ui/experimental'},
-        to: {name: 'TuiBadgeModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiBadgeDirective', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {name: 'TuiBadgeModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiBadgeDirective', moduleSpecifier: '@taiga-ui/kit'},
     },
     {
         from: {name: 'TuiCheckboxModule', moduleSpecifier: '@taiga-ui/experimental'},

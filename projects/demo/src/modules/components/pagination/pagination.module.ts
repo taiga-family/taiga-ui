@@ -5,7 +5,7 @@ import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {
-    TuiBadgeModule,
+    TuiBadgeDirective,
     TuiInputSliderModule,
     TuiPaginationModule,
     TuiRadioListModule,
@@ -20,7 +20,7 @@ import {ExampleTuiPaginationComponent} from './pagination.component';
 
 @NgModule({
     imports: [
-        TuiBadgeModule,
+        TuiBadgeDirective,
         TuiPaginationModule,
         TuiInputSliderModule,
         CommonModule,

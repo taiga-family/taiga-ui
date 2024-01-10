@@ -1,7 +1,6 @@
 import {Directive, DoCheck, ElementRef, inject, Input} from '@angular/core';
 import {TuiIdService, TuiNativeValidatorDirective} from '@taiga-ui/cdk';
-import {TuiInteractiveStateT} from '@taiga-ui/core';
-import {TuiAppearanceDirective} from '@taiga-ui/experimental/directives/appearance';
+import {TuiAppearanceDirective, TuiInteractiveStateT} from '@taiga-ui/core';
 
 import {TuiTextfieldComponent} from './textfield.component';
 

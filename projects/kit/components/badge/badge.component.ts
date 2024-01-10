@@ -1,75 +1,13 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    HostBinding,
-    Inject,
-    Input,
-} from '@angular/core';
-import {tuiIsNumber, tuiIsPresent} from '@taiga-ui/cdk';
-import {
-    MODE_PROVIDER,
-    TUI_MODE,
-    TuiBrightness,
-    TuiSizeL,
-    TuiSizeXS,
-} from '@taiga-ui/core';
-import {TuiStatus} from '@taiga-ui/kit/types';
-import {PolymorpheusPrimitive} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
+import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/core';
 
 @Component({
-    selector: 'tui-badge',
-    templateUrl: './badge.template.html',
+    standalone: true,
+    template: '',
     styleUrls: ['./badge.style.less'],
+    encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [MODE_PROVIDER],
     host: {
-        '($.data-mode.attr)': 'mode$',
+        class: 'tui-badge',
     },
 })
-export class TuiBadgeComponent {
-    @Input()
-    value: PolymorpheusPrimitive;
-
-    @Input()
-    @HostBinding('attr.data-size')
-    size: TuiSizeL | TuiSizeXS = 'm';
-
-    @Input()
-    @HostBinding('attr.data-status')
-    status: TuiStatus = 'default';
-
-    @Input()
-    @HostBinding('class._hoverable')
-    hoverable = false;
-
-    constructor(@Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>) {}
-
-    @HostBinding('attr.data-padding')
-    get padding(): string {
-        if (this.isEmpty) {
-            return 'none';
-        }
-
-        return tuiIsNumber(this.value?.valueOf()) ? 'm' : 'l';
-    }
-
-    get outputValue(): string {
-        const value = this.value?.valueOf();
-
-        if (tuiIsNumber(value) && value > 99) {
-            return '99+';
-        }
-
-        return tuiIsPresent(this.value) ? String(this.value) : '';
-    }
-
-    @HostBinding('class._empty-value')
-    get isEmpty(): boolean {
-        return !this.value && this.value !== 0;
-    }
-
-    titleText({offsetWidth, scrollWidth}: HTMLElement): string {
-        return offsetWidth < scrollWidth ? this.outputValue : '';
-    }
-}
+export class TuiBadgeComponent {}

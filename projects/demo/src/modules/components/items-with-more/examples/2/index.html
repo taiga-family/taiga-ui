@@ -31,10 +31,7 @@
                 class="item"
             >
                 More
-                <tui-badge
-                    class="tui-space_left-2"
-                    [value]="items.length - lastIndex - 1"
-                ></tui-badge>
+                <tui-badge class="tui-space_left-2">{{ items.length - lastIndex - 1 }}</tui-badge>
             </button>
             <ng-template #dropdown>
                 <tui-data-list size="l">

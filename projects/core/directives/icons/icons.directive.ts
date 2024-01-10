@@ -1,6 +1,6 @@
 import {Directive, Inject, Input} from '@angular/core';
 import {TuiDirectiveStylesService, TuiStringHandler} from '@taiga-ui/cdk';
-import {TUI_ICON_RESOLVER} from '@taiga-ui/experimental/tokens';
+import {TUI_ICON_RESOLVER} from '@taiga-ui/core/tokens';
 
 import {TuiIconsComponent} from './icons.component';
 

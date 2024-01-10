@@ -2,10 +2,10 @@ import {ChangeDetectionStrategy, Component, Inject, Input} from '@angular/core';
 import {SafeResourceUrl} from '@angular/platform-browser';
 import {tuiIsString, TuiStringHandler} from '@taiga-ui/cdk';
 import {
+    TUI_ICON_RESOLVER,
     TuiAppearanceDirective,
     tuiAppearanceOptionsProvider,
-} from '@taiga-ui/experimental/directives/appearance';
-import {TUI_ICON_RESOLVER} from '@taiga-ui/experimental/tokens';
+} from '@taiga-ui/core';
 
 import {TUI_AVATAR_OPTIONS, TuiAvatarOptions} from './avatar.options';
 
