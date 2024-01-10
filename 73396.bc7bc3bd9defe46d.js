@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[73396],{73396:e=>{e.exports="@import '@taiga-ui/core/styles/taiga-ui-local';\n\n.badge {\n    .gradient(#c86dd7, #3023ae);\n}\n"}}]);
