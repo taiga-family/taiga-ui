@@ -14,7 +14,6 @@ import {TUI_BADGE_OPTIONS, TuiBadgeOptions} from './badge.options';
     selector: 'tui-badge,[tuiBadge]',
     providers: [tuiAppearanceOptionsProvider(TUI_BADGE_OPTIONS)],
     host: {
-        tuiBadgeNew: '',
         '[class._dot]': 'dot',
         '[attr.data-size]': 'size',
     },
