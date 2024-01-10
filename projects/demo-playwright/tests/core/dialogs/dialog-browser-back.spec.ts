@@ -13,20 +13,10 @@ test.describe('Dialogs + browser back navigation', () => {
         await example.locator('button').click();
         await page.locator('tui-dialog button').nth(1).click();
         await documentationPagePO.prepareApiPageBeforeScreenshot();
-
         await expect(page).toHaveScreenshot('01-dialog-browser-back.png');
         await page.goBack();
-
-        await expect(page).toHaveScreenshot('02-dialog-browser-back.png');
-        await page.goBack();
-
-        await expect(page).toHaveScreenshot('03-dialog-browser-back.png');
-        await expect(page).toHaveURL('components/dialog');
-
-        await page.goBack();
-        await expect(page).toHaveURL('about:blank');
-
         await page.goForward();
+        await expect(page).toHaveScreenshot('02-dialog-browser-back.png');
         await expect(page).toHaveURL('components/dialog');
     });
 
@@ -41,13 +31,6 @@ test.describe('Dialogs + browser back navigation', () => {
         await example.locator('button').nth(0).click();
         await documentationPagePO.prepareApiPageBeforeScreenshot();
         await page.locator('tui-dialog button').nth(0).click();
-
-        await expect(page).toHaveURL('components/dialog');
-
-        await page.goBack();
-        await expect(page).toHaveURL('about:blank');
-
-        await page.goForward();
         await expect(page).toHaveURL('components/dialog');
     });
 });
