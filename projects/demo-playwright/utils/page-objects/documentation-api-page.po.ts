@@ -12,26 +12,24 @@ export class TuiDocumentationApiPagePO {
      * Doesn't work as expected
      */
     async waitCompleteLoadingImages(): Promise<void> {
-        const images = await this.apiPageExample
-            .locator('img:visible,tui-icon:after:visible')
-            .all();
+        await this.page.waitForTimeout(50);
+
+        const images = await this.apiPageExample.locator('img,tui-icon:after').all();
 
         if (images.length) {
             await expect(async () =>
-                expect(
-                    await Promise.all(
-                        images.map(async locator =>
-                            locator.evaluate(
-                                async (image: HTMLImageElement) =>
-                                    new Promise(resolve => {
-                                        image.onload = () => setTimeout(resolve, 200);
-                                        image.onerror = () => setTimeout(resolve, 200);
-                                        setTimeout(resolve, 500); // for quick exit
-                                    }),
-                            ),
+                Promise.all(
+                    images.map(async locator =>
+                        locator.evaluate(
+                            async (image: HTMLImageElement) =>
+                                new Promise(resolve => {
+                                    image.onload = resolve;
+                                    image.onerror = resolve;
+                                    setTimeout(resolve, 500);
+                                }),
                         ),
                     ),
-                ).toBeTruthy(),
+                ),
             ).toPass();
         }
 
@@ -39,26 +37,24 @@ export class TuiDocumentationApiPagePO {
 
         if (svgElements.length) {
             await expect(async () =>
-                expect(
-                    await Promise.all(
-                        svgElements.map(async locator =>
-                            locator.evaluate(
-                                async (svg: SVGElement) =>
-                                    new Promise(resolve => {
-                                        setTimeout(() => {
-                                            if (
-                                                svg.isConnected &&
-                                                svg.clientWidth > 0 &&
-                                                svg.clientHeight > 0
-                                            ) {
-                                                resolve(true);
-                                            }
-                                        }, 200);
-                                    }),
-                            ),
+                Promise.all(
+                    svgElements.map(async locator =>
+                        locator.evaluate(
+                            async (svg: SVGElement) =>
+                                new Promise(resolve => {
+                                    setTimeout(() => {
+                                        if (
+                                            svg.isConnected &&
+                                            svg.clientWidth > 0 &&
+                                            svg.clientHeight > 0
+                                        ) {
+                                            resolve(true);
+                                        }
+                                    }, 200);
+                                }),
                         ),
                     ),
-                ).toBeTruthy(),
+                ),
             ).toPass();
         }
     }

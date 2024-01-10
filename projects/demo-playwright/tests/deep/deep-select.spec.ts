@@ -53,6 +53,7 @@ test.describe('Deep / Select', () => {
                 } else if (options[defaultIndex]) {
                     await options[defaultIndex].focus();
                     await page.keyboard.down('Enter');
+                    await api.waitCompleteLoadingImages();
                 }
 
                 await api.focusOnBody();
