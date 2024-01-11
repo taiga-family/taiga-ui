@@ -1,41 +1,41 @@
-<tui-hosted-dropdown
-    class="t-hosted"
-    [canOpen]="interactive"
-    [content]="dropdown"
-    [open]="open && interactive"
+<tui-primitive-textfield
+    class="t-textfield"
+    [disabled]="computedDisabled"
+    [invalid]="computedInvalid"
+    [maskito]="getMaskOptions(computedMin, computedMax)"
+    [nativeId]="nativeId"
+    [pseudoFocus]="pseudoFocus"
+    [pseudoHover]="pseudoHover"
+    [readOnly]="readOnly"
+    [tuiDropdown]="dropdown"
+    [tuiDropdownEnabled]="interactive"
+    [tuiDropdownOpen]="open && interactive"
+    [tuiTextfieldIcon]="calendarIcon"
+    [(value)]="nativeValue"
     (click)="toggle()"
-    (openChange)="onOpenChange($event)"
+    (focusedChange)="onFocused($event)"
+    (tuiDropdownOpenChange)="onOpenChange($event)"
+    (valueChange)="onValueChange($event)"
 >
-    <tui-primitive-textfield
-        class="t-textfield"
-        [disabled]="computedDisabled"
-        [invalid]="computedInvalid"
-        [maskito]="getMaskOptions(computedMin, computedMax)"
-        [nativeId]="nativeId"
-        [pseudoFocus]="pseudoFocus"
-        [pseudoHover]="pseudoHover"
-        [readOnly]="readOnly"
-        [tuiTextfieldIcon]="calendarIcon"
-        [(value)]="nativeValue"
-        (focusedChange)="onFocused($event)"
-        (valueChange)="onValueChange($event)"
-    >
-        <ng-content></ng-content>
-        <ng-content
-            ngProjectAs="input"
-            select="input"
-        ></ng-content>
-    </tui-primitive-textfield>
+    <ng-content></ng-content>
+    <ng-content
+        ngProjectAs="input"
+        select="input"
+    ></ng-content>
+</tui-primitive-textfield>
 
-    <ng-template #dropdown>
-        <tui-primitive-year-picker
-            tuiPreventDefault="mousedown"
-            [disabledItemHandler]="disabledItemHandler"
-            [initialItem]="value || initialItem | tuiToYear"
-            [max]="computedMax | tuiToYear"
-            [min]="computedMin | tuiToYear"
-            [value]="value === null ? null : (value | tuiToYear)"
-            (yearClick)="onYearClick($event)"
-        ></tui-primitive-year-picker>
-    </ng-template>
-</tui-hosted-dropdown>
+<ng-template #dropdown>
+    <div class="t-container">
+        <tui-scrollbar class="t-scrollbar">
+            <tui-primitive-year-picker
+                [disabledItemHandler]="disabledItemHandler"
+                [initialItem]="value || initialItem | tuiToYear"
+                [max]="computedMax | tuiToYear"
+                [min]="computedMin | tuiToYear"
+                [value]="value === null ? null : (value | tuiToYear)"
+                (mousedown.prevent.silent)="(0)"
+                (yearClick)="onYearClick($event)"
+            ></tui-primitive-year-picker>
+        </tui-scrollbar>
+    </div>
+</ng-template>

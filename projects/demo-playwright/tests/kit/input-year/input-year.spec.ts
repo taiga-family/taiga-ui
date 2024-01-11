@@ -42,7 +42,7 @@ test.describe('InputYear', () => {
 
     test.describe('Value validation on blur', () => {
         test.beforeEach(async ({page}) => {
-            await tuiGoto(page, '/components/input-year/API?max=2020&min=2070');
+            await tuiGoto(page, '/components/input-year/API?max=2024&min=2020');
 
             documentationPO = new TuiDocumentationPagePO(page);
             input = documentationPO.apiPageExample.locator('input');

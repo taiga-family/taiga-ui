@@ -1,10 +1,11 @@
 import {NgModule} from '@angular/core';
 import {MaskitoModule} from '@maskito/angular';
-import {TuiPreventDefaultModule} from '@taiga-ui/cdk';
 import {
-    TuiHostedDropdownModule,
+    TuiDropdownModule,
+    TuiDropdownOpenDirective,
     TuiPrimitiveTextfieldModule,
     TuiPrimitiveYearPickerModule,
+    TuiScrollbarModule,
     TuiTextfieldComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
@@ -16,10 +17,11 @@ import {TuiInputYearDirective} from './input-year.directive';
 @NgModule({
     imports: [
         MaskitoModule,
-        TuiHostedDropdownModule,
+        TuiDropdownModule,
+        TuiDropdownOpenDirective,
         TuiPrimitiveTextfieldModule,
+        TuiScrollbarModule,
         TuiPrimitiveYearPickerModule,
-        TuiPreventDefaultModule,
         TuiTextfieldControllerModule,
         TuiToYearPipeModule,
     ],
