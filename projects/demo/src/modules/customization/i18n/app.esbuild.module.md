@@ -10,6 +10,8 @@ import {tuiLanguageSwitcher} from '@taiga-ui/i18n/switch';
     // ...
     tuiLanguageSwitcher(async (language: TuiLanguageName): Promise<unknown> => {
       switch (language) {
+        case `belarusian`:
+          return import(`@taiga-ui/i18n/languages/belarusian`);
         case `chinese`:
           return import(`@taiga-ui/i18n/languages/chinese`);
         case `dutch`:
