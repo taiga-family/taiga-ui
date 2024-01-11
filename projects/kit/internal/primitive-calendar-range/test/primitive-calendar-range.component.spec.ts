@@ -58,7 +58,7 @@ describe('PrimitiveRangeCalendar component', () => {
         });
 
         it('Returns min when initialized with default less than min', () => {
-            const minDate = new TuiDay(2024, 1, 1);
+            const minDate = TuiDay.currentLocal().append({month: 2});
 
             component.min = minDate;
             component.ngOnInit();
@@ -92,7 +92,7 @@ describe('PrimitiveRangeCalendar component', () => {
         });
 
         it('Returns min when initialized with default less than min', () => {
-            const minDate = new TuiDay(2024, 1, 1);
+            const minDate = TuiDay.currentLocal().append({month: 2});
 
             component.min = minDate;
             component.ngOnInit();
