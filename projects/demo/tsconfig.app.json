@@ -5,5 +5,9 @@
     "angularCompilerOptions": {
         "strictMetadataEmit": false,
         "compilationMode": "full"
+    },
+    "compilerOptions": {
+        "target": "ES2022",
+        "useDefineForClassFields": false
     }
 }
