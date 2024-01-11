@@ -22,8 +22,6 @@ describe('PrimitiveRangeCalendar component', () => {
     let testComponent: TestComponent;
     let component: TuiPrimitiveCalendarRangeComponent;
 
-    beforeAll(() => jest.useFakeTimers().setSystemTime(new Date('2023-01-01')));
-
     beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [TuiPrimitiveCalendarRangeModule, NoopAnimationsModule],
@@ -58,7 +56,7 @@ describe('PrimitiveRangeCalendar component', () => {
         });
 
         it('Returns min when initialized with default less than min', () => {
-            const minDate = new TuiDay(2024, 1, 1);
+            const minDate = TuiDay.currentLocal().append({month: 2});
 
             component.min = minDate;
             component.ngOnInit();
@@ -92,7 +90,7 @@ describe('PrimitiveRangeCalendar component', () => {
         });
 
         it('Returns min when initialized with default less than min', () => {
-            const minDate = new TuiDay(2024, 1, 1);
+            const minDate = TuiDay.currentLocal().append({month: 2});
 
             component.min = minDate;
             component.ngOnInit();
