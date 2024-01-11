@@ -25,7 +25,7 @@ export class TuiDocumentationApiPagePO {
                                 new Promise(resolve => {
                                     image.onload = resolve;
                                     image.onerror = resolve;
-                                    setTimeout(resolve, 500);
+                                    setTimeout(resolve, 1000);
                                 }),
                         ),
                     ),
