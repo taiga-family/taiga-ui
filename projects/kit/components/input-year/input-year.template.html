@@ -28,14 +28,18 @@
     </tui-primitive-textfield>
 
     <ng-template #dropdown>
-        <tui-primitive-year-picker
-            tuiPreventDefault="mousedown"
-            [disabledItemHandler]="disabledItemHandler"
-            [initialItem]="value || initialItem | tuiToYear"
-            [max]="computedMax | tuiToYear"
-            [min]="computedMin | tuiToYear"
-            [value]="value === null ? null : (value | tuiToYear)"
-            (yearClick)="onYearClick($event)"
-        ></tui-primitive-year-picker>
+        <div class="t-container">
+            <tui-scrollbar class="t-scrollbar">
+                <tui-primitive-year-picker
+                    [disabledItemHandler]="disabledItemHandler"
+                    [initialItem]="value || initialItem | tuiToYear"
+                    [max]="computedMax | tuiToYear"
+                    [min]="computedMin | tuiToYear"
+                    [value]="value === null ? null : (value | tuiToYear)"
+                    (mousedown.prevent.silent)="(0)"
+                    (yearClick)="onYearClick($event)"
+                ></tui-primitive-year-picker>
+            </tui-scrollbar>
+        </div>
     </ng-template>
 </tui-hosted-dropdown>
