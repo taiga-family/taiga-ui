@@ -5,6 +5,7 @@ import {tuiWaitForFonts} from './wait-for-fonts';
 
 interface TuiGotoOptions extends NonNullable<Parameters<Page['goto']>[1]> {
     date?: Date;
+    language?: string;
     hideHeader?: boolean;
     enableNightMode?: boolean;
     hideVersionManager?: boolean;
@@ -20,6 +21,7 @@ export async function tuiGoto(
         enableNightMode = false,
         hideVersionManager = false,
         hideLanguageSwitcher = false,
+        language,
         ...playwrightGotoOptions
     }: TuiGotoOptions = {},
 ): ReturnType<Page['goto']> {
@@ -33,6 +35,13 @@ export async function tuiGoto(
     if (enableNightMode) {
         await page.addInitScript(() =>
             globalThis.localStorage.setItem('tuiNight', 'true'),
+        );
+    }
+
+    if (language) {
+        await page.addInitScript(
+            lang => globalThis.localStorage.setItem('tuiLanguage', lang),
+            language,
         );
     }
 
