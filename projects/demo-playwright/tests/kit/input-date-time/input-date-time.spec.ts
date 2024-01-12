@@ -5,10 +5,8 @@ import {
 } from '@demo-playwright/utils';
 import {expect, Locator, test} from '@playwright/test';
 
-const {describe, beforeEach} = test;
-
-describe('InputDateTime', () => {
-    describe('API page', () => {
+test.describe('InputDateTime', () => {
+    test.describe('API page', () => {
         let documentationPage: TuiDocumentationPagePO;
         let example: Locator;
         let inputDateTime: TuiInputDateTimePO;
@@ -17,7 +15,7 @@ describe('InputDateTime', () => {
             viewport: {width: 360, height: 500},
         });
 
-        beforeEach(({page}) => {
+        test.beforeEach(({page}) => {
             documentationPage = new TuiDocumentationPagePO(page);
             example = documentationPage.apiPageExample;
             inputDateTime = new TuiInputDateTimePO(
@@ -151,11 +149,11 @@ describe('InputDateTime', () => {
         });
     });
 
-    describe('invalid date', () => {
-        describe('DMY mode', () => {
+    test.describe('invalid date', () => {
+        test.describe('DMY mode', () => {
             let inputDateTime!: TuiInputDateTimePO;
 
-            beforeEach(async ({page}) => {
+            test.beforeEach(async ({page}) => {
                 const {apiPageExample} = new TuiDocumentationPagePO(page);
 
                 inputDateTime = new TuiInputDateTimePO(
@@ -189,10 +187,10 @@ describe('InputDateTime', () => {
             });
         });
 
-        describe('YMD mode', () => {
+        test.describe('YMD mode', () => {
             let inputDateTime!: TuiInputDateTimePO;
 
-            beforeEach(async ({page}) => {
+            test.beforeEach(async ({page}) => {
                 const example = new TuiDocumentationPagePO(page).getExample(
                     '#date-localization',
                 );

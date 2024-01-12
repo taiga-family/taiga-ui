@@ -1,14 +1,12 @@
 import {TuiDocumentationPagePO, tuiGoto, TuiInputPhonePO} from '@demo-playwright/utils';
 import {expect, Locator, test} from '@playwright/test';
 
-const {beforeEach, describe} = test;
-
-describe('InputPhone', () => {
-    describe('API page', () => {
+test.describe('InputPhone', () => {
+    test.describe('API page', () => {
         let example: Locator;
         let inputPhone: TuiInputPhonePO;
 
-        beforeEach(({page}) => {
+        test.beforeEach(({page}) => {
             example = new TuiDocumentationPagePO(page).apiPageExample;
             inputPhone = new TuiInputPhonePO(example.locator('tui-input-phone'));
         });
@@ -57,8 +55,8 @@ describe('InputPhone', () => {
             await expect(inputPhone.textfield).toHaveValue('');
         });
 
-        describe("Angular form control is empty is textfield's value is just country code", () => {
-            beforeEach(async ({page}) => {
+        test.describe("Angular form control is empty is textfield's value is just country code", () => {
+            test.beforeEach(async ({page}) => {
                 await tuiGoto(
                     page,
                     'components/input-phone/API?countryCode=%2B1&tuiTextfieldCleaner=true&sandboxExpanded=true',

@@ -1,13 +1,11 @@
 import {TuiDocumentationPagePO, tuiGoto, TuiMultiSelectPO} from '@demo-playwright/utils';
 import {expect, Locator, test} from '@playwright/test';
 
-const {describe, beforeEach} = test;
-
-describe('MultiSelect', () => {
-    describe('Examples', () => {
+test.describe('MultiSelect', () => {
+    test.describe('Examples', () => {
         let documentationPage: TuiDocumentationPagePO;
 
-        beforeEach(async ({page}) => {
+        test.beforeEach(async ({page}) => {
             await tuiGoto(page, 'components/multi-select');
 
             documentationPage = new TuiDocumentationPagePO(page);
@@ -82,14 +80,14 @@ describe('MultiSelect', () => {
         });
     });
 
-    describe('API page', () => {
+    test.describe('API page', () => {
         test.use({viewport: {width: 400, height: 400}});
 
         let documentationPage!: TuiDocumentationPagePO;
         let apiPageExample!: Locator;
         let multiSelect!: TuiMultiSelectPO;
 
-        beforeEach(({page}) => {
+        test.beforeEach(({page}) => {
             documentationPage = new TuiDocumentationPagePO(page);
             apiPageExample = documentationPage.apiPageExample;
             multiSelect = new TuiMultiSelectPO(
@@ -97,7 +95,7 @@ describe('MultiSelect', () => {
             );
         });
 
-        describe('sizes', () => {
+        test.describe('sizes', () => {
             ['s', 'm', 'l'].forEach(size => {
                 test(`tuiTextfieldSize=${size}`, async ({page}) => {
                     await tuiGoto(

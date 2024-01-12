@@ -1,12 +1,10 @@
 import {TuiDocumentationPagePO, tuiGoto, TuiInputCardPO} from '@demo-playwright/utils';
 import {expect, Locator, test} from '@playwright/test';
 
-const {describe, beforeEach} = test;
-
-describe('InputExpire', () => {
+test.describe('InputExpire', () => {
     let expiryTextfield: Locator;
 
-    beforeEach(async ({page}) => {
+    test.beforeEach(async ({page}) => {
         await tuiGoto(page, 'components/input-card/API');
 
         const {apiPageExample} = new TuiDocumentationPagePO(page);
