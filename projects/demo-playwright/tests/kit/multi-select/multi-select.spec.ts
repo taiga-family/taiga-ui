@@ -114,7 +114,7 @@ test.describe('MultiSelect', () => {
             });
         });
 
-        describe('Form changes by updateOn', () => {
+        test.describe('Form changes by updateOn', () => {
             test.use({viewport: {width: 400, height: 500}});
 
             (['submit', 'blur', 'change'] as const).forEach(type => {
