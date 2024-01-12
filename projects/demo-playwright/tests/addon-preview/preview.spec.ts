@@ -1,17 +1,15 @@
 import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
-const {describe, beforeEach} = test;
-
-describe('Preview', () => {
-    describe('Examples', () => {
+test.describe('Preview', () => {
+    test.describe('Examples', () => {
         test.use({
             viewport: {width: 500, height: 500},
         });
 
         let documentationPage!: TuiDocumentationPagePO;
 
-        beforeEach(async ({page}) => {
+        test.beforeEach(async ({page}) => {
             await tuiGoto(page, 'components/preview');
             documentationPage = new TuiDocumentationPagePO(page);
         });
