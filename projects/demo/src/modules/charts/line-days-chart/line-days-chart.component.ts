@@ -32,16 +32,9 @@ export class ExampleTuiLineDaysChartComponent {
     readonly valueVariants: ReadonlyArray<ReadonlyArray<[TuiDay, number]>> = [
         new Array(91)
             .fill(0)
-            .reduce<ReadonlyArray<[TuiDay, number]>>(
-                (array, _, i) => [
-                    ...array,
-                    [
-                        new TuiDay(2020, 0, 1).append({day: i}),
-                        (i ? array[i - 1][1] : 100) + Math.random() * 20 - 10,
-                    ],
-                ],
-                [],
-            ),
+            .reduce<
+                ReadonlyArray<[TuiDay, number]>
+            >((array, _, i) => [...array, [new TuiDay(2020, 0, 1).append({day: i}), (i ? array[i - 1][1] : 100) + Math.random() * 20 - 10]], []),
         [
             [new TuiDay(2020, 1, 10), 10],
             [new TuiDay(2020, 1, 15), 150],

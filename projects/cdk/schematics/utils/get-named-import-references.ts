@@ -12,12 +12,11 @@ export function getNamedImportReferences(
         moduleSpecifier,
     });
 
-    const namedImports = importDeclarations.map(
-        declaration =>
-            declaration
-                .getNamedImports()
-                .find(specifier => specifier.getName() === namedImport)
-                ?.getNameNode(),
+    const namedImports = importDeclarations.map(declaration =>
+        declaration
+            .getNamedImports()
+            .find(specifier => specifier.getName() === namedImport)
+            ?.getNameNode(),
     );
 
     return arrayFlat(
