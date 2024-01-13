@@ -11,7 +11,7 @@ jobs:
   build-demo:
     if: ${{ !contains(github.head_ref , 'release/') }}
     name: Build demo
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - uses: taiga-family/ci/actions/setup/checkout@v1.50.5
         with:
@@ -33,7 +33,7 @@ jobs:
   cypress:
     if: ${{ !contains(github.head_ref , 'release/') }}
     needs: [build-demo]
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     strategy:
       fail-fast: false
       matrix:
@@ -90,7 +90,7 @@ jobs:
 
   playwright:
     if: ${{ !contains(github.head_ref , 'release/') }}
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     needs: [build-demo]
     env:
       max_parallel: 8
@@ -160,7 +160,7 @@ jobs:
     if: ${{ !contains(github.head_ref , 'release/') }}
     name: E2E result
     needs: [cypress, playwright]
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - uses: taiga-family/ci/actions/setup/checkout@v1.50.5
       - uses: taiga-family/ci/actions/setup/variables@v1.50.5
