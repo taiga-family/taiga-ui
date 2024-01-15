@@ -37,7 +37,8 @@
         "replicants",
         "tuiiconbutton",
         "hitbox",
-        "domcontentloaded"
+        "domcontentloaded",
+        "filechooser"
     ],
     "ignoreRegExpList": ["\\(https?://.*?\\)", "\\/{1}.+\\/{1}", "\\%2F.+", "\\%2C.+", "\\ɵ.+", "\\ыва.+"],
     "overrides": [

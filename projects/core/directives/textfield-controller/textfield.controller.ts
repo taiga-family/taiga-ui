@@ -1,4 +1,4 @@
-import {TuiContextWithImplicit} from '@taiga-ui/cdk';
+import {TuiContext} from '@taiga-ui/cdk';
 import {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
@@ -44,11 +44,11 @@ export class TuiTextfieldController {
         return this.customContentDirective.customContent || '';
     }
 
-    get icon(): PolymorpheusContent<TuiContextWithImplicit<TuiSizeL | TuiSizeS>> {
+    get icon(): PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeS>> {
         return this.iconDirective.icon;
     }
 
-    get iconLeft(): PolymorpheusContent<TuiContextWithImplicit<TuiSizeL | TuiSizeS>> {
+    get iconLeft(): PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeS>> {
         return this.iconLeftDirective.iconLeft;
     }
 

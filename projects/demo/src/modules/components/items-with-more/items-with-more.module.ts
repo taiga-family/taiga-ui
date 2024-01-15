@@ -13,7 +13,7 @@ import {
     TuiSvgModule,
 } from '@taiga-ui/core';
 import {
-    TuiBadgeModule,
+    TuiBadgeDirective,
     TuiCheckboxBlockModule,
     TuiItemsWithMoreModule,
     TuiTagModule,
@@ -32,7 +32,7 @@ import {ExampleTuiItemsWithMoreComponent} from './items-with-more.component';
         TuiNotificationModule,
         TuiItemsWithMoreModule,
         TuiCheckboxBlockModule,
-        TuiBadgeModule,
+        TuiBadgeDirective,
         TuiHostedDropdownModule,
         TuiDropdownModule,
         TuiButtonModule,

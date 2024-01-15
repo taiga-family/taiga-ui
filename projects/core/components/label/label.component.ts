@@ -7,7 +7,7 @@ import {
     Input,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
-import {TuiContextWithImplicit} from '@taiga-ui/cdk';
+import {TuiContext} from '@taiga-ui/cdk';
 import {MODE_PROVIDER} from '@taiga-ui/core/providers';
 import {TUI_MODE} from '@taiga-ui/core/tokens';
 import {TuiBrightness} from '@taiga-ui/core/types';
@@ -26,10 +26,10 @@ import {Observable} from 'rxjs';
 })
 export class TuiLabelComponent<T> {
     @Input()
-    tuiLabel: PolymorpheusContent<TuiContextWithImplicit<T | null>>;
+    tuiLabel: PolymorpheusContent<TuiContext<T | null>>;
 
     @Input()
-    context: TuiContextWithImplicit<T | null> = {
+    context: TuiContext<T | null> = {
         $implicit: null,
     };
 

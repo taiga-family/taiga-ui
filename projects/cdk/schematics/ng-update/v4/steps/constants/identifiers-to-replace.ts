@@ -14,7 +14,11 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifier[] = [
     },
     {
         from: {name: 'TuiBadgeModule', moduleSpecifier: '@taiga-ui/experimental'},
-        to: {name: 'TuiBadgeModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiBadgeDirective', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {name: 'TuiBadgeModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiBadgeDirective', moduleSpecifier: '@taiga-ui/kit'},
     },
     {
         from: {name: 'TuiCheckboxModule', moduleSpecifier: '@taiga-ui/experimental'},
@@ -45,6 +49,10 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifier[] = [
         to: {name: 'TuiTextareaComponent', moduleSpecifier: '@taiga-ui/kit'},
     },
     {
+        from: {name: 'TuiInputCountModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiInputNumberModule', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
         from: {name: 'ArrayElement', moduleSpecifier: '@taiga-ui/kit'},
         to: {name: 'TuiArrayElement', moduleSpecifier: '@taiga-ui/kit'},
     },
@@ -66,6 +74,16 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifier[] = [
         to: {
             name: 'TuiRawContentLoader',
             moduleSpecifier: '@taiga-ui/addon-doc',
+        },
+    },
+    {
+        from: {
+            name: 'TuiContextWithImplicit',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+        to: {
+            name: 'TuiContext',
+            moduleSpecifier: '@taiga-ui/cdk',
         },
     },
 ];

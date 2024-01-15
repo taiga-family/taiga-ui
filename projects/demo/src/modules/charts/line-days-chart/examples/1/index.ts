@@ -64,17 +64,8 @@ export class TuiLineDaysChartExample1 {
     private computeValue({from, to}: TuiDayRange): ReadonlyArray<[TuiDay, number]> {
         return new Array(TuiDay.lengthBetween(from, to) + 1)
             .fill(0)
-            .reduce<ReadonlyArray<[TuiDay, number]>>(
-                (array, _, i) => [
-                    ...array,
-                    [
-                        from.append({day: i}),
-                        this.isE2E
-                            ? 100
-                            : (i ? array[i - 1][1] : 100) + Math.random() * 10 - 5,
-                    ],
-                ],
-                [],
-            );
+            .reduce<
+                ReadonlyArray<[TuiDay, number]>
+            >((array, _, i) => [...array, [from.append({day: i}), this.isE2E ? 100 : (i ? array[i - 1][1] : 100) + Math.random() * 10 - 5]], []);
     }
 }

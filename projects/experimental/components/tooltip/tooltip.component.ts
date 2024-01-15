@@ -14,13 +14,13 @@ import {
     MODE_PROVIDER,
     TUI_HINT_OPTIONS,
     TUI_MODE,
+    TuiAppearanceDirective,
     TuiBrightness,
     TuiHintHoverDirective,
     TuiHintOptions,
     TuiHintOptionsDirective,
 } from '@taiga-ui/core';
 import {TuiTextfieldComponent} from '@taiga-ui/experimental/components/textfield';
-import {TuiAppearanceDirective} from '@taiga-ui/experimental/directives/appearance';
 import {Observable, takeUntil} from 'rxjs';
 
 import {TUI_TOOLTIP_OPTIONS, TuiTooltipOptions} from './tooltip.options';

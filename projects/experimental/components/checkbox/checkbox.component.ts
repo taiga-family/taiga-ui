@@ -14,9 +14,7 @@ import {
     tuiIsString,
     TuiNativeValidatorDirective,
 } from '@taiga-ui/cdk';
-import {TuiSizeS} from '@taiga-ui/core';
-import {TuiAppearanceDirective} from '@taiga-ui/experimental/directives/appearance';
-import {TUI_ICON_RESOLVER} from '@taiga-ui/experimental/tokens';
+import {TUI_ICON_RESOLVER, TuiAppearanceDirective, TuiSizeS} from '@taiga-ui/core';
 import {takeUntil} from 'rxjs';
 
 import {TUI_CHECKBOX_OPTIONS} from './checkbox.options';

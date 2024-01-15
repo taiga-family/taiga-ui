@@ -92,11 +92,12 @@
     </ng-template>
     <ng-template #svg>
         <tui-svg
+            *polymorpheusOutlet="icon as src; context: {$implicit: size}"
             automation-id="tui-file__icon"
             class="t-icon"
             [class.t-icon_blank]="isBig || isDeleted"
             [class.t-icon_error]="isError"
-            [src]="icon"
+            [src]="src"
         ></tui-svg>
     </ng-template>
 </ng-template>

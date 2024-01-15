@@ -1,10 +1,8 @@
-import {expect, Locator, Page} from '@playwright/test';
+import {Locator} from '@playwright/test';
 
-import {tuiHideElement} from '../hide-element';
+import {TuiDocumentationApiPagePO} from './documentation-api-page.po';
 
-export class TuiDocumentationPagePO {
-    readonly apiPageExample: Locator = this.page.locator('#demo-content');
-
+export class TuiDocumentationPagePO extends TuiDocumentationApiPagePO {
     readonly submitFormControlButton = this.apiPageExample.locator(
         '[automation-id="tui-demo-button__submit-state"]',
     );
@@ -12,8 +10,6 @@ export class TuiDocumentationPagePO {
     readonly resetFormControlButton = this.apiPageExample.locator(
         '[automation-id="tui-demo-button__reset-state"]',
     );
-
-    constructor(private readonly page: Page) {}
 
     getExample(selector: string): Locator {
         return this.page.locator(`${selector} [automation-id="tui-doc-example"]`);
@@ -31,29 +27,5 @@ export class TuiDocumentationPagePO {
             .locator('tui-data-list[role=listbox] [tuiOption]')
             .filter({hasText: method})
             .click();
-    }
-
-    async hideContent(): Promise<void> {
-        return tuiHideElement(this.page.locator('tui-doc-page'));
-    }
-
-    async prepareApiPageBeforeScreenshot(): Promise<void> {
-        const wrapper = this.page.locator('tui-doc-page');
-
-        const hideElements = [
-            wrapper.locator('header'),
-            ...(await wrapper.locator('> .t-content > *:not(tui-doc-demo)').all()),
-        ];
-
-        for (const element of hideElements) {
-            await tuiHideElement(element);
-        }
-
-        await this.apiPageExample.evaluate(el => el.scrollIntoView());
-        await expect(async () => {
-            expect(
-                await this.apiPageExample.boundingBox().then(box => box?.y),
-            ).toBeGreaterThanOrEqual(64);
-        }).toPass();
     }
 }

@@ -1,7 +1,7 @@
 import {Component, Inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiContextWithImplicit, TuiDay, TuiStringHandler} from '@taiga-ui/cdk';
+import {TuiContext, TuiDay, TuiStringHandler} from '@taiga-ui/cdk';
 import {TUI_MONTHS} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {map, Observable} from 'rxjs';
@@ -32,16 +32,9 @@ export class ExampleTuiLineDaysChartComponent {
     readonly valueVariants: ReadonlyArray<ReadonlyArray<[TuiDay, number]>> = [
         new Array(91)
             .fill(0)
-            .reduce<ReadonlyArray<[TuiDay, number]>>(
-                (array, _, i) => [
-                    ...array,
-                    [
-                        new TuiDay(2020, 0, 1).append({day: i}),
-                        (i ? array[i - 1][1] : 100) + Math.random() * 20 - 10,
-                    ],
-                ],
-                [],
-            ),
+            .reduce<
+                ReadonlyArray<[TuiDay, number]>
+            >((array, _, i) => [...array, [new TuiDay(2020, 0, 1).append({day: i}), (i ? array[i - 1][1] : 100) + Math.random() * 20 - 10]], []),
         [
             [new TuiDay(2020, 1, 10), 10],
             [new TuiDay(2020, 1, 15), 150],
@@ -66,7 +59,7 @@ export class ExampleTuiLineDaysChartComponent {
         this.months$.pipe(map(months => [({month, day}) => `${months[month]}, ${day}`]));
 
     readonly hintContentVariants$: Observable<
-        ReadonlyArray<PolymorpheusContent<TuiContextWithImplicit<[TuiDay, number]>>>
+        ReadonlyArray<PolymorpheusContent<TuiContext<[TuiDay, number]>>>
     > = this.months$.pipe(
         map(months => [
             '',
@@ -83,7 +76,7 @@ export class ExampleTuiLineDaysChartComponent {
 
     xStringify: TuiStringHandler<TuiDay> | null = null;
 
-    hintContent: PolymorpheusContent<TuiContextWithImplicit<[TuiDay, number]>> = '';
+    hintContent: PolymorpheusContent<TuiContext<[TuiDay, number]>> = '';
 
     dots = false;
 

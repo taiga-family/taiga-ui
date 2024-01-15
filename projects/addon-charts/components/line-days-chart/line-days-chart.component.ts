@@ -21,7 +21,7 @@ import {
 import {
     EMPTY_ARRAY,
     EMPTY_QUERY,
-    TuiContextWithImplicit,
+    TuiContext,
     TuiDay,
     TuiDestroyService,
     TuiHoveredService,
@@ -89,7 +89,7 @@ export class TuiLineDaysChartComponent implements AfterViewInit {
     smoothingFactor = this.options.smoothingFactor;
 
     @Input()
-    hintContent: PolymorpheusContent<TuiContextWithImplicit<[TuiDay, number]>>;
+    hintContent: PolymorpheusContent<TuiContext<[TuiDay, number]>>;
 
     @Input()
     xStringify: TuiStringHandler<TuiDay> | null = null;
@@ -124,8 +124,8 @@ export class TuiLineDaysChartComponent implements AfterViewInit {
     }
 
     get hint():
-        | PolymorpheusContent<TuiContextWithImplicit<[TuiDay, number]>>
-        | PolymorpheusContent<TuiContextWithImplicit<readonly TuiPoint[]>> {
+        | PolymorpheusContent<TuiContext<[TuiDay, number]>>
+        | PolymorpheusContent<TuiContext<readonly TuiPoint[]>> {
         return this.hintDirective?.hint ?? this.hintContent;
     }
 

@@ -1,10 +1,10 @@
 import {Directive, Inject, Input, TemplateRef, ViewContainerRef} from '@angular/core';
-import {TuiContextWithImplicit} from '@taiga-ui/cdk/interfaces';
+import {TuiContext} from '@taiga-ui/cdk/interfaces';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 
 const MAX_VALUE = 0x10000;
 
-export class TuiRepeatTimesContext implements TuiContextWithImplicit<number> {
+export class TuiRepeatTimesContext implements TuiContext<number> {
     constructor(readonly $implicit: number) {}
 }
 

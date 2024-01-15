@@ -14,7 +14,7 @@ import {
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {
-    TuiBadgeModule,
+    TuiBadgeDirective,
     TuiDataListWrapperModule,
     TuiInputNumberModule,
     TuiSelectModule,
@@ -38,7 +38,7 @@ import {TuiDocTypeReferencePipe} from './pipes/type-reference.pipe';
         CommonModule,
         FormsModule,
         RouterModule,
-        TuiBadgeModule,
+        TuiBadgeDirective,
         TuiSelectModule,
         TuiToggleModule,
         TuiLinkModule,

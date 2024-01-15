@@ -12,12 +12,8 @@ import {
     TuiNotificationModule,
     TuiScrollbarModule,
 } from '@taiga-ui/core';
-import {
-    TuiAvatarModule,
-    TuiBadgeModule,
-    TuiButtonModule,
-    TuiSurfaceModule,
-} from '@taiga-ui/experimental';
+import {TuiAvatarModule, TuiButtonModule, TuiSurfaceModule} from '@taiga-ui/experimental';
+import {TuiBadgeDirective} from '@taiga-ui/kit';
 
 import {TuiSurfaceExample1} from './examples/1';
 import {TuiSurfaceExample2} from './examples/2';
@@ -36,7 +32,7 @@ import {ExampleTuiSurfaceComponent} from './surface.component';
         TuiNotificationModule,
         TuiRippleModule,
         TuiRepeatTimesModule,
-        TuiBadgeModule,
+        TuiBadgeDirective,
         TuiScrollbarModule,
         TuiButtonModule,
         TuiLinkModule,

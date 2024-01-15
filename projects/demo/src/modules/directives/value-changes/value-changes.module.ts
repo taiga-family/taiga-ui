@@ -3,7 +3,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiValueChangesModule} from '@taiga-ui/cdk';
-import {TuiInputCountModule, TuiInputModule} from '@taiga-ui/kit';
+import {TuiInputModule, TuiInputNumberModule} from '@taiga-ui/kit';
 
 import {TuiValueChangesExample1} from './examples/1';
 import {TuiValueChangesExample2} from './examples/2';
@@ -13,7 +13,7 @@ import {ExampleTuiValueChangesComponent} from './value-changes.component';
     imports: [
         ReactiveFormsModule,
         TuiInputModule,
-        TuiInputCountModule,
+        TuiInputNumberModule,
         TuiValueChangesModule,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiValueChangesComponent)),

@@ -3,13 +3,11 @@ import {expect, test} from '@playwright/test';
 
 import {TuiSelectPO} from '../../../utils/page-objects/select.po';
 
-const {describe, beforeEach} = test;
-
-describe('Select', () => {
-    describe('Examples', () => {
+test.describe('Select', () => {
+    test.describe('Examples', () => {
         let documentationPage: TuiDocumentationPagePO;
 
-        beforeEach(async ({page}) => {
+        test.beforeEach(async ({page}) => {
             await tuiGoto(page, 'components/select');
 
             documentationPage = new TuiDocumentationPagePO(page);

@@ -8,7 +8,7 @@ import {
     Output,
 } from '@angular/core';
 import {DomSanitizer, SafeValue} from '@angular/platform-browser';
-import {TuiInjectionTokenType, tuiIsObserved, tuiPure} from '@taiga-ui/cdk';
+import {TuiContext, TuiInjectionTokenType, tuiIsObserved, tuiPure} from '@taiga-ui/cdk';
 import {TUI_COMMON_ICONS, TuiCommonIcons, TuiSizeL} from '@taiga-ui/core';
 import {TuiLanguage} from '@taiga-ui/i18n';
 import {TuiFileLike} from '@taiga-ui/kit/interfaces';
@@ -88,19 +88,8 @@ export class TuiFileComponent {
         return this.showDelete && tuiIsObserved(this.removed);
     }
 
-    get icon(): string {
-        if (this.state === 'normal' && this.isBig) {
-            return 'tuiIconFileLarge';
-        }
-
-        switch (this.state) {
-            case 'deleted':
-                return 'tuiIconTrashLarge';
-            case 'error':
-                return 'tuiIconAlertCircleLarge';
-            default:
-                return 'tuiIconCheckCircleLarge';
-        }
+    get icon(): PolymorpheusContent<TuiContext<TuiSizeL>> {
+        return this.state === 'loading' ? '' : this.options.icons[this.state];
     }
 
     @HostBinding('class._link')

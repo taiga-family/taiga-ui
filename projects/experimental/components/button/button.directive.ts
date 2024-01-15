@@ -7,12 +7,14 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {TuiDirectiveStylesService} from '@taiga-ui/cdk';
-import {MODE_PROVIDER, TUI_MODE, TuiBrightness} from '@taiga-ui/core';
 import {
+    MODE_PROVIDER,
+    TUI_MODE,
     TuiAppearanceDirective,
     tuiAppearanceOptionsProvider,
-} from '@taiga-ui/experimental/directives/appearance';
-import {TuiIconsDirective} from '@taiga-ui/experimental/directives/icons';
+    TuiBrightness,
+    TuiIconsDirective,
+} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
 
 import {TUI_BUTTON_OPTIONS, TuiButtonOptions} from './button.options';

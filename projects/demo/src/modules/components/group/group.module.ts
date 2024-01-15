@@ -15,7 +15,7 @@ import {
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {
-    TuiBadgeModule,
+    TuiBadgeDirective,
     TuiComboBoxModule,
     TuiDataListWrapperModule,
     TuiFieldErrorPipeModule,
@@ -38,7 +38,7 @@ import {ExampleTuiGroupComponent} from './group.component';
         TuiProjectClassModule,
         TuiRadioBlockModule,
         TuiLinkModule,
-        TuiBadgeModule,
+        TuiBadgeDirective,
         TuiButtonModule,
         TuiSelectModule,
         TuiGroupModule,

@@ -15,7 +15,7 @@ import {
 import {
     TuiActiveZoneDirective,
     tuiAsFocusableItemAccessor,
-    TuiContextWithImplicit,
+    TuiContext,
     TuiFocusableElementAccessor,
     tuiGetActualTarget,
     tuiGetClosestFocusable,
@@ -69,8 +69,7 @@ function shouldClose(
     );
 }
 
-export interface TuiHostedDropdownContext
-    extends TuiContextWithImplicit<TuiActiveZoneDirective> {
+export interface TuiHostedDropdownContext extends TuiContext<TuiActiveZoneDirective> {
     close(): void;
 }
 
@@ -153,7 +152,7 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
     /** TODO: rename in 4.0 */
     readonly openChange = this.openChange$;
 
-    readonly context!: TuiContextWithImplicit<TuiActiveZoneDirective>;
+    readonly context!: TuiContext<TuiActiveZoneDirective>;
 
     constructor(
         @Self()

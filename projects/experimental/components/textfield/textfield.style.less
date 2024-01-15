@@ -1,6 +1,7 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
 :host {
+    .transition(color);
     --t-left: 0rem;
     --t-right: 0rem;
     position: relative;
@@ -37,7 +38,8 @@
             font-size: 1rem;
         }
 
-        ::ng-deep input {
+        ::ng-deep input,
+        ::ng-deep select {
             font: var(--tui-font-text-s);
         }
 
@@ -70,7 +72,8 @@
             margin-inline-end: -0.125rem;
         }
 
-        ::ng-deep input {
+        ::ng-deep input,
+        ::ng-deep select {
             font: var(--tui-font-text-s);
         }
     }
@@ -97,7 +100,8 @@
             margin-inline-start: 0.25rem;
         }
 
-        ::ng-deep input {
+        ::ng-deep input,
+        ::ng-deep select {
             font: var(--tui-font-text-m);
         }
     }
@@ -117,17 +121,20 @@
 
     &._with-label {
         .t-template,
-        ::ng-deep input {
+        ::ng-deep input,
+        ::ng-deep select {
             padding-top: calc(var(--t-height) / 3);
 
-            &::placeholder {
+            &::placeholder,
+            &._empty {
                 color: transparent;
             }
         }
     }
 
     .t-template,
-    ::ng-deep input {
+    ::ng-deep input,
+    ::ng-deep select {
         .fullsize();
         appearance: none;
         box-sizing: border-box;
@@ -138,8 +145,8 @@
         padding: inherit;
     }
 
-    ::ng-deep input {
-        .transition(color);
+    ::ng-deep input,
+    ::ng-deep select {
         pointer-events: auto;
 
         &:read-only ~ .t-filler {
@@ -157,25 +164,26 @@
             }
         }
 
-        &:not(:placeholder-shown) {
+        &:not(._empty) {
             & ~ label {
                 font-size: 0.83em;
                 transform: translateY(-0.7em);
             }
 
-            &:not(:disabled):not(:read-only)[data-invalid='true'] ~ label,
-            &:invalid:not(:disabled):not(:read-only):not([data-invalid='true']) ~ label {
+            &:not(:disabled):not(._readonly)[data-invalid='true'] ~ label,
+            &:invalid:not(:disabled):not(._readonly):not([data-invalid='false']) ~ label {
                 color: var(--tui-negative);
             }
 
-            &:not(:disabled):not(:read-only:not(._readonly)) ~ .t-content .t-clear {
+            &:not(:disabled):not(._readonly) ~ .t-content .t-clear {
                 display: flex;
             }
         }
 
-        &:not(:read-only) {
+        &:not(._readonly) {
             .appearance-focus({
-                &::placeholder {
+                &::placeholder,
+                &._empty {
                     color: var(--tui-text-03);
                 }
 
@@ -195,6 +203,11 @@
         display: block;
         flex: 1;
         font-size: inherit;
+    }
+
+    ::ng-deep label,
+    ::ng-deep input::placeholder,
+    ::ng-deep select._empty {
         color: var(--tui-text-02);
     }
 }

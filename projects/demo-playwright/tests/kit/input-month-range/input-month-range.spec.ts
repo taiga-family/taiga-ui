@@ -5,10 +5,8 @@ import {
 } from '@demo-playwright/utils';
 import {expect, Locator, test} from '@playwright/test';
 
-const {describe, beforeEach} = test;
-
-describe('InputMonthRange', () => {
-    describe('API', () => {
+test.describe('InputMonthRange', () => {
+    test.describe('API', () => {
         let documentationPage: TuiDocumentationPagePO;
         let example: Locator;
         let inputMonthRange: TuiInputMonthRangePO;
@@ -17,7 +15,7 @@ describe('InputMonthRange', () => {
             viewport: {width: 360, height: 500},
         });
 
-        beforeEach(({page}) => {
+        test.beforeEach(({page}) => {
             documentationPage = new TuiDocumentationPagePO(page);
             example = documentationPage.apiPageExample;
             inputMonthRange = new TuiInputMonthRangePO(

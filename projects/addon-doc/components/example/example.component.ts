@@ -18,7 +18,7 @@ import {
     TUI_DOC_EXAMPLE_TEXTS,
 } from '@taiga-ui/addon-doc/tokens';
 import {tuiRawLoadRecord} from '@taiga-ui/addon-doc/utils';
-import {TUI_IS_E2E, TuiContextWithImplicit, TuiHandler} from '@taiga-ui/cdk';
+import {TUI_IS_E2E, TuiContext, TuiHandler} from '@taiga-ui/cdk';
 import {TuiAlertService} from '@taiga-ui/core';
 import {TUI_COPY_TEXTS} from '@taiga-ui/kit';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
@@ -88,7 +88,7 @@ export class TuiDocExampleComponent {
         >,
         @Inject(TUI_IS_E2E) readonly isE2E: boolean,
         @Inject(TUI_DOC_CODE_ACTIONS)
-        readonly codeActions: Array<PolymorpheusContent<TuiContextWithImplicit<string>>>,
+        readonly codeActions: Array<PolymorpheusContent<TuiContext<string>>>,
         @Inject(Router) private readonly router: Router,
         @Inject(ActivatedRoute) private readonly route: ActivatedRoute,
         @Inject(NgLocation) private readonly ngLocation: NgLocation,

@@ -1,9 +1,9 @@
 import {Provider} from '@angular/core';
-import {TuiContextWithImplicit, tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
+import {TuiContext, tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface TuiRatingOptions {
-    readonly icon: PolymorpheusContent<TuiContextWithImplicit<number>>;
+    readonly icon: PolymorpheusContent<TuiContext<number>>;
     readonly max: number;
 }
 

@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiCurrency, tuiGetCurrencySymbol} from '@taiga-ui/addon-commerce';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiContextWithImplicit, tuiRound, tuiSum} from '@taiga-ui/cdk';
+import {TuiContext, tuiRound, tuiSum} from '@taiga-ui/cdk';
 import {tuiFormatNumber, TuiSizeXL, TuiSizeXS} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
@@ -50,9 +50,7 @@ export class ExampleTuiPieChartComponent {
 
     size = this.sizeVariants[2];
 
-    readonly contentVariants: ReadonlyArray<
-        PolymorpheusContent<TuiContextWithImplicit<number>>
-    > = [
+    readonly contentVariants: ReadonlyArray<PolymorpheusContent<TuiContext<number>>> = [
         '',
         ({$implicit}) => this.getPercent($implicit),
         ({$implicit}) => this.format($implicit),

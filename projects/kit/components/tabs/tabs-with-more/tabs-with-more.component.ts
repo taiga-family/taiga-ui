@@ -18,7 +18,7 @@ import {
     EMPTY_QUERY,
     TuiActiveZoneDirective,
     tuiClamp,
-    TuiContextWithImplicit,
+    TuiContext,
     tuiGetClosestFocusable,
     tuiIsElement,
     tuiIsNativeFocused,
@@ -51,7 +51,7 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
     moreContent: PolymorpheusContent;
 
     @Input()
-    dropdownContent: PolymorpheusContent<TuiContextWithImplicit<TuiActiveZoneDirective>>;
+    dropdownContent: PolymorpheusContent<TuiContext<TuiActiveZoneDirective>>;
 
     @Input()
     @HostBinding('class._underline')

@@ -16,7 +16,7 @@ import {
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     tuiAsFocusableItemAccessor,
     tuiClamp,
-    TuiContextWithImplicit,
+    TuiContext,
     TuiFocusableElementAccessor,
     tuiIsNativeFocusedIn,
     TuiNativeFocusableElement,
@@ -80,7 +80,7 @@ export class TuiPaginationComponent
      * Customization for page number display.
      */
     @Input()
-    content: PolymorpheusContent<TuiContextWithImplicit<number>>;
+    content: PolymorpheusContent<TuiContext<number>>;
 
     /**
      * Active page index

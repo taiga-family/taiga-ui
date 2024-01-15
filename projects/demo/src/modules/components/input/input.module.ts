@@ -27,7 +27,6 @@ import {
 import {
     TuiAvatarModule,
     TuiDataListWrapperModule,
-    TuiInputCountModule,
     TuiInputDateModule,
     TuiInputModule,
     TuiInputNumberModule,
@@ -59,7 +58,6 @@ import {ExampleTuiInputComponent} from './input.component';
         CommonModule,
         TuiInputModule,
         TuiInputNumberModule,
-        TuiInputCountModule,
         TuiSelectModule,
         TuiGroupModule,
         TuiMapperPipeModule,

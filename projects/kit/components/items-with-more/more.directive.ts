@@ -1,5 +1,5 @@
 import {Directive} from '@angular/core';
-import {TuiContextWithImplicit} from '@taiga-ui/cdk';
+import {TuiContext} from '@taiga-ui/cdk';
 
 @Directive({
     selector: '[tuiMore]',
@@ -8,7 +8,7 @@ export class TuiMoreDirective {
     static ngTemplateContextGuard(
         _dir: TuiMoreDirective,
         _ctx: unknown,
-    ): _ctx is TuiContextWithImplicit<number> {
+    ): _ctx is TuiContext<number> {
         return true;
     }
 }

@@ -16,7 +16,7 @@ import {
 import {
     AbstractTuiInteractive,
     tuiAsFocusableItemAccessor,
-    TuiContextWithImplicit,
+    TuiContext,
     tuiIsNativeFocusedIn,
     tuiPure,
     tuiRetargetedBoundaryCrossing,
@@ -224,13 +224,11 @@ export class TuiPrimitiveTextfieldComponent
         );
     }
 
-    get iconContent(): PolymorpheusContent<TuiContextWithImplicit<TuiSizeL | TuiSizeS>> {
+    get iconContent(): PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeS>> {
         return this.controller.icon;
     }
 
-    get iconLeftContent(): PolymorpheusContent<
-        TuiContextWithImplicit<TuiSizeL | TuiSizeS>
-    > {
+    get iconLeftContent(): PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeS>> {
         return this.controller.iconLeft;
     }
 

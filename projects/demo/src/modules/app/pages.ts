@@ -421,12 +421,6 @@ export const pages: TuiDocPages = [
             },
             {
                 section: 'Components',
-                title: 'InputCount',
-                keywords: 'селект, форма, числа, ввод, input, select, count',
-                route: '/components/input-count',
-            },
-            {
-                section: 'Components',
                 title: 'InputDate',
                 keywords:
                     'поле, инпут, форма, ввод, input, календарь, день, ' +
@@ -876,12 +870,6 @@ export const pages: TuiDocPages = [
         subPages: [
             {
                 section: 'Experimental',
-                title: 'Badge ',
-                keywords: 'бэдж, бейдж, овал, badge, нотификация',
-                route: '/experimental/badge',
-            },
-            {
-                section: 'Experimental',
                 title: 'BadgeNotification',
                 keywords: 'бэдж, бейдж, circle, круг, badge, alert, нотификация',
                 route: '/experimental/badge-notification',
@@ -1024,10 +1012,10 @@ export const pages: TuiDocPages = [
         route: '/experimental/amount',
     },
     {
-        section: 'Experimental',
+        section: 'Components',
         title: 'Appearance',
         keywords: 'colors, css, theme, custom, style',
-        route: '/experimental/appearance',
+        route: '/components/appearance',
     },
     {
         section: 'Experimental',

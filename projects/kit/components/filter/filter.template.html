@@ -17,12 +17,14 @@
         </ng-container>
         <tui-badge
             *ngIf="badgeHandler(item) as badgeValue"
+            appearance="neutral"
             automation-id="tui-filter__badge"
             tuiMode="onLight"
             class="t-badge"
             [class.t-badge_disabled]="disabledItemHandler(item)"
-            [size]="size"
-            [value]="badgeValue"
-        ></tui-badge>
+            [size]="badgeSize"
+        >
+            {{ badgeValue }}
+        </tui-badge>
     </div>
 </tui-checkbox-block>

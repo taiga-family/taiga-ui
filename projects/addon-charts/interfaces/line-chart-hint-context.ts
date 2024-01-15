@@ -1,5 +1,5 @@
-import {TuiContextWithImplicit} from '@taiga-ui/cdk';
+import {TuiContext} from '@taiga-ui/cdk';
 
-export interface TuiLineChartHintContext<T> extends TuiContextWithImplicit<T> {
+export interface TuiLineChartHintContext<T> extends TuiContext<T> {
     readonly index?: number;
 }

@@ -20,7 +20,7 @@ import {
     TuiActiveZoneDirective,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    TuiContextWithImplicit,
+    TuiContext,
     TuiFocusableElementAccessor,
     tuiIsNativeFocused,
     tuiIsPresent,
@@ -97,9 +97,7 @@ export class TuiComboBoxComponent<T>
     readonly searchChange = new EventEmitter<string | null>();
 
     @ContentChild(TuiDataListDirective, {read: TemplateRef})
-    readonly datalist: PolymorpheusContent<
-        TuiContextWithImplicit<TuiActiveZoneDirective>
-    >;
+    readonly datalist: PolymorpheusContent<TuiContext<TuiActiveZoneDirective>>;
 
     open = false;
 
@@ -122,9 +120,7 @@ export class TuiComboBoxComponent<T>
         return this.textfieldSize.size;
     }
 
-    get arrow(): PolymorpheusContent<
-        TuiContextWithImplicit<TuiSizeL | TuiSizeM | TuiSizeS>
-    > {
+    get arrow(): PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeM | TuiSizeS>> {
         return !this.interactive ? this.arrowMode.disabled : this.arrowMode.interactive;
     }
 

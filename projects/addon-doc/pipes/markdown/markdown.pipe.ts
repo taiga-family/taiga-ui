@@ -9,10 +9,10 @@ import {
 import {DomSanitizer} from '@angular/platform-browser';
 import {TuiRawLoaderContent} from '@taiga-ui/addon-doc/interfaces';
 import {tuiRawLoad} from '@taiga-ui/addon-doc/utils';
-import {TuiSafeHtml} from '@taiga-ui/cdk';
+import {TuiSafeHtml, TuiStringHandler} from '@taiga-ui/cdk';
 import {TUI_SANITIZER} from '@taiga-ui/core';
 import {marked, Renderer} from 'marked';
-import {map, Observable, of, switchMap} from 'rxjs';
+import {identity, map, Observable, of, switchMap} from 'rxjs';
 
 @Pipe({
     standalone: true,
@@ -26,9 +26,13 @@ export class TuiMarkdownPipe implements PipeTransform {
         @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
     ) {}
 
-    transform(value: TuiRawLoaderContent): Observable<TuiSafeHtml> {
+    transform(
+        value: TuiRawLoaderContent,
+        mapper: TuiStringHandler<string> = identity,
+    ): Observable<TuiSafeHtml> {
         return of(value).pipe(
             switchMap(tuiRawLoad),
+            map(mapper),
             switchMap(async markdown =>
                 marked
                     .use({

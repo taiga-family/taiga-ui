@@ -12,7 +12,7 @@ import {
 import {tuiLineChartDrivers} from '@taiga-ui/addon-charts/components/line-chart';
 import {
     EMPTY_QUERY,
-    TuiContextWithImplicit,
+    TuiContext,
     TuiDay,
     TuiDestroyService,
     TuiHoveredService,
@@ -39,7 +39,7 @@ export class TuiLineDaysChartHintDirective implements AfterContentInit {
     private readonly charts: QueryList<TuiLineDaysChartComponent> = EMPTY_QUERY;
 
     @Input('tuiLineChartHint')
-    hint: PolymorpheusContent<TuiContextWithImplicit<readonly TuiPoint[]>>;
+    hint: PolymorpheusContent<TuiContext<readonly TuiPoint[]>>;
 
     constructor(
         @Self() @Inject(TuiDestroyService) private readonly destroy$: TuiDestroyService,

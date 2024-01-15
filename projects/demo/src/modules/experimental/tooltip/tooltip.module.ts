@@ -3,17 +3,14 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {tuiGetDocModules} from '@taiga-ui/addon-doc';
 import {
+    TuiAppearanceDirective,
     TuiLinkModule,
     TuiLoaderModule,
     TuiModeModule,
     TuiNotificationModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {
-    TuiAppearanceDirective,
-    TuiIconModule,
-    TuiTooltipModule,
-} from '@taiga-ui/experimental';
+import {TuiIconModule, TuiTooltipModule} from '@taiga-ui/experimental';
 import {TuiInputModule} from '@taiga-ui/kit';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 

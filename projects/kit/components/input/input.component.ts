@@ -17,7 +17,7 @@ import {
     TuiActiveZoneDirective,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    TuiContextWithImplicit,
+    TuiContext,
     TuiFocusableElementAccessor,
     tuiIsNativeFocused,
 } from '@taiga-ui/cdk';
@@ -62,9 +62,7 @@ export class TuiInputComponent
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
     @ContentChild(TuiDataListDirective, {read: TemplateRef})
-    readonly datalist: PolymorpheusContent<
-        TuiContextWithImplicit<TuiActiveZoneDirective>
-    >;
+    readonly datalist: PolymorpheusContent<TuiContext<TuiActiveZoneDirective>>;
 
     open = false;
 

@@ -12,7 +12,7 @@ import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
     TUI_DEFAULT_IDENTITY_MATCHER,
-    TuiContextWithImplicit,
+    TuiContext,
     TuiIdentityMatcher,
     tuiIsPresent,
     tuiTypedFromEvent,
@@ -50,7 +50,7 @@ export class TuiSelectOptionComponent<T> implements OnInit, DoCheck {
     constructor(
         @Inject(TUI_COMMON_ICONS) readonly icons: TuiCommonIcons,
         @Inject(POLYMORPHEUS_CONTEXT)
-        readonly context: TuiContextWithImplicit<TemplateRef<Record<string, unknown>>>,
+        readonly context: TuiContext<TemplateRef<Record<string, unknown>>>,
         @Inject(TUI_DATA_LIST_HOST)
         private readonly host: TuiDataListHost<T>,
         @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,

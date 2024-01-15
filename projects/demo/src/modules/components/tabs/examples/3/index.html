@@ -31,10 +31,13 @@
         Settings
     </button>
 </tui-tabs>
-<tui-input-count
+<tui-input-number
+    decimal="never"
     class="tui-space_top-4"
     [max]="2"
+    [min]="0"
+    [step]="1"
     [(ngModel)]="activeItemIndex"
 >
     activeItemIndex
-</tui-input-count>
+</tui-input-number>

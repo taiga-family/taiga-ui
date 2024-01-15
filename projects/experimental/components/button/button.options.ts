@@ -1,7 +1,6 @@
 import {Provider} from '@angular/core';
 import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
-import {TuiSizeXL, TuiSizeXS} from '@taiga-ui/core';
-import {TuiAppearanceOptions} from '@taiga-ui/experimental/directives/appearance';
+import {TuiAppearanceOptions, TuiSizeXL, TuiSizeXS} from '@taiga-ui/core';
 
 export interface TuiButtonOptions extends TuiAppearanceOptions {
     readonly size: TuiSizeXL | TuiSizeXS;

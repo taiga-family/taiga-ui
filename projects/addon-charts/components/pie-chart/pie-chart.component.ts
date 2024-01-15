@@ -9,7 +9,7 @@ import {
     Output,
 } from '@angular/core';
 import {SafeValue} from '@angular/platform-browser';
-import {TuiContextWithImplicit, TuiIdService, tuiPure, tuiSum} from '@taiga-ui/cdk';
+import {TuiContext, TuiIdService, tuiPure, tuiSum} from '@taiga-ui/cdk';
 import {
     TuiHintOptionsDirective,
     tuiHintOptionsProvider,
@@ -80,7 +80,7 @@ export class TuiPieChartComponent {
         return !this.getSum(this.value);
     }
 
-    get hintContent(): PolymorpheusContent<TuiContextWithImplicit<number>> {
+    get hintContent(): PolymorpheusContent<TuiContext<number>> {
         return this.hintOptions?.content || '';
     }
 

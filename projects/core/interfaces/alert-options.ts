@@ -1,4 +1,4 @@
-import {TuiContextWithImplicit, TuiHandler} from '@taiga-ui/cdk';
+import {TuiContext, TuiHandler} from '@taiga-ui/cdk';
 import {TuiNotification} from '@taiga-ui/core/enums';
 import {TuiNotificationT} from '@taiga-ui/core/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
@@ -16,7 +16,7 @@ export interface TuiAlertOptions<I> {
     readonly hasCloseButton: boolean;
     /** @deprecated use icon instead **/
     readonly hasIcon: boolean;
-    readonly icon: PolymorpheusContent<TuiContextWithImplicit<TuiNotificationT>>;
+    readonly icon: PolymorpheusContent<TuiContext<TuiNotificationT>>;
     readonly label: PolymorpheusContent<TuiAlertOptions<I>>;
     readonly status: TuiNotification | TuiNotificationT;
 }

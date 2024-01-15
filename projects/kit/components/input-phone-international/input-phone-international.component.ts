@@ -18,7 +18,7 @@ import {
     CHAR_PLUS,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    TuiContextWithImplicit,
+    TuiContext,
     TuiFocusableElementAccessor,
     tuiPure,
     TuiTypedMapper,
@@ -94,9 +94,8 @@ export class TuiInputPhoneInternationalComponent
 
     open = false;
 
-    readonly arrow: PolymorpheusContent<
-        TuiContextWithImplicit<TuiSizeL | TuiSizeM | TuiSizeS>
-    > = TUI_ARROW;
+    readonly arrow: PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeM | TuiSizeS>> =
+        TUI_ARROW;
 
     constructor(
         @Optional()

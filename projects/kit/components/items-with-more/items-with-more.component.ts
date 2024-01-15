@@ -13,7 +13,7 @@ import {
 } from '@ng-web-apis/mutation-observer';
 import {
     EMPTY_QUERY,
-    TuiContextWithImplicit,
+    TuiContext,
     TuiDestroyService,
     TuiItemDirective,
     TuiResizeService,
@@ -49,7 +49,7 @@ export class TuiItemsWithMoreComponent {
     readonly items: QueryList<TemplateRef<unknown>> = EMPTY_QUERY;
 
     @ContentChild(TuiMoreDirective, {read: TemplateRef})
-    readonly more?: TemplateRef<TuiContextWithImplicit<number>>;
+    readonly more?: TemplateRef<TuiContext<number>>;
 
     constructor(
         @Inject(TuiItemsWithMoreDirective) readonly directive: TuiItemsWithMoreDirective,

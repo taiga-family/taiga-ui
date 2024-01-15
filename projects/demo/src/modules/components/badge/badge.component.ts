@@ -1,8 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiSizeL, TuiSizeXS} from '@taiga-ui/core';
-import {TuiStatus} from '@taiga-ui/kit';
+import {TuiDocExample, TuiRawLoaderContent} from '@taiga-ui/addon-doc';
+import {TuiSizeS, TuiSizeXL} from '@taiga-ui/core';
 
 @Component({
     selector: 'example-badge',
@@ -10,33 +9,44 @@ import {TuiStatus} from '@taiga-ui/kit';
     changeDetection,
 })
 export class ExampleTuiBadgeComponent {
-    readonly exampleModule = import('./examples/import/import-module.md?raw');
-    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    readonly exampleModule: TuiRawLoaderContent = import(
+        './examples/import/import-module.md?raw'
+    );
+
+    readonly exampleHtml: TuiRawLoaderContent = import(
+        './examples/import/insert-template.md?raw'
+    );
 
     readonly example1: TuiDocExample = {
-        TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
-        LESS: import('./examples/1/index.less?raw'),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
     };
 
     readonly example3: TuiDocExample = {
-        TypeScript: import('./examples/3/index.ts?raw'),
         HTML: import('./examples/3/index.html?raw'),
-        LESS: import('./examples/3/index.less?raw'),
     };
 
     readonly example4: TuiDocExample = {
-        TypeScript: import('./examples/4/index.ts?raw'),
         HTML: import('./examples/4/index.html?raw'),
+        LESS: import('./examples/4/index.less?raw'),
     };
 
-    readonly statusVariants: readonly TuiStatus[] = [
-        'default',
+    readonly example5: TuiDocExample = {
+        HTML: import('./examples/5/index.html?raw'),
+        LESS: import('./examples/5/index.less?raw'),
+    };
+
+    readonly example6: TuiDocExample = {
+        TypeScript: import('./examples/6/index.ts?raw'),
+        HTML: import('./examples/6/index.html?raw'),
+    };
+
+    readonly appearanceVariants = [
+        '',
+        'accent',
         'primary',
         'custom',
         'success',
@@ -46,26 +56,14 @@ export class ExampleTuiBadgeComponent {
         'neutral',
     ];
 
-    status = this.statusVariants[0];
+    appearance = this.appearanceVariants[0];
 
-    values: {[key: string]: number | string} = {
-        Taiga: 'Taiga',
-        'Very long text': 'Very long text',
-        '5': 5,
-        '100': 100,
-        '"100"': '100',
-        '""': '',
-    };
+    readonly sizeVariants: ReadonlyArray<TuiSizeS | TuiSizeXL> = ['s', 'm', 'l', 'xl'];
 
-    readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeXS> = ['xs', 's', 'm', 'l'];
+    size: TuiSizeS | TuiSizeXL = this.sizeVariants[1];
 
-    size: TuiSizeL | TuiSizeXS = this.sizeVariants[1];
+    contentTypeVariants = ['text', 'with icon', 'image'];
+    contentType = this.contentTypeVariants[0];
 
-    valueVariants: ReadonlyArray<number | string> = Object.keys(this.values);
-
-    value: number | string = 'Taiga';
-
-    hoverable = false;
-
-    withIcon = false;
+    dot = false;
 }

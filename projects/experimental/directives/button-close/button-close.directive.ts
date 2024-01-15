@@ -1,7 +1,7 @@
 import {Directive, Inject} from '@angular/core';
 import {TuiStringHandler} from '@taiga-ui/cdk';
+import {TUI_ICON_RESOLVER} from '@taiga-ui/core';
 import {tuiButtonOptionsProvider} from '@taiga-ui/experimental/components';
-import {TUI_ICON_RESOLVER} from '@taiga-ui/experimental/tokens';
 
 import {TUI_BUTTON_CLOSE_ICON} from './button-close.options';
 

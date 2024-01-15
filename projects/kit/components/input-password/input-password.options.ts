@@ -1,12 +1,12 @@
 import {Provider} from '@angular/core';
-import {TuiContextWithImplicit, tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
+import {TuiContext, tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface TuiInputPasswordOptions {
     readonly icons: Readonly<{
-        hide: PolymorpheusContent<TuiContextWithImplicit<TuiSizeL | TuiSizeS>>;
-        show: PolymorpheusContent<TuiContextWithImplicit<TuiSizeL | TuiSizeS>>;
+        hide: PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeS>>;
+        show: PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeS>>;
     }>;
 }
 

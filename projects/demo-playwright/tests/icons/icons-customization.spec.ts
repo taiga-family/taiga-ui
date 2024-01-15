@@ -1,13 +1,11 @@
 import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
-const {describe, beforeEach} = test;
-
-describe('Icons Customization', () => {
-    describe('Examples', () => {
+test.describe('Icons Customization', () => {
+    test.describe('Examples', () => {
         let documentationPage: TuiDocumentationPagePO;
 
-        beforeEach(async ({page}) => {
+        test.beforeEach(async ({page}) => {
             await tuiGoto(page, 'icons/customization');
 
             documentationPage = new TuiDocumentationPagePO(page);

@@ -25,12 +25,12 @@ import { TuiBadgeModule } from "@taiga-ui/experimental";
 export class TestComponent {
 }`;
 
-const COMPONENT_AFTER = `import { TuiBadgeModule } from "@taiga-ui/kit";
+const COMPONENT_AFTER = `import { TuiBadgeDirective } from "@taiga-ui/kit";
 
 @Component({
     standalone: true,
     templateUrl: './test.template.html',
-    imports: [TuiBadgeModule]
+    imports: [TuiBadgeDirective]
 })
 export class TestComponent {
 }`;
@@ -47,6 +47,11 @@ const TEMPLATE_BEFORE = `
 >
     <tui-svg src="tuiIconHelpCircle"></tui-svg>
 </tui-badge>
+<tui-badge
+    status="success"
+>
+    <tui-svg src="tuiIconHelpCircle"></tui-svg>
+</tui-badge>
 `;
 
 const TEMPLATE_AFTER = `
@@ -58,9 +63,15 @@ const TEMPLATE_AFTER = `
 <tui-badge
     appearance="success"
    ${''}
+iconLeft="tuiIconHelpCircle">
+    ${''}
+Taiga</tui-badge>
+<!-- Taiga migration TODO: use "<tui-icon>" with "tuiBadge" directive for icon-only badges instead -->
+<tui-badge
+    appearance="success"
 >
     <tui-svg src="tuiIconHelpCircle"></tui-svg>
-Taiga</tui-badge>
+</tui-badge>
 `;
 
 describe('ng-update', () => {

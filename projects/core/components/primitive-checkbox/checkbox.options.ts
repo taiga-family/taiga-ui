@@ -1,5 +1,5 @@
 import {Provider} from '@angular/core';
-import {TuiContextWithImplicit, tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
+import {TuiContext, tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 import {TuiAppearance} from '@taiga-ui/core/enums';
 import {TuiSizeL} from '@taiga-ui/core/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
@@ -11,8 +11,8 @@ export interface TuiCheckboxOptions {
         unchecked: string;
     }>;
     readonly icons: Readonly<{
-        checked: PolymorpheusContent<TuiContextWithImplicit<TuiSizeL>>;
-        indeterminate: PolymorpheusContent<TuiContextWithImplicit<TuiSizeL>>;
+        checked: PolymorpheusContent<TuiContext<TuiSizeL>>;
+        indeterminate: PolymorpheusContent<TuiContext<TuiSizeL>>;
     }>;
     readonly size: TuiSizeL;
 }

@@ -1,22 +1,28 @@
 <div class="flex">
-    <tui-input-count
+    <tui-input-number
+        decimal="never"
         class="element"
+        [step]="1"
         [(ngModel)]="scrollTop"
     >
         scrollTop
-    </tui-input-count>
-    <tui-input-count
+    </tui-input-number>
+    <tui-input-number
+        decimal="never"
         class="element"
+        [step]="1"
         [(ngModel)]="scrollLeft"
     >
         scrollLeft
-    </tui-input-count>
-    <tui-input-count
+    </tui-input-number>
+    <tui-input-number
+        decimal="never"
         class="element"
+        [step]="1"
         [(ngModel)]="duration"
     >
         duration
-    </tui-input-count>
+    </tui-input-number>
     <button
         tuiButton
         type="button"

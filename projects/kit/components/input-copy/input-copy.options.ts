@@ -1,10 +1,10 @@
 import {Provider} from '@angular/core';
-import {TuiContextWithImplicit, tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
+import {TuiContext, tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 import {TuiHintDirection, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface TuiInputCopyOptions {
-    readonly icon: PolymorpheusContent<TuiContextWithImplicit<TuiSizeL | TuiSizeS>>;
+    readonly icon: PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeS>>;
     readonly messageAppearance: string;
     readonly messageDirection: TuiHintDirection;
     readonly successMessage: PolymorpheusContent;
