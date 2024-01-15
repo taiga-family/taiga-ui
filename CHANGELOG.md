@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.62.0](https://github.com/taiga-family/taiga-ui/compare/v3.59.0...v3.62.0) (2024-01-15)
+
+### Features
+
+- **kit:** `File` add ability to customize icons ([#6418](https://github.com/taiga-family/taiga-ui/issues/6418))
+  ([a13e88a](https://github.com/taiga-family/taiga-ui/commit/a13e88a5d062dc6c78320998afc170eb0bb65df5))
+
+### Bug Fixes
+
+- **cdk:** `DirectiveStylesService` fix ssr memory leak ([#6288](https://github.com/taiga-family/taiga-ui/issues/6288))
+  ([799e7d6](https://github.com/taiga-family/taiga-ui/commit/799e7d65b52ef8acc72ea43545d46d0de180fd7d))
+- **cdk:** `ng-add` use actual dompurify version ([#6358](https://github.com/taiga-family/taiga-ui/issues/6358))
+  ([2abddb0](https://github.com/taiga-family/taiga-ui/commit/2abddb07681d1024313550f8a256072a87211769))
+- **cdk:** respect client size in `TUI_WINDOW_SIZE` ([#6329](https://github.com/taiga-family/taiga-ui/issues/6329))
+  ([120dd8e](https://github.com/taiga-family/taiga-ui/commit/120dd8e022eb86d31894e5572f329bc6ee508650))
+- **core:** `Calendar` properly react to markers change ([#6258](https://github.com/taiga-family/taiga-ui/issues/6258))
+  ([fcea78d](https://github.com/taiga-family/taiga-ui/commit/fcea78da92d07baa404de0ea47fcf8cfc8cde5e4))
+- **core:** page scrolling jumps to top in Iframe when modal is opened
+  ([#6293](https://github.com/taiga-family/taiga-ui/issues/6293))
+  ([e8ac4ea](https://github.com/taiga-family/taiga-ui/commit/e8ac4ea2220f0ff4807c3b6cef944d61f1d073e0))
+- **i18n:** fix Chinese translation of country names ([#6412](https://github.com/taiga-family/taiga-ui/issues/6412))
+  ([b03d8db](https://github.com/taiga-family/taiga-ui/commit/b03d8db83c1c6dfe4b45acbaccf906d604f50a5e))
+- **kit:** `ComboBox` fix empty string option incorrect behavior
+  ([#6328](https://github.com/taiga-family/taiga-ui/issues/6328))
+  ([1983340](https://github.com/taiga-family/taiga-ui/commit/1983340ae985bf5e59b667c7090dc3ee558e2dee))
+- **kit:** `InputYear` fix dropdown paddings ([#6431](https://github.com/taiga-family/taiga-ui/issues/6431))
+  ([ee8316f](https://github.com/taiga-family/taiga-ui/commit/ee8316f715b63338c254f7e6d0fee898ed094da8))
+
 ## [3.61.0](https://github.com/taiga-family/taiga-ui/compare/v3.59.0...v3.61.0) (2023-12-25)
 
 ### Bug Fixes
