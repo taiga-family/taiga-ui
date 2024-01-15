@@ -24,7 +24,7 @@ test.describe('ComboBox', () => {
         await expect(page).toHaveScreenshot('01-combobox-dont-allow-disabled-04.png');
     });
 
-    describe('API', () => {
+    test.describe('API', () => {
         [true, false].forEach(strict => {
             test(`search shouldn't be reset if an exact match is entered when strict is ${strict}`, async ({
                 page,
