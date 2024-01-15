@@ -1,5 +1,5 @@
 import {TuiComboBoxPO, TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
-import {expect, Locator, Page, test} from '@playwright/test';
+import {expect, test} from '@playwright/test';
 
 test.describe('ComboBox', () => {
     test.use({viewport: {width: 500, height: 500}});
@@ -34,7 +34,10 @@ test.describe('ComboBox', () => {
                 const comboBoxPO = new TuiComboBoxPO(apiPageExample);
                 const textfield = comboBoxPO.textfield.first();
 
-                await visitBy(page, strict);
+                await tuiGoto(
+                    page,
+                    `components/combo-box/API?strict=${strict}&sandboxExpanded=true`,
+                );
                 await expect(page).toHaveScreenshot(
                     `search-should-not-be-reset-strict-${strict}.png`,
                 );
@@ -46,14 +49,14 @@ test.describe('ComboBox', () => {
                 );
 
                 await comboBoxPO.selectOptions([0]);
-                await focusWrapper(apiPageExample);
+                await apiPageExample.click({force: true});
                 await expect(page).toHaveScreenshot(
                     `search-should-not-be-reset-strict-focused-${strict}.png`,
                 );
 
                 await textfield.click();
                 await page.keyboard.press('Backspace');
-                await focusWrapper(apiPageExample);
+                await apiPageExample.click({force: true});
                 await expect(page).toHaveScreenshot(
                     `search-should-not-be-reset-strict-backspaced-${strict}.png`,
                 );
@@ -61,7 +64,7 @@ test.describe('ComboBox', () => {
                 await textfield.click();
                 await page.keyboard.press('Control+A');
                 await page.keyboard.press('Backspace');
-                await focusWrapper(apiPageExample);
+                await apiPageExample.click({force: true});
                 await expect(page).toHaveScreenshot(
                     `search-should-not-be-reset-strict-remove-all-${strict}.png`,
                 );
@@ -72,7 +75,10 @@ test.describe('ComboBox', () => {
                 const comboBoxPO = new TuiComboBoxPO(apiPageExample);
                 const textfield = comboBoxPO.textfield.first();
 
-                await visitBy(page, strict);
+                await tuiGoto(
+                    page,
+                    `components/combo-box/API?strict=${strict}&sandboxExpanded=true`,
+                );
 
                 await textfield.click();
                 await page.keyboard.type('dOlLaRs (237)');
@@ -90,7 +96,7 @@ test.describe('ComboBox', () => {
                     `correct-word-match-when-strict-backspaced-${strict}.png`,
                 );
 
-                await focusWrapper(apiPageExample);
+                await apiPageExample.click({force: true});
 
                 await expect(page).toHaveScreenshot(
                     `correct-word-match-when-strict-focused-${strict}.png`,
@@ -113,11 +119,3 @@ test.describe('ComboBox', () => {
         });
     });
 });
-
-async function visitBy(page: Page, strict: boolean): Promise<void> {
-    await tuiGoto(page, `components/combo-box/API?strict=${strict}&sandboxExpanded=true`);
-}
-
-async function focusWrapper(locator: Locator): Promise<void> {
-    await locator.click({force: true});
-}
