@@ -2,7 +2,7 @@ import {TuiComboBoxPO, TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/u
 import {expect, Locator, Page, test} from '@playwright/test';
 
 test.describe('ComboBox', () => {
-   test.use({viewport: {width: 500, height: 500}});
+    test.use({viewport: {width: 500, height: 500}});
     test("Don't allow disabled options to be selected by typing them", async ({page}) => {
         await tuiGoto(page, 'components/combo-box');
 
