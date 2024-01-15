@@ -27,6 +27,7 @@ export default defineConfig({
         trace: 'on-first-retry',
         viewport: DEFAULT_VIEWPORT,
         testIdAttribute: 'automation-id',
+        actionTimeout: 10_000,
         contextOptions: {
             reducedMotion: 'reduce',
         },
