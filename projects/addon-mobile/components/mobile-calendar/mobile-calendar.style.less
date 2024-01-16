@@ -212,3 +212,14 @@
         font-size: 1.0625rem;
     }
 }
+
+.t-week,
+.t-years,
+.t-months {
+    .transition(opacity);
+    opacity: 0;
+
+    :host(._initialized) & {
+        opacity: 1;
+    }
+}

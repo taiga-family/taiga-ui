@@ -75,7 +75,7 @@ import {
     styleUrls: ['./mobile-calendar.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: TUI_MOBILE_CALENDAR_PROVIDERS,
-    host: {'[class._ios]': 'isIOS'},
+    host: {'[class._ios]': 'isIOS', '[class._initialized]': 'initialized'},
 })
 export class TuiMobileCalendarComponent implements AfterViewInit {
     @ViewChild('yearsScrollRef')
@@ -121,6 +121,8 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
                 i % MONTHS_IN_YEAR,
             ),
     );
+
+    initialized = false;
 
     constructor(
         @Inject(TUI_IS_IOS) readonly isIOS: boolean,
@@ -308,6 +310,7 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
                 takeUntil(this.destroy$),
             )
             .subscribe(() => {
+                this.initialized = true;
                 this.updateViewportDimension();
                 this.initYearScroll();
                 this.initMonthScroll();
