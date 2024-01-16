@@ -29,7 +29,7 @@ export const TUI_COUNTRIES_MASKS = tuiCreateToken<Record<TuiCountryIsoCode, stri
     [TuiCountryIsoCode.BN]: '+673###-####',
     [TuiCountryIsoCode.BO]: '+591#-###-####',
     [TuiCountryIsoCode.BQ]: '+599-###-####',
-    [TuiCountryIsoCode.BR]: '+55(##) ####-####',
+    [TuiCountryIsoCode.BR]: '+55(##) ####-#####',
     [TuiCountryIsoCode.BS]: '+1(242) ###-####',
     [TuiCountryIsoCode.BT]: '+975#-###-###',
     [TuiCountryIsoCode.BW]: '+267##-###-###',
