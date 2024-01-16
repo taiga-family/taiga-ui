@@ -10,7 +10,7 @@ test.describe('DataList', () => {
 
         await example.scrollIntoViewIfNeeded();
         await example.locator('tui-select').click();
-        await documentationPagePO.prepareApiPageBeforeScreenshot();
+        await documentationPagePO.prepareBeforeScreenshot();
         await expect(page.locator('tui-dropdown')).toHaveScreenshot('01-data-list.png');
     });
 
@@ -21,7 +21,7 @@ test.describe('DataList', () => {
 
         await example.scrollIntoViewIfNeeded();
         await example.locator('tui-hosted-dropdown').click();
-        await documentationPagePO.prepareApiPageBeforeScreenshot();
+        await documentationPagePO.prepareBeforeScreenshot();
         await expect(page.locator('tui-dropdown')).toHaveScreenshot('02-data-list.png');
     });
 
@@ -34,7 +34,7 @@ test.describe('DataList', () => {
 
         await example.scrollIntoViewIfNeeded();
         await example.locator('tui-hosted-dropdown').click();
-        await documentationPagePO.prepareApiPageBeforeScreenshot();
+        await documentationPagePO.prepareBeforeScreenshot();
         await page.keyboard.down('ArrowDown');
         await page.keyboard.down('ArrowDown');
         await page.waitForTimeout(100);
@@ -67,7 +67,7 @@ test.describe('DataList', () => {
 
         await example.scrollIntoViewIfNeeded();
         await example.locator('tui-hosted-dropdown').click();
-        await documentationPagePO.prepareApiPageBeforeScreenshot();
+        await documentationPagePO.prepareBeforeScreenshot();
         await expect(page.locator('tui-dropdown')).toHaveScreenshot('04-data-list.png');
     });
 
@@ -80,7 +80,7 @@ test.describe('DataList', () => {
 
         await example.scrollIntoViewIfNeeded();
         await example.locator('tui-hosted-dropdown').click();
-        await documentationPagePO.prepareApiPageBeforeScreenshot();
+        await documentationPagePO.prepareBeforeScreenshot();
         await expect(page).toHaveScreenshot('05-data-list.png');
 
         const money = page
@@ -140,7 +140,7 @@ test.describe('DataList', () => {
 
         await example.scrollIntoViewIfNeeded();
         await example.locator('tui-hosted-dropdown').click();
-        await documentationPagePO.prepareApiPageBeforeScreenshot();
+        await documentationPagePO.prepareBeforeScreenshot();
         await expect(page).toHaveScreenshot('10-data-list.png');
     });
 });

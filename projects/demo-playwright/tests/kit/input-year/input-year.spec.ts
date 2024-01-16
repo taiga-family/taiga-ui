@@ -11,7 +11,7 @@ test.describe('InputYear', () => {
 
             documentationPO = new TuiDocumentationPagePO(page);
             input = documentationPO.apiPageExample.locator('input');
-            await documentationPO.prepareApiPageBeforeScreenshot();
+            await documentationPO.prepareBeforeScreenshot();
             await input.click();
         });
 
@@ -46,7 +46,7 @@ test.describe('InputYear', () => {
 
             documentationPO = new TuiDocumentationPagePO(page);
             input = documentationPO.apiPageExample.locator('input');
-            await documentationPO.prepareApiPageBeforeScreenshot();
+            await documentationPO.prepareBeforeScreenshot();
             await input.click();
         });
 
@@ -64,7 +64,7 @@ test.describe('InputYear', () => {
 
             documentationPO = new TuiDocumentationPagePO(page);
             input = documentationPO.apiPageExample.locator('input');
-            await documentationPO.prepareApiPageBeforeScreenshot();
+            await documentationPO.prepareBeforeScreenshot();
             await input.click();
         });
 

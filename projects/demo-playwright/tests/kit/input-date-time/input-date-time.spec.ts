@@ -27,7 +27,7 @@ test.describe('InputDateTime', () => {
             await tuiGoto(page, 'components/input-date-time/API?max$=1');
             await inputDateTime.textfield.click();
 
-            await documentationPage.prepareApiPageBeforeScreenshot();
+            await documentationPage.prepareBeforeScreenshot();
             await expect(page).toHaveScreenshot('01-maximum-month.png');
         });
 
@@ -35,7 +35,7 @@ test.describe('InputDateTime', () => {
             await tuiGoto(page, 'components/input-date-time/API?min$=3');
             await inputDateTime.textfield.click();
 
-            await documentationPage.prepareApiPageBeforeScreenshot();
+            await documentationPage.prepareBeforeScreenshot();
             await expect(page).toHaveScreenshot('02-minimum-month.png');
         });
 

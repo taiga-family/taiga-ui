@@ -38,9 +38,7 @@ test.describe('TuiHint', () => {
                         page,
                         `/directives/hint-manual/API?tuiHintManual=true&tuiHintDirection=${direction}`,
                     );
-                    await new TuiDocumentationPagePO(
-                        page,
-                    ).prepareApiPageBeforeScreenshot();
+                    await new TuiDocumentationPagePO(page).prepareBeforeScreenshot();
                     await expect(page).toHaveScreenshot(
                         `02-hint-manual-direction__${direction}-and-width__${width}.png`,
                     );
@@ -58,7 +56,7 @@ test.describe('TuiHint', () => {
             );
             const example = new TuiDocumentationPagePO(page);
 
-            await example.prepareApiPageBeforeScreenshot();
+            await example.prepareBeforeScreenshot();
             await example.apiPageExample.locator('span').hover();
 
             await expect(page).toHaveScreenshot(
@@ -74,7 +72,7 @@ test.describe('TuiHint', () => {
             );
             const example = new TuiDocumentationPagePO(page);
 
-            await example.prepareApiPageBeforeScreenshot();
+            await example.prepareBeforeScreenshot();
 
             await example.apiPageExample.locator('span').hover();
             await expect(page).toHaveScreenshot(

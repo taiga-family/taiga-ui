@@ -106,7 +106,7 @@ test.describe('MultiSelect', () => {
                     await multiSelect.arrow.click();
                     await multiSelect.selectOptions([0, 1, 2, 3, 4]);
 
-                    await documentationPage.prepareApiPageBeforeScreenshot();
+                    await documentationPage.prepareBeforeScreenshot();
                     await expect(page).toHaveScreenshot(
                         `05-multi-select-size-${size}.png`,
                     );
@@ -125,7 +125,7 @@ test.describe('MultiSelect', () => {
                     );
 
                     await documentationPage.selectFormControlUpdateOnMethod(type);
-                    await documentationPage.prepareApiPageBeforeScreenshot();
+                    await documentationPage.prepareBeforeScreenshot();
 
                     await expect(apiPageExample).toHaveScreenshot(
                         `06-update-on-${type}__1_initial.png`,
@@ -170,7 +170,7 @@ test.describe('MultiSelect', () => {
             await multiSelect.arrow.click();
             await multiSelect.selectOptions([0, 1, 2, 3, 4]);
 
-            await documentationPage.prepareApiPageBeforeScreenshot();
+            await documentationPage.prepareBeforeScreenshot();
             await expect(page).toHaveScreenshot('07-multi-select-before-clear.png');
 
             await multiSelect.arrow.click();
@@ -185,7 +185,7 @@ test.describe('MultiSelect', () => {
             await multiSelect.arrow.click();
             await multiSelect.selectOptions([0, 1, 2, 3, 4]);
 
-            await documentationPage.prepareApiPageBeforeScreenshot();
+            await documentationPage.prepareBeforeScreenshot();
             await expect(page).toHaveScreenshot(
                 '08-multi-select-1-before-scroll-to-end.png',
             );
@@ -208,7 +208,7 @@ test.describe('MultiSelect', () => {
             await multiSelect.arrow.click();
             await multiSelect.selectOptions([0, 1, 2]);
 
-            await documentationPage.prepareApiPageBeforeScreenshot();
+            await documentationPage.prepareBeforeScreenshot();
 
             await expect(page).toHaveScreenshot('09-multi-select-non-editable.png');
         });

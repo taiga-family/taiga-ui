@@ -21,7 +21,7 @@ test.describe('InputMonth', () => {
             await tuiGoto(page, 'components/input-month/API?max$=1');
             await inputMonth.textfield.click();
 
-            await documentationPage.prepareApiPageBeforeScreenshot();
+            await documentationPage.prepareBeforeScreenshot();
             await expect(page).toHaveScreenshot('input-month-maximum-month.png');
         });
 
@@ -29,7 +29,7 @@ test.describe('InputMonth', () => {
             await tuiGoto(page, 'components/input-month/API?min$=3');
             await inputMonth.textfield.click();
 
-            await documentationPage.prepareApiPageBeforeScreenshot();
+            await documentationPage.prepareBeforeScreenshot();
             await expect(page).toHaveScreenshot('input-month-minimum-month.png');
         });
     });
