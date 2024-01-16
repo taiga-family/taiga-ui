@@ -103,8 +103,7 @@ test.describe('ComboBox', () => {
                 );
 
                 await textfield.click();
-                await page.keyboard.press('Control+A');
-                await page.keyboard.press('Backspace');
+                await textfield.clear();
 
                 await expect(page).toHaveScreenshot(
                     `correct-word-match-when-strict-remove-all-${strict}.png`,
