@@ -29,6 +29,7 @@ export class ExampleTuiCellComponent {
 
     readonly example2: TuiDocExample = {
         HTML: import('./examples/2/index.html?raw'),
+        LESS: import('./examples/2/index.less?raw'),
     };
 
     readonly example3: TuiDocExample = {
