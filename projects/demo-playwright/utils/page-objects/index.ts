@@ -1,4 +1,5 @@
 export * from './calendar.po';
+export * from './combo-box.po';
 export * from './documentation-api-page.po';
 export * from './documentation-page.po';
 export * from './input-card.po';

@@ -41,8 +41,8 @@ test.describe('Slider', () => {
                 const documentationPage = new TuiDocumentationPagePO(page);
                 const example = documentationPage.getExample('#key-steps');
                 const slider = new TuiSliderPO(example.getByRole('slider'));
-                const controlValue = example.locator(
-                    '[automation-id="key-steps-example-control-value"]',
+                const controlValue = example.getByTestId(
+                    'key-steps-example-control-value',
                 );
 
                 await slider.setValue(inputStep);
