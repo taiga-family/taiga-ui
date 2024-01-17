@@ -2,11 +2,6 @@ name: ⚙️ E2E tests
 on:
   pull_request:
 
-env:
-  CYPRESS_failOnSnapshotDiff: 0
-  PLAYWRIGHT_SNAPSHOTS_PATH: ./projects/demo-playwright/tests-results
-  CYPRESS_SNAPSHOTS_PATH: ./projects/demo-cypress/cypress/snapshots
-
 jobs:
   build-demo:
     if: ${{ !contains(github.head_ref , 'release/') }}
@@ -22,71 +17,13 @@ jobs:
       - uses: taiga-family/ci/actions/setup/node@v1.50.5
 
       - name: Building demo-app of git-branch without cache
-        run: npx nx build demo -c next --output-path ${{ env.DIST }} --base-href='/'
+        run: npx nx build demo
 
       - name: Upload cache / ${{ env.CACHE_DIST_KEY }}
         uses: actions/cache/save@v3.3.3
         with:
           path: dist/demo
           key: ${{ env.CACHE_DIST_KEY }}
-
-  cypress:
-    if: ${{ !contains(github.head_ref , 'release/') }}
-    needs: [build-demo]
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        project: [kit]
-    name: ${{ matrix.project }}
-    steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.50.5
-      - uses: taiga-family/ci/actions/setup/variables@v1.50.5
-      - uses: taiga-family/ci/actions/setup/node@v1.50.5
-
-      - name: Download cache / ${{ env.CACHE_DIST_KEY }}
-        uses: actions/cache/restore@v3.3.3
-        with:
-          path: dist/demo
-          key: ${{ env.CACHE_DIST_KEY }}
-
-      - name: Serve ${{ env.DIST }} in background
-        run: npx nx serve-compiled demo --path ${{ env.DIST }} --port ${{ env.NG_SERVER_PORT }}
-
-      - name: Run screenshot tests on ${{ env.DIST }}
-        run: npx nx e2e demo-cypress --folder ${{ matrix.project }}
-
-      - name: Clean up resources
-        run: npx kill-port --port ${{ env.NG_SERVER_PORT }}
-
-      - name: Download ${{ env.DIST_NEXT }} for serve locally
-        run: |
-          git clone \
-                --depth 1 \
-                --branch snapshots/demo/next/${{ github.base_ref }} \
-                https://github.com/taiga-family/taiga-ui.git ${{ env.DIST_NEXT }}
-
-      - name: Serve ${{ env.DIST_NEXT }} in background
-        run: npx nx serve-compiled demo --path ${{ env.DIST_NEXT }} --port ${{ env.NG_SERVER_PORT }}
-
-      - name: Run screenshot tests on ${{ env.DIST_NEXT }}
-        continue-on-error: true
-        run: npx nx e2e demo-cypress --folder ${{ matrix.project }}
-
-      - name: Clean up resources
-        run: npx kill-port --port ${{ env.NG_SERVER_PORT }}
-
-      - name: Debug output
-        continue-on-error: true
-        run: tree ${{ env.CYPRESS_SNAPSHOTS_PATH }}
-
-      - name: Upload artifacts / ${{ env.CYPRESS_SNAPSHOTS_ARTIFACTS_KEY }}
-        uses: actions/upload-artifact@v3.1.3
-        with:
-          path: ${{ env.CYPRESS_SNAPSHOTS_PATH }}/**/*.diff.png
-          name: ${{ env.CYPRESS_SNAPSHOTS_ARTIFACTS_KEY }}
-          if-no-files-found: ignore
-          retention-days: 1
 
   playwright:
     if: ${{ !contains(github.head_ref , 'release/') }}
@@ -151,7 +88,7 @@ jobs:
       - name: Upload artifacts / ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}
         uses: actions/upload-artifact@v3.1.3
         with:
-          path: ${{ env.PLAYWRIGHT_SNAPSHOTS_PATH }}/**/*.diff.png
+          path: ./projects/demo-playwright/tests-results/**/*.diff.png
           name: ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}
           if-no-files-found: ignore
           retention-days: 1
