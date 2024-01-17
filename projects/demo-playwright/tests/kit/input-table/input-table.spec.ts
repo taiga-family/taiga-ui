@@ -3,7 +3,7 @@ import {expect, test} from '@playwright/test';
 
 test.describe('InputTable', () => {
     test('editing fields inside a table', async ({page}) => {
-        await tuiGoto(page, '/components/input#table');
+        await tuiGoto(page, '/components/input');
 
         const example = new TuiDocumentationPagePO(page).getExample('#table');
 
