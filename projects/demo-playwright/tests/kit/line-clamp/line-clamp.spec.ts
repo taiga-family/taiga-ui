@@ -14,7 +14,7 @@ test.describe('LineClamp', () => {
                 page,
                 `/components/line-clamp/API?content=${basicText}&linesLimit=1`,
             );
-            await pagePO.prepareApiPageBeforeScreenshot();
+            await pagePO.prepareBeforeScreenshot();
             await expect(page).toHaveScreenshot('01-1-line-clamp.png');
             await pagePO.apiPageExample.locator('tui-line-clamp').hover();
             await expect(page).toHaveScreenshot('01-2-line-clamp.png');
@@ -27,7 +27,7 @@ test.describe('LineClamp', () => {
                 page,
                 `/components/line-clamp/API?content=${basicText}&linesLimit=2`,
             );
-            await pagePO.prepareApiPageBeforeScreenshot();
+            await pagePO.prepareBeforeScreenshot();
             await expect(page).toHaveScreenshot('02-1-line-clamp.png');
             await pagePO.apiPageExample.locator('tui-line-clamp').hover();
             await expect(page).toHaveScreenshot('02-2-line-clamp.png');
@@ -45,7 +45,7 @@ test.describe('LineClamp', () => {
                 page,
                 `/components/line-clamp/API?content=${textWithLongWord}&linesLimit=1`,
             );
-            await pagePO.prepareApiPageBeforeScreenshot();
+            await pagePO.prepareBeforeScreenshot();
             await expect(page).toHaveScreenshot('03-1-line-clamp.png');
             await pagePO.apiPageExample.locator('tui-line-clamp').hover();
             await expect(page).toHaveScreenshot('03-2-line-clamp.png');
@@ -58,7 +58,7 @@ test.describe('LineClamp', () => {
                 page,
                 `/components/line-clamp/API?content=${textWithLongWord}&linesLimit=2`,
             );
-            await pagePO.prepareApiPageBeforeScreenshot();
+            await pagePO.prepareBeforeScreenshot();
             await expect(page).toHaveScreenshot('04-1-line-clamp.png');
             await pagePO.apiPageExample.locator('tui-line-clamp').hover();
             await expect(page).toHaveScreenshot('04-2-line-clamp.png');
@@ -77,7 +77,7 @@ test.describe('LineClamp', () => {
                     page,
                     `components/line-clamp/API?style.maxWidth.px=${width}&linesLimit=${linesLimit}`,
                 );
-                await pagePO.prepareApiPageBeforeScreenshot();
+                await pagePO.prepareBeforeScreenshot();
                 await expect(page).toHaveScreenshot(`05-1-line-clamp__${index}.png`);
                 await pagePO.apiPageExample.locator('tui-line-clamp').hover();
                 await expect(page).toHaveScreenshot(`05-2-line-clamp__${index}.png`);

@@ -12,7 +12,7 @@ test.describe('Routable', () => {
 
         await example.locator('button').click();
         await expect(page).toHaveURL('/dialog/lazy-routable/path/to/dialog');
-        await documentationPagePO.prepareApiPageBeforeScreenshot();
+        await documentationPagePO.prepareBeforeScreenshot();
         await expect(page).toHaveScreenshot('01-routable-dialog.png');
     });
 

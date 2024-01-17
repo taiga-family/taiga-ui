@@ -19,7 +19,7 @@ test.describe('TablePagination', () => {
             );
 
             await linesPerPageButton.click();
-            await documentationPage.prepareApiPageBeforeScreenshot();
+            await documentationPage.prepareBeforeScreenshot();
             await expect(page).toHaveScreenshot('0-[size]-dropdown-base.png');
         });
 
@@ -37,7 +37,7 @@ test.describe('TablePagination', () => {
             );
 
             await tablePagination.linesPerPageButton.click();
-            await documentationPage.prepareApiPageBeforeScreenshot();
+            await documentationPage.prepareBeforeScreenshot();
             await expect(page).toHaveScreenshot('1-[size]-dropdown-base.png');
         });
     });

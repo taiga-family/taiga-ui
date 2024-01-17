@@ -18,7 +18,7 @@ test.describe('Dialogs', () => {
             const documentationPagePO = new TuiDocumentationPagePO(page);
 
             await documentationPagePO.apiPageExample.locator('button').click();
-            await documentationPagePO.prepareApiPageBeforeScreenshot();
+            await documentationPagePO.prepareBeforeScreenshot();
 
             await expect(page).toHaveScreenshot(`01-prompt_${width}x${height}.png`);
         });
@@ -35,7 +35,7 @@ test.describe('Dialogs', () => {
 
                 await example.scrollIntoViewIfNeeded();
                 await example.locator('button').click();
-                await documentationPagePO.prepareApiPageBeforeScreenshot();
+                await documentationPagePO.prepareBeforeScreenshot();
 
                 await expect(page).toHaveScreenshot(
                     `02-dialogs-level-1_${width}x${height}.png`,
@@ -54,7 +54,7 @@ test.describe('Dialogs', () => {
 
                 await example.scrollIntoViewIfNeeded();
                 await example.locator('button').click();
-                await documentationPagePO.prepareApiPageBeforeScreenshot();
+                await documentationPagePO.prepareBeforeScreenshot();
 
                 await expect(page).toHaveScreenshot(
                     `03-mobile-dialog_${width}x${height}.png`,
@@ -67,7 +67,7 @@ test.describe('Dialogs', () => {
 
                 await example.scrollIntoViewIfNeeded();
                 await example.locator('button').click();
-                await documentationPagePO.prepareApiPageBeforeScreenshot();
+                await documentationPagePO.prepareBeforeScreenshot();
 
                 await expect(page).toHaveScreenshot(
                     `04-dialogs-dialog-directive_${width}x${height}.png`,
@@ -80,7 +80,7 @@ test.describe('Dialogs', () => {
 
                 await example.scrollIntoViewIfNeeded();
                 await example.locator('button').nth(0).click();
-                await documentationPagePO.prepareApiPageBeforeScreenshot();
+                await documentationPagePO.prepareBeforeScreenshot();
 
                 await expect(page).toHaveScreenshot(
                     `05-default-button_${width}x${height}.png`,
@@ -93,7 +93,7 @@ test.describe('Dialogs', () => {
 
                 await example.scrollIntoViewIfNeeded();
                 await example.locator('button').nth(1).click();
-                await documentationPagePO.prepareApiPageBeforeScreenshot();
+                await documentationPagePO.prepareBeforeScreenshot();
 
                 await expect(page).toHaveScreenshot(
                     `06-custom-button_${width}x${height}.png`,
@@ -107,7 +107,7 @@ test.describe('Dialogs', () => {
 
                     await example.scrollIntoViewIfNeeded();
                     await example.locator('button').click();
-                    await documentationPagePO.prepareApiPageBeforeScreenshot();
+                    await documentationPagePO.prepareBeforeScreenshot();
                 });
 
                 test('Prompt', async ({page}) => {
