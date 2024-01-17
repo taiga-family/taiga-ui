@@ -3,7 +3,6 @@ import {
     CHAR_EN_DASH,
     CHAR_HYPHEN,
     CHAR_MINUS,
-    CMD,
     TuiDocumentationApiPagePO,
     TuiDocumentationPagePO,
     tuiGoto,
@@ -136,12 +135,19 @@ test.describe('InputNumber', () => {
                 example = new TuiDocumentationApiPagePO(page).apiPageExample;
                 input = example.getByTestId('tui-primitive-textfield__native-input');
 
-                await input.clear();
                 await input.fill('1000');
             });
 
             test('1| 000 => Delete => 1 |000', async ({page}) => {
-                await page.keyboard.press(`${CMD}+ArrowLeft`);
+                const length = (await input.inputValue()).length;
+
+                for (let i = 0; i < length; i++) {
+                    await page.keyboard.press('ArrowLeft');
+                }
+
+                await expect(input).toHaveJSProperty('selectionStart', 0);
+                await expect(input).toHaveJSProperty('selectionEnd', 0);
+
                 await page.keyboard.press('ArrowRight');
                 await page.keyboard.press('Delete');
                 await expect(input).toHaveJSProperty('selectionStart', '1 '.length);
@@ -150,7 +156,15 @@ test.describe('InputNumber', () => {
             });
 
             test('1 |000 => Backspace => 1| 000', async ({page}) => {
-                await page.keyboard.press(`${CMD}+ArrowLeft`);
+                const length = (await input.inputValue()).length;
+
+                for (let i = 0; i < length; i++) {
+                    await page.keyboard.press('ArrowLeft');
+                }
+
+                await expect(input).toHaveJSProperty('selectionStart', 0);
+                await expect(input).toHaveJSProperty('selectionEnd', 0);
+
                 await page.keyboard.press('ArrowRight');
                 await page.keyboard.press('ArrowRight');
                 await page.keyboard.press('Backspace');
