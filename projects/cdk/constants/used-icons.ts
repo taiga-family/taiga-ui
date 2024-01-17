@@ -50,6 +50,7 @@ export const TUI_USED_ICONS = [
     'tuiIconCheckCircle',
     'tuiIconXCircle',
     'tuiIconChevronLeft',
+    'tuiIconCalendarLarge',
     'tuiIconStarLarge',
     'tuiIconChevronDown',
     'tuiIconChevronDownLarge',
@@ -67,5 +68,4 @@ export const TUI_USED_ICONS = [
     'tuiIconToggleOn',
     'tuiIconToggleOnLarge',
     'tuiIconCalendar',
-    'tuiIconCalendarLarge',
 ] as const;
