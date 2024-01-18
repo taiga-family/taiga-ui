@@ -45,6 +45,14 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifier[] = [
         to: {name: 'TuiTextareaDirective', moduleSpecifier: '@taiga-ui/kit'},
     },
     {
+        from: {name: 'TuiBadgedContentModule', moduleSpecifier: '@taiga-ui/experimental'},
+        to: {name: 'TuiBadgedContentComponent', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {name: 'TuiBadgedContentModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiBadgedContentComponent', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
         from: {name: 'TuiTextAreaComponent', moduleSpecifier: '@taiga-ui/kit'},
         to: {name: 'TuiTextareaComponent', moduleSpecifier: '@taiga-ui/kit'},
     },

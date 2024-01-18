@@ -7,13 +7,13 @@ import {TuiNotificationModule} from '@taiga-ui/core';
 import {
     TuiAmountPipeModule,
     TuiAvatarModule,
-    TuiBadgedContentModule,
     TuiBadgeNotificationModule,
     TuiButtonModule,
     TuiCheckboxModule,
     TuiChipModule,
     TuiFadeModule,
 } from '@taiga-ui/experimental';
+import {TuiBadgedContentComponent} from '@taiga-ui/kit';
 
 import {ExampleTuiChipComponent} from './chip.component';
 import {TuiChipExample1} from './examples/1';
@@ -33,7 +33,7 @@ import {TuiChipExample4} from './examples/4';
         TuiAvatarModule,
         TuiCheckboxModule,
         TuiAmountPipeModule,
-        TuiBadgedContentModule,
+        TuiBadgedContentComponent,
         TuiBadgeNotificationModule,
         tuiGetDocModules(ExampleTuiChipComponent),
     ],

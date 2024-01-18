@@ -8,23 +8,31 @@
 
         <tui-doc-example
             id="base"
-            heading="with notification"
+            heading="basic"
             [content]="example1"
         >
             <tui-badged-content-example-1></tui-badged-content-example-1>
         </tui-doc-example>
 
         <tui-doc-example
-            id="components"
-            heading="with different components"
+            id="rounded"
+            heading="rounded content"
             [content]="example2"
+            [description]="description"
         >
+            <ng-template #description>
+                <p>
+                    The wrapped element is assumed to have 12px border-radius. If it is different, override the
+                    <code>--tui-radius</code>
+                    variable with actual value.
+                </p>
+            </ng-template>
             <tui-badged-content-example-2></tui-badged-content-example-2>
         </tui-doc-example>
 
         <tui-doc-example
-            id="badge"
-            heading="with a badge and icon"
+            id="components"
+            heading="with different components"
             [content]="example3"
         >
             <tui-badged-content-example-3></tui-badged-content-example-3>
@@ -33,86 +41,26 @@
 
     <ng-template pageTab>
         <tui-doc-demo>
-            <tui-badged-content
-                [colorBottom]="colorBottom"
-                [colorTop]="colorTop"
-                [contentBottom]="contentBottom === 'Template' ? example : contentBottom"
-                [contentTop]="contentTop === 'Template' ? example : contentTop"
-                [rounded]="rounded"
-                [size]="size"
-            >
+            <tui-badged-content [style.--tui-radius]="radius">
+                <tui-badge-notification tuiSlot="top">1</tui-badge-notification>
                 <tui-avatar
-                    new
-                    text="daenerys targaryen"
-                    [rounded]="rounded"
-                    [size]="size"
+                    size="l"
+                    [round]="radius === '50%'"
+                    [src]="
+                        'https://avatars.githubusercontent.com/u/11832552' | tuiFallbackSrc: 'tuiIconUserLarge' | async
+                    "
                 ></tui-avatar>
             </tui-badged-content>
-            <ng-template #example>
-                <tui-avatar
-                    avatarUrl="https://ng-web-apis.github.io/dist/assets/images/web-api.svg"
-                    size="s"
-                    text="Example"
-                    [rounded]="true"
-                ></tui-avatar>
-            </ng-template>
         </tui-doc-demo>
-
-        <tui-doc-documentation>
+        <tui-doc-documentation heading="CSS customization">
             <ng-template
                 documentationPropertyMode="input"
-                documentationPropertyName="contentBottom"
-                documentationPropertyType="PolymorpheusContent"
-                [documentationPropertyValues]="contentVariants"
-                [(documentationPropertyValue)]="contentBottom"
-            >
-                Bottom right content. If it is a number, badge shows it. If it is a string, it will be used as icon.
-                <b>Warning:</b>
-                use big icons for all sizes except 'xs'.
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="contentTop"
-                documentationPropertyType="PolymorpheusContent"
-                [documentationPropertyValues]="contentVariants"
-                [(documentationPropertyValue)]="contentTop"
-            >
-                Top right content. If it is a number, badge shows it. If it is a string, it will be used as icon.
-                <b>Warning:</b>
-                use big icons for all sizes except 'xs'.
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="colorBottom"
+                documentationPropertyName="style.--t-radius"
                 documentationPropertyType="string"
-                [(documentationPropertyValue)]="colorBottom"
+                [documentationPropertyValues]="radiusVariants"
+                [(documentationPropertyValue)]="radius"
             >
-                Bottom right content color. If there is no content, shows a small circle of this color.
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="colorTop"
-                documentationPropertyType="string"
-                [(documentationPropertyValue)]="colorTop"
-            >
-                Top right content color. If there is no content, shows a small circle of this color.
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="size"
-                documentationPropertyType="TuiSizeXS | TuiSizeXXL"
-                [documentationPropertyValues]="sizeVariants"
-                [(documentationPropertyValue)]="size"
-            >
-                Size
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="rounded"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="rounded"
-            >
-                Rounded mode
+                Border radius
             </ng-template>
         </tui-doc-documentation>
     </ng-template>
@@ -120,11 +68,7 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                <p>
-                    Import
-                    <code>TuiBadgedContentModule</code>
-                    into a module where you want to use our component
-                </p>
+                <p>Import module:</p>
 
                 <tui-doc-code
                     filename="my.module.ts"

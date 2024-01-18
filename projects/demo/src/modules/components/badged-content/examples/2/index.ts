@@ -9,20 +9,4 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     encapsulation,
     changeDetection,
 })
-export class TuiBadgedContentExample2 {
-    value = '';
-
-    contentTop = 0;
-
-    get badgeValue(): number {
-        return this.value.length;
-    }
-
-    get color(): string {
-        return this.contentTop === 50 ? 'tuiIconCheck' : 'var(--tui-error-fill)';
-    }
-
-    onClick(): void {
-        this.contentTop++;
-    }
-}
+export class TuiBadgedContentExample2 {}
