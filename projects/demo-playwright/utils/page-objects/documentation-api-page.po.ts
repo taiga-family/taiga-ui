@@ -12,11 +12,11 @@ export class TuiDocumentationApiPagePO {
      * Doesn't work as expected
      */
     async waitCompleteLoadingImages(): Promise<void> {
-        await this.page.waitForTimeout(50);
-
         const images = await this.apiPageExample.locator('img,tui-icon:after').all();
 
         if (images.length) {
+            await this.page.waitForTimeout(100);
+
             await expect(async () =>
                 Promise.all(
                     images.map(async locator =>
@@ -50,7 +50,7 @@ export class TuiDocumentationApiPagePO {
                                         ) {
                                             resolve(true);
                                         }
-                                    }, 200);
+                                    }, 400);
                                 }),
                         ),
                     ),

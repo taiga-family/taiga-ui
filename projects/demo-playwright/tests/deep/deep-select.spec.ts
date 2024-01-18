@@ -38,7 +38,7 @@ test.describe('Deep / Select', () => {
                     await api.focusOnBody();
                     await api.hideNotifications();
                     await api.waitCompleteLoadingImages();
-                    await page.waitForTimeout(200);
+                    await page.waitForTimeout(300);
 
                     await expect(api.apiPageExample).toHaveScreenshot(
                         `deep-${path}__${name}-select-option-${index}.png`,
