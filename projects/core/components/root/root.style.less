@@ -13,12 +13,12 @@
     }
 }
 
-html,
+html[data-tui-theme],
 .tui-zero-scrollbar {
     .scrollbar-hidden();
 }
 
-body {
+html[data-tui-theme] body {
     .text-basic();
     background: var(--tui-base-01);
     margin: 0;
