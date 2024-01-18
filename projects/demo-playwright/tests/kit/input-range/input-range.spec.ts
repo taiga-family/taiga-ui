@@ -177,7 +177,6 @@ test.describe('InputRange', () => {
                     (box?.height ?? 0) / 2 + (box?.y ?? 0),
                 );
 
-                await inputRange.range.left.click({force: true, position: {x: 0, y: 0}});
                 await expect(inputRange.leftTextfield).toHaveValue(`${CHAR_MINUS}100`);
                 await expect(inputRange.rightTextfield).toHaveValue('10');
                 await expect(example).toHaveScreenshot('14-input-range.png');
@@ -191,16 +190,27 @@ test.describe('InputRange', () => {
                 inputRange = new TuiInputRangePO(example.locator('tui-input-range'));
             });
 
-            test('click on the LEFT thumb (with NO value changes) => focuses the LEFT text input', async () => {
-                await inputRange.range.left.click({force: true, position: {x: 0, y: 0}});
+            test('click on the LEFT thumb (with NO value changes) => focuses the LEFT text input', async ({
+                page,
+            }) => {
+                const box = await inputRange.range.left.boundingBox();
+
+                await page.mouse.click(
+                    box?.x ?? 0,
+                    (box?.height ?? 0) / 2 + (box?.y ?? 0),
+                );
                 await expect(example).toHaveScreenshot('15-input-range.png');
             });
 
-            test('click on the RIGHT thumb (with NO value changes) => focuses the RIGHT text input', async () => {
-                await inputRange.range.right.click({
-                    force: true,
-                    position: {x: 647, y: 0},
-                });
+            test('click on the RIGHT thumb (with NO value changes) => focuses the RIGHT text input', async ({
+                page,
+            }) => {
+                const box = await inputRange.range.right.boundingBox();
+
+                await page.mouse.click(
+                    (box?.width ?? 0) + (box?.x ?? 0),
+                    (box?.height ?? 0) / 2 + (box?.y ?? 0),
+                );
                 await expect(example).toHaveScreenshot('16-input-range.png');
             });
         });
@@ -245,38 +255,65 @@ test.describe('InputRange', () => {
         });
 
         test.describe('After Range interactions', () => {
-            test('keeps focus if the RIGHT text input was focused before', async () => {
+            test('keeps focus if the RIGHT text input was focused before', async ({
+                page,
+            }) => {
                 await inputRange.rightTextfield.focus();
                 await expect(inputRange.leftTextfield).toHaveValue('0');
                 await expect(inputRange.rightTextfield).toHaveValue('10');
                 await expect(example).toHaveScreenshot('20-input-range.png');
-                await inputRange.range.right.click({
-                    force: true,
-                    position: {x: 291, y: 0},
-                });
+
+                const box = await inputRange.range.right.boundingBox();
+
+                await page.mouse.click(
+                    (box?.width ?? 0) + (box?.x ?? 0),
+                    (box?.height ?? 0) / 2 + (box?.y ?? 0),
+                );
+
                 await expect(inputRange.leftTextfield).toHaveValue('0');
                 await expect(inputRange.rightTextfield).toHaveValue('20');
                 await expect(example).toHaveScreenshot('21-input-range.png');
             });
 
-            test('keeps focus if the LEFT text input was focused before', async () => {
+            test('keeps focus if the LEFT text input was focused before', async ({
+                page,
+            }) => {
                 await inputRange.leftTextfield.focus();
                 await expect(inputRange.leftTextfield).toHaveValue('0');
                 await expect(inputRange.rightTextfield).toHaveValue('10');
                 await expect(example).toHaveScreenshot('22-input-range.png');
-                await inputRange.range.left.click({force: true, position: {x: 0, y: 0}});
+
+                const box = await inputRange.range.left.boundingBox();
+
+                await page.mouse.click(
+                    box?.x ?? 0,
+                    (box?.height ?? 0) / 2 + (box?.y ?? 0),
+                );
+
                 await expect(inputRange.leftTextfield).toHaveValue(`${CHAR_MINUS}20`);
                 await expect(inputRange.rightTextfield).toHaveValue('10');
                 await expect(example).toHaveScreenshot('23-input-range.png');
             });
 
-            test('does not focus anything if no text input was focused before', async () => {
+            test('does not focus anything if no text input was focused before', async ({
+                page,
+            }) => {
                 await expect(example).toHaveScreenshot('24-input-range.png');
-                await inputRange.range.left.click({force: true, position: {x: 0, y: 0}});
-                await inputRange.range.right.click({
-                    force: true,
-                    position: {x: 291, y: 0},
-                });
+
+                const leftBox = await inputRange.range.left.boundingBox();
+
+                await page.mouse.click(
+                    leftBox?.x ?? 0,
+                    (leftBox?.height ?? 0) / 2 + (leftBox?.y ?? 0),
+                );
+
+                const rightBox = await inputRange.range.right.boundingBox();
+
+                await page.mouse.click(
+                    (rightBox?.width ?? 0) + (rightBox?.x ?? 0),
+                    (rightBox?.height ?? 0) / 2 + (rightBox?.y ?? 0),
+                );
+
                 await expect(example).toHaveScreenshot('25-input-range.png');
             });
         });
