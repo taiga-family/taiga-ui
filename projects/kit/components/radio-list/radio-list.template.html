@@ -3,6 +3,7 @@
         *ngFor="let item of items; index as index"
         class="t-item"
         [disabled]="disabled"
+        [identityMatcher]="identityMatcher"
         [item]="item"
         [nativeId]="computeId(index)"
         [pseudoDisabled]="itemIsDisabled(item)"
