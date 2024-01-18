@@ -38,7 +38,11 @@
         "tuiiconbutton",
         "hitbox",
         "domcontentloaded",
-        "filechooser"
+        "filechooser",
+        "colortop",
+        "colorbottom",
+        "contenttop",
+        "contentbottom"
     ],
     "ignoreRegExpList": ["\\(https?://.*?\\)", "\\/{1}.+\\/{1}", "\\%2F.+", "\\%2C.+", "\\ɵ.+", "\\ыва.+"],
     "overrides": [
