@@ -153,17 +153,30 @@ test.describe('InputRange', () => {
                 inputRange = new TuiInputRangePO(example.locator('tui-input-range'));
             });
 
-            test('clicking on the RIGHT side changes only the RIGHT value (+ focuses the RIGHT text input)', async () => {
-                await inputRange.range.right.click({
-                    force: true,
-                    position: {x: 647, y: 0},
-                });
+            test('clicking on the RIGHT side changes only the RIGHT value (+ focuses the RIGHT text input)', async ({
+                page,
+            }) => {
+                const box = await inputRange.range.right.boundingBox();
+
+                await page.mouse.click(
+                    (box?.width ?? 0) + (box?.x ?? 0),
+                    (box?.height ?? 0) / 2 + (box?.y ?? 0),
+                );
                 await expect(inputRange.leftTextfield).toHaveValue('0');
                 await expect(inputRange.rightTextfield).toHaveValue('100');
                 await expect(example).toHaveScreenshot('13-input-range.png');
             });
 
-            test('clicking on the LEFT side changes only the LEFT value (+ focuses the LEFT text input)', async () => {
+            test('clicking on the LEFT side changes only the LEFT value (+ focuses the LEFT text input)', async ({
+                page,
+            }) => {
+                const box = await inputRange.range.left.boundingBox();
+
+                await page.mouse.click(
+                    box?.x ?? 0,
+                    (box?.height ?? 0) / 2 + (box?.y ?? 0),
+                );
+
                 await inputRange.range.left.click({force: true, position: {x: 0, y: 0}});
                 await expect(inputRange.leftTextfield).toHaveValue(`${CHAR_MINUS}100`);
                 await expect(inputRange.rightTextfield).toHaveValue('10');
