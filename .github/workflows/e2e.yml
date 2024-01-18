@@ -2,6 +2,9 @@ name: ⚙️ E2E tests
 on:
   pull_request:
 
+env:
+  PLAYWRIGHT_SNAPSHOTS_PATH: ./projects/demo-playwright/tests-results
+
 jobs:
   build-demo:
     if: ${{ !contains(github.head_ref , 'release/') }}
@@ -17,7 +20,7 @@ jobs:
       - uses: taiga-family/ci/actions/setup/node@v1.50.5
 
       - name: Building demo-app of git-branch without cache
-        run: npx nx build demo
+        run: npx nx build demo -c next --output-path ${{ env.DIST }} --base-href='/'
 
       - name: Upload cache / ${{ env.CACHE_DIST_KEY }}
         uses: actions/cache/save@v3.3.3
@@ -87,7 +90,7 @@ jobs:
       - name: Upload artifacts / ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}
         uses: actions/upload-artifact@v3.1.3
         with:
-          path: ./projects/demo-playwright/tests-results/**/*.diff.png
+          path: ${{ env.PLAYWRIGHT_SNAPSHOTS_PATH }}/**/*.diff.png
           name: ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}
           if-no-files-found: ignore
           retention-days: 1
