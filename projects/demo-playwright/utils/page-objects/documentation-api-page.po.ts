@@ -97,7 +97,9 @@ export class TuiDocumentationApiPagePO {
 
         const wrapper = this.page.locator('tui-doc-page');
         const hideElements = [
-            wrapper.locator('header'),
+            ...(await wrapper
+                .locator(`header:not(.t-content > *:not(tui-doc-demo)${hasNot} header)`)
+                .all()),
             ...(await wrapper
                 .locator(`> .t-content > *:not(tui-doc-demo)${hasNot}`)
                 .all()),
