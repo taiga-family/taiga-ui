@@ -4,7 +4,7 @@ import {
     TuiDirectiveStylesService,
     TuiResizeService,
 } from '@taiga-ui/cdk';
-import {map} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 import {TuiSensitiveComponent} from './sensitive.component';
 
