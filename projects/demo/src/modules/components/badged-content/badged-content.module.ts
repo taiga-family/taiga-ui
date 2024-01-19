@@ -1,10 +1,21 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
-import {TuiButtonModule} from '@taiga-ui/core';
-import {TuiAvatarModule, TuiBadgedContentModule, TuiInputModule} from '@taiga-ui/kit';
+import {TuiPlatformModule} from '@taiga-ui/cdk';
+import {TuiNotificationModule} from '@taiga-ui/core';
+import {
+    TuiAvatarModule,
+    TuiBadgeNotificationModule,
+    TuiButtonModule,
+    TuiFallbackSrcModule,
+    TuiIconModule,
+} from '@taiga-ui/experimental';
+import {
+    TuiBadgedContentComponent,
+    TuiBadgeDirective,
+    TuiInputModule,
+} from '@taiga-ui/kit';
 
 import {ExampleTuiBadgedContentComponent} from './badged-content.component';
 import {TuiBadgedContentExample1} from './examples/1';
@@ -14,13 +25,18 @@ import {TuiBadgedContentExample3} from './examples/3';
 @NgModule({
     imports: [
         CommonModule,
-        FormsModule,
+        TuiBadgeNotificationModule,
+        TuiIconModule,
+        TuiBadgeDirective,
+        TuiBadgedContentComponent,
         TuiAvatarModule,
-        TuiBadgedContentModule,
+        TuiFallbackSrcModule,
         TuiInputModule,
         TuiButtonModule,
         TuiAddonDocModule,
+        TuiNotificationModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiBadgedContentComponent)),
+        TuiPlatformModule,
     ],
     declarations: [
         ExampleTuiBadgedContentComponent,

@@ -300,15 +300,6 @@ export const ROUTES: Routes = [
         },
     },
     {
-        path: 'experimental/badged-content',
-        loadChildren: async () =>
-            (await import('../experimental/badged-content/badged-content.module'))
-                .ExampleTuiBadgedContentModule,
-        data: {
-            title: 'BadgedContent ',
-        },
-    },
-    {
         path: 'experimental/button',
         loadChildren: async () =>
             (await import('../experimental/button/button.module')).ExampleTuiButtonModule,

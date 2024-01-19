@@ -1,3 +1,4 @@
+import {migrateBadgedContent} from '@taiga-ui/cdk/schematics/ng-update/v4/steps/templates/migrate-badged-content';
 import {DevkitFileSystem, UpdateRecorder} from 'ng-morph';
 
 import {ALL_TS_FILES} from '../../../constants';
@@ -85,6 +86,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         migrateToggle,
         migrateAvatar,
         migrateExpandable,
+        migrateBadgedContent,
     ] as const;
 
     const progressLog = setupProgressLogger({

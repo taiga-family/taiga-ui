@@ -1,6 +1,6 @@
 import {UpdateRecorder} from '@angular-devkit/schematics';
 import {DevkitFileSystem} from 'ng-morph';
-import {Attribute, ElementLocation} from 'parse5';
+import {Attribute} from 'parse5';
 
 import {addImportToClosestModule} from '../../../../utils/add-import-to-closest-module';
 import {findElementsByTagName} from '../../../../utils/templates/elements';
@@ -9,6 +9,7 @@ import {
     getTemplateOffset,
 } from '../../../../utils/templates/template-resource';
 import {TemplateResource} from '../../../interfaces';
+import {removeAttrs} from '../utils/remove-attrs';
 
 function addModules(
     componentPath: string,
@@ -16,26 +17,6 @@ function addModules(
 ): void {
     modules.forEach(({moduleName, moduleSpecifier}) => {
         addImportToClosestModule(componentPath, moduleName, moduleSpecifier);
-    });
-}
-
-function removeAttrs(
-    attrs: Attribute[],
-    sourceCodeLocation: ElementLocation,
-    recorder: UpdateRecorder,
-    templateOffset: number,
-): void {
-    attrs.forEach(attr => {
-        const attrOffset = sourceCodeLocation.attrs?.[attr.name];
-
-        if (attrOffset) {
-            const {startOffset, endOffset} = attrOffset;
-
-            recorder.remove(
-                templateOffset + startOffset - 1,
-                endOffset - startOffset + 1,
-            );
-        }
     });
 }
 

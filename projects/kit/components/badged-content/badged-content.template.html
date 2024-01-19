@@ -1,61 +1,25 @@
 <ng-content></ng-content>
 
 <div
-    *ngIf="topNotification"
-    class="t-notification t-notification_top"
-    [style.background]="topNotification"
-    [style.boxShadow]="boxShadow"
-></div>
-
-<div
-    *ngIf="bottomNotification"
-    class="t-notification t-notification_bottom"
-    [style.background]="bottomNotification"
-    [style.boxShadow]="boxShadow"
-></div>
-
-<div
-    *ngIf="contentTop"
-    class="t-content t-content_top"
-    [style.boxShadow]="boxShadow"
+    #badgeTop
+    class="t-badge t-badge_top"
+    [style.--t-badge-height.px]="badgeTop.offsetHeight"
+    (tuiResize)="(0)"
 >
-    <ng-container *polymorpheusOutlet="contentTop as content">
-        <tui-badge
-            *ngIf="contentIsNumber(content)"
-            [appearance]="getStatus(colorTop)"
-            [size]="badgeSize"
-            [style.backgroundColor]="colorTop"
-        >
-            {{ content }}
-        </tui-badge>
-        <tui-svg
-            *ngIf="contentIsString(content)"
-            class="t-icon"
-            [src]="content"
-            [style.color]="colorTop"
-        ></tui-svg>
-    </ng-container>
+    <ng-content select="tui-badge-notification[tuiSlot='top']"></ng-content>
+    <div class="t-border">
+        <ng-content select="[tuiSlot='top']"></ng-content>
+    </div>
 </div>
 
 <div
-    *ngIf="contentBottom && sizeBig"
-    class="t-content t-content_bottom"
-    [style.boxShadow]="boxShadow"
+    #badgeBottom
+    class="t-badge t-badge_bottom"
+    [style.--t-badge-height.px]="badgeBottom.offsetHeight"
+    (tuiResize)="(0)"
 >
-    <ng-container *polymorpheusOutlet="contentBottom as content">
-        <tui-badge
-            *ngIf="contentIsNumber(content)"
-            [appearance]="getStatus(colorBottom)"
-            [size]="badgeSize"
-            [style.backgroundColor]="colorBottom"
-        >
-            {{ content }}
-        </tui-badge>
-        <tui-svg
-            *ngIf="contentIsString(content)"
-            class="t-icon"
-            [src]="content"
-            [style.color]="colorBottom"
-        ></tui-svg>
-    </ng-container>
+    <ng-content select="tui-badge-notification[tuiSlot='bottom']"></ng-content>
+    <div class="t-border">
+        <ng-content select="[tuiSlot='bottom']"></ng-content>
+    </div>
 </div>

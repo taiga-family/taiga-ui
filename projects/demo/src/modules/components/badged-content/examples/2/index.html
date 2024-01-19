@@ -1,34 +1,57 @@
-<tui-badged-content
-    colorTop="var(--tui-support-01)"
-    [contentTop]="badgeValue"
->
-    <tui-input
-        class="b-form"
-        [(ngModel)]="value"
+<tui-badged-content [style.--tui-radius.%]="50">
+    <tui-badge-notification
+        size="s"
+        tuiSlot="top"
     >
-        Input text
-    </tui-input>
+        8
+    </tui-badge-notification>
+    <tui-avatar
+        size="s"
+        src="tuiIconUserLarge"
+        [round]="true"
+    ></tui-avatar>
 </tui-badged-content>
 
-<div class="tui-space_top-5">
-    <tui-badged-content
-        [colorTop]="color"
-        [contentBottom]="contentTop === 50 ? customBadge : ''"
-        [contentTop]="contentTop"
-    >
-        <button
-            appearance="secondary"
-            size="xl"
-            tuiButton
-            type="button"
-            [disabled]="contentTop === 50"
-            (click)="onClick()"
-        >
-            Let's click 50 times ...
-        </button>
-    </tui-badged-content>
+<tui-badged-content [style.--tui-radius.%]="50">
+    <tui-icon
+        appearance="accent"
+        icon="tuiIconStar"
+        size="m"
+        tuiBadge
+        tuiSlot="bottom"
+    ></tui-icon>
+    <tui-avatar
+        size="m"
+        src="tuiIconUserLarge"
+        [round]="true"
+    ></tui-avatar>
+</tui-badged-content>
 
-    <ng-template #customBadge>
-        <div class="template">... and nothing happened</div>
-    </ng-template>
-</div>
+<tui-badged-content [style.--tui-radius.%]="50">
+    <tui-badge
+        appearance="accent"
+        size="l"
+        tuiSlot="top"
+    >
+        Taiga
+    </tui-badge>
+    <tui-avatar
+        size="l"
+        src="tuiIconUserLarge"
+        [round]="true"
+    ></tui-avatar>
+</tui-badged-content>
+
+<tui-badged-content [style.--tui-radius.%]="50">
+    <tui-badge-notification
+        size="l"
+        tuiSlot="top"
+    >
+        99
+    </tui-badge-notification>
+    <tui-avatar
+        size="xl"
+        src="tuiIconUserLarge"
+        [round]="true"
+    ></tui-avatar>
+</tui-badged-content>
