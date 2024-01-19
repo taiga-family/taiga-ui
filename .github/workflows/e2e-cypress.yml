@@ -1,0 +1,21 @@
+name: ⚙️ Component testing
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    if: ${{ !contains(github.head_ref, 'release/') }}
+    runs-on: ubuntu-latest
+    name: cypress
+    steps:
+      - uses: taiga-family/ci/actions/setup/checkout@v1.50.8
+      - uses: taiga-family/ci/actions/setup/variables@v1.50.8
+      - uses: taiga-family/ci/actions/setup/node@v1.50.8
+      - run: npx nx component-test demo-cypress
+
+concurrency:
+  group: e2e-cypress-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true

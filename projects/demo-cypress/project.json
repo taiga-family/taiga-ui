@@ -5,22 +5,15 @@
     "projectType": "application",
     "prefix": "app",
     "targets": {
-        "e2e-ui": {
-            "executor": "nx:run-commands",
+        "component-test": {
+            "executor": "@nx/cypress:cypress",
             "options": {
-                "parallel": false,
-                "commands": [
-                    "npx wait-on http://localhost:3333 --timeout 1000",
-                    "cypress open --browser chrome --project ./projects/demo-cypress"
-                ]
-            }
-        },
-        "e2e": {
-            "executor": "nx:run-commands",
-            "outputs": ["{projectRoot}/cypress/snapshots"],
-            "options": {
-                "command": "npx cypress run --env ci=true --browser chrome --headless --project ./projects/demo-cypress --spec '**/{args.folder}/**/*.cy.ts'"
+                "cypressConfig": "projects/demo-cypress/cypress.config.ts",
+                "testingType": "component",
+                "skipServe": true,
+                "devServerTarget": "demo:build"
             }
         }
-    }
+    },
+    "implicitDependencies": ["demo"]
 }
