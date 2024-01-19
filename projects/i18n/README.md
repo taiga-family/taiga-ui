@@ -16,6 +16,7 @@ Supported languages:
 | -------------------- | :---------------------: |
 | English (by default) |  TUI_ENGLISH_LANGUAGE   |
 | Russian              |  TUI_RUSSIAN_LANGUAGE   |
+| Belarusian           | TUI_BELARUSIAN_LANGUAGE |
 | Spanish              |  TUI_SPANISH_LANGUAGE   |
 | German               |   TUI_GERMAN_LANGUAGE   |
 | Turkish              |  TUI_TURKISH_LANGUAGE   |

@@ -17,20 +17,21 @@ export class TuiLanguageSwitcherComponent {
     readonly language = new FormControl(tuiCapitalizeFirstLetter(this.switcher.language));
 
     readonly flags = new Map<TuiLanguageName, TuiCountryIsoCode>([
+        ['belarusian', TuiCountryIsoCode.BY],
         ['chinese', TuiCountryIsoCode.CN],
         ['dutch', TuiCountryIsoCode.NL],
         ['english', TuiCountryIsoCode.GB],
         ['french', TuiCountryIsoCode.FR],
         ['german', TuiCountryIsoCode.DE],
         ['italian', TuiCountryIsoCode.IT],
+        ['kazakh', TuiCountryIsoCode.KZ],
+        ['malay', TuiCountryIsoCode.MY],
         ['polish', TuiCountryIsoCode.PL],
         ['portuguese', TuiCountryIsoCode.PT],
         ['russian', TuiCountryIsoCode.RU],
         ['spanish', TuiCountryIsoCode.ES],
         ['turkish', TuiCountryIsoCode.TR],
         ['ukrainian', TuiCountryIsoCode.UA],
-        ['kazakh', TuiCountryIsoCode.KZ],
-        ['malay', TuiCountryIsoCode.MY],
         ['vietnamese', TuiCountryIsoCode.VN],
     ]);
 

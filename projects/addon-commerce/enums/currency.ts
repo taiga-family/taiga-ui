@@ -42,6 +42,14 @@ export enum TuiCurrency {
      */
     Baht = 'THB',
 
+    /**
+     * Belarusian ruble
+     *
+     * @description Numeric code: 933
+     * @description Alphabetic code: BYN
+     * @description Countries and territories: Belarus
+     * @description Currency symbol: Br
+     */
     BelarusianRuble = 'BYN',
 
     /**

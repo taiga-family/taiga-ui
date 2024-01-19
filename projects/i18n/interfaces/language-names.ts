@@ -1,5 +1,6 @@
 export type TuiLanguageName =
     | string
+    | 'belarusian'
     | 'chinese'
     | 'dutch'
     | 'english'
