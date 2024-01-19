@@ -19,7 +19,7 @@
         "svgo": "3.2.0"
     },
     "peerDependencies": {
-        "@taiga-ui/cdk": ">=3.59.0",
+        "@taiga-ui/cdk": "^3.59.0",
         "tslib": "2.6.2"
     }
 }
