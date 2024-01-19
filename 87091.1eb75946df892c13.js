@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[87091],{87091:e=>{e.exports='<p>\n    Balance:\n    <span [tuiSensitive]="sensitive">100 000$</span>\n</p>\n\n<label>\n    <tui-toggle [(ngModel)]="sensitive"></tui-toggle>\n    hide\n</label>\n'}}]);
