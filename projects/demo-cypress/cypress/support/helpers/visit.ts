@@ -146,8 +146,6 @@ export function tuiVisit(path: string, options: TuiVisitOptions = {}): void {
         waitAllRequests('@icons');
     }
 
-    cy.get(`${rootSelector}._is-cypress-mode`).as('app');
-
     if (hideCursor) {
         cy.get('@app').invoke('addClass', '_hide-cursor');
     }

@@ -4,7 +4,7 @@ import {NavigationEnd, Router} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {LOCAL_STORAGE} from '@ng-web-apis/common';
 import {TUI_DOC_PAGE_LOADED} from '@taiga-ui/addon-doc';
-import {TUI_IS_E2E, TuiDestroyService, TuiResizeService} from '@taiga-ui/cdk';
+import {TuiDestroyService, TuiResizeService} from '@taiga-ui/cdk';
 import {distinctUntilChanged, filter, map, Observable, takeUntil} from 'rxjs';
 
 import {AbstractDemoComponent, DEMO_PAGE_LOADED_PROVIDER} from './abstract.app';
@@ -35,7 +35,6 @@ export class AppComponent extends AbstractDemoComponent implements OnInit {
     );
 
     constructor(
-        @Inject(TUI_IS_E2E) isE2E: boolean,
         @Inject(TUI_DOC_PAGE_LOADED) pageLoaded$: Observable<boolean>,
         @Inject(TUI_SELECTED_VERSION_META) selectedVersion: TuiVersionMeta | null,
         @Inject(Router) protected readonly router: Router,
@@ -45,7 +44,7 @@ export class AppComponent extends AbstractDemoComponent implements OnInit {
         @Inject(APP_BASE_HREF) private readonly appBaseHref: string,
         @Inject(YaMetrikaService) private readonly ym: YaMetrikaService,
     ) {
-        super(isE2E, pageLoaded$, selectedVersion);
+        super(pageLoaded$, selectedVersion);
     }
 
     override async ngOnInit(): Promise<void> {
