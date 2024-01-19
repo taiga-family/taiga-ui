@@ -1,5 +1,7 @@
+import {isDevMode} from '@angular/core';
+
 export class TuiInvalidDayException extends Error {
     constructor(day: number) {
-        super(ngDevMode ? `Invalid day: ${day}` : '');
+        super(isDevMode() ? `Invalid day: ${day}` : '');
     }
 }

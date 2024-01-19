@@ -5,6 +5,7 @@ import {
     ElementRef,
     Inject,
     Input,
+    isDevMode,
     Optional,
     Sanitizer,
     SecurityContext,
@@ -86,7 +87,7 @@ export class TuiSvgComponent {
     set src(src: TuiSafeHtml | null | undefined) {
         const deprecated = this.options.deprecated(String(src));
 
-        ngDevMode && tuiAssert.assert(!deprecated, deprecated);
+        isDevMode() && tuiAssert.assert(!deprecated, deprecated);
 
         this.icon = (this.srcInterceptors ?? []).reduce(
             (newSrc, interceptor: TuiSvgInterceptorHandler) =>
@@ -165,7 +166,7 @@ export class TuiSvgComponent {
             },
         });
 
-        ngDevMode && tuiAssert.assert(false, message, icon);
+        isDevMode() && tuiAssert.assert(false, message, icon);
         this.el.nativeElement.dispatchEvent(event);
     }
 

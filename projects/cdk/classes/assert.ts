@@ -1,3 +1,4 @@
+import {isDevMode} from '@angular/core';
 import {EMPTY_FUNCTION} from '@taiga-ui/cdk/constants';
 
 export const tuiAssert = {
@@ -8,7 +9,7 @@ export const tuiAssert = {
      */
     enabled: false,
     get assert(): (assertion: boolean, ...args: unknown[]) => void {
-        return ngDevMode
+        return isDevMode()
             ? Function.prototype.bind.call(console.assert, console)
             : EMPTY_FUNCTION;
     },

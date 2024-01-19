@@ -1,3 +1,4 @@
+import {isDevMode} from '@angular/core';
 import {tuiAssert} from '@taiga-ui/cdk/classes';
 import {TuiTimeLike} from '@taiga-ui/cdk/interfaces';
 import {TuiTimeMode} from '@taiga-ui/cdk/types';
@@ -22,7 +23,7 @@ export class TuiTime implements TuiTimeLike {
         readonly seconds: number = 0,
         readonly ms: number = 0,
     ) {
-        ngDevMode &&
+        isDevMode() &&
             tuiAssert.assert(
                 TuiTime.isValidTime(hours, minutes, seconds, ms),
                 'Time must be real, but got:',
@@ -77,8 +78,8 @@ export class TuiTime implements TuiTimeLike {
      * Calculates TuiTime from milliseconds
      */
     static fromAbsoluteMilliseconds(milliseconds: number): TuiTime {
-        ngDevMode && tuiAssert.assert(Number.isInteger(milliseconds));
-        ngDevMode &&
+        isDevMode() && tuiAssert.assert(Number.isInteger(milliseconds));
+        isDevMode() &&
             tuiAssert.assert(
                 tuiInRange(milliseconds, 0, MILLISECONDS_IN_DAY),
                 `Milliseconds must be below ${MILLISECONDS_IN_DAY} (milliseconds in a day).`,

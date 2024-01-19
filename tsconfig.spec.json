@@ -2,6 +2,6 @@
     "extends": "./tsconfig.json",
     "exclude": ["projects/demo-cypress", "**/scripts/**/*.ts"],
     "compilerOptions": {
-        "types": ["jest", "node", "webpack-env", "ng-dev-mode"]
+        "types": ["jest", "node", "webpack-env"]
     }
 }

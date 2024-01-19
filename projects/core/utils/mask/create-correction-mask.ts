@@ -1,3 +1,4 @@
+import {isDevMode} from '@angular/core';
 import {tuiAssert} from '@taiga-ui/cdk';
 import {MASK_CARET_TRAP} from '@taiga-ui/core/constants';
 import {
@@ -20,7 +21,7 @@ export function tuiCreateCorrectionMask(
         const mask = rawValue.split('').reduce<TuiTextMaskList>((result, char, index) => {
             const corrected = correctionHandler(char, index);
 
-            ngDevMode &&
+            isDevMode() &&
                 tuiAssert.assert(corrected === null || corrected.length === 1, ASSERTION);
 
             if (!allowed.test(char) && !corrected) {

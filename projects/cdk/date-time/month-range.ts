@@ -1,3 +1,4 @@
+import {isDevMode} from '@angular/core';
 import {tuiAssert} from '@taiga-ui/cdk/classes';
 
 import {RANGE_SEPARATOR_CHAR} from './date-time';
@@ -11,7 +12,7 @@ export class TuiMonthRange {
         readonly from: TuiMonth,
         readonly to: TuiMonth,
     ) {
-        ngDevMode && tuiAssert.assert(from.monthSameOrBefore(to));
+        isDevMode() && tuiAssert.assert(from.monthSameOrBefore(to));
     }
 
     static sort(month1: TuiMonth, month2: TuiMonth): TuiMonthRange {

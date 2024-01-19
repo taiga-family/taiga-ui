@@ -1,4 +1,4 @@
-import {Pipe, PipeTransform} from '@angular/core';
+import {isDevMode, Pipe, PipeTransform} from '@angular/core';
 import {CHAR_PLUS, tuiAssert} from '@taiga-ui/cdk';
 import {tuiFormatPhone} from '@taiga-ui/core/utils/format';
 
@@ -16,7 +16,7 @@ export class TuiFormatPhonePipe implements PipeTransform {
         countryCode: string = `${CHAR_PLUS}7`,
         phoneMask: string = '(###) ###-##-##',
     ): string {
-        ngDevMode &&
+        isDevMode() &&
             tuiAssert.assert(
                 value !== undefined,
                 'Undefined was passed to tuiFormatPhone pipe',

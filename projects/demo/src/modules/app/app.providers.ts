@@ -5,7 +5,7 @@ import {
     LocationStrategy,
     PathLocationStrategy,
 } from '@angular/common';
-import {inject, PLATFORM_ID, Provider} from '@angular/core';
+import {inject, isDevMode, PLATFORM_ID, Provider} from '@angular/core';
 import {Title} from '@angular/platform-browser';
 import {UrlTree} from '@angular/router';
 import {environment} from '@demo/environments/environment';
@@ -99,7 +99,7 @@ export const APP_PROVIDERS: Provider[] = [
                 return null;
             }
 
-            ngDevMode &&
+            isDevMode() &&
                 tuiAssert.assert(
                     !(type && path),
                     'Don\'t use "type" and "path" input params together in tui-doc-page',

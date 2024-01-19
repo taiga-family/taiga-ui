@@ -1,3 +1,4 @@
+import {isDevMode} from '@angular/core';
 import {
     DAYS_IN_WEEK,
     tuiAssert,
@@ -45,10 +46,10 @@ export const getDayFromMonthRowCol = ({
      */
     rowIndex: number;
 }): TuiDay => {
-    ngDevMode && tuiAssert.assert(Number.isInteger(rowIndex));
-    ngDevMode && tuiAssert.assert(tuiInRange(rowIndex, 0, 6));
-    ngDevMode && tuiAssert.assert(Number.isInteger(colIndex));
-    ngDevMode && tuiAssert.assert(tuiInRange(colIndex, 0, DAYS_IN_WEEK));
+    isDevMode() && tuiAssert.assert(Number.isInteger(rowIndex));
+    isDevMode() && tuiAssert.assert(tuiInRange(rowIndex, 0, 6));
+    isDevMode() && tuiAssert.assert(Number.isInteger(colIndex));
+    isDevMode() && tuiAssert.assert(tuiInRange(colIndex, 0, DAYS_IN_WEEK));
 
     let day =
         rowIndex * DAYS_IN_WEEK +

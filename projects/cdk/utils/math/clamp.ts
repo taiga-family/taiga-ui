@@ -1,3 +1,4 @@
+import {isDevMode} from '@angular/core';
 import {tuiAssert} from '@taiga-ui/cdk/classes';
 
 /**
@@ -8,10 +9,10 @@ import {tuiAssert} from '@taiga-ui/cdk/classes';
  * @param max upper limit
  */
 export function tuiClamp(value: number, min: number, max: number): number {
-    ngDevMode && tuiAssert.assert(!Number.isNaN(value));
-    ngDevMode && tuiAssert.assert(!Number.isNaN(min));
-    ngDevMode && tuiAssert.assert(!Number.isNaN(max));
-    ngDevMode && tuiAssert.assert(max >= min);
+    isDevMode() && tuiAssert.assert(!Number.isNaN(value));
+    isDevMode() && tuiAssert.assert(!Number.isNaN(min));
+    isDevMode() && tuiAssert.assert(!Number.isNaN(max));
+    isDevMode() && tuiAssert.assert(max >= min);
 
     return Math.min(max, Math.max(min, value));
 }

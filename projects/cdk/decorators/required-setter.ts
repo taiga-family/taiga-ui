@@ -1,3 +1,4 @@
+import {isDevMode} from '@angular/core';
 import {tuiAssert} from '@taiga-ui/cdk/classes';
 import {TuiBooleanHandler} from '@taiga-ui/cdk/types';
 
@@ -32,7 +33,7 @@ export function tuiRequiredSetter<T extends Record<string, any>, K extends keyof
             enumerable,
             get,
             set(this: T, value: T[K]) {
-                if (ngDevMode && value !== undefined && assertion && tuiAssert) {
+                if (isDevMode() && value !== undefined && assertion && tuiAssert) {
                     tuiAssert.assert(
                         assertion.call(this, value),
                         `${String(key)} in ${name} received:`,
@@ -42,7 +43,7 @@ export function tuiRequiredSetter<T extends Record<string, any>, K extends keyof
                 }
 
                 if (!set || value === undefined) {
-                    ngDevMode &&
+                    isDevMode() &&
                         tuiAssert.assert(value !== undefined, errorSet(key, name));
 
                     return;

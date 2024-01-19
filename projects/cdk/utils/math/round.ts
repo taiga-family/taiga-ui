@@ -1,3 +1,4 @@
+import {isDevMode} from '@angular/core';
 import {tuiAssert} from '@taiga-ui/cdk/classes';
 
 const MAX_PRECISION = 292;
@@ -18,8 +19,8 @@ function calculate(
         return value;
     }
 
-    ngDevMode && tuiAssert.assert(!Number.isNaN(value), 'Value must be number');
-    ngDevMode &&
+    isDevMode() && tuiAssert.assert(!Number.isNaN(value), 'Value must be number');
+    isDevMode() &&
         tuiAssert.assert(Number.isInteger(precision), 'Precision must be integer');
 
     precision = Math.min(precision, MAX_PRECISION);

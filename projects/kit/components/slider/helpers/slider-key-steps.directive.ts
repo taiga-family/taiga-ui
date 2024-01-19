@@ -6,6 +6,7 @@ import {
     HostListener,
     Inject,
     Input,
+    isDevMode,
     Optional,
     Self,
 } from '@angular/core';
@@ -86,7 +87,7 @@ export class TuiSliderKeyStepsDirective
 
         const clampedControlValue = tuiClamp(controlValue, this.min, this.max);
 
-        ngDevMode &&
+        isDevMode() &&
             tuiAssert.assert(
                 controlValue === clampedControlValue,
                 '\n[SliderKeySteps]: You cannot programmatically set value which is less/more than min/max',

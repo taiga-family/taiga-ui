@@ -1,3 +1,4 @@
+import {isDevMode} from '@angular/core';
 import {tuiAssert} from '@taiga-ui/cdk/classes';
 import {TuiDateMode} from '@taiga-ui/cdk/types';
 
@@ -16,7 +17,7 @@ export class TuiDayRange extends TuiMonthRange {
     ) {
         super(from, to);
 
-        ngDevMode && tuiAssert.assert(from.daySameOrBefore(to));
+        isDevMode() && tuiAssert.assert(from.daySameOrBefore(to));
     }
 
     /**

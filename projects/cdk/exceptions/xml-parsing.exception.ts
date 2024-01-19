@@ -1,5 +1,7 @@
+import {isDevMode} from '@angular/core';
+
 export class TuiXmlParsingException extends Error {
     constructor() {
-        super(ngDevMode ? 'Error parsing XML string' : '');
+        super(isDevMode() ? 'Error parsing XML string' : '');
     }
 }

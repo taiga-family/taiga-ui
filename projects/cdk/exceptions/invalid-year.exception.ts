@@ -1,5 +1,7 @@
+import {isDevMode} from '@angular/core';
+
 export class TuiInvalidYearException extends Error {
     constructor(year: number) {
-        super(ngDevMode ? `Invalid year: ${year}` : '');
+        super(isDevMode() ? `Invalid year: ${year}` : '');
     }
 }

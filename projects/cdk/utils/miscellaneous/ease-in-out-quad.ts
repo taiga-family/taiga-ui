@@ -1,7 +1,8 @@
+import {isDevMode} from '@angular/core';
 import {tuiAssert} from '@taiga-ui/cdk/classes';
 
 export function tuiEaseInOutQuad(t: number): number {
-    ngDevMode &&
+    isDevMode() &&
         tuiAssert.assert(
             t >= 0 && t <= 1,
             'Input must be between 0 and 1 inclusive but received ',

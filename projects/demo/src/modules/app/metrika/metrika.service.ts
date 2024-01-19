@@ -1,5 +1,5 @@
 import {DOCUMENT, isPlatformBrowser} from '@angular/common';
-import {Inject, Injectable, PLATFORM_ID, Provider} from '@angular/core';
+import {Inject, Injectable, isDevMode, PLATFORM_ID, Provider} from '@angular/core';
 import {TUI_IS_E2E, tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 
 declare global {
@@ -46,7 +46,7 @@ export class YaMetrikaService {
         @Inject(PLATFORM_ID) platformId: Record<string, string>,
         @Inject(TUI_IS_E2E) isE2E: boolean,
     ) {
-        if (options.debug || (isPlatformBrowser(platformId) && !ngDevMode && !isE2E)) {
+        if (options.debug || (isPlatformBrowser(platformId) && !isDevMode() && !isE2E)) {
             const script = this.doc.createElement('script');
 
             script.async = true;

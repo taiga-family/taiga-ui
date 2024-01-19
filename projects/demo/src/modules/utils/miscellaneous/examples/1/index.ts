@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, isDevMode} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiAssert} from '@taiga-ui/cdk';
@@ -14,7 +14,7 @@ export class TuiMiscellaneousExample1 {
         const dayOfWeek = new Date().getDay();
         const isFriday = dayOfWeek === 5;
 
-        ngDevMode && tuiAssert.assert(isFriday, 'Today is not a friday');
+        isDevMode() && tuiAssert.assert(isFriday, 'Today is not a friday');
 
         return isFriday
             ? 'Nothing in console'

@@ -3,6 +3,7 @@ import {
     ChangeDetectionStrategy,
     Component,
     ContentChild,
+    isDevMode,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {tuiAssert} from '@taiga-ui/cdk';
@@ -36,7 +37,7 @@ export class TuiSliderThumbLabelComponent implements AfterContentInit {
     }
 
     ngAfterContentInit(): void {
-        ngDevMode &&
+        isDevMode() &&
             tuiAssert.assert(
                 Boolean(this.control?.valueChanges),
                 '\n[tuiSliderThumbLabel] expected <input tuiSlider type="range" /> to use Angular Forms.\n' +

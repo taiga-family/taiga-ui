@@ -1,5 +1,7 @@
+import {isDevMode} from '@angular/core';
+
 export class TuiTableSortKeyException extends Error {
     constructor() {
-        super(ngDevMode ? 'Trying to sort with no key' : '');
+        super(isDevMode() ? 'Trying to sort with no key' : '');
     }
 }

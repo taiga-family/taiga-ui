@@ -1,3 +1,4 @@
+import {isDevMode} from '@angular/core';
 import {CHAR_EN_DASH, CHAR_HYPHEN, CHAR_NO_BREAK_SPACE, tuiAssert} from '@taiga-ui/cdk';
 import {
     MASK_CARET_TRAP,
@@ -100,9 +101,9 @@ export function tuiCreateNumberMask({
     allowNegative = false,
     integerLimit = 0,
 }: TuiNumberMaskOptions = {}): TuiTextMaskListHandler {
-    ngDevMode && tuiAssert.assert(decimalLimit >= 0);
-    ngDevMode && tuiAssert.assert(Number.isInteger(integerLimit));
-    ngDevMode && tuiAssert.assert(integerLimit >= 0);
+    isDevMode() && tuiAssert.assert(decimalLimit >= 0);
+    isDevMode() && tuiAssert.assert(Number.isInteger(integerLimit));
+    isDevMode() && tuiAssert.assert(integerLimit >= 0);
 
     return (rawValue, {previousConformedValue}) => {
         if (previousConformedValue && requireDecimal) {

@@ -1,5 +1,7 @@
+import {isDevMode} from '@angular/core';
+
 export class TuiComputedDocumentException extends Error {
     constructor() {
-        super(ngDevMode ? 'Only use computedDocument after load event' : '');
+        super(isDevMode() ? 'Only use computedDocument after load event' : '');
     }
 }

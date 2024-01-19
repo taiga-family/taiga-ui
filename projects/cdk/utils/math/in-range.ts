@@ -1,3 +1,4 @@
+import {isDevMode} from '@angular/core';
 import {tuiAssert} from '@taiga-ui/cdk/classes';
 
 export function tuiInRange(
@@ -5,10 +6,10 @@ export function tuiInRange(
     fromInclude: number,
     toExclude: number,
 ): boolean {
-    ngDevMode && tuiAssert.assert(!Number.isNaN(value));
-    ngDevMode && tuiAssert.assert(!Number.isNaN(fromInclude));
-    ngDevMode && tuiAssert.assert(!Number.isNaN(toExclude));
-    ngDevMode && tuiAssert.assert(fromInclude < toExclude);
+    isDevMode() && tuiAssert.assert(!Number.isNaN(value));
+    isDevMode() && tuiAssert.assert(!Number.isNaN(fromInclude));
+    isDevMode() && tuiAssert.assert(!Number.isNaN(toExclude));
+    isDevMode() && tuiAssert.assert(fromInclude < toExclude);
 
     return value >= fromInclude && value < toExclude;
 }

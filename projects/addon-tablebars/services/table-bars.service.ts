@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {Injectable, isDevMode} from '@angular/core';
 import {tuiAssert, tuiIsObserved} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable, ReplaySubject} from 'rxjs';
@@ -18,7 +18,7 @@ export class TuiTableBarsService {
 
     open(content: PolymorpheusContent, options?: TuiTableBarOptions): Observable<never> {
         return new Observable(observer => {
-            ngDevMode && tuiAssert.assert(tuiIsObserved(this.bar$), NO_HOST);
+            isDevMode() && tuiAssert.assert(tuiIsObserved(this.bar$), NO_HOST);
 
             const tableBar = new TuiTableBar(observer, content, options);
 

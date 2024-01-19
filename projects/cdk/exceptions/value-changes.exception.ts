@@ -1,5 +1,7 @@
+import {isDevMode} from '@angular/core';
+
 export class TuiValueChangesException extends Error {
     constructor() {
-        super(ngDevMode ? 'Control does not have valueChanges' : '');
+        super(isDevMode() ? 'Control does not have valueChanges' : '');
     }
 }

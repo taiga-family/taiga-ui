@@ -1,3 +1,4 @@
+import {isDevMode} from '@angular/core';
 import {
     CHAR_HYPHEN,
     CHAR_NO_BREAK_SPACE,
@@ -92,7 +93,7 @@ export function tuiCreateAutoCorrectedNumberPipe(
     allowNegative?: boolean,
     isIOS = false,
 ): TuiTextMaskPipeHandler {
-    ngDevMode && tuiAssert.assert(decimalLimit >= 0);
+    isDevMode() && tuiAssert.assert(decimalLimit >= 0);
 
     // Guess for which browser I need this :)
     let previousCaret = -1;

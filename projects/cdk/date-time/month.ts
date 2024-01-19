@@ -1,3 +1,4 @@
+import {isDevMode} from '@angular/core';
 import {tuiAssert} from '@taiga-ui/cdk/classes';
 import {TuiMonthNumber} from '@taiga-ui/cdk/enums';
 import {TuiMonthLike} from '@taiga-ui/cdk/interfaces';
@@ -19,7 +20,7 @@ export class TuiMonth extends TuiYear implements TuiMonthLike {
         readonly month: number,
     ) {
         super(year);
-        ngDevMode && tuiAssert.assert(TuiMonth.isValidMonth(year, month));
+        isDevMode() && tuiAssert.assert(TuiMonth.isValidMonth(year, month));
     }
 
     /**
@@ -33,7 +34,7 @@ export class TuiMonth extends TuiYear implements TuiMonthLike {
      * Returns number of days in a month
      */
     static getMonthDaysCount(month: number, isLeapYear: boolean): number {
-        ngDevMode && tuiAssert.assert(TuiMonth.isValidMonthPart(month));
+        isDevMode() && tuiAssert.assert(TuiMonth.isValidMonthPart(month));
 
         switch (month) {
             case TuiMonthNumber.February:

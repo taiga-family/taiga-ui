@@ -1,5 +1,7 @@
+import {isDevMode} from '@angular/core';
+
 export class TuiOwnerDocumentException extends Error {
     constructor() {
-        super(ngDevMode ? 'Element does not have ownerDocument' : '');
+        super(isDevMode() ? 'Element does not have ownerDocument' : '');
     }
 }

@@ -1,3 +1,4 @@
+import {isDevMode} from '@angular/core';
 import {tuiAssert} from '@taiga-ui/cdk/classes';
 
 /**
@@ -7,9 +8,9 @@ import {tuiAssert} from '@taiga-ui/cdk/classes';
  * @param quantum series step
  */
 export function tuiQuantize(value: number, quantum: number): number {
-    ngDevMode && tuiAssert.assert(Number.isFinite(value));
-    ngDevMode && tuiAssert.assert(Number.isFinite(quantum));
-    ngDevMode && tuiAssert.assert(quantum > 0);
+    isDevMode() && tuiAssert.assert(Number.isFinite(value));
+    isDevMode() && tuiAssert.assert(Number.isFinite(quantum));
+    isDevMode() && tuiAssert.assert(quantum > 0);
 
     const remainder = value % quantum;
 

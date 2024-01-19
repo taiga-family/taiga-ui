@@ -4,6 +4,7 @@ import {
     HostBinding,
     Inject,
     Input,
+    isDevMode,
     OnDestroy,
     OnInit,
     Optional,
@@ -66,7 +67,7 @@ export abstract class AbstractTuiControl<T>
     ) {
         super();
 
-        if (ngDevMode && this.ngControl === null) {
+        if (isDevMode() && this.ngControl === null) {
             tuiAssert.assert(
                 false,
                 `NgControl not injected in ${this.constructor.name}!\n`,

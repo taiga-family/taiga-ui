@@ -1,3 +1,4 @@
+import {isDevMode} from '@angular/core';
 import type {TuiDocPage} from '@taiga-ui/addon-doc/interfaces';
 import type {TuiDocPages} from '@taiga-ui/addon-doc/types';
 
@@ -18,11 +19,11 @@ export function tuiToFlatMapPages(pages: TuiDocPages): Map<string, TuiDocPage> {
     pages.forEach(page => {
         if ('subPages' in page) {
             page.subPages.forEach(subPage => {
-                ngDevMode && assertTitle(subPage, map);
+                isDevMode() && assertTitle(subPage, map);
                 map.set(subPage.title, subPage);
             });
         } else {
-            ngDevMode && assertTitle(page, map);
+            isDevMode() && assertTitle(page, map);
             map.set(page.title, page);
         }
     });
