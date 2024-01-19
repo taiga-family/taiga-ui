@@ -26,12 +26,11 @@ export class TuiSensitiveDirective {
 
     readonly offset = Math.round(Math.random() * 10) * 10;
     readonly height$ = this.resize$.pipe(
-        map(([entry]) => entry.contentRect.height),
-        map(height => {
-            const rows = Math.max(2, Math.floor(height / 16) + 1);
-
-            return height * (rowsInSvg / rows);
-        }),
+        map(([{contentRect}]) => [
+            Math.max(2, Math.floor(contentRect.height / 16) + 1),
+            contentRect.height,
+        ]),
+        map(([rows, height]) => height * (rowsInSvg / rows)),
     );
 
     constructor(
