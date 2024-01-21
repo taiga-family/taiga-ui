@@ -1,62 +1,33 @@
-import {expect, Locator, Page} from '@playwright/test';
+import {expect, Locator, Page, Request} from '@playwright/test';
 
 import {tuiHideElement} from '../hide-element';
 
 export class TuiDocumentationApiPagePO {
+    private readonly pending = new Set<Request>();
+
     readonly apiPageExample: Locator = this.page.locator('#demo-content');
 
-    constructor(protected readonly page: Page) {}
+    constructor(protected readonly page: Page) {
+        page.on('request', request => this.pending.add(request));
+        page.on('requestfailed', request => this.pending.delete(request));
+        page.on('requestfinished', request => this.pending.delete(request));
+    }
 
     /**
      * await page.waitForLoadState('networkidle');
      * Doesn't work as expected
      */
-    async waitCompleteLoadingImages(): Promise<void> {
-        const images = await this.apiPageExample.locator('img,tui-icon:after').all();
-
-        if (images.length) {
-            await this.page.waitForTimeout(100);
-
-            await expect(async () =>
-                Promise.all(
-                    images.map(async locator =>
-                        locator.evaluate(
-                            async (image: HTMLImageElement) =>
-                                new Promise(resolve => {
-                                    image.onload = resolve;
-                                    image.onerror = resolve;
-                                    setTimeout(resolve, 1000);
-                                }),
-                        ),
-                    ),
-                ),
-            ).toPass();
-        }
-
-        const svgElements = await this.apiPageExample.locator('svg:visible').all();
-
-        if (svgElements.length) {
-            await expect(async () =>
-                Promise.all(
-                    svgElements.map(async locator =>
-                        locator.evaluate(
-                            async (svg: SVGElement) =>
-                                new Promise(resolve => {
-                                    setTimeout(() => {
-                                        if (
-                                            svg.isConnected &&
-                                            svg.clientWidth > 0 &&
-                                            svg.clientHeight > 0
-                                        ) {
-                                            resolve(true);
-                                        }
-                                    }, 400);
-                                }),
-                        ),
-                    ),
-                ),
-            ).toPass();
-        }
+    async networkidle(): Promise<void> {
+        await Promise.all(
+            [...this.pending].map(
+                async req =>
+                    new Promise(resolve => {
+                        req.response()
+                            .then(response => resolve(response?.finished()))
+                            .catch(() => resolve(undefined));
+                    }),
+            ),
+        );
     }
 
     async hideNotifications(): Promise<void> {
@@ -118,20 +89,6 @@ export class TuiDocumentationApiPagePO {
                 ).toBeGreaterThanOrEqual(64);
             }).toPass();
         }
-    }
-
-    async getDefaultSelectedOptionIndex(options: Locator[]): Promise<number> {
-        for (const [index, option] of options.entries()) {
-            const hasMark = await option
-                .locator('[automation-id=tui-select-option__checkmark]')
-                .all();
-
-            if (hasMark.length) {
-                return index;
-            }
-        }
-
-        return 0;
     }
 
     async getRows(): Promise<Locator[]> {

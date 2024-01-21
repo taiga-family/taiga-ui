@@ -42,7 +42,9 @@
         "colortop",
         "colorbottom",
         "contenttop",
-        "contentbottom"
+        "contentbottom",
+        "requestfailed",
+        "requestfinished"
     ],
     "ignoreRegExpList": ["\\(https?://.*?\\)", "\\/{1}.+\\/{1}", "\\%2F.+", "\\%2C.+", "\\ɵ.+", "\\ыва.+"],
     "overrides": [

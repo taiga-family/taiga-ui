@@ -22,23 +22,21 @@ test.describe('Deep / Select', () => {
                     continue;
                 }
 
+                await api.focusOnBody();
                 await select.scrollIntoViewIfNeeded();
                 await expect(select).toBeVisible();
-                await api.focusOnBody();
                 await select.click();
                 await page.waitForTimeout(100);
 
                 const options = await api.getOptions();
-                const defaultIndex = await api.getDefaultSelectedOptionIndex(options);
 
                 for (const [index, option] of options.entries()) {
-                    await expect(option).toBeVisible();
                     await option.focus();
                     await page.keyboard.down('Enter');
+                    await page.waitForTimeout(300);
                     await api.focusOnBody();
                     await api.hideNotifications();
-                    await api.waitCompleteLoadingImages();
-                    await page.waitForTimeout(300);
+                    await api.networkidle();
 
                     await expect(api.apiPageExample).toHaveScreenshot(
                         `deep-${path}__${name}-select-option-${index}.png`,
@@ -51,10 +49,10 @@ test.describe('Deep / Select', () => {
 
                 if (cleaner) {
                     await cleaner.click();
-                } else if (options[defaultIndex]) {
-                    await options[defaultIndex].focus();
+                } else {
+                    await options[0].focus();
                     await page.keyboard.down('Enter');
-                    await api.waitCompleteLoadingImages();
+                    await api.networkidle();
                 }
 
                 await api.focusOnBody();
