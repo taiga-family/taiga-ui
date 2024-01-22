@@ -18,6 +18,7 @@ import {
     TuiResizeService,
 } from '@taiga-ui/cdk';
 import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import {tuiBadgeNotificationOptionsProvider} from '@taiga-ui/experimental/components/badge-notification';
 import {Observable} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
@@ -27,7 +28,11 @@ import {takeUntil} from 'rxjs/operators';
     styleUrls: ['./segmented.style.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [TuiDestroyService, TuiResizeService],
+    providers: [
+        TuiDestroyService,
+        TuiResizeService,
+        tuiBadgeNotificationOptionsProvider({size: 's'}),
+    ],
 })
 export class TuiSegmentedComponent implements OnChanges {
     @Input()
