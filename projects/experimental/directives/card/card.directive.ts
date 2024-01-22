@@ -9,11 +9,15 @@ import {TuiCardComponent} from './card.component';
     host: {
         tuiCard: '',
         '[attr.data-size]': 'size || "m"',
+        '[attr.data-space]': 'space',
     },
 })
 export class TuiCardDirective {
     @Input('tuiCard')
     size: TuiSizeL | '' = 'm';
+
+    @Input()
+    space: 'compact' | 'normal' = 'normal';
 
     constructor(
         @Inject(TuiDirectiveStylesService) directiveStyles: TuiDirectiveStylesService,

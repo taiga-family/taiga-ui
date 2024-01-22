@@ -1,4 +1,5 @@
 ```html
+<!-- Medium -->
 <div tuiCard>
   <tui-avatar
     class="star"
@@ -9,5 +10,15 @@
     Title
     <span tuiSubtitle>Subtitle</span>
   </h2>
+</div>
+
+<!-- Large -->
+<div
+  tuiCard="l"
+  tuiSurface="elevated"
+>
+  <div tuiHeader>
+    <h2 tuiTitle>Header</h2>
+  </div>
 </div>
 ```

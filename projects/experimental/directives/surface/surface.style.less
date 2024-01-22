@@ -1,7 +1,7 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
 // prettier-ignore
-[data-surface] {
+[tuiSurface][data-surface] {
     .clearbtn();
     .transition();
 
@@ -9,7 +9,7 @@
     position: relative;
     border-radius: var(--tui-radius-l);
     box-sizing: border-box;
-    padding: 1.25rem;
+    padding: 1rem 1.25rem;
     background-size: cover;
     background-repeat: no-repeat;
     overflow: hidden;
@@ -25,14 +25,14 @@
     }
 }
 
-button[data-surface] {
+button[tuiSurface][data-surface] {
     cursor: pointer;
 }
 
-[data-surface]:before,
-[data-surface]:after,
-[tuiSurfaceLayer]:before,
-[tuiSurfaceLayer]:after {
+[tuiSurface][data-surface]:before,
+[tuiSurface][data-surface]:after,
+[tuiSurface][tuiSurfaceLayer]:before,
+[tuiSurface][tuiSurfaceLayer]:after {
     .fullsize();
     .transition();
     content: '';
@@ -106,13 +106,13 @@ input[tuiSurfaceLayer] {
     }
 
     @media (hover: hover) and (pointer: fine) {
-        [data-surface]:hover & {
+        [tuiSurface][data-surface]:hover & {
             box-shadow:
                 inset 0 0,
                 inset 0 0 0 calc(var(--tui-gap) / 2) var(--tui-base-03);
         }
 
-        [data-surface]:hover &:checked {
+        [tuiSurface][data-surface]:hover &:checked {
             filter: brightness(0.9);
             box-shadow:
                 inset 0 0 0 calc(var(--tui-gap) / 2),
@@ -121,14 +121,14 @@ input[tuiSurfaceLayer] {
     }
 }
 
-[data-surface='elevated'] {
+[tuiSurface][data-surface='elevated'] {
     box-shadow: var(--tui-shadow);
     border-radius: var(--tui-radius-xl);
     background: var(--tui-elevation-01);
 }
 
-button[data-surface='elevated'],
-a[data-surface='elevated'] {
+button[tuiSurface][data-surface='elevated'],
+a[tuiSurface][data-surface='elevated'] {
     &:active {
         box-shadow: var(--tui-shadow);
         transform: scale(0.95);
@@ -138,17 +138,18 @@ a[data-surface='elevated'] {
         &:hover {
             box-shadow: var(--tui-shadow-hover);
             transform: translate3d(0, -0.25rem, 0);
+            background: var(--tui-elevation-01);
         }
     }
 }
 
-[data-surface='flat'] {
+[tuiSurface][data-surface='flat'] {
     border-radius: var(--tui-radius-xl);
     background: var(--tui-clear);
 }
 
-button[data-surface='flat'],
-a[data-surface='flat'] {
+button[tuiSurface][data-surface='flat'],
+a[tuiSurface][data-surface='flat'] {
     &:active {
         transform: scale(0.95);
     }
