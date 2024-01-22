@@ -1,9 +1,9 @@
 export function tuiIsInput(element: Element): element is HTMLInputElement {
-    return element.matches('input');
+    return element.matches(`input`);
 }
 
 export function tuiIsTextarea(element: Element): element is HTMLTextAreaElement {
-    return element.matches('textarea');
+    return element.matches(`textarea`);
 }
 
 export function tuiIsTextfield(
@@ -15,12 +15,11 @@ export function tuiIsTextfield(
 export function tuiIsElement(
     node?: Element | EventTarget | Node | null,
 ): node is Element {
-    return !!node && 'nodeType' in node && node.nodeType === Node.ELEMENT_NODE;
+    return !!node && `nodeType` in node && node.nodeType === Node.ELEMENT_NODE;
 }
 
-export function tuiIsHTMLElement(node: unknown): node is HTMLElement {
-    // TODO: iframe warning
-    return node instanceof HTMLElement;
+export function tuiIsHTMLElement(node: any): node is HTMLElement {
+    return node && node instanceof node.ownerDocument.defaultView.HTMLElement;
 }
 
 export function tuiIsTextNode(node: Node): node is Text {

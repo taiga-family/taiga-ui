@@ -1,0 +1,13 @@
+<tui-segmented
+    *ngFor="let size of sizes"
+    [size]="size"
+>
+    <button>
+        <tui-icon icon="tuiIconSun"></tui-icon>
+        All
+        <tui-badge-notification [size]="size">3</tui-badge-notification>
+        <tui-icon icon="tuiIconMoon"></tui-icon>
+    </button>
+    <button>Incoming</button>
+    <button>Outgoing</button>
+</tui-segmented>
