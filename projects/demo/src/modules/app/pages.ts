@@ -926,6 +926,12 @@ export const pages: TuiDocPages = [
     },
     {
         section: 'Experimental',
+        title: 'Header',
+        keywords: 'header, заголовок, item',
+        route: '/experimental/header',
+    },
+    {
+        section: 'Experimental',
         title: 'Icon',
         keywords: 'icons, image, картинка, свг, svg, графика, иконка',
         route: '/experimental/icon',
