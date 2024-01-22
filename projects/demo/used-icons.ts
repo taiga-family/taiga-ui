@@ -116,6 +116,8 @@ export const TUI_USED_ICONS = [
     'tuiIconCloseLarge',
     'tuiIconFrownLarge',
     'tuiIconMehLarge',
+    'tuiIconSun',
+    'tuiIconMoon',
     'tuiIconThumbsDown',
     'tuiIconCloud',
     'tuiIconInfo',

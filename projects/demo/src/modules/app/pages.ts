@@ -938,15 +938,15 @@ export const pages: TuiDocPages = [
     },
     {
         section: 'Experimental',
-        title: 'Header',
-        keywords: 'header, заголовок, item',
-        route: '/experimental/header',
-    },
-    {
-        section: 'Experimental',
         title: 'Icon',
         keywords: 'icons, image, картинка, свг, svg, графика, иконка',
         route: '/experimental/icon',
+    },
+    {
+        section: 'Experimental',
+        title: 'Header',
+        keywords: 'header, заголовок, item',
+        route: '/experimental/header',
     },
     {
         section: 'Experimental',
@@ -960,6 +960,12 @@ export const pages: TuiDocPages = [
         title: 'Rating ',
         keywords: 'рейтинг, оценка, звезда, rating, star, rate',
         route: '/experimental/rating',
+    },
+    {
+        section: 'Experimental',
+        title: 'Segmented',
+        keywords: 'tabs, control, radio, navigation, навигация, вкладки, таб',
+        route: '/experimental/segmented',
     },
     {
         section: 'Experimental',

@@ -6,17 +6,19 @@
         *polymorpheusOutlet="heading as text"
         [textContent]="text"
     ></span>
-    <button
+    <a
         *ngIf="id"
         appearance="icon"
+        routerLink="."
         size="xs"
         tuiIconButton
         type="button"
         class="t-link-icon"
+        [fragment]="id"
         [icon]="options.linkIcon"
         [title]="copy$ | async"
-        (click)="copyExampleLink()"
-    ></button>
+        (click)="copyExampleLink($any($event.currentTarget))"
+    ></a>
 </h3>
 <h4
     *ngIf="description"
