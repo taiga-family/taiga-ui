@@ -1,0 +1,1 @@
+(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[14628],{14628:t=>{t.exports='```html\n<h2 tuiTitle="s">\n  <div tuiSubtitle>Caption</div>\n  I am a title\n  <div tuiSubtitle>I\'m a subtitle</div>\n</h2>\n```\n'}}]);
