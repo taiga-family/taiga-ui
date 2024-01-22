@@ -1,1 +1,0 @@
-(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[87091],{87091:n=>{n.exports='<p>\n    Balance:\n    <span [tuiSensitive]="sensitive">100 000$</span>\n</p>\n\n<label>\n    <tui-toggle [(ngModel)]="sensitive"></tui-toggle>\n    hide\n</label>\n'}}]);
