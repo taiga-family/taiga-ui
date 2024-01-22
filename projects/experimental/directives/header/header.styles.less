@@ -1,0 +1,112 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+[tuiHeader] {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    box-sizing: content-box;
+    color: var(--tui-text-01);
+
+    [tuiTitle] {
+        flex-grow: 2;
+    }
+
+    [tuiAccessories] {
+        display: flex;
+        align-items: center;
+        margin-inline-start: 1rem;
+
+        & > *:not(:first-child) {
+            margin-inline-start: 0.75rem;
+        }
+
+        &:before {
+            content: '​';
+            visibility: hidden;
+        }
+    }
+
+    [tuiSubtitle] {
+        font: var(--tui-font-text-m);
+        color: var(--tui-text-02);
+    }
+
+    [tuiCaption] {
+        font: var(--tui-font-text-s);
+        color: var(--tui-text-02);
+        font-weight: 500;
+        text-transform: uppercase;
+    }
+
+    &[data-size='xxl'] {
+        [tuiTitle],
+        [tuiAccessories] {
+            font: var(--tui-font-heading-1);
+        }
+    }
+
+    &[data-size='xl'] {
+        [tuiTitle],
+        [tuiAccessories] {
+            font: var(--tui-font-heading-2);
+        }
+    }
+
+    &[data-size='l'] {
+        [tuiTitle],
+        [tuiAccessories] {
+            font: var(--tui-font-heading-3);
+        }
+    }
+
+    &[data-size='m'] {
+        [tuiTitle],
+        [tuiAccessories] {
+            font: var(--tui-font-heading-4);
+        }
+    }
+
+    &[data-size='s'] {
+        [tuiTitle],
+        [tuiAccessories] {
+            font: var(--tui-font-heading-5);
+        }
+    }
+
+    &[data-size='xs'] {
+        [tuiTitle],
+        [tuiAccessories] {
+            font: var(--tui-font-heading-6);
+        }
+    }
+
+    &[data-size='xxs'] {
+        [tuiTitle],
+        [tuiAccessories] {
+            font: var(--tui-font-text-xl);
+        }
+    }
+
+    &[data-size='xxl'],
+    &[data-size='xl'],
+    &[data-size='l'] {
+        [tuiSubtitle] {
+            font: var(--tui-font-text-l);
+        }
+    }
+}
+
+tui-root._mobile [tuiHeader] {
+    [tuiAccessories] {
+        & > *:not(:first-child) {
+            margin-inline-start: 1rem;
+        }
+    }
+
+    &[data-size='xxs'] {
+        [tuiTitle],
+        [tuiAccessories] {
+            font: var(--tui-font-heading-6);
+        }
+    }
+}
