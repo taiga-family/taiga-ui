@@ -19,7 +19,7 @@ export function tuiIsElement(
 }
 
 export function tuiIsHTMLElement(node: any): node is HTMLElement {
-    return node && node instanceof node.ownerDocument.defaultView.HTMLElement;
+    return !!node && node instanceof node.ownerDocument.defaultView.HTMLElement;
 }
 
 export function tuiIsTextNode(node: Node): node is Text {
