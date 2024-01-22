@@ -22,12 +22,12 @@ test.describe('Deep / Toggle', () => {
                     continue;
                 }
 
+                await api.focusOnBody();
                 await toggle.scrollIntoViewIfNeeded();
                 await expect(toggle).toBeVisible();
-                await api.focusOnBody();
                 await toggle.click();
-                await api.waitCompleteLoadingImages();
                 await api.hideNotifications();
+                await api.networkidle();
 
                 await expect(api.apiPageExample).toHaveScreenshot(
                     `deep-${path}__${name}-toggled.png`,
