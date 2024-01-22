@@ -1,28 +1,10 @@
+import {Inject, Injectable, OnDestroy, Optional, SkipSelf} from '@angular/core';
 import {
-    EventEmitter,
-    Inject,
-    Injectable,
-    OnDestroy,
-    Optional,
-    SkipSelf,
-} from '@angular/core';
-import {
-    TuiApiHostTemplate,
     TuiDocumentationProperty,
     TuiDocumentationPropertyType,
 } from '@taiga-ui/addon-doc/interfaces';
 import {tuiRenderProperty} from '@taiga-ui/addon-doc/utils';
-import {
-    distinctUntilChanged,
-    filter,
-    map,
-    Observable,
-    shareReplay,
-    startWith,
-    Subject,
-    takeUntil,
-    tap,
-} from 'rxjs';
+import {BehaviorSubject} from 'rxjs';
 
 const indent = 4;
 
@@ -125,115 +107,60 @@ export class TuiApiHostService implements OnDestroy {
 
     private readonly contents = new Contents();
 
-    private readonly onChange = new EventEmitter<void>();
+    private readonly index = this.parent?.setContent('') ?? -1;
 
-    private readonly beforeChangeTemplate$ = new Subject<void>();
-
-    private readonly beforeChangeProperty$ = new Subject<string>();
-
-    private readonly beforeChangeContent$ = new Subject<number>();
-
-    private readonly destroy$ = new Subject<void>();
-
-    readonly code$ = this.onChange.pipe(
-        startWith(null),
-        map(() => this.renderTemplate()),
-        distinctUntilChanged(),
-        shareReplay({
-            bufferSize: 1,
-            refCount: true,
-        }),
-    );
+    readonly code$ = new BehaviorSubject<string>('');
 
     constructor(
         @Inject(TuiApiHostService)
         @Optional()
         @SkipSelf()
-        parent: TuiApiHostService | null,
-    ) {
-        if (parent) {
-            parent.setContent(this.code$).pipe(takeUntil(this.destroy$)).subscribe();
-        }
+        private readonly parent: TuiApiHostService | null,
+    ) {}
+
+    setTemplate(
+        tagName: string,
+        baseProperties: Record<string, TuiDocumentationProperty>,
+    ): void {
+        this.tagName = tagName;
+        this.baseProperties = baseProperties;
+        this.onChange();
     }
 
-    setTemplate(template$: Observable<TuiApiHostTemplate>): Observable<never> {
-        return new Observable(() => {
-            this.beforeChangeTemplate$.next();
-
-            const prevTagName = this.tagName;
-            const prevBaseProperties = this.baseProperties;
-
-            return template$
-                .pipe(
-                    tap({
-                        unsubscribe: () => {
-                            this.tagName = prevTagName;
-                            this.baseProperties = prevBaseProperties;
-                            this.onChange.emit();
-                        },
-                    }),
-                    takeUntil(this.beforeChangeTemplate$),
-                )
-                .subscribe(({tagName, baseProperties}) => {
-                    this.tagName = tagName;
-                    this.baseProperties = baseProperties;
-                    this.onChange.emit();
-                });
-        });
+    setProperty(name: string, property: TuiDocumentationProperty): void {
+        this.properties[name] = property;
+        this.onChange();
     }
 
-    setProperty(name: string, property: TuiDocumentationProperty): Observable<never> {
-        return new Observable<never>(subscriber => {
-            this.beforeChangeProperty$.next(name);
-
-            this.properties[name] = property;
-            this.onChange.emit();
-
-            return this.beforeChangeProperty$
-                .pipe(
-                    filter(changeName => changeName === name),
-                    tap({
-                        unsubscribe: () => {
-                            delete this.properties[name];
-                            this.onChange.emit();
-                        },
-                    }),
-                )
-                .subscribe(() => subscriber.complete());
-        });
+    deleteProperty(name: string): void {
+        delete this.properties[name];
+        this.onChange();
     }
 
-    setContent(content$: Observable<string>): Observable<never> {
-        return new Observable(() => {
-            const index = this.contents.length;
+    setContent(content: string, index: number = this.contents.length): number {
+        this.contents.set(index, content);
+        this.onChange();
 
-            this.beforeChangeContent$.next(index);
+        return index;
+    }
 
-            return content$
-                .pipe(
-                    startWith(''),
-                    distinctUntilChanged(),
-                    tap({
-                        unsubscribe: () => {
-                            this.contents.delete(index);
-                            this.onChange.emit();
-                        },
-                    }),
-                    takeUntil(
-                        this.beforeChangeContent$.pipe(
-                            filter(changedIndex => index === changedIndex),
-                        ),
-                    ),
-                )
-                .subscribe(content => {
-                    this.contents.set(index, content);
-                    this.onChange.emit();
-                });
-        });
+    deleteContent(index: number): void {
+        this.contents.delete(index);
+        this.onChange();
     }
 
     ngOnDestroy(): void {
-        this.destroy$.next();
+        this.parent?.deleteContent(this.index);
+    }
+
+    private onChange(): void {
+        const template = this.renderTemplate();
+
+        this.code$.next(template);
+
+        if (this.parent) {
+            this.parent.setContent(template, this.index);
+        }
     }
 
     private renderTemplate(): string {

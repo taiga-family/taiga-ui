@@ -5,7 +5,7 @@ import {
     TuiBindDocumentationTemplatesDirective,
     TuiDocumentationApiHostDirective,
 } from '@taiga-ui/addon-doc';
-import {BehaviorSubject, EMPTY, firstValueFrom} from 'rxjs';
+import {firstValueFrom} from 'rxjs';
 
 describe('TuiBindDocumentationTemplatesDirective', () => {
     @Component({
@@ -52,22 +52,8 @@ describe('TuiBindDocumentationTemplatesDirective', () => {
         component = fixture.componentInstance;
         fixture.detectChanges();
 
-        component.host1
-            .setTemplate(
-                new BehaviorSubject({
-                    tagName: 'div',
-                    baseProperties: {},
-                }),
-            )
-            .subscribe();
-        component.host2
-            .setTemplate(
-                new BehaviorSubject({
-                    tagName: 'button',
-                    baseProperties: {},
-                }),
-            )
-            .subscribe();
+        component.host1.setTemplate('div', {});
+        component.host2.setTemplate('button', {});
     });
 
     it('should create', () => {
@@ -80,12 +66,10 @@ describe('TuiBindDocumentationTemplatesDirective', () => {
             '<button></button>',
         );
 
-        const subscription = component.mergedHost
-            .setProperty('name', {
-                type: null,
-                value: 'test',
-            })
-            .subscribe();
+        component.mergedHost.setProperty('name', {
+            type: null,
+            value: 'test',
+        });
 
         await expect(firstValueFrom(component.host1.code$)).resolves.toBe(
             '<div name="test"></div>',
@@ -94,7 +78,7 @@ describe('TuiBindDocumentationTemplatesDirective', () => {
             '<button name="test"></button>',
         );
 
-        subscription.unsubscribe();
+        component.mergedHost.deleteProperty('name');
 
         await expect(firstValueFrom(component.host1.code$)).resolves.toBe('<div></div>');
         await expect(firstValueFrom(component.host2.code$)).resolves.toBe(
@@ -103,7 +87,8 @@ describe('TuiBindDocumentationTemplatesDirective', () => {
     });
 
     it('should throw error when call not implemented methods', () => {
-        expect(() => component.mergedHost.setTemplate(EMPTY)).toThrow();
-        expect(() => component.mergedHost.setContent(EMPTY)).toThrow();
+        expect(() => component.mergedHost.setTemplate('', {})).toThrow();
+        expect(() => component.mergedHost.setContent('')).toThrow();
+        expect(() => component.mergedHost.deleteContent(0)).toThrow();
     });
 });

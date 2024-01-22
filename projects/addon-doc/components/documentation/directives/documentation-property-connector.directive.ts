@@ -9,7 +9,6 @@ import {
     OnInit,
     Optional,
     Output,
-    Self,
     SimpleChanges,
     TemplateRef,
 } from '@angular/core';
@@ -18,28 +17,20 @@ import {TuiDocumentationPropertyType} from '@taiga-ui/addon-doc/interfaces';
 import {TuiApiHostService} from '@taiga-ui/addon-doc/services';
 import {TUI_DOC_URL_STATE_HANDLER} from '@taiga-ui/addon-doc/tokens';
 import {tuiCoerceValue, tuiGetAttrName, tuiInspectAny} from '@taiga-ui/addon-doc/utils';
-import {
-    TuiDestroyService,
-    tuiIsNumber,
-    tuiIsObject,
-    TuiStringHandler,
-} from '@taiga-ui/cdk';
+import {tuiIsNumber, tuiIsObject, TuiStringHandler} from '@taiga-ui/cdk';
 import {TuiAlertService} from '@taiga-ui/core';
-import {BehaviorSubject, NEVER, Observable, Subject, switchAll, takeUntil} from 'rxjs';
+import {BehaviorSubject, Subject} from 'rxjs';
 
 const SERIALIZED_SUFFIX = '$';
 
 // @bad TODO: refactor output and value sync
 @Directive({
     selector: 'ng-template[documentationPropertyName]',
-    providers: [TuiDestroyService],
     exportAs: 'documentationProperty',
 })
 export class TuiDocDocumentationPropertyConnectorDirective<T>
     implements OnInit, OnChanges, OnDestroy
 {
-    private readonly property$ = new Subject<Observable<never>>();
-
     @Input()
     documentationPropertyName = '';
 
@@ -81,13 +72,8 @@ export class TuiDocDocumentationPropertyConnectorDirective<T>
         @Inject(TuiApiHostService)
         @Optional()
         readonly apiHostService: TuiApiHostService | null,
-        @Inject(TuiDestroyService)
-        @Self()
-        readonly destroyService: TuiDestroyService,
         @Inject(TuiAlertService) private readonly alerts: TuiAlertService,
-    ) {
-        this.property$.pipe(switchAll(), takeUntil(destroyService)).subscribe();
-    }
+    ) {}
 
     @Input()
     documentationPropertyApiValueTransformer: (value: T) => string = value =>
@@ -115,7 +101,15 @@ export class TuiDocDocumentationPropertyConnectorDirective<T>
     ngOnChanges(changes: SimpleChanges): void {
         this.changed$.next();
 
-        const {documentationPropertyValue, documentationPropertyDefaultValue} = changes;
+        const {
+            documentationPropertyName,
+            documentationPropertyValue,
+            documentationPropertyDefaultValue,
+        } = changes;
+
+        if (documentationPropertyName && !documentationPropertyName.firstChange) {
+            this.apiHostService?.deleteProperty(documentationPropertyName.previousValue);
+        }
 
         if (
             documentationPropertyValue?.firstChange &&
@@ -132,6 +126,8 @@ export class TuiDocDocumentationPropertyConnectorDirective<T>
         if (this.documentationPropertyDefaultValue !== undefined) {
             this.onValueChange(this.documentationPropertyDefaultValue);
         }
+
+        this.apiHostService?.deleteProperty(this.documentationPropertyName);
     }
 
     onValueChange(value: T): void {
@@ -224,21 +220,17 @@ export class TuiDocDocumentationPropertyConnectorDirective<T>
     }
 
     private updateInputOutputApiHostProperty(name: string): void {
-        this.property$.next(
-            this.apiHostService?.setProperty(name, {
-                type: 'input-output',
-                value: name,
-            }) ?? NEVER,
-        );
+        this.apiHostService?.setProperty(name, {
+            type: 'input-output',
+            value: name,
+        });
     }
 
     private updateOutputApiHostProperty(name: string): void {
-        this.property$.next(
-            this.apiHostService?.setProperty(name, {
-                type: 'input-output',
-                value: `on${name[0].toUpperCase()}${name.slice(1)}()`,
-            }) ?? NEVER,
-        );
+        this.apiHostService?.setProperty(name, {
+            type: 'output',
+            value: `on${name[0].toUpperCase()}${name.slice(1)}()`,
+        });
     }
 
     private updateInputApiHostProperty(
@@ -250,14 +242,14 @@ export class TuiDocDocumentationPropertyConnectorDirective<T>
             documentationPropertyDefaultValue: defaultValue,
         } = this;
 
-        this.property$.next(
-            value === defaultValue
-                ? NEVER
-                : this.apiHostService?.setProperty(name, {
-                      type: mode,
-                      value: this.documentationPropertyApiValueTransformer(value),
-                  }) ?? NEVER,
-        );
+        if (value === defaultValue) {
+            this.apiHostService?.deleteProperty(name);
+        } else {
+            this.apiHostService?.setProperty(name, {
+                type: mode,
+                value: this.documentationPropertyApiValueTransformer(value),
+            });
+        }
     }
 
     private inspectInputPropertyValue(value: unknown): string {

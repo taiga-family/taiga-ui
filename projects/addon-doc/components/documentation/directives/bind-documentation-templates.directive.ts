@@ -1,7 +1,7 @@
 import {Directive, Input} from '@angular/core';
 import {TuiDocumentationProperty} from '@taiga-ui/addon-doc/interfaces';
 import {TuiApiHostService} from '@taiga-ui/addon-doc/services';
-import {merge, NEVER, Observable} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 
 import {TuiDocumentationApiHostDirective} from './documentation-api-host.directive';
 
@@ -20,17 +20,25 @@ export class TuiBindDocumentationTemplatesDirective
     @Input()
     bindDocumentationTemplates: readonly TuiDocumentationApiHostDirective[] = [];
 
-    readonly code$ = NEVER;
+    readonly code$ = new BehaviorSubject('');
 
-    setContent(): Observable<never> {
+    setContent(): number {
         throw new Error('Not implemented');
     }
 
-    setProperty(name: string, property: TuiDocumentationProperty): Observable<never> {
-        return merge(
-            ...this.bindDocumentationTemplates.map(template =>
-                template.apiHostService.setProperty(name, property),
-            ),
+    deleteContent(): void {
+        throw new Error('Not implemented');
+    }
+
+    setProperty(name: string, property: TuiDocumentationProperty): void {
+        this.bindDocumentationTemplates.forEach(({apiHostService}) =>
+            apiHostService.setProperty(name, property),
+        );
+    }
+
+    deleteProperty(name: string): void {
+        this.bindDocumentationTemplates.forEach(({apiHostService}) =>
+            apiHostService.deleteProperty(name),
         );
     }
 

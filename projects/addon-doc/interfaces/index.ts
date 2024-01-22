@@ -1,4 +1,3 @@
-export * from './api-template';
 export * from './code-editor';
 export * from './demo-params';
 export * from './documentation-property';

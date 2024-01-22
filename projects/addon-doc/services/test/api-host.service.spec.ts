@@ -1,6 +1,6 @@
 import {Injector} from '@angular/core';
 import {TuiApiHostService, TuiDocumentationProperty} from '@taiga-ui/addon-doc';
-import {BehaviorSubject, first, Observable} from 'rxjs';
+import {first, Observable} from 'rxjs';
 
 async function firstValueFrom<T>(obs$: Observable<T>): Promise<T> {
     return new Promise((resolve, reject) => {
@@ -14,6 +14,11 @@ async function firstValueFrom<T>(obs$: Observable<T>): Promise<T> {
 const htmlContent = `<div class="test">
     <p>Hello <b>World</b>!</p>
 </div>`;
+
+interface TuiApiHostTemplate {
+    tagName: string;
+    baseProperties: Record<string, TuiDocumentationProperty>;
+}
 
 describe('TuiApiHostService', () => {
     let injector: Injector;
@@ -201,25 +206,18 @@ describe('TuiApiHostService', () => {
         describe.each(tags)('with tagName "%s";', tagName => {
             describe.each(basePropertiesTestCases)('with $name;', ({properties}) => {
                 beforeEach(() => {
-                    rootHost
-                        .setTemplate(
-                            new BehaviorSubject({
-                                tagName,
-                                baseProperties: properties,
-                            }),
-                        )
-                        .subscribe();
+                    rootHost.setTemplate(tagName, properties);
                 });
 
                 describe.each(contentTestCases)('with $name;', ({content}) => {
                     beforeEach(() => {
-                        rootHost.setContent(new BehaviorSubject(content)).subscribe();
+                        rootHost.setContent(content);
                     });
 
                     describe.each(propertiesTestCases)('with $name;', ({properties}) => {
                         beforeEach(() => {
                             Object.entries(properties).forEach(([name, property]) => {
-                                rootHost.setProperty(name, property).subscribe();
+                                rootHost.setProperty(name, property);
                             });
                         });
 
@@ -235,60 +233,42 @@ describe('TuiApiHostService', () => {
     });
 
     describe('setTemplate', () => {
-        let template1$: Observable<never>;
-        let template2$: Observable<never>;
+        let template1: TuiApiHostTemplate;
+        let template2: TuiApiHostTemplate;
 
         beforeEach(() => {
-            template1$ = rootHost.setTemplate(
-                new BehaviorSubject({
-                    tagName: 'div',
-                    baseProperties: {
-                        class: {
-                            type: null,
-                            value: 'test',
-                        },
+            template1 = {
+                tagName: 'div',
+                baseProperties: {
+                    class: {
+                        type: null,
+                        value: 'test',
                     },
-                }),
-            );
-            template2$ = rootHost.setTemplate(
-                new BehaviorSubject({
-                    tagName: 'button',
-                    baseProperties: {
-                        class: {
-                            type: null,
-                            value: 'test',
-                        },
+                },
+            };
+            template2 = {
+                tagName: 'button',
+                baseProperties: {
+                    class: {
+                        type: null,
+                        value: 'test',
                     },
-                }),
-            );
+                },
+            };
         });
 
-        it('should set template on subscription', async () => {
+        it('should set template', async () => {
             await expect(firstValueFrom(rootHost.code$)).resolves.toBe('');
-            template1$.subscribe();
+            rootHost.setTemplate(template1.tagName, template1.baseProperties);
             await expect(firstValueFrom(rootHost.code$)).resolves.toBe(
                 '<div class="test"></div>',
             );
         });
 
-        it('should reset template on unsubscribe', async () => {
+        it('should set other template', async () => {
             await expect(firstValueFrom(rootHost.code$)).resolves.toBe('');
-            const subscription = template1$.subscribe();
-
-            await expect(firstValueFrom(rootHost.code$)).resolves.toBe(
-                '<div class="test"></div>',
-            );
-            subscription.unsubscribe();
-            await expect(firstValueFrom(rootHost.code$)).resolves.toBe('');
-        });
-
-        it('should reset template on subscribe to other template', async () => {
-            await expect(firstValueFrom(rootHost.code$)).resolves.toBe('');
-            template1$.subscribe();
-            await expect(firstValueFrom(rootHost.code$)).resolves.toBe(
-                '<div class="test"></div>',
-            );
-            template2$.subscribe();
+            rootHost.setTemplate(template1.tagName, template1.baseProperties);
+            rootHost.setTemplate(template2.tagName, template2.baseProperties);
             await expect(firstValueFrom(rootHost.code$)).resolves.toBe(
                 '<button class="test"></button>',
             );
@@ -303,13 +283,13 @@ describe('TuiApiHostService', () => {
             expect(codeCb).toHaveBeenCalledTimes(1);
             codeCb.mockClear();
 
-            const subscription = template1$.subscribe();
+            rootHost.setTemplate(template1.tagName, template1.baseProperties);
 
             expect(codeCb).toHaveBeenCalledWith('<div class="test"></div>');
             expect(codeCb).toHaveBeenCalledTimes(1);
             codeCb.mockClear();
 
-            subscription.unsubscribe();
+            rootHost.setTemplate('', {});
 
             expect(codeCb).toHaveBeenCalledWith('');
             expect(codeCb).toHaveBeenCalledTimes(1);
@@ -318,69 +298,54 @@ describe('TuiApiHostService', () => {
 
     describe('setProperty', () => {
         beforeEach(() => {
-            rootHost
-                .setTemplate(
-                    new BehaviorSubject({
-                        tagName: 'div',
-                        baseProperties: {
-                            class: {
-                                type: null,
-                                value: 'test',
-                            },
-                        },
-                    }),
-                )
-                .subscribe();
+            rootHost.setTemplate('div', {
+                class: {
+                    type: null,
+                    value: 'test',
+                },
+            });
         });
 
-        it('should set property on subscription', async () => {
-            const property$ = rootHost.setProperty('prop', {
-                type: 'input',
-                value: 'val',
-            });
-
+        it('should set property', async () => {
             await expect(firstValueFrom(rootHost.code$)).resolves.toBe(
                 '<div class="test"></div>',
             );
-            property$.subscribe();
+            rootHost.setProperty('prop', {
+                type: 'input',
+                value: 'val',
+            });
             await expect(firstValueFrom(rootHost.code$)).resolves.toBe(
                 '<div [prop]="val" class="test"></div>',
             );
         });
 
-        it('should reset property on unsubscribe', async () => {
-            const property$ = rootHost.setProperty('prop', {
+        it('should delete property', async () => {
+            rootHost.setProperty('prop', {
                 type: 'input',
                 value: 'val',
             });
 
-            const subscription = property$.subscribe();
-
             await expect(firstValueFrom(rootHost.code$)).resolves.toBe(
                 '<div [prop]="val" class="test"></div>',
             );
-            subscription.unsubscribe();
+            rootHost.deleteProperty('prop');
             await expect(firstValueFrom(rootHost.code$)).resolves.toBe(
                 '<div class="test"></div>',
             );
         });
 
-        it('should reset property on subscribe to other property with the same name', async () => {
-            rootHost
-                .setProperty('prop', {
-                    type: 'input',
-                    value: 'foo',
-                })
-                .subscribe();
+        it('should set other property', async () => {
+            rootHost.setProperty('prop', {
+                type: 'input',
+                value: 'foo',
+            });
             await expect(firstValueFrom(rootHost.code$)).resolves.toBe(
                 '<div [prop]="foo" class="test"></div>',
             );
-            rootHost
-                .setProperty('prop', {
-                    type: 'input',
-                    value: 'bar',
-                })
-                .subscribe();
+            rootHost.setProperty('prop', {
+                type: 'input',
+                value: 'bar',
+            });
             await expect(firstValueFrom(rootHost.code$)).resolves.toBe(
                 '<div [prop]="bar" class="test"></div>',
             );
@@ -395,18 +360,16 @@ describe('TuiApiHostService', () => {
             expect(codeCb).toHaveBeenCalledTimes(1);
             codeCb.mockClear();
 
-            const subscription = rootHost
-                .setProperty('prop', {
-                    type: 'input',
-                    value: 'foo',
-                })
-                .subscribe();
+            rootHost.setProperty('prop', {
+                type: 'input',
+                value: 'foo',
+            });
 
             expect(codeCb).toHaveBeenCalledWith('<div [prop]="foo" class="test"></div>');
             expect(codeCb).toHaveBeenCalledTimes(1);
             codeCb.mockClear();
 
-            subscription.unsubscribe();
+            rootHost.deleteProperty('prop');
 
             expect(codeCb).toHaveBeenCalledWith('<div class="test"></div>');
             expect(codeCb).toHaveBeenCalledTimes(1);
@@ -415,62 +378,49 @@ describe('TuiApiHostService', () => {
 
     describe('setContent', () => {
         beforeEach(() => {
-            rootHost
-                .setTemplate(
-                    new BehaviorSubject({
-                        tagName: 'div',
-                        baseProperties: {
-                            class: {
-                                type: null,
-                                value: 'test',
-                            },
-                        },
-                    }),
-                )
-                .subscribe();
+            rootHost.setTemplate('div', {
+                class: {
+                    type: null,
+                    value: 'test',
+                },
+            });
         });
 
-        it('should set content on subscription', async () => {
-            const content$ = rootHost.setContent(new BehaviorSubject('content'));
-
+        it('should set content', async () => {
             await expect(firstValueFrom(rootHost.code$)).resolves.toBe(
                 '<div class="test"></div>',
             );
-            content$.subscribe();
+            rootHost.setContent('content');
             await expect(firstValueFrom(rootHost.code$)).resolves.toBe(
                 '<div class="test">\n    content\n</div>',
             );
         });
 
-        it('should reset content on unsubscribe', async () => {
-            const content$ = rootHost.setContent(new BehaviorSubject('content'));
-
-            const subscription = content$.subscribe();
+        it('should delete content', async () => {
+            const index = rootHost.setContent('content');
 
             await expect(firstValueFrom(rootHost.code$)).resolves.toBe(
                 '<div class="test">\n    content\n</div>',
             );
-            subscription.unsubscribe();
+            rootHost.deleteContent(index);
             await expect(firstValueFrom(rootHost.code$)).resolves.toBe(
                 '<div class="test"></div>',
             );
         });
 
-        it('should add content on subscribe to other', async () => {
-            const subscription = rootHost
-                .setContent(new BehaviorSubject('content'))
-                .subscribe();
+        it('should add other content', async () => {
+            const index1 = rootHost.setContent('content');
 
             await expect(firstValueFrom(rootHost.code$)).resolves.toBe(
                 '<div class="test">\n    content\n</div>',
             );
-            rootHost.setContent(new BehaviorSubject('test')).subscribe();
+            rootHost.setContent('test');
 
             await expect(firstValueFrom(rootHost.code$)).resolves.toBe(
                 '<div class="test">\n    content\n    test\n</div>',
             );
 
-            subscription.unsubscribe();
+            rootHost.deleteContent(index1);
             await expect(firstValueFrom(rootHost.code$)).resolves.toBe(
                 '<div class="test">\n    test\n</div>',
             );
@@ -485,9 +435,7 @@ describe('TuiApiHostService', () => {
             expect(codeCb).toHaveBeenCalledTimes(1);
             codeCb.mockClear();
 
-            const subscription = rootHost
-                .setContent(new BehaviorSubject('content'))
-                .subscribe();
+            const index = rootHost.setContent('content');
 
             expect(codeCb).toHaveBeenCalledWith(
                 '<div class="test">\n    content\n</div>',
@@ -495,7 +443,7 @@ describe('TuiApiHostService', () => {
             expect(codeCb).toHaveBeenCalledTimes(1);
             codeCb.mockClear();
 
-            subscription.unsubscribe();
+            rootHost.deleteContent(index);
 
             expect(codeCb).toHaveBeenCalledWith('<div class="test"></div>');
             expect(codeCb).toHaveBeenCalledTimes(1);
@@ -528,14 +476,7 @@ describe('TuiApiHostService', () => {
 
         describe('with template in root host', () => {
             beforeEach(() => {
-                rootHost
-                    .setTemplate(
-                        new BehaviorSubject({
-                            tagName: 'div',
-                            baseProperties: {},
-                        }),
-                    )
-                    .subscribe();
+                rootHost.setTemplate('div', {});
             });
 
             it('should render correct initial code', async () => {
@@ -545,19 +486,12 @@ describe('TuiApiHostService', () => {
             it.each([1, 2])(
                 'should render correct code on add template to childHost%p',
                 async i => {
-                    childHosts[i - 1]
-                        .setTemplate(
-                            new BehaviorSubject({
-                                tagName: 'div',
-                                baseProperties: {
-                                    class: {
-                                        type: null,
-                                        value: 'test',
-                                    },
-                                },
-                            }),
-                        )
-                        .subscribe();
+                    childHosts[i - 1].setTemplate('div', {
+                        class: {
+                            type: null,
+                            value: 'test',
+                        },
+                    });
 
                     await expect(firstValueFrom(rootHost.code$)).resolves.toBe(
                         '<div>\n    <div class="test"></div>\n</div>',
@@ -571,32 +505,18 @@ describe('TuiApiHostService', () => {
             ])(
                 'should render correct code on add template to childHost%i and childHost%i',
                 async (a, b) => {
-                    childHosts[a - 1]
-                        .setTemplate(
-                            new BehaviorSubject({
-                                tagName: 'div',
-                                baseProperties: {
-                                    id: {
-                                        type: null,
-                                        value: String(a),
-                                    },
-                                },
-                            }),
-                        )
-                        .subscribe();
-                    childHosts[b - 1]
-                        .setTemplate(
-                            new BehaviorSubject({
-                                tagName: 'div',
-                                baseProperties: {
-                                    id: {
-                                        type: null,
-                                        value: String(b),
-                                    },
-                                },
-                            }),
-                        )
-                        .subscribe();
+                    childHosts[a - 1].setTemplate('div', {
+                        id: {
+                            type: null,
+                            value: String(a),
+                        },
+                    });
+                    childHosts[b - 1].setTemplate('div', {
+                        id: {
+                            type: null,
+                            value: String(b),
+                        },
+                    });
 
                     await expect(firstValueFrom(rootHost.code$)).resolves.toBe(
                         '<div>\n    <div id="1"></div>\n    <div id="2"></div>\n</div>',
@@ -606,28 +526,17 @@ describe('TuiApiHostService', () => {
 
             it('should render correct code on dynamically change template', async () => {
                 const [childHost1, childHost2] = childHosts;
-                const template1 = new BehaviorSubject({
-                    tagName: 'div',
-                    baseProperties: {},
-                });
-                const template2 = new BehaviorSubject({
-                    tagName: 'button',
-                    baseProperties: {},
-                });
 
-                childHost1.setTemplate(template1).subscribe();
-                childHost2.setTemplate(template2).subscribe();
+                childHost1.setTemplate('div', {});
+                childHost2.setTemplate('button', {});
 
                 await expect(firstValueFrom(rootHost.code$)).resolves.toBe(
                     '<div>\n    <div></div>\n    <button></button>\n</div>',
                 );
 
-                template1.next({
-                    tagName: 'div',
-                    baseProperties: {
-                        tuiDirective: {
-                            type: null,
-                        },
+                childHost1.setTemplate('div', {
+                    tuiDirective: {
+                        type: null,
                     },
                 });
 
@@ -635,12 +544,9 @@ describe('TuiApiHostService', () => {
                     '<div>\n    <div tuiDirective></div>\n    <button></button>\n</div>',
                 );
 
-                template2.next({
-                    tagName: 'button',
-                    baseProperties: {
-                        tuiDirective: {
-                            type: null,
-                        },
+                childHost2.setTemplate('button', {
+                    tuiDirective: {
+                        type: null,
                     },
                 });
 
@@ -652,22 +558,8 @@ describe('TuiApiHostService', () => {
             it('should render correct code on destroy children', async () => {
                 const [childHost1, childHost2] = childHosts;
 
-                childHost1
-                    .setTemplate(
-                        new BehaviorSubject({
-                            tagName: 'div',
-                            baseProperties: {},
-                        }),
-                    )
-                    .subscribe();
-                childHost2
-                    .setTemplate(
-                        new BehaviorSubject({
-                            tagName: 'button',
-                            baseProperties: {},
-                        }),
-                    )
-                    .subscribe();
+                childHost1.setTemplate('div', {});
+                childHost2.setTemplate('button', {});
 
                 await expect(firstValueFrom(rootHost.code$)).resolves.toBe(
                     '<div>\n    <div></div>\n    <button></button>\n</div>',
@@ -693,19 +585,12 @@ describe('TuiApiHostService', () => {
             it.each([1, 2])(
                 'should render correct code on add template to childHost%p',
                 async i => {
-                    childHosts[i - 1]
-                        .setTemplate(
-                            new BehaviorSubject({
-                                tagName: 'div',
-                                baseProperties: {
-                                    class: {
-                                        type: null,
-                                        value: 'test',
-                                    },
-                                },
-                            }),
-                        )
-                        .subscribe();
+                    childHosts[i - 1].setTemplate('div', {
+                        class: {
+                            type: null,
+                            value: 'test',
+                        },
+                    });
 
                     await expect(firstValueFrom(rootHost.code$)).resolves.toBe(
                         '<div class="test"></div>',
@@ -719,32 +604,18 @@ describe('TuiApiHostService', () => {
             ])(
                 'should render correct code on add template to childHost%i and childHost%i',
                 async (a, b) => {
-                    childHosts[a - 1]
-                        .setTemplate(
-                            new BehaviorSubject({
-                                tagName: 'div',
-                                baseProperties: {
-                                    id: {
-                                        type: null,
-                                        value: String(a),
-                                    },
-                                },
-                            }),
-                        )
-                        .subscribe();
-                    childHosts[b - 1]
-                        .setTemplate(
-                            new BehaviorSubject({
-                                tagName: 'div',
-                                baseProperties: {
-                                    id: {
-                                        type: null,
-                                        value: String(b),
-                                    },
-                                },
-                            }),
-                        )
-                        .subscribe();
+                    childHosts[a - 1].setTemplate('div', {
+                        id: {
+                            type: null,
+                            value: String(a),
+                        },
+                    });
+                    childHosts[b - 1].setTemplate('div', {
+                        id: {
+                            type: null,
+                            value: String(b),
+                        },
+                    });
 
                     await expect(firstValueFrom(rootHost.code$)).resolves.toBe(
                         '<div id="1"></div>\n<div id="2"></div>',
@@ -754,28 +625,17 @@ describe('TuiApiHostService', () => {
 
             it('should render correct code on dynamically change template', async () => {
                 const [childHost1, childHost2] = childHosts;
-                const template1 = new BehaviorSubject({
-                    tagName: 'div',
-                    baseProperties: {},
-                });
-                const template2 = new BehaviorSubject({
-                    tagName: 'button',
-                    baseProperties: {},
-                });
 
-                childHost1.setTemplate(template1).subscribe();
-                childHost2.setTemplate(template2).subscribe();
+                childHost1.setTemplate('div', {});
+                childHost2.setTemplate('button', {});
 
                 await expect(firstValueFrom(rootHost.code$)).resolves.toBe(
                     '<div></div>\n<button></button>',
                 );
 
-                template1.next({
-                    tagName: 'div',
-                    baseProperties: {
-                        tuiDirective: {
-                            type: null,
-                        },
+                childHost1.setTemplate('div', {
+                    tuiDirective: {
+                        type: null,
                     },
                 });
 
@@ -783,12 +643,9 @@ describe('TuiApiHostService', () => {
                     '<div tuiDirective></div>\n<button></button>',
                 );
 
-                template2.next({
-                    tagName: 'button',
-                    baseProperties: {
-                        tuiDirective: {
-                            type: null,
-                        },
+                childHost2.setTemplate('button', {
+                    tuiDirective: {
+                        type: null,
                     },
                 });
 
@@ -800,22 +657,8 @@ describe('TuiApiHostService', () => {
             it('should render correct code on destroy children', async () => {
                 const [childHost1, childHost2] = childHosts;
 
-                childHost1
-                    .setTemplate(
-                        new BehaviorSubject({
-                            tagName: 'div',
-                            baseProperties: {},
-                        }),
-                    )
-                    .subscribe();
-                childHost2
-                    .setTemplate(
-                        new BehaviorSubject({
-                            tagName: 'button',
-                            baseProperties: {},
-                        }),
-                    )
-                    .subscribe();
+                childHost1.setTemplate('div', {});
+                childHost2.setTemplate('button', {});
 
                 await expect(firstValueFrom(rootHost.code$)).resolves.toBe(
                     '<div></div>\n<button></button>',
@@ -835,19 +678,12 @@ describe('TuiApiHostService', () => {
     });
 
     it('should ignore invalid properties', async () => {
-        rootHost
-            .setTemplate(
-                new BehaviorSubject({
-                    tagName: 'div',
-                    baseProperties: {
-                        ngModel: {
-                            type: 'input',
-                            value: undefined as any,
-                        } as const,
-                    },
-                }),
-            )
-            .subscribe();
+        rootHost.setTemplate('div', {
+            ngModel: {
+                type: 'input',
+                value: undefined as any,
+            },
+        });
 
         await expect(firstValueFrom(rootHost.code$)).resolves.toBe('<div></div>');
     });
