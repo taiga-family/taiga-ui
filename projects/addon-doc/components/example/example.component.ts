@@ -1,5 +1,4 @@
 import {Clipboard} from '@angular/cdk/clipboard';
-import {Location as NgLocation} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -8,7 +7,6 @@ import {
     Input,
     Optional,
 } from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
 import {LOCATION} from '@ng-web-apis/common';
 import {TuiCodeEditor, TuiDocExample} from '@taiga-ui/addon-doc/interfaces';
 import {
@@ -89,9 +87,6 @@ export class TuiDocExampleComponent {
         @Inject(TUI_IS_E2E) readonly isE2E: boolean,
         @Inject(TUI_DOC_CODE_ACTIONS)
         readonly codeActions: Array<PolymorpheusContent<TuiContext<string>>>,
-        @Inject(Router) private readonly router: Router,
-        @Inject(ActivatedRoute) private readonly route: ActivatedRoute,
-        @Inject(NgLocation) private readonly ngLocation: NgLocation,
         @Inject(TUI_DOC_EXAMPLE_OPTIONS) readonly options: TuiDocExampleOptions,
     ) {}
 
@@ -102,21 +97,10 @@ export class TuiDocExampleComponent {
         return this.options.tabTitles.get(fileName) || fileName;
     }
 
-    copyExampleLink(): void {
-        const hashPosition = this.location.href.indexOf('#');
-        const currentUrl =
-            hashPosition > -1
-                ? this.location.href.slice(0, Math.max(0, hashPosition))
-                : this.location.href;
-        const url = `${currentUrl}#${this.id}`;
-
-        this.setFragmentWithoutRedirect(this.id);
-        this.clipboard.copy(url);
+    copyExampleLink({href}: HTMLAnchorElement): void {
+        this.clipboard.copy(href);
         this.alerts
-            .open(this.texts[1], {
-                label: this.texts[2],
-                status: 'success',
-            })
+            .open(this.texts[1], {label: this.texts[2], status: 'success'})
             .subscribe();
     }
 
@@ -128,13 +112,5 @@ export class TuiDocExampleComponent {
             // TODO: Add `es2018.promise` to `tsconfig.json` => `compilerOptions.lib`.
             .then(() => this.loading$.next(false))
             .catch(() => this.loading$.next(false));
-    }
-
-    private setFragmentWithoutRedirect(id: string | null): void {
-        const url = this.router
-            .createUrlTree([], {relativeTo: this.route, fragment: id || ''})
-            .toString();
-
-        this.ngLocation.go(url);
     }
 }

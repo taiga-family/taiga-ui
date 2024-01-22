@@ -1,0 +1,106 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+tui-segmented {
+    position: relative;
+    display: flex;
+    box-sizing: border-box;
+    isolation: isolate;
+    color: var(--tui-clear);
+    border: 0.125rem solid transparent;
+
+    &[data-size='s'] {
+        --t-padding: 0.625rem;
+        --t-gap: 0.5rem;
+        --t-margin: -0.125rem;
+        height: var(--tui-height-s);
+        font: var(--tui-font-text-s);
+        border-radius: var(--tui-radius-s);
+
+        & > *:before,
+        & > *:after,
+        tui-icon {
+            font-size: 1rem;
+        }
+    }
+
+    &[data-size='m'] {
+        --t-padding: 0.875rem;
+        --t-gap: 1rem;
+        --t-margin: -0.375rem;
+        height: var(--tui-height-m);
+        font: var(--tui-font-text-m);
+        border-radius: var(--tui-radius-s);
+    }
+
+    &[data-size='l'] {
+        --t-padding: 1.125rem;
+        --t-gap: 1rem;
+        --t-margin: -0.375rem;
+        height: var(--tui-height-l);
+        font: var(--tui-font-text-l);
+        border-radius: var(--tui-radius-m);
+        border-width: 0.25rem;
+
+        &:after {
+            box-shadow: 0 0 0 0.25rem;
+        }
+    }
+
+    & > a,
+    & > button,
+    & > label,
+    & > label > input:not([tuiRadio]) {
+        .transition(color);
+        .clearbtn();
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        white-space: nowrap;
+        gap: var(--t-gap);
+        margin: 0;
+        padding: 0 var(--t-padding);
+        color: var(--tui-text-01);
+        overflow: hidden;
+        cursor: pointer;
+        font: inherit;
+        border-radius: inherit;
+
+        & > *,
+        &:before,
+        &:after {
+            margin: 0 var(--t-margin);
+        }
+
+        &:focus-visible {
+            outline: 0.125rem solid var(--tui-focus);
+            outline-offset: -0.125rem;
+        }
+    }
+
+    & > label > input:not([tuiRadio]) {
+        .fullsize();
+    }
+
+    &:after {
+        .fullsize();
+        content: '';
+        z-index: -1;
+        border-radius: inherit;
+        background: currentColor;
+        box-shadow: 0 0 0 0.125rem;
+    }
+
+    &:before {
+        .transition(~'left, width');
+        content: '';
+        position: absolute;
+        left: var(--t-left);
+        height: 100%;
+        width: var(--t-width);
+        border-radius: inherit;
+        background: currentColor;
+        color: var(--tui-base-01);
+        box-shadow: 0 0.25rem 1.25rem 0 rgba(0, 0, 0, 0.1);
+    }
+}

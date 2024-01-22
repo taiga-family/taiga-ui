@@ -1,0 +1,25 @@
+<header>
+    <tui-segmented
+        class="colors"
+        [(activeItemIndex)]="active"
+    >
+        <button
+            *ngFor="let button of buttons; let index = index"
+            [class.active]="index === active"
+        >
+            {{ button }}
+        </button>
+    </tui-segmented>
+</header>
+
+<tui-segmented [style.border-radius.rem]="10">
+    <button>Border radius</button>
+    <button>Can be</button>
+    <button>Customized</button>
+</tui-segmented>
+
+<tui-segmented [style.font-weight]="'bold'">
+    <button>Fonts</button>
+    <button>Can also be</button>
+    <button>Overridden</button>
+</tui-segmented>

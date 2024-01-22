@@ -1,6 +1,7 @@
 import {ClipboardModule} from '@angular/cdk/clipboard';
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
+import {RouterModule} from '@angular/router';
 import {TuiMapperPipeModule} from '@taiga-ui/cdk';
 import {TuiButtonModule, TuiLoaderModule} from '@taiga-ui/core';
 import {TuiTabsModule} from '@taiga-ui/kit';
@@ -22,6 +23,7 @@ import {TuiDocExampleGetTabsPipe} from './example-get-tabs.pipe';
         PolymorpheusModule,
         TuiMapperPipeModule,
         TuiLoaderModule,
+        RouterModule,
     ],
     declarations: [TuiDocExampleComponent, TuiDocExampleGetTabsPipe],
     exports: [TuiDocExampleComponent, TuiDocExampleGetTabsPipe],

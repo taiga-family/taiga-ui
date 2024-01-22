@@ -8,7 +8,7 @@ import {
     Optional,
 } from '@angular/core';
 import {RouterLinkActive} from '@angular/router';
-import {TuiFocusVisibleService, tuiIsNativeFocused} from '@taiga-ui/cdk';
+import {tuiIsNativeFocused} from '@taiga-ui/cdk';
 import {TUI_MODE, TuiBrightness} from '@taiga-ui/core';
 import {TUI_TAB_MARGIN} from '@taiga-ui/kit/tokens';
 import {Observable} from 'rxjs';
@@ -38,9 +38,6 @@ import {TUI_TAB_EVENT, TUI_TAB_PROVIDERS} from './tab.providers';
     },
 })
 export class TuiTabComponent implements OnDestroy {
-    @HostBinding('class._focus-visible')
-    focusVisible = false;
-
     constructor(
         @Optional()
         @Inject(RouterLinkActive)
@@ -49,12 +46,7 @@ export class TuiTabComponent implements OnDestroy {
         @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
         @Inject(TUI_TAB_EVENT) readonly event$: Observable<Event>,
         @Inject(TUI_TAB_MARGIN) readonly margin: number,
-        @Inject(TuiFocusVisibleService) focusVisible$: TuiFocusVisibleService,
-    ) {
-        focusVisible$.subscribe(visible => {
-            this.focusVisible = visible;
-        });
-    }
+    ) {}
 
     @HostBinding('class._active')
     get isActive(): boolean {

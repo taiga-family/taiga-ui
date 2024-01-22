@@ -938,6 +938,12 @@ export const pages: TuiDocPages = [
     },
     {
         section: 'Experimental',
+        title: 'Header',
+        keywords: 'header, заголовок, item',
+        route: '/experimental/header',
+    },
+    {
+        section: 'Experimental',
         title: 'ProgressSegmented ',
         keywords:
             'progress, progress-segmented, индикатор, загрузка, прогресс, segment, segments, segmented',
@@ -948,6 +954,12 @@ export const pages: TuiDocPages = [
         title: 'Rating ',
         keywords: 'рейтинг, оценка, звезда, rating, star, rate',
         route: '/experimental/rating',
+    },
+    {
+        section: 'Experimental',
+        title: 'Segmented',
+        keywords: 'tabs, control, radio, navigation, навигация, вкладки, таб',
+        route: '/experimental/segmented',
     },
     {
         section: 'Experimental',
