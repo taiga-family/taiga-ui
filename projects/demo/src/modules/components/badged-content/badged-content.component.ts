@@ -1,10 +1,15 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {
-    TuiDocExample,
-    TuiDocumentationProperty,
-    TuiRawLoaderContent,
-} from '@taiga-ui/addon-doc';
+import {TuiDocExample, TuiRawLoaderContent} from '@taiga-ui/addon-doc';
+
+const content = `<tui-badge-notification tuiSlot="top">1</tui-badge-notification>
+<tui-avatar
+    size="l"
+    [round]="radius === '50%'"
+    [src]="
+        'https://avatars.githubusercontent.com/u/11832552' | tuiFallbackSrc: 'tuiIconUserLarge' | async
+    "
+></tui-avatar>`;
 
 @Component({
     selector: 'example-badged-content',
@@ -35,9 +40,5 @@ export class ExampleTuiBadgedContentComponent {
     radiusVariants = ['0.75rem', '50%'];
     radius = this.radiusVariants[0];
 
-    readonly avatarBaseProperties: Record<string, TuiDocumentationProperty> = {
-        new: {
-            type: null,
-        },
-    };
+    readonly content = content;
 }

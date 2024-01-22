@@ -60,8 +60,11 @@
             <p>
                 <tui-badge
                     *ngIf="contentType === 'with icon'"
+                    documentationTemplate
                     iconLeft="tuiIconCheck"
                     [appearance]="appearance"
+                    [documentationTemplateBaseProperties]="firstBadgeBaseProperties"
+                    [documentationTemplateContent]="firstBadgeContent"
                     [dot]="dot"
                     [size]="size"
                 >
@@ -70,6 +73,8 @@
 
                 <tui-badge
                     *ngIf="contentType === 'text'"
+                    documentationTemplate
+                    documentationTemplateContent="Taiga UI"
                     [appearance]="appearance"
                     [dot]="dot"
                     [size]="size"
@@ -80,9 +85,11 @@
                 <img
                     *ngIf="contentType === 'image'"
                     alt="market"
+                    documentationTemplate
                     src="assets/images/avatar.jpg"
                     tuiBadge
                     [appearance]="appearance"
+                    [documentationTemplateBaseProperties]="thirdBadgeBaseProperties"
                     [dot]="dot"
                     [size]="size"
                 />
