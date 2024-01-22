@@ -1,0 +1,34 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+:host {
+    .scrollbar-hidden();
+    --t-action-gap: 1.5rem;
+    display: inline-flex;
+    align-items: center;
+    overflow: scroll;
+    scroll-snap-type: x mandatory;
+}
+
+.t-content {
+    scroll-snap-align: start;
+    flex-shrink: 0;
+}
+
+.t-actions {
+    display: inline-flex;
+    gap: var(--t-action-gap);
+    padding: 0 1rem 0 0.5rem;
+    scroll-snap-align: start;
+    align-items: center;
+
+    ::ng-deep & > * {
+        .loop(6);
+    }
+}
+
+.loop (@i) when (@i > 1) {
+    .loop(@i - 1);
+    &:nth-child(@{i}) {
+        transform: ~'translate(calc(var(--t-swiped) * ((@{i} - 1) * 100% + ((@{i} - 1) * var(--t-action-gap)))))';
+    }
+}

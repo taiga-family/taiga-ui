@@ -428,6 +428,15 @@ export const ROUTES: Routes = [
         },
     },
     {
+        path: 'experimental/swipe-actions',
+        loadChildren: async () =>
+            (await import('../experimental/swipe-action/swipe-actions.module'))
+                .ExampleTuiSwipeActionsModule,
+        data: {
+            title: 'SwipeActions',
+        },
+    },
+    {
         path: 'experimental/thumbnail-card',
         loadChildren: async () =>
             (await import('../experimental/thumbnail-card/thumbnail-card.module'))

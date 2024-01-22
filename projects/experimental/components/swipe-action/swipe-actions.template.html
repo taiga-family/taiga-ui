@@ -1,0 +1,13 @@
+<div
+    class="t-content"
+    (tuiResize)="onResize($event[0])"
+>
+    <ng-content></ng-content>
+</div>
+
+<div
+    #actions
+    class="t-actions"
+>
+    <ng-content select="[tuiSwipeAction]"></ng-content>
+</div>
