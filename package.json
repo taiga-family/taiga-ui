@@ -129,7 +129,7 @@
         "@nx/jest": "17.2.8",
         "@nx/node": "17.2.8",
         "@nx/workspace": "17.2.8",
-        "@playwright/test": "1.41.0",
+        "@playwright/test": "1.41.1",
         "@taiga-ui/browserslist-config": "0.4.0",
         "@taiga-ui/commitlint-config": "0.5.1",
         "@taiga-ui/cspell-config": "0.28.0",
