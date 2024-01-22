@@ -916,10 +916,10 @@ export const pages: TuiDocPages = [
         route: `/experimental/icon`,
     },
     {
-        section: 'Experimental',
-        title: 'Header',
-        keywords: 'header, заголовок, item',
-        route: '/experimental/header',
+        section: `Experimental`,
+        title: `Header`,
+        keywords: `header, заголовок, item`,
+        route: `/experimental/header`,
     },
     {
         section: `Experimental`,
@@ -936,7 +936,7 @@ export const pages: TuiDocPages = [
     {
         section: `Experimental`,
         title: `Segmented`,
-        keywords: `tabs, control, radio, navigation, навигация, вкладки, табы`,
+        keywords: `tabs, control, radio, navigation, навигация, вкладки, таб`,
         route: `/experimental/segmented`,
     },
     {
