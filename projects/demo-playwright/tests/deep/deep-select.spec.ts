@@ -26,13 +26,14 @@ test.describe('Deep / Select', () => {
                 await select.scrollIntoViewIfNeeded();
                 await expect(select).toBeVisible();
                 await select.click();
-                await page.waitForTimeout(100);
+                await api.networkidle();
 
                 const options = await api.getOptions();
 
                 for (const [index, option] of options.entries()) {
                     await option.focus();
                     await page.keyboard.down('Enter');
+                    await api.networkidle();
                     await page.waitForTimeout(300);
                     await api.focusOnBody();
                     await api.hideNotifications();
@@ -49,9 +50,12 @@ test.describe('Deep / Select', () => {
 
                 if (cleaner) {
                     await cleaner.click();
+                    await page.waitForTimeout(100);
+                    await api.networkidle();
                 } else {
                     await options[0].focus();
                     await page.keyboard.down('Enter');
+                    await page.waitForTimeout(100);
                     await api.networkidle();
                 }
 
