@@ -18,8 +18,11 @@ export class TuiDocumentationApiPagePO {
      * Doesn't work as expected
      */
     async networkidle(): Promise<void> {
-        await Promise.all(
-            [...this.pending].map(
+        await Promise.all([
+            new Promise(resolve => {
+                setTimeout(resolve, 200);
+            }),
+            ...[...this.pending].map(
                 async req =>
                     new Promise(resolve => {
                         req.response()
@@ -27,7 +30,7 @@ export class TuiDocumentationApiPagePO {
                             .catch(() => resolve(undefined));
                     }),
             ),
-        );
+        ]);
     }
 
     async hideNotifications(): Promise<void> {
