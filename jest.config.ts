@@ -57,7 +57,7 @@ const config: Config = {
     transform: {
         '^.+\\.(ts|js|mjs|html|svg)$': 'jest-preset-angular',
     },
-    transformIgnorePatterns: ['node_modules/(?!@angular|rxjs|ngx-highlightjs)'],
+    transformIgnorePatterns: ['node_modules/(?!@angular|rxjs|ngx-highlightjs|@maskito)'],
 
     /**
      * The glob patterns Jest uses to detect test files.
