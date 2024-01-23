@@ -1,5 +1,6 @@
 import {ChangeDetectionStrategy, Component, ElementRef, ViewChild} from '@angular/core';
-import {BehaviorSubject} from 'rxjs';
+import {animationFrameScheduler, Subject} from 'rxjs';
+import {map, throttleTime} from 'rxjs/operators';
 
 @Component({
     selector: 'tui-swipe-actions',
@@ -14,16 +15,19 @@ import {BehaviorSubject} from 'rxjs';
     },
 })
 export class TuiSwipeActionsComponent {
+    private readonly swiped$$ = new Subject<HTMLElement>();
+
     @ViewChild('actions', {read: ElementRef})
     actions?: ElementRef<HTMLElement>;
 
     width = 0;
-    readonly swiped$ = new BehaviorSubject(0);
+    swiped$ = this.swiped$$.pipe(
+        throttleTime(0, animationFrameScheduler),
+        map(el => el.scrollLeft / (this.actions?.nativeElement.offsetWidth || 0) - 1),
+    );
 
     onScroll(element: HTMLElement): void {
-        this.swiped$.next(
-            element.scrollLeft / (this.actions?.nativeElement.offsetWidth || 0) - 1,
-        );
+        this.swiped$$.next(element);
     }
 
     onResize(event: ResizeObserverEntry): void {
