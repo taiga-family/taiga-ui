@@ -9,12 +9,14 @@ import {TuiMobileLoaderIOSComponent} from './loader-ios/loader-ios.component';
 import {TuiPullToRefreshComponent} from './pull-to-refresh.component';
 
 @NgModule({
-    imports: [CommonModule, TuiSvgModule, TuiRepeatTimesModule, PolymorpheusModule],
-    declarations: [
-        TuiPullToRefreshComponent,
+    imports: [
+        CommonModule,
+        TuiSvgModule,
+        TuiRepeatTimesModule,
+        PolymorpheusModule,
         TuiMobileLoaderAndroidComponent,
-        TuiMobileLoaderIOSComponent,
     ],
+    declarations: [TuiPullToRefreshComponent, TuiMobileLoaderIOSComponent],
     exports: [TuiPullToRefreshComponent],
 })
 export class TuiPullToRefreshModule {}
