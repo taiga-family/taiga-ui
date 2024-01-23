@@ -148,7 +148,7 @@ export const APP_PROVIDERS: Provider[] = [
     },
     {
         provide: TUI_SWIPE_OPTIONS,
-        useValue: {timeout: 300, threshold: 60},
+        useValue: {timeout: 200, threshold: 60},
     },
     {
         provide: TUI_HINT_OPTIONS,

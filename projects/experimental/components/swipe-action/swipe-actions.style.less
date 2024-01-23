@@ -29,6 +29,8 @@
 .loop (@i) when (@i > 1) {
     .loop(@i - 1);
     &:nth-child(@{i}) {
-        transform: ~'translate(calc(var(--t-swiped) * ((@{i} - 1) * 100% + ((@{i} - 1) * var(--t-action-gap)))))';
+        transform: ~'translate3d(calc(var(--t-swiped) * ((@{i} - 1) * 100% + ((@{i} - 1) * var(--t-action-gap)))), 0, 0)';
+        backface-visibility: hidden;
+        will-change: transform;
     }
 }
