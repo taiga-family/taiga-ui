@@ -18,18 +18,17 @@ jobs:
       - uses: taiga-family/ci/actions/setup/checkout@v1.50.8
       - uses: taiga-family/ci/actions/setup/variables@v1.50.8
       - uses: taiga-family/ci/actions/setup/node@v1.50.8
-
-      - run: npx nx build demo -c next
-      - run: tree ${{ env.DIST }} -P '*.html'
-      - name: Publish snapshots
+      - run: npx nx build demo --output-path ${{ env.DIST_NEXT }}
+      - run: tree ${{ env.DIST_NEXT }} -P '*.html'
+      - name: Publish next snapshots
         uses: s0/git-publish-subdir-action@v2.6.0
         env:
           REPO: self
-          FOLDER: ${{ env.DIST }}/next
+          FOLDER: ${{ env.DIST_NEXT }}
           BRANCH: snapshots/demo/next/${{ github.head_ref || github.ref_name }}
           GITHUB_TOKEN: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
 
-  snapshots-of-release:
+  snapshots-production:
     if: ${{ contains(github.head_ref || github.ref_name, 'release/') || github.event.inputs.updateMain == 'true' }}
     name: production
     runs-on: ubuntu-latest
@@ -41,7 +40,7 @@ jobs:
 
       - run: npx nx prerender demo
       - run: tree ${{ env.DIST }} -P '*.html'
-      - name: Publish snapshots
+      - name: Publish production snapshots
         uses: s0/git-publish-subdir-action@v2.6.0
         env:
           REPO: self
