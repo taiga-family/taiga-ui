@@ -34,7 +34,6 @@ test.describe('Deep / Select', () => {
                     await option.focus();
                     await page.keyboard.down('Enter');
                     await api.networkidle();
-                    await page.waitForTimeout(300);
                     await api.focusOnBody();
                     await api.hideNotifications();
                     await api.networkidle();
@@ -50,12 +49,10 @@ test.describe('Deep / Select', () => {
 
                 if (cleaner) {
                     await cleaner.click();
-                    await page.waitForTimeout(100);
                     await api.networkidle();
                 } else {
                     await options[0].focus();
                     await page.keyboard.down('Enter');
-                    await page.waitForTimeout(100);
                     await api.networkidle();
                 }
 
