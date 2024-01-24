@@ -77,10 +77,6 @@ export interface TuiHostedDropdownContext
             useExisting: TuiHostedDropdownComponent,
         },
     ],
-    host: {
-        '[$.class._hosted_dropdown_focused]': 'focus$',
-        '($.class._hosted_dropdown_focused)': 'focus$',
-    },
 })
 export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
     @ContentChild(TuiHostedDropdownConnectorDirective, {read: ElementRef})
@@ -129,8 +125,6 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
 
     @Output()
     readonly focusedChange = new EventEmitter<boolean>();
-
-    readonly focus$ = new BehaviorSubject(false);
 
     /** TODO: rename in 4.0 */
     readonly openChange = this.openChange$;
@@ -191,7 +185,7 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
     @HostListener('focusin.capture.silent')
     @HostListener('focusout.capture.silent')
     onFocusInOut(): void {
-        this.focus$.next(this.focused);
+        this.el.nativeElement.classList.toggle('_hosted_dropdown_focused', this.focused);
     }
 
     @HostListener('focusin', ['$event.target'])
