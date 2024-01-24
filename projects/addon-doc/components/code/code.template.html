@@ -7,8 +7,9 @@
 <pre
     *ngFor="let content of processor$ | async"
     class="t-code"
+    [class.t-highlighted]="(highlighted$ | async) ?? false"
 >
-    <code [lineNumbers]="true" [highlight]="content"></code>
+    <code [lineNumbers]="true" [highlight]="content" (highlighted)="highlight$.next(true)"></code>
     <div class="t-code-actions">
         <button
             tuiIconButton

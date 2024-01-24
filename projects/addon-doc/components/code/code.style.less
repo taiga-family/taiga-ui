@@ -18,6 +18,13 @@
     margin: 0;
     white-space: normal;
     outline: 1px solid var(--tui-base-03);
+    transition: opacity 200ms ease-in-out;
+    overflow: hidden;
+    opacity: 0;
+
+    &.t-highlighted {
+        opacity: 1;
+    }
 
     ::ng-deep .hljs-ln {
         width: max-content;
