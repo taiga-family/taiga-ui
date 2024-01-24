@@ -12,10 +12,11 @@ import {
 } from '@angular/core';
 import {EMPTY_QUERY, TuiDialog, tuiPure} from '@taiga-ui/cdk';
 import {
-    TUI_ANIMATIONS_DURATION,
+    TUI_ANIMATIONS_SPEED,
     TUI_CLOSE_WORD,
     TUI_COMMON_ICONS,
     TuiCommonIcons,
+    tuiGetDuration,
     tuiSlideInTop,
 } from '@taiga-ui/core';
 import {shouldCall} from '@tinkoff/ng-event-plugins';
@@ -54,7 +55,7 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
         value: '',
         params: {
             start: '100vh',
-            duration: this.duration,
+            duration: tuiGetDuration(this.speed),
         },
     };
 
@@ -62,7 +63,7 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
 
     constructor(
         @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
-        @Inject(TUI_ANIMATIONS_DURATION) private readonly duration: number,
+        @Inject(TUI_ANIMATIONS_SPEED) private readonly speed: number,
         @Inject(TUI_COMMON_ICONS) readonly icons: TuiCommonIcons,
         @Inject(TUI_CLOSE_WORD) readonly closeWord$: Observable<string>,
         @Inject(POLYMORPHEUS_CONTEXT)

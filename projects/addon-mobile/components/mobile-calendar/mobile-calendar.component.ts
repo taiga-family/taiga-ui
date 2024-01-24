@@ -29,11 +29,12 @@ import {
     TuiTypedMapper,
 } from '@taiga-ui/cdk';
 import {
-    TUI_ANIMATIONS_DURATION,
+    TUI_ANIMATIONS_SPEED,
     TUI_CLOSE_WORD,
     TUI_COMMON_ICONS,
     TUI_SHORT_WEEK_DAYS,
     TuiCommonIcons,
+    tuiGetDuration,
 } from '@taiga-ui/core';
 import {
     TUI_CANCEL_WORD,
@@ -140,7 +141,7 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
         readonly unorderedWeekDays$: TuiInjectionTokenType<typeof TUI_SHORT_WEEK_DAYS>,
         @Inject(TUI_CHOOSE_DAY_OR_RANGE_TEXTS)
         readonly chooseDayOrRangeTexts$: Observable<[string, string, string]>,
-        @Inject(TUI_ANIMATIONS_DURATION) private readonly duration: number,
+        @Inject(TUI_ANIMATIONS_SPEED) private readonly speed: number,
         @Inject(NgZone) private readonly ngZone: NgZone,
     ) {
         valueChanges.pipe(takeUntil(this.destroy$)).subscribe(value => {
@@ -304,7 +305,7 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
 
         this.monthsScrollRef?.scrolledIndexChange
             .pipe(
-                delay(this.duration),
+                delay(tuiGetDuration(this.speed)),
                 this.lateInit(),
                 take(1),
                 takeUntil(this.destroy$),

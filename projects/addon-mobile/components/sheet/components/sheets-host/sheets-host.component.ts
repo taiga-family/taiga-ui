@@ -1,14 +1,19 @@
-import {AnimationOptions} from '@angular/animations';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
     Inject,
+    inject,
     OnInit,
     Self,
 } from '@angular/core';
 import {TUI_WINDOW_HEIGHT, TuiDestroyService} from '@taiga-ui/cdk';
-import {TUI_ANIMATION_OPTIONS, tuiFadeIn, tuiSlideInTop} from '@taiga-ui/core';
+import {
+    TUI_ANIMATIONS_SPEED,
+    tuiFadeIn,
+    tuiSlideInTop,
+    tuiToAnimationOptions,
+} from '@taiga-ui/core';
 import {Observable, takeUntil} from 'rxjs';
 
 import {TuiSheet} from '../../sheet';
@@ -25,8 +30,9 @@ import {TuiSheetService} from '../../sheet.service';
 export class TuiSheetsHostComponent implements OnInit {
     sheets: ReadonlyArray<TuiSheet<any>> = [];
 
+    readonly options = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
+
     constructor(
-        @Inject(TUI_ANIMATION_OPTIONS) readonly options: AnimationOptions,
         @Inject(TuiSheetService) private readonly service: TuiSheetService,
         @Inject(TUI_WINDOW_HEIGHT) readonly height$: Observable<number>,
         @Self() @Inject(TuiDestroyService) private readonly destroy$: Observable<void>,

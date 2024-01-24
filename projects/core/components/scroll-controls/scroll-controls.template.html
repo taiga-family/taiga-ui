@@ -3,7 +3,7 @@
         *ngIf="bars[0]"
         tuiScrollbarWrapper
         class="t-bar t-bar_vertical"
-        [@tuiFadeIn]="animation"
+        [@tuiFadeIn]="options"
         [class.t-bar_has-horizontal]="bars[1]"
     >
         <div
@@ -15,7 +15,7 @@
         *ngIf="bars[1]"
         tuiScrollbarWrapper
         class="t-bar t-bar_horizontal"
-        [@tuiFadeIn]="animation"
+        [@tuiFadeIn]="options"
         [class.t-bar_has-vertical]="bars[0]"
     >
         <div

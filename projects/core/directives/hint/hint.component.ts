@@ -1,4 +1,3 @@
-import {AnimationOptions} from '@angular/animations';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -6,6 +5,7 @@ import {
     HostBinding,
     HostListener,
     Inject,
+    inject,
     Optional,
     Self,
 } from '@angular/core';
@@ -27,9 +27,9 @@ import {tuiFadeIn} from '@taiga-ui/core/animations';
 import {TuiModeDirective} from '@taiga-ui/core/directives/mode';
 import {TuiPortalItem} from '@taiga-ui/core/interfaces';
 import {TuiPositionService, TuiVisualViewportService} from '@taiga-ui/core/services';
-import {TUI_ANIMATION_OPTIONS, TUI_VIEWPORT} from '@taiga-ui/core/tokens';
+import {TUI_ANIMATIONS_SPEED, TUI_VIEWPORT} from '@taiga-ui/core/tokens';
 import {TuiPoint} from '@taiga-ui/core/types';
-import {tuiIsObscured} from '@taiga-ui/core/utils';
+import {tuiIsObscured, tuiToAnimationOptions} from '@taiga-ui/core/utils';
 import {POLYMORPHEUS_CONTEXT, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {map, Observable, takeUntil} from 'rxjs';
 
@@ -62,7 +62,7 @@ export const TUI_HINT_PROVIDERS = [
     providers: TUI_HINT_PROVIDERS,
     animations: [tuiFadeIn],
     host: {
-        '[@tuiFadeIn]': 'animation',
+        '[@tuiFadeIn]': 'options',
         '[class._untouchable]': 'pointer',
     },
 })
@@ -70,11 +70,12 @@ export class TuiHintComponent<C = any> {
     @HostBinding('attr.data-appearance')
     readonly appearance = this.polymorpheus.$implicit.appearance || this.mode?.mode;
 
+    readonly options = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
+
     constructor(
         @Inject(TuiHoveredService) hovered$: Observable<boolean>,
         @Inject(TuiPositionService) position$: Observable<TuiPoint>,
         @Self() @Inject(TuiDestroyService) destroy$: Observable<void>,
-        @Inject(TUI_ANIMATION_OPTIONS) readonly animation: AnimationOptions,
         @Optional() @Inject(TuiHintPointerDirective) readonly pointer: unknown,
         @Inject(TuiRectAccessor) protected readonly accessor: TuiRectAccessor,
         @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,

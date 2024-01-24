@@ -1,5 +1,4 @@
-export * from './animation-options';
-export * from './animations-duration';
+export * from './animations-speed';
 export * from './assert-enabled';
 export * from './common-icon';
 export * from './data-list-accessor';

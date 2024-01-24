@@ -1,16 +1,17 @@
-import {AnimationOptions} from '@angular/animations';
 import {
     ChangeDetectionStrategy,
     Component,
     ElementRef,
     Inject,
+    inject,
     OnInit,
     Self,
 } from '@angular/core';
 import {TuiDestroyService, TuiDialog, tuiIsNumber} from '@taiga-ui/cdk';
 import {tuiFadeIn, tuiHeightCollapse, tuiSlideIn} from '@taiga-ui/core/animations';
 import {TuiAlertOptions} from '@taiga-ui/core/interfaces';
-import {TUI_ANIMATION_OPTIONS} from '@taiga-ui/core/tokens';
+import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
+import {tuiToAnimationOptions} from '@taiga-ui/core/utils';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 import {fromEvent, repeatWhen, takeUntil, timer} from 'rxjs';
 
@@ -38,21 +39,16 @@ export class TuiAlertComponent<O, I> implements OnInit {
             ? this.item.autoClose(this.item.status)
             : this.item.autoClose;
 
+    readonly options = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
+
     readonly animation = this.position.endsWith('auto')
-        ? {
-              ...this.options,
-              value: 'right',
-          }
-        : {
-              ...this.options,
-              value: 'left',
-          };
+        ? {...this.options, value: 'right'}
+        : {...this.options, value: 'left'};
 
     constructor(
         @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
         @Self() @Inject(TuiDestroyService) private readonly destroy$: TuiDestroyService,
         @Inject(TUI_ALERT_POSITION) readonly position: string,
-        @Inject(TUI_ANIMATION_OPTIONS) readonly options: AnimationOptions,
         @Inject(POLYMORPHEUS_CONTEXT) readonly item: TuiDialog<TuiAlertOptions<I>, O>,
     ) {}
 

@@ -14,12 +14,13 @@ import {
 import {tuiFadeIn, tuiSlideInTop} from '@taiga-ui/core/animations';
 import {TuiAnimationOptions, TuiDialogOptions} from '@taiga-ui/core/interfaces';
 import {
-    TUI_ANIMATIONS_DURATION,
+    TUI_ANIMATIONS_SPEED,
     TUI_CLOSE_WORD,
     TUI_COMMON_ICONS,
     TuiCommonIcons,
 } from '@taiga-ui/core/tokens';
 import {TuiDialogSize} from '@taiga-ui/core/types';
+import {tuiGetDuration} from '@taiga-ui/core/utils';
 import {POLYMORPHEUS_CONTEXT, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {
     filter,
@@ -60,7 +61,7 @@ export class TuiDialogComponent<O, I> {
         value: '',
         params: {
             start: '40px',
-            duration: this.duration,
+            duration: tuiGetDuration(this.speed),
         },
     } as const;
 
@@ -68,14 +69,14 @@ export class TuiDialogComponent<O, I> {
         value: '',
         params: {
             start: '100vh',
-            duration: this.duration,
+            duration: tuiGetDuration(this.speed),
         },
     } as const;
 
     readonly close$ = new Subject<void>();
 
     constructor(
-        @Inject(TUI_ANIMATIONS_DURATION) private readonly duration: number,
+        @Inject(TUI_ANIMATIONS_SPEED) private readonly speed: number,
         @Inject(TUI_IS_MOBILE) private readonly isMobile: boolean,
         @Inject(POLYMORPHEUS_CONTEXT) readonly context: TuiDialog<TuiDialogOptions<I>, O>,
         @Inject(TuiDestroyService) @Self() destroy$: Observable<void>,

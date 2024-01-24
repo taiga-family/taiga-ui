@@ -1,20 +1,21 @@
-import {AnimationOptions} from '@angular/animations';
 import {
     ChangeDetectionStrategy,
     Component,
     HostListener,
     Inject,
+    inject,
     Input,
 } from '@angular/core';
 import {tuiIsString, TuiValidationError} from '@taiga-ui/cdk';
 import {tuiFadeIn, tuiHeightCollapse} from '@taiga-ui/core/animations';
 import {MODE_PROVIDER} from '@taiga-ui/core/providers';
 import {
-    TUI_ANIMATION_OPTIONS,
+    TUI_ANIMATIONS_SPEED,
     TUI_DEFAULT_ERROR_MESSAGE,
     TUI_MODE,
 } from '@taiga-ui/core/tokens';
 import {TuiBrightness} from '@taiga-ui/core/types';
+import {tuiToAnimationOptions} from '@taiga-ui/core/utils';
 import {Observable} from 'rxjs';
 
 @Component({
@@ -31,12 +32,13 @@ export class TuiErrorComponent {
         this.error = tuiIsString(error) ? new TuiValidationError(error) : error;
     }
 
+    readonly options = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
+
     error: TuiValidationError | null = null;
 
     visible = true;
 
     constructor(
-        @Inject(TUI_ANIMATION_OPTIONS) readonly animation: AnimationOptions,
         @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
         @Inject(TUI_DEFAULT_ERROR_MESSAGE)
         readonly defaultErrorMessage$: Observable<string>,
