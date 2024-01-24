@@ -351,6 +351,14 @@ export const ROUTES: Routes = [
         },
     },
     {
+        path: 'experimental/header',
+        loadChildren: async () =>
+            (await import('../experimental/header/header.module')).ExampleTuiHeaderModule,
+        data: {
+            title: 'Header',
+        },
+    },
+    {
         path: 'experimental/icon',
         loadChildren: async () =>
             (await import('../experimental/icon/icon.module')).ExampleTuiIconModule,
