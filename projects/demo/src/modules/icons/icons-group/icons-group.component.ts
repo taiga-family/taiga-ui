@@ -55,8 +55,8 @@ export class IconsGroupComponent implements OnInit {
         this.control.valueChanges
             .pipe(
                 debounceTime(500),
-                filter(search => !!search && (search.length > 2 || search.length === 0)),
-                map(search => search || null),
+                map(search => search || ''),
+                filter(search => search.length > 2 || search.length === 0),
                 takeUntil(this.destroy$),
             )
             .subscribe(search => {
