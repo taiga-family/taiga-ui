@@ -7,22 +7,27 @@ test.describe('DropdownSelection', () => {
     test.beforeEach(async ({page}) => tuiGoto(page, '/directives/dropdown-selection'));
 
     test('current range must be a text node only', async ({page}) => {
-        const example = new TuiDocumentationPagePO(page).getExample('#textarea');
+        const api = new TuiDocumentationPagePO(page);
+        const example = api.getExample('#textarea');
 
         await example.scrollIntoViewIfNeeded();
         await example.locator('textarea').focus();
         await page.keyboard.press('Control+ArrowLeft');
+        await api.networkidle();
         await expect(page).toHaveScreenshot('01-dropdown-selection.png');
         await page.keyboard.press('ArrowRight');
         await page.keyboard.press('ArrowRight');
         await page.keyboard.press('ArrowRight');
         await page.keyboard.press('ArrowRight');
         await page.keyboard.press('ArrowRight');
+        await api.networkidle();
         await expect(page).toHaveScreenshot('02-dropdown-selection.png');
         await example.locator('textarea').fill('');
         await example.locator('textarea').fill('@');
+        await api.networkidle();
         await expect(page).toHaveScreenshot('03-dropdown-selection.png');
         await page.locator('button[tuiOption]').first().click();
+        await api.networkidle();
         await expect(page).toHaveScreenshot('04-dropdown-selection.png');
     });
 });
