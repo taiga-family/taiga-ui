@@ -7,13 +7,11 @@ import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiActiveZoneModule} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
-    TuiHostedDropdownModule,
     TuiLinkModule,
     TuiNotificationModule,
     TuiSvgModule,
 } from '@taiga-ui/core';
 import {TuiCheckboxLabeledModule} from '@taiga-ui/kit';
-import {TuiColorSelectorModule} from '@tinkoff/tui-editor';
 
 import {IconsComponent} from './icons.component';
 import {IconsGroupModule} from './icons-group/icons-group.module';
@@ -30,8 +28,6 @@ import {IconsGroupModule} from './icons-group/icons-group.module';
         IconsGroupModule,
         RouterModule.forChild(tuiGenerateRoutes(IconsComponent)),
         TuiCheckboxLabeledModule,
-        TuiHostedDropdownModule,
-        TuiColorSelectorModule,
         TuiActiveZoneModule,
         IntersectionObserverModule,
     ],

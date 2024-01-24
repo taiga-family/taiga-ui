@@ -16,27 +16,6 @@
     will-change: transform, box-shadow;
     border-radius: 0.625rem;
 
-    &.t-background {
-        background-image: linear-gradient(45deg, var(--tui-base-02) 25%, transparent 25%),
-            linear-gradient(-45deg, var(--tui-base-02) 25%, transparent 25%),
-            linear-gradient(45deg, transparent 75%, var(--tui-base-02) 75%),
-            linear-gradient(-45deg, transparent 75%, var(--tui-base-02) 75%);
-        background-size: 1.25rem 1.25rem;
-        background-position:
-            0 0,
-            0 0.625rem,
-            0.625rem -0.625rem,
-            -0.625rem 0;
-
-        &.t-wrapper-icons_dark {
-            border: 1px solid var(--tui-base-03);
-            background-image: linear-gradient(45deg, #2b2b2b 25%, transparent 25%),
-                linear-gradient(-45deg, #2b2b2b 25%, transparent 25%),
-                linear-gradient(45deg, transparent 75%, #2b2b2b 75%),
-                linear-gradient(-45deg, transparent 75%, #2b2b2b 75%);
-        }
-    }
-
     &:hover {
         transform: scale(1.5);
         background: var(--tui-base-01);
@@ -53,26 +32,4 @@
             opacity: 1 !important;
         }
     }
-}
-
-.icons-customization {
-    display: flex;
-    margin-top: 0.625rem;
-    flex-flow: row-reverse;
-}
-
-.icons-color {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    line-height: 0;
-}
-
-.color-picker {
-    width: 1rem;
-    height: 1rem;
-    background-color: var(--tui-text-01);
-    border-radius: var(--tui-radius-xs);
-    margin-right: 0.5rem;
-    cursor: pointer;
 }
