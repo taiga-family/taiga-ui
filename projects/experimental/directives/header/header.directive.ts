@@ -1,5 +1,5 @@
-import {Directive, Inject, Input} from '@angular/core';
-import {TuiDirectiveStylesService} from '@taiga-ui/cdk';
+import {Directive, Input} from '@angular/core';
+import {tuiWithStyles} from '@taiga-ui/cdk';
 import {TuiSizeXXL, TuiSizeXXS} from '@taiga-ui/core';
 import {
     tuiAvatarOptionsProvider,
@@ -10,6 +10,7 @@ import {tuiBadgeOptionsProvider} from '@taiga-ui/kit';
 import {TuiHeaderComponent} from './header.component';
 
 @Directive({
+    standalone: true,
     selector: '[tuiHeader]',
     providers: [
         tuiAvatarOptionsProvider({size: 's'}),
@@ -22,12 +23,9 @@ import {TuiHeaderComponent} from './header.component';
     },
 })
 export class TuiHeaderDirective {
+    // @ts-ignore
+    private readonly nothing = tuiWithStyles(TuiHeaderComponent);
+
     @Input('tuiHeader')
     size: TuiSizeXXL | TuiSizeXXS | '' = 's';
-
-    constructor(
-        @Inject(TuiDirectiveStylesService) directiveStyles: TuiDirectiveStylesService,
-    ) {
-        directiveStyles.addComponent(TuiHeaderComponent);
-    }
 }
