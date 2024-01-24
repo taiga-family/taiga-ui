@@ -60,3 +60,48 @@
         tuiSwipeAction
     ></button>
 </tui-swipe-actions>
+
+<tui-swipe-actions [style.--t-item-size]="32">
+    <button
+        tuiSurface
+        class="surface"
+    >
+        <div tuiCell>
+            <tui-avatar
+                appearance="primary"
+                src="tuiIconBriefcase"
+            ></tui-avatar>
+            <div tuiTitle>
+                <strong>{{ 5000 | tuiAmount: 'EUR' | async }}</strong>
+                <div tuiSubtitle>Vacations</div>
+            </div>
+        </div>
+    </button>
+
+    <button
+        iconLeft="tuiIconEye"
+        size="s"
+        tuiIconButton
+        tuiSwipeAction
+    ></button>
+    <button
+        iconLeft="tuiIconEdit3"
+        size="s"
+        tuiIconButton
+        tuiSwipeAction
+    ></button>
+    <button
+        appearance="secondary"
+        iconLeft="tuiIconShare"
+        size="s"
+        tuiIconButton
+        tuiSwipeAction
+    ></button>
+    <button
+        appearance="destructive"
+        iconLeft="tuiIconTrash"
+        size="s"
+        tuiIconButton
+        tuiSwipeAction
+    ></button>
+</tui-swipe-actions>

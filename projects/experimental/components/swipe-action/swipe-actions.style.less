@@ -2,11 +2,19 @@
 
 :host {
     .scrollbar-hidden();
-    --t-action-gap: 1.5rem;
+    --t-action-gap: 24;
+    --t-actions-padding: 0.5rem;
+    --t-item-size: 44;
+
     display: inline-flex;
+    width: calc(1px * var(--t-content-width));
     align-items: center;
     overflow: scroll;
     scroll-snap-type: x mandatory;
+    perspective: 1px;
+    perspective-origin: calc(
+        calc(1px * var(--t-content-width)) + calc(1px * var(--t-item-size) / 2) + var(--t-actions-padding)
+    );
 }
 
 .t-content {
@@ -16,10 +24,11 @@
 
 .t-actions {
     display: inline-flex;
-    gap: var(--t-action-gap);
-    padding: 0 1rem 0 0.5rem;
+    gap: calc(1px * var(--t-action-gap));
+    padding: 0 1rem 0 var(--t-actions-padding);
     scroll-snap-align: start;
     align-items: center;
+    transform-style: preserve-3d;
 
     ::ng-deep & > * {
         .loop(6);
@@ -29,8 +38,11 @@
 .loop (@i) when (@i > 1) {
     .loop(@i - 1);
     &:nth-child(@{i}) {
-        transform: ~'translate3d(calc(var(--t-swiped) * ((@{i} - 1) * 100%)), 0, 0)';
-        backface-visibility: hidden;
-        will-change: transform;
+        --t-distance: ~'calc(var(--t-item-size) + var(--t-action-gap)) * calc(@{i} - 1)';
+        --t-factor: calc((var(--t-actions-width) - var(--t-distance)) / var(--t-actions-width));
+        --t-scale: calc(1 / var(--t-factor));
+        --t-translate: calc(1px * (1 - 1 / var(--t-factor)));
+        transform: ~'translate3d(calc(calc((-100% - calc(1px * var(--t-action-gap))) * (@{i} - 1)) / var(--t-scale)), 0, var(--t-translate))';
+        scale: var(--t-scale);
     }
 }

@@ -1,6 +1,4 @@
-import {ChangeDetectionStrategy, Component, ElementRef, ViewChild} from '@angular/core';
-import {animationFrameScheduler, Subject} from 'rxjs';
-import {map, throttleTime} from 'rxjs/operators';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 
 @Component({
     selector: 'tui-swipe-actions',
@@ -8,29 +6,19 @@ import {map, throttleTime} from 'rxjs/operators';
     styleUrls: ['./swipe-actions.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        '[style.width.px]': 'width',
-        '[$.style.--t-swiped]': 'swiped$',
-        '($.style.--t-swiped)': '0',
-        '(scroll.silent)': 'onScroll($event.target)',
+        '[style.--t-actions-width]': 'actionsWidth',
+        '[style.--t-content-width]': 'contentWidth',
     },
 })
 export class TuiSwipeActionsComponent {
-    private readonly swiped$$ = new Subject<HTMLElement>();
+    actionsWidth = 0;
+    contentWidth = 0;
 
-    @ViewChild('actions', {read: ElementRef})
-    actions?: ElementRef<HTMLElement>;
-
-    width = 0;
-    swiped$ = this.swiped$$.pipe(
-        throttleTime(0, animationFrameScheduler),
-        map(el => el.scrollLeft / (this.actions?.nativeElement.offsetWidth || 0) - 1),
-    );
-
-    onScroll(element: HTMLElement): void {
-        this.swiped$$.next(element);
+    onResizeContent(event: ResizeObserverEntry): void {
+        this.contentWidth = event.target.clientWidth;
     }
 
-    onResize(event: ResizeObserverEntry): void {
-        this.width = event.contentRect.width;
+    onResizeActions(event: ResizeObserverEntry): void {
+        this.actionsWidth = event.target.clientWidth;
     }
 }
