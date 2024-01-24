@@ -11,11 +11,13 @@ test.describe('Dialogs + browser back navigation', () => {
 
         await example.scrollIntoViewIfNeeded();
         await example.locator('button').click();
-        await page.locator('tui-dialog button').nth(1).click();
-        await api.prepareBeforeScreenshot();
         await api.networkidle();
+        await page.locator('tui-dialog button').nth(1).click();
+        await api.networkidle();
+        await api.prepareBeforeScreenshot();
         await expect(page).toHaveScreenshot('01-dialog-browser-back.png');
         await page.goBack();
+        await api.networkidle();
         await page.goForward();
         await api.networkidle();
         await expect(page).toHaveScreenshot('02-dialog-browser-back.png');
