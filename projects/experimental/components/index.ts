@@ -1,4 +1,5 @@
 export * from '@taiga-ui/experimental/components/avatar';
+export * from '@taiga-ui/experimental/components/avatar-labeled';
 export * from '@taiga-ui/experimental/components/avatar-stack';
 export * from '@taiga-ui/experimental/components/badge-notification';
 export * from '@taiga-ui/experimental/components/button';
