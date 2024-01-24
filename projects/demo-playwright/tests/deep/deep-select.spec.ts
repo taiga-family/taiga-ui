@@ -26,7 +26,6 @@ test.describe('Deep / Select', () => {
                 await select.scrollIntoViewIfNeeded();
                 await expect(select).toBeVisible();
                 await select.click();
-                await api.networkidle();
 
                 const options = await api.getOptions();
 
@@ -36,7 +35,6 @@ test.describe('Deep / Select', () => {
                     await api.networkidle();
                     await api.focusOnBody();
                     await api.hideNotifications();
-                    await api.networkidle();
 
                     await expect(api.apiPageExample).toHaveScreenshot(
                         `deep-${path}__${name}-select-option-${index}.png`,
