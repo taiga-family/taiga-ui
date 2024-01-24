@@ -1,12 +1,12 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {TuiResizeModule} from '@taiga-ui/cdk';
+import {ResizeObserverModule} from '@ng-web-apis/resize-observer';
 
 import {TuiBadgedContentDirective} from './badged-content.directive';
 
 @Component({
     standalone: true,
     selector: 'tui-badged-content',
-    imports: [TuiBadgedContentDirective, TuiResizeModule],
+    imports: [TuiBadgedContentDirective, ResizeObserverModule],
     templateUrl: './badged-content.template.html',
     styleUrls: ['./badged-content.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

@@ -1,33 +1,34 @@
-import {ElementRef, Inject, Injectable, NgZone} from '@angular/core';
+import {ElementRef, inject, Injectable, NgZone} from '@angular/core';
 import {MutationObserverService} from '@ng-web-apis/mutation-observer';
-import {tuiClamp, TuiResizeService, tuiZoneOptimized} from '@taiga-ui/cdk';
+import {ResizeObserverService} from '@ng-web-apis/resize-observer';
+import {tuiClamp, tuiZoneOptimized} from '@taiga-ui/cdk';
 import {distinctUntilChanged, map, merge, Observable, share, throttleTime} from 'rxjs';
 
 import {TuiItemsWithMoreDirective} from './items-with-more.directive';
 
 @Injectable()
 export class TuiItemsWithMoreService extends Observable<number> {
-    readonly stream$ = merge(this.directive.change$, this.mutation$, this.resize$).pipe(
+    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly directive = inject(TuiItemsWithMoreDirective);
+
+    readonly stream$ = merge(
+        this.directive.change$,
+        inject(MutationObserverService),
+        inject(ResizeObserverService),
+    ).pipe(
         throttleTime(0),
         map(() => this.getOverflowIndex()),
         distinctUntilChanged(),
-        tuiZoneOptimized(this.zone),
+        tuiZoneOptimized(inject(NgZone)),
         share(),
     );
 
-    constructor(
-        @Inject(NgZone) private readonly zone: NgZone,
-        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
-        @Inject(MutationObserverService) private readonly mutation$: Observable<unknown>,
-        @Inject(TuiResizeService) private readonly resize$: Observable<unknown>,
-        @Inject(TuiItemsWithMoreDirective)
-        private readonly directive: TuiItemsWithMoreDirective,
-    ) {
+    constructor() {
         super(subscriber => this.stream$.subscribe(subscriber));
     }
 
     private getOverflowIndex(): number {
-        const {clientWidth, children} = this.el.nativeElement;
+        const {clientWidth, children} = this.el;
         const items = Array.from(children, ({clientWidth}) => clientWidth);
         const first = this.directive.required === -1 ? 0 : this.directive.required;
         const last = items.length - 1;

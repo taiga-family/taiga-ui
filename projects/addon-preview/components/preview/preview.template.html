@@ -11,9 +11,9 @@
         [style.cursor]="cursor$ | async"
         [style.transform]="wrapperTransform$ | async"
         (tuiPan)="onPan($event)"
-        (tuiResize)="onResize($event)"
         (tuiZoom)="onZoom($event)"
         (waMutationObserver)="onMutation(contentWrapper)"
+        (waResizeObserver)="onResize($event)"
     >
         <ng-content></ng-content>
     </section>

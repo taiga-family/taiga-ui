@@ -3,8 +3,9 @@ import {Component, Inject, OnInit, Self, ViewEncapsulation} from '@angular/core'
 import {NavigationEnd, Router} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {LOCAL_STORAGE} from '@ng-web-apis/common';
+import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {TUI_DOC_PAGE_LOADED} from '@taiga-ui/addon-doc';
-import {TuiDestroyService, TuiResizeService} from '@taiga-ui/cdk';
+import {TuiDestroyService} from '@taiga-ui/cdk';
 import {distinctUntilChanged, filter, map, Observable, takeUntil} from 'rxjs';
 
 import {AbstractDemoComponent, DEMO_PAGE_LOADED_PROVIDER} from './abstract.app';
@@ -22,7 +23,7 @@ import {TuiVersionMeta} from './version-manager/versions.constants';
     encapsulation: ViewEncapsulation.None,
     changeDetection,
     providers: [
-        TuiResizeService,
+        ResizeObserverService,
         TuiDestroyService,
         DEMO_PAGE_LOADED_PROVIDER,
         TUI_VERSION_MANAGER_PROVIDERS,

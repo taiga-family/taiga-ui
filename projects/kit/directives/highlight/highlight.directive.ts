@@ -1,11 +1,20 @@
 import {DOCUMENT} from '@angular/common';
-import {Directive, ElementRef, Inject, Input, OnChanges, Renderer2} from '@angular/core';
-import {svgNodeFilter, TuiDestroyService, tuiPx, TuiResizeService} from '@taiga-ui/cdk';
-import {Observable} from 'rxjs';
+import {
+    Directive,
+    ElementRef,
+    Inject,
+    Input,
+    OnChanges,
+    Renderer2,
+    Self,
+} from '@angular/core';
+import {ResizeObserverService} from '@ng-web-apis/resize-observer';
+import {svgNodeFilter, TuiDestroyService, tuiPx} from '@taiga-ui/cdk';
+import {Observable, takeUntil} from 'rxjs';
 
 @Directive({
     selector: '[tuiHighlight]',
-    providers: [TuiDestroyService, TuiResizeService],
+    providers: [TuiDestroyService, ResizeObserverService],
     host: {
         '[style.position]': '"relative"',
         '[style.zIndex]': '0',
@@ -30,9 +39,10 @@ export class TuiHighlightDirective implements OnChanges {
         @Inject(DOCUMENT) private readonly doc: Document,
         @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
         @Inject(Renderer2) private readonly renderer: Renderer2,
-        @Inject(TuiResizeService) resize$: Observable<unknown>,
+        @Inject(ResizeObserverService) resize$: Observable<unknown>,
+        @Inject(TuiDestroyService) @Self() destroy$: Observable<unknown>,
     ) {
-        resize$.subscribe(() => {
+        resize$.pipe(takeUntil(destroy$)).subscribe(() => {
             this.updateStyles();
         });
     }

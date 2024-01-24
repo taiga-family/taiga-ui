@@ -11,13 +11,8 @@ import {
     MUTATION_OBSERVER_INIT,
     MutationObserverService,
 } from '@ng-web-apis/mutation-observer';
-import {
-    EMPTY_QUERY,
-    TuiContext,
-    TuiDestroyService,
-    TuiItemDirective,
-    TuiResizeService,
-} from '@taiga-ui/cdk';
+import {ResizeObserverService} from '@ng-web-apis/resize-observer';
+import {EMPTY_QUERY, TuiContext, TuiItemDirective} from '@taiga-ui/cdk';
 import {Observable} from 'rxjs';
 
 import {TuiItemsWithMoreDirective} from './items-with-more.directive';
@@ -31,8 +26,7 @@ import {TuiMoreDirective} from './more.directive';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         MutationObserverService,
-        TuiResizeService,
-        TuiDestroyService,
+        ResizeObserverService,
         TuiItemsWithMoreService,
         {
             provide: MUTATION_OBSERVER_INIT,

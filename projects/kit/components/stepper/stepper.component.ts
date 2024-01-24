@@ -14,6 +14,7 @@ import {
     QueryList,
     Self,
 } from '@angular/core';
+import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {
     EMPTY_QUERY,
     TuiDestroyService,
@@ -22,7 +23,6 @@ import {
     tuiMoveFocus,
     tuiPure,
     tuiQueryListChanges,
-    TuiResizeService,
     TuiScrollService,
 } from '@taiga-ui/cdk';
 import {TUI_ANIMATIONS_DURATION, TuiOrientation} from '@taiga-ui/core';
@@ -35,7 +35,7 @@ import {TuiStepComponent} from './step/step.component';
     templateUrl: './stepper.template.html',
     styleUrls: ['./stepper.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [TuiResizeService, TuiDestroyService],
+    providers: [ResizeObserverService, TuiDestroyService],
 })
 export class TuiStepperComponent {
     @ContentChildren(forwardRef(() => TuiStepComponent), {read: ElementRef})
@@ -60,11 +60,13 @@ export class TuiStepperComponent {
         @Inject(ChangeDetectorRef) private readonly cdr: ChangeDetectorRef,
         @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
         @Inject(TuiScrollService) private readonly scrollService: TuiScrollService,
-        @Inject(TuiResizeService) resize$: Observable<void>,
+        @Inject(ResizeObserverService) resize$: Observable<void>,
         @Inject(TUI_ANIMATIONS_DURATION) private readonly duration: number,
         @Self() @Inject(TuiDestroyService) private readonly destroy$: Observable<void>,
     ) {
-        resize$.subscribe(() => this.scrollIntoView(this.activeItemIndex));
+        resize$
+            .pipe(takeUntil(this.destroy$))
+            .subscribe(() => this.scrollIntoView(this.activeItemIndex));
     }
 
     @tuiPure

@@ -11,12 +11,8 @@ import {
     MUTATION_OBSERVER_INIT,
     MutationObserverService,
 } from '@ng-web-apis/mutation-observer';
-import {
-    TuiDestroyService,
-    TuiDirectiveStylesService,
-    TuiResizeService,
-    tuiZonefree,
-} from '@taiga-ui/cdk';
+import {ResizeObserverService} from '@ng-web-apis/resize-observer';
+import {TuiDestroyService, tuiWithStyles, tuiZonefree} from '@taiga-ui/cdk';
 import {TuiOrientation} from '@taiga-ui/core';
 import {fromEvent, merge, Observable, takeUntil} from 'rxjs';
 
@@ -26,7 +22,7 @@ import {TuiFadeComponent} from './fade.component';
     selector: '[tuiFade]',
     providers: [
         TuiDestroyService,
-        TuiResizeService,
+        ResizeObserverService,
         MutationObserverService,
         {
             provide: MUTATION_OBSERVER_INIT,
@@ -55,15 +51,14 @@ export class TuiFadeDirective {
 
     constructor(
         @Self() @Inject(TuiDestroyService) destroy$: Observable<unknown>,
-        @Inject(TuiResizeService) resize$: Observable<unknown>,
+        @Inject(ResizeObserverService) resize$: Observable<unknown>,
         @Inject(MutationObserverService) mutate$: Observable<unknown>,
         @Inject(ElementRef) element: ElementRef<HTMLElement>,
         @Inject(NgZone) zone: NgZone,
-        @Inject(TuiDirectiveStylesService) directiveStyles: TuiDirectiveStylesService,
     ) {
         const el = element.nativeElement;
 
-        directiveStyles.addComponent(TuiFadeComponent);
+        tuiWithStyles(TuiFadeComponent);
         merge(resize$, mutate$, fromEvent(el, 'scroll'))
             .pipe(tuiZonefree(zone), takeUntil(destroy$))
             .subscribe(() => {
