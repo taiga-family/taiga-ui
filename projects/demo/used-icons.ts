@@ -123,6 +123,7 @@ export const TUI_USED_ICONS = [
     'tuiIconEdit3',
     'tuiIconShare',
     'tuiIconGift',
+    'tuiIconBriefcase',
     'tuiIconCloud',
     'tuiIconInfo',
     'tuiIconDeleteLarge',
