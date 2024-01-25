@@ -1,16 +1,13 @@
-import {ChangeDetectionStrategy, Component, Inject, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {
-    TUI_ANIMATION_OPTIONS,
-    TuiAnimationOptions,
+    TUI_ANIMATIONS_SPEED,
     tuiPop,
     TuiSizeL,
     TuiSizeXS,
+    tuiToAnimationOptions,
 } from '@taiga-ui/core';
 
-import {
-    TUI_BADGE_NOTIFICATION_OPTIONS,
-    TuiBadgeNotificationOptions,
-} from './badge-notification.options';
+import {TUI_BADGE_NOTIFICATION_OPTIONS} from './badge-notification.options';
 
 @Component({
     selector: 'tui-badge-notification',
@@ -20,16 +17,12 @@ import {
     animations: [tuiPop],
     host: {
         '[attr.data-size]': 'size',
-        '[@tuiPop]': 'animation',
+        '[@tuiPop]': 'options',
     },
 })
 export class TuiBadgeNotificationComponent {
     @Input()
-    size: TuiSizeL | TuiSizeXS = this.options.size;
+    size: TuiSizeL | TuiSizeXS = inject(TUI_BADGE_NOTIFICATION_OPTIONS).size;
 
-    constructor(
-        @Inject(TUI_ANIMATION_OPTIONS) readonly animation: TuiAnimationOptions,
-        @Inject(TUI_BADGE_NOTIFICATION_OPTIONS)
-        private readonly options: TuiBadgeNotificationOptions,
-    ) {}
+    readonly options = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
 }

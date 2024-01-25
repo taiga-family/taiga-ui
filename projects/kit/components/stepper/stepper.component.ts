@@ -25,7 +25,7 @@ import {
     tuiQueryListChanges,
     TuiScrollService,
 } from '@taiga-ui/cdk';
-import {TUI_ANIMATIONS_DURATION, TuiOrientation} from '@taiga-ui/core';
+import {TUI_ANIMATIONS_SPEED, tuiGetDuration, TuiOrientation} from '@taiga-ui/core';
 import {delay, Observable, takeUntil} from 'rxjs';
 
 import {TuiStepComponent} from './step/step.component';
@@ -61,7 +61,7 @@ export class TuiStepperComponent {
         @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
         @Inject(TuiScrollService) private readonly scrollService: TuiScrollService,
         @Inject(ResizeObserverService) resize$: Observable<void>,
-        @Inject(TUI_ANIMATIONS_DURATION) private readonly duration: number,
+        @Inject(TUI_ANIMATIONS_SPEED) private readonly speed: number,
         @Self() @Inject(TuiDestroyService) private readonly destroy$: Observable<void>,
     ) {
         resize$
@@ -160,7 +160,7 @@ export class TuiStepperComponent {
                 nativeElement,
                 Math.max(0, top),
                 Math.max(0, left),
-                this.duration / 3,
+                tuiGetDuration(this.speed) / 3,
             )
             .pipe(takeUntil(this.destroy$))
             .subscribe();

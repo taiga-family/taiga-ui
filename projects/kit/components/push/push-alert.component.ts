@@ -1,11 +1,11 @@
-import {AnimationOptions} from '@angular/animations';
-import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {TuiDialog} from '@taiga-ui/cdk';
 import {
-    TUI_ANIMATION_OPTIONS,
+    TUI_ANIMATIONS_SPEED,
     tuiFadeIn,
     tuiHeightCollapse,
     tuiSlideInRight,
+    tuiToAnimationOptions,
 } from '@taiga-ui/core';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 
@@ -20,17 +20,14 @@ import {TuiPushAlertDirective} from './push-alert.directive';
     animations: [tuiFadeIn, tuiSlideInRight, tuiHeightCollapse],
     host: {
         role: 'alert',
-        '[@tuiFadeIn]': 'animation',
-        '[@tuiSlideInRight]': 'animation',
-        '[@tuiHeightCollapse]': 'animation',
+        '[@tuiFadeIn]': 'options',
+        '[@tuiSlideInRight]': 'options',
+        '[@tuiHeightCollapse]': 'options',
     },
 })
 export class TuiPushAlertComponent {
-    constructor(
-        @Inject(TUI_ANIMATION_OPTIONS) readonly animation: AnimationOptions,
-        @Inject(POLYMORPHEUS_CONTEXT)
-        readonly context: TuiDialog<TuiPushOptions, string>,
-    ) {}
+    readonly options = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
+    readonly context = inject(POLYMORPHEUS_CONTEXT) as TuiDialog<TuiPushOptions, string>;
 
     get isDirective(): boolean {
         return this.context.content instanceof TuiPushAlertDirective;

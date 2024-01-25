@@ -1,9 +1,8 @@
-import {AnimationOptions} from '@angular/animations';
-import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Inject, inject} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
 import {TUI_PARENT_ANIMATION, TuiContext} from '@taiga-ui/cdk';
 import {
-    TUI_ANIMATION_OPTIONS,
+    TUI_ANIMATIONS_SPEED,
     TUI_CLOSE_WORD,
     TUI_COMMON_ICONS,
     TUI_MEDIA,
@@ -12,6 +11,7 @@ import {
     tuiIsMobile,
     TuiMedia,
     tuiSlideInTop,
+    tuiToAnimationOptions,
 } from '@taiga-ui/core';
 import {Observable} from 'rxjs';
 
@@ -27,11 +27,12 @@ import {TuiTableBarsService} from '../../services/table-bars.service';
     animations: [tuiSlideInTop, TUI_PARENT_ANIMATION],
 })
 export class TuiTableBarsHostComponent {
+    readonly options = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
+
     constructor(
         @Inject(TuiTableBarsService) readonly service: TuiTableBarsService,
         @Inject(TUI_CLOSE_WORD) readonly closeWord$: Observable<string>,
         @Inject(TUI_COMMON_ICONS) readonly icons: TuiCommonIcons,
-        @Inject(TUI_ANIMATION_OPTIONS) readonly animation: AnimationOptions,
         @Inject(TUI_MEDIA) private readonly media: TuiMedia,
         @Inject(WINDOW) private readonly win: Window,
     ) {}

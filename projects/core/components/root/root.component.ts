@@ -3,6 +3,7 @@ import {
     ChangeDetectionStrategy,
     Component,
     Inject,
+    inject,
     ViewEncapsulation,
 } from '@angular/core';
 import {
@@ -13,11 +14,8 @@ import {
     TUI_VERSION,
 } from '@taiga-ui/cdk';
 import {TuiBreakpointService} from '@taiga-ui/core/services';
-import {
-    TUI_ANIMATIONS_DURATION,
-    TUI_REDUCED_MOTION,
-    TUI_THEME,
-} from '@taiga-ui/core/tokens';
+import {TUI_ANIMATIONS_SPEED, TUI_REDUCED_MOTION, TUI_THEME} from '@taiga-ui/core/tokens';
+import {tuiGetDuration} from '@taiga-ui/core/utils';
 import {combineLatest, debounceTime, map, Observable, of} from 'rxjs';
 
 @Component({
@@ -39,6 +37,8 @@ import {combineLatest, debounceTime, map, Observable, of} from 'rxjs';
     },
 })
 export class TuiRootComponent {
+    readonly duration = tuiGetDuration(inject(TUI_ANIMATIONS_SPEED));
+
     readonly isMobileRes$ = this.breakpoint.pipe(
         map(breakpoint => breakpoint === 'mobile'),
     );
@@ -53,7 +53,6 @@ export class TuiRootComponent {
 
     constructor(
         @Inject(TUI_REDUCED_MOTION) readonly reducedMotion: boolean,
-        @Inject(TUI_ANIMATIONS_DURATION) readonly duration: number,
         @Inject(TUI_DIALOGS)
         readonly dialogs: ReadonlyArray<Observable<readonly unknown[]>>,
         @Inject(TUI_IS_MOBILE) private readonly isMobile: boolean,

@@ -4,13 +4,13 @@ import {
     Component,
     DoCheck,
     HostBinding,
-    Inject,
+    inject,
 } from '@angular/core';
 import {
-    TUI_ANIMATION_OPTIONS,
-    TuiAnimationOptions,
+    TUI_ANIMATIONS_SPEED,
     TuiHorizontalDirection,
     tuiSlideIn,
+    tuiToAnimationOptions,
 } from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
@@ -24,23 +24,13 @@ import {TuiSidebarDirective} from './sidebar.directive';
     animations: [tuiSlideIn],
 })
 export class TuiSidebarComponent implements DoCheck {
-    private readonly left = {
-        ...this.options,
-        value: 'left',
-    } as const;
-
-    private readonly right = {
-        ...this.options,
-        value: 'right',
-    } as const;
-
-    constructor(
-        @Inject(TUI_ANIMATION_OPTIONS) private readonly options: AnimationOptions,
-        @Inject(TuiSidebarDirective) private readonly directive: TuiSidebarDirective,
-    ) {}
+    private readonly directive = inject(TuiSidebarDirective);
+    private readonly options = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
+    private readonly left = {...this.options, value: 'left'};
+    private readonly right = {...this.options, value: 'right'};
 
     @HostBinding('@tuiSlideIn')
-    get animation(): TuiAnimationOptions {
+    get animation(): AnimationOptions {
         return this.direction === 'left' ? this.left : this.right;
     }
 
