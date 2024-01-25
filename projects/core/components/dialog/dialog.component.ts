@@ -1,3 +1,4 @@
+import {AnimationOptions} from '@angular/animations';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -12,7 +13,7 @@ import {
     TuiDialog,
 } from '@taiga-ui/cdk';
 import {tuiFadeIn, tuiSlideInTop} from '@taiga-ui/core/animations';
-import {TuiAnimationOptions, TuiDialogOptions} from '@taiga-ui/core/interfaces';
+import {TuiDialogOptions} from '@taiga-ui/core/interfaces';
 import {
     TUI_ANIMATIONS_SPEED,
     TUI_CLOSE_WORD,
@@ -108,7 +109,7 @@ export class TuiDialogComponent<O, I> {
 
     @HostBinding('@tuiSlideInTop')
     @HostBinding('@tuiFadeIn')
-    get slideInTop(): TuiAnimationOptions {
+    get slideInTop(): AnimationOptions {
         return this.fullscreen || this.isMobile
             ? this.fullscreenAnimation
             : this.animation;

@@ -1,3 +1,4 @@
+import {AnimationOptions} from '@angular/animations';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -7,7 +8,6 @@ import {
 } from '@angular/core';
 import {
     TUI_ANIMATIONS_SPEED,
-    TuiAnimationOptions,
     TuiHorizontalDirection,
     tuiSlideIn,
     tuiToAnimationOptions,
@@ -30,7 +30,7 @@ export class TuiSidebarComponent implements DoCheck {
     private readonly right = {...this.options, value: 'right'};
 
     @HostBinding('@tuiSlideIn')
-    get animation(): TuiAnimationOptions {
+    get animation(): AnimationOptions {
         return this.direction === 'left' ? this.left : this.right;
     }
 
