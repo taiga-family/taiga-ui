@@ -18,7 +18,7 @@
     <div class="t-wrapper">
         <label
             *tuiLet="value?.card | tuiFormatCard: cardPrefilled as formattedCard"
-            tuiPreventDefault="click"
+            (click.silent.prevent)="(0)"
         >
             <input
                 #inputCard
@@ -48,7 +48,7 @@
                 class="t-collapsed"
                 [attr.data-before]="masked"
                 [class.t-collapsed_enable-mask]="isCardCollapsed"
-                (tuiResize)="(0)"
+                (waResizeObserver)="(0)"
             >
                 <span
                     #ghost
@@ -77,7 +77,7 @@
         class="t-wrapper t-wrapper_expire"
         [class.t-wrapper_active]="isCardCollapsed"
     >
-        <label tuiPreventDefault="click">
+        <label (click.silent.prevent)="(0)">
             <input
                 #inputExpire
                 automation-id="tui-input-card-grouped__expire"
@@ -110,7 +110,7 @@
         class="t-wrapper t-wrapper_cvc"
         [class.t-wrapper_active]="isCardCollapsed"
     >
-        <label tuiPreventDefault="click">
+        <label (click.silent.prevent)="(0)">
             <input
                 #inputCVC
                 automation-id="tui-input-card-grouped__cvc"

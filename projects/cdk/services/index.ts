@@ -4,7 +4,6 @@ export * from './focus-visible.service';
 export * from './id.service';
 export * from './obscured.service';
 export * from './pan.service';
-export * from './resize.service';
 export * from './scroll.service';
 export * from './static-request.service';
 export * from './swipe.service';

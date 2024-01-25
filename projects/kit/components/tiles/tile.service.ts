@@ -1,6 +1,7 @@
-import {ElementRef, Inject, Injectable, OnDestroy} from '@angular/core';
+import {ElementRef, inject, Injectable, OnDestroy} from '@angular/core';
 import {MutationObserverService} from '@ng-web-apis/mutation-observer';
-import {tuiArrayShallowEquals, tuiPx, TuiResizeService} from '@taiga-ui/cdk';
+import {ResizeObserverService} from '@ng-web-apis/resize-observer';
+import {tuiArrayShallowEquals, tuiPx} from '@taiga-ui/cdk';
 import {
     BehaviorSubject,
     combineLatest,
@@ -16,23 +17,16 @@ import {TuiTilesComponent} from './tiles.component';
 
 @Injectable()
 export class TuiTileService implements OnDestroy {
+    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly tiles = inject(TuiTilesComponent);
     private readonly sub = new Subscription();
-
     private readonly offset$ = new BehaviorSubject<readonly [number, number]>([NaN, NaN]);
-
     private readonly position$: Observable<readonly [number, number]> = combineLatest([
         this.offset$.pipe(distinctUntilChanged(tuiArrayShallowEquals)),
-        this.resize$.pipe(startWith(null)),
-        this.mutation$.pipe(startWith(null)),
+        inject(ResizeObserverService).pipe(startWith(null)),
+        inject(MutationObserverService).pipe(startWith(null)),
         this.tiles.order$.pipe(debounceTime(0)),
     ]).pipe(map(([offset]) => offset));
-
-    constructor(
-        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
-        @Inject(TuiTilesComponent) private readonly tiles: TuiTilesComponent,
-        @Inject(TuiResizeService) private readonly resize$: Observable<unknown>,
-        @Inject(MutationObserverService) private readonly mutation$: Observable<unknown>,
-    ) {}
 
     init(element: HTMLElement): void {
         this.sub.add(
@@ -52,14 +46,14 @@ export class TuiTileService implements OnDestroy {
     }
 
     private getRect([left, top]: readonly [number, number]): DOMRect {
-        const elTop = Number.isNaN(top) ? this.el.nativeElement.offsetTop : top;
-        const elLeft = Number.isNaN(left) ? this.el.nativeElement.offsetLeft : left;
+        const elTop = Number.isNaN(top) ? this.el.offsetTop : top;
+        const elLeft = Number.isNaN(left) ? this.el.offsetLeft : left;
 
         const rect = {
             top: elTop,
             left: elLeft,
-            width: this.el.nativeElement.clientWidth,
-            height: this.el.nativeElement.clientHeight,
+            width: this.el.clientWidth,
+            height: this.el.clientHeight,
             right: NaN,
             bottom: NaN,
             y: elTop,
@@ -90,10 +84,10 @@ export class TuiTileService implements OnDestroy {
 
         const {style} = element;
         const rect = element.getBoundingClientRect();
-        const host = this.el.nativeElement.getBoundingClientRect();
+        const host = this.el.getBoundingClientRect();
 
         style.removeProperty('position');
-        style.top = tuiPx(rect.top - host.top + this.el.nativeElement.offsetTop);
-        style.left = tuiPx(rect.left - host.left + this.el.nativeElement.offsetLeft);
+        style.top = tuiPx(rect.top - host.top + this.el.offsetTop);
+        style.left = tuiPx(rect.left - host.left + this.el.offsetLeft);
     }
 }

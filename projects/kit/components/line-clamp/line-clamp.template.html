@@ -6,7 +6,7 @@
     [style.word-break]="(lineClamp || 0) > 1 ? 'break-word' : 'break-all'"
     [tuiHint]="computedContent"
     (mouseenter)="updateView()"
-    (tuiResize)="updateView()"
+    (waResizeObserver)="updateView()"
 >
     <ng-container *polymorpheusOutlet="content as text">
         {{ text }}

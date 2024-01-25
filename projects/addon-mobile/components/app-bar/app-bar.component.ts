@@ -2,13 +2,14 @@ import {
     ChangeDetectionStrategy,
     Component,
     ElementRef,
-    Inject,
+    inject,
     QueryList,
     ViewChildren,
 } from '@angular/core';
 import {MutationObserverService} from '@ng-web-apis/mutation-observer';
-import {EMPTY_QUERY, TuiResizeService} from '@taiga-ui/cdk';
-import {map, merge, Observable} from 'rxjs';
+import {ResizeObserverService} from '@ng-web-apis/resize-observer';
+import {EMPTY_QUERY} from '@taiga-ui/cdk';
+import {map, merge} from 'rxjs';
 
 import {TUI_APP_BAR_PROVIDERS} from './app-bar.providers';
 
@@ -23,7 +24,10 @@ export class TuiAppBarComponent {
     @ViewChildren('side')
     private readonly side: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
-    readonly width$ = merge(this.resize$, this.mutation$).pipe(
+    readonly width$ = merge(
+        inject(ResizeObserverService),
+        inject(MutationObserverService),
+    ).pipe(
         map(
             () =>
                 2 *
@@ -33,9 +37,4 @@ export class TuiAppBarComponent {
                 ),
         ),
     );
-
-    constructor(
-        @Inject(TuiResizeService) private readonly resize$: Observable<unknown>,
-        @Inject(MutationObserverService) private readonly mutation$: Observable<unknown>,
-    ) {}
 }

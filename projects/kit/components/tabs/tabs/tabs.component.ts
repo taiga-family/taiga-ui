@@ -11,13 +11,15 @@ import {
     Inject,
     Input,
     QueryList,
+    Self,
 } from '@angular/core';
 import {
     MUTATION_OBSERVER_INIT,
     MutationObserverService,
 } from '@ng-web-apis/mutation-observer';
-import {EMPTY_QUERY, TuiDestroyService, tuiPure, TuiResizeService} from '@taiga-ui/cdk';
-import {filter, Observable} from 'rxjs';
+import {ResizeObserverService} from '@ng-web-apis/resize-observer';
+import {EMPTY_QUERY, TuiDestroyService, tuiPure} from '@taiga-ui/cdk';
+import {filter, Observable, takeUntil} from 'rxjs';
 
 import {TuiTabComponent} from '../tab/tab.component';
 import {TuiTabsDirective} from '../tabs.directive';
@@ -30,7 +32,7 @@ import {TUI_TABS_OPTIONS, TuiTabsOptions} from '../tabs.options';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         TuiDestroyService,
-        TuiResizeService,
+        ResizeObserverService,
         MutationObserverService,
         {
             provide: MUTATION_OBSERVER_INIT,
@@ -53,11 +55,17 @@ export class TuiTabsComponent implements AfterViewChecked {
         @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
         @Inject(TuiTabsDirective) private readonly tabs: TuiTabsDirective,
         @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
-        @Inject(TuiResizeService) resize$: Observable<void>,
+        @Inject(ResizeObserverService) resize$: Observable<void>,
+        @Self() @Inject(TuiDestroyService) destroy$: Observable<void>,
     ) {
-        resize$.pipe(filter(() => this.underline)).subscribe(() => {
-            cdr.detectChanges();
-        });
+        resize$
+            .pipe(
+                filter(() => this.underline),
+                takeUntil(destroy$),
+            )
+            .subscribe(() => {
+                cdr.detectChanges();
+            });
     }
 
     /** @deprecated use `activeItemIndex` from {@link TuiTabsDirective} instead */

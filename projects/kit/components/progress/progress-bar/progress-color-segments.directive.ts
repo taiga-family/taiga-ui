@@ -1,12 +1,7 @@
 import {Directive, ElementRef, Inject, Input} from '@angular/core';
 import {USER_AGENT} from '@ng-web-apis/common';
-import {
-    CHROMIUM_EDGE_START_VERSION,
-    TuiDestroyService,
-    tuiIsEdgeOlderThan,
-    tuiPure,
-    TuiResizeService,
-} from '@taiga-ui/cdk';
+import {ResizeObserverService} from '@ng-web-apis/resize-observer';
+import {CHROMIUM_EDGE_START_VERSION, tuiIsEdgeOlderThan, tuiPure} from '@taiga-ui/cdk';
 import {
     BehaviorSubject,
     combineLatest,
@@ -28,7 +23,7 @@ function calculateColorSegments(colors: string[], progressWidth: number): string
 
 @Directive({
     selector: 'progress[tuiProgressBar][tuiProgressColorSegments]',
-    providers: [TuiDestroyService, TuiResizeService],
+    providers: [ResizeObserverService],
     host: {
         '[$.style.--tui-progress-color]': 'calcSegments$',
         '($.style.--tui-progress-color)': '0',
@@ -65,7 +60,7 @@ export class TuiProgressColorSegmentsDirective {
 
     constructor(
         @Inject(ElementRef) private readonly el: ElementRef<HTMLProgressElement>,
-        @Inject(TuiResizeService) private readonly resize$: Observable<unknown>,
+        @Inject(ResizeObserverService) private readonly resize$: Observable<unknown>,
         @Inject(USER_AGENT) private readonly userAgent: string,
     ) {}
 }

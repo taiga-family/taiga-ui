@@ -4,7 +4,7 @@
     #badgeTop
     class="t-badge t-badge_top"
     [style.--t-badge-height.px]="badgeTop.offsetHeight"
-    (tuiResize)="(0)"
+    (waResizeObserver)="(0)"
 >
     <ng-content select="tui-badge-notification[tuiSlot='top']"></ng-content>
     <div class="t-border">
@@ -16,7 +16,7 @@
     #badgeBottom
     class="t-badge t-badge_bottom"
     [style.--t-badge-height.px]="badgeBottom.offsetHeight"
-    (tuiResize)="(0)"
+    (waResizeObserver)="(0)"
 >
     <ng-content select="tui-badge-notification[tuiSlot='bottom']"></ng-content>
     <div class="t-border">

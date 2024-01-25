@@ -3,12 +3,11 @@ import {
     MUTATION_OBSERVER_INIT,
     MutationObserverService,
 } from '@ng-web-apis/mutation-observer';
-import {TuiDestroyService, TuiResizeService} from '@taiga-ui/cdk';
+import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core';
 
 export const TUI_APP_BAR_PROVIDERS: Provider[] = [
-    TuiDestroyService,
-    TuiResizeService,
+    ResizeObserverService,
     MutationObserverService,
     {
         provide: MUTATION_OBSERVER_INIT,
