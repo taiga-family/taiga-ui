@@ -4,7 +4,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiButtonModule, TuiLinkModule} from '@taiga-ui/core';
-import {TuiAvatarModule} from '@taiga-ui/kit';
+import {TuiAutoColorModule, TuiInitialsModule} from '@taiga-ui/experimental';
+import {TuiAvatarComponent} from '@taiga-ui/kit';
 import {TuiBlockStatusModule} from '@taiga-ui/layout';
 
 import {ExampleTuiBlockStatusComponent} from './block-status.component';
@@ -22,8 +23,10 @@ import {TuiBlockStatusExample4} from './examples/4';
         ReactiveFormsModule,
         TuiAddonDocModule,
         TuiButtonModule,
-        TuiAvatarModule,
+        TuiAvatarComponent,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiBlockStatusComponent)),
+        TuiInitialsModule,
+        TuiAutoColorModule,
     ],
     declarations: [
         ExampleTuiBlockStatusComponent,

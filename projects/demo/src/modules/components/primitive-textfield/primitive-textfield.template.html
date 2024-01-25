@@ -86,8 +86,9 @@
             <tui-avatar
                 size="xs"
                 class="avatar"
-                [text]="item"
-            ></tui-avatar>
+            >
+                {{ item | tuiInitials }}
+            </tui-avatar>
             {{ item }}
         </ng-template>
         <ng-template #interactiveContent>

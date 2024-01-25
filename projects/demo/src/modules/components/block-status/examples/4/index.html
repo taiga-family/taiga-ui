@@ -10,10 +10,11 @@
             <tui-avatar
                 *ngFor="let user of users"
                 size="l"
-                [autoColor]="true"
-                [rounded]="true"
-                [text]="user"
-            ></tui-avatar>
+                [round]="true"
+                [style.background]="user | tuiAutoColor"
+            >
+                {{ user | tuiInitials }}
+            </tui-avatar>
         </div>
 
         You can put other content instead of image using

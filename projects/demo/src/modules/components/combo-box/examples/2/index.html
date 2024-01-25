@@ -21,9 +21,10 @@
             <tui-avatar
                 size="xs"
                 class="avatar"
-                [avatarUrl]="item.avatarUrl || null"
-                [text]="item.toString()"
-            ></tui-avatar>
+                [src]="item.avatarUrl"
+            >
+                {{ item.toString() | tuiInitials }}
+            </tui-avatar>
             <span class="name">{{ item }}</span>
         </ng-template>
         <ng-template tuiDataList>
@@ -37,9 +38,10 @@
                     <tui-avatar
                         size="xs"
                         class="avatar"
-                        [avatarUrl]="item.avatarUrl || null"
-                        [text]="item.toString()"
-                    ></tui-avatar>
+                        [src]="item.avatarUrl"
+                    >
+                        {{ item.toString() | tuiInitials }}
+                    </tui-avatar>
                     <span class="name">{{ item }}</span>
                 </button>
             </tui-data-list>

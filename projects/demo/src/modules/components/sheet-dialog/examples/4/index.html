@@ -30,11 +30,7 @@
             class="item"
             (click)="toggle(false)"
         >
-            <tui-avatar
-                size="s"
-                [autoColor]="true"
-                [text]="user"
-            ></tui-avatar>
+            <tui-avatar size="s">{{ user | tuiInitials }}</tui-avatar>
             {{ user }}
         </button>
     </div>

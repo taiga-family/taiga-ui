@@ -63,11 +63,12 @@
 >
     <div class="template">
         <tui-avatar
-            size="xs"
+            size="xxs"
             class="avatar"
-            [avatarUrl]="data.avatarUrl || null"
-            [text]="data.toString()"
-        ></tui-avatar>
+            [src]="data.avatarUrl"
+        >
+            {{ data.toString() | tuiInitials }}
+        </tui-avatar>
         <div class="name">{{ data }}</div>
     </div>
 </ng-template>

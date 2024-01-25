@@ -13,8 +13,6 @@ import {
     TuiTooltipModule,
 } from '@taiga-ui/core';
 import {
-    TuiAvatarModule,
-    TuiAvatarStackModule,
     TuiBadgeNotificationModule,
     TuiButtonModule,
     TuiCellModule,
@@ -28,6 +26,8 @@ import {
     TuiToggleModule,
 } from '@taiga-ui/experimental';
 import {
+    TuiAvatarComponent,
+    TuiAvatarStackComponent,
     TuiBadgedContentComponent,
     TuiBadgeDirective,
     TuiDataListWrapperModule,
@@ -48,8 +48,8 @@ import {TuiCellExample7} from './examples/7';
     imports: [
         CommonModule,
         FormsModule,
-        TuiAvatarModule,
-        TuiAvatarStackModule,
+        TuiAvatarComponent,
+        TuiAvatarStackComponent,
         TuiBadgeDirective,
         TuiBadgeNotificationModule,
         TuiBadgedContentComponent,

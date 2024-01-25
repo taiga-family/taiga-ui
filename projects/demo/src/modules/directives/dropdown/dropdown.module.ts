@@ -11,7 +11,7 @@ import {
     TuiNotificationModule,
 } from '@taiga-ui/core';
 import {
-    TuiAvatarModule,
+    TuiAvatarComponent,
     TuiInputModule,
     TuiSelectModule,
     TuiToggleModule,
@@ -31,7 +31,7 @@ import {TuiDropdownExample4} from './examples/4';
         FormsModule,
         PolymorpheusModule,
         TuiLinkModule,
-        TuiAvatarModule,
+        TuiAvatarComponent,
         TuiButtonModule,
         TuiDropdownModule,
         TuiSelectModule,

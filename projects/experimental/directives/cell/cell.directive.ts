@@ -1,10 +1,8 @@
 import {Directive, Inject, Input} from '@angular/core';
 import {TuiDirectiveStylesService} from '@taiga-ui/cdk';
 import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {
-    tuiAvatarOptionsProvider,
-    tuiButtonOptionsProvider,
-} from '@taiga-ui/experimental/components';
+import {tuiButtonOptionsProvider} from '@taiga-ui/experimental/components';
+import {tuiAvatarOptionsProvider} from '@taiga-ui/kit';
 
 import {TuiCellComponent} from './cell.component';
 

@@ -21,8 +21,9 @@ import {
     TuiSvgModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
+import {TuiInitialsModule} from '@taiga-ui/experimental';
 import {
-    TuiAvatarModule,
+    TuiAvatarComponent,
     TuiComboBoxModule,
     TuiDataListWrapperModule,
     TuiFilterByInputPipeModule,
@@ -52,7 +53,7 @@ import {TuiComboBoxExample8} from './examples/8';
         TuiComboBoxModule,
         TuiButtonModule,
         TuiLinkModule,
-        TuiAvatarModule,
+        TuiAvatarComponent,
         TuiSvgModule,
         TuiDataListModule,
         TuiLoaderModule,
@@ -69,6 +70,7 @@ import {TuiComboBoxExample8} from './examples/8';
         InheritedDocumentationModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiComboBoxComponent)),
         TuiTextCodeModule,
+        TuiInitialsModule,
     ],
     declarations: [
         ExampleTuiComboBoxComponent,

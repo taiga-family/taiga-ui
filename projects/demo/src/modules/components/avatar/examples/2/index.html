@@ -1,19 +1,12 @@
 <tui-avatar
-    text="Yulia Tsareva"
-    class="tui-space_top-1"
-    [autoColor]="true"
+    appearance="accent"
+    src="tuiIconUserLarge"
 ></tui-avatar>
 <tui-avatar
-    text="Alex Inkin"
-    class="tui-space_top-1"
-    [autoColor]="true"
+    src="AI"
+    class="text"
+    [style.background]="'AI' | tuiAutoColor"
 ></tui-avatar>
-<tui-avatar
-    text="Dmitriy Demenskiy"
-    class="tui-space_top-1"
-    [autoColor]="true"
-></tui-avatar>
-<tui-avatar
-    text="Evgeniy Mamaev"
-    class="custom tui-space_top-1"
-></tui-avatar>
+<tui-avatar class="text">
+    <div tuiFade>Fading</div>
+</tui-avatar>

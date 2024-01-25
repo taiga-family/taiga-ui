@@ -19,8 +19,9 @@ import {
     TuiSvgModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
+import {TuiInitialsModule} from '@taiga-ui/experimental';
 import {
-    TuiAvatarModule,
+    TuiAvatarComponent,
     TuiDataListWrapperModule,
     TuiMarkerIconModule,
     TuiMultiSelectModule,
@@ -61,7 +62,7 @@ import {ExampleTuiSelectComponent} from './select.component';
         TuiButtonModule,
         TuiLinkModule,
         TuiMoneyModule,
-        TuiAvatarModule,
+        TuiAvatarComponent,
         TuiSvgModule,
         TuiDropdownModule,
         TuiTextfieldControllerModule,
@@ -78,6 +79,7 @@ import {ExampleTuiSelectComponent} from './select.component';
         TuiMarkerIconModule,
         TuiMapperPipeModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiSelectComponent)),
+        TuiInitialsModule,
     ],
     declarations: [
         ExampleTuiSelectComponent,

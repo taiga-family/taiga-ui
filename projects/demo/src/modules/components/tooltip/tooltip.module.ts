@@ -11,7 +11,8 @@ import {
     TuiTextfieldControllerModule,
     TuiTooltipModule,
 } from '@taiga-ui/core';
-import {TuiAvatarModule, TuiInputModule} from '@taiga-ui/kit';
+import {TuiAutoColorModule} from '@taiga-ui/experimental';
+import {TuiAvatarComponent, TuiInputModule} from '@taiga-ui/kit';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiTooltipExample1} from './examples/1';
@@ -25,7 +26,7 @@ import {ExampleTuiTooltipComponent} from './tooltip.component';
         TuiTooltipModule,
         TuiHintModule,
         TuiLinkModule,
-        TuiAvatarModule,
+        TuiAvatarComponent,
         TuiLoaderModule,
         TuiInputModule,
         PolymorpheusModule,
@@ -35,6 +36,7 @@ import {ExampleTuiTooltipComponent} from './tooltip.component';
         FormsModule,
         TuiTextfieldControllerModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiTooltipComponent)),
+        TuiAutoColorModule,
     ],
     declarations: [
         ExampleTuiTooltipComponent,
