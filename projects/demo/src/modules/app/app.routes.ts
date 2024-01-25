@@ -384,6 +384,15 @@ export const ROUTES: Routes = [
         },
     },
     {
+        path: 'experimental/segmented',
+        loadChildren: async () =>
+            (await import('../experimental/segmented/segmented.module'))
+                .ExampleTuiSegmentedModule,
+        data: {
+            title: 'Segmented',
+        },
+    },
+    {
         path: 'experimental/sensitive',
         loadChildren: async () =>
             (await import('../experimental/sensitive/sensitive.module'))

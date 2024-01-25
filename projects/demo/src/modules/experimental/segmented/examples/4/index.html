@@ -1,0 +1,80 @@
+<strong>Buttons</strong>
+<tui-segmented>
+    <button>Buttons</button>
+    <button>Can be</button>
+    <button>Used</button>
+</tui-segmented>
+<hr />
+<strong>Links</strong>
+<tui-segmented>
+    <a
+        routerLink="/components/link"
+        routerLinkActive
+    >
+        Use routerLink
+    </a>
+    <a
+        routerLink="/experimental/segmented"
+        routerLinkActive
+        [routerLinkActiveOptions]="options"
+    >
+        And routerLinkActive
+    </a>
+    <a
+        fragment="content"
+        routerLink="/experimental/segmented"
+        routerLinkActive
+        [routerLinkActiveOptions]="options"
+    >
+        To work with links
+    </a>
+</tui-segmented>
+<hr />
+<strong>Icons</strong>
+<tui-segmented>
+    <button>
+        <tui-icon icon="tuiIconSun"></tui-icon>
+    </button>
+    <button>
+        <tui-icon icon="tuiIconMoon"></tui-icon>
+    </button>
+</tui-segmented>
+<hr />
+<strong>Control</strong>
+<tui-segmented>
+    <label>
+        <input
+            name="radio"
+            type="radio"
+            value="a"
+            [(ngModel)]="selected"
+        />
+        Use radio inside
+    </label>
+    <label>
+        <input
+            name="radio"
+            type="radio"
+            value="b"
+            [(ngModel)]="selected"
+        />
+        It would be hidden
+    </label>
+    <label>
+        <input
+            name="radio"
+            type="radio"
+            value="c"
+            [(ngModel)]="selected"
+        />
+        Automatically
+    </label>
+</tui-segmented>
+<button
+    appearance="floating"
+    size="s"
+    tuiButton
+    (click)="selected = 'b'"
+>
+    Select second option
+</button>

@@ -1,0 +1,24 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+header {
+    background: var(--tui-clear);
+    box-shadow: 0 -10rem 0 10.5rem var(--tui-clear);
+}
+
+.colors {
+    color: var(--tui-base-01);
+
+    &:before {
+        color: var(--tui-link);
+        box-shadow: none;
+    }
+
+    .active {
+        color: var(--tui-text-01-night);
+    }
+}
