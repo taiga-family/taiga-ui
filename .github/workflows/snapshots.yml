@@ -10,37 +10,26 @@ on:
         description: update main snapshots
 
 jobs:
-  snapshots-next:
-    if: ${{ !contains(github.head_ref || github.ref_name, 'release/') }}
-    name: next
+  snapshots:
     runs-on: ubuntu-latest
     steps:
       - uses: taiga-family/ci/actions/setup/checkout@v1.50.8
       - uses: taiga-family/ci/actions/setup/variables@v1.50.8
       - uses: taiga-family/ci/actions/setup/node@v1.50.8
-      - run: npx nx build demo --output-path ${{ env.DIST_NEXT }}
-      - run: tree ${{ env.DIST_NEXT }} -P '*.html'
+      - run: npx nx prerender demo
+      - run: tree ${{ env.DIST }} -P '*.html'
+
       - name: Publish next snapshots
+        if: ${{ !contains(github.head_ref || github.ref_name, 'release/') }}
         uses: s0/git-publish-subdir-action@v2.6.0
         env:
           REPO: self
-          FOLDER: ${{ env.DIST_NEXT }}
+          FOLDER: ${{ env.DIST }}
           BRANCH: snapshots/demo/next/${{ github.head_ref || github.ref_name }}
           GITHUB_TOKEN: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
 
-  snapshots-production:
-    if: ${{ contains(github.head_ref || github.ref_name, 'release/') || github.event.inputs.updateMain == 'true' }}
-    name: production
-    runs-on: ubuntu-latest
-    steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.50.8
-      - uses: taiga-family/ci/actions/setup/variables@v1.50.8
-      - uses: taiga-family/ci/actions/setup/node@v1.50.8
-        id: nodejs-workspace
-
-      - run: npx nx prerender demo
-      - run: tree ${{ env.DIST }} -P '*.html'
       - name: Publish production snapshots
+        if: ${{ contains(github.head_ref || github.ref_name, 'release/') || github.event.inputs.updateMain == 'true' }}
         uses: s0/git-publish-subdir-action@v2.6.0
         env:
           REPO: self
