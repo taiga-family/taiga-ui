@@ -1,11 +1,14 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
-@size-xs: 0.75rem;
-@size-s: 1rem;
-@size-m: 1.5rem;
-@size-l: 2.5rem;
-@size-xl: 3.5rem;
-@size-xxl: 5rem;
+@circle-diameter: {
+    xs: 0.75em;
+    s: 1em;
+    m: 1.5em;
+    l: 2.5em;
+    xl: 3.5em;
+    xxl: 5em;
+};
+@circumference: calc(pi() * var(--t-diameter));
 
 :host {
     position: relative;
@@ -17,30 +20,30 @@
     }
 
     // Use native CSS max function instead LESS one
-    stroke-width: ~'max(calc(var(--t-size) / 12), 1.5px)';
+    stroke-width: ~'max(calc(var(--t-diameter) / 12), 1.5px)';
 
     &[data-size='xs'] {
-        --t-size: @size-xs;
+        --t-diameter: @circle-diameter[xs];
     }
 
     &[data-size='s'] {
-        --t-size: @size-s;
+        --t-diameter: @circle-diameter[s];
     }
 
     &[data-size='m'] {
-        --t-size: @size-m;
+        --t-diameter: @circle-diameter[m];
     }
 
     &[data-size='l'] {
-        --t-size: @size-l;
+        --t-diameter: @circle-diameter[l];
     }
 
     &[data-size='xl'] {
-        --t-size: @size-xl;
+        --t-diameter: @circle-diameter[xl];
     }
 
     &[data-size='xxl'] {
-        --t-size: @size-xxl;
+        --t-diameter: @circle-diameter[xxl];
     }
 }
 
@@ -69,12 +72,13 @@
     align-items: center;
     justify-content: center;
     min-width: 100%;
+    min-height: var(--t-diameter);
     flex-shrink: 0;
     align-self: center;
     color: var(--tui-text-01);
     stroke: var(--tui-primary);
     animation: tuiFadeIn var(--tui-duration);
-    font-size: var(--t-size);
+    font-size: 1rem; // to use em units inside svg (Safari doesn't fully support rem units inside svg)
 
     &&_horizontal {
         flex-direction: row;
@@ -123,11 +127,11 @@
         }
     });
     display: block;
-    min-width: 1em;
-    max-width: 1em;
-    min-height: 1em;
-    max-height: 1em;
-    margin: @space -0.5em;
+    min-width: var(--t-diameter);
+    max-width: var(--t-diameter);
+    min-height: var(--t-diameter);
+    max-height: var(--t-diameter);
+    margin: @space calc(-1 * (var(--t-diameter) / 2));
     border-radius: 100%;
     overflow: hidden;
     animation: tuiLoaderRotate 4s linear infinite;
@@ -152,7 +156,7 @@
 
 .t-circle {
     font-size: 1rem; // to use em units as rem ones interchangeably (Safari)
-    r: @radius;
+    r: calc(var(--t-diameter) / 2);
     stroke-dasharray: @circumference;
     fill: none;
     stroke: inherit;
