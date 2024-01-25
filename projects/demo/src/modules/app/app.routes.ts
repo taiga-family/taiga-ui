@@ -4,8 +4,7 @@ import {RouterModule, Routes} from '@angular/router';
 export const ROUTES: Routes = [
     {
         path: '',
-        loadChildren: async () =>
-            (await import('./landing/landing.module')).LandingModule,
+        loadComponent: async () => import('./landing/landing.component'),
         data: {
             title: 'A powerful set of open source components for Angular',
         },
