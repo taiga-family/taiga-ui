@@ -14,6 +14,10 @@ export function tuiControlValue<T>(
             throw new TuiValueChangesException();
         }
 
-        control.valueChanges.pipe(startWith(control.value)).subscribe(subscriber);
+        const subscription = control.valueChanges
+            .pipe(startWith(control.value))
+            .subscribe(subscriber);
+
+        return () => subscription.unsubscribe();
     });
 }
