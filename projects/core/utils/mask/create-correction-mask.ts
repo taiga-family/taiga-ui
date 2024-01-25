@@ -1,3 +1,4 @@
+/// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
 import {tuiAssert} from '@taiga-ui/cdk';
 import {MASK_CARET_TRAP} from '@taiga-ui/core/constants';
 import {

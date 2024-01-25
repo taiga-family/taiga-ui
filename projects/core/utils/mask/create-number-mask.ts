@@ -1,3 +1,4 @@
+/// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
 import {CHAR_EN_DASH, CHAR_HYPHEN, CHAR_NO_BREAK_SPACE, tuiAssert} from '@taiga-ui/cdk';
 import {
     MASK_CARET_TRAP,

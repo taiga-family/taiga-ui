@@ -1,3 +1,4 @@
+/// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
 import {
     AfterContentInit,
     ChangeDetectionStrategy,

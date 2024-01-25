@@ -1,3 +1,4 @@
+/// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
 import {DOCUMENT} from '@angular/common';
 import {
     ChangeDetectionStrategy,

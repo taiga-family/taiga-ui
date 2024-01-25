@@ -1,3 +1,4 @@
+/// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
 import {tuiAssert} from '@taiga-ui/cdk/classes';
 import {TuiDayOfWeek, TuiMonthNumber} from '@taiga-ui/cdk/enums';
 import {
