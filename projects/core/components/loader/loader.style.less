@@ -13,31 +13,36 @@
 @width-xl: 14;
 @width-xxl: 10;
 
+@radius: 3.125rem;
+@circumference: 2 * pi() * @radius;
+
 @keyframes tuiLoaderDashOffset {
     0% {
-        stroke-dashoffset: -66;
+        stroke-dashoffset: @circumference;
     }
 
     50% {
-        stroke-dashoffset: -314;
+        stroke-dashoffset: 0.05 * @circumference;
     }
 
     100% {
-        stroke-dashoffset: -66;
+        stroke-dashoffset: @circumference;
     }
 }
 
 @keyframes tuiLoaderRotate {
+    @initial-shift: rotate(-90deg);
+
     0% {
-        transform: rotate(0deg);
+        transform: @initial-shift;
     }
 
     50% {
-        transform: rotate(1turn);
+        transform: @initial-shift rotate(1turn);
     }
 
     100% {
-        transform: rotate(3turn);
+        transform: @initial-shift rotate(3turn);
     }
 }
 
@@ -150,13 +155,14 @@
     margin: @space -0.5em;
     border-radius: 100%;
     overflow: hidden;
-    transform: scale(1, -1);
-    animation: tuiLoaderRotate 3s linear infinite;
+    animation: tuiLoaderRotate 4s linear infinite;
 }
 
 .t-circle {
+    r: @radius;
+    stroke-dasharray: @circumference;
     fill: none;
     stroke: inherit;
     stroke-width: inherit;
-    animation: tuiLoaderDashOffset 3s linear infinite;
+    animation: tuiLoaderDashOffset 4s linear infinite;
 }
