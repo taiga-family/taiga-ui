@@ -12,5 +12,5 @@ export function tuiToAnimationOptions(speed: number): TuiAnimationOptions {
 }
 
 export function tuiGetDuration(speed: number): number {
-    return TUI_ANIMATIONS_DEFAULT_DURATION / speed || 0;
+    return speed && TUI_ANIMATIONS_DEFAULT_DURATION / speed;
 }
