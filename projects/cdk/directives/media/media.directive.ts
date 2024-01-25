@@ -4,16 +4,19 @@ import {
     EventEmitter,
     HostBinding,
     HostListener,
-    Inject,
+    inject,
     Input,
     Output,
 } from '@angular/core';
 
 @Directive({
+    standalone: true,
     selector: 'video[tuiMedia], audio[tuiMedia]',
     exportAs: 'tuiMedia',
 })
 export class TuiMediaDirective {
+    private readonly el: HTMLMediaElement = inject(ElementRef).nativeElement;
+
     private playbackRate = 1;
 
     @Input()
@@ -34,34 +37,29 @@ export class TuiMediaDirective {
     @Output()
     readonly volumeChange = new EventEmitter<number>();
 
-    constructor(
-        @Inject(ElementRef)
-        private readonly el: ElementRef<HTMLMediaElement>,
-    ) {}
-
     @Input()
     set currentTime(currentTime: number) {
         if (Math.abs(currentTime - this.currentTime) > 0.05) {
-            this.el.nativeElement.currentTime = currentTime;
+            this.el.currentTime = currentTime;
         }
     }
 
     get currentTime(): number {
-        return this.el.nativeElement.currentTime;
+        return this.el.currentTime;
     }
 
     @Input()
     set paused(paused: boolean) {
         if (paused) {
-            this.el.nativeElement.pause();
+            this.el.pause();
         } else {
-            void this.el.nativeElement.play();
+            void this.el.play();
             this.updatePlaybackRate(this.playbackRate);
         }
     }
 
     get paused(): boolean {
-        return this.el.nativeElement.paused;
+        return this.el.paused;
     }
 
     // @bad TODO: Make sure no other events can affect this like network issues etc.
@@ -75,7 +73,7 @@ export class TuiMediaDirective {
 
     @HostListener('volumechange')
     onVolumeChange(): void {
-        this.volume = this.el.nativeElement.volume;
+        this.volume = this.el.volume;
         this.volumeChange.emit(this.volume);
     }
 
@@ -93,6 +91,6 @@ export class TuiMediaDirective {
 
     private updatePlaybackRate(playbackRate: number): void {
         this.playbackRate = playbackRate;
-        this.el.nativeElement.playbackRate = this.playbackRate;
+        this.el.playbackRate = this.playbackRate;
     }
 }

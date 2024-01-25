@@ -13,7 +13,6 @@
     [style.--text-indent.px]="decor.pre$ | async"
     (click.prevent.silent)="detectRetargetFromLabel($event)"
     (mousedown)="onMouseDown($event)"
-    (tuiAutofilledChange)="onAutofilled($event)"
 >
     <ng-content select="input"></ng-content>
     <ng-content select="select"></ng-content>
