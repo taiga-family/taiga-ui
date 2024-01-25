@@ -13,6 +13,6 @@ export function tuiControlValue<T>(
             throw new TuiValueChangesException();
         }
 
-        control.valueChanges.pipe(startWith(control.value)).subscribe(subscriber);
+        return control.valueChanges.pipe(startWith(control.value)).subscribe(subscriber);
     });
 }
