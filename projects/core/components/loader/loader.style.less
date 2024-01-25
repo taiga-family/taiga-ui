@@ -6,12 +6,6 @@
 @size-l: 2.5rem;
 @size-xl: 3.5rem;
 @size-xxl: 5rem;
-@width-xs: 38;
-@width-s: 25;
-@width-m: 17;
-@width-l: 15;
-@width-xl: 14;
-@width-xxl: 10;
 
 :host {
     position: relative;
@@ -20,6 +14,33 @@
 
     &._loading {
         overflow: hidden;
+    }
+
+    // Use native CSS max function instead LESS one
+    stroke-width: ~'max(calc(var(--t-size) / 12), 1.5px)';
+
+    &[data-size='xs'] {
+        --t-size: @size-xs;
+    }
+
+    &[data-size='s'] {
+        --t-size: @size-s;
+    }
+
+    &[data-size='m'] {
+        --t-size: @size-m;
+    }
+
+    &[data-size='l'] {
+        --t-size: @size-l;
+    }
+
+    &[data-size='xl'] {
+        --t-size: @size-xl;
+    }
+
+    &[data-size='xxl'] {
+        --t-size: @size-xxl;
     }
 }
 
@@ -53,6 +74,7 @@
     color: var(--tui-text-01);
     stroke: var(--tui-primary);
     animation: tuiFadeIn var(--tui-duration);
+    font-size: var(--t-size);
 
     &&_horizontal {
         flex-direction: row;
@@ -61,36 +83,6 @@
     &&_inherit-color {
         color: inherit;
         stroke: currentColor;
-    }
-
-    &[data-size='xs'] {
-        font-size: @size-xs;
-        stroke-width: @width-xs;
-    }
-
-    &[data-size='s'] {
-        font-size: @size-s;
-        stroke-width: @width-s;
-    }
-
-    &[data-size='m'] {
-        font-size: @size-m;
-        stroke-width: @width-m;
-    }
-
-    &[data-size='l'] {
-        font-size: @size-l;
-        stroke-width: @width-l;
-    }
-
-    &[data-size='xl'] {
-        font-size: @size-xl;
-        stroke-width: @width-xl;
-    }
-
-    &[data-size='xxl'] {
-        font-size: @size-xxl;
-        stroke-width: @width-xxl;
     }
 }
 
