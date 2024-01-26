@@ -1,3 +1,4 @@
+/// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
 import {EMPTY_FUNCTION} from '@taiga-ui/cdk/constants';
 
 export const tuiAssert = {
