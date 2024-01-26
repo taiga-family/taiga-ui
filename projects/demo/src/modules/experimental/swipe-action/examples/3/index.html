@@ -1,0 +1,46 @@
+<tui-swipe-actions [(open)]="open">
+    <button
+        tuiSurface
+        class="surface"
+    >
+        <div tuiCell>
+            <tui-avatar
+                appearance="primary"
+                src="tuiIconDollarSignLarge"
+            ></tui-avatar>
+            <div tuiTitle>
+                <strong>{{ 10000 | tuiAmount: 'USD' | async }}</strong>
+                <div tuiSubtitle>Dollar account</div>
+            </div>
+        </div>
+    </button>
+
+    <button
+        iconLeft="tuiIconEye"
+        size="m"
+        tuiIconButton
+        tuiSwipeAction
+    ></button>
+    <button
+        iconLeft="tuiIconEdit3"
+        size="m"
+        tuiIconButton
+        tuiSwipeAction
+    ></button>
+    <button
+        appearance="secondary"
+        iconLeft="tuiIconShare"
+        size="m"
+        tuiIconButton
+        tuiSwipeAction
+    ></button>
+</tui-swipe-actions>
+
+<p>You can close the component programmatically:</p>
+<button
+    size="xs"
+    tuiButton
+    (click)="close()"
+>
+    Close
+</button>

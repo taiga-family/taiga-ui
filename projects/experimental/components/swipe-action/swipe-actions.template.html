@@ -6,8 +6,10 @@
 </div>
 
 <div
+    waIntersectionObserver
+    waIntersectionThreshold="0.5"
     class="t-actions"
-    (tuiResize)="onResizeActions($event[0])"
+    (waIntersectionObservee)="onIntersection($event[0])"
 >
     <ng-content select="[tuiSwipeAction]"></ng-content>
 </div>

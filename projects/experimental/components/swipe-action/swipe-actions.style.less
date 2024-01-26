@@ -6,10 +6,11 @@
     --t-actions-padding: 0.5rem;
     --t-item-size: 44;
 
-    display: inline-flex;
+    display: flex;
     width: calc(1px * var(--t-content-width));
     align-items: center;
-    overflow: scroll;
+    overflow-x: scroll;
+    overflow-y: hidden;
     scroll-snap-type: x mandatory;
     perspective: 1px;
     perspective-origin: calc(
