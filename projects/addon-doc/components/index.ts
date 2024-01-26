@@ -30,7 +30,6 @@ export * from './internal/see-also/see-also.module';
 export * from './internal/source-code/source-code.component';
 export * from './internal/source-code/source-code.module';
 export * from './language-switcher/language-switcher.component';
-export * from './language-switcher/language-switcher.module';
 export * from './main/main.component';
 export * from './main/main.module';
 export * from './navigation/navigation.component';
