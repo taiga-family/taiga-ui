@@ -28,8 +28,7 @@ export const ROUTES: Routes = [
     },
     {
         path: 'changelog',
-        loadChildren: async () =>
-            (await import('../info/changelog/changelog.module')).ChangelogModule,
+        loadComponent: async () => import('../info/changelog/changelog.component'),
         data: {
             title: 'Changelog',
         },
