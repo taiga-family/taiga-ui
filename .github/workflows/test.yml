@@ -16,7 +16,7 @@ jobs:
       - uses: taiga-family/ci/actions/setup/node@v1.50.8
       - run: npx nx run-many -t test --output-style=stream
       - run: tree -L 2 ./coverage -P 'lcov.info'
-      - uses: codecov/codecov-action@v3.1.4
+      - uses: codecov/codecov-action@v3.1.5
         with:
           directory: ./coverage/
           flags: summary

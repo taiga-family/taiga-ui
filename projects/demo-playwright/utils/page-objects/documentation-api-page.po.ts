@@ -29,7 +29,6 @@ export class TuiDocumentationApiPagePO {
             ),
         );
 
-        // note: a little bit of wait, because render images need be finished
         await this.page.waitForTimeout(300);
     }
 

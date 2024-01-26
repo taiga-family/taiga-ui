@@ -1,4 +1,4 @@
-import {tuiGoto, tuiMockImages} from '@demo-playwright/utils';
+import {TuiDocumentationPagePO, tuiGoto, tuiMockImages} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
 import {tuiIsFlakyExample} from './is-flaky-examples';
@@ -8,8 +8,11 @@ test.describe('Demo', () => {
 
     demoPaths.forEach(path => {
         test(path, async ({page}) => {
+            const documentation = new TuiDocumentationPagePO(page);
+
             await tuiMockImages(page);
             await tuiGoto(page, path);
+            await documentation.networkidle();
 
             await expect(async () => {
                 const examples = await page.locator('tui-doc-example').all();
@@ -27,6 +30,9 @@ test.describe('Demo', () => {
                 if (tuiIsFlakyExample(path, i)) {
                     continue;
                 }
+
+                await example.scrollIntoViewIfNeeded();
+                await documentation.networkidle(); // note: load lazy loading images
 
                 await expect(example).toHaveScreenshot([
                     path.replace('/', '').replace(/\//g, '-'),
