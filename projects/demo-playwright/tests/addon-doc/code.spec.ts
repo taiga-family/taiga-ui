@@ -1,4 +1,4 @@
-import {tuiGoto} from '@demo-playwright/utils';
+import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
 test.describe('Code blocks', () => {
@@ -17,10 +17,13 @@ test.describe('Code blocks', () => {
     test('tabs', async ({page}) => {
         await tuiGoto(page, '/components/line-clamp');
 
+        const documentation = new TuiDocumentationPagePO(page);
+
         for (const [index, title] of ['HTML', 'TypeScript', 'LESS'].entries()) {
             const locator = page.locator(`#basic [tuiTab]:has-text("${title}")`);
 
             await locator.click();
+            await documentation.networkidle();
 
             await expect(page.locator('tui-doc-example#basic')).toHaveScreenshot(
                 `02-0${index + 1}-code-block-${title}.png`,
