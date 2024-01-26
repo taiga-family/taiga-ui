@@ -1,6 +1,5 @@
 export * from '@taiga-ui/cdk/directives/active-zone';
 export * from '@taiga-ui/cdk/directives/auto-focus';
-export * from '@taiga-ui/cdk/directives/autofilled';
 export * from '@taiga-ui/cdk/directives/checked';
 export * from '@taiga-ui/cdk/directives/click-outside';
 export * from '@taiga-ui/cdk/directives/control';
@@ -13,7 +12,6 @@ export * from '@taiga-ui/cdk/directives/focus-visible';
 export * from '@taiga-ui/cdk/directives/focusable';
 export * from '@taiga-ui/cdk/directives/focused';
 export * from '@taiga-ui/cdk/directives/for';
-export * from '@taiga-ui/cdk/directives/for-async';
 export * from '@taiga-ui/cdk/directives/high-dpi';
 export * from '@taiga-ui/cdk/directives/hovered';
 export * from '@taiga-ui/cdk/directives/item';
