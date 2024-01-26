@@ -116,11 +116,11 @@ export class TuiPrimitiveCalendarComponent {
         }
 
         if (value instanceof TuiDay) {
-            return value.daySame(item) ? TuiRangeState.Single : null;
+            return value.daySame(item) ? 'single' : null;
         }
 
         if (!(value instanceof TuiDayRange)) {
-            return value.find(day => day.daySame(item)) ? TuiRangeState.Single : null;
+            return value.find(day => day.daySame(item)) ? 'single' : null;
         }
 
         if (
@@ -132,7 +132,7 @@ export class TuiPrimitiveCalendarComponent {
                 hoveredItem.dayBefore(value.from) &&
                 value.isSingleDay)
         ) {
-            return TuiRangeState.Start;
+            return 'start';
         }
 
         if (
@@ -144,12 +144,10 @@ export class TuiPrimitiveCalendarComponent {
                 hoveredItem.dayAfter(value.from) &&
                 value.isSingleDay)
         ) {
-            return TuiRangeState.End;
+            return 'end';
         }
 
-        return value.isSingleDay && value.from.daySame(item)
-            ? TuiRangeState.Single
-            : null;
+        return value.isSingleDay && value.from.daySame(item) ? 'single' : null;
     }
 
     itemIsToday(item: TuiDay): boolean {

@@ -5,7 +5,6 @@ import {
     TuiInteractiveState,
     TuiPrimitiveYearPickerComponent,
     TuiPrimitiveYearPickerModule,
-    TuiRangeState,
 } from '@taiga-ui/core';
 import {TuiPageObject} from '@taiga-ui/testing';
 
@@ -104,7 +103,7 @@ describe('TuiPrimitiveYearPickerComponent', () => {
                 new TuiDay(2020, 1, 1),
             );
 
-            expect(component.getItemRange(item)).toBe(TuiRangeState.Start);
+            expect(component.getItemRange(item)).toBe('start');
         });
 
         it('returns end correctly', () => {
@@ -115,7 +114,7 @@ describe('TuiPrimitiveYearPickerComponent', () => {
                 new TuiDay(item, 1, 1),
             );
 
-            expect(component.getItemRange(item)).toBe(TuiRangeState.End);
+            expect(component.getItemRange(item)).toBe('end');
         });
 
         it('returns single correctly', () => {
@@ -126,7 +125,7 @@ describe('TuiPrimitiveYearPickerComponent', () => {
                 new TuiDay(item, 2, 2),
             );
 
-            expect(component.getItemRange(item)).toBe(TuiRangeState.Single);
+            expect(component.getItemRange(item)).toBe('single');
         });
     });
 
