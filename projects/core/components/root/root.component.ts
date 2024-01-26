@@ -59,9 +59,9 @@ export class TuiRootComponent {
         @Inject(TuiBreakpointService) private readonly breakpoint: TuiBreakpointService,
         @Inject(TUI_IS_IOS) readonly isIOS: boolean,
         @Inject(TUI_IS_ANDROID) readonly isAndroid: boolean,
-        @Inject(DOCUMENT) {body}: Document,
+        @Inject(DOCUMENT) document: Document,
         @Inject(TUI_THEME) theme: string,
     ) {
-        body.setAttribute('data-tui-theme', theme.toLowerCase());
+        document.documentElement.setAttribute('data-tui-theme', theme.toLowerCase());
     }
 }
