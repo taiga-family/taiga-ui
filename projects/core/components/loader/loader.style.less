@@ -13,39 +13,6 @@
 @width-xl: 14;
 @width-xxl: 10;
 
-@radius: 3.125rem;
-@circumference: 2 * pi() * @radius;
-
-@keyframes tuiLoaderDashOffset {
-    0% {
-        stroke-dashoffset: @circumference;
-    }
-
-    50% {
-        stroke-dashoffset: 0.05 * @circumference;
-    }
-
-    100% {
-        stroke-dashoffset: @circumference;
-    }
-}
-
-@keyframes tuiLoaderRotate {
-    @initial-shift: rotate(-90deg);
-
-    0% {
-        transform: @initial-shift;
-    }
-
-    50% {
-        transform: @initial-shift rotate(1turn);
-    }
-
-    100% {
-        transform: @initial-shift rotate(3turn);
-    }
-}
-
 :host {
     position: relative;
     display: flex;
@@ -141,6 +108,22 @@
     }
 }
 
+@keyframes tuiLoaderRotate {
+    @initial-shift: rotate(-90deg);
+
+    0% {
+        transform: @initial-shift;
+    }
+
+    50% {
+        transform: @initial-shift rotate(1turn);
+    }
+
+    100% {
+        transform: @initial-shift rotate(3turn);
+    }
+}
+
 .t-icon {
     .safari-only({
         & {
@@ -158,7 +141,25 @@
     animation: tuiLoaderRotate 4s linear infinite;
 }
 
+@radius: 3.125em; // don't use rem units (Safari doesn't support rem units inside <circle />)
+@circumference: 2 * pi() * @radius;
+
+@keyframes tuiLoaderDashOffset {
+    0% {
+        stroke-dashoffset: @circumference;
+    }
+
+    50% {
+        stroke-dashoffset: 0.05 * @circumference;
+    }
+
+    100% {
+        stroke-dashoffset: @circumference;
+    }
+}
+
 .t-circle {
+    font-size: 1rem; // to use em units as rem ones interchangeably (Safari)
     r: @radius;
     stroke-dasharray: @circumference;
     fill: none;
