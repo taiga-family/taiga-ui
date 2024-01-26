@@ -139,7 +139,7 @@
         "@taiga-ui/tsconfig": "0.12.0",
         "@tinkoff/ng-event-plugins": "3.1.0",
         "@types/glob": "8.1.0",
-        "@types/node": "20.11.6",
+        "@types/node": "20.11.7",
         "@types/parse5": "6.0.3",
         "@types/webpack-env": "1.18.4",
         "babel-loader": "9.1.3",
