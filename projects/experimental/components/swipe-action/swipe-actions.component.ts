@@ -6,7 +6,8 @@ import {
     Optional,
 } from '@angular/core';
 import {INTERSECTION_ROOT} from '@ng-web-apis/intersection-observer';
-import {TuiSwipeActionsOpenDirective} from '@taiga-ui/experimental/components';
+
+import {TuiSwipeActionsOpenDirective} from './swipe-actions-open.directive';
 
 @Component({
     selector: 'tui-swipe-actions',
