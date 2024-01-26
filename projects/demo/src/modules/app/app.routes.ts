@@ -36,7 +36,7 @@ export const ROUTES: Routes = [
     },
     {
         path: 'ssr',
-        loadChildren: async () => (await import('../info/ssr/ssr.module')).SsrModule,
+        loadComponent: async () => import('../info/ssr/ssr.component'),
         data: {
             title: 'Server Side Rendering (SSR)',
         },
