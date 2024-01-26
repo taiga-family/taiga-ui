@@ -21,8 +21,7 @@ export const ROUTES: Routes = [
     },
     {
         path: 'browser-support',
-        loadChildren: async () =>
-            (await import('../info/browsers/browsers.module')).BrowsersModule,
+        loadComponent: async () => import('../info/browsers/browsers.component'),
         data: {
             title: 'Browser support',
         },
