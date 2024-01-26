@@ -43,7 +43,7 @@ export const ROUTES: Routes = [
     },
     {
         path: 'tui-doc',
-        loadChildren: async () => (await import('../info/doc/doc.module')).DocModule,
+        loadComponent: async () => import('../info/doc/doc.component'),
         data: {
             title: 'Documentation engine',
         },
