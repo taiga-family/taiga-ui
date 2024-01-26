@@ -51,10 +51,8 @@
         "release:minor": "ts-node ./scripts/release.ts --release-as minor",
         "release:major": "ts-node ./scripts/release.ts --release-as major",
         "*** CI ***": "",
-        "affected:test:libs": "nx affected --target test --exclude=demo --output-style=stream",
-        "affected:build:libs": "nx affected --target build --exclude=demo --output-style=stream",
-        "run-many:build:libs": "nx run-many --target build --all --exclude=demo --output-style=stream",
-        "run-many:publish:libs": "nx run-many --target publish --all --output-style=stream"
+        "run-many:build:libs": "nx run-many --target build --all --exclude=demo --output-style=stream --nxBail",
+        "run-many:publish:libs": "nx run-many --target publish --all --output-style=stream --nxBail"
     },
     "commitlint": {
         "extends": [
