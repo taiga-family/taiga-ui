@@ -1,19 +1,21 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
+// Safari doesn't support rem units for all properties of `<circle />`.
+// `<circle />`'s wrapper has `font-size: 1rem` to use em units as rem ones interchangeably
 @circle-diameter: {
-    xs: 0.75;
-    s: 1;
-    m: 1.5;
-    l: 2.5;
-    xl: 3.5;
-    xxl: 5;
+    xs: 0.75em;
+    s: 1em;
+    m: 1.5em;
+    l: 2.5em;
+    xl: 3.5em;
+    xxl: 5em;
 };
 
 :host {
     position: relative;
     display: flex;
     min-width: 1.5rem;
-    --tui-thickness: calc(1em * var(--t-diameter) / 12);
+    --tui-thickness: calc(var(--t-diameter) / 12);
 
     &._loading {
         overflow: hidden;
@@ -69,12 +71,13 @@
     align-items: center;
     justify-content: center;
     min-width: 100%;
-    min-height: calc(var(--t-diameter) * 1rem);
+    min-height: var(--t-diameter);
     flex-shrink: 0;
     align-self: center;
     color: var(--tui-text-01);
     stroke: var(--tui-primary);
     animation: tuiFadeIn var(--tui-duration);
+    font-size: 1rem; // to use em units as rem ones interchangeably (Safari)
 
     &&_horizontal {
         flex-direction: row;
@@ -123,16 +126,15 @@
         }
     });
     display: block;
-    width: calc(var(--t-diameter) * 1rem);
-    height: calc(var(--t-diameter) * 1rem);
-    margin: @space calc(-1rem * var(--t-diameter) / 2);
+    width: var(--t-diameter);
+    height: var(--t-diameter);
+    margin: @space calc(var(--t-diameter) / -2);
     border-radius: 100%;
     overflow: hidden;
     animation: tuiLoaderRotate 4s linear infinite;
 }
 
-// don't use rem units (Safari doesn't support rem units for all properties of `<circle />`)
-@radius: calc(1em * var(--t-diameter) / 2 - var(--tui-thickness));
+@radius: calc(var(--t-diameter) / 2 - var(--tui-thickness));
 @circumference: calc(2 * pi() * @radius);
 
 @keyframes tuiLoaderDashOffset {
@@ -150,7 +152,6 @@
 }
 
 .t-circle {
-    font-size: 1rem; // to use em units as rem ones interchangeably (Safari)
     r: @radius;
     stroke-dasharray: @circumference;
     fill: none;
