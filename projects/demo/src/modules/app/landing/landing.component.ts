@@ -1,3 +1,4 @@
+import {NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -8,14 +9,27 @@ import {
     QueryList,
     ViewChildren,
 } from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 import {LOCAL_STORAGE} from '@ng-web-apis/common';
-import {INTERSECTION_ROOT} from '@ng-web-apis/intersection-observer';
-import {EMPTY_QUERY} from '@taiga-ui/cdk';
+import {
+    INTERSECTION_ROOT,
+    IntersectionObserverModule,
+} from '@ng-web-apis/intersection-observer';
+import {EMPTY_QUERY, TuiAutoFocusModule, TuiRepeatTimesModule} from '@taiga-ui/cdk';
 import {tuiFadeIn} from '@taiga-ui/core';
+import {TuiButtonModule} from '@taiga-ui/experimental';
 
 @Component({
+    standalone: true,
     selector: 'landing',
+    imports: [
+        NgIf,
+        RouterLink,
+        TuiButtonModule,
+        TuiAutoFocusModule,
+        TuiRepeatTimesModule,
+        IntersectionObserverModule,
+    ],
     templateUrl: './landing.template.html',
     styleUrls: ['./landing.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -30,7 +44,7 @@ import {tuiFadeIn} from '@taiga-ui/core';
     },
     animations: [tuiFadeIn],
 })
-export class LandingComponent implements OnInit {
+export default class LandingComponent implements OnInit {
     @ViewChildren('block', {read: ElementRef})
     private readonly blocks: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
