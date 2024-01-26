@@ -12,9 +12,7 @@ export const ROUTES: Routes = [
     // Documentation
     {
         path: 'getting-started',
-        loadChildren: async () =>
-            (await import('./getting-started/getting-started.module'))
-                .GettingStartedModule,
+        loadComponent: async () => import('./getting-started/getting-started.component'),
         data: {
             title: 'Getting started',
         },
