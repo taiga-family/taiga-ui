@@ -17,9 +17,9 @@ import {
     setActiveProject,
     SyntaxKind,
 } from 'ng-morph';
+import {addImportToComponent} from 'ng-morph/ng/component/add-import-to-component';
 
 import {ALL_FILES} from '../../constants';
-import {addImportToComponent} from '../../utils/add-import-to-component';
 import {addUniqueImport} from '../../utils/add-unique-import';
 import {getComponentFromIdentifier} from '../../utils/get-component-from-identifier';
 import {getProjectTargetOptions} from '../../utils/get-project-target-options';
