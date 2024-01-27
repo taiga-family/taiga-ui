@@ -84,7 +84,7 @@ const TEMPLATE_AFTER = `
     [formControl]="test"
 ></tui-input-tag>
 
-<!-- Taiga migration TODO: "expandable" property has been removed. Use "rows" property instead -->
+<!-- Taiga migration Note: "expandable" property has been removed. Use "rows" property instead -->
 <tui-input-tag
     ${''}
     [rows]="3"

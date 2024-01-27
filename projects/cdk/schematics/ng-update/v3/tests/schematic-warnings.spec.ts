@@ -43,23 +43,23 @@ export class AppComponent {
 `;
 
 const AFTER = `
-// TODO: (Taiga UI migration) TUI_MOBILE_AWARE has been deleted in 3.0, please use TuiMobileTabsDirective from @taiga-ui/addon-mobile
-// TODO: (Taiga UI migration) Use DI-token TUI_COUNTRIES_MASKS to get phone mask by country iso code
+// Note: (Taiga UI migration) TUI_MOBILE_AWARE has been deleted in 3.0, please use TuiMobileTabsDirective from @taiga-ui/addon-mobile
+// Note: (Taiga UI migration) Use DI-token TUI_COUNTRIES_MASKS to get phone mask by country iso code
 import {TUI_MOBILE_AWARE, COUNTRIES_MASKS} from '@taiga-ui/kit';
 import {
     DumbEntity,
     DUMB_CONSTANT,
     awesomeFunction,
     TUI_LAST_DAY,
-// TODO: (Taiga UI migration) TUI_DATE_FILLER has been deleted in 3.0, please use TUI_DATE_FORMAT + TUI_DATE_SEPARATOR from @taiga-ui/cdk. Read more: https://taiga-ui.dev/components/input-date
+// Note: (Taiga UI migration) TUI_DATE_FILLER has been deleted in 3.0, please use TUI_DATE_FORMAT + TUI_DATE_SEPARATOR from @taiga-ui/cdk. Read more: https://taiga-ui.dev/components/input-date
     TUI_DATE_FILLER,
     MEGA_CONSTANT,
     anotherAwesomeFunction
     MagicClass,
 } from '@taiga-ui/cdk';
-// TODO: (Taiga UI migration) TUI_DATE_RANGE_FILLER has been deleted in 3.0, please use TUI_DATE_FORMAT + TUI_DATE_SEPARATOR from @taiga-ui/cdk. Read more: https://taiga-ui.dev/components/input-date-range
+// Note: (Taiga UI migration) TUI_DATE_RANGE_FILLER has been deleted in 3.0, please use TUI_DATE_FORMAT + TUI_DATE_SEPARATOR from @taiga-ui/cdk. Read more: https://taiga-ui.dev/components/input-date-range
 import {DumbEntity, TUI_DATE_RANGE_FILLER, MEGA_CONSTANT, MagicClass} from '@taiga-ui/cdk';
-// TODO: (Taiga UI migration) Use DI-token TUI_COUNTRIES_MASKS to get phone mask by country iso code. Use DI-token TUI_COUNTRIES to get localized country name by its iso code
+// Note: (Taiga UI migration) Use DI-token TUI_COUNTRIES_MASKS to get phone mask by country iso code. Use DI-token TUI_COUNTRIES to get localized country name by its iso code
 import { COUNTRIES } from '@taiga-ui/kit';
 
 const lol = TUI_DATE_FILLER;

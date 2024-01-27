@@ -8,7 +8,7 @@ export const TUI_WARNING_NORMALIZE = `
 // If you're looking to use reset styles or you can write your own reset.css`;
 
 export const TUI_WARNING_WRAPPER_MIXINS =
-    '// TODO: (Taiga UI migration): use mixins to customize tuiWrapper. See https://taiga-ui.dev/wrapper';
+    '// Note: (Taiga UI migration): use mixins to customize tuiWrapper. See https://taiga-ui.dev/wrapper';
 
 export function replaceStyles(): void {
     getActiveProject()

@@ -37,7 +37,7 @@ function showWarning(
      */
     referencesMeta.forEach(({sourceFile, filePath, startLinePos}) => {
         logger.warn(`[WARNING] in ${filePath}: ${message}`);
-        sourceFile.insertText(startLinePos, `// TODO: (Taiga UI migration) ${message}\n`);
+        sourceFile.insertText(startLinePos, `// Note: (Taiga UI migration) ${message}\n`);
     });
 }
 

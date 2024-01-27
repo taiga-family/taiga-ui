@@ -249,7 +249,7 @@ const TEMPLATE_BEFORE = `
 </tui-hosted-dropdown>
 `;
 
-const TEMPLATE_AFTER = `<!-- TODO: (Taiga UI migration) tuiFormatNumber pipe has new API. See https://taiga-ui.dev/pipes/format-number -->
+const TEMPLATE_AFTER = `<!-- Note: (Taiga UI migration) tuiFormatNumber pipe has new API. See https://taiga-ui.dev/pipes/format-number -->
 <tui-table-bars-host ngProjectAs="tuiOverAlerts"></tui-table-bars-host>
 <tui-tooltip direction="top"></tui-tooltip>
 <tui-svg
@@ -480,7 +480,7 @@ export class TestComponentInline {
 `;
 
 const COMPONENT_AFTER = `
-@Component({template: '<!-- TODO: (Taiga UI migration) tuiFormatNumber pipe has new API. See https://taiga-ui.dev/pipes/format-number --><div tuiGroup><div [data-value]="27.3333 | tuiFormatNumber: 2"></div></div>'})
+@Component({template: '<!-- Note: (Taiga UI migration) tuiFormatNumber pipe has new API. See https://taiga-ui.dev/pipes/format-number --><div tuiGroup><div [data-value]="27.3333 | tuiFormatNumber: 2"></div></div>'})
 export class TestComponentInline {
     aware = TUI_MOBILE_AWARE;
 }

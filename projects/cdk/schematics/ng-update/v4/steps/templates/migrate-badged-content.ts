@@ -171,7 +171,7 @@ function migrateContent({
     } else if (Number.isNaN(Number(value))) {
         recorder.insertRight(
             templateOffset + (sourceCodeLocation?.startTag.startOffset || 0),
-            '<!-- Taiga migration TODO: contentTop and contentBottom inputs has been removed. Use ng-content, see taiga-ui.dev/components/badged-content  -->\n',
+            '<!-- Taiga migration Note: contentTop and contentBottom inputs has been removed. Use ng-content, see taiga-ui.dev/components/badged-content  -->\n',
         );
     } else {
         recorder.insertRight(

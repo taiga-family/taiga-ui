@@ -50,7 +50,7 @@ export function migrateExpandable({
         if (expandableValue !== 'false' && expandableValue !== 'true') {
             recorder.insertRight(
                 templateOffset + (sourceCodeLocation?.startTag.startOffset || 0),
-                '<!-- Taiga migration TODO: "expandable" property has been removed. Use "rows" property instead -->\n',
+                '<!-- Taiga migration Note: "expandable" property has been removed. Use "rows" property instead -->\n',
             );
         }
 

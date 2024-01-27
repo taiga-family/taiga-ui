@@ -55,7 +55,7 @@ const TEMPLATE_AFTER = `
     class="toggle"
     [showIcons]="true"
 />
-<!-- TODO: (Taiga UI migration) toggle [singleColor] and [showLoader] inputs have been removed due to design changes -->
+<!-- Note: (Taiga UI migration) toggle [singleColor] and [showLoader] inputs have been removed due to design changes -->
 <input
     tuiToggle
     type="checkbox"

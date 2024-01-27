@@ -120,8 +120,8 @@ export function migrateInputRange(
         !options['skip-logs'] && progressLog(componentPath);
         addMinMaxLabelMethod(componentPath, MIN_LABELS_MIGRATION_METHOD_NAME, [
             'const currentValue = context.$implicit;',
-            'const minValue = 0; // TODO: (Taiga UI migration) replace with the MIN value of the input-range',
-            'const minLabelText = "Min"; // TODO: (Taiga UI migration) replace with the required label',
+            'const minValue = 0; // Note: (Taiga UI migration) replace with the MIN value of the input-range',
+            'const minLabelText = "Min"; // Note: (Taiga UI migration) replace with the required label',
             'if (currentValue === minValue) return minLabelText;',
             'return String(currentValue);',
         ]);
@@ -136,8 +136,8 @@ export function migrateInputRange(
         !options['skip-logs'] && progressLog(componentPath);
         addMinMaxLabelMethod(componentPath, MAX_LABELS_MIGRATION_METHOD_NAME, [
             'const currentValue = context.$implicit;',
-            'const maxValue = 100; // TODO: (Taiga UI migration) replace with the MAX value of the input',
-            'const maxLabelText = "Max"; // TODO: (Taiga UI migration) replace with the required label',
+            'const maxValue = 100; // Note: (Taiga UI migration) replace with the MAX value of the input',
+            'const maxLabelText = "Max"; // Note: (Taiga UI migration) replace with the required label',
             'if (currentValue === maxValue) return maxLabelText;',
             'return String(currentValue);',
         ]);

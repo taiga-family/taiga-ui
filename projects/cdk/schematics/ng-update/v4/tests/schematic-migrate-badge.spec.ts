@@ -66,7 +66,7 @@ const TEMPLATE_AFTER = `
 iconLeft="tuiIconHelpCircle">
     ${''}
 Taiga</tui-badge>
-<!-- Taiga migration TODO: use "<tui-icon>" with "tuiBadge" directive for icon-only badges instead -->
+<!-- Taiga migration Note: use "<tui-icon>" with "tuiBadge" directive for icon-only badges instead -->
 <tui-badge
     appearance="success"
 >

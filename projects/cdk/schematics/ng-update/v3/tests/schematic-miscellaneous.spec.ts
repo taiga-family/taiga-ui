@@ -56,7 +56,7 @@ export class AppComponent {
     }
 
     method2() {
-// TODO: (Taiga UI migration) addStyle method has been removed. Use components approach
+// Note: (Taiga UI migration) addStyle method has been removed. Use components approach
       this.directiveStyles.addStyle(styles, 'style');
     }
 }`;

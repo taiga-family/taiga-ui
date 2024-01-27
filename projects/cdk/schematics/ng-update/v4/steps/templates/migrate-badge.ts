@@ -124,6 +124,6 @@ function addTodo(
 ): void {
     recorder.insertRight(
         templateOffset + (sourceCodeLocation?.startTag.startOffset || 0),
-        '<!-- Taiga migration TODO: use "<tui-icon>" with "tuiBadge" directive for icon-only badges instead -->\n',
+        '<!-- Taiga migration Note: use "<tui-icon>" with "tuiBadge" directive for icon-only badges instead -->\n',
     );
 }
