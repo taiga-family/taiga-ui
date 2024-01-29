@@ -11,20 +11,19 @@
 <div
     *ngIf="loading"
     class="t-loader"
-    [attr.data-size]="size"
     [class.t-loader_horizontal]="isHorizontal"
     [class.t-loader_inherit-color]="inheritColor"
 >
     <svg
         automation-id="tui-loader__loader"
         focusable="false"
-        viewBox="0 0 100 100"
-        xmlns="http://www.w3.org/2000/svg"
+        height="100%"
+        width="100%"
         class="t-icon"
     >
         <circle
-            cx="50"
-            cy="50"
+            cx="50%"
+            cy="50%"
             class="t-circle"
         ></circle>
     </svg>

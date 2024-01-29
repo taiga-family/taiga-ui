@@ -26,6 +26,7 @@ import {TUI_LOADER_OPTIONS, TuiLoaderOptions} from './loader.options';
 })
 export class TuiLoaderComponent {
     @Input()
+    @HostBinding('attr.data-size')
     size = this.options.size;
 
     @Input()

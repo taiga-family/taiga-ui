@@ -1,0 +1,27 @@
+tui-loader {
+    min-width: 3.5rem;
+
+    &:nth-child(1) {
+        /**
+        Don't use `rem` units if you support Safari.
+        Safari doesn't support `rem` units for `stroke-*` properties of `<circle />`.
+        Use `em` units => they will be interpreted as `rem` ones
+        (`<circle />` has `font-size: 1rem`).
+        Or just use simple `px` units.
+        */
+        --tui-thickness: 0.125em;
+    }
+
+    &:nth-child(2) {
+        --tui-thickness: 4px;
+    }
+
+    &:nth-child(3) {
+        --tui-thickness: 8px;
+    }
+}
+
+:host {
+    display: flex;
+    gap: 2rem;
+}
