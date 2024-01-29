@@ -1,4 +1,4 @@
-import {tuiIsEdge, tuiIsEdgeOlderThan, tuiIsFirefox, tuiIsSafari} from '@taiga-ui/cdk';
+import {tuiIsEdge, tuiIsFirefox, tuiIsSafari} from '@taiga-ui/cdk';
 
 describe('Browsers', () => {
     it('isEdge', () => {
@@ -8,11 +8,6 @@ describe('Browsers', () => {
     it('isFirefox', () => {
         expect(tuiIsFirefox('firefox')).toBe(true);
         expect(tuiIsFirefox('Firefox')).toBe(true);
-    });
-
-    it('isEdgeOlderThan', () => {
-        expect(tuiIsEdgeOlderThan(17, 'edge/16')).toBe(true);
-        expect(tuiIsEdgeOlderThan(17, 'edge/18')).toBe(false);
     });
 
     describe('isSafari', () => {
