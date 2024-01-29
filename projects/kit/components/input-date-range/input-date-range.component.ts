@@ -390,14 +390,14 @@ export class TuiInputDateRangeComponent
     @tuiPure
     private calculateMask(
         dateFormat: TuiDateMode,
-        separator: string,
+        dateSeparator: string,
         min: TuiDay,
         max: TuiDay,
         minLength: TuiDayLike | null,
         maxLength: TuiDayLike | null,
     ): MaskitoOptions {
         return maskitoDateRangeOptionsGenerator({
-            separator,
+            dateSeparator,
             mode: TUI_DATE_MODE_MASKITO_ADAPTER[dateFormat],
             min: min.toLocalNativeDate(),
             max: max.toLocalNativeDate(),
