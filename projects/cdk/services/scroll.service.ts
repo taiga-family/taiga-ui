@@ -62,8 +62,8 @@ export class TuiScrollService {
                       initialTop + deltaTop * percent,
                       initialLeft + deltaLeft * percent,
                   ]),
-                  endWith<[number, number]>([scrollTop, scrollLeft]),
                   takeUntil(timer(duration)),
+                  endWith<[number, number]>([scrollTop, scrollLeft]),
               );
 
         return observable.pipe(
