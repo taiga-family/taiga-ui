@@ -3,16 +3,12 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
 @Component({
-    selector: 'tui-swipe-action-example-3',
+    selector: 'tui-swipe-action-example-4',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiSwipeActionExample3 {
-    openIndex = NaN;
-
-    open(index: number): void {
-        this.openIndex = index;
-    }
+export class TuiSwipeActionExample4 {
+    shareButton = false;
 }

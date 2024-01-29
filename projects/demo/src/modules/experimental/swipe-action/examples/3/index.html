@@ -1,4 +1,7 @@
-<tui-swipe-actions [(open)]="open">
+<tui-swipe-actions
+    [open]="openIndex === 0"
+    (openChange)="open(0)"
+>
     <button
         tuiSurface
         class="surface"
@@ -36,11 +39,43 @@
     ></button>
 </tui-swipe-actions>
 
-<p>You can close the component programmatically:</p>
-<button
-    size="xs"
-    tuiButton
-    (click)="close()"
+<tui-swipe-actions
+    [open]="openIndex === 1"
+    (openChange)="open(1)"
 >
-    Close
-</button>
+    <button
+        tuiSurface
+        class="surface"
+    >
+        <div tuiCell>
+            <tui-avatar
+                appearance="primary"
+                src="tuiIconGift"
+            ></tui-avatar>
+            <div tuiTitle>
+                <strong>{{ 23000 | tuiAmount: 'EUR' | async }}</strong>
+                <div tuiSubtitle>Goal</div>
+            </div>
+        </div>
+    </button>
+
+    <button
+        iconLeft="tuiIconEye"
+        size="m"
+        tuiIconButton
+        tuiSwipeAction
+    ></button>
+    <button
+        iconLeft="tuiIconEdit3"
+        size="m"
+        tuiIconButton
+        tuiSwipeAction
+    ></button>
+    <button
+        appearance="secondary"
+        iconLeft="tuiIconShare"
+        size="m"
+        tuiIconButton
+        tuiSwipeAction
+    ></button>
+</tui-swipe-actions>

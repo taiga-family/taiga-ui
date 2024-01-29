@@ -36,10 +36,9 @@ export class TuiSwipeActionsComponent {
         private readonly open?: TuiSwipeActionsOpenDirective,
     ) {}
 
-    onResizeContent({target}: ResizeObserverEntry): void {
-        this.contentWidth = target.clientWidth;
-        this.actionsWidth =
-            this.elementRef.nativeElement.scrollWidth - target.clientWidth;
+    onResize({target}: ResizeObserverEntry): void {
+        this.actionsWidth = target.clientWidth;
+        this.contentWidth = this.elementRef.nativeElement.scrollWidth - this.actionsWidth;
     }
 
     onIntersection({isIntersecting}: IntersectionObserverEntry): void {

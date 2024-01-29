@@ -1,7 +1,4 @@
-<div
-    class="t-content"
-    (tuiResize)="onResizeContent($event[0])"
->
+<div class="t-content">
     <ng-content></ng-content>
 </div>
 
@@ -9,6 +6,7 @@
     waIntersectionObserver
     waIntersectionThreshold="0.5"
     class="t-actions"
+    (tuiResize)="onResize($event[0])"
     (waIntersectionObservee)="onIntersection($event[0])"
 >
     <ng-content select="[tuiSwipeAction]"></ng-content>

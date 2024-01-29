@@ -11,6 +11,7 @@ import {
     TuiBadgeModule,
     TuiButtonModule,
     TuiCellModule,
+    TuiCheckboxModule,
     TuiIconModule,
     TuiSurfaceModule,
     TuiSwipeActionsModule,
@@ -21,6 +22,7 @@ import {
 import {TuiSwipeActionExample1} from './examples/1';
 import {TuiSwipeActionExample2} from './examples/2';
 import {TuiSwipeActionExample3} from './examples/3';
+import {TuiSwipeActionExample4} from './examples/4';
 import {ExampleTuiSwipeActionsComponent} from './swipe-actions.component';
 
 @NgModule({
@@ -41,12 +43,14 @@ import {ExampleTuiSwipeActionsComponent} from './swipe-actions.component';
         TuiButtonModule,
         FormsModule,
         TuiTitleModule,
+        TuiCheckboxModule,
     ],
     declarations: [
         ExampleTuiSwipeActionsComponent,
         TuiSwipeActionExample1,
         TuiSwipeActionExample2,
         TuiSwipeActionExample3,
+        TuiSwipeActionExample4,
     ],
     exports: [ExampleTuiSwipeActionsComponent],
 })
