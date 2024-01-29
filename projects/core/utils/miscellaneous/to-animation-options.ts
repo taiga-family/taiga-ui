@@ -1,15 +1,14 @@
 import {AnimationOptions} from '@angular/animations';
 
-const TUI_ANIMATIONS_DEFAULT_DURATION = 300;
+export const TUI_ANIMATIONS_DEFAULT_DURATION = 300;
 
 export function tuiToAnimationOptions(speed: number): AnimationOptions {
-    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
     return {
         value: '',
         params: {
             duration: tuiGetDuration(speed),
         },
-    } as AnimationOptions;
+    } as unknown as AnimationOptions;
 }
 
 export function tuiGetDuration(speed: number): number {
