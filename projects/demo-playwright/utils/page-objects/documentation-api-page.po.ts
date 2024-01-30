@@ -29,7 +29,7 @@ export class TuiDocumentationApiPagePO {
             ),
         );
 
-        await this.page.waitForTimeout(300);
+        await this.page.waitForTimeout(400);
     }
 
     async hideNotifications(): Promise<void> {
