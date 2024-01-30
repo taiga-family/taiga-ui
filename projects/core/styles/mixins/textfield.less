@@ -1,3 +1,5 @@
+@import '../taiga-ui-local.less';
+
 .textfield-host() {
     .text-basic();
     position: relative;
@@ -288,6 +290,11 @@
 
     .t-input {
         .textfield-input();
+        .ios-only({
+            &:focus { // disable zoom
+              font-size: 16px;
+            }
+        });
     }
 
     .t-content {
