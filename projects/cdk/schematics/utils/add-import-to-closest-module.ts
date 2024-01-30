@@ -1,6 +1,6 @@
 import {addImportToNgModule} from 'ng-morph';
+import {addImportToComponent} from 'ng-morph/ng/component/add-import-to-component';
 
-import {addImportToComponent} from '../utils/add-import-to-component';
 import {addUniqueImport} from './add-unique-import';
 import {isStandaloneComponent} from './angular/is-standalone-component';
 import {getNgComponents} from './angular/ng-component';
