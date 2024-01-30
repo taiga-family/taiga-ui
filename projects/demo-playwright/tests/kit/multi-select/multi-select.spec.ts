@@ -16,11 +16,10 @@ test.describe('MultiSelect', () => {
             const multiSelect = new TuiMultiSelectPO(example.locator('tui-multi-select'));
 
             await multiSelect.textfield.click();
+            await documentationPage.networkidle();
             await expect(multiSelect.dropdown).toBeVisible();
-
             await multiSelect.selectOptions([0, 1, 2]);
             await multiSelect.closeDropdown();
-
             await expect(example).toHaveScreenshot(
                 '01-arrow-icon-not-overflown-by-tags.png',
             );
@@ -33,6 +32,7 @@ test.describe('MultiSelect', () => {
             );
 
             await multiSelect.arrow.click();
+            await documentationPage.networkidle();
             await expect(multiSelect.dropdown).toHaveScreenshot(
                 '02-with-data-list__with-label.png',
             );
@@ -45,6 +45,7 @@ test.describe('MultiSelect', () => {
             );
 
             await multiSelect.arrow.click();
+            await documentationPage.networkidle();
             await expect(multiSelect.dropdown).toHaveScreenshot(
                 '03-with-data-list__without-label.png',
             );
@@ -69,8 +70,8 @@ test.describe('MultiSelect', () => {
                     );
 
                     await multiSelect.arrow.click();
+                    await documentationPage.networkidle();
                     await multiSelect.selectOptions([0, 1, 2]);
-
                     await documentationPage.hideContent();
                     await expect(page).toHaveScreenshot(
                         `04-dialog-with-text-field-size-${size}.png`,
@@ -102,10 +103,9 @@ test.describe('MultiSelect', () => {
                         page,
                         `components/multi-select/API?tuiTextfieldCleaner=true&tuiTextfieldSize=${size}`,
                     );
-
                     await multiSelect.arrow.click();
+                    await documentationPage.networkidle();
                     await multiSelect.selectOptions([0, 1, 2, 3, 4]);
-
                     await documentationPage.prepareBeforeScreenshot();
                     await expect(page).toHaveScreenshot(
                         `05-multi-select-size-${size}.png`,
@@ -123,38 +123,34 @@ test.describe('MultiSelect', () => {
                         page,
                         'components/multi-select/API?sandboxExpanded=true',
                     );
-
                     await documentationPage.selectFormControlUpdateOnMethod(type);
                     await documentationPage.prepareBeforeScreenshot();
-
                     await expect(apiPageExample).toHaveScreenshot(
                         `06-update-on-${type}__1_initial.png`,
                     );
-
                     await multiSelect.arrow.click();
+                    await documentationPage.networkidle();
                     await multiSelect.selectOptions([0, 1, 2]);
-
                     await expect(multiSelect.dropdown).toHaveScreenshot(
                         `06-update-on-${type}__2_selected-values.png`,
                     );
-
                     await multiSelect.closeDropdown();
+                    await documentationPage.networkidle();
                     await expect(apiPageExample).toHaveScreenshot(
                         `06-update-on-${type}__3_hide-dropdown.png`,
                     );
-
                     await multiSelect.textfield.blur();
+                    await documentationPage.networkidle();
                     await expect(apiPageExample).toHaveScreenshot(
                         `06-update-on-${type}__4_blur-event.png`,
                     );
-
                     await documentationPage.submitFormControlButton.click();
+                    await documentationPage.networkidle();
                     await expect(apiPageExample).toHaveScreenshot(
                         `06-update-on-${type}__5_submit-event.png`,
                     );
-
+                    await documentationPage.networkidle();
                     await documentationPage.resetFormControlButton.click();
-
                     await expect(apiPageExample).toHaveScreenshot(
                         `06-update-on-${type}__6_reset.png`,
                     );
@@ -166,34 +162,29 @@ test.describe('MultiSelect', () => {
             page,
         }) => {
             await tuiGoto(page, 'components/multi-select/API?tuiTextfieldCleaner=true');
-
             await multiSelect.arrow.click();
+            await documentationPage.networkidle();
             await multiSelect.selectOptions([0, 1, 2, 3, 4]);
-
             await documentationPage.prepareBeforeScreenshot();
             await expect(page).toHaveScreenshot('07-multi-select-before-clear.png');
-
             await multiSelect.arrow.click();
             await multiSelect.cleaner.click();
-
             await expect(page).toHaveScreenshot('07-multi-select-after-clear.png');
         });
 
         test('should scroll to end on focus', async ({page}) => {
             await tuiGoto(page, 'components/multi-select/API?rows=1&sandboxWidth=350');
-
             await multiSelect.arrow.click();
+            await documentationPage.networkidle();
             await multiSelect.selectOptions([0, 1, 2, 3, 4]);
-
             await documentationPage.prepareBeforeScreenshot();
             await expect(page).toHaveScreenshot(
                 '08-multi-select-1-before-scroll-to-end.png',
             );
-
             await multiSelect.closeDropdown();
             await multiSelect.textfield.blur();
             await multiSelect.arrow.click();
-
+            await documentationPage.networkidle();
             await expect(page).toHaveScreenshot(
                 '08-multi-select-2-after-scroll-to-end.png',
             );
@@ -204,12 +195,10 @@ test.describe('MultiSelect', () => {
                 page,
                 'components/multi-select/API?valueContent$=1&editable=false',
             );
-
             await multiSelect.arrow.click();
+            await documentationPage.networkidle();
             await multiSelect.selectOptions([0, 1, 2]);
-
             await documentationPage.prepareBeforeScreenshot();
-
             await expect(page).toHaveScreenshot('09-multi-select-non-editable.png');
         });
     });
