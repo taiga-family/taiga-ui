@@ -1,7 +1,7 @@
 import {Directive, Inject, Input, TemplateRef} from '@angular/core';
 
 @Directive({
-    selector: '[tuiCell]',
+    selector: 'ng-template[tuiCell]',
 })
 export class TuiCellDirective {
     @Input()
