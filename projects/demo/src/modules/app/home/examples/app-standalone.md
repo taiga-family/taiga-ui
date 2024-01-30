@@ -10,7 +10,7 @@ import {TuiRootModule} from '@taiga-ui/core';
     // ...
   ],
   templateUrl: './app.component.html',
-  styleUrls: ['./my.component.scss', './my.component.less'],
+  styleUrls: ['./my.component.less'],
 })
 export class AppComponent {}
 ```
