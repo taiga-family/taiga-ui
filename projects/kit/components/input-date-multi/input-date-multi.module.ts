@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {MaskitoModule} from '@maskito/angular';
+import {MaskitoDirective} from '@maskito/angular';
 import {TuiMapperPipeModule} from '@taiga-ui/cdk';
 import {
     TuiCalendarModule,
@@ -20,7 +20,7 @@ import {TuiInputDateMultiComponent} from './input-date-multi.component';
 @NgModule({
     imports: [
         CommonModule,
-        MaskitoModule,
+        MaskitoDirective,
         PolymorpheusModule,
         TuiWrapperModule,
         TuiCalendarModule,

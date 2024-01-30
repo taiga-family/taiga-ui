@@ -1,6 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {MaskitoModule} from '@maskito/angular';
+import {MaskitoDirective} from '@maskito/angular';
 import {
     TuiDataListModule,
     TuiHostedDropdownModule,
@@ -20,7 +20,7 @@ import {TuiNativeTimeComponent} from './native-time/native-time.component';
 @NgModule({
     imports: [
         CommonModule,
-        MaskitoModule,
+        MaskitoDirective,
         TuiSelectOptionModule,
         TuiDataListModule,
         TuiWrapperModule,

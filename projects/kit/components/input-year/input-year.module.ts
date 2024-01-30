@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {MaskitoModule} from '@maskito/angular';
+import {MaskitoDirective} from '@maskito/angular';
 import {
     TuiDropdownModule,
     TuiDropdownOpenDirective,
@@ -16,7 +16,7 @@ import {TuiInputYearDirective} from './input-year.directive';
 
 @NgModule({
     imports: [
-        MaskitoModule,
+        MaskitoDirective,
         TuiDropdownModule,
         TuiDropdownOpenDirective,
         TuiPrimitiveTextfieldModule,
