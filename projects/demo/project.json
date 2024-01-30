@@ -197,7 +197,7 @@
         "serve-compiled": {
             "executor": "nx:run-commands",
             "options": {
-                "command": "http-server {args.path} --port {args.port} > /dev/null & npx wait-on http://127.0.0.1:{args.port} --timeout 300000",
+                "command": "http-server {args.path} --brotli --port {args.port} > /dev/null & npx wait-on http://127.0.0.1:{args.port} --timeout 300000",
                 "forwardAllArgs": false
             }
         },
