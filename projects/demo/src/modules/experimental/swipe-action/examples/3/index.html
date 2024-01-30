@@ -2,10 +2,7 @@
     [open]="openIndex === 0"
     (openChange)="open(0)"
 >
-    <button
-        tuiSurface
-        class="surface"
-    >
+    <div tuiSurface="elevated">
         <div tuiCell>
             <tui-avatar
                 appearance="primary"
@@ -16,7 +13,7 @@
                 <div tuiSubtitle>Dollar account</div>
             </div>
         </div>
-    </button>
+    </div>
 
     <button
         iconLeft="tuiIconEye"
@@ -43,10 +40,7 @@
     [open]="openIndex === 1"
     (openChange)="open(1)"
 >
-    <button
-        tuiSurface
-        class="surface"
-    >
+    <div tuiSurface="elevated">
         <div tuiCell>
             <tui-avatar
                 appearance="primary"
@@ -57,7 +51,7 @@
                 <div tuiSubtitle>Goal</div>
             </div>
         </div>
-    </button>
+    </div>
 
     <button
         iconLeft="tuiIconEye"
