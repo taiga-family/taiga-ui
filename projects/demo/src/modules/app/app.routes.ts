@@ -216,6 +216,15 @@ export const ROUTES: Routes = [
         },
     },
     {
+        path: 'experimental/app-bar',
+        loadChildren: async () =>
+            (await import('../experimental/app-bar/app-bar.module'))
+                .ExampleTuiAppBarModule,
+        data: {
+            title: 'AppBar',
+        },
+    },
+    {
         path: 'experimental/appearance',
         loadChildren: async () =>
             (await import('../experimental/appearance/appearance.module'))
@@ -1103,14 +1112,6 @@ export const ROUTES: Routes = [
                 .ExampleTuiPreviewModule,
         data: {
             title: 'Preview',
-        },
-    },
-    {
-        path: 'navigation/app-bar',
-        loadChildren: async () =>
-            (await import('../components/app-bar/app-bar.module')).ExampleTuiAppBarModule,
-        data: {
-            title: 'AppBar',
         },
     },
     {

@@ -1,0 +1,66 @@
+<tui-app-bar size="l">
+    <button
+        iconLeft="tuiIconChevronLeft"
+        tuiButton
+        tuiSlot="left"
+    >
+        Action
+    </button>
+    Taiga UI
+</tui-app-bar>
+
+<tui-app-bar size="l">
+    <label tuiTitle>
+        Taiga UI
+        <span tuiSubtitle>Components library</span>
+    </label>
+    <button
+        tuiButton
+        tuiSlot="right"
+    >
+        Action
+    </button>
+</tui-app-bar>
+
+<tui-app-bar size="l">
+    <button
+        tuiButton
+        tuiSlot="left"
+    >
+        Action
+    </button>
+    <label tuiTitle>
+        Taiga UI is a very long title that should fade away
+        <span tuiSubtitle>Components library</span>
+    </label>
+    <button
+        iconLeft="tuiIconClose"
+        tuiIconButton
+        tuiSlot="right"
+    >
+        Close
+    </button>
+</tui-app-bar>
+
+<tui-app-bar size="l">
+    <button
+        iconLeft="tuiIconChevronLeft"
+        tuiIconButton
+        tuiSlot="left"
+    >
+        Back
+    </button>
+    <progress
+        size="s"
+        tuiProgressBar
+        [max]="100"
+        [style.width.rem]="10"
+        [value]="35"
+    ></progress>
+    <button
+        tuiButton
+        tuiSlot="right"
+    >
+        Action
+    </button>
+</tui-app-bar>

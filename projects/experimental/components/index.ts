@@ -1,3 +1,4 @@
+export * from '@taiga-ui/experimental/components/app-bar';
 export * from '@taiga-ui/experimental/components/avatar';
 export * from '@taiga-ui/experimental/components/avatar-labeled';
 export * from '@taiga-ui/experimental/components/avatar-stack';
