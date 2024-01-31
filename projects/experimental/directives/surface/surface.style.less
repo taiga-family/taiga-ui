@@ -1,21 +1,27 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
 // prettier-ignore
-[tuiSurface][data-surface] {
-    .clearbtn();
+[data-surface] {
     .transition();
 
     --tui-gap: 0.25rem;
     position: relative;
-    border-radius: var(--tui-radius-l);
     box-sizing: border-box;
-    padding: 1rem 1.25rem;
+    background: none;
     background-size: cover;
     background-repeat: no-repeat;
     overflow: hidden;
     isolation: isolate;
-    outline-color: var(--tui-focus);
-    transition-property: backdrop-filter, background, border-radius, box-shadow, mask, transform;
+    appearance: none;
+    border: 0;
+    font-size: inherit;
+    line-height: inherit;
+    text-decoration: none;
+    transition-property: backdrop-filter, background, border-radius, box-shadow, mask, transform !important;
+
+    &:focus-visible {
+        outline-color: var(--tui-focus);
+    }
 
     // Fix for https://bugs.chromium.org/p/chromium/issues/detail?id=1486408
     @supports (not (-moz-appearance: none)) and (not (-webkit-hyphens: none)) {
@@ -25,14 +31,14 @@
     }
 }
 
-button[tuiSurface][data-surface] {
+button[data-surface] {
     cursor: pointer;
 }
 
-[tuiSurface][data-surface]:before,
-[tuiSurface][data-surface]:after,
-[tuiSurface][tuiSurfaceLayer]:before,
-[tuiSurface][tuiSurfaceLayer]:after {
+[data-surface]:before,
+[data-surface]:after,
+[tuiSurfaceLayer]:before,
+[tuiSurfaceLayer]:after {
     .fullsize();
     .transition();
     content: '';
@@ -106,13 +112,13 @@ input[tuiSurfaceLayer] {
     }
 
     @media (hover: hover) and (pointer: fine) {
-        [tuiSurface][data-surface]:hover & {
+        [data-surface]:hover & {
             box-shadow:
                 inset 0 0,
                 inset 0 0 0 calc(var(--tui-gap) / 2) var(--tui-base-03);
         }
 
-        [tuiSurface][data-surface]:hover &:checked {
+        [data-surface]:hover &:checked {
             filter: brightness(0.9);
             box-shadow:
                 inset 0 0 0 calc(var(--tui-gap) / 2),
@@ -121,14 +127,13 @@ input[tuiSurfaceLayer] {
     }
 }
 
-[tuiSurface][data-surface='elevated'] {
+[data-surface='elevated'] {
     box-shadow: var(--tui-shadow);
-    border-radius: var(--tui-radius-xl);
     background: var(--tui-elevation-01);
 }
 
-button[tuiSurface][data-surface='elevated'],
-a[tuiSurface][data-surface='elevated'] {
+button[data-surface='elevated'],
+a[data-surface='elevated'] {
     &:active {
         box-shadow: var(--tui-shadow);
         transform: scale(0.95);
@@ -143,13 +148,12 @@ a[tuiSurface][data-surface='elevated'] {
     }
 }
 
-[tuiSurface][data-surface='flat'] {
-    border-radius: var(--tui-radius-xl);
+[data-surface='flat'] {
     background: var(--tui-clear);
 }
 
-button[tuiSurface][data-surface='flat'],
-a[tuiSurface][data-surface='flat'] {
+button[data-surface='flat'],
+a[data-surface='flat'] {
     &:active {
         transform: scale(0.95);
     }

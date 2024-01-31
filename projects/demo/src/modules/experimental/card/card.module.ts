@@ -14,6 +14,7 @@ import {
     TuiSvgModule,
 } from '@taiga-ui/core';
 import {
+    TuiAppearanceModule,
     TuiAutoColorModule,
     TuiAvatarModule,
     TuiAvatarStackModule,
@@ -31,7 +32,6 @@ import {
     TuiThumbnailCardModule,
     TuiTitleModule,
 } from '@taiga-ui/experimental';
-import {TuiProgressModule} from '@taiga-ui/kit';
 
 import {ExampleTuiCardComponent} from './card.component';
 import {TuiCardExample1} from './examples/1';
@@ -82,10 +82,10 @@ import {TuiCardExample19} from './examples/19';
         TuiRepeatTimesModule,
         TuiDataListModule,
         TuiHostedDropdownModule,
-        TuiProgressModule,
         TuiButtonCloseModule,
         TuiPlatformModule,
         TuiLinkModule,
+        TuiAppearanceModule,
     ],
     declarations: [
         ExampleTuiCardComponent,

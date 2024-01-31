@@ -1,23 +1,42 @@
 <div
-    tuiCard="l"
+    tuiCardLarge
     tuiSurface="elevated"
 >
     <header tuiHeader>
-        <h1 tuiTitle>
-            Title
-            <span tuiSubtitle>Subtitle</span>
-        </h1>
+        <h2 tuiTitle>Title</h2>
     </header>
 
-    <section>
-        <progress
-            max="100"
-            new
+    <div tuiCell>
+        <tui-avatar
+            appearance="primary"
+            src="tuiIconStar"
+        ></tui-avatar>
+        <div tuiTitle>
+            Title
+            <div tuiSubtitle>Description</div>
+        </div>
+    </div>
+
+    <footer>
+        <button
+            appearance="secondary"
             size="m"
-            tuiProgressBar
-            [value]="65"
-        ></progress>
-    </section>
+            tuiButton
+            type="button"
+        >
+            Label
+        </button>
+    </footer>
+</div>
+<div
+    tuiCardLarge
+    tuiSurface="elevated"
+>
+    <header tuiHeader>
+        <h2 tuiTitle>Title</h2>
+    </header>
+
+    Some text
 
     <footer>
         <button

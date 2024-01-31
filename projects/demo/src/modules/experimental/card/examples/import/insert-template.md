@@ -1,6 +1,6 @@
 ```html
 <!-- Medium -->
-<div tuiCard>
+<div tuiCardMedium>
   <tui-avatar
     class="star"
     src="tuiIconStarLarge"
@@ -14,7 +14,7 @@
 
 <!-- Large -->
 <div
-  tuiCard="l"
+  tuiCardLarge
   tuiSurface="elevated"
 >
   <div tuiHeader>

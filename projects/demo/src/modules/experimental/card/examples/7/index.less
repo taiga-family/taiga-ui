@@ -5,17 +5,9 @@
     gap: 1rem;
 }
 
-.surface[tuiSurface] {
+.card {
     height: 6.5rem;
     width: 6.5rem;
-    padding: 0.75rem;
-    background: var(--tui-base-02);
-    cursor: pointer;
-}
-
-.selected {
-    z-index: 1;
-    color: var(--tui-primary);
 }
 
 .mir {
@@ -26,19 +18,12 @@
     background: linear-gradient(45deg, #ffaa00d1, #ffaa00), url(/assets/taiga-ui/icons/tuiIconStarLarge.svg);
 }
 
-.card-list {
-    .scrollbar-hidden();
+.cards {
     display: flex;
     flex-direction: row;
     gap: 0.25rem;
-    width: 100%;
-    overflow-x: scroll;
-    overflow-y: hidden;
-    margin-left: -0.4375rem;
-    padding-left: 0.4375rem;
-    z-index: 2;
-
-    tui-thumbnail-card {
-        flex-shrink: 0;
-    }
+    width: stretch;
+    margin: 0 -0.4375rem;
+    padding: 0 0.4375rem;
+    overflow: auto;
 }

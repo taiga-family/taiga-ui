@@ -1,6 +1,8 @@
 <label
     *tuiRepeatTimes="let index of 4"
     tuiSurface
+    [style.border-radius.rem]="0.75"
+    [style.padding.rem]="1.25"
 >
     Item {{ index + 1 }}
     <input

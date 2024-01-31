@@ -1,18 +1,13 @@
-<div
-    tuiCard
+<label
+    tuiCardMedium
     tuiSurface
-    class="surface"
+    class="card"
 >
-    <input
-        tuiSurfaceLayer
-        type="radio"
-        class="selected"
-        [value]="0"
-        [(ngModel)]="value"
-    />
     <tui-svg src="tuiIconGooglePay"></tui-svg>
-
-    <div class="card-list">
+    <div
+        tuiFade
+        class="cards"
+    >
         <tui-thumbnail-card
             iconLeft="tuiIconLock"
             paymentSystem="mastercard"
@@ -39,44 +34,50 @@
         </tui-thumbnail-card>
     </div>
 
+    <input
+        tuiSurfaceLayer
+        type="radio"
+        class="selected"
+        [value]="0"
+        [(ngModel)]="value"
+    />
+
     <div
         tuiRipple
         tuiSurfaceLayer
         [style.background-color]="'#fff6c7'"
     ></div>
-</div>
+</label>
 
-<div
-    tuiCard
+<label
+    tuiCardMedium
     tuiSurface
-    class="surface"
+    class="card"
 >
+    <tui-svg src="tuiIconApplePay"></tui-svg>
+    <div
+        tuiFade
+        class="cards"
+    >
+        <tui-thumbnail-card
+            paymentSystem="mir"
+            size="m"
+            class="mir"
+        >
+            2222
+        </tui-thumbnail-card>
+    </div>
+
     <input
         tuiSurfaceLayer
         type="radio"
-        class="selected"
         [value]="1"
         [(ngModel)]="value"
     />
-    <tui-svg src="tuiIconApplePay"></tui-svg>
-    <tui-scrollbar>
-        <div
-            tuiScrollable
-            class="card-list"
-        >
-            <tui-thumbnail-card
-                paymentSystem="mir"
-                size="m"
-                class="mir"
-            >
-                2222
-            </tui-thumbnail-card>
-        </div>
-    </tui-scrollbar>
 
     <div
         tuiRipple
         tuiSurfaceLayer
         [style.background-color]="'#d5f6df'"
     ></div>
-</div>
+</label>

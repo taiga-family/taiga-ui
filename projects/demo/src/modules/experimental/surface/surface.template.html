@@ -10,7 +10,16 @@
             and is a subject to change. Expect final solution to be shipped in the next major version
         </tui-notification>
 
-        <p>General purpose container used in Taiga UI interfaces</p>
+        <p>
+            General purpose container used in Taiga UI interfaces. Often used in conjunction with
+            <a
+                routerLink="/experimental/card"
+                tuiLink
+            >
+                Card
+            </a>
+            component.
+        </p>
 
         <tui-doc-example
             id="behaviors"
@@ -31,6 +40,20 @@
             heading="Presets"
             [content]="example2"
         >
+            <tui-notification class="tui-space_bottom-4">
+                Note that
+                <code>padding</code>
+                and
+                <code>border-radius</code>
+                are not part of the surface. Take a look at
+                <a
+                    routerLink="/experimental/card"
+                    tuiLink
+                >
+                    Card
+                </a>
+                component for that.
+            </tui-notification>
             <tui-surface-example-2></tui-surface-example-2>
         </tui-doc-example>
 
@@ -45,7 +68,7 @@
             >
                 Text should have vertical compensation to look properly aligned, either with unequal
                 <code>padding</code>
-                as in this example or with negative
+                or with negative
                 <code>margin</code>
                 . Typical value is
                 <strong>0.25rem</strong>

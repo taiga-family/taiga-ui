@@ -1,5 +1,5 @@
 <div
-    tuiCard="l"
+    tuiCardLarge
     tuiSurface="elevated"
 >
     <header tuiHeader>
@@ -9,38 +9,20 @@
         </h1>
     </header>
 
-    <section>
-        <aside>
-            <div
-                *tuiRepeatTimes="let index of 6"
-                tuiCell="l"
-            >
-                <tui-avatar
-                    appearance="primary"
-                    src="tuiIconStar"
-                ></tui-avatar>
-                <div tuiTitle>
-                    Title
-                    <div tuiSubtitle>Description</div>
-                </div>
+    <section class="actions">
+        <div
+            *tuiRepeatTimes="let index of 6"
+            tuiCell="l"
+        >
+            <tui-avatar
+                appearance="primary"
+                src="tuiIconStar"
+            ></tui-avatar>
+            <div tuiTitle>
+                Title
+                <div tuiSubtitle>Description</div>
             </div>
-        </aside>
-
-        <aside>
-            <div
-                *tuiRepeatTimes="let index of 6"
-                tuiCell="l"
-            >
-                <tui-avatar
-                    appearance="primary"
-                    src="tuiIconStar"
-                ></tui-avatar>
-                <div tuiTitle>
-                    Title
-                    <div tuiSubtitle>Description</div>
-                </div>
-            </div>
-        </aside>
+        </div>
     </section>
 
     <footer>

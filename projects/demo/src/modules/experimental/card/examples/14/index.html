@@ -1,5 +1,5 @@
 <div
-    tuiCard="l"
+    tuiCardLarge
     tuiSurface="elevated"
 >
     <header tuiHeader>
@@ -9,43 +9,36 @@
         </h1>
     </header>
 
-    <section class="actions">
-        <tui-hosted-dropdown
-            *tuiRepeatTimes="let index of 6"
-            tuiDropdownAlign="right"
-            [content]="dropdown"
-            [sided]="true"
-        >
-            <button
-                tuiCell="l"
-                class="action"
-            >
-                <tui-avatar
-                    appearance="primary"
-                    src="tuiIconStar"
-                ></tui-avatar>
-                <div tuiTitle>
-                    Title
-                    <div tuiSubtitle>Description</div>
-                </div>
+    <tui-hosted-dropdown
+        *tuiRepeatTimes="let index of 3"
+        tuiDropdownAlign="right"
+        [content]="dropdown"
+        [sided]="true"
+    >
+        <button tuiCell="l">
+            <tui-avatar
+                appearance="primary"
+                src="tuiIconStar"
+            ></tui-avatar>
 
-                <div tuiSubtitle>
-                    <tui-icon icon="tuiIconChevronRightLarge"></tui-icon>
-                </div>
-            </button>
-        </tui-hosted-dropdown>
-    </section>
+            <div tuiTitle>
+                Title
+                <div tuiSubtitle>Description</div>
+            </div>
 
-    <footer>
-        <button
-            appearance="secondary"
-            size="m"
-            tuiButton
-            type="button"
-        >
-            Label
+            <tui-icon
+                icon="tuiIconChevronRightLarge"
+                tuiAppearance="icon"
+            ></tui-icon>
         </button>
-    </footer>
+    </tui-hosted-dropdown>
+
+    <button
+        tuiLink
+        type="button"
+    >
+        Show all
+    </button>
 </div>
 
 <ng-template

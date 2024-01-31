@@ -1,23 +1,32 @@
 import {Directive, Inject, Input} from '@angular/core';
 import {TuiDirectiveStylesService} from '@taiga-ui/cdk';
-import {TuiSizeL} from '@taiga-ui/core';
 
 import {TuiCardComponent} from './card.component';
 
 @Directive({
-    selector: '[tuiCard]',
+    selector: '[tuiCardMedium]',
     host: {
-        tuiCard: '',
-        '[attr.data-size]': 'size || "m"',
-        '[attr.data-space]': 'space',
+        tuiCardMedium: '',
     },
 })
-export class TuiCardDirective {
-    @Input('tuiCard')
-    size: TuiSizeL | '' = 'm';
+export class TuiCardMediumDirective {
+    constructor(
+        @Inject(TuiDirectiveStylesService) directiveStyles: TuiDirectiveStylesService,
+    ) {
+        directiveStyles.addComponent(TuiCardComponent);
+    }
+}
 
-    @Input()
-    space: 'compact' | 'normal' = 'normal';
+@Directive({
+    selector: '[tuiCardLarge]',
+    host: {
+        tuiCardLarge: '',
+        '[attr.data-space]': 'space || "normal"',
+    },
+})
+export class TuiCardLargeDirective {
+    @Input('tuiCardLarge')
+    space: '' | 'compact' | 'normal' = 'normal';
 
     constructor(
         @Inject(TuiDirectiveStylesService) directiveStyles: TuiDirectiveStylesService,

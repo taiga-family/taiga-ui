@@ -5,6 +5,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 @Component({
     selector: 'tui-card-example-15',
     templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
