@@ -14,7 +14,6 @@ import {
     TuiInteractiveState,
     TuiPrimitiveCalendarComponent,
     TuiPrimitiveCalendarModule,
-    TuiRangeState,
 } from '@taiga-ui/core';
 import {TUI_FIRST_DAY_OF_WEEK} from '@taiga-ui/core/tokens';
 import {tuiMockCurrentDate, tuiRestoreRealDate} from '@taiga-ui/testing';
@@ -156,7 +155,7 @@ describe('PrimitiveCalendar', () => {
 
                 component.value = range;
 
-                expect(component.getItemRange(day1)).toBe(TuiRangeState.Start);
+                expect(component.getItemRange(day1)).toBe('start');
             });
 
             it('returns end correctly if there is range in value', () => {
@@ -166,7 +165,7 @@ describe('PrimitiveCalendar', () => {
 
                 component.value = range;
 
-                expect(component.getItemRange(day2)).toBe(TuiRangeState.End);
+                expect(component.getItemRange(day2)).toBe('end');
             });
 
             it('returns single if value is single day and item equals this', () => {
@@ -175,7 +174,7 @@ describe('PrimitiveCalendar', () => {
 
                 component.value = range;
 
-                expect(component.getItemRange(day1)).toBe(TuiRangeState.Single);
+                expect(component.getItemRange(day1)).toBe('single');
             });
         });
 

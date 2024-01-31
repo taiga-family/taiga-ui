@@ -118,7 +118,7 @@ export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth
         }
 
         if (value instanceof TuiMonth) {
-            return value.monthSame(item) ? TuiRangeState.Single : null;
+            return value.monthSame(item) ? 'single' : null;
         }
 
         const theFirstOfRange = value.from.monthSame(item) && !value.isSingleMonth;
@@ -132,7 +132,7 @@ export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth
             value.isSingleMonth;
 
         if (theFirstOfRange || hoveredItemAfterFrom || hoveredItemIsCandidateToBeFrom) {
-            return TuiRangeState.Start;
+            return 'start';
         }
 
         const theLastOfRange = value.to.monthSame(item) && !value.isSingleMonth;
@@ -146,12 +146,10 @@ export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth
             value.isSingleMonth;
 
         if (theLastOfRange || hoveredItemBeforeTo || hoveredItemIsCandidateToBeTo) {
-            return TuiRangeState.End;
+            return 'end';
         }
 
-        return value.isSingleMonth && value.from.monthSame(item)
-            ? TuiRangeState.Single
-            : null;
+        return value.isSingleMonth && value.from.monthSame(item) ? 'single' : null;
     }
 
     getTuiMonth(monthNumber: number, yearNumber: number): TuiMonth {

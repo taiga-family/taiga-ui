@@ -127,11 +127,11 @@ export class TuiPrimitiveYearPickerComponent {
         }
 
         if (value instanceof TuiYear) {
-            return value.year === item ? TuiRangeState.Single : null;
+            return value.year === item ? 'single' : null;
         }
 
         if (!(value instanceof TuiMonthRange)) {
-            return value.find(day => day.year === item) ? TuiRangeState.Single : null;
+            return value.find(day => day.year === item) ? 'single' : null;
         }
 
         if (
@@ -145,7 +145,7 @@ export class TuiPrimitiveYearPickerComponent {
                 hoveredItem < value.from.year &&
                 value.from.yearSame(value.to))
         ) {
-            return TuiRangeState.Start;
+            return 'start';
         }
 
         if (
@@ -159,11 +159,11 @@ export class TuiPrimitiveYearPickerComponent {
                 hoveredItem > value.from.year &&
                 value.from.yearSame(value.to))
         ) {
-            return TuiRangeState.End;
+            return 'end';
         }
 
         return value.from.yearSame(value.to) && value.from.year === item
-            ? TuiRangeState.Single
+            ? 'single'
             : null;
     }
 

@@ -1,7 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiDay, TuiMonth, TuiMonthRange, TuiYear} from '@taiga-ui/cdk';
-import {TuiInteractiveState, TuiRangeState} from '@taiga-ui/core';
+import {TuiInteractiveState} from '@taiga-ui/core';
 import {TuiCalendarMonthComponent, TuiCalendarMonthModule} from '@taiga-ui/kit';
 
 const TODAY = TuiDay.currentLocal();
@@ -165,7 +165,7 @@ describe('CalendarMonth', () => {
 
             component.value = month;
 
-            expect(component.getItemRange(month)).toBe(TuiRangeState.Single);
+            expect(component.getItemRange(month)).toBe('single');
         });
 
         it('returns start if item is start of range', () => {
@@ -173,7 +173,7 @@ describe('CalendarMonth', () => {
 
             component.value = new TuiMonthRange(month, month.append({month: 2}));
 
-            expect(component.getItemRange(month)).toBe(TuiRangeState.Start);
+            expect(component.getItemRange(month)).toBe('start');
         });
 
         it('returns end if item is start of range', () => {
@@ -181,7 +181,7 @@ describe('CalendarMonth', () => {
 
             component.value = new TuiMonthRange(month.append({month: -2}), month);
 
-            expect(component.getItemRange(month)).toBe(TuiRangeState.End);
+            expect(component.getItemRange(month)).toBe('end');
         });
 
         it('returns end if hovered item before item', () => {
@@ -190,7 +190,7 @@ describe('CalendarMonth', () => {
             component.value = new TuiMonthRange(month, month);
             component.hoveredItem = new TuiMonth(TODAY.year, 4);
 
-            expect(component.getItemRange(month)).toBe(TuiRangeState.End);
+            expect(component.getItemRange(month)).toBe('end');
         });
     });
 
