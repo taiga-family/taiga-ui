@@ -1,0 +1,19 @@
+tui-app-bar {
+    text-align: left;
+    font: var(--tui-font-heading-6);
+
+    > .t-content {
+        position: static;
+        padding: 0 0 0 1.375rem;
+        transform: none;
+        max-width: calc(100% - var(--sides, 0px) / 2);
+
+        > * {
+            max-width: calc(100% - var(--sides, 0px));
+        }
+    }
+
+    > *:empty + .t-content {
+        padding: 0 0 0 0.625rem;
+    }
+}

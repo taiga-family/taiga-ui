@@ -1,17 +1,39 @@
 <tui-doc-page
     header="AppBar"
-    package="ADDON-MOBILE"
+    package="EXPERIMENTAL"
     type="components"
 >
     <ng-template pageTab>
-        <p>Component for mobile app header</p>
+        <tui-notification status="warning">
+            This code is
+            <strong>experimental</strong>
+            and is a subject to change. Expect final solution to be shipped in the next major version
+        </tui-notification>
+
+        <p>Component for top level app bar with navigation/status</p>
+
+        <tui-doc-example
+            id="mobile"
+            heading="Mobile: medium size"
+            [content]="example1"
+        >
+            <tui-app-bar-example-1></tui-app-bar-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="desktop"
+            heading="Desktop: large size"
+            [content]="example2"
+        >
+            <tui-app-bar-example-2></tui-app-bar-example-2>
+        </tui-doc-example>
 
         <tui-doc-example
             id="variants"
             heading="Variants"
-            [content]="example1"
+            [content]="example3"
         >
-            <tui-app-bar-example-1></tui-app-bar-example-1>
+            <tui-app-bar-example-3></tui-app-bar-example-3>
         </tui-doc-example>
     </ng-template>
 
