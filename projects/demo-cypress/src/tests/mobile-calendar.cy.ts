@@ -124,7 +124,7 @@ describe('Mobile calendar', () => {
             );
         });
 
-        it('Year selection scrolls through months', () => {
+        it('year selection scrolls through months', () => {
             cy.mount(TestComponent, {
                 imports: [TuiRootModule, TuiMobileCalendarModule],
                 componentProperties: {

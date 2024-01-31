@@ -10,8 +10,13 @@ declare global {
 }
 
 export const stableMount: typeof mount = (...mountArgs) =>
-    mount(...mountArgs).then(async mountResponse =>
-        mountResponse.fixture.whenStable().then(() => mountResponse),
+    mount(...mountArgs).then(mountResponse =>
+        cy
+            .get('body')
+            .find('tui-root')
+            .then(async () =>
+                mountResponse.fixture.whenStable().then(() => mountResponse),
+            ),
     );
 
 Cypress.Commands.add('mount', stableMount);
