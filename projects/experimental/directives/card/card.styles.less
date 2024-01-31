@@ -84,21 +84,25 @@
 
     &[tuiHeader] {
         padding: var(--t-dim) var(--t-dim) var(--t-dim) var(--t-padding);
-    }
 
-    [tuiCell] {
-        width: 100%;
-        padding: 0.5rem;
-        margin: -0.5rem -0.5rem -0.75rem;
-        border-radius: var(--tui-radius-l);
+        [tuiLink]:last-child {
+            margin-right: calc(-1 * var(--t-comp));
+        }
     }
 
     > [tuiHeader] {
         margin: var(--t-comp) var(--t-comp) calc(1.5 * var(--t-comp)) 0;
 
-        [tuiLink] {
+        [tuiLink]:last-child {
             margin-right: calc(-1 * var(--t-comp));
         }
+    }
+
+    [tuiCell] {
+        width: stretch;
+        padding: 0.5rem;
+        margin: -0.5rem -0.5rem -0.75rem;
+        border-radius: var(--tui-radius-l);
     }
 
     > [tuiLink]:last-child {
