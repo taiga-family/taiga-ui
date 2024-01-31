@@ -292,11 +292,20 @@ export const ROUTES: Routes = [
         },
     },
     {
-        path: 'experimental/card',
+        path: 'experimental/card-medium',
         loadChildren: async () =>
-            (await import('../experimental/card/card.module')).ExampleTuiCardModule,
+            (await import('../experimental/card-medium/card-medium.module')).ExampleTuiCardModule,
         data: {
-            title: 'Card',
+            title: 'CardMedium',
+        },
+    },
+    {
+        path: 'experimental/card-large',
+        loadChildren: async () =>
+            (await import('../experimental/card-large/card-large.module'))
+                .ExampleTuiCardLargeModule,
+        data: {
+            title: 'CardLarge',
         },
     },
     {

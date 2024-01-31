@@ -2,20 +2,26 @@
 
 // prettier-ignore
 [data-surface] {
-    .clearbtn();
     .transition();
 
     --tui-gap: 0.25rem;
     position: relative;
-    border-radius: var(--tui-radius-l);
     box-sizing: border-box;
-    padding: 1.25rem;
+    background: none;
     background-size: cover;
     background-repeat: no-repeat;
     overflow: hidden;
     isolation: isolate;
-    outline-color: var(--tui-focus);
-    transition-property: backdrop-filter, background, border-radius, box-shadow, mask, transform;
+    appearance: none;
+    border: 0;
+    font-size: inherit;
+    line-height: inherit;
+    text-decoration: none;
+    transition-property: backdrop-filter, background, border-radius, box-shadow, mask, transform !important;
+
+    &:focus-visible {
+        outline-color: var(--tui-focus);
+    }
 
     // Fix for https://bugs.chromium.org/p/chromium/issues/detail?id=1486408
     @supports (not (-moz-appearance: none)) and (not (-webkit-hyphens: none)) {
@@ -123,7 +129,6 @@ input[tuiSurfaceLayer] {
 
 [data-surface='elevated'] {
     box-shadow: var(--tui-shadow);
-    border-radius: var(--tui-radius-xl);
     background: var(--tui-elevation-01);
 }
 
@@ -138,12 +143,12 @@ a[data-surface='elevated'] {
         &:hover {
             box-shadow: var(--tui-shadow-hover);
             transform: translate3d(0, -0.25rem, 0);
+            background: var(--tui-elevation-01);
         }
     }
 }
 
 [data-surface='flat'] {
-    border-radius: var(--tui-radius-xl);
     background: var(--tui-clear);
 }
 

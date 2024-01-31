@@ -1,0 +1,40 @@
+<div
+    tuiCardLarge
+    tuiSurface="elevated"
+>
+    <header tuiHeader>
+        <h1 tuiTitle>
+            Title
+            <span tuiSubtitle>Subtitle</span>
+        </h1>
+    </header>
+
+    <section>
+        <div
+            *tuiRepeatTimes="let index of 3"
+            tuiCardMedium
+            tuiSurface="flat"
+        >
+            <tui-icon
+                icon="tuiIconPlusSquareLarge"
+                class="plus"
+            ></tui-icon>
+
+            <h2 tuiTitle>
+                Title
+                <span tuiSubtitle>Subtitle</span>
+            </h2>
+        </div>
+    </section>
+
+    <footer>
+        <button
+            appearance="secondary"
+            size="m"
+            tuiButton
+            type="button"
+        >
+            Label
+        </button>
+    </footer>
+</div>

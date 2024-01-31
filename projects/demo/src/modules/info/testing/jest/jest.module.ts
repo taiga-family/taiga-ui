@@ -14,5 +14,6 @@ import {JestComponent} from './jest.component';
         RouterModule.forChild(tuiGenerateRoutes(JestComponent)),
     ],
     declarations: [JestComponent],
+    exports: [JestComponent],
 })
 export class JestModule {}

@@ -1,0 +1,66 @@
+<div
+    tuiCardLarge
+    tuiSurface="elevated"
+>
+    <header tuiHeader>
+        <h1 tuiTitle>
+            Title
+            <span tuiSubtitle>Subtitle</span>
+        </h1>
+    </header>
+
+    <tui-hosted-dropdown
+        *tuiRepeatTimes="let index of 3"
+        tuiDropdownAlign="right"
+        [content]="dropdown"
+        [sided]="true"
+    >
+        <button tuiCell="l">
+            <tui-avatar
+                appearance="primary"
+                src="tuiIconStar"
+            ></tui-avatar>
+
+            <div tuiTitle>
+                Title
+                <div tuiSubtitle>Description</div>
+            </div>
+
+            <tui-icon
+                icon="tuiIconChevronRightLarge"
+                tuiAppearance="icon"
+            ></tui-icon>
+        </button>
+    </tui-hosted-dropdown>
+
+    <button
+        tuiLink
+        type="button"
+    >
+        Show all
+    </button>
+</div>
+
+<ng-template
+    #dropdown
+    let-close="close"
+>
+    <tui-data-list>
+        <tui-opt-group>
+            <button
+                *ngFor="let item of ['Edit', 'Download', 'Rename', 'Delete']"
+                tuiOption
+            >
+                {{ item }}
+            </button>
+        </tui-opt-group>
+        <tui-opt-group>
+            <button
+                tuiOption
+                (click)="close()"
+            >
+                Nevermind
+            </button>
+        </tui-opt-group>
+    </tui-data-list>
+</ng-template>

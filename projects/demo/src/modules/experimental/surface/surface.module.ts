@@ -13,6 +13,7 @@ import {
     TuiScrollbarModule,
 } from '@taiga-ui/core';
 import {
+    TuiAppearanceModule,
     TuiAvatarModule,
     TuiBadgeModule,
     TuiButtonModule,
@@ -46,6 +47,7 @@ import {ExampleTuiSurfaceComponent} from './surface.component';
         TuiMoneyModule,
         TuiThumbnailCardModule,
         tuiGetDocModules(ExampleTuiSurfaceComponent),
+        TuiAppearanceModule,
     ],
     declarations: [
         ExampleTuiSurfaceComponent,

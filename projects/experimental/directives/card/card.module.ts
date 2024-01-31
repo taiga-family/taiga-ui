@@ -1,10 +1,10 @@
 import {NgModule} from '@angular/core';
 
 import {TuiCardComponent} from './card.component';
-import {TuiCardDirective} from './card.directive';
+import {TuiCardLargeDirective, TuiCardMediumDirective} from './card.directive';
 
 @NgModule({
-    declarations: [TuiCardComponent, TuiCardDirective],
-    exports: [TuiCardDirective],
+    declarations: [TuiCardComponent, TuiCardLargeDirective, TuiCardMediumDirective],
+    exports: [TuiCardLargeDirective, TuiCardMediumDirective],
 })
 export class TuiCardModule {}
