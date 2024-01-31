@@ -1,0 +1,1 @@
+(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[70950],{70950:n=>{n.exports='```html\n<tui-swipe-actions>\n  <div>Card content</div>\n\n  <button\n    iconLeft="tuiIconEye"\n    size="m"\n    tuiIconButton\n    tuiSwipeAction\n  ></button>\n</tui-swipe-actions>\n```\n'}}]);
