@@ -42,7 +42,7 @@ describe('Mobile calendar', () => {
     })
     class TestComponent {
         @ViewChild(TuiMobileCalendarComponent, {static: true})
-        component!: TuiMobileCalendarComponent;
+        calendar!: TuiMobileCalendarComponent;
 
         single = true;
         min = TUI_FIRST_DAY;
@@ -130,28 +130,26 @@ describe('Mobile calendar', () => {
                 componentProperties: {
                     onConfirm: createOutputSpy('onConfirmSpy'),
                 },
-            }).then(wrapper => {
-                const testComponent = wrapper.component;
+            })
+                .then(wrapper => wrapper.component)
+                .then(component => {
+                    cy.wait(500).then(() => {
+                        component.calendar.setYear(1950);
 
-                testComponent.component.setYear(1950);
-                wrapper.fixture.detectChanges();
+                        cy.get(
+                            '[automation-id="tui-primitive-calendar-mobile__cell"]:visible',
+                        )
+                            .eq(0)
+                            .click();
 
-                cy.wait(1000); // wait scroll
-
-                cy.get('[automation-id="tui-primitive-calendar-mobile__cell"]:visible')
-                    .eq(0)
-                    .click();
-
-                cy.get('[automation-id="tui-mobile-calendar__confirm"]').click();
-            });
+                        cy.get('[automation-id="tui-mobile-calendar__confirm"]').click();
+                    });
+                });
 
             cy.get('@onConfirmSpy')
                 .should('be.called')
-                .then(args => {
-                    const spy = (args as any)?.getCalls()?.[0].args[0] as TuiDay;
-
-                    expect(spy.year).to.be.lessThan(1950);
-                });
+                .then(args => (args as any)?.getCalls()?.[0].args[0] as TuiDay)
+                .then(spy => expect(spy.year).to.equal(1950));
         });
     });
 });
