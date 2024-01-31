@@ -952,7 +952,7 @@ export const ROUTES: Routes = [
     },
     route({
         path: 'navigation/app-bar',
-        loadComponent: async () => import('../components/app-bar/app-bar.component'),
+        loadComponent: async () => import('../experimental/app-bar'),
         title: 'AppBar',
     }),
     {

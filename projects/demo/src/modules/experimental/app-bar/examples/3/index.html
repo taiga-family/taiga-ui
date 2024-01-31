@@ -1,0 +1,121 @@
+<h3>Customization</h3>
+<tui-app-bar>
+    <progress
+        size="s"
+        tuiProgressBar
+        class="bar"
+        [max]="100"
+        [value]="35"
+    ></progress>
+</tui-app-bar>
+
+<tui-app-bar class="gray">
+    <button
+        appearance=""
+        tuiButton
+        tuiSlot="left"
+    >
+        Back
+    </button>
+    <label tuiTitle>
+        <span tuiSubtitle>More interesting title</span>
+        Taiga UI
+    </label>
+    <button
+        appearance=""
+        tuiButton
+        tuiSlot="right"
+    >
+        Accept
+    </button>
+</tui-app-bar>
+
+<tui-app-bar class="black">
+    <button
+        appearance=""
+        tuiButton
+        tuiSlot="left"
+    >
+        Cancel
+    </button>
+    Taiga UI
+    <button
+        appearance=""
+        iconLeft="tuiIconSettingsLarge"
+        tuiIconButton
+        tuiSlot="right"
+    ></button>
+</tui-app-bar>
+
+<h3 class="tui-space_top-8">Centered Android</h3>
+<section tuiPlatform="android">
+    <tui-app-bar>
+        <label tuiTitle>Taiga UI</label>
+        <button
+            tuiButton
+            tuiSlot="right"
+        >
+            Action
+        </button>
+    </tui-app-bar>
+
+    <tui-app-bar>
+        <button
+            tuiAppBarBack
+            tuiSlot="left"
+        >
+            Back
+        </button>
+        <label
+            tuiFade
+            tuiTitle
+        >
+            Taiga UI — Components library
+        </label>
+        <a
+            iconLeft="tuiIconUserLarge"
+            title="User"
+            tuiIconButton
+            tuiSlot="right"
+        ></a>
+    </tui-app-bar>
+
+    <tui-app-bar>
+        <button
+            iconLeft="tuiIconClose"
+            title="Settings"
+            tuiIconButton
+            tuiSlot="left"
+        ></button>
+        <label tuiTitle>Taiga UI</label>
+        <a
+            iconLeft="tuiIconUserLarge"
+            title="User"
+            tuiIconButton
+            tuiSlot="right"
+        ></a>
+        <button
+            iconLeft="tuiIconSettingsLarge"
+            title="Settings"
+            tuiIconButton
+            tuiSlot="right"
+        ></button>
+    </tui-app-bar>
+
+    <tui-app-bar>
+        <button
+            tuiAppBarBack
+            tuiSlot="left"
+        ></button>
+        <label tuiTitle>
+            Taiga UI
+            <span tuiSubtitle>Components library</span>
+        </label>
+        <button
+            iconLeft="tuiIconSettingsLarge"
+            title="Settings"
+            tuiIconButton
+            tuiSlot="right"
+        ></button>
+    </tui-app-bar>
+</section>
