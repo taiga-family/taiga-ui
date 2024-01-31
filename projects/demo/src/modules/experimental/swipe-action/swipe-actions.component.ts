@@ -36,4 +36,9 @@ export class ExampleTuiSwipeActionsComponent {
         HTML: import('./examples/4/index.html?raw'),
         TypeScript: import('./examples/4/index.ts?raw'),
     };
+
+    readonly example5: TuiDocExample = {
+        HTML: import('./examples/5/index.html?raw'),
+        LESS: import('./examples/5/index.less?raw'),
+    };
 }
