@@ -1,1 +1,0 @@
-(self.webpackChunk_taiga_ui_components=self.webpackChunk_taiga_ui_components||[]).push([[94358],{94358:n=>{n.exports='```html\n<div tuiCard>\n  <tui-avatar\n    class="star"\n    src="tuiIconStarLarge"\n  ></tui-avatar>\n\n  <h2 tuiTitle>\n    Title\n    <span tuiSubtitle>Subtitle</span>\n  </h2>\n</div>\n```\n'}}]);
