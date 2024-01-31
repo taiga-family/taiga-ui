@@ -11,10 +11,6 @@ tui-block-status {
     width: 100%;
     height: 100%;
 
-    tui-root._mobile & {
-        padding: 2rem;
-    }
-
     &._card {
         border-radius: var(--tui-radius-xl);
         padding: 2rem;
@@ -22,10 +18,6 @@ tui-block-status {
 
     .t-block-image {
         margin-bottom: 2rem;
-
-        tui-root._mobile & {
-            margin-bottom: 1.5rem;
-        }
     }
 
     .t-block-text:not(:empty) {
@@ -33,10 +25,6 @@ tui-block-status {
         color: var(--tui-text-02);
         margin-bottom: 2rem;
         white-space: pre-line;
-
-        tui-root._mobile & {
-            margin-bottom: 1.5rem;
-        }
     }
 
     .t-block-actions:not(:empty) {
@@ -55,29 +43,15 @@ tui-block-status {
         font: var(--tui-font-heading-4);
         margin-top: 0;
         margin-bottom: 1rem;
-
-        tui-root._mobile & {
-            font: var(--tui-font-heading-5);
-            margin-bottom: 0.5rem;
-        }
     }
 
     img {
         width: 9rem;
         height: 9rem;
-
-        tui-root._mobile & {
-            width: 8rem;
-            height: 8rem;
-        }
     }
 
     a:not(:last-child),
     button:not(:last-child) {
         margin-bottom: 0.75rem;
-
-        tui-root._mobile & {
-            margin-bottom: 0.5rem;
-        }
     }
 }

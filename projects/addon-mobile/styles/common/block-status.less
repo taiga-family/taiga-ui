@@ -1,0 +1,42 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+tui-block-status {
+    padding: 2rem;
+
+    .t-block-image {
+        margin-bottom: 1.5rem;
+    }
+
+    .t-block-text:not(:empty) {
+        margin-bottom: 1.5rem;
+    }
+
+    &._card {
+        padding: 1.25rem;
+
+        & .t-block-image {
+            margin-top: 0.75rem;
+            margin-bottom: 1rem;
+        }
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font: var(--tui-font-heading-5);
+        margin-bottom: 0.5rem;
+    }
+
+    img {
+        width: 8rem;
+        height: 8rem;
+    }
+
+    a:not(:last-child),
+    button:not(:last-child) {
+        margin-bottom: 0.5rem;
+    }
+}
