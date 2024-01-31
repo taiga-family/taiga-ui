@@ -62,6 +62,9 @@ export class TuiRootComponent {
         @Inject(DOCUMENT) document: Document,
         @Inject(TUI_THEME) theme: string,
     ) {
-        document.documentElement.setAttribute('data-tui-theme', theme.toLowerCase());
+        document.defaultView?.document.documentElement.setAttribute(
+            'data-tui-theme',
+            theme.toLowerCase(),
+        );
     }
 }
