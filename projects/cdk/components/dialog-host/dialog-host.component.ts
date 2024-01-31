@@ -83,7 +83,7 @@ export class TuiDialogHostComponent<T extends TuiDialog<unknown, unknown>>
                 this.dialogs = dialogs;
                 this.cdr.markForCheck();
 
-                this.doc.documentElement.classList.toggle(
+                this.doc.defaultView?.document.documentElement.classList.toggle(
                     't-overscroll-none',
                     !!dialogs.length,
                 );
