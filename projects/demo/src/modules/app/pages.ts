@@ -860,6 +860,12 @@ export const pages: TuiDocPages = [
     // Experimental
     {
         section: 'Experimental',
+        title: 'AppBar',
+        keywords: 'mobile, ios, android, header, bar, navigation',
+        route: '/experimental/app-bar',
+    },
+    {
+        section: 'Experimental',
         title: 'Avatar ',
         keywords: 'аватар, image, pic, icon, картинка, изображение, avatar, stack',
         route: '/experimental/avatar',
@@ -1138,12 +1144,6 @@ export const pages: TuiDocPages = [
         route: '/icons/marker-icon',
     },
     // Navigation
-    {
-        section: 'Navigation',
-        title: 'AppBar',
-        keywords: 'mobile, ios, android, header, bar, navigation',
-        route: '/navigation/app-bar',
-    },
     {
         section: 'Navigation',
         title: 'Breadcrumbs',
