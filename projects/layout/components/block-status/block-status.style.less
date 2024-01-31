@@ -18,6 +18,14 @@ tui-block-status {
     &._card {
         border-radius: var(--tui-radius-xl);
         padding: 2rem;
+
+        tui-root._mobile & {
+            padding: 1.25rem;
+
+            & .t-block-image {
+                margin-top: 0.75rem;
+            }
+        }
     }
 
     .t-block-image {
