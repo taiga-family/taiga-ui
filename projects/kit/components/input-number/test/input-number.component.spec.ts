@@ -142,8 +142,9 @@ describe('InputNumber', () => {
 
     it('There is no minus sign for negative values with min> = 0', async () => {
         testComponent.component.min = 0;
-        inputPO.sendText('-12345678');
+        fixture.detectChanges();
 
+        inputPO.sendText('-12345678');
         await fixture.whenStable();
 
         expect(getNativeInput()!.nativeElement.value).toBe(
@@ -153,8 +154,9 @@ describe('InputNumber', () => {
 
     it('No minus sign for non-negative min', async () => {
         testComponent.component.min = 10;
-        inputPO.sendText('-12345678');
+        fixture.detectChanges();
 
+        inputPO.sendText('-12345678');
         await fixture.whenStable();
 
         expect(getNativeInput()!.nativeElement.value).toBe(
@@ -203,6 +205,7 @@ describe('InputNumber', () => {
             beforeEach(() => {
                 inputPO.sendText('');
                 testComponent.control.setValue(null);
+                fixture.autoDetectChanges();
             });
 
             it('A value less than positive min does not update the control', () => {
@@ -220,10 +223,11 @@ describe('InputNumber', () => {
                 expect(testComponent.control.value).toBe(15);
             });
 
-            it('A value greater than max is clipped to max', () => {
+            it('A value greater than max is clipped to max', async () => {
                 const savedMax = 25;
 
                 testComponent.component.max = savedMax;
+                await fixture.whenStable();
                 inputPO.sendText('50');
 
                 expect(testComponent.control.value).toBe(savedMax);
@@ -244,10 +248,11 @@ describe('InputNumber', () => {
                 expect(testComponent.control.value).toBe(-15);
             });
 
-            it('A value less than negative min is truncated to min', () => {
+            it('A value less than negative min is truncated to min', async () => {
                 const savedMin = -25;
 
                 testComponent.component.min = savedMin;
+                await fixture.whenStable();
                 inputPO.sendText('-50');
 
                 expect(testComponent.control.value).toBe(savedMin);
