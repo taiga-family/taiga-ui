@@ -1,4 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 287" preserveAspectRatio="xMinYMin meet">
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="256px"
+    height="287px"
+    viewBox="0 0 256 287"
+    preserveAspectRatio="xMidYMid"
+>
     <path d="M7.964 72.363L129.707 1.479l121.742 70.884v141.653L129.707 284.9 7.964 214.016V72.363z" fill="#C00" />
     <path d="M133.12 143.132l113.209-65.194 4.551 131.413-117.76 71.111v-137.33z" fill="#FFF" />
     <path
