@@ -9,10 +9,4 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     encapsulation,
     changeDetection,
 })
-export class TuiSwipeActionExample3 {
-    openIndex = NaN;
-
-    open(index: number): void {
-        this.openIndex = index;
-    }
-}
+export class TuiSwipeActionExample3 {}

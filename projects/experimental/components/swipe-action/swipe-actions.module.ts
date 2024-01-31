@@ -1,14 +1,13 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {IntersectionObserverModule} from '@ng-web-apis/intersection-observer';
 import {TuiResizeModule} from '@taiga-ui/cdk';
 
 import {TuiSwipeActionsComponent} from './swipe-actions.component';
-import {TuiSwipeActionsOpenDirective} from './swipe-actions-open.directive';
+import {TuiSwipeActionsAutoCloseDirective} from './swipe-actions-auto-close.directive';
 
 @NgModule({
-    imports: [CommonModule, TuiResizeModule, IntersectionObserverModule],
-    declarations: [TuiSwipeActionsComponent, TuiSwipeActionsOpenDirective],
-    exports: [TuiSwipeActionsComponent, TuiSwipeActionsOpenDirective],
+    imports: [CommonModule, TuiResizeModule],
+    declarations: [TuiSwipeActionsComponent, TuiSwipeActionsAutoCloseDirective],
+    exports: [TuiSwipeActionsComponent, TuiSwipeActionsAutoCloseDirective],
 })
 export class TuiSwipeActionsModule {}

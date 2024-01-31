@@ -1,7 +1,4 @@
-<tui-swipe-actions
-    [open]="openIndex === 0"
-    (openChange)="open(0)"
->
+<tui-swipe-actions [autoClose]="true">
     <div tuiSurface="elevated">
         <div tuiCell>
             <tui-avatar
@@ -36,10 +33,7 @@
     ></button>
 </tui-swipe-actions>
 
-<tui-swipe-actions
-    [open]="openIndex === 1"
-    (openChange)="open(1)"
->
+<tui-swipe-actions [autoClose]="true">
     <div tuiSurface="elevated">
         <div tuiCell>
             <tui-avatar

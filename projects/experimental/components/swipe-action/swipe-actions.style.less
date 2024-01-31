@@ -7,24 +7,23 @@
     --tui-item-size: 44;
 
     display: flex;
-    width: calc(1px * var(--t-content-width));
+    width: stretch;
     align-items: center;
     overflow-x: scroll;
     overflow-y: hidden;
     scroll-snap-type: x mandatory;
     perspective: 1px;
-    perspective-origin: calc(
-        calc(1px * var(--t-content-width)) + calc(1px * var(--tui-item-size) / 2) + var(--tui-actions-padding)
-    );
+    perspective-origin: calc(100% + calc(1px * var(--tui-item-size) / 2) + var(--tui-actions-padding));
 }
 
 .t-content {
     scroll-snap-align: start;
     flex-shrink: 0;
+    width: 100%;
 }
 
 .t-actions {
-    display: inline-flex;
+    display: flex;
     gap: calc(1px * var(--tui-action-gap));
     padding: 0 1rem 0 var(--tui-actions-padding);
     scroll-snap-align: start;
