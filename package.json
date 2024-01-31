@@ -124,7 +124,7 @@
         "@cypress/webpack-batteries-included-preprocessor": "3.0.2",
         "@cypress/webpack-preprocessor": "6.0.1",
         "@nx/angular": "17.2.8",
-        "@nx/cypress": "17.2.8",
+        "@nx/cypress": "17.3.0",
         "@nx/jest": "17.2.8",
         "@nx/node": "17.2.8",
         "@nx/workspace": "17.2.8",
