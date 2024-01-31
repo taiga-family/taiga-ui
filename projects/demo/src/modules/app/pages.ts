@@ -981,6 +981,12 @@ export const pages: TuiDocPages = [
     },
     {
         section: 'Experimental',
+        title: 'SwipeActions',
+        keywords: 'swipe, action, свайп, card, действие',
+        route: '/experimental/swipe-actions',
+    },
+    {
+        section: 'Experimental',
         title: 'Title',
         keywords: 'subtitle, заголовок, caption, description, подзаголовок',
         route: '/experimental/title',
