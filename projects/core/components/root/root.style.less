@@ -35,7 +35,12 @@ tui-root {
 tui-root > .t-root-scrollbar {
     .fullsize(fixed, inset);
 
+    display: none;
     margin: 0;
+}
+
+[data-tui-theme] tui-root > .t-root-scrollbar {
+    display: block;
 }
 
 .t-root-content {
