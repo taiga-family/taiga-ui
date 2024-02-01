@@ -6,6 +6,7 @@ import {tuiGetDocModules} from '@taiga-ui/addon-doc';
 import {TuiRippleModule} from '@taiga-ui/addon-mobile';
 import {TuiRepeatTimesModule} from '@taiga-ui/cdk';
 import {
+    TuiAppearanceDirective,
     TuiLabelModule,
     TuiLinkModule,
     TuiModeModule,
@@ -42,6 +43,7 @@ import {ExampleTuiSurfaceComponent} from './surface.component';
         TuiMoneyModule,
         TuiThumbnailCardModule,
         tuiGetDocModules(ExampleTuiSurfaceComponent),
+        TuiAppearanceDirective,
     ],
     declarations: [
         ExampleTuiSurfaceComponent,

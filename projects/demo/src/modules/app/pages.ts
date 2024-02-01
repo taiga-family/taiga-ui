@@ -1031,9 +1031,15 @@ export const pages: TuiDocPages = [
     },
     {
         section: 'Experimental',
-        title: 'Card',
-        keywords: 'card, block, карточка, блок',
-        route: '/experimental/card',
+        title: 'CardMedium',
+        keywords: 'card, card-medium, medium, block, карточка, блок',
+        route: '/experimental/card-medium',
+    },
+    {
+        section: 'Experimental',
+        title: 'CardLarge',
+        keywords: 'card, card-large, large, block, карточка, блок',
+        route: '/experimental/card-large',
     },
     {
         section: 'Experimental',
