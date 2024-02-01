@@ -974,6 +974,12 @@ export const pages: TuiDocPages = [
         route: '/experimental/surface',
     },
     {
+        section: 'Components',
+        title: 'SwipeActions',
+        keywords: 'swipe, action, свайп, card, действие',
+        route: '/components/swipe-actions',
+    },
+    {
         section: 'Experimental',
         title: 'Textfield',
         keywords: 'form, input, select, textarea, combobox, ввод, форма, поле',

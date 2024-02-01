@@ -25,6 +25,10 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifier[] = [
         to: {name: 'TuiCheckboxModule', moduleSpecifier: '@taiga-ui/kit'},
     },
     {
+        from: {name: 'TuiSwipeActionsModule', moduleSpecifier: '@taiga-ui/experimental'},
+        to: {name: 'TuiSwipeActionsComponent', moduleSpecifier: '@taiga-ui/addon-mobile'},
+    },
+    {
         from: {name: 'TuiRadioModule', moduleSpecifier: '@taiga-ui/experimental'},
         to: {name: 'TuiRadioModule', moduleSpecifier: '@taiga-ui/kit'},
     },

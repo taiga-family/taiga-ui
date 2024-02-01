@@ -1,0 +1,34 @@
+<tui-swipe-actions [style.--tui-actions-padding.rem]="0.5">
+    <div
+        tuiMode="onDark"
+        tuiSurface
+        class="blur"
+    >
+        <tui-avatar src="/assets/images/avatar.jpg"></tui-avatar>
+        <h3 tuiTitle="m">Alex Inkin</h3>
+        <button
+            appearance="glass"
+            iconLeft="tuiIconMailLarge"
+            size="m"
+            tuiIconButton
+            class="button"
+        >
+            Message
+        </button>
+    </div>
+
+    <input
+        tuiSwipeAction
+        tuiToggle
+        type="checkbox"
+        [(ngModel)]="checkbox"
+    />
+    <button
+        appearance="destructive"
+        iconLeft="tuiIconTrash"
+        size="m"
+        tuiIconButton
+        tuiSwipeAction
+        [style.borderRadius.%]="100"
+    ></button>
+</tui-swipe-actions>

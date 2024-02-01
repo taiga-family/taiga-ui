@@ -6,9 +6,9 @@ import {
     TUI_DOC_MENU_TEXT,
     TuiDocIcons,
 } from '@taiga-ui/addon-doc/tokens';
-import {ALWAYS_FALSE_HANDLER, TuiSwipeService} from '@taiga-ui/cdk';
+import {ALWAYS_FALSE_HANDLER} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {distinctUntilChanged, filter, map, merge, startWith, Subject} from 'rxjs';
+import {distinctUntilChanged, map, merge, startWith, Subject} from 'rxjs';
 
 @Component({
     selector: 'header[tuiDocHeader]',
@@ -22,10 +22,6 @@ export class TuiDocHeaderComponent {
     readonly open$ = merge(
         this.router.events.pipe(map(ALWAYS_FALSE_HANDLER)),
         this.stream$,
-        this.swipes$.pipe(
-            filter(swipe => swipe.direction === 'left' || swipe.direction === 'right'),
-            map(swipe => swipe.direction === 'right'),
-        ),
     ).pipe(startWith(false), distinctUntilChanged());
 
     constructor(
@@ -33,7 +29,6 @@ export class TuiDocHeaderComponent {
         @Inject(TUI_DOC_LOGO) readonly logo: PolymorpheusContent,
         @Inject(TUI_DOC_MENU_TEXT) readonly menu: string,
         @Inject(Router) private readonly router: Router,
-        @Inject(TuiSwipeService) private readonly swipes$: TuiSwipeService,
     ) {}
 
     onClick(): void {
