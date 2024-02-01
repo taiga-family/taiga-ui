@@ -3,6 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
+import {TuiPlatformModule} from '@taiga-ui/cdk';
 import {TuiButtonModule, TuiLinkModule} from '@taiga-ui/core';
 import {TuiAvatarModule} from '@taiga-ui/kit';
 import {TuiBlockStatusModule} from '@taiga-ui/layout';
@@ -12,6 +13,7 @@ import {TuiBlockStatusExample1} from './examples/1';
 import {TuiBlockStatusExample2} from './examples/2';
 import {TuiBlockStatusExample3} from './examples/3';
 import {TuiBlockStatusExample4} from './examples/4';
+import {TuiBlockStatusExample5} from './examples/5';
 
 @NgModule({
     imports: [
@@ -24,6 +26,7 @@ import {TuiBlockStatusExample4} from './examples/4';
         TuiButtonModule,
         TuiAvatarModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiBlockStatusComponent)),
+        TuiPlatformModule,
     ],
     declarations: [
         ExampleTuiBlockStatusComponent,
@@ -31,6 +34,7 @@ import {TuiBlockStatusExample4} from './examples/4';
         TuiBlockStatusExample2,
         TuiBlockStatusExample3,
         TuiBlockStatusExample4,
+        TuiBlockStatusExample5,
     ],
     exports: [ExampleTuiBlockStatusComponent],
 })
