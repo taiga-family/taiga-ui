@@ -1,9 +1,13 @@
 import {Provider} from '@angular/core';
-import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
+import {tuiCreateToken, TuiPopover, tuiProvideOptions} from '@taiga-ui/cdk';
 import type {TuiDialogOptions} from '@taiga-ui/core/interfaces';
-import {EMPTY, Observable} from 'rxjs';
+import {BehaviorSubject, EMPTY, Observable} from 'rxjs';
 
 type TuiDialogDefaultOptions = Omit<TuiDialogOptions<unknown>, 'data'>;
+
+export const TUI_DIALOGS = tuiCreateToken(
+    new BehaviorSubject<ReadonlyArray<TuiPopover<any, any>>>([]),
+);
 
 export const TUI_DIALOG_DEFAULT_OPTIONS: TuiDialogDefaultOptions = {
     size: 'm',

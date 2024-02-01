@@ -1,18 +1,14 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
 :host {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
+    .fullsize(fixed);
     height: 0;
 }
 
 .t-overlay,
 .t-dialog {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    .scrollbar-hidden();
+    .fullsize(fixed, inset);
     display: flex;
     align-items: flex-start;
     outline: none;
@@ -20,18 +16,6 @@
 
     &.ng-animating {
         overflow: clip;
-    }
-
-    /* stylelint-disable*/
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    /* stylelint-enable*/
-
-    &::-webkit-scrollbar,
-    &::-webkit-scrollbar-thumb {
-        background: transparent;
-        width: 0;
-        height: 0;
     }
 }
 
@@ -65,11 +49,7 @@
 }
 
 .t-scrollbars {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    .fullsize(fixed, inset);
     margin: 0;
     color: #747474;
 }

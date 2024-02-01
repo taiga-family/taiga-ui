@@ -1,5 +1,5 @@
 import {Directive} from '@angular/core';
-import {AbstractTuiDialogDirective, AbstractTuiDialogService} from '@taiga-ui/cdk';
+import {TuiPopoverDirective, TuiPopoverService} from '@taiga-ui/cdk';
 import {TuiDialogOptions} from '@taiga-ui/core/interfaces';
 
 import {TuiDialogService} from './dialog.service';
@@ -10,11 +10,9 @@ import {TuiDialogService} from './dialog.service';
     outputs: ['openChange: tuiDialogChange'],
     providers: [
         {
-            provide: AbstractTuiDialogService,
+            provide: TuiPopoverService,
             useExisting: TuiDialogService,
         },
     ],
 })
-export class TuiDialogDirective<T> extends AbstractTuiDialogDirective<
-    TuiDialogOptions<T>
-> {}
+export class TuiDialogDirective<T> extends TuiPopoverDirective<TuiDialogOptions<T>> {}

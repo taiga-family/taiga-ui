@@ -1,4 +1,12 @@
-import {animate, query, stagger, style, transition, trigger} from '@angular/animations';
+import {
+    animate,
+    animateChild,
+    query,
+    stagger,
+    style,
+    transition,
+    trigger,
+} from '@angular/animations';
 
 const TRANSITION = '{{duration}}ms ease-in-out';
 const DURATION = {params: {duration: 300}};
@@ -8,6 +16,17 @@ export interface TuiDurationOptions {
     params: {duration: number};
     value: string;
 }
+
+export const tuiHost = trigger('tuiHost', [
+    transition(':enter', [
+        style({overflow: 'clip'}),
+        query(':scope > *', [animateChild()], {optional: true}),
+    ]),
+    transition(':leave', [
+        style({overflow: 'clip'}),
+        query(':scope > *', [animateChild()], {optional: true}),
+    ]),
+]);
 
 export const tuiHeightCollapse = trigger('tuiHeightCollapse', [
     transition(

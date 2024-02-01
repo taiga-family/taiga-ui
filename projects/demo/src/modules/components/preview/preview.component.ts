@@ -8,7 +8,6 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
     changeDetection,
 })
 export class ExampleTuiPreviewComponent {
-    readonly exampleModule = import('./examples/import/import-module.md?raw');
     readonly exampleComponent = import('./examples/import/component.md?raw');
     readonly exampleHtml = import('./examples/import/template.md?raw');
 

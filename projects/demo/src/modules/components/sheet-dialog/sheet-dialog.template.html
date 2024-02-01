@@ -10,7 +10,7 @@
             *ngIf="!isMobile"
             class="tui-space_top-4"
         >
-            This component only works on mobile devices. Enable emulation in DevTools
+            This component only works on mobile devices. Enable emulation in DevTools and refresh the page.
         </tui-notification>
 
         <tui-doc-example
@@ -135,21 +135,7 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                <p>
-                    Import
-                    <code>TuiSheetDialogModule</code>
-                    to your
-                    <code>AppModule</code>
-                </p>
-
-                <tui-doc-code
-                    filename="my.module.ts"
-                    [code]="exampleModule"
-                ></tui-doc-code>
-            </li>
-
-            <li>
-                <p>Use it in component</p>
+                Inject service and show dialog:
 
                 <tui-doc-code
                     filename="my.component.html"

@@ -27,17 +27,6 @@
             </p>
         </tui-notification>
 
-        <tui-notification
-            status="warning"
-            class="tui-space_vertical-4"
-        >
-            Do not forget to add
-            <code>
-                <strong>TuiDialogModule</strong>
-            </code>
-            into your app.module to use dialogs (See also "Setup" for details)
-        </tui-notification>
-
         <tui-doc-example
             id="string"
             heading="Dialog from string"
@@ -300,23 +289,11 @@
         <ol class="b-demo-steps">
             <li>
                 <p>
-                    Add
-                    <code>TuiDialogModule</code>
-                    into your app.module
-                </p>
-
-                <tui-doc-code
-                    filename="app.module.ts"
-                    [code]="exampleModule"
-                ></tui-doc-code>
-            </li>
-            <li>
-                <p>
                     Use
                     <code>open</code>
-                    method to show a dialog, subscribe to an
+                    method to initiate a dialog, subscribe to a returned
                     <code>Observable</code>
-                    :
+                    to show it :
                 </p>
 
                 <tui-doc-code
@@ -329,7 +306,7 @@
                 <p>
                     If you want to use your own component as a dialog content, use
                     <code>POLYMORPHEUS_CONTEXT</code>
-                    in it. Dialog will provide with this token some useful options:
+                    in it. Dialog will provide this token with some useful options:
                     <code>$implicit</code>
                     with
                     <code tuiText="Observer<O>"></code>
@@ -371,9 +348,12 @@
 
             <li>
                 <p>
-                    If you use dialog components in lazy loading modules, do not forget to pass into
-                    <code>new PolymorpheusComponent Injector</code>
-                    of component where you open a dialog
+                    If you use dialog components in lazy loading modules, and want to reach for some local providers,
+                    you can pass
+                    <code>Injector</code>
+                    into
+                    <code>new PolymorpheusComponent</code>
+                    of your dialog component.
                 </p>
 
                 <tui-doc-code
@@ -381,58 +361,6 @@
                     [code]="exampleLazyModule"
                 ></tui-doc-code>
             </li>
-            <li>
-                <p>
-                    Dialogs have experimental feature with closing them on browser backward navigation. It was achieved
-                    through manipulation of
-                    <code>
-                        <strong>window.history</strong>
-                    </code>
-                    .
-                </p>
-
-                <p>
-                    The feature is disabled by default because it can cause troubles in some cases. To enable this
-                    feature for your app use
-                    <code>
-                        <strong>TUI_DIALOG_CLOSES_ON_BACK</strong>
-                    </code>
-                    token.
-                </p>
-
-                <tui-doc-code
-                    filename="app.module.ts"
-                    [code]="exampleDialogClosesOnBackToken"
-                ></tui-doc-code>
-            </li>
         </ol>
-    </ng-template>
-
-    <ng-template pageTab="Your own dialogs">
-        <p>
-            You can create your own dialogs. For example, special dialogs for mobile apps or with very customizable
-            appearance.
-        </p>
-        <p>
-            Then you need to provide a stream of your dialogs into multi token
-            <code>TUI_DIALOGS</code>
-            .
-        </p>
-        <p>
-            You can also use
-            <code>AbstractTuiDialogService</code>
-            to create this stream of dialogs.
-        </p>
-
-        <p>
-            See example of custom dialog
-            <a
-                routerLink="/dialog/custom"
-                tuiLink
-            >
-                here
-            </a>
-            .
-        </p>
     </ng-template>
 </tui-doc-page>
