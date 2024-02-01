@@ -191,15 +191,7 @@ export class TuiInputDateRangeComponent
     }
 
     get computedMask(): MaskitoOptions {
-        /**
-         * TODO: we can delete this workaround in v4.0
-         * after solving this issue:
-         * https://github.com/taiga-family/maskito/issues/604
-         */
-        const nativeValueIsNotSynced =
-            this.textfield?.nativeFocusableElement?.value !== this.computedValue;
-
-        return this.activePeriod || nativeValueIsNotSynced
+        return this.activePeriod
             ? MASKITO_DEFAULT_OPTIONS
             : this.calculateMask(
                   this.dateFormat,
