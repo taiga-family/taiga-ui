@@ -2,10 +2,13 @@
     <span class="t-pages">
         <ng-container *ngIf="showPages">
             {{ texts.pages }}
-            <strong class="t-strong">{{ pages }}</strong>
+            <strong class="t-strong">{{ pageCount }}</strong>
         </ng-container>
     </span>
-    <span automation-id="tui-table-pagination__lines-per-page-wrapper">
+    <span
+        automation-id="tui-table-pagination__lines-per-page-wrapper"
+        class="t-lines-info"
+    >
         {{ texts.linesPerPage }}
         <tui-hosted-dropdown
             [content]="content"
@@ -50,27 +53,50 @@
         {{ texts.of }}
         <strong class="t-strong">{{ total }}</strong>
     </span>
-    <ng-container *ngIf="spinTexts$ | async as spinTexts">
-        <button
-            appearance="icon"
-            size="xs"
-            tuiIconButton
-            type="button"
-            class="t-back"
-            [disabled]="leftDisabled"
-            [icon]="icons.decrement"
-            [title]="spinTexts[0]"
-            (click)="back()"
-        ></button>
-        <button
-            appearance="icon"
-            size="xs"
-            tuiIconButton
-            type="button"
-            [disabled]="rightDisabled"
-            [icon]="icons.increment"
-            [title]="spinTexts[1]"
-            (click)="forth()"
-        ></button>
-    </ng-container>
+    <button
+        *ngIf="showFirstLastPageButtons"
+        appearance="icon"
+        size="xs"
+        tuiIconButton
+        type="button"
+        class="t-navigation-button"
+        [disabled]="firstPageDisabled"
+        [icon]="paginationIcons.firstPage"
+        [title]="texts.firstPage"
+        (click)="selectFirstPage()"
+    ></button>
+    <button
+        appearance="icon"
+        size="xs"
+        tuiIconButton
+        type="button"
+        class="t-navigation-button"
+        [disabled]="previousPageDisabled"
+        [icon]="paginationIcons.previousPage"
+        [title]="texts.previousPage"
+        (click)="selectPreviousPage()"
+    ></button>
+    <button
+        appearance="icon"
+        size="xs"
+        tuiIconButton
+        type="button"
+        class="t-navigation-button"
+        [disabled]="nextPageDisabled"
+        [icon]="paginationIcons.nextPage"
+        [title]="texts.nextPage"
+        (click)="selectNextPage()"
+    ></button>
+    <button
+        *ngIf="showFirstLastPageButtons"
+        appearance="icon"
+        size="xs"
+        tuiIconButton
+        type="button"
+        class="t-navigation-button"
+        [disabled]="lastPageDisabled"
+        [icon]="paginationIcons.lastPage"
+        [title]="texts.lastPage"
+        (click)="selectLastPage()"
+    ></button>
 </ng-container>

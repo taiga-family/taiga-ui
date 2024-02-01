@@ -6,5 +6,9 @@ export const TUI_ENGLISH_LANGUAGE_ADDON_TABLE: TuiLanguageTable = {
         pages: 'Pages',
         linesPerPage: 'Lines per page',
         of: 'of',
+        firstPage: 'First page',
+        previousPage: 'Previous page',
+        nextPage: 'Next page',
+        lastPage: 'Last page',
     },
 };
