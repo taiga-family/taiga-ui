@@ -6,5 +6,9 @@ export const TUI_TURKISH_LANGUAGE_ADDON_TABLE: TuiLanguageTable = {
         pages: 'Sayfa',
         linesPerPage: 'Görüntülenen',
         of: 'toplam',
+        firstPage: 'First page',
+        previousPage: 'Previous page',
+        nextPage: 'Next page',
+        lastPage: 'Last page',
     },
 };

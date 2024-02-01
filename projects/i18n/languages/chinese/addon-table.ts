@@ -6,5 +6,9 @@ export const TUI_CHINESE_LANGUAGE_ADDON_TABLE: TuiLanguageTable = {
         pages: '页面',
         linesPerPage: '每页行数',
         of: '于',
+        firstPage: 'First page',
+        previousPage: 'Previous page',
+        nextPage: 'Next page',
+        lastPage: 'Last page',
     },
 };

@@ -50,6 +50,7 @@
         <tui-doc-demo>
             <tui-table-pagination
                 [items]="items"
+                [showFirstLastPageButtons]="showFirstLastPageButtons"
                 [total]="total"
                 [(page)]="page"
                 [(size)]="size"
@@ -59,6 +60,14 @@
             />
         </tui-doc-demo>
         <tui-doc-documentation>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="showFirstLastPageButtons"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="showFirstLastPageButtons"
+            >
+                Whether to show the first page/last page buttons.
+            </ng-template>
             <ng-template
                 documentationPropertyMode="input"
                 documentationPropertyName="total"

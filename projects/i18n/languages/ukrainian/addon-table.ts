@@ -6,5 +6,9 @@ export const TUI_UKRAINIAN_LANGUAGE_ADDON_TABLE: TuiLanguageTable = {
         pages: 'Сторінок',
         linesPerPage: 'Рядків на сторінку',
         of: 'з',
+        firstPage: 'First page',
+        previousPage: 'Previous page',
+        nextPage: 'Next page',
+        lastPage: 'Last page',
     },
 };

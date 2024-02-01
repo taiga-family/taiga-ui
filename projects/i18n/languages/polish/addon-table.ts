@@ -6,5 +6,9 @@ export const TUI_POLISH_LANGUAGE_ADDON_TABLE: TuiLanguageTable = {
         pages: 'Strony',
         linesPerPage: 'Wierszy na stronę',
         of: 'z',
+        firstPage: 'First page',
+        previousPage: 'Previous page',
+        nextPage: 'Next page',
+        lastPage: 'Last page',
     },
 };

@@ -6,5 +6,9 @@ export const TUI_RUSSIAN_LANGUAGE_ADDON_TABLE: TuiLanguageTable = {
         pages: 'Страниц',
         linesPerPage: 'Строк на страницу',
         of: 'из',
+        firstPage: 'Первая страница',
+        previousPage: 'Предыдущая страница',
+        nextPage: 'Следующая страница',
+        lastPage: 'Последняя страница',
     },
 };

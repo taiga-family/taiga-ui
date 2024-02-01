@@ -19,6 +19,7 @@ export class ExampleTuiTablePaginationComponent {
     protected page = 5;
     protected items = this.itemsVariants[0];
     protected size = this.items[0];
+    protected showFirstLastPageButtons = false;
 
     protected readonly example1: TuiDocExample = {
         HTML: import('./examples/1/index.html?raw'),
