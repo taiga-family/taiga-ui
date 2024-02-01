@@ -295,7 +295,7 @@ export const ROUTES: Routes = [
         path: 'experimental/card-medium',
         loadChildren: async () =>
             (await import('../experimental/card-medium/card-medium.module'))
-                .ExampleTuiCardModule,
+                .ExampleTuiCardMediumModule,
         data: {
             title: 'CardMedium',
         },

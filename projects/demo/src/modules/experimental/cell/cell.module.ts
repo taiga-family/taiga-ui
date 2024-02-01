@@ -19,6 +19,7 @@ import {
     TuiBadgeModule,
     TuiBadgeNotificationModule,
     TuiButtonModule,
+    TuiCardModule,
     TuiCellModule,
     TuiCheckboxModule,
     TuiFadeModule,
@@ -75,6 +76,7 @@ import {TuiCellExample7} from './examples/7';
         TuiHostedDropdownModule,
         TuiGroupModule,
         tuiGetDocModules(ExampleTuiCellComponent),
+        TuiCardModule,
     ],
     declarations: [
         ExampleTuiCellComponent,

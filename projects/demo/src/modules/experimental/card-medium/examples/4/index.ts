@@ -9,7 +9,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     encapsulation,
     changeDetection,
 })
-export class TuiCardExample4 {
+export class TuiCardMediumExample4 {
     readonly urls = [
         'https://avatars.githubusercontent.com/u/11832552',
         'https://avatars.githubusercontent.com/u/10106368',
