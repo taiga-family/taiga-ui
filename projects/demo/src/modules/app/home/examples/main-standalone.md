@@ -6,7 +6,6 @@ bootstrapApplication(AppComponent, {
   providers: [
     provideAnimations(),
     provideRouter(routes),
-    provideClientHydration(),
     importProvidersFrom(
       TuiRootModule,
       // ...
