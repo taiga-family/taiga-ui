@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[9848],{9848:e=>{e.exports="```html\n{{item | tuiMapper: mapper: someArg}}\n```\n"}}]);

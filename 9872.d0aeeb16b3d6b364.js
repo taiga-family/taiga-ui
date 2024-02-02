@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[9872],{9872:n=>{n.exports='<span\n    tuiDropdown="Great Scott!"\n    tuiDropdownHover\n>\n    This is heavy!\n</span>\n'}}]);

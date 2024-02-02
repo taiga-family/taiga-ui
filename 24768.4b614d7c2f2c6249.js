@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[24768],{2388:n=>{n.exports='<p>This notification will be removed after router change (see component sample)</p>\n<button\n    size="m"\n    tuiButton\n    type="button"\n    (click)="showNotification()"\n>\n    Show\n</button>\n'}}]);

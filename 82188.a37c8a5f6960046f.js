@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[82188],{82188:e=>{e.exports="```ts\nimport '@angular/localize/init';\nimport 'zone.js/dist/zone';\n```\n"}}]);

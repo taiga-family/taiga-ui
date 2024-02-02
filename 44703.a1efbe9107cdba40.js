@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[44703],{44703:i=>{i.exports='```html\n<tui-input-files [formControl]="control"></tui-input-files>\n\n<tui-files>\n  <tui-file\n    tuiItem\n    [file]="file"\n  ></tui-file>\n</tui-files>\n```\n'}}]);

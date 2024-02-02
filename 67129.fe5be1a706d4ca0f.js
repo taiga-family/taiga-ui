@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[67129],{67129:e=>{e.exports=".table {\n    width: 100%;\n    table-layout: fixed;\n}\n\n.error {\n    color: white;\n}\n"}}]);
