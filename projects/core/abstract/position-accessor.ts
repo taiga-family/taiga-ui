@@ -1,10 +1,9 @@
 import {ExistingProvider, FactoryProvider, Optional, SkipSelf, Type} from '@angular/core';
 import {TuiPoint} from '@taiga-ui/core/types';
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export abstract class TuiPositionAccessor {
     abstract readonly type: string;
-    abstract getPosition(rect: ClientRect): TuiPoint;
+    abstract getPosition(rect: DOMRect): TuiPoint;
 }
 
 export function tuiPositionAccessorFor(

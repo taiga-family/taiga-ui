@@ -3,7 +3,6 @@ import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {Component} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {TuiIdService} from '@taiga-ui/cdk';
 import {TuiDialogHarness} from '@taiga-ui/testing';
 
 import {TuiRootModule} from '../../root/root.module';
@@ -29,13 +28,7 @@ describe('Dialog with TUI_DIALOG_OPTIONS', () => {
         TestBed.configureTestingModule({
             imports: [NoopAnimationsModule, TuiRootModule, TuiDialogModule],
             declarations: [TestComponent],
-            providers: [
-                tuiDialogOptionsProvider({closeable}),
-                {
-                    provide: TuiDialogService,
-                    useFactory: () => new TuiDialogService(TestBed.inject(TuiIdService)),
-                },
-            ],
+            providers: [tuiDialogOptionsProvider({closeable})],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);

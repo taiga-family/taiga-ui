@@ -1,7 +1,6 @@
 import {Component, DebugElement} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {TuiIdService} from '@taiga-ui/cdk';
 import {TuiRootModule} from '@taiga-ui/core';
 import {TuiPageObject} from '@taiga-ui/testing';
 
@@ -31,14 +30,7 @@ describe('Mobile Dialog with TUI_MOBILE_DIALOG_OPTIONS', () => {
         TestBed.configureTestingModule({
             imports: [NoopAnimationsModule, TuiRootModule, TuiMobileDialogModule],
             declarations: [TestComponent],
-            providers: [
-                tuiMobileDialogOptionsProvider({label}),
-                {
-                    provide: TuiMobileDialogService,
-                    useFactory: () =>
-                        new TuiMobileDialogService(TestBed.inject(TuiIdService)),
-                },
-            ],
+            providers: [tuiMobileDialogOptionsProvider({label})],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);

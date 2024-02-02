@@ -18,7 +18,6 @@ export type TuiPopover<T, O> = T &
     };
 
 @Injectable()
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export abstract class TuiPopoverService<T, K = void> {
     private readonly component: PolymorpheusComponent<any>;
     private readonly items$: BehaviorSubject<ReadonlyArray<TuiPopover<T, any>>>;
