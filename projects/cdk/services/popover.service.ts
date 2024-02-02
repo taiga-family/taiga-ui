@@ -1,4 +1,4 @@
-import {inject, Injectable} from '@angular/core';
+import {inject, Injectable, Provider, ProviderToken, Type} from '@angular/core';
 import {TuiContext} from '@taiga-ui/cdk/interfaces';
 import {PolymorpheusComponent, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {BehaviorSubject, Observable, Observer} from 'rxjs';
@@ -18,34 +18,37 @@ export type TuiPopover<T, O> = T &
     };
 
 @Injectable()
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export abstract class TuiPopoverService<T, K = void> {
-    protected abstract readonly component: PolymorpheusComponent<any>;
-    protected abstract readonly options: T;
-    protected abstract readonly items$: BehaviorSubject<
-        ReadonlyArray<TuiPopover<T, any>>
-    >;
-
+    private readonly component: PolymorpheusComponent<any>;
+    private readonly items$: BehaviorSubject<ReadonlyArray<TuiPopover<T, any>>>;
     private readonly id = inject(TuiIdService);
+
+    constructor(
+        items: ProviderToken<BehaviorSubject<ReadonlyArray<TuiPopover<T, any>>>>,
+        component: Type<any>,
+        protected readonly options: T = {} as T,
+    ) {
+        this.component = new PolymorpheusComponent(component);
+        this.items$ = inject(items);
+    }
 
     open<G = void>(
         content: PolymorpheusContent<T & TuiPopoverContext<K extends void ? G : K>>,
         options: Partial<T> = {},
     ): Observable<K extends void ? G : K> {
         return new Observable(observer => {
-            const completeWith = (result: K extends void ? G : K): void => {
-                observer.next(result);
-                observer.complete();
-            };
             const item = {
                 ...this.options,
                 ...options,
                 content,
-                completeWith,
                 $implicit: observer,
                 component: this.component,
                 createdAt: Date.now(),
                 id: this.id.generate(),
+                completeWith: (result: K extends void ? G : K): void => {
+                    observer.next(result);
+                    observer.complete();
+                },
             };
 
             this.items$.next([...this.items$.value, item]);
@@ -55,4 +58,11 @@ export abstract class TuiPopoverService<T, K = void> {
             };
         });
     }
+}
+
+export function tuiAsPopover(useExisting: Type<TuiPopoverService<any>>): Provider {
+    return {
+        provide: TuiPopoverService,
+        useExisting,
+    };
 }

@@ -2,11 +2,10 @@ import {Provider} from '@angular/core';
 import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-type TuiPdfViewerDefaultOptions = Omit<TuiPdfViewerOptions<unknown>, 'data'>;
-
-export const TUI_PDF_VIEWER_DEFAULT_OPTIONS: TuiPdfViewerDefaultOptions = {
+export const TUI_PDF_VIEWER_DEFAULT_OPTIONS: TuiPdfViewerOptions = {
     label: '',
     actions: '',
+    data: undefined,
 };
 
 /**
@@ -15,7 +14,7 @@ export const TUI_PDF_VIEWER_DEFAULT_OPTIONS: TuiPdfViewerDefaultOptions = {
 export const TUI_PDF_VIEWER_OPTIONS = tuiCreateToken(TUI_PDF_VIEWER_DEFAULT_OPTIONS);
 
 export function tuiPdfViewerOptionsProvider(
-    options: Partial<TuiPdfViewerDefaultOptions>,
+    options: Partial<TuiPdfViewerOptions>,
 ): Provider {
     return tuiProvideOptions(
         TUI_PDF_VIEWER_OPTIONS,

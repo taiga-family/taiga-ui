@@ -1,5 +1,5 @@
 import {Directive} from '@angular/core';
-import {TuiPopoverDirective, TuiPopoverService} from '@taiga-ui/cdk';
+import {tuiAsPopover, TuiPopoverDirective} from '@taiga-ui/cdk';
 
 import {TuiSheetDialogOptions} from './sheet-dialog.options';
 import {TuiSheetDialogService} from './sheet-dialog.service';
@@ -8,11 +8,6 @@ import {TuiSheetDialogService} from './sheet-dialog.service';
     selector: 'ng-template[tuiSheetDialog]',
     inputs: ['options: tuiSheetDialogOptions', 'open: tuiSheetDialog'],
     outputs: ['openChange: tuiSheetDialogChange'],
-    providers: [
-        {
-            provide: TuiPopoverService,
-            useExisting: TuiSheetDialogService,
-        },
-    ],
+    providers: [tuiAsPopover(TuiSheetDialogService)],
 })
 export class TuiSheetDialogDirective extends TuiPopoverDirective<TuiSheetDialogOptions> {}
