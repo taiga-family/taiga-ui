@@ -6,6 +6,7 @@ import {
     TuiDocDocumentationModule,
     TuiDocExampleModule,
     TuiDocPageModule,
+    TuiDocTabModule,
 } from '@taiga-ui/addon-doc/components';
 import {tuiGenerateRoutes} from '@taiga-ui/addon-doc/utils';
 
@@ -16,6 +17,7 @@ import {tuiGenerateRoutes} from '@taiga-ui/addon-doc/utils';
         TuiDocDocumentationModule,
         TuiDocPageModule,
         TuiDocExampleModule,
+        TuiDocTabModule,
     ],
 })
 export class TuiAddonDocModule {}

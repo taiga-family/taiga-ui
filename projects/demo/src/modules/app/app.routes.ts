@@ -62,9 +62,8 @@ export const ROUTES: Routes = [
     },
     {
         path: 'testing/disable-animation',
-        loadChildren: async () =>
-            (await import('../info/testing/disable-animation/disable-animation.module'))
-                .DisableAnimationModule,
+        loadComponent: async () =>
+            import('../info/testing/disable-animation/disable-animation.component'),
         data: {
             title: 'Disable animation',
         },
