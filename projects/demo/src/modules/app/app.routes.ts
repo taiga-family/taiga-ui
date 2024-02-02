@@ -71,12 +71,10 @@ export const ROUTES: Routes = [
     },
     {
         path: 'testing/screenshot-bot',
-        loadChildren: async () =>
-            (
-                await import(
-                    '../info/testing/screenshot-github-bot/screenshot-github-bot.module'
-                )
-            ).ScreenshotGithubBotModule,
+        loadComponent: async () =>
+            import(
+                '../info/testing/screenshot-github-bot/screenshot-github-bot.component'
+            ),
         data: {
             title: 'Our screenshot bot',
         },
