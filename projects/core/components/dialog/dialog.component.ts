@@ -13,14 +13,12 @@ import {
     TuiDialog,
 } from '@taiga-ui/cdk';
 import {tuiFadeIn, tuiSlideInTop} from '@taiga-ui/core/animations';
-import {TuiDialogOptions} from '@taiga-ui/core/interfaces';
 import {
     TUI_ANIMATIONS_SPEED,
     TUI_CLOSE_WORD,
     TUI_COMMON_ICONS,
     TuiCommonIcons,
 } from '@taiga-ui/core/tokens';
-import {TuiDialogSize} from '@taiga-ui/core/types';
 import {tuiGetDuration} from '@taiga-ui/core/utils';
 import {POLYMORPHEUS_CONTEXT, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {
@@ -35,6 +33,7 @@ import {
     takeUntil,
 } from 'rxjs';
 
+import {TuiDialogOptions, TuiDialogSize} from './dialog.interfaces';
 import {TUI_DIALOGS_CLOSE} from './dialog.tokens';
 import {TuiDialogCloseService} from './dialog-close.service';
 

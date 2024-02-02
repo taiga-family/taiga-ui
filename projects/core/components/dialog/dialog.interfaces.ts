@@ -1,11 +1,14 @@
-import {TuiDialog} from '@taiga-ui/cdk';
-import {TuiDialogSize} from '@taiga-ui/core/types';
+import {TuiDialog, TuiPopoverContext} from '@taiga-ui/cdk';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
+
+export type TuiDialogSize = TuiSizeL | TuiSizeS | 'auto' | 'fullscreen' | 'page';
 
 /**
  * Options for a dialog
  *
+ * appearance - data-appearance attribute of the dialog ('' by default)
  * size - size of the dialog ('m' by default)
  * required - closing dialog throws (false by default)
  * closeable - show close button (true by default)
@@ -14,9 +17,8 @@ import {Observable} from 'rxjs';
  * header - content above title ('' by default)
  * data - arbitrary data for dialog (undefined by default)
  */
-export interface TuiDialogOptions<I> {
-    // TODO: change type in v4.0 ('' by default)
-    readonly appearance?: string;
+export interface TuiDialogOptions<I = undefined> {
+    readonly appearance: string;
     readonly closeable: Observable<boolean> | boolean;
     readonly data: I;
     readonly dismissible: Observable<boolean> | boolean;
@@ -25,3 +27,7 @@ export interface TuiDialogOptions<I> {
     readonly required: boolean;
     readonly size: TuiDialogSize;
 }
+
+export interface TuiDialogContext<O = void, I = undefined>
+    extends TuiPopoverContext<O>,
+        TuiDialogOptions<I> {}

@@ -7,12 +7,12 @@ const MOBILE_ALERT_OPTIONS: TuiMobileAlertOptions = {
 
 export type TuiMobileAlertOptions = Omit<
     TuiDialogOptions<unknown>,
-    'data' | 'dismissible' | 'header' | 'label' | 'required'
+    'appearance' | 'data' | 'dismissible' | 'header' | 'label' | 'required'
 >;
 
 export type TuiIosAlertOptions = Omit<
     TuiDialogOptions<unknown>,
-    'data' | 'header' | 'label' | 'required'
+    'appearance' | 'data' | 'header' | 'label' | 'required'
 >;
 
 export const TUI_IOS_ALERT_OPTIONS: TuiIosAlertOptions = {

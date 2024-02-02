@@ -1,13 +1,16 @@
 import {Provider} from '@angular/core';
 import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 
-import {TuiMobileDialogOptions} from './mobile-dialog-options';
+export interface TuiMobileDialogOptions<I = undefined> {
+    readonly actions: readonly string[];
+    readonly data: I;
+    readonly label: string;
+}
 
-type TuiMobileDialogDefaultOptions = Omit<TuiMobileDialogOptions<unknown>, 'data'>;
-
-export const TUI_MOBILE_DIALOG_DEFAULT_OPTIONS: TuiMobileDialogDefaultOptions = {
+export const TUI_MOBILE_DIALOG_DEFAULT_OPTIONS: TuiMobileDialogOptions = {
     label: '',
     actions: ['OK'],
+    data: undefined,
 };
 
 /**
@@ -18,7 +21,7 @@ export const TUI_MOBILE_DIALOG_OPTIONS = tuiCreateToken(
 );
 
 export function tuiMobileDialogOptionsProvider(
-    options: Partial<TuiMobileDialogDefaultOptions>,
+    options: Partial<TuiMobileDialogOptions<unknown>>,
 ): Provider {
     return tuiProvideOptions(
         TUI_MOBILE_DIALOG_OPTIONS,
