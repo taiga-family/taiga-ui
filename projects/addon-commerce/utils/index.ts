@@ -1,4 +1,3 @@
-export * from './create-auto-corrected-expire-pipe';
 export * from './format-currency';
 export * from './get-code-by-currency';
 export * from './get-currency-by-code';
