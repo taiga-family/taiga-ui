@@ -5,7 +5,8 @@ import {
     Inject,
     TemplateRef,
 } from '@angular/core';
-import {TUI_PARENT_ANIMATION, TuiContext} from '@taiga-ui/cdk';
+import {TuiContext} from '@taiga-ui/cdk';
+import {TUI_PARENT_ANIMATION} from '@taiga-ui/core/animations';
 import {TuiPortalItem} from '@taiga-ui/core/interfaces';
 import {POLYMORPHEUS_CONTEXT, PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 

@@ -8,7 +8,6 @@ export * from './dropdown-align';
 export * from './dropdown-width';
 export * from './hint-direction';
 export * from './marker-handler';
-export * from './notification';
 export * from './option-role';
 export * from './orientation';
 export * from './point';

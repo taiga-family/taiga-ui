@@ -5,7 +5,7 @@ import {
     Inject,
     inject,
 } from '@angular/core';
-import {TuiDialog} from '@taiga-ui/cdk';
+import {TuiPopover} from '@taiga-ui/cdk';
 import {
     TUI_ANIMATIONS_SPEED,
     TUI_CLOSE_WORD,
@@ -38,7 +38,7 @@ export class TuiPdfViewerComponent<I, O> {
         @Inject(TUI_CLOSE_WORD) readonly closeWord$: Observable<string>,
         @Inject(TUI_COMMON_ICONS) readonly icons: TuiCommonIcons,
         @Inject(POLYMORPHEUS_CONTEXT)
-        readonly context: TuiDialog<TuiPdfViewerOptions<I>, O>,
+        readonly context: TuiPopover<TuiPdfViewerOptions<I>, O>,
     ) {}
 
     @HostListener('document:keydown.esc')

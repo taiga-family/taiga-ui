@@ -1,7 +1,7 @@
 import {Component, Inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiDialog} from '@taiga-ui/cdk';
+import {TuiPopover} from '@taiga-ui/cdk';
 import {TuiAlertService} from '@taiga-ui/core';
 import {TuiPdfViewerOptions, TuiPdfViewerService} from '@taiga-ui/kit';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
@@ -12,7 +12,7 @@ import {PdfContentComponent} from './pdf-content.component';
 
 export type Buttons = ReadonlyArray<
     Readonly<{
-        onClick(context: TuiDialog<TuiPdfViewerOptions<Buttons>, string>): void;
+        onClick(context: TuiPopover<TuiPdfViewerOptions<Buttons>, string>): void;
         text: string;
     }>
 >;

@@ -7,15 +7,15 @@ import {
     OnInit,
     Self,
 } from '@angular/core';
-import {TuiDestroyService, TuiDialog, tuiIsNumber} from '@taiga-ui/cdk';
+import {TuiDestroyService, TuiPopover} from '@taiga-ui/cdk';
 import {tuiFadeIn, tuiHeightCollapse, tuiSlideIn} from '@taiga-ui/core/animations';
-import {TuiAlertOptions} from '@taiga-ui/core/interfaces';
 import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
 import {tuiToAnimationOptions} from '@taiga-ui/core/utils';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
-import {fromEvent, repeatWhen, takeUntil, timer} from 'rxjs';
+import {fromEvent, repeat, takeUntil, timer} from 'rxjs';
 
-import {TUI_ALERT_POSITION} from './alert.providers';
+import {TuiAlertOptions} from './alert.interfaces';
+import {TUI_ALERT_POSITION} from './alert.tokens';
 
 // TODO: get rid of $any in template
 @Component({
@@ -49,7 +49,7 @@ export class TuiAlertComponent<O, I> implements OnInit {
         @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
         @Self() @Inject(TuiDestroyService) private readonly destroy$: TuiDestroyService,
         @Inject(TUI_ALERT_POSITION) readonly position: string,
-        @Inject(POLYMORPHEUS_CONTEXT) readonly item: TuiDialog<TuiAlertOptions<I>, O>,
+        @Inject(POLYMORPHEUS_CONTEXT) readonly item: TuiPopover<TuiAlertOptions<I>, O>,
     ) {}
 
     ngOnInit(): void {
@@ -65,19 +65,10 @@ export class TuiAlertComponent<O, I> implements OnInit {
             return;
         }
 
-        timer(tuiIsNumber(this.autoClose) ? this.autoClose : 3000)
+        timer(this.autoClose)
             .pipe(
                 takeUntil(fromEvent(this.el.nativeElement, 'mouseenter')),
-                /**
-                 * TODO: replace to
-                 * repeat({
-                 *    delay: () => fromEvent(this.el.nativeElement, 'mouseleave'),
-                 * })
-                 *
-                 * in RxJS 7
-                 */
-                // eslint-disable-next-line rxjs/no-ignored-notifier
-                repeatWhen(() => fromEvent(this.el.nativeElement, 'mouseleave')),
+                repeat({delay: () => fromEvent(this.el.nativeElement, 'mouseleave')}),
                 takeUntil(this.destroy$),
             )
             .subscribe(() => this.close());

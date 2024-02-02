@@ -1,6 +1,5 @@
 <tui-notification
-    [hasIcon]="item.hasIcon"
-    [hideClose]="!item.hasCloseButton"
+    [hideClose]="!item.closeable"
     [icon]="item.icon"
     [status]="item.status"
     (close)="close()"

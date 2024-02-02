@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {TuiDialog} from '@taiga-ui/cdk';
+import {TuiPopover} from '@taiga-ui/cdk';
 import {
     TUI_ANIMATIONS_SPEED,
     tuiFadeIn,
@@ -27,7 +27,7 @@ import {TuiPushAlertDirective} from './push-alert.directive';
 })
 export class TuiPushAlertComponent {
     readonly options = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
-    readonly context = inject(POLYMORPHEUS_CONTEXT) as TuiDialog<TuiPushOptions, string>;
+    readonly context = inject(POLYMORPHEUS_CONTEXT) as TuiPopover<TuiPushOptions, string>;
 
     get isDirective(): boolean {
         return this.context.content instanceof TuiPushAlertDirective;

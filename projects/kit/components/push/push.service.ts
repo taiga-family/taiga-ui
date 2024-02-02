@@ -1,12 +1,13 @@
 import {inject, Injectable} from '@angular/core';
-import {AbstractTuiDialogService} from '@taiga-ui/cdk';
-import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
+import {TuiPopoverService} from '@taiga-ui/cdk';
+import {TUI_ALERTS} from '@taiga-ui/core';
 
 import {TUI_PUSH_OPTIONS, TuiPushOptions} from './push.options';
 import {TuiPushAlertComponent} from './push-alert.component';
 
-@Injectable({providedIn: 'root'})
-export class TuiPushService extends AbstractTuiDialogService<TuiPushOptions, string> {
-    protected readonly component = new PolymorpheusComponent(TuiPushAlertComponent);
-    protected readonly defaultOptions = inject(TUI_PUSH_OPTIONS);
-}
+@Injectable({
+    providedIn: 'root',
+    useFactory: () =>
+        new TuiPushService(TUI_ALERTS, TuiPushAlertComponent, inject(TUI_PUSH_OPTIONS)),
+})
+export class TuiPushService extends TuiPopoverService<TuiPushOptions, string> {}

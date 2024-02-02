@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiNotificationT} from '@taiga-ui/core';
+import {TuiNotification} from '@taiga-ui/core';
 
 @Component({
     selector: 'example-notification',
@@ -31,7 +31,7 @@ export class ExampleTuiNotificationComponent {
 
     hasIcon = true;
 
-    readonly statusVariants: TuiNotificationT[] = [
+    readonly statusVariants: TuiNotification[] = [
         'info',
         'error',
         'warning',

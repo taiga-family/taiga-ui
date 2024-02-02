@@ -1,5 +1,5 @@
 import {inject, Injectable} from '@angular/core';
-import {TuiBaseDialogContext, TuiPopoverService} from '@taiga-ui/cdk';
+import {TuiPopoverContext, TuiPopoverService} from '@taiga-ui/cdk';
 import {TUI_DIALOGS} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
@@ -22,7 +22,7 @@ export class TuiMobileDialogService extends TuiPopoverService<
 > {
     override open(
         content: PolymorpheusContent<
-            TuiBaseDialogContext<number> & TuiMobileDialogOptions<any>
+            TuiMobileDialogOptions<any> & TuiPopoverContext<number>
         >,
         options: Partial<TuiMobileDialogOptions<any>> = {},
     ): Observable<number> {

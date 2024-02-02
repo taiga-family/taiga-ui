@@ -1,20 +1,13 @@
-import {Inject, Injectable} from '@angular/core';
-import {AbstractTuiDialogService, TuiIdService} from '@taiga-ui/cdk';
-import {TuiAlertOptions} from '@taiga-ui/core/interfaces';
-import {TUI_NOTIFICATION_OPTIONS} from '@taiga-ui/core/tokens';
-import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
+import {inject, Injectable} from '@angular/core';
+import {TuiPopoverService} from '@taiga-ui/cdk';
 
 import {TuiAlertComponent} from './alert.component';
+import {TuiAlertOptions} from './alert.interfaces';
+import {TUI_ALERT_OPTIONS, TUI_ALERTS} from './alert.tokens';
 
-@Injectable({providedIn: 'root'})
-export class TuiAlertService extends AbstractTuiDialogService<TuiAlertOptions<any>> {
-    protected readonly component = new PolymorpheusComponent(TuiAlertComponent);
-
-    constructor(
-        @Inject(TUI_NOTIFICATION_OPTIONS)
-        protected readonly defaultOptions: TuiAlertOptions<any>,
-        @Inject(TuiIdService) idService: TuiIdService,
-    ) {
-        super(idService);
-    }
-}
+@Injectable({
+    providedIn: 'root',
+    useFactory: () =>
+        new TuiAlertService(TUI_ALERTS, TuiAlertComponent, inject(TUI_ALERT_OPTIONS)),
+})
+export class TuiAlertService extends TuiPopoverService<TuiAlertOptions<any>> {}

@@ -3,7 +3,7 @@
     package="CORE"
 >
     <ng-template pageTab>
-        <p>Optional built-in implementation of Taiga UI modals</p>
+        <p>Built-in implementation of Taiga UI modals</p>
 
         <p>
             If you want custom dialogs see
@@ -113,16 +113,14 @@
     </ng-template>
 
     <ng-template pageTab>
-        <div>
-            <button
-                size="m"
-                tuiButton
-                type="button"
-                (click)="showDialog(template)"
-            >
-                Show
-            </button>
-        </div>
+        <button
+            size="m"
+            tuiButton
+            type="button"
+            (click)="showDialog(template)"
+        >
+            Show
+        </button>
         <ng-template
             #template
             let-completeWith="completeWith"
@@ -191,33 +189,6 @@
                 Say "Hi and bye!"
             </button>
         </ng-template>
-        <div class="b-full-width">
-            <p>
-                To show a dialog, use method
-                <tui-doc-code [code]="method"></tui-doc-code>
-            </p>
-            of
-            <code>TuiDialogService</code>
-            , where
-            <code>O</code>
-            is output data type and
-            <code>I</code>
-            input data type. In this sample, input data has type
-            <code>number</code>
-            and output data has type
-            <code>string</code>
-            .
-            <p>
-                You can also just unsubscribe from
-                <code>Observable</code>
-                to close a dialog (this observable is returned from
-                <code>open</code>
-                method). You can save a subscription for that or use
-                <code>takeUntil</code>
-                like tools from
-                <code>RxJs</code>
-            </p>
-        </div>
         <tui-doc-documentation>
             <ng-template
                 documentationPropertyName="closeable"

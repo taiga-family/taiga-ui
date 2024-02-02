@@ -1,10 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {
-    TuiAlertHostModule,
-    TuiDropdownHostModule,
-    TuiScrollControlsModule,
-} from '@taiga-ui/cdk';
+import {TuiDropdownHostModule, TuiScrollControlsModule} from '@taiga-ui/cdk';
+import {TuiAlertsComponent} from '@taiga-ui/core/components/alert';
 import {TuiDialogsComponent} from '@taiga-ui/core/components/dialog';
 import {TuiHintsHostModule} from '@taiga-ui/core/components/hints-host';
 import {TuiSvgDefsHostModule} from '@taiga-ui/core/internal/svg-defs-host';
@@ -19,9 +16,9 @@ import {TuiRootComponent} from './root.component';
         TuiDropdownHostModule,
         TuiSvgDefsHostModule,
         TuiHintsHostModule,
-        TuiAlertHostModule,
         TuiScrollControlsModule,
         TuiDialogsComponent,
+        TuiAlertsComponent,
     ],
     declarations: [TuiRootComponent],
     exports: [TuiRootComponent],
