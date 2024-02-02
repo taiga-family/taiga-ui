@@ -13,7 +13,5 @@ export class ExampleTuiMobileDialogComponent {
         HTML: import('./examples/1/index.html?raw'),
     };
 
-    readonly exampleModule = import('./examples/import/import-module.md?raw');
-
     readonly exampleInsertComponent = import('./examples/import/insert-component.md?raw');
 }

@@ -1,7 +1,7 @@
-import {Component, Inject, Optional} from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TUI_DIALOGS} from '@taiga-ui/cdk';
+import {TUI_DIALOGS} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
 
 @Component({
@@ -11,9 +11,5 @@ import {Observable} from 'rxjs';
     changeDetection,
 })
 export class TuiTokensExample2 {
-    constructor(
-        @Optional()
-        @Inject(TUI_DIALOGS)
-        readonly dialogs: ReadonlyArray<Observable<readonly unknown[]>> | null,
-    ) {}
+    constructor(@Inject(TUI_DIALOGS) readonly dialogs: Observable<readonly unknown[]>) {}
 }

@@ -1,5 +1,5 @@
 import {Directive} from '@angular/core';
-import {AbstractTuiDialogDirective, AbstractTuiDialogService} from '@taiga-ui/cdk';
+import {TuiPopoverDirective, TuiPopoverService} from '@taiga-ui/cdk';
 
 import {TuiPdfViewerOptions} from './pdf-viewer.options';
 import {TuiPdfViewerService} from './pdf-viewer.service';
@@ -10,11 +10,11 @@ import {TuiPdfViewerService} from './pdf-viewer.service';
     outputs: ['openChange: tuiPdfViewerChange'],
     providers: [
         {
-            provide: AbstractTuiDialogService,
+            provide: TuiPopoverService,
             useExisting: TuiPdfViewerService,
         },
     ],
 })
-export class TuiPdfViewerDirective<T> extends AbstractTuiDialogDirective<
+export class TuiPdfViewerDirective<T> extends TuiPopoverDirective<
     TuiPdfViewerOptions<T>
 > {}

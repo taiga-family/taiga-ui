@@ -2,7 +2,6 @@ export * from './active-element';
 export * from './alerts';
 export * from './base-href';
 export * from './default-renderer';
-export * from './dialogs';
 export * from './ensure-base-href';
 export * from './focusable-item-accessor';
 export * from './fonts-ready';

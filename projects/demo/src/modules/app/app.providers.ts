@@ -27,7 +27,6 @@ import {
 } from '@taiga-ui/addon-doc';
 import {
     TUI_BASE_HREF,
-    TUI_DIALOG_CLOSES_ON_BACK,
     TUI_IS_E2E,
     TUI_IS_PLAYWRIGHT,
     TUI_SWIPE_OPTIONS,
@@ -44,9 +43,7 @@ import {
 import {TuiLanguageName, tuiLanguageSwitcher} from '@taiga-ui/i18n';
 import {NgDompurifySanitizer} from '@tinkoff/ng-dompurify';
 import {HIGHLIGHT_OPTIONS} from 'ngx-highlightjs';
-import {of} from 'rxjs';
 
-import {PROMPT_PROVIDER} from '../customization/dialogs/examples/1/prompt/prompt.service';
 import {SEE_ALSO_GROUPS} from './app.const';
 import {TUI_DEFAULT_TABS} from './app.tabs';
 import {LOGO_CONTENT} from './logo/logo.component';
@@ -57,7 +54,6 @@ import {exampleContentProcessor} from './utils';
 
 export const APP_PROVIDERS: Provider[] = [
     Title,
-    PROMPT_PROVIDER,
     {
         provide: APP_BASE_HREF,
         // @note: By default, on webcontainer.io will not be provided APP_BASE_HREF, we use fallback
@@ -167,12 +163,6 @@ export const APP_PROVIDERS: Provider[] = [
     {
         provide: TUI_TAKE_ONLY_TRUSTED_EVENTS,
         useFactory: () => !inject(TUI_IS_E2E),
-    },
-    {
-        provide: TUI_DIALOG_CLOSES_ON_BACK,
-        // TODO: change it back after solving https://github.com/taiga-family/taiga-ui/issues/3270
-        // useFactory: () => of(!tuiIsInsideIframe(inject(WINDOW))), // for cypress tests
-        useFactory: () => of(inject(TUI_IS_E2E)),
     },
     {
         provide: TUI_DOC_URL_STATE_HANDLER,

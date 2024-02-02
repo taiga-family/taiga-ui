@@ -34,7 +34,6 @@ export class ExampleTuiSheetDialogComponent {
         LESS: import('./examples/4/index.less?raw'),
     };
 
-    readonly exampleModule = import('./examples/import/import-module.md?raw');
     readonly exampleComponent = import('./examples/import/insert-component.md?raw');
 
     closeable = TUI_SHEET_DIALOG_DEFAULT_OPTIONS.closeable;

@@ -20,10 +20,6 @@ export class ExampleTuiDialogComponent {
 
     readonly dialogsCloseToken = import('./examples/import/dialogs-close-token.md?raw');
 
-    readonly exampleDialogClosesOnBackToken = import(
-        './examples/import/dialog-closes-on-back-token.md?raw'
-    );
-
     readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
@@ -123,8 +119,6 @@ export class ExampleTuiDialogComponent {
     readonly exampleCustomDialog = import('./examples/import/custom-dialog.md?raw');
 
     readonly exampleLazyModule = import('./examples/import/lazy-module.md?raw');
-
-    readonly exampleModule = import('./examples/import/module.md?raw');
 
     data = 100;
 

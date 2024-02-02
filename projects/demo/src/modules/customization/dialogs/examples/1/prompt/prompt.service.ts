@@ -1,5 +1,6 @@
-import {Injectable, Provider} from '@angular/core';
-import {AbstractTuiDialogService, TUI_DIALOGS} from '@taiga-ui/cdk';
+import {inject, Injectable} from '@angular/core';
+import {TuiPopoverService} from '@taiga-ui/cdk';
+import {TUI_DIALOGS} from '@taiga-ui/core';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 
 import {PromptComponent} from './prompt.component';
@@ -8,18 +9,11 @@ import {PromptOptions} from './prompt-options';
 @Injectable({
     providedIn: 'root',
 })
-export class PromptService extends AbstractTuiDialogService<PromptOptions, boolean> {
-    readonly defaultOptions = {
+export class PromptService extends TuiPopoverService<PromptOptions, boolean> {
+    protected readonly items$ = inject(TUI_DIALOGS);
+    protected readonly component = new PolymorpheusComponent(PromptComponent);
+    protected readonly options = {
         heading: 'Are you sure?',
         buttons: ['Yes', 'No'],
     } as const;
-
-    readonly component = new PolymorpheusComponent(PromptComponent);
 }
-
-// Add this provider to app module
-export const PROMPT_PROVIDER: Provider = {
-    provide: TUI_DIALOGS,
-    useExisting: PromptService,
-    multi: true,
-};

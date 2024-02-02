@@ -1,6 +1,7 @@
 import {inject, Injectable} from '@angular/core';
 import {SafeResourceUrl} from '@angular/platform-browser';
-import {AbstractTuiDialogService, TuiBaseDialogContext} from '@taiga-ui/cdk';
+import {TuiBaseDialogContext, TuiPopoverService} from '@taiga-ui/cdk';
+import {TUI_DIALOGS} from '@taiga-ui/core';
 import {PolymorpheusComponent, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 
@@ -16,11 +17,10 @@ type Content<G> = PolymorpheusContent<
 @Injectable({
     providedIn: 'root',
 })
-export class TuiPdfViewerService extends AbstractTuiDialogService<
-    TuiPdfViewerOptions<unknown>
-> {
+export class TuiPdfViewerService extends TuiPopoverService<TuiPdfViewerOptions<unknown>> {
+    protected readonly items$ = inject(TUI_DIALOGS);
     protected readonly component = DIALOG;
-    protected readonly defaultOptions: TuiPdfViewerOptions<unknown> = {
+    protected readonly options = {
         ...inject(TUI_PDF_VIEWER_OPTIONS),
         data: undefined,
     };
