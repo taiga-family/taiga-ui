@@ -5,7 +5,6 @@ import {PolymorpheusTemplate} from '@tinkoff/ng-polymorpheus';
 import {distinctUntilChanged, endWith, ignoreElements, share, Subject} from 'rxjs';
 
 @Directive()
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export abstract class TuiPopoverDirective<T>
     extends PolymorpheusTemplate<TuiPopover<T, void>>
     implements OnChanges
