@@ -392,9 +392,7 @@
 
     &::-webkit-scrollbar,
     &::-webkit-scrollbar-thumb {
-        background: transparent;
-        width: 0;
-        height: 0;
+        display: none;
     }
 }
 

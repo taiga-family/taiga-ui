@@ -1,14 +1,16 @@
 <tui-swipe-actions [autoClose]="true">
-    <div tuiSurface="elevated">
-        <div tuiCell>
-            <tui-avatar
-                appearance="primary"
-                src="tuiIconDollarSignLarge"
-            ></tui-avatar>
-            <div tuiTitle>
-                <strong>{{ 10000 | tuiAmount: 'USD' | async }}</strong>
-                <div tuiSubtitle>Dollar account</div>
-            </div>
+    <div
+        tuiCardLarge
+        tuiCell
+        tuiSurface="elevated"
+    >
+        <tui-avatar
+            appearance="primary"
+            src="tuiIconDollarSignLarge"
+        ></tui-avatar>
+        <div tuiTitle>
+            <strong>{{ 10000 | tuiAmount: 'USD' | async }}</strong>
+            <div tuiSubtitle>Dollar account</div>
         </div>
     </div>
 
@@ -34,16 +36,18 @@
 </tui-swipe-actions>
 
 <tui-swipe-actions [autoClose]="true">
-    <div tuiSurface="elevated">
-        <div tuiCell>
-            <tui-avatar
-                appearance="primary"
-                src="tuiIconGift"
-            ></tui-avatar>
-            <div tuiTitle>
-                <strong>{{ 23000 | tuiAmount: 'EUR' | async }}</strong>
-                <div tuiSubtitle>Goal</div>
-            </div>
+    <div
+        tuiCardLarge
+        tuiCell
+        tuiSurface="elevated"
+    >
+        <tui-avatar
+            appearance="primary"
+            src="tuiIconGift"
+        ></tui-avatar>
+        <div tuiTitle>
+            <strong>{{ 23000 | tuiAmount: 'EUR' | async }}</strong>
+            <div tuiSubtitle>Goal</div>
         </div>
     </div>
 
