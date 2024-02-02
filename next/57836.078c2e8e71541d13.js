@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[57836],{57836:e=>{e.exports=".reversed {\n    flex-direction: row-reverse;\n    margin-top: 1rem;\n}\n"}}]);

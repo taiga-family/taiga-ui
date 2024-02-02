@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[68855],{68855:e=>{e.exports='```html\n<tui-ring-chart [value]="value"></tui-ring-chart>\n```\n'}}]);

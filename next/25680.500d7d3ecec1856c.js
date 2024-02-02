@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[25680],{25680:o=>{o.exports="<tui-notification>Works with token options</tui-notification>\n"}}]);

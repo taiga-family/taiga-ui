@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[36352],{36352:e=>{e.exports="```ts\nimport {getCurrencySymbol} from '@taiga-ui/kit';\n\n// ...\ncurrency = getCurrencySymbol(currency);\n// ...\n```\n"}}]);

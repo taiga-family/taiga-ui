@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[98440],{98440:n=>{n.exports='```html\n<div\n  tuiHintPointer\n  tuiHint="Hint text"\n>\n  Block with pointer hint\n</div>\n```\n'}}]);

@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[88205],{88205:e=>{e.exports="```html\nFormatted timestamp: {{timestamp | tuiFormatDate | async}}\n```\n"}}]);

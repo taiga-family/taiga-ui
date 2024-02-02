@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[19827],{19827:e=>{e.exports="import {ChangeDetectionStrategy, Component} from '@angular/core';\n\n@Component({\n    selector: 'tui-example-dialog-content',\n    template: 'Lazy loaded dialog content',\n    changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class DialogContentComponent {}\n"}}]);

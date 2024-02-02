@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[24072],{1691:e=>{e.exports=".group {\n    max-width: 30.25rem;\n}\n"}}]);

@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[12184],{12184:e=>{e.exports='<tui-bar class="bar"></tui-bar>\n'}}]);

@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[18918],{18918:e=>{e.exports='<button\n    size="l"\n    status="custom"\n    tuiTag\n    value="Hey there"\n    class="tag"\n    [hoverable]="true"\n></button>\n'}}]);

@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[55356],{55356:e=>{e.exports='```html\n<img\n  alt="United Arab Emirates"\n  [src]="\'AE\' | tuiFlag"\n/>\n```\n'}}]);

@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[92516],{92516:e=>{e.exports=".badge {\n    max-width: 10rem;\n}\n\n.t-ellipsis {\n    overflow: hidden;\n    text-overflow: ellipsis;\n}\n"}}]);

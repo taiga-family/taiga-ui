@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[27696],{27696:e=>{e.exports='```html\n<tui-tree\n  [value]="value"\n  [childrenHandler]="handler"\n></tui-tree>\n```\n'}}]);

@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[94430],{94430:e=>{e.exports="@import '@taiga-ui/core/styles/taiga-ui-local';\n\n.table {\n    width: 40rem;\n}\n\n.name {\n    width: 10rem;\n}\n"}}]);

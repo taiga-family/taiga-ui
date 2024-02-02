@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[21408],{21408:n=>{n.exports='```html\n<div\n  [tuiHighlight]="query"\n  [tuiHighlightColor]="\'#228B22\'"\n>\n  ...\n</div>\n```\n'}}]);

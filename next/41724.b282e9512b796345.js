@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[41724],{19344:e=>{e.exports='```html\n<tui-pull-to-refresh (pulled)="onPulled()">content</tui-pull-to-refresh>\n```\n'}}]);

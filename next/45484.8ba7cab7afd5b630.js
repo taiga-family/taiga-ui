@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[45484],{45484:e=>{e.exports=".wrapper {\n    display: flex;\n    align-items: center;\n}\n"}}]);
