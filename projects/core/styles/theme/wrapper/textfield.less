@@ -3,12 +3,14 @@
 /* stylelint-disable order/order */
 [tuiWrapper][data-appearance='textfield'] {
     .transition(~'box-shadow, background');
+
     background: var(--tui-base-01);
     color: var(--tui-text-01);
     box-shadow: 0 0.125rem 0.1875rem rgba(0, 0, 0, 0.1);
 
     &[data-appearance='textfield']:after {
         .transition(color);
+
         color: var(--tui-base-03);
     }
 

@@ -8,6 +8,7 @@
 
 .t-svg {
     .fullsize(absolute, inset);
+
     overflow: visible;
     fill: none;
     stroke: currentColor;
@@ -25,12 +26,14 @@
 
     &_inactive {
         .transition(~'stroke-dashoffset, opacity');
+
         opacity: 0.16;
     }
 }
 
 .t-content {
     .fullsize();
+
     display: flex;
     justify-content: center;
     align-items: center;

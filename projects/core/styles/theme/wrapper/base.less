@@ -3,6 +3,7 @@
 /* stylelint-disable order/order */
 [tuiWrapper] {
     .transition(~'color, background, opacity');
+
     position: relative;
     display: block;
     height: 100%;
@@ -13,6 +14,7 @@
     &:after {
         .transition(~'box-shadow, color');
         .fullsize(absolute, inset);
+
         content: '';
         border-radius: inherit;
         border: 1px solid currentColor;

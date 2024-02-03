@@ -67,6 +67,7 @@
 
 .button-base() {
     .clearbtn();
+
     position: relative;
     display: inline-flex;
     align-items: center;
@@ -118,6 +119,7 @@
 
 .clearinput(@mode: default) {
     .autofill(@mode);
+
     padding: 0;
     margin: 0;
     border-width: 0;
@@ -294,6 +296,7 @@
 .dashed-border(@color: currentColor, @alignment: bottom, @space: 4) {
     @size: unit(@space, px);
     @percentage: (100% / @space * 2);
+
     background-image: linear-gradient(to right, @color 0%, @color @percentage, transparent @percentage);
     background-position: 0 @alignment;
     background-size: @size 1px;
@@ -310,8 +313,9 @@
 }
 
 .hoverable-with-shadow() {
-    box-shadow: var(--tui-shadow);
     .transition();
+
+    box-shadow: var(--tui-shadow);
     cursor: pointer;
     transition-property: transform, box-shadow;
     will-change: transform, box-shadow;

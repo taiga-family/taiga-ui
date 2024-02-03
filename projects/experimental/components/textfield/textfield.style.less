@@ -2,8 +2,10 @@
 
 :host {
     .transition(color);
+
     --t-left: 0rem;
     --t-right: 0rem;
+
     position: relative;
     display: flex;
     align-items: center;
@@ -14,6 +16,7 @@
 
     &[data-size='s'] {
         --t-height: var(--tui-height-s);
+
         padding: 0 var(--tui-padding-s);
         border-radius: var(--tui-radius-m);
         font: var(--tui-font-text-s);
@@ -50,6 +53,7 @@
 
     &[data-size='m'] {
         --t-height: var(--tui-height-m);
+
         padding: 0 var(--tui-padding-m);
         border-radius: var(--tui-radius-m);
         font: var(--tui-font-text-s);
@@ -80,6 +84,7 @@
 
     &[data-size='l'] {
         --t-height: var(--tui-height-l);
+
         padding: 0 var(--tui-padding-l);
         border-radius: var(--tui-radius-l);
         font: var(--tui-font-text-m);
@@ -136,6 +141,7 @@
     ::ng-deep input,
     ::ng-deep select {
         .fullsize();
+
         appearance: none;
         box-sizing: border-box;
         border: none;
@@ -199,6 +205,7 @@
     ::ng-deep label {
         .transition(all);
         .text-overflow();
+
         position: relative;
         display: block;
         flex: 1;

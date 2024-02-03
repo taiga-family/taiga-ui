@@ -4,6 +4,7 @@
     --t-size: 1.5rem;
 
     .transition(~'background, box-shadow');
+
     width: var(--t-size);
     height: var(--t-size);
     cursor: pointer;
@@ -18,6 +19,7 @@
     &:before {
         .fullsize();
         .transition(transform);
+
         content: '';
         border-radius: 100%;
         background: currentColor;

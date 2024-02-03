@@ -47,6 +47,7 @@
         @thumb-color var(--tui-slider-fill-percentage),
         transparent var(--tui-slider-fill-percentage)
     );
+
     background-repeat: no-repeat;
     background-color: @track-color;
 
@@ -65,6 +66,7 @@
 
 .customize-thumb(@size) {
     .transition(transform);
+
     isolation: isolate;
     appearance: none;
     background-color: @thumb-color;
@@ -129,6 +131,7 @@
     &:not(:disabled):before {
         .transition(~'transform, opacity');
         .thumb-ghost(@size);
+
         content: '';
         cursor: ew-resize;
         background: @thumb-color;

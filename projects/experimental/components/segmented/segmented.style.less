@@ -12,6 +12,7 @@ tui-segmented {
         --t-padding: 0.625rem;
         --t-gap: 0.5rem;
         --t-margin: -0.125rem;
+
         height: var(--tui-height-s);
         font: var(--tui-font-text-s);
         border-radius: var(--tui-radius-s);
@@ -27,6 +28,7 @@ tui-segmented {
         --t-padding: 0.875rem;
         --t-gap: 1rem;
         --t-margin: -0.375rem;
+
         height: var(--tui-height-m);
         font: var(--tui-font-text-m);
         border-radius: var(--tui-radius-s);
@@ -36,6 +38,7 @@ tui-segmented {
         --t-padding: 1.125rem;
         --t-gap: 1rem;
         --t-margin: -0.375rem;
+
         height: var(--tui-height-l);
         font: var(--tui-font-text-l);
         border-radius: var(--tui-radius-m);
@@ -52,6 +55,7 @@ tui-segmented {
     & > label > input:not([tuiRadio]) {
         .transition(color);
         .clearbtn();
+
         position: relative;
         display: flex;
         align-items: center;
@@ -84,6 +88,7 @@ tui-segmented {
 
     &:after {
         .fullsize();
+
         content: '';
         z-index: -1;
         border-radius: inherit;
@@ -93,6 +98,7 @@ tui-segmented {
 
     &:before {
         .transition(~'left, width');
+
         content: '';
         position: absolute;
         left: var(--t-left);
