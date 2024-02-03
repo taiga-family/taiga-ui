@@ -9,6 +9,7 @@
 
     &__tr {
         .transition(background);
+
         outline: none;
 
         &:not(&_hover_disabled):hover {
@@ -30,6 +31,7 @@
 
     &__th {
         .text-overflow();
+
         font: var(--tui-font-text-s);
         padding: 0.5rem 1rem;
         vertical-align: middle;
@@ -138,6 +140,7 @@
     &__sort {
         .clearbtn();
         .transition(color);
+
         position: relative;
         display: inline-flex;
         align-items: center;
@@ -159,6 +162,7 @@
 
     &__sort-icon {
         .center-top();
+
         left: 100%;
         margin-left: (@space / 2);
         width: 1rem;
@@ -169,6 +173,7 @@
         .tui-table__sort_active &,
         .tui-table__sort:hover & {
             .transition(transform);
+
             opacity: 1;
         }
 

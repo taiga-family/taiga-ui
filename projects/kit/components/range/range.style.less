@@ -55,6 +55,7 @@
     /* Ticks */
     &:after {
         .fullsize(absolute, inset);
+
         content: '';
         left: ((@thumb-width - @tick-thickness) / 2);
         right: ((@thumb-width + @tick-thickness) / 2);
@@ -120,6 +121,7 @@
 .t-thumb {
     .ignore-track-pointer-events();
     .remove-track-background();
+
     position: absolute;
     top: (@track-height / 2);
     left: 0;

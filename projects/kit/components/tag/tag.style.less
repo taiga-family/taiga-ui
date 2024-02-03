@@ -2,6 +2,7 @@
 
 :host {
     .transition(background);
+
     position: relative;
     display: inline-block;
     font: var(--tui-font-text-s);
@@ -16,6 +17,7 @@
     &:after {
         .transition(background);
         .fullsize();
+
         content: '';
         box-sizing: border-box;
         border-radius: inherit;
@@ -185,11 +187,13 @@
 
 .t-text {
     .text-overflow(pre); // @note: fix problem in Safari
+
     padding-right: 0.02em;
 }
 
 .t-tag {
     .text-overflow();
+
     position: relative;
     display: flex;
     width: auto; // @note: fix problem in Safari
@@ -219,6 +223,7 @@
 
 .t-edit {
     .clearinput();
+
     position: absolute;
     top: 0;
     left: 0;

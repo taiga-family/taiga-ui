@@ -6,6 +6,7 @@
     .transition();
 
     --tui-gap: 0.25rem;
+
     position: relative;
     border-radius: var(--tui-radius-l);
     box-sizing: border-box;
@@ -35,6 +36,7 @@ button[data-surface] {
 [tuiSurfaceLayer]:after {
     .fullsize();
     .transition();
+
     content: '';
     z-index: -1;
     border-radius: inherit;
@@ -47,6 +49,7 @@ button[data-surface] {
 [tuiSurfaceLayer] {
     .transition();
     .fullsize();
+
     position: absolute !important;
     z-index: -1;
     object-fit: cover;

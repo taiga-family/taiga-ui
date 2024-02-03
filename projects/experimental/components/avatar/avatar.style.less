@@ -3,6 +3,7 @@
 :host {
     --t-size: 3.5rem;
     --t-radius: 0.75rem;
+
     position: relative;
     display: inline-flex;
     flex-shrink: 0;
@@ -22,6 +23,7 @@
 
     &:before {
         .fullsize();
+
         background: currentColor;
         mask: var(--t-mask) no-repeat center/60%;
     }
@@ -29,6 +31,7 @@
     &[data-size='xxs'] {
         --t-size: 1.5rem;
         --t-radius: 0.5rem;
+
         font: var(--tui-font-text-xs);
         font-weight: bold;
 
@@ -41,6 +44,7 @@
     &[data-size='xs'] {
         --t-size: 2rem;
         --t-radius: 0.5rem;
+
         font: var(--tui-font-text-s);
         font-weight: bold;
 
@@ -53,6 +57,7 @@
     &[data-size='s'] {
         --t-size: 2.5rem;
         --t-radius: 0.75rem;
+
         font: var(--tui-font-text-l);
         font-weight: bold;
 
@@ -65,6 +70,7 @@
     &[data-size='m'] {
         --t-size: 3.5rem;
         --t-radius: 0.75rem;
+
         font: var(--tui-font-heading-5);
 
         &[data-type='content'] {
@@ -76,6 +82,7 @@
     &[data-size='l'] {
         --t-size: 5rem;
         --t-radius: 0.75rem;
+
         font: var(--tui-font-heading-3);
 
         &[data-type='content'] {
@@ -86,6 +93,7 @@
     &[data-size='xl'] {
         --t-size: 6rem;
         --t-radius: 1rem;
+
         font: var(--tui-font-heading-3);
 
         &[data-type='content'] {
@@ -96,6 +104,7 @@
     &[data-size='xxl'] {
         --t-size: 8rem;
         --t-radius: 1.25rem;
+
         font: var(--tui-font-heading-2);
 
         &[data-type='content'] {
@@ -119,6 +128,7 @@
     ::ng-deep picture,
     ::ng-deep video {
         .fullsize();
+
         object-fit: cover;
     }
 }

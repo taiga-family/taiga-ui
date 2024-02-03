@@ -14,6 +14,7 @@
 :host {
     .transition(~'color, box-shadow, opacity, background');
     .clearbtn();
+
     position: relative;
     display: flex;
     flex-shrink: 0;
@@ -72,6 +73,7 @@
 
     &._android {
         .transition(opacity);
+
         height: 3rem;
         flex: 1;
         flex-shrink: 0;
@@ -156,6 +158,7 @@
 
     &:after {
         .transition(transform);
+
         content: '';
         position: absolute;
         top: 0;

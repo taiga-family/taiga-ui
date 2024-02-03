@@ -4,6 +4,7 @@
     .scrollbar-hidden();
     .fullsize(absolute, inset);
     .transition(transform);
+
     top: auto;
     border-radius: 0.75rem 0.75rem 0 0;
     overflow-y: auto;
@@ -67,6 +68,7 @@
 
     :host-context(._overlay:not(._visible)) & {
         .transition(transform);
+
         transform: scaleX(-1) !important;
     }
 }
@@ -90,6 +92,7 @@
 
 .t-bar {
     .transition(border-radius);
+
     position: sticky;
     top: 0;
     z-index: 1;

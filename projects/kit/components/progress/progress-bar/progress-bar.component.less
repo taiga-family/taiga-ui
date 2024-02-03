@@ -42,6 +42,7 @@
     .clearProgress();
     .progressAnimation();
     .progressValue({ background: @progress-color });
+
     display: block;
     width: 100%;
     height: var(--t-height);
@@ -69,6 +70,7 @@
         clip-path: inset(
             0 0.5px round var(--tui-radius-m)
         ); // 0.5px is a hack to prevent jagged edges on low dpi screens
+
         border-radius: 1rem;
         .progressValue({ border-radius: inherit });
 
@@ -99,6 +101,7 @@
 
     &:indeterminate {
         .progressValue({ background: transparent });
+
         background: linear-gradient(to right, @track-color 0 45%, @progress-color 45% 55%, @track-color 55% 100%) right;
         background-size: 225%;
         animation: tuiIndeterminateAnimation 3s infinite ease-in-out;
@@ -116,5 +119,6 @@
 
 :host-context(label[tuiProgressLabel]):not(:first-child) {
     .fullsize();
+
     background: transparent;
 }

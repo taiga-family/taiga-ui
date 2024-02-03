@@ -5,6 +5,7 @@
 
 .tui-slider-ticks-labels(@input-size: m) {
     @first-tick-center: (@thumb-diameters[@@input-size] / 2);
+
     display: flex;
     margin: 0 @first-tick-center;
     font: var(--tui-font-text-s);
@@ -34,6 +35,7 @@
     tui-input-range + &,
     tui-range + & {
         @thumb: @thumb-diameters[@@input-size];
+
         margin-left: @thumb;
         margin-right: @thumb;
 

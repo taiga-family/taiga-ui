@@ -121,6 +121,7 @@
 .t-progress {
     @radius: calc((var(--t-diameter) - var(--t-progress-stroke)) / 2);
     @circumference: calc(2 * pi() * @radius);
+
     fill: transparent;
     stroke: var(--tui-progress-color, currentColor);
     stroke-linecap: round;

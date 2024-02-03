@@ -19,18 +19,21 @@
     &[data-size='s'] {
         --tui-height: var(--tui-height-s);
         --tui-textarea-height: 4.5625rem;
+
         font: var(--tui-font-text-s);
     }
 
     &[data-size='m'] {
         --tui-height: var(--tui-height-m);
         --tui-textarea-height: 5.5rem;
+
         font: var(--tui-font-text-s);
     }
 
     &[data-size='l'] {
         --tui-height: var(--tui-height-l);
         --tui-textarea-height: @height;
+
         font: var(--tui-font-text-m);
     }
 
@@ -174,6 +177,7 @@
 
 .t-input {
     .clearinput();
+
     position: absolute;
     top: 0;
     left: 0;
@@ -228,6 +232,7 @@
 
 .t-placeholder {
     .textfield-placeholder();
+
     position: absolute;
     top: calc(var(--tui-height) / 2 - 0.625rem);
     left: 0;
@@ -258,6 +263,7 @@
 
 .t-icons {
     .fullsize(absolute, inset);
+
     display: flex;
     justify-content: flex-end;
     pointer-events: none;
@@ -282,6 +288,7 @@
 
 .t-cleaner {
     .icon-button();
+
     pointer-events: auto;
 }
 

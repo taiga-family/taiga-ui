@@ -10,6 +10,7 @@
 
     &:before {
         .fullsize();
+
         content: '';
     }
 
@@ -99,6 +100,7 @@
     &:before {
         content: '';
         .fullsize();
+
         border-radius: 100%;
         background: currentColor;
         opacity: 0.35;
@@ -125,6 +127,7 @@
 
 .t-front {
     .fullsize();
+
     display: flex;
     align-items: flex-end;
     backface-visibility: hidden;
@@ -134,6 +137,7 @@
 
 .t-back {
     .fullsize();
+
     backface-visibility: hidden;
     transform: rotateY(180deg) translate3d(0, 0, 1px);
     background: #b0b0b0;
@@ -141,6 +145,7 @@
 
     &:after {
         .fullsize(absolute, inset);
+
         content: '';
         top: 20%;
         bottom: 60%;
