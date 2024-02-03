@@ -14,9 +14,9 @@
     "repository": "https://github.com/taiga-family/taiga-ui",
     "license": "Apache-2.0",
     "peerDependencies": {
-        "@angular/common": ">=15.0.0",
-        "@angular/core": ">=15.0.0",
-        "@angular/forms": ">=15.0.0",
+        "@angular/common": "15.2.10",
+        "@angular/core": "15.2.10",
+        "@angular/forms": "15.2.10",
         "@maskito/angular": "1.9.0",
         "@maskito/core": "1.9.0",
         "@maskito/kit": "1.9.0",
@@ -26,7 +26,7 @@
         "@taiga-ui/i18n": "^3.59.0",
         "@taiga-ui/kit": "^3.59.0",
         "@tinkoff/ng-polymorpheus": "4.3.0",
-        "rxjs": ">=6.0.0",
+        "rxjs": "7.5.0",
         "tslib": "2.6.2"
     }
 }
