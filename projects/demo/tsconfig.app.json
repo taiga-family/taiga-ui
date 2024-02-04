@@ -4,10 +4,10 @@
     "include": ["**/*.d.ts"],
     "angularCompilerOptions": {
         "strictMetadataEmit": false,
-        "compilationMode": "full"
+        "compilationMode": "full",
     },
     "compilerOptions": {
         "target": "ES2022",
-        "useDefineForClassFields": false
-    }
+        "useDefineForClassFields": false,
+    },
 }

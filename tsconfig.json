@@ -43,7 +43,7 @@
             "@taiga-ui/layout": ["projects/layout/index"],
             "@taiga-ui/layout/*": ["projects/layout/*"],
             "@taiga-ui/testing": ["projects/testing/index"],
-            "@taiga-ui/testing/*": ["projects/testing/*"]
-        }
-    }
+            "@taiga-ui/testing/*": ["projects/testing/*"],
+        },
+    },
 }

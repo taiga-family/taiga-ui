@@ -32,7 +32,7 @@
             "@taiga-ui/testing/*": ["./dist/testing/*"],
             "@taiga-ui/icons": ["./dist/icons"],
             "@taiga-ui/addon-doc": ["./dist/addon-doc"],
-            "@taiga-ui/addon-doc/*": ["./dist/addon-doc/*"]
-        }
-    }
+            "@taiga-ui/addon-doc/*": ["./dist/addon-doc/*"],
+        },
+    },
 }
