@@ -1,35 +1,113 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
-[tuiCard] {
+[tuiCardMedium],
+[tuiCardLarge] {
     .clearbtn();
 
+    position: relative;
     display: flex;
     align-items: flex-start;
-    justify-content: space-between;
-    background: var(--tui-base-02);
-    border-radius: 0.75rem;
-    box-sizing: border-box;
-    padding: 0.75rem;
-    gap: 0.75rem;
-    flex-direction: column;
+    flex-shrink: 0;
     text-decoration: none;
-    width: var(--t-size);
-    height: var(--t-size);
+    overscroll-behavior: contain;
 
-    &[data-size='m'] {
-        --t-size: 8.75rem;
-    }
-
+    &[tuiTitle],
     [tuiTitle] {
         font-weight: bold;
-    }
-
-    [tuiSubtitle] {
-        color: var(--tui-text-01);
     }
 
     [tuiTitle],
     [tuiSubtitle] {
         max-width: 100%;
+    }
+
+    > * {
+        .scrollbar-hidden();
+    }
+}
+
+[tuiCardMedium] {
+    width: 8.75rem;
+    height: 8.75rem;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0.75rem;
+    border-radius: var(--tui-radius-l);
+    box-sizing: border-box;
+
+    &[tuiTitle] {
+        padding: 0.625rem 0.75rem;
+    }
+
+    [tuiTitle] {
+        margin: -0.125rem 0;
+    }
+
+    [tuiSubtitle] {
+        color: var(--tui-text-01);
+    }
+}
+
+[tuiCardLarge][data-space] {
+    --t-gap: 0.75rem;
+    --t-radius: var(--tui-radius-l);
+    --t-comp: -0.25rem;
+    --t-padding: 0.75rem;
+    --t-dim: calc(var(--t-padding) + var(--t-comp));
+
+    font: var(--tui-font-text-m);
+    padding: var(--t-padding);
+    border-radius: var(--t-radius);
+    box-sizing: border-box;
+
+    &[data-space='normal'] {
+        --t-radius: 1.5rem;
+        --t-padding: 1.5rem;
+        --t-gap: 1.5rem;
+    }
+
+    &[data-space='compact'] {
+        --t-radius: 1rem;
+        --t-padding: 1.25rem;
+        --t-gap: 1.25rem;
+    }
+
+    &:not([tuiCell], [tuiHeader]) {
+        flex-direction: column;
+        gap: var(--t-gap);
+        align-items: stretch;
+
+        > :last-child:not([tuiCell]) {
+            margin-top: auto;
+        }
+    }
+
+    &[tuiHeader] {
+        padding: var(--t-dim) var(--t-dim) var(--t-dim) var(--t-padding);
+
+        [tuiLink]:last-child {
+            margin-right: calc(-1 * var(--t-comp));
+        }
+    }
+
+    > [tuiHeader] {
+        margin: var(--t-comp) var(--t-comp) calc(1.5 * var(--t-comp)) 0;
+
+        [tuiLink]:last-child {
+            margin-right: calc(-1 * var(--t-comp));
+        }
+    }
+
+    [tuiCell] {
+        width: stretch;
+        padding: 0.5rem;
+        margin: -0.5rem -0.5rem -0.75rem;
+        border-radius: var(--tui-radius-l);
+    }
+
+    > [tuiLink]:last-child {
+        display: block;
+        width: fit-content;
+        margin-bottom: var(--t-comp);
     }
 }

@@ -4,7 +4,6 @@
     --tui-height: calc(var(--tui-height-s) - 0.5rem);
     --t-padding: 0.125rem 1rem;
 
-    .transition(background);
     .clearbtn();
 
     position: relative;
@@ -162,8 +161,8 @@
 }
 
 @media (hover: hover) and (pointer: fine) {
-    a[tuiCell]:hover,
-    button[tuiCell]:hover {
+    a[tuiCell]:not([tuiSurface]):hover,
+    button[tuiCell]:not([tuiSurface]):hover {
         background: var(--tui-clear);
         cursor: pointer;
     }

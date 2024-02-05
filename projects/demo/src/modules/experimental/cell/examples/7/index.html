@@ -1,21 +1,26 @@
-<div tuiSurface="elevated">
+<tui-notification>
+    Don't forget import
+    <code>TuiCardModule</code>
+</tui-notification>
+
+<div
+    tuiCardLarge
+    tuiSurface="elevated"
+>
     <h3 tuiTitle="m">Inside a block</h3>
-    <div class="actions">
-        <button
-            *ngFor="let item of items"
-            tuiCell
-            class="action"
-        >
-            <tui-avatar
-                appearance="accent"
-                [src]="item.icon"
-            ></tui-avatar>
-            <span tuiTitle>
-                {{ item.title }}
-                <span tuiSubtitle>{{ item.subtitle }}</span>
-            </span>
-        </button>
-    </div>
+    <button
+        *ngFor="let item of items"
+        tuiCell
+    >
+        <tui-avatar
+            appearance="accent"
+            [src]="item.icon"
+        ></tui-avatar>
+        <span tuiTitle>
+            {{ item.title }}
+            <span tuiSubtitle>{{ item.subtitle }}</span>
+        </span>
+    </button>
 </div>
 
 <label tuiLabel="Inside a dropdown">
