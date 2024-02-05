@@ -1,33 +1,27 @@
+import {MaskitoOptions} from '@maskito/core';
 import {CHAR_HYPHEN, CHAR_PLUS} from '@taiga-ui/cdk';
-import {TUI_DIGIT_REGEXP, TuiTextMaskList} from '@taiga-ui/core';
-
-export const TUI_PHONE_MASK: TuiTextMaskList = [
-    CHAR_PLUS,
-    '7',
-    ' ',
-    TUI_DIGIT_REGEXP,
-    TUI_DIGIT_REGEXP,
-    TUI_DIGIT_REGEXP,
-    ' ',
-    TUI_DIGIT_REGEXP,
-    TUI_DIGIT_REGEXP,
-    TUI_DIGIT_REGEXP,
-    CHAR_HYPHEN,
-    TUI_DIGIT_REGEXP,
-    TUI_DIGIT_REGEXP,
-    CHAR_HYPHEN,
-    TUI_DIGIT_REGEXP,
-    TUI_DIGIT_REGEXP,
-];
+import {TUI_DIGIT_REGEXP} from '@taiga-ui/core';
 
 /**
- * @deprecated Use {@link https://maskito.dev/kit/time Time} from {@link https://github.com/taiga-family/maskito Maskito} instead
- * TODO: delete in v4.0
+ * TODO: move to proprietary package in v4.0
  */
-export const TUI_TIME_MASK: TuiTextMaskList = [
-    TUI_DIGIT_REGEXP,
-    TUI_DIGIT_REGEXP,
-    ':',
-    TUI_DIGIT_REGEXP,
-    TUI_DIGIT_REGEXP,
-];
+export const TUI_PHONE_MASK: MaskitoOptions = {
+    mask: [
+        CHAR_PLUS,
+        '7',
+        ' ',
+        TUI_DIGIT_REGEXP,
+        TUI_DIGIT_REGEXP,
+        TUI_DIGIT_REGEXP,
+        ' ',
+        TUI_DIGIT_REGEXP,
+        TUI_DIGIT_REGEXP,
+        TUI_DIGIT_REGEXP,
+        CHAR_HYPHEN,
+        TUI_DIGIT_REGEXP,
+        TUI_DIGIT_REGEXP,
+        CHAR_HYPHEN,
+        TUI_DIGIT_REGEXP,
+        TUI_DIGIT_REGEXP,
+    ],
+};
