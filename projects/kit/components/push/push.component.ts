@@ -15,6 +15,9 @@ import {Observable} from 'rxjs';
     templateUrl: './push.template.html',
     styleUrls: ['./push.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        '[style.--t-lines]': 'lines',
+    },
 })
 export class TuiPushComponent {
     @Input()
@@ -22,6 +25,9 @@ export class TuiPushComponent {
 
     @Input()
     type = '';
+
+    @Input()
+    lines = 2;
 
     @Input()
     timestamp: number | string = '';
