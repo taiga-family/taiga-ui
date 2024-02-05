@@ -1,5 +1,8 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiDocPageModule} from '@taiga-ui/addon-doc';
+import {TuiLinkModule} from '@taiga-ui/core';
+import {TuiActionModule, TuiIslandModule} from '@taiga-ui/kit';
 
 import {
     SCREENSHOT_BOT_LINK,
@@ -7,12 +10,14 @@ import {
 } from '../testing/screenshot-github-bot/screenshot-github-bot.component';
 
 @Component({
+    standalone: true,
     selector: 'related',
+    imports: [TuiDocPageModule, TuiIslandModule, TuiActionModule, TuiLinkModule],
     templateUrl: './related.template.html',
     styleUrls: ['./related.style.less'],
     changeDetection,
 })
-export class RelatedComponent {
+export default class RelatedComponent {
     readonly screenshotBotName = SCREENSHOT_BOT_NAME;
     readonly screenshotBotLink = SCREENSHOT_BOT_LINK;
 }

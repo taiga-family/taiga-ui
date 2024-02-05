@@ -47,8 +47,7 @@ export const ROUTES: Routes = [
     },
     {
         path: 'related',
-        loadChildren: async () =>
-            (await import('../info/related/related.module')).RelatedModule,
+        loadComponent: async () => import('../info/related/related.component'),
         data: {
             title: 'Taiga UI family',
         },
