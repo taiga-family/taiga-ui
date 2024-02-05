@@ -1,4 +1,3 @@
-export * from './alert-options';
 export * from './data-list-accessor';
 export * from './data-list-host';
 export * from './icon-error';

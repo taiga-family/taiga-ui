@@ -152,6 +152,12 @@ export const pages: TuiDocPages = [
     },
     {
         section: 'Components',
+        title: 'Alert',
+        keywords: 'уведомление, нотификация, бабл, облачко, alert, notification',
+        route: '/components/alert',
+    },
+    {
+        section: 'Components',
         title: 'Avatar',
         keywords: 'аватар, image, pic, картинка, изображение, avatar, stack',
         route: '/components/avatar',
@@ -1499,12 +1505,6 @@ export const pages: TuiDocPages = [
         section: 'Tools',
         title: 'Services',
         subPages: [
-            {
-                section: 'Tools',
-                title: 'AlertService',
-                keywords: 'уведомление, нотификация, бабл, облачко, alert, notification',
-                route: '/services/alert-service',
-            },
             {
                 section: 'Tools',
                 title: 'BreakpointService',

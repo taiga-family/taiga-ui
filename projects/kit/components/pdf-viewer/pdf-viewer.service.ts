@@ -1,6 +1,6 @@
 import {inject, Injectable} from '@angular/core';
 import {SafeResourceUrl} from '@angular/platform-browser';
-import {TuiBaseDialogContext, TuiPopoverService} from '@taiga-ui/cdk';
+import {TuiPopoverContext, TuiPopoverService} from '@taiga-ui/cdk';
 import {TUI_DIALOGS} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
@@ -9,7 +9,7 @@ import {TuiPdfViewerComponent} from './pdf-viewer.component';
 import {TUI_PDF_VIEWER_OPTIONS, TuiPdfViewerOptions} from './pdf-viewer.options';
 
 type Content<G> = PolymorpheusContent<
-    TuiBaseDialogContext<G> & TuiPdfViewerOptions<unknown>
+    TuiPdfViewerOptions<unknown> & TuiPopoverContext<G>
 >;
 
 @Injectable({

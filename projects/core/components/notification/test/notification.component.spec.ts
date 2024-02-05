@@ -4,9 +4,9 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {
     TUI_NOTIFICATION_DEFAULT_OPTIONS,
     TUI_NOTIFICATION_OPTIONS,
+    TuiNotification,
     TuiNotificationComponent,
     TuiNotificationModule,
-    TuiNotificationT,
     TuiSvgService,
 } from '@taiga-ui/core';
 import {TuiPageObject} from '@taiga-ui/testing';
@@ -34,7 +34,7 @@ describe('Notification', () => {
             component!: TuiNotificationComponent;
 
             hasCloseButton = true;
-            status: TuiNotificationT = 'info';
+            status: TuiNotification = 'info';
 
             onClose(): void {}
         }

@@ -15,7 +15,6 @@ export * from './icons-path';
 export * from './is-mobile-resolution';
 export * from './media';
 export * from './mode';
-export * from './notification-options';
 export * from './number-format';
 export * from './number-format-observable';
 export * from './option-content';

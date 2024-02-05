@@ -1,4 +1,4 @@
-import {TuiDialog, TuiPopoverContext} from '@taiga-ui/cdk';
+import {TuiPopover, TuiPopoverContext} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
@@ -22,7 +22,7 @@ export interface TuiDialogOptions<I = undefined> {
     readonly closeable: Observable<boolean> | boolean;
     readonly data: I;
     readonly dismissible: Observable<boolean> | boolean;
-    readonly header: PolymorpheusContent<TuiDialog<TuiDialogOptions<I>, any>>;
+    readonly header: PolymorpheusContent<TuiPopover<TuiDialogOptions<I>, any>>;
     readonly label: string;
     readonly required: boolean;
     readonly size: TuiDialogSize;

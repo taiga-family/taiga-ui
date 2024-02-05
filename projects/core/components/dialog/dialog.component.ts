@@ -10,7 +10,7 @@ import {
     ALWAYS_TRUE_HANDLER,
     TUI_IS_MOBILE,
     TuiDestroyService,
-    TuiDialog,
+    TuiPopover,
 } from '@taiga-ui/cdk';
 import {tuiFadeIn, tuiSlideInTop} from '@taiga-ui/core/animations';
 import {
@@ -78,7 +78,8 @@ export class TuiDialogComponent<O, I> {
     constructor(
         @Inject(TUI_ANIMATIONS_SPEED) private readonly speed: number,
         @Inject(TUI_IS_MOBILE) private readonly isMobile: boolean,
-        @Inject(POLYMORPHEUS_CONTEXT) readonly context: TuiDialog<TuiDialogOptions<I>, O>,
+        @Inject(POLYMORPHEUS_CONTEXT)
+        readonly context: TuiPopover<TuiDialogOptions<I>, O>,
         @Inject(TuiDestroyService) @Self() destroy$: Observable<void>,
         @Inject(TuiDialogCloseService) dialogClose$: Observable<unknown>,
         @Inject(TUI_DIALOGS_CLOSE) close$: Observable<unknown>,
@@ -102,7 +103,7 @@ export class TuiDialogComponent<O, I> {
     }
 
     @HostBinding('class._centered')
-    get header(): PolymorpheusContent<TuiDialog<TuiDialogOptions<I>, O>> {
+    get header(): PolymorpheusContent<TuiPopover<TuiDialogOptions<I>, O>> {
         return this.context.header;
     }
 

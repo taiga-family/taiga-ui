@@ -7,12 +7,12 @@ test.describe('AlertService', () => {
     });
 
     test('is shown correctly', async ({page}) => {
-        await tuiGoto(page, '/services/alert-service');
+        await tuiGoto(page, '/components/alert');
         const example = page.locator('#text');
         const showAlertButton = example.locator('tui-alerts-example-1 button').first();
 
         await showAlertButton.click();
 
-        await expect(page.locator('tui-alert')).toHaveScreenshot('01-alert-service.png');
+        await expect(page.locator('tui-alert')).toHaveScreenshot('01-alert.png');
     });
 });

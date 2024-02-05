@@ -10,7 +10,7 @@ import {
     ViewChild,
     ViewChildren,
 } from '@angular/core';
-import {EMPTY_QUERY, TuiDialog, tuiPure} from '@taiga-ui/cdk';
+import {EMPTY_QUERY, TuiPopover, tuiPure} from '@taiga-ui/cdk';
 import {
     TUI_ANIMATIONS_SPEED,
     TUI_CLOSE_WORD,
@@ -67,7 +67,7 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
         @Inject(TUI_COMMON_ICONS) readonly icons: TuiCommonIcons,
         @Inject(TUI_CLOSE_WORD) readonly closeWord$: Observable<string>,
         @Inject(POLYMORPHEUS_CONTEXT)
-        readonly context: TuiDialog<TuiSheetDialogOptions<I>, any>,
+        readonly context: TuiPopover<TuiSheetDialogOptions<I>, any>,
     ) {}
 
     @HostBinding('style.top.px')

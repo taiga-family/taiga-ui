@@ -12,7 +12,8 @@ import {
     TemplateRef,
     ViewChild,
 } from '@angular/core';
-import {TUI_PARENT_ANIMATION, TuiValuesOf} from '@taiga-ui/cdk';
+import {TuiValuesOf} from '@taiga-ui/cdk';
+import {TUI_PARENT_ANIMATION} from '@taiga-ui/core/animations';
 import {TUI_EXPAND_LOADED} from '@taiga-ui/core/constants';
 
 import {TuiExpandContentDirective} from './expand-content.directive';

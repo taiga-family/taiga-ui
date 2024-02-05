@@ -1839,11 +1839,11 @@ export const ROUTES: Routes = [
     },
     // SERVICES
     {
-        path: 'services/alert-service',
+        path: 'components/alert',
         loadChildren: async () =>
-            (await import('../services/alerts/alerts.module')).ExampleTuiAlertsModule,
+            (await import('../components/alert/alert.module')).ExampleTuiAlertModule,
         data: {
-            title: 'AlertService',
+            title: 'Alert',
         },
     },
     {

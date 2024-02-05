@@ -1,0 +1,13 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+tui-alerts > .t-wrapper {
+    .fullsize(fixed);
+
+    display: flex;
+    flex-direction: column;
+    pointer-events: none;
+
+    & > * {
+        pointer-events: auto;
+    }
+}

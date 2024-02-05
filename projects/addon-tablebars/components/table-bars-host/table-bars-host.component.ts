@@ -1,11 +1,12 @@
 import {ChangeDetectionStrategy, Component, Inject, inject} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
-import {TUI_PARENT_ANIMATION, TuiContext} from '@taiga-ui/cdk';
+import {TuiContext} from '@taiga-ui/cdk';
 import {
     TUI_ANIMATIONS_SPEED,
     TUI_CLOSE_WORD,
     TUI_COMMON_ICONS,
     TUI_MEDIA,
+    TUI_PARENT_ANIMATION,
     TuiBrightness,
     TuiCommonIcons,
     tuiIsMobile,
