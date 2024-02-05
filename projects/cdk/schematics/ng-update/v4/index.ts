@@ -10,7 +10,12 @@ import {getExecutionTime} from '../../utils/get-execution-time';
 import {projectRoot} from '../../utils/project-root';
 import {replaceIdentifiers} from '../steps/replace-identifier';
 import {showWarnings} from '../steps/show-warnings';
-import {migrateTemplates, restoreTuiMapper, restoreTuiMatcher} from './steps';
+import {
+    migrateLegacyMask,
+    migrateTemplates,
+    restoreTuiMapper,
+    restoreTuiMatcher,
+} from './steps';
 import {MIGRATION_WARNINGS} from './steps/constants';
 import {IDENTIFIERS_TO_REPLACE} from './steps/constants/identifiers-to-replace';
 
@@ -24,6 +29,7 @@ function main(options: TuiSchema): Rule {
 
         restoreTuiMapper(options);
         restoreTuiMatcher(options);
+        migrateLegacyMask(options);
 
         migrateTemplates(fileSystem, options);
         showWarnings(context, MIGRATION_WARNINGS);
