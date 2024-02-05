@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.65.0](https://github.com/taiga-family/taiga-ui/compare/v3.59.0...v3.65.0) (2024-02-05)
+
+### Features
+
+- **experimental:** add `tuiCardLarge` ([#6516](https://github.com/taiga-family/taiga-ui/issues/6516))
+  ([699c8bc](https://github.com/taiga-family/taiga-ui/commit/699c8bc535e4732f2e25558626f72658d1c97b1d))
+- **kit:** `Push` add setting the number of lines of text
+  ([#6682](https://github.com/taiga-family/taiga-ui/issues/6682))
+  ([df5e07d](https://github.com/taiga-family/taiga-ui/commit/df5e07d3cb18a113b54f282efa6efb359bf14d86))
+
+### Bug Fixes
+
+- **core:** do not hide nested scrollbars ([#6645](https://github.com/taiga-family/taiga-ui/issues/6645))
+  ([6a25d26](https://github.com/taiga-family/taiga-ui/commit/6a25d261a58c578511a75d3c8cb4f7fddec595ab))
+- **core:** prevent TuiRoot from applying CSS styles to the body element without Taiga UI context - v3
+  ([#6500](https://github.com/taiga-family/taiga-ui/issues/6500))
+  ([787d525](https://github.com/taiga-family/taiga-ui/commit/787d525db69f2e14c8c4845875682272a09a5fb7))
+- **experimental:** `Surface` fix styles priority ([#6678](https://github.com/taiga-family/taiga-ui/issues/6678))
+  ([43a79c4](https://github.com/taiga-family/taiga-ui/commit/43a79c42ff67b8aaeac8f065b08f9ac70f757009))
+- **experimental:** fix problem with tuiCell ([#6650](https://github.com/taiga-family/taiga-ui/issues/6650))
+  ([92735ef](https://github.com/taiga-family/taiga-ui/commit/92735ef5f3b66b5e2c84730464bb8cf66bae1b13))
+- **kit:** `Push` fix directive change detection ([#6681](https://github.com/taiga-family/taiga-ui/issues/6681))
+  ([bdd144d](https://github.com/taiga-family/taiga-ui/commit/bdd144d8d0150e4ee93dff402f684df5802bdb33))
+
 ## [3.64.0](https://github.com/taiga-family/taiga-ui/compare/v3.59.0...v3.64.0) (2024-01-31)
 
 ### Features
