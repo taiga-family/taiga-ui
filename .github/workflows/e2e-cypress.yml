@@ -1,4 +1,4 @@
-name: ⚙️ Component testing
+name: ⚙️ Cypress component testing
 on:
   pull_request:
   push:
