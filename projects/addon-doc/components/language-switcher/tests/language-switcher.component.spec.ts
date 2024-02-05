@@ -11,8 +11,12 @@ describe('TuiLanguageSwitcherComponent', () => {
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            declarations: [TuiLanguageSwitcherComponent],
-            imports: [ReactiveFormsModule, TuiSelectModule, TuiDataListModule],
+            imports: [
+                ReactiveFormsModule,
+                TuiSelectModule,
+                TuiDataListModule,
+                TuiLanguageSwitcherComponent,
+            ],
             providers: [TuiLanguageSwitcher],
         }).compileComponents();
 

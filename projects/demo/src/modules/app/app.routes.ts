@@ -81,8 +81,7 @@ export const ROUTES: Routes = [
     // Customization
     {
         path: 'i18n',
-        loadChildren: async () =>
-            (await import('../customization/i18n/i18n.module')).I18nModule,
+        loadComponent: async () => import('../customization/i18n/i18n.component'),
         data: {
             title: 'I18n',
         },
