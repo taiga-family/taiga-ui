@@ -1,14 +1,16 @@
 <tui-swipe-actions>
-    <div tuiSurface="elevated">
-        <div tuiCell>
-            <tui-avatar
-                appearance="primary"
-                src="tuiIconDollarSignLarge"
-            ></tui-avatar>
-            <div tuiTitle>
-                <strong>{{ 10000 | tuiAmount: 'USD' | async }}</strong>
-                <div tuiSubtitle>Dollar account</div>
-            </div>
+    <div
+        tuiCardLarge
+        tuiCell
+        tuiSurface="elevated"
+    >
+        <tui-avatar
+            appearance="primary"
+            src="tuiIconDollarSignLarge"
+        ></tui-avatar>
+        <div tuiTitle>
+            <strong>{{ 10000 | tuiAmount: 'USD' | async }}</strong>
+            <div tuiSubtitle>Dollar account</div>
         </div>
     </div>
 
@@ -34,16 +36,18 @@
 </tui-swipe-actions>
 
 <tui-swipe-actions>
-    <div tuiSurface="elevated">
-        <div tuiCell>
-            <tui-avatar
-                appearance="primary"
-                src="tuiIconGift"
-            ></tui-avatar>
-            <div tuiTitle>
-                <strong>{{ 23000 | tuiAmount: 'EUR' | async }}</strong>
-                <div tuiSubtitle>Goal</div>
-            </div>
+    <div
+        tuiCardLarge
+        tuiCell
+        tuiSurface="elevated"
+    >
+        <tui-avatar
+            appearance="primary"
+            src="tuiIconGift"
+        ></tui-avatar>
+        <div tuiTitle>
+            <strong>{{ 23000 | tuiAmount: 'EUR' | async }}</strong>
+            <div tuiSubtitle>Goal</div>
         </div>
     </div>
 
@@ -59,16 +63,18 @@
     [style.--tui-action-gap]="16"
     [style.--tui-item-size]="32"
 >
-    <div tuiSurface="elevated">
-        <div tuiCell>
-            <tui-avatar
-                appearance="primary"
-                src="tuiIconBriefcase"
-            ></tui-avatar>
-            <div tuiTitle>
-                <strong>{{ 5000 | tuiAmount: 'EUR' | async }}</strong>
-                <div tuiSubtitle>Vacations</div>
-            </div>
+    <div
+        tuiCardLarge
+        tuiCell
+        tuiSurface="elevated"
+    >
+        <tui-avatar
+            appearance="primary"
+            src="tuiIconBriefcase"
+        ></tui-avatar>
+        <div tuiTitle>
+            <strong>{{ 5000 | tuiAmount: 'EUR' | async }}</strong>
+            <div tuiSubtitle>Vacations</div>
         </div>
     </div>
 
