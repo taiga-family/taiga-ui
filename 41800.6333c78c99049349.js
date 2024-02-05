@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[41800],{41800:e=>{e.exports='<label class="label">\n    <span class="text">From custom label component with</span>\n    <tui-svg src="tuiIconHeart"></tui-svg>\n</label>\n'}}]);

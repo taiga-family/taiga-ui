@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[40544],{40544:e=>{e.exports='<tui-progress-circle\n    size="xl"\n    [max]="max"\n    [style.color]="color$ | async"\n    [value]="(value$ | async) || 0"\n></tui-progress-circle>\n'}}]);
