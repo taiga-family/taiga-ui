@@ -916,6 +916,12 @@ export const pages: TuiDocPages = [
                 keywords: 'кнопка, button, close, закрыть',
                 route: '/experimental/button-close',
             },
+            {
+                section: 'Experimental',
+                title: 'ButtonGroup',
+                keywords: 'кнопка, button, group, группа',
+                route: '/experimental/button-group',
+            },
         ],
     },
     {

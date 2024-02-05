@@ -101,6 +101,7 @@ export const TUI_USED_ICONS = [
     'tuiIconLock',
     'tuiIconUsers',
     'tuiIconClock',
+    'tuiIconArrowRightCircleLarge',
     'tuiIconPlusSquareLarge',
     'tuiIconTarget',
     'tuiIconGooglePay',
