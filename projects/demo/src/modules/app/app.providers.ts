@@ -29,7 +29,6 @@ import {
     TUI_BASE_HREF,
     TUI_IS_E2E,
     TUI_IS_PLAYWRIGHT,
-    TUI_SWIPE_OPTIONS,
     TUI_TAKE_ONLY_TRUSTED_EVENTS,
     tuiAssert,
 } from '@taiga-ui/cdk';
@@ -141,10 +140,6 @@ export const APP_PROVIDERS: Provider[] = [
     {
         provide: TUI_DOC_EXAMPLE_CONTENT_PROCESSOR,
         useValue: exampleContentProcessor,
-    },
-    {
-        provide: TUI_SWIPE_OPTIONS,
-        useValue: {timeout: 300, threshold: 60},
     },
     {
         provide: TUI_HINT_OPTIONS,

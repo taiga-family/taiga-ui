@@ -1,0 +1,46 @@
+<tui-swipe-actions>
+    <div
+        tuiCardLarge
+        tuiCell
+        tuiSurface="elevated"
+    >
+        <tui-avatar
+            appearance="primary"
+            src="tuiIconDollarSignLarge"
+        ></tui-avatar>
+        <div tuiTitle>
+            <strong>{{ 10000 | tuiAmount: 'USD' | async }}</strong>
+            <div tuiSubtitle>Dollar account</div>
+        </div>
+    </div>
+
+    <button
+        iconLeft="tuiIconEye"
+        size="m"
+        tuiIconButton
+        tuiSwipeAction
+    ></button>
+    <button
+        iconLeft="tuiIconEdit3"
+        size="m"
+        tuiIconButton
+        tuiSwipeAction
+    ></button>
+    <button
+        *ngIf="shareButton"
+        appearance="secondary"
+        iconLeft="tuiIconShare"
+        size="m"
+        tuiIconButton
+        tuiSwipeAction
+    ></button>
+</tui-swipe-actions>
+
+<label>
+    <input
+        tuiCheckbox
+        type="checkbox"
+        [(ngModel)]="shareButton"
+    />
+    Share button
+</label>

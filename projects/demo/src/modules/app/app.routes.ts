@@ -410,6 +410,15 @@ export const ROUTES: Routes = [
         },
     },
     {
+        path: 'components/swipe-actions',
+        loadChildren: async () =>
+            (await import('../components/swipe-action/swipe-actions.module'))
+                .ExampleTuiSwipeActionsModule,
+        data: {
+            title: 'SwipeActions',
+        },
+    },
+    {
         path: 'experimental/textfield',
         loadChildren: async () =>
             (await import('../experimental/textfield/textfield.module'))

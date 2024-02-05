@@ -1,0 +1,18 @@
+:host {
+    width: 20rem;
+}
+
+.blur {
+    background-image: url('/assets/images/restaurant-2.jpg');
+    border-radius: 1rem;
+    padding: 1.25rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--tui-text-01-night);
+    z-index: 1;
+
+    &:before {
+        backdrop-filter: blur(1rem);
+    }
+}

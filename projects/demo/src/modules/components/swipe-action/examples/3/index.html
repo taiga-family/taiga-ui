@@ -1,0 +1,73 @@
+<tui-swipe-actions [autoClose]="true">
+    <div
+        tuiCardLarge
+        tuiCell
+        tuiSurface="elevated"
+    >
+        <tui-avatar
+            appearance="primary"
+            src="tuiIconDollarSignLarge"
+        ></tui-avatar>
+        <div tuiTitle>
+            <strong>{{ 10000 | tuiAmount: 'USD' | async }}</strong>
+            <div tuiSubtitle>Dollar account</div>
+        </div>
+    </div>
+
+    <button
+        iconLeft="tuiIconEye"
+        size="m"
+        tuiIconButton
+        tuiSwipeAction
+    ></button>
+    <button
+        iconLeft="tuiIconEdit3"
+        size="m"
+        tuiIconButton
+        tuiSwipeAction
+    ></button>
+    <button
+        appearance="secondary"
+        iconLeft="tuiIconShare"
+        size="m"
+        tuiIconButton
+        tuiSwipeAction
+    ></button>
+</tui-swipe-actions>
+
+<tui-swipe-actions [autoClose]="true">
+    <div
+        tuiCardLarge
+        tuiCell
+        tuiSurface="elevated"
+    >
+        <tui-avatar
+            appearance="primary"
+            src="tuiIconGift"
+        ></tui-avatar>
+        <div tuiTitle>
+            <strong>{{ 23000 | tuiAmount: 'EUR' | async }}</strong>
+            <div tuiSubtitle>Goal</div>
+        </div>
+    </div>
+
+    <button
+        iconLeft="tuiIconEye"
+        size="m"
+        tuiIconButton
+        tuiSwipeAction
+    ></button>
+    <button
+        iconLeft="tuiIconEdit3"
+        size="m"
+        tuiIconButton
+        tuiSwipeAction
+    ></button>
+    <button
+        appearance="secondary"
+        iconLeft="tuiIconShare"
+        size="m"
+        tuiIconButton
+        tuiSwipeAction
+    ></button>
+</tui-swipe-actions>

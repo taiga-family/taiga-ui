@@ -1,0 +1,33 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+:host {
+    display: flex;
+    width: 20rem;
+}
+
+tui-swipe-actions {
+    overflow: hidden;
+}
+
+.fallback {
+    .center-top();
+    right: 2rem;
+}
+
+[tuiSurface] {
+    margin: 1.5rem 1rem;
+}
+
+button[tuiSwipeAction] {
+    border-radius: 100%;
+}
+
+@media only screen and (hover: none) and (pointer: coarse) {
+    .fallback {
+        display: none;
+    }
+
+    tui-swipe-actions {
+        overflow-x: scroll;
+    }
+}

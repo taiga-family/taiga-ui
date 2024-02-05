@@ -1,0 +1,46 @@
+<tui-swipe-actions>
+    <div
+        tuiCardLarge
+        tuiCell
+        tuiSurface="elevated"
+    >
+        <tui-avatar
+            appearance="primary"
+            src="tuiIconDollarSignLarge"
+        ></tui-avatar>
+        <div tuiTitle>
+            <strong>{{ 10000 | tuiAmount: 'USD' | async }}</strong>
+            <div tuiSubtitle>Dollar account</div>
+        </div>
+    </div>
+
+    <button
+        appearance="flat"
+        iconLeft="tuiIconMoreVertical"
+        size="s"
+        tuiDropdownOpen
+        tuiIconButton
+        class="fallback"
+        [tuiDropdown]="content"
+    ></button>
+
+    <ng-template #content>
+        <tui-data-list>
+            <button tuiOption>Hide</button>
+            <button tuiOption>Edit</button>
+        </tui-data-list>
+    </ng-template>
+
+    <button
+        iconLeft="tuiIconEye"
+        size="m"
+        tuiIconButton
+        tuiSwipeAction
+    ></button>
+    <button
+        iconLeft="tuiIconEdit3"
+        size="m"
+        tuiIconButton
+        tuiSwipeAction
+    ></button>
+</tui-swipe-actions>
