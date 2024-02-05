@@ -2,6 +2,7 @@
 
 :host {
     .scrollbar-hidden();
+
     --tui-action-gap: 24;
     --tui-actions-padding: 0.5rem;
     --tui-item-size: 44;
@@ -42,6 +43,7 @@
         --t-factor: calc((var(--t-actions-width) - var(--t-distance)) / var(--t-actions-width));
         --t-scale: calc(1 / var(--t-factor));
         --t-translate: calc(1px * (1 - 1 / var(--t-factor)));
+
         transform: ~'translate3d(calc(calc((-100% - calc(1px * var(--tui-action-gap))) * (@{i} - 1)) / var(--t-scale)), 0, var(--t-translate))';
         scale: var(--t-scale);
     }
