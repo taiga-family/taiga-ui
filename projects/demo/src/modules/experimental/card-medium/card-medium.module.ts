@@ -33,11 +33,11 @@ import {
     TuiTitleModule,
 } from '@taiga-ui/experimental';
 
-import {ExampleTuiCardComponent} from './card-medium.component';
+import {ExampleTuiCardMediumComponent} from './card-medium.component';
 import {TuiCardMediumExample1} from './examples/1';
 import {TuiCardMediumExample2} from './examples/2';
 import {TuiCardMediumExample3} from './examples/3';
-import {TuiCardExample4} from './examples/4';
+import {TuiCardMediumExample4} from './examples/4';
 import {TuiCardMediumExample5} from './examples/5';
 import {TuiCardMediumExample6} from './examples/6';
 import {TuiCardMediumExample7} from './examples/7';
@@ -66,7 +66,7 @@ import {TuiCardMediumExample7} from './examples/7';
         TuiButtonModule,
         TuiHeaderModule,
         TuiCellModule,
-        tuiGetDocModules(ExampleTuiCardComponent),
+        tuiGetDocModules(ExampleTuiCardMediumComponent),
         TuiRepeatTimesModule,
         TuiDataListModule,
         TuiHostedDropdownModule,
@@ -76,15 +76,15 @@ import {TuiCardMediumExample7} from './examples/7';
         TuiAppearanceModule,
     ],
     declarations: [
-        ExampleTuiCardComponent,
+        ExampleTuiCardMediumComponent,
         TuiCardMediumExample1,
         TuiCardMediumExample2,
         TuiCardMediumExample3,
-        TuiCardExample4,
+        TuiCardMediumExample4,
         TuiCardMediumExample5,
         TuiCardMediumExample6,
         TuiCardMediumExample7,
     ],
-    exports: [ExampleTuiCardComponent],
+    exports: [ExampleTuiCardMediumComponent],
 })
-export class ExampleTuiCardModule {}
+export class ExampleTuiCardMediumModule {}

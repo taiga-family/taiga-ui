@@ -3,11 +3,11 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample, TuiRawLoaderContent} from '@taiga-ui/addon-doc';
 
 @Component({
-    selector: 'example-card',
+    selector: 'example-card-medium',
     templateUrl: './card-medium.template.html',
     changeDetection,
 })
-export class ExampleTuiCardComponent {
+export class ExampleTuiCardMediumComponent {
     readonly exampleModule: TuiRawLoaderContent = import(
         './examples/import/import-module.md?raw'
     );
