@@ -51,14 +51,14 @@ describe('ElasticSticky', () => {
     it('callback is triggered with 0.5 when half of sticky would be hidden', () => {
         cy.get('#scroll')
             .then(query => query.get(0).scrollTo({top: 75}))
-            .then(() => cy.wait(100))
+            .then(() => cy.wait(300))
             .then(() => expect(Number(component.offset.toFixed(1))).to.equal(0.5));
     });
 
     it('callback is triggered with 0 when sticky is fully hidden', () => {
         cy.get('#scroll')
             .then(query => query.get(0).scrollTo({top: 100}))
-            .then(() => cy.wait(100))
+            .then(() => cy.wait(300))
             .then(() => expect(Number(component.offset.toFixed(1))).to.equal(0));
     });
 });
