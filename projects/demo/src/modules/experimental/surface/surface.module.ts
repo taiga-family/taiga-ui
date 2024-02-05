@@ -17,6 +17,7 @@ import {
     TuiAvatarModule,
     TuiBadgeModule,
     TuiButtonModule,
+    TuiCardModule,
     TuiSurfaceModule,
 } from '@taiga-ui/experimental';
 
@@ -41,6 +42,7 @@ import {ExampleTuiSurfaceComponent} from './surface.component';
         TuiScrollbarModule,
         TuiButtonModule,
         TuiLinkModule,
+        TuiCardModule,
         TuiAvatarModule,
         TuiLabelModule,
         TuiModeModule,
