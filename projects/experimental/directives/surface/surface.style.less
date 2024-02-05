@@ -124,41 +124,42 @@ input[tuiSurfaceLayer] {
     }
 }
 
-[data-surface='elevated'] {
+[tuiSurface][data-surface='elevated'] {
     box-shadow: var(--tui-shadow);
     border-radius: var(--tui-radius-xl);
     background: var(--tui-elevation-01);
-}
 
-button[data-surface='elevated'],
-a[data-surface='elevated'] {
-    &:active {
-        box-shadow: var(--tui-shadow);
-        transform: scale(0.95);
-    }
+    button&,
+    a& {
+        &:active {
+            box-shadow: var(--tui-shadow);
+            transform: scale(0.95);
+        }
 
-    @media (hover: hover) and (pointer: fine) {
-        &:hover {
-            box-shadow: var(--tui-shadow-hover);
-            transform: translate3d(0, -0.25rem, 0);
+        @media (hover: hover) and (pointer: fine) {
+            &:hover {
+                box-shadow: var(--tui-shadow-hover);
+                transform: translate3d(0, -0.25rem, 0);
+                background: var(--tui-elevation-01);
+            }
         }
     }
 }
 
-[data-surface='flat'] {
+[tuiSurface][data-surface='flat'] {
     border-radius: var(--tui-radius-xl);
     background: var(--tui-clear);
-}
 
-button[data-surface='flat'],
-a[data-surface='flat'] {
-    &:active {
-        transform: scale(0.95);
-    }
+    button&,
+    a& {
+        &:active {
+            transform: scale(0.95);
+        }
 
-    @media (hover: hover) and (pointer: fine) {
-        &:hover {
-            transform: scale(1.15);
+        @media (hover: hover) and (pointer: fine) {
+            &:hover {
+                transform: scale(1.15);
+            }
         }
     }
 }
