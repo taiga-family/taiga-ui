@@ -9,6 +9,13 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
 
 const LONG_TEXT_TEMPLATE = '<span>LongTextContent</span>';
 
+const inputContent = `Label
+<strong>strong text</strong>
+<input
+    tuiTextfield
+    [placeholder]="placeholder"
+/>`;
+
 @Component({
     selector: 'example-tui-input',
     templateUrl: './input.template.html',
@@ -104,6 +111,8 @@ export class ExampleTuiInputComponent extends AbstractExampleTuiControl {
         'tuiIconMastercardMono',
         LONG_TEXT_TEMPLATE,
     ];
+
+    readonly inputContent = inputContent;
 
     override get customContent(): PolymorpheusContent {
         return this.customContentSelected === LONG_TEXT_TEMPLATE

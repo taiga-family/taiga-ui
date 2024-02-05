@@ -1,6 +1,10 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocExample, TuiRawLoaderContent} from '@taiga-ui/addon-doc';
+import {
+    TuiDocExample,
+    TuiDocumentationProperty,
+    TuiRawLoaderContent,
+} from '@taiga-ui/addon-doc';
 import {TuiSizeL, TuiSizeXS} from '@taiga-ui/core';
 
 @Component({
@@ -63,4 +67,10 @@ export class ExampleTuiButtonComponent {
     iconRight = this.icons[0];
 
     loading = false;
+
+    readonly buttonBaseProperties: Record<string, TuiDocumentationProperty> = {
+        tuiButton: {
+            type: null,
+        },
+    };
 }

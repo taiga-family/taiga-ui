@@ -100,6 +100,7 @@
     <ng-template pageTab>
         <tui-doc-demo>
             <tui-calendar
+                documentationTemplate
                 [disabledItemHandler]="disabledItemHandler"
                 [markerHandler]="markerHandler"
                 [max]="max"
@@ -154,6 +155,7 @@
                 documentationPropertyMode="input"
                 documentationPropertyName="max"
                 documentationPropertyType="TuiDay | null"
+                [documentationPropertyDefaultValue]="undefined"
                 [documentationPropertyValues]="maxVariants"
                 [(documentationPropertyValue)]="max"
             >

@@ -147,42 +147,43 @@
     </ng-template>
 
     <ng-template pageTab>
-        <tui-doc-demo [control]="control">
-            <ng-template>
-                <tui-input-number
-                    [decimal]="decimal"
-                    [focusable]="focusable"
-                    [formControl]="control"
-                    [max]="max"
-                    [min]="min"
-                    [postfix]="postfix"
-                    [precision]="precision"
-                    [prefix]="prefix"
-                    [pseudoActive]="pseudoPressed"
-                    [pseudoFocus]="pseudoFocused"
-                    [pseudoHover]="pseudoHovered"
-                    [pseudoInvalid]="pseudoInvalid"
-                    [readOnly]="readOnly"
-                    [step]="step"
-                    [style.text-align]="textAlign"
-                    [tuiHintAppearance]="hintAppearance"
-                    [tuiHintContent]="hintContent"
-                    [tuiHintDirection]="hintDirection"
-                    [tuiTextfieldCleaner]="cleaner"
-                    [tuiTextfieldCustomContent]="customContent"
-                    [tuiTextfieldFiller]="filler"
-                    [tuiTextfieldIconLeft]="iconLeft"
-                    [tuiTextfieldLabelOutside]="labelOutside"
-                    [tuiTextfieldPostfix]="postfix"
-                    [tuiTextfieldPrefix]="prefix"
-                    [tuiTextfieldSize]="size"
-                >
-                    Type a sum
-                </tui-input-number>
-            </ng-template>
+        <tui-doc-demo [formGroup]="control | tuiWrapControl">
+            <tui-input-number
+                documentationTemplate
+                documentationTemplateContent="Type a sum"
+                [decimal]="decimal"
+                [focusable]="focusable"
+                [formControl]="control"
+                [max]="max"
+                [min]="min"
+                [postfix]="postfix"
+                [precision]="precision"
+                [prefix]="prefix"
+                [pseudoActive]="pseudoPressed"
+                [pseudoFocus]="pseudoFocused"
+                [pseudoHover]="pseudoHovered"
+                [pseudoInvalid]="pseudoInvalid"
+                [readOnly]="readOnly"
+                [step]="step"
+                [style.text-align]="textAlign"
+                [tuiHintAppearance]="hintAppearance"
+                [tuiHintContent]="hintContent"
+                [tuiHintDirection]="hintDirection"
+                [tuiTextfieldCleaner]="cleaner"
+                [tuiTextfieldCustomContent]="customContent"
+                [tuiTextfieldFiller]="filler"
+                [tuiTextfieldIconLeft]="iconLeft"
+                [tuiTextfieldLabelOutside]="labelOutside"
+                [tuiTextfieldPostfix]="postfix"
+                [tuiTextfieldPrefix]="prefix"
+                [tuiTextfieldSize]="size"
+            >
+                Type a sum
+            </tui-input-number>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
+                documentationPropertyMode="input"
                 documentationPropertyName="disabled"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"
@@ -237,6 +238,7 @@
                 documentationPropertyMode="input"
                 documentationPropertyName="precision"
                 documentationPropertyType="number"
+                [documentationPropertyDefaultValue]="undefined"
                 [documentationPropertyValues]="precisionVariants"
                 [(documentationPropertyValue)]="precision"
             >
@@ -248,6 +250,7 @@
                 documentationPropertyMode="input"
                 documentationPropertyName="decimal"
                 documentationPropertyType="TuiDecimal"
+                [documentationPropertyDefaultValue]="undefined"
                 [documentationPropertyValues]="decimalVariants"
                 [(documentationPropertyValue)]="decimal"
             >
@@ -268,6 +271,7 @@
                 documentationPropertyMode="input"
                 documentationPropertyName="style.text-align"
                 documentationPropertyType="string"
+                [documentationPropertyDefaultValue]="undefined"
                 [documentationPropertyValues]="textAlignVariants"
                 [(documentationPropertyValue)]="textAlign"
             >

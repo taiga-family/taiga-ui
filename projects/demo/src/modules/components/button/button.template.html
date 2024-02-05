@@ -86,10 +86,11 @@
             <p>
                 <button
                     *ngIf="iconButton; else button"
+                    documentationTemplate
                     tuiIconButton
                     type="button"
                     [appearance]="appearance"
-                    [disabled]="disabled"
+                    [documentationTemplateBaseProperties]="iconButtonBaseProperties"
                     [icon]="icon"
                     [pseudoActive]="pseudoPressed"
                     [pseudoFocus]="pseudoFocused"
@@ -100,11 +101,13 @@
                 ></button>
                 <ng-template #button>
                     <button
+                        documentationTemplate
+                        documentationTemplateContent="Content"
                         tuiButton
                         type="button"
                         class="tui-space_right-4"
                         [appearance]="appearance"
-                        [disabled]="disabled"
+                        [documentationTemplateBaseProperties]="buttonBaseProperties"
                         [icon]="icon"
                         [iconRight]="iconRight"
                         [pseudoActive]="pseudoPressed"

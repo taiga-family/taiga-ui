@@ -18,8 +18,11 @@
     <ng-template pageTab>
         <tui-doc-demo>
             <div
+                documentationTemplate
+                documentationTemplateContent="It is followed inside the block"
                 tuiHint="Some information"
                 tuiHintPointer
+                [documentationTemplateBaseProperties]="hintBaseProperties"
                 [tuiHintAppearance]="appearance"
                 [tuiHintDirection]="direction"
                 [tuiHintHideDelay]="hideDelay"

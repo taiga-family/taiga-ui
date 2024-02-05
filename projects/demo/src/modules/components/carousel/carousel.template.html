@@ -70,7 +70,9 @@
     <ng-template pageTab>
         <tui-doc-demo>
             <tui-carousel
+                documentationTemplate
                 class="carousel"
+                [documentationTemplateContent]="carouselContent"
                 [draggable]="draggable"
                 [duration]="duration"
                 [itemsCount]="itemsCount"

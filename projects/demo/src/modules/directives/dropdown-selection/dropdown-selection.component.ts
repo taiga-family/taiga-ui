@@ -1,10 +1,25 @@
 import {Component, forwardRef} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiDocExample, TuiDocumentationProperty} from '@taiga-ui/addon-doc';
 import {TuiDropdownPosition} from '@taiga-ui/kit';
 
 import {AbstractExampleTuiDropdown} from '../../components/abstract/dropdown';
 import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/inherited-documentation/abstract-props-accessor';
+
+const content = `Select a text to
+<strong>see a dropdown</strong>
+<ng-template #dropdownContent>
+    <div class="dropdown">
+        Here you can have any content
+        <p>You can select a text inside a dropdown and it will not close a dropdown</p>
+        <button
+            tuiButton
+            type="button"
+        >
+            Button
+        </button>
+    </div>
+</ng-template>`;
 
 @Component({
     selector: 'example-tui-dropdown-selection',
@@ -36,4 +51,16 @@ export class ExampleTuiDropdownSelectionComponent extends AbstractExampleTuiDrop
     positionVariants: TuiDropdownPosition[] = ['selection', 'word', 'tag'];
 
     position = this.positionVariants[0];
+
+    readonly content = content;
+
+    readonly dropdownBaseProperties: Record<string, TuiDocumentationProperty> = {
+        tuiDropdownSelection: {
+            type: null,
+        },
+        tuiDropdown: {
+            type: 'input',
+            value: 'dropdownContent',
+        },
+    };
 }

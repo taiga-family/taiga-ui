@@ -61,8 +61,11 @@
     <ng-template pageTab>
         <tui-doc-demo>
             <button
+                documentationTemplate
+                documentationTemplateContent="Button"
                 tuiButton
                 [appearance]="appearance"
+                [documentationTemplateBaseProperties]="buttonBaseProperties"
                 [iconLeft]="iconLeft"
                 [iconRight]="iconRight"
                 [loading]="loading"

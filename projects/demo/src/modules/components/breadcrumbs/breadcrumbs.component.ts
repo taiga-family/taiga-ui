@@ -3,6 +3,21 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiSizeL} from '@taiga-ui/core';
 
+const content = `<a
+    *tuiItem
+    tuiLink
+    routerLink="/main"
+>
+    Main
+</a>
+<a
+    *tuiItem
+    tuiLink
+    routerLink="/profile"
+>
+    Profile
+</a>`;
+
 @Component({
     selector: 'example-breadcrumbs',
     templateUrl: './breadcrumbs.template.html',
@@ -48,4 +63,6 @@ export class ExampleTuiBreadcrumbsComponent {
     readonly sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
 
     size: TuiSizeL = this.sizeVariants[0];
+
+    readonly content = content;
 }

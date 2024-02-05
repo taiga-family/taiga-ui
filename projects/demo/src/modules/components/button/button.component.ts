@@ -1,6 +1,6 @@
 import {Component, forwardRef, TemplateRef} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiDocExample, TuiDocumentationProperty} from '@taiga-ui/addon-doc';
 import {tuiPure} from '@taiga-ui/cdk';
 import {TuiSizeXL, TuiSizeXS} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
@@ -97,6 +97,26 @@ export class ExampleTuiButtonComponent extends AbstractExampleTuiInteractive {
     iconRight: PolymorpheusContent = '';
 
     iconButton = false;
+
+    readonly buttonBaseProperties: Record<string, TuiDocumentationProperty> = {
+        tuiButton: {
+            type: null,
+        },
+        type: {
+            type: null,
+            value: 'button',
+        },
+    };
+
+    readonly iconButtonBaseProperties: Record<string, TuiDocumentationProperty> = {
+        tuiIconButton: {
+            type: null,
+        },
+        type: {
+            type: null,
+            value: 'button',
+        },
+    };
 
     @tuiPure
     getContentVariants(

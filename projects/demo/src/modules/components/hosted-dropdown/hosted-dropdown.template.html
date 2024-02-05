@@ -65,6 +65,7 @@
     <ng-template pageTab>
         <tui-doc-demo>
             <tui-hosted-dropdown
+                documentationTemplate
                 [canOpen]="canOpen"
                 [content]="template ? dropdown : content"
                 [sided]="sided"
@@ -77,7 +78,10 @@
                 [(open)]="open"
             >
                 <tui-input
+                    documentationTemplate
+                    documentationTemplateContent="Start typing"
                     class="input"
+                    [documentationTemplateBaseProperties]="hostedDropdownBaseProperties"
                     [ngModel]="input"
                     (ngModelChange)="onInput($event)"
                 >

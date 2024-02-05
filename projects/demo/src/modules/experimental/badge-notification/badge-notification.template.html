@@ -34,7 +34,13 @@
 
     <ng-template pageTab>
         <tui-doc-demo>
-            <tui-badge-notification [size]="size">11</tui-badge-notification>
+            <tui-badge-notification
+                documentationTemplate
+                documentationTemplateContent="11"
+                [size]="size"
+            >
+                11
+            </tui-badge-notification>
         </tui-doc-demo>
         <label
             tuiLabel="Content type"

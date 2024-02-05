@@ -65,7 +65,9 @@
     <ng-template pageTab>
         <tui-doc-demo>
             <tui-textarea
+                documentationTemplate
                 class="b-form"
+                [documentationTemplateContent]="content"
                 [expandable]="expandable"
                 [focusable]="focusable"
                 [formControl]="control"

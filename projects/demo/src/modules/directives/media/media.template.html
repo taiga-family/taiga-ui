@@ -34,8 +34,10 @@
     <ng-template pageTab>
         <audio
             controls
+            documentationTemplate
             src="assets/media/strays.mp3"
             tuiMedia
+            [documentationTemplateBaseProperties]="audioBaseProperties"
             [playbackRate]="playbackRate"
             [(currentTime)]="currentTime"
             [(paused)]="paused"

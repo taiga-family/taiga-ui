@@ -26,24 +26,24 @@
     </ng-template>
 
     <ng-template pageTab>
-        <tui-doc-demo [control]="control">
-            <ng-template>
-                <tui-radio-list
-                    class="tui-space_bottom-3"
-                    [disabledItemHandler]="disabledItemHandler"
-                    [focusable]="focusable"
-                    [formControl]="control"
-                    [itemContent]="itemContent"
-                    [items]="items"
-                    [orientation]="orientation"
-                    [pseudoActive]="pseudoPressed"
-                    [pseudoFocus]="pseudoFocused"
-                    [pseudoHover]="pseudoHovered"
-                    [pseudoInvalid]="pseudoInvalid"
-                    [readOnly]="readOnly"
-                    [size]="size"
-                ></tui-radio-list>
-            </ng-template>
+        <tui-doc-demo [formGroup]="control | tuiWrapControl">
+            <tui-radio-list
+                documentationTemplate
+                class="tui-space_bottom-3"
+                [disabledItemHandler]="disabledItemHandler"
+                [documentationTemplateBaseProperties]="radioBaseProperties"
+                [focusable]="focusable"
+                [formControl]="control"
+                [itemContent]="itemContent"
+                [items]="items"
+                [orientation]="orientation"
+                [pseudoActive]="pseudoPressed"
+                [pseudoFocus]="pseudoFocused"
+                [pseudoHover]="pseudoHovered"
+                [pseudoInvalid]="pseudoInvalid"
+                [readOnly]="readOnly"
+                [size]="size"
+            ></tui-radio-list>
         </tui-doc-demo>
         <ng-template
             #itemContent
@@ -54,6 +54,7 @@
         </ng-template>
         <tui-doc-documentation>
             <ng-template
+                documentationPropertyMode="input"
                 documentationPropertyName="disabled"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"

@@ -42,57 +42,59 @@
     </ng-template>
 
     <ng-template pageTab>
-        <tui-doc-demo [control]="control">
-            <ng-template>
-                <tui-radio-labeled
-                    class="tui-space_bottom-3"
-                    [focusable]="focusable"
-                    [formControl]="control"
-                    [item]="items[0]"
-                    [pseudoActive]="pseudoPressed"
-                    [pseudoDisabled]="pseudoDisabled"
-                    [pseudoFocus]="pseudoFocused"
-                    [pseudoHover]="pseudoHovered"
-                    [pseudoInvalid]="pseudoInvalid"
-                    [readOnly]="readOnly"
-                    [size]="size"
-                >
-                    One
-                </tui-radio-labeled>
-                <tui-radio-labeled
-                    class="tui-space_bottom-3"
-                    [focusable]="focusable"
-                    [formControl]="control"
-                    [item]="items[1]"
-                    [pseudoActive]="pseudoPressed"
-                    [pseudoDisabled]="pseudoDisabled"
-                    [pseudoFocus]="pseudoFocused"
-                    [pseudoHover]="pseudoHovered"
-                    [pseudoInvalid]="pseudoInvalid"
-                    [readOnly]="readOnly"
-                    [size]="size"
-                >
-                    Two
-                </tui-radio-labeled>
-                <tui-radio-labeled
-                    class="tui-space_bottom-3"
-                    [focusable]="focusable"
-                    [formControl]="control"
-                    [item]="items[2]"
-                    [pseudoActive]="pseudoPressed"
-                    [pseudoDisabled]="pseudoDisabled"
-                    [pseudoFocus]="pseudoFocused"
-                    [pseudoHover]="pseudoHovered"
-                    [pseudoInvalid]="pseudoInvalid"
-                    [readOnly]="readOnly"
-                    [size]="size"
-                >
-                    Three
-                </tui-radio-labeled>
-            </ng-template>
+        <tui-doc-demo [formGroup]="control | tuiWrapControl">
+            <tui-radio-labeled
+                documentationTemplate
+                documentationTemplateContent="One"
+                class="tui-space_bottom-3"
+                [documentationTemplateBaseProperties]="radioBaseProperties"
+                [focusable]="focusable"
+                [formControl]="control"
+                [item]="items[0]"
+                [pseudoActive]="pseudoPressed"
+                [pseudoDisabled]="pseudoDisabled"
+                [pseudoFocus]="pseudoFocused"
+                [pseudoHover]="pseudoHovered"
+                [pseudoInvalid]="pseudoInvalid"
+                [readOnly]="readOnly"
+                [size]="size"
+            >
+                One
+            </tui-radio-labeled>
+            <tui-radio-labeled
+                class="tui-space_bottom-3"
+                [focusable]="focusable"
+                [formControl]="control"
+                [item]="items[1]"
+                [pseudoActive]="pseudoPressed"
+                [pseudoDisabled]="pseudoDisabled"
+                [pseudoFocus]="pseudoFocused"
+                [pseudoHover]="pseudoHovered"
+                [pseudoInvalid]="pseudoInvalid"
+                [readOnly]="readOnly"
+                [size]="size"
+            >
+                Two
+            </tui-radio-labeled>
+            <tui-radio-labeled
+                class="tui-space_bottom-3"
+                [focusable]="focusable"
+                [formControl]="control"
+                [item]="items[2]"
+                [pseudoActive]="pseudoPressed"
+                [pseudoDisabled]="pseudoDisabled"
+                [pseudoFocus]="pseudoFocused"
+                [pseudoHover]="pseudoHovered"
+                [pseudoInvalid]="pseudoInvalid"
+                [readOnly]="readOnly"
+                [size]="size"
+            >
+                Three
+            </tui-radio-labeled>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
+                documentationPropertyMode="input"
                 documentationPropertyName="disabled"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"

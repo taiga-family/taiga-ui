@@ -108,22 +108,23 @@
     </ng-template>
 
     <ng-template pageTab>
-        <tui-doc-demo [control]="control">
-            <ng-template>
-                <input
-                    tuiSlider
-                    type="range"
-                    [formControl]="control"
-                    [max]="max"
-                    [min]="min"
-                    [segments]="segments"
-                    [size]="size"
-                    [step]="step"
-                />
-            </ng-template>
+        <tui-doc-demo [formGroup]="control | tuiWrapControl">
+            <input
+                documentationTemplate
+                tuiSlider
+                type="range"
+                [documentationTemplateBaseProperties]="sliderBaseProperties"
+                [formControl]="control"
+                [max]="max"
+                [min]="min"
+                [segments]="segments"
+                [size]="size"
+                [step]="step"
+            />
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
+                documentationPropertyMode="input"
                 documentationPropertyName="disabled"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"

@@ -1,7 +1,12 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiDocExample, TuiDocumentationProperty} from '@taiga-ui/addon-doc';
+
+const content = `It's not pining, it's passed on! This parrot is no more! It has ceased to be! It's expired and gone to
+meet its maker! This is a late parrot! It's a stiff! Bereft of life, it rests in peace! If you hadn't
+nailed it to the perch, it would be pushing up the daisies! It's rung down the curtain and joined the
+choir invisible. This is an ex-parrot!`;
 
 @Component({
     selector: 'example-action',
@@ -52,4 +57,16 @@ export class ExampleTuiActionComponent {
 
     color = 'var(--tui-link)';
     background = 'var(--tui-base-02)';
+
+    readonly content = content;
+
+    readonly actionBaseProperties: Record<string, TuiDocumentationProperty> = {
+        tuiAction: {
+            type: null,
+        },
+        type: {
+            type: null,
+            value: 'button',
+        },
+    };
 }

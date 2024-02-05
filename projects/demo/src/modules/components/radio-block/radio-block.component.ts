@@ -1,7 +1,7 @@
 import {Component, forwardRef} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiDocExample, TuiDocumentationProperty} from '@taiga-ui/addon-doc';
 import {TuiHorizontalDirection, TuiSizeL, TuiSizeXS} from '@taiga-ui/core';
 
 import {AbstractExampleTuiControl} from '../abstract/control';
@@ -57,6 +57,13 @@ export class ExampleTuiRadioBlockComponent extends AbstractExampleTuiControl {
     pseudoDisabled = false;
 
     readonly control = new FormControl('orange');
+
+    readonly radioBaseProperties: Record<string, TuiDocumentationProperty> = {
+        formControlName: {
+            type: null,
+            value: 'testValue',
+        },
+    };
 
     override get disabled(): boolean {
         return this.control.disabled;

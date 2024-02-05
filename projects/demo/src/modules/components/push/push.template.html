@@ -33,6 +33,8 @@
     <ng-template pageTab>
         <tui-doc-demo>
             <tui-push
+                documentationTemplate
+                [documentationTemplateContent]="content"
                 [heading]="heading"
                 [timestamp]="timestamp"
                 [type]="type"

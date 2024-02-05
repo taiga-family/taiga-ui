@@ -115,46 +115,46 @@
     </ng-template>
 
     <ng-template pageTab>
-        <tui-doc-demo [control]="control">
-            <ng-template>
-                <tui-combo-box
-                    [focusable]="focusable"
-                    [formControl]="control"
-                    [identityMatcher]="identityMatcher"
-                    [pseudoActive]="pseudoPressed"
-                    [pseudoFocus]="pseudoFocused"
-                    [pseudoHover]="pseudoHovered"
-                    [pseudoInvalid]="pseudoInvalid"
-                    [readOnly]="readOnly"
-                    [strict]="strict"
-                    [strictMatcher]="strictMatcher"
-                    [stringify]="stringify"
-                    [tuiDropdownAlign]="dropdownAlign"
-                    [tuiDropdownDirection]="dropdownDirection"
-                    [tuiDropdownLimitWidth]="dropdownLimitWidth"
-                    [tuiDropdownMaxHeight]="dropdownMaxHeight"
-                    [tuiDropdownMinHeight]="dropdownMinHeight"
-                    [tuiDropdownOffset]="dropdownOffset"
-                    [tuiDropdownOpen]="!!(dropdownOpen | async)"
-                    [tuiHintAppearance]="hintAppearance"
-                    [tuiHintContent]="hintContent"
-                    [tuiHintDirection]="hintDirection"
-                    [tuiTextfieldCleaner]="cleaner"
-                    [tuiTextfieldFiller]="filler"
-                    [tuiTextfieldIconLeft]="iconLeft"
-                    [tuiTextfieldLabelOutside]="labelOutside"
-                    [tuiTextfieldSize]="size"
-                    [valueContent]="valueContent"
-                    [(search)]="search"
-                    (tuiDropdownOpenChange)="dropdownOpen.next($event)"
-                >
-                    Choose an account
-                    <tui-data-list-wrapper
-                        *tuiDataList
-                        [items]="filter(search)"
-                    ></tui-data-list-wrapper>
-                </tui-combo-box>
-            </ng-template>
+        <tui-doc-demo [formGroup]="control | tuiWrapControl">
+            <tui-combo-box
+                documentationTemplate
+                [documentationTemplateBaseProperties]="comboBoxBaseProperties"
+                [focusable]="focusable"
+                [formControl]="control"
+                [identityMatcher]="identityMatcher"
+                [pseudoActive]="pseudoPressed"
+                [pseudoFocus]="pseudoFocused"
+                [pseudoHover]="pseudoHovered"
+                [pseudoInvalid]="pseudoInvalid"
+                [readOnly]="readOnly"
+                [strict]="strict"
+                [strictMatcher]="strictMatcher"
+                [stringify]="stringify"
+                [tuiDropdownAlign]="dropdownAlign"
+                [tuiDropdownDirection]="dropdownDirection"
+                [tuiDropdownLimitWidth]="dropdownLimitWidth"
+                [tuiDropdownMaxHeight]="dropdownMaxHeight"
+                [tuiDropdownMinHeight]="dropdownMinHeight"
+                [tuiDropdownOffset]="dropdownOffset"
+                [tuiDropdownOpen]="!!(dropdownOpen | async)"
+                [tuiHintAppearance]="hintAppearance"
+                [tuiHintContent]="hintContent"
+                [tuiHintDirection]="hintDirection"
+                [tuiTextfieldCleaner]="cleaner"
+                [tuiTextfieldFiller]="filler"
+                [tuiTextfieldIconLeft]="iconLeft"
+                [tuiTextfieldLabelOutside]="labelOutside"
+                [tuiTextfieldSize]="size"
+                [valueContent]="valueContent"
+                [(search)]="search"
+                (tuiDropdownOpenChange)="dropdownOpen.next($event)"
+            >
+                Choose an account
+                <tui-data-list-wrapper
+                    *tuiDataList
+                    [items]="filter(search)"
+                ></tui-data-list-wrapper>
+            </tui-combo-box>
         </tui-doc-demo>
         <ng-template
             #valueTemplateContent
@@ -187,6 +187,7 @@
 
         <tui-doc-documentation>
             <ng-template
+                documentationPropertyMode="input"
                 documentationPropertyName="disabled"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"
@@ -219,6 +220,7 @@
                 documentationPropertyMode="input"
                 documentationPropertyName="strict"
                 documentationPropertyType="boolean"
+                [documentationPropertyDefaultValue]="undefined"
                 [(documentationPropertyValue)]="strict"
             >
                 Value must only be an item of suggestions&nbsp;

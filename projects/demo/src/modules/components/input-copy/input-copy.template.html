@@ -25,6 +25,8 @@
     <ng-template pageTab>
         <tui-doc-demo>
             <tui-input-copy
+                documentationTemplate
+                documentationTemplateContent="Type a text"
                 [focusable]="focusable"
                 [formControl]="control"
                 [messageAppearance]="hintAppearance"
@@ -47,6 +49,7 @@
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
+                documentationPropertyMode="input"
                 documentationPropertyName="disabled"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"

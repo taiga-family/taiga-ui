@@ -70,6 +70,8 @@ export class ExampleTuiRatingComponent {
     min = 0;
     max = 10;
 
+    readonly content = '<p class="label">Current rating - {{ rating.value }}</p>';
+
     constructor(@Inject(TUI_RATING_OPTIONS) private readonly options: TuiRatingOptions) {}
 
     get disabled(): boolean {

@@ -106,10 +106,12 @@
     <ng-template pageTab>
         <tui-doc-demo>
             <progress
+                documentationTemplate
                 new
                 tuiProgressBar
                 class="api-progress"
                 [color]="color"
+                [documentationTemplateBaseProperties]="progressBaseProperties"
                 [max]="max"
                 [size]="size"
                 [value]="value"

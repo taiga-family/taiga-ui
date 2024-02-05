@@ -75,9 +75,11 @@
     <ng-template pageTab>
         <tui-doc-demo>
             <tui-avatar
+                documentationTemplate
                 new
                 [autoColor]="autoColor"
                 [avatarUrl]="avatarUrl"
+                [documentationTemplateBaseProperties]="avatarBaseProperties"
                 [fallback]="fallback"
                 [rounded]="rounded"
                 [size]="size"
@@ -143,6 +145,7 @@
             <ng-template
                 documentationPropertyName="--tui-avatar-border"
                 documentationPropertyType="string"
+                [documentationPropertyPreventUpdateApiHost]="true"
                 [(documentationPropertyValue)]="border"
             >
                 Color of the border for stacking avatars
@@ -150,6 +153,7 @@
             <ng-template
                 documentationPropertyName="--tui-avatar-color"
                 documentationPropertyType="string"
+                [documentationPropertyPreventUpdateApiHost]="true"
                 [(documentationPropertyValue)]="color"
             >
                 Color of the text
@@ -157,6 +161,7 @@
             <ng-template
                 documentationPropertyName="--tui-avatar-background"
                 documentationPropertyType="string"
+                [documentationPropertyPreventUpdateApiHost]="true"
                 [(documentationPropertyValue)]="background"
             >
                 Background

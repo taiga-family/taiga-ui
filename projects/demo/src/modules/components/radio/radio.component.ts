@@ -1,7 +1,7 @@
 import {Component, forwardRef} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiDocExample, TuiDocumentationProperty} from '@taiga-ui/addon-doc';
 import {TUI_DEFAULT_IDENTITY_MATCHER, TuiIdentityMatcher} from '@taiga-ui/cdk';
 import {TuiSizeL} from '@taiga-ui/core';
 
@@ -63,6 +63,13 @@ export class ExampleTuiRadioComponent extends AbstractExampleTuiControl {
     identityMatcher = this.identityMatcherVariants[0];
 
     control = new FormControl(this.items[1]);
+
+    readonly radioBaseProperties: Record<string, TuiDocumentationProperty> = {
+        formControlName: {
+            type: null,
+            value: 'testValue',
+        },
+    };
 
     onClick(): void {
         this.control.setValue({id: 0, value: 'One'});

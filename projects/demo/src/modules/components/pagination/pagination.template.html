@@ -42,6 +42,7 @@
     <ng-template pageTab>
         <tui-doc-demo>
             <tui-pagination
+                documentationTemplate
                 [activePadding]="activePadding"
                 [focusable]="focusable"
                 [length]="length"
@@ -63,6 +64,7 @@
                 documentationPropertyMode="input-output"
                 documentationPropertyName="index"
                 documentationPropertyType="number"
+                [documentationPropertyDefaultValue]="undefined"
                 [(documentationPropertyValue)]="index"
             >
                 Active page index
@@ -71,6 +73,7 @@
                 documentationPropertyMode="input"
                 documentationPropertyName="length"
                 documentationPropertyType="number"
+                [documentationPropertyDefaultValue]="undefined"
                 [(documentationPropertyValue)]="length"
             >
                 Total pages count

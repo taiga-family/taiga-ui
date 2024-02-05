@@ -32,20 +32,21 @@
     </ng-template>
 
     <ng-template pageTab>
-        <tui-doc-demo [control]="control">
-            <ng-template>
-                <tui-input-inline
-                    class="input"
-                    [formControl]="control"
-                    [maxLength]="maxLength"
-                    [style.float]="textAlign"
-                >
-                    Placeholder
-                </tui-input-inline>
-            </ng-template>
+        <tui-doc-demo [formGroup]="control | tuiWrapControl">
+            <tui-input-inline
+                documentationTemplate
+                documentationTemplateContent="Placeholder"
+                class="input"
+                [formControl]="control"
+                [maxLength]="maxLength"
+                [style.float]="textAlign"
+            >
+                Placeholder
+            </tui-input-inline>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
+                documentationPropertyMode="input"
                 documentationPropertyName="disabled"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"

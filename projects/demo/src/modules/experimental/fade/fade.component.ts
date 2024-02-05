@@ -1,6 +1,14 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocExample, TuiRawLoaderContent} from '@taiga-ui/addon-doc';
+import {
+    TuiDocExample,
+    TuiDocumentationProperty,
+    TuiRawLoaderContent,
+} from '@taiga-ui/addon-doc';
+
+const content = `I am a very long text with
+<code>white-space: nowrap</code>
+that fades`;
 
 @Component({
     selector: 'example-fade',
@@ -37,4 +45,12 @@ export class ExampleTuiFadeComponent {
     lineHeight = '100%';
     size = '1.5em';
     offset = '0em';
+
+    readonly content = content;
+
+    readonly fadeBaseProperties: Record<string, TuiDocumentationProperty> = {
+        tuiFade: {
+            type: null,
+        },
+    };
 }

@@ -29,7 +29,10 @@
     <ng-template pageTab>
         <tui-doc-demo>
             <p
+                documentationTemplate
                 tuiDropdownSelection
+                [documentationTemplateBaseProperties]="dropdownBaseProperties"
+                [documentationTemplateContent]="content"
                 [tuiDropdown]="dropdownContent"
                 [tuiDropdownAlign]="dropdownAlign"
                 [tuiDropdownDirection]="dropdownDirection"

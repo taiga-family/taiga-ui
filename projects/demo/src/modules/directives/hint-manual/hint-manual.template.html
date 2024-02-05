@@ -18,9 +18,12 @@
     <ng-template pageTab>
         <tui-doc-demo>
             <button
+                documentationTemplate
+                documentationTemplateContent="A strange button"
                 tuiButton
                 tuiHint="It says 'Hi all!' into console"
                 type="button"
+                [documentationTemplateBaseProperties]="hintBaseProperties"
                 [tuiHintAppearance]="appearance"
                 [tuiHintDirection]="direction"
                 [tuiHintManual]="show"
@@ -41,6 +44,7 @@
                 documentationPropertyMode="input"
                 documentationPropertyName="tuiHintManual"
                 documentationPropertyType="boolean"
+                [documentationPropertyDefaultValue]="undefined"
                 [(documentationPropertyValue)]="show"
             >
                 Show/hide hint

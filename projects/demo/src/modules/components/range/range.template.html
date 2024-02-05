@@ -55,21 +55,21 @@
     </ng-template>
 
     <ng-template pageTab>
-        <tui-doc-demo [control]="control">
-            <ng-template>
-                <tui-range
-                    [formControl]="control"
-                    [keySteps]="keySteps"
-                    [max]="max"
-                    [min]="min"
-                    [segments]="segments"
-                    [size]="size"
-                    [step]="step"
-                ></tui-range>
-            </ng-template>
+        <tui-doc-demo [formGroup]="control | tuiWrapControl">
+            <tui-range
+                documentationTemplate
+                [formControl]="control"
+                [keySteps]="keySteps"
+                [max]="max"
+                [min]="min"
+                [segments]="segments"
+                [size]="size"
+                [step]="step"
+            ></tui-range>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
+                documentationPropertyMode="input"
                 documentationPropertyName="disabled"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"

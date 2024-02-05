@@ -2,6 +2,15 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample, tuiDocExampleOptionsProvider} from '@taiga-ui/addon-doc';
 
+const content = `<ng-container *ngFor="let button of buttons">
+    <button
+        *tuiItem
+        tuiTab
+    >
+        {{ button }}
+    </button>
+</ng-container>`;
+
 @Component({
     selector: 'example-tui-tabs',
     templateUrl: './tabs.template.html',
@@ -72,4 +81,6 @@ export class ExampleTuiTabsComponent {
     activeItemIndex = 0;
 
     itemsLimit = 999;
+
+    readonly content = content;
 }

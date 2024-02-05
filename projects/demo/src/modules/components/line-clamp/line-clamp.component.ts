@@ -1,6 +1,16 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiDocExample, TuiDocumentationProperty} from '@taiga-ui/addon-doc';
+
+const defaultExampleContent = `<ng-template #defaultExampleContent>
+    Lorem ipsum
+    <br />
+    Gaudeamus igitur
+    <br />
+    <strong>Carpe diem</strong>
+    <br />
+    Veni, vidi, vici
+</ng-template>`;
 
 @Component({
     selector: 'example-tui-line-clamp',
@@ -45,5 +55,14 @@ export class ExampleTuiLineClampComponent {
         TypeScript: import('./examples/5/index.ts?raw'),
         HTML: import('./examples/5/index.html?raw'),
         LESS: import('./examples/5/index.less?raw'),
+    };
+
+    readonly defaultExampleContentCode = defaultExampleContent;
+
+    readonly lineClampBaseProperties: Record<string, TuiDocumentationProperty> = {
+        content: {
+            type: 'input',
+            value: 'defaultExampleContent',
+        },
     };
 }

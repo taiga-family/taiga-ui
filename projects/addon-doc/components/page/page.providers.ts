@@ -1,4 +1,5 @@
 import {ElementRef, InjectionToken, Provider} from '@angular/core';
+import {TuiApiHostService} from '@taiga-ui/addon-doc/services';
 import {TUI_DOC_SEE_ALSO} from '@taiga-ui/addon-doc/tokens';
 
 /**
@@ -28,4 +29,5 @@ export const PAGE_PROVIDERS: Provider[] = [
             return Array.from(seeAlsoSet);
         },
     },
+    TuiApiHostService,
 ];

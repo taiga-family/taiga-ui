@@ -77,35 +77,49 @@
     <ng-template pageTab>
         <tui-doc-demo>
             <div
+                documentationTemplate
                 tuiGroup
                 class="group"
                 [adaptive]="adaptive"
                 [collapsed]="collapsed"
+                [documentationTemplateBaseProperties]="groupBaseProperties"
                 [orientation]="orientation"
                 [rounded]="rounded"
                 [size]="size"
             >
                 <button
                     appearance="outline"
+                    documentationApiHost
+                    documentationTemplate
+                    documentationTemplateContent="Button 1"
                     size="l"
                     tuiButton
                     type="button"
+                    [documentationTemplateBaseProperties]="buttonBaseProperties"
                 >
                     Button 1
                 </button>
                 <button
                     appearance="outline"
+                    documentationApiHost
+                    documentationTemplate
+                    documentationTemplateContent="Button 2"
                     size="l"
                     tuiButton
                     type="button"
+                    [documentationTemplateBaseProperties]="buttonBaseProperties"
                 >
                     Button 2
                 </button>
                 <button
                     appearance="outline"
+                    documentationApiHost
+                    documentationTemplate
+                    documentationTemplateContent="Button 3"
                     size="l"
                     tuiButton
                     type="button"
+                    [documentationTemplateBaseProperties]="buttonBaseProperties"
                 >
                     Button 3
                 </button>

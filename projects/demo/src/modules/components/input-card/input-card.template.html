@@ -24,74 +24,87 @@
     </ng-template>
 
     <ng-template pageTab>
-        <tui-doc-demo [control]="control">
-            <ng-template>
-                <form
-                    class="form"
-                    [formGroup]="control"
+        <tui-doc-demo [formGroup]="control">
+            <div class="form">
+                <tui-input-card
+                    #inputCardDocumentationApiHost="documentationApiHost"
+                    documentationApiHost
+                    documentationTemplate
+                    documentationTemplateContent="Card number"
+                    formControlName="card"
+                    class="control"
+                    [autocompleteEnabled]="autocompleteEnabledCard"
+                    [cardSrc]="cardSrc"
+                    [documentationTemplateBaseProperties]="inputCardBaseProperties"
+                    [focusable]="focusable"
+                    [pseudoActive]="pseudoPressed"
+                    [pseudoFocus]="pseudoFocused"
+                    [pseudoHover]="pseudoHovered"
+                    [pseudoInvalid]="pseudoInvalid"
+                    [readOnly]="readOnly"
+                    [tuiHintAppearance]="hintAppearance"
+                    [tuiHintContent]="hintContent"
+                    [tuiHintDirection]="hintDirection"
+                    [tuiTextfieldCleaner]="cleaner"
+                    [tuiTextfieldLabelOutside]="labelOutside"
+                    [tuiTextfieldSize]="size"
+                    (binChange)="binChangeProperty?.emitEvent($event)"
                 >
-                    <tui-input-card
-                        formControlName="card"
-                        class="control"
-                        [autocompleteEnabled]="autocompleteEnabledCard"
-                        [cardSrc]="cardSrc"
-                        [focusable]="focusable"
-                        [pseudoActive]="pseudoPressed"
-                        [pseudoFocus]="pseudoFocused"
-                        [pseudoHover]="pseudoHovered"
-                        [pseudoInvalid]="pseudoInvalid"
-                        [readOnly]="readOnly"
-                        [tuiHintAppearance]="hintAppearance"
-                        [tuiHintContent]="hintContent"
-                        [tuiHintDirection]="hintDirection"
-                        [tuiTextfieldCleaner]="cleaner"
-                        [tuiTextfieldLabelOutside]="labelOutside"
-                        [tuiTextfieldSize]="size"
-                        (binChange)="binChangeProperty?.emitEvent($event)"
-                    >
-                        Card number
-                    </tui-input-card>
-                    <tui-input-expire
-                        formControlName="expire"
-                        class="control"
-                        [autocompleteEnabled]="autocompleteEnabledExpire"
-                        [focusable]="focusable"
-                        [pseudoActive]="pseudoPressed"
-                        [pseudoFocus]="pseudoFocused"
-                        [pseudoHover]="pseudoHovered"
-                        [pseudoInvalid]="pseudoInvalid"
-                        [readOnly]="readOnly"
-                        [tuiTextfieldLabelOutside]="labelOutside"
-                        [tuiTextfieldSize]="size"
-                    >
-                        Expire date
-                    </tui-input-expire>
-                    <tui-input-cvc
-                        formControlName="cvc"
-                        class="control"
-                        [autocompleteEnabled]="autocompleteEnabledCVC"
-                        [focusable]="focusable"
-                        [length]="length"
-                        [pseudoActive]="pseudoPressed"
-                        [pseudoFocus]="pseudoFocused"
-                        [pseudoHover]="pseudoHovered"
-                        [pseudoInvalid]="pseudoInvalid"
-                        [readOnly]="readOnly"
-                        [tuiHintAppearance]="hintAppearanceCVC"
-                        [tuiHintContent]="hintContentCVC"
-                        [tuiHintDirection]="hintDirectionCVC"
-                        [tuiTextfieldLabelOutside]="labelOutside"
-                        [tuiTextfieldSize]="size"
-                    >
-                        CVC/CVV
-                    </tui-input-cvc>
-                    <tui-error
-                        formControlName="card"
-                        class="error"
-                        [error]="[] | tuiFieldError | async"
-                    ></tui-error>
-                </form>
-            </ng-template>
+                    Card number
+                </tui-input-card>
+                <tui-input-expire
+                    #inputExpireDocumentationApiHost="documentationApiHost"
+                    documentationApiHost
+                    documentationTemplate
+                    documentationTemplateContent="Expire date"
+                    formControlName="expire"
+                    class="control"
+                    [autocompleteEnabled]="autocompleteEnabledExpire"
+                    [documentationTemplateBaseProperties]="inputExpireBaseProperties"
+                    [focusable]="focusable"
+                    [pseudoActive]="pseudoPressed"
+                    [pseudoFocus]="pseudoFocused"
+                    [pseudoHover]="pseudoHovered"
+                    [pseudoInvalid]="pseudoInvalid"
+                    [readOnly]="readOnly"
+                    [tuiTextfieldLabelOutside]="labelOutside"
+                    [tuiTextfieldSize]="size"
+                >
+                    Expire date
+                </tui-input-expire>
+                <tui-input-cvc
+                    #inputCVCDocumentationApiHost="documentationApiHost"
+                    documentationApiHost
+                    documentationTemplate
+                    documentationTemplateContent="CVC/CVV"
+                    formControlName="cvc"
+                    class="control"
+                    [autocompleteEnabled]="autocompleteEnabledCVC"
+                    [documentationTemplateBaseProperties]="inputCVCBaseProperties"
+                    [focusable]="focusable"
+                    [length]="length"
+                    [pseudoActive]="pseudoPressed"
+                    [pseudoFocus]="pseudoFocused"
+                    [pseudoHover]="pseudoHovered"
+                    [pseudoInvalid]="pseudoInvalid"
+                    [readOnly]="readOnly"
+                    [tuiHintAppearance]="hintAppearanceCVC"
+                    [tuiHintContent]="hintContentCVC"
+                    [tuiHintDirection]="hintDirectionCVC"
+                    [tuiTextfieldLabelOutside]="labelOutside"
+                    [tuiTextfieldSize]="size"
+                >
+                    CVC/CVV
+                </tui-input-cvc>
+                <tui-error
+                    documentationApiHost
+                    documentationTemplate
+                    formControlName="card"
+                    class="error"
+                    [documentationTemplateBaseProperties]="errorBaseProperties"
+                    [error]="[] | tuiFieldError | async"
+                ></tui-error>
+            </div>
         </tui-doc-demo>
         <div class="b-full-width tui-space_bottom-6">
             <p>
@@ -104,11 +117,15 @@
             class="b-full-width"
             [closeOthers]="false"
         >
-            <tui-accordion-item [open]="true">
+            <tui-accordion-item
+                [bindDocumentationTemplates]="[inputCardDocumentationApiHost]"
+                [open]="true"
+            >
                 TuiInputCardComponent
                 <ng-template tuiAccordionItemContent>
                     <tui-doc-documentation>
                         <ng-template
+                            documentationPropertyMode="input"
                             documentationPropertyName="disabled"
                             documentationPropertyType="boolean"
                             [(documentationPropertyValue)]="disabledCard"
@@ -147,11 +164,15 @@
                 </ng-template>
             </tui-accordion-item>
 
-            <tui-accordion-item [open]="false">
+            <tui-accordion-item
+                [bindDocumentationTemplates]="[inputExpireDocumentationApiHost]"
+                [open]="false"
+            >
                 TuiInputExpireComponent
                 <ng-template tuiAccordionItemContent>
                     <tui-doc-documentation>
                         <ng-template
+                            documentationPropertyMode="input"
                             documentationPropertyName="disabled"
                             documentationPropertyType="boolean"
                             [(documentationPropertyValue)]="disabledExpire"
@@ -173,11 +194,15 @@
                 </ng-template>
             </tui-accordion-item>
 
-            <tui-accordion-item [open]="false">
+            <tui-accordion-item
+                [bindDocumentationTemplates]="[inputCVCDocumentationApiHost]"
+                [open]="false"
+            >
                 TuiInputCVCComponent
                 <ng-template tuiAccordionItemContent>
                     <tui-doc-documentation>
                         <ng-template
+                            documentationPropertyMode="input"
                             documentationPropertyName="disabled"
                             documentationPropertyType="boolean"
                             [(documentationPropertyValue)]="disabledCVC"

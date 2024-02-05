@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiDocExample, TuiDocumentationProperty} from '@taiga-ui/addon-doc';
 import {TuiSizeS} from '@taiga-ui/core';
 
 @Component({
@@ -70,5 +70,15 @@ export class ExampleTuiSliderComponent {
         HTML: import('./examples/6/index.html?raw'),
         LESS: import('./examples/6/index.less?raw'),
         TypeScript: import('./examples/6/index.ts?raw'),
+    };
+
+    readonly sliderBaseProperties: Record<string, TuiDocumentationProperty> = {
+        tuiSlider: {
+            type: null,
+        },
+        type: {
+            type: null,
+            value: 'range',
+        },
     };
 }

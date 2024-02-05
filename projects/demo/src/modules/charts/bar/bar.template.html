@@ -26,6 +26,7 @@
     <ng-template pageTab>
         <tui-doc-demo>
             <tui-bar
+                documentationTemplate
                 class="bar"
                 [size]="size"
                 [value]="value"
@@ -45,6 +46,7 @@
                 documentationPropertyMode="input"
                 documentationPropertyName="value"
                 documentationPropertyType="readonly number[]"
+                [documentationPropertyDefaultValue]="undefined"
                 [documentationPropertyValues]="valueVariants"
                 [(documentationPropertyValue)]="value"
             >

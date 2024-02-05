@@ -2,20 +2,20 @@ import {Location} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
-    ContentChild,
     ElementRef,
     forwardRef,
+    Host,
     HostBinding,
     HostListener,
     Inject,
     Input,
-    OnInit,
-    TemplateRef,
+    Optional,
     ViewChild,
 } from '@angular/core';
-import {AbstractControl, FormGroup} from '@angular/forms';
+import {ControlContainer, FormGroup, FormGroupDirective} from '@angular/forms';
 import {Params, UrlSerializer, UrlTree} from '@angular/router';
 import {TuiDemoParams} from '@taiga-ui/addon-doc/interfaces';
+import {TuiApiHostService} from '@taiga-ui/addon-doc/services';
 import {TUI_DOC_DEMO_TEXTS, TUI_DOC_URL_STATE_HANDLER} from '@taiga-ui/addon-doc/tokens';
 import {tuiCoerceValueIsTrue} from '@taiga-ui/addon-doc/utils';
 import {
@@ -30,8 +30,8 @@ import {
     tuiToInteger,
 } from '@taiga-ui/cdk';
 import {TuiBrightness, TuiModeDirective} from '@taiga-ui/core';
-import {TUI_ARROW_OPTIONS, TuiArrowOptions} from '@taiga-ui/kit';
-import {Subject} from 'rxjs';
+import {TUI_ARROW, TUI_ARROW_OPTIONS, TuiArrowOptions} from '@taiga-ui/kit';
+import {Observable, Subject} from 'rxjs';
 
 const MIN_WIDTH = 160;
 
@@ -48,27 +48,18 @@ const MIN_WIDTH = 160;
         },
     ],
 })
-export class TuiDocDemoComponent implements OnInit {
-    @ViewChild(TuiResizeableDirective, {static: true})
-    private readonly resizeable?: ElementRef<HTMLElement>;
-
-    @ViewChild('content', {static: true})
+export class TuiDocDemoComponent {
+    @ViewChild('content')
     private readonly content?: ElementRef<HTMLElement>;
 
-    @ViewChild('resizer', {static: true})
+    @ViewChild('resizer')
     private readonly resizer?: ElementRef<HTMLElement>;
 
-    @Input()
-    control: AbstractControl | null = null;
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    private _resizeable?: ElementRef<HTMLElement>;
 
     @Input()
-    @HostBinding('class._sticky')
     sticky = true;
-
-    @ContentChild(TemplateRef)
-    readonly template: TemplateRef<Record<string, unknown>> | null = null;
-
-    testForm?: FormGroup;
 
     readonly updateOnVariants = ['change', 'blur', 'submit'] as const;
 
@@ -80,8 +71,14 @@ export class TuiDocDemoComponent implements OnInit {
     mode: TuiBrightness | null = this.params.tuiMode || null;
     sandboxWidth = tuiToInteger(this.params.sandboxWidth);
 
+    activeItemIndex = 0;
+
+    optionsDropdownOpen = false;
+
+    readonly arrow = TUI_ARROW;
+
     readonly change$ = new Subject<void>();
-    readonly items: readonly TuiBrightness[] = ['onLight', 'onDark'];
+    readonly items: ReadonlyArray<TuiBrightness | null> = [null, 'onLight', 'onDark'];
 
     constructor(
         @Inject(TUI_ARROW_OPTIONS) readonly options: TuiArrowOptions,
@@ -92,7 +89,33 @@ export class TuiDocDemoComponent implements OnInit {
         @Inject(TUI_DOC_DEMO_TEXTS) readonly texts: [string, string, string],
         @Inject(TUI_DOC_URL_STATE_HANDLER)
         private readonly urlStateHandler: TuiStringHandler<UrlTree>,
+        @Inject(TuiApiHostService)
+        @Optional()
+        private readonly apiHostService: TuiApiHostService | null,
+        @Inject(ControlContainer)
+        @Optional()
+        @Host()
+        readonly controlContainer: ControlContainer | null,
     ) {}
+
+    get code$(): Observable<string> | undefined {
+        return this.apiHostService?.code$;
+    }
+
+    @HostBinding('class._sticky')
+    get isSticky(): boolean {
+        return this.sticky && this.activeItemIndex === 0;
+    }
+
+    @ViewChild(TuiResizeableDirective)
+    private set resizeable(value: ElementRef<HTMLElement> | undefined) {
+        this._resizeable = value;
+        this.updateWidth(this.sandboxWidth + this.delta);
+    }
+
+    private get resizeable(): ElementRef<HTMLElement> | undefined {
+        return this._resizeable;
+    }
 
     @HostListener('window:resize')
     onResize(): void {
@@ -103,11 +126,6 @@ export class TuiDocDemoComponent implements OnInit {
     @HostListener('document:mouseup.silent')
     onMouseUp(): void {
         this.updateUrl({sandboxWidth: this.sandboxWidth});
-    }
-
-    ngOnInit(): void {
-        this.createForm();
-        this.updateWidth(this.sandboxWidth + this.delta);
     }
 
     onModeChange(mode: TuiBrightness | null): void {
@@ -129,7 +147,18 @@ export class TuiDocDemoComponent implements OnInit {
     updateOnChange(updateOn: 'blur' | 'change' | 'submit'): void {
         this.updateOn = updateOn;
         this.updateUrl({updateOn});
-        this.createForm();
+
+        const formDirective = this.controlContainer?.formDirective;
+
+        if (formDirective instanceof FormGroupDirective) {
+            const {form} = formDirective;
+
+            formDirective.form = new FormGroup(form.controls, {
+                validators: form.validator,
+                asyncValidators: form.asyncValidator,
+                updateOn,
+            });
+        }
     }
 
     updateWidth(width: number = NaN): void {
@@ -168,14 +197,6 @@ export class TuiDocDemoComponent implements OnInit {
         };
 
         this.locationRef.go(this.urlStateHandler(tree));
-    }
-
-    private createForm(): void {
-        const {control, updateOn} = this;
-
-        if (control) {
-            this.testForm = new FormGroup({testValue: control}, {updateOn});
-        }
     }
 
     private getUrlTree(): UrlTree {

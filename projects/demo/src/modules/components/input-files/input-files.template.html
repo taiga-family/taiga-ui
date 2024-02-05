@@ -64,6 +64,8 @@
     <ng-template pageTab>
         <tui-doc-demo>
             <tui-input-files
+                documentationTemplate
+                [documentationTemplateContent]="content"
                 [focusable]="focusable"
                 [formControl]="multiple ? multipleControl : control"
                 [label]="label"
@@ -126,6 +128,7 @@
         </tui-doc-demo>
         <tui-doc-documentation heading="TuiInputFiles">
             <ng-template
+                documentationPropertyMode="input"
                 documentationPropertyName="disabled"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"

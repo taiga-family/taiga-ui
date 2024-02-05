@@ -1,89 +1,68 @@
-<div
-    class="t-bg-toggle"
+<tui-tabs
+    class="t-tabs"
     [tuiMode]="null"
+    [(activeItemIndex)]="activeItemIndex"
 >
-    <ng-template #tooltip>
-        {{ texts[0] }}
-        <a
-            routerLink="/directives/mode"
-            tuiLink
-            tuiMode="onDark"
-        >
-            <code>tuiMode</code>
-        </a>
-    </ng-template>
-    <ng-container *ngIf="isMobile; else desktop">
-        <tui-select
-            tuiTextfieldSize="s"
-            class="t-mode"
-            [ngModel]="mode"
-            [tuiHintContent]="tooltip"
-            [tuiTextfieldCleaner]="true"
-            (ngModelChange)="onModeChange($event)"
-        >
-            tuiMode
-            <tui-data-list-wrapper
-                *tuiDataList
-                [items]="items"
-            ></tui-data-list-wrapper>
-        </tui-select>
-    </ng-container>
-    <ng-template #desktop>
-        tuiMode:
-        <tui-tooltip
-            describeId="form"
-            [content]="tooltip"
-        ></tui-tooltip>
-        <div
-            tuiGroup
-            class="t-group"
-            [collapsed]="true"
-        >
-            <tui-radio-block
-                nativeId="form"
-                size="s"
-                class="tui-group__auto-width-item"
-                [hideRadio]="true"
-                [item]="null"
-                [ngModel]="mode"
-                (ngModelChange)="onModeChange($event)"
-            >
-                null
-            </tui-radio-block>
-            <tui-radio-block
-                item="onDark"
-                nativeId="form"
-                size="s"
-                class="tui-group__auto-width-item"
-                [hideRadio]="true"
-                [ngModel]="mode"
-                (ngModelChange)="onModeChange($event)"
-            >
-                onDark
-            </tui-radio-block>
-            <tui-radio-block
-                item="onLight"
-                nativeId="form"
-                size="s"
-                class="tui-group__auto-width-item"
-                [hideRadio]="true"
-                [ngModel]="mode"
-                (ngModelChange)="onModeChange($event)"
-            >
-                onLight
-            </tui-radio-block>
-        </div>
-    </ng-template>
-    <tui-checkbox-labeled
-        size="m"
-        class="t-checkbox"
-        [ngModel]="opaque"
-        (ngModelChange)="changeOpaque($event)"
+    <button tuiTab>Preview</button>
+    <button
+        *ngIf="code$ | async"
+        tuiTab
     >
-        {{ texts[1] }}
-    </tui-checkbox-labeled>
-</div>
+        Code
+    </button>
+    <button
+        tuiTab
+        [tuiDropdown]="dropdownContent"
+        [(tuiDropdownOpen)]="optionsDropdownOpen"
+        (tui-tab-activate.stop)="(0)"
+    >
+        Options
+        <tui-svg src="tuiIconChevronDown"></tui-svg>
+    </button>
+</tui-tabs>
+
+<ng-template #dropdownContent>
+    <tui-data-list
+        role="menu"
+        size="s"
+        class="t-options"
+        [tuiMode]="null"
+    >
+        <tui-opt-group label="tuiMode">
+            <button
+                *ngFor="let item of items"
+                tuiOption
+                (click)="onModeChange(item)"
+            >
+                <div class="t-mode-option">
+                    <tui-radio
+                        [item]="item"
+                        [ngModel]="mode"
+                        (ngModelChange)="onModeChange($event)"
+                    ></tui-radio>
+                    {{ item ?? 'null' }}
+                </div>
+            </button>
+        </tui-opt-group>
+        <tui-opt-group label="Other">
+            <button
+                tuiOption
+                (click)="opaque = !opaque"
+            >
+                <div class="t-mode-option">
+                    <tui-checkbox
+                        [ngModel]="opaque"
+                        (ngModelChange)="changeOpaque($event)"
+                    ></tui-checkbox>
+                    {{ texts[1] }}
+                </div>
+            </button>
+        </tui-opt-group>
+    </tui-data-list>
+</ng-template>
+
 <div
+    *ngIf="activeItemIndex === 0"
     tuiResizeable
     class="t-wrapper"
     [class.t-wrapper_dark]="mode === 'onDark'"
@@ -96,12 +75,11 @@
             id="demo-content"
         >
             <form
-                *ngIf="testForm"
+                *ngIf="controlContainer"
                 class="t-form"
-                [formGroup]="testForm"
             >
                 <div class="t-input-wrapper">
-                    <ng-container [ngTemplateOutlet]="template"></ng-container>
+                    <ng-container [ngTemplateOutlet]="contentProj"></ng-container>
                 </div>
                 <button
                     automation-id="tui-demo-button__toggle-details"
@@ -126,7 +104,7 @@
                     [expanded]="expanded"
                 >
                     <ng-template tuiExpandContent>
-                        <pre class="t-value">Form data: {{ testForm.value | json }}</pre>
+                        <pre class="t-value">Form data: {{ controlContainer.value | json }}</pre>
                         <div
                             tuiGroup
                             class="t-form-controls"
@@ -167,7 +145,10 @@
                     </ng-template>
                 </tui-expand>
             </form>
-            <ng-content></ng-content>
+            <ng-container
+                *ngIf="!controlContainer"
+                [ngTemplateOutlet]="contentProj"
+            ></ng-container>
         </div>
     </div>
     <div
@@ -177,3 +158,20 @@
         (tuiSizeChange)="updateWidth($event[0])"
     ></div>
 </div>
+
+<ng-template #contentProj>
+    <ng-content></ng-content>
+</ng-template>
+
+<ng-container *ngIf="activeItemIndex === 1">
+    <tui-elastic-container
+        *ngIf="code$ | async as code"
+        class="t-code-container"
+        [tuiMode]="null"
+    >
+        <tui-doc-code
+            class="t-code"
+            [code]="code"
+        ></tui-doc-code>
+    </tui-elastic-container>
+</ng-container>

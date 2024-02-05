@@ -1,3 +1,4 @@
+export * from './api-host.service';
 export * from './theme.options';
 export * from './theme.service';
 export * from './theme-night.options';

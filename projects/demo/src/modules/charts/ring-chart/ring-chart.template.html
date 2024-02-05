@@ -24,6 +24,7 @@
     <ng-template pageTab>
         <tui-doc-demo>
             <tui-ring-chart
+                documentationTemplate
                 class="chart"
                 [size]="size"
                 [value]="value"
@@ -53,6 +54,7 @@
                 documentationPropertyMode="input"
                 documentationPropertyName="value"
                 documentationPropertyType="readonly number[]"
+                [documentationPropertyDefaultValue]="undefined"
                 [documentationPropertyValues]="valueVariants"
                 [(documentationPropertyValue)]="value"
             >

@@ -5,6 +5,7 @@ import {TuiCodeCVCLength, tuiCreateLuhnValidator} from '@taiga-ui/addon-commerce
 import {
     TuiDocDocumentationPropertyConnectorDirective,
     TuiDocExample,
+    TuiDocumentationProperty,
 } from '@taiga-ui/addon-doc';
 import {TuiHintOptions} from '@taiga-ui/core';
 
@@ -80,6 +81,34 @@ export class ExampleTuiInputCardComponent extends AbstractExampleTuiControl {
         expire: new FormControl('', Validators.required),
         cvc: new FormControl('', Validators.required),
     });
+
+    readonly inputCardBaseProperties: Record<string, TuiDocumentationProperty> = {
+        formControlName: {
+            type: null,
+            value: 'card',
+        },
+    };
+
+    readonly inputExpireBaseProperties: Record<string, TuiDocumentationProperty> = {
+        formControlName: {
+            type: null,
+            value: 'expire',
+        },
+    };
+
+    readonly inputCVCBaseProperties: Record<string, TuiDocumentationProperty> = {
+        formControlName: {
+            type: null,
+            value: 'cvc',
+        },
+    };
+
+    readonly errorBaseProperties: Record<string, TuiDocumentationProperty> = {
+        error: {
+            type: 'input',
+            value: '[] | tuiFieldError | async',
+        },
+    };
 
     get cardSrc(): string | null {
         return this.cardSrcSelected === null ? null : this.cards[this.cardSrcSelected];

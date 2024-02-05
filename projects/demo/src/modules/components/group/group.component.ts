@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiDocExample, TuiDocumentationProperty} from '@taiga-ui/addon-doc';
 import {TuiOrientation, TuiSizeL} from '@taiga-ui/core';
 
 @Component({
@@ -47,4 +47,28 @@ export class ExampleTuiGroupComponent {
     readonly sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
 
     size: TuiSizeL = this.sizeVariants[0];
+
+    readonly groupBaseProperties: Record<string, TuiDocumentationProperty> = {
+        tuiGroup: {
+            type: null,
+        },
+    };
+
+    readonly buttonBaseProperties: Record<string, TuiDocumentationProperty> = {
+        tuiButton: {
+            type: null,
+        },
+        size: {
+            type: null,
+            value: 'l',
+        },
+        type: {
+            type: null,
+            value: 'button',
+        },
+        appearance: {
+            type: null,
+            value: 'outline',
+        },
+    };
 }

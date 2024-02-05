@@ -46,6 +46,7 @@
     <ng-template pageTab>
         <tui-doc-demo>
             <tui-bar-chart
+                documentationTemplate
                 class="chart"
                 [collapsed]="collapsed"
                 [max]="max"
@@ -66,6 +67,7 @@
                 documentationPropertyMode="input"
                 documentationPropertyName="max"
                 documentationPropertyType="number"
+                [documentationPropertyDefaultValue]="undefined"
                 [(documentationPropertyValue)]="max"
             >
                 Sets chart max manually
@@ -85,6 +87,7 @@
                 documentationPropertyMode="input"
                 documentationPropertyName="value"
                 documentationPropertyType="ReadonlyArray<readonly number[]>"
+                [documentationPropertyDefaultValue]="undefined"
                 [documentationPropertyValues]="valueVariants"
                 [(documentationPropertyValue)]="value"
             >

@@ -66,6 +66,7 @@
     <ng-template pageTab>
         <tui-doc-demo>
             <tui-tag
+                documentationTemplate
                 [autoColor]="autoColor"
                 [disabled]="disabled"
                 [editable]="editable"
@@ -175,6 +176,7 @@
                 documentationPropertyMode="input"
                 documentationPropertyName="value"
                 documentationPropertyType="string"
+                [documentationPropertyDefaultValue]="undefined"
                 [(documentationPropertyValue)]="value"
             >
                 String value of tag

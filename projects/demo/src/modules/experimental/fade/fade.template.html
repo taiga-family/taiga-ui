@@ -40,12 +40,19 @@
     <ng-template pageTab>
         <tui-doc-demo>
             <div
+                documentationTemplate
                 tuiFade
                 class="fade"
+                [documentationTemplateBaseProperties]="fadeBaseProperties"
+                [documentationTemplateContent]="content"
                 [tuiFadeHeight]="lineHeight"
                 [tuiFadeOffset]="offset"
                 [tuiFadeSize]="size"
             >
+                I am a very long text with
+                <code>white-space: nowrap</code>
+                that fades
+                <br />
                 I am a very long text with
                 <code>white-space: nowrap</code>
                 that fades

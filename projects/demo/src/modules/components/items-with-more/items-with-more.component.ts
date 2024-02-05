@@ -2,6 +2,15 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 
+const context = `<ng-container *ngFor="let item of items">
+    <tui-tag
+        *tuiItem
+        class="tui-space_right-2"
+        [value]="item"
+    ></tui-tag>
+</ng-container>
+<span *tuiMore>and now for something completely different!</span>`;
+
 @Component({
     selector: 'example-items-with-more',
     templateUrl: './items-with-more.template.html',
@@ -38,4 +47,6 @@ export class ExampleTuiItemsWithMoreComponent {
     required = this.requiredVariants[0];
 
     itemsLimit = this.itemsLimitVariants[0];
+
+    readonly content = context;
 }

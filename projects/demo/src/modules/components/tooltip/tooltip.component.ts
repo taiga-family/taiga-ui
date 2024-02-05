@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiDocExample, TuiDocumentationProperty} from '@taiga-ui/addon-doc';
 import {TUI_HINT_DIRECTIONS} from '@taiga-ui/core';
 
 @Component({
@@ -49,4 +49,11 @@ export class ExampleTuiTooltipComponent {
     showDelay = 500;
 
     hideDelay = 200;
+
+    readonly tooltipBaseProperties: Record<string, TuiDocumentationProperty> = {
+        content: {
+            type: null,
+            value: 'You data is hidden',
+        },
+    };
 }

@@ -36,52 +36,51 @@
     </ng-template>
 
     <ng-template pageTab>
-        <tui-doc-demo [control]="control">
-            <ng-template>
-                <form [formGroup]="control">
-                    <tui-checkbox-labeled
-                        formControlName="testValue1"
-                        [focusable]="focusable"
-                        [pseudoActive]="pseudoPressed"
-                        [pseudoFocus]="pseudoFocused"
-                        [pseudoHover]="pseudoHovered"
-                        [pseudoInvalid]="pseudoInvalid"
-                        [readOnly]="readOnly"
-                        [size]="size"
-                    >
-                        An option
-                    </tui-checkbox-labeled>
-                    <tui-checkbox-labeled
-                        formControlName="testValue2"
-                        class="tui-space_top-2"
-                        [focusable]="focusable"
-                        [pseudoActive]="pseudoPressed"
-                        [pseudoFocus]="pseudoFocused"
-                        [pseudoHover]="pseudoHovered"
-                        [pseudoInvalid]="pseudoInvalid"
-                        [readOnly]="readOnly"
-                        [size]="size"
-                    >
-                        An alternative one
-                    </tui-checkbox-labeled>
-                    <tui-checkbox-labeled
-                        formControlName="testValue3"
-                        class="tui-space_top-2"
-                        [focusable]="focusable"
-                        [pseudoActive]="pseudoPressed"
-                        [pseudoFocus]="pseudoFocused"
-                        [pseudoHover]="pseudoHovered"
-                        [pseudoInvalid]="pseudoInvalid"
-                        [readOnly]="readOnly"
-                        [size]="size"
-                    >
-                        Other
-                    </tui-checkbox-labeled>
-                </form>
-            </ng-template>
+        <tui-doc-demo [formGroup]="control">
+            <tui-checkbox-labeled
+                documentationTemplate
+                formControlName="testValue1"
+                [documentationTemplateBaseProperties]="checkboxBaseProperties"
+                [focusable]="focusable"
+                [pseudoActive]="pseudoPressed"
+                [pseudoFocus]="pseudoFocused"
+                [pseudoHover]="pseudoHovered"
+                [pseudoInvalid]="pseudoInvalid"
+                [readOnly]="readOnly"
+                [size]="size"
+            >
+                An option
+            </tui-checkbox-labeled>
+            <tui-checkbox-labeled
+                formControlName="testValue2"
+                class="tui-space_top-2"
+                [focusable]="focusable"
+                [pseudoActive]="pseudoPressed"
+                [pseudoFocus]="pseudoFocused"
+                [pseudoHover]="pseudoHovered"
+                [pseudoInvalid]="pseudoInvalid"
+                [readOnly]="readOnly"
+                [size]="size"
+            >
+                An alternative one
+            </tui-checkbox-labeled>
+            <tui-checkbox-labeled
+                formControlName="testValue3"
+                class="tui-space_top-2"
+                [focusable]="focusable"
+                [pseudoActive]="pseudoPressed"
+                [pseudoFocus]="pseudoFocused"
+                [pseudoHover]="pseudoHovered"
+                [pseudoInvalid]="pseudoInvalid"
+                [readOnly]="readOnly"
+                [size]="size"
+            >
+                Other
+            </tui-checkbox-labeled>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
+                documentationPropertyMode="input"
                 documentationPropertyName="disabled"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"

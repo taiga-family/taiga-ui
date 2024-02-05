@@ -44,17 +44,17 @@
     </ng-template>
 
     <ng-template pageTab>
-        <tui-doc-demo [control]="control">
-            <ng-template>
-                <tui-input
-                    [formControl]="control"
-                    [tuiTextfieldCleaner]="cleaner"
-                    [tuiTextfieldLabelOutside]="labelOutside"
-                    [tuiTextfieldSize]="size"
-                >
-                    Hello
-                </tui-input>
-            </ng-template>
+        <tui-doc-demo [formGroup]="control | tuiWrapControl">
+            <tui-input
+                documentationTemplate
+                documentationTemplateContent="Hello"
+                [formControl]="control"
+                [tuiTextfieldCleaner]="cleaner"
+                [tuiTextfieldLabelOutside]="labelOutside"
+                [tuiTextfieldSize]="size"
+            >
+                Hello
+            </tui-input>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template

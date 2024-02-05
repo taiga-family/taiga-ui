@@ -1,7 +1,14 @@
 import {Component, TemplateRef, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiDocExample, tuiInspectAny} from '@taiga-ui/addon-doc';
 import {TuiValidationError} from '@taiga-ui/cdk';
+
+const errorTemplateContent = `<ng-template #errorContent>
+    Error with
+    <em>
+        <strong>HTML</strong>
+    </em>
+</ng-template>`;
 
 @Component({
     selector: 'example-tui-error',
@@ -26,6 +33,20 @@ export class ExampleTuiErrorComponent {
     ];
 
     selectedError = this.errorVariants[0];
+
+    readonly errorTemplateContent = errorTemplateContent;
+
+    readonly valueTransformer = (value: string): string => {
+        if (value === null) {
+            return 'null';
+        }
+
+        if (value === this.errorVariants[0]) {
+            return tuiInspectAny(this.selectedError, 0);
+        }
+
+        return 'errorContent';
+    };
 
     get error(): TuiValidationError | string | null {
         if (this.selectedError === null) {

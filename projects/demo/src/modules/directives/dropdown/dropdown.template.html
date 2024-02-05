@@ -66,8 +66,11 @@
         <tui-doc-demo>
             <span (tuiActiveZoneChange)="onActiveZone($event)">
                 <button
+                    documentationTemplate
                     tuiButton
                     type="button"
+                    [documentationTemplateBaseProperties]="dropdownBaseProperties"
+                    [documentationTemplateContent]="content"
                     [tuiDropdown]="dropdownContent"
                     [tuiDropdownAlign]="dropdownAlign"
                     [tuiDropdownDirection]="dropdownDirection"

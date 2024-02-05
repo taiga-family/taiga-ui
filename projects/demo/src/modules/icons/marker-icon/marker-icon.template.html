@@ -51,7 +51,9 @@
     <ng-template pageTab>
         <tui-doc-demo>
             <tui-marker-icon
+                documentationTemplate
                 new
+                [documentationTemplateBaseProperties]="axesBaseProperties"
                 [mode]="mode"
                 [size]="size"
                 [src]="selectedIcon"
@@ -80,6 +82,7 @@
                 documentationPropertyMode="input"
                 documentationPropertyName="src"
                 documentationPropertyType="string"
+                [documentationPropertyDefaultValue]="undefined"
                 [documentationPropertyValues]="icons"
                 [(documentationPropertyValue)]="selectedIcon"
             >

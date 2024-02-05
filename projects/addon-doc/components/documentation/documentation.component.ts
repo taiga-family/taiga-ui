@@ -24,7 +24,7 @@ import {
 } from '@taiga-ui/cdk';
 import {merge, switchMap, takeUntil} from 'rxjs';
 
-import {TuiDocDocumentationPropertyConnectorDirective} from './documentation-property-connector.directive';
+import {TuiDocDocumentationPropertyConnectorDirective} from './directives/documentation-property-connector.directive';
 import {TuiGetColorPipe} from './pipes/color.pipe';
 import {TuiGetOpacityPipe} from './pipes/opacity.pipe';
 

@@ -18,9 +18,11 @@
     <ng-template pageTab>
         <tui-doc-demo>
             <input
+                documentationTemplate
                 placeholder="My id is 'qwerty'"
                 tuiHint="I will be visible upon keyboard focus"
                 tuiHintDescribe="qwerty"
+                [documentationTemplateBaseProperties]="hintBaseProperties"
                 [tuiHintAppearance]="appearance"
                 [tuiHintDirection]="direction"
             />

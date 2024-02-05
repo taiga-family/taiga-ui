@@ -29,15 +29,13 @@
 
     <ng-template pageTab>
         <tui-doc-documentation>
-            <tui-doc-demo [control]="control">
-                <ng-template>
-                    <tui-input-number
-                        [formControl]="control"
-                        [tuiTextfieldPostfix]="currency | tuiCurrency"
-                    >
-                        Type a sum
-                    </tui-input-number>
-                </ng-template>
+            <tui-doc-demo [formGroup]="control | tuiWrapControl">
+                <tui-input-number
+                    [formControl]="control"
+                    [tuiTextfieldPostfix]="currency | tuiCurrency"
+                >
+                    Type a sum
+                </tui-input-number>
             </tui-doc-demo>
             <ng-template
                 documentationPropertyMode="input"

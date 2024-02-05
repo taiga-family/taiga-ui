@@ -32,14 +32,17 @@
     <ng-template pageTab>
         <tui-doc-demo>
             <tui-compass
+                documentationTemplate
                 [degrees]="degrees"
                 [style.color]="color"
             ></tui-compass>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
+                documentationPropertyMode="input"
                 documentationPropertyName="degrees"
                 documentationPropertyType="number"
+                [documentationPropertyDefaultValue]="undefined"
                 [(documentationPropertyValue)]="degrees"
             >
                 Pointer direction in degrees

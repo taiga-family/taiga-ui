@@ -26,6 +26,7 @@
     <ng-template pageTab>
         <tui-doc-demo>
             <tui-toggle
+                documentationTemplate
                 [formControl]="control"
                 [pseudoActive]="pseudoPressed"
                 [pseudoFocus]="pseudoFocused"
@@ -38,6 +39,7 @@
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
+                documentationPropertyMode="input"
                 documentationPropertyName="disabled"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"

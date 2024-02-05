@@ -44,17 +44,16 @@
     </ng-template>
 
     <ng-template pageTab>
-        <tui-doc-demo [control]="control">
-            <ng-template>
-                <tui-filter
-                    [badgeHandler]="badgeHandler"
-                    [disabledItemHandler]="disabledItemHandler"
-                    [formControl]="control"
-                    [items]="items"
-                    [size]="size"
-                    (toggledItem)="documentationPropertyToggledItem.emitEvent($event)"
-                ></tui-filter>
-            </ng-template>
+        <tui-doc-demo [formGroup]="control | tuiWrapControl">
+            <tui-filter
+                documentationTemplate
+                [badgeHandler]="badgeHandler"
+                [disabledItemHandler]="disabledItemHandler"
+                [formControl]="control"
+                [items]="items"
+                [size]="size"
+                (toggledItem)="documentationPropertyToggledItem.emitEvent($event)"
+            ></tui-filter>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
@@ -101,6 +100,7 @@
                 documentationPropertyMode="input"
                 documentationPropertyName="items"
                 documentationPropertyType="T[]"
+                [documentationPropertyDefaultValue]="undefined"
                 [documentationPropertyValues]="itemsVariants"
                 [(documentationPropertyValue)]="items"
             >

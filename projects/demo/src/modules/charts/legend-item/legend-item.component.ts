@@ -3,6 +3,11 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiSizeS} from '@taiga-ui/core';
 
+const content = `<tui-money
+    [singleColor]="true"
+    [value]="123456"
+></tui-money>`;
+
 @Component({
     selector: 'example-tui-legend-item',
     templateUrl: './legend-item.template.html',
@@ -42,4 +47,6 @@ export class ExampleTuiLegendItemComponent {
     disabled = false;
 
     color = '';
+
+    readonly content = content;
 }

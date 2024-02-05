@@ -43,44 +43,45 @@
     </ng-template>
 
     <ng-template pageTab>
-        <tui-doc-demo [control]="control">
-            <ng-template>
-                <tui-input-phone
-                    [countryCode]="countryCode"
-                    [focusable]="focusable"
-                    [formControl]="control"
-                    [phoneMaskAfterCountryCode]="phoneMaskAfterCountryCode"
-                    [pseudoFocus]="pseudoFocused"
-                    [pseudoHover]="pseudoHovered"
-                    [pseudoInvalid]="pseudoInvalid"
-                    [readOnly]="readOnly"
-                    [style.text-align]="textAlign"
-                    [tuiDropdownAlign]="dropdownAlign"
-                    [tuiDropdownDirection]="dropdownDirection"
-                    [tuiDropdownLimitWidth]="dropdownLimitWidth"
-                    [tuiDropdownMaxHeight]="dropdownMaxHeight"
-                    [tuiDropdownMinHeight]="dropdownMinHeight"
-                    [tuiDropdownOffset]="dropdownOffset"
-                    [tuiDropdownOpen]="!!(dropdownOpen | async)"
-                    [tuiHintAppearance]="hintAppearance"
-                    [tuiHintContent]="hintContent"
-                    [tuiHintDirection]="hintDirection"
-                    [tuiTextfieldCleaner]="cleaner"
-                    [tuiTextfieldCustomContent]="customContent"
-                    [tuiTextfieldFiller]="filler"
-                    [tuiTextfieldIconLeft]="iconLeft"
-                    [tuiTextfieldLabelOutside]="labelOutside"
-                    [tuiTextfieldPostfix]="postfix"
-                    [tuiTextfieldPrefix]="prefix"
-                    [tuiTextfieldSize]="size"
-                    (tuiDropdownOpenChange)="dropdownOpen.next($event)"
-                >
-                    Type a phone number
-                </tui-input-phone>
-            </ng-template>
+        <tui-doc-demo [formGroup]="control | tuiWrapControl">
+            <tui-input-phone
+                documentationTemplate
+                documentationTemplateContent="Type a phone number"
+                [countryCode]="countryCode"
+                [focusable]="focusable"
+                [formControl]="control"
+                [phoneMaskAfterCountryCode]="phoneMaskAfterCountryCode"
+                [pseudoFocus]="pseudoFocused"
+                [pseudoHover]="pseudoHovered"
+                [pseudoInvalid]="pseudoInvalid"
+                [readOnly]="readOnly"
+                [style.text-align]="textAlign"
+                [tuiDropdownAlign]="dropdownAlign"
+                [tuiDropdownDirection]="dropdownDirection"
+                [tuiDropdownLimitWidth]="dropdownLimitWidth"
+                [tuiDropdownMaxHeight]="dropdownMaxHeight"
+                [tuiDropdownMinHeight]="dropdownMinHeight"
+                [tuiDropdownOffset]="dropdownOffset"
+                [tuiDropdownOpen]="!!(dropdownOpen | async)"
+                [tuiHintAppearance]="hintAppearance"
+                [tuiHintContent]="hintContent"
+                [tuiHintDirection]="hintDirection"
+                [tuiTextfieldCleaner]="cleaner"
+                [tuiTextfieldCustomContent]="customContent"
+                [tuiTextfieldFiller]="filler"
+                [tuiTextfieldIconLeft]="iconLeft"
+                [tuiTextfieldLabelOutside]="labelOutside"
+                [tuiTextfieldPostfix]="postfix"
+                [tuiTextfieldPrefix]="prefix"
+                [tuiTextfieldSize]="size"
+                (tuiDropdownOpenChange)="dropdownOpen.next($event)"
+            >
+                Type a phone number
+            </tui-input-phone>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
+                documentationPropertyMode="input"
                 documentationPropertyName="disabled"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"
@@ -93,6 +94,7 @@
                 documentationPropertyMode="input"
                 documentationPropertyName="countryCode"
                 documentationPropertyType="string"
+                [documentationPropertyDefaultValue]="undefined"
                 [documentationPropertyValues]="countryCodes"
                 [(documentationPropertyValue)]="countryCode"
             >
@@ -102,6 +104,7 @@
                 documentationPropertyMode="input"
                 documentationPropertyName="phoneMaskAfterCountryCode"
                 documentationPropertyType="string"
+                [documentationPropertyDefaultValue]="undefined"
                 [documentationPropertyValues]="phoneMasksAfterCountryCode"
                 [(documentationPropertyValue)]="phoneMaskAfterCountryCode"
             >

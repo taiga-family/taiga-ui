@@ -36,59 +36,58 @@
     </ng-template>
 
     <ng-template pageTab>
-        <tui-doc-demo [control]="control">
-            <ng-template>
-                <form [formGroup]="control">
-                    <tui-checkbox-block
-                        formControlName="testValue1"
-                        class="tui-space_all-1"
-                        [contentAlign]="contentAlign"
-                        [focusable]="focusable"
-                        [hideCheckbox]="hideCheckbox"
-                        [pseudoActive]="pseudoPressed"
-                        [pseudoFocus]="pseudoFocused"
-                        [pseudoHover]="pseudoHovered"
-                        [pseudoInvalid]="pseudoInvalid"
-                        [readOnly]="readOnly"
-                        [size]="currentSize"
-                    >
-                        One option
-                    </tui-checkbox-block>
-                    <tui-checkbox-block
-                        formControlName="testValue2"
-                        class="tui-space_all-1"
-                        [contentAlign]="contentAlign"
-                        [focusable]="focusable"
-                        [hideCheckbox]="hideCheckbox"
-                        [pseudoActive]="pseudoPressed"
-                        [pseudoFocus]="pseudoFocused"
-                        [pseudoHover]="pseudoHovered"
-                        [pseudoInvalid]="pseudoInvalid"
-                        [readOnly]="readOnly"
-                        [size]="currentSize"
-                    >
-                        An alternative one
-                    </tui-checkbox-block>
-                    <tui-checkbox-block
-                        formControlName="testValue3"
-                        class="tui-space_all-1"
-                        [contentAlign]="contentAlign"
-                        [focusable]="focusable"
-                        [hideCheckbox]="hideCheckbox"
-                        [pseudoActive]="pseudoPressed"
-                        [pseudoFocus]="pseudoFocused"
-                        [pseudoHover]="pseudoHovered"
-                        [pseudoInvalid]="pseudoInvalid"
-                        [readOnly]="readOnly"
-                        [size]="currentSize"
-                    >
-                        Other
-                    </tui-checkbox-block>
-                </form>
-            </ng-template>
+        <tui-doc-demo [formGroup]="control">
+            <tui-checkbox-block
+                documentationTemplate
+                formControlName="testValue1"
+                class="tui-space_all-1"
+                [contentAlign]="contentAlign"
+                [documentationTemplateBaseProperties]="checkboxBaseProperties"
+                [focusable]="focusable"
+                [hideCheckbox]="hideCheckbox"
+                [pseudoActive]="pseudoPressed"
+                [pseudoFocus]="pseudoFocused"
+                [pseudoHover]="pseudoHovered"
+                [pseudoInvalid]="pseudoInvalid"
+                [readOnly]="readOnly"
+                [size]="currentSize"
+            >
+                One option
+            </tui-checkbox-block>
+            <tui-checkbox-block
+                formControlName="testValue2"
+                class="tui-space_all-1"
+                [contentAlign]="contentAlign"
+                [focusable]="focusable"
+                [hideCheckbox]="hideCheckbox"
+                [pseudoActive]="pseudoPressed"
+                [pseudoFocus]="pseudoFocused"
+                [pseudoHover]="pseudoHovered"
+                [pseudoInvalid]="pseudoInvalid"
+                [readOnly]="readOnly"
+                [size]="currentSize"
+            >
+                An alternative one
+            </tui-checkbox-block>
+            <tui-checkbox-block
+                formControlName="testValue3"
+                class="tui-space_all-1"
+                [contentAlign]="contentAlign"
+                [focusable]="focusable"
+                [hideCheckbox]="hideCheckbox"
+                [pseudoActive]="pseudoPressed"
+                [pseudoFocus]="pseudoFocused"
+                [pseudoHover]="pseudoHovered"
+                [pseudoInvalid]="pseudoInvalid"
+                [readOnly]="readOnly"
+                [size]="currentSize"
+            >
+                Other
+            </tui-checkbox-block>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
+                documentationPropertyMode="input"
                 documentationPropertyName="disabled"
                 documentationPropertyType="boolean"
                 [(documentationPropertyValue)]="disabled"
