@@ -1,4 +1,4 @@
-import {Directive, ElementRef, Inject, Input} from '@angular/core';
+import {Directive, ElementRef, inject, Input} from '@angular/core';
 import {tuiGetActualTarget} from '@taiga-ui/cdk';
 
 @Directive({
@@ -9,23 +9,17 @@ import {tuiGetActualTarget} from '@taiga-ui/cdk';
     },
 })
 export class TuiSwipeActionsAutoCloseDirective {
+    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+
     @Input()
     autoClose = true;
 
-    constructor(@Inject(ElementRef) private readonly el: ElementRef<HTMLElement>) {}
-
     onPointer(event: PointerEvent): void {
-        const target = tuiGetActualTarget(event);
-
-        if (this.autoClose && !this.el.nativeElement.contains(target)) {
-            this.close();
+        if (this.autoClose && !this.el.contains(tuiGetActualTarget(event))) {
+            this.el.scrollTo({
+                left: 0,
+                behavior: 'smooth',
+            });
         }
-    }
-
-    private close(): void {
-        this.el.nativeElement.scrollTo({
-            left: 0,
-            behavior: 'smooth',
-        });
     }
 }
