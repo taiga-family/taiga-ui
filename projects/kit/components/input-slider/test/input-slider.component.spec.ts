@@ -44,7 +44,7 @@ class TestComponent {
     postfix = 'things';
 
     get percent(): number {
-        return Math.round((this.control.value / (this.max - this.min)) * 100);
+        return Math.round(((this.control.value || 0) / (this.max - this.min)) * 100);
     }
 }
 
@@ -59,10 +59,6 @@ const testContext = {
 
     get customContentAutoId() {
         return 'tui-primitive-textfield__custom-content';
-    },
-
-    get valueDecorationAutoId() {
-        return 'tui-primitive-textfield__value-decoration';
     },
 };
 
@@ -343,16 +339,17 @@ describe('InputSlider', () => {
             value: number,
             expectedContent: string,
         ): Promise<void> => {
-            inputPO.sendTextAndBlur(`${value}`);
+            inputPO.focus();
+            expect(getTextfieldValueContent()).toBe('');
+            inputPO.sendText(`${value}`);
             await fixture.whenStable();
 
-            fixture.detectChanges();
+            expect(getTextfieldValueContent()).toBe('');
+            inputPO.blur();
             await fixture.whenStable();
 
             expect(testComponent.control.value).toBe(value);
-            expect(getValueDecoration()).not.toContain(testComponent.prefix);
-            expect(getValueDecoration()).not.toContain(testComponent.postfix);
-            expect(getTextInputCustomValue()).toBe(expectedContent);
+            expect(getTextfieldValueContent()).toBe(expectedContent);
         };
 
         it('100 => MAX', async () => {
@@ -489,7 +486,7 @@ describe('InputSlider', () => {
     });
 });
 
-function getTextInputCustomValue(): string {
+function getTextfieldValueContent(): string {
     return (
         pageObject
             .getByAutomationId(testContext.textInputCustomValueAutoId)
@@ -502,12 +499,5 @@ function getTextfieldCustomContent(): string {
         pageObject
             .getByAutomationId(testContext.customContentAutoId)
             ?.nativeElement.textContent.trim() || ''
-    );
-}
-
-function getValueDecoration(): string {
-    return (
-        pageObject.getByAutomationId(testContext.valueDecorationAutoId)?.nativeElement
-            .textContent || ''
     );
 }

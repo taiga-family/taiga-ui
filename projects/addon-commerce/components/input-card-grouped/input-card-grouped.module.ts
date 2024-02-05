@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {MaskitoModule} from '@maskito/angular';
+import {MaskitoDirective} from '@maskito/angular';
 import {ResizeObserverModule} from '@ng-web-apis/resize-observer';
 import {TuiFormatCardModule} from '@taiga-ui/addon-commerce/pipes';
 import {
@@ -21,7 +21,7 @@ import {TuiInputCardGroupedComponent} from './input-card-grouped.component';
         ResizeObserverModule,
         CommonModule,
         FormsModule,
-        MaskitoModule,
+        MaskitoDirective,
         TuiFocusableModule,
         TuiSvgModule,
         TuiWrapperModule,

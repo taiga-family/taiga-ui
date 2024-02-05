@@ -14,7 +14,7 @@ import {
     ViewChild,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
-import {MaskitoOptions} from '@maskito/core';
+import {maskitoInitialCalibrationPlugin, MaskitoOptions} from '@maskito/core';
 import {
     maskitoCaretGuard,
     maskitoNumberOptionsGenerator,
@@ -358,7 +358,7 @@ export class TuiInputNumberComponent
         prefix: string,
         postfix: string,
     ): MaskitoOptions {
-        const {plugins, ...options} = maskitoNumberOptionsGenerator({
+        const generatorParams = {
             decimalSeparator,
             thousandSeparator,
             min,
@@ -367,12 +367,21 @@ export class TuiInputNumberComponent
             postfix,
             precision: decimalMode === 'never' ? 0 : precision,
             decimalZeroPadding: decimalMode === 'always',
-        });
+        };
+        const {plugins, ...options} = maskitoNumberOptionsGenerator(generatorParams);
+        const initialCalibrationPlugin = maskitoInitialCalibrationPlugin(
+            maskitoNumberOptionsGenerator({
+                ...generatorParams,
+                min: Number.MIN_SAFE_INTEGER,
+                max: Number.MAX_SAFE_INTEGER,
+            }),
+        );
 
         return {
             ...options,
             plugins: [
                 ...plugins,
+                initialCalibrationPlugin,
                 maskitoCaretGuard(value => [
                     prefix.length,
                     value.length - postfix.length,

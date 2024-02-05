@@ -435,6 +435,6 @@ export class TuiInputDateTimeComponent
             return tuiDay;
         }
 
-        return [tuiDay, tuiTime];
+        return value as [TuiDay, TuiTime];
     }
 }

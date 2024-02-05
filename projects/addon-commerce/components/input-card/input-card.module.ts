@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {MaskitoModule} from '@maskito/angular';
+import {MaskitoDirective, MaskitoPipe} from '@maskito/angular';
 import {
     TuiPrimitiveTextfieldModule,
     TuiSvgModule,
@@ -13,7 +13,8 @@ import {TuiInputCardDirective} from './input-card.directive';
 
 @NgModule({
     imports: [
-        MaskitoModule,
+        MaskitoDirective,
+        MaskitoPipe,
         TuiPrimitiveTextfieldModule,
         TuiTextfieldControllerModule,
         TuiValueAccessorModule,
