@@ -9,7 +9,7 @@ export function getStandaloneBootstrapFunction(path: string): CallExpression | n
         path,
     )
         .map(ref => ref.getParent())
-        .filter(node => Node.isCallExpression(node))[0];
+        .find(node => Node.isCallExpression(node));
 
     const standaloneBootstrapFunction = standaloneBootstrapIdentifier as CallExpression;
 
