@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[81688],{81688:e=>{e.exports="@import '@taiga-ui/core/styles/taiga-ui-local';\n\n.dropdown {\n    .center-all();\n    position: fixed;\n}\n"}}]);
