@@ -113,14 +113,16 @@
     </ng-template>
 
     <ng-template pageTab>
-        <button
-            size="m"
-            tuiButton
-            type="button"
-            (click)="showDialog(template)"
-        >
-            Show
-        </button>
+        <tui-doc-demo>
+            <button
+                size="m"
+                tuiButton
+                type="button"
+                (click)="showDialog(template)"
+            >
+                Show
+            </button>
+        </tui-doc-demo>
         <ng-template
             #template
             let-completeWith="completeWith"
