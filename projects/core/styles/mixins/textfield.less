@@ -135,6 +135,15 @@
     :host[data-size='l']:not(._label-outside) &,
     :host-context(tui-primitive-textfield[data-size='l']:not(._label-outside)):not(tui-primitive-textfield) {
         padding-top: 1.25rem;
+    }
+
+    :host[data-size='m']:not(._label-outside) &,
+    :host-context(tui-primitive-textfield[data-size='m']:not(._label-outside)):not(tui-primitive-textfield) {
+        padding-top: 1rem;
+    }
+
+    :host[data-size='l']:not(._label-outside) & {
+        padding-top: 1.25rem;
 
         // Workaround for raising placeholder in temporary autofill
         &:-webkit-autofill + .t-content .t-placeholder {
@@ -143,10 +152,7 @@
         }
     }
 
-    :host[data-size='m']:not(._label-outside) &,
-    :host-context(tui-primitive-textfield[data-size='m']:not(._label-outside)):not(tui-primitive-textfield) {
-        padding-top: 1rem;
-
+    :host[data-size='m']:not(._label-outside) & {
         // Workaround for raising placeholder in temporary autofill
         &:-webkit-autofill + .t-content .t-placeholder {
             font-size: 0.69rem;
