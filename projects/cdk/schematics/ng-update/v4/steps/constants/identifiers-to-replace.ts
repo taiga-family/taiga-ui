@@ -98,4 +98,36 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifier[] = [
             moduleSpecifier: '@taiga-ui/cdk',
         },
     },
+    {
+        from: {name: 'TUI_SCROLL_REF', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TUI_SCROLL_REF', moduleSpecifier: '@taiga-ui/core'},
+    },
+    {
+        from: {name: 'AbstractTuiPortalHostComponent', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiPortalsComponent', moduleSpecifier: '@taiga-ui/cdk'},
+    },
+    {
+        from: {name: 'AbstractTuiPortalService', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiPortalService', moduleSpecifier: '@taiga-ui/cdk'},
+    },
+    {
+        from: {name: 'AbstractTuiDialogService', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiPopoverService', moduleSpecifier: '@taiga-ui/cdk'},
+    },
+    {
+        from: {name: 'TuiDropdownHostComponent', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiDropdownsComponent', moduleSpecifier: '@taiga-ui/core'},
+    },
+    {
+        from: {name: 'TuiDropdownPortalService', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiDropdownService', moduleSpecifier: '@taiga-ui/core'},
+    },
+    {
+        from: {name: 'TuiPortalDirective', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiDropdownPortalDirective', moduleSpecifier: '@taiga-ui/core'},
+    },
+    {
+        from: {name: 'TuiPortalModule', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiDropdownPortalDirective', moduleSpecifier: '@taiga-ui/core'},
+    },
 ];

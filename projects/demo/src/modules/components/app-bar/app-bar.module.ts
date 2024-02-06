@@ -3,7 +3,6 @@ import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiAppBarModule} from '@taiga-ui/addon-mobile';
-import {TuiPortalModule} from '@taiga-ui/cdk';
 import {TuiButtonModule, TuiLabelModule, TuiNotificationModule} from '@taiga-ui/core';
 import {TuiProgressModule} from '@taiga-ui/kit';
 
@@ -18,7 +17,6 @@ import {TuiAppBarExample1} from './examples/1';
         TuiLabelModule,
         TuiNotificationModule,
         TuiAppBarModule,
-        TuiPortalModule,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiAppBarComponent)),
     ],

@@ -15,7 +15,6 @@ import {
     TuiActiveZoneDirective,
     TuiContext,
     TuiDestroyService,
-    TuiDropdownPortalService,
     tuiPure,
 } from '@taiga-ui/cdk';
 import {
@@ -35,6 +34,7 @@ import {Subject, takeUntil, throttleTime} from 'rxjs';
 
 import {TuiDropdownDriverDirective} from './dropdown.driver';
 import {TUI_DROPDOWN_COMPONENT} from './dropdown.providers';
+import {TuiDropdownService} from './dropdown.service';
 import {TuiDropdownPositionDirective} from './dropdown-position.directive';
 
 @Directive({
@@ -58,7 +58,7 @@ export class TuiDropdownDirective
         TuiVehicle
 {
     private readonly refresh$ = new Subject<void>();
-    private readonly service = inject(TuiDropdownPortalService);
+    private readonly service = inject(TuiDropdownService);
     private readonly cdr = inject(ChangeDetectorRef);
 
     @Input()

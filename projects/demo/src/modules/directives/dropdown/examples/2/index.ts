@@ -12,14 +12,5 @@ import {assets} from '@demo/utils';
 })
 export class TuiDropdownExample2 {
     open = false;
-
     avatarUrl = assets`/images/avatar.jpg`;
-
-    onMouseEnter(): void {
-        this.open = true;
-    }
-
-    onMouseLeave(): void {
-        this.open = false;
-    }
 }

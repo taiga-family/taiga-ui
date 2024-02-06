@@ -14,7 +14,7 @@
   <ng-container ngProjectAs="tuiOverAlerts">
     <!-- Content over alerts -->
   </ng-container>
-  <ng-container ngProjectAs="tuiOverPortals">
+  <ng-container ngProjectAs="tuiOverDropdowns">
     <!-- Content over dropdowns -->
   </ng-container>
   <ng-container ngProjectAs="tuiOverHints">

@@ -1,8 +1,8 @@
 import {Component, Inject, TemplateRef} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {tuiClamp, TuiDropdownPortalService} from '@taiga-ui/cdk';
-import {TuiDialogService} from '@taiga-ui/core';
+import {tuiClamp} from '@taiga-ui/cdk';
+import {TuiDialogService, TuiDropdownService} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 @Component({
@@ -19,8 +19,7 @@ export class TuiDialogExampleComponent4 {
 
     constructor(
         @Inject(TuiDialogService) private readonly dialogs: TuiDialogService,
-        @Inject(TuiDropdownPortalService)
-        private readonly portalService: TuiDropdownPortalService,
+        @Inject(TuiDropdownService) private readonly dropdowns: TuiDropdownService,
     ) {}
 
     get transform(): string {
@@ -48,11 +47,11 @@ export class TuiDialogExampleComponent4 {
         content: PolymorpheusContent,
         button: TemplateRef<Record<string, unknown>>,
     ): void {
-        const templateRef = this.portalService.addTemplate(button);
+        const templateRef = this.dropdowns.addTemplate(button);
 
         this.dialogs.open(content).subscribe({
             complete: () => {
-                this.portalService.removeTemplate(templateRef);
+                this.dropdowns.removeTemplate(templateRef);
             },
         });
     }

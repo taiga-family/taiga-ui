@@ -1,0 +1,16 @@
+<label>
+    <tui-toggle
+        size="l"
+        class="tui-space_right-2"
+        [(ngModel)]="open"
+    ></tui-toggle>
+    Show dropdown
+</label>
+<div
+    *tuiDropdown="open"
+    tuiCardLarge
+    tuiSurface="elevated"
+    class="dropdown"
+>
+    Manually style this element
+</div>

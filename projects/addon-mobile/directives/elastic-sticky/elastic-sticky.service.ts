@@ -1,12 +1,11 @@
 import {ElementRef, Inject, Injectable, NgZone, Self} from '@angular/core';
 import {
-    SCROLL_REF_SELECTOR,
-    TUI_SCROLL_REF,
     TuiDestroyService,
     tuiGetElementOffset,
     tuiScrollFrom,
     tuiZoneOptimized,
 } from '@taiga-ui/cdk';
+import {SCROLL_REF_SELECTOR, TUI_SCROLL_REF} from '@taiga-ui/core';
 import {
     distinctUntilChanged,
     map,

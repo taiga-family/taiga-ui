@@ -1,9 +1,10 @@
 import {Directive, ElementRef} from '@angular/core';
-import {TUI_SCROLL_REF} from '@taiga-ui/cdk/tokens';
+import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
 
 export const SCROLL_REF_SELECTOR = '[tuiScrollRef]';
 
 @Directive({
+    standalone: true,
     selector: SCROLL_REF_SELECTOR,
     providers: [
         {
