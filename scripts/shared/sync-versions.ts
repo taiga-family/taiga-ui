@@ -23,11 +23,11 @@ export function syncVersions(
         .filter(file => !file.includes('node_modules'));
 
     for (const file of files) {
-        const originalJSON = `${JSON.stringify(
+        const originalJSON = JSON.stringify(
             JSON.parse(readFileSync(file).toString()),
             null,
             INDENTATION,
-        )}`;
+        );
         const packageJson = JSON.parse(originalJSON);
         const prevVersion = packageJson.version;
 
@@ -43,7 +43,7 @@ export function syncVersions(
             ignores,
         });
 
-        const updatedJSON = `${JSON.stringify(packageJson, null, INDENTATION)}`;
+        const updatedJSON = JSON.stringify(packageJson, null, INDENTATION);
 
         if (originalJSON !== updatedJSON) {
             writeFileSync(file, `${updatedJSON}\n`);

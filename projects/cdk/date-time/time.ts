@@ -155,12 +155,11 @@ export class TuiTime implements TuiTimeLike {
         const needAddMs = mode === 'HH:MM:SS.MSS' || (!mode && this.ms > 0);
         const needAddSeconds =
             needAddMs || mode === 'HH:MM:SS' || (!mode && this.seconds > 0);
+        const hhMm = `${this.formatTime(this.hours)}:${this.formatTime(this.minutes)}`;
+        const ss = needAddSeconds ? `:${this.formatTime(this.seconds)}` : '';
+        const mss = needAddMs ? `.${this.formatTime(this.ms, 3)}` : '';
 
-        return (
-            `${this.formatTime(this.hours)}:${this.formatTime(this.minutes)}` +
-            `${needAddSeconds ? `:${this.formatTime(this.seconds)}` : ''}` +
-            `${needAddMs ? `.${this.formatTime(this.ms, 3)}` : ''}`
-        );
+        return `${hhMm}${ss}${mss}`;
     }
 
     valueOf(): number {
