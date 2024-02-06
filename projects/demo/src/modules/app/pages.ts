@@ -1342,12 +1342,6 @@ export const pages: TuiDocPages = [
             },
             {
                 section: 'Tools',
-                title: 'Portal',
-                keywords: 'template, шаблон, портал',
-                route: '/directives/portal',
-            },
-            {
-                section: 'Tools',
                 title: 'Present',
                 keywords: 'DOM, директива, появление, наличие, присутствие',
                 route: '/directives/present',

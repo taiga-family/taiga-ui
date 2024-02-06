@@ -1,5 +1,6 @@
 import {ElementRef, Inject, Injectable} from '@angular/core';
-import {TUI_SCROLL_REF, tuiScrollFrom, tuiTypedFromEvent} from '@taiga-ui/cdk';
+import {tuiScrollFrom, tuiTypedFromEvent} from '@taiga-ui/cdk';
+import {TUI_SCROLL_REF} from '@taiga-ui/core';
 import {
     distinctUntilChanged,
     EMPTY,

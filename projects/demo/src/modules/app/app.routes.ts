@@ -1571,14 +1571,6 @@ export const ROUTES: Routes = [
         },
     },
     {
-        path: 'directives/portal',
-        loadChildren: async () =>
-            (await import('../directives/portal/portal.module')).ExampleTuiPortalModule,
-        data: {
-            title: 'Portal',
-        },
-    },
-    {
         path: 'directives/resizer',
         loadChildren: async () =>
             (await import('../directives/resizer/resizer.module'))

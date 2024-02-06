@@ -10,7 +10,6 @@ import {
 } from '@angular/core';
 import {
     TUI_IS_IOS,
-    TUI_SCROLL_REF,
     TuiContext,
     TuiDestroyService,
     TuiHandler,
@@ -18,6 +17,7 @@ import {
     tuiScrollFrom,
     tuiZonefree,
 } from '@taiga-ui/cdk';
+import {TUI_SCROLL_REF} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {distinctUntilChanged, filter, map, Observable, startWith, takeUntil} from 'rxjs';
 

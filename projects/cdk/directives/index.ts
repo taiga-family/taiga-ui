@@ -23,7 +23,6 @@ export * from '@taiga-ui/cdk/directives/overscroll';
 export * from '@taiga-ui/cdk/directives/pan';
 export * from '@taiga-ui/cdk/directives/platform';
 export * from '@taiga-ui/cdk/directives/popover';
-export * from '@taiga-ui/cdk/directives/portal';
 export * from '@taiga-ui/cdk/directives/pressed';
 export * from '@taiga-ui/cdk/directives/prevent-default';
 export * from '@taiga-ui/cdk/directives/repeat-times';

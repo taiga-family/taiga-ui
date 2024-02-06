@@ -1,104 +1,47 @@
-import {DOCUMENT} from '@angular/common';
-import {
-    Directive,
-    ElementRef,
-    Inject,
-    Input,
-    NgZone,
-    Renderer2,
-    Self,
-} from '@angular/core';
+import {Directive, ElementRef, inject, Input, NgZone} from '@angular/core';
 import {ANIMATION_FRAME} from '@ng-web-apis/common';
-import {
-    POLLING_TIME,
-    TUI_SCROLL_REF,
-    TuiDestroyService,
-    tuiScrollFrom,
-    tuiStopPropagation,
-    tuiTypedFromEvent,
-    tuiZonefree,
-} from '@taiga-ui/cdk';
-import {TUI_ELEMENT_REF} from '@taiga-ui/core/tokens';
-import {TuiOrientation} from '@taiga-ui/core/types';
-import {map, merge, Observable, switchMap, takeUntil, throttleTime} from 'rxjs';
+import {POLLING_TIME, TuiDestroyService, tuiScrollFrom, tuiZonefree} from '@taiga-ui/cdk';
+import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
+import {merge, takeUntil, throttleTime} from 'rxjs';
+
+import {TuiScrollbarService} from './scrollbar.service';
 
 const MIN_WIDTH = 24;
 
-function getOffsetVertical({clientY}: MouseEvent, {top, height}: ClientRect): number {
-    return (clientY - top) / height;
-}
-
-function getOffsetHorizontal({clientX}: MouseEvent, {left, width}: ClientRect): number {
-    return (clientX - left) / width;
-}
-
 @Directive({
+    standalone: true,
     selector: '[tuiScrollbar]',
-    providers: [TuiDestroyService],
+    providers: [TuiScrollbarService, TuiDestroyService],
 })
 export class TuiScrollbarDirective {
+    private readonly el = inject(TUI_SCROLL_REF).nativeElement;
+    private readonly style: CSSStyleDeclaration = inject(ElementRef).nativeElement.style;
+
+    protected readonly scrollSub = inject(TuiScrollbarService)
+        .pipe(takeUntil(inject(TuiDestroyService)))
+        .subscribe(([top, left]) => {
+            this.el.style.scrollBehavior = 'auto';
+            this.el.scrollTo({top, left});
+            this.el.style.scrollBehavior = '';
+        });
+
+    protected readonly styleSub = merge(
+        inject(ANIMATION_FRAME).pipe(throttleTime(POLLING_TIME)),
+        tuiScrollFrom(this.el),
+    )
+        .pipe(tuiZonefree(inject(NgZone)), takeUntil(inject(TuiDestroyService)))
+        .subscribe(() => {
+            if (this.tuiScrollbar === 'vertical') {
+                this.style.top = `${this.thumb * 100}%`;
+                this.style.height = `${this.view * 100}%`;
+            } else {
+                this.style.left = `${this.thumb * 100}%`;
+                this.style.width = `${this.view * 100}%`;
+            }
+        });
+
     @Input()
-    tuiScrollbar: TuiOrientation = 'vertical';
-
-    constructor(
-        @Inject(NgZone) zone: NgZone,
-        @Inject(Renderer2) renderer: Renderer2,
-        @Self() @Inject(TuiDestroyService) destroy$: Observable<void>,
-        @Inject(ANIMATION_FRAME) animationFrame$: Observable<number>,
-        @Inject(TUI_ELEMENT_REF) private readonly wrapper: ElementRef<HTMLElement>,
-        @Inject(TUI_SCROLL_REF) private readonly container: ElementRef<HTMLElement>,
-        @Inject(DOCUMENT) private readonly doc: Document,
-        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
-    ) {
-        const {nativeElement} = this.el;
-        const mousedown$ = tuiTypedFromEvent(nativeElement, 'mousedown');
-        const mousemove$ = tuiTypedFromEvent(this.doc, 'mousemove');
-        const mouseup$ = tuiTypedFromEvent(this.doc, 'mouseup');
-        const mousedownWrapper$ = tuiTypedFromEvent(
-            this.wrapper.nativeElement,
-            'mousedown',
-        );
-
-        merge(
-            mousedownWrapper$.pipe(map(event => this.getScrolled(event, 0.5, 0.5))),
-            mousedown$.pipe(
-                tuiStopPropagation(),
-                switchMap(event => {
-                    const rect = nativeElement.getBoundingClientRect();
-                    const vertical = getOffsetVertical(event, rect);
-                    const horizontal = getOffsetHorizontal(event, rect);
-
-                    return mousemove$.pipe(
-                        map(event => this.getScrolled(event, vertical, horizontal)),
-                        takeUntil(mouseup$),
-                    );
-                }),
-            ),
-        )
-            .pipe(tuiZonefree(zone), takeUntil(destroy$))
-            .subscribe(([scrollTop, scrollLeft]) => {
-                if (this.tuiScrollbar === 'vertical') {
-                    renderer.setProperty(this.element, 'scrollTop', scrollTop);
-                } else {
-                    renderer.setProperty(this.element, 'scrollLeft', scrollLeft);
-                }
-            });
-
-        merge(
-            animationFrame$.pipe(throttleTime(POLLING_TIME)),
-            tuiScrollFrom(this.element),
-        )
-            .pipe(tuiZonefree(zone), takeUntil(destroy$))
-            .subscribe(() => {
-                if (this.tuiScrollbar === 'vertical') {
-                    renderer.setStyle(nativeElement, 'top', `${this.thumb * 100}%`);
-                    renderer.setStyle(nativeElement, 'height', `${this.view * 100}%`);
-                } else {
-                    renderer.setStyle(nativeElement, 'left', `${this.thumb * 100}%`);
-                    renderer.setStyle(nativeElement, 'width', `${this.view * 100}%`);
-                }
-            });
-    }
+    tuiScrollbar: 'horizontal' | 'vertical' = 'vertical';
 
     private get scrolled(): number {
         const {
@@ -108,7 +51,7 @@ export class TuiScrollbarDirective {
             scrollLeft,
             scrollWidth,
             clientWidth,
-        } = this.element;
+        } = this.el;
 
         return this.tuiScrollbar === 'vertical'
             ? scrollTop / (scrollHeight - clientHeight)
@@ -116,7 +59,7 @@ export class TuiScrollbarDirective {
     }
 
     private get compensation(): number {
-        const {clientHeight, scrollHeight, clientWidth, scrollWidth} = this.element;
+        const {clientHeight, scrollHeight, clientWidth, scrollWidth} = this.el;
 
         if (
             ((clientHeight * clientHeight) / scrollHeight > MIN_WIDTH &&
@@ -139,33 +82,10 @@ export class TuiScrollbarDirective {
     }
 
     private get view(): number {
-        const {clientHeight, scrollHeight, clientWidth, scrollWidth} = this.element;
+        const {clientHeight, scrollHeight, clientWidth, scrollWidth} = this.el;
 
         return this.tuiScrollbar === 'vertical'
             ? Math.ceil((clientHeight / scrollHeight) * 100) / 100
             : Math.ceil((clientWidth / scrollWidth) * 100) / 100;
-    }
-
-    private get element(): Element {
-        return this.container.nativeElement;
-    }
-
-    private getScrolled(
-        {clientY, clientX}: MouseEvent,
-        offsetVertical: number,
-        offsetHorizontal: number,
-    ): [number, number] {
-        const {offsetHeight, offsetWidth} = this.el.nativeElement;
-        const {top, left, width, height} =
-            this.wrapper.nativeElement.getBoundingClientRect();
-
-        const maxTop = this.element.scrollHeight - height;
-        const maxLeft = this.element.scrollWidth - width;
-        const scrolledTop =
-            (clientY - top - offsetHeight * offsetVertical) / (height - offsetHeight);
-        const scrolledLeft =
-            (clientX - left - offsetWidth * offsetHorizontal) / (width - offsetWidth);
-
-        return [maxTop * scrolledTop, maxLeft * scrolledLeft];
     }
 }

@@ -1,11 +1,8 @@
 import {CommonModule, DOCUMENT} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {
-    TuiFocusTrapModule,
-    TuiOverscrollModule,
-    TuiScrollControlsModule,
-} from '@taiga-ui/cdk';
+import {TuiFocusTrapModule, TuiOverscrollModule} from '@taiga-ui/cdk';
 import {tuiHost} from '@taiga-ui/core/animations';
+import {TuiScrollControlsComponent} from '@taiga-ui/core/components/scroll-controls';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import {tap} from 'rxjs';
 
@@ -17,7 +14,7 @@ import {TUI_DIALOGS} from './dialog.tokens';
     imports: [
         CommonModule,
         PolymorpheusModule,
-        TuiScrollControlsModule,
+        TuiScrollControlsComponent,
         TuiFocusTrapModule,
         TuiOverscrollModule,
     ],

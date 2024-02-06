@@ -3,7 +3,7 @@
   selector: 'my-portal-host',
   templateUrl: './my-portal-host.template.html',
   styleUrls: ['./my-portal-host.style.less'],
-  providers: [{provide: AbstractTuiPortalService, useExisting: MyPortalService}],
+  providers: [tuiAsPortal(MyPortalService)],
 })
-export class MyPortalHost extends AbstractTuiPortalHostComponent {}
+export class MyPortalHost extends TuiPortalsComponent {}
 ```

@@ -1,10 +1,6 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {
-    AbstractTuiPortalHostComponent,
-    AbstractTuiPortalService,
-    TuiDropdownPortalService,
-} from '@taiga-ui/cdk';
-import {tuiAsViewport, TuiRectAccessor} from '@taiga-ui/core';
+import {ChangeDetectionStrategy, Component, ElementRef, inject} from '@angular/core';
+import {tuiAsPortal, TuiPortalsComponent} from '@taiga-ui/cdk';
+import {tuiAsViewport, TuiDropdownService, TuiRectAccessor} from '@taiga-ui/core';
 
 @Component({
     selector: 'portal-host',
@@ -14,21 +10,17 @@ import {tuiAsViewport, TuiRectAccessor} from '@taiga-ui/core';
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        TuiDropdownPortalService,
-        {
-            provide: AbstractTuiPortalService,
-            useExisting: TuiDropdownPortalService,
-        },
+        TuiDropdownService,
+        tuiAsPortal(TuiDropdownService),
         tuiAsViewport(PortalHost),
     ],
 })
-export class PortalHost
-    extends AbstractTuiPortalHostComponent
-    implements TuiRectAccessor
-{
+export class PortalHost extends TuiPortalsComponent implements TuiRectAccessor {
+    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+
     readonly type = 'viewport';
 
-    getClientRect(): ClientRect {
-        return this.el.nativeElement.getBoundingClientRect();
+    getClientRect(): DOMRect {
+        return this.el.getBoundingClientRect();
     }
 }

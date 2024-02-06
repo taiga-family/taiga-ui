@@ -35,11 +35,11 @@
     }
 
     &_has-horizontal {
-        bottom: @scroll-width - @space;
+        bottom: @scroll-width - 0.25rem;
     }
 
     &_has-vertical {
-        right: @scroll-width - @space;
+        right: @scroll-width - 0.25rem;
     }
 }
 
@@ -48,14 +48,14 @@
 
     position: absolute;
     border-radius: 6.25rem;
-    border: @space solid transparent;
+    border: 0.25rem solid transparent;
     cursor: pointer;
     pointer-events: auto;
     user-select: none;
-    background: var(--tui-text-01);
+    background: currentColor;
     background-clip: content-box;
     box-sizing: border-box;
-    transition-property: width, height;
+    transition-property: width, height, opacity;
     opacity: 0.2;
 
     &:hover {
@@ -64,10 +64,6 @@
 
     &:active {
         opacity: 0.48;
-    }
-
-    :host[data-mode='onDark'] & {
-        background-color: var(--tui-text-01-night);
     }
 
     .t-bar_vertical & {

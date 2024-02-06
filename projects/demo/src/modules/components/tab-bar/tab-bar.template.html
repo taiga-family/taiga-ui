@@ -22,9 +22,10 @@
                 *ngIf="!fixed"
                 class="bar"
             ></tui-tab-bar-example-1>
-            <ng-template [tuiPortal]="fixed">
-                <tui-tab-bar-example-1 class="fixed"></tui-tab-bar-example-1>
-            </ng-template>
+            <tui-tab-bar-example-1
+                *tuiDropdown="fixed"
+                class="fixed"
+            ></tui-tab-bar-example-1>
         </tui-doc-example>
 
         <tui-doc-example

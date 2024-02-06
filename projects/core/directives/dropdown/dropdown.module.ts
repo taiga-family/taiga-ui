@@ -8,6 +8,7 @@ import {TuiDropdownHoverDirective} from './dropdown-hover.directive';
 import {TuiDropdownManualDirective} from './dropdown-manual.directive';
 import {TuiDropdownOpenDirective} from './dropdown-open.directive';
 import {TuiDropdownOptionsDirective} from './dropdown-options.directive';
+import {TuiDropdownPortalDirective} from './dropdown-portal.directive';
 import {TuiDropdownPositionDirective} from './dropdown-position.directive';
 import {TuiDropdownPositionSidedDirective} from './dropdown-position-sided.directive';
 import {TuiDropdownSelectionDirective} from './dropdown-selection.directive';
@@ -18,6 +19,7 @@ import {TuiDropdownSelectionDirective} from './dropdown-selection.directive';
         TuiDropdownComponent,
         TuiDropdownOpenDirective,
         TuiDropdownOptionsDirective,
+        TuiDropdownPortalDirective,
         TuiDropdownDriverDirective,
         TuiDropdownManualDirective,
         TuiDropdownHoverDirective,
@@ -31,6 +33,7 @@ import {TuiDropdownSelectionDirective} from './dropdown-selection.directive';
         TuiDropdownComponent,
         TuiDropdownOpenDirective,
         TuiDropdownOptionsDirective,
+        TuiDropdownPortalDirective,
         TuiDropdownDriverDirective,
         TuiDropdownManualDirective,
         TuiDropdownHoverDirective,

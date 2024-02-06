@@ -1,7 +1,6 @@
 export * from '@taiga-ui/cdk/abstract';
 export * from '@taiga-ui/cdk/classes';
 export * from '@taiga-ui/cdk/coercion';
-export * from '@taiga-ui/cdk/components';
 export * from '@taiga-ui/cdk/constants';
 export * from '@taiga-ui/cdk/date-time';
 export * from '@taiga-ui/cdk/decorators';

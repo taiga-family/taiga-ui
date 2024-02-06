@@ -10,6 +10,7 @@ import {
     TuiLinkModule,
     TuiNotificationModule,
 } from '@taiga-ui/core';
+import {TuiCardModule, TuiSurfaceModule} from '@taiga-ui/experimental';
 import {
     TuiAvatarModule,
     TuiInputModule,
@@ -24,6 +25,7 @@ import {TuiDropdownExample1} from './examples/1';
 import {TuiDropdownExample2} from './examples/2';
 import {TuiDropdownExample3} from './examples/3';
 import {TuiDropdownExample4} from './examples/4';
+import {TuiDropdownExample5} from './examples/5';
 
 @NgModule({
     imports: [
@@ -34,6 +36,8 @@ import {TuiDropdownExample4} from './examples/4';
         TuiAvatarModule,
         TuiButtonModule,
         TuiDropdownModule,
+        TuiCardModule,
+        TuiSurfaceModule,
         TuiSelectModule,
         TuiObscuredDirective,
         TuiActiveZoneModule,
@@ -50,6 +54,7 @@ import {TuiDropdownExample4} from './examples/4';
         TuiDropdownExample2,
         TuiDropdownExample3,
         TuiDropdownExample4,
+        TuiDropdownExample5,
     ],
     exports: [ExampleTuiDropdownComponent],
 })
