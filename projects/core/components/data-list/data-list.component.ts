@@ -105,7 +105,7 @@ export class TuiDataListComponent<T> implements TuiDataListAccessor<T> {
         }
     }
 
-    getOptions(includeDisabled: boolean = false): readonly T[] {
+    getOptions(includeDisabled = false): readonly T[] {
         return this.options
             .filter(({disabled}) => includeDisabled || !disabled)
             .map(({value}) => value)

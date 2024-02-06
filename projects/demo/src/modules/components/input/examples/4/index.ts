@@ -14,7 +14,7 @@ class User {
         readonly lastName: string,
         readonly avatarUrl: string | null = null,
         readonly accounts: Account[] = [],
-        readonly card: string = '',
+        readonly card = '',
     ) {}
 
     toString(): string {

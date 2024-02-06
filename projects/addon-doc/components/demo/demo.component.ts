@@ -132,7 +132,7 @@ export class TuiDocDemoComponent implements OnInit {
         this.createForm();
     }
 
-    updateWidth(width: number = NaN): void {
+    updateWidth(width = NaN): void {
         if (!this.resizer || !this.resizeable || !this.content) {
             return;
         }

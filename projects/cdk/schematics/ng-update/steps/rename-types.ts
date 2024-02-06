@@ -17,7 +17,7 @@ function renameType(
     from: string,
     to?: string,
     moduleSpecifier?: string[] | string,
-    preserveGenerics: boolean = false,
+    preserveGenerics = false,
 ): void {
     const references = getNamedImportReferences(from, moduleSpecifier);
 

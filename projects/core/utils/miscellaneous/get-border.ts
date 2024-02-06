@@ -5,9 +5,9 @@ const CONTENT_SIZE = 2.5;
 
 export function tuiGetBorder(
     hasIcon: boolean,
-    hasCleaner: boolean = false,
-    hasTooltip: boolean = false,
-    hasContent: boolean = false,
+    hasCleaner = false,
+    hasTooltip = false,
+    hasContent = false,
     size: TuiSizeL | TuiSizeS = 'm',
 ): number {
     const offset = size === 's' ? 0 : 0.25;

@@ -22,7 +22,7 @@ class User {
         readonly lastName: string,
         readonly phone: string,
         readonly avatarUrl: string | null = null,
-        readonly disabled: boolean = false,
+        readonly disabled = false,
     ) {}
 
     toString(): string {

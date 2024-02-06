@@ -526,7 +526,7 @@ export class TuiInputTagComponent
         }
     }
 
-    private focusInput(preventScroll: boolean = false): void {
+    private focusInput(preventScroll = false): void {
         this.nativeFocusableElement?.focus({preventScroll});
     }
 

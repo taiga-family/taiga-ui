@@ -3,7 +3,7 @@ export class User {
         readonly firstName: string,
         readonly lastName: string,
         readonly avatarUrl: string | null = null,
-        readonly disabled: boolean = false,
+        readonly disabled = false,
     ) {}
 
     toString(): string {

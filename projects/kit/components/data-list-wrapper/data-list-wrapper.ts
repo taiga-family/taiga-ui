@@ -52,7 +52,7 @@ export abstract class AbstractTuiDataListWrapper<T> {
         return {$implicit, active: tuiIsNativeFocused(nativeElement)};
     }
 
-    getOptions(includeDisabled: boolean = false): readonly T[] {
+    getOptions(includeDisabled = false): readonly T[] {
         return this.optionsQuery
             .filter(({disabled}) => includeDisabled || !disabled)
             .map(({value}) => value)

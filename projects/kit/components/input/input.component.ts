@@ -123,7 +123,7 @@ export class TuiInputComponent
         return '';
     }
 
-    private focusInput(preventScroll: boolean = false): void {
+    private focusInput(preventScroll = false): void {
         if (this.nativeFocusableElement) {
             this.nativeFocusableElement.focus({preventScroll});
         }

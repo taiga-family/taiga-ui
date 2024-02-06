@@ -15,8 +15,8 @@ const IOS_CYCLE_HEIGHT = reduceCycle(IOS_CYCLE);
 
 function reduceCycle(
     cycle: ReadonlyArray<readonly number[]>,
-    lastYear: number = 28,
-    lastMonth: number = 12,
+    lastYear = 28,
+    lastMonth = 12,
 ): number {
     return cycle.reduce(
         (total, year, yearIndex) =>
