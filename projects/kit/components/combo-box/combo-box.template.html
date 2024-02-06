@@ -1,6 +1,6 @@
 <tui-hosted-dropdown
     class="t-hosted"
-    [canOpen]="interactive"
+    [canOpen]="interactive && !!datalist"
     [content]="datalist || ''"
     [(open)]="open"
     (tuiActiveZoneChange)="onActiveZone($event)"
