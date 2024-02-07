@@ -26,8 +26,8 @@
                 icon="tuiIconClose"
                 size="xs"
                 tuiIconButton
-                tuiPreventDefault="mousedown"
                 type="reset"
+                (mousedown.prevent.silent)="(0)"
             ></button>
         </ng-template>
     </tui-hosted-dropdown>

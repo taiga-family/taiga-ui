@@ -64,12 +64,12 @@
             automation-id="tui-file__remove"
             size="xs"
             tuiIconButton
-            tuiPreventDefault="mousedown"
             type="button"
             class="t-remove"
             [icon]="icons.close"
             [title]="texts.remove"
             (click.prevent)="onRemoveClick()"
+            (mousedown.prevent.silent)="(0)"
         ></button>
     </ng-container>
 </ng-template>

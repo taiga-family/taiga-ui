@@ -1,7 +1,6 @@
 <tui-primitive-calendar-range
     *ngIf="!items.length; else presets"
     automation-id="tui-calendar-range__calendars"
-    tuiPreventDefault="mousedown"
     [defaultViewedMonthFirst]="defaultViewedMonth"
     [disabledItemHandler]="calculatedDisabledItemHandler"
     [markerHandler]="markerHandler"
@@ -9,12 +8,12 @@
     [min]="computedMin | tuiMapper: maxLengthMapper : value : maxLength : true"
     [value]="value"
     (dayClick)="onDayClick($event)"
+    (mousedown.prevent.silent)="(0)"
 ></tui-primitive-calendar-range>
 <ng-template #presets>
     <div class="t-wrapper">
         <tui-calendar
             automation-id="tui-calendar-range__calendar"
-            tuiPreventDefault="mousedown"
             [disabledItemHandler]="calculatedDisabledItemHandler"
             [markerHandler]="markerHandler"
             [max]="computedMax | tuiMapper: maxLengthMapper : value : maxLength : false"
@@ -22,6 +21,7 @@
             [month]="computedMonth"
             [value]="value"
             (dayClick)="onDayClick($event)"
+            (mousedown.prevent.silent)="(0)"
         ></tui-calendar>
         <tui-data-list
             automation-id="tui-calendar-range__menu"
@@ -33,11 +33,11 @@
                 automation-id="tui-calendar-range__menu__item"
                 role="menuitemradio"
                 tuiOption
-                tuiPreventDefault="mousedown"
                 [attr.aria-checked]="isItemActive(item)"
                 (click)="onItemSelect(item)"
                 (keydown.enter.prevent)="onItemSelect(item)"
                 (keydown.space.prevent)="onItemSelect(item)"
+                (mousedown.prevent.silent)="(0)"
             >
                 {{ item }}
                 <tui-svg

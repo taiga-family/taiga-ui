@@ -50,7 +50,6 @@
     >
         <tui-calendar
             automation-id="tui-input-date-time__calendar"
-            tuiPreventDefault="mousedown"
             [disabledItemHandler]="disabledItemHandler"
             [max]="calendarMaxDay"
             [min]="calendarMinDay"
@@ -58,6 +57,7 @@
             [value]="calendarValue"
             (dayClick)="onDayClick($event)"
             (monthChange)="onMonthChange($event)"
+            (mousedown.prevent.silent)="(0)"
         ></tui-calendar>
     </ng-template>
 </tui-hosted-dropdown>

@@ -1,12 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {
-    TuiActiveZoneModule,
-    TuiLetModule,
-    TuiMapperPipeModule,
-    TuiPreventDefaultModule,
-} from '@taiga-ui/cdk';
+import {TuiActiveZoneModule, TuiLetModule, TuiMapperPipeModule} from '@taiga-ui/cdk';
 import {
     TuiDataListModule,
     TuiHostedDropdownModule,
@@ -36,7 +31,6 @@ import {TuiNativeMultiSelectGroupComponent} from './native-multi-select/native-m
         FormsModule,
         PolymorpheusModule,
         TuiWrapperModule,
-        TuiPreventDefaultModule,
         TuiActiveZoneModule,
         TuiArrowModule,
         TuiLetModule,
