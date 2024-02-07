@@ -26,8 +26,8 @@ describe('TuiDroppable Directive', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [],
-            declarations: [TestComponent, TuiDroppableDirective],
+            imports: [TuiDroppableDirective],
+            declarations: [TestComponent],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);

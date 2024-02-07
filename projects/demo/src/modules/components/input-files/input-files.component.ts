@@ -22,9 +22,6 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
 export class ExampleTuiInputFilesComponent extends AbstractExampleTuiControl {
     readonly exampleModule = import('./examples/import/import-module.md?raw');
     readonly exampleHtml = import('./examples/import/insert-template.md?raw');
-    readonly nativeInputInsideInputFiles = import(
-        './examples/import/native-input-inside-input-files.md?raw'
-    );
 
     readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
@@ -60,8 +57,6 @@ export class ExampleTuiInputFilesComponent extends AbstractExampleTuiControl {
     readonly control = new FormControl<TuiFileLike | null>(null);
     readonly multipleControl = new FormControl<TuiFileLike[] | null>(null);
 
-    link = 'Choose a file';
-    label = 'or drop\u00A0it\u00A0here';
     multiple = true;
     showSize = true;
     showDelete: boolean | 'always' = true;
@@ -77,12 +72,9 @@ export class ExampleTuiInputFilesComponent extends AbstractExampleTuiControl {
     ];
 
     readonly showDeleteVariants: Array<boolean | 'always'> = [true, false, 'always'];
-    readonly maxFileSizeVariants = [100, 512000, 30 * 1000 * 1000, 2.2 * 1000 * 1000];
     override readonly sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
 
     override size = this.sizeVariants[0];
-    rejectedFiles: TuiFileLike[] = [];
-    maxFileSize = this.maxFileSizeVariants[2];
 
     removeFile(file: TuiFileLike): void {
         this.multipleControl.setValue(
@@ -91,21 +83,7 @@ export class ExampleTuiInputFilesComponent extends AbstractExampleTuiControl {
         );
     }
 
-    removeRejected(file: TuiFileLike): void {
-        this.rejectedFiles = this.rejectedFiles.filter(
-            rejectedFile => rejectedFile.name !== file.name,
-        );
-    }
-
-    updateRejected(file: TuiFileLike | readonly TuiFileLike[]): void {
-        this.rejectedFiles = [
-            ...this.rejectedFiles,
-            ...(Array.isArray(file) ? file : [file]),
-        ];
-    }
-
     multipleChange(multiple: boolean): void {
-        this.rejectedFiles = [];
         this.control.setValue(null);
         this.multiple = multiple;
     }

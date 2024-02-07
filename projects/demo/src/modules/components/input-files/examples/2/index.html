@@ -1,10 +1,13 @@
-<tui-input-files
-    accept="image/*"
+<label
+    tuiInputFiles
     [formControl]="control"
-    [multiple]="true"
-    (ngModelChange)="control.markAsTouched()"
-    (reject)="onReject($event)"
-></tui-input-files>
+>
+    <input
+        accept="image/*"
+        tuiInputFiles
+        [multiple]="true"
+    />
+</label>
 
 <tui-files class="tui-space_top-1">
     <tui-file

@@ -1,51 +1,41 @@
-import {Directive, ElementRef, forwardRef, HostBinding, Inject} from '@angular/core';
-import {TuiIdService} from '@taiga-ui/cdk';
+import {Directive, ElementRef, forwardRef, inject} from '@angular/core';
+import {
+    TuiAppearanceDirective,
+    TuiAppearanceOptions,
+    tuiAppearanceOptionsProvider,
+} from '@taiga-ui/core';
 
 import {TuiInputFilesComponent} from './input-files.component';
-import {TUI_INPUT_FILES_OPTIONS, TuiInputFilesOptions} from './input-files.options';
 
 @Directive({
+    standalone: true,
     selector: 'input[tuiInputFiles]',
+    providers: [tuiAppearanceOptionsProvider(forwardRef(() => TuiInputFilesDirective))],
     host: {
         type: 'file',
         class: 't-native',
+        '[disabled]': 'host.computedDisabled',
+        '(click)': 'onClick($event)',
     },
+    hostDirectives: [
+        {
+            directive: TuiAppearanceDirective,
+            inputs: [
+                'tuiAppearance: appearance',
+                'tuiAppearanceState',
+                'tuiAppearanceFocus',
+            ],
+        },
+    ],
 })
-export class TuiInputFilesDirective {
-    constructor(
-        @Inject(forwardRef(() => TuiInputFilesComponent))
-        readonly host: TuiInputFilesComponent,
-        @Inject(ElementRef) private readonly el: ElementRef<HTMLInputElement>,
-        @Inject(TuiIdService) private readonly idService: TuiIdService,
-        @Inject(TUI_INPUT_FILES_OPTIONS) private readonly options: TuiInputFilesOptions,
-    ) {}
+export class TuiInputFilesDirective implements TuiAppearanceOptions {
+    readonly appearance = 'file';
+    readonly host = inject(forwardRef(() => TuiInputFilesComponent));
+    readonly input: HTMLInputElement = inject(ElementRef).nativeElement;
 
-    @HostBinding('tabIndex')
-    get tabIndex(): number {
-        return this.host.focusable ? 0 : -1;
-    }
-
-    @HostBinding('id')
-    get id(): string {
-        return this.el.nativeElement.id || this.idService.generate();
-    }
-
-    @HostBinding('accept')
-    get accept(): string {
-        return this.el.nativeElement.accept ?? this.options.accepts;
-    }
-
-    @HostBinding('multiple')
-    get multiple(): boolean {
-        return this.el.nativeElement.multiple ?? this.options.multiple;
-    }
-
-    @HostBinding('attr.capture')
-    get capture(): string | null {
-        return this.el.nativeElement.getAttribute('capture') ?? this.options.capture;
-    }
-
-    get input(): HTMLInputElement {
-        return this.el.nativeElement;
+    onClick(event: MouseEvent): void {
+        if (this.input.readOnly) {
+            event.preventDefault();
+        }
     }
 }

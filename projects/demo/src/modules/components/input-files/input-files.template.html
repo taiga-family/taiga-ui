@@ -63,16 +63,13 @@
 
     <ng-template pageTab>
         <tui-doc-demo>
-            <tui-input-files
+            <label
+                tuiInputFiles
                 [focusable]="focusable"
                 [formControl]="multiple ? multipleControl : control"
-                [label]="label"
-                [link]="link"
-                [maxFileSize]="maxFileSize"
                 [pseudoActive]="pseudoPressed"
                 [pseudoFocus]="pseudoFocused"
                 [pseudoHover]="pseudoHovered"
-                (reject)="updateRejected($event); documentationPropertyReject.emitEvent($event)"
             >
                 <input
                     tuiInputFiles
@@ -80,7 +77,7 @@
                     [attr.capture]="capture"
                     [multiple]="multiple"
                 />
-            </tui-input-files>
+            </label>
             <tui-files
                 class="tui-space_top-2"
                 [max]="maxFilesCount"
@@ -107,21 +104,10 @@
                             [showDelete]="showDelete"
                             [showSize]="showSize"
                             [size]="size"
+                            (removed)="control.setValue(null); documentationPropertyRemoved.emitEvent($event)"
                         ></tui-file>
                     </ng-container>
                 </ng-template>
-
-                <ng-container *ngFor="let file of rejectedFiles">
-                    <tui-file
-                        *tuiItem
-                        state="error"
-                        [file]="file"
-                        [showDelete]="showDelete"
-                        [showSize]="showSize"
-                        [size]="size"
-                        (removed)="removeRejected(file)"
-                    ></tui-file>
-                </ng-container>
             </tui-files>
         </tui-doc-demo>
         <tui-doc-documentation heading="TuiInputFiles">
@@ -134,45 +120,6 @@
                 <code>formControl.disable()</code>
                 )
             </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="label"
-                documentationPropertyType="string"
-                [(documentationPropertyValue)]="label"
-            >
-                Label text
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="link"
-                documentationPropertyType="string"
-                [(documentationPropertyValue)]="link"
-            >
-                Link text
-            </ng-template>
-
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="maxFileSize"
-                documentationPropertyType="number"
-                [documentationPropertyValues]="maxFileSizeVariants"
-                [(documentationPropertyValue)]="maxFileSize"
-            >
-                Max file size in bytes (30 MB by default — 30 * 1000 * 1000)
-            </ng-template>
-            <ng-template
-                #documentationPropertyReject="documentationProperty"
-                documentationPropertyMode="output"
-                documentationPropertyName="reject"
-                documentationPropertyType="TuiFileLike"
-            >
-                Emits file that was rejected.
-            </ng-template>
-        </tui-doc-documentation>
-
-        <tui-doc-documentation heading="Native <input> inside TuiInputFiles">
-            <tui-doc-code [code]="nativeInputInsideInputFiles"></tui-doc-code>
-
             <ng-template
                 documentationPropertyMode="input"
                 documentationPropertyName="accept"
@@ -277,11 +224,7 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                <p>
-                    Import
-                    <code>TuiInputFilesModule</code>
-                    into a module where you want to use our component
-                </p>
+                <p>Add an import:</p>
 
                 <tui-doc-code
                     filename="my.module.ts"

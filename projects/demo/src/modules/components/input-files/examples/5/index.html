@@ -1,7 +1,9 @@
-<tui-input-files
+<label
+    tuiInputFiles
     class="control"
     [formControl]="control"
 >
+    <input tuiInputFiles />
     <ng-template let-dragged>
         <div
             *ngIf="dragged; else base"
@@ -26,7 +28,7 @@
             </div>
         </ng-template>
     </ng-template>
-</tui-input-files>
+</label>
 
 <tui-files>
     <tui-file

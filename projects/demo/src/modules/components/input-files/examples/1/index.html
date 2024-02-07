@@ -1,9 +1,13 @@
-<tui-input-files
+<label
     *ngIf="!control.value"
-    accept="image/*"
+    tuiInputFiles
     [formControl]="control"
-    (reject)="onReject($event)"
-></tui-input-files>
+>
+    <input
+        accept="image/*"
+        tuiInputFiles
+    />
+</label>
 
 <tui-files class="tui-space_top-1">
     <tui-file

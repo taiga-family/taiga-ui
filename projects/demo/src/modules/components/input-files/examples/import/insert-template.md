@@ -1,5 +1,15 @@
 ```html
-<tui-input-files [formControl]="control"></tui-input-files>
+<label
+  tuiInputFiles
+  [formControl]="control"
+>
+  <input
+    tuiInputFiles
+    [accept]="accept"
+    [attr.capture]="capture"
+    [multiple]="multiple"
+  />
+</label>
 
 <tui-files>
   <tui-file

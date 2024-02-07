@@ -1,5 +1,6 @@
-<tui-input-files
+<label
     *ngIf="!control.value"
+    tuiInputFiles
     [formControl]="control"
 >
     <input
@@ -8,7 +9,7 @@
         title="Choose files (no limits)"
         tuiInputFiles
     />
-</tui-input-files>
+</label>
 
 <tui-files class="tui-space_top-1">
     <tui-file

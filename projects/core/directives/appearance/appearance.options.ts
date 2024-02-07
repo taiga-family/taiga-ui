@@ -1,4 +1,4 @@
-import {InjectionToken, Provider} from '@angular/core';
+import {Provider, ProviderToken} from '@angular/core';
 import {tuiCreateToken} from '@taiga-ui/cdk';
 
 export interface TuiAppearanceOptions {
@@ -12,7 +12,7 @@ export const TUI_APPEARANCE_DEFAULT_OPTIONS: TuiAppearanceOptions = {
 export const TUI_APPEARANCE_OPTIONS = tuiCreateToken(TUI_APPEARANCE_DEFAULT_OPTIONS);
 
 export function tuiAppearanceOptionsProvider(
-    useExisting: InjectionToken<TuiAppearanceOptions>,
+    useExisting: ProviderToken<TuiAppearanceOptions>,
 ): Provider {
     return {provide: TUI_APPEARANCE_OPTIONS, useExisting};
 }
