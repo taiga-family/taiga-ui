@@ -37,7 +37,7 @@ export class TuiDropdownPositionDirective extends TuiPositionAccessor {
 
         const hostRect = this.accessor?.getClientRect() ?? EMPTY_CLIENT_RECT;
         const viewportRect = this.viewport.getClientRect();
-        const {minHeight, align, direction, offset} = this.options;
+        const {minHeight, align, direction, offset, limitWidth} = this.options;
         const viewport = {
             top: viewportRect.top - offset,
             bottom: viewportRect.bottom + offset,
@@ -49,7 +49,10 @@ export class TuiDropdownPositionDirective extends TuiPositionAccessor {
             top: hostRect.top - 2 * offset - viewport.top,
             bottom: viewport.bottom - hostRect.bottom - 2 * offset,
         } as const;
-        const right = Math.max(hostRect.right - width, offset);
+        const right = Math.max(
+            hostRect.right - (limitWidth === 'fixed' ? hostRect.width : width),
+            offset,
+        );
         const left = hostRect.left + width < viewport.right ? hostRect.left : right;
         const position = {
             top: hostRect.top - offset - height,
