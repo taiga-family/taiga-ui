@@ -5,9 +5,7 @@ export function isTS(fileName: string): boolean {
 }
 
 export function isLess(fileName: string): boolean {
-    return (
-        fileName === TUI_EXAMPLE_PRIMARY_FILE_NAME.LESS || `${fileName}`.endsWith('.less')
-    );
+    return fileName === TUI_EXAMPLE_PRIMARY_FILE_NAME.LESS || fileName.endsWith('.less');
 }
 
 export function isPrimaryComponentFile(fileName: string): boolean {

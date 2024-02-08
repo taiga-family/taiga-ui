@@ -23,7 +23,7 @@ function getAllModules(entryPoint: Record<string, unknown>, names: Set<string>):
         return modules;
     }, [] as string[]);
 
-    return `${modules.join(',\n\t\t')}`;
+    return modules.join(',\n\t\t');
 }
 
 export const prepareLess = (content: string): string =>
