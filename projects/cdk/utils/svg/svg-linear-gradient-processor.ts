@@ -18,29 +18,6 @@ function extractLinearGradientIdsFromSvg(svg: string): string[] {
 }
 
 /**
- * TODO: remove in v4.0
- * @deprecated
- */
-function setFallbackForGradientFill(svg: string, fallback: string): string {
-    try {
-        const tree = new DOMParser().parseFromString(svg, 'text/html');
-
-        tree.body
-            .querySelectorAll('[fill^=url]') // only gradient
-            .forEach(element =>
-                element.setAttribute(
-                    'fill',
-                    `${element.getAttribute('fill')} ${fallback}`.trim(),
-                ),
-            );
-
-        return tree.body.innerHTML.trim();
-    } catch {
-        return svg;
-    }
-}
-
-/**
  * @description:
  * Any ‘linearGradient’ attributes which are defined on the referenced
  * element which are not defined on this element are inherited by this element.
@@ -57,15 +34,11 @@ function setFallbackForGradientFill(svg: string, fallback: string): string {
 export function tuiSvgLinearGradientProcessor(
     svg: TuiSafeHtml,
     salt: number | string = makeRandomSalt(),
-    /**
-     * TODO: remove in v4.0
-     * @deprecated
-     */
-    fallback = 'rgba(0, 0, 0, 0.7)',
 ): TuiSafeHtml {
     if (tuiIsString(svg)) {
         const uniqueIds = extractLinearGradientIdsFromSvg(svg);
-        const rawSvg = uniqueIds.reduce((newSvg, previousId) => {
+
+        return uniqueIds.reduce((newSvg, previousId) => {
             const escapedId = escapeRegExp(previousId);
             const newId = `id_${salt}_${previousId}`;
 
@@ -76,8 +49,6 @@ export function tuiSvgLinearGradientProcessor(
                 .replace(new RegExp(`url\\("#${escapedId}"\\)`, 'g'), `url("#${newId}")`)
                 .replace(new RegExp(`url\\(#${escapedId}\\)`, 'g'), `url(#${newId})`);
         }, svg);
-
-        return setFallbackForGradientFill(rawSvg, fallback);
     }
 
     return svg;
