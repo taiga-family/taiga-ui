@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {TuiMapperPipeModule, TuiPreventDefaultModule} from '@taiga-ui/cdk';
+import {TuiMapperPipeModule} from '@taiga-ui/cdk';
 import {
     TuiHostedDropdownModule,
     TuiPrimitiveTextfieldModule,
@@ -21,7 +21,6 @@ import {TuiInputMonthDirective} from './input-month.directive';
         TuiHostedDropdownModule,
         TuiPrimitiveTextfieldModule,
         TuiSvgModule,
-        TuiPreventDefaultModule,
         TuiMapperPipeModule,
         TuiTextfieldControllerModule,
         FormsModule,

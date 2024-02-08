@@ -39,13 +39,13 @@
 
     <ng-template #dropdown>
         <tui-calendar-month
-            tuiPreventDefault="mousedown"
             [disabledItemHandler]="disabledItemHandler"
             [max]="computedMax"
             [min]="computedMin"
             [value]="value"
             [year]="computedDefaultActiveYear"
             (monthClick)="onMonthClick($event)"
+            (mousedown.prevent.silent)="(0)"
             (yearChange)="activeYear = $event"
         ></tui-calendar-month>
     </ng-template>

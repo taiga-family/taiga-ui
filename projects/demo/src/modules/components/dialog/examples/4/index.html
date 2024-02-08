@@ -13,10 +13,10 @@
     <button
         *ngIf="!filters"
         tuiButton
-        tuiPreventDefault="touchmove"
         type="button"
         class="portal"
         (click)="onFilterClick()"
+        (touchmove.prevent.silent)="(0)"
     >
         Filters
     </button>

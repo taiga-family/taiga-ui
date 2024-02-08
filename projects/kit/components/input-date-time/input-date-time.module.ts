@@ -1,7 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
-import {TuiPreventDefaultModule} from '@taiga-ui/cdk';
 import {
     TuiCalendarModule,
     TuiHostedDropdownModule,
@@ -25,7 +24,6 @@ import {TuiNativeDateTimeDirective} from './native-date-time/native-date-time.di
         MaskitoDirective,
         PolymorpheusModule,
         TuiWrapperModule,
-        TuiPreventDefaultModule,
         TuiCalendarModule,
         TuiSvgModule,
         TuiLinkModule,

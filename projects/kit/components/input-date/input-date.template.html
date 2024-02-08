@@ -54,7 +54,6 @@
     >
         <tui-calendar
             automation-id="tui-input-date__calendar"
-            tuiPreventDefault="mousedown"
             [disabledItemHandler]="disabledItemHandler"
             [markerHandler]="markerHandler"
             [max]="computedMax"
@@ -63,11 +62,12 @@
             [value]="value"
             (dayClick)="onDayClick($event)"
             (monthChange)="onMonthChange($event)"
+            (mousedown.prevent.silent)="(0)"
         ></tui-calendar>
         <div
             *ngIf="items.length === 1"
-            tuiPreventDefault="mousedown"
             class="t-button"
+            (mousedown.prevent.silent)="(0)"
         >
             <button
                 tuiLink

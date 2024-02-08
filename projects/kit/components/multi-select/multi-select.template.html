@@ -63,10 +63,10 @@
         <div
             appearance="icon"
             automation-id="tui-multi-select__arrow"
-            tuiPreventDefault="mousedown"
             tuiWrapper
             class="t-arrow"
             [class.t-arrow_native-dropdown]="nativeDropdownMode"
+            (mousedown.prevent.silent)="(0)"
         >
             <ng-container *polymorpheusOutlet="arrow as text">
                 {{ text }}
