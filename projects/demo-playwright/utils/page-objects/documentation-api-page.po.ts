@@ -9,8 +9,12 @@ export class TuiDocumentationApiPagePO {
 
     constructor(protected readonly page: Page) {
         page.on('request', request => this.pending.add(request));
-        page.on('requestfailed', request => this.pending.delete(request));
-        page.on('requestfinished', request => this.pending.delete(request));
+        page.on('requestfailed', request =>
+            setTimeout(() => this.pending.delete(request)),
+        );
+        page.on('requestfinished', request =>
+            setTimeout(() => this.pending.delete(request)),
+        );
     }
 
     /**
@@ -111,6 +115,7 @@ export class TuiDocumentationApiPagePO {
 
     async focusOnBody(): Promise<void> {
         await this.page.locator('body').click({position: {x: 0, y: 0}});
+        await this.page.waitForTimeout(300);
     }
 
     async getCleaner(select: Locator): Promise<Locator | null> {

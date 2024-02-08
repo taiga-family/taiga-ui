@@ -18,10 +18,9 @@ test.describe('InputTable', () => {
                 .nth(0)
                 .focus();
 
+            await page.waitForTimeout(300);
             await expect(example).toHaveScreenshot(`01-input_table__${index}_1.png`);
-
             await example.locator('th').nth(index).click();
-
             await expect(example).toHaveScreenshot(`01-input_table__${index}_2.png`);
 
             if (index > 0) {
@@ -33,6 +32,7 @@ test.describe('InputTable', () => {
                     .nth(0)
                     .focus();
 
+                await page.waitForTimeout(300);
                 await expect(example).toHaveScreenshot(`01-input_table__${index}_3.png`);
             }
         }
