@@ -85,7 +85,7 @@ jobs:
         run: tree ${{ env.PLAYWRIGHT_SNAPSHOTS_PATH }}
 
       - name: Upload artifacts / ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}
-        uses: actions/upload-artifact@v4.3.0
+        uses: actions/upload-artifact@v4.3.1
         with:
           path: ./projects/demo-playwright/tests-results/**/*.diff.png
           name: '${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}_${{ matrix.shardIndex }}'
@@ -103,7 +103,7 @@ jobs:
 
       - name: Download artifacts / ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}
         continue-on-error: true
-        uses: actions/download-artifact@v4.1.1
+        uses: actions/download-artifact@v4.1.2
         with:
           path: ./total/playwright
           pattern: ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}_*
