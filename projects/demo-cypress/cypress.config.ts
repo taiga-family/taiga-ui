@@ -46,5 +46,6 @@ export default defineConfig({
         supportFile: 'src/support/component.ts',
         indexHtmlFile: 'src/support/component-index.html',
         specPattern: 'src/tests/**/*.cy.ts',
+        experimentalSingleTabRunMode: true,
     },
 });
