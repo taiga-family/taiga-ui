@@ -1,10 +1,4 @@
-import {
-    TuiDay,
-    TuiDayLike,
-    TuiDayRange,
-    tuiObjectFromEntries,
-    TuiTypedMapper,
-} from '@taiga-ui/cdk';
+import {TuiDay, TuiDayLike, TuiDayRange, TuiTypedMapper} from '@taiga-ui/cdk';
 
 export const MAX_DAY_RANGE_LENGTH_MAPPER: TuiTypedMapper<
     [TuiDay, TuiDayRange | null, TuiDayLike | null, boolean],
@@ -14,7 +8,7 @@ export const MAX_DAY_RANGE_LENGTH_MAPPER: TuiTypedMapper<
         return min;
     }
 
-    const negativeMaxLength = tuiObjectFromEntries(
+    const negativeMaxLength = Object.fromEntries(
         Object.entries(maxLength).map(([key, value]) => [key, -value]),
     );
 
