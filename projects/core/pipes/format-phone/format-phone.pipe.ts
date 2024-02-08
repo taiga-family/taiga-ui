@@ -14,8 +14,8 @@ export class TuiFormatPhonePipe implements PipeTransform {
      */
     transform(
         value: string,
-        countryCode: string = `${CHAR_PLUS}7`,
-        phoneMask: string = '(###) ###-##-##',
+        countryCode = `${CHAR_PLUS}7`,
+        phoneMask = '(###) ###-##-##',
     ): string {
         ngDevMode &&
             tuiAssert.assert(

@@ -6,7 +6,7 @@
  */
 export function tuiGetScrollParent(
     element: Element | null,
-    vertical: boolean = true,
+    vertical = true,
 ): Element | null {
     if (element === null) {
         return null;

@@ -11,7 +11,7 @@ import {
 
 export function tuiSmartSearch<T>(
     getSearchFunction: (search: string) => Observable<readonly T[] | readonly T[][]>,
-    searchDebounceTimeMs: number = 400,
+    searchDebounceTimeMs = 400,
 ): OperatorFunction<string, readonly T[] | readonly T[][] | null> {
     return source =>
         source.pipe(

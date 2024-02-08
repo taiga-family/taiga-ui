@@ -62,7 +62,7 @@ export class TuiDocumentationApiPagePO {
         }
     }
 
-    async prepareBeforeScreenshot(hasNot: string = ''): Promise<void> {
+    async prepareBeforeScreenshot(hasNot = ''): Promise<void> {
         await this.hideDocumentation();
         await this.hideScrollControls();
         await this.hideNavigation();

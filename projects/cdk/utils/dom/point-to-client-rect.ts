@@ -1,4 +1,4 @@
-export function tuiPointToClientRect(x: number = 0, y: number = 0): DOMRect {
+export function tuiPointToClientRect(x = 0, y = 0): DOMRect {
     const rect = {
         x,
         y,

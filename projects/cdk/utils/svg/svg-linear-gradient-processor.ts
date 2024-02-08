@@ -61,7 +61,7 @@ export function tuiSvgLinearGradientProcessor(
      * TODO: remove in v4.0
      * @deprecated
      */
-    fallback: string = 'rgba(0, 0, 0, 0.7)',
+    fallback = 'rgba(0, 0, 0, 0.7)',
 ): TuiSafeHtml {
     if (tuiIsString(svg)) {
         const uniqueIds = extractLinearGradientIdsFromSvg(svg);

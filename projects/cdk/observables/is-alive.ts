@@ -12,7 +12,7 @@ import {
 /**
  * Operator to set lifespan after which current value is considered obsolete
  */
-export function tuiIsAlive(lifespan: number = 0): OperatorFunction<unknown, boolean> {
+export function tuiIsAlive(lifespan = 0): OperatorFunction<unknown, boolean> {
     return pipe(
         switchMap(() => timer(lifespan).pipe(map(ALWAYS_FALSE_HANDLER), startWith(true))),
         distinctUntilChanged(),

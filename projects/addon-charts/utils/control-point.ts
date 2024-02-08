@@ -7,8 +7,8 @@ export function tuiControlPoint(
     current: TuiPoint,
     previous?: TuiPoint,
     next?: TuiPoint,
-    reverse: boolean = false,
-    smoothing: number = 0.2,
+    reverse = false,
+    smoothing = 0.2,
 ): TuiPoint {
     const p = previous || current;
     const n = next || current;

@@ -20,8 +20,8 @@ export class TuiTime implements TuiTimeLike {
     constructor(
         readonly hours: number,
         readonly minutes: number,
-        readonly seconds: number = 0,
-        readonly ms: number = 0,
+        readonly seconds = 0,
+        readonly ms = 0,
     ) {
         ngDevMode &&
             tuiAssert.assert(
@@ -37,12 +37,7 @@ export class TuiTime implements TuiTimeLike {
     /**
      * Checks if time is valid
      */
-    static isValidTime(
-        hours: number,
-        minutes: number,
-        seconds: number = 0,
-        ms: number = 0,
-    ): boolean {
+    static isValidTime(hours: number, minutes: number, seconds = 0, ms = 0): boolean {
         return (
             Number.isInteger(hours) &&
             tuiInRange(hours, 0, HOURS_IN_DAY) &&
@@ -193,7 +188,7 @@ export class TuiTime implements TuiTimeLike {
         );
     }
 
-    private formatTime(time: number, digits: number = 2): string {
+    private formatTime(time: number, digits = 2): string {
         return String(time).padStart(digits, '0');
     }
 }

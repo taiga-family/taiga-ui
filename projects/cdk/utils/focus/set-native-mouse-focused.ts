@@ -7,8 +7,8 @@
  */
 export function tuiSetNativeMouseFocused(
     element: Element & HTMLOrSVGElement,
-    focused: boolean = true,
-    preventScroll: boolean = false,
+    focused = true,
+    preventScroll = false,
 ): void {
     if (!element.ownerDocument) {
         return;

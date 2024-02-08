@@ -39,7 +39,7 @@ export class TuiProgressSegmentedComponent {
 
     constructor(@Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>) {}
 
-    getActiveColor(index: number = 0): string | null {
+    getActiveColor(index = 0): string | null {
         return tuiIsString(this.colors)
             ? this.colors
             : this.colors[index] || this.colors[this.colors.length - 1];

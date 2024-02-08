@@ -40,7 +40,7 @@ function decorateMethod(
 function decorateGetter(
     originalGetter: () => unknown,
     propertyKey: string | symbol,
-    enumerable: boolean = true,
+    enumerable = true,
 ): (this: object) => unknown {
     return function tuiPureGetterPatched(this: object): unknown {
         const value = originalGetter.call(this);

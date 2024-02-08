@@ -221,7 +221,7 @@ export class TuiDay extends TuiMonth {
      * @param startFromMonday whether week starts from Monday and not from Sunday
      * @return day of week (from 0 to 6)
      */
-    dayOfWeek(startFromMonday: boolean = true): number {
+    dayOfWeek(startFromMonday = true): number {
         const dayOfWeek = startFromMonday
             ? this.toLocalNativeDate().getDay() - 1
             : this.toLocalNativeDate().getDay();
@@ -366,7 +366,7 @@ export class TuiDay extends TuiMonth {
         }
     }
 
-    override toString(dateFormat: TuiDateMode = 'DMY', separator: string = '.'): string {
+    override toString(dateFormat: TuiDateMode = 'DMY', separator = '.'): string {
         return this.getFormattedDay(dateFormat, separator);
     }
 

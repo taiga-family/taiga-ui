@@ -19,7 +19,7 @@ function inspectArray(array: readonly unknown[], depth: number): string {
     return `[${result}]`;
 }
 
-function inspectObject(object: {[key: string]: unknown}, depth: number): string {
+function inspectObject(object: Record<string, unknown>, depth: number): string {
     if (depth === 0) {
         return '{…}';
     }
@@ -76,5 +76,5 @@ export function tuiInspectAny<T>(data: T, depth: number): string {
         return inspectArray(data, depth);
     }
 
-    return inspectObject(data as unknown as {[key: string]: unknown}, depth);
+    return inspectObject(data as unknown as Record<string, unknown>, depth);
 }

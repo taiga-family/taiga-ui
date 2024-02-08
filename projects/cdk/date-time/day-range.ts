@@ -97,10 +97,7 @@ export class TuiDayRange extends TuiMonthRange {
         return `${from}${RANGE_SEPARATOR_CHAR}${to}`;
     }
 
-    override toString(
-        dateFormat: TuiDateMode = 'DMY',
-        dateSeparator: string = '.',
-    ): string {
+    override toString(dateFormat: TuiDateMode = 'DMY', dateSeparator = '.'): string {
         return this.getFormattedDayRange(dateFormat, dateSeparator);
     }
 }

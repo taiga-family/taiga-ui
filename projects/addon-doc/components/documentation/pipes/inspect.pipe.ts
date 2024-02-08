@@ -6,7 +6,7 @@ import {TUI_IS_E2E} from '@taiga-ui/cdk';
 export class TuiInspectPipe implements PipeTransform {
     constructor(@Inject(TUI_IS_E2E) private readonly isE2E: boolean) {}
 
-    transform(value: unknown, depth: number = 2): string {
+    transform(value: unknown, depth = 2): string {
         if (this.isE2E && typeof value === 'function') {
             /**
              * @description:

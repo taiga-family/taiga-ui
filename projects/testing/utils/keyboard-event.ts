@@ -1,6 +1,6 @@
 export function tuiCreateKeyboardEvent(
     key: string,
-    eventType: string = 'keydown',
+    eventType = 'keydown',
 ): KeyboardEvent {
     const event = new KeyboardEvent(eventType, {bubbles: true});
 
