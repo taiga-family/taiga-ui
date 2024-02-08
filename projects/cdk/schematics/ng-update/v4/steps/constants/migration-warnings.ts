@@ -113,7 +113,7 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
     {
         name: 'tuiObjectFromEntries',
         moduleSpecifier: '@taiga-ui/cdk',
-        message: 'Use use Object.fromEntries instead',
+        message: 'Use Object.fromEntries instead',
     },
     {
         name: 'EMPTY_MASK',
