@@ -150,7 +150,7 @@
         "http-server": "14.1.1",
         "husky": "9.0.10",
         "kill-port": "2.0.1",
-        "lint-staged": "15.2.1",
+        "lint-staged": "15.2.2",
         "ng-packagr": "15.2.2",
         "nx": "17.2.8",
         "prettier": "3.2.5",
