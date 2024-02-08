@@ -1,6 +1,8 @@
-import {Directive, HostListener, Inject} from '@angular/core';
+import {Directive, HostBinding, HostListener, Inject} from '@angular/core';
 import {
     EMPTY_CLIENT_RECT,
+    TUI_IS_IOS,
+    TUI_TOUCH_SUPPORTED,
     TuiActiveZoneDirective,
     tuiPointToClientRect,
 } from '@taiga-ui/cdk';
@@ -17,6 +19,9 @@ function activeZoneFilter(this: TuiDropdownContextDirective, target: Element): b
     return !this.activeZone.contains(target);
 }
 
+const TAP_DELAY = 700;
+const MOVE_THRESHOLD = 15;
+
 @Directive({
     selector: '[tuiDropdown][tuiDropdownContext]',
     providers: [
@@ -29,14 +34,26 @@ export class TuiDropdownContextDirective extends TuiDriver implements TuiRectAcc
     private readonly stream$ = new Subject<boolean>();
 
     private currentRect = EMPTY_CLIENT_RECT;
+    private longTapTimeout: any = NaN;
 
     readonly type = 'dropdown';
 
     constructor(
         @Inject(TuiActiveZoneDirective)
         readonly activeZone: TuiActiveZoneDirective,
+        @Inject(TUI_IS_IOS)
+        readonly isIOS: boolean,
+        @Inject(TUI_TOUCH_SUPPORTED)
+        readonly isTouch: boolean,
     ) {
         super(subscriber => this.stream$.subscribe(subscriber));
+    }
+
+    @HostBinding('style.user-select')
+    @HostBinding('style.-webkit-touch-callout')
+    @HostBinding('style.-webkit-user-select')
+    get userSelect(): string | null {
+        return this.isTouch ? 'none' : null;
     }
 
     @HostListener('contextmenu.prevent.stop', ['$event.clientX', '$event.clientY'])
@@ -51,6 +68,45 @@ export class TuiDropdownContextDirective extends TuiDriver implements TuiRectAcc
     @HostListener('document:keydown.esc', ['$event.currentTarget'])
     closeDropdown(): void {
         this.stream$.next(false);
+        this.currentRect = EMPTY_CLIENT_RECT;
+    }
+
+    @HostListener('touchmove.silent.passive', [
+        '$event.touches[0].clientX',
+        '$event.touches[0].clientY',
+    ])
+    onTouchMove(x: number, y: number): void {
+        if (
+            this.isIOS &&
+            this.isTouch &&
+            this.currentRect !== EMPTY_CLIENT_RECT &&
+            Math.hypot(x - this.currentRect.x, y - this.currentRect.y) > MOVE_THRESHOLD
+        ) {
+            this.onTouchEnd();
+        }
+    }
+
+    @HostListener('touchstart.silent.passive', [
+        '$event.touches[0].clientX',
+        '$event.touches[0].clientY',
+    ])
+    onTouchStart(x: number, y: number): void {
+        if (!this.isIOS || !this.isTouch || this.currentRect !== EMPTY_CLIENT_RECT) {
+            return;
+        }
+
+        this.currentRect = tuiPointToClientRect(x, y);
+        this.longTapTimeout = setTimeout(() => {
+            this.stream$.next(true);
+        }, TAP_DELAY);
+    }
+
+    @HostListener('touchend.silent.passive')
+    @HostListener('touchcancel.silent.passive')
+    onTouchEnd(): void {
+        if (this.isIOS && this.isTouch) {
+            clearTimeout(this.longTapTimeout);
+        }
     }
 
     getClientRect(): ClientRect {
