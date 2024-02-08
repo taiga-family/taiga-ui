@@ -111,6 +111,11 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
         message: 'Use Date mask from Maskito instead https://maskito.dev/kit/date',
     },
     {
+        name: 'tuiObjectFromEntries',
+        moduleSpecifier: '@taiga-ui/cdk',
+        message: 'Use Object.fromEntries instead',
+    },
+    {
         name: 'EMPTY_MASK',
         moduleSpecifier: '@taiga-ui/kit',
         message:
