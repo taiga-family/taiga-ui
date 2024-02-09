@@ -2,13 +2,22 @@
     class="b-form"
     [formGroup]="testForm"
 >
-    <tui-input-date-time formControlName="testValue">
+    <tui-input-date-time
+        formControlName="testValue"
+        tuiUnfinishedValidator
+    >
         Choose date and time
         <input
             placeholder="OCT 26 1985 01:22"
             tuiTextfield
         />
     </tui-input-date-time>
+
+    <p>
+        If field is not required, but you want to mark it invalid if user did not complete it, use
+        <code>tuiUnfinishedValidator</code>
+        directive
+    </p>
 
     <p>Form value:</p>
 

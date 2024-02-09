@@ -78,7 +78,7 @@ export class TuiInputDateTimeComponent
         TuiWithOptionalMinMax<TuiDay | [TuiDay | null, TuiTime | null] | null>,
         TuiFocusableElementAccessor
 {
-    @ViewChild(TuiPrimitiveTextfieldComponent)
+    @ViewChild(TuiPrimitiveTextfieldComponent, {static: true})
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
     private month: TuiMonth | null = null;

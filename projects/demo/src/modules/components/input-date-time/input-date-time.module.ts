@@ -10,7 +10,7 @@ import {
     TuiNotificationModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiInputDateTimeModule} from '@taiga-ui/kit';
+import {TuiInputDateTimeModule, TuiUnfinishedValidatorModule} from '@taiga-ui/kit';
 
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
 import {TuiInputDateTimeExample1} from './examples/1';
@@ -34,6 +34,7 @@ import {ExampleTuiInputDateTimeComponent} from './input-date-time.component';
         TuiNotificationModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiInputDateTimeComponent)),
         TuiDropdownModule,
+        TuiUnfinishedValidatorModule,
     ],
     declarations: [
         ExampleTuiInputDateTimeComponent,

@@ -15,8 +15,11 @@ export function tuiCreateUnfinishedValidator(
         value,
     }: AbstractControl): {unfinished: TuiValidationError | string} | null => {
         const nativeInput = nativeInputGetter();
+        const emptyValue =
+            value === null ||
+            (Array.isArray(value) && value.some(value => value === null));
 
-        return value === null &&
+        return emptyValue &&
             nativeInput &&
             tuiIsHTMLElement(nativeInput.nativeFocusableElement) &&
             tuiIsInput(nativeInput.nativeFocusableElement) &&
