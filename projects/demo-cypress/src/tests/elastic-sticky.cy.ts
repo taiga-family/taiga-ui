@@ -1,10 +1,9 @@
-import {Component} from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import {TuiElasticStickyModule} from '@taiga-ui/addon-mobile';
 import {TuiRootModule, TuiScrollbarModule} from '@taiga-ui/core';
+import {createOutputSpy} from 'cypress/angular';
 
 describe('ElasticSticky', () => {
-    let component: TestComponent;
-
     @Component({
         template: `
             <tui-root>
@@ -16,7 +15,7 @@ describe('ElasticSticky', () => {
                     <div style="height: 50px">I'm header</div>
                     <div
                         style="position: sticky; height: 50px; top: 0"
-                        (tuiElasticSticky)="onElastic($event)"
+                        (tuiElasticSticky)="change.emit($event)"
                     >
                         I'm sticky
                     </div>
@@ -26,39 +25,26 @@ describe('ElasticSticky', () => {
         `,
     })
     class TestComponent {
-        activeItemIndex = 0;
-        offset = NaN;
-
-        onElastic(value: number): void {
-            this.offset = value;
-        }
+        @Output()
+        change = new EventEmitter<number>();
     }
 
     beforeEach(() =>
-        cy
-            .mount(TestComponent, {
-                imports: [TuiRootModule, TuiScrollbarModule, TuiElasticStickyModule],
-            })
-            .then(wrapper => {
-                component = wrapper.component;
-            }),
+        cy.mount(TestComponent, {
+            imports: [TuiRootModule, TuiScrollbarModule, TuiElasticStickyModule],
+            componentProperties: {
+                change: createOutputSpy<number>('changeSpy'),
+            },
+        }),
     );
 
-    it('callback is not triggered initially', () => {
-        void expect(Number.isNaN(component.offset)).to.true;
-    });
-
     it('callback is triggered with 0.5 when half of sticky would be hidden', () => {
-        cy.get('#scroll')
-            .then(query => query.get(0).scrollTo({top: 75}))
-            .then(() => cy.wait(300))
-            .then(() => expect(Number(component.offset.toFixed(1))).to.equal(0.5));
+        cy.get('#scroll').scrollTo(0, 75);
+        cy.get('@changeSpy').should('be.called').should('have.been.calledWithMatch', 0.5);
     });
 
     it('callback is triggered with 0 when sticky is fully hidden', () => {
-        cy.get('#scroll')
-            .then(query => query.get(0).scrollTo({top: 100}))
-            .then(() => cy.wait(300))
-            .then(() => expect(Number(component.offset.toFixed(1))).to.equal(0));
+        cy.get('#scroll').scrollTo(0, 100);
+        cy.get('@changeSpy').should('be.called').should('have.been.calledWithMatch', 0);
     });
 });
