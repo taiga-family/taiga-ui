@@ -2,7 +2,9 @@ import {AnimationOptions} from '@angular/animations';
 import {
     ChangeDetectionStrategy,
     Component,
+    ElementRef,
     HostBinding,
+    HostListener,
     Inject,
     Self,
 } from '@angular/core';
@@ -42,6 +44,8 @@ const REQUIRED_ERROR = new Error('Required dialog was dismissed');
 function toObservable<T>(valueOrStream: Observable<T> | T): Observable<T> {
     return isObservable(valueOrStream) ? valueOrStream : of(valueOrStream);
 }
+
+const ARROW_BUTTONS = new Set(['ArrowDown', 'ArrowUp', 'ArrowLeft', 'ArrowRight']);
 
 @Component({
     selector: 'tui-dialog',
@@ -85,6 +89,7 @@ export class TuiDialogComponent<O, I> {
         @Inject(TUI_DIALOGS_CLOSE) close$: Observable<unknown>,
         @Inject(TUI_CLOSE_WORD) readonly closeWord$: Observable<string>,
         @Inject(TUI_COMMON_ICONS) readonly icons: TuiCommonIcons,
+        @Inject(ElementRef) readonly elementRef: ElementRef<HTMLElement>,
     ) {
         merge(
             this.close$.pipe(switchMap(() => toObservable(context.closeable))),
@@ -117,6 +122,17 @@ export class TuiDialogComponent<O, I> {
 
     get fullscreen(): boolean {
         return !this.isMobile && (this.size === 'fullscreen' || this.size === 'page');
+    }
+
+    @HostListener('document:keydown', ['$event'])
+    preventBodyScrollByArrowKeydown(event: KeyboardEvent): void {
+        const preventScroll =
+            !this.elementRef.nativeElement.contains(event.target as HTMLElement) &&
+            ARROW_BUTTONS.has(event.key);
+
+        if (preventScroll) {
+            event.preventDefault();
+        }
     }
 
     private close(): void {
