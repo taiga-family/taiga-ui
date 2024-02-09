@@ -42,7 +42,7 @@ export function migratePreventDefault({
 
         recorder.insertRight(
             templateOffset + preventDefaultStart,
-            `(${event}.prevent)="0"`,
+            `(${event}.prevent.silent)="0"`,
         );
 
         recorder.remove(
