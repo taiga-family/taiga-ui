@@ -10,7 +10,7 @@ import {
     TuiCalendarModule,
     TuiDataListModule,
     TuiDropdownModule,
-    TuiGroupModule,
+    TuiGroupDirective,
     TuiHostedDropdownModule,
     TuiNotificationModule,
     TuiPrimitiveTextfieldModule,
@@ -61,7 +61,7 @@ import {TuiDataListExample6} from './examples/6';
         TuiInputModule,
         TuiInputDateRangeModule,
         TuiMoneyModule,
-        TuiGroupModule,
+        TuiGroupDirective,
     ],
     declarations: [
         ExampleTuiDataListComponent,

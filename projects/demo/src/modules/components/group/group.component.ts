@@ -36,7 +36,6 @@ export class ExampleTuiGroupComponent {
         LESS: import('./examples/4/index.less?raw'),
     };
 
-    adaptive = false;
     rounded = true;
     collapsed = false;
 

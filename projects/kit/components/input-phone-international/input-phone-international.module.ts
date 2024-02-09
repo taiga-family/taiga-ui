@@ -5,7 +5,7 @@ import {TuiActiveZoneModule, TuiLetModule, TuiMapperPipeModule} from '@taiga-ui/
 import {
     TuiDataListModule,
     TuiFlagPipeModule,
-    TuiGroupModule,
+    TuiGroupDirective,
     TuiHintModule,
     TuiHostedDropdownModule,
     TuiPrimitiveTextfieldModule,
@@ -26,7 +26,7 @@ import {TuiInputPhoneInternationalComponent} from './input-phone-international.c
         PolymorpheusModule,
         TuiSvgModule,
         TuiInputPhoneModule,
-        TuiGroupModule,
+        TuiGroupDirective,
         TuiPrimitiveTextfieldModule,
         TuiTextfieldControllerModule,
         TuiHintModule,

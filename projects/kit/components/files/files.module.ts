@@ -4,7 +4,7 @@ import {TuiFocusVisibleModule, TuiItemDirective, TuiItemModule} from '@taiga-ui/
 import {
     TuiButtonModule,
     TuiExpandModule,
-    TuiGroupModule,
+    TuiGroupDirective,
     TuiLoaderModule,
     TuiSvgModule,
 } from '@taiga-ui/core';
@@ -16,7 +16,7 @@ import {TuiFilesComponent} from './files.component';
 @NgModule({
     imports: [
         CommonModule,
-        TuiGroupModule,
+        TuiGroupDirective,
         TuiLoaderModule,
         PolymorpheusModule,
         TuiSvgModule,
