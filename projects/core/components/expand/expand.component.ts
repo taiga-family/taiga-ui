@@ -13,7 +13,7 @@ import {
     TemplateRef,
     ViewChild,
 } from '@angular/core';
-import {TuiDestroyService, TuiValuesOf} from '@taiga-ui/cdk';
+import {TuiDestroyService, TuiValuesOf, tuiWatch} from '@taiga-ui/cdk';
 import {TUI_PARENT_ANIMATION} from '@taiga-ui/core/animations';
 import {TUI_EXPAND_LOADED} from '@taiga-ui/core/constants';
 import {Observable, takeUntil, timer} from 'rxjs';
@@ -117,7 +117,7 @@ export class TuiExpandComponent {
         return this.expanded || this.state !== State.Idle;
     }
 
-    @HostListener('transitionend.self', ['$event'])
+    @HostListener('transitionend', ['$event'])
     onTransitionEnd({propertyName}: TransitionEvent): void {
         if (propertyName === 'opacity' && this.state === State.Animated) {
             this.state = State.Idle;
@@ -137,7 +137,7 @@ export class TuiExpandComponent {
         this.state = State.Prepared;
 
         timer(0)
-            .pipe(takeUntil(this.destroy$))
+            .pipe(tuiWatch(this.cdr), takeUntil(this.destroy$))
             .subscribe(() => {
                 // We need delay to re-trigger CSS height transition from the correct number
                 if (this.state !== State.Prepared) {
@@ -145,7 +145,6 @@ export class TuiExpandComponent {
                 }
 
                 this.state = state;
-                this.cdr.markForCheck();
             });
     }
 }

@@ -24,17 +24,40 @@ export class TuiTreeExample4 {
                     {
                         text: 'Another item',
                         children: [
-                            {text: 'Next level 1'},
-                            {text: 'Next level 2'},
-                            {text: 'Next level 3'},
+                            {
+                                text: 'Next level 1',
+                                children: [
+                                    {
+                                        text: 'Next level 1.1',
+                                    },
+                                    {
+                                        text: 'Next level 1.2',
+                                    },
+                                ],
+                            },
+                            {
+                                text: 'Next level 2',
+                            },
+                            {
+                                text: 'Next level 3',
+                            },
                         ],
                     },
                 ],
             },
-            {text: 'Top level 2'},
+            {
+                text: 'Top level 2',
+            },
             {
                 text: 'Top level 3',
-                children: [{text: 'Test 1'}, {text: 'Test 2'}],
+                children: [
+                    {
+                        text: 'Test 1',
+                    },
+                    {
+                        text: 'Test 2',
+                    },
+                ],
             },
         ],
     };
