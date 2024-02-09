@@ -1,53 +1,36 @@
-import {Directive, HostBinding, Inject, Input} from '@angular/core';
-import {TuiDirectiveStylesService} from '@taiga-ui/cdk';
+import {Directive, HostBinding, inject, Input} from '@angular/core';
+import {tuiWithStyles} from '@taiga-ui/cdk';
 import {TuiOrientation, TuiSizeL} from '@taiga-ui/core/types';
 
-import {TuiGroupStylesComponent} from './group-styles.component';
+import {TuiGroupComponent} from './group.component';
+import {TUI_GROUP_OPTIONS} from './group.options';
 
 @Directive({
+    standalone: true,
     selector: '[tuiGroup]:not(ng-container)',
     host: {
         class: 'tui-group',
         role: 'group',
+        '[class.tui-group_orientation_horizontal]': 'orientation === "horizontal"',
+        '[class.tui-group_orientation_vertical]': 'orientation === "vertical"',
+        '[class.tui-group_radius_large]': 'size === "l"',
     },
 })
 export class TuiGroupDirective {
-    @Input()
-    orientation: TuiOrientation = 'horizontal';
+    private readonly options = inject(TUI_GROUP_OPTIONS);
+    protected readonly nothing = tuiWithStyles(TuiGroupComponent);
 
     @Input()
-    @HostBinding('class.tui-group_adaptive')
-    adaptive = false;
+    orientation: TuiOrientation = this.options.orientation;
 
     @Input()
     @HostBinding('class.tui-group_collapsed')
-    collapsed = false;
+    collapsed = this.options.collapsed;
 
     @Input()
     @HostBinding('class.tui-group_rounded')
-    rounded = true;
+    rounded = this.options.rounded;
 
     @Input()
-    size: TuiSizeL = 'm';
-
-    constructor(
-        @Inject(TuiDirectiveStylesService) directiveStyles: TuiDirectiveStylesService,
-    ) {
-        directiveStyles.addComponent(TuiGroupStylesComponent);
-    }
-
-    @HostBinding('class.tui-group_orientation_horizontal')
-    get orientationHorizontal(): boolean {
-        return this.orientation === 'horizontal';
-    }
-
-    @HostBinding('class.tui-group_orientation_vertical')
-    get orientationVertical(): boolean {
-        return this.orientation === 'vertical';
-    }
-
-    @HostBinding('class.tui-group_radius_large')
-    get sizeLarge(): boolean {
-        return this.size === 'l';
-    }
+    size: TuiSizeL = this.options.size;
 }

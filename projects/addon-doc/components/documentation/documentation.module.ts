@@ -6,7 +6,7 @@ import {TuiFilterPipeModule} from '@taiga-ui/cdk';
 import {
     TuiDataListModule,
     TuiDropdownModule,
-    TuiGroupModule,
+    TuiGroupDirective,
     TuiLinkModule,
     TuiModeModule,
     TuiNotificationModule,
@@ -44,7 +44,7 @@ import {TuiDocTypeReferencePipe} from './pipes/type-reference.pipe';
         TuiLinkModule,
         TuiInputNumberModule,
         TuiModeModule,
-        TuiGroupModule,
+        TuiGroupDirective,
         TuiInputOpacityModule,
         TuiPrimitiveTextfieldModule,
         TuiTextfieldControllerModule,

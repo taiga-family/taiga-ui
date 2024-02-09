@@ -1,6 +1,7 @@
 import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/core';
 
 @Component({
+    standalone: true,
     host: {
         class: 'tui-group-styles',
     },
@@ -9,4 +10,4 @@ import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/co
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiGroupStylesComponent {}
+export class TuiGroupComponent {}

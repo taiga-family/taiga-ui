@@ -7,7 +7,7 @@ import {
     TuiButtonModule,
     TuiDataListModule,
     TuiDropdownModule,
-    TuiGroupModule,
+    TuiGroupDirective,
     TuiHostedDropdownModule,
     TuiNotificationModule,
     TuiSvgModule,
@@ -27,7 +27,7 @@ import {ExampleTuiItemsWithMoreComponent} from './items-with-more.component';
     imports: [
         CommonModule,
         FormsModule,
-        TuiGroupModule,
+        TuiGroupDirective,
         TuiTagModule,
         TuiNotificationModule,
         TuiItemsWithMoreModule,

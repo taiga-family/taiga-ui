@@ -12,7 +12,7 @@ import {
 } from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
-    TuiGroupModule,
+    TuiGroupDirective,
     TuiLinkModule,
     TuiLoaderModule,
     TuiSvgModule,
@@ -45,7 +45,7 @@ import {TuiMaxSizeRejectionErrorPipe} from './max-size-rejection-error.pipe';
         TuiLinkModule,
         TuiLoaderModule,
         TuiButtonModule,
-        TuiGroupModule,
+        TuiGroupDirective,
         TuiFilesModule,
     ],
     declarations: [

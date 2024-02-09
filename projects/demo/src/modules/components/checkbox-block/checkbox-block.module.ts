@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
-import {TuiButtonModule, TuiGroupModule, TuiTooltipModule} from '@taiga-ui/core';
+import {TuiButtonModule, TuiGroupDirective, TuiTooltipModule} from '@taiga-ui/core';
 import {TuiAvatarModule, TuiCheckboxBlockModule, TuiRadioListModule} from '@taiga-ui/kit';
 
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
@@ -17,7 +17,7 @@ import {TuiCheckboxBlockExample3} from './examples/3';
         CommonModule,
         FormsModule,
         TuiCheckboxBlockModule,
-        TuiGroupModule,
+        TuiGroupDirective,
         TuiAddonDocModule,
         InheritedDocumentationModule,
         ReactiveFormsModule,

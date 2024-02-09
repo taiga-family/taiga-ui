@@ -7,7 +7,7 @@ import {
     TuiButtonModule,
     TuiDataListModule,
     TuiDropdownModule,
-    TuiGroupModule,
+    TuiGroupDirective,
     TuiLinkModule,
     TuiSvgModule,
 } from '@taiga-ui/core';
@@ -34,7 +34,7 @@ import {TopRightDirective} from './examples/5/accessor';
         FormsModule,
         TuiInputModule,
         TuiButtonModule,
-        TuiGroupModule,
+        TuiGroupDirective,
         TuiSvgModule,
         TuiLinkModule,
         TuiSelectModule,

@@ -5,15 +5,15 @@ import {RouterModule} from '@angular/router';
 import {TuiCurrencyPipeModule} from '@taiga-ui/addon-commerce';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
-    TuiButtonModule,
     TuiDataListModule,
     TuiErrorModule,
-    TuiGroupModule,
+    TuiGroupDirective,
     TuiHintModule,
     TuiLinkModule,
     TuiModeModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
+import {TuiButtonModule} from '@taiga-ui/experimental';
 import {
     TuiBadgeDirective,
     TuiComboBoxModule,
@@ -41,7 +41,7 @@ import {ExampleTuiGroupComponent} from './group.component';
         TuiBadgeDirective,
         TuiButtonModule,
         TuiSelectModule,
-        TuiGroupModule,
+        TuiGroupDirective,
         TuiInputModule,
         TuiErrorModule,
         TuiFieldErrorPipeModule,
