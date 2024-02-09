@@ -14,10 +14,14 @@ import {
 // TODO: Add cleanup with DestroyRef in Angular 16+ and replace service with just a map from a token
 export function tuiWithStyles(component: Type<unknown>): void {
     const map = inject(TuiDirectiveStylesService).map;
-    const environmentInjector = inject(EnvironmentInjector);
 
     if (!map.has(component)) {
-        map.set(component, createComponent(component, {environmentInjector}));
+        map.set(
+            component,
+            createComponent(component, {
+                environmentInjector: inject(EnvironmentInjector),
+            }),
+        );
     }
 }
 
