@@ -17,7 +17,7 @@ export class TsFileModuleParser extends TsFileParser {
 
     hasDeclarationEntity(entity: string): boolean {
         const [, declarations = ''] =
-            this.rawFileContent.match(/(?:declarations:\s\[)(.*)(?:\])/i) || [];
+            /(?:declarations:\s\[)(.*)(?:\])/i.exec(this.rawFileContent) || [];
 
         return declarations.includes(entity);
     }

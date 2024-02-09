@@ -86,7 +86,7 @@ function insertPolymorpheusWithDefault({
     let templateVarName = templateVar?.name;
 
     if (templateVarName?.startsWith('let-')) {
-        templateVarName = template.match(new RegExp(templateVarName, 'i'))?.[0];
+        templateVarName = new RegExp(templateVarName, 'i').exec(template)?.[0];
     }
 
     const varName = templateVarName?.replace('let-', '');

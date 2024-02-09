@@ -120,7 +120,7 @@ export class ExampleTuiComboBoxComponent extends AbstractExampleTuiControl {
 
     readonly stringifyVariants: Array<TuiStringHandler<Account | string>> = [
         TUI_DEFAULT_STRINGIFY,
-        item => String(String(item).match(/\d+/)),
+        item => String(/\d+/.exec(String(item))),
     ];
 
     stringify = this.stringifyVariants[0];

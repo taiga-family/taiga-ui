@@ -21,8 +21,8 @@ export function tuiTypeReferenceParser(types: string): TuiDocTypeReferenceParsed
             .replace(/\[\]/g, '');
 
         extracted =
-            extracted.match(/ReadonlyArray<([^>]+)>/)?.[1]?.split('&')?.[0] ?? extracted;
-        extracted = extracted.match(/\[([^\]]+)\]/)?.[1]?.split(',')?.[0] ?? extracted;
+            /ReadonlyArray<([^>]+)>/.exec(extracted)?.[1]?.split('&')?.[0] ?? extracted;
+        extracted = /\[([^\]]+)\]/.exec(extracted)?.[1]?.split(',')?.[0] ?? extracted;
         extracted = (extracted.split('<')?.[0] ?? extracted)?.trim() ?? '';
         extracted = Number.isNaN(parseFloat(extracted)) ? extracted : 'number';
         extracted = /^'(.+)'$|^"(.+)"$|^`(.+)`$/.test(extracted) ? 'string' : extracted;

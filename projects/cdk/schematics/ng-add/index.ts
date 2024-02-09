@@ -63,7 +63,7 @@ function addAngularCdkDep(tree: Tree): void {
         return;
     }
 
-    const majorVersionArr = angularCore.match(/[0-9]+/);
+    const majorVersionArr = /[0-9]+/.exec(angularCore);
 
     if (majorVersionArr) {
         addPackageJsonDependency(tree, {
