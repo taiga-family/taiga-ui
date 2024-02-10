@@ -154,7 +154,7 @@
         "ng-packagr": "15.2.2",
         "nx": "17.2.8",
         "prettier": "3.2.5",
-        "rollup": "4.9.6",
+        "rollup": "4.10.0",
         "standard-version": "9.5.0",
         "stylelint": "16.2.1",
         "ts-loader": "9.5.1",
