@@ -5,9 +5,9 @@
     display: block;
     width: fit-content;
     min-width: fit-content;
-    font-size: 1rem;
     color: var(--tui-support-12);
     cursor: pointer;
+    font-size: 1rem;
     user-select: none;
 
     &._readonly {
@@ -15,17 +15,17 @@
     }
 
     &._disabled {
-        pointer-events: none;
         opacity: var(--tui-disabled-opacity);
+        pointer-events: none;
     }
 }
 
 .t-range {
     .fullsize();
 
-    opacity: 0;
     box-sizing: border-box;
     padding: 0 0.75em;
+    opacity: 0;
     pointer-events: none;
 
     &:focus-visible + .t-items {
@@ -53,8 +53,8 @@
     position: relative;
     flex: 1 0 0;
     color: var(--tui-base-06);
-    transition-property: color, transform;
     transition-duration: var(--tui-duration);
+    transition-property: color, transform;
     transition-timing-function: ease-in-out, cubic-bezier(0.35, 1.5, 0.4, 2.5);
 
     &:first-child {
@@ -80,8 +80,8 @@
 
     width: 2.5em;
     height: 2.5em;
-    font-size: inherit;
     clip-path: inset(0 var(--t-cut) 0 0);
+    font-size: inherit;
 
     ::ng-deep > * {
         font-size: 1rem;
@@ -92,8 +92,8 @@
         top: 0;
         left: 0;
         display: none;
-        color: var(--tui-base-06);
         clip-path: inset(0 0 0 var(--t-cut));
+        color: var(--tui-base-06);
     }
 
     &_fraction {

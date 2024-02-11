@@ -32,12 +32,12 @@
     &__th {
         .text-overflow();
 
-        font: var(--tui-font-text-s);
-        padding: 0.5rem 1rem;
-        vertical-align: middle;
         height: 2.5rem;
-        color: var(--tui-text-02);
+        padding: 0.5rem 1rem;
         background: inherit;
+        color: var(--tui-text-02);
+        font: var(--tui-font-text-s);
+        vertical-align: middle;
 
         &_font-size_l,
         .tui-table_font-size_l & {
@@ -46,13 +46,13 @@
     }
 
     &__td {
-        font: var(--tui-font-text-m);
+        height: 3.4375rem;
         padding: 1rem 1rem 0.875rem;
+        background: inherit;
+        color: var(--tui-text-01);
+        font: var(--tui-font-text-m);
         vertical-align: top;
         word-wrap: break-word;
-        height: 3.4375rem;
-        color: var(--tui-text-01);
-        background: inherit;
 
         &_size_l,
         .tui-table_size_l & {
@@ -81,26 +81,26 @@
 
         .tui-table_size_l &:before {
             width: 1rem;
-            border-top-left-radius: 1rem;
             border-bottom-left-radius: 1rem;
+            border-top-left-radius: 1rem;
         }
 
         &_first:before,
         &_last:before {
-            content: '';
             position: absolute;
             top: 0;
             width: 0.75rem;
             height: 100%;
             background: inherit;
-            border-top-left-radius: 0.75rem;
             border-bottom-left-radius: 0.75rem;
+            border-top-left-radius: 0.75rem;
+            content: '';
         }
 
         &_first {
             position: relative;
-            padding-left: 0;
             overflow: visible;
+            padding-left: 0;
 
             &:before {
                 right: 100%;
@@ -109,8 +109,8 @@
 
         &_last {
             position: relative;
-            padding-right: 0;
             overflow: visible;
+            padding-right: 0;
 
             &:before {
                 left: 100%;
@@ -132,9 +132,9 @@
     }
 
     &__subtext {
-        font: var(--tui-font-text-s);
         margin: @space 0 0 0;
         color: var(--tui-text-03);
+        font: var(--tui-font-text-s);
     }
 
     &__sort {
@@ -144,8 +144,8 @@
         position: relative;
         display: inline-flex;
         align-items: center;
-        outline: none;
         cursor: pointer;
+        outline: none;
 
         &:hover {
             color: var(--tui-text-01);
@@ -164,10 +164,10 @@
         .center-top();
 
         left: 100%;
-        margin-left: (@space / 2);
         width: 1rem;
         height: 1rem;
         flex-shrink: 0;
+        margin-left: (@space / 2);
         opacity: 0;
 
         .tui-table__sort_active &,

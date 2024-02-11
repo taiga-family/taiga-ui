@@ -6,15 +6,15 @@
     position: relative;
     display: flex;
     height: 3rem;
+    box-sizing: border-box;
     align-items: center;
     justify-content: space-between;
     border: solid transparent;
     border-width: 0 0.375rem;
-    box-sizing: border-box;
+    background: var(--tui-base-01);
+    color: var(--tui-text-01);
     font: var(--tui-font-text-m);
     font-weight: bold;
-    color: var(--tui-text-01);
-    background: var(--tui-base-01);
 
     ::ng-deep [tuiButton][data-size='m'] {
         font-weight: normal;
@@ -27,9 +27,9 @@
 
     position: absolute;
     max-width: calc(100% - var(--sides, 0px));
+    box-sizing: border-box;
     flex: 1;
     padding: 0 0.375rem;
-    box-sizing: border-box;
-    text-align: center;
     color: var(--tui-text-01);
+    text-align: center;
 }

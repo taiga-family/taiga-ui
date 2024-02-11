@@ -17,17 +17,17 @@
 
     position: relative;
     display: flex;
-    flex-shrink: 0;
     height: 100%;
     box-sizing: border-box;
-    justify-content: space-between;
-    line-height: 1.5rem;
+    flex-shrink: 0;
     align-items: center;
-    white-space: nowrap;
-    cursor: pointer;
-    outline: none;
-    color: inherit;
+    justify-content: space-between;
     margin-left: var(--tui-tab-margin, 1.5rem);
+    color: inherit;
+    cursor: pointer;
+    line-height: 1.5rem;
+    outline: none;
+    white-space: nowrap;
 
     &:disabled {
         opacity: var(--tui-disabled-opacity);
@@ -35,9 +35,9 @@
     }
 
     &:not([data-mode])._active {
-        opacity: 1;
-        color: var(--tui-text-01);
         box-shadow: none;
+        color: var(--tui-text-01);
+        opacity: 1;
     }
 
     &[data-mode='onDark'] {
@@ -80,21 +80,21 @@
         flex-shrink: 0;
         justify-content: center;
         margin: 0;
-        text-transform: uppercase;
         color: var(--tui-base-09);
-        opacity: 0.5;
+        font-family: -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif;
         font-size: 0.875rem;
         font-weight: 500;
         letter-spacing: -0.008125rem;
-        font-family: -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif;
+        opacity: 0.5;
+        text-transform: uppercase;
 
         &:hover {
             box-shadow: none;
         }
 
         &._active {
-            opacity: 1;
             color: var(--tui-base-09);
+            opacity: 1;
         }
 
         & .t-highlight {
@@ -109,20 +109,20 @@
         justify-content: center;
         margin: 0;
         color: var(--tui-base-01);
-        opacity: 1;
+        font-family: -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif;
         font-size: 0.8125rem;
         font-weight: 500;
         letter-spacing: -0.005rem;
-        font-family: -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif;
+        opacity: 1;
 
         &:hover {
             box-shadow: none;
         }
 
         &._active {
+            color: var(--tui-link);
             font-size: 0.875rem;
             font-weight: 600;
-            color: var(--tui-link);
         }
 
         & .t-highlight {
@@ -150,23 +150,23 @@
 
 :host-context(tui-tabs[data-vertical]),
 :host-context([tuiTabs][data-vertical]) {
-    min-height: 2.75rem;
     height: auto;
-    white-space: normal;
+    min-height: 2.75rem;
+    padding: 0.25rem 1.25rem 0.25rem 0;
     margin: 0;
     text-align: left;
-    padding: 0.25rem 1.25rem 0.25rem 0;
+    white-space: normal;
 
     &:after {
         .transition(transform);
 
-        content: '';
         position: absolute;
         top: 0;
-        bottom: 0;
         right: 0;
+        bottom: 0;
         width: 2px;
         background: var(--tui-primary);
+        content: '';
         transform: scaleX(0);
         transform-origin: right;
     }
@@ -182,8 +182,8 @@
 
 :host-context(tui-tabs[data-vertical='right']),
 :host-context([tuiTabs][data-vertical='right']) {
-    text-align: right;
     padding: 0.25rem 0 0.25rem 1.25rem;
+    text-align: right;
 
     &:after {
         right: auto;

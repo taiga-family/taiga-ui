@@ -10,54 +10,54 @@
 :host {
     position: relative;
     display: flex;
+    overflow: hidden;
     flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
     border-radius: var(--tui-radius-m);
+    background: var(--tui-avatar-background, currentColor);
     color: var(--tui-secondary-active);
     text-align: center;
     text-transform: uppercase;
-    justify-content: center;
-    align-items: center;
-    background: var(--tui-avatar-background, currentColor);
     user-select: none;
-    overflow: hidden;
 
     &[data-size='xs'] {
-        font: var(--tui-font-text-s);
         width: @size-xs;
         height: @size-xs;
+        font: var(--tui-font-text-s);
     }
 
     &[data-size='s'] {
-        font: var(--tui-font-text-m);
         width: @size-s;
         height: @size-s;
+        font: var(--tui-font-text-m);
     }
 
     &[data-size='m'] {
-        font: var(--tui-font-text-l);
         width: @size-m;
         height: @size-m;
+        font: var(--tui-font-text-l);
     }
 
     &[data-size='l'] {
-        font: var(--tui-font-heading-5);
         width: @size-l;
         height: @size-l;
         border-radius: var(--tui-radius-xl);
+        font: var(--tui-font-heading-5);
     }
 
     &[data-size='xl'] {
-        font: var(--tui-font-heading-3);
         width: @size-xl;
         height: @size-xl;
         border-radius: var(--tui-radius-xl);
+        font: var(--tui-font-heading-3);
     }
 
     &[data-size='xxl'] {
-        font: var(--tui-font-heading-1);
         width: @size-xxl;
         height: @size-xxl;
         border-radius: var(--tui-radius-l);
+        font: var(--tui-font-heading-1);
     }
 
     &[new] {

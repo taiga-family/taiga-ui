@@ -1,6 +1,6 @@
 .text-basic() {
-    font: var(--tui-font-text-s);
     color: var(--tui-text-01);
+    font: var(--tui-font-text-s);
 }
 
 // TODO: 4.0 delete all deprecations below
@@ -158,17 +158,17 @@
 
 // deprecated
 .font_heading(@size, @line-height: normal) {
+    font-family: var(--tui-font-heading);
+    font-size: @size;
     font-weight: bold;
     line-height: @line-height;
-    font-size: @size;
-    font-family: var(--tui-font-heading);
 }
 
 // deprecated
 .font(@size, @line-height: 'none', @weight: normal, @color: 'none') {
-    font-weight: @weight;
-    font-size: @size;
     font-family: var(--tui-font-text);
+    font-size: @size;
+    font-weight: @weight;
 }
 
 // deprecated

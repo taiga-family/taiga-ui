@@ -4,9 +4,9 @@
     .text-basic();
 
     display: inline-block;
-    vertical-align: top;
     align-items: flex-start;
     border-radius: var(--tui-radius-m);
+    vertical-align: top;
 
     &[data-size='xs'] {
         font: var(--tui-font-text-xs);
@@ -26,12 +26,12 @@
 .t-wrapper {
     position: relative;
     display: flex;
-    align-items: inherit;
     box-sizing: border-box;
+    align-items: inherit;
+    padding: 0 1rem 0 0;
     border-radius: inherit;
     cursor: pointer;
     user-select: none;
-    padding: 0 1rem 0 0;
 
     :host[data-size='xs'] & {
         padding-right: 0.5rem;
@@ -92,10 +92,10 @@
 
 .t-label {
     display: flex;
-    flex-grow: 1;
-    align-self: flex-start;
-    align-items: center;
     overflow: hidden;
+    flex-grow: 1;
+    align-items: center;
+    align-self: flex-start;
 
     :host[data-size='xs'] & {
         min-height: var(--tui-height-xs);
@@ -114,8 +114,8 @@
     }
 
     :host._hidden_input & {
-        text-align: center;
         justify-content: center;
+        text-align: center;
     }
 }
 

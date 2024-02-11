@@ -6,10 +6,10 @@ tui-files {
     .t-files {
         position: relative;
         display: block;
+        overflow: hidden;
         width: 100%;
         height: 100%;
         border-radius: var(--tui-radius-m);
-        overflow: hidden;
     }
 
     .t-button {
@@ -18,8 +18,8 @@ tui-files {
         background: var(--tui-base-01);
 
         &_collapsed {
-            box-shadow: var(--tui-shadow-modal);
             margin-top: -1.5rem;
+            box-shadow: var(--tui-shadow-modal);
         }
     }
 

@@ -12,23 +12,23 @@
     align-items: center;
     overflow-x: scroll;
     overflow-y: hidden;
-    scroll-snap-type: x mandatory;
     perspective: 1px;
     perspective-origin: calc(100% + calc(1px * var(--tui-item-size) / 2) + var(--tui-actions-padding));
+    scroll-snap-type: x mandatory;
 }
 
 .t-content {
-    scroll-snap-align: start;
-    flex-shrink: 0;
     width: 100%;
+    flex-shrink: 0;
+    scroll-snap-align: start;
 }
 
 .t-actions {
     display: flex;
-    gap: calc(1px * var(--tui-action-gap));
-    padding: 0 1rem 0 var(--tui-actions-padding);
-    scroll-snap-align: start;
     align-items: center;
+    padding: 0 1rem 0 var(--tui-actions-padding);
+    gap: calc(1px * var(--tui-action-gap));
+    scroll-snap-align: start;
     transform-style: preserve-3d;
 
     ::ng-deep & > * {
@@ -44,7 +44,7 @@
         --t-scale: calc(1 / var(--t-factor));
         --t-translate: calc(1px * (1 - 1 / var(--t-factor)));
 
-        transform: ~'translate3d(calc(calc((-100% - calc(1px * var(--tui-action-gap))) * (@{i} - 1)) / var(--t-scale)), 0, var(--t-translate))';
         scale: var(--t-scale);
+        transform: ~'translate3d(calc(calc((-100% - calc(1px * var(--tui-action-gap))) * (@{i} - 1)) / var(--t-scale)), 0, var(--t-translate))';
     }
 }

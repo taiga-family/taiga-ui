@@ -18,32 +18,32 @@ tui-tabs[tuiMobileTabs],
             flex: 1;
             flex-shrink: 0;
             justify-content: center;
-            text-transform: uppercase;
             color: var(--tui-base-09);
-            opacity: 0.5;
+            font-family: -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif;
             font-size: 0.875rem;
             font-weight: 500;
             letter-spacing: -0.008125rem;
-            font-family: -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif;
+            opacity: 0.5;
+            text-transform: uppercase;
 
             &:hover {
                 box-shadow: none;
             }
 
             &._active {
-                opacity: 1;
                 color: var(--tui-base-09);
+                opacity: 1;
             }
         }
     }
 
     &[data-platform='ios'] {
+        overflow: visible;
         height: auto;
         border: 2px solid transparent;
         border-radius: 0.5625rem;
         background: var(--tui-clear);
         box-shadow: none;
-        overflow: visible;
 
         tui-underline {
             border-radius: 0.4375rem;
@@ -59,11 +59,11 @@ tui-tabs[tuiMobileTabs],
             flex-shrink: 0;
             justify-content: center;
             color: var(--tui-text-01);
-            opacity: 1;
+            font-family: -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif;
             font-size: 0.8125rem;
             font-weight: 600;
             letter-spacing: -0.005rem;
-            font-family: -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif;
+            opacity: 1;
 
             &:hover {
                 box-shadow: none;

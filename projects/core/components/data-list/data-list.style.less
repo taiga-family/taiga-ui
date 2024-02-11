@@ -6,10 +6,10 @@ tui-data-list {
     --tui-data-list-margin: 0.0625rem;
 
     display: flex;
-    font: var(--tui-font-text-m);
     flex-direction: column;
     padding: calc(var(--tui-data-list-padding) - var(--tui-data-list-margin)) var(--tui-data-list-padding);
     color: var(--tui-text-03);
+    font: var(--tui-font-text-m);
 
     &:focus-within {
         .t-trap {
@@ -47,9 +47,9 @@ tui-data-list {
 tui-opt-group {
     position: relative;
     display: flex;
-    font: var(--tui-font-text-xs);
-    color: var(--tui-text-02);
     flex-direction: column;
+    color: var(--tui-text-02);
+    font: var(--tui-font-text-xs);
     line-height: 1rem;
 
     tui-data-list[data-list-size='l'] & {
@@ -57,13 +57,13 @@ tui-opt-group {
         line-height: 1.25rem;
 
         &:before {
-            padding-left: 0.625rem;
             padding-right: 0.625rem;
+            padding-left: 0.625rem;
         }
 
         &:after {
-            left: 0.625rem;
             right: 0.625rem;
+            left: 0.625rem;
         }
     }
 
@@ -73,18 +73,18 @@ tui-opt-group {
     }
 
     &:before {
-        content: attr(data-label);
         padding: var(--tui-data-list-padding) 0.5rem var(--tui-data-list-padding);
         margin: var(--tui-data-list-margin) 0;
+        content: attr(data-label);
         white-space: normal;
         word-break: break-word;
     }
 
     &:after {
         position: absolute;
-        left: 0.5rem;
-        right: 0.5rem;
         top: var(--tui-data-list-padding);
+        right: 0.5rem;
+        left: 0.5rem;
         height: 1px;
         background: var(--tui-base-03);
     }

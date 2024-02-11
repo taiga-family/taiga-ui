@@ -11,10 +11,10 @@
     display: block;
     height: @track-height;
     border-radius: var(--tui-radius-m);
+    margin: @extra-click-area-space 0;
     background: var(--tui-base-03);
     cursor: pointer;
     outline: none;
-    margin: @extra-click-area-space 0;
     touch-action: pan-x;
 
     &:active {
@@ -22,43 +22,42 @@
     }
 
     &:after {
-        content: '';
         position: absolute;
         top: -@extra-click-area-space;
         bottom: -@extra-click-area-space;
         width: 100%;
+        content: '';
     }
 
     &._disabled {
-        opacity: var(--tui-disabled-opacity);
         cursor: auto;
+        opacity: var(--tui-disabled-opacity);
     }
 }
 
 .track(@thumb-width) {
     position: relative;
-    margin: 0 (@thumb-width / 2);
     height: 100%;
+    margin: 0 (@thumb-width / 2);
 
     /* Filled selected range */
     &:before {
-        content: '';
         position: absolute;
         top: 0;
-        left: var(--left);
         right: var(--right);
+        left: var(--left);
         height: 100%;
-        background: var(--tui-primary);
         margin: 0 calc(-@thumb-width / 2 - @thumb-shift);
+        background: var(--tui-primary);
+        content: '';
     }
 
     /* Ticks */
     &:after {
         .fullsize(absolute, inset);
 
-        content: '';
-        left: ((@thumb-width - @tick-thickness) / 2);
         right: ((@thumb-width + @tick-thickness) / 2);
+        left: ((@thumb-width - @tick-thickness) / 2);
         background-image: repeating-linear-gradient(
             to right,
             var(--tui-base-06) 0 @tick-thickness,
@@ -67,6 +66,7 @@
         background-position-x: right;
         background-repeat: no-repeat;
         background-size: calc(100% * var(--bg-size-ratio));
+        content: '';
     }
 }
 
@@ -123,13 +123,13 @@
     .remove-track-background();
 
     position: absolute;
-    top: (@track-height / 2);
-    left: 0;
-    right: 0;
     z-index: 1;
-    transform: translate(0, -50%);
+    top: (@track-height / 2);
+    right: 0;
+    left: 0;
     // TODO: drop in v4.0 (it will be already done inside Slider)
     margin: 0; /* Drop browser default margins */
+    transform: translate(0, -50%);
 
     &:last-of-type {
         --tui-slider-thumb-transform: translateX(50%) translateX(@thumb-shift);

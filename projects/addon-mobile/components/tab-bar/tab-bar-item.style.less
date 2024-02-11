@@ -14,11 +14,11 @@
 
     position: relative;
     display: flex;
+    overflow: hidden;
     flex: 1 0;
-    font: inherit;
     flex-direction: column;
     align-items: center;
-    overflow: hidden;
+    font: inherit;
 }
 
 .t-icon {
@@ -40,16 +40,16 @@
 
 .t-badge {
     display: flex;
-    height: 1.125rem;
     min-width: 1.125rem;
+    height: 1.125rem;
+    box-sizing: border-box;
     align-items: center;
     justify-content: center;
     padding: 0 0.25rem;
     border-radius: 1rem;
-    font-size: 0.8125rem;
-    box-sizing: border-box;
-    color: var(--tui-base-01);
     background: var(--tui-error-fill);
+    color: var(--tui-base-01);
+    font-size: 0.8125rem;
 }
 
 .t-text {

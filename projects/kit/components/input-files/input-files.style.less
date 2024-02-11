@@ -9,8 +9,8 @@ tui-input-files {
     .t-native {
         .fullsize();
 
-        opacity: 0;
         cursor: pointer;
+        opacity: 0;
 
         &::-webkit-file-upload-button {
             display: none;
@@ -29,24 +29,24 @@ tui-input-files {
 
     .t-description {
         display: flex;
-        justify-content: center;
-        align-items: center;
         height: 100%;
         min-height: inherit;
-        padding: 1rem 0;
         box-sizing: border-box;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem 0;
     }
 }
 
 /* stylelint-disable order/order */
 [tuiWrapper][data-appearance='input-file'] {
-    background: transparent;
-    word-wrap: break-word;
-    color: var(--tui-text-02);
     min-height: inherit;
-    border-radius: inherit;
-    padding: 0 0.5rem;
     box-sizing: border-box;
+    padding: 0 0.5rem;
+    border-radius: inherit;
+    background: transparent;
+    color: var(--tui-text-02);
+    word-wrap: break-word;
 
     &:after {
         border: 1px dashed;

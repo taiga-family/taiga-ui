@@ -14,9 +14,9 @@
 .t-wrapper {
     display: inline-flex;
     max-width: 100%;
+    align-items: inherit;
     cursor: pointer;
     vertical-align: top;
-    align-items: inherit;
 
     :host._disabled & {
         cursor: default;
@@ -28,8 +28,8 @@
 }
 
 .t-content {
-    word-wrap: break-word;
     min-width: 0;
+    word-wrap: break-word;
 
     &_disabled {
         opacity: var(--tui-disabled-opacity);
@@ -40,7 +40,7 @@
     }
 
     :host[data-size='l'] & {
-        font: var(--tui-font-text-m);
         margin-left: 0.75rem;
+        font: var(--tui-font-text-m);
     }
 }

@@ -5,17 +5,17 @@
 
     position: relative;
     display: flex;
-    align-items: center;
     flex-shrink: 0;
-    color: var(--tui-link);
+    align-items: center;
     margin-right: 1.5rem;
-    outline: none;
-    cursor: pointer;
+    color: var(--tui-link);
     counter-increment: steps;
+    cursor: pointer;
+    outline: none;
 
     &:disabled {
-        pointer-events: none;
         color: var(--tui-base-07);
+        pointer-events: none;
     }
 
     &:hover {
@@ -33,14 +33,14 @@
     }
 
     &._focus-visible:before {
-        content: '';
         position: absolute;
-        left: 2.75rem;
-        right: 0;
         top: 50%;
+        right: 0;
+        left: 2.75rem;
         height: 1.5rem;
         margin-top: -0.75rem;
         background: var(--tui-selection);
+        content: '';
     }
 }
 
@@ -50,11 +50,11 @@
     display: flex;
     width: 2rem;
     height: 2rem;
-    border-radius: 100%;
-    margin-right: 0.75rem;
     flex-shrink: 0;
     align-items: center;
     justify-content: center;
+    border-radius: 100%;
+    margin-right: 0.75rem;
     background: var(--tui-secondary);
     color: var(--tui-link);
 
@@ -69,13 +69,13 @@
         }
 
         :host:hover & {
-            color: var(--tui-link-hover);
             background: var(--tui-secondary-hover);
+            color: var(--tui-link-hover);
         }
 
         :host._active & {
-            color: var(--tui-primary-text);
             background: var(--tui-primary);
+            color: var(--tui-primary-text);
         }
 
         :host:not([data-state='normal']):not(._active) &,
@@ -113,8 +113,8 @@
         }
 
         :host:hover & {
-            color: var(--tui-link-hover);
             background: var(--tui-secondary-hover);
+            color: var(--tui-link-hover);
         }
     }
 }

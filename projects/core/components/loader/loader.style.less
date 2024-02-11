@@ -3,11 +3,11 @@
 // Safari doesn't support rem units for all properties of `<circle />`.
 // `<circle />`'s wrapper has `font-size: 1rem` to use em units as rem ones interchangeably
 @circle-diameter: {
-    xs: 0.75em;
-    s: 1em;
-    m: 1.5em;
     l: 2.5em;
+    m: 1.5em;
+    s: 1em;
     xl: 3.5em;
+    xs: 0.75em;
     xxl: 5em;
 };
 
@@ -52,8 +52,8 @@
     min-width: 100%;
     height: 100%;
     padding: 0;
-    margin: 0;
     border: none;
+    margin: 0;
 
     &_has-overlay {
         opacity: 0.3;
@@ -68,17 +68,17 @@
     position: relative;
     left: -100%;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     min-width: 100%;
     min-height: var(--t-diameter);
+    flex-direction: column;
     flex-shrink: 0;
+    align-items: center;
     align-self: center;
-    color: var(--tui-text-01);
-    stroke: var(--tui-primary);
+    justify-content: center;
     animation: tuiFadeIn var(--tui-duration);
+    color: var(--tui-text-01);
     font-size: 1rem; // to use em units as rem ones interchangeably (Safari)
+    stroke: var(--tui-primary);
 
     &&_horizontal {
         flex-direction: row;
@@ -94,11 +94,11 @@
     .text-basic();
     .text-overflow();
 
+    max-width: 100%;
     margin-top: 1rem;
     color: inherit;
-    max-width: 100%;
-    text-align: center;
     stroke-width: 0; // for Safari 11
+    text-align: center;
 
     &_horizontal {
         margin: 0 0 0 @space * 4;
@@ -129,11 +129,11 @@
     });
 
     display: block;
+    overflow: hidden;
     width: var(--t-diameter);
     height: var(--t-diameter);
-    margin: @space calc(var(--t-diameter) / -2);
     border-radius: 100%;
-    overflow: hidden;
+    margin: @space calc(var(--t-diameter) / -2);
     animation: tuiLoaderRotate 4s linear infinite;
 }
 
@@ -155,11 +155,11 @@
 }
 
 .t-circle {
-    r: @radius;
-    stroke-dasharray: @circumference;
+    animation: tuiLoaderDashOffset 4s linear infinite;
     fill: none;
+    r: @radius;
     stroke: inherit;
+    stroke-dasharray: @circumference;
     // Use native CSS max function instead LESS one
     stroke-width: ~'max(var(--tui-thickness), 1.5px)';
-    animation: tuiLoaderDashOffset 4s linear infinite;
 }

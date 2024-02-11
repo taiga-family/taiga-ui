@@ -6,20 +6,20 @@
 
     position: relative;
     display: block;
-    height: 100%;
     width: 100%;
-    appearance: none;
+    height: 100%;
     border-radius: inherit;
+    appearance: none;
 
     &:after {
         .transition(~'box-shadow, color');
         .fullsize(absolute, inset);
 
-        content: '';
-        border-radius: inherit;
         border: 1px solid currentColor;
-        pointer-events: none;
+        border-radius: inherit;
         color: transparent;
+        content: '';
+        pointer-events: none;
     }
 
     .wrapper-focus({

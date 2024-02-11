@@ -5,19 +5,19 @@
     .transition(color);
 
     color: var(--tui-link);
+    cursor: pointer;
+    font-weight: inherit;
+    outline: none;
     text-align: left;
     text-transform: inherit;
-    font-weight: inherit;
-    cursor: pointer;
-    outline: none;
 
     &:hover {
         color: var(--tui-link-hover);
     }
 
     &:disabled {
-        opacity: var(--tui-disabled-opacity);
         cursor: default;
+        opacity: var(--tui-disabled-opacity);
     }
 
     &[data-mode='onLight'] {

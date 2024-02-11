@@ -14,12 +14,12 @@
     display: flex;
     width: 100%;
     height: 100%;
-    align-items: center;
     box-sizing: border-box;
-    outline: none;
-    font-weight: bold;
-    cursor: pointer;
+    align-items: center;
     border-color: inherit;
+    cursor: pointer;
+    font-weight: bold;
+    outline: none;
 
     &:focus-visible .t-name {
         background: var(--tui-selection);
@@ -27,11 +27,12 @@
 
     &:before,
     &:after {
-        content: '';
         position: sticky;
         height: 100%;
         border-left: 1px solid;
+        /* stylelint-disable-next-line */
         border-color: inherit;
+        content: '';
     }
 
     &:before {
@@ -47,19 +48,19 @@
     .transition(background);
 
     height: var(--tui-height-m);
-    font: var(--tui-font-text-s);
     padding: 0;
-    background: var(--tui-base-02);
-    border-bottom: 1px solid var(--tui-base-04);
     border-color: inherit;
+    border-bottom: 1px solid var(--tui-base-04);
+    background: var(--tui-base-02);
+    font: var(--tui-font-text-s);
 
     &:hover {
         background: var(--tui-base-03);
     }
 
     :host-context(table[data-size='l']) & {
-        font: var(--tui-font-text-m);
         height: var(--tui-height-l);
+        font: var(--tui-font-text-m);
     }
 }
 

@@ -3,8 +3,8 @@
 :host {
     position: relative;
     display: flex;
-    isolation: isolate;
     overflow: auto;
+    isolation: isolate;
 
     &:not(._legacy) {
         /* stylelint-disable*/
@@ -14,9 +14,9 @@
 
         &::-webkit-scrollbar,
         &::-webkit-scrollbar-thumb {
-            background: transparent;
             width: 0;
             height: 0;
+            background: transparent;
         }
     }
 
@@ -29,11 +29,11 @@
 }
 
 .t-content {
-    isolation: isolate;
-    flex: 1;
-    flex-basis: auto;
     width: 100%;
     height: max-content;
+    flex: 1;
+    flex-basis: auto;
+    isolation: isolate;
 }
 
 .t-bars {

@@ -84,7 +84,8 @@
     },
     "stylelint": {
         "extends": [
-            "@taiga-ui/stylelint-config"
+            "@taiga-ui/stylelint-config",
+            "stylelint-config-idiomatic-order"
         ],
         "rules": {
             "selector-class-pattern": "^(_.*)|(t-.*)|(tui-.*)|(ng-.*)|(hljs.*)$"
@@ -157,6 +158,7 @@
         "rollup": "4.10.0",
         "standard-version": "9.5.0",
         "stylelint": "16.2.1",
+        "stylelint-config-idiomatic-order": "10.0.0",
         "ts-loader": "9.5.1",
         "ts-mockito": "2.6.1",
         "ts-node": "10.9.2",

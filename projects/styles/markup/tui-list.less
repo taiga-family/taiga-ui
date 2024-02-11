@@ -1,7 +1,7 @@
 .tui-list {
+    color: var(--tui-text-01);
     font: var(--tui-font-text-m);
     list-style-type: none;
-    color: var(--tui-text-01);
 
     &_large {
         font: var(--tui-font-text-l);
@@ -33,22 +33,22 @@
     &__item {
         position: relative;
         padding-left: @space * 6;
-        word-wrap: break-word;
         margin-top: @space * 3;
+        word-wrap: break-word;
 
         &:first-child {
             margin-top: 0;
         }
 
         &:before {
-            content: '';
             position: absolute;
-            left: 0;
             top: 0.5rem;
+            left: 0;
             width: 0.5rem;
             height: 0.5rem;
             border-radius: 100%;
             background-color: var(--tui-primary);
+            content: '';
 
             .tui-list_large > & {
                 top: 0.625rem;
@@ -67,12 +67,12 @@
             padding-left: @space * 7;
 
             &:before {
-                content: '\2014';
-                left: 0;
                 top: auto;
+                left: 0;
                 width: auto;
                 height: auto;
                 background-color: transparent;
+                content: '\2014';
             }
         }
 
@@ -80,14 +80,14 @@
             padding-left: @space * 5;
 
             &:before {
-                content: counter(counter) '.';
-                left: 0;
                 top: auto;
-                counter-increment: counter;
+                left: 0;
                 width: auto;
                 height: auto;
-                color: var(--tui-text-03);
                 background-color: transparent;
+                color: var(--tui-text-03);
+                content: counter(counter) '.';
+                counter-increment: counter;
             }
         }
 
@@ -95,25 +95,25 @@
             padding-left: @space * 7;
 
             &:before {
-                content: '\25E4'; // represent symbol '◤'
-                left: 0;
                 top: 1px;
+                left: 0;
                 width: auto;
                 height: auto;
                 background-color: transparent;
                 color: var(--tui-base-06);
+                content: '\25E4'; // represent symbol '◤'
                 font-size: 0.75rem;
             }
         }
     }
 
     &__item-title {
-        font: var(--tui-font-heading-5);
         margin: 0;
+        font: var(--tui-font-heading-5);
 
         .tui-list_small & {
-            line-height: 1.25rem;
             font-weight: bold;
+            line-height: 1.25rem;
         }
     }
 
@@ -126,8 +126,8 @@
         }
 
         .tui-list_large & {
-            line-height: 1.75rem;
             margin-top: @space * 3;
+            line-height: 1.75rem;
         }
     }
 }

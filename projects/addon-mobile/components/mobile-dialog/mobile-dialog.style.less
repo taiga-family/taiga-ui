@@ -4,16 +4,16 @@
     .center-all();
 
     display: block;
-    background: var(--tui-base-01);
-    word-break: break-word;
     overflow: hidden;
     padding: 1.25rem 0.75rem 0 1.5rem;
+    background: var(--tui-base-01);
+    word-break: break-word;
 
     &:not(._ios) {
         max-width: 17.5rem;
         border-radius: 0.125rem;
-        text-align: left;
         box-shadow: 0 1.5rem 1.5rem 0 fade(#000, 32%);
+        text-align: left;
     }
 
     &._ios {
@@ -28,21 +28,21 @@
     font-size: 1rem;
 
     :host._ios & {
-        font-weight: bold;
         font-size: 1.125rem;
+        font-weight: bold;
     }
 }
 
 .t-content {
+    padding-right: 0.75rem;
     margin-top: 0.75rem;
     font-size: 0.875rem;
     line-height: 1.25rem;
-    padding-right: 0.75rem;
 
     :host._ios & {
-        margin-top: 0.25rem;
-        padding-left: 1.5rem;
         padding-right: 1.5rem;
+        padding-left: 1.5rem;
+        margin-top: 0.25rem;
     }
 }
 
@@ -50,9 +50,9 @@
     border-radius: 0;
 
     :host._ios & {
-        border-top: #b8b8b8 1px solid;
-        height: 2.625rem;
         width: 100%;
+        height: 2.625rem;
+        border-top: #b8b8b8 1px solid;
 
         &:first-of-type {
             margin-top: 1.125rem;
@@ -65,8 +65,8 @@
 
         &_column {
             display: block;
-            float: none;
             margin-left: auto;
+            float: none;
         }
     }
 }

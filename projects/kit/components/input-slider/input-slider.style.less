@@ -13,12 +13,12 @@ input[type='range'] {
 
     position: absolute;
     top: 100%;
-    left: @left-gap;
     right: 0;
+    left: @left-gap;
     width: calc(100% - @left-gap); // Double check Firefox if you want to set `width: auto`
-    box-sizing: border-box;
     height: 1rem;
+    box-sizing: border-box;
     margin: -0.5625rem 0 0;
-    border-top-left-radius: 0;
     border-bottom-left-radius: calc(var(--tui-radius-m) * 5) calc(var(--tui-radius-m) * 1.5);
+    border-top-left-radius: 0;
 }

@@ -11,13 +11,13 @@
 
     position: relative;
     display: inline-flex;
+    flex-shrink: 0;
     align-items: center;
     justify-content: center;
-    flex-shrink: 0;
     border-radius: 100%;
-    color: var(--tui-text-03);
     background-color: var(--tui-base-02);
     background-size: cover !important;
+    color: var(--tui-text-03);
     transition-property: color, background-color;
 
     &[data-size='xs'] {
@@ -111,58 +111,58 @@
     }
 
     &[data-mode='onDark']:not([data-marker-mode]) {
-        color: var(--tui-base-01);
         background-color: var(--tui-clear-inverse);
+        color: var(--tui-base-01);
     }
 
     &[data-marker-mode='primary'] {
-        color: var(--tui-primary-text);
         background-color: var(--tui-primary);
+        color: var(--tui-primary-text);
     }
 
     &[data-marker-mode='white'] {
-        color: var(--tui-text-03);
         background-color: var(--tui-base-01);
+        color: var(--tui-text-03);
     }
 
     &[data-marker-mode='warning'] {
-        color: var(--tui-warning-fill);
         background-color: var(--tui-warning-bg);
+        color: var(--tui-warning-fill);
     }
 
     &[data-marker-mode='secondary'] {
-        color: var(--tui-base-01);
         background-color: var(--tui-info-fill);
+        color: var(--tui-base-01);
     }
 
     &[data-marker-mode='error'] {
-        color: var(--tui-error-fill);
         background-color: var(--tui-error-bg);
+        color: var(--tui-error-fill);
     }
 
     &[data-marker-mode='success'] {
-        color: var(--tui-success-fill);
         background-color: var(--tui-success-bg);
+        color: var(--tui-success-fill);
     }
 
     &[data-marker-mode='link'] {
         .transition(color);
 
-        color: var(--tui-link);
         background-color: var(--tui-secondary);
+        color: var(--tui-link);
 
         a&,
         button& {
             cursor: pointer;
 
             &:hover {
-                color: var(--tui-link-hover);
                 background-color: var(--tui-secondary-hover);
+                color: var(--tui-link-hover);
             }
 
             &:active {
-                color: var(--tui-link-hover);
                 background-color: var(--tui-secondary-active);
+                color: var(--tui-link-hover);
             }
         }
     }

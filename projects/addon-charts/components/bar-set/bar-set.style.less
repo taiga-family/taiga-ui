@@ -8,8 +8,8 @@
 
 .t-wrapper {
     display: flex;
-    flex: 1;
     height: 100%;
+    flex: 1;
     align-items: flex-end;
 
     &:first-of-type {
@@ -25,13 +25,13 @@
     transform-origin: bottom center;
 
     &_negative {
-        transform: rotate(180deg);
         opacity: var(--tui-disabled-opacity);
+        transform: rotate(180deg);
     }
 
     &&_flexible {
-        max-width: none;
         width: 75%;
+        max-width: none;
         margin: 0 auto;
     }
 }
@@ -39,6 +39,6 @@
 .t-label {
     position: absolute;
     top: -1.5rem;
-    font: var(--tui-font-text-xs);
     color: var(--tui-text-02);
+    font: var(--tui-font-text-xs);
 }

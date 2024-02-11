@@ -8,11 +8,11 @@
 
     position: relative;
     display: flex;
-    align-items: center;
-    pointer-events: none;
-    cursor: pointer;
     height: var(--t-height);
+    align-items: center;
     color: var(--tui-text-03);
+    cursor: pointer;
+    pointer-events: none;
 
     &[data-size='s'] {
         --t-height: var(--tui-height-s);
@@ -30,15 +30,15 @@
         }
 
         &:before {
-            margin-inline-start: -0.25rem;
-            margin-inline-end: 0.5rem;
             font-size: 1rem;
+            margin-inline-end: 0.5rem;
+            margin-inline-start: -0.25rem;
         }
 
         &:after {
+            font-size: 1rem;
             margin-inline-end: -0.175rem;
             margin-inline-start: 0.25rem;
-            font-size: 1rem;
         }
 
         ::ng-deep input,
@@ -67,13 +67,13 @@
         }
 
         &:before {
-            margin-inline-start: -0.125rem;
             margin-inline-end: 0.375rem;
+            margin-inline-start: -0.125rem;
         }
 
         &:after {
-            margin-inline-start: 0.375rem;
             margin-inline-end: -0.125rem;
+            margin-inline-start: 0.375rem;
         }
 
         ::ng-deep input,
@@ -142,13 +142,13 @@
     ::ng-deep select {
         .fullsize();
 
-        appearance: none;
         box-sizing: border-box;
-        border: none;
-        border-inline-start: var(--t-left) solid transparent;
-        border-inline-end: calc(var(--t-right) + var(--t-side)) solid transparent;
-        border-radius: inherit;
         padding: inherit;
+        border: none;
+        border-radius: inherit;
+        appearance: none;
+        border-inline-end: calc(var(--t-right) + var(--t-side)) solid transparent;
+        border-inline-start: var(--t-left) solid transparent;
     }
 
     ::ng-deep input,
@@ -231,8 +231,8 @@
 }
 
 .t-filler {
-    pointer-events: none;
     background: none;
     color: var(--tui-text-03);
     opacity: 1;
+    pointer-events: none;
 }

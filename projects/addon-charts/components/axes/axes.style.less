@@ -6,8 +6,8 @@
 
 .t-wrapper {
     display: flex;
-    flex: 1;
     height: 100%;
+    flex: 1;
     flex-direction: column;
 }
 
@@ -15,8 +15,8 @@
     position: relative;
     display: flex;
     flex: 1;
-    justify-content: space-around;
     align-items: flex-end;
+    justify-content: space-around;
     border-width: 1px;
     border-color: var(--tui-base-03);
     isolation: isolate;
@@ -43,15 +43,15 @@
     display: flex;
 
     :host._centered &:after {
-        content: '';
         display: block;
         flex: 1 0 1px;
+        content: '';
     }
 }
 
 .t-line {
-    flex: 2 0 1px;
     box-sizing: border-box;
+    flex: 2 0 1px;
     border-width: 1px;
     border-color: var(--tui-base-03);
 
@@ -81,11 +81,11 @@
 }
 
 .t-name {
-    font: var(--tui-font-text-xs);
-    writing-mode: tb;
-    text-align: center;
     padding-left: 0.75rem;
     color: var(--tui-text-02);
+    font: var(--tui-font-text-xs);
+    text-align: center;
+    writing-mode: tb;
 
     &_primary {
         transform: rotate(180deg);
@@ -98,18 +98,18 @@
 
 .t-labels-y {
     display: flex;
-    font: var(--tui-font-text-xs);
     flex-direction: column-reverse;
     justify-content: space-between;
     color: var(--tui-text-02);
+    font: var(--tui-font-text-xs);
 
     :host[data-mode='onDark'] & {
         color: var(--tui-text-02-night);
     }
 
     &_primary {
-        text-align: right;
         padding-right: 0.75rem;
+        text-align: right;
     }
 
     &_secondary {
@@ -123,13 +123,13 @@
     &_inset {
         position: absolute;
         top: 0.5625rem;
-        left: 0.25rem;
         bottom: -0.75rem;
+        left: 0.25rem;
         pointer-events: none;
 
         &_secondary {
-            left: auto;
             right: 0.25rem;
+            left: auto;
             text-align: right;
         }
     }
@@ -137,15 +137,15 @@
 
 .t-labels-x {
     display: flex;
-    font: var(--tui-font-text-xs);
     border-right: 1px solid transparent;
     color: var(--tui-text-02);
+    font: var(--tui-font-text-xs);
 }
 
 .t-label-x {
     height: 0.4375rem;
-    border-left: 1px solid var(--tui-base-03);
     flex: 1;
+    border-left: 1px solid var(--tui-base-03);
     margin-bottom: 1.5625rem;
 
     :host[data-mode='onDark'] & {
@@ -157,9 +157,9 @@
     }
 
     &:before {
-        content: '';
         display: block;
         height: 0.5625rem;
+        content: '';
     }
 
     &_transparent {
@@ -168,16 +168,16 @@
 
     :host._centered & {
         height: 2rem;
-        text-align: center;
         border: none;
         margin: 0;
+        text-align: center;
     }
 
     :host[new]:not(._centered) & {
         &:last-child:not(:first-child) {
             flex: 0.5;
-            text-align: right;
             border-left: none;
+            text-align: right;
         }
 
         &:nth-last-child(2) {
@@ -199,9 +199,9 @@
 .t-content {
     position: absolute;
     top: 0;
-    left: -1px;
     right: 0;
     bottom: -1px;
+    left: -1px;
     display: flex;
     align-items: flex-end;
 }

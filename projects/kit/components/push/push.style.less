@@ -3,22 +3,22 @@
 :host {
     position: relative;
     display: block;
+    overflow: hidden;
     width: 22.5rem;
     max-width: 100%;
     box-sizing: border-box;
     padding: 1.25rem 1.25rem 0.25rem;
-    overflow: hidden;
-    font: var(--tui-font-text-m);
     border-radius: var(--tui-radius-xl);
     background: var(--tui-elevation-02);
     box-shadow: var(--tui-shadow);
+    font: var(--tui-font-text-m);
 }
 
 .t-image {
     display: flex;
-    flex-direction: column;
-    max-height: 10.625rem;
     overflow: hidden;
+    max-height: 10.625rem;
+    flex-direction: column;
     margin: -1.25rem -1.25rem 1.25rem;
 }
 
@@ -26,49 +26,48 @@
     position: absolute;
     top: 0.75rem;
     right: 0.75rem;
-    color: rgba(0, 0, 0, 0.54);
-    background: rgba(242, 242, 242, 0.32);
     backdrop-filter: blur(1rem);
+    background: rgba(242, 242, 242, 0.32);
+    color: rgba(0, 0, 0, 0.54);
 }
 
 .t-top {
     display: flex;
     align-items: center;
-    font: var(--tui-font-text-s);
     color: var(--tui-text-02);
+    font: var(--tui-font-text-s);
 }
 
 .t-icon {
     height: 1.25rem;
     margin-right: 0.5rem;
+    color: var(--tui-link);
     transform: scale(0.833);
     transform-origin: top left;
-    color: var(--tui-link);
 }
 
 .t-time:before {
-    content: '•';
     display: inline-block;
     width: 1rem;
+    content: '•';
     text-align: center;
 }
 
 .t-heading {
-    line-height: 1.25rem;
-    font-weight: bold;
     margin: 0.75rem 0 0.25rem;
+    font-weight: bold;
+    line-height: 1.25rem;
 }
 
 .t-heading,
 .t-content {
+    overflow: hidden;
     /* stylelint-disable-next-line */
     display: -webkit-box;
-
     /* autoprefixer: ignore next */
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
     word-break: break-word;
-    overflow: hidden;
 }
 
 .t-actions {

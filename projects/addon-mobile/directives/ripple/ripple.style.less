@@ -1,24 +1,24 @@
 @keyframes tuiRippleOn {
     from {
-        transform: scale(0);
         opacity: 0.12;
+        transform: scale(0);
     }
 
     to {
-        transform: none;
         opacity: 0.12;
+        transform: none;
     }
 }
 
 @keyframes tuiRippleOff {
     from {
-        transform: none;
         opacity: 0.12;
+        transform: none;
     }
 
     to {
-        transform: none;
         opacity: 0;
+        transform: none;
     }
 }
 
@@ -31,9 +31,9 @@
     position: absolute;
     z-index: 100;
     border-radius: 100%;
-    background: currentColor;
-    transform: scale(0);
     animation-duration: 450ms;
     animation-fill-mode: forwards;
+    background: currentColor;
     pointer-events: none;
+    transform: scale(0);
 }

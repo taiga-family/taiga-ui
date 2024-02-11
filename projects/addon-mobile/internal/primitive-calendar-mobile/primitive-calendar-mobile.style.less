@@ -53,8 +53,8 @@
     }
 
     &_today:after {
-        height: 0.375rem;
         width: 0.375rem;
+        height: 0.375rem;
         background-color: @accent;
     }
 
@@ -93,14 +93,14 @@
 
     &[data-range='start']:before {
         left: 50%;
-        border-top-left-radius: 0;
         border-bottom-left-radius: 0;
+        border-top-left-radius: 0;
     }
 
     &[data-range='end']:not(:first-child):before {
         left: 50%;
-        background: var(--tui-base-01);
         border-radius: 0;
+        background: var(--tui-base-01);
     }
 
     &[data-range='end']:first-child:before {

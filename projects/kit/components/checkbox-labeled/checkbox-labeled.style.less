@@ -26,10 +26,10 @@
 }
 
 .t-content {
+    min-width: 0;
     font: var(--tui-font-text-s);
     line-height: 1rem;
     word-wrap: break-word;
-    min-width: 0;
 
     &_disabled {
         opacity: var(--tui-disabled-opacity);
@@ -40,7 +40,7 @@
     }
 
     :host[data-size='l'] & {
-        font: var(--tui-font-text-m);
         margin-left: 0.75rem;
+        font: var(--tui-font-text-m);
     }
 }

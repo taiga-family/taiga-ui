@@ -32,8 +32,8 @@
     .transition(transform);
 
     position: absolute;
-    background-color: currentColor;
     border-radius: 100%;
+    background-color: currentColor;
     transform: scale(0);
 
     &_visible {
@@ -41,15 +41,15 @@
     }
 
     :host[data-size='m'] & {
-        margin: 0.25rem;
         width: @dotSizeM;
         height: @dotSizeM;
+        margin: 0.25rem;
     }
 
     :host[data-size='l'] & {
-        margin: 0.4375rem;
         width: @dotSizeL;
         height: @dotSizeL;
+        margin: 0.4375rem;
     }
 }
 
@@ -57,8 +57,8 @@
     .clearinput();
     .fullsize();
 
-    opacity: 0;
     cursor: pointer;
+    opacity: 0;
 
     :host._disabled & {
         cursor: default;

@@ -32,9 +32,9 @@
 // clearfix
 .clearfix() {
     &:after {
-        content: '';
         display: table;
         clear: both;
+        content: '';
     }
 }
 
@@ -50,15 +50,15 @@
     }
 
     & when (@mode = inset) {
-        bottom: 0;
         right: 0;
+        bottom: 0;
     }
 }
 
 .clearbtn() {
-    appearance: none;
     padding: 0;
     border: 0;
+    appearance: none;
     background: none;
     font-size: inherit;
     line-height: inherit;
@@ -70,14 +70,14 @@
 
     position: relative;
     display: inline-flex;
-    align-items: center;
-    flex-shrink: 0;
-    box-sizing: border-box;
-    white-space: nowrap;
     overflow: hidden;
-    vertical-align: middle;
     max-width: 100%;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    align-items: center;
     gap: calc(var(--t-gap) - 2 * var(--t-margin));
+    vertical-align: middle;
+    white-space: nowrap;
 
     > img,
     > tui-svg,
@@ -98,21 +98,21 @@
     &:-webkit-autofill,
     &:-webkit-autofill:hover,
     &:-webkit-autofill:focus {
-        caret-color: var(--tui-base-09);
         border-radius: inherit;
-        color: inherit !important;
         background-color: transparent !important;
+        caret-color: var(--tui-base-09);
+        color: inherit !important;
 
         & when (@mode = default) {
-            -webkit-text-fill-color: var(--tui-text-01) !important;
             border-color: var(--tui-autofill);
             -webkit-box-shadow: 0 0 0 100rem var(--tui-autofill) inset !important; // to overlay native background
+            -webkit-text-fill-color: var(--tui-text-01) !important;
         }
 
         & when (@mode = dark) {
-            -webkit-text-fill-color: var(--tui-text-01-night) !important;
             border-color: var(--tui-autofill-night);
             -webkit-box-shadow: 0 0 0 100rem var(--tui-autofill-night) inset !important;
+            -webkit-text-fill-color: var(--tui-text-01-night) !important;
         }
     }
 }
@@ -121,47 +121,45 @@
     .autofill(@mode);
 
     padding: 0;
-    margin: 0;
     border-width: 0;
     border-radius: inherit;
-    background: none;
-    font-size: inherit;
-    line-height: inherit;
-    font-weight: inherit;
-    color: inherit;
-    caret-color: currentColor;
-    outline: none;
+    margin: 0;
     appearance: none;
-    word-break: keep-all;
+    background: none;
+    caret-color: currentColor;
+    color: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    outline: none;
     -webkit-text-fill-color: currentColor; // for Safari
+    word-break: keep-all;
 }
 
 .visually-hidden() {
     position: absolute;
-    height: 1px;
-    width: 1px;
-    margin: -1px;
-    border: 0;
-    padding: 0;
     overflow: hidden;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    border: 0;
+    margin: -1px;
     clip: rect(0, 0, 0, 0);
     clip-path: inset(0);
 }
 
 .webkit-auto-fill-button-hidden() {
-    // hide: -webkit-caps-lock-indicator
-    content: none !important;
-
     // hide: -webkit-strong-password-auto-fill-button
     // because safari forcing set display as block
     position: absolute;
-    left: -62.4375rem;
-    top: -62.4375rem;
     z-index: -999;
-
+    top: -62.4375rem;
+    left: -62.4375rem;
     // hide: -webkit-contacts-auto-fill-button
     display: none !important;
     background: transparent !important;
+    // hide: -webkit-caps-lock-indicator
+    content: none !important;
     pointer-events: none !important;
 }
 
@@ -173,9 +171,9 @@
         &::-webkit-scrollbar-thumb {
             width: 1rem;
             height: 1rem;
+            border: 0.375rem solid transparent;
             border-radius: 6.25rem;
             background-clip: padding-box;
-            border: 0.375rem solid transparent;
         }
 
         &::-webkit-scrollbar {
@@ -287,8 +285,8 @@
 
 // transition
 .transition(@param: all, @speed: var(--tui-duration, 300ms)) {
-    transition-property: @param;
     transition-duration: @speed;
+    transition-property: @param;
     transition-timing-function: ease-in-out;
 }
 
@@ -299,8 +297,8 @@
 
     background-image: linear-gradient(to right, @color 0%, @color @percentage, transparent @percentage);
     background-position: 0 @alignment;
-    background-size: @size 1px;
     background-repeat: repeat-x;
+    background-size: @size 1px;
 }
 
 // typical opacity properties for icons
@@ -333,9 +331,9 @@
 
 // typical properties for text overflow with ellipsis
 .text-overflow(@type: nowrap) {
-    white-space: @type;
     overflow: hidden;
     text-overflow: ellipsis;
+    white-space: @type;
 }
 
 .text-overflow-with-fade(@color: var(--tui-base-01), @transparentColor: transparent, @width: 1.875rem) {
@@ -343,13 +341,13 @@
     overflow: hidden;
 
     &:after {
-        content: '';
         position: absolute;
         top: 0;
         right: 0;
         width: @width;
         height: 100%;
         background-image: linear-gradient(to right, @transparentColor 0%, @color 80%, @color 100%);
+        content: '';
         pointer-events: none;
     }
 }
@@ -399,8 +397,8 @@
 }
 
 .blurred-background(@color: #fff) {
-    background: fade(@color, 70%);
     backdrop-filter: blur(0.4375rem);
+    background: fade(@color, 70%);
 }
 
 .scrollbar-hidden() {
@@ -418,13 +416,13 @@
 // hide an element visually without hiding it from screen readers
 .sr-only() {
     position: absolute;
+    overflow: hidden;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
     clip: rect(1px, 1px, 1px, 1px);
     clip-path: inset(50%);
-    height: 1px;
-    width: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
 }
 
 .scroll-behavior(@mode: smooth) {

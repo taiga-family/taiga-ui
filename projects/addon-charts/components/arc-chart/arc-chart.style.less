@@ -10,12 +10,12 @@
     .fullsize(absolute, inset);
 
     overflow: visible;
-    fill: none;
-    stroke: currentColor;
-    stroke-linecap: round;
     color: var(--tui-secondary);
+    fill: none;
     font-size: 1rem;
     pointer-events: none;
+    stroke: currentColor;
+    stroke-linecap: round;
 }
 
 .t-value {
@@ -35,12 +35,12 @@
     .fullsize();
 
     display: flex;
-    justify-content: center;
     align-items: center;
-    text-align: center;
+    justify-content: center;
     color: var(--tui-text-02);
     font: var(--tui-font-text-xs);
     pointer-events: none;
+    text-align: center;
 
     :host[data-size='xl'] & {
         font: var(--tui-font-text-m);
@@ -71,13 +71,13 @@
 
 .t-percent {
     position: absolute;
-    left: 25%;
     bottom: 11%;
+    left: 25%;
     display: flex;
     width: 50%;
     justify-content: space-between;
-    font: var(--tui-font-text-xs);
     color: var(--tui-text-02);
+    font: var(--tui-font-text-xs);
 
     :host[data-size='xl'] & {
         font: var(--tui-font-text-m);

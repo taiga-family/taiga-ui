@@ -12,9 +12,9 @@
 :host {
     position: relative;
     display: inline-block;
-    vertical-align: middle;
     overflow: hidden;
     border-radius: 6.25rem;
+    vertical-align: middle;
 
     &[data-size='m'] {
         width: @width-m;
@@ -33,14 +33,14 @@
     position: absolute;
     top: 0;
     left: 0;
-    height: 100%;
     width: 100%;
-    opacity: 0;
+    height: 100%;
     cursor: pointer;
+    opacity: 0;
 
     :host._disabled & {
-        pointer-events: none;
         cursor: default;
+        pointer-events: none;
     }
 }
 
@@ -69,9 +69,9 @@
 }
 
 .t-circle {
-    margin: 0.125rem 0;
     flex-shrink: 0;
     border-radius: 100%;
+    margin: 0.125rem 0;
     background-color: var(--tui-base-01);
 
     :host._disabled &_light {
@@ -170,9 +170,9 @@
     }
 
     :host[data-size='l'] & {
-        margin: 0 (@space / 2);
         width: 1.5rem;
         height: 1.5rem;
+        margin: 0 (@space / 2);
     }
 
     :host:hover & {

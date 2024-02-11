@@ -9,8 +9,8 @@
 
 :host {
     display: block;
-    height: var(--tui-height-l);
     width: @width-full;
+    height: var(--tui-height-l);
     border-radius: var(--tui-radius-m);
 
     &[data-mode='onDark'] {
@@ -23,15 +23,15 @@
 }
 
 .t-outline {
-    height: 100%;
     width: 100%;
+    height: 100%;
 }
 
 .t-common-wrapper {
     position: relative;
-    height: 100%;
-    width: 100%;
     overflow: hidden;
+    width: 100%;
+    height: 100%;
 }
 
 .t-wrapper {
@@ -74,8 +74,8 @@
 .t-collapsed {
     .textfield-input();
 
-    border: 0;
     padding-left: 1rem;
+    border: 0;
     line-height: 2.25rem;
     pointer-events: none;
 
@@ -92,17 +92,17 @@
     position: absolute;
     top: 0;
     display: block;
+    overflow: hidden;
     width: 100%;
     height: 100%;
-    overflow: hidden;
 }
 
 .t-value {
     .transition(transform);
 
     position: absolute;
-    bottom: 0;
     right: 100%;
+    bottom: 0;
     display: block;
     transform: translate3d(100%, 0, 0);
 }
@@ -111,8 +111,8 @@
     .textfield-input();
     .transition(background);
 
-    border: 0;
     padding: 0 1rem;
+    border: 0;
 
     &::placeholder {
         color: var(--tui-text-03);
@@ -149,8 +149,8 @@
     position: absolute;
     right: 0.75rem;
     display: flex;
-    align-items: center;
     height: 100%;
+    align-items: center;
 }
 
 .t-icon-outlet {

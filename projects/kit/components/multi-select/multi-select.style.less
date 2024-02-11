@@ -25,9 +25,9 @@
 
 .t-content {
     display: flex;
+    box-sizing: border-box;
     align-items: center;
     pointer-events: none;
-    box-sizing: border-box;
 }
 
 .t-primitive {
@@ -35,8 +35,8 @@
 }
 
 .t-arrow {
-    pointer-events: auto;
     cursor: pointer;
+    pointer-events: auto;
 
     &_native-dropdown {
         pointer-events: none;

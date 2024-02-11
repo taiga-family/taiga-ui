@@ -7,8 +7,8 @@
     position: relative;
     z-index: 0;
     display: flex;
-    flex-direction: column;
     min-height: var(--tui-textarea-height);
+    flex-direction: column;
     border-radius: var(--tui-radius-m);
     color: var(--tui-text-01);
 
@@ -52,11 +52,11 @@
 
 .t-content {
     display: block;
-    margin-top: 0;
-    margin-bottom: 0;
+    overflow: hidden;
     min-height: inherit;
     box-sizing: border-box;
-    overflow: hidden;
+    margin-top: 0;
+    margin-bottom: 0;
     cursor: text;
 
     :host._disabled & {
@@ -67,9 +67,9 @@
     :host:not(._expandable) & {
         position: absolute;
         top: 0;
-        left: 0;
-        bottom: 1px;
         right: 0;
+        bottom: 1px;
+        left: 0;
         min-height: auto;
     }
 
@@ -112,8 +112,8 @@
 }
 
 .t-input-wrapper {
-    min-height: inherit;
     width: 100%;
+    min-height: inherit;
     flex: 1;
 }
 
@@ -124,8 +124,8 @@
 
 .t-box {
     display: flex;
-    min-height: calc(100% - 1rem);
     width: 100%;
+    min-height: calc(100% - 1rem);
 
     :host:not(._expandable) & {
         height: calc(100% - 1rem);
@@ -150,16 +150,16 @@
 }
 
 .t-pseudo-content {
-    white-space: pre-wrap;
-    word-wrap: break-word;
-    pointer-events: none;
-    color: transparent;
     overflow: hidden;
     border: solid transparent;
     border-top: 0;
     border-bottom: 0;
-    border-inline-start-width: var(--border-start, 0);
     border-inline-end-width: var(--border-end, 0);
+    border-inline-start-width: var(--border-start, 0);
+    color: transparent;
+    pointer-events: none;
+    white-space: pre-wrap;
+    word-wrap: break-word;
 
     :host[data-size='s'] &,
     :host[data-size='m'] & {
@@ -181,16 +181,16 @@
     position: absolute;
     top: 0;
     left: 0;
+    overflow: hidden;
     width: 100%;
     height: 100%;
     box-sizing: border-box;
-    resize: none;
-    overflow: hidden;
-    outline: none;
     border-style: solid;
     border-color: transparent;
-    border-inline-start-width: var(--border-start, 0);
     border-inline-end-width: var(--border-end, 0);
+    border-inline-start-width: var(--border-start, 0);
+    outline: none;
+    resize: none;
 
     &:not(:last-of-type) {
         display: none;
@@ -237,10 +237,10 @@
     top: calc(var(--tui-height) / 2 - 0.625rem);
     left: 0;
     max-width: 100%;
-    border: solid transparent;
-    border-inline-start-width: var(--border-start, 0);
-    border-inline-end-width: var(--border-end, 0);
     box-sizing: border-box;
+    border: solid transparent;
+    border-inline-end-width: var(--border-end, 0);
+    border-inline-start-width: var(--border-start, 0);
 
     :host[data-size='s'] & {
         padding: 0 0.75rem;
@@ -266,8 +266,8 @@
 
     display: flex;
     justify-content: flex-end;
-    pointer-events: none;
     padding: calc((var(--tui-height) - 1.5rem) / 2) 1rem;
+    pointer-events: none;
 
     :host[data-size='m'] & {
         padding: calc((var(--tui-height) - 1.5rem) / 2) 0.625rem;
@@ -294,19 +294,19 @@
 
 .t-caret {
     display: inline-block;
-    height: 1rem;
     width: 0;
+    height: 1rem;
 }
 
 .t-counter {
     position: absolute;
     right: 0.75rem;
     bottom: 0.5rem;
+    margin-top: auto;
+    color: var(--tui-text-03);
     font: var(--tui-font-text-s);
     pointer-events: none;
-    margin-top: auto;
     text-align: right;
-    color: var(--tui-text-03);
 
     :host[data-mode='onDark'] & {
         color: var(--tui-text-03-night);

@@ -6,9 +6,9 @@
 .generate-columns(@infix, @n, @padding, @i: 1) when (@i =< @n) {
     &_@{infix}-@{i} {
         width: (@i * 100% / @n);
-        padding-left: @padding;
-        padding-right: @padding;
         box-sizing: border-box;
+        padding-right: @padding;
+        padding-left: @padding;
     }
 
     .generate-columns(@infix, @n, @padding, (@i + 1));
@@ -25,9 +25,9 @@
 .generate-sme-columns(@n, @padding, @i: 1) when (@i =< @n) {
     &_@{i} {
         width: (@i * 100% / @n);
-        padding-left: @padding;
-        padding-right: @padding;
         box-sizing: border-box;
+        padding-right: @padding;
+        padding-left: @padding;
     }
 
     .generate-sme-columns(@n, @padding, (@i + 1));
@@ -60,34 +60,34 @@
 
     &_adaptive.tui-row {
         @media @tui-desktop-lg-min {
-            margin-left: -@space-large;
             margin-right: -@space-large;
+            margin-left: -@space-large;
         }
 
         @media @tui-desktop {
-            margin-left: -@space-normal;
             margin-right: -@space-normal;
+            margin-left: -@space-normal;
         }
 
         @media @tui-mobile {
-            margin-left: -@space-small;
             margin-right: -@space-small;
+            margin-left: -@space-small;
         }
     }
 
     &_temporary.tui-row {
-        margin-left: -@space-normal;
         margin-right: -@space-normal;
+        margin-left: -@space-normal;
     }
 
     @media @tui-desktop-lg-min {
-        margin-left: -@space-large;
         margin-right: -@space-large;
+        margin-left: -@space-large;
     }
 
     @media @tui-desktop {
-        margin-left: -@space-normal;
         margin-right: -@space-normal;
+        margin-left: -@space-normal;
     }
 }
 

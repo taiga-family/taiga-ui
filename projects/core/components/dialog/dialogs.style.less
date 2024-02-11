@@ -12,9 +12,9 @@
     .fullsize(fixed, inset);
 
     display: flex;
+    overflow: auto;
     align-items: flex-start;
     outline: none;
-    overflow: auto;
 
     &.ng-animating {
         overflow: clip;
@@ -28,21 +28,21 @@
 
 .t-overlay {
     height: 100%;
+    backdrop-filter: var(--tui-backdrop, none);
+    background: rgba(0, 0, 0, 0.75);
+    letter-spacing: normal;
+    opacity: 0;
     pointer-events: none;
     touch-action: none;
-    opacity: 0;
-    letter-spacing: normal;
 
     /* change of useless property 'letter-spacing' to ensure that transitionend event will fire */
     transition:
         opacity var(--tui-duration, 300ms),
         letter-spacing 0.01s;
-    background: rgba(0, 0, 0, 0.75);
-    backdrop-filter: var(--tui-backdrop, none);
 
     &_visible {
-        opacity: 1;
         letter-spacing: 1px;
+        opacity: 1;
     }
 }
 

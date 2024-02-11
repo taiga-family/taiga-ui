@@ -4,11 +4,11 @@
     position: absolute;
     display: block;
     width: 100%;
-    line-height: var(--tui-height);
-    margin-top: calc(var(--tui-height) / -2);
     box-sizing: content-box;
-    color: var(--tui-text-03);
+    margin-top: calc(var(--tui-height) / -2);
     animation: tuiPresent 1s;
+    color: var(--tui-text-03);
+    line-height: var(--tui-height);
     white-space: nowrap;
 
     &._table {
@@ -30,15 +30,15 @@
 }
 
 .t-ghost {
+    text-overflow: clip;
     visibility: hidden;
     white-space: pre;
-    text-overflow: clip;
 }
 
 .t-prefix,
 .t-postfix {
-    white-space: pre;
     color: var(--tui-text-01);
+    white-space: pre;
 
     :host-context(tui-primitive-textfield [tuiWrapper][data-mode='onDark']) & {
         color: var(--tui-text-01-night);

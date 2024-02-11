@@ -5,22 +5,22 @@
 
     position: relative;
     display: inline-block;
-    font: var(--tui-font-text-s);
-    line-height: 1.25rem;
     max-width: 100%;
-    cursor: default;
-    outline: none;
-    text-decoration: none;
     padding: 0;
     border: 0;
+    cursor: default;
+    font: var(--tui-font-text-s);
+    line-height: 1.25rem;
+    outline: none;
+    text-decoration: none;
 
     &:after {
         .transition(background);
         .fullsize();
 
-        content: '';
         box-sizing: border-box;
         border-radius: inherit;
+        content: '';
         pointer-events: none;
     }
 
@@ -36,9 +36,9 @@
     }
 
     &[data-size='s'] {
+        border-radius: var(--tui-radius-xs);
         font: var(--tui-font-text-xs);
         line-height: 1.25rem;
-        border-radius: var(--tui-radius-xs);
     }
 
     &[data-size='m'] {
@@ -123,8 +123,8 @@
     }
 
     &[data-status='default'] {
-        color: var(--tui-text-01-night);
         background-color: var(--tui-base-06);
+        color: var(--tui-text-01-night);
 
         &:not([data-mode]) {
             &._hoverable:hover {
@@ -137,8 +137,8 @@
         }
 
         &[data-mode='onDark'] {
-            color: var(--tui-text-01-night);
             background-color: var(--tui-clear-inverse);
+            color: var(--tui-text-01-night);
 
             &._hoverable:hover {
                 background-color: var(--tui-clear-inverse-hover);
@@ -172,8 +172,8 @@
     }
 
     &._disabled {
-        pointer-events: none;
         opacity: var(--tui-disabled-opacity);
+        pointer-events: none;
     }
 
     &._hoverable {
@@ -198,8 +198,8 @@
     display: flex;
     width: auto; // @note: fix problem in Safari
     align-items: center;
-    font: inherit;
     border-radius: inherit;
+    font: inherit;
 
     :host[data-size='s'] & {
         height: 1.25rem;
@@ -227,12 +227,12 @@
     position: absolute;
     top: 0;
     left: 0;
-    font: inherit;
-    color: var(--tui-text-01);
     width: 100%;
     height: 100%;
     box-sizing: border-box;
     padding: 0 0.5rem;
+    color: var(--tui-text-01);
+    font: inherit;
 
     :host[data-size='s'] & {
         padding: 0 0.375rem;
@@ -251,10 +251,10 @@
     width: 1rem;
     height: 100%;
     cursor: pointer;
-    pointer-events: all;
-    opacity: var(--tui-disabled-opacity);
-    margin-inline-start: 0.25rem;
     margin-inline-end: -0.25rem;
+    margin-inline-start: 0.25rem;
+    opacity: var(--tui-disabled-opacity);
+    pointer-events: all;
 
     &:hover {
         opacity: 1;

@@ -1,17 +1,17 @@
 .tui-skeleton {
     position: relative;
-    color: transparent !important;
     background: transparent !important;
+    color: transparent !important;
     pointer-events: none;
     user-select: none;
 
     &:after {
         .fullsize();
 
-        content: '';
-        background-color: var(--tui-clear-hover);
-        animation: tuiSkeletonVibe ease-in-out 1s infinite alternate;
         border-radius: var(--tui-skeleton-radius, 0);
+        animation: tuiSkeletonVibe ease-in-out 1s infinite alternate;
+        background-color: var(--tui-clear-hover);
+        content: '';
     }
 
     &_light:after {

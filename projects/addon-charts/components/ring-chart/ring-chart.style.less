@@ -34,18 +34,18 @@
     .fullsize();
 
     display: flex;
-    font: var(--tui-font-text-m);
+    overflow: hidden;
     max-height: 100%;
+    box-sizing: border-box;
     flex-direction: column;
     justify-content: center;
-    text-align: center;
     padding: 1.5rem;
     border-radius: 100%;
-    box-sizing: border-box;
-    overflow: hidden;
-    word-break: break-word;
-    white-space: pre-wrap;
     color: var(--tui-text-02);
+    font: var(--tui-font-text-m);
+    text-align: center;
+    white-space: pre-wrap;
+    word-break: break-word;
 
     :host[data-size='m'] & {
         font: var(--tui-font-text-xs);
@@ -69,8 +69,8 @@
 .t-shield {
     position: absolute;
     top: 25%;
-    left: 25%;
     right: 25%;
     bottom: 25%;
+    left: 25%;
     border-radius: 100%;
 }

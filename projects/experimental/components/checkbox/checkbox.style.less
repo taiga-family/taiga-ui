@@ -6,14 +6,14 @@
     width: var(--t-size);
     height: var(--t-size);
     border-radius: var(--tui-radius-s);
-    cursor: pointer;
     margin: 0;
+    cursor: pointer;
 
     &:before {
         .fullsize();
 
-        content: '';
         background: currentColor;
+        content: '';
         mask: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"></svg>') center/100%;
         transform: scale(0);
         transition:

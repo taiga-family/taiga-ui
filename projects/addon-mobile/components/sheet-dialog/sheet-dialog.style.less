@@ -6,12 +6,12 @@
     right: -1rem;
     display: flex;
     flex-direction: column;
+    box-shadow: 0 20rem var(--tui-elevation-01);
     clip-path: inset(0 1rem 0 0 round 0.75rem 0.75rem 0 0);
     font: var(--tui-font-text-m);
     overflow-y: scroll;
-    scroll-snap-type: y mandatory;
     overscroll-behavior: none;
-    box-shadow: 0 20rem var(--tui-elevation-01);
+    scroll-snap-type: y mandatory;
 
     &._closeable {
         display: block;
@@ -25,27 +25,27 @@
 .t-stops {
     display: none;
     height: 100%;
-    scroll-snap-stop: always;
     scroll-snap-align: start;
+    scroll-snap-stop: always;
 }
 
 .t-stop {
-    scroll-snap-stop: normal;
-    scroll-snap-align: start;
-    height: 1rem;
     width: 1rem;
+    height: 1rem;
+    scroll-snap-align: start;
+    scroll-snap-stop: normal;
 }
 
 .t-sheet {
-    box-shadow: var(--tui-shadow);
     width: calc(100% - 1rem);
-    border-radius: 0.75rem 0.75rem 0 0;
+    box-sizing: border-box;
     padding: 0 1rem;
+    border-radius: 0.75rem 0.75rem 0 0;
     margin-top: auto;
     background: var(--tui-elevation-01);
-    box-sizing: border-box;
-    scroll-snap-stop: always;
+    box-shadow: var(--tui-shadow);
     scroll-snap-align: start;
+    scroll-snap-stop: always;
 }
 
 @supports (-moz-appearance: none) {
@@ -56,47 +56,47 @@
 
 .t-top {
     position: sticky;
-    top: 0;
     z-index: 1;
+    top: 0;
     height: 1.5rem;
     background: var(--tui-elevation-01);
 
     &:after {
-        content: '';
         position: absolute;
         top: 0.5rem;
         left: 50%;
         width: 2rem;
         height: 0.25rem;
-        transform: translateX(-50%);
-        background: var(--tui-base-09);
-        opacity: 0.3;
         border-radius: 1rem;
+        background: var(--tui-base-09);
+        content: '';
+        opacity: 0.3;
+        transform: translateX(-50%);
     }
 }
 
 .t-heading {
     position: sticky;
-    top: 1.5rem;
     z-index: 1;
+    top: 1.5rem;
     display: flex;
-    margin: 0;
     padding-bottom: 1rem;
-    font: var(--tui-font-heading-6);
+    margin: 0;
     background: var(--tui-elevation-01);
+    font: var(--tui-font-heading-6);
 
     &:last-child {
         margin-bottom: -0.75rem;
     }
 
     &:after {
-        content: '';
         position: absolute;
         top: 100%;
-        left: 0;
         right: 0;
+        left: 0;
         height: 1px;
         background: var(--tui-base-03);
+        content: '';
         opacity: 0;
     }
 
@@ -122,7 +122,7 @@
 
 .t-footer {
     height: 1rem;
-    scroll-snap-stop: always;
-    scroll-snap-align: end;
     background: var(--tui-elevation-01);
+    scroll-snap-align: end;
+    scroll-snap-stop: always;
 }

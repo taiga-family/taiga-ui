@@ -2,13 +2,13 @@
 
 /* Safari doesn't support rem units inside svg (but supports em units) */
 @diameter: {
-    xxs: 2rem;
-    xs: 2.5rem;
-    s: 3.5rem;
-    m: 4rem;
     l: 5rem;
+    m: 4rem;
+    s: 3.5rem;
     xl: 6rem;
+    xs: 2.5rem;
     xxl: 8rem;
+    xxs: 2rem;
 };
 
 // TODO: delete in v4.0
@@ -38,12 +38,12 @@
 :host {
     position: relative;
     display: block;
-    color: var(--tui-primary);
-    transform: rotate(-90deg);
-    transform-origin: center;
-    font-size: 1rem; // to use em units inside svg (Safari doesn't support rem units inside svg)
     width: var(--t-diameter);
     height: var(--t-diameter);
+    color: var(--tui-primary);
+    font-size: 1rem; // to use em units inside svg (Safari doesn't support rem units inside svg)
+    transform: rotate(-90deg);
+    transform-origin: center;
 
     &[data-mode='onDark'] {
         --tui-clear: var(--tui-clear-inverse);
@@ -109,11 +109,11 @@
 
 .t-track {
     fill: transparent;
-    stroke: var(--tui-clear);
-    stroke-width: var(--t-track-stroke);
 
     /* clean-css ignore:start */
     r: calc((var(--t-diameter) - var(--t-track-stroke)) / 2);
+    stroke: var(--tui-clear);
+    stroke-width: var(--t-track-stroke);
 
     /* clean-css ignore:end */
 }
@@ -123,20 +123,20 @@
     @circumference: calc(2 * pi() * @radius);
 
     fill: transparent;
-    stroke: var(--tui-progress-color, currentColor);
-    stroke-linecap: round;
-    stroke-width: var(--t-progress-stroke);
-    stroke-dasharray: @circumference;
-    stroke-dashoffset: @circumference;
 
     /* clean-css ignore:start */
     r: @radius;
+    stroke: var(--tui-progress-color, currentColor);
+    stroke-dasharray: @circumference;
+    stroke-dashoffset: @circumference;
+    stroke-linecap: round;
+    stroke-width: var(--t-progress-stroke);
 
     /* clean-css ignore:end */
 
     &_filled {
-        transition: stroke-dashoffset var(--tui-duration) linear;
         stroke-dashoffset: calc(@circumference - var(--progress-ratio) * @circumference);
+        transition: stroke-dashoffset var(--tui-duration) linear;
     }
 }
 

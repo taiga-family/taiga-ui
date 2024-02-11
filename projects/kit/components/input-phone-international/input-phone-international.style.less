@@ -18,7 +18,6 @@
 .t-country-select {
     width: 5.625rem;
 
-    /* stylelint-disable */
     &:not(._readonly) ::ng-deep input:not(:disabled) {
         cursor: pointer;
     }
@@ -26,7 +25,6 @@
     &._readonly ::ng-deep input {
         cursor: default;
     }
-    /* stylelint-enable */
 
     &[data-size='m'] {
         width: 5.5rem;
@@ -65,11 +63,11 @@
 }
 
 .t-country-item-name {
-    margin-left: @space * 3;
     margin-right: auto;
+    margin-left: @space * 3;
 }
 
 .t-country-item-code {
-    color: var(--tui-text-02);
     margin-right: @space;
+    color: var(--tui-text-02);
 }

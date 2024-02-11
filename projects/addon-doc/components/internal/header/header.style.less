@@ -2,22 +2,22 @@
 
 :host {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
     // fix for Safari to prevent tabs underline above sidebar
     z-index: 1;
+    top: 0;
+    right: 0;
+    left: 0;
     display: flex;
-    box-shadow: var(--tui-shadow-navigation);
     height: 3.9375rem;
     align-items: center;
     padding: 0 1.25rem;
-    background: var(--tui-base-01);
     border-bottom: 1px solid var(--tui-base-03);
+    background: var(--tui-base-01);
+    box-shadow: var(--tui-shadow-navigation);
 
     @supports (background: color-mix(in srgb, var(--tui-base-01), transparent 50%)) {
-        background: color-mix(in srgb, var(--tui-base-01), transparent 50%);
         backdrop-filter: blur(1.25rem);
+        background: color-mix(in srgb, var(--tui-base-01), transparent 50%);
     }
 }
 

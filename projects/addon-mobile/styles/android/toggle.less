@@ -1,31 +1,30 @@
 input[tuiToggle] {
     .transition(~'color, opacity');
 
-    height: 1.25rem;
-    width: 2.5rem;
-    color: var(--tui-base-05);
-    background: transparent !important;
     overflow: visible;
+    width: 2.5rem;
+    height: 1.25rem;
+    background: transparent !important;
+    color: var(--tui-base-05);
 
     &:before {
-        content: '';
         display: block;
-        height: 100%;
         width: 100%;
-        border: 0.1875rem solid transparent;
+        height: 100%;
         box-sizing: border-box;
+        border: 0.1875rem solid transparent;
         border-radius: 2rem;
         background: currentColor;
         background-clip: content-box;
+        content: '';
+        mask: none;
         opacity: 0.5;
         transform: none;
-        mask: none;
     }
 
     &:after {
         .transition(transform);
 
-        content: '';
         position: absolute;
         top: 0;
         left: 0;
@@ -33,16 +32,17 @@ input[tuiToggle] {
         height: 1.25rem;
         border-radius: 100%;
         background: #ececec;
-        transform: none;
         box-shadow:
             0 0.0625rem 0.0625rem rgba(0, 0, 0, 0.24),
             0 0 0.0625rem rgba(0, 0, 0, 0.12),
             inset 0 0.0625rem rgba(255, 255, 255, 0.12) !important;
+        content: '';
+        transform: none;
     }
 
     &:checked {
-        color: var(--tui-accent);
         background: transparent;
+        color: var(--tui-accent);
 
         &:after {
             background: currentColor;

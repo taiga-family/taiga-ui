@@ -1,13 +1,13 @@
 input[tuiCheckbox] {
     --t-size: 1.125rem;
 
-    color: var(--tui-base-01);
     border-radius: 0.125rem;
+    background: var(--t-background) !important;
+    box-shadow: none !important;
+    color: var(--tui-base-01);
     outline: 0.125rem solid var(--tui-base-04);
     outline-offset: -0.125rem;
     transition: none;
-    box-shadow: none !important;
-    background: var(--t-background) !important;
 
     &:checked,
     &:indeterminate {
@@ -30,11 +30,11 @@ input[tuiCheckbox] {
     }
 
     &:before {
+        clip-path: inset(0 100% 0 0);
         mask-image: url('data:image/svg+xml,<svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><path d="M2.7 8.5L7 12.7L15.3 4.7" fill="none" stroke="black" stroke-width="2"/></svg>');
         transition:
             clip-path var(--tui-duration) ease-in-out,
             mask 0s var(--tui-duration) ease-in-out;
-        clip-path: inset(0 100% 0 0);
     }
 
     &:indeterminate:before {

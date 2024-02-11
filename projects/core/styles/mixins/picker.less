@@ -7,27 +7,27 @@
     .t-row {
         position: relative;
         display: flex;
-        justify-content: space-between;
         height: 2.25rem;
+        justify-content: space-between;
         isolation: isolate;
     }
 
     .t-item {
         position: relative;
         flex: 1;
-        line-height: 2rem;
         border-radius: var(--tui-radius-m);
+        line-height: 2rem;
 
         &:before,
         &:after {
-            content: '';
             position: absolute;
+            z-index: -1;
             top: 0;
-            left: 0;
             right: 0;
             bottom: 0;
-            z-index: -1;
+            left: 0;
             border-radius: var(--tui-radius-m);
+            content: '';
         }
 
         &:after {
@@ -38,36 +38,36 @@
     .t-cell {
         position: relative;
         display: flex;
+        width: @itemSize;
+        box-sizing: border-box;
         align-items: center;
         justify-content: center;
-        width: @itemSize;
-        text-align: center;
-        outline: none;
-        cursor: pointer;
-        background-clip: content-box;
-        box-sizing: border-box;
         border: 0.125rem solid transparent;
+        background-clip: content-box;
+        cursor: pointer;
+        outline: none;
+        text-align: center;
 
         &:before {
-            content: '';
             position: absolute;
+            z-index: -1;
             top: 0;
-            left: 0;
             right: 0;
             bottom: 0;
-            z-index: -1;
+            left: 0;
             border-radius: var(--tui-radius-m);
+            content: '';
         }
 
         &_today:after {
             .center-left();
 
-            content: '';
             bottom: 0.3125rem;
-            height: 0.125rem;
             width: 0.75rem;
+            height: 0.125rem;
             border-radius: 0.375rem;
             background-color: var(--tui-text-01);
+            content: '';
         }
 
         &_interval {
@@ -81,13 +81,13 @@
 
             &:not(:last-child):before {
                 right: -0.25rem;
-                border-top-right-radius: 0;
                 border-bottom-right-radius: 0;
+                border-top-right-radius: 0;
             }
 
             &:not([data-range='start']):not(:first-child):before {
-                border-top-left-radius: 0;
                 border-bottom-left-radius: 0;
+                border-top-left-radius: 0;
             }
 
             &:last-child:first-child:before {
@@ -95,13 +95,13 @@
             }
 
             &:first-child > .t-item {
-                border-top-left-radius: var(--tui-radius-m);
                 border-bottom-left-radius: var(--tui-radius-m);
+                border-top-left-radius: var(--tui-radius-m);
             }
 
             &:last-child > .t-item {
-                border-top-right-radius: var(--tui-radius-m);
                 border-bottom-right-radius: var(--tui-radius-m);
+                border-top-right-radius: var(--tui-radius-m);
             }
 
             & > .t-item {
@@ -144,21 +144,21 @@
             }
 
             &:not(:first-child):before {
-                border-top-left-radius: 0;
                 border-bottom-left-radius: 0;
+                border-top-left-radius: 0;
             }
         }
 
         &[data-range='end'] > .t-item {
             &:before {
                 left: 0.625rem;
-                border-top-left-radius: 0;
                 border-bottom-left-radius: 0;
+                border-top-left-radius: 0;
             }
 
             &:after {
-                left: -2rem;
                 right: 100%;
+                left: -2rem;
                 transform: translateX(1.6rem) scaleY(0.83) scaleX(0.5) rotate(45deg);
             }
         }
@@ -166,13 +166,13 @@
         &[data-range='start'] > .t-item {
             &:before {
                 right: 0.625rem;
-                border-top-right-radius: 0;
                 border-bottom-right-radius: 0;
+                border-top-right-radius: 0;
             }
 
             &:after {
-                left: 100%;
                 right: -2rem;
+                left: 100%;
                 transform: translateX(-1.6rem) scaleY(0.83) scaleX(0.5) rotate(45deg);
             }
         }

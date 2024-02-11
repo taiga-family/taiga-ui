@@ -20,10 +20,10 @@
     &:after {
         .fullsize();
 
-        content: '';
         box-sizing: border-box;
-        border-radius: inherit;
         border: 1px solid var(--tui-base-04);
+        border-radius: inherit;
+        content: '';
         pointer-events: none;
 
         :host:not([data-borders]) & {
@@ -35,20 +35,20 @@
         }
 
         :host[data-borders='top-bottom'] & {
-            border-left-width: 0;
             border-right-width: 0;
+            border-left-width: 0;
         }
 
         :host[data-borders='top'] & {
-            border-left-width: 0;
             border-right-width: 0;
             border-bottom-width: 0;
+            border-left-width: 0;
         }
 
         :host[data-borders='bottom'] & {
-            border-left-width: 0;
-            border-right-width: 0;
             border-top-width: 0;
+            border-right-width: 0;
+            border-left-width: 0;
         }
 
         :host[data-mode='onDark'] & {
@@ -75,20 +75,20 @@
 
     display: flex;
     width: 100%;
-    font: var(--tui-font-text-l);
-    align-items: center;
-    box-sizing: border-box;
-    border-bottom: 1px solid var(--tui-base-04);
     min-height: var(--tui-height-l);
+    box-sizing: border-box;
+    align-items: center;
     padding: 0.75rem 1.25rem;
+    border-bottom: 1px solid var(--tui-base-04);
     color: var(--tui-text-01);
     cursor: pointer;
-    text-align: left;
+    font: var(--tui-font-text-l);
     outline: none;
+    text-align: left;
 
     :host[data-mode='onDark'] & {
-        color: var(--tui-text-01-night);
         border-color: var(--tui-base-03);
+        color: var(--tui-text-01-night);
     }
 
     :host[data-mode='onLight'] & {
@@ -113,14 +113,14 @@
     }
 
     :host[data-size='s'] & {
-        font: var(--tui-font-text-m);
         min-height: var(--tui-height-m);
         padding: 0.625rem 0.75rem 0.625rem 1rem;
+        font: var(--tui-font-text-m);
     }
 
     :host._no-padding & {
-        padding-left: 0;
         padding-right: 0;
+        padding-left: 0;
     }
 
     :host._disabled & {
@@ -145,8 +145,8 @@
 .t-title {
     .text-overflow();
 
-    margin-right: 0;
     flex-grow: 1;
+    margin-right: 0;
 
     :host._has-arrow & {
         margin-right: @space * 2;
@@ -187,12 +187,12 @@
 }
 
 .t-content {
-    font: var(--tui-font-text-m);
     padding: 1.25rem;
+    font: var(--tui-font-text-m);
     word-wrap: break-word;
 
     :host[data-size='s'] & {
-        font: var(--tui-font-text-s);
         padding: 1rem;
+        font: var(--tui-font-text-s);
     }
 }

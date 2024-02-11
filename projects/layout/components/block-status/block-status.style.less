@@ -2,18 +2,18 @@
 
 tui-block-status {
     display: flex;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    box-sizing: border-box;
-    overflow: hidden;
-    width: 100%;
-    height: 100%;
 
     &._card {
-        border-radius: var(--tui-radius-xl);
         padding: 2rem;
+        border-radius: var(--tui-radius-xl);
     }
 
     .t-block-image {
@@ -21,17 +21,17 @@ tui-block-status {
     }
 
     .t-block-text:not(:empty) {
-        font: var(--tui-font-text-m);
-        color: var(--tui-text-02);
         margin-bottom: 2rem;
+        color: var(--tui-text-02);
+        font: var(--tui-font-text-m);
         white-space: pre-line;
     }
 
     .t-block-actions:not(:empty) {
         display: flex;
+        width: 100%;
         flex-direction: column;
         align-items: center;
-        width: 100%;
     }
 
     h1,
@@ -40,9 +40,9 @@ tui-block-status {
     h4,
     h5,
     h6 {
-        font: var(--tui-font-heading-4);
         margin-top: 0;
         margin-bottom: 1rem;
+        font: var(--tui-font-heading-4);
     }
 
     img {

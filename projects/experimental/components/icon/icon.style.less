@@ -5,8 +5,8 @@
     display: inline-block;
     width: 1em;
     height: 1em;
-    font-size: 1.5rem;
     flex-shrink: 0;
+    font-size: 1.5rem;
     vertical-align: middle;
 
     &._duo {
@@ -16,8 +16,8 @@
     &:after {
         .fullsize();
 
+        background: currentColor;
         content: '';
         mask: var(--t-mask) no-repeat center/contain;
-        background: currentColor;
     }
 }

@@ -27,9 +27,9 @@
 
 html,
 body {
-    scroll-padding-top: @sticky-header-height;
-    background: var(--tui-base-01);
     height: auto;
+    background: var(--tui-base-01);
+    scroll-padding-top: @sticky-header-height;
 }
 
 tui-root > tui-scroll-controls > .t-bar_vertical {
@@ -48,18 +48,18 @@ code:not(pre code) {
         .transition(background);
 
         display: inline-flex;
+        align-items: center;
+        padding: 0 0.3125rem;
+        border-radius: 0.25rem;
+        margin: 0.125rem 0.1875rem;
         background: var(--tui-base-02);
         color: var(--tui-text-02);
-        vertical-align: middle;
-        align-items: center;
-        border-radius: 0.25rem;
+        font-size: 0.75rem;
         font-weight: 500;
         outline: 1px solid var(--tui-base-04);
-        font-size: 0.75rem;
-        padding: 0 0.3125rem;
-        margin: 0.125rem 0.1875rem;
         //noinspection CssInvalidPropertyValue
         text-wrap: wrap;
+        vertical-align: middle;
 
         tui-notification & {
             mix-blend-mode: luminosity;
@@ -77,8 +77,8 @@ a:focus code {
 }
 
 .tui-doc-page {
-    isolation: isolate;
     padding-top: 4rem;
+    isolation: isolate;
 }
 
 tui-doc-navigation.tui-doc-navigation {
@@ -122,10 +122,10 @@ tui-doc-code {
 
     .hljs {
         display: block;
-        overflow-x: auto;
         padding: 0.5em;
-        color: var(--tui-text-01);
         background-color: var(--tui-clear);
+        color: var(--tui-text-01);
+        overflow-x: auto;
 
         &.hljs-line-numbers {
             background: transparent;
@@ -134,8 +134,8 @@ tui-doc-code {
 
     .hljs-subst,
     .hljs-title {
-        font-weight: normal;
         color: var(--tui-text-01);
+        font-weight: normal;
     }
 
     .hljs-property {
@@ -160,8 +160,8 @@ tui-doc-code {
     .hljs-type,
     .hljs-selector-id,
     .hljs-selector-class {
-        font-weight: bold;
         color: var(--tui-link);
+        font-weight: bold;
     }
 
     .hljs-attr {
@@ -173,8 +173,8 @@ tui-doc-code {
     .hljs-regexp,
     .hljs-link,
     .hljs-built_in {
-        font-weight: bold;
         color: var(--tui-support-06);
+        font-weight: bold;
     }
 
     .hljs-number,
@@ -191,8 +191,8 @@ tui-doc-code {
     .hljs-symbol,
     .hljs-bullet,
     .hljs-formula {
-        color: var(--tui-text-01);
         background: var(--tui-base-02);
+        color: var(--tui-text-01);
         font-style: italic;
     }
 
@@ -233,9 +233,9 @@ tui-doc-code {
     }
 
     .hljs-ln-numbers {
-        vertical-align: top;
+        padding-right: 1em !important;
         opacity: 0.3;
         text-align: right;
-        padding-right: 1em !important;
+        vertical-align: top;
     }
 }

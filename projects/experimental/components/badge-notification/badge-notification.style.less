@@ -5,20 +5,20 @@
 
     position: relative;
     display: inline-flex;
+    overflow: hidden;
+    min-width: var(--t-size);
+    max-width: 100%;
+    height: var(--t-size);
+    box-sizing: border-box;
     align-items: center;
     justify-content: center;
-    box-sizing: border-box;
-    color: var(--tui-text-01-night);
-    border-radius: 2rem;
-    white-space: nowrap;
-    overflow: hidden;
-    vertical-align: middle;
-    font: var(--tui-font-text-s);
-    max-width: 100%;
     padding: 0 0.25rem;
+    border-radius: 2rem;
     background: #f52222;
-    height: var(--t-size);
-    min-width: var(--t-size);
+    color: var(--tui-text-01-night);
+    font: var(--tui-font-text-s);
+    vertical-align: middle;
+    white-space: nowrap;
 
     &[data-size='m'] {
         --t-size: 1.25rem;

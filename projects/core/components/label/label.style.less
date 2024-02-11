@@ -3,16 +3,16 @@
 :host {
     display: flex;
     min-height: 2.75rem;
-    justify-content: space-between;
     flex-direction: column;
+    justify-content: space-between;
     pointer-events: none;
 }
 
 .t-label {
-    font: var(--tui-font-text-s);
+    overflow: inherit;
     max-width: 100%;
     align-self: inherit;
-    overflow: inherit;
+    font: var(--tui-font-text-s);
     pointer-events: auto;
 
     :host._control & {
@@ -35,8 +35,8 @@
 }
 
 .t-content {
-    line-height: 1.5rem;
     overflow: inherit;
-    text-overflow: ellipsis;
+    line-height: 1.5rem;
     pointer-events: auto;
+    text-overflow: ellipsis;
 }

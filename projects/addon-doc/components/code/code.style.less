@@ -16,8 +16,8 @@
 .t-code {
     position: relative;
     margin: 0;
-    white-space: normal;
     outline: 1px solid var(--tui-base-03);
+    white-space: normal;
 
     ::ng-deep .hljs-ln {
         width: max-content;
@@ -33,14 +33,14 @@
     top: 0.75rem;
     right: 0.75rem;
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: row-reverse;
+    align-items: center;
+    justify-content: center;
 
     :host-context(tui-root._mobile) & {
         padding: 0.3125rem;
-        border-radius: 0.25rem;
         border: 1px solid var(--tui-base-04);
+        border-radius: 0.25rem;
     }
 }
 
@@ -52,12 +52,12 @@
 .hljs:not(:empty) {
     .customize-scroll();
 
-    font: var(--tui-font-text-m);
-    font-size: 0.875rem;
     padding: 1.5rem 2rem;
+    font: var(--tui-font-text-m);
     font-family: monospace;
-    word-wrap: break-word;
+    font-size: 0.875rem;
     white-space: pre-wrap;
+    word-wrap: break-word;
 
     :host-context(tui-root._mobile) & {
         padding: 1rem;

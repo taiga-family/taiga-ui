@@ -3,15 +3,15 @@
 :host {
     position: relative;
     height: var(--tui-height-m);
-    font: var(--tui-font-text-s);
-    text-align: left;
+    box-sizing: border-box;
     padding: 0 0.75rem;
-    background: var(--tui-base-01);
     border: 1px solid var(--tui-base-04);
     border-top: none;
-    box-sizing: border-box;
+    background: var(--tui-base-01);
     // Create new viewport for fixed positioning
     filter: opacity(1);
+    font: var(--tui-font-text-s);
+    text-align: left;
     .safari-only({
         transform: translate3d(0, 0, 0);
     });
@@ -41,15 +41,15 @@
     &:after {
         .transition(opacity);
 
-        content: '';
         position: absolute;
         top: 0;
         bottom: 0;
         left: 100%;
         width: 0.3125rem;
-        pointer-events: none;
         background: rgba(237, 237, 237, 0.7);
+        content: '';
         opacity: 0;
+        pointer-events: none;
     }
 
     &:focus-within:not(:disabled) {
@@ -70,11 +70,11 @@
 }
 
 :host-context(table[data-size='l']) {
-    font: var(--tui-font-text-m);
     height: var(--tui-height-l);
+    padding-right: 1rem;
     // Don't affect vertical padding for easier override
     padding-left: 1rem;
-    padding-right: 1rem;
+    font: var(--tui-font-text-m);
 
     &._editable {
         padding: 0;

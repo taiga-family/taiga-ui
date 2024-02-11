@@ -8,22 +8,22 @@ tui-badge,
 
     .button-base();
 
+    width: fit-content;
+    min-width: var(--t-size);
+    height: var(--t-size);
+    padding: var(--t-padding);
     border-radius: 6rem;
     background: #959595;
     color: var(--tui-base-01);
-    padding: var(--t-padding);
-    height: var(--t-size);
-    min-width: var(--t-size);
-    width: fit-content;
     font: var(--tui-font-text-s);
 
     &._dot:before {
-        content: '';
         display: block;
         width: 0.375rem;
         height: 0.375rem;
-        background: var(--t-dot);
         border-radius: 100%;
+        background: var(--t-dot);
+        content: '';
     }
 
     > tui-icon,
@@ -104,9 +104,9 @@ img[tuiBadge] {
 tui-icon[tuiBadge] {
     --t-margin: 0 !important;
 
-    mask: none;
-    height: var(--t-size);
     width: var(--t-size);
+    height: var(--t-size);
+    mask: none;
 
     &[data-size='s']:after {
         mask-size: 0.625rem;

@@ -6,10 +6,10 @@
 
     position: relative;
     display: flex;
-    align-items: flex-start;
     flex-shrink: 0;
-    text-decoration: none;
+    align-items: flex-start;
     overscroll-behavior: contain;
+    text-decoration: none;
 
     &[tuiTitle],
     [tuiTitle] {
@@ -29,11 +29,11 @@
 [tuiCardMedium] {
     width: 8.75rem;
     height: 8.75rem;
+    box-sizing: border-box;
     flex-direction: column;
     justify-content: space-between;
     padding: 0.75rem;
     border-radius: var(--tui-radius-l);
-    box-sizing: border-box;
 
     &[tuiTitle] {
         padding: 0.625rem 0.75rem;
@@ -55,10 +55,10 @@
     --t-padding: 0.75rem;
     --t-dim: calc(var(--t-padding) + var(--t-comp));
 
-    font: var(--tui-font-text-m);
+    box-sizing: border-box;
     padding: var(--t-padding);
     border-radius: var(--t-radius);
-    box-sizing: border-box;
+    font: var(--tui-font-text-m);
 
     &[data-space='normal'] {
         --t-radius: 1.5rem;
@@ -74,8 +74,8 @@
 
     &:not([tuiCell], [tuiHeader]) {
         flex-direction: column;
-        gap: var(--t-gap);
         align-items: stretch;
+        gap: var(--t-gap);
 
         > :last-child:not([tuiCell]) {
             margin-top: auto;
@@ -101,8 +101,8 @@
     [tuiCell] {
         width: stretch;
         padding: 0.5rem;
-        margin: -0.5rem -0.5rem -0.75rem;
         border-radius: var(--tui-radius-l);
+        margin: -0.5rem -0.5rem -0.75rem;
     }
 
     > [tuiLink]:last-child {

@@ -4,10 +4,10 @@
     position: relative;
     display: flex;
     align-items: center;
-    font: var(--tui-font-text-m);
-    background: var(--tui-base-01);
     border: 1px solid var(--tui-base-03);
     border-radius: var(--tui-radius-m);
+    background: var(--tui-base-01);
+    font: var(--tui-font-text-m);
 
     &[data-delete='always'] {
         .t-remove {
@@ -35,13 +35,13 @@
 
 .t-link {
     display: flex;
+    max-width: ~'calc(100% - 2.75rem)';
     flex: 1;
     padding: 0.5625rem 2.1875rem 0.5625rem 0.5625rem;
-    text-decoration: none;
-    outline: none;
-    cursor: pointer;
     color: var(--tui-text-01);
-    max-width: ~'calc(100% - 2.75rem)';
+    cursor: pointer;
+    outline: none;
+    text-decoration: none;
 
     &:hover {
         background-color: var(--tui-base-02);
@@ -51,14 +51,14 @@
 .t-preview {
     position: relative;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
+    overflow: hidden;
     width: 1.5rem;
     height: 1.5rem;
-    margin-right: 0.75rem;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
     border-radius: var(--tui-radius-m);
-    overflow: hidden;
+    margin-right: 0.75rem;
     color: var(--tui-base-06);
 
     &_big {
@@ -69,8 +69,8 @@
         &:before {
             .fullsize();
 
-            content: '';
             background: var(--tui-base-08);
+            content: '';
             opacity: 0.08;
         }
     }
@@ -88,8 +88,8 @@
 .t-icon {
     .fullsize(absolute, inset);
 
-    color: var(--tui-success-fill);
     margin: auto;
+    color: var(--tui-success-fill);
 
     &_blank {
         color: var(--tui-base-06);
@@ -122,9 +122,9 @@
 
 .t-wrapper {
     display: flex;
+    overflow: hidden;
     flex-direction: column;
     justify-content: center;
-    overflow: hidden;
 }
 
 .t-text {
@@ -133,8 +133,8 @@
 
 .t-size {
     flex-shrink: 0;
-    opacity: var(--tui-disabled-opacity);
     margin-left: 2 * @space;
+    opacity: var(--tui-disabled-opacity);
 }
 
 .t-type {
@@ -146,6 +146,6 @@
 }
 
 .t-content {
-    font: var(--tui-font-text-s);
     color: var(--tui-error-fill);
+    font: var(--tui-font-text-s);
 }

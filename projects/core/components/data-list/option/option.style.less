@@ -6,16 +6,16 @@
     .transition(background);
 
     justify-content: space-between;
-    text-align: left;
-    color: var(--tui-text-01);
     border-radius: var(--tui-radius-s);
-    outline: none;
-    cursor: pointer;
     background-clip: padding-box;
+    color: var(--tui-text-01);
+    cursor: pointer;
+    outline: none;
+    text-align: left;
 
     &:disabled {
-        opacity: var(--tui-disabled-opacity);
         cursor: default;
+        opacity: var(--tui-disabled-opacity);
     }
 
     &:focus,

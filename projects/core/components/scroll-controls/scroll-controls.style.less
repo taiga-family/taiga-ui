@@ -6,12 +6,12 @@
 
 :host {
     position: sticky;
+    z-index: 1;
     top: 0;
     left: 0;
-    z-index: 1;
     min-width: calc(100% - 1px);
-    min-height: calc(100% - 1px);
     max-width: calc(100% - 1px);
+    min-height: calc(100% - 1px);
     max-height: calc(100% - 1px);
     float: left;
     margin-inline-end: calc(-100% + 1px);
@@ -47,16 +47,16 @@
     .transition(all, 0.15s);
 
     position: absolute;
-    border-radius: 6.25rem;
+    box-sizing: border-box;
     border: 0.25rem solid transparent;
-    cursor: pointer;
-    pointer-events: auto;
-    user-select: none;
+    border-radius: 6.25rem;
     background: currentColor;
     background-clip: content-box;
-    box-sizing: border-box;
-    transition-property: width, height, opacity;
+    cursor: pointer;
     opacity: 0.2;
+    pointer-events: auto;
+    transition-property: width, height, opacity;
+    user-select: none;
 
     &:hover {
         opacity: 0.24;
@@ -79,8 +79,8 @@
 
     .t-bar_horizontal & {
         bottom: 0;
-        height: @scroll-width;
         min-width: @scroll-min-size;
+        height: @scroll-width;
     }
 
     .t-bar_horizontal:hover &,

@@ -1,10 +1,10 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
 .clearProgress() {
+    border: none;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    border: none;
 }
 
 /* used to style inner value bar */
@@ -44,12 +44,12 @@
     .progressValue({ background: @progress-color });
 
     display: block;
+    overflow: hidden;
     width: 100%;
     height: var(--t-height);
-    color: var(--tui-primary);
     background: @track-color;
     clip-path: inset(0 round var(--tui-radius-xs));
-    overflow: hidden;
+    color: var(--tui-primary);
 
     &[data-mode='onDark'] {
         --tui-clear: var(--tui-clear-inverse);
@@ -67,11 +67,10 @@
 
     // TODO: drop new attribute in v4.0 and make all these styles as default ones
     &[new] {
+        border-radius: 1rem;
         clip-path: inset(
             0 0.5px round var(--tui-radius-m)
         ); // 0.5px is a hack to prevent jagged edges on low dpi screens
-
-        border-radius: 1rem;
         .progressValue({ border-radius: inherit });
 
         &[data-size='xs'] {
@@ -102,9 +101,9 @@
     &:indeterminate {
         .progressValue({ background: transparent });
 
+        animation: tuiIndeterminateAnimation 3s infinite ease-in-out;
         background: linear-gradient(to right, @track-color 0 45%, @progress-color 45% 55%, @track-color 55% 100%) right;
         background-size: 225%;
-        animation: tuiIndeterminateAnimation 3s infinite ease-in-out;
     }
 
     &::-webkit-progress-inner-element {
@@ -112,8 +111,8 @@
     }
 
     &::-webkit-progress-bar {
-        background: transparent;
         border-radius: inherit;
+        background: transparent;
     }
 }
 

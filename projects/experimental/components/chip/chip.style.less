@@ -8,11 +8,11 @@ tui-chip,
 
     .button-base();
 
-    font: var(--tui-font-text-s);
-    border-radius: var(--tui-radius-m);
-    padding: var(--t-padding);
-    height: var(--t-size);
     width: fit-content;
+    height: var(--t-size);
+    padding: var(--t-padding);
+    border-radius: var(--tui-radius-m);
+    font: var(--tui-font-text-s);
 
     .interactive({
         cursor: pointer;
@@ -30,8 +30,8 @@ tui-chip,
         --t-size: 1rem;
         --t-icon-size: 0.75rem;
 
-        font: var(--tui-font-text-xs);
         border-radius: var(--tui-radius-xs);
+        font: var(--tui-font-text-xs);
 
         & > [tuiIconButton] {
             margin: -0.5rem;

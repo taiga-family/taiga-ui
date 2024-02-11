@@ -5,7 +5,10 @@
 
     position: relative;
     display: flex;
+    height: var(--tui-height-l);
     align-items: flex-start;
+    backdrop-filter: blur(0.25rem);
+    color: var(--tui-text-03);
     font:
         normal 0.625rem/0.75rem -apple-system,
         BlinkMacSystemFont,
@@ -13,24 +16,21 @@
         Roboto,
         'Segoe UI',
         sans-serif;
-    height: var(--tui-height-l);
-    color: var(--tui-text-03);
-    backdrop-filter: blur(0.25rem);
 
     &:before {
         .fullsize();
 
-        content: '';
         background: var(--tui-elevation-01);
         box-shadow: inset 0 1px var(--tui-base-04);
+        content: '';
         opacity: 0.9;
     }
 }
 
 .t-skeletons {
     display: none;
-    height: 100%;
     width: 100%;
+    height: 100%;
     justify-content: space-around;
 
     &:first-child {
@@ -46,19 +46,19 @@
     animation: tuiSkeletonVibe ease-in-out 1s infinite alternate;
 
     &:before {
-        content: '';
         width: 1.375rem;
         height: 1.375rem;
-        margin-bottom: 0.5rem;
         border-radius: 100%;
+        margin-bottom: 0.5rem;
         background: var(--tui-clear-hover);
+        content: '';
     }
 
     &:after {
-        content: '';
         width: 2.5rem;
         height: 0.375rem;
         border-radius: 1rem;
         background: var(--tui-clear-hover);
+        content: '';
     }
 }

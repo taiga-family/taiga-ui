@@ -5,12 +5,12 @@
 
     position: relative;
     display: flex;
+    overflow: hidden;
+    box-sizing: border-box;
     padding: 0.75rem 1rem;
     border-radius: var(--tui-radius-m);
     background: #fff; // fallback for IE
     background: var(--tui-base-01);
-    box-sizing: border-box;
-    overflow: hidden;
 
     &[data-size='s'] {
         padding: 0.375rem 0.625rem;
@@ -42,8 +42,8 @@
 
     &[data-size='l'] {
         padding: 1rem;
-        font: var(--tui-font-text-m);
         border-radius: var(--tui-radius-l);
+        font: var(--tui-font-text-m);
 
         .t-icon {
             width: 1.5rem;
@@ -53,33 +53,33 @@
     }
 
     &[data-status='info'] {
-        color: var(--tui-info-fill);
         background: linear-gradient(var(--tui-info-bg), var(--tui-info-bg)), var(--tui-base-01);
+        color: var(--tui-info-fill);
     }
 
     &[data-status='success'] {
-        color: var(--tui-success-fill);
         background: linear-gradient(var(--tui-success-bg), var(--tui-success-bg)), var(--tui-base-01);
+        color: var(--tui-success-fill);
     }
 
     &[data-status='error'] {
-        color: var(--tui-error-fill);
         background: linear-gradient(var(--tui-error-bg), var(--tui-error-bg)), var(--tui-base-01);
+        color: var(--tui-error-fill);
     }
 
     &[data-status='warning'] {
-        color: var(--tui-warning-fill);
         background: linear-gradient(var(--tui-warning-bg), var(--tui-warning-bg)), var(--tui-base-01);
+        color: var(--tui-warning-fill);
     }
 
     &[data-status='neutral'] {
-        color: var(--tui-neutral-fill);
         background: linear-gradient(var(--tui-neutral-bg), var(--tui-neutral-bg)), var(--tui-base-01);
+        color: var(--tui-neutral-fill);
     }
 }
 
 .t-content {
     flex: 1;
-    word-break: break-word;
     color: var(--tui-text-01);
+    word-break: break-word;
 }

@@ -13,11 +13,11 @@
     position: relative;
     display: inline-block;
     flex-shrink: 0;
-    vertical-align: top;
     border-radius: var(--tui-radius-m);
-    user-select: none;
-    outline: none;
     color: inherit;
+    outline: none;
+    user-select: none;
+    vertical-align: top;
 
     &[data-shape='rounded'] {
         border-radius: 6.25rem;
@@ -127,10 +127,10 @@
 .t-left,
 .t-right {
     display: flex;
-    align-items: center;
-    justify-content: center;
     width: 1.5rem;
     height: 1.5rem;
+    align-items: center;
+    justify-content: center;
 
     :host[data-size='s'] &,
     :host[data-size='xs'] & {

@@ -11,20 +11,20 @@
     &[data-appearance='table']:after {
         position: fixed;
         top: -0.5px;
-        left: -1px;
         right: -0.5px;
         bottom: -1px;
+        left: -1px;
     }
     /* stylelint-enable meowtec/no-px */
 
     &:before {
         .transition(background);
 
-        content: '';
         z-index: -1;
-        background-repeat: no-repeat;
         background-position: top right;
+        background-repeat: no-repeat;
         background-size: 0.5rem 0.5rem;
+        content: '';
     }
 
     table &[data-appearance='table']:not(._focused):after {

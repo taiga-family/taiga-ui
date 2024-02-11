@@ -8,12 +8,12 @@
 
     position: relative;
     display: flex;
-    align-items: center;
-    box-sizing: content-box;
-    isolation: isolate;
-    color: var(--tui-text-01);
-    padding: var(--t-padding);
     min-height: var(--t-height);
+    box-sizing: content-box;
+    align-items: center;
+    padding: var(--t-padding);
+    color: var(--tui-text-01);
+    isolation: isolate;
 
     &:disabled {
         pointer-events: none;
@@ -29,8 +29,8 @@
 
     [tuiCellActions] {
         position: absolute;
-        right: 0;
         z-index: 1;
+        right: 0;
         padding-right: inherit;
 
         & ~ * {
@@ -52,22 +52,22 @@
     [tuiSubtitle] {
         display: flex;
         align-items: center;
-        gap: 0.25rem;
         color: var(--tui-text-02);
+        gap: 0.25rem;
     }
 
     [tuiTitle] {
         flex-shrink: 7;
-        margin-inline-end: auto;
         align-items: normal;
+        margin-inline-end: auto;
         text-align: left;
     }
 
     [tuiTitle] ~ [tuiTitle] {
         flex-shrink: 3;
+        align-items: flex-end;
         margin-inline-end: 0;
         text-align: right;
-        align-items: flex-end;
     }
 
     tui-badge-notification[data-size='xs'] {

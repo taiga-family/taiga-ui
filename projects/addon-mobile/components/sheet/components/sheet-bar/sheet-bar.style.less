@@ -4,8 +4,8 @@
     .transition(border-radius);
 
     position: sticky;
-    top: 0;
     z-index: 2;
+    top: 0;
     display: flex;
     height: 1.25rem;
     align-items: center;
@@ -14,10 +14,10 @@
 }
 
 .t-bar {
-    content: '';
-    height: 0.25rem;
     width: 1rem;
+    height: 0.25rem;
     background: var(--tui-base-09);
+    content: '';
     pointer-events: none;
 
     :host-context(._ios:not(._dragged)) & {

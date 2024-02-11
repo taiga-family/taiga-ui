@@ -28,23 +28,23 @@
 
 .t-item {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: var(--tui-carousel-padding, 0 1.25rem);
-    flex: 1;
     min-width: 100%;
     max-width: 100%;
     box-sizing: border-box;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    padding: var(--tui-carousel-padding, 0 1.25rem);
     border: none;
     margin: 0;
 }
 
 .t-wrapper {
     position: sticky;
-    left: 0;
     right: 0;
-    min-width: 100%;
+    left: 0;
     overflow: hidden;
+    min-width: 100%;
 }
 
 .t-scroller {
@@ -56,8 +56,8 @@
 
     &:before,
     &:after {
-        content: '';
         display: block;
         min-width: 1rem;
+        content: '';
     }
 }

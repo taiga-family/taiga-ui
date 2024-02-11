@@ -4,25 +4,25 @@
     position: absolute;
     max-width: 18rem;
     min-height: var(--tui-height-m);
-    padding: 0.75rem 1rem;
-    background: var(--tui-primary);
-    border-radius: var(--tui-radius-l);
-    color: var(--tui-primary-text);
     box-sizing: border-box;
+    padding: 0.75rem 1rem;
+    border-radius: var(--tui-radius-l);
+    background: var(--tui-primary);
+    color: var(--tui-primary-text);
     font: var(--tui-font-text-s);
     white-space: pre-line;
     word-wrap: break-word;
 
     &:before {
-        content: '';
         position: absolute;
         top: var(--top);
         left: var(--left);
         width: 0.5rem;
         height: 0.5rem;
-        border-radius: 0.125rem;
         box-sizing: border-box;
+        border-radius: 0.125rem;
         background: inherit;
+        content: '';
         transform: translate(-50%, -50%) rotate(45deg);
     }
 

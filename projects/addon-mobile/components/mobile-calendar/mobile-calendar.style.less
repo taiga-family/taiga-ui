@@ -8,16 +8,16 @@
 :host {
     display: block;
     height: 100%;
-    font-family: -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
     color: var(--tui-text-01);
+    font-family: -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
     -webkit-tap-highlight-color: transparent;
 }
 
 .t-header {
     position: relative;
     display: flex;
-    align-items: center;
     height: 3.5rem;
+    align-items: center;
     padding: 0 1rem;
     // TODO: research if it can be used in rem units
     /* stylelint-disable-next-line */
@@ -40,13 +40,13 @@
 }
 
 .t-link {
-    margin-left: auto;
     flex-shrink: 0;
-    font-size: 0.875rem;
-    line-height: 1rem;
-    font-weight: 500;
-    text-transform: uppercase;
+    margin-left: auto;
     color: @accent;
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1rem;
+    text-transform: uppercase;
 
     &_close {
         display: none;
@@ -54,11 +54,11 @@
 
     :host._ios & {
         min-width: 3.75rem;
-        text-align: right;
         font-size: 0.9375rem;
-        line-height: 1.125rem;
         font-weight: 400;
         letter-spacing: 0.018125rem;
+        line-height: 1.125rem;
+        text-align: right;
         text-transform: none;
 
         &_close {
@@ -70,15 +70,15 @@
 }
 
 .t-label {
+    overflow: hidden;
     flex-grow: 1;
     margin: 0;
     font-size: 1.25rem;
-    line-height: 3.5rem;
     font-weight: 500;
     letter-spacing: -0.0125rem;
-    white-space: nowrap;
-    overflow: hidden;
+    line-height: 3.5rem;
     text-overflow: ellipsis;
+    white-space: nowrap;
 
     & + .t-link {
         padding-left: 1rem;
@@ -114,16 +114,15 @@
 .t-year {
     .clearbtn();
 
-    outline: none;
     // TODO: investigate problem in mobile calendar
-    /* stylelint-disable-next-line */
     width: 20vw;
     flex-shrink: 0;
+    cursor: pointer;
     font-size: 0.9375rem;
     font-weight: 700;
     letter-spacing: 0.015625rem;
-    cursor: pointer;
     opacity: 0.1;
+    outline: none;
     transform: scale(0.73);
     transition:
         color,
@@ -131,8 +130,8 @@
         transform 0.2s;
 
     &[data-state='adjacent'] {
-        transform: scale(0.86);
         opacity: 0.3;
+        transform: scale(0.86);
     }
 
     &[data-state='active'] {
@@ -144,18 +143,18 @@
 
 .t-week {
     display: flex;
-    align-items: center;
-    height: 1.875rem;
     width: 20.75rem;
     max-width: 100%;
+    height: 1.875rem;
+    align-items: center;
     margin: 0 auto;
     font-size: 0.75rem;
 
     :host._ios & {
         width: 22.625rem;
+        color: @secondary;
         font-size: 0.6875rem;
         font-weight: 500;
-        color: @secondary;
     }
 }
 
@@ -182,26 +181,26 @@
 
 .t-month {
     height: 2.75rem;
-    line-height: 2.75rem;
+    box-sizing: border-box;
     padding-left: 1rem;
+    margin: 0 0 1.25rem;
     font-size: 0.875rem;
     font-weight: 500;
+    line-height: 2.75rem;
     text-transform: uppercase;
-    margin: 0 0 1.25rem;
-    box-sizing: border-box;
     // TODO: research if it can be used in rem units
     /* stylelint-disable-next-line */
     border-bottom: 0.5px solid @border;
 
     :host._ios & {
         height: 3.125rem;
-        margin: 0;
         border-bottom: none;
-        text-transform: none;
+        margin: 0;
         font-size: 1.375rem;
-        line-height: 3.125rem;
-        letter-spacing: 0.02rem;
         font-weight: 700;
+        letter-spacing: 0.02rem;
+        line-height: 3.125rem;
+        text-transform: none;
     }
 }
 

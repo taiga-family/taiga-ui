@@ -2,42 +2,42 @@
 
 :host {
     display: flex;
-    flex-direction: column;
     min-height: 0;
     flex-basis: 0;
+    flex-direction: column;
     flex-grow: 1;
 }
 
 .t-header {
     display: flex;
-    font: var(--tui-font-heading-3);
-    flex-wrap: wrap;
     min-height: 7.25rem;
-    color: var(--tui-text-01);
-    box-shadow: inset 0 -1px 0 0 var(--tui-base-03);
-    padding: 3.75rem 0 0;
     box-sizing: border-box;
     flex-shrink: 0;
+    flex-wrap: wrap;
+    padding: 3.75rem 0 0;
     margin: 0 ~'min(10vw, 8.75rem)';
+    box-shadow: inset 0 -1px 0 0 var(--tui-base-03);
+    color: var(--tui-text-01);
+    font: var(--tui-font-heading-3);
 
     :host-context(tui-root._mobile) & {
-        font: var(--tui-font-heading-4);
         min-height: 4.5rem;
         padding: 1.25rem 1.25rem 0;
         margin: 0;
+        font: var(--tui-font-heading-4);
     }
 }
 
 .t-title {
     min-width: 100%;
-    font-size: inherit;
     margin: 0;
+    font-size: inherit;
 }
 
 .t-tag {
-    vertical-align: middle;
-    text-transform: uppercase;
     margin-right: 0.5rem;
+    text-transform: uppercase;
+    vertical-align: middle;
 
     &_deprecated {
         background-color: var(--tui-error-fill);
@@ -69,20 +69,20 @@
 }
 
 .t-see-also {
-    min-width: 18.75rem;
     width: 30%;
-    float: right;
+    min-width: 18.75rem;
     margin-left: 1.5rem;
+    float: right;
 
     :host-context(tui-root._mobile) & {
-        float: none;
         width: 100%;
         margin: 0 0 1.5rem;
+        float: none;
     }
 }
 
 .t-source-code {
     align-self: flex-end;
-    line-height: 2.75rem;
     margin-left: auto;
+    line-height: 2.75rem;
 }

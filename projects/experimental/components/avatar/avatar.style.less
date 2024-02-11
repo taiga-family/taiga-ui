@@ -6,20 +6,20 @@
 
     position: relative;
     display: inline-flex;
-    flex-shrink: 0;
+    overflow: hidden;
     width: var(--t-size);
     height: var(--t-size);
+    box-sizing: border-box;
+    flex-shrink: 0;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
-    white-space: nowrap;
+    padding: 0.25rem;
     border-radius: var(--t-radius);
     background: var(--tui-secondary);
     color: var(--tui-text-02);
-    vertical-align: middle;
-    box-sizing: border-box;
-    padding: 0.25rem;
     opacity: 0.999; // Kick in hardware rendering layer to avoid artifacts on the edges
+    vertical-align: middle;
+    white-space: nowrap;
 
     &:before {
         .fullsize();

@@ -24,6 +24,8 @@
 .customize-track(@progress-filling, @thumb-width) {
     height: @track-height;
     border-radius: inherit;
+    background-color: @track-color;
+    background-repeat: no-repeat;
 
     /*
     The most left point of the track is the most left point of the thumb (at the zero-position).
@@ -48,9 +50,6 @@
         transparent var(--tui-slider-fill-percentage)
     );
 
-    background-repeat: no-repeat;
-    background-color: @track-color;
-
     & when (@progress-filling = true) {
         background-image: @hide-first-tick, @ticks-gradient, @filling-progress-gradient;
         background-position-x: 0, @first-tick-offset, 0;
@@ -67,20 +66,20 @@
 .customize-thumb(@size) {
     .transition(transform);
 
-    isolation: isolate;
-    appearance: none;
-    background-color: @thumb-color;
-    box-shadow: none;
-    border-radius: 50%;
-    height: @thumb-diameters[@@size];
     width: @thumb-diameters[@@size];
+    height: @thumb-diameters[@@size];
 
     /* Increase vertical hitbox by trasparent borders */
     box-sizing: content-box;
-    background-clip: content-box;
     border: ((@hitbox - @thumb-diameters[@@size]) / 2) solid transparent;
-    border-left: 0;
+    border-radius: 50%;
     border-right: 0;
+    border-left: 0;
+    appearance: none;
+    background-clip: content-box;
+    background-color: @thumb-color;
+    box-shadow: none;
+    isolation: isolate;
     transform: var(--tui-slider-thumb-transform, @transform-noop);
 
     :not(:disabled)& {
@@ -132,9 +131,9 @@
         .transition(~'transform, opacity');
         .thumb-ghost(@size);
 
+        background: @thumb-color;
         content: '';
         cursor: ew-resize;
-        background: @thumb-color;
         opacity: 0;
     }
 
@@ -158,8 +157,8 @@
     }
 
     &:disabled {
-        opacity: var(--tui-disabled-opacity);
         cursor: auto;
+        opacity: var(--tui-disabled-opacity);
     }
 
     &[data-size='s'] {
@@ -172,13 +171,13 @@
 }
 
 :host:not(._old-edge) {
-    appearance: none;
     height: @track-height;
     padding: ((@hitbox - @track-height) / 2) 0; /* To catch click events nearby THIN input's track */
-    background-color: transparent;
-    background-clip: content-box; /* To clip filling of paddings */
-    outline: none;
     border-radius: var(--tui-radius-m);
+    appearance: none;
+    background-clip: content-box; /* To clip filling of paddings */
+    background-color: transparent;
+    outline: none;
 
     &::-webkit-slider-container {
         border-radius: inherit;
@@ -235,16 +234,16 @@
     &::-moz-range-progress {
         height: @track-height;
         background: @thumb-color;
-        border-top-right-radius: 0;
         border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
     }
 }
 
 /* Not-chromium Edge minimum customization */
 :host._old-edge {
     &::-ms-thumb {
-        background: @thumb-color;
         border-radius: 50%;
+        background: @thumb-color;
     }
 
     &::-ms-fill-lower {
@@ -252,7 +251,7 @@
     }
 
     &::-ms-track {
-        background: @track-color;
         border: none;
+        background: @track-color;
     }
 }

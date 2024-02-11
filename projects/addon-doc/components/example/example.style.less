@@ -16,8 +16,8 @@
 }
 
 .t-title {
-    font: var(--tui-font-heading-5);
     margin: 0 0 0.5rem;
+    font: var(--tui-font-heading-5);
 
     :host-context(tui-root._mobile) & {
         font: var(--tui-font-heading-6);
@@ -25,9 +25,9 @@
 }
 
 .t-description {
+    margin: 0;
     font: var(--tui-font-text-m);
     font-weight: normal;
-    margin: 0;
 }
 
 .t-title:first-letter,
@@ -37,11 +37,11 @@
 
 .t-example {
     position: relative;
-    margin-top: 1.5rem;
+    overflow: hidden;
     border: 1px solid var(--tui-base-03);
     border-radius: var(--tui-radius-m);
+    margin-top: 1.5rem;
     box-shadow: 0 0.125rem 0.1875rem rgba(0, 0, 0, 0.1);
-    overflow: hidden;
 
     :host-context(tui-root._mobile) & {
         margin-top: 0.75rem;
@@ -50,10 +50,10 @@
 
 .t-tabs-wrapper {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
     padding: 0 0.875rem 0 2rem;
     box-shadow: inset 0 -1px var(--tui-base-03);
-    justify-content: space-between;
-    align-items: center;
 
     :host-context(tui-root._mobile) & {
         padding: 0 0.875rem 0 1rem;
@@ -67,9 +67,9 @@
 .t-demo {
     .customize-scroll();
 
-    padding: 2rem;
     max-width: 100%;
     box-sizing: border-box;
+    padding: 2rem;
     overflow-x: auto;
 
     :host-context(tui-root._mobile) & {
@@ -88,10 +88,10 @@
 }
 
 .t-content {
-    will-change: opacity;
     height: 0;
-    visibility: hidden;
     opacity: 0;
+    visibility: hidden;
+    will-change: opacity;
 }
 
 .t-content_animated {
@@ -100,6 +100,6 @@
 
 .t-content_visible {
     height: auto;
-    visibility: visible;
     opacity: 1;
+    visibility: visible;
 }
