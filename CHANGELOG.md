@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.66.0](https://github.com/taiga-family/taiga-ui/compare/v3.59.0...v3.66.0) (2024-02-12)
+
+### Features
+
+- **core:** add interactive mode for notification ([#6703](https://github.com/taiga-family/taiga-ui/issues/6703))
+  ([b0841d3](https://github.com/taiga-family/taiga-ui/commit/b0841d387b0e9f6aecf11544ee2efa3dadc9fb74))
+- **core:** add iOS support to TuiDropdownContextDirective
+  ([#6721](https://github.com/taiga-family/taiga-ui/issues/6721))
+- **experimental:** add `tuiButtonGroup` ([#6686](https://github.com/taiga-family/taiga-ui/issues/6686))
+  ([03c4be3](https://github.com/taiga-family/taiga-ui/commit/03c4be31ed825d0217b2c5afb87f1e2d527690b2))
+- **kit:** hide dropdown if datalist template not provided
+  ([#6700](https://github.com/taiga-family/taiga-ui/issues/6700))
+  ([0118e72](https://github.com/taiga-family/taiga-ui/commit/0118e72e3f0781ef7ddb15e22000ed9a5224c92c))
+
+### Bug Fixes
+
+- **core:** `Dropdown` fix max height ([#6748](https://github.com/taiga-family/taiga-ui/issues/6748))
+  ([c4c43d1](https://github.com/taiga-family/taiga-ui/commit/c4c43d1d417df32471292e7903cb54665ae1fbb3))
+- **core:** `Multiselect` fix dropdown shaking ([#6707](https://github.com/taiga-family/taiga-ui/issues/6707))
+  ([1a148e2](https://github.com/taiga-family/taiga-ui/commit/1a148e28eb5b942b1c644379d645ba8559a13e7b))
+- **core:** `PrimitiveTextfield` fix memory leak ([#6697](https://github.com/taiga-family/taiga-ui/issues/6697))
+  ([ff86243](https://github.com/taiga-family/taiga-ui/commit/ff86243c8bf60591c4faea8ea1d264ee3dde8c45))
+- **core:** cancel macrotask in `tui-expand` when component destroyed
+  ([#6747](https://github.com/taiga-family/taiga-ui/issues/6747))
+  ([120eb82](https://github.com/taiga-family/taiga-ui/commit/120eb8292822e80cea736cc6a7a9e674dfda98b1))
+- **core:** fix `:active` state of interactive elements in Safari
+  ([#6753](https://github.com/taiga-family/taiga-ui/issues/6753))
+  ([bd96202](https://github.com/taiga-family/taiga-ui/commit/bd96202ff3fe164f9e0d765c331138381d60ca96))
+- **experimental:** `SwipeActions` fix scrolling without actions
+  ([#6750](https://github.com/taiga-family/taiga-ui/issues/6750))
+  ([f59d8a6](https://github.com/taiga-family/taiga-ui/commit/f59d8a6eb4b3178516fd4dc925fb54d1ec208247))
+- **kit:** add `line-height` for `[tuiTab]` ([#6704](https://github.com/taiga-family/taiga-ui/issues/6704))
+  ([db83218](https://github.com/taiga-family/taiga-ui/commit/db832181f0529781c3fc75c6df9c3795269755d7))
+
 ## [3.65.0](https://github.com/taiga-family/taiga-ui/compare/v3.59.0...v3.65.0) (2024-02-05)
 
 ### Features
