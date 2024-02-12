@@ -51,7 +51,7 @@
                     "projects/demo/src/styles.scss"
                 ],
                 "scripts": [],
-                "allowedCommonJsDependencies": ["text-mask-core", "markdown-it"],
+                "allowedCommonJsDependencies": ["markdown-it"],
                 "vendorChunk": true,
                 "extractLicenses": false,
                 "buildOptimizer": false,

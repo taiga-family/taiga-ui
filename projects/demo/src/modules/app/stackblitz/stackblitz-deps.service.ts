@@ -78,7 +78,6 @@ export class StackblitzDepsService {
             '@maskito/angular': kitDeps['@maskito/angular'],
             '@maskito/core': kitDeps['@maskito/core'],
             '@maskito/kit': kitDeps['@maskito/kit'],
-            'text-mask-core': kitDeps['text-mask-core'],
             'zone.js': rootDeps['zone.js'],
             dompurify: demoDeps.dompurify,
             rxjs: rootDeps.rxjs,
