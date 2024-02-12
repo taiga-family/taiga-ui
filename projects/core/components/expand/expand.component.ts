@@ -9,12 +9,14 @@ import {
     HostListener,
     Inject,
     Input,
+    Self,
     TemplateRef,
     ViewChild,
 } from '@angular/core';
-import {TuiValuesOf} from '@taiga-ui/cdk';
+import {TuiDestroyService, TuiValuesOf} from '@taiga-ui/cdk';
 import {TUI_PARENT_ANIMATION} from '@taiga-ui/core/animations';
 import {TUI_EXPAND_LOADED} from '@taiga-ui/core/constants';
+import {Observable, takeUntil, timer} from 'rxjs';
 
 import {TuiExpandContentDirective} from './expand-content.directive';
 
@@ -32,6 +34,7 @@ const LOADER_HEIGHT = 48;
     templateUrl: './expand.template.html',
     styleUrls: ['./expand.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [TuiDestroyService],
     animations: [TUI_PARENT_ANIMATION],
 })
 export class TuiExpandComponent {
@@ -69,7 +72,10 @@ export class TuiExpandComponent {
     @HostBinding('attr.aria-expanded')
     expanded: boolean | null = null;
 
-    constructor(@Inject(ChangeDetectorRef) private readonly cdr: ChangeDetectorRef) {}
+    constructor(
+        @Inject(ChangeDetectorRef) private readonly cdr: ChangeDetectorRef,
+        @Self() @Inject(TuiDestroyService) private readonly destroy$: Observable<void>,
+    ) {}
 
     @HostBinding('class._overflow')
     get overflow(): boolean {
@@ -130,14 +136,16 @@ export class TuiExpandComponent {
     private retrigger(state: TuiValuesOf<typeof State>): void {
         this.state = State.Prepared;
 
-        // We need delay to re-trigger CSS height transition from the correct number
-        setTimeout(() => {
-            if (this.state !== State.Prepared) {
-                return;
-            }
+        timer(0)
+            .pipe(takeUntil(this.destroy$))
+            .subscribe(() => {
+                // We need delay to re-trigger CSS height transition from the correct number
+                if (this.state !== State.Prepared) {
+                    return;
+                }
 
-            this.state = state;
-            this.cdr.markForCheck();
-        });
+                this.state = state;
+                this.cdr.markForCheck();
+            });
     }
 }
