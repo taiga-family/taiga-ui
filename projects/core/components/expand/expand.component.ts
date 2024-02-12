@@ -16,7 +16,7 @@ import {
 import {TUI_PARENT_ANIMATION, TuiDestroyService, TuiValuesOf} from '@taiga-ui/cdk';
 import {TUI_EXPAND_LOADED} from '@taiga-ui/core/constants';
 import {Observable, timer} from 'rxjs';
-import {takeUntil} from 'rxjs/operators'
+import {takeUntil} from 'rxjs/operators';
 
 import {TuiExpandContentDirective} from './expand-content.directive';
 
