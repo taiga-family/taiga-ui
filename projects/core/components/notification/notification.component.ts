@@ -19,7 +19,7 @@ import {TuiNotificationT} from '@taiga-ui/core/types';
 import {Observable} from 'rxjs';
 
 @Component({
-    selector: 'tui-notification',
+    selector: 'tui-notification,a[tuiNotification],button[tuiNotification]',
     templateUrl: './notification.template.html',
     styleUrls: ['./notification.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
