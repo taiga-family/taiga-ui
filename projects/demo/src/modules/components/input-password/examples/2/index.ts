@@ -13,8 +13,8 @@ import {of} from 'rxjs';
     providers: [
         tuiInputPasswordOptionsProvider({
             icons: {
-                hide: 'tuiIconUnlockLarge',
-                show: 'tuiIconLockLarge',
+                hide: 'tuiIconLockLarge',
+                show: 'tuiIconUnlockLarge',
             },
         }),
         {
