@@ -35,6 +35,7 @@ import {debounceTime, map} from 'rxjs/operators';
         '[class._ios]': 'isIOS',
         '[class._android]': 'isAndroid',
         '[class._reduced-motion]': 'reducedMotion',
+        '(touchstart.passive.silent)': '0',
         '[$.class._mobile]': 'isMobileRes$',
         '($.class._mobile)': 'isMobileRes$',
     },
