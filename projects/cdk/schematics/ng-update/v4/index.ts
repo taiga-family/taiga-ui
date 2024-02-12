@@ -8,16 +8,18 @@ import {TuiSchema} from '../../ng-add/schema';
 import {FINISH_SYMBOL, START_SYMBOL, titleLog} from '../../utils/colored-log';
 import {getExecutionTime} from '../../utils/get-execution-time';
 import {projectRoot} from '../../utils/project-root';
-import {replaceIdentifiers} from '../steps/replace-identifier';
-import {showWarnings} from '../steps/show-warnings';
+import {removeModules, replaceIdentifiers, showWarnings} from '../steps';
 import {
     migrateLegacyMask,
     migrateTemplates,
     restoreTuiMapper,
     restoreTuiMatcher,
 } from './steps';
-import {MIGRATION_WARNINGS} from './steps/constants';
-import {IDENTIFIERS_TO_REPLACE} from './steps/constants/identifiers-to-replace';
+import {
+    IDENTIFIERS_TO_REPLACE,
+    MIGRATION_WARNINGS,
+    MODULES_TO_REMOVE,
+} from './steps/constants';
 
 function main(options: TuiSchema): Rule {
     return (tree: Tree, context: SchematicContext) => {
@@ -26,6 +28,7 @@ function main(options: TuiSchema): Rule {
         const fileSystem = project.getFileSystem().fs;
 
         replaceIdentifiers(options, IDENTIFIERS_TO_REPLACE);
+        removeModules(options, MODULES_TO_REMOVE);
 
         restoreTuiMapper(options);
         restoreTuiMatcher(options);

@@ -68,6 +68,12 @@
             "languageId": "ts",
             "filename": ["**/textarea.spec.ts"],
             "ignoreWords": ["qwertypgj_"]
+        },
+
+        {
+            "languageId": "ts",
+            "filename": ["**/migrate-prevent-default.ts"],
+            "ignoreWords": ["tuipreventdefault"]
         }
     ]
 }
