@@ -15,21 +15,30 @@
     "repository": "https://github.com/taiga-family/taiga-ui",
     "license": "Apache-2.0",
     "dependencies": {
-        "@ng-web-apis/common": "3.0.6",
-        "@ng-web-apis/mutation-observer": "3.1.0",
-        "@ng-web-apis/resize-observer": "3.0.6",
-        "@tinkoff/ng-event-plugins": "3.1.0",
-        "@tinkoff/ng-polymorpheus": "4.3.0",
         "tslib": "2.6.2"
+    },
+    "devDependencies": {
+        "@angular-devkit/core": "^15.0.0",
+        "@angular-devkit/schematics": "^15.0.0",
+        "@schematics/angular": "^15.0.0",
+        "@types/parse5": "6.0.3"
     },
     "peerDependencies": {
         "@angular/animations": ">=15.0.0",
         "@angular/common": ">=15.0.0",
         "@angular/core": ">=15.0.0",
         "@angular/forms": ">=15.0.0",
+        "@ng-web-apis/common": "^3.0.6",
+        "@ng-web-apis/mutation-observer": "^3.1.0",
+        "@ng-web-apis/resize-observer": "^3.0.6",
+        "@tinkoff/ng-event-plugins": "^3.1.0",
+        "@tinkoff/ng-polymorpheus": "^4.3.0",
         "rxjs": ">=6.0.0"
     },
     "optionalDependencies": {
+        "@angular-devkit/core": ">=15.0.0",
+        "@angular-devkit/schematics": ">=15.0.0",
+        "@schematics/angular": ">=15.0.0",
         "ng-morph": "4.0.6",
         "parse5": "6.0.1"
     },
