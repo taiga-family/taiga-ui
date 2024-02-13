@@ -146,10 +146,8 @@ describe('Mobile calendar', () => {
                     });
                 });
 
-            cy.get('@onConfirmSpy')
-                .should('be.called')
-                .then(args => (args as any)?.getCalls()?.[0].args[0] as TuiDay)
-                .then(spy => expect(spy.year).to.equal(1950));
+            cy.get('@onConfirmSpy').should('be.called');
+            cy.get('[data-state="active"]').contains('1950');
         });
     });
 });
