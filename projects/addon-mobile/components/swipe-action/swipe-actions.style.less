@@ -31,6 +31,10 @@
     align-items: center;
     transform-style: preserve-3d;
 
+    &:empty {
+        display: none;
+    }
+
     ::ng-deep & > * {
         .loop(6);
     }
