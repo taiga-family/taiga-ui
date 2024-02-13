@@ -325,6 +325,15 @@ export const ROUTES: Routes = [
         },
     },
     {
+        path: 'experimental/button-group',
+        loadChildren: async () =>
+            (await import('../experimental/button-group/button-group.module'))
+                .ExampleTuiButtonGroupModule,
+        data: {
+            title: 'ButtonGroup',
+        },
+    },
+    {
         path: 'experimental/cell',
         loadChildren: async () =>
             (await import('../experimental/cell/cell.module')).ExampleTuiCellModule,
