@@ -9,6 +9,7 @@
     > button,
     > a {
         .transition(background);
+
         position: relative;
         display: flex;
         border: none;
@@ -38,12 +39,12 @@
             height: 100%;
         }
 
-        &:first-child::before {
+        &:first-child:before {
             content: '';
             left: -1.75rem;
         }
 
-        &:last-child::after {
+        &:last-child:after {
             content: '';
             right: -1.75rem;
         }
