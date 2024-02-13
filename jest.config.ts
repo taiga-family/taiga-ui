@@ -34,6 +34,7 @@ const config: Config = {
     globals: {
         'ts-jest': {
             tsconfig: resolve(__dirname, 'tsconfig.spec.json'),
+            stringifyContentPathRegex: '\\.html$',
             isolatedModules: true,
         },
     },
