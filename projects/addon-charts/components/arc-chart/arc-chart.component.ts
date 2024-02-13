@@ -8,12 +8,23 @@ import {
     Input,
     Output,
     QueryList,
+    Self,
     ViewChildren,
 } from '@angular/core';
 import {DomSanitizer, SafeValue} from '@angular/platform-browser';
-import {tuiTypedFromEvent} from '@taiga-ui/cdk';
+import {TuiDestroyService, tuiTypedFromEvent, tuiWatch} from '@taiga-ui/cdk';
 import {TuiSizeXL} from '@taiga-ui/core';
-import {map, merge, Observable, ReplaySubject, startWith, switchMap, tap} from 'rxjs';
+import {
+    map,
+    merge,
+    Observable,
+    ReplaySubject,
+    startWith,
+    switchMap,
+    takeUntil,
+    tap,
+    timer,
+} from 'rxjs';
 // 3/4 with 1% safety offset
 const ARC = 0.76;
 
@@ -95,12 +106,13 @@ export class TuiArcChartComponent {
     constructor(
         @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
         @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
+        @Self() @Inject(TuiDestroyService) destroy$: Observable<void>,
     ) {
-        // So initial animation works
-        setTimeout(() => {
-            this.initialized = true;
-            cdr.markForCheck();
-        });
+        timer(0)
+            .pipe(tuiWatch(cdr), takeUntil(destroy$))
+            .subscribe(() => {
+                this.initialized = true;
+            });
     }
 
     @HostBinding('style.width.rem')
