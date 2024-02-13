@@ -14,7 +14,7 @@ import {Observable} from 'rxjs';
 import {TUI_NOTIFICATION_OPTIONS, TuiNotificationOptions} from './notification.options';
 
 @Component({
-    selector: 'tui-notification',
+    selector: 'tui-notification,a[tuiNotification],button[tuiNotification]',
     templateUrl: './notification.template.html',
     styleUrls: ['./notification.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
