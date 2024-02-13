@@ -1,13 +1,23 @@
-import {ChangeDetectorRef, Component, ElementRef, Inject, ViewChild} from '@angular/core';
+import {
+    ChangeDetectorRef,
+    Component,
+    ElementRef,
+    Inject,
+    Self,
+    ViewChild,
+} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiDestroyService} from '@taiga-ui/cdk';
 import {TUI_EXPAND_LOADED, TuiExpandComponent} from '@taiga-ui/core';
+import {Observable, takeUntil, timer} from 'rxjs';
 
 @Component({
     selector: 'example-expand',
     templateUrl: './expand.template.html',
     styleUrls: ['./expand.style.less'],
     changeDetection,
+    providers: [TuiDestroyService],
 })
 export class ExampleTuiExpandComponent {
     @ViewChild(TuiExpandComponent, {read: ElementRef})
@@ -27,7 +37,10 @@ export class ExampleTuiExpandComponent {
 
     delayed = false;
 
-    constructor(@Inject(ChangeDetectorRef) private readonly cdr: ChangeDetectorRef) {}
+    constructor(
+        @Inject(ChangeDetectorRef) private readonly cdr: ChangeDetectorRef,
+        @Self() @Inject(TuiDestroyService) private readonly destroy$: Observable<void>,
+    ) {}
 
     onExpandedChange(expanded: boolean): void {
         this.expanded = expanded;
@@ -37,15 +50,14 @@ export class ExampleTuiExpandComponent {
             return;
         }
 
-        setTimeout(() => {
-            const event = new CustomEvent(TUI_EXPAND_LOADED, {bubbles: true});
+        timer(5000)
+            .pipe(takeUntil(this.destroy$))
+            .subscribe(() => {
+                const event = new CustomEvent(TUI_EXPAND_LOADED, {bubbles: true});
 
-            this.delayed = false;
-            this.cdr.detectChanges();
-
-            if (this.expand) {
-                this.expand.nativeElement.dispatchEvent(event);
-            }
-        }, 5000);
+                this.delayed = false;
+                this.cdr.detectChanges();
+                this.expand?.nativeElement.dispatchEvent(event);
+            });
     }
 }
