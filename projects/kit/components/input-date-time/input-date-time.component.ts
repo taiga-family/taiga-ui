@@ -59,7 +59,7 @@ import {
     tuiDateStreamWithTransformer,
     TuiInputDateOptions,
 } from '@taiga-ui/kit/tokens';
-import {combineLatest, map, Observable} from 'rxjs';
+import {combineLatest, map, Observable, takeUntil, timer} from 'rxjs';
 
 @Component({
     selector: 'tui-input-date-time',
@@ -290,9 +290,11 @@ export class TuiInputDateTimeComponent
             return;
         }
 
-        setTimeout(() => {
-            this.nativeValue = this.trimTrailingSeparator(this.nativeValue);
-        });
+        timer(0)
+            .pipe(takeUntil(this.destroy$))
+            .subscribe(() => {
+                this.nativeValue = this.trimTrailingSeparator(this.nativeValue);
+            });
 
         if (
             this.value[0] === null ||
