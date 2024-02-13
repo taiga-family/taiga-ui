@@ -1,10 +1,10 @@
 ```ts
-import {TuiInputFilesModule} from '@taiga-ui/kit';
+import {TuiFilesModule} from '@taiga-ui/kit';
 
 // ...
 
 @NgModule({
-  imports: [TuiInputFilesModule],
+  imports: [TuiFilesModule],
   //...
 })
 export class MyModule {}

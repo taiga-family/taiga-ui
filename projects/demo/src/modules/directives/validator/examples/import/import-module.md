@@ -1,12 +1,12 @@
 ```ts
-import {TuiValidatorModule} from '@taiga-ui/cdk';
+import {TuiValidatorDirective} from '@taiga-ui/cdk';
 
 // ...
 
 @NgModule({
   imports: [
     // ...
-    TuiValidatorModule,
+    TuiValidatorDirective,
   ],
   // ...
 })

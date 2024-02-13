@@ -1,3 +1,4 @@
+import {CommonModule} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -11,15 +12,25 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {EMPTY_QUERY, TuiItemDirective} from '@taiga-ui/cdk';
+import {
+    TuiButtonModule,
+    TuiExpandModule,
+    TuiGroupDirective,
+    tuiGroupOptionsProvider,
+} from '@taiga-ui/core';
 import {TUI_HIDE_TEXT, TUI_SHOW_ALL_TEXT} from '@taiga-ui/kit/tokens';
 import {Observable} from 'rxjs';
 
 @Component({
+    standalone: true,
     selector: 'tui-files',
-    templateUrl: './files.component.html',
-    styleUrls: ['./files.component.less'],
+    imports: [CommonModule, TuiExpandModule, TuiButtonModule],
+    templateUrl: './files.template.html',
+    styleUrls: ['./files.styles.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [tuiGroupOptionsProvider({collapsed: true, orientation: 'vertical'})],
+    hostDirectives: [TuiGroupDirective],
 })
 export class TuiFilesComponent {
     @ContentChildren(TuiItemDirective, {read: TemplateRef})

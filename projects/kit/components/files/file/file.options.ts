@@ -1,10 +1,11 @@
 import {TuiContext, tuiCreateToken} from '@taiga-ui/cdk';
-import {TuiSizeL} from '@taiga-ui/core';
-import {TuiFileState} from '@taiga-ui/kit/types';
-import {tuiFormatSize} from '@taiga-ui/kit/utils';
+import {TuiAppearanceOptions, TuiSizeL} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-export interface TuiFileOptions {
+import {TuiFileState} from '../files.types';
+import {tuiFormatSize} from '../files.utils';
+
+export interface TuiFileOptions extends TuiAppearanceOptions {
     readonly formatSize: (
         units: [string, string, string],
         size?: number,
@@ -16,6 +17,7 @@ export interface TuiFileOptions {
 }
 
 export const TUI_FILE_DEFAULT_OPTIONS: TuiFileOptions = {
+    appearance: 'outline',
     formatSize: tuiFormatSize,
     icons: {
         normal: ({$implicit}) =>

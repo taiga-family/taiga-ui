@@ -59,22 +59,24 @@
             </tui-notification>
             <tui-input-files-example-6></tui-input-files-example-6>
         </tui-doc-example>
+
+        <tui-doc-example
+            id="model"
+            heading="ngModel"
+            [content]="example7"
+        >
+            <tui-input-files-example-7></tui-input-files-example-7>
+        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
         <tui-doc-demo>
-            <label
-                tuiInputFiles
-                [focusable]="focusable"
-                [formControl]="multiple ? multipleControl : control"
-                [pseudoActive]="pseudoPressed"
-                [pseudoFocus]="pseudoFocused"
-                [pseudoHover]="pseudoHovered"
-            >
+            <label tuiInputFiles>
                 <input
                     tuiInputFiles
                     [accept]="accept"
                     [attr.capture]="capture"
+                    [formControl]="multiple ? multipleControl : control"
                     [multiple]="multiple"
                 />
             </label>
@@ -91,7 +93,7 @@
                             [showDelete]="showDelete"
                             [showSize]="showSize"
                             [size]="size"
-                            (removed)="removeFile(file); documentationPropertyRemoved.emitEvent($event)"
+                            (remove)="removeFile(file); documentationPropertyRemoved.emitEvent($event)"
                         ></tui-file>
                     </ng-container>
                 </ng-container>
@@ -104,7 +106,7 @@
                             [showDelete]="showDelete"
                             [showSize]="showSize"
                             [size]="size"
-                            (removed)="control.setValue(null); documentationPropertyRemoved.emitEvent($event)"
+                            (remove)="control.setValue(null); documentationPropertyRemoved.emitEvent($event)"
                         ></tui-file>
                     </ng-container>
                 </ng-template>

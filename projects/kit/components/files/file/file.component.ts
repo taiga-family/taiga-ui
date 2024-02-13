@@ -1,3 +1,4 @@
+import {CommonModule} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -9,21 +10,39 @@ import {
 } from '@angular/core';
 import {DomSanitizer, SafeValue} from '@angular/platform-browser';
 import {TuiContext, TuiInjectionTokenType, tuiIsObserved, tuiPure} from '@taiga-ui/cdk';
-import {TUI_COMMON_ICONS, TuiCommonIcons, TuiSizeL} from '@taiga-ui/core';
+import {
+    TUI_COMMON_ICONS,
+    TuiAppearanceDirective,
+    tuiAppearanceOptionsProvider,
+    TuiButtonModule,
+    TuiCommonIcons,
+    TuiLoaderModule,
+    TuiSizeL,
+    TuiSvgModule,
+} from '@taiga-ui/core';
 import {TuiLanguage} from '@taiga-ui/i18n';
-import {TuiFileLike} from '@taiga-ui/kit/interfaces';
 import {TUI_DIGITAL_INFORMATION_UNITS, TUI_FILE_TEXTS} from '@taiga-ui/kit/tokens';
-import {TuiFileState} from '@taiga-ui/kit/types';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusContent, PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import {map, Observable, of} from 'rxjs';
 
-import {TUI_FILE_OPTIONS} from './file-options';
+import {TuiFileLike, TuiFileState} from '../files.types';
+import {TUI_FILE_OPTIONS} from './file.options';
 
 @Component({
-    selector: 'tui-file',
+    standalone: true,
+    selector: 'tui-file,a[tuiFile],button[tuiFile]',
+    imports: [
+        CommonModule,
+        PolymorpheusModule,
+        TuiLoaderModule,
+        TuiSvgModule,
+        TuiButtonModule,
+    ],
     templateUrl: './file.template.html',
     styleUrls: ['./file.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [tuiAppearanceOptionsProvider(TUI_FILE_OPTIONS)],
+    hostDirectives: [TuiAppearanceDirective],
 })
 export class TuiFileComponent {
     @Input()
@@ -46,7 +65,7 @@ export class TuiFileComponent {
     leftContent: PolymorpheusContent;
 
     @Output()
-    readonly removed = new EventEmitter<void>();
+    readonly remove = new EventEmitter<void>();
 
     @HostBinding('class._focused')
     focused = false;
@@ -85,16 +104,11 @@ export class TuiFileComponent {
     }
 
     get allowDelete(): boolean {
-        return this.showDelete && tuiIsObserved(this.removed);
+        return this.showDelete && tuiIsObserved(this.remove);
     }
 
     get icon(): PolymorpheusContent<TuiContext<TuiSizeL>> {
         return this.state === 'loading' ? '' : this.options.icons[this.state];
-    }
-
-    @HostBinding('class._link')
-    get src(): string {
-        return this.file.src || '';
     }
 
     get name(): string {
@@ -114,7 +128,7 @@ export class TuiFileComponent {
     }
 
     onRemoveClick(): void {
-        this.removed.emit();
+        this.remove.emit();
     }
 
     onFocusVisible(focusVisible: boolean): void {

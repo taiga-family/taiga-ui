@@ -1,31 +1,28 @@
-import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {TuiFocusVisibleModule, TuiItemDirective, TuiItemModule} from '@taiga-ui/cdk';
-import {
-    TuiButtonModule,
-    TuiExpandModule,
-    TuiGroupDirective,
-    TuiLoaderModule,
-    TuiSvgModule,
-} from '@taiga-ui/core';
-import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import {TuiItemDirective, TuiItemModule} from '@taiga-ui/cdk';
 
 import {TuiFileComponent} from './file/file.component';
-import {TuiFilesComponent} from './files.component';
+import {TuiFilesComponent} from './files/files.component';
+import {TuiInputFilesComponent} from './input-files/input-files.component';
+import {TuiInputFilesDirective} from './input-files/input-files.directive';
+import {TuiFileRejectedPipe} from './pipes/file-rejected.pipe';
 
 @NgModule({
     imports: [
-        CommonModule,
-        TuiGroupDirective,
-        TuiLoaderModule,
-        PolymorpheusModule,
-        TuiSvgModule,
-        TuiFocusVisibleModule,
-        TuiButtonModule,
         TuiItemModule,
-        TuiExpandModule,
+        TuiFileRejectedPipe,
+        TuiFileComponent,
+        TuiFilesComponent,
+        TuiInputFilesComponent,
+        TuiInputFilesDirective,
     ],
-    declarations: [TuiFilesComponent, TuiFileComponent],
-    exports: [TuiFilesComponent, TuiFileComponent, TuiItemDirective],
+    exports: [
+        TuiItemDirective,
+        TuiFileRejectedPipe,
+        TuiFileComponent,
+        TuiFilesComponent,
+        TuiInputFilesComponent,
+        TuiInputFilesDirective,
+    ],
 })
 export class TuiFilesModule {}

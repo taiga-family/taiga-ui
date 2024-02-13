@@ -10,6 +10,7 @@ import {
 import {EMPTY_FUNCTION} from '@taiga-ui/cdk/constants';
 
 @Directive({
+    standalone: true,
     selector: '[tuiValidator]',
     providers: [
         {

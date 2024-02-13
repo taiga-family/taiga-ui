@@ -26,14 +26,14 @@ export class TuiInputFilesContent {
     get link$(): Observable<string> {
         return this.computeLink$(
             this.context.$implicit,
-            !!this.component.input?.nativeElement.multiple,
+            !!this.component.input?.input.multiple,
         );
     }
 
     get label$(): Observable<string> {
         return this.computeLabel$(
             this.context.$implicit,
-            !!this.component.input?.nativeElement.multiple,
+            !!this.component.input?.input.multiple,
         );
     }
 
