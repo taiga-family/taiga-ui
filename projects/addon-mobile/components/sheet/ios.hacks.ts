@@ -50,14 +50,3 @@ export function iosScrollFactory(
 
     return concat(scroll$.pipe(take(1)), result$).pipe(tuiZonefree(zone), share());
 }
-
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function fakeSmoothScroll({style}: HTMLElement, offset: number): void {
-    style.transition = 'none';
-    style.transform = `scaleX(-1) translate3d(0, ${offset}px, 0)`;
-
-    setTimeout(() => {
-        style.transition = '';
-        style.transform = '';
-    });
-}
