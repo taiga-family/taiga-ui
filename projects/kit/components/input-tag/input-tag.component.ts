@@ -97,7 +97,7 @@ export class TuiInputTagComponent
     @ViewChild(TuiHostedDropdownComponent)
     private readonly hostedDropdown?: TuiHostedDropdownComponent;
 
-    @ViewChild('focusableElement')
+    @ViewChild('focusableElement', {static: true})
     private readonly focusableElement?: ElementRef<HTMLInputElement>;
 
     @ViewChild('tagsContainer')

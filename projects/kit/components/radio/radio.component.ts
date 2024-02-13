@@ -40,7 +40,7 @@ export class TuiRadioComponent<T>
     extends AbstractTuiNullableControl<T>
     implements TuiFocusableElementAccessor
 {
-    @ViewChild('focusableElement')
+    @ViewChild('focusableElement', {static: true})
     private readonly focusableElement?: ElementRef<TuiNativeFocusableElement>;
 
     @Input()

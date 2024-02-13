@@ -63,7 +63,7 @@ export class TuiTextareaComponent
     extends AbstractTuiControl<string>
     implements TuiFocusableElementAccessor
 {
-    @ViewChild('focusableElement')
+    @ViewChild('focusableElement', {static: true})
     private readonly focusableElement?: ElementRef<HTMLTextAreaElement>;
 
     @ContentChild(TuiTextfieldComponent, {read: ElementRef})

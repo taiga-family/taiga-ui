@@ -60,7 +60,7 @@ export class TuiPrimitiveTextfieldComponent
     extends AbstractTuiInteractive
     implements TuiPrimitiveTextfield
 {
-    @ViewChild('focusableElement')
+    @ViewChild('focusableElement', {static: true})
     private readonly focusableElement?: ElementRef<HTMLInputElement>;
 
     @Input()

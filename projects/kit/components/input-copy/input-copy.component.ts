@@ -48,7 +48,7 @@ export class TuiInputCopyComponent
     extends AbstractTuiControl<string>
     implements TuiFocusableElementAccessor
 {
-    @ViewChild(TuiPrimitiveTextfieldComponent)
+    @ViewChild(TuiPrimitiveTextfieldComponent, {static: true})
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
     private readonly copy$ = new Subject<void>();

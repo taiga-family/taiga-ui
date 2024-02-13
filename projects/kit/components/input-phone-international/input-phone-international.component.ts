@@ -71,7 +71,7 @@ export class TuiInputPhoneInternationalComponent
     @ViewChild(TuiInputPhoneComponent)
     private readonly inputPhoneComponent?: TuiInputPhoneComponent;
 
-    @ViewChild(TuiPrimitiveTextfieldComponent)
+    @ViewChild(TuiPrimitiveTextfieldComponent, {static: true})
     private readonly primitiveTextfield?: TuiPrimitiveTextfieldComponent;
 
     @Input('countryIsoCode')

@@ -74,7 +74,7 @@ export class TuiInputNumberComponent
     extends AbstractTuiNullableControl<number>
     implements TuiFocusableElementAccessor
 {
-    @ViewChild(TuiPrimitiveTextfieldComponent)
+    @ViewChild(TuiPrimitiveTextfieldComponent, {static: true})
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
     private unfinishedValue: string | null = '';

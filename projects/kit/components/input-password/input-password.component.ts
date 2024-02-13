@@ -53,7 +53,7 @@ export class TuiInputPasswordComponent
     extends AbstractTuiControl<string>
     implements TuiFocusableElementAccessor
 {
-    @ViewChild(TuiPrimitiveTextfieldComponent)
+    @ViewChild(TuiPrimitiveTextfieldComponent, {static: true})
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
     private readonly directive$: Observable<any> = this.hintOptions?.change$ || EMPTY;

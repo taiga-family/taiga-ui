@@ -65,7 +65,7 @@ export class TuiInputTimeComponent
     extends AbstractTuiNullableControl<TuiTime>
     implements TuiFocusableElementAccessor, TuiDataListHost<TuiTime>
 {
-    @ViewChild(TuiPrimitiveTextfieldComponent)
+    @ViewChild(TuiPrimitiveTextfieldComponent, {static: true})
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
     @Input()

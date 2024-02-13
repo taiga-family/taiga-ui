@@ -48,7 +48,7 @@ export class TuiInputYearComponent
     extends AbstractTuiNullableControl<number>
     implements TuiWithOptionalMinMax<number>, TuiFocusableElementAccessor
 {
-    @ViewChild(TuiPrimitiveTextfieldComponent)
+    @ViewChild(TuiPrimitiveTextfieldComponent, {static: true})
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
     @Input()

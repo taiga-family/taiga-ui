@@ -25,7 +25,7 @@ import {
     ],
 })
 export class TuiPrimitiveTextfieldExample2 extends AbstractTuiControl<string> {
-    @ViewChild(TuiPrimitiveTextfieldComponent)
+    @ViewChild(TuiPrimitiveTextfieldComponent, {static: true})
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
     constructor(

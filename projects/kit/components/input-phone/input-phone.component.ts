@@ -72,7 +72,7 @@ export class TuiInputPhoneComponent
     @ViewChild(TuiHostedDropdownComponent)
     private readonly dropdown?: TuiHostedDropdownComponent;
 
-    @ViewChild(TuiPrimitiveTextfieldComponent)
+    @ViewChild(TuiPrimitiveTextfieldComponent, {static: true})
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
     @Input('countryCode')

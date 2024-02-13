@@ -39,7 +39,7 @@ export class TuiAccordionItemComponent
     extends AbstractTuiInteractive
     implements TuiFocusableElementAccessor
 {
-    @ViewChild('focusableElement')
+    @ViewChild('focusableElement', {static: true})
     private readonly focusableElement?: ElementRef<TuiNativeFocusableElement>;
 
     @Input()

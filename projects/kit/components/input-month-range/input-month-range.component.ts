@@ -59,7 +59,7 @@ export class TuiInputMonthRangeComponent
     extends AbstractTuiNullableControl<TuiMonthRange>
     implements TuiWithOptionalMinMax<TuiMonth>, TuiFocusableElementAccessor
 {
-    @ViewChild(TuiPrimitiveTextfieldComponent)
+    @ViewChild(TuiPrimitiveTextfieldComponent, {static: true})
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
     @Input()

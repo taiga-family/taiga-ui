@@ -58,7 +58,7 @@ export class TuiInputComponent
     @ViewChild(TuiHostedDropdownComponent)
     private readonly hostedDropdown?: TuiHostedDropdownComponent;
 
-    @ViewChild(TuiPrimitiveTextfieldComponent)
+    @ViewChild(TuiPrimitiveTextfieldComponent, {static: true})
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
     @ContentChild(TuiDataListDirective, {read: TemplateRef})

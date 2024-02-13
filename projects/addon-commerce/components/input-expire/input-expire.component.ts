@@ -40,7 +40,7 @@ export class TuiInputExpireComponent
     extends AbstractTuiControl<string>
     implements TuiFocusableElementAccessor
 {
-    @ViewChild(TuiPrimitiveTextfieldComponent)
+    @ViewChild(TuiPrimitiveTextfieldComponent, {static: true})
     private readonly input?: TuiPrimitiveTextfieldComponent;
 
     @Input()

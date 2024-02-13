@@ -75,7 +75,7 @@ export class TuiInputDateMultiComponent
     extends AbstractTuiMultipleControl<TuiDay>
     implements TuiWithOptionalMinMax<TuiDay>, TuiFocusableElementAccessor
 {
-    @ViewChild(TuiPrimitiveTextfieldComponent)
+    @ViewChild(TuiPrimitiveTextfieldComponent, {static: true})
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
     @ViewChild(TuiInputTagComponent)

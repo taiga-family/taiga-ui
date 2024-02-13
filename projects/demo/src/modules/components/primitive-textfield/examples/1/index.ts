@@ -20,7 +20,7 @@ import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/core';
     changeDetection,
 })
 export class TuiPrimitiveTextfieldExample1 extends AbstractTuiControl<string> {
-    @ViewChild(TuiPrimitiveTextfieldComponent)
+    @ViewChild(TuiPrimitiveTextfieldComponent, {static: true})
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
     private isPasswordHidden = true;

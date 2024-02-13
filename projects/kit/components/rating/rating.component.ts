@@ -36,7 +36,7 @@ export class TuiRatingComponent
     extends AbstractTuiControl<number>
     implements TuiFocusableElementAccessor
 {
-    @ViewChild('focusableElement')
+    @ViewChild('focusableElement', {static: true})
     private readonly focusableElement?: ElementRef<HTMLInputElement>;
 
     @Input()

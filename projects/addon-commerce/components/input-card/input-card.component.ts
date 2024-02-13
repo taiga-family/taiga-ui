@@ -34,7 +34,7 @@ import {TUI_INPUT_CARD_OPTIONS, TuiInputCardOptions} from './input-card.options'
     ],
 })
 export class TuiInputCardComponent extends AbstractTuiInputCard<string> {
-    @ViewChild(TuiPrimitiveTextfieldComponent)
+    @ViewChild(TuiPrimitiveTextfieldComponent, {static: true})
     private readonly input?: TuiPrimitiveTextfieldComponent;
 
     readonly maskOptions: MaskitoOptions = {

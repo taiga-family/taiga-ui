@@ -76,7 +76,7 @@ export class TuiInputDateComponent
     extends AbstractTuiNullableControl<TuiDay>
     implements TuiWithOptionalMinMax<TuiDay>, TuiFocusableElementAccessor
 {
-    @ViewChild(TuiPrimitiveTextfieldComponent)
+    @ViewChild(TuiPrimitiveTextfieldComponent, {static: true})
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
     private month: TuiMonth | null = null;

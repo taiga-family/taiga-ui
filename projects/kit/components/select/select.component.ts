@@ -64,7 +64,7 @@ export class TuiSelectComponent<T>
     extends AbstractTuiNullableControl<T>
     implements TuiFocusableElementAccessor, TuiDataListHost<T>
 {
-    @ViewChild(TuiPrimitiveTextfieldComponent)
+    @ViewChild(TuiPrimitiveTextfieldComponent, {static: true})
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
     @ViewChild(TuiHostedDropdownComponent)

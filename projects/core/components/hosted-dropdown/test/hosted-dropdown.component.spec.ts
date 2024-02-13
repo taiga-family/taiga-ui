@@ -73,7 +73,7 @@ describe('TuiHostedDropdown', () => {
         `,
     })
     class TestComponent {
-        @ViewChild(TuiPrimitiveTextfieldComponent)
+        @ViewChild(TuiPrimitiveTextfieldComponent, {static: true})
         tuiTextfield!: TuiPrimitiveTextfieldComponent;
 
         @ViewChild(TuiButtonComponent, {read: ElementRef})
