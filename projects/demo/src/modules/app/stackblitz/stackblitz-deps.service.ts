@@ -76,6 +76,11 @@ export class StackblitzDepsService {
             '@maskito/angular': kitDeps['@maskito/angular'],
             '@maskito/core': kitDeps['@maskito/core'],
             '@maskito/kit': kitDeps['@maskito/kit'],
+            'zone.js': (await import('@angular/core/package.json')).peerDependencies[
+                'zone.js'
+            ],
+            dompurify: (await import('@tinkoff/ng-dompurify/package.json'))
+                .peerDependencies.dompurify,
             rxjs: rootDevDeps.rxjs,
             typescript: rootDevDeps.typescript,
         };
