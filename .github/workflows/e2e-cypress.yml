@@ -11,9 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     name: cypress
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.51.3
-      - uses: taiga-family/ci/actions/setup/variables@v1.51.3
-      - uses: taiga-family/ci/actions/setup/node@v1.51.3
+      - uses: taiga-family/ci/actions/setup/checkout@v1.51.4
+      - uses: taiga-family/ci/actions/setup/variables@v1.51.4
+      - uses: taiga-family/ci/actions/setup/node@v1.51.4
       - run: npx nx component-test demo-cypress
 
 concurrency:
