@@ -1,0 +1,69 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+[tuiButtonGroup] {
+    display: flex;
+    border-radius: var(--tui-radius-xl);
+    justify-content: center;
+    overflow: hidden;
+
+    > button,
+    > a {
+        .transition(background);
+
+        position: relative;
+        display: flex;
+        border: none;
+        outline: none;
+        background: transparent;
+        align-items: center;
+        flex: 1;
+        flex-direction: column;
+        padding: 1.125rem 0.25rem;
+        gap: 0.5rem;
+        font-size: var(--tui-font-text-s);
+        max-width: calc(50% - 1.75rem);
+        cursor: pointer;
+        color: var(--tui-link);
+        text-align: center;
+
+        &:active {
+            background: var(--tui-clear);
+        }
+
+        &:before,
+        &:after {
+            position: absolute;
+            top: 0;
+            background: inherit;
+            width: 1.75rem;
+            height: 100%;
+        }
+
+        &:first-child:before {
+            content: '';
+            left: -1.75rem;
+        }
+
+        &:last-child:after {
+            content: '';
+            right: -1.75rem;
+        }
+
+        tui-icon {
+            font-size: 1.75rem;
+        }
+    }
+
+    &:has(button:only-child) {
+        border-radius: var(--tui-radius-l);
+    }
+
+    > button:only-child,
+    > a:only-child {
+        width: 100%;
+        flex-direction: row;
+        font: var(--tui-font-text-l);
+        max-width: 100%;
+        justify-content: center;
+    }
+}
