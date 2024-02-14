@@ -68,4 +68,15 @@ test.describe('Dropdown', () => {
         await page.keyboard.press('Escape');
         await expect(page).toHaveScreenshot('09-dropdown.png');
     });
+
+    test('Scrollbar dropdown in active zone', async ({page}) => {
+        await tuiGoto(page, '/directives/dropdown/API?tuiDropdownMaxHeight=150');
+
+        const api = new TuiDocumentationPagePO(page).apiPageExample;
+
+        await api.locator('button').click();
+        await expect(page).toHaveScreenshot('10-dropdown.png');
+        await page.locator('tui-dropdown').locator('tui-scrollbar .t-thumb').click();
+        await expect(page).toHaveScreenshot('11-dropdown.png');
+    });
 });
