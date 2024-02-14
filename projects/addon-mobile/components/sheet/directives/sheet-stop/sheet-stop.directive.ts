@@ -8,6 +8,7 @@ import {
     Observable,
     takeUntil,
     throttleTime,
+    timer,
     withLatestFrom,
 } from 'rxjs';
 
@@ -40,9 +41,12 @@ export class TuiSheetStopDirective {
                 nativeElement.classList.remove('_stuck'); // iOS
                 nativeElement.scrollTop = el.nativeElement.offsetTop;
 
-                setTimeout(() => {
-                    nativeElement.style.overflow = '';
-                }, 100);
+                timer(100)
+                    .pipe(takeUntil(destroy$))
+                    // eslint-disable-next-line rxjs/no-nested-subscribe
+                    .subscribe(() => {
+                        nativeElement.style.overflow = '';
+                    });
             });
     }
 }
