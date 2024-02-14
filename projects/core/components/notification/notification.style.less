@@ -12,6 +12,22 @@
     box-sizing: border-box;
     overflow: hidden;
 
+    .t-more {
+        display: none;
+    }
+
+    &button,
+    &a {
+        border: none;
+        cursor: pointer;
+
+        .t-more {
+            display: inline-flex;
+            color: var(--tui-text-01);
+            opacity: 0.5;
+        }
+    }
+
     &[data-size='s'] {
         padding: 0.375rem 0.625rem;
 
@@ -23,6 +39,10 @@
 
         .t-close {
             margin: -0.125rem -0.375rem -0.125rem 0.75rem;
+        }
+
+        .t-more {
+            margin: -0.125rem -0.375rem -0.125rem 0;
         }
     }
 
@@ -38,6 +58,10 @@
         .t-close {
             margin: -0.125rem -0.125rem -0.125rem 1rem;
         }
+
+        .t-more {
+            margin: -0.125rem -0.375rem -0.125rem 0;
+        }
     }
 
     &[data-size='l'] {
@@ -49,6 +73,10 @@
             width: 1.5rem;
             height: 1.5rem;
             margin-right: 0.5rem;
+        }
+
+        .t-more {
+            margin-right: -0.5rem;
         }
     }
 
@@ -82,4 +110,6 @@
     flex: 1;
     word-break: break-word;
     color: var(--tui-text-01);
+    text-align: left;
+    align-self: center;
 }

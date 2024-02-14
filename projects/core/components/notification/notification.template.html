@@ -6,7 +6,6 @@
         [src]="iconName"
     ></tui-svg>
 </ng-container>
-
 <div class="t-content">
     <ng-content></ng-content>
 </div>
@@ -22,3 +21,8 @@
     [title]="closeWord$ | async"
     (click)="close.emit()"
 ></button>
+<tui-svg
+    automation-id="tui-notification__more"
+    class="t-more"
+    [src]="icons.more"
+></tui-svg>
