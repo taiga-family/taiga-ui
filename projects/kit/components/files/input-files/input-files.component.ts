@@ -45,12 +45,12 @@ export class TuiInputFilesComponent {
     @ContentChild(TemplateRef)
     readonly template?: TemplateRef<TuiContext<boolean>>;
 
-    dataTransfer: DataTransfer | null = null;
+    files?: FileList | null;
 
     readonly content = new PolymorpheusComponent(TuiInputFilesContent);
 
     get fileDragged(): boolean {
-        return !!this.dataTransfer?.types.includes('Files');
+        return !!this.files && !this.input?.computedDisabled;
     }
 
     @HostListener('change', ['$event.target'])
@@ -64,14 +64,14 @@ export class TuiInputFilesComponent {
     }
 
     onDropped({dataTransfer}: DragEvent): void {
-        this.dataTransfer = null;
+        this.files = null;
 
-        if (dataTransfer?.files) {
+        if (dataTransfer?.files && !this.input?.computedDisabled) {
             this.input?.process(dataTransfer.files);
         }
     }
 
     onDrag(dataTransfer: DataTransfer | null): void {
-        this.dataTransfer = dataTransfer;
+        this.files = dataTransfer?.files;
     }
 }

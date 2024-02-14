@@ -23,7 +23,7 @@ import {TuiInputFilesValidatorDirective} from './input-files-validator.directive
     providers: [tuiAppearanceOptionsProvider(forwardRef(() => TuiInputFilesDirective))],
     host: {
         type: 'file',
-        '[disabled]': 'host.computedDisabled',
+        '[disabled]': 'computedDisabled',
         '(blur)': 'onTouched()',
         '(click)': 'onClick($event)',
     },

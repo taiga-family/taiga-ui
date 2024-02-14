@@ -4,7 +4,7 @@ import {
     Component,
     ContentChildren,
     EventEmitter,
-    Inject,
+    inject,
     Input,
     Output,
     QueryList,
@@ -19,7 +19,6 @@ import {
     tuiGroupOptionsProvider,
 } from '@taiga-ui/core';
 import {TUI_HIDE_TEXT, TUI_SHOW_ALL_TEXT} from '@taiga-ui/kit/tokens';
-import {Observable} from 'rxjs';
 
 @Component({
     standalone: true,
@@ -45,10 +44,8 @@ export class TuiFilesComponent {
     @Output()
     readonly expandedChange = new EventEmitter<boolean>();
 
-    constructor(
-        @Inject(TUI_HIDE_TEXT) readonly hideText$: Observable<string>,
-        @Inject(TUI_SHOW_ALL_TEXT) readonly showAllText$: Observable<string>,
-    ) {}
+    readonly hideText$ = inject(TUI_HIDE_TEXT);
+    readonly showAllText$ = inject(TUI_SHOW_ALL_TEXT);
 
     get hasExtraItems(): boolean {
         return !!this.max && this.items.length > this.max;

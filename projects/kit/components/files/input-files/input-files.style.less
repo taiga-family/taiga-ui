@@ -12,10 +12,6 @@ label[tuiInputFiles] {
     word-wrap: break-word;
     padding: 0 0.5rem;
 
-    &._disabled {
-        pointer-events: none;
-    }
-
     > :not(input) {
         position: relative;
         pointer-events: none;
@@ -26,6 +22,10 @@ label[tuiInputFiles] {
 
         color: transparent;
         cursor: pointer;
+
+        &:disabled ~ * {
+            opacity: var(--tui-disabled-opacity);
+        }
 
         &::-webkit-file-upload-button {
             display: none;
@@ -61,6 +61,7 @@ label[tuiInputFiles] {
     });
 
     .appearance-disabled({
+        background: transparent;
         border-color: var(--tui-text-03);
     });
 

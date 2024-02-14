@@ -4,18 +4,17 @@ import {
     Component,
     EventEmitter,
     HostBinding,
-    Inject,
+    inject,
     Input,
     Output,
 } from '@angular/core';
 import {DomSanitizer, SafeValue} from '@angular/platform-browser';
-import {TuiContext, TuiInjectionTokenType, tuiIsObserved, tuiPure} from '@taiga-ui/cdk';
+import {TuiContext, tuiIsObserved, tuiPure} from '@taiga-ui/cdk';
 import {
     TUI_COMMON_ICONS,
     TuiAppearanceDirective,
     tuiAppearanceOptionsProvider,
     TuiButtonModule,
-    TuiCommonIcons,
     TuiLoaderModule,
     TuiSizeL,
     TuiSvgModule,
@@ -45,6 +44,10 @@ import {TUI_FILE_OPTIONS} from './file.options';
     hostDirectives: [TuiAppearanceDirective],
 })
 export class TuiFileComponent {
+    private readonly sanitizer = inject(DomSanitizer);
+    private readonly options = inject(TUI_FILE_OPTIONS);
+    private readonly units$ = inject(TUI_DIGITAL_INFORMATION_UNITS);
+
     @Input()
     file: TuiFileLike = {name: ''};
 
@@ -67,21 +70,8 @@ export class TuiFileComponent {
     @Output()
     readonly remove = new EventEmitter<void>();
 
-    @HostBinding('class._focused')
-    focused = false;
-
-    constructor(
-        @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
-        @Inject(TUI_COMMON_ICONS) readonly icons: TuiCommonIcons,
-        @Inject(TUI_FILE_TEXTS)
-        readonly fileTexts$: TuiInjectionTokenType<typeof TUI_FILE_TEXTS>,
-        @Inject(TUI_FILE_OPTIONS)
-        private readonly options: TuiInjectionTokenType<typeof TUI_FILE_OPTIONS>,
-        @Inject(TUI_DIGITAL_INFORMATION_UNITS)
-        private readonly units$: TuiInjectionTokenType<
-            typeof TUI_DIGITAL_INFORMATION_UNITS
-        >,
-    ) {}
+    readonly icons = inject(TUI_COMMON_ICONS);
+    readonly fileTexts$ = inject(TUI_FILE_TEXTS);
 
     get preview(): SafeValue {
         return this.isBig ? this.createPreview(this.file) : '';
@@ -125,14 +115,6 @@ export class TuiFileComponent {
 
     get fileSize$(): Observable<string | null> {
         return this.calculateFileSize$(this.file, this.units$);
-    }
-
-    onRemoveClick(): void {
-        this.remove.emit();
-    }
-
-    onFocusVisible(focusVisible: boolean): void {
-        this.focused = focusVisible;
     }
 
     @tuiPure

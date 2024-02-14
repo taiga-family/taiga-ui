@@ -76,7 +76,7 @@
                     #validator="tuiInputFilesValidator"
                     tuiInputFiles
                     [accept]="accept"
-                    [formControl]="multiple ? multipleControl : control"
+                    [formControl]="control"
                     [maxFileSize]="maxFileSize"
                     [multiple]="multiple"
                     (reject)="updateRejected($event); documentationPropertyReject.emitEvent($event)"
@@ -87,31 +87,16 @@
                 [max]="maxFilesCount"
                 [(expanded)]="expanded"
             >
-                <ng-container *ngIf="multiple; else single">
-                    <ng-container *ngFor="let file of files$ | async">
-                        <tui-file
-                            *tuiItem
-                            [file]="file"
-                            [showDelete]="showDelete"
-                            [showSize]="showSize"
-                            [size]="size"
-                            (remove)="removeFile(file); documentationPropertyRemoved.emitEvent($event)"
-                        ></tui-file>
-                    </ng-container>
+                <ng-container *ngFor="let file of files$ | async">
+                    <tui-file
+                        *tuiItem
+                        [file]="file"
+                        [showDelete]="showDelete"
+                        [showSize]="showSize"
+                        [size]="size"
+                        (remove)="removeFile(file); documentationPropertyRemoved.emitEvent($event)"
+                    ></tui-file>
                 </ng-container>
-
-                <ng-template #single>
-                    <ng-container *ngIf="file">
-                        <tui-file
-                            *tuiItem
-                            [file]="file"
-                            [showDelete]="showDelete"
-                            [showSize]="showSize"
-                            [size]="size"
-                            (remove)="removeFile(file); documentationPropertyRemoved.emitEvent($event)"
-                        ></tui-file>
-                    </ng-container>
-                </ng-template>
 
                 <ng-container *ngFor="let file of rejected">
                     <tui-file

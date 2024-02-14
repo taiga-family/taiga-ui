@@ -60,10 +60,9 @@ export class ExampleTuiInputFilesComponent extends AbstractExampleTuiControl {
         HTML: import('./examples/7/index.html?raw'),
     };
 
-    readonly control = new FormControl<File | null>(null);
-    readonly multipleControl = new FormControl<File[] | null>(null);
-    readonly files$ = this.multipleControl.valueChanges.pipe(
-        map(() => tuiFilesAccepted(this.multipleControl)),
+    readonly control = new FormControl<File[] | null>(null);
+    readonly files$ = this.control.valueChanges.pipe(
+        map(() => tuiFilesAccepted(this.control)),
     );
 
     multiple = true;
@@ -82,17 +81,10 @@ export class ExampleTuiInputFilesComponent extends AbstractExampleTuiControl {
     rejected: readonly File[] = [];
     maxFileSize = this.maxFileSizeVariants[2];
 
-    get file(): File | null {
-        const {value} = this.control;
-
-        return value && this.rejected.includes(value) ? null : value;
-    }
-
     removeFile(file: File): void {
         this.rejected = this.rejected.filter(current => current !== file);
-        this.control.setValue(null);
-        this.multipleControl.setValue(
-            this.multipleControl.value?.filter(current => current !== file) || null,
+        this.control.setValue(
+            this.control.value?.filter(current => current !== file) || null,
         );
     }
 
