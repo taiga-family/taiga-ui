@@ -123,7 +123,7 @@ export class TuiDropdownComponent implements OnInit {
     private update(top: number, left: number): void {
         const {style} = this.el;
         const {right} = this.el.getBoundingClientRect();
-        const {maxHeight, offset} = this.options;
+        const {maxHeight, minHeight, offset} = this.options;
         const {innerHeight} = this.win;
         const clientRect = this.el.offsetParent?.getBoundingClientRect();
         const {position} = this.directive;
@@ -140,10 +140,14 @@ export class TuiDropdownComponent implements OnInit {
             ? rect.top - 2 * offset
             : offsetY + innerHeight - top - offset;
 
+        const sided = right <= rect.left || left >= rect.right;
+
         style.position = position;
         style.top = tuiPx(Math.max(top, offsetY + offset));
         style.left = tuiPx(left);
-        style.maxHeight = tuiPx(Math.min(maxHeight, available));
+        style.maxHeight = sided
+            ? `min(100%, ${maxHeight}px)`
+            : tuiPx(Math.min(maxHeight, Math.max(available, minHeight)));
         style.width = '';
         style.minWidth = '';
 
