@@ -27,6 +27,8 @@ import {debounceTime, map, Observable, of} from 'rxjs';
         '[class._ios]': 'isIOS',
         '[class._android]': 'isAndroid',
         '[class._reduced-motion]': 'reducedMotion',
+        // Required for the :active state to work in Safari. https://stackoverflow.com/a/33681490
+        '(touchstart.passive.silent)': '0',
         '[$.class._mobile]': 'isMobileRes$',
         '($.class._mobile)': 'isMobileRes$',
     },
