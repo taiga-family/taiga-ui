@@ -1,12 +1,16 @@
-import {Component, ElementRef, ViewChild} from '@angular/core';
+import {Component, ElementRef, Inject, Self, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiDestroyService} from '@taiga-ui/cdk';
 import {TUI_EXPAND_LOADED, TuiSizeS} from '@taiga-ui/core';
+import {Observable, timer} from 'rxjs';
+import {takeUntil} from 'rxjs/operators';
 
 @Component({
     selector: 'example-accordion',
     templateUrl: './accordion.template.html',
     changeDetection,
+    providers: [TuiDestroyService],
 })
 export class ExampleTuiAccordionComponent {
     @ViewChild('content')
@@ -61,6 +65,10 @@ export class ExampleTuiAccordionComponent {
 
     size: TuiSizeS = this.sizeVariants[1];
 
+    constructor(
+        @Self() @Inject(TuiDestroyService) private readonly destroy$: Observable<void>,
+    ) {}
+
     onOpenChange(open: boolean): void {
         this.open = open;
 
@@ -68,12 +76,13 @@ export class ExampleTuiAccordionComponent {
             return;
         }
 
-        setTimeout(() => {
-            const event = new CustomEvent(TUI_EXPAND_LOADED, {bubbles: true});
-
-            if (this.content) {
-                this.content.nativeElement.dispatchEvent(event);
-            }
-        }, 3000);
+        timer(3000)
+            .pipe(takeUntil(this.destroy$))
+            .subscribe(
+                () =>
+                    this.content?.nativeElement.dispatchEvent(
+                        new CustomEvent(TUI_EXPAND_LOADED, {bubbles: true}),
+                    ),
+            );
     }
 }

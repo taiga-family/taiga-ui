@@ -44,8 +44,8 @@ import {
 import {TUI_SELECT_OPTION} from '@taiga-ui/kit/components/select-option';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {TUI_TIME_TEXTS} from '@taiga-ui/kit/tokens';
-import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {Observable, timer} from 'rxjs';
+import {map, takeUntil} from 'rxjs/operators';
 
 import {TUI_INPUT_TIME_OPTIONS, TuiInputTimeOptions} from './input-time.options';
 
@@ -230,11 +230,13 @@ export class TuiInputTimeComponent
 
         this.value = TuiTime.fromString(this.nativeValue);
 
-        setTimeout(() => {
-            if (this.nativeValue.endsWith('.') || this.nativeValue.endsWith(':')) {
-                this.nativeValue = this.nativeValue.slice(0, -1);
-            }
-        });
+        timer(0)
+            .pipe(takeUntil(this.destroy$))
+            .subscribe(() => {
+                if (this.nativeValue.endsWith('.') || this.nativeValue.endsWith(':')) {
+                    this.nativeValue = this.nativeValue.slice(0, -1);
+                }
+            });
     }
 
     onArrowUp(event: Event): void {

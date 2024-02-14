@@ -8,16 +8,22 @@ import {
     Input,
     NgZone,
     QueryList,
+    Self,
     ViewChild,
     ViewChildren,
 } from '@angular/core';
-import {EMPTY_QUERY, TUI_IS_IOS, tuiPure, tuiZonefull} from '@taiga-ui/cdk';
+import {
+    EMPTY_QUERY,
+    TUI_IS_IOS,
+    TuiDestroyService,
+    tuiPure,
+    tuiZonefull,
+} from '@taiga-ui/cdk';
 import {tuiSlideInTop} from '@taiga-ui/core';
 import {TUI_MORE_WORD} from '@taiga-ui/kit';
-import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {Observable, timer} from 'rxjs';
+import {map, takeUntil} from 'rxjs/operators';
 
-import {fakeSmoothScroll} from '../../ios.hacks';
 import {TuiSheet, TuiSheetRequiredProps} from '../../sheet';
 import {TUI_SHEET_SCROLL} from '../../sheet-tokens';
 import {TUI_SHEET_ID} from '../sheet-heading/sheet-heading.component';
@@ -62,6 +68,7 @@ export class TuiSheetComponent<T> implements TuiSheetRequiredProps<T>, AfterView
         @Inject(NgZone) private readonly zone: NgZone,
         @Inject(TUI_IS_IOS) readonly isIos: boolean,
         @Inject(TUI_MORE_WORD) readonly moreWord$: Observable<string>,
+        @Self() @Inject(TuiDestroyService) private readonly destroy$: Observable<void>,
     ) {}
 
     get stops(): readonly number[] {
@@ -99,7 +106,17 @@ export class TuiSheetComponent<T> implements TuiSheetRequiredProps<T>, AfterView
         const {nativeElement} = this.el;
 
         if (this.isIos) {
-            fakeSmoothScroll(nativeElement, top - nativeElement.scrollTop - 16);
+            const offset = top - nativeElement.scrollTop - 16;
+
+            nativeElement.style.transition = 'none';
+            nativeElement.style.transform = `scaleX(-1) translate3d(0, ${offset}px, 0)`;
+
+            timer(0)
+                .pipe(takeUntil(this.destroy$))
+                .subscribe(() => {
+                    nativeElement.style.transition = '';
+                    nativeElement.style.transform = '';
+                });
         }
 
         nativeElement.scrollTo({top, behavior: 'smooth'});

@@ -1,6 +1,6 @@
 import {Directive, ElementRef, Inject, Self} from '@angular/core';
 import {TUI_SCROLL_REF, TuiDestroyService} from '@taiga-ui/cdk';
-import {Observable} from 'rxjs';
+import {Observable, timer} from 'rxjs';
 import {
     distinctUntilChanged,
     filter,
@@ -39,9 +39,12 @@ export class TuiSheetStopDirective {
                 nativeElement.classList.remove('_stuck'); // iOS
                 nativeElement.scrollTop = el.nativeElement.offsetTop;
 
-                setTimeout(() => {
-                    nativeElement.style.overflow = '';
-                }, 100);
+                timer(100)
+                    .pipe(takeUntil(destroy$))
+                    // eslint-disable-next-line rxjs/no-nested-subscribe
+                    .subscribe(() => {
+                        nativeElement.style.overflow = '';
+                    });
             });
     }
 }
