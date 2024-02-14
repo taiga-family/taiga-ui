@@ -73,11 +73,13 @@
         <tui-doc-demo>
             <label tuiInputFiles>
                 <input
+                    #validator="tuiInputFilesValidator"
                     tuiInputFiles
                     [accept]="accept"
-                    [attr.capture]="capture"
                     [formControl]="multiple ? multipleControl : control"
+                    [maxFileSize]="maxFileSize"
                     [multiple]="multiple"
+                    (reject)="updateRejected($event); documentationPropertyReject.emitEvent($event)"
                 />
             </label>
             <tui-files
@@ -86,7 +88,7 @@
                 [(expanded)]="expanded"
             >
                 <ng-container *ngIf="multiple; else single">
-                    <ng-container *ngFor="let file of multipleControl.valueChanges | async">
+                    <ng-container *ngFor="let file of files$ | async">
                         <tui-file
                             *tuiItem
                             [file]="file"
@@ -99,17 +101,29 @@
                 </ng-container>
 
                 <ng-template #single>
-                    <ng-container *ngIf="control.value as file">
+                    <ng-container *ngIf="file">
                         <tui-file
                             *tuiItem
                             [file]="file"
                             [showDelete]="showDelete"
                             [showSize]="showSize"
                             [size]="size"
-                            (remove)="control.setValue(null); documentationPropertyRemoved.emitEvent($event)"
+                            (remove)="removeFile(file); documentationPropertyRemoved.emitEvent($event)"
                         ></tui-file>
                     </ng-container>
                 </ng-template>
+
+                <ng-container *ngFor="let file of rejected">
+                    <tui-file
+                        *tuiItem
+                        state="error"
+                        [file]="(file | tuiFileRejected: validator | async) || file"
+                        [showDelete]="showDelete"
+                        [showSize]="showSize"
+                        [size]="size"
+                        (remove)="removeFile(file); documentationPropertyRemoved.emitEvent($event)"
+                    ></tui-file>
+                </ng-container>
             </tui-files>
         </tui-doc-demo>
         <tui-doc-documentation heading="TuiInputFiles">
@@ -131,15 +145,14 @@
             >
                 Allowed formats
             </ng-template>
-
             <ng-template
                 documentationPropertyMode="input"
-                documentationPropertyName="attr.capture"
-                documentationPropertyType="'user' | 'environment' | null"
-                [documentationPropertyValues]="captureVariants"
-                [(documentationPropertyValue)]="capture"
+                documentationPropertyName="maxFileSize"
+                documentationPropertyType="number"
+                [documentationPropertyValues]="maxFileSizeVariants"
+                [(documentationPropertyValue)]="maxFileSize"
             >
-                Allowed capture
+                Max file size in bytes (30 MB by default — 30 * 1000 * 1000)
             </ng-template>
             <ng-template
                 documentationPropertyMode="input"
@@ -149,6 +162,14 @@
                 (documentationPropertyValueChange)="multipleChange($event)"
             >
                 Allows to upload several files
+            </ng-template>
+            <ng-template
+                #documentationPropertyReject="documentationProperty"
+                documentationPropertyMode="output"
+                documentationPropertyName="reject"
+                documentationPropertyType="TuiFileLike"
+            >
+                Emits file that was rejected.
             </ng-template>
         </tui-doc-documentation>
 
@@ -215,10 +236,10 @@
             <ng-template
                 #documentationPropertyRemoved="documentationProperty"
                 documentationPropertyMode="output"
-                documentationPropertyName="removed"
-                documentationPropertyType="TuiFileLike"
+                documentationPropertyName="remove"
+                documentationPropertyType="void"
             >
-                Emits file on click on close button. When subscribed to, close button appears.
+                Emits on click on close button. When subscribed to, close button appears.
             </ng-template>
         </tui-doc-documentation>
     </ng-template>

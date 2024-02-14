@@ -1,13 +1,11 @@
 ```html
-<label
-  tuiInputFiles
-  [formControl]="control"
->
+<label tuiInputFiles>
   <input
     tuiInputFiles
-    [accept]="accept"
-    [attr.capture]="capture"
-    [multiple]="multiple"
+    accept="image/*"
+    [multiple]="true"
+    [formControl]="control"
+    (reject)="onReject($event)"
   />
 </label>
 

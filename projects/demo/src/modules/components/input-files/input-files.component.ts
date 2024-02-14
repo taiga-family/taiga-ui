@@ -3,7 +3,8 @@ import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiSizeL} from '@taiga-ui/core';
-import {TuiFileLike, TuiInputFilesOptions} from '@taiga-ui/kit';
+import {tuiFilesAccepted} from '@taiga-ui/kit';
+import {map} from 'rxjs';
 
 import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
@@ -59,8 +60,11 @@ export class ExampleTuiInputFilesComponent extends AbstractExampleTuiControl {
         HTML: import('./examples/7/index.html?raw'),
     };
 
-    readonly control = new FormControl<TuiFileLike | null>(null);
-    readonly multipleControl = new FormControl<TuiFileLike[] | null>(null);
+    readonly control = new FormControl<File | null>(null);
+    readonly multipleControl = new FormControl<File[] | null>(null);
+    readonly files$ = this.multipleControl.valueChanges.pipe(
+        map(() => tuiFilesAccepted(this.multipleControl)),
+    );
 
     multiple = true;
     showSize = true;
@@ -69,26 +73,35 @@ export class ExampleTuiInputFilesComponent extends AbstractExampleTuiControl {
     maxFilesCount = 3;
     accept = '';
     acceptVariants = ['image/*', 'application/pdf', 'image/*,application/pdf'];
-    capture: TuiInputFilesOptions['capture'] = null;
-    captureVariants: Array<TuiInputFilesOptions['capture']> = [
-        null,
-        'user',
-        'environment',
-    ];
 
     readonly showDeleteVariants: Array<boolean | 'always'> = [true, false, 'always'];
+    readonly maxFileSizeVariants = [100, 512000, 30 * 1000 * 1000, 2.2 * 1000 * 1000];
     override readonly sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
 
     override size = this.sizeVariants[0];
+    rejected: readonly File[] = [];
+    maxFileSize = this.maxFileSizeVariants[2];
 
-    removeFile(file: TuiFileLike): void {
+    get file(): File | null {
+        const {value} = this.control;
+
+        return value && this.rejected.includes(value) ? null : value;
+    }
+
+    removeFile(file: File): void {
+        this.rejected = this.rejected.filter(current => current !== file);
+        this.control.setValue(null);
         this.multipleControl.setValue(
-            this.multipleControl.value?.filter(current => current.name !== file.name) ||
-                null,
+            this.multipleControl.value?.filter(current => current !== file) || null,
         );
     }
 
+    updateRejected(rejected: readonly File[]): void {
+        this.rejected = rejected;
+    }
+
     multipleChange(multiple: boolean): void {
+        this.rejected = [];
         this.control.setValue(null);
         this.multiple = multiple;
     }

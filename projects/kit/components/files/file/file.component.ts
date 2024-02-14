@@ -84,7 +84,7 @@ export class TuiFileComponent {
     ) {}
 
     get preview(): SafeValue {
-        return this.isBig ? this.createPreview(this.file, this.sanitizer) : '';
+        return this.isBig ? this.createPreview(this.file) : '';
     }
 
     get isBig(): boolean {
@@ -155,14 +155,14 @@ export class TuiFileComponent {
     }
 
     @tuiPure
-    private createPreview(file: TuiFileLike, sanitizer: DomSanitizer): SafeValue {
+    private createPreview(file: TuiFileLike): SafeValue {
         if (file.src) {
             return file.src;
         }
 
         // TODO: iframe warning
         if (file instanceof File && file.type && file.type.startsWith('image/')) {
-            return sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(file));
+            return this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(file));
         }
 
         return '';

@@ -1,4 +1,4 @@
-import {Directive, inject, Input, OnChanges, OnInit} from '@angular/core';
+import {Directive, HostBinding, inject, Input, OnChanges, OnInit} from '@angular/core';
 import {Validators} from '@angular/forms';
 import {TuiValidatorDirective} from '@taiga-ui/cdk';
 
@@ -19,6 +19,7 @@ export class TuiInputFilesValidatorDirective implements OnChanges, OnInit {
     private readonly validator = inject(TuiValidatorDirective);
 
     @Input()
+    @HostBinding('accept')
     accept = this.options.accept;
 
     @Input()

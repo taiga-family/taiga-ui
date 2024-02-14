@@ -23,7 +23,7 @@ test.describe('InputFiles', () => {
     );
 
     ['english', 'dutch', 'russian'].forEach(language =>
-        test(`File is too large (i18n: ${language})`, async ({page}) => {
+        test(`File is bigger than (i18n: ${language})`, async ({page}) => {
             await tuiGoto(
                 page,
                 '/components/input-files/API?accept=image/*&maxFileSize=2000',

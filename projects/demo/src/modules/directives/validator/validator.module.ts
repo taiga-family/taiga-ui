@@ -32,4 +32,4 @@ import {ExampleTuiValidatorComponent} from './validator.component';
     declarations: [ExampleTuiValidatorComponent, TuiValidatorExample1],
     exports: [ExampleTuiValidatorComponent],
 })
-export class ExampleTuiValidatorDirective {}
+export class ExampleTuiValidatorModule {}

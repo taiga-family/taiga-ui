@@ -1695,7 +1695,7 @@ export const ROUTES: Routes = [
         path: 'directives/validator',
         loadChildren: async () =>
             (await import('../directives/validator/validator.module'))
-                .ExampleTuiValidatorDirective,
+                .ExampleTuiValidatorModule,
         data: {
             title: 'Validator',
         },
