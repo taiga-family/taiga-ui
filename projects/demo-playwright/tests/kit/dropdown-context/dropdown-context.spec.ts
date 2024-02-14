@@ -2,8 +2,6 @@ import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
 test.describe('DropdownContext', () => {
-    test.use({viewport: {width: 1280, height: 900}});
-
     test.beforeEach(async ({page}) => tuiGoto(page, '/directives/dropdown-context'));
 
     test('opens dropdown on right click', async ({page}) => {
@@ -11,6 +9,7 @@ test.describe('DropdownContext', () => {
         const example = api.getExample('#context-menu');
         const tr = example.locator('tr');
 
+        await example.scrollIntoViewIfNeeded();
         await tr.last().click({button: 'right', position: {x: 0, y: 0}});
         await api.networkidle();
         await expect(example).toHaveScreenshot('01-dropdown-context.png');
@@ -21,9 +20,11 @@ test.describe('DropdownContext', () => {
         const example = api.getExample('#context-menu');
         const tr = example.locator('tr');
 
+        await example.scrollIntoViewIfNeeded();
         await tr.nth(1).click({button: 'right', position: {x: 0, y: 0}});
         await api.networkidle();
         await expect(example).toHaveScreenshot('02-dropdown-context.png');
+        await api.focusOnBody();
         await tr.nth(2).click({button: 'right', position: {x: 0, y: 0}});
         await api.networkidle();
         await expect(example).toHaveScreenshot('03-dropdown-context.png');
@@ -34,6 +35,7 @@ test.describe('DropdownContext', () => {
         const example = api.getExample('#context-menu');
         const tr = example.locator('tr');
 
+        await example.scrollIntoViewIfNeeded();
         await tr.nth(1).click({button: 'right', position: {x: 0, y: 0}});
         await page.locator('[tuiOption]').last().click();
         await api.networkidle();

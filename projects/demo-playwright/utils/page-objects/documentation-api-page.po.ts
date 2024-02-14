@@ -22,6 +22,8 @@ export class TuiDocumentationApiPagePO {
      * Doesn't work as expected
      */
     async networkidle(): Promise<void> {
+        await this.page.waitForTimeout(100);
+
         await Promise.all(
             [...this.pending].map(
                 async req =>
@@ -33,7 +35,7 @@ export class TuiDocumentationApiPagePO {
             ),
         );
 
-        await this.page.waitForTimeout(300);
+        await this.page.waitForTimeout(200);
     }
 
     async hideNotifications(): Promise<void> {
