@@ -15,12 +15,7 @@
     </div>
 
     <button
-        iconLeft="tuiIconEye"
-        size="m"
-        tuiIconButton
-        tuiSwipeAction
-    ></button>
-    <button
+        *ngIf="editButton"
         iconLeft="tuiIconEdit3"
         size="m"
         tuiIconButton
@@ -43,4 +38,12 @@
         [(ngModel)]="shareButton"
     />
     Share button
+</label>
+<label>
+    <input
+        tuiCheckbox
+        type="checkbox"
+        [(ngModel)]="editButton"
+    />
+    Edit button
 </label>

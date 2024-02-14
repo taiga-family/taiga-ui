@@ -11,4 +11,5 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 })
 export class TuiSwipeActionExample4 {
     shareButton = false;
+    editButton = true;
 }
