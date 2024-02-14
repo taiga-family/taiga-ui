@@ -16,7 +16,7 @@ test.describe('InputFiles', () => {
             });
 
             await example
-                .locator('[tuiInputFiles]')
+                .locator('input[tuiInputFiles]')
                 .setInputFiles(join(__dirname, '../../../stubs/web-api.svg'));
             await expect(example).toHaveScreenshot(`01-${language}-input-files.png`);
         }),
@@ -30,7 +30,7 @@ test.describe('InputFiles', () => {
                 {language},
             );
             await example
-                .locator('[tuiInputFiles]')
+                .locator('input[tuiInputFiles]')
                 .setInputFiles(join(__dirname, '../../../stubs/web-api.svg'));
             await expect(example).toHaveScreenshot(`02-${language}-input-files.png`);
         }),
@@ -43,7 +43,7 @@ test.describe('InputFiles', () => {
             '/components/input-files/API?link=Select%20a%20file%20with%20a%20too%20long%20name.%20Long%20filename.%20Very%20long%20filename',
         );
         await example
-            .locator('[tuiInputFiles]')
+            .locator('input[tuiInputFiles]')
             .setInputFiles(join(__dirname, '../../../stubs/web-api.svg'));
         await expect(example).toHaveScreenshot('03-input-files.png');
     });
