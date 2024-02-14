@@ -110,7 +110,7 @@ export class TuiInputPasswordComponent
     }
 
     get icon(): PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeS>> {
-        return this.isPasswordHidden ? this.options.icons.hide : this.options.icons.show;
+        return this.isPasswordHidden ? this.options.icons.show : this.options.icons.hide;
     }
 
     get inputType(): TuiInputType {
