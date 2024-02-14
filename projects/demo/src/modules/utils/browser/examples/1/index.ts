@@ -2,7 +2,7 @@ import {Component, ElementRef, Inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {USER_AGENT} from '@ng-web-apis/common';
-import {tuiIsEdge, tuiIsEdgeOlderThan, tuiIsFirefox, tuiIsSafari} from '@taiga-ui/cdk';
+import {tuiIsEdge, tuiIsFirefox, tuiIsSafari} from '@taiga-ui/cdk';
 
 @Component({
     selector: 'tui-browser-example-1',
@@ -18,9 +18,7 @@ export class TuiBrowserExample1 {
 
     get aboutMyBrowser(): string {
         if (tuiIsEdge(this.userAgent)) {
-            return tuiIsEdgeOlderThan(13, this.userAgent)
-                ? 'Edge older than 13'
-                : 'Edge until 13';
+            return 'Edge';
         }
 
         if (tuiIsFirefox(this.userAgent)) {

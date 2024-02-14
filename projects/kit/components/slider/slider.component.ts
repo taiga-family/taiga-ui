@@ -11,13 +11,7 @@ import {
     Self,
 } from '@angular/core';
 import {NgControl, NgModel} from '@angular/forms';
-import {USER_AGENT} from '@ng-web-apis/common';
-import {
-    CHROMIUM_EDGE_START_VERSION,
-    tuiIsEdgeOlderThan,
-    tuiPure,
-    tuiWatch,
-} from '@taiga-ui/cdk';
+import {tuiPure, tuiWatch} from '@taiga-ui/cdk';
 import {TuiSizeS} from '@taiga-ui/core';
 import {take} from 'rxjs';
 
@@ -99,12 +93,6 @@ export class TuiSliderComponent {
         return 100 / Math.max(1, this.segments);
     }
 
-    // TODO: drop support of legacy Edge (EdgeHTML) in v4.x
-    @HostBinding('class._old-edge')
-    get isOldEdge(): boolean {
-        return tuiIsEdgeOlderThan(CHROMIUM_EDGE_START_VERSION, this.userAgent);
-    }
-
     @tuiPure
     get hasKeySteps(): boolean {
         return Boolean(this.injector.get(TuiSliderKeyStepsDirective, null));
@@ -118,7 +106,6 @@ export class TuiSliderComponent {
         @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
         @Inject(TUI_SLIDER_OPTIONS) readonly options: TuiSliderOptions,
         @Inject(ElementRef) readonly el: ElementRef<HTMLInputElement>,
-        @Inject(USER_AGENT) private readonly userAgent: string,
         @Inject(Injector) private readonly injector: Injector,
     ) {
         if (control instanceof NgModel) {

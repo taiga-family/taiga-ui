@@ -1,6 +1,5 @@
 export * from './always-false-handler';
 export * from './always-true-handler';
-export * from './browser';
 export * from './empty';
 export * from './matcher';
 export * from './polling-time';

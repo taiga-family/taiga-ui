@@ -14,7 +14,6 @@
         cx="50%"
         cy="50%"
         class="t-track"
-        [attr.r]="oldEdgeRadiusFallback"
     ></circle>
 
     <circle
@@ -22,7 +21,6 @@
         cx="50%"
         cy="50%"
         class="t-progress"
-        [attr.r]="oldEdgeRadiusFallback"
         [class.t-progress_filled]="animationDelay$ | async"
     ></circle>
 </svg>

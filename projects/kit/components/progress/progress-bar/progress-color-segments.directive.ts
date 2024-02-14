@@ -1,7 +1,6 @@
 import {Directive, ElementRef, Inject, Input} from '@angular/core';
-import {USER_AGENT} from '@ng-web-apis/common';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
-import {CHROMIUM_EDGE_START_VERSION, tuiIsEdgeOlderThan, tuiPure} from '@taiga-ui/cdk';
+import {tuiPure} from '@taiga-ui/cdk';
 import {
     BehaviorSubject,
     combineLatest,
@@ -30,13 +29,12 @@ function calculateColorSegments(colors: string[], progressWidth: number): string
     },
 })
 export class TuiProgressColorSegmentsDirective {
-    // TODO: drop support of legacy Edge (EdgeHTML) in v4.x
-    private readonly isOldBrowsers = tuiIsEdgeOlderThan(
-        CHROMIUM_EDGE_START_VERSION,
-        this.userAgent,
-    );
-
     private readonly colors$ = new BehaviorSubject<string[]>([]);
+
+    constructor(
+        @Inject(ElementRef) private readonly el: ElementRef<HTMLProgressElement>,
+        @Inject(ResizeObserverService) private readonly resize$: Observable<unknown>,
+    ) {}
 
     @Input('tuiProgressColorSegments')
     set colors(colors: string[]) {
@@ -51,16 +49,6 @@ export class TuiProgressColorSegmentsDirective {
                 map(() => this.el.nativeElement.offsetWidth),
                 distinctUntilChanged(),
             ),
-        ]).pipe(
-            map(([colors, width]) =>
-                this.isOldBrowsers ? colors[0] : calculateColorSegments(colors, width),
-            ),
-        );
+        ]).pipe(map(([colors, width]) => calculateColorSegments(colors, width)));
     }
-
-    constructor(
-        @Inject(ElementRef) private readonly el: ElementRef<HTMLProgressElement>,
-        @Inject(ResizeObserverService) private readonly resize$: Observable<unknown>,
-        @Inject(USER_AGENT) private readonly userAgent: string,
-    ) {}
 }

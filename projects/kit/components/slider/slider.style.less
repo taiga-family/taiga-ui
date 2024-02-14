@@ -150,6 +150,13 @@
     width: 100%;
     color: var(--tui-primary); /* See currentColor inside this file */
     cursor: pointer;
+    appearance: none;
+    height: @track-height;
+    padding: ((@hitbox - @track-height) / 2) 0; /* To catch click events nearby THIN input's track */
+    background-color: transparent;
+    background-clip: content-box; /* To clip filling of paddings */
+    outline: none;
+    border-radius: var(--tui-radius-m);
     // TODO: Uncomment it in v4.0
     // margin: 0; /* Drop browser default margins */
 
@@ -169,16 +176,6 @@
     &[data-size='m'] {
         .thumb-overlay(m);
     }
-}
-
-:host:not(._old-edge) {
-    appearance: none;
-    height: @track-height;
-    padding: ((@hitbox - @track-height) / 2) 0; /* To catch click events nearby THIN input's track */
-    background-color: transparent;
-    background-clip: content-box; /* To clip filling of paddings */
-    outline: none;
-    border-radius: var(--tui-radius-m);
 
     &::-webkit-slider-container {
         border-radius: inherit;
@@ -237,22 +234,5 @@
         background: @thumb-color;
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
-    }
-}
-
-/* Not-chromium Edge minimum customization */
-:host._old-edge {
-    &::-ms-thumb {
-        background: @thumb-color;
-        border-radius: 50%;
-    }
-
-    &::-ms-fill-lower {
-        background: @thumb-color;
-    }
-
-    &::-ms-track {
-        background: @track-color;
-        border: none;
     }
 }
