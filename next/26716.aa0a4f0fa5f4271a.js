@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[26716],{26716:n=>{n.exports=".text {\n    font-style: italic;\n}\n\n.controls {\n    display: flex;\n    align-items: center;\n}\n"}}]);

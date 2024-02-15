@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[27804],{27804:e=>{e.exports=".poster {\n    height: 4rem;\n    display: flex;\n    align-items: center;\n    border: 5px solid var(--tui-base-03);\n    text-align: center;\n}\n"}}]);

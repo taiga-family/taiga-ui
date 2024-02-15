@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[10204],{10204:e=>{e.exports="tui-dialog[data-appearance='lorem-ipsum'] {\n    margin: 1.25rem auto;\n    border: none;\n    border-radius: 0;\n}\n"}}]);

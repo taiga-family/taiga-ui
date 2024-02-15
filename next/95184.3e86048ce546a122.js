@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[95184],{95184:e=>{e.exports="```ts\nconstructor(private readonly sheets: TuiSheetDialogService) {}\n\n// ...\n\nthis.sheets\n    .open(\n        'Content',\n        {\n            label: 'Heading',\n            offset: 48,\n        },\n    )\n    .subscribe();\n```\n"}}]);

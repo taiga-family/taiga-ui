@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[29336],{29336:e=>{e.exports='```html\n<tui-primitive-checkbox [value]="true"></tui-primitive-checkbox>\n<tui-primitive-checkbox [value]="false"></tui-primitive-checkbox>\n<tui-primitive-checkbox [value]="null"></tui-primitive-checkbox>\n```\n'}}]);

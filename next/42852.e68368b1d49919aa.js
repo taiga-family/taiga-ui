@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[42852],{42852:n=>{n.exports='<tui-elastic-container class="container">\n    <div\n        contenteditable\n        class="editable"\n    >\n        Editable content\n    </div>\n</tui-elastic-container>\n'}}]);

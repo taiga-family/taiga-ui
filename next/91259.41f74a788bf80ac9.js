@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[91259],{91259:n=>{n.exports='```html\n<tui-swipe-actions>\n  <div>Card content</div>\n\n  <button\n    iconLeft="tuiIconEye"\n    size="m"\n    tuiIconButton\n    tuiSwipeAction\n  ></button>\n</tui-swipe-actions>\n```\n'}}]);

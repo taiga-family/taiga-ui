@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[35008],{35008:e=>{e.exports='<tui-stepper\n    orientation="vertical"\n    [activeItemIndex]="1"\n>\n    <button\n        *ngFor="let step of steps"\n        tuiStep\n    >\n        {{ step }}\n    </button>\n</tui-stepper>\n'}}]);

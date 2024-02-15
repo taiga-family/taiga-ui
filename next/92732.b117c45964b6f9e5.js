@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[92732],{92732:e=>{e.exports='<tui-calendar\n    [value]="value"\n    (dayClick)="onDayClick($event)"\n></tui-calendar>\n<div *ngIf="value">Chosen date: {{ value }}</div>\n'}}]);

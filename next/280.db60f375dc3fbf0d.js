@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[280],{280:n=>{n.exports='```html\n<input\n  tuiRadio\n  type="radio"\n  [(ngModel)]="value"\n/>\n```\n'}}]);

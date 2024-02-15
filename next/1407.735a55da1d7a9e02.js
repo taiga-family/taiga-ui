@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[1407],{1407:n=>{n.exports='<tui-pagination\n    [content]="test"\n    [length]="7"\n></tui-pagination>\n<ng-template\n    #test\n    let-index\n>\n    {{ days[index] }}\n</ng-template>\n'}}]);

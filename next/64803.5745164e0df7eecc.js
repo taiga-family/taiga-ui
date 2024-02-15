@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[64803],{64803:n=>{n.exports="```ts\nimport {TuiArcChartModule} from '@taiga-ui/addon-charts';\n\n// ...\n\n@NgModule({\n  imports: [\n    // ...\n    TuiArcChartModule,\n  ],\n  // ...\n})\nexport class MyModule {}\n```\n"}}]);

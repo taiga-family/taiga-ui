@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[39389],{10345:(a,e,n)=>{n.r(e),n.d(e,{TUI_MALAY_LANGUAGE_ADDON_TABLE:()=>s});const s={showHideText:"Tunjuk/Sembunyi",paginationTexts:{pages:"Halaman",linesPerPage:"Baris setiap halaman",of:"dari"}}}}]);

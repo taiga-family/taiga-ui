@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[73096],{73096:e=>{e.exports="```html\n<ng-template #tableBarTemplate><p>Template</p></ng-template>\n```\n"}}]);

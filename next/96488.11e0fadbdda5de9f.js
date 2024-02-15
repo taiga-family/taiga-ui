@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[96488],{96488:e=>{e.exports='```html\n<div *ngFor="let item of items$ | async else loading empty blank">{{item}}</div>\n<ng-template #loading>Loading...</ng-template>\n<ng-template #blank>The list is empty</ng-template>\n```\n'}}]);

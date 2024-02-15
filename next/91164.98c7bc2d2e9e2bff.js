@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[91164],{91164:e=>{e.exports='```html\n<tui-legend-item [value]="value">Content</tui-legend-item>\n```\n'}}]);

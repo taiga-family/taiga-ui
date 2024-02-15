@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[3025],{3025:e=>{e.exports='```html\n<div *ngIf="item | tuiIsPresent">{{item}}</div>\n```\n'}}]);

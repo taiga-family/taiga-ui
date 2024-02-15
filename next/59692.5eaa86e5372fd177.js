@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[59692],{59692:e=>{e.exports='<tui-select\n    class="control"\n    [identityMatcher]="identityMatcher"\n    [valueContent]="valueContent"\n    [(ngModel)]="value"\n>\n    Open-source budget\n    <custom-list\n        *tuiDataList\n        [items]="items"\n    ></custom-list>\n</tui-select>\n'}}]);

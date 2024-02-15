@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[31560],{31560:e=>{e.exports="```ts\nthis.tuiScrollService.scroll$(this.elementRef.nativeElement, 500).subscribe();\n```\n"}}]);

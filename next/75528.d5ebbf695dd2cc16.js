@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[75528],{75528:e=>{e.exports='<tui-input-tag\n    tuiHintContent="مونتی پایتون"\n    tuiTextfieldIconLeft="tuiIconSearchLarge"\n    class="input"\n    [tuiTextfieldCleaner]="true"\n    [tuiTextfieldLabelOutside]="true"\n    [(ngModel)]="value"\n></tui-input-tag>\n'}}]);

@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[3015],{3015:e=>{e.exports='```html\n<div tuiResizeable>\n  <div [tuiResizer]="[1, 0]"></div>\n</div>\n```\n'}}]);

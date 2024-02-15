@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[31072],{8691:o=>{o.exports='<p>Choose iPhone into DevTools to see iOS styled dialog.</p>\n<button\n    tuiButton\n    type="button"\n    (click)="show()"\n>\n    Show dialog\n</button>\n'}}]);

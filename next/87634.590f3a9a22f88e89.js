@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[87634],{87634:n=>{n.exports=".item {\n    border-radius: inherit;\n    font-weight: normal;\n}\n\n._hidden {\n    visibility: hidden;\n}\n"}}]);

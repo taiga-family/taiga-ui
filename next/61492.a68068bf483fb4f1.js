@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[61492],{61492:a=>{a.exports='<tui-axes\n    class="axes"\n    [axisXLabels]="labelsX"\n    [axisYLabels]="labelsY"\n>\n    <tui-bar-chart\n        [max]="10000"\n        [value]="value"\n    ></tui-bar-chart>\n</tui-axes>\n'}}]);

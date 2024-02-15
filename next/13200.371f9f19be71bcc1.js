@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[13200],{13200:i=>{i.exports='<div\n    tuiOverscroll="all"\n    class="box"\n>\n    Lorem ipsum dolor sit amt, consectetur adipiscing elit. Phasellus et orci enim. Nam luctus mattis nisi. In congue\n    vitae arcu a volutpat. Nunc lacinia nulla quis eros facilisis convallis.\n</div>\n'}}]);

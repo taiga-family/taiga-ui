@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[54801],{76612:(e,a,s)=>{s.r(a),s.d(a,{TUI_ITALIAN_LANGUAGE_ADDON_TABLE:()=>i});const i={showHideText:"Mostra/Nascondi",paginationTexts:{pages:"Pagine",linesPerPage:"Righe per pagina",of:"di"}}}}]);

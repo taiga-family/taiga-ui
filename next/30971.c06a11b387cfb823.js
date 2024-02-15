@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[30971],{30971:n=>{n.exports="```bash\nnx migrate @taiga-ui/cdk\nnx migrate --run-migrations=migrations.json\n```\n"}}]);

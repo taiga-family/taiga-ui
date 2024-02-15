@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[49356],{49356:n=>{n.exports="export interface PromptOptions {\n    readonly buttons: readonly [string, string];\n    readonly heading: string;\n}\n"}}]);

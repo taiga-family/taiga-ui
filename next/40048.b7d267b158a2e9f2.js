@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[40048],{40048:e=>{e.exports='<tui-calendar-range [items]="items"></tui-calendar-range>\n'}}]);

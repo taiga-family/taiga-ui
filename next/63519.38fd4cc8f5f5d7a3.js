@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[63519],{63519:e=>{e.exports='```html\n<tui-scrollbar>\n  <header (tuiElasticSticky)="onElastic($event)">I\'m sticky</header>\n  ...\n</tui-scrollbar>\n```\n'}}]);

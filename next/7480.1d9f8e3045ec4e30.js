@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[7480],{7480:n=>{n.exports=".text {\n    font: var(--tui-font-text-s);\n    color: var(--tui-text-03);\n}\n\n.percent {\n    font: var(--tui-font-heading-6);\n}\n"}}]);

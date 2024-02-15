@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[73655],{73655:e=>{e.exports="```html\n<tui-badge-notification>10</tui-badge-notification>\n```\n"}}]);

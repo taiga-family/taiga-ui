@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[79032],{79032:e=>{e.exports=".success {\n    color: var(--tui-success-fill);\n}\n\n.error {\n    color: var(--tui-error-fill);\n}\n"}}]);

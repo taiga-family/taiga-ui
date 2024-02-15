@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[16427],{16427:e=>{e.exports="```ts\nimport {getPaymentSystem} from '@taiga-ui/kit';\n\n//...\npaymentSystem = getPaymentSystem(cardNumber);\n// ...\n```\n"}}]);

@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[34049],{34049:a=>{a.exports='<tui-avatar src="DI"></tui-avatar>\n'}}]);

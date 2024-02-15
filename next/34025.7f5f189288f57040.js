@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[34025],{56406:e=>{e.exports="```ts\nexport class MyComponent {\n  active = false;\n\n  onActiveZone(active: boolean) {\n    this.active = active;\n  }\n}\n```\n"}}]);

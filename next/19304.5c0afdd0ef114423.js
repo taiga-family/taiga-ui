@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[19304],{19304:o=>{o.exports="```ts\nimport {TuiTableBarsHostModule} from '@taiga-ui/addon-tablebars';\nimport {TuiRootModule} from '@taiga-ui/core';\n// ...\n\n@NgModule({\n  imports: [\n    TuiRootModule,\n    TuiTableBarsHostModule,\n    // ...\n  ],\n  // ...\n})\nexport class AppModule {}\n```\n"}}]);

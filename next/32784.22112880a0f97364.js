@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[32784],{32784:n=>{n.exports=".island {\n    max-width: 20rem;\n}\n\n.clamp {\n    pointer-events: none;\n}\n"}}]);

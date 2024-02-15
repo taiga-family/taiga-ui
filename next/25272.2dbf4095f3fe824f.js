@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[25272],{25272:e=>{e.exports=".menu {\n    width: 12.5rem;\n}\n"}}]);

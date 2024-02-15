@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[99928],{99928:o=>{o.exports=".logo {\n    color: var(--tui-base-01);\n    background-color: var(--tui-base-09);\n}\n"}}]);

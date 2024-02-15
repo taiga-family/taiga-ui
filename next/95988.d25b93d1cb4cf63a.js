@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[95988],{95988:n=>{n.exports='<tui-input-inline\n    class="input1"\n    [(ngModel)]="count"\n></tui-input-inline>\n'}}]);

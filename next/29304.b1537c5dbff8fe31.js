@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[29304],{29304:n=>{n.exports="```ts\nimport {TuiInputCardModule, TuiInputCVCModule, TuiInputExpireModule} from '@taiga-ui/addon-commerce';\n\n// ...\n\n@NgModule({\n  imports: [\n    // ...\n    TuiInputCardModule,\n    TuiInputCVCModule,\n    TuiInputExpireModule,\n  ],\n  // ...\n})\nexport class MyModule {}\n```\n"}}]);
