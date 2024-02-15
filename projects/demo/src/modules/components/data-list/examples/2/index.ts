@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDialogService, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
@@ -10,13 +10,13 @@ import {TuiDialogService, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
     changeDetection,
 })
 export class TuiDataListExample2 {
+    private readonly dialogs = inject(TuiDialogService);
+
     dropdownOpen = false;
     size: TuiSizeL | TuiSizeS = 's';
 
     readonly burgers = ['Classic', 'Cheeseburger', 'Royal Cheeseburger'];
     readonly drinks = ['Cola', 'Tea', 'Coffee', 'Slurm'];
-
-    constructor(@Inject(TuiDialogService) private readonly dialogs: TuiDialogService) {}
 
     selectOption(item: string): void {
         this.dropdownOpen = false;

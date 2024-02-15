@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -12,6 +12,8 @@ import {TuiFileLike} from '@taiga-ui/kit';
     changeDetection,
 })
 export class TuiInputFilesExample3 {
+    readonly isE2E = inject(TUI_IS_E2E);
+
     readonly control = new FormControl<TuiFileLike | null>(null);
 
     readonly files: readonly TuiFileLike[] = [
@@ -41,8 +43,6 @@ export class TuiInputFilesExample3 {
 
     removedFiles: TuiFileLike[] = [this.loadingFile as unknown as TuiFileLike];
     restoredFiles: TuiFileLike[] = [];
-
-    constructor(@Inject(TUI_IS_E2E) readonly isE2E: boolean) {}
 
     removeLoading(): void {
         this.loadingFile = null;

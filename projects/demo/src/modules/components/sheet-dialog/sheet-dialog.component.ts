@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TUI_SHEET_DIALOG_DEFAULT_OPTIONS} from '@taiga-ui/addon-mobile';
@@ -46,7 +46,7 @@ export class ExampleTuiSheetDialogComponent {
     readonly stopsVariants = [this.stops, ['100px'], ['10rem', '20rem']];
     readonly labelVariants = [this.label, 'String label', 'Template'];
 
-    constructor(@Inject(TUI_IS_MOBILE) readonly isMobile: boolean) {}
+    readonly isMobile = inject(TUI_IS_MOBILE);
 
     toggle(): void {
         this.open = !this.open;

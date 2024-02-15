@@ -3,15 +3,13 @@ import {
     Component,
     ElementRef,
     HostBinding,
-    Inject,
+    inject,
     OnDestroy,
-    Optional,
 } from '@angular/core';
 import {RouterLinkActive} from '@angular/router';
 import {tuiIsNativeFocused} from '@taiga-ui/cdk';
-import {TUI_MODE, TuiBrightness} from '@taiga-ui/core';
+import {TUI_MODE} from '@taiga-ui/core';
 import {TUI_TAB_MARGIN} from '@taiga-ui/kit/tokens';
-import {Observable} from 'rxjs';
 
 import {TUI_TAB_EVENT, TUI_TAB_PROVIDERS} from './tab.providers';
 
@@ -38,15 +36,11 @@ import {TUI_TAB_EVENT, TUI_TAB_PROVIDERS} from './tab.providers';
     },
 })
 export class TuiTabComponent implements OnDestroy {
-    constructor(
-        @Optional()
-        @Inject(RouterLinkActive)
-        private readonly routerLinkActive: RouterLinkActive | null,
-        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
-        @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
-        @Inject(TUI_TAB_EVENT) readonly event$: Observable<Event>,
-        @Inject(TUI_TAB_MARGIN) readonly margin: number,
-    ) {}
+    private readonly routerLinkActive = inject(RouterLinkActive, {optional: true});
+    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    readonly mode$ = inject(TUI_MODE);
+    readonly event$ = inject(TUI_TAB_EVENT);
+    readonly margin = inject(TUI_TAB_MARGIN);
 
     @HostBinding('class._active')
     get isActive(): boolean {
@@ -54,8 +48,8 @@ export class TuiTabComponent implements OnDestroy {
     }
 
     ngOnDestroy(): void {
-        if (tuiIsNativeFocused(this.el.nativeElement)) {
-            this.el.nativeElement.blur();
+        if (tuiIsNativeFocused(this.el)) {
+            this.el.blur();
         }
     }
 }

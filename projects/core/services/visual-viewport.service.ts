@@ -1,4 +1,4 @@
-import {Inject, Injectable} from '@angular/core';
+import {inject, Injectable} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
 import {TUI_IS_WEBKIT} from '@taiga-ui/cdk';
 import {TuiPoint} from '@taiga-ui/core/types';
@@ -7,10 +7,8 @@ import {TuiPoint} from '@taiga-ui/core/types';
     providedIn: 'root',
 })
 export class TuiVisualViewportService {
-    constructor(
-        @Inject(WINDOW) private readonly win: Window,
-        @Inject(TUI_IS_WEBKIT) private readonly isWebkit: boolean,
-    ) {}
+    private readonly isWebkit = inject(TUI_IS_WEBKIT);
+    private readonly win = inject(WINDOW);
 
     // https://bugs.webkit.org/show_bug.cgi?id=207089
     correct(point: TuiPoint): TuiPoint {

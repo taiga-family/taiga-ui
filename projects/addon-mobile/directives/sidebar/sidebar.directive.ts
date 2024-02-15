@@ -1,8 +1,7 @@
 import {
-    ChangeDetectorRef,
     ComponentRef,
     Directive,
-    Inject,
+    inject,
     Injector,
     Input,
     OnDestroy,
@@ -20,6 +19,9 @@ export class TuiSidebarDirective<T = Record<string, unknown>>
     extends PolymorpheusTemplate<T>
     implements OnDestroy
 {
+    private readonly injector = inject(Injector);
+    private readonly portalService = inject(TuiDropdownService);
+
     private readonly component = new PolymorpheusComponent(
         TuiSidebarComponent,
         this.injector,
@@ -42,15 +44,7 @@ export class TuiSidebarDirective<T = Record<string, unknown>>
         }
     }
 
-    constructor(
-        @Inject(TemplateRef) readonly content: TemplateRef<T>,
-        @Inject(Injector) private readonly injector: Injector,
-        @Inject(TuiDropdownService)
-        private readonly portalService: TuiDropdownService,
-        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
-    ) {
-        super(content, cdr);
-    }
+    readonly content = inject(TemplateRef<T>);
 
     ngOnDestroy(): void {
         this.hide();

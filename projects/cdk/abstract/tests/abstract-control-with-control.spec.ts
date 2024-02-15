@@ -1,10 +1,9 @@
 import {
     ChangeDetectorRef,
     Component,
-    Inject,
+    inject,
     OnDestroy,
     OnInit,
-    Optional,
     ViewChild,
 } from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
@@ -21,11 +20,9 @@ describe('AbstractTuiControl and FormControl', () => {
         template: '',
     })
     class ChildComponent {
-        constructor(
-            @Optional()
-            @Inject(AbstractTuiControl)
-            readonly parent: MyControlComponent | null,
-        ) {}
+        readonly parent = inject(AbstractTuiControl, {
+            optional: true,
+        }) as MyControlComponent;
     }
 
     @Component({

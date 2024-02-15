@@ -1,10 +1,10 @@
-import {Directive, ElementRef, Inject, Output} from '@angular/core';
+import {Directive, ElementRef, inject, Output} from '@angular/core';
 import {
     MUTATION_OBSERVER_INIT,
     MutationObserverService,
 } from '@ng-web-apis/mutation-observer';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
-import {debounceTime, distinctUntilChanged, map, merge, Observable} from 'rxjs';
+import {debounceTime, distinctUntilChanged, map, merge} from 'rxjs';
 
 @Directive({
     selector: '[tuiElasticContainer]',
@@ -22,16 +22,14 @@ import {debounceTime, distinctUntilChanged, map, merge, Observable} from 'rxjs';
     ],
 })
 export class TuiElasticContainerDirective {
+    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly resize$ = inject(ResizeObserverService);
+    private readonly mutation$ = inject(MutationObserverService);
+
     @Output()
     readonly tuiElasticContainer = merge(this.resize$, this.mutation$).pipe(
         debounceTime(0),
-        map(() => this.el.nativeElement.clientHeight - 1),
+        map(() => this.el.clientHeight - 1),
         distinctUntilChanged(),
     );
-
-    constructor(
-        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
-        @Inject(ResizeObserverService) private readonly resize$: Observable<unknown>,
-        @Inject(MutationObserverService) private readonly mutation$: Observable<unknown>,
-    ) {}
 }

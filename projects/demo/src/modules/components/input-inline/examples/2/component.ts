@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAlertService} from '@taiga-ui/core';
@@ -11,13 +11,10 @@ import {TuiAlertService} from '@taiga-ui/core';
     changeDetection,
 })
 export class TuiInputInlineExample2 {
+    private readonly alerts = inject(TuiAlertService);
+
     heading = 'Page heading';
     editing = false;
-
-    constructor(
-        @Inject(TuiAlertService)
-        private readonly alerts: TuiAlertService,
-    ) {}
 
     toggle(): void {
         this.editing = !this.editing;

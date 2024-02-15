@@ -1,4 +1,4 @@
-import {Directive, Inject, Input, TemplateRef} from '@angular/core';
+import {Directive, inject, Input, TemplateRef} from '@angular/core';
 import {TuiRowContext} from '@taiga-ui/addon-table/interfaces';
 
 /**
@@ -14,7 +14,7 @@ export class TuiRowDirective<T extends Partial<Record<keyof T, any>>> {
     @Input()
     tuiRowOf: readonly T[] = [];
 
-    constructor(@Inject(TemplateRef) readonly template: TemplateRef<TuiRowContext<T>>) {}
+    readonly template = inject(TemplateRef<TuiRowContext<T>>);
 
     static ngTemplateContextGuard<T>(
         _dir: TuiRowDirective<T>,

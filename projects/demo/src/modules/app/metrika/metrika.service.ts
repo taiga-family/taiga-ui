@@ -1,5 +1,5 @@
 import {DOCUMENT, isPlatformBrowser} from '@angular/common';
-import {Inject, Injectable, PLATFORM_ID, Provider} from '@angular/core';
+import {inject, Injectable, PLATFORM_ID, Provider} from '@angular/core';
 import {TUI_IS_E2E, tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 
 declare global {
@@ -37,16 +37,18 @@ export function metrikaOptionsProvider(options: Partial<YaMetrikaOptions>): Prov
     return tuiProvideOptions(YA_METRIKA_OPTIONS, options, YA_METRIKA_DEFAULT_OPTIONS);
 }
 
-@Injectable({providedIn: 'root'})
+@Injectable({
+    providedIn: 'root',
+})
 export class YaMetrikaService {
-    constructor(
-        @Inject(YA_METRIKA_OPTIONS)
-        private readonly options: YaMetrikaOptions,
-        @Inject(DOCUMENT) private readonly doc: Document,
-        @Inject(PLATFORM_ID) platformId: Record<string, string>,
-        @Inject(TUI_IS_E2E) isE2E: boolean,
-    ) {
-        if (options.debug || (isPlatformBrowser(platformId) && !ngDevMode && !isE2E)) {
+    private readonly options = inject(YA_METRIKA_OPTIONS);
+    private readonly doc = inject(DOCUMENT);
+
+    constructor() {
+        if (
+            this.options.debug ||
+            (isPlatformBrowser(inject(PLATFORM_ID)) && !ngDevMode && !inject(TUI_IS_E2E))
+        ) {
             const script = this.doc.createElement('script');
 
             script.async = true;

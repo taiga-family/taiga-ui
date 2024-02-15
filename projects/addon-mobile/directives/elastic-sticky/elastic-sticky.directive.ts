@@ -1,6 +1,5 @@
-import {Directive, Inject, Output} from '@angular/core';
+import {Directive, inject, Output} from '@angular/core';
 import {TuiDestroyService} from '@taiga-ui/cdk';
-import {Observable} from 'rxjs';
 
 import {TuiElasticStickyService} from './elastic-sticky.service';
 
@@ -11,11 +10,5 @@ import {TuiElasticStickyService} from './elastic-sticky.service';
 })
 export class TuiElasticStickyDirective {
     @Output()
-    readonly tuiElasticSticky: Observable<number>;
-
-    constructor(
-        @Inject(TuiElasticStickyService) elasticStickyService: TuiElasticStickyService,
-    ) {
-        this.tuiElasticSticky = elasticStickyService;
-    }
+    readonly tuiElasticSticky = inject(TuiElasticStickyService);
 }

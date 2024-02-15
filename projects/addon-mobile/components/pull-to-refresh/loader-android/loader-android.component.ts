@@ -1,5 +1,5 @@
 import {NgIf} from '@angular/common';
-import {ChangeDetectionStrategy, Component, HostBinding, Inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, HostBinding, inject} from '@angular/core';
 import {TuiContext} from '@taiga-ui/cdk';
 import {TuiLoaderModule} from '@taiga-ui/core';
 import {POLYMORPHEUS_CONTEXT, PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
@@ -20,11 +20,8 @@ const ROTATE_X_MULTIPLIER = 2.3;
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiMobileLoaderAndroidComponent {
-    constructor(
-        @Inject(POLYMORPHEUS_CONTEXT)
-        private readonly context: TuiContext<number>,
-        @Inject(TUI_PULL_TO_REFRESH_THRESHOLD) private readonly threshold: number,
-    ) {}
+    private readonly context = inject<TuiContext<number>>(POLYMORPHEUS_CONTEXT);
+    private readonly threshold = inject(TUI_PULL_TO_REFRESH_THRESHOLD);
 
     get transform(): string {
         const rotateX = Math.min(

@@ -1,13 +1,12 @@
-import {Inject, Injectable} from '@angular/core';
+import {inject, Injectable} from '@angular/core';
 import {TuiDialogOptions, TuiDialogService} from '@taiga-ui/core';
 import {TUI_PROMPT, TuiPromptData} from '@taiga-ui/kit/components';
 import {defer, Observable, of} from 'rxjs';
 
 @Injectable()
 export class TuiDialogFormService {
+    private readonly dialogs = inject(TuiDialogService);
     private dirty = false;
-
-    constructor(@Inject(TuiDialogService) private readonly dialogs: TuiDialogService) {}
 
     markAsDirty(): void {
         this.dirty = true;

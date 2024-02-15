@@ -1,5 +1,5 @@
 import {DOCUMENT} from '@angular/common';
-import {Directive, Inject, OnDestroy} from '@angular/core';
+import {Directive, inject, OnDestroy} from '@angular/core';
 
 /**
  * Use this abstract class to create your own toggleable themes.
@@ -11,7 +11,9 @@ import {Directive, Inject, OnDestroy} from '@angular/core';
 export abstract class AbstractTuiThemeSwitcher implements OnDestroy {
     static style: HTMLStyleElement | null = null;
 
-    constructor(@Inject(DOCUMENT) private readonly doc: Document) {
+    private readonly doc = inject(DOCUMENT);
+
+    constructor() {
         if (this.style !== null) {
             this.addTheme();
 

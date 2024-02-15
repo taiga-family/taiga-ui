@@ -1,20 +1,16 @@
 import {
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
     ContentChild,
     ElementRef,
     EventEmitter,
     HostListener,
-    Inject,
+    inject,
     Input,
-    Optional,
     Output,
-    Self,
     TemplateRef,
     ViewChild,
 } from '@angular/core';
-import {NgControl} from '@angular/forms';
 import {MaskitoOptions} from '@maskito/core';
 import {maskitoDateOptionsGenerator} from '@maskito/kit';
 import {AbstractTuiInputCard} from '@taiga-ui/addon-commerce/components/input-card';
@@ -42,25 +38,18 @@ import {
     TUI_NON_DIGIT_REGEXP,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
     tuiAsDataListHost,
-    TuiBrightness,
-    TuiCommonIcons,
     TuiDataListComponent,
     TuiDataListDirective,
     TuiDataListHost,
-    TuiTextfieldController,
 } from '@taiga-ui/core';
-import {TUI_ARROW_OPTIONS, TuiArrowOptions} from '@taiga-ui/kit';
+import {TUI_ARROW_OPTIONS} from '@taiga-ui/kit';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
 
 import {
     TUI_INPUT_CARD_GROUPED_OPTIONS,
     TuiInputCardGroupedOptions,
 } from './input-card-grouped.options';
-import {
-    TUI_INPUT_CARD_GROUPED_TEXTS,
-    TuiCardGroupedTexts,
-} from './input-card-grouped.providers';
+import {TUI_INPUT_CARD_GROUPED_TEXTS} from './input-card-grouped.providers';
 
 const EXPIRE_COMPLETE_LENGTH = 5; // MM/YY
 
@@ -103,6 +92,7 @@ export class TuiInputCardGroupedComponent
     @ViewChild('inputCVC', {read: TuiAutoFocusDirective})
     private readonly cvcCardAutofocusRef?: TuiAutoFocusDirective;
 
+    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
     private expireInert = false;
 
     @Input()
@@ -145,23 +135,14 @@ export class TuiInputCardGroupedComponent
 
     open = false;
 
-    constructor(
-        @Optional()
-        @Self()
-        @Inject(NgControl)
-        control: NgControl | null,
-        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
-        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
-        @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
-        @Inject(TUI_INPUT_CARD_GROUPED_TEXTS)
-        readonly cardGroupedTexts$: Observable<TuiCardGroupedTexts>,
-        @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
-        readonly controller: TuiTextfieldController,
-        @Inject(TUI_COMMON_ICONS) readonly icons: TuiCommonIcons,
-        @Inject(TUI_ARROW_OPTIONS) readonly arrowOptions: TuiArrowOptions,
-        @Inject(TUI_INPUT_CARD_GROUPED_OPTIONS) options: TuiInputCardGroupedOptions,
-    ) {
-        super(control, cdr, options);
+    readonly mode$ = inject(TUI_MODE);
+    readonly cardGroupedTexts$ = inject(TUI_INPUT_CARD_GROUPED_TEXTS);
+    readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
+    readonly icons = inject(TUI_COMMON_ICONS);
+    readonly arrowOptions = inject(TUI_ARROW_OPTIONS);
+
+    constructor() {
+        super(inject(TUI_INPUT_CARD_GROUPED_OPTIONS));
     }
 
     get nativeFocusableElement(): HTMLInputElement | null {
@@ -169,7 +150,7 @@ export class TuiInputCardGroupedComponent
     }
 
     get focused(): boolean {
-        return this.open || tuiIsNativeFocusedIn(this.el.nativeElement);
+        return this.open || tuiIsNativeFocusedIn(this.el);
     }
 
     get appearance(): string {

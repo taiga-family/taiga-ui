@@ -1,14 +1,10 @@
 import {
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
     HostBinding,
-    Inject,
-    Optional,
-    Self,
+    inject,
     ViewChild,
 } from '@angular/core';
-import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
     tuiAsControl,
@@ -22,21 +18,16 @@ import {
     MODE_PROVIDER,
     TUI_MODE,
     TUI_TEXTFIELD_SIZE,
-    TuiBrightness,
     TuiHintOptionsDirective,
     TuiPrimitiveTextfieldComponent,
     TuiSizeL,
     TuiSizeS,
-    TuiTextfieldSizeDirective,
 } from '@taiga-ui/core';
 import {TUI_PASSWORD_TEXTS} from '@taiga-ui/kit/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {combineLatest, EMPTY, map, Observable, startWith} from 'rxjs';
 
-import {
-    TUI_INPUT_PASSWORD_OPTIONS,
-    TuiInputPasswordOptions,
-} from './input-password.options';
+import {TUI_INPUT_PASSWORD_OPTIONS} from './input-password.options';
 
 @Component({
     selector: 'tui-input-password',
@@ -56,7 +47,10 @@ export class TuiInputPasswordComponent
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
-    private readonly directive$: Observable<any> = this.hintOptions?.change$ || EMPTY;
+    private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
+    private readonly mode$ = inject(TUI_MODE);
+    protected readonly hintOptions = inject(TuiHintOptionsDirective, {optional: true});
+    protected readonly directive$: Observable<any> = this.hintOptions?.change$ || EMPTY;
 
     isPasswordHidden = true;
 
@@ -71,28 +65,9 @@ export class TuiInputPasswordComponent
         startWith(''),
     );
 
+    readonly passwordTexts$ = inject(TUI_PASSWORD_TEXTS);
+    readonly options = inject(TUI_INPUT_PASSWORD_OPTIONS);
     readonly type!: TuiContext<TuiSizeL | TuiSizeS>;
-
-    constructor(
-        @Optional()
-        @Self()
-        @Inject(NgControl)
-        control: NgControl | null,
-        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
-        @Inject(TUI_TEXTFIELD_SIZE)
-        private readonly textfieldSize: TuiTextfieldSizeDirective,
-        @Inject(TUI_PASSWORD_TEXTS)
-        readonly passwordTexts$: Observable<[string, string]>,
-        @Inject(TUI_INPUT_PASSWORD_OPTIONS)
-        readonly options: TuiInputPasswordOptions,
-        @Optional()
-        @Inject(TuiHintOptionsDirective)
-        readonly hintOptions: TuiHintOptionsDirective | null,
-        @Inject(TUI_MODE)
-        private readonly mode$: Observable<TuiBrightness | null>,
-    ) {
-        super(control, cdr);
-    }
 
     @HostBinding('attr.data-size')
     get size(): TuiSizeL | TuiSizeS {

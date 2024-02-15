@@ -1,17 +1,13 @@
 import {
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
     ElementRef,
-    Inject,
+    inject,
     Input,
-    Optional,
     QueryList,
-    Self,
     ViewChild,
     ViewChildren,
 } from '@angular/core';
-import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
     EMPTY_QUERY,
@@ -32,7 +28,6 @@ import {
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
     TuiDecimal,
     tuiGetFractionPartPadded,
-    TuiTextfieldController,
     TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
 import {TuiInputNumberComponent} from '@taiga-ui/kit/components/input-number';
@@ -66,6 +61,9 @@ export class TuiInputRangeComponent
     @ViewChild(TuiRangeComponent)
     private readonly rangeRef: TuiRangeComponent | null = null;
 
+    private readonly isMobile = inject(TUI_IS_MOBILE);
+    private readonly el: Element = inject(ElementRef).nativeElement;
+
     @Input()
     min = 0;
 
@@ -97,20 +95,7 @@ export class TuiInputRangeComponent
     rightTextfieldValue = this.safeCurrentValue[1];
     lastActiveSide: 'left' | 'right' = 'left';
 
-    constructor(
-        @Optional()
-        @Self()
-        @Inject(NgControl)
-        control: NgControl | null,
-        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
-        @Inject(TUI_IS_MOBILE)
-        private readonly isMobile: boolean,
-        @Inject(ElementRef) private readonly el: ElementRef,
-        @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
-        readonly controller: TuiTextfieldController,
-    ) {
-        super(control, cdr);
-    }
+    readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
 
     get leftFocusableElement(): HTMLInputElement | null {
         return this.inputNumberRefs.first?.nativeFocusableElement || null;
@@ -127,7 +112,7 @@ export class TuiInputRangeComponent
     }
 
     get focused(): boolean {
-        return tuiIsNativeFocusedIn(this.el.nativeElement);
+        return tuiIsNativeFocusedIn(this.el);
     }
 
     get appearance(): string {

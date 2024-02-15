@@ -1,12 +1,4 @@
-import {
-    Directive,
-    ElementRef,
-    Inject,
-    Input,
-    Optional,
-    Renderer2,
-    Self,
-} from '@angular/core';
+import {Directive, ElementRef, inject, Input, Renderer2} from '@angular/core';
 import {TuiTouchMode} from '@taiga-ui/addon-mobile/types';
 import {tuiFindTouchIndex} from '@taiga-ui/addon-mobile/utils';
 import {TUI_IS_IOS, TuiDestroyService, tuiTypedFromEvent} from '@taiga-ui/cdk';
@@ -24,26 +16,27 @@ const STYLE = {
     providers: [TuiDestroyService],
 })
 export class TuiTouchableDirective {
+    private readonly isIOS = inject(TUI_IS_IOS);
+    private readonly renderer = inject(Renderer2);
+    private readonly destroy$ = inject(TuiDestroyService, {self: true});
+    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly elementRef?: HTMLElement = inject(TUI_ELEMENT_REF, {optional: true})
+        ?.nativeElement;
+
     @Input()
     tuiTouchable: TuiTouchMode | '' = '';
 
-    constructor(
-        @Optional() @Inject(TUI_ELEMENT_REF) el: ElementRef<HTMLElement> | null,
-        @Inject(TUI_IS_IOS) isIos: boolean,
-        @Inject(ElementRef) {nativeElement}: ElementRef<HTMLElement>,
-        @Inject(Renderer2) renderer: Renderer2,
-        @Self() @Inject(TuiDestroyService) destroy$: TuiDestroyService,
-    ) {
-        if (!isIos) {
+    constructor() {
+        if (!this.isIOS) {
             return;
         }
 
-        const element = el?.nativeElement || nativeElement;
+        const element = this.elementRef || this.el;
 
         tuiTypedFromEvent(element, 'touchstart', {passive: true})
             .pipe(
                 tap(() => {
-                    this.onTouchStart(renderer, element);
+                    this.onTouchStart(this.renderer, element);
                 }),
                 map(({touches}) => touches[touches.length - 1].identifier),
                 switchMap(identifier =>
@@ -56,12 +49,12 @@ export class TuiTouchableDirective {
                         tuiTypedFromEvent(element, 'touchend'),
                     ).pipe(take(1)),
                 ),
-                takeUntil(destroy$),
+                takeUntil(this.destroy$),
             )
             .subscribe(() => {
-                renderer.removeStyle(element, 'transform');
-                renderer.removeStyle(element, 'opacity');
-                renderer.removeStyle(element, 'background');
+                this.renderer.removeStyle(element, 'transform');
+                this.renderer.removeStyle(element, 'opacity');
+                this.renderer.removeStyle(element, 'background');
             });
     }
 

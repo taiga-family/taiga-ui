@@ -2,11 +2,9 @@ import {
     ComponentFactoryResolver,
     createComponent,
     EnvironmentInjector,
-    Inject,
     inject,
     Injectable,
     INJECTOR,
-    Injector,
     OnDestroy,
     Type,
 } from '@angular/core';
@@ -28,13 +26,10 @@ export function tuiWithStyles(component: Type<unknown>): void {
     providedIn: 'root',
 })
 export class TuiDirectiveStylesService implements OnDestroy {
-    readonly map = new Map();
+    private readonly resolver = inject(ComponentFactoryResolver);
+    private readonly injector = inject(INJECTOR);
 
-    constructor(
-        @Inject(ComponentFactoryResolver)
-        private readonly resolver: ComponentFactoryResolver,
-        @Inject(INJECTOR) private readonly injector: Injector,
-    ) {}
+    readonly map = new Map();
 
     addComponent(component: Type<unknown>): void {
         if (!this.map.has(component)) {

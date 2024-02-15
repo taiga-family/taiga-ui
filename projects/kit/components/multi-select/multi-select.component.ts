@@ -1,19 +1,15 @@
 import {
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
     ContentChild,
     EventEmitter,
     HostBinding,
-    Inject,
+    inject,
     Input,
-    Optional,
     Output,
-    Self,
     TemplateRef,
     ViewChild,
 } from '@angular/core';
-import {NgControl} from '@angular/forms';
 import {
     AbstractTuiMultipleControl,
     ALWAYS_TRUE_HANDLER,
@@ -44,10 +40,9 @@ import {
     TuiSizeL,
     TuiSizeM,
     TuiSizeS,
-    TuiTextfieldController,
 } from '@taiga-ui/core';
 import {TuiStringifiableItem} from '@taiga-ui/kit/classes';
-import {TUI_ARROW_MODE, TuiArrowMode} from '@taiga-ui/kit/components/arrow';
+import {TUI_ARROW_MODE} from '@taiga-ui/kit/components/arrow';
 import {TuiInputTagComponent} from '@taiga-ui/kit/components/input-tag';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {TUI_ITEMS_HANDLERS, TuiItemsHandlers} from '@taiga-ui/kit/tokens';
@@ -85,6 +80,10 @@ export class TuiMultiSelectComponent<T>
 
     @ViewChild(TuiInputTagComponent)
     private readonly input?: TuiInputTagComponent;
+
+    private readonly arrowMode = inject(TUI_ARROW_MODE);
+    private readonly itemsHandlers = inject<TuiItemsHandlers<T>>(TUI_ITEMS_HANDLERS);
+    private readonly options = inject<TuiMultiSelectOptions<T>>(TUI_MULTI_SELECT_OPTIONS);
 
     @Input()
     stringify: TuiItemsHandlers<T>['stringify'] = this.itemsHandlers.stringify;
@@ -124,25 +123,8 @@ export class TuiMultiSelectComponent<T>
 
     open = false;
 
-    constructor(
-        @Optional()
-        @Self()
-        @Inject(NgControl)
-        control: NgControl | null,
-        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
-        @Inject(TUI_ARROW_MODE)
-        private readonly arrowMode: TuiArrowMode,
-        @Inject(TUI_ITEMS_HANDLERS)
-        private readonly itemsHandlers: TuiItemsHandlers<T>,
-        @Inject(TUI_MULTI_SELECT_OPTIONS)
-        private readonly options: TuiMultiSelectOptions<T>,
-        @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
-        readonly controller: TuiTextfieldController,
-        @Inject(TUI_IS_MOBILE)
-        readonly isMobile: boolean,
-    ) {
-        super(control, cdr);
-    }
+    readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
+    readonly isMobile: boolean = inject(TUI_IS_MOBILE);
 
     @HostBinding('attr.data-size')
     get size(): TuiSizeL | TuiSizeS {

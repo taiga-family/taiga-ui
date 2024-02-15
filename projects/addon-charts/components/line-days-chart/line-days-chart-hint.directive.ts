@@ -3,11 +3,10 @@ import {
     ContentChildren,
     Directive,
     forwardRef,
-    Inject,
+    inject,
     Input,
     NgZone,
     QueryList,
-    Self,
 } from '@angular/core';
 import {tuiLineChartDrivers} from '@taiga-ui/addon-charts/components/line-chart';
 import {
@@ -21,7 +20,7 @@ import {
 } from '@taiga-ui/cdk';
 import {TuiPoint} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {combineLatest, filter, Observable, takeUntil} from 'rxjs';
+import {combineLatest, filter, takeUntil} from 'rxjs';
 
 import {TuiLineDaysChartComponent} from './line-days-chart.component';
 
@@ -38,14 +37,12 @@ export class TuiLineDaysChartHintDirective implements AfterContentInit {
     @ContentChildren(forwardRef(() => TuiLineDaysChartComponent))
     private readonly charts: QueryList<TuiLineDaysChartComponent> = EMPTY_QUERY;
 
+    private readonly destroy$ = inject(TuiDestroyService, {self: true});
+    private readonly zone = inject(NgZone);
+    private readonly hovered$ = inject(TuiHoveredService);
+
     @Input('tuiLineChartHint')
     hint: PolymorpheusContent<TuiContext<readonly TuiPoint[]>>;
-
-    constructor(
-        @Self() @Inject(TuiDestroyService) private readonly destroy$: TuiDestroyService,
-        @Inject(NgZone) private readonly zone: NgZone,
-        @Inject(TuiHoveredService) private readonly hovered$: Observable<boolean>,
-    ) {}
 
     ngAfterContentInit(): void {
         combineLatest([

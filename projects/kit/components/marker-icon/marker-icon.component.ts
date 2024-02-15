@@ -2,19 +2,12 @@ import {
     ChangeDetectionStrategy,
     Component,
     HostBinding,
-    Inject,
+    inject,
     Input,
 } from '@angular/core';
 import {TuiDestroyService} from '@taiga-ui/cdk';
-import {
-    MODE_PROVIDER,
-    TUI_MODE,
-    TuiBrightness,
-    TuiSizeXXL,
-    TuiSizeXXS,
-} from '@taiga-ui/core';
+import {MODE_PROVIDER, TUI_MODE, TuiSizeXXL, TuiSizeXXS} from '@taiga-ui/core';
 import {TuiMarkerIconMode} from '@taiga-ui/kit/types';
-import {Observable} from 'rxjs';
 
 @Component({
     selector: 'tui-marker-icon, a[tuiMarkerIcon], button[tuiMarkerIcon]',
@@ -38,5 +31,5 @@ export class TuiMarkerIconComponent {
     @Input()
     src = '';
 
-    constructor(@Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>) {}
+    readonly mode$ = inject(TUI_MODE);
 }

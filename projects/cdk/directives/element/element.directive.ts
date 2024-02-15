@@ -1,4 +1,4 @@
-import {Directive, ElementRef, Inject} from '@angular/core';
+import {Directive, ElementRef, inject} from '@angular/core';
 
 @Directive({
     selector: '[tuiElement]',
@@ -7,9 +7,9 @@ import {Directive, ElementRef, Inject} from '@angular/core';
 export class TuiElementDirective<T extends Element = HTMLElement>
     implements ElementRef<T>
 {
-    nativeElement!: T;
+    nativeElement = inject(ElementRef<T>).nativeElement;
 
-    constructor(@Inject(ElementRef) {nativeElement}: ElementRef<T>) {
+    constructor() {
         /**
          * @note:
          * Typically, when your constructor is invoked with new,
@@ -24,6 +24,6 @@ export class TuiElementDirective<T extends Element = HTMLElement>
          * This way we can instantiate object creation
          * without additional prototype chain for possible fix bug.
          */
-        return new ElementRef<T>(nativeElement);
+        return new ElementRef<T>(this.nativeElement);
     }
 }

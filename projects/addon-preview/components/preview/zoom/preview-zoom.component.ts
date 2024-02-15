@@ -2,18 +2,13 @@ import {
     ChangeDetectionStrategy,
     Component,
     EventEmitter,
-    Inject,
+    inject,
     Input,
     Output,
 } from '@angular/core';
-import {
-    TUI_PREVIEW_ICONS,
-    TUI_PREVIEW_ZOOM_TEXTS,
-    TuiPreviewIcons,
-} from '@taiga-ui/addon-preview/tokens';
+import {TUI_PREVIEW_ICONS, TUI_PREVIEW_ZOOM_TEXTS} from '@taiga-ui/addon-preview/tokens';
 import {ALWAYS_FALSE_HANDLER, tuiClamp} from '@taiga-ui/cdk';
-import {TuiLanguagePreview} from '@taiga-ui/i18n';
-import {map, merge, Observable, of, startWith, switchMap, timer} from 'rxjs';
+import {map, merge, of, startWith, switchMap, timer} from 'rxjs';
 
 const STEP = 0.5;
 
@@ -40,16 +35,13 @@ export class TuiPreviewZoomComponent {
     // eslint-disable-next-line @angular-eslint/no-output-native
     readonly reset = new EventEmitter<void>();
 
+    readonly icons = inject(TUI_PREVIEW_ICONS);
+    readonly zoomTexts$ = inject(TUI_PREVIEW_ZOOM_TEXTS);
+
     readonly hintShow$ = this.valueChange.pipe(
         switchMap(() => merge(of(true), timer(1000).pipe(map(ALWAYS_FALSE_HANDLER)))),
         startWith(false),
     );
-
-    constructor(
-        @Inject(TUI_PREVIEW_ICONS) readonly icons: TuiPreviewIcons,
-        @Inject(TUI_PREVIEW_ZOOM_TEXTS)
-        readonly zoomTexts$: Observable<TuiLanguagePreview['zoomTexts']>,
-    ) {}
 
     get leftButtonDisabled(): boolean {
         return this.value === this.min;

@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -12,6 +12,8 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
     changeDetection,
 })
 export class TuiMultiSelectExample9 {
+    private readonly dialogs = inject(TuiDialogService);
+
     readonly testValue = new FormControl<string[]>([]);
 
     readonly items: readonly string[] = [
@@ -22,8 +24,6 @@ export class TuiMultiSelectExample9 {
         'Obi-Wan Kenobi',
         'Yoda',
     ];
-
-    constructor(@Inject(TuiDialogService) private readonly dialogs: TuiDialogService) {}
 
     showDialog(
         content: PolymorpheusContent<TuiDialogContext>,

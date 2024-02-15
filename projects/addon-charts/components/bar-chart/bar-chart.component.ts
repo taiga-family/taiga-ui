@@ -1,9 +1,8 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    Inject,
+    inject,
     Input,
-    Optional,
     QueryList,
     ViewChildren,
 } from '@angular/core';
@@ -33,7 +32,8 @@ import {Observable} from 'rxjs';
     viewProviders: [tuiHintOptionsProvider({direction: 'top'})],
 })
 export class TuiBarChartComponent {
-    private readonly autoIdString: string;
+    private readonly hintOptions = inject(TuiHintOptionsDirective, {optional: true});
+    private readonly autoIdString = inject(TuiIdService).generate();
 
     @ViewChildren(TuiHintHoverDirective)
     readonly drivers: QueryList<Observable<boolean>> = EMPTY_QUERY;
@@ -49,15 +49,6 @@ export class TuiBarChartComponent {
 
     @Input()
     collapsed = false;
-
-    constructor(
-        @Optional()
-        @Inject(TuiHintOptionsDirective)
-        private readonly hintOptions: TuiHintOptionsDirective | null,
-        @Inject(TuiIdService) idService: TuiIdService,
-    ) {
-        this.autoIdString = idService.generate();
-    }
 
     get hintContent(): PolymorpheusContent<TuiContext<number>> {
         return this.hintOptions?.content || '';

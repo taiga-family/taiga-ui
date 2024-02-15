@@ -1,14 +1,11 @@
 import {
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
     ElementRef,
     HostBinding,
     HostListener,
-    Inject,
+    inject,
     Input,
-    Optional,
-    Self,
     ViewChild,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
@@ -19,7 +16,7 @@ import {
     tuiIsNativeFocused,
 } from '@taiga-ui/cdk';
 
-import {TUI_RATING_OPTIONS, TuiRatingOptions} from './rating.options';
+import {TUI_RATING_OPTIONS} from './rating.options';
 
 @Component({
     selector: 'tui-rating',
@@ -34,6 +31,8 @@ export class TuiRatingComponent
     @ViewChild(NgControl, {read: ElementRef, static: true})
     private readonly input?: ElementRef<HTMLInputElement>;
 
+    private readonly options = inject(TUI_RATING_OPTIONS);
+
     @Input()
     icon = this.options.icon;
 
@@ -42,17 +41,6 @@ export class TuiRatingComponent
 
     @HostBinding('class._active')
     active = 0;
-
-    constructor(
-        @Optional()
-        @Self()
-        @Inject(NgControl)
-        control: NgControl | null,
-        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
-        @Inject(TUI_RATING_OPTIONS) private readonly options: TuiRatingOptions,
-    ) {
-        super(control, cdr);
-    }
 
     get nativeFocusableElement(): HTMLInputElement | null {
         return this.computedDisabled ? null : this.input?.nativeElement || null;

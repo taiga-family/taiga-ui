@@ -5,11 +5,10 @@ import {
     ChangeDetectionStrategy,
     Component,
     EventEmitter,
-    Inject,
+    inject,
     Input,
     NgZone,
     Output,
-    Self,
     ViewChild,
 } from '@angular/core';
 import {
@@ -23,7 +22,6 @@ import {
     TuiDay,
     TuiDayRange,
     TuiDestroyService,
-    TuiInjectionTokenType,
     TuiMonth,
     tuiTypedFromEvent,
     TuiTypedMapper,
@@ -34,7 +32,6 @@ import {
     TUI_CLOSE_WORD,
     TUI_COMMON_ICONS,
     TUI_SHORT_WEEK_DAYS,
-    TuiCommonIcons,
     tuiGetDuration,
 } from '@taiga-ui/core';
 import {
@@ -51,7 +48,6 @@ import {
     map,
     mergeMap,
     MonoTypeOperatorFunction,
-    Observable,
     race,
     switchMap,
     take,
@@ -77,7 +73,10 @@ import {
     styleUrls: ['./mobile-calendar.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: TUI_MOBILE_CALENDAR_PROVIDERS,
-    host: {'[class._ios]': 'isIOS', '[class._initialized]': 'initialized'},
+    host: {
+        '[class._ios]': 'isIOS',
+        '[class._initialized]': 'initialized',
+    },
 })
 export class TuiMobileCalendarComponent implements AfterViewInit {
     @ViewChild('yearsScrollRef')
@@ -89,6 +88,10 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
     private readonly today = TuiDay.currentLocal();
     private activeYear = 0;
     private activeMonth = 0;
+    private readonly destroy$ = inject(TuiDestroyService, {self: true});
+    private readonly doc = inject(DOCUMENT);
+    private readonly speed = inject(TUI_ANIMATIONS_SPEED);
+    private readonly ngZone = inject(NgZone);
 
     @Input()
     single = true;
@@ -113,8 +116,15 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
 
     value: TuiDay | TuiDayRange | readonly TuiDay[] | null = null;
 
+    readonly isIOS = inject(TUI_IS_IOS);
+    readonly isE2E = inject(TUI_IS_E2E);
+    readonly icons = inject(TUI_COMMON_ICONS);
+    readonly closeWord$ = inject(TUI_CLOSE_WORD);
+    readonly cancelWord$ = inject(TUI_CANCEL_WORD);
+    readonly doneWord$ = inject(TUI_DONE_WORD);
+    readonly unorderedWeekDays$ = inject(TUI_SHORT_WEEK_DAYS);
+    readonly chooseDayOrRangeTexts$ = inject(TUI_CHOOSE_DAY_OR_RANGE_TEXTS);
     readonly years = Array.from({length: RANGE}, (_, i) => i + STARTING_YEAR);
-
     readonly months = Array.from(
         {length: RANGE * 12},
         (_, i) =>
@@ -126,28 +136,12 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
 
     initialized = false;
 
-    constructor(
-        @Inject(TUI_IS_IOS) readonly isIOS: boolean,
-        @Inject(TUI_IS_E2E) readonly isE2E: boolean,
-        @Inject(DOCUMENT) private readonly doc: Document,
-        @Self()
-        @Inject(TuiDestroyService)
-        private readonly destroy$: TuiDestroyService,
-        @Inject(TUI_VALUE_STREAM) valueChanges: Observable<TuiDayRange | null>,
-        @Inject(TUI_COMMON_ICONS) readonly icons: TuiCommonIcons,
-        @Inject(TUI_CLOSE_WORD) readonly closeWord$: Observable<string>,
-        @Inject(TUI_CANCEL_WORD) readonly cancelWord$: Observable<string>,
-        @Inject(TUI_DONE_WORD) readonly doneWord$: Observable<string>,
-        @Inject(TUI_SHORT_WEEK_DAYS)
-        readonly unorderedWeekDays$: TuiInjectionTokenType<typeof TUI_SHORT_WEEK_DAYS>,
-        @Inject(TUI_CHOOSE_DAY_OR_RANGE_TEXTS)
-        readonly chooseDayOrRangeTexts$: Observable<[string, string, string]>,
-        @Inject(TUI_ANIMATIONS_SPEED) private readonly speed: number,
-        @Inject(NgZone) private readonly ngZone: NgZone,
-    ) {
-        valueChanges.pipe(takeUntil(this.destroy$)).subscribe(value => {
-            this.value = value;
-        });
+    constructor() {
+        inject(TUI_VALUE_STREAM)
+            .pipe(takeUntil(this.destroy$))
+            .subscribe(value => {
+                this.value = value;
+            });
     }
 
     get yearWidth(): number {

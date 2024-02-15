@@ -1,17 +1,13 @@
 import {
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
     ContentChild,
     HostBinding,
-    Inject,
+    inject,
     Input,
-    Optional,
-    Self,
     TemplateRef,
     ViewChild,
 } from '@angular/core';
-import {NgControl} from '@angular/forms';
 import {
     AbstractTuiNullableControl,
     TUI_IS_MOBILE,
@@ -34,12 +30,10 @@ import {
     TuiSizeL,
     TuiSizeM,
     TuiSizeS,
-    TuiTextfieldCleanerDirective,
-    TuiTextfieldSizeDirective,
     TuiValueContentContext,
 } from '@taiga-ui/core';
 import {AbstractTuiNativeSelect} from '@taiga-ui/kit/abstract';
-import {TUI_ARROW_MODE, TuiArrowMode} from '@taiga-ui/kit/components/arrow';
+import {TUI_ARROW_MODE} from '@taiga-ui/kit/components/arrow';
 import {TUI_SELECT_OPTION} from '@taiga-ui/kit/components/select-option';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {TUI_ITEMS_HANDLERS, TuiItemsHandlers} from '@taiga-ui/kit/tokens';
@@ -73,6 +67,12 @@ export class TuiSelectComponent<T>
     @ContentChild(AbstractTuiNativeSelect, {static: true})
     private readonly nativeSelect?: AbstractTuiNativeSelect;
 
+    private readonly itemsHandlers = inject<TuiItemsHandlers<T>>(TUI_ITEMS_HANDLERS);
+    private readonly textfieldCleaner = inject(TUI_TEXTFIELD_CLEANER);
+    private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
+    private readonly arrowMode = inject(TUI_ARROW_MODE);
+    private readonly options = inject(TUI_SELECT_OPTIONS);
+
     @Input()
     stringify: TuiItemsHandlers<T>['stringify'] = this.itemsHandlers.stringify;
 
@@ -86,23 +86,7 @@ export class TuiSelectComponent<T>
     @ContentChild(TuiDataListDirective, {read: TemplateRef})
     readonly datalist: PolymorpheusContent<TuiContext<TuiActiveZoneDirective>>;
 
-    constructor(
-        @Optional()
-        @Self()
-        @Inject(NgControl)
-        control: NgControl | null,
-        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
-        @Inject(TUI_TEXTFIELD_CLEANER)
-        private readonly textfieldCleaner: TuiTextfieldCleanerDirective,
-        @Inject(TUI_TEXTFIELD_SIZE)
-        private readonly textfieldSize: TuiTextfieldSizeDirective,
-        @Inject(TUI_ARROW_MODE) private readonly arrowMode: TuiArrowMode,
-        @Inject(TUI_ITEMS_HANDLERS) private readonly itemsHandlers: TuiItemsHandlers<T>,
-        @Inject(TUI_SELECT_OPTIONS) private readonly options: TuiSelectOptions<T>,
-        @Inject(TUI_IS_MOBILE) readonly isMobile: boolean,
-    ) {
-        super(control, cdr);
-    }
+    readonly isMobile = inject(TUI_IS_MOBILE);
 
     @HostBinding('attr.data-size')
     get size(): TuiSizeL | TuiSizeS {

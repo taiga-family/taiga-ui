@@ -4,9 +4,9 @@ import {USER_AGENT} from '@ng-web-apis/common';
 
 // ...
 export class MyComponent {
-  areThereProblems = tuiIsEdge(this.userAgent);
+  private readonly userAgent = inject(USER_AGENT);
 
-  constructor(@Inject(USER_AGENT) private readonly userAgent: string) {}
+  areThereProblems = tuiIsEdge(this.userAgent);
 }
 // ...
 ```

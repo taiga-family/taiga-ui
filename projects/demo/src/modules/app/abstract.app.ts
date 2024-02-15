@@ -1,12 +1,11 @@
-import {Directive, ElementRef, HostBinding, OnInit} from '@angular/core';
+import {Directive, ElementRef, HostBinding, inject, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {TUI_DOC_PAGE_LOADED} from '@taiga-ui/addon-doc';
 import {TuiDestroyService, tuiPure} from '@taiga-ui/cdk';
-import {Observable} from 'rxjs';
 
 import {readyToScrollFactory} from './utils/ready-to-scroll-factory';
-import {TuiVersionMeta} from './version-manager/versions.constants';
+import {TUI_SELECTED_VERSION_META} from './version-manager/version-manager.providers';
 
 export const DEMO_PAGE_LOADED_PROVIDER = {
     provide: TUI_DOC_PAGE_LOADED,
@@ -20,19 +19,13 @@ export abstract class AbstractDemoComponent implements OnInit {
     protected abstract readonly router: Router;
 
     @HostBinding('attr.data-tui-major-version')
-    protected readonly majorVersion = this.selectedVersion?.title;
+    protected readonly majorVersion = inject(TUI_SELECTED_VERSION_META)?.title;
 
     @HostBinding('class._loaded')
     protected readonly pageLoadedInit = '0';
 
-    // TODO: use inject(TUI_DOC_PAGE_LOADED) in angular v14+
     @HostBinding('$.class._loaded')
-    protected readonly pageLoaded = this.pageLoaded$;
-
-    protected constructor(
-        protected readonly pageLoaded$: Observable<boolean>,
-        protected readonly selectedVersion: TuiVersionMeta | null,
-    ) {}
+    protected readonly pageLoaded = inject(TUI_DOC_PAGE_LOADED);
 
     async ngOnInit(): Promise<void> {
         await this.replaceEnvInURI();

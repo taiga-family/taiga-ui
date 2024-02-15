@@ -48,7 +48,7 @@ export class TuiMobileCalendarStrategy implements VirtualScrollStrategy {
     private readonly destroy$ = new Subject<void>();
 
     constructor(
-        private readonly isIos: boolean,
+        private readonly isIOS: boolean,
         private readonly scrollService: TuiScrollService,
     ) {}
 
@@ -58,7 +58,7 @@ export class TuiMobileCalendarStrategy implements VirtualScrollStrategy {
     }
 
     attach(viewport: CdkVirtualScrollViewport): void {
-        const cycle = this.isIos ? IOS_CYCLE_HEIGHT : ANDROID_CYCLE_HEIGHT;
+        const cycle = this.isIOS ? IOS_CYCLE_HEIGHT : ANDROID_CYCLE_HEIGHT;
 
         this.viewport = viewport;
         this.viewport.setTotalContentSize(cycle * 7);
@@ -110,8 +110,8 @@ export class TuiMobileCalendarStrategy implements VirtualScrollStrategy {
     }
 
     private getIndexForOffset(offset: number): number {
-        const cycle = this.isIos ? IOS_CYCLE : ANDROID_CYCLE;
-        const cycleHeight = this.isIos ? IOS_CYCLE_HEIGHT : ANDROID_CYCLE_HEIGHT;
+        const cycle = this.isIOS ? IOS_CYCLE : ANDROID_CYCLE;
+        const cycleHeight = this.isIOS ? IOS_CYCLE_HEIGHT : ANDROID_CYCLE_HEIGHT;
         const remainder = offset % cycleHeight;
         const years = ((offset - remainder) / cycleHeight) * YEARLY_CYCLE;
 
@@ -131,11 +131,11 @@ export class TuiMobileCalendarStrategy implements VirtualScrollStrategy {
     }
 
     private computeHeight(year: number, month?: number): number {
-        const cycle = this.isIos ? IOS_CYCLE : ANDROID_CYCLE;
+        const cycle = this.isIOS ? IOS_CYCLE : ANDROID_CYCLE;
         const remainder = year % YEARLY_CYCLE;
         const remainderHeight = reduceCycle(cycle, remainder, month);
         const fullCycles = (year - remainder) / YEARLY_CYCLE;
-        const fullCyclesHeight = this.isIos
+        const fullCyclesHeight = this.isIOS
             ? fullCycles * IOS_CYCLE_HEIGHT
             : fullCycles * ANDROID_CYCLE_HEIGHT;
 

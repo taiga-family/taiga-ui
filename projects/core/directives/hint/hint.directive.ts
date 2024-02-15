@@ -1,12 +1,11 @@
 import {
     Directive,
     ElementRef,
-    Inject,
+    inject,
     INJECTOR,
     Input,
     OnChanges,
     OnDestroy,
-    Optional,
 } from '@angular/core';
 import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
 import {
@@ -20,7 +19,7 @@ import {TuiHintService} from '@taiga-ui/core/services';
 import {PolymorpheusComponent, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {TUI_HINT_COMPONENT} from './hint.providers';
-import {TUI_HINT_OPTIONS, TuiHintOptions} from './hint-options.directive';
+import {TUI_HINT_OPTIONS} from './hint-options.directive';
 
 @Directive({
     selector: '[tuiHint]:not(ng-container):not(ng-template)',
@@ -37,6 +36,10 @@ import {TUI_HINT_OPTIONS, TuiHintOptions} from './hint-options.directive';
 export class TuiHintDirective<C>
     implements OnDestroy, OnChanges, TuiPortalItem<C>, TuiRectAccessor, TuiVehicle
 {
+    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly hintService = inject(TuiHintService);
+    private readonly options = inject(TUI_HINT_OPTIONS);
+
     @Input('tuiHint')
     content: PolymorpheusContent<C>;
 
@@ -46,17 +49,9 @@ export class TuiHintDirective<C>
     @Input()
     tuiHintAppearance: string | null = null;
 
+    component = inject(PolymorpheusComponent<unknown>);
+    readonly activeZone? = inject(TuiActiveZoneDirective, {optional: true});
     readonly type = 'hint';
-
-    constructor(
-        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
-        @Inject(PolymorpheusComponent) public component: PolymorpheusComponent<unknown>,
-        @Inject(TuiHintService) private readonly hintService: TuiHintService,
-        @Inject(TUI_HINT_OPTIONS) private readonly options: TuiHintOptions,
-        @Optional()
-        @Inject(TuiActiveZoneDirective)
-        readonly activeZone?: TuiActiveZoneDirective | null,
-    ) {}
 
     get appearance(): string {
         return this.tuiHintAppearance ?? this.options.appearance;
@@ -73,7 +68,7 @@ export class TuiHintDirective<C>
     }
 
     getClientRect(): ClientRect {
-        return this.el.nativeElement.getBoundingClientRect();
+        return this.el.getBoundingClientRect();
     }
 
     toggle(show: boolean): void {

@@ -3,12 +3,11 @@ import {
     ChangeDetectionStrategy,
     Component,
     HostBinding,
-    Inject,
+    inject,
     Input,
-    Optional,
 } from '@angular/core';
 import {LOCATION} from '@ng-web-apis/common';
-import {TuiCodeEditor, TuiDocExample} from '@taiga-ui/addon-doc/interfaces';
+import {TuiDocExample} from '@taiga-ui/addon-doc/interfaces';
 import {
     TUI_DOC_CODE_ACTIONS,
     TUI_DOC_CODE_EDITOR,
@@ -16,13 +15,13 @@ import {
     TUI_DOC_EXAMPLE_TEXTS,
 } from '@taiga-ui/addon-doc/tokens';
 import {tuiRawLoadRecord} from '@taiga-ui/addon-doc/utils';
-import {TUI_IS_E2E, TuiContext, TuiHandler} from '@taiga-ui/cdk';
+import {TUI_IS_E2E, TuiContext} from '@taiga-ui/cdk';
 import {TuiAlertService} from '@taiga-ui/core';
 import {TUI_COPY_TEXTS} from '@taiga-ui/kit';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {BehaviorSubject, map, Observable, Subject, switchMap} from 'rxjs';
 
-import {TUI_DOC_EXAMPLE_OPTIONS, TuiDocExampleOptions} from './example.options';
+import {TUI_DOC_EXAMPLE_OPTIONS} from './example.options';
 
 @Component({
     selector: 'tui-doc-example',
@@ -31,7 +30,13 @@ import {TUI_DOC_EXAMPLE_OPTIONS, TuiDocExampleOptions} from './example.options';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiDocExampleComponent {
+    private readonly clipboard = inject(Clipboard);
+    private readonly alerts = inject(TuiAlertService);
+    private readonly location = inject(LOCATION);
+    private readonly copyTexts$ = inject(TUI_COPY_TEXTS);
+    private readonly processContent = inject(TUI_DOC_EXAMPLE_CONTENT_PROCESSOR);
     private readonly rawLoader$$ = new BehaviorSubject<TuiDocExample>({});
+    protected readonly options = inject(TUI_DOC_EXAMPLE_OPTIONS);
 
     @Input()
     id: string | null = null;
@@ -54,6 +59,14 @@ export class TuiDocExampleComponent {
     @Input()
     componentName: string = this.location.pathname.slice(1);
 
+    readonly texts = inject(TUI_DOC_EXAMPLE_TEXTS);
+    readonly codeEditor = inject(TUI_DOC_CODE_EDITOR, {optional: true});
+    readonly isE2E = inject(TUI_IS_E2E);
+    readonly codeActions =
+        inject<ReadonlyArray<PolymorpheusContent<TuiContext<string>>>>(
+            TUI_DOC_CODE_ACTIONS,
+        );
+
     readonly defaultTabIndex = 0;
 
     readonly defaultTab = this.texts[this.defaultTabIndex];
@@ -68,27 +81,6 @@ export class TuiDocExampleComponent {
     );
 
     readonly loading$ = new Subject<boolean>();
-
-    constructor(
-        @Inject(Clipboard) private readonly clipboard: Clipboard,
-        @Inject(TuiAlertService)
-        private readonly alerts: TuiAlertService,
-        @Inject(LOCATION) private readonly location: Location,
-        @Inject(TUI_COPY_TEXTS) private readonly copyTexts$: Observable<[string, string]>,
-        @Inject(TUI_DOC_EXAMPLE_TEXTS) readonly texts: [string, string, string],
-        @Optional()
-        @Inject(TUI_DOC_CODE_EDITOR)
-        readonly codeEditor: TuiCodeEditor | null,
-        @Inject(TUI_DOC_EXAMPLE_CONTENT_PROCESSOR)
-        private readonly processContent: TuiHandler<
-            Record<string, string>,
-            Record<string, string>
-        >,
-        @Inject(TUI_IS_E2E) readonly isE2E: boolean,
-        @Inject(TUI_DOC_CODE_ACTIONS)
-        readonly codeActions: Array<PolymorpheusContent<TuiContext<string>>>,
-        @Inject(TUI_DOC_EXAMPLE_OPTIONS) readonly options: TuiDocExampleOptions,
-    ) {}
 
     readonly visible = (files: Record<string, string>): boolean =>
         Boolean(this.codeEditor && this.options.codeEditorVisibilityHandler(files));

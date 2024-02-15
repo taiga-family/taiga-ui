@@ -5,7 +5,7 @@ import {
     ElementRef,
     HostBinding,
     HostListener,
-    Inject,
+    inject,
     Input,
     OnDestroy,
     ViewChild,
@@ -24,6 +24,9 @@ export class TuiTileComponent implements OnDestroy, AfterViewInit {
     @ViewChild('wrapper')
     private readonly wrapper?: ElementRef<HTMLElement>;
 
+    private readonly service = inject(TuiTileService);
+    private readonly tiles = inject(TuiTilesComponent);
+
     @Input()
     width = 1;
 
@@ -33,11 +36,7 @@ export class TuiTileComponent implements OnDestroy, AfterViewInit {
     @HostBinding('class._dragged')
     dragged = false;
 
-    constructor(
-        @Inject(TuiTileService) private readonly service: TuiTileService,
-        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
-        @Inject(TuiTilesComponent) private readonly tiles: TuiTilesComponent,
-    ) {}
+    readonly element: HTMLElement = inject(ElementRef).nativeElement;
 
     @HostBinding('style.gridColumn')
     get column(): string {
@@ -47,10 +46,6 @@ export class TuiTileComponent implements OnDestroy, AfterViewInit {
     @HostBinding('style.gridRow')
     get row(): string {
         return `span var(--tui-height, ${this.height})`;
-    }
-
-    get element(): HTMLElement {
-        return this.el.nativeElement;
     }
 
     @HostListener('pointerenter')

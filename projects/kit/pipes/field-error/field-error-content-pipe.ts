@@ -1,5 +1,5 @@
 import {AsyncPipe} from '@angular/common';
-import {Inject, Injector, OnDestroy, Pipe, PipeTransform} from '@angular/core';
+import {inject, Injector, OnDestroy, Pipe, PipeTransform} from '@angular/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {TuiFieldErrorPipe} from './field-error-pipe';
@@ -9,6 +9,7 @@ import {TuiFieldErrorPipe} from './field-error-pipe';
     pure: false,
 })
 export class TuiFieldErrorContentPipe implements PipeTransform, OnDestroy {
+    private readonly injector = inject(Injector);
     private readonly localInjector = Injector.create({
         providers: [{provide: AsyncPipe}, {provide: TuiFieldErrorPipe}],
         parent: this.injector,
@@ -16,8 +17,6 @@ export class TuiFieldErrorContentPipe implements PipeTransform, OnDestroy {
 
     private readonly asyncPipe = this.localInjector.get(AsyncPipe);
     private readonly fieldErrorPipe = this.localInjector.get(TuiFieldErrorPipe);
-
-    constructor(@Inject(Injector) private readonly injector: Injector) {}
 
     transform(order: readonly string[]): PolymorpheusContent {
         return this.getErrorContent(order);

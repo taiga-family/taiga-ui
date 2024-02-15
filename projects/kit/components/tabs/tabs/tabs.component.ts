@@ -8,10 +8,9 @@ import {
     forwardRef,
     HostBinding,
     HostListener,
-    Inject,
+    inject,
     Input,
     QueryList,
-    Self,
 } from '@angular/core';
 import {
     MUTATION_OBSERVER_INIT,
@@ -19,11 +18,11 @@ import {
 } from '@ng-web-apis/mutation-observer';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {EMPTY_QUERY, TuiDestroyService, tuiPure} from '@taiga-ui/cdk';
-import {filter, Observable, takeUntil} from 'rxjs';
+import {filter, takeUntil} from 'rxjs';
 
 import {TuiTabComponent} from '../tab/tab.component';
 import {TuiTabsDirective} from '../tabs.directive';
-import {TUI_TABS_OPTIONS, TuiTabsOptions} from '../tabs.options';
+import {TUI_TABS_OPTIONS} from '../tabs.options';
 
 @Component({
     selector: 'tui-tabs:not([vertical]), nav[tuiTabs]:not([vertical])',
@@ -43,6 +42,13 @@ import {TUI_TABS_OPTIONS, TuiTabsOptions} from '../tabs.options';
     ],
 })
 export class TuiTabsComponent implements AfterViewChecked {
+    private readonly destroy$ = inject(TuiDestroyService, {self: true});
+    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly resize$ = inject(ResizeObserverService);
+    private readonly options = inject(TUI_TABS_OPTIONS);
+    private readonly cdr = inject(ChangeDetectorRef);
+    private readonly tabs = inject(TuiTabsDirective);
+
     @ContentChildren(forwardRef(() => TuiTabComponent))
     readonly children: QueryList<unknown> = EMPTY_QUERY;
 
@@ -50,22 +56,13 @@ export class TuiTabsComponent implements AfterViewChecked {
     @HostBinding('class._underline')
     underline = this.options.underline;
 
-    constructor(
-        @Inject(TUI_TABS_OPTIONS) private readonly options: TuiTabsOptions,
-        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
-        @Inject(TuiTabsDirective) private readonly tabs: TuiTabsDirective,
-        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
-        @Inject(ResizeObserverService) resize$: Observable<void>,
-        @Self() @Inject(TuiDestroyService) destroy$: Observable<void>,
-    ) {
-        resize$
+    constructor() {
+        this.resize$
             .pipe(
                 filter(() => this.underline),
-                takeUntil(destroy$),
+                takeUntil(this.destroy$),
             )
-            .subscribe(() => {
-                cdr.detectChanges();
-            });
+            .subscribe(() => this.cdr.detectChanges());
     }
 
     /** @deprecated use `activeItemIndex` from {@link TuiTabsDirective} instead */
@@ -101,18 +98,13 @@ export class TuiTabsComponent implements AfterViewChecked {
         }
 
         const {offsetLeft, offsetWidth} = element;
-        const {nativeElement} = this.el;
 
-        if (offsetLeft < nativeElement.scrollLeft) {
-            nativeElement.scrollLeft = offsetLeft;
+        if (offsetLeft < this.el.scrollLeft) {
+            this.el.scrollLeft = offsetLeft;
         }
 
-        if (
-            offsetLeft + offsetWidth >
-            nativeElement.scrollLeft + nativeElement.offsetWidth
-        ) {
-            nativeElement.scrollLeft =
-                offsetLeft + offsetWidth - nativeElement.offsetWidth;
+        if (offsetLeft + offsetWidth > this.el.scrollLeft + this.el.offsetWidth) {
+            this.el.scrollLeft = offsetLeft + offsetWidth - this.el.offsetWidth;
         }
     }
 }

@@ -3,7 +3,7 @@ import {TUI_PROMPT} from '@taiga-ui/kit';
 
 // ...
 export class MyComponent {
-  constructor(@Inject(TuiDialogService) private readonly dialogs: TuiDialogService) {}
+  private readonly dialogs = inject(TuiDialogService);
 
   prompt() {
     this.dialogs

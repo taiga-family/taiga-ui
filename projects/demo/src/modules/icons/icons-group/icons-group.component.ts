@@ -1,5 +1,5 @@
 import {Clipboard} from '@angular/cdk/clipboard';
-import {Component, ContentChild, Inject, Input, OnInit, Self} from '@angular/core';
+import {Component, ContentChild, inject, Input, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -24,6 +24,12 @@ import {IconsGroupDirective} from './icons-group.directive';
     providers: [TuiDestroyService],
 })
 export class IconsGroupComponent implements OnInit {
+    private readonly clipboard = inject(Clipboard);
+    private readonly alerts = inject(TuiAlertService);
+    private readonly route = inject(ActivatedRoute);
+    private readonly router = inject(Router);
+    private readonly destroy$ = inject(TuiDestroyService, {self: true});
+
     @ContentChild(IconsGroupDirective)
     readonly iconGroup?: IconsGroupDirective;
 
@@ -41,14 +47,6 @@ export class IconsGroupComponent implements OnInit {
         map(queryParams => queryParams['search'] ?? ''),
         distinctUntilChanged(),
     );
-
-    constructor(
-        @Inject(Clipboard) private readonly clipboard: Clipboard,
-        @Inject(TuiAlertService) private readonly alerts: TuiAlertService,
-        @Inject(ActivatedRoute) private readonly route: ActivatedRoute,
-        @Inject(Router) private readonly router: Router,
-        @Self() @Inject(TuiDestroyService) private readonly destroy$: Observable<void>,
-    ) {}
 
     ngOnInit(): void {
         this.control.patchValue(this.route.snapshot.queryParams['search'] ?? '');

@@ -1,15 +1,11 @@
 import {
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
     HostBinding,
-    Inject,
+    inject,
     Input,
-    Optional,
-    Self,
     ViewChild,
 } from '@angular/core';
-import {NgControl} from '@angular/forms';
 import {
     AbstractTuiNullableControl,
     TUI_DEFAULT_IDENTITY_MATCHER,
@@ -66,18 +62,7 @@ export class TuiRadioBlockComponent<T>
     @Input()
     pseudoDisabled = false;
 
-    constructor(
-        @Optional()
-        @Self()
-        @Inject(NgControl)
-        control: NgControl | null,
-        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
-        @Optional()
-        @Inject(TuiModeDirective)
-        readonly modeDirective: TuiModeDirective | null,
-    ) {
-        super(control, cdr);
-    }
+    readonly modeDirective = inject(TuiModeDirective, {optional: true});
 
     get nativeFocusableElement(): TuiNativeFocusableElement | null {
         return this.radio?.nativeFocusableElement ?? null;

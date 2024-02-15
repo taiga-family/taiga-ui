@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiBreakpointService, TuiSizeL} from '@taiga-ui/core';
@@ -11,11 +11,9 @@ import {map, Observable} from 'rxjs';
     changeDetection,
 })
 export class TuiBlockStatusExample2 {
+    protected readonly breakpointService = inject(TuiBreakpointService);
+
     size$: Observable<TuiSizeL> = this.breakpointService.pipe(
         map(key => (key === 'mobile' ? 'm' : 'l')),
     );
-
-    constructor(
-        @Inject(TuiBreakpointService) readonly breakpointService: TuiBreakpointService,
-    ) {}
 }

@@ -1,4 +1,4 @@
-import {Directive, ElementRef, Inject, Output} from '@angular/core';
+import {Directive, ElementRef, inject, Output} from '@angular/core';
 import {tuiDragAndDropFrom, TuiDragStage} from '@taiga-ui/cdk/observables';
 import {filter, map, Observable} from 'rxjs';
 
@@ -9,7 +9,9 @@ import {filter, map, Observable} from 'rxjs';
     selector: '[tuiDragStart], [tuiDragContinues], [tuiDragEnd]',
 })
 export class TuiDragDirective {
-    private readonly dragAndDropFrom$ = tuiDragAndDropFrom(this.el.nativeElement);
+    private readonly dragAndDropFrom$ = tuiDragAndDropFrom(
+        inject(ElementRef).nativeElement,
+    );
 
     @Output('tuiDragStart')
     // eslint-disable-next-line @angular-eslint/no-output-native
@@ -30,6 +32,4 @@ export class TuiDragDirective {
         filter(({stage}) => stage === TuiDragStage.End),
         map(({event}) => event),
     );
-
-    constructor(@Inject(ElementRef) private readonly el: ElementRef<Element>) {}
 }

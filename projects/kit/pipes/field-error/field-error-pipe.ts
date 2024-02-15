@@ -1,4 +1,4 @@
-import {Inject, Optional, Pipe, PipeTransform, Self, SkipSelf} from '@angular/core';
+import {inject, Pipe, PipeTransform} from '@angular/core';
 import {
     AbstractControl,
     ControlContainer,
@@ -32,25 +32,12 @@ function defaultError(
 })
 export class TuiFieldErrorPipe implements PipeTransform, ControlValueAccessor {
     private order: readonly string[] = [];
+    private readonly parent = inject(NgControl, {skipSelf: true, optional: true});
+    private readonly self = inject(NgControl, {self: true, optional: true});
+    private readonly container = inject(ControlContainer, {optional: true});
+    private readonly validationErrors = inject(TUI_VALIDATION_ERRORS);
 
-    constructor(
-        @Optional()
-        @SkipSelf()
-        @Inject(NgControl)
-        private readonly parent: NgControl | null,
-        @Optional()
-        @Self()
-        @Inject(NgControl)
-        private readonly self: NgControl | null,
-        @Optional()
-        @Inject(ControlContainer)
-        private readonly container: ControlContainer | null,
-        @Inject(TUI_VALIDATION_ERRORS)
-        private readonly validationErrors: Record<
-            string,
-            Observable<PolymorpheusContent> | PolymorpheusContent
-        >,
-    ) {
+    constructor() {
         if (this.self && !this.self.valueAccessor) {
             this.self.valueAccessor = this;
         }

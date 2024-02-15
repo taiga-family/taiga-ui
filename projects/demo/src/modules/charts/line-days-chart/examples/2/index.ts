@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {
     TUI_IS_E2E,
@@ -18,6 +18,8 @@ import {TuiPoint} from '@taiga-ui/core';
     changeDetection,
 })
 export class TuiLineDaysChartExample2 {
+    private readonly isE2E = inject(TUI_IS_E2E);
+
     data = new TuiDayRange(
         TuiDay.currentLocal(),
         TuiDay.currentLocal().append({month: 5}),
@@ -28,8 +30,6 @@ export class TuiLineDaysChartExample2 {
     days: ReadonlyArray<ReadonlyArray<[TuiDay, number]>> = this.computeArrays(this.data);
 
     readonly maxLength: TuiDayLike = {month: 6};
-
-    constructor(@Inject(TUI_IS_E2E) readonly isE2E: boolean) {}
 
     get range(): TuiDayRange {
         return this.computeRange(this.show);

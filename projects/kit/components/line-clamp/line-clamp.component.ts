@@ -6,7 +6,7 @@ import {
     DoCheck,
     ElementRef,
     HostListener,
-    Inject,
+    inject,
     Input,
     NgZone,
     Output,
@@ -30,7 +30,7 @@ import {
     timer,
 } from 'rxjs';
 
-import {TUI_LINE_CLAMP_OPTIONS, TuiLineClampOptions} from './line-clamp.options';
+import {TUI_LINE_CLAMP_OPTIONS} from './line-clamp.options';
 import {TuiLineClampBoxComponent} from './line-clamp-box.component';
 
 @Component({
@@ -49,6 +49,11 @@ export class TuiLineClampComponent implements DoCheck, AfterViewInit {
     @ViewChild(TuiHintDirective, {read: ElementRef})
     private readonly outlet?: ElementRef<HTMLElement>;
 
+    private readonly options = inject(TUI_LINE_CLAMP_OPTIONS);
+    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly renderer = inject(Renderer2);
+    private readonly cd = inject(ChangeDetectorRef);
+    private readonly zone: NgZone = inject(NgZone);
     private readonly linesLimit$ = new BehaviorSubject(1);
     private readonly isOverflown$ = new Subject<boolean>();
     private initialized = false;
@@ -74,20 +79,14 @@ export class TuiLineClampComponent implements DoCheck, AfterViewInit {
         switchMap(([prev, next]) =>
             next >= prev
                 ? of(next)
-                : tuiTypedFromEvent(this.el.nativeElement, 'transitionend').pipe(
+                : tuiTypedFromEvent(this.el, 'transitionend').pipe(
                       filter(tuiIsCurrentTarget),
                       map(() => next),
                   ),
         ),
     );
 
-    constructor(
-        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
-        @Inject(Renderer2) private readonly renderer: Renderer2,
-        @Inject(ChangeDetectorRef) private readonly cd: ChangeDetectorRef,
-        @Inject(NgZone) private readonly zone: NgZone,
-        @Inject(TUI_LINE_CLAMP_OPTIONS) private readonly options: TuiLineClampOptions,
-    ) {
+    constructor() {
         this.skipInitialTransition();
     }
 
@@ -97,7 +96,7 @@ export class TuiLineClampComponent implements DoCheck, AfterViewInit {
         }
 
         const {scrollHeight, scrollWidth} = this.outlet.nativeElement;
-        const {clientHeight, clientWidth} = this.el.nativeElement;
+        const {clientHeight, clientWidth} = this.el;
 
         // 4px buffer for IE/Edge incorrectly rounding scrollHeight
         return scrollHeight - clientHeight > 4 || scrollWidth - clientWidth > 0;
@@ -125,7 +124,7 @@ export class TuiLineClampComponent implements DoCheck, AfterViewInit {
         timer(0)
             .pipe(tuiZonefree(this.zone))
             .subscribe(() => {
-                this.renderer.addClass(this.el.nativeElement, '_initialized');
+                this.renderer.addClass(this.el, '_initialized');
                 this.cd.detectChanges();
             });
     }
@@ -133,7 +132,7 @@ export class TuiLineClampComponent implements DoCheck, AfterViewInit {
     private update(): void {
         if (this.outlet) {
             this.renderer.setStyle(
-                this.el.nativeElement,
+                this.el,
                 'height',
                 tuiPx(this.outlet.nativeElement.scrollHeight + 4),
             );
@@ -141,7 +140,7 @@ export class TuiLineClampComponent implements DoCheck, AfterViewInit {
 
         if (this.initialized) {
             this.renderer.setStyle(
-                this.el.nativeElement,
+                this.el,
                 'max-height',
                 tuiPx(this.lineHeight * this.linesLimit$.value),
             );

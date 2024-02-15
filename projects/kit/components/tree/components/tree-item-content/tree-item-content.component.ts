@@ -3,9 +3,9 @@ import {
     Component,
     forwardRef,
     HostBinding,
-    Inject,
+    inject,
 } from '@angular/core';
-import {TUI_COMMON_ICONS, TuiCommonIcons} from '@taiga-ui/core';
+import {TUI_COMMON_ICONS} from '@taiga-ui/core';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 
 import {TUI_DEFAULT_TREE_CONTROLLER} from '../../misc/tree.constants';
@@ -19,12 +19,12 @@ import {TUI_TREE_CONTROLLER} from '../../misc/tree.tokens';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiTreeItemContentComponent {
-    constructor(
-        @Inject(TUI_COMMON_ICONS) readonly icons: TuiCommonIcons,
-        @Inject(POLYMORPHEUS_CONTEXT) readonly context: TuiTreeItemContext,
-        @Inject(forwardRef(() => TUI_TREE_CONTROLLER))
-        private readonly controller: TuiTreeController,
-    ) {}
+    private readonly controller = inject<TuiTreeController>(
+        forwardRef(() => TUI_TREE_CONTROLLER),
+    );
+
+    readonly icons = inject(TUI_COMMON_ICONS);
+    readonly context = inject<TuiTreeItemContext>(POLYMORPHEUS_CONTEXT);
 
     get isExpanded(): boolean {
         return this.context.$implicit.isExpanded;

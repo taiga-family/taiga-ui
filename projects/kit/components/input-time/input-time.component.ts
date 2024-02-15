@@ -1,16 +1,12 @@
 import {
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
     HostBinding,
     HostListener,
-    Inject,
+    inject,
     Input,
-    Optional,
-    Self,
     ViewChild,
 } from '@angular/core';
-import {NgControl} from '@angular/forms';
 import {MaskitoOptions} from '@maskito/core';
 import {maskitoTimeOptionsGenerator} from '@maskito/kit';
 import {
@@ -39,7 +35,6 @@ import {
     TuiPrimitiveTextfieldComponent,
     TuiSizeL,
     TuiSizeS,
-    TuiTextfieldSizeDirective,
 } from '@taiga-ui/core';
 import {TUI_SELECT_OPTION} from '@taiga-ui/kit/components/select-option';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
@@ -68,6 +63,12 @@ export class TuiInputTimeComponent
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
+    private readonly timeTexts$ = inject(TUI_TIME_TEXTS);
+    private readonly options = inject(TUI_INPUT_TIME_OPTIONS);
+    private readonly isMobile = inject(TUI_IS_MOBILE);
+    private readonly isIOS: boolean = inject(TUI_IS_IOS);
+    private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
+
     @Input()
     disabledItemHandler: TuiBooleanHandler<TuiTime> = ALWAYS_FALSE_HANDLER;
 
@@ -88,24 +89,6 @@ export class TuiInputTimeComponent
     postfix: TuiInputTimeOptions['postfix'] = this.options.postfix;
 
     open = false;
-
-    constructor(
-        @Optional()
-        @Self()
-        @Inject(NgControl)
-        control: NgControl | null,
-        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
-        @Inject(TUI_TIME_TEXTS)
-        private readonly timeTexts$: Observable<Record<TuiTimeMode, string>>,
-        @Inject(TUI_INPUT_TIME_OPTIONS)
-        private readonly options: TuiInputTimeOptions,
-        @Inject(TUI_IS_MOBILE) private readonly isMobile: boolean,
-        @Inject(TUI_IS_IOS) private readonly isIos: boolean,
-        @Inject(TUI_TEXTFIELD_SIZE)
-        private readonly textfieldSize: TuiTextfieldSizeDirective,
-    ) {
-        super(control, cdr);
-    }
 
     @HostBinding('attr.data-size')
     get size(): TuiSizeL | TuiSizeS {
@@ -131,12 +114,12 @@ export class TuiInputTimeComponent
     get showNativePicker(): boolean {
         return (
             this.nativePicker &&
-            (!this.isIos || (this.mode === 'HH:MM' && !this.items.length))
+            (!this.isIOS || (this.mode === 'HH:MM' && !this.items.length))
         );
     }
 
     get nativeDatalist(): boolean {
-        return this.nativePicker && !this.isIos;
+        return this.nativePicker && !this.isIOS;
     }
 
     get maskOptions(): MaskitoOptions {

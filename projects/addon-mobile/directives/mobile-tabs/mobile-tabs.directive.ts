@@ -1,10 +1,5 @@
-import {Directive, HostBinding, Inject} from '@angular/core';
-import {
-    TUI_IS_ANDROID,
-    TUI_IS_IOS,
-    TuiDirectiveStylesService,
-    TuiPlatform,
-} from '@taiga-ui/cdk';
+import {Directive, HostBinding, inject} from '@angular/core';
+import {TUI_IS_ANDROID, TUI_IS_IOS, TuiPlatform, tuiWithStyles} from '@taiga-ui/cdk';
 import {TUI_TAB_MARGIN} from '@taiga-ui/kit';
 
 import {TuiMobileTabsComponent} from './mobile-tabs.component';
@@ -19,18 +14,14 @@ import {TuiMobileTabsComponent} from './mobile-tabs.component';
     ],
 })
 export class TuiMobileTabsDirective {
-    constructor(
-        @Inject(TUI_IS_IOS) private readonly isIos: boolean,
-        @Inject(TUI_IS_ANDROID) private readonly isAndroid: boolean,
-        @Inject(TuiDirectiveStylesService) directiveStyles: TuiDirectiveStylesService,
-    ) {
-        directiveStyles.addComponent(TuiMobileTabsComponent);
-    }
+    private readonly isIOS = inject(TUI_IS_IOS);
+    private readonly isAndroid = inject(TUI_IS_ANDROID);
+    protected readonly nothing = tuiWithStyles(TuiMobileTabsComponent);
 
     // TODO: Refactor with TUI_PLATFORM
     @HostBinding('attr.data-platform')
     get platform(): TuiPlatform | null {
-        if (this.isIos) {
+        if (this.isIOS) {
             return 'ios';
         }
 

@@ -2,13 +2,10 @@ import {
     ChangeDetectionStrategy,
     Component,
     HostBinding,
-    Inject,
+    inject,
     Input,
 } from '@angular/core';
-import {
-    TUI_INPUT_CARD_OPTIONS,
-    TuiInputCardOptions,
-} from '@taiga-ui/addon-commerce/components/input-card';
+import {TUI_INPUT_CARD_OPTIONS} from '@taiga-ui/addon-commerce/components/input-card';
 import {TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
 import {TuiSizeS} from '@taiga-ui/core';
 
@@ -19,6 +16,8 @@ import {TuiSizeS} from '@taiga-ui/core';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiThumbnailCardComponent {
+    private readonly options = inject(TUI_INPUT_CARD_OPTIONS);
+
     @Input()
     @HostBinding('class._active')
     active = false;
@@ -35,10 +34,6 @@ export class TuiThumbnailCardComponent {
     @Input()
     @HostBinding('attr.data-size')
     size: TuiSizeS = 'm';
-
-    constructor(
-        @Inject(TUI_INPUT_CARD_OPTIONS) private readonly options: TuiInputCardOptions,
-    ) {}
 
     get hasBrandLogo(): boolean {
         return !!this.brandLogo && this.size === 'm';

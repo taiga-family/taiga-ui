@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {WINDOW} from '@ng-web-apis/common';
@@ -11,7 +11,7 @@ import {WINDOW} from '@ng-web-apis/common';
     changeDetection,
 })
 export class TuiLineClampExample3 {
-    constructor(@Inject(WINDOW) private readonly win: Window) {}
+    private readonly win = inject(WINDOW);
 
     getDynamicLineHeight(element: HTMLDivElement): number {
         return parseInt(this.win.getComputedStyle(element).lineHeight, 10);

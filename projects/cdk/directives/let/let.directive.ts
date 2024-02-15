@@ -1,4 +1,4 @@
-import {Directive, Inject, Input, TemplateRef, ViewContainerRef} from '@angular/core';
+import {Directive, inject, Input, TemplateRef, ViewContainerRef} from '@angular/core';
 
 import {TuiLetContext} from './let-context';
 
@@ -13,11 +13,11 @@ export class TuiLetDirective<T> {
     @Input()
     tuiLet!: T;
 
-    constructor(
-        @Inject(ViewContainerRef) viewContainer: ViewContainerRef,
-        @Inject(TemplateRef) templateRef: TemplateRef<TuiLetContext<T>>,
-    ) {
-        viewContainer.createEmbeddedView(templateRef, new TuiLetContext<T>(this));
+    constructor() {
+        inject(ViewContainerRef).createEmbeddedView(
+            inject(TemplateRef<TuiLetContext<T>>),
+            new TuiLetContext<T>(this),
+        );
     }
 
     /**

@@ -4,9 +4,7 @@ import {
     ChangeDetectorRef,
     Component,
     HostBinding,
-    Inject,
-    Optional,
-    Self,
+    inject,
 } from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {Title} from '@angular/platform-browser';
@@ -16,18 +14,18 @@ import {
     TUI_DOC_ICONS,
     TUI_DOC_PAGE_LOADED,
     TUI_DOC_SEARCH_TEXT,
-    TuiDocIcons,
 } from '@taiga-ui/addon-doc/tokens';
 import {TuiDocPages} from '@taiga-ui/addon-doc/types';
 import {tuiTransliterateKeyboardLayout} from '@taiga-ui/addon-doc/utils';
 import {TuiSidebarDirective} from '@taiga-ui/addon-mobile';
-import {tuiControlValue, TuiDestroyService, tuiPure, tuiUniqBy} from '@taiga-ui/cdk';
 import {
-    TUI_COMMON_ICONS,
-    TuiBrightness,
-    TuiCommonIcons,
-    TuiModeDirective,
-} from '@taiga-ui/core';
+    tuiControlValue,
+    TuiDestroyService,
+    tuiPure,
+    tuiUniqBy,
+    tuiWatch,
+} from '@taiga-ui/cdk';
+import {TUI_COMMON_ICONS, TuiBrightness, TuiModeDirective} from '@taiga-ui/core';
 import {TuiInputComponent} from '@taiga-ui/kit';
 import {
     combineLatest,
@@ -55,8 +53,20 @@ import {
     providers: NAVIGATION_PROVIDERS,
 })
 export class TuiDocNavigationComponent {
+    private readonly router = inject(Router);
+    private readonly mode = inject(TuiModeDirective);
+    private readonly doc = inject(DOCUMENT);
+
     @HostBinding('class._open')
     menuOpen = false;
+
+    readonly sidebar = inject(TuiSidebarDirective, {optional: true});
+    readonly labels = inject(NAVIGATION_LABELS);
+    readonly items = inject(NAVIGATION_ITEMS);
+    readonly searchText = inject(TUI_DOC_SEARCH_TEXT);
+    readonly activatedRoute = inject(ActivatedRoute);
+    readonly docIcons = inject(TUI_DOC_ICONS);
+    readonly icons = inject(TUI_COMMON_ICONS);
 
     openPagesArr: boolean[] = [];
     openPagesGroupsArr: boolean[] = [];
@@ -74,45 +84,30 @@ export class TuiDocNavigationComponent {
         map(() => this.mode.mode || 'onLight'),
     );
 
-    constructor(
-        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
-        @Inject(Title) titleService: Title,
-        @Inject(NAVIGATION_TITLE) private readonly title$: Observable<string>,
-        @Inject(TuiModeDirective)
-        private readonly mode: TuiModeDirective,
-        @Optional()
-        @Inject(TuiSidebarDirective)
-        readonly sidebar: unknown,
-        @Inject(NAVIGATION_LABELS) readonly labels: string[],
-        @Inject(NAVIGATION_ITEMS)
-        readonly items: readonly TuiDocPages[],
-        @Inject(TUI_DOC_SEARCH_TEXT) readonly searchText: string,
-        @Inject(Router) private readonly router: Router,
-        @Inject(ActivatedRoute) readonly activatedRoute: ActivatedRoute,
-        @Self() @Inject(TuiDestroyService) private readonly destroy$: Observable<void>,
-        @Inject(TUI_DOC_PAGE_LOADED)
-        private readonly readyToScroll$: Observable<boolean>,
-        @Inject(TUI_DOC_ICONS) readonly docIcons: TuiDocIcons,
-        @Inject(TUI_COMMON_ICONS) readonly icons: TuiCommonIcons,
-        @Inject(DOCUMENT) private readonly doc: Document,
-    ) {
-        title$.subscribe(title => {
-            cdr.markForCheck();
-            titleService.setTitle(title);
-            this.openActivePageGroup();
-        });
+    constructor() {
+        const titleService = inject(Title);
+        const readyToScroll$ = inject(TUI_DOC_PAGE_LOADED);
+
+        inject(NAVIGATION_TITLE)
+            .pipe(tuiWatch(inject(ChangeDetectorRef)))
+            .subscribe(title => {
+                titleService.setTitle(title);
+                this.openActivePageGroup();
+            });
 
         combineLatest([
             this.router.events.pipe(
                 filter((event): event is Scroll => event instanceof Scroll),
             ),
-            this.title$.pipe(switchMap(() => this.readyToScroll$.pipe(filter(Boolean)))),
+            inject(NAVIGATION_TITLE).pipe(
+                switchMap(() => readyToScroll$.pipe(filter(Boolean))),
+            ),
         ])
             .pipe(
                 take(1),
                 map(([event]) => event.anchor || ''),
                 filter<string>(Boolean),
-                takeUntil(this.destroy$),
+                takeUntil(inject(TuiDestroyService, {self: true})),
             )
             .subscribe(anchor => this.navigateToAnchorLink(anchor));
     }

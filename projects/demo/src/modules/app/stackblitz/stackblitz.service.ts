@@ -1,4 +1,4 @@
-import {Inject, Injectable} from '@angular/core';
+import {inject, Injectable} from '@angular/core';
 import stackblitz, {OpenOptions, Project} from '@stackblitz/sdk';
 import {TuiCodeEditor} from '@taiga-ui/addon-doc';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
@@ -27,13 +27,10 @@ const APP_COMP_META = {
 
 @Injectable()
 export class TuiStackblitzService implements TuiCodeEditor {
+    private readonly deps = inject(StackblitzDepsService);
+
     readonly name = 'Stackblitz';
     readonly content = new PolymorpheusComponent(StackblitzEditButtonComponent);
-
-    constructor(
-        @Inject(StackblitzDepsService)
-        private readonly deps: StackblitzDepsService,
-    ) {}
 
     async edit(
         component: string,

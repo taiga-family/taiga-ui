@@ -2,15 +2,11 @@ import {
     ChangeDetectionStrategy,
     Component,
     HostBinding,
-    Inject,
+    inject,
     Input,
 } from '@angular/core';
-import {
-    TUI_INPUT_CARD_OPTIONS,
-    TuiInputCardOptions,
-    TuiPaymentSystem,
-} from '@taiga-ui/addon-commerce';
-import {TuiStringHandler} from '@taiga-ui/cdk';
+import {TUI_INPUT_CARD_OPTIONS, TuiPaymentSystem} from '@taiga-ui/addon-commerce';
+import type {TuiStringHandler} from '@taiga-ui/cdk';
 import {TUI_ICON_RESOLVER, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 
 @Component({
@@ -33,10 +29,8 @@ export class TuiThumbnailCardComponent {
     @Input()
     iconRight = '';
 
-    constructor(
-        @Inject(TUI_ICON_RESOLVER) readonly resolver: TuiStringHandler<string>,
-        @Inject(TUI_INPUT_CARD_OPTIONS) readonly options: TuiInputCardOptions,
-    ) {}
+    readonly options = inject(TUI_INPUT_CARD_OPTIONS);
+    readonly resolver = inject<TuiStringHandler<string>>(TUI_ICON_RESOLVER);
 
     // TODO: Revisit this approach in 4.0 when icons are moved away from InputCard options
     get isMono(): boolean {

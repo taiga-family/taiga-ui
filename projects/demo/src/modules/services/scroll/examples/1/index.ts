@@ -1,8 +1,8 @@
-import {Component, ElementRef, Inject, Self} from '@angular/core';
+import {Component, ElementRef, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDestroyService, TuiScrollService} from '@taiga-ui/cdk';
-import {Observable, takeUntil} from 'rxjs';
+import {takeUntil} from 'rxjs';
 
 @Component({
     selector: 'tui-scroll-example-1',
@@ -13,14 +13,12 @@ import {Observable, takeUntil} from 'rxjs';
     providers: [TuiDestroyService],
 })
 export class TuiScrollExample1 {
+    private readonly scrollService = inject(TuiScrollService);
+    private readonly destroy$ = inject(TuiDestroyService, {self: true});
+
     scrollTop = 0;
     scrollLeft = 0;
     duration = 300;
-
-    constructor(
-        @Inject(TuiScrollService) private readonly scrollService: TuiScrollService,
-        @Self() @Inject(TuiDestroyService) private readonly destroy$: Observable<void>,
-    ) {}
 
     onClick({nativeElement}: ElementRef<HTMLElement>): void {
         this.scrollService

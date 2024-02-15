@@ -1,4 +1,4 @@
-import {AfterViewChecked, Directive, ElementRef, Inject, Input} from '@angular/core';
+import {AfterViewChecked, Directive, ElementRef, inject, Input} from '@angular/core';
 
 /**
  * A directive for projecting classes from nested children to host
@@ -7,19 +7,14 @@ import {AfterViewChecked, Directive, ElementRef, Inject, Input} from '@angular/c
     selector: '[tuiProjectClass]',
 })
 export class TuiProjectClassDirective implements AfterViewChecked {
+    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+
     @Input('tuiProjectClass')
     classNames: readonly string[] = [];
 
-    constructor(@Inject(ElementRef) private readonly el: ElementRef<HTMLElement>) {}
-
     ngAfterViewChecked(): void {
-        this.classNames.forEach(className => {
-            const hostElement = this.el.nativeElement;
-
-            hostElement.classList.toggle(
-                className,
-                !!hostElement.querySelector(`.${className}`),
-            );
-        });
+        this.classNames.forEach(className =>
+            this.el.classList.toggle(className, !!this.el.querySelector(`.${className}`)),
+        );
     }
 }

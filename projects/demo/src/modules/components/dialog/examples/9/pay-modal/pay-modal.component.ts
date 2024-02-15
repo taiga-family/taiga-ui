@@ -1,9 +1,8 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    Inject,
+    inject,
     OnInit,
-    Self,
     ViewChild,
 } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
@@ -38,6 +37,9 @@ export class PayModalComponent implements OnInit {
     @ViewChild('cardGroupedInput')
     private readonly cardGroupedInput?: TuiInputCardGroupedComponent;
 
+    private readonly payService = inject(PayService);
+    private readonly destroy$ = inject(TuiDestroyService, {self: true});
+
     readonly form = new FormGroup({
         card: new FormControl<TuiCard | null>(null, [
             Validators.required,
@@ -46,20 +48,17 @@ export class PayModalComponent implements OnInit {
         saveCard: new FormControl(true),
     });
 
+    readonly context =
+        inject<TuiDialogContext<void, DataForPayCardModal>>(POLYMORPHEUS_CONTEXT);
+
+    readonly iOS = inject(TUI_IS_IOS);
+
     cards: AccountCard[] = [];
     paymentMode: TuiValuesOf<typeof PaymentMode> = PaymentMode.ByNewCard;
     loading$ = new BehaviorSubject(false);
     payProcessing$ = new BehaviorSubject(false);
     amount: number = this.context?.data?.amount ?? 0;
     readonly PAYMENT_MODE = PaymentMode;
-
-    constructor(
-        @Inject(POLYMORPHEUS_CONTEXT)
-        readonly context: TuiDialogContext<void, DataForPayCardModal>,
-        @Inject(TUI_IS_IOS) readonly iOS: boolean,
-        @Inject(PayService) private readonly payService: PayService,
-        @Self() @Inject(TuiDestroyService) private readonly destroy$: TuiDestroyService,
-    ) {}
 
     ngOnInit(): void {
         this.fetchCardsAndSetPrimaryCard();

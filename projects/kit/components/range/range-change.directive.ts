@@ -1,18 +1,8 @@
 import {DOCUMENT} from '@angular/common';
-import {Directive, ElementRef, EventEmitter, Inject, Output, Self} from '@angular/core';
+import {Directive, ElementRef, EventEmitter, inject, Output} from '@angular/core';
 import {tuiClamp, TuiDestroyService, tuiRound, tuiTypedFromEvent} from '@taiga-ui/cdk';
 import {TUI_FLOATING_PRECISION} from '@taiga-ui/kit/constants';
-import {
-    filter,
-    map,
-    merge,
-    Observable,
-    repeat,
-    startWith,
-    switchMap,
-    takeUntil,
-    tap,
-} from 'rxjs';
+import {filter, map, merge, repeat, startWith, switchMap, takeUntil, tap} from 'rxjs';
 
 import {TuiRangeComponent} from './range.component';
 
@@ -21,18 +11,22 @@ import {TuiRangeComponent} from './range.component';
     providers: [TuiDestroyService],
 })
 export class TuiRangeChangeDirective {
+    private readonly doc = inject(DOCUMENT);
+    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly range = inject(TuiRangeComponent);
+
     /**
      * TODO replace with pointer events (when all supported browsers can handle them).
      * Don't forget to use setPointerCapture instead of listening all doc events
      */
     private readonly pointerDown$ = merge(
-        tuiTypedFromEvent(this.el.nativeElement, 'touchstart', {
+        tuiTypedFromEvent(this.el, 'touchstart', {
             passive: true,
         }).pipe(
             filter(({touches}) => touches.length === 1),
             map(({touches}) => touches[0]),
         ),
-        tuiTypedFromEvent(this.el.nativeElement, 'mousedown', {passive: true}),
+        tuiTypedFromEvent(this.el, 'mousedown', {passive: true}),
     );
 
     private readonly pointerMove$ = merge(
@@ -51,12 +45,7 @@ export class TuiRangeChangeDirective {
     @Output()
     readonly activeThumbChange = new EventEmitter<'left' | 'right'>();
 
-    constructor(
-        @Inject(DOCUMENT) private readonly doc: Document,
-        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
-        @Inject(TuiRangeComponent) private readonly range: TuiRangeComponent,
-        @Self() @Inject(TuiDestroyService) destroy$: Observable<unknown>,
-    ) {
+    constructor() {
         let activeThumb: 'left' | 'right';
 
         this.pointerDown$
@@ -66,14 +55,14 @@ export class TuiRangeChangeDirective {
                     this.activeThumbChange.emit(activeThumb);
 
                     if (this.range.focusable) {
-                        el.nativeElement.focus();
+                        this.el.focus();
                     }
                 }),
                 switchMap(event => this.pointerMove$.pipe(startWith(event))),
                 map(({clientX}) => this.getFractionFromEvents(clientX)),
                 takeUntil(this.pointerUp$),
                 repeat(),
-                takeUntil(destroy$),
+                takeUntil(inject(TuiDestroyService, {self: true})),
             )
             .subscribe(fraction => {
                 const value = this.range.getValueFromFraction(fraction);
@@ -83,7 +72,7 @@ export class TuiRangeChangeDirective {
     }
 
     private getFractionFromEvents(clickClientX: number): number {
-        const hostRect = this.el.nativeElement.getBoundingClientRect();
+        const hostRect = this.el.getBoundingClientRect();
         const value = clickClientX - hostRect.left;
         const total = hostRect.width;
 

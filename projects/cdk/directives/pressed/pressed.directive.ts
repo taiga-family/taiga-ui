@@ -1,4 +1,4 @@
-import {Directive, ElementRef, Inject, Output} from '@angular/core';
+import {Directive, ElementRef, inject, Output} from '@angular/core';
 import {tuiPressedObservable} from '@taiga-ui/cdk/observables';
 import {TUI_TAKE_ONLY_TRUSTED_EVENTS} from '@taiga-ui/cdk/tokens';
 
@@ -6,14 +6,11 @@ import {TUI_TAKE_ONLY_TRUSTED_EVENTS} from '@taiga-ui/cdk/tokens';
     selector: '[tuiPressedChange]',
 })
 export class TuiPressedDirective {
+    private readonly el: Element = inject(ElementRef).nativeElement;
+    private readonly takeOnlyTrustedEvents = inject(TUI_TAKE_ONLY_TRUSTED_EVENTS);
+
     @Output()
-    readonly tuiPressedChange = tuiPressedObservable(this.el.nativeElement, {
+    readonly tuiPressedChange = tuiPressedObservable(this.el, {
         onlyTrusted: this.takeOnlyTrustedEvents,
     });
-
-    constructor(
-        @Inject(ElementRef) private readonly el: ElementRef<Element>,
-        @Inject(TUI_TAKE_ONLY_TRUSTED_EVENTS)
-        private readonly takeOnlyTrustedEvents: boolean,
-    ) {}
 }

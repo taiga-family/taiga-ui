@@ -1,4 +1,4 @@
-import {Inject, Injectable, Self} from '@angular/core';
+import {inject, Injectable} from '@angular/core';
 import {TUI_DEFAULT_MATCHER, TuiDestroyService} from '@taiga-ui/cdk';
 import {
     delay,
@@ -17,6 +17,7 @@ import {User} from './user';
 
 @Injectable()
 export class RequestService {
+    private readonly destroy$ = inject(TuiDestroyService, {self: true});
     private readonly request$ = new Subject<string>();
 
     // Imitating server request with switchMap + delay pair
@@ -31,10 +32,6 @@ export class RequestService {
         takeUntil(this.destroy$),
         shareReplay({bufferSize: 1, refCount: true}),
     );
-
-    constructor(
-        @Self() @Inject(TuiDestroyService) private readonly destroy$: Observable<void>,
-    ) {}
 
     request(query: string | null): Observable<readonly User[] | null> {
         this.request$.next(query || '');

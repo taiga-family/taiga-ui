@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {TuiIdService} from '@taiga-ui/cdk';
 import {TUI_TEXTFIELD_HOST} from '@taiga-ui/core';
 
@@ -31,13 +31,9 @@ import type {TuiInputTimeDirective} from '../input-time.directive';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiNativeTimeComponent {
-    autoIdString: string;
-    constructor(
-        @Inject(TUI_TEXTFIELD_HOST) readonly host: TuiInputTimeDirective,
-        @Inject(TuiIdService) idService: TuiIdService,
-    ) {
-        this.autoIdString = idService.generate();
-    }
+    readonly host = inject<TuiInputTimeDirective>(TUI_TEXTFIELD_HOST);
+
+    readonly autoIdString: string = inject(TuiIdService).generate();
 
     get items(): string[] {
         return this.host.items.map(item => item.toString(this.host.mode));

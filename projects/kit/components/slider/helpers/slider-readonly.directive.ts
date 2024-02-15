@@ -1,5 +1,5 @@
 import {DOCUMENT} from '@angular/common';
-import {Directive, ElementRef, HostListener, Inject, Input, Self} from '@angular/core';
+import {Directive, ElementRef, HostListener, inject, Input} from '@angular/core';
 import {
     ALWAYS_FALSE_HANDLER,
     ALWAYS_TRUE_HANDLER,
@@ -7,7 +7,7 @@ import {
     TuiDestroyService,
     tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
-import {combineLatest, filter, map, merge, Observable, takeUntil, tap} from 'rxjs';
+import {combineLatest, filter, map, merge, takeUntil, tap} from 'rxjs';
 
 const SLIDER_INTERACTION_KEYS = new Set([
     'ArrowLeft',
@@ -29,23 +29,20 @@ const SLIDER_INTERACTION_KEYS = new Set([
     providers: [TuiDestroyService],
 })
 export class TuiSliderReadonlyDirective {
+    private readonly el: HTMLInputElement = inject(ElementRef).nativeElement;
+    private readonly doc = inject(DOCUMENT);
+
     @Input()
     readonly: boolean | string = true;
 
-    constructor(
-        @Inject(ElementRef) el: ElementRef<HTMLInputElement>,
-        @Inject(DOCUMENT) doc: Document,
-        @Self()
-        @Inject(TuiDestroyService)
-        destroy$: Observable<unknown>,
-    ) {
-        const touchStart$ = tuiTypedFromEvent(el.nativeElement, 'touchstart', {
+    constructor() {
+        const touchStart$ = tuiTypedFromEvent(this.el, 'touchstart', {
             passive: false,
         });
-        const touchMove$ = tuiTypedFromEvent(doc, 'touchmove', {
+        const touchMove$ = tuiTypedFromEvent(this.doc, 'touchmove', {
             passive: false,
         });
-        const touchEnd$ = tuiTypedFromEvent(doc, 'touchend', {
+        const touchEnd$ = tuiTypedFromEvent(this.doc, 'touchend', {
             passive: true,
         });
 
@@ -64,7 +61,7 @@ export class TuiSliderReadonlyDirective {
         combineLatest([touchMove$, shouldPreventMove$])
             .pipe(
                 filter(([_, shouldPreventMove]) => shouldPreventMove),
-                takeUntil(destroy$),
+                takeUntil(inject(TuiDestroyService, {self: true})),
             )
             .subscribe(([moveEvent]) => this.preventEvent(moveEvent));
     }

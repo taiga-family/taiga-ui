@@ -36,7 +36,7 @@ export abstract class AbstractTuiDataListWrapper<T> {
     @Output()
     readonly itemClick = new EventEmitter<T>();
 
-    constructor(
+    protected constructor(
         protected readonly itemsHandlers: TuiItemsHandlers<T>,
         protected readonly defaultSize: TuiSizeL | TuiSizeXS,
     ) {}

@@ -1,12 +1,4 @@
-import {
-    Directive,
-    ElementRef,
-    HostBinding,
-    Inject,
-    Input,
-    NgZone,
-    Self,
-} from '@angular/core';
+import {Directive, ElementRef, HostBinding, inject, Input, NgZone} from '@angular/core';
 import {
     MUTATION_OBSERVER_INIT,
     MutationObserverService,
@@ -14,7 +6,7 @@ import {
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {TuiDestroyService, tuiWithStyles, tuiZonefree} from '@taiga-ui/cdk';
 import {TuiOrientation} from '@taiga-ui/core';
-import {fromEvent, merge, Observable, takeUntil} from 'rxjs';
+import {fromEvent, merge, takeUntil} from 'rxjs';
 
 import {TuiFadeComponent} from './fade.component';
 
@@ -49,18 +41,19 @@ export class TuiFadeDirective {
     @HostBinding('attr.data-orientation')
     orientation: TuiOrientation | '' = 'horizontal';
 
-    constructor(
-        @Self() @Inject(TuiDestroyService) destroy$: Observable<unknown>,
-        @Inject(ResizeObserverService) resize$: Observable<unknown>,
-        @Inject(MutationObserverService) mutate$: Observable<unknown>,
-        @Inject(ElementRef) element: ElementRef<HTMLElement>,
-        @Inject(NgZone) zone: NgZone,
-    ) {
-        const el = element.nativeElement;
+    constructor() {
+        const el: HTMLElement = inject(ElementRef).nativeElement;
 
         tuiWithStyles(TuiFadeComponent);
-        merge(resize$, mutate$, fromEvent(el, 'scroll'))
-            .pipe(tuiZonefree(zone), takeUntil(destroy$))
+        merge(
+            inject(ResizeObserverService),
+            inject(MutationObserverService),
+            fromEvent(el, 'scroll'),
+        )
+            .pipe(
+                tuiZonefree(inject(NgZone)),
+                takeUntil(inject(TuiDestroyService, {self: true})),
+            )
             .subscribe(() => {
                 el.classList.toggle('_start', !!el.scrollLeft || !!el.scrollTop);
                 el.classList.toggle('_end', this.isEnd(el));

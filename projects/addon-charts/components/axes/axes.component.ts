@@ -2,14 +2,13 @@ import {
     ChangeDetectionStrategy,
     Component,
     HostBinding,
-    Inject,
+    inject,
     Input,
 } from '@angular/core';
 import {TUI_ALWAYS_DASHED, TUI_ALWAYS_SOLID} from '@taiga-ui/addon-charts/constants';
 import {TuiLineHandler, TuiLineType} from '@taiga-ui/addon-charts/types';
 import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
-import {MODE_PROVIDER, TUI_MODE, TuiBrightness} from '@taiga-ui/core';
-import {Observable} from 'rxjs';
+import {MODE_PROVIDER, TUI_MODE} from '@taiga-ui/core';
 
 @Component({
     selector: 'tui-axes',
@@ -66,7 +65,7 @@ export class TuiAxesComponent {
         return this.axisY === 'none';
     }
 
-    constructor(@Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>) {}
+    readonly mode$ = inject(TUI_MODE);
 
     get hasXLabels(): boolean {
         return !!this.axisXLabels.length;

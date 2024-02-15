@@ -1,6 +1,6 @@
 import {HarnessLoader} from '@angular/cdk/testing';
 import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
-import {Component, Inject, ViewChild} from '@angular/core';
+import {Component, inject, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiStaticRequestService} from '@taiga-ui/cdk';
 import {TuiSvgComponent, TuiSvgModule, TuiSvgService} from '@taiga-ui/core';
@@ -37,10 +37,8 @@ describe('Svg', () => {
 
         icon = '';
 
-        constructor(@Inject(TuiSvgService) svgService: TuiSvgService) {
-            svgService.define({
-                customIcon: SVG_ICON,
-            });
+        constructor() {
+            inject(TuiSvgService).define({customIcon: SVG_ICON});
         }
     }
 

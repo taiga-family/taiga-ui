@@ -1,4 +1,4 @@
-import {Directive, HostListener, Inject, Input} from '@angular/core';
+import {Directive, HostListener, inject, Input} from '@angular/core';
 
 import {TuiComboBoxComponent} from './combo-box.component';
 
@@ -6,13 +6,10 @@ import {TuiComboBoxComponent} from './combo-box.component';
     selector: 'tui-combo-box[strict]',
 })
 export class TuiComboBoxStrictDirective<T> {
+    private readonly comboBox = inject(TuiComboBoxComponent<T | string>);
+
     @Input()
     strict = true;
-
-    constructor(
-        @Inject(TuiComboBoxComponent)
-        private readonly comboBox: TuiComboBoxComponent<T | string>,
-    ) {}
 
     @HostListener('input')
     onInput(): void {

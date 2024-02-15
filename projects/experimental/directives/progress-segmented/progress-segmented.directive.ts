@@ -1,5 +1,5 @@
-import {Directive, Inject, Input} from '@angular/core';
-import {TuiDirectiveStylesService} from '@taiga-ui/cdk';
+import {Directive, Input} from '@angular/core';
+import {tuiWithStyles} from '@taiga-ui/cdk';
 
 import {TuiProgressSegmentedComponent} from './progress-segmented.component';
 
@@ -12,12 +12,8 @@ import {TuiProgressSegmentedComponent} from './progress-segmented.component';
     },
 })
 export class TuiProgressSegmentedDirective {
+    protected readonly nothing = tuiWithStyles(TuiProgressSegmentedComponent);
+
     @Input()
     segments = 1;
-
-    constructor(
-        @Inject(TuiDirectiveStylesService) directiveStyles: TuiDirectiveStylesService,
-    ) {
-        directiveStyles.addComponent(TuiProgressSegmentedComponent);
-    }
 }

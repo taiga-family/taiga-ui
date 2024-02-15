@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiPopover} from '@taiga-ui/cdk';
@@ -24,11 +24,8 @@ export type Buttons = ReadonlyArray<
     changeDetection,
 })
 export class TuiPdfViewerExample2 {
-    constructor(
-        @Inject(TuiAlertService)
-        private readonly alerts: TuiAlertService,
-        @Inject(TuiPdfViewerService) private readonly pdfService: TuiPdfViewerService,
-    ) {}
+    private readonly alerts = inject(TuiAlertService);
+    private readonly pdfService = inject(TuiPdfViewerService);
 
     show(): void {
         const options: TuiPdfViewerOptions<Buttons> = {

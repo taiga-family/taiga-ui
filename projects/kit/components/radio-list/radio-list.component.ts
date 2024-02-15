@@ -1,17 +1,13 @@
 import {
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
     ElementRef,
     HostBinding,
-    Inject,
+    inject,
     Input,
-    Optional,
     QueryList,
-    Self,
     ViewChildren,
 } from '@angular/core';
-import {NgControl} from '@angular/forms';
 import {
     AbstractTuiNullableControl,
     ALWAYS_FALSE_HANDLER,
@@ -43,6 +39,8 @@ export class TuiRadioListComponent<T> extends AbstractTuiNullableControl<T> {
     private readonly radioButtons: QueryList<TuiRadioLabeledComponent<unknown>> =
         EMPTY_QUERY;
 
+    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+
     @Input()
     items: readonly T[] = [];
 
@@ -60,17 +58,6 @@ export class TuiRadioListComponent<T> extends AbstractTuiNullableControl<T> {
     @Input()
     disabledItemHandler: TuiBooleanHandler<T> = ALWAYS_FALSE_HANDLER;
 
-    constructor(
-        @Optional()
-        @Self()
-        @Inject(NgControl)
-        control: NgControl | null,
-        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
-        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
-    ) {
-        super(control, cdr);
-    }
-
     // @bad TODO: Remove & { index: number }
     @Input()
     itemContent: PolymorpheusContent<TuiValueContentContext<T> & {index: number}> = ({
@@ -86,7 +73,7 @@ export class TuiRadioListComponent<T> extends AbstractTuiNullableControl<T> {
     }
 
     get focused(): boolean {
-        return tuiIsNativeFocusedIn(this.el.nativeElement);
+        return tuiIsNativeFocusedIn(this.el);
     }
 
     computeId(index: number): string {

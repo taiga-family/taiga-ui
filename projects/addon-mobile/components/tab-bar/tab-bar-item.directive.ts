@@ -1,7 +1,7 @@
-import {ChangeDetectorRef, Directive, ElementRef, Inject, Self} from '@angular/core';
+import {ChangeDetectorRef, Directive, ElementRef, inject} from '@angular/core';
 import {TuiDestroyService, tuiWatch} from '@taiga-ui/cdk';
 import {TuiRouterLinkActiveService} from '@taiga-ui/core';
-import {filter, Observable, takeUntil} from 'rxjs';
+import {filter, takeUntil} from 'rxjs';
 
 import {TuiTabBarComponent} from './tab-bar.component';
 
@@ -10,17 +10,16 @@ import {TuiTabBarComponent} from './tab-bar.component';
     providers: [TuiRouterLinkActiveService, TuiDestroyService],
 })
 export class TuiTabBarItemDirective {
-    constructor(
-        @Self() @Inject(TuiDestroyService) destroy$: Observable<unknown>,
-        @Inject(TuiRouterLinkActiveService) active$: Observable<boolean>,
-        @Inject(TuiTabBarComponent) tabs: TuiTabBarComponent,
-        @Inject(ElementRef) {nativeElement}: ElementRef<HTMLElement>,
-        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
-    ) {
-        active$
-            .pipe(filter(Boolean), tuiWatch(cdr), takeUntil(destroy$))
-            .subscribe(() => {
-                tabs.setActive(nativeElement);
-            });
+    constructor() {
+        const tabs = inject(TuiTabBarComponent);
+        const el: HTMLElement = inject(ElementRef).nativeElement;
+
+        inject(TuiRouterLinkActiveService)
+            .pipe(
+                filter(Boolean),
+                tuiWatch(inject(ChangeDetectorRef)),
+                takeUntil(inject(TuiDestroyService, {self: true})),
+            )
+            .subscribe(() => tabs.setActive(el));
     }
 }

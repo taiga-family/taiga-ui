@@ -3,7 +3,9 @@ import {TuiAlertService} from '@taiga-ui/core';
 //...
 
 export class MyComponent {
-  constructor(@Inject(TuiAlertService) private readonly alerts: TuiAlertService) {
+  private readonly alerts = inject(TuiAlertService);
+
+  constructor() {
     //...
 
     this.alerts.open('Notification').subscribe({

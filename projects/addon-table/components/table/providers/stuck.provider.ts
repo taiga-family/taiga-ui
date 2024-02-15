@@ -4,7 +4,7 @@ import {map, Observable} from 'rxjs';
 /**
  * Stream of sticky stuck events
  */
-export const TUI_STUCK = new InjectionToken<boolean>('[TUI_STUCK]');
+export const TUI_STUCK = new InjectionToken<Observable<boolean>>('[TUI_STUCK]');
 
 export const TUI_STUCK_PROVIDER: Provider = {
     provide: TUI_STUCK,

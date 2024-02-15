@@ -1,5 +1,5 @@
 /* eslint-disable rxjs/no-unsafe-takeuntil */
-import {Directive, ElementRef, Inject, Input} from '@angular/core';
+import {Directive, ElementRef, inject, Input} from '@angular/core';
 import {TuiHoveredService} from '@taiga-ui/cdk';
 import {tuiAsDriver, TuiDriver} from '@taiga-ui/core/abstract';
 import {tuiIsObscured} from '@taiga-ui/core/utils';
@@ -8,7 +8,6 @@ import {
     filter,
     map,
     merge,
-    Observable,
     of,
     repeat,
     Subject,
@@ -25,6 +24,8 @@ import {TUI_HINT_OPTIONS, TuiHintOptions} from './hint-options.directive';
     exportAs: 'tuiHintHover',
 })
 export class TuiHintHoverDirective extends TuiDriver {
+    private readonly hovered$ = inject(TuiHoveredService);
+    private readonly options = inject(TUI_HINT_OPTIONS);
     private visible = false;
     private readonly toggle$ = new Subject<boolean>();
     private readonly stream$ = merge(
@@ -42,7 +43,7 @@ export class TuiHintHoverDirective extends TuiDriver {
         ),
     ).pipe(
         filter(() => this.enabled),
-        map(value => value && !tuiIsObscured(this.el.nativeElement)),
+        map(value => value && !tuiIsObscured(this.el)),
         tap(visible => {
             this.visible = visible;
         }),
@@ -58,11 +59,9 @@ export class TuiHintHoverDirective extends TuiDriver {
 
     enabled = true;
 
-    constructor(
-        @Inject(TuiHoveredService) private readonly hovered$: Observable<boolean>,
-        @Inject(TUI_HINT_OPTIONS) private readonly options: TuiHintOptions,
-        @Inject(ElementRef) readonly el: ElementRef<HTMLElement>,
-    ) {
+    readonly el: HTMLElement = inject(ElementRef).nativeElement;
+
+    constructor() {
         super(subscriber => this.stream$.subscribe(subscriber));
     }
 

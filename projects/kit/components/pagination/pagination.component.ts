@@ -3,9 +3,8 @@ import {
     Component,
     ElementRef,
     EventEmitter,
-    Inject,
+    inject,
     Input,
-    Optional,
     Output,
     QueryList,
     ViewChildren,
@@ -31,12 +30,11 @@ import {
     TuiSizeL,
     TuiSizeS,
     TuiSizeXS,
-    TuiSpinIcons,
 } from '@taiga-ui/core';
 import {TUI_PAGINATION_TEXTS} from '@taiga-ui/kit/tokens';
 import {tuiHorizontalDirectionToNumber} from '@taiga-ui/kit/utils/math';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {EMPTY, map, Observable} from 'rxjs';
+import {EMPTY, map} from 'rxjs';
 
 const DOTS_LENGTH = 1;
 const ACTIVE_ITEM_LENGTH = 1;
@@ -54,6 +52,9 @@ export class TuiPaginationComponent
 {
     @ViewChildren('element', {read: TUI_FOCUSABLE_ITEM_ACCESSOR})
     private readonly els: QueryList<TuiFocusableElementAccessor> = EMPTY_QUERY;
+
+    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly modeDirective = inject(TuiModeDirective, {optional: true});
 
     @Input()
     length = 1;
@@ -95,16 +96,8 @@ export class TuiPaginationComponent
         ? this.modeDirective.change$.pipe(map(() => this.modeDirective?.mode || null))
         : EMPTY;
 
-    constructor(
-        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
-        @Optional()
-        @Inject(TuiModeDirective)
-        private readonly modeDirective: TuiModeDirective | null,
-        @Inject(TUI_PAGINATION_TEXTS) readonly texts$: Observable<[string, string]>,
-        @Inject(TUI_SPIN_ICONS) readonly icons: TuiSpinIcons,
-    ) {
-        super();
-    }
+    readonly texts$ = inject(TUI_PAGINATION_TEXTS);
+    readonly icons = inject(TUI_SPIN_ICONS);
 
     get nativeFocusableElement(): TuiNativeFocusableElement | null {
         if (this.disabled) {
@@ -133,7 +126,7 @@ export class TuiPaginationComponent
     }
 
     get focused(): boolean {
-        return tuiIsNativeFocusedIn(this.el.nativeElement);
+        return tuiIsNativeFocusedIn(this.el);
     }
 
     /**

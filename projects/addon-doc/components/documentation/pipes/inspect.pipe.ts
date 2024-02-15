@@ -1,10 +1,10 @@
-import {Inject, Pipe, PipeTransform} from '@angular/core';
+import {inject, Pipe, PipeTransform} from '@angular/core';
 import {tuiInspectAny} from '@taiga-ui/addon-doc/utils';
 import {TUI_IS_E2E} from '@taiga-ui/cdk';
 
 @Pipe({name: 'tuiInspectAny'})
 export class TuiInspectPipe implements PipeTransform {
-    constructor(@Inject(TUI_IS_E2E) private readonly isE2E: boolean) {}
+    private readonly isE2E = inject(TUI_IS_E2E);
 
     transform(value: unknown, depth = 2): string {
         if (this.isE2E && typeof value === 'function') {

@@ -1,4 +1,4 @@
-import {Directive, ElementRef} from '@angular/core';
+import {ElementRef} from '@angular/core';
 import {
     TuiFocusableElementAccessor,
     TuiNativeFocusableElement,
@@ -6,9 +6,8 @@ import {
 
 import type {TuiAutofocusHandler} from '../autofocus.options';
 
-@Directive()
 export abstract class AbstractTuiAutofocusHandler implements TuiAutofocusHandler {
-    protected constructor(
+    constructor(
         protected readonly focusable: TuiFocusableElementAccessor | null,
         protected readonly el: ElementRef<HTMLElement>,
     ) {}

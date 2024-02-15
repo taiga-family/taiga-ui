@@ -7,16 +7,15 @@ import {
     ElementRef,
     HostBinding,
     HostListener,
-    Inject,
+    inject,
     Input,
-    Self,
     TemplateRef,
     ViewChild,
 } from '@angular/core';
 import {TuiDestroyService, TuiValuesOf} from '@taiga-ui/cdk';
 import {TUI_PARENT_ANIMATION} from '@taiga-ui/core/animations';
 import {TUI_EXPAND_LOADED} from '@taiga-ui/core/constants';
-import {Observable, takeUntil, timer} from 'rxjs';
+import {takeUntil, timer} from 'rxjs';
 
 import {TuiExpandContentDirective} from './expand-content.directive';
 
@@ -41,6 +40,8 @@ export class TuiExpandComponent {
     @ViewChild('wrapper')
     private readonly contentWrapper?: ElementRef<HTMLDivElement>;
 
+    private readonly cdr = inject(ChangeDetectorRef);
+    private readonly destroy$ = inject(TuiDestroyService, {self: true});
     private state: TuiValuesOf<typeof State> = State.Idle;
 
     @Input()
@@ -71,11 +72,6 @@ export class TuiExpandComponent {
     @HostBinding('class._expanded')
     @HostBinding('attr.aria-expanded')
     expanded: boolean | null = null;
-
-    constructor(
-        @Inject(ChangeDetectorRef) private readonly cdr: ChangeDetectorRef,
-        @Self() @Inject(TuiDestroyService) private readonly destroy$: Observable<void>,
-    ) {}
 
     @HostBinding('class._overflow')
     get overflow(): boolean {

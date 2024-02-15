@@ -1,5 +1,5 @@
 import {isPlatformServer} from '@angular/common';
-import {Inject, Injectable, PLATFORM_ID} from '@angular/core';
+import {inject, Injectable, PLATFORM_ID} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
 import {defer, from, Observable, shareReplay, switchMap} from 'rxjs';
 import {fromFetch} from 'rxjs/fetch';
@@ -8,12 +8,9 @@ import {fromFetch} from 'rxjs/fetch';
     providedIn: 'root',
 })
 export class TuiStaticRequestService {
+    private readonly win = inject(WINDOW);
+    private readonly platformId = inject(PLATFORM_ID);
     private readonly cache = new Map<string, Observable<string>>();
-
-    constructor(
-        @Inject(WINDOW) private readonly win: Window,
-        @Inject(PLATFORM_ID) private readonly platformId: Record<string, unknown>,
-    ) {}
 
     request(url: string): Observable<string> {
         const cache = this.cache.get(url);

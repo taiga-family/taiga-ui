@@ -1,4 +1,4 @@
-import {Component, Inject, Injector} from '@angular/core';
+import {Component, inject, Injector} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -17,6 +17,9 @@ import {combineLatest, map, Observable} from 'rxjs';
     changeDetection,
 })
 export class TuiMobileCalendarExample1 {
+    private readonly dialogs = inject(TuiDialogService);
+    private readonly injector = inject(Injector);
+    private readonly months$ = inject(TUI_MONTHS);
     private readonly control = new FormControl<TuiDay | null>(null);
 
     private readonly dialog$: Observable<TuiDay> = this.dialogs.open(
@@ -52,12 +55,6 @@ export class TuiMobileCalendarExample1 {
                 : `${months[value.month]} ${value.day}, ${value.year}`,
         ),
     );
-
-    constructor(
-        @Inject(TuiDialogService) private readonly dialogs: TuiDialogService,
-        @Inject(Injector) private readonly injector: Injector,
-        @Inject(TUI_MONTHS) private readonly months$: Observable<string[]>,
-    ) {}
 
     get empty(): boolean {
         return !this.control.value;

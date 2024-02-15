@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_IS_IOS} from '@taiga-ui/cdk';
@@ -10,5 +10,5 @@ import {TUI_IS_IOS} from '@taiga-ui/cdk';
     changeDetection,
 })
 export class TuiTokensExample5 {
-    constructor(@Inject(TUI_IS_IOS) readonly isIos: boolean) {}
+    readonly isIos = inject(TUI_IS_IOS);
 }

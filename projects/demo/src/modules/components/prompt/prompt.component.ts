@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiAlertService, TuiDialogService} from '@taiga-ui/core';
@@ -11,6 +11,9 @@ import {switchMap} from 'rxjs';
     changeDetection,
 })
 export class ExampleTuiPromptComponent implements TuiPromptData {
+    private readonly dialogs = inject(TuiDialogService);
+    private readonly alerts = inject(TuiAlertService);
+
     readonly exampleModule = import('./examples/import/import-module.md?raw');
     readonly exampleService = import('./examples/import/service.md?raw');
 
@@ -24,11 +27,6 @@ export class ExampleTuiPromptComponent implements TuiPromptData {
 
     no = 'No';
     yes = 'Yes';
-
-    constructor(
-        @Inject(TuiDialogService) private readonly dialogs: TuiDialogService,
-        @Inject(TuiAlertService) private readonly alerts: TuiAlertService,
-    ) {}
 
     onClick(): void {
         this.dialogs

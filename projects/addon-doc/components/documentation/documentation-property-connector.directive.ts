@@ -2,17 +2,17 @@ import {Location} from '@angular/common';
 import {
     Directive,
     EventEmitter,
-    Inject,
+    inject,
     Input,
     OnChanges,
     OnInit,
     Output,
     TemplateRef,
 } from '@angular/core';
-import {ActivatedRoute, Params, UrlSerializer, UrlTree} from '@angular/router';
+import {ActivatedRoute, Params, UrlSerializer} from '@angular/router';
 import {TUI_DOC_URL_STATE_HANDLER} from '@taiga-ui/addon-doc/tokens';
 import {tuiCoerceValue, tuiInspectAny} from '@taiga-ui/addon-doc/utils';
-import {tuiIsNumber, TuiStringHandler} from '@taiga-ui/cdk';
+import {tuiIsNumber} from '@taiga-ui/cdk';
 import {TuiAlertService} from '@taiga-ui/core';
 import {BehaviorSubject, Subject} from 'rxjs';
 
@@ -28,6 +28,12 @@ export type TuiDocumentationPropertyType = 'input-output' | 'input' | 'output' |
 export class TuiDocDocumentationPropertyConnectorDirective<T>
     implements OnInit, OnChanges
 {
+    private readonly locationRef = inject(Location);
+    private readonly activatedRoute = inject(ActivatedRoute);
+    private readonly urlSerializer = inject(UrlSerializer);
+    private readonly urlStateHandler = inject(TUI_DOC_URL_STATE_HANDLER);
+    private readonly alerts = inject(TuiAlertService);
+
     @Input()
     documentationPropertyName = '';
 
@@ -53,15 +59,7 @@ export class TuiDocDocumentationPropertyConnectorDirective<T>
 
     readonly emits$ = new BehaviorSubject(1);
 
-    constructor(
-        @Inject(TemplateRef) readonly template: TemplateRef<Record<string, unknown>>,
-        @Inject(Location) private readonly locationRef: Location,
-        @Inject(ActivatedRoute) private readonly activatedRoute: ActivatedRoute,
-        @Inject(UrlSerializer) private readonly urlSerializer: UrlSerializer,
-        @Inject(TUI_DOC_URL_STATE_HANDLER)
-        private readonly urlStateHandler: TuiStringHandler<UrlTree>,
-        @Inject(TuiAlertService) private readonly alerts: TuiAlertService,
-    ) {}
+    readonly template = inject(TemplateRef);
 
     ngOnInit(): void {
         this.parseParams(this.activatedRoute.snapshot.queryParams);

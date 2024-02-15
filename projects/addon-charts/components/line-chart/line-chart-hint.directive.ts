@@ -4,12 +4,11 @@ import {
     Directive,
     ElementRef,
     forwardRef,
-    Inject,
+    inject,
     Input,
     NgZone,
     QueryList,
     Renderer2,
-    Self,
 } from '@angular/core';
 import {
     EMPTY_QUERY,
@@ -46,15 +45,13 @@ export class TuiLineChartHintDirective implements AfterViewInit {
     @ContentChildren(forwardRef(() => TuiLineChartComponent), {read: ElementRef})
     private readonly chartsRef: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
+    private readonly renderer = inject(Renderer2);
+    private readonly destroy$ = inject(TuiDestroyService, {self: true});
+    private readonly zone = inject(NgZone);
+    private readonly hovered$ = inject(TuiHoveredService);
+
     @Input('tuiLineChartHint')
     hint: PolymorpheusContent<TuiContext<readonly TuiPoint[]>>;
-
-    constructor(
-        @Inject(Renderer2) private readonly renderer: Renderer2,
-        @Self() @Inject(TuiDestroyService) private readonly destroy$: TuiDestroyService,
-        @Inject(NgZone) private readonly zone: NgZone,
-        @Inject(TuiHoveredService) private readonly hovered$: Observable<boolean>,
-    ) {}
 
     ngAfterViewInit(): void {
         combineLatest([tuiLineChartDrivers(this.charts), this.hovered$])

@@ -2,7 +2,7 @@ import {
     ChangeDetectionStrategy,
     Component,
     Directive,
-    Inject,
+    inject,
     TemplateRef,
 } from '@angular/core';
 import {TuiContext} from '@taiga-ui/cdk';
@@ -23,10 +23,7 @@ import {TuiHintDirective} from './hint.directive';
     animations: [TUI_PARENT_ANIMATION],
 })
 export class TuiHintUnstyledComponent {
-    constructor(
-        @Inject(POLYMORPHEUS_CONTEXT)
-        readonly context: TuiContext<TuiPortalItem>,
-    ) {}
+    readonly context = inject<TuiContext<TuiPortalItem>>(POLYMORPHEUS_CONTEXT);
 }
 
 @Directive({
@@ -39,11 +36,10 @@ export class TuiHintUnstyledComponent {
     ],
 })
 export class TuiHintUnstyledDirective<C> {
-    constructor(
-        @Inject(TemplateRef) templateRef: TemplateRef<C>,
-        @Inject(TuiHintDirective) hint: TuiHintDirective<C>,
-    ) {
+    constructor() {
+        const hint = inject(TuiHintDirective<C>);
+
         hint.component = new PolymorpheusComponent(TuiHintUnstyledComponent);
-        hint.content = templateRef;
+        hint.content = inject(TemplateRef<C>);
     }
 }

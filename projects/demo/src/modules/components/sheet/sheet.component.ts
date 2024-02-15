@@ -1,4 +1,4 @@
-import {Component, Inject, ViewChild} from '@angular/core';
+import {Component, inject, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {
@@ -69,7 +69,7 @@ export class ExampleTuiSheetComponent {
 
     readonly stopsVariants = [this.stops, ['100px'], ['10rem', '20rem']];
 
-    constructor(@Inject(TUI_IS_MOBILE) readonly isMobile: boolean) {}
+    readonly isMobile = inject(TUI_IS_MOBILE);
 
     get computedImage(): PolymorpheusContent<TuiSheet<unknown>> {
         return this.image === 'Template' ? this.templateRef : this.image;

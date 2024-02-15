@@ -2,13 +2,13 @@ import {
     ChangeDetectionStrategy,
     Component,
     HostBinding,
-    Inject,
+    inject,
     Input,
 } from '@angular/core';
 import {TuiRawLoaderContent} from '@taiga-ui/addon-doc/interfaces';
 import {TUI_DOC_EXAMPLE_MARKDOWN_CODE_PROCESSOR} from '@taiga-ui/addon-doc/tokens';
 import {tuiRawLoad} from '@taiga-ui/addon-doc/utils';
-import {TuiHandler} from '@taiga-ui/cdk';
+import type {TuiHandler} from '@taiga-ui/cdk';
 import {BehaviorSubject, map, startWith, Subject, switchMap, timer} from 'rxjs';
 
 @Component({
@@ -22,6 +22,10 @@ export class TuiDocCodeComponent {
 
     @Input()
     filename = '';
+
+    readonly markdownCodeProcessor = inject<TuiHandler<string, string[]>>(
+        TUI_DOC_EXAMPLE_MARKDOWN_CODE_PROCESSOR,
+    );
 
     readonly copy$ = new Subject<void>();
 
@@ -38,11 +42,6 @@ export class TuiDocCodeComponent {
         switchMap(tuiRawLoad),
         map((value: string): string[] => this.markdownCodeProcessor(value)),
     );
-
-    constructor(
-        @Inject(TUI_DOC_EXAMPLE_MARKDOWN_CODE_PROCESSOR)
-        readonly markdownCodeProcessor: TuiHandler<string, string[]>,
-    ) {}
 
     @Input()
     set code(code: TuiRawLoaderContent) {

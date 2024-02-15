@@ -3,7 +3,7 @@ import {
     Directive,
     ElementRef,
     HostListener,
-    Inject,
+    inject,
     OnDestroy,
     Renderer2,
 } from '@angular/core';
@@ -21,38 +21,34 @@ import {
     },
 })
 export class TuiFocusTrapDirective implements OnDestroy {
+    private readonly doc = inject(DOCUMENT);
+    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly renderer = inject(Renderer2);
     private readonly activeElement = tuiGetNativeFocused(this.doc);
 
-    constructor(
-        @Inject(DOCUMENT) private readonly doc: Document,
-        @Inject(ElementRef)
-        private readonly el: ElementRef<HTMLElement>,
-        @Inject(Renderer2) private readonly renderer: Renderer2,
-    ) {
+    constructor() {
         /**
          * This would cause currently focused element to lose focus,
          * but it might cause ExpressionChanged error due to potential HostBinding.
          * Microtask keeps it in the same frame but allows change detection to run
          */
-        void Promise.resolve().then(() => this.el.nativeElement.focus());
+        void Promise.resolve().then(() => this.el.focus());
     }
 
     @HostListener('blur')
     onBlur(): void {
-        this.renderer.removeAttribute(this.el.nativeElement, 'tabIndex');
+        this.renderer.removeAttribute(this.el, 'tabIndex');
     }
 
     @HostListener('window:focusin.silent', ['$event.target'])
     onFocusIn(node: Node): void {
-        const {nativeElement} = this.el;
-
-        if (tuiContainsOrAfter(nativeElement, node)) {
+        if (tuiContainsOrAfter(this.el, node)) {
             return;
         }
 
         const focusable = tuiGetClosestFocusable({
-            initial: nativeElement,
-            root: nativeElement,
+            initial: this.el,
+            root: this.el,
         });
 
         if (focusable) {

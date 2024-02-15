@@ -1,4 +1,4 @@
-import {Directive, Inject, Input, OnChanges} from '@angular/core';
+import {Directive, inject, Input, OnChanges} from '@angular/core';
 import {tuiAsDriver, TuiDriver} from '@taiga-ui/core/abstract';
 import {BehaviorSubject} from 'rxjs';
 
@@ -9,6 +9,7 @@ import {TuiHintHoverDirective} from './hint-hover.directive';
     providers: [tuiAsDriver(TuiHintManualDirective)],
 })
 export class TuiHintManualDirective extends TuiDriver implements OnChanges {
+    private readonly hover = inject(TuiHintHoverDirective);
     private readonly stream$ = new BehaviorSubject(false);
 
     @Input()
@@ -16,9 +17,9 @@ export class TuiHintManualDirective extends TuiDriver implements OnChanges {
 
     readonly type = 'hint';
 
-    constructor(@Inject(TuiHintHoverDirective) hover: TuiHintHoverDirective) {
+    constructor() {
         super(subscriber => this.stream$.subscribe(subscriber));
-        hover.enabled = false;
+        this.hover.enabled = false;
     }
 
     ngOnChanges(): void {

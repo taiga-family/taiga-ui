@@ -3,7 +3,7 @@ import {
     Component,
     EventEmitter,
     HostBinding,
-    Inject,
+    inject,
     Input,
     Output,
 } from '@angular/core';
@@ -12,8 +12,6 @@ import {
     TuiBooleanHandler,
     TuiDay,
     TuiDayRange,
-    TuiHandler,
-    TuiInjectionTokenType,
     TuiMonth,
     tuiNullableSame,
 } from '@taiga-ui/cdk';
@@ -56,12 +54,8 @@ export class TuiPrimitiveCalendarComponent {
     @Output()
     readonly dayClick = new EventEmitter<TuiDay>();
 
-    constructor(
-        @Inject(TUI_SHORT_WEEK_DAYS)
-        readonly unorderedWeekDays$: TuiInjectionTokenType<typeof TUI_SHORT_WEEK_DAYS>,
-        @Inject(TUI_DAY_TYPE_HANDLER)
-        readonly dayTypeHandler: TuiHandler<TuiDay, string>,
-    ) {}
+    readonly unorderedWeekDays$ = inject(TUI_SHORT_WEEK_DAYS);
+    readonly dayTypeHandler = inject(TUI_DAY_TYPE_HANDLER);
 
     @HostBinding('class._single')
     get isSingleDayRange(): boolean {

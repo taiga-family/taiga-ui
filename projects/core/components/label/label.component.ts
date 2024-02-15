@@ -3,7 +3,7 @@ import {
     Component,
     ContentChild,
     HostBinding,
-    Inject,
+    inject,
     Input,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
@@ -37,5 +37,5 @@ export class TuiLabelComponent<T> {
     @HostBinding('class._control')
     readonly control?: NgControl;
 
-    constructor(@Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>) {}
+    readonly mode$ = inject<Observable<TuiBrightness | null>>(TUI_MODE);
 }

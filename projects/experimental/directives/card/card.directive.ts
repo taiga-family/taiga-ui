@@ -1,5 +1,5 @@
-import {Directive, Inject, Input} from '@angular/core';
-import {TuiDirectiveStylesService} from '@taiga-ui/cdk';
+import {Directive, Input} from '@angular/core';
+import {tuiWithStyles} from '@taiga-ui/cdk';
 
 import {TuiCardComponent} from './card.component';
 
@@ -10,11 +10,7 @@ import {TuiCardComponent} from './card.component';
     },
 })
 export class TuiCardMediumDirective {
-    constructor(
-        @Inject(TuiDirectiveStylesService) directiveStyles: TuiDirectiveStylesService,
-    ) {
-        directiveStyles.addComponent(TuiCardComponent);
-    }
+    protected readonly nothing = tuiWithStyles(TuiCardComponent);
 }
 
 @Directive({
@@ -25,12 +21,8 @@ export class TuiCardMediumDirective {
     },
 })
 export class TuiCardLargeDirective {
+    protected readonly nothing = tuiWithStyles(TuiCardComponent);
+
     @Input('tuiCardLarge')
     space: '' | 'compact' | 'normal' = 'normal';
-
-    constructor(
-        @Inject(TuiDirectiveStylesService) directiveStyles: TuiDirectiveStylesService,
-    ) {
-        directiveStyles.addComponent(TuiCardComponent);
-    }
 }

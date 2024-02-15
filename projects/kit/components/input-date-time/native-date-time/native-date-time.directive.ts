@@ -1,4 +1,4 @@
-import {Directive, Inject} from '@angular/core';
+import {Directive, inject} from '@angular/core';
 import {TuiDay, TuiTime} from '@taiga-ui/cdk';
 import {TUI_TEXTFIELD_HOST} from '@taiga-ui/core';
 
@@ -17,7 +17,7 @@ import type {TuiInputDateTimeDirective} from '../input-date-time.directive';
     },
 })
 export class TuiNativeDateTimeDirective {
-    constructor(@Inject(TUI_TEXTFIELD_HOST) readonly host: TuiInputDateTimeDirective) {}
+    readonly host = inject<TuiInputDateTimeDirective>(TUI_TEXTFIELD_HOST);
 
     get value(): string {
         if (!this.host.rawValue[0] || !this.host.rawValue[1]) {

@@ -1,4 +1,4 @@
-import {Inject, Injectable, NgZone, Optional, Self} from '@angular/core';
+import {inject, Injectable, NgZone} from '@angular/core';
 import {RouterLinkActive} from '@angular/router';
 import {ANIMATION_FRAME} from '@ng-web-apis/common';
 import {TuiDestroyService, tuiZoneOptimized} from '@taiga-ui/cdk';
@@ -11,26 +11,22 @@ import {
     takeUntil,
     timer,
 } from 'rxjs';
+
 // TODO: Remove when Angular is update and `RouterLinkActive` has output
 @Injectable()
 export class TuiRouterLinkActiveService extends Observable<boolean> {
-    constructor(
-        @Optional()
-        @Inject(RouterLinkActive)
-        routerLinkActive: RouterLinkActive | null,
-        @Inject(NgZone) zone: NgZone,
-        @Inject(ANIMATION_FRAME) animationFrame$: Observable<number>,
-        @Self() @Inject(TuiDestroyService) destroy$: TuiDestroyService,
-    ) {
+    constructor() {
+        const routerLinkActive = inject(RouterLinkActive, {optional: true});
+
         const stream$ = routerLinkActive
             ? merge(
                   timer(0), // SSR (animationFrame$ never emits value during SSR)
-                  animationFrame$,
+                  inject(ANIMATION_FRAME),
               ).pipe(
                   map(() => routerLinkActive.isActive),
                   distinctUntilChanged(),
-                  tuiZoneOptimized(zone),
-                  takeUntil(destroy$),
+                  tuiZoneOptimized(inject(NgZone)),
+                  takeUntil(inject(TuiDestroyService, {self: true})),
               )
             : EMPTY;
 

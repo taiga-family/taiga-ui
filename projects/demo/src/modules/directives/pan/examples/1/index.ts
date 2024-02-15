@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {DomSanitizer} from '@angular/platform-browser';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -12,6 +12,8 @@ import {BehaviorSubject, map} from 'rxjs';
     changeDetection,
 })
 export class TuiPanExample1 {
+    private readonly sanitizer = inject(DomSanitizer);
+
     readonly coordinates$ = new BehaviorSubject([0, 0]);
 
     readonly transform$ = this.coordinates$.pipe(
@@ -21,8 +23,6 @@ export class TuiPanExample1 {
             ),
         ),
     );
-
-    constructor(@Inject(DomSanitizer) private readonly sanitizer: DomSanitizer) {}
 
     onPan(delta: readonly [number, number]): void {
         this.coordinates$.next([

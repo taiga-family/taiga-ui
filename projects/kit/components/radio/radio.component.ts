@@ -1,16 +1,12 @@
 import {
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
     ElementRef,
     HostBinding,
-    Inject,
+    inject,
     Input,
-    Optional,
-    Self,
     ViewChild,
 } from '@angular/core';
-import {NgControl} from '@angular/forms';
 import {
     AbstractTuiNullableControl,
     TUI_DEFAULT_IDENTITY_MATCHER,
@@ -24,7 +20,7 @@ import {
 import {TuiSizeL} from '@taiga-ui/core';
 import {TuiRadioGroupComponent} from '@taiga-ui/kit/components/radio-group';
 
-import {TUI_RADIO_OPTIONS, TuiRadioOptions} from './radio.options';
+import {TUI_RADIO_OPTIONS} from './radio.options';
 
 @Component({
     selector: 'tui-radio',
@@ -43,6 +39,9 @@ export class TuiRadioComponent<T>
     @ViewChild('focusableElement')
     private readonly focusableElement?: ElementRef<TuiNativeFocusableElement>;
 
+    private readonly radioGroup = inject(TuiRadioGroupComponent, {optional: true});
+    private readonly options = inject(TUI_RADIO_OPTIONS);
+
     @Input()
     item?: T | null;
 
@@ -58,20 +57,6 @@ export class TuiRadioComponent<T>
 
     @Input()
     pseudoDisabled = false;
-
-    constructor(
-        @Optional()
-        @Self()
-        @Inject(NgControl)
-        control: NgControl | null,
-        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
-        @Inject(TUI_RADIO_OPTIONS) private readonly options: TuiRadioOptions,
-        @Optional()
-        @Inject(TuiRadioGroupComponent)
-        private readonly radioGroup: TuiRadioGroupComponent | null,
-    ) {
-        super(control, cdr);
-    }
 
     get appearance(): string {
         return this.checked

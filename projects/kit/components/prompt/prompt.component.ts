@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
 import {TuiAppearance, TuiDialogContext} from '@taiga-ui/core';
 import {TUI_PROMPT_WORDS} from '@taiga-ui/kit/tokens';
@@ -7,7 +7,6 @@ import {
     PolymorpheusComponent,
     PolymorpheusContent,
 } from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
 
 export interface TuiPromptData {
     readonly content?: PolymorpheusContent;
@@ -23,12 +22,13 @@ export interface TuiPromptData {
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiPromptComponent {
-    constructor(
-        @Inject(TUI_PROMPT_WORDS) readonly words$: Observable<{no: string; yes: string}>,
-        @Inject(POLYMORPHEUS_CONTEXT)
-        readonly context: TuiDialogContext<boolean, TuiPromptData | undefined>,
-        @Inject(TUI_IS_MOBILE) private readonly isMobile: boolean,
-    ) {}
+    private readonly isMobile = inject(TUI_IS_MOBILE);
+    readonly words$ = inject(TUI_PROMPT_WORDS);
+
+    readonly context =
+        inject<TuiDialogContext<boolean, TuiPromptData | undefined>>(
+            POLYMORPHEUS_CONTEXT,
+        );
 
     get appearance(): TuiAppearance {
         return this.isMobile ? TuiAppearance.Secondary : TuiAppearance.Flat;

@@ -4,7 +4,7 @@ import {
     ElementRef,
     EventEmitter,
     HostListener,
-    Inject,
+    inject,
     Input,
     Output,
 } from '@angular/core';
@@ -16,18 +16,16 @@ import {TUI_TAB_ACTIVATE} from './tab/tab.providers';
     selector: 'tui-tabs, nav[tuiTabs]',
 })
 export class TuiTabsDirective implements AfterViewChecked {
+    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+
     @Input()
     activeItemIndex = 0;
 
     @Output()
     readonly activeItemIndexChange = new EventEmitter<number>();
 
-    constructor(@Inject(ElementRef) private readonly el: ElementRef<HTMLElement>) {}
-
     get tabs(): readonly HTMLElement[] {
-        return Array.from(
-            this.el.nativeElement.querySelectorAll<HTMLElement>('[tuiTab]'),
-        );
+        return Array.from(this.el.querySelectorAll<HTMLElement>('[tuiTab]'));
     }
 
     get activeElement(): HTMLElement | null {

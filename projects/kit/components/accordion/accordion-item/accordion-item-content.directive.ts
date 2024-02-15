@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Directive, Inject, Self, TemplateRef} from '@angular/core';
+import {Directive} from '@angular/core';
 import {PolymorpheusTemplate} from '@tinkoff/ng-polymorpheus';
 
 @Directive({
@@ -6,13 +6,4 @@ import {PolymorpheusTemplate} from '@tinkoff/ng-polymorpheus';
 })
 export class TuiAccordionItemContentDirective extends PolymorpheusTemplate<
     Record<string, unknown>
-> {
-    constructor(
-        @Inject(TemplateRef)
-        @Self()
-        templateRef: TemplateRef<Record<string, unknown>>,
-        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
-    ) {
-        super(templateRef, cdr);
-    }
-}
+> {}

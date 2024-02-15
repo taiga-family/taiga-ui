@@ -1,4 +1,4 @@
-import {Component, Inject, ViewEncapsulation} from '@angular/core';
+import {Component, inject, ViewEncapsulation} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDialogService} from '@taiga-ui/core';
 
@@ -10,7 +10,7 @@ import {TuiDialogService} from '@taiga-ui/core';
     changeDetection,
 })
 export class TuiDialogExampleComponent10 {
-    constructor(@Inject(TuiDialogService) private readonly dialogs: TuiDialogService) {}
+    private readonly dialogs = inject(TuiDialogService);
 
     showDialog(): void {
         this.dialogs

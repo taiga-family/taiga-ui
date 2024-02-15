@@ -1,11 +1,4 @@
-import {
-    Inject,
-    Optional,
-    Pipe,
-    PipeTransform,
-    Sanitizer,
-    SecurityContext,
-} from '@angular/core';
+import {inject, Pipe, PipeTransform, SecurityContext} from '@angular/core';
 import {DomSanitizer} from '@angular/platform-browser';
 import {TuiRawLoaderContent} from '@taiga-ui/addon-doc/interfaces';
 import {tuiRawLoad} from '@taiga-ui/addon-doc/utils';
@@ -19,12 +12,8 @@ import {identity, map, Observable, of, switchMap} from 'rxjs';
     name: 'tuiMarkdown',
 })
 export class TuiMarkdownPipe implements PipeTransform {
-    constructor(
-        @Optional()
-        @Inject(TUI_SANITIZER)
-        private readonly tuiSanitizer: Sanitizer | null,
-        @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
-    ) {}
+    private readonly tuiSanitizer = inject(TUI_SANITIZER, {optional: true});
+    private readonly sanitizer = inject(DomSanitizer);
 
     transform(
         value: TuiRawLoaderContent,

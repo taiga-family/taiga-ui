@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {Router} from '@angular/router';
 import {LOCATION} from '@ng-web-apis/common';
 import {tuiPure} from '@taiga-ui/cdk';
@@ -12,12 +12,10 @@ import {TUI_VERSIONS_META_OPTIONS, TuiVersionMeta} from './versions.constants';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VersionManagerComponent {
-    constructor(
-        @Inject(TUI_SELECTED_VERSION_META) readonly initialVersion: TuiVersionMeta | null,
-        @Inject(TUI_VERSIONS_META_OPTIONS) readonly versions: readonly TuiVersionMeta[],
-        @Inject(LOCATION) private readonly locationRef: Location,
-        @Inject(Router) private readonly router: Router,
-    ) {}
+    private readonly locationRef = inject(LOCATION);
+    private readonly router = inject(Router);
+    readonly initialVersion = inject(TUI_SELECTED_VERSION_META);
+    readonly versions = inject(TUI_VERSIONS_META_OPTIONS);
 
     @tuiPure
     getVersionHref(version: TuiVersionMeta): string {

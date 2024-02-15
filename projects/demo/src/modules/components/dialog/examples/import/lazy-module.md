@@ -10,10 +10,8 @@ import {MyDialogComponent} from './my-dialog.component.ts';
   // ...
 })
 export class MyComponent {
-  constructor(
-    @Inject(Injector) private readonly injector: Injector,
-    @Inject(TuiDialogService) private readonly dialogs: TuiDialogService,
-  ) {}
+  private readonly injector = inject(Injector);
+  private readonly dialogs = inject(TuiDialogService);
 
   // ...
   open() {

@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {DomSanitizer} from '@angular/platform-browser';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -12,6 +12,8 @@ import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
     changeDetection,
 })
 export class TuiPdfViewerExample3 {
+    private readonly isMobile = inject(TUI_IS_MOBILE);
+    private readonly sanitizer = inject(DomSanitizer);
     private readonly pdf = 'assets/media/taiga.pdf';
 
     open = false;
@@ -27,9 +29,4 @@ export class TuiPdfViewerExample3 {
             ? `https://drive.google.com/viewerng/viewer?embedded=true&url=https://taiga-ui.dev/${this.pdf}`
             : this.pdf,
     );
-
-    constructor(
-        @Inject(TUI_IS_MOBILE) private readonly isMobile: boolean,
-        @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
-    ) {}
 }

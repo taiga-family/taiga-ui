@@ -1,12 +1,10 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    ElementRef,
-    Inject,
+    inject,
     Input,
     NgZone,
     Output,
-    Self,
 } from '@angular/core';
 import {
     TUI_IS_IOS,
@@ -35,6 +33,10 @@ import {MICRO_OFFSET, TuiPullToRefreshService} from './pull-to-refresh.service';
     providers: [TuiPullToRefreshService, TuiDestroyService],
 })
 export class TuiPullToRefreshComponent {
+    private readonly isIOS = inject(TUI_IS_IOS);
+    private readonly threshold = inject(TUI_PULL_TO_REFRESH_THRESHOLD);
+    protected readonly pulling$ = inject(TuiPullToRefreshService);
+
     @Input()
     styleHandler: TuiHandler<number, Record<string, any> | null> = this.isIOS
         ? distance => ({top: tuiPx(distance / 2)})
@@ -45,32 +47,34 @@ export class TuiPullToRefreshComponent {
         filter(distance => distance === this.threshold),
     );
 
+    readonly component = inject<PolymorpheusContent<TuiContext<number>>>(
+        TUI_PULL_TO_REFRESH_COMPONENT,
+    );
+
     readonly dropped$: Observable<boolean> = this.pulling$.pipe(
         map(distance => distance <= MICRO_OFFSET || distance === this.threshold),
         distinctUntilChanged(),
     );
 
-    constructor(
-        @Inject(NgZone) zone: NgZone,
-        @Inject(TuiDestroyService) @Self() destroy$: Observable<unknown>,
-        @Inject(TUI_SCROLL_REF) {nativeElement}: ElementRef<HTMLElement>,
-        @Inject(TUI_IS_IOS) private readonly isIOS: boolean,
-        @Inject(TUI_PULL_TO_REFRESH_THRESHOLD) private readonly threshold: number,
-        @Inject(TUI_PULL_TO_REFRESH_COMPONENT)
-        readonly component: PolymorpheusContent<TuiContext<number>>,
-        @Inject(TuiPullToRefreshService) readonly pulling$: Observable<number>,
-    ) {
-        // Ensure scrolling down is impossible while pulling
-        if (this.component) {
-            tuiScrollFrom(nativeElement)
-                .pipe(startWith(null), tuiZonefree(zone), takeUntil(destroy$))
-                .subscribe(() => {
-                    if (nativeElement.scrollTop) {
-                        nativeElement.style.touchAction = '';
-                    } else {
-                        nativeElement.style.touchAction = 'pan-down';
-                    }
-                });
+    constructor() {
+        if (!this.component) {
+            return; // Ensure scrolling down is impossible while pulling
         }
+
+        const el: HTMLElement = inject(TUI_SCROLL_REF).nativeElement;
+
+        tuiScrollFrom(el)
+            .pipe(
+                startWith(null),
+                tuiZonefree(inject(NgZone)),
+                takeUntil(inject(TuiDestroyService, {self: true})),
+            )
+            .subscribe(() => {
+                if (el.scrollTop) {
+                    el.style.touchAction = '';
+                } else {
+                    el.style.touchAction = 'pan-down';
+                }
+            });
     }
 }

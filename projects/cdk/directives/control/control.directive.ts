@@ -1,4 +1,4 @@
-import {Directive, Inject} from '@angular/core';
+import {Directive, inject} from '@angular/core';
 import {AbstractControl, NgControl} from '@angular/forms';
 
 @Directive({
@@ -6,7 +6,7 @@ import {AbstractControl, NgControl} from '@angular/forms';
     exportAs: 'ngControl',
 })
 export class TuiControlDirective {
-    constructor(@Inject(NgControl) private readonly ngControl: NgControl) {}
+    private readonly ngControl = inject(NgControl);
 
     get control(): AbstractControl {
         return this.ngControl.control!;

@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDialogContext, TuiDialogService, TuiDialogSize} from '@taiga-ui/core';
@@ -12,7 +12,7 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
     changeDetection,
 })
 export class TuiDialogExampleComponent5 {
-    constructor(@Inject(TuiDialogService) private readonly dialogs: TuiDialogService) {}
+    private readonly dialogs = inject(TuiDialogService);
 
     onClick(
         content: PolymorpheusContent<TuiDialogContext>,

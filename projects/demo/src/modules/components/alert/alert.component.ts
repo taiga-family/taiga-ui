@@ -1,4 +1,4 @@
-import {Component, Inject, inject, Injector} from '@angular/core';
+import {Component, inject, Injector} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiPopoverContext} from '@taiga-ui/cdk';
@@ -20,6 +20,8 @@ import {AlertExampleWithDataComponent} from './examples/4/alert-example-with-dat
     changeDetection,
 })
 export class ExampleTuiAlertComponent {
+    private readonly alerts = inject(TuiAlertService);
+
     private readonly defaultIcon = inject(TUI_NOTIFICATION_OPTIONS).icon;
 
     readonly method = import('./method.md?raw');
@@ -132,21 +134,10 @@ export class ExampleTuiAlertComponent {
 
     closeable = true;
 
-    readonly component: PolymorpheusComponent<
+    readonly component = new PolymorpheusComponent(
         AlertExampleWithDataComponent,
-        TuiAlertOptions<number> & TuiPopoverContext<number>
-    >;
-
-    constructor(
-        @Inject(TuiAlertService)
-        private readonly alerts: TuiAlertService,
-        @Inject(Injector) injector: Injector,
-    ) {
-        this.component = new PolymorpheusComponent(
-            AlertExampleWithDataComponent,
-            injector,
-        );
-    }
+        inject(Injector),
+    );
 
     get selectedContent(): PolymorpheusContent<
         TuiAlertOptions<number> & TuiPopoverContext<number>

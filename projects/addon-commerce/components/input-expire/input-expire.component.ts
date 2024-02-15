@@ -1,15 +1,11 @@
 import {
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
     HostBinding,
-    Inject,
+    inject,
     Input,
-    Optional,
-    Self,
     ViewChild,
 } from '@angular/core';
-import {NgControl} from '@angular/forms';
 import {maskitoDateOptionsGenerator} from '@maskito/kit';
 import {
     AbstractTuiControl,
@@ -23,7 +19,6 @@ import {
     TuiPrimitiveTextfieldComponent,
     TuiSizeL,
     TuiSizeS,
-    TuiTextfieldSizeDirective,
 } from '@taiga-ui/core';
 
 @Component({
@@ -43,6 +38,8 @@ export class TuiInputExpireComponent
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly input?: TuiPrimitiveTextfieldComponent;
 
+    private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
+
     @Input()
     autocompleteEnabled = false;
 
@@ -50,18 +47,6 @@ export class TuiInputExpireComponent
         mode: 'mm/yy',
         separator: '/',
     });
-
-    constructor(
-        @Optional()
-        @Self()
-        @Inject(NgControl)
-        control: NgControl | null,
-        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
-        @Inject(TUI_TEXTFIELD_SIZE)
-        private readonly textfieldSize: TuiTextfieldSizeDirective,
-    ) {
-        super(control, cdr);
-    }
 
     @HostBinding('attr.data-size')
     get size(): TuiSizeL | TuiSizeS {

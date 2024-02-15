@@ -2,7 +2,7 @@ import {
     ChangeDetectionStrategy,
     Component,
     ContentChildren,
-    Inject,
+    inject,
     Input,
     QueryList,
 } from '@angular/core';
@@ -43,10 +43,8 @@ export class TuiDocPageComponent {
     readonly from = / /g;
     readonly to = '_';
 
-    constructor(
-        @Inject(TUI_DOC_DEFAULT_TABS) readonly defaultTabs: readonly string[],
-        @Inject(PAGE_SEE_ALSO) readonly seeAlso: readonly string[],
-    ) {}
+    readonly defaultTabs = inject(TUI_DOC_DEFAULT_TABS);
+    readonly seeAlso = inject(PAGE_SEE_ALSO);
 
     get showSeeAlso(): boolean {
         return !!this.seeAlso.length && this.activeItemIndex === 0;

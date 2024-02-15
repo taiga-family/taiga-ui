@@ -1,14 +1,12 @@
 ```ts
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import {TuiDialogService} from '@taiga-ui/core';
+import {inject} from '@angular/core';
 
 // ...
 
 export class MyComponent {
-  constructor(
-    @Inject(TuiDialogService)
-    private readonly dialogs: TuiDialogService,
-  ) {}
+  private readonly dialogs = inject(TuiDialogService);
 
   // ...
 

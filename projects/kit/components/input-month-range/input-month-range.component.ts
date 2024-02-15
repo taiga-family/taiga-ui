@@ -1,15 +1,11 @@
 import {
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
     HostBinding,
-    Inject,
+    inject,
     Input,
-    Optional,
-    Self,
     ViewChild,
 } from '@angular/core';
-import {NgControl} from '@angular/forms';
 import {
     AbstractTuiNullableControl,
     ALWAYS_FALSE_HANDLER,
@@ -19,7 +15,6 @@ import {
     tuiDateClamp,
     TuiDay,
     TuiFocusableElementAccessor,
-    TuiHandler,
     TuiMonth,
     TuiMonthRange,
     TuiYear,
@@ -30,7 +25,6 @@ import {
     TuiPrimitiveTextfieldComponent,
     TuiSizeL,
     TuiSizeS,
-    TuiTextfieldSizeDirective,
     TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
 import {TuiMonthContext} from '@taiga-ui/kit/interfaces';
@@ -41,7 +35,6 @@ import {
     TuiInputDateOptions,
 } from '@taiga-ui/kit/tokens';
 import {TuiBooleanHandlerWithContext} from '@taiga-ui/kit/types';
-import {Observable} from 'rxjs';
 
 @Component({
     selector: 'tui-input-month-range',
@@ -62,6 +55,9 @@ export class TuiInputMonthRangeComponent
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
+    private readonly options = inject(TUI_INPUT_DATE_OPTIONS);
+    private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
+
     @Input()
     min: TuiMonth = this.options.min;
 
@@ -77,21 +73,7 @@ export class TuiInputMonthRangeComponent
 
     open = false;
 
-    constructor(
-        @Optional()
-        @Self()
-        @Inject(NgControl)
-        control: NgControl | null,
-        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
-        @Inject(TUI_MONTH_FORMATTER)
-        readonly formatter: TuiHandler<TuiMonth | null, Observable<string>>,
-        @Inject(TUI_INPUT_DATE_OPTIONS)
-        private readonly options: TuiInputDateOptions,
-        @Inject(TUI_TEXTFIELD_SIZE)
-        private readonly textfieldSize: TuiTextfieldSizeDirective,
-    ) {
-        super(control, cdr);
-    }
+    readonly formatter = inject(TUI_MONTH_FORMATTER);
 
     @HostBinding('attr.data-size')
     get size(): TuiSizeL | TuiSizeS {

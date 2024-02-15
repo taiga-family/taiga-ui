@@ -1,18 +1,14 @@
 import {
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
     ContentChild,
     ElementRef,
     HostBinding,
     HostListener,
-    Inject,
+    inject,
     Input,
-    Optional,
-    Self,
     ViewChild,
 } from '@angular/core';
-import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
     TUI_IS_IOS,
@@ -28,16 +24,13 @@ import {
     TUI_ICON_PADDINGS,
     TUI_MODE,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
-    TuiBrightness,
     tuiGetBorder,
     TuiHintOptionsDirective,
     TuiSizeL,
     TuiSizeS,
     TuiTextfieldComponent,
-    TuiTextfieldController,
 } from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
 
 export const DEFAULT_ROWS = 20;
 export const LINE_HEIGHT_M = 20;
@@ -79,22 +72,10 @@ export class TuiTextareaComponent
     @HostBinding('class._expandable')
     expandable = false;
 
-    constructor(
-        @Optional()
-        @Self()
-        @Inject(NgControl)
-        control: NgControl | null,
-        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
-        @Inject(TUI_IS_IOS) readonly isIOS: boolean,
-        @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
-        @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
-        readonly controller: TuiTextfieldController,
-        @Optional()
-        @Inject(TuiHintOptionsDirective)
-        readonly hintOptions: TuiHintOptionsDirective | null,
-    ) {
-        super(control, cdr);
-    }
+    readonly isIOS = inject(TUI_IS_IOS);
+    readonly mode$ = inject(TUI_MODE);
+    readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
+    readonly hintOptions = inject(TuiHintOptionsDirective, {optional: true});
 
     @HostBinding('class._label-outside')
     get labelOutside(): boolean {

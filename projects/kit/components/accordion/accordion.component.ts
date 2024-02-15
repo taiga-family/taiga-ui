@@ -3,10 +3,9 @@ import {
     ChangeDetectionStrategy,
     Component,
     ContentChildren,
-    Inject,
+    inject,
     Input,
     QueryList,
-    Self,
 } from '@angular/core';
 import {
     EMPTY_QUERY,
@@ -26,6 +25,8 @@ import {TuiAccordionItemComponent} from './accordion-item/accordion-item.compone
     providers: [TuiDestroyService],
 })
 export class TuiAccordionComponent implements AfterContentInit {
+    private readonly destroy$ = inject(TuiDestroyService, {self: true});
+
     @Input()
     closeOthers = true;
 
@@ -34,12 +35,6 @@ export class TuiAccordionComponent implements AfterContentInit {
 
     @ContentChildren(TuiAccordionItemComponent)
     readonly accordionItems: QueryList<TuiAccordionItemComponent> = EMPTY_QUERY;
-
-    constructor(
-        @Self()
-        @Inject(TuiDestroyService)
-        private readonly destroy$: TuiDestroyService,
-    ) {}
 
     ngAfterContentInit(): void {
         const {accordionItems} = this;

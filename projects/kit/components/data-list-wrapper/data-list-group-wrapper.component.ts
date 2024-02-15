@@ -1,6 +1,6 @@
-import {ChangeDetectionStrategy, Component, Inject, Input, Optional} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {tuiAsDataListAccessor, TuiTextfieldSizeDirective} from '@taiga-ui/core';
-import {TUI_ITEMS_HANDLERS, TuiItemsHandlers} from '@taiga-ui/kit/tokens';
+import {TUI_ITEMS_HANDLERS} from '@taiga-ui/kit/tokens';
 
 import {AbstractTuiDataListWrapper} from './data-list-wrapper';
 
@@ -18,12 +18,7 @@ export class TuiDataListGroupWrapperComponent<T> extends AbstractTuiDataListWrap
     @Input()
     labels: readonly string[] = [];
 
-    constructor(
-        @Inject(TUI_ITEMS_HANDLERS) itemsHandlers: TuiItemsHandlers<T>,
-        @Optional()
-        @Inject(TuiTextfieldSizeDirective)
-        controller: TuiTextfieldSizeDirective | null,
-    ) {
-        super(itemsHandlers, controller?.size || 'm');
+    constructor() {
+        super(inject(TUI_ITEMS_HANDLERS), inject(TuiTextfieldSizeDirective)?.size || 'm');
     }
 }

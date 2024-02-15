@@ -1,4 +1,4 @@
-import {Inject, Pipe, PipeTransform} from '@angular/core';
+import {inject, Pipe, PipeTransform} from '@angular/core';
 import {TuiIdentityMatcher, tuiPure} from '@taiga-ui/cdk';
 import {tuiIsFlat} from '@taiga-ui/kit/utils';
 
@@ -9,10 +9,7 @@ import {TuiMultiSelectComponent} from './multi-select.component';
     pure: false,
 })
 export class TuiHideSelectedPipe implements PipeTransform {
-    constructor(
-        @Inject(TuiMultiSelectComponent)
-        private readonly component: TuiMultiSelectComponent<any>,
-    ) {}
+    private readonly component = inject(TuiMultiSelectComponent);
 
     transform<T>(items: readonly T[] | null): readonly T[] | null;
     transform<T>(

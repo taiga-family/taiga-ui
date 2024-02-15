@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_IS_E2E} from '@taiga-ui/cdk';
@@ -12,6 +12,8 @@ import {map, of, startWith, takeWhile, timer} from 'rxjs';
     changeDetection,
 })
 export class TuiProgressBarExample4 {
+    private readonly isE2E = inject(TUI_IS_E2E);
+
     readonly max = 100;
     readonly value$ = this.isE2E
         ? of(30)
@@ -20,6 +22,4 @@ export class TuiProgressBarExample4 {
               startWith(30),
               takeWhile(value => value <= this.max),
           );
-
-    constructor(@Inject(TUI_IS_E2E) private readonly isE2E: boolean) {}
 }

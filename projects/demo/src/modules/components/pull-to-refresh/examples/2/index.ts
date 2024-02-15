@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {
@@ -35,12 +35,8 @@ import {Subject} from 'rxjs';
     ],
 })
 export class TuiPullToRefreshExample2 {
-    constructor(
-        @Inject(TuiAlertService)
-        private readonly alerts: TuiAlertService,
-        @Inject(TUI_PULL_TO_REFRESH_LOADED)
-        private readonly loaded$: Subject<void>,
-    ) {}
+    private readonly alerts = inject(TuiAlertService);
+    private readonly loaded$ = inject<Subject<void>>(TUI_PULL_TO_REFRESH_LOADED);
 
     onPull(): void {
         this.alerts.open('Loading...').subscribe();

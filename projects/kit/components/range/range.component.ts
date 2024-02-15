@@ -1,18 +1,14 @@
 import {
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
     ElementRef,
     HostBinding,
     HostListener,
-    Inject,
+    inject,
     Input,
-    Optional,
     QueryList,
-    Self,
     ViewChildren,
 } from '@angular/core';
-import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
     EMPTY_QUERY,
@@ -45,6 +41,8 @@ export class TuiRangeComponent
     extends AbstractTuiControl<[number, number]>
     implements TuiWithOptionalMinMax<number>, TuiFocusableElementAccessor
 {
+    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+
     @Input()
     min = 0;
 
@@ -69,17 +67,6 @@ export class TuiRangeComponent
 
     lastActiveThumb: 'left' | 'right' = 'right';
 
-    constructor(
-        @Optional()
-        @Self()
-        @Inject(NgControl)
-        control: NgControl | null,
-        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
-        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
-    ) {
-        super(control, cdr);
-    }
-
     get nativeFocusableElement(): TuiNativeFocusableElement | null {
         const [sliderLeftRef, sliderRightRef] = this.slidersRefs;
 
@@ -100,7 +87,7 @@ export class TuiRangeComponent
     }
 
     get focused(): boolean {
-        return tuiIsNativeFocusedIn(this.el.nativeElement);
+        return tuiIsNativeFocusedIn(this.el);
     }
 
     get fractionStep(): number {
@@ -141,7 +128,7 @@ export class TuiRangeComponent
         const rightThumbElement = sliderRightRef.nativeElement;
 
         const isRightThumb =
-            target === this.el.nativeElement
+            target === this.el
                 ? this.lastActiveThumb === 'right'
                 : target === rightThumbElement;
         const activeThumbElement = isRightThumb ? rightThumbElement : leftThumbElement;

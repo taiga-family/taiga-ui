@@ -1,17 +1,13 @@
 import {
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
     ElementRef,
     EventEmitter,
     HostBinding,
-    Inject,
+    inject,
     Input,
-    Optional,
     Output,
-    Self,
 } from '@angular/core';
-import {NgControl} from '@angular/forms';
 import {
     AbstractTuiMultipleControl,
     ALWAYS_FALSE_HANDLER,
@@ -41,6 +37,8 @@ const badgeSizeMap: Record<TuiSizeL | TuiSizeXS, TuiSizeS | TuiSizeXL> = {
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiFilterComponent<T> extends AbstractTuiMultipleControl<T> {
+    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+
     @Input()
     identityMatcher: TuiIdentityMatcher<T> = TUI_DEFAULT_IDENTITY_MATCHER;
 
@@ -57,17 +55,6 @@ export class TuiFilterComponent<T> extends AbstractTuiMultipleControl<T> {
     @Output()
     readonly toggledItem = new EventEmitter<T>();
 
-    constructor(
-        @Optional()
-        @Self()
-        @Inject(NgControl)
-        control: NgControl | null,
-        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
-        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
-    ) {
-        super(control, cdr);
-    }
-
     @Input()
     content: PolymorpheusContent = ({$implicit}: TuiContext<unknown>) =>
         TUI_DEFAULT_STRINGIFY($implicit);
@@ -76,7 +63,7 @@ export class TuiFilterComponent<T> extends AbstractTuiMultipleControl<T> {
     badgeHandler: TuiHandler<T, number> = item => Number(item);
 
     get focused(): boolean {
-        return tuiIsNativeFocusedIn(this.el.nativeElement);
+        return tuiIsNativeFocusedIn(this.el);
     }
 
     get badgeSize(): TuiSizeS | TuiSizeXL {

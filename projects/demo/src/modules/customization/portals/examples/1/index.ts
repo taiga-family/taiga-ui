@@ -1,4 +1,4 @@
-import {Component, EmbeddedViewRef, Inject, TemplateRef} from '@angular/core';
+import {Component, EmbeddedViewRef, inject, TemplateRef} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 
 import {CustomPortalService} from './portal/custom-portal.service';
@@ -10,12 +10,9 @@ import {CustomPortalService} from './portal/custom-portal.service';
     changeDetection,
 })
 export class TuiPortalsExample1 {
-    templates: Array<EmbeddedViewRef<unknown>> = [];
+    private readonly customPortalService = inject(CustomPortalService);
 
-    constructor(
-        @Inject(CustomPortalService)
-        private readonly customPortalService: CustomPortalService,
-    ) {}
+    templates: Array<EmbeddedViewRef<unknown>> = [];
 
     addTemplate(template: TemplateRef<unknown>): void {
         this.templates.push(this.customPortalService.addTemplate(template));

@@ -1,18 +1,14 @@
 import {
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
     EventEmitter,
     HostBinding,
     HostListener,
-    Inject,
+    inject,
     Input,
-    Optional,
     Output,
-    Self,
     ViewChild,
 } from '@angular/core';
-import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
     CHAR_PLUS,
@@ -32,7 +28,6 @@ import {
     TuiSizeL,
     TuiSizeM,
     TuiSizeS,
-    TuiTextfieldSizeDirective,
 } from '@taiga-ui/core';
 import {TuiCountryIsoCode} from '@taiga-ui/i18n';
 import {TUI_ARROW} from '@taiga-ui/kit/components/arrow';
@@ -42,12 +37,8 @@ import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {TUI_COUNTRIES, TUI_COUNTRIES_MASKS} from '@taiga-ui/kit/tokens';
 import {tuiGetMaxAllowedPhoneLength, tuiIsoToCountryCode} from '@taiga-ui/kit/utils';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
 
-import {
-    TUI_INPUT_PHONE_INTERNATIONAL_OPTIONS,
-    TuiInputPhoneInternationalOptions,
-} from './input-phone-international.options';
+import {TUI_INPUT_PHONE_INTERNATIONAL_OPTIONS} from './input-phone-international.options';
 import {tuiExtractValueFromEvent} from './utils/extract-value-from-event';
 
 @Component({
@@ -74,6 +65,11 @@ export class TuiInputPhoneInternationalComponent
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly primitiveTextfield?: TuiPrimitiveTextfieldComponent;
 
+    private readonly options = inject(TUI_INPUT_PHONE_INTERNATIONAL_OPTIONS);
+    private readonly flagPipe = inject(TuiFlagPipe);
+    private readonly extractCountryCodePipe = inject(TuiToCountryCodePipe);
+    private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
+
     @Input('countryIsoCode')
     set isoCode(code: TuiCountryIsoCode) {
         if (this.countryIsoCode === code) {
@@ -94,30 +90,10 @@ export class TuiInputPhoneInternationalComponent
 
     open = false;
 
+    readonly countriesNames$ = inject(TUI_COUNTRIES);
+    readonly countriesMasks = inject(TUI_COUNTRIES_MASKS);
     readonly arrow: PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeM | TuiSizeS>> =
         TUI_ARROW;
-
-    constructor(
-        @Optional()
-        @Self()
-        @Inject(NgControl)
-        control: NgControl | null,
-        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
-        @Inject(TUI_COUNTRIES)
-        readonly countriesNames$: Observable<Record<TuiCountryIsoCode, string>>,
-        @Inject(TUI_COUNTRIES_MASKS)
-        readonly countriesMasks: Record<TuiCountryIsoCode, string>,
-        @Inject(TUI_INPUT_PHONE_INTERNATIONAL_OPTIONS)
-        private readonly options: TuiInputPhoneInternationalOptions,
-        @Inject(TuiFlagPipe)
-        private readonly flagPipe: TuiFlagPipe,
-        @Inject(TuiToCountryCodePipe)
-        private readonly extractCountryCodePipe: TuiToCountryCodePipe,
-        @Inject(TUI_TEXTFIELD_SIZE)
-        private readonly textfieldSize: TuiTextfieldSizeDirective,
-    ) {
-        super(control, cdr);
-    }
 
     @HostBinding('attr.data-size')
     get size(): TuiSizeL | TuiSizeS {

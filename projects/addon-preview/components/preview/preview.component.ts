@@ -2,14 +2,10 @@ import {
     ChangeDetectionStrategy,
     Component,
     ElementRef,
-    Inject,
+    inject,
     Input,
 } from '@angular/core';
-import {
-    TUI_PREVIEW_ICONS,
-    TUI_PREVIEW_TEXTS,
-    TuiPreviewIcons,
-} from '@taiga-ui/addon-preview/tokens';
+import {TUI_PREVIEW_ICONS, TUI_PREVIEW_TEXTS} from '@taiga-ui/addon-preview/tokens';
 import {
     ALWAYS_FALSE_HANDLER,
     tuiClamp,
@@ -21,8 +17,7 @@ import {
     TuiZoom,
 } from '@taiga-ui/cdk';
 import {tuiSlideInTop} from '@taiga-ui/core';
-import {TuiLanguagePreview} from '@taiga-ui/i18n';
-import {BehaviorSubject, combineLatest, map, merge, Observable, startWith} from 'rxjs';
+import {BehaviorSubject, combineLatest, map, merge, startWith} from 'rxjs';
 
 const INITIAL_SCALE_COEF = 0.8;
 const EMPTY_COORDINATES: [number, number] = [0, 0];
@@ -36,6 +31,8 @@ const ROTATION_ANGLE = 90;
     animations: [tuiSlideInTop],
 })
 export class TuiPreviewComponent {
+    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+
     @Input()
     zoomable = true;
 
@@ -47,6 +44,9 @@ export class TuiPreviewComponent {
     width = 0;
     height = 0;
 
+    readonly texts$ = inject(TUI_PREVIEW_TEXTS);
+    readonly icons = inject(TUI_PREVIEW_ICONS);
+
     readonly zoom$ = new BehaviorSubject<number>(this.minZoom);
     readonly rotation$ = new BehaviorSubject<number>(0);
     readonly coordinates$ = new BehaviorSubject<readonly [number, number]>(
@@ -54,18 +54,18 @@ export class TuiPreviewComponent {
     );
 
     readonly transitioned$ = merge(
-        tuiDragAndDropFrom(this.el.nativeElement).pipe(
+        tuiDragAndDropFrom(this.el).pipe(
             map(({stage}) => stage !== TuiDragStage.Continues),
         ),
-        tuiTypedFromEvent(this.el.nativeElement, 'touchmove', {
+        tuiTypedFromEvent(this.el, 'touchmove', {
             passive: true,
         }).pipe(map(ALWAYS_FALSE_HANDLER)),
-        tuiTypedFromEvent(this.el.nativeElement, 'wheel', {passive: true}).pipe(
+        tuiTypedFromEvent(this.el, 'wheel', {passive: true}).pipe(
             map(ALWAYS_FALSE_HANDLER),
         ),
     );
 
-    readonly cursor$ = tuiDragAndDropFrom(this.el.nativeElement).pipe(
+    readonly cursor$ = tuiDragAndDropFrom(this.el).pipe(
         map(({stage}) => (stage === TuiDragStage.Continues ? 'grabbing' : 'initial')),
         startWith('initial'),
     );
@@ -80,13 +80,6 @@ export class TuiPreviewComponent {
                 `translate(${translate}) scale(${zoom}) rotate(${rotation}deg)`,
         ),
     );
-
-    constructor(
-        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
-        @Inject(TUI_PREVIEW_ICONS) readonly icons: TuiPreviewIcons,
-        @Inject(TUI_PREVIEW_TEXTS)
-        readonly texts$: Observable<TuiLanguagePreview['previewTexts']>,
-    ) {}
 
     rotate(): void {
         this.rotation$.next(this.rotation$.value - ROTATION_ANGLE);
@@ -151,7 +144,7 @@ export class TuiPreviewComponent {
         const bigSize =
             contentHeight > boxHeight * INITIAL_SCALE_COEF ||
             contentWidth > boxWidth * INITIAL_SCALE_COEF;
-        const {clientHeight, clientWidth} = this.el.nativeElement;
+        const {clientHeight, clientWidth} = this.el;
 
         return bigSize
             ? tuiRound(
@@ -170,8 +163,8 @@ export class TuiPreviewComponent {
         this.minZoom = this.calculateMinZoom(
             height,
             width,
-            this.el.nativeElement.clientHeight,
-            this.el.nativeElement.clientWidth,
+            this.el.clientHeight,
+            this.el.clientWidth,
         );
         this.zoom$.next(this.minZoom);
         this.coordinates$.next(EMPTY_COORDINATES);
@@ -212,8 +205,8 @@ export class TuiPreviewComponent {
         scale: number,
     ): [number, number] {
         return [
-            (clientX - x - this.el.nativeElement.offsetWidth / 2) / scale,
-            (clientY - y - this.el.nativeElement.offsetHeight / 2) / scale,
+            (clientX - x - this.el.offsetWidth / 2) / scale,
+            (clientY - y - this.el.offsetHeight / 2) / scale,
         ];
     }
 }

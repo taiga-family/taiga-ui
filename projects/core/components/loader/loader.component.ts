@@ -4,7 +4,7 @@ import {
     Component,
     ElementRef,
     HostBinding,
-    Inject,
+    inject,
     Input,
 } from '@angular/core';
 import {
@@ -16,7 +16,7 @@ import {
 import {tuiSizeBigger} from '@taiga-ui/core/utils/miscellaneous';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-import {TUI_LOADER_OPTIONS, TuiLoaderOptions} from './loader.options';
+import {TUI_LOADER_OPTIONS} from './loader.options';
 
 @Component({
     selector: 'tui-loader',
@@ -25,6 +25,11 @@ import {TUI_LOADER_OPTIONS, TuiLoaderOptions} from './loader.options';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiLoaderComponent {
+    private readonly doc = inject(DOCUMENT);
+    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly isIOS = inject(TUI_IS_IOS);
+    private readonly options = inject(TUI_LOADER_OPTIONS);
+
     @Input()
     @HostBinding('attr.data-size')
     size = this.options.size;
@@ -51,14 +56,7 @@ export class TuiLoaderComponent {
     @HostBinding('class._loading')
     loading = true;
 
-    readonly isApple = tuiIsSafari(this.el.nativeElement) || this.isIos;
-
-    constructor(
-        @Inject(DOCUMENT) private readonly doc: Document,
-        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
-        @Inject(TUI_IS_IOS) private readonly isIos: boolean,
-        @Inject(TUI_LOADER_OPTIONS) private readonly options: TuiLoaderOptions,
-    ) {}
+    readonly isApple = tuiIsSafari(this.el) || this.isIOS;
 
     get hasOverlay(): boolean {
         return this.overlay && this.loading;
@@ -73,6 +71,6 @@ export class TuiLoaderComponent {
     }
 
     get focused(): boolean {
-        return tuiIsNativeFocusedIn(this.el.nativeElement);
+        return tuiIsNativeFocusedIn(this.el);
     }
 }

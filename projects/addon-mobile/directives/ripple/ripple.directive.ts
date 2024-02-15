@@ -1,22 +1,12 @@
-import {Directive, ElementRef, Inject, Input, Renderer2, Self} from '@angular/core';
+import {Directive, ElementRef, inject, Input, Renderer2} from '@angular/core';
 import {
     ALWAYS_FALSE_HANDLER,
     ALWAYS_TRUE_HANDLER,
     TuiDestroyService,
-    TuiDirectiveStylesService,
     tuiTypedFromEvent,
+    tuiWithStyles,
 } from '@taiga-ui/cdk';
-import {
-    map,
-    mergeMap,
-    Observable,
-    race,
-    switchMap,
-    take,
-    takeUntil,
-    tap,
-    timer,
-} from 'rxjs';
+import {map, mergeMap, race, switchMap, take, takeUntil, tap, timer} from 'rxjs';
 
 import {
     RIPPLE_OFF,
@@ -33,26 +23,23 @@ const TOUCH_MOVE_DELAY = 100;
     providers: TUI_RIPPLE_PROVIDERS,
 })
 export class TuiRippleDirective {
+    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly renderer = inject(Renderer2);
+    private readonly destroy$ = inject(TuiDestroyService, {self: true});
+    private readonly start$ = inject(TUI_RIPPLE_START);
+    private readonly end$ = inject(TUI_RIPPLE_END);
+    protected readonly nothing = tuiWithStyles(TuiRippleStylesComponent);
+
     @Input()
     tuiRipple?: string | '';
 
-    constructor(
-        @Inject(ElementRef) {nativeElement}: ElementRef<HTMLElement>,
-        @Inject(TuiDirectiveStylesService) directiveStyles: TuiDirectiveStylesService,
-        @Inject(Renderer2) renderer: Renderer2,
-        @Self() @Inject(TuiDestroyService) destroy$: TuiDestroyService,
-        @Inject(TUI_RIPPLE_START) start$: Observable<HTMLElement>,
-        @Inject(TUI_RIPPLE_END) end$: Observable<EventTarget>,
-    ) {
-        directiveStyles.addComponent(TuiRippleStylesComponent);
+    constructor() {
+        const touchEnd$ = tuiTypedFromEvent(this.el, 'touchend');
+        const touchMove$ = tuiTypedFromEvent(this.el, 'touchmove');
 
-        const touchEnd$ = tuiTypedFromEvent(nativeElement, 'touchend');
-        const touchMove$ = tuiTypedFromEvent(nativeElement, 'touchmove');
+        this.end$.subscribe(element => this.renderer.removeChild(this.el, element));
 
-        end$.subscribe(element => {
-            renderer.removeChild(nativeElement, element);
-        });
-        start$
+        this.start$
             .pipe(
                 mergeMap(ripple => {
                     const animationEndOn$ = tuiTypedFromEvent(ripple, 'animationend');
@@ -65,12 +52,12 @@ export class TuiRippleDirective {
                         // eslint-disable-next-line rxjs/no-unsafe-takeuntil
                         takeUntil(touchMove$),
                         tap(() => {
-                            renderer.setStyle(
+                            this.renderer.setStyle(
                                 ripple,
                                 'background',
                                 this.tuiRipple || null,
                             );
-                            renderer.appendChild(nativeElement, ripple);
+                            this.renderer.appendChild(this.el, ripple);
                         }),
                         switchMap(isTap =>
                             isTap
@@ -83,10 +70,10 @@ export class TuiRippleDirective {
                         map(() => ripple),
                     );
                 }),
-                takeUntil(destroy$),
+                takeUntil(this.destroy$),
             )
-            .subscribe(element => {
-                renderer.setStyle(element, 'animationName', RIPPLE_OFF);
-            });
+            .subscribe(element =>
+                this.renderer.setStyle(element, 'animationName', RIPPLE_OFF),
+            );
     }
 }

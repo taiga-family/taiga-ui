@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_IS_E2E} from '@taiga-ui/cdk';
@@ -12,9 +12,9 @@ import {map, timer} from 'rxjs';
     changeDetection,
 })
 export class TuiLineClampExample1 {
+    private readonly isE2E = inject(TUI_IS_E2E);
+
     value$ = timer(this.isE2E ? 0 : 4000).pipe(
         map(() => `${'async fake value, '.repeat(10)}end!`),
     );
-
-    constructor(@Inject(TUI_IS_E2E) private readonly isE2E: boolean) {}
 }

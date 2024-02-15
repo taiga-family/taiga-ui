@@ -1,16 +1,12 @@
 import {
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
     ElementRef,
     HostBinding,
-    Inject,
+    inject,
     Input,
-    Optional,
-    Self,
     ViewChild,
 } from '@angular/core';
-import {NgControl} from '@angular/forms';
 import {
     AbstractTuiNullableControl,
     tuiAsControl,
@@ -18,7 +14,7 @@ import {
     TuiFocusableElementAccessor,
     tuiIsNativeFocused,
 } from '@taiga-ui/cdk';
-import {TUI_CHECKBOX_OPTIONS, TuiCheckboxOptions, TuiSizeL} from '@taiga-ui/core';
+import {TUI_CHECKBOX_OPTIONS, TuiSizeL} from '@taiga-ui/core';
 
 @Component({
     selector: 'tui-checkbox',
@@ -37,21 +33,11 @@ export class TuiCheckboxComponent
     @ViewChild('focusableElement')
     private readonly focusableElement?: ElementRef<HTMLInputElement>;
 
+    private readonly options = inject(TUI_CHECKBOX_OPTIONS);
+
     @Input()
     @HostBinding('attr.data-size')
     size: TuiSizeL = this.options.size;
-
-    constructor(
-        @Optional()
-        @Self()
-        @Inject(NgControl)
-        control: NgControl | null,
-        @Inject(TUI_CHECKBOX_OPTIONS)
-        private readonly options: TuiCheckboxOptions,
-        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
-    ) {
-        super(control, cdr);
-    }
 
     get nativeFocusableElement(): HTMLInputElement | null {
         return !this.focusableElement || this.computedDisabled

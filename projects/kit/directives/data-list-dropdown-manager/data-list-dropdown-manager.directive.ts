@@ -3,9 +3,8 @@ import {
     ContentChildren,
     Directive,
     ElementRef,
-    Inject,
+    inject,
     QueryList,
-    Self,
 } from '@angular/core';
 import {
     EMPTY_QUERY,
@@ -42,9 +41,7 @@ export class TuiDataListDropdownManagerDirective implements AfterViewInit {
     @ContentChildren(TuiDropdownDirective, {read: ElementRef, descendants: true})
     private readonly els: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
-    constructor(
-        @Self() @Inject(TuiDestroyService) private readonly destroy$: TuiDestroyService,
-    ) {}
+    private readonly destroy$ = inject(TuiDestroyService, {self: true});
 
     ngAfterViewInit(): void {
         this.right$.pipe(takeUntil(this.destroy$)).subscribe(index => {

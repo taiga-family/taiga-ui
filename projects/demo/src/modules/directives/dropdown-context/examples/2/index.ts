@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDialogService} from '@taiga-ui/core';
@@ -11,6 +11,8 @@ import {TuiDialogService} from '@taiga-ui/core';
     changeDetection,
 })
 export class TuiDropdownContextExample2 {
+    private readonly dialogs = inject(TuiDialogService);
+
     readonly menuItems = [
         {title: 'View', iconName: 'tuiIconEye'},
         {title: 'Copy', iconName: 'tuiIconCopy'},
@@ -30,8 +32,6 @@ export class TuiDropdownContextExample2 {
     readonly tableColumns = Object.keys(this.tableData[0]);
 
     readonly moreOptions = ['Option 1', 'Option 2', 'Option 3'];
-
-    constructor(@Inject(TuiDialogService) private readonly dialogs: TuiDialogService) {}
 
     getObjectValues = (obj: Record<string, unknown>): unknown[] => Object.values(obj);
 

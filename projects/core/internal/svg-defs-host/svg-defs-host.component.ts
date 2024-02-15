@@ -1,12 +1,11 @@
-import {isPlatformServer} from '@angular/common';
+import {isPlatformBrowser} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
-    Inject,
+    inject,
     OnInit,
     PLATFORM_ID,
-    Self,
 } from '@angular/core';
 import {SafeHtml} from '@angular/platform-browser';
 import {TuiDestroyService} from '@taiga-ui/cdk';
@@ -21,19 +20,11 @@ import {takeUntil} from 'rxjs';
     providers: [TuiDestroyService],
 })
 export class TuiSvgDefsHostComponent implements OnInit {
+    private readonly svgService = inject(TuiSvgService);
+    private readonly cdr = inject(ChangeDetectorRef);
+    private readonly destroy$ = inject(TuiDestroyService, {self: true});
+    readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
     items!: IterableIterator<SafeHtml>;
-    isBrowser = true;
-
-    constructor(
-        @Inject(TuiSvgService) private readonly svgService: TuiSvgService,
-        @Inject(ChangeDetectorRef) private readonly cdr: ChangeDetectorRef,
-        @Self()
-        @Inject(TuiDestroyService)
-        private readonly destroy$: TuiDestroyService,
-        @Inject(PLATFORM_ID) platformId: Record<string, unknown>,
-    ) {
-        this.isBrowser = !isPlatformServer(platformId);
-    }
 
     // @bad TODO: Looks like it could be async piped but it was probably written like that for a reason
     ngOnInit(): void {

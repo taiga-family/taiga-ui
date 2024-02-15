@@ -1,9 +1,8 @@
-import {Directive, Inject} from '@angular/core';
+import {Directive, inject} from '@angular/core';
 import {
     INTERSECTION_ROOT_MARGIN,
     IntersectionObserverService,
 } from '@ng-web-apis/intersection-observer';
-import {Observable} from 'rxjs';
 
 import {TUI_STUCK, TUI_STUCK_PROVIDER} from '../providers/stuck.provider';
 
@@ -22,5 +21,5 @@ import {TUI_STUCK, TUI_STUCK_PROVIDER} from '../providers/stuck.provider';
     },
 })
 export class TuiTheadDirective {
-    constructor(@Inject(TUI_STUCK) readonly stuck$: Observable<boolean>) {}
+    readonly stuck$ = inject(TUI_STUCK);
 }

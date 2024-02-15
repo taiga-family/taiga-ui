@@ -7,7 +7,7 @@ import {
     forwardRef,
     HostBinding,
     HostListener,
-    Inject,
+    inject,
     Input,
     OnInit,
     TemplateRef,
@@ -26,11 +26,10 @@ import {
     tuiPure,
     tuiPx,
     TuiResizeableDirective,
-    TuiStringHandler,
     tuiToInteger,
 } from '@taiga-ui/cdk';
 import {TuiBrightness, TuiModeDirective} from '@taiga-ui/core';
-import {TUI_ARROW_OPTIONS, TuiArrowOptions} from '@taiga-ui/kit';
+import {TUI_ARROW_OPTIONS} from '@taiga-ui/kit';
 import {Subject} from 'rxjs';
 
 const MIN_WIDTH = 160;
@@ -58,6 +57,11 @@ export class TuiDocDemoComponent implements OnInit {
     @ViewChild('resizer', {static: true})
     private readonly resizer?: ElementRef<HTMLElement>;
 
+    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly locationRef = inject(Location);
+    private readonly urlSerializer = inject(UrlSerializer);
+    private readonly urlStateHandler = inject(TUI_DOC_URL_STATE_HANDLER);
+
     @Input()
     control: AbstractControl | null = null;
 
@@ -82,17 +86,9 @@ export class TuiDocDemoComponent implements OnInit {
 
     readonly change$ = new Subject<void>();
     readonly items: readonly TuiBrightness[] = ['onLight', 'onDark'];
-
-    constructor(
-        @Inject(TUI_ARROW_OPTIONS) readonly options: TuiArrowOptions,
-        @Inject(TUI_IS_MOBILE) readonly isMobile: boolean,
-        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
-        @Inject(Location) private readonly locationRef: Location,
-        @Inject(UrlSerializer) private readonly urlSerializer: UrlSerializer,
-        @Inject(TUI_DOC_DEMO_TEXTS) readonly texts: [string, string, string],
-        @Inject(TUI_DOC_URL_STATE_HANDLER)
-        private readonly urlStateHandler: TuiStringHandler<UrlTree>,
-    ) {}
+    readonly options = inject(TUI_ARROW_OPTIONS);
+    readonly isMobile = inject(TUI_IS_MOBILE);
+    readonly texts = inject(TUI_DOC_DEMO_TEXTS);
 
     @HostListener('window:resize')
     onResize(): void {
@@ -138,7 +134,7 @@ export class TuiDocDemoComponent implements OnInit {
         }
 
         const safe = width || this.resizeable.nativeElement.clientWidth;
-        const total = this.el.nativeElement.clientWidth;
+        const total = this.el.clientWidth;
         const clamped = Math.round(tuiClamp(safe, MIN_WIDTH, total)) - this.delta;
         const validated = safe < total ? clamped : NaN;
 

@@ -1,11 +1,11 @@
-import {Inject, Injectable, LOCALE_ID} from '@angular/core';
+import {inject, Injectable, LOCALE_ID} from '@angular/core';
 import {Observable, of} from 'rxjs';
 
 @Injectable({
     providedIn: 'root',
 })
 export class TuiFormatDateService {
-    constructor(@Inject(LOCALE_ID) protected readonly locale: string) {}
+    protected readonly locale = inject(LOCALE_ID);
 
     format(timestamp: number): Observable<string> {
         return of(

@@ -1,4 +1,4 @@
-import {ElementRef, Inject, Injectable, NgZone, Self} from '@angular/core';
+import {ElementRef, inject, Injectable, NgZone} from '@angular/core';
 import {
     TuiDestroyService,
     tuiGetElementOffset,
@@ -19,22 +19,21 @@ import {
 
 @Injectable()
 export class TuiElasticStickyService extends Observable<number> {
-    constructor(
-        @Inject(TUI_SCROLL_REF) scrollRef: ElementRef<HTMLElement>,
-        @Inject(ElementRef) {nativeElement}: ElementRef<HTMLElement>,
-        @Inject(NgZone) zone: NgZone,
-        @Self() @Inject(TuiDestroyService) destroy$: TuiDestroyService,
-    ) {
+    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly scrollRef: HTMLElement = inject(TUI_SCROLL_REF).nativeElement;
+    private readonly zone = inject(NgZone);
+    private readonly destroy$ = inject(TuiDestroyService, {self: true});
+
+    constructor() {
         super(subscriber =>
-            zone.onStable
+            this.zone.onStable
                 .pipe(
                     take(1),
                     switchMap(() => {
                         const host =
-                            nativeElement.closest(SCROLL_REF_SELECTOR) ||
-                            scrollRef.nativeElement;
-                        const {offsetHeight} = nativeElement;
-                        const {offsetTop} = tuiGetElementOffset(host, nativeElement);
+                            this.el.closest(SCROLL_REF_SELECTOR) || this.scrollRef;
+                        const {offsetHeight} = this.el;
+                        const {offsetTop} = tuiGetElementOffset(host, this.el);
 
                         return tuiScrollFrom(host).pipe(
                             map(() =>
@@ -53,8 +52,8 @@ export class TuiElasticStickyService extends Observable<number> {
                     startWith(1),
                     distinctUntilChanged(),
                     skip(1),
-                    tuiZoneOptimized(zone),
-                    takeUntil(destroy$),
+                    tuiZoneOptimized(this.zone),
+                    takeUntil(this.destroy$),
                 )
                 .subscribe(subscriber),
         );

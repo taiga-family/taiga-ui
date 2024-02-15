@@ -1,7 +1,18 @@
-import {ChangeDetectionStrategy, Component, ElementRef, ViewChild} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    ElementRef,
+    NgZone,
+    Optional,
+    Renderer2,
+    Self,
+    ViewChild,
+} from '@angular/core';
 import {ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
+import {WINDOW} from '@ng-web-apis/common';
 import {
     TUI_AUTOFOCUS_HANDLER,
+    TUI_FOCUSABLE_ITEM_ACCESSOR,
     tuiAsFocusableItemAccessor,
     TuiAutoFocusDirective,
     TuiAutoFocusModule,
@@ -135,6 +146,27 @@ describe('TuiAutoFocus directive', () => {
                     {
                         provide: TUI_AUTOFOCUS_HANDLER,
                         useClass: TuiIosAutofocusHandler,
+                        useFactory: (
+                            focusable: TuiFocusableElementAccessor | null,
+                            el: ElementRef<HTMLElement>,
+                            renderer: Renderer2,
+                            zone: NgZone,
+                            win: Window,
+                        ) =>
+                            new TuiIosAutofocusHandler(
+                                focusable,
+                                el,
+                                renderer,
+                                zone,
+                                win,
+                            ),
+                        deps: [
+                            [new Optional(), new Self(), TUI_FOCUSABLE_ITEM_ACCESSOR],
+                            ElementRef,
+                            Renderer2,
+                            NgZone,
+                            WINDOW,
+                        ],
                     },
                 ],
             });

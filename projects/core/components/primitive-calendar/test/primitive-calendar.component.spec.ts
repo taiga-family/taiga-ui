@@ -232,11 +232,12 @@ describe('PrimitiveCalendar', () => {
             const firstlySetMonth = new TuiMonth(2019, 4);
             const candidateToSecondSet = new TuiMonth(2019, 4);
 
-            const getSheetPipe = new TuiCalendarSheetPipe(TuiDayOfWeek.Monday);
+            TestBed.runInInjectionContext(() => {
+                const getSheetPipe = new TuiCalendarSheetPipe();
+                const savedSheet = getSheetPipe.transform(firstlySetMonth);
 
-            const savedSheet = getSheetPipe.transform(firstlySetMonth);
-
-            expect(getSheetPipe.transform(candidateToSecondSet)).toBe(savedSheet);
+                expect(getSheetPipe.transform(candidateToSecondSet)).toBe(savedSheet);
+            });
         });
     });
 

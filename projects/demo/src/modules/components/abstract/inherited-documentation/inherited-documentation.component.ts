@@ -1,4 +1,4 @@
-import {Component, Inject, Input} from '@angular/core';
+import {Component, inject, Input} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TUI_HINT_DIRECTIONS} from '@taiga-ui/core';
 
@@ -29,10 +29,7 @@ export class InheritedDocumentationComponent {
 
     readonly appearanceVariants = ['', 'error', 'onDark'];
 
-    constructor(
-        @Inject(ABSTRACT_PROPS_ACCESSOR)
-        readonly documentedComponent: TuiSupportingDocumentationComponent,
-    ) {}
+    readonly documentedComponent = inject(ABSTRACT_PROPS_ACCESSOR);
 
     isTuiReactiveControl(
         documentedComponent: TuiSupportingDocumentationComponent,

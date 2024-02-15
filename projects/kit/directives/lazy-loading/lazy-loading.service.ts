@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Inject, Injectable, Self} from '@angular/core';
+import {ChangeDetectorRef, inject, Injectable} from '@angular/core';
 import {SafeResourceUrl} from '@angular/platform-browser';
 import {IntersectionObserverService} from '@ng-web-apis/intersection-observer';
 import {TuiDestroyService, tuiWatch} from '@taiga-ui/cdk';
@@ -16,27 +16,28 @@ import {
 
 @Injectable()
 export class TuiLazyLoadingService extends Observable<SafeResourceUrl | string> {
-    private readonly src$ = new Subject<SafeResourceUrl | string>();
+    private readonly intersections$ = inject<Observable<IntersectionObserverEntry[]>>(
+        IntersectionObserverService,
+    );
 
-    constructor(
-        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
-        @Self() @Inject(TuiDestroyService) destroy$: Observable<void>,
-        @Inject(IntersectionObserverService)
-        intersections$: Observable<IntersectionObserverEntry[]>,
-    ) {
+    private readonly destroy$ = inject(TuiDestroyService, {self: true});
+    private readonly src$ = new Subject<SafeResourceUrl | string>();
+    private readonly cdr = inject(ChangeDetectorRef);
+
+    constructor() {
         super(subscriber =>
             this.src$
                 .pipe(
                     switchMap(src =>
-                        intersections$.pipe(
+                        this.intersections$.pipe(
                             filter(([{isIntersecting}]) => isIntersecting),
                             map(() => src),
                             catchError(() => of(src)),
-                            tuiWatch(cdr),
+                            tuiWatch(this.cdr),
                             take(1),
                         ),
                     ),
-                    takeUntil(destroy$),
+                    takeUntil(this.destroy$),
                 )
                 .subscribe(subscriber),
         );

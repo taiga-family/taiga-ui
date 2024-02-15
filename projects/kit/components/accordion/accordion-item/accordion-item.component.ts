@@ -6,7 +6,7 @@ import {
     ElementRef,
     EventEmitter,
     HostBinding,
-    Inject,
+    inject,
     Input,
     Output,
     ViewChild,
@@ -18,9 +18,8 @@ import {
     tuiIsNativeFocused,
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
-import {MODE_PROVIDER, TUI_MODE, TuiBrightness, TuiSizeS} from '@taiga-ui/core';
-import {TUI_ARROW_OPTIONS, TuiArrowOptions} from '@taiga-ui/kit/components/arrow';
-import {Observable} from 'rxjs';
+import {MODE_PROVIDER, TUI_MODE, TuiSizeS} from '@taiga-ui/core';
+import {TUI_ARROW_OPTIONS} from '@taiga-ui/kit/components/arrow';
 
 import {TuiAccordionItemContentDirective} from './accordion-item-content.directive';
 import {TuiAccordionItemEagerContentDirective} from './accordion-item-eager-content.directive';
@@ -41,6 +40,8 @@ export class TuiAccordionItemComponent
 {
     @ViewChild('focusableElement')
     private readonly focusableElement?: ElementRef<TuiNativeFocusableElement>;
+
+    private readonly cdr = inject(ChangeDetectorRef);
 
     @Input()
     @HostBinding('class._no-padding')
@@ -80,13 +81,8 @@ export class TuiAccordionItemComponent
     @ContentChild(TuiAccordionItemContentDirective)
     readonly lazyContent?: TuiAccordionItemContentDirective;
 
-    constructor(
-        @Inject(ChangeDetectorRef) private readonly cdr: ChangeDetectorRef,
-        @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
-        @Inject(TUI_ARROW_OPTIONS) readonly options: TuiArrowOptions,
-    ) {
-        super();
-    }
+    readonly options = inject(TUI_ARROW_OPTIONS);
+    readonly mode$ = inject(TUI_MODE);
 
     get nativeFocusableElement(): TuiNativeFocusableElement | null {
         return this.disabled || !this.focusableElement

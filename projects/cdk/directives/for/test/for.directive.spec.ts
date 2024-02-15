@@ -1,4 +1,4 @@
-import {Component, ElementRef, Inject} from '@angular/core';
+import {Component, ElementRef, inject} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiForModule} from '@taiga-ui/cdk';
 import {Subject} from 'rxjs';
@@ -14,9 +14,9 @@ describe('TuiFor directive', () => {
         `,
     })
     class TestComponent {
-        readonly items$ = new Subject<string[]>();
+        readonly el: HTMLElement = inject(ElementRef).nativeElement;
 
-        constructor(@Inject(ElementRef) readonly el: ElementRef<HTMLElement>) {}
+        readonly items$ = new Subject<string[]>();
     }
 
     let fixture: ComponentFixture<TestComponent>;
@@ -52,6 +52,6 @@ describe('TuiFor directive', () => {
     });
 
     function text(): string {
-        return testComponent.el.nativeElement.textContent?.trim() || '';
+        return testComponent.el.textContent?.trim() || '';
     }
 });

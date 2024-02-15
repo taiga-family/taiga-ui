@@ -1,4 +1,4 @@
-import {ElementRef, Inject, Injectable, NgZone} from '@angular/core';
+import {ElementRef, inject, Injectable, NgZone} from '@angular/core';
 import {ANIMATION_FRAME} from '@ng-web-apis/common';
 import {EMPTY_CLIENT_RECT, tuiZonefree} from '@taiga-ui/cdk';
 import {TuiPositionAccessor} from '@taiga-ui/core/abstract';
@@ -7,20 +7,20 @@ import {finalize, map, Observable} from 'rxjs';
 
 @Injectable()
 export class TuiPositionService extends Observable<TuiPoint> {
-    constructor(
-        // Destructuring here causes memory leak
-        @Inject(ElementRef) el: ElementRef<HTMLElement>,
-        @Inject(ANIMATION_FRAME) animationFrame: Observable<unknown>,
-        @Inject(NgZone) zone: NgZone,
-        @Inject(TuiPositionAccessor) accessor: TuiPositionAccessor,
-    ) {
+    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly accessor = inject(TuiPositionAccessor);
+
+    constructor() {
+        const animationFrame$ = inject(ANIMATION_FRAME);
+        const destroy$ = inject(NgZone);
+
         super(subscriber =>
-            animationFrame
+            animationFrame$
                 .pipe(
-                    map(() => el.nativeElement.getBoundingClientRect()),
-                    map(rect => accessor.getPosition(rect)),
-                    tuiZonefree(zone),
-                    finalize(() => accessor.getPosition(EMPTY_CLIENT_RECT)),
+                    map(() => this.el.getBoundingClientRect()),
+                    map(rect => this.accessor.getPosition(rect)),
+                    tuiZonefree(destroy$),
+                    finalize(() => this.accessor.getPosition(EMPTY_CLIENT_RECT)),
                 )
                 .subscribe(subscriber),
         );

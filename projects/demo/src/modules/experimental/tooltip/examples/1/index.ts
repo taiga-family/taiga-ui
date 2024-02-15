@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, Inject, Self} from '@angular/core';
+import {ChangeDetectorRef, Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDestroyService, tuiWatch} from '@taiga-ui/cdk';
@@ -17,12 +17,12 @@ export class TuiTooltipExample1 {
 
     text = '';
 
-    constructor(
-        @Self() @Inject(TuiDestroyService) destroy$: TuiDestroyService,
-        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
-    ) {
+    constructor() {
         interval(2000)
-            .pipe(tuiWatch(cdr), takeUntil(destroy$))
+            .pipe(
+                tuiWatch(inject(ChangeDetectorRef)),
+                takeUntil(inject(TuiDestroyService, {self: true})),
+            )
             .subscribe(() => {
                 this.loader = !this.loader;
                 this.text = this.text ? '' : 'Error 502: Bad Gateway';

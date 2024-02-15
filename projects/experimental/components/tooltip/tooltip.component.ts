@@ -2,28 +2,23 @@ import {
     ChangeDetectionStrategy,
     Component,
     HostListener,
-    Inject,
     inject,
     Input,
-    Optional,
-    Self,
     ViewChild,
 } from '@angular/core';
-import {TUI_PLATFORM, TuiDestroyService, tuiIsString, TuiPlatform} from '@taiga-ui/cdk';
+import {TUI_PLATFORM, TuiDestroyService, tuiIsString} from '@taiga-ui/cdk';
 import {
     MODE_PROVIDER,
-    TUI_HINT_OPTIONS,
     TUI_MODE,
     TuiAppearanceDirective,
     TuiBrightness,
     TuiHintHoverDirective,
-    TuiHintOptions,
     TuiHintOptionsDirective,
 } from '@taiga-ui/core';
 import {TuiTextfieldComponent} from '@taiga-ui/experimental/components/textfield';
-import {Observable, takeUntil} from 'rxjs';
+import {takeUntil} from 'rxjs';
 
-import {TUI_TOOLTIP_OPTIONS, TuiTooltipOptions} from './tooltip.options';
+import {TUI_TOOLTIP_OPTIONS} from './tooltip.options';
 
 // TODO: Turn into a directive with hint as hostDirective in 4.0
 
@@ -37,6 +32,7 @@ import {TUI_TOOLTIP_OPTIONS, TuiTooltipOptions} from './tooltip.options';
 })
 export class TuiTooltipComponent<C = any> extends TuiHintOptionsDirective {
     private readonly textfield = inject(TuiTextfieldComponent, {optional: true});
+    private readonly platform = inject(TUI_PLATFORM);
     private mode: TuiBrightness | null = null;
 
     @ViewChild(TuiHintHoverDirective)
@@ -48,21 +44,17 @@ export class TuiTooltipComponent<C = any> extends TuiHintOptionsDirective {
     @Input()
     context?: C;
 
-    constructor(
-        @Self() @Inject(TuiDestroyService) destroy$: Observable<unknown>,
-        @Inject(TUI_MODE) mode$: Observable<TuiBrightness | null>,
-        @Inject(TUI_HINT_OPTIONS) options: TuiHintOptions,
-        @Inject(TUI_TOOLTIP_OPTIONS) readonly tooltipOptions: TuiTooltipOptions,
-        @Inject(TUI_PLATFORM) private readonly platform: TuiPlatform,
-        @Optional()
-        @Inject(TuiAppearanceDirective)
-        readonly iconAppearance: TuiAppearanceDirective | null,
-    ) {
-        super(options);
+    readonly tooltipOptions = inject(TUI_TOOLTIP_OPTIONS);
+    readonly iconAppearance = inject(TuiAppearanceDirective, {optional: true});
 
-        mode$.pipe(takeUntil(destroy$)).subscribe(mode => {
-            this.mode = mode;
-        });
+    constructor() {
+        super();
+
+        inject(TUI_MODE)
+            .pipe(takeUntil(inject(TuiDestroyService, {self: true})))
+            .subscribe(mode => {
+                this.mode = mode;
+            });
     }
 
     get id(): string {

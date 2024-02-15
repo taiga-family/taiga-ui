@@ -1,4 +1,4 @@
-import {ElementRef, Inject, Injectable, NgZone} from '@angular/core';
+import {ElementRef, inject, Injectable, NgZone} from '@angular/core';
 import {ALWAYS_FALSE_HANDLER, ALWAYS_TRUE_HANDLER} from '@taiga-ui/cdk/constants';
 import {tuiTypedFromEvent, tuiZoneOptimized} from '@taiga-ui/cdk/observables';
 import {tuiIsElement} from '@taiga-ui/cdk/utils';
@@ -14,24 +14,20 @@ function movedOut({currentTarget, relatedTarget}: MouseEvent): boolean {
 
 @Injectable()
 export class TuiHoveredService extends Observable<boolean> {
+    private readonly el: Element = inject(ElementRef).nativeElement;
+    private readonly zone = inject(NgZone);
+
     private readonly stream$ = merge(
-        tuiTypedFromEvent(this.el.nativeElement, 'mouseenter').pipe(
-            map(ALWAYS_TRUE_HANDLER),
-        ),
-        tuiTypedFromEvent(this.el.nativeElement, 'mouseleave').pipe(
-            map(ALWAYS_FALSE_HANDLER),
-        ),
+        tuiTypedFromEvent(this.el, 'mouseenter').pipe(map(ALWAYS_TRUE_HANDLER)),
+        tuiTypedFromEvent(this.el, 'mouseleave').pipe(map(ALWAYS_FALSE_HANDLER)),
         // Hello, Safari
-        tuiTypedFromEvent(this.el.nativeElement, 'mouseout').pipe(
+        tuiTypedFromEvent(this.el, 'mouseout').pipe(
             filter(movedOut),
             map(ALWAYS_FALSE_HANDLER),
         ),
     ).pipe(distinctUntilChanged(), tuiZoneOptimized(this.zone));
 
-    constructor(
-        @Inject(ElementRef) private readonly el: ElementRef<Element>,
-        @Inject(NgZone) private readonly zone: NgZone,
-    ) {
+    constructor() {
         super(subscriber => this.stream$.subscribe(subscriber));
     }
 }

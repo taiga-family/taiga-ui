@@ -1,5 +1,5 @@
 import {DOCUMENT} from '@angular/common';
-import {Directive, ElementRef, Inject, Input, NgZone, OnChanges} from '@angular/core';
+import {Directive, ElementRef, inject, Input, NgZone, OnChanges} from '@angular/core';
 import {
     tuiIfMap,
     tuiIsNativeFocused,
@@ -28,8 +28,10 @@ import {
     providers: [tuiAsDriver(TuiHintDescribeDirective)],
 })
 export class TuiHintDescribeDirective extends TuiDriver implements OnChanges {
+    private readonly zone = inject(NgZone);
+    private readonly doc = inject(DOCUMENT);
+    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
     private readonly id$ = new ReplaySubject(1);
-
     private readonly stream$ = this.id$.pipe(
         tuiIfMap(() => fromEvent(this.doc, 'keydown', {capture: true}), tuiIsPresent),
         switchMap(() =>
@@ -52,11 +54,7 @@ export class TuiHintDescribeDirective extends TuiDriver implements OnChanges {
 
     readonly type = 'hint';
 
-    constructor(
-        @Inject(NgZone) private readonly zone: NgZone,
-        @Inject(DOCUMENT) private readonly doc: Document,
-        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
-    ) {
+    constructor() {
         super(subscriber => this.stream$.subscribe(subscriber));
     }
 
@@ -70,8 +68,6 @@ export class TuiHintDescribeDirective extends TuiDriver implements OnChanges {
 
     @tuiPure
     private get element(): HTMLElement {
-        return (
-            this.doc.getElementById(this.tuiHintDescribe || '') || this.el.nativeElement
-        );
+        return this.doc.getElementById(this.tuiHintDescribe || '') || this.el;
     }
 }

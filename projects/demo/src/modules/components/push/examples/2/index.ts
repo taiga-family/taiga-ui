@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAlertService} from '@taiga-ui/core';
@@ -12,10 +12,8 @@ import {switchMap, take} from 'rxjs';
     changeDetection,
 })
 export class TuiPushExample2 {
-    constructor(
-        @Inject(TuiPushService) protected readonly push: TuiPushService,
-        @Inject(TuiAlertService) protected readonly alert: TuiAlertService,
-    ) {}
+    protected readonly push = inject(TuiPushService);
+    protected readonly alert = inject(TuiAlertService);
 
     onClick(): void {
         this.push

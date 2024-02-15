@@ -4,7 +4,7 @@ import {
     Component,
     ElementRef,
     HostBinding,
-    Inject,
+    inject,
     OnInit,
     QueryList,
     ViewChildren,
@@ -48,15 +48,13 @@ export default class LandingComponent implements OnInit {
     @ViewChildren('block', {read: ElementRef})
     private readonly blocks: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
+    private readonly router = inject(Router);
+    private readonly activatedRoute = inject(ActivatedRoute);
+    protected readonly storage = inject(LOCAL_STORAGE);
+
     current = 0;
 
     intersected = false;
-
-    constructor(
-        @Inject(Router) private readonly router: Router,
-        @Inject(ActivatedRoute) private readonly activatedRoute: ActivatedRoute,
-        @Inject(LOCAL_STORAGE) protected readonly storage: Storage,
-    ) {}
 
     async ngOnInit(): Promise<void> {
         await this.clearQueryParams();

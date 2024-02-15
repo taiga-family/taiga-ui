@@ -1,4 +1,4 @@
-import {Directive, Inject} from '@angular/core';
+import {Directive, inject} from '@angular/core';
 import {AbstractTuiControl} from '@taiga-ui/cdk';
 import {TuiTextfieldHost} from '@taiga-ui/core/interfaces';
 
@@ -6,7 +6,7 @@ import {TuiTextfieldHost} from '@taiga-ui/core/interfaces';
 export abstract class AbstractTuiTextfieldHost<T extends AbstractTuiControl<any>>
     implements TuiTextfieldHost
 {
-    constructor(@Inject(AbstractTuiControl) protected readonly host: T) {}
+    protected readonly host: T = inject<any>(AbstractTuiControl, {optional: true});
 
     get readOnly(): boolean {
         return this.host.readOnly;

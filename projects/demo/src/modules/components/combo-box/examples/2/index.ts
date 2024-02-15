@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDestroyService} from '@taiga-ui/cdk';
@@ -14,9 +14,9 @@ import {RequestService} from './request.service';
     providers: [RequestService, TuiDestroyService],
 })
 export class TuiComboBoxExample2 {
+    readonly service = inject(RequestService);
+
     search: string | null = '';
 
     readonly control = new FormControl(databaseMockData[0]);
-
-    constructor(@Inject(RequestService) readonly service: RequestService) {}
 }

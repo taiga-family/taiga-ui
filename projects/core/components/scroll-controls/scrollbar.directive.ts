@@ -14,7 +14,7 @@ const MIN_WIDTH = 24;
     providers: [TuiScrollbarService, TuiDestroyService],
 })
 export class TuiScrollbarDirective {
-    private readonly el = inject(TUI_SCROLL_REF).nativeElement;
+    private readonly el: HTMLElement = inject(TUI_SCROLL_REF).nativeElement;
     private readonly style: CSSStyleDeclaration = inject(ElementRef).nativeElement.style;
 
     protected readonly scrollSub = inject(TuiScrollbarService)

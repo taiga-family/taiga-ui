@@ -4,10 +4,7 @@ import {
     ElementRef,
     HostBinding,
     HostListener,
-    Inject,
     inject,
-    Optional,
-    Self,
 } from '@angular/core';
 import {
     EMPTY_CLIENT_RECT,
@@ -28,10 +25,9 @@ import {TuiModeDirective} from '@taiga-ui/core/directives/mode';
 import {TuiPortalItem} from '@taiga-ui/core/interfaces';
 import {TuiPositionService, TuiVisualViewportService} from '@taiga-ui/core/services';
 import {TUI_ANIMATIONS_SPEED, TUI_VIEWPORT} from '@taiga-ui/core/tokens';
-import {TuiPoint} from '@taiga-ui/core/types';
 import {tuiIsObscured, tuiToAnimationOptions} from '@taiga-ui/core/utils';
 import {POLYMORPHEUS_CONTEXT, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {map, Observable, takeUntil} from 'rxjs';
+import {map, takeUntil} from 'rxjs';
 
 import {TuiHintDirective} from './hint.directive';
 import {TuiHintHoverDirective} from './hint-hover.directive';
@@ -67,38 +63,35 @@ export const TUI_HINT_PROVIDERS = [
     },
 })
 export class TuiHintComponent<C = any> {
+    private readonly polymorpheus =
+        inject<TuiContext<TuiPortalItem<C>>>(POLYMORPHEUS_CONTEXT);
+
+    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly hover = inject(TuiHintHoverDirective);
+    private readonly mode = inject(TuiModeDirective, {optional: true});
+    private readonly visualViewportService = inject(TuiVisualViewportService);
+    private readonly viewport = inject(TUI_VIEWPORT);
+    protected readonly accessor = inject(TuiRectAccessor);
+
     @HostBinding('attr.data-appearance')
     readonly appearance = this.polymorpheus.$implicit.appearance || this.mode?.mode;
 
     readonly options = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
+    readonly pointer = inject(TuiHintPointerDirective, {optional: true});
 
-    constructor(
-        @Inject(TuiHoveredService) hovered$: Observable<boolean>,
-        @Inject(TuiPositionService) position$: Observable<TuiPoint>,
-        @Self() @Inject(TuiDestroyService) destroy$: Observable<void>,
-        @Optional() @Inject(TuiHintPointerDirective) readonly pointer: unknown,
-        @Inject(TuiRectAccessor) protected readonly accessor: TuiRectAccessor,
-        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
-        @Inject(POLYMORPHEUS_CONTEXT)
-        private readonly polymorpheus: TuiContext<TuiPortalItem<C>>,
-        @Inject(TuiHintHoverDirective) private readonly hover: TuiHintHoverDirective,
-        @Optional()
-        @Inject(TuiModeDirective)
-        private readonly mode: TuiModeDirective | null,
-        @Inject(TuiVisualViewportService)
-        private readonly visualViewportService: TuiVisualViewportService,
-        @Inject(TUI_VIEWPORT) private readonly viewport: TuiRectAccessor,
-    ) {
-        position$
+    constructor() {
+        inject(TuiPositionService)
             .pipe(
                 map(point => this.visualViewportService.correct(point)),
-                takeUntil(destroy$),
+                takeUntil(inject(TuiDestroyService, {self: true})),
             )
             .subscribe(([top, left]) => {
                 this.update(top, left);
             });
 
-        hovered$.pipe(takeUntil(destroy$)).subscribe(hover => this.hover.toggle(hover));
+        inject(TuiHoveredService)
+            .pipe(takeUntil(inject(TuiDestroyService, {self: true})))
+            .subscribe(hover => this.hover.toggle(hover));
     }
 
     get content(): PolymorpheusContent<C> {
@@ -112,9 +105,8 @@ export class TuiHintComponent<C = any> {
     @HostListener('document:click', ['$event.target'])
     onClick(target: HTMLElement): void {
         if (
-            (!this.el.nativeElement.contains(target) &&
-                !this.hover.el.nativeElement.contains(target)) ||
-            tuiIsObscured(this.hover.el.nativeElement)
+            (!this.el.contains(target) && !this.hover.el.contains(target)) ||
+            tuiIsObscured(this.hover.el)
         ) {
             this.hover.toggle(false);
         }
@@ -122,8 +114,7 @@ export class TuiHintComponent<C = any> {
 
     @tuiPure
     private update(top: number, left: number): void {
-        const {height, width} = this.el.nativeElement.getBoundingClientRect();
-        const {style} = this.el.nativeElement;
+        const {height, width} = this.el.getBoundingClientRect();
         const rect = this.accessor.getClientRect();
         const viewport = this.viewport.getClientRect();
 
@@ -137,9 +128,9 @@ export class TuiHintComponent<C = any> {
             rect.left + rect.width / 2 - safeLeft,
         ]);
 
-        style.top = tuiPx(top);
-        style.left = tuiPx(safeLeft);
-        style.setProperty('--top', tuiPx(tuiClamp(beakTop, 0.5, height - 1)));
-        style.setProperty('--left', tuiPx(tuiClamp(beakLeft, 0.5, width - 1)));
+        this.el.style.top = tuiPx(top);
+        this.el.style.left = tuiPx(safeLeft);
+        this.el.style.setProperty('--top', tuiPx(tuiClamp(beakTop, 0.5, height - 1)));
+        this.el.style.setProperty('--left', tuiPx(tuiClamp(beakLeft, 0.5, width - 1)));
     }
 }

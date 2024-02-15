@@ -1,5 +1,5 @@
 import {DOCUMENT} from '@angular/common';
-import {ElementRef, Inject, Injectable} from '@angular/core';
+import {ElementRef, inject, Injectable} from '@angular/core';
 import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
 import {
     filter,
@@ -14,10 +14,10 @@ import {
 
 @Injectable()
 export class TuiPanService extends Observable<readonly [number, number]> {
-    constructor(
-        @Inject(ElementRef) {nativeElement}: ElementRef<Element>,
-        @Inject(DOCUMENT) doc: Document,
-    ) {
+    constructor() {
+        const nativeElement = inject(ElementRef<Element>).nativeElement;
+        const doc = inject(DOCUMENT);
+
         super(subscriber => {
             merge(
                 tuiTypedFromEvent(nativeElement, 'touchstart', {passive: true}),

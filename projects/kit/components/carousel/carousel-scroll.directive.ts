@@ -1,4 +1,4 @@
-import {Directive, ElementRef, Inject, Output} from '@angular/core';
+import {Directive, ElementRef, inject, Output} from '@angular/core';
 import {tuiTypedFromEvent} from '@taiga-ui/cdk';
 import {filter, map, tap, throttleTime} from 'rxjs';
 
@@ -6,16 +6,16 @@ import {filter, map, tap, throttleTime} from 'rxjs';
     selector: '[tuiCarouselScroll]',
 })
 export class TuiCarouselScrollDirective {
+    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+
     @Output()
-    readonly tuiCarouselScroll = tuiTypedFromEvent(this.el.nativeElement, 'wheel').pipe(
+    readonly tuiCarouselScroll = tuiTypedFromEvent(this.el, 'wheel').pipe(
         filter(({deltaX}) => Math.abs(deltaX) > 20),
         throttleTime(500),
         map(({deltaX}) => Math.sign(deltaX)),
         tap(() => {
             // So we always have space to scroll and overflow-behavior saves us from back nav
-            this.el.nativeElement.scrollLeft = 10;
+            this.el.scrollLeft = 10;
         }),
     );
-
-    constructor(@Inject(ElementRef) private readonly el: ElementRef<HTMLElement>) {}
 }

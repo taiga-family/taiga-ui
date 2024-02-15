@@ -4,16 +4,12 @@ import {
     ElementRef,
     HostBinding,
     HostListener,
-    Inject,
+    inject,
     Input,
 } from '@angular/core';
 import {TuiDestroyService, TuiFocusVisibleService} from '@taiga-ui/cdk';
-import {
-    TUI_COMMON_ICONS,
-    TuiCommonIcons,
-    TuiRouterLinkActiveService,
-} from '@taiga-ui/core';
-import {filter, identity, Observable} from 'rxjs';
+import {TUI_COMMON_ICONS, TuiRouterLinkActiveService} from '@taiga-ui/core';
+import {filter, identity} from 'rxjs';
 
 import {TuiStepperComponent} from '../stepper.component';
 
@@ -29,6 +25,11 @@ import {TuiStepperComponent} from '../stepper.component';
     },
 })
 export class TuiStepComponent {
+    private readonly focusVisible$ = inject(TuiFocusVisibleService);
+    private readonly routerLinkActive$ = inject(TuiRouterLinkActiveService);
+    private readonly stepper = inject(TuiStepperComponent);
+    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+
     @Input()
     @HostBinding('attr.data-state')
     stepState: 'error' | 'normal' | 'pass' = 'normal';
@@ -39,18 +40,14 @@ export class TuiStepComponent {
     @HostBinding('class._focus-visible')
     focusVisible = false;
 
-    constructor(
-        @Inject(TuiFocusVisibleService) focusVisible$: TuiFocusVisibleService,
-        @Inject(TuiRouterLinkActiveService) routerLinkActive$: Observable<boolean>,
-        @Inject(TuiStepperComponent) private readonly stepper: TuiStepperComponent,
-        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
-        @Inject(TUI_COMMON_ICONS) readonly icons: TuiCommonIcons,
-    ) {
-        routerLinkActive$.pipe(filter(identity)).subscribe(() => {
+    readonly icons = inject(TUI_COMMON_ICONS);
+
+    constructor() {
+        this.routerLinkActive$.pipe(filter(identity)).subscribe(() => {
             this.activate();
         });
 
-        focusVisible$.subscribe(visible => {
+        this.focusVisible$.subscribe(visible => {
             this.focusVisible = visible;
         });
     }
@@ -71,7 +68,7 @@ export class TuiStepComponent {
     }
 
     get index(): number {
-        return this.stepper.indexOf(this.el.nativeElement);
+        return this.stepper.indexOf(this.el);
     }
 
     @HostListener('click')

@@ -1,23 +1,19 @@
 import {
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
     ContentChild,
     ElementRef,
     EventEmitter,
     HostBinding,
     HostListener,
-    Inject,
+    inject,
     Input,
-    Optional,
     Output,
     QueryList,
-    Self,
     TemplateRef,
     ViewChild,
     ViewChildren,
 } from '@angular/core';
-import {NgControl} from '@angular/forms';
 import {
     AbstractTuiMultipleControl,
     ALWAYS_FALSE_HANDLER,
@@ -43,8 +39,6 @@ import {
     TUI_MODE,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
     tuiAsDataListHost,
-    TuiBrightness,
-    TuiCommonIcons,
     TuiDataListDirective,
     TuiDataListHost,
     TuiHintOptionsDirective,
@@ -53,7 +47,6 @@ import {
     TuiScrollbarComponent,
     TuiSizeL,
     TuiSizeS,
-    TuiTextfieldController,
 } from '@taiga-ui/core';
 import {TuiStringifiableItem} from '@taiga-ui/kit/classes';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
@@ -61,7 +54,7 @@ import {TuiStatus} from '@taiga-ui/kit/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {map, Observable, takeUntil, timer} from 'rxjs';
 
-import {TUI_INPUT_TAG_OPTIONS, TuiInputTagOptions} from './input-tag.options';
+import {TUI_INPUT_TAG_OPTIONS} from './input-tag.options';
 
 const TAG_SIZE_REM = {
     s: 1.25,
@@ -111,6 +104,11 @@ export class TuiInputTagComponent
 
     @ViewChild(TuiScrollbarComponent, {read: ElementRef})
     private readonly scrollBar?: ElementRef<HTMLElement>;
+
+    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly modeDirective = inject(TuiModeDirective, {optional: true});
+    private readonly mode$ = inject(TUI_MODE);
+    private readonly options = inject(TUI_INPUT_TAG_OPTIONS);
 
     @Input()
     separator: RegExp | string = this.options.separator;
@@ -166,33 +164,13 @@ export class TuiInputTagComponent
     @ViewChild('errorIcon')
     readonly errorIconTemplate?: TemplateRef<Record<string, unknown>>;
 
+    readonly hintOptions = inject(TuiHintOptionsDirective, {optional: true});
+    readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
+    readonly icons = inject(TUI_COMMON_ICONS);
+
     status$: Observable<TuiStatus> = this.mode$.pipe(map(() => this.status));
 
     open = false;
-
-    constructor(
-        @Optional()
-        @Self()
-        @Inject(NgControl)
-        control: NgControl | null,
-        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
-        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
-        @Optional()
-        @Inject(TuiModeDirective)
-        private readonly modeDirective: TuiModeDirective | null,
-        @Inject(TUI_MODE)
-        private readonly mode$: Observable<TuiBrightness | null>,
-        @Optional()
-        @Inject(TuiHintOptionsDirective)
-        readonly hintOptions: TuiHintOptionsDirective | null,
-        @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
-        readonly controller: TuiTextfieldController,
-        @Inject(TUI_INPUT_TAG_OPTIONS)
-        private readonly options: TuiInputTagOptions,
-        @Inject(TUI_COMMON_ICONS) readonly icons: TuiCommonIcons,
-    ) {
-        super(control, cdr);
-    }
 
     get nativeFocusableElement(): HTMLInputElement | null {
         return !this.focusableElement || this.computedDisabled
@@ -201,9 +179,7 @@ export class TuiInputTagComponent
     }
 
     get focused(): boolean {
-        return (
-            tuiIsNativeFocusedIn(this.el.nativeElement) || !!this.hostedDropdown?.focused
-        );
+        return tuiIsNativeFocusedIn(this.el) || !!this.hostedDropdown?.focused;
     }
 
     get appearance(): string {

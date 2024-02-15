@@ -1,4 +1,4 @@
-import {ContentChild, Directive, Inject, Input, NgZone} from '@angular/core';
+import {ContentChild, Directive, inject, Input, NgZone} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
 import {
     ALWAYS_FALSE_HANDLER,
@@ -63,13 +63,11 @@ export class TuiSheetWrapperDirective {
     @ContentChild(TuiSheetComponent, {read: TUI_SHEET_SCROLL, static: true})
     private readonly scroll$!: Observable<number>;
 
+    private readonly zone = inject(NgZone);
+    private readonly win = inject(WINDOW);
+
     @Input()
     tuiSheetWrapper = 16;
-
-    constructor(
-        @Inject(NgZone) private readonly zone: NgZone,
-        @Inject(WINDOW) private readonly win: Window,
-    ) {}
 
     @tuiPure
     get overlay$(): Observable<boolean> {

@@ -1,3 +1,4 @@
+import {TestBed} from '@angular/core/testing';
 import {TuiHideSelectedPipe, TuiMultiSelectComponent} from '@taiga-ui/kit';
 
 describe('tuiHideSelected pipe', () => {
@@ -9,9 +10,12 @@ describe('tuiHideSelected pipe', () => {
             value: [1, 2, 3],
             identityMatcher: (a: unknown, b: unknown) => a === b,
         };
-        pipe = new TuiHideSelectedPipe(
-            multiSelect as unknown as TuiMultiSelectComponent<unknown>,
-        );
+
+        TestBed.overrideProvider(TuiMultiSelectComponent, {
+            useValue: multiSelect,
+        }).runInInjectionContext(() => {
+            pipe = new TuiHideSelectedPipe();
+        });
     });
 
     it('Works for flat arrays', () => {

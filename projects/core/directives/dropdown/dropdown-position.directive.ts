@@ -20,7 +20,7 @@ export class TuiDropdownPositionDirective extends TuiPositionAccessor {
 
     readonly type = 'dropdown';
     readonly accessor = tuiFallbackRectAccessor('dropdown')(
-        inject(TuiRectAccessor) as any as readonly TuiRectAccessor[],
+        inject<any>(TuiRectAccessor),
         inject(TuiDropdownDirective),
     );
 

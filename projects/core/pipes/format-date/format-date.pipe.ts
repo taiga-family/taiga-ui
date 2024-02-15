@@ -1,4 +1,4 @@
-import {Inject, Pipe, PipeTransform} from '@angular/core';
+import {inject, Pipe, PipeTransform} from '@angular/core';
 import {TuiFormatDateService} from '@taiga-ui/core/services';
 import {Observable} from 'rxjs';
 
@@ -6,9 +6,7 @@ import {Observable} from 'rxjs';
     name: 'tuiFormatDate',
 })
 export class TuiFormatDatePipe implements PipeTransform {
-    constructor(
-        @Inject(TuiFormatDateService) private readonly service: TuiFormatDateService,
-    ) {}
+    private readonly service = inject(TuiFormatDateService);
 
     transform(timestampOrDate: Date | number): Observable<string> {
         return this.service.format(timestampOrDate.valueOf());

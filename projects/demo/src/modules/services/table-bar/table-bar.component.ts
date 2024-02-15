@@ -1,4 +1,4 @@
-import {Component, Inject, OnDestroy, ViewChild} from '@angular/core';
+import {Component, inject, OnDestroy, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiTableBarsService} from '@taiga-ui/addon-tablebars';
@@ -13,6 +13,8 @@ import {Subject, Subscription, takeUntil} from 'rxjs';
     changeDetection,
 })
 export class ExampleTuiTableBarComponent implements OnDestroy {
+    private readonly tableBarsService = inject(TuiTableBarsService);
+
     private readonly destroy$ = new Subject<void>();
 
     @ViewChild('tableBarTemplate')
@@ -43,11 +45,6 @@ export class ExampleTuiTableBarComponent implements OnDestroy {
     hasCloseButton = false;
 
     subscription = new Subscription();
-
-    constructor(
-        @Inject(TuiTableBarsService)
-        private readonly tableBarsService: TuiTableBarsService,
-    ) {}
 
     showTableBar(): void {
         this.subscription.unsubscribe();

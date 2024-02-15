@@ -3,7 +3,7 @@ import {
     Component,
     ElementRef,
     HostBinding,
-    Inject,
+    inject,
     Input,
 } from '@angular/core';
 import {
@@ -19,8 +19,9 @@ import {
 } from '@taiga-ui/cdk';
 import {MODE_PROVIDER} from '@taiga-ui/core/providers';
 import {TUI_MODE} from '@taiga-ui/core/tokens';
-import {TuiBrightness, TuiHorizontalDirection} from '@taiga-ui/core/types';
-import {map, merge, Observable} from 'rxjs';
+import {TuiHorizontalDirection} from '@taiga-ui/core/types';
+import {map, merge} from 'rxjs';
+
 // @bad TODO: Think about extending Interactive
 @Component({
     selector: 'a[tuiLink], button[tuiLink]',
@@ -39,6 +40,8 @@ import {map, merge, Observable} from 'rxjs';
     exportAs: 'tuiLink',
 })
 export class TuiLinkComponent implements TuiFocusableElementAccessor {
+    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+
     @Input()
     @HostBinding('class._pseudo')
     pseudo = false;
@@ -60,29 +63,21 @@ export class TuiLinkComponent implements TuiFocusableElementAccessor {
     @HostBinding('class._focus-visible')
     focusVisible = false;
 
+    readonly mode$ = inject(TUI_MODE);
+
     readonly focusedChange = merge(
-        tuiTypedFromEvent(this.el.nativeElement, 'focusin').pipe(
-            map(ALWAYS_TRUE_HANDLER),
-        ),
-        tuiTypedFromEvent(this.el.nativeElement, 'focusout').pipe(
-            map(ALWAYS_FALSE_HANDLER),
-        ),
+        tuiTypedFromEvent(this.el, 'focusin').pipe(map(ALWAYS_TRUE_HANDLER)),
+        tuiTypedFromEvent(this.el, 'focusout').pipe(map(ALWAYS_FALSE_HANDLER)),
     );
 
-    constructor(
-        @Inject(ElementRef)
-        private readonly el: ElementRef<TuiNativeFocusableElement>,
-        @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
-        @Inject(TuiFocusVisibleService)
-        focusVisible$: TuiFocusVisibleService,
-    ) {
-        focusVisible$.subscribe(visible => {
+    constructor() {
+        inject(TuiFocusVisibleService).subscribe(visible => {
             this.focusVisible = visible;
         });
     }
 
     get nativeFocusableElement(): TuiNativeFocusableElement {
-        return this.el.nativeElement;
+        return this.el;
     }
 
     get focused(): boolean {

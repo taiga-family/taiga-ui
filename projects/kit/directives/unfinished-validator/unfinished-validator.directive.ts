@@ -1,4 +1,4 @@
-import {Attribute, Directive, Inject, Injector} from '@angular/core';
+import {Attribute, Directive, inject, Injector} from '@angular/core';
 import {NG_VALIDATORS, Validator} from '@angular/forms';
 import {TUI_FOCUSABLE_ITEM_ACCESSOR} from '@taiga-ui/cdk';
 
@@ -15,14 +15,14 @@ import {tuiCreateUnfinishedValidator} from './unfinished.validator';
     ],
 })
 export class TuiUnfinishedValidatorDirective implements Validator {
+    private readonly injector = inject(Injector);
+
     readonly validate = tuiCreateUnfinishedValidator(
         () => this.injector.get(TUI_FOCUSABLE_ITEM_ACCESSOR),
         this.message || '',
     );
 
     constructor(
-        @Inject(Injector)
-        private readonly injector: Injector,
         // eslint-disable-next-line @angular-eslint/no-attribute-decorator
         @Attribute('tuiUnfinishedValidator')
         private readonly message: string | null,

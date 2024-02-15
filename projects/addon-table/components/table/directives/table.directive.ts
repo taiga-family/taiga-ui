@@ -4,19 +4,19 @@ import {
     Directive,
     EventEmitter,
     HostBinding,
-    Inject,
+    inject,
     Input,
     Output,
 } from '@angular/core';
 import {IntersectionObserverService} from '@ng-web-apis/intersection-observer';
 import {TuiComparator} from '@taiga-ui/addon-table/types';
 import {AbstractTuiController} from '@taiga-ui/cdk';
-import {TUI_MODE, TuiBrightness} from '@taiga-ui/core';
+import {TUI_MODE} from '@taiga-ui/core';
 import {Observable} from 'rxjs';
 
 import {TUI_STUCK} from '../providers/stuck.provider';
 import {TUI_TABLE_PROVIDERS} from '../providers/table.providers';
-import {TUI_TABLE_OPTIONS, TuiTableOptions} from '../table.options';
+import {TUI_TABLE_OPTIONS} from '../table.options';
 
 @Directive({
     selector: 'table[tuiTable]',
@@ -31,6 +31,9 @@ export class TuiTableDirective<T extends Partial<Record<keyof T, any>>>
     extends AbstractTuiController
     implements AfterViewInit
 {
+    private readonly options = inject(TUI_TABLE_OPTIONS);
+    private readonly cdr = inject(ChangeDetectorRef);
+
     @Input()
     columns: ReadonlyArray<string | keyof T> = [];
 
@@ -47,16 +50,11 @@ export class TuiTableDirective<T extends Partial<Record<keyof T, any>>>
     @Output()
     readonly sorterChange = new EventEmitter<TuiComparator<T> | null>();
 
-    constructor(
-        @Inject(IntersectionObserverService)
-        readonly entries$: Observable<IntersectionObserverEntry[]>,
-        @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
-        @Inject(TUI_STUCK) readonly stuck$: Observable<boolean>,
-        @Inject(TUI_TABLE_OPTIONS) private readonly options: TuiTableOptions,
-        @Inject(ChangeDetectorRef) private readonly cdr: ChangeDetectorRef,
-    ) {
-        super();
-    }
+    readonly mode$ = inject(TUI_MODE);
+    readonly stuck$ = inject(TUI_STUCK);
+    readonly entries$ = inject<Observable<IntersectionObserverEntry[]>>(
+        IntersectionObserverService,
+    );
 
     @Input()
     sorter: TuiComparator<T> = () => 0;
