@@ -48,7 +48,7 @@ export const TUI_ENGLISH_LANGUAGE_KIT: TuiLanguageKit = {
         defaultLabelMultiple: 'or drop\u00A0them\u00A0here',
         defaultLinkSingle: 'Choose a file',
         defaultLinkMultiple: 'Choose files',
-        maxSizeRejectionReason: 'File is too large ',
+        maxSizeRejectionReason: 'File is larger than ',
         formatRejectionReason: 'Wrong file type',
         drop: 'Drop file here',
         dropMultiple: 'Drop files here',
