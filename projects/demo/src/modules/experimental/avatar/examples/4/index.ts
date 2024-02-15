@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiSizeXXL, TuiSizeXXS} from '@taiga-ui/core';
+import {TuiSizeXS, TuiSizeXXL} from '@taiga-ui/core';
 
 @Component({
     selector: 'tui-avatar-example-4',
@@ -11,13 +11,12 @@ import {TuiSizeXXL, TuiSizeXXS} from '@taiga-ui/core';
 })
 export class TuiAvatarExample4 {
     readonly names = ['Jason Statham', 'Silvester Stallone', 'Jackie Chan'];
-    readonly sizes: ReadonlyArray<TuiSizeXXL | TuiSizeXXS> = [
+    readonly sizes: ReadonlyArray<TuiSizeXS | TuiSizeXXL> = [
         'xxl',
         'xl',
         'l',
         'm',
         's',
         'xs',
-        'xxs',
     ];
 }

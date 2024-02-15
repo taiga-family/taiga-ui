@@ -13,7 +13,7 @@ import {TUI_CHIP_OPTIONS, TuiChipOptions} from './chip.options';
     providers: [
         tuiToggleOptionsProvider({size: 's'}),
         tuiCheckboxOptionsProvider({size: 's'}),
-        tuiAvatarOptionsProvider({size: 'xxs'}),
+        tuiAvatarOptionsProvider({size: 'xs'}),
         tuiButtonOptionsProvider({
             size: 'xs',
             appearance: 'icon',

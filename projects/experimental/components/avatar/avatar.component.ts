@@ -30,7 +30,7 @@ export class TuiAvatarComponent {
     src: SafeResourceUrl | string | null = null;
 
     @Input()
-    appearance = '';
+    appearance = this.options.appearance;
 
     constructor(
         @Inject(TUI_AVATAR_OPTIONS) private readonly options: TuiAvatarOptions,
