@@ -10,6 +10,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiAvatarExample3 {
-    readonly sizes = ['xxl', 'xl', 'l', 'm', 's', 'xs', 'xxs'] as const;
+    readonly sizes = ['xxl', 'xl', 'l', 'm', 's', 'xs'] as const;
     readonly names = ['Jason Statham', 'Silvester Stallone', 'Jackie Chan'];
 }
