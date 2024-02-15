@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[12244],{12244:n=>{n.exports="@import '@taiga-ui/core/styles/taiga-ui-local';\n\n.description {\n    margin-bottom: 2rem;\n}\n\n.steps {\n    list-style-type: disc;\n    padding-left: 0.9375rem;\n    margin: 1rem 0;\n\n    &_optional {\n        list-style-type: circle;\n    }\n}\n"}}]);

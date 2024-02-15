@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[74664],{74664:n=>{n.exports=":host {\n    display: block;\n}\n\n.container {\n    padding: 1.5rem;\n\n    &_dark {\n        background-image: linear-gradient(225deg, #3023ae, #c86dd7);\n        color: var(--tui-text-01-night);\n    }\n}\n"}}]);

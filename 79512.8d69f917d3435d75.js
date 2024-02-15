@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[79512],{79512:n=>{n.exports='<tui-input-range\n    [formControl]="control"\n    [max]="max"\n    [min]="min"\n    [tuiTextfieldLabelOutside]="true"\n></tui-input-range>\n'}}]);

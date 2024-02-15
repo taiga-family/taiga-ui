@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[56988],{56988:a=>{a.exports="@import '@taiga-ui/core/styles/taiga-ui-local';\n\n:host {\n    display: flex;\n}\n\n.avatar {\n    box-shadow: var(--tui-shadow);\n    background: transparent;\n    border: 1px solid;\n\n    &:hover {\n        box-shadow: var(--tui-shadow-hover);\n    }\n}\n"}}]);

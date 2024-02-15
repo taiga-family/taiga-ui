@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[912],{912:e=>{e.exports='<tui-marker-icon src="tuiIconBellLarge"></tui-marker-icon>\n'}}]);

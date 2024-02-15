@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[91635],{91635:n=>{n.exports='<a\n    routerLink="/components/link"\n    tuiLink\n>\n    Link\n</a>\n'}}]);

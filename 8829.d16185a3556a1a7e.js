@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[8829],{8829:n=>{n.exports='<tui-input-month\n    class="b-form"\n    [formControl]="control"\n    [max]="max"\n    [min]="min"\n    [tuiTextfieldCleaner]="true"\n>\n    Choose a month\n    <input\n        placeholder="Not September please"\n        tuiTextfield\n    />\n</tui-input-month>\n'}}]);

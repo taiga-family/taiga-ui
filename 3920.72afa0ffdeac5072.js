@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[3920],{3920:e=>{e.exports='```html\n<div [formGroup]="testForm">\n  <tui-checkbox-labeled formControlName="testValue">Label</tui-checkbox-labeled>\n</div>\n```\n'}}]);

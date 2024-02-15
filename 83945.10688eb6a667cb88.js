@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[83945],{83945:e=>{e.exports="```ts\nimport {TuiPullToRefreshModule} from '@taiga-ui/addon-mobile';\n\n// ...\n\n@NgModule({\n  imports: [\n    // ...\n    TuiPullToRefreshModule,\n  ],\n  // ...\n})\nexport class MyModule {}\n```\n"}}]);

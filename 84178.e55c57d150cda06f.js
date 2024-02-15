@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[84178],{84178:n=>{n.exports="```ts\nimport {TuiTablePaginationModule} from '@taiga-ui/addon-table';\n\n// ...\n\n@NgModule({\n  imports: [\n    // ...\n    TuiTablePaginationModule,\n  ],\n})\nexport class YourModule {}\n```\n"}}]);

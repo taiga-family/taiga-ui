@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[30696],{68303:(e,o,t)=>{t.r(o),t.d(o,{TUI_UKRAINIAN_LANGUAGE_ADDON_PREVIEW:()=>s});const s={previewTexts:{rotate:"Rotate"},zoomTexts:{zoomOut:"Zoom out",zoomIn:"Zoom in",reset:"Reset"}}}}]);

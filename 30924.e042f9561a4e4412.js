@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[30924],{30924:n=>{n.exports="@import '@taiga-ui/core/styles/taiga-ui-local';\n\n.user {\n    margin-right: auto;\n}\n\n.phone {\n    font: var(--tui-font-text-s);\n    display: block;\n    color: var(--tui-text-03);\n}\n"}}]);

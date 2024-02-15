@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[77184],{77184:e=>{e.exports="<div>Formatted number by default:</div>\n{{ phone | tuiFormatPhone }}\n\n<div class=\"tui-space_top-4\">Formatted number with custom params:</div>\n{{ phone | tuiFormatPhone: undefined : '###-###-##-##' }}\n"}}]);

@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[74560],{74560:e=>{e.exports='<input\n    disabled\n    tuiSlider\n    type="range"\n    value="80"\n/>\n'}}]);

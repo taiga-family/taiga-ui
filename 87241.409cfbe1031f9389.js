@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[87241],{87241:t=>{t.exports='<tui-table-pagination\n    [items]="sizeOptions"\n    [total]="total"\n></tui-table-pagination>\n'}}]);

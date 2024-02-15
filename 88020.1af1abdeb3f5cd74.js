@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[88020],{88020:e=>{e.exports='```html\n<tui-line-days-chart\n  [y]="0"\n  [height]="100"\n  [value]="value"\n></tui-line-days-chart>\n```\n'}}]);

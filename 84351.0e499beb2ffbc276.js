@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[84351],{84351:e=>{e.exports='<iframe\n    *ngIf="src$ | async as src; else loading"\n    title="pdf"\n    [src]="src"\n></iframe>\n\n<ng-template #loading>\n    <tui-loader size="xl"></tui-loader>\n</ng-template>\n'}}]);

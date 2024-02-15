@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[5924],{5924:t=>{t.exports='```html\n<h2 tuiTitle="s">\n  <div tuiSubtitle>Caption</div>\n  I am a title\n  <div tuiSubtitle>I\'m a subtitle</div>\n</h2>\n```\n'}}]);

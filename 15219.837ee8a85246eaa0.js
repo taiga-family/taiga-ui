@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[15219],{15219:n=>{n.exports="```ts\nimport {tuiNotificationOptionsProvider} from '@taiga-ui/core';\n\n// ...\n\n@NgModule({\n  providers: [\n    tuiNotificationOptionsProvider({\n      icon: 'tuiIconHelpCircle',\n      status: 'warning',\n    }),\n  ],\n  // ...\n})\nexport class MyModule {}\n```\n"}}]);

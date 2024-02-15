@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[68568],{46188:e=>{e.exports=".image {\n    background: url(/assets/images/illustration.jpg) no-repeat top right / 250%;\n}\n"}}]);

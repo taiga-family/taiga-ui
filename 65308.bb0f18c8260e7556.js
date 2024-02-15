@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[65308],{87688:n=>{n.exports="```ts\nimport {TuiCalendarRangeModule} from '@taiga-ui/kit';\n\n// ...\n\n@NgModule({\n  imports: [\n    // ...\n    TuiCalendarRangeModule,\n  ],\n  // ...\n})\nexport class MyModule {}\n```\n"}}]);

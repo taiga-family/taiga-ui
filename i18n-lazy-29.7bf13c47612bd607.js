@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[57640],{13888:(e,o,s)=>{s.r(o),s.d(o,{TUI_CHINESE_LANGUAGE_ADDON_PREVIEW:()=>t});const t={previewTexts:{rotate:"旋转"},zoomTexts:{zoomOut:"缩小",zoomIn:"放大",reset:"重置"}}}}]);

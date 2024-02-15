@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[90368],{90368:e=>{e.exports="```ts\n@NgModule({\n  // ...\n  providers: [\n    {\n      provide: TUI_DIALOGS_CLOSE,\n      deps: [AuthService],\n      useFactory: authService => authService.logout$,\n    },\n  ],\n})\nexport class MyModule {}\n```\n"}}]);

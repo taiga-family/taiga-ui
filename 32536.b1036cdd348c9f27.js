@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[32536],{32536:n=>{n.exports='<button\n    tuiButton\n    type="button"\n    (click)="show()"\n>\n    Taiga\n</button>\n'}}]);

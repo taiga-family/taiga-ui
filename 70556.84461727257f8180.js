@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[70556],{70556:n=>{n.exports='```html\n<div\n  [tuiDropdown]="dropdownContent"\n  [tuiDropdownManual]="open"\n>\n  Host element\n</div>\n\n<ng-template #dropdownContent>Dropdown content</ng-template>\n```\n'}}]);

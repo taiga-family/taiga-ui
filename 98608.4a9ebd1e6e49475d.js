@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[98608],{98608:e=>{e.exports="tui-progress-circle {\n    transform: scaleX(-1) // reversed direction\n        rotate(-90deg); // top side starting point\n}\n"}}]);

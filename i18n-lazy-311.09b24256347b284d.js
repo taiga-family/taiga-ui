@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[49708],{29580:(e,c,d)=>{d.r(c),d.d(c,{TUI_UKRAINIAN_LANGUAGE_ADDON_COMMERCE:()=>r});const r={cardNumber:["Номер","Номер карти"],cardExpiry:["Термін","Термін дії"]}}}]);

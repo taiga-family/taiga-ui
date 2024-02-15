@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[40080],{40080:n=>{n.exports=".text-style {\n    font-size: 16px;\n    color: red;\n}\n\n.hidden {\n    display: none;\n}\n"}}]);

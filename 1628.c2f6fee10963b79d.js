@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[1628],{1628:e=>{e.exports="import {Component} from '@angular/core';\n\n@Component({\n    selector: 'tui-icons-mapping-example-3',\n    templateUrl: './index.html',\n})\nexport class TuiIconsMappingExample3 {}\n"}}]);

@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[75252],{75252:n=>{n.exports="@import '@taiga-ui/core/styles/taiga-ui-local';\n\n.icon {\n    .transition(transform);\n\n    &_rotated {\n        transform: rotate(180deg);\n    }\n}\n"}}]);

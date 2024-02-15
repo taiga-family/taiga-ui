@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[84117],{84117:e=>{e.exports='```html\n<div tuiMode="onDark">...</div>\n```\n'}}]);

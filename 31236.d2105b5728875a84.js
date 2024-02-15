@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[31236],{31236:n=>{n.exports='<p *ngFor="let src of array">\n    <img\n        alt="Random image"\n        height="200"\n        loading="lazy"\n        width="300"\n        [src]="src"\n    />\n</p>\n'}}]);

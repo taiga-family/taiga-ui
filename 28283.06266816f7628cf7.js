@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[28283],{28283:e=>{e.exports="```html\n<tui-root>\n  <p>Here you can reproduce any Taiga UI example</p>\n</tui-root>\n```\n"}}]);

@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[16168],{16168:e=>{e.exports="```ts\nimport {Inject} from '@angular/core';\nimport {TuiBreakpointService} from '@taiga-ui/core';\n\n// ...\nexport class MyComponent {\n  constructor(\n    @Inject(TuiBreakpointService)\n    private readonly breakpoint$: TuiBreakpointService,\n  ) {}\n}\n```\n"}}]);

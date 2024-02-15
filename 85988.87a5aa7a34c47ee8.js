@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[85988],{85988:n=>{n.exports='<tui-thumbnail-card\n    cardNumber="1234"\n    paymentSystem="visa"\n    size="s"\n    class="logo"\n></tui-thumbnail-card>\n<tui-thumbnail-card\n    cardNumber="1234"\n    paymentSystem="visa"\n    class="logo"\n></tui-thumbnail-card>\n'}}]);

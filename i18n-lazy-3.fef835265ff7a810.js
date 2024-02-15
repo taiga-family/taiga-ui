@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[43848],{23944:(e,c,d)=>{d.r(c),d.d(c,{TUI_BELARUSIAN_LANGUAGE_ADDON_COMMERCE:()=>r});const r={cardNumber:["Нумар","Нумар карты"],cardExpiry:["Тэрмін","Тэрмін дзеяння"]}}}]);
