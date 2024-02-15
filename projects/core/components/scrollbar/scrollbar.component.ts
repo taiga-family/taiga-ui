@@ -34,8 +34,6 @@ import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
     ],
 })
 export class TuiScrollbarComponent {
-    private delegated = false;
-
     private readonly isLegacy: boolean =
         !this.cssRef.supports('position', 'sticky') ||
         (tuiIsFirefox(this.userAgent) &&
@@ -54,6 +52,10 @@ export class TuiScrollbarComponent {
         @Inject(TUI_IS_IOS) private readonly isIos: boolean,
     ) {}
 
+    get delegated(): boolean {
+        return this.browserScrollRef.nativeElement !== this.el.nativeElement;
+    }
+
     get showScrollbars(): boolean {
         return !this.hidden && !this.isIos && (!this.isLegacy || this.delegated);
     }
@@ -65,7 +67,6 @@ export class TuiScrollbarComponent {
 
     @HostListener(`${TUI_SCROLLABLE}.stop`, ['$event.detail'])
     onScrollable(element: HTMLElement): void {
-        this.delegated = true;
         this.browserScrollRef.nativeElement = element;
     }
 
