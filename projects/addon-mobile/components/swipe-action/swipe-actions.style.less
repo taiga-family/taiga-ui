@@ -38,6 +38,10 @@
     ::ng-deep & > * {
         .loop(6);
     }
+
+    @media (hover: hover) and (pointer: fine) {
+        display: none;
+    }
 }
 
 .loop (@i) when (@i > 1) {

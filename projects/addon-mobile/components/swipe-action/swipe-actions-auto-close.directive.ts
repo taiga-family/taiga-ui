@@ -5,17 +5,18 @@ import {tuiGetActualTarget} from '@taiga-ui/cdk';
     standalone: true,
     selector: 'tui-swipe-actions[autoClose]',
     host: {
-        '(document:pointerdown.silent)': 'onPointer($event)',
+        '(document:pointerdown.silent)': 'handleEvent($event)',
+        '(document:focusin.silent)': 'handleEvent($event)',
     },
 })
 export class TuiSwipeActionsAutoCloseDirective {
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
 
     @Input()
-    autoClose = true;
+    autoClose: boolean | string = true;
 
-    onPointer(event: PointerEvent): void {
-        if (this.autoClose && !this.el.contains(tuiGetActualTarget(event))) {
+    handleEvent(event: Event): void {
+        if (this.autoClose !== false && !this.el.contains(tuiGetActualTarget(event))) {
             this.el.scrollTo({
                 left: 0,
                 behavior: 'smooth',
