@@ -2,7 +2,7 @@ import {Component, Inject} from '@angular/core';
 import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample, TuiRawLoaderContent} from '@taiga-ui/addon-doc';
-import {TuiSizeXXL, TuiSizeXXS} from '@taiga-ui/core';
+import {TuiSizeXS, TuiSizeXXL} from '@taiga-ui/core';
 
 @Component({
     selector: 'example-avatar',
@@ -50,8 +50,7 @@ export class ExampleTuiAvatarComponent {
         LESS: import('./examples/6/index.less?raw'),
     };
 
-    readonly sizes: ReadonlyArray<TuiSizeXXL | TuiSizeXXS> = [
-        'xxs',
+    readonly sizes: ReadonlyArray<TuiSizeXS | TuiSizeXXL> = [
         'xs',
         's',
         'm',

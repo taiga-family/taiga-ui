@@ -28,8 +28,8 @@
         mask: var(--t-mask) no-repeat center/60%;
     }
 
-    &[data-size='xxs'] {
-        --t-size: 1.5rem;
+    &[data-size='xs'] {
+        --t-size: var(--tui-height-xs);
         --t-radius: 0.5rem;
 
         font: var(--tui-font-text-xs);
@@ -41,8 +41,8 @@
         }
     }
 
-    &[data-size='xs'] {
-        --t-size: 2rem;
+    &[data-size='s'] {
+        --t-size: var(--tui-height-s);
         --t-radius: 0.5rem;
 
         font: var(--tui-font-text-s);
@@ -54,8 +54,8 @@
         }
     }
 
-    &[data-size='s'] {
-        --t-size: 2.5rem;
+    &[data-size='m'] {
+        --t-size: calc(var(--tui-height-m) - 0.25rem);
         --t-radius: 0.75rem;
 
         font: var(--tui-font-text-l);
@@ -67,8 +67,8 @@
         }
     }
 
-    &[data-size='m'] {
-        --t-size: 3.5rem;
+    &[data-size='l'] {
+        --t-size: var(--tui-height-l);
         --t-radius: 0.75rem;
 
         font: var(--tui-font-heading-5);
@@ -79,7 +79,7 @@
         }
     }
 
-    &[data-size='l'] {
+    &[data-size='xl'] {
         --t-size: 5rem;
         --t-radius: 0.75rem;
 
@@ -90,7 +90,7 @@
         }
     }
 
-    &[data-size='xl'] {
+    &[data-size='xxl'] {
         --t-size: 6rem;
         --t-radius: 1rem;
 
@@ -101,7 +101,7 @@
         }
     }
 
-    &[data-size='xxl'] {
+    &[data-size='xxxl'] {
         --t-size: 8rem;
         --t-radius: 1.25rem;
 
