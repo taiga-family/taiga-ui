@@ -4,19 +4,20 @@ import {tuiGetActualTarget} from '@taiga-ui/cdk';
 @Directive({
     selector: 'tui-swipe-actions[autoClose]',
     host: {
-        '(document:pointerdown.silent)': 'onPointer($event)',
+        '(document:pointerdown.silent)': 'handleEvent($event)',
+        '(document:focusin.silent)': 'handleEvent($event)',
     },
 })
 export class TuiSwipeActionsAutoCloseDirective {
     @Input()
-    autoClose = true;
+    autoClose: boolean | string = true;
 
     constructor(@Inject(ElementRef) private readonly el: ElementRef<HTMLElement>) {}
 
-    onPointer(event: PointerEvent): void {
+    handleEvent(event: Event): void {
         const target = tuiGetActualTarget(event);
 
-        if (this.autoClose && !this.el.nativeElement.contains(target)) {
+        if (this.autoClose !== false && !this.el.nativeElement.contains(target)) {
             this.close();
         }
     }
