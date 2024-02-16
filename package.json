@@ -132,7 +132,7 @@
         "@taiga-ui/browserslist-config": "0.4.0",
         "@taiga-ui/commitlint-config": "0.5.6",
         "@taiga-ui/cspell-config": "0.33.1",
-        "@taiga-ui/eslint-plugin-experience": "0.53.9",
+        "@taiga-ui/eslint-plugin-experience": "0.53.10",
         "@taiga-ui/prettier-config": "0.8.3",
         "@taiga-ui/stylelint-config": "0.16.0",
         "@taiga-ui/tsconfig": "0.15.0",
