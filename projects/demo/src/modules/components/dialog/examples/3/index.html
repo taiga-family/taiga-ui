@@ -1,6 +1,6 @@
 <p>
     Your balance:
-    <tui-money [value]="money"></tui-money>
+    <span>{{ money | tuiAmount: 'RUB' | async }}</span>
 </p>
 <button
     size="m"
@@ -18,7 +18,7 @@
     <p>You can show a dialog with template</p>
     <p>
         Your balance:
-        <tui-money [value]="money"></tui-money>
+        <span>{{ money | tuiAmount: 'RUB' | async }}</span>
     </p>
     <button
         size="m"
@@ -28,7 +28,7 @@
         (click)="withdraw()"
     >
         Withdraw&nbsp;
-        <tui-money [value]="100"></tui-money>
+        <span>{{ 100 | tuiAmount: 'RUB' | async }}</span>
     </button>
     <button
         size="m"

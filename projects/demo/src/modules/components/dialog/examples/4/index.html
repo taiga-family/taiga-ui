@@ -40,11 +40,13 @@
         <div class="wrapper">
             <p class="description">Card payment</p>
             <h3 class="title">Sushi</h3>
-            <tui-money
-                decimal="always"
+
+            <span
                 class="money"
-                [value]="300"
-            ></tui-money>
+                [tuiNumberFormat]="{decimal: 'always'}"
+            >
+                {{ 300 | tuiAmount: 'RUB' | async }}
+            </span>
         </div>
     </header>
     <blockquote>

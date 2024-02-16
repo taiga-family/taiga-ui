@@ -590,12 +590,6 @@ export const pages: TuiDocPages = [
     },
     {
         section: 'Components',
-        title: 'Money',
-        keywords: 'money, деньги, cash, копейки, рубли, доллары, евро',
-        route: '/components/money',
-    },
-    {
-        section: 'Components',
         title: 'Notification',
         keywords: 'уведомление, нотификация, бабл, облачко, alert, notification',
         route: '/components/notification',
@@ -1035,11 +1029,11 @@ export const pages: TuiDocPages = [
         route: '/experimental/toggle',
     },
     {
-        section: 'Experimental',
-        title: 'Amount ',
+        section: 'Pipes',
+        title: 'Amount',
         keywords:
             'amount, money, деньги, сумма, количество, cash, копейки, рубли, доллары, евро',
-        route: '/experimental/amount',
+        route: '/pipes/amount',
     },
     {
         section: 'Components',

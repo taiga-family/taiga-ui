@@ -3,10 +3,7 @@
         [value]="value"
         [(activeItemIndex)]="activeItemIndex"
     >
-        <tui-money
-            [singleColor]="true"
-            [value]="sum"
-        ></tui-money>
+        <span>{{ sum | tuiAmount: 'RUB' | async }}</span>
         <div>Total</div>
     </tui-ring-chart>
 
@@ -20,10 +17,7 @@
             [text]="label"
             (tuiHoveredChange)="onHover(index, $event)"
         >
-            <tui-money
-                [singleColor]="true"
-                [value]="value[index]"
-            ></tui-money>
+            <span>{{ value[index] | tuiAmount: 'RUB' | async }}</span>
         </tui-legend-item>
     </div>
 </div>

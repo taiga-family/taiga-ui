@@ -197,11 +197,11 @@ export const ROUTES: Routes = [
         },
     },
     {
-        path: 'experimental/amount',
+        path: 'pipes/amount',
         loadChildren: async () =>
-            (await import('../experimental/amount/amount.module')).ExampleTuiAmountModule,
+            (await import('../pipes/amount/amount.module')).ExampleTuiAmountModule,
         data: {
-            title: 'Amount ',
+            title: 'Amount',
         },
     },
     {
@@ -957,14 +957,6 @@ export const ROUTES: Routes = [
                 .ExampleTuiPullToRefreshModule,
         data: {
             title: 'PullToRefresh',
-        },
-    },
-    {
-        path: 'components/money',
-        loadChildren: async () =>
-            (await import('../components/money/money.module')).ExampleTuiMoneyModule,
-        data: {
-            title: 'Money',
         },
     },
     {

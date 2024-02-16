@@ -32,14 +32,11 @@
                 [size]="size"
                 [text]="text"
             >
-                <tui-money
-                    [singleColor]="true"
-                    [value]="123456"
-                ></tui-money>
+                <span>{{ 123456 | tuiAmount: 'RUB' | async }}</span>
             </tui-legend-item>
             <p>
-                <code>tui-money</code>
-                is used to format currency and fraction
+                <code>tuiAmount</code>
+                pipe is used to format currency and fraction
             </p>
         </tui-doc-demo>
         <tui-doc-documentation>

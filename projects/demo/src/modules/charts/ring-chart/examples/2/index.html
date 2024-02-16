@@ -2,6 +2,6 @@
     [value]="value"
     [(activeItemIndex)]="index"
 >
-    <tui-money [value]="sum"></tui-money>
+    <span>{{ sum | tuiAmount: 'RUB' | async }}</span>
     <div>{{ label }}</div>
 </tui-ring-chart>

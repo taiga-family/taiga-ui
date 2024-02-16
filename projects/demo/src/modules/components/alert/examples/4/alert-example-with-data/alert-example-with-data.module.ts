@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {TuiMoneyModule} from '@taiga-ui/addon-commerce';
+import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiButtonModule, TuiLinkModule, TuiModeModule} from '@taiga-ui/core';
 
 import {AlertExampleWithDataComponent} from './alert-example-with-data.component';
@@ -13,7 +13,7 @@ import {AlertExampleWithDataComponent} from './alert-example-with-data.component
         TuiModeModule,
         TuiButtonModule,
         TuiLinkModule,
-        TuiMoneyModule,
+        TuiAmountPipe,
     ],
     declarations: [AlertExampleWithDataComponent],
     exports: [AlertExampleWithDataComponent],

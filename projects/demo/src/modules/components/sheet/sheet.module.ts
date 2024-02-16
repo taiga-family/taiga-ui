@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {IntersectionObserverModule} from '@ng-web-apis/intersection-observer';
-import {TuiMoneyModule} from '@taiga-ui/addon-commerce';
+import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiElasticStickyModule, TuiSheetModule} from '@taiga-ui/addon-mobile';
 import {
@@ -26,7 +26,6 @@ import {ExampleTuiSheetComponent} from './sheet.component';
         CommonModule,
         TuiButtonModule,
         TuiLabelModule,
-        TuiMoneyModule,
         TuiAvatarModule,
         TuiNotificationModule,
         TuiLinkModule,
@@ -35,6 +34,7 @@ import {ExampleTuiSheetComponent} from './sheet.component';
         IntersectionObserverModule,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiSheetComponent)),
+        TuiAmountPipe,
     ],
     declarations: [
         ExampleTuiSheetComponent,

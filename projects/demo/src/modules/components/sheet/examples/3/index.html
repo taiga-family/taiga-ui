@@ -21,11 +21,7 @@
             class="tui-space_right-2"
         >
             Buy
-            <tui-money
-                currency="USD"
-                class="tui-space_left-1"
-                [value]="12.99"
-            ></tui-money>
+            <span class="tui-space_left-1">{{ 12.99 | tuiAmount: 'USD' | async }}</span>
         </button>
         <button
             appearance="secondary"
@@ -34,11 +30,7 @@
             type="button"
         >
             Rent
-            <tui-money
-                currency="USD"
-                class="tui-space_left-1"
-                [value]="4.99"
-            ></tui-money>
+            <span class="tui-space_left-1">{{ 4.99 | tuiAmount: 'USD' | async }}</span>
         </button>
     </p>
     <button
@@ -76,18 +68,12 @@
     <hr />
     <h3>Budget:</h3>
     <p>
-        <tui-money
-            currency="USD"
-            [value]="400000"
-        ></tui-money>
+        <span>{{ 400000 | tuiAmount: 'USD' | async }}</span>
     </p>
     <hr />
     <h3>Box office:</h3>
     <p>
-        <tui-money
-            currency="USD"
-            [value]="5000000"
-        ></tui-money>
+        <span>{{ 5000000 | tuiAmount: 'USD' | async }}</span>
     </p>
     <hr />
     <h3>Release date</h3>

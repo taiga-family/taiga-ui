@@ -1,11 +1,11 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
+import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {tuiGetDocModules} from '@taiga-ui/addon-doc';
 import {TuiRepeatTimesModule} from '@taiga-ui/cdk';
 import {TuiNotificationModule} from '@taiga-ui/core';
 import {
-    TuiAmountPipeModule,
     TuiAvatarModule,
     TuiBadgeNotificationModule,
     TuiButtonModule,
@@ -25,6 +25,7 @@ import {TuiChipExample4} from './examples/4';
     imports: [
         CommonModule,
         FormsModule,
+        TuiAmountPipe,
         TuiChipModule,
         TuiRepeatTimesModule,
         TuiFadeModule,
@@ -32,7 +33,6 @@ import {TuiChipExample4} from './examples/4';
         TuiButtonModule,
         TuiAvatarModule,
         TuiCheckboxModule,
-        TuiAmountPipeModule,
         TuiBadgedContentComponent,
         TuiBadgeNotificationModule,
         tuiGetDocModules(ExampleTuiChipComponent),

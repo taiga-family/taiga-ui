@@ -3,7 +3,6 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAxesModule, TuiBarChartModule} from '@taiga-ui/addon-charts';
-import {TuiMoneyModule} from '@taiga-ui/addon-commerce';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiHintModule, TuiLinkModule, TuiNotificationModule} from '@taiga-ui/core';
 import {TuiDataListWrapperModule, TuiSelectModule} from '@taiga-ui/kit';
@@ -21,7 +20,6 @@ import {TuiBarChartExample2} from './examples/2';
         TuiHintModule,
         TuiNotificationModule,
         TuiLinkModule,
-        TuiMoneyModule,
         TuiSelectModule,
         TuiDataListWrapperModule,
         TuiAddonDocModule,

@@ -8,10 +8,10 @@
 </span>
 <span class="info">
     <span class="name">{{ account.name }}</span>
-    <tui-money
-        decimal="always"
+    <span
         class="value"
-        [currency]="account.currency"
-        [value]="account.amount"
-    ></tui-money>
+        [tuiNumberFormat]="{decimal: 'always'}"
+    >
+        {{ account.amount | tuiAmount: account.currency | async }}
+    </span>
 </span>

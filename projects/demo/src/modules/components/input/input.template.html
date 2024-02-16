@@ -262,7 +262,7 @@
         >
             <div class="account">
                 <div class="name">{{ data.name }}</div>
-                <tui-money [value]="data.balance"></tui-money>
+                <span>{{ data.balance | tuiAmount: 'RUB' | async }}</span>
             </div>
         </ng-template>
         <tui-doc-documentation>

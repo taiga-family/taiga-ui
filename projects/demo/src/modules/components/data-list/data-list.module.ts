@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {TuiMoneyModule} from '@taiga-ui/addon-commerce';
+import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiActiveZoneModule, TuiFilterPipeModule, TuiLetModule} from '@taiga-ui/cdk';
 import {
@@ -60,7 +60,7 @@ import {TuiDataListExample6} from './examples/6';
         TuiCalendarModule,
         TuiInputModule,
         TuiInputDateRangeModule,
-        TuiMoneyModule,
+        TuiAmountPipe,
         TuiGroupDirective,
     ],
     declarations: [

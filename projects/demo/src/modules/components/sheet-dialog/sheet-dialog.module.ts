@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {TuiMoneyModule} from '@taiga-ui/addon-commerce';
+import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiSheetDialogModule} from '@taiga-ui/addon-mobile';
 import {TuiSwipeModule} from '@taiga-ui/cdk';
@@ -28,7 +28,7 @@ import {ExampleTuiSheetDialogComponent} from './sheet-dialog.component';
         TuiTextfieldControllerModule,
         TuiButtonModule,
         TuiLabelModule,
-        TuiMoneyModule,
+        TuiAmountPipe,
         TuiAvatarModule,
         TuiNotificationModule,
         TuiSheetDialogModule,

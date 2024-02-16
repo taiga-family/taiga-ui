@@ -2,7 +2,6 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {TuiMoneyModule} from '@taiga-ui/addon-commerce';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiButtonModule, TuiLinkModule, TuiModeModule} from '@taiga-ui/core';
 import {TuiInputModule, TuiRadioListModule} from '@taiga-ui/kit';
@@ -15,7 +14,6 @@ import {ExampleTuiTableBarComponent} from './table-bar.component';
     imports: [
         CommonModule,
         TuiButtonModule,
-        TuiMoneyModule,
         PolymorpheusModule,
         TuiRadioListModule,
         TuiInputModule,

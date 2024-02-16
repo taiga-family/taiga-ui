@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
-import {TuiMoneyModule} from '@taiga-ui/addon-commerce';
+import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiElasticStickyModule} from '@taiga-ui/addon-mobile';
 import {TuiScrollbarModule} from '@taiga-ui/core';
@@ -12,7 +12,7 @@ import {TuiElasticStickyExample1} from './examples/1';
 @NgModule({
     imports: [
         CommonModule,
-        TuiMoneyModule,
+        TuiAmountPipe,
         TuiScrollbarModule,
         TuiElasticStickyModule,
         TuiAddonDocModule,

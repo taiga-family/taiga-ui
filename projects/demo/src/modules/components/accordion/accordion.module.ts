@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {TuiMoneyModule} from '@taiga-ui/addon-commerce';
+import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiButtonModule,
@@ -30,7 +30,7 @@ import {TuiAccordionExample5} from './examples/5';
         TuiButtonModule,
         TuiInputModule,
         TuiSelectModule,
-        TuiMoneyModule,
+        TuiAmountPipe,
         TuiSvgModule,
         TuiAccordionModule,
         TuiModeModule,

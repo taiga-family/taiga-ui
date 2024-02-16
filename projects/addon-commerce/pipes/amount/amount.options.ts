@@ -1,5 +1,5 @@
 import {Provider} from '@angular/core';
-import {TuiCurrencyVariants, TuiMoneySign} from '@taiga-ui/addon-commerce';
+import {TuiCurrencyVariants, TuiMoneySign} from '@taiga-ui/addon-commerce/types';
 import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 import {TuiHorizontalDirection} from '@taiga-ui/core';
 

@@ -7,9 +7,6 @@
     #content
     let-index
 >
-    <tui-money
-        [singleColor]="true"
-        [value]="value[index]"
-    ></tui-money>
+    <span>{{ value[index] | tuiAmount: 'RUB' | async }}</span>
     <div>{{ labels[index] }}</div>
 </ng-template>

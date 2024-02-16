@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {MaskitoDirective} from '@maskito/angular';
-import {TuiInputCardModule, TuiMoneyModule} from '@taiga-ui/addon-commerce';
+import {TuiAmountPipe, TuiInputCardModule} from '@taiga-ui/addon-commerce';
 import {
     TuiAddonDocModule,
     tuiGenerateRoutes,
@@ -61,7 +61,7 @@ import {ExampleTuiInputComponent} from './input.component';
         TuiSelectModule,
         TuiGroupDirective,
         TuiMapperPipeModule,
-        TuiMoneyModule,
+        TuiAmountPipe,
         TuiLinkModule,
         TuiModeModule,
         TuiTableModule,

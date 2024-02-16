@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {TuiPieChartModule} from '@taiga-ui/addon-charts';
-import {TuiMoneyModule} from '@taiga-ui/addon-commerce';
+import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiHintModule, TuiLinkModule, TuiNotificationModule} from '@taiga-ui/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
@@ -16,7 +16,7 @@ import {ExampleTuiPieChartComponent} from './pie-chart.component';
         CommonModule,
         RouterModule,
         TuiPieChartModule,
-        TuiMoneyModule,
+        TuiAmountPipe,
         PolymorpheusModule,
         TuiAddonDocModule,
         TuiHintModule,

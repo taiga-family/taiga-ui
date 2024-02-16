@@ -22,10 +22,7 @@
             (keydown.delete)="toggle(index)"
         >
             <tui-primitive-checkbox [value]="!item.disabled"></tui-primitive-checkbox>
-            <tui-money
-                [singleColor]="true"
-                [value]="data[index]"
-            ></tui-money>
+            <span>{{ data[index] | tuiAmount: 'RUB' | async }}</span>
             <tui-svg
                 src="tuiIconClose"
                 class="disable"

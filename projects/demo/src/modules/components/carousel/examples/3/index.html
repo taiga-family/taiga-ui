@@ -26,7 +26,7 @@
                     type="button"
                 >
                     Buy $
-                    <tui-money [value]="12.99"></tui-money>
+                    <span>{{ 12.99 | tuiAmount: 'RUB' | async }}</span>
                 </button>
                 <button
                     tuiButton
@@ -34,7 +34,7 @@
                     class="tui-space_left-2"
                 >
                     Rent $
-                    <tui-money [value]="4.99"></tui-money>
+                    <span>{{ 4.99 | tuiAmount: 'RUB' | async }}</span>
                 </button>
             </div>
         </tui-island>

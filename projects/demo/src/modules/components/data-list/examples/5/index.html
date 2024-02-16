@@ -131,16 +131,10 @@
 
             <ul class="exchange tui-list tui-list_large">
                 <li class="tui-list__item">
-                    <tui-money
-                        currency="USD"
-                        [value]="moneyValue / dollar"
-                    ></tui-money>
+                    <span>{{ moneyValue / dollar | tuiAmount: 'USD' | async }}</span>
                 </li>
                 <li class="tui-list__item">
-                    <tui-money
-                        currency="EUR"
-                        [value]="moneyValue / euro"
-                    ></tui-money>
+                    <span>{{ moneyValue / euro | tuiAmount: 'EUR' | async }}</span>
                 </li>
             </ul>
         </div>
