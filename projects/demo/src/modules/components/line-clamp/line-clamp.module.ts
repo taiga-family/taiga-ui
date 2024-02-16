@@ -23,6 +23,7 @@ import {TuiLineClampExample2} from './examples/2';
 import {TuiLineClampExample3} from './examples/3';
 import {TuiLineClampExample4} from './examples/4';
 import {TuiLineClampExample5} from './examples/5';
+import {TuiLineClampExample6} from './examples/6';
 import {ExampleTuiLineClampComponent} from './line-clamp.component';
 
 @NgModule({
@@ -49,6 +50,7 @@ import {ExampleTuiLineClampComponent} from './line-clamp.component';
         TuiLineClampExample3,
         TuiLineClampExample4,
         TuiLineClampExample5,
+        TuiLineClampExample6,
     ],
     exports: [ExampleTuiLineClampComponent],
 })

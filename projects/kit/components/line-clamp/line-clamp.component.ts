@@ -13,6 +13,7 @@ import {
     Renderer2,
     ViewChild,
 } from '@angular/core';
+import {WINDOW} from '@ng-web-apis/common';
 import {tuiIsCurrentTarget, tuiPx, tuiTypedFromEvent, tuiZonefree} from '@taiga-ui/cdk';
 import {TUI_HINT_COMPONENT, TuiHintDirective} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
@@ -55,7 +56,7 @@ export class TuiLineClampComponent implements DoCheck, AfterViewInit {
     }
 
     @Input()
-    lineHeight = 24;
+    lineHeight: number | 'auto' = 24;
 
     @Input()
     content: PolymorpheusContent;
@@ -82,6 +83,7 @@ export class TuiLineClampComponent implements DoCheck, AfterViewInit {
         @Inject(Renderer2) private readonly renderer: Renderer2,
         @Inject(ChangeDetectorRef) private readonly cd: ChangeDetectorRef,
         @Inject(NgZone) private readonly zone: NgZone,
+        @Inject(WINDOW) private readonly window: Window,
         @Inject(TUI_LINE_CLAMP_OPTIONS) private readonly options: TuiLineClampOptions,
     ) {
         this.skipInitialTransition();
@@ -101,6 +103,19 @@ export class TuiLineClampComponent implements DoCheck, AfterViewInit {
 
     get computedContent(): PolymorpheusContent {
         return this.options.showHint && this.overflown ? this.content : '';
+    }
+
+    private get computedLineHeight(): number {
+        if (this.lineHeight === 'auto') {
+            return (
+                parseInt(
+                    this.window.getComputedStyle(this.el.nativeElement).lineHeight,
+                    10,
+                ) || 24
+            );
+        }
+
+        return this.lineHeight;
     }
 
     @HostListener('transitionend')
@@ -139,7 +154,7 @@ export class TuiLineClampComponent implements DoCheck, AfterViewInit {
             this.renderer.setStyle(
                 this.el.nativeElement,
                 'max-height',
-                tuiPx(this.lineHeight * this.linesLimit$.value),
+                tuiPx(this.computedLineHeight * this.linesLimit$.value),
             );
         }
     }
