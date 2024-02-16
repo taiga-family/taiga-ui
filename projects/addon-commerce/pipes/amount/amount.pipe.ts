@@ -1,10 +1,12 @@
 import {Inject, Pipe, PipeTransform} from '@angular/core';
-import {tuiFormatCurrency, tuiFormatSignSymbol} from '@taiga-ui/addon-commerce';
+import {TuiCurrencyVariants} from '@taiga-ui/addon-commerce/types';
+import {tuiFormatCurrency, tuiFormatSignSymbol} from '@taiga-ui/addon-commerce/utils';
 import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
 import {
     TUI_NUMBER_FORMAT_OBSERVABLE,
     TuiDecimal,
     tuiFormatNumber,
+    TuiHorizontalDirection,
     TuiNumberFormatSettings,
 } from '@taiga-ui/core';
 import {map, Observable} from 'rxjs';
@@ -15,8 +17,9 @@ const DEFAULT_DECIMAL_LIMIT = 2;
 
 @Pipe({
     name: 'tuiAmount',
+    standalone: true,
 })
-export class TuiAmountPipePipe implements PipeTransform {
+export class TuiAmountPipe implements PipeTransform {
     constructor(
         @Inject(TUI_AMOUNT_OPTIONS) private readonly options: TuiAmountOptions,
         @Inject(TUI_NUMBER_FORMAT_OBSERVABLE)
@@ -25,8 +28,8 @@ export class TuiAmountPipePipe implements PipeTransform {
 
     transform(
         value: number,
-        currency = this.options.currency,
-        currencyAlign = this.options.currencyAlign,
+        currency: TuiCurrencyVariants = this.options.currency,
+        currencyAlign: TuiHorizontalDirection = this.options.currencyAlign,
     ): Observable<string> {
         return this.format.pipe(
             map(format => {

@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {TuiLegendItemModule, TuiRingChartModule} from '@taiga-ui/addon-charts';
-import {TuiMoneyModule} from '@taiga-ui/addon-commerce';
+import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiHoveredModule} from '@taiga-ui/cdk';
 import {
@@ -21,7 +21,6 @@ import {ExampleTuiLegendItemComponent} from './legend-item.component';
         CommonModule,
         TuiLegendItemModule,
         TuiRingChartModule,
-        TuiMoneyModule,
         TuiPrimitiveCheckboxModule,
         TuiSvgModule,
         TuiNotificationModule,
@@ -29,6 +28,7 @@ import {ExampleTuiLegendItemComponent} from './legend-item.component';
         TuiHoveredModule,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiLegendItemComponent)),
+        TuiAmountPipe,
     ],
     declarations: [
         ExampleTuiLegendItemComponent,

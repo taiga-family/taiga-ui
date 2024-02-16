@@ -282,7 +282,7 @@
         >
             <span class="account">
                 {{ account.name }}
-                <tui-money [value]="account.amount"></tui-money>
+                <span>{{ account.amount | tuiAmount: 'RUB' }}</span>
             </span>
         </ng-template>
     </form>

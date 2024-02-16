@@ -1,4 +1,5 @@
 export * from './format-currency';
+export * from './format-sign-symbol';
 export * from './get-code-by-currency';
 export * from './get-currency-by-code';
 export * from './get-currency-symbol';

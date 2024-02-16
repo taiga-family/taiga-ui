@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
-import {TuiMoneyModule} from '@taiga-ui/addon-commerce';
+import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiRepeatTimesModule} from '@taiga-ui/cdk';
 import {
@@ -35,7 +35,7 @@ import {TuiCarouselExample5} from './examples/5';
         TuiLinkModule,
         TuiButtonModule,
         TuiIslandModule,
-        TuiMoneyModule,
+        TuiAmountPipe,
         TuiLoaderModule,
         TuiMarkerIconModule,
         TuiDialogModule,

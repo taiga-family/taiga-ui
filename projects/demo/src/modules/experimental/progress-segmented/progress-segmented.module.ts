@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
-import {TuiMoneyModule} from '@taiga-ui/addon-commerce';
+import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {
     TuiAddonDocModule,
     tuiGenerateRoutes,
@@ -25,7 +25,7 @@ import {ExampleProgressSegmentedComponent} from './progress-segmented.component'
         TuiAddonDocModule,
         TuiLabelModule,
         TuiLinkModule,
-        TuiMoneyModule,
+        TuiAmountPipe,
         TuiProgressModule,
         TuiProgressSegmentedModule,
         TuiTextCodeModule,

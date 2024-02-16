@@ -30,7 +30,7 @@
         [value]="value"
         [(activeItemIndex)]="activeItemIndex"
     >
-        <tui-money [value]="123456"></tui-money>
+        <span>{{ 123456 | tuiAmount: 'RUB' | async }}</span>
         <div>Not bad!</div>
     </tui-arc-chart>
 </div>

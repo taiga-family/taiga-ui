@@ -152,12 +152,7 @@
             Edit name
         </button>
     </h3>
-    <tui-money
-        currency="$"
-        currencyAlign="left"
-        class="sum"
-        [value]="23742"
-    ></tui-money>
+    <span class="sum">{{ 23742 | tuiAmount: 'USD' : 'left' | async }}</span>
     <footer class="footer">
         <tui-thumbnail-card
             cardNumber="1234"

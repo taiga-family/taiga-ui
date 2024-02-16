@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {TuiMoneyModule} from '@taiga-ui/addon-commerce';
+import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {
     TuiAddonDocModule,
     tuiGenerateRoutes,
@@ -17,6 +17,7 @@ import {
     TuiLinkModule,
     TuiLoaderModule,
     TuiNotificationModule,
+    TuiNumberFormatModule,
     TuiSvgModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
@@ -52,8 +53,8 @@ import {TuiDialogExampleComponent10} from './examples/10';
         PolymorpheusModule,
         TuiDialogModule,
         TuiAccordionModule,
+        TuiAmountPipe,
         TuiButtonModule,
-        TuiMoneyModule,
         TuiRadioListModule,
         TuiInputModule,
         TuiHintModule,
@@ -72,6 +73,7 @@ import {TuiDialogExampleComponent10} from './examples/10';
         PayExampleModalModule,
         TuiTextfieldControllerModule,
         TuiTextCodeModule,
+        TuiNumberFormatModule,
     ],
     declarations: [
         ExampleTuiDialogComponent,

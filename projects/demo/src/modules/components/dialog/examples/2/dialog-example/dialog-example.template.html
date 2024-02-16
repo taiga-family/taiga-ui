@@ -1,6 +1,6 @@
 <p class="text">
     Your balance:
-    <tui-money [value]="data"></tui-money>
+    <span>{{ data | tuiAmount: 'RUB' | async }}</span>
 </p>
 
 <tui-input

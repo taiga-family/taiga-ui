@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {TuiCurrencyPipeModule, TuiMoneyModule} from '@taiga-ui/addon-commerce';
+import {TuiAmountPipe, TuiCurrencyPipeModule} from '@taiga-ui/addon-commerce';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiButtonModule,
@@ -43,7 +43,7 @@ import {FormComponent} from './form.component';
         FormsModule,
         ReactiveFormsModule,
         StylesInfoModule,
-        TuiMoneyModule,
+        TuiAmountPipe,
         TuiStepperModule,
         TuiInputDateModule,
         TuiInputTimeModule,

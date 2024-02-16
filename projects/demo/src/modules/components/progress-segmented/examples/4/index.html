@@ -5,7 +5,7 @@
 
 <div class="description tui-space_top-2">
     <label tuiLabel="Step">
-        <tui-money [value]="100500"></tui-money>
+        <span>{{ 100500 | tuiAmount: 'RUB' | async }}</span>
     </label>
     <label tuiLabel="New apartment">2 times left</label>
 </div>
