@@ -165,7 +165,7 @@ export class TuiDocNavigationComponent {
                         keywords.includes(search) ||
                         title.includes(tuiTransliterateKeyboardLayout(search)) ||
                         keywords.includes(tuiTransliterateKeyboardLayout(search)) ||
-                        search.replaceAll(/-/gi, '').includes(title) ||
+                        search.replaceAll('-', '').includes(title) ||
                         title.includes(search.replaceAll(/\s|tui/g, '')) ||
                         keywords.includes(search.replaceAll(/\s|tui/g, '')) ||
                         search.split(/\s/).find(word => title.includes(word))

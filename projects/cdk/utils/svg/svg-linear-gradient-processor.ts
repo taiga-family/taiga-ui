@@ -5,10 +5,6 @@ function makeRandomSalt(): number {
     return Math.floor(Math.random() * Date.now());
 }
 
-function escapeRegExp(search: string): string {
-    return search.replaceAll(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
-}
-
 function extractLinearGradientIdsFromSvg(svg: string): string[] {
     const ids = (svg.match(/url\(("?)('*)#(.*?)('*)\)/g) ?? []).map(url =>
         url.slice(4, url.length - 1).replaceAll(/['"#]+/g, ''),
@@ -39,21 +35,14 @@ export function tuiSvgLinearGradientProcessor(
         const uniqueIds = extractLinearGradientIdsFromSvg(svg);
 
         return uniqueIds.reduce((newSvg, previousId) => {
-            const escapedId = escapeRegExp(previousId);
             const newId = `id_${salt}_${previousId}`;
 
             return newSvg
-                .replaceAll(new RegExp(`"${escapedId}"`, 'g'), `"${newId}"`)
-                .replaceAll(new RegExp(`'${escapedId}'`, 'g'), `'${newId}'`)
-                .replaceAll(
-                    new RegExp(`url\\('#${escapedId}'\\)`, 'g'),
-                    `url('#${newId}')`,
-                )
-                .replaceAll(
-                    new RegExp(`url\\("#${escapedId}"\\)`, 'g'),
-                    `url("#${newId}")`,
-                )
-                .replaceAll(new RegExp(`url\\(#${escapedId}\\)`, 'g'), `url(#${newId})`);
+                .replaceAll(`"${previousId}"`, `"${newId}"`)
+                .replaceAll(`'${previousId}'`, `'${newId}'`)
+                .replaceAll(`url('#${previousId}')`, `url('#${newId}')`)
+                .replaceAll(`url("#${previousId}")`, `url("#${newId}")`)
+                .replaceAll(`url(#${previousId})`, `url(#${newId})`);
         }, svg);
     }
 
