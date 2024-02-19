@@ -15,4 +15,8 @@ export const TAGS_TO_REPLACE: ReplacementTag[] = [
         addAttributes: ['decimal="never"', '[step]="1"'],
         filterFn: element => element.attrs.every(attr => attr.name !== '[step]'),
     },
+    {
+        from: 'tui-money',
+        to: 'span',
+    },
 ];
