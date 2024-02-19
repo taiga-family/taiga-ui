@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[94083],{94083:n=>{n.exports="```html\n{{ 100000 | tuiAmount : currency : align | async }}\n```\n"}}]);

@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[46123],{46123:n=>{n.exports="```ts\nimport {TuiOverscrollModule} from '@taiga-ui/cdk';\n\n// ...\n\n@NgModule({\n  imports: [\n    // ...\n    TuiOverscrollModule,\n  ],\n  // ...\n})\nexport class MyModule {}\n```\n"}}]);

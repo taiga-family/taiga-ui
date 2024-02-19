@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[87499],{87499:e=>{e.exports='<tui-progress-segmented\n    size="s"\n    [max]="7"\n    [value]="3"\n></tui-progress-segmented>\n\n<tui-progress-segmented\n    size="m"\n    [max]="10"\n    [value]="6"\n></tui-progress-segmented>\n'}}]);

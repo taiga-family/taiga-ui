@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[66590],{66590:n=>{n.exports='<tui-calendar-month\n    [max]="max"\n    [min]="min"\n    [value]="value"\n    (monthClick)="onMonthClick($event)"\n></tui-calendar-month>\n<p>Selected range: {{ value }}</p>\n'}}]);

@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[93848],{93848:e=>{e.exports='```html\n<tui-expand [expanded]="expanded">\n  <ng-template tuiExpandContent>...</ng-template>\n</tui-expand>\n```\n'}}]);

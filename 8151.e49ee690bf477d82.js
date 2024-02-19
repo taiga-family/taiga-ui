@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[8151],{8151:n=>{n.exports='<div class="poster">\n    <h3\n        *ngIf="isShown$ | async"\n        [@tuiFadeIn]="getAnimation(speed)"\n    >\n        STOP KILLING VOLCANOES TO MAKE LAVA LAMPS\n    </h3>\n</div>\n'}}]);

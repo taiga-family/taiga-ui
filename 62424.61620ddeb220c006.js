@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[62424],{62424:r=>{r.exports='```html\n<tui-error [error]="error"></tui-error>\n```\n'}}]);

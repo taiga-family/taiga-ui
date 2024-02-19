@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[54977],{49705:(e,o,t)=>{t.r(o),t.d(o,{TUI_ENGLISH_LANGUAGE_ADDON_PREVIEW:()=>s});const s={previewTexts:{rotate:"Rotate"},zoomTexts:{zoomOut:"Zoom out",zoomIn:"Zoom in",reset:"Reset"}}}}]);

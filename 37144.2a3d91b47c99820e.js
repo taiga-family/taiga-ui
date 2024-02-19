@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[37144],{37144:e=>{e.exports='<tui-tree\n    *ngFor="let item of data.children"\n    [childrenHandler]="handler"\n    [content]="content"\n    [tuiTreeController]="true"\n    [value]="item"\n></tui-tree>\n\n<ng-template\n    #content\n    let-item\n>\n    {{ item.text }}\n</ng-template>\n'}}]);

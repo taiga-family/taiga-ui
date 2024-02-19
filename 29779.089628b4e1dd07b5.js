@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[29779],{29779:e=>{e.exports='```html\n<progress\n  tuiProgressBar\n  [value]="40"\n  [max]="100"\n></progress>\n```\n'}}]);

@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[97139],{97139:n=>{n.exports="```bash\nnpm i taiga-ui\nnx g taiga-ui:ng-add\n```\n"}}]);

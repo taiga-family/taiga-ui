@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[90106],{90106:e=>{e.exports="```ts\nimport {NgModule} from '@angular/core';\nimport {TuiSensitiveModule} from '@taiga-ui/experimental';\n\n// ...\n\n@NgModule({\n  imports: [\n    // ...\n    TuiSensitiveModule,\n  ],\n})\nexport class MyModule {}\n```\n"}}]);

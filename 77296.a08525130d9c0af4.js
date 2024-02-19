@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[77296],{77296:n=>{n.exports=".container {\n    display: flex;\n    gap: 1rem;\n\n    :host-context(tui-root._mobile) & {\n        flex-direction: column;\n    }\n}\n\n.image {\n    width: 5.5rem;\n    height: 5.5rem;\n}\n\n.card {\n    background-color: var(--tui-base-02);\n    height: auto;\n}\n"}}]);

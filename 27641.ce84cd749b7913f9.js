@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[27641],{27641:e=>{e.exports=".template {\n    display: flex;\n    align-items: center;\n}\n\n.avatar {\n    margin: 0 0.5rem 0 -0.25rem;\n}\n"}}]);

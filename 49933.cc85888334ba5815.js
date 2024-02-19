@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[49933],{49933:n=>{n.exports='```html\n<input\n  tuiSlider\n  type="range"\n  [formControl]="control"\n/>\n```\n'}}]);

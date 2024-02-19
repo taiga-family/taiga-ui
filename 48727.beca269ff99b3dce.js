@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[48727],{48727:n=>{n.exports='<button\n    tuiButton\n    type="button"\n    (click)="stream$.next()"\n>\n    Show/Hide\n</button>\n'}}]);

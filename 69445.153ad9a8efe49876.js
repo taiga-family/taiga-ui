@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[69445],{69445:e=>{e.exports='<div\n    class="box tui-text_body-l"\n    [ngClass]="swiped"\n    (tuiSwipe)="onSwipe($event)"\n>\n    Swiped {{ swiped }}\n</div>\n'}}]);

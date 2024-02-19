@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[56825],{56825:n=>{n.exports='<tui-range\n    [formControl]="control"\n    [max]="10"\n    [step]="1"\n></tui-range>\n'}}]);

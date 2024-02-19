@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[25567],{25567:e=>{e.exports=".actions {\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n    gap: inherit;\n}\n"}}]);

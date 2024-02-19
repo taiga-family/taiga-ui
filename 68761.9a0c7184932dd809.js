@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[68761],{68761:e=>{e.exports='```html\n<tui-rating [(ngModel)]="value"></tui-rating>\n```\n'}}]);

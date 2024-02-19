@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[50288],{50288:n=>{n.exports=".action {\n    max-width: 26rem;\n    align-items: center;\n}\n\n.icon {\n    color: var(--tui-support-10);\n}\n\n.header,\n.description {\n    margin: 0;\n}\n\n.header {\n    font-weight: bold;\n}\n\n.description {\n    color: var(--tui-text-02);\n}\n"}}]);
