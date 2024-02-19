@@ -119,7 +119,7 @@
         "@taiga-ui/eslint-plugin-experience": "0.54.1",
         "@taiga-ui/prettier-config": "0.8.3",
         "@taiga-ui/stylelint-config": "0.16.0",
-        "@taiga-ui/tsconfig": "0.15.0",
+        "@taiga-ui/tsconfig": "0.16.0",
         "@types/glob": "8.1.0",
         "@types/node": "20.11.19",
         "@types/webpack-env": "1.18.4",
