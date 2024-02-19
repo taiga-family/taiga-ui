@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[58606],{58606:t=>{t.exports='```html\n<tui-combo-box\n  [stringify]="stringify"\n  [(ngModel)]="value"\n>\n  <tui-data-list-wrapper\n    *tuiDataList\n    [items]="items"\n    [itemContent]="stringify | tuiStringifyContent"\n  ></tui-data-list-wrapper>\n</tui-combo-box>\n```\n'}}]);

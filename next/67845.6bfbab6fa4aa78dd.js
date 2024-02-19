@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[67845],{67845:e=>{e.exports='<label tuiLabel="Taiga">Angular Component Library</label>\n'}}]);

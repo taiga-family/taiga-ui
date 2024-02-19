@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[41181],{41181:e=>{e.exports='```html\n<tui-pie-chart [value]="value"></tui-pie-chart>\n```\n'}}]);

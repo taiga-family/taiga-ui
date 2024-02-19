@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[60864],{60864:n=>{n.exports='```html\n<tui-pagination\n  [length]="pageCount"\n  [index]="currentPage"\n  (indexChange)="goToPage($event)"\n></tui-pagination>\n```\n'}}]);

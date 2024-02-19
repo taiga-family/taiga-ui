@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[94430],{94430:n=>{n.exports=":host {\n    display: flex;\n    gap: 1rem;\n}\n\n.star {\n    background: rgb(66, 139, 250);\n    color: #fff;\n}\n"}}]);

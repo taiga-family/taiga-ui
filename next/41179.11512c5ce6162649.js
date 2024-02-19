@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[41179],{41179:n=>{n.exports=".wrapper {\n    width: 20rem;\n}\n\n.buttons {\n    display: flex;\n    font: var(--tui-font-text-s);\n}\n"}}]);

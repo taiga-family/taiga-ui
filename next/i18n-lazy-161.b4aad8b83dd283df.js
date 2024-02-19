@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[43027],{89821:(e,o,s)=>{s.r(o),s.d(o,{TUI_KAZAKH_LANGUAGE_ADDON_PREVIEW:()=>t});const t={previewTexts:{rotate:"Айналдыру"},zoomTexts:{zoomOut:"Кішірейту",zoomIn:"Үлкейту",reset:"Қалпына келтіру"}}}}]);

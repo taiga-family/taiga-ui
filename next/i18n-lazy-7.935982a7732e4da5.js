@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[3934],{54779:(e,o,s)=>{s.r(o),s.d(o,{TUI_BELARUSIAN_LANGUAGE_ADDON_PREVIEW:()=>t});const t={previewTexts:{rotate:"Павярнуць"},zoomTexts:{zoomIn:"Павялічыць",zoomOut:"Паменшыць",reset:"Скінуць маштаб"}}}}]);

@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[22479],{45343:(e,n,a)=>{a.r(n),a.d(n,{TUI_DUTCH_LANGUAGE_ADDON_TABLE:()=>s});const s={showHideText:"Toon/Verberg",paginationTexts:{pages:"Pagina's",linesPerPage:"Lijnen per pagina",of:"van"}}}}]);

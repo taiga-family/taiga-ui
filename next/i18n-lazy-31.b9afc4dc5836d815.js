@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[12103],{59840:(e,s,a)=>{a.r(s),a.d(s,{TUI_CHINESE_LANGUAGE_ADDON_TABLE:()=>n});const n={showHideText:"显示/隐藏",paginationTexts:{pages:"页面",linesPerPage:"每页行数",of:"于"}}}}]);

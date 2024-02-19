@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[15142],{15142:e=>{e.exports="tui-primitive-calendar [data-type='holiday'] {\n    background-color: var(--tui-support-09);\n}\n"}}]);

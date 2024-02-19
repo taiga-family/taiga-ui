@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[39969],{39969:t=>{t.exports='<tui-input-tag\n    tuiTextfieldIcon="tuiIconCalendarLarge"\n    [formControl]="control"\n    [maskito]="options"\n    [tagValidator]="tagValidator"\n    [tuiTextfieldLabelOutside]="true"\n>\n    dd.mm.yyyy\n</tui-input-tag>\n'}}]);

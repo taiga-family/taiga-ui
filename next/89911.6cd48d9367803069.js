@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[89911],{89911:n=>{n.exports=".toggle {\n    display: flex;\n    align-items: center;\n    width: fit-content;\n    gap: 1rem;\n    margin: 1rem 0;\n}\n\n.table {\n    width: 100%;\n}\n"}}]);

@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[80186],{80186:n=>{n.exports='```html\n<tui-input\n  formControlName="control"\n  [tuiValidator]="validator"\n></tui-input>\n```\n'}}]);

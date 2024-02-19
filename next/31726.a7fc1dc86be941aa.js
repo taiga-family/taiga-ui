@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[31726],{31726:n=>{n.exports='<div class="wrapper">\n    <span\n        *ngFor="let breakpoint of breakpoints"\n        class="item {{ breakpoint }}"\n    >\n        &#64;{{ breakpoint }}\n    </span>\n</div>\n'}}]);

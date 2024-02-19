@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[7186],{67214:(e,o,t)=>{t.r(o),t.d(o,{TUI_VIETNAMESE_LANGUAGE_ADDON_PREVIEW:()=>s});const s={previewTexts:{rotate:"Xoay"},zoomTexts:{zoomOut:"Thu nhỏ",zoomIn:"Phóng to",reset:"Đặt lại"}}}}]);

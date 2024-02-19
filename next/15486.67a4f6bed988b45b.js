@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[15486],{15486:e=>{e.exports="tui-dropdown[data-appearance='round'] {\n    border-radius: 10rem;\n}\n"}}]);

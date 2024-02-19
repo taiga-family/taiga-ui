@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[7222],{7222:e=>{e.exports='```html\n<form [formGroup]="testForm">\n  <tui-input-time formControlName="testValue">Placeholder</tui-input-time>\n</form>\n```\n'}}]);

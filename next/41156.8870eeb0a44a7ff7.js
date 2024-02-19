@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[41156],{41156:e=>{e.exports='```html\n<button\n  tuiButton\n  type="button"\n  (tuiHoveredChange)="onHovered($event)"\n>\n  Hover over me to reveal hidden text!\n</button>\n```\n'}}]);

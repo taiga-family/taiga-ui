@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[53217],{53217:e=>{e.exports=".settings {\n    margin: 1rem;\n}\n"}}]);

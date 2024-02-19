@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[73417],{73417:n=>{n.exports='```html\n<input\n  [formControl]="control"\n  (tuiValueChanges)="onChanges($event)"\n/>\n```\n'}}]);

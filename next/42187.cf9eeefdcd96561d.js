@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[42187],{42187:e=>{e.exports="<tui-badge>10 000 000 $</tui-badge>\n"}}]);

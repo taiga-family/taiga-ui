@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[68589],{68589:e=>{e.exports='```html\n<div (tuiZoom)="onZoom($event)">...</div>\n```\n'}}]);

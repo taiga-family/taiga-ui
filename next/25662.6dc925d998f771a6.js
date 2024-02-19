@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[25662],{2788:n=>{n.exports="```html\n<tui-input-inline></tui-input-inline>\n```\n"}}]);

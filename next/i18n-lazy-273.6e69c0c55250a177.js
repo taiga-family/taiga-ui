@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[8246],{71841:(e,a,s)=>{s.r(a),s.d(a,{TUI_SPANISH_LANGUAGE_ADDON_TABLE:()=>n});const n={showHideText:"Mostrar/Ocultar",paginationTexts:{pages:"Páginas",linesPerPage:"Lineas por página",of:"de"}}}}]);

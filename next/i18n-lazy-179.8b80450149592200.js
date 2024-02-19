@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[95460],{88702:(a,e,o)=>{o.r(e),o.d(e,{TUI_MALAY_LANGUAGE_ADDON_COMMERCE:()=>m});const m={cardNumber:["Nombor","Nombor kad"],cardExpiry:["Tamat tempoh","Sah sehingga"]}}}]);

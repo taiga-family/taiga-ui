@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[76623],{76623:n=>{n.exports='```html\n<tui-range\n  [max]="10"\n  [(ngModel)]="model"\n></tui-range>\n\n<tui-range\n  [formControl]="testValue"\n  [max]="10"\n></tui-range>\n```\n'}}]);

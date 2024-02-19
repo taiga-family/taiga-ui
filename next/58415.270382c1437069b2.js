@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[58415],{58415:n=>{n.exports='<a\n    href="http://www.montypython.com/"\n    icon="tuiIconImageLarge"\n    rel="noreferrer"\n    target="_blank"\n    tuiAction\n>\n    It\'s\n</a>\n'}}]);

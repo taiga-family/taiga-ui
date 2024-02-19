@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[92489],{92489:n=>{n.exports='<h4>Start content</h4>\n<ng-container *polymorpheusOutlet="context.label as text; context: context">\n    {{ text }}\n</ng-container>\n<h4>End content</h4>\n'}}]);
