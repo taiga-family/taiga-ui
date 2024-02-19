@@ -222,6 +222,7 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
         this.activeYear = year;
         this.scrollToActiveYear('smooth');
 
+        // Delay is required to run months scroll in the next frame to prevent flicker
         timer(0)
             .pipe(tuiZonefree(this.ngZone), takeUntil(this.destroy$))
             .subscribe(() => this.scrollToActiveMonth());
