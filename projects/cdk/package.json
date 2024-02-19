@@ -18,8 +18,8 @@
         "tslib": "2.6.2"
     },
     "devDependencies": {
-        "@angular-devkit/core": "^15.0.0",
-        "@angular-devkit/schematics": "^15.0.0",
+        "@angular-devkit/core": "15.2.10",
+        "@angular-devkit/schematics": "15.2.10",
         "@schematics/angular": "^15.0.0",
         "@types/parse5": "6.0.3"
     },
