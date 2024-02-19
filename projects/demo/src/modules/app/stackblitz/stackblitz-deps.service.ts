@@ -16,8 +16,8 @@ export class StackblitzDepsService {
     }
 
     private async getAngularPackages(): Promise<Record<string, string>> {
-        const {dependencies} = await import('@demo/root-package');
-        const ngVersion = `${dependencies['@angular/cdk']?.split('.')?.[0] ?? ''}.x.x`;
+        const {devDependencies} = await import('@demo/root-package');
+        const ngVersion = `${devDependencies['@angular/cdk']?.split('.')?.[0] ?? ''}.x.x`;
 
         return {
             '@angular/cdk': ngVersion,
@@ -60,11 +60,9 @@ export class StackblitzDepsService {
 
     private async getCommonPackages(): Promise<Record<string, string>> {
         const {dependencies: demoDeps} = await import('@taiga-ui/demo/package.json');
-        const {dependencies: cdkDeps} = await import('@taiga-ui/cdk/package.json');
-        const {dependencies: kitDeps} = await import('@taiga-ui/kit/package.json');
-        const {dependencies: rootDeps, devDependencies: rootDevDeps} = await import(
-            '@demo/root-package'
-        );
+        const {peerDependencies: cdkDeps} = await import('@taiga-ui/cdk/package.json');
+        const {peerDependencies: kitDeps} = await import('@taiga-ui/kit/package.json');
+        const {devDependencies: rootDevDeps} = await import('@demo/root-package');
 
         return {
             '@tinkoff/ng-dompurify': demoDeps['@tinkoff/ng-dompurify'],
@@ -78,9 +76,12 @@ export class StackblitzDepsService {
             '@maskito/angular': kitDeps['@maskito/angular'],
             '@maskito/core': kitDeps['@maskito/core'],
             '@maskito/kit': kitDeps['@maskito/kit'],
-            'zone.js': rootDeps['zone.js'],
-            dompurify: demoDeps.dompurify,
-            rxjs: rootDeps.rxjs,
+            'zone.js': (await import('@angular/core/package.json')).peerDependencies[
+                'zone.js'
+            ],
+            dompurify: (await import('@tinkoff/ng-dompurify/package.json'))
+                .peerDependencies.dompurify,
+            rxjs: rootDevDeps.rxjs,
             typescript: rootDevDeps.typescript,
         };
     }

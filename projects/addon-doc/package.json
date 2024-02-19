@@ -22,6 +22,7 @@
         "@types/markdown-it": "13.0.7"
     },
     "peerDependencies": {
+        "@angular/cdk": ">=15.0.0",
         "@angular/common": ">=15.0.0",
         "@angular/core": ">=15.0.0",
         "@angular/forms": ">=15.0.0",

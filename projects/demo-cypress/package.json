@@ -1,4 +1,8 @@
 {
     "name": "@taiga-ui/demo-cypress",
-    "private": true
+    "private": true,
+    "devDependencies": {
+        "@nx/cypress": "17.3.1",
+        "cypress": "13.6.4"
+    }
 }
