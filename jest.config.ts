@@ -106,8 +106,8 @@ const config: Config = {
      */
     moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
         prefix: `<rootDir>/${compilerOptions.baseUrl}/`
-            .replace(/\.\//g, '/')
-            .replace(/\/\/+/g, '/'),
+            .replaceAll('./', '/')
+            .replaceAll(/\/\/+/g, '/'),
     }),
 
     /**
