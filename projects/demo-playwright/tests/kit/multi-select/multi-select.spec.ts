@@ -20,6 +20,7 @@ test.describe('MultiSelect', () => {
             await expect(multiSelect.dropdown).toBeVisible();
             await multiSelect.selectOptions([0, 1, 2]);
             await multiSelect.closeDropdown();
+            await documentationPage.networkidle();
             await expect(example).toHaveScreenshot(
                 '01-arrow-icon-not-overflown-by-tags.png',
             );
@@ -73,6 +74,7 @@ test.describe('MultiSelect', () => {
                     await documentationPage.networkidle();
                     await multiSelect.selectOptions([0, 1, 2]);
                     await documentationPage.hideContent();
+                    await documentationPage.networkidle();
                     await expect(page).toHaveScreenshot(
                         `04-dialog-with-text-field-size-${size}.png`,
                     );
@@ -107,6 +109,7 @@ test.describe('MultiSelect', () => {
                     await documentationPage.networkidle();
                     await multiSelect.selectOptions([0, 1, 2, 3, 4]);
                     await documentationPage.prepareBeforeScreenshot();
+                    await documentationPage.networkidle();
                     await expect(page).toHaveScreenshot(
                         `05-multi-select-size-${size}.png`,
                     );
@@ -125,12 +128,14 @@ test.describe('MultiSelect', () => {
                     );
                     await documentationPage.selectFormControlUpdateOnMethod(type);
                     await documentationPage.prepareBeforeScreenshot();
+                    await documentationPage.networkidle();
                     await expect(apiPageExample).toHaveScreenshot(
                         `06-update-on-${type}__1_initial.png`,
                     );
                     await multiSelect.arrow.click();
                     await documentationPage.networkidle();
                     await multiSelect.selectOptions([0, 1, 2]);
+                    await documentationPage.networkidle();
                     await expect(multiSelect.dropdown).toHaveScreenshot(
                         `06-update-on-${type}__2_selected-values.png`,
                     );
@@ -149,8 +154,8 @@ test.describe('MultiSelect', () => {
                     await expect(apiPageExample).toHaveScreenshot(
                         `06-update-on-${type}__5_submit-event.png`,
                     );
-                    await documentationPage.networkidle();
                     await documentationPage.resetFormControlButton.click();
+                    await documentationPage.networkidle();
                     await expect(apiPageExample).toHaveScreenshot(
                         `06-update-on-${type}__6_reset.png`,
                     );
@@ -166,9 +171,11 @@ test.describe('MultiSelect', () => {
             await documentationPage.networkidle();
             await multiSelect.selectOptions([0, 1, 2, 3, 4]);
             await documentationPage.prepareBeforeScreenshot();
+            await documentationPage.networkidle();
             await expect(page).toHaveScreenshot('07-multi-select-before-clear.png');
             await multiSelect.arrow.click();
             await multiSelect.cleaner.click();
+            await documentationPage.networkidle();
             await expect(page).toHaveScreenshot('07-multi-select-after-clear.png');
         });
 
@@ -178,6 +185,7 @@ test.describe('MultiSelect', () => {
             await documentationPage.networkidle();
             await multiSelect.selectOptions([0, 1, 2, 3, 4]);
             await documentationPage.prepareBeforeScreenshot();
+            await documentationPage.networkidle();
             await expect(page).toHaveScreenshot(
                 '08-multi-select-1-before-scroll-to-end.png',
             );
@@ -199,6 +207,7 @@ test.describe('MultiSelect', () => {
             await documentationPage.networkidle();
             await multiSelect.selectOptions([0, 1, 2]);
             await documentationPage.prepareBeforeScreenshot();
+            await documentationPage.networkidle();
             await expect(page).toHaveScreenshot('09-multi-select-non-editable.png');
         });
     });
