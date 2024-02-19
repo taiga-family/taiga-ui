@@ -27,6 +27,7 @@ import {
     TuiMonth,
     tuiTypedFromEvent,
     TuiTypedMapper,
+    tuiZonefree,
 } from '@taiga-ui/cdk';
 import {
     TUI_ANIMATIONS_DURATION,
@@ -221,10 +222,10 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
         this.activeYear = year;
         this.scrollToActiveYear('smooth');
 
-        this.ngZone.runOutsideAngular(() => {
-            // Delay is required to run months scroll in the next frame to prevent flicker
-            setTimeout(() => this.scrollToActiveMonth());
-        });
+        // Delay is required to run months scroll in the next frame to prevent flicker
+        timer(0)
+            .pipe(tuiZonefree(this.ngZone), takeUntil(this.destroy$))
+            .subscribe(() => this.scrollToActiveMonth());
     }
 
     readonly disabledItemHandlerMapper: TuiTypedMapper<

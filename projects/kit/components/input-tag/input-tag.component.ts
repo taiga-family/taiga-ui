@@ -59,8 +59,8 @@ import {TuiStringifiableItem} from '@taiga-ui/kit/classes';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {TuiStatus} from '@taiga-ui/kit/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {Observable, timer} from 'rxjs';
+import {map, takeUntil} from 'rxjs/operators';
 
 import {TUI_INPUT_TAG_OPTIONS, TuiInputTagOptions} from './input-tag.options';
 
@@ -459,11 +459,13 @@ export class TuiInputTagComponent
 
     private scrollTo(scrollLeft = this.scrollBar?.nativeElement.scrollWidth): void {
         // Allow change detection to run and add new tag to DOM
-        setTimeout(() => {
-            if (this.scrollBar) {
-                this.scrollBar.nativeElement.scrollLeft = scrollLeft || 0;
-            }
-        });
+        timer(0)
+            .pipe(takeUntil(this.destroy$))
+            .subscribe(() => {
+                if (this.scrollBar) {
+                    this.scrollBar.nativeElement.scrollLeft = scrollLeft || 0;
+                }
+            });
     }
 
     private filterValue(value: string[]): string[] {
