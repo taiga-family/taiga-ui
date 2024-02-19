@@ -47,9 +47,9 @@ export class TuiMarkdownPipe implements PipeTransform {
                                 level: 1 | 2 | 3 | 4 | 5 | 6,
                             ): string {
                                 const id = text
-                                    .replace(/[^\w\s]/gi, '')
-                                    .replace(/[\u0250-\uE007]/g, '')
-                                    .replace(
+                                    .replaceAll(/[^\w\s]/gi, '')
+                                    .replaceAll(/[\u0250-\uE007]/g, '')
+                                    .replaceAll(
                                         /([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g,
                                         '',
                                     )

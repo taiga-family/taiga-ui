@@ -281,7 +281,7 @@ function migrateTuiHideSelectedPipe({
             return;
         }
 
-        const newValue = oldValue.replace(
+        const newValue = oldValue.replaceAll(
             HIDE_SELECTED_PIPE_WITH_ARGS_REG,
             '| tuiHideSelected',
         );

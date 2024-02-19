@@ -6,12 +6,12 @@ function makeRandomSalt(): number {
 }
 
 function escapeRegExp(search: string): string {
-    return search.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
+    return search.replaceAll(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
 }
 
 function extractLinearGradientIdsFromSvg(svg: string): string[] {
     const ids = (svg.match(/url\(("?)('*)#(.*?)('*)\)/g) ?? []).map(url =>
-        url.slice(4, url.length - 1).replace(/['"#]+/g, ''),
+        url.slice(4, url.length - 1).replaceAll(/['"#]+/g, ''),
     );
 
     return Array.from(new Set(ids));
@@ -43,11 +43,17 @@ export function tuiSvgLinearGradientProcessor(
             const newId = `id_${salt}_${previousId}`;
 
             return newSvg
-                .replace(new RegExp(`"${escapedId}"`, 'g'), `"${newId}"`)
-                .replace(new RegExp(`'${escapedId}'`, 'g'), `'${newId}'`)
-                .replace(new RegExp(`url\\('#${escapedId}'\\)`, 'g'), `url('#${newId}')`)
-                .replace(new RegExp(`url\\("#${escapedId}"\\)`, 'g'), `url("#${newId}")`)
-                .replace(new RegExp(`url\\(#${escapedId}\\)`, 'g'), `url(#${newId})`);
+                .replaceAll(new RegExp(`"${escapedId}"`, 'g'), `"${newId}"`)
+                .replaceAll(new RegExp(`'${escapedId}'`, 'g'), `'${newId}'`)
+                .replaceAll(
+                    new RegExp(`url\\('#${escapedId}'\\)`, 'g'),
+                    `url('#${newId}')`,
+                )
+                .replaceAll(
+                    new RegExp(`url\\("#${escapedId}"\\)`, 'g'),
+                    `url("#${newId}")`,
+                )
+                .replaceAll(new RegExp(`url\\(#${escapedId}\\)`, 'g'), `url(#${newId})`);
         }, svg);
     }
 

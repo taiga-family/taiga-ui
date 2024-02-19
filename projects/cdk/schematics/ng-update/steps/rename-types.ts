@@ -53,7 +53,7 @@ function processImport(node: ImportSpecifier, from: string, to?: string): void {
 }
 
 function removeGeneric(type: string): string {
-    return type.replace(/<.*>$/gi, '');
+    return type.replaceAll(/<.*>$/gi, '');
 }
 
 function addGeneric(typeName: string, generics: TypeNode[]): string {

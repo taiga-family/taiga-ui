@@ -234,7 +234,7 @@ export class TuiInputPhoneComponent
     private get maxPhoneLength(): number {
         return (
             this.countryCode.length +
-            this.phoneMaskAfterCountryCode.replace(/[^#]+/g, '').length
+            this.phoneMaskAfterCountryCode.replaceAll(/[^#]+/g, '').length
         );
     }
 

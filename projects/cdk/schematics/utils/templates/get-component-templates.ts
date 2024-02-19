@@ -21,7 +21,7 @@ function decoratorToTemplateResource(decorator: Decorator): TemplateResource | n
 
     if (templateUrl) {
         const templatePath = path.parse(
-            templateUrl?.getInitializer()?.getText().replace(/['"`]/g, '') || '',
+            templateUrl?.getInitializer()?.getText().replaceAll(/['"`]/g, '') || '',
         );
 
         return {

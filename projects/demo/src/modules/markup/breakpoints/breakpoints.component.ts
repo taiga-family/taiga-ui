@@ -18,14 +18,14 @@ const CODE_COMMENTS = /(\/\*([^*]|(\*+[^*/]))*\*+\/)|(\/\/.*)/g;
 
 function parseBreakpoints(file: string): Array<{name: string; value: string}> {
     return file
-        .replace(CODE_COMMENTS, '')
+        .replaceAll(CODE_COMMENTS, '')
         .split(';')
         .map(line => line.trim())
         .filter(Boolean)
         .map(line => {
             const [name, ...value] = line.split(':');
 
-            return {name, value: value.join(':').replace(/[~'"]/g, '').trim()};
+            return {name, value: value.join(':').replaceAll(/[~'"]/g, '').trim()};
         });
 }
 

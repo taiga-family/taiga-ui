@@ -32,7 +32,7 @@ export class TuiCopyProcessorExample1 {
     readonly numberProcessor: TuiStringHandler<string> = text =>
         text
             .replace(this.format.decimalSeparator, '.')
-            .replace(new RegExp(this.format.thousandSeparator, 'g'), '');
+            .replaceAll(new RegExp(this.format.thousandSeparator, 'g'), '');
 
     readonly textProcessor: TuiStringHandler<string> = text => text.toUpperCase();
 }
