@@ -21,7 +21,7 @@ describe('InputFiles', () => {
                 .matchImageSnapshot('01-02-input-files-[dutch]-wrong-file-type');
         });
 
-        it('File is too large', () => {
+        it('File is larger than', () => {
             cy.viewport(850, 500);
             cy.tuiVisit('/components/input-files/API?accept=image/*&maxFileSize=2000', {
                 skipExpectUrl: true,
@@ -32,7 +32,7 @@ describe('InputFiles', () => {
             cy.get('[tuiInputFiles]').selectFile('cypress/fixtures/stubs/web-api.svg');
 
             cy.get('#demo-content tui-file')
-                .contains(/File is too large 2 Ki?B/)
+                .contains(/File is larger than 2 Ki?B/)
                 .matchImageSnapshot('02-01-input-files-[english]-file-too-large');
 
             cy.tuiSetLanguage('dutch');
