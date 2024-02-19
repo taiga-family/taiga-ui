@@ -92,7 +92,7 @@ function getTemplatePathFromComponent(component: ClassDeclaration): string {
 
     return `${appComponentPath
         .splice(0, appComponentPath.length - 1)
-        .join('/')}/${templateInitializer?.getText().replace(/['"]/g, '')}`;
+        .join('/')}/${templateInitializer?.getText().replaceAll(/['"]/g, '')}`;
 }
 
 function getTemplateInitializer(

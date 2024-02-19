@@ -39,5 +39,5 @@ export class TuiInputExample3 {
         ],
     };
 
-    readonly unmask = (value: string): string => value.replace(/-/g, '');
+    readonly unmask = (value: string): string => value.replaceAll('-', '');
 }

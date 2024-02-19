@@ -165,9 +165,9 @@ export class TuiDocNavigationComponent {
                         keywords.includes(search) ||
                         title.includes(tuiTransliterateKeyboardLayout(search)) ||
                         keywords.includes(tuiTransliterateKeyboardLayout(search)) ||
-                        search.replace(/-/gi, '').includes(title) ||
-                        title.includes(search.replace(/\s|tui/g, '')) ||
-                        keywords.includes(search.replace(/\s|tui/g, '')) ||
+                        search.replaceAll('-', '').includes(title) ||
+                        title.includes(search.replaceAll(/\s|tui/g, '')) ||
+                        keywords.includes(search.replaceAll(/\s|tui/g, '')) ||
                         search.split(/\s/).find(word => title.includes(word))
                     );
                 }),

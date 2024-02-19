@@ -7,7 +7,7 @@ export function tuiTypeReferenceParser(types: string): TuiDocTypeReferenceParsed
         ? generics
               .reduce(
                   (result, current) =>
-                      result.replace(current, current.replace(/\|/g, '&')),
+                      result.replace(current, current.replaceAll('|', '&')),
                   types,
               )
               .split('|')
@@ -15,10 +15,7 @@ export function tuiTypeReferenceParser(types: string): TuiDocTypeReferenceParsed
         : types.split('|').map(item => item.trim());
 
     return escaped.reduce<TuiDocTypeReferenceParsed>((result, type) => {
-        let extracted = type
-            .trim()
-            .replace(/readonly /g, '')
-            .replace(/\[\]/g, '');
+        let extracted = type.trim().replaceAll('readonly ', '').replaceAll('[]', '');
 
         extracted =
             extracted.match(/ReadonlyArray<([^>]+)>/)?.[1]?.split('&')?.[0] ?? extracted;
@@ -28,6 +25,6 @@ export function tuiTypeReferenceParser(types: string): TuiDocTypeReferenceParsed
         extracted = /^'(.+)'$|^"(.+)"$|^`(.+)`$/.test(extracted) ? 'string' : extracted;
         extracted = extracted.length === 1 ? 'unknown' : extracted;
 
-        return result.concat({type: type.replace(/&/g, '|'), extracted});
+        return result.concat({type: type.replaceAll('&', '|'), extracted});
     }, []);
 }

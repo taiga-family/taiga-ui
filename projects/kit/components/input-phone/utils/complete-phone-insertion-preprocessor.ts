@@ -1,6 +1,6 @@
 import {MaskitoPreprocessor} from '@maskito/core';
 
-const countDigits = (value: string): number => value.replace(/\D/g, '').length;
+const countDigits = (value: string): number => value.replaceAll(/\D/g, '').length;
 
 /**
  * `InputPhone` component sets country code as non-removable prefix.
@@ -13,7 +13,7 @@ export function tuiCreateCompletePhoneInsertionPreprocessor(
     countryCode: string,
     phoneMaskAfterCountryCode: string,
 ): MaskitoPreprocessor {
-    const completePhoneLength = (countryCode + phoneMaskAfterCountryCode).replace(
+    const completePhoneLength = (countryCode + phoneMaskAfterCountryCode).replaceAll(
         /[^#\d]+/g,
         '',
     ).length;

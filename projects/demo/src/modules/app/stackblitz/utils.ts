@@ -27,7 +27,7 @@ function getAllModules(entryPoint: Record<string, unknown>, names: Set<string>):
 }
 
 export const prepareLess = (content: string): string =>
-    content.replace(
+    content.replaceAll(
         /@import.+taiga-ui-local(.less)?';/g,
         "@import '@taiga-ui/core/styles/taiga-ui-local.less';",
     );

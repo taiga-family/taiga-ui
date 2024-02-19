@@ -5,7 +5,7 @@ export function tuiRgbaToHex(color: string): string {
 
     const rgb: number[] =
         (color
-            .replace(/\s/g, '')
+            .replaceAll(/\s/g, '')
             // eslint-disable-next-line unicorn/no-unsafe-regex
             .match(/^rgba?\((\d+),(\d+),(\d+),?([^,\s)]+)?/i) as unknown as number[]) ??
         [];

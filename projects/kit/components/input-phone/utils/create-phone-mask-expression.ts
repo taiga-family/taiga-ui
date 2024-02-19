@@ -12,7 +12,7 @@ export function tuiCreatePhoneMaskExpression(
         ...countryCode.split(''),
         ' ',
         ...phoneMaskAfterCountryCode
-            .replace(/[^#\- ()]+/g, '')
+            .replaceAll(/[^#\- ()]+/g, '')
             .split('')
             .map(item => (item === '#' ? /\d/ : item)),
     ];

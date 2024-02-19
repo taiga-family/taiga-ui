@@ -4,5 +4,5 @@ export function tuiGetMaxAllowedPhoneLength(
     countries: Record<TuiCountryIsoCode, string>,
     isoCode: TuiCountryIsoCode,
 ): number {
-    return countries[isoCode].replace(/[()\- ]/g, '').length;
+    return countries[isoCode].replaceAll(/[()\- ]/g, '').length;
 }

@@ -103,7 +103,7 @@ export const APP_PROVIDERS: Provider[] = [
             if (type) {
                 return `${link}/${pkg.toLowerCase()}/${type.toLowerCase()}/${(
                     header[0].toLowerCase() + header.slice(1)
-                ).replace(/[A-Z]/g, m => `-${m.toLowerCase()}`)}`;
+                ).replaceAll(/[A-Z]/g, m => `-${m.toLowerCase()}`)}`;
             }
 
             return `${link}/${path}`;

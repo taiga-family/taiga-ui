@@ -35,7 +35,7 @@ test.describe('Demo', () => {
                 await documentation.networkidle(); // note: load lazy loading images
 
                 await expect(example).toHaveScreenshot([
-                    path.replace('/', '').replace(/\//g, '-'),
+                    path.replace('/', '').replaceAll('/', '-'),
                     `${i + 1}.png`,
                 ]);
             }

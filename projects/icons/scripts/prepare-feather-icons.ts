@@ -24,7 +24,7 @@ const NO_FILL = ['check.svg'];
         // TODO: Make icons just regular and filled if filled makes sense
         fs.writeFileSync(
             path.join(dest, processName(filename, 'Outline')),
-            processed.replace(
+            processed.replaceAll(
                 /<(circle|ellipse|line|polygon|polyline|path|rect)/g,
                 '<$1 vector-effect="non-scaling-stroke"',
             ),
@@ -37,7 +37,7 @@ const NO_FILL = ['check.svg'];
 
         fs.writeFileSync(
             path.join(dest, processName(filename, 'Large')),
-            filled.replace(
+            filled.replaceAll(
                 /<(circle|ellipsis|line|polygon|polyline|path|rect)/g,
                 '<$1 vector-effect="non-scaling-stroke"',
             ),

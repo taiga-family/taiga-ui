@@ -18,7 +18,7 @@ export function replaceStyles(): void {
 
             if (fullText.includes('taiga-ui')) {
                 DEPRECATED_BREAKPOINTS.forEach(({from, to}) => {
-                    fullText = fullText.replace(
+                    fullText = fullText.replaceAll(
                         new RegExp(`(?<=@media.*)(${from})(?=[\\s,{])`, 'g'),
                         to,
                     );
@@ -32,12 +32,12 @@ export function replaceStyles(): void {
                 .replace('tui-portal-host', 'tui-dropdown-host')
                 .replace('tui-dropdown-box', 'tui-dropdown')
                 .replace('--tui-color-link', '--tui-link')
-                .replace(/@import '~@taiga-ui/g, "@import '@taiga-ui")
-                .replace(
-                    /@import '@taiga-ui\/core\/styles\/taiga-ui-global/g,
+                .replaceAll("@import '~@taiga-ui", "@import '@taiga-ui")
+                .replaceAll(
+                    "@import '@taiga-ui/core/styles/taiga-ui-global",
                     `${TUI_WARNING_NORMALIZE}\n@import '@taiga-ui/styles/taiga-ui-global`,
                 )
-                .replace(/@import '@taiga-ui\/.+(.less)?';/g, val =>
+                .replaceAll(/@import '@taiga-ui\/.+(.less)?';/g, val =>
                     `${val.replace("';", '')}.less';`.replace('.less.less', '.less'),
                 );
 

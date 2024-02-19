@@ -46,7 +46,7 @@ export function replaceProgressColorSegmentsPipe(
             const oldValue =
                 progressEl.attrs.find(attr => attr.name === PROPERTY_FOR_DEPRECATED_PIPES)
                     ?.value || '';
-            const newValue = oldValue.replace(DEPRECATED_PROGRESS_PIPES_REG, '');
+            const newValue = oldValue.replaceAll(DEPRECATED_PROGRESS_PIPES_REG, '');
 
             const attrLocations = progressEl.sourceCodeLocation?.attrs;
 

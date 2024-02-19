@@ -21,7 +21,7 @@ export class VersionManagerComponent {
 
     @tuiPure
     getVersionHref(version: TuiVersionMeta): string {
-        return `${this.locationRef.origin}/${version.baseHref}${this.router.url}${this.locationRef.search}`.replace(
+        return `${this.locationRef.origin}/${version.baseHref}${this.router.url}${this.locationRef.search}`.replaceAll(
             /(https?:\/\/)|(\/)+/g,
             '$1$2',
         );

@@ -30,7 +30,7 @@ export function tuiFormatPhone(
 
     let result = countryCode;
 
-    countryCode = countryCode.replace(/[()]/g, '');
+    countryCode = countryCode.replaceAll(/[()]/g, '');
 
     if (!value.startsWith(countryCode)) {
         value = countryCode + value.replace(CHAR_PLUS, '');
