@@ -1,13 +1,32 @@
-import {Component} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
+import {NgFor, NgIf} from '@angular/common';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {TuiDocPageModule} from '@taiga-ui/addon-doc';
 
 @Component({
     standalone: true,
-    selector: 'browsers',
-    imports: [TuiDocPageModule],
+    selector: 'browser-support',
+    imports: [TuiDocPageModule, NgFor, NgIf],
     templateUrl: './browsers.template.html',
-    styleUrls: ['./browsers.style.less'],
-    changeDetection,
+    styles: ['td {width: 18.75rem}'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class BrowsersComponent {}
+export default class BrowserSupportComponent {
+    readonly desktopBrowsers = [
+        {name: 'Google Chrome', version: '88+'},
+        {name: 'Mozilla Firefox', version: '120+'},
+        {name: 'Safari', version: '13.1+'},
+        {name: 'Opera', version: '74+'},
+        {name: 'Edge', version: '88+'},
+        {name: 'Yandex Browser', version: '21.2+'},
+        {name: 'Microsoft Internet Explorer', version: null},
+    ] as const;
+
+    readonly mobileBrowsers = [
+        {name: 'Google Chrome', version: '88+'},
+        {name: 'Mozilla Firefox', version: '120+'},
+        {name: 'Safari', version: '13.4+'},
+        {name: 'Opera', version: '63+'},
+        {name: 'Samsung Mobile', version: '15+'},
+        {name: 'Yandex Browser', version: '21.2+'},
+    ];
+}

@@ -6,40 +6,15 @@
                 <th class="tui-table__th">Browser</th>
                 <th class="tui-table__th">Version</th>
             </tr>
-            <tr class="tui-table__tr">
-                <td class="tui-table__td cell">Google Chrome</td>
-                <td class="tui-table__td">74+</td>
-            </tr>
-            <tr class="tui-table__tr">
-                <td class="tui-table__td">Yandex.Browser</td>
-                <td class="tui-table__td">19+</td>
-            </tr>
-            <tr class="tui-table__tr">
-                <td class="tui-table__td">Safari</td>
-                <td class="tui-table__td">12.1+</td>
-            </tr>
-            <tr class="tui-table__tr">
-                <td class="tui-table__td">Mozilla Firefox</td>
-                <td class="tui-table__td">55+</td>
-            </tr>
-            <tr class="tui-table__tr">
-                <td class="tui-table__td">Opera</td>
-                <td class="tui-table__td">62+</td>
-            </tr>
-            <tr class="tui-table__tr">
-                <td class="tui-table__td">Edge (Chromium)</td>
-                <td class="tui-table__td">80+</td>
-            </tr>
-            <tr class="tui-table__tr">
-                <td class="tui-table__td">Microsoft Internet Explorer</td>
+            <tr
+                *ngFor="let browser of desktopBrowsers"
+                class="tui-table__tr"
+            >
+                <td class="tui-table__td">{{ browser.name }}</td>
                 <td class="tui-table__td">
-                    <strong>Not supported</strong>
-                </td>
-            </tr>
-            <tr class="tui-table__tr">
-                <td class="tui-table__td">Edge (EdgeHTML)</td>
-                <td class="tui-table__td">
-                    <strong>Not supported</strong>
+                    <ng-container *ngIf="browser.version; else notSupported">
+                        {{ browser.version }}
+                    </ng-container>
                 </td>
             </tr>
         </tbody>
@@ -51,30 +26,17 @@
                 <th class="tui-table__th">Browser</th>
                 <th class="tui-table__th">Version</th>
             </tr>
-            <tr class="tui-table__tr">
-                <td class="tui-table__td cell">Google Chrome</td>
-                <td class="tui-table__td">90+</td>
-            </tr>
-            <tr class="tui-table__tr">
-                <td class="tui-table__td">Safari</td>
-                <td class="tui-table__td">12.2+</td>
-            </tr>
-            <tr class="tui-table__tr">
-                <td class="tui-table__td">Yandex.Browser</td>
-                <td class="tui-table__td">19+</td>
-            </tr>
-            <tr class="tui-table__tr">
-                <td class="tui-table__td">Mozilla Firefox</td>
-                <td class="tui-table__td">99+</td>
-            </tr>
-            <tr class="tui-table__tr">
-                <td class="tui-table__td">Opera Mobile</td>
-                <td class="tui-table__td">64+</td>
-            </tr>
-            <tr class="tui-table__tr">
-                <td class="tui-table__td">UC Browser</td>
-                <td class="tui-table__td">13.4+</td>
+            <tr
+                *ngFor="let browser of mobileBrowsers"
+                class="tui-table__tr"
+            >
+                <td class="tui-table__td">{{ browser.name }}</td>
+                <td class="tui-table__td">{{ browser.version }}</td>
             </tr>
         </tbody>
     </table>
 </tui-doc-page>
+
+<ng-template #notSupported>
+    <strong>Not supported</strong>
+</ng-template>
