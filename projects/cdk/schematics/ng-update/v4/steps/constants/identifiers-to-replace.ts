@@ -134,4 +134,18 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifier[] = [
         from: {name: 'TuiPortalModule', moduleSpecifier: '@taiga-ui/cdk'},
         to: {name: 'TuiDropdownPortalDirective', moduleSpecifier: '@taiga-ui/core'},
     },
+    {
+        from: {name: 'TuiResizeModule', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {
+            name: 'ResizeObserverDirective',
+            moduleSpecifier: '@ng-web-apis/resize-observer',
+        },
+    },
+    {
+        from: {name: 'TuiResizeService', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {
+            name: 'ResizeObserverService',
+            moduleSpecifier: '@ng-web-apis/resize-observer',
+        },
+    },
 ];

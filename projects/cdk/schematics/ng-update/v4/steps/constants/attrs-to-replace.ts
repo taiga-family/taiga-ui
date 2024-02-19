@@ -50,4 +50,10 @@ export const ATTRS_TO_REPLACE: ReplacementAttribute[] = [
         },
         to: {attrName: '[round]'},
     },
+    {
+        from: {
+            attrName: '(tuiResize)',
+        },
+        to: {attrName: '(waResizeObserver)'},
+    },
 ];
