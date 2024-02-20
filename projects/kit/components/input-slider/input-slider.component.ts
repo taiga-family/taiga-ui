@@ -86,14 +86,6 @@ export class TuiInputSliderComponent
     @Input()
     valueContent: PolymorpheusContent<TuiContext<number>>;
 
-    /** @deprecated use `tuiTextfieldPrefix` from {@link TuiTextfieldControllerModule} instead */
-    @Input('prefix')
-    textfieldPrefix = '';
-
-    /** @deprecated use `tuiTextfieldPostfix` from {@link TuiTextfieldControllerModule} instead */
-    @Input('postfix')
-    textfieldPostfix = '';
-
     textfieldValue = this.safeCurrentValue;
 
     constructor(
@@ -109,11 +101,11 @@ export class TuiInputSliderComponent
     }
 
     get prefix(): string {
-        return this.textfieldPrefix || this.controller.prefix;
+        return this.controller.prefix;
     }
 
     get postfix(): string {
-        return this.textfieldPostfix || this.controller.postfix;
+        return this.controller.postfix;
     }
 
     get nativeFocusableElement(): TuiNativeFocusableElement | null {

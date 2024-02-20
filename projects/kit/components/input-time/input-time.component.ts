@@ -83,10 +83,6 @@ export class TuiInputTimeComponent
     @Input()
     mode: TuiInputTimeOptions['mode'] = this.options.mode;
 
-    /** @deprecated use `tuiTextfieldPostfix` from {@link TuiTextfieldControllerModule} instead */
-    @Input()
-    postfix: TuiInputTimeOptions['postfix'] = this.options.postfix;
-
     open = false;
 
     constructor(

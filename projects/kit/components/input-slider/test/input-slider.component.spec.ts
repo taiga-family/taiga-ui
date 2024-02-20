@@ -13,11 +13,11 @@ import {TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
                 [formControl]="control"
                 [max]="max"
                 [min]="min"
-                [postfix]="postfix"
-                [prefix]="prefix"
                 [quantum]="quantum"
                 [steps]="steps"
                 [tuiTextfieldCustomContent]="textfieldCustomContent"
+                [tuiTextfieldPostfix]="postfix"
+                [tuiTextfieldPrefix]="prefix"
                 [valueContent]="valueContent"
             ></tui-input-slider>
 
