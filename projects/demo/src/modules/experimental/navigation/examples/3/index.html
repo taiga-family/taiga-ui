@@ -1,0 +1,72 @@
+<header tuiNavigationHeader>
+    <span tuiNavigationLogo>
+        <tui-icon icon="tuiIconGitlab"></tui-icon>
+        Project name
+    </span>
+    <hr />
+    <tui-avatar src="T"></tui-avatar>
+</header>
+<main tuiNavigationMain>
+    <tui-breadcrumbs>
+        <a
+            *tuiItem
+            tuiLink
+        >
+            Home
+        </a>
+        <a
+            *tuiItem
+            tuiLink
+        >
+            Projects
+        </a>
+        <a *tuiItem>Project name</a>
+    </tui-breadcrumbs>
+    <header
+        tuiAppearance="whiteblock"
+        tuiCardLarge="compact"
+        tuiHeader
+    >
+        <h1 tuiTitle>
+            Project name
+            <div tuiSubtitle>
+                In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the
+                visual form of a document or a typeface without relying on meaningful content.
+            </div>
+        </h1>
+        <button
+            appearance="secondary"
+            size="m"
+            tuiButton
+        >
+            Action
+        </button>
+    </header>
+    <nav tuiNavigationNav>
+        <tui-tabs>
+            <button tuiTab>Default view</button>
+            <button tuiTab>Details</button>
+            <button tuiTab>Followers</button>
+        </tui-tabs>
+        <hr />
+        <button tuiButton>Primary</button>
+        <button
+            appearance="secondary"
+            iconLeft="tuiIconMoreHorizontal"
+            tuiIconButton
+        >
+            More
+        </button>
+    </nav>
+    <div
+        *tuiRepeatTimes="let index of 10"
+        tuiCardLarge
+        tuiHeader
+        tuiSurface="elevated"
+    >
+        <h2 tuiTitle>
+            Some random content
+            <span tuiSubtitle>A subtitle</span>
+        </h2>
+    </div>
+</main>

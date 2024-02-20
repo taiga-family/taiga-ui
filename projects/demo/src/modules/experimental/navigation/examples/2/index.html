@@ -1,0 +1,105 @@
+<header tuiNavigationHeader>
+    <span tuiNavigationLogo>
+        Custom color
+        <input
+            tuiToggle
+            type="checkbox"
+            [ngModel]="color"
+            (ngModelChange)="onColor($event)"
+        />
+    </span>
+    <button
+        iconRight="tuiIconChevronDown"
+        tuiButton
+        tuiDropdown="Set --tui-theme-color for :root and theme-color meta tag to the same color"
+        tuiDropdownOpen
+    >
+        How to?
+    </button>
+</header>
+<main tuiNavigationMain>
+    <a
+        appearance="icon"
+        iconLeft="tuiIconChevronLeft"
+        size="xs"
+        tuiButton
+    >
+        Back
+    </a>
+    <header tuiHeader>
+        <h1 tuiTitle>
+            <div tuiNavigationLogo>
+                <tui-icon icon="tuiIconGitlab"></tui-icon>
+                Research and Development Platform
+                <tui-icon
+                    icon="tuiIconHeart"
+                    tuiBadge
+                ></tui-icon>
+            </div>
+            <div tuiSubtitle>
+                In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the
+                visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used
+                as a placeholder before the final copy is available. It is also used to temporarily replace text, which
+                allows designers to consider the form of a webpage or publication, without the meaning of the text
+                influencing the design.
+            </div>
+            <div
+                tuiCaption
+                tuiFade
+            >
+                <span>
+                    <tui-icon icon="tuiIconUser"></tui-icon>
+                    Alex Inkin
+                </span>
+                <span>Edited 6 minutes ago</span>
+                <span>
+                    <tui-icon icon="tuiIconLock"></tui-icon>
+                    Private
+                </span>
+            </div>
+        </h1>
+        <aside tuiAccessories>
+            <button
+                appearance="secondary"
+                tuiButton
+            >
+                Secondary
+            </button>
+            <button tuiButton>Primary</button>
+            <button
+                appearance="secondary"
+                iconLeft="tuiIconMoreHorizontal"
+                tuiIconButton
+            >
+                More
+            </button>
+        </aside>
+    </header>
+    <nav tuiNavigationNav>
+        <tui-tabs>
+            <button tuiTab>Default view</button>
+            <button tuiTab>Details</button>
+            <button tuiTab>Followers</button>
+        </tui-tabs>
+        <hr />
+        <button tuiButton>Primary</button>
+        <button
+            appearance="secondary"
+            iconLeft="tuiIconMoreHorizontal"
+            tuiIconButton
+        >
+            More
+        </button>
+    </nav>
+    <div
+        *tuiRepeatTimes="let index of 10"
+        tuiCardLarge
+        tuiHeader
+        tuiSurface="elevated"
+    >
+        <h2 tuiTitle>
+            Some random content
+            <span tuiSubtitle>A subtitle</span>
+        </h2>
+    </div>
+</main>

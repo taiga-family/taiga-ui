@@ -1055,6 +1055,12 @@ export const pages: TuiDocPages = [
     },
     {
         section: 'Experimental',
+        title: 'Navigation',
+        keywords: 'шапка, header, sidebar, aside, сайдбар, навигация',
+        route: '/experimental/navigation',
+    },
+    {
+        section: 'Experimental',
         title: 'Pin',
         keywords: 'пин, pin, map, карта, точка, dot, point',
         route: '/experimental/pin',

@@ -446,6 +446,15 @@ export const ROUTES: Routes = [
         },
     },
     {
+        path: 'experimental/navigation',
+        loadChildren: async () =>
+            (await import('../experimental/navigation/navigation.module'))
+                .ExampleTuiNavigationModule,
+        data: {
+            title: 'Navigation',
+        },
+    },
+    {
         path: 'experimental/pin',
         loadChildren: async () =>
             (await import('../experimental/pin/pin.module')).ExampleTuiPinModule,
