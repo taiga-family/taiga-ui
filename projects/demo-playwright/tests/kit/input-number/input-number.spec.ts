@@ -27,7 +27,10 @@ test.describe('InputNumber', () => {
         });
 
         test('prefix + value + postfix', async ({page}) => {
-            await tuiGoto(page, '/components/input-number/API?prefix=$&postfix=GBP');
+            await tuiGoto(
+                page,
+                '/components/input-number/API?tuiTextfieldPrefix=$&tuiTextfieldPostfix=GBP',
+            );
             await expect(example).toHaveScreenshot('02-input-number.png');
             await input.clear();
             await expect(example).toHaveScreenshot('03-input-number.png');
@@ -39,7 +42,7 @@ test.describe('InputNumber', () => {
 
                 await tuiGoto(
                     page,
-                    `/components/input-number/API?style.text-align=${align}&prefix=${readableFormatText}&postfix=${readableFormatText}`,
+                    `/components/input-number/API?style.text-align=${align}&tuiTextfieldPrefix=${readableFormatText}&tuiTextfieldPostfix=${readableFormatText}`,
                 );
                 await expect(example).toHaveScreenshot(`04-input-number-${i}.png`);
             });
@@ -372,7 +375,10 @@ test.describe('InputNumber', () => {
         test("text field does not contain any digit (only prefix + postfix) => clear text field's value on blur", async ({
             page,
         }) => {
-            await tuiGoto(page, '/components/input-number/API?prefix=$&postfix=kg');
+            await tuiGoto(
+                page,
+                '/components/input-number/API?tuiTextfieldPrefix=$&tuiTextfieldPostfix=kg',
+            );
             await input.clear();
             await input.focus();
             await expect(input).toHaveValue('$ kg');

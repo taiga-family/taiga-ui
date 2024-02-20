@@ -11,13 +11,11 @@ export interface TuiInputTimeOptions {
     readonly maxValues: Record<TuiTimeFormatParts, number>;
     readonly mode: TuiTimeMode;
     readonly nativePicker?: boolean;
-    readonly postfix: string;
 }
 
 export const TUI_INPUT_TIME_DEFAULT_OPTIONS: TuiInputTimeOptions = {
     icon: ({$implicit}) => ($implicit === 's' ? 'tuiIconClock' : 'tuiIconClockLarge'),
     mode: 'HH:MM',
-    postfix: '',
     maxValues: MAX_TIME_VALUES,
     itemSize: 'm',
     nativePicker: false,

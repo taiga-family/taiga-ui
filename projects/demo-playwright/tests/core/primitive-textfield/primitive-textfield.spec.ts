@@ -19,10 +19,12 @@ test.describe('TuiPrimitiveTextfield', () => {
         await expect(apiPageExample).toHaveScreenshot('01-hint.png');
     });
 
-    test("prefix + postfix align on the same line with input's value", async ({page}) => {
+    test("tuiTextfieldPrefix + tuiTextfieldPostfix align on the same line with input's value", async ({
+        page,
+    }) => {
         await tuiGoto(
             page,
-            'components/primitive-textfield/API?value=TEXT&postfix=__!&prefix=!__',
+            'components/primitive-textfield/API?value=TEXT&tuiTextfieldPostfix=__!&tuiTextfieldPrefix=!__',
         );
 
         const {apiPageExample} = new TuiDocumentationPagePO(page);
