@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.67.0](https://github.com/taiga-family/taiga-ui/compare/v3.59.0...v3.67.0) (2024-02-20)
+
+### Features
+
+- **experimental:** `Avatar` shift sizes to match buttons and controls
+  ([#6797](https://github.com/taiga-family/taiga-ui/issues/6797))
+  ([ab0aba6](https://github.com/taiga-family/taiga-ui/commit/ab0aba6a411df82ed2978376a813ccbaa40e8ac8))
+- **experimental:** `Navigation` add new module ([#6827](https://github.com/taiga-family/taiga-ui/issues/6827))
+  ([1a688ce](https://github.com/taiga-family/taiga-ui/commit/1a688ce3d6ebc5c18ff6931012a333706cee438a))
+- **experimental:** add autoClose when another element is focused, hide actions on non-touch devices
+  ([#6801](https://github.com/taiga-family/taiga-ui/issues/6801))
+  ([447baca](https://github.com/taiga-family/taiga-ui/commit/447baca8e794b8614a82fe77145d8424ec5c9060))
+
+### Bug Fixes
+
+- **kit:** cancel macrotask when element destroyed ([#6791](https://github.com/taiga-family/taiga-ui/issues/6791))
+  ([d6d06c9](https://github.com/taiga-family/taiga-ui/commit/d6d06c94f9f0cd3e55218fd629115bd1f093cabb))
+- **core:** take into account scrollbar in active zone ([#6790](https://github.com/taiga-family/taiga-ui/issues/6790))
+  ([372c780](https://github.com/taiga-family/taiga-ui/commit/372c7805ba4a04d434376a07ffe1afe3c97032b7))
+- **kit:** scroll over carousel items ([#6788](https://github.com/taiga-family/taiga-ui/issues/6788))
+  ([da57038](https://github.com/taiga-family/taiga-ui/commit/da57038f46e6d15b9e302eba0fc2f84803325b8a))
+
 ## [3.66.0](https://github.com/taiga-family/taiga-ui/compare/v3.59.0...v3.66.0) (2024-02-12)
 
 ### Features
