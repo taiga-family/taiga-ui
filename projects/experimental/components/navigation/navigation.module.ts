@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {TuiScrollbarModule} from '@taiga-ui/core';
-import {TuiFadeModule} from '@taiga-ui/experimental/directives';
+import {TuiFadeModule} from '@taiga-ui/experimental/directives/fade';
 
 import {TuiAsideComponent} from './aside.component';
 import {TuiHeadComponent} from './head.component';

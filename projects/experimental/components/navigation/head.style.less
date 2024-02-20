@@ -1,8 +1,9 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
-header[tuiHead] {
+header[tuiNavigationHeader] {
 
     --tui-link: var(--tui-text-01-night);
+    --tui-link-hover: var(--tui-text-01-night);
     position: sticky;
     top: 0;
     z-index: 1;
@@ -19,7 +20,7 @@ header[tuiHead] {
     background: var(--tui-theme-color, #000);
     color: var(--tui-text-01-night);
 
-    [tuiLogo] {
+    [tuiNavigationLogo] {
         display: flex;
         align-items: center;
         gap: 0.5rem;
@@ -61,7 +62,6 @@ header[tuiHead] {
 }
 
 tui-dropdown[data-appearance='dropdown-navigation'] {
-
     --tui-text-01: var(--tui-text-01-night);
     --tui-clear: var(--tui-clear-inverse);
     border: none;

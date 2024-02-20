@@ -1,10 +1,11 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
-main[tuiMain] {
+main[tuiNavigationMain] {
     .transition(max-width);
     flex: 1;
     padding: 0 1.25rem;
     isolation: isolate;
+    box-sizing: border-box;
 
     &::before {
         content: '';
@@ -73,7 +74,7 @@ main[tuiMain] {
             gap: 0.5rem !important;
         }
 
-        [tuiLogo] {
+        [tuiNavigationLogo] {
             display: flex;
             align-items: center;
             gap: 0.5rem;

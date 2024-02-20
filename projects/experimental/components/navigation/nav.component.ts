@@ -3,7 +3,7 @@ import {tuiBadgeOptionsProvider} from '@taiga-ui/experimental/components/badge';
 import {tuiButtonOptionsProvider} from '@taiga-ui/experimental/components/button';
 
 @Component({
-    selector: 'nav[tuiNav]',
+    selector: 'nav[tuiNavigationNav]',
     template: '<ng-content></ng-content>',
     styleUrls: ['./nav.style.less'],
     encapsulation: ViewEncapsulation.None,

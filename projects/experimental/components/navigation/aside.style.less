@@ -1,8 +1,9 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
-aside[tuiAside] {
+aside[tuiNavigationAside] {
 
     --tui-link: var(--tui-text-01-night);
+    --tui-link-hover: var(--tui-text-01-night);
     position: sticky;
     top: 3rem;
     display: flex;
@@ -16,7 +17,7 @@ aside[tuiAside] {
     &._expanded {
         width: 13.75rem;
 
-        + main[tuiMain] {
+        + main[tuiNavigationMain] {
             max-width: calc(100% - 13.75rem);
         }
     }
@@ -76,14 +77,13 @@ aside[tuiAside] {
         border-top: 1.75rem solid transparent;
     }
 
-    + main[tuiMain] {
+    + main[tuiNavigationMain] {
         max-width: calc(100% - 3rem);
     }
     .transition(width);
 }
 
 tui-dropdown[data-appearance='dropdown-navigation'] {
-
     --tui-text-01: var(--tui-text-01-night);
     --tui-clear: var(--tui-clear-inverse);
     border: none;

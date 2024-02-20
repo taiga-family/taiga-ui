@@ -6,7 +6,7 @@ import {tuiBadgeNotificationOptionsProvider} from '@taiga-ui/experimental/compon
 import {tuiButtonOptionsProvider} from '@taiga-ui/experimental/components/button';
 
 @Component({
-    selector: 'header[tuiHead]',
+    selector: 'header[tuiNavigationHeader]',
     template: '<ng-content></ng-content>',
     styleUrls: ['./head.style.less'],
     encapsulation: ViewEncapsulation.None,

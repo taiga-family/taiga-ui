@@ -1,5 +1,5 @@
-<header tuiHead>
-    <span tuiLogo>
+<header tuiNavigationHeader>
+    <span tuiNavigationLogo>
         Custom color
         <input
             tuiToggle
@@ -17,7 +17,7 @@
         </button>
     </tui-hosted-dropdown>
 </header>
-<main tuiMain>
+<main tuiNavigationMain>
     <a
         appearance="icon"
         iconLeft="tuiIconChevronLeft"
@@ -28,7 +28,7 @@
     </a>
     <header tuiHeader>
         <h1 tuiTitle>
-            <div tuiLogo>
+            <div tuiNavigationLogo>
                 <tui-icon icon="tuiIconGitlab"></tui-icon>
                 Research and Development Platform
                 <tui-icon
@@ -39,9 +39,9 @@
             <div tuiSubtitle>
                 In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the
                 visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used
-                as a placeholder before the final copy is available. It is also used to temporarily replace text in a
-                process called greeking, which allows designers to consider the form of a webpage or publication,
-                without the meaning of the text influencing the design.
+                as a placeholder before the final copy is available. It is also used to temporarily replace text, which
+                allows designers to consider the form of a webpage or publication, without the meaning of the text
+                influencing the design.
             </div>
             <div
                 tuiCaption
@@ -75,7 +75,7 @@
             </button>
         </aside>
     </header>
-    <nav tuiNav>
+    <nav tuiNavigationNav>
         <tui-tabs>
             <button tuiTab>Default view</button>
             <button tuiTab>Details</button>
@@ -96,7 +96,6 @@
         tuiCardLarge
         tuiHeader
         tuiSurface="elevated"
-        [style.margin-bottom.rem]="1.25"
     >
         <h2 tuiTitle>
             Some random content

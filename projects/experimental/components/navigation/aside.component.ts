@@ -8,7 +8,7 @@ import {tuiDropdownOptionsProvider} from '@taiga-ui/core';
 import {tuiButtonOptionsProvider} from '@taiga-ui/experimental/components/button';
 
 @Component({
-    selector: 'aside[tuiAside]',
+    selector: 'aside[tuiNavigationAside]',
     template: `
         <ng-content select="header"></ng-content>
         <tui-scrollbar class="t-nav-scrollbar">
@@ -30,12 +30,12 @@ import {tuiButtonOptionsProvider} from '@taiga-ui/experimental/components/button
         tuiDropdownOptionsProvider({appearance: 'dropdown-navigation', align: 'right'}),
     ],
     host: {
-        tuiAside: '',
+        tuiNavigationAside: '',
         tuiTheme: 'night',
-        '[class._expanded]': 'tuiAside',
+        '[class._expanded]': 'tuiNavigationAside',
     },
 })
 export class TuiAsideComponent {
     @Input()
-    tuiAside = false;
+    tuiNavigationAside = false;
 }

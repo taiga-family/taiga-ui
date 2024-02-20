@@ -1,12 +1,12 @@
-<header tuiHead>
-    <span tuiLogo>
+<header tuiNavigationHeader>
+    <span tuiNavigationLogo>
         <tui-icon icon="tuiIconGitlab"></tui-icon>
         Project name
     </span>
     <hr />
     <tui-avatar src="T"></tui-avatar>
 </header>
-<main tuiMain>
+<main tuiNavigationMain>
     <tui-breadcrumbs>
         <a
             *tuiItem
@@ -42,7 +42,7 @@
             Action
         </button>
     </header>
-    <nav tuiNav>
+    <nav tuiNavigationNav>
         <tui-tabs>
             <button tuiTab>Default view</button>
             <button tuiTab>Details</button>
@@ -63,7 +63,6 @@
         tuiCardLarge
         tuiHeader
         tuiSurface="elevated"
-        [style.margin-bottom.rem]="1.25"
     >
         <h2 tuiTitle>
             Some random content

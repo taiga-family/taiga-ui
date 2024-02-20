@@ -1,4 +1,4 @@
-<header tuiHead>
+<header tuiNavigationHeader>
     <button
         appearance="secondary"
         iconLeft="tuiIconGrid"
@@ -6,7 +6,7 @@
     >
         Menu
     </button>
-    <span tuiLogo>
+    <span tuiNavigationLogo>
         <tui-icon icon="tuiIconHome"></tui-icon>
         A very very long product name
         <tui-badge>Test</tui-badge>
@@ -59,7 +59,7 @@
 <div [style.display]="'flex'">
     <aside
         [style.height.rem]="25"
-        [tuiAside]="expanded"
+        [tuiNavigationAside]="expanded"
     >
         <header>
             <button
@@ -141,9 +141,9 @@
             </button>
         </footer>
     </aside>
-    <main tuiMain>
+    <main tuiNavigationMain>
         <nav
-            tuiNav
+            tuiNavigationNav
             [style.position]="'sticky'"
         >
             <a routerLink=".">
@@ -172,7 +172,6 @@
             tuiCardLarge
             tuiHeader
             tuiSurface="elevated"
-            [style.margin-bottom.rem]="1.25"
         >
             <h2 tuiTitle>
                 Some random content

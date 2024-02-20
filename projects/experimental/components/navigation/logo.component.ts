@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 
 @Component({
-    selector: '[tuiLogo]',
+    selector: '[tuiNavigationLogo]',
     template: `
         <ng-content select="tui-icon:not([tuiBadge]),img"></ng-content>
         <span><ng-content></ng-content></span>
