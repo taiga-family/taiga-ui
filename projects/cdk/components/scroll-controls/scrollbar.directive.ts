@@ -2,12 +2,7 @@ import {DOCUMENT} from '@angular/common';
 import {Directive, ElementRef, Inject, Input, NgZone, Self} from '@angular/core';
 import {ANIMATION_FRAME} from '@ng-web-apis/common';
 import {POLLING_TIME} from '@taiga-ui/cdk/constants';
-import {
-    tuiScrollFrom,
-    tuiStopPropagation,
-    tuiTypedFromEvent,
-    tuiZonefree,
-} from '@taiga-ui/cdk/observables';
+import {tuiScrollFrom, tuiTypedFromEvent, tuiZonefree} from '@taiga-ui/cdk/observables';
 import {TuiDestroyService} from '@taiga-ui/cdk/services';
 import {TUI_SCROLL_REF} from '@taiga-ui/cdk/tokens';
 import {merge, Observable} from 'rxjs';
@@ -48,7 +43,6 @@ export class TuiScrollbarDirective {
         merge(
             mousedownWrapper$.pipe(map(event => this.getScrolled(event, 0.5, 0.5))),
             mousedown$.pipe(
-                tuiStopPropagation(),
                 switchMap(event => {
                     const rect = nativeElement.getBoundingClientRect();
                     const vertical = getOffsetVertical(event, rect);
