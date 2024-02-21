@@ -7,9 +7,8 @@
     --tui-gap: 0.25rem;
     position: relative;
     box-sizing: border-box;
-    background: none;
+    background: none no-repeat;
     background-size: cover;
-    background-repeat: no-repeat;
     overflow: hidden;
     isolation: isolate;
     appearance: none;
@@ -129,7 +128,7 @@ input[tuiSurfaceLayer] {
 
 [tuiSurface][data-surface='elevated'] {
     box-shadow: var(--tui-shadow);
-    background: var(--tui-elevation-01);
+    background-color: var(--tui-elevation-01);
 
     button&,
     a& {
@@ -149,7 +148,7 @@ input[tuiSurfaceLayer] {
 }
 
 [tuiSurface][data-surface='flat'] {
-    background: var(--tui-clear);
+    background-color: var(--tui-clear);
 
     button&,
     a& {
