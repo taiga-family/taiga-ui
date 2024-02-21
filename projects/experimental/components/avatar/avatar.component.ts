@@ -15,7 +15,7 @@ import {TUI_AVATAR_OPTIONS, TuiAvatarOptions} from './avatar.options';
         '[attr.data-appearance]': 'appearance',
         '[attr.data-size]': 'size',
         '[attr.data-type]': 'type',
-        '[style.--t-mask]': '"url(" + resolver(src.toString()) + ")"',
+        '[style.--t-mask]': '"url(" + resolver(safeSrc) + ")"',
         '[class._round]': 'round',
     },
 })
@@ -36,6 +36,10 @@ export class TuiAvatarComponent {
         @Inject(TUI_AVATAR_OPTIONS) private readonly options: TuiAvatarOptions,
         @Inject(TUI_ICON_RESOLVER) readonly resolver: TuiStringHandler<string>,
     ) {}
+
+    get safeSrc(): string {
+        return this.src?.toString() ?? '';
+    }
 
     get value(): SafeResourceUrl | string {
         return this.src || '';
