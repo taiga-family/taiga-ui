@@ -15,7 +15,7 @@ import {TUI_AVATAR_OPTIONS, TuiAvatarOptions} from './avatar.options';
         '[attr.data-appearance]': 'appearance',
         '[attr.data-size]': 'size',
         '[attr.data-type]': 'type',
-        '[style.--t-mask]': '"url(" + resolver(src) + ")"',
+        '[style.--t-mask]': '"url(" + resolver(src.toString()) + ")"',
         '[class._round]': 'round',
     },
 })
