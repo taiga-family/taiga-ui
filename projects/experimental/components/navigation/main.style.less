@@ -2,12 +2,13 @@
 
 main[tuiNavigationMain] {
     .transition(max-width);
+
     flex: 1;
     padding: 0 1.25rem;
     isolation: isolate;
     box-sizing: border-box;
 
-    &::before {
+    &:before {
         content: '';
         position: sticky;
         top: 3rem;
@@ -42,7 +43,7 @@ main[tuiNavigationMain] {
             }
 
             [tuiSubtitle] {
-                display: -webkit-box;
+                display: box;
                 -webkit-box-orient: vertical;
                 -webkit-line-clamp: 2;
                 white-space: normal;
@@ -54,6 +55,7 @@ main[tuiNavigationMain] {
 
         [tuiCaption] {
             .scrollbar-hidden();
+
             display: flex;
             gap: 1rem;
             color: var(--tui-text-03);
