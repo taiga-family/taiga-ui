@@ -2,7 +2,6 @@ import {
     ChangeDetectionStrategy,
     Component,
     HostListener,
-    Inject,
     inject,
     Input,
 } from '@angular/core';
@@ -38,11 +37,8 @@ export class TuiErrorComponent {
 
     visible = true;
 
-    constructor(
-        @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
-        @Inject(TUI_DEFAULT_ERROR_MESSAGE)
-        readonly defaultErrorMessage$: Observable<string>,
-    ) {}
+    readonly mode$ = inject<Observable<TuiBrightness | null>>(TUI_MODE);
+    readonly defaultErrorMessage$ = inject(TUI_DEFAULT_ERROR_MESSAGE);
 
     @HostListener('animationcancel.self', ['false'])
     @HostListener('animationstart.self', ['true'])

@@ -4,11 +4,10 @@ import {
     Component,
     ElementRef,
     HostListener,
-    Inject,
+    inject,
     Input,
     NgZone,
     QueryList,
-    Self,
     ViewChild,
     ViewChildren,
 } from '@angular/core';
@@ -21,7 +20,7 @@ import {
 } from '@taiga-ui/cdk';
 import {tuiSlideInTop} from '@taiga-ui/core';
 import {TUI_MORE_WORD} from '@taiga-ui/kit';
-import {map, Observable, takeUntil, timer} from 'rxjs';
+import {map, takeUntil, timer} from 'rxjs';
 
 import {TuiSheet, TuiSheetRequiredProps} from '../../sheet';
 import {TUI_SHEET_SCROLL} from '../../sheet-tokens';
@@ -54,21 +53,20 @@ export class TuiSheetComponent<T> implements TuiSheetRequiredProps<T>, AfterView
     @ViewChildren('stops')
     private readonly stopsRefs: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
+    private readonly destroy$ = inject(TuiDestroyService, {self: true});
+    private readonly scroll$ = inject(TUI_SHEET_SCROLL);
+    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly zone = inject(NgZone);
+
     @Input()
     item!: TuiSheet<T>;
 
     id = '';
 
-    readonly stuck$ = this.scroll$.pipe(map(y => Math.floor(y) > this.contentTop));
+    readonly isIos = inject(TUI_IS_IOS);
+    readonly moreWord$ = inject(TUI_MORE_WORD);
 
-    constructor(
-        @Inject(TUI_SHEET_SCROLL) private readonly scroll$: Observable<number>,
-        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
-        @Inject(NgZone) private readonly zone: NgZone,
-        @Inject(TUI_IS_IOS) readonly isIos: boolean,
-        @Inject(TUI_MORE_WORD) readonly moreWord$: Observable<string>,
-        @Self() @Inject(TuiDestroyService) private readonly destroy$: Observable<void>,
-    ) {}
+    readonly stuck$ = this.scroll$.pipe(map(y => Math.floor(y) > this.contentTop));
 
     get stops(): readonly number[] {
         return this.getStops(this.stopsRefs);
@@ -96,29 +94,27 @@ export class TuiSheetComponent<T> implements TuiSheetRequiredProps<T>, AfterView
     }
 
     ngAfterViewInit(): void {
-        this.el.nativeElement.scrollTop = [...this.stops, this.sheetTop, this.contentTop][
+        this.el.scrollTop = [...this.stops, this.sheetTop, this.contentTop][
             this.item.initial
         ];
     }
 
     scrollTo(top: number = this.sheetTop): void {
-        const {nativeElement} = this.el;
-
         if (this.isIos) {
-            const offset = top - nativeElement.scrollTop - 16;
+            const offset = top - this.el.scrollTop - 16;
 
-            nativeElement.style.transition = 'none';
-            nativeElement.style.transform = `scaleX(-1) translate3d(0, ${offset}px, 0)`;
+            this.el.style.transition = 'none';
+            this.el.style.transform = `scaleX(-1) translate3d(0, ${offset}px, 0)`;
 
             timer(0)
                 .pipe(takeUntil(this.destroy$))
                 .subscribe(() => {
-                    nativeElement.style.transition = '';
-                    nativeElement.style.transform = '';
+                    this.el.style.transition = '';
+                    this.el.style.transform = '';
                 });
         }
 
-        nativeElement.scrollTo({top, behavior: 'smooth'});
+        this.el.scrollTo({top, behavior: 'smooth'});
     }
 
     close(): void {

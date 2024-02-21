@@ -2,9 +2,8 @@ import {
     ChangeDetectionStrategy,
     Component,
     DoCheck,
-    Inject,
+    inject,
     Input,
-    Optional,
     TrackByFunction,
     ViewChild,
 } from '@angular/core';
@@ -50,11 +49,9 @@ export class TuiTreeComponent<T> implements DoCheck {
         distinctUntilChanged(),
     );
 
-    constructor(
-        @Optional()
-        @Inject(TuiTreeChildrenDirective)
-        readonly directive: TuiTreeChildrenDirective<T> | null,
-    ) {}
+    readonly directive = inject<TuiTreeChildrenDirective<T>>(TuiTreeChildrenDirective, {
+        optional: true,
+    });
 
     @Input()
     trackBy: TrackByFunction<T> = (_: number, item: T) => item;

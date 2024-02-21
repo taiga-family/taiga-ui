@@ -1,4 +1,4 @@
-import {ElementRef, Inject, Injectable} from '@angular/core';
+import {ElementRef, inject, Injectable} from '@angular/core';
 import {tuiScrollFrom, tuiTypedFromEvent} from '@taiga-ui/cdk';
 import {TUI_SCROLL_REF} from '@taiga-ui/core';
 import {
@@ -27,6 +27,11 @@ export const MICRO_OFFSET = 10 ** -6;
 
 @Injectable()
 export class TuiPullToRefreshService extends Observable<number> {
+    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly scrollRef: HTMLElement = inject(TUI_SCROLL_REF).nativeElement;
+    private readonly loaded$ = inject(TUI_PULL_TO_REFRESH_LOADED);
+    private readonly threshold = inject(TUI_PULL_TO_REFRESH_THRESHOLD);
+
     // Hack for iOS to determine if pulling stopped due to scroll
     // because Safari does not support `touch-action: pan-down`
     private touched = false;
@@ -34,24 +39,24 @@ export class TuiPullToRefreshService extends Observable<number> {
     private readonly pulling$ = this.loaded$.pipe(
         startWith(null),
         switchMap(() =>
-            tuiTypedFromEvent(this.element, 'touchstart', {passive: true}).pipe(
-                filter(() => !this.scrollTop),
+            tuiTypedFromEvent(this.el, 'touchstart', {passive: true}).pipe(
+                filter(() => !this.scrollRef.scrollTop),
                 map(({touches}) => touches[0].clientY),
                 switchMap(start =>
-                    tuiTypedFromEvent(this.element, 'touchmove').pipe(
+                    tuiTypedFromEvent(this.el, 'touchmove').pipe(
                         tap((): void => {
                             this.touched = true;
                         }),
                         map(({touches}) => touches[0].clientY - start),
                         filter(distance => distance > 0),
                         takeUntil(
-                            tuiTypedFromEvent(this.element, 'touchend').pipe(
+                            tuiTypedFromEvent(this.el, 'touchend').pipe(
                                 tap((): void => {
                                     this.touched = false;
                                 }),
                             ),
                         ),
-                        takeUntil(tuiScrollFrom(this.scrollRef.nativeElement)),
+                        takeUntil(tuiScrollFrom(this.scrollRef)),
                         endWith(0),
                     ),
                 ),
@@ -70,21 +75,9 @@ export class TuiPullToRefreshService extends Observable<number> {
         share(),
     );
 
-    constructor(
-        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
-        @Inject(TUI_SCROLL_REF) private readonly scrollRef: ElementRef<HTMLElement>,
-        @Inject(TUI_PULL_TO_REFRESH_LOADED) private readonly loaded$: Observable<unknown>,
-        @Inject(TUI_PULL_TO_REFRESH_THRESHOLD) private readonly threshold: number,
-        @Inject(TUI_PULL_TO_REFRESH_COMPONENT) component: unknown,
-    ) {
+    constructor() {
+        const component = inject(TUI_PULL_TO_REFRESH_COMPONENT);
+
         super(subscriber => (component ? this.pulling$ : EMPTY).subscribe(subscriber));
-    }
-
-    private get element(): HTMLElement {
-        return this.el.nativeElement;
-    }
-
-    private get scrollTop(): number {
-        return this.scrollRef.nativeElement.scrollTop;
     }
 }

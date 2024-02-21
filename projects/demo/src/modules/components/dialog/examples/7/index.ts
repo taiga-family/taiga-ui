@@ -1,4 +1,4 @@
-import {Component, Inject, Injector} from '@angular/core';
+import {Component, inject, Injector} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDialogService} from '@taiga-ui/core';
@@ -13,10 +13,8 @@ import {SearchDialogExampleComponent} from './search-example/search-dialog-examp
     changeDetection,
 })
 export class TuiDialogExampleComponent7 {
-    constructor(
-        @Inject(TuiDialogService) private readonly dialogs: TuiDialogService,
-        @Inject(Injector) private readonly injector: Injector,
-    ) {}
+    private readonly dialogs = inject(TuiDialogService);
+    private readonly injector = inject(Injector);
 
     showDialog(): void {
         this.dialogs

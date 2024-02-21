@@ -3,7 +3,7 @@ import {
     Component,
     ContentChildren,
     HostBinding,
-    Inject,
+    inject,
     Input,
     QueryList,
 } from '@angular/core';
@@ -14,7 +14,6 @@ import {
     tuiControlValue,
     tuiGetOriginalArrayFromQueryList,
     TuiIdentityMatcher,
-    TuiInjectionTokenType,
     tuiIsPresent,
     tuiPure,
     tuiQueryListChanges,
@@ -39,16 +38,14 @@ export class TuiMultiSelectGroupComponent<T> {
     @ContentChildren(TuiOptionComponent)
     private readonly options: QueryList<TuiOptionComponent<T>> = EMPTY_QUERY;
 
+    private readonly host = inject<TuiDataListHost<T>>(TUI_DATA_LIST_HOST);
+    private readonly control = inject(NgControl);
+
     @HostBinding('class._label')
     @Input()
     label = '';
 
-    constructor(
-        @Inject(TUI_MULTI_SELECT_TEXTS)
-        readonly multiSelectTexts$: TuiInjectionTokenType<typeof TUI_MULTI_SELECT_TEXTS>,
-        @Inject(TUI_DATA_LIST_HOST) private readonly host: TuiDataListHost<T>,
-        @Inject(NgControl) private readonly control: NgControl,
-    ) {}
+    readonly multiSelectTexts$ = inject(TUI_MULTI_SELECT_TEXTS);
 
     get size(): TuiSizeL | TuiSizeXS {
         return this.options.first?.size || 'm';

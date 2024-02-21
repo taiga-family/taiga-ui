@@ -4,13 +4,12 @@ import {
     ElementRef,
     EventEmitter,
     HostListener,
-    Inject,
+    inject,
     Input,
     Output,
 } from '@angular/core';
 import {AbstractTuiInteractive, tuiIsNativeFocusedIn} from '@taiga-ui/cdk';
-import {TUI_SPIN_ICONS, TUI_SPIN_TEXTS, TuiSpinIcons} from '@taiga-ui/core/tokens';
-import {Observable} from 'rxjs';
+import {TUI_SPIN_ICONS, TUI_SPIN_TEXTS} from '@taiga-ui/core/tokens';
 
 @Component({
     selector: 'tui-primitive-spin-button',
@@ -22,6 +21,8 @@ import {Observable} from 'rxjs';
     },
 })
 export class TuiPrimitiveSpinButtonComponent extends AbstractTuiInteractive {
+    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+
     @Input()
     disabled = false;
 
@@ -37,16 +38,11 @@ export class TuiPrimitiveSpinButtonComponent extends AbstractTuiInteractive {
     @Output()
     readonly rightClick = new EventEmitter<void>();
 
-    constructor(
-        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
-        @Inject(TUI_SPIN_ICONS) readonly icons: TuiSpinIcons,
-        @Inject(TUI_SPIN_TEXTS) readonly spinTexts$: Observable<[string, string]>,
-    ) {
-        super();
-    }
+    readonly icons = inject(TUI_SPIN_ICONS);
+    readonly spinTexts$ = inject(TUI_SPIN_TEXTS);
 
     get focused(): boolean {
-        return tuiIsNativeFocusedIn(this.el.nativeElement);
+        return tuiIsNativeFocusedIn(this.el);
     }
 
     get leftComputedDisabled(): boolean {

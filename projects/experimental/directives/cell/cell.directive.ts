@@ -1,5 +1,5 @@
-import {Directive, Inject, Input} from '@angular/core';
-import {TuiDirectiveStylesService} from '@taiga-ui/cdk';
+import {Directive, Input} from '@angular/core';
+import {tuiWithStyles} from '@taiga-ui/cdk';
 import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {
     tuiAvatarOptionsProvider,
@@ -20,12 +20,8 @@ import {TuiCellComponent} from './cell.component';
     },
 })
 export class TuiCellDirective {
+    protected readonly nothing = tuiWithStyles(TuiCellComponent);
+
     @Input('tuiCell')
     size: TuiSizeL | TuiSizeS | '' = 'l';
-
-    constructor(
-        @Inject(TuiDirectiveStylesService) directiveStyles: TuiDirectiveStylesService,
-    ) {
-        directiveStyles.addComponent(TuiCellComponent);
-    }
 }

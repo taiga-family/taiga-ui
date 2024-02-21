@@ -7,7 +7,7 @@ import {
     ElementRef,
     EventEmitter,
     HostBinding,
-    Inject,
+    inject,
     Input,
     Output,
     QueryList,
@@ -25,13 +25,13 @@ import {
     TuiItemDirective,
     tuiToInt,
 } from '@taiga-ui/cdk';
-import {TUI_ARROW_OPTIONS, TuiArrowOptions} from '@taiga-ui/kit/components/arrow';
+import {TUI_ARROW_OPTIONS} from '@taiga-ui/kit/components/arrow';
 import {TUI_MORE_WORD, TUI_TAB_MARGIN} from '@taiga-ui/kit/tokens';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {filter, map, Observable} from 'rxjs';
+import {filter, map} from 'rxjs';
 
 import {TuiTabComponent} from '../tab/tab.component';
-import {TUI_TABS_OPTIONS, TuiTabsOptions} from '../tabs.options';
+import {TUI_TABS_OPTIONS} from '../tabs.options';
 import {TUI_TABS_PROVIDERS, TUI_TABS_REFRESH} from './tabs-with-more.providers';
 
 @Component({
@@ -45,6 +45,11 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
     @ViewChild(TuiTabComponent, {read: ElementRef})
     private readonly moreButton?: ElementRef<HTMLButtonElement>;
 
+    private readonly options = inject(TUI_TABS_OPTIONS);
+    private readonly margin = inject(TUI_TAB_MARGIN);
+    private readonly refresh$ = inject(TUI_TABS_REFRESH);
+    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly cdr = inject(ChangeDetectorRef);
     private maxIndex = Infinity;
 
     @Input()
@@ -72,25 +77,16 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
     @ContentChildren(TuiItemDirective, {read: TemplateRef})
     readonly items: QueryList<TemplateRef<Record<string, unknown>>> = EMPTY_QUERY;
 
+    readonly moreWord$ = inject(TUI_MORE_WORD);
+    readonly arrowOptions = inject(TUI_ARROW_OPTIONS);
+
     activeItemIndex = 0;
 
     open = false;
 
-    constructor(
-        @Inject(TUI_TABS_OPTIONS) private readonly options: TuiTabsOptions,
-        @Inject(TUI_TAB_MARGIN) private readonly margin: number,
-        @Inject(TUI_TABS_REFRESH) private readonly refresh$: Observable<unknown>,
-        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
-        @Inject(ChangeDetectorRef) private readonly cdr: ChangeDetectorRef,
-        @Inject(TUI_MORE_WORD) readonly moreWord$: Observable<string>,
-        @Inject(TUI_ARROW_OPTIONS) readonly arrowOptions: TuiArrowOptions,
-    ) {}
-
     // TODO: Improve performance
     get tabs(): readonly HTMLElement[] {
-        return Array.from<HTMLElement>(
-            this.el.nativeElement.querySelectorAll('[tuiTab]'),
-        );
+        return Array.from<HTMLElement>(this.el.querySelectorAll('[tuiTab]'));
     }
 
     get activeElement(): HTMLElement | null {
@@ -208,7 +204,7 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
         }
 
         const {exposeActive, minMoreWidth} = this.options;
-        const {clientWidth} = this.el.nativeElement;
+        const {clientWidth} = this.el;
         const activeWidth = tabs[activeItemIndex] ? tabs[activeItemIndex].scrollWidth : 0;
         const moreWidth = Math.max(tabs[tabs.length - 1].scrollWidth, minMoreWidth);
         let maxIndex = tabs.length - 2;

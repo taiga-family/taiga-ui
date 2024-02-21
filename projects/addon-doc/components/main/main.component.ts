@@ -3,11 +3,11 @@ import {
     Component,
     forwardRef,
     HostBinding,
-    Inject,
+    inject,
     ViewEncapsulation,
 } from '@angular/core';
 import {TuiThemeNightService, TuiThemeService} from '@taiga-ui/addon-doc/services';
-import {TUI_DOC_ICONS, TuiDocIcons} from '@taiga-ui/addon-doc/tokens';
+import {TUI_DOC_ICONS} from '@taiga-ui/addon-doc/tokens';
 import {TuiSwipeService} from '@taiga-ui/cdk';
 import {TuiBrightness, TuiModeDirective} from '@taiga-ui/core';
 import {distinctUntilChanged, map, share, startWith} from 'rxjs';
@@ -29,20 +29,17 @@ import {distinctUntilChanged, map, share, startWith} from 'rxjs';
     ],
 })
 export class TuiDocMainComponent {
-    readonly change$ = this.night;
+    private readonly icons = inject(TUI_DOC_ICONS);
 
+    readonly theme = inject(TuiThemeService);
+    readonly night = inject(TuiThemeNightService);
+    readonly change$ = this.night;
     readonly night$ = this.change$.pipe(
         startWith(null),
         map(() => this.night.value),
         distinctUntilChanged(),
         share(),
     );
-
-    constructor(
-        @Inject(TUI_DOC_ICONS) private readonly icons: TuiDocIcons,
-        @Inject(TuiThemeService) readonly theme: TuiThemeService,
-        @Inject(TuiThemeNightService) readonly night: TuiThemeNightService,
-    ) {}
 
     @HostBinding('attr.data-mode')
     get mode(): TuiBrightness | null {

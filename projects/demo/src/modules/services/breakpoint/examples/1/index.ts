@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiBreakpointService} from '@taiga-ui/core';
@@ -11,8 +11,5 @@ import {TuiBreakpointService} from '@taiga-ui/core';
     changeDetection,
 })
 export class TuiBreakpointExample1 {
-    constructor(
-        @Inject(TuiBreakpointService)
-        readonly breakpoint$: TuiBreakpointService,
-    ) {}
+    readonly breakpoint$ = inject(TuiBreakpointService);
 }

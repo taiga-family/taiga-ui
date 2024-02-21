@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {DomSanitizer} from '@angular/platform-browser';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -32,13 +32,10 @@ export class TuiIconsBundledExample1 {
     readonly svg = INLINE_SVG;
 
     readonly tuiIconClockLarge =
-        this.sanitizer.bypassSecurityTrustHtml(tuiIconClockLarge);
+        inject(DomSanitizer).bypassSecurityTrustHtml(tuiIconClockLarge);
 
-    constructor(
-        @Inject(TuiSvgService) svgService: TuiSvgService,
-        @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
-    ) {
-        svgService.define({
+    constructor() {
+        inject(TuiSvgService).define({
             customTuiIconMaestro: tuiIconMaestro,
             customTuiIconMastercard: tuiIconMastercard,
         });

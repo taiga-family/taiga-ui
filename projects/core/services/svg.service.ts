@@ -1,5 +1,5 @@
 /// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
-import {Inject, Injectable, Optional, Sanitizer, SecurityContext} from '@angular/core';
+import {inject, Injectable, SecurityContext} from '@angular/core';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 import {tuiAssert} from '@taiga-ui/cdk';
 import {TUI_ICONS, TUI_SANITIZER} from '@taiga-ui/core/tokens';
@@ -13,18 +13,14 @@ import {BehaviorSubject} from 'rxjs';
     providedIn: 'root',
 })
 export class TuiSvgService {
+    private readonly tuiSanitizer = inject(TUI_SANITIZER, {optional: true});
+    private readonly sanitizer = inject(DomSanitizer);
     private originals: Record<string, string> = {};
 
     readonly items$ = new BehaviorSubject<Map<string, SafeHtml>>(new Map());
 
-    constructor(
-        @Optional()
-        @Inject(TUI_SANITIZER)
-        private readonly tuiSanitizer: Sanitizer | null,
-        @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
-        @Inject(TUI_ICONS) icons: Record<string, string>,
-    ) {
-        this.define(icons);
+    constructor() {
+        this.define(inject(TUI_ICONS));
     }
 
     define(icons: Record<string, string>): void {

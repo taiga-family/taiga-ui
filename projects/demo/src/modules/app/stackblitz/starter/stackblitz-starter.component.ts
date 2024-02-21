@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Inject, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, OnInit} from '@angular/core';
 import {tuiRawLoad, tuiTryParseMarkdownCodeBlock} from '@taiga-ui/addon-doc';
 
 import {TuiStackblitzService} from '../stackblitz.service';
@@ -12,9 +12,7 @@ import {appPrefix} from '../utils';
     providers: [TuiStackblitzService],
 })
 export class StackblitzStarterComponent implements OnInit {
-    constructor(
-        @Inject(TuiStackblitzService) private readonly stackblitz: TuiStackblitzService,
-    ) {}
+    private readonly stackblitz = inject(TuiStackblitzService);
 
     async ngOnInit(): Promise<void> {
         await this.openStackblitz();
@@ -41,7 +39,6 @@ export class StackblitzStarterComponent implements OnInit {
                     [appPrefix`app.component.html`]: appTemplate,
                     [appPrefix`app.component.ts`]: appComponent,
                     [appPrefix`app.component.less`]:
-                        // eslint-disable-next-line @typescript-eslint/quotes
                         "@import '@taiga-ui/core/styles/taiga-ui-local.less';",
                 },
             },

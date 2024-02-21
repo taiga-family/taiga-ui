@@ -1,11 +1,10 @@
-import {ChangeDetectionStrategy, Component, Inject, Input, Optional} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
     tuiAsDataListAccessor,
-    TuiTextfieldController,
 } from '@taiga-ui/core';
-import {TUI_ITEMS_HANDLERS, TuiItemsHandlers} from '@taiga-ui/kit/tokens';
+import {TUI_ITEMS_HANDLERS} from '@taiga-ui/kit/tokens';
 
 import {AbstractTuiDataListWrapper} from './data-list-wrapper';
 
@@ -23,12 +22,10 @@ export class TuiDataListWrapperComponent<T> extends AbstractTuiDataListWrapper<T
     @Input()
     items: readonly T[] | null = [];
 
-    constructor(
-        @Inject(TUI_ITEMS_HANDLERS) itemsHandlers: TuiItemsHandlers<T>,
-        @Optional()
-        @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
-        controller: TuiTextfieldController | null,
-    ) {
-        super(itemsHandlers, controller?.size || 'm');
+    constructor() {
+        super(
+            inject(TUI_ITEMS_HANDLERS),
+            inject(TUI_TEXTFIELD_WATCHED_CONTROLLER, {optional: true})?.size || 'm',
+        );
     }
 }

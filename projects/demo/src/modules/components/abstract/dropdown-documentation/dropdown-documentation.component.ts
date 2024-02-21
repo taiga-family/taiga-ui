@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 
 import {AbstractExampleTuiDropdown} from '../dropdown';
@@ -10,8 +10,7 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../inherited-documentation/abstract-props
     changeDetection,
 })
 export class DropdownDocumentationComponent {
-    constructor(
-        @Inject(ABSTRACT_PROPS_ACCESSOR)
-        readonly documentedComponent: AbstractExampleTuiDropdown,
-    ) {}
+    readonly documentedComponent = inject<AbstractExampleTuiDropdown>(
+        ABSTRACT_PROPS_ACCESSOR,
+    );
 }

@@ -1,4 +1,4 @@
-import {Inject, Pipe, PipeTransform} from '@angular/core';
+import {inject, Pipe, PipeTransform} from '@angular/core';
 import {TuiDay, TuiDayRange, TuiMonth} from '@taiga-ui/cdk';
 import {TUI_MONTHS} from '@taiga-ui/core';
 import {map, Observable, of} from 'rxjs';
@@ -15,9 +15,7 @@ function even<T>(array: readonly T[]): readonly T[] {
     name: 'labels',
 })
 export class LabelsPipe implements PipeTransform {
-    constructor(
-        @Inject(TUI_MONTHS) private readonly months$: Observable<readonly string[]>,
-    ) {}
+    private readonly months$ = inject(TUI_MONTHS);
 
     transform({from, to}: TuiDayRange): Observable<readonly string[]> {
         const length = TuiDay.lengthBetween(from, to);

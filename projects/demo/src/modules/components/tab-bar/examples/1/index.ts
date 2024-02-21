@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAlertService} from '@taiga-ui/core';
@@ -17,6 +17,8 @@ interface Item {
     changeDetection,
 })
 export class TuiTabBarExample1 {
+    private readonly alerts = inject(TuiAlertService);
+
     activeItemIndex = 1;
 
     readonly items = [
@@ -44,8 +46,6 @@ export class TuiTabBarExample1 {
             icon: 'tuiIconMoreHorizontalLarge',
         },
     ];
-
-    constructor(@Inject(TuiAlertService) private readonly alerts: TuiAlertService) {}
 
     onClick(item: Item): void {
         item.badge = 0;

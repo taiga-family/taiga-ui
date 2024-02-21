@@ -1,11 +1,5 @@
 import {AnimationOptions} from '@angular/animations';
-import {
-    ChangeDetectionStrategy,
-    Component,
-    HostBinding,
-    Inject,
-    Self,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, HostBinding, inject} from '@angular/core';
 import {
     ALWAYS_TRUE_HANDLER,
     TUI_IS_MOBILE,
@@ -17,7 +11,6 @@ import {
     TUI_ANIMATIONS_SPEED,
     TUI_CLOSE_WORD,
     TUI_COMMON_ICONS,
-    TuiCommonIcons,
 } from '@taiga-ui/core/tokens';
 import {tuiGetDuration} from '@taiga-ui/core/utils';
 import {POLYMORPHEUS_CONTEXT, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
@@ -57,6 +50,9 @@ function toObservable<T>(valueOrStream: Observable<T> | T): Observable<T> {
     },
 })
 export class TuiDialogComponent<O, I> {
+    private readonly speed = inject(TUI_ANIMATIONS_SPEED);
+    private readonly isMobile = inject(TUI_IS_MOBILE);
+
     private readonly animation = {
         value: '',
         params: {
@@ -75,23 +71,19 @@ export class TuiDialogComponent<O, I> {
 
     readonly close$ = new Subject<void>();
 
-    constructor(
-        @Inject(TUI_ANIMATIONS_SPEED) private readonly speed: number,
-        @Inject(TUI_IS_MOBILE) private readonly isMobile: boolean,
-        @Inject(POLYMORPHEUS_CONTEXT)
-        readonly context: TuiPopover<TuiDialogOptions<I>, O>,
-        @Inject(TuiDestroyService) @Self() destroy$: Observable<void>,
-        @Inject(TuiDialogCloseService) dialogClose$: Observable<unknown>,
-        @Inject(TUI_DIALOGS_CLOSE) close$: Observable<unknown>,
-        @Inject(TUI_CLOSE_WORD) readonly closeWord$: Observable<string>,
-        @Inject(TUI_COMMON_ICONS) readonly icons: TuiCommonIcons,
-    ) {
+    readonly context = inject<TuiPopover<TuiDialogOptions<I>, O>>(POLYMORPHEUS_CONTEXT);
+    readonly closeWord$ = inject(TUI_CLOSE_WORD);
+    readonly icons = inject(TUI_COMMON_ICONS);
+
+    constructor() {
         merge(
-            this.close$.pipe(switchMap(() => toObservable(context.closeable))),
-            dialogClose$.pipe(switchMap(() => toObservable(context.dismissible))),
-            close$.pipe(map(ALWAYS_TRUE_HANDLER)),
+            this.close$.pipe(switchMap(() => toObservable(this.context.closeable))),
+            inject(TuiDialogCloseService).pipe(
+                switchMap(() => toObservable(this.context.dismissible)),
+            ),
+            inject(TUI_DIALOGS_CLOSE).pipe(map(ALWAYS_TRUE_HANDLER)),
         )
-            .pipe(filter(Boolean), takeUntil(destroy$))
+            .pipe(filter(Boolean), takeUntil(inject(TuiDestroyService, {self: true})))
             .subscribe(() => {
                 this.close();
             });

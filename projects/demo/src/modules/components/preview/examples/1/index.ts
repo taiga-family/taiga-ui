@@ -1,4 +1,4 @@
-import {Component, Inject, TemplateRef, ViewChild} from '@angular/core';
+import {Component, inject, TemplateRef, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiPreviewDialogService} from '@taiga-ui/addon-preview';
@@ -14,6 +14,9 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
     changeDetection,
 })
 export class TuiPreviewExample1 {
+    private readonly previewService = inject(TuiPreviewDialogService);
+    private readonly alerts = inject(TuiAlertService);
+
     @ViewChild('preview')
     readonly preview?: TemplateRef<TuiDialogContext>;
 
@@ -22,13 +25,6 @@ export class TuiPreviewExample1 {
 
     index = 0;
     length = 2;
-
-    constructor(
-        @Inject(TuiPreviewDialogService)
-        private readonly previewService: TuiPreviewDialogService,
-        @Inject(TuiAlertService)
-        private readonly alerts: TuiAlertService,
-    ) {}
 
     get title(): string {
         return this.index === 0 ? 'Transaction cert.jpg' : 'My face.jpg';

@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiContext, TuiDay, TuiStringHandler} from '@taiga-ui/cdk';
@@ -13,6 +13,7 @@ import {map, Observable} from 'rxjs';
     changeDetection,
 })
 export class ExampleTuiLineDaysChartComponent {
+    protected readonly months$ = inject(TUI_MONTHS);
     readonly exampleModule = import('./examples/import/import-module.md?raw');
     readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 
@@ -85,6 +86,4 @@ export class ExampleTuiLineDaysChartComponent {
     y = 0;
 
     height = 200;
-
-    constructor(@Inject(TUI_MONTHS) readonly months$: Observable<readonly string[]>) {}
 }

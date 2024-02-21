@@ -6,7 +6,7 @@ import {
     ElementRef,
     forwardRef,
     HostBinding,
-    Inject,
+    inject,
     QueryList,
 } from '@angular/core';
 import {EMPTY_QUERY} from '@taiga-ui/cdk';
@@ -36,7 +36,19 @@ export class TuiTreeItemComponent implements DoCheck {
     @ContentChildren(TUI_TREE_NODE as any)
     private readonly nested: QueryList<unknown> = EMPTY_QUERY;
 
+    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+
+    private readonly controller = inject<TuiTreeController>(
+        forwardRef(() => TUI_TREE_CONTROLLER),
+    );
+
     private readonly change$ = new Subject<void>();
+
+    readonly level = inject<number>(forwardRef(() => TUI_TREE_LEVEL));
+
+    readonly content = inject<PolymorpheusContent<TuiTreeItemContext>>(
+        forwardRef(() => TUI_TREE_CONTENT),
+    );
 
     readonly expanded$ = this.change$.pipe(
         startWith(null),
@@ -44,20 +56,9 @@ export class TuiTreeItemComponent implements DoCheck {
     );
 
     readonly attached$ = this.change$.pipe(
-        map(() => this.el.nativeElement.isConnected),
+        map(() => this.el.isConnected),
         distinctUntilChanged(),
     );
-
-    constructor(
-        @Inject(ElementRef)
-        private readonly el: ElementRef<HTMLElement>,
-        @Inject(forwardRef(() => TUI_TREE_CONTROLLER))
-        private readonly controller: TuiTreeController,
-        @Inject(forwardRef(() => TUI_TREE_LEVEL))
-        readonly level: number,
-        @Inject(forwardRef(() => TUI_TREE_CONTENT))
-        readonly content: PolymorpheusContent<TuiTreeItemContext>,
-    ) {}
 
     @HostBinding('class._expandable')
     get isExpandable(): boolean {

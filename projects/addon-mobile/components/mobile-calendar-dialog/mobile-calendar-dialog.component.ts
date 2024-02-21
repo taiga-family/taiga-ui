@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {
     ALWAYS_FALSE_HANDLER,
     TUI_FIRST_DAY,
@@ -18,13 +18,13 @@ import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiMobileCalendarDialogComponent {
-    constructor(
-        @Inject(POLYMORPHEUS_CONTEXT)
-        readonly context: TuiDialogContext<
-            TuiDay | TuiDayRange | readonly TuiDay[],
-            TuiMobileCalendarData | undefined
-        >,
-    ) {}
+    readonly context =
+        inject<
+            TuiDialogContext<
+                TuiDay | TuiDayRange | readonly TuiDay[],
+                TuiMobileCalendarData | undefined
+            >
+        >(POLYMORPHEUS_CONTEXT);
 
     get single(): boolean {
         return this.context.data?.single === true;

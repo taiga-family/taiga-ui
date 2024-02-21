@@ -1,5 +1,5 @@
-import {Directive, Inject, Input} from '@angular/core';
-import {TuiDirectiveStylesService} from '@taiga-ui/cdk';
+import {Directive, Input} from '@angular/core';
+import {tuiWithStyles} from '@taiga-ui/cdk';
 import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 
 import {TuiTitleComponent} from './title.component';
@@ -12,12 +12,8 @@ import {TuiTitleComponent} from './title.component';
     },
 })
 export class TuiTitleDirective {
+    protected readonly nothing = tuiWithStyles(TuiTitleComponent);
+
     @Input('tuiTitle')
     size: TuiSizeL | TuiSizeS | '' = '';
-
-    constructor(
-        @Inject(TuiDirectiveStylesService) directiveStyles: TuiDirectiveStylesService,
-    ) {
-        directiveStyles.addComponent(TuiTitleComponent);
-    }
 }

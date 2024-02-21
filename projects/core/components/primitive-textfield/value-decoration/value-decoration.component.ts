@@ -5,14 +5,10 @@ import {
     ElementRef,
     HostBinding,
     HostListener,
-    Inject,
+    inject,
     ViewChild,
 } from '@angular/core';
-import {
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
-    TUI_FONTS_READY,
-    TuiInjectionTokenType,
-} from '@taiga-ui/cdk';
+import {TUI_FOCUSABLE_ITEM_ACCESSOR, TUI_FONTS_READY} from '@taiga-ui/cdk';
 import {TuiAppearance} from '@taiga-ui/core/enums';
 import {BehaviorSubject, delay, distinctUntilChanged, filter, map, merge} from 'rxjs';
 
@@ -30,6 +26,12 @@ export class TuiValueDecorationComponent implements DoCheck {
     @ViewChild('pre', {read: ElementRef, static: true})
     private readonly pre?: ElementRef<HTMLElement>;
 
+    private readonly textfield = inject<TuiPrimitiveTextfield>(
+        TUI_FOCUSABLE_ITEM_ACCESSOR,
+    );
+
+    private readonly fontsReady$ = inject(TUI_FONTS_READY);
+
     private readonly prefix$ = new BehaviorSubject('');
 
     readonly pre$ = merge(this.fontsReady$, this.prefix$).pipe(
@@ -38,13 +40,6 @@ export class TuiValueDecorationComponent implements DoCheck {
         map(() => this.pre?.nativeElement.offsetWidth || 0),
         distinctUntilChanged(),
     );
-
-    constructor(
-        @Inject(TUI_FOCUSABLE_ITEM_ACCESSOR)
-        private readonly textfield: TuiPrimitiveTextfield,
-        @Inject(TUI_FONTS_READY)
-        private readonly fontsReady$: TuiInjectionTokenType<typeof TUI_FONTS_READY>,
-    ) {}
 
     @HostBinding('class._table')
     get isContextTable(): boolean {

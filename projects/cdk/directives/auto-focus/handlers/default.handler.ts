@@ -1,8 +1,6 @@
-import {Directive, ElementRef, Inject, Optional, Self} from '@angular/core';
-import {ANIMATION_FRAME} from '@ng-web-apis/common';
+import {ElementRef} from '@angular/core';
 import {POLLING_TIME} from '@taiga-ui/cdk/constants';
 import {TuiFocusableElementAccessor} from '@taiga-ui/cdk/interfaces';
-import {TUI_FOCUSABLE_ITEM_ACCESSOR} from '@taiga-ui/cdk/tokens';
 import {map, Observable, race, skipWhile, take, throttleTime, timer} from 'rxjs';
 
 import {AbstractTuiAutofocusHandler} from './abstract.handler';
@@ -10,15 +8,11 @@ import {AbstractTuiAutofocusHandler} from './abstract.handler';
 const TIMEOUT = 1000;
 const NG_ANIMATION_SELECTOR = '.ng-animating';
 
-@Directive()
 export class TuiDefaultAutofocusHandler extends AbstractTuiAutofocusHandler {
     constructor(
-        @Optional()
-        @Self()
-        @Inject(TUI_FOCUSABLE_ITEM_ACCESSOR)
         focusable: TuiFocusableElementAccessor | null,
-        @Inject(ElementRef) el: ElementRef<HTMLElement>,
-        @Inject(ANIMATION_FRAME) private readonly animationFrame$: Observable<number>,
+        el: ElementRef<HTMLElement>,
+        private readonly animationFrame$: Observable<number>,
     ) {
         super(focusable, el);
     }

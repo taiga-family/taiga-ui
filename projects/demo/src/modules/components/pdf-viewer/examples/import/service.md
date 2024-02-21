@@ -1,6 +1,6 @@
 ```ts
 export class MyComponent {
-  constructor(@Inject(TuiPdfViewerService) private readonly pdfService: TuiPdfViewerService) {}
+  private readonly pdfService = inject(TuiPdfViewerService);
 
   show(actions: PolymorpheusContent<TuiPdfViewerOptions>) {
     this.pdfService

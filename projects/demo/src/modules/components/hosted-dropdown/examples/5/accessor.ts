@@ -1,4 +1,4 @@
-import {Directive, ElementRef, Inject} from '@angular/core';
+import {Directive, ElementRef, inject} from '@angular/core';
 import {tuiAsPositionAccessor, TuiPoint, TuiPositionAccessor} from '@taiga-ui/core';
 
 @Directive({
@@ -6,14 +6,12 @@ import {tuiAsPositionAccessor, TuiPoint, TuiPositionAccessor} from '@taiga-ui/co
     providers: [tuiAsPositionAccessor(TopRightDirective)],
 })
 export class TopRightDirective extends TuiPositionAccessor {
+    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+
     readonly type = 'dropdown';
 
-    constructor(@Inject(ElementRef) private readonly el: ElementRef<HTMLElement>) {
-        super();
-    }
-
     getPosition({height}: ClientRect): TuiPoint {
-        const {right, top} = this.el.nativeElement.getBoundingClientRect();
+        const {right, top} = this.el.getBoundingClientRect();
 
         return [top - height, right];
     }

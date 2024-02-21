@@ -1,15 +1,5 @@
-import {
-    Directive,
-    ElementRef,
-    Inject,
-    NgZone,
-    Optional,
-    Renderer2,
-    Self,
-} from '@angular/core';
-import {WINDOW} from '@ng-web-apis/common';
+import {ElementRef, NgZone, Renderer2} from '@angular/core';
 import {TuiFocusableElementAccessor} from '@taiga-ui/cdk/interfaces';
-import {TUI_FOCUSABLE_ITEM_ACCESSOR} from '@taiga-ui/cdk/tokens';
 import {tuiIsPresent, tuiPx} from '@taiga-ui/cdk/utils';
 
 import {AbstractTuiAutofocusHandler} from './abstract.handler';
@@ -27,17 +17,13 @@ const TEXTFIELD_ATTRS = [
     'maxlength',
 ] as const;
 
-@Directive()
 export class TuiIosAutofocusHandler extends AbstractTuiAutofocusHandler {
     constructor(
-        @Optional()
-        @Self()
-        @Inject(TUI_FOCUSABLE_ITEM_ACCESSOR)
         focusable: TuiFocusableElementAccessor | null,
-        @Inject(ElementRef) el: ElementRef<HTMLElement>,
-        @Inject(Renderer2) private readonly renderer: Renderer2,
-        @Inject(NgZone) private readonly zone: NgZone,
-        @Inject(WINDOW) private readonly win: Window,
+        el: ElementRef<HTMLElement>,
+        private readonly renderer: Renderer2,
+        private readonly zone: NgZone,
+        private readonly win: Window,
     ) {
         super(focusable, el);
         this.patchCssStyles();

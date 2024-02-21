@@ -3,7 +3,7 @@ import {
     Component,
     HostBinding,
     HostListener,
-    Inject,
+    inject,
     Input,
 } from '@angular/core';
 import {TuiHorizontalDirection} from '@taiga-ui/core';
@@ -19,11 +19,11 @@ import {TuiTabsDirective} from '../tabs.directive';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiTabsVerticalComponent {
+    private readonly tabs = inject(TuiTabsDirective);
+
     @Input()
     @HostBinding('attr.data-vertical')
     vertical: TuiHorizontalDirection = 'left';
-
-    constructor(@Inject(TuiTabsDirective) private readonly tabs: TuiTabsDirective) {}
 
     @HostListener('keydown.arrowDown.prevent', ['$event.target', '1'])
     @HostListener('keydown.arrowUp.prevent', ['$event.target', '-1'])

@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {TUI_IS_IOS, TuiPopover} from '@taiga-ui/cdk';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 
@@ -14,11 +14,9 @@ import {TuiMobileDialogOptions} from './mobile-dialog.options';
     },
 })
 export class TuiMobileDialogComponent<I> {
-    constructor(
-        @Inject(TUI_IS_IOS) readonly isIOS: boolean,
-        @Inject(POLYMORPHEUS_CONTEXT)
-        readonly context: TuiPopover<TuiMobileDialogOptions<I>, number>,
-    ) {}
+    readonly isIOS = inject(TUI_IS_IOS);
+    readonly context =
+        inject<TuiPopover<TuiMobileDialogOptions<I>, number>>(POLYMORPHEUS_CONTEXT);
 
     onAction(index: number): void {
         this.context.completeWith(index);

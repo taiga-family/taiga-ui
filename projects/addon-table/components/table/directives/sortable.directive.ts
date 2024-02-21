@@ -1,4 +1,4 @@
-import {Directive, forwardRef, Inject, OnInit} from '@angular/core';
+import {Directive, forwardRef, inject, OnInit} from '@angular/core';
 import {TuiComparator} from '@taiga-ui/addon-table/types';
 
 import {TuiThComponent} from '../th/th.component';
@@ -11,12 +11,11 @@ import {TuiTableDirective} from './table.directive';
 export class TuiSortableDirective<T extends Partial<Record<keyof T, any>>>
     implements OnInit
 {
-    constructor(
-        @Inject(forwardRef(() => TuiSortByDirective))
-        private readonly sortBy: TuiSortByDirective<T>,
-        @Inject(TuiTableDirective) private readonly table: TuiTableDirective<T>,
-        @Inject(TuiThComponent) private readonly th: TuiThComponent<T>,
-    ) {}
+    private readonly table = inject(TuiTableDirective<T>);
+    private readonly th = inject(TuiThComponent<T>);
+    private readonly sortBy = inject<TuiSortByDirective<T>>(
+        forwardRef(() => TuiSortByDirective),
+    );
 
     sorter: TuiComparator<T> = (): number => 0;
 

@@ -1,18 +1,13 @@
 import {
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
     HostBinding,
     HostListener,
-    Inject,
+    inject,
     Injector,
     Input,
-    Optional,
-    Self,
-    Type,
     ViewChild,
 } from '@angular/core';
-import {NgControl} from '@angular/forms';
 import {MaskitoOptions} from '@maskito/core';
 import {maskitoDateOptionsGenerator} from '@maskito/kit';
 import {
@@ -27,7 +22,6 @@ import {
     tuiAsFocusableItemAccessor,
     TuiBooleanHandler,
     tuiDateClamp,
-    TuiDateMode,
     TuiDay,
     TuiFocusableElementAccessor,
     tuiIsString,
@@ -42,7 +36,6 @@ import {
     TuiPrimitiveTextfieldComponent,
     TuiSizeL,
     TuiSizeS,
-    TuiTextfieldSizeDirective,
     TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
 import {TuiStringifiableItem} from '@taiga-ui/kit/classes';
@@ -82,6 +75,15 @@ export class TuiInputDateMultiComponent
     private readonly inputTag?: TuiInputTagComponent;
 
     private month: TuiMonth | null = null;
+    private readonly injector = inject(Injector);
+    private readonly dialogs = inject(TuiDialogService);
+    private readonly mobileCalendar = inject(TUI_MOBILE_CALENDAR, {optional: true});
+    private readonly options = inject(TUI_INPUT_DATE_OPTIONS);
+    private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
+    protected readonly dateTexts$ = inject(TUI_DATE_TEXTS);
+    protected override readonly valueTransformer = inject<
+        AbstractTuiValueTransformer<readonly TuiDay[]>
+    >(TUI_DATE_VALUE_TRANSFORMER, {optional: true});
 
     @Input()
     min: TuiDay | null = this.options.min;
@@ -123,41 +125,15 @@ export class TuiInputDateMultiComponent
 
     open = false;
 
+    readonly dateFormat = inject(TUI_DATE_FORMAT);
+    readonly dateSeparator = inject(TUI_DATE_SEPARATOR);
+    readonly isMobile = inject(TUI_IS_MOBILE);
+    readonly doneWord$ = inject(TUI_DONE_WORD);
     readonly filler$: Observable<string> = this.dateTexts$.pipe(
         map(dateTexts =>
             changeDateSeparator(dateTexts[this.dateFormat], this.dateSeparator),
         ),
     );
-
-    constructor(
-        @Optional()
-        @Self()
-        @Inject(NgControl)
-        control: NgControl | null,
-        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
-        @Inject(Injector) private readonly injector: Injector,
-        @Inject(TUI_IS_MOBILE) readonly isMobile: boolean,
-        @Inject(TuiDialogService)
-        private readonly dialogs: TuiDialogService,
-        @Optional()
-        @Inject(TUI_MOBILE_CALENDAR)
-        private readonly mobileCalendar: Type<Record<string, any>> | null,
-        @Inject(TUI_DATE_FORMAT) readonly dateFormat: TuiDateMode,
-        @Inject(TUI_DATE_SEPARATOR) readonly dateSeparator: string,
-        @Inject(TUI_DATE_TEXTS)
-        readonly dateTexts$: Observable<Record<TuiDateMode, string>>,
-        @Optional()
-        @Inject(TUI_DATE_VALUE_TRANSFORMER)
-        override readonly valueTransformer: AbstractTuiValueTransformer<
-            readonly TuiDay[]
-        > | null,
-        @Inject(TUI_INPUT_DATE_OPTIONS) private readonly options: TuiInputDateOptions,
-        @Inject(TUI_TEXTFIELD_SIZE)
-        private readonly textfieldSize: TuiTextfieldSizeDirective,
-        @Inject(TUI_DONE_WORD) readonly doneWord$: Observable<string>,
-    ) {
-        super(control, cdr, valueTransformer);
-    }
 
     @Input()
     tagValidator: TuiBooleanHandler<string> = (tag: TuiDay | string) => {

@@ -2,13 +2,12 @@ import {
     ChangeDetectionStrategy,
     Component,
     EventEmitter,
-    Inject,
+    inject,
     Input,
     Output,
 } from '@angular/core';
 import {tuiIsObserved, tuiIsString} from '@taiga-ui/cdk';
-import {TUI_CLOSE_WORD, TUI_COMMON_ICONS, TuiCommonIcons} from '@taiga-ui/core';
-import {Observable} from 'rxjs';
+import {TUI_CLOSE_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core';
 
 @Component({
     selector: 'tui-push',
@@ -32,10 +31,8 @@ export class TuiPushComponent {
 
     readonly isString = tuiIsString;
 
-    constructor(
-        @Inject(TUI_CLOSE_WORD) readonly closeWord$: Observable<string>,
-        @Inject(TUI_COMMON_ICONS) readonly icons: TuiCommonIcons,
-    ) {}
+    readonly closeWord$ = inject(TUI_CLOSE_WORD);
+    readonly icons = inject(TUI_COMMON_ICONS);
 
     get closeable(): boolean {
         return tuiIsObserved(this.close);

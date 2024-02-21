@@ -2,24 +2,14 @@ import {
     ChangeDetectionStrategy,
     Component,
     EventEmitter,
-    Inject,
+    inject,
     Input,
     Output,
 } from '@angular/core';
 import {TUI_TABLE_PAGINATION_TEXTS} from '@taiga-ui/addon-table/tokens';
-import {
-    TUI_COMMON_ICONS,
-    TUI_SPIN_ICONS,
-    TUI_SPIN_TEXTS,
-    TuiCommonIcons,
-    TuiSpinIcons,
-} from '@taiga-ui/core';
-import {Observable} from 'rxjs';
+import {TUI_COMMON_ICONS, TUI_SPIN_ICONS, TUI_SPIN_TEXTS} from '@taiga-ui/core';
 
-import {
-    TUI_TABLE_PAGINATION_OPTIONS,
-    TuiTablePaginationOptions,
-} from './table-pagination.options';
+import {TUI_TABLE_PAGINATION_OPTIONS} from './table-pagination.options';
 
 export interface TuiTablePagination {
     readonly page: number;
@@ -33,6 +23,8 @@ export interface TuiTablePagination {
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiTablePaginationComponent {
+    protected readonly options = inject(TUI_TABLE_PAGINATION_OPTIONS);
+
     @Input()
     items: readonly number[] = this.options.items;
 
@@ -64,14 +56,10 @@ export class TuiTablePaginationComponent {
 
     open = false;
 
-    constructor(
-        @Inject(TUI_SPIN_ICONS) readonly icons: TuiSpinIcons,
-        @Inject(TUI_SPIN_TEXTS) readonly spinTexts$: Observable<[string, string]>,
-        @Inject(TUI_TABLE_PAGINATION_TEXTS)
-        readonly texts$: Observable<Record<'linesPerPage' | 'of' | 'pages', string>>,
-        @Inject(TUI_TABLE_PAGINATION_OPTIONS) readonly options: TuiTablePaginationOptions,
-        @Inject(TUI_COMMON_ICONS) readonly commonIcons: TuiCommonIcons,
-    ) {}
+    readonly icons = inject(TUI_SPIN_ICONS);
+    readonly spinTexts$ = inject(TUI_SPIN_TEXTS);
+    readonly texts$ = inject(TUI_TABLE_PAGINATION_TEXTS);
+    readonly commonIcons = inject(TUI_COMMON_ICONS);
 
     get pages(): number {
         return Math.ceil(this.total / this.size);

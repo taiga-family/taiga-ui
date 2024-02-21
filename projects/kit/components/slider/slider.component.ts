@@ -4,11 +4,9 @@ import {
     Component,
     ElementRef,
     HostBinding,
-    Inject,
+    inject,
     Injector,
     Input,
-    Optional,
-    Self,
 } from '@angular/core';
 import {NgControl, NgModel} from '@angular/forms';
 import {tuiPure, tuiWatch} from '@taiga-ui/cdk';
@@ -16,7 +14,7 @@ import {TuiSizeS} from '@taiga-ui/core';
 import {take} from 'rxjs';
 
 import {TuiSliderKeyStepsDirective} from './helpers/slider-key-steps.directive';
-import {TUI_SLIDER_OPTIONS, TuiSliderOptions} from './slider.options';
+import {TUI_SLIDER_OPTIONS} from './slider.options';
 
 @Component({
     /**
@@ -41,6 +39,10 @@ import {TUI_SLIDER_OPTIONS, TuiSliderOptions} from './slider.options';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiSliderComponent {
+    private readonly injector = inject(Injector);
+    private readonly control = inject(NgControl, {self: true, optional: true});
+    protected readonly options = inject(TUI_SLIDER_OPTIONS);
+
     @Input()
     @HostBinding('attr.data-size')
     size: TuiSizeS = this.options.size;
@@ -48,34 +50,34 @@ export class TuiSliderComponent {
     @Input()
     segments = 1;
 
+    readonly el: HTMLInputElement = inject(ElementRef).nativeElement;
+
     get min(): number {
-        return Number(this.el.nativeElement.min);
+        return Number(this.el.min);
     }
 
     get max(): number {
-        return Number(this.el.nativeElement.max || 100);
+        return Number(this.el.max || 100);
     }
 
     get step(): number {
-        return Number(this.el.nativeElement.step) || 1;
+        return Number(this.el.step) || 1;
     }
 
     get value(): number {
-        const {el, control, hasKeySteps} = this;
-
-        if (!hasKeySteps && control instanceof NgModel) {
+        if (!this.hasKeySteps && this.control instanceof NgModel) {
             /**
              * If developer uses `[(ngModel)]` and programmatically change value,
              * the `el.nativeElement.value` is equal to the previous value at this moment.
              */
-            return control.viewModel;
+            return this.control.viewModel;
         }
 
-        return Number(el.nativeElement.value) || 0;
+        return Number(this.el.value) || 0;
     }
 
     set value(newValue: number) {
-        this.el.nativeElement.value = `${newValue}`;
+        this.el.value = `${newValue}`;
     }
 
     @HostBinding('style.--tui-slider-fill-ratio')
@@ -98,17 +100,8 @@ export class TuiSliderComponent {
         return Boolean(this.injector.get(TuiSliderKeyStepsDirective, null));
     }
 
-    constructor(
-        @Optional()
-        @Self()
-        @Inject(NgControl)
-        private readonly control: NgControl | null,
-        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
-        @Inject(TUI_SLIDER_OPTIONS) readonly options: TuiSliderOptions,
-        @Inject(ElementRef) readonly el: ElementRef<HTMLInputElement>,
-        @Inject(Injector) private readonly injector: Injector,
-    ) {
-        if (control instanceof NgModel) {
+    constructor() {
+        if (this.control instanceof NgModel) {
             /**
              * The ValueAccessor.writeValue method is called twice on any value accessor during component initialization,
              * when a control is bound using [(ngModel)], first time with a phantom null value.
@@ -116,7 +109,9 @@ export class TuiSliderComponent {
              * ___
              * See this {@link https://github.com/angular/angular/issues/14988 issue}
              */
-            control.valueChanges?.pipe(tuiWatch(cdr), take(1)).subscribe();
+            this.control.valueChanges
+                ?.pipe(tuiWatch(inject(ChangeDetectorRef)), take(1))
+                .subscribe();
         }
     }
 }

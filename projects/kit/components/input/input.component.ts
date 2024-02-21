@@ -1,19 +1,14 @@
 import {
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
     ContentChild,
     HostBinding,
-    Inject,
-    Optional,
-    Self,
+    inject,
     TemplateRef,
     ViewChild,
 } from '@angular/core';
-import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
-    AbstractTuiValueTransformer,
     TuiActiveZoneDirective,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
@@ -30,7 +25,6 @@ import {
     TuiPrimitiveTextfieldComponent,
     TuiSizeL,
     TuiSizeS,
-    TuiTextfieldSizeDirective,
 } from '@taiga-ui/core';
 import {
     FIXED_DROPDOWN_CONTROLLER_PROVIDER,
@@ -61,25 +55,12 @@ export class TuiInputComponent
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
+    private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
+
     @ContentChild(TuiDataListDirective, {read: TemplateRef})
     readonly datalist: PolymorpheusContent<TuiContext<TuiActiveZoneDirective>>;
 
     open = false;
-
-    constructor(
-        @Optional()
-        @Self()
-        @Inject(NgControl)
-        control: NgControl | null,
-        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
-        @Inject(TUI_TEXTFIELD_SIZE)
-        private readonly textfieldSize: TuiTextfieldSizeDirective,
-        @Optional()
-        @Inject(AbstractTuiValueTransformer)
-        valueTransformer?: AbstractTuiValueTransformer<string> | null,
-    ) {
-        super(control, cdr, valueTransformer);
-    }
 
     @HostBinding('attr.data-size')
     get size(): TuiSizeL | TuiSizeS {

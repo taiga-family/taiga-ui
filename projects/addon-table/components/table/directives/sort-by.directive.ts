@@ -1,7 +1,7 @@
 import {
     ContentChildren,
     Directive,
-    Inject,
+    inject,
     Input,
     Output,
     QueryList,
@@ -20,6 +20,8 @@ export class TuiSortByDirective<T extends Partial<Record<keyof T, any>>> {
     @ContentChildren(TuiSortableDirective, {descendants: true})
     private readonly sortables: QueryList<TuiSortableDirective<T>> = EMPTY_QUERY;
 
+    private readonly table = inject(TuiTableDirective<T>);
+
     @Input('tuiSortBy')
     set sortBy(sortBy: string | keyof T | null) {
         this.tuiSortBy = sortBy;
@@ -35,10 +37,6 @@ export class TuiSortByDirective<T extends Partial<Record<keyof T, any>>> {
     );
 
     tuiSortBy: string | keyof T | null = null;
-
-    constructor(
-        @Inject(TuiTableDirective) private readonly table: TuiTableDirective<T>,
-    ) {}
 
     checkSortables(): void {
         this.sortables.forEach(s => s.check());

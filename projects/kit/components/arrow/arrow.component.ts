@@ -1,20 +1,13 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    HostBinding,
-    Inject,
-    Optional,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, HostBinding, inject} from '@angular/core';
 import {
     TUI_TEXTFIELD_SIZE,
     TuiDropdownOpenDirective,
     TuiHostedDropdownComponent,
     tuiSizeBigger,
-    TuiTextfieldSizeDirective,
 } from '@taiga-ui/core';
 import {PolymorpheusComponent, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-import {TUI_ARROW_OPTIONS, TuiArrowOptions} from './arrow.options';
+import {TUI_ARROW_OPTIONS} from './arrow.options';
 
 @Component({
     selector: 'tui-arrow',
@@ -23,17 +16,10 @@ import {TUI_ARROW_OPTIONS, TuiArrowOptions} from './arrow.options';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiArrowComponent {
-    constructor(
-        @Optional()
-        @Inject(TuiDropdownOpenDirective)
-        readonly directive: TuiDropdownOpenDirective | null,
-        @Optional()
-        @Inject(TuiHostedDropdownComponent)
-        readonly component: TuiHostedDropdownComponent | null,
-        @Inject(TUI_TEXTFIELD_SIZE)
-        private readonly textfieldSize: TuiTextfieldSizeDirective,
-        @Inject(TUI_ARROW_OPTIONS) private readonly options: TuiArrowOptions,
-    ) {}
+    private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
+    private readonly options = inject(TUI_ARROW_OPTIONS);
+    readonly directive = inject(TuiDropdownOpenDirective, {optional: true});
+    readonly component = inject(TuiHostedDropdownComponent, {optional: true});
 
     @HostBinding('class._rotated')
     get rotated(): boolean {

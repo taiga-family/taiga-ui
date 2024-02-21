@@ -1,6 +1,6 @@
-import {Directive, Inject, OnInit, Self} from '@angular/core';
+import {Directive, inject, OnInit} from '@angular/core';
 import {TuiDestroyService} from '@taiga-ui/cdk';
-import {distinctUntilChanged, merge, Observable, takeUntil} from 'rxjs';
+import {distinctUntilChanged, merge, takeUntil} from 'rxjs';
 
 import {TuiDriver} from './driver';
 import {TuiVehicle} from './vehicle';
@@ -9,11 +9,9 @@ import {TuiVehicle} from './vehicle';
 export abstract class AbstractTuiDriverDirective implements OnInit {
     abstract type: string;
 
-    constructor(
-        @Self() @Inject(TuiDestroyService) private readonly destroy$: Observable<unknown>,
-        @Inject(TuiDriver) private readonly drivers: TuiDriver[],
-        @Inject(TuiVehicle) private readonly vehicles: TuiVehicle[],
-    ) {}
+    private readonly destroy$ = inject(TuiDestroyService, {self: true});
+    private readonly drivers: readonly TuiDriver[] = inject<any>(TuiDriver);
+    private readonly vehicles: readonly TuiVehicle[] = inject<any>(TuiVehicle);
 
     ngOnInit(): void {
         const vehicle = this.vehicles.find(({type}) => type === this.type);

@@ -1,5 +1,5 @@
-import {ChangeDetectionStrategy, Component, Inject, Input} from '@angular/core';
-import {TuiStringHandler} from '@taiga-ui/cdk';
+import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
+import type {TuiStringHandler} from '@taiga-ui/cdk';
 import {TUI_ICON_RESOLVER} from '@taiga-ui/core';
 
 @Component({
@@ -22,5 +22,5 @@ export class TuiIconComponent {
     @Input()
     background = '';
 
-    constructor(@Inject(TUI_ICON_RESOLVER) readonly resolver: TuiStringHandler<string>) {}
+    readonly resolver = inject<TuiStringHandler<string>>(TUI_ICON_RESOLVER);
 }

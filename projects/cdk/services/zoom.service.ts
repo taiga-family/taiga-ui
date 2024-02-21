@@ -1,5 +1,5 @@
-import {ElementRef, Inject, Injectable} from '@angular/core';
-import {TuiZoom, TuiZoomOptions} from '@taiga-ui/cdk/interfaces';
+import {ElementRef, inject, Injectable} from '@angular/core';
+import {TuiZoom} from '@taiga-ui/cdk/interfaces';
 import {tuiPreventDefault, tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
 import {TUI_ZOOM_OPTIONS} from '@taiga-ui/cdk/tokens';
 import {tuiDistanceBetweenTouches} from '@taiga-ui/cdk/utils';
@@ -9,10 +9,10 @@ const TOUCH_SENSITIVITY = 0.01;
 
 @Injectable()
 export class TuiZoomService extends Observable<TuiZoom> {
-    constructor(
-        @Inject(ElementRef) {nativeElement}: ElementRef<HTMLElement>,
-        @Inject(TUI_ZOOM_OPTIONS) {wheelSensitivity}: TuiZoomOptions,
-    ) {
+    constructor() {
+        const nativeElement = inject(ElementRef<HTMLElement>).nativeElement;
+        const {wheelSensitivity} = inject(TUI_ZOOM_OPTIONS);
+
         super(subscriber => {
             merge(
                 tuiTypedFromEvent(nativeElement, 'touchstart', {passive: true}).pipe(

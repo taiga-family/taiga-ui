@@ -1,5 +1,5 @@
 import {DOCUMENT} from '@angular/common';
-import {Inject, Injectable} from '@angular/core';
+import {inject, Injectable} from '@angular/core';
 import {tuiGetNativeFocused, tuiIsHTMLElement} from '@taiga-ui/cdk';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {BehaviorSubject, EMPTY, Observable} from 'rxjs';
@@ -15,12 +15,9 @@ import {TUI_SHEET_OPTIONS, TuiSheetOptions} from './sheet-options';
     providedIn: 'root',
 })
 export class TuiSheetService {
+    private readonly doc = inject(DOCUMENT);
+    private readonly options = inject<TuiSheetOptions>(TUI_SHEET_OPTIONS);
     readonly sheets$ = new BehaviorSubject<Array<TuiSheet<any, any>>>([]);
-
-    constructor(
-        @Inject(DOCUMENT) private readonly doc: Document,
-        @Inject(TUI_SHEET_OPTIONS) private readonly options: TuiSheetOptions,
-    ) {}
 
     open<G>(
         content: PolymorpheusContent<TuiSheet<G>>,

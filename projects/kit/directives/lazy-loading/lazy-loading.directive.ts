@@ -3,7 +3,7 @@ import {
     ElementRef,
     HostBinding,
     HostListener,
-    Inject,
+    inject,
     Input,
 } from '@angular/core';
 import {SafeResourceUrl} from '@angular/platform-browser';
@@ -17,6 +17,9 @@ import {TuiLazyLoadingService} from './lazy-loading.service';
     providers: [TuiLazyLoadingService, IntersectionObserverService, TuiDestroyService],
 })
 export class TuiLazyLoadingDirective {
+    private readonly el: HTMLImageElement = inject(ElementRef).nativeElement;
+    private readonly src$ = inject(TuiLazyLoadingService);
+
     @Input('src')
     set srcSetter(src: SafeResourceUrl | string) {
         this.src = this.supported ? src : null;
@@ -32,12 +35,7 @@ export class TuiLazyLoadingDirective {
     @HostBinding('attr.src')
     src: SafeResourceUrl | string | null = null;
 
-    constructor(
-        @Inject(TuiLazyLoadingService)
-        private readonly src$: TuiLazyLoadingService,
-        @Inject(ElementRef)
-        private readonly el: ElementRef<HTMLImageElement>,
-    ) {
+    constructor() {
         if (!this.supported) {
             this.src$.subscribe(src => {
                 this.src = src;
@@ -46,7 +44,7 @@ export class TuiLazyLoadingDirective {
     }
 
     private get supported(): boolean {
-        return 'loading' in this.el.nativeElement;
+        return 'loading' in this.el;
     }
 
     @HostListener('load')

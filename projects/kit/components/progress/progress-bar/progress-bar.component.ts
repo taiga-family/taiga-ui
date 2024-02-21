@@ -2,17 +2,10 @@ import {
     ChangeDetectionStrategy,
     Component,
     HostBinding,
-    Inject,
+    inject,
     Input,
 } from '@angular/core';
-import {
-    MODE_PROVIDER,
-    TUI_MODE,
-    TuiBrightness,
-    TuiSizeXS,
-    TuiSizeXXL,
-} from '@taiga-ui/core';
-import {Observable} from 'rxjs';
+import {MODE_PROVIDER, TUI_MODE, TuiSizeXS, TuiSizeXXL} from '@taiga-ui/core';
 
 @Component({
     selector: 'progress[tuiProgressBar]',
@@ -33,5 +26,5 @@ export class TuiProgressBarComponent {
     @HostBinding('attr.data-size')
     size: TuiSizeXS | TuiSizeXXL = 'm';
 
-    constructor(@Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>) {}
+    readonly mode$ = inject(TUI_MODE);
 }

@@ -1,15 +1,11 @@
 import {
-    ChangeDetectorRef,
     Directive,
     ElementRef,
     forwardRef,
     HostListener,
-    Inject,
+    inject,
     Input,
-    Optional,
-    Self,
 } from '@angular/core';
-import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
     tuiAssert,
@@ -38,11 +34,16 @@ export class TuiSliderKeyStepsDirective
     extends AbstractTuiControl<number>
     implements TuiFocusableElementAccessor
 {
+    private readonly el: HTMLInputElement = inject(ElementRef).nativeElement;
+    private readonly slider = inject<TuiSliderComponent>(
+        forwardRef(() => TuiSliderComponent),
+    );
+
     @Input()
     keySteps!: TuiKeySteps;
 
     get nativeFocusableElement(): HTMLInputElement | null {
-        return this.computedDisabled ? null : this.el.nativeElement;
+        return this.computedDisabled ? null : this.el;
     }
 
     get focused(): boolean {
@@ -55,19 +56,6 @@ export class TuiSliderKeyStepsDirective
 
     get max(): number {
         return this.keySteps[this.keySteps.length - 1][1];
-    }
-
-    constructor(
-        @Optional()
-        @Self()
-        @Inject(NgControl)
-        control: NgControl | null,
-        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
-        @Inject(ElementRef) private readonly el: ElementRef<HTMLInputElement>,
-        @Inject(forwardRef(() => TuiSliderComponent))
-        private readonly slider: TuiSliderComponent,
-    ) {
-        super(control, cdr);
     }
 
     @HostListener('input')

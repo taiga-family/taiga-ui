@@ -1,21 +1,16 @@
 import {
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
     HostBinding,
     HostListener,
-    Inject,
+    inject,
     Input,
-    Optional,
-    Self,
     ViewChild,
 } from '@angular/core';
-import {NgControl} from '@angular/forms';
 import {MaskitoOptions} from '@maskito/core';
 import {maskitoDateTimeOptionsGenerator} from '@maskito/kit';
 import {
     AbstractTuiControl,
-    AbstractTuiValueTransformer,
     ALWAYS_FALSE_HANDLER,
     changeDateSeparator,
     DATE_FILLER_LENGTH,
@@ -44,7 +39,6 @@ import {
     TuiPrimitiveTextfieldComponent,
     TuiSizeL,
     TuiSizeS,
-    TuiTextfieldSizeDirective,
     TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
 import {
@@ -81,7 +75,15 @@ export class TuiInputDateTimeComponent
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
+    private readonly options = inject(TUI_INPUT_DATE_OPTIONS);
+    private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
     private month: TuiMonth | null = null;
+    protected readonly timeTexts$ = inject(TUI_TIME_TEXTS);
+    protected readonly dateTexts$ = inject(TUI_DATE_TEXTS);
+    protected override readonly valueTransformer = inject(
+        TUI_DATE_TIME_VALUE_TRANSFORMER,
+        {optional: true},
+    );
 
     @Input()
     min: TuiDay | [TuiDay | null, TuiTime | null] | null = this.options.min;
@@ -111,31 +113,10 @@ export class TuiInputDateTimeComponent
         this.timeTexts$.pipe(map(texts => texts[this.timeMode])),
     ]).pipe(map(fillers => this.getDateTimeString(...fillers)));
 
-    constructor(
-        @Optional()
-        @Self()
-        @Inject(NgControl)
-        control: NgControl | null,
-        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
-        @Inject(TUI_DATE_FORMAT) readonly dateFormat: TuiDateMode,
-        @Inject(TUI_DATE_SEPARATOR) readonly dateSeparator: string,
-        @Inject(TUI_TIME_TEXTS)
-        readonly timeTexts$: Observable<Record<TuiTimeMode, string>>,
-        @Inject(TUI_DATE_TEXTS)
-        readonly dateTexts$: Observable<Record<TuiDateMode, string>>,
-        @Optional()
-        @Inject(TUI_DATE_TIME_VALUE_TRANSFORMER)
-        override readonly valueTransformer: AbstractTuiValueTransformer<
-            [TuiDay | null, TuiTime | null]
-        > | null,
-        @Inject(TUI_INPUT_DATE_OPTIONS) private readonly options: TuiInputDateOptions,
-        @Inject(TUI_IS_MOBILE) readonly isMobile: boolean,
-        @Inject(TUI_IS_IOS) readonly isIos: boolean,
-        @Inject(TUI_TEXTFIELD_SIZE)
-        private readonly textfieldSize: TuiTextfieldSizeDirective,
-    ) {
-        super(control, cdr, valueTransformer);
-    }
+    readonly dateFormat = inject(TUI_DATE_FORMAT);
+    readonly dateSeparator = inject(TUI_DATE_SEPARATOR);
+    readonly isMobile = inject(TUI_IS_MOBILE);
+    readonly isIos = inject(TUI_IS_IOS);
 
     @HostBinding('attr.data-size')
     get size(): TuiSizeL | TuiSizeS {

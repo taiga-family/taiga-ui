@@ -1,9 +1,7 @@
-import {ChangeDetectionStrategy, Component, Inject, NgZone} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, NgZone} from '@angular/core';
 import {tuiClamp} from '@taiga-ui/cdk';
 import {tuiZonefulMap} from '@taiga-ui/core';
-import {Observable} from 'rxjs';
 
-import {TuiSheetRequiredProps} from '../../sheet';
 import {TUI_SHEET, TUI_SHEET_SCROLL} from '../../sheet-tokens';
 
 @Component({
@@ -13,15 +11,13 @@ import {TUI_SHEET, TUI_SHEET_SCROLL} from '../../sheet-tokens';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiSheetBarComponent {
+    private readonly sheet = inject(TUI_SHEET);
+    private readonly scroll$ = inject(TUI_SHEET_SCROLL);
+    private readonly zone = inject(NgZone);
+
     readonly rotate$ = this.scroll$.pipe(
         tuiZonefulMap(y => tuiClamp(10 - (y - this.stop) / 5, 0, 10), this.zone),
     );
-
-    constructor(
-        @Inject(TUI_SHEET) private readonly sheet: TuiSheetRequiredProps,
-        @Inject(TUI_SHEET_SCROLL) private readonly scroll$: Observable<number>,
-        @Inject(NgZone) private readonly zone: NgZone,
-    ) {}
 
     private get stop(): number {
         return this.sheet.stops[0] || 0;

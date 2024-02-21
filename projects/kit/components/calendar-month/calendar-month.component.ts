@@ -3,7 +3,7 @@ import {
     Component,
     EventEmitter,
     HostBinding,
-    Inject,
+    inject,
     Input,
     Output,
 } from '@angular/core';
@@ -23,7 +23,6 @@ import {TuiInteractiveState, TuiRangeState, TuiWithOptionalMinMax} from '@taiga-
 import {TuiMonthContext} from '@taiga-ui/kit/interfaces';
 import {TUI_CALENDAR_MONTHS} from '@taiga-ui/kit/tokens';
 import {TuiBooleanHandlerWithContext} from '@taiga-ui/kit/types';
-import {Observable} from 'rxjs';
 
 const TODAY = TuiDay.currentLocal();
 
@@ -64,9 +63,7 @@ export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth
     hoveredItem: TuiMonth | null = null;
     pressedItem: TuiMonth | null = null;
 
-    constructor(
-        @Inject(TUI_CALENDAR_MONTHS) readonly months$: Observable<readonly string[]>,
-    ) {}
+    readonly months$ = inject(TUI_CALENDAR_MONTHS);
 
     @HostBinding('class._single')
     get isSingle(): boolean {

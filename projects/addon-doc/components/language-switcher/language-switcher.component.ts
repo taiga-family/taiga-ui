@@ -1,5 +1,5 @@
 import {NgForOf, TitleCasePipe} from '@angular/common';
-import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {
     tuiCapitalizeFirstLetter,
@@ -30,6 +30,10 @@ import {TuiSelectModule} from '@taiga-ui/kit';
     ],
 })
 export class TuiLanguageSwitcherComponent {
+    private readonly flagPipe = inject(TuiFlagPipe);
+
+    readonly switcher = inject(TuiLanguageSwitcher);
+
     readonly language = new FormControl(tuiCapitalizeFirstLetter(this.switcher.language));
 
     readonly flags = new Map<TuiLanguageName, TuiCountryIsoCode>([
@@ -52,11 +56,6 @@ export class TuiLanguageSwitcherComponent {
     ]);
 
     readonly names: TuiLanguageName[] = Array.from(this.flags.keys());
-
-    constructor(
-        @Inject(TuiLanguageSwitcher) readonly switcher: TuiLanguageSwitcher,
-        @Inject(TuiFlagPipe) private readonly flagPipe: TuiFlagPipe,
-    ) {}
 
     /**
      * @deprecated use `<img [src]="countryIsoCode | tuiFlagPipe" />`

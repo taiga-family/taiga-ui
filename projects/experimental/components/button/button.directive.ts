@@ -2,22 +2,20 @@ import {
     ChangeDetectionStrategy,
     Component,
     Directive,
-    Inject,
+    inject,
     Input,
     ViewEncapsulation,
 } from '@angular/core';
-import {TuiDirectiveStylesService} from '@taiga-ui/cdk';
+import {tuiWithStyles} from '@taiga-ui/cdk';
 import {
     MODE_PROVIDER,
     TUI_MODE,
     TuiAppearanceDirective,
     tuiAppearanceOptionsProvider,
-    TuiBrightness,
     TuiIconsDirective,
 } from '@taiga-ui/core';
-import {Observable} from 'rxjs';
 
-import {TUI_BUTTON_OPTIONS, TuiButtonOptions} from './button.options';
+import {TUI_BUTTON_OPTIONS} from './button.options';
 
 @Component({
     template: '',
@@ -54,14 +52,11 @@ export class TuiButtonStylesComponent {}
     },
 })
 export class TuiButtonDirective {
+    private readonly options = inject(TUI_BUTTON_OPTIONS);
+    protected readonly nothing = tuiWithStyles(TuiButtonStylesComponent);
+
     @Input()
     size = this.options.size;
 
-    constructor(
-        @Inject(TUI_BUTTON_OPTIONS) private readonly options: TuiButtonOptions,
-        @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
-        @Inject(TuiDirectiveStylesService) directiveStyles: TuiDirectiveStylesService,
-    ) {
-        directiveStyles.addComponent(TuiButtonStylesComponent);
-    }
+    readonly mode$ = inject(TUI_MODE);
 }

@@ -1,21 +1,21 @@
 ```ts
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import {TuiAlertService} from '@taiga-ui/core';
-import {Injector} from '@angular/core';
+import {inject, Injector} from '@angular/core';
 
 import {CustomNotificationComponent} from './custom-notification.component';
 
 //...
 export class MyComponent {
-  constructor(
-    @Inject(Injector) private injector: Injector,
-    @Inject(TuiAlertService) private readonly alerts: TuiAlertService,
-  ) {
+  constructor() {
     //...
-    this.alerts
-      .open(new PolymorpheusComponent(CustomNotificationComponent, this.injector), {label: 'Heading'})
+    inject(TuiAlertService)
+      .open(new PolymorpheusComponent(CustomNotificationComponent, inject(Injector)), {
+        label: 'Heading',
+      })
       .subscribe();
   }
+
   //...
 }
 ```

@@ -1,9 +1,9 @@
-import {Component, Inject} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDocExample, TuiRawLoaderContent} from '@taiga-ui/addon-doc';
-import {TUI_RATING_OPTIONS, TuiRatingOptions} from '@taiga-ui/kit';
+import {TUI_RATING_OPTIONS} from '@taiga-ui/kit';
 
 @Component({
     selector: 'example-rating',
@@ -13,6 +13,8 @@ import {TUI_RATING_OPTIONS, TuiRatingOptions} from '@taiga-ui/kit';
     changeDetection,
 })
 export class ExampleTuiRatingComponent {
+    private readonly options = inject(TUI_RATING_OPTIONS);
+
     readonly exampleModule: TuiRawLoaderContent = import(
         './examples/import/import-module.md?raw'
     );
@@ -69,8 +71,6 @@ export class ExampleTuiRatingComponent {
     readOnly = false;
     min = 0;
     max = 10;
-
-    constructor(@Inject(TUI_RATING_OPTIONS) private readonly options: TuiRatingOptions) {}
 
     get disabled(): boolean {
         return this.control.disabled;

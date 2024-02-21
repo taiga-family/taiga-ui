@@ -1,23 +1,17 @@
 import {
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
     HostBinding,
     HostListener,
-    Inject,
+    inject,
     Injector,
     Input,
-    Optional,
-    Self,
-    Type,
     ViewChild,
 } from '@angular/core';
-import {NgControl} from '@angular/forms';
 import {MASKITO_DEFAULT_OPTIONS, MaskitoOptions} from '@maskito/core';
 import {maskitoDateRangeOptionsGenerator} from '@maskito/kit';
 import {
     AbstractTuiNullableControl,
-    AbstractTuiValueTransformer,
     ALWAYS_FALSE_HANDLER,
     changeDateSeparator,
     DATE_FILLER_LENGTH,
@@ -50,7 +44,6 @@ import {
     TuiPrimitiveTextfieldComponent,
     TuiSizeL,
     TuiSizeS,
-    TuiTextfieldSizeDirective,
     TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
 import {TuiDayRangePeriod} from '@taiga-ui/kit/classes';
@@ -67,7 +60,7 @@ import {
     TuiInputDateOptions,
 } from '@taiga-ui/kit/tokens';
 import {PolymorpheusComponent, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {map, Observable, takeUntil} from 'rxjs';
+import {map, takeUntil} from 'rxjs';
 
 @Component({
     selector: 'tui-input-date-range',
@@ -86,6 +79,18 @@ export class TuiInputDateRangeComponent
 {
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
+
+    private readonly injector = inject(Injector);
+    private readonly isMobile = inject(TUI_IS_MOBILE);
+    private readonly dialogs = inject(TuiDialogService);
+    private readonly mobileCalendar = inject(TUI_MOBILE_CALENDAR, {optional: true});
+    private readonly options = inject(TUI_INPUT_DATE_OPTIONS);
+    private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
+    protected readonly dateTexts$ = inject(TUI_DATE_TEXTS);
+    protected override readonly valueTransformer = inject(
+        TUI_DATE_RANGE_VALUE_TRANSFORMER,
+        {optional: true},
+    );
 
     @Input()
     disabledItemHandler: TuiBooleanHandler<TuiDay> = ALWAYS_FALSE_HANDLER;
@@ -124,32 +129,8 @@ export class TuiInputDateRangeComponent
         ),
     );
 
-    constructor(
-        @Optional()
-        @Self()
-        @Inject(NgControl)
-        control: NgControl | null,
-        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
-        @Inject(Injector) private readonly injector: Injector,
-        @Inject(TUI_IS_MOBILE) private readonly isMobile: boolean,
-        @Inject(TuiDialogService)
-        private readonly dialogs: TuiDialogService,
-        @Optional()
-        @Inject(TUI_MOBILE_CALENDAR)
-        private readonly mobileCalendar: Type<Record<string, any>> | null,
-        @Inject(TUI_DATE_FORMAT) readonly dateFormat: TuiDateMode,
-        @Inject(TUI_DATE_SEPARATOR) readonly dateSeparator: string,
-        @Inject(TUI_DATE_TEXTS)
-        readonly dateTexts$: Observable<Record<TuiDateMode, string>>,
-        @Optional()
-        @Inject(TUI_DATE_RANGE_VALUE_TRANSFORMER)
-        override readonly valueTransformer: AbstractTuiValueTransformer<TuiDayRange | null> | null,
-        @Inject(TUI_INPUT_DATE_OPTIONS) private readonly options: TuiInputDateOptions,
-        @Inject(TUI_TEXTFIELD_SIZE)
-        private readonly textfieldSize: TuiTextfieldSizeDirective,
-    ) {
-        super(control, cdr, valueTransformer);
-    }
+    readonly dateFormat = inject(TUI_DATE_FORMAT);
+    readonly dateSeparator = inject(TUI_DATE_SEPARATOR);
 
     @HostBinding('attr.data-size')
     get size(): TuiSizeL | TuiSizeS {

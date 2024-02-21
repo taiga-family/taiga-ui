@@ -5,7 +5,7 @@ import {
     ContentChild,
     ContentChildren,
     forwardRef,
-    Inject,
+    inject,
     QueryList,
 } from '@angular/core';
 import {EMPTY_QUERY} from '@taiga-ui/cdk';
@@ -33,10 +33,7 @@ export class TuiThGroupComponent<T extends Partial<Record<keyof T, any>>>
 
     heads$: Observable<Record<any, TuiHeadDirective<T>>> | null = null;
 
-    constructor(
-        @Inject(forwardRef(() => TuiTableDirective))
-        readonly table: TuiTableDirective<T>,
-    ) {}
+    readonly table = inject<TuiTableDirective<T>>(forwardRef(() => TuiTableDirective));
 
     ngAfterContentInit(): void {
         this.heads$ = this.heads.changes.pipe(

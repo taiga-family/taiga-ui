@@ -1,20 +1,15 @@
 import {APP_BASE_HREF, DOCUMENT} from '@angular/common';
-import {Component, Inject, OnInit, Self, ViewEncapsulation} from '@angular/core';
+import {Component, inject, OnInit, ViewEncapsulation} from '@angular/core';
 import {NavigationEnd, Router} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {LOCAL_STORAGE} from '@ng-web-apis/common';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
-import {TUI_DOC_PAGE_LOADED} from '@taiga-ui/addon-doc';
 import {TuiDestroyService} from '@taiga-ui/cdk';
-import {distinctUntilChanged, filter, map, Observable, takeUntil} from 'rxjs';
+import {distinctUntilChanged, filter, map, takeUntil} from 'rxjs';
 
 import {AbstractDemoComponent, DEMO_PAGE_LOADED_PROVIDER} from './abstract.app';
 import {YaMetrikaService} from './metrika/metrika.service';
-import {
-    TUI_SELECTED_VERSION_META,
-    TUI_VERSION_MANAGER_PROVIDERS,
-} from './version-manager/version-manager.providers';
-import {TuiVersionMeta} from './version-manager/versions.constants';
+import {TUI_VERSION_MANAGER_PROVIDERS} from './version-manager/version-manager.providers';
 
 @Component({
     selector: 'app',
@@ -30,23 +25,17 @@ import {TuiVersionMeta} from './version-manager/versions.constants';
     ],
 })
 export class AppComponent extends AbstractDemoComponent implements OnInit {
+    private readonly destroy$ = inject(TuiDestroyService, {self: true});
+    private readonly doc = inject(DOCUMENT);
+    private readonly appBaseHref = inject(APP_BASE_HREF);
+    private readonly ym = inject(YaMetrikaService);
+    protected readonly router = inject(Router);
+    protected readonly storage = inject(LOCAL_STORAGE);
+
     readonly isLanding$ = this.router.events.pipe(
         map(() => this.router.routerState.snapshot.url === '/'),
         distinctUntilChanged(),
     );
-
-    constructor(
-        @Inject(TUI_DOC_PAGE_LOADED) pageLoaded$: Observable<boolean>,
-        @Inject(TUI_SELECTED_VERSION_META) selectedVersion: TuiVersionMeta | null,
-        @Inject(Router) protected readonly router: Router,
-        @Inject(LOCAL_STORAGE) protected readonly storage: Storage,
-        @Self() @Inject(TuiDestroyService) private readonly destroy$: Observable<void>,
-        @Inject(DOCUMENT) private readonly doc: Document,
-        @Inject(APP_BASE_HREF) private readonly appBaseHref: string,
-        @Inject(YaMetrikaService) private readonly ym: YaMetrikaService,
-    ) {
-        super(pageLoaded$, selectedVersion);
-    }
 
     override async ngOnInit(): Promise<void> {
         await super.ngOnInit();

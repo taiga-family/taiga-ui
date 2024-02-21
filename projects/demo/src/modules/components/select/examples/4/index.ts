@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAlertService} from '@taiga-ui/core';
@@ -12,6 +12,8 @@ import {TuiSelectComponent} from '@taiga-ui/kit';
     changeDetection,
 })
 export class TuiSelectExample4 {
+    private readonly alerts = inject(TuiAlertService);
+
     readonly pythons = [
         'de la Concordia «Gabo» García Márquez',
         'John Cleese',
@@ -23,11 +25,6 @@ export class TuiSelectExample4 {
     ];
 
     value = this.pythons[0];
-
-    constructor(
-        @Inject(TuiAlertService)
-        private readonly alerts: TuiAlertService,
-    ) {}
 
     addMore(select: TuiSelectComponent<unknown>): void {
         select.handleOption(select.value);

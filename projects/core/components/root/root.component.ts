@@ -2,7 +2,6 @@ import {DOCUMENT} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
-    Inject,
     inject,
     ViewEncapsulation,
 } from '@angular/core';
@@ -34,6 +33,13 @@ import {debounceTime, map, Observable, of} from 'rxjs';
     },
 })
 export class TuiRootComponent {
+    private readonly dialogs$ = inject<Observable<readonly unknown[]>>(TUI_DIALOGS);
+    private readonly isMobile = inject(TUI_IS_MOBILE);
+    private readonly breakpoint = inject(TuiBreakpointService);
+    readonly isIOS = inject(TUI_IS_IOS);
+    readonly isAndroid = inject(TUI_IS_ANDROID);
+    readonly reducedMotion = inject(TUI_REDUCED_MOTION);
+
     readonly duration = tuiGetDuration(inject(TUI_ANIMATIONS_SPEED));
 
     readonly isMobileRes$ = this.breakpoint.pipe(
@@ -47,19 +53,10 @@ export class TuiRootComponent {
               debounceTime(0),
           );
 
-    constructor(
-        @Inject(TUI_REDUCED_MOTION) readonly reducedMotion: boolean,
-        @Inject(TUI_DIALOGS) private readonly dialogs$: Observable<readonly unknown[]>,
-        @Inject(TUI_IS_MOBILE) private readonly isMobile: boolean,
-        @Inject(TuiBreakpointService) private readonly breakpoint: TuiBreakpointService,
-        @Inject(TUI_IS_IOS) readonly isIOS: boolean,
-        @Inject(TUI_IS_ANDROID) readonly isAndroid: boolean,
-        @Inject(DOCUMENT) document: Document,
-        @Inject(TUI_THEME) theme: string,
-    ) {
-        document.defaultView?.document.documentElement.setAttribute(
+    constructor() {
+        inject(DOCUMENT).defaultView?.document.documentElement.setAttribute(
             'data-tui-theme',
-            theme.toLowerCase(),
+            inject(TUI_THEME).toLowerCase(),
         );
     }
 }

@@ -1,19 +1,15 @@
 import {
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
     ContentChild,
     EventEmitter,
     HostBinding,
-    Inject,
+    inject,
     Input,
-    Optional,
     Output,
-    Self,
     TemplateRef,
     ViewChild,
 } from '@angular/core';
-import {NgControl} from '@angular/forms';
 import {
     AbstractTuiNullableControl,
     TUI_STRICT_MATCHER,
@@ -39,10 +35,9 @@ import {
     TuiSizeL,
     TuiSizeM,
     TuiSizeS,
-    TuiTextfieldSizeDirective,
     TuiValueContentContext,
 } from '@taiga-ui/core';
-import {TUI_ARROW_MODE, TuiArrowMode} from '@taiga-ui/kit/components/arrow';
+import {TUI_ARROW_MODE} from '@taiga-ui/kit/components/arrow';
 import {TUI_SELECT_OPTION} from '@taiga-ui/kit/components/select-option';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {TUI_ITEMS_HANDLERS, TuiItemsHandlers} from '@taiga-ui/kit/tokens';
@@ -74,6 +69,10 @@ export class TuiComboBoxComponent<T>
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
+    private readonly arrowMode = inject(TUI_ARROW_MODE);
+    private readonly itemsHandlers = inject<TuiItemsHandlers<T>>(TUI_ITEMS_HANDLERS);
+    private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
+
     @Input()
     stringify: TuiItemsHandlers<T>['stringify'] = this.itemsHandlers.stringify;
 
@@ -100,20 +99,6 @@ export class TuiComboBoxComponent<T>
     readonly datalist: PolymorpheusContent<TuiContext<TuiActiveZoneDirective>>;
 
     open = false;
-
-    constructor(
-        @Optional()
-        @Self()
-        @Inject(NgControl)
-        control: NgControl | null,
-        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
-        @Inject(TUI_ARROW_MODE) private readonly arrowMode: TuiArrowMode,
-        @Inject(TUI_ITEMS_HANDLERS) private readonly itemsHandlers: TuiItemsHandlers<T>,
-        @Inject(TUI_TEXTFIELD_SIZE)
-        private readonly textfieldSize: TuiTextfieldSizeDirective,
-    ) {
-        super(control, cdr);
-    }
 
     @HostBinding('attr.data-size')
     get size(): TuiSizeL | TuiSizeS {

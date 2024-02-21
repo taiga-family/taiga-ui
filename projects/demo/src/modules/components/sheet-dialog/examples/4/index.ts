@@ -1,4 +1,4 @@
-import {Component, Inject, ViewChild} from '@angular/core';
+import {Component, inject, ViewChild} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -9,7 +9,7 @@ import {
     TuiSwipeDirection,
 } from '@taiga-ui/cdk';
 import {TuiInputComponent} from '@taiga-ui/kit';
-import {map, Observable} from 'rxjs';
+import {map} from 'rxjs';
 
 const USERS = [
     'John Doe',
@@ -41,6 +41,8 @@ export class TuiSheetDialogExample4 {
     @ViewChild(TuiInputComponent)
     private readonly input?: TuiInputComponent;
 
+    private readonly size$ = inject(TUI_WINDOW_SIZE);
+
     open = false;
 
     readonly offset = 16;
@@ -54,10 +56,6 @@ export class TuiSheetDialogExample4 {
     readonly height$ = this.size$.pipe(
         map(({height}) => `calc(${height - this.offset}px - 14rem`),
     );
-
-    constructor(
-        @Inject(TUI_WINDOW_SIZE) private readonly size$: Observable<ClientRect>,
-    ) {}
 
     toggle(open: boolean): void {
         this.open = open;

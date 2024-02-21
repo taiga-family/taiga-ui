@@ -5,7 +5,7 @@ import {
     ElementRef,
     EventEmitter,
     HostListener,
-    Inject,
+    inject,
     Input,
     Optional,
     Output,
@@ -108,9 +108,14 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
     @ViewChild(TuiDropdownDirective)
     private readonly dropdownDirective?: TuiDropdownDirective;
 
-    private readonly openChange$ = new BehaviorSubject(false);
+    private readonly hover$ = inject(TuiDropdownHoverDirective, {
+        self: true,
+        optional: true,
+    });
 
-    private readonly hostHover$ = tuiTypedFromEvent(this.el.nativeElement, 'mouseover')
+    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly openChange$ = new BehaviorSubject(false);
+    private readonly hostHover$ = tuiTypedFromEvent(this.el, 'mouseover')
         .pipe(
             map(e => this.computedHost.contains(tuiGetActualTarget(e))),
             switchMap(visible =>
@@ -154,14 +159,6 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
 
     readonly context!: TuiContext<TuiActiveZoneDirective>;
 
-    constructor(
-        @Self()
-        @Optional()
-        @Inject(TuiDropdownHoverDirective)
-        private readonly hover$: TuiDropdownHoverDirective | null,
-        @Inject(ElementRef) private readonly el: ElementRef,
-    ) {}
-
     @Input()
     set open(open: boolean) {
         this.openChange.next(open);
@@ -172,14 +169,14 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
     }
 
     get host(): HTMLElement {
-        return this.dropdownHost?.nativeElement || this.el.nativeElement;
+        return this.dropdownHost?.nativeElement || this.el;
     }
 
     get computedHost(): HTMLElement {
         return (
             this.dropdownHost?.nativeElement ||
-            this.nativeFocusableElement ||
-            this.el.nativeElement
+            (this.nativeFocusableElement as HTMLElement) ||
+            this.el
         );
     }
 
@@ -192,7 +189,7 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
             ? this.host
             : tuiGetClosestFocusable({
                   initial: this.host,
-                  root: this.el.nativeElement,
+                  root: this.el,
               });
     }
 

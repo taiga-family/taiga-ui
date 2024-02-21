@@ -1,5 +1,5 @@
 /// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
-import {Inject, Injectable} from '@angular/core';
+import {inject, Injectable} from '@angular/core';
 import {ANIMATION_FRAME, PERFORMANCE} from '@ng-web-apis/common';
 import {tuiAssert} from '@taiga-ui/cdk/classes';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
@@ -34,10 +34,8 @@ function getY(elementOrWindow: Element | Window): number {
     providedIn: 'root',
 })
 export class TuiScrollService {
-    constructor(
-        @Inject(PERFORMANCE) private readonly performanceRef: Performance,
-        @Inject(ANIMATION_FRAME) private readonly animationFrame$: Observable<number>,
-    ) {}
+    private readonly performanceRef = inject(PERFORMANCE);
+    private readonly animationFrame$ = inject(ANIMATION_FRAME);
 
     scroll$(
         elementOrWindow: Element | Window,

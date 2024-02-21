@@ -3,9 +3,8 @@ import {
     Component,
     EventEmitter,
     HostBinding,
-    Inject,
+    inject,
     Input,
-    Optional,
     Output,
 } from '@angular/core';
 import {SafeValue} from '@angular/platform-browser';
@@ -43,7 +42,8 @@ const TRANSFORM = {
     ],
 })
 export class TuiPieChartComponent {
-    private readonly autoIdString: string;
+    private readonly hintOptions = inject(TuiHintOptionsDirective, {optional: true});
+    private readonly autoIdString = inject(TuiIdService).generate();
 
     @Input()
     value: readonly number[] = [];
@@ -61,14 +61,7 @@ export class TuiPieChartComponent {
     @Output()
     readonly activeItemIndexChange = new EventEmitter<number>();
 
-    constructor(
-        @Inject(TuiIdService) idService: TuiIdService,
-        @Optional()
-        @Inject(TuiHintOptionsDirective)
-        private readonly hintOptions: TuiHintOptionsDirective | null,
-    ) {
-        this.autoIdString = idService.generate();
-
+    constructor() {
         if (this.hintOptions) {
             this.hintOptions.showDelay = 0;
             this.hintOptions.hideDelay = 0;

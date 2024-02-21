@@ -3,9 +3,8 @@ import {
     Component,
     DoCheck,
     ElementRef,
-    Inject,
+    inject,
     OnInit,
-    Optional,
     TemplateRef,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
@@ -20,7 +19,6 @@ import {
 import {
     TUI_COMMON_ICONS,
     TUI_DATA_LIST_HOST,
-    TuiCommonIcons,
     TuiDataListComponent,
     TuiDataListHost,
     TuiOptionComponent,
@@ -35,34 +33,26 @@ import {distinctUntilChanged, EMPTY, map, merge, startWith, Subject} from 'rxjs'
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiSelectOptionComponent<T> implements OnInit, DoCheck {
+    private readonly host = inject<TuiDataListHost<T>>(TUI_DATA_LIST_HOST);
+    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
     private readonly changeDetection$ = new Subject<void>();
+    protected readonly abstractControl = inject(AbstractTuiControl<T>, {optional: true});
+    protected readonly control = inject(NgControl);
+    protected readonly option = inject(TuiOptionComponent<T>);
+    protected readonly dataList = inject(TuiDataListComponent<T>, {optional: true});
+    readonly icons = inject(TUI_COMMON_ICONS);
+    readonly context =
+        inject<TuiContext<TemplateRef<Record<string, unknown>>>>(POLYMORPHEUS_CONTEXT);
 
     readonly selected$ = merge(
         this.changeDetection$,
         this.control.valueChanges || EMPTY,
-        tuiTypedFromEvent(this.el.nativeElement, 'animationstart'),
+        tuiTypedFromEvent(this.el, 'animationstart'),
     ).pipe(
         startWith(null),
         map(() => this.selected),
         distinctUntilChanged(),
     );
-
-    constructor(
-        @Inject(TUI_COMMON_ICONS) readonly icons: TuiCommonIcons,
-        @Inject(POLYMORPHEUS_CONTEXT)
-        readonly context: TuiContext<TemplateRef<Record<string, unknown>>>,
-        @Inject(TUI_DATA_LIST_HOST)
-        private readonly host: TuiDataListHost<T>,
-        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
-        @Inject(TuiOptionComponent) protected readonly option: TuiOptionComponent<T>,
-        @Optional()
-        @Inject(TuiDataListComponent)
-        protected readonly dataList: TuiDataListComponent<T> | null,
-        @Inject(NgControl) protected readonly control: NgControl,
-        @Optional()
-        @Inject(AbstractTuiControl)
-        protected readonly abstractControl: AbstractTuiControl<T> | null,
-    ) {}
 
     get matcher(): TuiIdentityMatcher<T> {
         return this.host.identityMatcher || TUI_DEFAULT_IDENTITY_MATCHER;

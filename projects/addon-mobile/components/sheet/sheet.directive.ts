@@ -1,11 +1,4 @@
-import {
-    ChangeDetectorRef,
-    Directive,
-    Inject,
-    Input,
-    Output,
-    TemplateRef,
-} from '@angular/core';
+import {Directive, inject, Input, Output} from '@angular/core';
 import {tuiIfMap} from '@taiga-ui/cdk';
 import {PolymorpheusTemplate} from '@tinkoff/ng-polymorpheus';
 import {endWith, ignoreElements, share, Subject} from 'rxjs';
@@ -22,6 +15,7 @@ import {TuiSheetOptions} from './sheet-options';
     selector: 'ng-template[tuiSheet]',
 })
 export class TuiSheetDirective extends PolymorpheusTemplate<TuiSheet<never>> {
+    private readonly service = inject(TuiSheetService);
     private readonly open$ = new Subject<boolean>();
 
     @Input('tuiSheetOptions')
@@ -39,12 +33,4 @@ export class TuiSheetDirective extends PolymorpheusTemplate<TuiSheet<never>> {
         ),
         share(),
     );
-
-    constructor(
-        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
-        @Inject(TemplateRef) templateRef: TemplateRef<TuiSheet<never>>,
-        @Inject(TuiSheetService) private readonly service: TuiSheetService,
-    ) {
-        super(templateRef, cdr);
-    }
 }

@@ -5,10 +5,9 @@ import {
     ChangeDetectorRef,
     Component,
     ContentChildren,
-    Inject,
+    inject,
     Input,
     QueryList,
-    Self,
 } from '@angular/core';
 import {
     TUI_DOC_DOCUMENTATION_TEXTS,
@@ -43,6 +42,13 @@ import {TuiGetOpacityPipe} from './pipes/opacity.pipe';
     ],
 })
 export class TuiDocDocumentationComponent implements AfterContentInit {
+    private readonly cdr = inject(ChangeDetectorRef);
+    private readonly destroy$ = inject(TuiDestroyService, {self: true});
+    private readonly getColor = inject(TuiGetColorPipe);
+    private readonly getOpacity = inject(TuiGetOpacityPipe);
+    protected readonly texts = inject(TUI_DOC_DOCUMENTATION_TEXTS);
+    protected readonly excludedProperties = inject(TUI_DOC_EXCLUDED_PROPERTIES);
+
     @Input()
     heading = '';
 
@@ -57,21 +63,6 @@ export class TuiDocDocumentationComponent implements AfterContentInit {
         EMPTY_QUERY;
 
     activeItemIndex = 0;
-
-    constructor(
-        @Inject(ChangeDetectorRef) private readonly cdr: ChangeDetectorRef,
-        @Inject(TUI_DOC_DOCUMENTATION_TEXTS)
-        readonly texts: [string, string, string, string, string],
-        @Inject(TUI_DOC_EXCLUDED_PROPERTIES)
-        readonly excludedProperties: Set<string>,
-        @Self()
-        @Inject(TuiDestroyService)
-        private readonly destroy$: TuiDestroyService,
-        @Inject(TuiGetColorPipe)
-        private readonly getColor: TuiGetColorPipe,
-        @Inject(TuiGetOpacityPipe)
-        private readonly getOpacity: TuiGetOpacityPipe,
-    ) {}
 
     ngAfterContentInit(): void {
         tuiQueryListChanges(this.propertiesConnectors)

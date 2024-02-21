@@ -1,4 +1,4 @@
-import {Inject, Injectable} from '@angular/core';
+import {inject, Injectable} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
 import {fromEvent, map, Observable, share, startWith} from 'rxjs';
 
@@ -6,8 +6,8 @@ import {fromEvent, map, Observable, share, startWith} from 'rxjs';
     providedIn: 'root',
 })
 export class TuiNightThemeService extends Observable<boolean> {
-    constructor(@Inject(WINDOW) win: Window) {
-        const media = win.matchMedia('(prefers-color-scheme: dark)');
+    constructor() {
+        const media = inject(WINDOW).matchMedia('(prefers-color-scheme: dark)');
         const media$ = fromEvent(media, 'change').pipe(
             startWith(null),
             map(() => media.matches),

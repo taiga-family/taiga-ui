@@ -1,17 +1,9 @@
-import {Directive, ElementRef, Inject, Input, NgZone, Self} from '@angular/core';
+import {Directive, ElementRef, inject, Input, NgZone} from '@angular/core';
 import {ANIMATION_FRAME, PERFORMANCE} from '@ng-web-apis/common';
 import {tuiDescribeSector} from '@taiga-ui/addon-charts/utils';
 import {tuiClamp, TuiDestroyService, tuiEaseInOutQuad, tuiZonefree} from '@taiga-ui/cdk';
 import {TUI_ANIMATIONS_SPEED, tuiGetDuration} from '@taiga-ui/core';
-import {
-    BehaviorSubject,
-    map,
-    Observable,
-    pairwise,
-    switchMap,
-    takeUntil,
-    takeWhile,
-} from 'rxjs';
+import {BehaviorSubject, map, pairwise, switchMap, takeUntil, takeWhile} from 'rxjs';
 
 @Directive({
     selector: 'path[tuiPieChart]',
@@ -25,14 +17,12 @@ export class TuiPieChartDirective {
         this.sector$.next(sector);
     }
 
-    constructor(
-        @Inject(ElementRef) {nativeElement}: ElementRef<SVGPathElement>,
-        @Inject(NgZone) zone: NgZone,
-        @Self() @Inject(TuiDestroyService) destroy$: Observable<unknown>,
-        @Inject(PERFORMANCE) performance: Performance,
-        @Inject(ANIMATION_FRAME) animationFrame$: Observable<number>,
-        @Inject(TUI_ANIMATIONS_SPEED) speed: number,
-    ) {
+    constructor() {
+        const el: SVGPathElement = inject(ElementRef).nativeElement;
+        const performance = inject(PERFORMANCE);
+        const animationFrame$ = inject(ANIMATION_FRAME);
+        const speed = inject(TUI_ANIMATIONS_SPEED);
+
         this.sector$
             .pipe(
                 pairwise(),
@@ -54,11 +44,11 @@ export class TuiPieChartDirective {
                         ]),
                     );
                 }),
-                tuiZonefree(zone),
-                takeUntil(destroy$),
+                tuiZonefree(inject(NgZone)),
+                takeUntil(inject(TuiDestroyService, {self: true})),
             )
-            .subscribe(([start, end]) => {
-                nativeElement.setAttribute('d', tuiDescribeSector(start, end));
-            });
+            .subscribe(([start, end]) =>
+                el.setAttribute('d', tuiDescribeSector(start, end)),
+            );
     }
 }

@@ -1,4 +1,4 @@
-import {Directive, Inject, Input, TemplateRef, ViewContainerRef} from '@angular/core';
+import {Directive, inject, Input, TemplateRef, ViewContainerRef} from '@angular/core';
 import {TuiContext} from '@taiga-ui/cdk/interfaces';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 
@@ -19,6 +19,9 @@ export class TuiRepeatTimesContext implements TuiContext<number> {
     selector: '[tuiRepeatTimes][tuiRepeatTimesOf]',
 })
 export class TuiRepeatTimesDirective {
+    private readonly viewContainer = inject(ViewContainerRef);
+    private readonly templateRef = inject(TemplateRef<TuiRepeatTimesContext>);
+
     @Input()
     set tuiRepeatTimesOf(count: number) {
         const safeCount = Math.floor(tuiClamp(count, 0, MAX_VALUE));
@@ -31,13 +34,6 @@ export class TuiRepeatTimesDirective {
             this.addContainers(safeCount);
         }
     }
-
-    constructor(
-        @Inject(ViewContainerRef)
-        private readonly viewContainer: ViewContainerRef,
-        @Inject(TemplateRef)
-        private readonly templateRef: TemplateRef<TuiRepeatTimesContext>,
-    ) {}
 
     private addContainers(count: number): void {
         for (let index = this.viewContainer.length; index < count; index++) {

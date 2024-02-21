@@ -1,5 +1,5 @@
-import {Directive, Inject, Input} from '@angular/core';
-import {TuiDirectiveStylesService, TuiStringHandler} from '@taiga-ui/cdk';
+import {Directive, inject, Input} from '@angular/core';
+import {TuiStringHandler, tuiWithStyles} from '@taiga-ui/cdk';
 import {TUI_ICON_RESOLVER} from '@taiga-ui/core/tokens';
 
 import {TuiIconsComponent} from './icons.component';
@@ -16,16 +16,13 @@ import {TuiIconsComponent} from './icons.component';
     },
 })
 export class TuiIconsDirective {
+    protected readonly nothing = tuiWithStyles(TuiIconsComponent);
+
     @Input()
     iconLeft = '';
 
     @Input()
     iconRight = '';
 
-    constructor(
-        @Inject(TUI_ICON_RESOLVER) readonly resolver: TuiStringHandler<string>,
-        @Inject(TuiDirectiveStylesService) directiveStyles: TuiDirectiveStylesService,
-    ) {
-        directiveStyles.addComponent(TuiIconsComponent);
-    }
+    readonly resolver = inject<TuiStringHandler<string>>(TUI_ICON_RESOLVER);
 }

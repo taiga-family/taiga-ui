@@ -3,11 +3,10 @@ import {
     ChangeDetectorRef,
     Directive,
     HostBinding,
-    Inject,
+    inject,
     Input,
     OnDestroy,
     OnInit,
-    Optional,
     Provider,
     Type,
 } from '@angular/core';
@@ -39,16 +38,18 @@ export abstract class AbstractTuiControl<T>
     extends AbstractTuiInteractive
     implements OnDestroy, OnInit, ControlValueAccessor
 {
+    private readonly ngControl = inject(NgControl, {optional: true});
     private previousInternalValue?: T | null;
     private readonly refresh$ = new Subject<void>();
-
     private onTouched = EMPTY_FUNCTION;
-
     private onChange = EMPTY_FUNCTION;
-
     protected readonly fallbackValue = this.getFallbackValue();
-
     protected readonly destroy$ = new Subject<void>();
+    protected readonly cdr = inject(ChangeDetectorRef);
+    protected readonly valueTransformer = inject<TuiControlValueTransformer<T>>(
+        AbstractTuiValueTransformer,
+        {optional: true},
+    );
 
     @Input()
     @HostBinding('class._readonly')
@@ -57,14 +58,7 @@ export abstract class AbstractTuiControl<T>
     @Input()
     pseudoInvalid: boolean | null = null;
 
-    constructor(
-        @Optional()
-        private readonly ngControl: NgControl | null,
-        protected readonly cdr: ChangeDetectorRef,
-        @Optional()
-        @Inject(AbstractTuiValueTransformer)
-        protected readonly valueTransformer?: TuiControlValueTransformer<T> | null,
-    ) {
+    constructor() {
         super();
 
         if (ngDevMode && this.ngControl === null) {

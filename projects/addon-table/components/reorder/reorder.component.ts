@@ -3,14 +3,13 @@ import {
     Component,
     EventEmitter,
     HostListener,
-    Inject,
+    inject,
     Input,
     Output,
 } from '@angular/core';
 import {TUI_TABLE_SHOW_HIDE_MESSAGE} from '@taiga-ui/addon-table/tokens';
-import {Observable} from 'rxjs';
 
-import {TUI_REORDER_OPTIONS, TuiReorderOptions} from './reorder.options';
+import {TUI_REORDER_OPTIONS} from './reorder.options';
 
 @Component({
     selector: 'tui-reorder',
@@ -44,10 +43,8 @@ export class TuiReorderComponent<T> {
 
     unsortedItems: readonly T[] = [];
 
-    constructor(
-        @Inject(TUI_REORDER_OPTIONS) readonly options: TuiReorderOptions,
-        @Inject(TUI_TABLE_SHOW_HIDE_MESSAGE) readonly showHideText$: Observable<string>,
-    ) {}
+    readonly options = inject(TUI_REORDER_OPTIONS);
+    readonly showHideText$ = inject(TUI_TABLE_SHOW_HIDE_MESSAGE);
 
     @HostListener('focusout.stop')
     noop(): void {}

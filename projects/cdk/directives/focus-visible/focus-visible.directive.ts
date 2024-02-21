@@ -1,6 +1,5 @@
-import {Directive, Inject} from '@angular/core';
+import {Directive, inject, Output} from '@angular/core';
 import {TuiDestroyService, TuiFocusVisibleService} from '@taiga-ui/cdk/services';
-import {Observable} from 'rxjs';
 
 /**
  * Directive to imitate :focus-visible
@@ -9,12 +8,9 @@ import {Observable} from 'rxjs';
  */
 @Directive({
     selector: '[tuiFocusVisibleChange]',
-    outputs: ['tuiFocusVisibleChange'],
     providers: [TuiDestroyService, TuiFocusVisibleService],
 })
 export class TuiFocusVisibleDirective {
-    constructor(
-        @Inject(TuiFocusVisibleService)
-        readonly tuiFocusVisibleChange: Observable<boolean>,
-    ) {}
+    @Output()
+    readonly tuiFocusVisibleChange = inject(TuiFocusVisibleService);
 }

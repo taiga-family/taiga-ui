@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {
     AbstractControl,
     AsyncValidatorFn,
@@ -30,17 +30,18 @@ function asyncValidatorFn(isE2E: boolean): AsyncValidatorFn {
     changeDetection,
 })
 export class TuiFieldErrorPipeExample5 {
+    private readonly fb = inject(UntypedFormBuilder);
+
     readonly form: FormGroup;
 
-    constructor(
-        @Inject(UntypedFormBuilder) private readonly fb: UntypedFormBuilder,
-        @Inject(TUI_IS_E2E) isE2E: boolean,
-    ) {
+    constructor() {
         this.form = this.fb.group({
             text: ['русский текст', Validators.required],
         });
 
-        this.form.controls['text'].setAsyncValidators(asyncValidatorFn(isE2E));
+        this.form.controls['text'].setAsyncValidators(
+            asyncValidatorFn(inject(TUI_IS_E2E)),
+        );
         this.form.controls['text'].markAsTouched();
     }
 }

@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 
 import {AbstractExampleTuiControl} from '../control';
@@ -10,8 +10,7 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../inherited-documentation/abstract-props
     changeDetection,
 })
 export class HintControllerDocumentationComponent {
-    constructor(
-        @Inject(ABSTRACT_PROPS_ACCESSOR)
-        readonly documentedComponent: AbstractExampleTuiControl,
-    ) {}
+    readonly documentedComponent = inject<AbstractExampleTuiControl>(
+        ABSTRACT_PROPS_ACCESSOR,
+    );
 }

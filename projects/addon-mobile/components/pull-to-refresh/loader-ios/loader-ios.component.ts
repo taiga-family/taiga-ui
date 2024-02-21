@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {TuiContext} from '@taiga-ui/cdk';
 import {POLYMORPHEUS_CONTEXT, PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 
@@ -14,13 +14,10 @@ const ROTATE_X_STEP = 30;
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiMobileLoaderIOSComponent {
-    readonly steps = 12;
+    private readonly context = inject<TuiContext<number>>(POLYMORPHEUS_CONTEXT);
+    private readonly threshold = inject(TUI_PULL_TO_REFRESH_THRESHOLD);
 
-    constructor(
-        @Inject(POLYMORPHEUS_CONTEXT)
-        private readonly context: TuiContext<number>,
-        @Inject(TUI_PULL_TO_REFRESH_THRESHOLD) private readonly threshold: number,
-    ) {}
+    readonly steps = 12;
 
     get finished(): boolean {
         return this.percent >= 100;

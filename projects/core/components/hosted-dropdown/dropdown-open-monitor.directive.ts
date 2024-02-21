@@ -1,7 +1,7 @@
-import {Directive, Inject, Optional, Self} from '@angular/core';
-import {TuiDestroyService, TuiInjectionTokenType} from '@taiga-ui/cdk';
+import {Directive, inject} from '@angular/core';
+import {TuiDestroyService} from '@taiga-ui/cdk';
 import {TuiDropdownDirective, TuiDropdownOpenDirective} from '@taiga-ui/core/directives';
-import {filter, Observable, takeUntil} from 'rxjs';
+import {filter, takeUntil} from 'rxjs';
 
 import {TUI_HOSTED_DROPDOWN_COMPONENT} from './hosted-dropdown.token';
 
@@ -10,22 +10,18 @@ import {TUI_HOSTED_DROPDOWN_COMPONENT} from './hosted-dropdown.token';
     providers: [TuiDestroyService],
 })
 export class TuiDropdownOpenMonitorDirective {
-    constructor(
-        @Self() @Inject(TuiDestroyService) destroy$: Observable<unknown>,
-        @Inject(TUI_HOSTED_DROPDOWN_COMPONENT)
-        hosted: TuiInjectionTokenType<typeof TUI_HOSTED_DROPDOWN_COMPONENT>,
-        @Self() @Inject(TuiDropdownDirective) dropdown: TuiDropdownDirective,
-        @Optional()
-        @Inject(TuiDropdownOpenDirective)
-        open: TuiDropdownOpenDirective | null,
-    ) {
+    constructor() {
+        const open = inject(TuiDropdownOpenDirective, {optional: true});
+        const hosted = inject(TUI_HOSTED_DROPDOWN_COMPONENT);
+        const dropdown = inject(TuiDropdownDirective);
+
         open?.tuiDropdownOpenChange
             .pipe(
                 filter(
                     value =>
                         value && open.dropdown === (dropdown as any) && !hosted.focused,
                 ),
-                takeUntil(destroy$),
+                takeUntil(inject(TuiDestroyService)),
             )
             .subscribe(() => {
                 hosted.nativeFocusableElement?.focus();

@@ -2,10 +2,8 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
-    Inject,
     inject,
     OnInit,
-    Self,
 } from '@angular/core';
 import {TUI_WINDOW_HEIGHT, TuiDestroyService} from '@taiga-ui/cdk';
 import {
@@ -14,7 +12,7 @@ import {
     tuiSlideInTop,
     tuiToAnimationOptions,
 } from '@taiga-ui/core';
-import {Observable, takeUntil} from 'rxjs';
+import {takeUntil} from 'rxjs';
 
 import {TuiSheet} from '../../sheet';
 import {TuiSheetService} from '../../sheet.service';
@@ -28,16 +26,14 @@ import {TuiSheetService} from '../../sheet.service';
     animations: [tuiSlideInTop, tuiFadeIn],
 })
 export class TuiSheetsHostComponent implements OnInit {
+    private readonly service = inject(TuiSheetService);
+    private readonly destroy$ = inject(TuiDestroyService, {self: true});
+    private readonly cdr = inject(ChangeDetectorRef);
+    readonly height$ = inject(TUI_WINDOW_HEIGHT);
+
     sheets: ReadonlyArray<TuiSheet<any>> = [];
 
     readonly options = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
-
-    constructor(
-        @Inject(TuiSheetService) private readonly service: TuiSheetService,
-        @Inject(TUI_WINDOW_HEIGHT) readonly height$: Observable<number>,
-        @Self() @Inject(TuiDestroyService) private readonly destroy$: Observable<void>,
-        @Inject(ChangeDetectorRef) private readonly cdr: ChangeDetectorRef,
-    ) {}
 
     ngOnInit(): void {
         // Due to this view being parallel to app content, `markForCheck` from `async` pipe

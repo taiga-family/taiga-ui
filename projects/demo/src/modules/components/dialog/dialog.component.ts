@@ -1,4 +1,4 @@
-import {Component, Inject, TemplateRef} from '@angular/core';
+import {Component, inject, TemplateRef} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {
@@ -16,6 +16,9 @@ import {switchMap} from 'rxjs';
     changeDetection,
 })
 export class ExampleTuiDialogComponent {
+    private readonly alerts = inject(TuiAlertService);
+    private readonly dialogs = inject(TuiDialogService);
+
     readonly method = import('./method.md?raw');
 
     readonly dialogsCloseToken = import('./examples/import/dialogs-close-token.md?raw');
@@ -142,13 +145,6 @@ export class ExampleTuiDialogComponent {
     label = '';
 
     appearance = '';
-
-    constructor(
-        @Inject(TuiAlertService)
-        private readonly alerts: TuiAlertService,
-        @Inject(TuiDialogService)
-        private readonly dialogs: TuiDialogService,
-    ) {}
 
     showDialog(content: TemplateRef<TuiDialogContext<number, number>>): void {
         const {data, label, required, closeable, dismissible, size, appearance} = this;

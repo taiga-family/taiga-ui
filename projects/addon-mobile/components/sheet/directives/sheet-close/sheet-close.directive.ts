@@ -1,4 +1,4 @@
-import {Directive, ElementRef, Inject, NgZone, Output} from '@angular/core';
+import {Directive, ElementRef, inject, NgZone, Output} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
 import {tuiIfMap, tuiIsFalsy, tuiTypedFromEvent, tuiZonefull} from '@taiga-ui/cdk';
 import {distinctUntilChanged, filter, merge, Observable, startWith} from 'rxjs';
@@ -11,34 +11,29 @@ import {TUI_SHEET_DRAGGED, TUI_SHEET_SCROLL} from '../../sheet-tokens';
     selector: 'tui-sheet[close]',
 })
 export class TuiSheetCloseDirective {
+    private readonly zone = inject(NgZone);
+    private readonly dragged$ = inject(TUI_SHEET_DRAGGED);
+    private readonly scroll$ = inject(TUI_SHEET_SCROLL);
+    private readonly win = inject(WINDOW);
+    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly sheet = inject(TuiSheetComponent);
+
     @Output()
     // eslint-disable-next-line @angular-eslint/no-output-native
     readonly close: Observable<unknown> = merge(
-        tuiTypedFromEvent(this.el.nativeElement, TUI_SHEET_CLOSE),
+        tuiTypedFromEvent(this.el, TUI_SHEET_CLOSE),
         this.dragged$.pipe(
-            tuiIfMap(
-                () => this.scroll$.pipe(startWith(this.el.nativeElement.scrollTop)),
-                tuiIsFalsy,
-            ),
+            tuiIfMap(() => this.scroll$.pipe(startWith(this.el.scrollTop)), tuiIsFalsy),
             filter(y => this.sheet.item?.closeable && this.shouldClose(y)),
             distinctUntilChanged(),
             tuiZonefull(this.zone),
         ),
     );
 
-    constructor(
-        @Inject(NgZone) private readonly zone: NgZone,
-        @Inject(TUI_SHEET_DRAGGED) private readonly dragged$: Observable<boolean>,
-        @Inject(TUI_SHEET_SCROLL) private readonly scroll$: Observable<number>,
-        @Inject(WINDOW) private readonly win: Window,
-        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
-        @Inject(TuiSheetComponent) private readonly sheet: TuiSheetComponent<unknown>,
-    ) {}
-
     private shouldClose(scrollTop: number): boolean {
         const height = Math.min(
             this.win.innerHeight,
-            this.el.nativeElement.scrollHeight - this.win.innerHeight,
+            this.el.scrollHeight - this.win.innerHeight,
         );
         const min = Math.min(height, this.sheet.stops[0] || Infinity);
 

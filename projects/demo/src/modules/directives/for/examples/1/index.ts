@@ -1,8 +1,8 @@
-import {Component, Inject, Self} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDestroyService} from '@taiga-ui/cdk';
-import {BehaviorSubject, Observable, takeUntil, timer} from 'rxjs';
+import {BehaviorSubject, takeUntil, timer} from 'rxjs';
 
 @Component({
     selector: 'tui-for-example-1',
@@ -12,11 +12,9 @@ import {BehaviorSubject, Observable, takeUntil, timer} from 'rxjs';
     providers: [TuiDestroyService],
 })
 export class TuiForExample1 {
-    readonly items$ = new BehaviorSubject<readonly string[] | null>([]);
+    private readonly destroy$ = inject(TuiDestroyService, {self: true});
 
-    constructor(
-        @Self() @Inject(TuiDestroyService) private readonly destroy$: Observable<void>,
-    ) {}
+    readonly items$ = new BehaviorSubject<readonly string[] | null>([]);
 
     refresh(): void {
         this.items$.next(null);

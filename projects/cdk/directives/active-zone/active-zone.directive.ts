@@ -1,13 +1,11 @@
 import {
     Directive,
     ElementRef,
-    Inject,
+    inject,
     Input,
     NgZone,
     OnDestroy,
-    Optional,
     Output,
-    SkipSelf,
 } from '@angular/core';
 import {tuiPure} from '@taiga-ui/cdk/decorators';
 import {tuiZoneOptimized} from '@taiga-ui/cdk/observables';
@@ -22,9 +20,15 @@ import {distinctUntilChanged, map, Observable, skip, startWith} from 'rxjs';
     exportAs: 'tuiActiveZone',
 })
 export class TuiActiveZoneDirective implements OnDestroy {
-    private subActiveZones: readonly TuiActiveZoneDirective[] = [];
-
+    private readonly active$ = inject<Observable<Element | null>>(TUI_ACTIVE_ELEMENT);
+    private readonly zone = inject(NgZone);
+    private readonly el: Element = inject(ElementRef).nativeElement;
     private tuiActiveZoneParent: TuiActiveZoneDirective | null = null;
+    private subActiveZones: readonly TuiActiveZoneDirective[] = [];
+    private readonly directParentActiveZone = inject(TuiActiveZoneDirective, {
+        skipSelf: true,
+        optional: true,
+    });
 
     @Input('tuiActiveZoneParent')
     set tuiActiveZoneParentSetter(zone: TuiActiveZoneDirective | null) {
@@ -40,16 +44,7 @@ export class TuiActiveZoneDirective implements OnDestroy {
         tuiZoneOptimized(this.zone),
     );
 
-    constructor(
-        @Inject(TUI_ACTIVE_ELEMENT)
-        private readonly active$: Observable<Element | null>,
-        @Inject(NgZone) private readonly zone: NgZone,
-        @Inject(ElementRef) private readonly el: ElementRef<Element>,
-        @Optional()
-        @SkipSelf()
-        @Inject(TuiActiveZoneDirective)
-        private readonly directParentActiveZone: TuiActiveZoneDirective | null,
-    ) {
+    constructor() {
         this.directParentActiveZone?.addSubActiveZone(this);
     }
 
@@ -60,7 +55,7 @@ export class TuiActiveZoneDirective implements OnDestroy {
 
     contains(node: Node): boolean {
         return (
-            this.el.nativeElement.contains(node) ||
+            this.el.contains(node) ||
             this.subActiveZones.some(
                 (item, index, array) =>
                     array.indexOf(item) === index && item.contains(node),

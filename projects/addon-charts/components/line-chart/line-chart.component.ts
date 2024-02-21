@@ -2,10 +2,9 @@ import {
     ChangeDetectionStrategy,
     Component,
     HostListener,
-    Inject,
+    inject,
     Input,
     NgZone,
-    Optional,
     QueryList,
     ViewChildren,
 } from '@angular/core';
@@ -28,7 +27,7 @@ import {
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {distinctUntilChanged, Observable, Subject} from 'rxjs';
 
-import {TUI_LINE_CHART_OPTIONS, TuiLineChartOptions} from './line-chart.options';
+import {TUI_LINE_CHART_OPTIONS} from './line-chart.options';
 import {TuiLineChartHintDirective} from './line-chart-hint.directive';
 
 @Component({
@@ -39,9 +38,10 @@ import {TuiLineChartHintDirective} from './line-chart-hint.directive';
     viewProviders: [tuiHintOptionsProvider({direction: 'top', hideDelay: 0})],
 })
 export class TuiLineChartComponent {
+    private readonly zone = inject(NgZone);
+    private readonly options = inject(TUI_LINE_CHART_OPTIONS);
     private readonly hover$ = new Subject<number>();
-
-    private readonly autoIdString: string;
+    private readonly autoIdString = inject(TuiIdService).generate();
 
     @ViewChildren(TuiHintHoverDirective)
     readonly drivers: QueryList<Observable<boolean>> = EMPTY_QUERY;
@@ -80,19 +80,8 @@ export class TuiLineChartComponent {
 
     value: readonly TuiPoint[] = [];
 
-    constructor(
-        @Inject(TuiIdService) idService: TuiIdService,
-        @Inject(NgZone) private readonly zone: NgZone,
-        @Optional()
-        @Inject(TuiLineChartHintDirective)
-        readonly hintDirective: TuiLineChartHintDirective | null,
-        @Optional()
-        @Inject(TuiHintOptionsDirective)
-        readonly hintOptions: TuiHintOptionsDirective | null,
-        @Inject(TUI_LINE_CHART_OPTIONS) private readonly options: TuiLineChartOptions,
-    ) {
-        this.autoIdString = idService.generate();
-    }
+    readonly hintDirective = inject(TuiLineChartHintDirective, {optional: true});
+    readonly hintOptions = inject(TuiHintOptionsDirective, {optional: true});
 
     @tuiPure
     get hovered$(): Observable<number> {

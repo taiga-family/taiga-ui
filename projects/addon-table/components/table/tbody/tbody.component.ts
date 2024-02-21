@@ -5,20 +5,20 @@ import {
     ContentChildren,
     EventEmitter,
     forwardRef,
-    Inject,
+    inject,
     Input,
     Output,
     QueryList,
 } from '@angular/core';
 import {EMPTY_QUERY} from '@taiga-ui/cdk';
-import {TUI_ARROW_OPTIONS, TuiArrowOptions} from '@taiga-ui/kit';
+import {TUI_ARROW_OPTIONS} from '@taiga-ui/kit';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {TuiRowDirective} from '../directives/row.directive';
 import {TuiTableDirective} from '../directives/table.directive';
 import {TuiTableSortPipe} from '../pipes/table-sort.pipe';
 import {TUI_TABLE_PROVIDER} from '../providers/table.provider';
-import {TUI_TABLE_OPTIONS, TuiTableOptions} from '../table.options';
+import {TUI_TABLE_OPTIONS} from '../table.options';
 import {TuiTrComponent} from '../tr/tr.component';
 
 @Component({
@@ -29,6 +29,9 @@ import {TuiTrComponent} from '../tr/tr.component';
     providers: TUI_TABLE_PROVIDER,
 })
 export class TuiTbodyComponent<T extends Partial<Record<keyof T, any>>> {
+    private readonly pipe = inject(TuiTableSortPipe<T>);
+    private readonly options = inject(TUI_TABLE_OPTIONS);
+
     @Input()
     data: readonly T[] = [];
 
@@ -47,13 +50,8 @@ export class TuiTbodyComponent<T extends Partial<Record<keyof T, any>>> {
     @ContentChildren(forwardRef(() => TuiTrComponent))
     readonly rows: QueryList<TuiTrComponent<T>> = EMPTY_QUERY;
 
-    constructor(
-        @Inject(TuiTableSortPipe) private readonly pipe: TuiTableSortPipe<T>,
-        @Inject(TUI_TABLE_OPTIONS) private readonly options: TuiTableOptions,
-        @Inject(TUI_ARROW_OPTIONS) readonly arrowOptions: TuiArrowOptions,
-        @Inject(forwardRef(() => TuiTableDirective))
-        readonly table: TuiTableDirective<T>,
-    ) {}
+    readonly arrowOptions = inject(TUI_ARROW_OPTIONS);
+    readonly table = inject<TuiTableDirective<T>>(forwardRef(() => TuiTableDirective));
 
     get sorted(): readonly T[] {
         return this.pipe.transform(this.data);

@@ -3,7 +3,7 @@ import {
     Component,
     ContentChild,
     ContentChildren,
-    Inject,
+    inject,
     QueryList,
     TemplateRef,
 } from '@angular/core';
@@ -13,7 +13,6 @@ import {
 } from '@ng-web-apis/mutation-observer';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {EMPTY_QUERY, TuiContext, TuiItemDirective} from '@taiga-ui/cdk';
-import {Observable} from 'rxjs';
 
 import {TuiItemsWithMoreDirective} from './items-with-more.directive';
 import {TuiItemsWithMoreService} from './items-with-more.service';
@@ -45,8 +44,6 @@ export class TuiItemsWithMoreComponent {
     @ContentChild(TuiMoreDirective, {read: TemplateRef})
     readonly more?: TemplateRef<TuiContext<number>>;
 
-    constructor(
-        @Inject(TuiItemsWithMoreDirective) readonly directive: TuiItemsWithMoreDirective,
-        @Inject(TuiItemsWithMoreService) readonly lastVisibleIndex$: Observable<number>,
-    ) {}
+    readonly directive = inject(TuiItemsWithMoreDirective);
+    readonly lastVisibleIndex$ = inject(TuiItemsWithMoreService);
 }

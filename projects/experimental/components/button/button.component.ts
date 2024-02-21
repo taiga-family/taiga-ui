@@ -2,13 +2,13 @@ import {
     ChangeDetectionStrategy,
     Component,
     HostListener,
-    Inject,
+    inject,
     Input,
 } from '@angular/core';
 import {tuiIsString} from '@taiga-ui/cdk';
 import {tuiSizeBigger, TuiSizeS} from '@taiga-ui/core';
 
-import {TUI_BUTTON_OPTIONS, TuiButtonOptions} from './button.options';
+import {TUI_BUTTON_OPTIONS} from './button.options';
 
 @Component({
     selector: '[tuiButton][loading],[tuiIconButton][loading]',
@@ -20,13 +20,13 @@ import {TUI_BUTTON_OPTIONS, TuiButtonOptions} from './button.options';
     },
 })
 export class TuiButtonComponent {
+    private readonly options = inject(TUI_BUTTON_OPTIONS);
+
     @Input()
     size = this.options.size;
 
     @Input()
     loading: boolean | string | null = false;
-
-    constructor(@Inject(TUI_BUTTON_OPTIONS) private readonly options: TuiButtonOptions) {}
 
     get loaderSize(): TuiSizeS {
         return tuiSizeBigger(this.size) ? 'm' : 's';

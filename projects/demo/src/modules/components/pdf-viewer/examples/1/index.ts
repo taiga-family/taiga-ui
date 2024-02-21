@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {DomSanitizer} from '@angular/platform-browser';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -13,13 +13,10 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
     changeDetection,
 })
 export class TuiPdfViewerExample1 {
+    private readonly sanitizer = inject(DomSanitizer);
+    private readonly pdfService = inject(TuiPdfViewerService);
+    private readonly isMobile = inject(TUI_IS_MOBILE);
     private readonly pdf = 'assets/media/taiga.pdf';
-
-    constructor(
-        @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
-        @Inject(TuiPdfViewerService) private readonly pdfService: TuiPdfViewerService,
-        @Inject(TUI_IS_MOBILE) private readonly isMobile: boolean,
-    ) {}
 
     /**
      * @description:

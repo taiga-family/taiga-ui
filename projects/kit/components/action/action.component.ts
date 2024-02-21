@@ -4,7 +4,7 @@ import {
     ElementRef,
     HostBinding,
     HostListener,
-    Inject,
+    inject,
     Input,
 } from '@angular/core';
 import {
@@ -31,24 +31,23 @@ import {
     ],
 })
 export class TuiActionComponent extends AbstractTuiInteractive {
+    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+
     @Input()
     icon = '';
 
     readonly disabled = false;
 
-    constructor(
-        @Inject(TuiFocusVisibleService) focusVisible$: TuiFocusVisibleService,
-        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
-    ) {
+    constructor() {
         super();
 
-        focusVisible$.subscribe(visible => {
+        inject(TuiFocusVisibleService).subscribe(visible => {
             this.updateFocusVisible(visible);
         });
     }
 
     get nativeFocusableElement(): TuiNativeFocusableElement | null {
-        return this.el.nativeElement;
+        return this.el;
     }
 
     get focused(): boolean {

@@ -3,15 +3,15 @@ import {
     Component,
     ElementRef,
     HostListener,
-    Inject,
+    inject,
     Input,
     NgZone,
 } from '@angular/core';
 import {ANIMATION_FRAME} from '@ng-web-apis/common';
 import {tuiZonefree} from '@taiga-ui/cdk';
-import {MODE_PROVIDER, TUI_MODE, TuiBrightness} from '@taiga-ui/core';
+import {MODE_PROVIDER, TUI_MODE} from '@taiga-ui/core';
 import {asCallable} from '@tinkoff/ng-event-plugins';
-import {debounceTime, map, Observable, of, ReplaySubject, share, switchMap} from 'rxjs';
+import {debounceTime, map, of, ReplaySubject, share, switchMap} from 'rxjs';
 
 @Component({
     selector: 'tui-underline',
@@ -25,7 +25,9 @@ import {debounceTime, map, Observable, of, ReplaySubject, share, switchMap} from
 })
 export class TuiUnderlineComponent {
     private readonly el$ = new ReplaySubject<HTMLElement | null>(1);
-
+    private readonly animationFrame$ = inject(ANIMATION_FRAME);
+    private readonly zone = inject(NgZone);
+    private readonly el: Element = inject(ElementRef).nativeElement;
     private readonly refresh$ = this.el$.pipe(
         switchMap(element =>
             element
@@ -65,14 +67,11 @@ export class TuiUnderlineComponent {
         this.refresh$.pipe(map(element => element?.clientWidth || 0)),
     );
 
-    constructor(
-        @Inject(ElementRef) {nativeElement}: ElementRef,
-        @Inject(NgZone) private readonly zone: NgZone,
-        @Inject(ANIMATION_FRAME) private readonly animationFrame$: Observable<number>,
-        @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
-    ) {
-        nativeElement['$.style.transitionProperty'] = this.transition$;
-        nativeElement['$.style.transform'] = this.transform$;
-        nativeElement['$.style.width.px'] = this.width$;
+    readonly mode$ = inject(TUI_MODE);
+
+    constructor() {
+        (this.el as any)['$.style.transitionProperty'] = this.transition$;
+        (this.el as any)['$.style.transform'] = this.transform$;
+        (this.el as any)['$.style.width.px'] = this.width$;
     }
 }

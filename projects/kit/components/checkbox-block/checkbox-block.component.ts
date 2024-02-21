@@ -1,15 +1,11 @@
 import {
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
     HostBinding,
-    Inject,
+    inject,
     Input,
-    Optional,
-    Self,
     ViewChild,
 } from '@angular/core';
-import {NgControl} from '@angular/forms';
 import {
     AbstractTuiNullableControl,
     tuiAsControl,
@@ -56,18 +52,7 @@ export class TuiCheckboxBlockComponent
     @HostBinding('attr.data-size')
     size: TuiSizeL | TuiSizeXS = 'l';
 
-    constructor(
-        @Optional()
-        @Self()
-        @Inject(NgControl)
-        control: NgControl | null,
-        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
-        @Optional()
-        @Inject(TuiModeDirective)
-        readonly modeDirective: TuiModeDirective | null,
-    ) {
-        super(control, cdr);
-    }
+    readonly modeDirective = inject(TuiModeDirective, {optional: true});
 
     get nativeFocusableElement(): TuiNativeFocusableElement | null {
         return this.checkbox?.nativeFocusableElement ?? null;

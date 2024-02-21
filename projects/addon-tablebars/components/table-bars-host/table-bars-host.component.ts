@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Inject, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
 import {TuiContext} from '@taiga-ui/cdk';
 import {
@@ -8,13 +8,10 @@ import {
     TUI_MEDIA,
     TUI_PARENT_ANIMATION,
     TuiBrightness,
-    TuiCommonIcons,
     tuiIsMobile,
-    TuiMedia,
     tuiSlideInTop,
     tuiToAnimationOptions,
 } from '@taiga-ui/core';
-import {Observable} from 'rxjs';
 
 import {TuiTableBar} from '../../classes/table-bar';
 import {TuiTableBarsService} from '../../services/table-bars.service';
@@ -28,15 +25,12 @@ import {TuiTableBarsService} from '../../services/table-bars.service';
     animations: [tuiSlideInTop, TUI_PARENT_ANIMATION],
 })
 export class TuiTableBarsHostComponent {
+    private readonly media = inject(TUI_MEDIA);
+    private readonly win = inject(WINDOW);
+    readonly service = inject(TuiTableBarsService);
+    readonly closeWord$ = inject(TUI_CLOSE_WORD);
+    readonly icons = inject(TUI_COMMON_ICONS);
     readonly options = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
-
-    constructor(
-        @Inject(TuiTableBarsService) readonly service: TuiTableBarsService,
-        @Inject(TUI_CLOSE_WORD) readonly closeWord$: Observable<string>,
-        @Inject(TUI_COMMON_ICONS) readonly icons: TuiCommonIcons,
-        @Inject(TUI_MEDIA) private readonly media: TuiMedia,
-        @Inject(WINDOW) private readonly win: Window,
-    ) {}
 
     get isMobile(): boolean {
         return tuiIsMobile(this.win, this.media);

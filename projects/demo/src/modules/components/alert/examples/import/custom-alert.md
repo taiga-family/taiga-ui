@@ -6,7 +6,7 @@ import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 //...
 
 export class NotificationExampleComponent {
-  constructor(@Inject(POLYMORPHEUS_CONTEXT) private readonly context: TuiPopover<TuiAlertOptions<boolean>, boolean>) {}
+  private readonly context: TuiPopover<TuiAlertOptions<boolean>, boolean> = inject(POLYMORPHEUS_CONTEXT);
 
   ok() {
     this.context.completeWith(true);

@@ -15,21 +15,13 @@ import {
 import {
     TUI_AUTOFOCUS_HANDLER,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
-    TuiAutoFocusDirective,
-    TuiDestroyService,
+    TuiFocusableElementAccessor,
     TuiSynchronousAutofocusHandler,
 } from '@taiga-ui/cdk';
 import {TuiSvgModule} from '@taiga-ui/core';
 import {TuiNativeInputPO} from '@taiga-ui/testing';
 
-/**
- * TODO: investigate why this test spec fails after jest-preset-angular update
- * ```
- * Error: Cannot override directive metadata when the test module has already been instantiated.
- * Make sure you are not using `inject` before `overrideDirective`.
- * ```
- */
-xdescribe('InputCardGrouped', () => {
+describe('InputCardGrouped', () => {
     @Component({
         template: `
             <tui-input-card-grouped
@@ -61,21 +53,12 @@ xdescribe('InputCardGrouped', () => {
     let inputCVCPO: TuiNativeInputPO;
 
     beforeEach(async () => {
-        TestBed.overrideDirective(TuiAutoFocusDirective, {
-            set: {
-                selector: '[tuiAutoFocus]',
-                providers: [
-                    {
-                        provide: TUI_AUTOFOCUS_HANDLER,
-                        useClass: TuiSynchronousAutofocusHandler,
-                        deps: [
-                            [new Optional(), new Self(), TUI_FOCUSABLE_ITEM_ACCESSOR],
-                            ElementRef,
-                        ],
-                    },
-                    TuiDestroyService,
-                ],
-            },
+        TestBed.overrideProvider(TUI_AUTOFOCUS_HANDLER, {
+            useFactory: (
+                focusable: TuiFocusableElementAccessor | null,
+                el: ElementRef<HTMLElement>,
+            ) => new TuiSynchronousAutofocusHandler(focusable, el),
+            deps: [[new Optional(), new Self(), TUI_FOCUSABLE_ITEM_ACCESSOR], ElementRef],
         }).configureTestingModule({
             imports: [ReactiveFormsModule, TuiInputCardGroupedModule, TuiSvgModule],
             declarations: [TestComponent],

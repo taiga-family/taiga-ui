@@ -1,5 +1,5 @@
-import {Directive, Inject} from '@angular/core';
-import {TuiStringHandler} from '@taiga-ui/cdk';
+import {Directive, inject} from '@angular/core';
+import type {TuiStringHandler} from '@taiga-ui/cdk';
 import {TUI_ICON_RESOLVER} from '@taiga-ui/core';
 import {tuiButtonOptionsProvider} from '@taiga-ui/experimental/components';
 
@@ -17,8 +17,6 @@ import {TUI_BUTTON_CLOSE_ICON} from './button-close.options';
     },
 })
 export class TuiButtonCloseDirective {
-    constructor(
-        @Inject(TUI_ICON_RESOLVER) readonly resolver: TuiStringHandler<string>,
-        @Inject(TUI_BUTTON_CLOSE_ICON) readonly icon: string,
-    ) {}
+    readonly resolver = inject<TuiStringHandler<string>>(TUI_ICON_RESOLVER);
+    readonly icon = inject(TUI_BUTTON_CLOSE_ICON);
 }

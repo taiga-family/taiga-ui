@@ -5,10 +5,7 @@ import {TuiDialogContext} from '@taiga-ui/core';
 // ...
 
 export class MyDialogComponent {
-  constructor(
-    @Inject(POLYMORPHEUS_CONTEXT)
-    private readonly context: TuiDialogContext<boolean>,
-  ) {}
+  private readonly context: TuiDialogContext<boolean> = inject(POLYMORPHEUS_CONTEXT);
 
   ok() {
     this.context.completeWith(true);

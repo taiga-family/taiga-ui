@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiPopover} from '@taiga-ui/cdk';
 import {TuiAlertOptions} from '@taiga-ui/core';
@@ -10,8 +10,6 @@ import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
     changeDetection,
 })
 export class AlertExampleWithCustomLabelComponent {
-    constructor(
-        @Inject(POLYMORPHEUS_CONTEXT)
-        readonly context: TuiPopover<TuiAlertOptions<unknown>, boolean>,
-    ) {}
+    readonly context =
+        inject<TuiPopover<TuiAlertOptions<unknown>, boolean>>(POLYMORPHEUS_CONTEXT);
 }

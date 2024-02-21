@@ -2,7 +2,7 @@ import {
     Directive,
     FactoryProvider,
     forwardRef,
-    Inject,
+    inject,
     Input,
     Optional,
     SkipSelf,
@@ -58,6 +58,8 @@ export class TuiHintOptionsDirective
     extends AbstractTuiController
     implements TuiHintOptions
 {
+    protected readonly options = inject(TUI_HINT_OPTIONS, {skipSelf: true});
+
     @Input('tuiHintContent')
     content: PolymorpheusContent;
 
@@ -74,10 +76,4 @@ export class TuiHintOptionsDirective
     hideDelay = this.options.hideDelay;
 
     icon = this.options.icon;
-
-    constructor(
-        @SkipSelf() @Inject(TUI_HINT_OPTIONS) protected readonly options: TuiHintOptions,
-    ) {
-        super();
-    }
 }

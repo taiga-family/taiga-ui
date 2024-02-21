@@ -1,14 +1,11 @@
-import {Inject, Pipe, PipeTransform} from '@angular/core';
+import {inject, Pipe, PipeTransform} from '@angular/core';
 import {TuiNumberFormatSettings} from '@taiga-ui/core/interfaces';
 import {TUI_NUMBER_FORMAT} from '@taiga-ui/core/tokens';
 import {tuiFormatNumber} from '@taiga-ui/core/utils/format';
 
 @Pipe({name: 'tuiFormatNumber'})
 export class TuiFormatNumberPipe implements PipeTransform {
-    constructor(
-        @Inject(TUI_NUMBER_FORMAT)
-        private readonly numberFormat: TuiNumberFormatSettings,
-    ) {}
+    private readonly numberFormat = inject(TUI_NUMBER_FORMAT);
 
     /**
      * Formats number adding thousand separators and correct decimal separator

@@ -2,10 +2,8 @@ import {
     ChangeDetectionStrategy,
     Component,
     ElementRef,
-    Inject,
     inject,
     OnInit,
-    Self,
 } from '@angular/core';
 import {TuiDestroyService, TuiPopover} from '@taiga-ui/cdk';
 import {tuiFadeIn, tuiHeightCollapse, tuiSlideIn} from '@taiga-ui/core/animations';
@@ -34,7 +32,13 @@ import {TUI_ALERT_POSITION} from './alert.tokens';
     },
 })
 export class TuiAlertComponent<O, I> implements OnInit {
-    private readonly autoClose =
+    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly destroy$ = inject(TuiDestroyService, {self: true});
+    protected readonly position = inject(TUI_ALERT_POSITION);
+    protected readonly item =
+        inject<TuiPopover<TuiAlertOptions<I>, O>>(POLYMORPHEUS_CONTEXT);
+
+    protected readonly autoClose =
         typeof this.item.autoClose === 'function'
             ? this.item.autoClose(this.item.status)
             : this.item.autoClose;
@@ -44,13 +48,6 @@ export class TuiAlertComponent<O, I> implements OnInit {
     readonly animation = this.position.endsWith('auto')
         ? {...this.options, value: 'right'}
         : {...this.options, value: 'left'};
-
-    constructor(
-        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
-        @Self() @Inject(TuiDestroyService) private readonly destroy$: TuiDestroyService,
-        @Inject(TUI_ALERT_POSITION) readonly position: string,
-        @Inject(POLYMORPHEUS_CONTEXT) readonly item: TuiPopover<TuiAlertOptions<I>, O>,
-    ) {}
 
     ngOnInit(): void {
         this.initAutoClose();
@@ -67,8 +64,8 @@ export class TuiAlertComponent<O, I> implements OnInit {
 
         timer(this.autoClose)
             .pipe(
-                takeUntil(fromEvent(this.el.nativeElement, 'mouseenter')),
-                repeat({delay: () => fromEvent(this.el.nativeElement, 'mouseleave')}),
+                takeUntil(fromEvent(this.el, 'mouseenter')),
+                repeat({delay: () => fromEvent(this.el, 'mouseleave')}),
                 takeUntil(this.destroy$),
             )
             .subscribe(() => this.close());

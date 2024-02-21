@@ -5,7 +5,7 @@ import {
     ElementRef,
     HostBinding,
     HostListener,
-    Inject,
+    inject,
     QueryList,
     ViewChild,
     ViewChildren,
@@ -15,13 +15,12 @@ import {
     TUI_ANIMATIONS_SPEED,
     TUI_CLOSE_WORD,
     TUI_COMMON_ICONS,
-    TuiCommonIcons,
     tuiGetDuration,
     tuiSlideInTop,
 } from '@taiga-ui/core';
 import {shouldCall} from '@tinkoff/ng-event-plugins';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
-import {BehaviorSubject, Observable} from 'rxjs';
+import {BehaviorSubject} from 'rxjs';
 
 import {TuiSheetDialogOptions} from './sheet-dialog.options';
 
@@ -48,6 +47,9 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
     @ViewChildren('stops')
     private readonly stopsRefs: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
+    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly speed = inject(TUI_ANIMATIONS_SPEED);
+
     private pointers = 0;
 
     @HostBinding('@tuiSlideInTop')
@@ -61,14 +63,10 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
 
     stuck$ = new BehaviorSubject(false);
 
-    constructor(
-        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
-        @Inject(TUI_ANIMATIONS_SPEED) private readonly speed: number,
-        @Inject(TUI_COMMON_ICONS) readonly icons: TuiCommonIcons,
-        @Inject(TUI_CLOSE_WORD) readonly closeWord$: Observable<string>,
-        @Inject(POLYMORPHEUS_CONTEXT)
-        readonly context: TuiPopover<TuiSheetDialogOptions<I>, any>,
-    ) {}
+    readonly icons = inject(TUI_COMMON_ICONS);
+    readonly closeWord$ = inject(TUI_CLOSE_WORD);
+    readonly context =
+        inject<TuiPopover<TuiSheetDialogOptions<I>, any>>(POLYMORPHEUS_CONTEXT);
 
     @HostBinding('style.top.px')
     get offset(): number {
@@ -92,16 +90,12 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
         this.pointers += delta;
 
         if (!delta) {
-            const stuck = this.el.nativeElement.scrollTop > this.sheetTop;
+            const stuck = this.el.scrollTop > this.sheetTop;
 
             this.stuck$.value !== stuck && this.stuck$.next(stuck);
         }
 
-        if (
-            this.context.closeable &&
-            !this.pointers &&
-            !this.el.nativeElement.scrollTop
-        ) {
+        if (this.context.closeable && !this.pointers && !this.el.scrollTop) {
             this.close();
         }
     }
@@ -109,15 +103,14 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
     @shouldCall(isCloseable)
     close(): void {
         // TODO: Refactor focus visible on mobile
-        this.el.nativeElement.dispatchEvent(new Event('mousedown', {bubbles: true}));
+        this.el.dispatchEvent(new Event('mousedown', {bubbles: true}));
         this.context.$implicit.complete();
     }
 
     ngAfterViewInit(): void {
-        this.el.nativeElement.scrollTop = [
-            ...this.getStops(this.stopsRefs),
-            this.sheetTop,
-        ][this.context.initial];
+        this.el.scrollTop = [...this.getStops(this.stopsRefs), this.sheetTop][
+            this.context.initial
+        ];
     }
 
     private get sheetTop(): number {

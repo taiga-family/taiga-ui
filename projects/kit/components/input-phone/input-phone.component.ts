@@ -1,19 +1,15 @@
 import {
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
     ContentChild,
     EventEmitter,
     HostBinding,
-    Inject,
+    inject,
     Input,
-    Optional,
     Output,
-    Self,
     TemplateRef,
     ViewChild,
 } from '@angular/core';
-import {NgControl} from '@angular/forms';
 import {MASKITO_DEFAULT_OPTIONS, MaskitoOptions, maskitoTransform} from '@maskito/core';
 import {maskitoCaretGuard, maskitoPrefixPostprocessorGenerator} from '@maskito/kit';
 import {
@@ -38,12 +34,10 @@ import {
     TuiPrimitiveTextfieldComponent,
     TuiSizeL,
     TuiSizeS,
-    TuiTextfieldCleanerDirective,
-    TuiTextfieldSizeDirective,
 } from '@taiga-ui/core';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 
-import {TUI_INPUT_PHONE_OPTIONS, TuiInputPhoneOptions} from './input-phone.options';
+import {TUI_INPUT_PHONE_OPTIONS} from './input-phone.options';
 import {
     tuiCreateCompletePhoneInsertionPreprocessor,
     tuiCreatePhoneMaskExpression,
@@ -75,6 +69,10 @@ export class TuiInputPhoneComponent
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
+    private readonly textfieldCleaner = inject(TUI_TEXTFIELD_CLEANER);
+    private readonly options = inject(TUI_INPUT_PHONE_OPTIONS);
+    private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
+
     @Input('countryCode')
     set countryCodeSetter(newCountryCode: string) {
         const prevCountryCode = this.countryCode;
@@ -101,18 +99,6 @@ export class TuiInputPhoneComponent
     countryCode = this.options.countryCode;
 
     open = false;
-
-    constructor(
-        @Optional() @Self() @Inject(NgControl) control: NgControl | null,
-        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
-        @Inject(TUI_TEXTFIELD_CLEANER)
-        private readonly textfieldCleaner: TuiTextfieldCleanerDirective,
-        @Inject(TUI_INPUT_PHONE_OPTIONS) private readonly options: TuiInputPhoneOptions,
-        @Inject(TUI_TEXTFIELD_SIZE)
-        private readonly textfieldSize: TuiTextfieldSizeDirective,
-    ) {
-        super(control, cdr);
-    }
 
     @HostBinding('attr.data-size')
     get size(): TuiSizeL | TuiSizeS {

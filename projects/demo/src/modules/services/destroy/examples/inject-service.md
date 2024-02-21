@@ -1,13 +1,9 @@
 ```ts
-import {Inject, Self} from '@angular/core';
 import {TuiDestroyService} from '@taiga-ui/cdk';
-
 // ...
+
+@Component()
 export class MyComponent {
-  constructor(
-    @Self()
-    @Inject(TuiDestroyService)
-    private readonly destroy$: TuiDestroyService,
-  ) {}
+  private readonly destroy$ = inject(TuiDestroyService, {self: true});
 }
 ```

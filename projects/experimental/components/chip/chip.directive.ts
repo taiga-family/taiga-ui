@@ -1,5 +1,5 @@
-import {Directive, Inject, Input} from '@angular/core';
-import {TuiDirectiveStylesService} from '@taiga-ui/cdk';
+import {Directive, inject, Input} from '@angular/core';
+import {tuiWithStyles} from '@taiga-ui/cdk';
 import {
     TuiAppearanceDirective,
     tuiAppearanceOptionsProvider,
@@ -12,7 +12,7 @@ import {tuiCheckboxOptionsProvider} from '@taiga-ui/experimental/components/chec
 import {tuiToggleOptionsProvider} from '@taiga-ui/experimental/components/toggle';
 
 import {TuiChipComponent} from './chip.component';
-import {TUI_CHIP_OPTIONS, TuiChipOptions} from './chip.options';
+import {TUI_CHIP_OPTIONS} from './chip.options';
 
 @Directive({
     selector: 'tui-chip,[tuiChip]',
@@ -43,13 +43,9 @@ import {TUI_CHIP_OPTIONS, TuiChipOptions} from './chip.options';
     host: {'[attr.data-size]': 'size'},
 })
 export class TuiChipDirective {
+    private readonly options = inject(TUI_CHIP_OPTIONS);
+    protected readonly nothing = tuiWithStyles(TuiChipComponent);
+
     @Input()
     size: TuiSizeXXS = this.options.size;
-
-    constructor(
-        @Inject(TUI_CHIP_OPTIONS) private readonly options: TuiChipOptions,
-        @Inject(TuiDirectiveStylesService) directiveStyles: TuiDirectiveStylesService,
-    ) {
-        directiveStyles.addComponent(TuiChipComponent);
-    }
 }

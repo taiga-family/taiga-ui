@@ -4,7 +4,7 @@ import {
     Component,
     ContentChildren,
     forwardRef,
-    Inject,
+    inject,
     QueryList,
 } from '@angular/core';
 import {EMPTY_QUERY, tuiQueryListChanges} from '@taiga-ui/cdk';
@@ -27,7 +27,13 @@ export class TuiTrComponent<T extends Partial<Record<keyof T, any>>>
     @ContentChildren(forwardRef(() => TuiCellDirective))
     private readonly cells: QueryList<TuiCellDirective> = EMPTY_QUERY;
 
+    private readonly body = inject<TuiTbodyComponent<T>>(
+        forwardRef(() => TuiTbodyComponent),
+    );
+
     private readonly contentReady$ = new ReplaySubject<boolean>(1);
+
+    readonly table = inject<TuiTableDirective<T>>(forwardRef(() => TuiTableDirective));
 
     readonly cells$ = this.contentReady$.pipe(
         switchMap(() => tuiQueryListChanges(this.cells)),
@@ -52,13 +58,6 @@ export class TuiTrComponent<T extends Partial<Record<keyof T, any>>>
                 >,
         ),
     );
-
-    constructor(
-        @Inject(forwardRef(() => TuiTableDirective))
-        readonly table: TuiTableDirective<T>,
-        @Inject(forwardRef(() => TuiTbodyComponent))
-        private readonly body: TuiTbodyComponent<T>,
-    ) {}
 
     async ngAfterContentInit(): Promise<void> {
         await Promise.resolve();

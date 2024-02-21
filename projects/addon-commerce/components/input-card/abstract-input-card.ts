@@ -1,14 +1,4 @@
-import {
-    ChangeDetectorRef,
-    Directive,
-    EventEmitter,
-    Inject,
-    Input,
-    Optional,
-    Output,
-    Self,
-} from '@angular/core';
-import {NgControl} from '@angular/forms';
+import {Directive, EventEmitter, Input, Output} from '@angular/core';
 import {TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
 import {
     AbstractTuiNullableControl,
@@ -38,15 +28,8 @@ export abstract class AbstractTuiInputCard<
     @Output()
     readonly binChange = new EventEmitter<string | null>();
 
-    constructor(
-        @Optional()
-        @Self()
-        @Inject(NgControl)
-        control: NgControl | null,
-        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
-        protected readonly options: Options,
-    ) {
-        super(control, cdr);
+    protected constructor(protected readonly options: Options) {
+        super();
     }
 
     abstract get card(): string;

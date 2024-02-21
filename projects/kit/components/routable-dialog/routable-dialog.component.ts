@@ -1,5 +1,5 @@
-import {ChangeDetectionStrategy, Component, Inject, Injector, Self} from '@angular/core';
-import {ActivatedRoute, Router, UrlSegment} from '@angular/router';
+import {ChangeDetectionStrategy, Component, inject, Injector} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 import {TuiDestroyService} from '@taiga-ui/cdk';
 import {TuiDialogService} from '@taiga-ui/core';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
@@ -12,22 +12,20 @@ import {takeUntil} from 'rxjs';
     providers: [TuiDestroyService],
 })
 export class TuiRoutableDialogComponent {
-    constructor(
-        @Inject(ActivatedRoute) private readonly route: ActivatedRoute,
-        @Inject(Router) private readonly router: Router,
-        @Inject(TuiDialogService) dialogs: TuiDialogService,
-        @Inject(Injector) injector: Injector,
-        @Self() @Inject(TuiDestroyService) destroy$: TuiDestroyService,
-    ) {
-        dialogs
+    private readonly route = inject(ActivatedRoute);
+    private readonly router = inject(Router);
+
+    constructor() {
+        inject(TuiDialogService)
             .open(
-                new PolymorpheusComponent(this.route.snapshot.data['dialog'], injector),
+                new PolymorpheusComponent(
+                    this.route.snapshot.data['dialog'],
+                    inject(Injector),
+                ),
                 this.route.snapshot.data['dialogOptions'],
             )
-            .pipe(takeUntil(destroy$))
-            .subscribe({
-                complete: () => this.navigateToParent(),
-            });
+            .pipe(takeUntil(inject(TuiDestroyService, {self: true})))
+            .subscribe({complete: () => this.navigateToParent()});
     }
 
     private navigateToParent(): void {
@@ -43,8 +41,6 @@ export class TuiRoutableDialogComponent {
     }
 
     private getLazyLoadedBackUrl(): string {
-        const urlSegments: UrlSegment[] = this.route.parent?.snapshot.url || [];
-
-        return urlSegments.map(() => '..').join('/');
+        return (this.route.parent?.snapshot.url || []).map(() => '..').join('/');
     }
 }

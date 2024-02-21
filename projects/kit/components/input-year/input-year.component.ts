@@ -1,15 +1,11 @@
 import {
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
     HostBinding,
-    Inject,
+    inject,
     Input,
-    Optional,
-    Self,
     ViewChild,
 } from '@angular/core';
-import {NgControl} from '@angular/forms';
 import {MaskitoOptions} from '@maskito/core';
 import {maskitoNumberOptionsGenerator} from '@maskito/kit';
 import {
@@ -27,7 +23,6 @@ import {
     TuiPrimitiveTextfieldComponent,
     TuiSizeL,
     TuiSizeS,
-    TuiTextfieldSizeDirective,
     TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
 import {TUI_INPUT_DATE_OPTIONS, TuiInputDateOptions} from '@taiga-ui/kit/tokens';
@@ -51,6 +46,9 @@ export class TuiInputYearComponent
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
+    private readonly options = inject(TUI_INPUT_DATE_OPTIONS);
+    private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
+
     @Input()
     min: number | null = this.options.min.year;
 
@@ -64,20 +62,6 @@ export class TuiInputYearComponent
     nativeValue = '';
 
     readonly initialItem = new Date().getFullYear();
-
-    constructor(
-        @Optional()
-        @Self()
-        @Inject(NgControl)
-        control: NgControl | null,
-        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
-        @Inject(TUI_INPUT_DATE_OPTIONS)
-        private readonly options: TuiInputDateOptions,
-        @Inject(TUI_TEXTFIELD_SIZE)
-        private readonly textfieldSize: TuiTextfieldSizeDirective,
-    ) {
-        super(control, cdr);
-    }
 
     @HostBinding('attr.data-size')
     get size(): TuiSizeL | TuiSizeS {

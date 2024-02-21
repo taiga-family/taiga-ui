@@ -1,15 +1,11 @@
 import {
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
     HostBinding,
-    Inject,
+    inject,
     Input,
-    Optional,
-    Self,
     ViewChild,
 } from '@angular/core';
-import {NgControl} from '@angular/forms';
 import {MaskitoOptions} from '@maskito/core';
 import {TuiCodeCVCLength} from '@taiga-ui/addon-commerce/types';
 import {
@@ -27,8 +23,6 @@ import {
     TuiPrimitiveTextfieldComponent,
     TuiSizeL,
     TuiSizeS,
-    TuiTextfieldLabelOutsideDirective,
-    TuiTextfieldSizeDirective,
 } from '@taiga-ui/core';
 
 @Component({
@@ -48,6 +42,9 @@ export class TuiInputCVCComponent
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly input?: TuiPrimitiveTextfieldComponent;
 
+    private readonly textfieldLabelOutside = inject(TUI_TEXTFIELD_LABEL_OUTSIDE);
+    private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
+
     @Input()
     autocompleteEnabled = false;
 
@@ -64,20 +61,6 @@ export class TuiInputCVCComponent
     maskOptions: MaskitoOptions = {
         mask: new Array(3).fill(TUI_DIGIT_REGEXP),
     };
-
-    constructor(
-        @Optional()
-        @Self()
-        @Inject(NgControl)
-        control: NgControl | null,
-        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
-        @Inject(TUI_TEXTFIELD_LABEL_OUTSIDE)
-        private readonly textfieldLabelOutside: TuiTextfieldLabelOutsideDirective,
-        @Inject(TUI_TEXTFIELD_SIZE)
-        private readonly textfieldSize: TuiTextfieldSizeDirective,
-    ) {
-        super(control, cdr);
-    }
 
     @HostBinding('attr.data-size')
     get size(): TuiSizeL | TuiSizeS {

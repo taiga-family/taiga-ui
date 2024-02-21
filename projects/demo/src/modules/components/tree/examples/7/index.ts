@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiHandler} from '@taiga-ui/cdk';
@@ -35,12 +35,10 @@ export interface Item {
     ],
 })
 export class TuiTreeExample7 {
-    map = new Map<Item, boolean>();
+    readonly loading = inject(TUI_TREE_LOADING);
+    readonly service = inject(TuiTreeService<Item>);
 
-    constructor(
-        @Inject(TUI_TREE_LOADING) readonly loading: unknown,
-        @Inject(TuiTreeService) readonly service: TuiTreeService<Item>,
-    ) {}
+    map = new Map<Item, boolean>();
 
     childrenHandler: TuiHandler<Item, readonly Item[]> = item =>
         this.service.getChildren(item);

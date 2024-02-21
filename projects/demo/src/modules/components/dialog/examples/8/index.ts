@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDialogService} from '@taiga-ui/core';
@@ -13,12 +13,10 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
     providers: [TuiDialogFormService],
 })
 export class TuiDialogExampleComponent8 {
-    value = '';
+    private readonly dialogForm = inject(TuiDialogFormService);
+    private readonly dialogs = inject(TuiDialogService);
 
-    constructor(
-        @Inject(TuiDialogFormService) private readonly dialogForm: TuiDialogFormService,
-        @Inject(TuiDialogService) private readonly dialogs: TuiDialogService,
-    ) {}
+    value = '';
 
     onModelChange(value: string): void {
         this.value = value;

@@ -4,7 +4,7 @@ import {
     EventEmitter,
     HostBinding,
     HostListener,
-    Inject,
+    inject,
     Input,
     Output,
 } from '@angular/core';
@@ -18,6 +18,8 @@ import {TuiResizeableDirective} from './resizeable.directive';
     host: {'[style.touchAction]': '"none"'},
 })
 export class TuiResizerDirective {
+    private readonly resizeable: ElementRef<HTMLElement> = inject(TuiResizeableDirective);
+
     @Input()
     tuiResizer: readonly [x: number, y: number] = [0, 0];
 
@@ -28,11 +30,6 @@ export class TuiResizerDirective {
     y = NaN;
     width = 0;
     height = 0;
-
-    constructor(
-        @Inject(TuiResizeableDirective)
-        private readonly resizeable: ElementRef<HTMLElement>,
-    ) {}
 
     @HostBinding('style.cursor')
     get cursor(): string {

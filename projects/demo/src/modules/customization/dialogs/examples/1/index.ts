@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiAlertService} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
@@ -13,11 +13,8 @@ import {PromptService} from './prompt/prompt.service';
     changeDetection,
 })
 export class TuiDialogsExample1 {
-    constructor(
-        @Inject(TuiAlertService)
-        private readonly alerts: TuiAlertService,
-        @Inject(PromptService) private readonly promptService: PromptService,
-    ) {}
+    private readonly alerts = inject(TuiAlertService);
+    private readonly promptService = inject(PromptService);
 
     onClick(
         choose: PolymorpheusContent,

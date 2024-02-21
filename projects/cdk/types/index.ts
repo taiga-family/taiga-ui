@@ -3,7 +3,6 @@ export * from './date-mode';
 export * from './deep-partial';
 export * from './event-with';
 export * from './handler';
-export * from './injection-token-type';
 export * from './input-mode';
 export * from './input-type';
 export * from './mapper';

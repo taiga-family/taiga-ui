@@ -5,7 +5,7 @@ import {
     EventEmitter,
     HostBinding,
     HostListener,
-    Inject,
+    inject,
     Input,
     Output,
     ViewChild,
@@ -14,8 +14,6 @@ import {
     MODE_PROVIDER,
     TUI_COMMON_ICONS,
     TUI_MODE,
-    TuiBrightness,
-    TuiCommonIcons,
     tuiSizeBigger,
     TuiSizeL,
     TuiSizeS,
@@ -24,9 +22,8 @@ import {
 import {TuiStatus} from '@taiga-ui/kit/types';
 import {tuiStringHashToHsl} from '@taiga-ui/kit/utils/format';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
 
-import {TUI_TAG_OPTIONS, TuiTagOptions} from './tag.options';
+import {TUI_TAG_OPTIONS} from './tag.options';
 
 @Component({
     selector: 'tui-tag, a[tuiTag], button[tuiTag]',
@@ -39,6 +36,9 @@ import {TUI_TAG_OPTIONS, TuiTagOptions} from './tag.options';
     },
 })
 export class TuiTagComponent {
+    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly options = inject(TUI_TAG_OPTIONS);
+
     // TODO: Possibly implement standard focus mechanisms and outline
     @Input()
     value = '';
@@ -87,6 +87,9 @@ export class TuiTagComponent {
     @HostBinding('class._editing')
     editing = false;
 
+    readonly icons = inject(TUI_COMMON_ICONS);
+    readonly mode$ = inject(TUI_MODE);
+
     editedText: string | null = null;
 
     @ViewChild('input', {read: ElementRef})
@@ -95,13 +98,6 @@ export class TuiTagComponent {
             input.nativeElement.focus();
         }
     }
-
-    constructor(
-        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
-        @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
-        @Inject(TUI_TAG_OPTIONS) private readonly options: TuiTagOptions,
-        @Inject(TUI_COMMON_ICONS) readonly icons: TuiCommonIcons,
-    ) {}
 
     get backgroundColor(): string | null {
         return this.autoColor ? tuiStringHashToHsl(this.value) : null;
@@ -166,7 +162,7 @@ export class TuiTagComponent {
             case 'esc':
                 event.preventDefault();
                 this.stopEditing();
-                this.el.nativeElement.focus();
+                this.el.focus();
                 break;
             default:
                 break;

@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {TuiPopover} from '@taiga-ui/cdk';
 import {TuiPdfViewerOptions} from '@taiga-ui/kit';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
@@ -11,8 +11,6 @@ import type {Buttons} from './index';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ActionsContentComponent {
-    constructor(
-        @Inject(POLYMORPHEUS_CONTEXT)
-        readonly context: TuiPopover<TuiPdfViewerOptions<Buttons>, string>,
-    ) {}
+    readonly context =
+        inject<TuiPopover<TuiPdfViewerOptions<Buttons>, string>>(POLYMORPHEUS_CONTEXT);
 }

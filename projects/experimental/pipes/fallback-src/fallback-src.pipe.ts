@@ -1,4 +1,4 @@
-import {ElementRef, Inject, Pipe, PipeTransform} from '@angular/core';
+import {ElementRef, inject, Pipe, PipeTransform} from '@angular/core';
 import {TUI_ICON_ERROR} from '@taiga-ui/core';
 import {fromEvent, map, merge, Observable, startWith} from 'rxjs';
 
@@ -6,12 +6,12 @@ import {fromEvent, map, merge, Observable, startWith} from 'rxjs';
     name: 'tuiFallbackSrc',
 })
 export class TuiFallbackSrcPipe implements PipeTransform {
-    constructor(@Inject(ElementRef) private readonly el: ElementRef<HTMLElement>) {}
+    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
 
     transform(src: string, fallback: string): Observable<string> {
         return merge(
-            fromEvent(this.el.nativeElement, TUI_ICON_ERROR),
-            fromEvent(this.el.nativeElement, 'error', {capture: true}),
+            fromEvent(this.el, TUI_ICON_ERROR),
+            fromEvent(this.el, 'error', {capture: true}),
         ).pipe(
             map(() => fallback),
             startWith(src),

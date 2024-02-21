@@ -1,4 +1,4 @@
-import {Component, ElementRef, Inject} from '@angular/core';
+import {Component, ElementRef, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiAsViewport, TuiRectAccessor} from '@taiga-ui/core';
@@ -12,13 +12,11 @@ import {tuiAsViewport, TuiRectAccessor} from '@taiga-ui/core';
     providers: [tuiAsViewport(TuiViewportExample1)],
 })
 export class TuiViewportExample1 extends TuiRectAccessor {
+    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+
     readonly type = 'viewport';
 
-    constructor(@Inject(ElementRef) private readonly el: ElementRef<HTMLElement>) {
-        super();
-    }
-
     getClientRect(): ClientRect {
-        return this.el.nativeElement.getBoundingClientRect();
+        return this.el.getBoundingClientRect();
     }
 }

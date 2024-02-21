@@ -6,9 +6,8 @@ import {
     forwardRef,
     HostBinding,
     HostListener,
-    Inject,
+    inject,
     Input,
-    Optional,
     QueryList,
     ViewEncapsulation,
 } from '@angular/core';
@@ -25,7 +24,6 @@ import {
 import {
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
-    TuiTextfieldController,
 } from '@taiga-ui/core/directives';
 import {TuiDataListAccessor} from '@taiga-ui/core/interfaces';
 import {TUI_NOTHING_FOUND_MESSAGE, tuiAsDataListAccessor} from '@taiga-ui/core/tokens';
@@ -52,6 +50,10 @@ export class TuiDataListComponent<T> implements TuiDataListAccessor<T> {
     private readonly options: QueryList<TuiOptionComponent<T>> = EMPTY_QUERY;
 
     private origin?: HTMLElement;
+    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER, {
+        optional: true,
+    });
 
     @Input()
     @HostBinding('attr.role')
@@ -64,14 +66,7 @@ export class TuiDataListComponent<T> implements TuiDataListAccessor<T> {
     @HostBinding('attr.data-list-size')
     size = this.controller?.size || 'm';
 
-    constructor(
-        @Optional()
-        @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
-        private readonly controller: TuiTextfieldController | null,
-        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
-        @Inject(TUI_NOTHING_FOUND_MESSAGE)
-        readonly defaultEmptyContent$: Observable<string>,
-    ) {}
+    readonly defaultEmptyContent$ = inject(TUI_NOTHING_FOUND_MESSAGE);
 
     @tuiPure
     get empty$(): Observable<boolean> {
@@ -99,7 +94,7 @@ export class TuiDataListComponent<T> implements TuiDataListAccessor<T> {
     // TODO: Consider aria-activedescendant for proper accessibility implementation
     @HostListener('wheel.silent.passive')
     @HostListener('mouseleave', ['$event.target'])
-    handleFocusLossIfNecessary(element: Element = this.el.nativeElement): void {
+    handleFocusLossIfNecessary(element: Element = this.el): void {
         if (this.origin && tuiIsNativeFocusedIn(element)) {
             tuiSetNativeMouseFocused(this.origin, true, true);
         }
@@ -124,6 +119,6 @@ export class TuiDataListComponent<T> implements TuiDataListAccessor<T> {
     }
 
     private get elements(): readonly HTMLElement[] {
-        return Array.from(this.el.nativeElement.querySelectorAll('[tuiOption]'));
+        return Array.from(this.el.querySelectorAll('[tuiOption]'));
     }
 }

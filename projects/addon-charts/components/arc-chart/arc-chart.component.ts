@@ -4,11 +4,10 @@ import {
     Component,
     ElementRef,
     HostBinding,
-    Inject,
+    inject,
     Input,
     Output,
     QueryList,
-    Self,
     ViewChildren,
 } from '@angular/core';
 import {DomSanitizer, SafeValue} from '@angular/platform-browser';
@@ -63,6 +62,7 @@ function arcsToIndex(arcs: QueryList<ElementRef<SVGElement>>): Array<Observable<
     providers: [TuiDestroyService],
 })
 export class TuiArcChartComponent {
+    private readonly sanitizer = inject(DomSanitizer);
     private readonly arcs$ = new ReplaySubject<QueryList<ElementRef<SVGElement>>>(1);
 
     @ViewChildren('arc')
@@ -104,13 +104,12 @@ export class TuiArcChartComponent {
 
     initialized = false;
 
-    constructor(
-        @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
-        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
-        @Self() @Inject(TuiDestroyService) destroy$: Observable<void>,
-    ) {
+    constructor() {
         timer(0)
-            .pipe(tuiWatch(cdr), takeUntil(destroy$))
+            .pipe(
+                tuiWatch(inject(ChangeDetectorRef)),
+                takeUntil(inject(TuiDestroyService)),
+            )
             .subscribe(() => {
                 this.initialized = true;
             });

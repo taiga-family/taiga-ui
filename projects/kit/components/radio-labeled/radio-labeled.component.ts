@@ -1,14 +1,10 @@
 import {
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
-    Inject,
+    inject,
     Input,
-    Optional,
-    Self,
     ViewChild,
 } from '@angular/core';
-import {NgControl} from '@angular/forms';
 import {
     AbstractTuiNullableControl,
     TUI_DEFAULT_IDENTITY_MATCHER,
@@ -18,13 +14,8 @@ import {
     TuiIdentityMatcher,
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
-import {MODE_PROVIDER, TUI_MODE, TuiBrightness, TuiSizeL} from '@taiga-ui/core';
-import {
-    TUI_RADIO_OPTIONS,
-    TuiRadioComponent,
-    TuiRadioOptions,
-} from '@taiga-ui/kit/components/radio';
-import {Observable} from 'rxjs';
+import {MODE_PROVIDER, TUI_MODE, TuiSizeL} from '@taiga-ui/core';
+import {TUI_RADIO_OPTIONS, TuiRadioComponent} from '@taiga-ui/kit/components/radio';
 
 @Component({
     selector: 'tui-radio-labeled',
@@ -48,6 +39,8 @@ export class TuiRadioLabeledComponent<T>
     @ViewChild(TuiRadioComponent)
     private readonly radio?: TuiRadioComponent<T>;
 
+    private readonly options = inject(TUI_RADIO_OPTIONS);
+
     @Input()
     item?: T;
 
@@ -60,18 +53,7 @@ export class TuiRadioLabeledComponent<T>
     @Input()
     pseudoDisabled = false;
 
-    constructor(
-        @Optional()
-        @Self()
-        @Inject(NgControl)
-        control: NgControl | null,
-        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
-        @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
-        @Inject(TUI_RADIO_OPTIONS)
-        private readonly options: TuiRadioOptions,
-    ) {
-        super(control, cdr);
-    }
+    readonly mode$ = inject(TUI_MODE);
 
     get nativeFocusableElement(): TuiNativeFocusableElement | null {
         return this.radio?.nativeFocusableElement ?? null;

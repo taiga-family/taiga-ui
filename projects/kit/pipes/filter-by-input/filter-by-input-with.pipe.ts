@@ -1,8 +1,7 @@
-import {Inject, Optional, Pipe, PipeTransform} from '@angular/core';
+import {inject, Pipe, PipeTransform} from '@angular/core';
 import {
     TUI_DEFAULT_MATCHER,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
-    TuiFocusableElementAccessor,
     TuiStringHandler,
 } from '@taiga-ui/cdk';
 import {TuiMultiSelectDirective} from '@taiga-ui/kit/components/multi-select';
@@ -20,15 +19,8 @@ export class TuiFilterByInputWithPipe
     extends AbstractTuiFilterByInput
     implements PipeTransform
 {
-    constructor(
-        @Inject(TUI_FOCUSABLE_ITEM_ACCESSOR)
-        protected readonly accessor: TuiFocusableElementAccessor,
-        @Optional()
-        @Inject(TuiMultiSelectDirective)
-        protected readonly multiSelect: unknown,
-    ) {
-        super();
-    }
+    protected readonly multiSelect = inject(TuiMultiSelectDirective, {optional: true});
+    protected readonly accessor = inject(TUI_FOCUSABLE_ITEM_ACCESSOR);
 
     transform<T>(items: T, matcher?: TuiStringHandler<TuiArrayElement<T>>): T;
     transform<T>(

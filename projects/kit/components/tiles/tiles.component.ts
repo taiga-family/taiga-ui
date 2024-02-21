@@ -4,7 +4,7 @@ import {
     ElementRef,
     HostBinding,
     HostListener,
-    Inject,
+    inject,
     Input,
     Output,
     ViewEncapsulation,
@@ -32,6 +32,7 @@ import {BehaviorSubject, debounce, filter, map, Subject, timer} from 'rxjs';
     ],
 })
 export class TuiTilesComponent {
+    private readonly el: Element = inject(ElementRef).nativeElement;
     private readonly el$ = new Subject<Element | undefined>();
 
     @Input()
@@ -58,8 +59,6 @@ export class TuiTilesComponent {
 
     readonly order$ = new BehaviorSubject(new Map<number, number>());
 
-    constructor(@Inject(ElementRef) private readonly el: ElementRef<Element>) {}
-
     @HostListener('pointerleave.silent')
     rearrange(element?: Element): void {
         this.el$.next(element);
@@ -70,7 +69,7 @@ export class TuiTilesComponent {
     }
 
     private reorder(element: Element): Map<number, number> {
-        const elements = Array.from(this.el.nativeElement.children);
+        const elements = Array.from(this.el.children);
         const currentIndex = elements.indexOf(this.element || element);
         const newIndex = elements.indexOf(element);
         const order = this.order.size

@@ -1,14 +1,17 @@
 ```ts
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import {TuiTableBarsService} from '@taiga-ui/addon-tablebars';
-import {Injector} from '@angular/core';
+import {inject, Injector} from '@angular/core';
 import {CustomTableBarsComponent} from 'customTableBars.component';
+
 // ...
 
 export class LazyModule {
-  constructor(@Inject(TuiTableBarsService) private readonly tableBarsService: TuiTableBarsService) {
+  constructor() {
     // ...
-    this.tableBarsService.showTableBar(new PolymorpheusComponent(CustomTableBarsComponent, this.injector)).subscribe();
+    inject(TuiTableBarsService)
+      .showTableBar(new PolymorpheusComponent(CustomTableBarsComponent, inject(Injector)))
+      .subscribe();
     // ...
   }
 }

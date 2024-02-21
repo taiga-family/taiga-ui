@@ -4,10 +4,8 @@ import {
     ChangeDetectionStrategy,
     Component,
     ElementRef,
-    Inject,
+    inject,
     Input,
-    Optional,
-    Sanitizer,
     SecurityContext,
 } from '@angular/core';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
@@ -47,28 +45,24 @@ const FAILED_EXTERNAL_ICON = 'Failed to load external SVG';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiSvgComponent {
-    private readonly src$ = new ReplaySubject<void>(1);
     private icon: TuiSafeHtml = '';
+    private readonly doc = inject(DOCUMENT);
+    private readonly win = inject(WINDOW);
+    private readonly options = inject(TUI_SVG_OPTIONS);
+    private readonly tuiSanitizer = inject(TUI_SANITIZER, {optional: true});
+    private readonly svgService = inject(TuiSvgService);
+    private readonly staticRequestService = inject(TuiStaticRequestService);
+    private readonly sanitizer = inject(DomSanitizer);
+    private readonly el: Element = inject(ElementRef).nativeElement;
+    private readonly baseHref = inject(TUI_BASE_HREF);
+    private readonly src$ = new ReplaySubject<void>(1);
+    private readonly srcInterceptors = inject(TUI_SVG_SRC_INTERCEPTORS, {
+        optional: true,
+    }) as readonly TuiSvgInterceptorHandler[] | null;
 
     readonly innerHTML$: Observable<SafeHtml>;
 
-    constructor(
-        @Inject(DOCUMENT) private readonly doc: Document,
-        @Inject(WINDOW) private readonly win: Window,
-        @Inject(TUI_SVG_OPTIONS) private readonly options: TuiSvgOptions,
-        @Optional()
-        @Inject(TUI_SVG_SRC_INTERCEPTORS)
-        private readonly srcInterceptors: readonly TuiSvgInterceptorHandler[] | null,
-        @Optional()
-        @Inject(TUI_SANITIZER)
-        private readonly tuiSanitizer: Sanitizer | null,
-        @Inject(TuiSvgService) private readonly svgService: TuiSvgService,
-        @Inject(TuiStaticRequestService)
-        private readonly staticRequestService: TuiStaticRequestService,
-        @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
-        @Inject(ElementRef) private readonly el: ElementRef<Element>,
-        @Inject(TUI_BASE_HREF) private readonly baseHref: string,
-    ) {
+    constructor() {
         this.innerHTML$ = this.src$.pipe(
             switchMap(() => {
                 if (tuiIsString(this.icon)) {
@@ -122,7 +116,7 @@ export class TuiSvgComponent {
     }
 
     private get isShadowDOM(): boolean {
-        return tuiGetDocumentOrShadowRoot(this.el.nativeElement) !== this.doc;
+        return tuiGetDocumentOrShadowRoot(this.el) !== this.doc;
     }
 
     private get isUse(): boolean {
@@ -167,7 +161,7 @@ export class TuiSvgComponent {
         });
 
         ngDevMode && tuiAssert.assert(false, message, icon);
-        this.el.nativeElement.dispatchEvent(event);
+        this.el.dispatchEvent(event);
     }
 
     @tuiPure

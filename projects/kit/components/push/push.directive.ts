@@ -1,4 +1,4 @@
-import {Directive, Inject, Optional, SkipSelf} from '@angular/core';
+import {Directive, inject} from '@angular/core';
 import {TUI_BUTTON_OPTIONS, TuiButtonOptions, TuiModeDirective} from '@taiga-ui/core';
 import {Subject} from 'rxjs';
 
@@ -16,20 +16,16 @@ import {Subject} from 'rxjs';
     ],
 })
 export class TuiPushDirective extends TuiModeDirective implements TuiButtonOptions {
+    private readonly modeDirective = inject(TuiModeDirective, {
+        optional: true,
+        skipSelf: true,
+    });
+
     size: TuiButtonOptions['size'] = 's';
 
     shape = null;
 
     override readonly change$ = this.modeDirective?.change$ || new Subject();
-
-    constructor(
-        @Optional()
-        @SkipSelf()
-        @Inject(TuiModeDirective)
-        private readonly modeDirective: TuiModeDirective | null,
-    ) {
-        super();
-    }
 
     get appearance(): string {
         return this.modeDirective?.mode === 'onDark' ? 'accent' : 'secondary';

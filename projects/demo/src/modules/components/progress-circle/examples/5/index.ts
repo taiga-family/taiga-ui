@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_IS_E2E} from '@taiga-ui/cdk';
@@ -12,6 +12,8 @@ import {map, of, repeat, share, takeWhile, timer} from 'rxjs';
     changeDetection,
 })
 export class TuiProgressCircleExample5 {
+    private readonly isE2E = inject(TUI_IS_E2E);
+
     readonly max = 100;
 
     readonly value$ = this.isE2E
@@ -35,6 +37,4 @@ export class TuiProgressCircleExample5 {
             return 'green';
         }),
     );
-
-    constructor(@Inject(TUI_IS_E2E) private readonly isE2E: boolean) {}
 }

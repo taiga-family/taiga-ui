@@ -1,5 +1,4 @@
-import {ChangeDetectionStrategy, Component, Inject, Input} from '@angular/core';
-import type {TuiDocPage} from '@taiga-ui/addon-doc/interfaces';
+import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {TUI_DOC_MAP_PAGES, TUI_DOC_SEE_ALSO_TEXT} from '@taiga-ui/addon-doc/tokens';
 
 @Component({
@@ -9,13 +8,12 @@ import {TUI_DOC_MAP_PAGES, TUI_DOC_SEE_ALSO_TEXT} from '@taiga-ui/addon-doc/toke
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiDocSeeAlsoComponent {
+    private readonly pages = inject(TUI_DOC_MAP_PAGES);
+
     @Input()
     seeAlso: readonly string[] = [];
 
-    constructor(
-        @Inject(TUI_DOC_SEE_ALSO_TEXT) readonly text: string,
-        @Inject(TUI_DOC_MAP_PAGES) private readonly pages: Map<string, TuiDocPage>,
-    ) {}
+    readonly text = inject(TUI_DOC_SEE_ALSO_TEXT);
 
     getRouterLink(pageTitle: string): string {
         return this.pages.get(pageTitle)?.route ?? '';

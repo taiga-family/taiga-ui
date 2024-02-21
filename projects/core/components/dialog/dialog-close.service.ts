@@ -1,5 +1,5 @@
 import {DOCUMENT} from '@angular/common';
-import {ElementRef, Inject, Injectable} from '@angular/core';
+import {ElementRef, inject, Injectable} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
 import {
     tuiContainsOrAfter,
@@ -14,6 +14,10 @@ const SCROLLBAR_PLACEHOLDER = 17;
 
 @Injectable()
 export class TuiDialogCloseService extends Observable<unknown> {
+    private readonly win = inject(WINDOW);
+    private readonly doc = inject(DOCUMENT);
+    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+
     private readonly esc$ = tuiTypedFromEvent(this.doc, 'keydown').pipe(
         filter(event => {
             const target = tuiGetActualTarget(event);
@@ -21,7 +25,7 @@ export class TuiDialogCloseService extends Observable<unknown> {
             return (
                 event.key === 'Escape' &&
                 !event.defaultPrevented &&
-                (this.element.contains(target) || this.isOutside(target))
+                (this.el.contains(target) || this.isOutside(target))
             );
         }),
     );
@@ -41,22 +45,14 @@ export class TuiDialogCloseService extends Observable<unknown> {
         ),
     );
 
-    constructor(
-        @Inject(WINDOW) private readonly win: Window,
-        @Inject(DOCUMENT) private readonly doc: Document,
-        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
-    ) {
+    constructor() {
         super(subscriber => merge(this.esc$, this.mousedown$).subscribe(subscriber));
-    }
-
-    private get element(): HTMLElement {
-        return this.el.nativeElement;
     }
 
     private isOutside(target: EventTarget): boolean {
         return (
             tuiIsElement(target) &&
-            (!tuiContainsOrAfter(this.element, target) || target === this.element)
+            (!tuiContainsOrAfter(this.el, target) || target === this.el)
         );
     }
 }

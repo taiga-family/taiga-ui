@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {DomSanitizer} from '@angular/platform-browser';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
 import {map, timer} from 'rxjs';
@@ -10,6 +10,8 @@ import {map, timer} from 'rxjs';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PdfContentComponent {
+    private readonly isMobile = inject(TUI_IS_MOBILE);
+    private readonly sanitizer = inject(DomSanitizer);
     private readonly pdf = 'assets/media/taiga.pdf';
 
     /**
@@ -27,9 +29,4 @@ export class PdfContentComponent {
             ),
         ),
     );
-
-    constructor(
-        @Inject(TUI_IS_MOBILE) private readonly isMobile: boolean,
-        @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
-    ) {}
 }

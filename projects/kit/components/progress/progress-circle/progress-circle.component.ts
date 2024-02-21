@@ -2,17 +2,11 @@ import {
     ChangeDetectionStrategy,
     Component,
     HostBinding,
-    Inject,
+    inject,
     Input,
 } from '@angular/core';
-import {
-    MODE_PROVIDER,
-    TUI_MODE,
-    TuiBrightness,
-    TuiSizeXXL,
-    TuiSizeXXS,
-} from '@taiga-ui/core';
-import {delay, Observable, of} from 'rxjs';
+import {MODE_PROVIDER, TUI_MODE, TuiSizeXXL, TuiSizeXXS} from '@taiga-ui/core';
+import {delay, of} from 'rxjs';
 
 @Component({
     selector: 'tui-progress-circle',
@@ -41,7 +35,7 @@ export class TuiProgressCircleComponent {
 
     readonly animationDelay$ = of(true).pipe(delay(0));
 
-    constructor(@Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>) {}
+    readonly mode$ = inject(TUI_MODE);
 
     @HostBinding('style.--progress-ratio')
     get progressRatio(): number {

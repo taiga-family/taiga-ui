@@ -1,11 +1,6 @@
-import {Inject, Injectable, Optional} from '@angular/core';
+import {inject, Injectable} from '@angular/core';
 import {LOCAL_STORAGE} from '@ng-web-apis/common';
-import {
-    TuiLanguage,
-    TuiLanguageLoader,
-    TuiLanguageName,
-    TuiLanguageStorage,
-} from '@taiga-ui/i18n/interfaces';
+import {TuiLanguage, TuiLanguageName} from '@taiga-ui/i18n/interfaces';
 import {
     TUI_DEFAULT_LANGUAGE,
     TUI_LANGUAGE_LOADER,
@@ -17,18 +12,19 @@ import {tuiAsyncLoadLanguage} from './utils';
 
 @Injectable({providedIn: 'root'})
 export class TuiLanguageSwitcher extends BehaviorSubject<Observable<TuiLanguage>> {
-    constructor(
-        @Inject(TUI_DEFAULT_LANGUAGE)
-        private readonly fallback: TuiLanguage,
-        @Inject(TUI_LANGUAGE_STORAGE_KEY)
-        private readonly key: string,
-        @Inject(LOCAL_STORAGE)
-        private readonly storage: TuiLanguageStorage,
-        @Optional()
-        @Inject(TUI_LANGUAGE_LOADER)
-        private readonly loader: TuiLanguageLoader | null,
-    ) {
-        super(tuiAsyncLoadLanguage(storage.getItem(key), loader, fallback));
+    private readonly fallback = inject(TUI_DEFAULT_LANGUAGE);
+    private readonly key = inject(TUI_LANGUAGE_STORAGE_KEY);
+    private readonly storage = inject(LOCAL_STORAGE);
+    private readonly loader = inject(TUI_LANGUAGE_LOADER, {optional: true});
+
+    constructor() {
+        super(
+            tuiAsyncLoadLanguage(
+                inject(LOCAL_STORAGE).getItem(inject(TUI_LANGUAGE_STORAGE_KEY)),
+                inject(TUI_LANGUAGE_LOADER, {optional: true}),
+                inject(TUI_DEFAULT_LANGUAGE),
+            ),
+        );
     }
 
     get language(): TuiLanguageName {

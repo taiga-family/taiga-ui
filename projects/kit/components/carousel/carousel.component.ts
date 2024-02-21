@@ -7,7 +7,7 @@ import {
     EventEmitter,
     HostBinding,
     HostListener,
-    Inject,
+    inject,
     Input,
     Output,
     QueryList,
@@ -29,6 +29,9 @@ import {
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiCarouselComponent {
+    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly cdr = inject(ChangeDetectorRef);
+    private readonly isMobile = inject(TUI_IS_MOBILE);
     private translate = 0;
 
     @Input()
@@ -49,12 +52,6 @@ export class TuiCarouselComponent {
 
     @HostBinding('class._transitioned')
     transitioned = true;
-
-    constructor(
-        @Inject(ChangeDetectorRef) private readonly cdr: ChangeDetectorRef,
-        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
-        @Inject(TUI_IS_MOBILE) private readonly isMobile: boolean,
-    ) {}
 
     get transform(): string {
         const x = this.transitioned ? this.computedTranslate : this.translate;
@@ -118,10 +115,9 @@ export class TuiCarouselComponent {
             return;
         }
 
-        const {clientWidth} = this.el.nativeElement;
         const min = 1 - this.items.length / this.itemsCount;
 
-        this.translate = tuiClamp(x / clientWidth + this.translate, min, 0);
+        this.translate = tuiClamp(x / this.el.clientWidth + this.translate, min, 0);
     }
 
     onSwipe(direction: TuiSwipeDirection): void {

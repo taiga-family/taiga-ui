@@ -4,9 +4,8 @@ import {
     ElementRef,
     HostBinding,
     HostListener,
-    Inject,
+    inject,
     Input,
-    Optional,
 } from '@angular/core';
 import {
     AbstractTuiInteractive,
@@ -33,6 +32,9 @@ export class TuiButtonComponent
     extends AbstractTuiInteractive
     implements TuiFocusableElementAccessor, TuiButtonOptions
 {
+    private readonly mode = inject(TuiModeDirective, {optional: true});
+    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly options = inject(TUI_BUTTON_OPTIONS);
     private readonly mode$: Observable<unknown> = this.mode?.change$ || EMPTY;
 
     @Input()
@@ -65,22 +67,12 @@ export class TuiButtonComponent
         distinctUntilChanged(),
     );
 
-    constructor(
-        @Optional()
-        @Inject(TuiModeDirective)
-        private readonly mode: TuiModeDirective | null,
-        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
-        @Inject(TUI_BUTTON_OPTIONS) private readonly options: TuiButtonOptions,
-    ) {
-        super();
-    }
-
     get nativeFocusableElement(): HTMLElement | null {
-        return this.nativeDisabled ? null : this.el.nativeElement;
+        return this.nativeDisabled ? null : this.el;
     }
 
     get focused(): boolean {
-        return !this.showLoader && tuiIsNativeFocused(this.el.nativeElement);
+        return !this.showLoader && tuiIsNativeFocused(this.el);
     }
 
     get loaderSize(): TuiSizeS {

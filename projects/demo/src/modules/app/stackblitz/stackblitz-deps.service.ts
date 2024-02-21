@@ -1,11 +1,11 @@
-import {Inject, Injectable} from '@angular/core';
+import {inject, Injectable} from '@angular/core';
 import {environment} from '@demo/environments/environment';
 import {LOCATION} from '@ng-web-apis/common';
 import {TUI_VERSION} from '@taiga-ui/cdk';
 
 @Injectable({providedIn: 'root'})
 export class StackblitzDepsService {
-    constructor(@Inject(LOCATION) private readonly location: Location) {}
+    private readonly location = inject(LOCATION);
 
     async get(): Promise<Record<string, string>> {
         return {

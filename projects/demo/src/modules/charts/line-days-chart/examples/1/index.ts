@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {
@@ -21,6 +21,9 @@ import {map, Observable} from 'rxjs';
     changeDetection,
 })
 export class TuiLineDaysChartExample1 {
+    private readonly isE2E = inject(TUI_IS_E2E);
+    private readonly months$ = inject(TUI_MONTHS);
+
     range = new TuiDayRange(
         TuiDay.currentLocal(),
         TuiDay.currentLocal().append({year: 1}),
@@ -35,11 +38,6 @@ export class TuiLineDaysChartExample1 {
                     `${months[month]}, ${day}`,
         ),
     );
-
-    constructor(
-        @Inject(TUI_MONTHS) private readonly months$: Observable<readonly string[]>,
-        @Inject(TUI_IS_E2E) readonly isE2E: boolean,
-    ) {}
 
     get value(): ReadonlyArray<[TuiDay, number]> {
         return this.computeValue(this.range);

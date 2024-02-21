@@ -1,5 +1,5 @@
-import {Directive, Inject, Input} from '@angular/core';
-import {TuiDirectiveStylesService} from '@taiga-ui/cdk';
+import {Directive, inject, Input} from '@angular/core';
+import {tuiWithStyles} from '@taiga-ui/cdk';
 import {
     TuiAppearanceDirective,
     tuiAppearanceOptionsProvider,
@@ -7,7 +7,7 @@ import {
 } from '@taiga-ui/core';
 
 import {TuiBadgeComponent} from './badge.component';
-import {TUI_BADGE_OPTIONS, TuiBadgeOptions} from './badge.options';
+import {TUI_BADGE_OPTIONS} from './badge.options';
 
 @Directive({
     standalone: true,
@@ -33,16 +33,12 @@ import {TUI_BADGE_OPTIONS, TuiBadgeOptions} from './badge.options';
     ],
 })
 export class TuiBadgeDirective {
+    private readonly options = inject(TUI_BADGE_OPTIONS);
+    protected readonly nothing = tuiWithStyles(TuiBadgeComponent);
+
     @Input()
     size = this.options.size;
 
     @Input()
     dot = this.options.dot;
-
-    constructor(
-        @Inject(TUI_BADGE_OPTIONS) private readonly options: TuiBadgeOptions,
-        @Inject(TuiDirectiveStylesService) directiveStyles: TuiDirectiveStylesService,
-    ) {
-        directiveStyles.addComponent(TuiBadgeComponent);
-    }
 }

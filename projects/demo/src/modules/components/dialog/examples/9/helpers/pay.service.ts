@@ -1,4 +1,4 @@
-import {Inject, Injectable} from '@angular/core';
+import {inject, Injectable} from '@angular/core';
 import {TUI_IS_E2E} from '@taiga-ui/cdk';
 import {map, Observable, timer} from 'rxjs';
 
@@ -9,7 +9,7 @@ import {AccountCard, FetchedCards} from './models';
     providedIn: 'root',
 })
 export class PayService {
-    constructor(@Inject(TUI_IS_E2E) private readonly isE2E: boolean) {}
+    private readonly isE2E = inject(TUI_IS_E2E);
 
     preparePayment(amount: number): Observable<number> {
         return timer(this.getRandomDelay()).pipe(map(() => amount));

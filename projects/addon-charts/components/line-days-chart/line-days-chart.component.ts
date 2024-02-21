@@ -3,12 +3,10 @@ import {
     ChangeDetectionStrategy,
     Component,
     HostBinding,
-    Inject,
+    inject,
     Input,
     NgZone,
-    Optional,
     QueryList,
-    Self,
     ViewChildren,
 } from '@angular/core';
 import {
@@ -16,7 +14,6 @@ import {
     TuiLineChartComponent,
     tuiLineChartDrivers,
     TuiLineChartHintDirective,
-    TuiLineChartOptions,
 } from '@taiga-ui/addon-charts/components/line-chart';
 import {
     EMPTY_ARRAY,
@@ -34,7 +31,7 @@ import {
 } from '@taiga-ui/cdk';
 import {TuiPoint} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {combineLatest, filter, Observable, takeUntil} from 'rxjs';
+import {combineLatest, filter, takeUntil} from 'rxjs';
 
 import {TuiLineDaysChartHintDirective} from './line-days-chart-hint.directive';
 
@@ -55,6 +52,14 @@ const DUMMY: TuiPoint = [NaN, NaN];
     ],
 })
 export class TuiLineDaysChartComponent implements AfterViewInit {
+    private readonly destroy$ = inject(TuiDestroyService, {self: true});
+    private readonly zone = inject(NgZone);
+    private readonly hovered$ = inject(TuiHoveredService);
+    private readonly options = inject(TUI_LINE_CHART_OPTIONS);
+    private readonly hintDirective = inject(TuiLineDaysChartHintDirective, {
+        optional: true,
+    });
+
     @ViewChildren(TuiLineChartComponent)
     readonly charts: QueryList<TuiLineChartComponent> = EMPTY_QUERY;
 
@@ -104,16 +109,6 @@ export class TuiLineDaysChartComponent implements AfterViewInit {
     zIndex = 0;
 
     value: ReadonlyArray<[TuiDay, number]> = [];
-
-    constructor(
-        @Optional()
-        @Inject(TuiLineDaysChartHintDirective)
-        private readonly hintDirective: TuiLineDaysChartHintDirective | null,
-        @Self() @Inject(TuiDestroyService) private readonly destroy$: TuiDestroyService,
-        @Inject(NgZone) private readonly zone: NgZone,
-        @Inject(TuiHoveredService) private readonly hovered$: Observable<boolean>,
-        @Inject(TUI_LINE_CHART_OPTIONS) private readonly options: TuiLineChartOptions,
-    ) {}
 
     get months(): ReadonlyArray<readonly TuiPoint[]> {
         return this.value.length ? this.breakMonths(this.value) : EMPTY_ARRAY;

@@ -8,11 +8,10 @@ import {
     forwardRef,
     HostBinding,
     HostListener,
-    Inject,
+    inject,
     Input,
     Output,
     QueryList,
-    Self,
 } from '@angular/core';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {
@@ -41,6 +40,13 @@ export class TuiStepperComponent {
     @ContentChildren(forwardRef(() => TuiStepComponent), {read: ElementRef})
     private readonly steps: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
+    private readonly cdr = inject(ChangeDetectorRef);
+    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly scrollService = inject(TuiScrollService);
+    private readonly resize$ = inject(ResizeObserverService);
+    private readonly speed = inject(TUI_ANIMATIONS_SPEED);
+    private readonly destroy$ = inject(TuiDestroyService, {self: true});
+
     @Input()
     @HostBinding('attr.data-orientation')
     orientation: TuiOrientation = 'horizontal';
@@ -56,15 +62,8 @@ export class TuiStepperComponent {
 
     activeItemIndex = 0;
 
-    constructor(
-        @Inject(ChangeDetectorRef) private readonly cdr: ChangeDetectorRef,
-        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
-        @Inject(TuiScrollService) private readonly scrollService: TuiScrollService,
-        @Inject(ResizeObserverService) resize$: Observable<void>,
-        @Inject(TUI_ANIMATIONS_SPEED) private readonly speed: number,
-        @Self() @Inject(TuiDestroyService) private readonly destroy$: Observable<void>,
-    ) {
-        resize$
+    constructor() {
+        this.resize$
             .pipe(takeUntil(this.destroy$))
             .subscribe(() => this.scrollIntoView(this.activeItemIndex));
     }
@@ -144,8 +143,7 @@ export class TuiStepperComponent {
             return;
         }
 
-        const {nativeElement} = this.el;
-        const {clientHeight, clientWidth, offsetTop, offsetLeft} = nativeElement;
+        const {clientHeight, clientWidth, offsetTop, offsetLeft} = this.el;
         const {
             offsetHeight,
             offsetWidth,
@@ -157,7 +155,7 @@ export class TuiStepperComponent {
 
         this.scrollService
             .scroll$(
-                nativeElement,
+                this.el,
                 Math.max(0, top),
                 Math.max(0, left),
                 tuiGetDuration(this.speed) / 3,

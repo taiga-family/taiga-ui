@@ -4,16 +4,11 @@ import {
     ElementRef,
     HostBinding,
     HostListener,
-    Inject,
+    inject,
     Input,
 } from '@angular/core';
 import {CSS as CSS_TOKEN, USER_AGENT} from '@ng-web-apis/common';
-import {
-    TUI_IS_IOS,
-    tuiGetElementOffset,
-    TuiInjectionTokenType,
-    tuiIsFirefox,
-} from '@taiga-ui/cdk';
+import {TUI_IS_IOS, tuiGetElementOffset, tuiIsFirefox} from '@taiga-ui/cdk';
 import {TUI_SCROLL_INTO_VIEW, TUI_SCROLLABLE} from '@taiga-ui/core/constants';
 import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
 
@@ -34,6 +29,10 @@ import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
     ],
 })
 export class TuiScrollbarComponent {
+    private readonly cssRef = inject(CSS_TOKEN);
+    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly userAgent = inject(USER_AGENT);
+    private readonly isIOS = inject(TUI_IS_IOS);
     private readonly isLegacy: boolean =
         !this.cssRef.supports('position', 'sticky') ||
         (tuiIsFirefox(this.userAgent) &&
@@ -42,22 +41,14 @@ export class TuiScrollbarComponent {
     @Input()
     hidden = false;
 
-    readonly browserScrollRef = new ElementRef(this.el.nativeElement);
-
-    constructor(
-        @Inject(CSS_TOKEN)
-        private readonly cssRef: TuiInjectionTokenType<typeof CSS_TOKEN>,
-        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
-        @Inject(USER_AGENT) private readonly userAgent: string,
-        @Inject(TUI_IS_IOS) private readonly isIos: boolean,
-    ) {}
+    readonly browserScrollRef = new ElementRef(this.el);
 
     get delegated(): boolean {
-        return this.browserScrollRef.nativeElement !== this.el.nativeElement;
+        return this.browserScrollRef.nativeElement !== this.el;
     }
 
     get showScrollbars(): boolean {
-        return !this.hidden && !this.isIos && (!this.isLegacy || this.delegated);
+        return !this.hidden && !this.isIOS && (!this.isLegacy || this.delegated);
     }
 
     @HostBinding('class._legacy')

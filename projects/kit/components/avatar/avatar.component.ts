@@ -2,7 +2,7 @@ import {
     ChangeDetectionStrategy,
     Component,
     HostBinding,
-    Inject,
+    inject,
     Input,
 } from '@angular/core';
 import {SafeResourceUrl} from '@angular/platform-browser';
@@ -10,7 +10,7 @@ import {tuiIsString, tuiPure, TuiSafeHtml} from '@taiga-ui/cdk';
 import {tuiSizeBigger, TuiSizeXXL, TuiSizeXXS} from '@taiga-ui/core';
 import {tuiStringHashToHsl} from '@taiga-ui/kit/utils/format';
 
-import {TUI_AVATAR_OPTIONS, TuiAvatarOptions} from './avatar.options';
+import {TUI_AVATAR_OPTIONS} from './avatar.options';
 
 @Component({
     selector: 'tui-avatar',
@@ -19,6 +19,8 @@ import {TUI_AVATAR_OPTIONS, TuiAvatarOptions} from './avatar.options';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiAvatarComponent {
+    private readonly options = inject(TUI_AVATAR_OPTIONS);
+
     @Input()
     @HostBinding('attr.data-size')
     size = this.options.size;
@@ -45,8 +47,6 @@ export class TuiAvatarComponent {
     avatarUrl: SafeResourceUrl | string | null = null;
 
     isUrlValid = false;
-
-    constructor(@Inject(TUI_AVATAR_OPTIONS) private readonly options: TuiAvatarOptions) {}
 
     @HostBinding('style.background')
     get bgColor(): string {

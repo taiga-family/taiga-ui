@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiMobileDialogService} from '@taiga-ui/addon-mobile';
@@ -19,12 +19,8 @@ import {switchMap} from 'rxjs';
     ],
 })
 export class TuiMobileDialogExample1 {
-    constructor(
-        @Inject(TuiMobileDialogService)
-        private readonly dialogs: TuiMobileDialogService,
-        @Inject(TuiAlertService)
-        private readonly alerts: TuiAlertService,
-    ) {}
+    private readonly dialogs = inject(TuiMobileDialogService);
+    private readonly alerts = inject(TuiAlertService);
 
     show(): void {
         const actions = ['No thanks', 'Remind me later', 'Rate now'];

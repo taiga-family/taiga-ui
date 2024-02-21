@@ -1,16 +1,12 @@
 import {
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
     ElementRef,
     HostBinding,
-    Inject,
+    inject,
     Input,
-    Optional,
-    Self,
     ViewChild,
 } from '@angular/core';
-import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
     tuiAsControl,
@@ -23,7 +19,7 @@ import {
 import {TuiBrightness, TuiModeDirective, TuiSizeL, TuiSizeXS} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-import {TUI_TOGGLE_OPTIONS, TuiToggleOptions} from './toggle.options';
+import {TUI_TOGGLE_OPTIONS} from './toggle.options';
 
 @Component({
     selector: 'tui-toggle',
@@ -43,6 +39,10 @@ export class TuiToggleComponent
     @ViewChild('focusableElement')
     private readonly focusableElement?: ElementRef<TuiNativeFocusableElement>;
 
+    private readonly modeDirective = inject(TuiModeDirective, {optional: true});
+
+    protected readonly options = inject(TUI_TOGGLE_OPTIONS);
+
     @Input()
     singleColor = this.options.singleColor;
 
@@ -55,21 +55,6 @@ export class TuiToggleComponent
     @Input()
     @HostBinding('attr.data-size')
     size: TuiSizeL = this.options.size;
-
-    constructor(
-        @Optional()
-        @Self()
-        @Inject(NgControl)
-        control: NgControl | null,
-        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
-        @Optional()
-        @Inject(TuiModeDirective)
-        private readonly modeDirective: TuiModeDirective | null,
-        @Inject(TUI_TOGGLE_OPTIONS)
-        readonly options: TuiToggleOptions,
-    ) {
-        super(control, cdr);
-    }
 
     get iconOn(): PolymorpheusContent<TuiContext<TuiSizeL>> {
         return this.options.icons.toggleOn;

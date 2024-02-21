@@ -3,12 +3,10 @@ import {
     ChangeDetectorRef,
     Component,
     EventEmitter,
-    Inject,
+    inject,
     Input,
     OnInit,
-    Optional,
     Output,
-    Self,
 } from '@angular/core';
 import {
     ALWAYS_FALSE_HANDLER,
@@ -62,25 +60,24 @@ export class TuiPrimitiveCalendarRangeComponent implements OnInit {
     readonly dayClick = new EventEmitter<TuiDay>();
 
     hoveredItem: TuiDay | null = null;
-
     userViewedMonthFirst: TuiMonth = this.defaultViewedMonthFirst;
     userViewedMonthSecond: TuiMonth = this.defaultViewedMonthSecond;
 
-    constructor(
-        @Inject(TUI_CALENDAR_DATE_STREAM)
-        @Optional()
-        valueChanges: Observable<TuiDayRange | null> | null,
-        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
-        @Self() @Inject(TuiDestroyService) destroy$: TuiDestroyService,
-    ) {
-        if (!valueChanges) {
-            return;
-        }
+    valueChanges = inject<Observable<TuiDayRange | null> | null>(
+        TUI_CALENDAR_DATE_STREAM,
+        {optional: true},
+    );
 
-        valueChanges.pipe(tuiWatch(cdr), takeUntil(destroy$)).subscribe(value => {
-            this.value = value;
-            this.updateViewedMonths();
-        });
+    constructor() {
+        this.valueChanges
+            ?.pipe(
+                tuiWatch(inject(ChangeDetectorRef)),
+                takeUntil(inject(TuiDestroyService, {self: true})),
+            )
+            .subscribe(value => {
+                this.value = value;
+                this.updateViewedMonths();
+            });
     }
 
     get cappedUserViewedMonthSecond(): TuiMonth {

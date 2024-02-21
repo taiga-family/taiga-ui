@@ -1,5 +1,5 @@
-import {Inject, Pipe, PipeTransform} from '@angular/core';
-import {DAYS_IN_WEEK, TuiDay, TuiDayOfWeek, TuiMonth} from '@taiga-ui/cdk';
+import {inject, Pipe, PipeTransform} from '@angular/core';
+import {DAYS_IN_WEEK, TuiDay, TuiMonth} from '@taiga-ui/cdk';
 import {TUI_FIRST_DAY_OF_WEEK} from '@taiga-ui/core/tokens';
 
 import {getDayFromMonthRowCol} from './utils';
@@ -10,13 +10,9 @@ const CALENDAR_ROWS_COUNT = 6;
     name: 'tuiCalendarSheet',
 })
 export class TuiCalendarSheetPipe implements PipeTransform {
+    private readonly firstDayOfWeek = inject(TUI_FIRST_DAY_OF_WEEK);
     private currentMonth: TuiMonth | null = null;
     private currentSheet: ReadonlyArray<readonly TuiDay[]> = [];
-
-    constructor(
-        @Inject(TUI_FIRST_DAY_OF_WEEK)
-        private readonly firstDayOfWeek: TuiDayOfWeek,
-    ) {}
 
     transform(
         month: TuiMonth,

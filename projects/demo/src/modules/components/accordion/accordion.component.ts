@@ -1,9 +1,9 @@
-import {Component, ElementRef, Inject, Self, ViewChild} from '@angular/core';
+import {Component, ElementRef, inject, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiDestroyService} from '@taiga-ui/cdk';
 import {TUI_EXPAND_LOADED, TuiSizeS} from '@taiga-ui/core';
-import {Observable, takeUntil, timer} from 'rxjs';
+import {takeUntil, timer} from 'rxjs';
 
 @Component({
     selector: 'example-accordion',
@@ -12,6 +12,8 @@ import {Observable, takeUntil, timer} from 'rxjs';
     providers: [TuiDestroyService],
 })
 export class ExampleTuiAccordionComponent {
+    private readonly destroy$ = inject(TuiDestroyService, {self: true});
+
     @ViewChild('content')
     content?: ElementRef;
 
@@ -63,10 +65,6 @@ export class ExampleTuiAccordionComponent {
     readonly sizeVariants: readonly TuiSizeS[] = ['s', 'm'];
 
     size: TuiSizeS = this.sizeVariants[1];
-
-    constructor(
-        @Self() @Inject(TuiDestroyService) private readonly destroy$: Observable<void>,
-    ) {}
 
     onOpenChange(open: boolean): void {
         this.open = open;

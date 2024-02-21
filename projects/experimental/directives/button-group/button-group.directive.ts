@@ -1,5 +1,5 @@
-import {Directive, Inject} from '@angular/core';
-import {TuiDirectiveStylesService} from '@taiga-ui/cdk';
+import {Directive} from '@angular/core';
+import {tuiWithStyles} from '@taiga-ui/cdk';
 
 import {TuiButtonGroupComponent} from './button-group.component';
 
@@ -7,9 +7,5 @@ import {TuiButtonGroupComponent} from './button-group.component';
     selector: '[tuiButtonGroup]',
 })
 export class TuiButtonGroupDirective {
-    constructor(
-        @Inject(TuiDirectiveStylesService) directiveStyles: TuiDirectiveStylesService,
-    ) {
-        directiveStyles.addComponent(TuiButtonGroupComponent);
-    }
+    protected readonly nothing = tuiWithStyles(TuiButtonGroupComponent);
 }

@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample, TuiRawLoaderContent} from '@taiga-ui/addon-doc';
@@ -10,6 +10,8 @@ import {TuiSizeXS, TuiSizeXXL} from '@taiga-ui/core';
     changeDetection,
 })
 export class ExampleTuiAvatarComponent {
+    private readonly sanitizer = inject(DomSanitizer);
+
     readonly exampleModule: TuiRawLoaderContent = import(
         './examples/import/import-module.md?raw'
     );
@@ -74,6 +76,4 @@ export class ExampleTuiAvatarComponent {
     src = this.srcVariants[0];
 
     round = true;
-
-    constructor(@Inject(DomSanitizer) private readonly sanitizer: DomSanitizer) {}
 }

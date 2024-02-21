@@ -1,16 +1,12 @@
 import {DOCUMENT} from '@angular/common';
 import {
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
     HostBinding,
-    Inject,
+    inject,
     Input,
-    Optional,
-    Self,
     ViewChild,
 } from '@angular/core';
-import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
     tuiAsControl,
@@ -24,7 +20,6 @@ import {
     TuiPrimitiveTextfieldComponent,
     TuiSizeL,
     TuiSizeS,
-    TuiTextfieldSizeDirective,
 } from '@taiga-ui/core';
 import {TUI_VALUE_ACCESSOR_PROVIDER} from '@taiga-ui/kit/providers';
 import {TUI_COPY_TEXTS} from '@taiga-ui/kit/tokens';
@@ -52,6 +47,10 @@ export class TuiInputCopyComponent
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
     private readonly copy$ = new Subject<void>();
+    private readonly doc = inject(DOCUMENT);
+    private readonly copyTexts$ = inject(TUI_COPY_TEXTS);
+    private readonly options = inject(TUI_INPUT_COPY_OPTIONS);
+    private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
 
     @Input()
     successMessage = this.options.successMessage;
@@ -61,21 +60,6 @@ export class TuiInputCopyComponent
 
     @Input()
     messageAppearance = this.options.messageAppearance;
-
-    constructor(
-        @Optional()
-        @Self()
-        @Inject(NgControl)
-        control: NgControl | null,
-        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
-        @Inject(DOCUMENT) private readonly doc: Document,
-        @Inject(TUI_COPY_TEXTS) private readonly copyTexts$: Observable<[string, string]>,
-        @Inject(TUI_INPUT_COPY_OPTIONS) private readonly options: TuiInputCopyOptions,
-        @Inject(TUI_TEXTFIELD_SIZE)
-        private readonly textfieldSize: TuiTextfieldSizeDirective,
-    ) {
-        super(control, cdr);
-    }
 
     @HostBinding('attr.data-size')
     get size(): TuiSizeL | TuiSizeS {

@@ -1,4 +1,4 @@
-import {Component, Inject, Self} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -18,12 +18,10 @@ import {PayModalComponent} from './pay-modal/pay-modal.component';
     providers: [TuiDestroyService],
 })
 export class TuiDialogExampleComponent9 {
-    readonly amountControl = new FormControl(100);
+    private readonly dialogs = inject(TuiDialogService);
+    private readonly destroy$ = inject(TuiDestroyService, {self: true});
 
-    constructor(
-        @Inject(TuiDialogService) private readonly dialogs: TuiDialogService,
-        @Self() @Inject(TuiDestroyService) private readonly destroy$: TuiDestroyService,
-    ) {}
+    readonly amountControl = new FormControl(100);
 
     payByCard(): void {
         this.dialogs

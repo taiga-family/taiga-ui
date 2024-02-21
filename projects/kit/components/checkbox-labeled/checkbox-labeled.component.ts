@@ -1,14 +1,10 @@
 import {
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
-    Inject,
+    inject,
     Input,
-    Optional,
-    Self,
     ViewChild,
 } from '@angular/core';
-import {NgControl} from '@angular/forms';
 import {
     AbstractTuiNullableControl,
     tuiAsControl,
@@ -17,16 +13,8 @@ import {
     tuiIsNativeFocused,
     TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
-import {
-    MODE_PROVIDER,
-    TUI_CHECKBOX_OPTIONS,
-    TUI_MODE,
-    TuiBrightness,
-    TuiCheckboxOptions,
-    TuiSizeL,
-} from '@taiga-ui/core';
+import {MODE_PROVIDER, TUI_CHECKBOX_OPTIONS, TUI_MODE, TuiSizeL} from '@taiga-ui/core';
 import {TuiCheckboxComponent} from '@taiga-ui/kit/components/checkbox';
-import {Observable} from 'rxjs';
 
 @Component({
     selector: 'tui-checkbox-labeled',
@@ -50,21 +38,12 @@ export class TuiCheckboxLabeledComponent
     @ViewChild(TuiCheckboxComponent)
     private readonly checkbox?: TuiCheckboxComponent;
 
+    private readonly options = inject(TUI_CHECKBOX_OPTIONS);
+
     @Input()
     size: TuiSizeL = this.options.size;
 
-    constructor(
-        @Optional()
-        @Self()
-        @Inject(NgControl)
-        control: NgControl | null,
-        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
-        @Inject(TUI_MODE) readonly mode$: Observable<TuiBrightness | null>,
-        @Inject(TUI_CHECKBOX_OPTIONS)
-        private readonly options: TuiCheckboxOptions,
-    ) {
-        super(control, cdr);
-    }
+    readonly mode$ = inject(TUI_MODE);
 
     get focused(): boolean {
         return tuiIsNativeFocused(this.nativeFocusableElement);

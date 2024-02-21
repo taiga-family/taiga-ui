@@ -2,14 +2,14 @@ import {
     ChangeDetectionStrategy,
     Component,
     HostBinding,
-    Inject,
+    inject,
     Input,
 } from '@angular/core';
 import {TuiContext} from '@taiga-ui/cdk';
 import {TuiSizeL} from '@taiga-ui/core/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-import {TUI_CHECKBOX_OPTIONS, TuiCheckboxOptions} from './checkbox.options';
+import {TUI_CHECKBOX_OPTIONS} from './checkbox.options';
 
 @Component({
     selector: 'tui-primitive-checkbox',
@@ -18,6 +18,8 @@ import {TUI_CHECKBOX_OPTIONS, TuiCheckboxOptions} from './checkbox.options';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiPrimitiveCheckboxComponent {
+    private readonly options = inject(TUI_CHECKBOX_OPTIONS);
+
     @Input()
     @HostBinding('attr.data-size')
     size: TuiSizeL = this.options.size;
@@ -49,10 +51,6 @@ export class TuiPrimitiveCheckboxComponent {
     icon: PolymorpheusContent<TuiContext<TuiSizeL>> = this.options.icons.checked;
 
     value: boolean | null = false;
-
-    constructor(
-        @Inject(TUI_CHECKBOX_OPTIONS) private readonly options: TuiCheckboxOptions,
-    ) {}
 
     get appearance(): string {
         switch (this.value) {

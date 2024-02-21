@@ -5,25 +5,20 @@ import {
     forwardRef,
     HostBinding,
     HostListener,
-    Inject,
+    inject,
     Input,
     OnDestroy,
-    Optional,
-    Self,
-    TemplateRef,
 } from '@angular/core';
-import {TuiContext, TuiEventWith, tuiIsNativeFocused} from '@taiga-ui/cdk';
+import {TuiEventWith, tuiIsNativeFocused} from '@taiga-ui/cdk';
 import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
 import {TuiDataListHost} from '@taiga-ui/core/interfaces';
 import {
     TUI_COMMON_ICONS,
     TUI_DATA_LIST_HOST,
     TUI_OPTION_CONTENT,
-    TuiCommonIcons,
 } from '@taiga-ui/core/tokens';
 import {TuiOptionRole, TuiSizeL, TuiSizeXS} from '@taiga-ui/core/types';
 import {shouldCall} from '@tinkoff/ng-event-plugins';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {TuiDataListComponent} from '../data-list.component';
 
@@ -44,6 +39,16 @@ function shouldFocus({currentTarget}: TuiEventWith<MouseEvent, HTMLElement>): bo
     },
 })
 export class TuiOptionComponent<T = unknown> implements OnDestroy {
+    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly dataList = inject<TuiDataListComponent<T>>(
+        forwardRef(() => TuiDataListComponent),
+        {optional: true},
+    );
+
+    private readonly host = inject<TuiDataListHost<T>>(TUI_DATA_LIST_HOST, {
+        optional: true,
+    });
+
     /** @deprecated use size on {@link TuiDataListComponent} instead */
     @Input()
     @HostBinding('attr.data-size')
@@ -59,25 +64,9 @@ export class TuiOptionComponent<T = unknown> implements OnDestroy {
     @Input()
     value?: T;
 
-    constructor(
-        @Optional()
-        @Inject(TUI_OPTION_CONTENT)
-        readonly content: PolymorpheusContent<
-            TuiContext<TemplateRef<Record<string, unknown>>>
-        > | null,
-        @Optional()
-        @Inject(forwardRef(() => TuiDataListComponent))
-        private readonly dataList: TuiDataListComponent<T> | null,
-        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
-        @Optional()
-        @Inject(TUI_DATA_LIST_HOST)
-        private readonly host: TuiDataListHost<T> | null,
-        @Optional()
-        @Self()
-        @Inject(TuiDropdownDirective)
-        readonly dropdown: TuiDropdownDirective | null,
-        @Inject(TUI_COMMON_ICONS) readonly icons: TuiCommonIcons,
-    ) {}
+    readonly content = inject(TUI_OPTION_CONTENT, {optional: true});
+    readonly dropdown = inject(TuiDropdownDirective, {self: true, optional: true});
+    readonly icons = inject(TUI_COMMON_ICONS);
 
     @HostBinding('class._with-dropdown')
     get active(): boolean {
@@ -100,6 +89,6 @@ export class TuiOptionComponent<T = unknown> implements OnDestroy {
 
     // Preventing focus loss upon focused option removal
     ngOnDestroy(): void {
-        this.dataList?.handleFocusLossIfNecessary(this.el.nativeElement);
+        this.dataList?.handleFocusLossIfNecessary(this.el);
     }
 }

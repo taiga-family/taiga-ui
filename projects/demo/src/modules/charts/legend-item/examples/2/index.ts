@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiPure, tuiSum} from '@taiga-ui/cdk';
@@ -12,16 +12,12 @@ import {TuiAlertService, tuiFormatNumber} from '@taiga-ui/core';
     changeDetection,
 })
 export class TuiLegendItemExample2 {
+    private readonly alerts = inject(TuiAlertService);
     private enabled = new Array(5).fill(true);
 
     readonly data = [13769, 12367, 10172, 3018, 2592];
     readonly sum = tuiSum(...this.data);
     readonly labels = ['Axes', 'Faxes', 'Taxes', 'Saxes', 'Other'];
-
-    constructor(
-        @Inject(TuiAlertService)
-        private readonly alerts: TuiAlertService,
-    ) {}
 
     get value(): readonly number[] {
         return this.getValue(this.data, this.enabled);

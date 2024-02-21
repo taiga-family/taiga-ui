@@ -4,11 +4,9 @@ import {
     Component,
     EventEmitter,
     HostListener,
-    Inject,
+    inject,
     Input,
-    Optional,
     Output,
-    Self,
 } from '@angular/core';
 import {
     ALWAYS_FALSE_HANDLER,
@@ -29,7 +27,6 @@ import {
 import {
     TUI_COMMON_ICONS,
     TUI_DEFAULT_MARKER_HANDLER,
-    TuiCommonIcons,
     TuiMarkerHandler,
     TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
@@ -46,6 +43,11 @@ import {Observable, takeUntil} from 'rxjs';
     providers: [TuiDestroyService],
 })
 export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> {
+    private readonly valueChanges = inject<Observable<TuiDayRange | null>>(
+        TUI_CALENDAR_DATE_STREAM,
+        {optional: true},
+    );
+
     @Input()
     defaultViewedMonth: TuiMonth = TuiMonth.currentLocal();
 
@@ -76,6 +78,8 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
     @Output()
     readonly valueChange = new EventEmitter<TuiDayRange | null>();
 
+    readonly otherDateText$ = inject(TUI_OTHER_DATE_TEXT);
+    readonly icons = inject(TUI_COMMON_ICONS);
     previousValue: TuiDayRange | null = null;
 
     readonly maxLengthMapper = MAX_DAY_RANGE_LENGTH_MAPPER;
@@ -88,22 +92,15 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
         return this.max ?? TUI_LAST_DAY;
     }
 
-    constructor(
-        @Optional()
-        @Inject(TUI_CALENDAR_DATE_STREAM)
-        valueChanges: Observable<TuiDayRange | null> | null,
-        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
-        @Self() @Inject(TuiDestroyService) destroy$: TuiDestroyService,
-        @Inject(TUI_OTHER_DATE_TEXT) readonly otherDateText$: Observable<string>,
-        @Inject(TUI_COMMON_ICONS) readonly icons: TuiCommonIcons,
-    ) {
-        if (!valueChanges) {
-            return;
-        }
-
-        valueChanges.pipe(tuiWatch(cdr), takeUntil(destroy$)).subscribe(value => {
-            this.value = value;
-        });
+    constructor() {
+        this.valueChanges
+            ?.pipe(
+                tuiWatch(inject(ChangeDetectorRef)),
+                takeUntil(inject(TuiDestroyService, {self: true})),
+            )
+            .subscribe(value => {
+                this.value = value;
+            });
     }
 
     @HostListener('document:keydown.capture', ['$event'])

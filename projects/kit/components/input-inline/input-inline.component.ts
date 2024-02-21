@@ -1,15 +1,10 @@
 import {
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
     ElementRef,
-    Inject,
     Input,
-    Optional,
-    Self,
     ViewChild,
 } from '@angular/core';
-import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
     tuiAsFocusableItemAccessor,
@@ -43,16 +38,6 @@ export class TuiInputInlineComponent
     maxLength: number | null = null;
 
     indent = -1;
-
-    constructor(
-        @Optional()
-        @Self()
-        @Inject(NgControl)
-        control: NgControl | null,
-        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
-    ) {
-        super(control, cdr);
-    }
 
     get nativeFocusableElement(): TuiNativeFocusableElement | null {
         return !this.native ? null : this.native.nativeElement;

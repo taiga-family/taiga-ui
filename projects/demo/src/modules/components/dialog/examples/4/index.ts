@@ -1,4 +1,4 @@
-import {Component, Inject, TemplateRef} from '@angular/core';
+import {Component, inject, TemplateRef} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiClamp} from '@taiga-ui/cdk';
@@ -13,14 +13,12 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
     changeDetection,
 })
 export class TuiDialogExampleComponent4 {
+    private readonly dialogs = inject(TuiDialogService);
+    private readonly dropdowns = inject(TuiDropdownService);
+
     filters = false;
 
     scale = 1;
-
-    constructor(
-        @Inject(TuiDialogService) private readonly dialogs: TuiDialogService,
-        @Inject(TuiDropdownService) private readonly dropdowns: TuiDropdownService,
-    ) {}
 
     get transform(): string {
         return `scale(${this.scale})`;

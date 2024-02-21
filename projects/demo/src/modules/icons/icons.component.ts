@@ -1,10 +1,10 @@
-import {Component, Inject} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {assets} from '@demo/utils';
 import {TuiBrightness, TuiModeDirective} from '@taiga-ui/core';
 import {map, Observable, startWith} from 'rxjs';
 
-import {DemoTuiIconsTabs, TUI_DEMO_ICONS} from './icons.tokens';
+import {TUI_DEMO_ICONS} from './icons.tokens';
 
 @Component({
     selector: 'icons',
@@ -13,6 +13,8 @@ import {DemoTuiIconsTabs, TUI_DEMO_ICONS} from './icons.tokens';
     changeDetection,
 })
 export class IconsComponent {
+    private readonly mode = inject(TuiModeDirective);
+    readonly icons = inject(TUI_DEMO_ICONS);
     readonly keys = Object.keys(this.icons);
     readonly exampleModule = import('./import/import-module.md?raw');
     readonly exampleHtml = import('./import/insert-template.md?raw');
@@ -38,11 +40,6 @@ export class IconsComponent {
         startWith(null),
         map(() => this.mode.mode || 'onLight'),
     );
-
-    constructor(
-        @Inject(TUI_DEMO_ICONS) readonly icons: DemoTuiIconsTabs,
-        @Inject(TuiModeDirective) private readonly mode: TuiModeDirective,
-    ) {}
 
     onIntersection(entries: IntersectionObserverEntry[]): boolean {
         return entries[entries.length - 1]?.isIntersecting ?? false;

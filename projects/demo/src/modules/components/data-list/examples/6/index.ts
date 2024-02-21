@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
@@ -40,5 +40,5 @@ export class TuiDataListExample6 {
         },
     ];
 
-    constructor(@Inject(TUI_IS_MOBILE) readonly isMobile: boolean) {}
+    readonly isMobile = inject(TUI_IS_MOBILE);
 }

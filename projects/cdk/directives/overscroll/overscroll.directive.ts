@@ -1,17 +1,9 @@
-import {
-    Directive,
-    ElementRef,
-    HostBinding,
-    Inject,
-    Input,
-    NgZone,
-    Self,
-} from '@angular/core';
+import {Directive, ElementRef, HostBinding, inject, Input, NgZone} from '@angular/core';
 import {tuiTypedFromEvent, tuiZonefree} from '@taiga-ui/cdk/observables';
 import {TuiDestroyService} from '@taiga-ui/cdk/services';
 import {TuiEventWith, TuiOverscrollMode} from '@taiga-ui/cdk/types';
 import {tuiCanScroll, tuiGetScrollParent, tuiIsElement} from '@taiga-ui/cdk/utils/dom';
-import {filter, Observable, switchMap, takeUntil, tap} from 'rxjs';
+import {filter, switchMap, takeUntil, tap} from 'rxjs';
 
 /**
  * Directive to isolate scrolling, i.e. prevent body scroll behind modal dialog
@@ -21,19 +13,19 @@ import {filter, Observable, switchMap, takeUntil, tap} from 'rxjs';
     providers: [TuiDestroyService],
 })
 export class TuiOverscrollDirective {
+    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly zone = inject(NgZone);
+    private readonly destroy$ = inject(TuiDestroyService, {self: true});
+
     @Input('tuiOverscroll')
     mode: TuiOverscrollMode | '' = 'scroll';
 
-    constructor(
-        @Inject(ElementRef) {nativeElement}: ElementRef<HTMLElement>,
-        @Inject(NgZone) zone: NgZone,
-        @Self() @Inject(TuiDestroyService) destroy$: Observable<void>,
-    ) {
-        tuiTypedFromEvent(nativeElement, 'wheel', {passive: false})
+    constructor() {
+        tuiTypedFromEvent(this.el, 'wheel', {passive: false})
             .pipe(
                 filter(() => this.enabled),
-                tuiZonefree(zone),
-                takeUntil(destroy$),
+                tuiZonefree(this.zone),
+                takeUntil(this.destroy$),
             )
             .subscribe(event => {
                 this.processEvent(
@@ -43,7 +35,7 @@ export class TuiOverscrollDirective {
                 );
             });
 
-        tuiTypedFromEvent(nativeElement, 'touchstart', {passive: true})
+        tuiTypedFromEvent(this.el, 'touchstart', {passive: true})
             .pipe(
                 switchMap(({touches}) => {
                     let {clientX, clientY} = touches[0];
@@ -51,7 +43,7 @@ export class TuiOverscrollDirective {
                     let deltaY = 0;
                     let vertical: boolean;
 
-                    return tuiTypedFromEvent(nativeElement, 'touchmove', {
+                    return tuiTypedFromEvent(this.el, 'touchmove', {
                         passive: false,
                     }).pipe(
                         filter(() => this.enabled),
@@ -76,8 +68,8 @@ export class TuiOverscrollDirective {
                         }),
                     );
                 }),
-                tuiZonefree(zone),
-                takeUntil(destroy$),
+                tuiZonefree(this.zone),
+                takeUntil(this.destroy$),
             )
             .subscribe();
     }

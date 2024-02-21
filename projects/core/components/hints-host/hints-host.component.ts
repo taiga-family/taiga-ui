@@ -2,15 +2,14 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
-    Inject,
+    inject,
     OnInit,
-    Self,
 } from '@angular/core';
 import {TuiDestroyService} from '@taiga-ui/cdk';
 import {TUI_PARENT_ANIMATION} from '@taiga-ui/core/animations';
 import {TuiPortalItem} from '@taiga-ui/core/interfaces';
 import {TuiHintService} from '@taiga-ui/core/services';
-import {Observable, takeUntil} from 'rxjs';
+import {takeUntil} from 'rxjs';
 
 @Component({
     selector: 'tui-hints-host',
@@ -26,14 +25,11 @@ import {Observable, takeUntil} from 'rxjs';
     },
 })
 export class TuiHintsHostComponent implements OnInit {
-    hints: readonly TuiPortalItem[] = [];
+    private readonly hints$ = inject(TuiHintService);
+    private readonly destroy$ = inject(TuiDestroyService, {self: true});
+    private readonly cdr = inject(ChangeDetectorRef);
 
-    constructor(
-        @Inject(TuiHintService)
-        private readonly hints$: Observable<readonly TuiPortalItem[]>,
-        @Self() @Inject(TuiDestroyService) private readonly destroy$: Observable<void>,
-        @Inject(ChangeDetectorRef) private readonly cdr: ChangeDetectorRef,
-    ) {}
+    hints: readonly TuiPortalItem[] = [];
 
     ngOnInit(): void {
         // Due to this view being parallel to app content, `markForCheck` from `async` pipe

@@ -1,4 +1,4 @@
-import {Directive, HostListener, Inject} from '@angular/core';
+import {Directive, HostListener, inject} from '@angular/core';
 import {tuiGetActualTarget, tuiIsElement} from '@taiga-ui/cdk';
 import {shouldCall} from '@tinkoff/ng-event-plugins';
 
@@ -20,10 +20,9 @@ function isDragging(this: TuiTileHandleDirective): boolean {
     },
 })
 export class TuiTileHandleDirective {
+    private readonly tile = inject(TuiTileComponent);
     private x = NaN;
     private y = NaN;
-
-    constructor(@Inject(TuiTileComponent) private readonly tile: TuiTileComponent) {}
 
     @HostListener('pointerdown.silent', ['$event'])
     onStart(event: PointerEvent): void {

@@ -6,9 +6,8 @@ import {
     EventEmitter,
     HostBinding,
     HostListener,
-    Inject,
+    inject,
     Input,
-    Optional,
     Output,
     QueryList,
     ViewChild,
@@ -26,8 +25,6 @@ import {
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_TEXTFIELD_OPTIONS,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
-    TuiTextfieldController,
-    TuiTextfieldOptions,
 } from '@taiga-ui/core/directives/textfield-controller';
 import {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import {tuiGetBorder} from '@taiga-ui/core/utils/miscellaneous';
@@ -62,6 +59,11 @@ export class TuiPrimitiveTextfieldComponent
 {
     @ViewChild('focusableElement')
     private readonly focusableElement?: ElementRef<HTMLInputElement>;
+
+    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+
+    protected readonly hintOptions = inject(TuiHintOptionsDirective, {optional: true});
+    protected readonly options = inject(TUI_TEXTFIELD_OPTIONS);
 
     @Input()
     editable = true;
@@ -106,18 +108,7 @@ export class TuiPrimitiveTextfieldComponent
 
     autofilled = false;
 
-    constructor(
-        @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
-        readonly controller: TuiTextfieldController,
-        @Optional()
-        @Inject(TuiHintOptionsDirective)
-        readonly hintOptions: TuiHintOptionsDirective | null,
-        @Inject(TUI_TEXTFIELD_OPTIONS)
-        readonly options: TuiTextfieldOptions,
-        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
-    ) {
-        super();
-    }
+    readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
 
     get prefix(): string {
         return this.textfieldPrefix || this.controller.prefix;
@@ -143,7 +134,7 @@ export class TuiPrimitiveTextfieldComponent
     }
 
     get focused(): boolean {
-        return tuiIsNativeFocusedIn(this.el.nativeElement);
+        return tuiIsNativeFocusedIn(this.el);
     }
 
     get appearance(): string {

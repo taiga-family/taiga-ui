@@ -1,9 +1,8 @@
-import {ChangeDetectionStrategy, Component, ElementRef, Inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ElementRef, inject} from '@angular/core';
 import {TuiIdService} from '@taiga-ui/cdk';
 import {
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
-    TuiTextfieldController,
 } from '@taiga-ui/core/directives';
 import {TuiTextfieldHost} from '@taiga-ui/core/interfaces';
 import {TUI_TEXTFIELD_HOST} from '@taiga-ui/core/tokens';
@@ -27,22 +26,20 @@ import {TUI_TEXTFIELD_HOST} from '@taiga-ui/core/tokens';
     },
 })
 export class TuiTextfieldComponent {
-    constructor(
-        @Inject(TUI_TEXTFIELD_HOST) readonly host: TuiTextfieldHost,
-        @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
-        readonly controller: TuiTextfieldController,
-        @Inject(ElementRef) private readonly el: ElementRef<HTMLInputElement>,
-        @Inject(TuiIdService)
-        private readonly idService: TuiIdService,
-    ) {
-        this.host.process(this.el.nativeElement);
+    private readonly el: HTMLInputElement = inject(ElementRef).nativeElement;
+    private readonly idService = inject(TuiIdService);
+    readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
+    readonly host = inject<TuiTextfieldHost>(TUI_TEXTFIELD_HOST);
+
+    constructor() {
+        this.host.process(this.el);
     }
 
     get id(): string {
-        return this.el.nativeElement.id || this.idService.generate();
+        return this.el.id || this.idService.generate();
     }
 
     get inputMode(): string {
-        return this.el.nativeElement.inputMode || this.host.inputMode;
+        return this.el.inputMode || this.host.inputMode;
     }
 }

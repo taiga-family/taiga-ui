@@ -1,21 +1,8 @@
-import {Directive, DoCheck, Inject, Self} from '@angular/core';
-import {
-    AbstractTuiControl,
-    TuiDestroyService,
-    TuiHandler,
-    TuiMonth,
-    TuiMonthRange,
-} from '@taiga-ui/cdk';
+import {Directive, DoCheck, inject} from '@angular/core';
+import {TuiDestroyService, TuiMonthRange} from '@taiga-ui/cdk';
 import {AbstractTuiTextfieldHost, tuiAsTextfieldHost} from '@taiga-ui/core';
 import {TUI_MONTH_FORMATTER} from '@taiga-ui/kit/tokens';
-import {
-    combineLatest,
-    distinctUntilChanged,
-    Observable,
-    Subject,
-    switchMap,
-    takeUntil,
-} from 'rxjs';
+import {combineLatest, distinctUntilChanged, Subject, switchMap, takeUntil} from 'rxjs';
 
 import {TuiInputMonthRangeComponent} from './input-month-range.component';
 
@@ -31,13 +18,10 @@ export class TuiInputMonthRangeDirective
 
     private localizedValue: [string, string] = ['', ''];
 
-    constructor(
-        @Inject(AbstractTuiControl) host: TuiInputMonthRangeComponent,
-        @Inject(TUI_MONTH_FORMATTER)
-        formatter: TuiHandler<TuiMonth | null, Observable<string>>,
-        @Self() @Inject(TuiDestroyService) destroy$: Observable<unknown>,
-    ) {
-        super(host);
+    constructor() {
+        super();
+
+        const formatter = inject(TUI_MONTH_FORMATTER);
 
         this.value$
             .pipe(
@@ -48,7 +32,7 @@ export class TuiInputMonthRangeDirective
                         formatter(value?.to || null),
                     ]),
                 ),
-                takeUntil(destroy$),
+                takeUntil(inject(TuiDestroyService, {self: true})),
             )
             .subscribe(localizedValue => {
                 this.localizedValue = localizedValue;

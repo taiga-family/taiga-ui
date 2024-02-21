@@ -1,14 +1,10 @@
 import {
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
     HostBinding,
-    Inject,
-    Optional,
-    Self,
+    inject,
     ViewChild,
 } from '@angular/core';
-import {NgControl} from '@angular/forms';
 import {MaskitoOptions} from '@maskito/core';
 import {TUI_CARD_MASK} from '@taiga-ui/addon-commerce/constants';
 import {tuiAsControl, tuiAsFocusableItemAccessor} from '@taiga-ui/cdk';
@@ -17,11 +13,10 @@ import {
     TuiPrimitiveTextfieldComponent,
     TuiSizeL,
     TuiSizeS,
-    TuiTextfieldSizeDirective,
 } from '@taiga-ui/core';
 
 import {AbstractTuiInputCard} from './abstract-input-card';
-import {TUI_INPUT_CARD_OPTIONS, TuiInputCardOptions} from './input-card.options';
+import {TUI_INPUT_CARD_OPTIONS} from './input-card.options';
 
 @Component({
     selector: 'tui-input-card',
@@ -37,21 +32,14 @@ export class TuiInputCardComponent extends AbstractTuiInputCard<string> {
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly input?: TuiPrimitiveTextfieldComponent;
 
+    private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
+
     readonly maskOptions: MaskitoOptions = {
         mask: TUI_CARD_MASK,
     };
 
-    constructor(
-        @Optional()
-        @Self()
-        @Inject(NgControl)
-        control: NgControl | null,
-        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
-        @Inject(TUI_TEXTFIELD_SIZE)
-        private readonly textfieldSize: TuiTextfieldSizeDirective,
-        @Inject(TUI_INPUT_CARD_OPTIONS) options: TuiInputCardOptions,
-    ) {
-        super(control, cdr, options);
+    constructor() {
+        super(inject(TUI_INPUT_CARD_OPTIONS));
     }
 
     @HostBinding('attr.data-size')

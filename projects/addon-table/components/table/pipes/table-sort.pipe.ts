@@ -1,4 +1,4 @@
-import {Inject, Pipe, PipeTransform} from '@angular/core';
+import {inject, Pipe, PipeTransform} from '@angular/core';
 import {TuiComparator} from '@taiga-ui/addon-table/types';
 import {tuiPure} from '@taiga-ui/cdk';
 
@@ -9,10 +9,7 @@ import {TuiTableDirective} from '../directives/table.directive';
     pure: false,
 })
 export class TuiTableSortPipe<K = Partial<Record<any, any>>> implements PipeTransform {
-    constructor(
-        @Inject(TuiTableDirective)
-        private readonly table: TuiTableDirective<K>,
-    ) {}
+    private readonly table = inject(TuiTableDirective<K>);
 
     transform<T extends K>(data: readonly T[]): readonly T[] {
         return this.sort<T>(data, this.table.sorter, this.table.direction);

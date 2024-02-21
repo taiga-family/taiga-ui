@@ -1,19 +1,13 @@
-import {Inject, Pipe, PipeTransform} from '@angular/core';
+import {inject, Pipe, PipeTransform} from '@angular/core';
 import {
     TUI_DOC_TYPE_REFERENCE_HANDLER,
     TUI_DOC_TYPE_REFERENCE_PARSER,
 } from '@taiga-ui/addon-doc/tokens';
-import type {TuiDocTypeReferenceParsed} from '@taiga-ui/addon-doc/utils';
-import {TuiHandler, TuiStringHandler} from '@taiga-ui/cdk';
 
 @Pipe({name: 'tuiDocTypeReference'})
 export class TuiDocTypeReferencePipe implements PipeTransform {
-    constructor(
-        @Inject(TUI_DOC_TYPE_REFERENCE_PARSER)
-        private readonly parser: TuiHandler<string, TuiDocTypeReferenceParsed>,
-        @Inject(TUI_DOC_TYPE_REFERENCE_HANDLER)
-        private readonly linkHandler?: TuiStringHandler<string | null> | null,
-    ) {}
+    private readonly parser = inject(TUI_DOC_TYPE_REFERENCE_PARSER);
+    private readonly linkHandler = inject(TUI_DOC_TYPE_REFERENCE_HANDLER);
 
     transform(original: string): ReadonlyArray<{
         type: string;

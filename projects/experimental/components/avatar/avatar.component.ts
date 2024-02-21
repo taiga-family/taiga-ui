@@ -1,13 +1,13 @@
-import {ChangeDetectionStrategy, Component, Inject, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {SafeResourceUrl} from '@angular/platform-browser';
-import {tuiIsString, TuiStringHandler} from '@taiga-ui/cdk';
+import {tuiIsString} from '@taiga-ui/cdk';
 import {
     TUI_ICON_RESOLVER,
     TuiAppearanceDirective,
     tuiAppearanceOptionsProvider,
 } from '@taiga-ui/core';
 
-import {TUI_AVATAR_OPTIONS, TuiAvatarOptions} from './avatar.options';
+import {TUI_AVATAR_OPTIONS} from './avatar.options';
 
 @Component({
     selector: 'tui-avatar',
@@ -33,6 +33,8 @@ import {TUI_AVATAR_OPTIONS, TuiAvatarOptions} from './avatar.options';
     },
 })
 export class TuiAvatarComponent {
+    private readonly options = inject(TUI_AVATAR_OPTIONS);
+
     @Input()
     size = this.options.size;
 
@@ -42,10 +44,7 @@ export class TuiAvatarComponent {
     @Input()
     src: SafeResourceUrl | string | null = null;
 
-    constructor(
-        @Inject(TUI_AVATAR_OPTIONS) private readonly options: TuiAvatarOptions,
-        @Inject(TUI_ICON_RESOLVER) readonly resolver: TuiStringHandler<string>,
-    ) {}
+    readonly resolver = inject(TUI_ICON_RESOLVER);
 
     get safeSrc(): string {
         return this.src?.toString() ?? '';

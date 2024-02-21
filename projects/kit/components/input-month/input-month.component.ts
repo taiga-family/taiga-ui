@@ -1,15 +1,11 @@
 import {
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
     HostBinding,
-    Inject,
+    inject,
     Input,
-    Optional,
-    Self,
     ViewChild,
 } from '@angular/core';
-import {NgControl} from '@angular/forms';
 import {
     AbstractTuiNullableControl,
     ALWAYS_FALSE_HANDLER,
@@ -20,7 +16,6 @@ import {
     tuiDateClamp,
     TuiDay,
     TuiFocusableElementAccessor,
-    TuiHandler,
     TuiMonth,
     TuiYear,
 } from '@taiga-ui/cdk';
@@ -30,7 +25,6 @@ import {
     TuiPrimitiveTextfieldComponent,
     TuiSizeL,
     TuiSizeS,
-    TuiTextfieldSizeDirective,
     TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
 import {TUI_MONTH_FORMATTER_PROVIDER} from '@taiga-ui/kit/providers';
@@ -39,7 +33,6 @@ import {
     TUI_MONTH_FORMATTER,
     TuiInputDateOptions,
 } from '@taiga-ui/kit/tokens';
-import {Observable} from 'rxjs';
 
 @Component({
     selector: 'tui-input-month',
@@ -60,6 +53,10 @@ export class TuiInputMonthComponent
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
+    private readonly isMobile = inject(TUI_IS_MOBILE);
+    private readonly options = inject(TUI_INPUT_DATE_OPTIONS);
+    private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
+
     @Input()
     min: TuiMonth | null = this.options.min;
 
@@ -76,21 +73,7 @@ export class TuiInputMonthComponent
 
     open = false;
 
-    constructor(
-        @Optional()
-        @Self()
-        @Inject(NgControl)
-        control: NgControl | null,
-        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
-        @Inject(TUI_MONTH_FORMATTER)
-        readonly formatter: TuiHandler<TuiMonth | null, Observable<string>>,
-        @Inject(TUI_IS_MOBILE) private readonly isMobile: boolean,
-        @Inject(TUI_INPUT_DATE_OPTIONS) private readonly options: TuiInputDateOptions,
-        @Inject(TUI_TEXTFIELD_SIZE)
-        private readonly textfieldSize: TuiTextfieldSizeDirective,
-    ) {
-        super(control, cdr);
-    }
+    readonly formatter = inject(TUI_MONTH_FORMATTER);
 
     @HostBinding('attr.data-size')
     get size(): TuiSizeL | TuiSizeS {

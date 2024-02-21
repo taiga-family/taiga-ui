@@ -1,4 +1,4 @@
-import {Inject, Pipe, PipeTransform} from '@angular/core';
+import {inject, Pipe, PipeTransform} from '@angular/core';
 import {Observable} from 'rxjs';
 
 import {TuiTableFiltersDirective} from './table-filters.directive';
@@ -7,10 +7,7 @@ import {TuiTableFiltersDirective} from './table-filters.directive';
     name: 'tuiTableFilters',
 })
 export class TuiTableFiltersPipe<T> implements PipeTransform {
-    constructor(
-        @Inject(TuiTableFiltersDirective)
-        private readonly filters: TuiTableFiltersDirective<T>,
-    ) {}
+    private readonly filters = inject(TuiTableFiltersDirective<T>);
 
     transform(items: readonly T[]): Observable<readonly T[]> {
         return this.filters.filter(items);

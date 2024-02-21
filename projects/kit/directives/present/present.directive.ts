@@ -2,7 +2,7 @@ import {
     Directive,
     ElementRef,
     HostListener,
-    Inject,
+    inject,
     OnDestroy,
     Output,
 } from '@angular/core';
@@ -17,30 +17,30 @@ import {BehaviorSubject, distinctUntilChanged, skip} from 'rxjs';
     },
 })
 export class TuiPresentDirective implements OnDestroy {
+    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly userAgent = inject(USER_AGENT);
+
     private readonly visibility$ = new BehaviorSubject(false);
 
     @Output()
     readonly tuiPresentChange = this.visibility$.pipe(distinctUntilChanged(), skip(1));
 
-    constructor(
-        @Inject(ElementRef) {nativeElement}: ElementRef<HTMLElement>,
-        @Inject(USER_AGENT) userAgent: string,
-    ) {
-        if (tuiIsFirefox(userAgent)) {
+    constructor() {
+        if (tuiIsFirefox(this.userAgent)) {
             return;
         }
 
         const observer = new MutationObserver(() => {
             if (
-                !nativeElement.offsetParent &&
-                nativeElement.offsetWidth === 0 &&
-                nativeElement.offsetHeight === 0
+                !this.el.offsetParent &&
+                this.el.offsetWidth === 0 &&
+                this.el.offsetHeight === 0
             ) {
                 this.visibility$.next(false);
             }
         });
 
-        observer.observe(nativeElement, {
+        observer.observe(this.el, {
             attributes: true,
             attributeFilter: ['style', 'class'],
         });

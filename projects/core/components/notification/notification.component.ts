@@ -3,15 +3,14 @@ import {
     Component,
     EventEmitter,
     HostBinding,
-    Inject,
+    inject,
     Input,
     Output,
 } from '@angular/core';
 import {tuiIsObserved} from '@taiga-ui/cdk';
-import {TUI_CLOSE_WORD, TUI_COMMON_ICONS, TuiCommonIcons} from '@taiga-ui/core/tokens';
-import {Observable} from 'rxjs';
+import {TUI_CLOSE_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 
-import {TUI_NOTIFICATION_OPTIONS, TuiNotificationOptions} from './notification.options';
+import {TUI_NOTIFICATION_OPTIONS} from './notification.options';
 
 @Component({
     selector: 'tui-notification,a[tuiNotification],button[tuiNotification]',
@@ -20,6 +19,8 @@ import {TUI_NOTIFICATION_OPTIONS, TuiNotificationOptions} from './notification.o
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiNotificationComponent {
+    protected readonly options = inject(TUI_NOTIFICATION_OPTIONS);
+
     @Input()
     icon = this.options.icon;
 
@@ -38,11 +39,8 @@ export class TuiNotificationComponent {
     // eslint-disable-next-line @angular-eslint/no-output-native
     readonly close = new EventEmitter<void>();
 
-    constructor(
-        @Inject(TUI_CLOSE_WORD) readonly closeWord$: Observable<string>,
-        @Inject(TUI_COMMON_ICONS) readonly icons: TuiCommonIcons,
-        @Inject(TUI_NOTIFICATION_OPTIONS) readonly options: TuiNotificationOptions,
-    ) {}
+    readonly closeWord$ = inject(TUI_CLOSE_WORD);
+    readonly icons = inject(TUI_COMMON_ICONS);
 
     get hasClose(): boolean {
         return !this.hideClose && tuiIsObserved(this.close);

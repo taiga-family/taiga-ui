@@ -1,16 +1,8 @@
 import {DOCUMENT} from '@angular/common';
-import {
-    Directive,
-    ElementRef,
-    Inject,
-    Input,
-    OnChanges,
-    Renderer2,
-    Self,
-} from '@angular/core';
+import {Directive, ElementRef, inject, Input, OnChanges, Renderer2} from '@angular/core';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {svgNodeFilter, TuiDestroyService, tuiPx} from '@taiga-ui/cdk';
-import {Observable, takeUntil} from 'rxjs';
+import {takeUntil} from 'rxjs';
 
 @Directive({
     selector: '[tuiHighlight]',
@@ -21,10 +13,12 @@ import {Observable, takeUntil} from 'rxjs';
     },
 })
 export class TuiHighlightDirective implements OnChanges {
+    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly renderer = inject(Renderer2);
+    private readonly doc = inject(DOCUMENT);
     private readonly highlight: HTMLElement = this.setUpHighlight();
-
     private readonly treeWalker = this.doc.createTreeWalker(
-        this.el.nativeElement,
+        this.el,
         NodeFilter.SHOW_TEXT,
         svgNodeFilter,
     );
@@ -35,20 +29,14 @@ export class TuiHighlightDirective implements OnChanges {
     @Input()
     tuiHighlightColor = 'var(--tui-selection)';
 
-    constructor(
-        @Inject(DOCUMENT) private readonly doc: Document,
-        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
-        @Inject(Renderer2) private readonly renderer: Renderer2,
-        @Inject(ResizeObserverService) resize$: Observable<unknown>,
-        @Inject(TuiDestroyService) @Self() destroy$: Observable<unknown>,
-    ) {
-        resize$.pipe(takeUntil(destroy$)).subscribe(() => {
-            this.updateStyles();
-        });
+    constructor() {
+        inject(ResizeObserverService)
+            .pipe(takeUntil(inject(TuiDestroyService, {self: true})))
+            .subscribe(() => this.updateStyles());
     }
 
     get match(): boolean {
-        return this.indexOf(this.el.nativeElement.textContent) !== -1;
+        return this.indexOf(this.el.textContent) !== -1;
     }
 
     ngOnChanges(): void {
@@ -62,7 +50,7 @@ export class TuiHighlightDirective implements OnChanges {
             return;
         }
 
-        this.treeWalker.currentNode = this.el.nativeElement;
+        this.treeWalker.currentNode = this.el;
 
         do {
             const index = this.indexOf(this.treeWalker.currentNode.nodeValue);
@@ -76,7 +64,7 @@ export class TuiHighlightDirective implements OnChanges {
             range.setStart(this.treeWalker.currentNode, index);
             range.setEnd(this.treeWalker.currentNode, index + this.tuiHighlight.length);
 
-            const hostRect = this.el.nativeElement.getBoundingClientRect();
+            const hostRect = this.el.getBoundingClientRect();
             const {left, top, width, height} = range.getBoundingClientRect();
             const {style} = this.highlight;
 
@@ -104,7 +92,7 @@ export class TuiHighlightDirective implements OnChanges {
         style.background = this.tuiHighlightColor;
         style.zIndex = '-1';
         style.position = 'absolute';
-        this.renderer.appendChild(this.el.nativeElement, highlight);
+        this.renderer.appendChild(this.el, highlight);
 
         return highlight;
     }

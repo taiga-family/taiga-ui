@@ -2,7 +2,7 @@ import {
     ChangeDetectionStrategy,
     Component,
     HostListener,
-    Inject,
+    inject,
     ViewEncapsulation,
 } from '@angular/core';
 import {TuiPopover} from '@taiga-ui/cdk';
@@ -18,10 +18,7 @@ import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
     animations: [tuiSlideInTop],
 })
 export class TuiPreviewDialogComponent {
-    constructor(
-        @Inject(POLYMORPHEUS_CONTEXT)
-        readonly context: TuiPopover<void, void>,
-    ) {}
+    readonly context = inject<TuiPopover<void, void>>(POLYMORPHEUS_CONTEXT);
 
     @HostListener('document:keydown.esc')
     onKeyDownEsc(): void {

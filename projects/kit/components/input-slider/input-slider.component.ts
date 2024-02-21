@@ -1,15 +1,11 @@
 import {
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
     ElementRef,
-    Inject,
+    inject,
     Input,
-    Optional,
-    Self,
     ViewChild,
 } from '@angular/core';
-import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
     tuiAsControl,
@@ -27,7 +23,6 @@ import {
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
     TuiDecimal,
     tuiGetFractionPartPadded,
-    TuiTextfieldController,
     TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
 import {TuiInputNumberComponent} from '@taiga-ui/kit/components/input-number';
@@ -96,17 +91,7 @@ export class TuiInputSliderComponent
 
     textfieldValue = this.safeCurrentValue;
 
-    constructor(
-        @Optional()
-        @Self()
-        @Inject(NgControl)
-        control: NgControl | null,
-        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
-        @Inject(TUI_TEXTFIELD_WATCHED_CONTROLLER)
-        readonly controller: TuiTextfieldController,
-    ) {
-        super(control, cdr);
-    }
+    readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
 
     get prefix(): string {
         return this.textfieldPrefix || this.controller.prefix;
