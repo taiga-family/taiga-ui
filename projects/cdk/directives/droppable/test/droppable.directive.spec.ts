@@ -3,6 +3,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {TuiDroppableDirective} from '@taiga-ui/cdk';
 import {TuiMockEvent} from '@taiga-ui/testing';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('TuiDroppable Directive', () => {
     @Component({
@@ -26,8 +27,9 @@ describe('TuiDroppable Directive', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [],
-            declarations: [TestComponent, TuiDroppableDirective],
+            imports: [TuiDroppableDirective],
+            declarations: [TestComponent],
+            providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);

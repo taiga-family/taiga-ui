@@ -1,9 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {AbstractControl, FormControl, ValidatorFn} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiValidationError} from '@taiga-ui/cdk';
-import {TuiFileLike} from '@taiga-ui/kit';
+import {tuiFilesAccepted} from '@taiga-ui/kit';
+import {map} from 'rxjs';
 
 @Component({
     selector: 'tui-input-files-example-2',
@@ -11,30 +12,22 @@ import {TuiFileLike} from '@taiga-ui/kit';
     encapsulation,
     changeDetection,
 })
-export class TuiInputFilesExample2 implements OnInit {
-    readonly control = new FormControl<TuiFileLike[]>([], [maxFilesLength(5)]);
-    rejectedFiles: readonly TuiFileLike[] = [];
+export class TuiInputFilesExample2 {
+    readonly control = new FormControl<File[]>([], [maxFilesLength(5)]);
+    readonly accepted$ = this.control.valueChanges.pipe(
+        map(() => tuiFilesAccepted(this.control)),
+    );
 
-    ngOnInit(): void {
-        this.control.statusChanges.subscribe(response => {
-            console.info('STATUS', response);
-            console.info('ERRORS', this.control.errors, '\n');
-        });
+    rejected: readonly File[] = [];
+
+    onReject(files: readonly File[]): void {
+        this.rejected = Array.from(new Set(this.rejected.concat(files)));
     }
 
-    onReject(files: TuiFileLike | readonly TuiFileLike[]): void {
-        this.rejectedFiles = [...this.rejectedFiles, ...(files as TuiFileLike[])];
-    }
-
-    removeFile({name}: TuiFileLike): void {
+    onRemove(file: File): void {
+        this.rejected = this.rejected.filter(rejected => rejected !== file);
         this.control.setValue(
-            this.control.value?.filter(current => current.name !== name) ?? [],
-        );
-    }
-
-    clearRejected({name}: TuiFileLike): void {
-        this.rejectedFiles = this.rejectedFiles.filter(
-            rejected => rejected.name !== name,
+            this.control.value?.filter(current => current !== file) ?? [],
         );
     }
 }

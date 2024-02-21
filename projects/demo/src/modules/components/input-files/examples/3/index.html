@@ -18,18 +18,22 @@
         state="loading"
         [file]="loadingFile"
         [showDelete]="control.enabled"
-        (removed)="removeLoading()"
+        (remove)="removeLoading()"
     ></tui-file>
 </tui-files>
 
 <h4>With link</h4>
 <tui-files>
-    <tui-file
+    <a
         *tuiItem
+        rel="noreferrer noopener"
         state="normal"
+        target="_blank"
+        tuiFile
         [file]="fileWithLink"
+        [href]="fileWithLink.src"
         [showDelete]="control.enabled"
-    ></tui-file>
+    ></a>
 </tui-files>
 
 <h4>With deleted state</h4>
@@ -56,7 +60,7 @@
         [file]="file"
         [leftContent]="icon"
         [showDelete]="control.enabled"
-        (removed)="remove(file)"
+        (remove)="remove(file)"
     ></tui-file>
 </tui-files>
 

@@ -6,10 +6,10 @@ import {Observable, startWith} from 'rxjs';
  * Turns AbstractControl/Abstract-control-directive valueChanges into ReplaySubject(1)
  */
 export function tuiControlValue<T>(
-    control: AbstractControl | AbstractControlDirective,
+    control: AbstractControl | AbstractControlDirective | null,
 ): Observable<T> {
     return new Observable(subscriber => {
-        if (!control.valueChanges) {
+        if (!control?.valueChanges) {
             throw new TuiValueChangesException();
         }
 

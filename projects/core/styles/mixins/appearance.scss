@@ -34,7 +34,10 @@
 }
 
 @mixin appearance-focus {
-    &:focus-visible:not([data-focus='false']),
+    &:focus-visible:not([data-focus='false']) {
+        @content;
+    }
+
     &[data-focus='true'] {
         @content;
     }

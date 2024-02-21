@@ -1,5 +1,13 @@
 ```html
-<tui-input-files [formControl]="control"></tui-input-files>
+<label tuiInputFiles>
+  <input
+    tuiInputFiles
+    accept="image/*"
+    [multiple]="true"
+    [formControl]="control"
+    (reject)="onReject($event)"
+  />
+</label>
 
 <tui-files>
   <tui-file

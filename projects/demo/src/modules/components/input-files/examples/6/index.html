@@ -1,19 +1,20 @@
-<tui-input-files
+<label
     *ngIf="!control.value"
-    [formControl]="control"
+    tuiInputFiles
 >
     <input
         accept="image/*"
         capture="user"
         title="Choose files (no limits)"
         tuiInputFiles
+        [formControl]="control"
     />
-</tui-input-files>
+</label>
 
 <tui-files class="tui-space_top-1">
     <tui-file
         *ngIf="control.valueChanges | async as file"
         [file]="file"
-        (removed)="removeFile()"
+        (remove)="removeFile()"
     ></tui-file>
 </tui-files>

@@ -1,0 +1,71 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+label[tuiInputFiles] {
+    position: relative;
+    display: flex;
+    min-height: var(--tui-height-l);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: var(--tui-radius-m);
+    font: var(--tui-font-text-m);
+    word-wrap: break-word;
+    padding: 0 0.5rem;
+
+    > :not(input) {
+        position: relative;
+        pointer-events: none;
+    }
+
+    input {
+        .fullsize();
+
+        color: transparent;
+        cursor: pointer;
+
+        &:disabled ~ * {
+            opacity: var(--tui-disabled-opacity);
+        }
+
+        &::-webkit-file-upload-button {
+            display: none;
+        }
+
+        &::file-selector-button {
+            display: none;
+        }
+    }
+}
+
+[tuiAppearance][data-appearance='file'] {
+    border-radius: inherit;
+    box-sizing: border-box;
+    border: 1px dashed var(--tui-link);
+
+    tui-root._mobile & {
+        border-style: solid;
+    }
+
+    [tuiInputFiles]._dragged & {
+        background: var(--tui-secondary);
+        border-color: var(--tui-link-hover);
+    }
+
+    .appearance-hover({
+        background: var(--tui-secondary);
+        border-color: var(--tui-link-hover);
+    });
+
+    .appearance-active({
+        background: var(--tui-secondary-hover);
+    });
+
+    .appearance-disabled({
+        background: transparent;
+        border-color: var(--tui-text-03);
+    });
+
+    .appearance-focus({
+        border: 0.125rem solid var(--tui-focus);
+    });
+}

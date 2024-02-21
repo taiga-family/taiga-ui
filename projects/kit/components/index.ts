@@ -22,7 +22,6 @@ export * from '@taiga-ui/kit/components/input-date';
 export * from '@taiga-ui/kit/components/input-date-multi';
 export * from '@taiga-ui/kit/components/input-date-range';
 export * from '@taiga-ui/kit/components/input-date-time';
-export * from '@taiga-ui/kit/components/input-files';
 export * from '@taiga-ui/kit/components/input-inline';
 export * from '@taiga-ui/kit/components/input-month';
 export * from '@taiga-ui/kit/components/input-month-range';

@@ -1,30 +1,39 @@
-<tui-input-files
+<label
     *ngIf="!control.value"
-    accept="image/*"
-    [formControl]="control"
-    (reject)="onReject($event)"
-></tui-input-files>
+    tuiInputFiles
+>
+    <input
+        accept="image/*"
+        tuiInputFiles
+        [formControl]="control"
+    />
+</label>
 
 <tui-files class="tui-space_top-1">
     <tui-file
-        *ngIf="loadedFiles$ | async as file"
+        *ngIf="control.value | tuiFileRejected: {accept: 'image/*'} | async as file"
+        state="error"
         [file]="file"
-        [showDelete]="control.enabled"
-        (removed)="removeFile()"
+        (remove)="removeFile()"
     ></tui-file>
 
     <tui-file
-        *ngIf="rejectedFiles$ | async as file"
+        *ngIf="loadedFiles$ | async as file"
+        [file]="file"
+        (remove)="removeFile()"
+    ></tui-file>
+
+    <tui-file
+        *ngIf="failedFiles$ | async as file"
         state="error"
         [file]="file"
-        [showDelete]="control.enabled"
-        (removed)="clearRejected()"
+        (remove)="removeFile()"
     ></tui-file>
 
     <tui-file
         *ngIf="loadingFiles$ | async as file"
         state="loading"
         [file]="file"
-        [showDelete]="control.enabled"
+        (remove)="removeFile()"
     ></tui-file>
 </tui-files>

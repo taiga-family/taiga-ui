@@ -104,11 +104,13 @@
     &_rounded.tui-group_orientation_horizontal {
         & > * {
             &:first-child {
-                border-radius: var(--t-radius) 0 0 var(--t-radius);
+                border-top-left-radius: var(--t-radius);
+                border-bottom-left-radius: var(--t-radius);
             }
 
             &:last-child {
-                border-radius: 0 var(--t-radius) var(--t-radius) 0;
+                border-top-right-radius: var(--t-radius);
+                border-bottom-right-radius: var(--t-radius);
             }
         }
     }
@@ -116,11 +118,13 @@
     &_rounded.tui-group_orientation_vertical {
         & > * {
             &:first-child {
-                border-radius: var(--t-radius) var(--t-radius) 0 0;
+                border-top-left-radius: var(--t-radius);
+                border-top-right-radius: var(--t-radius);
             }
 
             &:last-child {
-                border-radius: 0 0 var(--t-radius) var(--t-radius);
+                border-bottom-left-radius: var(--t-radius);
+                border-bottom-right-radius: var(--t-radius);
             }
         }
     }

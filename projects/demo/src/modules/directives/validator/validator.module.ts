@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
-import {TuiValidatorModule} from '@taiga-ui/cdk';
+import {TuiValidatorDirective} from '@taiga-ui/cdk';
 import {TuiDataListModule} from '@taiga-ui/core';
 import {
     TuiDataListWrapperModule,
@@ -22,7 +22,7 @@ import {ExampleTuiValidatorComponent} from './validator.component';
         ReactiveFormsModule,
         TuiInputModule,
         TuiSelectModule,
-        TuiValidatorModule,
+        TuiValidatorDirective,
         TuiInputPhoneModule,
         TuiDataListModule,
         TuiDataListWrapperModule,

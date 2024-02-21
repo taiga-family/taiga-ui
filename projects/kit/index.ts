@@ -11,4 +11,3 @@ export * from '@taiga-ui/kit/services';
 export * from '@taiga-ui/kit/tokens';
 export * from '@taiga-ui/kit/types';
 export * from '@taiga-ui/kit/utils';
-export * from '@taiga-ui/kit/validators';

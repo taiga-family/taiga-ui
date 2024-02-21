@@ -3,7 +3,8 @@ import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiSizeL} from '@taiga-ui/core';
-import {TuiFileLike, TuiInputFilesOptions} from '@taiga-ui/kit';
+import {tuiFilesAccepted} from '@taiga-ui/kit';
+import {map} from 'rxjs';
 
 import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
@@ -22,9 +23,6 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
 export class ExampleTuiInputFilesComponent extends AbstractExampleTuiControl {
     readonly exampleModule = import('./examples/import/import-module.md?raw');
     readonly exampleHtml = import('./examples/import/insert-template.md?raw');
-    readonly nativeInputInsideInputFiles = import(
-        './examples/import/native-input-inside-input-files.md?raw'
-    );
 
     readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
@@ -57,11 +55,16 @@ export class ExampleTuiInputFilesComponent extends AbstractExampleTuiControl {
         HTML: import('./examples/6/index.html?raw'),
     };
 
-    readonly control = new FormControl<TuiFileLike | null>(null);
-    readonly multipleControl = new FormControl<TuiFileLike[] | null>(null);
+    readonly example7: TuiDocExample = {
+        TypeScript: import('./examples/7/index.ts?raw'),
+        HTML: import('./examples/7/index.html?raw'),
+    };
 
-    link = 'Choose a file';
-    label = 'or drop\u00A0it\u00A0here';
+    readonly control = new FormControl<File[] | null>(null);
+    readonly files$ = this.control.valueChanges.pipe(
+        map(() => tuiFilesAccepted(this.control)),
+    );
+
     multiple = true;
     showSize = true;
     showDelete: boolean | 'always' = true;
@@ -69,43 +72,28 @@ export class ExampleTuiInputFilesComponent extends AbstractExampleTuiControl {
     maxFilesCount = 3;
     accept = '';
     acceptVariants = ['image/*', 'application/pdf', 'image/*,application/pdf'];
-    capture: TuiInputFilesOptions['capture'] = null;
-    captureVariants: Array<TuiInputFilesOptions['capture']> = [
-        null,
-        'user',
-        'environment',
-    ];
 
     readonly showDeleteVariants: Array<boolean | 'always'> = [true, false, 'always'];
     readonly maxFileSizeVariants = [100, 512000, 30 * 1000 * 1000, 2.2 * 1000 * 1000];
     override readonly sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
 
     override size = this.sizeVariants[0];
-    rejectedFiles: TuiFileLike[] = [];
+    rejected: readonly File[] = [];
     maxFileSize = this.maxFileSizeVariants[2];
 
-    removeFile(file: TuiFileLike): void {
-        this.multipleControl.setValue(
-            this.multipleControl.value?.filter(current => current.name !== file.name) ||
-                null,
+    removeFile(file: File): void {
+        this.rejected = this.rejected.filter(current => current !== file);
+        this.control.setValue(
+            this.control.value?.filter(current => current !== file) || null,
         );
     }
 
-    removeRejected(file: TuiFileLike): void {
-        this.rejectedFiles = this.rejectedFiles.filter(
-            rejectedFile => rejectedFile.name !== file.name,
-        );
-    }
-
-    updateRejected(file: TuiFileLike | readonly TuiFileLike[]): void {
-        this.rejectedFiles = [
-            ...this.rejectedFiles,
-            ...(Array.isArray(file) ? file : [file]),
-        ];
+    updateRejected(rejected: readonly File[]): void {
+        this.rejected = rejected;
     }
 
     multipleChange(multiple: boolean): void {
-        this.rejectedFiles = [];
+        this.rejected = [];
         this.control.setValue(null);
         this.multiple = multiple;
     }

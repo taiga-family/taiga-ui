@@ -1,31 +1,53 @@
+import {CommonModule} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
     EventEmitter,
     HostBinding,
-    Inject,
+    inject,
     Input,
     Output,
 } from '@angular/core';
 import {DomSanitizer, SafeValue} from '@angular/platform-browser';
-import {TuiContext, TuiInjectionTokenType, tuiIsObserved, tuiPure} from '@taiga-ui/cdk';
-import {TUI_COMMON_ICONS, TuiCommonIcons, TuiSizeL} from '@taiga-ui/core';
+import {TuiContext, tuiIsObserved, tuiPure} from '@taiga-ui/cdk';
+import {
+    TUI_COMMON_ICONS,
+    TuiAppearanceDirective,
+    tuiAppearanceOptionsProvider,
+    TuiButtonModule,
+    TuiLoaderModule,
+    TuiSizeL,
+    TuiSvgModule,
+} from '@taiga-ui/core';
 import {TuiLanguage} from '@taiga-ui/i18n';
-import {TuiFileLike} from '@taiga-ui/kit/interfaces';
 import {TUI_DIGITAL_INFORMATION_UNITS, TUI_FILE_TEXTS} from '@taiga-ui/kit/tokens';
-import {TuiFileState} from '@taiga-ui/kit/types';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusContent, PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import {map, Observable, of} from 'rxjs';
 
-import {TUI_FILE_OPTIONS} from './file-options';
+import {TuiFileLike, TuiFileState} from '../files.types';
+import {TUI_FILE_OPTIONS} from './file.options';
 
 @Component({
-    selector: 'tui-file',
+    standalone: true,
+    selector: 'tui-file,a[tuiFile],button[tuiFile]',
+    imports: [
+        CommonModule,
+        PolymorpheusModule,
+        TuiLoaderModule,
+        TuiSvgModule,
+        TuiButtonModule,
+    ],
     templateUrl: './file.template.html',
     styleUrls: ['./file.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [tuiAppearanceOptionsProvider(TUI_FILE_OPTIONS)],
+    hostDirectives: [TuiAppearanceDirective],
 })
 export class TuiFileComponent {
+    private readonly sanitizer = inject(DomSanitizer);
+    private readonly options = inject(TUI_FILE_OPTIONS);
+    private readonly units$ = inject(TUI_DIGITAL_INFORMATION_UNITS);
+
     @Input()
     file: TuiFileLike = {name: ''};
 
@@ -46,26 +68,13 @@ export class TuiFileComponent {
     leftContent: PolymorpheusContent;
 
     @Output()
-    readonly removed = new EventEmitter<void>();
+    readonly remove = new EventEmitter<void>();
 
-    @HostBinding('class._focused')
-    focused = false;
-
-    constructor(
-        @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
-        @Inject(TUI_COMMON_ICONS) readonly icons: TuiCommonIcons,
-        @Inject(TUI_FILE_TEXTS)
-        readonly fileTexts$: TuiInjectionTokenType<typeof TUI_FILE_TEXTS>,
-        @Inject(TUI_FILE_OPTIONS)
-        private readonly options: TuiInjectionTokenType<typeof TUI_FILE_OPTIONS>,
-        @Inject(TUI_DIGITAL_INFORMATION_UNITS)
-        private readonly units$: TuiInjectionTokenType<
-            typeof TUI_DIGITAL_INFORMATION_UNITS
-        >,
-    ) {}
+    readonly icons = inject(TUI_COMMON_ICONS);
+    readonly fileTexts$ = inject(TUI_FILE_TEXTS);
 
     get preview(): SafeValue {
-        return this.isBig ? this.createPreview(this.file, this.sanitizer) : '';
+        return this.isBig ? this.createPreview(this.file) : '';
     }
 
     get isBig(): boolean {
@@ -85,16 +94,11 @@ export class TuiFileComponent {
     }
 
     get allowDelete(): boolean {
-        return this.showDelete && tuiIsObserved(this.removed);
+        return this.showDelete && tuiIsObserved(this.remove);
     }
 
     get icon(): PolymorpheusContent<TuiContext<TuiSizeL>> {
         return this.state === 'loading' ? '' : this.options.icons[this.state];
-    }
-
-    @HostBinding('class._link')
-    get src(): string {
-        return this.file.src || '';
     }
 
     get name(): string {
@@ -111,14 +115,6 @@ export class TuiFileComponent {
 
     get fileSize$(): Observable<string | null> {
         return this.calculateFileSize$(this.file, this.units$);
-    }
-
-    onRemoveClick(): void {
-        this.removed.emit();
-    }
-
-    onFocusVisible(focusVisible: boolean): void {
-        this.focused = focusVisible;
     }
 
     @tuiPure
@@ -141,14 +137,14 @@ export class TuiFileComponent {
     }
 
     @tuiPure
-    private createPreview(file: TuiFileLike, sanitizer: DomSanitizer): SafeValue {
+    private createPreview(file: TuiFileLike): SafeValue {
         if (file.src) {
             return file.src;
         }
 
         // TODO: iframe warning
         if (file instanceof File && file.type && file.type.startsWith('image/')) {
-            return sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(file));
+            return this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(file));
         }
 
         return '';

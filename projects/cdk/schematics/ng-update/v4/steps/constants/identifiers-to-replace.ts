@@ -135,6 +135,14 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifier[] = [
         to: {name: 'TuiDropdownPortalDirective', moduleSpecifier: '@taiga-ui/core'},
     },
     {
+        from: {name: 'TuiDroppableModule', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiDroppableDirective', moduleSpecifier: '@taiga-ui/cdk'},
+    },
+    {
+        from: {name: 'TuiValidatorModule', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiValidatorDirective', moduleSpecifier: '@taiga-ui/cdk'},
+    },
+    {
         from: {name: 'TuiAmountModule', moduleSpecifier: '@taiga-ui/experimental'},
         to: {name: 'TuiAmountPipe', moduleSpecifier: '@taiga-ui/addon-commerce'},
     },

@@ -13,27 +13,23 @@ import {finalize, map, Observable, of, Subject, switchMap, timer} from 'rxjs';
 })
 export class TuiInputFilesExample1 {
     readonly control = new FormControl<TuiFileLike | null>(null);
-
-    readonly rejectedFiles$ = new Subject<TuiFileLike | null>();
+    readonly failedFiles$ = new Subject<TuiFileLike | null>();
     readonly loadingFiles$ = new Subject<TuiFileLike | null>();
     readonly loadedFiles$ = this.control.valueChanges.pipe(
-        switchMap(file => (file ? this.makeRequest(file) : of(null))),
+        switchMap(file => this.processFile(file)),
     );
-
-    onReject(file: TuiFileLike | readonly TuiFileLike[]): void {
-        this.rejectedFiles$.next(file as TuiFileLike);
-    }
 
     removeFile(): void {
         this.control.setValue(null);
     }
 
-    clearRejected(): void {
-        this.removeFile();
-        this.rejectedFiles$.next(null);
-    }
+    processFile(file: TuiFileLike | null): Observable<TuiFileLike | null> {
+        this.failedFiles$.next(null);
 
-    makeRequest(file: TuiFileLike): Observable<TuiFileLike | null> {
+        if (this.control.invalid || !file) {
+            return of(null);
+        }
+
         this.loadingFiles$.next(file);
 
         return timer(1000).pipe(
@@ -42,7 +38,7 @@ export class TuiInputFilesExample1 {
                     return file;
                 }
 
-                this.rejectedFiles$.next(file);
+                this.failedFiles$.next(file);
 
                 return null;
             }),

@@ -3,7 +3,7 @@
 .appearance-hover(@ruleset) {
     .interactive({
         @media (hover: hover) {
-            &:hover:not([data-state]) {
+            &:hover:not(:disabled):not([data-state]) {
                 @ruleset();
             }
         }
@@ -16,7 +16,7 @@
 
 .appearance-active(@ruleset) {
     .interactive({
-        &:active:not([data-state]) {
+        &:active:not(:disabled):not([data-state]) {
             @ruleset();
         }
     });
@@ -34,7 +34,10 @@
 }
 
 .appearance-focus(@ruleset) {
-    &:focus-visible:not([data-focus='false']),
+    &:focus-visible:not([data-focus='false']) {
+        @ruleset();
+    }
+
     &[data-focus='true'] {
         @ruleset();
     }
