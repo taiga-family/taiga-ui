@@ -51,7 +51,7 @@ export class TuiFileRejectedPipe implements PipeTransform {
                     };
                 }
 
-                return file;
+                return null;
             }),
         );
     }

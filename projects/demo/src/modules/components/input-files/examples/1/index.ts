@@ -24,6 +24,8 @@ export class TuiInputFilesExample1 {
     }
 
     processFile(file: TuiFileLike | null): Observable<TuiFileLike | null> {
+        this.failedFiles$.next(null);
+
         if (this.control.invalid || !file) {
             return of(null);
         }
