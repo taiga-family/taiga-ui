@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[74862],{74862:e=>{e.exports="```ts\nimport {TuiDestroyService} from '@taiga-ui/cdk';\n// ...\n\n@Component()\nexport class MyComponent {\n  private readonly destroy$ = inject(TuiDestroyService, {self: true});\n}\n```\n"}}]);
