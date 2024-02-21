@@ -6,10 +6,10 @@ on:
       - main
 
 jobs:
-  test:
+  cypress:
     if: ${{ !contains(github.head_ref, 'release/') }}
     runs-on: ubuntu-latest
-    name: cypress
+    name: Component testing result
     steps:
       - uses: taiga-family/ci/actions/setup/checkout@v1.51.9
       - uses: taiga-family/ci/actions/setup/variables@v1.51.9

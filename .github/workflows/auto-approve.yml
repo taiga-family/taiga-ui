@@ -2,7 +2,7 @@ name: 🤖 Auto approve validation
 on: pull_request
 
 env:
-  PR_JOBS_NAME: '[ "Build packages", "Firebase", "Lint", "Unit tests", "E2E result" ]'
+  PR_JOBS_NAME: '[ "Build packages", "Firebase", "Lint", "Unit tests", "Component testing result", "E2E result" ]'
   RELEASE_JOBS_NAME: '[ "Publish", "Validate tag" ]'
 
 jobs:
