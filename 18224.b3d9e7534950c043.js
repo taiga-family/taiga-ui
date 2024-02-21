@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[18224],{18224:e=>{e.exports="```ts\nimport {tuiIsEdge} from '@taiga-ui/cdk';\nimport {USER_AGENT} from '@ng-web-apis/common';\n\n// ...\nexport class MyComponent {\n  private readonly userAgent = inject(USER_AGENT);\n\n  areThereProblems = tuiIsEdge(this.userAgent);\n}\n// ...\n```\n"}}]);
