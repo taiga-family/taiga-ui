@@ -7,9 +7,10 @@ import {
     inject,
     Input,
 } from '@angular/core';
+import {RouterLinkActive} from '@angular/router';
 import {TuiDestroyService, TuiFocusVisibleService} from '@taiga-ui/cdk';
-import {TUI_COMMON_ICONS, TuiRouterLinkActiveService} from '@taiga-ui/core';
-import {filter, identity} from 'rxjs';
+import {TUI_COMMON_ICONS} from '@taiga-ui/core';
+import {EMPTY, filter, Observable} from 'rxjs';
 
 import {TuiStepperComponent} from '../stepper.component';
 
@@ -19,16 +20,17 @@ import {TuiStepperComponent} from '../stepper.component';
     templateUrl: './step.template.html',
     styleUrls: ['./step.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [TuiDestroyService, TuiRouterLinkActiveService, TuiFocusVisibleService],
+    providers: [TuiDestroyService, TuiFocusVisibleService],
     host: {
         type: 'button',
     },
 })
 export class TuiStepComponent {
     private readonly focusVisible$ = inject(TuiFocusVisibleService);
-    private readonly routerLinkActive$ = inject(TuiRouterLinkActiveService);
     private readonly stepper = inject(TuiStepperComponent);
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly routerLinkActive$: Observable<boolean> =
+        inject(RouterLinkActive, {optional: true})?.isActiveChange || EMPTY;
 
     @Input()
     @HostBinding('attr.data-state')
@@ -43,7 +45,7 @@ export class TuiStepComponent {
     readonly icons = inject(TUI_COMMON_ICONS);
 
     constructor() {
-        this.routerLinkActive$.pipe(filter(identity)).subscribe(() => {
+        this.routerLinkActive$.pipe(filter(Boolean)).subscribe(() => {
             this.activate();
         });
 

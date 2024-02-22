@@ -27,8 +27,7 @@ import {TUI_TAB_EVENT, TUI_TAB_PROVIDERS} from './tab.providers';
          * Domino doesn't support CSS variables and some CSS properties like clip-path.
          * Read more: https://github.com/taiga-family/taiga-ui/issues/3210#issuecomment-1375788017
          * ___
-         * TODO: drop this line after Angular team switch over to a new JavaScript DOM API
-         * https://github.com/angular/angular/issues/42170
+         * TODO: drop this line after Angular 16
          */
         '[style.cursor]': '"pointer"',
         '[style.--tui-tab-margin.px]': 'margin',
@@ -44,7 +43,7 @@ export class TuiTabComponent implements OnDestroy {
 
     @HostBinding('class._active')
     get isActive(): boolean {
-        return !!this.routerLinkActive && this.routerLinkActive.isActive;
+        return !!this.routerLinkActive?.isActive;
     }
 
     ngOnDestroy(): void {
