@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-syntax,no-restricted-imports */
 import {Directive, forwardRef, Inject, Input} from '@angular/core';
 import {TuiNumberFormatSettings} from '@taiga-ui/core/interfaces';
 import {TUI_NUMBER_FORMAT, TUI_NUMBER_FORMAT_OBSERVABLE} from '@taiga-ui/core/tokens';

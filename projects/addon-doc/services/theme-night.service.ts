@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-syntax,no-restricted-imports */
 import {Inject, Injectable} from '@angular/core';
 import {LOCAL_STORAGE, WINDOW} from '@ng-web-apis/common';
 import {BehaviorSubject} from 'rxjs';
