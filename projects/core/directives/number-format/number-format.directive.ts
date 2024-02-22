@@ -1,14 +1,13 @@
-/* eslint-disable no-restricted-syntax,no-restricted-imports */
-import {Directive, forwardRef, Inject, Input} from '@angular/core';
+import {Directive, forwardRef, Inject, Input, SkipSelf} from '@angular/core';
 import {TuiNumberFormatSettings} from '@taiga-ui/core/interfaces';
-import {TUI_NUMBER_FORMAT, TUI_NUMBER_FORMAT_OBSERVABLE} from '@taiga-ui/core/tokens';
+import {TUI_NUMBER_FORMAT} from '@taiga-ui/core/tokens';
 import {BehaviorSubject} from 'rxjs';
 
 @Directive({
     selector: '[tuiNumberFormat]',
     providers: [
         {
-            provide: TUI_NUMBER_FORMAT_OBSERVABLE,
+            provide: TUI_NUMBER_FORMAT,
             useExisting: forwardRef(() => TuiNumberFormatDirective),
         },
     ],
@@ -16,12 +15,14 @@ import {BehaviorSubject} from 'rxjs';
 export class TuiNumberFormatDirective extends BehaviorSubject<TuiNumberFormatSettings> {
     @Input()
     public set tuiNumberFormat(format: Partial<TuiNumberFormatSettings>) {
-        this.next({...this.settings, decimalLimit: NaN, ...format});
+        this.next({...this.settings, ...format});
     }
 
     constructor(
-        @Inject(TUI_NUMBER_FORMAT) private readonly settings: TuiNumberFormatSettings,
+        @SkipSelf()
+        @Inject(TUI_NUMBER_FORMAT)
+        private readonly settings: TuiNumberFormatSettings,
     ) {
-        super({...settings, decimalLimit: NaN});
+        super({...settings});
     }
 }

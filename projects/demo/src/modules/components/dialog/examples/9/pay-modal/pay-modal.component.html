@@ -104,6 +104,6 @@
         [showLoader]="!!(payProcessing$ | async)"
         (click)="pay()"
     >
-        Pay {{ amount | tuiFormatNumber }} ₽
+        Pay {{ amount | tuiFormatNumber | async }} ₽
     </button>
 </div>

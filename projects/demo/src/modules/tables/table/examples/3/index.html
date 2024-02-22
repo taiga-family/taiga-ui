@@ -153,7 +153,7 @@
                     tuiTd
                     class="number text"
                 >
-                    {{ getTotal(item) | tuiFormatNumber }}
+                    {{ getTotal(item) | tuiFormatNumber | async }}
                 </td>
             </tr>
         </tbody>
@@ -234,7 +234,7 @@
                     tuiTd
                     class="number text"
                 >
-                    {{ getTotal(item) | tuiFormatNumber }}
+                    {{ getTotal(item) | tuiFormatNumber | async }}
                 </td>
             </tr>
         </tbody>

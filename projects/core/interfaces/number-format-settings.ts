@@ -31,5 +31,5 @@ export interface TuiNumberFormatSettings {
     /**
      * Decimal part display mode. ('not-zero' by default)
      */
-    readonly decimal?: TuiDecimal;
+    readonly decimal: TuiDecimal;
 }
