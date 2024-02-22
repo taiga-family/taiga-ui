@@ -4,7 +4,7 @@ import {
     HostBinding,
     HostListener,
     inject,
-    Injector,
+    INJECTOR,
     Input,
     ViewChild,
 } from '@angular/core';
@@ -75,7 +75,7 @@ export class TuiInputDateMultiComponent
     private readonly inputTag?: TuiInputTagComponent;
 
     private month: TuiMonth | null = null;
-    private readonly injector = inject(Injector);
+    private readonly injector = inject(INJECTOR);
     private readonly dialogs = inject(TuiDialogService);
     private readonly mobileCalendar = inject(TUI_MOBILE_CALENDAR, {optional: true});
     private readonly options = inject(TUI_INPUT_DATE_OPTIONS);

@@ -2,7 +2,7 @@ import {
     ComponentRef,
     Directive,
     inject,
-    Injector,
+    INJECTOR,
     Input,
     OnDestroy,
     TemplateRef,
@@ -19,7 +19,7 @@ export class TuiSidebarDirective<T = Record<string, unknown>>
     extends PolymorpheusTemplate<T>
     implements OnDestroy
 {
-    private readonly injector = inject(Injector);
+    private readonly injector = inject(INJECTOR);
     private readonly portalService = inject(TuiDropdownService);
 
     private readonly component = new PolymorpheusComponent(

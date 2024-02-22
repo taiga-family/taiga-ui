@@ -5,7 +5,7 @@ import {
     ElementRef,
     HostBinding,
     inject,
-    Injector,
+    INJECTOR,
     Input,
 } from '@angular/core';
 import {NgControl, NgModel} from '@angular/forms';
@@ -39,7 +39,7 @@ import {TUI_SLIDER_OPTIONS} from './slider.options';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiSliderComponent {
-    private readonly injector = inject(Injector);
+    private readonly injector = inject(INJECTOR);
     private readonly control = inject(NgControl, {self: true, optional: true});
     protected readonly options = inject(TUI_SLIDER_OPTIONS);
 

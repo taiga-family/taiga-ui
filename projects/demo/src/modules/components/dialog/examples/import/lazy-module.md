@@ -1,7 +1,7 @@
 ```ts
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import {TuiDialogService} from '@taiga-ui/core';
-import {Injector, Component} from '@angular/core';
+
 import {MyDialogComponent} from './my-dialog.component.ts';
 
 // ...
@@ -10,7 +10,7 @@ import {MyDialogComponent} from './my-dialog.component.ts';
   // ...
 })
 export class MyComponent {
-  private readonly injector = inject(Injector);
+  private readonly injector = inject(INJECTOR);
   private readonly dialogs = inject(TuiDialogService);
 
   // ...

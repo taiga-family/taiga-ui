@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, inject, Injector} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, INJECTOR} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {TuiDestroyService} from '@taiga-ui/cdk';
 import {TuiDialogService} from '@taiga-ui/core';
@@ -20,7 +20,7 @@ export class TuiRoutableDialogComponent {
             .open(
                 new PolymorpheusComponent(
                     this.route.snapshot.data['dialog'],
-                    inject(Injector),
+                    inject(INJECTOR),
                 ),
                 this.route.snapshot.data['dialogOptions'],
             )
