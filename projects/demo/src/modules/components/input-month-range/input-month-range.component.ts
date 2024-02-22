@@ -27,49 +27,49 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
     ],
 })
 export class ExampleTuiInputMonthRangeComponent extends AbstractExampleTuiControl {
-    readonly exampleForm = import('./examples/import/declare-form.md?raw');
-    readonly exampleModule = import('./examples/import/import-module.md?raw');
-    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    protected readonly exampleForm = import('./examples/import/declare-form.md?raw');
+    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
+    protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
     };
 
-    readonly example2: TuiDocExample = {
+    protected readonly example2: TuiDocExample = {
         TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
     };
 
-    readonly example3: TuiDocExample = {
+    protected readonly example3: TuiDocExample = {
         TypeScript: import('./examples/3/index.ts?raw'),
         HTML: import('./examples/3/index.html?raw'),
     };
 
-    readonly minVariants = [
+    protected readonly minVariants = [
         TUI_FIRST_DAY,
         new TuiMonth(2019, 2),
         new TuiMonth(2007, 0),
         new TuiDay(new Date().getFullYear() + 3, 1, 1),
     ];
 
-    readonly maxVariants = [
+    protected readonly maxVariants = [
         TUI_LAST_DAY,
         new TuiMonth(2017, 2),
         new TuiMonth(2020, 2),
         new TuiMonth(2023, 0),
     ];
 
-    min = this.minVariants[0];
-    max = this.maxVariants[0];
+    protected min = this.minVariants[0];
+    protected max = this.maxVariants[0];
 
-    readonly disabledItemHandlerVariants: ReadonlyArray<
+    protected readonly disabledItemHandlerVariants: ReadonlyArray<
         TuiBooleanHandlerWithContext<TuiMonth, TuiMonthContext>
     > = [ALWAYS_FALSE_HANDLER, ({month}) => month % 3 === 0];
 
-    disabledItemHandler = this.disabledItemHandlerVariants[0];
+    protected disabledItemHandler = this.disabledItemHandlerVariants[0];
 
-    override cleaner = false;
+    public override cleaner = false;
 
-    control = new FormControl<TuiMonthRange | null>(null, Validators.required);
+    public control = new FormControl<TuiMonthRange | null>(null, Validators.required);
 }

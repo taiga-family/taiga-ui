@@ -9,5 +9,5 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiAvatarExample1 {
-    avatar = 'https://ng-web-apis.github.io/dist/assets/images/web-api.svg';
+    protected avatar = 'https://ng-web-apis.github.io/dist/assets/images/web-api.svg';
 }

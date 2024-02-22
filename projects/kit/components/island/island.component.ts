@@ -12,46 +12,46 @@ import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 })
 export class TuiIslandComponent {
     @Input()
-    size: TuiSizeL | TuiSizeS = 'm';
+    public size: TuiSizeL | TuiSizeS = 'm';
 
     @Input()
-    textAlign: 'center' | 'left' | 'right' = 'left';
+    public textAlign: 'center' | 'left' | 'right' = 'left';
 
     @Input()
     @HostBinding('class.tui-island_hoverable')
-    hoverable = false;
+    public hoverable = false;
 
     @Input()
     @HostBinding('class.tui-island_transparent')
-    transparent = false;
+    public transparent = false;
 
     @HostBinding('class.tui-island_size_s')
-    get sizeS(): boolean {
+    public get sizeS(): boolean {
         return this.size === 's';
     }
 
     @HostBinding('class.tui-island_size_m')
-    get sizeM(): boolean {
+    public get sizeM(): boolean {
         return this.size === 'm';
     }
 
     @HostBinding('class.tui-island_size_l')
-    get sizeL(): boolean {
+    public get sizeL(): boolean {
         return this.size === 'l';
     }
 
     @HostBinding('class.tui-island_text-align_left')
-    get textAlignLeft(): boolean {
+    public get textAlignLeft(): boolean {
         return this.textAlign === 'left';
     }
 
     @HostBinding('class.tui-island_text-align_center')
-    get textAlignCenter(): boolean {
+    public get textAlignCenter(): boolean {
         return this.textAlign === 'center';
     }
 
     @HostBinding('class.tui-island_text-align_right')
-    get textAlignRight(): boolean {
+    public get textAlignRight(): boolean {
         return this.textAlign === 'right';
     }
 }

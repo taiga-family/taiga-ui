@@ -57,42 +57,40 @@ export class TuiInputMonthComponent
     private readonly options = inject(TUI_INPUT_DATE_OPTIONS);
     private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
 
-    @Input()
-    min: TuiMonth | null = this.options.min;
+    protected activeYear?: TuiYear;
+    protected open = false;
+    protected readonly formatter = inject(TUI_MONTH_FORMATTER);
 
     @Input()
-    max: TuiMonth | null = this.options.max;
+    public min: TuiMonth | null = this.options.min;
 
     @Input()
-    disabledItemHandler: TuiBooleanHandler<TuiMonth> = ALWAYS_FALSE_HANDLER;
+    public max: TuiMonth | null = this.options.max;
 
     @Input()
-    defaultActiveYear: TuiYear = TuiDay.currentLocal();
+    public disabledItemHandler: TuiBooleanHandler<TuiMonth> = ALWAYS_FALSE_HANDLER;
 
-    activeYear?: TuiYear;
-
-    open = false;
-
-    readonly formatter = inject(TUI_MONTH_FORMATTER);
+    @Input()
+    public defaultActiveYear: TuiYear = TuiDay.currentLocal();
 
     @HostBinding('attr.data-size')
-    get size(): TuiSizeL | TuiSizeS {
+    public get size(): TuiSizeL | TuiSizeS {
         return this.textfieldSize.size;
     }
 
-    get computedMin(): TuiMonth {
+    public get computedMin(): TuiMonth {
         return this.min ?? this.options.min;
     }
 
-    get computedMax(): TuiMonth {
+    public get computedMax(): TuiMonth {
         return this.max ?? this.options.max;
     }
 
-    get nativeFocusableElement(): HTMLInputElement | null {
+    public get nativeFocusableElement(): HTMLInputElement | null {
         return this.textfield?.nativeFocusableElement || null;
     }
 
-    get computedDefaultActiveYear(): TuiYear {
+    public get computedDefaultActiveYear(): TuiYear {
         return (
             this.activeYear ||
             this.value ||
@@ -100,31 +98,31 @@ export class TuiInputMonthComponent
         );
     }
 
-    get focused(): boolean {
+    public get focused(): boolean {
         return !!this.textfield?.focused;
     }
 
-    get calendarIcon(): TuiInputDateOptions['icon'] {
+    public get calendarIcon(): TuiInputDateOptions['icon'] {
         return this.options.icon;
     }
 
-    get nativePicker(): boolean {
+    public get nativePicker(): boolean {
         return this.isMobile && this.options.nativePicker;
     }
 
-    get nativePickerMin(): string {
+    public get nativePickerMin(): string {
         return this.computedMin.toJSON();
     }
 
-    get nativePickerMax(): string {
+    public get nativePickerMax(): string {
         return this.computedMax.toJSON();
     }
 
-    get nativeValue(): string {
+    public get nativeValue(): string {
         return this.value?.toJSON() || '';
     }
 
-    onNativeChange(value: string): void {
+    public onNativeChange(value: string): void {
         const [year, month] = value.split('-').map(Number);
 
         this.value = value
@@ -136,7 +134,7 @@ export class TuiInputMonthComponent
             : null;
     }
 
-    onValueChange(value: string): void {
+    public onValueChange(value: string): void {
         if (value) {
             return;
         }
@@ -145,16 +143,16 @@ export class TuiInputMonthComponent
         this.onOpenChange(!this.nativePicker);
     }
 
-    onMonthClick(month: TuiMonth): void {
+    public onMonthClick(month: TuiMonth): void {
         this.value = month;
         this.close();
     }
 
-    onFocused(focused: boolean): void {
+    public onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
 
-    onOpenChange(open: boolean): void {
+    public onOpenChange(open: boolean): void {
         if (open && this.value) {
             this.activeYear = this.value;
         }
@@ -162,7 +160,7 @@ export class TuiInputMonthComponent
         this.open = open;
     }
 
-    override setDisabledState(): void {
+    public override setDisabledState(): void {
         super.setDisabledState();
         this.close();
     }

@@ -13,10 +13,10 @@ import {AbstractTuiDataListWrapper} from './data-list-wrapper';
 })
 export class TuiDataListGroupWrapperComponent<T> extends AbstractTuiDataListWrapper<T> {
     @Input()
-    items: readonly T[][] | null = [];
+    public items: readonly T[][] | null = [];
 
     @Input()
-    labels: readonly string[] = [];
+    public labels: readonly string[] = [];
 
     constructor() {
         super(inject(TUI_ITEMS_HANDLERS), inject(TuiTextfieldSizeDirective)?.size || 'm');

@@ -54,9 +54,8 @@ export class TuiButtonStylesComponent {}
 export class TuiButtonDirective {
     private readonly options = inject(TUI_BUTTON_OPTIONS);
     protected readonly nothing = tuiWithStyles(TuiButtonStylesComponent);
+    protected readonly mode$ = inject(TUI_MODE);
 
     @Input()
-    size = this.options.size;
-
-    readonly mode$ = inject(TUI_MODE);
+    public size = this.options.size;
 }

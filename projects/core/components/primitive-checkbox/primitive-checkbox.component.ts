@@ -20,27 +20,32 @@ import {TUI_CHECKBOX_OPTIONS} from './checkbox.options';
 export class TuiPrimitiveCheckboxComponent {
     private readonly options = inject(TUI_CHECKBOX_OPTIONS);
 
+    protected icon: PolymorpheusContent<TuiContext<TuiSizeL>> =
+        this.options.icons.checked;
+
+    protected value: boolean | null = false;
+
     @Input()
     @HostBinding('attr.data-size')
-    size: TuiSizeL = this.options.size;
+    public size: TuiSizeL = this.options.size;
 
     @Input()
-    disabled = false;
+    public disabled = false;
 
     @Input()
-    focused = false;
+    public focused = false;
 
     @Input()
-    hovered: boolean | null = false;
+    public hovered: boolean | null = false;
 
     @Input()
-    pressed: boolean | null = false;
+    public pressed: boolean | null = false;
 
     @Input()
-    invalid = false;
+    public invalid = false;
 
     @Input('value')
-    set valueSetter(value: boolean | null) {
+    public set valueSetter(value: boolean | null) {
         if (value !== false) {
             this.setCurrentIcon(value);
         }
@@ -48,11 +53,7 @@ export class TuiPrimitiveCheckboxComponent {
         this.value = value;
     }
 
-    icon: PolymorpheusContent<TuiContext<TuiSizeL>> = this.options.icons.checked;
-
-    value: boolean | null = false;
-
-    get appearance(): string {
+    public get appearance(): string {
         switch (this.value) {
             case false:
                 return this.options.appearances.unchecked;
@@ -63,7 +64,7 @@ export class TuiPrimitiveCheckboxComponent {
         }
     }
 
-    get empty(): boolean {
+    public get empty(): boolean {
         return this.value === false;
     }
 

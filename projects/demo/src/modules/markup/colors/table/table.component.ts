@@ -19,16 +19,16 @@ export class TableComponent {
     private readonly win = inject(WINDOW);
     private readonly styles = this.win.getComputedStyle(this.doc.documentElement);
 
+    protected readonly theme$ = this.themeService.pipe(delay(1));
+
     @Input()
-    colors: readonly Color[] = [];
+    public colors: readonly Color[] = [];
 
     @Input()
     @HostBinding('class._dark')
-    dark = false;
+    public dark = false;
 
-    readonly theme$ = this.themeService.pipe(delay(1));
-
-    getValue(variable: string): string {
+    public getValue(variable: string): string {
         return this.styles.getPropertyValue(variable);
     }
 }

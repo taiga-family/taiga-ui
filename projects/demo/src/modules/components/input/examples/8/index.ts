@@ -8,13 +8,13 @@ import {map, Observable, of, startWith, switchMap} from 'rxjs';
 
 class User {
     constructor(
-        readonly firstName: string,
-        readonly lastName: string,
-        readonly avatarUrl: string | null = null,
-        readonly disabled = false,
+        public readonly firstName: string,
+        public readonly lastName: string,
+        public readonly avatarUrl: string | null = null,
+        public readonly disabled = false,
     ) {}
 
-    toString(): string {
+    public toString(): string {
         return `${this.firstName} ${this.lastName}`;
     }
 }
@@ -33,12 +33,13 @@ const DATA: readonly User[] = [
     changeDetection,
 })
 export class TuiInputExample8 {
-    readonly control = new FormControl('');
+    protected firstName = '';
 
-    firstName = '';
-    lastName = '';
+    protected lastName = '';
 
-    readonly items$ = this.control.valueChanges.pipe(
+    public readonly control = new FormControl('');
+
+    public readonly items$ = this.control.valueChanges.pipe(
         startWith(''),
         switchMap(value =>
             this.request(value ?? '').pipe(
@@ -56,7 +57,7 @@ export class TuiInputExample8 {
         startWith(DATA),
     );
 
-    onClick({lastName, firstName}: User): void {
+    public onClick({lastName, firstName}: User): void {
         this.lastName = lastName;
         this.firstName = firstName;
     }

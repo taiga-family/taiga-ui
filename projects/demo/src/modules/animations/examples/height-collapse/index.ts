@@ -13,13 +13,13 @@ import {TuiDurationOptions, tuiHeightCollapse} from '@taiga-ui/core';
     animations: [tuiHeightCollapse],
 })
 export class TuiHeightCollapseExample {
-    @Input()
-    speed = 0;
+    protected isOpen = false;
 
-    isOpen = false;
+    @Input()
+    public speed = 0;
 
     @tuiPure
-    getAnimation(duration: number): TuiDurationOptions {
+    public getAnimation(duration: number): TuiDurationOptions {
         return {value: '', params: {duration}};
     }
 }

@@ -4,7 +4,7 @@ import {Pipe, PipeTransform} from '@angular/core';
     name: 'tuiInitials',
 })
 export class TuiInitialsPipe implements PipeTransform {
-    transform(text: string): string {
+    public transform(text: string): string {
         return text
             .toUpperCase()
             .split(' ')

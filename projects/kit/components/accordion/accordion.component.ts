@@ -27,16 +27,16 @@ import {TuiAccordionItemComponent} from './accordion-item/accordion-item.compone
 export class TuiAccordionComponent implements AfterContentInit {
     private readonly destroy$ = inject(TuiDestroyService, {self: true});
 
-    @Input()
-    closeOthers = true;
-
-    @Input()
-    rounded = true;
-
     @ContentChildren(TuiAccordionItemComponent)
-    readonly accordionItems: QueryList<TuiAccordionItemComponent> = EMPTY_QUERY;
+    protected readonly accordionItems: QueryList<TuiAccordionItemComponent> = EMPTY_QUERY;
 
-    ngAfterContentInit(): void {
+    @Input()
+    public closeOthers = true;
+
+    @Input()
+    public rounded = true;
+
+    public ngAfterContentInit(): void {
         const {accordionItems} = this;
         const rows$ = tuiQueryListChanges(accordionItems);
         const newOpenRow$ = rows$.pipe(

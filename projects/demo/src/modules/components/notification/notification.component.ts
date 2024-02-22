@@ -9,29 +9,29 @@ import {TuiNotification} from '@taiga-ui/core';
     changeDetection,
 })
 export class ExampleTuiNotificationComponent {
-    readonly exampleModule = import('./examples/import/import-module.md?raw');
-    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
-    readonly exampleOptions = import('./examples/import/define-options.md?raw');
+    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
+    protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    protected readonly exampleOptions = import('./examples/import/define-options.md?raw');
 
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
     };
 
-    readonly example2: TuiDocExample = {
+    protected readonly example2: TuiDocExample = {
         TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
     };
 
-    readonly example3: TuiDocExample = {
+    protected readonly example3: TuiDocExample = {
         TypeScript: import('./examples/3/index.ts?raw'),
         HTML: import('./examples/3/index.html?raw'),
         LESS: import('./examples/3/index.less?raw'),
     };
 
-    hasIcon = true;
+    protected hasIcon = true;
 
-    readonly statusVariants: TuiNotification[] = [
+    protected readonly statusVariants: TuiNotification[] = [
         'info',
         'error',
         'warning',
@@ -39,5 +39,5 @@ export class ExampleTuiNotificationComponent {
         'neutral',
     ];
 
-    status = this.statusVariants[0];
+    protected status = this.statusVariants[0];
 }

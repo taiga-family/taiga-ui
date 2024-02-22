@@ -17,7 +17,7 @@ import {tuiCreateUnfinishedValidator} from './unfinished.validator';
 export class TuiUnfinishedValidatorDirective implements Validator {
     private readonly injector = inject(INJECTOR);
 
-    readonly validate = tuiCreateUnfinishedValidator(
+    public readonly validate = tuiCreateUnfinishedValidator(
         () => this.injector.get(TUI_FOCUSABLE_ITEM_ACCESSOR),
         this.message || '',
     );

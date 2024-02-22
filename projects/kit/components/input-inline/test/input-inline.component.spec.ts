@@ -14,9 +14,9 @@ describe('InputInline', () => {
     })
     class TestComponent {
         @ViewChild(TuiInputInlineComponent, {static: true})
-        component!: TuiInputInlineComponent;
+        protected component!: TuiInputInlineComponent;
 
-        control = new FormControl('');
+        protected control = new FormControl('');
     }
 
     let fixture: ComponentFixture<TestComponent>;

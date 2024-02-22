@@ -13,8 +13,8 @@ import {map, of, startWith, takeWhile, timer} from 'rxjs';
 export class TuiProgressCircleExample1 {
     private readonly isE2E = inject(TUI_IS_E2E);
 
-    readonly max = 100;
-    readonly value$ = this.isE2E
+    protected readonly max = 100;
+    protected readonly value$ = this.isE2E
         ? of(30)
         : timer(300, 200).pipe(
               map(i => i + 30),

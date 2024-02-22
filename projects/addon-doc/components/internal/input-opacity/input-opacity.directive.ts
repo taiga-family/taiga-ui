@@ -9,7 +9,7 @@ export class TuiInputOpacityDirective {
     private readonly renderer = inject(Renderer2);
 
     @Input()
-    set tuiInputOpacity(opacity: number) {
+    public set tuiInputOpacity(opacity: number) {
         const {nativeFocusableElement} = this.focusable;
 
         if (nativeFocusableElement) {

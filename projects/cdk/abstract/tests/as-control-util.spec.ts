@@ -13,7 +13,7 @@ describe('tuiAsControl', () => {
 
     it('implement control interface', () => {
         class MyControlComponent extends AbstractTuiControl<string> {
-            focused = false;
+            protected focused = false;
 
             protected getFallbackValue(): string {
                 return '';

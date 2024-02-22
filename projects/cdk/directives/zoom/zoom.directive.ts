@@ -10,5 +10,5 @@ import {TuiZoomService} from '@taiga-ui/cdk/services';
     },
 })
 export class TuiZoomDirective {
-    readonly tuiZoom = inject(TuiZoomService);
+    protected readonly tuiZoom = inject(TuiZoomService);
 }

@@ -23,45 +23,45 @@ import {TUI_SPIN_ICONS, TUI_SPIN_TEXTS} from '@taiga-ui/core/tokens';
 export class TuiPrimitiveSpinButtonComponent extends AbstractTuiInteractive {
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
 
-    @Input()
-    disabled = false;
+    protected readonly icons = inject(TUI_SPIN_ICONS);
+    protected readonly spinTexts$ = inject(TUI_SPIN_TEXTS);
 
     @Input()
-    leftDisabled = false;
+    public disabled = false;
 
     @Input()
-    rightDisabled = false;
+    public leftDisabled = false;
+
+    @Input()
+    public rightDisabled = false;
 
     @Output()
-    readonly leftClick = new EventEmitter<void>();
+    public readonly leftClick = new EventEmitter<void>();
 
     @Output()
-    readonly rightClick = new EventEmitter<void>();
+    public readonly rightClick = new EventEmitter<void>();
 
-    readonly icons = inject(TUI_SPIN_ICONS);
-    readonly spinTexts$ = inject(TUI_SPIN_TEXTS);
-
-    get focused(): boolean {
+    public get focused(): boolean {
         return tuiIsNativeFocusedIn(this.el);
     }
 
-    get leftComputedDisabled(): boolean {
+    public get leftComputedDisabled(): boolean {
         return this.computedDisabled || this.leftDisabled;
     }
 
-    get rightComputedDisabled(): boolean {
+    public get rightComputedDisabled(): boolean {
         return this.computedDisabled || this.rightDisabled;
     }
 
     @HostListener('keydown.arrowLeft.prevent')
-    onLeftClick(): void {
+    public onLeftClick(): void {
         if (!this.leftComputedDisabled) {
             this.leftClick.emit();
         }
     }
 
     @HostListener('keydown.arrowRight.prevent')
-    onRightClick(): void {
+    public onRightClick(): void {
         if (!this.rightComputedDisabled) {
             this.rightClick.emit();
         }
@@ -69,11 +69,11 @@ export class TuiPrimitiveSpinButtonComponent extends AbstractTuiInteractive {
 
     @HostListener('focusin', ['true'])
     @HostListener('focusout', ['false'])
-    onFocused(focused: boolean): void {
+    public onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
 
-    onFocusVisible(focusVisible: boolean): void {
+    public onFocusVisible(focusVisible: boolean): void {
         this.updateFocusVisible(focusVisible);
     }
 }

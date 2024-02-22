@@ -8,7 +8,7 @@ export class ExampleDateTimeTransformer extends AbstractTuiValueTransformer<
 > {
     private readonly separator = ', ';
 
-    fromControlValue(controlValue: string): [TuiDay | null, TuiTime | null] {
+    public fromControlValue(controlValue: string): [TuiDay | null, TuiTime | null] {
         const [day, time = ''] = controlValue.split(this.separator);
 
         return day
@@ -16,7 +16,7 @@ export class ExampleDateTimeTransformer extends AbstractTuiValueTransformer<
             : [null, null];
     }
 
-    toControlValue([day, time]: [TuiDay | null, TuiTime | null]): string {
+    public toControlValue([day, time]: [TuiDay | null, TuiTime | null]): string {
         return day
             ? day.toString() + (time ? `${this.separator}${time.toString()}` : '')
             : '';

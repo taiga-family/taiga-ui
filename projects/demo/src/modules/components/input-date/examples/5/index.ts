@@ -11,6 +11,6 @@ import {TuiDay} from '@taiga-ui/cdk';
     changeDetection,
 })
 export class TuiInputDateExample5 {
-    readonly nativeDateControl = new FormControl(new Date(2022, 0, 26));
-    readonly defaultControl = new FormControl(new TuiDay(2022, 0, 26));
+    protected readonly nativeDateControl = new FormControl(new Date(2022, 0, 26));
+    protected readonly defaultControl = new FormControl(new TuiDay(2022, 0, 26));
 }

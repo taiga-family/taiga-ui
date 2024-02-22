@@ -10,7 +10,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiTilesExample2 {
-    items: readonly string[] = [
+    protected items: readonly string[] = [
         'John Cleese',
         'Eric Idle',
         'Michael Palin',
@@ -19,5 +19,5 @@ export class TuiTilesExample2 {
         'Graham Chapman',
     ];
 
-    order = new Map();
+    protected order = new Map();
 }

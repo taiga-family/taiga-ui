@@ -16,25 +16,24 @@ import {TUI_CLOSE_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiPushComponent {
-    @Input()
-    heading = '';
+    protected readonly isString = tuiIsString;
+    protected readonly closeWord$ = inject(TUI_CLOSE_WORD);
+    protected readonly icons = inject(TUI_COMMON_ICONS);
 
     @Input()
-    type = '';
+    public heading = '';
 
     @Input()
-    timestamp: number | string = '';
+    public type = '';
+
+    @Input()
+    public timestamp: number | string = '';
 
     @Output()
     // eslint-disable-next-line @angular-eslint/no-output-native
-    readonly close = new EventEmitter<void>();
+    public readonly close = new EventEmitter<void>();
 
-    readonly isString = tuiIsString;
-
-    readonly closeWord$ = inject(TUI_CLOSE_WORD);
-    readonly icons = inject(TUI_COMMON_ICONS);
-
-    get closeable(): boolean {
+    public get closeable(): boolean {
         return tuiIsObserved(this.close);
     }
 }

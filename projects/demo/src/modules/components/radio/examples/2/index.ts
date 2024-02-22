@@ -10,7 +10,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiRadioExample2 {
-    testForm = new FormGroup({
+    protected testForm = new FormGroup({
         testValue1: new FormControl('One'),
         testValue2: new FormControl({value: 'One', disabled: true}),
     });

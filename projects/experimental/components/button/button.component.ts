@@ -23,21 +23,21 @@ export class TuiButtonComponent {
     private readonly options = inject(TUI_BUTTON_OPTIONS);
 
     @Input()
-    size = this.options.size;
+    public size = this.options.size;
 
     @Input()
-    loading: boolean | string | null = false;
+    public loading: boolean | string | null = false;
 
-    get loaderSize(): TuiSizeS {
+    public get loaderSize(): TuiSizeS {
         return tuiSizeBigger(this.size) ? 'm' : 's';
     }
 
-    get label(): string {
+    public get label(): string {
         return tuiIsString(this.loading) ? this.loading : '';
     }
 
     @HostListener('click.capture', ['$event'])
-    onClick(event: MouseEvent): void {
+    public onClick(event: MouseEvent): void {
         if (this.loading) {
             event.stopPropagation();
         }

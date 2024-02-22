@@ -32,38 +32,40 @@ export class TuiTbodyComponent<T extends Partial<Record<keyof T, any>>> {
     private readonly pipe = inject(TuiTableSortPipe<T>);
     private readonly options = inject(TUI_TABLE_OPTIONS);
 
-    @Input()
-    data: readonly T[] = [];
+    @ContentChild(forwardRef(() => TuiRowDirective))
+    protected readonly row?: TuiRowDirective<T>;
+
+    protected readonly arrowOptions = inject(TUI_ARROW_OPTIONS);
+    protected readonly table = inject<TuiTableDirective<T>>(
+        forwardRef(() => TuiTableDirective),
+    );
 
     @Input()
-    heading: PolymorpheusContent;
+    public data: readonly T[] = [];
 
     @Input()
-    open = this.options.open;
+    public heading: PolymorpheusContent;
+
+    @Input()
+    public open = this.options.open;
 
     @Output()
-    readonly openChange = new EventEmitter<boolean>();
-
-    @ContentChild(forwardRef(() => TuiRowDirective))
-    readonly row?: TuiRowDirective<T>;
+    public readonly openChange = new EventEmitter<boolean>();
 
     @ContentChildren(forwardRef(() => TuiTrComponent))
-    readonly rows: QueryList<TuiTrComponent<T>> = EMPTY_QUERY;
+    public readonly rows: QueryList<TuiTrComponent<T>> = EMPTY_QUERY;
 
-    readonly arrowOptions = inject(TUI_ARROW_OPTIONS);
-    readonly table = inject<TuiTableDirective<T>>(forwardRef(() => TuiTableDirective));
-
-    get sorted(): readonly T[] {
+    public get sorted(): readonly T[] {
         return this.pipe.transform(this.data);
     }
 
-    readonly toContext = (
-        $implicit: T,
-        index: number,
-    ): {$implicit: T; index: number} => ({$implicit, index});
-
-    onClick(): void {
+    public onClick(): void {
         this.open = !this.open;
         this.openChange.emit(this.open);
     }
+
+    protected readonly toContext = (
+        $implicit: T,
+        index: number,
+    ): {$implicit: T; index: number} => ({$implicit, index});
 }

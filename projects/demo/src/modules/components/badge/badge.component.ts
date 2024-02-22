@@ -9,42 +9,42 @@ import {TuiSizeS, TuiSizeXL} from '@taiga-ui/core';
     changeDetection,
 })
 export class ExampleTuiBadgeComponent {
-    readonly exampleModule: TuiRawLoaderContent = import(
+    protected readonly exampleModule: TuiRawLoaderContent = import(
         './examples/import/import-module.md?raw'
     );
 
-    readonly exampleHtml: TuiRawLoaderContent = import(
+    protected readonly exampleHtml: TuiRawLoaderContent = import(
         './examples/import/insert-template.md?raw'
     );
 
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         HTML: import('./examples/1/index.html?raw'),
     };
 
-    readonly example2: TuiDocExample = {
+    protected readonly example2: TuiDocExample = {
         HTML: import('./examples/2/index.html?raw'),
     };
 
-    readonly example3: TuiDocExample = {
+    protected readonly example3: TuiDocExample = {
         HTML: import('./examples/3/index.html?raw'),
     };
 
-    readonly example4: TuiDocExample = {
+    protected readonly example4: TuiDocExample = {
         HTML: import('./examples/4/index.html?raw'),
         LESS: import('./examples/4/index.less?raw'),
     };
 
-    readonly example5: TuiDocExample = {
+    protected readonly example5: TuiDocExample = {
         HTML: import('./examples/5/index.html?raw'),
         LESS: import('./examples/5/index.less?raw'),
     };
 
-    readonly example6: TuiDocExample = {
+    protected readonly example6: TuiDocExample = {
         TypeScript: import('./examples/6/index.ts?raw'),
         HTML: import('./examples/6/index.html?raw'),
     };
 
-    readonly appearanceVariants = [
+    protected readonly appearanceVariants = [
         '',
         'accent',
         'primary',
@@ -56,14 +56,19 @@ export class ExampleTuiBadgeComponent {
         'neutral',
     ];
 
-    appearance = this.appearanceVariants[0];
+    protected appearance = this.appearanceVariants[0];
 
-    readonly sizeVariants: ReadonlyArray<TuiSizeS | TuiSizeXL> = ['s', 'm', 'l', 'xl'];
+    protected readonly sizeVariants: ReadonlyArray<TuiSizeS | TuiSizeXL> = [
+        's',
+        'm',
+        'l',
+        'xl',
+    ];
 
-    size: TuiSizeS | TuiSizeXL = this.sizeVariants[1];
+    protected size: TuiSizeS | TuiSizeXL = this.sizeVariants[1];
 
-    contentTypeVariants = ['text', 'with icon', 'image'];
-    contentType = this.contentTypeVariants[0];
+    protected contentTypeVariants = ['text', 'with icon', 'image'];
+    protected contentType = this.contentTypeVariants[0];
 
-    dot = false;
+    protected dot = false;
 }

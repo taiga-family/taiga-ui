@@ -9,6 +9,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiTablePaginationExample1 {
-    page = 3;
-    size = 10;
+    protected page = 3;
+    protected size = 10;
 }

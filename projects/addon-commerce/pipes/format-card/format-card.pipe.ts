@@ -2,7 +2,7 @@ import {Pipe, PipeTransform} from '@angular/core';
 
 @Pipe({name: 'tuiFormatCard'})
 export class TuiFormatCardPipe implements PipeTransform {
-    transform(value: string | null = '', cardPrefilled = false): string {
+    public transform(value: string | null = '', cardPrefilled = false): string {
         return value && !cardPrefilled
             ? value
                   .split('')

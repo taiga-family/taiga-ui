@@ -12,25 +12,21 @@ import {TuiInputComponent} from '@taiga-ui/kit';
     changeDetection,
 })
 export class TuiActiveZoneExample1 {
-    readonly control = new FormControl('');
+    protected childActive = false;
+    protected parentActive = false;
+    protected items = [1, 2, 3];
 
-    childActive = false;
+    public readonly control = new FormControl('');
 
-    parentActive = false;
-
-    items = [1, 2, 3];
-
-    onParentActiveZone(active: boolean): void {
+    public onParentActiveZone(active: boolean): void {
         this.parentActive = active;
     }
 
-    onChildActiveZone(active: boolean): void {
+    public onChildActiveZone(active: boolean): void {
         this.childActive = active;
     }
 
-    onClick({nativeFocusableElement}: TuiInputComponent): void {
-        if (nativeFocusableElement) {
-            nativeFocusableElement.focus();
-        }
+    public onClick({nativeFocusableElement}: TuiInputComponent): void {
+        nativeFocusableElement?.focus();
     }
 }

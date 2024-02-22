@@ -2,8 +2,8 @@ import {ExistingProvider, FactoryProvider, SkipSelf, Type} from '@angular/core';
 
 // TODO: Rename to getBoundingClientRect to match the DOM API
 export abstract class TuiRectAccessor {
-    abstract readonly type: string;
-    abstract getClientRect(): DOMRect;
+    public abstract readonly type: string;
+    public abstract getClientRect(): DOMRect;
 }
 
 export function tuiRectAccessorFor(

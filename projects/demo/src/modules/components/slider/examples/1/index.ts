@@ -10,6 +10,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiSliderExample1 {
-    value = 4;
-    formControl = new FormControl(60);
+    protected value = 4;
+    protected formControl = new FormControl(60);
 }

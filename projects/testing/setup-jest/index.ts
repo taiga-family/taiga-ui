@@ -107,22 +107,22 @@ Object.defineProperty(global.window, 'getComputedStyle', {
 global.DataTransfer = class {
     private readonly data = new Map();
 
-    setData(format: string, data: string): void {
+    public setData(format: string, data: string): void {
         this.data.set(format, data);
     }
 
-    getData(format: string): string {
+    public getData(format: string): string {
         return this.data.get(format);
     }
 } as unknown as typeof DataTransfer;
 
 class TransferMockEvent {
-    dataTransfer: DataTransfer;
-    relatedTarget: EventTarget;
+    protected dataTransfer: DataTransfer;
+    protected relatedTarget: EventTarget;
 
     constructor(
-        readonly type: string,
-        readonly options: {
+        protected readonly type: string,
+        protected readonly options: {
             clipboardData: DataTransfer;
             relatedTarget: EventTarget;
         },

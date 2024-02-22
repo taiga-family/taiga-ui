@@ -13,28 +13,28 @@ import {tuiPure} from '@taiga-ui/cdk';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiDocSourceCodeComponent {
-    @Input()
-    header = '';
+    protected readonly icons = inject(TUI_DOC_ICONS);
+    protected readonly sourceCode = inject(TUI_DOC_SOURCE_CODE);
+    protected readonly text = inject(TUI_DOC_SOURCE_CODE_TEXT);
 
     @Input()
-    package = '';
+    public header = '';
 
     @Input()
-    type = '';
+    public package = '';
 
     @Input()
-    path = '';
+    public type = '';
 
-    readonly icons = inject(TUI_DOC_ICONS);
-    readonly sourceCode = inject(TUI_DOC_SOURCE_CODE);
-    readonly text = inject(TUI_DOC_SOURCE_CODE_TEXT);
+    @Input()
+    public path = '';
 
-    get pathOptions(): TuiDocSourceCodePathOptions {
+    public get pathOptions(): TuiDocSourceCodePathOptions {
         return this.getPathOptions(this.header, this.package, this.type, this.path);
     }
 
     @tuiPure
-    pathIsUrl(path: string): boolean {
+    public pathIsUrl(path: string): boolean {
         return path.startsWith('http');
     }
 

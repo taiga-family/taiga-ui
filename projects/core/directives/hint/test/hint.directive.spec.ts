@@ -37,7 +37,7 @@ describe('Hint', () => {
         ],
     })
     class TestComponent {
-        hint: Hint = 'Tooltip text';
+        protected hint: Hint = 'Tooltip text';
     }
 
     let fixture: ComponentFixture<TestComponent>;

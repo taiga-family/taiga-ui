@@ -20,7 +20,7 @@ export class TuiSheetCloseDirective {
 
     @Output()
     // eslint-disable-next-line @angular-eslint/no-output-native
-    readonly close: Observable<unknown> = merge(
+    public readonly close: Observable<unknown> = merge(
         tuiTypedFromEvent(this.el, TUI_SHEET_CLOSE),
         this.dragged$.pipe(
             tuiIfMap(() => this.scroll$.pipe(startWith(this.el.scrollTop)), tuiIsFalsy),

@@ -15,5 +15,5 @@ export class TuiProgressSegmentedDirective {
     protected readonly nothing = tuiWithStyles(TuiProgressSegmentedComponent);
 
     @Input()
-    segments = 1;
+    public segments = 1;
 }

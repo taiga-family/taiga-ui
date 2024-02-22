@@ -11,5 +11,5 @@ import {TUI_ARROW} from '@taiga-ui/kit';
     changeDetection,
 })
 export class TuiButtonExample3 {
-    readonly arrow = TUI_ARROW;
+    protected readonly arrow = TUI_ARROW;
 }

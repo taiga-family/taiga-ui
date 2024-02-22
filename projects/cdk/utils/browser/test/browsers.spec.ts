@@ -18,7 +18,7 @@ describe('Browsers', () => {
                         defaultView: {
                             safari: {
                                 pushNotification: new (class {
-                                    toString(): string {
+                                    public toString(): string {
                                         return '[object SafariRemoteNotification]';
                                     }
                                 })(),

@@ -47,20 +47,20 @@ export class TuiStepperComponent {
     private readonly speed = inject(TUI_ANIMATIONS_SPEED);
     private readonly destroy$ = inject(TuiDestroyService, {self: true});
 
+    protected activeItemIndex = 0;
+
     @Input()
     @HostBinding('attr.data-orientation')
-    orientation: TuiOrientation = 'horizontal';
+    public orientation: TuiOrientation = 'horizontal';
 
     @Input('activeItemIndex')
-    set activeIndex(index: number) {
+    public set activeIndex(index: number) {
         this.activeItemIndex = index;
         this.scrollIntoView(index);
     }
 
     @Output()
-    readonly activeItemIndexChange = new EventEmitter<number>();
-
-    activeItemIndex = 0;
+    public readonly activeItemIndexChange = new EventEmitter<number>();
 
     constructor() {
         this.resize$
@@ -69,7 +69,7 @@ export class TuiStepperComponent {
     }
 
     @tuiPure
-    get changes$(): Observable<unknown> {
+    public get changes$(): Observable<unknown> {
         // Delay is required to trigger change detection after steps are rendered,
         // so they can update their "active" status
         return tuiQueryListChanges(this.steps).pipe(delay(0));
@@ -77,7 +77,7 @@ export class TuiStepperComponent {
 
     @HostListener('keydown.arrowRight', ['$event', '1'])
     @HostListener('keydown.arrowLeft', ['$event', '-1'])
-    onHorizontal(event: Event, step: number): void {
+    public onHorizontal(event: Event, step: number): void {
         if (this.orientation !== 'horizontal' || !event.target) {
             return;
         }
@@ -88,7 +88,7 @@ export class TuiStepperComponent {
 
     @HostListener('keydown.arrowDown', ['$event', '1'])
     @HostListener('keydown.arrowUp', ['$event', '-1'])
-    onVertical(event: Event, step: number): void {
+    public onVertical(event: Event, step: number): void {
         if (this.orientation !== 'vertical' || !event.target) {
             return;
         }
@@ -97,17 +97,17 @@ export class TuiStepperComponent {
         this.moveFocus(event.target, step);
     }
 
-    indexOf(step: HTMLElement): number {
+    public indexOf(step: HTMLElement): number {
         return tuiGetOriginalArrayFromQueryList(this.steps).findIndex(
             ({nativeElement}) => nativeElement === step,
         );
     }
 
-    isActive(index: number): boolean {
+    public isActive(index: number): boolean {
         return index === this.activeItemIndex;
     }
 
-    activate(index: number): void {
+    public activate(index: number): void {
         if (this.activeItemIndex === index) {
             return;
         }

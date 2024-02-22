@@ -31,24 +31,24 @@ export class IconsGroupComponent implements OnInit {
     private readonly destroy$ = inject(TuiDestroyService, {self: true});
 
     @ContentChild(IconsGroupDirective)
-    readonly iconGroup?: IconsGroupDirective;
+    protected readonly iconGroup?: IconsGroupDirective;
 
-    @Input()
-    icons: Record<string, readonly string[]> = {};
+    protected matcher = TUI_DEFAULT_MATCHER;
 
-    @Input()
-    color: string | null = null;
-
-    matcher = TUI_DEFAULT_MATCHER;
-
-    control = new FormControl<string>('');
-
-    search$: Observable<string> = this.route.queryParams.pipe(
+    protected search$: Observable<string> = this.route.queryParams.pipe(
         map(queryParams => queryParams['search'] ?? ''),
         distinctUntilChanged(),
     );
 
-    ngOnInit(): void {
+    @Input()
+    public icons: Record<string, readonly string[]> = {};
+
+    @Input()
+    public color: string | null = null;
+
+    public control = new FormControl<string>('');
+
+    public ngOnInit(): void {
         this.control.patchValue(this.route.snapshot.queryParams['search'] ?? '');
         this.control.valueChanges
             .pipe(
@@ -62,7 +62,7 @@ export class IconsGroupComponent implements OnInit {
             });
     }
 
-    copyPath = (name: string): void => {
+    protected copyPath = (name: string): void => {
         this.clipboard.copy(name);
         this.alerts.open(`The name ${name} copied`, {status: 'success'}).subscribe();
     };

@@ -10,5 +10,5 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiPaginationExample2 {
-    activePadding = 2;
+    protected activePadding = 2;
 }

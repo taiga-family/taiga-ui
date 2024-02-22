@@ -14,25 +14,25 @@ export class DialogExampleComponent {
     private readonly context =
         inject<TuiDialogContext<number, number>>(POLYMORPHEUS_CONTEXT);
 
-    value: number | null = null;
-    name = '';
-    items = [10, 50, 100];
+    protected value: number | null = null;
+    protected name = '';
+    protected items = [10, 50, 100];
 
-    get hasValue(): boolean {
+    public get hasValue(): boolean {
         return this.value !== null;
     }
 
-    get data(): number {
+    public get data(): number {
         return this.context.data;
     }
 
-    submit(): void {
+    public submit(): void {
         if (this.value !== null) {
             this.context.completeWith(this.value);
         }
     }
 
-    showDialog(content: TemplateRef<TuiDialogContext>): void {
+    public showDialog(content: TemplateRef<TuiDialogContext>): void {
         this.dialogs.open(content, {dismissible: true}).subscribe();
     }
 }

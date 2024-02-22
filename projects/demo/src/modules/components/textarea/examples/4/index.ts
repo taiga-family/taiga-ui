@@ -32,16 +32,16 @@ export function maxLengthMessageFactory(context: {requiredLength: string}): stri
     ],
 })
 export class TuiTextareaExample4 implements AfterViewInit {
-    readonly maxLength = 97;
+    protected readonly maxLength = 97;
 
-    readonly testForm = new FormGroup({
+    protected readonly testForm = new FormGroup({
         testValue1: new FormControl(LONG_TEXT_EXAMPLE.trim(), [
             Validators.required,
             Validators.maxLength(this.maxLength),
         ]),
     });
 
-    ngAfterViewInit(): void {
+    public ngAfterViewInit(): void {
         tuiMarkControlAsTouchedAndValidate(this.testForm);
     }
 }

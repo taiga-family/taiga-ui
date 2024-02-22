@@ -35,69 +35,69 @@ export class TuiPrimitiveYearPickerComponent {
     private readonly currentYear = TuiMonth.currentLocal().year;
 
     @Input()
-    value: TuiDayRange | TuiMonthRange | TuiYear | readonly TuiDay[] | null = null;
+    public value: TuiDayRange | TuiMonthRange | TuiYear | readonly TuiDay[] | null = null;
 
     @Input()
-    initialItem: TuiYear = TuiMonth.currentLocal();
+    public initialItem: TuiYear = TuiMonth.currentLocal();
 
     @Input()
-    min: TuiYear | null = TUI_FIRST_DAY;
+    public min: TuiYear | null = TUI_FIRST_DAY;
 
     @Input()
-    max: TuiYear | null = TUI_LAST_DAY;
+    public max: TuiYear | null = TUI_LAST_DAY;
 
     @Input()
-    disabledItemHandler: TuiBooleanHandler<number> = ALWAYS_FALSE_HANDLER;
+    public disabledItemHandler: TuiBooleanHandler<number> = ALWAYS_FALSE_HANDLER;
 
     @Output()
-    readonly yearClick = new EventEmitter<TuiYear>();
+    public readonly yearClick = new EventEmitter<TuiYear>();
 
-    get computedMin(): TuiYear {
+    public get computedMin(): TuiYear {
         return this.min ?? TUI_FIRST_DAY;
     }
 
-    get computedMax(): TuiYear {
+    public get computedMax(): TuiYear {
         return this.max ?? TUI_LAST_DAY;
     }
 
     @HostBinding('class._single')
-    get isSingle(): boolean {
+    public get isSingle(): boolean {
         return this.isRange(this.value) && this.value.from.yearSame(this.value.to);
     }
 
-    get rows(): number {
+    public get rows(): number {
         return Math.ceil((this.calculatedMax - this.calculatedMin) / ITEMS_IN_ROW);
     }
 
-    get calculatedMin(): number {
+    public get calculatedMin(): number {
         const initial = this.initialItem.year - LIMIT;
         const min = this.computedMin;
 
         return min.year > initial ? min.year : initial;
     }
 
-    get calculatedMax(): number {
+    public get calculatedMax(): number {
         const initial = this.initialItem.year + LIMIT;
         const max = this.computedMax;
 
         return max.year < initial ? max.year + 1 : initial;
     }
 
-    isRange(
+    public isRange(
         item: TuiMonthRange | TuiYear | readonly TuiDay[] | null,
     ): item is TuiMonthRange {
         return item instanceof TuiMonthRange;
     }
 
-    scrollItemIntoView(item: number): boolean {
+    public scrollItemIntoView(item: number): boolean {
         return this.initialItem.year === item;
     }
 
-    getItem(rowIndex: number, colIndex: number): number {
+    public getItem(rowIndex: number, colIndex: number): number {
         return rowIndex * ITEMS_IN_ROW + colIndex + this.calculatedMin;
     }
 
-    getItemState(item: number): TuiInteractiveState | null {
+    public getItemState(item: number): TuiInteractiveState | null {
         const {disabledItemHandler, pressedItem, hoveredItem} = this;
         const max = this.computedMax;
 
@@ -119,7 +119,7 @@ export class TuiPrimitiveYearPickerComponent {
         return null;
     }
 
-    getItemRange(item: number): TuiRangeState | null {
+    public getItemRange(item: number): TuiRangeState | null {
         const {value, hoveredItem} = this;
 
         if (value === null) {
@@ -167,11 +167,11 @@ export class TuiPrimitiveYearPickerComponent {
             : null;
     }
 
-    itemIsToday(item: number): boolean {
+    public itemIsToday(item: number): boolean {
         return this.currentYear === item;
     }
 
-    itemIsInterval(item: number): boolean {
+    public itemIsInterval(item: number): boolean {
         const {value, hoveredItem} = this;
 
         if (value === null || !this.isRange(value)) {
@@ -193,15 +193,15 @@ export class TuiPrimitiveYearPickerComponent {
         );
     }
 
-    onItemHovered(hovered: boolean, item: number): void {
+    public onItemHovered(hovered: boolean, item: number): void {
         this.updateHoveredItem(hovered, item);
     }
 
-    onItemPressed(pressed: boolean, item: number): void {
+    public onItemPressed(pressed: boolean, item: number): void {
         this.updatePressedItem(pressed, item);
     }
 
-    onItemClick(item: number): void {
+    public onItemClick(item: number): void {
         this.yearClick.emit(new TuiYear(item));
     }
 

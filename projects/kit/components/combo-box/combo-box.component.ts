@@ -73,70 +73,70 @@ export class TuiComboBoxComponent<T>
     private readonly itemsHandlers = inject<TuiItemsHandlers<T>>(TUI_ITEMS_HANDLERS);
     private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
 
-    @Input()
-    stringify: TuiItemsHandlers<T>['stringify'] = this.itemsHandlers.stringify;
+    @ContentChild(TuiDataListDirective, {read: TemplateRef})
+    protected readonly datalist: PolymorpheusContent<TuiContext<TuiActiveZoneDirective>>;
+
+    protected open = false;
 
     @Input()
-    strictMatcher: TuiStringMatcher<T> | null = TUI_STRICT_MATCHER;
+    public stringify: TuiItemsHandlers<T>['stringify'] = this.itemsHandlers.stringify;
 
     @Input()
-    identityMatcher: TuiItemsHandlers<T>['identityMatcher'] =
+    public strictMatcher: TuiStringMatcher<T> | null = TUI_STRICT_MATCHER;
+
+    @Input()
+    public identityMatcher: TuiItemsHandlers<T>['identityMatcher'] =
         this.itemsHandlers.identityMatcher;
 
     @Input()
-    valueContent: PolymorpheusContent<TuiValueContentContext<T>>;
+    public valueContent: PolymorpheusContent<TuiValueContentContext<T>>;
 
     @Input()
-    strict = true;
+    public strict = true;
 
     @Input()
-    search: string | null = null;
+    public search: string | null = null;
 
     @Output()
-    readonly searchChange = new EventEmitter<string | null>();
-
-    @ContentChild(TuiDataListDirective, {read: TemplateRef})
-    readonly datalist: PolymorpheusContent<TuiContext<TuiActiveZoneDirective>>;
-
-    open = false;
+    public readonly searchChange = new EventEmitter<string | null>();
 
     @HostBinding('attr.data-size')
-    get size(): TuiSizeL | TuiSizeS {
+    public get size(): TuiSizeL | TuiSizeS {
         return this.textfieldSize.size;
     }
 
-    get arrow(): PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeM | TuiSizeS>> {
+    public get arrow(): PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeM | TuiSizeS>> {
         return !this.interactive ? this.arrowMode.disabled : this.arrowMode.interactive;
     }
 
-    get nativeFocusableElement(): HTMLInputElement | null {
+    public get nativeFocusableElement(): HTMLInputElement | null {
         return this.textfield?.nativeFocusableElement ?? null;
     }
 
-    get focused(): boolean {
+    public get focused(): boolean {
         return (
             tuiIsNativeFocused(this.nativeFocusableElement) ||
             !!this.hostedDropdown?.focused
         );
     }
 
-    get nativeValue(): string {
+    public get nativeValue(): string {
         return this.value === null ? this.search || '' : this.stringify(this.value);
     }
 
-    get showValueTemplate(): boolean {
+    public get showValueTemplate(): boolean {
         return tuiIsPresent(this.value) && !this.focused;
     }
 
-    get computedContent(): PolymorpheusContent<TuiValueContentContext<T>> {
+    public get computedContent(): PolymorpheusContent<TuiValueContentContext<T>> {
         return this.valueContent || this.nativeValue;
     }
 
-    onActiveZone(active: boolean): void {
+    public onActiveZone(active: boolean): void {
         this.updateFocused(active);
     }
 
-    checkOption(option: T): void {
+    public checkOption(option: T): void {
         if (!this.isStrictMatch(option)) {
             return;
         }
@@ -145,7 +145,7 @@ export class TuiComboBoxComponent<T>
         this.updateSearch(null);
     }
 
-    handleOption(item: T): void {
+    public handleOption(item: T): void {
         this.focusInput();
         this.close();
         this.updateSearch(null);
@@ -156,7 +156,7 @@ export class TuiComboBoxComponent<T>
         }
     }
 
-    onFieldKeyDownEnter(event: Event): void {
+    public onFieldKeyDownEnter(event: Event): void {
         if (this.open) {
             event.preventDefault();
         }
@@ -172,7 +172,7 @@ export class TuiComboBoxComponent<T>
         this.close();
     }
 
-    onValueChange(value: string): void {
+    public onValueChange(value: string): void {
         this.updateSearch(value);
 
         const match = this.accessor?.getOptions().find(item => this.isStrictMatch(item));
@@ -195,11 +195,11 @@ export class TuiComboBoxComponent<T>
     }
 
     /** @deprecated use 'value' setter */
-    override updateValue(value: T | null): void {
+    public override updateValue(value: T | null): void {
         super.updateValue(value);
     }
 
-    toggle(): void {
+    public toggle(): void {
         this.hostedDropdown?.updateOpen(!this.open);
     }
 

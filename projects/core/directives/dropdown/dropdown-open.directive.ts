@@ -74,16 +74,7 @@ export class TuiDropdownOpenDirective implements OnChanges {
     private readonly driver = inject(TuiDropdownDriver);
     private readonly obscured = inject(TuiObscuredDirective);
 
-    @Input()
-    tuiDropdownEnabled = true;
-
-    @Input()
-    tuiDropdownOpen: boolean | '' = false;
-
-    @Output()
-    readonly tuiDropdownOpenChange = new EventEmitter<boolean>();
-
-    readonly sub = merge(
+    protected readonly sub = merge(
         this.obscured.tuiObscured.pipe(filter(Boolean)),
         inject(TuiActiveZoneDirective).tuiActiveZoneChange.pipe(filter(a => !a)),
         fromEvent(this.el, 'focusin').pipe(
@@ -94,12 +85,21 @@ export class TuiDropdownOpenDirective implements OnChanges {
         .pipe(takeUntil(inject(TuiDestroyService, {self: true})))
         .subscribe(() => this.toggle(false));
 
-    get dropdown(): HTMLElement | undefined {
+    @Input()
+    public tuiDropdownEnabled = true;
+
+    @Input()
+    public tuiDropdownOpen: boolean | '' = false;
+
+    @Output()
+    public readonly tuiDropdownOpenChange = new EventEmitter<boolean>();
+
+    public get dropdown(): HTMLElement | undefined {
         return this.directive?.dropdownBoxRef?.location.nativeElement;
     }
 
     @HostListener('click', ['$event.target', '$event.defaultPrevented'])
-    onClick(target: HTMLElement, prevented: boolean): void {
+    public onClick(target: HTMLElement, prevented: boolean): void {
         if (!this.editable && !prevented && this.host.contains(target)) {
             this.update(!this.tuiDropdownOpen);
         }
@@ -107,7 +107,7 @@ export class TuiDropdownOpenDirective implements OnChanges {
 
     @HostListener('keydown.arrowDown', ['$event', 'false'])
     @HostListener('keydown.arrowUp', ['$event', 'true'])
-    onArrow(event: KeyboardEvent, up: boolean): void {
+    public onArrow(event: KeyboardEvent, up: boolean): void {
         if (!tuiIsElement(event.target) || !this.host.contains(event.target)) {
             return;
         }
@@ -118,13 +118,13 @@ export class TuiDropdownOpenDirective implements OnChanges {
 
     @shouldCall(shouldClose)
     @HostListener('document:keydown.silent.capture', ['$event'])
-    onEsc(event: Event): void {
+    public onEsc(event: Event): void {
         event.preventDefault();
         this.toggle(false);
     }
 
     @HostListener('document:keydown.silent', ['$event'])
-    onKeydown({key, target, defaultPrevented}: KeyboardEvent): void {
+    public onKeydown({key, target, defaultPrevented}: KeyboardEvent): void {
         if (
             defaultPrevented ||
             !tuiIsEditingKey(key) ||
@@ -140,11 +140,11 @@ export class TuiDropdownOpenDirective implements OnChanges {
         this.host.focus({preventScroll: true});
     }
 
-    ngOnChanges(): void {
+    public ngOnChanges(): void {
         this.drive();
     }
 
-    toggle(open: boolean): void {
+    public toggle(open: boolean): void {
         if (this.focused && !open) {
             this.host.focus({preventScroll: true});
         }

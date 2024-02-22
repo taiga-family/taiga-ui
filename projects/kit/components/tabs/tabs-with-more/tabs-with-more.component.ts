@@ -52,44 +52,45 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
     private readonly cdr = inject(ChangeDetectorRef);
     private maxIndex = Infinity;
 
-    @Input()
-    moreContent: PolymorpheusContent;
+    @ContentChildren(TuiItemDirective, {read: TemplateRef})
+    protected readonly items: QueryList<TemplateRef<Record<string, unknown>>> =
+        EMPTY_QUERY;
+
+    protected readonly moreWord$ = inject(TUI_MORE_WORD);
+    protected readonly arrowOptions = inject(TUI_ARROW_OPTIONS);
+
+    protected open = false;
 
     @Input()
-    dropdownContent: PolymorpheusContent<TuiContext<TuiActiveZoneDirective>>;
+    public moreContent: PolymorpheusContent;
+
+    @Input()
+    public dropdownContent: PolymorpheusContent<TuiContext<TuiActiveZoneDirective>>;
 
     @Input()
     @HostBinding('class._underline')
-    underline = this.options.underline;
+    public underline = this.options.underline;
 
     @Input('activeItemIndex')
-    set itemIndex(activeItemIndex: number) {
+    public set itemIndex(activeItemIndex: number) {
         this.activeItemIndex = activeItemIndex;
         this.maxIndex = this.getMaxIndex();
     }
 
     @Input()
-    itemsLimit = this.options.itemsLimit;
+    public itemsLimit = this.options.itemsLimit;
 
     @Output()
-    readonly activeItemIndexChange = new EventEmitter<number>();
+    public readonly activeItemIndexChange = new EventEmitter<number>();
 
-    @ContentChildren(TuiItemDirective, {read: TemplateRef})
-    readonly items: QueryList<TemplateRef<Record<string, unknown>>> = EMPTY_QUERY;
-
-    readonly moreWord$ = inject(TUI_MORE_WORD);
-    readonly arrowOptions = inject(TUI_ARROW_OPTIONS);
-
-    activeItemIndex = 0;
-
-    open = false;
+    public activeItemIndex = 0;
 
     // TODO: Improve performance
-    get tabs(): readonly HTMLElement[] {
+    public get tabs(): readonly HTMLElement[] {
         return Array.from<HTMLElement>(this.el.querySelectorAll('[tuiTab]'));
     }
 
-    get activeElement(): HTMLElement | null {
+    public get activeElement(): HTMLElement | null {
         const {tabs} = this;
         const safeActiveIndex = tuiClamp(this.activeItemIndex || 0, 0, tabs.length - 2);
 
@@ -98,26 +99,26 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
             : this.moreButton?.nativeElement || null;
     }
 
-    get isMoreAlone(): boolean {
+    public get isMoreAlone(): boolean {
         return this.lastVisibleIndex < 0 && !this.options.exposeActive;
     }
 
-    get isMoreVisible(): boolean {
+    public get isMoreVisible(): boolean {
         return this.lastVisibleIndex < this.items.length - 1;
     }
 
-    get isMoreFocusable(): boolean {
+    public get isMoreFocusable(): boolean {
         return !!this.moreButton && tuiIsNativeFocused(this.moreButton.nativeElement);
     }
 
-    get isMoreActive(): boolean {
+    public get isMoreActive(): boolean {
         return (
             this.open ||
             (!this.options.exposeActive && this.lastVisibleIndex < this.activeItemIndex)
         );
     }
 
-    get lastVisibleIndex(): number {
+    public get lastVisibleIndex(): number {
         if (this.itemsLimit + 1 >= this.items.length) {
             return this.maxIndex;
         }
@@ -130,7 +131,7 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
         return Math.min(this.itemsLimit - offset, this.maxIndex);
     }
 
-    ngAfterViewInit(): void {
+    public ngAfterViewInit(): void {
         this.refresh$
             .pipe(
                 map(() => this.getMaxIndex()),
@@ -142,23 +143,23 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
             });
     }
 
-    onActiveItemIndexChange(activeItemIndex: number): void {
+    public onActiveItemIndexChange(activeItemIndex: number): void {
         this.updateActiveItemIndex(activeItemIndex);
     }
 
-    onClick(index: number): void {
+    public onClick(index: number): void {
         this.open = false;
         this.focusMore();
         this.updateActiveItemIndex(index);
     }
 
-    onArrowRight(event: Event): void {
+    public onArrowRight(event: Event): void {
         if (tuiIsElement(event.target) && tuiIsNativeFocused(event.target)) {
             this.focusMore();
         }
     }
 
-    onArrowLeft(): void {
+    public onArrowLeft(): void {
         const {tabs} = this;
         let index = tabs.length - 2;
 
@@ -173,7 +174,7 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
         }
     }
 
-    onWrapperArrow(event: Event, wrapper: HTMLElement, previous: boolean): void {
+    public onWrapperArrow(event: Event, wrapper: HTMLElement, previous: boolean): void {
         const button: HTMLButtonElement = event.target as HTMLButtonElement;
         const target = tuiGetClosestFocusable({initial: button, root: wrapper, previous});
 
@@ -182,11 +183,11 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
         }
     }
 
-    isOverflown(index: number): boolean {
+    public isOverflown(index: number): boolean {
         return index !== this.activeItemIndex || !this.options.exposeActive;
     }
 
-    shouldShow(index: number): boolean {
+    public shouldShow(index: number): boolean {
         return index > this.lastVisibleIndex && this.isOverflown(index);
     }
 

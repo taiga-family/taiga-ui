@@ -21,68 +21,68 @@ import {MODE_PROVIDER, TUI_MODE} from '@taiga-ui/core';
     },
 })
 export class TuiAxesComponent {
-    @Input()
-    axisX: TuiLineType = 'solid';
+    protected readonly mode$ = inject(TUI_MODE);
 
     @Input()
-    axisXLabels: ReadonlyArray<string | null> = [];
+    public axisX: TuiLineType = 'solid';
 
     @Input()
-    axisY: TuiLineType = 'solid';
+    public axisXLabels: ReadonlyArray<string | null> = [];
 
     @Input()
-    axisYInset = false;
+    public axisY: TuiLineType = 'solid';
 
     @Input()
-    axisYLabels: readonly string[] = [];
+    public axisYInset = false;
 
     @Input()
-    axisYName = '';
+    public axisYLabels: readonly string[] = [];
 
     @Input()
-    axisYSecondaryInset = false;
+    public axisYName = '';
 
     @Input()
-    axisYSecondaryLabels: readonly string[] = [];
+    public axisYSecondaryInset = false;
 
     @Input()
-    axisYSecondaryName = '';
+    public axisYSecondaryLabels: readonly string[] = [];
 
     @Input()
-    horizontalLines = 0;
+    public axisYSecondaryName = '';
 
     @Input()
-    horizontalLinesHandler: TuiLineHandler = TUI_ALWAYS_SOLID;
+    public horizontalLines = 0;
 
     @Input()
-    verticalLines = 0;
+    public horizontalLinesHandler: TuiLineHandler = TUI_ALWAYS_SOLID;
 
     @Input()
-    verticalLinesHandler: TuiLineHandler = TUI_ALWAYS_DASHED;
+    public verticalLines = 0;
+
+    @Input()
+    public verticalLinesHandler: TuiLineHandler = TUI_ALWAYS_DASHED;
 
     @HostBinding('class._centered')
-    get centeredXLabels(): boolean {
+    public get centeredXLabels(): boolean {
         return this.axisY === 'none';
     }
 
-    readonly mode$ = inject(TUI_MODE);
-
-    get hasXLabels(): boolean {
+    public get hasXLabels(): boolean {
         return !!this.axisXLabels.length;
     }
 
-    get hasYLabels(): boolean {
+    public get hasYLabels(): boolean {
         return (!!this.axisYLabels.length && !this.axisYInset) || !!this.axisYName;
     }
 
-    get hasYSecondaryLabels(): boolean {
+    public get hasYSecondaryLabels(): boolean {
         return (
             (!!this.axisYSecondaryLabels.length && !this.axisYSecondaryInset) ||
             !!this.axisYSecondaryName
         );
     }
 
-    fallback(label: string | null): string {
+    public fallback(label: string | null): string {
         return label || CHAR_NO_BREAK_SPACE;
     }
 }

@@ -9,10 +9,10 @@ export class TuiComboBoxStrictDirective<T> {
     private readonly comboBox = inject(TuiComboBoxComponent<T | string>);
 
     @Input()
-    strict = true;
+    public strict = true;
 
     @HostListener('input')
-    onInput(): void {
+    public onInput(): void {
         if (!this.strict && this.comboBox.search) {
             this.comboBox.value = this.comboBox.search;
         }

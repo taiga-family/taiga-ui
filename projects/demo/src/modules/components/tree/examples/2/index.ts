@@ -10,7 +10,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiTreeExample2 {
-    readonly data = [
+    protected readonly data = [
         'Top level 1',
         ['Second level item', ['Third level 1', 'Third level 2', 'Third level 3']],
         'Top level 2',

@@ -71,13 +71,15 @@ export class TuiHintComponent<C = any> {
     private readonly mode = inject(TuiModeDirective, {optional: true});
     private readonly visualViewportService = inject(TuiVisualViewportService);
     private readonly viewport = inject(TUI_VIEWPORT);
-    protected readonly accessor = inject(TuiRectAccessor);
 
     @HostBinding('attr.data-appearance')
-    readonly appearance = this.polymorpheus.$implicit.appearance || this.mode?.mode;
+    protected readonly appearance =
+        this.polymorpheus.$implicit.appearance || this.mode?.mode;
 
-    readonly options = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
-    readonly pointer = inject(TuiHintPointerDirective, {optional: true});
+    protected readonly accessor = inject(TuiRectAccessor);
+
+    protected readonly options = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
+    protected readonly pointer = inject(TuiHintPointerDirective, {optional: true});
 
     constructor() {
         inject(TuiPositionService)
@@ -94,16 +96,16 @@ export class TuiHintComponent<C = any> {
             .subscribe(hover => this.hover.toggle(hover));
     }
 
-    get content(): PolymorpheusContent<C> {
+    public get content(): PolymorpheusContent<C> {
         return this.polymorpheus.$implicit.content;
     }
 
-    get context(): C | undefined {
+    public get context(): C | undefined {
         return this.polymorpheus.$implicit.context;
     }
 
     @HostListener('document:click', ['$event.target'])
-    onClick(target: HTMLElement): void {
+    public onClick(target: HTMLElement): void {
         if (
             (!this.el.contains(target) && !this.hover.el.contains(target)) ||
             tuiIsObscured(this.hover.el)

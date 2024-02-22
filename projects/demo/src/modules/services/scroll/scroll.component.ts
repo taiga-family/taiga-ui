@@ -9,11 +9,13 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
     changeDetection,
 })
 export class ExampleTuiScrollComponent {
-    readonly exampleScroll = import('./examples/import/scroll.md?raw');
-    readonly exampleModule = import('./examples/import/import-module.md?raw');
-    readonly exampleInjectService = import('./examples/import/inject-service.md?raw');
+    protected readonly exampleScroll = import('./examples/import/scroll.md?raw');
+    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
+    protected readonly exampleInjectService = import(
+        './examples/import/inject-service.md?raw'
+    );
 
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
         LESS: import('./examples/1/index.less?raw'),

@@ -25,13 +25,13 @@ import {INLINE_SVG} from './inline-svg';
     ],
 })
 export class TuiIconsBundledExample1 {
-    readonly timeout$ = timer(0).pipe(map(ALWAYS_TRUE_HANDLER));
+    protected readonly timeout$ = timer(0).pipe(map(ALWAYS_TRUE_HANDLER));
 
-    readonly imageUrl = assets`/images/ts.svg#ts`;
+    protected readonly imageUrl = assets`/images/ts.svg#ts`;
 
-    readonly svg = INLINE_SVG;
+    protected readonly svg = INLINE_SVG;
 
-    readonly tuiIconClockLarge =
+    protected readonly tuiIconClockLarge =
         inject(DomSanitizer).bypassSecurityTrustHtml(tuiIconClockLarge);
 
     constructor() {

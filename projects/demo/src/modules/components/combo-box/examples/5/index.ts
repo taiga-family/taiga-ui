@@ -10,9 +10,9 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiComboBoxExample5 {
-    value = null;
+    protected value = null;
 
-    readonly countries = [
+    protected readonly countries = [
         'Afghanistan',
         'Albania',
         'Algeria',

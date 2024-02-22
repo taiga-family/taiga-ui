@@ -8,10 +8,12 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
     changeDetection,
 })
 export class ExampleTuiMobileDialogComponent {
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
     };
 
-    readonly exampleInsertComponent = import('./examples/import/insert-component.md?raw');
+    protected readonly exampleInsertComponent = import(
+        './examples/import/insert-component.md?raw'
+    );
 }

@@ -9,6 +9,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiInputTagExample7 {
-    value = ['Use', 'space', 'button'];
-    customSeparator = /[\s,]/; // Use space or comma to create new tag
+    protected value = ['Use', 'space', 'button'];
+    protected customSeparator = /[\s,]/; // Use space or comma to create new tag
 }

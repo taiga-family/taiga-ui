@@ -15,11 +15,11 @@ describe('TuiValidator directive', () => {
         `,
     })
     class TestComponent {
-        show = false;
+        protected show = false;
 
-        readonly control = new FormControl();
+        protected readonly control = new FormControl();
 
-        readonly validator = Validators.required;
+        protected readonly validator = Validators.required;
     }
 
     let fixture: ComponentFixture<TestComponent>;

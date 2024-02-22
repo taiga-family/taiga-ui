@@ -31,12 +31,12 @@ export class TuiCarouselDirective extends Observable<unknown> {
     );
 
     @Input()
-    set duration(duration: number) {
+    public set duration(duration: number) {
         this.duration$.next(duration);
     }
 
     @Input()
-    set index(_: number) {
+    public set index(_: number) {
         this.duration$.next(this.duration$.value);
     }
 

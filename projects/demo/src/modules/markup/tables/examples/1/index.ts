@@ -10,5 +10,5 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiTablesExample1 {
-    testValue = new FormControl(true);
+    protected testValue = new FormControl(true);
 }

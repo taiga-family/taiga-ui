@@ -15,12 +15,12 @@ interface Item {
     changeDetection,
 })
 export class TuiMultiSelectExample10 {
-    itemStringControl = new FormControl<string[]>([]);
-    itemControl = new FormControl<Item[]>([]);
-    itemStringGroupControl = new FormControl<string[]>([]);
-    itemGroupControl = new FormControl<Item[]>([]);
+    protected itemStringControl = new FormControl<string[]>([]);
+    protected itemControl = new FormControl<Item[]>([]);
+    protected itemStringGroupControl = new FormControl<string[]>([]);
+    protected itemGroupControl = new FormControl<Item[]>([]);
 
-    items = [
+    protected items = [
         'Luke Skywalker',
         'Leia Organa Solo',
         'Darth Vader',
@@ -29,7 +29,7 @@ export class TuiMultiSelectExample10 {
         'Yoda',
     ];
 
-    customItems: readonly Item[] = [
+    protected customItems: readonly Item[] = [
         {name: 'Luke Skywalker', id: 1},
         {name: 'Leia Organa Solo', id: 2},
         {name: 'Darth Vader', id: 3},
@@ -38,12 +38,12 @@ export class TuiMultiSelectExample10 {
         {name: 'Yoda', id: 6},
     ];
 
-    groupItems = [
+    protected groupItems = [
         ['Caesar', 'Greek', 'Apple and Chicken'],
         ['Broccoli Cheddar', 'Chicken and Rice', 'Chicken Noodle'],
     ];
 
-    customGroupItems: readonly Item[][] = [
+    protected customGroupItems: readonly Item[][] = [
         [
             {name: 'Caesar', id: 1},
             {name: 'Apple and Chicken', id: 2},
@@ -55,10 +55,13 @@ export class TuiMultiSelectExample10 {
         ],
     ];
 
-    labels = ['Salad', 'Soup'];
+    protected labels = ['Salad', 'Soup'];
 
-    stringify: TuiStringHandler<Item> = item => item.name;
+    protected stringify: TuiStringHandler<Item> = item => item.name;
 
-    disableHandler: TuiBooleanHandler<string> = item => item.startsWith('Broccoli');
-    disableItemHandler: TuiBooleanHandler<Item> = ({name}) => name.startsWith('Broccoli');
+    protected disableHandler: TuiBooleanHandler<string> = item =>
+        item.startsWith('Broccoli');
+
+    protected disableItemHandler: TuiBooleanHandler<Item> = ({name}) =>
+        name.startsWith('Broccoli');
 }

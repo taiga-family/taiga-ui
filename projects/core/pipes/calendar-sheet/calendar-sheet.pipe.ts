@@ -14,7 +14,7 @@ export class TuiCalendarSheetPipe implements PipeTransform {
     private currentMonth: TuiMonth | null = null;
     private currentSheet: ReadonlyArray<readonly TuiDay[]> = [];
 
-    transform(
+    public transform(
         month: TuiMonth,
         showAdjacentDays = false,
     ): ReadonlyArray<readonly TuiDay[]> {

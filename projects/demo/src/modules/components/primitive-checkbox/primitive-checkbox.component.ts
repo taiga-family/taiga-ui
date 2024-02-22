@@ -8,25 +8,25 @@ import {TuiSizeL} from '@taiga-ui/core';
     changeDetection,
 })
 export class ExampleTuiPrimitiveCheckboxComponent {
-    readonly exampleModule = import('./examples/import/import-module.md?raw');
-    readonly exampleOptions = import('./examples/import/define-options.md?raw');
-    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
+    protected readonly exampleOptions = import('./examples/import/define-options.md?raw');
+    protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 
-    readonly sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
+    protected readonly sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
 
-    size: TuiSizeL = this.sizeVariants[0];
+    protected size: TuiSizeL = this.sizeVariants[0];
 
-    disabled = false;
+    protected disabled = false;
 
-    focused = false;
+    protected focused = false;
 
-    hovered = false;
+    protected hovered = false;
 
-    pressed = false;
+    protected pressed = false;
 
-    invalid = false;
+    protected invalid = false;
 
-    readonly valueVariants: readonly boolean[] = [false, true];
+    protected readonly valueVariants: readonly boolean[] = [false, true];
 
-    value = this.valueVariants[0];
+    protected value = this.valueVariants[0];
 }

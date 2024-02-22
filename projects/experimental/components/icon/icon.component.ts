@@ -16,11 +16,11 @@ import {TUI_ICON_RESOLVER} from '@taiga-ui/core';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiIconComponent {
-    @Input()
-    icon = '';
+    protected readonly resolver = inject<TuiStringHandler<string>>(TUI_ICON_RESOLVER);
 
     @Input()
-    background = '';
+    public icon = '';
 
-    readonly resolver = inject<TuiStringHandler<string>>(TUI_ICON_RESOLVER);
+    @Input()
+    public background = '';
 }

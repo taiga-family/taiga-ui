@@ -50,22 +50,22 @@ export class TuiHintHoverDirective extends TuiDriver {
     );
 
     @Input('tuiHintShowDelay')
-    showDelay: TuiHintOptions['showDelay'] = this.options.showDelay;
+    public showDelay: TuiHintOptions['showDelay'] = this.options.showDelay;
 
     @Input('tuiHintHideDelay')
-    hideDelay: TuiHintOptions['hideDelay'] = this.options.hideDelay;
+    public hideDelay: TuiHintOptions['hideDelay'] = this.options.hideDelay;
 
-    readonly type = 'hint';
+    public readonly type = 'hint';
 
-    enabled = true;
+    public enabled = true;
 
-    readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    public readonly el: HTMLElement = inject(ElementRef).nativeElement;
 
     constructor() {
         super(subscriber => this.stream$.subscribe(subscriber));
     }
 
-    toggle(visible = !this.visible): void {
+    public toggle(visible = !this.visible): void {
         this.toggle$.next(visible);
     }
 }

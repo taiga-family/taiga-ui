@@ -22,5 +22,5 @@ export const TUI_TEXTFIELD_ICON_LEFT = tuiCreateTokenFromFactory(
 })
 export class TuiTextfieldIconLeftDirective extends AbstractTuiController {
     @Input('tuiTextfieldIconLeft')
-    iconLeft: PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeS>>;
+    public iconLeft: PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeS>>;
 }

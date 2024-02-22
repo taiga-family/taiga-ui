@@ -2,7 +2,7 @@ import {Pipe, PipeTransform} from '@angular/core';
 
 @Pipe({name: 'tuiReplace'})
 export class TuiReplacePipe implements PipeTransform {
-    transform(
+    public transform(
         value: string | null | undefined,
         search: RegExp | string,
         replaceValue: string | ((substring: string, ...args: any[]) => string),

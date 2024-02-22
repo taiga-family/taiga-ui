@@ -25,7 +25,7 @@ export class TuiDialogExampleComponent2 {
         },
     );
 
-    showDialog(): void {
+    public showDialog(): void {
         this.dialog.subscribe({
             next: data => {
                 console.info(`Dialog emitted data = ${data}`);

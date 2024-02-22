@@ -35,26 +35,26 @@ import {TUI_AVATAR_OPTIONS} from './avatar.options';
 export class TuiAvatarComponent {
     private readonly options = inject(TUI_AVATAR_OPTIONS);
 
-    @Input()
-    size = this.options.size;
+    protected readonly resolver = inject(TUI_ICON_RESOLVER);
 
     @Input()
-    round = this.options.round;
+    public size = this.options.size;
 
     @Input()
-    src: SafeResourceUrl | string | null = null;
+    public round = this.options.round;
 
-    readonly resolver = inject(TUI_ICON_RESOLVER);
+    @Input()
+    public src: SafeResourceUrl | string | null = null;
 
-    get safeSrc(): string {
+    public get safeSrc(): string {
         return this.src?.toString() ?? '';
     }
 
-    get value(): SafeResourceUrl | string {
+    public get value(): SafeResourceUrl | string {
         return this.src || '';
     }
 
-    get type(): 'content' | 'icon' | 'img' | 'text' {
+    public get type(): 'content' | 'icon' | 'img' | 'text' {
         if (this.value && !tuiIsString(this.value)) {
             return 'img';
         }

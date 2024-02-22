@@ -10,7 +10,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiInputPasswordExample1 {
-    testForm = new FormGroup({
+    protected testForm = new FormGroup({
         testValue: new FormControl('password', Validators.required),
     });
 }

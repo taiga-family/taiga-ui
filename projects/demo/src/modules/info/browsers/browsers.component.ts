@@ -11,7 +11,7 @@ import {TuiDocPageModule} from '@taiga-ui/addon-doc';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class BrowserSupportComponent {
-    readonly desktopBrowsers = [
+    protected readonly desktopBrowsers = [
         {name: 'Google Chrome', version: '88+'},
         {name: 'Mozilla Firefox', version: '120+'},
         {name: 'Safari', version: '13.1+'},
@@ -21,7 +21,7 @@ export default class BrowserSupportComponent {
         {name: 'Microsoft Internet Explorer', version: null},
     ] as const;
 
-    readonly mobileBrowsers = [
+    protected readonly mobileBrowsers = [
         {name: 'Google Chrome', version: '88+'},
         {name: 'Mozilla Firefox', version: '120+'},
         {name: 'Safari', version: '13.4+'},

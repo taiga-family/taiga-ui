@@ -10,9 +10,9 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiCarouselExample2 {
-    index = 0;
+    protected index = 0;
 
-    readonly items = [
+    protected readonly items = [
         'angular.svg',
         'avatar.jpg',
         'angular.svg',

@@ -11,7 +11,7 @@ export class TuiScrollIntoViewLinkDirective {
     private readonly scroll$ = new ReplaySubject<boolean>(1);
 
     @Input()
-    set tuiScrollIntoViewLink(shallWe: boolean) {
+    public set tuiScrollIntoViewLink(shallWe: boolean) {
         this.scroll$.next(shallWe);
     }
 

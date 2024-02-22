@@ -7,7 +7,7 @@ import {TUI_SCROLLABLE} from '@taiga-ui/core/constants';
 export class TuiScrollableDirective implements OnInit {
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         this.el.dispatchEvent(
             new CustomEvent(TUI_SCROLLABLE, {
                 bubbles: true,

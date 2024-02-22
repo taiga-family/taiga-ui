@@ -17,13 +17,13 @@ export class TuiSvgService {
     private readonly sanitizer = inject(DomSanitizer);
     private originals: Record<string, string> = {};
 
-    readonly items$ = new BehaviorSubject<Map<string, SafeHtml>>(new Map());
+    public readonly items$ = new BehaviorSubject<Map<string, SafeHtml>>(new Map());
 
     constructor() {
         this.define(inject(TUI_ICONS));
     }
 
-    define(icons: Record<string, string>): void {
+    public define(icons: Record<string, string>): void {
         const {value} = this.items$;
 
         Object.keys(icons).forEach(key => {
@@ -33,7 +33,7 @@ export class TuiSvgService {
         this.items$.next(value);
     }
 
-    getOriginal(name: string): string | null {
+    public getOriginal(name: string): string | null {
         return this.originals[name] || null;
     }
 

@@ -44,11 +44,18 @@ export class TuiExpandComponent {
     private readonly destroy$ = inject(TuiDestroyService, {self: true});
     private state: TuiValuesOf<typeof State> = State.Idle;
 
+    @ContentChild(TuiExpandContentDirective, {read: TemplateRef})
+    protected content: TemplateRef<NgIfContext<boolean>> | null = null;
+
+    @HostBinding('class._expanded')
+    @HostBinding('attr.aria-expanded')
+    protected expanded: boolean | null = null;
+
     @Input()
-    async = false;
+    public async = false;
 
     @Input('expanded')
-    set expandedSetter(expanded: boolean | null) {
+    public set expandedSetter(expanded: boolean | null) {
         if (this.expanded === null) {
             this.expanded = expanded;
 
@@ -66,25 +73,18 @@ export class TuiExpandComponent {
         this.retrigger(this.async && expanded ? State.Loading : State.Animated);
     }
 
-    @ContentChild(TuiExpandContentDirective, {read: TemplateRef})
-    content: TemplateRef<NgIfContext<boolean>> | null = null;
-
-    @HostBinding('class._expanded')
-    @HostBinding('attr.aria-expanded')
-    expanded: boolean | null = null;
-
     @HostBinding('class._overflow')
-    get overflow(): boolean {
+    public get overflow(): boolean {
         return this.state !== State.Idle;
     }
 
     @HostBinding('class._loading')
-    get loading(): boolean {
+    public get loading(): boolean {
         return !!this.expanded && this.async && this.state === State.Loading;
     }
 
     @HostBinding('style.height.px')
-    get height(): number | null {
+    public get height(): number | null {
         const {expanded, state, contentWrapper} = this;
 
         if (
@@ -109,19 +109,19 @@ export class TuiExpandComponent {
         return null;
     }
 
-    get contentVisible(): boolean {
+    public get contentVisible(): boolean {
         return this.expanded || this.state !== State.Idle;
     }
 
     @HostListener('transitionend.self', ['$event'])
-    onTransitionEnd({propertyName}: TransitionEvent): void {
+    public onTransitionEnd({propertyName}: TransitionEvent): void {
         if (propertyName === 'opacity' && this.state === State.Animated) {
             this.state = State.Idle;
         }
     }
 
     @HostListener(TUI_EXPAND_LOADED, ['$event'])
-    onExpandLoaded(event: Event): void {
+    public onExpandLoaded(event: Event): void {
         event.stopPropagation();
 
         if (this.state === State.Loading) {

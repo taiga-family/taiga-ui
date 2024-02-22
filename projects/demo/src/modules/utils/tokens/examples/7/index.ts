@@ -10,5 +10,5 @@ import {TUI_IS_MOBILE_RES} from '@taiga-ui/core';
     changeDetection,
 })
 export class TuiTokensExample7 {
-    readonly isMobileRes$ = inject(TUI_IS_MOBILE_RES);
+    protected readonly isMobileRes$ = inject(TUI_IS_MOBILE_RES);
 }

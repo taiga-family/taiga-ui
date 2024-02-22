@@ -93,39 +93,17 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
     private readonly speed = inject(TUI_ANIMATIONS_SPEED);
     private readonly ngZone = inject(NgZone);
 
-    @Input()
-    single = true;
-
-    @Input()
-    multi = false;
-
-    @Input()
-    min = TUI_FIRST_DAY;
-
-    @Input()
-    max = TUI_LAST_DAY;
-
-    @Input()
-    disabledItemHandler: TuiBooleanHandler<TuiDay> = ALWAYS_FALSE_HANDLER;
-
-    @Output()
-    readonly cancel = new EventEmitter<void>();
-
-    @Output()
-    readonly confirm = new EventEmitter<TuiDay | TuiDayRange | readonly TuiDay[]>();
-
-    value: TuiDay | TuiDayRange | readonly TuiDay[] | null = null;
-
-    readonly isIOS = inject(TUI_IS_IOS);
-    readonly isE2E = inject(TUI_IS_E2E);
-    readonly icons = inject(TUI_COMMON_ICONS);
-    readonly closeWord$ = inject(TUI_CLOSE_WORD);
-    readonly cancelWord$ = inject(TUI_CANCEL_WORD);
-    readonly doneWord$ = inject(TUI_DONE_WORD);
-    readonly unorderedWeekDays$ = inject(TUI_SHORT_WEEK_DAYS);
-    readonly chooseDayOrRangeTexts$ = inject(TUI_CHOOSE_DAY_OR_RANGE_TEXTS);
-    readonly years = Array.from({length: RANGE}, (_, i) => i + STARTING_YEAR);
-    readonly months = Array.from(
+    protected value: TuiDay | TuiDayRange | readonly TuiDay[] | null = null;
+    protected readonly isIOS = inject(TUI_IS_IOS);
+    protected readonly isE2E = inject(TUI_IS_E2E);
+    protected readonly icons = inject(TUI_COMMON_ICONS);
+    protected readonly closeWord$ = inject(TUI_CLOSE_WORD);
+    protected readonly cancelWord$ = inject(TUI_CANCEL_WORD);
+    protected readonly doneWord$ = inject(TUI_DONE_WORD);
+    protected readonly unorderedWeekDays$ = inject(TUI_SHORT_WEEK_DAYS);
+    protected readonly chooseDayOrRangeTexts$ = inject(TUI_CHOOSE_DAY_OR_RANGE_TEXTS);
+    protected readonly years = Array.from({length: RANGE}, (_, i) => i + STARTING_YEAR);
+    protected readonly months = Array.from(
         {length: RANGE * 12},
         (_, i) =>
             new TuiMonth(
@@ -134,7 +112,30 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
             ),
     );
 
-    initialized = false;
+    protected initialized = false;
+
+    @Input()
+    public single = true;
+
+    @Input()
+    public multi = false;
+
+    @Input()
+    public min = TUI_FIRST_DAY;
+
+    @Input()
+    public max = TUI_LAST_DAY;
+
+    @Input()
+    public disabledItemHandler: TuiBooleanHandler<TuiDay> = ALWAYS_FALSE_HANDLER;
+
+    @Output()
+    public readonly cancel = new EventEmitter<void>();
+
+    @Output()
+    public readonly confirm = new EventEmitter<
+        TuiDay | TuiDayRange | readonly TuiDay[]
+    >();
 
     constructor() {
         inject(TUI_VALUE_STREAM)
@@ -144,11 +145,11 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
             });
     }
 
-    get yearWidth(): number {
+    public get yearWidth(): number {
         return this.doc.documentElement.clientWidth / YEARS_IN_ROW;
     }
 
-    ngAfterViewInit(): void {
+    public ngAfterViewInit(): void {
         this.activeYear = this.initialYear;
         this.activeMonth = this.initialMonth;
 
@@ -156,11 +157,11 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
         this.waitScrolledChange();
     }
 
-    onClose(): void {
+    public onClose(): void {
         this.cancel.emit();
     }
 
-    onConfirm(): void {
+    public onConfirm(): void {
         if (this.value) {
             this.confirm.emit(this.value);
         } else {
@@ -168,7 +169,7 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
         }
     }
 
-    onDayClick(day: TuiDay): void {
+    public onDayClick(day: TuiDay): void {
         if (this.single) {
             this.value = day;
         } else if (this.isMultiValue(this.value)) {
@@ -182,7 +183,7 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
         }
     }
 
-    getState(index: number): 'active' | 'adjacent' | null {
+    public getState(index: number): 'active' | 'adjacent' | null {
         if (this.isYearActive(index)) {
             return 'active';
         }
@@ -194,7 +195,7 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
         return null;
     }
 
-    onMonthChange(month: number): void {
+    public onMonthChange(month: number): void {
         // Skipping initial callback where index === 0
         if (!month || this.activeMonth === month) {
             return;
@@ -212,7 +213,7 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
         this.scrollToActiveYear();
     }
 
-    setYear(year: number): void {
+    public setYear(year: number): void {
         if (this.activeYear === year) {
             return;
         }
@@ -226,7 +227,7 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
             .subscribe(() => this.scrollToActiveMonth());
     }
 
-    readonly disabledItemHandlerMapper: TuiTypedMapper<
+    protected readonly disabledItemHandlerMapper: TuiTypedMapper<
         [TuiBooleanHandler<TuiDay>, TuiDay, TuiDay],
         TuiBooleanHandler<TuiDay>
     > = (disabledItemHandler, min, max) => item =>

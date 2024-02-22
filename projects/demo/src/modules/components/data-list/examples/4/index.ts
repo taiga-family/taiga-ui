@@ -42,14 +42,16 @@ const EXPENSES = {
     changeDetection,
 })
 export class TuiDataListExample4 {
-    value = [];
+    protected value = [];
 
-    readonly items = [INCOME, EXPENSES];
+    protected readonly items = [INCOME, EXPENSES];
 
-    readonly identityMatcher: TuiIdentityMatcher<readonly string[]> = (items1, items2) =>
-        items1.length === items2.length && items1.every(item => items2.includes(item));
+    protected readonly identityMatcher: TuiIdentityMatcher<readonly string[]> = (
+        items1,
+        items2,
+    ) => items1.length === items2.length && items1.every(item => items2.includes(item));
 
-    readonly valueContent: TuiStringHandler<TuiContext<readonly string[]>> = ({
+    protected readonly valueContent: TuiStringHandler<TuiContext<readonly string[]>> = ({
         $implicit,
     }) => {
         if (!$implicit.length) {

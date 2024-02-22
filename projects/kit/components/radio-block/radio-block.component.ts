@@ -41,52 +41,52 @@ export class TuiRadioBlockComponent<T>
     @ViewChild(TuiRadioComponent)
     private readonly radio?: TuiRadioComponent<T>;
 
-    @Input()
-    item?: T;
+    protected readonly modeDirective = inject(TuiModeDirective, {optional: true});
 
     @Input()
-    identityMatcher: TuiIdentityMatcher<T> = TUI_DEFAULT_IDENTITY_MATCHER;
+    public item?: T;
+
+    @Input()
+    public identityMatcher: TuiIdentityMatcher<T> = TUI_DEFAULT_IDENTITY_MATCHER;
 
     @Input()
     @HostBinding('attr.data-align')
-    contentAlign: TuiHorizontalDirection = 'right';
+    public contentAlign: TuiHorizontalDirection = 'right';
 
     @Input()
     @HostBinding('attr.data-size')
-    size: TuiSizeL | TuiSizeXS = 'l';
+    public size: TuiSizeL | TuiSizeXS = 'l';
 
     @Input()
     @HostBinding('class._hidden_input')
-    hideRadio = false;
+    public hideRadio = false;
 
     @Input()
-    pseudoDisabled = false;
+    public pseudoDisabled = false;
 
-    readonly modeDirective = inject(TuiModeDirective, {optional: true});
-
-    get nativeFocusableElement(): TuiNativeFocusableElement | null {
+    public get nativeFocusableElement(): TuiNativeFocusableElement | null {
         return this.radio?.nativeFocusableElement ?? null;
     }
 
-    get focused(): boolean {
+    public get focused(): boolean {
         return !!this.radio && this.radio.focused;
     }
 
     @HostBinding('class._disabled')
-    override get computedDisabled(): boolean {
+    public override get computedDisabled(): boolean {
         return this.disabled || this.pseudoDisabled;
     }
 
     @HostBinding('class._active')
-    get checked(): boolean {
+    public get checked(): boolean {
         return !!this.radio?.checked && this.hideRadio;
     }
 
-    get checkboxSize(): TuiSizeL {
+    public get checkboxSize(): TuiSizeL {
         return this.size === 'l' ? 'l' : 'm';
     }
 
-    get appearance(): TuiAppearance {
+    public get appearance(): TuiAppearance {
         if (!this.modeDirective?.mode) {
             return this.checked
                 ? TuiAppearance.WhiteblockActive
@@ -96,16 +96,16 @@ export class TuiRadioBlockComponent<T>
         return this.checked ? TuiAppearance.Primary : TuiAppearance.Secondary;
     }
 
-    onFocused(focused: boolean): void {
+    public onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
 
-    onFocusVisible(focusVisible: boolean): void {
+    public onFocusVisible(focusVisible: boolean): void {
         this.updateFocusVisible(focusVisible);
     }
 
     /** @deprecated use 'value' setter */
-    onModelChange(value: T): void {
+    public onModelChange(value: T): void {
         this.value = value;
     }
 }

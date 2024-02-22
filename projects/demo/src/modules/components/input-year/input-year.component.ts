@@ -24,34 +24,33 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
     ],
 })
 export class ExampleInputYearComponent extends AbstractExampleTuiControl {
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
     };
 
-    readonly example2: TuiDocExample = {
+    protected readonly example2: TuiDocExample = {
         TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
     };
 
-    readonly exampleModule = import('./examples/import/import-module.md?raw');
-    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
-    readonly exampleForm = import('./examples/import/declare-form.md?raw');
+    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
+    protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    protected readonly exampleForm = import('./examples/import/declare-form.md?raw');
 
-    readonly minVariants = [TUI_FIRST_DAY.year, 2019, 2007];
-    readonly maxVariants = [TUI_LAST_DAY.year, 2020, 2023];
+    protected readonly minVariants = [TUI_FIRST_DAY.year, 2019, 2007];
+    protected readonly maxVariants = [TUI_LAST_DAY.year, 2020, 2023];
 
-    min = this.minVariants[0];
-    max = this.maxVariants[0];
+    protected min = this.minVariants[0];
+    protected max = this.maxVariants[0];
 
-    readonly disabledItemHandlerVariants: ReadonlyArray<TuiBooleanHandler<number>> = [
-        ALWAYS_FALSE_HANDLER,
-        year => year % 3 === 0,
-    ];
+    protected readonly disabledItemHandlerVariants: ReadonlyArray<
+        TuiBooleanHandler<number>
+    > = [ALWAYS_FALSE_HANDLER, year => year % 3 === 0];
 
-    disabledItemHandler = this.disabledItemHandlerVariants[0];
+    protected disabledItemHandler = this.disabledItemHandlerVariants[0];
 
-    override cleaner = false;
+    public override cleaner = false;
 
-    control = new FormControl<number | null>(null, Validators.required);
+    public control = new FormControl<number | null>(null, Validators.required);
 }

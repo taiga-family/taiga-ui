@@ -8,7 +8,7 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
     changeDetection,
 })
 export class FormComponent {
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         TypeScript: import('./example/index.ts?raw'),
         HTML: import('./example/index.html?raw'),
         LESS: import('./example/index.style.less?raw'),

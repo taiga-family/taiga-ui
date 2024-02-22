@@ -5,7 +5,7 @@ import {tuiHideElement} from '../hide-element';
 export class TuiDocumentationApiPagePO {
     private readonly pending = new Set<Request>();
 
-    readonly apiPageExample: Locator = this.page.locator('#demo-content');
+    protected readonly apiPageExample: Locator = this.page.locator('#demo-content');
 
     constructor(protected readonly page: Page) {
         page.on('request', request => this.pending.add(request));
@@ -21,7 +21,7 @@ export class TuiDocumentationApiPagePO {
      * await page.waitForLoadState('networkidle');
      * Doesn't work as expected
      */
-    async networkidle(): Promise<void> {
+    public async networkidle(): Promise<void> {
         await this.page.waitForTimeout(100);
 
         await Promise.all(
@@ -38,7 +38,7 @@ export class TuiDocumentationApiPagePO {
         await this.page.waitForTimeout(200);
     }
 
-    async hideNotifications(): Promise<void> {
+    public async hideNotifications(): Promise<void> {
         const notifications = await this.page.locator('tui-alerts tui-alert').all();
 
         for (const notification of notifications) {
@@ -46,11 +46,11 @@ export class TuiDocumentationApiPagePO {
         }
     }
 
-    async hideContent(): Promise<void> {
+    public async hideContent(): Promise<void> {
         return tuiHideElement(this.page.locator('tui-doc-page'));
     }
 
-    async hideDocumentation(): Promise<void> {
+    public async hideDocumentation(): Promise<void> {
         const documentations = await this.page.locator('tui-doc-documentation').all();
 
         for (const documentation of documentations) {
@@ -58,17 +58,17 @@ export class TuiDocumentationApiPagePO {
         }
     }
 
-    async hideNavigation(): Promise<void> {
+    public async hideNavigation(): Promise<void> {
         return tuiHideElement(this.page.locator('tui-doc-navigation'));
     }
 
-    async hideScrollControls(): Promise<void> {
+    public async hideScrollControls(): Promise<void> {
         for (const element of await this.page.locator('tui-scroll-controls').all()) {
             await tuiHideElement(element);
         }
     }
 
-    async prepareBeforeScreenshot(hasNot = ''): Promise<void> {
+    public async prepareBeforeScreenshot(hasNot = ''): Promise<void> {
         await this.hideDocumentation();
         await this.hideScrollControls();
         await this.hideNavigation();
@@ -99,28 +99,28 @@ export class TuiDocumentationApiPagePO {
         }
     }
 
-    async getRows(): Promise<Locator[]> {
+    public async getRows(): Promise<Locator[]> {
         return this.page.locator('.t-table .t-row:not(.t-row_header)').all();
     }
 
-    async getSelect(row: Locator): Promise<Locator | null> {
+    public async getSelect(row: Locator): Promise<Locator | null> {
         return ((await row.locator('.t-cell_value tui-select').all()) ?? [])?.[0] ?? null;
     }
 
-    async getNameProperty(row: Locator): Promise<string> {
+    public async getNameProperty(row: Locator): Promise<string> {
         return (await row.locator('.t-property code').textContent())?.trim() ?? '';
     }
 
-    async getOptions(): Promise<Locator[]> {
+    public async getOptions(): Promise<Locator[]> {
         return this.page.locator('[automation-id="tui-data-list-wrapper__option"]').all();
     }
 
-    async focusOnBody(): Promise<void> {
+    public async focusOnBody(): Promise<void> {
         await this.page.locator('body').click({position: {x: 0, y: 0}});
         await this.page.waitForTimeout(300);
     }
 
-    async getCleaner(select: Locator): Promise<Locator | null> {
+    public async getCleaner(select: Locator): Promise<Locator | null> {
         return (
             ((await select
                 .locator('[automation-id="tui-primitive-textfield__cleaner"]')
@@ -128,7 +128,7 @@ export class TuiDocumentationApiPagePO {
         );
     }
 
-    async getToggle(row: Locator): Promise<Locator | null> {
+    public async getToggle(row: Locator): Promise<Locator | null> {
         return ((await row.locator('.t-cell_value tui-toggle').all()) ?? [])?.[0] ?? null;
     }
 }

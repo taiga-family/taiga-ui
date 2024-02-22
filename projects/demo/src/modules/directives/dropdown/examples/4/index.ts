@@ -9,5 +9,5 @@ import {changeDetection} from '@demo/emulate/change-detection';
     changeDetection,
 })
 export class TuiDropdownExample4 {
-    open = false;
+    protected open = false;
 }

@@ -64,62 +64,61 @@ export class TuiInputRangeComponent
     private readonly isMobile = inject(TUI_IS_MOBILE);
     private readonly el: Element = inject(ElementRef).nativeElement;
 
-    @Input()
-    min = 0;
+    protected leftTextfieldValue = this.safeCurrentValue[0];
+    protected rightTextfieldValue = this.safeCurrentValue[1];
+    protected lastActiveSide: 'left' | 'right' = 'left';
+    protected readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
 
     @Input()
-    max = 100;
+    public min = 0;
 
     @Input()
-    quantum = 1;
+    public max = 100;
 
     @Input()
-    steps = 0;
+    public quantum = 1;
 
     @Input()
-    segments = 1;
+    public steps = 0;
 
     @Input()
-    keySteps: TuiKeySteps | null = null;
+    public segments = 1;
 
     @Input()
-    leftValueContent: PolymorpheusContent<TuiContext<number>>;
+    public keySteps: TuiKeySteps | null = null;
 
     @Input()
-    rightValueContent: PolymorpheusContent<TuiContext<number>>;
+    public leftValueContent: PolymorpheusContent<TuiContext<number>>;
 
     @Input()
-    pluralize: Record<string, string> | null = null;
+    public rightValueContent: PolymorpheusContent<TuiContext<number>>;
 
-    leftTextfieldValue = this.safeCurrentValue[0];
-    rightTextfieldValue = this.safeCurrentValue[1];
-    lastActiveSide: 'left' | 'right' = 'left';
+    @Input()
+    public pluralize: Record<string, string> | null = null;
 
-    readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
-
-    get leftFocusableElement(): HTMLInputElement | null {
+    public get leftFocusableElement(): HTMLInputElement | null {
         return this.inputNumberRefs.first?.nativeFocusableElement || null;
     }
 
-    get rightFocusableElement(): HTMLInputElement | null {
+    public get rightFocusableElement(): HTMLInputElement | null {
         return this.inputNumberRefs.last?.nativeFocusableElement || null;
     }
 
-    get nativeFocusableElement(): TuiNativeFocusableElement | null {
+    public get nativeFocusableElement(): TuiNativeFocusableElement | null {
         return this.disabled
             ? null
             : this.leftFocusableElement || this.rightFocusableElement;
     }
 
-    get focused(): boolean {
+    public get focused(): boolean {
         return tuiIsNativeFocusedIn(this.el);
     }
 
-    get appearance(): string {
+    public get appearance(): string {
         return this.controller.appearance;
     }
 
-    get showLeftValueContent(): boolean {
+    public get showLeftValueContent(): boolean {
         return Boolean(
             this.leftValueContent &&
                 !tuiIsNativeFocused(this.leftFocusableElement) &&
@@ -127,7 +126,7 @@ export class TuiInputRangeComponent
         );
     }
 
-    get showRightValueContent(): boolean {
+    public get showRightValueContent(): boolean {
         return Boolean(
             this.rightValueContent &&
                 !tuiIsNativeFocused(this.rightFocusableElement) &&
@@ -135,24 +134,28 @@ export class TuiInputRangeComponent
         );
     }
 
-    get precision(): number {
+    public get precision(): number {
         return tuiGetFractionPartPadded(this.quantum).length;
     }
 
-    get decimal(): TuiDecimal {
+    public get decimal(): TuiDecimal {
         return this.precision ? 'not-zero' : 'never';
     }
 
-    get computedSteps(): number {
+    public get computedSteps(): number {
         return this.steps || (this.max - this.min) / this.quantum;
     }
 
-    get step(): number {
+    public get step(): number {
         return (this.max - this.min) / this.computedSteps;
     }
 
     @tuiPure
-    computeKeySteps(keySteps: TuiKeySteps | null, min: number, max: number): TuiKeySteps {
+    public computeKeySteps(
+        keySteps: TuiKeySteps | null,
+        min: number,
+        max: number,
+    ): TuiKeySteps {
         return (
             keySteps || [
                 [0, min],
@@ -161,17 +164,17 @@ export class TuiInputRangeComponent
         );
     }
 
-    onActiveZone(active: boolean): void {
+    public onActiveZone(active: boolean): void {
         this.updateFocused(active);
     }
 
-    onTextInputFocused(focused: boolean): void {
+    public onTextInputFocused(focused: boolean): void {
         if (!focused) {
             this.updateTextfieldValues(this.value);
         }
     }
 
-    changeByStep(
+    public changeByStep(
         event: Event | KeyboardEvent,
         [leftCoefficient, rightCoefficient]: [number, number],
     ): void {
@@ -191,20 +194,20 @@ export class TuiInputRangeComponent
         }
     }
 
-    onInputLeft(value: number | null): void {
+    public onInputLeft(value: number | null): void {
         this.safelyUpdateValue([value ?? this.safeCurrentValue[0], this.value[1]]);
     }
 
-    onInputRight(value: number | null): void {
+    public onInputRight(value: number | null): void {
         this.safelyUpdateValue([this.value[0], value ?? this.safeCurrentValue[1]]);
     }
 
-    onExternalValueUpdate(value: [number, number]): void {
+    public onExternalValueUpdate(value: [number, number]): void {
         this.safelyUpdateValue(value);
         this.updateTextfieldValues(this.value);
     }
 
-    focusToTextInput(): void {
+    public focusToTextInput(): void {
         const element =
             this.lastActiveSide === 'left'
                 ? this.leftFocusableElement
@@ -215,11 +218,11 @@ export class TuiInputRangeComponent
         }
     }
 
-    onActiveThumbChange(activeThumb: 'left' | 'right'): void {
+    public onActiveThumbChange(activeThumb: 'left' | 'right'): void {
         this.lastActiveSide = activeThumb;
     }
 
-    override writeValue(value: [number, number]): void {
+    public override writeValue(value: [number, number]): void {
         super.writeValue(value);
         this.updateTextfieldValues(this.value);
     }

@@ -10,5 +10,5 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiCellExample3 {
-    value = false;
+    protected value = false;
 }

@@ -12,10 +12,10 @@ import {tuiCreateTimePeriods} from '@taiga-ui/kit';
     changeDetection,
 })
 export class TuiInputTimeExample2 {
-    readonly testForm = new FormGroup({
+    protected readonly testForm = new FormGroup({
         testValue: new FormControl<TuiTime | null>(null),
     });
 
-    items1 = tuiCreateTimePeriods();
-    items2 = tuiCreateTimePeriods(10, 20, [0, 15, 30, 45]);
+    protected items1 = tuiCreateTimePeriods();
+    protected items2 = tuiCreateTimePeriods(10, 20, [0, 15, 30, 45]);
 }

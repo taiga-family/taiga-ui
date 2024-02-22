@@ -11,7 +11,7 @@ import {tuiMarkControlAsTouchedAndValidate} from '@taiga-ui/cdk';
     changeDetection,
 })
 export class TuiMiscellaneousExample6 implements OnInit {
-    userDetailsForm = new FormGroup({
+    protected userDetailsForm = new FormGroup({
         name: new FormControl('', Validators.required),
         address: new FormGroup({
             street: new FormControl('', Validators.required),
@@ -20,7 +20,7 @@ export class TuiMiscellaneousExample6 implements OnInit {
         }),
     });
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         tuiMarkControlAsTouchedAndValidate(this.userDetailsForm);
     }
 }

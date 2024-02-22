@@ -37,5 +37,5 @@ import {tuiButtonOptionsProvider} from '@taiga-ui/experimental/components/button
 })
 export class TuiAsideComponent {
     @Input()
-    tuiNavigationAside = false;
+    public tuiNavigationAside = false;
 }

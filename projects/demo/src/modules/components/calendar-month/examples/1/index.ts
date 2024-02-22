@@ -10,14 +10,14 @@ import {TuiMonth} from '@taiga-ui/cdk';
     changeDetection,
 })
 export class TuiMonthExample1 {
-    value: TuiMonth | null = null;
-    hoveredMonth: TuiMonth | null = null;
+    protected value: TuiMonth | null = null;
+    protected hoveredMonth: TuiMonth | null = null;
 
-    onMonthClick(month: TuiMonth): void {
+    public onMonthClick(month: TuiMonth): void {
         this.value = month;
     }
 
-    onMonthHovered(month: TuiMonth | null): void {
+    public onMonthHovered(month: TuiMonth | null): void {
         this.hoveredMonth = month;
     }
 }

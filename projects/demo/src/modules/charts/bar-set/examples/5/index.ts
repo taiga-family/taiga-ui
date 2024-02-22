@@ -10,6 +10,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiBarSetExample5 {
-    readonly value = [451, 302, 203, 124, 65];
-    readonly sum = this.value.reduce((a, b) => a + b, 0);
+    protected readonly value = [451, 302, 203, 124, 65];
+    protected readonly sum = this.value.reduce((a, b) => a + b, 0);
 }

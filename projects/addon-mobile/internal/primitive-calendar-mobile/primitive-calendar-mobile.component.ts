@@ -15,5 +15,5 @@ import {TuiPrimitiveCalendarComponent} from '@taiga-ui/core';
     },
 })
 export class TuiPrimitiveCalendarMobileComponent extends TuiPrimitiveCalendarComponent {
-    readonly isIOS = inject(TUI_IS_IOS);
+    protected readonly isIOS = inject(TUI_IS_IOS);
 }

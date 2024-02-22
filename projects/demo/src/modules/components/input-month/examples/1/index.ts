@@ -11,5 +11,5 @@ import {TuiMonth} from '@taiga-ui/cdk';
     changeDetection,
 })
 export class InputMonthExample1 {
-    readonly control = new FormControl<TuiMonth | null>(null);
+    public readonly control = new FormControl<TuiMonth | null>(null);
 }

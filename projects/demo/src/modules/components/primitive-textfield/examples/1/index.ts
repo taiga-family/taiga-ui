@@ -17,33 +17,33 @@ export class TuiPrimitiveTextfieldExample1 extends AbstractTuiControl<string> {
 
     private isPasswordHidden = true;
 
-    get nativeFocusableElement(): TuiNativeFocusableElement | null {
+    public get nativeFocusableElement(): TuiNativeFocusableElement | null {
         return this.computedDisabled || !this.textfield
             ? null
             : this.textfield.nativeFocusableElement;
     }
 
-    get focused(): boolean {
+    public get focused(): boolean {
         return !!this.textfield?.focused;
     }
 
-    get icon(): string {
+    public get icon(): string {
         return this.isPasswordHidden ? 'tuiIconEyeLarge' : 'tuiIconEyeOffLarge';
     }
 
-    get hint(): string {
+    public get hint(): string {
         return this.isPasswordHidden ? 'Show password' : 'Hide password';
     }
 
-    get inputType(): string {
+    public get inputType(): string {
         return this.isPasswordHidden ? 'password' : 'text';
     }
 
-    onFocused(focused: boolean): void {
+    public onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
 
-    togglePasswordVisibility(): void {
+    public togglePasswordVisibility(): void {
         this.isPasswordHidden = !this.isPasswordHidden;
     }
 

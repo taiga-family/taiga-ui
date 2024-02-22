@@ -8,7 +8,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
     changeDetection,
 })
 export class TuiRatingExample2 {
-    firstRate = 5;
-    secondRate = 3;
-    thirdRate = 4;
+    protected firstRate = 5;
+    protected secondRate = 3;
+    protected thirdRate = 4;
 }

@@ -22,7 +22,7 @@ type Content<G> = PolymorpheusContent<
         ),
 })
 export class TuiPdfViewerService extends TuiPopoverService<TuiPdfViewerOptions<unknown>> {
-    override open<G>(
+    public override open<G>(
         content: Content<G> | SafeResourceUrl,
         options: Partial<TuiPdfViewerOptions<any>> = {},
     ): Observable<G> {

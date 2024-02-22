@@ -13,12 +13,12 @@ import {
     changeDetection,
 })
 export class TuiInputCardGroupedExample1 {
-    readonly control = new FormControl<TuiCard | null>(null, [
+    public readonly control = new FormControl<TuiCard | null>(null, [
         tuiCardNumberValidator,
         tuiCardExpireValidator,
     ]);
 
-    get card(): string | null {
+    public get card(): string | null {
         const value = this.control.value?.card || '';
 
         if (value.length < 7) {

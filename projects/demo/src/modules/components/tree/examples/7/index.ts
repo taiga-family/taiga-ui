@@ -35,15 +35,14 @@ export interface Item {
     ],
 })
 export class TuiTreeExample7 {
-    readonly loading = inject(TUI_TREE_LOADING);
-    readonly service = inject(TuiTreeService<Item>);
+    protected readonly loading = inject(TUI_TREE_LOADING);
+    protected readonly service = inject(TuiTreeService<Item>);
+    protected map = new Map<Item, boolean>();
 
-    map = new Map<Item, boolean>();
-
-    childrenHandler: TuiHandler<Item, readonly Item[]> = item =>
-        this.service.getChildren(item);
-
-    onToggled(item: Item): void {
+    public onToggled(item: Item): void {
         this.service.loadChildren(item);
     }
+
+    protected childrenHandler: TuiHandler<Item, readonly Item[]> = item =>
+        this.service.getChildren(item);
 }

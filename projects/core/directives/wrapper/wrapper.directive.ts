@@ -13,42 +13,42 @@ import {Observable} from 'rxjs';
     },
 })
 export class TuiWrapperDirective {
-    @Input()
-    disabled = false;
+    protected readonly mode$ = inject<Observable<TuiBrightness | null>>(TUI_MODE);
 
     @Input()
-    readOnly = false;
+    public disabled = false;
 
     @Input()
-    hover: boolean | null = null;
+    public readOnly = false;
 
     @Input()
-    active: boolean | null = null;
+    public hover: boolean | null = null;
 
     @Input()
-    focus = false;
+    public active: boolean | null = null;
 
     @Input()
-    invalid = false;
+    public focus = false;
+
+    @Input()
+    public invalid = false;
 
     @Input()
     @HostBinding('attr.data-appearance')
-    appearance = '';
-
-    readonly mode$ = inject<Observable<TuiBrightness | null>>(TUI_MODE);
+    public appearance = '';
 
     @HostBinding('class._invalid')
-    get computedInvalid(): boolean {
+    public get computedInvalid(): boolean {
         return !this.disabled && !this.readOnly && this.invalid;
     }
 
     @HostBinding('class._focused')
-    get computedFocused(): boolean {
+    public get computedFocused(): boolean {
         return this.focus && !this.disabled;
     }
 
     @HostBinding('attr.data-state')
-    get interactiveState(): TuiInteractiveState | string | null {
+    public get interactiveState(): TuiInteractiveState | string | null {
         if (this.disabled) {
             return TuiInteractiveState.Disabled;
         }
@@ -69,12 +69,12 @@ export class TuiWrapperDirective {
     }
 
     @HostBinding('class._no-hover')
-    get noHover(): boolean {
+    public get noHover(): boolean {
         return this.readOnly || this.hover === false;
     }
 
     @HostBinding('class._no-active')
-    get noActive(): boolean {
+    public get noActive(): boolean {
         return this.readOnly || this.active === false;
     }
 }

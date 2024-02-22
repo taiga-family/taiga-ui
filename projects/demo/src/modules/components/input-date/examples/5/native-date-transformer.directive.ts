@@ -8,11 +8,11 @@ type To = Date | null;
 
 @Injectable()
 class ExampleTransformer extends AbstractTuiValueTransformer<From, To> {
-    fromControlValue(controlValue: To): From {
+    public fromControlValue(controlValue: To): From {
         return controlValue && TuiDay.fromLocalNativeDate(controlValue);
     }
 
-    toControlValue(componentValue: From): To {
+    public toControlValue(componentValue: From): To {
         return componentValue?.toLocalNativeDate() || null;
     }
 }

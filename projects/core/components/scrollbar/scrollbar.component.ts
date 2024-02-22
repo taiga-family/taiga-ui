@@ -38,31 +38,31 @@ export class TuiScrollbarComponent {
         (tuiIsFirefox(this.userAgent) &&
             !this.cssRef.supports('scrollbar-width', 'none'));
 
+    protected readonly browserScrollRef = new ElementRef(this.el);
+
     @Input()
-    hidden = false;
+    public hidden = false;
 
-    readonly browserScrollRef = new ElementRef(this.el);
-
-    get delegated(): boolean {
+    public get delegated(): boolean {
         return this.browserScrollRef.nativeElement !== this.el;
     }
 
-    get showScrollbars(): boolean {
+    public get showScrollbars(): boolean {
         return !this.hidden && !this.isIOS && (!this.isLegacy || this.delegated);
     }
 
     @HostBinding('class._legacy')
-    get showNative(): boolean {
+    public get showNative(): boolean {
         return this.isLegacy && !this.hidden && !this.delegated;
     }
 
     @HostListener(`${TUI_SCROLLABLE}.stop`, ['$event.detail'])
-    onScrollable(element: HTMLElement): void {
+    public onScrollable(element: HTMLElement): void {
         this.browserScrollRef.nativeElement = element;
     }
 
     @HostListener(`${TUI_SCROLL_INTO_VIEW}.stop`, ['$event.detail'])
-    scrollIntoView(detail: HTMLElement): void {
+    public scrollIntoView(detail: HTMLElement): void {
         if (this.delegated) {
             return;
         }

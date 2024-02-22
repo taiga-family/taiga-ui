@@ -9,9 +9,9 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiComboBoxExample7 {
-    value = null;
+    protected value = null;
 
-    readonly items = [
+    protected readonly items = [
         {name: 'John', surname: 'Cleese', disabled: false},
         {name: 'Eric', surname: 'Idle', disabled: false},
         {name: 'Graham', surname: 'Chapman', disabled: true},
@@ -20,6 +20,6 @@ export class TuiComboBoxExample7 {
         {name: 'Terry', surname: 'Jones', disabled: false},
     ];
 
-    readonly stringify = (item: {name: string; surname: string}): string =>
+    protected readonly stringify = (item: {name: string; surname: string}): string =>
         `${item.name} ${item.surname}`;
 }

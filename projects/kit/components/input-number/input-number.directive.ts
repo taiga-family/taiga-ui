@@ -11,17 +11,17 @@ export class TuiInputNumberDirective
     extends AbstractTuiTextfieldHost<TuiInputNumberComponent>
     implements DoCheck
 {
-    input?: HTMLInputElement;
+    protected input?: HTMLInputElement;
 
-    override get value(): string {
+    public override get value(): string {
         return this.host.computedValue;
     }
 
-    onValueChange(value: string): void {
+    public onValueChange(value: string): void {
         this.host.onValueChange(value);
     }
 
-    ngDoCheck(): void {
+    public ngDoCheck(): void {
         if (!this.host.nativeFocusableElement) {
             return;
         }

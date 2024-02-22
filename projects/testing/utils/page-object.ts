@@ -4,13 +4,13 @@ import {ComponentFixture} from '@angular/core/testing';
 export class TuiPageObject<T> {
     constructor(protected fixture: ComponentFixture<T>) {}
 
-    static getIds({nativeElement}: DebugElement): string[] {
+    public static getIds({nativeElement}: DebugElement): string[] {
         const attributeValue: string | null = nativeElement.getAttribute('automation-id');
 
         return attributeValue === null ? [] : attributeValue.split(' ');
     }
 
-    static containsId(debugElement: DebugElement, automationId: string): boolean {
+    public static containsId(debugElement: DebugElement, automationId: string): boolean {
         return TuiPageObject.getIds(debugElement).includes(automationId);
     }
 
@@ -18,7 +18,7 @@ export class TuiPageObject<T> {
         return debugElement => TuiPageObject.containsId(debugElement, automationId);
     }
 
-    getByAutomationId(
+    public getByAutomationId(
         automationId: string,
         debugElement: DebugElement = this.fixture.debugElement,
     ): DebugElement | null {
@@ -26,7 +26,7 @@ export class TuiPageObject<T> {
     }
 
     // Syncing result order with DOM order: https://github.com/angular/angular/issues/13066
-    getAllByAutomationId(
+    public getAllByAutomationId(
         automationId: string,
         debugElement: DebugElement = this.fixture.debugElement,
     ): DebugElement[] {

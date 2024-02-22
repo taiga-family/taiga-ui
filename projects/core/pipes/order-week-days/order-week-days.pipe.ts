@@ -19,7 +19,9 @@ function convertToSundayFirstWeekFormat<T>(weekDaysNames: WeekDays<T>): WeekDays
 export class TuiOrderWeekDaysPipe implements PipeTransform {
     private readonly firstDayOfWeekIndex = inject(TUI_FIRST_DAY_OF_WEEK);
 
-    transform<T>(mondayFirstWeekDays$: Observable<WeekDays<T>>): Observable<WeekDays<T>> {
+    public transform<T>(
+        mondayFirstWeekDays$: Observable<WeekDays<T>>,
+    ): Observable<WeekDays<T>> {
         return mondayFirstWeekDays$.pipe(
             map(convertToSundayFirstWeekFormat),
             map(

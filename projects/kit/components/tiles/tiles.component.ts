@@ -36,31 +36,31 @@ export class TuiTilesComponent {
     private readonly el$ = new Subject<Element | undefined>();
 
     @Input()
-    debounce = 0;
+    public debounce = 0;
 
     @Input()
-    set order(map: Map<number, number>) {
+    public set order(map: Map<number, number>) {
         this.order$.next(map);
     }
 
-    get order(): Map<number, number> {
+    public get order(): Map<number, number> {
         return this.order$.value;
     }
 
     @Output()
-    readonly orderChange = this.el$.pipe(
+    public readonly orderChange = this.el$.pipe(
         debounce(() => timer(this.debounce)),
         filter(this.filter.bind(this)),
         map(element => this.reorder(element)),
     );
 
     @HostBinding('class._dragged')
-    element: Element | null = null;
+    public element: Element | null = null;
 
-    readonly order$ = new BehaviorSubject(new Map<number, number>());
+    public readonly order$ = new BehaviorSubject(new Map<number, number>());
 
     @HostListener('pointerleave.silent')
-    rearrange(element?: Element): void {
+    public rearrange(element?: Element): void {
         this.el$.next(element);
     }
 

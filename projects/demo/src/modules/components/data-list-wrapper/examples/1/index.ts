@@ -11,9 +11,7 @@ import {TuiBooleanHandler} from '@taiga-ui/cdk';
     changeDetection,
 })
 export class TuiDataListWrapperExample1 {
-    readonly control = new FormControl('');
-
-    readonly items = [
+    protected readonly items = [
         'John Cleese',
         'Eric Idle',
         'Graham Chapman',
@@ -22,5 +20,8 @@ export class TuiDataListWrapperExample1 {
         'Terry Jones',
     ];
 
-    readonly disabledItemHandler: TuiBooleanHandler<string> = v => v.startsWith('T');
+    public readonly control = new FormControl('');
+
+    protected readonly disabledItemHandler: TuiBooleanHandler<string> = v =>
+        v.startsWith('T');
 }

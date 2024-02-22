@@ -85,82 +85,82 @@ export class TuiMultiSelectComponent<T>
     private readonly itemsHandlers = inject<TuiItemsHandlers<T>>(TUI_ITEMS_HANDLERS);
     private readonly options = inject<TuiMultiSelectOptions<T>>(TUI_MULTI_SELECT_OPTIONS);
 
-    @Input()
-    stringify: TuiItemsHandlers<T>['stringify'] = this.itemsHandlers.stringify;
+    @ContentChild(TuiDataListDirective, {read: TemplateRef})
+    protected readonly datalist: PolymorpheusContent<TuiContext<TuiActiveZoneDirective>>;
+
+    protected open = false;
+    protected readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
+    protected readonly isMobile: boolean = inject(TUI_IS_MOBILE);
 
     @Input()
-    identityMatcher: TuiItemsHandlers<T>['identityMatcher'] =
+    public stringify: TuiItemsHandlers<T>['stringify'] = this.itemsHandlers.stringify;
+
+    @Input()
+    public identityMatcher: TuiItemsHandlers<T>['identityMatcher'] =
         this.itemsHandlers.identityMatcher;
 
     @Input()
-    search: string | null = '';
+    public search: string | null = '';
 
     @Input()
-    placeholder = '';
+    public placeholder = '';
 
     @Input()
     @HostBinding('class._editable')
-    editable = true;
+    public editable = true;
 
     @Input()
-    disabledItemHandler: TuiItemsHandlers<T>['disabledItemHandler'] =
+    public disabledItemHandler: TuiItemsHandlers<T>['disabledItemHandler'] =
         this.itemsHandlers.disabledItemHandler;
 
     @Input()
-    valueContent: TuiMultiSelectOptions<T>['valueContent'] = this.options.valueContent;
+    public valueContent: TuiMultiSelectOptions<T>['valueContent'] =
+        this.options.valueContent;
 
     @Input()
-    tagValidator: TuiBooleanHandler<T> = ALWAYS_TRUE_HANDLER;
+    public tagValidator: TuiBooleanHandler<T> = ALWAYS_TRUE_HANDLER;
 
     @Input()
-    rows: TuiMultiSelectOptions<T>['rows'] = this.options.rows;
+    public rows: TuiMultiSelectOptions<T>['rows'] = this.options.rows;
 
     @Output()
-    readonly searchChange = new EventEmitter<string | null>();
-
-    @ContentChild(TuiDataListDirective, {read: TemplateRef})
-    readonly datalist: PolymorpheusContent<TuiContext<TuiActiveZoneDirective>>;
-
-    open = false;
-
-    readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
-    readonly isMobile: boolean = inject(TUI_IS_MOBILE);
+    public readonly searchChange = new EventEmitter<string | null>();
 
     @HostBinding('attr.data-size')
-    get size(): TuiSizeL | TuiSizeS {
+    public get size(): TuiSizeL | TuiSizeS {
         return this.controller.size;
     }
 
-    get arrow(): PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeM | TuiSizeS>> {
+    public get arrow(): PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeM | TuiSizeS>> {
         return this.interactive ? this.arrowMode.interactive : this.arrowMode.disabled;
     }
 
-    get nativeFocusableElement(): HTMLInputElement | null {
+    public get nativeFocusableElement(): HTMLInputElement | null {
         return this.input?.nativeFocusableElement ?? null;
     }
 
-    get focused(): boolean {
+    public get focused(): boolean {
         return !!this.input?.focused || !!this.hostedDropdown?.focused;
     }
 
-    get nativeDropdownMode(): boolean {
+    public get nativeDropdownMode(): boolean {
         return !!this.nativeSelect && this.isMobile && !this.editable;
     }
 
-    get computedValue(): readonly T[] {
+    public get computedValue(): readonly T[] {
         return this.computedGroup ? EMPTY_ARRAY : this.value;
     }
 
     // @bad TODO: think of a better way
-    get searchOrSpace(): string {
+    public get searchOrSpace(): string {
         return this.computedGroup ? ' ' : this.searchString;
     }
 
-    get searchString(): string {
+    public get searchString(): string {
         return this.search === null ? '' : this.search;
     }
 
-    get computedGroup(): boolean {
+    public get computedGroup(): boolean {
         return (
             !!this.valueContent &&
             this.value.length > 0 &&
@@ -169,25 +169,13 @@ export class TuiMultiSelectComponent<T>
     }
 
     @tuiPure
-    getStringifier(stringify: TuiStringHandler<T>): TuiStringHandler<TuiContext<T>> {
+    public getStringifier(
+        stringify: TuiStringHandler<T>,
+    ): TuiStringHandler<TuiContext<T>> {
         return ({$implicit}) => stringify($implicit);
     }
 
-    readonly valueMapper: TuiTypedMapper<
-        [readonly T[], TuiStringHandler<T>, boolean?],
-        ReadonlyArray<TuiStringifiableItem<T>>
-    > = (value, stringify, group) =>
-        group
-            ? EMPTY_ARRAY
-            : value.map(item => new TuiStringifiableItem(item, stringify));
-
-    readonly disabledItemHandlerWrapper: TuiTypedMapper<
-        [TuiBooleanHandler<T>],
-        TuiBooleanHandler<TuiStringifiableItem<T> | string>
-    > = handler => stringifiable =>
-        tuiIsString(stringifiable) || handler(stringifiable.item);
-
-    onSpace(event: Event): void {
+    public onSpace(event: Event): void {
         if (!this.editable) {
             event.preventDefault();
         }
@@ -197,7 +185,7 @@ export class TuiMultiSelectComponent<T>
         }
     }
 
-    handleOption(option: T): void {
+    public handleOption(option: T): void {
         const {value, identityMatcher} = this;
         const index = value.findIndex(item => identityMatcher(item, option));
 
@@ -206,7 +194,7 @@ export class TuiMultiSelectComponent<T>
         this.updateSearch(null);
     }
 
-    onEnter(event: Event): void {
+    public onEnter(event: Event): void {
         const {value} = this;
         const options = this.accessor ? this.accessor.getOptions() : [];
 
@@ -219,7 +207,7 @@ export class TuiMultiSelectComponent<T>
         this.updateSearch(null);
     }
 
-    onClick({nativeFocusableElement}: TuiInputTagComponent): void {
+    public onClick({nativeFocusableElement}: TuiInputTagComponent): void {
         if (
             this.interactive &&
             nativeFocusableElement &&
@@ -229,15 +217,15 @@ export class TuiMultiSelectComponent<T>
         }
     }
 
-    onInput(value: ReadonlyArray<TuiStringifiableItem<T>>): void {
+    public onInput(value: ReadonlyArray<TuiStringifiableItem<T>>): void {
         this.value = value.map(({item}) => item);
     }
 
-    onValueChange(value: readonly T[]): void {
+    public onValueChange(value: readonly T[]): void {
         this.value = value;
     }
 
-    onSearch(search: string | null): void {
+    public onSearch(search: string | null): void {
         // Clearing sets the empty value, the dropdown should not be opened on clear.
         if (search !== '') {
             this.hostedDropdown?.updateOpen(true);
@@ -246,14 +234,28 @@ export class TuiMultiSelectComponent<T>
         this.updateSearch(search);
     }
 
-    onActiveZone(active: boolean): void {
+    public onActiveZone(active: boolean): void {
         this.updateFocused(active);
     }
 
-    override setDisabledState(): void {
+    public override setDisabledState(): void {
         super.setDisabledState();
         this.hostedDropdown?.updateOpen(false);
     }
+
+    protected readonly valueMapper: TuiTypedMapper<
+        [readonly T[], TuiStringHandler<T>, boolean?],
+        ReadonlyArray<TuiStringifiableItem<T>>
+    > = (value, stringify, group) =>
+        group
+            ? EMPTY_ARRAY
+            : value.map(item => new TuiStringifiableItem(item, stringify));
+
+    protected readonly disabledItemHandlerWrapper: TuiTypedMapper<
+        [TuiBooleanHandler<T>],
+        TuiBooleanHandler<TuiStringifiableItem<T> | string>
+    > = handler => stringifiable =>
+        tuiIsString(stringifiable) || handler(stringifiable.item);
 
     private updateSearch(search: string | null): void {
         if (this.search === search) {

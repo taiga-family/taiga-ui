@@ -37,8 +37,8 @@ export class TuiBadgeDirective {
     protected readonly nothing = tuiWithStyles(TuiBadgeComponent);
 
     @Input()
-    size = this.options.size;
+    public size = this.options.size;
 
     @Input()
-    dot = this.options.dot;
+    public dot = this.options.dot;
 }

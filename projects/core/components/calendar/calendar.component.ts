@@ -33,39 +33,39 @@ export class TuiCalendarComponent implements TuiWithOptionalMinMax<TuiDay> {
     private view: TuiCalendarView = 'month';
 
     @Input()
-    set initialView(view: TuiCalendarView) {
+    public set initialView(view: TuiCalendarView) {
         this.view = view;
     }
 
     @Input()
-    month: TuiMonth = TuiMonth.currentLocal();
+    public month: TuiMonth = TuiMonth.currentLocal();
 
     @Input()
-    disabledItemHandler: TuiBooleanHandler<TuiDay> = ALWAYS_FALSE_HANDLER;
+    public disabledItemHandler: TuiBooleanHandler<TuiDay> = ALWAYS_FALSE_HANDLER;
 
     @Input()
-    min: TuiDay | null = TUI_FIRST_DAY;
+    public min: TuiDay | null = TUI_FIRST_DAY;
 
     @Input()
-    max: TuiDay | null = TUI_LAST_DAY;
+    public max: TuiDay | null = TUI_LAST_DAY;
 
     @Input()
-    minViewedMonth: TuiMonth | null = TUI_FIRST_DAY;
+    public minViewedMonth: TuiMonth | null = TUI_FIRST_DAY;
 
     @Input()
-    maxViewedMonth: TuiMonth | null = TUI_LAST_DAY;
+    public maxViewedMonth: TuiMonth | null = TUI_LAST_DAY;
 
     @Input()
-    hoveredItem: TuiDay | null = null;
+    public hoveredItem: TuiDay | null = null;
 
     @Input()
-    showAdjacent = true;
+    public showAdjacent = true;
 
     @Input()
-    markerHandler: TuiMarkerHandler = TUI_DEFAULT_MARKER_HANDLER;
+    public markerHandler: TuiMarkerHandler = TUI_DEFAULT_MARKER_HANDLER;
 
     @Input()
-    set value(value: TuiDay | TuiDayRange | readonly TuiDay[] | null) {
+    public set value(value: TuiDay | TuiDayRange | readonly TuiDay[] | null) {
         this.day = value;
 
         if (this.showAdjacent && value instanceof TuiDay) {
@@ -73,71 +73,71 @@ export class TuiCalendarComponent implements TuiWithOptionalMinMax<TuiDay> {
         }
     }
 
-    get value(): TuiDay | TuiDayRange | readonly TuiDay[] | null {
+    public get value(): TuiDay | TuiDayRange | readonly TuiDay[] | null {
         return this.day;
     }
 
     @Output()
-    readonly dayClick = new EventEmitter<TuiDay>();
+    public readonly dayClick = new EventEmitter<TuiDay>();
 
     @Output()
-    readonly monthChange = new EventEmitter<TuiMonth>();
+    public readonly monthChange = new EventEmitter<TuiMonth>();
 
     @Output()
-    readonly hoveredItemChange = new EventEmitter<TuiDay | null>();
+    public readonly hoveredItemChange = new EventEmitter<TuiDay | null>();
 
-    get isInYearView(): boolean {
+    public get isInYearView(): boolean {
         return this.view === 'year';
     }
 
-    readonly disabledItemHandlerMapper: TuiTypedMapper<
-        [TuiBooleanHandler<TuiDay>, TuiDay, TuiDay],
-        TuiBooleanHandler<TuiDay>
-    > = (disabledItemHandler, min, max) => item =>
-        item.dayBefore(min) || item.dayAfter(max) || disabledItemHandler(item);
-
-    get computedMin(): TuiDay {
+    public get computedMin(): TuiDay {
         return this.min ?? TUI_FIRST_DAY;
     }
 
-    get computedMax(): TuiDay {
+    public get computedMax(): TuiDay {
         return this.max ?? TUI_LAST_DAY;
     }
 
-    get computedMinViewedMonth(): TuiMonth {
+    public get computedMinViewedMonth(): TuiMonth {
         const min = this.computedMin;
         const minViewed = this.minViewedMonth ?? TUI_FIRST_DAY;
 
         return minViewed.monthSameOrAfter(min) ? minViewed : min;
     }
 
-    get computedMaxViewedMonth(): TuiMonth {
+    public get computedMaxViewedMonth(): TuiMonth {
         const max = this.computedMax;
         const maxViewed = this.maxViewedMonth ?? TUI_LAST_DAY;
 
         return maxViewed.monthSameOrBefore(max) ? maxViewed : max;
     }
 
-    onPaginationYearClick(): void {
+    public onPaginationYearClick(): void {
         this.view = 'year';
     }
 
-    onPickerYearClick({year}: TuiYear): void {
+    public onPickerYearClick({year}: TuiYear): void {
         this.view = 'month';
         this.updateViewedMonth(new TuiMonth(year, this.month.month));
     }
 
-    onPaginationValueChange(month: TuiMonth): void {
+    public onPaginationValueChange(month: TuiMonth): void {
         this.updateViewedMonth(month);
     }
 
-    onDayClick(day: TuiDay): void {
+    public onDayClick(day: TuiDay): void {
         this.dayClick.emit(day);
     }
 
-    onHoveredItemChange(day: TuiDay | null): void {
+    public onHoveredItemChange(day: TuiDay | null): void {
         this.updateHoveredDay(day);
     }
+
+    protected readonly disabledItemHandlerMapper: TuiTypedMapper<
+        [TuiBooleanHandler<TuiDay>, TuiDay, TuiDay],
+        TuiBooleanHandler<TuiDay>
+    > = (disabledItemHandler, min, max) => item =>
+        item.dayBefore(min) || item.dayAfter(max) || disabledItemHandler(item);
 
     private updateViewedMonth(month: TuiMonth): void {
         if (this.month.monthSame(month)) {

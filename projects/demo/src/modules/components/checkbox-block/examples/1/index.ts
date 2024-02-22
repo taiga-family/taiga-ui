@@ -10,7 +10,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiCheckboxBlockExample1 {
-    testForm = new FormGroup({
+    protected testForm = new FormGroup({
         testValue1: new FormControl(false),
         testValue2: new FormControl(false),
         testValue3: new FormControl(false),

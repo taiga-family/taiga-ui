@@ -10,9 +10,9 @@ import {map, startWith, Subject, switchMap, timer} from 'rxjs';
     changeDetection,
 })
 export class TuiTabBarExample4 {
-    readonly load$ = new Subject<void>();
+    protected readonly load$ = new Subject<void>();
 
-    readonly items$ = this.load$.pipe(
+    protected readonly items$ = this.load$.pipe(
         startWith(null),
         switchMap(() =>
             timer(3000).pipe(

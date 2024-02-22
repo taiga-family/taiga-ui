@@ -7,5 +7,5 @@ import {AbstractTuiDriverDirective} from '@taiga-ui/core/abstract';
     providers: [TuiDestroyService],
 })
 export class TuiHintDriverDirective extends AbstractTuiDriverDirective {
-    readonly type = 'hint';
+    public readonly type = 'hint';
 }

@@ -21,61 +21,57 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
     ],
 })
 export class ExampleTuiInputSliderComponent extends AbstractExampleTuiControl {
-    readonly exampleModule = import('./examples/import/import-module.md?raw');
-    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
+    protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         HTML: import('./examples/1/index.html?raw'),
         TypeScript: import('./examples/1/index.ts?raw'),
     };
 
-    readonly example2: TuiDocExample = {
+    protected readonly example2: TuiDocExample = {
         HTML: import('./examples/2/index.html?raw'),
         LESS: import('./examples/2/index.less?raw'),
         TypeScript: import('./examples/2/index.ts?raw'),
     };
 
-    readonly example3: TuiDocExample = {
+    protected readonly example3: TuiDocExample = {
         HTML: import('./examples/3/index.html?raw'),
         TypeScript: import('./examples/3/index.ts?raw'),
         LESS: import('./examples/3/index.less?raw'),
     };
 
-    readonly example4: TuiDocExample = {
+    protected readonly example4: TuiDocExample = {
         HTML: import('./examples/4/index.html?raw'),
         TypeScript: import('./examples/4/index.ts?raw'),
         LESS: import('./examples/4/index.less?raw'),
     };
 
-    readonly example5: TuiDocExample = {
+    protected readonly example5: TuiDocExample = {
         HTML: import('./examples/5/index.html?raw'),
         TypeScript: import('./examples/5/index.ts?raw'),
         LESS: import('./examples/5/index.less?raw'),
     };
 
-    readonly control = new FormControl(0);
+    protected readonly minVariants: readonly number[] = [0, 1, 5, 7.77, -10];
 
-    readonly minVariants: readonly number[] = [0, 1, 5, 7.77, -10];
+    protected min = this.minVariants[0];
 
-    min = this.minVariants[0];
+    protected readonly maxVariants: readonly number[] = [10, 100, 10000];
 
-    readonly maxVariants: readonly number[] = [10, 100, 10000];
+    protected max = this.maxVariants[0];
 
-    max = this.maxVariants[0];
+    protected segments = 1;
 
-    segments = 1;
+    protected steps = 0;
 
-    steps = 0;
+    protected readonly quantumVariants: readonly number[] = [
+        1, 0.01, 0.001, 0.0001, 10, 20, 100,
+    ];
 
-    readonly quantumVariants: readonly number[] = [1, 0.01, 0.001, 0.0001, 10, 20, 100];
+    protected quantum = this.quantumVariants[0];
 
-    quantum = this.quantumVariants[0];
-
-    override readonly sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
-
-    override size = this.sizeVariants[1];
-
-    readonly valueContentVariants = [
+    protected readonly valueContentVariants = [
         '',
         'TOP SECRET',
         ({$implicit: val}: TuiContext<number>) => (val === this.max ? 'MAX' : val),
@@ -83,9 +79,9 @@ export class ExampleTuiInputSliderComponent extends AbstractExampleTuiControl {
         ({$implicit: val}: TuiContext<number>) => (val === 5 ? 'FIVE' : val),
     ];
 
-    valueContent = this.valueContentVariants[0];
+    protected valueContent = this.valueContentVariants[0];
 
-    readonly keyStepsVariants: readonly TuiKeySteps[] = [
+    protected readonly keyStepsVariants: readonly TuiKeySteps[] = [
         [
             [0, 0],
             [50, 1_000],
@@ -93,13 +89,19 @@ export class ExampleTuiInputSliderComponent extends AbstractExampleTuiControl {
         ],
     ];
 
-    keySteps: TuiKeySteps | null = null;
+    protected keySteps: TuiKeySteps | null = null;
 
-    override readonly customContentVariants: string[] = [
+    public override readonly sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
+
+    public override size = this.sizeVariants[1];
+
+    public override readonly customContentVariants: string[] = [
         '',
         'tuiIconVisaMono',
         'tuiIconMastercardMono',
     ];
 
-    override customContentSelected = this.customContentVariants[0];
+    public readonly control = new FormControl(0);
+
+    public override customContentSelected = this.customContentVariants[0];
 }

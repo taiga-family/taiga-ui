@@ -10,18 +10,18 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
     changeDetection,
 })
 export class ExampleTuiNavigationComponent {
-    readonly exampleModule = import('./examples/import/import-module.md?raw');
-    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
+    protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         HTML: import('./examples/1/index.html?raw'),
     };
 
-    readonly example2: TuiDocExample = {
+    protected readonly example2: TuiDocExample = {
         HTML: import('./examples/2/index.html?raw'),
     };
 
-    readonly example3: TuiDocExample = {
+    protected readonly example3: TuiDocExample = {
         HTML: import('./examples/3/index.html?raw'),
     };
 }

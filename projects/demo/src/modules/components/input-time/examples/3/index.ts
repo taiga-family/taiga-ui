@@ -19,9 +19,9 @@ import {tuiCreateTimePeriods, tuiInputTimeOptionsProvider} from '@taiga-ui/kit';
     ],
 })
 export class TuiInputTimeExample3 {
-    readonly testForm = new FormGroup({
+    protected readonly testForm = new FormGroup({
         testValue: new FormControl<TuiTime | null>(null),
     });
 
-    items1 = tuiCreateTimePeriods();
+    protected items1 = tuiCreateTimePeriods();
 }

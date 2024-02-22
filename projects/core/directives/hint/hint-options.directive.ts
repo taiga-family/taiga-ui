@@ -61,19 +61,19 @@ export class TuiHintOptionsDirective
     protected readonly options = inject(TUI_HINT_OPTIONS, {skipSelf: true});
 
     @Input('tuiHintContent')
-    content: PolymorpheusContent;
+    public content: PolymorpheusContent;
 
     @Input('tuiHintDirection')
-    direction = this.options.direction;
+    public direction = this.options.direction;
 
     @Input('tuiHintAppearance')
-    appearance = this.options.appearance;
+    public appearance = this.options.appearance;
 
     @Input('tuiHintShowDelay')
-    showDelay = this.options.showDelay;
+    public showDelay = this.options.showDelay;
 
     @Input('tuiHintHideDelay')
-    hideDelay = this.options.hideDelay;
+    public hideDelay = this.options.hideDelay;
 
-    icon = this.options.icon;
+    public icon = this.options.icon;
 }

@@ -8,26 +8,26 @@ import {TuiDocExample, TuiRawLoaderContent} from '@taiga-ui/addon-doc';
     changeDetection,
 })
 export class ExampleTuiBadgedContentComponent {
-    readonly exampleModule: TuiRawLoaderContent = import(
+    protected readonly exampleModule: TuiRawLoaderContent = import(
         './examples/import/import-module.md?raw'
     );
 
-    readonly exampleHtml: TuiRawLoaderContent = import(
+    protected readonly exampleHtml: TuiRawLoaderContent = import(
         './examples/import/insert-template.md?raw'
     );
 
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         HTML: import('./examples/1/index.html?raw'),
     };
 
-    readonly example2: TuiDocExample = {
+    protected readonly example2: TuiDocExample = {
         HTML: import('./examples/2/index.html?raw'),
     };
 
-    readonly example3: TuiDocExample = {
+    protected readonly example3: TuiDocExample = {
         HTML: import('./examples/3/index.html?raw'),
     };
 
-    radiusVariants = ['0.75rem', '50%'];
-    radius = this.radiusVariants[0];
+    protected radiusVariants = ['0.75rem', '50%'];
+    protected radius = this.radiusVariants[0];
 }

@@ -9,7 +9,7 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
     changeDetection,
 })
 export class ExampleTuiThemeSwitcherComponent {
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/elderly/elderly.component.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
         LESS: import('./examples/elderly/elderly.style.less?raw'),

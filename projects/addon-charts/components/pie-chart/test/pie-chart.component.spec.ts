@@ -11,7 +11,7 @@ describe('PieChart', () => {
         `,
     })
     class TestComponent {
-        readonly value = [1, 2, 3];
+        protected readonly value = [1, 2, 3];
     }
 
     let fixture: ComponentFixture<TestComponent>;

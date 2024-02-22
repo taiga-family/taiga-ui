@@ -10,9 +10,9 @@ import {TUI_ARROW} from '@taiga-ui/kit';
     changeDetection,
 })
 export class TuiDataListExample1 {
-    readonly arrow = TUI_ARROW;
+    protected readonly arrow = TUI_ARROW;
 
-    readonly groups = [
+    protected readonly groups = [
         {
             label: 'Components',
             items: [

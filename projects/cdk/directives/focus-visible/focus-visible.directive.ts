@@ -12,5 +12,5 @@ import {TuiDestroyService, TuiFocusVisibleService} from '@taiga-ui/cdk/services'
 })
 export class TuiFocusVisibleDirective {
     @Output()
-    readonly tuiFocusVisibleChange = inject(TuiFocusVisibleService);
+    public readonly tuiFocusVisibleChange = inject(TuiFocusVisibleService);
 }

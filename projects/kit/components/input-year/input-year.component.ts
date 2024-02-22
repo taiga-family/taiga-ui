@@ -49,47 +49,47 @@ export class TuiInputYearComponent
     private readonly options = inject(TUI_INPUT_DATE_OPTIONS);
     private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
 
-    @Input()
-    min: number | null = this.options.min.year;
+    protected readonly initialItem = new Date().getFullYear();
+    protected open = false;
 
     @Input()
-    max: number | null = this.options.max.year;
+    public min: number | null = this.options.min.year;
 
     @Input()
-    disabledItemHandler: TuiBooleanHandler<number> = ALWAYS_FALSE_HANDLER;
+    public max: number | null = this.options.max.year;
 
-    open = false;
-    nativeValue = '';
+    @Input()
+    public disabledItemHandler: TuiBooleanHandler<number> = ALWAYS_FALSE_HANDLER;
 
-    readonly initialItem = new Date().getFullYear();
+    public nativeValue = '';
 
     @HostBinding('attr.data-size')
-    get size(): TuiSizeL | TuiSizeS {
+    public get size(): TuiSizeL | TuiSizeS {
         return this.textfieldSize.size;
     }
 
-    get computedMin(): number {
+    public get computedMin(): number {
         return this.min ?? this.options.min.year;
     }
 
-    get computedMax(): number {
+    public get computedMax(): number {
         return this.max ?? this.options.max.year;
     }
 
-    get nativeFocusableElement(): HTMLInputElement | null {
+    public get nativeFocusableElement(): HTMLInputElement | null {
         return this.textfield?.nativeFocusableElement || null;
     }
 
-    get focused(): boolean {
+    public get focused(): boolean {
         return !!this.textfield?.focused;
     }
 
-    get calendarIcon(): TuiInputDateOptions['icon'] {
+    public get calendarIcon(): TuiInputDateOptions['icon'] {
         return this.options.icon;
     }
 
     @tuiPure
-    getMaskOptions(min: number, max: number): MaskitoOptions {
+    public getMaskOptions(min: number, max: number): MaskitoOptions {
         return {
             ...maskitoNumberOptionsGenerator({
                 min,
@@ -100,29 +100,29 @@ export class TuiInputYearComponent
         };
     }
 
-    onValueChange(value: string): void {
+    public onValueChange(value: string): void {
         this.value = value ? Number(value) : null;
     }
 
-    onYearClick({year}: TuiYear): void {
+    public onYearClick({year}: TuiYear): void {
         this.value = year;
         this.updateNativeValue(year);
         this.onOpenChange(false);
     }
 
-    onFocused(focused: boolean): void {
+    public onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
 
-    onOpenChange(open: boolean): void {
+    public onOpenChange(open: boolean): void {
         this.open = open;
     }
 
-    toggle(): void {
+    public toggle(): void {
         this.open = !this.open;
     }
 
-    override writeValue(value: number | null): void {
+    public override writeValue(value: number | null): void {
         super.writeValue(value);
         this.updateNativeValue(value);
     }

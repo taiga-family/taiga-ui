@@ -17,11 +17,11 @@ import {TUI_FIRST_DAY_OF_WEEK} from '@taiga-ui/core';
     ],
 })
 export class TuiTokensExample9 {
-    readonly provideFirstDayOfWeekToken = import(
+    protected readonly provideFirstDayOfWeekToken = import(
         './provide-first-day-of-week-token.md?raw'
     );
 
-    readonly customizableComponentsViaThisToken = [
+    protected readonly customizableComponentsViaThisToken = [
         {name: 'Calendar', link: '/components/calendar', fragment: 'localization'},
         {
             name: 'CalendarRange',

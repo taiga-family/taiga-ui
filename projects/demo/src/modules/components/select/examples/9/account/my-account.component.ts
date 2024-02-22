@@ -17,5 +17,5 @@ export interface MyAccount {
 })
 export class ExampleMyAccountComponent {
     @Input()
-    account!: MyAccount;
+    public account!: MyAccount;
 }

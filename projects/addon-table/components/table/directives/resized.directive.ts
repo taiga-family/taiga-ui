@@ -14,7 +14,7 @@ export class TuiResizedDirective {
         inject(TUI_ELEMENT_REF).nativeElement;
 
     @Output()
-    readonly tuiResized = tuiTypedFromEvent(this.el, 'mousedown').pipe(
+    public readonly tuiResized = tuiTypedFromEvent(this.el, 'mousedown').pipe(
         tuiPreventDefault(),
         switchMap(() => {
             const {width, right} = this.parentRef.getBoundingClientRect();

@@ -9,37 +9,37 @@ import {TuiSizeS} from '@taiga-ui/core';
     changeDetection,
 })
 export class ExampleTuiLegendItemComponent {
-    readonly exampleModule = import('./examples/import/import-module.md?raw');
+    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
 
-    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
         LESS: import('./examples/1/index.less?raw'),
     };
 
-    readonly example2: TuiDocExample = {
+    protected readonly example2: TuiDocExample = {
         TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
         LESS: import('./examples/2/index.less?raw'),
     };
 
-    text = 'Text inside';
+    protected text = 'Text inside';
 
-    active = false;
+    protected active = false;
 
-    readonly sizeVariants: readonly TuiSizeS[] = ['s', 'm'];
+    protected readonly sizeVariants: readonly TuiSizeS[] = ['s', 'm'];
 
-    readonly colorVariants: readonly string[] = [
+    protected readonly colorVariants: readonly string[] = [
         'var(--tui-support-04)',
         'var(--tui-primary)',
         'var(--tui-secondary)',
     ];
 
-    size = this.sizeVariants[0];
+    protected size = this.sizeVariants[0];
 
-    disabled = false;
+    protected disabled = false;
 
-    color = '';
+    protected color = '';
 }

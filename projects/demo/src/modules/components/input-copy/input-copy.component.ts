@@ -21,31 +21,31 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
 })
 export class ExampleTuiInputCopyComponent extends AbstractExampleTuiControl {
     @ViewChild('customTemplate')
-    customTemplate: PolymorpheusContent;
+    protected customTemplate: PolymorpheusContent;
 
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
     };
 
-    readonly exampleModule = import('./examples/import/import-module.md?raw');
-    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
-    readonly exampleForm = import('./examples/import/declare-form.md?raw');
+    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
+    protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    protected readonly exampleForm = import('./examples/import/declare-form.md?raw');
 
-    readonly control = new FormControl('', Validators.required);
+    protected override readonly maxLengthVariants: readonly number[] = [10];
 
-    override readonly maxLengthVariants: readonly number[] = [10];
+    protected override readonly maxLength = null;
 
-    override readonly maxLength = null;
+    protected readonly successMessageVariants = ['Copied', 'Template'];
 
-    readonly successMessageVariants = ['Copied', 'Template'];
+    protected successMessage = this.successMessageVariants[0];
 
-    successMessage = this.successMessageVariants[0];
+    protected messageDirection = this.hintDirectionVariants[0];
+    protected messageMode = this.hintAppearanceVariants[0];
 
-    messageDirection = this.hintDirectionVariants[0];
-    messageMode = this.hintAppearanceVariants[0];
+    public readonly control = new FormControl('', Validators.required);
 
-    get notificationTemplate(): PolymorpheusContent {
+    public get notificationTemplate(): PolymorpheusContent {
         return this.successMessage === 'Template'
             ? this.customTemplate
             : this.successMessage;

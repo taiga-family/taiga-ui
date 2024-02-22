@@ -28,7 +28,7 @@ describe('Highlight Directive', () => {
     })
     class TestHighlightComponent {
         @Input()
-        code?: string | null;
+        public code?: string | null;
     }
 
     beforeEach(waitForAsync(async () => {

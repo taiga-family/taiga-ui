@@ -21,9 +21,9 @@ function flatten(item: TreeNode): readonly TreeNode[] {
     changeDetection,
 })
 export class TuiTreeExample6 {
-    map = new Map<TreeNode, boolean>();
+    protected map = new Map<TreeNode, boolean>();
 
-    readonly data: TreeNode = {
+    protected readonly data: TreeNode = {
         text: 'Topmost',
         children: [
             {
@@ -47,10 +47,19 @@ export class TuiTreeExample6 {
         ],
     };
 
-    readonly handler: TuiHandler<TreeNode, readonly TreeNode[]> = item =>
+    public onChecked(node: TreeNode, value: boolean): void {
+        flatten(node).forEach(item => this.map.set(item, value));
+
+        this.map = new Map(this.map.entries());
+    }
+
+    protected readonly handler: TuiHandler<TreeNode, readonly TreeNode[]> = item =>
         item.children || EMPTY_ARRAY;
 
-    readonly getValue = (item: TreeNode, map: Map<TreeNode, boolean>): boolean | null => {
+    protected readonly getValue = (
+        item: TreeNode,
+        map: Map<TreeNode, boolean>,
+    ): boolean | null => {
         const flat = flatten(item);
         const result = !!map.get(flat[0]);
 
@@ -62,10 +71,4 @@ export class TuiTreeExample6 {
 
         return result;
     };
-
-    onChecked(node: TreeNode, value: boolean): void {
-        flatten(node).forEach(item => this.map.set(item, value));
-
-        this.map = new Map(this.map.entries());
-    }
 }

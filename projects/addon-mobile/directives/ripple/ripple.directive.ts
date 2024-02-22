@@ -31,7 +31,7 @@ export class TuiRippleDirective {
     protected readonly nothing = tuiWithStyles(TuiRippleStylesComponent);
 
     @Input()
-    tuiRipple?: string | '';
+    public tuiRipple?: string | '';
 
     constructor() {
         const touchEnd$ = tuiTypedFromEvent(this.el, 'touchend');

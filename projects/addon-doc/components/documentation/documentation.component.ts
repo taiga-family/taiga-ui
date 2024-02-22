@@ -46,25 +46,26 @@ export class TuiDocDocumentationComponent implements AfterContentInit {
     private readonly destroy$ = inject(TuiDestroyService, {self: true});
     private readonly getColor = inject(TuiGetColorPipe);
     private readonly getOpacity = inject(TuiGetOpacityPipe);
-    protected readonly texts = inject(TUI_DOC_DOCUMENTATION_TEXTS);
-    protected readonly excludedProperties = inject(TUI_DOC_EXCLUDED_PROPERTIES);
-
-    @Input()
-    heading = '';
-
-    @Input()
-    showValues = true;
-
-    @Input()
-    isAPI = false;
 
     @ContentChildren(TuiDocDocumentationPropertyConnectorDirective)
-    propertiesConnectors: QueryList<TuiDocDocumentationPropertyConnectorDirective<any>> =
-        EMPTY_QUERY;
+    protected propertiesConnectors: QueryList<
+        TuiDocDocumentationPropertyConnectorDirective<any>
+    > = EMPTY_QUERY;
 
-    activeItemIndex = 0;
+    protected readonly texts = inject(TUI_DOC_DOCUMENTATION_TEXTS);
+    protected readonly excludedProperties = inject(TUI_DOC_EXCLUDED_PROPERTIES);
+    protected activeItemIndex = 0;
 
-    ngAfterContentInit(): void {
+    @Input()
+    public heading = '';
+
+    @Input()
+    public showValues = true;
+
+    @Input()
+    public isAPI = false;
+
+    public ngAfterContentInit(): void {
         tuiQueryListChanges(this.propertiesConnectors)
             .pipe(
                 switchMap(items => merge(...items.map(({changed$}) => changed$))),
@@ -74,15 +75,11 @@ export class TuiDocDocumentationComponent implements AfterContentInit {
             .subscribe();
     }
 
-    get type(): string {
+    public get type(): string {
         return this.isAPI ? this.texts[0] : this.texts[1];
     }
 
-    matcher: TuiTypedMatcher<
-        [TuiDocDocumentationPropertyConnectorDirective<any>, Set<string>]
-    > = (item, exclusions) => !exclusions.has(item.documentationPropertyName);
-
-    onColorChange(
+    public onColorChange(
         connector: TuiDocDocumentationPropertyConnectorDirective<string>,
         color: string,
     ): void {
@@ -102,7 +99,7 @@ export class TuiDocDocumentationComponent implements AfterContentInit {
         connector.onValueChange(result);
     }
 
-    onOpacityChange(
+    public onOpacityChange(
         connector: TuiDocDocumentationPropertyConnectorDirective<string>,
         opacity: number | null,
     ): void {
@@ -112,4 +109,8 @@ export class TuiDocDocumentationComponent implements AfterContentInit {
 
         connector.onValueChange(result);
     }
+
+    protected matcher: TuiTypedMatcher<
+        [TuiDocDocumentationPropertyConnectorDirective<any>, Set<string>]
+    > = (item, exclusions) => !exclusions.has(item.documentationPropertyName);
 }

@@ -10,7 +10,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiMultiSelectExample6 {
-    readonly items: readonly string[] = [
+    protected readonly items: readonly string[] = [
         'گراهام چپمن',
         'جان کلیز',
         'تری گیلیام',
@@ -19,5 +19,5 @@ export class TuiMultiSelectExample6 {
         'مایکل پیلین',
     ];
 
-    value: readonly string[] = [this.items[0]];
+    protected value: readonly string[] = [this.items[0]];
 }

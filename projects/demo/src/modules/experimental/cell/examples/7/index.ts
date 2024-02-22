@@ -10,7 +10,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiCellExample7 {
-    readonly items = [
+    protected readonly items = [
         {
             icon: 'tuiIconEyeLarge',
             title: 'Show more',
@@ -28,5 +28,5 @@ export class TuiCellExample7 {
         },
     ];
 
-    value = this.items[0];
+    protected value = this.items[0];
 }

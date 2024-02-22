@@ -11,7 +11,7 @@ export class TuiItemsWithMoreService extends Observable<number> {
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
     private readonly directive = inject(TuiItemsWithMoreDirective);
 
-    readonly stream$ = merge(
+    protected readonly stream$ = merge(
         this.directive.change$,
         inject(MutationObserverService),
         inject(ResizeObserverService),

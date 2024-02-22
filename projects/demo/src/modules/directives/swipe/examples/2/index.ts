@@ -12,13 +12,13 @@ import {Subject} from 'rxjs';
     changeDetection,
 })
 export class TuiSwipeExample2 {
-    readonly open$ = new Subject<boolean>();
+    protected readonly open$ = new Subject<boolean>();
 
-    toggle(open: boolean): void {
+    public toggle(open: boolean): void {
         this.open$.next(open);
     }
 
-    onSwipe(swipe: TuiSwipe): void {
+    public onSwipe(swipe: TuiSwipe): void {
         console.info(swipe.direction);
 
         if (swipe.direction === 'left') {

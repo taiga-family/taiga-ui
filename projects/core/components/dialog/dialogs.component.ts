@@ -28,7 +28,7 @@ import {TUI_DIALOGS} from './dialog.tokens';
 export class TuiDialogsComponent {
     private readonly doc = inject(DOCUMENT);
 
-    readonly dialogs$ = inject(TUI_DIALOGS).pipe(
+    protected readonly dialogs$ = inject(TUI_DIALOGS).pipe(
         tap(({length}) => {
             this.doc.defaultView?.document.documentElement.classList.toggle(
                 't-overscroll-none',

@@ -10,5 +10,5 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiTooltipExample2 {
-    value = '';
+    protected value = '';
 }

@@ -9,5 +9,5 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiTextareaExample5 {
-    value = '';
+    protected value = '';
 }

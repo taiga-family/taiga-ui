@@ -9,7 +9,7 @@ export class TuiCarouselScrollDirective {
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
 
     @Output()
-    readonly tuiCarouselScroll = tuiTypedFromEvent(this.el, 'wheel').pipe(
+    public readonly tuiCarouselScroll = tuiTypedFromEvent(this.el, 'wheel').pipe(
         filter(({deltaX}) => Math.abs(deltaX) > 20),
         throttleTime(500),
         map(({deltaX}) => Math.sign(deltaX)),

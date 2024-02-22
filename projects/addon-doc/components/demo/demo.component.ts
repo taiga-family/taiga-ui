@@ -62,73 +62,71 @@ export class TuiDocDemoComponent implements OnInit {
     private readonly urlSerializer = inject(UrlSerializer);
     private readonly urlStateHandler = inject(TUI_DOC_URL_STATE_HANDLER);
 
+    @ContentChild(TemplateRef)
+    protected readonly template: TemplateRef<Record<string, unknown>> | null = null;
+
+    protected testForm?: FormGroup;
+    protected readonly updateOnVariants = ['change', 'blur', 'submit'] as const;
+    protected updateOn: 'blur' | 'change' | 'submit' =
+        this.params.updateOn || this.updateOnVariants[0];
+
+    protected opaque = tuiCoerceValueIsTrue(this.params.sandboxOpaque ?? true);
+    protected expanded = tuiCoerceValueIsTrue(this.params.sandboxExpanded ?? false);
+    protected sandboxWidth = tuiToInteger(this.params.sandboxWidth);
+    protected readonly items: readonly TuiBrightness[] = ['onLight', 'onDark'];
+    protected readonly options = inject(TUI_ARROW_OPTIONS);
+    protected readonly isMobile = inject(TUI_IS_MOBILE);
+    protected readonly texts = inject(TUI_DOC_DEMO_TEXTS);
+
     @Input()
-    control: AbstractControl | null = null;
+    public control: AbstractControl | null = null;
 
     @Input()
     @HostBinding('class._sticky')
-    sticky = true;
+    public sticky = true;
 
-    @ContentChild(TemplateRef)
-    readonly template: TemplateRef<Record<string, unknown>> | null = null;
-
-    testForm?: FormGroup;
-
-    readonly updateOnVariants = ['change', 'blur', 'submit'] as const;
-
-    updateOn: 'blur' | 'change' | 'submit' =
-        this.params.updateOn || this.updateOnVariants[0];
-
-    opaque = tuiCoerceValueIsTrue(this.params.sandboxOpaque ?? true);
-    expanded = tuiCoerceValueIsTrue(this.params.sandboxExpanded ?? false);
-    mode: TuiBrightness | null = this.params.tuiMode || null;
-    sandboxWidth = tuiToInteger(this.params.sandboxWidth);
-
-    readonly change$ = new Subject<void>();
-    readonly items: readonly TuiBrightness[] = ['onLight', 'onDark'];
-    readonly options = inject(TUI_ARROW_OPTIONS);
-    readonly isMobile = inject(TUI_IS_MOBILE);
-    readonly texts = inject(TUI_DOC_DEMO_TEXTS);
+    public mode: TuiBrightness | null = this.params.tuiMode || null;
+    public readonly change$ = new Subject<void>();
 
     @HostListener('window:resize')
-    onResize(): void {
+    public onResize(): void {
         this.updateWidth();
         this.onMouseUp();
     }
 
     @HostListener('document:mouseup.silent')
-    onMouseUp(): void {
+    public onMouseUp(): void {
         this.updateUrl({sandboxWidth: this.sandboxWidth});
     }
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         this.createForm();
         this.updateWidth(this.sandboxWidth + this.delta);
     }
 
-    onModeChange(mode: TuiBrightness | null): void {
+    public onModeChange(mode: TuiBrightness | null): void {
         this.mode = mode;
         this.updateUrl({sandboxWidth: this.sandboxWidth});
         this.change$.next();
     }
 
-    toggleDetails(): void {
+    public toggleDetails(): void {
         this.expanded = !this.expanded;
         this.updateUrl({sandboxExpanded: this.expanded});
     }
 
-    changeOpaque(opaque: boolean): void {
+    public changeOpaque(opaque: boolean): void {
         this.opaque = opaque;
         this.updateUrl({sandboxOpaque: this.opaque});
     }
 
-    updateOnChange(updateOn: 'blur' | 'change' | 'submit'): void {
+    public updateOnChange(updateOn: 'blur' | 'change' | 'submit'): void {
         this.updateOn = updateOn;
         this.updateUrl({updateOn});
         this.createForm();
     }
 
-    updateWidth(width = NaN): void {
+    public updateWidth(width = NaN): void {
         if (!this.resizer || !this.resizeable || !this.content) {
             return;
         }

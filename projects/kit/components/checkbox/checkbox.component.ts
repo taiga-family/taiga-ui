@@ -37,32 +37,32 @@ export class TuiCheckboxComponent
 
     @Input()
     @HostBinding('attr.data-size')
-    size: TuiSizeL = this.options.size;
+    public size: TuiSizeL = this.options.size;
 
-    get nativeFocusableElement(): HTMLInputElement | null {
+    public get nativeFocusableElement(): HTMLInputElement | null {
         return !this.focusableElement || this.computedDisabled
             ? null
             : this.focusableElement.nativeElement;
     }
 
-    get focused(): boolean {
+    public get focused(): boolean {
         return tuiIsNativeFocused(this.nativeFocusableElement);
     }
 
-    override get computedFocusable(): boolean {
+    public override get computedFocusable(): boolean {
         return this.interactive && this.focusable;
     }
 
     /** @deprecated use 'value' setter */
-    onChecked(checked: boolean): void {
+    public onChecked(checked: boolean): void {
         this.value = checked;
     }
 
-    onFocused(focused: boolean): void {
+    public onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
 
-    onFocusVisible(focusVisible: boolean): void {
+    public onFocusVisible(focusVisible: boolean): void {
         this.updateFocusVisible(focusVisible);
     }
 }

@@ -20,7 +20,7 @@ export class TuiMobileDialogService extends TuiPopoverService<
     TuiMobileDialogOptions<any>,
     number
 > {
-    override open(
+    public override open(
         content: PolymorpheusContent<
             TuiMobileDialogOptions<any> & TuiPopoverContext<number>
         >,

@@ -9,5 +9,5 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiStepperExample2 {
-    readonly steps = ['Start Up', 'Cash In', 'Sell Out', 'Bro Down'];
+    protected readonly steps = ['Start Up', 'Cash In', 'Sell Out', 'Bro Down'];
 }

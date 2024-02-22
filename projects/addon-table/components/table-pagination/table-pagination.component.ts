@@ -24,71 +24,69 @@ export interface TuiTablePagination {
 })
 export class TuiTablePaginationComponent {
     protected readonly options = inject(TUI_TABLE_PAGINATION_OPTIONS);
+    protected open = false;
+    protected readonly icons = inject(TUI_SPIN_ICONS);
+    protected readonly spinTexts$ = inject(TUI_SPIN_TEXTS);
+    protected readonly texts$ = inject(TUI_TABLE_PAGINATION_TEXTS);
+    protected readonly commonIcons = inject(TUI_COMMON_ICONS);
 
     @Input()
-    items: readonly number[] = this.options.items;
+    public items: readonly number[] = this.options.items;
 
     @Input()
-    total = 0;
+    public total = 0;
 
     @Input()
-    page = 0;
+    public page = 0;
 
     @Input()
-    size = this.options.size;
+    public size = this.options.size;
 
     /**
      * TODO: Remove in 4.0
      * @deprecated use paginationChange
      */
     @Output()
-    readonly pageChange = new EventEmitter<number>();
+    public readonly pageChange = new EventEmitter<number>();
 
     /**
      * TODO: Remove in 4.0
      * @deprecated use paginationChange
      */
     @Output()
-    readonly sizeChange = new EventEmitter<number>();
+    public readonly sizeChange = new EventEmitter<number>();
 
     @Output()
-    readonly paginationChange = new EventEmitter<TuiTablePagination>();
+    public readonly paginationChange = new EventEmitter<TuiTablePagination>();
 
-    open = false;
-
-    readonly icons = inject(TUI_SPIN_ICONS);
-    readonly spinTexts$ = inject(TUI_SPIN_TEXTS);
-    readonly texts$ = inject(TUI_TABLE_PAGINATION_TEXTS);
-    readonly commonIcons = inject(TUI_COMMON_ICONS);
-
-    get pages(): number {
+    public get pages(): number {
         return Math.ceil(this.total / this.size);
     }
 
-    get start(): number {
+    public get start(): number {
         return this.page * this.size;
     }
 
-    get end(): number {
+    public get end(): number {
         return Math.min(this.start + this.size, this.total);
     }
 
-    get leftDisabled(): boolean {
+    public get leftDisabled(): boolean {
         return !this.start;
     }
 
-    get rightDisabled(): boolean {
+    public get rightDisabled(): boolean {
         return this.end === this.total;
     }
 
-    get pagination(): TuiTablePagination {
+    public get pagination(): TuiTablePagination {
         return {
             page: this.page,
             size: this.size,
         };
     }
 
-    onItem(size: number): void {
+    public onItem(size: number): void {
         const {start} = this;
 
         this.size = size;
@@ -99,13 +97,13 @@ export class TuiTablePaginationComponent {
         this.paginationChange.emit(this.pagination);
     }
 
-    back(): void {
+    public back(): void {
         this.page--;
         this.pageChange.emit(this.page);
         this.paginationChange.emit(this.pagination);
     }
 
-    forth(): void {
+    public forth(): void {
         this.page++;
         this.pageChange.emit(this.page);
         this.paginationChange.emit(this.pagination);

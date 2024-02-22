@@ -10,7 +10,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiLinkExample3 {
-    onClick(event: MouseEvent): void {
+    public onClick(event: MouseEvent): void {
         console.info('click', event);
     }
 }

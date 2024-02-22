@@ -11,16 +11,16 @@ import {MaskitoOptions} from '@maskito/core';
     changeDetection,
 })
 export class TuiInputExample3 {
-    readonly testForm = new FormGroup({
+    protected readonly testForm = new FormGroup({
         testValue1: new FormControl(''),
         testValue2: new FormControl(''),
     });
 
-    readonly maskOptions1: MaskitoOptions = {
+    protected readonly maskOptions1: MaskitoOptions = {
         mask: [/\d/, /\d/, /\d/, /\d/, ' ', /\d/, /\d/, /\d/, /\d/, /\d/, /\d/],
     };
 
-    readonly maskOptions2: MaskitoOptions = {
+    protected readonly maskOptions2: MaskitoOptions = {
         mask: [
             /\d/,
             /\d/,
@@ -39,5 +39,5 @@ export class TuiInputExample3 {
         ],
     };
 
-    readonly unmask = (value: string): string => value.replaceAll('-', '');
+    protected readonly unmask = (value: string): string => value.replaceAll('-', '');
 }

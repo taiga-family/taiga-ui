@@ -73,8 +73,14 @@ export class TuiInputPhoneComponent
     private readonly options = inject(TUI_INPUT_PHONE_OPTIONS);
     private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
 
+    @ContentChild(TuiDataListDirective, {read: TemplateRef})
+    protected readonly datalist?: TemplateRef<TuiContext<TuiActiveZoneDirective>>;
+
+    protected countryCode = this.options.countryCode;
+    protected open = false;
+
     @Input('countryCode')
-    set countryCodeSetter(newCountryCode: string) {
+    public set countryCodeSetter(newCountryCode: string) {
         const prevCountryCode = this.countryCode;
 
         this.countryCode = newCountryCode;
@@ -82,70 +88,63 @@ export class TuiInputPhoneComponent
     }
 
     @Input()
-    phoneMaskAfterCountryCode = this.options.phoneMaskAfterCountryCode;
+    public phoneMaskAfterCountryCode = this.options.phoneMaskAfterCountryCode;
 
     @Input()
-    allowText = this.options.allowText;
+    public allowText = this.options.allowText;
 
     @Input()
-    search = '';
+    public search = '';
 
     @Output()
-    readonly searchChange = new EventEmitter<string>();
-
-    @ContentChild(TuiDataListDirective, {read: TemplateRef})
-    readonly datalist?: TemplateRef<TuiContext<TuiActiveZoneDirective>>;
-
-    countryCode = this.options.countryCode;
-
-    open = false;
+    public readonly searchChange = new EventEmitter<string>();
 
     @HostBinding('attr.data-size')
-    get size(): TuiSizeL | TuiSizeS {
+    public get size(): TuiSizeL | TuiSizeS {
         return this.textfieldSize.size;
     }
 
-    get nativeFocusableElement(): HTMLInputElement | null {
+    public get nativeFocusableElement(): HTMLInputElement | null {
         return !this.textfield || this.computedDisabled
             ? null
             : this.textfield.nativeFocusableElement;
     }
 
-    get focused(): boolean {
+    public get focused(): boolean {
         return (
             tuiIsNativeFocused(this.nativeFocusableElement) ||
             (!!this.dropdown && this.dropdown.focused)
         );
     }
 
-    get nativeValue(): string {
+    public get nativeValue(): string {
         return (
             this.nativeFocusableElement?.value ||
             maskitoTransform(this.value, this.maskOptions)
         );
     }
 
-    set nativeValue(value: string) {
+    public set nativeValue(value: string) {
         if (this.nativeFocusableElement) {
             this.nativeFocusableElement.value = value;
         }
     }
 
-    get inputMode(): TuiInputMode {
+    public get inputMode(): TuiInputMode {
         return this.allowText ? 'text' : 'numeric';
     }
 
-    get canOpen(): boolean {
+    public get canOpen(): boolean {
         return this.interactive && !!this.datalist;
     }
 
-    get canClean(): boolean {
+    public get canClean(): boolean {
         return (
             this.nativeValue !== this.nonRemovablePrefix && this.textfieldCleaner.cleaner
         );
     }
 
-    get maskOptions(): MaskitoOptions {
+    public get maskOptions(): MaskitoOptions {
         return this.calculateMask(
             this.countryCode,
             this.phoneMaskAfterCountryCode,
@@ -154,7 +153,7 @@ export class TuiInputPhoneComponent
         );
     }
 
-    onActiveZone(active: boolean): void {
+    public onActiveZone(active: boolean): void {
         this.updateFocused(active);
 
         if (active && !this.nativeValue && !this.readOnly && !this.allowText) {
@@ -176,7 +175,7 @@ export class TuiInputPhoneComponent
         }
     }
 
-    onValueChange(value: string): void {
+    public onValueChange(value: string): void {
         const parsed = isText(value)
             ? value
             : value.replace(TUI_MASK_SYMBOLS_REGEXP, '').slice(0, this.maxPhoneLength);
@@ -190,7 +189,7 @@ export class TuiInputPhoneComponent
         }
     }
 
-    handleOption(item: string): void {
+    public handleOption(item: string): void {
         this.focusInput();
         this.value = item;
         this.nativeValue = maskitoTransform(this.value, this.maskOptions);
@@ -198,12 +197,12 @@ export class TuiInputPhoneComponent
         this.open = false;
     }
 
-    override setDisabledState(): void {
+    public override setDisabledState(): void {
         super.setDisabledState();
         this.open = false;
     }
 
-    override writeValue(value: string | null): void {
+    public override writeValue(value: string | null): void {
         super.writeValue(value);
         this.nativeValue = maskitoTransform(value || '', this.maskOptions);
         this.updateSearch('');

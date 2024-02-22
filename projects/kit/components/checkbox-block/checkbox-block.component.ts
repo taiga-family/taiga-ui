@@ -40,38 +40,38 @@ export class TuiCheckboxBlockComponent
     @ViewChild(TuiCheckboxComponent)
     private readonly checkbox?: TuiCheckboxComponent;
 
+    protected readonly modeDirective = inject(TuiModeDirective, {optional: true});
+
     @Input()
     @HostBinding('attr.data-align')
-    contentAlign: TuiHorizontalDirection = 'right';
+    public contentAlign: TuiHorizontalDirection = 'right';
 
     @Input()
     @HostBinding('class._hidden_input')
-    hideCheckbox = false;
+    public hideCheckbox = false;
 
     @Input()
     @HostBinding('attr.data-size')
-    size: TuiSizeL | TuiSizeXS = 'l';
+    public size: TuiSizeL | TuiSizeXS = 'l';
 
-    readonly modeDirective = inject(TuiModeDirective, {optional: true});
-
-    get nativeFocusableElement(): TuiNativeFocusableElement | null {
+    public get nativeFocusableElement(): TuiNativeFocusableElement | null {
         return this.checkbox?.nativeFocusableElement ?? null;
     }
 
     @HostBinding('class._active')
-    get checked(): boolean {
+    public get checked(): boolean {
         return this.value !== false && this.hideCheckbox;
     }
 
-    get checkboxSize(): TuiSizeL {
+    public get checkboxSize(): TuiSizeL {
         return this.size === 'l' ? 'l' : 'm';
     }
 
-    get focused(): boolean {
+    public get focused(): boolean {
         return tuiIsNativeFocused(this.nativeFocusableElement);
     }
 
-    get appearance(): TuiAppearance {
+    public get appearance(): TuiAppearance {
         if (!this.modeDirective?.mode) {
             return this.checked
                 ? TuiAppearance.WhiteblockActive
@@ -81,16 +81,16 @@ export class TuiCheckboxBlockComponent
         return this.checked ? TuiAppearance.Primary : TuiAppearance.Secondary;
     }
 
-    onFocused(focused: boolean): void {
+    public onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
 
-    onFocusVisible(focusVisible: boolean): void {
+    public onFocusVisible(focusVisible: boolean): void {
         this.updateFocusVisible(focusVisible);
     }
 
     /** @deprecated use 'value' setter */
-    onModelChange(value: boolean): void {
+    public onModelChange(value: boolean): void {
         this.value = value;
     }
 }

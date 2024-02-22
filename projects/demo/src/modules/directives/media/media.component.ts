@@ -8,30 +8,30 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
     changeDetection,
 })
 export class ExampleTuiMediaComponent {
-    readonly exampleModule = import('./examples/import/import-module.md?raw');
-    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
+    protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
     };
 
-    readonly example2: TuiDocExample = {
+    protected readonly example2: TuiDocExample = {
         TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
         LESS: import('./examples/2/index.less?raw'),
     };
 
-    readonly example3: TuiDocExample = {
+    protected readonly example3: TuiDocExample = {
         TypeScript: import('./examples/3/index.ts?raw'),
         HTML: import('./examples/3/index.html?raw'),
         LESS: import('./examples/3/index.less?raw'),
     };
 
-    readonly volumeVariants: readonly number[] = [1, 0.5, 0.25, 0];
+    protected readonly volumeVariants: readonly number[] = [1, 0.5, 0.25, 0];
 
-    playbackRate = 1;
-    currentTime = 0;
-    volume = this.volumeVariants[0];
-    paused = true;
+    protected playbackRate = 1;
+    protected currentTime = 0;
+    protected volume = this.volumeVariants[0];
+    protected paused = true;
 }

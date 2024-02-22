@@ -12,11 +12,11 @@ import {TuiRowContext} from '@taiga-ui/addon-table/interfaces';
 })
 export class TuiRowDirective<T extends Partial<Record<keyof T, any>>> {
     @Input()
-    tuiRowOf: readonly T[] = [];
+    public tuiRowOf: readonly T[] = [];
 
-    readonly template = inject(TemplateRef<TuiRowContext<T>>);
+    public readonly template = inject(TemplateRef<TuiRowContext<T>>);
 
-    static ngTemplateContextGuard<T>(
+    public static ngTemplateContextGuard<T>(
         _dir: TuiRowDirective<T>,
         _ctx: unknown,
     ): _ctx is TuiRowContext<T> {

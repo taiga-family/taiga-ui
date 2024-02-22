@@ -10,14 +10,14 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiValidatorExample1 {
-    readonly items = ['Email', 'Phone'];
+    protected readonly items = ['Email', 'Phone'];
 
-    type = this.items[0];
+    protected type = this.items[0];
 
-    readonly group = new FormGroup({
+    protected readonly group = new FormGroup({
         name: new FormControl('', Validators.required),
         contact: new FormControl('', Validators.required),
     });
 
-    readonly validator = Validators.email;
+    protected readonly validator = Validators.email;
 }

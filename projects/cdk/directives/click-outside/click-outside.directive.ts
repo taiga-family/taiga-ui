@@ -13,7 +13,10 @@ export class TuiClickOutsideDirective {
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
 
     @Output()
-    readonly tuiClickOutside: Observable<unknown> = fromEvent(this.doc, 'mouseup').pipe(
+    public readonly tuiClickOutside: Observable<unknown> = fromEvent(
+        this.doc,
+        'mouseup',
+    ).pipe(
         map(tuiGetActualTarget),
         filter(target => this.isOutside(target)),
         tuiZoneOptimized(this.zone),

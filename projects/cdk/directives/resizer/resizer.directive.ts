@@ -20,19 +20,19 @@ import {TuiResizeableDirective} from './resizeable.directive';
 export class TuiResizerDirective {
     private readonly resizeable: ElementRef<HTMLElement> = inject(TuiResizeableDirective);
 
+    protected x = NaN;
+    protected y = NaN;
+    protected width = 0;
+    protected height = 0;
+
     @Input()
-    tuiResizer: readonly [x: number, y: number] = [0, 0];
+    public tuiResizer: readonly [x: number, y: number] = [0, 0];
 
     @Output()
-    readonly tuiSizeChange = new EventEmitter<readonly [x: number, y: number]>();
-
-    x = NaN;
-    y = NaN;
-    width = 0;
-    height = 0;
+    public readonly tuiSizeChange = new EventEmitter<readonly [x: number, y: number]>();
 
     @HostBinding('style.cursor')
-    get cursor(): string {
+    public get cursor(): string {
         if (!this.tuiResizer[0]) {
             return 'ns-resize';
         }
@@ -49,12 +49,12 @@ export class TuiResizerDirective {
     }
 
     @HostListener('touchstart.silent.passive', ['$event'])
-    onTouchStart({touches}: TouchEvent): void {
+    public onTouchStart({touches}: TouchEvent): void {
         this.onMouseDown(touches[0].clientX, touches[0].clientY);
     }
 
     @HostListener('mousedown.silent.prevent', ['$event.x', '$event.y'])
-    onMouseDown(x: number, y: number): void {
+    public onMouseDown(x: number, y: number): void {
         this.x = x;
         this.y = y;
         this.width = this.resizeable.nativeElement.clientWidth;
@@ -62,7 +62,7 @@ export class TuiResizerDirective {
     }
 
     @HostListener('document:mousemove.silent', ['$event'])
-    onMouseMove({x, y, buttons}: MouseEvent): void {
+    public onMouseMove({x, y, buttons}: MouseEvent): void {
         if (!buttons) {
             this.onMouseUp();
         } else {
@@ -71,17 +71,17 @@ export class TuiResizerDirective {
     }
 
     @HostListener('document:touchmove.silent', ['$event'])
-    onTouchMove({touches}: TouchEvent): void {
+    public onTouchMove({touches}: TouchEvent): void {
         this.onMove(touches[0].clientX, touches[0].clientY);
     }
 
     @HostListener('document:mouseup.silent')
     @HostListener('document:touchend.silent')
-    onMouseUp(): void {
+    public onMouseUp(): void {
         this.x = NaN;
     }
 
-    onMove(x: number, y: number): void {
+    public onMove(x: number, y: number): void {
         if (Number.isNaN(this.x)) {
             return;
         }

@@ -13,14 +13,14 @@ describe('BarChart', () => {
     })
     class TestComponent {
         @ViewChild(TuiBarChartComponent)
-        readonly component!: TuiBarChartComponent;
+        protected readonly component!: TuiBarChartComponent;
 
-        readonly value = [
+        protected readonly value = [
             [1, 2, 3],
             [4, 5, 6],
         ];
 
-        max = NaN;
+        protected max = NaN;
     }
 
     let fixture: ComponentFixture<TestComponent>;

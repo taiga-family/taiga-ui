@@ -10,19 +10,19 @@ import {TuiDecimalSymbol} from '@taiga-ui/core';
     changeDetection,
 })
 export class ExampleTuiFormatNumberComponent {
-    readonly exampleModule = import('./examples/import/import-module.md?raw');
-    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
+    protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
     };
 
-    value = 100;
+    protected value = 100;
 
-    readonly decimalLimitVariants = [Infinity, 0, 2, 4];
-    decimalLimit = this.decimalLimitVariants[0];
+    protected readonly decimalLimitVariants = [Infinity, 0, 2, 4];
+    protected decimalLimit = this.decimalLimitVariants[0];
 
-    readonly decimalSeparatorVariants: TuiDecimalSymbol[] = [',', '.'];
-    decimalSeparator: TuiDecimalSymbol = this.decimalSeparatorVariants[0];
+    protected readonly decimalSeparatorVariants: TuiDecimalSymbol[] = [',', '.'];
+    protected decimalSeparator: TuiDecimalSymbol = this.decimalSeparatorVariants[0];
 }

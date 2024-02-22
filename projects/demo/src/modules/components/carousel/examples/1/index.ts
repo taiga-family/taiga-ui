@@ -10,9 +10,9 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiCarouselExample1 {
-    index = 2;
+    protected index = 2;
 
-    readonly items = [
+    protected readonly items = [
         'John Cleese',
         'Eric Idle',
         'Michael Palin',

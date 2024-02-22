@@ -10,9 +10,9 @@ export class TuiProjectClassDirective implements AfterViewChecked {
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
 
     @Input('tuiProjectClass')
-    classNames: readonly string[] = [];
+    public classNames: readonly string[] = [];
 
-    ngAfterViewChecked(): void {
+    public ngAfterViewChecked(): void {
         this.classNames.forEach(className =>
             this.el.classList.toggle(className, !!this.el.querySelector(`.${className}`)),
         );

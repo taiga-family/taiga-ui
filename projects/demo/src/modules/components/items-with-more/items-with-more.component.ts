@@ -8,21 +8,21 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
     changeDetection,
 })
 export class ExampleTuiItemsWithMoreComponent {
-    readonly exampleModule = import('./examples/import/import-module.md?raw');
-    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
+    protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
     };
 
-    readonly example2: TuiDocExample = {
+    protected readonly example2: TuiDocExample = {
         TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
         LESS: import('./examples/2/index.less?raw'),
     };
 
-    readonly items = [
+    protected readonly items = [
         'John Cleese',
         'Eric Idle',
         'Graham Chapman',
@@ -31,11 +31,11 @@ export class ExampleTuiItemsWithMoreComponent {
         'Terry Jones',
     ];
 
-    readonly requiredVariants = [-1, 2, 4];
+    protected readonly requiredVariants = [-1, 2, 4];
 
-    readonly itemsLimitVariants = [Infinity, 4, 2];
+    protected readonly itemsLimitVariants = [Infinity, 4, 2];
 
-    required = this.requiredVariants[0];
+    protected required = this.requiredVariants[0];
 
-    itemsLimit = this.itemsLimitVariants[0];
+    protected itemsLimit = this.itemsLimitVariants[0];
 }

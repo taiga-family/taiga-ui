@@ -41,30 +41,30 @@ export class TuiMultiSelectGroupComponent<T> {
     private readonly host = inject<TuiDataListHost<T>>(TUI_DATA_LIST_HOST);
     private readonly control = inject(NgControl);
 
+    protected readonly multiSelectTexts$ = inject(TUI_MULTI_SELECT_TEXTS);
+
     @HostBinding('class._label')
     @Input()
-    label = '';
+    public label = '';
 
-    readonly multiSelectTexts$ = inject(TUI_MULTI_SELECT_TEXTS);
-
-    get size(): TuiSizeL | TuiSizeXS {
+    public get size(): TuiSizeL | TuiSizeXS {
         return this.options.first?.size || 'm';
     }
 
     @tuiPure
-    get empty$(): Observable<boolean> {
+    public get empty$(): Observable<boolean> {
         return tuiQueryListChanges(this.options).pipe(map(({length}) => !length));
     }
 
     @tuiPure
-    get disabled$(): Observable<boolean> {
+    public get disabled$(): Observable<boolean> {
         return tuiQueryListChanges(this.options).pipe(
             map(items => items.every(({disabled}) => disabled)),
         );
     }
 
     @tuiPure
-    get value$(): Observable<boolean | null> {
+    public get value$(): Observable<boolean | null> {
         return combineLatest([this.items$, this.valueChanges$]).pipe(
             map(([items, current]) => {
                 let result = false;
@@ -86,7 +86,7 @@ export class TuiMultiSelectGroupComponent<T> {
         );
     }
 
-    onClick(checked: boolean | null): void {
+    public onClick(checked: boolean | null): void {
         if (!this.control.control) {
             return;
         }

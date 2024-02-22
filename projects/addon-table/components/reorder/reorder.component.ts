@@ -20,8 +20,13 @@ import {TUI_REORDER_OPTIONS} from './reorder.options';
 export class TuiReorderComponent<T> {
     private dragging = false;
 
+    protected order = new Map<number, number>();
+    protected unsortedItems: readonly T[] = [];
+    protected readonly options = inject(TUI_REORDER_OPTIONS);
+    protected readonly showHideText$ = inject(TUI_TABLE_SHOW_HIDE_MESSAGE);
+
     @Input()
-    set items(items: readonly T[]) {
+    public set items(items: readonly T[]) {
         if (
             items.length !== this.unsortedItems.length ||
             !items.every(item => this.unsortedItems.includes(item))
@@ -31,31 +36,24 @@ export class TuiReorderComponent<T> {
     }
 
     @Input()
-    enabled: readonly T[] = [];
+    public enabled: readonly T[] = [];
 
     @Output()
-    readonly itemsChange = new EventEmitter<T[]>();
+    public readonly itemsChange = new EventEmitter<T[]>();
 
     @Output()
-    readonly enabledChange = new EventEmitter<T[]>();
-
-    order = new Map<number, number>();
-
-    unsortedItems: readonly T[] = [];
-
-    readonly options = inject(TUI_REORDER_OPTIONS);
-    readonly showHideText$ = inject(TUI_TABLE_SHOW_HIDE_MESSAGE);
+    public readonly enabledChange = new EventEmitter<T[]>();
 
     @HostListener('focusout.stop')
-    noop(): void {}
+    public noop(): void {}
 
     @HostListener('pointerdown.silent')
-    onDrag(): void {
+    public onDrag(): void {
         this.dragging = true;
     }
 
     @HostListener('document:pointerup.silent')
-    onDrop(): void {
+    public onDrop(): void {
         if (!this.dragging) {
             return;
         }
@@ -64,15 +62,15 @@ export class TuiReorderComponent<T> {
         this.updateItems();
     }
 
-    isEnabled(item: T): boolean {
+    public isEnabled(item: T): boolean {
         return this.enabled.includes(item);
     }
 
-    getIcon(item: T): string {
+    public getIcon(item: T): string {
         return this.isEnabled(item) ? this.options.icons.hide : this.options.icons.show;
     }
 
-    toggle(toggled: T): void {
+    public toggle(toggled: T): void {
         this.enabled = this.isEnabled(toggled)
             ? this.enabled.filter(item => item !== toggled)
             : this.enabled.concat(toggled);
@@ -80,7 +78,7 @@ export class TuiReorderComponent<T> {
         this.updateEnabled();
     }
 
-    move(index: number, direction: number): void {
+    public move(index: number, direction: number): void {
         const oldIndex = this.order.get(index) ?? index;
 
         if (

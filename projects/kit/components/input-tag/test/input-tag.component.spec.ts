@@ -55,18 +55,18 @@ describe('InputTag', () => {
     })
     class TestComponent {
         @ViewChild(TuiInputTagComponent)
-        component!: TuiInputTagComponent;
+        protected component!: TuiInputTagComponent;
 
-        control = new FormControl([TAG]);
-        defaultInputs = false;
-        cleaner = true;
-        readOnly = false;
-        separator: RegExp | string = ',';
-        placeholder = 'Example';
-        labelOutside = true;
-        size: TuiSizeL | TuiSizeS = 'm';
-        hintContent: string | null = 'prompt';
-        tagValidator: TuiBooleanHandler<string> = ALWAYS_TRUE_HANDLER;
+        protected control = new FormControl([TAG]);
+        protected defaultInputs = false;
+        protected cleaner = true;
+        protected readOnly = false;
+        protected separator: RegExp | string = ',';
+        protected placeholder = 'Example';
+        protected labelOutside = true;
+        protected size: TuiSizeL | TuiSizeS = 'm';
+        protected hintContent: string | null = 'prompt';
+        protected tagValidator: TuiBooleanHandler<string> = ALWAYS_TRUE_HANDLER;
     }
 
     let fixture: ComponentFixture<TestComponent>;

@@ -30,21 +30,26 @@ export class TuiLoaderComponent {
     private readonly isIOS = inject(TUI_IS_IOS);
     private readonly options = inject(TUI_LOADER_OPTIONS);
 
+    @HostBinding('class._loading')
+    protected loading = true;
+
+    protected readonly isApple = tuiIsSafari(this.el) || this.isIOS;
+
     @Input()
     @HostBinding('attr.data-size')
-    size = this.options.size;
+    public size = this.options.size;
 
     @Input()
-    inheritColor = this.options.inheritColor;
+    public inheritColor = this.options.inheritColor;
 
     @Input()
-    overlay = this.options.overlay;
+    public overlay = this.options.overlay;
 
     @Input()
-    textContent: PolymorpheusContent;
+    public textContent: PolymorpheusContent;
 
     @Input()
-    set showLoader(value: boolean) {
+    public set showLoader(value: boolean) {
         // @bad TODO: https://github.com/angular/angular/issues/32083 think of a better way
         if (value && this.focused) {
             tuiBlurNativeFocused(this.doc);
@@ -53,24 +58,19 @@ export class TuiLoaderComponent {
         this.loading = value;
     }
 
-    @HostBinding('class._loading')
-    loading = true;
-
-    readonly isApple = tuiIsSafari(this.el) || this.isIOS;
-
-    get hasOverlay(): boolean {
+    public get hasOverlay(): boolean {
         return this.overlay && this.loading;
     }
 
-    get hasText(): boolean {
+    public get hasText(): boolean {
         return !!this.textContent;
     }
 
-    get isHorizontal(): boolean {
+    public get isHorizontal(): boolean {
         return !tuiSizeBigger(this.size);
     }
 
-    get focused(): boolean {
+    public get focused(): boolean {
         return tuiIsNativeFocusedIn(this.el);
     }
 }

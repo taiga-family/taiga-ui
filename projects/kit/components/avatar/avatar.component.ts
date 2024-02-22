@@ -21,64 +21,63 @@ import {TUI_AVATAR_OPTIONS} from './avatar.options';
 export class TuiAvatarComponent {
     private readonly options = inject(TUI_AVATAR_OPTIONS);
 
+    protected avatarUrl: SafeResourceUrl | string | null = null;
+    protected isUrlValid = false;
+
     @Input()
     @HostBinding('attr.data-size')
-    size = this.options.size;
+    public size = this.options.size;
 
     @Input('avatarUrl')
-    set avatarUrlSetter(avatarUrl: SafeResourceUrl | string | null) {
+    public set avatarUrlSetter(avatarUrl: SafeResourceUrl | string | null) {
         this.avatarUrl = avatarUrl;
         this.isUrlValid = !!avatarUrl && !this.iconAvatar;
     }
 
     @Input()
-    text = '';
+    public text = '';
 
     @Input()
-    fallback: TuiSafeHtml | null = null;
+    public fallback: TuiSafeHtml | null = null;
 
     @Input()
-    autoColor: boolean = this.options.autoColor;
+    public autoColor: boolean = this.options.autoColor;
 
     @Input()
     @HostBinding('class._rounded')
-    rounded: boolean = this.options.rounded;
-
-    avatarUrl: SafeResourceUrl | string | null = null;
-
-    isUrlValid = false;
+    public rounded: boolean = this.options.rounded;
 
     @HostBinding('style.background')
-    get bgColor(): string {
+    public get bgColor(): string {
         return this.autoColor ? tuiStringHashToHsl(this.text) : '';
     }
 
     @HostBinding('class._has-avatar')
-    get hasAvatar(): boolean {
+    public get hasAvatar(): boolean {
         return this.avatarUrl !== null && this.isUrlValid;
     }
 
-    get iconAvatar(): boolean {
+    public get iconAvatar(): boolean {
         return tuiIsString(this.avatarUrl) && !!this.avatarUrl?.startsWith('tuiIcon');
     }
 
-    get useFallback(): boolean {
+    public get useFallback(): boolean {
         return (
             !!this.fallback && !!this.avatarUrl && !this.isUrlValid && !this.text.length
         );
     }
 
-    get computedText(): string {
+    public get computedText(): string {
         return this.hasAvatar || this.iconAvatar || this.text === ''
             ? ''
             : this.getSlicedText(this.text, this.size);
     }
 
-    get stringAvatar(): string {
+    public get stringAvatar(): string {
         return this.iconAvatar ? String(this.avatarUrl) : '';
     }
 
-    onError(): void {
+    public onError(): void {
         this.isUrlValid = false;
     }
 

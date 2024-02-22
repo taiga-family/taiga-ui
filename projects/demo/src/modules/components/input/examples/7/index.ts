@@ -11,7 +11,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiInputExample7 {
-    readonly control = new FormControl('', [
+    public readonly control = new FormControl('', [
         Validators.required,
         Validators.minLength(5),
     ]);

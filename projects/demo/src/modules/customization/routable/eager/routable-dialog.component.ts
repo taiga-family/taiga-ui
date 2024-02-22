@@ -12,7 +12,7 @@ import {filter, map, shareReplay, takeUntil} from 'rxjs';
     providers: [TuiDestroyService],
 })
 export class RoutableDialogComponent {
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         'page.template.html': import('./examples/1/page-1.component.html?raw'),
         'page.module.ts': import('./examples/1/page-1.module.ts?raw'),
         'dialog-content.component.ts': import(
@@ -20,7 +20,7 @@ export class RoutableDialogComponent {
         ),
     };
 
-    readonly example2: TuiDocExample = {
+    protected readonly example2: TuiDocExample = {
         'page.template.html': import('./examples/2/page-2.component.html?raw'),
         'page.module.ts': import('./examples/2/page-2.module.ts?raw'),
         'dialog-content.component.ts': import(
@@ -28,14 +28,19 @@ export class RoutableDialogComponent {
         ),
     };
 
-    readonly addRouterOutlet = import('./examples/setup/add-router-outlet.md?raw');
-    readonly importModule = import('./examples/setup/import-module.md?raw');
-    readonly useRouteGenerator = import('./examples/setup/use-route-generator.md?raw');
+    protected readonly addRouterOutlet = import(
+        './examples/setup/add-router-outlet.md?raw'
+    );
+
+    protected readonly importModule = import('./examples/setup/import-module.md?raw');
+    protected readonly useRouteGenerator = import(
+        './examples/setup/use-route-generator.md?raw'
+    );
 
     /**
      * Helps to destroy router-outlet for named outlet example
      */
-    readonly isNamedOutletPage$ = inject(Router).events.pipe(
+    protected readonly isNamedOutletPage$ = inject(Router).events.pipe(
         filter((event): event is NavigationEnd => event instanceof NavigationEnd),
         map(event => event.url.includes('NamedOutlet')),
         shareReplay({refCount: true, bufferSize: 1}),

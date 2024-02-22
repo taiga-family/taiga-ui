@@ -95,14 +95,41 @@ export class TuiInputCardGroupedComponent
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
     private expireInert = false;
 
-    @Input()
-    exampleText = this.options.exampleText;
+    @ContentChild(TuiDataListDirective, {read: TemplateRef})
+    protected readonly dropdown: PolymorpheusContent;
+
+    @ContentChild(TuiDataListComponent)
+    protected readonly datalist?: TuiDataListComponent<TuiCard>;
+
+    protected exampleTextCVC = this.options.exampleTextCVC;
+
+    protected maskCVC: MaskitoOptions = {
+        mask: new Array(3).fill(TUI_DIGIT_REGEXP),
+    };
+
+    protected readonly maskCard: MaskitoOptions = {
+        mask: TUI_CARD_MASK,
+    };
+
+    protected readonly maskExpire: MaskitoOptions = maskitoDateOptionsGenerator({
+        mode: 'mm/yy',
+        separator: '/',
+    });
+
+    protected readonly mode$ = inject(TUI_MODE);
+    protected readonly cardGroupedTexts$ = inject(TUI_INPUT_CARD_GROUPED_TEXTS);
+    protected readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
+    protected readonly icons = inject(TUI_COMMON_ICONS);
+    protected readonly arrowOptions = inject(TUI_ARROW_OPTIONS);
 
     @Input()
-    cardValidator = this.options.cardValidator;
+    public exampleText = this.options.exampleText;
 
     @Input()
-    set codeLength(length: TuiCodeCVCLength) {
+    public cardValidator = this.options.cardValidator;
+
+    @Input()
+    public set codeLength(length: TuiCodeCVCLength) {
         this.exampleTextCVC = '0'.repeat(length);
         this.maskCVC = {
             mask: new Array(length).fill(TUI_DIGIT_REGEXP),
@@ -110,135 +137,108 @@ export class TuiInputCardGroupedComponent
     }
 
     @Output()
-    readonly autofilledChange = new EventEmitter<boolean>();
+    public readonly autofilledChange = new EventEmitter<boolean>();
 
-    @ContentChild(TuiDataListDirective, {read: TemplateRef})
-    readonly dropdown: PolymorpheusContent;
-
-    @ContentChild(TuiDataListComponent)
-    readonly datalist?: TuiDataListComponent<TuiCard>;
-
-    exampleTextCVC = this.options.exampleTextCVC;
-
-    maskCVC: MaskitoOptions = {
-        mask: new Array(3).fill(TUI_DIGIT_REGEXP),
-    };
-
-    readonly maskCard: MaskitoOptions = {
-        mask: TUI_CARD_MASK,
-    };
-
-    readonly maskExpire: MaskitoOptions = maskitoDateOptionsGenerator({
-        mode: 'mm/yy',
-        separator: '/',
-    });
-
-    open = false;
-
-    readonly mode$ = inject(TUI_MODE);
-    readonly cardGroupedTexts$ = inject(TUI_INPUT_CARD_GROUPED_TEXTS);
-    readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
-    readonly icons = inject(TUI_COMMON_ICONS);
-    readonly arrowOptions = inject(TUI_ARROW_OPTIONS);
+    public open = false;
 
     constructor() {
         super(inject(TUI_INPUT_CARD_GROUPED_OPTIONS));
     }
 
-    get nativeFocusableElement(): HTMLInputElement | null {
+    public get nativeFocusableElement(): HTMLInputElement | null {
         return this.inputCard?.nativeElement ?? null;
     }
 
-    get focused(): boolean {
+    public get focused(): boolean {
         return this.open || tuiIsNativeFocusedIn(this.el);
     }
 
-    get appearance(): string {
+    public get appearance(): string {
         return this.controller.appearance;
     }
 
-    get card(): string {
+    public get card(): string {
         return this.value?.card || '';
     }
 
-    get expire(): string {
+    public get expire(): string {
         return this.value?.expire || '';
     }
 
-    get cvc(): string {
+    public get cvc(): string {
         return this.value?.cvc || '';
     }
 
-    get hasCleaner(): boolean {
+    public get hasCleaner(): boolean {
         return !!this.value?.card?.trim() && !this.readOnly && !this.computedDisabled;
     }
 
-    get hasDropdown(): boolean {
+    public get hasDropdown(): boolean {
         return !!this.dropdown;
     }
 
-    get placeholderRaised(): boolean {
+    public get placeholderRaised(): boolean {
         return (this.computedFocused && !this.readOnly) || this.hasCardNumber;
     }
 
-    get hasCardNumber(): boolean {
+    public get hasCardNumber(): boolean {
         return !!this.value?.card?.trim();
     }
 
-    get idCard(): string {
+    public get idCard(): string {
         return `${this.id}_card`;
     }
 
-    get idExpire(): string {
+    public get idExpire(): string {
         return `${this.id}_expire`;
     }
 
-    get idCVC(): string {
+    public get idCVC(): string {
         return `${this.id}_cvc`;
     }
 
-    get isCardCollapsed(): boolean {
+    public get isCardCollapsed(): boolean {
         return this.isFocusable(this.card) && !this.cardFocused;
     }
 
-    get autocompleteExpire(): TuiAutofillFieldName {
+    public get autocompleteExpire(): TuiAutofillFieldName {
         return this.autocompleteEnabled ? 'cc-exp' : 'off';
     }
 
-    get autocompleteCVC(): TuiAutofillFieldName {
+    public get autocompleteCVC(): TuiAutofillFieldName {
         return this.autocompleteEnabled ? 'cc-csc' : 'off';
     }
 
-    get tailLength(): number {
+    public get tailLength(): number {
         return this.hasExtraSpace ? 5 : 4;
     }
 
     // Safari expiration date autofill workaround
-    get name(): 'ccexpiryyear' | null {
+    public get name(): 'ccexpiryyear' | null {
         return this.autocompleteEnabled ? 'ccexpiryyear' : null;
     }
 
-    get cardPrefilled(): boolean {
+    public get cardPrefilled(): boolean {
         return !!this.card.match(TUI_NON_DIGIT_REGEXP);
     }
 
-    get cvcPrefilled(): boolean {
+    public get cvcPrefilled(): boolean {
         return !!this.cvc.match(TUI_NON_DIGIT_REGEXP);
     }
 
-    get cardFocusable(): boolean {
+    public get cardFocusable(): boolean {
         return this.focusable && !this.cardPrefilled;
     }
 
-    get expireFocusable(): boolean {
+    public get expireFocusable(): boolean {
         return this.isFocusable(this.card) && !this.expireInert;
     }
 
-    get cvcFocusable(): boolean {
+    public get cvcFocusable(): boolean {
         return this.isFocusable(this.card);
     }
 
-    get masked(): string {
+    public get masked(): string {
         return this.cardPrefilled ? `*${this.card.slice(-4)}` : '*';
     }
 
@@ -247,19 +247,19 @@ export class TuiInputCardGroupedComponent
     }
 
     @HostListener('keydown.esc')
-    onEsc(): void {
+    public onEsc(): void {
         this.open = false;
     }
 
     @HostListener('keydown.arrowDown.prevent', ['$event.target', '1'])
     @HostListener('keydown.arrowUp.prevent', ['$event.target', '-1'])
-    onArrow(element: HTMLElement, step: number): void {
+    public onArrow(element: HTMLElement, step: number): void {
         this.open = this.hasDropdown;
         this.cdr.detectChanges();
         this.datalist?.onKeyDownArrow(element, step);
     }
 
-    handleOption(option: Partial<TuiCard>): void {
+    public handleOption(option: Partial<TuiCard>): void {
         const {card = '', expire = '', cvc = ''} = option;
         const {bin} = this;
         const element =
@@ -273,7 +273,7 @@ export class TuiInputCardGroupedComponent
         element?.focus();
     }
 
-    onCardChange(card: string): void {
+    public onCardChange(card: string): void {
         const {value, bin} = this;
         const parsed = card.split(' ').join('');
 
@@ -289,7 +289,7 @@ export class TuiInputCardGroupedComponent
         }
     }
 
-    onExpireChange(expire: string): void {
+    public onExpireChange(expire: string): void {
         this.updateProperty(expire, 'expire');
 
         if (
@@ -300,20 +300,20 @@ export class TuiInputCardGroupedComponent
         }
     }
 
-    onCVCChange(cvc: string): void {
+    public onCVCChange(cvc: string): void {
         this.updateProperty(cvc, 'cvc');
     }
 
-    transform({offsetWidth}: HTMLSpanElement): string {
+    public transform({offsetWidth}: HTMLSpanElement): string {
         return this.isCardCollapsed ? `translate3d(${offsetWidth}px, 0, 0)` : '';
     }
 
-    onActiveZoneChange(active: boolean): void {
+    public onActiveZoneChange(active: boolean): void {
         this.updateFocused(active);
         this.open = active && this.open;
     }
 
-    onMouseDown(event: MouseEvent): void {
+    public onMouseDown(event: MouseEvent): void {
         if (tuiIsElement(event.target) && tuiIsInput(event.target)) {
             return;
         }
@@ -322,23 +322,23 @@ export class TuiInputCardGroupedComponent
         this.focusInput();
     }
 
-    onScroll({currentTarget}: Event): void {
+    public onScroll({currentTarget}: Event): void {
         if (tuiIsElement(currentTarget)) {
             currentTarget.scrollLeft = 0;
         }
     }
 
-    clear(): void {
+    public clear(): void {
         this.expireInert = false;
         this.value = null;
         this.focusCard();
     }
 
-    toggle(): void {
+    public toggle(): void {
         this.open = !this.open;
     }
 
-    override writeValue(value: TuiCard | null): void {
+    public override writeValue(value: TuiCard | null): void {
         const {bin} = this;
 
         super.writeValue(value);
@@ -347,15 +347,15 @@ export class TuiInputCardGroupedComponent
     }
 
     /** Public API for manual focus management */
-    focusCard(): void {
+    public focusCard(): void {
         this.cardNumberAutofocusRef?.focus();
     }
 
-    focusExpire(): void {
+    public focusExpire(): void {
         this.expireCardAutofocusRef?.focus();
     }
 
-    focusCVC(): void {
+    public focusCVC(): void {
         this.cvcCardAutofocusRef?.focus();
     }
 

@@ -15,9 +15,7 @@ const yesterday = today.append({day: -1});
     changeDetection,
 })
 export class TuiInputDateRangeExample5 {
-    readonly control = new FormControl(new TuiDayRange(today, today));
-
-    readonly items = [
+    protected readonly items = [
         new TuiDayRangePeriod(
             new TuiDayRange(today, today),
             'Today',
@@ -29,4 +27,6 @@ export class TuiInputDateRangeExample5 {
             ({$implicit}) => `Yesterday (${$implicit.from})`,
         ),
     ];
+
+    public readonly control = new FormControl(new TuiDayRange(today, today));
 }

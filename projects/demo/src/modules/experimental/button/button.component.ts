@@ -9,41 +9,41 @@ import {TuiSizeL, TuiSizeXS} from '@taiga-ui/core';
     changeDetection,
 })
 export class ExampleTuiButtonComponent {
-    readonly exampleModule: TuiRawLoaderContent = import(
+    protected readonly exampleModule: TuiRawLoaderContent = import(
         './examples/import/import-module.md?raw'
     );
 
-    readonly exampleHtml: TuiRawLoaderContent = import(
+    protected readonly exampleHtml: TuiRawLoaderContent = import(
         './examples/import/insert-template.md?raw'
     );
 
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         HTML: import('./examples/1/index.html?raw'),
     };
 
-    readonly example2: TuiDocExample = {
+    protected readonly example2: TuiDocExample = {
         HTML: import('./examples/2/index.html?raw'),
     };
 
-    readonly example3: TuiDocExample = {
+    protected readonly example3: TuiDocExample = {
         HTML: import('./examples/3/index.html?raw'),
     };
 
-    readonly example4: TuiDocExample = {
+    protected readonly example4: TuiDocExample = {
         TypeScript: import('./examples/4/index.ts?raw'),
         HTML: import('./examples/4/index.html?raw'),
     };
 
-    readonly example5: TuiDocExample = {
+    protected readonly example5: TuiDocExample = {
         TypeScript: import('./examples/5/index.ts?raw'),
         HTML: import('./examples/5/index.html?raw'),
     };
 
-    readonly sizes: ReadonlyArray<TuiSizeL | TuiSizeXS> = ['xs', 's', 'm', 'l'];
+    protected readonly sizes: ReadonlyArray<TuiSizeL | TuiSizeXS> = ['xs', 's', 'm', 'l'];
 
-    size = this.sizes[3];
+    protected size = this.sizes[3];
 
-    readonly appearances = [
+    protected readonly appearances = [
         'primary',
         'accent',
         'secondary',
@@ -55,12 +55,12 @@ export class ExampleTuiButtonComponent {
         'floating',
     ];
 
-    appearance = this.appearances[0];
+    protected appearance = this.appearances[0];
 
-    readonly icons = ['', 'tuiIconSearch', 'tuiIconChevronDown'];
+    protected readonly icons = ['', 'tuiIconSearch', 'tuiIconChevronDown'];
 
-    iconLeft = this.icons[0];
-    iconRight = this.icons[0];
+    protected iconLeft = this.icons[0];
+    protected iconRight = this.icons[0];
 
-    loading = false;
+    protected loading = false;
 }

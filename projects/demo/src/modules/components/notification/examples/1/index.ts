@@ -10,6 +10,13 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiNotificationExample1 {
-    readonly statuses = ['neutral', 'info', 'success', 'warning', 'error'] as const;
-    readonly sizes = ['s', 'm', 'l'] as const;
+    protected readonly statuses = [
+        'neutral',
+        'info',
+        'success',
+        'warning',
+        'error',
+    ] as const;
+
+    protected readonly sizes = ['s', 'm', 'l'] as const;
 }

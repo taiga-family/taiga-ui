@@ -7,13 +7,13 @@ import {TuiVehicle} from './vehicle';
 
 @Directive()
 export abstract class AbstractTuiDriverDirective implements OnInit {
-    abstract type: string;
+    public abstract type: string;
 
     private readonly destroy$ = inject(TuiDestroyService, {self: true});
     private readonly drivers: readonly TuiDriver[] = inject<any>(TuiDriver);
     private readonly vehicles: readonly TuiVehicle[] = inject<any>(TuiVehicle);
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         const vehicle = this.vehicles.find(({type}) => type === this.type);
 
         merge(...this.drivers.filter(({type}) => type === this.type))

@@ -8,7 +8,7 @@ import {TuiTextareaComponent} from './textarea.component';
     providers: [tuiAsTextfieldHost(TuiTextareaDirective)],
 })
 export class TuiTextareaDirective extends AbstractTuiTextfieldHost<TuiTextareaComponent> {
-    onValueChange(value: string): void {
+    public onValueChange(value: string): void {
         this.host.onValueChange(value);
     }
 }

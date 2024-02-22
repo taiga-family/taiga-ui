@@ -9,9 +9,9 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiStringifyExample1 {
-    value = null;
+    protected value = null;
 
-    readonly items = [
+    protected readonly items = [
         {
             name: 'John Cleese',
             role: 'Black Knight',

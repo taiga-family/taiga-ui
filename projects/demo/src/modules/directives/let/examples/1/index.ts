@@ -10,5 +10,5 @@ import {interval, startWith} from 'rxjs';
     changeDetection,
 })
 export class TuiLetExample1 {
-    timer$ = interval(1000).pipe(startWith(0));
+    protected timer$ = interval(1000).pipe(startWith(0));
 }

@@ -11,5 +11,5 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiInputNumberExample1 {
-    readonly control = new FormControl(100);
+    public readonly control = new FormControl(100);
 }

@@ -17,7 +17,7 @@ describe('Avatar component options', () => {
     })
     class TestComponent {
         @ViewChild(TuiAvatarComponent, {static: true})
-        component!: TuiAvatarComponent;
+        protected component!: TuiAvatarComponent;
     }
 
     beforeEach(() => {

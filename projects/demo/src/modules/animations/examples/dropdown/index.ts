@@ -13,13 +13,13 @@ import {tuiDropdownAnimation, TuiDurationOptions} from '@taiga-ui/core';
     animations: [tuiDropdownAnimation],
 })
 export class TuiDropdownExample {
-    @Input()
-    speed = 0;
+    protected isOpen = false;
 
-    isOpen = false;
+    @Input()
+    public speed = 0;
 
     @tuiPure
-    getAnimation(duration: number): TuiDurationOptions {
+    public getAnimation(duration: number): TuiDurationOptions {
         return {value: '', params: {duration}};
     }
 }

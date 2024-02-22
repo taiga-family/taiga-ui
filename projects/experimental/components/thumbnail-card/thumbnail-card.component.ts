@@ -16,24 +16,24 @@ import {TUI_ICON_RESOLVER, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiThumbnailCardComponent {
+    protected readonly options = inject(TUI_INPUT_CARD_OPTIONS);
+    protected readonly resolver = inject<TuiStringHandler<string>>(TUI_ICON_RESOLVER);
+
     @Input()
     @HostBinding('attr.data-size')
-    size: TuiSizeL | TuiSizeS = 'm';
+    public size: TuiSizeL | TuiSizeS = 'm';
 
     @Input()
-    paymentSystem: TuiPaymentSystem | null = null;
+    public paymentSystem: TuiPaymentSystem | null = null;
 
     @Input()
-    iconLeft = '';
+    public iconLeft = '';
 
     @Input()
-    iconRight = '';
-
-    readonly options = inject(TUI_INPUT_CARD_OPTIONS);
-    readonly resolver = inject<TuiStringHandler<string>>(TUI_ICON_RESOLVER);
+    public iconRight = '';
 
     // TODO: Revisit this approach in 4.0 when icons are moved away from InputCard options
-    get isMono(): boolean {
+    public get isMono(): boolean {
         switch (this.paymentSystem) {
             case 'mir':
             case 'visa':

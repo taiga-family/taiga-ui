@@ -10,5 +10,5 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiInputTagExample1 {
-    readonly control = new FormControl<string[]>([]);
+    public readonly control = new FormControl<string[]>([]);
 }

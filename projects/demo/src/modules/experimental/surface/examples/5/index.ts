@@ -10,5 +10,5 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiSurfaceExample5 {
-    value = null;
+    protected value = null;
 }

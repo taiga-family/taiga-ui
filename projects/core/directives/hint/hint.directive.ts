@@ -41,37 +41,37 @@ export class TuiHintDirective<C>
     private readonly options = inject(TUI_HINT_OPTIONS);
 
     @Input('tuiHint')
-    content: PolymorpheusContent<C>;
+    public content: PolymorpheusContent<C>;
 
     @Input('tuiHintContext')
-    context?: C;
+    public context?: C;
 
     @Input()
-    tuiHintAppearance: string | null = null;
+    public tuiHintAppearance: string | null = null;
 
-    component = inject(PolymorpheusComponent<unknown>);
-    readonly activeZone? = inject(TuiActiveZoneDirective, {optional: true});
-    readonly type = 'hint';
+    public component = inject(PolymorpheusComponent<unknown>);
+    public readonly activeZone? = inject(TuiActiveZoneDirective, {optional: true});
+    public readonly type = 'hint';
 
-    get appearance(): string {
+    public get appearance(): string {
         return this.tuiHintAppearance ?? this.options.appearance;
     }
 
-    ngOnChanges(): void {
+    public ngOnChanges(): void {
         if (!this.content) {
             this.toggle(false);
         }
     }
 
-    ngOnDestroy(): void {
+    public ngOnDestroy(): void {
         this.toggle(false);
     }
 
-    getClientRect(): ClientRect {
+    public getClientRect(): ClientRect {
         return this.el.getBoundingClientRect();
     }
 
-    toggle(show: boolean): void {
+    public toggle(show: boolean): void {
         if (show && this.content) {
             this.hintService.add(this);
         } else {

@@ -85,26 +85,9 @@ export class TuiInputDateTimeComponent
         {optional: true},
     );
 
-    @Input()
-    min: TuiDay | [TuiDay | null, TuiTime | null] | null = this.options.min;
-
-    @Input()
-    max: TuiDay | [TuiDay | null, TuiTime | null] | null = this.options.max;
-
-    @Input()
-    disabledItemHandler: TuiBooleanHandler<TuiDay> = ALWAYS_FALSE_HANDLER;
-
-    @Input()
-    defaultActiveYearMonth = TuiMonth.currentLocal();
-
-    @Input()
-    timeMode: TuiTimeMode = 'HH:MM';
-
-    open = false;
-
-    readonly type!: TuiContext<TuiActiveZoneDirective>;
-
-    readonly filler$: Observable<string> = combineLatest([
+    protected open = false;
+    protected readonly type!: TuiContext<TuiActiveZoneDirective>;
+    protected readonly filler$: Observable<string> = combineLatest([
         this.dateTexts$.pipe(
             map(dateTexts =>
                 changeDateSeparator(dateTexts[this.dateFormat], this.dateSeparator),
@@ -113,29 +96,44 @@ export class TuiInputDateTimeComponent
         this.timeTexts$.pipe(map(texts => texts[this.timeMode])),
     ]).pipe(map(fillers => this.getDateTimeString(...fillers)));
 
-    readonly dateFormat = inject(TUI_DATE_FORMAT);
-    readonly dateSeparator = inject(TUI_DATE_SEPARATOR);
-    readonly isMobile = inject(TUI_IS_MOBILE);
-    readonly isIos = inject(TUI_IS_IOS);
+    protected readonly dateFormat = inject(TUI_DATE_FORMAT);
+    protected readonly dateSeparator = inject(TUI_DATE_SEPARATOR);
+    protected readonly isMobile = inject(TUI_IS_MOBILE);
+    protected readonly isIos = inject(TUI_IS_IOS);
+
+    @Input()
+    public min: TuiDay | [TuiDay | null, TuiTime | null] | null = this.options.min;
+
+    @Input()
+    public max: TuiDay | [TuiDay | null, TuiTime | null] | null = this.options.max;
+
+    @Input()
+    public disabledItemHandler: TuiBooleanHandler<TuiDay> = ALWAYS_FALSE_HANDLER;
+
+    @Input()
+    public defaultActiveYearMonth = TuiMonth.currentLocal();
+
+    @Input()
+    public timeMode: TuiTimeMode = 'HH:MM';
 
     @HostBinding('attr.data-size')
-    get size(): TuiSizeL | TuiSizeS {
+    public get size(): TuiSizeL | TuiSizeS {
         return this.textfieldSize.size;
     }
 
-    get computedMin(): TuiDay | [TuiDay, TuiTime] {
+    public get computedMin(): TuiDay | [TuiDay, TuiTime] {
         return this.toTuiDay(this.min, this.options.min);
     }
 
-    get computedMax(): TuiDay | [TuiDay, TuiTime] {
+    public get computedMax(): TuiDay | [TuiDay, TuiTime] {
         return this.toTuiDay(this.max, this.options.max);
     }
 
-    get fillerLength(): number {
+    public get fillerLength(): number {
         return DATE_FILLER_LENGTH + DATE_TIME_SEPARATOR.length + this.timeMode.length;
     }
 
-    get maskOptions(): MaskitoOptions {
+    public get maskOptions(): MaskitoOptions {
         return this.calculateMask(
             this.computedMin,
             this.computedMax,
@@ -145,15 +143,15 @@ export class TuiInputDateTimeComponent
         );
     }
 
-    get nativeFocusableElement(): HTMLInputElement | null {
+    public get nativeFocusableElement(): HTMLInputElement | null {
         return this.textfield?.nativeFocusableElement ?? null;
     }
 
-    get focused(): boolean {
+    public get focused(): boolean {
         return !!this.textfield?.focused;
     }
 
-    get calendarIcon(): TuiInputDateOptions['icon'] {
+    public get calendarIcon(): TuiInputDateOptions['icon'] {
         return this.options.icon;
     }
 
@@ -161,11 +159,11 @@ export class TuiInputDateTimeComponent
         return this.options.nativePicker && this.isMobile;
     }
 
-    get showNativePicker(): boolean {
+    public get showNativePicker(): boolean {
         return this.nativePicker && this.timeMode === 'HH:MM';
     }
 
-    get computedValue(): string {
+    public get computedValue(): string {
         const {value, nativeValue, timeMode} = this;
         const [date, time] = value;
         const hasTimeInputChars = nativeValue.length > DATE_FILLER_LENGTH;
@@ -177,23 +175,23 @@ export class TuiInputDateTimeComponent
         return this.getDateTimeString(date, time, timeMode);
     }
 
-    get calendarValue(): TuiDay | null {
+    public get calendarValue(): TuiDay | null {
         return this.value[0];
     }
 
-    get calendarMinDay(): TuiDay {
+    public get calendarMinDay(): TuiDay {
         const min = this.computedMin;
 
         return Array.isArray(min) ? min[0] : min;
     }
 
-    get calendarMaxDay(): TuiDay {
+    public get calendarMaxDay(): TuiDay {
         const max = this.computedMax;
 
         return Array.isArray(max) ? max[0] : max;
     }
 
-    get computedActiveYearMonth(): TuiMonth {
+    public get computedActiveYearMonth(): TuiMonth {
         const {computedMin, computedMax} = this;
 
         return (
@@ -207,11 +205,11 @@ export class TuiInputDateTimeComponent
         );
     }
 
-    get nativeValue(): string {
+    public get nativeValue(): string {
         return this.nativeFocusableElement?.value || '';
     }
 
-    set nativeValue(value: string) {
+    public set nativeValue(value: string) {
         if (!this.nativeFocusableElement) {
             return;
         }
@@ -220,11 +218,11 @@ export class TuiInputDateTimeComponent
     }
 
     @HostListener('click')
-    onClick(): void {
+    public onClick(): void {
         this.open = !this.open;
     }
 
-    onValueChange(value: string): void {
+    public onValueChange(value: string): void {
         if (!value) {
             this.onOpenChange(true);
         }
@@ -246,7 +244,7 @@ export class TuiInputDateTimeComponent
         this.value = [parsedDate, parsedTime];
     }
 
-    onDayClick(day: TuiDay): void {
+    public onDayClick(day: TuiDay): void {
         const modifiedTime = this.value[1] && this.clampTime(this.value[1], day);
         const newCaretIndex = DATE_FILLER_LENGTH + DATE_TIME_SEPARATOR.length;
 
@@ -256,15 +254,15 @@ export class TuiInputDateTimeComponent
         this.open = false;
     }
 
-    onMonthChange(month: TuiMonth): void {
+    public onMonthChange(month: TuiMonth): void {
         this.month = month;
     }
 
-    onOpenChange(open: boolean): void {
+    public onOpenChange(open: boolean): void {
         this.open = open;
     }
 
-    onFocused(focused: boolean): void {
+    public onFocused(focused: boolean): void {
         this.updateFocused(focused);
 
         if (focused) {
@@ -297,12 +295,12 @@ export class TuiInputDateTimeComponent
         this.value = [this.value[0], parsedTime];
     }
 
-    override setDisabledState(): void {
+    public override setDisabledState(): void {
         super.setDisabledState();
         this.open = false;
     }
 
-    override writeValue(value: [TuiDay | null, TuiTime | null] | null): void {
+    public override writeValue(value: [TuiDay | null, TuiTime | null] | null): void {
         super.writeValue(value);
 
         this.nativeValue =

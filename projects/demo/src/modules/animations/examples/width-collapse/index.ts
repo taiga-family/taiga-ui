@@ -13,13 +13,13 @@ import {TuiDurationOptions, tuiWidthCollapse} from '@taiga-ui/core';
     animations: [tuiWidthCollapse],
 })
 export class TuiWidthCollapseExample {
-    @Input()
-    speed = 0;
+    protected isOpen = true;
 
-    isOpen = true;
+    @Input()
+    public speed = 0;
 
     @tuiPure
-    getAnimation(duration: number): TuiDurationOptions {
+    public getAnimation(duration: number): TuiDurationOptions {
         return {value: '', params: {duration}};
     }
 }

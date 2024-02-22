@@ -85,58 +85,57 @@ export class TuiInputDateMultiComponent
         AbstractTuiValueTransformer<readonly TuiDay[]>
     >(TUI_DATE_VALUE_TRANSFORMER, {optional: true});
 
-    @Input()
-    min: TuiDay | null = this.options.min;
-
-    @Input()
-    max: TuiDay | null = this.options.max;
-
-    @Input()
-    disabledItemHandler: TuiBooleanHandler<TuiDay> = ALWAYS_FALSE_HANDLER;
-
-    @Input()
-    markerHandler: TuiMarkerHandler = TUI_DEFAULT_MARKER_HANDLER;
-
-    @Input()
-    defaultActiveYearMonth = TuiMonth.currentLocal();
-
-    @Input()
-    inputHidden = false;
-
-    @Input()
-    @HostBinding('class._editable')
-    editable = true;
-
-    @Input()
-    search: string | null = '';
-
-    @Input()
-    placeholder = '';
-
-    @Input()
-    rows = 1;
-
-    maskitoOptions: MaskitoOptions = maskitoDateOptionsGenerator({
-        mode: 'dd/mm/yyyy',
-        separator: '.',
-        min: this.min?.toLocalNativeDate(),
-        max: this.max?.toLocalNativeDate(),
-    });
-
-    open = false;
-
-    readonly dateFormat = inject(TUI_DATE_FORMAT);
-    readonly dateSeparator = inject(TUI_DATE_SEPARATOR);
-    readonly isMobile = inject(TUI_IS_MOBILE);
-    readonly doneWord$ = inject(TUI_DONE_WORD);
-    readonly filler$: Observable<string> = this.dateTexts$.pipe(
+    protected open = false;
+    protected readonly dateFormat = inject(TUI_DATE_FORMAT);
+    protected readonly dateSeparator = inject(TUI_DATE_SEPARATOR);
+    protected readonly isMobile = inject(TUI_IS_MOBILE);
+    protected readonly doneWord$ = inject(TUI_DONE_WORD);
+    protected readonly filler$: Observable<string> = this.dateTexts$.pipe(
         map(dateTexts =>
             changeDateSeparator(dateTexts[this.dateFormat], this.dateSeparator),
         ),
     );
 
     @Input()
-    tagValidator: TuiBooleanHandler<string> = (tag: TuiDay | string) => {
+    public min: TuiDay | null = this.options.min;
+
+    @Input()
+    public max: TuiDay | null = this.options.max;
+
+    @Input()
+    public disabledItemHandler: TuiBooleanHandler<TuiDay> = ALWAYS_FALSE_HANDLER;
+
+    @Input()
+    public markerHandler: TuiMarkerHandler = TUI_DEFAULT_MARKER_HANDLER;
+
+    @Input()
+    public defaultActiveYearMonth = TuiMonth.currentLocal();
+
+    @Input()
+    public inputHidden = false;
+
+    @Input()
+    @HostBinding('class._editable')
+    public editable = true;
+
+    @Input()
+    public search: string | null = '';
+
+    @Input()
+    public placeholder = '';
+
+    @Input()
+    public rows = 1;
+
+    public maskitoOptions: MaskitoOptions = maskitoDateOptionsGenerator({
+        mode: 'dd/mm/yyyy',
+        separator: '.',
+        min: this.min?.toLocalNativeDate(),
+        max: this.max?.toLocalNativeDate(),
+    });
+
+    @Input()
+    public tagValidator: TuiBooleanHandler<string> = (tag: TuiDay | string) => {
         const {year, month, day} = tuiIsString(tag)
             ? TuiDay.parseRawDateString(tag)
             : tag;
@@ -151,52 +150,46 @@ export class TuiInputDateMultiComponent
     };
 
     @HostListener('click')
-    onClick(): void {
+    public onClick(): void {
         if (!this.isMobile) {
             this.open = !this.open;
         }
     }
 
-    readonly disabledItemHandlerWrapper: TuiMapper<
-        TuiBooleanHandler<string> | TuiBooleanHandler<TuiDay>,
-        TuiBooleanHandler<TuiStringifiableItem<any> | string>
-    > = handler => stringifiable =>
-        tuiIsString(stringifiable) || handler(stringifiable.item);
-
     @HostBinding('attr.data-size')
-    get size(): TuiSizeL | TuiSizeS {
+    public get size(): TuiSizeL | TuiSizeS {
         return this.textfieldSize.size;
     }
 
-    get nativeDropdownMode(): boolean {
+    public get nativeDropdownMode(): boolean {
         return this.isMobile && !this.editable;
     }
 
-    get computedMin(): TuiDay {
+    public get computedMin(): TuiDay {
         return this.min ?? this.options.min;
     }
 
-    get computedMax(): TuiDay {
+    public get computedMax(): TuiDay {
         return this.max ?? this.options.max;
     }
 
-    get nativeFocusableElement(): HTMLInputElement | null {
+    public get nativeFocusableElement(): HTMLInputElement | null {
         return this.textfield?.nativeFocusableElement || null;
     }
 
-    get focused(): boolean {
+    public get focused(): boolean {
         return !!this.textfield?.focused;
     }
 
-    get computedMobile(): boolean {
+    public get computedMobile(): boolean {
         return this.isMobile && !!this.mobileCalendar;
     }
 
-    get calendarIcon(): TuiInputDateOptions['icon'] {
+    public get calendarIcon(): TuiInputDateOptions['icon'] {
         return this.options.icon;
     }
 
-    get computedActiveYearMonth(): TuiMonth {
+    public get computedActiveYearMonth(): TuiMonth {
         return (
             this.month ||
             this.value[this.value.length - 1] ||
@@ -204,11 +197,11 @@ export class TuiInputDateMultiComponent
         );
     }
 
-    get canOpen(): boolean {
+    public get canOpen(): boolean {
         return this.interactive && !this.computedMobile;
     }
 
-    onIconClick(): void {
+    public onIconClick(): void {
         if (!this.computedMobile || !this.mobileCalendar) {
             return;
         }
@@ -233,7 +226,7 @@ export class TuiInputDateMultiComponent
             });
     }
 
-    onEnter(search: string): void {
+    public onEnter(search: string): void {
         if (!this.tagValidator(search)) {
             return;
         }
@@ -250,7 +243,7 @@ export class TuiInputDateMultiComponent
         this.done();
     }
 
-    onValueChange(value: readonly TuiDay[]): void {
+    public onValueChange(value: readonly TuiDay[]): void {
         this.control?.updateValueAndValidity({emitEvent: false});
 
         if (!value.length) {
@@ -260,28 +253,34 @@ export class TuiInputDateMultiComponent
         this.value = value;
     }
 
-    onDayClick(value: TuiDay): void {
+    public onDayClick(value: TuiDay): void {
         this.value = tuiImmutableUpdateInputDateMulti(this.value, value);
     }
 
-    done(): void {
+    public done(): void {
         this.open = false;
     }
 
-    onMonthChange(month: TuiMonth): void {
+    public onMonthChange(month: TuiMonth): void {
         this.month = month;
     }
 
-    onOpenChange(open: boolean): void {
+    public onOpenChange(open: boolean): void {
         this.open = open;
     }
 
-    onFocused(focused: boolean): void {
+    public onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
 
-    override setDisabledState(): void {
+    public override setDisabledState(): void {
         super.setDisabledState();
         this.open = false;
     }
+
+    protected readonly disabledItemHandlerWrapper: TuiMapper<
+        TuiBooleanHandler<string> | TuiBooleanHandler<TuiDay>,
+        TuiBooleanHandler<TuiStringifiableItem<any> | string>
+    > = handler => stringifiable =>
+        tuiIsString(stringifiable) || handler(stringifiable.item);
 }

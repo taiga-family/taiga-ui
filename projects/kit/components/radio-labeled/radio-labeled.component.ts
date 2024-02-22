@@ -41,38 +41,38 @@ export class TuiRadioLabeledComponent<T>
 
     private readonly options = inject(TUI_RADIO_OPTIONS);
 
-    @Input()
-    item?: T;
+    protected readonly mode$ = inject(TUI_MODE);
 
     @Input()
-    size: TuiSizeL = this.options.size;
+    public item?: T;
 
     @Input()
-    identityMatcher: TuiIdentityMatcher<T> = TUI_DEFAULT_IDENTITY_MATCHER;
+    public size: TuiSizeL = this.options.size;
 
     @Input()
-    pseudoDisabled = false;
+    public identityMatcher: TuiIdentityMatcher<T> = TUI_DEFAULT_IDENTITY_MATCHER;
 
-    readonly mode$ = inject(TUI_MODE);
+    @Input()
+    public pseudoDisabled = false;
 
-    get nativeFocusableElement(): TuiNativeFocusableElement | null {
+    public get nativeFocusableElement(): TuiNativeFocusableElement | null {
         return this.radio?.nativeFocusableElement ?? null;
     }
 
-    get focused(): boolean {
+    public get focused(): boolean {
         return !!this.radio && this.radio.focused;
     }
 
-    override get computedDisabled(): boolean {
+    public override get computedDisabled(): boolean {
         return this.disabled || this.pseudoDisabled;
     }
 
-    onFocused(focused: boolean): void {
+    public onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
 
     /** @deprecated use 'value' setter */
-    onModelChange(value: T): void {
+    public onModelChange(value: T): void {
         this.value = value;
     }
 }

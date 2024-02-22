@@ -11,11 +11,11 @@ export class TuiInputCardDirective
     extends AbstractTuiTextfieldHost<TuiInputCardComponent>
     implements AfterViewInit
 {
-    onValueChange(value: string): void {
+    public onValueChange(value: string): void {
         this.host.onValueChange(value);
     }
 
-    ngAfterViewInit(): void {
+    public ngAfterViewInit(): void {
         const {nativeFocusableElement} = this.host;
 
         if (!nativeFocusableElement) {

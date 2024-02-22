@@ -16,5 +16,5 @@ import {tuiTagOptionsProvider} from '@taiga-ui/kit';
     ],
 })
 export class TuiTagExample5 {
-    tag = 'Hello';
+    protected tag = 'Hello';
 }

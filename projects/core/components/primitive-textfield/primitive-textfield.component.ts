@@ -62,55 +62,53 @@ export class TuiPrimitiveTextfieldComponent
 
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
 
+    @ContentChildren(PolymorpheusOutletDirective, {descendants: true})
+    protected readonly content?: QueryList<unknown>;
+
+    protected autofilled = false;
+    protected readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
     protected readonly hintOptions = inject(TuiHintOptionsDirective, {optional: true});
     protected readonly options = inject(TUI_TEXTFIELD_OPTIONS);
 
     @Input()
-    editable = true;
+    public editable = true;
 
     /**
      * @deprecated:
      * use `tuiTextfieldOptionsProvider({iconCleaner: `tuiIconChevronUp`})`
      */
     @Input()
-    iconCleaner = this.options.iconCleaner;
+    public iconCleaner = this.options.iconCleaner;
 
     @Input()
     @HostBinding('class._readonly')
-    readOnly = false;
+    public readOnly = false;
 
     @Input()
-    invalid = false;
+    public invalid = false;
 
     @Input()
-    disabled = false;
+    public disabled = false;
 
     @Input()
-    value = '';
+    public value = '';
 
     @Output()
-    readonly valueChange = new EventEmitter<string>();
+    public readonly valueChange = new EventEmitter<string>();
 
-    @ContentChildren(PolymorpheusOutletDirective, {descendants: true})
-    readonly content?: QueryList<unknown>;
-
-    autofilled = false;
-
-    readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
-
-    get prefix(): string {
+    public get prefix(): string {
         return this.controller.prefix;
     }
 
-    get postfix(): string {
+    public get postfix(): string {
         return this.controller.postfix;
     }
 
-    get filler(): string {
+    public get filler(): string {
         return this.controller.filler;
     }
 
-    get nativeFocusableElement(): HTMLInputElement | null {
+    public get nativeFocusableElement(): HTMLInputElement | null {
         if (this.computedDisabled || !this.focusableElement) {
             return null;
         }
@@ -121,34 +119,34 @@ export class TuiPrimitiveTextfieldComponent
             nativeElement) as HTMLInputElement | null;
     }
 
-    get focused(): boolean {
+    public get focused(): boolean {
         return tuiIsNativeFocusedIn(this.el);
     }
 
-    get appearance(): string {
+    public get appearance(): string {
         return this.controller.appearance;
     }
 
     @HostBinding('attr.data-size')
-    get size(): TuiSizeL | TuiSizeS {
+    public get size(): TuiSizeL | TuiSizeS {
         return this.controller.size;
     }
 
     @HostBinding('class._invalid')
-    get computedInvalid(): boolean {
+    public get computedInvalid(): boolean {
         return !this.readOnly && !this.disabled && this.invalid;
     }
 
     @HostBinding('class._hidden')
-    get inputHidden(): boolean {
+    public get inputHidden(): boolean {
         return !!this.content?.length;
     }
 
-    get hasValue(): boolean {
+    public get hasValue(): boolean {
         return !!this.value;
     }
 
-    get hasCleaner(): boolean {
+    public get hasCleaner(): boolean {
         return (
             this.controller.cleaner &&
             this.hasValue &&
@@ -157,15 +155,15 @@ export class TuiPrimitiveTextfieldComponent
         );
     }
 
-    get hasTooltip(): boolean {
+    public get hasTooltip(): boolean {
         return !!this.hintOptions?.content && !this.computedDisabled;
     }
 
-    get hasCustomContent(): boolean {
+    public get hasCustomContent(): boolean {
         return !!this.controller.customContent;
     }
 
-    get placeholderVisible(): boolean {
+    public get placeholderVisible(): boolean {
         const hasDecor =
             this.nativeFocusableElement?.placeholder ||
             this.prefix ||
@@ -176,11 +174,11 @@ export class TuiPrimitiveTextfieldComponent
         return !this.hasValue && !showDecor;
     }
 
-    get hasPlaceholder(): boolean {
+    public get hasPlaceholder(): boolean {
         return this.placeholderRaisable || this.placeholderVisible;
     }
 
-    get placeholderRaised(): boolean {
+    public get placeholderRaised(): boolean {
         return (
             this.placeholderRaisable &&
             ((this.computedFocused && !this.readOnly) || this.hasValue || this.autofilled)
@@ -188,12 +186,12 @@ export class TuiPrimitiveTextfieldComponent
     }
 
     @HostBinding('style.--border-start.rem')
-    get borderStart(): number {
+    public get borderStart(): number {
         return this.iconLeftContent ? this.iconPaddingLeft : 0;
     }
 
     @HostBinding('style.--border-end.rem')
-    get borderEnd(): number {
+    public get borderEnd(): number {
         return tuiGetBorder(
             !!this.iconContent,
             this.hasCleaner,
@@ -203,15 +201,15 @@ export class TuiPrimitiveTextfieldComponent
         );
     }
 
-    get iconContent(): PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeS>> {
+    public get iconContent(): PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeS>> {
         return this.controller.icon;
     }
 
-    get iconLeftContent(): PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeS>> {
+    public get iconLeftContent(): PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeS>> {
         return this.controller.iconLeft;
     }
 
-    get showHint(): boolean {
+    public get showHint(): boolean {
         return (
             !!this.hintOptions?.content &&
             (this.options.hintOnDisabled || !this.computedDisabled)
@@ -219,30 +217,30 @@ export class TuiPrimitiveTextfieldComponent
     }
 
     // Safari expiration date autofill workaround
-    get name(): 'ccexpiryyear' | null {
+    public get name(): 'ccexpiryyear' | null {
         return this.nativeFocusableElement?.autocomplete === 'cc-exp'
             ? 'ccexpiryyear'
             : null;
     }
 
-    get computedId(): string {
+    public get computedId(): string {
         return this.nativeFocusableElement?.id || '';
     }
 
     @HostListener('focusin', ['true'])
     @HostListener('focusout', ['false'])
-    onFocused(focused: boolean): void {
+    public onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
 
     @tuiPure
-    getIndent$(element: HTMLElement): Observable<number> {
+    public getIndent$(element: HTMLElement): Observable<number> {
         return fromEvent(element, 'scroll').pipe(
             map(() => -1 * Math.max(element.scrollLeft, 0)),
         );
     }
 
-    clear(): void {
+    public clear(): void {
         if (this.nativeFocusableElement) {
             this.nativeFocusableElement.value = '';
         }
@@ -250,7 +248,7 @@ export class TuiPrimitiveTextfieldComponent
         this.updateValue('');
     }
 
-    onMouseDown(event: MouseEvent): void {
+    public onMouseDown(event: MouseEvent): void {
         const {nativeFocusableElement} = this;
 
         if (!nativeFocusableElement || event.target === nativeFocusableElement) {
@@ -261,15 +259,15 @@ export class TuiPrimitiveTextfieldComponent
         nativeFocusableElement.focus();
     }
 
-    onModelChange(value: string): void {
+    public onModelChange(value: string): void {
         this.updateValue(value);
     }
 
-    onAutofilled(autofilled: boolean): void {
+    public onAutofilled(autofilled: boolean): void {
         this.updateAutofilled(autofilled);
     }
 
-    detectRetargetFromLabel(event: Event): void {
+    public detectRetargetFromLabel(event: Event): void {
         if (tuiRetargetedBoundaryCrossing(event)) {
             event.stopImmediatePropagation();
         }

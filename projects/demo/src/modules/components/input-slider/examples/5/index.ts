@@ -12,13 +12,15 @@ import {TuiContext} from '@taiga-ui/cdk';
     changeDetection,
 })
 export class TuiInputSliderExample5 {
-    readonly max = 100;
-    readonly min = 0;
+    protected readonly max = 100;
+    protected readonly min = 0;
 
-    readonly smallControl = new FormControl(this.min);
-    readonly bigControl = new FormControl(this.max);
+    protected readonly smallControl = new FormControl(this.min);
+    protected readonly bigControl = new FormControl(this.max);
 
-    readonly customLabel = ({$implicit}: TuiContext<number>): number | string => {
+    protected readonly customLabel = ({
+        $implicit,
+    }: TuiContext<number>): number | string => {
         switch ($implicit) {
             case this.max:
                 // eslint-disable-next-line @typescript-eslint/quotes

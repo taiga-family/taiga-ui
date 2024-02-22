@@ -35,38 +35,38 @@ import {Observable, takeUntil} from 'rxjs';
     providers: [TuiDestroyService],
 })
 export class TuiPrimitiveCalendarRangeComponent implements OnInit {
-    @Input()
-    disabledItemHandler: TuiBooleanHandler<TuiDay> = ALWAYS_FALSE_HANDLER;
-
-    @Input()
-    markerHandler: TuiMarkerHandler = TUI_DEFAULT_MARKER_HANDLER;
-
-    @Input()
-    defaultViewedMonthFirst = TuiMonth.currentLocal();
-
-    @Input()
-    defaultViewedMonthSecond = TuiMonth.currentLocal().append({month: 1});
-
-    @Input()
-    min = TUI_FIRST_DAY;
-
-    @Input()
-    max = TUI_LAST_DAY;
-
-    @Input()
-    value: TuiDayRange | null = null;
-
-    @Output()
-    readonly dayClick = new EventEmitter<TuiDay>();
-
-    hoveredItem: TuiDay | null = null;
-    userViewedMonthFirst: TuiMonth = this.defaultViewedMonthFirst;
-    userViewedMonthSecond: TuiMonth = this.defaultViewedMonthSecond;
-
-    valueChanges = inject<Observable<TuiDayRange | null> | null>(
+    protected hoveredItem: TuiDay | null = null;
+    protected valueChanges = inject<Observable<TuiDayRange | null> | null>(
         TUI_CALENDAR_DATE_STREAM,
         {optional: true},
     );
+
+    @Input()
+    public disabledItemHandler: TuiBooleanHandler<TuiDay> = ALWAYS_FALSE_HANDLER;
+
+    @Input()
+    public markerHandler: TuiMarkerHandler = TUI_DEFAULT_MARKER_HANDLER;
+
+    @Input()
+    public defaultViewedMonthFirst = TuiMonth.currentLocal();
+
+    @Input()
+    public defaultViewedMonthSecond = TuiMonth.currentLocal().append({month: 1});
+
+    @Input()
+    public min = TUI_FIRST_DAY;
+
+    @Input()
+    public max = TUI_LAST_DAY;
+
+    @Input()
+    public value: TuiDayRange | null = null;
+
+    @Output()
+    public readonly dayClick = new EventEmitter<TuiDay>();
+
+    public userViewedMonthFirst: TuiMonth = this.defaultViewedMonthFirst;
+    public userViewedMonthSecond: TuiMonth = this.defaultViewedMonthSecond;
 
     constructor() {
         this.valueChanges
@@ -80,32 +80,29 @@ export class TuiPrimitiveCalendarRangeComponent implements OnInit {
             });
     }
 
-    get cappedUserViewedMonthSecond(): TuiMonth {
+    public get cappedUserViewedMonthSecond(): TuiMonth {
         return this.userViewedMonthSecond.monthBefore(this.max)
             ? this.userViewedMonthSecond
             : this.max;
     }
 
-    get cappedUserViewedMonthFirst(): TuiMonth {
+    public get cappedUserViewedMonthFirst(): TuiMonth {
         return this.userViewedMonthFirst.monthSameOrBefore(this.userViewedMonthSecond)
             ? this.userViewedMonthFirst
             : this.userViewedMonthSecond;
     }
 
-    monthOffset: TuiTypedMapper<[TuiMonth, number], TuiMonth> = (value, offset) =>
-        value.append({month: offset});
-
-    ngOnInit(): void {
+    public ngOnInit(): void {
         this.setInitialMonths();
     }
 
-    onSectionFirstViewedMonth(month: TuiMonth): void {
+    public onSectionFirstViewedMonth(month: TuiMonth): void {
         this.userViewedMonthFirst = month;
 
         this.userViewedMonthSecond = this.userViewedMonthFirst.append({month: 1});
     }
 
-    onSectionSecondViewedMonth(month: TuiMonth): void {
+    public onSectionSecondViewedMonth(month: TuiMonth): void {
         this.userViewedMonthSecond = month;
 
         this.userViewedMonthFirst = this.userViewedMonthSecond.append({
@@ -113,9 +110,14 @@ export class TuiPrimitiveCalendarRangeComponent implements OnInit {
         });
     }
 
-    onDayClick(day: TuiDay): void {
+    public onDayClick(day: TuiDay): void {
         this.dayClick.emit(day);
     }
+
+    protected monthOffset: TuiTypedMapper<[TuiMonth, number], TuiMonth> = (
+        value,
+        offset,
+    ) => value.append({month: offset});
 
     private setInitialMonths(): void {
         if (!this.value) {

@@ -10,7 +10,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiTilesExample1 {
-    items = [
+    protected items = [
         {w: 1, h: 1, content: 'Item 1'},
         {w: 1, h: 1, content: 'Item 2'},
         {w: 2, h: 1, content: 'Item 3'},
@@ -22,5 +22,5 @@ export class TuiTilesExample1 {
         {w: 1, h: 1, content: 'Item 9'},
     ];
 
-    order = new Map();
+    protected order = new Map();
 }

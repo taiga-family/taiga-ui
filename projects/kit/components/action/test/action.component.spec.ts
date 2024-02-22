@@ -28,14 +28,14 @@ describe('Action', () => {
     })
     class TestComponent {
         @ViewChild(TuiActionComponent, {static: true})
-        component!: TuiActionComponent;
+        protected component!: TuiActionComponent;
 
         @ViewChild(TuiActionComponent, {read: ElementRef, static: true})
-        element!: ElementRef<Element>;
+        protected element!: ElementRef<Element>;
 
-        icon!: string;
+        protected icon!: string;
 
-        text!: string;
+        protected text!: string;
     }
 
     let fixture: ComponentFixture<TestComponent>;

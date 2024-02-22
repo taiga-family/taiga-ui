@@ -33,27 +33,21 @@ const ROTATION_ANGLE = 90;
 export class TuiPreviewComponent {
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
 
-    @Input()
-    zoomable = true;
+    protected minZoom = 1;
 
-    @Input()
-    rotatable = false;
+    protected width = 0;
+    protected height = 0;
 
-    minZoom = 1;
+    protected readonly texts$ = inject(TUI_PREVIEW_TEXTS);
+    protected readonly icons = inject(TUI_PREVIEW_ICONS);
 
-    width = 0;
-    height = 0;
-
-    readonly texts$ = inject(TUI_PREVIEW_TEXTS);
-    readonly icons = inject(TUI_PREVIEW_ICONS);
-
-    readonly zoom$ = new BehaviorSubject<number>(this.minZoom);
-    readonly rotation$ = new BehaviorSubject<number>(0);
-    readonly coordinates$ = new BehaviorSubject<readonly [number, number]>(
+    protected readonly zoom$ = new BehaviorSubject<number>(this.minZoom);
+    protected readonly rotation$ = new BehaviorSubject<number>(0);
+    protected readonly coordinates$ = new BehaviorSubject<readonly [number, number]>(
         EMPTY_COORDINATES,
     );
 
-    readonly transitioned$ = merge(
+    protected readonly transitioned$ = merge(
         tuiDragAndDropFrom(this.el).pipe(
             map(({stage}) => stage !== TuiDragStage.Continues),
         ),
@@ -65,12 +59,12 @@ export class TuiPreviewComponent {
         ),
     );
 
-    readonly cursor$ = tuiDragAndDropFrom(this.el).pipe(
+    protected readonly cursor$ = tuiDragAndDropFrom(this.el).pipe(
         map(({stage}) => (stage === TuiDragStage.Continues ? 'grabbing' : 'initial')),
         startWith('initial'),
     );
 
-    readonly wrapperTransform$ = combineLatest([
+    protected readonly wrapperTransform$ = combineLatest([
         this.coordinates$.pipe(map(([x, y]) => `${tuiPx(x)}, ${tuiPx(y)}`)),
         this.zoom$,
         this.rotation$,
@@ -81,11 +75,17 @@ export class TuiPreviewComponent {
         ),
     );
 
-    rotate(): void {
+    @Input()
+    public zoomable = true;
+
+    @Input()
+    public rotatable = false;
+
+    public rotate(): void {
         this.rotation$.next(this.rotation$.value - ROTATION_ANGLE);
     }
 
-    onPan(delta: readonly [number, number]): void {
+    public onPan(delta: readonly [number, number]): void {
         this.coordinates$.next(
             this.getGuardedCoordinates(
                 this.coordinates$.value[0] + delta[0],
@@ -94,19 +94,19 @@ export class TuiPreviewComponent {
         );
     }
 
-    onMutation(contentWrapper: HTMLElement): void {
+    public onMutation(contentWrapper: HTMLElement): void {
         const {clientWidth, clientHeight} = contentWrapper;
 
         this.refresh(clientWidth, clientHeight);
     }
 
-    onZoom({clientX, clientY, delta}: TuiZoom): void {
+    public onZoom({clientX, clientY, delta}: TuiZoom): void {
         if (this.zoomable) {
             this.processZoom(clientX, clientY, delta);
         }
     }
 
-    onResize(contentResizeEntries: readonly ResizeObserverEntry[]): void {
+    public onResize(contentResizeEntries: readonly ResizeObserverEntry[]): void {
         if (contentResizeEntries.length === 0) {
             return;
         }
@@ -116,12 +116,12 @@ export class TuiPreviewComponent {
         this.refresh(width, height);
     }
 
-    reset(): void {
+    public reset(): void {
         this.zoom$.next(this.minZoom);
         this.coordinates$.next(EMPTY_COORDINATES);
     }
 
-    setZoom(zoom: number): void {
+    public setZoom(zoom: number): void {
         this.zoom$.next(zoom);
         const [x, y] = this.coordinates$.value;
 

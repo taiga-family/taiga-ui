@@ -9,14 +9,14 @@ import {changeDetection} from '@demo/emulate/change-detection';
     changeDetection,
 })
 export class TuiMediaExample3 {
-    currentTime = 0;
-    paused = true;
+    protected currentTime = 0;
+    protected paused = true;
 
-    get icon(): string {
+    public get icon(): string {
         return this.paused ? 'tuiIconPlayLarge' : 'tuiIconPauseLarge';
     }
 
-    toggleState(): void {
+    public toggleState(): void {
         this.paused = !this.paused;
     }
 }

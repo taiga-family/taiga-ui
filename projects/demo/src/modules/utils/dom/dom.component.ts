@@ -8,5 +8,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
     changeDetection,
 })
 export class ExampleDomComponent {
-    importComponentExample = import('./examples/import/import-component.md?raw');
+    protected importComponentExample = import(
+        './examples/import/import-component.md?raw'
+    );
 }

@@ -20,33 +20,32 @@ import {TuiDocPageTabConnectorDirective} from './page-tab.directive';
     providers: PAGE_PROVIDERS,
 })
 export class TuiDocPageComponent {
-    @Input()
-    header = '';
-
-    @Input()
-    package = '';
-
-    @Input()
-    type = '';
-
-    @Input()
-    path = '';
-
-    @Input()
-    deprecated: boolean | '' = false;
-
     @ContentChildren(TuiDocPageTabConnectorDirective)
-    readonly tabConnectors: QueryList<TuiDocPageTabConnectorDirective> = EMPTY_QUERY;
+    protected readonly tabConnectors: QueryList<TuiDocPageTabConnectorDirective> =
+        EMPTY_QUERY;
 
-    activeItemIndex = 0;
+    protected activeItemIndex = 0;
+    protected readonly from = / /g;
+    protected readonly to = '_';
+    protected readonly defaultTabs = inject(TUI_DOC_DEFAULT_TABS);
+    protected readonly seeAlso = inject(PAGE_SEE_ALSO);
 
-    readonly from = / /g;
-    readonly to = '_';
+    @Input()
+    public header = '';
 
-    readonly defaultTabs = inject(TUI_DOC_DEFAULT_TABS);
-    readonly seeAlso = inject(PAGE_SEE_ALSO);
+    @Input()
+    public package = '';
 
-    get showSeeAlso(): boolean {
+    @Input()
+    public type = '';
+
+    @Input()
+    public path = '';
+
+    @Input()
+    public deprecated: boolean | '' = false;
+
+    public get showSeeAlso(): boolean {
         return !!this.seeAlso.length && this.activeItemIndex === 0;
     }
 }

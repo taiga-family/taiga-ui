@@ -10,12 +10,12 @@ import {TUI_DOC_MAP_PAGES, TUI_DOC_SEE_ALSO_TEXT} from '@taiga-ui/addon-doc/toke
 export class TuiDocSeeAlsoComponent {
     private readonly pages = inject(TUI_DOC_MAP_PAGES);
 
+    protected readonly text = inject(TUI_DOC_SEE_ALSO_TEXT);
+
     @Input()
-    seeAlso: readonly string[] = [];
+    public seeAlso: readonly string[] = [];
 
-    readonly text = inject(TUI_DOC_SEE_ALSO_TEXT);
-
-    getRouterLink(pageTitle: string): string {
+    public getRouterLink(pageTitle: string): string {
         return this.pages.get(pageTitle)?.route ?? '';
     }
 }

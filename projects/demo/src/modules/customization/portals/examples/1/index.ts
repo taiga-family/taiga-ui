@@ -12,13 +12,13 @@ import {CustomPortalService} from './portal/custom-portal.service';
 export class TuiPortalsExample1 {
     private readonly customPortalService = inject(CustomPortalService);
 
-    templates: Array<EmbeddedViewRef<unknown>> = [];
+    protected templates: Array<EmbeddedViewRef<unknown>> = [];
 
-    addTemplate(template: TemplateRef<unknown>): void {
+    public addTemplate(template: TemplateRef<unknown>): void {
         this.templates.push(this.customPortalService.addTemplate(template));
     }
 
-    removeTemplate(): void {
+    public removeTemplate(): void {
         const viewRef = this.templates.pop();
 
         if (viewRef) {

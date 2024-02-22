@@ -26,33 +26,33 @@ export class TuiCustomizationComponent implements AfterViewInit {
     private readonly sanitizer = inject(DomSanitizer);
     private variables = inject(TUI_DOC_CUSTOMIZATION_VARS);
 
-    readonly change$ = new Subject<void>();
+    protected readonly change$ = new Subject<void>();
 
-    get style(): SafeStyle {
+    public get style(): SafeStyle {
         return this.getStyle(this.sanitizer, this.stringify(this.variables));
     }
 
-    get keys(): readonly string[] {
+    public get keys(): readonly string[] {
         return this.getKeys(this.variables);
     }
 
-    get basic(): boolean {
+    public get basic(): boolean {
         return !this.hasDark && !this.hasLight;
     }
 
-    get hasLight(): boolean {
+    public get hasLight(): boolean {
         return this.keys.some(this.isLight);
     }
 
-    get hasDark(): boolean {
+    public get hasDark(): boolean {
         return this.keys.some(this.isDark);
     }
 
-    get mode(): TuiBrightness | null {
+    public get mode(): TuiBrightness | null {
         return this.demo?.mode || null;
     }
 
-    ngAfterViewInit(): void {
+    public ngAfterViewInit(): void {
         if (!this.demo) {
             return;
         }
@@ -62,22 +62,22 @@ export class TuiCustomizationComponent implements AfterViewInit {
         });
     }
 
-    isLight(key: string): boolean {
+    public isLight(key: string): boolean {
         return key.includes('onDark');
     }
 
-    isDark(key: string): boolean {
+    public isDark(key: string): boolean {
         return key.includes('onLight');
     }
 
-    onModelChange(variable: string, value: number | string): void {
+    public onModelChange(variable: string, value: number | string): void {
         this.variables = {
             ...this.variables,
             [variable]: tuiIsString(value) ? value : tuiPx(value),
         };
     }
 
-    getType(key: string): 'color' | 'number' | 'string' {
+    public getType(key: string): 'color' | 'number' | 'string' {
         const variable = this.variables[key];
 
         if (key.includes('boxshadow')) {
@@ -89,7 +89,7 @@ export class TuiCustomizationComponent implements AfterViewInit {
             : 'number';
     }
 
-    getVariable(key: string): number | string {
+    public getVariable(key: string): number | string {
         const variable = this.variables[key];
 
         return variable.includes('px') ? Number.parseInt(variable, 10) : variable;

@@ -17,7 +17,7 @@ interface TreeNode {
     changeDetection,
 })
 export class TuiTreeExample3 {
-    readonly data: TreeNode = {
+    protected readonly data: TreeNode = {
         text: 'Topmost',
         children: [
             {
@@ -42,6 +42,6 @@ export class TuiTreeExample3 {
         ],
     };
 
-    readonly handler: TuiHandler<TreeNode, readonly TreeNode[]> = item =>
+    protected readonly handler: TuiHandler<TreeNode, readonly TreeNode[]> = item =>
         item.children || EMPTY_ARRAY;
 }

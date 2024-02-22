@@ -29,7 +29,7 @@ export class TuiIosAutofocusHandler extends AbstractTuiAutofocusHandler {
         this.patchCssStyles();
     }
 
-    setFocus(): void {
+    public setFocus(): void {
         if (this.isTextFieldElement) {
             this.zone.runOutsideAngular(() => this.iosWebkitAutofocus());
         } else {

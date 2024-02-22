@@ -10,7 +10,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiAvatarExample4 {
-    readonly users = [
+    protected readonly users = [
         'Alex Inkin',
         'Vladimir Potekhin',
         'Nikita Barsukov',

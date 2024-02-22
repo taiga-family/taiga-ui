@@ -8,5 +8,5 @@ import {TuiHoveredService} from './hovered.service';
 })
 export class TuiHoveredDirective {
     @Output()
-    readonly tuiHoveredChange = inject(TuiHoveredService);
+    public readonly tuiHoveredChange = inject(TuiHoveredService);
 }

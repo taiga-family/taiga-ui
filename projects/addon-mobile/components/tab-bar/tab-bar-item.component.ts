@@ -9,15 +9,15 @@ import {TUI_ANIMATIONS_SPEED, tuiScaleIn, tuiToAnimationOptions} from '@taiga-ui
     animations: [tuiScaleIn],
 })
 export class TuiTabBarItemComponent {
-    @Input()
-    icon = '';
+    protected readonly options = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
 
     @Input()
-    badge?: number | null = null;
+    public icon = '';
 
-    readonly options = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
+    @Input()
+    public badge?: number | null = null;
 
-    format(value: number): string {
+    public format(value: number): string {
         return value > 999 ? '999+' : String(value);
     }
 }

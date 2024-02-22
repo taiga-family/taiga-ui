@@ -9,19 +9,19 @@ import {TuiInputTimeComponent} from './input-time.component';
     providers: [tuiAsTextfieldHost(TuiInputTimeDirective)],
 })
 export class TuiInputTimeDirective extends AbstractTuiTextfieldHost<TuiInputTimeComponent> {
-    override get value(): string {
+    public override get value(): string {
         return this.host.computedValue;
     }
 
-    get mode(): TuiTimeMode {
+    public get mode(): TuiTimeMode {
         return this.host.mode;
     }
 
-    get items(): readonly TuiTime[] {
+    public get items(): readonly TuiTime[] {
         return this.host.items;
     }
 
-    onValueChange(value: string): void {
+    public onValueChange(value: string): void {
         if (!value) {
             this.host.nativeValue = '';
         }
@@ -29,7 +29,7 @@ export class TuiInputTimeDirective extends AbstractTuiTextfieldHost<TuiInputTime
         this.host.onValueChange(value);
     }
 
-    override process(input: HTMLInputElement): void {
+    public override process(input: HTMLInputElement): void {
         input.inputMode = 'numeric';
     }
 }

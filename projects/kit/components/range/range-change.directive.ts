@@ -43,7 +43,7 @@ export class TuiRangeChangeDirective {
     );
 
     @Output()
-    readonly activeThumbChange = new EventEmitter<'left' | 'right'>();
+    public readonly activeThumbChange = new EventEmitter<'left' | 'right'>();
 
     constructor() {
         let activeThumb: 'left' | 'right';

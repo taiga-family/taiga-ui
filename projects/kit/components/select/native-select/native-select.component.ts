@@ -35,17 +35,17 @@ export class TuiNativeSelectComponent<T> extends AbstractTuiNativeSelect<
     T
 > {
     @Input()
-    items: readonly T[] | null = [];
+    public items: readonly T[] | null = [];
 
-    get stringify(): TuiItemsHandlers<T>['stringify'] {
+    public get stringify(): TuiItemsHandlers<T>['stringify'] {
         return this.host.stringify;
     }
 
-    selected(option: T): boolean {
+    public selected(option: T): boolean {
         return this.control.value === option;
     }
 
-    onValueChange(index: number): void {
+    public onValueChange(index: number): void {
         this.host.onValueChange(this.items?.[index] || null);
     }
 }

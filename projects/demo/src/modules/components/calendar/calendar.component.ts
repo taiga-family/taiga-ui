@@ -21,102 +21,101 @@ const ONE_DOT: [string] = ['var(--tui-success-fill)'];
     changeDetection,
 })
 export class ExampleTuiCalendarComponent {
-    readonly exampleModule = import('./examples/import/import-module.md?raw');
-    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
+    protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
     };
 
-    readonly example2: TuiDocExample = {
+    protected readonly example2: TuiDocExample = {
         TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
     };
 
-    readonly example3: TuiDocExample = {
+    protected readonly example3: TuiDocExample = {
         TypeScript: import('./examples/3/index.ts?raw'),
         HTML: import('./examples/3/index.html?raw'),
     };
 
-    readonly example4: TuiDocExample = {
+    protected readonly example4: TuiDocExample = {
         TypeScript: import('./examples/4/index.ts?raw'),
         HTML: import('./examples/4/index.html?raw'),
     };
 
-    readonly example5: TuiDocExample = {
+    protected readonly example5: TuiDocExample = {
         TypeScript: import('./examples/5/index.ts?raw'),
         HTML: import('./examples/5/index.html?raw'),
         LESS: import('./examples/5/index.less?raw'),
     };
 
-    readonly example6: TuiDocExample = {
+    protected readonly example6: TuiDocExample = {
         TypeScript: import('./examples/6/index.ts?raw'),
         HTML: import('./examples/6/index.html?raw'),
     };
 
-    readonly example7: TuiDocExample = {
+    protected readonly example7: TuiDocExample = {
         TypeScript: import('./examples/7/index.ts?raw'),
         HTML: import('./examples/7/index.html?raw'),
     };
 
-    showAdjacent = true;
+    protected showAdjacent = true;
 
-    readonly minVariants = [
+    protected readonly minVariants = [
         TUI_FIRST_DAY,
         new TuiDay(2017, 2, 5),
         new TuiDay(1900, 0, 1),
     ];
 
-    min = this.minVariants[0];
+    protected min = this.minVariants[0];
 
-    readonly maxVariants = [
+    protected readonly maxVariants = [
         TUI_LAST_DAY,
         new TuiDay(2020, 3, 30),
         new TuiDay(2300, 0, 1),
     ];
 
-    max = this.maxVariants[0];
+    protected max = this.maxVariants[0];
 
-    readonly minViewedMonthVariants = [
+    protected readonly minViewedMonthVariants = [
         new TuiMonth(0, 0),
         new TuiMonth(2017, 2),
         new TuiMonth(1900, 0),
     ];
 
-    minViewedMonth = this.minViewedMonthVariants[0];
+    protected minViewedMonth = this.minViewedMonthVariants[0];
 
-    readonly maxViewedMonthVariants = [
+    protected readonly maxViewedMonthVariants = [
         TUI_LAST_DAY,
         new TuiMonth(2020, 3),
         new TuiMonth(2300, 0),
     ];
 
-    maxViewedMonth = this.maxViewedMonthVariants[0];
+    protected maxViewedMonth = this.maxViewedMonthVariants[0];
 
-    readonly disabledItemHandlerVariants: ReadonlyArray<TuiBooleanHandler<TuiDay>> = [
-        ALWAYS_FALSE_HANDLER,
-        ({day}) => day % 3 === 0,
-    ];
+    protected readonly disabledItemHandlerVariants: ReadonlyArray<
+        TuiBooleanHandler<TuiDay>
+    > = [ALWAYS_FALSE_HANDLER, ({day}) => day % 3 === 0];
 
-    disabledItemHandler = this.disabledItemHandlerVariants[0];
+    protected disabledItemHandler = this.disabledItemHandlerVariants[0];
 
-    readonly markerHandlerVariants: readonly TuiMarkerHandler[] = [
+    protected readonly markerHandlerVariants: readonly TuiMarkerHandler[] = [
         TUI_DEFAULT_MARKER_HANDLER,
         (day: TuiDay) => (day.day % 2 === 0 ? TWO_DOTS : ONE_DOT),
     ];
 
-    markerHandler: TuiMarkerHandler = this.markerHandlerVariants[0];
+    protected markerHandler: TuiMarkerHandler = this.markerHandlerVariants[0];
 
-    readonly valueVariants: ReadonlyArray<TuiDay | TuiDayRange> = [
+    protected readonly valueVariants: ReadonlyArray<TuiDay | TuiDayRange> = [
         TuiDay.currentLocal(),
         new TuiDayRange(TuiDay.currentLocal(), TuiDay.currentLocal().append({day: 3})),
         new TuiDay(2020, 3, 21),
     ];
 
-    value: TuiDay | TuiDayRange | null = null;
+    protected value: TuiDay | TuiDayRange | null = null;
 
-    month = TuiMonth.currentLocal();
+    protected month = TuiMonth.currentLocal();
 
-    hoveredItem: TuiDay | null = null;
+    protected hoveredItem: TuiDay | null = null;
 }

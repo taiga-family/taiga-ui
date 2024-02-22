@@ -24,5 +24,5 @@ export class TuiCardLargeDirective {
     protected readonly nothing = tuiWithStyles(TuiCardComponent);
 
     @Input('tuiCardLarge')
-    space: '' | 'compact' | 'normal' = 'normal';
+    public space: '' | 'compact' | 'normal' = 'normal';
 }

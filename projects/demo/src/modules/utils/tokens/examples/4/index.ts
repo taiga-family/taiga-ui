@@ -10,5 +10,5 @@ import {TUI_IS_ANDROID} from '@taiga-ui/cdk';
     changeDetection,
 })
 export class TuiTokensExample4 {
-    readonly isAndroid = inject(TUI_IS_ANDROID);
+    protected readonly isAndroid = inject(TUI_IS_ANDROID);
 }

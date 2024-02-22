@@ -17,6 +17,6 @@ import {TUI_BUTTON_CLOSE_ICON} from './button-close.options';
     },
 })
 export class TuiButtonCloseDirective {
-    readonly resolver = inject<TuiStringHandler<string>>(TUI_ICON_RESOLVER);
-    readonly icon = inject(TUI_BUTTON_CLOSE_ICON);
+    protected readonly resolver = inject<TuiStringHandler<string>>(TUI_ICON_RESOLVER);
+    protected readonly icon = inject(TUI_BUTTON_CLOSE_ICON);
 }

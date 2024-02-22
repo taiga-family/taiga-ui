@@ -8,7 +8,7 @@ import {TuiInputCopyComponent} from './input-copy.component';
     providers: [tuiAsTextfieldHost(TuiInputCopyDirective)],
 })
 export class TuiInputCopyDirective extends AbstractTuiTextfieldHost<TuiInputCopyComponent> {
-    onValueChange(value: string): void {
+    public onValueChange(value: string): void {
         this.host.onValueChange(value);
     }
 }

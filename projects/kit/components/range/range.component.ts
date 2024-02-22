@@ -43,31 +43,31 @@ export class TuiRangeComponent
 {
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
 
-    @Input()
-    min = 0;
+    protected lastActiveThumb: 'left' | 'right' = 'right';
 
     @Input()
-    max = 100;
+    public min = 0;
 
     @Input()
-    step = 1;
+    public max = 100;
+
+    @Input()
+    public step = 1;
 
     @Input()
     @HostBinding('attr.data-size')
-    size: TuiSizeS = 'm';
+    public size: TuiSizeS = 'm';
 
     @Input()
-    segments = 1;
+    public segments = 1;
 
     @Input()
-    keySteps: TuiKeySteps | null = null;
+    public keySteps: TuiKeySteps | null = null;
 
     @ViewChildren(TuiSliderComponent, {read: ElementRef})
-    slidersRefs: QueryList<ElementRef<HTMLInputElement>> = EMPTY_QUERY;
+    public slidersRefs: QueryList<ElementRef<HTMLInputElement>> = EMPTY_QUERY;
 
-    lastActiveThumb: 'left' | 'right' = 'right';
-
-    get nativeFocusableElement(): TuiNativeFocusableElement | null {
+    public get nativeFocusableElement(): TuiNativeFocusableElement | null {
         const [sliderLeftRef, sliderRightRef] = this.slidersRefs;
 
         if (
@@ -86,35 +86,35 @@ export class TuiRangeComponent
             : sliderLeftRef.nativeElement;
     }
 
-    get focused(): boolean {
+    public get focused(): boolean {
         return tuiIsNativeFocusedIn(this.el);
     }
 
-    get fractionStep(): number {
+    public get fractionStep(): number {
         return this.step / (this.max - this.min);
     }
 
-    get computedKeySteps(): TuiKeySteps {
+    public get computedKeySteps(): TuiKeySteps {
         return this.computePureKeySteps(this.keySteps, this.min, this.max);
     }
 
-    get segmentWidthRatio(): number {
+    public get segmentWidthRatio(): number {
         return 1 / this.segments;
     }
 
     @HostBinding('style.--left.%')
-    get left(): number {
+    public get left(): number {
         return this.getPercentageFromValue(this.value[0]);
     }
 
     @HostBinding('style.--right.%')
-    get right(): number {
+    public get right(): number {
         return 100 - this.getPercentageFromValue(this.value[1]);
     }
 
     @HostListener('focusin', ['true'])
     @HostListener('focusout', ['false'])
-    onFocused(focused: boolean): void {
+    public onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
 
@@ -122,7 +122,7 @@ export class TuiRangeComponent
     @HostListener('keydown.arrowRight.prevent', ['1', '$event.target'])
     @HostListener('keydown.arrowLeft.prevent', ['-1', '$event.target'])
     @HostListener('keydown.arrowDown.prevent', ['-1', '$event.target'])
-    changeByStep(coefficient: number, target: HTMLElement): void {
+    public changeByStep(coefficient: number, target: HTMLElement): void {
         const [sliderLeftRef, sliderRightRef] = this.slidersRefs;
         const leftThumbElement = sliderLeftRef.nativeElement;
         const rightThumbElement = sliderRightRef.nativeElement;
@@ -144,7 +144,7 @@ export class TuiRangeComponent
         }
     }
 
-    processValue(value: number, right: boolean): void {
+    public processValue(value: number, right: boolean): void {
         if (right) {
             this.updateEnd(value);
         } else {
@@ -154,13 +154,13 @@ export class TuiRangeComponent
         this.lastActiveThumb = right ? 'right' : 'left';
     }
 
-    getValueFromFraction(fraction: number): number {
+    public getValueFromFraction(fraction: number): number {
         const guardedFraction = tuiClamp(tuiQuantize(fraction, this.fractionStep), 0, 1);
 
         return tuiPercentageToKeyStepValue(guardedFraction * 100, this.computedKeySteps);
     }
 
-    getPercentageFromValue(value: number): number {
+    public getPercentageFromValue(value: number): number {
         return tuiKeyStepValueToPercentage(value, this.computedKeySteps);
     }
 

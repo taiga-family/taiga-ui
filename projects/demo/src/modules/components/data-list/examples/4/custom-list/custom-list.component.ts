@@ -14,20 +14,18 @@ interface Items<T> {
     changeDetection,
 })
 export class CustomListComponent<T> {
+    protected value = '';
+    protected readonly all = EMPTY_ARRAY;
+    protected readonly filter = TUI_DEFAULT_MATCHER;
+
     @Input()
-    items: ReadonlyArray<Items<T>> = [];
+    public items: ReadonlyArray<Items<T>> = [];
 
-    value = '';
-
-    readonly all = EMPTY_ARRAY;
-
-    readonly filter = TUI_DEFAULT_MATCHER;
-
-    onArrowDown<T>(list: TuiDataListComponent<T>, event: Event): void {
+    public onArrowDown<T>(list: TuiDataListComponent<T>, event: Event): void {
         list.onFocus(event, true);
     }
 
-    onKeyDown(key: string, element: HTMLElement | null): void {
+    public onKeyDown(key: string, element: HTMLElement | null): void {
         if (element && tuiIsEditingKey(key)) {
             element.focus({preventScroll: true});
         }

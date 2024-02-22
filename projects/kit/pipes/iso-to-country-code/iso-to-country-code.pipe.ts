@@ -9,7 +9,7 @@ import {tuiIsoToCountryCode} from '@taiga-ui/kit/utils';
 export class TuiIsoToCountryCodePipe implements PipeTransform {
     private readonly countriesMasks = inject(TUI_COUNTRIES_MASKS);
 
-    transform(isoCode: TuiCountryIsoCode): string {
+    public transform(isoCode: TuiCountryIsoCode): string {
         return tuiIsoToCountryCode(this.countriesMasks, isoCode);
     }
 }

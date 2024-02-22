@@ -11,18 +11,18 @@ import {AccountCard, FetchedCards} from './models';
 export class PayService {
     private readonly isE2E = inject(TUI_IS_E2E);
 
-    preparePayment(amount: number): Observable<number> {
+    public preparePayment(amount: number): Observable<number> {
         return timer(this.getRandomDelay()).pipe(map(() => amount));
     }
 
-    getPrimaryCard(): Observable<FetchedCards> {
+    public getPrimaryCard(): Observable<FetchedCards> {
         return timer(this.getRandomDelay()).pipe(
             map(() => MOCK_CARDS),
             map((cards: AccountCard[]) => ({primary: cards[0], cards})),
         );
     }
 
-    pay(): Observable<void> {
+    public pay(): Observable<void> {
         return timer(this.getRandomDelay()).pipe(map(() => undefined));
     }
 

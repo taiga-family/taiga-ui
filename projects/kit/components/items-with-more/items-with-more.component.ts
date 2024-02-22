@@ -39,11 +39,11 @@ import {TuiMoreDirective} from './more.directive';
 })
 export class TuiItemsWithMoreComponent {
     @ContentChildren(TuiItemDirective, {read: TemplateRef, descendants: true})
-    readonly items: QueryList<TemplateRef<unknown>> = EMPTY_QUERY;
+    protected readonly items: QueryList<TemplateRef<unknown>> = EMPTY_QUERY;
 
     @ContentChild(TuiMoreDirective, {read: TemplateRef})
-    readonly more?: TemplateRef<TuiContext<number>>;
+    protected readonly more?: TemplateRef<TuiContext<number>>;
 
-    readonly directive = inject(TuiItemsWithMoreDirective);
-    readonly lastVisibleIndex$ = inject(TuiItemsWithMoreService);
+    protected readonly directive = inject(TuiItemsWithMoreDirective);
+    protected readonly lastVisibleIndex$ = inject(TuiItemsWithMoreService);
 }

@@ -16,5 +16,5 @@ import {TuiPlatform} from '@taiga-ui/cdk/types';
 export class TuiPlatformDirective {
     @Input()
     @HostBinding('attr.data-platform')
-    tuiPlatform: TuiPlatform | '' = '';
+    public tuiPlatform: TuiPlatform | '' = '';
 }

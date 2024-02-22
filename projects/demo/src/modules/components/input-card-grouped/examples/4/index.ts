@@ -11,7 +11,7 @@ import {TuiCard} from '@taiga-ui/addon-commerce';
     changeDetection,
 })
 export class TuiInputCardGroupedExample4 {
-    control = new FormControl<TuiCard | null>({
+    public control = new FormControl<TuiCard | null>({
         card: '',
         expire: '',
         cvc: '***',

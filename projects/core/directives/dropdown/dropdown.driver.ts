@@ -5,7 +5,7 @@ import {Subject} from 'rxjs';
 
 @Injectable()
 export class TuiDropdownDriver extends Subject<boolean> implements TuiDriver {
-    readonly type = 'dropdown';
+    public readonly type = 'dropdown';
 }
 
 @Directive({
@@ -14,5 +14,5 @@ export class TuiDropdownDriver extends Subject<boolean> implements TuiDriver {
     providers: [TuiDestroyService],
 })
 export class TuiDropdownDriverDirective extends AbstractTuiDriverDirective {
-    readonly type = 'dropdown';
+    public readonly type = 'dropdown';
 }

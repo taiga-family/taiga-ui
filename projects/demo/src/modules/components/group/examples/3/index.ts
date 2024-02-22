@@ -10,7 +10,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiGroupExample3 {
-    testForm = new FormGroup({
+    protected testForm = new FormGroup({
         testValue: new FormControl('orange'),
     });
 }

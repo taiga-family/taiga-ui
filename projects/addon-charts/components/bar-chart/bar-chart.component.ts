@@ -36,39 +36,41 @@ export class TuiBarChartComponent {
     private readonly autoIdString = inject(TuiIdService).generate();
 
     @ViewChildren(TuiHintHoverDirective)
-    readonly drivers: QueryList<Observable<boolean>> = EMPTY_QUERY;
+    protected readonly drivers: QueryList<Observable<boolean>> = EMPTY_QUERY;
 
     @Input()
-    value: ReadonlyArray<readonly number[]> = [];
+    public value: ReadonlyArray<readonly number[]> = [];
 
     @Input()
-    max = NaN;
+    public max = NaN;
 
     @Input()
-    size: TuiSizeL | TuiSizeS | null = 'm';
+    public size: TuiSizeL | TuiSizeS | null = 'm';
 
     @Input()
-    collapsed = false;
+    public collapsed = false;
 
-    get hintContent(): PolymorpheusContent<TuiContext<number>> {
+    public get hintContent(): PolymorpheusContent<TuiContext<number>> {
         return this.hintOptions?.content || '';
     }
 
-    get transposed(): ReadonlyArray<readonly number[]> {
+    public get transposed(): ReadonlyArray<readonly number[]> {
         return this.transpose(this.value);
     }
 
-    get computedMax(): number {
+    public get computedMax(): number {
         return this.max || this.getMax(this.value, this.collapsed);
     }
 
-    readonly percentMapper: TuiTypedMapper<[readonly number[], boolean, number], number> =
-        (set, collapsed, max) =>
-            (100 * (collapsed ? tuiSum(...set) : Math.max(...set))) / max;
-
-    getHintId(index: number): string {
+    public getHintId(index: number): string {
         return `${this.autoIdString}_${index}`;
     }
+
+    protected readonly percentMapper: TuiTypedMapper<
+        [readonly number[], boolean, number],
+        number
+    > = (set, collapsed, max) =>
+        (100 * (collapsed ? tuiSum(...set) : Math.max(...set))) / max;
 
     @tuiPure
     private transpose(

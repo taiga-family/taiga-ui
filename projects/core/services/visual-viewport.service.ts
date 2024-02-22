@@ -11,7 +11,7 @@ export class TuiVisualViewportService {
     private readonly win = inject(WINDOW);
 
     // https://bugs.webkit.org/show_bug.cgi?id=207089
-    correct(point: TuiPoint): TuiPoint {
+    public correct(point: TuiPoint): TuiPoint {
         return this.isWebkit
             ? [
                   point[0] + (this.win.visualViewport?.offsetTop ?? 0),

@@ -16,23 +16,23 @@ export class TuiDialogExampleComponent4 {
     private readonly dialogs = inject(TuiDialogService);
     private readonly dropdowns = inject(TuiDropdownService);
 
-    filters = false;
+    protected filters = false;
 
-    scale = 1;
+    protected scale = 1;
 
-    get transform(): string {
+    public get transform(): string {
         return `scale(${this.scale})`;
     }
 
-    get width(): string {
+    public get width(): string {
         return `calc((100% + 4rem) * ${1 / this.scale})`;
     }
 
-    onElastic(value: number): void {
+    public onElastic(value: number): void {
         this.scale = tuiClamp(value, 0.5, 1);
     }
 
-    onFilterClick(): void {
+    public onFilterClick(): void {
         this.filters = true;
         this.dialogs.open('Dialog with filters').subscribe({
             complete: () => {
@@ -41,7 +41,7 @@ export class TuiDialogExampleComponent4 {
         });
     }
 
-    showDialog(
+    public showDialog(
         content: PolymorpheusContent,
         button: TemplateRef<Record<string, unknown>>,
     ): void {

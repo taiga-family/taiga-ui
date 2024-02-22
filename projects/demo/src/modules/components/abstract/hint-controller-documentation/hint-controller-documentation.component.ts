@@ -10,7 +10,7 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../inherited-documentation/abstract-props
     changeDetection,
 })
 export class HintControllerDocumentationComponent {
-    readonly documentedComponent = inject<AbstractExampleTuiControl>(
+    protected readonly documentedComponent = inject<AbstractExampleTuiControl>(
         ABSTRACT_PROPS_ACCESSOR,
     );
 }

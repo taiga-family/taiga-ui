@@ -35,20 +35,20 @@ export class TuiNativeSelectGroupComponent<T> extends AbstractTuiNativeSelect<
     T
 > {
     @Input()
-    items: readonly T[][] | null = [];
+    public items: readonly T[][] | null = [];
 
     @Input()
-    labels: readonly string[] = [];
+    public labels: readonly string[] = [];
 
-    get stringify(): TuiItemsHandlers<T>['stringify'] {
+    public get stringify(): TuiItemsHandlers<T>['stringify'] {
         return this.host.stringify;
     }
 
-    selected(option: T): boolean {
+    public selected(option: T): boolean {
         return this.control.value === option;
     }
 
-    onValueChange(index: number): void {
+    public onValueChange(index: number): void {
         const flatItems = this.items?.reduce((acc, val) => acc.concat(val), []);
 
         this.host.onValueChange(flatItems?.[index] || null);

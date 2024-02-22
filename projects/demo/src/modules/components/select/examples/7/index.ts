@@ -48,14 +48,14 @@ const CASH: Account = {
     changeDetection,
 })
 export class TuiSelectExample7 {
-    value = EMPTY_ARRAY;
+    protected value = EMPTY_ARRAY;
 
-    readonly all = EMPTY_ARRAY;
-    readonly cash = CASH;
-    readonly bank = BANK;
-    readonly others = OTHERS;
+    protected readonly all = EMPTY_ARRAY;
+    protected readonly cash = CASH;
+    protected readonly bank = BANK;
+    protected readonly others = OTHERS;
 
-    readonly content: TuiStringHandler<TuiValueContentContext<readonly unknown[]>> = ({
-        $implicit: {length},
-    }) => (length ? `${length} accounts` : 'All');
+    protected readonly content: TuiStringHandler<
+        TuiValueContentContext<readonly unknown[]>
+    > = ({$implicit: {length}}) => (length ? `${length} accounts` : 'All');
 }

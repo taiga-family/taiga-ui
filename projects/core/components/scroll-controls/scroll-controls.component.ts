@@ -21,8 +21,8 @@ import {TuiScrollbarDirective} from './scrollbar.directive';
 export class TuiScrollControlsComponent {
     private readonly scrollRef = inject(TUI_SCROLL_REF).nativeElement;
 
-    readonly options = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
-    readonly refresh$ = inject(ANIMATION_FRAME).pipe(
+    protected readonly options = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
+    protected readonly refresh$ = inject(ANIMATION_FRAME).pipe(
         throttleTime(300),
         map(() => this.scrollbars),
         startWith([false, false]),

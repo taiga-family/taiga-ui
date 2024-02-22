@@ -11,9 +11,9 @@ import {TuiFileLike} from '@taiga-ui/kit';
     changeDetection,
 })
 export class TuiInputFilesExample6 {
-    readonly control = new FormControl<TuiFileLike | null>(null);
+    public readonly control = new FormControl<TuiFileLike | null>(null);
 
-    removeFile(): void {
+    public removeFile(): void {
         this.control.setValue(null);
     }
 }

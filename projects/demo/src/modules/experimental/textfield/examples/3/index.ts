@@ -10,9 +10,9 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiTextfieldExample3 {
-    value = '';
+    protected value = '';
 
-    readonly items = [
+    protected readonly items = [
         'John Cleese',
         'Eric Idle',
         'Michael Palin',

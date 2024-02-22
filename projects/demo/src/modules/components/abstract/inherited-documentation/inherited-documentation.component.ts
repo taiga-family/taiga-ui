@@ -14,36 +14,33 @@ import {TuiSupportingDocumentationComponent} from './supporting-documentation-co
     changeDetection,
 })
 export class InheritedDocumentationComponent {
-    @Input()
-    dropdown = false;
+    protected readonly booleanVariants: readonly boolean[] = [false, true];
+    protected readonly directionVariants = TUI_HINT_DIRECTIONS;
+    protected readonly appearanceVariants = ['', 'error', 'onDark'];
+    protected readonly documentedComponent = inject(ABSTRACT_PROPS_ACCESSOR);
 
     @Input()
-    withHint = true;
+    public dropdown = false;
 
     @Input()
-    withTextFieldController = true;
+    public withHint = true;
 
-    readonly booleanVariants: readonly boolean[] = [false, true];
+    @Input()
+    public withTextFieldController = true;
 
-    readonly directionVariants = TUI_HINT_DIRECTIONS;
-
-    readonly appearanceVariants = ['', 'error', 'onDark'];
-
-    readonly documentedComponent = inject(ABSTRACT_PROPS_ACCESSOR);
-
-    isTuiReactiveControl(
+    public isTuiReactiveControl(
         documentedComponent: TuiSupportingDocumentationComponent,
     ): documentedComponent is AbstractExampleTuiControl {
         return documentedComponent instanceof AbstractExampleTuiControl;
     }
 
-    isTuiInteractive(
+    public isTuiInteractive(
         documentedComponent: TuiSupportingDocumentationComponent,
     ): documentedComponent is AbstractExampleTuiInteractive {
         return documentedComponent instanceof AbstractExampleTuiInteractive;
     }
 
-    isTuiHint(
+    public isTuiHint(
         documentedComponent: TuiSupportingDocumentationComponent,
     ): documentedComponent is AbstractExampleTuiHint {
         return documentedComponent instanceof AbstractExampleTuiHint;

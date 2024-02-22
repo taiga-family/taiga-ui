@@ -17,12 +17,12 @@ import {tuiCreateTimePeriods, tuiInputTimeOptionsProvider} from '@taiga-ui/kit';
     ],
 })
 export class TuiInputTimeExample6 {
-    readonly testForm = new FormGroup({
+    protected readonly testForm = new FormGroup({
         testValue: new FormControl(new TuiTime(10, 30)),
         testValue2: new FormControl(new TuiTime(10, 30, 0)),
         testValue3: new FormControl(new TuiTime(14, 30)),
         testValue4: new FormControl(new TuiTime(10, 30, 0)),
     });
 
-    readonly items = tuiCreateTimePeriods(14, 16, [0, 30]);
+    protected readonly items = tuiCreateTimePeriods(14, 16, [0, 30]);
 }

@@ -23,22 +23,22 @@ import {MODE_PROVIDER, TUI_MODE, TuiSizeS} from '@taiga-ui/core';
     },
 })
 export class TuiProgressSegmentedComponent {
-    @Input()
-    value = 0;
+    protected readonly mode$ = inject(TUI_MODE);
 
     @Input()
-    max = 1;
+    public value = 0;
+
+    @Input()
+    public max = 1;
 
     @Input()
     @HostBinding('attr.data-size')
-    size: TuiSizeS = 'm';
+    public size: TuiSizeS = 'm';
 
     @Input()
-    colors: string | readonly string[] = 'currentColor';
+    public colors: string | readonly string[] = 'currentColor';
 
-    readonly mode$ = inject(TUI_MODE);
-
-    getActiveColor(index = 0): string | null {
+    public getActiveColor(index = 0): string | null {
         return tuiIsString(this.colors)
             ? this.colors
             : this.colors[index] || this.colors[this.colors.length - 1];

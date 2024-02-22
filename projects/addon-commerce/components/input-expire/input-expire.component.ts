@@ -40,32 +40,32 @@ export class TuiInputExpireComponent
 
     private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
 
-    @Input()
-    autocompleteEnabled = false;
-
-    readonly maskOptions = maskitoDateOptionsGenerator({
+    protected readonly maskOptions = maskitoDateOptionsGenerator({
         mode: 'mm/yy',
         separator: '/',
     });
 
+    @Input()
+    public autocompleteEnabled = false;
+
     @HostBinding('attr.data-size')
-    get size(): TuiSizeL | TuiSizeS {
+    public get size(): TuiSizeL | TuiSizeS {
         return this.textfieldSize.size;
     }
 
-    get nativeFocusableElement(): HTMLInputElement | null {
+    public get nativeFocusableElement(): HTMLInputElement | null {
         return this.input?.nativeFocusableElement ?? null;
     }
 
-    get focused(): boolean {
+    public get focused(): boolean {
         return !!this.input && this.input.focused;
     }
 
-    get autocomplete(): TuiAutofillFieldName {
+    public get autocomplete(): TuiAutofillFieldName {
         return this.autocompleteEnabled ? 'cc-exp' : 'off';
     }
 
-    onFocused(focused: boolean): void {
+    public onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
 

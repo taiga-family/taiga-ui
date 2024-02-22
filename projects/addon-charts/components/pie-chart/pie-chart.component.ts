@@ -46,20 +46,20 @@ export class TuiPieChartComponent {
     private readonly autoIdString = inject(TuiIdService).generate();
 
     @Input()
-    value: readonly number[] = [];
+    public value: readonly number[] = [];
 
     @Input()
     @HostBinding('attr.data-size')
-    size: TuiSizeXL | TuiSizeXS = 'm';
+    public size: TuiSizeXL | TuiSizeXS = 'm';
 
     @Input()
-    masked = false;
+    public masked = false;
 
     @Input()
-    activeItemIndex = NaN;
+    public activeItemIndex = NaN;
 
     @Output()
-    readonly activeItemIndexChange = new EventEmitter<number>();
+    public readonly activeItemIndexChange = new EventEmitter<number>();
 
     constructor() {
         if (this.hintOptions) {
@@ -69,31 +69,31 @@ export class TuiPieChartComponent {
     }
 
     @HostBinding('class._empty')
-    get empty(): boolean {
+    public get empty(): boolean {
         return !this.getSum(this.value);
     }
 
-    get hintContent(): PolymorpheusContent<TuiContext<number>> {
+    public get hintContent(): PolymorpheusContent<TuiContext<number>> {
         return this.hintOptions?.content || '';
     }
 
-    get maskId(): string {
+    public get maskId(): string {
         return `tui-ring-chart-${this.autoIdString}`;
     }
 
-    get mask(): string | null {
+    public get mask(): string | null {
         return this.masked ? `url(#${this.maskId})` : null;
     }
 
-    get radius(): string {
+    public get radius(): string {
         return RADII[this.size];
     }
 
-    get segments(): ReadonlyArray<[number, number]> {
+    public get segments(): ReadonlyArray<[number, number]> {
         return this.getSegments(this.value);
     }
 
-    getTransform(index: number): string | null {
+    public getTransform(index: number): string | null {
         const transform = this.masked
             ? `scale(${TRANSFORM[this.size]})`
             : `scale(${TRANSFORM.xs})`;
@@ -101,11 +101,11 @@ export class TuiPieChartComponent {
         return index === this.activeItemIndex ? transform : null;
     }
 
-    onHovered(hovered: boolean, index: number): void {
+    public onHovered(hovered: boolean, index: number): void {
         this.updateActiveItemIndex(hovered ? index : NaN);
     }
 
-    getColor(index: number): SafeValue {
+    public getColor(index: number): SafeValue {
         return `var(--tui-chart-${index})`;
     }
 

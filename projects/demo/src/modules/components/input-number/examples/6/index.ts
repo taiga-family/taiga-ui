@@ -16,5 +16,5 @@ import {tuiInputNumberOptionsProvider} from '@taiga-ui/kit';
     ],
 })
 export class TuiInputNumberExample6 {
-    value = 237;
+    protected value = 237;
 }

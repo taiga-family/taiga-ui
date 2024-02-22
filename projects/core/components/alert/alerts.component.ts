@@ -30,9 +30,9 @@ import {TUI_ALERTS_GROUPED} from './alert.tokens';
 export class TuiAlertsComponent {
     private readonly injector = inject(INJECTOR);
 
-    readonly alerts$ = inject(TUI_ALERTS_GROUPED);
-    readonly trackBy = identity;
-    readonly mapper: TuiTypedMapper<[Type<any>], Injector> = useValue =>
+    protected readonly alerts$ = inject(TUI_ALERTS_GROUPED);
+    protected readonly trackBy = identity;
+    protected readonly mapper: TuiTypedMapper<[Type<any>], Injector> = useValue =>
         Injector.create({
             providers: [
                 {

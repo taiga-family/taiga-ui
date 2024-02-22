@@ -33,7 +33,7 @@ export class TuiSliderReadonlyDirective {
     private readonly doc = inject(DOCUMENT);
 
     @Input()
-    readonly: boolean | string = true;
+    public readonly: boolean | string = true;
 
     constructor() {
         const touchStart$ = tuiTypedFromEvent(this.el, 'touchstart', {
@@ -67,14 +67,14 @@ export class TuiSliderReadonlyDirective {
     }
 
     @HostListener('mousedown', ['$event'])
-    preventEvent(event: Event): void {
+    public preventEvent(event: Event): void {
         if (event.cancelable && tuiCoerceBooleanProperty(this.readonly)) {
             event.preventDefault();
         }
     }
 
     @HostListener('keydown', ['$event'])
-    preventKeyboardInteraction(event: KeyboardEvent): void {
+    public preventKeyboardInteraction(event: KeyboardEvent): void {
         if (SLIDER_INTERACTION_KEYS.has(event.key)) {
             this.preventEvent(event);
         }

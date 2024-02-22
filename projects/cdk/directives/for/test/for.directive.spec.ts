@@ -14,9 +14,9 @@ describe('TuiFor directive', () => {
         `,
     })
     class TestComponent {
-        readonly el: HTMLElement = inject(ElementRef).nativeElement;
+        protected readonly el: HTMLElement = inject(ElementRef).nativeElement;
 
-        readonly items$ = new Subject<string[]>();
+        protected readonly items$ = new Subject<string[]>();
     }
 
     let fixture: ComponentFixture<TestComponent>;

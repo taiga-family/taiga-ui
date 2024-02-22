@@ -11,6 +11,6 @@ import {TuiDay} from '@taiga-ui/cdk';
     changeDetection,
 })
 export class TuiMobileCalendarExample2 {
-    min = new TuiDay(new Date().getFullYear(), new Date().getMonth(), 1);
-    max = new TuiDay(new Date().getFullYear(), new Date().getMonth(), 10);
+    protected min = new TuiDay(new Date().getFullYear(), new Date().getMonth(), 1);
+    protected max = new TuiDay(new Date().getFullYear(), new Date().getMonth(), 10);
 }

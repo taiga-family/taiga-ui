@@ -9,19 +9,19 @@ import {TuiInputDateComponent} from './input-date.component';
     providers: [tuiAsTextfieldHost(TuiInputDateDirective)],
 })
 export class TuiInputDateDirective extends AbstractTuiTextfieldHost<TuiInputDateComponent> {
-    override get value(): string {
+    public override get value(): string {
         return this.host.computedValue;
     }
 
-    get max(): TuiDay {
+    public get max(): TuiDay {
         return this.host.computedMax;
     }
 
-    get min(): TuiDay {
+    public get min(): TuiDay {
         return this.host.computedMin;
     }
 
-    onValueChange(value: string): void {
+    public onValueChange(value: string): void {
         if (!value) {
             this.host.nativeValue = '';
         }
@@ -29,7 +29,7 @@ export class TuiInputDateDirective extends AbstractTuiTextfieldHost<TuiInputDate
         this.host.onValueChange(value);
     }
 
-    override process(input: HTMLInputElement): void {
+    public override process(input: HTMLInputElement): void {
         input.inputMode = 'numeric';
     }
 }

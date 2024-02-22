@@ -9,11 +9,11 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
     changeDetection,
 })
 export class IconsBundledComponent {
-    exampleSanitizer = import('./examples/1/sanitizer.md?raw');
+    protected exampleSanitizer = import('./examples/1/sanitizer.md?raw');
 
-    injectService = import('./examples/1/inject-service.md?raw');
+    protected injectService = import('./examples/1/inject-service.md?raw');
 
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
         LESS: import('./examples/1/index.less?raw'),
