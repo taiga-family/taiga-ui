@@ -1,4 +1,4 @@
-import {Component, inject, Injector} from '@angular/core';
+import {Component, inject, INJECTOR} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiPopoverContext} from '@taiga-ui/cdk';
@@ -136,7 +136,7 @@ export class ExampleTuiAlertComponent {
 
     readonly component = new PolymorpheusComponent(
         AlertExampleWithDataComponent,
-        inject(Injector),
+        inject(INJECTOR),
     );
 
     get selectedContent(): PolymorpheusContent<

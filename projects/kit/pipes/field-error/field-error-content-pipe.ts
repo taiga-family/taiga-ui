@@ -1,5 +1,5 @@
 import {AsyncPipe} from '@angular/common';
-import {inject, Injector, OnDestroy, Pipe, PipeTransform} from '@angular/core';
+import {inject, INJECTOR, Injector, OnDestroy, Pipe, PipeTransform} from '@angular/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {TuiFieldErrorPipe} from './field-error-pipe';
@@ -9,7 +9,7 @@ import {TuiFieldErrorPipe} from './field-error-pipe';
     pure: false,
 })
 export class TuiFieldErrorContentPipe implements PipeTransform, OnDestroy {
-    private readonly injector = inject(Injector);
+    private readonly injector = inject(INJECTOR);
     private readonly localInjector = Injector.create({
         providers: [{provide: AsyncPipe}, {provide: TuiFieldErrorPipe}],
         parent: this.injector,

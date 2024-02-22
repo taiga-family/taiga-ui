@@ -1,4 +1,4 @@
-import {Component, inject, Injector} from '@angular/core';
+import {Component, inject, INJECTOR, Injector} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -18,7 +18,7 @@ import {combineLatest, map, Observable} from 'rxjs';
 })
 export class TuiMobileCalendarExample4 {
     private readonly dialogs = inject(TuiDialogService);
-    private readonly injector = inject(Injector);
+    private readonly injector = inject(INJECTOR);
     private readonly months$ = inject(TUI_MONTHS);
     private readonly control = new FormControl<TuiDayRange | null>(null);
 

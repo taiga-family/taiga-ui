@@ -1,4 +1,4 @@
-import {Component, inject, Injector} from '@angular/core';
+import {Component, inject, INJECTOR} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDialogService} from '@taiga-ui/core';
@@ -14,7 +14,7 @@ import {DialogExampleComponent} from './dialog-example/dialog-example.component'
 })
 export class TuiDialogExampleComponent2 {
     private readonly dialogs = inject(TuiDialogService);
-    private readonly injector = inject(Injector);
+    private readonly injector = inject(INJECTOR);
 
     private readonly dialog = this.dialogs.open<number>(
         new PolymorpheusComponent(DialogExampleComponent, this.injector),

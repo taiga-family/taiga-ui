@@ -4,7 +4,7 @@ import {
     HostBinding,
     HostListener,
     inject,
-    Injector,
+    INJECTOR,
     Input,
     ViewChild,
 } from '@angular/core';
@@ -80,7 +80,7 @@ export class TuiInputDateRangeComponent
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
-    private readonly injector = inject(Injector);
+    private readonly injector = inject(INJECTOR);
     private readonly isMobile = inject(TUI_IS_MOBILE);
     private readonly dialogs = inject(TuiDialogService);
     private readonly mobileCalendar = inject(TUI_MOBILE_CALENDAR, {optional: true});

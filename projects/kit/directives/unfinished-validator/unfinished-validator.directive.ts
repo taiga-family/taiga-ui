@@ -1,4 +1,4 @@
-import {Attribute, Directive, inject, Injector} from '@angular/core';
+import {Attribute, Directive, inject, INJECTOR} from '@angular/core';
 import {NG_VALIDATORS, Validator} from '@angular/forms';
 import {TUI_FOCUSABLE_ITEM_ACCESSOR} from '@taiga-ui/cdk';
 
@@ -15,7 +15,7 @@ import {tuiCreateUnfinishedValidator} from './unfinished.validator';
     ],
 })
 export class TuiUnfinishedValidatorDirective implements Validator {
-    private readonly injector = inject(Injector);
+    private readonly injector = inject(INJECTOR);
 
     readonly validate = tuiCreateUnfinishedValidator(
         () => this.injector.get(TUI_FOCUSABLE_ITEM_ACCESSOR),
