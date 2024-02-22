@@ -2,7 +2,10 @@ import {inject, Pipe, PipeTransform} from '@angular/core';
 import {TuiDocExample, TuiDocPageComponent} from '@taiga-ui/addon-doc';
 
 const toKebab: (str: string) => string = str =>
-    str.replace(/[A-Z]+(?![a-z])|[A-Z]/g, ($, ofs) => (ofs ? '-' : '') + $.toLowerCase());
+    str.replaceAll(
+        /[A-Z]+(?![a-z])|[A-Z]/g,
+        ($, ofs) => (ofs ? '-' : '') + $.toLowerCase(),
+    );
 
 @Pipe({name: 'tuiExample', standalone: true})
 export class TuiExample implements PipeTransform {
