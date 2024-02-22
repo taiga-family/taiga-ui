@@ -122,7 +122,7 @@ export class TuiDropdownComponent {
         style.top = tuiPx(Math.max(top, offsetY + offset));
         style.left = tuiPx(left);
         style.maxHeight = sided
-            ? `min(100%, ${maxHeight}px)`
+            ? `${maxHeight}px`
             : tuiPx(Math.min(maxHeight, Math.max(available, minHeight)));
         style.width = '';
         style.minWidth = '';
