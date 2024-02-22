@@ -7,7 +7,7 @@ import {
     tuiButtonOptionsProvider,
 } from '@taiga-ui/experimental/components';
 
-import {TuiHeaderComponent} from './header.component';
+import {TuiHeaderStylesComponent} from './header.component';
 
 @Directive({
     selector: '[tuiHeader]',
@@ -28,6 +28,6 @@ export class TuiHeaderDirective {
     constructor(
         @Inject(TuiDirectiveStylesService) directiveStyles: TuiDirectiveStylesService,
     ) {
-        directiveStyles.addComponent(TuiHeaderComponent);
+        directiveStyles.addComponent(TuiHeaderStylesComponent);
     }
 }

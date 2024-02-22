@@ -1,14 +1,10 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/core';
 
 @Component({
     selector: '[tuiNavigationLogo]',
-    template: `
-        <ng-content select="tui-icon:not([tuiBadge]),img"></ng-content>
-        <span><ng-content></ng-content></span>
-        <ng-content
-            select="[tuiBadge],[tuiChip],tui-badge,tui-chip,input,button"
-        ></ng-content>
-    `,
+    template: '<ng-content></ng-content>',
+    styleUrls: ['./logo.style.less'],
+    encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiLogoComponent {}
