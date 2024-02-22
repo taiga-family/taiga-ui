@@ -19,6 +19,7 @@ export const ATTRS_TO_DIRECTIVE_REPLACE: ReplacementAttributeToDirective[] = [
             'tui-primitive-textfield',
             'tui-input-number',
             'tui-input-slider',
+            'tui-input-time',
         ],
         inputProperty: 'postfix',
         directive: 'tuiTextfieldPostfix',

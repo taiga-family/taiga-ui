@@ -13,7 +13,6 @@ import {tuiInputTimeOptionsProvider} from '@taiga-ui/kit';
     providers: [
         tuiInputTimeOptionsProvider({
             mode: 'HH:MM',
-            postfix: 'left',
             maxValues: {HH: 47, MM: 59, SS: 59, MS: 999},
         }),
     ],

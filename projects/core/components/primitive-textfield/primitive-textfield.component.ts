@@ -68,10 +68,6 @@ export class TuiPrimitiveTextfieldComponent
     @Input()
     editable = true;
 
-    /** @deprecated use `tuiTextfieldFiller` from {@link TuiTextfieldControllerModule} instead */
-    @Input('filler')
-    textfieldFiller = '';
-
     /**
      * @deprecated:
      * use `tuiTextfieldOptionsProvider({iconCleaner: `tuiIconChevronUp`})`
@@ -89,14 +85,6 @@ export class TuiPrimitiveTextfieldComponent
     @Input()
     disabled = false;
 
-    /** @deprecated use `tuiTextfieldPrefix` from {@link TuiTextfieldControllerModule} instead */
-    @Input('prefix')
-    textfieldPrefix = '';
-
-    /** @deprecated use `tuiTextfieldPostfix` from {@link TuiTextfieldControllerModule} instead */
-    @Input('postfix')
-    textfieldPostfix = '';
-
     @Input()
     value = '';
 
@@ -111,15 +99,15 @@ export class TuiPrimitiveTextfieldComponent
     readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
 
     get prefix(): string {
-        return this.textfieldPrefix || this.controller.prefix;
+        return this.controller.prefix;
     }
 
     get postfix(): string {
-        return this.textfieldPostfix || this.controller.postfix;
+        return this.controller.postfix;
     }
 
     get filler(): string {
-        return this.textfieldFiller || this.controller.filler;
+        return this.controller.filler;
     }
 
     get nativeFocusableElement(): HTMLInputElement | null {

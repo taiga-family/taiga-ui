@@ -97,14 +97,6 @@ export class TuiInputNumberComponent
     @Input()
     step = this.options.step;
 
-    /** @deprecated use `tuiTextfieldPrefix` from {@link TuiTextfieldControllerModule} instead */
-    @Input()
-    prefix = '';
-
-    /** @deprecated use `tuiTextfieldPostfix` from {@link TuiTextfieldControllerModule} instead */
-    @Input()
-    postfix = '';
-
     @ContentChildren(PolymorpheusOutletDirective, {descendants: true})
     readonly polymorpheusValueContent: QueryList<unknown> = EMPTY_QUERY;
 
@@ -173,11 +165,11 @@ export class TuiInputNumberComponent
     }
 
     get computedPrefix(): string {
-        return this.prefix || this.controller.prefix;
+        return this.controller.prefix;
     }
 
     get computedPostfix(): string {
-        const postfix = this.postfix || this.controller.postfix;
+        const postfix = this.controller.postfix;
 
         return postfix && ` ${postfix}`;
     }

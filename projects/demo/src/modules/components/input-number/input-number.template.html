@@ -155,9 +155,7 @@
                     [formControl]="control"
                     [max]="max"
                     [min]="min"
-                    [postfix]="postfix"
                     [precision]="precision"
-                    [prefix]="prefix"
                     [pseudoActive]="pseudoPressed"
                     [pseudoFocus]="pseudoFocused"
                     [pseudoHover]="pseudoHovered"
@@ -208,30 +206,6 @@
                 [(documentationPropertyValue)]="max"
             >
                 Max value
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="prefix"
-                documentationPropertyType="string"
-                [documentationPropertyDeprecated]="true"
-                [documentationPropertyValues]="prefixVariants"
-                [(documentationPropertyValue)]="prefix"
-            >
-                A prefix symbol, like currency. Use
-                <code>tuiTextfieldPrefix</code>
-                instead
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="postfix"
-                documentationPropertyType="string"
-                [documentationPropertyDeprecated]="true"
-                [documentationPropertyValues]="prefixVariants"
-                [(documentationPropertyValue)]="postfix"
-            >
-                A postfix symbol, like currency. Use
-                <code>tuiTextfieldPostfix</code>
-                instead
             </ng-template>
             <ng-template
                 documentationPropertyMode="input"

@@ -103,8 +103,6 @@
                     [keySteps]="keySteps"
                     [max]="max"
                     [min]="min"
-                    [postfix]="postfix"
-                    [prefix]="prefix"
                     [pseudoActive]="pseudoPressed"
                     [pseudoFocus]="pseudoFocused"
                     [pseudoHover]="pseudoHovered"
@@ -208,28 +206,6 @@
                 [(documentationPropertyValue)]="valueContent"
             >
                 A template for custom view of selected value.
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="prefix"
-                documentationPropertyType="string"
-                [documentationPropertyDeprecated]="true"
-                [(documentationPropertyValue)]="prefix"
-            >
-                A prefix symbol, like currency. Use
-                <code>tuiTextfieldPrefix</code>
-                instead
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="postfix"
-                documentationPropertyType="string"
-                [documentationPropertyDeprecated]="true"
-                [(documentationPropertyValue)]="postfix"
-            >
-                A postfix symbol, like currency. Use
-                <code>tuiTextfieldPostfix</code>
-                instead
             </ng-template>
         </tui-doc-documentation>
         <inherited-documentation></inherited-documentation>

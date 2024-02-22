@@ -70,7 +70,7 @@ test.describe('InputSlider', () => {
         test('hide [valueContent] when input is focused', async ({page}) => {
             await tuiGoto(
                 page,
-                'components/input-slider/API?valueContent=TOP-SECRET&postfix=things&prefix=$',
+                'components/input-slider/API?valueContent=TOP-SECRET&tuiTextfieldPostfix=things&tuiTextfieldPrefix=$',
             );
 
             const {apiPageExample} = new TuiDocumentationPagePO(page);
@@ -84,12 +84,12 @@ test.describe('InputSlider', () => {
             );
         });
 
-        test('[valueContent] is not overlapped by [prefix]/[postfix] (input is NOT focused)', async ({
+        test('[valueContent] is not overlapped by [tuiTextfieldPrefix]/[tuiTextfieldPostfix] (input is NOT focused)', async ({
             page,
         }) => {
             await tuiGoto(
                 page,
-                'components/input-slider/API?valueContent=TOP-SECRET&postfix=things&prefix=$',
+                'components/input-slider/API?valueContent=TOP-SECRET&tuiTextfieldPostfix=things&tuiTextfieldPrefix=$',
             );
 
             const {apiPageExample} = new TuiDocumentationPagePO(page);
