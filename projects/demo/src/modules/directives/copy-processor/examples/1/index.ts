@@ -3,7 +3,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiPure, TuiStringHandler} from '@taiga-ui/cdk';
 import {TUI_NUMBER_FORMAT, TuiAlertService} from '@taiga-ui/core';
-import {isObservable, map, Observable, of} from 'rxjs';
+import {map, Observable} from 'rxjs';
 
 @Component({
     selector: 'tui-copy-processor-example-1',
@@ -25,9 +25,7 @@ export class TuiCopyProcessorExample1 {
 
     @tuiPure
     get numberProcessor$(): Observable<TuiStringHandler<string>> {
-        const format = isObservable(this.format) ? this.format : of(this.format);
-
-        return format.pipe(
+        return this.format.pipe(
             map(
                 format => text =>
                     text

@@ -18,6 +18,7 @@ export function tuiFormatNumber(
 ): string {
     const {decimalLimit, decimalSeparator, thousandSeparator, zeroPadding, rounding} = {
         ...TUI_DEFAULT_NUMBER_FORMAT,
+        decimalLimit: Infinity,
         ...settings,
     };
 

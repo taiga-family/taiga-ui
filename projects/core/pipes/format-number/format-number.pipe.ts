@@ -2,7 +2,7 @@ import {inject, Pipe, PipeTransform} from '@angular/core';
 import {TuiNumberFormatSettings} from '@taiga-ui/core/interfaces';
 import {TUI_NUMBER_FORMAT} from '@taiga-ui/core/tokens';
 import {tuiFormatNumber} from '@taiga-ui/core/utils/format';
-import {isObservable, map, Observable, of} from 'rxjs';
+import {map, Observable} from 'rxjs';
 
 @Pipe({name: 'tuiFormatNumber'})
 export class TuiFormatNumberPipe implements PipeTransform {
@@ -18,11 +18,7 @@ export class TuiFormatNumberPipe implements PipeTransform {
         value: number,
         settings: Partial<TuiNumberFormatSettings> = {},
     ): Observable<string> {
-        const format = isObservable(this.numberFormat)
-            ? this.numberFormat
-            : of(this.numberFormat);
-
-        return format.pipe(
+        return this.numberFormat.pipe(
             map(format =>
                 tuiFormatNumber(value, {
                     ...format,

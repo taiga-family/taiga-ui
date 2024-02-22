@@ -5,7 +5,7 @@ import {
     TUI_NUMBER_FORMAT,
     TuiNumberFormatSettings,
 } from '@taiga-ui/core';
-import {BehaviorSubject, isObservable, takeUntil} from 'rxjs';
+import {BehaviorSubject, takeUntil} from 'rxjs';
 
 /**
  * internal
@@ -20,14 +20,10 @@ export const TUI_NUMBER_FORMAT_PROVIDER: Provider = [
         provide: TUI_NUMBER_FORMAT_SUBJ,
         useFactory: () => {
             const subj = new BehaviorSubject(TUI_DEFAULT_NUMBER_FORMAT);
-            const format = inject(TUI_NUMBER_FORMAT);
-            const destroy$ = inject(TuiDestroyService, {self: true});
 
-            if (isObservable(format)) {
-                format.pipe(takeUntil(destroy$)).subscribe(subj);
-            } else {
-                subj.next(format);
-            }
+            inject(TUI_NUMBER_FORMAT)
+                .pipe(takeUntil(inject(TuiDestroyService, {self: true})))
+                .subscribe(subj);
 
             return subj;
         },

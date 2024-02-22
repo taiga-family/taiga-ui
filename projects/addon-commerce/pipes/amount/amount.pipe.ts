@@ -8,7 +8,7 @@ import {
     tuiFormatNumber,
     TuiHorizontalDirection,
 } from '@taiga-ui/core';
-import {isObservable, map, Observable, of} from 'rxjs';
+import {map, Observable} from 'rxjs';
 
 import {TUI_AMOUNT_OPTIONS} from './amount.options';
 
@@ -27,9 +27,7 @@ export class TuiAmountPipe implements PipeTransform {
         currency: TuiCurrencyVariants = this.options.currency,
         currencyAlign: TuiHorizontalDirection = this.options.currencyAlign,
     ): Observable<string> {
-        const format = isObservable(this.format) ? this.format : of(this.format);
-
-        return format.pipe(
+        return this.format.pipe(
             map(format => {
                 const sign = tuiFormatSignSymbol(value, this.options.sign);
                 const currencySymbol = tuiFormatCurrency(currency);
