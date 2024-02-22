@@ -7,7 +7,8 @@ import {
     TuiButtonModule,
     TuiModeModule,
     TuiNotificationModule,
-    TuiScrollbarModule,
+    TuiScrollableDirective,
+    TuiScrollbarComponent,
 } from '@taiga-ui/core';
 
 import {TuiScrollbarExample1Component} from './examples/1/component';
@@ -23,11 +24,12 @@ import {ExampleTuiScrollbarComponent} from './scrollbar.component';
         CommonModule,
         ScrollingModule,
         TuiButtonModule,
-        TuiScrollbarModule,
+        TuiScrollbarComponent,
         TuiModeModule,
         TuiNotificationModule,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiScrollbarComponent)),
+        TuiScrollableDirective,
     ],
     declarations: [
         ExampleTuiScrollbarComponent,

@@ -1,5 +1,5 @@
 ```ts
-import {TuiScrollbarModule} from '@taiga-ui/core';
+import {TuiScrollbarComponent} from '@taiga-ui/core';
 
 // ...
 
@@ -7,7 +7,7 @@ import {TuiScrollbarModule} from '@taiga-ui/core';
   // ...
   imports: [
     //  ...
-    TuiScrollbarModule,
+    TuiScrollbarComponent,
   ],
   // ...
 })

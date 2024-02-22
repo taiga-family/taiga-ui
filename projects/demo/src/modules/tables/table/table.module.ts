@@ -19,7 +19,8 @@ import {
     TuiLinkModule,
     TuiLoaderModule,
     TuiNotificationModule,
-    TuiScrollbarModule,
+    TuiScrollableDirective,
+    TuiScrollbarComponent,
     TuiSvgModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
@@ -51,7 +52,7 @@ import {ExampleTuiTableComponent} from './table.component';
         ScrollingModule,
         IntersectionObserverModule,
         TuiNotificationModule,
-        TuiScrollbarModule,
+        TuiScrollbarComponent,
         TuiTableModule,
         TuiInputModule,
         TuiTextareaModule,
@@ -76,6 +77,7 @@ import {ExampleTuiTableComponent} from './table.component';
         TuiReorderModule,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiTableComponent)),
+        TuiScrollableDirective,
     ],
     declarations: [
         ExampleTuiTableComponent,

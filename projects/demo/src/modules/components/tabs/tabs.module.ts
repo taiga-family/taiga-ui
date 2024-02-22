@@ -11,7 +11,7 @@ import {
     TuiHostedDropdownModule,
     TuiModeModule,
     TuiNotificationModule,
-    TuiScrollbarModule,
+    TuiScrollbarComponent,
     TuiSvgModule,
 } from '@taiga-ui/core';
 import {TuiInputNumberModule, TuiTabsModule} from '@taiga-ui/kit';
@@ -43,7 +43,7 @@ import {ExampleTuiTabsComponent} from './tabs.component';
         TuiAddonDocModule,
         TuiMobileTabsModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiTabsComponent)),
-        TuiScrollbarModule,
+        TuiScrollbarComponent,
         TuiActiveZoneModule,
     ],
     declarations: [

@@ -2,6 +2,7 @@ import {Directive, ElementRef, inject, OnInit} from '@angular/core';
 import {TUI_SCROLLABLE} from '@taiga-ui/core/constants';
 
 @Directive({
+    standalone: true,
     selector: '[tuiScrollable]',
 })
 export class TuiScrollableDirective implements OnInit {

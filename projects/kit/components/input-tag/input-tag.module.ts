@@ -9,7 +9,7 @@ import {
 } from '@taiga-ui/cdk';
 import {
     TuiHostedDropdownModule,
-    TuiScrollbarModule,
+    TuiScrollbarComponent,
     TuiSvgModule,
     TuiTooltipModule,
     TuiWrapperModule,
@@ -28,7 +28,7 @@ import {TuiInputTagComponent} from './input-tag.component';
         TuiHoveredModule,
         TuiActiveZoneModule,
         TuiSvgModule,
-        TuiScrollbarModule,
+        TuiScrollbarComponent,
         TuiTooltipModule,
         TuiHostedDropdownModule,
         TuiTagModule,

@@ -1,7 +1,12 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {tuiGetDocModules} from '@taiga-ui/addon-doc';
-import {TuiLinkModule, TuiNotificationModule, TuiScrollbarModule} from '@taiga-ui/core';
+import {
+    TuiLinkModule,
+    TuiNotificationModule,
+    TuiScrollableDirective,
+    TuiScrollbarComponent,
+} from '@taiga-ui/core';
 import {TuiFadeModule} from '@taiga-ui/experimental';
 
 import {TuiFadeExample1} from './examples/1';
@@ -14,9 +19,10 @@ import {ExampleTuiFadeComponent} from './fade.component';
         CommonModule,
         TuiFadeModule,
         TuiNotificationModule,
-        TuiScrollbarModule,
+        TuiScrollbarComponent,
         TuiLinkModule,
         tuiGetDocModules(ExampleTuiFadeComponent),
+        TuiScrollableDirective,
     ],
     declarations: [
         ExampleTuiFadeComponent,

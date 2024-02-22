@@ -5,7 +5,7 @@ import {
     TuiDropdownOpenDirective,
     TuiPrimitiveTextfieldModule,
     TuiPrimitiveYearPickerModule,
-    TuiScrollbarModule,
+    TuiScrollbarComponent,
     TuiTextfieldComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
@@ -20,7 +20,7 @@ import {TuiInputYearDirective} from './input-year.directive';
         TuiDropdownModule,
         TuiDropdownOpenDirective,
         TuiPrimitiveTextfieldModule,
-        TuiScrollbarModule,
+        TuiScrollbarComponent,
         TuiPrimitiveYearPickerModule,
         TuiTextfieldControllerModule,
         TuiToYearPipeModule,

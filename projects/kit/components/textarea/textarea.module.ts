@@ -4,7 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {TuiFocusableModule} from '@taiga-ui/cdk';
 import {
     TuiPrimitiveTextfieldModule,
-    TuiScrollbarModule,
+    TuiScrollbarComponent,
     TuiSvgModule,
     TuiTextfieldComponent,
     TuiTooltipModule,
@@ -20,7 +20,7 @@ import {TuiTextareaDirective} from './textarea.directive';
         CommonModule,
         FormsModule,
         TuiFocusableModule,
-        TuiScrollbarModule,
+        TuiScrollbarComponent,
         TuiTooltipModule,
         TuiWrapperModule,
         TuiSvgModule,

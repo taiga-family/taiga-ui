@@ -1,31 +1,12 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
 :host {
+    .scrollbar-hidden();
+
     position: relative;
     display: flex;
     isolation: isolate;
     overflow: auto;
-
-    &:not(._legacy) {
-        /* stylelint-disable*/
-        scrollbar-width: none;
-        -ms-overflow-style: none;
-        /* stylelint-enable*/
-
-        &::-webkit-scrollbar,
-        &::-webkit-scrollbar-thumb {
-            background: transparent;
-            width: 0;
-            height: 0;
-        }
-    }
-
-    &._legacy {
-        .customize-scroll();
-
-        //noinspection CssInvalidPropertyValue
-        overflow: overlay;
-    }
 }
 
 .t-content {
