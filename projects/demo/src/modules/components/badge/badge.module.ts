@@ -12,6 +12,7 @@ import {
 import {TuiFadeModule, TuiIconModule} from '@taiga-ui/experimental';
 import {TuiBadgeDirective, TuiRadioListModule} from '@taiga-ui/kit';
 
+import {TuiExample} from '../../../utils/example.pipe';
 import {ExampleTuiBadgeComponent} from './badge.component';
 import {TuiBadgeExample1} from './examples/1';
 import {TuiBadgeExample2} from './examples/2';
@@ -36,6 +37,7 @@ import {TuiBadgeExample6} from './examples/6';
         TuiLabelModule,
         tuiGetDocModules(ExampleTuiBadgeComponent),
         TuiPlatformModule,
+        TuiExample,
     ],
     declarations: [
         ExampleTuiBadgeComponent,

@@ -33,6 +33,7 @@ import {
 } from '@taiga-ui/experimental';
 import {TuiBadgeDirective} from '@taiga-ui/kit';
 
+import {TuiExample} from '../../../utils/example.pipe';
 import {ExampleTuiCardLargeComponent} from './card-large.component';
 import {TuiCardLargeExample1} from './examples/1';
 import {TuiCardLargeExample2} from './examples/2';
@@ -79,6 +80,7 @@ import {TuiCardLargeExample12} from './examples/12';
         TuiPlatformModule,
         TuiLinkModule,
         TuiAppearanceDirective,
+        TuiExample,
     ],
     declarations: [
         ExampleTuiCardLargeComponent,
