@@ -1,13 +1,9 @@
-import {ElementRef, InjectionToken, Optional, Provider} from '@angular/core';
+import {ElementRef, inject, InjectionToken, Provider} from '@angular/core';
 import {RouterLinkActive} from '@angular/router';
 import {MutationObserverService} from '@ng-web-apis/mutation-observer';
-import {
-    TuiDestroyService,
-    TuiFocusVisibleService,
-    tuiTypedFromEvent,
-} from '@taiga-ui/cdk';
-import {MODE_PROVIDER, TuiRouterLinkActiveService} from '@taiga-ui/core';
-import {EMPTY, filter, identity, map, merge, Observable} from 'rxjs';
+import {TuiDestroyService, tuiTypedFromEvent} from '@taiga-ui/cdk';
+import {MODE_PROVIDER} from '@taiga-ui/core';
+import {EMPTY, filter, map, merge, Observable} from 'rxjs';
 /**
  * Stream of tab activation events
  */
@@ -15,40 +11,23 @@ export const TUI_TAB_EVENT = new InjectionToken<Observable<Event>>('[TUI_TAB_EVE
 export const TUI_TAB_ACTIVATE = 'tui-tab-activate';
 export const TUI_TAB_PROVIDERS: Provider[] = [
     TuiDestroyService,
-    TuiFocusVisibleService,
-    TuiRouterLinkActiveService,
     {
         provide: TUI_TAB_EVENT,
-        deps: [
-            ElementRef,
-            TuiRouterLinkActiveService,
-            [new Optional(), MutationObserverService],
-            [new Optional(), RouterLinkActive],
-        ],
-        useFactory: (
-            {nativeElement}: ElementRef<HTMLElement>,
-            routerLinkActiveService: Observable<boolean>,
-            mutationObserverService: MutationObserverService | null,
-            routerLinkActive: RouterLinkActive | null,
-        ): Observable<unknown> => {
+        useFactory: (): Observable<unknown> => {
+            const el: HTMLElement = inject(ElementRef).nativeElement;
+            const routerLinkActive = inject(RouterLinkActive, {optional: true});
+            const service = inject(MutationObserverService, {optional: true});
             const mutationObserver =
-                routerLinkActive && mutationObserverService
-                    ? mutationObserverService.pipe(
-                          filter(() => routerLinkActive.isActive),
-                      )
-                    : EMPTY;
+                routerLinkActive &&
+                service?.pipe(filter(() => routerLinkActive.isActive));
 
             return merge(
-                mutationObserver,
-                routerLinkActiveService.pipe(filter(identity)),
-                nativeElement.matches('button')
-                    ? tuiTypedFromEvent(nativeElement, 'click')
-                    : EMPTY,
+                mutationObserver || EMPTY,
+                routerLinkActive?.isActiveChange.pipe(filter(Boolean)) || EMPTY,
+                el.matches('button') ? tuiTypedFromEvent(el, 'click') : EMPTY,
             ).pipe(
                 map(() =>
-                    nativeElement.dispatchEvent(
-                        new CustomEvent(TUI_TAB_ACTIVATE, {bubbles: true}),
-                    ),
+                    el.dispatchEvent(new CustomEvent(TUI_TAB_ACTIVATE, {bubbles: true})),
                 ),
             );
         },
