@@ -1,5 +1,5 @@
 import {DOCUMENT} from '@angular/common';
-import {Component, Inject} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
@@ -10,14 +10,14 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiNavigationExample2 {
+    private readonly doc = inject(DOCUMENT);
+
     color = false;
 
     readonly initial =
         this.doc.head
             .querySelector('meta[name="theme-color"]')
             ?.getAttribute('content') || '';
-
-    constructor(@Inject(DOCUMENT) private readonly doc: Document) {}
 
     onColor(color: boolean): void {
         this.color = color;
