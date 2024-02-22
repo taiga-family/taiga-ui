@@ -1,12 +1,12 @@
 ```ts
-import {TuiPresentModule} from '@taiga-ui/kit';
+import {TuiPresentDirective} from '@taiga-ui/kit';
 
 // ...
 
 @NgModule({
   imports: [
     // ...
-    TuiPresentModule,
+    TuiPresentDirective,
   ],
   // ...
 })

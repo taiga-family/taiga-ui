@@ -1626,7 +1626,7 @@ export const ROUTES: Routes = [
         path: 'directives/present',
         loadChildren: async () =>
             (await import('../directives/present/present.module'))
-                .ExampleTuiPresentModule,
+                .ExampleTuiPresentDirective,
         data: {
             title: 'Present',
         },

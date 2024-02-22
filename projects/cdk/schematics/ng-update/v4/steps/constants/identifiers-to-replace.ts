@@ -164,4 +164,11 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifier[] = [
             moduleSpecifier: '@ng-web-apis/resize-observer',
         },
     },
+    {
+        from: {name: 'TuiPresentModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {
+            name: 'TuiPresentDirective',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
 ];
