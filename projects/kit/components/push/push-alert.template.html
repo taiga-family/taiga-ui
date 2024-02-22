@@ -16,7 +16,7 @@
         [style.color]="context.iconColor"
     ></tui-svg>
     <div
-        *polymorpheusOutlet="context.content as text"
+        *polymorpheusOutlet="context.content as text; context: context"
         [innerHTML]="text"
     ></div>
     <button

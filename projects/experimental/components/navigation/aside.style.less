@@ -1,0 +1,90 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+aside[tuiNavigationAside] {
+    --tui-link: var(--tui-text-01-night);
+    --tui-link-hover: var(--tui-text-01-night);
+
+    position: sticky;
+    top: 3rem;
+    display: flex;
+    width: 3rem;
+    flex-direction: column;
+    padding: 0.5rem 0.5rem 0.25rem;
+    box-sizing: border-box;
+    background: var(--tui-theme-color, #000);
+    color: var(--tui-text-01-night);
+
+    &._expanded {
+        width: 13.75rem;
+
+        + main[tuiNavigationMain] {
+            max-width: calc(100% - 13.75rem);
+        }
+    }
+
+    .t-nav-scrollbar {
+        margin: 0 -0.25rem;
+    }
+
+    .t-nav-content {
+        .scrollbar-hidden();
+
+        height: 100%;
+        padding: 0 0.25rem;
+        overflow: auto;
+    }
+
+    [tuiButton] {
+        width: 100%;
+        justify-content: flex-start;
+        gap: 0.625rem;
+        margin-bottom: 0.25rem;
+
+        &:after {
+            .transition(transform);
+
+            margin-left: auto;
+            color: var(--tui-text-03-night);
+        }
+
+        > * {
+            .text-overflow();
+        }
+    }
+
+    tui-expand [tuiButton] {
+        padding-inline-start: 2rem;
+    }
+
+    hr {
+        background: var(--tui-clear-inverse);
+        height: 1px;
+        margin: 0 0 0.25rem;
+        border: none;
+    }
+
+    header {
+        padding-bottom: 0.25rem;
+        box-shadow: inset 0 -1px var(--tui-clear);
+        margin-bottom: 1rem;
+    }
+
+    footer {
+        margin-top: auto;
+        border-top: 1.75rem solid transparent;
+    }
+
+    + main[tuiNavigationMain] {
+        max-width: calc(100% - 3rem);
+    }
+    .transition(width);
+}
+
+tui-dropdown[data-appearance='dropdown-navigation'] {
+    --tui-text-01: var(--tui-text-01-night);
+    --tui-clear: var(--tui-clear-inverse);
+
+    border: none;
+    background: #323232;
+    background: color-mix(in srgb, var(--tui-theme-color, #000) 80%, #fff);
+}

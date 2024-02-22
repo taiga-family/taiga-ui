@@ -1,0 +1,72 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+header[tuiNavigationHeader] {
+    --tui-link: var(--tui-text-01-night);
+    --tui-link-hover: var(--tui-text-01-night);
+
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    display: flex;
+    height: 3rem;
+    width: 100%;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.5rem;
+    box-sizing: border-box;
+    font: var(--tui-font-text-s);
+    font-weight: 500;
+    line-height: 1rem;
+    background: var(--tui-theme-color, #000);
+    color: var(--tui-text-01-night);
+
+    [tuiNavigationLogo] {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0 0.5rem;
+        overflow: hidden;
+
+        > * {
+            .text-overflow();
+        }
+
+        tui-icon {
+            font-size: 1rem;
+        }
+    }
+
+    [tuiButton],
+    [tuiBadge],
+    [tuiChip],
+    tui-badge,
+    tui-chip {
+        max-width: 8rem;
+
+        > * {
+            .text-overflow();
+        }
+    }
+
+    hr {
+        width: 2rem;
+        margin: 0 0 0 auto;
+        border: none;
+        visibility: hidden;
+        flex-shrink: 0;
+
+        ~ [tuiButton] {
+            margin-right: 0.5rem;
+        }
+    }
+}
+
+tui-dropdown[data-appearance='dropdown-navigation'] {
+    --tui-text-01: var(--tui-text-01-night);
+    --tui-clear: var(--tui-clear-inverse);
+
+    border: none;
+    color: var(--tui-text-01);
+    background: #323232;
+    background: color-mix(in srgb, var(--tui-theme-color, #000) 80%, #fff);
+}
