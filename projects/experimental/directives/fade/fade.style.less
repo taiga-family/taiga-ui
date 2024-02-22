@@ -2,13 +2,14 @@
 
 // prettier-ignore
 [tuiFade] {
+    .scrollbar-hidden();
     .transition(mask-position);
-    display: block;
-    overflow: hidden;
+    overflow: auto;
     text-overflow: unset !important;
     mask-repeat: no-repeat;
 
     &:not([data-orientation='vertical']) {
+        overflow-y: hidden;
         mask-image:
             linear-gradient(to right, transparent var(--fade-offset), #000 calc(var(--fade-size) + var(--fade-offset))),
             linear-gradient(to left, transparent var(--fade-offset), #000 calc(var(--fade-size) + var(--fade-offset))),
@@ -45,6 +46,7 @@
     }
 
     &[data-orientation='vertical'] {
+        overflow-x: hidden;
         mask-image:
             linear-gradient(to bottom, transparent var(--fade-offset), #000 calc(var(--fade-size) + var(--fade-offset))),
             linear-gradient(to top, transparent var(--fade-offset), #000 calc(var(--fade-size) + var(--fade-offset)));

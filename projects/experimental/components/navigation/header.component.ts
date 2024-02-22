@@ -8,7 +8,7 @@ import {tuiButtonOptionsProvider} from '@taiga-ui/experimental/components/button
 @Component({
     selector: 'header[tuiNavigationHeader]',
     template: '<ng-content></ng-content>',
-    styleUrls: ['./head.style.less'],
+    styleUrls: ['./header.style.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
@@ -22,4 +22,4 @@ import {tuiButtonOptionsProvider} from '@taiga-ui/experimental/components/button
         tuiTheme: 'night',
     },
 })
-export class TuiHeadComponent {}
+export class TuiHeaderComponent {}
