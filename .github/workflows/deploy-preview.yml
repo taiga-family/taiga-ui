@@ -7,9 +7,9 @@ jobs:
     name: Firebase
     runs-on: ubuntu-latest
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.51.9
-      - uses: taiga-family/ci/actions/setup/variables@v1.51.9
-      - uses: taiga-family/ci/actions/setup/node@v1.51.9
+      - uses: taiga-family/ci/actions/setup/checkout@v1.51.10
+      - uses: taiga-family/ci/actions/setup/variables@v1.51.10
+      - uses: taiga-family/ci/actions/setup/node@v1.51.10
       - run: npx nx build demo --base-href='/'
       - name: Debug output
         run: tree dist/demo/browser -P '*.html'
