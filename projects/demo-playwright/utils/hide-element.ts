@@ -5,3 +5,7 @@ export async function tuiHideElement(element: Locator): Promise<void> {
         el.style.opacity = '0';
     });
 }
+
+export async function tuiRemoveElement(element: Locator): Promise<void> {
+    return element.evaluate(el => el.remove());
+}
