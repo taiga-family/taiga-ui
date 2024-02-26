@@ -20,6 +20,7 @@
                     tuiOption
                     [fragment]="item.fragment"
                     [routerLink]="item.route"
+                    [target]="item.target"
                     (click)="onClick(input)"
                 >
                     {{ item.title }}
@@ -82,6 +83,7 @@
                 tuiLink
                 class="t-sublink"
                 [routerLink]="item.route"
+                [target]="item.target"
                 [tuiScrollIntoViewLink]="isActive(item.route)"
                 (click)="closeMenu()"
             >
@@ -130,6 +132,7 @@
                                 class="t-sublink t-sublink_small"
                                 [fragment]="subPage.fragment"
                                 [routerLink]="subPage.route"
+                                [target]="item.target"
                                 [tuiScrollIntoViewLink]="isActive(subPage.route)"
                                 (click)="closeMenu()"
                             >
