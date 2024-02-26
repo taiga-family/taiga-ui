@@ -8,6 +8,7 @@ export const TUI_USED_ICONS = [
     'tuiIconCheck',
     'tuiIconAlertCircleLarge',
     'tuiIconButton',
+    'tuiIconExternalLink',
     'tuiIconClose',
     'tuiIconSearchLarge',
     'tuiIconCalendarLarge',
