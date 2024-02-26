@@ -19,9 +19,10 @@
                 <tui-avatar
                     size="s"
                     class="tui-space_right-3"
-                    [avatarUrl]="item.avatarUrl || null"
-                    [text]="item.firstName"
-                ></tui-avatar>
+                    [src]="item.avatarUrl"
+                >
+                    {{ item.firstName }}
+                </tui-avatar>
                 <span class="user">
                     <span>{{ item.firstName }} {{ item.lastName }}</span>
                     <span class="phone">{{ item.phone }}</span>
@@ -34,9 +35,9 @@
     <tui-avatar
         *ngIf="user$ | async as user"
         size="s"
-        [avatarUrl]="user.avatarUrl || null"
-        [rounded]="true"
-        [text]="user.firstName"
-    ></tui-avatar>
+        [src]="user.avatarUrl"
+    >
+        {{ user.firstName }}
+    </tui-avatar>
 </ng-template>
 <p>Value: {{ value }}</p>

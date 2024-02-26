@@ -1,23 +1,19 @@
 import {Provider} from '@angular/core';
 import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
-import {TuiSizeXXL, TuiSizeXXS} from '@taiga-ui/core';
+import {TuiAppearanceOptions, TuiSizeXS, TuiSizeXXL} from '@taiga-ui/core';
 
-export interface TuiAvatarOptions {
-    readonly autoColor: boolean;
-    readonly rounded: boolean;
-    readonly size: TuiSizeXXL | TuiSizeXXS;
+export interface TuiAvatarOptions extends TuiAppearanceOptions {
+    readonly appearance: string;
+    readonly round: boolean;
+    readonly size: TuiSizeXS | TuiSizeXXL;
 }
 
-/** Default values for the avatar options. */
 export const TUI_AVATAR_DEFAULT_OPTIONS: TuiAvatarOptions = {
-    size: 'm',
-    autoColor: false,
-    rounded: false,
+    appearance: '',
+    round: true,
+    size: 'l',
 };
 
-/**
- * Default parameters for avatar component
- */
 export const TUI_AVATAR_OPTIONS = tuiCreateToken(TUI_AVATAR_DEFAULT_OPTIONS);
 
 export function tuiAvatarOptionsProvider(options: Partial<TuiAvatarOptions>): Provider {

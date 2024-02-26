@@ -3,11 +3,11 @@ import {NgModule} from '@angular/core';
 import {tuiGetDocModules} from '@taiga-ui/addon-doc';
 import {TuiNotificationModule, TuiSvgModule} from '@taiga-ui/core';
 import {
-    TuiAvatarModule,
     TuiButtonModule,
     TuiButtonVerticalModule,
     TuiFadeModule,
 } from '@taiga-ui/experimental';
+import {TuiAvatarComponent} from '@taiga-ui/kit';
 
 import {ExampleTuiButtonVerticalComponent} from './button-vertical.component';
 import {TuiButtonVerticalExample1} from './examples/1';
@@ -19,7 +19,7 @@ import {TuiButtonVerticalExample2} from './examples/2';
         TuiButtonModule,
         TuiButtonVerticalModule,
         TuiFadeModule,
-        TuiAvatarModule,
+        TuiAvatarComponent,
         TuiNotificationModule,
         TuiSvgModule,
         tuiGetDocModules(ExampleTuiButtonVerticalComponent),

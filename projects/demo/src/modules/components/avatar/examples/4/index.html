@@ -1,17 +1,20 @@
-<div class="tui-avatar-stack">
+<tui-avatar-stack
+    *ngFor="let size of sizes; let odd = odd"
+    class="tui-space_vertical-4"
+    [direction]="odd ? 'left' : 'right'"
+>
     <tui-avatar
-        *ngFor="let user of users"
-        [autoColor]="true"
-        [text]="user"
+        *ngFor="let name of names"
+        [round]="odd"
+        [size]="size"
+        [src]="name | tuiInitials"
+        [style.background]="name | tuiAutoColor"
     ></tui-avatar>
-</div>
-
-<div class="tui-avatar-stack reversed">
     <tui-avatar
-        *ngFor="let user of users"
         size="l"
-        [autoColor]="true"
-        [rounded]="true"
-        [text]="user"
-    ></tui-avatar>
-</div>
+        [round]="odd"
+        [size]="size"
+    >
+        99+
+    </tui-avatar>
+</tui-avatar-stack>

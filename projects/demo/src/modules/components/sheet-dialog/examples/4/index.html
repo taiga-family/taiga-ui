@@ -32,8 +32,8 @@
         >
             <tui-avatar
                 size="s"
-                [autoColor]="true"
-                [text]="user"
+                [src]="user | tuiInitials"
+                [style.background]="user | tuiAutoColor"
             ></tui-avatar>
             {{ user }}
         </button>

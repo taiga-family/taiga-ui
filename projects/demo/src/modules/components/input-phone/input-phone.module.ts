@@ -14,7 +14,7 @@ import {
     TuiSvgModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiAvatarModule, TuiInputPhoneModule} from '@taiga-ui/kit';
+import {TuiAvatarComponent, TuiInputPhoneModule} from '@taiga-ui/kit';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
@@ -33,7 +33,7 @@ import {ExampleTuiInputPhoneComponent} from './input-phone.component';
         TuiDataListModule,
         TuiButtonModule,
         TuiSvgModule,
-        TuiAvatarModule,
+        TuiAvatarComponent,
         TuiDropdownModule,
         TuiTextfieldControllerModule,
         TuiHintModule,

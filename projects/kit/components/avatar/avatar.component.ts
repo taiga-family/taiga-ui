@@ -1,93 +1,75 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    HostBinding,
-    inject,
-    Input,
-} from '@angular/core';
+import {NgSwitch, NgSwitchCase, NgSwitchDefault} from '@angular/common';
+import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {SafeResourceUrl} from '@angular/platform-browser';
-import {tuiIsString, tuiPure, TuiSafeHtml} from '@taiga-ui/cdk';
-import {tuiSizeBigger, TuiSizeXXL, TuiSizeXXS} from '@taiga-ui/core';
-import {tuiStringHashToHsl} from '@taiga-ui/kit/utils/format';
+import {tuiIsString} from '@taiga-ui/cdk';
+import {
+    TUI_ICON_RESOLVER,
+    TuiAppearanceDirective,
+    tuiAppearanceOptionsProvider,
+} from '@taiga-ui/core';
 
 import {TUI_AVATAR_OPTIONS} from './avatar.options';
 
 @Component({
+    standalone: true,
     selector: 'tui-avatar',
+    imports: [NgSwitch, NgSwitchCase, NgSwitchDefault],
     templateUrl: './avatar.template.html',
     styleUrls: ['./avatar.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [tuiAppearanceOptionsProvider(TUI_AVATAR_OPTIONS)],
+    hostDirectives: [
+        {
+            directive: TuiAppearanceDirective,
+            inputs: [
+                'tuiAppearance: appearance',
+                'tuiAppearanceState',
+                'tuiAppearanceFocus',
+            ],
+        },
+    ],
+    host: {
+        '[attr.data-size]': 'size',
+        '[attr.data-type]': 'type',
+        '[style.--t-mask]': '"url(" + resolver(safeSrc) + ")"',
+        '[class._round]': 'round',
+    },
 })
 export class TuiAvatarComponent {
     private readonly options = inject(TUI_AVATAR_OPTIONS);
 
     @Input()
-    @HostBinding('attr.data-size')
     size = this.options.size;
 
-    @Input('avatarUrl')
-    set avatarUrlSetter(avatarUrl: SafeResourceUrl | string | null) {
-        this.avatarUrl = avatarUrl;
-        this.isUrlValid = !!avatarUrl && !this.iconAvatar;
-    }
+    @Input()
+    round = this.options.round;
 
     @Input()
-    text = '';
+    src?: SafeResourceUrl | string | null;
 
-    @Input()
-    fallback: TuiSafeHtml | null = null;
+    readonly resolver = inject(TUI_ICON_RESOLVER);
 
-    @Input()
-    autoColor: boolean = this.options.autoColor;
-
-    @Input()
-    @HostBinding('class._rounded')
-    rounded: boolean = this.options.rounded;
-
-    avatarUrl: SafeResourceUrl | string | null = null;
-
-    isUrlValid = false;
-
-    @HostBinding('style.background')
-    get bgColor(): string {
-        return this.autoColor ? tuiStringHashToHsl(this.text) : '';
+    get safeSrc(): string {
+        return this.src?.toString() ?? '';
     }
 
-    @HostBinding('class._has-avatar')
-    get hasAvatar(): boolean {
-        return this.avatarUrl !== null && this.isUrlValid;
+    get value(): SafeResourceUrl | string {
+        return this.src || '';
     }
 
-    get iconAvatar(): boolean {
-        return tuiIsString(this.avatarUrl) && !!this.avatarUrl?.startsWith('tuiIcon');
-    }
+    get type(): 'content' | 'icon' | 'img' | 'text' {
+        if (this.value && !tuiIsString(this.value)) {
+            return 'img';
+        }
 
-    get useFallback(): boolean {
-        return (
-            !!this.fallback && !!this.avatarUrl && !this.isUrlValid && !this.text.length
-        );
-    }
+        if (this.value.startsWith('tuiIcon') || this.value.endsWith('.svg')) {
+            return 'icon';
+        }
 
-    get computedText(): string {
-        return this.hasAvatar || this.iconAvatar || this.text === ''
-            ? ''
-            : this.getSlicedText(this.text, this.size);
-    }
+        if (this.value.length > 0 && this.value.length < 3) {
+            return 'text';
+        }
 
-    get stringAvatar(): string {
-        return this.iconAvatar ? String(this.avatarUrl) : '';
-    }
-
-    onError(): void {
-        this.isUrlValid = false;
-    }
-
-    @tuiPure
-    private getSlicedText(text: string, size: TuiSizeXXL | TuiSizeXXS): string {
-        const words = text.split(' ');
-
-        return words.length > 1 && tuiSizeBigger(size)
-            ? words[0].slice(0, 1) + words[1].slice(0, 1)
-            : words[0].slice(0, 1);
+        return this.value.length ? 'img' : 'content';
     }
 }

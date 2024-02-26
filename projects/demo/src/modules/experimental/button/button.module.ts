@@ -2,7 +2,8 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {tuiGetDocModules} from '@taiga-ui/addon-doc';
 import {TuiNotificationModule} from '@taiga-ui/core';
-import {TuiAvatarModule, TuiButtonModule, TuiIconModule} from '@taiga-ui/experimental';
+import {TuiButtonModule, TuiIconModule} from '@taiga-ui/experimental';
+import {TuiAvatarComponent} from '@taiga-ui/kit';
 
 import {ExampleTuiButtonComponent} from './button.component';
 import {TuiButtonExample1} from './examples/1';
@@ -17,7 +18,7 @@ import {TuiButtonExample5} from './examples/5';
         TuiButtonModule,
         TuiNotificationModule,
         TuiIconModule,
-        TuiAvatarModule,
+        TuiAvatarComponent,
         tuiGetDocModules(ExampleTuiButtonComponent),
     ],
     declarations: [

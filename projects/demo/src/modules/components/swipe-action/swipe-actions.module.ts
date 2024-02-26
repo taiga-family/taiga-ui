@@ -15,7 +15,6 @@ import {
     TuiNotificationModule,
 } from '@taiga-ui/core';
 import {
-    TuiAvatarModule,
     TuiButtonModule,
     TuiCardModule,
     TuiCellModule,
@@ -25,7 +24,11 @@ import {
     TuiTitleModule,
     TuiToggleModule,
 } from '@taiga-ui/experimental';
-import {TuiBadgeComponent, TuiBadgedContentComponent} from '@taiga-ui/kit';
+import {
+    TuiAvatarComponent,
+    TuiBadgeComponent,
+    TuiBadgedContentComponent,
+} from '@taiga-ui/kit';
 
 import {TuiSwipeActionExample1} from './examples/1';
 import {TuiSwipeActionExample2} from './examples/2';
@@ -38,7 +41,7 @@ import {ExampleTuiSwipeActionsComponent} from './swipe-actions.component';
     imports: [
         CommonModule,
         TuiAddonDocModule,
-        TuiAvatarModule,
+        TuiAvatarComponent,
         TuiCellModule,
         TuiCardModule,
         TuiSurfaceModule,

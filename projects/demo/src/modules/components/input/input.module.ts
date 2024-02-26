@@ -24,8 +24,9 @@ import {
     TuiSvgModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
+import {TuiInitialsModule} from '@taiga-ui/experimental';
 import {
-    TuiAvatarModule,
+    TuiAvatarComponent,
     TuiDataListWrapperModule,
     TuiInputDateModule,
     TuiInputModule,
@@ -72,7 +73,7 @@ import {ExampleTuiInputComponent} from './input.component';
         TuiRadioListModule,
         TuiButtonModule,
         TuiInputCardModule,
-        TuiAvatarModule,
+        TuiAvatarComponent,
         TuiPrimitiveTextfieldModule,
         TuiTextfieldControllerModule,
         TuiHintModule,
@@ -86,6 +87,7 @@ import {ExampleTuiInputComponent} from './input.component';
         TuiTextCodeModule,
         MaskitoDirective,
         TuiUnmaskHandlerModule,
+        TuiInitialsModule,
     ],
     declarations: [
         ExampleTuiInputComponent,

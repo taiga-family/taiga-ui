@@ -1,211 +1,134 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
-@size-xs: 1.5rem;
-@size-s: 2rem;
-@size-m: 3rem;
-@size-l: 4rem;
-@size-xl: 6rem;
-@size-xxl: 9rem;
-
 :host {
+    --t-size: 3.5rem;
+    --t-radius: 0.75rem;
+
     position: relative;
-    display: flex;
+    display: inline-flex;
     flex-shrink: 0;
-    border-radius: var(--tui-radius-m);
-    color: var(--tui-secondary-active);
-    text-align: center;
-    text-transform: uppercase;
-    justify-content: center;
+    width: var(--t-size);
+    height: var(--t-size);
     align-items: center;
-    background: var(--tui-avatar-background, currentColor);
-    user-select: none;
+    justify-content: center;
     overflow: hidden;
+    white-space: nowrap;
+    border-radius: var(--t-radius);
+    background: var(--tui-secondary);
+    color: var(--tui-text-02);
+    vertical-align: middle;
+    box-sizing: border-box;
+    padding: 0.25rem;
+    opacity: 0.999; // Kick in hardware rendering layer to avoid artifacts on the edges
+
+    &:before {
+        .fullsize();
+
+        background: currentColor;
+        mask: var(--t-mask) no-repeat center/60%;
+    }
 
     &[data-size='xs'] {
+        --t-size: var(--tui-height-xs);
+        --t-radius: 0.5rem;
+
+        font: var(--tui-font-text-xs);
+        font-weight: bold;
+
+        &[data-type='content'] {
+            font: var(--tui-font-text-m);
+            font-size: 0.5625rem;
+        }
+    }
+
+    &[data-size='s'] {
+        --t-size: var(--tui-height-s);
+        --t-radius: 0.5rem;
+
         font: var(--tui-font-text-s);
-        width: @size-xs;
-        height: @size-xs;
-    }
+        font-weight: bold;
 
-    &[data-size='s'] {
-        font: var(--tui-font-text-m);
-        width: @size-s;
-        height: @size-s;
+        &[data-type='content'] {
+            font: var(--tui-font-text-xs);
+            font-weight: bold;
+        }
     }
 
     &[data-size='m'] {
+        --t-size: calc(var(--tui-height-m) - 0.25rem);
+        --t-radius: 0.75rem;
+
         font: var(--tui-font-text-l);
-        width: @size-m;
-        height: @size-m;
+        font-weight: bold;
+
+        &[data-type='content'] {
+            font: var(--tui-font-text-m);
+            font-weight: bold;
+        }
     }
 
     &[data-size='l'] {
+        --t-size: var(--tui-height-l);
+        --t-radius: 0.75rem;
+
         font: var(--tui-font-heading-5);
-        width: @size-l;
-        height: @size-l;
-        border-radius: var(--tui-radius-xl);
+
+        &[data-type='content'] {
+            font: var(--tui-font-text-l);
+            font-weight: bold;
+        }
     }
 
     &[data-size='xl'] {
+        --t-size: 5rem;
+        --t-radius: 0.75rem;
+
         font: var(--tui-font-heading-3);
-        width: @size-xl;
-        height: @size-xl;
-        border-radius: var(--tui-radius-xl);
+
+        &[data-type='content'] {
+            font: var(--tui-font-heading-4);
+        }
     }
 
     &[data-size='xxl'] {
-        font: var(--tui-font-heading-1);
-        width: @size-xxl;
-        height: @size-xxl;
-        border-radius: var(--tui-radius-l);
-    }
+        --t-size: 6rem;
+        --t-radius: 1rem;
 
-    &[new] {
-        &[data-size='xxs'] {
-            width: 1.5rem;
-            height: 1.5rem;
-            border-radius: var(--tui-radius-s);
+        font: var(--tui-font-heading-3);
 
-            .t-icon {
-                transform: scale(0.58);
-            }
-        }
-
-        &[data-size='xs'] {
-            width: 2rem;
-            height: 2rem;
-            border-radius: var(--tui-radius-s);
-
-            .t-icon {
-                transform: scale(0.83);
-            }
-        }
-
-        &[data-size='s'] {
-            width: 2.5rem;
-            height: 2.5rem;
-            border-radius: calc(1.5 * var(--tui-radius-s));
-
-            .t-icon {
-                transform: scale(1);
-            }
-        }
-
-        &[data-size='m'] {
-            width: 3rem;
-            height: 3rem;
-            border-radius: calc(2 * var(--tui-radius-s));
-
-            .t-icon {
-                transform: scale(1.17);
-            }
-        }
-
-        &[data-size='l'] {
-            width: 4rem;
-            height: 4rem;
-            border-radius: calc(2 * var(--tui-radius-s));
-
-            .t-icon {
-                transform: scale(1.67);
-            }
-        }
-
-        &[data-size='xl'] {
-            width: 6rem;
-            height: 6rem;
-            border-radius: calc(3 * var(--tui-radius-s));
-
-            .t-icon {
-                transform: scale(2.33);
-            }
-        }
-
-        &[data-size='xxl'] {
-            width: 8rem;
-            height: 8rem;
-            border-radius: calc(4 * var(--tui-radius-s));
-
-            .t-icon {
-                transform: scale(3.33);
-            }
+        &[data-type='content'] {
+            font: var(--tui-font-heading-3);
         }
     }
 
-    &._has-avatar {
-        background-color: transparent;
+    &[data-size='xxxl'] {
+        --t-size: 8rem;
+        --t-radius: 1.25rem;
+
+        font: var(--tui-font-heading-2);
+
+        &[data-type='content'] {
+            font: var(--tui-font-heading-3);
+        }
     }
 
-    &._rounded {
-        border-radius: 100% !important;
-    }
-}
-
-::ng-deep .tui-avatar-stack {
-    display: flex;
-    width: min-content;
-}
-
-:host-context(.tui-avatar-stack) {
-    &[data-size='xs'] {
-        margin-right: -0.625rem;
-        box-shadow: 0 0 0 1px var(--tui-avatar-border, var(--tui-base-01));
+    &[data-type='img'] {
+        background: transparent;
     }
 
-    &[data-size='s'] {
-        margin-right: -0.875rem;
-        box-shadow: 0 0 0 1px var(--tui-avatar-border, var(--tui-base-01));
+    &[data-type='icon']:before {
+        content: '';
     }
 
-    &[data-size='m'] {
-        margin-right: -1.25rem;
-        box-shadow: 0 0 0 2px var(--tui-avatar-border, var(--tui-base-01));
+    &._round {
+        --t-radius: calc(var(--t-size) / 2);
     }
 
-    &[data-size='l'] {
-        margin-right: -1.625rem;
-        box-shadow: 0 0 0 2px var(--tui-avatar-border, var(--tui-base-01));
-    }
+    ::ng-deep img,
+    ::ng-deep picture,
+    ::ng-deep video {
+        .fullsize();
 
-    &[data-size='xl'] {
-        margin-right: -2.25rem;
-        box-shadow: 0 0 0 3px var(--tui-avatar-border, var(--tui-base-01));
-    }
-
-    &[data-size='xxl'] {
-        margin-right: -3.375rem;
-        box-shadow: 0 0 0 3px var(--tui-avatar-border, var(--tui-base-01));
-    }
-}
-
-.t-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.t-text {
-    color: var(--tui-avatar-color, var(--tui-text-01));
-}
-
-.t-icon {
-    .fullsize();
-
-    color: var(--tui-avatar-color, var(--tui-text-01));
-
-    :host[data-size='xs'] & {
-        transform: scale(0.5);
-    }
-
-    :host[data-size='m'] & {
-        transform: scale(1.6);
-    }
-
-    :host[data-size='l'] & {
-        transform: scale(2);
-    }
-
-    :host[data-size='xl'] & {
-        transform: scale(3.2);
+        object-fit: cover;
     }
 }

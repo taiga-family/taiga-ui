@@ -160,7 +160,7 @@ export const pages: TuiDocPages = [
     {
         section: 'Components',
         title: 'Avatar',
-        keywords: 'аватар, image, pic, картинка, изображение, avatar, stack',
+        keywords: 'аватар, image, pic, icon, картинка, изображение, avatar, stack',
         route: '/components/avatar',
     },
     {
@@ -859,12 +859,6 @@ export const pages: TuiDocPages = [
         route: '/icons/overview/Component',
     },
     // Experimental
-    {
-        section: 'Experimental',
-        title: 'Avatar ',
-        keywords: 'аватар, image, pic, icon, картинка, изображение, avatar, stack',
-        route: '/experimental/avatar',
-    },
     {
         section: 'Experimental',
         title: 'Badge',

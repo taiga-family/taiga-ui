@@ -1,12 +1,34 @@
-<tui-avatar
-    new
-    class="avatar"
-    [avatarUrl]="waterplea"
-></tui-avatar>
+<tui-avatar-labeled>
+    <tui-avatar
+        [src]="'https://avatars.githubusercontent.com/u/10106368' | tuiFallbackSrc: 'tuiIconUserLarge' | async"
+    ></tui-avatar>
 
-<tui-avatar
-    fallback="tuiIconUserLarge"
-    new
-    class="tui-space_left-3 avatar"
-    [avatarUrl]="wrongUrl"
-></tui-avatar>
+    <div tuiFade>MarsiBarsi</div>
+</tui-avatar-labeled>
+
+<tui-avatar-labeled>
+    <tui-avatar
+        [src]="'https://avatars.githubusercontent.com/u/11832552' | tuiFallbackSrc: 'tuiIconUserLarge' | async"
+    ></tui-avatar>
+
+    <div tuiFade>Inkin</div>
+    <div tuiFade>Alexander</div>
+</tui-avatar-labeled>
+
+<tui-avatar-labeled>
+    <tui-avatar
+        [src]="'https://avatars.githubusercontent.com/u/46284632' | tuiFallbackSrc: 'tuiIconUserLarge' | async"
+    ></tui-avatar>
+
+    <div tuiFade>Potekhin</div>
+    <div tuiFade>Vladimir</div>
+</tui-avatar-labeled>
+
+<tui-avatar-labeled>
+    <tui-avatar
+        [src]="'https://avatars.githubusercontent.com/u/35179038' | tuiFallbackSrc: 'tuiIconUserLarge' | async"
+    ></tui-avatar>
+
+    <div tuiFade>Barsukov</div>
+    <div tuiFade>Nikita</div>
+</tui-avatar-labeled>

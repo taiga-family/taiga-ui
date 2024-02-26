@@ -1,12 +1,12 @@
 <tui-avatar
     size="l"
-    text="❤"
     tuiHintAppearance="onDark"
     tuiHintDirection="right"
-    [autoColor]="true"
-    [rounded]="true"
+    [style.background]="'❤' | tuiAutoColor"
     [tuiHint]="tooltip"
-></tui-avatar>
+>
+    ❤
+</tui-avatar>
 <ng-template #tooltip>
     <div>
         What is
