@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[7036],{7036:n=>{n.exports="@import '@taiga-ui/core/styles/taiga-ui-local';\n\n.flex {\n    display: flex;\n    align-items: center;\n    gap: 0.5rem;\n    margin-top: 1rem;\n}\n\n.dropdown {\n    max-width: 20rem;\n    padding: 1rem;\n}\n"}}]);

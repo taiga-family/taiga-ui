@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[83638],{83638:n=>{n.exports="@import '@taiga-ui/core/styles/taiga-ui-local';\n\n:host {\n    max-width: 34.375rem;\n}\n\n.title {\n    font: var(--tui-font-heading-5);\n    margin: 0 0 @space * 3;\n}\n\n.filters {\n    display: inline;\n}\n\n.tag {\n    margin: 0 @space @space 0;\n}\n"}}]);

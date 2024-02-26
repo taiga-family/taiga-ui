@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[39428],{39428:e=>{e.exports=":host {\n    display: block;\n}\n"}}]);

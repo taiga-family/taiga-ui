@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[84350],{84350:e=>{e.exports="<p>Inject this token if you need access to Renderer inside a singleton service.</p>\n"}}]);

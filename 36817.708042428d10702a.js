@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[36817],{36817:a=>{a.exports=".custom {\n    --tui-avatar-color: #fff;\n    --tui-avatar-background: linear-gradient(to bottom right, #cd56c2, #6e48aa);\n}\n"}}]);
