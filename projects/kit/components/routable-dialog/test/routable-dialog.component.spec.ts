@@ -162,7 +162,7 @@ describe('TuiRoutableDialog', () => {
         verify(router.navigate(deepEqual(['../../..']), anything())).once();
     }));
 
-    it('if navigation occurs from a dialog, then the navigateToParent is not called', fakeAsync(() => {
+    it('if navigation occurs from a dialog, then the navigation to parent is not called', () => {
         // arrange
         createComponent(
             {
@@ -185,5 +185,5 @@ describe('TuiRoutableDialog', () => {
 
         // assert
         verify(router.navigate(anything(), anything())).never();
-    }));
+    });
 });
