@@ -4,6 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiButtonModule, TuiDataListModule, TuiDropdownModule} from '@taiga-ui/core';
+import {TuiInitialsModule} from '@taiga-ui/experimental';
 import {TuiAvatarComponent, TuiTextareaModule} from '@taiga-ui/kit';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
@@ -11,7 +12,6 @@ import {DropdownDocumentationModule} from '../../components/abstract/dropdown-do
 import {ExampleTuiDropdownSelectionComponent} from './dropdown-selection.component';
 import {TuiDropdownSelectionExample1} from './examples/1';
 import {TuiDropdownSelectionExample2} from './examples/2';
-import {TuiInitialsModule} from "@taiga-ui/experimental";
 
 @NgModule({
     imports: [
