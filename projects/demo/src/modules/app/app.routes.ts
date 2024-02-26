@@ -1,5 +1,6 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
+import {tuiProvideRoutePageTab as route} from '@taiga-ui/addon-doc';
 
 export const ROUTES: Routes = [
     {
@@ -162,14 +163,11 @@ export const ROUTES: Routes = [
             title: 'Action',
         },
     },
-    {
+    route({
         path: 'components/avatar',
-        loadChildren: async () =>
-            (await import('../components/avatar/avatar.module')).ExampleTuiAvatarModule,
-        data: {
-            title: 'Avatar',
-        },
-    },
+        loadComponent: async () => import('../components/avatar/avatar.component'),
+        title: 'Avatar',
+    }),
     {
         path: 'components/badge',
         loadChildren: async () =>
@@ -211,14 +209,6 @@ export const ROUTES: Routes = [
                 .ExampleTuiAppearanceModule,
         data: {
             title: 'Appearance',
-        },
-    },
-    {
-        path: 'experimental/avatar',
-        loadChildren: async () =>
-            (await import('../experimental/avatar/avatar.module')).ExampleTuiAvatarModule,
-        data: {
-            title: 'Avatar ',
         },
     },
     {

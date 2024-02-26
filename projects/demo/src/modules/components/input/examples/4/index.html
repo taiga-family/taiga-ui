@@ -23,9 +23,10 @@
                     {{ user }}
                     <tui-avatar
                         size="xs"
-                        [avatarUrl]="user.avatarUrl || null"
-                        [text]="user.toString()"
-                    ></tui-avatar>
+                        [src]="user.avatarUrl"
+                    >
+                        {{ user.toString() | tuiInitials }}
+                    </tui-avatar>
                 </button>
             </tui-data-list>
         </ng-container>
@@ -34,10 +35,10 @@
         <tui-avatar
             *ngIf="lastUser"
             size="s"
-            [avatarUrl]="lastUser.avatarUrl || null"
-            [rounded]="true"
-            [text]="lastUser.toString()"
-        ></tui-avatar>
+            [src]="lastUser.avatarUrl"
+        >
+            {{ lastUser.toString() | tuiInitials }}
+        </tui-avatar>
     </ng-template>
     <tui-input
         formControlName="account"

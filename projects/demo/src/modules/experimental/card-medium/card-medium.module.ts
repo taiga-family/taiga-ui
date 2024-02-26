@@ -16,8 +16,6 @@ import {
 } from '@taiga-ui/core';
 import {
     TuiAutoColorModule,
-    TuiAvatarModule,
-    TuiAvatarStackModule,
     TuiButtonCloseModule,
     TuiButtonModule,
     TuiCardModule,
@@ -31,7 +29,11 @@ import {
     TuiThumbnailCardModule,
     TuiTitleModule,
 } from '@taiga-ui/experimental';
-import {TuiBadgeDirective} from '@taiga-ui/kit';
+import {
+    TuiAvatarComponent,
+    TuiAvatarStackComponent,
+    TuiBadgeDirective,
+} from '@taiga-ui/kit';
 
 import {ExampleTuiCardMediumComponent} from './card-medium.component';
 import {TuiCardMediumExample1} from './examples/1';
@@ -45,7 +47,6 @@ import {TuiCardMediumExample7} from './examples/7';
 @NgModule({
     imports: [
         CommonModule,
-        TuiAvatarStackModule,
         TuiAutoColorModule,
         TuiInitialsModule,
         TuiNotificationModule,
@@ -56,7 +57,8 @@ import {TuiCardMediumExample7} from './examples/7';
         TuiSvgModule,
         TuiBadgeDirective,
         TuiTitleModule,
-        TuiAvatarModule,
+        TuiAvatarComponent,
+        TuiAvatarStackComponent,
         TuiScrollbarModule,
         TuiHintModule,
         FormsModule,

@@ -12,7 +12,6 @@ import {
     TuiNotificationModule,
 } from '@taiga-ui/core';
 import {
-    TuiAvatarModule,
     TuiBadgeNotificationModule,
     TuiButtonModule,
     TuiCardModule,
@@ -24,7 +23,12 @@ import {
     TuiTitleModule,
     TuiToggleModule,
 } from '@taiga-ui/experimental';
-import {TuiBadgeDirective, TuiBreadcrumbsModule, TuiTabsModule} from '@taiga-ui/kit';
+import {
+    TuiAvatarComponent,
+    TuiBadgeDirective,
+    TuiBreadcrumbsModule,
+    TuiTabsModule,
+} from '@taiga-ui/kit';
 
 import {TuiNavigationExample1} from './examples/1';
 import {TuiNavigationExample2} from './examples/2';
@@ -38,7 +42,7 @@ import {ExampleTuiNavigationComponent} from './navigation.component';
         FormsModule,
         TuiNotificationModule,
         TuiNavigationModule,
-        TuiAvatarModule,
+        TuiAvatarComponent,
         TuiButtonModule,
         TuiIconModule,
         TuiBadgeDirective,

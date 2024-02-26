@@ -24,10 +24,10 @@
             {{ item.name }}
             <tui-avatar
                 size="s"
-                [avatarUrl]="item.avatar"
-                [rounded]="true"
-                [text]="item.name"
-            ></tui-avatar>
+                [src]="item.avatar"
+            >
+                {{ item.name | tuiInitials }}
+            </tui-avatar>
         </button>
     </tui-data-list>
 </ng-template>

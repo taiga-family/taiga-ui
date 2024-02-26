@@ -11,7 +11,7 @@ import {
     TuiLinkModule,
     TuiNotificationModule,
 } from '@taiga-ui/core';
-import {TuiAvatarModule} from '@taiga-ui/kit';
+import {TuiAvatarComponent} from '@taiga-ui/kit';
 
 import {TuiSheetExample1} from './examples/1';
 import {TuiSheetExample2} from './examples/2';
@@ -26,7 +26,7 @@ import {ExampleTuiSheetComponent} from './sheet.component';
         CommonModule,
         TuiButtonModule,
         TuiLabelModule,
-        TuiAvatarModule,
+        TuiAvatarComponent,
         TuiNotificationModule,
         TuiLinkModule,
         TuiElasticStickyModule,

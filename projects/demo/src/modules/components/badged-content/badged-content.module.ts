@@ -5,13 +5,13 @@ import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiPlatformModule} from '@taiga-ui/cdk';
 import {TuiNotificationModule} from '@taiga-ui/core';
 import {
-    TuiAvatarModule,
     TuiBadgeNotificationModule,
     TuiButtonModule,
     TuiFallbackSrcModule,
     TuiIconModule,
 } from '@taiga-ui/experimental';
 import {
+    TuiAvatarComponent,
     TuiBadgedContentComponent,
     TuiBadgeDirective,
     TuiInputModule,
@@ -29,7 +29,7 @@ import {TuiBadgedContentExample3} from './examples/3';
         TuiIconModule,
         TuiBadgeDirective,
         TuiBadgedContentComponent,
-        TuiAvatarModule,
+        TuiAvatarComponent,
         TuiFallbackSrcModule,
         TuiInputModule,
         TuiButtonModule,

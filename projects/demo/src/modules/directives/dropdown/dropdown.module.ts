@@ -12,7 +12,7 @@ import {
 } from '@taiga-ui/core';
 import {TuiCardModule, TuiSurfaceModule} from '@taiga-ui/experimental';
 import {
-    TuiAvatarModule,
+    TuiAvatarComponent,
     TuiInputModule,
     TuiSelectModule,
     TuiToggleModule,
@@ -33,7 +33,7 @@ import {TuiDropdownExample5} from './examples/5';
         FormsModule,
         PolymorpheusModule,
         TuiLinkModule,
-        TuiAvatarModule,
+        TuiAvatarComponent,
         TuiButtonModule,
         TuiDropdownModule,
         TuiCardModule,

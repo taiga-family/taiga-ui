@@ -21,8 +21,7 @@
         <tui-avatar
             size="xs"
             class="avatar"
-            [avatarUrl]="data.avatarUrl || null"
-            [text]="data.toString()"
+            [src]="data.avatarUrl || (data.toString() | tuiInitials)"
         ></tui-avatar>
         <div class="name">{{ data }}</div>
     </div>

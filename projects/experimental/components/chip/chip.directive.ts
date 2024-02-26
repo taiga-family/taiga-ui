@@ -6,10 +6,10 @@ import {
     TuiIconsDirective,
     TuiSizeXXS,
 } from '@taiga-ui/core';
-import {tuiAvatarOptionsProvider} from '@taiga-ui/experimental/components/avatar';
 import {tuiButtonOptionsProvider} from '@taiga-ui/experimental/components/button';
 import {tuiCheckboxOptionsProvider} from '@taiga-ui/experimental/components/checkbox';
 import {tuiToggleOptionsProvider} from '@taiga-ui/experimental/components/toggle';
+import {tuiAvatarOptionsProvider} from '@taiga-ui/kit';
 
 import {TuiChipComponent} from './chip.component';
 import {TUI_CHIP_OPTIONS} from './chip.options';

@@ -8,7 +8,6 @@ import {
     TuiTooltipModule,
 } from '@taiga-ui/core';
 import {
-    TuiAvatarModule,
     TuiBadgeNotificationModule,
     TuiButtonModule,
     TuiHeaderDirective,
@@ -18,6 +17,7 @@ import {
     TuiToggleModule,
 } from '@taiga-ui/experimental';
 import {
+    TuiAvatarComponent,
     TuiBadgeDirective,
     TuiDataListWrapperModule,
     TuiSelectModule,
@@ -46,7 +46,7 @@ import {ExampleTuiCellComponent} from './header.component';
         TuiButtonModule,
         tuiGetDocModules(ExampleTuiCellComponent),
         TuiNotificationModule,
-        TuiAvatarModule,
+        TuiAvatarComponent,
     ],
     declarations: [
         ExampleTuiCellComponent,

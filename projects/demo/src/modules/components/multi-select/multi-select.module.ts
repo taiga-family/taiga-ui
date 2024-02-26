@@ -15,8 +15,9 @@ import {
     TuiScrollbarModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
+import {TuiInitialsModule} from '@taiga-ui/experimental';
 import {
-    TuiAvatarModule,
+    TuiAvatarComponent,
     TuiDataListWrapperModule,
     TuiMultiSelectModule,
     TuiRadioListModule,
@@ -49,7 +50,7 @@ import {ExampleTuiMultiSelectComponent} from './multi-select.component';
         TuiRadioListModule,
         TuiButtonModule,
         TuiLinkModule,
-        TuiAvatarModule,
+        TuiAvatarComponent,
         TuiDataListModule,
         TuiDataListWrapperModule,
         TuiLetModule,
@@ -62,6 +63,7 @@ import {ExampleTuiMultiSelectComponent} from './multi-select.component';
         TuiLabelModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiMultiSelectComponent)),
         PolymorpheusModule,
+        TuiInitialsModule,
     ],
     declarations: [
         ExampleTuiMultiSelectComponent,

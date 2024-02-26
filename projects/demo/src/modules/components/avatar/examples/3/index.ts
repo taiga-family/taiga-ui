@@ -1,19 +1,19 @@
+import {NgForOf, UpperCasePipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {tuiAvatarOptionsProvider} from '@taiga-ui/kit';
+import {TuiAvatarComponent} from '@taiga-ui/kit';
 
 @Component({
+    standalone: true,
     selector: 'tui-avatar-example-3',
+    imports: [TuiAvatarComponent, NgForOf, UpperCasePipe],
     templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
-    providers: [
-        tuiAvatarOptionsProvider({
-            size: 'l',
-            autoColor: true,
-            rounded: true,
-        }),
-    ],
 })
-export class TuiAvatarExample3 {}
+export class TuiAvatarExample3 {
+    readonly sizes = ['xxl', 'xl', 'l', 'm', 's', 'xs'] as const;
+    readonly names = ['Jason Statham', 'Silvester Stallone', 'Jackie Chan'];
+}
