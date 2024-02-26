@@ -1,14 +1,11 @@
 import {inject} from '@angular/core';
 import {TuiPlatform} from '@taiga-ui/cdk/types';
-import {tuiCreateToken} from '@taiga-ui/cdk/utils';
+import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk/utils';
 
 import {TUI_IS_ANDROID} from './is-android';
 import {TUI_IS_IOS} from './is-ios';
 
-// TODO: Switch to factory in 4.0
-export const TUI_PLATFORM = tuiCreateToken<TuiPlatform>('web');
-
-export function tuiPlatformFactory(): TuiPlatform {
+export const TUI_PLATFORM = tuiCreateTokenFromFactory<TuiPlatform>(() => {
     if (inject(TUI_IS_IOS)) {
         return 'ios';
     }
@@ -18,4 +15,4 @@ export function tuiPlatformFactory(): TuiPlatform {
     }
 
     return 'web';
-}
+});
