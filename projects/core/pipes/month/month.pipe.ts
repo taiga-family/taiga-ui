@@ -7,7 +7,7 @@ import {map, Observable} from 'rxjs';
 export class TuiMonthPipe implements PipeTransform {
     private readonly months$ = inject(TUI_MONTHS);
 
-    transform({month}: TuiMonth): Observable<string> {
+    public transform({month}: TuiMonth): Observable<string> {
         return this.months$.pipe(map(months => months[month]));
     }
 }

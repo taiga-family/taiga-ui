@@ -32,19 +32,19 @@ export class TuiInputMonthDirective
             });
     }
 
-    override get readOnly(): boolean {
+    public override get readOnly(): boolean {
         return true;
     }
 
-    override get value(): string {
+    public override get value(): string {
         return this.localizedValue;
     }
 
-    ngDoCheck(): void {
+    public ngDoCheck(): void {
         this.value$.next(this.host.value);
     }
 
-    onValueChange(value: string): void {
+    public onValueChange(value: string): void {
         this.host.onValueChange(value);
     }
 }

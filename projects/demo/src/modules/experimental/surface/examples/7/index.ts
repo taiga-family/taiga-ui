@@ -10,7 +10,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiSurfaceExample7 {
-    readonly reviews = [
+    protected readonly reviews = [
         {
             name: 'Alex Inkin',
             time: '2 days ago',

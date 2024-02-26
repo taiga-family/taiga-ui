@@ -19,5 +19,5 @@ import {ExampleDateTimeTransformer} from './value-transformer';
     ],
 })
 export class TuiInputDateTimeExample4 {
-    readonly control = new FormControl('19.01.2022, 12:33');
+    protected readonly control = new FormControl('19.01.2022, 12:33');
 }

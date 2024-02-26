@@ -24,62 +24,65 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
     ],
 })
 export class ExampleTuiTextareaComponent extends AbstractExampleTuiControl {
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
     };
 
-    readonly example2: TuiDocExample = {
+    protected readonly example2: TuiDocExample = {
         TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
         LESS: import('./examples/2/index.less?raw'),
     };
 
-    readonly example3: TuiDocExample = {
+    protected readonly example3: TuiDocExample = {
         TypeScript: import('./examples/3/index.ts?raw'),
         HTML: import('./examples/3/index.html?raw'),
     };
 
-    readonly example4: TuiDocExample = {
+    protected readonly example4: TuiDocExample = {
         TypeScript: import('./examples/4/index.ts?raw'),
         HTML: import('./examples/4/index.html?raw'),
         LESS: import('./examples/4/index.less?raw'),
     };
 
-    readonly example5: TuiDocExample = {
+    protected readonly example5: TuiDocExample = {
         TypeScript: import('./examples/5/index.ts?raw'),
         HTML: import('./examples/5/index.html?raw'),
     };
 
-    readonly example6: TuiDocExample = {
+    protected readonly example6: TuiDocExample = {
         TypeScript: import('./examples/6/index.ts?raw'),
         HTML: import('./examples/6/index.html?raw'),
         LESS: import('./examples/6/index.less?raw'),
     };
 
-    readonly exampleModule = import('./examples/import/import-module.md?raw');
-    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
-    readonly exampleForm = import('./examples/import/declare-form.md?raw');
+    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
+    protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    protected readonly exampleForm = import('./examples/import/declare-form.md?raw');
 
-    override readonly maxLengthVariants: readonly number[] = [50, 100, 500];
+    public override readonly maxLengthVariants: readonly number[] = [50, 100, 500];
 
-    override maxLength: number | null = null;
+    public override maxLength: number | null = null;
 
-    readonly iconVariants = ['', 'tuiIconSearchLarge', 'tuiIconCalendarLarge'];
+    protected readonly iconVariants = ['', 'tuiIconSearchLarge', 'tuiIconCalendarLarge'];
 
-    icon = this.iconVariants[0];
+    protected icon = this.iconVariants[0];
 
-    readonly rowsVariants: readonly number[] = [8, 15, 30];
+    protected readonly rowsVariants: readonly number[] = [8, 15, 30];
 
-    rows: number = this.rowsVariants[0];
+    protected rows: number = this.rowsVariants[0];
 
-    expandable = false;
+    protected expandable = false;
 
-    control = new FormControl('');
+    public control = new FormControl('');
 
-    override readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeM> = ['m', 'l'];
+    public override readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeM> = [
+        'm',
+        'l',
+    ];
 
-    override size: TuiSizeL | TuiSizeM = this.sizeVariants[1];
+    public override size: TuiSizeL | TuiSizeM = this.sizeVariants[1];
 
-    placeholder = 'Placeholder';
+    protected placeholder = 'Placeholder';
 }

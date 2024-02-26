@@ -18,14 +18,14 @@ import {
 
 class User {
     constructor(
-        readonly firstName: string,
-        readonly lastName: string,
-        readonly phone: string,
-        readonly avatarUrl: string | null = null,
-        readonly disabled = false,
+        public readonly firstName: string,
+        public readonly lastName: string,
+        public readonly phone: string,
+        public readonly avatarUrl: string | null = null,
+        public readonly disabled = false,
     ) {}
 
-    toString(): string {
+    public toString(): string {
         return `${this.firstName} ${this.lastName}`;
     }
 }
@@ -52,9 +52,9 @@ export class TuiInputPhoneExample3 {
 
     private readonly selected$ = new Subject<User>();
 
-    value = '';
+    protected value = '';
 
-    readonly user$ = merge(
+    protected readonly user$ = merge(
         this.selected$,
         this.search$.pipe(
             switchMap(value =>
@@ -73,7 +73,7 @@ export class TuiInputPhoneExample3 {
         }),
     );
 
-    readonly items$ = this.search$.pipe(
+    protected readonly items$ = this.search$.pipe(
         startWith(''),
         switchMap(value =>
             this.request(value).pipe(
@@ -82,16 +82,16 @@ export class TuiInputPhoneExample3 {
         ),
     );
 
-    readonly placeholder$ = combineLatest([this.user$, this.search$]).pipe(
+    protected readonly placeholder$ = combineLatest([this.user$, this.search$]).pipe(
         map(([user, search]) => user || this.getPlaceholder(search)),
         startWith('Phone number or name'),
     );
 
-    onSearch(search: string): void {
+    protected onSearch(search: string): void {
         this.search$.next(search);
     }
 
-    onClick(user: User): void {
+    protected onClick(user: User): void {
         this.selected$.next(user);
     }
 

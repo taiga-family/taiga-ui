@@ -12,9 +12,9 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
     changeDetection,
 })
 export class TuiRatingExample2 {
-    value = 0;
+    protected value = 0;
 
-    readonly icon: PolymorpheusContent<TuiContext<number>> = ({$implicit}) => {
+    protected readonly icon: PolymorpheusContent<TuiContext<number>> = ({$implicit}) => {
         switch ($implicit) {
             case 1:
                 return 'tuiIconFrownLarge';

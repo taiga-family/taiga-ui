@@ -40,34 +40,34 @@ export class TuiSliderKeyStepsDirective
     );
 
     @Input()
-    keySteps!: TuiKeySteps;
+    public keySteps!: TuiKeySteps;
 
-    get nativeFocusableElement(): HTMLInputElement | null {
+    public get nativeFocusableElement(): HTMLInputElement | null {
         return this.computedDisabled ? null : this.el;
     }
 
-    get focused(): boolean {
+    public get focused(): boolean {
         return tuiIsNativeFocused(this.nativeFocusableElement);
     }
 
-    get min(): number {
+    protected get min(): number {
         return this.keySteps[0][1];
     }
 
-    get max(): number {
+    protected get max(): number {
         return this.keySteps[this.keySteps.length - 1][1];
     }
 
     @HostListener('input')
     @HostListener('change')
-    updateControlValue(): void {
+    protected updateControlValue(): void {
         this.value = tuiPercentageToKeyStepValue(
             this.slider.valuePercentage,
             this.keySteps,
         );
     }
 
-    override writeValue(controlValue: number | null): void {
+    public override writeValue(controlValue: number | null): void {
         if (controlValue === null) {
             return;
         }

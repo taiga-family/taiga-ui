@@ -20,42 +20,41 @@ const STEP = 0.5;
 })
 export class TuiPreviewZoomComponent {
     @Input()
-    min = 0.5;
+    public min = 0.5;
 
     @Input()
-    max = 2;
+    public max = 2;
 
     @Input()
-    value = 1;
+    public value = 1;
 
     @Output()
-    readonly valueChange = new EventEmitter<number>();
+    public readonly valueChange = new EventEmitter<number>();
 
     @Output()
-    // eslint-disable-next-line @angular-eslint/no-output-native
-    readonly reset = new EventEmitter<void>();
+    public readonly reset = new EventEmitter<void>();
 
-    readonly icons = inject(TUI_PREVIEW_ICONS);
-    readonly zoomTexts$ = inject(TUI_PREVIEW_ZOOM_TEXTS);
+    protected readonly icons = inject(TUI_PREVIEW_ICONS);
+    protected readonly zoomTexts$ = inject(TUI_PREVIEW_ZOOM_TEXTS);
 
-    readonly hintShow$ = this.valueChange.pipe(
+    protected readonly hintShow$ = this.valueChange.pipe(
         switchMap(() => merge(of(true), timer(1000).pipe(map(ALWAYS_FALSE_HANDLER)))),
         startWith(false),
     );
 
-    get leftButtonDisabled(): boolean {
+    protected get leftButtonDisabled(): boolean {
         return this.value === this.min;
     }
 
-    get rightButtonDisabled(): boolean {
+    protected get rightButtonDisabled(): boolean {
         return this.value === this.max;
     }
 
-    get collapseVisible(): boolean {
+    protected get collapseVisible(): boolean {
         return this.value > this.min;
     }
 
-    onModelChange(value: number): void {
+    protected onModelChange(value: number): void {
         const clamped = tuiClamp(value, this.min, this.max);
 
         if (clamped === this.value) {
@@ -66,15 +65,15 @@ export class TuiPreviewZoomComponent {
         this.valueChange.emit(clamped);
     }
 
-    onReset(): void {
+    protected onReset(): void {
         this.reset.emit();
     }
 
-    onMinus(): void {
+    protected onMinus(): void {
         this.onModelChange(this.value - STEP);
     }
 
-    onPlus(): void {
+    protected onPlus(): void {
         this.onModelChange(this.value < 1 ? 1 : this.value + STEP);
     }
 }

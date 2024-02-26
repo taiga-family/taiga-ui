@@ -17,8 +17,8 @@ import {TuiTextfieldSizeDirective} from './textfield-size.directive';
 
 export class TuiTextfieldController {
     constructor(
-        readonly change$: Observable<void>,
-        readonly options: TuiTextfieldOptions,
+        public readonly change$: Observable<void>,
+        public readonly options: TuiTextfieldOptions,
         private readonly legacyAppearance: string,
         private readonly appearanceDirective: TuiTextfieldAppearanceDirective,
         private readonly cleanerDirective: TuiTextfieldCleanerDirective,
@@ -32,43 +32,43 @@ export class TuiTextfieldController {
         private readonly fillerDirective: TuiTextfieldFillerDirective,
     ) {}
 
-    get appearance(): string {
+    public get appearance(): string {
         return this.appearanceDirective.appearance || this.legacyAppearance;
     }
 
-    get cleaner(): boolean {
+    public get cleaner(): boolean {
         return this.cleanerDirective.cleaner;
     }
 
-    get customContent(): PolymorpheusContent {
+    public get customContent(): PolymorpheusContent {
         return this.customContentDirective.customContent || '';
     }
 
-    get icon(): PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeS>> {
+    public get icon(): PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeS>> {
         return this.iconDirective.icon;
     }
 
-    get iconLeft(): PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeS>> {
+    public get iconLeft(): PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeS>> {
         return this.iconLeftDirective.iconLeft;
     }
 
-    get labelOutside(): boolean {
+    public get labelOutside(): boolean {
         return this.labelOutsideDirective.labelOutside;
     }
 
-    get size(): TuiSizeL | TuiSizeS {
+    public get size(): TuiSizeL | TuiSizeS {
         return this.sizeDirective.size;
     }
 
-    get prefix(): string {
+    public get prefix(): string {
         return this.prefixDirective.prefix;
     }
 
-    get postfix(): string {
+    public get postfix(): string {
         return this.postfixDirective.postfix;
     }
 
-    get filler(): string {
+    public get filler(): string {
         return this.fillerDirective.filler;
     }
 }

@@ -39,25 +39,25 @@ export class TuiAvatarComponent {
     private readonly options = inject(TUI_AVATAR_OPTIONS);
 
     @Input()
-    size = this.options.size;
+    public size = this.options.size;
 
     @Input()
-    round = this.options.round;
+    public round = this.options.round;
 
     @Input()
-    src?: SafeResourceUrl | string | null;
+    public src?: SafeResourceUrl | string | null;
 
-    readonly resolver = inject(TUI_ICON_RESOLVER);
+    protected readonly resolver = inject(TUI_ICON_RESOLVER);
 
-    get safeSrc(): string {
+    protected get safeSrc(): string {
         return this.src?.toString() ?? '';
     }
 
-    get value(): SafeResourceUrl | string {
+    protected get value(): SafeResourceUrl | string {
         return this.src || '';
     }
 
-    get type(): 'content' | 'icon' | 'img' | 'text' {
+    protected get type(): 'content' | 'icon' | 'img' | 'text' {
         if (this.value && !tuiIsString(this.value)) {
             return 'img';
         }

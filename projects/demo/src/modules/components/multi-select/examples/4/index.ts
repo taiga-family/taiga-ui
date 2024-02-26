@@ -28,7 +28,7 @@ export class TuiMultiSelectExample4 {
     private readonly search$ = new Subject<string>();
 
     // Items only hold IDs
-    readonly items$ = this.search$.pipe(
+    protected readonly items$ = this.search$.pipe(
         startWith(''),
         switchMap(search =>
             this.server$.pipe(
@@ -43,22 +43,20 @@ export class TuiMultiSelectExample4 {
     );
 
     // Stringify mapper that turns IDs to names
-    readonly stringify$: Observable<TuiHandler<TuiContext<number> | number, string>> =
-        this.server$.pipe(
-            map(
-                items => new Map(items.map<[number, string]>(({id, name}) => [id, name])),
-            ),
-            startWith(new Map()),
-            map(
-                map => (id: TuiContext<number> | number) =>
-                    (tuiIsNumber(id) ? map.get(id) : map.get(id.$implicit)) ||
-                    'Loading...',
-            ),
-        );
+    protected readonly stringify$: Observable<
+        TuiHandler<TuiContext<number> | number, string>
+    > = this.server$.pipe(
+        map(items => new Map(items.map<[number, string]>(({id, name}) => [id, name]))),
+        startWith(new Map()),
+        map(
+            map => (id: TuiContext<number> | number) =>
+                (tuiIsNumber(id) ? map.get(id) : map.get(id.$implicit)) || 'Loading...',
+        ),
+    );
 
-    readonly control = new FormControl([2, 3]);
+    protected readonly control = new FormControl([2, 3]);
 
-    onSearch(search: string | null): void {
+    protected onSearch(search: string | null): void {
         this.search$.next(search || '');
     }
 }

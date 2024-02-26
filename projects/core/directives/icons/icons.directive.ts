@@ -19,10 +19,10 @@ export class TuiIconsDirective {
     protected readonly nothing = tuiWithStyles(TuiIconsComponent);
 
     @Input()
-    iconLeft = '';
+    public iconLeft = '';
 
     @Input()
-    iconRight = '';
+    public iconRight = '';
 
-    readonly resolver = inject<TuiStringHandler<string>>(TUI_ICON_RESOLVER);
+    protected readonly resolver = inject<TuiStringHandler<string>>(TUI_ICON_RESOLVER);
 }

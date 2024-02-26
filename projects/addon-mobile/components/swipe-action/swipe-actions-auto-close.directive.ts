@@ -13,9 +13,9 @@ export class TuiSwipeActionsAutoCloseDirective {
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
 
     @Input()
-    autoClose: boolean | string = true;
+    public autoClose: boolean | string = true;
 
-    handleEvent(event: Event): void {
+    protected handleEvent(event: Event): void {
         if (this.autoClose !== false && !this.el.contains(tuiGetActualTarget(event))) {
             this.el.scrollTo({
                 left: 0,

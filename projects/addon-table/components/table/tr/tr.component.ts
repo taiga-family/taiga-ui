@@ -33,9 +33,11 @@ export class TuiTrComponent<T extends Partial<Record<keyof T, any>>>
 
     private readonly contentReady$ = new ReplaySubject<boolean>(1);
 
-    readonly table = inject<TuiTableDirective<T>>(forwardRef(() => TuiTableDirective));
+    protected readonly table = inject<TuiTableDirective<T>>(
+        forwardRef(() => TuiTableDirective),
+    );
 
-    readonly cells$ = this.contentReady$.pipe(
+    protected readonly cells$ = this.contentReady$.pipe(
         switchMap(() => tuiQueryListChanges(this.cells)),
         map(cells =>
             cells.reduce(
@@ -45,7 +47,7 @@ export class TuiTrComponent<T extends Partial<Record<keyof T, any>>>
         ),
     );
 
-    readonly item$ = this.contentReady$.pipe(
+    protected readonly item$ = this.contentReady$.pipe(
         switchMap(() => tuiQueryListChanges(this.body.rows)),
         map(
             rows =>
@@ -59,7 +61,7 @@ export class TuiTrComponent<T extends Partial<Record<keyof T, any>>>
         ),
     );
 
-    async ngAfterContentInit(): Promise<void> {
+    public async ngAfterContentInit(): Promise<void> {
         await Promise.resolve();
         this.contentReady$.next(true);
     }

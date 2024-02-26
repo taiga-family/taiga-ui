@@ -10,13 +10,13 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiTableExample6 {
-    data: Array<Record<string, number | string>> = [{id: 1, name: 'name'}];
+    protected data: Array<Record<string, number | string>> = [{id: 1, name: 'name'}];
 
-    get columns(): string[] {
+    protected get columns(): string[] {
         return Object.keys(this.data[0]);
     }
 
-    addColumn(): void {
+    protected addColumn(): void {
         this.data = this.data.map(item => ({
             ...item,
             [`extra-${this.columns.length + 1}`]: `extra column ${
@@ -25,7 +25,7 @@ export class TuiTableExample6 {
         }));
     }
 
-    addRows(): void {
+    protected addRows(): void {
         this.data = [...this.data, {...this.data[0], id: this.data.length + 1}];
     }
 }

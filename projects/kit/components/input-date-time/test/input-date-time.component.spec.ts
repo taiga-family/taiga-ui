@@ -33,12 +33,12 @@ describe('InputDateTime', () => {
     })
     class TestComponent {
         @ViewChild(TuiInputDateTimeComponent)
-        dateTimeComponent!: TuiInputDateTimeComponent;
+        protected dateTimeComponent!: TuiInputDateTimeComponent;
 
-        readonly control = new FormControl([new TuiDay(2021, 6, 12), null]);
+        protected readonly control = new FormControl([new TuiDay(2021, 6, 12), null]);
 
-        min: TuiDay | [TuiDay, TuiTime] = TUI_FIRST_DAY;
-        max: TuiDay | [TuiDay, TuiTime] = TUI_LAST_DAY;
+        protected min: TuiDay | [TuiDay, TuiTime] = TUI_FIRST_DAY;
+        protected max: TuiDay | [TuiDay, TuiTime] = TUI_LAST_DAY;
     }
 
     let fixture: ComponentFixture<TestComponent>;
@@ -316,7 +316,9 @@ describe('InputDateTime', () => {
         > {
             private readonly separator = ', ';
 
-            fromControlValue(controlValue: string): [TuiDay | null, TuiTime | null] {
+            public fromControlValue(
+                controlValue: string,
+            ): [TuiDay | null, TuiTime | null] {
                 const [day, time = ''] = controlValue.split(this.separator);
 
                 if (!day) {
@@ -329,7 +331,7 @@ describe('InputDateTime', () => {
                 ];
             }
 
-            toControlValue([day, time]: [TuiDay | null, TuiTime | null]): string {
+            public toControlValue([day, time]: [TuiDay | null, TuiTime | null]): string {
                 if (!day) {
                     return '';
                 }
@@ -352,8 +354,8 @@ describe('InputDateTime', () => {
             `,
         })
         class TransformerTestComponent extends TestComponent {
-            override control = new FormControl('19.01.2022, 12:33');
-            override min = new TuiDay(1900, 0, 1);
+            public override control = new FormControl('19.01.2022, 12:33');
+            public override min = new TuiDay(1900, 0, 1);
         }
 
         beforeEach(async () => {

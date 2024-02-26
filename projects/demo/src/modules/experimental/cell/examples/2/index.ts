@@ -10,6 +10,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiCellExample2 {
-    incoming = false;
-    outgoing = true;
+    protected incoming = false;
+    protected outgoing = true;
 }

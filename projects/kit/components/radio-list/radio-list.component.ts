@@ -42,29 +42,28 @@ export class TuiRadioListComponent<T> extends AbstractTuiNullableControl<T> {
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
 
     @Input()
-    items: readonly T[] = [];
+    public items: readonly T[] = [];
 
     @Input()
     @HostBinding('attr.data-size')
-    size: TuiSizeL = 'm';
+    public size: TuiSizeL = 'm';
 
     @Input()
-    identityMatcher: TuiIdentityMatcher<T> = TUI_DEFAULT_IDENTITY_MATCHER;
+    public identityMatcher: TuiIdentityMatcher<T> = TUI_DEFAULT_IDENTITY_MATCHER;
 
     @Input()
     @HostBinding('attr.data-orientation')
-    orientation: TuiOrientation = 'vertical';
+    public orientation: TuiOrientation = 'vertical';
 
     @Input()
-    disabledItemHandler: TuiBooleanHandler<T> = ALWAYS_FALSE_HANDLER;
+    public disabledItemHandler: TuiBooleanHandler<T> = ALWAYS_FALSE_HANDLER;
 
     // @bad TODO: Remove & { index: number }
     @Input()
-    itemContent: PolymorpheusContent<TuiValueContentContext<T> & {index: number}> = ({
-        $implicit,
-    }) => String($implicit);
+    public itemContent: PolymorpheusContent<TuiValueContentContext<T> & {index: number}> =
+        ({$implicit}) => String($implicit);
 
-    get nativeFocusableElement(): TuiNativeFocusableElement | null {
+    public get nativeFocusableElement(): TuiNativeFocusableElement | null {
         const focusableRadioButton = this.radioButtons.find(
             radioButton => radioButton.nativeFocusableElement !== null,
         );
@@ -72,24 +71,24 @@ export class TuiRadioListComponent<T> extends AbstractTuiNullableControl<T> {
         return focusableRadioButton?.nativeFocusableElement ?? null;
     }
 
-    get focused(): boolean {
+    public get focused(): boolean {
         return tuiIsNativeFocusedIn(this.el);
     }
 
-    computeId(index: number): string {
+    protected computeId(index: number): string {
         return `${this.id}-${index}`;
     }
 
-    itemIsDisabled(item: T): boolean {
+    protected itemIsDisabled(item: T): boolean {
         return this.disabledItemHandler(item);
     }
 
     /** @deprecated use 'value' setter */
-    onModelChange(value: T): void {
+    protected onModelChange(value: T): void {
         this.value = value;
     }
 
-    itemIsActive(item: T): boolean {
+    protected itemIsActive(item: T): boolean {
         return this.value === null
             ? item === null
             : this.identityMatcher(this.value, item);

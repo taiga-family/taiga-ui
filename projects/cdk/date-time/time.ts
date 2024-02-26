@@ -18,10 +18,10 @@ import {
  */
 export class TuiTime implements TuiTimeLike {
     constructor(
-        readonly hours: number,
-        readonly minutes: number,
-        readonly seconds = 0,
-        readonly ms = 0,
+        public readonly hours: number,
+        public readonly minutes: number,
+        public readonly seconds = 0,
+        public readonly ms = 0,
     ) {
         ngDevMode &&
             tuiAssert.assert(
@@ -37,7 +37,12 @@ export class TuiTime implements TuiTimeLike {
     /**
      * Checks if time is valid
      */
-    static isValidTime(hours: number, minutes: number, seconds = 0, ms = 0): boolean {
+    public static isValidTime(
+        hours: number,
+        minutes: number,
+        seconds = 0,
+        ms = 0,
+    ): boolean {
         return (
             Number.isInteger(hours) &&
             tuiInRange(hours, 0, HOURS_IN_DAY) &&
@@ -53,14 +58,14 @@ export class TuiTime implements TuiTimeLike {
     /**
      * Current UTC time.
      */
-    static current(): TuiTime {
+    public static current(): TuiTime {
         return TuiTime.fromAbsoluteMilliseconds(Date.now() % MILLISECONDS_IN_DAY);
     }
 
     /**
      * Current time in local timezone
      */
-    static currentLocal(): TuiTime {
+    public static currentLocal(): TuiTime {
         const date = new Date();
 
         return TuiTime.fromAbsoluteMilliseconds(
@@ -72,7 +77,7 @@ export class TuiTime implements TuiTimeLike {
     /**
      * Calculates TuiTime from milliseconds
      */
-    static fromAbsoluteMilliseconds(milliseconds: number): TuiTime {
+    public static fromAbsoluteMilliseconds(milliseconds: number): TuiTime {
         ngDevMode && tuiAssert.assert(Number.isInteger(milliseconds));
         ngDevMode &&
             tuiAssert.assert(
@@ -99,7 +104,7 @@ export class TuiTime implements TuiTimeLike {
     /**
      * Parses string into TuiTime object
      */
-    static fromString(time: string): TuiTime {
+    public static fromString(time: string): TuiTime {
         const hours = Number(time.slice(0, 2));
         const minutes = Number(time.slice(3, 5));
         const seconds = Number(time.slice(6, 8)) || 0;
@@ -112,7 +117,7 @@ export class TuiTime implements TuiTimeLike {
      * Converts Date object into TuiTime
      * @param date
      */
-    static fromLocalNativeDate(date: Date): TuiTime {
+    public static fromLocalNativeDate(date: Date): TuiTime {
         return new TuiTime(
             date.getHours(),
             date.getMinutes(),
@@ -124,7 +129,7 @@ export class TuiTime implements TuiTimeLike {
     /**
      * Shifts time by hours and minutes
      */
-    shift({hours = 0, minutes = 0, seconds = 0, ms = 0}: TuiTimeLike): TuiTime {
+    public shift({hours = 0, minutes = 0, seconds = 0, ms = 0}: TuiTimeLike): TuiTime {
         const newMs = (1000 + this.ms + (ms % 1000)) % 1000;
 
         const secondsInMs = ms < 0 ? Math.ceil(ms / 1000) : Math.floor(ms / 1000);
@@ -151,7 +156,7 @@ export class TuiTime implements TuiTimeLike {
     /**
      * Converts TuiTime to string
      */
-    toString(mode?: TuiTimeMode): string {
+    public toString(mode?: TuiTimeMode): string {
         const needAddMs = mode === 'HH:MM:SS.MSS' || (!mode && this.ms > 0);
         const needAddSeconds =
             needAddMs || mode === 'HH:MM:SS' || (!mode && this.seconds > 0);
@@ -162,7 +167,7 @@ export class TuiTime implements TuiTimeLike {
         return `${hhMm}${ss}${mss}`;
     }
 
-    valueOf(): number {
+    public valueOf(): number {
         return this.toAbsoluteMilliseconds();
     }
 
@@ -171,14 +176,14 @@ export class TuiTime implements TuiTimeLike {
      * Depending on the argument, the method can return either a string or a number.
      * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/@@toPrimitive
      */
-    [Symbol.toPrimitive](hint: string): number | string {
+    public [Symbol.toPrimitive](hint: string): number | string {
         return Date.prototype[Symbol.toPrimitive].call(this, hint);
     }
 
     /**
      * Converts TuiTime to milliseconds
      */
-    toAbsoluteMilliseconds(): number {
+    public toAbsoluteMilliseconds(): number {
         return (
             this.hours * MILLISECONDS_IN_HOUR +
             this.minutes * MILLISECONDS_IN_MINUTE +

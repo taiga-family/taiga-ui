@@ -11,7 +11,7 @@ interface TuiProjectFiles {
 }
 
 export abstract class AbstractTuiStackblitzResourcesLoader {
-    static async getProjectFiles(): Promise<TuiProjectFiles> {
+    public static async getProjectFiles(): Promise<TuiProjectFiles> {
         const [
             configsContent,
             mainTsContent,
@@ -40,7 +40,7 @@ export abstract class AbstractTuiStackblitzResourcesLoader {
         return {angularJson, tsconfig, mainTs, indexHtml, polyfills, appModuleTs, styles};
     }
 
-    static async getReadMeFiles(): Promise<{stackblitzReadMe: string}> {
+    public static async getReadMeFiles(): Promise<{stackblitzReadMe: string}> {
         const [stackblitzReadMe] = await Promise.all([
             tuiRawLoad(import('./project-files/src/app/@stackblitz/README.md?raw')),
         ]);

@@ -10,9 +10,9 @@ interface TuiYearCellHarnessFilters extends BaseHarnessFilters {
 }
 
 class TuiYearCellHarness extends ComponentHarness {
-    static hostSelector = '.t-cell';
+    public static hostSelector = '.t-cell';
 
-    static with(
+    public static with(
         options: TuiYearCellHarnessFilters,
     ): HarnessPredicate<TuiYearCellHarness> {
         return new HarnessPredicate(TuiYearCellHarness, options).addOption(
@@ -23,19 +23,19 @@ class TuiYearCellHarness extends ComponentHarness {
         );
     }
 
-    async getText(): Promise<string> {
+    public async getText(): Promise<string> {
         return (await this.locatorFor('.t-item')()).text();
     }
 
-    async click(): Promise<void> {
+    public async click(): Promise<void> {
         return (await this.host()).click();
     }
 }
 
 export class TuiPrimitiveYearPickerHarness extends TuiComponentHarness {
-    static hostSelector = 'tui-primitive-year-picker';
+    public static hostSelector = 'tui-primitive-year-picker';
 
-    async clickYear(year: string): Promise<void> {
+    public async clickYear(year: string): Promise<void> {
         const yearCell = await this.locatorFor(TuiYearCellHarness.with({year}))();
 
         return yearCell.click();

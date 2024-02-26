@@ -10,40 +10,43 @@ import {TuiOrientation, TuiSizeL} from '@taiga-ui/core';
     changeDetection,
 })
 export class ExampleTuiGroupComponent {
-    readonly exampleModule = import('./examples/import/import-module.md?raw');
-    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
+    protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
         LESS: import('./examples/1/index.style.less?raw'),
     };
 
-    readonly example2: TuiDocExample = {
+    protected readonly example2: TuiDocExample = {
         TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
         LESS: import('./examples/2/index.less?raw'),
     };
 
-    readonly example3: TuiDocExample = {
+    protected readonly example3: TuiDocExample = {
         TypeScript: import('./examples/3/index.ts?raw'),
         HTML: import('./examples/3/index.html?raw'),
     };
 
-    readonly example4: TuiDocExample = {
+    protected readonly example4: TuiDocExample = {
         TypeScript: import('./examples/4/index.ts?raw'),
         HTML: import('./examples/4/index.html?raw'),
         LESS: import('./examples/4/index.less?raw'),
     };
 
-    rounded = true;
-    collapsed = false;
+    protected rounded = true;
+    protected collapsed = false;
 
-    readonly orientationVariants: readonly TuiOrientation[] = ['horizontal', 'vertical'];
+    protected readonly orientationVariants: readonly TuiOrientation[] = [
+        'horizontal',
+        'vertical',
+    ];
 
-    orientation: TuiOrientation = this.orientationVariants[0];
+    protected orientation: TuiOrientation = this.orientationVariants[0];
 
-    readonly sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
+    protected readonly sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
 
-    size: TuiSizeL = this.sizeVariants[0];
+    protected size: TuiSizeL = this.sizeVariants[0];
 }

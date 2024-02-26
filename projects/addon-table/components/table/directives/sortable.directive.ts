@@ -17,18 +17,18 @@ export class TuiSortableDirective<T extends Partial<Record<keyof T, any>>>
         forwardRef(() => TuiSortByDirective),
     );
 
-    sorter: TuiComparator<T> = (): number => 0;
+    public sorter: TuiComparator<T> = (): number => 0;
 
-    get key(): keyof T {
+    public get key(): keyof T {
         return this.th.key;
     }
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         this.sorter = this.match ? this.table.sorter : this.sorter;
         this.th.sorter = this.sorter;
     }
 
-    check(): void {
+    public check(): void {
         if (this.match && this.table.sorter !== this.sorter) {
             this.table.updateSorter(this.sorter);
         }

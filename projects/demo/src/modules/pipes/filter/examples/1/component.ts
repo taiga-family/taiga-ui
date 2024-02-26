@@ -14,7 +14,7 @@ export interface Item {
     changeDetection,
 })
 export class TuiFilterExample1 {
-    readonly items: readonly Item[] = [
+    protected readonly items: readonly Item[] = [
         {
             name: 'Sword',
             price: 1000,
@@ -29,5 +29,6 @@ export class TuiFilterExample1 {
         },
     ];
 
-    readonly matcher = (item: Item, search: number): boolean => item.price > search;
+    protected readonly matcher = (item: Item, search: number): boolean =>
+        item.price > search;
 }

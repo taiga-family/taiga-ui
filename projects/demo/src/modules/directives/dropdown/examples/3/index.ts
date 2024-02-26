@@ -13,11 +13,11 @@ import {interval, takeUntil} from 'rxjs';
     providers: [TuiDestroyService],
 })
 export class TuiDropdownExample3 {
-    open = false;
+    protected open = false;
 
-    value = 'some data';
+    protected value = 'some data';
 
-    showBigText = false;
+    protected showBigText = false;
 
     constructor() {
         interval(3000)

@@ -10,11 +10,11 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiInputPhoneExample1 {
-    testForm = new FormGroup({
+    protected testForm = new FormGroup({
         testValue: new FormControl('+77777777777', Validators.required),
     });
 
-    setValue(): void {
+    protected setValue(): void {
         this.testForm.get('testValue')!.setValue('+79926775676');
     }
 }

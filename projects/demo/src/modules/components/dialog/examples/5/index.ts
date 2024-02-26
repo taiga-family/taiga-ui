@@ -14,7 +14,7 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 export class TuiDialogExampleComponent5 {
     private readonly dialogs = inject(TuiDialogService);
 
-    onClick(
+    protected onClick(
         content: PolymorpheusContent<TuiDialogContext>,
         header: PolymorpheusContent,
         size: TuiDialogSize,

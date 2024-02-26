@@ -60,7 +60,7 @@ export class TuiSvgComponent {
         optional: true,
     }) as readonly TuiSvgInterceptorHandler[] | null;
 
-    readonly innerHTML$: Observable<SafeHtml>;
+    protected readonly innerHTML$: Observable<SafeHtml>;
 
     constructor() {
         this.innerHTML$ = this.src$.pipe(
@@ -78,7 +78,7 @@ export class TuiSvgComponent {
     }
 
     @Input()
-    set src(src: TuiSafeHtml | null | undefined) {
+    public set src(src: TuiSafeHtml | null | undefined) {
         const deprecated = this.options.deprecated(String(src));
 
         ngDevMode && tuiAssert.assert(!deprecated, deprecated);
@@ -92,11 +92,11 @@ export class TuiSvgComponent {
         this.src$.next();
     }
 
-    get src(): TuiSafeHtml {
+    public get src(): TuiSafeHtml {
         return this.icon;
     }
 
-    get use(): string {
+    protected get use(): string {
         if (tuiIsString(this.icon)) {
             return this.icon.includes('.svg#')
                 ? this.icon
@@ -106,7 +106,7 @@ export class TuiSvgComponent {
         return '';
     }
 
-    get isInnerHTML(): boolean {
+    protected get isInnerHTML(): boolean {
         return (
             !tuiIsString(this.icon) ||
             this.isSrc ||
@@ -150,7 +150,7 @@ export class TuiSvgComponent {
         );
     }
 
-    onError(message: string = MISSING_EXTERNAL_ICON): void {
+    protected onError(message: string = MISSING_EXTERNAL_ICON): void {
         const {icon} = this;
         const event = new CustomEvent<TuiIconError>(TUI_ICON_ERROR, {
             bubbles: true,

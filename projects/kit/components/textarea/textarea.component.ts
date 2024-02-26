@@ -63,26 +63,26 @@ export class TuiTextareaComponent
     private readonly textfield?: ElementRef<HTMLTextAreaElement>;
 
     @Input()
-    rows = DEFAULT_ROWS;
+    public rows = DEFAULT_ROWS;
 
     @Input()
-    maxLength: number | null = null;
+    public maxLength: number | null = null;
 
     @Input()
     @HostBinding('class._expandable')
-    expandable = false;
+    public expandable = false;
 
-    readonly isIOS = inject(TUI_IS_IOS);
-    readonly mode$ = inject(TUI_MODE);
-    readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
-    readonly hintOptions = inject(TuiHintOptionsDirective, {optional: true});
+    protected readonly isIOS = inject(TUI_IS_IOS);
+    protected readonly mode$ = inject(TUI_MODE);
+    protected readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
+    protected readonly hintOptions = inject(TuiHintOptionsDirective, {optional: true});
 
     @HostBinding('class._label-outside')
-    get labelOutside(): boolean {
+    protected get labelOutside(): boolean {
         return this.controller.labelOutside;
     }
 
-    get nativeFocusableElement(): HTMLTextAreaElement | null {
+    public get nativeFocusableElement(): HTMLTextAreaElement | null {
         if (this.computedDisabled) {
             return null;
         }
@@ -92,26 +92,26 @@ export class TuiTextareaComponent
         );
     }
 
-    get focused(): boolean {
+    public get focused(): boolean {
         return tuiIsNativeFocused(this.nativeFocusableElement);
     }
 
-    get appearance(): string {
+    protected get appearance(): string {
         return this.controller.appearance;
     }
 
     @HostBinding('attr.data-size')
-    get size(): TuiSizeL | TuiSizeS {
+    protected get size(): TuiSizeL | TuiSizeS {
         return this.controller.size;
     }
 
     @HostBinding('style.--border-start.rem')
-    get borderStart(): number {
+    protected get borderStart(): number {
         return this.iconLeftContent ? TUI_ICON_PADDINGS[this.size] : 0;
     }
 
     @HostBinding('style.--border-end.rem')
-    get borderEnd(): number {
+    protected get borderEnd(): number {
         return tuiGetBorder(
             !!this.iconContent,
             this.hasCleaner,
@@ -121,12 +121,12 @@ export class TuiTextareaComponent
         );
     }
 
-    get hasCleaner(): boolean {
+    protected get hasCleaner(): boolean {
         return this.controller.cleaner && this.hasValue && this.interactive;
     }
 
     @HostBinding('class._has-tooltip')
-    get hasTooltip(): boolean {
+    protected get hasTooltip(): boolean {
         return (
             !!this.hintOptions?.content &&
             (this.controller.options.hintOnDisabled || !this.computedDisabled)
@@ -134,36 +134,38 @@ export class TuiTextareaComponent
     }
 
     @HostBinding('class._has-value')
-    get hasValue(): boolean {
+    protected get hasValue(): boolean {
         return this.value !== '';
     }
 
     @HostBinding('class._has-counter')
-    get hasCounter(): boolean {
+    protected get hasCounter(): boolean {
         return !!this.maxLength && this.interactive;
     }
 
-    get hasPlaceholder(): boolean {
+    protected get hasPlaceholder(): boolean {
         return this.placeholderRaisable || (!this.hasValue && !this.hasExampleText);
     }
 
-    get hasCustomContent(): boolean {
+    protected get hasCustomContent(): boolean {
         return !!this.controller.customContent;
     }
 
-    get iconLeftContent(): PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeS>> {
+    protected get iconLeftContent(): PolymorpheusContent<
+        TuiContext<TuiSizeL | TuiSizeS>
+    > {
         return this.controller.iconLeft;
     }
 
-    get iconContent(): PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeS>> {
+    protected get iconContent(): PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeS>> {
         return this.controller.icon;
     }
 
-    get iconCleaner(): PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeS>> {
+    protected get iconCleaner(): PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeS>> {
         return this.controller.options.iconCleaner;
     }
 
-    get hasExampleText(): boolean {
+    protected get hasExampleText(): boolean {
         return (
             !!this.textfield?.nativeElement.placeholder &&
             this.focused &&
@@ -172,36 +174,36 @@ export class TuiTextareaComponent
         );
     }
 
-    get computeMaxHeight(): number | null {
+    protected get computeMaxHeight(): number | null {
         return this.expandable ? this.rows * this.lineHeight : null;
     }
 
-    get placeholderRaised(): boolean {
+    protected get placeholderRaised(): boolean {
         return (
             this.placeholderRaisable &&
             ((this.computedFocused && !this.readOnly) || this.hasValue)
         );
     }
 
-    get fittedContent(): string {
+    protected get fittedContent(): string {
         return this.value.slice(0, this.maxLength || Infinity);
     }
 
-    get extraContent(): string {
+    protected get extraContent(): string {
         return this.value.slice(this.maxLength || Infinity);
     }
 
     @HostListener('focusin', ['true'])
     @HostListener('focusout', ['false'])
-    onFocused(focused: boolean): void {
+    protected onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
 
-    onValueChange(value: string): void {
+    public onValueChange(value: string): void {
         this.value = value;
     }
 
-    onMouseDown(event: MouseEvent): void {
+    protected onMouseDown(event: MouseEvent): void {
         if (event.target === this.nativeFocusableElement) {
             return;
         }

@@ -17,9 +17,9 @@ import type {TuiInputDateTimeDirective} from '../input-date-time.directive';
     },
 })
 export class TuiNativeDateTimeDirective {
-    readonly host = inject<TuiInputDateTimeDirective>(TUI_TEXTFIELD_HOST);
+    protected readonly host = inject<TuiInputDateTimeDirective>(TUI_TEXTFIELD_HOST);
 
-    get value(): string {
+    protected get value(): string {
         if (!this.host.rawValue[0] || !this.host.rawValue[1]) {
             return '';
         }
@@ -30,7 +30,7 @@ export class TuiNativeDateTimeDirective {
         )}T${this.host.rawValue[1]?.toString('HH:MM')}`;
     }
 
-    onChange(value: string): void {
+    protected onChange(value: string): void {
         if (!value) {
             this.host.writeValue([null, null]);
 

@@ -11,21 +11,21 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiSkeletonExample1 {
-    radius = 0;
+    protected radius = 0;
 
-    testForm = new FormGroup({
+    protected testForm = new FormGroup({
         testValue: new FormControl(true),
     });
 
-    skeletonVisible = false;
-    lightMode = false;
-    placeholder = 'Some paragraph with information';
+    protected skeletonVisible = false;
+    protected lightMode = false;
+    protected placeholder = 'Some paragraph with information';
 
-    showSkeleton(): void {
+    protected showSkeleton(): void {
         this.skeletonVisible = !this.skeletonVisible;
     }
 
-    toggleLight(): void {
+    protected toggleLight(): void {
         this.lightMode = !this.lightMode;
     }
 }

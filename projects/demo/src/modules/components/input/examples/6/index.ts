@@ -11,8 +11,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiInputExample6 {
-    readonly items = ['Black', 'Gold', 'Silver'];
-    readonly form = new FormGroup({
+    protected readonly items = ['Black', 'Gold', 'Silver'];
+    protected readonly form = new FormGroup({
         name: new FormControl('', Validators.required),
         date: new FormControl(null, Validators.required),
         color: new FormControl(null, Validators.required),

@@ -20,23 +20,23 @@ import type {TuiInputDateDirective} from '../input-date.directive';
 })
 export class TuiNativeDateDirective {
     private readonly dateFormat = inject(TUI_DATE_FORMAT);
-    readonly host = inject<TuiInputDateDirective>(TUI_TEXTFIELD_HOST);
+    protected readonly host = inject<TuiInputDateDirective>(TUI_TEXTFIELD_HOST);
 
-    get value(): string {
+    protected get value(): string {
         return this.host.value.length === DATE_FILLER_LENGTH
             ? TuiDay.normalizeParse(this.host.value, this.dateFormat).toString('YMD', '-')
             : '';
     }
 
-    get max(): string {
+    protected get max(): string {
         return this.host.max.toJSON();
     }
 
-    get min(): string {
+    protected get min(): string {
         return this.host.min.toJSON();
     }
 
-    onChange(value: string): void {
+    protected onChange(value: string): void {
         this.host.onValueChange(
             value ? TuiDay.normalizeParse(value, 'YMD').toString(this.dateFormat) : '',
         );

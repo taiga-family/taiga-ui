@@ -28,18 +28,18 @@ import {TUI_TEXTFIELD_HOST} from '@taiga-ui/core/tokens';
 export class TuiTextfieldComponent {
     private readonly el: HTMLInputElement = inject(ElementRef).nativeElement;
     private readonly idService = inject(TuiIdService);
-    readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
-    readonly host = inject<TuiTextfieldHost>(TUI_TEXTFIELD_HOST);
+    protected readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
+    protected readonly host = inject<TuiTextfieldHost>(TUI_TEXTFIELD_HOST);
 
     constructor() {
         this.host.process(this.el);
     }
 
-    get id(): string {
+    protected get id(): string {
         return this.el.id || this.idService.generate();
     }
 
-    get inputMode(): string {
+    protected get inputMode(): string {
         return this.el.inputMode || this.host.inputMode;
     }
 }

@@ -11,5 +11,5 @@ import {TuiDocPageModule, TuiMarkdownPipe} from '@taiga-ui/addon-doc';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class ChangelogComponent {
-    readonly changelog = import('../../../../../../CHANGELOG.md?raw');
+    protected readonly changelog = import('../../../../../../CHANGELOG.md?raw');
 }

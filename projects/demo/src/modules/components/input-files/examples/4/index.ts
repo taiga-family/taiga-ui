@@ -10,9 +10,9 @@ import {TuiFileLike} from '@taiga-ui/kit';
     changeDetection,
 })
 export class TuiInputFilesExample4 {
-    height = 3;
+    protected height = 3;
 
-    readonly files: readonly TuiFileLike[] = [
+    protected readonly files: readonly TuiFileLike[] = [
         {
             name: 'Loaded.txt',
         },
@@ -36,7 +36,7 @@ export class TuiInputFilesExample4 {
         },
     ];
 
-    readonly rejectedFiles: readonly TuiFileLike[] = [
+    protected readonly rejectedFiles: readonly TuiFileLike[] = [
         {
             name: 'File with an error.txt',
         },

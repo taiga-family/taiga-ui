@@ -1,15 +1,15 @@
 export abstract class AbstractExampleTuiInteractive {
-    readonly pseudoVariants: readonly boolean[] = [false, true];
+    public readonly pseudoVariants: readonly boolean[] = [false, true];
 
-    readonly textAlignVariants: readonly string[] = ['left', 'right'];
+    public readonly textAlignVariants: readonly string[] = ['left', 'right'];
 
-    textAlign = this.textAlignVariants[0];
+    public textAlign = this.textAlignVariants[0];
 
-    focusable = true;
+    public focusable = true;
 
-    pseudoFocused: boolean | null = null;
+    public pseudoFocused: boolean | null = null;
 
-    pseudoHovered: boolean | null = null;
+    public pseudoHovered: boolean | null = null;
 
-    pseudoPressed: boolean | null = null;
+    public pseudoPressed: boolean | null = null;
 }

@@ -14,23 +14,23 @@ import {map, Observable} from 'rxjs';
 })
 export class ExampleTuiLineDaysChartComponent {
     protected readonly months$ = inject(TUI_MONTHS);
-    readonly exampleModule = import('./examples/import/import-module.md?raw');
-    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
+    protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
         LESS: import('./examples/1/index.less?raw'),
     };
 
-    readonly example2: TuiDocExample = {
+    protected readonly example2: TuiDocExample = {
         TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
         LESS: import('./examples/2/index.less?raw'),
         'pipe.ts': import('./examples/2/pipe.ts?raw'),
     };
 
-    readonly valueVariants: ReadonlyArray<ReadonlyArray<[TuiDay, number]>> = [
+    protected readonly valueVariants: ReadonlyArray<ReadonlyArray<[TuiDay, number]>> = [
         new Array(91)
             .fill(0)
             .reduce<
@@ -46,20 +46,21 @@ export class ExampleTuiLineDaysChartComponent {
         ],
     ];
 
-    value = this.valueVariants[0];
+    protected value = this.valueVariants[0];
 
-    readonly labels$: Observable<readonly string[]> = this.months$.pipe(
+    protected readonly labels$: Observable<readonly string[]> = this.months$.pipe(
         map(months => Array.from({length: 3}, (_, i) => months[i])),
     );
 
-    readonly yStringifyVariants: ReadonlyArray<TuiStringHandler<number>> = [
+    protected readonly yStringifyVariants: ReadonlyArray<TuiStringHandler<number>> = [
         y => `${(10 * y).toLocaleString('en-US', {maximumFractionDigits: 0})} $`,
     ];
 
-    readonly xStringifyVariants$: Observable<ReadonlyArray<TuiStringHandler<TuiDay>>> =
-        this.months$.pipe(map(months => [({month, day}) => `${months[month]}, ${day}`]));
+    protected readonly xStringifyVariants$: Observable<
+        ReadonlyArray<TuiStringHandler<TuiDay>>
+    > = this.months$.pipe(map(months => [({month, day}) => `${months[month]}, ${day}`]));
 
-    readonly hintContentVariants$: Observable<
+    protected readonly hintContentVariants$: Observable<
         ReadonlyArray<PolymorpheusContent<TuiContext<[TuiDay, number]>>>
     > = this.months$.pipe(
         map(months => [
@@ -73,17 +74,17 @@ export class ExampleTuiLineDaysChartComponent {
         ]),
     );
 
-    yStringify: TuiStringHandler<number> | null = null;
+    protected yStringify: TuiStringHandler<number> | null = null;
 
-    xStringify: TuiStringHandler<TuiDay> | null = null;
+    protected xStringify: TuiStringHandler<TuiDay> | null = null;
 
-    hintContent: PolymorpheusContent<TuiContext<[TuiDay, number]>> = '';
+    protected hintContent: PolymorpheusContent<TuiContext<[TuiDay, number]>> = '';
 
-    dots = false;
+    protected dots = false;
 
-    smoothingFactor = 0;
+    protected smoothingFactor = 0;
 
-    y = 0;
+    protected y = 0;
 
-    height = 200;
+    protected height = 200;
 }

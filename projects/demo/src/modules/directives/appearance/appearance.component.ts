@@ -9,33 +9,33 @@ import {TuiInteractiveStateT} from '@taiga-ui/core';
     changeDetection,
 })
 export class ExampleTuiAppearanceComponent {
-    readonly exampleModule: TuiRawLoaderContent = import(
+    protected readonly exampleModule: TuiRawLoaderContent = import(
         './examples/import/import-module.md?raw'
     );
 
-    readonly exampleHtml: TuiRawLoaderContent = import(
+    protected readonly exampleHtml: TuiRawLoaderContent = import(
         './examples/import/insert-template.md?raw'
     );
 
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         HTML: import('./examples/1/index.html?raw'),
     };
 
-    readonly example2: TuiDocExample = {
+    protected readonly example2: TuiDocExample = {
         HTML: import('./examples/2/index.html?raw'),
         LESS: import('./examples/2/index.less?raw'),
     };
 
-    readonly example3: TuiDocExample = {
+    protected readonly example3: TuiDocExample = {
         HTML: import('./examples/3/index.html?raw'),
         LESS: import('./examples/3/index.less?raw'),
     };
 
-    appearances = ['primary', 'secondary', 'flat'];
-    appearance = this.appearances[0];
+    protected appearances = ['primary', 'secondary', 'flat'];
+    protected appearance = this.appearances[0];
 
-    states: readonly TuiInteractiveStateT[] = ['hover', 'active', 'disabled'];
-    state: TuiInteractiveStateT | null = null;
+    protected states: readonly TuiInteractiveStateT[] = ['hover', 'active', 'disabled'];
+    protected state: TuiInteractiveStateT | null = null;
 
-    focus: boolean | null = null;
+    protected focus: boolean | null = null;
 }

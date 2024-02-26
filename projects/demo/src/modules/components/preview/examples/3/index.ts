@@ -26,9 +26,9 @@ export class TuiPreviewExample3 {
     private readonly previewDialogService = inject(TuiPreviewDialogService);
 
     @ViewChild('preview')
-    readonly preview?: TemplateRef<TuiDialogContext>;
+    protected readonly preview?: TemplateRef<TuiDialogContext>;
 
-    readonly items = [
+    protected readonly items = [
         {
             title: 'some table.xlsx',
             hasPreview: false,
@@ -39,34 +39,36 @@ export class TuiPreviewExample3 {
         },
     ];
 
-    readonly index$$ = new BehaviorSubject<number>(0);
+    protected readonly index$$ = new BehaviorSubject<number>(0);
 
-    readonly item$ = this.index$$.pipe(
+    protected readonly item$ = this.index$$.pipe(
         map(index => this.items[index]),
         filter(tuiIsPresent),
     );
 
-    readonly title$ = this.item$.pipe(map(item => item.title));
+    protected readonly title$ = this.item$.pipe(map(item => item.title));
 
-    readonly contentUnavailable$ = this.item$.pipe(map(item => !item.hasPreview));
+    protected readonly contentUnavailable$ = this.item$.pipe(
+        map(item => !item.hasPreview),
+    );
 
-    readonly imageSrc$ = this.item$.pipe(
+    protected readonly imageSrc$ = this.item$.pipe(
         switchMap(item =>
             item.hasPreview ? this.emulateBackendRequest().pipe(startWith('')) : of(null),
         ),
     );
 
-    readonly loading$ = this.imageSrc$.pipe(map(src => src === ''));
+    protected readonly loading$ = this.imageSrc$.pipe(map(src => src === ''));
 
-    show(): void {
+    protected show(): void {
         this.previewDialogService.open(this.preview || '').subscribe();
     }
 
-    download(): void {
+    protected download(): void {
         console.info('downloading...');
     }
 
-    emulateBackendRequest(): Observable<string> {
+    protected emulateBackendRequest(): Observable<string> {
         return timer(1500).pipe(
             map(() => 'https://ng-web-apis.github.io/dist/assets/images/web-api.svg'),
         );

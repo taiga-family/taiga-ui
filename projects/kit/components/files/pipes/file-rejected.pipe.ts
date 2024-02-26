@@ -21,7 +21,7 @@ export class TuiFileRejectedPipe implements PipeTransform {
     private readonly text$ = inject(TUI_INPUT_FILE_TEXTS);
     private readonly unit$ = inject(TUI_DIGITAL_INFORMATION_UNITS);
 
-    transform(
+    public transform(
         file: TuiFileLike | null,
         {
             accept = this.options.accept,

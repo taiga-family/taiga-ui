@@ -24,10 +24,10 @@ export class TuiHighlightDirective implements OnChanges {
     );
 
     @Input()
-    tuiHighlight = '';
+    public tuiHighlight = '';
 
     @Input()
-    tuiHighlightColor = 'var(--tui-selection)';
+    public tuiHighlightColor = 'var(--tui-selection)';
 
     constructor() {
         inject(ResizeObserverService)
@@ -35,11 +35,11 @@ export class TuiHighlightDirective implements OnChanges {
             .subscribe(() => this.updateStyles());
     }
 
-    get match(): boolean {
+    protected get match(): boolean {
         return this.indexOf(this.el.textContent) !== -1;
     }
 
-    ngOnChanges(): void {
+    public ngOnChanges(): void {
         this.updateStyles();
     }
 

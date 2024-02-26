@@ -12,11 +12,11 @@ import {tuiCapitalize} from '@taiga-ui/core';
     changeDetection,
 })
 export class TuiFormatExample3 {
-    parametersForm = new FormGroup({
+    protected parametersForm = new FormGroup({
         value: new FormControl('roman sEdOv'),
     });
 
-    get capitalized(): string {
+    protected get capitalized(): string {
         const {value} = this.parametersForm.value;
 
         return tuiCapitalize(value ?? '');

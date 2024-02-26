@@ -17,10 +17,10 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiInputRangeExample3 {
-    readonly control = new FormControl([0, 7]);
+    protected readonly control = new FormControl([0, 7]);
 
     // See https://angular.io/api/common/I18nPluralPipe
-    readonly pluralize = {
+    protected readonly pluralize = {
         '=0': 'days later',
         '=1': 'day later',
         other: 'days later',

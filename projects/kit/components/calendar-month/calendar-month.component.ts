@@ -34,62 +34,62 @@ const TODAY = TuiDay.currentLocal();
 })
 export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth> {
     @Input()
-    value: TuiMonth | TuiMonthRange | null = null;
+    public value: TuiMonth | TuiMonthRange | null = null;
 
     @Input()
-    year: TuiYear = TODAY;
+    public year: TuiYear = TODAY;
 
     @Input()
-    disabledItemHandler: TuiBooleanHandlerWithContext<TuiMonth, TuiMonthContext> =
+    public disabledItemHandler: TuiBooleanHandlerWithContext<TuiMonth, TuiMonthContext> =
         ALWAYS_FALSE_HANDLER;
 
     @Input()
-    min: TuiMonth | null = TUI_FIRST_DAY;
+    public min: TuiMonth | null = TUI_FIRST_DAY;
 
     @Input()
-    max: TuiMonth | null = TUI_LAST_DAY;
+    public max: TuiMonth | null = TUI_LAST_DAY;
 
     @Output()
-    readonly monthClick = new EventEmitter<TuiMonth>();
+    public readonly monthClick = new EventEmitter<TuiMonth>();
 
     @Output()
-    readonly hoveredItemChange = new EventEmitter<TuiMonth | null>();
+    public readonly hoveredItemChange = new EventEmitter<TuiMonth | null>();
 
     @Output()
-    readonly yearChange = new EventEmitter<TuiYear>();
+    public readonly yearChange = new EventEmitter<TuiYear>();
 
-    isYearPickerShown = false;
+    protected isYearPickerShown = false;
 
-    hoveredItem: TuiMonth | null = null;
-    pressedItem: TuiMonth | null = null;
+    protected hoveredItem: TuiMonth | null = null;
+    protected pressedItem: TuiMonth | null = null;
 
-    readonly months$ = inject(TUI_CALENDAR_MONTHS);
+    protected readonly months$ = inject(TUI_CALENDAR_MONTHS);
 
     @HostBinding('class._single')
-    get isSingle(): boolean {
+    protected get isSingle(): boolean {
         return (
             this.value !== null &&
             (this.value instanceof TuiMonth || this.value.isSingleMonth)
         );
     }
 
-    get computedMin(): TuiMonth {
+    protected get computedMin(): TuiMonth {
         return this.min ?? TUI_FIRST_DAY;
     }
 
-    get computedMax(): TuiMonth {
+    protected get computedMax(): TuiMonth {
         return this.max ?? TUI_LAST_DAY;
     }
 
-    get previousYearDisabled(): boolean {
+    protected get previousYearDisabled(): boolean {
         return this.year.yearSameOrBefore(this.computedMin);
     }
 
-    get nextYearDisabled(): boolean {
+    protected get nextYearDisabled(): boolean {
         return this.year.yearSameOrAfter(this.computedMax);
     }
 
-    getItemState(item: TuiMonth): TuiInteractiveState | null {
+    protected getItemState(item: TuiMonth): TuiInteractiveState | null {
         const {disabledItemHandlerWithMinMax, pressedItem, hoveredItem} = this;
 
         if (disabledItemHandlerWithMinMax(item)) {
@@ -107,7 +107,7 @@ export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth
         return null;
     }
 
-    getItemRange(item: TuiMonth): TuiRangeState | null {
+    protected getItemRange(item: TuiMonth): TuiRangeState | null {
         const {value, hoveredItem} = this;
 
         if (value === null) {
@@ -149,15 +149,15 @@ export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth
         return value.isSingleMonth && value.from.monthSame(item) ? 'single' : null;
     }
 
-    getTuiMonth(monthNumber: number, yearNumber: number): TuiMonth {
+    protected getTuiMonth(monthNumber: number, yearNumber: number): TuiMonth {
         return new TuiMonth(yearNumber, monthNumber);
     }
 
-    isItemToday(item: TuiMonth): boolean {
+    protected isItemToday(item: TuiMonth): boolean {
         return TODAY.monthSame(item);
     }
 
-    isItemInsideRange(month: TuiMonth): boolean {
+    protected isItemInsideRange(month: TuiMonth): boolean {
         const {value, hoveredItem} = this;
 
         if (value === null || value instanceof TuiMonth) {
@@ -177,7 +177,7 @@ export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth
         return range.from.monthSameOrBefore(month) && range.to.monthAfter(month);
     }
 
-    onPickerYearClick(year: TuiYear): void {
+    protected onPickerYearClick(year: TuiYear): void {
         this.isYearPickerShown = false;
 
         if (this.year.yearSame(year)) {
@@ -187,7 +187,7 @@ export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth
         this.updateActiveYear(year);
     }
 
-    onItemClick(month: TuiMonth): void {
+    protected onItemClick(month: TuiMonth): void {
         if (this.disabledItemHandlerWithMinMax(month)) {
             return;
         }
@@ -195,23 +195,23 @@ export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth
         this.monthClick.emit(month);
     }
 
-    onYearClick(): void {
+    protected onYearClick(): void {
         this.isYearPickerShown = true;
     }
 
-    onNextYear(): void {
+    protected onNextYear(): void {
         this.updateActiveYear(this.year.append({year: 1}));
     }
 
-    onPreviousYear(): void {
+    protected onPreviousYear(): void {
         this.updateActiveYear(this.year.append({year: -1}));
     }
 
-    onItemHovered(hovered: boolean, item: TuiMonth): void {
+    protected onItemHovered(hovered: boolean, item: TuiMonth): void {
         this.updateHoveredItem(hovered ? item : null);
     }
 
-    onItemPressed(pressed: boolean, item: TuiMonth): void {
+    protected onItemPressed(pressed: boolean, item: TuiMonth): void {
         this.updatePressedItem(pressed ? item : null);
     }
 

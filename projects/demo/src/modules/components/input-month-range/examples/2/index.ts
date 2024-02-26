@@ -11,7 +11,7 @@ import {TuiMonthRange} from '@taiga-ui/cdk';
     changeDetection,
 })
 export class TuiInputMonthRangeExample2 {
-    readonly testForm = new FormGroup({
+    protected readonly testForm = new FormGroup({
         testValue: new FormControl<TuiMonthRange | null>(null),
     });
 }

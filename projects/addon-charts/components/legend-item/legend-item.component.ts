@@ -9,24 +9,24 @@ import {TuiSizeS} from '@taiga-ui/core';
 })
 export class TuiLegendItemComponent {
     @Input()
-    active = false;
+    public active = false;
 
     @Input()
-    color = '';
+    public color = '';
 
     @Input()
-    text = '';
+    public text = '';
 
     @Input()
     @HostBinding('attr.data-size')
-    size: TuiSizeS = 'm';
+    public size: TuiSizeS = 'm';
 
     @Input()
     @HostBinding('class._disabled')
-    disabled = false;
+    public disabled = false;
 
     @HostBinding('style.--tui-primary')
-    get computedColor(): string | null {
+    protected get computedColor(): string | null {
         return this.color === 'var(--tui-primary)' ? null : this.color;
     }
 }

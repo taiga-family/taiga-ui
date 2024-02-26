@@ -24,35 +24,35 @@ export abstract class AbstractTuiDataListWrapper<T> {
     protected readonly optionsQuery: QueryList<TuiOptionComponent<T>> = EMPTY_QUERY;
 
     @Input()
-    disabledItemHandler: TuiItemsHandlers<T>['disabledItemHandler'] =
+    public disabledItemHandler: TuiItemsHandlers<T>['disabledItemHandler'] =
         this.itemsHandlers.disabledItemHandler;
 
     @Input()
-    emptyContent: PolymorpheusContent;
+    public emptyContent: PolymorpheusContent;
 
     @Input()
-    size: TuiSizeL | TuiSizeXS = this.defaultSize;
+    public size: TuiSizeL | TuiSizeXS = this.defaultSize;
 
     @Output()
-    readonly itemClick = new EventEmitter<T>();
+    public readonly itemClick = new EventEmitter<T>();
 
     protected constructor(
-        protected readonly itemsHandlers: TuiItemsHandlers<T>,
-        protected readonly defaultSize: TuiSizeL | TuiSizeXS,
+        public readonly itemsHandlers: TuiItemsHandlers<T>,
+        public readonly defaultSize: TuiSizeL | TuiSizeXS,
     ) {}
 
     @Input()
-    itemContent: PolymorpheusContent<TuiValueContentContext<T>> = ({$implicit}) =>
+    public itemContent: PolymorpheusContent<TuiValueContentContext<T>> = ({$implicit}) =>
         this.itemsHandlers.stringify($implicit);
 
-    getContext(
+    public getContext(
         $implicit: T,
         {nativeElement}: ElementRef<HTMLElement>,
     ): TuiValueContentContext<T> {
         return {$implicit, active: tuiIsNativeFocused(nativeElement)};
     }
 
-    getOptions(includeDisabled = false): readonly T[] {
+    public getOptions(includeDisabled = false): readonly T[] {
         return this.optionsQuery
             .filter(({disabled}) => includeDisabled || !disabled)
             .map(({value}) => value)

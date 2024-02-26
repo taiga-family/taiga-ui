@@ -9,5 +9,5 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiThemeSwitcherExample1 {
-    enabled = false;
+    protected enabled = false;
 }

@@ -16,5 +16,5 @@ import {
 export class TuiBlockStatusComponent {
     @HostBinding('class._card')
     @Input()
-    card = false;
+    public card = false;
 }

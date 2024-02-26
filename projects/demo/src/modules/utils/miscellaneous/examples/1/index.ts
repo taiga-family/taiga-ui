@@ -10,7 +10,7 @@ import {tuiAssert} from '@taiga-ui/cdk';
     changeDetection,
 })
 export class TuiMiscellaneousExample1 {
-    get assertResult(): string {
+    protected get assertResult(): string {
         const dayOfWeek = new Date().getDay();
         const isFriday = dayOfWeek === 5;
 

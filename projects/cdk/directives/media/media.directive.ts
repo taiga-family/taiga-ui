@@ -21,35 +21,35 @@ export class TuiMediaDirective {
 
     @Input()
     @HostBinding('volume')
-    volume = 1;
+    public volume = 1;
 
     @Input('playbackRate')
-    set playbackRateSetter(playbackRate: number) {
+    public set playbackRateSetter(playbackRate: number) {
         this.updatePlaybackRate(playbackRate);
     }
 
     @Output()
-    readonly currentTimeChange = new EventEmitter<number>();
+    public readonly currentTimeChange = new EventEmitter<number>();
 
     @Output()
-    readonly pausedChange = new EventEmitter<boolean>();
+    public readonly pausedChange = new EventEmitter<boolean>();
 
     @Output()
-    readonly volumeChange = new EventEmitter<number>();
+    public readonly volumeChange = new EventEmitter<number>();
 
     @Input()
-    set currentTime(currentTime: number) {
+    public set currentTime(currentTime: number) {
         if (Math.abs(currentTime - this.currentTime) > 0.05) {
             this.el.currentTime = currentTime;
         }
     }
 
-    get currentTime(): number {
+    public get currentTime(): number {
         return this.el.currentTime;
     }
 
     @Input()
-    set paused(paused: boolean) {
+    public set paused(paused: boolean) {
         if (paused) {
             this.el.pause();
         } else {
@@ -58,7 +58,7 @@ export class TuiMediaDirective {
         }
     }
 
-    get paused(): boolean {
+    public get paused(): boolean {
         return this.el.paused;
     }
 
@@ -66,13 +66,13 @@ export class TuiMediaDirective {
     @HostListener('ended', ['true'])
     @HostListener('pause', ['true'])
     @HostListener('play', ['false'])
-    onPausedChange(paused: boolean): void {
+    protected onPausedChange(paused: boolean): void {
         this.pausedChange.emit(paused);
         this.updatePlaybackRate(this.playbackRate);
     }
 
     @HostListener('volumechange')
-    onVolumeChange(): void {
+    protected onVolumeChange(): void {
         this.volume = this.el.volume;
         this.volumeChange.emit(this.volume);
     }
@@ -80,12 +80,12 @@ export class TuiMediaDirective {
     @HostListener('timeupdate')
     @HostListener('seeking')
     @HostListener('seeked')
-    onCurrentTimeChange(): void {
+    protected onCurrentTimeChange(): void {
         this.currentTimeChange.emit(this.currentTime);
     }
 
     @HostListener('durationchange')
-    changeDetectionTrigger(): void {
+    protected changeDetectionTrigger(): void {
         // @bad TODO: consider if other events need to trigger CD
     }
 

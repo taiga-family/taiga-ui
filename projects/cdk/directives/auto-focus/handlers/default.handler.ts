@@ -17,7 +17,7 @@ export class TuiDefaultAutofocusHandler extends AbstractTuiAutofocusHandler {
         super(focusable, el);
     }
 
-    setFocus(): void {
+    public setFocus(): void {
         if (this.isTextFieldElement) {
             race(
                 timer(TIMEOUT),

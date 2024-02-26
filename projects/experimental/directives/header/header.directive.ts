@@ -24,5 +24,5 @@ export class TuiHeaderDirective {
     private readonly nothing = tuiWithStyles(TuiHeaderComponent);
 
     @Input('tuiHeader')
-    size: TuiSizeXXL | TuiSizeXXS | '' = 's';
+    public size: TuiSizeXXL | TuiSizeXXS | '' = 's';
 }

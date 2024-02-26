@@ -78,33 +78,35 @@ export class TuiTextfieldComponent<T>
     });
 
     @ContentChild(TuiTextfieldDirective)
-    readonly directive?: TuiTextfieldDirective;
+    protected readonly directive?: TuiTextfieldDirective;
 
     @ContentChild(TuiLabelDirective)
-    readonly label?: unknown;
+    protected readonly label?: unknown;
 
     @Input()
-    filler = '';
+    public filler = '';
 
     @Input()
-    stringify: TuiStringHandler<T> = String;
+    public stringify: TuiStringHandler<T> = String;
 
     @Input()
-    content: PolymorpheusContent<TuiTextfieldContext<T>>;
+    public content: PolymorpheusContent<TuiTextfieldContext<T>>;
 
-    side = 0;
+    protected side = 0;
 
-    readonly change$ = inject(TuiTextfieldOptionsDirective, {optional: true})?.change$;
-    readonly options = inject(TUI_TEXTFIELD_OPTIONS);
-    readonly control = inject(NgControl, {optional: true});
+    protected readonly change$ = inject(TuiTextfieldOptionsDirective, {optional: true})
+        ?.change$;
+
+    public readonly options = inject(TUI_TEXTFIELD_OPTIONS);
+    protected readonly control = inject(NgControl, {optional: true});
 
     // TODO: Refactor
-    readonly focusedChange = EMPTY;
-    get nativeFocusableElement(): HTMLInputElement {
+    public readonly focusedChange = EMPTY;
+    public get nativeFocusableElement(): HTMLInputElement {
         return this.el;
     }
 
-    get el(): HTMLInputElement {
+    protected get el(): HTMLInputElement {
         if (!this.directive) {
             throw new Error('[tuiTextfield] component is required');
         }
@@ -112,22 +114,22 @@ export class TuiTextfieldComponent<T>
         return this.directive.el;
     }
 
-    get computedFiller(): string {
+    protected get computedFiller(): string {
         const value = this.el.value || '';
         const filler = value + this.filler.slice(value.length);
 
         return filler.length > value.length ? filler : '';
     }
 
-    get id(): string {
+    public get id(): string {
         return this.el.id || '';
     }
 
-    get focused(): boolean {
+    public get focused(): boolean {
         return !!this.dropdown?.dropdown || tuiIsNativeFocused(this.directive?.el);
     }
 
-    get showFiller(): boolean {
+    protected get showFiller(): boolean {
         return (
             this.focused &&
             !!this.computedFiller &&
@@ -135,7 +137,7 @@ export class TuiTextfieldComponent<T>
         );
     }
 
-    handleOption(option: T): void {
+    public handleOption(option: T): void {
         this.directive?.setValue(this.stringify(option));
         this.dropdown?.toggle(false);
     }

@@ -13,12 +13,12 @@ import {TuiAlertService} from '@taiga-ui/core';
 export class TuiValueChangesExample2 {
     private readonly alerts = inject(TuiAlertService);
 
-    readonly form = new FormGroup({
+    protected readonly form = new FormGroup({
         name: new FormControl('', {updateOn: 'blur'}),
         age: new FormControl<number | null>(null),
     });
 
-    onChanges(value: string): void {
+    protected onChanges(value: string): void {
         this.alerts.open(JSON.stringify(value)).subscribe();
     }
 }

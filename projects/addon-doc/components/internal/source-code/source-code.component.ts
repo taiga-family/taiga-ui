@@ -14,27 +14,27 @@ import {tuiPure} from '@taiga-ui/cdk';
 })
 export class TuiDocSourceCodeComponent {
     @Input()
-    header = '';
+    public header = '';
 
     @Input()
-    package = '';
+    public package = '';
 
     @Input()
-    type = '';
+    public type = '';
 
     @Input()
-    path = '';
+    public path = '';
 
-    readonly icons = inject(TUI_DOC_ICONS);
-    readonly sourceCode = inject(TUI_DOC_SOURCE_CODE);
-    readonly text = inject(TUI_DOC_SOURCE_CODE_TEXT);
+    protected readonly icons = inject(TUI_DOC_ICONS);
+    protected readonly sourceCode = inject(TUI_DOC_SOURCE_CODE);
+    protected readonly text = inject(TUI_DOC_SOURCE_CODE_TEXT);
 
-    get pathOptions(): TuiDocSourceCodePathOptions {
+    protected get pathOptions(): TuiDocSourceCodePathOptions {
         return this.getPathOptions(this.header, this.package, this.type, this.path);
     }
 
     @tuiPure
-    pathIsUrl(path: string): boolean {
+    protected pathIsUrl(path: string): boolean {
         return path.startsWith('http');
     }
 

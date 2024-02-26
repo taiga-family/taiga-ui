@@ -10,10 +10,10 @@ import {TuiSizeXS, TuiSizeXXL} from '@taiga-ui/core';
     changeDetection,
 })
 export class ExampleProgressBarComponent {
-    value = 6;
-    max = 10;
+    protected value = 6;
+    protected max = 10;
 
-    readonly sizeVariants: ReadonlyArray<TuiSizeXS | TuiSizeXXL> = [
+    protected readonly sizeVariants: ReadonlyArray<TuiSizeXS | TuiSizeXXL> = [
         'xs',
         's',
         'm',
@@ -22,9 +22,9 @@ export class ExampleProgressBarComponent {
         'xxl',
     ];
 
-    size: TuiSizeXS | TuiSizeXXL = this.sizeVariants[2];
+    protected size: TuiSizeXS | TuiSizeXXL = this.sizeVariants[2];
 
-    readonly colorVariants: readonly string[] = [
+    protected readonly colorVariants: readonly string[] = [
         'var(--tui-primary)',
         'lightskyblue',
         '#3682db',
@@ -32,48 +32,48 @@ export class ExampleProgressBarComponent {
         'linear-gradient(to right, var(--tui-support-02), var(--tui-support-14), var(--tui-support-12))',
     ];
 
-    color = this.colorVariants[0];
+    protected color = this.colorVariants[0];
 
-    readonly basicExample: TuiDocExample = {
+    protected readonly basicExample: TuiDocExample = {
         HTML: import('./examples/1/index.html?raw'),
         TypeScript: import('./examples/1/index.ts?raw'),
     };
 
-    readonly multiColorExample: TuiDocExample = {
+    protected readonly multiColorExample: TuiDocExample = {
         HTML: import('./examples/2/index.html?raw'),
         TypeScript: import('./examples/2/index.ts?raw'),
         LESS: import('./examples/2/index.less?raw'),
     };
 
-    readonly sizesExample: TuiDocExample = {
+    protected readonly sizesExample: TuiDocExample = {
         HTML: import('./examples/3/index.html?raw'),
         LESS: import('./examples/3/index.less?raw'),
         TypeScript: import('./examples/3/index.ts?raw'),
     };
 
-    readonly labelExample: TuiDocExample = {
+    protected readonly labelExample: TuiDocExample = {
         HTML: import('./examples/4/index.html?raw'),
         TypeScript: import('./examples/4/index.ts?raw'),
         LESS: import('./examples/4/index.less?raw'),
     };
 
-    readonly stackedExample: TuiDocExample = {
+    protected readonly stackedExample: TuiDocExample = {
         HTML: import('./examples/5/index.html?raw'),
         LESS: import('./examples/5/index.less?raw'),
         TypeScript: import('./examples/5/index.ts?raw'),
     };
 
-    readonly indeterminateExample: TuiDocExample = {
+    protected readonly indeterminateExample: TuiDocExample = {
         HTML: import('./examples/6/index.html?raw'),
         TypeScript: import('./examples/6/index.ts?raw'),
     };
 
-    readonly customizableCornersExample: TuiDocExample = {
+    protected readonly customizableCornersExample: TuiDocExample = {
         HTML: import('./examples/7/index.html?raw'),
         LESS: import('./examples/7/index.less?raw'),
         TypeScript: import('./examples/7/index.ts?raw'),
     };
 
-    readonly exampleModule = import('./examples/import/import-module.md?raw');
-    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
+    protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 }

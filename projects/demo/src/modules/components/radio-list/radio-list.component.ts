@@ -30,26 +30,30 @@ interface ItemRadio {
     ],
 })
 export class ExampleTuiRadioListComponent extends AbstractExampleTuiControl {
-    readonly exampleModule = import('./examples/import/import-module.md?raw');
-    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
-    readonly exampleForm = import('./examples/import/declare-form.md?raw');
+    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
+    protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    protected readonly exampleForm = import('./examples/import/declare-form.md?raw');
 
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
         LESS: import('./examples/1/index.less?raw'),
     };
 
-    readonly example2: TuiDocExample = {
+    protected readonly example2: TuiDocExample = {
         TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
         LESS: import('./examples/2/index.less?raw'),
     };
 
-    readonly orientationVariants: readonly TuiOrientation[] = ['vertical', 'horizontal'];
-    orientation: TuiOrientation = this.orientationVariants[0];
+    protected readonly orientationVariants: readonly TuiOrientation[] = [
+        'vertical',
+        'horizontal',
+    ];
 
-    readonly items: readonly ItemRadio[] = [
+    protected orientation: TuiOrientation = this.orientationVariants[0];
+
+    protected readonly items: readonly ItemRadio[] = [
         {
             name: 'Simple',
             description: 'It is simple',
@@ -64,17 +68,14 @@ export class ExampleTuiRadioListComponent extends AbstractExampleTuiControl {
         },
     ];
 
-    override readonly sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
+    public override readonly sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
 
-    override size: TuiSizeL = this.sizeVariants[0];
+    public override size: TuiSizeL = this.sizeVariants[0];
 
-    readonly disabledItemHandlerVariants: Array<TuiBooleanHandler<ItemRadio>> = [
-        ALWAYS_FALSE_HANDLER,
-        ALWAYS_TRUE_HANDLER,
-        item => item.name === 'Advanced',
-    ];
+    protected readonly disabledItemHandlerVariants: Array<TuiBooleanHandler<ItemRadio>> =
+        [ALWAYS_FALSE_HANDLER, ALWAYS_TRUE_HANDLER, item => item.name === 'Advanced'];
 
-    disabledItemHandler = this.disabledItemHandlerVariants[0];
+    protected disabledItemHandler = this.disabledItemHandlerVariants[0];
 
-    control = new FormControl(this.items[0]);
+    public control = new FormControl(this.items[0]);
 }

@@ -24,14 +24,14 @@ import {TuiPdfViewerOptions} from './pdf-viewer.options';
     },
 })
 export class TuiPdfViewerComponent<I, O> {
-    readonly options = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
-    readonly closeWord$ = inject(TUI_CLOSE_WORD);
-    readonly icons = inject(TUI_COMMON_ICONS);
-    readonly context =
+    protected readonly options = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
+    protected readonly closeWord$ = inject(TUI_CLOSE_WORD);
+    protected readonly icons = inject(TUI_COMMON_ICONS);
+    protected readonly context =
         inject<TuiPopover<TuiPdfViewerOptions<I>, O>>(POLYMORPHEUS_CONTEXT);
 
     @HostListener('document:keydown.esc')
-    onKeyDownEsc(): void {
+    protected onKeyDownEsc(): void {
         this.context.$implicit.complete();
     }
 }

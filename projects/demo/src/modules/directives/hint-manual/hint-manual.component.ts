@@ -17,17 +17,17 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/inherited-docum
     ],
 })
 export class ExampleTuiHintManualComponent extends AbstractExampleTuiHint {
-    readonly exampleModule = import('./examples/import/import-module.md?raw');
-    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
+    protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
     };
 
-    show = false;
+    protected show = false;
 
-    sayHi(): void {
+    protected sayHi(): void {
         console.info('Hi all!');
     }
 }

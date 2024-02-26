@@ -16,11 +16,11 @@ export class TuiScrollExample1 {
     private readonly scrollService = inject(TuiScrollService);
     private readonly destroy$ = inject(TuiDestroyService, {self: true});
 
-    scrollTop = 0;
-    scrollLeft = 0;
-    duration = 300;
+    protected scrollTop = 0;
+    protected scrollLeft = 0;
+    protected duration = 300;
 
-    onClick({nativeElement}: ElementRef<HTMLElement>): void {
+    protected onClick({nativeElement}: ElementRef<HTMLElement>): void {
         this.scrollService
             .scroll$(nativeElement, this.scrollTop, this.scrollLeft, this.duration)
             .pipe(takeUntil(this.destroy$))

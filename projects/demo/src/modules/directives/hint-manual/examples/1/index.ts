@@ -8,9 +8,9 @@ import {changeDetection} from '@demo/emulate/change-detection';
     changeDetection,
 })
 export class TuiHintManualExample1 {
-    hintShown = false;
+    protected hintShown = false;
 
-    toggleHint(): void {
+    protected toggleHint(): void {
         this.hintShown = !this.hintShown;
     }
 }

@@ -11,10 +11,10 @@ export class TuiCopyProcessorDirective {
     private readonly win = inject(WINDOW);
 
     @Input()
-    tuiCopyProcessor: TuiStringHandler<string> = identity;
+    public tuiCopyProcessor: TuiStringHandler<string> = identity;
 
     @HostListener('copy.prevent', ['$event'])
-    onCopy(event: ClipboardEvent): void {
+    protected onCopy(event: ClipboardEvent): void {
         const text = tuiGetSelectedText(this.win);
 
         if (text) {

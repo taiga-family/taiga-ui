@@ -71,21 +71,21 @@ describe('TuiActiveZoneDirective', () => {
         `,
     })
     class TestComponent {
-        readonly control = new FormControl();
+        protected readonly control = new FormControl();
 
-        childActive = false;
+        protected childActive = false;
 
-        parentActive = false;
+        protected parentActive = false;
 
-        onParentActiveZone(active: boolean): void {
+        protected onParentActiveZone(active: boolean): void {
             this.parentActive = active;
         }
 
-        onChildActiveZone(active: boolean): void {
+        protected onChildActiveZone(active: boolean): void {
             this.childActive = active;
         }
 
-        onClick(element: HTMLInputElement): void {
+        protected onClick(element: HTMLInputElement): void {
             element?.focus();
         }
     }

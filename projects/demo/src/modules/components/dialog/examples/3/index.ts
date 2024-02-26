@@ -13,13 +13,13 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 export class TuiDialogExampleComponent3 {
     private readonly dialogs = inject(TuiDialogService);
 
-    money = 1000;
+    protected money = 1000;
 
-    showDialog(content: PolymorpheusContent<TuiDialogContext>): void {
+    protected showDialog(content: PolymorpheusContent<TuiDialogContext>): void {
         this.dialogs.open(content).subscribe();
     }
 
-    withdraw(): void {
+    protected withdraw(): void {
         this.money -= 100;
     }
 }

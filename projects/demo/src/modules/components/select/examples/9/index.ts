@@ -14,7 +14,7 @@ import {MyAccount} from './account/my-account.component';
     changeDetection,
 })
 export class TuiSelectExample9 {
-    readonly accounts: MyAccount[] = [
+    protected readonly accounts: MyAccount[] = [
         {
             name: 'Dollar deposit',
             amount: 237000,
@@ -35,5 +35,5 @@ export class TuiSelectExample9 {
         },
     ];
 
-    account = new FormControl(this.accounts[0]);
+    protected account = new FormControl(this.accounts[0]);
 }

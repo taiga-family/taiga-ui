@@ -13,71 +13,71 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 })
 export class ExampleTuiTagComponent {
     @ViewChild('errorIcon')
-    errorTemplate?: TemplateRef<Record<string, unknown>>;
+    protected errorTemplate?: TemplateRef<Record<string, unknown>>;
 
-    readonly exampleOptions: TuiRawLoaderContent = import(
+    protected readonly exampleOptions: TuiRawLoaderContent = import(
         './examples/import/define-options.md?raw'
     );
 
-    readonly exampleModule: TuiRawLoaderContent = import(
+    protected readonly exampleModule: TuiRawLoaderContent = import(
         './examples/import/import-module.md?raw'
     );
 
-    readonly exampleHtml: TuiRawLoaderContent = import(
+    protected readonly exampleHtml: TuiRawLoaderContent = import(
         './examples/import/insert-template.md?raw'
     );
 
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
     };
 
-    readonly example2: TuiDocExample = {
+    protected readonly example2: TuiDocExample = {
         TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
         LESS: import('./examples/2/index.less?raw'),
     };
 
-    readonly example3: TuiDocExample = {
+    protected readonly example3: TuiDocExample = {
         HTML: import('./examples/3/index.html?raw'),
         LESS: import('./examples/3/index.less?raw'),
     };
 
-    readonly example4: TuiDocExample = {
+    protected readonly example4: TuiDocExample = {
         TypeScript: import('./examples/4/index.ts?raw'),
         HTML: import('./examples/4/index.html?raw'),
         LESS: import('./examples/4/index.less?raw'),
     };
 
-    readonly example5: TuiDocExample = {
+    protected readonly example5: TuiDocExample = {
         TypeScript: import('./examples/5/index.ts?raw'),
         HTML: import('./examples/5/index.html?raw'),
     };
 
-    readonly example6: TuiDocExample = {
+    protected readonly example6: TuiDocExample = {
         TypeScript: import('./examples/6/index.ts?raw'),
         HTML: import('./examples/6/index.html?raw'),
     };
 
-    removable = false;
+    protected removable = false;
 
-    disabled = false;
+    protected disabled = false;
 
-    editable = false;
+    protected editable = false;
 
-    autoColor = false;
+    protected autoColor = false;
 
-    hoverable = false;
+    protected hoverable = false;
 
-    showLoader = false;
+    protected showLoader = false;
 
-    value = 'John Cleese';
+    protected value = 'John Cleese';
 
-    maxLengthVariants: number[] = [10, 20];
+    protected maxLengthVariants: number[] = [10, 20];
 
-    maxLength: number | null = null;
+    protected maxLength: number | null = null;
 
-    readonly statusVariants: readonly TuiStatus[] = [
+    protected readonly statusVariants: readonly TuiStatus[] = [
         'default',
         'primary',
         'custom',
@@ -86,21 +86,21 @@ export class ExampleTuiTagComponent {
         'warning',
     ];
 
-    status = this.statusVariants[0];
+    protected status = this.statusVariants[0];
 
-    readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
+    protected readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
 
-    size: TuiSizeL | TuiSizeS = this.sizeVariants[1];
+    protected size: TuiSizeL | TuiSizeS = this.sizeVariants[1];
 
-    readonly leftContentVariants = ['', 'Error icon'];
+    protected readonly leftContentVariants = ['', 'Error icon'];
 
-    leftContentSelected = '';
+    protected leftContentSelected = '';
 
-    get leftContent(): PolymorpheusContent {
+    protected get leftContent(): PolymorpheusContent {
         return this.leftContentSelected && this.errorTemplate;
     }
 
-    editTag(value: string): void {
+    protected editTag(value: string): void {
         this.value = value;
     }
 }

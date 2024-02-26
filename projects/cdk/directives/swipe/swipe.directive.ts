@@ -7,5 +7,5 @@ import {TuiSwipeService} from '@taiga-ui/cdk/services';
 })
 export class TuiSwipeDirective {
     @Output()
-    readonly tuiSwipe = inject(TuiSwipeService);
+    public readonly tuiSwipe = inject(TuiSwipeService);
 }

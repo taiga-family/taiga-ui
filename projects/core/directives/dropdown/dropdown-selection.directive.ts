@@ -78,22 +78,22 @@ export class TuiDropdownSelectionDirective
     private ghost?: HTMLElement;
 
     @Input('tuiDropdownSelectionPosition')
-    position: 'selection' | 'tag' | 'word' = 'selection';
+    public position: 'selection' | 'tag' | 'word' = 'selection';
 
     @Input()
-    set tuiDropdownSelection(visible: TuiBooleanHandler<Range> | string) {
+    public set tuiDropdownSelection(visible: TuiBooleanHandler<Range> | string) {
         if (!tuiIsString(visible)) {
             this.handler$.next(visible);
         }
     }
 
-    readonly type = 'dropdown';
+    public readonly type = 'dropdown';
 
     constructor() {
         super(subscriber => this.stream$.subscribe(subscriber));
     }
 
-    getClientRect(): DOMRect {
+    public getClientRect(): DOMRect {
         switch (this.position) {
             case 'tag': {
                 const {commonAncestorContainer} = this.range;
@@ -112,7 +112,7 @@ export class TuiDropdownSelectionDirective
         }
     }
 
-    ngOnDestroy(): void {
+    public ngOnDestroy(): void {
         if (this.ghost) {
             this.vcr.element.nativeElement.removeChild(this.ghost);
         }

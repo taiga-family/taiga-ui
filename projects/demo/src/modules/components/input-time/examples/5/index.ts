@@ -18,12 +18,12 @@ import {tuiInputTimeOptionsProvider} from '@taiga-ui/kit';
     ],
 })
 export class TuiInputTimeExample5 {
-    readonly testForm = new FormGroup({
+    protected readonly testForm = new FormGroup({
         testValue: new FormControl<TuiTime | null>(null),
         isPm: new FormControl(false),
     });
 
-    get postfix(): string {
+    protected get postfix(): string {
         return this.testForm.value?.isPm ? 'PM' : 'AM';
     }
 }

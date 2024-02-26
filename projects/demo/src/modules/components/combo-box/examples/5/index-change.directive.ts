@@ -6,5 +6,5 @@ import {Directive, inject, Output} from '@angular/core';
 })
 export class IndexChangeDirective {
     @Output()
-    readonly indexChange = inject(VIRTUAL_SCROLL_STRATEGY).scrolledIndexChange;
+    public readonly indexChange = inject(VIRTUAL_SCROLL_STRATEGY).scrolledIndexChange;
 }

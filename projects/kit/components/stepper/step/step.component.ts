@@ -34,15 +34,15 @@ export class TuiStepComponent {
 
     @Input()
     @HostBinding('attr.data-state')
-    stepState: 'error' | 'normal' | 'pass' = 'normal';
+    public stepState: 'error' | 'normal' | 'pass' = 'normal';
 
     @Input()
-    icon = '';
+    public icon = '';
 
     @HostBinding('class._focus-visible')
-    focusVisible = false;
+    protected focusVisible = false;
 
-    readonly icons = inject(TUI_COMMON_ICONS);
+    protected readonly icons = inject(TUI_COMMON_ICONS);
 
     constructor() {
         this.routerLinkActive$.pipe(filter(Boolean)).subscribe(() => {
@@ -55,26 +55,26 @@ export class TuiStepComponent {
     }
 
     @HostBinding('class._active')
-    get isActive(): boolean {
+    protected get isActive(): boolean {
         return this.stepper.isActive(this.index);
     }
 
     @HostBinding('class._vertical')
-    get isVertical(): boolean {
+    protected get isVertical(): boolean {
         return this.stepper.orientation === 'vertical';
     }
 
     @HostBinding('tabIndex')
-    get tabIndex(): number {
+    protected get tabIndex(): number {
         return this.isActive ? 0 : -1;
     }
 
-    get index(): number {
+    protected get index(): number {
         return this.stepper.indexOf(this.el);
     }
 
     @HostListener('click')
-    activate(): void {
+    protected activate(): void {
         this.stepper.activate(this.index);
     }
 }

@@ -9,7 +9,7 @@ describe('AbstractTuiController', () => {
     })
     class MyElementComponent extends AbstractTuiController {
         @Input()
-        message = '';
+        public message = '';
     }
 
     @Component({
@@ -19,9 +19,9 @@ describe('AbstractTuiController', () => {
     })
     class TestComponent {
         @ViewChild(MyElementComponent)
-        element!: MyElementComponent;
+        protected element!: MyElementComponent;
 
-        message = 'hello';
+        protected message = 'hello';
     }
 
     let fixture: ComponentFixture<TestComponent>;

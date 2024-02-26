@@ -31,19 +31,19 @@ export function innValidator(field: AbstractControl): unknown {
 })
 export class TuiFieldErrorPipeExample3 implements OnInit {
     @ViewChild('errorContent')
-    errorContent: PolymorpheusContent;
+    protected errorContent: PolymorpheusContent;
 
     @ViewChild('bigErrorContent')
-    bigErrorContent: PolymorpheusContent;
+    protected bigErrorContent: PolymorpheusContent;
 
-    readonly testValue2 = new FormControl('');
+    protected readonly testValue2 = new FormControl('');
 
-    readonly testForm = new FormGroup({
+    protected readonly testForm = new FormGroup({
         testValue1: new FormControl('', [Validators.required, this.getSecretValidator()]),
         testValue2: this.testValue2,
     });
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         this.testValue2.setValidators([Validators.required, this.companyValidator]);
     }
 

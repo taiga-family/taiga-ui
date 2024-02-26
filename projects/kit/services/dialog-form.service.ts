@@ -8,15 +8,17 @@ export class TuiDialogFormService {
     private readonly dialogs = inject(TuiDialogService);
     private dirty = false;
 
-    markAsDirty(): void {
+    public markAsDirty(): void {
         this.dirty = true;
     }
 
-    markAsPristine(): void {
+    public markAsPristine(): void {
         this.dirty = false;
     }
 
-    withPrompt(options: Partial<TuiDialogOptions<TuiPromptData>>): Observable<boolean> {
+    public withPrompt(
+        options: Partial<TuiDialogOptions<TuiPromptData>>,
+    ): Observable<boolean> {
         return defer(() =>
             this.dirty
                 ? this.dialogs.open<boolean>(TUI_PROMPT, {

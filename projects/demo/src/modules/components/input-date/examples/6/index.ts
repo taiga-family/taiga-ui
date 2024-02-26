@@ -13,7 +13,7 @@ import {tuiInputDateOptionsProvider} from '@taiga-ui/kit';
     providers: [tuiInputDateOptionsProvider({nativePicker: true})],
 })
 export class TuiInputDateExample6 {
-    readonly testForm = new FormGroup({
+    protected readonly testForm = new FormGroup({
         testValue: new FormControl(new TuiDay(2017, 0, 15)),
     });
 }

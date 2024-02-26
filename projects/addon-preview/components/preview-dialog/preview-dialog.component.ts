@@ -18,10 +18,10 @@ import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
     animations: [tuiSlideInTop],
 })
 export class TuiPreviewDialogComponent {
-    readonly context = inject<TuiPopover<void, void>>(POLYMORPHEUS_CONTEXT);
+    protected readonly context = inject<TuiPopover<void, void>>(POLYMORPHEUS_CONTEXT);
 
     @HostListener('document:keydown.esc')
-    onKeyDownEsc(): void {
+    protected onKeyDownEsc(): void {
         this.context.$implicit.complete();
     }
 }

@@ -10,9 +10,9 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiLineClampExample2 {
-    linesLimit = 2;
+    protected linesLimit = 2;
 
-    toggle(): void {
+    protected toggle(): void {
         this.linesLimit = this.collapsed ? 12 : 2;
     }
 

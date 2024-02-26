@@ -15,9 +15,9 @@ export class TuiPreviewExample2 {
     private readonly previewDialogService = inject(TuiPreviewDialogService);
 
     @ViewChild('preview')
-    readonly preview?: TemplateRef<TuiDialogContext>;
+    protected readonly preview?: TemplateRef<TuiDialogContext>;
 
-    show(): void {
+    protected show(): void {
         this.previewDialogService.open(this.preview || '').subscribe();
     }
 }

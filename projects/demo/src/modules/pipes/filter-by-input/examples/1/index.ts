@@ -10,7 +10,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiFilterByInputExample1 {
-    readonly items = [
+    protected readonly items = [
         'John Cleese',
         'Eric Idle',
         'Graham Chapman',
@@ -19,7 +19,7 @@ export class TuiFilterByInputExample1 {
         'Terry Jones',
     ];
 
-    readonly form = new FormGroup({
+    protected readonly form = new FormGroup({
         user: new FormControl(''),
     });
 }

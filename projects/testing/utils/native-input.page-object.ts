@@ -16,22 +16,22 @@ export class TuiNativeInputPO {
         this.pageObject = new TuiPageObject(fixture);
     }
 
-    get nativeElement(): HTMLInputElement | HTMLTextAreaElement | null {
+    public get nativeElement(): HTMLInputElement | HTMLTextAreaElement | null {
         return (
             this.pageObject.getByAutomationId(this.automationId, this.hostDebugElement)
                 ?.nativeElement ?? null
         );
     }
 
-    get value(): string {
+    public get value(): string {
         return tuiReplaceNbsp(this.nativeElement?.value ?? '');
     }
 
-    get focused(): boolean {
+    public get focused(): boolean {
         return document.activeElement === this.nativeElement;
     }
 
-    sendText(value: string): void {
+    public sendText(value: string): void {
         this.focus(); // need focus before initial value for emulate user interaction
 
         const nativeElement = this.nativeElement;
@@ -45,28 +45,28 @@ export class TuiNativeInputPO {
     }
 
     // @bad TODO: Fix this with actually moving focus rather than just blurring
-    sendTextAndBlur(value: string): void {
+    public sendTextAndBlur(value: string): void {
         this.focus();
         this.sendText(value);
         this.blur();
     }
 
-    sendKeydown(key: string): void {
+    public sendKeydown(key: string): void {
         this.nativeElement?.dispatchEvent(tuiCreateKeyboardEvent(key, 'keydown'));
         this.fixture.detectChanges();
     }
 
-    focus(): void {
+    public focus(): void {
         this.nativeElement?.focus();
         this.fixture.detectChanges();
     }
 
-    blur(): void {
+    public blur(): void {
         this.nativeElement?.blur();
         this.fixture.detectChanges();
     }
 
-    click(): void {
+    public click(): void {
         this.nativeElement?.click();
         this.fixture.detectChanges();
     }

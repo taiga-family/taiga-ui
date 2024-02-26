@@ -40,21 +40,21 @@ import {TuiInputFilesDirective} from './input-files.directive';
 })
 export class TuiInputFilesComponent {
     @ContentChild(TuiInputFilesDirective)
-    readonly input?: TuiInputFilesDirective;
+    public readonly input?: TuiInputFilesDirective;
 
     @ContentChild(TemplateRef)
-    readonly template?: TemplateRef<TuiContext<boolean>>;
+    protected readonly template?: TemplateRef<TuiContext<boolean>>;
 
-    files?: FileList | null;
+    protected files?: FileList | null;
 
-    readonly content = new PolymorpheusComponent(TuiInputFilesContent);
+    protected readonly content = new PolymorpheusComponent(TuiInputFilesContent);
 
-    get fileDragged(): boolean {
+    protected get fileDragged(): boolean {
         return !!this.files && !this.input?.computedDisabled;
     }
 
     @HostListener('change', ['$event.target'])
-    onFilesSelected(input: HTMLInputElement): void {
+    protected onFilesSelected(input: HTMLInputElement): void {
         if (!input?.files) {
             return;
         }
@@ -63,7 +63,7 @@ export class TuiInputFilesComponent {
         input.value = '';
     }
 
-    onDropped({dataTransfer}: DragEvent): void {
+    protected onDropped({dataTransfer}: DragEvent): void {
         this.files = null;
 
         if (dataTransfer?.files && !this.input?.computedDisabled) {
@@ -71,7 +71,7 @@ export class TuiInputFilesComponent {
         }
     }
 
-    onDrag(dataTransfer: DataTransfer | null): void {
+    protected onDrag(dataTransfer: DataTransfer | null): void {
         this.files = dataTransfer?.files;
     }
 }

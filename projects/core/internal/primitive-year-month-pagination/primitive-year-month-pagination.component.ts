@@ -24,51 +24,51 @@ export class TuiPrimitiveYearMonthPaginationComponent
     implements TuiWithOptionalMinMax<TuiMonth>
 {
     @Input()
-    value = TuiMonth.currentLocal();
+    public value = TuiMonth.currentLocal();
 
     @Input()
-    min: TuiMonth | null = TUI_FIRST_DAY;
+    public min: TuiMonth | null = TUI_FIRST_DAY;
 
     @Input()
-    max: TuiMonth | null = TUI_LAST_DAY;
+    public max: TuiMonth | null = TUI_LAST_DAY;
 
     @Output()
-    readonly valueChange = new EventEmitter<TuiMonth>();
+    public readonly valueChange = new EventEmitter<TuiMonth>();
 
     @Output()
-    readonly yearClick = new EventEmitter<TuiYear>();
+    public readonly yearClick = new EventEmitter<TuiYear>();
 
-    get computedMin(): TuiMonth {
+    protected get computedMin(): TuiMonth {
         return this.min ?? TUI_FIRST_DAY;
     }
 
-    get computedMax(): TuiMonth {
+    protected get computedMax(): TuiMonth {
         return this.max ?? TUI_LAST_DAY;
     }
 
-    get prevMonthDisabled(): boolean {
+    protected get prevMonthDisabled(): boolean {
         return this.value.monthSameOrBefore(this.computedMin);
     }
 
-    get nextMonthDisabled(): boolean {
+    protected get nextMonthDisabled(): boolean {
         return this.value.monthSameOrAfter(this.computedMax);
     }
 
-    get oneYear(): boolean {
+    protected get oneYear(): boolean {
         const {computedMin, computedMax} = this;
 
         return computedMin.year === computedMax.year;
     }
 
-    onYearClick(): void {
+    protected onYearClick(): void {
         this.yearClick.next(this.value);
     }
 
-    onPrevMonthClick(): void {
+    protected onPrevMonthClick(): void {
         this.appendValueWithLimit({month: -1});
     }
 
-    onNextMonthClick(): void {
+    protected onNextMonthClick(): void {
         this.appendValueWithLimit({month: 1});
     }
 

@@ -9,7 +9,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiItemsWithMoreExample1 {
-    readonly items = [
+    protected readonly items = [
         'John Cleese',
         'Eric Idle',
         'Graham Chapman',
@@ -18,9 +18,9 @@ export class TuiItemsWithMoreExample1 {
         'Terry Jones',
     ];
 
-    readonly required = 3;
+    protected readonly required = 3;
 
-    getRemaining(index: number): number {
+    protected getRemaining(index: number): number {
         const offset = index < this.required ? index + 2 : index + 1;
 
         return this.items.length - offset;

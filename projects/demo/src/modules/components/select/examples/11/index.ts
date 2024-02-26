@@ -16,11 +16,11 @@ interface Item {
     changeDetection,
 })
 export class TuiSelectExample11 {
-    itemStringControl = new FormControl<string | null>(null);
-    itemGroupControl = new FormControl<string | null>(null);
-    itemControl = new FormControl<Item | null>(null);
+    protected itemStringControl = new FormControl<string | null>(null);
+    protected itemGroupControl = new FormControl<string | null>(null);
+    protected itemControl = new FormControl<Item | null>(null);
 
-    items = [
+    protected items = [
         'Luke Skywalker',
         'Leia Organa Solo',
         'Darth Vader',
@@ -29,12 +29,12 @@ export class TuiSelectExample11 {
         'Yoda',
     ];
 
-    groupItems = [
+    protected groupItems = [
         ['Caesar', 'Greek', 'Apple and Chicken'],
         ['Broccoli Cheddar', 'Chicken and Rice', 'Chicken Noodle'],
     ];
 
-    customItems: readonly Item[] = [
+    protected customItems: readonly Item[] = [
         {name: 'Luke Skywalker', id: 1},
         {name: 'Leia Organa Solo', id: 2},
         {name: 'Darth Vader', id: 3},
@@ -43,9 +43,10 @@ export class TuiSelectExample11 {
         {name: 'Yoda', id: 6},
     ];
 
-    labels = ['Salad', 'Soup'];
+    protected labels = ['Salad', 'Soup'];
 
-    stringify: TuiStringHandler<Item> = item => item.name;
+    protected stringify: TuiStringHandler<Item> = item => item.name;
 
-    disabledItemHandler: TuiBooleanHandler<string> = item => item.startsWith('Chicken');
+    protected disabledItemHandler: TuiBooleanHandler<string> = item =>
+        item.startsWith('Chicken');
 }

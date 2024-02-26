@@ -30,28 +30,28 @@ export class TuiSidebarComponent implements DoCheck {
     private readonly right = {...this.options, value: 'right'};
 
     @HostBinding('@tuiSlideIn')
-    get animation(): AnimationOptions {
+    protected get animation(): AnimationOptions {
         return this.direction === 'left' ? this.left : this.right;
     }
 
     @HostBinding('class')
-    get directionHostClass(): string {
+    protected get directionHostClass(): string {
         return `t-${this.directive.direction}`;
     }
 
-    get direction(): TuiHorizontalDirection {
+    protected get direction(): TuiHorizontalDirection {
         return this.directive.direction;
     }
 
-    get content(): PolymorpheusContent {
+    protected get content(): PolymorpheusContent {
         return this.directive.content;
     }
 
-    get autoWidth(): boolean {
+    protected get autoWidth(): boolean {
         return this.directive.autoWidth;
     }
 
-    ngDoCheck(): void {
+    public ngDoCheck(): void {
         this.directive.check();
     }
 }

@@ -53,21 +53,21 @@ export class TuiInputCopyComponent
     private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
 
     @Input()
-    successMessage = this.options.successMessage;
+    public successMessage = this.options.successMessage;
 
     @Input()
-    messageDirection = this.options.messageDirection;
+    public messageDirection = this.options.messageDirection;
 
     @Input()
-    messageAppearance = this.options.messageAppearance;
+    public messageAppearance = this.options.messageAppearance;
 
     @HostBinding('attr.data-size')
-    get size(): TuiSizeL | TuiSizeS {
+    protected get size(): TuiSizeL | TuiSizeS {
         return this.textfieldSize.size;
     }
 
     @tuiPure
-    get hintText$(): Observable<PolymorpheusContent> {
+    protected get hintText$(): Observable<PolymorpheusContent> {
         return this.copyTexts$.pipe(
             switchMap(texts =>
                 this.copy$.pipe(
@@ -83,29 +83,29 @@ export class TuiInputCopyComponent
         );
     }
 
-    get nativeFocusableElement(): TuiNativeFocusableElement | null {
+    public get nativeFocusableElement(): TuiNativeFocusableElement | null {
         return this.computedDisabled || !this.textfield
             ? null
             : this.textfield.nativeFocusableElement;
     }
 
-    get focused(): boolean {
+    public get focused(): boolean {
         return !!this.textfield?.focused;
     }
 
-    get icon(): TuiInputCopyOptions['icon'] {
+    protected get icon(): TuiInputCopyOptions['icon'] {
         return this.options.icon;
     }
 
-    onValueChange(value: string): void {
+    public onValueChange(value: string): void {
         this.value = value;
     }
 
-    onFocused(focused: boolean): void {
+    protected onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
 
-    copy(): void {
+    protected copy(): void {
         if (!this.textfield?.nativeFocusableElement) {
             return;
         }

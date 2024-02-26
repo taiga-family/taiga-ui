@@ -10,5 +10,5 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiPaginationExample3 {
-    sidePadding = 3;
+    protected sidePadding = 3;
 }

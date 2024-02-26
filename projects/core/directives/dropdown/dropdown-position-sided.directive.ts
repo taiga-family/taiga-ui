@@ -23,14 +23,14 @@ export class TuiDropdownPositionSidedDirective extends TuiPositionAccessor {
     private previous = this.options.direction || 'bottom';
 
     @Input()
-    tuiDropdownSided: boolean | string = '';
+    public tuiDropdownSided: boolean | string = '';
 
     @Input()
-    tuiDropdownSidedOffset = 4;
+    public tuiDropdownSidedOffset = 4;
 
-    readonly type = 'dropdown';
+    public readonly type = 'dropdown';
 
-    getPosition(rect: DOMRect): TuiPoint {
+    public getPosition(rect: DOMRect): TuiPoint {
         if (this.tuiDropdownSided === false) {
             return this.vertical.getPosition(rect);
         }

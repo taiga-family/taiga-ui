@@ -3,7 +3,7 @@ import {tuiIsPresent} from '@taiga-ui/cdk/utils';
 
 @Pipe({name: 'tuiIsPresent'})
 export class TuiIsPresentPipe implements PipeTransform {
-    transform<T>(value?: T | null): value is T {
+    public transform<T>(value?: T | null): value is T {
         return tuiIsPresent(value);
     }
 }

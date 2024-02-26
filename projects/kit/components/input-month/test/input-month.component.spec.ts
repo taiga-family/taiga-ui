@@ -17,9 +17,9 @@ describe('InputMonth', () => {
     })
     class TestComponent {
         @ViewChild(TuiInputMonthComponent, {static: true})
-        component!: TuiInputMonthComponent;
+        protected component!: TuiInputMonthComponent;
 
-        control = new FormControl(null);
+        protected control = new FormControl(null);
     }
 
     let fixture: ComponentFixture<TestComponent>;

@@ -15,19 +15,19 @@ interface Items<T> {
 })
 export class CustomListComponent<T> {
     @Input()
-    items: ReadonlyArray<Items<T>> = [];
+    public items: ReadonlyArray<Items<T>> = [];
 
-    value = '';
+    protected value = '';
 
-    readonly all = EMPTY_ARRAY;
+    protected readonly all = EMPTY_ARRAY;
 
-    readonly filter = TUI_DEFAULT_MATCHER;
+    protected readonly filter = TUI_DEFAULT_MATCHER;
 
-    onArrowDown<T>(list: TuiDataListComponent<T>, event: Event): void {
+    protected onArrowDown<T>(list: TuiDataListComponent<T>, event: Event): void {
         list.onFocus(event, true);
     }
 
-    onKeyDown(key: string, element: HTMLElement | null): void {
+    protected onKeyDown(key: string, element: HTMLElement | null): void {
         if (element && tuiIsEditingKey(key)) {
             element.focus({preventScroll: true});
         }

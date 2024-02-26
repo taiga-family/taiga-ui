@@ -24,21 +24,21 @@ export class TuiValidatorDirective implements Validator, OnChanges, OnDestroy {
     private onChange = EMPTY_FUNCTION;
 
     @Input()
-    tuiValidator: ValidatorFn = Validators.nullValidator;
+    public tuiValidator: ValidatorFn = Validators.nullValidator;
 
-    validate(control: AbstractControl): ValidationErrors | null {
+    public validate(control: AbstractControl): ValidationErrors | null {
         return this.tuiValidator(control);
     }
 
-    registerOnValidatorChange(onChange: (...args: any[]) => void): void {
+    public registerOnValidatorChange(onChange: (...args: any[]) => void): void {
         this.onChange = onChange;
     }
 
-    ngOnChanges(): void {
+    public ngOnChanges(): void {
         this.onChange();
     }
 
-    ngOnDestroy(): void {
+    public ngOnDestroy(): void {
         this.tuiValidator = Validators.nullValidator;
         this.onChange();
     }

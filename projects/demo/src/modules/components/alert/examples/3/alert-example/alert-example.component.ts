@@ -13,11 +13,11 @@ export class AlertExampleComponent {
     private readonly context =
         inject<TuiPopover<TuiAlertOptions<void>, boolean>>(POLYMORPHEUS_CONTEXT);
 
-    ok(): void {
+    protected ok(): void {
         this.context.completeWith(true);
     }
 
-    cancel(): void {
+    protected cancel(): void {
         this.context.completeWith(false);
     }
 }

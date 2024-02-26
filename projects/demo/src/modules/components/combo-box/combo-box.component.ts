@@ -19,11 +19,11 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
 
 class Account {
     constructor(
-        readonly name: string,
-        readonly balance: number,
+        public readonly name: string,
+        public readonly balance: number,
     ) {}
 
-    toString(): string {
+    public toString(): string {
         return `${this.name} (${this.balance})`;
     }
 }
@@ -47,19 +47,19 @@ export class ExampleTuiComboBoxComponent extends AbstractExampleTuiControl {
         TuiValueContentContext<Account>
     >;
 
-    readonly exampleForm = import('./examples/import/declare-form.md?raw');
+    protected readonly exampleForm = import('./examples/import/declare-form.md?raw');
 
-    readonly exampleModule = import('./examples/import/import-module.md?raw');
+    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
 
-    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
         LESS: import('./examples/1/index.less?raw'),
     };
 
-    readonly example2: TuiDocExample = {
+    protected readonly example2: TuiDocExample = {
         TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
         LESS: import('./examples/2/index.less?raw'),
@@ -68,93 +68,99 @@ export class ExampleTuiComboBoxComponent extends AbstractExampleTuiControl {
         'database-mock-data.ts': import('./examples/2/database-mock-data.ts?raw'),
     };
 
-    readonly example3: TuiDocExample = {
+    protected readonly example3: TuiDocExample = {
         TypeScript: import('./examples/3/index.ts?raw'),
         HTML: import('./examples/3/index.html?raw'),
     };
 
-    readonly example4: TuiDocExample = {
+    protected readonly example4: TuiDocExample = {
         TypeScript: import('./examples/4/index.ts?raw'),
         HTML: import('./examples/4/index.html?raw'),
     };
 
-    readonly example5: TuiDocExample = {
+    protected readonly example5: TuiDocExample = {
         TypeScript: import('./examples/5/index.ts?raw'),
         HTML: import('./examples/5/index.html?raw'),
         LESS: import('./examples/5/index.less?raw'),
         'index-change.directive.ts': import('./examples/5/index-change.directive.ts?raw'),
     };
 
-    readonly example6: TuiDocExample = {
+    protected readonly example6: TuiDocExample = {
         TypeScript: import('./examples/6/index.ts?raw'),
         HTML: import('./examples/6/index.html?raw'),
     };
 
-    readonly example7: TuiDocExample = {
+    protected readonly example7: TuiDocExample = {
         TypeScript: import('./examples/7/index.ts?raw'),
         HTML: import('./examples/7/index.html?raw'),
     };
 
-    readonly example8: TuiDocExample = {
+    protected readonly example8: TuiDocExample = {
         TypeScript: import('./examples/8/index.ts?raw'),
         HTML: import('./examples/8/index.html?raw'),
     };
 
-    readonly items = [
+    protected readonly items = [
         new Account('Rubles', 500),
         new Account('Dollars', 237),
         new Account('Netherlands Antillean Guilder and Falkland Islands Pound', 700),
     ];
 
-    strict = true;
+    protected strict = true;
 
-    search: string | null = '';
+    protected search: string | null = '';
 
-    valueTemplateVariants = ['', 'Template'];
+    protected valueTemplateVariants = ['', 'Template'];
 
-    selectedValueTemplate = '';
+    protected selectedValueTemplate = '';
 
-    readonly iconVariants = ['', 'tuiIconPieChartLarge', 'tuiIconCreditCardLarge'];
+    protected readonly iconVariants = [
+        '',
+        'tuiIconPieChartLarge',
+        'tuiIconCreditCardLarge',
+    ];
 
-    override iconLeft = this.iconVariants[0];
+    public override iconLeft = this.iconVariants[0];
 
-    readonly stringifyVariants: Array<TuiStringHandler<Account | string>> = [
+    protected readonly stringifyVariants: Array<TuiStringHandler<Account | string>> = [
         TUI_DEFAULT_STRINGIFY,
         item => String(String(item).match(/\d+/)),
     ];
 
-    stringify = this.stringifyVariants[0];
+    protected stringify = this.stringifyVariants[0];
 
-    readonly strictMatcherVariants: ReadonlyArray<TuiStringMatcher<Account>> = [
+    protected readonly strictMatcherVariants: ReadonlyArray<TuiStringMatcher<Account>> = [
         TUI_STRICT_MATCHER as TuiStringMatcher<Account>,
         (item: Account, search: string, stringify: TuiStringHandler<Account>) =>
             Number.parseInt(stringify(item).match(/\d+/g)![0], 10) ===
             Number.parseInt(search, 10),
     ];
 
-    strictMatcher = this.strictMatcherVariants[0];
+    protected strictMatcher = this.strictMatcherVariants[0];
 
-    readonly identityMatcherVariants: ReadonlyArray<TuiIdentityMatcher<Account>> = [
+    protected readonly identityMatcherVariants: ReadonlyArray<
+        TuiIdentityMatcher<Account>
+    > = [
         (item1, item2) => item1 === item2,
         (item1, item2) => item1.balance === item2.balance,
     ];
 
-    identityMatcher = this.identityMatcherVariants[0];
+    protected identityMatcher = this.identityMatcherVariants[0];
 
-    readonly control = new FormControl<Account | null>(null, Validators.required);
+    public readonly control = new FormControl<Account | null>(null, Validators.required);
 
-    get valueContent(): PolymorpheusContent<TuiValueContentContext<Account>> {
+    protected get valueContent(): PolymorpheusContent<TuiValueContentContext<Account>> {
         return this.valueTemplateRef && this.selectedValueTemplate
             ? this.valueTemplateRef
             : '';
     }
 
     @tuiPure
-    filter(query: string | null): readonly Account[] {
+    protected filter(query: string | null): readonly Account[] {
         return this.items.filter(item => TUI_DEFAULT_MATCHER(item, query || ''));
     }
 
-    setValue(): void {
+    protected setValue(): void {
         this.control.setValue(new Account('Dollars', 237));
     }
 }

@@ -14,16 +14,16 @@ import {TuiDurationOptions, tuiScaleIn} from '@taiga-ui/core';
 })
 export class TuiScaleInExample {
     @Input()
-    speed = 0;
+    public speed = 0;
 
-    readonly todoTasks = [
+    protected readonly todoTasks = [
         {title: 'Install Angular', completed: true},
         {title: 'Install Taiga UI', completed: false},
         {title: 'Look into "Getting Started"', completed: false},
     ];
 
     @tuiPure
-    getAnimation(duration: number): TuiDurationOptions {
+    protected getAnimation(duration: number): TuiDurationOptions {
         return {value: '', params: {duration}};
     }
 }

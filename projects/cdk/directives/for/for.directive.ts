@@ -17,15 +17,15 @@ export class TuiForDirective<T, K = unknown> implements OnChanges {
     private ref?: EmbeddedViewRef<unknown>;
 
     @Input()
-    ngForOf: T[] | readonly T[] | null = [];
+    public ngForOf: T[] | readonly T[] | null = [];
 
     @Input()
-    ngForElse?: TemplateRef<K>;
+    public ngForElse?: TemplateRef<K>;
 
     @Input()
-    ngForEmpty?: TemplateRef<K>;
+    public ngForEmpty?: TemplateRef<K>;
 
-    ngOnChanges(): void {
+    public ngOnChanges(): void {
         this.ref?.destroy();
 
         if (this.ngForOf?.length === 0 && this.ngForEmpty) {

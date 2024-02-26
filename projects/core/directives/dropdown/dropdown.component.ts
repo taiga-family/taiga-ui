@@ -73,13 +73,13 @@ export class TuiDropdownComponent implements OnInit {
     private readonly win = inject(WINDOW);
     private readonly viewport = inject(TuiVisualViewportService);
 
-    readonly mode$: Observable<TuiBrightness | null> = inject(TUI_MODE);
-    readonly animation = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
-    readonly options = inject(TUI_DROPDOWN_OPTIONS);
-    readonly directive = inject(TuiDropdownDirective);
-    readonly context = inject(TUI_DROPDOWN_CONTEXT, {optional: true});
+    protected readonly mode$: Observable<TuiBrightness | null> = inject(TUI_MODE);
+    protected readonly animation = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
+    protected readonly options = inject(TUI_DROPDOWN_OPTIONS);
+    protected readonly directive = inject(TuiDropdownDirective);
+    protected readonly context = inject(TUI_DROPDOWN_CONTEXT, {optional: true});
 
-    readonly sub = inject(TuiPositionService)
+    protected readonly sub = inject(TuiPositionService)
         .pipe(
             map(point =>
                 this.directive.position === 'fixed'
@@ -92,11 +92,11 @@ export class TuiDropdownComponent implements OnInit {
             this.update(top, left);
         });
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         this.updateWidth(this.accessor.getClientRect().width);
     }
 
-    onTopFocus({target, relatedTarget}: FocusEvent): void {
+    protected onTopFocus({target, relatedTarget}: FocusEvent): void {
         if (
             tuiIsElement(target) &&
             tuiIsElement(relatedTarget) &&
@@ -108,7 +108,7 @@ export class TuiDropdownComponent implements OnInit {
         }
     }
 
-    onBottomFocus({target, relatedTarget}: FocusEvent): void {
+    protected onBottomFocus({target, relatedTarget}: FocusEvent): void {
         if (
             tuiIsElement(target) &&
             tuiIsElement(relatedTarget) &&

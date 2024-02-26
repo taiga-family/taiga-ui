@@ -29,10 +29,10 @@ const APP_COMP_META = {
 export class TuiStackblitzService implements TuiCodeEditor {
     private readonly deps = inject(StackblitzDepsService);
 
-    readonly name = 'Stackblitz';
-    readonly content = new PolymorpheusComponent(StackblitzEditButtonComponent);
+    public readonly name = 'Stackblitz';
+    public readonly content = new PolymorpheusComponent(StackblitzEditButtonComponent);
 
-    async edit(
+    public async edit(
         component: string,
         sampleId: string,
         content: Record<string, string>,
@@ -85,7 +85,7 @@ export class TuiStackblitzService implements TuiCodeEditor {
         });
     }
 
-    async openStarter(
+    public async openStarter(
         {title, description, files}: Pick<Project, 'description' | 'files' | 'title'>,
         openOptions?: OpenOptions,
     ): Promise<void> {

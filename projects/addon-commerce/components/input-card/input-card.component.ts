@@ -34,7 +34,7 @@ export class TuiInputCardComponent extends AbstractTuiInputCard<string> {
 
     private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
 
-    readonly maskOptions: MaskitoOptions = {
+    protected readonly maskOptions: MaskitoOptions = {
         mask: TUI_CARD_MASK,
     };
 
@@ -43,23 +43,23 @@ export class TuiInputCardComponent extends AbstractTuiInputCard<string> {
     }
 
     @HostBinding('attr.data-size')
-    get size(): TuiSizeL | TuiSizeS {
+    protected get size(): TuiSizeL | TuiSizeS {
         return this.textfieldSize.size;
     }
 
-    get card(): string {
+    public get card(): string {
         return this.value ?? '';
     }
 
-    get nativeFocusableElement(): HTMLInputElement | null {
+    public get nativeFocusableElement(): HTMLInputElement | null {
         return this.input?.nativeFocusableElement ?? null;
     }
 
-    get focused(): boolean {
+    public get focused(): boolean {
         return !!this.input && this.input.focused;
     }
 
-    onValueChange(value: string): void {
+    public onValueChange(value: string): void {
         const parsed = value.split(' ').join('');
         const currentBin = this.bin;
 
@@ -72,11 +72,11 @@ export class TuiInputCardComponent extends AbstractTuiInputCard<string> {
         }
     }
 
-    onFocused(focused: boolean): void {
+    protected onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
 
-    override writeValue(value: string | null): void {
+    public override writeValue(value: string | null): void {
         const currentBin = this.bin;
 
         super.writeValue(value);

@@ -9,15 +9,15 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiTabsExample7 {
-    activeItemIndex = 0;
+    protected activeItemIndex = 0;
 
-    items = Array.from({length: 5}, (_, i) => `Item #${i}`);
+    protected items = Array.from({length: 5}, (_, i) => `Item #${i}`);
 
-    add(): void {
+    protected add(): void {
         this.items = this.items.concat(`Item #${Date.now()}`);
     }
 
-    remove(removed: string): void {
+    protected remove(removed: string): void {
         const index = this.items.indexOf(removed);
 
         this.items = this.items.filter(item => item !== removed);

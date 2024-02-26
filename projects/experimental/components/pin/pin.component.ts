@@ -9,5 +9,5 @@ import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/c
 export class TuiPinComponent {
     @Input()
     @HostBinding('class._open')
-    open = false;
+    public open = false;
 }

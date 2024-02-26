@@ -11,19 +11,19 @@ export class TuiInputDateRangeDirective
     extends AbstractTuiTextfieldHost<TuiInputDateRangeComponent>
     implements DoCheck
 {
-    override get value(): string {
+    public override get value(): string {
         return this.host.computedValue;
     }
 
-    onValueChange(value: string): void {
+    public onValueChange(value: string): void {
         this.host.onValueChange(value);
     }
 
-    override process(input: HTMLInputElement): void {
+    public override process(input: HTMLInputElement): void {
         input.inputMode = 'numeric';
     }
 
-    ngDoCheck(): void {
+    public ngDoCheck(): void {
         if (this.host.nativeFocusableElement) {
             this.host.nativeFocusableElement.placeholder = this.host.computedExampleText;
         }

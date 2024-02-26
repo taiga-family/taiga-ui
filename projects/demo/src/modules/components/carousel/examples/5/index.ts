@@ -10,11 +10,11 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiCarouselExample5 {
-    index = 0;
+    protected index = 0;
 
-    readonly itemsCount = 3;
+    protected readonly itemsCount = 3;
 
-    readonly items = [
+    protected readonly items = [
         {title: 'First', content: 'First content'},
         {title: 'Title #2', content: 'Much more content here so the height is bigger'},
         {title: 'Title III', content: 'Small item again'},
@@ -27,11 +27,11 @@ export class TuiCarouselExample5 {
         {title: 'X', content: 'This is the longest item there is in this list'},
     ];
 
-    get rounded(): number {
+    protected get rounded(): number {
         return Math.floor(this.index / this.itemsCount);
     }
 
-    onIndex(index: number): void {
+    protected onIndex(index: number): void {
         this.index = index * this.itemsCount;
     }
 }

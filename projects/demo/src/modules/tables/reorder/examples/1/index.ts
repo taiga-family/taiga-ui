@@ -10,7 +10,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiReorderExample1 {
-    items: readonly string[] = [
+    protected items: readonly string[] = [
         'John Cleese',
         'Eric Idle',
         'Michael Palin',
@@ -19,5 +19,5 @@ export class TuiReorderExample1 {
         'Graham Chapman',
     ];
 
-    enabled = this.items;
+    protected enabled = this.items;
 }

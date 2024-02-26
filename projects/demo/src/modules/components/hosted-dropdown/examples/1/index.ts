@@ -12,13 +12,13 @@ import {TuiHostedDropdownComponent} from '@taiga-ui/core';
 })
 export class TuiHostedDropdownExample1 {
     @ViewChild(TuiHostedDropdownComponent)
-    component?: TuiHostedDropdownComponent;
+    protected component?: TuiHostedDropdownComponent;
 
-    readonly items = ['Edit', 'Download', 'Rename', 'Delete'];
+    protected readonly items = ['Edit', 'Download', 'Rename', 'Delete'];
 
-    open = false;
+    protected open = false;
 
-    onClick(): void {
+    protected onClick(): void {
         this.open = false;
         this.component?.nativeFocusableElement?.focus();
     }

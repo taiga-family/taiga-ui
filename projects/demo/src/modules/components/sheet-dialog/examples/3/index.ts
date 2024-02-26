@@ -10,5 +10,5 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiSheetDialogExample3 {
-    open = false;
+    protected open = false;
 }

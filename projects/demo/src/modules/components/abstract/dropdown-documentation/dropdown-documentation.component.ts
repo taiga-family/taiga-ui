@@ -10,7 +10,7 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../inherited-documentation/abstract-props
     changeDetection,
 })
 export class DropdownDocumentationComponent {
-    readonly documentedComponent = inject<AbstractExampleTuiDropdown>(
+    protected readonly documentedComponent = inject<AbstractExampleTuiDropdown>(
         ABSTRACT_PROPS_ACCESSOR,
     );
 }

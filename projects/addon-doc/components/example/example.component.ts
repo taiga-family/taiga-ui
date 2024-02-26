@@ -39,64 +39,65 @@ export class TuiDocExampleComponent {
     protected readonly options = inject(TUI_DOC_EXAMPLE_OPTIONS);
 
     @Input()
-    id: string | null = null;
+    public id: string | null = null;
 
     @Input()
-    heading: PolymorpheusContent;
+    public heading: PolymorpheusContent;
 
     @Input()
-    description: PolymorpheusContent;
+    public description: PolymorpheusContent;
 
     @Input()
-    set content(content: TuiDocExample) {
+    public set content(content: TuiDocExample) {
         this.rawLoader$$.next(content);
     }
 
     @Input()
     @HostBinding('class._fullsize')
-    fullsize = this.options.fullsize;
+    public fullsize = this.options.fullsize;
 
     @Input()
-    componentName: string = this.location.pathname.slice(1);
+    public componentName: string = this.location.pathname.slice(1);
 
-    readonly texts = inject(TUI_DOC_EXAMPLE_TEXTS);
-    readonly codeEditor = inject(TUI_DOC_CODE_EDITOR, {optional: true});
-    readonly isE2E = inject(TUI_IS_E2E);
-    readonly codeActions =
+    protected readonly texts = inject(TUI_DOC_EXAMPLE_TEXTS);
+    protected readonly codeEditor = inject(TUI_DOC_CODE_EDITOR, {optional: true});
+    protected readonly isE2E = inject(TUI_IS_E2E);
+    protected readonly codeActions =
         inject<ReadonlyArray<PolymorpheusContent<TuiContext<string>>>>(
             TUI_DOC_CODE_ACTIONS,
         );
 
-    readonly defaultTabIndex = 0;
+    protected readonly defaultTabIndex = 0;
 
-    readonly defaultTab = this.texts[this.defaultTabIndex];
+    protected readonly defaultTab = this.texts[this.defaultTabIndex];
 
-    activeItemIndex = this.defaultTabIndex;
+    protected activeItemIndex = this.defaultTabIndex;
 
-    readonly copy$ = this.copyTexts$.pipe(map(([copy]) => copy));
+    protected readonly copy$ = this.copyTexts$.pipe(map(([copy]) => copy));
 
-    readonly processor$: Observable<Record<string, string>> = this.rawLoader$$.pipe(
-        switchMap(tuiRawLoadRecord),
-        map(value => this.processContent(value)),
-    );
+    protected readonly processor$: Observable<Record<string, string>> =
+        this.rawLoader$$.pipe(
+            switchMap(tuiRawLoadRecord),
+            map(value => this.processContent(value)),
+        );
 
-    readonly loading$ = new Subject<boolean>();
+    protected readonly loading$ = new Subject<boolean>();
 
-    readonly visible = (files: Record<string, string>): boolean =>
+    protected readonly visible = (files: Record<string, string>): boolean =>
         Boolean(this.codeEditor && this.options.codeEditorVisibilityHandler(files));
 
-    getTabTitle(fileName: string): PolymorpheusContent {
+    protected getTabTitle(fileName: string): PolymorpheusContent {
         return this.options.tabTitles.get(fileName) || fileName;
     }
 
-    copyExampleLink({href}: HTMLAnchorElement): void {
+    protected copyExampleLink({href}: HTMLAnchorElement): void {
         this.clipboard.copy(href);
         this.alerts
             .open(this.texts[1], {label: this.texts[2], status: 'success'})
             .subscribe();
     }
 
-    edit(files: Record<string, string>): void {
+    protected edit(files: Record<string, string>): void {
         this.loading$.next(true);
         this.codeEditor
             ?.edit(this.componentName, this.id || '', files)

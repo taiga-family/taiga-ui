@@ -12,25 +12,25 @@ import {TuiCountryIsoCode} from '@taiga-ui/i18n';
     changeDetection,
 })
 export class TuiInputPhoneExample1 {
-    readonly testForm = new FormGroup({
+    protected readonly testForm = new FormGroup({
         testValue: new FormControl('+79777777777', Validators.required),
     });
 
-    readonly countries: readonly TuiCountryIsoCode[] = [
+    protected readonly countries: readonly TuiCountryIsoCode[] = [
         TuiCountryIsoCode.RU,
         TuiCountryIsoCode.KZ,
         TuiCountryIsoCode.UA,
         TuiCountryIsoCode.BY,
     ];
 
-    countryIsoCode = TuiCountryIsoCode.RU;
+    protected countryIsoCode = TuiCountryIsoCode.RU;
 
-    contact = {
+    protected contact = {
         phone: '+375123456789',
         phoneCountryCode: TuiCountryIsoCode.BY,
     };
 
-    patchValue(): void {
+    protected patchValue(): void {
         this.countryIsoCode = this.contact.phoneCountryCode;
         this.testForm.get('testValue')?.patchValue(this.contact.phone);
     }

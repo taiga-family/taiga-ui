@@ -11,11 +11,11 @@ export class TuiDocSeeAlsoComponent {
     private readonly pages = inject(TUI_DOC_MAP_PAGES);
 
     @Input()
-    seeAlso: readonly string[] = [];
+    public seeAlso: readonly string[] = [];
 
-    readonly text = inject(TUI_DOC_SEE_ALSO_TEXT);
+    protected readonly text = inject(TUI_DOC_SEE_ALSO_TEXT);
 
-    getRouterLink(pageTitle: string): string {
+    protected getRouterLink(pageTitle: string): string {
         return this.pages.get(pageTitle)?.route ?? '';
     }
 }

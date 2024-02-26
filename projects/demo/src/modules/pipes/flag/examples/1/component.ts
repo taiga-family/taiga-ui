@@ -10,5 +10,5 @@ import {TuiCountryIsoCode} from '@taiga-ui/i18n';
     changeDetection,
 })
 export class TuiFlagExample1 {
-    readonly countryIsoCode = TuiCountryIsoCode.AE;
+    protected readonly countryIsoCode = TuiCountryIsoCode.AE;
 }

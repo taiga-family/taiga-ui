@@ -45,26 +45,26 @@ export class TuiSliderComponent {
 
     @Input()
     @HostBinding('attr.data-size')
-    size: TuiSizeS = this.options.size;
+    public size: TuiSizeS = this.options.size;
 
     @Input()
-    segments = 1;
+    public segments = 1;
 
-    readonly el: HTMLInputElement = inject(ElementRef).nativeElement;
+    public readonly el: HTMLInputElement = inject(ElementRef).nativeElement;
 
-    get min(): number {
+    public get min(): number {
         return Number(this.el.min);
     }
 
-    get max(): number {
+    public get max(): number {
         return Number(this.el.max || 100);
     }
 
-    get step(): number {
+    protected get step(): number {
         return Number(this.el.step) || 1;
     }
 
-    get value(): number {
+    public get value(): number {
         if (!this.hasKeySteps && this.control instanceof NgModel) {
             /**
              * If developer uses `[(ngModel)]` and programmatically change value,
@@ -76,27 +76,27 @@ export class TuiSliderComponent {
         return Number(this.el.value) || 0;
     }
 
-    set value(newValue: number) {
+    public set value(newValue: number) {
         this.el.value = `${newValue}`;
     }
 
     @HostBinding('style.--tui-slider-fill-ratio')
-    get valueRatio(): number {
+    public get valueRatio(): number {
         return (this.value - this.min) / (this.max - this.min) || 0;
     }
 
     @HostBinding('style.--tui-slider-fill-percentage.%')
-    get valuePercentage(): number {
+    public get valuePercentage(): number {
         return 100 * this.valueRatio;
     }
 
     @HostBinding('style.--tui-slider-segment-width.%')
-    get segmentWidth(): number {
+    protected get segmentWidth(): number {
         return 100 / Math.max(1, this.segments);
     }
 
     @tuiPure
-    get hasKeySteps(): boolean {
+    protected get hasKeySteps(): boolean {
         return Boolean(this.injector.get(TuiSliderKeyStepsDirective, null));
     }
 

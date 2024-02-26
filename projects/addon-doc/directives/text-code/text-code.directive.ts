@@ -6,5 +6,5 @@ import {Directive, HostBinding, Input} from '@angular/core';
 export class TuiTextCodeDirective {
     @Input('tuiText')
     @HostBinding('textContent')
-    code = '';
+    public code = '';
 }

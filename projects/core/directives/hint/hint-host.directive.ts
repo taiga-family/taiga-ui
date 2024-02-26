@@ -8,11 +8,11 @@ import {tuiAsRectAccessor, TuiRectAccessor} from '@taiga-ui/core/abstract';
 })
 export class TuiHintHostDirective extends TuiRectAccessor {
     @Input()
-    tuiHintHost?: HTMLElement;
+    public tuiHintHost?: HTMLElement;
 
-    readonly type = 'hint';
+    public readonly type = 'hint';
 
-    getClientRect(): ClientRect {
+    public getClientRect(): ClientRect {
         return this.tuiHintHost?.getBoundingClientRect() || EMPTY_CLIENT_RECT;
     }
 }

@@ -31,9 +31,9 @@ import {AbstractTuiNativeMultiSelect} from './native-multi-select';
 })
 export class TuiNativeMultiSelectComponent<T> extends AbstractTuiNativeMultiSelect<T> {
     @Input()
-    items: readonly T[] | null = [];
+    public items: readonly T[] | null = [];
 
-    onValueChange(selectedOptions: HTMLSelectElement['selectedOptions']): void {
+    protected onValueChange(selectedOptions: HTMLSelectElement['selectedOptions']): void {
         const selected = Array.from(selectedOptions).map(option => option.index);
         const value = this.items?.filter((_, index) => selected.includes(index)) || [];
 

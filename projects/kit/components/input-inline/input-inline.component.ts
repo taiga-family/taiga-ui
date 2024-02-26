@@ -35,23 +35,23 @@ export class TuiInputInlineComponent
     private readonly text?: ElementRef<HTMLElement>;
 
     @Input()
-    maxLength: number | null = null;
+    public maxLength: number | null = null;
 
-    indent = -1;
+    protected indent = -1;
 
-    get nativeFocusableElement(): TuiNativeFocusableElement | null {
+    public get nativeFocusableElement(): TuiNativeFocusableElement | null {
         return !this.native ? null : this.native.nativeElement;
     }
 
-    get focused(): boolean {
+    public get focused(): boolean {
         return tuiIsNativeFocused(this.nativeFocusableElement);
     }
 
-    get hasValue(): boolean {
+    protected get hasValue(): boolean {
         return this.value !== '';
     }
 
-    onValueChange(value: string): void {
+    protected onValueChange(value: string): void {
         if (!this.text) {
             return;
         }
@@ -62,11 +62,11 @@ export class TuiInputInlineComponent
         this.value = value;
     }
 
-    onFocused(focused: boolean): void {
+    protected onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
 
-    onScroll(): void {
+    protected onScroll(): void {
         const indent = this.native?.nativeElement.scrollLeft || 0;
 
         // -1 for Safari (see styles)

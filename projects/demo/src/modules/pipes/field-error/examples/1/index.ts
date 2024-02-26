@@ -29,11 +29,17 @@ export function superComputerValidator(field: AbstractControl): Validators | nul
     changeDetection,
 })
 export class TuiFieldErrorPipeExample1 {
-    readonly testValue1 = new FormControl('', [Validators.required, passwordValidator]);
+    protected readonly testValue1 = new FormControl('', [
+        Validators.required,
+        passwordValidator,
+    ]);
 
-    readonly testValue3 = new FormControl('', [Validators.required, passwordValidator]);
+    protected readonly testValue3 = new FormControl('', [
+        Validators.required,
+        passwordValidator,
+    ]);
 
-    readonly testForm = new FormGroup(
+    protected readonly testForm = new FormGroup(
         {
             testValue1: this.testValue1,
             testValue2: new FormControl('', [

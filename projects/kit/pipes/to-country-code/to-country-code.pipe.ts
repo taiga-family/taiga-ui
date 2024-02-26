@@ -14,7 +14,7 @@ import {
 export class TuiToCountryCodePipe implements PipeTransform {
     private readonly countriesMasks = inject(TUI_COUNTRIES_MASKS);
 
-    transform(
+    public transform(
         value: string,
         countries: readonly TuiCountryIsoCode[],
     ): TuiCountryIsoCode | undefined {

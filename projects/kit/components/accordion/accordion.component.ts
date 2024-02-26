@@ -28,15 +28,15 @@ export class TuiAccordionComponent implements AfterContentInit {
     private readonly destroy$ = inject(TuiDestroyService, {self: true});
 
     @Input()
-    closeOthers = true;
+    public closeOthers = true;
 
     @Input()
-    rounded = true;
+    public rounded = true;
 
     @ContentChildren(TuiAccordionItemComponent)
-    readonly accordionItems: QueryList<TuiAccordionItemComponent> = EMPTY_QUERY;
+    protected readonly accordionItems: QueryList<TuiAccordionItemComponent> = EMPTY_QUERY;
 
-    ngAfterContentInit(): void {
+    public ngAfterContentInit(): void {
         const {accordionItems} = this;
         const rows$ = tuiQueryListChanges(accordionItems);
         const newOpenRow$ = rows$.pipe(

@@ -28,7 +28,7 @@ import {TUI_DIALOGS} from './dialog.tokens';
 export class TuiDialogsComponent {
     private readonly doc = inject(DOCUMENT);
 
-    readonly dialogs$: Observable<ReadonlyArray<TuiPopover<any, any>>> = inject(
+    protected readonly dialogs$: Observable<ReadonlyArray<TuiPopover<any, any>>> = inject(
         TUI_DIALOGS,
     ).pipe(
         tap(({length}) => {

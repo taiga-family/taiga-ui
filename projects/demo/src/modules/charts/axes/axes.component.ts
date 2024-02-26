@@ -15,72 +15,77 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
     changeDetection,
 })
 export class ExampleTuiAxesComponent {
-    readonly exampleModule = import('./examples/import/import-module.md?raw');
-    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
+    protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
         LESS: import('./examples/1/index.less?raw'),
     };
 
-    readonly example2: TuiDocExample = {
+    protected readonly example2: TuiDocExample = {
         TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
         LESS: import('./examples/2/index.less?raw'),
     };
 
-    readonly example3: TuiDocExample = {
+    protected readonly example3: TuiDocExample = {
         TypeScript: import('./examples/3/index.ts?raw'),
         HTML: import('./examples/3/index.html?raw'),
         LESS: import('./examples/3/index.less?raw'),
     };
 
-    readonly lineVariants: readonly TuiLineType[] = ['solid', 'dashed', 'none', 'hidden'];
+    protected readonly lineVariants: readonly TuiLineType[] = [
+        'solid',
+        'dashed',
+        'none',
+        'hidden',
+    ];
 
-    readonly labelsXVariants: ReadonlyArray<ReadonlyArray<string | null>> = [
+    protected readonly labelsXVariants: ReadonlyArray<ReadonlyArray<string | null>> = [
         [],
         ['', '25%', '50%', '100%'],
         ['One', 'Two', 'Three'],
         ['One', null, '', 'Two and a half', 'Three', null],
     ];
 
-    readonly labelsYVariants: ReadonlyArray<readonly string[]> = [
+    protected readonly labelsYVariants: ReadonlyArray<readonly string[]> = [
         [],
         ['', '25%', '50%', '100%'],
         ['One', 'Two', 'Three'],
         ['One', '', 'Two and a half', 'Three'],
     ];
 
-    readonly handlerVariants: readonly TuiLineHandler[] = [
+    protected readonly handlerVariants: readonly TuiLineHandler[] = [
         TUI_ALWAYS_SOLID,
         TUI_ALWAYS_DASHED,
         index => (index % 2 ? 'dashed' : 'solid'),
     ];
 
-    axisX = this.lineVariants[0];
+    protected axisX = this.lineVariants[0];
 
-    axisXLabels = this.labelsXVariants[0];
+    protected axisXLabels = this.labelsXVariants[0];
 
-    axisY = this.lineVariants[0];
+    protected axisY = this.lineVariants[0];
 
-    axisYInset = false;
+    protected axisYInset = false;
 
-    axisYLabels = this.labelsYVariants[0];
+    protected axisYLabels = this.labelsYVariants[0];
 
-    axisYName = '';
+    protected axisYName = '';
 
-    axisYSecondaryInset = false;
+    protected axisYSecondaryInset = false;
 
-    axisYSecondaryLabels = this.labelsYVariants[0];
+    protected axisYSecondaryLabels = this.labelsYVariants[0];
 
-    axisYSecondaryName = '';
+    protected axisYSecondaryName = '';
 
-    horizontalLines = 0;
+    protected horizontalLines = 0;
 
-    horizontalLinesHandler = this.handlerVariants[0];
+    protected horizontalLinesHandler = this.handlerVariants[0];
 
-    verticalLines = 0;
+    protected verticalLines = 0;
 
-    verticalLinesHandler = this.handlerVariants[1];
+    protected verticalLinesHandler = this.handlerVariants[1];
 }

@@ -14,12 +14,12 @@ import {TUI_DEMO_ICONS} from './icons.tokens';
 })
 export class IconsComponent {
     private readonly mode = inject(TuiModeDirective);
-    readonly icons = inject(TUI_DEMO_ICONS);
-    readonly keys = Object.keys(this.icons);
-    readonly exampleModule = import('./import/import-module.md?raw');
-    readonly exampleHtml = import('./import/insert-template.md?raw');
+    protected readonly icons = inject(TUI_DEMO_ICONS);
+    protected readonly keys = Object.keys(this.icons);
+    protected readonly exampleModule = import('./import/import-module.md?raw');
+    protected readonly exampleHtml = import('./import/insert-template.md?raw');
 
-    readonly iconVariants: readonly string[] = [
+    protected readonly iconVariants: readonly string[] = [
         'https://ng-web-apis.github.io/dist/assets/images/web-api.svg',
         'tuiIconHelpCircle',
         `<svg xmlns="http://www.w3.org/2000/svg"
@@ -34,14 +34,14 @@ export class IconsComponent {
         assets`/images/undefined.svg`,
     ];
 
-    icon = this.iconVariants[0];
+    protected icon = this.iconVariants[0];
 
-    readonly mode$: Observable<TuiBrightness> = this.mode.change$.pipe(
+    protected readonly mode$: Observable<TuiBrightness> = this.mode.change$.pipe(
         startWith(null),
         map(() => this.mode.mode || 'onLight'),
     );
 
-    onIntersection(entries: IntersectionObserverEntry[]): boolean {
+    protected onIntersection(entries: IntersectionObserverEntry[]): boolean {
         return entries[entries.length - 1]?.isIntersecting ?? false;
     }
 }

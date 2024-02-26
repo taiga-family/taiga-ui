@@ -11,7 +11,7 @@ import {ALWAYS_FALSE_HANDLER} from '@taiga-ui/cdk';
     changeDetection,
 })
 export class TuiItemsWithMoreExample2 {
-    readonly items = [
+    protected readonly items = [
         'John Cleese',
         'Eric Idle',
         'Graham Chapman',
@@ -20,9 +20,9 @@ export class TuiItemsWithMoreExample2 {
         'Terry Jones',
     ];
 
-    value = this.items.map(ALWAYS_FALSE_HANDLER) as boolean[];
+    protected value = this.items.map(ALWAYS_FALSE_HANDLER) as boolean[];
 
-    onModelChange(index: number): void {
+    protected onModelChange(index: number): void {
         this.value[index] = !this.value[index];
     }
 }

@@ -38,42 +38,42 @@ export class TuiRatingComponent
     private readonly options = inject(TUI_RATING_OPTIONS);
 
     @Input()
-    min = this.options.min;
+    public min = this.options.min;
 
     @Input()
-    max = this.options.max;
+    public max = this.options.max;
 
     @Input()
-    iconNormal = this.options.iconNormal;
+    public iconNormal = this.options.iconNormal;
 
     @Input()
-    iconFilled = this.options.iconFilled;
+    public iconFilled = this.options.iconFilled;
 
-    get nativeFocusableElement(): HTMLInputElement | null {
+    public get nativeFocusableElement(): HTMLInputElement | null {
         return this.computedDisabled || !this.focusableElement
             ? null
             : this.focusableElement.nativeElement;
     }
 
-    get focused(): boolean {
+    public get focused(): boolean {
         return tuiIsNativeFocused(this.nativeFocusableElement);
     }
 
-    get isFocusable(): boolean {
+    protected get isFocusable(): boolean {
         return !(this.readOnly || this.disabled);
     }
 
-    get percent(): number {
+    protected get percent(): number {
         return tuiClamp((100 * this.value) / this.max, 0, 100);
     }
 
     @HostListener('focusin', ['true'])
     @HostListener('focusout', ['false'])
-    onFocused(focused: boolean): void {
+    protected onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
 
-    setRateByReverseIndex(index: number): void {
+    protected setRateByReverseIndex(index: number): void {
         const reversedIndex = this.max - index;
 
         if (reversedIndex <= this.min) {
@@ -83,7 +83,7 @@ export class TuiRatingComponent
         this.value = reversedIndex;
     }
 
-    setRate(value: number): void {
+    protected setRate(value: number): void {
         this.value = value;
     }
 

@@ -5,7 +5,7 @@ import {Directive, inject, Input, TemplateRef} from '@angular/core';
 })
 export class IconsGroupDirective {
     @Input()
-    iconGroup?: string | '';
+    public iconGroup?: string | '';
 
-    readonly template = inject(TemplateRef);
+    public readonly template = inject(TemplateRef);
 }

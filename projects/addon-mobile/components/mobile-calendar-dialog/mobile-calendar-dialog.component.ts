@@ -18,7 +18,7 @@ import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiMobileCalendarDialogComponent {
-    readonly context =
+    protected readonly context =
         inject<
             TuiDialogContext<
                 TuiDay | TuiDayRange | readonly TuiDay[],
@@ -26,23 +26,23 @@ export class TuiMobileCalendarDialogComponent {
             >
         >(POLYMORPHEUS_CONTEXT);
 
-    get single(): boolean {
+    protected get single(): boolean {
         return this.context.data?.single === true;
     }
 
-    get multi(): boolean {
+    protected get multi(): boolean {
         return this.context.data?.multi === true;
     }
 
-    get min(): TuiDay {
+    protected get min(): TuiDay {
         return this.context.data?.min || TUI_FIRST_DAY;
     }
 
-    get max(): TuiDay {
+    protected get max(): TuiDay {
         return this.context.data?.max || TUI_LAST_DAY;
     }
 
-    get disabledItemHandler(): TuiBooleanHandler<TuiDay> {
+    protected get disabledItemHandler(): TuiBooleanHandler<TuiDay> {
         return this.context.data?.disabledItemHandler || ALWAYS_FALSE_HANDLER;
     }
 }

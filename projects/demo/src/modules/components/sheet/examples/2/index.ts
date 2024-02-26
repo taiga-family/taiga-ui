@@ -10,14 +10,14 @@ import {TuiSheetOptions} from '@taiga-ui/addon-mobile';
     changeDetection,
 })
 export class TuiSheetExample2 {
-    open = false;
+    protected open = false;
 
-    readonly options: Partial<TuiSheetOptions> = {
+    protected readonly options: Partial<TuiSheetOptions> = {
         overlay: true,
         image: 'assets/images/avatar.jpg',
     };
 
-    toggle(): void {
+    protected toggle(): void {
         this.open = !this.open;
     }
 }

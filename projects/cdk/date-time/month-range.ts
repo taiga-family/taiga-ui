@@ -9,27 +9,27 @@ import {TuiMonth} from './month';
  */
 export class TuiMonthRange {
     constructor(
-        readonly from: TuiMonth,
-        readonly to: TuiMonth,
+        public readonly from: TuiMonth,
+        public readonly to: TuiMonth,
     ) {
         ngDevMode && tuiAssert.assert(from.monthSameOrBefore(to));
     }
 
-    static sort(month1: TuiMonth, month2: TuiMonth): TuiMonthRange {
+    public static sort(month1: TuiMonth, month2: TuiMonth): TuiMonthRange {
         return month1.monthSameOrBefore(month2)
             ? new TuiMonthRange(month1, month2)
             : new TuiMonthRange(month2, month1);
     }
 
-    get isSingleMonth(): boolean {
+    public get isSingleMonth(): boolean {
         return this.from.monthSame(this.to);
     }
 
-    monthSame(another: TuiMonthRange): boolean {
+    public monthSame(another: TuiMonthRange): boolean {
         return this.from.monthSame(another.from) && this.to.monthSame(another.to);
     }
 
-    toString(): string {
+    public toString(): string {
         return `${this.from}${RANGE_SEPARATOR_CHAR}${this.to}`;
     }
 }

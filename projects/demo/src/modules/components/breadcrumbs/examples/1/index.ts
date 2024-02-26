@@ -9,7 +9,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiBreadcrumbsExample1 {
-    items = [
+    protected items = [
         {
             caption: 'Selects',
             routerLink: '/components/select',

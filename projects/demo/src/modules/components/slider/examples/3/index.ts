@@ -11,10 +11,10 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiSliderExample3 {
-    readonly labels: number[] = [0, 250, 500, 750, 1000];
-    readonly formControl = new FormControl(250);
+    protected readonly labels: number[] = [0, 250, 500, 750, 1000];
+    protected readonly formControl = new FormControl(250);
 
-    patchValue(newValue: number): void {
+    protected patchValue(newValue: number): void {
         this.formControl.patchValue(newValue);
     }
 }

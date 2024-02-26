@@ -25,15 +25,15 @@ describe('Textfield', () => {
     })
     class TestComponent {
         @ViewChild('auto', {read: ElementRef})
-        readonly auto!: ElementRef<HTMLElement>;
+        protected readonly auto!: ElementRef<HTMLElement>;
 
         @ViewChild('attr', {read: ElementRef})
-        readonly attr!: ElementRef<HTMLElement>;
+        protected readonly attr!: ElementRef<HTMLElement>;
 
         @ViewChild('bind', {read: ElementRef})
-        readonly bind!: ElementRef<HTMLElement>;
+        protected readonly bind!: ElementRef<HTMLElement>;
 
-        value = 'bind';
+        protected value = 'bind';
     }
 
     let fixture: ComponentFixture<TestComponent>;

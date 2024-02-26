@@ -19,17 +19,17 @@ export const TUI_SHEET_ID = 'tui-sheet-id';
 })
 export class TuiSheetHeadingComponent implements AfterViewInit {
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
-    readonly closeWord$ = inject(TUI_CLOSE_WORD);
-    readonly icons = inject(TUI_COMMON_ICONS);
-    readonly id = inject(TuiIdService).generate();
+    protected readonly closeWord$ = inject(TUI_CLOSE_WORD);
+    protected readonly icons = inject(TUI_COMMON_ICONS);
+    protected readonly id = inject(TuiIdService).generate();
 
-    ngAfterViewInit(): void {
+    public ngAfterViewInit(): void {
         this.el.dispatchEvent(
             new CustomEvent(TUI_SHEET_ID, {bubbles: true, detail: this.id}),
         );
     }
 
-    onClick(): void {
+    protected onClick(): void {
         this.el.dispatchEvent(new CustomEvent(TUI_SHEET_CLOSE, {bubbles: true}));
     }
 }

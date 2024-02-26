@@ -12,7 +12,7 @@ import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 export class SearchDialogExampleComponent {
     private readonly context = inject<TuiDialogContext<boolean>>(POLYMORPHEUS_CONTEXT);
 
-    close(): void {
+    protected close(): void {
         this.context.completeWith(false);
     }
 }

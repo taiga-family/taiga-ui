@@ -22,27 +22,26 @@ export class TuiNotificationComponent {
     protected readonly options = inject(TUI_NOTIFICATION_OPTIONS);
 
     @Input()
-    icon = this.options.icon;
+    public icon = this.options.icon;
 
     @Input()
     @HostBinding('attr.data-status')
-    status = this.options.status;
+    public status = this.options.status;
 
     @Input()
     @HostBinding('attr.data-size')
-    size = this.options.size;
+    public size = this.options.size;
 
     @Input()
-    hideClose = false;
+    public hideClose = false;
 
     @Output()
-    // eslint-disable-next-line @angular-eslint/no-output-native
-    readonly close = new EventEmitter<void>();
+    public readonly close = new EventEmitter<void>();
 
-    readonly closeWord$ = inject(TUI_CLOSE_WORD);
-    readonly icons = inject(TUI_COMMON_ICONS);
+    protected readonly closeWord$ = inject(TUI_CLOSE_WORD);
+    protected readonly icons = inject(TUI_COMMON_ICONS);
 
-    get hasClose(): boolean {
+    protected get hasClose(): boolean {
         return !this.hideClose && tuiIsObserved(this.close);
     }
 }

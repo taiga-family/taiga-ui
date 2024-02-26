@@ -15,7 +15,7 @@ export class TuiLabelDirective {
     private readonly textfield = inject(TuiTextfieldComponent, {optional: true});
 
     @HostBinding('attr.for')
-    get for(): string | undefined {
+    protected get for(): string | undefined {
         return this.el.htmlFor || this.textfield?.id;
     }
 }

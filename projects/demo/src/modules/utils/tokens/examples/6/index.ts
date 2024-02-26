@@ -10,5 +10,5 @@ import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
     changeDetection,
 })
 export class TuiTokensExample6 {
-    readonly isMobile = inject(TUI_IS_MOBILE);
+    protected readonly isMobile = inject(TUI_IS_MOBILE);
 }

@@ -11,11 +11,11 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiDropdownContextExample3 {
-    testForm = new FormGroup({
+    protected testForm = new FormGroup({
         reportText: new FormControl('Misspell HERE!'),
     });
 
-    report(): void {
+    protected report(): void {
         console.info(this.testForm.value);
     }
 }

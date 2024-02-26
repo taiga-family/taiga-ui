@@ -16,7 +16,7 @@ export class TuiPdfViewerExample3 {
     private readonly sanitizer = inject(DomSanitizer);
     private readonly pdf = 'assets/media/taiga.pdf';
 
-    open = false;
+    protected open = false;
 
     /**
      * @description:
@@ -24,7 +24,7 @@ export class TuiPdfViewerExample3 {
      * so you can use third-party services
      * or your own service to render PDF in mobile iframe
      */
-    readonly src = this.sanitizer.bypassSecurityTrustResourceUrl(
+    protected readonly src = this.sanitizer.bypassSecurityTrustResourceUrl(
         this.isMobile
             ? `https://drive.google.com/viewerng/viewer?embedded=true&url=https://taiga-ui.dev/${this.pdf}`
             : this.pdf,

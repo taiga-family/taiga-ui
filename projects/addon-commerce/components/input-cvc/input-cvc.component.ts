@@ -46,49 +46,49 @@ export class TuiInputCVCComponent
     private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
 
     @Input()
-    autocompleteEnabled = false;
+    public autocompleteEnabled = false;
 
     @Input()
-    set length(length: TuiCodeCVCLength) {
+    public set length(length: TuiCodeCVCLength) {
         this.exampleText = '0'.repeat(length);
         this.maskOptions = {
             mask: new Array(length).fill(TUI_DIGIT_REGEXP),
         };
     }
 
-    exampleText = '000';
+    protected exampleText = '000';
 
-    maskOptions: MaskitoOptions = {
+    protected maskOptions: MaskitoOptions = {
         mask: new Array(3).fill(TUI_DIGIT_REGEXP),
     };
 
     @HostBinding('attr.data-size')
-    get size(): TuiSizeL | TuiSizeS {
+    protected get size(): TuiSizeL | TuiSizeS {
         return this.textfieldSize.size;
     }
 
-    get nativeFocusableElement(): TuiNativeFocusableElement | null {
+    public get nativeFocusableElement(): TuiNativeFocusableElement | null {
         return this.input?.nativeFocusableElement ?? null;
     }
 
-    get focused(): boolean {
+    public get focused(): boolean {
         return !!this.input && this.input.focused;
     }
 
-    get autocomplete(): TuiAutofillFieldName {
+    protected get autocomplete(): TuiAutofillFieldName {
         return this.autocompleteEnabled ? 'cc-csc' : 'off';
     }
 
-    get computedPlaceholder(): string {
+    protected get computedPlaceholder(): string {
         return this.textfieldLabelOutside.labelOutside ? '' : this.exampleText;
     }
 
-    onFocused(focused: boolean): void {
+    protected onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
 
     /** deprecated use 'value' setter */
-    onValueChange(value: string): void {
+    protected onValueChange(value: string): void {
         this.value = value;
     }
 

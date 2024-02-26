@@ -24,7 +24,7 @@ export class TuiPdfViewerExample1 {
      * so you can use third-party services
      * or your own service to render PDF in mobile iframe
      */
-    show(actions: PolymorpheusContent<TuiPdfViewerOptions>): void {
+    protected show(actions: PolymorpheusContent<TuiPdfViewerOptions>): void {
         this.pdfService
             .open(
                 this.sanitizer.bypassSecurityTrustResourceUrl(

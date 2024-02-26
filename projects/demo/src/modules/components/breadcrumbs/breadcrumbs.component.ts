@@ -9,20 +9,20 @@ import {TuiSizeL} from '@taiga-ui/core';
     changeDetection,
 })
 export class ExampleTuiBreadcrumbsComponent {
-    readonly exampleModule = import('./examples/import/import-module.md?raw');
-    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
+    protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
     };
 
-    readonly example2: TuiDocExample = {
+    protected readonly example2: TuiDocExample = {
         TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
     };
 
-    readonly itemsVariants = [
+    protected readonly itemsVariants = [
         [
             {
                 caption: 'Select',
@@ -43,9 +43,9 @@ export class ExampleTuiBreadcrumbsComponent {
         ],
     ];
 
-    items = this.itemsVariants[0];
+    protected items = this.itemsVariants[0];
 
-    readonly sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
+    protected readonly sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
 
-    size: TuiSizeL = this.sizeVariants[0];
+    protected size: TuiSizeL = this.sizeVariants[0];
 }

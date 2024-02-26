@@ -5,7 +5,7 @@ import {TuiPrimitiveYearMonthPaginationHarness} from './primitive-year-month-pag
 import {TuiPrimitiveYearPickerHarness} from './primitive-year-picker.harness';
 
 export class TuiCalendarHarness extends TuiComponentHarness {
-    static hostSelector = 'tui-calendar';
+    protected static hostSelector = 'tui-calendar';
 
     private readonly getPrimitiveYearPickerHarness = this.locatorForOptional(
         TuiPrimitiveYearPickerHarness,
@@ -19,59 +19,59 @@ export class TuiCalendarHarness extends TuiComponentHarness {
         TuiPrimitiveCalendarHarness,
     );
 
-    async yearPickerShown(): Promise<boolean> {
+    protected async yearPickerShown(): Promise<boolean> {
         return !!(await this.getPrimitiveYearPickerHarness());
     }
 
-    async yearMonthPaginationShown(): Promise<boolean> {
+    protected async yearMonthPaginationShown(): Promise<boolean> {
         return !!(await this.getPrimitiveYearMonthPaginationHarness());
     }
 
-    async primitiveCalendarShown(): Promise<boolean> {
+    protected async primitiveCalendarShown(): Promise<boolean> {
         return !!(await this.getPrimitiveCalendarHarness());
     }
 
-    async isPaginationLeftDisabled(): Promise<boolean> {
+    protected async isPaginationLeftDisabled(): Promise<boolean> {
         return (
             (await this.getPrimitiveYearMonthPaginationHarness())?.isLeftDisabled() ??
             false
         );
     }
 
-    async isPaginationRightDisabled(): Promise<boolean> {
+    protected async isPaginationRightDisabled(): Promise<boolean> {
         return (
             (await this.getPrimitiveYearMonthPaginationHarness())?.isRightDisabled() ??
             false
         );
     }
 
-    async clickMonthLeft(): Promise<void> {
+    protected async clickMonthLeft(): Promise<void> {
         return (await this.getPrimitiveYearMonthPaginationHarness())?.clickLeft();
     }
 
-    async getContentText(): Promise<string> {
+    protected async getContentText(): Promise<string> {
         return (
             (await this.getPrimitiveYearMonthPaginationHarness())?.getContentText() ?? ''
         );
     }
 
-    async clickMonthRight(): Promise<void> {
+    protected async clickMonthRight(): Promise<void> {
         return (await this.getPrimitiveYearMonthPaginationHarness())?.clickRight();
     }
 
-    async clickPaginationYear(): Promise<void> {
+    protected async clickPaginationYear(): Promise<void> {
         return (await this.getPrimitiveYearMonthPaginationHarness())?.clickYear();
     }
 
-    async clickPickerYear(year: string): Promise<void> {
+    protected async clickPickerYear(year: string): Promise<void> {
         return (await this.getPrimitiveYearPickerHarness())?.clickYear(year);
     }
 
-    async clickDay(day: number): Promise<void> {
+    protected async clickDay(day: number): Promise<void> {
         return (await this.getPrimitiveCalendarHarness())?.clickDay(day);
     }
 
-    async hoverDay(day: number): Promise<void> {
+    protected async hoverDay(day: number): Promise<void> {
         return (await this.getPrimitiveCalendarHarness())?.hoverDay(day);
     }
 }

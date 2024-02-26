@@ -13,10 +13,11 @@ import {
 })
 export class TuiThemeNightService extends BehaviorSubject<boolean> {
     constructor(
-        @Inject(WINDOW) readonly win: Window,
-        @Inject(LOCAL_STORAGE) readonly storage: Storage,
-        @Inject(TUI_THEME_NIGHT_STORAGE_KEY) readonly key: string,
-        @Inject(TUI_USE_DEFAULT_NIGHT_THEME) readonly useDefaultNightTheme: boolean,
+        @Inject(WINDOW) public readonly win: Window,
+        @Inject(LOCAL_STORAGE) public readonly storage: Storage,
+        @Inject(TUI_THEME_NIGHT_STORAGE_KEY) public readonly key: string,
+        @Inject(TUI_USE_DEFAULT_NIGHT_THEME)
+        public readonly useDefaultNightTheme: boolean,
     ) {
         super(
             storage.getItem(key) === 'true' ||
@@ -25,12 +26,12 @@ export class TuiThemeNightService extends BehaviorSubject<boolean> {
         );
     }
 
-    override next(night: boolean): void {
+    public override next(night: boolean): void {
         this.storage.setItem(this.key, String(night));
         super.next(night);
     }
 
-    toggle(): void {
+    public toggle(): void {
         this.next(!this.value);
     }
 }

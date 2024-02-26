@@ -12,24 +12,24 @@ import {tuiCeil, tuiFloor, tuiRound} from '@taiga-ui/cdk';
     changeDetection,
 })
 export class TuiMathExample1 {
-    parametersForm = new FormGroup({
+    protected parametersForm = new FormGroup({
         value: new FormControl(1.005),
         precision: new FormControl(2),
     });
 
-    get rounded(): number {
+    protected get rounded(): number {
         const {value, precision} = this.parametersForm.value;
 
         return tuiRound(value ?? 1.005, precision ?? 2);
     }
 
-    get floored(): number {
+    protected get floored(): number {
         const {value, precision} = this.parametersForm.value;
 
         return tuiFloor(value ?? 1.005, precision ?? 2);
     }
 
-    get ceiled(): number {
+    protected get ceiled(): number {
         const {value, precision} = this.parametersForm.value;
 
         return tuiCeil(value ?? 1.005, precision ?? 2);

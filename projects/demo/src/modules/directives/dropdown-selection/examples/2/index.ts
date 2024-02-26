@@ -24,11 +24,11 @@ export class TuiDropdownSelectionExample2 {
     private readonly options: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
     @ViewChild(TuiDriver)
-    readonly driver?: Observable<boolean>;
+    protected readonly driver?: Observable<boolean>;
 
-    value = 'Type @ to see a dropdown';
+    protected value = 'Type @ to see a dropdown';
 
-    readonly items = [
+    protected readonly items = [
         {
             name: 'Alexander Inkin',
             avatar: assets`/images/avatar.jpg`,
@@ -41,10 +41,10 @@ export class TuiDropdownSelectionExample2 {
         },
     ];
 
-    predicate: TuiBooleanHandler<Range> = range =>
+    protected predicate: TuiBooleanHandler<Range> = range =>
         tuiGetWordRange(range).toString().startsWith('@');
 
-    onArrow(event: Event, which: 'first' | 'last'): void {
+    protected onArrow(event: Event, which: 'first' | 'last'): void {
         const item = this.options[which];
 
         if (!item) {
@@ -55,13 +55,13 @@ export class TuiDropdownSelectionExample2 {
         item.nativeElement.focus();
     }
 
-    filterItems(textarea: HTMLTextAreaElement): readonly User[] {
+    protected filterItems(textarea: HTMLTextAreaElement): readonly User[] {
         const search = this.getCurrentSearch(textarea).replace('@', '');
 
         return this.getFilteredItems(this.items, search);
     }
 
-    onClick(login: string, textarea: HTMLTextAreaElement): void {
+    protected onClick(login: string, textarea: HTMLTextAreaElement): void {
         const search = this.getCurrentSearch(textarea);
         const value = this.value.replace(search, login);
         const caret = value.indexOf(login) + login.length;

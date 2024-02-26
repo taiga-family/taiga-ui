@@ -50,15 +50,15 @@ export class TuiHintDescribeDirective extends TuiDriver implements OnChanges {
     );
 
     @Input()
-    tuiHintDescribe?: string | null = '';
+    public tuiHintDescribe?: string | null = '';
 
-    readonly type = 'hint';
+    public readonly type = 'hint';
 
     constructor() {
         super(subscriber => this.stream$.subscribe(subscriber));
     }
 
-    ngOnChanges(): void {
+    public ngOnChanges(): void {
         this.id$.next(this.tuiHintDescribe);
     }
 

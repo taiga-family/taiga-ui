@@ -17,5 +17,5 @@ export const TUI_TEXTFIELD_SIZE = tuiCreateTokenFromFactory(
 })
 export class TuiTextfieldSizeDirective extends AbstractTuiController {
     @Input('tuiTextfieldSize')
-    size: TuiSizeL | TuiSizeS = 'l';
+    public size: TuiSizeL | TuiSizeS = 'l';
 }

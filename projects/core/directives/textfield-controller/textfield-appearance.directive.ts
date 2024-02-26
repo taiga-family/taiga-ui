@@ -19,5 +19,5 @@ export class TuiTextfieldAppearanceDirective extends AbstractTuiController {
     // it's an empty string by default for backward compatibility
     // (see comment https://github.com/taiga-family/taiga-ui/pull/3007#issuecomment-1315179508)
     @Input('tuiTextfieldAppearance')
-    appearance = '';
+    public appearance = '';
 }

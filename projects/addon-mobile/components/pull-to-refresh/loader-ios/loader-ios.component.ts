@@ -17,25 +17,25 @@ export class TuiMobileLoaderIOSComponent {
     private readonly context = inject<TuiContext<number>>(POLYMORPHEUS_CONTEXT);
     private readonly threshold = inject(TUI_PULL_TO_REFRESH_THRESHOLD);
 
-    readonly steps = 12;
+    protected readonly steps = 12;
 
-    get finished(): boolean {
+    protected get finished(): boolean {
         return this.percent >= 100;
     }
 
-    get percent(): number {
+    protected get percent(): number {
         return (this.context.$implicit * 100) / this.threshold;
     }
 
-    isShown(index: number): boolean {
+    protected isShown(index: number): boolean {
         return this.percent > (index + 1) * LOADED_STEP;
     }
 
-    calculateTransform(index: number): string {
+    protected calculateTransform(index: number): string {
         return `rotate(${index * ROTATE_X_STEP} 50 50)`;
     }
 
-    calculateAnimationBegin(index: number): string {
+    protected calculateAnimationBegin(index: number): string {
         return `${(index * LOADED_STEP) / 100}s`;
     }
 }

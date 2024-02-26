@@ -10,5 +10,5 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiTextfieldExample2 {
-    value = 'Test';
+    protected value = 'Test';
 }

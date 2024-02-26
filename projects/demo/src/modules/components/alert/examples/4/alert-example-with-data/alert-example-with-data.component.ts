@@ -14,17 +14,17 @@ export class AlertExampleWithDataComponent {
     private readonly context =
         inject<TuiPopover<TuiAlertOptions<number>, number>>(POLYMORPHEUS_CONTEXT);
 
-    value: number;
+    protected value: number;
 
     constructor() {
         this.value = this.context.data;
     }
 
-    increaseBalance(): void {
+    protected increaseBalance(): void {
         this.value += 10;
     }
 
-    submit(): void {
+    protected submit(): void {
         this.context.completeWith(this.value);
     }
 }

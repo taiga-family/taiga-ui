@@ -11,7 +11,7 @@ import {tuiArrayRemove} from '@taiga-ui/cdk';
     changeDetection,
 })
 export class TuiElasticContainerExample4 {
-    items = [
+    protected items = [
         {
             expanded: false,
             value: 'Test 1',
@@ -22,11 +22,11 @@ export class TuiElasticContainerExample4 {
         },
     ];
 
-    add(): void {
+    protected add(): void {
         this.items = this.items.concat({expanded: false, value: 'New value'});
     }
 
-    remove(index: number): void {
+    protected remove(index: number): void {
         this.items = tuiArrayRemove(this.items, index);
     }
 }

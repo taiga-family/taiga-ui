@@ -21,13 +21,13 @@ export class TuiPushDirective extends TuiModeDirective implements TuiButtonOptio
         skipSelf: true,
     });
 
-    size: TuiButtonOptions['size'] = 's';
+    public size: TuiButtonOptions['size'] = 's';
 
-    shape = null;
+    public shape = null;
 
-    override readonly change$ = this.modeDirective?.change$ || new Subject();
+    public override readonly change$ = this.modeDirective?.change$ || new Subject();
 
-    get appearance(): string {
+    public get appearance(): string {
         return this.modeDirective?.mode === 'onDark' ? 'accent' : 'secondary';
     }
 }

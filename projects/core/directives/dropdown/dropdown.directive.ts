@@ -62,24 +62,26 @@ export class TuiDropdownDirective
     private readonly cdr = inject(ChangeDetectorRef);
 
     @Input()
-    set tuiDropdown(content: PolymorpheusContent<TuiContext<TuiActiveZoneDirective>>) {
+    public set tuiDropdown(
+        content: PolymorpheusContent<TuiContext<TuiActiveZoneDirective>>,
+    ) {
         this.content =
             content instanceof TemplateRef
                 ? new PolymorpheusTemplate(content, this.cdr)
                 : content;
     }
 
-    readonly el: HTMLElement = inject(ElementRef).nativeElement;
-    readonly type = 'dropdown';
-    readonly component = new PolymorpheusComponent(
+    public readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    public readonly type = 'dropdown';
+    public readonly component = new PolymorpheusComponent(
         inject(TUI_DROPDOWN_COMPONENT),
         inject(INJECTOR),
     );
 
-    dropdownBoxRef: ComponentRef<unknown> | null = null;
-    content: PolymorpheusContent<TuiContext<TuiActiveZoneDirective>>;
+    public dropdownBoxRef: ComponentRef<unknown> | null = null;
+    public content: PolymorpheusContent<TuiContext<TuiActiveZoneDirective>>;
 
-    readonly sub = this.refresh$
+    protected readonly sub = this.refresh$
         .pipe(throttleTime(0), takeUntil(inject(TuiDestroyService, {self: true})))
         .subscribe(() => {
             this.dropdownBoxRef?.changeDetectorRef.detectChanges();
@@ -87,29 +89,29 @@ export class TuiDropdownDirective
         });
 
     @tuiPure
-    get position(): 'absolute' | 'fixed' {
+    public get position(): 'absolute' | 'fixed' {
         return tuiCheckFixedPosition(this.el) ? 'fixed' : 'absolute';
     }
 
-    ngAfterViewChecked(): void {
+    public ngAfterViewChecked(): void {
         this.refresh$.next();
     }
 
-    ngOnChanges(): void {
+    public ngOnChanges(): void {
         if (!this.content) {
             this.toggle(false);
         }
     }
 
-    ngOnDestroy(): void {
+    public ngOnDestroy(): void {
         this.toggle(false);
     }
 
-    getClientRect(): DOMRect {
+    public getClientRect(): DOMRect {
         return this.el.getBoundingClientRect();
     }
 
-    toggle(show: boolean): void {
+    public toggle(show: boolean): void {
         if (show && this.content && !this.dropdownBoxRef) {
             this.dropdownBoxRef = this.service.add(this.component);
         } else if (!show && this.dropdownBoxRef) {

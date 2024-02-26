@@ -20,47 +20,49 @@ const BRAND_LOGOS = [
     changeDetection,
 })
 export class ExampleTuiThumbnailCardComponent {
-    readonly exampleModule = import('./examples/import/import-module.md?raw');
-    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
-    readonly exampleCustomizeStyles = import('./examples/import/customize-styles.md?raw');
+    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
+    protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    protected readonly exampleCustomizeStyles = import(
+        './examples/import/customize-styles.md?raw'
+    );
 
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
         LESS: import('./examples/1/index.less?raw'),
     };
 
-    readonly example2: TuiDocExample = {
+    protected readonly example2: TuiDocExample = {
         TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
         LESS: import('./examples/2/index.less?raw'),
     };
 
-    readonly example3: TuiDocExample = {
+    protected readonly example3: TuiDocExample = {
         TypeScript: import('./examples/3/index.ts?raw'),
         HTML: import('./examples/3/index.html?raw'),
         LESS: import('./examples/3/index.less?raw'),
     };
 
-    readonly example4: TuiDocExample = {
+    protected readonly example4: TuiDocExample = {
         HTML: import('./examples/4/index.html?raw'),
         LESS: import('./examples/4/index.less?raw'),
     };
 
-    paymentSystemVariants: readonly TuiPaymentSystem[] = [
+    protected paymentSystemVariants: readonly TuiPaymentSystem[] = [
         'visa',
         'maestro',
         'mastercard',
         'mir',
     ];
 
-    brandLogoVariants = ['', ...BRAND_LOGOS];
+    protected brandLogoVariants = ['', ...BRAND_LOGOS];
 
-    sizeVariants: readonly TuiSizeS[] = ['s', 'm'];
+    protected sizeVariants: readonly TuiSizeS[] = ['s', 'm'];
 
-    active = false;
-    brandLogo = this.brandLogoVariants[0];
-    cardNumber = '9999';
-    paymentSystem: TuiPaymentSystem | null = null;
-    size: TuiSizeS = 'm';
+    protected active = false;
+    protected brandLogo = this.brandLogoVariants[0];
+    protected cardNumber = '9999';
+    protected paymentSystem: TuiPaymentSystem | null = null;
+    protected size: TuiSizeS = 'm';
 }

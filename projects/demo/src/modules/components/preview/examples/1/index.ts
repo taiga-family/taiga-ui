@@ -18,39 +18,39 @@ export class TuiPreviewExample1 {
     private readonly alerts = inject(TuiAlertService);
 
     @ViewChild('preview')
-    readonly preview?: TemplateRef<TuiDialogContext>;
+    protected readonly preview?: TemplateRef<TuiDialogContext>;
 
     @ViewChild('contentSample')
-    readonly contentSample?: TemplateRef<Record<string, unknown>>;
+    protected readonly contentSample?: TemplateRef<Record<string, unknown>>;
 
-    index = 0;
-    length = 2;
+    protected index = 0;
+    protected length = 2;
 
-    get title(): string {
+    protected get title(): string {
         return this.index === 0 ? 'Transaction cert.jpg' : 'My face.jpg';
     }
 
-    get previewContent(): PolymorpheusContent {
+    protected get previewContent(): PolymorpheusContent {
         return this.index === 0 && this.contentSample
             ? this.contentSample
             : 'https://avatars.githubusercontent.com/u/10106368';
     }
 
-    show(): void {
+    protected show(): void {
         this.previewService.open(this.preview || '').subscribe({
             complete: () => console.info('complete'),
         });
     }
 
-    download(): void {
+    protected download(): void {
         this.alerts.open('Downloading...').subscribe();
     }
 
-    delete(): void {
+    protected delete(): void {
         this.alerts.open('Deleting...').subscribe();
     }
 
-    onSwipe(swipe: TuiSwipe): void {
+    protected onSwipe(swipe: TuiSwipe): void {
         if (swipe.direction === 'left') {
             this.index = tuiClamp(this.index + 1, 0, this.length - 1);
         }

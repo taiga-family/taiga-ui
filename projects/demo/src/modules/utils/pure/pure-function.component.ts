@@ -8,16 +8,16 @@ import {tuiPure} from '@taiga-ui/cdk';
     changeDetection,
 })
 export class ExampleTuiPureFunctionComponent {
-    text = '';
+    protected text = '';
 
-    show = false;
+    protected show = false;
 
-    counter = {
+    protected counter = {
         count: 0,
     };
 
     @tuiPure
-    calculate(counter: {count: number}, text: string): {text: string} {
+    protected calculate(counter: {count: number}, text: string): {text: string} {
         counter.count++;
 
         return {

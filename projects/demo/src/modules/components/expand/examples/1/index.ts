@@ -9,11 +9,11 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiExpandExample1 {
-    expanded = false;
+    protected expanded = false;
 
-    subpages = ['page1', 'page2', 'page3'];
+    protected subpages = ['page1', 'page2', 'page3'];
 
-    toggle(): void {
+    protected toggle(): void {
         this.expanded = !this.expanded;
     }
 }

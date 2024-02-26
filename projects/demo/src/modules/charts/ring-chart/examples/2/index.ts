@@ -12,16 +12,16 @@ import {tuiSum} from '@taiga-ui/cdk';
 })
 export class TuiRingChartExample2 {
     private readonly labels = ['Food', 'Cafe', 'Open Source', 'Taxi', 'other'];
-    readonly value = [13769, 12367, 10172, 3018, 2592];
-    readonly total = tuiSum(...this.value);
+    protected readonly value = [13769, 12367, 10172, 3018, 2592];
+    protected readonly total = tuiSum(...this.value);
 
-    index = NaN;
+    protected index = NaN;
 
-    get sum(): number {
+    protected get sum(): number {
         return Number.isNaN(this.index) ? this.total : this.value[this.index];
     }
 
-    get label(): string {
+    protected get label(): string {
         return Number.isNaN(this.index) ? 'Total' : this.labels[this.index];
     }
 }

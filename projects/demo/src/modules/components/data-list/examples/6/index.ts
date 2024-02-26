@@ -18,11 +18,11 @@ import {TUI_ARROW} from '@taiga-ui/kit';
     changeDetection,
 })
 export class TuiDataListExample6 {
-    open = false;
+    protected open = false;
 
-    readonly arrow = TUI_ARROW;
+    protected readonly arrow = TUI_ARROW;
 
-    readonly groups = [
+    protected readonly groups = [
         {
             label: 'Advantages of Taiga UI',
             items: [
@@ -40,5 +40,5 @@ export class TuiDataListExample6 {
         },
     ];
 
-    readonly isMobile = inject(TUI_IS_MOBILE);
+    protected readonly isMobile = inject(TUI_IS_MOBILE);
 }

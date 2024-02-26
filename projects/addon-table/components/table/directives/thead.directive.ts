@@ -21,5 +21,5 @@ import {TUI_STUCK, TUI_STUCK_PROVIDER} from '../providers/stuck.provider';
     },
 })
 export class TuiTheadDirective {
-    readonly stuck$ = inject(TUI_STUCK);
+    protected readonly stuck$ = inject(TUI_STUCK);
 }

@@ -21,5 +21,5 @@ export class TuiCellDirective {
     protected readonly nothing = tuiWithStyles(TuiCellComponent);
 
     @Input('tuiCell')
-    size: TuiSizeL | TuiSizeS | '' = 'l';
+    public size: TuiSizeL | TuiSizeS | '' = 'l';
 }

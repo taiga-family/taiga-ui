@@ -11,14 +11,14 @@ import {SECONDS_IN_MINUTE} from '@taiga-ui/cdk';
     changeDetection,
 })
 export class TuiMediaExample2 {
-    currentTime = 0;
-    paused = true;
+    protected currentTime = 0;
+    protected paused = true;
 
-    get icon(): string {
+    protected get icon(): string {
         return this.paused ? 'tuiIconPlayLarge' : 'tuiIconPauseLarge';
     }
 
-    getTime(time: number): string {
+    protected getTime(time: number): string {
         const integer = Math.round(time || 0);
         const seconds = integer % SECONDS_IN_MINUTE;
         const minutes = (integer - seconds) / SECONDS_IN_MINUTE;
@@ -32,7 +32,7 @@ export class TuiMediaExample2 {
         return `${paddedMinutes}:${paddedSeconds}`;
     }
 
-    toggleState(): void {
+    protected toggleState(): void {
         this.paused = !this.paused;
     }
 }

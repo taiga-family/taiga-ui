@@ -10,6 +10,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiSwipeActionExample4 {
-    shareButton = false;
-    editButton = true;
+    protected shareButton = false;
+    protected editButton = true;
 }

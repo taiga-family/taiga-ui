@@ -12,13 +12,19 @@ import {tuiInputNumberOptionsProvider} from '@taiga-ui/kit';
     providers: [tuiInputNumberOptionsProvider({min: 0})],
 })
 export class ExampleProgressCircleComponent {
-    value = 6;
-    max = 10;
+    protected value = 6;
+    protected max = 10;
 
-    readonly sizeVariants: ReadonlyArray<TuiSizeS | TuiSizeXL> = ['s', 'm', 'l', 'xl'];
-    size: TuiSizeS | TuiSizeXL = this.sizeVariants[1];
+    protected readonly sizeVariants: ReadonlyArray<TuiSizeS | TuiSizeXL> = [
+        's',
+        'm',
+        'l',
+        'xl',
+    ];
 
-    readonly colorVariants: readonly string[] = [
+    protected size: TuiSizeS | TuiSizeXL = this.sizeVariants[1];
+
+    protected readonly colorVariants: readonly string[] = [
         'var(--tui-primary)',
         'lightskyblue',
         '#3682db',
@@ -26,49 +32,49 @@ export class ExampleProgressCircleComponent {
         'url(#gradient)',
     ];
 
-    color = this.colorVariants[0];
+    protected color = this.colorVariants[0];
 
-    readonly basicExample: TuiDocExample = {
+    protected readonly basicExample: TuiDocExample = {
         HTML: import('./examples/1/index.html?raw'),
         TypeScript: import('./examples/1/index.ts?raw'),
     };
 
-    readonly sizesExample: TuiDocExample = {
+    protected readonly sizesExample: TuiDocExample = {
         HTML: import('./examples/2/index.html?raw'),
         LESS: import('./examples/2/index.less?raw'),
         TypeScript: import('./examples/2/index.ts?raw'),
     };
 
-    readonly labelExample: TuiDocExample = {
+    protected readonly labelExample: TuiDocExample = {
         HTML: import('./examples/3/index.html?raw'),
         LESS: import('./examples/3/index.less?raw'),
         TypeScript: import('./examples/3/index.ts?raw'),
     };
 
-    readonly colorsExample: TuiDocExample = {
+    protected readonly colorsExample: TuiDocExample = {
         HTML: import('./examples/4/index.html?raw'),
         LESS: import('./examples/4/index.less?raw'),
         TypeScript: import('./examples/4/index.ts?raw'),
     };
 
-    readonly dynamicColorExample: TuiDocExample = {
+    protected readonly dynamicColorExample: TuiDocExample = {
         HTML: import('./examples/5/index.html?raw'),
         LESS: import('./examples/5/index.less?raw'),
         TypeScript: import('./examples/5/index.ts?raw'),
     };
 
-    readonly reversedDirectionExample: TuiDocExample = {
+    protected readonly reversedDirectionExample: TuiDocExample = {
         HTML: import('./examples/6/index.html?raw'),
         LESS: import('./examples/6/index.less?raw'),
         TypeScript: import('./examples/6/index.ts?raw'),
     };
 
-    readonly thicknessExample: TuiDocExample = {
+    protected readonly thicknessExample: TuiDocExample = {
         HTML: import('./examples/7/index.html?raw'),
         LESS: import('./examples/7/index.less?raw'),
         TypeScript: import('./examples/7/index.ts?raw'),
     };
 
-    readonly exampleModule = import('./examples/import/import-module.md?raw');
-    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
+    protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 }

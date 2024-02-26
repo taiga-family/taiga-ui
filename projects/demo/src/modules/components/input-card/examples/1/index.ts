@@ -10,13 +10,13 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiInputCardExample1 {
-    readonly form = new FormGroup({
+    protected readonly form = new FormGroup({
         card: new FormControl(''),
         expire: new FormControl(''),
         cvc: new FormControl(''),
     });
 
-    get card(): string | null {
+    protected get card(): string | null {
         const value: string | null | undefined = this.form.get('card')?.value;
 
         if ((value?.length ?? 0) < 7) {

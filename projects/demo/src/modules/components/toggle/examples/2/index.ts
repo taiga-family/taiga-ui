@@ -24,7 +24,7 @@ import {tuiToggleOptionsProvider} from '@taiga-ui/kit';
     ],
 })
 export class TuiToggleExample2 {
-    testForm = new FormGroup({
+    protected testForm = new FormGroup({
         testValue1: new FormControl(true),
         testValue2: new FormControl(false),
     });

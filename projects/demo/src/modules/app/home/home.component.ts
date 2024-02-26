@@ -26,31 +26,40 @@ import {TuiAccordionModule, TuiTabsModule} from '@taiga-ui/kit';
     changeDetection,
 })
 export class HomeComponent {
-    readonly angularJsonStyles = import('./examples/angular-json-styles.md?raw');
-    readonly projectJsonStyles = import('./examples/project-json-styles.md?raw');
-    readonly angularJsonGlobalSingleStyles = import(
+    protected readonly angularJsonStyles = import(
+        './examples/angular-json-styles.md?raw'
+    );
+
+    protected readonly projectJsonStyles = import(
+        './examples/project-json-styles.md?raw'
+    );
+
+    protected readonly angularJsonGlobalSingleStyles = import(
         './examples/angular-json-global-single-styles.md?raw'
     );
 
-    readonly stylesLess = import('./examples/styles.less.md?raw');
-    readonly appModule = import('./examples/app-module.md?raw');
-    readonly appTemplate = import('./examples/app-template.md?raw');
-    readonly appModuleOptional = import('./examples/app-module-optional.md?raw');
-    readonly assets = import('./examples/assets.md?raw');
-    readonly nxAssets = import('./examples/nx-assets.md?raw');
-    readonly componentsStyles = import('./examples/components-styles.md?raw');
-    readonly importLocalLess = import('./examples/import-local-less.md?raw');
-    readonly main = import('./examples/main.md?raw');
-    readonly addons = import('./examples/addons.md?raw');
-    readonly nxAdd = import('./examples/nx-add.md?raw');
-    readonly nxMigrate = import('./examples/nx-migrate.md?raw');
-    readonly standalone = import('./examples/app-standalone.md?raw');
-    readonly standaloneMain = import('./examples/main-standalone.md?raw');
-    readonly standaloneMainOptional = import(
+    protected readonly stylesLess = import('./examples/styles.less.md?raw');
+    protected readonly appModule = import('./examples/app-module.md?raw');
+    protected readonly appTemplate = import('./examples/app-template.md?raw');
+    protected readonly appModuleOptional = import(
+        './examples/app-module-optional.md?raw'
+    );
+
+    protected readonly assets = import('./examples/assets.md?raw');
+    protected readonly nxAssets = import('./examples/nx-assets.md?raw');
+    protected readonly componentsStyles = import('./examples/components-styles.md?raw');
+    protected readonly importLocalLess = import('./examples/import-local-less.md?raw');
+    protected readonly main = import('./examples/main.md?raw');
+    protected readonly addons = import('./examples/addons.md?raw');
+    protected readonly nxAdd = import('./examples/nx-add.md?raw');
+    protected readonly nxMigrate = import('./examples/nx-migrate.md?raw');
+    protected readonly standalone = import('./examples/app-standalone.md?raw');
+    protected readonly standaloneMain = import('./examples/main-standalone.md?raw');
+    protected readonly standaloneMainOptional = import(
         './examples/main-standalone-optional.md?raw'
     );
 
-    readonly customGlobalStyle = import(
+    protected readonly customGlobalStyle = import(
         '../../../../../styles/taiga-ui-global.less?raw'
     ).then(({default: content}) => ({
         default: content

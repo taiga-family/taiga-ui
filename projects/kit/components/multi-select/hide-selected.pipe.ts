@@ -11,11 +11,11 @@ import {TuiMultiSelectComponent} from './multi-select.component';
 export class TuiHideSelectedPipe implements PipeTransform {
     private readonly component = inject(TuiMultiSelectComponent);
 
-    transform<T>(items: readonly T[] | null): readonly T[] | null;
-    transform<T>(
+    public transform<T>(items: readonly T[] | null): readonly T[] | null;
+    public transform<T>(
         items: ReadonlyArray<readonly T[]> | null,
     ): ReadonlyArray<readonly T[]> | null;
-    transform<T>(
+    public transform<T>(
         items: ReadonlyArray<readonly T[]> | readonly T[] | null,
     ): ReadonlyArray<readonly T[]> | readonly T[] | null {
         const {value, identityMatcher} = this.component;

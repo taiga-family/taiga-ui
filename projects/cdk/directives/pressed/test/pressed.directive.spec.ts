@@ -23,7 +23,7 @@ describe('TuiPressed directive', () => {
         `,
     })
     class TestComponent {
-        pressed = false;
+        protected pressed = false;
     }
 
     let fixture: ComponentFixture<TestComponent>;

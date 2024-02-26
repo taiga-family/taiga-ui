@@ -44,7 +44,7 @@ export function tuiHarnessWith<T>(
 }
 
 export class TuiComponentHarness extends ComponentHarness {
-    static with<T extends ComponentHarness>(
+    public static with<T extends ComponentHarness>(
         this: ComponentHarnessConstructor<T>,
         options: BaseHarnessFilters,
     ): HarnessPredicate<T> {
@@ -53,7 +53,7 @@ export class TuiComponentHarness extends ComponentHarness {
 }
 
 export class TuiContentContainerComponentHarness extends ContentContainerComponentHarness {
-    static with<T extends ComponentHarness>(
+    public static with<T extends ComponentHarness>(
         this: ComponentHarnessConstructor<T>,
         options: BaseHarnessFilters,
     ): HarnessPredicate<T> {

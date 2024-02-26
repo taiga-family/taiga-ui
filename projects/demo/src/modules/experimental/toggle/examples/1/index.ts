@@ -13,16 +13,22 @@ import {TuiSizeS} from '@taiga-ui/core';
     changeDetection,
 })
 export class TuiToggleExample1 implements OnInit {
-    readonly platforms: readonly TuiPlatform[] = ['web', 'web', 'android', 'ios'];
-    readonly invalidTrue = new FormControl(true, () => ({invalid: true}));
-    readonly invalidFalse = new FormControl(false, () => ({invalid: true}));
+    protected readonly platforms: readonly TuiPlatform[] = [
+        'web',
+        'web',
+        'android',
+        'ios',
+    ];
 
-    ngOnInit(): void {
+    protected readonly invalidTrue = new FormControl(true, () => ({invalid: true}));
+    protected readonly invalidFalse = new FormControl(false, () => ({invalid: true}));
+
+    public ngOnInit(): void {
         this.invalidTrue.markAsTouched();
         this.invalidFalse.markAsTouched();
     }
 
-    getSize(first: boolean): TuiSizeS {
+    protected getSize(first: boolean): TuiSizeS {
         return first ? 'm' : 's';
     }
 }

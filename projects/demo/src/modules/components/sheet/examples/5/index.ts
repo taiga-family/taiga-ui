@@ -13,18 +13,18 @@ const FRAMES = 166;
     changeDetection,
 })
 export class TuiSheetExample5 {
-    open = false;
+    protected open = false;
 
-    readonly options: Partial<TuiSheetOptions> = {
+    protected readonly options: Partial<TuiSheetOptions> = {
         overlay: true,
         stops: ['4.5rem'],
     };
 
-    toggle(): void {
+    protected toggle(): void {
         this.open = !this.open;
     }
 
-    getTransform(y: number | null): string {
+    protected getTransform(y: number | null): string {
         const frame = Math.round((y || 0) / 2);
         const looped = frame % FRAMES;
         const percent = (100 / FRAMES) * looped;

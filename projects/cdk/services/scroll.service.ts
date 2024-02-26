@@ -37,7 +37,7 @@ export class TuiScrollService {
     private readonly performanceRef = inject(PERFORMANCE);
     private readonly animationFrame$ = inject(ANIMATION_FRAME);
 
-    scroll$(
+    public scroll$(
         elementOrWindow: Element | Window,
         scrollTop: number,
         scrollLeft: number = getX(elementOrWindow),

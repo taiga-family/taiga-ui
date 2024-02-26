@@ -11,21 +11,21 @@ import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
     changeDetection,
 })
 export class ExampleTuiTextfieldControllerComponent {
-    readonly exampleModule = import('./examples/import/import-module.md?raw');
-    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
+    protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
     };
 
-    readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
+    protected readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
 
-    readonly inputModeVariants: readonly TuiInputMode[] = ['text', 'numeric'];
+    protected readonly inputModeVariants: readonly TuiInputMode[] = ['text', 'numeric'];
 
-    readonly maxLengthVariants: readonly number[] = [10];
+    protected readonly maxLengthVariants: readonly number[] = [10];
 
-    readonly typeVariants: readonly TuiInputType[] = [
+    protected readonly typeVariants: readonly TuiInputType[] = [
         'text',
         'email',
         'password',
@@ -33,18 +33,18 @@ export class ExampleTuiTextfieldControllerComponent {
         'url',
     ];
 
-    type: TuiInputType = this.typeVariants[0];
+    protected type: TuiInputType = this.typeVariants[0];
 
-    readonly customContentVariants = ['', 'Bell'];
+    protected readonly customContentVariants = ['', 'Bell'];
 
-    customContentSelected = this.customContentVariants[0];
+    protected customContentSelected = this.customContentVariants[0];
 
-    cleaner = false;
-    exampleText = '';
-    labelOutside = false;
-    size = this.sizeVariants[2];
-    inputMode = this.inputModeVariants[0];
-    maxLength: number | null = null;
+    protected cleaner = false;
+    protected exampleText = '';
+    protected labelOutside = false;
+    protected size = this.sizeVariants[2];
+    protected inputMode = this.inputModeVariants[0];
+    protected maxLength: number | null = null;
 
-    readonly control = new FormControl('111', Validators.required);
+    protected readonly control = new FormControl('111', Validators.required);
 }

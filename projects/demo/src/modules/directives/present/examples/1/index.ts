@@ -10,21 +10,21 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiPresentExample1 {
-    counterCSS = 0;
+    protected counterCSS = 0;
 
-    counterIf = 0;
+    protected counterIf = 0;
 
-    hovered = false;
+    protected hovered = false;
 
-    onHovered(hovered: boolean): void {
+    protected onHovered(hovered: boolean): void {
         this.hovered = hovered;
     }
 
-    onCSS(visible: boolean): void {
+    protected onCSS(visible: boolean): void {
         this.counterCSS += visible ? 1 : -1;
     }
 
-    onIf(visible: boolean): void {
+    protected onIf(visible: boolean): void {
         this.counterIf += visible ? 1 : -1;
     }
 }

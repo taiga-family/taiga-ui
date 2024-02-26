@@ -24,8 +24,8 @@ const DICTIONARY: Dictionary[] = [
     changeDetection,
 })
 export class TuiComboBoxExample8 {
-    readonly control = new FormControl(3);
-    readonly items = DICTIONARY.map(({id}) => id);
-    readonly stringify = (id: number): string =>
+    protected readonly control = new FormControl(3);
+    protected readonly items = DICTIONARY.map(({id}) => id);
+    protected readonly stringify = (id: number): string =>
         DICTIONARY.find(item => item.id === id)?.name || '';
 }

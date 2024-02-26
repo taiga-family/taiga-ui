@@ -14,11 +14,11 @@ import {appPrefix} from '../utils';
 export class StackblitzStarterComponent implements OnInit {
     private readonly stackblitz = inject(TuiStackblitzService);
 
-    async ngOnInit(): Promise<void> {
+    public async ngOnInit(): Promise<void> {
         await this.openStackblitz();
     }
 
-    async openStackblitz(): Promise<void> {
+    protected async openStackblitz(): Promise<void> {
         const [appTemplate, appComponent, indexHtml, stylesLess] = await Promise.all(
             [
                 import('./files/app.component.html.md?raw'),

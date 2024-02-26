@@ -52,29 +52,33 @@ export class TuiOptionComponent<T = unknown> implements OnDestroy {
     /** @deprecated use size on {@link TuiDataListComponent} instead */
     @Input()
     @HostBinding('attr.data-size')
-    size: TuiSizeL | TuiSizeXS | null = null;
+    public size: TuiSizeL | TuiSizeXS | null = null;
 
     @Input()
     @HostBinding('attr.role')
-    role: TuiOptionRole = 'option';
+    public role: TuiOptionRole = 'option';
 
     @Input()
-    disabled = false;
+    public disabled = false;
 
     @Input()
-    value?: T;
+    public value?: T;
 
-    readonly content = inject(TUI_OPTION_CONTENT, {optional: true});
-    readonly dropdown = inject(TuiDropdownDirective, {self: true, optional: true});
-    readonly icons = inject(TUI_COMMON_ICONS);
+    protected readonly content = inject(TUI_OPTION_CONTENT, {optional: true});
+    protected readonly dropdown = inject(TuiDropdownDirective, {
+        self: true,
+        optional: true,
+    });
+
+    protected readonly icons = inject(TUI_COMMON_ICONS);
 
     @HostBinding('class._with-dropdown')
-    get active(): boolean {
+    protected get active(): boolean {
         return !!this.dropdown && !!this.dropdown.dropdownBoxRef;
     }
 
     @HostListener('click')
-    onClick(): void {
+    protected onClick(): void {
         if (this.host && this.value !== undefined) {
             this.host.handleOption(this.value);
         }
@@ -83,12 +87,12 @@ export class TuiOptionComponent<T = unknown> implements OnDestroy {
     // @bad TODO: Consider aria-activedescendant for proper accessibility implementation
     @shouldCall(shouldFocus)
     @HostListener('mousemove.silent', ['$event'])
-    onMouseMove({currentTarget}: TuiEventWith<MouseEvent, HTMLElement>): void {
+    protected onMouseMove({currentTarget}: TuiEventWith<MouseEvent, HTMLElement>): void {
         currentTarget.focus({preventScroll: true});
     }
 
     // Preventing focus loss upon focused option removal
-    ngOnDestroy(): void {
+    public ngOnDestroy(): void {
         this.dataList?.handleFocusLossIfNecessary(this.el);
     }
 }

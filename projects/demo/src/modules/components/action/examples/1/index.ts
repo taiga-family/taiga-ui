@@ -13,7 +13,7 @@ import {TuiAlertService} from '@taiga-ui/core';
 export class TuiActionExample1 {
     private readonly alerts = inject(TuiAlertService);
 
-    onClick(result: string): void {
+    protected onClick(result: string): void {
         this.alerts.open(result).subscribe();
     }
 }

@@ -12,9 +12,12 @@ export class TuiFlagPipe implements PipeTransform {
         .replace('tuiIcon.svg#tuiIcon', '')
         .replace(`tuiIcon.svg${TUI_CACHE_BUSTING_PAYLOAD}#tuiIcon`, '');
 
-    transform(countryIsoCode: TuiCountryIsoCode | string): string;
-    transform(countryIsoCode?: TuiCountryIsoCode | string | null): string | null;
-    transform(countryIsoCode?: TuiCountryIsoCode | string | null): string | null {
+    public transform(countryIsoCode: TuiCountryIsoCode | string): string;
+    public transform(
+        countryIsoCode: TuiCountryIsoCode | string | undefined,
+    ): string | null;
+    public transform(countryIsoCode?: TuiCountryIsoCode | string | null): string | null;
+    public transform(countryIsoCode?: TuiCountryIsoCode | string | null): string | null {
         if (!countryIsoCode) {
             return null;
         }

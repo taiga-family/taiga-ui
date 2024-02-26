@@ -35,16 +35,16 @@ function tagValidator(tag: string): boolean {
     changeDetection,
 })
 export class TuiInputTagExample4 {
-    search = '';
+    protected search = '';
 
-    readonly tagValidator = tagValidator;
+    protected readonly tagValidator = tagValidator;
 
-    readonly control = new FormControl<string[]>(
+    protected readonly control = new FormControl<string[]>(
         [],
         createControlValidator(tagValidator),
     );
 
-    get filtered(): readonly string[] {
+    protected get filtered(): readonly string[] {
         return this.filterBy(this.search, this.control.value ?? []);
     }
 

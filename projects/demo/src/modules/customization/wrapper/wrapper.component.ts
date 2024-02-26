@@ -9,13 +9,13 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
     changeDetection,
 })
 export class WrapperComponent {
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         HTML: import('./examples/1/index.html?raw'),
         LESS: import('./examples/1/index.less?raw'),
         TypeScript: import('./examples/1/index.ts?raw'),
     };
 
-    readonly mixins = [
+    protected readonly mixins = [
         '.wrapper-hover(@ruleset)',
         '.wrapper-active(@ruleset)',
         '.wrapper-readonly(@ruleset)',

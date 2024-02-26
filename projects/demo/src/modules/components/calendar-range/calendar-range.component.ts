@@ -22,73 +22,76 @@ const ONE_DOT: [string] = ['var(--tui-success-fill)'];
     changeDetection,
 })
 export class ExampleTuiCalendarRangeComponent {
-    readonly exampleModule = import('./examples/import/import-module.md?raw');
+    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
 
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
     };
 
-    readonly example2: TuiDocExample = {
+    protected readonly example2: TuiDocExample = {
         TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
     };
 
-    readonly example3: TuiDocExample = {
+    protected readonly example3: TuiDocExample = {
         TypeScript: import('./examples/3/index.ts?raw'),
         HTML: import('./examples/3/index.html?raw'),
     };
 
-    readonly example4: TuiDocExample = {
+    protected readonly example4: TuiDocExample = {
         TypeScript: import('./examples/4/index.ts?raw'),
         HTML: import('./examples/4/index.html?raw'),
     };
 
-    readonly minVariants = [
+    protected readonly minVariants = [
         TUI_FIRST_DAY,
         new TuiDay(2017, 2, 5),
         new TuiDay(1900, 0, 1),
     ];
 
-    readonly maxVariants = [
+    protected readonly maxVariants = [
         TUI_LAST_DAY,
         new TuiDay(2018, 9, 30),
         new TuiDay(2020, 2, 5),
         new TuiDay(2300, 0, 1),
     ];
 
-    readonly disabledItemHandlerVariants: ReadonlyArray<TuiBooleanHandler<TuiDay>> = [
-        ALWAYS_FALSE_HANDLER,
-        ({day}) => day % 3 === 0,
-    ];
+    protected readonly disabledItemHandlerVariants: ReadonlyArray<
+        TuiBooleanHandler<TuiDay>
+    > = [ALWAYS_FALSE_HANDLER, ({day}) => day % 3 === 0];
 
-    readonly defaultViewedMonthVariants: readonly TuiMonth[] = [
+    protected readonly defaultViewedMonthVariants: readonly TuiMonth[] = [
         TuiMonth.currentLocal(),
         TuiMonth.currentLocal().append({month: 1}),
         new TuiMonth(2007, 5),
     ];
 
-    readonly itemsVariants: ReadonlyArray<readonly TuiDayRangePeriod[]> = [
+    protected readonly itemsVariants: ReadonlyArray<readonly TuiDayRangePeriod[]> = [
         [],
         tuiCreateDefaultDayRangePeriods(),
     ];
 
-    readonly minLengthVariants: readonly TuiDayLike[] = [{day: 3}, {day: 15}];
+    protected readonly minLengthVariants: readonly TuiDayLike[] = [{day: 3}, {day: 15}];
 
-    readonly maxLengthVariants: readonly TuiDayLike[] = [{day: 5}, {month: 1}, {year: 1}];
+    protected readonly maxLengthVariants: readonly TuiDayLike[] = [
+        {day: 5},
+        {month: 1},
+        {year: 1},
+    ];
 
-    readonly markerHandlerVariants: readonly TuiMarkerHandler[] = [
+    protected readonly markerHandlerVariants: readonly TuiMarkerHandler[] = [
         TUI_DEFAULT_MARKER_HANDLER,
         (day: TuiDay) => (day.day % 2 === 0 ? TWO_DOTS : ONE_DOT),
     ];
 
-    markerHandler: TuiMarkerHandler = this.markerHandlerVariants[0];
-    min: TuiDay = this.minVariants[0];
-    max: TuiDay = this.maxVariants[0];
-    cleaner = false;
-    disabledItemHandler = this.disabledItemHandlerVariants[0];
-    items = this.itemsVariants[0];
-    defaultViewedMonth = this.defaultViewedMonthVariants[0];
-    minLength: TuiDayLike | null = null;
-    maxLength: TuiDayLike | null = null;
+    protected markerHandler: TuiMarkerHandler = this.markerHandlerVariants[0];
+    protected min: TuiDay = this.minVariants[0];
+    protected max: TuiDay = this.maxVariants[0];
+    protected cleaner = false;
+    protected disabledItemHandler = this.disabledItemHandlerVariants[0];
+    protected items = this.itemsVariants[0];
+    protected defaultViewedMonth = this.defaultViewedMonthVariants[0];
+    protected minLength: TuiDayLike | null = null;
+    protected maxLength: TuiDayLike | null = null;
 }

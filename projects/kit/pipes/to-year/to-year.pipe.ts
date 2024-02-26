@@ -5,7 +5,7 @@ import {TuiYear} from '@taiga-ui/cdk';
     name: 'tuiToYear',
 })
 export class TuiToYearPipe implements PipeTransform {
-    transform(value: number): TuiYear {
+    public transform(value: number): TuiYear {
         return new TuiYear(value);
     }
 }

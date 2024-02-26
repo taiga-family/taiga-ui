@@ -22,8 +22,8 @@ export class TuiFilterByInputWithPipe
     protected readonly multiSelect = inject(TuiMultiSelectDirective, {optional: true});
     protected readonly accessor = inject(TUI_FOCUSABLE_ITEM_ACCESSOR);
 
-    transform<T>(items: T, matcher?: TuiStringHandler<TuiArrayElement<T>>): T;
-    transform<T>(
+    public transform<T>(items: T, matcher?: TuiStringHandler<TuiArrayElement<T>>): T;
+    public transform<T>(
         items: ReadonlyArray<readonly T[]> | readonly T[] | null,
         stringify: TuiStringHandler<T>,
     ): ReadonlyArray<readonly T[]> | readonly T[] | null {

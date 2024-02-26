@@ -14,9 +14,9 @@ import {RequestService} from './request.service';
     providers: [RequestService, TuiDestroyService],
 })
 export class TuiComboBoxExample2 {
-    readonly service = inject(RequestService);
+    protected readonly service = inject(RequestService);
 
-    search: string | null = '';
+    protected search: string | null = '';
 
-    readonly control = new FormControl(databaseMockData[0]);
+    protected readonly control = new FormControl(databaseMockData[0]);
 }

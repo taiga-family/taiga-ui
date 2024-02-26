@@ -11,16 +11,19 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiSelectExample3 {
-    readonly items = ['https://twitter.com/marsibarsi', 'https://twitter.com/waterplea'];
+    protected readonly items = [
+        'https://twitter.com/marsibarsi',
+        'https://twitter.com/waterplea',
+    ];
 
-    readonly testForm = new FormGroup({
+    protected readonly testForm = new FormGroup({
         email: new FormControl<string | null>(null),
         signature: new FormControl(''),
     });
 
-    signatureVisible = false;
+    protected signatureVisible = false;
 
-    toggle(): void {
+    protected toggle(): void {
         this.signatureVisible = !this.signatureVisible;
     }
 }

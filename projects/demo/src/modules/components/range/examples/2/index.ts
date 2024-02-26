@@ -11,7 +11,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiRangeExample2 {
-    smallRangeValue = [0, 40];
+    protected smallRangeValue = [0, 40];
 
-    readonly bigRangeControl = new FormControl([40, 60]);
+    protected readonly bigRangeControl = new FormControl([40, 60]);
 }

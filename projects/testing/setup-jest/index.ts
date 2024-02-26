@@ -117,12 +117,12 @@ global.DataTransfer = class {
 } as unknown as typeof DataTransfer;
 
 class TransferMockEvent {
-    dataTransfer: DataTransfer;
-    relatedTarget: EventTarget;
+    protected dataTransfer: DataTransfer;
+    protected relatedTarget: EventTarget;
 
     constructor(
-        readonly type: string,
-        readonly options: {
+        protected readonly type: string,
+        protected readonly options: {
             clipboardData: DataTransfer;
             relatedTarget: EventTarget;
         },

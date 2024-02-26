@@ -9,7 +9,7 @@ import {Directive, inject, OnDestroy} from '@angular/core';
  */
 @Directive()
 export abstract class AbstractTuiThemeSwitcher implements OnDestroy {
-    static style: HTMLStyleElement | null = null;
+    protected static style: HTMLStyleElement | null = null;
 
     private readonly doc = inject(DOCUMENT);
 
@@ -26,11 +26,11 @@ export abstract class AbstractTuiThemeSwitcher implements OnDestroy {
             styles[styles.length - 1];
     }
 
-    get style(): HTMLStyleElement | null {
+    protected get style(): HTMLStyleElement | null {
         return (this.constructor as typeof AbstractTuiThemeSwitcher).style;
     }
 
-    ngOnDestroy(): void {
+    public ngOnDestroy(): void {
         this.removeTheme();
     }
 

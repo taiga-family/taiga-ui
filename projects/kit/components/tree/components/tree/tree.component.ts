@@ -35,35 +35,39 @@ export class TuiTreeComponent<T> implements DoCheck {
     private readonly check$ = new Subject<void>();
 
     @Input()
-    value!: T;
+    public value!: T;
 
     @ViewChild(TuiTreeItemComponent)
-    readonly item?: TuiTreeItemComponent;
+    protected readonly item?: TuiTreeItemComponent;
 
     @ViewChild(TuiTreeComponent)
-    readonly child?: TuiTreeComponent<T>;
+    protected readonly child?: TuiTreeComponent<T>;
 
-    readonly children$ = this.check$.pipe(
+    protected readonly children$ = this.check$.pipe(
         startWith(null),
         map(() => this.handler(this.value)),
         distinctUntilChanged(),
     );
 
-    readonly directive = inject<TuiTreeChildrenDirective<T>>(TuiTreeChildrenDirective, {
-        optional: true,
-    });
+    protected readonly directive = inject<TuiTreeChildrenDirective<T>>(
+        TuiTreeChildrenDirective,
+        {
+            optional: true,
+        },
+    );
 
     @Input()
-    trackBy: TrackByFunction<T> = (_: number, item: T) => item;
+    public trackBy: TrackByFunction<T> = (_: number, item: T) => item;
 
     @Input()
-    content: PolymorpheusContent<TuiTreeContext<T>> = ({$implicit}) => String($implicit);
+    public content: PolymorpheusContent<TuiTreeContext<T>> = ({$implicit}) =>
+        String($implicit);
 
-    ngDoCheck(): void {
+    public ngDoCheck(): void {
         this.checkChanges();
     }
 
-    checkChanges(): void {
+    protected checkChanges(): void {
         this.check$.next();
         this.item?.checkChanges();
         this.child?.checkChanges();

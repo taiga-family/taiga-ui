@@ -11,21 +11,21 @@ import {tuiSum} from '@taiga-ui/cdk';
     changeDetection,
 })
 export class TuiLegendItemExample1 {
-    activeItemIndex = NaN;
+    protected activeItemIndex = NaN;
 
-    readonly value = [13769, 12367, 10172, 3018, 2592];
-    readonly sum = tuiSum(...this.value);
-    readonly labels = ['Food', 'Cafe', 'OSS', 'Taxi', 'Other'];
+    protected readonly value = [13769, 12367, 10172, 3018, 2592];
+    protected readonly sum = tuiSum(...this.value);
+    protected readonly labels = ['Food', 'Cafe', 'OSS', 'Taxi', 'Other'];
 
-    isItemActive(index: number): boolean {
+    protected isItemActive(index: number): boolean {
         return this.activeItemIndex === index;
     }
 
-    onHover(index: number, hovered: boolean): void {
+    protected onHover(index: number, hovered: boolean): void {
         this.activeItemIndex = hovered ? index : 0;
     }
 
-    getColor(index: number): string {
+    protected getColor(index: number): string {
         return `var(--tui-chart-${index})`;
     }
 }

@@ -27,11 +27,11 @@ export class TuiDropdownContextDirective extends TuiRectAccessor {
     private readonly driver = inject(TuiDropdownDriver);
     private currentRect = EMPTY_CLIENT_RECT;
 
-    readonly activeZone = inject(TuiActiveZoneDirective);
-    readonly type = 'dropdown';
+    protected readonly activeZone = inject(TuiActiveZoneDirective);
+    public readonly type = 'dropdown';
 
     @HostListener('contextmenu.prevent.stop', ['$event.clientX', '$event.clientY'])
-    onContextMenu(x: number, y: number): void {
+    protected onContextMenu(x: number, y: number): void {
         this.currentRect = tuiPointToClientRect(x, y);
         this.driver.next(true);
     }
@@ -40,11 +40,11 @@ export class TuiDropdownContextDirective extends TuiRectAccessor {
     @HostListener('document:click.silent', ['$event.target'])
     @HostListener('document:contextmenu.capture.silent', ['$event.target'])
     @HostListener('document:keydown.esc', ['$event.currentTarget'])
-    closeDropdown(): void {
+    protected closeDropdown(): void {
         this.driver.next(false);
     }
 
-    getClientRect(): DOMRect {
+    public getClientRect(): DOMRect {
         return this.currentRect;
     }
 }

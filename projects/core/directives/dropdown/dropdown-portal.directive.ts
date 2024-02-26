@@ -20,7 +20,7 @@ export class TuiDropdownPortalDirective implements OnDestroy {
     private viewRef?: EmbeddedViewRef<unknown>;
 
     @Input()
-    set tuiDropdown(show: boolean) {
+    public set tuiDropdown(show: boolean) {
         this.viewRef?.destroy();
 
         if (show) {
@@ -28,7 +28,7 @@ export class TuiDropdownPortalDirective implements OnDestroy {
         }
     }
 
-    ngOnDestroy(): void {
+    public ngOnDestroy(): void {
         this.viewRef?.destroy();
     }
 }

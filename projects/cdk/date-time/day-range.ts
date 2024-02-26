@@ -12,8 +12,8 @@ import {TuiMonthRange} from './month-range';
  */
 export class TuiDayRange extends TuiMonthRange {
     constructor(
-        override readonly from: TuiDay,
-        override readonly to: TuiDay,
+        public override readonly from: TuiDay,
+        public override readonly to: TuiDay,
     ) {
         super(from, to);
 
@@ -27,7 +27,7 @@ export class TuiDayRange extends TuiMonthRange {
      * @param day2
      * @return new range with sorted days
      */
-    static override sort(day1: TuiDay, day2: TuiDay): TuiDayRange {
+    public static override sort(day1: TuiDay, day2: TuiDay): TuiDayRange {
         return day1.daySameOrBefore(day2)
             ? new TuiDayRange(day1, day2)
             : new TuiDayRange(day2, day1);
@@ -40,7 +40,7 @@ export class TuiDayRange extends TuiMonthRange {
      * @param dateMode {@link TuiDateMode}
      * @return normalized day range object
      */
-    static normalizeParse(
+    public static normalizeParse(
         rangeString: string,
         dateMode: TuiDateMode = 'DMY',
     ): TuiDayRange {
@@ -62,7 +62,7 @@ export class TuiDayRange extends TuiMonthRange {
         );
     }
 
-    get isSingleDay(): boolean {
+    public get isSingleDay(): boolean {
         return this.from.daySame(this.to);
     }
 
@@ -72,7 +72,7 @@ export class TuiDayRange extends TuiMonthRange {
      * @param another second range to test against current
      * @return `true` if days are identical
      */
-    daySame(another: TuiDayRange): boolean {
+    public daySame(another: TuiDayRange): boolean {
         return this.from.daySame(another.from) && this.to.daySame(another.to);
     }
 
@@ -83,21 +83,24 @@ export class TuiDayRange extends TuiMonthRange {
      * @param max
      * @return range — clamped range
      */
-    dayLimit(min: TuiDay | null, max: TuiDay | null): TuiDayRange {
+    public dayLimit(min: TuiDay | null, max: TuiDay | null): TuiDayRange {
         return new TuiDayRange(this.from.dayLimit(min, max), this.to.dayLimit(min, max));
     }
 
     /**
      * Human readable format.
      */
-    getFormattedDayRange(dateFormat: TuiDateMode, dateSeparator: string): string {
+    public getFormattedDayRange(dateFormat: TuiDateMode, dateSeparator: string): string {
         const from = this.from.getFormattedDay(dateFormat, dateSeparator);
         const to = this.to.getFormattedDay(dateFormat, dateSeparator);
 
         return `${from}${RANGE_SEPARATOR_CHAR}${to}`;
     }
 
-    override toString(dateFormat: TuiDateMode = 'DMY', dateSeparator = '.'): string {
+    public override toString(
+        dateFormat: TuiDateMode = 'DMY',
+        dateSeparator = '.',
+    ): string {
         return this.getFormattedDayRange(dateFormat, dateSeparator);
     }
 }

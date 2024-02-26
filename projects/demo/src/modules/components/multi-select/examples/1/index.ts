@@ -20,14 +20,14 @@ const ITEMS: readonly string[] = [
     changeDetection,
 })
 export class TuiMultiSelectExample1 {
-    search: string | null = '';
+    protected search: string | null = '';
 
-    readonly control = new FormControl([ITEMS[0]]);
+    protected readonly control = new FormControl([ITEMS[0]]);
 
     @tuiPure
-    filter(search: string | null): readonly string[] {
+    protected filter(search: string | null): readonly string[] {
         return ITEMS.filter(item => TUI_DEFAULT_MATCHER(item, search || ''));
     }
 
-    tagValidator: TuiBooleanHandler<string> = tag => !tag.startsWith('Han');
+    protected tagValidator: TuiBooleanHandler<string> = tag => !tag.startsWith('Han');
 }

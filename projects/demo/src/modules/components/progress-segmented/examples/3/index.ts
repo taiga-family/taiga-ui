@@ -10,7 +10,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiProgressSegmentedExample3 {
-    readonly arrayColors = [
+    protected readonly arrayColors = [
         '#39b54a',
         '#ffd450',
         '#ffd450',

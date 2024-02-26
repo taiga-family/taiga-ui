@@ -27,7 +27,7 @@ export class TuiElasticContainerDirective {
     private readonly mutation$ = inject(MutationObserverService);
 
     @Output()
-    readonly tuiElasticContainer = merge(this.resize$, this.mutation$).pipe(
+    public readonly tuiElasticContainer = merge(this.resize$, this.mutation$).pipe(
         debounceTime(0),
         map(() => this.el.clientHeight - 1),
         distinctUntilChanged(),

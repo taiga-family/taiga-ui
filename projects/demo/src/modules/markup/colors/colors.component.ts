@@ -19,13 +19,15 @@ import {
     changeDetection,
 })
 export class ColorsComponent {
-    readonly basicImportsLess = import('./examples/import/basic-imports-less.md?raw');
+    protected readonly basicImportsLess = import(
+        './examples/import/basic-imports-less.md?raw'
+    );
 
-    readonly base = BASE;
-    readonly baseNight = BASE_NIGHT;
-    readonly support = SUPPORT.map(name => ({name}));
-    readonly text = TEXT;
-    readonly textNight = TEXT_NIGHT;
-    readonly status = STATUS;
-    readonly statusNight = STATUS_NIGHT;
+    protected readonly base = BASE;
+    protected readonly baseNight = BASE_NIGHT;
+    protected readonly support = SUPPORT.map(name => ({name}));
+    protected readonly text = TEXT;
+    protected readonly textNight = TEXT_NIGHT;
+    protected readonly status = STATUS;
+    protected readonly statusNight = STATUS_NIGHT;
 }

@@ -12,7 +12,7 @@ import {TuiAlertService} from '@taiga-ui/core';
 export class TuiLetExample2 {
     private readonly alerts = inject(TuiAlertService);
 
-    get getter(): string {
+    protected get getter(): string {
         this.alerts.open('Getter called').subscribe();
 
         return '🐳';

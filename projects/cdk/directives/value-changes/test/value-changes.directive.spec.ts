@@ -20,12 +20,12 @@ describe('TuiValueChangesDirective', () => {
         changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class TestComponent {
-        readonly form = new FormGroup({
+        protected readonly form = new FormGroup({
             control: new FormControl(),
         });
 
-        formSpy = jest.fn();
-        controlSpy = jest.fn();
+        protected formSpy = jest.fn();
+        protected controlSpy = jest.fn();
     }
 
     let fixture: ComponentFixture<TestComponent>;

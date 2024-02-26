@@ -9,5 +9,5 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiTokensExample1 {
-    style = inject(Renderer2).createElement('style');
+    protected style = inject(Renderer2).createElement('style');
 }

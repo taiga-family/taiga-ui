@@ -19,16 +19,18 @@ export class ExampleTuiDialogComponent {
     private readonly alerts = inject(TuiAlertService);
     private readonly dialogs = inject(TuiDialogService);
 
-    readonly method = import('./method.md?raw');
+    protected readonly method = import('./method.md?raw');
 
-    readonly dialogsCloseToken = import('./examples/import/dialogs-close-token.md?raw');
+    protected readonly dialogsCloseToken = import(
+        './examples/import/dialogs-close-token.md?raw'
+    );
 
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
     };
 
-    readonly example2: TuiDocExample = {
+    protected readonly example2: TuiDocExample = {
         TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
         'dialog-example/dialog-example.module.ts': import(
@@ -45,29 +47,29 @@ export class ExampleTuiDialogComponent {
         ),
     };
 
-    readonly example3: TuiDocExample = {
+    protected readonly example3: TuiDocExample = {
         TypeScript: import('./examples/3/index.ts?raw'),
         HTML: import('./examples/3/index.html?raw'),
     };
 
-    readonly example4: TuiDocExample = {
+    protected readonly example4: TuiDocExample = {
         TypeScript: import('./examples/4/index.ts?raw'),
         HTML: import('./examples/4/index.html?raw'),
         LESS: import('./examples/4/index.less?raw'),
     };
 
-    readonly example5: TuiDocExample = {
+    protected readonly example5: TuiDocExample = {
         TypeScript: import('./examples/5/index.ts?raw'),
         HTML: import('./examples/5/index.html?raw'),
         LESS: import('./examples/5/index.less?raw'),
     };
 
-    readonly example6: TuiDocExample = {
+    protected readonly example6: TuiDocExample = {
         TypeScript: import('./examples/6/index.ts?raw'),
         HTML: import('./examples/6/index.html?raw'),
     };
 
-    readonly example7: TuiDocExample = {
+    protected readonly example7: TuiDocExample = {
         TypeScript: import('./examples/7/index.ts?raw'),
         HTML: import('./examples/7/index.html?raw'),
         'search-example/search-dialog-example.component.ts': import(
@@ -84,12 +86,12 @@ export class ExampleTuiDialogComponent {
         ),
     };
 
-    readonly example8: TuiDocExample = {
+    protected readonly example8: TuiDocExample = {
         TypeScript: import('./examples/8/index.ts?raw'),
         HTML: import('./examples/8/index.html?raw'),
     };
 
-    readonly example9: TuiDocExample = {
+    protected readonly example9: TuiDocExample = {
         TypeScript: import('./examples/9/index.ts?raw'),
         HTML: import('./examples/9/index.html?raw'),
         LESS: import('./examples/9/index.less?raw'),
@@ -111,27 +113,31 @@ export class ExampleTuiDialogComponent {
         ),
     };
 
-    readonly example10: TuiDocExample = {
+    protected readonly example10: TuiDocExample = {
         TypeScript: import('./examples/10/index.ts?raw'),
         HTML: import('./examples/10/index.html?raw'),
         LESS: import('./examples/10/index.less?raw'),
     };
 
-    readonly exampleServiceUsage = import('./examples/import/service-usage.md?raw');
+    protected readonly exampleServiceUsage = import(
+        './examples/import/service-usage.md?raw'
+    );
 
-    readonly exampleCustomDialog = import('./examples/import/custom-dialog.md?raw');
+    protected readonly exampleCustomDialog = import(
+        './examples/import/custom-dialog.md?raw'
+    );
 
-    readonly exampleLazyModule = import('./examples/import/lazy-module.md?raw');
+    protected readonly exampleLazyModule = import('./examples/import/lazy-module.md?raw');
 
-    data = 100;
+    protected data = 100;
 
-    closeable = true;
+    protected closeable = true;
 
-    dismissible = true;
+    protected dismissible = true;
 
-    required = false;
+    protected required = false;
 
-    readonly sizeVariants: readonly TuiDialogSize[] = [
+    protected readonly sizeVariants: readonly TuiDialogSize[] = [
         's',
         'm',
         'l',
@@ -140,13 +146,13 @@ export class ExampleTuiDialogComponent {
         'auto',
     ];
 
-    size: TuiDialogSize = this.sizeVariants[1];
+    protected size: TuiDialogSize = this.sizeVariants[1];
 
-    label = '';
+    protected label = '';
 
-    appearance = '';
+    protected appearance = '';
 
-    showDialog(content: TemplateRef<TuiDialogContext<number, number>>): void {
+    protected showDialog(content: TemplateRef<TuiDialogContext<number, number>>): void {
         const {data, label, required, closeable, dismissible, size, appearance} = this;
 
         this.dialogs

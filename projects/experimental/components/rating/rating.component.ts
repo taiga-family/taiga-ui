@@ -34,24 +34,24 @@ export class TuiRatingComponent
     private readonly options = inject(TUI_RATING_OPTIONS);
 
     @Input()
-    icon = this.options.icon;
+    public icon = this.options.icon;
 
     @Input()
-    max = this.options.max;
+    public max = this.options.max;
 
     @HostBinding('class._active')
-    active = 0;
+    protected active = 0;
 
-    get nativeFocusableElement(): HTMLInputElement | null {
+    public get nativeFocusableElement(): HTMLInputElement | null {
         return this.computedDisabled ? null : this.input?.nativeElement || null;
     }
 
-    get focused(): boolean {
+    public get focused(): boolean {
         return tuiIsNativeFocused(this.nativeFocusableElement);
     }
 
     @HostListener('keydown.capture', ['$event'])
-    onKeyDown(event: KeyboardEvent): void {
+    protected onKeyDown(event: KeyboardEvent): void {
         if (this.readOnly) {
             event.preventDefault();
         }
@@ -60,25 +60,25 @@ export class TuiRatingComponent
     @HostListener('pointerdown', ['1'])
     @HostListener('pointercancel', ['-1'])
     @HostListener('document:pointerup', ['-1'])
-    onPointer(delta: number): void {
+    protected onPointer(delta: number): void {
         this.active = tuiClamp(this.active + delta, 0, 1);
     }
 
-    onClick(value: number): void {
+    protected onClick(value: number): void {
         if (this.active) {
             this.value = value;
         }
     }
 
-    isActive(index: number): boolean {
+    protected isActive(index: number): boolean {
         return Math.ceil(this.value) >= this.max - index;
     }
 
-    isFraction(index: number): boolean {
+    protected isFraction(index: number): boolean {
         return this.value > this.max - index - 1 && this.value < this.max - index;
     }
 
-    getCut(index: number): number {
+    protected getCut(index: number): number {
         return this.isFraction(index)
             ? 100 * Math.max(this.max - index - this.value, 0)
             : 0;

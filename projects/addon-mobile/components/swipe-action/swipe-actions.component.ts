@@ -13,9 +13,9 @@ import {ResizeObserverModule} from '@ng-web-apis/resize-observer';
     },
 })
 export class TuiSwipeActionsComponent {
-    actionsWidth = 0;
+    protected actionsWidth = 0;
 
-    onResize({target}: ResizeObserverEntry): void {
+    protected onResize({target}: ResizeObserverEntry): void {
         this.actionsWidth = target.clientWidth;
     }
 }

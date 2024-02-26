@@ -10,9 +10,9 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiScrollbarExample6Component {
-    items = Array.from({length: 10000}).map((_, i) => `Item #${i}`);
+    protected items = Array.from({length: 10000}).map((_, i) => `Item #${i}`);
 
-    add(): void {
+    protected add(): void {
         this.items = [...this.items, `Item #${this.items.length}`];
     }
 }

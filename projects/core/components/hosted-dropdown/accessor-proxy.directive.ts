@@ -20,9 +20,9 @@ import {TuiPoint} from '@taiga-ui/core/types';
     ],
 })
 export class TuiAccessorProxyDirective extends TuiPositionAccessor {
-    readonly type = 'dummy';
+    public readonly type = 'dummy';
 
-    getPosition(): TuiPoint {
+    public getPosition(): TuiPoint {
         return [0, 0];
     }
 }

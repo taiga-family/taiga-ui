@@ -10,7 +10,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiCellExample6 {
-    readonly items = [
+    protected readonly items = [
         {
             icon: 'tuiIconPhone',
             toString: () => 'Call now',

@@ -11,11 +11,11 @@ import {TuiPrimitiveTextfieldComponent} from './primitive-textfield.component';
 export class TuiPrimitiveTextfieldDirective extends AbstractTuiTextfieldHost<any> {
     protected override readonly host = inject(TuiPrimitiveTextfieldComponent);
 
-    override get readOnly(): boolean {
+    public override get readOnly(): boolean {
         return this.host.readOnly || !this.host.editable;
     }
 
-    onValueChange(value: string): void {
+    public onValueChange(value: string): void {
         this.host.onModelChange(value);
     }
 }

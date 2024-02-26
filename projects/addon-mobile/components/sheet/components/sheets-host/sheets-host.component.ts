@@ -29,13 +29,13 @@ export class TuiSheetsHostComponent implements OnInit {
     private readonly service = inject(TuiSheetService);
     private readonly destroy$ = inject(TuiDestroyService, {self: true});
     private readonly cdr = inject(ChangeDetectorRef);
-    readonly height$ = inject(TUI_WINDOW_HEIGHT);
+    protected readonly height$ = inject(TUI_WINDOW_HEIGHT);
 
-    sheets: ReadonlyArray<TuiSheet<any>> = [];
+    protected sheets: ReadonlyArray<TuiSheet<any>> = [];
 
-    readonly options = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
+    protected readonly options = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         // Due to this view being parallel to app content, `markForCheck` from `async` pipe
         // can happen after view was checked, so calling `detectChanges` instead
         this.service.sheets$.pipe(takeUntil(this.destroy$)).subscribe(sheets => {
@@ -44,7 +44,7 @@ export class TuiSheetsHostComponent implements OnInit {
         });
     }
 
-    close({closeable, $implicit}: TuiSheet<unknown>): void {
+    protected close({closeable, $implicit}: TuiSheet<unknown>): void {
         if (closeable) {
             $implicit.complete();
         }

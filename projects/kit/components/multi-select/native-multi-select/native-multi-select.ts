@@ -10,10 +10,10 @@ export abstract class AbstractTuiNativeMultiSelect<T> extends AbstractTuiNativeS
     TuiMultiSelectDirective<T>,
     T
 > {
-    selectedMapper: TuiTypedMapper<[T, ...any[]], boolean> = (option, value) =>
+    protected selectedMapper: TuiTypedMapper<[T, ...any[]], boolean> = (option, value) =>
         value.includes(option);
 
-    get stringify(): TuiItemsHandlers<T>['stringify'] {
+    protected get stringify(): TuiItemsHandlers<T>['stringify'] {
         return this.host.stringify;
     }
 }

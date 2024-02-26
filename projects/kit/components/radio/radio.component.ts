@@ -43,43 +43,43 @@ export class TuiRadioComponent<T>
     private readonly options = inject(TUI_RADIO_OPTIONS);
 
     @Input()
-    item?: T | null;
+    public item?: T | null;
 
     @Input()
-    identityMatcher: TuiIdentityMatcher<T> = TUI_DEFAULT_IDENTITY_MATCHER;
+    public identityMatcher: TuiIdentityMatcher<T> = TUI_DEFAULT_IDENTITY_MATCHER;
 
     @Input()
-    name: string | null = null;
+    public name: string | null = null;
 
     @Input()
     @HostBinding('attr.data-size')
-    size: TuiSizeL = this.options.size;
+    public size: TuiSizeL = this.options.size;
 
     @Input()
-    pseudoDisabled = false;
+    public pseudoDisabled = false;
 
-    get appearance(): string {
+    protected get appearance(): string {
         return this.checked
             ? this.options.appearances.checked
             : this.options.appearances.unchecked;
     }
 
     @HostBinding('class._disabled')
-    override get computedDisabled(): boolean {
+    public override get computedDisabled(): boolean {
         return this.disabled || this.pseudoDisabled;
     }
 
-    get nativeFocusableElement(): TuiNativeFocusableElement | null {
+    public get nativeFocusableElement(): TuiNativeFocusableElement | null {
         return !this.focusableElement || this.computedDisabled
             ? null
             : this.focusableElement.nativeElement;
     }
 
-    get focused(): boolean {
+    public get focused(): boolean {
         return tuiIsNativeFocused(this.nativeFocusableElement);
     }
 
-    get checked(): boolean {
+    public get checked(): boolean {
         return this.value === null
             ? this.item === null
             : this.item !== undefined &&
@@ -87,25 +87,25 @@ export class TuiRadioComponent<T>
                   this.identityMatcher(this.value, this.item);
     }
 
-    override get computedName(): string {
+    protected override get computedName(): string {
         return this.name || this.radioGroupName || this.controlName || '';
     }
 
-    get isFocusable(): boolean {
+    protected get isFocusable(): boolean {
         return !this.readOnly && this.computedFocusable;
     }
 
-    onChecked(checked: boolean): void {
+    protected onChecked(checked: boolean): void {
         if (checked) {
             this.value = this.item !== undefined ? this.item : this.fallbackValue;
         }
     }
 
-    onFocused(focused: boolean): void {
+    protected onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
 
-    onFocusVisible(focusVisible: boolean): void {
+    protected onFocusVisible(focusVisible: boolean): void {
         this.updateFocusVisible(focusVisible);
     }
 

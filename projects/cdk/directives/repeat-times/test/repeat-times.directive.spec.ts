@@ -18,7 +18,7 @@ describe('TuiRepeatTimes directive', () => {
         `,
     })
     class TestComponent {
-        count = DEFAULT_TEST_COUNT;
+        protected count = DEFAULT_TEST_COUNT;
     }
 
     let fixture: ComponentFixture<TestComponent>;

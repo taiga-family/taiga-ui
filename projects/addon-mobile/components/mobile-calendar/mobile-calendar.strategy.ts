@@ -53,11 +53,11 @@ export class TuiMobileCalendarStrategy implements VirtualScrollStrategy {
     ) {}
 
     @tuiPure
-    get scrolledIndexChange(): Observable<number> {
+    public get scrolledIndexChange(): Observable<number> {
         return this.index$.pipe(distinctUntilChanged());
     }
 
-    attach(viewport: CdkVirtualScrollViewport): void {
+    public attach(viewport: CdkVirtualScrollViewport): void {
         const cycle = this.isIOS ? IOS_CYCLE_HEIGHT : ANDROID_CYCLE_HEIGHT;
 
         this.viewport = viewport;
@@ -65,25 +65,25 @@ export class TuiMobileCalendarStrategy implements VirtualScrollStrategy {
         this.updateRenderedRange(this.viewport);
     }
 
-    detach(): void {
+    public detach(): void {
         this.index$.complete();
         this.viewport = null;
         this.destroy$.next();
         this.destroy$.complete();
     }
 
-    onContentScrolled(): void {
+    public onContentScrolled(): void {
         if (this.viewport) {
             this.updateRenderedRange(this.viewport);
         }
     }
 
     /** These do not matter for this case */
-    onDataLengthChanged(): void {}
-    onContentRendered(): void {}
-    onRenderedOffsetChanged(): void {}
+    public onDataLengthChanged(): void {}
+    public onContentRendered(): void {}
+    public onRenderedOffsetChanged(): void {}
 
-    scrollToIndex(index: number, behavior: ScrollBehavior): void {
+    public scrollToIndex(index: number, behavior: ScrollBehavior): void {
         if (!this.viewport) {
             return;
         }

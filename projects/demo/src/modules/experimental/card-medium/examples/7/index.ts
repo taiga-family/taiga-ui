@@ -10,5 +10,5 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiCardMediumExample7 {
-    value = 0;
+    protected value = 0;
 }

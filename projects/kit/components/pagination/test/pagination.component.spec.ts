@@ -27,15 +27,15 @@ describe('TuiPaginationComponent', () => {
     })
     class TestComponent {
         @ViewChild(TuiPaginationComponent, {static: true})
-        component!: TuiPaginationComponent;
+        protected component!: TuiPaginationComponent;
 
-        index = 0;
+        protected index = 0;
 
-        length = 50;
+        protected length = 50;
 
-        activePadding = 1;
+        protected activePadding = 1;
 
-        sidePadding = 1;
+        protected sidePadding = 1;
     }
 
     let fixture: ComponentFixture<TestComponent>;

@@ -13,7 +13,7 @@ import {
     changeDetection,
 })
 export class TuiInputCardGroupedExample3 {
-    readonly control = new FormControl<TuiCard | null>(null, [
+    protected readonly control = new FormControl<TuiCard | null>(null, [
         tuiCardNumberValidator,
         tuiCardExpireValidator,
     ]);

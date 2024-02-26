@@ -20,16 +20,16 @@ export class TuiInputFilesValidatorDirective implements OnChanges, OnInit {
 
     @Input()
     @HostBinding('accept')
-    accept = this.options.accept;
+    public accept = this.options.accept;
 
     @Input()
-    maxFileSize = this.options.maxFileSize;
+    public maxFileSize = this.options.maxFileSize;
 
-    ngOnChanges(): void {
+    public ngOnChanges(): void {
         this.validate();
     }
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         this.validate();
     }
 

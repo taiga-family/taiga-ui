@@ -12,9 +12,9 @@ import {TuiAlertService} from '@taiga-ui/core';
 export class TuiTabsExample4 {
     private readonly alerts = inject(TuiAlertService);
 
-    activeItemIndex = 0;
+    protected activeItemIndex = 0;
 
-    onClick(item: string): void {
+    protected onClick(item: string): void {
         this.alerts.open(item).subscribe();
     }
 }

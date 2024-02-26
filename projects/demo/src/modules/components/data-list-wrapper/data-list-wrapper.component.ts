@@ -7,21 +7,21 @@ import {changeDetection} from '@demo/emulate/change-detection';
     changeDetection,
 })
 export class ExampleTuiDataListWrapperComponent {
-    readonly exampleModule = import('./examples/import/import-module.md?raw');
+    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
 
-    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 
-    readonly example1 = {
+    protected readonly example1 = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
     };
 
-    readonly example2 = {
+    protected readonly example2 = {
         TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
     };
 
-    readonly example3 = {
+    protected readonly example3 = {
         TypeScript: import('./examples/3/index.ts?raw'),
         HTML: import('./examples/3/index.html?raw'),
     };

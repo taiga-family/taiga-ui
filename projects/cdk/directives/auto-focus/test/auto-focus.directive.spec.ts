@@ -35,7 +35,7 @@ describe('TuiAutoFocus directive', () => {
         })
         class TestComponentWithDiv {
             @ViewChild(TuiAutoFocusDirective, {read: ElementRef})
-            element!: ElementRef<HTMLElement>;
+            protected element!: ElementRef<HTMLElement>;
         }
 
         let fixture: ComponentFixture<TestComponentWithDiv>;
@@ -74,15 +74,15 @@ describe('TuiAutoFocus directive', () => {
         })
         class TestFocusableComponent implements TuiFocusableElementAccessor {
             @ViewChild('input')
-            input?: ElementRef<HTMLInputElement>;
+            protected input?: ElementRef<HTMLInputElement>;
 
-            focusedChange = EMPTY;
+            public focusedChange = EMPTY;
 
-            get nativeFocusableElement(): HTMLInputElement | null {
+            public get nativeFocusableElement(): HTMLInputElement | null {
                 return this.input?.nativeElement ?? null;
             }
 
-            get focused(): boolean {
+            public get focused(): boolean {
                 return this.input
                     ? document.activeElement === this.input.nativeElement
                     : false;
@@ -97,7 +97,7 @@ describe('TuiAutoFocus directive', () => {
         })
         class TestComponentWithTuiButton {
             @ViewChild(TestFocusableComponent)
-            focusable!: TestFocusableComponent;
+            protected focusable!: TestFocusableComponent;
         }
 
         let fixture: ComponentFixture<TestComponentWithTuiButton>;
@@ -132,7 +132,7 @@ describe('TuiAutoFocus directive', () => {
         })
         class TestComponentIos {
             @ViewChild(TuiAutoFocusDirective, {read: ElementRef})
-            element!: ElementRef<HTMLElement>;
+            protected element!: ElementRef<HTMLElement>;
         }
 
         let fixture: ComponentFixture<TestComponentIos>;
@@ -194,9 +194,9 @@ describe('TuiAutoFocus directive', () => {
         })
         class TestComponentWithFocusFlag {
             @ViewChild(TuiAutoFocusDirective, {read: ElementRef})
-            element!: ElementRef<HTMLElement>;
+            protected element!: ElementRef<HTMLElement>;
 
-            autoFocus = false;
+            protected autoFocus = false;
         }
 
         let fixture: ComponentFixture<TestComponentWithFocusFlag>;

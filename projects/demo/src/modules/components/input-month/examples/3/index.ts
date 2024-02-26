@@ -13,7 +13,7 @@ import {tuiInputDateOptionsProvider} from '@taiga-ui/kit';
     providers: [tuiInputDateOptionsProvider({nativePicker: true})],
 })
 export class InputMonthExample3 {
-    readonly control = new FormControl<TuiMonth | null>(null);
-    readonly min = TuiMonth.currentLocal().append({month: -12});
-    readonly max = TuiMonth.currentLocal().append({month: 12});
+    protected readonly control = new FormControl<TuiMonth | null>(null);
+    protected readonly min = TuiMonth.currentLocal().append({month: -12});
+    protected readonly max = TuiMonth.currentLocal().append({month: 12});
 }

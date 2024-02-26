@@ -1,12 +1,12 @@
 export class User {
     constructor(
-        readonly firstName: string,
-        readonly lastName: string,
-        readonly avatarUrl: string | null = null,
-        readonly disabled = false,
+        public readonly firstName: string,
+        public readonly lastName: string,
+        public readonly avatarUrl: string | null = null,
+        public readonly disabled = false,
     ) {}
 
-    toString(): string {
+    public toString(): string {
         return `${this.firstName} ${this.lastName}`;
     }
 }

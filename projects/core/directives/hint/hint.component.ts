@@ -74,10 +74,11 @@ export class TuiHintComponent<C = any> {
     protected readonly accessor = inject(TuiRectAccessor);
 
     @HostBinding('attr.data-appearance')
-    readonly appearance = this.polymorpheus.$implicit.appearance || this.mode?.mode;
+    protected readonly appearance =
+        this.polymorpheus.$implicit.appearance || this.mode?.mode;
 
-    readonly options = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
-    readonly pointer = inject(TuiHintPointerDirective, {optional: true});
+    protected readonly options = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
+    protected readonly pointer = inject(TuiHintPointerDirective, {optional: true});
 
     constructor() {
         inject(TuiPositionService)
@@ -94,16 +95,16 @@ export class TuiHintComponent<C = any> {
             .subscribe(hover => this.hover.toggle(hover));
     }
 
-    get content(): PolymorpheusContent<C> {
+    protected get content(): PolymorpheusContent<C> {
         return this.polymorpheus.$implicit.content;
     }
 
-    get context(): C | undefined {
+    protected get context(): C | undefined {
         return this.polymorpheus.$implicit.context;
     }
 
     @HostListener('document:click', ['$event.target'])
-    onClick(target: HTMLElement): void {
+    protected onClick(target: HTMLElement): void {
         if (
             (!this.el.contains(target) && !this.hover.el.contains(target)) ||
             tuiIsObscured(this.hover.el)

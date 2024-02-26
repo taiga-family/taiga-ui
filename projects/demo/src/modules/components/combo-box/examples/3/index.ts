@@ -7,7 +7,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
     changeDetection,
 })
 export class TuiComboBoxExample3 {
-    readonly items = [
+    protected readonly items = [
         'John Cleese',
         'Eric Idle',
         'Graham Chapman',
@@ -16,5 +16,5 @@ export class TuiComboBoxExample3 {
         'Terry Jones',
     ];
 
-    value = '';
+    protected value = '';
 }

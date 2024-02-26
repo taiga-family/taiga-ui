@@ -23,11 +23,11 @@ import {
 
 class Account {
     constructor(
-        readonly name: string,
-        readonly balance: number,
+        protected readonly name: string,
+        protected readonly balance: number,
     ) {}
 
-    toString(): string {
+    protected toString(): string {
         return `${this.name} (${this.balance})`;
     }
 }
@@ -110,23 +110,23 @@ describe('Accordion', () => {
     })
     class TestComponent {
         @ViewChild(TuiAccordionComponent, {static: true})
-        component!: TuiAccordionComponent;
+        protected component!: TuiAccordionComponent;
 
         @ViewChildren(TuiAccordionItemComponent)
-        items!: QueryList<TuiAccordionItemComponent>;
+        protected items!: QueryList<TuiAccordionItemComponent>;
 
         @ViewChild(TuiSelectComponent, {static: true})
-        selectComponent!: TuiSelectComponent<unknown>;
+        protected selectComponent!: TuiSelectComponent<unknown>;
 
-        closeOthers = true;
+        protected closeOthers = true;
 
-        accounts = [
+        protected accounts = [
             new Account('Ruble', 500),
             new Account('Dollar', 237),
             new Account('Euro', 100),
         ];
 
-        testForm = new FormGroup({
+        protected testForm = new FormGroup({
             name: new FormControl(''),
             accounts: new FormControl(this.accounts[0]),
         });

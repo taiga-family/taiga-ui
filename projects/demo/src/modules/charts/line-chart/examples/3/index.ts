@@ -11,19 +11,19 @@ import {TuiPoint} from '@taiga-ui/core';
     changeDetection,
 })
 export class TuiLineChartExample3 {
-    readonly dotted: readonly TuiPoint[] = [
+    protected readonly dotted: readonly TuiPoint[] = [
         [50, 50],
         [100, 75],
         [150, 50],
     ];
 
-    readonly solid: readonly TuiPoint[] = [
+    protected readonly solid: readonly TuiPoint[] = [
         [150, 50],
         [200, 150],
         [250, 155],
     ];
 
-    readonly dashed: readonly TuiPoint[] = [
+    protected readonly dashed: readonly TuiPoint[] = [
         [250, 155],
         [300, 190],
         [350, 90],

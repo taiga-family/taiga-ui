@@ -10,5 +10,5 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiDropdownExample5 {
-    open = false;
+    protected open = false;
 }

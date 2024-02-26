@@ -22,7 +22,7 @@ export class TuiMobileDialogExample1 {
     private readonly dialogs = inject(TuiMobileDialogService);
     private readonly alerts = inject(TuiAlertService);
 
-    show(): void {
+    protected show(): void {
         const actions = ['No thanks', 'Remind me later', 'Rate now'];
 
         this.dialogs

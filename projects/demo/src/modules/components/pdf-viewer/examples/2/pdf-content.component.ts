@@ -20,7 +20,7 @@ export class PdfContentComponent {
      * so you can use third-party services
      * or your own service to render PDF in mobile iframe
      */
-    readonly src$ = timer(3000).pipe(
+    protected readonly src$ = timer(3000).pipe(
         map(() =>
             this.sanitizer.bypassSecurityTrustResourceUrl(
                 this.isMobile

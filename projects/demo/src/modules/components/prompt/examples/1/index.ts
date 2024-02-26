@@ -15,7 +15,7 @@ export class TuiPromptExample1 {
     private readonly dialogs = inject(TuiDialogService);
     private readonly alerts = inject(TuiAlertService);
 
-    onClick(): void {
+    protected onClick(): void {
         const data: TuiPromptData = {
             content:
                 'This is <code>PolymorpheusContent</code> so it can be template too!',

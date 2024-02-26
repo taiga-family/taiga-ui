@@ -9,19 +9,19 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiInputFilesExample7 {
-    files: File[] = [];
-    rejected: File[] = [];
+    protected files: File[] = [];
+    protected rejected: File[] = [];
 
-    onRemove(remove: File): void {
+    protected onRemove(remove: File): void {
         this.files = this.files.filter(file => file !== remove);
         this.rejected = this.rejected.filter(file => file !== remove);
     }
 
-    onChange(files: File[]): void {
+    protected onChange(files: File[]): void {
         this.files = files.filter(file => !this.rejected.includes(file));
     }
 
-    onReject(rejected: File[]): void {
+    protected onReject(rejected: File[]): void {
         this.rejected = rejected;
     }
 }

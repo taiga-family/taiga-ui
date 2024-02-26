@@ -20,13 +20,13 @@ export abstract class AbstractTuiInputCard<
     implements TuiFocusableElementAccessor
 {
     @Input()
-    cardSrc: PolymorpheusContent;
+    public cardSrc: PolymorpheusContent;
 
     @Input()
-    autocompleteEnabled = this.options.autocompleteEnabled;
+    public autocompleteEnabled = this.options.autocompleteEnabled;
 
     @Output()
-    readonly binChange = new EventEmitter<string | null>();
+    public readonly binChange = new EventEmitter<string | null>();
 
     protected constructor(protected readonly options: Options) {
         super();
@@ -36,22 +36,22 @@ export abstract class AbstractTuiInputCard<
 
     abstract get nativeFocusableElement(): TuiNativeFocusableElement | null;
 
-    get defaultIcon(): string | null {
+    protected get defaultIcon(): string | null {
         const paymentSystem = this.getPaymentSystem(this.card);
 
         return paymentSystem && this.options.icons[paymentSystem];
     }
 
-    get paymentSystem(): TuiPaymentSystem | null {
+    protected get paymentSystem(): TuiPaymentSystem | null {
         return this.getPaymentSystem(this.card);
     }
 
     /** @deprecated remove in 4.0 */
-    get icon(): PolymorpheusContent {
+    protected get icon(): PolymorpheusContent {
         return this.cardSrc || this.defaultIcon;
     }
 
-    get autocomplete(): TuiAutofillFieldName {
+    protected get autocomplete(): TuiAutofillFieldName {
         return this.autocompleteEnabled ? 'cc-number' : 'off';
     }
 
@@ -59,11 +59,11 @@ export abstract class AbstractTuiInputCard<
      * @deprecated: drop in v4.0
      * use {@link autocomplete}
      */
-    get autocompleteCard(): TuiAutofillFieldName {
+    protected get autocompleteCard(): TuiAutofillFieldName {
         return this.autocomplete;
     }
 
-    get bin(): string | null {
+    protected get bin(): string | null {
         return this.card.length < 6 ? null : this.card.slice(0, 6);
     }
 

@@ -13,9 +13,9 @@ import {interval, takeUntil} from 'rxjs';
     providers: [TuiDestroyService],
 })
 export class TuiTooltipExample1 {
-    loader = true;
+    protected loader = true;
 
-    text = '';
+    protected text = '';
 
     constructor() {
         interval(2000)

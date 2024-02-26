@@ -52,9 +52,9 @@ export class TuiInputPasswordComponent
     protected readonly hintOptions = inject(TuiHintOptionsDirective, {optional: true});
     protected readonly directive$: Observable<any> = this.hintOptions?.change$ || EMPTY;
 
-    isPasswordHidden = true;
+    protected isPasswordHidden = true;
 
-    readonly computedAppearance$: Observable<string> = combineLatest([
+    protected readonly computedAppearance$: Observable<string> = combineLatest([
         this.mode$.pipe(map(val => (val === 'onDark' ? 'onDark' : ''))),
         this.directive$.pipe(
             startWith(null),
@@ -65,42 +65,42 @@ export class TuiInputPasswordComponent
         startWith(''),
     );
 
-    readonly passwordTexts$ = inject(TUI_PASSWORD_TEXTS);
-    readonly options = inject(TUI_INPUT_PASSWORD_OPTIONS);
-    readonly type!: TuiContext<TuiSizeL | TuiSizeS>;
+    protected readonly passwordTexts$ = inject(TUI_PASSWORD_TEXTS);
+    protected readonly options = inject(TUI_INPUT_PASSWORD_OPTIONS);
+    protected readonly type!: TuiContext<TuiSizeL | TuiSizeS>;
 
     @HostBinding('attr.data-size')
-    get size(): TuiSizeL | TuiSizeS {
+    protected get size(): TuiSizeL | TuiSizeS {
         return this.textfieldSize.size;
     }
 
-    get nativeFocusableElement(): TuiNativeFocusableElement | null {
+    public get nativeFocusableElement(): TuiNativeFocusableElement | null {
         return this.computedDisabled || !this.textfield
             ? null
             : this.textfield.nativeFocusableElement;
     }
 
-    get focused(): boolean {
+    public get focused(): boolean {
         return !!this.textfield?.focused;
     }
 
-    get icon(): PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeS>> {
+    protected get icon(): PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeS>> {
         return this.isPasswordHidden ? this.options.icons.show : this.options.icons.hide;
     }
 
-    get inputType(): TuiInputType {
+    public get inputType(): TuiInputType {
         return this.isPasswordHidden || !this.interactive ? 'password' : 'text';
     }
 
-    onValueChange(textValue: string): void {
+    public onValueChange(textValue: string): void {
         this.value = textValue;
     }
 
-    onFocused(focused: boolean): void {
+    protected onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
 
-    togglePasswordVisibility(): void {
+    protected togglePasswordVisibility(): void {
         this.isPasswordHidden = !this.isPasswordHidden;
     }
 

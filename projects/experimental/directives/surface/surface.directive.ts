@@ -14,5 +14,5 @@ export class TuiSurfaceDirective {
     protected readonly nothing = tuiWithStyles(TuiSurfaceComponent);
 
     @Input()
-    tuiSurface = '';
+    public tuiSurface = '';
 }

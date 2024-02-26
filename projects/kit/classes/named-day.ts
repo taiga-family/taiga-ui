@@ -2,12 +2,12 @@ import {TuiDay} from '@taiga-ui/cdk';
 
 export class TuiNamedDay {
     constructor(
-        readonly day: TuiDay,
+        public readonly day: TuiDay,
         private readonly name: string,
-        readonly displayDay: TuiDay = day,
+        public readonly displayDay: TuiDay = day,
     ) {}
 
-    toString(): string {
+    protected toString(): string {
         return this.name;
     }
 }

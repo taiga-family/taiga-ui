@@ -16,7 +16,7 @@ export class TuiFocusedDirective {
     private readonly zone = inject(NgZone);
 
     @Output()
-    readonly tuiFocusedChange: Observable<boolean>;
+    public readonly tuiFocusedChange: Observable<boolean>;
 
     constructor() {
         this.tuiFocusedChange = merge(

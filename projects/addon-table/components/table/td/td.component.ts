@@ -17,5 +17,5 @@ import {NgControl} from '@angular/forms';
 export class TuiTdComponent {
     @HostBinding('class._editable')
     @ContentChild(NgControl)
-    readonly control: unknown;
+    protected readonly control: unknown;
 }

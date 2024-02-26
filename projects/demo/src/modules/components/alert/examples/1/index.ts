@@ -12,7 +12,7 @@ import {TuiAlertService} from '@taiga-ui/core';
 export class TuiAlertExampleComponent1 {
     private readonly alerts = inject(TuiAlertService);
 
-    showNotification(): void {
+    protected showNotification(): void {
         this.alerts
             .open('Basic <strong>HTML</strong>', {label: 'With a heading!'})
             .subscribe();

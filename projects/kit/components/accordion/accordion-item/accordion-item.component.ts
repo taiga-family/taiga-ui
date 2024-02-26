@@ -45,70 +45,70 @@ export class TuiAccordionItemComponent
 
     @Input()
     @HostBinding('class._no-padding')
-    noPadding = false;
+    public noPadding = false;
 
     @Input()
     @HostBinding('class._has-arrow')
-    showArrow = true;
+    public showArrow = true;
 
     @Input()
     @HostBinding('attr.data-borders')
-    borders: 'all' | 'top-bottom' | null = 'all';
+    public borders: 'all' | 'top-bottom' | null = 'all';
 
     @Input()
     @HostBinding('attr.data-size')
-    size: TuiSizeS = 'm';
+    public size: TuiSizeS = 'm';
 
     @Input()
     @HostBinding('class._disabled')
-    disabled = false;
+    public disabled = false;
 
     @Input()
-    disableHover = false;
+    public disableHover = false;
 
     @Input()
-    open = false;
+    public open = false;
 
     @Input()
-    async = false;
+    public async = false;
 
     @Output()
-    readonly openChange = new EventEmitter<boolean>();
+    public readonly openChange = new EventEmitter<boolean>();
 
     @ContentChild(TuiAccordionItemEagerContentDirective)
-    readonly eagerContent?: TuiAccordionItemEagerContentDirective;
+    protected readonly eagerContent?: TuiAccordionItemEagerContentDirective;
 
     @ContentChild(TuiAccordionItemContentDirective)
-    readonly lazyContent?: TuiAccordionItemContentDirective;
+    protected readonly lazyContent?: TuiAccordionItemContentDirective;
 
-    readonly options = inject(TUI_ARROW_OPTIONS);
-    readonly mode$ = inject(TUI_MODE);
+    protected readonly options = inject(TUI_ARROW_OPTIONS);
+    protected readonly mode$ = inject(TUI_MODE);
 
-    get nativeFocusableElement(): TuiNativeFocusableElement | null {
+    public get nativeFocusableElement(): TuiNativeFocusableElement | null {
         return this.disabled || !this.focusableElement
             ? null
             : this.focusableElement.nativeElement;
     }
 
-    get focused(): boolean {
+    public get focused(): boolean {
         return tuiIsNativeFocused(this.nativeFocusableElement);
     }
 
-    onFocused(focused: boolean): void {
+    protected onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
 
-    onFocusVisible(focusVisible: boolean): void {
+    protected onFocusVisible(focusVisible: boolean): void {
         this.updateFocusVisible(focusVisible);
     }
 
-    onRowToggle(): void {
+    protected onRowToggle(): void {
         if (!this.disabled) {
             this.updateOpen(!this.open);
         }
     }
 
-    onItemKeyDownEsc(event: Event): void {
+    protected onItemKeyDownEsc(event: Event): void {
         if (!this.open) {
             return;
         }
@@ -117,7 +117,7 @@ export class TuiAccordionItemComponent
         this.updateOpen(false);
     }
 
-    close(): void {
+    public close(): void {
         this.updateOpen(false);
         this.cdr.markForCheck();
     }

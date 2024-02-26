@@ -9,5 +9,5 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiAlertExampleComponent6 {
-    show = false;
+    protected show = false;
 }

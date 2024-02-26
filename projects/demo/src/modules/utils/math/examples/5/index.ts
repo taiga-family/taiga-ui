@@ -12,13 +12,13 @@ import {tuiClamp} from '@taiga-ui/cdk';
     changeDetection,
 })
 export class TuiMathExample5 {
-    parametersForm = new FormGroup({
+    protected parametersForm = new FormGroup({
         value: new FormControl(0),
         min: new FormControl(5),
         max: new FormControl(42),
     });
 
-    get clamped(): number {
+    protected get clamped(): number {
         const {value, min, max} = this.parametersForm.value;
 
         return tuiClamp(value ?? 0, min ?? 5, max ?? 42);

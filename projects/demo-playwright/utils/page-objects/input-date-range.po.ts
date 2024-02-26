@@ -1,15 +1,18 @@
 import {expect, Locator} from '@playwright/test';
 
 export class TuiInputDateRangePO {
-    readonly textfield: Locator = this.host.getByRole('textbox');
-    readonly calendarRange: Locator = this.host.page().locator('tui-calendar-range');
-    readonly items = this.calendarRange.locator(
+    protected readonly textfield: Locator = this.host.getByRole('textbox');
+    protected readonly calendarRange: Locator = this.host
+        .page()
+        .locator('tui-calendar-range');
+
+    protected readonly items = this.calendarRange.locator(
         '[automation-id="tui-calendar-range__menu"]',
     );
 
     constructor(private readonly host: Locator) {}
 
-    async getItems(): Promise<Locator[]> {
+    protected async getItems(): Promise<Locator[]> {
         const dataList = this.calendarRange.locator(
             '[automation-id="tui-calendar-range__menu"]',
         );
@@ -19,7 +22,7 @@ export class TuiInputDateRangePO {
         return dataList.locator('[tuiOption]').all();
     }
 
-    async selectItem(index: number): Promise<void> {
+    protected async selectItem(index: number): Promise<void> {
         const items = await this.getItems();
 
         await items[index].click();

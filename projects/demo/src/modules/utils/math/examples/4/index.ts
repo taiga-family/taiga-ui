@@ -12,12 +12,12 @@ import {tuiQuantize} from '@taiga-ui/cdk';
     changeDetection,
 })
 export class TuiMathExample4 {
-    parametersForm = new FormGroup({
+    protected parametersForm = new FormGroup({
         value: new FormControl(3),
         quantum: new FormControl(2),
     });
 
-    get quantized(): number {
+    protected get quantized(): number {
         const {value, quantum} = this.parametersForm.value;
 
         return tuiQuantize(value ?? 3, quantum ?? 2);

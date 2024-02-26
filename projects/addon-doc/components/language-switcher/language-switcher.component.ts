@@ -32,11 +32,13 @@ import {TuiSelectModule} from '@taiga-ui/kit';
 export class TuiLanguageSwitcherComponent {
     private readonly flagPipe = inject(TuiFlagPipe);
 
-    readonly switcher = inject(TuiLanguageSwitcher);
+    protected readonly switcher = inject(TuiLanguageSwitcher);
 
-    readonly language = new FormControl(tuiCapitalizeFirstLetter(this.switcher.language));
+    protected readonly language = new FormControl(
+        tuiCapitalizeFirstLetter(this.switcher.language),
+    );
 
-    readonly flags = new Map<TuiLanguageName, TuiCountryIsoCode>([
+    protected readonly flags = new Map<TuiLanguageName, TuiCountryIsoCode>([
         ['belarusian', TuiCountryIsoCode.BY],
         ['chinese', TuiCountryIsoCode.CN],
         ['dutch', TuiCountryIsoCode.NL],
@@ -55,13 +57,13 @@ export class TuiLanguageSwitcherComponent {
         ['vietnamese', TuiCountryIsoCode.VN],
     ]);
 
-    readonly names: TuiLanguageName[] = Array.from(this.flags.keys());
+    protected readonly names: TuiLanguageName[] = Array.from(this.flags.keys());
 
     /**
      * @deprecated use `<img [src]="countryIsoCode | tuiFlagPipe" />`
      * TODO drop in v4.0
      */
-    getFlagPath(code?: TuiCountryIsoCode): string | null {
+    protected getFlagPath(code?: TuiCountryIsoCode): string | null {
         return this.flagPipe.transform(code);
     }
 }

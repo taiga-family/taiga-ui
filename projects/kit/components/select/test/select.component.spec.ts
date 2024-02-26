@@ -18,12 +18,12 @@ import {TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 
 class Beast {
     constructor(
-        readonly species: string,
-        readonly trait: string,
-        readonly id: string,
+        protected readonly species: string,
+        protected readonly trait: string,
+        protected readonly id: string,
     ) {}
 
-    toString(): string {
+    protected toString(): string {
         return `${this.trait} ${this.species}`;
     }
 }
@@ -57,12 +57,13 @@ describe('Select', () => {
     })
     class TestComponent {
         @ViewChild(TuiSelectComponent, {static: true})
-        component!: TuiSelectComponent<Beast | string>;
+        protected component!: TuiSelectComponent<Beast | string>;
 
-        items = ITEMS;
-        control = new FormControl();
-        cleaner = false;
-        identityMatcher: TuiIdentityMatcher<Beast> = TUI_DEFAULT_IDENTITY_MATCHER;
+        protected items = ITEMS;
+        protected control = new FormControl();
+        protected cleaner = false;
+        protected identityMatcher: TuiIdentityMatcher<Beast> =
+            TUI_DEFAULT_IDENTITY_MATCHER;
     }
 
     let fixture: ComponentFixture<TestComponent>;

@@ -14,11 +14,11 @@ export class TuiTreeNodeDirective<T> implements OnDestroy {
     });
 
     @Input('tuiTreeNode')
-    set value(value: T) {
+    public set value(value: T) {
         this.directive?.register(this.component, value);
     }
 
-    ngOnDestroy(): void {
+    public ngOnDestroy(): void {
         this.directive?.unregister(this.component);
     }
 }

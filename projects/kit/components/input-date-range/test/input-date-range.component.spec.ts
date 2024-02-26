@@ -38,24 +38,24 @@ describe('InputDateRangeComponent', () => {
     })
     class TestComponent {
         @ViewChild(TuiInputDateRangeComponent)
-        readonly component!: TuiInputDateRangeComponent;
+        protected readonly component!: TuiInputDateRangeComponent;
 
-        readonly control = new FormControl(
+        protected readonly control = new FormControl(
             new TuiDayRange(
                 TuiDay.currentLocal().append({day: -2}),
                 TuiDay.currentLocal().append({day: -2}),
             ),
         );
 
-        cleaner = false;
+        protected cleaner = false;
 
-        readOnly = false;
+        protected readOnly = false;
 
-        items: readonly TuiDayRangePeriod[] = [];
+        protected items: readonly TuiDayRangePeriod[] = [];
 
-        min = new TuiDay(1900, 0, 1);
+        protected min = new TuiDay(1900, 0, 1);
 
-        max = TUI_LAST_DAY;
+        protected max = TUI_LAST_DAY;
     }
 
     let fixture: ComponentFixture<TestComponent>;
@@ -257,11 +257,11 @@ describe('InputDateRangeComponent', () => {
             TuiDay | null,
             Date | null
         > {
-            fromControlValue(controlValue: Date | null): TuiDay | null {
+            public fromControlValue(controlValue: Date | null): TuiDay | null {
                 return controlValue && TuiDay.fromLocalNativeDate(controlValue);
             }
 
-            toControlValue(componentValue: TuiDay | null): Date | null {
+            public toControlValue(componentValue: TuiDay | null): Date | null {
                 return componentValue?.toLocalNativeDate() || null;
             }
         }
@@ -279,7 +279,9 @@ describe('InputDateRangeComponent', () => {
                 super();
             }
 
-            fromControlValue(controlValue: [Date, Date] | null): TuiDayRange | null {
+            public fromControlValue(
+                controlValue: [Date, Date] | null,
+            ): TuiDayRange | null {
                 const [transformedFrom, transformedTo] = controlValue || [null, null];
                 const from =
                     transformedFrom &&
@@ -290,7 +292,9 @@ describe('InputDateRangeComponent', () => {
                 return from && to && new TuiDayRange(from, to);
             }
 
-            toControlValue(componentValue: TuiDayRange | null): [Date, Date] | null {
+            public toControlValue(
+                componentValue: TuiDayRange | null,
+            ): [Date, Date] | null {
                 const from =
                     componentValue &&
                     this.dateTransformer.toControlValue(componentValue.from);
@@ -323,7 +327,7 @@ describe('InputDateRangeComponent', () => {
             `,
         })
         class TransformerTestComponent extends TestComponent {
-            override control = new FormControl([
+            public override control = new FormControl([
                 new Date(2022, 0, 31),
                 new Date(2022, 5, 14),
             ]);

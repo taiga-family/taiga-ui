@@ -10,9 +10,9 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiHighlightExample1 {
-    search = '';
+    protected search = '';
 
-    readonly rows = [
+    protected readonly rows = [
         ['King Arthur', '-', 'Arrested'],
         ['Sir Bedevere', 'The Wise', 'Arrested'],
         ['Sir Lancelot', 'The Brave', 'Arrested'],

@@ -27,22 +27,22 @@ import {Observable} from 'rxjs';
 })
 export class TuiErrorComponent {
     @Input('error')
-    set errorSetter(error: TuiValidationError | string | null) {
+    public set errorSetter(error: TuiValidationError | string | null) {
         this.error = tuiIsString(error) ? new TuiValidationError(error) : error;
     }
 
-    readonly options = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
+    protected readonly options = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
 
-    error: TuiValidationError | null = null;
+    protected error: TuiValidationError | null = null;
 
-    visible = true;
+    protected visible = true;
 
-    readonly mode$ = inject<Observable<TuiBrightness | null>>(TUI_MODE);
-    readonly defaultErrorMessage$ = inject(TUI_DEFAULT_ERROR_MESSAGE);
+    protected readonly mode$ = inject<Observable<TuiBrightness | null>>(TUI_MODE);
+    protected readonly defaultErrorMessage$ = inject(TUI_DEFAULT_ERROR_MESSAGE);
 
     @HostListener('animationcancel.self', ['false'])
     @HostListener('animationstart.self', ['true'])
-    onAnimation(visible: boolean): void {
+    protected onAnimation(visible: boolean): void {
         this.visible = visible;
     }
 }

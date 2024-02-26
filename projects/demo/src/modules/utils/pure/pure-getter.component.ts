@@ -9,11 +9,11 @@ import {tuiPure} from '@taiga-ui/cdk';
 })
 export class ExampleTuiPureGetterComponent {
     @tuiPure
-    get fibonacci42(): number {
+    protected get fibonacci42(): number {
         return this.fibonacci(42);
     }
 
-    show = false;
+    protected show = false;
 
     private fibonacci(num: number): number {
         return num <= 1 ? num : this.fibonacci(num - 1) + this.fibonacci(num - 2);

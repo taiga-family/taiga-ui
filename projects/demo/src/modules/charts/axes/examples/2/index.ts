@@ -16,34 +16,34 @@ const BENJI = 100;
 export class TuiAxesExample2 {
     private readonly setNames = ['cdk', 'core', 'kit', 'charts'];
 
-    readonly value: ReadonlyArray<[number, number, number, number]> = [
+    protected readonly value: ReadonlyArray<[number, number, number, number]> = [
         [10, 20, 3, 7],
         [15, 18, 24, 1],
         [34, 23, 12, 9],
         [30, 14, 18, 14],
     ];
 
-    readonly axisYSecondaryLabels = [
+    protected readonly axisYSecondaryLabels = [
         '',
         `${this.getMax(this.value) / 2} k`,
         `${this.getMax(this.value)} k`,
     ];
 
-    readonly axisXLabels = ['Q1', 'Q2', 'Q3', 'Q4'];
+    protected readonly axisXLabels = ['Q1', 'Q2', 'Q3', 'Q4'];
 
-    readonly horizontalLinesHandler = TUI_ALWAYS_DASHED;
+    protected readonly horizontalLinesHandler = TUI_ALWAYS_DASHED;
 
-    readonly verticalLinesHandler = TUI_ALWAYS_NONE;
+    protected readonly verticalLinesHandler = TUI_ALWAYS_NONE;
 
-    getPercent(set: [number, number, number, number]): number {
+    protected getPercent(set: [number, number, number, number]): number {
         return (BENJI * Math.max(...set)) / this.getMax(this.value);
     }
 
-    getSetName(index: number): string {
+    protected getSetName(index: number): string {
         return this.setNames[index];
     }
 
-    getBackground(index: number): string {
+    protected getBackground(index: number): string {
         return `var(--tui-chart-${index})`;
     }
 

@@ -20,7 +20,7 @@ import {of} from 'rxjs';
     ],
 })
 export class TuiInputCardGroupedExample5 {
-    readonly control = new FormControl<Partial<TuiCard>>({
+    protected readonly control = new FormControl<Partial<TuiCard>>({
         card: '558620******2158',
         expire: '12/25',
     });

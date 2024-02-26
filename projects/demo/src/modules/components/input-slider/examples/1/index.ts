@@ -10,13 +10,13 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiInputSliderExample1 {
-    readonly min = 5;
-    readonly max = 20;
-    readonly sliderStep = 1;
-    readonly steps = (this.max - this.min) / this.sliderStep;
-    readonly quantum = 0.01;
+    protected readonly min = 5;
+    protected readonly max = 20;
+    protected readonly sliderStep = 1;
+    protected readonly steps = (this.max - this.min) / this.sliderStep;
+    protected readonly quantum = 0.01;
 
-    readonly hint = `Dragging slider change input by ${this.sliderStep}.\nBut you can type decimal number which is multiple of ${this.quantum}.`;
+    protected readonly hint = `Dragging slider change input by ${this.sliderStep}.\nBut you can type decimal number which is multiple of ${this.quantum}.`;
 
-    readonly control = new FormControl(6.5);
+    protected readonly control = new FormControl(6.5);
 }

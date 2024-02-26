@@ -67,23 +67,23 @@ export class TuiDropdownOptionsDirective implements TuiDropdownOptions {
     private readonly options = inject(TUI_DROPDOWN_OPTIONS, {skipSelf: true});
 
     @Input('tuiDropdownAlign')
-    align = this.options.align;
+    public align = this.options.align;
 
     @Input('tuiDropdownAppearance')
-    appearance = this.options.appearance;
+    public appearance = this.options.appearance;
 
     @Input('tuiDropdownDirection')
-    direction = this.options.direction;
+    public direction = this.options.direction;
 
     @Input('tuiDropdownLimitWidth')
-    limitWidth = this.options.limitWidth;
+    public limitWidth = this.options.limitWidth;
 
     @Input('tuiDropdownMinHeight')
-    minHeight = this.options.minHeight;
+    public minHeight = this.options.minHeight;
 
     @Input('tuiDropdownMaxHeight')
-    maxHeight = this.options.maxHeight;
+    public maxHeight = this.options.maxHeight;
 
     @Input('tuiDropdownOffset')
-    offset = this.options.offset;
+    public offset = this.options.offset;
 }

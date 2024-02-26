@@ -46,19 +46,19 @@ export class TuiSegmentedComponent implements OnChanges {
 
     @Input()
     @HostBinding('attr.data-size')
-    size: TuiSizeL | TuiSizeS = 's';
+    public size: TuiSizeL | TuiSizeS = 's';
 
     @Input()
-    activeItemIndex = 0;
+    public activeItemIndex = 0;
 
     @Output()
-    readonly activeItemIndexChange = new EventEmitter<number>();
+    public readonly activeItemIndexChange = new EventEmitter<number>();
 
-    ngOnChanges(): void {
+    public ngOnChanges(): void {
         this.refresh();
     }
 
-    update(activeItemIndex: number): void {
+    public update(activeItemIndex: number): void {
         if (activeItemIndex === this.activeItemIndex) {
             return;
         }

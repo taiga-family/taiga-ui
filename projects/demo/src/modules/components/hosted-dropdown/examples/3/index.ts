@@ -10,18 +10,18 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiHostedDropdownExample3 {
-    open = false;
+    protected open = false;
 
-    readonly items = [
+    protected readonly items = [
         ['By interest', 'By genre', 'By release year', 'By subject'],
         ['Ascending', 'Descending'],
     ];
 
-    primary = 'By genre';
+    protected primary = 'By genre';
 
-    ascending = false;
+    protected ascending = false;
 
-    onClick(item: string): void {
+    protected onClick(item: string): void {
         if (this.items[0].includes(item)) {
             this.primary = item;
 
@@ -31,7 +31,7 @@ export class TuiHostedDropdownExample3 {
         this.ascending = item === this.items[1][0];
     }
 
-    itemIsActive(item: string): boolean {
+    protected itemIsActive(item: string): boolean {
         return (
             item === this.primary ||
             (this.ascending && item === this.items[1][0]) ||

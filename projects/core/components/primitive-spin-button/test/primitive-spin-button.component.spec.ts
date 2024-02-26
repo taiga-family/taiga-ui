@@ -13,7 +13,7 @@ describe('primitiveSpinButton', () => {
     })
     class TestComponent {
         @ViewChild(TuiPrimitiveSpinButtonComponent, {static: true})
-        component!: TuiPrimitiveSpinButtonComponent;
+        protected component!: TuiPrimitiveSpinButtonComponent;
     }
 
     let fixture: ComponentFixture<TestComponent>;

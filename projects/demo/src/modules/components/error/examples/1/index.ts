@@ -10,11 +10,11 @@ import {TuiValidationError} from '@taiga-ui/cdk';
     changeDetection,
 })
 export class TuiErrorExample1 {
-    enabled = false;
+    protected enabled = false;
 
-    error = new TuiValidationError('An error');
+    protected error = new TuiValidationError('An error');
 
-    get computedError(): TuiValidationError | null {
+    protected get computedError(): TuiValidationError | null {
         return this.enabled ? this.error : null;
     }
 }

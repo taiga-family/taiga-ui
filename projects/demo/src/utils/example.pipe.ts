@@ -9,9 +9,9 @@ const toKebab: (str: string) => string = str =>
 
 @Pipe({name: 'tuiExample', standalone: true})
 export class TuiExamplePipe implements PipeTransform {
-    docPage = inject(TuiDocPageComponent);
+    protected docPage = inject(TuiDocPageComponent);
 
-    transform(
+    public transform(
         index: number,
         formats:
             | 'html,less'

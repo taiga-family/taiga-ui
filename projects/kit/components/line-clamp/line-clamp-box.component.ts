@@ -13,7 +13,7 @@ import {TUI_HINT_PROVIDERS, tuiFadeIn, TuiHintComponent} from '@taiga-ui/core';
 })
 export class TuiLineClampBoxComponent extends TuiHintComponent {
     @HostBinding('style.min-width.px')
-    get width(): number {
+    protected get width(): number {
         return this.accessor.getClientRect().width;
     }
 }

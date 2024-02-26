@@ -45,10 +45,10 @@ export class TuiExpandComponent {
     private state: TuiValuesOf<typeof State> = State.Idle;
 
     @Input()
-    async = false;
+    public async = false;
 
     @Input('expanded')
-    set expandedSetter(expanded: boolean | null) {
+    public set expandedSetter(expanded: boolean | null) {
         if (this.expanded === null) {
             this.expanded = expanded;
 
@@ -67,24 +67,24 @@ export class TuiExpandComponent {
     }
 
     @ContentChild(TuiExpandContentDirective, {read: TemplateRef})
-    content: TemplateRef<NgIfContext<boolean>> | null = null;
+    protected content: TemplateRef<NgIfContext<boolean>> | null = null;
 
     @HostBinding('class._expanded')
     @HostBinding('attr.aria-expanded')
-    expanded: boolean | null = null;
+    protected expanded: boolean | null = null;
 
     @HostBinding('class._overflow')
-    get overflow(): boolean {
+    protected get overflow(): boolean {
         return this.state !== State.Idle;
     }
 
     @HostBinding('class._loading')
-    get loading(): boolean {
+    protected get loading(): boolean {
         return !!this.expanded && this.async && this.state === State.Loading;
     }
 
     @HostBinding('style.height.px')
-    get height(): number | null {
+    protected get height(): number | null {
         const {expanded, state, contentWrapper} = this;
 
         if (
@@ -109,19 +109,19 @@ export class TuiExpandComponent {
         return null;
     }
 
-    get contentVisible(): boolean {
+    protected get contentVisible(): boolean {
         return this.expanded || this.state !== State.Idle;
     }
 
     @HostListener('transitionend.self', ['$event'])
-    onTransitionEnd({propertyName}: TransitionEvent): void {
+    protected onTransitionEnd({propertyName}: TransitionEvent): void {
         if (propertyName === 'opacity' && this.state === State.Animated) {
             this.state = State.Idle;
         }
     }
 
     @HostListener(TUI_EXPAND_LOADED, ['$event'])
-    onExpandLoaded(event: Event): void {
+    protected onExpandLoaded(event: Event): void {
         event.stopPropagation();
 
         if (this.state === State.Loading) {

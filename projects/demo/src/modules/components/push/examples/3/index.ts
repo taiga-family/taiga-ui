@@ -9,9 +9,9 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiPushExample3 {
-    open = false;
+    protected open = false;
 
-    toggle(open: boolean): void {
+    protected toggle(open: boolean): void {
         this.open = open;
     }
 }

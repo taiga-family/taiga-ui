@@ -16,60 +16,60 @@ export abstract class AbstractTuiInteractive {
     private readonly autoIdString: string;
 
     @Input()
-    pseudoHover: boolean | null = null;
+    public pseudoHover: boolean | null = null;
 
     @Input()
-    pseudoActive: boolean | null = null;
+    public pseudoActive: boolean | null = null;
 
     @Input()
     @HostBinding('attr.data-focused')
-    pseudoFocus: boolean | null = null;
+    public pseudoFocus: boolean | null = null;
 
     /**
      * Determines if component is focusable with keyboard.
      */
     @Input()
-    focusable = true;
+    public focusable = true;
 
     @Input()
-    nativeId = '';
+    public nativeId = '';
 
     /**
      * Emits 'true' on focus and 'false' on blur.
      */
     @Output()
-    readonly focusedChange = new EventEmitter<boolean>();
+    public readonly focusedChange = new EventEmitter<boolean>();
 
     @Output()
-    readonly focusVisibleChange = new EventEmitter<boolean>();
+    public readonly focusVisibleChange = new EventEmitter<boolean>();
 
-    focusVisible = false;
+    protected focusVisible = false;
 
     constructor() {
         this.autoIdString = `${TUI}${AbstractTuiInteractive.autoId++}${Date.now()}`;
     }
 
     @HostBinding('class._disabled')
-    get computedDisabled(): boolean {
+    public get computedDisabled(): boolean {
         return this.disabled;
     }
 
-    get computedFocusable(): boolean {
+    public get computedFocusable(): boolean {
         return !this.computedDisabled && (this.focusable || this.focused);
     }
 
     @HostBinding('class._focused')
-    get computedFocused(): boolean {
+    public get computedFocused(): boolean {
         return !this.computedDisabled && (this.pseudoFocus ?? this.focused);
     }
 
     @HostBinding('class._focus-visible')
-    get computedFocusVisible(): boolean {
+    protected get computedFocusVisible(): boolean {
         return !this.computedDisabled && (this.pseudoFocus ?? this.focusVisible);
     }
 
     // TODO: 3.0 Consider removing since native input is exposed
-    get id(): string {
+    protected get id(): string {
         return this.nativeId || this.autoIdString;
     }
 

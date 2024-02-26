@@ -24,7 +24,7 @@ export class TuiAppBarComponent {
     @ViewChildren('side')
     private readonly side: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
-    readonly width$ = merge(
+    protected readonly width$ = merge(
         inject(ResizeObserverService),
         inject(MutationObserverService),
     ).pipe(

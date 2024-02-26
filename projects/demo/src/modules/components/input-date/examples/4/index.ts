@@ -15,5 +15,5 @@ import {TUI_DATE_FORMAT, TUI_DATE_SEPARATOR, TuiDay} from '@taiga-ui/cdk';
     ],
 })
 export class TuiInputDateExample4 {
-    readonly control = new FormControl(new TuiDay(2017, 0, 15));
+    protected readonly control = new FormControl(new TuiDay(2017, 0, 15));
 }

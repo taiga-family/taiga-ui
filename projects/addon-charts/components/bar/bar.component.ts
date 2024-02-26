@@ -11,17 +11,17 @@ import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 })
 export class TuiBarComponent {
     @Input()
-    value: readonly number[] = [];
+    public value: readonly number[] = [];
 
     @Input()
     @HostBinding('attr.data-size')
-    size: TuiSizeL | TuiSizeS = 'm';
+    public size: TuiSizeL | TuiSizeS = 'm';
 
-    getHeight(value: number): number {
+    protected getHeight(value: number): number {
         return (100 * value) / this.getSum(this.value);
     }
 
-    getColor(index: number): SafeValue {
+    protected getColor(index: number): SafeValue {
         return `var(--tui-chart-${index})`;
     }
 

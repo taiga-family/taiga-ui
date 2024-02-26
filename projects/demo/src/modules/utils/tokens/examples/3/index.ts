@@ -10,5 +10,5 @@ import {TUI_FOCUSABLE_ITEM_ACCESSOR} from '@taiga-ui/cdk';
     changeDetection,
 })
 export class TuiTokensExample3 {
-    readonly focusable = inject(TUI_FOCUSABLE_ITEM_ACCESSOR, {optional: true});
+    protected readonly focusable = inject(TUI_FOCUSABLE_ITEM_ACCESSOR, {optional: true});
 }

@@ -12,7 +12,7 @@ export class TuiStaticRequestService {
     private readonly platformId = inject(PLATFORM_ID);
     private readonly cache = new Map<string, Observable<string>>();
 
-    request(url: string): Observable<string> {
+    public request(url: string): Observable<string> {
         const cache = this.cache.get(url);
 
         if (cache) {

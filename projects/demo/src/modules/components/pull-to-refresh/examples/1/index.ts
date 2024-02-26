@@ -38,11 +38,11 @@ export class TuiPullToRefreshExample1 {
     private readonly alerts = inject(TuiAlertService);
     private readonly loaded$ = inject<Subject<void>>(TUI_PULL_TO_REFRESH_LOADED);
 
-    onPull(): void {
+    protected onPull(): void {
         this.alerts.open('Loading...').subscribe();
     }
 
-    finishLoading(): void {
+    protected finishLoading(): void {
         this.loaded$.next();
     }
 }

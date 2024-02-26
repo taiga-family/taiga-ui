@@ -31,45 +31,45 @@ export class TuiPrimitiveCalendarComponent {
     private readonly today = TuiDay.currentLocal();
 
     @Input()
-    month: TuiMonth = TuiMonth.currentLocal();
+    public month: TuiMonth = TuiMonth.currentLocal();
 
     @Input()
-    disabledItemHandler: TuiBooleanHandler<TuiDay> = ALWAYS_FALSE_HANDLER;
+    public disabledItemHandler: TuiBooleanHandler<TuiDay> = ALWAYS_FALSE_HANDLER;
 
     @Input()
-    markerHandler: TuiMarkerHandler = TUI_DEFAULT_MARKER_HANDLER;
+    public markerHandler: TuiMarkerHandler = TUI_DEFAULT_MARKER_HANDLER;
 
     @Input()
-    value: TuiDay | TuiDayRange | readonly TuiDay[] | null = null;
+    public value: TuiDay | TuiDayRange | readonly TuiDay[] | null = null;
 
     @Input()
-    hoveredItem: TuiDay | null = null;
+    public hoveredItem: TuiDay | null = null;
 
     @Input()
-    showAdjacent = true;
+    public showAdjacent = true;
 
     @Output()
-    readonly hoveredItemChange = new EventEmitter<TuiDay | null>();
+    public readonly hoveredItemChange = new EventEmitter<TuiDay | null>();
 
     @Output()
-    readonly dayClick = new EventEmitter<TuiDay>();
+    public readonly dayClick = new EventEmitter<TuiDay>();
 
-    readonly unorderedWeekDays$ = inject(TUI_SHORT_WEEK_DAYS);
-    readonly dayTypeHandler = inject(TUI_DAY_TYPE_HANDLER);
+    protected readonly unorderedWeekDays$ = inject(TUI_SHORT_WEEK_DAYS);
+    protected readonly dayTypeHandler = inject(TUI_DAY_TYPE_HANDLER);
 
     @HostBinding('class._single')
-    get isSingleDayRange(): boolean {
+    protected get isSingleDayRange(): boolean {
         return this.value instanceof TuiDayRange && this.value.isSingleDay;
     }
 
     /**
      * @deprecated: use {@link this.isSingleDayRange}
      */
-    get isSingle(): boolean {
+    protected get isSingle(): boolean {
         return this.isSingleDayRange;
     }
 
-    readonly toMarkers = (
+    protected readonly toMarkers = (
         day: TuiDay,
         today: boolean,
         inRange: boolean,
@@ -84,7 +84,7 @@ export class TuiPrimitiveCalendarComponent {
         return markers.length === 0 ? null : markers;
     };
 
-    getItemState(item: TuiDay): TuiInteractiveState | null {
+    protected getItemState(item: TuiDay): TuiInteractiveState | null {
         const {disabledItemHandler, pressedItem, hoveredItem} = this;
 
         if (disabledItemHandler(item)) {
@@ -102,7 +102,7 @@ export class TuiPrimitiveCalendarComponent {
         return null;
     }
 
-    getItemRange(item: TuiDay): TuiRangeState | null {
+    protected getItemRange(item: TuiDay): TuiRangeState | null {
         const {value, hoveredItem} = this;
 
         if (!value) {
@@ -144,15 +144,15 @@ export class TuiPrimitiveCalendarComponent {
         return value.isSingleDay && value.from.daySame(item) ? 'single' : null;
     }
 
-    itemIsToday(item: TuiDay): boolean {
+    protected itemIsToday(item: TuiDay): boolean {
         return this.today.daySame(item);
     }
 
-    itemIsUnavailable(item: TuiDay): boolean {
+    protected itemIsUnavailable(item: TuiDay): boolean {
         return !this.month.monthSame(item);
     }
 
-    itemIsInterval(day: TuiDay): boolean {
+    protected itemIsInterval(day: TuiDay): boolean {
         const {value, hoveredItem} = this;
 
         if (!(value instanceof TuiDayRange)) {
@@ -172,15 +172,15 @@ export class TuiPrimitiveCalendarComponent {
         return range.from.daySameOrBefore(day) && range.to.dayAfter(day);
     }
 
-    onItemHovered(item: TuiDay | false): void {
+    protected onItemHovered(item: TuiDay | false): void {
         this.updateHoveredItem(item || null);
     }
 
-    onItemPressed(item: TuiDay | false): void {
+    protected onItemPressed(item: TuiDay | false): void {
         this.pressedItem = item || null;
     }
 
-    onItemClick(item: TuiDay): void {
+    protected onItemClick(item: TuiDay): void {
         this.dayClick.emit(item);
     }
 

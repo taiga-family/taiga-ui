@@ -42,9 +42,9 @@ export class TuiLineDaysChartHintDirective implements AfterContentInit {
     private readonly hovered$ = inject(TuiHoveredService);
 
     @Input('tuiLineChartHint')
-    hint: PolymorpheusContent<TuiContext<readonly TuiPoint[]>>;
+    public hint: PolymorpheusContent<TuiContext<readonly TuiPoint[]>>;
 
-    ngAfterContentInit(): void {
+    public ngAfterContentInit(): void {
         combineLatest([
             ...this.charts.map(({charts}) => tuiLineChartDrivers(charts)),
             this.hovered$,
@@ -59,11 +59,11 @@ export class TuiLineDaysChartHintDirective implements AfterContentInit {
             });
     }
 
-    getContext(day: TuiDay): ReadonlyArray<[TuiDay, number]> {
+    public getContext(day: TuiDay): ReadonlyArray<[TuiDay, number]> {
         return this.getMap(...this.charts.map(({value}) => value)).get(String(day)) || [];
     }
 
-    raise(day: TuiDay): void {
+    public raise(day: TuiDay): void {
         const current = this.charts
             .map(({value}) => find(value, day))
             .filter(([_, value]) => !Number.isNaN(value));

@@ -17,17 +17,17 @@ export abstract class AbstractTuiNativeSelect<H = TuiTextfieldHost, T = string> 
     protected readonly el: HTMLSelectElement = inject(ElementRef).nativeElement;
 
     @Input()
-    disabledItemHandler: TuiBooleanHandler<T> | null = null;
+    public disabledItemHandler: TuiBooleanHandler<T> | null = null;
 
     @ViewChild(TuiDataListDirective, {read: TemplateRef, static: true})
-    readonly datalist: TemplateRef<any> | null = null;
+    protected readonly datalist: TemplateRef<any> | null = null;
 
-    readonly host = inject<H>(TUI_TEXTFIELD_HOST);
-    readonly control = inject(AbstractTuiControl);
-    readonly itemsHandlers = inject(TUI_ITEMS_HANDLERS);
+    protected readonly host = inject<H>(TUI_TEXTFIELD_HOST);
+    protected readonly control = inject(AbstractTuiControl);
+    protected readonly itemsHandlers = inject(TUI_ITEMS_HANDLERS);
 
     @HostBinding('id')
-    get id(): string {
+    protected get id(): string {
         return this.el.id || this.idService.generate();
     }
 }

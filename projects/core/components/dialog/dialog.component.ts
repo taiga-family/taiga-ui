@@ -69,11 +69,13 @@ export class TuiDialogComponent<O, I> {
         },
     } as const;
 
-    readonly close$ = new Subject<void>();
+    protected readonly close$ = new Subject<void>();
 
-    readonly context = inject<TuiPopover<TuiDialogOptions<I>, O>>(POLYMORPHEUS_CONTEXT);
-    readonly closeWord$ = inject(TUI_CLOSE_WORD);
-    readonly icons = inject(TUI_COMMON_ICONS);
+    protected readonly context =
+        inject<TuiPopover<TuiDialogOptions<I>, O>>(POLYMORPHEUS_CONTEXT);
+
+    protected readonly closeWord$ = inject(TUI_CLOSE_WORD);
+    protected readonly icons = inject(TUI_COMMON_ICONS);
 
     constructor() {
         merge(
@@ -90,24 +92,24 @@ export class TuiDialogComponent<O, I> {
     }
 
     @HostBinding('attr.data-size')
-    get size(): TuiDialogSize {
+    protected get size(): TuiDialogSize {
         return this.context.size;
     }
 
     @HostBinding('class._centered')
-    get header(): PolymorpheusContent<TuiPopover<TuiDialogOptions<I>, O>> {
+    protected get header(): PolymorpheusContent<TuiPopover<TuiDialogOptions<I>, O>> {
         return this.context.header;
     }
 
     @HostBinding('@tuiSlideInTop')
     @HostBinding('@tuiFadeIn')
-    get slideInTop(): AnimationOptions {
+    protected get slideInTop(): AnimationOptions {
         return this.fullscreen || this.isMobile
             ? this.fullscreenAnimation
             : this.animation;
     }
 
-    get fullscreen(): boolean {
+    protected get fullscreen(): boolean {
         return !this.isMobile && (this.size === 'fullscreen' || this.size === 'page');
     }
 

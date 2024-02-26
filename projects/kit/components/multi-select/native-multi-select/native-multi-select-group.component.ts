@@ -34,12 +34,12 @@ export class TuiNativeMultiSelectGroupComponent<
     T,
 > extends AbstractTuiNativeMultiSelect<T> {
     @Input()
-    items: readonly T[][] | null = [];
+    public items: readonly T[][] | null = [];
 
     @Input()
-    labels: readonly string[] = [];
+    public labels: readonly string[] = [];
 
-    onValueChange(selectedOptions: HTMLSelectElement['selectedOptions']): void {
+    protected onValueChange(selectedOptions: HTMLSelectElement['selectedOptions']): void {
         const selected = Array.from(selectedOptions).map(option => option.index);
         const flatItems = this.items?.reduce((acc, val) => acc.concat(val), []) || [];
         const value = flatItems.filter((_, index) => selected.includes(index));

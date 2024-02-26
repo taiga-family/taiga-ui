@@ -18,66 +18,66 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
     ],
 })
 export class ExampleTuiHostedDropdownComponent extends AbstractExampleTuiDropdown {
-    readonly exampleModule = import('./examples/import/import-module.md?raw');
-    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
+    protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
         LESS: import('./examples/1/index.less?raw'),
     };
 
-    readonly example2: TuiDocExample = {
+    protected readonly example2: TuiDocExample = {
         TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
     };
 
-    readonly example3: TuiDocExample = {
+    protected readonly example3: TuiDocExample = {
         TypeScript: import('./examples/3/index.ts?raw'),
         HTML: import('./examples/3/index.html?raw'),
         LESS: import('./examples/3/index.less?raw'),
     };
 
-    readonly example4: TuiDocExample = {
+    protected readonly example4: TuiDocExample = {
         TypeScript: import('./examples/4/index.ts?raw'),
         HTML: import('./examples/4/index.html?raw'),
     };
 
-    readonly example5: TuiDocExample = {
+    protected readonly example5: TuiDocExample = {
         TypeScript: import('./examples/5/index.ts?raw'),
         HTML: import('./examples/5/index.html?raw'),
         LESS: import('./examples/5/index.less?raw'),
         'accessor.ts': import('./examples/5/accessor.ts?raw'),
     };
 
-    open = false;
+    protected open = false;
 
-    sided = false;
+    protected sided = false;
 
-    input = '';
+    protected input = '';
 
-    canOpenVariants = [true, 'getter this.input.length > 2'];
+    protected canOpenVariants = [true, 'getter this.input.length > 2'];
 
-    canOpenSelected = this.canOpenVariants[0];
+    protected canOpenSelected = this.canOpenVariants[0];
 
-    readonly contentVariants = ['Template', 'Custom string'];
+    protected readonly contentVariants = ['Template', 'Custom string'];
 
-    content = this.contentVariants[0];
+    protected content = this.contentVariants[0];
 
-    get template(): boolean {
+    protected get template(): boolean {
         return this.content === 'Template';
     }
 
-    get canOpen(): boolean {
+    protected get canOpen(): boolean {
         return this.canOpenSelected === true || this.input.length > 2;
     }
 
-    onInput(input: string): void {
+    protected onInput(input: string): void {
         this.input = input;
         this.open = this.canOpen;
     }
 
-    onClick(): void {
+    protected onClick(): void {
         this.open = false;
     }
 }

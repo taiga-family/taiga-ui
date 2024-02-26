@@ -11,15 +11,15 @@ import {TuiKeySteps} from '@taiga-ui/kit';
     changeDetection,
 })
 export class TuiRangeExample4 {
-    readonly ticksLabels = ['0', '10K', '100K', '500k', '1000K'];
-    readonly segments = this.ticksLabels.length - 1;
+    protected readonly ticksLabels = ['0', '10K', '100K', '500k', '1000K'];
+    protected readonly segments = this.ticksLabels.length - 1;
 
     // 12.5% (of total distance) per step
-    readonly stepPercentage = 100 / (2 * this.segments);
+    protected readonly stepPercentage = 100 / (2 * this.segments);
 
-    value = [0, 100_000];
+    protected value = [0, 100_000];
 
-    readonly keySteps: TuiKeySteps = [
+    protected readonly keySteps: TuiKeySteps = [
         // [percent, value]
         [0, 0],
         [25, 10_000],

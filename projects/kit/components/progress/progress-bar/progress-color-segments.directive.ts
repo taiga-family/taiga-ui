@@ -34,12 +34,12 @@ export class TuiProgressColorSegmentsDirective {
     private readonly resize$ = inject(ResizeObserverService);
 
     @Input('tuiProgressColorSegments')
-    set colors(colors: string[]) {
+    public set colors(colors: string[]) {
         this.colors$.next(colors);
     }
 
     @tuiPure
-    get calcSegments$(): Observable<string> {
+    protected get calcSegments$(): Observable<string> {
         return combineLatest([
             this.colors$,
             this.resize$.pipe(

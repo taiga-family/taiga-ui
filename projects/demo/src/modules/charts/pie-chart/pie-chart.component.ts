@@ -13,34 +13,34 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
     changeDetection,
 })
 export class ExampleTuiPieChartComponent {
-    readonly exampleModule = import('./examples/import/import-module.md?raw');
-    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
+    protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
         LESS: import('./examples/1/index.less?raw'),
     };
 
-    readonly example2: TuiDocExample = {
+    protected readonly example2: TuiDocExample = {
         TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
         LESS: import('./examples/2/index.less?raw'),
     };
 
-    readonly valueVariants = [
+    protected readonly valueVariants = [
         [0, 30, 20, 10],
         [40, 30, 20, 10],
         [13769, 12367, 10172, 3018, 2592],
     ];
 
-    value = this.valueVariants[0];
+    protected value = this.valueVariants[0];
 
-    readonly activeItemIndexVariants = [NaN, 0, 1, 2];
+    protected readonly activeItemIndexVariants = [NaN, 0, 1, 2];
 
-    activeItemIndex = this.activeItemIndexVariants[0];
+    protected activeItemIndex = this.activeItemIndexVariants[0];
 
-    readonly sizeVariants: ReadonlyArray<TuiSizeXL | TuiSizeXS> = [
+    protected readonly sizeVariants: ReadonlyArray<TuiSizeXL | TuiSizeXS> = [
         'xs',
         's',
         'm',
@@ -48,21 +48,23 @@ export class ExampleTuiPieChartComponent {
         'xl',
     ];
 
-    size = this.sizeVariants[2];
+    protected size = this.sizeVariants[2];
 
-    readonly contentVariants: ReadonlyArray<PolymorpheusContent<TuiContext<number>>> = [
+    protected readonly contentVariants: ReadonlyArray<
+        PolymorpheusContent<TuiContext<number>>
+    > = [
         '',
         ({$implicit}) => this.getPercent($implicit),
         ({$implicit}) => this.format($implicit),
     ];
 
-    hintContent = this.contentVariants[0];
+    protected hintContent = this.contentVariants[0];
 
-    getPercent(index: number): string {
+    protected getPercent(index: number): string {
         return `${tuiRound((100 * this.value[index]) / tuiSum(...this.value), 2)} %`;
     }
 
-    format(index: number): string {
+    protected format(index: number): string {
         return `${tuiFormatNumber(this.value[index])} ${tuiGetCurrencySymbol(
             TuiCurrency.Ruble,
         )}`;

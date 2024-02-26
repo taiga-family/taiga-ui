@@ -14,9 +14,9 @@ import {BehaviorSubject, map} from 'rxjs';
 export class TuiPanExample1 {
     private readonly sanitizer = inject(DomSanitizer);
 
-    readonly coordinates$ = new BehaviorSubject([0, 0]);
+    protected readonly coordinates$ = new BehaviorSubject([0, 0]);
 
-    readonly transform$ = this.coordinates$.pipe(
+    protected readonly transform$ = this.coordinates$.pipe(
         map(coords =>
             this.sanitizer.bypassSecurityTrustStyle(
                 `translate(${coords[0]}px, ${coords[1]}px)`,
@@ -24,14 +24,14 @@ export class TuiPanExample1 {
         ),
     );
 
-    onPan(delta: readonly [number, number]): void {
+    protected onPan(delta: readonly [number, number]): void {
         this.coordinates$.next([
             this.currentCoords[0] + delta[0],
             this.currentCoords[1] + delta[1],
         ]);
     }
 
-    get currentCoords(): number[] {
+    protected get currentCoords(): number[] {
         return this.coordinates$.value;
     }
 }

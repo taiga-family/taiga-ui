@@ -16,5 +16,5 @@ export const TUI_TEXTFIELD_CLEANER = tuiCreateTokenFromFactory(
 })
 export class TuiTextfieldCleanerDirective extends AbstractTuiController {
     @Input('tuiTextfieldCleaner')
-    cleaner = false;
+    public cleaner = false;
 }

@@ -57,49 +57,49 @@ export class TuiPaginationComponent
     private readonly modeDirective = inject(TuiModeDirective, {optional: true});
 
     @Input()
-    length = 1;
+    public length = 1;
 
     @Input()
-    size: TuiSizeL | TuiSizeS = 'l';
+    public size: TuiSizeL | TuiSizeS = 'l';
 
     @Input()
-    readonly disabled = false;
+    public readonly disabled = false;
 
     /**
      * Amount of visible pages around active page
      */
     @Input()
-    activePadding = 1;
+    public activePadding = 1;
 
     /**
      * Amount of visible pages at the edges
      */
     @Input()
-    sidePadding = 1;
+    public sidePadding = 1;
 
     /**
      * Customization for page number display.
      */
     @Input()
-    content: PolymorpheusContent<TuiContext<number>>;
+    public content: PolymorpheusContent<TuiContext<number>>;
 
     /**
      * Active page index
      */
     @Input()
-    index = 0;
+    public index = 0;
 
     @Output()
-    readonly indexChange = new EventEmitter<number>();
+    public readonly indexChange = new EventEmitter<number>();
 
-    readonly mode$ = this.modeDirective
+    protected readonly mode$ = this.modeDirective
         ? this.modeDirective.change$.pipe(map(() => this.modeDirective?.mode || null))
         : EMPTY;
 
-    readonly texts$ = inject(TUI_PAGINATION_TEXTS);
-    readonly icons = inject(TUI_SPIN_ICONS);
+    protected readonly texts$ = inject(TUI_PAGINATION_TEXTS);
+    protected readonly icons = inject(TUI_SPIN_ICONS);
 
-    get nativeFocusableElement(): TuiNativeFocusableElement | null {
+    public get nativeFocusableElement(): TuiNativeFocusableElement | null {
         if (this.disabled) {
             return null;
         }
@@ -125,30 +125,30 @@ export class TuiPaginationComponent
         );
     }
 
-    get focused(): boolean {
+    public get focused(): boolean {
         return tuiIsNativeFocusedIn(this.el);
     }
 
     /**
      * Number of items in a container.
      */
-    get elementsLength(): number {
+    protected get elementsLength(): number {
         return this.itemsFit ? this.length : this.maxElementsLength;
     }
 
-    get buttonSize(): TuiSizeXS {
+    protected get buttonSize(): TuiSizeXS {
         return this.size === 'm' ? 'xs' : 's';
     }
 
-    get arrowIsDisabledLeft(): boolean {
+    protected get arrowIsDisabledLeft(): boolean {
         return this.index === 0;
     }
 
-    get arrowIsDisabledRight(): boolean {
+    protected get arrowIsDisabledRight(): boolean {
         return this.reverseIndex === 0;
     }
 
-    elementIsFocusable(index: number): boolean {
+    protected elementIsFocusable(index: number): boolean {
         return this.index === index && !this.focused;
     }
 
@@ -157,7 +157,7 @@ export class TuiPaginationComponent
      * @param elementIndex
      * @returns index or null (for '…')
      */
-    getItemIndexByElementIndex(elementIndex: number): number | null {
+    protected getItemIndexByElementIndex(elementIndex: number): number | null {
         if (this.size === 's') {
             return elementIndex;
         }
@@ -192,21 +192,24 @@ export class TuiPaginationComponent
         );
     }
 
-    getElementMode(index: number): TuiAppearance {
+    protected getElementMode(index: number): TuiAppearance {
         return this.index === index ? TuiAppearance.Primary : TuiAppearance.Flat;
     }
 
-    getSmallElementMode(index: number, mode: TuiBrightness | null): TuiAppearance {
+    protected getSmallElementMode(
+        index: number,
+        mode: TuiBrightness | null,
+    ): TuiAppearance {
         return this.index === index && mode !== 'onLight'
             ? TuiAppearance.Primary
             : TuiAppearance.Secondary;
     }
 
-    onElementClick(index: number): void {
+    protected onElementClick(index: number): void {
         this.updateIndex(index);
     }
 
-    onElementKeyDownArrowLeft(element: TuiButtonComponent): void {
+    protected onElementKeyDownArrowLeft(element: TuiButtonComponent): void {
         if (element === this.els.first) {
             return;
         }
@@ -218,7 +221,7 @@ export class TuiPaginationComponent
         }
     }
 
-    onElementKeyDownArrowRight(element: TuiButtonComponent): void {
+    protected onElementKeyDownArrowRight(element: TuiButtonComponent): void {
         if (element === this.els.last) {
             return;
         }
@@ -230,12 +233,12 @@ export class TuiPaginationComponent
         }
     }
 
-    onArrowClick(direction: TuiHorizontalDirection): void {
+    protected onArrowClick(direction: TuiHorizontalDirection): void {
         this.tryChangeTo(direction);
         this.focusActive();
     }
 
-    onActiveZone(focused: boolean): void {
+    protected onActiveZone(focused: boolean): void {
         this.updateFocused(focused);
     }
 

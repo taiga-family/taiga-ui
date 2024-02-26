@@ -10,5 +10,5 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiChipExample4 {
-    selected = false;
+    protected selected = false;
 }

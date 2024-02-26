@@ -21,9 +21,9 @@ export class TuiDialogExampleComponent9 {
     private readonly dialogs = inject(TuiDialogService);
     private readonly destroy$ = inject(TuiDestroyService, {self: true});
 
-    readonly amountControl = new FormControl(100);
+    protected readonly amountControl = new FormControl(100);
 
-    payByCard(): void {
+    protected payByCard(): void {
         this.dialogs
             .open(new PolymorpheusComponent(PayModalComponent), {
                 size: 'auto',

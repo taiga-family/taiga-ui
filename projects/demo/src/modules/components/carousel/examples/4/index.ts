@@ -10,11 +10,11 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiCarouselExample4 {
-    open = false;
+    protected open = false;
 
-    index = 0;
+    protected index = 0;
 
-    get background(): string {
+    protected get background(): string {
         switch (this.index) {
             case 0:
                 return 'url(https://cdn.tvc.ru/pictures/mood/bw/194/22.jpg)';
@@ -25,12 +25,12 @@ export class TuiCarouselExample4 {
         }
     }
 
-    onClick(): void {
+    protected onClick(): void {
         this.index = 0;
         this.open = true;
     }
 
-    navigate(delta: number): void {
+    protected navigate(delta: number): void {
         this.index = (this.index + delta) % 3;
     }
 }

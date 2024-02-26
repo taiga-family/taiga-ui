@@ -8,7 +8,7 @@ import {fromEvent, map, merge, Observable, startWith} from 'rxjs';
 export class TuiFallbackSrcPipe implements PipeTransform {
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
 
-    transform(src: string, fallback: string): Observable<string> {
+    public transform(src: string, fallback: string): Observable<string> {
         return merge(
             fromEvent(this.el, TUI_ICON_ERROR),
             fromEvent(this.el, 'error', {capture: true}),

@@ -35,37 +35,37 @@ export class TuiDocDocumentationPropertyConnectorDirective<T>
     private readonly alerts = inject(TuiAlertService);
 
     @Input()
-    documentationPropertyName = '';
+    public documentationPropertyName = '';
 
     @Input()
-    documentationPropertyMode: TuiDocumentationPropertyType = null;
+    public documentationPropertyMode: TuiDocumentationPropertyType = null;
 
     @Input()
-    documentationPropertyType = '';
+    public documentationPropertyType = '';
 
     @Input()
-    documentationPropertyValue!: T;
+    public documentationPropertyValue!: T;
 
     @Input()
-    documentationPropertyDeprecated = false;
+    public documentationPropertyDeprecated = false;
 
     @Input()
-    documentationPropertyValues: readonly T[] | null = null;
+    public documentationPropertyValues: readonly T[] | null = null;
 
     @Output()
-    readonly documentationPropertyValueChange = new EventEmitter<T>();
+    public readonly documentationPropertyValueChange = new EventEmitter<T>();
 
-    readonly changed$ = new Subject<void>();
+    public readonly changed$ = new Subject<void>();
 
-    readonly emits$ = new BehaviorSubject(1);
+    public readonly emits$ = new BehaviorSubject(1);
 
-    readonly template = inject(TemplateRef);
+    public readonly template = inject(TemplateRef);
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         this.parseParams(this.activatedRoute.snapshot.queryParams);
     }
 
-    get attrName(): string {
+    public get attrName(): string {
         switch (this.documentationPropertyMode) {
             case 'input':
                 return `[${this.documentationPropertyName}]`;
@@ -78,25 +78,25 @@ export class TuiDocDocumentationPropertyConnectorDirective<T>
         }
     }
 
-    get hasItems(): boolean {
+    public get hasItems(): boolean {
         return !!this.documentationPropertyValues;
     }
 
-    get shouldShowValues(): boolean {
+    public get shouldShowValues(): boolean {
         return this.documentationPropertyMode !== 'output';
     }
 
-    ngOnChanges(): void {
+    public ngOnChanges(): void {
         this.changed$.next();
     }
 
-    onValueChange(value: T): void {
+    public onValueChange(value: T): void {
         this.documentationPropertyValue = value;
         this.documentationPropertyValueChange.emit(value);
         this.setQueryParam(value);
     }
 
-    emitEvent(event: unknown): void {
+    public emitEvent(event: unknown): void {
         // For more convenient debugging
         console.info(this.attrName, event);
 

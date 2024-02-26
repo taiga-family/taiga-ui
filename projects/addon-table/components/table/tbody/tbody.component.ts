@@ -33,36 +33,38 @@ export class TuiTbodyComponent<T extends Partial<Record<keyof T, any>>> {
     private readonly options = inject(TUI_TABLE_OPTIONS);
 
     @Input()
-    data: readonly T[] = [];
+    public data: readonly T[] = [];
 
     @Input()
-    heading: PolymorpheusContent;
+    public heading: PolymorpheusContent;
 
     @Input()
-    open = this.options.open;
+    public open = this.options.open;
 
     @Output()
-    readonly openChange = new EventEmitter<boolean>();
+    public readonly openChange = new EventEmitter<boolean>();
 
     @ContentChild(forwardRef(() => TuiRowDirective))
-    readonly row?: TuiRowDirective<T>;
+    protected readonly row?: TuiRowDirective<T>;
 
     @ContentChildren(forwardRef(() => TuiTrComponent))
-    readonly rows: QueryList<TuiTrComponent<T>> = EMPTY_QUERY;
+    public readonly rows: QueryList<TuiTrComponent<T>> = EMPTY_QUERY;
 
-    readonly arrowOptions = inject(TUI_ARROW_OPTIONS);
-    readonly table = inject<TuiTableDirective<T>>(forwardRef(() => TuiTableDirective));
+    protected readonly arrowOptions = inject(TUI_ARROW_OPTIONS);
+    protected readonly table = inject<TuiTableDirective<T>>(
+        forwardRef(() => TuiTableDirective),
+    );
 
-    get sorted(): readonly T[] {
+    public get sorted(): readonly T[] {
         return this.pipe.transform(this.data);
     }
 
-    readonly toContext = (
+    protected readonly toContext = (
         $implicit: T,
         index: number,
     ): {$implicit: T; index: number} => ({$implicit, index});
 
-    onClick(): void {
+    protected onClick(): void {
         this.open = !this.open;
         this.openChange.emit(this.open);
     }

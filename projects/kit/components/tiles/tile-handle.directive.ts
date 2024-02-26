@@ -25,7 +25,7 @@ export class TuiTileHandleDirective {
     private y = NaN;
 
     @HostListener('pointerdown.silent', ['$event'])
-    onStart(event: PointerEvent): void {
+    protected onStart(event: PointerEvent): void {
         const target = tuiGetActualTarget(event);
         const {x, y, pointerId} = event;
 
@@ -38,7 +38,7 @@ export class TuiTileHandleDirective {
 
     @shouldCall(isInteracting)
     @HostListener('document:pointerup.silent')
-    onPointer(x = NaN, y = NaN): void {
+    protected onPointer(x = NaN, y = NaN): void {
         const {left, top} = this.tile.element.getBoundingClientRect();
 
         this.x = x - left;
@@ -48,7 +48,7 @@ export class TuiTileHandleDirective {
 
     @shouldCall(isDragging)
     @HostListener('document:pointermove.silent', ['$event.x', '$event.y'])
-    onMove(x: number, y: number): void {
+    protected onMove(x: number, y: number): void {
         this.tile.onDrag([x - this.x, y - this.y]);
     }
 }

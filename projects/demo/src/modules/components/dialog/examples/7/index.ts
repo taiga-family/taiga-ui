@@ -16,7 +16,7 @@ export class TuiDialogExampleComponent7 {
     private readonly dialogs = inject(TuiDialogService);
     private readonly injector = inject(INJECTOR);
 
-    showDialog(): void {
+    protected showDialog(): void {
         this.dialogs
             .open(
                 new PolymorpheusComponent(SearchDialogExampleComponent, this.injector),

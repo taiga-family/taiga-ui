@@ -8,7 +8,7 @@ import {AbstractControl, NgControl} from '@angular/forms';
 export class TuiControlDirective {
     private readonly ngControl = inject(NgControl);
 
-    get control(): AbstractControl {
+    protected get control(): AbstractControl {
         return this.ngControl.control!;
     }
 }

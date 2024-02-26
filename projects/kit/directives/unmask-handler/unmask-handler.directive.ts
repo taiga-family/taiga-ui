@@ -14,19 +14,19 @@ import {identity} from 'rxjs';
 })
 export class TuiUnmaskHandlerDirective extends AbstractTuiValueTransformer<string> {
     @Input()
-    tuiUnmaskHandler: TuiMapper<string, string> = identity;
+    public tuiUnmaskHandler: TuiMapper<string, string> = identity;
 
     @Input()
-    maskito: MaskitoOptions | null = null;
+    public maskito: MaskitoOptions | null = null;
 
-    override fromControlValue(controlValue: unknown): string {
+    public override fromControlValue(controlValue: unknown): string {
         return maskitoTransform(
             String(controlValue ?? ''),
             this.maskito || MASKITO_DEFAULT_OPTIONS,
         );
     }
 
-    override toControlValue(value: string): string {
+    public override toControlValue(value: string): string {
         return this.tuiUnmaskHandler(value);
     }
 }

@@ -26,9 +26,9 @@ describe('ElasticSticky', () => {
     })
     class TestComponent {
         @Output()
-        change = new EventEmitter<number>();
+        public change = new EventEmitter<number>();
 
-        transform(value: number): number {
+        protected transform(value: number): number {
             // sometimes tuiElasticSticky emit 0.5, 0.52 or 0.53 on CI
             return Number(value.toFixed(1));
         }

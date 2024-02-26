@@ -19,9 +19,9 @@ interface Item {
 export class TuiTabBarExample1 {
     private readonly alerts = inject(TuiAlertService);
 
-    activeItemIndex = 1;
+    protected activeItemIndex = 1;
 
-    readonly items = [
+    protected readonly items = [
         {
             text: 'Favorites',
             icon: 'tuiIconHeartLarge',
@@ -47,7 +47,7 @@ export class TuiTabBarExample1 {
         },
     ];
 
-    onClick(item: Item): void {
+    protected onClick(item: Item): void {
         item.badge = 0;
         this.alerts.open(this.activeItemIndex, {label: item.text}).subscribe();
     }

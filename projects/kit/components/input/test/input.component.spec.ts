@@ -22,12 +22,12 @@ import {
 
 class User {
     constructor(
-        readonly firstName: string,
-        readonly lastName: string,
-        readonly id: string,
+        protected readonly firstName: string,
+        protected readonly lastName: string,
+        protected readonly id: string,
     ) {}
 
-    toString(): string {
+    protected toString(): string {
         return `${this.firstName} ${this.lastName}`;
     }
 }
@@ -71,26 +71,26 @@ describe('Input', () => {
     })
     class TestComponent {
         @ViewChild(TuiInputComponent, {static: true})
-        component!: TuiInputComponent;
+        protected component!: TuiInputComponent;
 
         @ViewChild('submit')
-        submit!: ElementRef<HTMLButtonElement>;
+        protected submit!: ElementRef<HTMLButtonElement>;
 
-        cleaner = false;
+        protected cleaner = false;
 
-        readOnly = false;
+        protected readOnly = false;
 
-        labelOutside = false;
+        protected labelOutside = false;
 
-        items: User[] | null = ITEMS;
+        protected items: User[] | null = ITEMS;
 
-        size: TuiSizeL | TuiSizeS = 'm';
+        protected size: TuiSizeL | TuiSizeS = 'm';
 
-        hintContent: string | null = 'prompt';
+        protected hintContent: string | null = 'prompt';
 
-        group = new FormGroup({control: new FormControl()});
+        protected group = new FormGroup({control: new FormControl()});
 
-        get control(): FormControl {
+        protected get control(): FormControl {
             return this.group.get('control') as FormControl;
         }
     }

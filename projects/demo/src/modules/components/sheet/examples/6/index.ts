@@ -11,14 +11,14 @@ import {TuiSheetOptions} from '@taiga-ui/addon-mobile';
     changeDetection,
 })
 export class TuiSheetExample6 {
-    open = false;
+    protected open = false;
 
-    readonly options: Partial<TuiSheetOptions> = {
+    protected readonly options: Partial<TuiSheetOptions> = {
         overlay: true,
         stops: ['5rem'],
     };
 
-    readonly images = [
+    protected readonly images = [
         'https://m.media-amazon.com/images/M/MV5BOTEzOTMzNzcwNF5BMl5BanBnXkFtZTgwNDcxODUyMjI@._V1_FMjpg_UX1280_.jpg',
         'https://m.media-amazon.com/images/M/MV5BNzg0MzEwNDgwN15BMl5BanBnXkFtZTgwNTcxODUyMjI@._V1_FMjpg_UX1024_.jpg',
         'https://m.media-amazon.com/images/M/MV5BOTE0MTMxMTY3NF5BMl5BanBnXkFtZTgwNDc3NjIwMjE@._V1_FMjpg_UX1024_.jpg',
@@ -26,11 +26,11 @@ export class TuiSheetExample6 {
         'https://m.media-amazon.com/images/M/MV5BMTU3NDY1MTk3M15BMl5BanBnXkFtZTgwMjc3NjIwMjE@._V1_FMjpg_UX1024_.jpg',
     ];
 
-    toggle(): void {
+    protected toggle(): void {
         this.open = !this.open;
     }
 
-    onIntersection(
+    protected onIntersection(
         [{isIntersecting}]: IntersectionObserverEntry[],
         {classList}: HTMLElement,
     ): void {

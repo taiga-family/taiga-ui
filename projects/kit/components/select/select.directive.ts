@@ -11,19 +11,19 @@ import {TuiSelectComponent} from './select.component';
 export class TuiSelectDirective extends AbstractTuiTextfieldHost<
     TuiSelectComponent<unknown>
 > {
-    override get readOnly(): boolean {
+    public override get readOnly(): boolean {
         return true;
     }
 
-    override get value(): string {
+    public override get value(): string {
         return this.host.computedValue;
     }
 
-    get stringify(): TuiItemsHandlers<unknown>['stringify'] {
+    public get stringify(): TuiItemsHandlers<unknown>['stringify'] {
         return this.host.stringify;
     }
 
-    onValueChange(value: unknown): void {
+    public onValueChange(value: unknown): void {
         this.host.onValueChange(value);
     }
 }

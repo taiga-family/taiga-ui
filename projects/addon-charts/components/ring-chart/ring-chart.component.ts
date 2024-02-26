@@ -16,19 +16,19 @@ import {TuiSizeS, TuiSizeXL} from '@taiga-ui/core';
 })
 export class TuiRingChartComponent {
     @Input()
-    value: readonly number[] = [];
+    public value: readonly number[] = [];
 
     @Input()
     @HostBinding('attr.data-size')
-    size: TuiSizeS | TuiSizeXL = 'm';
+    public size: TuiSizeS | TuiSizeXL = 'm';
 
     @Input()
-    activeItemIndex = NaN;
+    public activeItemIndex = NaN;
 
     @Output()
-    readonly activeItemIndexChange = new EventEmitter<number>();
+    public readonly activeItemIndexChange = new EventEmitter<number>();
 
-    onActiveItemIndexChange(index: number): void {
+    protected onActiveItemIndexChange(index: number): void {
         this.updateActiveItemIndex(index);
     }
 

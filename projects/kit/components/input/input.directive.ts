@@ -8,7 +8,7 @@ import {TuiInputComponent} from './input.component';
     providers: [tuiAsTextfieldHost(TuiInputDirective)],
 })
 export class TuiInputDirective extends AbstractTuiTextfieldHost<TuiInputComponent> {
-    onValueChange(value: string): void {
+    public onValueChange(value: string): void {
         this.host.onValueChange(value);
     }
 }

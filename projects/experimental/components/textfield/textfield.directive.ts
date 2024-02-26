@@ -24,27 +24,27 @@ export class TuiTextfieldDirective implements DoCheck {
     protected readonly textfield = inject(TuiTextfieldComponent);
 
     @Input()
-    readOnly = false;
+    public readOnly = false;
 
     @Input()
-    invalid: boolean | null = null;
+    public invalid: boolean | null = null;
 
     @Input()
-    focused: boolean | null = null;
+    public focused: boolean | null = null;
 
     @Input()
-    state: TuiInteractiveStateT | null = null;
+    public state: TuiInteractiveStateT | null = null;
 
-    readonly idService = inject(TuiIdService);
-    readonly el: HTMLInputElement = inject(ElementRef).nativeElement;
+    protected readonly idService = inject(TuiIdService);
+    public readonly el: HTMLInputElement = inject(ElementRef).nativeElement;
 
-    ngDoCheck(): void {
+    public ngDoCheck(): void {
         this.appearance.tuiAppearance = this.textfield.options.appearance;
         this.appearance.tuiAppearanceFocus = this.focused ?? this.textfield.focused;
         this.appearance.tuiAppearanceState = this.state;
     }
 
-    setValue(value: string): void {
+    public setValue(value: string): void {
         this.el.value = value;
         this.el.dispatchEvent(new Event('input'));
     }

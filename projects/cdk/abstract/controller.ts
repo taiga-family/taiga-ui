@@ -3,9 +3,9 @@ import {Subject} from 'rxjs';
 
 @Directive()
 export abstract class AbstractTuiController implements OnChanges {
-    readonly change$ = new Subject<void>();
+    public readonly change$ = new Subject<void>();
 
-    ngOnChanges(): void {
+    public ngOnChanges(): void {
         this.change$.next();
     }
 }

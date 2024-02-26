@@ -44,36 +44,36 @@ export class TuiTreeItemComponent implements DoCheck {
 
     private readonly change$ = new Subject<void>();
 
-    readonly level = inject<number>(forwardRef(() => TUI_TREE_LEVEL));
+    protected readonly level = inject<number>(forwardRef(() => TUI_TREE_LEVEL));
 
-    readonly content = inject<PolymorpheusContent<TuiTreeItemContext>>(
+    protected readonly content = inject<PolymorpheusContent<TuiTreeItemContext>>(
         forwardRef(() => TUI_TREE_CONTENT),
     );
 
-    readonly expanded$ = this.change$.pipe(
+    protected readonly expanded$ = this.change$.pipe(
         startWith(null),
         map(() => this.isExpanded),
     );
 
-    readonly attached$ = this.change$.pipe(
+    protected readonly attached$ = this.change$.pipe(
         map(() => this.el.isConnected),
         distinctUntilChanged(),
     );
 
     @HostBinding('class._expandable')
-    get isExpandable(): boolean {
+    public get isExpandable(): boolean {
         return !!this.nested.length;
     }
 
-    get isExpanded(): boolean {
+    public get isExpanded(): boolean {
         return this.controller.isExpanded(this);
     }
 
-    ngDoCheck(): void {
+    public ngDoCheck(): void {
         this.checkChanges();
     }
 
-    checkChanges(): void {
+    public checkChanges(): void {
         this.change$.next();
     }
 }

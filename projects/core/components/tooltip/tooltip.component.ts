@@ -27,13 +27,13 @@ export class TuiTooltipComponent<C = any> extends TuiHintOptionsDirective {
     private mode: TuiBrightness | null = null;
 
     @ViewChild(TuiHintHoverDirective)
-    readonly driver$?: TuiHintHoverDirective;
+    protected readonly driver$?: TuiHintHoverDirective;
 
     @Input()
-    describeId = '';
+    public describeId = '';
 
     @Input()
-    context?: C;
+    public context?: C;
 
     constructor() {
         super();
@@ -46,12 +46,12 @@ export class TuiTooltipComponent<C = any> extends TuiHintOptionsDirective {
     }
 
     @HostBinding('attr.data-appearance')
-    get computedAppearance(): string {
+    protected get computedAppearance(): string {
         return this.appearance || this.mode || '';
     }
 
     @HostListener('mousedown', ['$event'])
-    stopOnMobile(event: MouseEvent): void {
+    protected stopOnMobile(event: MouseEvent): void {
         if (this.isMobile) {
             event.preventDefault();
             event.stopPropagation();

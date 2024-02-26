@@ -10,9 +10,9 @@ import {tuiKitIcons} from '@taiga-ui/icons';
     changeDetection,
 })
 export class IconsMappingComponent {
-    readonly options = import('./examples/4/app.module.md?raw');
+    protected readonly options = import('./examples/4/app.module.md?raw');
 
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         HTML: import('./examples/1/index.html?raw'),
         TypeScript: import('./examples/1/index.ts?raw'),
         // eslint-disable-next-line @taiga-ui/experience/strict-tui-doc-example
@@ -21,25 +21,25 @@ export class IconsMappingComponent {
         ),
     };
 
-    readonly example2: TuiDocExample = {
+    protected readonly example2: TuiDocExample = {
         // eslint-disable-next-line @taiga-ui/experience/strict-tui-doc-example
         'process-icons.js': import('./examples/2/process-icons.js.md?raw'),
         // eslint-disable-next-line @taiga-ui/experience/strict-tui-doc-example
         'process-icons.ts': import('./examples/2/process-icons.ts.md?raw'),
     };
 
-    readonly example3: TuiDocExample = {
+    protected readonly example3: TuiDocExample = {
         HTML: import('./examples/3/index.html?raw'),
         TypeScript: import('./examples/3/index.ts?raw'),
         // eslint-disable-next-line @taiga-ui/experience/strict-tui-doc-example
         './assets/icons/polygon.svg': import('../../../assets/icons/polygon.svg?raw'),
     };
 
-    readonly names = Object.keys(tuiKitIcons);
+    protected readonly names = Object.keys(tuiKitIcons);
 
-    expanded = false;
+    protected expanded = false;
 
-    toggle(): void {
+    protected toggle(): void {
         this.expanded = !this.expanded;
     }
 }

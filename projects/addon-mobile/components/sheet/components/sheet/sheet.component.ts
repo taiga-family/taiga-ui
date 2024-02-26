@@ -59,29 +59,31 @@ export class TuiSheetComponent<T> implements TuiSheetRequiredProps<T>, AfterView
     private readonly zone = inject(NgZone);
 
     @Input()
-    item!: TuiSheet<T>;
+    public item!: TuiSheet<T>;
 
-    id = '';
+    protected id = '';
 
-    readonly isIos = inject(TUI_IS_IOS);
-    readonly moreWord$ = inject(TUI_MORE_WORD);
+    protected readonly isIos = inject(TUI_IS_IOS);
+    protected readonly moreWord$ = inject(TUI_MORE_WORD);
 
-    readonly stuck$ = this.scroll$.pipe(map(y => Math.floor(y) > this.contentTop));
+    protected readonly stuck$ = this.scroll$.pipe(
+        map(y => Math.floor(y) > this.contentTop),
+    );
 
-    get stops(): readonly number[] {
+    public get stops(): readonly number[] {
         return this.getStops(this.stopsRefs);
     }
 
-    get imageStop(): number {
+    public get imageStop(): number {
         return (this.item.imageSlide && this.stops[this.stops.length - 1]) || 0;
     }
 
-    get imageHeight(): number {
+    public get imageHeight(): number {
         return this.contentTop - this.sheetTop;
     }
 
     @tuiPure
-    get context(): TuiSheet<T> {
+    public get context(): TuiSheet<T> {
         return {
             ...this.item,
             scroll$: this.scroll$.pipe(tuiZonefull(this.zone)),
@@ -89,17 +91,17 @@ export class TuiSheetComponent<T> implements TuiSheetRequiredProps<T>, AfterView
     }
 
     @HostListener(TUI_SHEET_ID, ['$event.detail'])
-    onId(id: string): void {
+    protected onId(id: string): void {
         this.id = id;
     }
 
-    ngAfterViewInit(): void {
+    public ngAfterViewInit(): void {
         this.el.scrollTop = [...this.stops, this.sheetTop, this.contentTop][
             this.item.initial
         ];
     }
 
-    scrollTo(top: number = this.sheetTop): void {
+    protected scrollTo(top: number = this.sheetTop): void {
         if (this.isIos) {
             const offset = top - this.el.scrollTop - 16;
 
@@ -117,7 +119,7 @@ export class TuiSheetComponent<T> implements TuiSheetRequiredProps<T>, AfterView
         this.el.scrollTo({top, behavior: 'smooth'});
     }
 
-    close(): void {
+    protected close(): void {
         if (this.context.closeable) {
             this.context.$implicit.complete();
         }

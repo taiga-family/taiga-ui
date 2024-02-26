@@ -9,40 +9,40 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
     changeDetection,
 })
 export class ExampleAnimationsComponent {
-    speed = 1000;
-    readonly speedTicksLabels: number[] = [0, 600, 1200, 1800, 2400, 3000];
+    protected speed = 1000;
+    protected readonly speedTicksLabels: number[] = [0, 600, 1200, 1800, 2400, 3000];
 
-    readonly heightCollapseExample: TuiDocExample = {
+    protected readonly heightCollapseExample: TuiDocExample = {
         HTML: import('./examples/height-collapse/index.html?raw'),
         TypeScript: import('./examples/height-collapse/index.ts?raw'),
         LESS: import('./examples/height-collapse/index.less?raw'),
     };
 
-    readonly widthCollapseExample: TuiDocExample = {
+    protected readonly widthCollapseExample: TuiDocExample = {
         HTML: import('./examples/width-collapse/index.html?raw'),
         TypeScript: import('./examples/width-collapse/index.ts?raw'),
         LESS: import('./examples/width-collapse/index.less?raw'),
     };
 
-    readonly fadeInExample: TuiDocExample = {
+    protected readonly fadeInExample: TuiDocExample = {
         HTML: import('./examples/fade-in/index.html?raw'),
         TypeScript: import('./examples/fade-in/index.ts?raw'),
         LESS: import('./examples/fade-in/index.less?raw'),
     };
 
-    readonly scaleInExample: TuiDocExample = {
+    protected readonly scaleInExample: TuiDocExample = {
         HTML: import('./examples/scale-in/index.html?raw'),
         TypeScript: import('./examples/scale-in/index.ts?raw'),
         LESS: import('./examples/scale-in/index.less?raw'),
     };
 
-    readonly slideInExample: TuiDocExample = {
+    protected readonly slideInExample: TuiDocExample = {
         HTML: import('./examples/slide-in/index.html?raw'),
         TypeScript: import('./examples/slide-in/index.ts?raw'),
         LESS: import('./examples/slide-in/index.less?raw'),
     };
 
-    readonly dropdownExample: TuiDocExample = {
+    protected readonly dropdownExample: TuiDocExample = {
         HTML: import('./examples/dropdown/index.html?raw'),
         TypeScript: import('./examples/dropdown/index.ts?raw'),
         LESS: import('./examples/dropdown/index.less?raw'),

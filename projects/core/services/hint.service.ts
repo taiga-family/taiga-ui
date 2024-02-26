@@ -13,11 +13,11 @@ export class TuiHintService extends BehaviorSubject<readonly TuiPortalItem[]> {
         super([]);
     }
 
-    add(directive: TuiPortalItem): void {
+    public add(directive: TuiPortalItem): void {
         this.next(this.value.concat(directive));
     }
 
-    remove(directive: TuiPortalItem): void {
+    public remove(directive: TuiPortalItem): void {
         if (this.value.includes(directive)) {
             this.next(this.value.filter(hint => hint !== directive));
         }

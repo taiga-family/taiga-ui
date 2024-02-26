@@ -15,8 +15,8 @@ export enum TuiDragStage {
 
 export class TuiDragState {
     constructor(
-        readonly stage: TuiDragStage,
-        readonly event: MouseEvent,
+        public readonly stage: TuiDragStage,
+        public readonly event: MouseEvent,
     ) {}
 }
 

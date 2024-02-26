@@ -7,12 +7,12 @@ import {delay, of} from 'rxjs';
 
 class User {
     constructor(
-        readonly firstName: string,
-        readonly lastName: string,
-        readonly avatarUrl: string | null = null,
+        public readonly firstName: string,
+        public readonly lastName: string,
+        public readonly avatarUrl: string | null = null,
     ) {}
 
-    toString(): string {
+    public toString(): string {
         return `${this.firstName} ${this.lastName}`;
     }
 }
@@ -35,9 +35,10 @@ const databaseMockData: readonly User[] = [
     changeDetection,
 })
 export class TuiSelectExample6 {
-    value = null;
+    protected value = null;
 
-    readonly items$ = of(databaseMockData).pipe(delay(5000));
+    protected readonly items$ = of(databaseMockData).pipe(delay(5000));
 
-    readonly disabledItemHandler: TuiBooleanHandler<User> = ({avatarUrl}) => !!avatarUrl;
+    protected readonly disabledItemHandler: TuiBooleanHandler<User> = ({avatarUrl}) =>
+        !!avatarUrl;
 }

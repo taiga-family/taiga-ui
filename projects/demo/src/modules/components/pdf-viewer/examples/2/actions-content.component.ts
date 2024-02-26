@@ -11,6 +11,6 @@ import type {Buttons} from './index';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ActionsContentComponent {
-    readonly context =
+    protected readonly context =
         inject<TuiPopover<TuiPdfViewerOptions<Buttons>, string>>(POLYMORPHEUS_CONTEXT);
 }

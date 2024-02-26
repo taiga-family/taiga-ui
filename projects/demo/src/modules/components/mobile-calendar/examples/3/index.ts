@@ -18,5 +18,5 @@ import {TUI_FIRST_DAY_OF_WEEK} from '@taiga-ui/core';
     ],
 })
 export class TuiMobileCalendarExample3 {
-    min = TuiDay.currentLocal();
+    protected min = TuiDay.currentLocal();
 }

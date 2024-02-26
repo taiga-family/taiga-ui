@@ -10,12 +10,12 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiDataListWrapperExample3 {
-    readonly control = new FormControl('');
+    protected readonly control = new FormControl('');
 
-    readonly items = [
+    protected readonly items = [
         ['Caesar', 'Greek', 'Apple and Chicken'],
         ['Broccoli Cheddar', 'Chicken and Rice', 'Chicken Noodle'],
     ];
 
-    labels = ['Salad', 'Soup'];
+    protected labels = ['Salad', 'Soup'];
 }

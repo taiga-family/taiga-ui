@@ -13,7 +13,7 @@ export class TuiPieChartDirective {
     private readonly sector$ = new BehaviorSubject<readonly [number, number]>([0, 0]);
 
     @Input()
-    set tuiPieChart(sector: readonly [number, number]) {
+    public set tuiPieChart(sector: readonly [number, number]) {
         this.sector$.next(sector);
     }
 

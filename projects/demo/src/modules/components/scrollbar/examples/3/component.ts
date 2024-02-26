@@ -16,17 +16,17 @@ export class TuiScrollbarExample3Component {
     @ViewChild(TuiScrollbarComponent, {read: ElementRef})
     private readonly scrollBar?: ElementRef<HTMLElement>;
 
-    SOME_OFFSET_CONST = SOME_OFFSET_CONST;
+    protected SOME_OFFSET_CONST = SOME_OFFSET_CONST;
 
-    get scrollTop(): number {
+    protected get scrollTop(): number {
         return this.scrollBar ? this.scrollBar.nativeElement.scrollTop : 0;
     }
 
-    get scrollLeft(): number {
+    protected get scrollLeft(): number {
         return this.scrollBar ? this.scrollBar.nativeElement.scrollLeft : 0;
     }
 
-    onClick(): void {
+    protected onClick(): void {
         if (!this.scrollBar) {
             return;
         }

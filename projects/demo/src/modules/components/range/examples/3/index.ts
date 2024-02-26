@@ -10,16 +10,16 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiRangeExample3 {
-    readonly min = 0;
-    readonly max = 1000;
-    readonly step = 250;
-    readonly segments = 4;
-    readonly labels = [...new Array(this.segments + 1).keys()].map(
+    protected readonly min = 0;
+    protected readonly max = 1000;
+    protected readonly step = 250;
+    protected readonly segments = 4;
+    protected readonly labels = [...new Array(this.segments + 1).keys()].map(
         i => this.min + this.step * i,
     );
 
-    value = [0, 250];
+    protected value = [0, 250];
 
     // https://angular.io/api/common/I18nPluralPipe
-    pluralMap = {'=0': '0', '=1': '# item', '=1000': 'MAX', other: '# items'};
+    protected pluralMap = {'=0': '0', '=1': '# item', '=1000': 'MAX', other: '# items'};
 }

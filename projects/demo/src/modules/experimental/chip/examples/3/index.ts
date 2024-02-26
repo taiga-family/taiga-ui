@@ -13,14 +13,14 @@ import {TuiAlertService} from '@taiga-ui/core';
 export class TuiChipExample3 {
     private readonly alerts = inject(TuiAlertService);
 
-    readonly checked = [true, false, true];
-    readonly values = ['test', 'Some text', 'WOW!'];
+    protected readonly checked = [true, false, true];
+    protected readonly values = ['test', 'Some text', 'WOW!'];
 
-    onChip(index: number): void {
+    protected onChip(index: number): void {
         this.alerts.open(`Clicked chip ${index + 1}`).subscribe();
     }
 
-    onX(index: number): void {
+    protected onX(index: number): void {
         this.alerts.open(`Removed chip ${index + 1}`, {status: 'error'}).subscribe();
     }
 }

@@ -11,29 +11,29 @@ import {TUI_ARROW} from '@taiga-ui/kit';
     changeDetection,
 })
 export class TuiDropdownOpenExample4 {
-    readonly form = new FormGroup({
+    protected readonly form = new FormGroup({
         control: new FormControl<string[]>([]),
     });
 
-    open = false;
+    protected open = false;
 
-    readonly items = ['Drafts', 'In Progress', 'Completed'];
+    protected readonly items = ['Drafts', 'In Progress', 'Completed'];
 
-    readonly arrow = TUI_ARROW;
+    protected readonly arrow = TUI_ARROW;
 
     private get value(): readonly string[] {
         return this.form.get('control')?.value || [];
     }
 
-    get appearance(): string {
+    protected get appearance(): string {
         return this.length ? 'whiteblock-active' : 'whiteblock';
     }
 
-    get length(): number {
+    protected get length(): number {
         return this.value.length || 0;
     }
 
-    get text(): string {
+    protected get text(): string {
         switch (this.length) {
             case 0:
                 return 'Select';

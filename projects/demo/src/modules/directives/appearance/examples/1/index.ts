@@ -10,5 +10,5 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiAppearanceExample1 {
-    open = false;
+    protected open = false;
 }

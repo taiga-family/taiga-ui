@@ -17,10 +17,10 @@ import {TUI_ICON_RESOLVER} from '@taiga-ui/core';
 })
 export class TuiIconComponent {
     @Input()
-    icon = '';
+    public icon = '';
 
     @Input()
-    background = '';
+    public background = '';
 
-    readonly resolver = inject<TuiStringHandler<string>>(TUI_ICON_RESOLVER);
+    protected readonly resolver = inject<TuiStringHandler<string>>(TUI_ICON_RESOLVER);
 }

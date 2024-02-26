@@ -40,44 +40,44 @@ export class TuiFilterComponent<T> extends AbstractTuiMultipleControl<T> {
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
 
     @Input()
-    identityMatcher: TuiIdentityMatcher<T> = TUI_DEFAULT_IDENTITY_MATCHER;
+    public identityMatcher: TuiIdentityMatcher<T> = TUI_DEFAULT_IDENTITY_MATCHER;
 
     @Input()
-    items: readonly T[] = [];
+    public items: readonly T[] = [];
 
     @Input()
     @HostBinding('attr.data-size')
-    size: TuiSizeL | TuiSizeXS = 'm';
+    public size: TuiSizeL | TuiSizeXS = 'm';
 
     @Input()
-    disabledItemHandler: TuiBooleanHandler<T> = ALWAYS_FALSE_HANDLER;
+    public disabledItemHandler: TuiBooleanHandler<T> = ALWAYS_FALSE_HANDLER;
 
     @Output()
-    readonly toggledItem = new EventEmitter<T>();
+    public readonly toggledItem = new EventEmitter<T>();
 
     @Input()
-    content: PolymorpheusContent = ({$implicit}: TuiContext<unknown>) =>
+    public content: PolymorpheusContent = ({$implicit}: TuiContext<unknown>) =>
         TUI_DEFAULT_STRINGIFY($implicit);
 
     @Input()
-    badgeHandler: TuiHandler<T, number> = item => Number(item);
+    public badgeHandler: TuiHandler<T, number> = item => Number(item);
 
-    get focused(): boolean {
+    public get focused(): boolean {
         return tuiIsNativeFocusedIn(this.el);
     }
 
-    get badgeSize(): TuiSizeS | TuiSizeXL {
+    protected get badgeSize(): TuiSizeS | TuiSizeXL {
         return badgeSizeMap[this.size];
     }
 
-    onCheckbox(value: boolean, item: T): void {
+    protected onCheckbox(value: boolean, item: T): void {
         this.toggledItem.emit(item);
         this.value = value
             ? [...this.value, item]
             : this.value.filter(arrItem => !this.identityMatcher(arrItem, item));
     }
 
-    isCheckboxEnabled(item: T): boolean {
+    protected isCheckboxEnabled(item: T): boolean {
         return this.value.some(arrItem => this.identityMatcher(arrItem, item));
     }
 }

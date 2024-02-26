@@ -7,7 +7,7 @@ import {TUI_VERSION} from '@taiga-ui/cdk';
 export class StackblitzDepsService {
     private readonly location = inject(LOCATION);
 
-    async get(): Promise<Record<string, string>> {
+    public async get(): Promise<Record<string, string>> {
         return {
             ...(await this.getAngularPackages()),
             ...this.getTaigaPackages(),

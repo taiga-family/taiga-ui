@@ -18,7 +18,7 @@ export class TuiOverscrollDirective {
     private readonly destroy$ = inject(TuiDestroyService, {self: true});
 
     @Input('tuiOverscroll')
-    mode: TuiOverscrollMode | '' = 'scroll';
+    public mode: TuiOverscrollMode | '' = 'scroll';
 
     constructor() {
         tuiTypedFromEvent(this.el, 'wheel', {passive: false})
@@ -74,12 +74,12 @@ export class TuiOverscrollDirective {
             .subscribe();
     }
 
-    get enabled(): boolean {
+    protected get enabled(): boolean {
         return this.mode !== 'none';
     }
 
     @HostBinding('style.overscrollBehavior')
-    get overscrollBehavior(): 'contain' | null {
+    protected get overscrollBehavior(): 'contain' | null {
         return this.enabled ? 'contain' : null;
     }
 

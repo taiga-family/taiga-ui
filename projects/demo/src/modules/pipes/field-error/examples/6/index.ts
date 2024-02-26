@@ -22,19 +22,19 @@ import {TUI_VALIDATION_ERRORS} from '@taiga-ui/kit';
     ],
 })
 export class TuiFieldErrorContentPipeExample6 {
-    readonly data = [{name: 'Latte'}, {name: 'Cappuccino'}] as const;
+    protected readonly data = [{name: 'Latte'}, {name: 'Cappuccino'}] as const;
 
-    latteControl = new FormControl<number | null>(null, [
+    protected latteControl = new FormControl<number | null>(null, [
         Validators.required,
         Validators.max(6),
     ]);
 
-    cappuccinoControl = new FormControl<number | null>(null, [
+    protected cappuccinoControl = new FormControl<number | null>(null, [
         Validators.required,
         Validators.max(5),
     ]);
 
-    controls = [this.latteControl, this.cappuccinoControl];
+    protected controls = [this.latteControl, this.cappuccinoControl];
 
-    readonly columns = ['name', 'price'];
+    protected readonly columns = ['name', 'price'];
 }

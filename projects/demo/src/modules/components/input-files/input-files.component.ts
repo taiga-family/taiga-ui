@@ -21,78 +21,89 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
     ],
 })
 export class ExampleTuiInputFilesComponent extends AbstractExampleTuiControl {
-    readonly exampleModule = import('./examples/import/import-module.md?raw');
-    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
+    protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
     };
 
-    readonly example2: TuiDocExample = {
+    protected readonly example2: TuiDocExample = {
         TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
     };
 
-    readonly example3: TuiDocExample = {
+    protected readonly example3: TuiDocExample = {
         TypeScript: import('./examples/3/index.ts?raw'),
         HTML: import('./examples/3/index.html?raw'),
     };
 
-    readonly example4: TuiDocExample = {
+    protected readonly example4: TuiDocExample = {
         TypeScript: import('./examples/4/index.ts?raw'),
         HTML: import('./examples/4/index.html?raw'),
     };
 
-    readonly example5: TuiDocExample = {
+    protected readonly example5: TuiDocExample = {
         TypeScript: import('./examples/5/index.ts?raw'),
         HTML: import('./examples/5/index.html?raw'),
         LESS: import('./examples/5/index.less?raw'),
     };
 
-    readonly example6: TuiDocExample = {
+    protected readonly example6: TuiDocExample = {
         TypeScript: import('./examples/6/index.ts?raw'),
         HTML: import('./examples/6/index.html?raw'),
     };
 
-    readonly example7: TuiDocExample = {
+    protected readonly example7: TuiDocExample = {
         TypeScript: import('./examples/7/index.ts?raw'),
         HTML: import('./examples/7/index.html?raw'),
     };
 
-    readonly control = new FormControl<File[] | null>(null);
-    readonly files$ = this.control.valueChanges.pipe(
+    public readonly control = new FormControl<File[] | null>(null);
+    protected readonly files$ = this.control.valueChanges.pipe(
         map(() => tuiFilesAccepted(this.control)),
     );
 
-    multiple = true;
-    showSize = true;
-    showDelete: boolean | 'always' = true;
-    expanded = false;
-    maxFilesCount = 3;
-    accept = '';
-    acceptVariants = ['image/*', 'application/pdf', 'image/*,application/pdf'];
+    protected multiple = true;
+    protected showSize = true;
+    protected showDelete: boolean | 'always' = true;
+    protected expanded = false;
+    protected maxFilesCount = 3;
+    protected accept = '';
+    protected acceptVariants = ['image/*', 'application/pdf', 'image/*,application/pdf'];
 
-    readonly showDeleteVariants: Array<boolean | 'always'> = [true, false, 'always'];
-    readonly maxFileSizeVariants = [100, 512000, 30 * 1000 * 1000, 2.2 * 1000 * 1000];
-    override readonly sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
+    protected readonly showDeleteVariants: Array<boolean | 'always'> = [
+        true,
+        false,
+        'always',
+    ];
 
-    override size = this.sizeVariants[0];
-    rejected: readonly File[] = [];
-    maxFileSize = this.maxFileSizeVariants[2];
+    protected readonly maxFileSizeVariants = [
+        100,
+        512000,
+        30 * 1000 * 1000,
+        2.2 * 1000 * 1000,
+    ];
 
-    removeFile(file: File): void {
+    public override readonly sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
+
+    public override size = this.sizeVariants[0];
+    protected rejected: readonly File[] = [];
+    protected maxFileSize = this.maxFileSizeVariants[2];
+
+    protected removeFile(file: File): void {
         this.rejected = this.rejected.filter(current => current !== file);
         this.control.setValue(
             this.control.value?.filter(current => current !== file) || null,
         );
     }
 
-    updateRejected(rejected: readonly File[]): void {
+    protected updateRejected(rejected: readonly File[]): void {
         this.rejected = rejected;
     }
 
-    multipleChange(multiple: boolean): void {
+    protected multipleChange(multiple: boolean): void {
         this.rejected = [];
         this.control.setValue(null);
         this.multiple = multiple;

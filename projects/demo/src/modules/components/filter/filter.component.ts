@@ -7,15 +7,15 @@ import {TuiSizeL, TuiSizeXS} from '@taiga-ui/core';
 
 class ItemWithBadge {
     constructor(
-        readonly text: string,
-        readonly badgeValue?: number,
+        public readonly text: string,
+        public readonly badgeValue?: number,
     ) {}
 
-    toString(): string {
+    public toString(): string {
         return this.text;
     }
 
-    valueOf(): number | null {
+    public valueOf(): number | null {
         return this.badgeValue || null;
     }
 }
@@ -26,33 +26,33 @@ class ItemWithBadge {
     changeDetection,
 })
 export class ExampleTuiFilterComponent {
-    readonly exampleModule = import('./examples/import/import-module.md?raw');
-    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
+    protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
     };
 
-    readonly example2: TuiDocExample = {
+    protected readonly example2: TuiDocExample = {
         TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
     };
 
-    readonly example3: TuiDocExample = {
+    protected readonly example3: TuiDocExample = {
         TypeScript: import('./examples/3/index.ts?raw'),
         HTML: import('./examples/3/index.html?raw'),
     };
 
-    readonly example4: TuiDocExample = {
+    protected readonly example4: TuiDocExample = {
         TypeScript: import('./examples/4/index.ts?raw'),
         HTML: import('./examples/4/index.html?raw'),
         LESS: import('./examples/4/index.less?raw'),
     };
 
-    initialItems = ['Alex Inkin', 'Roman Sedov'];
+    protected initialItems = ['Alex Inkin', 'Roman Sedov'];
 
-    itemsVariants: Array<ReadonlyArray<ItemWithBadge | string>> = [
+    protected itemsVariants: Array<ReadonlyArray<ItemWithBadge | string>> = [
         ['Alex Inkin', 'Roman Sedov'],
         [
             new ItemWithBadge('Focused Zone', 10),
@@ -62,14 +62,14 @@ export class ExampleTuiFilterComponent {
         ],
     ];
 
-    badgeHandlerVariants: ReadonlyArray<TuiHandler<unknown, number>> = [
+    protected badgeHandlerVariants: ReadonlyArray<TuiHandler<unknown, number>> = [
         item => Number(item),
         item => String(item).length,
     ];
 
-    badgeHandler = this.badgeHandlerVariants[0];
+    protected badgeHandler = this.badgeHandlerVariants[0];
 
-    disabledItemHandlerVariants: ReadonlyArray<
+    protected disabledItemHandlerVariants: ReadonlyArray<
         TuiBooleanHandler<ItemWithBadge | string>
     > = [
         ALWAYS_FALSE_HANDLER,
@@ -77,13 +77,18 @@ export class ExampleTuiFilterComponent {
         item => (item.valueOf() || 0) >= 30,
     ];
 
-    disabledItemHandler = this.disabledItemHandlerVariants[0];
+    protected disabledItemHandler = this.disabledItemHandlerVariants[0];
 
-    items = this.itemsVariants[0];
+    protected items = this.itemsVariants[0];
 
-    control = new FormControl(this.initialItems);
+    protected control = new FormControl(this.initialItems);
 
-    readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeXS> = ['xs', 's', 'm', 'l'];
+    protected readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeXS> = [
+        'xs',
+        's',
+        'm',
+        'l',
+    ];
 
-    size = this.sizeVariants[2];
+    protected size = this.sizeVariants[2];
 }

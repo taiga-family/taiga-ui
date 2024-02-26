@@ -21,49 +21,49 @@ import {AbstractExampleTuiInteractive} from '../abstract/interactive';
     ],
 })
 export class ExampleTuiButtonComponent extends AbstractExampleTuiInteractive {
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
         LESS: import('./examples/1/index.less?raw'),
     };
 
-    readonly example2: TuiDocExample = {
+    protected readonly example2: TuiDocExample = {
         TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
     };
 
-    readonly example3: TuiDocExample = {
+    protected readonly example3: TuiDocExample = {
         TypeScript: import('./examples/3/index.ts?raw'),
         HTML: import('./examples/3/index.html?raw'),
         LESS: import('./examples/3/index.less?raw'),
     };
 
-    readonly example4: TuiDocExample = {
+    protected readonly example4: TuiDocExample = {
         TypeScript: import('./examples/4/index.ts?raw'),
         HTML: import('./examples/4/index.html?raw'),
         LESS: import('./examples/4/index.less?raw'),
     };
 
-    readonly example5: TuiDocExample = {
+    protected readonly example5: TuiDocExample = {
         TypeScript: import('./examples/5/index.ts?raw'),
         HTML: import('./examples/5/index.html?raw'),
     };
 
-    readonly example6: TuiDocExample = {
+    protected readonly example6: TuiDocExample = {
         TypeScript: import('./examples/6/index.ts?raw'),
         HTML: import('./examples/6/index.html?raw'),
         LESS: import('./examples/6/index.less?raw'),
     };
 
-    readonly exampleModule = import('./examples/import/import-module.md?raw');
-    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
-    readonly exampleOptions = import('./examples/import/define-options.md?raw');
+    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
+    protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    protected readonly exampleOptions = import('./examples/import/define-options.md?raw');
 
-    disabled = false;
+    protected disabled = false;
 
-    showLoader = false;
+    protected showLoader = false;
 
-    readonly appearanceVariants = [
+    protected readonly appearanceVariants = [
         'primary',
         'accent',
         'secondary',
@@ -76,9 +76,9 @@ export class ExampleTuiButtonComponent extends AbstractExampleTuiInteractive {
         'icon',
     ];
 
-    appearance = this.appearanceVariants[0];
+    protected appearance = this.appearanceVariants[0];
 
-    readonly sizeVariants: ReadonlyArray<TuiSizeXL | TuiSizeXS> = [
+    protected readonly sizeVariants: ReadonlyArray<TuiSizeXL | TuiSizeXS> = [
         'xs',
         's',
         'm',
@@ -86,20 +86,20 @@ export class ExampleTuiButtonComponent extends AbstractExampleTuiInteractive {
         'xl',
     ];
 
-    size: TuiSizeXL | TuiSizeXS = this.sizeVariants[3];
+    protected size: TuiSizeXL | TuiSizeXS = this.sizeVariants[3];
 
-    readonly shapeVariants = ['square', 'rounded'] as const;
+    protected readonly shapeVariants = ['square', 'rounded'] as const;
 
-    shape: 'rounded' | 'square' | null = null;
+    protected shape: 'rounded' | 'square' | null = null;
 
-    icon: PolymorpheusContent = '';
+    protected icon: PolymorpheusContent = '';
 
-    iconRight: PolymorpheusContent = '';
+    protected iconRight: PolymorpheusContent = '';
 
-    iconButton = false;
+    protected iconButton = false;
 
     @tuiPure
-    getContentVariants(
+    protected getContentVariants(
         template: TemplateRef<Record<string, unknown>>,
     ): readonly PolymorpheusContent[] {
         return ['', 'tuiIconEyeOff', 'tuiIconHeartLarge', template];

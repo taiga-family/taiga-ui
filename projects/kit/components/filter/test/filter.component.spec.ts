@@ -11,15 +11,15 @@ const BADGE_VALUE = 10;
 
 class ItemWithBadge {
     constructor(
-        readonly text: string,
-        readonly badgeValue?: number,
+        protected readonly text: string,
+        protected readonly badgeValue?: number,
     ) {}
 
-    toString(): string {
+    protected toString(): string {
         return this.text;
     }
 
-    valueOf(): number | null {
+    protected valueOf(): number | null {
         return this.badgeValue !== undefined ? this.badgeValue : null;
     }
 }
@@ -44,17 +44,17 @@ describe('Filter', () => {
     })
     class TestComponent {
         @ViewChild(TuiFilterComponent, {static: true})
-        component!: TuiFilterComponent<any>;
+        protected component!: TuiFilterComponent<any>;
 
-        disabledItemHandler: TuiBooleanHandler<any> = ALWAYS_FALSE_HANDLER;
+        protected disabledItemHandler: TuiBooleanHandler<any> = ALWAYS_FALSE_HANDLER;
 
-        control = new FormControl([]);
+        protected control = new FormControl([]);
 
-        items: readonly ItemWithBadge[] | readonly string[] = ARR_STRING;
+        protected items: readonly ItemWithBadge[] | readonly string[] = ARR_STRING;
 
-        size: TuiSizeS = 'm';
+        protected size: TuiSizeS = 'm';
 
-        badgeHandler: TuiHandler<unknown, number> = item => Number(item);
+        protected badgeHandler: TuiHandler<unknown, number> = item => Number(item);
     }
 
     let fixture: ComponentFixture<TestComponent>;

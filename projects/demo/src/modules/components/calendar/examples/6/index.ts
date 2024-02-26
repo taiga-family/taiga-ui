@@ -10,9 +10,9 @@ import {TuiDay} from '@taiga-ui/cdk';
     changeDetection,
 })
 export class TuiCalendarExample6 {
-    value: readonly TuiDay[] = [];
+    protected value: readonly TuiDay[] = [];
 
-    onDayClick(day: TuiDay): void {
+    protected onDayClick(day: TuiDay): void {
         this.value = this.value.find(item => item.daySame(day))
             ? this.value.filter(item => !item.daySame(day))
             : this.value.concat(day);

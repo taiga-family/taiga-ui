@@ -10,35 +10,38 @@ import {TuiStepState} from '@taiga-ui/kit';
     changeDetection,
 })
 export class ExampleTuiStepperComponent {
-    readonly exampleModule = import('./examples/import/import-module.md?raw');
-    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
+    protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
     };
 
-    readonly example2: TuiDocExample = {
+    protected readonly example2: TuiDocExample = {
         TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
     };
 
-    readonly example3: TuiDocExample = {
+    protected readonly example3: TuiDocExample = {
         TypeScript: import('./examples/3/index.ts?raw'),
         HTML: import('./examples/3/index.html?raw'),
     };
 
-    activeItemIndex = 0;
+    protected activeItemIndex = 0;
 
-    readonly orientationVariants: readonly TuiOrientation[] = ['horizontal', 'vertical'];
+    protected readonly orientationVariants: readonly TuiOrientation[] = [
+        'horizontal',
+        'vertical',
+    ];
 
-    orientation: TuiOrientation = this.orientationVariants[0];
+    protected orientation: TuiOrientation = this.orientationVariants[0];
 
-    readonly iconVariants = ['', 'tuiIconClockLarge', 'tuiIconHeart'];
+    protected readonly iconVariants = ['', 'tuiIconClockLarge', 'tuiIconHeart'];
 
-    icon = this.iconVariants[0];
+    protected icon = this.iconVariants[0];
 
-    readonly stateVariants: TuiStepState[] = ['normal', 'pass', 'error'];
+    protected readonly stateVariants: TuiStepState[] = ['normal', 'pass', 'error'];
 
-    state: TuiStepState = this.stateVariants[0];
+    protected state: TuiStepState = this.stateVariants[0];
 }

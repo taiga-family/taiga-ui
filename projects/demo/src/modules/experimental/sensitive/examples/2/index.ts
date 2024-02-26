@@ -9,5 +9,5 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiSensitiveExample2 {
-    sensitive = true;
+    protected sensitive = true;
 }

@@ -16,5 +16,5 @@ export const TUI_HOME_COMPONENT = tuiCreateToken(HomeComponent);
     changeDetection,
 })
 export default class GettingStartedComponent {
-    readonly component = inject(TUI_HOME_COMPONENT);
+    protected readonly component = inject(TUI_HOME_COMPONENT);
 }

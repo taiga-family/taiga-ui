@@ -23,16 +23,16 @@ export class TuiNativeValidatorDirective implements Validator {
     private control?: AbstractControl;
 
     @Input()
-    tuiNativeValidator = 'Invalid';
+    public tuiNativeValidator = 'Invalid';
 
     @HostListener('blur')
-    handleValidation(): void {
+    protected handleValidation(): void {
         this.el.setCustomValidity(
             this.control?.touched && this.control?.invalid ? this.tuiNativeValidator : '',
         );
     }
 
-    validate(control: AbstractControl): null {
+    public validate(control: AbstractControl): null {
         this.control = control;
 
         timer(0)

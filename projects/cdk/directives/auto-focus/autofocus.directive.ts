@@ -19,15 +19,15 @@ export class TuiAutoFocusDirective implements AfterViewInit {
     private readonly destroy$ = inject(TuiDestroyService, {self: true});
 
     @Input('tuiAutoFocus')
-    autoFocus: boolean | '' = true;
+    public autoFocus: boolean | '' = true;
 
-    ngAfterViewInit(): void {
+    public ngAfterViewInit(): void {
         if (tuiCoerceBooleanProperty(this.autoFocus)) {
             this.focus();
         }
     }
 
-    focus(): void {
+    public focus(): void {
         if (Number.isNaN(this.options.delay)) {
             void Promise.resolve().then(() => this.handler.setFocus());
         } else {

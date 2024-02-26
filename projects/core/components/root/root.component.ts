@@ -36,17 +36,17 @@ export class TuiRootComponent {
     private readonly dialogs$ = inject<Observable<readonly unknown[]>>(TUI_DIALOGS);
     private readonly isMobile = inject(TUI_IS_MOBILE);
     private readonly breakpoint = inject(TuiBreakpointService);
-    readonly isIOS = inject(TUI_IS_IOS);
-    readonly isAndroid = inject(TUI_IS_ANDROID);
-    readonly reducedMotion = inject(TUI_REDUCED_MOTION);
+    protected readonly isIOS = inject(TUI_IS_IOS);
+    protected readonly isAndroid = inject(TUI_IS_ANDROID);
+    protected readonly reducedMotion = inject(TUI_REDUCED_MOTION);
 
-    readonly duration = tuiGetDuration(inject(TUI_ANIMATIONS_SPEED));
+    protected readonly duration = tuiGetDuration(inject(TUI_ANIMATIONS_SPEED));
 
-    readonly isMobileRes$ = this.breakpoint.pipe(
+    protected readonly isMobileRes$ = this.breakpoint.pipe(
         map(breakpoint => breakpoint === 'mobile'),
     );
 
-    readonly scrollbars$: Observable<boolean> = this.isMobile
+    protected readonly scrollbars$: Observable<boolean> = this.isMobile
         ? of(false)
         : this.dialogs$.pipe(
               map(dialogs => !dialogs.length),

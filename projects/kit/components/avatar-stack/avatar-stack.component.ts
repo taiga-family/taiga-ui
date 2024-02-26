@@ -18,5 +18,5 @@ import {TuiHorizontalDirection} from '@taiga-ui/core';
 export class TuiAvatarStackComponent {
     @Input()
     @HostBinding('attr.data-direction')
-    direction: TuiHorizontalDirection = 'right';
+    public direction: TuiHorizontalDirection = 'right';
 }

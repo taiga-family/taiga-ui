@@ -27,19 +27,19 @@ export class TuiFadeDirective {
     @Input('tuiFadeHeight')
     @HostBinding('style.line-height')
     @HostBinding('style.--line-height')
-    lineHeight: string | null = null;
+    public lineHeight: string | null = null;
 
     @Input('tuiFadeSize')
     @HostBinding('style.--fade-size')
-    size = '1.5em';
+    public size = '1.5em';
 
     @Input('tuiFadeOffset')
     @HostBinding('style.--fade-offset')
-    offset = '0em';
+    public offset = '0em';
 
     @Input('tuiFade')
     @HostBinding('attr.data-orientation')
-    orientation: TuiOrientation | '' = 'horizontal';
+    public orientation: TuiOrientation | '' = 'horizontal';
 
     constructor() {
         const el: HTMLElement = inject(ElementRef).nativeElement;

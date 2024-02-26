@@ -12,7 +12,7 @@ describe('Rating', () => {
         abstract rate: number;
 
         @ViewChild(TuiRatingComponent, {static: true})
-        component!: TuiRatingComponent;
+        protected component!: TuiRatingComponent;
     }
 
     describe('Template Driven', () => {
@@ -24,7 +24,7 @@ describe('Rating', () => {
             `,
         })
         class TestComponent extends AbstractTuiTestComponent {
-            rate = 2;
+            public rate = 2;
         }
 
         beforeEach(() => {
@@ -101,9 +101,9 @@ describe('Rating', () => {
         })
         class TestComponent extends AbstractTuiTestComponent {
             private readonly fb = inject(FormBuilder);
-            form = this.fb.group({rating: this.fb.control(0)});
+            protected form = this.fb.group({rating: this.fb.control(0)});
 
-            get rate(): number {
+            public get rate(): number {
                 return this.form.get('rating')?.value;
             }
         }

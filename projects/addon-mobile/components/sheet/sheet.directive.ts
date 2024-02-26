@@ -19,15 +19,15 @@ export class TuiSheetDirective extends PolymorpheusTemplate<TuiSheet<never>> {
     private readonly open$ = new Subject<boolean>();
 
     @Input('tuiSheetOptions')
-    options: Partial<TuiSheetOptions> = {};
+    public options: Partial<TuiSheetOptions> = {};
 
     @Input()
-    set tuiSheet(open: boolean) {
+    public set tuiSheet(open: boolean) {
         this.open$.next(open);
     }
 
     @Output()
-    readonly tuiSheetChange = this.open$.pipe(
+    public readonly tuiSheetChange = this.open$.pipe(
         tuiIfMap(() =>
             this.service.open(this, this.options).pipe(ignoreElements(), endWith(false)),
         ),

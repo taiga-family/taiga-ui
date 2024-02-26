@@ -21,15 +21,15 @@ export class TuiDocCodeComponent {
     private readonly rawLoader$$ = new BehaviorSubject<TuiRawLoaderContent>('');
 
     @Input()
-    filename = '';
+    public filename = '';
 
-    readonly markdownCodeProcessor = inject<TuiHandler<string, string[]>>(
+    protected readonly markdownCodeProcessor = inject<TuiHandler<string, string[]>>(
         TUI_DOC_EXAMPLE_MARKDOWN_CODE_PROCESSOR,
     );
 
-    readonly copy$ = new Subject<void>();
+    protected readonly copy$ = new Subject<void>();
 
-    readonly icon$ = this.copy$.pipe(
+    protected readonly icon$ = this.copy$.pipe(
         switchMap(() =>
             timer(2000).pipe(
                 map(() => 'tuiIconCopyLarge'),
@@ -38,18 +38,18 @@ export class TuiDocCodeComponent {
         ),
     );
 
-    readonly processor$ = this.rawLoader$$.pipe(
+    protected readonly processor$ = this.rawLoader$$.pipe(
         switchMap(tuiRawLoad),
         map((value: string): string[] => this.markdownCodeProcessor(value)),
     );
 
     @Input()
-    set code(code: TuiRawLoaderContent) {
+    public set code(code: TuiRawLoaderContent) {
         this.rawLoader$$.next(code);
     }
 
     @HostBinding('class._has-filename')
-    get hasFilename(): boolean {
+    protected get hasFilename(): boolean {
         return !!this.filename;
     }
 }

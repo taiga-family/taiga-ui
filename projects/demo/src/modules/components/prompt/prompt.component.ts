@@ -14,21 +14,21 @@ export class ExampleTuiPromptComponent implements TuiPromptData {
     private readonly dialogs = inject(TuiDialogService);
     private readonly alerts = inject(TuiAlertService);
 
-    readonly exampleModule = import('./examples/import/import-module.md?raw');
-    readonly exampleService = import('./examples/import/service.md?raw');
+    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
+    protected readonly exampleService = import('./examples/import/service.md?raw');
 
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
     };
 
-    readonly content =
+    public readonly content =
         'This is <code>PolymorpheusContent</code>, so it can be anything you like!';
 
-    no = 'No';
-    yes = 'Yes';
+    public no = 'No';
+    public yes = 'Yes';
 
-    onClick(): void {
+    protected onClick(): void {
         this.dialogs
             .open<boolean>(TUI_PROMPT, {
                 label: 'Are you sure?',

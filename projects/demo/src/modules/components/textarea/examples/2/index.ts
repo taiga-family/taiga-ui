@@ -11,7 +11,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiTextareaExample2 {
-    testForm = new FormGroup({
+    protected testForm = new FormGroup({
         testValue1: new FormControl('A field', Validators.required),
     });
 }

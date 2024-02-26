@@ -18,9 +18,9 @@ describe('TuiFocused directive', () => {
         `,
     })
     class TestComponent {
-        focused = false;
+        protected focused = false;
 
-        onFocusedChange(focused: boolean): void {
+        protected onFocusedChange(focused: boolean): void {
             this.focused = focused;
         }
     }

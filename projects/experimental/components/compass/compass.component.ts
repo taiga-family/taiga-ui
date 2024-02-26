@@ -9,5 +9,5 @@ import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/c
 export class TuiCompassComponent {
     @Input()
     @HostBinding('style.--t-degrees.deg')
-    degrees = NaN;
+    public degrees = NaN;
 }

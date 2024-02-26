@@ -12,7 +12,7 @@ export class TuiTreeService<T> {
     private readonly map = new Map<T, readonly T[]>([[this.loading, []]]);
     private readonly load$ = new Subject<T>();
 
-    readonly data$ = this.load$.pipe(
+    public readonly data$ = this.load$.pipe(
         switchMap(item =>
             this.loader.loadChildren(item).pipe(
                 tap(children => this.map.set(item, children)),
@@ -24,11 +24,11 @@ export class TuiTreeService<T> {
         map(() => this.start),
     );
 
-    getChildren(item: T): readonly T[] {
+    public getChildren(item: T): readonly T[] {
         return this.map.get(item) || [this.loading];
     }
 
-    loadChildren(item: T): void {
+    public loadChildren(item: T): void {
         if (this.map.get(item)) {
             return;
         }

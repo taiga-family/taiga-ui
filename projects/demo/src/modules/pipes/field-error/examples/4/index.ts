@@ -22,24 +22,24 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 })
 export class TuiFieldErrorPipeExample4 {
     @ViewChild('phoneErrorContent')
-    phoneErrorContent: PolymorpheusContent;
+    protected phoneErrorContent: PolymorpheusContent;
 
-    testForm = new FormGroup({
+    protected testForm = new FormGroup({
         phones: new FormArray(
             [new FormControl('', [Validators.required, this.getPhoneLengthValidator()])],
             [this.getPhoneArrayValidator()],
         ),
     });
 
-    get formData(): FormArray {
+    protected get formData(): FormArray {
         return this.testForm.get('phones') as FormArray;
     }
 
-    addPhone(): void {
+    protected addPhone(): void {
         this.formData.push(new FormControl('', this.addValidators()));
     }
 
-    removePhone(index: number): void {
+    protected removePhone(index: number): void {
         this.formData.removeAt(index);
 
         let n = 0;
@@ -53,7 +53,7 @@ export class TuiFieldErrorPipeExample4 {
         }
     }
 
-    addValidators(): ValidationErrors | null {
+    protected addValidators(): ValidationErrors | null {
         return this.formData.controls.length < 2
             ? [Validators.required, this.getPhoneLengthValidator()]
             : null;

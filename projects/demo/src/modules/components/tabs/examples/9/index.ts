@@ -10,6 +10,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiTabsExample9 {
-    horizontalActiveIndex = 9;
-    verticalActiveIndex = 10;
+    protected horizontalActiveIndex = 9;
+    protected verticalActiveIndex = 10;
 }

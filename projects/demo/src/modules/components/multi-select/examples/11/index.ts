@@ -12,7 +12,7 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
     changeDetection,
 })
 export class TuiMultiSelectExample11 {
-    readonly items = [
+    protected readonly items = [
         'Luke Skywalker',
         'Leia Organa Solo',
         'Darth Vader',
@@ -21,12 +21,13 @@ export class TuiMultiSelectExample11 {
         'Yoda',
     ];
 
-    value: string[] = this.items;
+    protected value: string[] = this.items;
 
-    content: PolymorpheusContent<TuiContext<string[]>> = ({$implicit: {length}}) =>
-        `Selected: ${length}`;
+    protected content: PolymorpheusContent<TuiContext<string[]>> = ({
+        $implicit: {length},
+    }) => `Selected: ${length}`;
 
-    remove(item: string): void {
+    protected remove(item: string): void {
         this.value = this.value.filter(val => val !== item);
     }
 }

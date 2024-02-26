@@ -13,7 +13,10 @@ export class TuiFormatNumberPipe implements PipeTransform {
      * @param value number
      * @param settings See {@link TuiNumberFormatSettings}
      */
-    transform(value: number, settings: Partial<TuiNumberFormatSettings> = {}): string {
+    public transform(
+        value: number,
+        settings: Partial<TuiNumberFormatSettings> = {},
+    ): string {
         return tuiFormatNumber(value, {...this.numberFormat, ...settings});
     }
 }

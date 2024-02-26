@@ -14,7 +14,7 @@ class ExampleDateRangeTransformer extends AbstractTuiValueTransformer<
         super();
     }
 
-    fromControlValue(controlValue: [Date, Date] | null): TuiDayRange | null {
+    public fromControlValue(controlValue: [Date, Date] | null): TuiDayRange | null {
         const [transformedFrom, transformedTo] = controlValue || [null, null];
         const from =
             transformedFrom && this.dateTransformer.fromControlValue(transformedFrom);
@@ -23,7 +23,7 @@ class ExampleDateRangeTransformer extends AbstractTuiValueTransformer<
         return from && to && new TuiDayRange(from, to);
     }
 
-    toControlValue(componentValue: TuiDayRange | null): [Date, Date] | null {
+    public toControlValue(componentValue: TuiDayRange | null): [Date, Date] | null {
         const from =
             componentValue && this.dateTransformer.toControlValue(componentValue.from);
         const to =
@@ -38,11 +38,11 @@ export class ExampleDateTransformer extends AbstractTuiValueTransformer<
     TuiDay | null,
     Date | null
 > {
-    fromControlValue(controlValue: Date | null): TuiDay | null {
+    public fromControlValue(controlValue: Date | null): TuiDay | null {
         return controlValue && TuiDay.fromLocalNativeDate(controlValue);
     }
 
-    toControlValue(componentValue: TuiDay | null): Date | null {
+    public toControlValue(componentValue: TuiDay | null): Date | null {
         return componentValue?.toLocalNativeDate() || null;
     }
 }

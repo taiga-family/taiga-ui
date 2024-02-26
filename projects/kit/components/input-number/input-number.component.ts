@@ -83,53 +83,53 @@ export class TuiInputNumberComponent
     protected readonly options = inject(TUI_INPUT_NUMBER_OPTIONS);
 
     @Input()
-    min: number | null = this.options.min;
+    public min: number | null = this.options.min;
 
     @Input()
-    max: number | null = this.options.max;
+    public max: number | null = this.options.max;
 
     @Input()
-    decimal = this.options.decimal;
+    public decimal = this.options.decimal;
 
     @Input()
-    precision = this.options.precision;
+    public precision = this.options.precision;
 
     @Input()
-    step = this.options.step;
+    public step = this.options.step;
 
     @ContentChildren(PolymorpheusOutletDirective, {descendants: true})
-    readonly polymorpheusValueContent: QueryList<unknown> = EMPTY_QUERY;
+    protected readonly polymorpheusValueContent: QueryList<unknown> = EMPTY_QUERY;
 
-    readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
+    protected readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
 
     @HostBinding('attr.data-size')
-    get size(): TuiSizeL | TuiSizeS {
+    protected get size(): TuiSizeL | TuiSizeS {
         return this.textfieldSize.size;
     }
 
-    get computedMin(): number {
+    protected get computedMin(): number {
         return this.computeMin(this.min, this.max);
     }
 
-    get computedMax(): number {
+    protected get computedMax(): number {
         return this.computeMax(this.min, this.max);
     }
 
-    get nativeFocusableElement(): HTMLInputElement | null {
+    public get nativeFocusableElement(): HTMLInputElement | null {
         return !this.textfield || this.computedDisabled
             ? null
             : this.textfield.nativeFocusableElement;
     }
 
-    get focused(): boolean {
+    public get focused(): boolean {
         return !!this.textfield?.focused;
     }
 
-    get isNegativeAllowed(): boolean {
+    protected get isNegativeAllowed(): boolean {
         return this.computedMin < 0;
     }
 
-    get inputMode(): TuiInputMode {
+    public get inputMode(): TuiInputMode {
         if (this.isIOS && this.isNegativeAllowed) {
             // iPhone does not have minus sign if inputMode is equal to 'numeric' / 'decimal'
             return 'text';
@@ -138,7 +138,7 @@ export class TuiInputNumberComponent
         return this.decimal === 'never' ? 'numeric' : 'decimal';
     }
 
-    get calculatedMaxLength(): number {
+    public get calculatedMaxLength(): number {
         const decimalPart =
             this.decimal !== 'never' &&
             this.nativeValue.includes(this.numberFormat.decimalSeparator);
@@ -148,33 +148,33 @@ export class TuiInputNumberComponent
         return DEFAULT_MAX_LENGTH + precision + takeThousand;
     }
 
-    get formattedValue(): string {
+    protected get formattedValue(): string {
         return this.value !== null ? this.getFormattedValue(this.value || 0) : '';
     }
 
-    get computedValue(): string {
+    public get computedValue(): string {
         return this.focused ? this.nativeValue : this.formattedValue;
     }
 
-    get canDecrement(): boolean {
+    protected get canDecrement(): boolean {
         return this.interactive && (this.value || 0) > this.computedMin;
     }
 
-    get canIncrement(): boolean {
+    protected get canIncrement(): boolean {
         return this.interactive && (this.value || 0) < this.computedMax;
     }
 
-    get computedPrefix(): string {
+    protected get computedPrefix(): string {
         return this.controller.prefix;
     }
 
-    get computedPostfix(): string {
+    protected get computedPostfix(): string {
         const postfix = this.controller.postfix;
 
         return postfix && ` ${postfix}`;
     }
 
-    get mask(): MaskitoOptions {
+    protected get mask(): MaskitoOptions {
         return this.calculateMask(
             this.precision,
             this.decimal,
@@ -189,7 +189,7 @@ export class TuiInputNumberComponent
 
     @HostListener('keydown.arrowDown', ['-step'])
     @HostListener('keydown.arrowUp', ['step'])
-    onArrow(step: number | null): void {
+    protected onArrow(step: number | null): void {
         if (!step) {
             return;
         }
@@ -202,7 +202,7 @@ export class TuiInputNumberComponent
         this.nativeValue = this.formattedValue;
     }
 
-    onValueChange(nativeValue: string): void {
+    public onValueChange(nativeValue: string): void {
         const parsedValue = maskitoParseNumber(
             nativeValue,
             this.numberFormat.decimalSeparator,
@@ -229,7 +229,7 @@ export class TuiInputNumberComponent
         this.value = parsedValue;
     }
 
-    onFocused(focused: boolean): void {
+    protected onFocused(focused: boolean): void {
         this.updateFocused(focused);
 
         const nativeNumberValue = this.unfinishedValue
@@ -251,7 +251,7 @@ export class TuiInputNumberComponent
         }
     }
 
-    getFormattedValue(value: number): string {
+    protected getFormattedValue(value: number): string {
         const absValue = Math.abs(value);
         const hasFraction = absValue % 1 > 0;
         let decimalLimit =
@@ -285,11 +285,11 @@ export class TuiInputNumberComponent
             : nativeNumberValue < this.computedMin;
     }
 
-    get nativeValue(): string {
+    protected get nativeValue(): string {
         return this.nativeFocusableElement?.value || '';
     }
 
-    set nativeValue(value: string) {
+    protected set nativeValue(value: string) {
         if (!this.textfield || !this.nativeFocusableElement) {
             return;
         }
@@ -298,7 +298,7 @@ export class TuiInputNumberComponent
         this.nativeFocusableElement.value = value;
     }
 
-    override writeValue(value: number | null): void {
+    public override writeValue(value: number | null): void {
         super.writeValue(value);
         this.nativeValue = this.formattedValue;
     }

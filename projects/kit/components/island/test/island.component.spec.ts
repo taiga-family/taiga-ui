@@ -37,7 +37,7 @@ describe('Island', () => {
     })
     class TestComponent {
         @ViewChild(TuiIslandComponent, {static: true})
-        component!: TuiIslandComponent;
+        protected component!: TuiIslandComponent;
     }
 
     let fixture: ComponentFixture<TestComponent>;

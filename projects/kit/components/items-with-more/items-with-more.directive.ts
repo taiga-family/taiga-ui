@@ -6,8 +6,8 @@ import {AbstractTuiController} from '@taiga-ui/cdk';
 })
 export class TuiItemsWithMoreDirective extends AbstractTuiController {
     @Input()
-    itemsLimit = Infinity;
+    public itemsLimit = Infinity;
 
     @Input()
-    required = -1;
+    public required = -1;
 }

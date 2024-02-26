@@ -12,9 +12,9 @@ import {delayWhen, of, Subject} from 'rxjs';
 export class TuiIsPresentExample1 {
     private readonly loadCountSubject = new Subject<void>();
 
-    readonly count$ = of(0).pipe(delayWhen(() => this.loadCountSubject));
+    protected readonly count$ = of(0).pipe(delayWhen(() => this.loadCountSubject));
 
-    loadCount(): void {
+    protected loadCount(): void {
         this.loadCountSubject.next();
         this.loadCountSubject.complete();
     }

@@ -18,6 +18,6 @@ import {
     changeDetection,
 })
 export default class RelatedComponent {
-    readonly screenshotBotName = SCREENSHOT_BOT_NAME;
-    readonly screenshotBotLink = SCREENSHOT_BOT_LINK;
+    protected readonly screenshotBotName = SCREENSHOT_BOT_NAME;
+    protected readonly screenshotBotLink = SCREENSHOT_BOT_LINK;
 }

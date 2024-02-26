@@ -20,19 +20,19 @@ import {
 })
 export class TuiSlideInExample {
     @Input()
-    speed = 0;
+    public speed = 0;
 
-    isLeft = false;
-    isTop = false;
-    isRight = false;
-    isBottom = false;
+    protected isLeft = false;
+    protected isTop = false;
+    protected isRight = false;
+    protected isBottom = false;
 
     @tuiPure
-    getAnimation(duration: number): TuiDurationOptions {
+    protected getAnimation(duration: number): TuiDurationOptions {
         return {value: '', params: {duration}};
     }
 
-    reset(): void {
+    protected reset(): void {
         this.isLeft = false;
         this.isTop = false;
         this.isRight = false;

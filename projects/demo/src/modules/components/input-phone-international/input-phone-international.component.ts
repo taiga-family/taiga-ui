@@ -19,27 +19,27 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
     ],
 })
 export class ExampleTuiInputPhoneInternationalComponent extends AbstractExampleTuiControl {
-    readonly exampleForm = import('./examples/import/declare-form.md?raw');
-    readonly exampleModule = import('./examples/import/import-module.md?raw');
-    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    protected readonly exampleForm = import('./examples/import/declare-form.md?raw');
+    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
+    protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
         LESS: import('./examples/1/index.less?raw'),
     };
 
-    readonly example2: TuiDocExample = {
+    protected readonly example2: TuiDocExample = {
         TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
         LESS: import('./examples/2/index.less?raw'),
     };
 
-    override cleaner = false;
+    public override cleaner = false;
 
-    control = new FormControl('', [Validators.required, Validators.minLength(9)]);
+    public control = new FormControl('', [Validators.required, Validators.minLength(9)]);
 
-    readonly countriesVariants: ReadonlyArray<readonly TuiCountryIsoCode[]> = [
+    protected readonly countriesVariants: ReadonlyArray<readonly TuiCountryIsoCode[]> = [
         [
             TuiCountryIsoCode.RU,
             TuiCountryIsoCode.KZ,
@@ -49,15 +49,15 @@ export class ExampleTuiInputPhoneInternationalComponent extends AbstractExampleT
         Object.values(TuiCountryIsoCode),
     ];
 
-    countries = this.countriesVariants[0];
+    protected countries = this.countriesVariants[0];
 
-    readonly countryIsoCodeVariants: readonly TuiCountryIsoCode[] = [
+    protected readonly countryIsoCodeVariants: readonly TuiCountryIsoCode[] = [
         TuiCountryIsoCode.RU,
         TuiCountryIsoCode.KZ,
         TuiCountryIsoCode.UA,
         TuiCountryIsoCode.BY,
     ];
 
-    countryIsoCode = this.countryIsoCodeVariants[0];
-    override labelOutside = true;
+    protected countryIsoCode = this.countryIsoCodeVariants[0];
+    public override labelOutside = true;
 }

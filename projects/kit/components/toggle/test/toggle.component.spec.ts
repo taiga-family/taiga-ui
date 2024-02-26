@@ -37,7 +37,7 @@ describe('Toggle', () => {
             `,
         })
         class TestComponent {
-            control = new FormControl();
+            protected control = new FormControl();
         }
 
         let fixture: ComponentFixture<TestComponent>;
@@ -186,7 +186,7 @@ describe('Toggle', () => {
             `,
         })
         class TestComponent {
-            control = new FormControl();
+            protected control = new FormControl();
         }
 
         let fixture: ComponentFixture<TestComponent>;

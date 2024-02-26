@@ -17,7 +17,7 @@ function even<T>(array: readonly T[]): readonly T[] {
 export class LabelsPipe implements PipeTransform {
     private readonly months$ = inject(TUI_MONTHS);
 
-    transform({from, to}: TuiDayRange): Observable<readonly string[]> {
+    public transform({from, to}: TuiDayRange): Observable<readonly string[]> {
         const length = TuiDay.lengthBetween(from, to);
 
         if (length > 90) {

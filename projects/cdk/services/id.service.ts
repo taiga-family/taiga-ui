@@ -11,7 +11,7 @@ const TUI = 'tui_';
 export class TuiIdService {
     private static autoId = 0;
 
-    generate(): string {
+    public generate(): string {
         return `${TUI}${TuiIdService.autoId++}${Date.now()}`;
     }
 }

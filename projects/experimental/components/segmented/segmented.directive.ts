@@ -34,7 +34,7 @@ export class TuiSegmentedDirective implements AfterContentChecked, AfterContentI
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
 
     @HostListener('click', ['$event.target'])
-    update(target: Element | null): void {
+    protected update(target: Element | null): void {
         const index = this.getIndex(target);
 
         if (index >= 0) {
@@ -42,7 +42,7 @@ export class TuiSegmentedDirective implements AfterContentChecked, AfterContentI
         }
     }
 
-    ngAfterContentInit(): void {
+    public ngAfterContentInit(): void {
         tuiQueryListChanges(this.controls)
             .pipe(
                 switchMap(() => this.controls.last?.valueChanges || EMPTY),
@@ -53,7 +53,7 @@ export class TuiSegmentedDirective implements AfterContentChecked, AfterContentI
             });
     }
 
-    ngAfterContentChecked(): void {
+    public ngAfterContentChecked(): void {
         if (this.links.length) {
             this.update(this.elements.get(this.linkIndex)?.nativeElement || null);
         }

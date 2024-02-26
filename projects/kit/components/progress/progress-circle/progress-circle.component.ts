@@ -20,25 +20,25 @@ import {delay, of} from 'rxjs';
 })
 export class TuiProgressCircleComponent {
     @Input()
-    value = 0;
+    public value = 0;
 
     @Input()
-    max = 1;
+    public max = 1;
 
     @Input()
     @HostBinding('style.--tui-progress-color')
-    color: string | null = null;
+    public color: string | null = null;
 
     @Input()
     @HostBinding('attr.data-size')
-    size: TuiSizeXXL | TuiSizeXXS = 'm';
+    public size: TuiSizeXXL | TuiSizeXXS = 'm';
 
-    readonly animationDelay$ = of(true).pipe(delay(0));
+    protected readonly animationDelay$ = of(true).pipe(delay(0));
 
-    readonly mode$ = inject(TUI_MODE);
+    protected readonly mode$ = inject(TUI_MODE);
 
     @HostBinding('style.--progress-ratio')
-    get progressRatio(): number {
+    protected get progressRatio(): number {
         const ratio = this.value / this.max;
 
         return Number.isFinite(ratio) ? ratio : 0;

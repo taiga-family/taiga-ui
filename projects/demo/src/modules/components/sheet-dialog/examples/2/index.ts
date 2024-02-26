@@ -11,9 +11,9 @@ import {TuiSheetDialogOptions} from '@taiga-ui/addon-mobile';
     changeDetection,
 })
 export class TuiSheetDialogExample2 {
-    open = false;
+    protected open = false;
 
-    readonly options: Partial<TuiSheetDialogOptions> = {
+    protected readonly options: Partial<TuiSheetDialogOptions> = {
         label: 'Alexander Inkin',
         closeable: false,
     };

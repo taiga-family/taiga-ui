@@ -12,9 +12,9 @@ import {TuiFileLike} from '@taiga-ui/kit';
     changeDetection,
 })
 export class TuiInputFilesExample5 {
-    readonly control = new FormControl<TuiFileLike | null>(null);
+    protected readonly control = new FormControl<TuiFileLike | null>(null);
 
-    readonly file: TuiFileLike = {
+    protected readonly file: TuiFileLike = {
         name: 'custom.txt',
     };
 }
