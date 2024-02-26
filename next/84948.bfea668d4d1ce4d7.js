@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[84948],{84948:e=>{e.exports=".t-tag {\n    margin: 0.125rem 0.5rem 0.125rem -0.25rem;\n}\n\n.t-wrapper {\n    flex-wrap: wrap;\n    padding-inline-start: 0.25rem;\n}\n"}}]);
