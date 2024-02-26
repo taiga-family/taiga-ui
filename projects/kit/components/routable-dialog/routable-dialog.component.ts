@@ -14,6 +14,7 @@ import {takeUntil} from 'rxjs';
 export class TuiRoutableDialogComponent {
     private readonly route = inject(ActivatedRoute);
     private readonly router = inject(Router);
+    private readonly initialDialogUrl = this.router.url;
 
     constructor() {
         inject(TuiDialogService)
@@ -25,7 +26,19 @@ export class TuiRoutableDialogComponent {
                 this.route.snapshot.data['dialogOptions'],
             )
             .pipe(takeUntil(inject(TuiDestroyService, {self: true})))
-            .subscribe({complete: () => this.navigateToParent()});
+            .subscribe({
+                complete: () => this.onDialogClosing(),
+            });
+    }
+
+    private onDialogClosing(): void {
+        const navigatedFromDialog = this.initialDialogUrl !== this.router.url;
+
+        if (navigatedFromDialog) {
+            return;
+        }
+
+        this.navigateToParent();
     }
 
     private navigateToParent(): void {
