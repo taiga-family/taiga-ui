@@ -54,7 +54,7 @@
         mask-position:
             left calc(-1 * var(--fade-size) - var(--fade-offset)),
             left calc(100% + var(--fade-size) + var(--fade-offset));
-        mask-size: 100% calc(50% + var(--fade-size) + var(--fade-offset));
+        mask-size: 100% calc(51% + var(--fade-size) + var(--fade-offset)); // +1% for Chrome issue https://github.com/taiga-family/taiga-ui/issues/6873
 
         &._start {
             mask-position: left top, left calc(100% + var(--fade-size) + var(--fade-offset));
