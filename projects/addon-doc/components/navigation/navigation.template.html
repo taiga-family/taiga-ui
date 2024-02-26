@@ -18,8 +18,10 @@
                 <a
                     *ngFor="let item of group"
                     tuiOption
+                    [attr.rel]="item.rel"
                     [fragment]="item.fragment"
                     [routerLink]="item.route"
+                    [target]="item.target || '_self'"
                     (click)="onClick(input)"
                 >
                     {{ item.title }}
@@ -81,7 +83,9 @@
                 routerLinkActive="t-sublink_active"
                 tuiLink
                 class="t-sublink"
+                [attr.rel]="item.rel"
                 [routerLink]="item.route"
+                [target]="item.target || '_self'"
                 [tuiScrollIntoViewLink]="isActive(item.route)"
                 (click)="closeMenu()"
             >
@@ -128,8 +132,10 @@
                                 routerLinkActive="t-sublink_active"
                                 tuiLink
                                 class="t-sublink t-sublink_small"
+                                [attr.rel]="subPage.rel"
                                 [fragment]="subPage.fragment"
                                 [routerLink]="subPage.route"
+                                [target]="subPage.target || '_self'"
                                 [tuiScrollIntoViewLink]="isActive(subPage.route)"
                                 (click)="closeMenu()"
                             >
