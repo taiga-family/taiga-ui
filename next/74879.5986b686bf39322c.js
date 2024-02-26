@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[74879],{74879:a=>{a.exports='<tui-avatar\n    appearance="accent"\n    src="tuiIconUserLarge"\n></tui-avatar>\n<tui-avatar\n    src="AI"\n    class="text"\n    [style.background]="\'AI\' | tuiAutoColor"\n></tui-avatar>\n<tui-avatar class="text">\n    <div tuiFade>Fading</div>\n</tui-avatar>\n'}}]);
