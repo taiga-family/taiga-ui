@@ -75,14 +75,15 @@
         >
             Search
         </button>
-        <button
+        <a
             iconLeft="tuiIconUsers"
+            routerLink="/experimental/navigation"
+            routerLinkActive="active"
             tuiAppearance="flat"
-            tuiAppearanceState="hover"
             tuiButton
         >
             Groups
-        </button>
+        </a>
         <tui-hosted-dropdown
             [canOpen]="!expanded"
             [content]="dropdown"
