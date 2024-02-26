@@ -1,10 +1,10 @@
 import {CommonModule, DOCUMENT} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {TuiFocusTrapModule, TuiOverscrollModule} from '@taiga-ui/cdk';
+import {TuiFocusTrapModule, TuiOverscrollModule, TuiPopover} from '@taiga-ui/cdk';
 import {tuiHost} from '@taiga-ui/core/animations';
 import {TuiScrollControlsComponent} from '@taiga-ui/core/components/scroll-controls';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
-import {tap} from 'rxjs';
+import {Observable, tap} from 'rxjs';
 
 import {TUI_DIALOGS} from './dialog.tokens';
 
@@ -28,7 +28,9 @@ import {TUI_DIALOGS} from './dialog.tokens';
 export class TuiDialogsComponent {
     private readonly doc = inject(DOCUMENT);
 
-    readonly dialogs$ = inject(TUI_DIALOGS).pipe(
+    readonly dialogs$: Observable<ReadonlyArray<TuiPopover<any, any>>> = inject(
+        TUI_DIALOGS,
+    ).pipe(
         tap(({length}) => {
             this.doc.defaultView?.document.documentElement.classList.toggle(
                 't-overscroll-none',
