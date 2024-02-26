@@ -45,7 +45,6 @@ export const pages: TuiDocPages = [
         keywords: 'reproduce, issue, bug, sandbox, playground, test',
         route: '/stackblitz',
         target: '_blank',
-        icon: 'tuiIconExternalLink',
     },
     {
         section: 'Documentation',
