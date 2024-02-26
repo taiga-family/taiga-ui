@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.68.0](https://github.com/taiga-family/taiga-ui/compare/v3.59.0...v3.68.0) (2024-02-26)
+
+### Features
+
+- **addon-doc:** support target property for links ([#6876](https://github.com/taiga-family/taiga-ui/issues/6876))
+  ([83fc4b0](https://github.com/taiga-family/taiga-ui/commit/83fc4b01b61b64073745e9bb79f9a17445c5f36c))
+- **experimental:** `Fade` enable scrolling ([#6855](https://github.com/taiga-family/taiga-ui/issues/6855))
+  ([b3a08b8](https://github.com/taiga-family/taiga-ui/commit/b3a08b8040b24cfb85fc5fa11f2f86b86f184822))
+
+### Bug Fixes
+
+- **core:** fix nested sided dropdown height ([#6863](https://github.com/taiga-family/taiga-ui/issues/6863))
+  ([f8607a1](https://github.com/taiga-family/taiga-ui/commit/f8607a161ba761cf9c04acb3f269add7897e7fc0))
+- **experimental:** `Avatar` fix error when using `SafeResourceUrl`
+  ([#6842](https://github.com/taiga-family/taiga-ui/issues/6842))
+  ([a79ba00](https://github.com/taiga-family/taiga-ui/commit/a79ba0012e99833f3b7f97e436abb17664a2ed49))
+- **experimental:** `Fade` fix artifacts in Chrome ([#6879](https://github.com/taiga-family/taiga-ui/issues/6879))
+  ([8ff14a1](https://github.com/taiga-family/taiga-ui/commit/8ff14a11ae5c99c6c4d3ef77fbc5b5ea50756e28))
+- **experimental:** use `background-color` instead of `background` in `tuiSurface`
+  ([#6841](https://github.com/taiga-family/taiga-ui/issues/6841))
+  ([a8f49fc](https://github.com/taiga-family/taiga-ui/commit/a8f49fc4ba4001d6979f05a40797b6c0da259f32))
+- **kit:** `RadioLabeled` fix line-height ([#6878](https://github.com/taiga-family/taiga-ui/issues/6878))
+  ([4187c11](https://github.com/taiga-family/taiga-ui/commit/4187c1180d134b46ac1eba238155190eaba81903))
+- **styles:** `List` fix line height ([#6880](https://github.com/taiga-family/taiga-ui/issues/6880))
+  ([ca522ee](https://github.com/taiga-family/taiga-ui/commit/ca522ee38aa7bff1cb6503cca2b26d41f5e1e09f))
+
 ## [3.67.0](https://github.com/taiga-family/taiga-ui/compare/v3.59.0...v3.67.0) (2024-02-20)
 
 ### Features
