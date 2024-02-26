@@ -9,6 +9,10 @@
     &._readonly {
         pointer-events: none;
     }
+
+    &[data-size='l'] {
+        line-height: 1.5rem;
+    }
 }
 
 .t-wrapper {
@@ -30,6 +34,7 @@
 .t-content {
     word-wrap: break-word;
     min-width: 0;
+    line-height: inherit;
 
     &_disabled {
         opacity: var(--tui-disabled-opacity);
@@ -42,5 +47,6 @@
     :host[data-size='l'] & {
         font: var(--tui-font-text-m);
         margin-left: 0.75rem;
+        line-height: inherit;
     }
 }
