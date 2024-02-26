@@ -1,6 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
+import {TuiExample} from '@demo/utils';
 import {tuiGetDocModules} from '@taiga-ui/addon-doc';
 import {TuiRippleModule} from '@taiga-ui/addon-mobile';
 import {TuiPlatformModule, TuiRepeatTimesModule} from '@taiga-ui/cdk';
@@ -33,7 +34,6 @@ import {
 } from '@taiga-ui/experimental';
 import {TuiBadgeDirective} from '@taiga-ui/kit';
 
-import {TuiExample} from '../../../utils/example.pipe';
 import {ExampleTuiCardLargeComponent} from './card-large.component';
 import {TuiCardLargeExample1} from './examples/1';
 import {TuiCardLargeExample2} from './examples/2';

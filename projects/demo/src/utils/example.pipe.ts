@@ -14,11 +14,11 @@ export class TuiExample implements PipeTransform {
     transform(
         index: number,
         formats:
-            | string
             | 'html,less'
             | 'html,ts,less'
             | 'html,ts'
-            | 'html' = 'ts,less,html',
+            | 'html'
+            | 'ts' = 'html,ts,less',
     ): TuiDocExample {
         return Object.fromEntries(
             formats
