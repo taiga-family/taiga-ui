@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {TuiExample} from '@demo/utils';
+import {TuiExamplePipe} from '@demo/utils';
 import {tuiGetDocModules} from '@taiga-ui/addon-doc';
 import {TuiRippleModule} from '@taiga-ui/addon-mobile';
 import {TuiPlatformModule, TuiRepeatTimesModule} from '@taiga-ui/cdk';
@@ -80,7 +80,7 @@ import {TuiCardLargeExample12} from './examples/12';
         TuiPlatformModule,
         TuiLinkModule,
         TuiAppearanceDirective,
-        TuiExample,
+        TuiExamplePipe,
     ],
     declarations: [
         ExampleTuiCardLargeComponent,

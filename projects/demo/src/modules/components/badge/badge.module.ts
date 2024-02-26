@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {TuiExample} from '@demo/utils';
+import {TuiExamplePipe} from '@demo/utils';
 import {tuiGetDocModules} from '@taiga-ui/addon-doc';
 import {TuiPlatformModule, TuiRepeatTimesModule} from '@taiga-ui/cdk';
 import {
@@ -37,7 +37,7 @@ import {TuiBadgeExample6} from './examples/6';
         TuiLabelModule,
         tuiGetDocModules(ExampleTuiBadgeComponent),
         TuiPlatformModule,
-        TuiExample,
+        TuiExamplePipe,
     ],
     declarations: [
         ExampleTuiBadgeComponent,
