@@ -32,7 +32,7 @@ export class TuiScrollbarComponent {
     protected readonly isIOS = inject(TUI_IS_IOS);
 
     @Input()
-    protected hidden = false;
+    public hidden = false;
 
     public readonly browserScrollRef = new ElementRef(this.el);
 
