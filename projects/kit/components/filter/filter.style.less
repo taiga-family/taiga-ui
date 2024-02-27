@@ -1,32 +1,18 @@
 :host {
     display: block;
-    margin-bottom: -0.25rem;
-}
+    margin-bottom: calc(-1 * var(--t-gap));
 
-.t-content {
-    display: flex;
-    align-items: center;
+    --t-gap: 0.25rem;
+
+    &[data-size='l'] {
+        --t-gap: 0.5rem;
+    }
 }
 
 .t-item {
-    margin-right: 0.25rem;
-    margin-bottom: 0.25rem;
+    margin: 0 var(--t-gap) var(--t-gap) 0;
 
-    &:last-child,
-    :host[data-size='l'] &:last-child {
+    &:last-child {
         margin-right: 0;
-    }
-
-    :host[data-size='l'] & {
-        margin-right: 0.5rem;
-        margin-bottom: 0.5rem;
-    }
-}
-
-.t-badge {
-    margin-left: 0.25rem;
-
-    &_disabled {
-        opacity: var(--tui-disabled-opacity);
     }
 }

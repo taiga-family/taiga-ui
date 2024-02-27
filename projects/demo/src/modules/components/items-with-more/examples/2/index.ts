@@ -21,8 +21,4 @@ export class TuiItemsWithMoreExample2 {
     ];
 
     protected value = this.items.map(ALWAYS_FALSE_HANDLER) as boolean[];
-
-    protected onModelChange(index: number): void {
-        this.value[index] = !this.value[index];
-    }
 }

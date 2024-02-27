@@ -135,22 +135,26 @@
                     class="tui-form__row"
                     [collapsed]="true"
                 >
-                    <tui-radio-block
-                        contentAlign="right"
-                        formControlName="radioValue"
-                        item="with-commission"
-                        size="l"
-                    >
+                    <label tuiBlock>
                         One option
-                    </tui-radio-block>
-                    <tui-radio-block
-                        contentAlign="right"
-                        formControlName="radioValue"
-                        item="without-commission"
-                        size="l"
-                    >
+                        <input
+                            formControlName="radioValue"
+                            tuiRadio
+                            type="radio"
+                            value="with-commission"
+                            [style.margin-left]="'auto'"
+                        />
+                    </label>
+                    <label tuiBlock>
                         An alternative one
-                    </tui-radio-block>
+                        <input
+                            formControlName="radioValue"
+                            tuiRadio
+                            type="radio"
+                            value="without-commission"
+                            [style.margin-left]="'auto'"
+                        />
+                    </label>
                 </div>
                 <div class="tui-form__row tui-form__row_half-width">
                     <tui-input-time formControlName="timeValue">Input time</tui-input-time>

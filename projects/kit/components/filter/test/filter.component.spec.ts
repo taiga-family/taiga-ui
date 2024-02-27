@@ -1,11 +1,10 @@
-import {Component, DebugElement, ViewChild} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {ALWAYS_FALSE_HANDLER, TuiBooleanHandler, TuiHandler} from '@taiga-ui/cdk';
 import {TuiSizeS} from '@taiga-ui/core';
 import {TuiFilterComponent, TuiFilterModule} from '@taiga-ui/kit';
-import {TuiPageObject} from '@taiga-ui/testing';
 
 const BADGE_VALUE = 10;
 
@@ -44,28 +43,22 @@ describe('Filter', () => {
     })
     class TestComponent {
         @ViewChild(TuiFilterComponent, {static: true})
-        protected component!: TuiFilterComponent<any>;
+        public component!: TuiFilterComponent<any>;
 
-        protected disabledItemHandler: TuiBooleanHandler<any> = ALWAYS_FALSE_HANDLER;
+        public disabledItemHandler: TuiBooleanHandler<any> = ALWAYS_FALSE_HANDLER;
 
-        protected control = new FormControl([]);
+        public control = new FormControl<string[]>([]);
 
-        protected items: readonly ItemWithBadge[] | readonly string[] = ARR_STRING;
+        public items: readonly ItemWithBadge[] | readonly string[] = ARR_STRING;
 
-        protected size: TuiSizeS = 'm';
+        public size: TuiSizeS = 'm';
 
-        protected badgeHandler: TuiHandler<unknown, number> = item => Number(item);
+        public badgeHandler: TuiHandler<unknown, number> = item => Number(item);
     }
 
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
     let component: TuiFilterComponent<ItemWithBadge | string>;
-    let pageObject: TuiPageObject<TestComponent>;
-    const testContext = {
-        get prefix() {
-            return 'tui-filter__';
-        },
-    };
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
@@ -74,27 +67,26 @@ describe('Filter', () => {
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
-        pageObject = new TuiPageObject(fixture);
         testComponent = fixture.componentInstance;
         component = testComponent.component;
         fixture.detectChanges();
     });
 
-    function getCheckbox(): DebugElement {
-        return pageObject.getByAutomationId(`${testContext.prefix}checkbox`)!;
+    function getCheckbox(): HTMLInputElement {
+        return getContent().querySelector('input')!;
     }
 
-    function getContent(): DebugElement {
-        return pageObject.getByAutomationId(`${testContext.prefix}content`)!;
+    function getContent(): HTMLElement {
+        return fixture.nativeElement;
     }
 
-    function getBadge(): DebugElement {
-        return pageObject.getByAutomationId(`${testContext.prefix}badge`)!;
+    function getBadge(): HTMLElement {
+        return getContent().querySelector('tui-badge')!;
     }
 
     describe('value', () => {
         it('default absent', () => {
-            expect(testComponent.control.value.length).toBe(0);
+            expect(testComponent.control.value?.length).toBe(0);
         });
 
         it('set from checked items', () => {
@@ -114,17 +106,13 @@ describe('Filter', () => {
 
     describe('content items', () => {
         it('passed correctly if items is an array of strings', () => {
-            expect(getContent().nativeElement.textContent.trim()).toBe(
-                'Clothes and footwear',
-            );
+            expect(getContent().textContent?.trim()).toBe('Clothes and footwear');
         });
 
         it('passed correctly if items is an array of objects with toString', () => {
             testComponent.items = ARR_OBJECT;
             fixture.detectChanges();
-            expect(getContent().nativeElement.textContent.trim()).toBe(
-                'Focused Zone  10',
-            );
+            expect(getContent().textContent?.trim()).toBe('Focused Zone  10');
         });
     });
 
@@ -151,40 +139,21 @@ describe('Filter', () => {
             testComponent.items = ARR_OBJECT;
             fixture.detectChanges();
 
-            expect(Number(getBadge().nativeElement.textContent)).toBe(BADGE_VALUE);
+            expect(Number(getBadge().textContent)).toBe(BADGE_VALUE);
         });
     });
 
     describe('disabled element', () => {
         it('false by default', () => {
-            expect(getCheckbox().nativeElement.classList.contains('_disabled')).toBe(
-                false,
-            );
+            expect(getCheckbox().disabled).toBe(false);
         });
 
-        it('present if disabledHandler returned true', () => {
+        it('present if disabledHandler returned true', async () => {
             testComponent.disabledItemHandler = item => item.indexOf('footwear') > -1;
             fixture.detectChanges();
-            expect(getCheckbox().componentInstance.ngControl.isDisabled).toBe(true);
-        });
-    });
+            await fixture.whenStable();
 
-    describe('size', () => {
-        it('if m, then CheckboxBlock have m and badge have l', () => {
-            testComponent.items = ARR_OBJECT;
-            fixture.detectChanges();
-
-            expect(getCheckbox().attributes['data-size']).toBe('m');
-            expect(getBadge().attributes['data-size']).toBe('l');
-        });
-
-        it('if s, then CheckboxBlock have s and badge have m', () => {
-            testComponent.items = ARR_OBJECT;
-            testComponent.size = 's';
-            fixture.detectChanges();
-
-            expect(getCheckbox().attributes['data-size']).toBe('s');
-            expect(getBadge().attributes['data-size']).toBe('m');
+            expect(getCheckbox().disabled).toBe(true);
         });
     });
 });

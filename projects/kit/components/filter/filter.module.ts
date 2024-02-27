@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {TuiModeModule} from '@taiga-ui/core';
 import {TuiBadgeDirective} from '@taiga-ui/kit/components/badge';
-import {TuiCheckboxBlockModule} from '@taiga-ui/kit/components/checkbox-block';
+import {TuiBlockDirective} from '@taiga-ui/kit/components/block';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiFilterComponent} from './filter.component';
@@ -13,9 +13,9 @@ import {TuiFilterComponent} from './filter.component';
         CommonModule,
         FormsModule,
         PolymorpheusModule,
-        TuiCheckboxBlockModule,
         TuiBadgeDirective,
         TuiModeModule,
+        TuiBlockDirective,
     ],
     declarations: [TuiFilterComponent],
     exports: [TuiFilterComponent],

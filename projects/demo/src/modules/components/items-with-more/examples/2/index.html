@@ -3,16 +3,19 @@
     [collapsed]="true"
 >
     <ng-container *ngFor="let item of items; let index = index">
-        <tui-checkbox-block
+        <label
             *tuiItem
-            size="m"
-            class="item"
-            [hideCheckbox]="true"
-            [ngModel]="value[index]"
-            (ngModelChange)="onModelChange(index)"
+            appearance=""
+            tuiBlock="m"
+            [style.border-radius]="'inherit'"
         >
             {{ item }}
-        </tui-checkbox-block>
+            <input
+                tuiBlock
+                type="checkbox"
+                [(ngModel)]="value[index]"
+            />
+        </label>
     </ng-container>
     <ng-template
         let-lastIndex
@@ -39,7 +42,7 @@
                         <button
                             *ngIf="index > lastIndex"
                             tuiOption
-                            (click)="onModelChange(index)"
+                            (click)="value[index] = !value[index]"
                         >
                             {{ item }}
                             <tui-svg

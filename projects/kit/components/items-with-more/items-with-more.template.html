@@ -4,7 +4,6 @@
         *ngFor="let item of items; let index = index"
         class="t-item"
         [class.t-item_hidden]="index > lastIndex && index !== directive.required"
-        [tuiProjectClass]="['_active']"
     >
         <ng-container *ngTemplateOutlet="item"></ng-container>
     </div>
@@ -12,7 +11,6 @@
         *ngIf="more && lastIndex < items.length - 1"
         class="t-item"
         [class.t-item_hidden]="lastIndex >= items.length - 1"
-        [tuiProjectClass]="['_active']"
     >
         <ng-container
             [ngTemplateOutlet]="more"

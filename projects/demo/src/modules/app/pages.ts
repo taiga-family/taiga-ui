@@ -182,6 +182,12 @@ export const pages: TuiDocPages = [
         ],
     },
     {
+        section: 'Components',
+        title: 'Block',
+        keywords: 'кнопка, чек, форма, form, ввод, checkbox, radio, радио, label',
+        route: '/components/block',
+    },
+    {
         section: 'Layout',
         title: 'BlockStatus',
         keywords: 'блок, статус, block, status, block-status, blockstatus, layout',
@@ -242,12 +248,6 @@ export const pages: TuiDocPages = [
                 title: 'Checkbox',
                 keywords: 'чек, ввод, форма, form, checkbox',
                 route: '/components/checkbox',
-            },
-            {
-                section: 'Components',
-                title: 'CheckboxBlock',
-                keywords: 'кнопка, чек, форма, form, ввод, checkbox, CheckboxBlock',
-                route: '/components/checkbox-block',
             },
             {
                 section: 'Components',
@@ -677,12 +677,6 @@ export const pages: TuiDocPages = [
                 title: 'Radio',
                 keywords: 'инпут, форма, ввод, radio, радио',
                 route: '/components/radio',
-            },
-            {
-                section: 'Components',
-                title: 'RadioBlock',
-                keywords: 'инпут, кнопка, форма, ввод, radio, радио, radio-boxed',
-                route: '/components/radio-block',
             },
             {
                 section: 'Components',

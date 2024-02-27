@@ -186,6 +186,14 @@ export const ROUTES: Routes = [
         },
     },
     {
+        path: 'components/block',
+        loadChildren: async () =>
+            (await import('../components/block/block.module')).ExampleTuiBlockModule,
+        data: {
+            title: 'Block',
+        },
+    },
+    {
         path: 'layout/block-status',
         loadChildren: async () =>
             (await import('../components/block-status/block-status.module'))
@@ -503,15 +511,6 @@ export const ROUTES: Routes = [
                 .ExampleTuiCheckboxModule,
         data: {
             title: 'Checkbox',
-        },
-    },
-    {
-        path: 'components/checkbox-block',
-        loadChildren: async () =>
-            (await import('../components/checkbox-block/checkbox-block.module'))
-                .ExampleTuiCheckboxBlockModule,
-        data: {
-            title: 'CheckboxBlock',
         },
     },
     {
@@ -991,15 +990,6 @@ export const ROUTES: Routes = [
             (await import('../components/radio/radio.module')).ExampleTuiRadioModule,
         data: {
             title: 'Radio',
-        },
-    },
-    {
-        path: 'components/radio-block',
-        loadChildren: async () =>
-            (await import('../components/radio-block/radio-block.module'))
-                .ExampleTuiRadioBlockModule,
-        data: {
-            title: 'RadioBlock',
         },
     },
     {

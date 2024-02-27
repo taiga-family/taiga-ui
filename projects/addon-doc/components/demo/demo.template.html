@@ -39,39 +39,48 @@
             class="t-group"
             [collapsed]="true"
         >
-            <tui-radio-block
-                nativeId="form"
-                size="s"
+            <label
+                appearance=""
+                tuiBlock="s"
                 class="tui-group__auto-width-item"
-                [hideRadio]="true"
-                [item]="null"
-                [ngModel]="mode"
-                (ngModelChange)="onModeChange($event)"
             >
                 null
-            </tui-radio-block>
-            <tui-radio-block
-                item="onDark"
-                nativeId="form"
-                size="s"
+                <input
+                    tuiBlock
+                    type="radio"
+                    [ngModel]="mode"
+                    [value]="null"
+                    (ngModelChange)="onModeChange($event)"
+                />
+            </label>
+            <label
+                appearance=""
+                tuiBlock="s"
                 class="tui-group__auto-width-item"
-                [hideRadio]="true"
-                [ngModel]="mode"
-                (ngModelChange)="onModeChange($event)"
             >
                 onDark
-            </tui-radio-block>
-            <tui-radio-block
-                item="onLight"
-                nativeId="form"
-                size="s"
+                <input
+                    tuiBlock
+                    type="radio"
+                    value="onDark"
+                    [ngModel]="mode"
+                    (ngModelChange)="onModeChange($event)"
+                />
+            </label>
+            <label
+                appearance=""
+                tuiBlock="s"
                 class="tui-group__auto-width-item"
-                [hideRadio]="true"
-                [ngModel]="mode"
-                (ngModelChange)="onModeChange($event)"
             >
                 onLight
-            </tui-radio-block>
+                <input
+                    tuiBlock
+                    type="radio"
+                    value="onLight"
+                    [ngModel]="mode"
+                    (ngModelChange)="onModeChange($event)"
+                />
+            </label>
         </div>
     </ng-template>
     <tui-checkbox-labeled

@@ -33,6 +33,18 @@
     background: transparent;
 }
 
+[tuiAppearance][data-appearance='flat']:checked {
+    background: var(--tui-secondary);
+
+    .appearance-hover({
+        background: var(--tui-secondary-hover);
+    });
+
+    .appearance-active({
+        background: var(--tui-secondary-active);
+    });
+}
+
 [tuiAppearance][data-appearance='destructive'] {
     color: var(--tui-negative);
 }

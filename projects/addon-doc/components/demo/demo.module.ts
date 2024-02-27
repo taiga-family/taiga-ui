@@ -16,9 +16,9 @@ import {
     TuiTooltipModule,
 } from '@taiga-ui/core';
 import {
+    TuiBlockDirective,
     TuiCheckboxLabeledModule,
     TuiDataListWrapperModule,
-    TuiRadioBlockModule,
     TuiSelectModule,
 } from '@taiga-ui/kit';
 
@@ -37,7 +37,6 @@ import {TuiDocDemoComponent} from './demo.component';
         TuiGroupDirective,
         TuiTooltipModule,
         TuiModeModule,
-        TuiRadioBlockModule,
         TuiCheckboxLabeledModule,
         TuiSvgModule,
         TuiDataListWrapperModule,
@@ -45,6 +44,7 @@ import {TuiDocDemoComponent} from './demo.component';
         TuiTextfieldControllerModule,
         TuiHintModule,
         TuiResizerModule,
+        TuiBlockDirective,
     ],
     declarations: [TuiDocDemoComponent],
     exports: [TuiDocDemoComponent],

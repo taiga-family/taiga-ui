@@ -1,0 +1,95 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+[tuiBlock] {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    color: var(--tui-text-01);
+    border-radius: var(--t-radius);
+    font: var(--tui-font-text-m);
+    min-height: var(--t-height);
+    padding: 0 var(--tui-padding-l);
+    cursor: pointer;
+    overflow: hidden;
+
+    --t-height: var(--tui-height-l);
+    --t-margin: 1rem 0;
+    --t-radius: var(--tui-radius-l);
+
+    &[data-size='xs'] {
+        gap: 0.25rem;
+        font: var(--tui-font-text-xs);
+        padding: 0 0.5rem;
+
+        --t-height: var(--tui-height-xs);
+        --t-margin: 0.25rem -0.125rem;
+        --t-radius: var(--tui-radius-m);
+
+        input:not([tuiBlock]) {
+            transform: scale(0.75);
+        }
+    }
+
+    &[data-size='s'] {
+        gap: 0.75rem;
+        font: var(--tui-font-text-s);
+        padding: 0 var(--tui-padding-s);
+
+        --t-height: var(--tui-height-s);
+        --t-margin: 0.5rem -0.25rem;
+        --t-radius: var(--tui-radius-m);
+    }
+
+    &[data-size='m'] {
+        gap: 0.5rem;
+        font: var(--tui-font-text-m);
+        padding: 0 var(--tui-padding-m);
+
+        --t-height: var(--tui-height-m);
+        --t-margin: 0.875rem 0.125rem;
+        --t-radius: var(--tui-radius-m);
+    }
+
+    &._disabled {
+        pointer-events: none;
+        opacity: var(--tui-disabled-opacity);
+
+        :focus {
+            visibility: hidden;
+        }
+    }
+
+    &[data-appearance=''] {
+        justify-content: center;
+    }
+
+    input:not([tuiBlock]) {
+        align-self: flex-start;
+        margin: var(--t-margin);
+        flex-shrink: 0;
+    }
+
+    input[tuiBlock] {
+        .fullsize();
+
+        min-height: 0;
+        border-radius: inherit;
+    }
+
+    tui-avatar {
+        margin: -0.25rem;
+    }
+
+    [tuiTitle] {
+        flex: 1;
+        min-height: inherit;
+        justify-content: center;
+        align-self: flex-start;
+        margin: 0.75rem 0;
+    }
+
+    [tuiSubtitle] {
+        color: var(--tui-text-02);
+    }
+}
