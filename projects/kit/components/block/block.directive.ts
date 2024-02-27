@@ -1,4 +1,4 @@
-import {ContentChild, Directive, HostBinding, inject, Input} from '@angular/core';
+import {ContentChild, Directive, inject, Input} from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {TuiNativeValidatorDirective, tuiWithStyles} from '@taiga-ui/cdk';
 import {
@@ -19,7 +19,11 @@ import {TUI_BLOCK_OPTIONS} from './block.options';
         tuiAppearanceOptionsProvider(TUI_BLOCK_OPTIONS),
         tuiAvatarOptionsProvider({size: 's'}),
     ],
-    host: {tuiBlock: ''},
+    host: {
+        tuiBlock: '',
+        '[attr.data-size]': 'size',
+        '[class._disabled]': 'disabled',
+    },
     hostDirectives: [
         TuiNativeValidatorDirective,
         {
@@ -41,10 +45,8 @@ export class TuiBlockDirective {
     protected readonly nothing = tuiWithStyles(TuiBlockComponent);
 
     @Input('tuiBlock')
-    @HostBinding('attr.data-size')
     public size: TuiSizeL | TuiSizeXS | '' = this.options.size;
 
-    @HostBinding('class._disabled')
     protected get disabled(): boolean {
         return !!this.control?.disabled;
     }

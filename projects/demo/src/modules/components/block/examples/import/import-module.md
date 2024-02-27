@@ -9,7 +9,7 @@ import {TuiBlockDirective, TuiCheckboxComponent} from '@taiga-ui/kit';
     // ...
     FormsModule,
     TuiBlockDirective,
-    TuiCheckboxComponent,
+    TuiCheckboxComponent, // or TuiRadioComponent
   ],
   // ...
 })

@@ -1,4 +1,5 @@
 ```html
+<!-- Visible checkbox -->
 <label tuiBlock>
   <input
     type="checkbox"
@@ -8,6 +9,7 @@
   I'm a label
 </label>
 
+<!-- Implicit checkbox -->
 <label tuiBlock>
   <input
     type="checkbox"
