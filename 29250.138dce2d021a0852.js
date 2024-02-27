@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[29250],{29250:n=>{n.exports=".control {\n    flex: initial;\n\n    &._active .button {\n        display: inline-block;\n    }\n}\n\n.button {\n    display: none;\n}\n"}}]);
