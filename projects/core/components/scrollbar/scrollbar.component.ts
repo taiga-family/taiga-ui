@@ -3,6 +3,7 @@ import {
     ChangeDetectionStrategy,
     Component,
     ElementRef,
+    HostBinding,
     HostListener,
     inject,
     Input,
@@ -32,7 +33,9 @@ export class TuiScrollbarComponent {
     @Input()
     hidden = false;
 
+    @HostBinding('class._ios')
     readonly isIOS = inject(TUI_IS_IOS);
+
     readonly browserScrollRef = new ElementRef(this.el);
 
     get delegated(): boolean {

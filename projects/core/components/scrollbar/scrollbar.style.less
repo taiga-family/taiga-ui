@@ -1,12 +1,14 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
 :host {
-    .scrollbar-hidden();
-
     position: relative;
     display: flex;
     isolation: isolate;
     overflow: auto;
+
+    &:not(._ios) {
+        .scrollbar-hidden();
+    }
 }
 
 .t-content {
