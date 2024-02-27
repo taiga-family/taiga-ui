@@ -3,7 +3,6 @@ import {
     ChangeDetectionStrategy,
     Component,
     ElementRef,
-    HostBinding,
     HostListener,
     inject,
     Input,
@@ -30,25 +29,24 @@ import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
 export class TuiScrollbarComponent {
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
 
+    protected readonly isIOS = inject(TUI_IS_IOS);
+
     @Input()
-    hidden = false;
+    protected hidden = false;
 
-    @HostBinding('class._ios')
-    readonly isIOS = inject(TUI_IS_IOS);
+    public readonly browserScrollRef = new ElementRef(this.el);
 
-    readonly browserScrollRef = new ElementRef(this.el);
-
-    get delegated(): boolean {
+    protected get delegated(): boolean {
         return this.browserScrollRef.nativeElement !== this.el;
     }
 
     @HostListener(`${TUI_SCROLLABLE}.stop`, ['$event.detail'])
-    onScrollable(element: HTMLElement): void {
+    protected onScrollable(element: HTMLElement): void {
         this.browserScrollRef.nativeElement = element;
     }
 
     @HostListener(`${TUI_SCROLL_INTO_VIEW}.stop`, ['$event.detail'])
-    scrollIntoView(detail: HTMLElement): void {
+    protected scrollIntoView(detail: HTMLElement): void {
         if (this.delegated) {
             return;
         }
@@ -60,7 +58,6 @@ export class TuiScrollbarComponent {
         const scrollTop = offsetTop + offsetHeight / 2 - clientHeight / 2;
         const scrollLeft = offsetLeft + offsetWidth / 2 - clientWidth / 2;
 
-        // ?. for our clients on Windows XP and Chrome 49
-        nativeElement.scrollTo?.(scrollLeft, scrollTop);
+        nativeElement.scrollTo(scrollLeft, scrollTop);
     }
 }
