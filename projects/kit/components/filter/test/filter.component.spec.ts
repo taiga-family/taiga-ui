@@ -43,17 +43,17 @@ describe('Filter', () => {
     })
     class TestComponent {
         @ViewChild(TuiFilterComponent, {static: true})
-        protected component!: TuiFilterComponent<any>;
+        public component!: TuiFilterComponent<any>;
 
-        protected disabledItemHandler: TuiBooleanHandler<any> = ALWAYS_FALSE_HANDLER;
+        public disabledItemHandler: TuiBooleanHandler<any> = ALWAYS_FALSE_HANDLER;
 
-        protected control = new FormControl<string[]>([]);
+        public control = new FormControl<string[]>([]);
 
-        protected items: readonly ItemWithBadge[] | readonly string[] = ARR_STRING;
+        public items: readonly ItemWithBadge[] | readonly string[] = ARR_STRING;
 
-        protected size: TuiSizeS = 'm';
+        public size: TuiSizeS = 'm';
 
-        protected badgeHandler: TuiHandler<unknown, number> = item => Number(item);
+        public badgeHandler: TuiHandler<unknown, number> = item => Number(item);
     }
 
     let fixture: ComponentFixture<TestComponent>;
@@ -148,9 +148,11 @@ describe('Filter', () => {
             expect(getCheckbox().disabled).toBe(false);
         });
 
-        it('present if disabledHandler returned true', () => {
+        it('present if disabledHandler returned true', async () => {
             testComponent.disabledItemHandler = item => item.indexOf('footwear') > -1;
             fixture.detectChanges();
+            await fixture.whenStable();
+
             expect(getCheckbox().disabled).toBe(true);
         });
     });

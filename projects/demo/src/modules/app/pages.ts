@@ -184,7 +184,7 @@ export const pages: TuiDocPages = [
     {
         section: 'Components',
         title: 'Block',
-        keywords: 'кнопка, чек, форма, form, ввод, checkbox, radio, радио, лейбл, label',
+        keywords: 'кнопка, чек, форма, form, ввод, checkbox, radio, радио, label',
         route: '/components/block',
     },
     {
