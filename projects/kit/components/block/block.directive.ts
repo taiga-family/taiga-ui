@@ -42,10 +42,10 @@ export class TuiBlockDirective {
 
     @Input('tuiBlock')
     @HostBinding('attr.data-size')
-    size: TuiSizeL | TuiSizeXS | '' = this.options.size;
+    public size: TuiSizeL | TuiSizeXS | '' = this.options.size;
 
     @HostBinding('class._disabled')
-    get disabled(): boolean {
+    protected get disabled(): boolean {
         return !!this.control?.disabled;
     }
 }
