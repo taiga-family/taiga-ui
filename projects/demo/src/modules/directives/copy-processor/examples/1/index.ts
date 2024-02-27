@@ -24,7 +24,7 @@ export class TuiCopyProcessorExample1 {
     }
 
     @tuiPure
-    get numberProcessor$(): Observable<TuiStringHandler<string>> {
+    protected get numberProcessor$(): Observable<TuiStringHandler<string>> {
         return this.format.pipe(
             map(
                 format => text =>

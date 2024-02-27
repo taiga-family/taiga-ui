@@ -86,7 +86,7 @@ export class TuiInputNumberComponent
 
     protected readonly options = inject(TUI_INPUT_NUMBER_OPTIONS);
 
-    get numberFormat(): TuiNumberFormatSettings {
+    protected get numberFormat(): TuiNumberFormatSettings {
         return this.numberFormat$.value;
     }
 

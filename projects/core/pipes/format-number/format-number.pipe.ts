@@ -14,7 +14,7 @@ export class TuiFormatNumberPipe implements PipeTransform {
      * @param value number
      * @param settings See {@link TuiNumberFormatSettings}
      */
-    transform(
+    public transform(
         value: number,
         settings: Partial<TuiNumberFormatSettings> = {},
     ): Observable<string> {
