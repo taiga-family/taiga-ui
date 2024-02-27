@@ -107,11 +107,11 @@ Object.defineProperty(global.window, 'getComputedStyle', {
 global.DataTransfer = class {
     private readonly data = new Map();
 
-    setData(format: string, data: string): void {
+    public setData(format: string, data: string): void {
         this.data.set(format, data);
     }
 
-    getData(format: string): string {
+    public getData(format: string): string {
         return this.data.get(format);
     }
 } as unknown as typeof DataTransfer;

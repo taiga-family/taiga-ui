@@ -2,8 +2,8 @@ import {ExistingProvider, FactoryProvider, Optional, SkipSelf, Type} from '@angu
 import {TuiPoint} from '@taiga-ui/core/types';
 
 export abstract class TuiPositionAccessor {
-    abstract readonly type: string;
-    abstract getPosition(rect: DOMRect): TuiPoint;
+    public abstract readonly type: string;
+    public abstract getPosition(rect: DOMRect): TuiPoint;
 }
 
 export function tuiPositionAccessorFor(

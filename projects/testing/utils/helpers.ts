@@ -32,10 +32,10 @@ export function tuiHarnessWith<T>(
     with: (options?: BaseHarnessFilters) => HarnessPredicate<ComponentHarness>;
 } {
     return class extends ComponentHarness {
-        static hostSelector = hostSelector;
+        public static hostSelector = hostSelector;
 
         // @ts-ignore
-        static with(_options: BaseHarnessFilters = {}): HarnessPredicate<T> {
+        public static with(_options: BaseHarnessFilters = {}): HarnessPredicate<T> {
             throw new Error('Hummus');
         }
     } as unknown as ComponentHarnessConstructor<ComponentHarness> & {

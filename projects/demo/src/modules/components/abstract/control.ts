@@ -32,7 +32,7 @@ export abstract class AbstractExampleTuiControl
     extends AbstractExampleTuiInteractive
     implements AbstractExampleTuiDropdown
 {
-    abstract readonly control: AbstractControl;
+    public abstract readonly control: AbstractControl;
 
     public readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
 
