@@ -15,6 +15,7 @@ export * from './input-tag.po';
 export * from './input-time.po';
 export * from './multi-select.po';
 export * from './range.po';
+export * from './select.po';
 export * from './slider.po';
 export * from './table-pagination-page.po';
 export * from './textfield-with-data-list.po';

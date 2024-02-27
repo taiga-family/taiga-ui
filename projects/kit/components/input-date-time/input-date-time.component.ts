@@ -53,7 +53,7 @@ import {
     tuiDateStreamWithTransformer,
     TuiInputDateOptions,
 } from '@taiga-ui/kit/tokens';
-import {combineLatest, map, Observable, takeUntil, timer} from 'rxjs';
+import {BehaviorSubject, combineLatest, map, Observable, takeUntil, timer} from 'rxjs';
 
 @Component({
     selector: 'tui-input-date-time',
@@ -78,6 +78,7 @@ export class TuiInputDateTimeComponent
     private readonly options = inject(TUI_INPUT_DATE_OPTIONS);
     private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
     private month: TuiMonth | null = null;
+    private readonly timeMode$ = new BehaviorSubject<TuiTimeMode>('HH:MM');
     protected readonly timeTexts$ = inject(TUI_TIME_TEXTS);
     protected readonly dateTexts$ = inject(TUI_DATE_TEXTS);
     protected override readonly valueTransformer = inject(
@@ -98,7 +99,13 @@ export class TuiInputDateTimeComponent
     public defaultActiveYearMonth = TuiMonth.currentLocal();
 
     @Input()
-    public timeMode: TuiTimeMode = 'HH:MM';
+    public set timeMode(value: TuiTimeMode) {
+        this.timeMode$.next(value);
+    }
+
+    public get timeMode(): TuiTimeMode {
+        return this.timeMode$.value;
+    }
 
     protected open = false;
 
@@ -110,8 +117,13 @@ export class TuiInputDateTimeComponent
                 changeDateSeparator(dateTexts[this.dateFormat], this.dateSeparator),
             ),
         ),
-        this.timeTexts$.pipe(map(texts => texts[this.timeMode])),
-    ]).pipe(map(fillers => this.getDateTimeString(...fillers)));
+        this.timeTexts$,
+        this.timeMode$,
+    ]).pipe(
+        map(([dateFiller, timeTexts, timeMode]) =>
+            this.getDateTimeString(dateFiller, timeTexts[timeMode]),
+        ),
+    );
 
     protected readonly dateFormat = inject(TUI_DATE_FORMAT);
     protected readonly dateSeparator = inject(TUI_DATE_SEPARATOR);

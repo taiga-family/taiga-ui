@@ -2,6 +2,7 @@ import {
     TuiDocumentationPagePO,
     tuiGoto,
     TuiInputDateTimePO,
+    TuiSelectPO,
 } from '@demo-playwright/utils';
 import {expect, Locator, test} from '@playwright/test';
 
@@ -145,6 +146,29 @@ test.describe('InputDateTime', () => {
             await expect(inputDateTime.textfield).toHaveJSProperty(
                 'selectionEnd',
                 '15.11.2018, '.length,
+            );
+        });
+
+        test('change filler on dynamic change of [timeMode] prop', async ({page}) => {
+            await tuiGoto(page, 'components/input-date-time/API?timeMode=HH:MM');
+            await inputDateTime.textfield.focus();
+            await expect(inputDateTime.host).toHaveScreenshot('03-timeMode=HH:MM.png');
+
+            const timeModeRow = documentationPage.getRow('[timeMode]');
+            const timeModeSelect = new TuiSelectPO(
+                (await documentationPage.getSelect(timeModeRow)) as Locator,
+            );
+
+            await timeModeSelect.textfield.click();
+            await timeModeSelect.selectOptions([1]);
+            await inputDateTime.textfield.focus();
+            await expect(inputDateTime.host).toHaveScreenshot('03-timeMode=HH:MM.SS.png');
+
+            await timeModeSelect.textfield.click();
+            await timeModeSelect.selectOptions([2]);
+            await inputDateTime.textfield.focus();
+            await expect(inputDateTime.host).toHaveScreenshot(
+                '03-timeMode=HH:MM.SS.MSS.png',
             );
         });
     });
