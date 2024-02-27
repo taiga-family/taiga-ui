@@ -99,6 +99,10 @@ export class TuiDocumentationApiPagePO {
         }
     }
 
+    protected getRow(rowName: string): Locator {
+        return this.page.locator(`.t-table .t-row:has-text("${rowName}")`);
+    }
+
     protected async getRows(): Promise<Locator[]> {
         return this.page.locator('.t-table .t-row:not(.t-row_header)').all();
     }
