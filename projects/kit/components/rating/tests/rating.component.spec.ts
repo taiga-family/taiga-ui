@@ -9,7 +9,7 @@ describe('Rating', () => {
 
     @Directive()
     abstract class AbstractTuiTestComponent {
-        abstract rate: number;
+        public abstract rate: number;
 
         @ViewChild(TuiRatingComponent, {static: true})
         protected component!: TuiRatingComponent;

@@ -81,7 +81,19 @@
             "plugin:@taiga-ui/experience/taiga-naming"
         ],
         "rules": {
-            "@typescript-eslint/explicit-member-accessibility": "off",
+            "@typescript-eslint/explicit-member-accessibility": [
+                "error",
+                {
+                    "accessibility": "explicit",
+                    "overrides": {
+                        "accessors": "explicit",
+                        "constructors": "no-public",
+                        "methods": "explicit",
+                        "properties": "explicit",
+                        "parameterProperties": "explicit"
+                    }
+                }
+            ],
             "@typescript-eslint/member-ordering": "off"
         },
         "root": true

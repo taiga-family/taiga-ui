@@ -9,9 +9,9 @@ const TUI = 'tui_interactive_';
 export abstract class AbstractTuiInteractive {
     private static autoId = 0;
 
-    abstract disabled: boolean;
+    public abstract disabled: boolean;
 
-    abstract focused: boolean;
+    public abstract focused: boolean;
 
     private readonly autoIdString: string;
 

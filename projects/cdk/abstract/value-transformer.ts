@@ -1,4 +1,4 @@
 export abstract class AbstractTuiValueTransformer<From, To = unknown> {
-    abstract toControlValue(componentValue: From): To;
-    abstract fromControlValue(controlValue: To): From;
+    public abstract toControlValue(componentValue: From): To;
+    public abstract fromControlValue(controlValue: To): From;
 }

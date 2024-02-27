@@ -32,9 +32,9 @@ export abstract class AbstractTuiInputCard<
         super();
     }
 
-    abstract get card(): string;
+    public abstract get card(): string;
 
-    abstract get nativeFocusableElement(): TuiNativeFocusableElement | null;
+    public abstract get nativeFocusableElement(): TuiNativeFocusableElement | null;
 
     protected get defaultIcon(): string | null {
         const paymentSystem = this.getPaymentSystem(this.card);
