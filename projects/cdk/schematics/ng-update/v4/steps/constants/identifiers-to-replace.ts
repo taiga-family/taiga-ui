@@ -171,4 +171,26 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifier[] = [
             moduleSpecifier: '@taiga-ui/kit',
         },
     },
+    {
+        from: {name: 'TuiEditorModule', moduleSpecifier: '@tinkoff/tui-editor'},
+        to: {name: 'TuiEditorComponent', moduleSpecifier: '@tinkoff/tui-editor'},
+    },
+    {
+        from: {name: 'TuiEditorSocketModule', moduleSpecifier: '@tinkoff/tui-editor'},
+        to: {name: 'TuiEditorSocketComponent', moduleSpecifier: '@tinkoff/tui-editor'},
+    },
+    {
+        from: {name: 'defaultEditorExtensions', moduleSpecifier: '@tinkoff/tui-editor'},
+        to: {
+            name: 'TUI_EDITOR_DEFAULT_EXTENSIONS',
+            moduleSpecifier: '@tinkoff/tui-editor',
+        },
+    },
+    {
+        from: {name: 'defaultEditorTools', moduleSpecifier: '@tinkoff/tui-editor'},
+        to: {
+            name: 'TUI_EDITOR_DEFAULT_TOOLS',
+            moduleSpecifier: '@tinkoff/tui-editor',
+        },
+    },
 ];
