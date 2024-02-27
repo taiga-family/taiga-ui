@@ -1,9 +1,8 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {RouterModule} from '@angular/router';
 import {TuiAmountPipe, TuiCurrencyPipeModule} from '@taiga-ui/addon-commerce';
-import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
+import {tuiGetDocModules} from '@taiga-ui/addon-doc';
 import {
     TuiButtonModule,
     TuiDataListModule,
@@ -13,7 +12,9 @@ import {
     TuiLabelModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
+import {TuiRadioModule} from '@taiga-ui/experimental';
 import {
+    TuiBlockDirective,
     TuiCheckboxLabeledModule,
     TuiDataListWrapperModule,
     TuiFieldErrorPipeModule,
@@ -26,7 +27,6 @@ import {
     TuiInputSliderModule,
     TuiInputTagModule,
     TuiInputTimeModule,
-    TuiRadioBlockModule,
     TuiRadioListModule,
     TuiSelectModule,
     TuiStepperModule,
@@ -63,14 +63,14 @@ import {FormComponent} from './form.component';
         TuiInputTagModule,
         TuiSelectModule,
         TuiGroupDirective,
-        TuiRadioBlockModule,
+        TuiBlockDirective,
         TuiTextfieldControllerModule,
         TuiHintModule,
         TuiDataListModule,
         TuiDataListWrapperModule,
         TuiLabelModule,
-        TuiAddonDocModule,
-        RouterModule.forChild(tuiGenerateRoutes(FormComponent)),
+        TuiRadioModule,
+        tuiGetDocModules(FormComponent),
     ],
     declarations: [FormComponent, TuiExample],
     exports: [FormComponent],

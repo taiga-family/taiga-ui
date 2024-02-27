@@ -1,9 +1,8 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {RouterModule} from '@angular/router';
 import {TuiCurrencyPipeModule} from '@taiga-ui/addon-commerce';
-import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
+import {tuiGetDocModules} from '@taiga-ui/addon-doc';
 import {
     TuiDataListModule,
     TuiErrorModule,
@@ -13,9 +12,10 @@ import {
     TuiModeModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiButtonModule} from '@taiga-ui/experimental';
+import {TuiButtonModule, TuiRadioModule, TuiTitleModule} from '@taiga-ui/experimental';
 import {
     TuiBadgeDirective,
+    TuiBlockDirective,
     TuiComboBoxModule,
     TuiDataListWrapperModule,
     TuiFieldErrorPipeModule,
@@ -23,7 +23,6 @@ import {
     TuiInputNumberModule,
     TuiMultiSelectModule,
     TuiProjectClassModule,
-    TuiRadioBlockModule,
     TuiSelectModule,
 } from '@taiga-ui/kit';
 
@@ -36,7 +35,6 @@ import {ExampleTuiGroupComponent} from './group.component';
 @NgModule({
     imports: [
         TuiProjectClassModule,
-        TuiRadioBlockModule,
         TuiLinkModule,
         TuiBadgeDirective,
         TuiButtonModule,
@@ -56,9 +54,11 @@ import {ExampleTuiGroupComponent} from './group.component';
         ReactiveFormsModule,
         TuiTextfieldControllerModule,
         TuiHintModule,
-        TuiAddonDocModule,
         TuiMultiSelectModule,
-        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiGroupComponent)),
+        TuiBlockDirective,
+        TuiRadioModule,
+        tuiGetDocModules(ExampleTuiGroupComponent),
+        TuiTitleModule,
     ],
     declarations: [
         ExampleTuiGroupComponent,

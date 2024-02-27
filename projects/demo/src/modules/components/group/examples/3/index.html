@@ -5,28 +5,35 @@
     [collapsed]="true"
     [formGroup]="testForm"
 >
-    <tui-radio-block
-        contentAlign="right"
-        formControlName="testValue"
-        item="orange"
-        size="l"
+    <label
+        tuiBlock
+        [style.justify-content]="'space-between'"
     >
         Oranges
-    </tui-radio-block>
-    <tui-radio-block
-        contentAlign="right"
-        formControlName="testValue"
-        item="apple"
-        size="l"
-    >
+        <input
+            formControlName="testValue"
+            tuiRadio
+            type="radio"
+            value="orange"
+        />
+    </label>
+    <label tuiBlock>
         Apples
-    </tui-radio-block>
-    <tui-radio-block
-        contentAlign="right"
-        formControlName="testValue"
-        item="pineapple"
-        size="l"
-    >
+        <input
+            formControlName="testValue"
+            tuiRadio
+            type="radio"
+            value="apple"
+            [style.margin-inline-start]="'auto'"
+        />
+    </label>
+    <label tuiBlock>
         Pineapples
-    </tui-radio-block>
+        <input
+            formControlName="testValue"
+            tuiRadio
+            type="radio"
+            value="pineapple"
+        />
+    </label>
 </form>

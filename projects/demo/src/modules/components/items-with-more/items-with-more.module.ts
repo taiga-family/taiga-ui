@@ -1,8 +1,8 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {RouterModule} from '@angular/router';
-import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
+import {TuiExamplePipe} from '@demo/utils';
+import {tuiGetDocModules} from '@taiga-ui/addon-doc';
 import {
     TuiButtonModule,
     TuiDataListModule,
@@ -14,7 +14,7 @@ import {
 } from '@taiga-ui/core';
 import {
     TuiBadgeDirective,
-    TuiCheckboxBlockModule,
+    TuiBlockDirective,
     TuiItemsWithMoreModule,
     TuiTagModule,
 } from '@taiga-ui/kit';
@@ -31,15 +31,15 @@ import {ExampleTuiItemsWithMoreComponent} from './items-with-more.component';
         TuiTagModule,
         TuiNotificationModule,
         TuiItemsWithMoreModule,
-        TuiCheckboxBlockModule,
         TuiBadgeDirective,
         TuiHostedDropdownModule,
         TuiDropdownModule,
         TuiButtonModule,
         TuiDataListModule,
         TuiSvgModule,
-        TuiAddonDocModule,
-        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiItemsWithMoreComponent)),
+        TuiBlockDirective,
+        tuiGetDocModules(ExampleTuiItemsWithMoreComponent),
+        TuiExamplePipe,
     ],
     declarations: [
         ExampleTuiItemsWithMoreComponent,

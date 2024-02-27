@@ -1,30 +1,25 @@
-<tui-checkbox-block
+<label
     *ngFor="let item of items"
-    automation-id="tui-filter__checkbox"
+    appearance=""
     class="t-item"
-    [disabled]="disabledItemHandler(item)"
-    [hideCheckbox]="true"
-    [ngModel]="isCheckboxEnabled(item)"
-    [size]="size"
-    (ngModelChange)="onCheckbox($event, item)"
+    [tuiBlock]="size"
 >
-    <div
-        automation-id="tui-filter__content"
-        class="t-content"
+    <ng-container *polymorpheusOutlet="content as text; context: {$implicit: item}">
+        {{ text }}
+    </ng-container>
+    <tui-badge
+        *ngIf="badgeHandler(item) as badgeValue"
+        appearance="neutral"
+        tuiMode="onLight"
+        [size]="badgeSize"
     >
-        <ng-container *polymorpheusOutlet="content as text; context: {$implicit: item}">
-            {{ text }}
-        </ng-container>
-        <tui-badge
-            *ngIf="badgeHandler(item) as badgeValue"
-            appearance="neutral"
-            automation-id="tui-filter__badge"
-            tuiMode="onLight"
-            class="t-badge"
-            [class.t-badge_disabled]="disabledItemHandler(item)"
-            [size]="badgeSize"
-        >
-            {{ badgeValue }}
-        </tui-badge>
-    </div>
-</tui-checkbox-block>
+        {{ badgeValue }}
+    </tui-badge>
+    <input
+        tuiBlock
+        type="checkbox"
+        [disabled]="disabledItemHandler(item)"
+        [ngModel]="isCheckboxEnabled(item)"
+        (ngModelChange)="onCheckbox($event, item)"
+    />
+</label>

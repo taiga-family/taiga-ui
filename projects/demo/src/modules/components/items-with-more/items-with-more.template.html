@@ -9,7 +9,7 @@
         <tui-doc-example
             id="base"
             heading="Basic"
-            [content]="example1"
+            [content]="1 | tuiExample: 'html'"
             [fullsize]="true"
         >
             <tui-notification class="tui-space_bottom-3">
@@ -21,7 +21,7 @@
         <tui-doc-example
             id="dropdown"
             heading="Dropdown"
-            [content]="example2"
+            [content]="2 | tuiExample"
             [fullsize]="true"
         >
             <tui-items-with-more-example-2></tui-items-with-more-example-2>
@@ -79,11 +79,7 @@
     <ng-template pageTab>
         <ol class="b-demo-steps">
             <li>
-                <p>
-                    Import
-                    <code>TuiItemsWithMoreModule</code>
-                    into a module where you want to use our component
-                </p>
+                <p>Add an import:</p>
 
                 <tui-doc-code
                     filename="my.module.ts"
