@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[21065],{21065:e=>{e.exports="<ng-container #viewContainer></ng-container>\n"}}]);
