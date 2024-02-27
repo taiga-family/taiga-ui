@@ -9,5 +9,5 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiFormatPhoneExample1 {
-    phone = '+78005557778';
+    protected phone = '+78005557778';
 }

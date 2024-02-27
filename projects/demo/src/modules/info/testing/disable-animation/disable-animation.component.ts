@@ -25,6 +25,6 @@ import {TuiTabsModule} from '@taiga-ui/kit';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class DisableAnimationComponent {
-    readonly cypress = import('./examples/cypress.md?raw');
-    readonly playwright = import('./examples/playwright.md?raw');
+    protected readonly cypress = import('./examples/cypress.md?raw');
+    protected readonly playwright = import('./examples/playwright.md?raw');
 }

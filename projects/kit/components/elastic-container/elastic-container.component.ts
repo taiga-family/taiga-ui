@@ -9,13 +9,13 @@ import {shouldCall} from '@tinkoff/ng-event-plugins';
 })
 export class TuiElasticContainerComponent {
     @HostBinding('style.height.px')
-    height = NaN;
+    protected height = NaN;
 
     @HostBinding('class._transitioning')
-    transitions = 0;
+    protected transitions = 0;
 
     @shouldCall(name => name === 'height')
-    onAnimation(_name: string, count: number): void {
+    protected onAnimation(_name: string, count: number): void {
         this.transitions += count;
     }
 }

@@ -10,11 +10,11 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiDropdownHoverExample3 {
-    readonly items = ['Edit', 'Download', 'Rename', 'Delete'];
+    protected readonly items = ['Edit', 'Download', 'Rename', 'Delete'];
 
-    readonly selectItems = ['Item 1', 'Item 2'];
+    protected readonly selectItems = ['Item 1', 'Item 2'];
 
-    open = false;
+    protected open = false;
 
-    selected = new FormControl<string | null>(null);
+    protected selected = new FormControl<string | null>(null);
 }

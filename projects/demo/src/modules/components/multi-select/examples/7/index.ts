@@ -10,9 +10,9 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiMultiSelectExample7 {
-    value: readonly string[] = [];
+    protected value: readonly string[] = [];
 
-    readonly countries = [
+    protected readonly countries = [
         'Afghanistan',
         'Albania',
         'Algeria',
@@ -263,7 +263,7 @@ export class TuiMultiSelectExample7 {
         'Åland Islands',
     ];
 
-    get content(): string {
+    protected get content(): string {
         return `Selected ${this.value.length} of ${this.countries.length}`;
     }
 }

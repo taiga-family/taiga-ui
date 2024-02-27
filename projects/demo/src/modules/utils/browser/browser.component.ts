@@ -8,9 +8,11 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
     changeDetection,
 })
 export class ExampleBrowserComponent {
-    readonly importComponentExample = import('./examples/import/import-component.md?raw');
+    protected readonly importComponentExample = import(
+        './examples/import/import-component.md?raw'
+    );
 
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
     };

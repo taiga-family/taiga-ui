@@ -9,20 +9,20 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
     changeDetection,
 })
 export class ExampleTuiCurrencyComponent {
-    readonly exampleModule = import('./examples/import/import-module.md?raw');
-    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
+    protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         HTML: import('./examples/1/template.html?raw'),
     };
 
-    readonly example2: TuiDocExample = {
+    protected readonly example2: TuiDocExample = {
         TypeScript: import('./examples/2/component.ts?raw'),
         HTML: import('./examples/2/template.html?raw'),
     };
 
-    readonly currencyVariants = [null, 826, 840, 'EUR', 'RUB', 'UGX', 'USD'];
-    currency = this.currencyVariants[0];
+    protected readonly currencyVariants = [null, 826, 840, 'EUR', 'RUB', 'UGX', 'USD'];
+    protected currency = this.currencyVariants[0];
 
-    readonly control = new FormControl(6432, Validators.required);
+    protected readonly control = new FormControl(6432, Validators.required);
 }

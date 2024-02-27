@@ -13,7 +13,7 @@ import {map, of, startWith, timer} from 'rxjs';
 export class TuiProgressBarExample1 {
     private readonly isE2E = inject(TUI_IS_E2E);
 
-    readonly value$ = this.isE2E
+    protected readonly value$ = this.isE2E
         ? of(40)
         : timer(300, 300).pipe(
               map(i => i + 30),

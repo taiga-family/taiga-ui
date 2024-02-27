@@ -93,85 +93,85 @@ export class TuiInputDateRangeComponent
     );
 
     @Input()
-    disabledItemHandler: TuiBooleanHandler<TuiDay> = ALWAYS_FALSE_HANDLER;
+    public disabledItemHandler: TuiBooleanHandler<TuiDay> = ALWAYS_FALSE_HANDLER;
 
     @Input()
-    markerHandler: TuiMarkerHandler = TUI_DEFAULT_MARKER_HANDLER;
+    public markerHandler: TuiMarkerHandler = TUI_DEFAULT_MARKER_HANDLER;
 
     @Input()
-    defaultViewedMonth = TuiMonth.currentLocal();
+    public defaultViewedMonth = TuiMonth.currentLocal();
 
     @Input()
-    items: readonly TuiDayRangePeriod[] = [];
+    public items: readonly TuiDayRangePeriod[] = [];
 
     @Input()
-    min: TuiDay | null = this.options.min;
+    public min: TuiDay | null = this.options.min;
 
     @Input()
-    max: TuiDay | null = this.options.max;
+    public max: TuiDay | null = this.options.max;
 
     @Input()
-    minLength: TuiDayLike | null = null;
+    public minLength: TuiDayLike | null = null;
 
     @Input()
-    maxLength: TuiDayLike | null = null;
+    public maxLength: TuiDayLike | null = null;
 
-    open = false;
+    protected open = false;
 
-    readonly maxLengthMapper: TuiTypedMapper<
+    protected readonly maxLengthMapper: TuiTypedMapper<
         [TuiDay, TuiDayRange | null, TuiDayLike | null, boolean],
         TuiDay
     > = MAX_DAY_RANGE_LENGTH_MAPPER;
 
-    readonly dateFiller$ = this.dateTexts$.pipe(
+    protected readonly dateFiller$ = this.dateTexts$.pipe(
         map(dateTexts =>
             changeDateSeparator(dateTexts[this.dateFormat], this.dateSeparator),
         ),
     );
 
-    readonly dateFormat = inject(TUI_DATE_FORMAT);
-    readonly dateSeparator = inject(TUI_DATE_SEPARATOR);
+    protected readonly dateFormat = inject(TUI_DATE_FORMAT);
+    protected readonly dateSeparator = inject(TUI_DATE_SEPARATOR);
 
     @HostBinding('attr.data-size')
-    get size(): TuiSizeL | TuiSizeS {
+    protected get size(): TuiSizeL | TuiSizeS {
         return this.textfieldSize.size;
     }
 
-    get computedMin(): TuiDay {
+    protected get computedMin(): TuiDay {
         return this.min ?? TUI_FIRST_DAY;
     }
 
-    get computedMax(): TuiDay {
+    protected get computedMax(): TuiDay {
         return this.max ?? TUI_LAST_DAY;
     }
 
-    get nativeFocusableElement(): HTMLInputElement | null {
+    public get nativeFocusableElement(): HTMLInputElement | null {
         return this.textfield?.nativeFocusableElement ?? null;
     }
 
-    get focused(): boolean {
+    public get focused(): boolean {
         return !!this.textfield?.focused;
     }
 
-    get computedMobile(): boolean {
+    protected get computedMobile(): boolean {
         return this.isMobile && !!this.mobileCalendar;
     }
 
-    get calendarIcon(): TuiInputDateOptions['icon'] {
+    protected get calendarIcon(): TuiInputDateOptions['icon'] {
         return this.options.icon;
     }
 
-    get canOpen(): boolean {
+    protected get canOpen(): boolean {
         return this.interactive && !this.computedMobile;
     }
 
-    get computedExampleText(): string {
+    public get computedExampleText(): string {
         return this.items.length
             ? this.textfield?.nativeFocusableElement?.placeholder || ''
             : '';
     }
 
-    get computedMask(): MaskitoOptions {
+    protected get computedMask(): MaskitoOptions {
         return this.activePeriod
             ? MASKITO_DEFAULT_OPTIONS
             : this.calculateMask(
@@ -184,7 +184,7 @@ export class TuiInputDateRangeComponent
               );
     }
 
-    get activePeriod(): TuiDayRangePeriod | null {
+    protected get activePeriod(): TuiDayRangePeriod | null {
         return (
             this.items.find(item =>
                 tuiNullableSame(
@@ -198,7 +198,7 @@ export class TuiInputDateRangeComponent
         );
     }
 
-    get computedValue(): string {
+    public get computedValue(): string {
         const {value, nativeValue, activePeriod} = this;
 
         if (activePeriod) {
@@ -210,15 +210,15 @@ export class TuiInputDateRangeComponent
             : nativeValue;
     }
 
-    get showValueTemplate(): boolean {
+    protected get showValueTemplate(): boolean {
         return tuiIsPresent(this.value) && !this.focused;
     }
 
-    get computedContent(): PolymorpheusContent {
+    protected get computedContent(): PolymorpheusContent {
         return this.activePeriod?.content || this.computedValue;
     }
 
-    get innerPseudoFocused(): boolean | null {
+    protected get innerPseudoFocused(): boolean | null {
         if (this.pseudoFocus === false) {
             return false;
         }
@@ -230,28 +230,28 @@ export class TuiInputDateRangeComponent
         return null;
     }
 
-    get nativeValue(): string {
+    protected get nativeValue(): string {
         return this.nativeFocusableElement?.value || '';
     }
 
-    set nativeValue(value: string) {
+    protected set nativeValue(value: string) {
         if (this.nativeFocusableElement) {
             this.nativeFocusableElement.value = value;
         }
     }
 
     @HostListener('click')
-    onClick(): void {
+    protected onClick(): void {
         if (!this.isMobile) {
             this.toggle();
         }
     }
 
-    getComputedRangeFiller(dateFiller: string): string {
+    protected getComputedRangeFiller(dateFiller: string): string {
         return this.activePeriod ? '' : this.getDateRangeFiller(dateFiller);
     }
 
-    onIconClick(): void {
+    protected onIconClick(): void {
         if (!this.computedMobile || !this.mobileCalendar) {
             return;
         }
@@ -285,11 +285,11 @@ export class TuiInputDateRangeComponent
             });
     }
 
-    onOpenChange(open: boolean): void {
+    protected onOpenChange(open: boolean): void {
         this.open = open;
     }
 
-    onValueChange(value: string): void {
+    public onValueChange(value: string): void {
         if (this.control) {
             this.control.updateValueAndValidity({emitEvent: false});
         }
@@ -304,7 +304,7 @@ export class TuiInputDateRangeComponent
                 : null;
     }
 
-    onRangeChange(range: TuiDayRange | null): void {
+    protected onRangeChange(range: TuiDayRange | null): void {
         this.toggle();
         this.focusInput();
 
@@ -316,7 +316,7 @@ export class TuiInputDateRangeComponent
     }
 
     // TODO: investigate if it is used anywhere and (if not) delete it in v4.0
-    onItemSelect(item: TuiDayRangePeriod | string): void {
+    protected onItemSelect(item: TuiDayRangePeriod | string): void {
         this.toggle();
         this.focusInput();
 
@@ -334,7 +334,7 @@ export class TuiInputDateRangeComponent
         this.nativeValue = '';
     }
 
-    onActiveZone(focused: boolean): void {
+    protected onActiveZone(focused: boolean): void {
         this.updateFocused(focused);
 
         if (
@@ -348,7 +348,7 @@ export class TuiInputDateRangeComponent
         }
     }
 
-    override writeValue(value: TuiDayRange | null): void {
+    public override writeValue(value: TuiDayRange | null): void {
         super.writeValue(value);
         this.nativeValue = value ? this.computedValue : '';
     }

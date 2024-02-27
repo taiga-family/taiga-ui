@@ -19,26 +19,26 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
     ],
 })
 export class ExampleTuiCheckboxLabeledComponent extends AbstractExampleTuiControl {
-    readonly exampleForm = import('./examples/import/declare-form.md?raw');
-    readonly exampleModule = import('./examples/import/import-module.md?raw');
-    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    protected readonly exampleForm = import('./examples/import/declare-form.md?raw');
+    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
+    protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
         LESS: import('./examples/1/index.less?raw'),
     };
 
-    readonly example2: TuiDocExample = {
+    protected readonly example2: TuiDocExample = {
         TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
     };
 
-    override readonly sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
+    public override readonly sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
 
-    override size: TuiSizeL = this.sizeVariants[0];
+    public override size: TuiSizeL = this.sizeVariants[0];
 
-    control = new FormGroup({
+    public control = new FormGroup({
         testValue1: new FormControl(false),
         testValue2: new FormControl<boolean | null>(null),
         testValue3: new FormControl(true),

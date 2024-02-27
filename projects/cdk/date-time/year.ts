@@ -10,21 +10,21 @@ import {MAX_YEAR, MIN_YEAR} from './date-time';
  * @nosideeffects
  */
 export class TuiYear implements TuiYearLike {
-    constructor(readonly year: number) {
+    constructor(public readonly year: number) {
         ngDevMode && tuiAssert.assert(TuiYear.isValidYear(year));
     }
 
     /**
      * Checks year for validity
      */
-    static isValidYear(year: number): boolean {
+    public static isValidYear(year: number): boolean {
         return Number.isInteger(year) && tuiInRange(year, MIN_YEAR, MAX_YEAR + 1);
     }
 
     /**
      * Check if passed year is a leap year
      */
-    static isLeapYear(year: number): boolean {
+    public static isLeapYear(year: number): boolean {
         ngDevMode && tuiAssert.assert(TuiYear.isValidYear(year));
 
         return year % 400 === 0 || (year % 4 === 0 && year % 100 !== 0);
@@ -33,77 +33,77 @@ export class TuiYear implements TuiYearLike {
     /**
      * Returns amount of leap years from year 0 to the passed one
      */
-    static getAbsoluteLeapYears(year: number): number {
+    public static getAbsoluteLeapYears(year: number): number {
         ngDevMode && tuiAssert.assert(TuiYear.isValidYear(year));
 
         return Math.ceil(year / 400) + (Math.ceil(year / 4) - Math.ceil(year / 100));
     }
 
-    static lengthBetween(from: TuiYear, to: TuiYear): number {
+    public static lengthBetween(from: TuiYear, to: TuiYear): number {
         return to.year - from.year;
     }
 
     /**
      * Normalizes year by clamping it between min and max years
      */
-    protected static normalizeYearPart(year: number): number {
+    public static normalizeYearPart(year: number): number {
         return tuiNormalizeToIntNumber(year, MIN_YEAR, MAX_YEAR);
     }
 
-    get formattedYear(): string {
+    public get formattedYear(): string {
         return String(this.year).padStart(4, '0');
     }
 
-    get isLeapYear(): boolean {
+    public get isLeapYear(): boolean {
         return TuiYear.isLeapYear(this.year);
     }
 
     /**
      * Returns amount of leap years from year 0 to current
      */
-    get absoluteLeapYears(): number {
+    public get absoluteLeapYears(): number {
         return TuiYear.getAbsoluteLeapYears(this.year);
     }
 
     /**
      * Passed year is after current
      */
-    yearBefore({year}: TuiYear): boolean {
+    public yearBefore({year}: TuiYear): boolean {
         return this.year < year;
     }
 
     /**
      * Passed year is the same or after current
      */
-    yearSameOrBefore({year}: TuiYear): boolean {
+    public yearSameOrBefore({year}: TuiYear): boolean {
         return this.year <= year;
     }
 
     /**
      * Passed year is the same as current
      */
-    yearSame({year}: TuiYear): boolean {
+    public yearSame({year}: TuiYear): boolean {
         return this.year === year;
     }
 
     /**
      * Passed year is either the same of before the current
      */
-    yearSameOrAfter({year}: TuiYear): boolean {
+    public yearSameOrAfter({year}: TuiYear): boolean {
         return this.year >= year;
     }
 
     /**
      * Passed year is before current
      */
-    yearAfter({year}: TuiYear): boolean {
+    public yearAfter({year}: TuiYear): boolean {
         return this.year > year;
     }
 
     /**
      * Immutably offsets year
      */
-    append({year = 0}: TuiYearLike): TuiYear {
+    public append({year = 0}: TuiYearLike): TuiYear {
         ngDevMode && tuiAssert.assert(Number.isInteger(year));
 
         const resultYear = this.year + year;
@@ -113,11 +113,11 @@ export class TuiYear implements TuiYearLike {
         return new TuiYear(resultYear);
     }
 
-    toString(): string {
+    public toString(): string {
         return this.formattedYear;
     }
 
-    valueOf(): number {
+    public valueOf(): number {
         return this.year;
     }
 
@@ -126,11 +126,11 @@ export class TuiYear implements TuiYearLike {
      * Depending on the argument, the method can return either a string or a number.
      * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/@@toPrimitive
      */
-    [Symbol.toPrimitive](hint: string): number | string {
+    public [Symbol.toPrimitive](hint: string): number | string {
         return Date.prototype[Symbol.toPrimitive].call(this, hint);
     }
 
-    toJSON(): string {
+    public toJSON(): string {
         return this.formattedYear;
     }
 }

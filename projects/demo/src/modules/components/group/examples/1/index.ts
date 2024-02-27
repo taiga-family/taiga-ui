@@ -11,9 +11,9 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiGroupExample1 {
-    readonly items = ['Option 1', 'Option 2', 'Option 3'];
+    protected readonly items = ['Option 1', 'Option 2', 'Option 3'];
 
-    testForm = new FormGroup({
+    protected testForm = new FormGroup({
         testValue: new FormControl('', Validators.required),
         multiSelectControl: new FormControl<string[]>([], Validators.required),
         testValue3: new FormControl('', Validators.required),

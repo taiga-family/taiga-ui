@@ -24,30 +24,34 @@ export class ExampleTuiAlertComponent {
 
     private readonly defaultIcon = inject(TUI_NOTIFICATION_OPTIONS).icon;
 
-    readonly method = import('./method.md?raw');
+    protected readonly method = import('./method.md?raw');
 
-    readonly exampleServiceUsage = import('./examples/import/service-usage.md?raw');
+    protected readonly exampleServiceUsage = import(
+        './examples/import/service-usage.md?raw'
+    );
 
-    readonly exampleServiceUsageComponent = import(
+    protected readonly exampleServiceUsageComponent = import(
         './examples/import/service-usage-component.md?raw'
     );
 
-    readonly exampleCustomAlert = import('./examples/import/custom-alert.md?raw');
+    protected readonly exampleCustomAlert = import(
+        './examples/import/custom-alert.md?raw'
+    );
 
-    readonly exampleLazyModule = import('./examples/import/lazy-module.md?raw');
-    readonly exampleOptions = import('./examples/import/define-options.md?raw');
+    protected readonly exampleLazyModule = import('./examples/import/lazy-module.md?raw');
+    protected readonly exampleOptions = import('./examples/import/define-options.md?raw');
 
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
     };
 
-    readonly example2: TuiDocExample = {
+    protected readonly example2: TuiDocExample = {
         TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
     };
 
-    readonly example3: TuiDocExample = {
+    protected readonly example3: TuiDocExample = {
         TypeScript: import('./examples/3/index.ts?raw'),
         HTML: import('./examples/3/index.html?raw'),
         'alert-example/alert-example.component.ts': import(
@@ -61,7 +65,7 @@ export class ExampleTuiAlertComponent {
         ),
     };
 
-    readonly example4: TuiDocExample = {
+    protected readonly example4: TuiDocExample = {
         TypeScript: import('./examples/4/index.ts?raw'),
         HTML: import('./examples/4/index.html?raw'),
         'alert-example-with-data/alert-example-with-data.component.ts': import(
@@ -78,7 +82,7 @@ export class ExampleTuiAlertComponent {
         ),
     };
 
-    readonly example5: TuiDocExample = {
+    protected readonly example5: TuiDocExample = {
         TypeScript: import('./examples/5/index.ts?raw'),
         HTML: import('./examples/5/index.html?raw'),
         'custom-label/custom-label.module.ts': import(
@@ -107,45 +111,50 @@ export class ExampleTuiAlertComponent {
             ),
     };
 
-    readonly example6: TuiDocExample = {
+    protected readonly example6: TuiDocExample = {
         TypeScript: import('./examples/6/index.ts?raw'),
         HTML: import('./examples/6/index.html?raw'),
     };
 
-    data = 100;
+    protected data = 100;
 
-    label = 'Heading';
+    protected label = 'Heading';
 
-    readonly statusVariants: TuiNotification[] = ['info', 'success', 'error', 'warning'];
+    protected readonly statusVariants: TuiNotification[] = [
+        'info',
+        'success',
+        'error',
+        'warning',
+    ];
 
-    status = this.statusVariants[0];
+    protected status = this.statusVariants[0];
 
-    readonly iconVariants = ['Default', 'tuiIconHeart'];
+    protected readonly iconVariants = ['Default', 'tuiIconHeart'];
 
-    icon = this.iconVariants[0];
+    protected icon = this.iconVariants[0];
 
-    readonly contentVariants = ['String', 'Component'];
+    protected readonly contentVariants = ['String', 'Component'];
 
-    content = this.contentVariants[0];
+    protected content = this.contentVariants[0];
 
-    readonly autoCloseVariants = [0, 3000, 5000, 1000, 500];
+    protected readonly autoCloseVariants = [0, 3000, 5000, 1000, 500];
 
-    autoClose = this.autoCloseVariants[1];
+    protected autoClose = this.autoCloseVariants[1];
 
-    closeable = true;
+    protected closeable = true;
 
-    readonly component = new PolymorpheusComponent(
+    protected readonly component = new PolymorpheusComponent(
         AlertExampleWithDataComponent,
         inject(INJECTOR),
     );
 
-    get selectedContent(): PolymorpheusContent<
+    protected get selectedContent(): PolymorpheusContent<
         TuiAlertOptions<number> & TuiPopoverContext<number>
     > {
         return this.content === 'String' ? this.content : this.component;
     }
 
-    showNotification(): void {
+    protected showNotification(): void {
         this.alerts
             .open(this.selectedContent, {
                 label: this.label,

@@ -12,11 +12,11 @@ import {tuiPx} from '@taiga-ui/cdk';
     changeDetection,
 })
 export class TuiFormatExample1 {
-    parametersForm = new FormGroup({
+    protected parametersForm = new FormGroup({
         value: new FormControl(11),
     });
 
-    get px(): string {
+    protected get px(): string {
         const {value} = this.parametersForm.value;
 
         return tuiPx(value ?? 0);

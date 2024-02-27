@@ -18,39 +18,42 @@ import {
     changeDetection,
 })
 export class ExampleTuiCalendarMonthComponent {
-    readonly exampleModule = import('./examples/import/import-module.md?raw');
-    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
+    protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
     };
 
-    readonly example2: TuiDocExample = {
+    protected readonly example2: TuiDocExample = {
         TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
     };
 
-    readonly minVariants = [TUI_FIRST_DAY, new TuiMonth(2019, 2), new TuiMonth(2007, 0)];
+    protected readonly minVariants = [
+        TUI_FIRST_DAY,
+        new TuiMonth(2019, 2),
+        new TuiMonth(2007, 0),
+    ];
 
-    readonly maxVariants = [
+    protected readonly maxVariants = [
         TUI_LAST_DAY,
         new TuiMonth(2020, 2),
         new TuiMonth(2023, 0),
         new TuiMonth(2019, 4),
     ];
 
-    min = this.minVariants[0];
-    max = this.maxVariants[0];
+    protected min = this.minVariants[0];
+    protected max = this.maxVariants[0];
 
-    readonly disabledItemHandlerVariants: ReadonlyArray<TuiBooleanHandler<TuiMonth>> = [
-        ALWAYS_FALSE_HANDLER,
-        ({month}) => month % 3 === 0,
-    ];
+    protected readonly disabledItemHandlerVariants: ReadonlyArray<
+        TuiBooleanHandler<TuiMonth>
+    > = [ALWAYS_FALSE_HANDLER, ({month}) => month % 3 === 0];
 
-    disabledItemHandler = this.disabledItemHandlerVariants[0];
+    protected disabledItemHandler = this.disabledItemHandlerVariants[0];
 
-    readonly valueVariants: ReadonlyArray<TuiMonth | TuiMonthRange> = [
+    protected readonly valueVariants: ReadonlyArray<TuiMonth | TuiMonthRange> = [
         TuiDay.currentLocal(),
         new TuiMonthRange(
             TuiDay.currentLocal(),
@@ -59,12 +62,12 @@ export class ExampleTuiCalendarMonthComponent {
         new TuiMonth(2007, 2),
     ];
 
-    value: TuiMonth | TuiMonthRange | null = null;
+    protected value: TuiMonth | TuiMonthRange | null = null;
 
-    readonly yearVariants: readonly TuiYear[] = [
+    protected readonly yearVariants: readonly TuiYear[] = [
         TuiDay.currentLocal(),
         new TuiYear(2007),
     ];
 
-    year = this.yearVariants[0];
+    protected year = this.yearVariants[0];
 }

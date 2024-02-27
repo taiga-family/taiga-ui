@@ -10,18 +10,25 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiSidebarExample1 {
-    open = false;
+    protected open = false;
 
-    readonly webApis = ['Common', 'Audio', 'Canvas', 'Geolocation', 'MIDI', 'Workers'];
+    protected readonly webApis = [
+        'Common',
+        'Audio',
+        'Canvas',
+        'Geolocation',
+        'MIDI',
+        'Workers',
+    ];
 
-    readonly tinkoff = [
+    protected readonly tinkoff = [
         'Taiga-UI',
         'ng-event-plugins',
         'ng-polymorpheus',
         'ng-dompurify',
     ];
 
-    toggle(open: boolean): void {
+    protected toggle(open: boolean): void {
         this.open = open;
     }
 }

@@ -8,7 +8,7 @@ import {Observable} from 'rxjs';
 export class TuiFormatDatePipe implements PipeTransform {
     private readonly service = inject(TuiFormatDateService);
 
-    transform(timestampOrDate: Date | number): Observable<string> {
+    public transform(timestampOrDate: Date | number): Observable<string> {
         return this.service.format(timestampOrDate.valueOf());
     }
 }

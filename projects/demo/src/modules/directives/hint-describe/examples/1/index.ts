@@ -7,5 +7,5 @@ import {changeDetection} from '@demo/emulate/change-detection';
     changeDetection,
 })
 export class TuiHintDescribeExample1 {
-    value = '';
+    protected value = '';
 }

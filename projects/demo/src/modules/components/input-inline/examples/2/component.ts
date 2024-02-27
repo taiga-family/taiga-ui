@@ -13,14 +13,14 @@ import {TuiAlertService} from '@taiga-ui/core';
 export class TuiInputInlineExample2 {
     private readonly alerts = inject(TuiAlertService);
 
-    heading = 'Page heading';
-    editing = false;
+    protected heading = 'Page heading';
+    protected editing = false;
 
-    toggle(): void {
+    protected toggle(): void {
         this.editing = !this.editing;
     }
 
-    onFocusedChange(focused: boolean): void {
+    protected onFocusedChange(focused: boolean): void {
         if (!focused) {
             this.editing = false;
             this.saveHeading(this.heading);

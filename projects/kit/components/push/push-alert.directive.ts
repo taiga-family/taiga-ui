@@ -21,7 +21,7 @@ export class TuiPushAlertDirective extends PolymorpheusTemplate {
     private readonly show$ = new Subject<boolean>();
 
     @Input()
-    set tuiPush(show: boolean) {
+    public set tuiPush(show: boolean) {
         this.show$.next(show);
     }
 

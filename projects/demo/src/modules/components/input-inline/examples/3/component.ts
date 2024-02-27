@@ -16,11 +16,11 @@ export class TuiInputInlineExample3 implements OnInit {
     private readonly cd = inject(ChangeDetectorRef);
     private readonly destroy$ = inject(TuiDestroyService, {self: true});
     private readonly zone = inject(NgZone);
-    readonly isE2E = inject(TUI_IS_E2E);
+    protected readonly isE2E = inject(TUI_IS_E2E);
 
-    count = '0';
+    protected count = '0';
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         if (this.isE2E) {
             return;
         }

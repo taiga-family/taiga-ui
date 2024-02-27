@@ -43,21 +43,21 @@ export class TuiSheetDialogExample4 {
 
     private readonly size$ = inject(TUI_WINDOW_SIZE);
 
-    open = false;
+    protected open = false;
 
-    readonly offset = 16;
+    protected readonly offset = 16;
 
-    readonly search = new FormControl('');
+    protected readonly search = new FormControl('');
 
-    readonly users$ = tuiControlValue<string>(this.search).pipe(
+    protected readonly users$ = tuiControlValue<string>(this.search).pipe(
         map(search => USERS.filter(user => TUI_DEFAULT_MATCHER(user, search))),
     );
 
-    readonly height$ = this.size$.pipe(
+    protected readonly height$ = this.size$.pipe(
         map(({height}) => `calc(${height - this.offset}px - 14rem`),
     );
 
-    toggle(open: boolean): void {
+    protected toggle(open: boolean): void {
         this.open = open;
 
         if (open) {
@@ -65,13 +65,13 @@ export class TuiSheetDialogExample4 {
         }
     }
 
-    onSwipe(direction: TuiSwipeDirection): void {
+    protected onSwipe(direction: TuiSwipeDirection): void {
         if (direction === 'top') {
             this.scroll();
         }
     }
 
-    onFocus(): void {
+    protected onFocus(): void {
         this.scroll();
         this.input?.nativeFocusableElement?.focus();
     }

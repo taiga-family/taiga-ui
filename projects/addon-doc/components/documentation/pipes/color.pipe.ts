@@ -3,7 +3,7 @@ import {tuiRgbToHex} from '@taiga-ui/cdk';
 
 @Pipe({name: 'tuiGetColorPipe'})
 export class TuiGetColorPipe implements PipeTransform {
-    transform(color: string): string {
+    public transform(color: string): string {
         if (color.length === 4) {
             return color
                 .split('')

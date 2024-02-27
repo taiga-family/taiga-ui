@@ -23,22 +23,22 @@ export class TuiTreeItemContentComponent {
         forwardRef(() => TUI_TREE_CONTROLLER),
     );
 
-    readonly icons = inject(TUI_COMMON_ICONS);
-    readonly context = inject<TuiTreeItemContext>(POLYMORPHEUS_CONTEXT);
+    protected readonly icons = inject(TUI_COMMON_ICONS);
+    protected readonly context = inject<TuiTreeItemContext>(POLYMORPHEUS_CONTEXT);
 
-    get isExpanded(): boolean {
+    protected get isExpanded(): boolean {
         return this.context.$implicit.isExpanded;
     }
 
     @HostBinding('class._expandable')
-    get isExpandable(): boolean {
+    protected get isExpandable(): boolean {
         return (
             this.context.$implicit.isExpandable &&
             this.controller !== TUI_DEFAULT_TREE_CONTROLLER
         );
     }
 
-    onClick(): void {
+    protected onClick(): void {
         this.controller.toggle(this.context.$implicit);
     }
 }

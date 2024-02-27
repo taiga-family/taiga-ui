@@ -14,9 +14,9 @@ import {map, of, repeat, share, takeWhile, timer} from 'rxjs';
 export class TuiProgressCircleExample5 {
     private readonly isE2E = inject(TUI_IS_E2E);
 
-    readonly max = 100;
+    protected readonly max = 100;
 
-    readonly value$ = this.isE2E
+    protected readonly value$ = this.isE2E
         ? of(30)
         : timer(300, 200).pipe(
               takeWhile(value => value <= this.max),
@@ -24,7 +24,7 @@ export class TuiProgressCircleExample5 {
               repeat(),
           );
 
-    readonly color$ = this.value$.pipe(
+    protected readonly color$ = this.value$.pipe(
         map(value => {
             if (value < 33) {
                 return 'red';

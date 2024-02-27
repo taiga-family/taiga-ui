@@ -7,7 +7,7 @@ import {Observable, of} from 'rxjs';
 export class TuiFormatDateService {
     protected readonly locale = inject(LOCALE_ID);
 
-    format(timestamp: number): Observable<string> {
+    public format(timestamp: number): Observable<string> {
         return of(
             new Date(timestamp).toLocaleTimeString(this.locale, {
                 hour: 'numeric',

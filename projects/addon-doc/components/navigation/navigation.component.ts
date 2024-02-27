@@ -58,28 +58,28 @@ export class TuiDocNavigationComponent {
     private readonly doc = inject(DOCUMENT);
 
     @HostBinding('class._open')
-    menuOpen = false;
+    protected menuOpen = false;
 
-    readonly sidebar = inject(TuiSidebarDirective, {optional: true});
-    readonly labels = inject(NAVIGATION_LABELS);
-    readonly items = inject(NAVIGATION_ITEMS);
-    readonly searchText = inject(TUI_DOC_SEARCH_TEXT);
-    readonly activatedRoute = inject(ActivatedRoute);
-    readonly docIcons = inject(TUI_DOC_ICONS);
-    readonly icons = inject(TUI_COMMON_ICONS);
+    protected readonly sidebar = inject(TuiSidebarDirective, {optional: true});
+    protected readonly labels = inject(NAVIGATION_LABELS);
+    protected readonly items = inject(NAVIGATION_ITEMS);
+    protected readonly searchText = inject(TUI_DOC_SEARCH_TEXT);
+    protected readonly activatedRoute = inject(ActivatedRoute);
+    protected readonly docIcons = inject(TUI_DOC_ICONS);
+    protected readonly icons = inject(TUI_COMMON_ICONS);
 
-    openPagesArr: boolean[] = [];
-    openPagesGroupsArr: boolean[] = [];
-    active = '';
+    protected openPagesArr: boolean[] = [];
+    protected openPagesGroupsArr: boolean[] = [];
+    protected active = '';
 
-    readonly search = new FormControl('');
+    protected readonly search = new FormControl('');
 
-    readonly filtered$ = tuiControlValue<string>(this.search).pipe(
+    protected readonly filtered$ = tuiControlValue<string>(this.search).pipe(
         filter(search => search.trim().length > 2),
         map(search => this.filterItems(this.flattenSubPages(this.items), search)),
     );
 
-    readonly mode$: Observable<TuiBrightness> = this.mode.change$.pipe(
+    protected readonly mode$: Observable<TuiBrightness> = this.mode.change$.pipe(
         startWith(null),
         map(() => this.mode.mode || 'onLight'),
     );
@@ -112,31 +112,31 @@ export class TuiDocNavigationComponent {
             .subscribe(anchor => this.navigateToAnchorLink(anchor));
     }
 
-    get canOpen(): boolean {
+    protected get canOpen(): boolean {
         return (this.search.value?.length ?? 0) > 2;
     }
 
-    get itemsWithoutSections(): TuiDocPages {
+    protected get itemsWithoutSections(): TuiDocPages {
         return this.items[this.items.length - 1];
     }
 
-    $pages(pages: any): readonly TuiDocPage[] {
+    protected $pages(pages: any): readonly TuiDocPage[] {
         return pages as TuiDocPage[];
     }
 
-    isActive(route: string): boolean {
+    protected isActive(route: string): boolean {
         return route === this.active;
     }
 
-    onGroupClick(index: number): void {
+    protected onGroupClick(index: number): void {
         this.openPagesGroupsArr[index] = !this.openPagesGroupsArr[index];
     }
 
-    closeMenu(): void {
+    protected closeMenu(): void {
         this.menuOpen = false;
     }
 
-    onClick(input: TuiInputComponent): void {
+    protected onClick(input: TuiInputComponent): void {
         input.open = false;
         this.menuOpen = false;
         this.search.setValue('');

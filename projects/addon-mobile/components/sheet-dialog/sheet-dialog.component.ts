@@ -53,7 +53,7 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
     private pointers = 0;
 
     @HostBinding('@tuiSlideInTop')
-    readonly slideInTop = {
+    protected readonly slideInTop = {
         value: '',
         params: {
             start: '100vh',
@@ -61,24 +61,24 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
         },
     };
 
-    stuck$ = new BehaviorSubject(false);
+    protected stuck$ = new BehaviorSubject(false);
 
-    readonly icons = inject(TUI_COMMON_ICONS);
-    readonly closeWord$ = inject(TUI_CLOSE_WORD);
-    readonly context =
+    protected readonly icons = inject(TUI_COMMON_ICONS);
+    protected readonly closeWord$ = inject(TUI_CLOSE_WORD);
+    protected readonly context =
         inject<TuiPopover<TuiSheetDialogOptions<I>, any>>(POLYMORPHEUS_CONTEXT);
 
     @HostBinding('style.top.px')
-    get offset(): number {
+    protected get offset(): number {
         return this.context.offset;
     }
 
     @HostBinding('class._closeable')
-    get closeable(): boolean {
+    protected get closeable(): boolean {
         return this.context.closeable;
     }
 
-    get isSmall(): boolean {
+    protected get isSmall(): boolean {
         return this.sheetTop > (this.sheet?.nativeElement.clientHeight || Infinity);
     }
 
@@ -86,7 +86,7 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
     @HostListener('document:touchend.silent', ['-1'])
     @HostListener('document:touchcancel.silent', ['-1'])
     @HostListener('scroll.silent', ['0'])
-    onPointerChange(delta: number): void {
+    protected onPointerChange(delta: number): void {
         this.pointers += delta;
 
         if (!delta) {
@@ -101,13 +101,13 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
     }
 
     @shouldCall(isCloseable)
-    close(): void {
+    protected close(): void {
         // TODO: Refactor focus visible on mobile
         this.el.dispatchEvent(new Event('mousedown', {bubbles: true}));
         this.context.$implicit.complete();
     }
 
-    ngAfterViewInit(): void {
+    public ngAfterViewInit(): void {
         this.el.scrollTop = [...this.getStops(this.stopsRefs), this.sheetTop][
             this.context.initial
         ];

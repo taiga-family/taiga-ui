@@ -10,5 +10,5 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiInputTagExample5 {
-    value = ['گراهام چپمن', 'جان کلیز'];
+    protected value = ['گراهام چپمن', 'جان کلیز'];
 }

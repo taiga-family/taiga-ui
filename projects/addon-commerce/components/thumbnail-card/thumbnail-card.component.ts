@@ -20,26 +20,26 @@ export class TuiThumbnailCardComponent {
 
     @Input()
     @HostBinding('class._active')
-    active = false;
+    public active = false;
 
     @Input()
-    brandLogo = '';
+    public brandLogo = '';
 
     @Input()
-    cardNumber = '';
+    public cardNumber = '';
 
     @Input()
-    paymentSystem: TuiPaymentSystem | null = null;
+    public paymentSystem: TuiPaymentSystem | null = null;
 
     @Input()
     @HostBinding('attr.data-size')
-    size: TuiSizeS = 'm';
+    public size: TuiSizeS = 'm';
 
-    get hasBrandLogo(): boolean {
+    protected get hasBrandLogo(): boolean {
         return !!this.brandLogo && this.size === 'm';
     }
 
-    get paymentSystemLogo(): string {
+    protected get paymentSystemLogo(): string {
         return this.paymentSystem ? this.options.icons[this.paymentSystem] : '';
     }
 }

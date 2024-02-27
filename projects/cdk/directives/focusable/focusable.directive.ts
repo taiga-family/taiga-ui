@@ -11,10 +11,10 @@ export class TuiFocusableDirective {
      * Element can be focused with keyboard
      */
     @Input('tuiFocusable')
-    focusable = true;
+    public focusable = true;
 
     @HostBinding('tabIndex')
-    get tabIndex(): number {
+    protected get tabIndex(): number {
         return this.focusable ? 0 : -1;
     }
 }

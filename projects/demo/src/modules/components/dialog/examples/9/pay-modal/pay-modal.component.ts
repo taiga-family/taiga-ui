@@ -40,7 +40,7 @@ export class PayModalComponent implements OnInit {
     private readonly payService = inject(PayService);
     private readonly destroy$ = inject(TuiDestroyService, {self: true});
 
-    readonly form = new FormGroup({
+    protected readonly form = new FormGroup({
         card: new FormControl<TuiCard | null>(null, [
             Validators.required,
             inputCardGroupedCVCValidator(),
@@ -48,23 +48,23 @@ export class PayModalComponent implements OnInit {
         saveCard: new FormControl(true),
     });
 
-    readonly context =
+    protected readonly context =
         inject<TuiDialogContext<void, DataForPayCardModal>>(POLYMORPHEUS_CONTEXT);
 
-    readonly iOS = inject(TUI_IS_IOS);
+    protected readonly iOS = inject(TUI_IS_IOS);
 
-    cards: AccountCard[] = [];
-    paymentMode: TuiValuesOf<typeof PaymentMode> = PaymentMode.ByNewCard;
-    loading$ = new BehaviorSubject(false);
-    payProcessing$ = new BehaviorSubject(false);
-    amount: number = this.context?.data?.amount ?? 0;
-    readonly PAYMENT_MODE = PaymentMode;
+    protected cards: AccountCard[] = [];
+    protected paymentMode: TuiValuesOf<typeof PaymentMode> = PaymentMode.ByNewCard;
+    protected loading$ = new BehaviorSubject(false);
+    protected payProcessing$ = new BehaviorSubject(false);
+    protected amount: number = this.context?.data?.amount ?? 0;
+    protected readonly PAYMENT_MODE = PaymentMode;
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         this.fetchCardsAndSetPrimaryCard();
     }
 
-    payBySelectedCard(card: AccountCard): void {
+    protected payBySelectedCard(card: AccountCard): void {
         this.form.patchValue({
             card: {card: this.maskedNumber(card), expire: '**/**', cvc: ''},
         });
@@ -74,14 +74,14 @@ export class PayModalComponent implements OnInit {
         this.cardGroupedInput?.focusCVC();
     }
 
-    payByNewCard(): void {
+    protected payByNewCard(): void {
         this.form.patchValue({card: null});
         this.form.controls.card.addValidators(tuiCardNumberValidator);
         this.paymentMode = PaymentMode.ByNewCard;
         this.cardGroupedInput?.focusCard();
     }
 
-    pay(): void {
+    protected pay(): void {
         if (!this.form.controls.card.valid) {
             return;
         }
@@ -99,7 +99,7 @@ export class PayModalComponent implements OnInit {
             );
     }
 
-    cardValidator(card: string): boolean {
+    protected cardValidator(card: string): boolean {
         return tuiDefaultCardValidator(card) && card.length === 16;
     }
 

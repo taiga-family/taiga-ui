@@ -10,7 +10,7 @@ export class TuiPressedDirective {
     private readonly takeOnlyTrustedEvents = inject(TUI_TAKE_ONLY_TRUSTED_EVENTS);
 
     @Output()
-    readonly tuiPressedChange = tuiPressedObservable(this.el, {
+    public readonly tuiPressedChange = tuiPressedObservable(this.el, {
         onlyTrusted: this.takeOnlyTrustedEvents,
     });
 }

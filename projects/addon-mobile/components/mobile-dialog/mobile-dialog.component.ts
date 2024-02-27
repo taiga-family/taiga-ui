@@ -14,11 +14,11 @@ import {TuiMobileDialogOptions} from './mobile-dialog.options';
     },
 })
 export class TuiMobileDialogComponent<I> {
-    readonly isIOS = inject(TUI_IS_IOS);
-    readonly context =
+    protected readonly isIOS = inject(TUI_IS_IOS);
+    protected readonly context =
         inject<TuiPopover<TuiMobileDialogOptions<I>, number>>(POLYMORPHEUS_CONTEXT);
 
-    onAction(index: number): void {
+    protected onAction(index: number): void {
         this.context.completeWith(index);
     }
 }

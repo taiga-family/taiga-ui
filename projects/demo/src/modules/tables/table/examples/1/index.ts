@@ -10,7 +10,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiTableExample1 {
-    readonly data = [
+    protected readonly data = [
         {
             name: 'Alex Inkin',
             balance: 1323525,
@@ -21,5 +21,5 @@ export class TuiTableExample1 {
         },
     ] as const;
 
-    readonly columns = Object.keys(this.data[0]);
+    protected readonly columns = Object.keys(this.data[0]);
 }

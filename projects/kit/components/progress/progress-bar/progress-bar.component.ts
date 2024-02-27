@@ -20,11 +20,11 @@ import {MODE_PROVIDER, TUI_MODE, TuiSizeXS, TuiSizeXXL} from '@taiga-ui/core';
 export class TuiProgressBarComponent {
     @Input()
     @HostBinding('style.--tui-progress-color')
-    color?: string;
+    public color?: string;
 
     @Input()
     @HostBinding('attr.data-size')
-    size: TuiSizeXS | TuiSizeXXL = 'm';
+    public size: TuiSizeXS | TuiSizeXXL = 'm';
 
-    readonly mode$ = inject(TUI_MODE);
+    protected readonly mode$ = inject(TUI_MODE);
 }

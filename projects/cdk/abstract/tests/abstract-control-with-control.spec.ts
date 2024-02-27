@@ -20,7 +20,7 @@ describe('AbstractTuiControl and FormControl', () => {
         template: '',
     })
     class ChildComponent {
-        readonly parent = inject(AbstractTuiControl, {
+        protected readonly parent = inject(AbstractTuiControl, {
             optional: true,
         }) as MyControlComponent;
     }
@@ -37,29 +37,32 @@ describe('AbstractTuiControl and FormControl', () => {
         implements OnInit, OnDestroy
     {
         @ViewChild(ChildComponent)
-        child!: ChildComponent;
+        protected child!: ChildComponent;
 
-        focused = false;
-        ngOnInitTick = false;
-        ngOnDestroyTick = false;
+        protected focused = false;
+        protected ngOnInitTick = false;
+        protected ngOnDestroyTick = false;
 
-        forceUpdateFocused(focused: boolean): void {
+        protected forceUpdateFocused(focused: boolean): void {
             super.updateFocused(focused);
 
             this.focused = focused;
         }
 
-        getTransformers(): TuiControlValueTransformer<string> | null | undefined {
+        protected getTransformers():
+            | TuiControlValueTransformer<string>
+            | null
+            | undefined {
             return this.valueTransformer;
         }
 
-        override ngOnInit(): void {
+        public override ngOnInit(): void {
             super.ngOnInit();
 
             this.ngOnInitTick = true;
         }
 
-        override ngOnDestroy(): void {
+        public override ngOnDestroy(): void {
             super.ngOnDestroy();
 
             this.ngOnDestroyTick = true;
@@ -77,9 +80,9 @@ describe('AbstractTuiControl and FormControl', () => {
     })
     class TestComponent {
         @ViewChild(MyControlComponent)
-        myControl!: MyControlComponent;
+        protected myControl!: MyControlComponent;
 
-        control = new FormControl('Hello');
+        protected control = new FormControl('Hello');
     }
 
     let fixture: ComponentFixture<TestComponent>;

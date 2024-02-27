@@ -15,7 +15,8 @@ import {PromptOptions} from './prompt-options';
     providers: [TuiDestroyService, TuiDialogCloseService],
 })
 export class PromptComponent {
-    readonly context = inject<TuiPopover<PromptOptions, boolean>>(POLYMORPHEUS_CONTEXT);
+    protected readonly context =
+        inject<TuiPopover<PromptOptions, boolean>>(POLYMORPHEUS_CONTEXT);
 
     // Here you get options + content + id + observer
     constructor() {
@@ -25,7 +26,7 @@ export class PromptComponent {
             .subscribe(() => this.context.$implicit.complete());
     }
 
-    onClick(response: boolean): void {
+    protected onClick(response: boolean): void {
         this.context.completeWith(response);
     }
 }

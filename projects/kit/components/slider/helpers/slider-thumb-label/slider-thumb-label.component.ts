@@ -19,24 +19,24 @@ import {TuiSliderComponent} from '../../slider.component';
 })
 export class TuiSliderThumbLabelComponent implements AfterContentInit {
     @ContentChild(TuiSliderComponent)
-    readonly slider?: TuiSliderComponent;
+    protected readonly slider?: TuiSliderComponent;
 
     @ContentChild(NgControl)
-    readonly control?: NgControl;
+    protected readonly control?: NgControl;
 
-    get size(): TuiSizeS {
+    protected get size(): TuiSizeS {
         return this.slider?.size || 'm';
     }
 
-    get ratio(): number {
+    protected get ratio(): number {
         return this.slider?.valueRatio || 0;
     }
 
-    get ghostLeft(): number {
+    protected get ghostLeft(): number {
         return this.ratio * (this.slider?.el.offsetWidth || 0);
     }
 
-    ngAfterContentInit(): void {
+    public ngAfterContentInit(): void {
         ngDevMode &&
             tuiAssert.assert(
                 Boolean(this.control?.valueChanges),

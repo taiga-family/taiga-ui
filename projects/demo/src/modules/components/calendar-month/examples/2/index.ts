@@ -10,12 +10,12 @@ import {TuiMonth, TuiMonthRange} from '@taiga-ui/cdk';
     changeDetection,
 })
 export class TuiMonthExample2 {
-    value: TuiMonthRange | null = null;
+    protected value: TuiMonthRange | null = null;
 
-    max = new TuiMonth(2021, 7);
-    min = new TuiMonth(2019, 7);
+    protected max = new TuiMonth(2021, 7);
+    protected min = new TuiMonth(2019, 7);
 
-    onMonthClick(month: TuiMonth): void {
+    protected onMonthClick(month: TuiMonth): void {
         if (this.value === null || !this.value.isSingleMonth) {
             this.value = new TuiMonthRange(month, month);
 

@@ -11,7 +11,7 @@ import {TuiDay, TuiDayRange} from '@taiga-ui/cdk';
     changeDetection,
 })
 export class TuiInputDateRangeExample2 {
-    readonly control = new FormControl(
+    protected readonly control = new FormControl(
         new TuiDayRange(new TuiDay(2018, 2, 10), new TuiDay(2018, 3, 20)),
     );
 }

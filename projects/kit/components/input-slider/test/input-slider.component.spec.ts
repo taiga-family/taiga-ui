@@ -27,23 +27,23 @@ import {TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 })
 class TestComponent {
     @ViewChild(TuiInputSliderComponent)
-    component!: TuiInputSliderComponent;
+    protected component!: TuiInputSliderComponent;
 
     @ViewChild('progressPercent')
-    progressPercentCustomContent!: TemplateRef<Record<string, unknown>>;
+    protected progressPercentCustomContent!: TemplateRef<Record<string, unknown>>;
 
-    control = new FormControl(0);
+    protected control = new FormControl(0);
 
-    min = -100;
-    max = 100;
-    quantum = 10;
-    steps = 0;
-    valueContent: unknown = '';
-    textfieldCustomContent: unknown = '';
-    prefix = '$';
-    postfix = 'things';
+    protected min = -100;
+    protected max = 100;
+    protected quantum = 10;
+    protected steps = 0;
+    protected valueContent: unknown = '';
+    protected textfieldCustomContent: unknown = '';
+    protected prefix = '$';
+    protected postfix = 'things';
 
-    get percent(): number {
+    protected get percent(): number {
         return Math.round(((this.control.value || 0) / (this.max - this.min)) * 100);
     }
 }

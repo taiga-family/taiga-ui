@@ -8,24 +8,24 @@ import {TuiDocExample, TuiRawLoaderContent} from '@taiga-ui/addon-doc';
     changeDetection,
 })
 export class ExampleTuiButtonVerticalComponent {
-    readonly exampleModule: TuiRawLoaderContent = import(
+    protected readonly exampleModule: TuiRawLoaderContent = import(
         './examples/import/import-module.md?raw'
     );
 
-    readonly exampleHtml: TuiRawLoaderContent = import(
+    protected readonly exampleHtml: TuiRawLoaderContent = import(
         './examples/import/insert-template.md?raw'
     );
 
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         HTML: import('./examples/1/index.html?raw'),
     };
 
-    readonly example2: TuiDocExample = {
+    protected readonly example2: TuiDocExample = {
         HTML: import('./examples/2/index.html?raw'),
         LESS: import('./examples/2/index.less?raw'),
     };
 
-    readonly appearances = [
+    protected readonly appearances = [
         'primary',
         'accent',
         'secondary',
@@ -37,11 +37,11 @@ export class ExampleTuiButtonVerticalComponent {
         'floating',
     ];
 
-    appearance = this.appearances[0];
+    protected appearance = this.appearances[0];
 
-    readonly icons = ['', 'tuiIconSearch', 'tuiIconChevronDown'];
+    protected readonly icons = ['', 'tuiIconSearch', 'tuiIconChevronDown'];
 
-    iconLeft = this.icons[0];
+    protected iconLeft = this.icons[0];
 
-    loading = false;
+    protected loading = false;
 }

@@ -18,11 +18,11 @@ export class TuiFieldErrorContentPipe implements PipeTransform, OnDestroy {
     private readonly asyncPipe = this.localInjector.get(AsyncPipe);
     private readonly fieldErrorPipe = this.localInjector.get(TuiFieldErrorPipe);
 
-    transform(order: readonly string[]): PolymorpheusContent {
+    public transform(order: readonly string[]): PolymorpheusContent {
         return this.getErrorContent(order);
     }
 
-    ngOnDestroy(): void {
+    public ngOnDestroy(): void {
         this.asyncPipe.ngOnDestroy();
     }
 

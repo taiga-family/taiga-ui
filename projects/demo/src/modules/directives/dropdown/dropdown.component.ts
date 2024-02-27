@@ -18,47 +18,47 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/inherited-docum
     ],
 })
 export class ExampleTuiDropdownComponent extends AbstractExampleTuiDropdown {
-    readonly exampleModule = import('./examples/import/import-module.md?raw');
-    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
+    protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
     };
 
-    readonly example2: TuiDocExample = {
+    protected readonly example2: TuiDocExample = {
         TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
     };
 
-    readonly example3: TuiDocExample = {
+    protected readonly example3: TuiDocExample = {
         TypeScript: import('./examples/3/index.ts?raw'),
         HTML: import('./examples/3/index.html?raw'),
     };
 
-    readonly example4: TuiDocExample = {
+    protected readonly example4: TuiDocExample = {
         HTML: import('./examples/4/index.html?raw'),
         LESS: import('./examples/4/index.less?raw'),
     };
 
-    readonly example5: TuiDocExample = {
+    protected readonly example5: TuiDocExample = {
         HTML: import('./examples/5/index.html?raw'),
         LESS: import('./examples/5/index.less?raw'),
     };
 
-    open = false;
+    protected open = false;
 
-    onClick(): void {
+    protected onClick(): void {
         this.open = !this.open;
     }
 
-    onObscured(obscured: boolean): void {
+    protected onObscured(obscured: boolean): void {
         if (obscured) {
             this.open = false;
         }
     }
 
-    onActiveZone(active: boolean): void {
+    protected onActiveZone(active: boolean): void {
         this.open = active && this.open;
     }
 }

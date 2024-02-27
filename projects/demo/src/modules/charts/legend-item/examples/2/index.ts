@@ -15,23 +15,23 @@ export class TuiLegendItemExample2 {
     private readonly alerts = inject(TuiAlertService);
     private enabled = new Array(5).fill(true);
 
-    readonly data = [13769, 12367, 10172, 3018, 2592];
-    readonly sum = tuiSum(...this.data);
-    readonly labels = ['Axes', 'Faxes', 'Taxes', 'Saxes', 'Other'];
+    protected readonly data = [13769, 12367, 10172, 3018, 2592];
+    protected readonly sum = tuiSum(...this.data);
+    protected readonly labels = ['Axes', 'Faxes', 'Taxes', 'Saxes', 'Other'];
 
-    get value(): readonly number[] {
+    protected get value(): readonly number[] {
         return this.getValue(this.data, this.enabled);
     }
 
-    isEnabled(index: number): boolean {
+    protected isEnabled(index: number): boolean {
         return this.enabled[index];
     }
 
-    toggle(index: number): void {
+    protected toggle(index: number): void {
         this.enabled = this.enabled.map((value, i) => (i === index ? !value : value));
     }
 
-    onClick(index: number): void {
+    protected onClick(index: number): void {
         if (this.isEnabled(index)) {
             this.alerts
                 .open(`Category spending: ${tuiFormatNumber(this.data[index])} ₽`, {
@@ -43,7 +43,7 @@ export class TuiLegendItemExample2 {
         }
     }
 
-    getColor(index: number): string {
+    protected getColor(index: number): string {
         return `var(--tui-chart-${index})`;
     }
 

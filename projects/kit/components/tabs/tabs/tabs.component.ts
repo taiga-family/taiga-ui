@@ -50,11 +50,11 @@ export class TuiTabsComponent implements AfterViewChecked {
     private readonly tabs = inject(TuiTabsDirective);
 
     @ContentChildren(forwardRef(() => TuiTabComponent))
-    readonly children: QueryList<unknown> = EMPTY_QUERY;
+    protected readonly children: QueryList<unknown> = EMPTY_QUERY;
 
     @Input()
     @HostBinding('class._underline')
-    underline = this.options.underline;
+    public underline = this.options.underline;
 
     constructor() {
         this.resize$
@@ -66,26 +66,26 @@ export class TuiTabsComponent implements AfterViewChecked {
     }
 
     /** @deprecated use `activeItemIndex` from {@link TuiTabsDirective} instead */
-    get activeItemIndex(): number {
+    protected get activeItemIndex(): number {
         return this.tabs.activeItemIndex;
     }
 
     /** @deprecated use `activeItemIndex` from {@link TuiTabsDirective} instead */
-    set activeItemIndex(index: number) {
+    protected set activeItemIndex(index: number) {
         this.tabs.activeItemIndex = index;
     }
 
-    get activeElement(): HTMLElement | null {
+    protected get activeElement(): HTMLElement | null {
         return this.tabs.activeElement;
     }
 
     @HostListener('keydown.arrowRight.prevent', ['$event.target', '1'])
     @HostListener('keydown.arrowLeft.prevent', ['$event.target', '-1'])
-    onKeyDownArrow(current: HTMLElement, step: number): void {
+    protected onKeyDownArrow(current: HTMLElement, step: number): void {
         this.tabs.moveFocus(current, step);
     }
 
-    ngAfterViewChecked(): void {
+    public ngAfterViewChecked(): void {
         this.scrollTo(this.tabs.activeItemIndex);
     }
 

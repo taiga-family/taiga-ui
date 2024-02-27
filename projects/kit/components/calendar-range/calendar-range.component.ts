@@ -49,46 +49,46 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
     );
 
     @Input()
-    defaultViewedMonth: TuiMonth = TuiMonth.currentLocal();
+    public defaultViewedMonth: TuiMonth = TuiMonth.currentLocal();
 
     @Input()
-    disabledItemHandler: TuiBooleanHandler<TuiDay> = ALWAYS_FALSE_HANDLER;
+    public disabledItemHandler: TuiBooleanHandler<TuiDay> = ALWAYS_FALSE_HANDLER;
 
     @Input()
-    markerHandler: TuiMarkerHandler = TUI_DEFAULT_MARKER_HANDLER;
+    public markerHandler: TuiMarkerHandler = TUI_DEFAULT_MARKER_HANDLER;
 
     @Input()
-    items: readonly TuiDayRangePeriod[] = [];
+    public items: readonly TuiDayRangePeriod[] = [];
 
     @Input()
-    min: TuiDay | null = TUI_FIRST_DAY;
+    public min: TuiDay | null = TUI_FIRST_DAY;
 
     @Input()
-    max: TuiDay | null = TUI_LAST_DAY;
+    public max: TuiDay | null = TUI_LAST_DAY;
 
     @Input()
-    minLength: TuiDayLike | null = null;
+    public minLength: TuiDayLike | null = null;
 
     @Input()
-    maxLength: TuiDayLike | null = null;
+    public maxLength: TuiDayLike | null = null;
 
     @Input()
-    value: TuiDayRange | null = null;
+    public value: TuiDayRange | null = null;
 
     @Output()
-    readonly valueChange = new EventEmitter<TuiDayRange | null>();
+    public readonly valueChange = new EventEmitter<TuiDayRange | null>();
 
-    readonly otherDateText$ = inject(TUI_OTHER_DATE_TEXT);
-    readonly icons = inject(TUI_COMMON_ICONS);
-    previousValue: TuiDayRange | null = null;
+    protected readonly otherDateText$ = inject(TUI_OTHER_DATE_TEXT);
+    protected readonly icons = inject(TUI_COMMON_ICONS);
+    protected previousValue: TuiDayRange | null = null;
 
-    readonly maxLengthMapper = MAX_DAY_RANGE_LENGTH_MAPPER;
+    protected readonly maxLengthMapper = MAX_DAY_RANGE_LENGTH_MAPPER;
 
-    get computedMin(): TuiDay {
+    protected get computedMin(): TuiDay {
         return this.min ?? TUI_FIRST_DAY;
     }
 
-    get computedMax(): TuiDay {
+    protected get computedMax(): TuiDay {
         return this.max ?? TUI_LAST_DAY;
     }
 
@@ -104,7 +104,7 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
     }
 
     @HostListener('document:keydown.capture', ['$event'])
-    onEsc(event: KeyboardEvent): void {
+    protected onEsc(event: KeyboardEvent): void {
         if (event.key !== 'Escape' || !this.value?.isSingleDay) {
             return;
         }
@@ -113,7 +113,7 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
         this.value = this.previousValue;
     }
 
-    readonly mapper: TuiTypedMapper<
+    protected readonly mapper: TuiTypedMapper<
         [
             readonly TuiDayRangePeriod[],
             TuiDay | null,
@@ -133,7 +133,7 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
         otherDateText,
     ];
 
-    get calculatedDisabledItemHandler(): TuiBooleanHandler<TuiDay> {
+    protected get calculatedDisabledItemHandler(): TuiBooleanHandler<TuiDay> {
         return this.calculateDisabledItemHandler(
             this.disabledItemHandler,
             this.value,
@@ -141,22 +141,22 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
         );
     }
 
-    get computedMonth(): TuiMonth {
+    protected get computedMonth(): TuiMonth {
         return this.value ? this.value.to : this.defaultViewedMonth;
     }
 
-    isItemActive(item: TuiDayRangePeriod | string): boolean {
+    protected isItemActive(item: TuiDayRangePeriod | string): boolean {
         const {activePeriod} = this;
 
         return (tuiIsString(item) && activePeriod === null) || activePeriod === item;
     }
 
     // TODO: investigate if it is used anywhere and (if not) delete it in v4.0
-    onRangeChange(dayRange: TuiDayRange): void {
+    protected onRangeChange(dayRange: TuiDayRange): void {
         this.updateValue(dayRange);
     }
 
-    onDayClick(day: TuiDay): void {
+    protected onDayClick(day: TuiDay): void {
         const {value} = this;
 
         this.previousValue = value;
@@ -170,7 +170,7 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
         this.updateValue(TuiDayRange.sort(value.from, day));
     }
 
-    onItemSelect(item: TuiDayRangePeriod | string): void {
+    protected onItemSelect(item: TuiDayRangePeriod | string): void {
         if (typeof item !== 'string') {
             this.updateValue(item.range.dayLimit(this.min, this.max));
 
@@ -182,7 +182,7 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
         }
     }
 
-    updateValue(value: TuiDayRange | null): void {
+    protected updateValue(value: TuiDayRange | null): void {
         this.value = value;
         this.valueChange.emit(value);
     }

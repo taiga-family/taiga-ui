@@ -10,5 +10,5 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiCellExample1 {
-    readonly sizes = ['s', 'm', 'l'] as const;
+    protected readonly sizes = ['s', 'm', 'l'] as const;
 }

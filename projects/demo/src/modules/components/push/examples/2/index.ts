@@ -15,7 +15,7 @@ export class TuiPushExample2 {
     protected readonly push = inject(TuiPushService);
     protected readonly alert = inject(TuiAlertService);
 
-    onClick(): void {
+    protected onClick(): void {
         this.push
             .open('This is <strong>heavy</strong>!', {
                 heading: 'Great Scott!',

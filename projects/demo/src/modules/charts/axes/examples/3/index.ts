@@ -12,15 +12,15 @@ const PERCENT = 100;
     changeDetection,
 })
 export class TuiAxesExample3 {
-    readonly axisXLabels = ['0', '25', '50', '75', '100'];
-    readonly value = [50, 24, 36, 95];
-    readonly largest = 100;
+    protected readonly axisXLabels = ['0', '25', '50', '75', '100'];
+    protected readonly value = [50, 24, 36, 95];
+    protected readonly largest = 100;
 
-    getBackground(index: number): string {
+    protected getBackground(index: number): string {
         return `var(--tui-chart-${index})`;
     }
 
-    getHeight(value: number): number {
+    protected getHeight(value: number): number {
         return Math.abs((value * PERCENT) / this.largest);
     }
 }

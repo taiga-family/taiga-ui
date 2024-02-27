@@ -11,13 +11,13 @@ export class TuiValueChangesDirective<T> implements DoCheck {
     private readonly refresh$ = new Subject<Observable<T>>();
 
     @Output()
-    readonly tuiValueChanges = this.refresh$.pipe(
+    public readonly tuiValueChanges = this.refresh$.pipe(
         distinctUntilChanged(),
         switchAll(),
         distinctUntilChanged(),
     );
 
-    ngDoCheck(): void {
+    public ngDoCheck(): void {
         this.refresh$.next(
             this.control?.valueChanges || this.container?.valueChanges || EMPTY,
         );

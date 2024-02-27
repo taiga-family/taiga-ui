@@ -10,5 +10,5 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiBarSetExample2 {
-    readonly value = [30, 15, 10];
+    protected readonly value = [30, 15, 10];
 }

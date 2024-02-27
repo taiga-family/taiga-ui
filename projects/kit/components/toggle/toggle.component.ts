@@ -44,63 +44,63 @@ export class TuiToggleComponent
     protected readonly options = inject(TUI_TOGGLE_OPTIONS);
 
     @Input()
-    singleColor = this.options.singleColor;
+    public singleColor = this.options.singleColor;
 
     @Input()
-    showIcons = this.options.showIcons;
+    public showIcons = this.options.showIcons;
 
     @Input()
-    showLoader = false;
+    public showLoader = false;
 
     @Input()
     @HostBinding('attr.data-size')
-    size: TuiSizeL = this.options.size;
+    public size: TuiSizeL = this.options.size;
 
-    get iconOn(): PolymorpheusContent<TuiContext<TuiSizeL>> {
+    protected get iconOn(): PolymorpheusContent<TuiContext<TuiSizeL>> {
         return this.options.icons.toggleOn;
     }
 
-    get iconOff(): PolymorpheusContent<TuiContext<TuiSizeL>> {
+    protected get iconOff(): PolymorpheusContent<TuiContext<TuiSizeL>> {
         return this.options.icons.toggleOff;
     }
 
-    get nativeFocusableElement(): TuiNativeFocusableElement | null {
+    public get nativeFocusableElement(): TuiNativeFocusableElement | null {
         return this.focusableElement?.nativeElement ?? null;
     }
 
-    get focused(): boolean {
+    public get focused(): boolean {
         return tuiIsNativeFocused(this.nativeFocusableElement);
     }
 
-    get appearance(): string {
+    protected get appearance(): string {
         return this.singleColor || this.value
             ? this.options.appearances.checked
             : this.options.appearances.unchecked;
     }
 
-    get sizeM(): boolean {
+    protected get sizeM(): boolean {
         return this.size === 'm';
     }
 
-    get loaderSize(): TuiSizeXS {
+    protected get loaderSize(): TuiSizeXS {
         return this.sizeM ? 'xs' : 's';
     }
 
     @HostBinding('attr.data-mode')
-    get hostMode(): TuiBrightness | null {
+    protected get hostMode(): TuiBrightness | null {
         return this.modeDirective?.mode ?? null;
     }
 
     /** @deprecated use 'value' setter */
-    onChecked(checked: boolean): void {
+    protected onChecked(checked: boolean): void {
         this.value = checked;
     }
 
-    onFocused(focused: boolean): void {
+    protected onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
 
-    onFocusVisible(focusVisible: boolean): void {
+    protected onFocusVisible(focusVisible: boolean): void {
         this.updateFocusVisible(focusVisible);
     }
 

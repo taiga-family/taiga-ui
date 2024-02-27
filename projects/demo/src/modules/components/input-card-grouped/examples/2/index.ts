@@ -10,7 +10,7 @@ import {TuiInputCardGroupedComponent} from '@taiga-ui/addon-commerce';
     changeDetection,
 })
 export class TuiInputCardGroupedExample2 {
-    readonly items = [
+    protected readonly items = [
         {card: '4321***1234', expire: '12/21', name: 'Salary', bank: 'Tinkoff'},
         {
             card: '8765***5678',
@@ -22,14 +22,14 @@ export class TuiInputCardGroupedExample2 {
         {card: '4200***9000', name: 'Dogecoins', bank: 'Crypto'},
     ];
 
-    readonly card = new FormGroup({meta: new FormControl(this.items[0])});
+    protected readonly card = new FormGroup({meta: new FormControl(this.items[0])});
 
-    onClick(component: TuiInputCardGroupedComponent): void {
+    protected onClick(component: TuiInputCardGroupedComponent): void {
         this.card.get('meta')?.setValue(null);
         this.onEsc(component);
     }
 
-    onEsc(component: TuiInputCardGroupedComponent): void {
+    protected onEsc(component: TuiInputCardGroupedComponent): void {
         component.nativeFocusableElement?.focus();
         component.open = false;
     }

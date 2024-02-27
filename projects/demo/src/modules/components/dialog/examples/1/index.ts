@@ -12,7 +12,7 @@ import {TuiDialogService} from '@taiga-ui/core';
 export class TuiDialogExampleComponent1 {
     private readonly dialogs = inject(TuiDialogService);
 
-    showDialog(): void {
+    protected showDialog(): void {
         this.dialogs
             .open(
                 '<div>This is a plain string dialog.</div>It supports basic <strong>HTML</strong>',
@@ -21,7 +21,7 @@ export class TuiDialogExampleComponent1 {
             .subscribe();
     }
 
-    showDialogWithCustomButton(): void {
+    protected showDialogWithCustomButton(): void {
         this.dialogs
             .open('Good, Anakin, Good!', {
                 label: 'Star wars. Episode III',

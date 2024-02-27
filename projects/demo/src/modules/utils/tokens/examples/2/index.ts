@@ -10,5 +10,5 @@ import {TUI_DIALOGS} from '@taiga-ui/core';
     changeDetection,
 })
 export class TuiTokensExample2 {
-    readonly dialogs = inject(TUI_DIALOGS);
+    protected readonly dialogs = inject(TUI_DIALOGS);
 }

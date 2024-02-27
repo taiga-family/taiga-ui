@@ -39,30 +39,30 @@ export class TuiScrollbarComponent {
             !this.cssRef.supports('scrollbar-width', 'none'));
 
     @Input()
-    hidden = false;
+    public hidden = false;
 
-    readonly browserScrollRef = new ElementRef(this.el);
+    protected readonly browserScrollRef = new ElementRef(this.el);
 
-    get delegated(): boolean {
+    protected get delegated(): boolean {
         return this.browserScrollRef.nativeElement !== this.el;
     }
 
-    get showScrollbars(): boolean {
+    protected get showScrollbars(): boolean {
         return !this.hidden && !this.isIOS && (!this.isLegacy || this.delegated);
     }
 
     @HostBinding('class._legacy')
-    get showNative(): boolean {
+    protected get showNative(): boolean {
         return this.isLegacy && !this.hidden && !this.delegated;
     }
 
     @HostListener(`${TUI_SCROLLABLE}.stop`, ['$event.detail'])
-    onScrollable(element: HTMLElement): void {
+    protected onScrollable(element: HTMLElement): void {
         this.browserScrollRef.nativeElement = element;
     }
 
     @HostListener(`${TUI_SCROLL_INTO_VIEW}.stop`, ['$event.detail'])
-    scrollIntoView(detail: HTMLElement): void {
+    protected scrollIntoView(detail: HTMLElement): void {
         if (this.delegated) {
             return;
         }

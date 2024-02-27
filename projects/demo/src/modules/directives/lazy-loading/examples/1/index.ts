@@ -9,7 +9,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiLazyLoadingExample1 {
-    readonly array = Array.from(
+    protected readonly array = Array.from(
         {length: 100},
         (_, i) => `https://picsum.photos/${250 + i}/200`,
     );

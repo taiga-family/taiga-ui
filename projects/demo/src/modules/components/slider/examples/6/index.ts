@@ -12,12 +12,12 @@ import {BehaviorSubject, distinctUntilChanged, map, of, switchMap, timer} from '
     changeDetection,
 })
 export class TuiSliderExample6 {
-    min = 0.5;
-    max = 2;
-    value = 1;
+    protected min = 0.5;
+    protected max = 2;
+    protected value = 1;
 
-    readonly active$ = new BehaviorSubject(false);
-    readonly showHint$ = this.active$.pipe(
+    protected readonly active$ = new BehaviorSubject(false);
+    protected readonly showHint$ = this.active$.pipe(
         distinctUntilChanged(),
         switchMap(active =>
             active ? of(true) : timer(1000).pipe(map(ALWAYS_FALSE_HANDLER)),
@@ -26,11 +26,11 @@ export class TuiSliderExample6 {
 
     @HostListener('pointerdown', ['true'])
     @HostListener('document:pointerup', ['false'])
-    onKeydown(show: boolean): void {
+    protected onKeydown(show: boolean): void {
         this.active$.next(show);
     }
 
-    change(step: number): void {
+    protected change(step: number): void {
         this.value = tuiClamp(this.value + step, this.min, this.max);
     }
 }

@@ -16,7 +16,7 @@ export class TuiDialogsExample1 {
     private readonly alerts = inject(TuiAlertService);
     private readonly promptService = inject(PromptService);
 
-    onClick(
+    protected onClick(
         choose: PolymorpheusContent,
         poorly: PolymorpheusContent,
         wisely: PolymorpheusContent,

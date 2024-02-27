@@ -12,9 +12,9 @@ import {tuiFadeIn} from '@taiga-ui/core';
     animations: [tuiFadeIn],
 })
 export class TuiFadeExample2 {
-    expanded = false;
+    protected expanded = false;
 
-    toggle(): void {
+    protected toggle(): void {
         this.expanded = !this.expanded;
     }
 }

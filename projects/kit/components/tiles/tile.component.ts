@@ -28,32 +28,32 @@ export class TuiTileComponent implements OnDestroy, AfterViewInit {
     private readonly tiles = inject(TuiTilesComponent);
 
     @Input()
-    width = 1;
+    public width = 1;
 
     @Input()
-    height = 1;
+    public height = 1;
 
     @HostBinding('class._dragged')
-    dragged = false;
+    protected dragged = false;
 
-    readonly element: HTMLElement = inject(ElementRef).nativeElement;
+    public readonly element: HTMLElement = inject(ElementRef).nativeElement;
 
     @HostBinding('style.gridColumn')
-    get column(): string {
+    protected get column(): string {
         return `span var(--tui-width, ${this.width})`;
     }
 
     @HostBinding('style.gridRow')
-    get row(): string {
+    protected get row(): string {
         return `span var(--tui-height, ${this.height})`;
     }
 
     @HostListener('pointerenter')
-    onEnter(): void {
+    protected onEnter(): void {
         this.tiles.rearrange(this.element);
     }
 
-    onDrag(offset: readonly [number, number]): void {
+    public onDrag(offset: readonly [number, number]): void {
         const dragged = !Number.isNaN(offset[0]);
 
         this.dragged = this.dragged || dragged;
@@ -61,17 +61,17 @@ export class TuiTileComponent implements OnDestroy, AfterViewInit {
         this.service.setOffset(offset);
     }
 
-    onTransitionEnd(): void {
+    protected onTransitionEnd(): void {
         this.dragged = false;
     }
 
-    ngAfterViewInit(): void {
+    public ngAfterViewInit(): void {
         if (this.wrapper) {
             this.service.init(this.wrapper.nativeElement);
         }
     }
 
-    ngOnDestroy(): void {
+    public ngOnDestroy(): void {
         if (this.tiles.element === this.element) {
             this.tiles.element = null;
         }

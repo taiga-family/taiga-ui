@@ -21,19 +21,19 @@ export class TuiLazyLoadingDirective {
     private readonly src$ = inject(TuiLazyLoadingService);
 
     @Input('src')
-    set srcSetter(src: SafeResourceUrl | string) {
+    public set srcSetter(src: SafeResourceUrl | string) {
         this.src = this.supported ? src : null;
         this.src$.next(src);
     }
 
     @HostBinding('style.animation')
-    animation = 'tuiSkeletonVibe ease-in-out 1s infinite alternate';
+    protected animation = 'tuiSkeletonVibe ease-in-out 1s infinite alternate';
 
     @HostBinding('style.background')
-    background = 'var(--tui-clear-hover)';
+    protected background = 'var(--tui-clear-hover)';
 
     @HostBinding('attr.src')
-    src: SafeResourceUrl | string | null = null;
+    protected src: SafeResourceUrl | string | null = null;
 
     constructor() {
         if (!this.supported) {
@@ -48,7 +48,7 @@ export class TuiLazyLoadingDirective {
     }
 
     @HostListener('load')
-    onLoad(): void {
+    protected onLoad(): void {
         this.background = '';
         this.animation = '';
     }

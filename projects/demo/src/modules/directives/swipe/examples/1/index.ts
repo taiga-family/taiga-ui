@@ -12,9 +12,9 @@ import {TuiSwipe} from '@taiga-ui/cdk';
 })
 export class TuiSwipeExample1 {
     @HostBinding('class')
-    swiped = 'default';
+    protected swiped = 'default';
 
-    onSwipe(swipe: TuiSwipe): void {
+    protected onSwipe(swipe: TuiSwipe): void {
         this.swiped = swipe.direction;
     }
 }

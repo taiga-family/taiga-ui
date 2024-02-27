@@ -10,7 +10,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiMediaExample1 {
-    currentTime = 0;
-    volume = 1;
-    paused = true;
+    protected currentTime = 0;
+    protected volume = 1;
+    protected paused = true;
 }

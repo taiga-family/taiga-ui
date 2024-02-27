@@ -32,11 +32,11 @@ describe('InputPhoneInternational', () => {
     })
     class TestComponent {
         @ViewChild(TuiInputPhoneInternationalComponent, {static: true})
-        component!: TuiInputPhoneInternationalComponent;
+        protected component!: TuiInputPhoneInternationalComponent;
 
-        control = new FormControl('+79110330102');
+        protected control = new FormControl('+79110330102');
 
-        countries = [
+        protected countries = [
             TuiCountryIsoCode.RU,
             TuiCountryIsoCode.KZ,
             TuiCountryIsoCode.UA,
@@ -45,9 +45,9 @@ describe('InputPhoneInternational', () => {
             TuiCountryIsoCode.BD,
         ];
 
-        countryIsoCode = TuiCountryIsoCode.RU;
+        protected countryIsoCode = TuiCountryIsoCode.RU;
 
-        readOnly = false;
+        protected readOnly = false;
     }
 
     let fixture: ComponentFixture<TestComponent>;

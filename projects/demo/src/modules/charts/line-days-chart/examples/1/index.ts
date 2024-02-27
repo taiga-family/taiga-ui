@@ -24,27 +24,28 @@ export class TuiLineDaysChartExample1 {
     private readonly isE2E = inject(TUI_IS_E2E);
     private readonly months$ = inject(TUI_MONTHS);
 
-    range = new TuiDayRange(
+    protected range = new TuiDayRange(
         TuiDay.currentLocal(),
         TuiDay.currentLocal().append({year: 1}),
     );
 
-    readonly maxLength: TuiDayLike = {month: 12};
+    protected readonly maxLength: TuiDayLike = {month: 12};
 
-    readonly xStringify$: Observable<TuiStringHandler<TuiDay>> = this.months$.pipe(
-        map(
-            months =>
-                ({month, day}) =>
-                    `${months[month]}, ${day}`,
-        ),
-    );
+    protected readonly xStringify$: Observable<TuiStringHandler<TuiDay>> =
+        this.months$.pipe(
+            map(
+                months =>
+                    ({month, day}) =>
+                        `${months[month]}, ${day}`,
+            ),
+        );
 
-    get value(): ReadonlyArray<[TuiDay, number]> {
+    protected get value(): ReadonlyArray<[TuiDay, number]> {
         return this.computeValue(this.range);
     }
 
     @tuiPure
-    computeLabels$({from, to}: TuiDayRange): Observable<readonly string[]> {
+    protected computeLabels$({from, to}: TuiDayRange): Observable<readonly string[]> {
         return this.months$.pipe(
             map(months =>
                 Array.from(
@@ -55,7 +56,7 @@ export class TuiLineDaysChartExample1 {
         );
     }
 
-    readonly yStringify: TuiStringHandler<number> = y =>
+    protected readonly yStringify: TuiStringHandler<number> = y =>
         `${(10 * y).toLocaleString('en-US', {maximumFractionDigits: 0})} $`;
 
     @tuiPure

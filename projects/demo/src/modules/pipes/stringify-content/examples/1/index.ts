@@ -14,9 +14,9 @@ interface User {
     changeDetection,
 })
 export class TuiStringifyContentExample1 {
-    value = null;
+    protected value = null;
 
-    readonly items = [
+    protected readonly items = [
         {
             name: 'John',
             surname: 'Cleese',
@@ -27,5 +27,6 @@ export class TuiStringifyContentExample1 {
         },
     ];
 
-    readonly stringify = ({name, surname}: User): string => `${name} ${surname}`;
+    protected readonly stringify = ({name, surname}: User): string =>
+        `${name} ${surname}`;
 }

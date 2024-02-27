@@ -11,7 +11,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiRadioListExample2 {
-    readonly items = [
+    protected readonly items = [
         {
             name: 'Simple',
             description: 'Something usual',
@@ -26,7 +26,7 @@ export class TuiRadioListExample2 {
         },
     ];
 
-    readonly testForm = new FormGroup({
+    protected readonly testForm = new FormGroup({
         tariff: new FormControl(this.items[0]),
     });
 }

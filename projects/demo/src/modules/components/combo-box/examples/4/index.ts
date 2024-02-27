@@ -7,9 +7,9 @@ import {changeDetection} from '@demo/emulate/change-detection';
     changeDetection,
 })
 export class TuiComboBoxExample4 {
-    value = null;
+    protected value = null;
 
-    readonly items = [
+    protected readonly items = [
         {name: 'John', surname: 'Cleese'},
         {name: 'Eric', surname: 'Idle'},
         {name: 'Graham', surname: 'Chapman'},
@@ -18,6 +18,6 @@ export class TuiComboBoxExample4 {
         {name: 'Terry', surname: 'Jones'},
     ];
 
-    readonly stringify = (item: {name: string; surname: string}): string =>
+    protected readonly stringify = (item: {name: string; surname: string}): string =>
         `${item.name} ${item.surname}`;
 }

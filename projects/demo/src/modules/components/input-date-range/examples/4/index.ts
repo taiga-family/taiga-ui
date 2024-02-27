@@ -30,5 +30,8 @@ import {
     ],
 })
 export class TuiInputDateRangeExample4 {
-    readonly control = new FormControl([new Date(2018, 2, 10), new Date(2018, 3, 20)]);
+    protected readonly control = new FormControl([
+        new Date(2018, 2, 10),
+        new Date(2018, 3, 20),
+    ]);
 }

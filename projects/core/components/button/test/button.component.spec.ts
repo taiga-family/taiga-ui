@@ -19,7 +19,7 @@ describe('Button', () => {
         `,
     })
     class TestComponent {
-        showLoader = false;
+        protected showLoader = false;
     }
 
     let fixture: ComponentFixture<TestComponent>;

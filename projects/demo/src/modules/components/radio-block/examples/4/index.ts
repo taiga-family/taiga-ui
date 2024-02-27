@@ -11,8 +11,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiRadioBlockExample4 {
-    readonly items = ['Kiwi', 'Orange', 'Apple'];
-    readonly form = new FormGroup({
+    protected readonly items = ['Kiwi', 'Orange', 'Apple'];
+    protected readonly form = new FormGroup({
         control: new FormControl(this.items[1]),
     });
 }

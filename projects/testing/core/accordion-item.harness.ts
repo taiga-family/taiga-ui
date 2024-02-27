@@ -4,27 +4,27 @@ import {TuiContentContainerComponentHarness} from '@taiga-ui/testing/utils';
 import {TuiSvgHarness} from './svg.harness';
 
 export class TuiAccordionItemHarness extends TuiContentContainerComponentHarness {
-    static hostSelector = 'tui-accordion-item';
+    protected static hostSelector = 'tui-accordion-item';
 
     private readonly header = this.locatorFor('.t-header');
 
-    async getTitle(): Promise<string> {
+    protected async getTitle(): Promise<string> {
         return (await this.locatorFor('.t-title')()).text();
     }
 
-    async getContent(): Promise<string | null> {
+    protected async getContent(): Promise<string | null> {
         return (await this.locatorForOptional('.t-content')())?.text() ?? null;
     }
 
-    async clickHeader(): Promise<void> {
+    protected async clickHeader(): Promise<void> {
         return (await this.locatorFor('.t-header')()).click();
     }
 
-    async getBorders(): Promise<string | null> {
+    protected async getBorders(): Promise<string | null> {
         return (await this.host()).getAttribute('data-borders');
     }
 
-    async hasArrow(): Promise<boolean> {
+    protected async hasArrow(): Promise<boolean> {
         return (
             !!(await this.locatorForOptional(
                 TuiSvgHarness.with({selector: '.t-icon'}),
@@ -32,11 +32,11 @@ export class TuiAccordionItemHarness extends TuiContentContainerComponentHarness
         );
     }
 
-    async focus(): Promise<void> {
+    protected async focus(): Promise<void> {
         return (await this.header()).focus();
     }
 
-    async sendEscKey(): Promise<void> {
+    protected async sendEscKey(): Promise<void> {
         return (await this.header()).sendKeys(TestKey.ESCAPE);
     }
 }

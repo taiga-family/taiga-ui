@@ -12,16 +12,16 @@ import {map, scan, startWith, Subject} from 'rxjs';
     changeDetection,
 })
 export class TuiZoomExample1 {
-    readonly delta$ = new Subject<number>();
+    protected readonly delta$ = new Subject<number>();
 
-    readonly scale$ = this.delta$.pipe(
+    protected readonly scale$ = this.delta$.pipe(
         scan((scale, next) => tuiClamp(scale + next, 0.5, 3), 1),
         startWith(1),
     );
 
-    readonly transform$ = this.scale$.pipe(map(scale => `scale(${scale})`));
+    protected readonly transform$ = this.scale$.pipe(map(scale => `scale(${scale})`));
 
-    onZoom({delta}: TuiZoom): void {
+    protected onZoom({delta}: TuiZoom): void {
         this.delta$.next(delta);
     }
 }

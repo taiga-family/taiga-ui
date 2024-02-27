@@ -15,31 +15,31 @@ const FILLER_ARRAY: readonly number[] = [1];
 })
 export class TuiBarSetComponent {
     @Input()
-    value: readonly number[] = [];
+    public value: readonly number[] = [];
 
     @Input()
-    size: TuiSizeL | TuiSizeS | null = 'm';
+    public size: TuiSizeL | TuiSizeS | null = 'm';
 
     @Input()
-    collapsed = false;
+    public collapsed = false;
 
-    get computedValue(): readonly number[] {
+    protected get computedValue(): readonly number[] {
         return this.collapsed ? FILLER_ARRAY : this.value;
     }
 
-    get computedSegments(): readonly number[] {
+    protected get computedSegments(): readonly number[] {
         return this.collapsed ? this.value : EMPTY_ARRAY;
     }
 
-    get computedSize(): TuiSizeL | TuiSizeS {
+    protected get computedSize(): TuiSizeL | TuiSizeS {
         return this.size || 'm';
     }
 
-    getHeight(value: number): number {
+    protected getHeight(value: number): number {
         return Math.abs((PERCENT * value) / this.getLargest(this.computedValue));
     }
 
-    getColor(index: number): SafeValue {
+    protected getColor(index: number): SafeValue {
         return `var(--tui-chart-${index})`;
     }
 

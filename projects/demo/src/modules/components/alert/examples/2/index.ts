@@ -13,14 +13,14 @@ export class TuiAlertExampleComponent2 {
     private readonly alerts = inject(TuiAlertService);
 
     @ViewChild('withdrawTemplate')
-    withdrawTemplate?: TemplateRef<TuiAlertContext>;
+    protected withdrawTemplate?: TemplateRef<TuiAlertContext>;
 
     @ViewChild('depositTemplate')
-    depositTemplate?: TemplateRef<TuiAlertContext>;
+    protected depositTemplate?: TemplateRef<TuiAlertContext>;
 
-    money = 1000;
+    protected money = 1000;
 
-    showWithdrawAlert(): void {
+    protected showWithdrawAlert(): void {
         this.alerts
             .open(this.withdrawTemplate || '', {
                 label: 'A template sample',
@@ -30,7 +30,7 @@ export class TuiAlertExampleComponent2 {
             .subscribe();
     }
 
-    showDepositAlert(): void {
+    protected showDepositAlert(): void {
         this.alerts
             .open(this.depositTemplate || '', {
                 label: 'A template sample',
@@ -40,11 +40,11 @@ export class TuiAlertExampleComponent2 {
             .subscribe();
     }
 
-    withdraw(): void {
+    protected withdraw(): void {
         this.money -= 100;
     }
 
-    deposit(): void {
+    protected deposit(): void {
         this.money += 100;
     }
 }

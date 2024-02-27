@@ -11,5 +11,5 @@ import {TuiBreakpointService} from '@taiga-ui/core';
     changeDetection,
 })
 export class TuiBreakpointExample1 {
-    readonly breakpoint$ = inject(TuiBreakpointService);
+    protected readonly breakpoint$ = inject(TuiBreakpointService);
 }

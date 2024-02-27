@@ -13,19 +13,19 @@ import {distinctUntilChanged, map, merge, startWith, Subject} from 'rxjs';
 export class TuiDocHeaderComponent {
     private readonly stream$ = new Subject<boolean>();
     private readonly router = inject(Router);
-    readonly icons = inject(TUI_DOC_ICONS);
-    readonly logo = inject(TUI_DOC_LOGO);
-    readonly menu = inject(TUI_DOC_MENU_TEXT);
-    readonly open$ = merge(
+    protected readonly icons = inject(TUI_DOC_ICONS);
+    protected readonly logo = inject(TUI_DOC_LOGO);
+    protected readonly menu = inject(TUI_DOC_MENU_TEXT);
+    protected readonly open$ = merge(
         this.router.events.pipe(map(ALWAYS_FALSE_HANDLER)),
         this.stream$,
     ).pipe(startWith(false), distinctUntilChanged());
 
-    onClick(): void {
+    protected onClick(): void {
         this.stream$.next(true);
     }
 
-    onActiveZone(active: boolean): void {
+    protected onActiveZone(active: boolean): void {
         if (!active) {
             this.stream$.next(false);
         }

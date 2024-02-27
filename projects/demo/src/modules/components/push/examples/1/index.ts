@@ -13,7 +13,7 @@ import {TuiAlertService} from '@taiga-ui/core';
 export class TuiPushExample1 {
     private readonly alert = inject(TuiAlertService);
 
-    onClose(): void {
+    protected onClose(): void {
         this.alert
             .open('Close button is visible when you subscribe to (close) output')
             .subscribe();

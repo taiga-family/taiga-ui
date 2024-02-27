@@ -11,18 +11,18 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiInputSliderExample2 {
-    readonly control = new FormControl(40);
-    readonly segments = 5;
-    readonly max = 100;
-    readonly min = 0;
+    protected readonly control = new FormControl(40);
+    protected readonly segments = 5;
+    protected readonly max = 100;
+    protected readonly min = 0;
 
-    increase(): void {
+    protected increase(): void {
         this.control.patchValue(
             Math.min(((this.control?.value as number) ?? 0) + 20, this.max),
         );
     }
 
-    decrease(): void {
+    protected decrease(): void {
         this.control.patchValue(
             Math.max(((this.control?.value as number) ?? 0) - 20, this.min),
         );

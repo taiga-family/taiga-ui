@@ -51,21 +51,21 @@ export class TuiDropdownHoverDirective extends TuiDriver {
     );
 
     @Input('tuiDropdownShowDelay')
-    showDelay = this.options.showDelay;
+    public showDelay = this.options.showDelay;
 
     @Input('tuiDropdownHideDelay')
-    hideDelay = this.options.hideDelay;
+    public hideDelay = this.options.hideDelay;
 
-    hovered = false;
+    public hovered = false;
 
-    readonly type = 'dropdown';
+    public readonly type = 'dropdown';
 
     constructor() {
         super(subscriber => this.stream$.subscribe(subscriber));
     }
 
     @HostListener('click.capture', ['$event'])
-    onClick(event: MouseEvent): void {
+    protected onClick(event: MouseEvent): void {
         if (this.hovered && this.open) {
             event.preventDefault();
         }

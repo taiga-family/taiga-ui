@@ -59,7 +59,7 @@ export class YaMetrikaService {
         }
     }
 
-    hit(url: string, options: HitOptions = {}): void {
+    public hit(url: string, options: HitOptions = {}): void {
         this.doc.defaultView?.ym?.(this.options.id, 'hit', url, options);
     }
 }

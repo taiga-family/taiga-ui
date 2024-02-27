@@ -4,31 +4,31 @@ import {TuiComponentHarness} from '@taiga-ui/testing/utils';
 import {TuiSvgHarness} from './svg.harness';
 
 export class TuiTagHarness extends TuiComponentHarness {
-    static hostSelector = 'tui-tag';
+    protected static hostSelector = 'tui-tag';
 
-    async getCrossIcon(): Promise<TuiSvgHarness | null> {
+    protected async getCrossIcon(): Promise<TuiSvgHarness | null> {
         return this.locatorForOptional(TuiSvgHarness.with({selector: '.t-icon'}))();
     }
 
-    async getBackgroundColor(): Promise<string> {
+    protected async getBackgroundColor(): Promise<string> {
         const div = await this.locatorFor(':first-child')();
 
         return div.getCssValue('background-color');
     }
 
-    async getInput(): Promise<TestElement | null> {
+    protected async getInput(): Promise<TestElement | null> {
         return this.locatorForOptional('input.t-edit')();
     }
 
-    async sendEnter(): Promise<void> {
+    protected async sendEnter(): Promise<void> {
         return (await this.host()).sendKeys(TestKey.ENTER);
     }
 
-    async sendBackspace(): Promise<void> {
+    protected async sendBackspace(): Promise<void> {
         return (await this.host()).sendKeys(TestKey.BACKSPACE);
     }
 
-    async sendDelete(): Promise<void> {
+    protected async sendDelete(): Promise<void> {
         return (await this.host()).sendKeys(TestKey.DELETE);
     }
 }

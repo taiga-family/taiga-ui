@@ -34,7 +34,7 @@ export class TuiValueDecorationComponent implements DoCheck {
 
     private readonly prefix$ = new BehaviorSubject('');
 
-    readonly pre$ = merge(this.fontsReady$, this.prefix$).pipe(
+    public readonly pre$ = merge(this.fontsReady$, this.prefix$).pipe(
         delay(0),
         filter(() => !!this.pre?.nativeElement.isConnected),
         map(() => this.pre?.nativeElement.offsetWidth || 0),
@@ -42,16 +42,16 @@ export class TuiValueDecorationComponent implements DoCheck {
     );
 
     @HostBinding('class._table')
-    get isContextTable(): boolean {
+    protected get isContextTable(): boolean {
         return this.textfield.appearance === TuiAppearance.Table;
     }
 
-    get value(): string {
+    protected get value(): string {
         return this.textfield.value;
     }
 
     @HostBinding('class._filler')
-    get filler(): string {
+    protected get filler(): string {
         const {focused, placeholder, exampleText, value, textfield} = this;
 
         if (placeholder && exampleText) {
@@ -61,16 +61,16 @@ export class TuiValueDecorationComponent implements DoCheck {
         return focused ? exampleText || textfield.filler.slice(value.length) : '';
     }
 
-    get prefix(): string {
+    protected get prefix(): string {
         return this.decorationsVisible ? this.textfield.prefix : '';
     }
 
-    get postfix(): string {
+    protected get postfix(): string {
         return this.decorationsVisible ? this.computedPostfix : '';
     }
 
     @HostListener('animationstart')
-    ngDoCheck(): void {
+    public ngDoCheck(): void {
         this.prefix$.next(this.prefix);
     }
 

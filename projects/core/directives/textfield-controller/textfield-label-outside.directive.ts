@@ -16,5 +16,5 @@ export const TUI_TEXTFIELD_LABEL_OUTSIDE = tuiCreateTokenFromFactory(
 })
 export class TuiTextfieldLabelOutsideDirective extends AbstractTuiController {
     @Input('tuiTextfieldLabelOutside')
-    labelOutside = false;
+    public labelOutside = false;
 }

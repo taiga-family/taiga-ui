@@ -17,9 +17,9 @@ interface User {
     changeDetection,
 })
 export class TuiTableExample2 {
-    readonly columns = ['name', 'email', 'status', 'tags', 'actions'];
+    protected readonly columns = ['name', 'email', 'status', 'tags', 'actions'];
 
-    users: readonly User[] = [
+    protected users: readonly User[] = [
         {
             name: 'Michael Palin',
             email: 'm.palin@montypython.com',
@@ -58,7 +58,7 @@ export class TuiTableExample2 {
         },
     ];
 
-    remove(item: User): void {
+    protected remove(item: User): void {
         this.users = this.users.filter(user => user !== item);
     }
 }

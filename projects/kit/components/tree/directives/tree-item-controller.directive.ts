@@ -18,13 +18,13 @@ export class TuiTreeItemControllerDirective implements TuiTreeController {
     private readonly map = new WeakMap<TuiTreeItemComponent, boolean>();
 
     @Input('tuiTreeController')
-    fallback = true;
+    public fallback = true;
 
-    isExpanded(item: TuiTreeItemComponent): boolean {
+    public isExpanded(item: TuiTreeItemComponent): boolean {
         return this.map.get(item) ?? this.fallback;
     }
 
-    toggle(item: TuiTreeItemComponent): void {
+    public toggle(item: TuiTreeItemComponent): void {
         this.map.set(item, !this.isExpanded(item));
     }
 }

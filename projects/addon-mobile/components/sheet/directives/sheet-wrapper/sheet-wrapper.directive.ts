@@ -67,10 +67,10 @@ export class TuiSheetWrapperDirective {
     private readonly win = inject(WINDOW);
 
     @Input()
-    tuiSheetWrapper = 16;
+    public tuiSheetWrapper = 16;
 
     @tuiPure
-    get overlay$(): Observable<boolean> {
+    public get overlay$(): Observable<boolean> {
         return this.scroll$.pipe(
             map(y => y + 16 > this.win.innerHeight - this.tuiSheetWrapper),
             distinctUntilChanged(),
@@ -79,7 +79,7 @@ export class TuiSheetWrapperDirective {
     }
 
     @tuiPure
-    get visible$(): Observable<boolean> {
+    public get visible$(): Observable<boolean> {
         return processDragged(this.dragged$, this.scroll$).pipe(
             distinctUntilChanged(),
             tuiZonefull(this.zone),
@@ -87,7 +87,7 @@ export class TuiSheetWrapperDirective {
     }
 
     @tuiPure
-    get height$(): Observable<number | null> {
+    public get height$(): Observable<number | null> {
         return this.scroll$.pipe(map(this.getHeight.bind(this)));
     }
 

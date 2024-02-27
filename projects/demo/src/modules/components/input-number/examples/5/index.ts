@@ -11,5 +11,5 @@ import {tuiNumberFormatProvider} from '@taiga-ui/core';
     providers: [tuiNumberFormatProvider({decimalSeparator: ',', thousandSeparator: '.'})],
 })
 export class TuiInputNumberExample5 {
-    value = 123.56;
+    protected value = 123.56;
 }

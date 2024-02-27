@@ -15,10 +15,10 @@ const COPIED_TIMEOUT = 1500;
 export class TuiDocCopyComponent {
     private readonly copy$ = new Subject<void>();
 
-    readonly texts$ = inject(TUI_COPY_TEXTS);
+    protected readonly texts$ = inject(TUI_COPY_TEXTS);
 
     @tuiPure
-    get copied$(): Observable<boolean> {
+    protected get copied$(): Observable<boolean> {
         return this.copy$.pipe(
             switchMap(() =>
                 timer(COPIED_TIMEOUT).pipe(map(ALWAYS_FALSE_HANDLER), startWith(true)),
@@ -26,7 +26,7 @@ export class TuiDocCopyComponent {
         );
     }
 
-    onClick(): void {
+    protected onClick(): void {
         this.copy$.next();
     }
 }

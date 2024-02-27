@@ -17,7 +17,7 @@ describe('Loader component options', () => {
     })
     class TestComponent {
         @ViewChild(TuiLoaderComponent, {static: true})
-        component!: TuiLoaderComponent;
+        protected component!: TuiLoaderComponent;
     }
 
     beforeEach(() => {

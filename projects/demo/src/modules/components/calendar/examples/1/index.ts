@@ -10,9 +10,9 @@ import {TuiDay} from '@taiga-ui/cdk';
     changeDetection,
 })
 export class TuiCalendarExample1 {
-    value: TuiDay | null = null;
+    protected value: TuiDay | null = null;
 
-    onDayClick(day: TuiDay): void {
+    protected onDayClick(day: TuiDay): void {
         this.value = day;
     }
 }

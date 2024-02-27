@@ -43,28 +43,28 @@ export class TuiMultiSelectGroupComponent<T> {
 
     @HostBinding('class._label')
     @Input()
-    label = '';
+    public label = '';
 
-    readonly multiSelectTexts$ = inject(TUI_MULTI_SELECT_TEXTS);
+    protected readonly multiSelectTexts$ = inject(TUI_MULTI_SELECT_TEXTS);
 
-    get size(): TuiSizeL | TuiSizeXS {
+    protected get size(): TuiSizeL | TuiSizeXS {
         return this.options.first?.size || 'm';
     }
 
     @tuiPure
-    get empty$(): Observable<boolean> {
+    protected get empty$(): Observable<boolean> {
         return tuiQueryListChanges(this.options).pipe(map(({length}) => !length));
     }
 
     @tuiPure
-    get disabled$(): Observable<boolean> {
+    protected get disabled$(): Observable<boolean> {
         return tuiQueryListChanges(this.options).pipe(
             map(items => items.every(({disabled}) => disabled)),
         );
     }
 
     @tuiPure
-    get value$(): Observable<boolean | null> {
+    protected get value$(): Observable<boolean | null> {
         return combineLatest([this.items$, this.valueChanges$]).pipe(
             map(([items, current]) => {
                 let result = false;
@@ -86,7 +86,7 @@ export class TuiMultiSelectGroupComponent<T> {
         );
     }
 
-    onClick(checked: boolean | null): void {
+    protected onClick(checked: boolean | null): void {
         if (!this.control.control) {
             return;
         }

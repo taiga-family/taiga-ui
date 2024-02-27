@@ -7,5 +7,5 @@ import {TuiCarouselDirective} from './carousel.directive';
 })
 export class TuiCarouselAutoscrollDirective {
     @Output()
-    readonly tuiCarouselAutoscroll = inject(TuiCarouselDirective);
+    public readonly tuiCarouselAutoscroll = inject(TuiCarouselDirective);
 }

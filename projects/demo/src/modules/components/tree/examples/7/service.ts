@@ -6,7 +6,7 @@ import type {Item} from './index';
 
 @Injectable()
 export class TreeLoader implements TuiTreeLoader<Item> {
-    loadChildren({text}: Item): Observable<Item[]> {
+    public loadChildren({text}: Item): Observable<Item[]> {
         return timer(3000).pipe(
             map(() => [
                 {text: `${text} 1`, children: Math.random() > 0.5},
@@ -16,7 +16,7 @@ export class TreeLoader implements TuiTreeLoader<Item> {
         );
     }
 
-    hasChildren({children}: Item): boolean {
+    public hasChildren({children}: Item): boolean {
         return !!children;
     }
 }

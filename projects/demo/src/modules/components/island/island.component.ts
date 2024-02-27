@@ -10,34 +10,34 @@ import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
     changeDetection,
 })
 export class ExampleTuiIslandComponent {
-    readonly exampleModule = import('./examples/import/import-module.md?raw');
-    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
+    protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
         LESS: import('./examples/1/index.less?raw'),
     };
 
-    readonly example2: TuiDocExample = {
+    protected readonly example2: TuiDocExample = {
         TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
         LESS: import('./examples/2/index.less?raw'),
     };
 
-    readonly example3: TuiDocExample = {
+    protected readonly example3: TuiDocExample = {
         TypeScript: import('./examples/3/index.ts?raw'),
         HTML: import('./examples/3/index.html?raw'),
         LESS: import('./examples/3/index.less?raw'),
     };
 
-    hoverable = false;
+    protected hoverable = false;
 
-    readonly textAlignVariants = ['left', 'right', 'center'] as const;
+    protected readonly textAlignVariants = ['left', 'right', 'center'] as const;
 
-    textAlign: 'center' | 'left' | 'right' = this.textAlignVariants[0];
+    protected textAlign: 'center' | 'left' | 'right' = this.textAlignVariants[0];
 
-    readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
+    protected readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
 
-    size: TuiSizeL | TuiSizeS = this.sizeVariants[0];
+    protected size: TuiSizeL | TuiSizeS = this.sizeVariants[0];
 }

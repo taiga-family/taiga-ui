@@ -44,81 +44,84 @@ export class TuiLineChartComponent {
     private readonly autoIdString = inject(TuiIdService).generate();
 
     @ViewChildren(TuiHintHoverDirective)
-    readonly drivers: QueryList<Observable<boolean>> = EMPTY_QUERY;
+    public readonly drivers: QueryList<Observable<boolean>> = EMPTY_QUERY;
 
     @Input('value')
-    set valueSetter(value: readonly TuiPoint[]) {
+    public set valueSetter(value: readonly TuiPoint[]) {
         this.value = value.filter(item => !item.some(Number.isNaN));
     }
 
     @Input()
-    x = 0;
+    public x = 0;
 
     @Input()
-    y = 0;
+    public y = 0;
 
     @Input()
-    width = 0;
+    public width = 0;
 
     @Input()
-    height = 0;
+    public height = 0;
 
     @Input()
-    smoothingFactor = this.options.smoothingFactor;
+    public smoothingFactor = this.options.smoothingFactor;
 
     @Input()
-    xStringify: TuiStringHandler<number> | null = null;
+    public xStringify: TuiStringHandler<number> | null = null;
 
     @Input()
-    yStringify: TuiStringHandler<number> | null = null;
+    public yStringify: TuiStringHandler<number> | null = null;
 
     @Input()
-    filled = this.options.filled;
+    public filled = this.options.filled;
 
     @Input()
-    dots = this.options.dots;
+    public dots = this.options.dots;
 
-    value: readonly TuiPoint[] = [];
+    public value: readonly TuiPoint[] = [];
 
-    readonly hintDirective = inject(TuiLineChartHintDirective, {optional: true});
-    readonly hintOptions = inject(TuiHintOptionsDirective, {optional: true});
+    protected readonly hintDirective = inject(TuiLineChartHintDirective, {
+        optional: true,
+    });
+
+    protected readonly hintOptions = inject(TuiHintOptionsDirective, {optional: true});
 
     @tuiPure
-    get hovered$(): Observable<number> {
+    protected get hovered$(): Observable<number> {
         return this.hover$.pipe(distinctUntilChanged(), tuiZoneOptimized(this.zone));
     }
 
-    get hintContent(): PolymorpheusContent<TuiLineChartHintContext<TuiPoint>> {
+    protected get hintContent(): PolymorpheusContent<TuiLineChartHintContext<TuiPoint>> {
         return this.hintOptions?.content || '';
     }
 
-    get fillId(): string {
+    protected get fillId(): string {
         return `tui-line-chart-${this.autoIdString}`;
     }
 
-    get fill(): string {
+    protected get fill(): string {
         return this.filled ? `url(#${this.fillId})` : 'none';
     }
 
-    get viewBox(): string {
+    protected get viewBox(): string {
         return `${this.x} ${this.y} ${this.width} ${this.height}`;
     }
 
-    get d(): string {
+    protected get d(): string {
         return this.getD(this.value, this.smoothingFactor);
     }
 
-    get fillD(): string {
+    protected get fillD(): string {
         return this.value.length
             ? `${this.d}V ${this.y} H ${this.value[0][0]} V ${this.value[0][1]}`
             : this.d;
     }
 
-    get isFocusable(): boolean {
+    protected get isFocusable(): boolean {
         return !this.hintDirective && this.hasHints;
     }
 
-    get hasHints(): boolean {
+    protected get hasHints(): boolean {
         return (
             !!this.xStringify ||
             !!this.yStringify ||
@@ -128,13 +131,13 @@ export class TuiLineChartComponent {
     }
 
     @HostListener('mouseleave')
-    onMouseLeave(): void {
+    protected onMouseLeave(): void {
         if (!this.hintDirective) {
             this.onHovered(NaN);
         }
     }
 
-    getX(index: number): number {
+    protected getX(index: number): number {
         if (this.isSinglePoint) {
             return this.value[0][0] / 2;
         }
@@ -144,41 +147,41 @@ export class TuiLineChartComponent {
             : 2 * this.value[0][0] - this.getX(1);
     }
 
-    getWidth(index: number): number {
+    protected getWidth(index: number): number {
         return (100 * this.computeWidth(index)) / this.width;
     }
 
-    getHintId(index: number): string {
+    protected getHintId(index: number): string {
         return `${this.autoIdString}_${index}`;
     }
 
-    getImplicit($implicit: TuiPoint): TuiPoint | readonly TuiPoint[] {
+    protected getImplicit($implicit: TuiPoint): TuiPoint | readonly TuiPoint[] {
         return (
             this.hintDirective?.getContext(this.value.indexOf($implicit), this) ||
             $implicit
         );
     }
 
-    getHovered(hovered: number | null): TuiPoint | null {
+    protected getHovered(hovered: number | null): TuiPoint | null {
         // This checks for NaN and null too since async pipe returns null before first item
         return tuiIsPresent(hovered) && Number.isInteger(hovered)
             ? this.value[hovered]
             : null;
     }
 
-    getBottom(y: number): number {
+    protected getBottom(y: number): number {
         return (100 * (y - this.y)) / this.height;
     }
 
-    getLeft(x: number): number {
+    protected getLeft(x: number): number {
         return (100 * (x - this.x)) / this.width;
     }
 
-    getOffset(x: number): number {
+    protected getOffset(x: number): number {
         return (100 * (this.value[x][0] - this.getX(x))) / this.computeWidth(x);
     }
 
-    onMouseEnter(index: number): void {
+    protected onMouseEnter(index: number): void {
         if (this.hintDirective) {
             this.hintDirective.raise(index, this);
         } else {
@@ -186,7 +189,7 @@ export class TuiLineChartComponent {
         }
     }
 
-    onHovered(index: number): void {
+    public onHovered(index: number): void {
         this.hover$.next(index);
     }
 

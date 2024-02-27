@@ -10,9 +10,9 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiModeExample1 {
-    toggle = false;
+    protected toggle = false;
 
-    text = '';
+    protected text = '';
 
-    money = 237;
+    protected money = 237;
 }

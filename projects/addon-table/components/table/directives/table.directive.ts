@@ -35,31 +35,31 @@ export class TuiTableDirective<T extends Partial<Record<keyof T, any>>>
     private readonly cdr = inject(ChangeDetectorRef);
 
     @Input()
-    columns: ReadonlyArray<string | keyof T> = [];
+    public columns: ReadonlyArray<string | keyof T> = [];
 
     @Input()
     @HostBinding('attr.data-size')
-    size = this.options.size;
+    public size = this.options.size;
 
     @Input()
-    direction = this.options.direction;
+    public direction = this.options.direction;
 
     @Output()
-    readonly directionChange = new EventEmitter<-1 | 1>();
+    public readonly directionChange = new EventEmitter<-1 | 1>();
 
     @Output()
-    readonly sorterChange = new EventEmitter<TuiComparator<T> | null>();
+    public readonly sorterChange = new EventEmitter<TuiComparator<T> | null>();
 
-    readonly mode$ = inject(TUI_MODE);
-    readonly stuck$ = inject(TUI_STUCK);
-    readonly entries$ = inject<Observable<IntersectionObserverEntry[]>>(
+    protected readonly mode$ = inject(TUI_MODE);
+    protected readonly stuck$ = inject(TUI_STUCK);
+    protected readonly entries$ = inject<Observable<IntersectionObserverEntry[]>>(
         IntersectionObserverService,
     );
 
     @Input()
-    sorter: TuiComparator<T> = () => 0;
+    public sorter: TuiComparator<T> = () => 0;
 
-    updateSorterAndDirection(sorter: TuiComparator<T> | null): void {
+    public updateSorterAndDirection(sorter: TuiComparator<T> | null): void {
         if (this.sorter === sorter) {
             this.updateDirection(this.direction === 1 ? -1 : 1);
         } else {
@@ -68,11 +68,11 @@ export class TuiTableDirective<T extends Partial<Record<keyof T, any>>>
         }
     }
 
-    ngAfterViewInit(): void {
+    public ngAfterViewInit(): void {
         this.cdr.detectChanges();
     }
 
-    updateSorter(sorter: TuiComparator<T> | null): void {
+    public updateSorter(sorter: TuiComparator<T> | null): void {
         this.sorter = sorter || (() => 0);
         this.sorterChange.emit(this.sorter);
         this.change$.next();

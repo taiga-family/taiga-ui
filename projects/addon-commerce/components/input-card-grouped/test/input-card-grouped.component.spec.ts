@@ -36,14 +36,14 @@ describe('InputCardGrouped', () => {
     })
     class TestComponent {
         @ViewChild(TuiInputCardGroupedComponent, {static: true})
-        component!: TuiInputCardGroupedComponent;
+        protected component!: TuiInputCardGroupedComponent;
 
         @ViewChild('customIconTemplate', {read: TemplateRef})
-        customIconTemplate!: TemplateRef<any>;
+        protected customIconTemplate!: TemplateRef<any>;
 
-        control = new FormControl('');
+        protected control = new FormControl('');
 
-        onBinChange = jest.fn();
+        protected onBinChange = jest.fn();
     }
 
     let fixture: ComponentFixture<TestComponent>;

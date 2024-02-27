@@ -11,6 +11,6 @@ import {assets} from '@demo/utils';
     changeDetection,
 })
 export class TuiDropdownExample2 {
-    open = false;
-    avatarUrl = assets`/images/avatar.jpg`;
+    protected open = false;
+    protected avatarUrl = assets`/images/avatar.jpg`;
 }

@@ -12,13 +12,13 @@ import {TuiDialogService, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 export class TuiDataListExample2 {
     private readonly dialogs = inject(TuiDialogService);
 
-    dropdownOpen = false;
-    size: TuiSizeL | TuiSizeS = 's';
+    protected dropdownOpen = false;
+    protected size: TuiSizeL | TuiSizeS = 's';
 
-    readonly burgers = ['Classic', 'Cheeseburger', 'Royal Cheeseburger'];
-    readonly drinks = ['Cola', 'Tea', 'Coffee', 'Slurm'];
+    protected readonly burgers = ['Classic', 'Cheeseburger', 'Royal Cheeseburger'];
+    protected readonly drinks = ['Cola', 'Tea', 'Coffee', 'Slurm'];
 
-    selectOption(item: string): void {
+    protected selectOption(item: string): void {
         this.dropdownOpen = false;
         this.dialogs.open(`You selected ${item}`).subscribe();
     }

@@ -52,7 +52,7 @@ describe('TuiFieldErrorContentPipe', () => {
         ],
     })
     class TestComponent {
-        control = new FormControl(6, [Validators.min(10), Validators.max(max)]);
+        protected control = new FormControl(6, [Validators.min(10), Validators.max(max)]);
     }
 
     let fixture: ComponentFixture<TestComponent>;

@@ -17,7 +17,7 @@ export class TuiMonth extends TuiYear implements TuiMonthLike {
      */
     constructor(
         year: number,
-        readonly month: number,
+        public readonly month: number,
     ) {
         super(year);
         ngDevMode && tuiAssert.assert(TuiMonth.isValidMonth(year, month));
@@ -26,14 +26,14 @@ export class TuiMonth extends TuiYear implements TuiMonthLike {
     /**
      * Tests month and year for validity
      */
-    static isValidMonth(year: number, month: number): boolean {
+    public static isValidMonth(year: number, month: number): boolean {
         return TuiYear.isValidYear(year) && TuiMonth.isValidMonthPart(month);
     }
 
     /**
      * Returns number of days in a month
      */
-    static getMonthDaysCount(month: number, isLeapYear: boolean): number {
+    public static getMonthDaysCount(month: number, isLeapYear: boolean): number {
         ngDevMode && tuiAssert.assert(TuiMonth.isValidMonthPart(month));
 
         switch (month) {
@@ -53,7 +53,7 @@ export class TuiMonth extends TuiYear implements TuiMonthLike {
      * Returns current month and year based on local time zone
      * @nosideeffects
      */
-    static currentLocal(): TuiMonth {
+    public static currentLocal(): TuiMonth {
         const nativeDate = new Date();
 
         return new TuiMonth(nativeDate.getFullYear(), nativeDate.getMonth());
@@ -62,13 +62,13 @@ export class TuiMonth extends TuiYear implements TuiMonthLike {
     /**
      * Returns current month and year based on UTC
      */
-    static currentUtc(): TuiMonth {
+    public static currentUtc(): TuiMonth {
         const nativeDate = new Date();
 
         return new TuiMonth(nativeDate.getUTCFullYear(), nativeDate.getUTCMonth());
     }
 
-    static override lengthBetween(from: TuiMonth, to: TuiMonth): number {
+    public static override lengthBetween(from: TuiMonth, to: TuiMonth): number {
         const absoluteFrom = from.month + from.year * 12;
         const absoluteTo = to.month + to.year * 12;
 
@@ -78,7 +78,7 @@ export class TuiMonth extends TuiYear implements TuiMonthLike {
     /**
      * Normalizes number by clamping it between min and max month
      */
-    protected static normalizeMonthPart(month: number): number {
+    public static normalizeMonthPart(month: number): number {
         return tuiNormalizeToIntNumber(month, MIN_MONTH, MAX_MONTH);
     }
 
@@ -89,21 +89,21 @@ export class TuiMonth extends TuiYear implements TuiMonthLike {
         return Number.isInteger(month) && tuiInRange(month, MIN_MONTH, MAX_MONTH + 1);
     }
 
-    get formattedMonthPart(): string {
+    public get formattedMonthPart(): string {
         return String(this.month + 1).padStart(2, '0');
     }
 
     /**
      * Returns days in a month
      */
-    get daysCount(): number {
+    public get daysCount(): number {
         return TuiMonth.getMonthDaysCount(this.month, this.isLeapYear);
     }
 
     /**
      * Passed month and year are after current
      */
-    monthBefore(another: TuiMonth): boolean {
+    public monthBefore(another: TuiMonth): boolean {
         return (
             this.yearBefore(another) ||
             (this.yearSame(another) && this.month < another.month)
@@ -113,7 +113,7 @@ export class TuiMonth extends TuiYear implements TuiMonthLike {
     /**
      * Passed month and year are after or the same as current
      */
-    monthSameOrBefore(another: TuiMonth): boolean {
+    public monthSameOrBefore(another: TuiMonth): boolean {
         return (
             this.yearBefore(another) ||
             (this.yearSame(another) && this.month <= another.month)
@@ -123,14 +123,14 @@ export class TuiMonth extends TuiYear implements TuiMonthLike {
     /**
      * Passed month and year are the same as current
      */
-    monthSame(another: TuiMonth): boolean {
+    public monthSame(another: TuiMonth): boolean {
         return this.yearSame(another) && this.month === another.month;
     }
 
     /**
      * Passed month and year are either before or equal to current
      */
-    monthSameOrAfter(another: TuiMonth): boolean {
+    public monthSameOrAfter(another: TuiMonth): boolean {
         return (
             this.yearAfter(another) ||
             (this.yearSame(another) && this.month >= another.month)
@@ -140,7 +140,7 @@ export class TuiMonth extends TuiYear implements TuiMonthLike {
     /**
      * Passed month and year are before current
      */
-    monthAfter(another: TuiMonth): boolean {
+    public monthAfter(another: TuiMonth): boolean {
         return (
             this.yearAfter(another) ||
             (this.yearSame(another) && this.month > another.month)
@@ -153,7 +153,7 @@ export class TuiMonth extends TuiYear implements TuiMonthLike {
      * @param offset
      * @return new month and year object as a result of offsetting current
      */
-    override append({year = 0, month = 0}: TuiMonthLike): TuiMonth {
+    public override append({year = 0, month = 0}: TuiMonthLike): TuiMonth {
         const totalMonths = (this.year + year) * MONTHS_IN_YEAR + this.month + month;
 
         return new TuiMonth(
@@ -162,29 +162,29 @@ export class TuiMonth extends TuiYear implements TuiMonthLike {
         );
     }
 
-    override toString(): string {
+    public override toString(): string {
         return `${this.formattedMonthPart}.${this.formattedYear}`;
     }
 
-    override valueOf(): number {
+    public override valueOf(): number {
         return this.toLocalNativeDate().valueOf();
     }
 
-    override toJSON(): string {
+    public override toJSON(): string {
         return `${super.toJSON()}-${this.formattedMonthPart}`;
     }
 
     /**
      * Returns native {@link Date} based on local time zone
      */
-    toLocalNativeDate(): Date {
+    public toLocalNativeDate(): Date {
         return new Date(this.year, this.month);
     }
 
     /**
      * Returns native {@link Date} based on UTC
      */
-    toUtcNativeDate(): Date {
+    public toUtcNativeDate(): Date {
         return new Date(Date.UTC(this.year, this.month));
     }
 }

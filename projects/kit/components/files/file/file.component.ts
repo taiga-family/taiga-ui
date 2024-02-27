@@ -49,71 +49,71 @@ export class TuiFileComponent {
     private readonly units$ = inject(TUI_DIGITAL_INFORMATION_UNITS);
 
     @Input()
-    file: TuiFileLike = {name: ''};
+    public file: TuiFileLike = {name: ''};
 
     @Input()
-    state: TuiFileState = 'normal';
+    public state: TuiFileState = 'normal';
 
     @Input()
-    size: TuiSizeL = 'm';
+    public size: TuiSizeL = 'm';
 
     @Input()
     @HostBinding('attr.data-delete')
-    showDelete: boolean | 'always' = true;
+    public showDelete: boolean | 'always' = true;
 
     @Input()
-    showSize = true;
+    public showSize = true;
 
     @Input()
-    leftContent: PolymorpheusContent;
+    public leftContent: PolymorpheusContent;
 
     @Output()
-    readonly remove = new EventEmitter<void>();
+    public readonly remove = new EventEmitter<void>();
 
-    readonly icons = inject(TUI_COMMON_ICONS);
-    readonly fileTexts$ = inject(TUI_FILE_TEXTS);
+    protected readonly icons = inject(TUI_COMMON_ICONS);
+    protected readonly fileTexts$ = inject(TUI_FILE_TEXTS);
 
-    get preview(): SafeValue {
+    protected get preview(): SafeValue {
         return this.isBig ? this.createPreview(this.file) : '';
     }
 
-    get isBig(): boolean {
+    protected get isBig(): boolean {
         return this.size === 'l';
     }
 
-    get isLoading(): boolean {
+    protected get isLoading(): boolean {
         return this.state === 'loading';
     }
 
-    get isError(): boolean {
+    protected get isError(): boolean {
         return this.state === 'error';
     }
 
-    get isDeleted(): boolean {
+    protected get isDeleted(): boolean {
         return this.state === 'deleted';
     }
 
-    get allowDelete(): boolean {
+    protected get allowDelete(): boolean {
         return this.showDelete && tuiIsObserved(this.remove);
     }
 
-    get icon(): PolymorpheusContent<TuiContext<TuiSizeL>> {
+    protected get icon(): PolymorpheusContent<TuiContext<TuiSizeL>> {
         return this.state === 'loading' ? '' : this.options.icons[this.state];
     }
 
-    get name(): string {
+    protected get name(): string {
         return this.getName(this.file);
     }
 
-    get type(): string {
+    protected get type(): string {
         return this.getType(this.file);
     }
 
-    get content$(): Observable<PolymorpheusContent> {
+    protected get content$(): Observable<PolymorpheusContent> {
         return this.calculateContent$(this.state, this.file, this.fileTexts$);
     }
 
-    get fileSize$(): Observable<string | null> {
+    protected get fileSize$(): Observable<string | null> {
         return this.calculateFileSize$(this.file, this.units$);
     }
 

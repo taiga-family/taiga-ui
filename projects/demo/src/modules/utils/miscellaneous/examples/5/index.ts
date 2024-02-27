@@ -12,13 +12,13 @@ import {tuiIsPresent} from '@taiga-ui/cdk';
     changeDetection,
 })
 export class TuiMiscellaneousExample5 {
-    readonly items = ['String', 'null', 'undefined'];
+    protected readonly items = ['String', 'null', 'undefined'];
 
-    parametersForm = new FormGroup({
+    protected parametersForm = new FormGroup({
         value: new FormControl<string | null>(null),
     });
 
-    get isPresent(): boolean {
+    protected get isPresent(): boolean {
         const {value} = this.parametersForm.value;
         const objectedValue = this.objectifyValue(value ?? '');
 

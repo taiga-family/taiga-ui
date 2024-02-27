@@ -10,6 +10,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiVariablesExample1 {
-    value = '';
-    checkbox = true;
+    protected value = '';
+    protected checkbox = true;
 }

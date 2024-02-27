@@ -23,7 +23,7 @@ export class TuiDay extends TuiMonth {
     constructor(
         year: number,
         month: number,
-        readonly day: number,
+        public readonly day: number,
     ) {
         super(year, month);
         ngDevMode && tuiAssert.assert(TuiDay.isValidDay(year, month, day));
@@ -32,14 +32,14 @@ export class TuiDay extends TuiMonth {
     /**
      * Creates {@link TuiDay} from native {@link Date} based on local time zone
      */
-    static fromLocalNativeDate(date: Date): TuiDay {
+    public static fromLocalNativeDate(date: Date): TuiDay {
         return new TuiDay(date.getFullYear(), date.getMonth(), date.getDate());
     }
 
     /**
      * Creates {@link TuiDay} from native {@link Date} using UTC
      */
-    static fromUtcNativeDate(date: Date): TuiDay {
+    public static fromUtcNativeDate(date: Date): TuiDay {
         return new TuiDay(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate());
     }
 
@@ -51,7 +51,7 @@ export class TuiDay extends TuiMonth {
      * @param day
      * @return boolean validity
      */
-    static isValidDay(year: number, month: number, day: number): boolean {
+    public static isValidDay(year: number, month: number, day: number): boolean {
         return (
             TuiMonth.isValidMonth(year, month) &&
             Number.isInteger(day) &&
@@ -66,7 +66,7 @@ export class TuiDay extends TuiMonth {
     /**
      * Current day based on local time zone
      */
-    static override currentLocal(): TuiDay {
+    public static override currentLocal(): TuiDay {
         const nativeDate = new Date();
         const year = nativeDate.getFullYear();
         const month = nativeDate.getMonth();
@@ -78,7 +78,7 @@ export class TuiDay extends TuiMonth {
     /**
      * Returns current day based on UTC
      */
-    static override currentUtc(): TuiDay {
+    public static override currentUtc(): TuiDay {
         const nativeDate = new Date();
         const year = nativeDate.getUTCFullYear();
         const month = nativeDate.getUTCMonth();
@@ -95,7 +95,7 @@ export class TuiDay extends TuiMonth {
      * @param day any day value, including invalid
      * @return normalized date
      */
-    static normalizeOf(year: number, month: number, day: number): TuiDay {
+    public static normalizeOf(year: number, month: number, day: number): TuiDay {
         const normalizedYear = TuiYear.normalizeYearPart(year);
         const normalizedMonth = TuiMonth.normalizeMonthPart(month);
         const normalizedDay = TuiDay.normalizeDayPart(
@@ -107,14 +107,14 @@ export class TuiDay extends TuiMonth {
         return new TuiDay(normalizedYear, normalizedMonth, normalizedDay);
     }
 
-    static override lengthBetween(from: TuiDay, to: TuiDay): number {
+    public static override lengthBetween(from: TuiDay, to: TuiDay): number {
         return Math.round(
             (to.toLocalNativeDate().getTime() - from.toLocalNativeDate().getTime()) /
                 (1000 * 60 * 60 * 24),
         );
     }
 
-    static parseRawDateString(
+    public static parseRawDateString(
         date: string,
         dateMode: TuiDateMode = 'DMY',
     ): {day: number; month: number; year: number} {
@@ -157,7 +157,7 @@ export class TuiDay extends TuiMonth {
      * @param dateMode date format of the date string (DMY | MDY | YMD)
      * @return normalized date
      */
-    static normalizeParse(rawDate: string, dateMode: TuiDateMode = 'DMY'): TuiDay {
+    public static normalizeParse(rawDate: string, dateMode: TuiDateMode = 'DMY'): TuiDay {
         const {day, month, year} = this.parseRawDateString(rawDate, dateMode);
 
         return TuiDay.normalizeOf(year, month, day);
@@ -169,7 +169,7 @@ export class TuiDay extends TuiMonth {
      * @return date
      * @throws exceptions if any part of the date is invalid
      */
-    static jsonParse(yearMonthDayString: string): TuiDay {
+    public static jsonParse(yearMonthDayString: string): TuiDay {
         const {day, month, year} = this.parseRawDateString(yearMonthDayString, 'YMD');
 
         if (!TuiYear.isValidYear(year)) {
@@ -194,7 +194,7 @@ export class TuiDay extends TuiMonth {
         return new TuiDay(year, month, day);
     }
 
-    protected static normalizeDayPart(day: number, month: number, year: number): number {
+    public static normalizeDayPart(day: number, month: number, year: number): number {
         ngDevMode && tuiAssert.assert(TuiMonth.isValidMonth(year, month));
 
         const monthDaysCount = TuiMonth.getMonthDaysCount(
@@ -205,11 +205,11 @@ export class TuiDay extends TuiMonth {
         return tuiNormalizeToIntNumber(day, 1, monthDaysCount);
     }
 
-    get formattedDayPart(): string {
+    public get formattedDayPart(): string {
         return String(this.day).padStart(2, '0');
     }
 
-    get isWeekend(): boolean {
+    public get isWeekend(): boolean {
         const dayOfWeek = this.dayOfWeek(false);
 
         return dayOfWeek === TuiDayOfWeek.Saturday || dayOfWeek === TuiDayOfWeek.Sunday;
@@ -221,7 +221,7 @@ export class TuiDay extends TuiMonth {
      * @param startFromMonday whether week starts from Monday and not from Sunday
      * @return day of week (from 0 to 6)
      */
-    dayOfWeek(startFromMonday = true): number {
+    public dayOfWeek(startFromMonday = true): number {
         const dayOfWeek = startFromMonday
             ? this.toLocalNativeDate().getDay() - 1
             : this.toLocalNativeDate().getDay();
@@ -232,7 +232,7 @@ export class TuiDay extends TuiMonth {
     /**
      * Passed date is after current
      */
-    dayBefore(another: TuiDay): boolean {
+    public dayBefore(another: TuiDay): boolean {
         return (
             this.monthBefore(another) ||
             (this.monthSame(another) && this.day < another.day)
@@ -242,7 +242,7 @@ export class TuiDay extends TuiMonth {
     /**
      * Passed date is after or equals to current
      */
-    daySameOrBefore(another: TuiDay): boolean {
+    public daySameOrBefore(another: TuiDay): boolean {
         return (
             this.monthBefore(another) ||
             (this.monthSame(another) && this.day <= another.day)
@@ -252,14 +252,14 @@ export class TuiDay extends TuiMonth {
     /**
      * Passed date is the same as current
      */
-    daySame(another: TuiDay): boolean {
+    public daySame(another: TuiDay): boolean {
         return this.monthSame(another) && this.day === another.day;
     }
 
     /**
      * Passed date is either before or the same as current
      */
-    daySameOrAfter(another: TuiDay): boolean {
+    public daySameOrAfter(another: TuiDay): boolean {
         return (
             this.monthAfter(another) ||
             (this.monthSame(another) && this.day >= another.day)
@@ -269,7 +269,7 @@ export class TuiDay extends TuiMonth {
     /**
      * Passed date is before current
      */
-    dayAfter(another: TuiDay): boolean {
+    public dayAfter(another: TuiDay): boolean {
         return (
             this.monthAfter(another) ||
             (this.monthSame(another) && this.day > another.day)
@@ -283,7 +283,7 @@ export class TuiDay extends TuiMonth {
      * @param max
      * @return clamped date
      */
-    dayLimit(min: TuiDay | null, max: TuiDay | null): TuiDay {
+    public dayLimit(min: TuiDay | null, max: TuiDay | null): TuiDay {
         if (min !== null && this.dayBefore(min)) {
             return min;
         }
@@ -305,7 +305,7 @@ export class TuiDay extends TuiMonth {
      * @param offset
      * @return new date object as a result of offsetting current
      */
-    override append({year = 0, month = 0, day = 0}: TuiDayLike): TuiDay {
+    public override append({year = 0, month = 0, day = 0}: TuiDayLike): TuiDay {
         const totalMonths = (this.year + year) * MONTHS_IN_YEAR + this.month + month;
         let years = Math.floor(totalMonths / MONTHS_IN_YEAR);
         let months = totalMonths % MONTHS_IN_YEAR;
@@ -344,7 +344,7 @@ export class TuiDay extends TuiMonth {
     /**
      * Returns formatted whole date
      */
-    getFormattedDay(dateFormat: TuiDateMode, separator: string): string {
+    public getFormattedDay(dateFormat: TuiDateMode, separator: string): string {
         ngDevMode &&
             tuiAssert.assert(
                 separator.length === 1,
@@ -366,25 +366,25 @@ export class TuiDay extends TuiMonth {
         }
     }
 
-    override toString(dateFormat: TuiDateMode = 'DMY', separator = '.'): string {
+    public override toString(dateFormat: TuiDateMode = 'DMY', separator = '.'): string {
         return this.getFormattedDay(dateFormat, separator);
     }
 
-    override toJSON(): string {
+    public override toJSON(): string {
         return `${super.toJSON()}-${this.formattedDayPart}`;
     }
 
     /**
      * Returns native {@link Date} based on local time zone
      */
-    override toLocalNativeDate(): Date {
+    public override toLocalNativeDate(): Date {
         return new Date(this.year, this.month, this.day);
     }
 
     /**
      * Returns native {@link Date} based on UTC
      */
-    override toUtcNativeDate(): Date {
+    public override toUtcNativeDate(): Date {
         return new Date(Date.UTC(this.year, this.month, this.day));
     }
 }

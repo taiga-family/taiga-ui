@@ -12,33 +12,33 @@ import {TuiDay, TuiDayRange} from '@taiga-ui/cdk';
     changeDetection,
 })
 export class TuiDataListExample5 {
-    dropdownOpen = false;
-    dateValue: TuiDay = new TuiDay(2020, 0, 1);
-    euro = 87; // 1 euro = 87 rub
-    dollar = 75; // 1 dollar = 75 rub
+    protected dropdownOpen = false;
+    protected dateValue: TuiDay = new TuiDay(2020, 0, 1);
+    protected euro = 87; // 1 euro = 87 rub
+    protected dollar = 75; // 1 dollar = 75 rub
 
-    readonly testForm = new FormGroup({
+    protected readonly testForm = new FormGroup({
         testValue: new FormControl('mail@mail.ru'),
     });
 
-    readonly moneyForm = new FormGroup({
+    protected readonly moneyForm = new FormGroup({
         moneyValue: new FormControl(1000),
     });
 
-    rangeValue = new TuiDayRange(
+    protected rangeValue = new TuiDayRange(
         TuiDay.currentLocal(),
         TuiDay.currentLocal().append({year: 1}),
     );
 
-    get testValue(): string | null | undefined {
+    protected get testValue(): string | null | undefined {
         return this.testForm.get('testValue')?.value;
     }
 
-    get moneyValue(): number {
+    protected get moneyValue(): number {
         return Number(this.moneyForm.get('moneyValue')?.value) || 0;
     }
 
-    onDayClick(day: TuiDay): void {
+    protected onDayClick(day: TuiDay): void {
         this.dateValue = day;
     }
 }

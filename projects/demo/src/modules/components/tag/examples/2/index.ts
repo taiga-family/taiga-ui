@@ -10,5 +10,5 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiTagExample2 {
-    tag = 'Hello!';
+    protected tag = 'Hello!';
 }

@@ -18,9 +18,9 @@ import {tuiAsViewport, TuiDropdownService, TuiRectAccessor} from '@taiga-ui/core
 export class PortalHost extends TuiPortalsComponent implements TuiRectAccessor {
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
 
-    readonly type = 'viewport';
+    public readonly type = 'viewport';
 
-    getClientRect(): DOMRect {
+    public getClientRect(): DOMRect {
         return this.el.getBoundingClientRect();
     }
 }

@@ -8,12 +8,12 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
     changeDetection,
 })
 export class VariablesComponent {
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         HTML: import('./examples/1/index.html?raw'),
         LESS: import('./examples/1/index.less?raw'),
     };
 
-    readonly vars: Record<string, string> = {
+    protected readonly vars: Record<string, string> = {
         '--tui-font-heading': 'font for headings',
         '--tui-font-text': 'font for text',
         '--tui-radius-xs': 'border radius for smallest items (i.e. small checkbox)',

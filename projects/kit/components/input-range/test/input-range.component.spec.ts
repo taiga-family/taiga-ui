@@ -26,16 +26,16 @@ describe('InputRange', () => {
     })
     class TestComponent {
         @ViewChild(TuiInputRangeComponent, {static: true})
-        component!: TuiInputRangeComponent;
+        protected component!: TuiInputRangeComponent;
 
-        control = new FormControl([0, 1]);
-        default = false;
-        max = 10;
-        min = -10;
-        quantum = 5;
-        readOnly = false;
-        steps = 0;
-        pluralize = {one: 'год', few: 'года', many: 'лет', other: 'лет'};
+        protected control = new FormControl([0, 1]);
+        protected default = false;
+        protected max = 10;
+        protected min = -10;
+        protected quantum = 5;
+        protected readOnly = false;
+        protected steps = 0;
+        protected pluralize = {one: 'год', few: 'года', many: 'лет', other: 'лет'};
     }
 
     let fixture: ComponentFixture<TestComponent>;

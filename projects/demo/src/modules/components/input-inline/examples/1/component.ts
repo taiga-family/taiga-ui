@@ -11,22 +11,22 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiInputInlineExample1 {
-    testForm = new FormGroup({
+    protected testForm = new FormGroup({
         testValue1: new FormControl('Hello 1'),
         testValue2: new FormControl('Hello 2'),
         testValue3: new FormControl('Hello 3'),
         testValue4: new FormControl(''),
     });
 
-    get toggleContent(): string {
+    protected get toggleContent(): string {
         return this.testForm.disabled ? 'enable (allow editing)' : 'disable';
     }
 
-    get input4Empty(): boolean {
+    protected get input4Empty(): boolean {
         return this.testForm.get('testValue4')!.value === '';
     }
 
-    onToggleClick(): void {
+    protected onToggleClick(): void {
         if (this.testForm.disabled) {
             this.testForm.enable();
         } else {

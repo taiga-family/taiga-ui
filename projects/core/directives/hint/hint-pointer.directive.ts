@@ -18,11 +18,11 @@ export class TuiHintPointerDirective
     private currentRect = EMPTY_CLIENT_RECT;
 
     @HostListener('mousemove.silent', ['$event'])
-    onMove({clientX, clientY}: MouseEvent): void {
+    protected onMove({clientX, clientY}: MouseEvent): void {
         this.currentRect = tuiPointToClientRect(clientX, clientY);
     }
 
-    getClientRect(): ClientRect {
+    public getClientRect(): ClientRect {
         return this.currentRect;
     }
 }

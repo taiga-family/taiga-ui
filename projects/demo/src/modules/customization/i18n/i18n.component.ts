@@ -26,16 +26,16 @@ import {from, map} from 'rxjs';
     changeDetection,
 })
 export default class I18nComponent {
-    readonly readme = from(
+    protected readonly readme = from(
         import('../../../../../i18n/README.md?raw') as Promise<{
             default: string;
         }>,
     ).pipe(map(readme => readme.default.split('Supported languages:')[1]));
 
-    exampleModule = import('./app.module.md?raw');
-    exampleEsbuildModule = import('./app.esbuild.module.md?raw');
+    protected exampleModule = import('./app.module.md?raw');
+    protected exampleEsbuildModule = import('./app.esbuild.module.md?raw');
 
-    example1: TuiDocExample = {
+    protected example1: TuiDocExample = {
         'language-switcher.component.html': import(
             '../../../../../addon-doc/components/language-switcher/language-switcher.component.html?raw'
         ),

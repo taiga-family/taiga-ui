@@ -9,5 +9,5 @@ import {Directive, HostBinding, Input} from '@angular/core';
 export class TuiOptGroupDirective {
     @Input()
     @HostBinding('attr.data-label')
-    label?: string | null;
+    public label?: string | null;
 }

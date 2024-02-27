@@ -23,7 +23,7 @@ import {TuiAlertService} from '@taiga-ui/core';
 export class TuiTabsExample1 {
     private readonly alerts = inject(TuiAlertService);
 
-    readonly items = [
+    protected readonly items = [
         {
             text: 'Maps',
             icon: 'tuiIconCreditCard',
@@ -38,9 +38,9 @@ export class TuiTabsExample1 {
         },
     ];
 
-    activeItemIndex = 0;
+    protected activeItemIndex = 0;
 
-    onClick(item: string): void {
+    protected onClick(item: string): void {
         this.alerts.open(item).subscribe();
     }
 }

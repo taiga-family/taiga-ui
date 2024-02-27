@@ -16,14 +16,14 @@ export class TuiDialogExampleComponent8 {
     private readonly dialogForm = inject(TuiDialogFormService);
     private readonly dialogs = inject(TuiDialogService);
 
-    value = '';
+    protected value = '';
 
-    onModelChange(value: string): void {
+    protected onModelChange(value: string): void {
         this.value = value;
         this.dialogForm.markAsDirty();
     }
 
-    onClick(content: PolymorpheusContent): void {
+    protected onClick(content: PolymorpheusContent): void {
         const closeable = this.dialogForm.withPrompt({
             label: 'Are you sure?',
             data: {

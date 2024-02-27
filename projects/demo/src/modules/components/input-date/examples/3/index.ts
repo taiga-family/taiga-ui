@@ -11,11 +11,11 @@ import {TuiNamedDay} from '@taiga-ui/kit';
     changeDetection,
 })
 export class TuiInputDateExample3 {
-    from: TuiDay | null = null;
-    to: TuiDay | null = null;
-    min = new TuiDay(2017, 9, 4);
-    max = TuiDay.currentLocal();
-    items = [
+    protected from: TuiDay | null = null;
+    protected to: TuiDay | null = null;
+    protected min = new TuiDay(2017, 9, 4);
+    protected max = TuiDay.currentLocal();
+    protected items = [
         new TuiNamedDay(
             TUI_LAST_DAY.append({year: -1}),
             'Until today',

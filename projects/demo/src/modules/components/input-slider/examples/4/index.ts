@@ -10,5 +10,5 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiInputSliderExample4 {
-    userAnswer = 2;
+    protected userAnswer = 2;
 }

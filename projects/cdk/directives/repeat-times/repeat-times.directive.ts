@@ -5,7 +5,7 @@ import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 const MAX_VALUE = 0x10000;
 
 export class TuiRepeatTimesContext implements TuiContext<number> {
-    constructor(readonly $implicit: number) {}
+    constructor(public readonly $implicit: number) {}
 }
 
 /**
@@ -23,7 +23,7 @@ export class TuiRepeatTimesDirective {
     private readonly templateRef = inject(TemplateRef<TuiRepeatTimesContext>);
 
     @Input()
-    set tuiRepeatTimesOf(count: number) {
+    public set tuiRepeatTimesOf(count: number) {
         const safeCount = Math.floor(tuiClamp(count, 0, MAX_VALUE));
 
         const {length} = this.viewContainer;

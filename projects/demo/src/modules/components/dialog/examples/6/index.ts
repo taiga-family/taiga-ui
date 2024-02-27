@@ -10,13 +10,13 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiDialogExampleComponent6 {
-    exampleForm = new FormGroup({
+    protected exampleForm = new FormGroup({
         exampleControl: new FormControl(''),
     });
 
-    open = false;
+    protected open = false;
 
-    showDialog(): void {
+    protected showDialog(): void {
         this.open = true;
     }
 }

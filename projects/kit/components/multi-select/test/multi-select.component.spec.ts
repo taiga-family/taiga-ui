@@ -25,12 +25,12 @@ describe('MultiSelect', () => {
 
         class User {
             constructor(
-                readonly firstName: string,
-                readonly lastName: string,
-                readonly id: string,
+                protected readonly firstName: string,
+                protected readonly lastName: string,
+                protected readonly id: string,
             ) {}
 
-            toString(): string {
+            protected toString(): string {
                 return `${this.firstName} ${this.lastName}`;
             }
         }
@@ -59,13 +59,13 @@ describe('MultiSelect', () => {
         })
         class TestComponent {
             @ViewChild(TuiMultiSelectComponent, {static: true})
-            component!: TuiMultiSelectComponent<User>;
+            protected component!: TuiMultiSelectComponent<User>;
 
-            items = items;
+            protected items = items;
 
-            control = new FormControl([items[0]]);
+            protected control = new FormControl([items[0]]);
 
-            readOnly = false;
+            protected readOnly = false;
         }
 
         beforeEach(async () => {
@@ -245,12 +245,12 @@ describe('MultiSelect', () => {
 
         class User {
             constructor(
-                readonly firstName: string,
-                readonly lastName: string,
-                readonly id: string,
+                protected readonly firstName: string,
+                protected readonly lastName: string,
+                protected readonly id: string,
             ) {}
 
-            toString(): string {
+            protected toString(): string {
                 return `${this.firstName} ${this.lastName}`;
             }
         }
@@ -275,13 +275,13 @@ describe('MultiSelect', () => {
         })
         class TestComponent {
             @ViewChild(TuiMultiSelectComponent, {static: true})
-            component!: TuiMultiSelectComponent<User>;
+            protected component!: TuiMultiSelectComponent<User>;
 
-            items = items;
+            protected items = items;
 
-            control = new FormControl([items[0]]);
+            protected control = new FormControl([items[0]]);
 
-            readOnly = false;
+            protected readOnly = false;
         }
 
         beforeEach(async () => {

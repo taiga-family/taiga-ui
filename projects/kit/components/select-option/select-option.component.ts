@@ -40,11 +40,11 @@ export class TuiSelectOptionComponent<T> implements OnInit, DoCheck {
     protected readonly control = inject(NgControl);
     protected readonly option = inject(TuiOptionComponent<T>);
     protected readonly dataList = inject(TuiDataListComponent<T>, {optional: true});
-    readonly icons = inject(TUI_COMMON_ICONS);
-    readonly context =
+    protected readonly icons = inject(TUI_COMMON_ICONS);
+    protected readonly context =
         inject<TuiContext<TemplateRef<Record<string, unknown>>>>(POLYMORPHEUS_CONTEXT);
 
-    readonly selected$ = merge(
+    protected readonly selected$ = merge(
         this.changeDetection$,
         this.control.valueChanges || EMPTY,
         tuiTypedFromEvent(this.el, 'animationstart'),
@@ -54,11 +54,11 @@ export class TuiSelectOptionComponent<T> implements OnInit, DoCheck {
         distinctUntilChanged(),
     );
 
-    get matcher(): TuiIdentityMatcher<T> {
+    protected get matcher(): TuiIdentityMatcher<T> {
         return this.host.identityMatcher || TUI_DEFAULT_IDENTITY_MATCHER;
     }
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         /**
          * This would cause changes inside already checked parent component (during the same change detection cycle),
          * and it might cause ExpressionChanged error due to potential HostBinding
@@ -72,7 +72,7 @@ export class TuiSelectOptionComponent<T> implements OnInit, DoCheck {
         });
     }
 
-    ngDoCheck(): void {
+    public ngDoCheck(): void {
         this.changeDetection$.next();
     }
 

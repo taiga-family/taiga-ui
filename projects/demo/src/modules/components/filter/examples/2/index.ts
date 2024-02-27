@@ -33,7 +33,7 @@ const COMPLETED = {
     changeDetection,
 })
 export class TuiFilterExample2 {
-    readonly form = new FormGroup({
+    protected readonly form = new FormGroup({
         filters: new FormControl([
             {
                 title: 'Drafts',
@@ -41,7 +41,7 @@ export class TuiFilterExample2 {
         ]),
     });
 
-    items: readonly Operations[] = [
+    protected items: readonly Operations[] = [
         COMPLETED,
         {
             title: 'Drafts',
@@ -89,10 +89,11 @@ export class TuiFilterExample2 {
         },
     ];
 
-    identityMatcher: TuiIdentityMatcher<Operations> = (
+    protected identityMatcher: TuiIdentityMatcher<Operations> = (
         item1: Operations,
         item2: Operations,
     ) => item1.title === item2.title;
 
-    badgeHandler: TuiHandler<Operations, number> = item => item.operations.length;
+    protected badgeHandler: TuiHandler<Operations, number> = item =>
+        item.operations.length;
 }

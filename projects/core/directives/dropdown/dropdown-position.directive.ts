@@ -18,13 +18,13 @@ export class TuiDropdownPositionDirective extends TuiPositionAccessor {
 
     private previous?: TuiVerticalDirection;
 
-    readonly type = 'dropdown';
-    readonly accessor = tuiFallbackRectAccessor('dropdown')(
+    public readonly type = 'dropdown';
+    public readonly accessor = tuiFallbackRectAccessor('dropdown')(
         inject<any>(TuiRectAccessor),
         inject(TuiDropdownDirective),
     );
 
-    getPosition({width, height}: DOMRect): TuiPoint {
+    public getPosition({width, height}: DOMRect): TuiPoint {
         if (!width && !height) {
             this.previous = undefined;
         }

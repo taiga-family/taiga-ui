@@ -34,15 +34,15 @@ export abstract class AbstractExampleTuiControl
 {
     abstract readonly control: AbstractControl;
 
-    readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
+    public readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
 
-    readonly hintContentVariants: readonly string[] = ['', 'Some content'];
+    public readonly hintContentVariants: readonly string[] = ['', 'Some content'];
 
-    readonly hintDirectionVariants = TUI_HINT_DIRECTIONS;
+    public readonly hintDirectionVariants = TUI_HINT_DIRECTIONS;
 
-    readonly hintAppearanceVariants = ['', 'error', 'onDark'];
+    public readonly hintAppearanceVariants = ['', 'error', 'onDark'];
 
-    readonly typeVariants: readonly TuiInputType[] = [
+    public readonly typeVariants: readonly TuiInputType[] = [
         'text',
         'email',
         'password',
@@ -50,11 +50,11 @@ export abstract class AbstractExampleTuiControl
         'url',
     ];
 
-    readonly maxLengthVariants: readonly TuiPossibleGenericType[] = [10];
+    public readonly maxLengthVariants: readonly TuiPossibleGenericType[] = [10];
 
-    readonly inputModeVariants: readonly TuiInputMode[] = ['text', 'numeric'];
+    public readonly inputModeVariants: readonly TuiInputMode[] = ['text', 'numeric'];
 
-    readonly customContentVariants: PolymorpheusContent[] = [
+    public readonly customContentVariants: PolymorpheusContent[] = [
         '',
         CUSTOM_SVG_NAME,
         'tuiIconSearchLarge',
@@ -63,93 +63,98 @@ export abstract class AbstractExampleTuiControl
         'tuiIconMastercardMono',
     ];
 
-    customContentSelected = this.customContentVariants[0];
+    public customContentSelected = this.customContentVariants[0];
 
-    inputMode = this.inputModeVariants[0];
+    public inputMode = this.inputModeVariants[0];
 
-    maxLength: TuiPossibleGenericType | null = null;
+    public maxLength: TuiPossibleGenericType | null = null;
 
-    type: TuiInputType = this.typeVariants[0];
+    public type: TuiInputType = this.typeVariants[0];
 
-    cleaner = false;
+    public cleaner = false;
 
-    pseudoInvalid: boolean | null = null;
+    public pseudoInvalid: boolean | null = null;
 
-    success = false;
+    public success = false;
 
-    readOnly = false;
+    public readOnly = false;
 
-    labelOutside = false;
+    public labelOutside = false;
 
-    size: TuiSizeL | TuiSizeS = this.sizeVariants[2];
+    public size: TuiSizeL | TuiSizeS = this.sizeVariants[2];
 
-    exampleText = '';
+    public exampleText = '';
 
-    filler = '';
+    public filler = '';
 
-    minHeight: number | null = null;
+    public minHeight: number | null = null;
 
-    maxHeight: number | null = null;
+    public maxHeight: number | null = null;
 
-    readonly iconLeftVariants = ['', 'tuiIconMailLarge', 'tuiIconPieChartLarge'];
+    public readonly iconLeftVariants = ['', 'tuiIconMailLarge', 'tuiIconPieChartLarge'];
 
-    iconLeft = this.iconLeftVariants[0];
+    public iconLeft = this.iconLeftVariants[0];
 
-    hintContent = this.hintContentVariants[0];
+    public hintContent = this.hintContentVariants[0];
 
-    hintDirection = this.hintDirectionVariants[0];
+    public hintDirection = this.hintDirectionVariants[0];
 
-    hintAppearance = this.hintAppearanceVariants[0];
+    public hintAppearance = this.hintAppearanceVariants[0];
 
-    dropdownOpen = new BehaviorSubject(false);
+    public dropdownOpen = new BehaviorSubject(false);
 
-    readonly dropdownAlignVariants: readonly TuiDropdownAlign[] = [
+    public readonly dropdownAlignVariants: readonly TuiDropdownAlign[] = [
         'left',
         'right',
         'center',
     ];
 
-    dropdownAlign = TUI_DROPDOWN_DEFAULT_OPTIONS.align;
+    public dropdownAlign = TUI_DROPDOWN_DEFAULT_OPTIONS.align;
 
-    readonly dropdownLimitWidthVariants: readonly TuiDropdownWidth[] = [
+    public readonly dropdownLimitWidthVariants: readonly TuiDropdownWidth[] = [
         'fixed',
         'min',
         'auto',
     ];
 
-    dropdownLimitWidth = this.dropdownLimitWidthVariants[0];
+    public dropdownLimitWidth = this.dropdownLimitWidthVariants[0];
 
-    readonly dropdownDirectionVariants: readonly TuiVerticalDirection[] = [
+    public readonly dropdownDirectionVariants: readonly TuiVerticalDirection[] = [
         'bottom',
         'top',
     ];
 
-    dropdownDirection: TuiVerticalDirection | null =
+    public dropdownDirection: TuiVerticalDirection | null =
         TUI_DROPDOWN_DEFAULT_OPTIONS.direction;
 
-    dropdownMinHeight = TUI_DROPDOWN_DEFAULT_OPTIONS.minHeight;
+    public dropdownMinHeight = TUI_DROPDOWN_DEFAULT_OPTIONS.minHeight;
 
-    dropdownMaxHeight = TUI_DROPDOWN_DEFAULT_OPTIONS.maxHeight;
+    public dropdownMaxHeight = TUI_DROPDOWN_DEFAULT_OPTIONS.maxHeight;
 
-    readonly prefixVariants: readonly string[] = ['', '$', 'GBP', 'Very long text'];
+    public readonly prefixVariants: readonly string[] = [
+        '',
+        '$',
+        'GBP',
+        'Very long text',
+    ];
 
-    prefix = this.prefixVariants[0];
+    public prefix = this.prefixVariants[0];
 
-    postfix = this.prefixVariants[0];
+    public postfix = this.prefixVariants[0];
 
-    dropdownOffset = TUI_DROPDOWN_DEFAULT_OPTIONS.offset;
+    public dropdownOffset = TUI_DROPDOWN_DEFAULT_OPTIONS.offset;
 
-    get customContent(): PolymorpheusContent {
+    protected get customContent(): PolymorpheusContent {
         return this.customContentSelected === CUSTOM_SVG_NAME
             ? CUSTOM_SVG
             : this.customContentSelected;
     }
 
-    get disabled(): boolean {
+    protected get disabled(): boolean {
         return this.control.disabled;
     }
 
-    set disabled(value: boolean) {
+    protected set disabled(value: boolean) {
         if (value) {
             this.control.disable();
         } else {

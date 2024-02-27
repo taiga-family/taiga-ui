@@ -12,11 +12,11 @@ import {TuiCountryIsoCode} from '@taiga-ui/i18n';
     changeDetection,
 })
 export class TuiInputPhoneExample2 {
-    readonly testForm = new FormGroup({
+    protected readonly testForm = new FormGroup({
         testValue: new FormControl('', Validators.minLength(12)),
     });
 
-    readonly countries = Object.values(TuiCountryIsoCode);
+    protected readonly countries = Object.values(TuiCountryIsoCode);
 
-    countryIsoCode = TuiCountryIsoCode.US;
+    protected countryIsoCode = TuiCountryIsoCode.US;
 }

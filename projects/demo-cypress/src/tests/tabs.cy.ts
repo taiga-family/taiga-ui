@@ -39,7 +39,7 @@ describe('Tabs', () => {
         `,
     })
     class TestComponent {
-        activeItemIndex = 0;
+        protected activeItemIndex = 0;
     }
 
     beforeEach(() =>

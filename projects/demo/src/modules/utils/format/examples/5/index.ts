@@ -12,14 +12,14 @@ import {TuiDecimalSymbol, tuiFormatNumber} from '@taiga-ui/core';
     changeDetection,
 })
 export class TuiFormatExample5 {
-    parametersForm = new FormGroup({
+    protected parametersForm = new FormGroup({
         value: new FormControl(123456.789),
         decimalLimit: new FormControl(2),
         decimalSeparator: new FormControl<TuiDecimalSymbol>('.'),
         thousandSeparator: new FormControl(' '),
     });
 
-    get formattedNumber(): string {
+    protected get formattedNumber(): string {
         const {value, decimalLimit, decimalSeparator, thousandSeparator} =
             this.parametersForm.value;
 

@@ -36,16 +36,16 @@ export class TuiTooltipComponent<C = any> extends TuiHintOptionsDirective {
     private mode: TuiBrightness | null = null;
 
     @ViewChild(TuiHintHoverDirective)
-    readonly driver$?: TuiHintHoverDirective;
+    protected readonly driver$?: TuiHintHoverDirective;
 
     @Input()
-    describeId = '';
+    public describeId = '';
 
     @Input()
-    context?: C;
+    public context?: C;
 
-    readonly tooltipOptions = inject(TUI_TOOLTIP_OPTIONS);
-    readonly iconAppearance = inject(TuiAppearanceDirective, {optional: true});
+    protected readonly tooltipOptions = inject(TUI_TOOLTIP_OPTIONS);
+    protected readonly iconAppearance = inject(TuiAppearanceDirective, {optional: true});
 
     constructor() {
         super();
@@ -57,22 +57,22 @@ export class TuiTooltipComponent<C = any> extends TuiHintOptionsDirective {
             });
     }
 
-    get id(): string {
+    protected get id(): string {
         return this.describeId || this.textfield?.id || '';
     }
 
-    get computedAppearance(): string {
+    protected get computedAppearance(): string {
         return this.appearance || this.mode || '';
     }
 
-    get tooltipIcon(): string {
+    protected get tooltipIcon(): string {
         const {icons} = this.tooltipOptions;
 
         return tuiIsString(icons) ? icons : icons[this.platform];
     }
 
     @HostListener('mousedown', ['$event'])
-    stopOnMobile(event: MouseEvent): void {
+    protected stopOnMobile(event: MouseEvent): void {
         if (this.platform !== 'web') {
             event.preventDefault();
             event.stopPropagation();

@@ -30,9 +30,9 @@ interface Employee {
     ],
 })
 export class TuiMultiSelectExample8 {
-    readonly testValue = new FormControl<Employee[]>([]);
+    protected readonly testValue = new FormControl<Employee[]>([]);
 
-    readonly items: readonly Employee[] = [
+    protected readonly items: readonly Employee[] = [
         {id: 42, name: 'John Cleese', dept: {id: 566, title: 'Financial'}},
         {id: 237, name: 'Eric Idle', dept: {id: 560, title: 'Staffing'}},
         {id: 666, name: 'Michael Palin', dept: {id: 566, title: 'Financial'}},

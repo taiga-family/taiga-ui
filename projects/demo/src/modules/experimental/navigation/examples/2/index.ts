@@ -12,14 +12,14 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 export class TuiNavigationExample2 {
     private readonly doc = inject(DOCUMENT);
 
-    color = false;
+    protected color = false;
 
-    readonly initial =
+    protected readonly initial =
         this.doc.head
             .querySelector('meta[name="theme-color"]')
             ?.getAttribute('content') || '';
 
-    onColor(color: boolean): void {
+    protected onColor(color: boolean): void {
         this.color = color;
         this.doc.body.style.setProperty('--tui-theme-color', color ? 'purple' : 'black');
         this.doc.head

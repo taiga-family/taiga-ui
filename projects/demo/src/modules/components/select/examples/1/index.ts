@@ -10,7 +10,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiSelectExample1 {
-    items = [
+    protected items = [
         'Luke Skywalker',
         'Leia Organa Solo',
         'Darth Vader',
@@ -19,5 +19,5 @@ export class TuiSelectExample1 {
         'Yoda',
     ];
 
-    testValue = new FormControl<string | null>(null);
+    protected testValue = new FormControl<string | null>(null);
 }

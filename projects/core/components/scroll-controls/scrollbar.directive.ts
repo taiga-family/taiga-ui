@@ -41,7 +41,7 @@ export class TuiScrollbarDirective {
         });
 
     @Input()
-    tuiScrollbar: 'horizontal' | 'vertical' = 'vertical';
+    public tuiScrollbar: 'horizontal' | 'vertical' = 'vertical';
 
     private get scrolled(): number {
         const {

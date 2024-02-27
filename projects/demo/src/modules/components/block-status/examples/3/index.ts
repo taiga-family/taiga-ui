@@ -14,7 +14,7 @@ import {map, Observable} from 'rxjs';
 export class TuiBlockStatusExample3 {
     protected readonly breakpointService = inject(TuiBreakpointService);
 
-    size$: Observable<TuiSizeL> = this.breakpointService.pipe(
+    protected size$: Observable<TuiSizeL> = this.breakpointService.pipe(
         map(key => (key === 'mobile' ? 'm' : 'l')),
     );
 }

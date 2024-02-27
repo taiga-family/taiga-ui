@@ -10,5 +10,5 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiStepperExample3 {
-    readonly steps = ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven'];
+    protected readonly steps = ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven'];
 }

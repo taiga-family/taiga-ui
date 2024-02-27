@@ -11,9 +11,9 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiRadioLabeledExample2 {
-    items = [{name: 'tariff1'}, {name: 'tariff2'}, {name: 'tariff3'}];
+    protected items = [{name: 'tariff1'}, {name: 'tariff2'}, {name: 'tariff3'}];
 
-    testForm = new FormGroup({
+    protected testForm = new FormGroup({
         testValue1: new FormControl(this.items[0]),
     });
 }

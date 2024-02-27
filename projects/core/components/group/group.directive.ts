@@ -21,16 +21,16 @@ export class TuiGroupDirective {
     protected readonly nothing = tuiWithStyles(TuiGroupComponent);
 
     @Input()
-    orientation: TuiOrientation = this.options.orientation;
+    public orientation: TuiOrientation = this.options.orientation;
 
     @Input()
     @HostBinding('class.tui-group_collapsed')
-    collapsed = this.options.collapsed;
+    public collapsed = this.options.collapsed;
 
     @Input()
     @HostBinding('class.tui-group_rounded')
-    rounded = this.options.rounded;
+    public rounded = this.options.rounded;
 
     @Input()
-    size: TuiSizeL = this.options.size;
+    public size: TuiSizeL = this.options.size;
 }

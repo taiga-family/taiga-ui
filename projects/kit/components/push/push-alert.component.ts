@@ -26,10 +26,13 @@ import {TuiPushAlertDirective} from './push-alert.directive';
     },
 })
 export class TuiPushAlertComponent {
-    readonly options = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
-    readonly context = inject(POLYMORPHEUS_CONTEXT) as TuiPopover<TuiPushOptions, string>;
+    protected readonly options = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
+    protected readonly context = inject(POLYMORPHEUS_CONTEXT) as TuiPopover<
+        TuiPushOptions,
+        string
+    >;
 
-    get isDirective(): boolean {
+    protected get isDirective(): boolean {
         return this.context.content instanceof TuiPushAlertDirective;
     }
 }

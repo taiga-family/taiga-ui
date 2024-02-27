@@ -20,7 +20,7 @@ export class TuiMobileTabsDirective {
 
     // TODO: Refactor with TUI_PLATFORM
     @HostBinding('attr.data-platform')
-    get platform(): TuiPlatform | null {
+    protected get platform(): TuiPlatform | null {
         if (this.isIOS) {
             return 'ios';
         }

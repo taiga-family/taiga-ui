@@ -19,17 +19,17 @@ export class TuiTableFiltersDirective<T> {
 
     private filters: ReadonlyArray<TuiTableFilter<T>> = [];
 
-    register(filter: TuiTableFilter<T>): void {
+    public register(filter: TuiTableFilter<T>): void {
         this.filters = this.filters.concat(filter);
         this.update();
     }
 
-    unregister(filter: TuiTableFilter<T>): void {
+    public unregister(filter: TuiTableFilter<T>): void {
         this.filters = this.filters.filter(item => item !== filter);
         this.update();
     }
 
-    filter(items: readonly T[]): Observable<readonly T[]> {
+    public filter(items: readonly T[]): Observable<readonly T[]> {
         return this.refresh$.pipe(
             switchMap(identity),
             startWith(null),

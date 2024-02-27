@@ -10,9 +10,11 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiDataListWrapperExample2 {
-    readonly control = new FormControl<{name: string; surname: string} | null>(null);
+    protected readonly control = new FormControl<{name: string; surname: string} | null>(
+        null,
+    );
 
-    readonly items = [
+    protected readonly items = [
         {name: 'John', surname: 'Cleese'},
         {name: 'Eric', surname: 'Idle'},
         {name: 'Graham', surname: 'Chapman'},
@@ -21,6 +23,6 @@ export class TuiDataListWrapperExample2 {
         {name: 'Terry', surname: 'Jones'},
     ];
 
-    readonly stringify = (item: {name: string; surname: string}): string =>
+    protected readonly stringify = (item: {name: string; surname: string}): string =>
         `${item.name} ${item.surname}`;
 }

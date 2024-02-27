@@ -15,5 +15,5 @@ export class TuiTitleDirective {
     protected readonly nothing = tuiWithStyles(TuiTitleComponent);
 
     @Input('tuiTitle')
-    size: TuiSizeL | TuiSizeS | '' = '';
+    public size: TuiSizeL | TuiSizeS | '' = '';
 }

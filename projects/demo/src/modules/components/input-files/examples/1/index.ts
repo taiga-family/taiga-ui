@@ -12,18 +12,18 @@ import {finalize, map, Observable, of, Subject, switchMap, timer} from 'rxjs';
     changeDetection,
 })
 export class TuiInputFilesExample1 {
-    readonly control = new FormControl<TuiFileLike | null>(null);
-    readonly failedFiles$ = new Subject<TuiFileLike | null>();
-    readonly loadingFiles$ = new Subject<TuiFileLike | null>();
-    readonly loadedFiles$ = this.control.valueChanges.pipe(
+    protected readonly control = new FormControl<TuiFileLike | null>(null);
+    protected readonly failedFiles$ = new Subject<TuiFileLike | null>();
+    protected readonly loadingFiles$ = new Subject<TuiFileLike | null>();
+    protected readonly loadedFiles$ = this.control.valueChanges.pipe(
         switchMap(file => this.processFile(file)),
     );
 
-    removeFile(): void {
+    protected removeFile(): void {
         this.control.setValue(null);
     }
 
-    processFile(file: TuiFileLike | null): Observable<TuiFileLike | null> {
+    protected processFile(file: TuiFileLike | null): Observable<TuiFileLike | null> {
         this.failedFiles$.next(null);
 
         if (this.control.invalid || !file) {

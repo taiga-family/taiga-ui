@@ -6,10 +6,10 @@ import {EMPTY_ARRAY, TuiHandler} from '@taiga-ui/cdk';
 })
 export class TuiTreeChildrenDirective<T> {
     @Input()
-    childrenHandler: TuiHandler<T, readonly T[]> =
+    public childrenHandler: TuiHandler<T, readonly T[]> =
         TuiTreeChildrenDirective.defaultHandler;
 
-    static defaultHandler<G>(item: G): readonly G[] {
+    public static defaultHandler<G>(item: G): readonly G[] {
         return Array.isArray(item) ? item : EMPTY_ARRAY;
     }
 }

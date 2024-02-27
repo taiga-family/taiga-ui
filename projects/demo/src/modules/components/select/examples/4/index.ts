@@ -14,7 +14,7 @@ import {TuiSelectComponent} from '@taiga-ui/kit';
 export class TuiSelectExample4 {
     private readonly alerts = inject(TuiAlertService);
 
-    readonly pythons = [
+    protected readonly pythons = [
         'de la Concordia «Gabo» García Márquez',
         'John Cleese',
         'Eric Idle',
@@ -24,9 +24,9 @@ export class TuiSelectExample4 {
         'Graham Chapman',
     ];
 
-    value = this.pythons[0];
+    protected value = this.pythons[0];
 
-    addMore(select: TuiSelectComponent<unknown>): void {
+    protected addMore(select: TuiSelectComponent<unknown>): void {
         select.handleOption(select.value);
         this.alerts.open('Add more is clicked').subscribe();
     }

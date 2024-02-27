@@ -8,9 +8,9 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
     changeDetection,
 })
 export class ExampleTuiBreakpointComponent {
-    injectService = import('./examples/inject-service.md?raw');
+    protected injectService = import('./examples/inject-service.md?raw');
 
-    readonly example: TuiDocExample = {
+    protected readonly example: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
         LESS: import('./examples/1/index.less?raw'),

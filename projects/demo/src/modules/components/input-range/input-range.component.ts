@@ -21,65 +21,65 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
     ],
 })
 export class ExampleTuiInputRangeComponent extends AbstractExampleTuiControl {
-    readonly exampleModule = import('./examples/import/import-module.md?raw');
-    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
+    protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         HTML: import('./examples/1/index.html?raw'),
         TypeScript: import('./examples/1/index.ts?raw'),
     };
 
-    readonly example2: TuiDocExample = {
+    protected readonly example2: TuiDocExample = {
         TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
     };
 
-    readonly example3: TuiDocExample = {
+    protected readonly example3: TuiDocExample = {
         HTML: import('./examples/3/index.html?raw'),
         TypeScript: import('./examples/3/index.ts?raw'),
     };
 
-    readonly example4: TuiDocExample = {
+    protected readonly example4: TuiDocExample = {
         HTML: import('./examples/4/index.html?raw'),
         LESS: import('./examples/4/index.less?raw'),
         TypeScript: import('./examples/4/index.ts?raw'),
     };
 
-    readonly example5: TuiDocExample = {
+    protected readonly example5: TuiDocExample = {
         TypeScript: import('./examples/5/index.ts?raw'),
         HTML: import('./examples/5/index.html?raw'),
         LESS: import('./examples/5/index.less?raw'),
     };
 
-    readonly example6: TuiDocExample = {
+    protected readonly example6: TuiDocExample = {
         TypeScript: import('./examples/6/index.ts?raw'),
         HTML: import('./examples/6/index.html?raw'),
         'transformer.ts': import('./examples/6/transformer.ts?raw'),
     };
 
-    control = new FormControl([0, 10]);
+    public control = new FormControl([0, 10]);
 
-    minVariants: readonly number[] = [0, 5, 7.77, -10];
+    protected minVariants: readonly number[] = [0, 5, 7.77, -10];
 
-    min = this.minVariants[0];
+    protected min = this.minVariants[0];
 
-    maxVariants: readonly number[] = [10, 100, 10000];
+    protected maxVariants: readonly number[] = [10, 100, 10000];
 
-    max = this.maxVariants[0];
+    protected max = this.maxVariants[0];
 
-    segments = 1;
+    protected segments = 1;
 
-    steps = 0;
+    protected steps = 0;
 
-    quantumVariants: readonly number[] = [1, 0.001, 10, 100];
+    protected quantumVariants: readonly number[] = [1, 0.001, 10, 100];
 
-    quantum = this.quantumVariants[0];
+    protected quantum = this.quantumVariants[0];
 
-    override sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
+    public override sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
 
-    override size = this.sizeVariants[1];
+    public override size = this.sizeVariants[1];
 
-    readonly pluralizeVariants: ReadonlyArray<Record<string, string>> = [
+    protected readonly pluralizeVariants: ReadonlyArray<Record<string, string>> = [
         {one: 'thing', few: 'things', many: 'things', other: 'things'},
         {
             one: 'year',
@@ -87,9 +87,9 @@ export class ExampleTuiInputRangeComponent extends AbstractExampleTuiControl {
         },
     ];
 
-    pluralize: Record<string, string> | null = null;
+    protected pluralize: Record<string, string> | null = null;
 
-    keyStepsVariants: readonly TuiKeySteps[] = [
+    protected keyStepsVariants: readonly TuiKeySteps[] = [
         [
             [0, 0],
             [50, 1_000],
@@ -97,9 +97,9 @@ export class ExampleTuiInputRangeComponent extends AbstractExampleTuiControl {
         ],
     ];
 
-    keySteps: TuiKeySteps | null = null;
+    protected keySteps: TuiKeySteps | null = null;
 
-    readonly valueContentVariants = [
+    protected readonly valueContentVariants = [
         '',
         'TOP SECRET',
         ({$implicit: val}: TuiContext<number>) => (val === this.max ? 'MAX' : `${val}`),
@@ -107,6 +107,6 @@ export class ExampleTuiInputRangeComponent extends AbstractExampleTuiControl {
         ({$implicit: val}: TuiContext<number>) => (val === 5 ? 'FIVE' : `${val}`),
     ];
 
-    leftValueContent = this.valueContentVariants[0];
-    rightValueContent = this.valueContentVariants[0];
+    protected leftValueContent = this.valueContentVariants[0];
+    protected rightValueContent = this.valueContentVariants[0];
 }

@@ -33,37 +33,37 @@ const ONE_DOT: [string] = ['var(--tui-success-fill)'];
     ],
 })
 export class ExampleTuiInputDateRangeComponent extends AbstractExampleTuiControl {
-    readonly exampleModule = import('./examples/import/import-module.md?raw');
-    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
-    readonly exampleForm = import('./examples/import/declare-form.md?raw');
+    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
+    protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    protected readonly exampleForm = import('./examples/import/declare-form.md?raw');
 
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
     };
 
-    readonly example2: TuiDocExample = {
+    protected readonly example2: TuiDocExample = {
         TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
     };
 
-    readonly example3: TuiDocExample = {
+    protected readonly example3: TuiDocExample = {
         TypeScript: import('./examples/3/index.ts?raw'),
         HTML: import('./examples/3/index.html?raw'),
     };
 
-    readonly example4: TuiDocExample = {
+    protected readonly example4: TuiDocExample = {
         TypeScript: import('./examples/4/index.ts?raw'),
         HTML: import('./examples/4/index.html?raw'),
         'value-transformers.ts': import('./examples/4/value-transformers.ts?raw'),
     };
 
-    readonly example5: TuiDocExample = {
+    protected readonly example5: TuiDocExample = {
         TypeScript: import('./examples/5/index.ts?raw'),
         HTML: import('./examples/5/index.html?raw'),
     };
 
-    readonly dayVariants = [
+    protected readonly dayVariants = [
         TUI_FIRST_DAY,
         new TuiDay(2021, 2, 5),
         new TuiDay(1900, 0, 1),
@@ -73,52 +73,51 @@ export class ExampleTuiInputDateRangeComponent extends AbstractExampleTuiControl
         TUI_LAST_DAY,
     ];
 
-    min: TuiDay = this.dayVariants[0];
+    protected min: TuiDay = this.dayVariants[0];
 
-    readonly minLengthVariants: readonly TuiDayLike[] = [{day: 3}, {day: 15}];
+    protected readonly minLengthVariants: readonly TuiDayLike[] = [{day: 3}, {day: 15}];
 
-    minLength: TuiDayLike | null = null;
+    protected minLength: TuiDayLike | null = null;
 
-    override readonly maxLengthVariants: readonly TuiDayLike[] = [
+    public override readonly maxLengthVariants: readonly TuiDayLike[] = [
         {day: 5},
         {month: 1},
         {year: 1},
     ];
 
-    override maxLength: TuiDayLike | null = null;
+    public override maxLength: TuiDayLike | null = null;
 
-    max = this.dayVariants[this.dayVariants.length - 1];
+    protected max = this.dayVariants[this.dayVariants.length - 1];
 
-    readonly markerHandlerVariants: readonly TuiMarkerHandler[] = [
+    protected readonly markerHandlerVariants: readonly TuiMarkerHandler[] = [
         TUI_DEFAULT_MARKER_HANDLER,
         (day: TuiDay) => (day.day % 2 === 0 ? TWO_DOTS : ONE_DOT),
     ];
 
-    markerHandler: TuiMarkerHandler = this.markerHandlerVariants[0];
+    protected markerHandler: TuiMarkerHandler = this.markerHandlerVariants[0];
 
-    override cleaner = false;
+    public override cleaner = false;
 
-    readonly disabledItemHandlerVariants: ReadonlyArray<TuiBooleanHandler<TuiDay>> = [
-        ALWAYS_FALSE_HANDLER,
-        ({day}) => day % 3 === 0,
-    ];
+    protected readonly disabledItemHandlerVariants: ReadonlyArray<
+        TuiBooleanHandler<TuiDay>
+    > = [ALWAYS_FALSE_HANDLER, ({day}) => day % 3 === 0];
 
-    disabledItemHandler = this.disabledItemHandlerVariants[0];
+    protected disabledItemHandler = this.disabledItemHandlerVariants[0];
 
-    control = new FormControl<TuiDayRange | null>(null, Validators.required);
+    public control = new FormControl<TuiDayRange | null>(null, Validators.required);
 
-    readonly itemsVariants: ReadonlyArray<readonly TuiDayRangePeriod[]> = [
+    protected readonly itemsVariants: ReadonlyArray<readonly TuiDayRangePeriod[]> = [
         [],
         tuiCreateDefaultDayRangePeriods(),
     ];
 
-    items = this.itemsVariants[0];
+    protected items = this.itemsVariants[0];
 
-    readonly defaultViewedMonthVariants: readonly TuiMonth[] = [
+    protected readonly defaultViewedMonthVariants: readonly TuiMonth[] = [
         TuiMonth.currentLocal(),
         TuiMonth.currentLocal().append({month: 1}),
         new TuiMonth(2007, 5),
     ];
 
-    defaultViewedMonth = this.defaultViewedMonthVariants[0];
+    protected defaultViewedMonth = this.defaultViewedMonthVariants[0];
 }

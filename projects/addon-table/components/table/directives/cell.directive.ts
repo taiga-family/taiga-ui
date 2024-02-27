@@ -5,7 +5,7 @@ import {Directive, inject, Input, TemplateRef} from '@angular/core';
 })
 export class TuiCellDirective {
     @Input()
-    tuiCell = '';
+    public tuiCell = '';
 
-    readonly template = inject(TemplateRef<Record<string, unknown>>);
+    public readonly template = inject(TemplateRef<Record<string, unknown>>);
 }

@@ -34,19 +34,19 @@ describe('Calendar', () => {
     })
     class TestComponent {
         @ViewChild(TuiCalendarComponent, {static: true})
-        component!: TuiCalendarComponent;
+        protected component!: TuiCalendarComponent;
 
-        value = TuiDay.currentLocal();
-        month = new TuiMonth(2019, 2);
+        protected value = TuiDay.currentLocal();
+        protected month = new TuiMonth(2019, 2);
 
-        min = new TuiDay(2019, 2, 1);
-        minViewedMonth = new TuiDay(2019, 1, 1);
+        protected min = new TuiDay(2019, 2, 1);
+        protected minViewedMonth = new TuiDay(2019, 1, 1);
 
-        max = new TuiDay(2019, 2, 1);
-        maxViewedMonth = new TuiDay(2019, 3, 1);
+        protected max = new TuiDay(2019, 2, 1);
+        protected maxViewedMonth = new TuiDay(2019, 3, 1);
 
-        dayClick = jest.fn();
-        hoveredItemChange = jest.fn();
+        protected dayClick = jest.fn();
+        protected hoveredItemChange = jest.fn();
     }
 
     let fixture: ComponentFixture<TestComponent>;

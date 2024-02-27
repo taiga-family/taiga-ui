@@ -11,16 +11,16 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiDropdownHoverExample2 {
-    readonly testForm = new FormGroup({
+    protected readonly testForm = new FormGroup({
         option: new FormControl(false),
     });
 
-    open = false;
-    openSettings = false;
+    protected open = false;
+    protected openSettings = false;
 
-    index = 0;
+    protected index = 0;
 
-    onClick(): void {
+    protected onClick(): void {
         this.open = false;
         this.index = 1;
     }

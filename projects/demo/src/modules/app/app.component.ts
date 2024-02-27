@@ -32,12 +32,12 @@ export class AppComponent extends AbstractDemoComponent implements OnInit {
     protected readonly router = inject(Router);
     protected readonly storage = inject(LOCAL_STORAGE);
 
-    readonly isLanding$ = this.router.events.pipe(
+    protected readonly isLanding$ = this.router.events.pipe(
         map(() => this.router.routerState.snapshot.url === '/'),
         distinctUntilChanged(),
     );
 
-    override async ngOnInit(): Promise<void> {
+    public override async ngOnInit(): Promise<void> {
         await super.ngOnInit();
         this.enableYandexMetrika();
         this.setBaseHrefIfNotPresent();

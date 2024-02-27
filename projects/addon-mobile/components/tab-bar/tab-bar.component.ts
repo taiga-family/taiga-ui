@@ -26,16 +26,16 @@ export class TuiTabBarComponent {
     private readonly tabs: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
     @Input()
-    quantity = 4;
+    public quantity = 4;
 
     @Input()
-    activeItemIndex = NaN;
+    public activeItemIndex = NaN;
 
     @Output()
-    readonly activeItemIndexChange = new EventEmitter<number>();
+    public readonly activeItemIndexChange = new EventEmitter<number>();
 
     @HostListener('click', ['$event.target'])
-    setActive(tab: EventTarget): void {
+    public setActive(tab: EventTarget): void {
         if (tuiIsElement(tab)) {
             this.updateIndex(
                 this.tabs.toArray().findIndex(({nativeElement}) => nativeElement === tab),
@@ -44,7 +44,7 @@ export class TuiTabBarComponent {
     }
 
     @HostBinding('style')
-    get style(): string {
+    protected get style(): string {
         return `--tui-tab-${this.activeItemIndex + 1}: var(--tui-active-color)`;
     }
 

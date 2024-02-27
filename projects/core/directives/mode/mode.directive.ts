@@ -7,5 +7,5 @@ import {TuiBrightness} from '@taiga-ui/core/types';
 })
 export class TuiModeDirective extends AbstractTuiController {
     @Input('tuiMode')
-    mode: TuiBrightness | null = null;
+    public mode: TuiBrightness | null = null;
 }

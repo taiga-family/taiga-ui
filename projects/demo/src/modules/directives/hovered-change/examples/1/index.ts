@@ -10,9 +10,9 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiHoveredChangeExample1 {
-    hovered = false;
+    protected hovered = false;
 
-    onHovered(hovered: boolean): void {
+    protected onHovered(hovered: boolean): void {
         this.hovered = hovered;
     }
 }

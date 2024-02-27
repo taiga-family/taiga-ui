@@ -9,7 +9,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiNavigationExample1 {
-    open = false;
-    expanded = false;
-    submenu = false;
+    protected open = false;
+    protected expanded = false;
+    protected submenu = false;
 }

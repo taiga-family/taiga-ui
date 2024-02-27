@@ -60,11 +60,12 @@ function getAge({dob}: User): number {
     changeDetection,
 })
 export class TuiTableExample5 {
-    readonly data = DATA;
+    protected readonly data = DATA;
 
-    readonly columns = ['name', 'dob', 'age'];
+    protected readonly columns = ['name', 'dob', 'age'];
 
-    readonly getAge = getAge;
+    protected readonly getAge = getAge;
 
-    readonly ageSorter: TuiComparator<User> = (a: User, b: User) => getAge(a) - getAge(b);
+    protected readonly ageSorter: TuiComparator<User> = (a: User, b: User) =>
+        getAge(a) - getAge(b);
 }

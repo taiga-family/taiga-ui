@@ -30,7 +30,7 @@ export class TuiAlertExampleComponent4 {
             takeUntil(inject(Router).events),
         );
 
-    showNotification(): void {
+    protected showNotification(): void {
         this.notification.subscribe();
     }
 }

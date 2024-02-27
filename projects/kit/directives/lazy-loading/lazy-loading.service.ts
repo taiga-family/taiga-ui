@@ -43,7 +43,7 @@ export class TuiLazyLoadingService extends Observable<SafeResourceUrl | string> 
         );
     }
 
-    next(src: SafeResourceUrl | string): void {
+    public next(src: SafeResourceUrl | string): void {
         this.src$.next(src);
     }
 }

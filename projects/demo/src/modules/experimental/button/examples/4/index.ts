@@ -11,8 +11,8 @@ import {map, startWith, Subject, switchMap, timer} from 'rxjs';
     changeDetection,
 })
 export class TuiButtonExample4 {
-    readonly trigger$ = new Subject<void>();
-    readonly loading$ = this.trigger$.pipe(
+    protected readonly trigger$ = new Subject<void>();
+    protected readonly loading$ = this.trigger$.pipe(
         switchMap(() =>
             timer(2000).pipe(map(ALWAYS_FALSE_HANDLER), startWith('Loading')),
         ),

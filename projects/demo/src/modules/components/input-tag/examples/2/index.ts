@@ -21,16 +21,16 @@ const databaseMockData: readonly string[] = [
 export class TuiInputTagExample2 {
     private readonly search$ = new Subject<string>();
 
-    value = [];
+    protected value = [];
 
-    readonly items$ = this.search$.pipe(
+    protected readonly items$ = this.search$.pipe(
         switchMap(search =>
             this.serverRequest(search).pipe(startWith<readonly string[] | null>(null)),
         ),
         startWith(databaseMockData),
     );
 
-    onSearchChange(search: string): void {
+    protected onSearchChange(search: string): void {
         this.search$.next(search);
     }
 

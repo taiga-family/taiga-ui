@@ -32,7 +32,7 @@ export abstract class TuiPopoverService<T, K = void> {
         this.items$ = inject(items);
     }
 
-    open<G = void>(
+    public open<G = void>(
         content: PolymorpheusContent<T & TuiPopoverContext<K extends void ? G : K>>,
         options: Partial<T> = {},
     ): Observable<K extends void ? G : K> {

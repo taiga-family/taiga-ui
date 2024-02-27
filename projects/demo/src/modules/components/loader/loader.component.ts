@@ -12,46 +12,46 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 })
 export class ExampleTuiLoaderComponent {
     @ViewChild('textTemplate')
-    readonly textTemplate: PolymorpheusContent;
+    protected readonly textTemplate: PolymorpheusContent;
 
-    readonly exampleOptions = import('./examples/import/define-options.md?raw');
-    readonly exampleModule = import('./examples/import/import-module.md?raw');
-    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    protected readonly exampleOptions = import('./examples/import/define-options.md?raw');
+    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
+    protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
         LESS: import('./examples/1/index.less?raw'),
     };
 
-    readonly example2: TuiDocExample = {
+    protected readonly example2: TuiDocExample = {
         TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
     };
 
-    readonly example3: TuiDocExample = {
+    protected readonly example3: TuiDocExample = {
         TypeScript: import('./examples/3/index.ts?raw'),
         HTML: import('./examples/3/index.html?raw'),
     };
 
-    readonly example4: TuiDocExample = {
+    protected readonly example4: TuiDocExample = {
         TypeScript: import('./examples/4/index.ts?raw'),
         HTML: import('./examples/4/index.html?raw'),
     };
 
-    readonly example5: TuiDocExample = {
+    protected readonly example5: TuiDocExample = {
         HTML: import('./examples/5/index.html?raw'),
         LESS: import('./examples/5/index.less?raw'),
         TypeScript: import('./examples/5/index.ts?raw'),
     };
 
-    showLoader = true;
+    protected showLoader = true;
 
-    inheritColor = false;
+    protected inheritColor = false;
 
-    overlay = false;
+    protected overlay = false;
 
-    readonly sizeVariants: ReadonlyArray<TuiSizeXS | TuiSizeXXL> = [
+    protected readonly sizeVariants: ReadonlyArray<TuiSizeXS | TuiSizeXXL> = [
         'xs',
         's',
         'm',
@@ -60,13 +60,13 @@ export class ExampleTuiLoaderComponent {
         'xxl',
     ];
 
-    size = this.sizeVariants[2];
+    protected size = this.sizeVariants[2];
 
-    selectedTemplate = '';
+    protected selectedTemplate = '';
 
-    readonly textVariants: string[] = ['', 'template', 'string'];
+    protected readonly textVariants: string[] = ['', 'template', 'string'];
 
-    get template(): PolymorpheusContent {
+    protected get template(): PolymorpheusContent {
         switch (this.selectedTemplate) {
             case 'template': {
                 return this.textTemplate || '';

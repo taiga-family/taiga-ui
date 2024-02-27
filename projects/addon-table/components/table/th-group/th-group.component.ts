@@ -26,16 +26,18 @@ export class TuiThGroupComponent<T extends Partial<Record<keyof T, any>>>
     implements AfterContentInit
 {
     @ContentChild(forwardRef(() => TuiThComponent))
-    readonly th!: TuiThComponent<T>;
+    protected readonly th!: TuiThComponent<T>;
 
     @ContentChildren(forwardRef(() => TuiHeadDirective))
-    readonly heads: QueryList<TuiHeadDirective<T>> = EMPTY_QUERY;
+    protected readonly heads: QueryList<TuiHeadDirective<T>> = EMPTY_QUERY;
 
-    heads$: Observable<Record<any, TuiHeadDirective<T>>> | null = null;
+    protected heads$: Observable<Record<any, TuiHeadDirective<T>>> | null = null;
 
-    readonly table = inject<TuiTableDirective<T>>(forwardRef(() => TuiTableDirective));
+    protected readonly table = inject<TuiTableDirective<T>>(
+        forwardRef(() => TuiTableDirective),
+    );
 
-    ngAfterContentInit(): void {
+    public ngAfterContentInit(): void {
         this.heads$ = this.heads.changes.pipe(
             startWith(null),
             map(() =>

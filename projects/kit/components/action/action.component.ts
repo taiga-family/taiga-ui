@@ -34,9 +34,9 @@ export class TuiActionComponent extends AbstractTuiInteractive {
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
 
     @Input()
-    icon = '';
+    public icon = '';
 
-    readonly disabled = false;
+    public readonly disabled = false;
 
     constructor() {
         super();
@@ -46,22 +46,22 @@ export class TuiActionComponent extends AbstractTuiInteractive {
         });
     }
 
-    get nativeFocusableElement(): TuiNativeFocusableElement | null {
+    public get nativeFocusableElement(): TuiNativeFocusableElement | null {
         return this.el;
     }
 
-    get focused(): boolean {
+    public get focused(): boolean {
         return tuiIsNativeFocused(this.nativeFocusableElement);
     }
 
     @HostBinding('tabIndex')
-    get tabIndex(): number {
+    protected get tabIndex(): number {
         return this.computedFocusable ? 0 : -1;
     }
 
     @HostListener('focusin', ['true'])
     @HostListener('focusout', ['false'])
-    onFocused(focused: boolean): void {
+    protected onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
 }

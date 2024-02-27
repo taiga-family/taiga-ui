@@ -44,28 +44,28 @@ export class TuiLinkComponent implements TuiFocusableElementAccessor {
 
     @Input()
     @HostBinding('class._pseudo')
-    pseudo = false;
+    public pseudo = false;
 
     @Input()
-    icon = '';
+    public icon = '';
 
     @Input()
-    iconAlign: TuiHorizontalDirection = 'right';
+    public iconAlign: TuiHorizontalDirection = 'right';
 
     @Input()
     @HostBinding('class._icon-rotated')
-    iconRotated = false;
+    public iconRotated = false;
 
     @Input()
     @HostBinding('attr.data-host-mode')
-    mode: 'negative' | 'positive' | null = null;
+    public mode: 'negative' | 'positive' | null = null;
 
     @HostBinding('class._focus-visible')
-    focusVisible = false;
+    protected focusVisible = false;
 
-    readonly mode$ = inject(TUI_MODE);
+    protected readonly mode$ = inject(TUI_MODE);
 
-    readonly focusedChange = merge(
+    public readonly focusedChange = merge(
         tuiTypedFromEvent(this.el, 'focusin').pipe(map(ALWAYS_TRUE_HANDLER)),
         tuiTypedFromEvent(this.el, 'focusout').pipe(map(ALWAYS_FALSE_HANDLER)),
     );
@@ -76,23 +76,23 @@ export class TuiLinkComponent implements TuiFocusableElementAccessor {
         });
     }
 
-    get nativeFocusableElement(): TuiNativeFocusableElement {
+    public get nativeFocusableElement(): TuiNativeFocusableElement {
         return this.el;
     }
 
-    get focused(): boolean {
+    public get focused(): boolean {
         return tuiIsNativeFocused(this.nativeFocusableElement);
     }
 
-    get hasIcon(): boolean {
+    protected get hasIcon(): boolean {
         return !!this.icon;
     }
 
-    get iconAlignLeft(): boolean {
+    protected get iconAlignLeft(): boolean {
         return this.hasIcon && this.iconAlign === 'left';
     }
 
-    get iconAlignRight(): boolean {
+    protected get iconAlignRight(): boolean {
         return this.hasIcon && this.iconAlign === 'right';
     }
 }

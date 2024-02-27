@@ -47,27 +47,27 @@ export class TuiInputFilesDirective
     implements TuiAppearanceOptions
 {
     @Output()
-    readonly reject = timer(0).pipe(
+    public readonly reject = timer(0).pipe(
         switchMap(() => tuiControlValue(this.control)),
         map(() => tuiFilesRejected(this.control)),
         filter(rejected => !!rejected.length),
     );
 
-    readonly appearance = 'file';
-    readonly host = inject(forwardRef(() => TuiInputFilesComponent));
-    readonly input: HTMLInputElement = inject(ElementRef).nativeElement;
+    public readonly appearance = 'file';
+    protected readonly host = inject(forwardRef(() => TuiInputFilesComponent));
+    public readonly input: HTMLInputElement = inject(ElementRef).nativeElement;
 
-    get focused(): boolean {
+    public get focused(): boolean {
         return tuiIsNativeFocused(this.input);
     }
 
-    onClick(event: MouseEvent): void {
+    protected onClick(event: MouseEvent): void {
         if (this.input.readOnly) {
             event.preventDefault();
         }
     }
 
-    process(files: FileList): void {
+    public process(files: FileList): void {
         this.value = this.input.multiple
             ? [...toArray(this.value), ...Array.from(files)]
             : files[0] || null;

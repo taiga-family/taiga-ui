@@ -25,15 +25,17 @@ export class TuiSheetTopDirective {
     private readonly win = inject(WINDOW);
 
     @Input('tuiSheetTop')
-    stop = 0;
+    public stop = 0;
 
-    readonly transform$ = this.scroll$.pipe(
+    protected readonly transform$ = this.scroll$.pipe(
         map(y => `translateY(${this.getY(y)}%) scaleX(-1)`),
     );
 
-    readonly rounded$ = this.scroll$.pipe(map(y => y < this.stop + OFFSET));
+    protected readonly rounded$ = this.scroll$.pipe(map(y => y < this.stop + OFFSET));
 
-    readonly clickthrough$ = this.scroll$.pipe(map(y => !!Math.round(this.getY(y))));
+    protected readonly clickthrough$ = this.scroll$.pipe(
+        map(y => !!Math.round(this.getY(y))),
+    );
 
     private getY(scrollTop: number): number {
         const value = scrollTop - this.stop;

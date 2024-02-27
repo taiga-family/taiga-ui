@@ -32,7 +32,7 @@ function asyncValidatorFn(isE2E: boolean): AsyncValidatorFn {
 export class TuiFieldErrorPipeExample5 {
     private readonly fb = inject(UntypedFormBuilder);
 
-    readonly form: FormGroup;
+    protected readonly form: FormGroup;
 
     constructor() {
         this.form = this.fb.group({

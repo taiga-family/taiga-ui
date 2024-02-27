@@ -57,35 +57,35 @@ export class TuiDataListComponent<T> implements TuiDataListAccessor<T> {
 
     @Input()
     @HostBinding('attr.role')
-    role: TuiDataListRole = 'listbox';
+    public role: TuiDataListRole = 'listbox';
 
     @Input()
-    emptyContent: PolymorpheusContent;
+    public emptyContent: PolymorpheusContent;
 
     @Input()
     @HostBinding('attr.data-list-size')
-    size = this.controller?.size || 'm';
+    public size = this.controller?.size || 'm';
 
-    readonly defaultEmptyContent$ = inject(TUI_NOTHING_FOUND_MESSAGE);
+    protected readonly defaultEmptyContent$ = inject(TUI_NOTHING_FOUND_MESSAGE);
 
     @tuiPure
-    get empty$(): Observable<boolean> {
+    protected get empty$(): Observable<boolean> {
         return tuiQueryListChanges(this.options).pipe(map(({length}) => !length));
     }
 
     @HostListener('focusin', ['$event.relatedTarget', '$event.currentTarget'])
-    onFocusIn(relatedTarget: HTMLElement, currentTarget: HTMLElement): void {
+    protected onFocusIn(relatedTarget: HTMLElement, currentTarget: HTMLElement): void {
         if (!currentTarget.contains(relatedTarget) && !this.origin) {
             this.origin = relatedTarget;
         }
     }
 
     @HostListener('mousedown.prevent')
-    noop(): void {}
+    protected noop(): void {}
 
     @HostListener('keydown.arrowDown.prevent', ['$event.target', '1'])
     @HostListener('keydown.arrowUp.prevent', ['$event.target', '-1'])
-    onKeyDownArrow(current: HTMLElement, step: number): void {
+    public onKeyDownArrow(current: HTMLElement, step: number): void {
         const {elements} = this;
 
         tuiMoveFocus(elements.indexOf(current), elements, step);
@@ -94,20 +94,20 @@ export class TuiDataListComponent<T> implements TuiDataListAccessor<T> {
     // TODO: Consider aria-activedescendant for proper accessibility implementation
     @HostListener('wheel.silent.passive')
     @HostListener('mouseleave', ['$event.target'])
-    handleFocusLossIfNecessary(element: Element = this.el): void {
+    public handleFocusLossIfNecessary(element: Element = this.el): void {
         if (this.origin && tuiIsNativeFocusedIn(element)) {
             tuiSetNativeMouseFocused(this.origin, true, true);
         }
     }
 
-    getOptions(includeDisabled = false): readonly T[] {
+    public getOptions(includeDisabled = false): readonly T[] {
         return this.options
             .filter(({disabled}) => includeDisabled || !disabled)
             .map(({value}) => value)
             .filter(tuiIsPresent);
     }
 
-    onFocus({target}: Event, top: boolean): void {
+    public onFocus({target}: Event, top: boolean): void {
         if (!tuiIsElement(target)) {
             return;
         }

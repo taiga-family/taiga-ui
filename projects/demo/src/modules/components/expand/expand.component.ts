@@ -17,23 +17,23 @@ export class ExampleTuiExpandComponent {
     private readonly destroy$ = inject(TuiDestroyService, {self: true});
 
     @ViewChild(TuiExpandComponent, {read: ElementRef})
-    expand?: ElementRef;
+    protected expand?: ElementRef;
 
-    readonly exampleModule = import('./examples/import/import-module.md?raw');
-    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
+    protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
     };
 
-    expanded = false;
+    protected expanded = false;
 
-    async = false;
+    protected async = false;
 
-    delayed = false;
+    protected delayed = false;
 
-    onExpandedChange(expanded: boolean): void {
+    protected onExpandedChange(expanded: boolean): void {
         this.expanded = expanded;
         this.delayed = this.async && expanded;
 

@@ -12,7 +12,7 @@ import {TuiTime} from '@taiga-ui/cdk';
     changeDetection,
 })
 export class TuiSkeletonExample2 {
-    testForm = new FormGroup({
+    protected testForm = new FormGroup({
         nameValue: new FormControl('', Validators.required),
         passwordValue: new FormControl('', Validators.required),
         moneyValue: new FormControl('100', Validators.required),
@@ -23,14 +23,14 @@ export class TuiSkeletonExample2 {
         envdValue: new FormControl(false),
     });
 
-    skeletonVisible = false;
-    lightMode = false;
+    protected skeletonVisible = false;
+    protected lightMode = false;
 
-    showSkeleton(): void {
+    protected showSkeleton(): void {
         this.skeletonVisible = !this.skeletonVisible;
     }
 
-    toggleLight(): void {
+    protected toggleLight(): void {
         this.lightMode = !this.lightMode;
     }
 }

@@ -15,7 +15,7 @@ interface User {
     changeDetection,
 })
 export class TuiFilterByInputExample2 {
-    readonly items = [
+    protected readonly items = [
         'John Cleese',
         'Eric Idle',
         'Graham Chapman',
@@ -24,7 +24,7 @@ export class TuiFilterByInputExample2 {
         'Terry Jones',
     ];
 
-    readonly users = [
+    protected readonly users = [
         {id: 1, name: 'John Cleese'},
         {id: 2, name: 'Eric Idle'},
         {id: 3, name: 'Graham Chapman'},
@@ -32,16 +32,16 @@ export class TuiFilterByInputExample2 {
         {id: 5, name: 'Terry Gilliam'},
     ];
 
-    readonly form = new FormGroup({
+    protected readonly form = new FormGroup({
         user: new FormControl<User | null>(null),
         user2: new FormControl<User | null>(null),
     });
 
-    readonly stringify = ({name}: User): string => name;
+    protected readonly stringify = ({name}: User): string => name;
 
-    readonly matcherString = (name: string, search: string): boolean =>
+    protected readonly matcherString = (name: string, search: string): boolean =>
         name.split(' ').pop()!.toLowerCase().startsWith(search.toLowerCase());
 
-    readonly matcherUser = (user: User, search: string): boolean =>
+    protected readonly matcherUser = (user: User, search: string): boolean =>
         user.name.toLowerCase().startsWith(search.toLowerCase());
 }

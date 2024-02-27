@@ -22,5 +22,5 @@ export const TUI_TEXTFIELD_ICON = tuiCreateTokenFromFactory(
 })
 export class TuiTextfieldIconDirective extends AbstractTuiController {
     @Input('tuiTextfieldIcon')
-    icon: PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeS>>;
+    public icon: PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeS>>;
 }

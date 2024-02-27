@@ -9,10 +9,10 @@ import {changeDetection} from '@demo/emulate/change-detection';
     changeDetection,
 })
 export class TuiRatingExample1 {
-    rateControl = new FormControl(2);
-    rateValue = 2;
+    protected rateControl = new FormControl(2);
+    protected rateValue = 2;
 
-    enableOrDisable(): void {
+    protected enableOrDisable(): void {
         if (this.rateControl.disabled) {
             this.rateControl.enable();
         } else {

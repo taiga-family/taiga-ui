@@ -13,18 +13,18 @@ import {map} from 'rxjs';
     changeDetection,
 })
 export class TuiInputFilesExample2 {
-    readonly control = new FormControl<File[]>([], [maxFilesLength(5)]);
-    readonly accepted$ = this.control.valueChanges.pipe(
+    protected readonly control = new FormControl<File[]>([], [maxFilesLength(5)]);
+    protected readonly accepted$ = this.control.valueChanges.pipe(
         map(() => tuiFilesAccepted(this.control)),
     );
 
-    rejected: readonly File[] = [];
+    protected rejected: readonly File[] = [];
 
-    onReject(files: readonly File[]): void {
+    protected onReject(files: readonly File[]): void {
         this.rejected = Array.from(new Set(this.rejected.concat(files)));
     }
 
-    onRemove(file: File): void {
+    protected onRemove(file: File): void {
         this.rejected = this.rejected.filter(rejected => rejected !== file);
         this.control.setValue(
             this.control.value?.filter(current => current !== file) ?? [],

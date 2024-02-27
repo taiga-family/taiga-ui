@@ -8,11 +8,11 @@ import {TuiRawLoaderContent} from '@taiga-ui/addon-doc';
     changeDetection,
 })
 export class ExampleTuiCardLargeComponent {
-    readonly exampleModule: TuiRawLoaderContent = import(
+    protected readonly exampleModule: TuiRawLoaderContent = import(
         './examples/import/import-module.md?raw'
     );
 
-    readonly exampleHtml: TuiRawLoaderContent = import(
+    protected readonly exampleHtml: TuiRawLoaderContent = import(
         './examples/import/insert-template.md?raw'
     );
 }

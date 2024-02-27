@@ -16,11 +16,11 @@ export class TuiTableBarExampleComponent1 {
     private readonly tableBarsService = inject(TuiTableBarsService);
 
     @ViewChild('tableBarTemplate')
-    tableBarTemplate: PolymorpheusContent;
+    protected tableBarTemplate: PolymorpheusContent;
 
-    subscription = new Subscription();
+    protected subscription = new Subscription();
 
-    showTableBar(): void {
+    protected showTableBar(): void {
         this.subscription.unsubscribe();
 
         this.subscription = this.tableBarsService

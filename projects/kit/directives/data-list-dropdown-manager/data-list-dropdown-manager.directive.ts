@@ -43,7 +43,7 @@ export class TuiDataListDropdownManagerDirective implements AfterViewInit {
 
     private readonly destroy$ = inject(TuiDestroyService, {self: true});
 
-    ngAfterViewInit(): void {
+    public ngAfterViewInit(): void {
         this.right$.pipe(takeUntil(this.destroy$)).subscribe(index => {
             this.tryToFocus(index);
         });

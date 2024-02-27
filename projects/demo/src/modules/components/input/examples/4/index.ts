@@ -10,28 +10,28 @@ import {map} from 'rxjs';
 
 class User {
     constructor(
-        readonly firstName: string,
-        readonly lastName: string,
-        readonly avatarUrl: string | null = null,
-        readonly accounts: Account[] = [],
-        readonly card = '',
+        public readonly firstName: string,
+        public readonly lastName: string,
+        public readonly avatarUrl: string | null = null,
+        public readonly accounts: Account[] = [],
+        public readonly card = '',
     ) {}
 
-    toString(): string {
+    public toString(): string {
         return `${this.firstName} ${this.lastName}`;
     }
 }
 
 class Account {
     constructor(
-        readonly id: string,
-        readonly name: string,
-        readonly amount: number,
-        readonly currency: TuiCurrency,
-        readonly cardSvg: string,
+        protected readonly id: string,
+        protected readonly name: string,
+        protected readonly amount: number,
+        protected readonly currency: TuiCurrency,
+        protected readonly cardSvg: string,
     ) {}
 
-    toString(): string {
+    protected toString(): string {
         return this.name;
     }
 }
@@ -102,15 +102,15 @@ export class TuiInputExample4 {
 
     private readonly user = new FormControl('');
 
-    readonly testForm = new FormGroup({
+    protected readonly testForm = new FormGroup({
         user: this.user,
         account: new FormControl(''),
         card: new FormControl(''),
     });
 
-    lastUser: User | null = null;
+    protected lastUser: User | null = null;
 
-    readonly users$ = tuiControlValue<string>(this.user).pipe(
+    protected readonly users$ = tuiControlValue<string>(this.user).pipe(
         map(value => {
             const filtered = USERS.filter(user => TUI_DEFAULT_MATCHER(user, value));
 
@@ -127,7 +127,7 @@ export class TuiInputExample4 {
         }),
     );
 
-    get card(): string | null {
+    protected get card(): string | null {
         const value = this.testForm.get('card')!.value;
 
         if ((value?.length ?? 0) < 7) {
@@ -153,7 +153,7 @@ export class TuiInputExample4 {
         }
     }
 
-    get isUserSelected(): boolean {
+    protected get isUserSelected(): boolean {
         return (
             this.lastUser !== null &&
             this.lastUser.toString().toLowerCase() ===
@@ -161,15 +161,15 @@ export class TuiInputExample4 {
         );
     }
 
-    get content(): PolymorpheusContent {
+    protected get content(): PolymorpheusContent {
         return this.avatar && this.isUserSelected ? this.avatar : '';
     }
 
-    get accounts(): Account[] {
+    protected get accounts(): Account[] {
         return this.isUserSelected ? this.lastUser?.accounts || [] : [];
     }
 
-    onSelected(user: User): void {
+    protected onSelected(user: User): void {
         this.lastUser = user;
         this.testForm.get('card')!.setValue(user.card);
     }

@@ -14,10 +14,10 @@ export class TuiCompassExample2 {
     @ViewChild(TuiCompassComponent, {read: ElementRef})
     private readonly compass?: ElementRef<HTMLElement>;
 
-    degrees = 0;
+    protected degrees = 0;
 
     @HostListener('document:mousemove', ['$event'])
-    calculate(event: MouseEvent): void {
+    protected calculate(event: MouseEvent): void {
         const rect =
             this.compass?.nativeElement.getBoundingClientRect() ?? EMPTY_CLIENT_RECT;
         const x = Math.ceil(event.clientX - (rect.left + rect.width / 2));

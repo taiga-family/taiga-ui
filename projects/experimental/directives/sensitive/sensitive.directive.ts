@@ -21,10 +21,10 @@ export class TuiSensitiveDirective {
     protected readonly nothing = tuiWithStyles(TuiSensitiveComponent);
 
     @Input()
-    tuiSensitive: boolean | null = false;
+    public tuiSensitive: boolean | null = false;
 
-    readonly offset = Math.round(Math.random() * 10) * 10;
-    readonly height$ = inject(ResizeObserverService).pipe(
+    protected readonly offset = Math.round(Math.random() * 10) * 10;
+    protected readonly height$ = inject(ResizeObserverService).pipe(
         map(([{contentRect}]) => [
             Math.max(2, Math.floor(contentRect.height / 16) + 1),
             contentRect.height,

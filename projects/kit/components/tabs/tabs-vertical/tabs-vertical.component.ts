@@ -23,11 +23,11 @@ export class TuiTabsVerticalComponent {
 
     @Input()
     @HostBinding('attr.data-vertical')
-    vertical: TuiHorizontalDirection = 'left';
+    public vertical: TuiHorizontalDirection = 'left';
 
     @HostListener('keydown.arrowDown.prevent', ['$event.target', '1'])
     @HostListener('keydown.arrowUp.prevent', ['$event.target', '-1'])
-    onKeyDownArrow(current: HTMLElement, step: number): void {
+    protected onKeyDownArrow(current: HTMLElement, step: number): void {
         this.tabs.moveFocus(current, step);
     }
 }

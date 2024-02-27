@@ -37,16 +37,16 @@ import {TUI_TAB_EVENT, TUI_TAB_PROVIDERS} from './tab.providers';
 export class TuiTabComponent implements OnDestroy {
     private readonly routerLinkActive = inject(RouterLinkActive, {optional: true});
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
-    readonly mode$ = inject(TUI_MODE);
-    readonly event$ = inject(TUI_TAB_EVENT);
-    readonly margin = inject(TUI_TAB_MARGIN);
+    protected readonly mode$ = inject(TUI_MODE);
+    protected readonly event$ = inject(TUI_TAB_EVENT);
+    protected readonly margin = inject(TUI_TAB_MARGIN);
 
     @HostBinding('class._active')
-    get isActive(): boolean {
+    protected get isActive(): boolean {
         return !!this.routerLinkActive?.isActive;
     }
 
-    ngOnDestroy(): void {
+    public ngOnDestroy(): void {
         if (tuiIsNativeFocused(this.el)) {
             this.el.blur();
         }

@@ -16,5 +16,5 @@ export const TUI_TEXTFIELD_PREFIX = tuiCreateTokenFromFactory(
 })
 export class TuiTextfieldPrefixDirective extends AbstractTuiController {
     @Input('tuiTextfieldPrefix')
-    prefix = '';
+    public prefix = '';
 }

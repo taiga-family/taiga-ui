@@ -12,13 +12,13 @@ import {tuiNormalizeToIntNumber} from '@taiga-ui/cdk';
     changeDetection,
 })
 export class TuiMathExample3 {
-    parametersForm = new FormGroup({
+    protected parametersForm = new FormGroup({
         value: new FormControl(0),
         min: new FormControl(5),
         max: new FormControl(42),
     });
 
-    get normalized(): number {
+    protected get normalized(): number {
         const {value, min, max} = this.parametersForm.value;
 
         return tuiNormalizeToIntNumber(value ?? 0, min ?? 5, max ?? 42);

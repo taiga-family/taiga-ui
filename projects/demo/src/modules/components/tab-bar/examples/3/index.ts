@@ -10,7 +10,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiTabBarExample3 {
-    readonly items = [
+    protected readonly items = [
         {
             text: 'Home',
             icon: 'tuiIconHomeLarge',

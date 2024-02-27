@@ -9,7 +9,7 @@ export class TuiDocTypeReferencePipe implements PipeTransform {
     private readonly parser = inject(TUI_DOC_TYPE_REFERENCE_PARSER);
     private readonly linkHandler = inject(TUI_DOC_TYPE_REFERENCE_HANDLER);
 
-    transform(original: string): ReadonlyArray<{
+    public transform(original: string): ReadonlyArray<{
         type: string;
         extracted: string;
         reference: string | null;

@@ -30,59 +30,66 @@ import {Observable} from 'rxjs';
     ],
 })
 export class ExampleTuiMobileCalendarComponent {
-    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
-    readonly exampleModule = import('./examples/import/import-module.md?raw');
-    readonly exampleImportDialogModule = import(
+    protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
+    protected readonly exampleImportDialogModule = import(
         './examples/import/import-dialog-module.md?raw'
     );
 
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
         LESS: import('./examples/1/index.less?raw'),
     };
 
-    readonly example2: TuiDocExample = {
+    protected readonly example2: TuiDocExample = {
         TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
     };
 
-    readonly example3: TuiDocExample = {
+    protected readonly example3: TuiDocExample = {
         TypeScript: import('./examples/3/index.ts?raw'),
         HTML: import('./examples/3/index.html?raw'),
         LESS: import('./examples/3/index.less?raw'),
     };
 
-    readonly example4: TuiDocExample = {
+    protected readonly example4: TuiDocExample = {
         TypeScript: import('./examples/4/index.ts?raw'),
         HTML: import('./examples/4/index.html?raw'),
         LESS: import('./examples/4/index.less?raw'),
     };
 
-    readonly example5: TuiDocExample = {
+    protected readonly example5: TuiDocExample = {
         TypeScript: import('./examples/5/index.ts?raw'),
         HTML: import('./examples/5/index.html?raw'),
         LESS: import('./examples/5/index.less?raw'),
     };
 
-    minVariants = [TUI_FIRST_DAY, new TuiDay(2017, 2, 5), new TuiDay(1900, 0, 1)];
-
-    min = this.minVariants[0];
-
-    maxVariants = [TUI_LAST_DAY, new TuiDay(2020, 2, 5), new TuiDay(2300, 0, 1)];
-
-    max = this.maxVariants[0];
-
-    single = true;
-
-    readonly disabledItemHandlerVariants: ReadonlyArray<TuiBooleanHandler<TuiDay>> = [
-        ALWAYS_FALSE_HANDLER,
-        ({day}) => day % 3 === 0,
+    protected minVariants = [
+        TUI_FIRST_DAY,
+        new TuiDay(2017, 2, 5),
+        new TuiDay(1900, 0, 1),
     ];
 
-    disabledItemHandler = this.disabledItemHandlerVariants[0];
+    protected min = this.minVariants[0];
 
-    control = new FormControl<TuiDay | TuiDayRange | null>(null);
+    protected maxVariants = [
+        TUI_LAST_DAY,
+        new TuiDay(2020, 2, 5),
+        new TuiDay(2300, 0, 1),
+    ];
 
-    stream = tuiControlValue<TuiDay>(this.control);
+    protected max = this.maxVariants[0];
+
+    protected single = true;
+
+    protected readonly disabledItemHandlerVariants: ReadonlyArray<
+        TuiBooleanHandler<TuiDay>
+    > = [ALWAYS_FALSE_HANDLER, ({day}) => day % 3 === 0];
+
+    protected disabledItemHandler = this.disabledItemHandlerVariants[0];
+
+    protected control = new FormControl<TuiDay | TuiDayRange | null>(null);
+
+    protected stream = tuiControlValue<TuiDay>(this.control);
 }

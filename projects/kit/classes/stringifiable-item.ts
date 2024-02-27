@@ -5,11 +5,11 @@ import {TuiStringHandler} from '@taiga-ui/cdk';
  */
 export class TuiStringifiableItem<T> {
     constructor(
-        readonly item: T,
-        readonly stringify: TuiStringHandler<T>,
+        public readonly item: T,
+        public readonly stringify: TuiStringHandler<T>,
     ) {}
 
-    toString(): string {
+    protected toString(): string {
         return this.stringify(this.item);
     }
 }

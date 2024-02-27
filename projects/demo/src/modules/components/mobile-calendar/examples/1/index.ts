@@ -45,7 +45,7 @@ export class TuiMobileCalendarExample1 {
         },
     );
 
-    readonly date$ = combineLatest([
+    protected readonly date$ = combineLatest([
         tuiControlValue<TuiDay>(this.control),
         this.months$,
     ]).pipe(
@@ -56,11 +56,11 @@ export class TuiMobileCalendarExample1 {
         ),
     );
 
-    get empty(): boolean {
+    protected get empty(): boolean {
         return !this.control.value;
     }
 
-    onClick(): void {
+    protected onClick(): void {
         this.dialog$.subscribe(value => this.control.setValue(value));
     }
 }

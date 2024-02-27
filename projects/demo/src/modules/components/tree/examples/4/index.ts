@@ -15,7 +15,7 @@ interface TreeNode {
     changeDetection,
 })
 export class TuiTreeExample4 {
-    readonly data: TreeNode = {
+    protected readonly data: TreeNode = {
         text: 'Topmost',
         children: [
             {
@@ -39,16 +39,16 @@ export class TuiTreeExample4 {
         ],
     };
 
-    readonly map = new Map<TreeNode, boolean>();
+    protected readonly map = new Map<TreeNode, boolean>();
 
-    readonly handler: TuiHandler<TreeNode, readonly TreeNode[]> = item =>
+    protected readonly handler: TuiHandler<TreeNode, readonly TreeNode[]> = item =>
         item.children || EMPTY_ARRAY;
 
-    toggleTopmost(): void {
+    protected toggleTopmost(): void {
         this.map.set(this.data, !this.map.get(this.data));
     }
 
-    toggleLevel(index: number): void {
+    protected toggleLevel(index: number): void {
         const nodes: readonly TreeNode[] = this.data.children || [];
 
         this.map.set(nodes[index], !this.map.get(nodes[index]));

@@ -9,23 +9,23 @@ import {TuiInputDateTimeComponent} from './input-date-time.component';
     providers: [tuiAsTextfieldHost(TuiInputDateTimeDirective)],
 })
 export class TuiInputDateTimeDirective extends AbstractTuiTextfieldHost<TuiInputDateTimeComponent> {
-    override get value(): string {
+    public override get value(): string {
         return this.host.computedValue;
     }
 
-    get rawValue(): [TuiDay | null, TuiTime | null] {
+    public get rawValue(): [TuiDay | null, TuiTime | null] {
         return this.host.value;
     }
 
-    onValueChange(value: string): void {
+    public onValueChange(value: string): void {
         this.host.onValueChange(value);
     }
 
-    writeValue(value: [TuiDay | null, TuiTime | null]): void {
+    public writeValue(value: [TuiDay | null, TuiTime | null]): void {
         this.host.writeValue(value);
     }
 
-    override process(input: HTMLInputElement): void {
+    public override process(input: HTMLInputElement): void {
         input.inputMode = 'numeric';
     }
 }

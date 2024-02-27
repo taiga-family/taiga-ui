@@ -20,10 +20,10 @@ export class TuiObscuredDirective {
     );
 
     @Input()
-    set tuiObscuredEnabled(enabled: boolean) {
+    public set tuiObscuredEnabled(enabled: boolean) {
         this.enabled$.next(enabled);
     }
 
     @Output()
-    readonly tuiObscured = this.enabled$.pipe(tuiIfMap(() => this.obscured$));
+    public readonly tuiObscured = this.enabled$.pipe(tuiIfMap(() => this.obscured$));
 }

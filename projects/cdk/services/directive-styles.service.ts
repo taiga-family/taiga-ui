@@ -29,9 +29,9 @@ export class TuiDirectiveStylesService implements OnDestroy {
     private readonly resolver = inject(ComponentFactoryResolver);
     private readonly injector = inject(INJECTOR);
 
-    readonly map = new Map();
+    public readonly map = new Map();
 
-    addComponent(component: Type<unknown>): void {
+    protected addComponent(component: Type<unknown>): void {
         if (!this.map.has(component)) {
             this.map.set(
                 component,
@@ -40,7 +40,7 @@ export class TuiDirectiveStylesService implements OnDestroy {
         }
     }
 
-    ngOnDestroy(): void {
+    public ngOnDestroy(): void {
         this.map.forEach(component => component.destroy());
     }
 }

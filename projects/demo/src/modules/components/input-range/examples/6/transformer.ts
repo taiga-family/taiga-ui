@@ -15,11 +15,11 @@ export class AbsTransformer extends AbstractTuiValueTransformer<
     number | null,
     number | null
 > {
-    override fromControlValue(value: number | null): number | null {
+    public override fromControlValue(value: number | null): number | null {
         return value && Math.abs(value);
     }
 
-    override toControlValue(value: number | null): number | null {
+    public override toControlValue(value: number | null): number | null {
         return value && -1 * Math.abs(value);
     }
 }

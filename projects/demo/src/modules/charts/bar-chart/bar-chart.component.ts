@@ -10,30 +10,30 @@ import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
     changeDetection,
 })
 export class ExampleTuiBarChartComponent {
-    readonly exampleModule = import('./examples/import/import-module.md?raw');
-    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
+    protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
         LESS: import('./examples/1/index.less?raw'),
     };
 
-    readonly example2: TuiDocExample = {
+    protected readonly example2: TuiDocExample = {
         TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
         LESS: import('./examples/2/index.less?raw'),
     };
 
-    collapsed = false;
+    protected collapsed = false;
 
-    readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
+    protected readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
 
-    size: TuiSizeL | TuiSizeS | null = null;
+    protected size: TuiSizeL | TuiSizeS | null = null;
 
-    max = 0;
+    protected max = 0;
 
-    readonly valueVariants = [
+    protected readonly valueVariants = [
         [
             [30000, 20500, 12345],
             [12422, 16124, 22424],
@@ -45,5 +45,5 @@ export class ExampleTuiBarChartComponent {
         ],
     ];
 
-    value = this.valueVariants[0];
+    protected value = this.valueVariants[0];
 }

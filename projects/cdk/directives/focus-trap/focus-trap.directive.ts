@@ -36,12 +36,12 @@ export class TuiFocusTrapDirective implements OnDestroy {
     }
 
     @HostListener('blur')
-    onBlur(): void {
+    protected onBlur(): void {
         this.renderer.removeAttribute(this.el, 'tabIndex');
     }
 
     @HostListener('window:focusin.silent', ['$event.target'])
-    onFocusIn(node: Node): void {
+    protected onFocusIn(node: Node): void {
         if (tuiContainsOrAfter(this.el, node)) {
             return;
         }
@@ -56,7 +56,7 @@ export class TuiFocusTrapDirective implements OnDestroy {
         }
     }
 
-    ngOnDestroy(): void {
+    public ngOnDestroy(): void {
         tuiBlurNativeFocused(this.doc);
 
         /**

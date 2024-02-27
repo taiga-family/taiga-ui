@@ -27,12 +27,12 @@ export abstract class AbstractDemoComponent implements OnInit {
     @HostBinding('$.class._loaded')
     protected readonly pageLoaded = inject(TUI_DOC_PAGE_LOADED);
 
-    async ngOnInit(): Promise<void> {
+    public async ngOnInit(): Promise<void> {
         await this.replaceEnvInURI();
     }
 
     @tuiPure
-    get isChristmas(): boolean {
+    protected get isChristmas(): boolean {
         const today = new Date();
 
         return (

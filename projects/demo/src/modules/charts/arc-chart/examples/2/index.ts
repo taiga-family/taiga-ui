@@ -12,14 +12,14 @@ import {tuiSum} from '@taiga-ui/cdk';
 })
 export class TuiArcChartExample2 {
     private readonly labels = ['Food', 'Cafe', 'Open Source', 'Taxi', 'other'];
-    readonly value = [13769, 12367, 10172, 3018, 2592];
-    readonly sum = tuiSum(...this.value);
+    protected readonly value = [13769, 12367, 10172, 3018, 2592];
+    protected readonly sum = tuiSum(...this.value);
 
-    getValue(index: number): number {
+    protected getValue(index: number): number {
         return Number.isNaN(index) ? this.sum : this.value[index];
     }
 
-    getLabel(index: number): string {
+    protected getLabel(index: number): string {
         return Number.isNaN(index) ? 'Total' : this.labels[index];
     }
 }

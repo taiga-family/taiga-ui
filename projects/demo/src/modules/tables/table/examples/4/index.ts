@@ -101,12 +101,12 @@ export class TuiTableExample4 {
     private readonly size$ = new BehaviorSubject(10);
     private readonly page$ = new BehaviorSubject(0);
 
-    readonly direction$ = new BehaviorSubject<-1 | 1>(-1);
-    readonly sorter$ = new BehaviorSubject<Key>('name');
+    protected readonly direction$ = new BehaviorSubject<-1 | 1>(-1);
+    protected readonly sorter$ = new BehaviorSubject<Key>('name');
 
-    readonly minAge = new FormControl(21);
+    protected readonly minAge = new FormControl(21);
 
-    readonly request$ = combineLatest([
+    protected readonly request$ = combineLatest([
         this.sorter$,
         this.direction$,
         this.page$,
@@ -119,52 +119,52 @@ export class TuiTableExample4 {
         share(),
     );
 
-    initial: readonly string[] = ['Name', 'Date of Birth', 'Age'];
+    protected initial: readonly string[] = ['Name', 'Date of Birth', 'Age'];
 
-    enabled = this.initial;
+    protected enabled = this.initial;
 
-    columns = ['name', 'dob', 'age'];
+    protected columns = ['name', 'dob', 'age'];
 
-    search = '';
+    protected search = '';
 
-    readonly arrow = TUI_ARROW;
+    protected readonly arrow = TUI_ARROW;
 
-    readonly loading$ = this.request$.pipe(map(tuiIsFalsy));
+    protected readonly loading$ = this.request$.pipe(map(tuiIsFalsy));
 
-    readonly total$ = this.request$.pipe(
+    protected readonly total$ = this.request$.pipe(
         filter(tuiIsPresent),
         map(({length}) => length),
         startWith(1),
     );
 
-    readonly data$: Observable<readonly User[]> = this.request$.pipe(
+    protected readonly data$: Observable<readonly User[]> = this.request$.pipe(
         filter(tuiIsPresent),
         map(users => users.filter(tuiIsPresent)),
         startWith([]),
     );
 
-    readonly getAge = getAge;
+    protected readonly getAge = getAge;
 
-    onEnabled(enabled: readonly string[]): void {
+    protected onEnabled(enabled: readonly string[]): void {
         this.enabled = enabled;
         this.columns = this.initial
             .filter(column => enabled.includes(column))
             .map(column => KEYS[column]);
     }
 
-    onDirection(direction: -1 | 1): void {
+    protected onDirection(direction: -1 | 1): void {
         this.direction$.next(direction);
     }
 
-    onSize(size: number): void {
+    protected onSize(size: number): void {
         this.size$.next(size);
     }
 
-    onPage(page: number): void {
+    protected onPage(page: number): void {
         this.page$.next(page);
     }
 
-    isMatch(value: unknown): boolean {
+    protected isMatch(value: unknown): boolean {
         return !!this.search && TUI_DEFAULT_MATCHER(value, this.search);
     }
 

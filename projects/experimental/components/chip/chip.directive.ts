@@ -47,5 +47,5 @@ export class TuiChipDirective {
     protected readonly nothing = tuiWithStyles(TuiChipComponent);
 
     @Input()
-    size: TuiSizeXXS = this.options.size;
+    public size: TuiSizeXXS = this.options.size;
 }

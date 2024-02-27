@@ -20,43 +20,43 @@ import {TuiPoint} from '@taiga-ui/core';
 export class TuiLineDaysChartExample2 {
     private readonly isE2E = inject(TUI_IS_E2E);
 
-    data = new TuiDayRange(
+    protected data = new TuiDayRange(
         TuiDay.currentLocal(),
         TuiDay.currentLocal().append({month: 5}),
     );
 
-    show = this.data;
+    protected show = this.data;
 
-    days: ReadonlyArray<ReadonlyArray<[TuiDay, number]>> = this.computeArrays(this.data);
+    protected days: ReadonlyArray<ReadonlyArray<[TuiDay, number]>> = this.computeArrays(
+        this.data,
+    );
 
-    readonly maxLength: TuiDayLike = {month: 6};
+    protected readonly maxLength: TuiDayLike = {month: 6};
 
-    get range(): TuiDayRange {
+    protected get range(): TuiDayRange {
         return this.computeRange(this.show);
     }
 
     @tuiPure
-    getWidth({from, to}: TuiDayRange): number {
+    protected getWidth({from, to}: TuiDayRange): number {
         return TuiDay.lengthBetween(from, to);
     }
 
     @tuiPure
-    getDate(day: TuiDay | number, date: TuiDay): TuiDay {
+    protected getDate(day: TuiDay | number, date: TuiDay): TuiDay {
         return day instanceof TuiDay ? day : date.append({day});
     }
 
-    readonly filter: TuiTypedMatcher<[readonly [TuiDay, number], TuiDayRange]> = (
-        [day],
-        {from, to},
-    ) => day.daySameOrAfter(from) && day.daySameOrBefore(to);
+    protected readonly filter: TuiTypedMatcher<[readonly [TuiDay, number], TuiDayRange]> =
+        ([day], {from, to}) => day.daySameOrAfter(from) && day.daySameOrBefore(to);
 
-    readonly toNumbers: TuiTypedMapper<
+    protected readonly toNumbers: TuiTypedMapper<
         [ReadonlyArray<readonly [TuiDay, number]>, TuiDayRange],
         readonly TuiPoint[]
     > = (days, {from}) =>
         days.map(([day, value]) => [TuiDay.lengthBetween(from, day), value]);
 
-    onDataChange(data: TuiDayRange): void {
+    protected onDataChange(data: TuiDayRange): void {
         this.days = this.computeArrays(data);
     }
 

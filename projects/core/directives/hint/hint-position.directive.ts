@@ -33,11 +33,11 @@ export class TuiHintPositionDirective extends TuiPositionAccessor {
         );
 
     @Input('tuiHintDirection')
-    direction: TuiHintOptions['direction'] = this.options.direction;
+    public direction: TuiHintOptions['direction'] = this.options.direction;
 
-    readonly type = 'hint';
+    public readonly type = 'hint';
 
-    getPosition({width, height}: ClientRect): TuiPoint {
+    public getPosition({width, height}: ClientRect): TuiPoint {
         const hostRect = this.accessor?.getClientRect() ?? EMPTY_CLIENT_RECT;
         const leftCenter = hostRect.left + hostRect.width / 2;
         const topCenter = hostRect.top + hostRect.height / 2;

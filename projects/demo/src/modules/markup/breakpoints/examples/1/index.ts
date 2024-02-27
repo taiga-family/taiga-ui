@@ -10,7 +10,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class ExampleBreakpointsComponent1 {
-    breakpoints = [
+    protected breakpoints = [
         'tui-mobile',
         'tui-mobile-min',
         'tui-mobile-interval',

@@ -18,35 +18,37 @@ export class ExampleTuiTableBarComponent implements OnDestroy {
     private readonly destroy$ = new Subject<void>();
 
     @ViewChild('tableBarTemplate')
-    readonly tableBarTemplate: PolymorpheusContent;
+    protected readonly tableBarTemplate: PolymorpheusContent;
 
-    readonly exampleServiceUsage = import('./examples/import/service-usage.md?raw');
+    protected readonly exampleServiceUsage = import(
+        './examples/import/service-usage.md?raw'
+    );
 
-    readonly exampleServiceUsageHtml = import(
+    protected readonly exampleServiceUsageHtml = import(
         './examples/import/service-usage-html.md?raw'
     );
 
-    readonly exampleLazyModule = import('./examples/import/lazy-module.md?raw');
-    readonly exampleModule = import('./examples/import/module.md?raw');
-    readonly exampleHtml = import('./examples/import/template.md?raw');
+    protected readonly exampleLazyModule = import('./examples/import/lazy-module.md?raw');
+    protected readonly exampleModule = import('./examples/import/module.md?raw');
+    protected readonly exampleHtml = import('./examples/import/template.md?raw');
 
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
         LESS: import('./examples/1/index.less?raw'),
     };
 
-    readonly modeVariants: readonly TuiBrightness[] = ['onLight', 'onDark'];
+    protected readonly modeVariants: readonly TuiBrightness[] = ['onLight', 'onDark'];
 
-    mode = this.modeVariants[0];
+    protected mode = this.modeVariants[0];
 
-    adaptive = false;
+    protected adaptive = false;
 
-    hasCloseButton = false;
+    protected hasCloseButton = false;
 
-    subscription = new Subscription();
+    protected subscription = new Subscription();
 
-    showTableBar(): void {
+    protected showTableBar(): void {
         this.subscription.unsubscribe();
 
         this.subscription = this.tableBarsService
@@ -59,11 +61,11 @@ export class ExampleTuiTableBarComponent implements OnDestroy {
             .subscribe();
     }
 
-    destroy(): void {
+    protected destroy(): void {
         this.destroy$.next();
     }
 
-    ngOnDestroy(): void {
+    public ngOnDestroy(): void {
         this.destroy$.next();
         this.destroy$.complete();
     }

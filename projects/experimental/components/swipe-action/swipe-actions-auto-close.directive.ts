@@ -12,9 +12,9 @@ export class TuiSwipeActionsAutoCloseDirective {
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
 
     @Input()
-    autoClose: boolean | string = true;
+    public autoClose: boolean | string = true;
 
-    handleEvent(event: Event): void {
+    protected handleEvent(event: Event): void {
         const target = tuiGetActualTarget(event);
 
         if (this.autoClose !== false && !this.el.contains(target)) {

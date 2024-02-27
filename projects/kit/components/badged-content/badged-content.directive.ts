@@ -6,5 +6,5 @@ import {Directive, Input} from '@angular/core';
 })
 export class TuiBadgedContentDirective {
     @Input()
-    tuiSlot: string | 'bottom' | 'top' = 'top';
+    public tuiSlot: string | 'bottom' | 'top' = 'top';
 }

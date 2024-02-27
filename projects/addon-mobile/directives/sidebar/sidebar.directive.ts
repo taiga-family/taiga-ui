@@ -30,13 +30,13 @@ export class TuiSidebarDirective<T = Record<string, unknown>>
     private sidebarRef: ComponentRef<TuiSidebarComponent> | null = null;
 
     @Input('tuiSidebarDirection')
-    direction: TuiHorizontalDirection = 'left';
+    public direction: TuiHorizontalDirection = 'left';
 
     @Input('tuiSidebarAutoWidth')
-    autoWidth = false;
+    public autoWidth = false;
 
     @Input()
-    set tuiSidebar(open: boolean) {
+    public set tuiSidebar(open: boolean) {
         if (open) {
             this.show();
         } else {
@@ -44,9 +44,9 @@ export class TuiSidebarDirective<T = Record<string, unknown>>
         }
     }
 
-    readonly content = inject(TemplateRef<T>);
+    public readonly content = inject(TemplateRef<T>);
 
-    ngOnDestroy(): void {
+    public ngOnDestroy(): void {
         this.hide();
     }
 

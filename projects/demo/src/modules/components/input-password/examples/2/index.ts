@@ -24,7 +24,7 @@ import {of} from 'rxjs';
     ],
 })
 export class TuiInputPasswordExample2 {
-    testForm = new FormGroup({
+    protected testForm = new FormGroup({
         testValue: new FormControl('password', Validators.required),
     });
 }

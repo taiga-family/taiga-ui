@@ -10,5 +10,5 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class InputYearExample1 {
-    readonly control = new FormControl<number | null>(null);
+    protected readonly control = new FormControl<number | null>(null);
 }

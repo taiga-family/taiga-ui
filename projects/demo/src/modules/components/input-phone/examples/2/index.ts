@@ -10,5 +10,5 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiInputPhoneExample2 {
-    readonly control = new FormControl('', Validators.minLength(12));
+    protected readonly control = new FormControl('', Validators.minLength(12));
 }

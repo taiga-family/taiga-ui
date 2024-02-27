@@ -6,7 +6,7 @@ import {AbstractTuiControl} from './control';
 export abstract class AbstractTuiMultipleControl<T> extends AbstractTuiControl<
     readonly T[]
 > {
-    clear(): void {
+    protected clear(): void {
         this.value = [];
     }
 

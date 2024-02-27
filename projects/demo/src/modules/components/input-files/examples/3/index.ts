@@ -12,11 +12,11 @@ import {TuiFileLike} from '@taiga-ui/kit';
     changeDetection,
 })
 export class TuiInputFilesExample3 {
-    readonly isE2E = inject(TUI_IS_E2E);
+    protected readonly isE2E = inject(TUI_IS_E2E);
 
-    readonly control = new FormControl<TuiFileLike | null>(null);
+    protected readonly control = new FormControl<TuiFileLike | null>(null);
 
-    readonly files: readonly TuiFileLike[] = [
+    protected readonly files: readonly TuiFileLike[] = [
         {
             name: 'Loaded.txt',
         },
@@ -25,30 +25,30 @@ export class TuiInputFilesExample3 {
         },
     ];
 
-    loadingFile: TuiFileLike | null = {
+    protected loadingFile: TuiFileLike | null = {
         name: 'Loading file.txt',
     };
 
-    readonly rejectedFiles: readonly TuiFileLike[] = [
+    protected readonly rejectedFiles: readonly TuiFileLike[] = [
         {
             name: 'File with an error.txt',
             content: 'Something went wrong this time',
         },
     ];
 
-    readonly fileWithLink: TuiFileLike = {
+    protected readonly fileWithLink: TuiFileLike = {
         name: 'with link.txt',
         src: 'https://tools.ietf.org/html/rfc675',
     };
 
-    removedFiles: TuiFileLike[] = [this.loadingFile as unknown as TuiFileLike];
-    restoredFiles: TuiFileLike[] = [];
+    protected removedFiles: TuiFileLike[] = [this.loadingFile as unknown as TuiFileLike];
+    protected restoredFiles: TuiFileLike[] = [];
 
-    removeLoading(): void {
+    protected removeLoading(): void {
         this.loadingFile = null;
     }
 
-    restore(file: TuiFileLike | null): void {
+    protected restore(file: TuiFileLike | null): void {
         if (!file) {
             return;
         }
@@ -59,7 +59,7 @@ export class TuiInputFilesExample3 {
         );
     }
 
-    remove(file: TuiFileLike): void {
+    protected remove(file: TuiFileLike): void {
         this.removedFiles = [...this.removedFiles, file];
         this.restoredFiles = this.restoredFiles.filter(
             restored => file.name !== restored?.name,

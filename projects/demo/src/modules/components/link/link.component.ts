@@ -9,43 +9,50 @@ import {TuiHorizontalDirection} from '@taiga-ui/core';
     changeDetection,
 })
 export class ExampleTuiLinkComponent {
-    readonly exampleModule = import('./examples/import/import-module.md?raw');
-    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
+    protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
     };
 
-    readonly example2: TuiDocExample = {
+    protected readonly example2: TuiDocExample = {
         TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
     };
 
-    readonly example3: TuiDocExample = {
+    protected readonly example3: TuiDocExample = {
         TypeScript: import('./examples/3/index.ts?raw'),
         HTML: import('./examples/3/index.html?raw'),
     };
 
-    readonly example4: TuiDocExample = {
+    protected readonly example4: TuiDocExample = {
         TypeScript: import('./examples/4/index.ts?raw'),
         HTML: import('./examples/4/index.html?raw'),
     };
 
-    pseudo = false;
-    iconRotated = false;
+    protected pseudo = false;
+    protected iconRotated = false;
 
-    readonly modeValues = ['positive', 'negative'] as const;
+    protected readonly modeValues = ['positive', 'negative'] as const;
 
-    mode: 'negative' | 'positive' | null = null;
+    protected mode: 'negative' | 'positive' | null = null;
 
-    readonly iconAlignValues: readonly TuiHorizontalDirection[] = ['right', 'left'];
+    protected readonly iconAlignValues: readonly TuiHorizontalDirection[] = [
+        'right',
+        'left',
+    ];
 
-    icon = '';
+    protected icon = '';
 
-    readonly iconVariants = ['tuiIconStarLarge', 'tuiIconMapPinLarge', 'tuiIconMapPin'];
+    protected readonly iconVariants = [
+        'tuiIconStarLarge',
+        'tuiIconMapPinLarge',
+        'tuiIconMapPin',
+    ];
 
-    iconAlign: TuiHorizontalDirection = this.iconAlignValues[0];
+    protected iconAlign: TuiHorizontalDirection = this.iconAlignValues[0];
 
-    size = '1.5rem';
+    protected size = '1.5rem';
 }

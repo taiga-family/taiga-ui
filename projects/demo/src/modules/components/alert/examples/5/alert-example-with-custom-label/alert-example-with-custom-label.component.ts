@@ -10,6 +10,6 @@ import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
     changeDetection,
 })
 export class AlertExampleWithCustomLabelComponent {
-    readonly context =
+    protected readonly context =
         inject<TuiPopover<TuiAlertOptions<unknown>, boolean>>(POLYMORPHEUS_CONTEXT);
 }

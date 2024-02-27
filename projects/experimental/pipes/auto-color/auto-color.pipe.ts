@@ -5,7 +5,7 @@ import {tuiStringHashToHsl} from '@taiga-ui/kit';
     name: 'tuiAutoColor',
 })
 export class TuiAutoColorPipe implements PipeTransform {
-    transform(text: string): string {
+    public transform(text: string): string {
         return tuiStringHashToHsl(text);
     }
 }

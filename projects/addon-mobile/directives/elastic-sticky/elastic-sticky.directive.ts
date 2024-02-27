@@ -10,5 +10,5 @@ import {TuiElasticStickyService} from './elastic-sticky.service';
 })
 export class TuiElasticStickyDirective {
     @Output()
-    readonly tuiElasticSticky = inject(TuiElasticStickyService);
+    public readonly tuiElasticSticky = inject(TuiElasticStickyService);
 }

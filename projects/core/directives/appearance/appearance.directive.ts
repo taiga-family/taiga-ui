@@ -15,11 +15,11 @@ import {TUI_APPEARANCE_OPTIONS} from './appearance.options';
 })
 export class TuiAppearanceDirective {
     @Input()
-    tuiAppearance = inject(TUI_APPEARANCE_OPTIONS).appearance;
+    public tuiAppearance = inject(TUI_APPEARANCE_OPTIONS).appearance;
 
     @Input()
-    tuiAppearanceState: TuiInteractiveStateT | null = null;
+    public tuiAppearanceState: TuiInteractiveStateT | null = null;
 
     @Input()
-    tuiAppearanceFocus: boolean | null = null;
+    public tuiAppearanceFocus: boolean | null = null;
 }

@@ -11,9 +11,9 @@ import {tuiIsString} from '@taiga-ui/cdk';
     changeDetection,
 })
 export class TuiTabsExample5 {
-    readonly collaborators = ['Carol Cleveland', 'Neil Innes'];
+    protected readonly collaborators = ['Carol Cleveland', 'Neil Innes'];
 
-    readonly tabs = [
+    protected readonly tabs = [
         'John Cleese',
         'Eric Idle',
         this.collaborators,
@@ -23,9 +23,9 @@ export class TuiTabsExample5 {
         'Graham Chapman',
     ];
 
-    activeElement = String(this.tabs[0]);
+    protected activeElement = String(this.tabs[0]);
 
-    get activeItemIndex(): number {
+    protected get activeItemIndex(): number {
         if (this.collaborators.includes(this.activeElement)) {
             return this.tabs.indexOf(this.collaborators);
         }
@@ -33,16 +33,16 @@ export class TuiTabsExample5 {
         return this.tabs.indexOf(this.activeElement);
     }
 
-    stop(event: Event): void {
+    protected stop(event: Event): void {
         // We need to stop tab custom event so parent component does not think its active
         event.stopPropagation();
     }
 
-    onClick(activeElement: string): void {
+    protected onClick(activeElement: string): void {
         this.activeElement = activeElement;
     }
 
-    isString(tab: unknown): tab is string {
+    protected isString(tab: unknown): tab is string {
         return tuiIsString(tab);
     }
 }

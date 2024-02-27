@@ -14,14 +14,17 @@ export class TuiDroppableDirective {
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
 
     @Output()
-    readonly tuiDroppableDropped = tuiTypedFromEvent(this.el, 'drop').pipe(
+    public readonly tuiDroppableDropped = tuiTypedFromEvent(this.el, 'drop').pipe(
         tuiPreventDefault(),
         map(event => event.dataTransfer),
         filter(tuiIsPresent),
     );
 
     @Output()
-    readonly tuiDroppableDragOverChange = tuiTypedFromEvent(this.el, 'dragenter').pipe(
+    public readonly tuiDroppableDragOverChange = tuiTypedFromEvent(
+        this.el,
+        'dragenter',
+    ).pipe(
         switchMap(({target, dataTransfer}) =>
             merge(
                 tuiTypedFromEvent(this.el, 'dragleave').pipe(

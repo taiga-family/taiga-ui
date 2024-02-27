@@ -43,17 +43,17 @@ export class TuiAlertComponent<O, I> implements OnInit {
             ? this.item.autoClose(this.item.status)
             : this.item.autoClose;
 
-    readonly options = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
+    protected readonly options = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
 
-    readonly animation = this.position.endsWith('auto')
+    protected readonly animation = this.position.endsWith('auto')
         ? {...this.options, value: 'right'}
         : {...this.options, value: 'left'};
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         this.initAutoClose();
     }
 
-    close(): void {
+    protected close(): void {
         this.item.$implicit.complete();
     }
 

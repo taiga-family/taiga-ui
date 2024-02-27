@@ -11,10 +11,10 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiInputRangeExample4 {
-    readonly control = new FormControl([20, 40]);
+    protected readonly control = new FormControl([20, 40]);
 
     // See https://angular.io/api/common/I18nPluralPipe
-    readonly pluralize = {
+    protected readonly pluralize = {
         other: '%',
     };
 }

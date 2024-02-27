@@ -61,73 +61,77 @@ export class TuiInputSliderComponent
     private readonly sliderRef?: ElementRef<HTMLInputElement>;
 
     @Input()
-    min = 0;
+    public min = 0;
 
     @Input()
-    max = 100;
+    public max = 100;
 
     @Input()
-    quantum = 1;
+    public quantum = 1;
 
     @Input()
-    steps = 0;
+    public steps = 0;
 
     @Input()
-    segments = 1;
+    public segments = 1;
 
     @Input()
-    keySteps: TuiKeySteps | null = null;
+    public keySteps: TuiKeySteps | null = null;
 
     @Input()
-    valueContent: PolymorpheusContent<TuiContext<number>>;
+    public valueContent: PolymorpheusContent<TuiContext<number>>;
 
-    textfieldValue = this.safeCurrentValue;
+    protected textfieldValue = this.safeCurrentValue;
 
-    readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
+    protected readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
 
-    get prefix(): string {
+    protected get prefix(): string {
         return this.controller.prefix;
     }
 
-    get postfix(): string {
+    protected get postfix(): string {
         return this.controller.postfix;
     }
 
-    get nativeFocusableElement(): TuiNativeFocusableElement | null {
+    public get nativeFocusableElement(): TuiNativeFocusableElement | null {
         return !this.inputNumberRef?.nativeFocusableElement || this.computedDisabled
             ? null
             : this.inputNumberRef.nativeFocusableElement;
     }
 
-    get focused(): boolean {
+    public get focused(): boolean {
         return (
             tuiIsNativeFocused(this.nativeFocusableElement) ||
             tuiIsNativeFocused(this.sliderRef?.nativeElement || null)
         );
     }
 
-    get computedSteps(): number {
+    protected get computedSteps(): number {
         return this.steps || (this.max - this.min) / this.quantum;
     }
 
-    get precision(): number {
+    protected get precision(): number {
         return tuiGetFractionPartPadded(this.quantum).length;
     }
 
-    get decimal(): TuiDecimal {
+    protected get decimal(): TuiDecimal {
         return this.precision ? 'not-zero' : 'never';
     }
 
-    get showValueContent(): boolean {
+    protected get showValueContent(): boolean {
         return Boolean(this.valueContent && !this.focused);
     }
 
-    get step(): number {
+    protected get step(): number {
         return (this.max - this.min) / this.computedSteps;
     }
 
     @tuiPure
-    computeKeySteps(keySteps: TuiKeySteps | null, min: number, max: number): TuiKeySteps {
+    protected computeKeySteps(
+        keySteps: TuiKeySteps | null,
+        min: number,
+        max: number,
+    ): TuiKeySteps {
         return (
             keySteps || [
                 [0, min],
@@ -136,7 +140,7 @@ export class TuiInputSliderComponent
         );
     }
 
-    focusTextInput(): void {
+    protected focusTextInput(): void {
         const focusableElement = this.inputNumberRef?.nativeFocusableElement;
 
         if (focusableElement) {
@@ -144,11 +148,11 @@ export class TuiInputSliderComponent
         }
     }
 
-    safelyUpdateValue(value: number | null): void {
+    protected safelyUpdateValue(value: number | null): void {
         this.value = this.valueGuard(value ?? this.safeCurrentValue);
     }
 
-    onVerticalArrowKeyDown(coefficient: number): void {
+    protected onVerticalArrowKeyDown(coefficient: number): void {
         if (this.readOnly || !this.step) {
             return;
         }
@@ -161,12 +165,12 @@ export class TuiInputSliderComponent
         }
     }
 
-    onSliderChange(newValue: number): void {
+    protected onSliderChange(newValue: number): void {
         this.safelyUpdateValue(newValue);
         this.textfieldValue = this.value;
     }
 
-    onFocused(focused: boolean): void {
+    protected onFocused(focused: boolean): void {
         const {value, textfieldValue} = this;
 
         if (!focused && textfieldValue !== value) {
@@ -176,7 +180,7 @@ export class TuiInputSliderComponent
         this.updateFocused(focused);
     }
 
-    override writeValue(value: number | null): void {
+    public override writeValue(value: number | null): void {
         super.writeValue(value);
         this.textfieldValue = this.value;
     }

@@ -22,14 +22,14 @@ import {TuiMarkerIconMode} from '@taiga-ui/kit/types';
 export class TuiMarkerIconComponent {
     @Input()
     @HostBinding('attr.data-marker-mode')
-    mode: TuiMarkerIconMode | null = null;
+    public mode: TuiMarkerIconMode | null = null;
 
     @Input()
     @HostBinding('attr.data-size')
-    size: TuiSizeXXL | TuiSizeXXS = 'm';
+    public size: TuiSizeXXL | TuiSizeXXS = 'm';
 
     @Input()
-    src = '';
+    public src = '';
 
-    readonly mode$ = inject(TUI_MODE);
+    protected readonly mode$ = inject(TUI_MODE);
 }

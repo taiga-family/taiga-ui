@@ -14,9 +14,9 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 export class TuiMultiSelectExample9 {
     private readonly dialogs = inject(TuiDialogService);
 
-    readonly testValue = new FormControl<string[]>([]);
+    protected readonly testValue = new FormControl<string[]>([]);
 
-    readonly items: readonly string[] = [
+    protected readonly items: readonly string[] = [
         'Luke Skywalker',
         'Leia Organa Solo',
         'Darth Vader',
@@ -25,7 +25,7 @@ export class TuiMultiSelectExample9 {
         'Yoda',
     ];
 
-    showDialog(
+    protected showDialog(
         content: PolymorpheusContent<TuiDialogContext>,
         textFieldSize: TuiSizeL | TuiSizeS,
     ): void {

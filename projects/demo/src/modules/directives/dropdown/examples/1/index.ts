@@ -10,19 +10,19 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiDropdownExample1 {
-    open = false;
+    protected open = false;
 
-    onClick(): void {
+    protected onClick(): void {
         this.open = !this.open;
     }
 
-    onObscured(obscured: boolean): void {
+    protected onObscured(obscured: boolean): void {
         if (obscured) {
             this.open = false;
         }
     }
 
-    onActiveZone(active: boolean): void {
+    protected onActiveZone(active: boolean): void {
         this.open = active && this.open;
     }
 }

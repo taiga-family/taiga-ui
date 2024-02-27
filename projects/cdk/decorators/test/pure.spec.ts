@@ -8,7 +8,7 @@ describe('tuiPure', () => {
 
         class TestClass {
             @tuiPure
-            get someGetter(): string {
+            protected get someGetter(): string {
                 count++;
 
                 return 'test';
@@ -31,7 +31,7 @@ describe('tuiPure', () => {
 
         class TestClass {
             @tuiPure
-            combine(name: string, age: number): [string, number] {
+            protected combine(name: string, age: number): [string, number] {
                 return [name, age];
             }
         }
@@ -47,10 +47,10 @@ describe('tuiPure', () => {
         const age = 30;
 
         class TestClass {
-            constructor(readonly prefix: string) {}
+            constructor(protected readonly prefix: string) {}
 
             @tuiPure
-            combine(name: string, age: number): [string, string, number] {
+            protected combine(name: string, age: number): [string, string, number] {
                 return [this.prefix, name, age];
             }
         }
@@ -63,14 +63,14 @@ describe('tuiPure', () => {
 
     it('memoize function without arguments', () => {
         class TestClass {
-            sideEffect = 0;
+            protected sideEffect = 0;
 
-            get range(): number[] {
+            protected get range(): number[] {
                 return this.getRange();
             }
 
             @tuiPure
-            getRange(): number[] {
+            protected getRange(): number[] {
                 this.sideEffect++;
 
                 return Array.from({length: 5}, (_item, index: number) => index + 1);
@@ -87,10 +87,10 @@ describe('tuiPure', () => {
 
     it('memoize function without arguments and return undefined by default', () => {
         class TestClass {
-            sideEffect = 0;
+            protected sideEffect = 0;
 
             @tuiPure
-            voidFn(): void {
+            protected voidFn(): void {
                 this.sideEffect++;
 
                 // necessary for the test

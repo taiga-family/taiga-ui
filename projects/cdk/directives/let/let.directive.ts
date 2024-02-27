@@ -11,7 +11,7 @@ import {TuiLetContext} from './let-context';
 })
 export class TuiLetDirective<T> {
     @Input()
-    tuiLet!: T;
+    public tuiLet!: T;
 
     constructor() {
         inject(ViewContainerRef).createEmbeddedView(
@@ -26,7 +26,7 @@ export class TuiLetDirective<T> {
      * The presence of this method is a signal to the Ivy template type-check compiler that the
      * `TuiLet` structural directive renders its template with a specific context type.
      */
-    static ngTemplateContextGuard<T>(
+    public static ngTemplateContextGuard<T>(
         _dir: TuiLetDirective<T>,
         _ctx: unknown,
     ): _ctx is TuiLetContext<T> {

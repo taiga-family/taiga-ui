@@ -23,14 +23,14 @@ export interface TuiPromptData {
 })
 export class TuiPromptComponent {
     private readonly isMobile = inject(TUI_IS_MOBILE);
-    readonly words$ = inject(TUI_PROMPT_WORDS);
+    protected readonly words$ = inject(TUI_PROMPT_WORDS);
 
-    readonly context =
+    protected readonly context =
         inject<TuiDialogContext<boolean, TuiPromptData | undefined>>(
             POLYMORPHEUS_CONTEXT,
         );
 
-    get appearance(): TuiAppearance {
+    protected get appearance(): TuiAppearance {
         return this.isMobile ? TuiAppearance.Secondary : TuiAppearance.Flat;
     }
 }

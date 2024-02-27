@@ -10,5 +10,5 @@ import {TUI_NUMBER_FORMAT} from '@taiga-ui/core';
     changeDetection,
 })
 export class TuiTokensExample8 {
-    readonly TuiNumberFormatSettings = inject(TUI_NUMBER_FORMAT);
+    protected readonly TuiNumberFormatSettings = inject(TUI_NUMBER_FORMAT);
 }

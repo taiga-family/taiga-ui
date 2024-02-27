@@ -27,17 +27,17 @@ export class TuiLanguageSwitcher extends BehaviorSubject<Observable<TuiLanguage>
         );
     }
 
-    get language(): TuiLanguageName {
+    public get language(): TuiLanguageName {
         return this.storage.getItem(this.key) || this.fallback.name;
     }
 
-    setLanguage(language: TuiLanguageName): void {
+    public setLanguage(language: TuiLanguageName): void {
         this.storage.setItem(this.key, language);
 
         this.next(tuiAsyncLoadLanguage(language, this.loader, this.fallback));
     }
 
-    clear(): void {
+    protected clear(): void {
         this.storage.removeItem(this.key);
 
         this.next(of(this.fallback));

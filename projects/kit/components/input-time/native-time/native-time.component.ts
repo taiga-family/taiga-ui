@@ -31,19 +31,19 @@ import type {TuiInputTimeDirective} from '../input-time.directive';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiNativeTimeComponent {
-    readonly host = inject<TuiInputTimeDirective>(TUI_TEXTFIELD_HOST);
+    protected readonly host = inject<TuiInputTimeDirective>(TUI_TEXTFIELD_HOST);
 
-    readonly autoIdString: string = inject(TuiIdService).generate();
+    protected readonly autoIdString: string = inject(TuiIdService).generate();
 
-    get items(): string[] {
+    protected get items(): string[] {
         return this.host.items.map(item => item.toString(this.host.mode));
     }
 
-    get value(): string {
+    protected get value(): string {
         return this.host.value.length === this.host.mode.length ? this.host.value : '';
     }
 
-    get step(): number {
+    protected get step(): number {
         switch (this.host.mode) {
             case 'HH:MM:SS':
                 return 1;
@@ -54,7 +54,7 @@ export class TuiNativeTimeComponent {
         }
     }
 
-    onChange(value: string): void {
+    protected onChange(value: string): void {
         this.host.onValueChange(value);
     }
 }

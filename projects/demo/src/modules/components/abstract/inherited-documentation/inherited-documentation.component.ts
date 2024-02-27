@@ -15,35 +15,35 @@ import {TuiSupportingDocumentationComponent} from './supporting-documentation-co
 })
 export class InheritedDocumentationComponent {
     @Input()
-    dropdown = false;
+    public dropdown = false;
 
     @Input()
-    withHint = true;
+    public withHint = true;
 
     @Input()
-    withTextFieldController = true;
+    public withTextFieldController = true;
 
-    readonly booleanVariants: readonly boolean[] = [false, true];
+    protected readonly booleanVariants: readonly boolean[] = [false, true];
 
-    readonly directionVariants = TUI_HINT_DIRECTIONS;
+    protected readonly directionVariants = TUI_HINT_DIRECTIONS;
 
-    readonly appearanceVariants = ['', 'error', 'onDark'];
+    protected readonly appearanceVariants = ['', 'error', 'onDark'];
 
-    readonly documentedComponent = inject(ABSTRACT_PROPS_ACCESSOR);
+    protected readonly documentedComponent = inject(ABSTRACT_PROPS_ACCESSOR);
 
-    isTuiReactiveControl(
+    protected isTuiReactiveControl(
         documentedComponent: TuiSupportingDocumentationComponent,
     ): documentedComponent is AbstractExampleTuiControl {
         return documentedComponent instanceof AbstractExampleTuiControl;
     }
 
-    isTuiInteractive(
+    protected isTuiInteractive(
         documentedComponent: TuiSupportingDocumentationComponent,
     ): documentedComponent is AbstractExampleTuiInteractive {
         return documentedComponent instanceof AbstractExampleTuiInteractive;
     }
 
-    isTuiHint(
+    protected isTuiHint(
         documentedComponent: TuiSupportingDocumentationComponent,
     ): documentedComponent is AbstractExampleTuiHint {
         return documentedComponent instanceof AbstractExampleTuiHint;

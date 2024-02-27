@@ -25,8 +25,8 @@ import {tuiNumberFormatProvider} from '@taiga-ui/core';
     ],
 })
 export class TuiInputRangeExample2 {
-    readonly max = 50_000_001;
-    readonly min = 5_001;
+    protected readonly max = 50_000_001;
+    protected readonly min = 5_001;
 
-    readonly control = new FormControl([this.min, this.max / 2]);
+    protected readonly control = new FormControl([this.min, this.max / 2]);
 }

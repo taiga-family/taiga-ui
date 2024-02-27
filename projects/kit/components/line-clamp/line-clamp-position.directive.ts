@@ -13,9 +13,9 @@ import {
 })
 export class TuiLineClampPositionDirective extends TuiPositionAccessor {
     private readonly accessor = inject<TuiRectAccessor>(TuiHintDirective);
-    readonly type = 'hint';
+    public readonly type = 'hint';
 
-    getPosition(): TuiPoint {
+    public getPosition(): TuiPoint {
         const {top, left} = this.accessor.getClientRect();
 
         return [top, left];

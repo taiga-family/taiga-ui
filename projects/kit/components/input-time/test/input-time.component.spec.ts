@@ -43,16 +43,16 @@ describe('InputTime', () => {
     })
     class TestComponent {
         @ViewChild(TuiInputTimeComponent, {static: true})
-        component!: TuiInputTimeComponent;
+        protected component!: TuiInputTimeComponent;
 
-        control = new FormControl(new TuiTime(12, 30));
-        cleaner = false;
-        readOnly = false;
-        items: TuiTime[] = [];
-        labelOutside = false;
-        size: TuiSizeL | TuiSizeS = 'l';
-        strict = false;
-        hintContent: string | null = 'prompt';
+        protected control = new FormControl(new TuiTime(12, 30));
+        protected cleaner = false;
+        protected readOnly = false;
+        protected items: TuiTime[] = [];
+        protected labelOutside = false;
+        protected size: TuiSizeL | TuiSizeS = 'l';
+        protected strict = false;
+        protected hintContent: string | null = 'prompt';
     }
 
     let fixture: ComponentFixture<TestComponent>;

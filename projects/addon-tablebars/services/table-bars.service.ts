@@ -15,9 +15,12 @@ const NO_HOST =
     providedIn: 'root',
 })
 export class TuiTableBarsService {
-    readonly bar$ = new ReplaySubject<TuiTableBar | null>(1);
+    public readonly bar$ = new ReplaySubject<TuiTableBar | null>(1);
 
-    open(content: PolymorpheusContent, options?: TuiTableBarOptions): Observable<never> {
+    public open(
+        content: PolymorpheusContent,
+        options?: TuiTableBarOptions,
+    ): Observable<never> {
         return new Observable(observer => {
             ngDevMode && tuiAssert.assert(tuiIsObserved(this.bar$), NO_HOST);
 

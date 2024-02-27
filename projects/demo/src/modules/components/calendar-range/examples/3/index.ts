@@ -10,5 +10,5 @@ import {tuiCreateDefaultDayRangePeriods} from '@taiga-ui/kit';
     changeDetection,
 })
 export class TuiCalendarRangeExample3 {
-    items = tuiCreateDefaultDayRangePeriods();
+    protected items = tuiCreateDefaultDayRangePeriods();
 }

@@ -14,9 +14,9 @@ import {BehaviorSubject, takeUntil, timer} from 'rxjs';
 export class TuiForExample1 {
     private readonly destroy$ = inject(TuiDestroyService, {self: true});
 
-    readonly items$ = new BehaviorSubject<readonly string[] | null>([]);
+    protected readonly items$ = new BehaviorSubject<readonly string[] | null>([]);
 
-    refresh(): void {
+    protected refresh(): void {
         this.items$.next(null);
 
         const delay = Math.round(Math.random() * 2000);

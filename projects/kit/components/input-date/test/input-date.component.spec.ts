@@ -39,21 +39,21 @@ describe('InputDate', () => {
     })
     class TestComponent {
         @ViewChild(TuiInputDateComponent)
-        readonly component!: TuiInputDateComponent;
+        protected readonly component!: TuiInputDateComponent;
 
-        control = new FormControl(new TuiDay(2017, 2, 1));
+        protected control = new FormControl(new TuiDay(2017, 2, 1));
 
-        cleaner = false;
+        protected cleaner = false;
 
-        readOnly = false;
+        protected readOnly = false;
 
-        min = new TuiDay(1900, 0, 1);
+        protected min = new TuiDay(1900, 0, 1);
 
-        labelOutside = false;
+        protected labelOutside = false;
 
-        size: TuiSizeL | TuiSizeS = 'm';
+        protected size: TuiSizeL | TuiSizeS = 'm';
 
-        hintContent: string | null = 'prompt';
+        protected hintContent: string | null = 'prompt';
     }
 
     let fixture: ComponentFixture<TestComponent>;
@@ -320,11 +320,11 @@ describe('InputDate', () => {
             TuiDay | null,
             Date | null
         > {
-            fromControlValue(controlValue: Date | null): TuiDay | null {
+            public fromControlValue(controlValue: Date | null): TuiDay | null {
                 return controlValue && TuiDay.fromLocalNativeDate(controlValue);
             }
 
-            toControlValue(componentValue: TuiDay | null): Date | null {
+            public toControlValue(componentValue: TuiDay | null): Date | null {
                 return componentValue?.toLocalNativeDate() || null;
             }
         }
@@ -347,7 +347,7 @@ describe('InputDate', () => {
             `,
         })
         class TransformerTestComponent extends TestComponent {
-            override control = new FormControl(new Date(2022, 0, 31));
+            public override control = new FormControl(new Date(2022, 0, 31));
         }
 
         beforeEach(async () => {

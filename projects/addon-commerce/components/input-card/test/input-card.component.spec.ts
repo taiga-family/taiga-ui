@@ -18,14 +18,14 @@ describe('InputCard', () => {
     })
     class TestComponent {
         @ViewChild(TuiInputCardComponent, {static: true})
-        component!: TuiInputCardComponent;
+        protected component!: TuiInputCardComponent;
 
         @ViewChild('customIconTemplateRef', {read: TemplateRef})
-        customIconTemplateRef!: TemplateRef<any>;
+        protected customIconTemplateRef!: TemplateRef<any>;
 
-        control = new FormControl('');
+        protected control = new FormControl('');
 
-        onBinChange = jest.fn();
+        protected onBinChange = jest.fn();
     }
 
     let fixture: ComponentFixture<TestComponent>;

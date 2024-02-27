@@ -53,10 +53,10 @@ export abstract class AbstractTuiControl<T>
 
     @Input()
     @HostBinding('class._readonly')
-    readOnly = false;
+    public readOnly = false;
 
     @Input()
-    pseudoInvalid: boolean | null = null;
+    public pseudoInvalid: boolean | null = null;
 
     constructor() {
         super();
@@ -77,7 +77,7 @@ export abstract class AbstractTuiControl<T>
     protected abstract getFallbackValue(): T;
 
     @HostBinding('class._invalid')
-    get computedInvalid(): boolean {
+    public get computedInvalid(): boolean {
         return (
             this.interactive &&
             (this.pseudoInvalid !== null
@@ -86,46 +86,46 @@ export abstract class AbstractTuiControl<T>
         );
     }
 
-    get value(): T {
+    public get value(): T {
         return this.previousInternalValue ?? this.fallbackValue;
     }
 
-    set value(value: T) {
+    public set value(value: T) {
         this.updateValue(value);
     }
 
-    get safeCurrentValue(): T {
+    protected get safeCurrentValue(): T {
         return this.rawValue ?? this.fallbackValue;
     }
 
-    get invalid(): boolean {
+    protected get invalid(): boolean {
         return this.safeNgControlData<boolean>(({invalid}) => invalid, false);
     }
 
-    get valid(): boolean {
+    protected get valid(): boolean {
         return this.safeNgControlData<boolean>(({valid}) => valid, false);
     }
 
-    get touched(): boolean {
+    protected get touched(): boolean {
         return this.safeNgControlData<boolean>(({touched}) => touched, false);
     }
 
-    get disabled(): boolean {
+    public get disabled(): boolean {
         return this.safeNgControlData<boolean>(({disabled}) => disabled, false);
     }
 
-    get interactive(): boolean {
+    protected get interactive(): boolean {
         return !this.readOnly && !this.computedDisabled;
     }
 
-    get control(): AbstractControl | null {
+    public get control(): AbstractControl | null {
         return this.safeNgControlData<AbstractControl | null>(
             ({control}) => control,
             null,
         );
     }
 
-    get computedName(): string | null {
+    protected get computedName(): string | null {
         return this.controlName?.toString() ?? null;
     }
 
@@ -148,7 +148,7 @@ export abstract class AbstractTuiControl<T>
         return this.fromControlValue(controlValue);
     }
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         this.refresh$
             .pipe(
                 delay(0),
@@ -164,16 +164,16 @@ export abstract class AbstractTuiControl<T>
             });
     }
 
-    ngOnDestroy(): void {
+    public ngOnDestroy(): void {
         this.destroy$.next();
         this.destroy$.complete();
     }
 
-    checkControlUpdate(): void {
+    protected checkControlUpdate(): void {
         this.cdr.markForCheck();
     }
 
-    registerOnChange(onChange: (value: T | unknown) => void): void {
+    public registerOnChange(onChange: (value: T | unknown) => void): void {
         this.onChange = (componentValue: T) => {
             onChange(this.toControlValue(componentValue));
         };
@@ -181,15 +181,15 @@ export abstract class AbstractTuiControl<T>
         this.refresh$.next();
     }
 
-    registerOnTouched(onTouched: () => void): void {
+    public registerOnTouched(onTouched: () => void): void {
         this.onTouched = onTouched;
     }
 
-    setDisabledState(): void {
+    public setDisabledState(): void {
         this.checkControlUpdate();
     }
 
-    writeValue(value: T | null): void {
+    public writeValue(value: T | null): void {
         const controlValue =
             this.ngControl instanceof NgModel && this.previousInternalValue === undefined
                 ? this.ngControl.model

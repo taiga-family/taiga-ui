@@ -12,15 +12,18 @@ export class TuiPresentDirective implements OnDestroy {
     private readonly visibility$ = new BehaviorSubject(false);
 
     @Output()
-    readonly tuiPresentChange = this.visibility$.pipe(distinctUntilChanged(), skip(1));
+    public readonly tuiPresentChange = this.visibility$.pipe(
+        distinctUntilChanged(),
+        skip(1),
+    );
 
     @HostListener('animationcancel.self', ['false'])
     @HostListener('animationstart.self', ['true'])
-    onAnimation(visibility: boolean): void {
+    protected onAnimation(visibility: boolean): void {
         this.visibility$.next(visibility);
     }
 
-    ngOnDestroy(): void {
+    public ngOnDestroy(): void {
         this.visibility$.next(false);
     }
 }

@@ -20,7 +20,7 @@ import {AbstractTuiDataListWrapper} from './data-list-wrapper';
 })
 export class TuiDataListWrapperComponent<T> extends AbstractTuiDataListWrapper<T> {
     @Input()
-    items: readonly T[] | null = [];
+    public items: readonly T[] | null = [];
 
     constructor() {
         super(

@@ -37,19 +37,19 @@ describe('InputNumber', () => {
     })
     class TestComponent {
         @ViewChild(TuiInputNumberComponent)
-        component!: TuiInputNumberComponent;
+        protected component!: TuiInputNumberComponent;
 
-        control = new FormControl(12345.0);
-        form = new FormGroup({
+        protected control = new FormControl(12345.0);
+        protected form = new FormGroup({
             control: this.control,
         });
 
-        readOnly = false;
-        decimal: TuiDecimal = 'never';
-        cleaner = true;
-        defaultValues = false;
-        size: TuiSizeL | TuiSizeS = 'm';
-        hintContent: string | null = 'prompt';
+        protected readOnly = false;
+        protected decimal: TuiDecimal = 'never';
+        protected cleaner = true;
+        protected defaultValues = false;
+        protected size: TuiSizeL | TuiSizeS = 'm';
+        protected hintContent: string | null = 'prompt';
     }
 
     let fixture: ComponentFixture<TestComponent>;

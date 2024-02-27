@@ -18,5 +18,5 @@ import {FormatService} from './service';
     ],
 })
 export class TuiFormatDateExample1 {
-    readonly now = Date.now();
+    protected readonly now = Date.now();
 }

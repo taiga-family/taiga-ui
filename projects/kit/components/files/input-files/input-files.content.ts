@@ -23,14 +23,14 @@ export class TuiInputFilesContent {
     private readonly context = inject(POLYMORPHEUS_CONTEXT) as TuiContext<boolean>;
     private readonly component = inject(TuiInputFilesComponent);
 
-    get link$(): Observable<string> {
+    protected get link$(): Observable<string> {
         return this.computeLink$(
             this.context.$implicit,
             !!this.component.input?.input.multiple,
         );
     }
 
-    get label$(): Observable<string> {
+    protected get label$(): Observable<string> {
         return this.computeLabel$(
             this.context.$implicit,
             !!this.component.input?.input.multiple,

@@ -38,11 +38,11 @@ export class TuiAlertExampleComponent5 {
         })
         .pipe(takeUntil(this.router.events));
 
-    showNotification(): void {
+    protected showNotification(): void {
         this.notification.subscribe();
     }
 
-    showNotificationWithCustomLabel(): void {
+    protected showNotificationWithCustomLabel(): void {
         this.notificationWithCustomLabel.subscribe();
     }
 }

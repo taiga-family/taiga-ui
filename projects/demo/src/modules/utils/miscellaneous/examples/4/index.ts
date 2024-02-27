@@ -12,7 +12,7 @@ import {tuiGetPaymentSystem} from '@taiga-ui/addon-commerce';
     changeDetection,
 })
 export class TuiMiscellaneousExample4 {
-    readonly items = [
+    protected readonly items = [
         '6734567890123456',
         '5536567890123456',
         '2202567890123456',
@@ -20,11 +20,11 @@ export class TuiMiscellaneousExample4 {
         '4000567890123456',
     ];
 
-    parametersForm = new FormGroup({
+    protected parametersForm = new FormGroup({
         cardNumber: new FormControl(''),
     });
 
-    get paymentSystem(): string | null {
+    protected get paymentSystem(): string | null {
         const {cardNumber} = this.parametersForm.value;
 
         return tuiGetPaymentSystem(cardNumber ?? '');

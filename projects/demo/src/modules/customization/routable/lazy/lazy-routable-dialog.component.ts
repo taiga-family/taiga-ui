@@ -8,7 +8,7 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
     changeDetection,
 })
 export class LazyRoutableDialogComponent {
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         'page.template.html': import('./examples/1/page-1.component.html?raw'),
         'page.module.ts': import('./examples/1/page-1.module.ts?raw'),
         'dialog-content.component.ts': import(
@@ -19,10 +19,16 @@ export class LazyRoutableDialogComponent {
         ),
     };
 
-    readonly addRouterOutlet = import('./examples/setup/add-router-outlet.md?raw');
-    readonly importModule = import('./examples/setup/import-module.md?raw');
-    readonly useRouteGenerator = import('./examples/setup/use-route-generator.md?raw');
-    readonly addLazyLoadedModule = import(
+    protected readonly addRouterOutlet = import(
+        './examples/setup/add-router-outlet.md?raw'
+    );
+
+    protected readonly importModule = import('./examples/setup/import-module.md?raw');
+    protected readonly useRouteGenerator = import(
+        './examples/setup/use-route-generator.md?raw'
+    );
+
+    protected readonly addLazyLoadedModule = import(
         './examples/setup/add-lazy-loaded-module.md?raw'
     );
 }

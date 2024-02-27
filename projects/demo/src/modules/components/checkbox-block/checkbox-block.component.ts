@@ -20,47 +20,50 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
     ],
 })
 export class ExampleTuiCheckboxBlockComponent extends AbstractExampleTuiControl {
-    readonly exampleForm = import('./examples/import/declare-form.md?raw');
-    readonly exampleModule = import('./examples/import/import-module.md?raw');
-    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    protected readonly exampleForm = import('./examples/import/declare-form.md?raw');
+    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
+    protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
     };
 
-    readonly example2: TuiDocExample = {
+    protected readonly example2: TuiDocExample = {
         TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
     };
 
-    readonly example3: TuiDocExample = {
+    protected readonly example3: TuiDocExample = {
         TypeScript: import('./examples/3/index.ts?raw'),
         HTML: import('./examples/3/index.html?raw'),
         LESS: import('./examples/3/index.less?raw'),
     };
 
-    readonly contentAlignVariants: readonly TuiHorizontalDirection[] = ['left', 'right'];
+    protected readonly contentAlignVariants: readonly TuiHorizontalDirection[] = [
+        'left',
+        'right',
+    ];
 
-    contentAlign: TuiHorizontalDirection = this.contentAlignVariants[1];
+    protected contentAlign: TuiHorizontalDirection = this.contentAlignVariants[1];
 
-    hideCheckbox = false;
+    protected hideCheckbox = false;
 
-    readonly sizes: ReadonlyArray<TuiSizeL | TuiSizeXS> = ['xs', 's', 'm', 'l'];
+    protected readonly sizes: ReadonlyArray<TuiSizeL | TuiSizeXS> = ['xs', 's', 'm', 'l'];
 
-    currentSize = this.sizes[3];
+    protected currentSize = this.sizes[3];
 
-    readonly control = new FormGroup({
+    public readonly control = new FormGroup({
         testValue1: new FormControl(false),
         testValue2: new FormControl<boolean | null>(null),
         testValue3: new FormControl(true),
     });
 
-    override get disabled(): boolean {
+    public override get disabled(): boolean {
         return this.control.disabled;
     }
 
-    override set disabled(value: boolean) {
+    public override set disabled(value: boolean) {
         if (value) {
             this.control.disable();
         } else {

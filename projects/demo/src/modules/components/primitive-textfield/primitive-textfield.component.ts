@@ -36,31 +36,36 @@ export class ExampleTuiPrimitiveTextfieldComponent extends AbstractExampleTuiInt
         TuiContext<TuiSizeL | TuiSizeS>
     >;
 
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
         LESS: import('./examples/1/index.less?raw'),
     };
 
-    readonly example2: TuiDocExample = {
+    protected readonly example2: TuiDocExample = {
         TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
     };
 
-    readonly exampleModule = import('./examples/import/import-module.md?raw');
+    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
 
-    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 
-    readonly themes = ['Taiga UI', 'Bootstrap', 'Material'];
-    theme = this.themes[0];
+    protected readonly themes = ['Taiga UI', 'Bootstrap', 'Material'];
+    protected theme = this.themes[0];
 
-    readonly iconVariants = ['', 'tuiIconSearchLarge', 'Interactive content'];
-    selectedIcon = this.iconVariants[0];
+    protected readonly iconVariants = ['', 'tuiIconSearchLarge', 'Interactive content'];
+    protected selectedIcon = this.iconVariants[0];
 
-    readonly iconLeftVariants = ['', 'tuiIconPieChartLarge', 'tuiIconCreditCardLarge'];
-    iconLeft = '';
+    protected readonly iconLeftVariants = [
+        '',
+        'tuiIconPieChartLarge',
+        'tuiIconCreditCardLarge',
+    ];
 
-    readonly typeVariants: readonly TuiInputType[] = [
+    protected iconLeft = '';
+
+    protected readonly typeVariants: readonly TuiInputType[] = [
         'text',
         'email',
         'password',
@@ -68,71 +73,71 @@ export class ExampleTuiPrimitiveTextfieldComponent extends AbstractExampleTuiInt
         'url',
     ];
 
-    cleaner = false;
+    protected cleaner = false;
 
-    editable = true;
+    protected editable = true;
 
-    filler = '';
+    protected filler = '';
 
-    prefix = '';
+    protected prefix = '';
 
-    postfix = '';
+    protected postfix = '';
 
-    readonly maxLengthVariants: readonly number[] = [10];
+    protected readonly maxLengthVariants: readonly number[] = [10];
 
-    maxLength = null;
+    protected maxLength = null;
 
-    readonly inputModeVariants: readonly TuiInputMode[] = ['text', 'numeric'];
+    protected readonly inputModeVariants: readonly TuiInputMode[] = ['text', 'numeric'];
 
-    inputMode = this.inputModeVariants[0];
+    protected inputMode = this.inputModeVariants[0];
 
-    readonly customContentVariants = [
+    protected readonly customContentVariants = [
         '',
         CUSTOM_SVG_NAME,
         '<span>LongTextContent</span>',
     ];
 
-    customContentSelected = this.customContentVariants[0];
+    protected customContentSelected = this.customContentVariants[0];
 
-    password = '';
+    protected password = '';
 
-    example2Value = 'mail@example.com';
+    protected example2Value = 'mail@example.com';
 
-    value = '';
+    protected value = '';
 
-    exampleText = '';
+    protected exampleText = '';
 
-    disabled = false;
+    protected disabled = false;
 
-    readOnly = false;
+    protected readOnly = false;
 
-    labelOutside = false;
+    protected labelOutside = false;
 
-    readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
+    protected readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
 
-    size = this.sizeVariants[2];
+    protected size = this.sizeVariants[2];
 
-    readonly hintContentVariants: readonly string[] = ['', 'Ivan Ivanov'];
+    protected readonly hintContentVariants: readonly string[] = ['', 'Ivan Ivanov'];
 
-    readonly hintDirectionVariants = TUI_HINT_DIRECTIONS;
+    protected readonly hintDirectionVariants = TUI_HINT_DIRECTIONS;
 
-    readonly hintAppearanceVariants = ['', 'error', 'onDark'];
+    protected readonly hintAppearanceVariants = ['', 'error', 'onDark'];
 
-    invalid = false;
+    protected invalid = false;
 
-    hintContent = this.hintContentVariants[0];
+    protected hintContent = this.hintContentVariants[0];
 
-    hintDirection = this.hintDirectionVariants[0];
+    protected hintDirection = this.hintDirectionVariants[0];
 
-    hintAppearance = this.hintAppearanceVariants[0];
+    protected hintAppearance = this.hintAppearanceVariants[0];
 
-    get customContent(): string | null {
+    protected get customContent(): string | null {
         return this.customContentSelected === CUSTOM_SVG_NAME
             ? CUSTOM_SVG
             : this.customContentSelected;
     }
 
-    get iconContent(): PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeS>> {
+    protected get iconContent(): PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeS>> {
         if (this.selectedIcon === '') {
             return '';
         }
@@ -142,23 +147,23 @@ export class ExampleTuiPrimitiveTextfieldComponent extends AbstractExampleTuiInt
             : 'tuiIconSearchLarge';
     }
 
-    get isBootstrap(): boolean {
+    protected get isBootstrap(): boolean {
         return this.theme === this.themes[1];
     }
 
-    get isMaterial(): boolean {
+    protected get isMaterial(): boolean {
         return this.theme === this.themes[2];
     }
 
-    get placeholder(): string {
+    protected get placeholder(): string {
         return this.isBootstrap ? 'Type a value' : 'Theming sample';
     }
 
-    get customizationSize(): TuiSizeL | TuiSizeS {
+    protected get customizationSize(): TuiSizeL | TuiSizeS {
         return this.isBootstrap ? 's' : 'l';
     }
 
-    onClick(): void {
+    protected onClick(): void {
         console.info('Interactive icon clicked');
     }
 }

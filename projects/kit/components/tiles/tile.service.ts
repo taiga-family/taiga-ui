@@ -28,7 +28,7 @@ export class TuiTileService implements OnDestroy {
         this.tiles.order$.pipe(debounceTime(0)),
     ]).pipe(map(([offset]) => offset));
 
-    init(element: HTMLElement): void {
+    public init(element: HTMLElement): void {
         this.sub.add(
             this.position$.subscribe(offset => {
                 this.setPosition(element, offset);
@@ -37,11 +37,11 @@ export class TuiTileService implements OnDestroy {
         );
     }
 
-    setOffset(offset: readonly [number, number]): void {
+    public setOffset(offset: readonly [number, number]): void {
         this.offset$.next(offset);
     }
 
-    ngOnDestroy(): void {
+    public ngOnDestroy(): void {
         this.sub.unsubscribe();
     }
 

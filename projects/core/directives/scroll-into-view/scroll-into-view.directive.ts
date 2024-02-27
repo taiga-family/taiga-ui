@@ -15,7 +15,7 @@ export class TuiScrollIntoViewDirective {
     private readonly destroy$ = inject(TuiDestroyService, {self: true});
 
     @Input()
-    set tuiScrollIntoView(scroll: boolean) {
+    public set tuiScrollIntoView(scroll: boolean) {
         if (!scroll) {
             return;
         }

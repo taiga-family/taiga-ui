@@ -14,7 +14,7 @@ export class TuiBrowserExample1 {
     private readonly userAgent = inject(USER_AGENT);
     private readonly el: Element = inject(ElementRef).nativeElement;
 
-    get aboutMyBrowser(): string {
+    protected get aboutMyBrowser(): string {
         if (tuiIsEdge(this.userAgent)) {
             return 'Edge';
         }

@@ -6,22 +6,22 @@ import {TuiDay, TuiTime} from '@taiga-ui/cdk';
 
 class User {
     constructor(
-        readonly firstName: string,
-        readonly lastName: string,
+        protected readonly firstName: string,
+        protected readonly lastName: string,
     ) {}
 
-    toString(): string {
+    protected toString(): string {
         return `${this.firstName} ${this.lastName}`;
     }
 }
 
 class Account {
     constructor(
-        readonly id: string,
-        readonly name: string,
-        readonly amount: number,
-        readonly currency: TuiCurrency,
-        readonly cardSvg: string,
+        protected readonly id: string,
+        protected readonly name: string,
+        protected readonly amount: number,
+        protected readonly currency: TuiCurrency,
+        protected readonly cardSvg: string,
     ) {}
 }
 
@@ -32,7 +32,7 @@ class Account {
     changeDetection,
 })
 export class TuiExample {
-    readonly svgIcons = {
+    protected readonly svgIcons = {
         common: 'https://ng-web-apis.github.io/dist/assets/images/common.svg',
         universal: 'https://ng-web-apis.github.io/dist/assets/images/universal.svg',
         intersection:
@@ -41,9 +41,9 @@ export class TuiExample {
             'https://ng-web-apis.github.io/dist/assets/images/mutation-observer.svg',
     };
 
-    persons = [new User('Roman', 'Sedov'), new User('Alex', 'Inkin')];
+    protected persons = [new User('Roman', 'Sedov'), new User('Alex', 'Inkin')];
 
-    accounts = [
+    protected accounts = [
         new Account('1', 'Common', 24876.55, TuiCurrency.Ruble, this.svgIcons.common),
         new Account('2', 'Universal', 335, TuiCurrency.Dollar, this.svgIcons.universal),
         new Account(
@@ -56,7 +56,7 @@ export class TuiExample {
         new Account('4', 'Mutation', 100, TuiCurrency.Pound, this.svgIcons.mutation),
     ];
 
-    testForm = new FormGroup({
+    protected testForm = new FormGroup({
         nameValue: new FormControl('', Validators.required),
         textValue: new FormControl('', Validators.required),
         passwordValue: new FormControl('', Validators.required),

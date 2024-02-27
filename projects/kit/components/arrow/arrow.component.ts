@@ -18,15 +18,15 @@ import {TUI_ARROW_OPTIONS} from './arrow.options';
 export class TuiArrowComponent {
     private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
     private readonly options = inject(TUI_ARROW_OPTIONS);
-    readonly directive = inject(TuiDropdownOpenDirective, {optional: true});
-    readonly component = inject(TuiHostedDropdownComponent, {optional: true});
+    protected readonly directive = inject(TuiDropdownOpenDirective, {optional: true});
+    protected readonly component = inject(TuiHostedDropdownComponent, {optional: true});
 
     @HostBinding('class._rotated')
-    get rotated(): boolean {
+    protected get rotated(): boolean {
         return this.component?.open || this.directive?.tuiDropdownOpen || false;
     }
 
-    get arrowIcon(): PolymorpheusContent {
+    protected get arrowIcon(): PolymorpheusContent {
         return tuiSizeBigger(this.textfieldSize.size)
             ? this.options.iconLarge
             : this.options.iconSmall;

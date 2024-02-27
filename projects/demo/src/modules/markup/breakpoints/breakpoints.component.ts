@@ -37,16 +37,18 @@ function parseBreakpoints(file: string): Array<{name: string; value: string}> {
     changeDetection,
 })
 export class BreakpointsComponent {
-    readonly breakpoints = parseBreakpoints(fileWithBreakpoints);
-    readonly columnsNames = Object.keys(this.breakpoints[0]);
+    protected readonly breakpoints = parseBreakpoints(fileWithBreakpoints);
+    protected readonly columnsNames = Object.keys(this.breakpoints[0]);
 
-    readonly importTaigaUILocalLess = import(
+    protected readonly importTaigaUILocalLess = import(
         './examples/import/import-taiga-ui-local-less.md?raw'
     );
 
-    readonly exampleBaseUsage = import('./examples/import/base-breakpoint-usage.md?raw');
+    protected readonly exampleBaseUsage = import(
+        './examples/import/base-breakpoint-usage.md?raw'
+    );
 
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         HTML: import('./examples/1/index.html?raw'),
         LESS: import('./examples/1/index.less?raw'),
         TypeScript: import('./examples/1/index.ts?raw'),

@@ -31,10 +31,10 @@ import {distinctUntilChanged, map, share, startWith} from 'rxjs';
 export class TuiDocMainComponent {
     private readonly icons = inject(TUI_DOC_ICONS);
 
-    readonly theme = inject(TuiThemeService);
-    readonly night = inject(TuiThemeNightService);
-    readonly change$ = this.night;
-    readonly night$ = this.change$.pipe(
+    protected readonly theme = inject(TuiThemeService);
+    protected readonly night = inject(TuiThemeNightService);
+    protected readonly change$ = this.night;
+    protected readonly night$ = this.change$.pipe(
         startWith(null),
         map(() => this.night.value),
         distinctUntilChanged(),
@@ -42,11 +42,11 @@ export class TuiDocMainComponent {
     );
 
     @HostBinding('attr.data-mode')
-    get mode(): TuiBrightness | null {
+    protected get mode(): TuiBrightness | null {
         return this.night.value ? 'onDark' : null;
     }
 
-    get icon(): string {
+    protected get icon(): string {
         return this.night.value ? this.icons.day : this.icons.night;
     }
 }

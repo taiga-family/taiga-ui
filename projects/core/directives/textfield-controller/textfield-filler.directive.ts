@@ -16,5 +16,5 @@ export const TUI_TEXTFIELD_FILLER = tuiCreateTokenFromFactory(
 })
 export class TuiTextfieldFillerDirective extends AbstractTuiController {
     @Input('tuiTextfieldFiller')
-    filler = '';
+    public filler = '';
 }

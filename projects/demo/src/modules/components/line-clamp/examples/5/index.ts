@@ -17,7 +17,7 @@ interface User {
     changeDetection,
 })
 export class TuiLineClampExample5 {
-    readonly user: User = {
+    protected readonly user: User = {
         id: '5a006cb3-2b69-4b23',
         email: 'extremely.long.information@example.com',
         firstName: 'John',

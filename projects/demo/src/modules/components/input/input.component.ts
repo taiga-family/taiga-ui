@@ -25,78 +25,78 @@ export class ExampleTuiInputComponent extends AbstractExampleTuiControl {
     @ViewChild('justLongText', {static: true})
     private readonly longTextRef!: TemplateRef<HTMLElement>;
 
-    readonly exampleModule = import('./examples/import/import-module.md?raw');
+    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
 
-    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 
-    readonly exampleForm = import('./examples/import/declare-form.md?raw');
+    protected readonly exampleForm = import('./examples/import/declare-form.md?raw');
 
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
     };
 
-    readonly example2: TuiDocExample = {
+    protected readonly example2: TuiDocExample = {
         TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
     };
 
-    readonly example3: TuiDocExample = {
+    protected readonly example3: TuiDocExample = {
         TypeScript: import('./examples/3/index.ts?raw'),
         HTML: import('./examples/3/index.html?raw'),
     };
 
-    readonly example4: TuiDocExample = {
+    protected readonly example4: TuiDocExample = {
         TypeScript: import('./examples/4/index.ts?raw'),
         HTML: import('./examples/4/index.html?raw'),
         LESS: import('./examples/4/index.less?raw'),
     };
 
-    readonly example5: TuiDocExample = {
+    protected readonly example5: TuiDocExample = {
         TypeScript: import('./examples/5/index.ts?raw'),
         HTML: import('./examples/5/index.html?raw'),
         LESS: import('./examples/5/index.less?raw'),
     };
 
-    readonly example6: TuiDocExample = {
+    protected readonly example6: TuiDocExample = {
         TypeScript: import('./examples/6/index.ts?raw'),
         HTML: import('./examples/6/index.html?raw'),
         LESS: import('./examples/6/index.less?raw'),
     };
 
-    readonly example7: TuiDocExample = {
+    protected readonly example7: TuiDocExample = {
         TypeScript: import('./examples/7/index.ts?raw'),
         HTML: import('./examples/7/index.html?raw'),
         LESS: import('./examples/7/index.less?raw'),
     };
 
-    readonly example8: TuiDocExample = {
+    protected readonly example8: TuiDocExample = {
         TypeScript: import('./examples/8/index.ts?raw'),
         HTML: import('./examples/8/index.html?raw'),
         LESS: import('./examples/8/index.less?raw'),
     };
 
-    readonly example9: TuiDocExample = {
+    protected readonly example9: TuiDocExample = {
         TypeScript: import('./examples/9/index.ts?raw'),
         HTML: import('./examples/9/index.html?raw'),
         LESS: import('./examples/9/index.less?raw'),
     };
 
-    readonly example10: TuiDocExample = {
+    protected readonly example10: TuiDocExample = {
         TypeScript: import('./examples/10/index.ts?raw'),
         HTML: import('./examples/10/index.html?raw'),
     };
 
-    readonly iconVariants = ['', 'tuiIconSearchLarge', 'tuiIconCalendarLarge'];
+    protected readonly iconVariants = ['', 'tuiIconSearchLarge', 'tuiIconCalendarLarge'];
 
-    icon = this.iconVariants[0];
-    override iconLeft = this.iconVariants[0];
+    protected icon = this.iconVariants[0];
+    public override iconLeft = this.iconVariants[0];
 
-    readonly control = new FormControl('111', Validators.required);
+    public readonly control = new FormControl('111', Validators.required);
 
-    placeholder = 'Field placeholder';
+    protected placeholder = 'Field placeholder';
 
-    override readonly customContentVariants = [
+    public override readonly customContentVariants = [
         '',
         'tuiIconSearchLarge',
         'tuiIconCalendarLarge',
@@ -105,13 +105,13 @@ export class ExampleTuiInputComponent extends AbstractExampleTuiControl {
         LONG_TEXT_TEMPLATE,
     ];
 
-    override get customContent(): PolymorpheusContent {
+    public override get customContent(): PolymorpheusContent {
         return this.customContentSelected === LONG_TEXT_TEMPLATE
             ? this.longTextRef
             : this.customContentSelected;
     }
 
-    override set customContent(newValue) {
+    public override set customContent(newValue) {
         this.customContentSelected = newValue;
     }
 }

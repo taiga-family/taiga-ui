@@ -22,7 +22,7 @@ import {TUI_BADGE_NOTIFICATION_OPTIONS} from './badge-notification.options';
 })
 export class TuiBadgeNotificationComponent {
     @Input()
-    size: TuiSizeL | TuiSizeXS = inject(TUI_BADGE_NOTIFICATION_OPTIONS).size;
+    public size: TuiSizeL | TuiSizeXS = inject(TUI_BADGE_NOTIFICATION_OPTIONS).size;
 
-    readonly options = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
+    protected readonly options = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
 }

@@ -10,11 +10,11 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiPaginationExample1 {
-    length = 64;
+    protected length = 64;
 
-    index = 10;
+    protected index = 10;
 
-    goToPage(index: number): void {
+    protected goToPage(index: number): void {
         this.index = index;
         console.info('New page:', index);
     }

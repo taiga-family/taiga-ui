@@ -59,52 +59,52 @@ export class TuiInputMonthRangeComponent
     private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
 
     @Input()
-    min: TuiMonth = this.options.min;
+    public min: TuiMonth = this.options.min;
 
     @Input()
-    max: TuiMonth = this.options.max;
+    public max: TuiMonth = this.options.max;
 
     @Input()
-    disabledItemHandler: TuiBooleanHandlerWithContext<TuiMonth, TuiMonthContext> =
+    public disabledItemHandler: TuiBooleanHandlerWithContext<TuiMonth, TuiMonthContext> =
         ALWAYS_FALSE_HANDLER;
 
     @Input()
-    defaultActiveYear: TuiYear = TuiDay.currentLocal();
+    public defaultActiveYear: TuiYear = TuiDay.currentLocal();
 
-    open = false;
+    protected open = false;
 
-    readonly formatter = inject(TUI_MONTH_FORMATTER);
+    protected readonly formatter = inject(TUI_MONTH_FORMATTER);
 
     @HostBinding('attr.data-size')
-    get size(): TuiSizeL | TuiSizeS {
+    protected get size(): TuiSizeL | TuiSizeS {
         return this.textfieldSize.size;
     }
 
-    get nativeFocusableElement(): HTMLInputElement | null {
+    public get nativeFocusableElement(): HTMLInputElement | null {
         return this.textfield?.nativeFocusableElement ?? null;
     }
 
-    get computedDefaultActiveYear(): TuiYear {
+    protected get computedDefaultActiveYear(): TuiYear {
         return (
             this.value?.from || tuiDateClamp(this.defaultActiveYear, this.min, this.max)
         );
     }
 
-    get focused(): boolean {
+    public get focused(): boolean {
         return !!this.textfield?.focused;
     }
 
-    get calendarIcon(): TuiInputDateOptions['icon'] {
+    protected get calendarIcon(): TuiInputDateOptions['icon'] {
         return this.options.icon;
     }
 
-    computeValue(from: string | null, to: string | null): string {
+    public computeValue(from: string | null, to: string | null): string {
         const formattedTo = from === to && this.focused && !this.readOnly ? '' : to;
 
         return `${from} ${CHAR_EN_DASH} ${formattedTo}`;
     }
 
-    onValueChange(value: string): void {
+    public onValueChange(value: string): void {
         if (value) {
             return;
         }
@@ -113,7 +113,7 @@ export class TuiInputMonthRangeComponent
         this.onOpenChange(true);
     }
 
-    onMonthClick(month: TuiMonth): void {
+    protected onMonthClick(month: TuiMonth): void {
         if (this.value === null || !this.value.isSingleMonth) {
             this.writeValue(new TuiMonthRange(month, month));
 
@@ -124,11 +124,11 @@ export class TuiInputMonthRangeComponent
         this.close();
     }
 
-    onOpenChange(open: boolean): void {
+    protected onOpenChange(open: boolean): void {
         this.open = open;
     }
 
-    onActiveZone(focused: boolean): void {
+    protected onActiveZone(focused: boolean): void {
         this.updateFocused(focused);
 
         if (focused) {
@@ -140,7 +140,7 @@ export class TuiInputMonthRangeComponent
         }
     }
 
-    override setDisabledState(): void {
+    public override setDisabledState(): void {
         super.setDisabledState();
         this.close();
     }

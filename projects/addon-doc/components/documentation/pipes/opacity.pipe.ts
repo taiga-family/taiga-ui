@@ -2,7 +2,7 @@ import {Pipe, PipeTransform} from '@angular/core';
 
 @Pipe({name: 'tuiGetOpacity'})
 export class TuiGetOpacityPipe implements PipeTransform {
-    transform(color: string): number {
+    public transform(color: string): number {
         if (color.startsWith('#') || color.startsWith('rgb(')) {
             return 100;
         }

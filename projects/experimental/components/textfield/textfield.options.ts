@@ -42,11 +42,11 @@ export class TuiTextfieldOptionsDirective
     private readonly options = inject(TUI_TEXTFIELD_OPTIONS, {skipSelf: true});
 
     @Input('tuiTextfieldAppearance')
-    appearance = this.options.appearance;
+    public appearance = this.options.appearance;
 
     @Input('tuiTextfieldSize')
-    size = this.options.size;
+    public size = this.options.size;
 
     @Input('tuiTextfieldCleaner')
-    cleaner = this.options.cleaner;
+    public cleaner = this.options.cleaner;
 }

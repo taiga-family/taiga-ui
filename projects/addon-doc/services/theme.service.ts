@@ -14,19 +14,19 @@ import {
 })
 export class TuiThemeService extends BehaviorSubject<string> {
     constructor(
-        @Inject(TUI_THEME_NAME) readonly initialTheme: string,
-        @Inject(TUI_THEME_STORAGE_KEY) readonly key: string,
+        @Inject(TUI_THEME_NAME) public readonly initialTheme: string,
+        @Inject(TUI_THEME_STORAGE_KEY) public readonly key: string,
         @Inject(LOCAL_STORAGE) private readonly storage: Storage,
     ) {
         super(storage.getItem(key) || initialTheme);
     }
 
-    override next(theme: string): void {
+    public override next(theme: string): void {
         this.storage.setItem(this.key, theme);
         super.next(theme);
     }
 
-    get isDefaultTheme(): boolean {
+    public get isDefaultTheme(): boolean {
         return this.value === TUI_THEME_DEFAULT_NAME;
     }
 }

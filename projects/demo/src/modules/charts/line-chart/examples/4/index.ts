@@ -12,7 +12,7 @@ import {TuiPoint} from '@taiga-ui/core';
     changeDetection,
 })
 export class TuiLineChartExample4 {
-    readonly value: TuiPoint[] = [
+    protected readonly value: TuiPoint[] = [
         [50, 50],
         [100, 75],
         [150, 50],
@@ -22,8 +22,8 @@ export class TuiLineChartExample4 {
         [350, 90],
     ];
 
-    readonly singleValue: TuiPoint[] = [[200, 150]];
+    protected readonly singleValue: TuiPoint[] = [[200, 150]];
 
-    readonly hint: TuiStringHandler<TuiContext<TuiPoint>> = ({$implicit}) =>
+    protected readonly hint: TuiStringHandler<TuiContext<TuiPoint>> = ({$implicit}) =>
         `Vertical: ${$implicit[1]}\nHorizontal: ${$implicit[0]}`;
 }

@@ -36,24 +36,25 @@ export class TuiCarouselComponent {
 
     @Input()
     @HostBinding('class._draggable')
-    draggable = false;
+    public draggable = false;
 
     @Input()
-    itemsCount = 1;
+    public itemsCount = 1;
 
     @Input()
-    index = 0;
+    public index = 0;
 
     @Output()
-    readonly indexChange = new EventEmitter<number>();
+    public readonly indexChange = new EventEmitter<number>();
 
     @ContentChildren(TuiItemDirective, {read: TemplateRef})
-    readonly items: QueryList<TemplateRef<Record<string, unknown>>> = EMPTY_QUERY;
+    protected readonly items: QueryList<TemplateRef<Record<string, unknown>>> =
+        EMPTY_QUERY;
 
     @HostBinding('class._transitioned')
-    transitioned = true;
+    protected transitioned = true;
 
-    get transform(): string {
+    protected get transform(): string {
         const x = this.transitioned ? this.computedTranslate : this.translate;
 
         return `translateX(${100 * x}%)`;
@@ -63,7 +64,7 @@ export class TuiCarouselComponent {
     @HostListener('touchend', ['true'])
     @HostListener('mousedown', ['false'])
     @HostListener('document:mouseup.silent', ['true'])
-    onTransitioned(transitioned: boolean): void {
+    protected onTransitioned(transitioned: boolean): void {
         this.transitioned = transitioned;
 
         if (!transitioned) {
@@ -72,7 +73,7 @@ export class TuiCarouselComponent {
     }
 
     @tuiPure
-    getStyle(itemsCount: number): Partial<CSSStyleDeclaration> {
+    protected getStyle(itemsCount: number): Partial<CSSStyleDeclaration> {
         const percent = `${100 / itemsCount}%`;
 
         return {
@@ -82,7 +83,7 @@ export class TuiCarouselComponent {
         };
     }
 
-    next(): void {
+    public next(): void {
         if (this.items && this.index === this.items.length - this.itemsCount) {
             return;
         }
@@ -90,27 +91,30 @@ export class TuiCarouselComponent {
         this.updateIndex(this.index + 1);
     }
 
-    prev(): void {
+    public prev(): void {
         this.updateIndex(this.index - 1);
     }
 
-    isDisabled(index: number): boolean {
+    protected isDisabled(index: number): boolean {
         return index < this.index || index > this.index + this.itemsCount;
     }
 
-    onIntersection({intersectionRatio}: IntersectionObserverEntry, index: number): void {
+    protected onIntersection(
+        {intersectionRatio}: IntersectionObserverEntry,
+        index: number,
+    ): void {
         if (intersectionRatio && intersectionRatio !== 1 && !this.transitioned) {
             this.updateIndex(index - Math.floor(this.itemsCount / 2));
         }
     }
 
-    onScroll(delta: number): void {
+    protected onScroll(delta: number): void {
         if (!this.isMobile) {
             this.updateIndex(this.index + delta);
         }
     }
 
-    onPan(x: number): void {
+    protected onPan(x: number): void {
         if (!this.computedDraggable) {
             return;
         }
@@ -120,7 +124,7 @@ export class TuiCarouselComponent {
         this.translate = tuiClamp(x / this.el.clientWidth + this.translate, min, 0);
     }
 
-    onSwipe(direction: TuiSwipeDirection): void {
+    protected onSwipe(direction: TuiSwipeDirection): void {
         if (direction === 'left') {
             this.next();
         } else if (direction === 'right') {
@@ -128,7 +132,7 @@ export class TuiCarouselComponent {
         }
     }
 
-    onAutoscroll(): void {
+    protected onAutoscroll(): void {
         this.updateIndex(this.index === this.items.length - 1 ? 0 : this.index + 1);
     }
 

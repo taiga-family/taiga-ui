@@ -6,7 +6,7 @@ import {TuiValueContentContext} from '@taiga-ui/core';
     name: 'tuiStringifyContent',
 })
 export class TuiStringifyContentPipe implements PipeTransform {
-    transform<T>(
+    public transform<T>(
         stringify: TuiStringHandler<T>,
     ): TuiStringHandler<TuiValueContentContext<T>> {
         return ({$implicit}) => stringify($implicit);

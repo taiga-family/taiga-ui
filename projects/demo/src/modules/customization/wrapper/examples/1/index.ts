@@ -26,6 +26,6 @@ import {
     ],
 })
 export class TuiWrapperExample1 {
-    value = '';
-    checkbox = false;
+    protected value = '';
+    protected checkbox = false;
 }

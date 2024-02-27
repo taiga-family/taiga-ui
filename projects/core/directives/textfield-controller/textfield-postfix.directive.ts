@@ -16,5 +16,5 @@ export const TUI_TEXTFIELD_POSTFIX = tuiCreateTokenFromFactory(
 })
 export class TuiTextfieldPostfixDirective extends AbstractTuiController {
     @Input('tuiTextfieldPostfix')
-    postfix = '';
+    public postfix = '';
 }

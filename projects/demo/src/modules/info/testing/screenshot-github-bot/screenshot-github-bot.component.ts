@@ -14,7 +14,7 @@ export const SCREENSHOT_BOT_LINK = 'https://github.com/apps/lumberjack-bot';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class ScreenshotGithubBotComponent {
-    readonly botName = SCREENSHOT_BOT_NAME;
-    readonly botAppLink = SCREENSHOT_BOT_LINK;
-    readonly botRepoLink = 'https://github.com/taiga-family/argus';
+    protected readonly botName = SCREENSHOT_BOT_NAME;
+    protected readonly botAppLink = SCREENSHOT_BOT_LINK;
+    protected readonly botRepoLink = 'https://github.com/taiga-family/argus';
 }

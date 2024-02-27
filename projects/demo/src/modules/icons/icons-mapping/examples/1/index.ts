@@ -37,5 +37,5 @@ const MAPPER: Record<string, string> = {
     ],
 })
 export class TuiIconsMappingExample1 {
-    date = null;
+    protected date = null;
 }

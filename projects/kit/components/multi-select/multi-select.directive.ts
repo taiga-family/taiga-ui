@@ -12,20 +12,20 @@ import type {TuiMultiSelectComponent} from './multi-select.component';
 export class TuiMultiSelectDirective<T = string> extends AbstractTuiTextfieldHost<
     TuiMultiSelectComponent<T>
 > {
-    override get readOnly(): boolean {
+    public override get readOnly(): boolean {
         return true;
     }
 
-    disableItemHandler: TuiBooleanHandler<T> = item =>
+    public disableItemHandler: TuiBooleanHandler<T> = item =>
         this.host.disabledItemHandler(item);
 
-    onValueChange(): void {}
+    public onValueChange(): void {}
 
-    get stringify(): TuiItemsHandlers<T>['stringify'] {
+    public get stringify(): TuiItemsHandlers<T>['stringify'] {
         return this.host.stringify;
     }
 
-    onSelectionChange(value: T[]): void {
+    public onSelectionChange(value: T[]): void {
         this.host.onValueChange(value);
     }
 }

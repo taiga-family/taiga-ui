@@ -31,10 +31,11 @@ export class TuiBreadcrumbsComponent extends TuiModeDirective {
 
     @Input()
     @HostBinding('attr.data-size')
-    size = this.options.size;
+    public size = this.options.size;
 
     @ContentChildren(TuiItemDirective, {read: TemplateRef})
-    readonly items: QueryList<TemplateRef<Record<string, unknown>>> = EMPTY_QUERY;
+    protected readonly items: QueryList<TemplateRef<Record<string, unknown>>> =
+        EMPTY_QUERY;
 
-    override readonly mode = this.options.mode;
+    public override readonly mode = this.options.mode;
 }

@@ -22,7 +22,7 @@ export class TuiAmountPipe implements PipeTransform {
     private readonly options = inject(TUI_AMOUNT_OPTIONS);
     private readonly format = inject(TUI_NUMBER_FORMAT_OBSERVABLE);
 
-    transform(
+    public transform(
         value: number,
         currency: TuiCurrencyVariants = this.options.currency,
         currencyAlign: TuiHorizontalDirection = this.options.currencyAlign,

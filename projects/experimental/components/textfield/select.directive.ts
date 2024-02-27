@@ -35,17 +35,17 @@ export class TuiSelectDirective extends TuiTextfieldDirective {
     private readonly control = inject(NgControl);
 
     @Input()
-    placeholder = '';
+    public placeholder = '';
 
-    get value(): string {
+    protected get value(): string {
         return this.textfield.stringify(this.control.value);
     }
 
-    async onCopy(): Promise<void> {
+    protected async onCopy(): Promise<void> {
         await this.nav.clipboard.writeText(this.el.value);
     }
 
-    override setValue(value: string): void {
+    public override setValue(value: string): void {
         this.control.control?.setValue(value);
     }
 }

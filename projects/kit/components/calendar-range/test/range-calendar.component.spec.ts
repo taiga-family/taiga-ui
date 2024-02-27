@@ -46,19 +46,19 @@ describe('rangeCalendarComponent', () => {
     })
     class TestComponent {
         @ViewChild(TuiCalendarRangeComponent)
-        readonly component!: TuiCalendarRangeComponent;
+        protected readonly component!: TuiCalendarRangeComponent;
 
-        readonly control = new FormControl(
+        protected readonly control = new FormControl(
             new TuiDayRange(new TuiDay(2019, 2, 10), new TuiDay(2019, 2, 12)),
         );
 
-        items: readonly TuiDayRangePeriod[] = [];
+        protected items: readonly TuiDayRangePeriod[] = [];
 
-        min = new TuiDay(1900, 0, 1);
+        protected min = new TuiDay(1900, 0, 1);
 
-        max = TUI_LAST_DAY;
+        protected max = TUI_LAST_DAY;
 
-        onRangeChange(range: TuiDayRange): void {
+        protected onRangeChange(range: TuiDayRange): void {
             this.control.setValue(range);
         }
     }

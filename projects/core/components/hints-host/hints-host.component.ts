@@ -29,9 +29,9 @@ export class TuiHintsHostComponent implements OnInit {
     private readonly destroy$ = inject(TuiDestroyService, {self: true});
     private readonly cdr = inject(ChangeDetectorRef);
 
-    hints: readonly TuiPortalItem[] = [];
+    protected hints: readonly TuiPortalItem[] = [];
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         // Due to this view being parallel to app content, `markForCheck` from `async` pipe
         // can happen after view was checked, so calling `detectChanges` instead
         this.hints$.pipe(takeUntil(this.destroy$)).subscribe(hints => {

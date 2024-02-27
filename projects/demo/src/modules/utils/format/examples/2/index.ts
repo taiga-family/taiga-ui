@@ -12,13 +12,23 @@ import {TuiCurrencyVariants, tuiGetCurrencySymbol} from '@taiga-ui/addon-commerc
     changeDetection,
 })
 export class TuiFormatExample2 {
-    readonly items = ['USD', 'RUB', '643', 'KZT', '051', 'KRW', 'CHF', 'EUR', 'GBP'];
+    protected readonly items = [
+        'USD',
+        'RUB',
+        '643',
+        'KZT',
+        '051',
+        'KRW',
+        'CHF',
+        'EUR',
+        'GBP',
+    ];
 
-    parametersForm = new FormGroup({
+    protected parametersForm = new FormGroup({
         currency: new FormControl<TuiCurrencyVariants>(null),
     });
 
-    get currency(): string | null {
+    protected get currency(): string | null {
         const {currency} = this.parametersForm.value;
 
         return currency ? tuiGetCurrencySymbol(currency) : null;

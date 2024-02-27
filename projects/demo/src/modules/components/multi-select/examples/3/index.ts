@@ -16,7 +16,7 @@ interface Hero {
     changeDetection,
 })
 export class TuiMultiSelectExample3 {
-    readonly items: readonly Hero[] = [
+    protected readonly items: readonly Hero[] = [
         {id: 1, name: 'Luke Skywalker'},
         {id: 2, name: 'Leia Organa Solo'},
         {id: 3, name: 'Darth Vader'},
@@ -25,11 +25,11 @@ export class TuiMultiSelectExample3 {
         {id: 6, name: 'Yoda'},
     ];
 
-    readonly control = new FormControl([this.items[3], this.items[4]]);
+    protected readonly control = new FormControl([this.items[3], this.items[4]]);
 
-    readonly stringify: TuiStringHandler<Hero | TuiContext<Hero>> = item =>
+    protected readonly stringify: TuiStringHandler<Hero | TuiContext<Hero>> = item =>
         'name' in item ? item.name : item.$implicit.name;
 
-    readonly identityMatcher: TuiIdentityMatcher<Hero> = (hero1, hero2) =>
+    protected readonly identityMatcher: TuiIdentityMatcher<Hero> = (hero1, hero2) =>
         hero1.id === hero2.id;
 }

@@ -15,7 +15,7 @@ import {TUI_DATE_FORMAT, TUI_DATE_SEPARATOR, TuiDay, TuiDayRange} from '@taiga-u
     ],
 })
 export class TuiInputDateRangeExample3 {
-    readonly control = new FormControl(
+    protected readonly control = new FormControl(
         new TuiDayRange(new TuiDay(2018, 2, 10), new TuiDay(2018, 3, 20)),
     );
 }

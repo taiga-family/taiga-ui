@@ -26,13 +26,13 @@ const ITEMS: readonly Python[] = [
     changeDetection,
 })
 export class TuiSelectExample5 {
-    value = 42;
+    protected value = 42;
 
     // Server request for items imitation
-    readonly items$ = of(ITEMS).pipe(delay(3000));
+    protected readonly items$ = of(ITEMS).pipe(delay(3000));
 
     @tuiPure
-    stringify(items: readonly Python[]): TuiStringHandler<TuiContext<number>> {
+    protected stringify(items: readonly Python[]): TuiStringHandler<TuiContext<number>> {
         const map = new Map(items.map(({id, name}) => [id, name] as [number, string]));
 
         return ({$implicit}: TuiContext<number>) => map.get($implicit) || '';

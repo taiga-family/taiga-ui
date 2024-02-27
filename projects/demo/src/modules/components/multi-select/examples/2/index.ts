@@ -8,12 +8,12 @@ import {delay, filter, Observable, of, startWith, Subject, switchMap} from 'rxjs
 
 class User {
     constructor(
-        readonly firstName: string,
-        readonly lastName: string,
-        readonly avatarUrl: string | null = null,
+        protected readonly firstName: string,
+        protected readonly lastName: string,
+        protected readonly avatarUrl: string | null = null,
     ) {}
 
-    toString(): string {
+    protected toString(): string {
         return `${this.firstName} ${this.lastName}`;
     }
 }
@@ -36,9 +36,9 @@ const databaseMockData: readonly User[] = [
     changeDetection,
 })
 export class TuiMultiSelectExample2 {
-    readonly search$ = new Subject<string | null>();
+    protected readonly search$ = new Subject<string | null>();
 
-    readonly items$: Observable<readonly User[] | null> = this.search$.pipe(
+    protected readonly items$: Observable<readonly User[] | null> = this.search$.pipe(
         filter(value => value !== null),
         switchMap(search =>
             this.serverRequest(search).pipe(startWith<readonly User[] | null>(null)),
@@ -46,9 +46,9 @@ export class TuiMultiSelectExample2 {
         startWith(databaseMockData),
     );
 
-    readonly testValue = new FormControl([databaseMockData[0]]);
+    protected readonly testValue = new FormControl([databaseMockData[0]]);
 
-    onSearchChange(searchQuery: string | null): void {
+    protected onSearchChange(searchQuery: string | null): void {
         this.search$.next(searchQuery);
     }
 

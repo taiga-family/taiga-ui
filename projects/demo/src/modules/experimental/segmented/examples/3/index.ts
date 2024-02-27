@@ -10,6 +10,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiSegmentedExample3 {
-    readonly buttons = ['Track active index', 'To color tabs', 'Differently'];
-    active = 0;
+    protected readonly buttons = ['Track active index', 'To color tabs', 'Differently'];
+    protected active = 0;
 }

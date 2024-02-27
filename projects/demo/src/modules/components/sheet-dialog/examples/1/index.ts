@@ -13,7 +13,7 @@ import {Subject, switchMap, takeUntil} from 'rxjs';
     providers: [TuiDestroyService],
 })
 export class TuiSheetDialogExample1 {
-    readonly stream$ = new Subject<void>();
+    protected readonly stream$ = new Subject<void>();
 
     constructor() {
         this.stream$

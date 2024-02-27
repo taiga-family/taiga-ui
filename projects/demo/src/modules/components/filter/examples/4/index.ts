@@ -28,19 +28,19 @@ const Department = {
     changeDetection,
 })
 export class TuiFilterExample4 {
-    readonly items = Object.values(Department);
+    protected readonly items = Object.values(Department);
 
-    readonly filters$ = new BehaviorSubject<readonly string[]>([]);
+    protected readonly filters$ = new BehaviorSubject<readonly string[]>([]);
 
     @tuiPure
-    get model$(): Observable<readonly string[]> {
+    protected get model$(): Observable<readonly string[]> {
         return this.filters$.pipe(
             map(value => (value.length === this.items.length ? [] : value)),
         );
     }
 
     @tuiPure
-    get buttonAppearance$(): Observable<TuiAppearance> {
+    protected get buttonAppearance$(): Observable<TuiAppearance> {
         return this.filters$.pipe(
             map(value =>
                 value.length === this.items.length
@@ -50,11 +50,11 @@ export class TuiFilterExample4 {
         );
     }
 
-    onModelChange(model: readonly string[]): void {
+    protected onModelChange(model: readonly string[]): void {
         this.filters$.next(model);
     }
 
-    toggleAll(): void {
+    protected toggleAll(): void {
         this.filters$.next(
             this.items.length === this.filters$.value.length ? [] : [...this.items],
         );

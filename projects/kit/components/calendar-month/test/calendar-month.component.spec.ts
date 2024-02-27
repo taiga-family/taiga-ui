@@ -20,15 +20,15 @@ describe('CalendarMonth', () => {
     })
     class TestComponent {
         @ViewChild(TuiCalendarMonthComponent, {static: true})
-        component!: TuiCalendarMonthComponent;
+        protected component!: TuiCalendarMonthComponent;
 
-        year = new TuiYear(TODAY.year);
+        protected year = new TuiYear(TODAY.year);
 
-        min = TODAY.append({year: -2});
-        max = TODAY.append({year: 2});
-        value = TODAY;
-        month = TuiMonth.currentLocal();
-        disabledItemHandler = (item: TuiMonth): boolean => item.month === 10;
+        protected min = TODAY.append({year: -2});
+        protected max = TODAY.append({year: 2});
+        protected value = TODAY;
+        protected month = TuiMonth.currentLocal();
+        protected disabledItemHandler = (item: TuiMonth): boolean => item.month === 10;
     }
 
     let fixture: ComponentFixture<TestComponent>;

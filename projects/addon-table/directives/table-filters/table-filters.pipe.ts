@@ -9,7 +9,7 @@ import {TuiTableFiltersDirective} from './table-filters.directive';
 export class TuiTableFiltersPipe<T> implements PipeTransform {
     private readonly filters = inject(TuiTableFiltersDirective<T>);
 
-    transform(items: readonly T[]): Observable<readonly T[]> {
+    public transform(items: readonly T[]): Observable<readonly T[]> {
         return this.filters.filter(items);
     }
 }

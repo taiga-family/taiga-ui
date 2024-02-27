@@ -16,9 +16,9 @@ describe('TuiSwipe', () => {
         `,
     })
     class TestComponent {
-        swiped = '';
+        protected swiped = '';
 
-        onSwipe(swipe: TuiSwipe): void {
+        protected onSwipe(swipe: TuiSwipe): void {
             this.swiped = swipe.direction;
         }
     }

@@ -17,5 +17,5 @@ export const TUI_TEXTFIELD_CUSTOM_CONTENT = tuiCreateTokenFromFactory(
 })
 export class TuiTextfieldCustomContentDirective extends AbstractTuiController {
     @Input('tuiTextfieldCustomContent')
-    customContent: PolymorpheusContent;
+    public customContent: PolymorpheusContent;
 }

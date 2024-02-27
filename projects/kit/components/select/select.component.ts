@@ -74,67 +74,69 @@ export class TuiSelectComponent<T>
     private readonly options = inject(TUI_SELECT_OPTIONS);
 
     @Input()
-    stringify: TuiItemsHandlers<T>['stringify'] = this.itemsHandlers.stringify;
+    public stringify: TuiItemsHandlers<T>['stringify'] = this.itemsHandlers.stringify;
 
     @Input()
-    identityMatcher: TuiItemsHandlers<T>['identityMatcher'] =
+    public identityMatcher: TuiItemsHandlers<T>['identityMatcher'] =
         this.itemsHandlers.identityMatcher;
 
     @Input()
-    valueContent: TuiSelectOptions<T>['valueContent'] = this.options.valueContent;
+    public valueContent: TuiSelectOptions<T>['valueContent'] = this.options.valueContent;
 
     @ContentChild(TuiDataListDirective, {read: TemplateRef})
-    readonly datalist: PolymorpheusContent<TuiContext<TuiActiveZoneDirective>>;
+    protected readonly datalist: PolymorpheusContent<TuiContext<TuiActiveZoneDirective>>;
 
-    readonly isMobile = inject(TUI_IS_MOBILE);
+    protected readonly isMobile = inject(TUI_IS_MOBILE);
 
     @HostBinding('attr.data-size')
-    get size(): TuiSizeL | TuiSizeS {
+    protected get size(): TuiSizeL | TuiSizeS {
         return this.textfieldSize.size;
     }
 
-    get arrow(): PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeM | TuiSizeS>> {
+    protected get arrow(): PolymorpheusContent<
+        TuiContext<TuiSizeL | TuiSizeM | TuiSizeS>
+    > {
         return !this.interactive ? this.arrowMode.disabled : this.arrowMode.interactive;
     }
 
-    get nativeFocusableElement(): HTMLInputElement | null {
+    public get nativeFocusableElement(): HTMLInputElement | null {
         return this.textfield?.nativeFocusableElement ?? null;
     }
 
-    get focused(): boolean {
+    public get focused(): boolean {
         return (
             tuiIsNativeFocused(this.nativeFocusableElement) ||
             (!!this.hostedDropdown && this.hostedDropdown.focused)
         );
     }
 
-    get nativeDropdownMode(): boolean {
+    protected get nativeDropdownMode(): boolean {
         return !!this.nativeSelect && this.isMobile;
     }
 
-    get computedValue(): string {
+    public get computedValue(): string {
         return this.value === null ? '' : this.stringify(this.value) || ' ';
     }
 
-    get computedContent(): PolymorpheusContent<TuiValueContentContext<T>> {
+    protected get computedContent(): PolymorpheusContent<TuiValueContentContext<T>> {
         return this.valueContent || this.computedValue;
     }
 
-    onValueChange(value: T): void {
+    public onValueChange(value: T): void {
         this.value = value || null;
     }
 
-    onActiveZone(active: boolean): void {
+    protected onActiveZone(active: boolean): void {
         this.updateFocused(active);
     }
 
-    onKeyDownDelete(): void {
+    protected onKeyDownDelete(): void {
         if (this.textfieldCleaner.cleaner) {
             this.value = null;
         }
     }
 
-    handleOption(option: T): void {
+    public handleOption(option: T): void {
         this.focusInput();
         this.value = option;
         this.hostedDropdown?.updateOpen(false);

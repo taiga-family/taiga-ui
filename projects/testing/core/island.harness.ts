@@ -2,9 +2,9 @@ import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {TuiComponentHarness} from '@taiga-ui/testing/utils';
 
 export class TuiIslandHarness extends TuiComponentHarness {
-    static hostSelector = 'tui-island';
+    protected static hostSelector = 'tui-island';
 
-    async getSize(): Promise<TuiSizeL | TuiSizeS> {
+    protected async getSize(): Promise<TuiSizeL | TuiSizeS> {
         if (await this.isSizeL()) {
             return 'l';
         }
@@ -16,7 +16,7 @@ export class TuiIslandHarness extends TuiComponentHarness {
         return 's';
     }
 
-    async getTextAlign(): Promise<'center' | 'left' | 'right'> {
+    protected async getTextAlign(): Promise<'center' | 'left' | 'right'> {
         if (await this.isTextAlignLeft()) {
             return 'left';
         }
@@ -28,7 +28,7 @@ export class TuiIslandHarness extends TuiComponentHarness {
         return 'right';
     }
 
-    async isHoverable(): Promise<boolean> {
+    protected async isHoverable(): Promise<boolean> {
         return (await this.host()).hasClass('tui-island_hoverable');
     }
 

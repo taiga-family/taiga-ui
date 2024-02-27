@@ -12,9 +12,9 @@ export class TuiDropdownManualDirective implements OnChanges {
     private readonly driver = inject(TuiDropdownDriver);
 
     @Input()
-    tuiDropdownManual = false;
+    public tuiDropdownManual = false;
 
-    ngOnChanges(): void {
+    public ngOnChanges(): void {
         this.driver.next(this.tuiDropdownManual);
     }
 }

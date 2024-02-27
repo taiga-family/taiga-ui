@@ -10,7 +10,7 @@ describe('TuiFocusable directive', () => {
         `,
     })
     class TestComponent {
-        focusable!: boolean;
+        protected focusable!: boolean;
     }
 
     let fixture: ComponentFixture<TestComponent>;

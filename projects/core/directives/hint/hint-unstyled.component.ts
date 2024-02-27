@@ -23,7 +23,7 @@ import {TuiHintDirective} from './hint.directive';
     animations: [TUI_PARENT_ANIMATION],
 })
 export class TuiHintUnstyledComponent {
-    readonly context = inject<TuiContext<TuiPortalItem>>(POLYMORPHEUS_CONTEXT);
+    protected readonly context = inject<TuiContext<TuiPortalItem>>(POLYMORPHEUS_CONTEXT);
 }
 
 @Directive({

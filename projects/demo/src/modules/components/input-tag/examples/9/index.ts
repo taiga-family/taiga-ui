@@ -13,18 +13,18 @@ import {TuiBooleanHandler, TuiDay} from '@taiga-ui/cdk';
     changeDetection,
 })
 export class TuiInputTagExample9 {
-    readonly control = new FormControl<string[]>([]);
-    readonly min = new Date(2000, 0, 1);
-    readonly max = new Date(2025, 4, 10);
+    protected readonly control = new FormControl<string[]>([]);
+    protected readonly min = new Date(2000, 0, 1);
+    protected readonly max = new Date(2025, 4, 10);
 
-    readonly options: MaskitoOptions = maskitoDateOptionsGenerator({
+    protected readonly options: MaskitoOptions = maskitoDateOptionsGenerator({
         mode: 'dd/mm/yyyy',
         separator: '.',
         min: this.min,
         max: this.max,
     });
 
-    tagValidator: TuiBooleanHandler<string> = (tag: string) => {
+    protected tagValidator: TuiBooleanHandler<string> = (tag: string) => {
         const {year, month, day} = TuiDay.parseRawDateString(tag);
 
         return (

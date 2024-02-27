@@ -11,27 +11,29 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiIslandExample3 {
-    bannerImage = 'https://ng-web-apis.github.io/dist/assets/images/web-api.svg';
-    expanded = false;
-    index = 1;
-    testForm = new FormGroup({
+    protected bannerImage =
+        'https://ng-web-apis.github.io/dist/assets/images/web-api.svg';
+
+    protected expanded = false;
+    protected index = 1;
+    protected testForm = new FormGroup({
         testValue: new FormControl('', Validators.required),
     });
 
-    collapsingText =
+    protected collapsingText =
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit ' +
         'sed do eiusmod tempor incididunt ut labore et dolore ' +
         'magna aliqua.';
 
-    get linesLimit(): number {
+    protected get linesLimit(): number {
         return this.expanded ? 10 : 3;
     }
 
-    expandText(): void {
+    protected expandText(): void {
         this.expanded = !this.expanded;
     }
 
-    onIndexChange(index: number): void {
+    protected onIndexChange(index: number): void {
         this.index = index;
     }
 }

@@ -5,11 +5,11 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 
 class Account {
     constructor(
-        readonly name: string,
-        readonly balance: number,
+        protected readonly name: string,
+        protected readonly balance: number,
     ) {}
 
-    toString(): string {
+    protected toString(): string {
         return `${this.name} (${this.balance})`;
     }
 }
@@ -22,17 +22,17 @@ class Account {
     changeDetection,
 })
 export class TuiAccordionExample2 {
-    readonly accounts = [
+    protected readonly accounts = [
         new Account('Rubles', 500),
         new Account('Dollar', 237),
         new Account('Euro', 100),
     ];
 
-    svgIcons = {
+    protected svgIcons = {
         rubles: import('./rubles.svg?raw'),
     };
 
-    testForm = new FormGroup({
+    protected testForm = new FormGroup({
         name: new FormControl(''),
         accounts: new FormControl(this.accounts[0]),
     });

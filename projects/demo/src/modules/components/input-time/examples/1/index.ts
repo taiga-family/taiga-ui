@@ -11,7 +11,7 @@ import {TuiTime} from '@taiga-ui/cdk';
     changeDetection,
 })
 export class TuiInputTimeExample1 {
-    readonly testForm = new FormGroup({
+    protected readonly testForm = new FormGroup({
         testValue: new FormControl(new TuiTime(12, 30)),
     });
 }

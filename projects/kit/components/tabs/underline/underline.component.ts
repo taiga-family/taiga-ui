@@ -41,12 +41,12 @@ export class TuiUnderlineComponent {
     );
 
     @Input()
-    set element(element: HTMLElement | null) {
+    public set element(element: HTMLElement | null) {
         this.el$.next(element);
     }
 
     @HostListener('$.style.transitionProperty')
-    readonly transition$ = asCallable(
+    protected readonly transition$ = asCallable(
         this.el$.pipe(
             map(element => element && 'all'),
             debounceTime(50),
@@ -54,7 +54,7 @@ export class TuiUnderlineComponent {
     );
 
     @HostListener('$.style.transform')
-    readonly transform$ = asCallable(
+    protected readonly transform$ = asCallable(
         this.refresh$.pipe(
             map(element =>
                 element ? `translate3d(${element.offsetLeft}px, 0, 0)` : null,
@@ -63,11 +63,11 @@ export class TuiUnderlineComponent {
     );
 
     @HostListener('$.style.width.px')
-    readonly width$ = asCallable(
+    protected readonly width$ = asCallable(
         this.refresh$.pipe(map(element => element?.clientWidth || 0)),
     );
 
-    readonly mode$ = inject(TUI_MODE);
+    protected readonly mode$ = inject(TUI_MODE);
 
     constructor() {
         (this.el as any)['$.style.transitionProperty'] = this.transition$;

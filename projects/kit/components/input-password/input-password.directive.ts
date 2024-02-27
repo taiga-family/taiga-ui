@@ -12,17 +12,17 @@ export class TuiInputPasswordDirective
     extends AbstractTuiTextfieldHost<TuiInputPasswordComponent>
     implements DoCheck
 {
-    input?: HTMLInputElement;
+    protected input?: HTMLInputElement;
 
-    onValueChange(value: string): void {
+    public onValueChange(value: string): void {
         this.host.onValueChange(value);
     }
 
-    override process(input: HTMLInputElement): void {
+    public override process(input: HTMLInputElement): void {
         this.input = input;
     }
 
-    ngDoCheck(): void {
+    public ngDoCheck(): void {
         if (
             this.host.nativeFocusableElement &&
             tuiIsInput(this.host.nativeFocusableElement)

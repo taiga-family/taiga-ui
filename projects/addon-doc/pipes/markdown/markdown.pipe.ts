@@ -15,7 +15,7 @@ export class TuiMarkdownPipe implements PipeTransform {
     private readonly tuiSanitizer = inject(TUI_SANITIZER, {optional: true});
     private readonly sanitizer = inject(DomSanitizer);
 
-    transform(
+    public transform(
         value: TuiRawLoaderContent,
         mapper: TuiStringHandler<string> = identity,
     ): Observable<TuiSafeHtml> {
@@ -31,7 +31,7 @@ export class TuiMarkdownPipe implements PipeTransform {
                     })
                     .parse(markdown, {
                         renderer: new (class ChangelogRender extends Renderer {
-                            override heading(
+                            public override heading(
                                 text: string,
                                 level: 1 | 2 | 3 | 4 | 5 | 6,
                             ): string {

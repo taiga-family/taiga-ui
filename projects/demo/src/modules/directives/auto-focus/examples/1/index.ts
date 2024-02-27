@@ -9,10 +9,10 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiAutoFocusExample1 {
-    showInput = false;
-    model = 'Focused after its appearance';
+    protected showInput = false;
+    protected model = 'Focused after its appearance';
 
-    onClick(): void {
+    protected onClick(): void {
         this.showInput = true;
     }
 }

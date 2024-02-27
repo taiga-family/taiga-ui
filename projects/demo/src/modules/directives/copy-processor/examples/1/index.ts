@@ -15,17 +15,18 @@ export class TuiCopyProcessorExample1 {
     private readonly format = inject(TUI_NUMBER_FORMAT);
     private readonly alerts = inject(TuiAlertService);
 
-    value = 12345.67;
+    protected value = 12345.67;
 
     @HostListener('copy', ['$event'])
-    onCopy(event: ClipboardEvent): void {
+    protected onCopy(event: ClipboardEvent): void {
         this.alerts.open(event.clipboardData?.getData('text/plain') ?? '').subscribe();
     }
 
-    readonly numberProcessor: TuiStringHandler<string> = text =>
+    protected readonly numberProcessor: TuiStringHandler<string> = text =>
         text
             .replace(this.format.decimalSeparator, '.')
             .replaceAll(new RegExp(this.format.thousandSeparator, 'g'), '');
 
-    readonly textProcessor: TuiStringHandler<string> = text => text.toUpperCase();
+    protected readonly textProcessor: TuiStringHandler<string> = text =>
+        text.toUpperCase();
 }

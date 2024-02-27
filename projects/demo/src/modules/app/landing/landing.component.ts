@@ -52,24 +52,24 @@ export default class LandingComponent implements OnInit {
     private readonly activatedRoute = inject(ActivatedRoute);
     protected readonly storage = inject(LOCAL_STORAGE);
 
-    current = 0;
+    protected current = 0;
 
-    intersected = false;
+    protected intersected = false;
 
-    async ngOnInit(): Promise<void> {
+    public async ngOnInit(): Promise<void> {
         await this.clearQueryParams();
     }
 
-    get hidden(): boolean {
+    protected get hidden(): boolean {
         return !!this.storage.getItem('env');
     }
 
     @HostBinding('style.background')
-    get background(): string {
+    protected get background(): string {
         return this.current ? '#5f6ed0' : '#3dc67c';
     }
 
-    onIntersection(
+    protected onIntersection(
         [{isIntersecting, target}]: IntersectionObserverEntry[],
         index: number,
     ): void {
@@ -79,7 +79,7 @@ export default class LandingComponent implements OnInit {
         }
     }
 
-    onClick(): void {
+    protected onClick(): void {
         this.blocks.forEach(({nativeElement}, index) => {
             if (index === this.current + 1) {
                 nativeElement.scrollIntoView({behavior: 'smooth'});

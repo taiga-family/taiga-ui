@@ -17,11 +17,11 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiInputRangeExample1 {
-    readonly min = 0;
-    readonly max = 20;
-    readonly sliderStep = 1;
-    readonly steps = (this.max - this.min) / this.sliderStep;
-    readonly quantum = 0.00001;
+    protected readonly min = 0;
+    protected readonly max = 20;
+    protected readonly sliderStep = 1;
+    protected readonly steps = (this.max - this.min) / this.sliderStep;
+    protected readonly quantum = 0.00001;
 
-    readonly control = new FormControl([3.14159, 15]);
+    protected readonly control = new FormControl([3.14159, 15]);
 }

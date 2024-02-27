@@ -10,5 +10,5 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiSwipeActionExample2 {
-    checkbox = false;
+    protected checkbox = false;
 }

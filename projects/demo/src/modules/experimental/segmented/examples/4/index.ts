@@ -11,9 +11,9 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiSegmentedExample4 {
-    selected = 'a';
+    protected selected = 'a';
 
-    readonly options: IsActiveMatchOptions = {
+    protected readonly options: IsActiveMatchOptions = {
         matrixParams: 'exact',
         queryParams: 'exact',
         paths: 'exact',

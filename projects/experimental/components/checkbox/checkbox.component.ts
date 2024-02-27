@@ -52,11 +52,11 @@ export class TuiCheckboxComponent implements OnInit, DoCheck {
     private readonly el: HTMLInputElement = inject(ElementRef).nativeElement;
 
     @Input()
-    size: TuiSizeS = this.options.size;
+    public size: TuiSizeS = this.options.size;
 
-    readonly control: NgControl | null = inject(NgControl, {optional: true});
+    protected readonly control: NgControl | null = inject(NgControl, {optional: true});
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         if (!this.control?.valueChanges) {
             return;
         }
@@ -68,11 +68,11 @@ export class TuiCheckboxComponent implements OnInit, DoCheck {
             });
     }
 
-    ngDoCheck(): void {
+    public ngDoCheck(): void {
         this.appearance.tuiAppearance = this.options.appearance(this.el);
     }
 
-    getIcon(state: 'checked' | 'indeterminate'): string {
+    protected getIcon(state: 'checked' | 'indeterminate'): string {
         const option = this.options.icons[state];
         const icon = tuiIsString(option) ? option : option(this.size);
 

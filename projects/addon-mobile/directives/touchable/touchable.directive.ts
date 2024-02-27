@@ -24,7 +24,7 @@ export class TuiTouchableDirective {
         ?.nativeElement;
 
     @Input()
-    tuiTouchable: TuiTouchMode | '' = '';
+    public tuiTouchable: TuiTouchMode | '' = '';
 
     constructor() {
         if (!this.isIOS) {
@@ -58,7 +58,7 @@ export class TuiTouchableDirective {
             });
     }
 
-    get style(): TuiTouchMode {
+    protected get style(): TuiTouchMode {
         return this.tuiTouchable || 'transform';
     }
 

@@ -14,9 +14,9 @@ import {of, timer} from 'rxjs';
 export class TuiProgressBarExample2 {
     private readonly isE2E = inject(TUI_IS_E2E);
 
-    readonly fastValue$ = this.isE2E ? of(80) : timer(500, 100);
-    readonly slowValue$ = this.isE2E ? of(4) : timer(500, 2000);
-    readonly colors = [
+    protected readonly fastValue$ = this.isE2E ? of(80) : timer(500, 100);
+    protected readonly slowValue$ = this.isE2E ? of(4) : timer(500, 2000);
+    protected readonly colors = [
         'var(--tui-support-01)',
         'var(--tui-support-21)',
         'lightskyblue',

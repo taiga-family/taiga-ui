@@ -11,14 +11,14 @@ import {TuiSheetOptions} from '@taiga-ui/addon-mobile';
     changeDetection,
 })
 export class TuiSheetExample3 {
-    open = false;
+    protected open = false;
 
-    readonly options: Partial<TuiSheetOptions> = {
+    protected readonly options: Partial<TuiSheetOptions> = {
         stops: ['calc(5rem + 74vw)', 'calc(9rem + 74vw)'],
         image: 'https://www.vintagemovieposters.co.uk/wp-content/uploads/2020/10/IMG_0323-1024x756.jpeg',
     };
 
-    toggle(): void {
+    protected toggle(): void {
         this.open = !this.open;
     }
 }

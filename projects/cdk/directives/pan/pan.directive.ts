@@ -7,5 +7,5 @@ import {TuiPanService} from '@taiga-ui/cdk/services';
 })
 export class TuiPanDirective {
     @Output()
-    readonly tuiPan = inject(TuiPanService);
+    public readonly tuiPan = inject(TuiPanService);
 }

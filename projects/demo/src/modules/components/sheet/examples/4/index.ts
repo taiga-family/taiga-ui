@@ -11,24 +11,24 @@ import {TuiSheetOptions} from '@taiga-ui/addon-mobile';
     changeDetection,
 })
 export class TuiSheetExample4 {
-    open = false;
+    protected open = false;
 
-    elastic = 1;
+    protected elastic = 1;
 
-    readonly options: Partial<TuiSheetOptions> = {
+    protected readonly options: Partial<TuiSheetOptions> = {
         stops: ['12rem'],
     };
 
-    get transform(): string {
+    protected get transform(): string {
         return `scale(${this.elastic * this.elastic})`;
     }
 
-    toggle(): void {
+    protected toggle(): void {
         this.elastic = 1;
         this.open = !this.open;
     }
 
-    onElastic(elastic: number): void {
+    protected onElastic(elastic: number): void {
         this.elastic = elastic;
     }
 }

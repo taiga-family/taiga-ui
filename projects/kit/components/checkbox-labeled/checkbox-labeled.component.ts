@@ -41,24 +41,24 @@ export class TuiCheckboxLabeledComponent
     private readonly options = inject(TUI_CHECKBOX_OPTIONS);
 
     @Input()
-    size: TuiSizeL = this.options.size;
+    public size: TuiSizeL = this.options.size;
 
-    readonly mode$ = inject(TUI_MODE);
+    protected readonly mode$ = inject(TUI_MODE);
 
-    get focused(): boolean {
+    public get focused(): boolean {
         return tuiIsNativeFocused(this.nativeFocusableElement);
     }
 
-    get nativeFocusableElement(): TuiNativeFocusableElement | null {
+    public get nativeFocusableElement(): TuiNativeFocusableElement | null {
         return this.checkbox?.nativeFocusableElement ?? null;
     }
 
-    onFocused(focused: boolean): void {
+    protected onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
 
     /** @deprecated use 'value' setter */
-    onModelChange(value: boolean): void {
+    protected onModelChange(value: boolean): void {
         this.value = value;
     }
 }

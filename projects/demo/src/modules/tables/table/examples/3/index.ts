@@ -21,11 +21,11 @@ interface Item {
     changeDetection,
 })
 export class TuiTableExample3 {
-    readonly options = {updateOn: 'blur'} as const;
+    protected readonly options = {updateOn: 'blur'} as const;
 
-    readonly units = ['items', 'kg', 'm'];
+    protected readonly units = ['items', 'kg', 'm'];
 
-    pythons: readonly Item[] = [
+    protected pythons: readonly Item[] = [
         {
             name: 'Holy Grail',
             price: 999999,
@@ -49,7 +49,7 @@ export class TuiTableExample3 {
         },
     ];
 
-    starwars: readonly Item[] = [
+    protected starwars: readonly Item[] = [
         {
             name: 'Lightsaber',
             price: 4999,
@@ -73,23 +73,23 @@ export class TuiTableExample3 {
         },
     ];
 
-    readonly columns = ['name', 'price', 'quantity', 'unit', 'total'] as const;
+    protected readonly columns = ['name', 'price', 'quantity', 'unit', 'total'] as const;
 
-    readonly minPrice: ValidatorFn = ({value}) =>
+    protected readonly minPrice: ValidatorFn = ({value}) =>
         value > 400 ? null : {minPrice: 'Price must be above $400'};
 
-    readonly totalSorter: TuiComparator<Item> = (a, b) =>
+    protected readonly totalSorter: TuiComparator<Item> = (a, b) =>
         tuiDefaultSort(a.price * a.quantity, b.price * b.quantity);
 
-    trackByIndex(index: number): number {
+    protected trackByIndex(index: number): number {
         return index;
     }
 
-    getTotal({price, quantity}: Item): number {
+    protected getTotal({price, quantity}: Item): number {
         return price * quantity;
     }
 
-    onValueChange<K extends keyof Item>(
+    protected onValueChange<K extends keyof Item>(
         value: Item[K],
         key: K,
         current: Item,

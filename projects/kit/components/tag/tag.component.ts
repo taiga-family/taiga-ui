@@ -41,82 +41,82 @@ export class TuiTagComponent {
 
     // TODO: Possibly implement standard focus mechanisms and outline
     @Input()
-    value = '';
+    public value = '';
 
     @Input()
-    editable = false;
+    public editable = false;
 
     @Input()
-    separator: RegExp | string = ',';
+    public separator: RegExp | string = ',';
 
     @Input()
-    maxLength: number | null = null;
+    public maxLength: number | null = null;
 
     @Input()
     @HostBinding('attr.data-size')
-    size: TuiSizeL | TuiSizeS = this.options.size;
+    public size: TuiSizeL | TuiSizeS = this.options.size;
 
     @Input()
-    showLoader = false;
+    public showLoader = false;
 
     @Input()
     @HostBinding('attr.data-status')
-    status: TuiStatus = this.options.status;
+    public status: TuiStatus = this.options.status;
 
     @Input()
     @HostBinding('class._hoverable')
-    hoverable = false;
+    public hoverable = false;
 
     @Input()
-    removable = false;
+    public removable = false;
 
     @Input()
     @HostBinding('class._disabled')
-    disabled = false;
+    public disabled = false;
 
     @Input()
     @HostBinding('class._autocolor')
-    autoColor: boolean = this.options.autoColor;
+    public autoColor: boolean = this.options.autoColor;
 
     @Input()
-    leftContent: PolymorpheusContent;
+    public leftContent: PolymorpheusContent;
 
     @Output()
-    readonly edited = new EventEmitter<string>();
+    public readonly edited = new EventEmitter<string>();
 
     @HostBinding('class._editing')
-    editing = false;
+    protected editing = false;
 
-    readonly icons = inject(TUI_COMMON_ICONS);
-    readonly mode$ = inject(TUI_MODE);
+    protected readonly icons = inject(TUI_COMMON_ICONS);
+    protected readonly mode$ = inject(TUI_MODE);
 
-    editedText: string | null = null;
+    protected editedText: string | null = null;
 
     @ViewChild('input', {read: ElementRef})
-    set input(input: ElementRef<HTMLInputElement>) {
+    protected set input(input: ElementRef<HTMLInputElement>) {
         if (input) {
             input.nativeElement.focus();
         }
     }
 
-    get backgroundColor(): string | null {
+    protected get backgroundColor(): string | null {
         return this.autoColor ? tuiStringHashToHsl(this.value) : null;
     }
 
-    get canRemove(): boolean {
+    protected get canRemove(): boolean {
         return this.removable && !this.disabled && !this.showLoader;
     }
 
-    get displayText(): string {
+    protected get displayText(): string {
         return this.editedText === null ? this.value : this.editedText;
     }
 
-    get loaderSize(): TuiSizeXS {
+    protected get loaderSize(): TuiSizeXS {
         return tuiSizeBigger(this.size) ? 's' : 'xs';
     }
 
     @HostListener('keydown.enter', ['$event'])
-    edit(event: Event): void {
+    protected edit(event: Event): void {
         if (!this.canEdit) {
             return;
         }
@@ -128,7 +128,7 @@ export class TuiTagComponent {
 
     @HostListener('keydown.delete', ['$event'])
     @HostListener('keydown.backspace', ['$event'])
-    remove(event: Event): void {
+    protected remove(event: Event): void {
         if (!this.canRemove) {
             return;
         }
@@ -138,7 +138,7 @@ export class TuiTagComponent {
         this.edited.emit('');
     }
 
-    onInput(value: string): void {
+    protected onInput(value: string): void {
         const newTags = value.split(this.separator);
 
         if (newTags.length > 1) {
@@ -150,7 +150,7 @@ export class TuiTagComponent {
         this.editedText = value;
     }
 
-    onKeyDown(event: KeyboardEvent): void {
+    protected onKeyDown(event: KeyboardEvent): void {
         event.stopPropagation();
 
         switch (event.key.toLowerCase()) {
@@ -169,7 +169,7 @@ export class TuiTagComponent {
         }
     }
 
-    onBlur(): void {
+    protected onBlur(): void {
         if (this.editedText !== null) {
             this.save(this.editedText);
         }

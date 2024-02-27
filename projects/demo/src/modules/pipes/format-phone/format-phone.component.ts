@@ -9,29 +9,29 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
     changeDetection,
 })
 export class ExampleTuiFormatPhoneComponent {
-    readonly exampleModule = import('./examples/import/import-module.md?raw');
-    readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
+    protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
     };
 
-    index = '+78005557778';
+    protected index = '+78005557778';
 
-    readonly countryCodes = [undefined, '+850', '+1', '+52'];
-    countryCode = this.countryCodes[0];
+    protected readonly countryCodes = [undefined, '+850', '+1', '+52'];
+    protected countryCode = this.countryCodes[0];
 
-    readonly phoneMasks = [
+    protected readonly phoneMasks = [
         undefined,
         '####-#############',
         '### ###-####',
         '### ###-####',
     ];
 
-    phoneMask = this.phoneMasks[0];
+    protected phoneMask = this.phoneMasks[0];
 
-    get maxLength(): number {
+    protected get maxLength(): number {
         return !this.countryCode || !this.phoneMask
             ? 12
             : this.countryCode.length + this.phoneMask.length - 2;

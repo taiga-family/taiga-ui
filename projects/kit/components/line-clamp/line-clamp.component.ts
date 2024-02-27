@@ -59,21 +59,21 @@ export class TuiLineClampComponent implements DoCheck, AfterViewInit {
     private initialized = false;
 
     @Input()
-    set linesLimit(linesLimit: number) {
+    public set linesLimit(linesLimit: number) {
         this.linesLimit$.next(linesLimit);
     }
 
     @Input()
-    lineHeight = 24;
+    public lineHeight = 24;
 
     @Input()
-    content: PolymorpheusContent;
+    public content: PolymorpheusContent;
 
     @Output()
-    readonly overflownChange: Observable<boolean> =
+    public readonly overflownChange: Observable<boolean> =
         this.isOverflown$.pipe(distinctUntilChanged());
 
-    lineClamp$ = this.linesLimit$.pipe(
+    protected lineClamp$ = this.linesLimit$.pipe(
         startWith(1),
         pairwise(),
         switchMap(([prev, next]) =>
@@ -90,7 +90,7 @@ export class TuiLineClampComponent implements DoCheck, AfterViewInit {
         this.skipInitialTransition();
     }
 
-    get overflown(): boolean {
+    protected get overflown(): boolean {
         if (!this.outlet) {
             return false;
         }
@@ -102,21 +102,21 @@ export class TuiLineClampComponent implements DoCheck, AfterViewInit {
         return scrollHeight - clientHeight > 4 || scrollWidth - clientWidth > 0;
     }
 
-    get computedContent(): PolymorpheusContent {
+    protected get computedContent(): PolymorpheusContent {
         return this.options.showHint && this.overflown ? this.content : '';
     }
 
     @HostListener('transitionend')
-    updateView(): void {
+    protected updateView(): void {
         this.cd.detectChanges();
     }
 
-    ngDoCheck(): void {
+    public ngDoCheck(): void {
         this.update();
         this.isOverflown$.next(this.overflown);
     }
 
-    ngAfterViewInit(): void {
+    public ngAfterViewInit(): void {
         this.initialized = true;
     }
 

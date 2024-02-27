@@ -25,7 +25,7 @@ export abstract class TuiPortalsComponent {
 
     protected readonly nothing = inject(TuiPortalService).attach(this);
 
-    addComponentChild<C>(component: PolymorpheusComponent<C>): ComponentRef<C> {
+    public addComponentChild<C>(component: PolymorpheusComponent<C>): ComponentRef<C> {
         const injector = component.createInjector(this.injector);
         const ref = this.vcr.createComponent(component.component, {injector});
 
@@ -34,7 +34,10 @@ export abstract class TuiPortalsComponent {
         return ref;
     }
 
-    addTemplateChild<C>(templateRef: TemplateRef<C>, context?: C): EmbeddedViewRef<C> {
+    public addTemplateChild<C>(
+        templateRef: TemplateRef<C>,
+        context?: C,
+    ): EmbeddedViewRef<C> {
         return this.vcr.createEmbeddedView(templateRef, context);
     }
 }
@@ -54,25 +57,25 @@ export abstract class TuiPortalService {
         return this.host;
     }
 
-    attach(host: TuiPortalsComponent): void {
+    public attach(host: TuiPortalsComponent): void {
         this.host = host;
     }
 
-    add<C>(component: PolymorpheusComponent<C>): ComponentRef<C> {
+    public add<C>(component: PolymorpheusComponent<C>): ComponentRef<C> {
         return this.safeHost.addComponentChild(component);
     }
 
-    remove<C>({hostView}: ComponentRef<C>): void {
+    public remove<C>({hostView}: ComponentRef<C>): void {
         if (!hostView.destroyed) {
             hostView.destroy();
         }
     }
 
-    addTemplate<C>(templateRef: TemplateRef<C>, context?: C): EmbeddedViewRef<C> {
+    public addTemplate<C>(templateRef: TemplateRef<C>, context?: C): EmbeddedViewRef<C> {
         return this.safeHost.addTemplateChild(templateRef, context);
     }
 
-    removeTemplate<C>(viewRef: EmbeddedViewRef<C>): void {
+    public removeTemplate<C>(viewRef: EmbeddedViewRef<C>): void {
         if (!viewRef.destroyed) {
             viewRef.destroy();
         }

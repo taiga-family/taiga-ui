@@ -10,7 +10,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiArcChartExample1 {
-    readonly value = [40, 30, 20, 10];
+    protected readonly value = [40, 30, 20, 10];
 
-    activeItemIndex = NaN;
+    protected activeItemIndex = NaN;
 }

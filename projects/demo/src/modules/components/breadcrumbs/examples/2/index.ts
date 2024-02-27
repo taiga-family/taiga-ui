@@ -17,7 +17,7 @@ import {tuiBreadcrumbsOptionsProvider} from '@taiga-ui/kit';
     ],
 })
 export class TuiBreadcrumbsExample2 {
-    readonly items = [
+    protected readonly items = [
         {
             caption: 'Open Source',
             link: 'https://github.com',
@@ -44,5 +44,5 @@ export class TuiBreadcrumbsExample2 {
         },
     ];
 
-    max = 4;
+    protected max = 4;
 }

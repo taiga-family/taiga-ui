@@ -11,11 +11,11 @@ import {TUI_ARROW} from '@taiga-ui/kit';
     changeDetection,
 })
 export class TuiDataListExample3 {
-    value = [];
+    protected value = [];
 
-    readonly burgers = ['Hamburger', 'Cheeseburger'];
+    protected readonly burgers = ['Hamburger', 'Cheeseburger'];
 
-    readonly drinks = ['Cola', 'Tea', 'Coffee', 'Slurm'];
+    protected readonly drinks = ['Cola', 'Tea', 'Coffee', 'Slurm'];
 
-    readonly arrow = TUI_ARROW;
+    protected readonly arrow = TUI_ARROW;
 }

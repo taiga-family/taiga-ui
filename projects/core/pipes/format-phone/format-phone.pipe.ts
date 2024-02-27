@@ -12,7 +12,7 @@ export class TuiFormatPhonePipe implements PipeTransform {
      * @param phoneMask
      * @return formatted phone number string +7(XXX)XXX-XX-XX
      */
-    transform(
+    public transform(
         value: string,
         countryCode = `${CHAR_PLUS}7`,
         phoneMask = '(###) ###-##-##',

@@ -27,7 +27,7 @@ export class TuiPdfViewerExample2 {
     private readonly alerts = inject(TuiAlertService);
     private readonly pdfService = inject(TuiPdfViewerService);
 
-    show(): void {
+    protected show(): void {
         const options: TuiPdfViewerOptions<Buttons> = {
             label: 'Taiga UI',
             actions: new PolymorpheusComponent(ActionsContentComponent),

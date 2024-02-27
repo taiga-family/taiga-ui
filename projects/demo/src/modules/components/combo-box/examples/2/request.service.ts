@@ -33,7 +33,7 @@ export class RequestService {
         shareReplay({bufferSize: 1, refCount: true}),
     );
 
-    request(query: string | null): Observable<readonly User[] | null> {
+    public request(query: string | null): Observable<readonly User[] | null> {
         this.request$.next(query || '');
 
         return this.response$;

@@ -51,9 +51,9 @@ export class TuiLineChartHintDirective implements AfterViewInit {
     private readonly hovered$ = inject(TuiHoveredService);
 
     @Input('tuiLineChartHint')
-    hint: PolymorpheusContent<TuiContext<readonly TuiPoint[]>>;
+    public hint: PolymorpheusContent<TuiContext<readonly TuiPoint[]>>;
 
-    ngAfterViewInit(): void {
+    public ngAfterViewInit(): void {
         combineLatest([tuiLineChartDrivers(this.charts), this.hovered$])
             .pipe(
                 filter(result => !result.some(Boolean)),
@@ -66,12 +66,12 @@ export class TuiLineChartHintDirective implements AfterViewInit {
     }
 
     // _chart is required by TuiLineDaysChartComponent that impersonates this directive
-    getContext(index: number, _chart: TuiLineChartComponent): readonly TuiPoint[] {
+    public getContext(index: number, _chart: TuiLineChartComponent): readonly TuiPoint[] {
         return this.computeContext(...this.charts.map(({value}) => value))[index];
     }
 
     // _chart is required by TuiLineDaysChartComponent that impersonates this directive
-    raise(index: number, _chart: TuiLineChartComponent): void {
+    public raise(index: number, _chart: TuiLineChartComponent): void {
         const current = this.charts.map(chart => chart.value[index]);
         const sorted = [...current].sort((a, b) => a[1] - b[1]);
 

@@ -8,11 +8,11 @@ import type {TuiLetDirective} from './let.directive';
 export class TuiLetContext<T> implements TuiContext<T> {
     constructor(private readonly internalDirectiveInstance: TuiLetDirective<T>) {}
 
-    get $implicit(): T {
+    public get $implicit(): T {
         return this.internalDirectiveInstance.tuiLet;
     }
 
-    get tuiLet(): T {
+    public get tuiLet(): T {
         return this.internalDirectiveInstance.tuiLet;
     }
 }

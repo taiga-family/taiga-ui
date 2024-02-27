@@ -7,7 +7,7 @@ import {Directive, ElementRef, inject} from '@angular/core';
 export class TuiElementDirective<T extends Element = HTMLElement>
     implements ElementRef<T>
 {
-    nativeElement = inject(ElementRef<T>).nativeElement;
+    public nativeElement = inject(ElementRef<T>).nativeElement;
 
     constructor() {
         /**
