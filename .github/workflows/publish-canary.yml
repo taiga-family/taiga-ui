@@ -9,12 +9,12 @@ jobs:
     name: Packages
     runs-on: ubuntu-latest
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.51.11
+      - uses: taiga-family/ci/actions/setup/checkout@v1.51.12
         with:
           ref: v3.x
-      - uses: taiga-family/ci/actions/setup/variables@v1.51.11
-      - uses: taiga-family/ci/actions/setup/node@v1.51.11
-      - uses: taiga-family/ci/actions/setup/config/npm@v1.51.11
+      - uses: taiga-family/ci/actions/setup/variables@v1.51.12
+      - uses: taiga-family/ci/actions/setup/node@v1.51.12
+      - uses: taiga-family/ci/actions/setup/config/npm@v1.51.12
         with:
           token: ${{ secrets.TAIGA_UI_SCOPE_NPM_TOKEN }}
       - run: npm run run-many:build:libs
