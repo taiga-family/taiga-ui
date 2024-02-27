@@ -59,7 +59,7 @@ import {
     tuiDateStreamWithTransformer,
     TuiInputDateOptions,
 } from '@taiga-ui/kit/tokens';
-import {combineLatest, Observable, timer} from 'rxjs';
+import {BehaviorSubject, combineLatest, Observable, timer} from 'rxjs';
 import {map, takeUntil} from 'rxjs/operators';
 
 @Component({
@@ -83,6 +83,7 @@ export class TuiInputDateTimeComponent
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
     private month: TuiMonth | null = null;
+    private readonly timeMode$ = new BehaviorSubject<TuiTimeMode>('HH:MM');
 
     @Input()
     min: TuiDay | [TuiDay | null, TuiTime | null] | null = this.options.min;
@@ -97,7 +98,13 @@ export class TuiInputDateTimeComponent
     defaultActiveYearMonth = TuiMonth.currentLocal();
 
     @Input()
-    timeMode: TuiTimeMode = 'HH:MM';
+    set timeMode(value: TuiTimeMode) {
+        this.timeMode$.next(value);
+    }
+
+    get timeMode(): TuiTimeMode {
+        return this.timeMode$.value;
+    }
 
     open = false;
 
@@ -109,8 +116,13 @@ export class TuiInputDateTimeComponent
                 changeDateSeparator(dateTexts[this.dateFormat], this.dateSeparator),
             ),
         ),
-        this.timeTexts$.pipe(map(texts => texts[this.timeMode])),
-    ]).pipe(map(fillers => this.getDateTimeString(...fillers)));
+        this.timeTexts$,
+        this.timeMode$,
+    ]).pipe(
+        map(([dateFiller, timeTexts, timeMode]) =>
+            this.getDateTimeString(dateFiller, timeTexts[timeMode]),
+        ),
+    );
 
     constructor(
         @Optional()
