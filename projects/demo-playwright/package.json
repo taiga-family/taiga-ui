@@ -2,6 +2,6 @@
     "name": "@taiga-ui/demo-playwright",
     "private": true,
     "devDependencies": {
-        "@playwright/test": "1.41.2"
+        "@playwright/test": "1.42.0"
     }
 }
