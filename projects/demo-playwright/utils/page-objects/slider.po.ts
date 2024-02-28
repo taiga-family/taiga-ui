@@ -3,11 +3,11 @@ import {expect, Locator} from '@playwright/test';
 export class TuiSliderPO {
     constructor(private readonly host: Locator) {}
 
-    protected get value(): Promise<number> {
+    public get value(): Promise<number> {
         return this.host.inputValue().then(Number);
     }
 
-    protected get fillPercentage(): Promise<number> {
+    public get fillPercentage(): Promise<number> {
         return this.host.evaluate(el =>
             Math.round(
                 parseFloat(
@@ -19,7 +19,7 @@ export class TuiSliderPO {
         );
     }
 
-    protected async setValue(value: number): Promise<void> {
+    public async setValue(value: number): Promise<void> {
         await this.host.evaluate((el: HTMLInputElement, newValue: number) => {
             el.value = `${newValue}`;
             el.dispatchEvent(new Event('input'));

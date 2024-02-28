@@ -1,8 +1,8 @@
 import {Locator} from '@playwright/test';
 
 export class TuiInputPhonePO {
-    protected readonly textfield = this.host.getByRole('textbox');
-    protected readonly cleaner = this.host.locator(
+    public readonly textfield = this.host.getByRole('textbox');
+    public readonly cleaner = this.host.locator(
         '[automation-id="tui-primitive-textfield__cleaner"]',
     );
 

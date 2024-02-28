@@ -1,18 +1,18 @@
 import {expect, Locator} from '@playwright/test';
 
 export class TuiTextfieldWithDataListPO {
-    protected readonly textfield: Locator = this.host.getByRole('textbox');
-    protected readonly dropdown = this.host.page().locator('tui-dropdown');
+    public readonly textfield: Locator = this.host.getByRole('textbox');
+    public readonly dropdown = this.host.page().locator('tui-dropdown');
 
     constructor(protected readonly host: Locator) {}
 
-    protected async getOptions(): Promise<Locator[]> {
+    public async getOptions(): Promise<Locator[]> {
         await expect(this.dropdown).toBeAttached();
 
         return this.dropdown.locator('[tuiOption]').all();
     }
 
-    protected async selectOptions(indexes: number[]): Promise<void> {
+    public async selectOptions(indexes: number[]): Promise<void> {
         const options = await this.getOptions();
 
         for (const optionIndex of indexes) {
@@ -20,9 +20,9 @@ export class TuiTextfieldWithDataListPO {
         }
     }
 
-    protected async scrollDropdown(x: number, y: number): Promise<void>;
-    protected async scrollDropdown(options?: ScrollToOptions): Promise<void>;
-    protected async scrollDropdown(...args: any[]): Promise<void> {
+    public async scrollDropdown(x: number, y: number): Promise<void>;
+    public async scrollDropdown(options?: ScrollToOptions): Promise<void>;
+    public async scrollDropdown(...args: any[]): Promise<void> {
         await this.dropdown
             .locator('tui-scrollbar')
             .evaluate((el, args) => el.scrollTo(...args), args);
@@ -30,7 +30,7 @@ export class TuiTextfieldWithDataListPO {
         return this.host.page().waitForTimeout(100); // flaky free
     }
 
-    protected async closeDropdown(): Promise<void> {
+    public async closeDropdown(): Promise<void> {
         await this.host.press('Escape');
 
         await expect(this.dropdown).not.toBeAttached();

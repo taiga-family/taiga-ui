@@ -9,7 +9,7 @@ test.describe('InputExpire', () => {
 
         const {apiPageExample} = new TuiDocumentationPagePO(page);
 
-        ({expiryTextfield} = new TuiInputCardPO(apiPageExample));
+        expiryTextfield = new TuiInputCardPO(apiPageExample).expiryTextfield;
         await expect(expiryTextfield).toBeEmpty();
     });
 
