@@ -271,7 +271,7 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
         }
     }
 
-    protected readonly close = (): void => this.updateOpen(false);
+    public readonly close = (): void => this.updateOpen(false);
 
     private get hostEditable(): boolean {
         return tuiIsElementEditable(this.computedHost);

@@ -214,7 +214,7 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
         this.scrollToActiveYear();
     }
 
-    protected setYear(year: number): void {
+    public setYear(year: number): void {
         if (this.activeYear === year) {
             return;
         }

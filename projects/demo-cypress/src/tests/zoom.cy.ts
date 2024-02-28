@@ -16,7 +16,7 @@ describe('TuiZoom', () => {
         `,
     })
     class TestComponent {
-        protected scale = 1;
+        public scale = 1;
 
         protected onZoom({delta}: TuiZoom): void {
             this.scale -= delta;

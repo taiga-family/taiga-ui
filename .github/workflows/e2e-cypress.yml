@@ -14,6 +14,7 @@ jobs:
       - uses: taiga-family/ci/actions/setup/checkout@v1.51.12
       - uses: taiga-family/ci/actions/setup/variables@v1.51.12
       - uses: taiga-family/ci/actions/setup/node@v1.51.12
+      - run: npx tsc -p projects/demo-cypress/tsconfig.json
       - run: npx nx component-test demo-cypress
 
 concurrency:
