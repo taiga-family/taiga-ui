@@ -124,7 +124,7 @@
         "@taiga-ui/stylelint-config": "0.18.0",
         "@taiga-ui/tsconfig": "0.16.0",
         "@types/glob": "8.1.0",
-        "@types/node": "20.11.20",
+        "@types/node": "20.11.21",
         "@types/webpack-env": "1.18.4",
         "cpy-cli": "5.0.0",
         "eslint": "8.57.0",
