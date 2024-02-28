@@ -2,8 +2,25 @@
 
 [tuiLabel] {
     display: flex;
-    flex-direction: column;
     gap: 0.25rem;
     font: var(--tui-font-text-s);
     color: var(--tui-text-01);
+
+    input[type='checkbox'],
+    input[type='radio'] {
+        margin-inline-end: 0.5rem;
+
+        &[data-size='s'] {
+            margin-inline-end: 0.25rem;
+            margin-top: 0.125rem;
+        }
+    }
+
+    [tuiTitle] {
+        margin-top: 0.125rem;
+    }
+
+    [tuiSubtitle] {
+        color: var(--tui-text-02);
+    }
 }

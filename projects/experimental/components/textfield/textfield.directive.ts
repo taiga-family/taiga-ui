@@ -3,12 +3,13 @@ import {TuiIdService, TuiNativeValidatorDirective} from '@taiga-ui/cdk';
 import {TuiAppearanceDirective, TuiInteractiveStateT} from '@taiga-ui/core';
 
 import {TuiTextfieldComponent} from './textfield.component';
+import {TUI_TEXTFIELD_OPTIONS} from './textfield.options';
 
 @Directive({
     standalone: true,
     selector: 'input[tuiTextfield]',
     host: {
-        '[id]': 'el.id || this.idService.generate()',
+        '[id]': 'el.id || id',
         '[readOnly]': 'readOnly',
         '[class._readonly]': 'readOnly',
         '[class._empty]': 'el.value === ""',
@@ -21,30 +22,32 @@ import {TuiTextfieldComponent} from './textfield.component';
 })
 export class TuiTextfieldDirective implements DoCheck {
     private readonly appearance = inject(TuiAppearanceDirective);
+    private readonly options = inject(TUI_TEXTFIELD_OPTIONS);
+
     protected readonly textfield = inject(TuiTextfieldComponent);
+    protected readonly id = inject(TuiIdService).generate();
 
     @Input()
-    public readOnly = false;
+    readOnly = false;
 
     @Input()
-    public invalid: boolean | null = null;
+    invalid: boolean | null = null;
 
     @Input()
-    public focused: boolean | null = null;
+    focused: boolean | null = null;
 
     @Input()
-    public state: TuiInteractiveStateT | null = null;
+    state: TuiInteractiveStateT | null = null;
 
-    protected readonly idService = inject(TuiIdService);
-    public readonly el: HTMLInputElement = inject(ElementRef).nativeElement;
+    readonly el: HTMLInputElement = inject(ElementRef).nativeElement;
 
-    public ngDoCheck(): void {
-        this.appearance.tuiAppearance = this.textfield.options.appearance;
+    ngDoCheck(): void {
+        this.appearance.tuiAppearance = this.options.appearance;
         this.appearance.tuiAppearanceFocus = this.focused ?? this.textfield.focused;
         this.appearance.tuiAppearanceState = this.state;
     }
 
-    public setValue(value: string): void {
+    setValue(value: string): void {
         this.el.value = value;
         this.el.dispatchEvent(new Event('input'));
     }

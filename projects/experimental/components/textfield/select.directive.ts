@@ -20,6 +20,7 @@ import {TuiTextfieldDirective} from './textfield.directive';
         },
     ],
     host: {
+        '[id]': 'el.id || id',
         '(keydown.space.prevent)': '0',
         '(keydown.enter.prevent)': '0',
         '(keydown.backspace)': 'setValue("")',
@@ -35,7 +36,7 @@ export class TuiSelectDirective extends TuiTextfieldDirective {
     private readonly control = inject(NgControl);
 
     @Input()
-    public placeholder = '';
+    placeholder = '';
 
     protected get value(): string {
         return this.textfield.stringify(this.control.value);
@@ -45,7 +46,7 @@ export class TuiSelectDirective extends TuiTextfieldDirective {
         await this.nav.clipboard.writeText(this.el.value);
     }
 
-    public override setValue(value: string): void {
+    override setValue(value: string): void {
         this.control.control?.setValue(value);
     }
 }

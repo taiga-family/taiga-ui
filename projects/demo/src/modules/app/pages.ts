@@ -933,6 +933,12 @@ export const pages: TuiDocPages = [
     },
     {
         section: 'Experimental',
+        title: 'Label ',
+        keywords: 'лэйбл, метка, форма, label',
+        route: '/experimental/label',
+    },
+    {
+        section: 'Experimental',
         title: 'Header',
         keywords: 'header, заголовок, item',
         route: '/experimental/header',

@@ -373,6 +373,14 @@ export const ROUTES: Routes = [
         },
     },
     {
+        path: 'experimental/label',
+        loadChildren: async () =>
+            (await import('../experimental/label/label.module')).ExampleTuiLabelModule,
+        data: {
+            title: 'Label ',
+        },
+    },
+    {
         path: 'experimental/progress-segmented',
         loadChildren: async () =>
             (await import('../experimental/progress-segmented/progress-segmented.module'))
