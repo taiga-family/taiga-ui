@@ -99,6 +99,7 @@ export const TUI_USED_ICONS = [
     'tuiIconPauseLarge',
     'tuiIconBox',
     'tuiIconLock',
+    'tuiIconGiftLarge',
     'tuiIconUsers',
     'tuiIconClock',
     'tuiIconArrowRightCircleLarge',
