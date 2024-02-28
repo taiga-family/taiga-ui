@@ -22,8 +22,8 @@ import {TuiDocCodeModule, TuiRawLoaderContent} from '@taiga-ui/addon-doc';
 })
 export class TuiSetupComponent {
     @Input()
-    import: TuiRawLoaderContent = '';
+    public import: TuiRawLoaderContent = '';
 
     @Input()
-    template: TuiRawLoaderContent = '';
+    public template: TuiRawLoaderContent = '';
 }

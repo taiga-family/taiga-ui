@@ -36,7 +36,7 @@ export class TuiSelectDirective extends TuiTextfieldDirective {
     private readonly control = inject(NgControl);
 
     @Input()
-    placeholder = '';
+    public placeholder = '';
 
     protected get value(): string {
         return this.textfield.stringify(this.control.value);
@@ -46,7 +46,7 @@ export class TuiSelectDirective extends TuiTextfieldDirective {
         await this.nav.clipboard.writeText(this.el.value);
     }
 
-    override setValue(value: string): void {
+    public override setValue(value: string): void {
         this.control.control?.setValue(value);
     }
 }

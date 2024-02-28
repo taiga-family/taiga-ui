@@ -84,13 +84,13 @@ export class TuiTextfieldComponent<T>
     protected readonly label?: unknown;
 
     @Input()
-    filler = '';
+    public filler = '';
 
     @Input()
-    stringify: TuiStringHandler<T> = String;
+    public stringify: TuiStringHandler<T> = String;
 
     @Input()
-    content: PolymorpheusContent<TuiTextfieldContext<T>>;
+    public content: PolymorpheusContent<TuiTextfieldContext<T>>;
 
     protected side = 0;
 
@@ -101,8 +101,8 @@ export class TuiTextfieldComponent<T>
     protected readonly control = inject(NgControl, {optional: true});
 
     // TODO: Refactor
-    readonly focusedChange = EMPTY;
-    get nativeFocusableElement(): HTMLInputElement {
+    public readonly focusedChange = EMPTY;
+    public get nativeFocusableElement(): HTMLInputElement {
         return this.el;
     }
 
@@ -121,11 +121,11 @@ export class TuiTextfieldComponent<T>
         return filler.length > value.length ? filler : '';
     }
 
-    get id(): string {
+    protected get id(): string {
         return this.el.id || '';
     }
 
-    get focused(): boolean {
+    public get focused(): boolean {
         return !!this.dropdown?.dropdown || tuiIsNativeFocused(this.directive?.el);
     }
 
@@ -137,7 +137,7 @@ export class TuiTextfieldComponent<T>
         );
     }
 
-    handleOption(option: T): void {
+    public handleOption(option: T): void {
         this.directive?.setValue(this.stringify(option));
         this.dropdown?.toggle(false);
     }
