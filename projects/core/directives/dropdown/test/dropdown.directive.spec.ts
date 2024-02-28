@@ -32,7 +32,7 @@ describe('TuiDropdownDirective', () => {
         `,
     })
     class TestComponent {
-        protected open = false;
+        public open = false;
     }
 
     let fixture: ComponentFixture<TestComponent>;

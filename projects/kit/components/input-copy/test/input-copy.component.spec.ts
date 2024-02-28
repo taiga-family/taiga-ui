@@ -18,11 +18,11 @@ describe('InputCopy', () => {
     })
     class TestComponent {
         @ViewChild(TuiInputCopyComponent, {static: true})
-        protected component!: TuiInputCopyComponent;
+        public component!: TuiInputCopyComponent;
 
-        protected control = new FormControl();
-        protected readOnly = false;
-        protected size: TuiSizeL | TuiSizeS = 'm';
+        public control = new FormControl();
+        public readOnly = false;
+        public size: TuiSizeL | TuiSizeS = 'm';
     }
 
     let fixture: ComponentFixture<TestComponent>;

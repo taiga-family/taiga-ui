@@ -33,15 +33,15 @@ describe('PrimitiveCalendar', () => {
     })
     class TestComponent {
         @ViewChild(TuiPrimitiveCalendarComponent, {static: true})
-        protected component!: TuiPrimitiveCalendarComponent;
+        public component!: TuiPrimitiveCalendarComponent;
 
-        protected month = new TuiMonth(2018, 1);
+        public month = new TuiMonth(2018, 1);
 
-        protected value: TuiDayRange | null = null;
+        public value: TuiDayRange | null = null;
 
-        protected disabledItemHandler: TuiBooleanHandler<TuiDay> = ALWAYS_FALSE_HANDLER;
+        public disabledItemHandler: TuiBooleanHandler<TuiDay> = ALWAYS_FALSE_HANDLER;
 
-        protected onDayClick(_: TuiDay): void {}
+        public onDayClick(_: TuiDay): void {}
     }
 
     let fixture: ComponentFixture<TestComponent>;

@@ -74,38 +74,38 @@ describe('TuiHostedDropdown', () => {
     })
     class TestComponent {
         @ViewChild(TuiPrimitiveTextfieldComponent)
-        protected tuiTextfield!: TuiPrimitiveTextfieldComponent;
+        public tuiTextfield!: TuiPrimitiveTextfieldComponent;
 
         @ViewChild(TuiButtonComponent, {read: ElementRef})
-        protected tuiButton!: ElementRef<HTMLElement>;
+        public tuiButton!: ElementRef<HTMLElement>;
 
         @ViewChild('host')
-        protected target!: ElementRef<HTMLElement>;
+        public target!: ElementRef<HTMLElement>;
 
-        protected open = false;
-        protected items = ['Item 1', 'Item 2'];
-        protected mode: 'can-not-open' | 'default' | 'input' | 'targeted' = 'default';
-        protected canOpen = true;
+        public open = false;
+        public items = ['Item 1', 'Item 2'];
+        public mode: 'can-not-open' | 'default' | 'input' | 'targeted' = 'default';
+        public canOpen = true;
 
-        protected escCaught = false;
+        public escCaught = false;
 
-        protected get input(): boolean {
+        public get input(): boolean {
             return this.mode === 'input';
         }
 
-        protected get default(): boolean {
+        public get default(): boolean {
             return this.mode === 'default';
         }
 
-        protected get targeted(): boolean {
+        public get targeted(): boolean {
             return this.mode === 'targeted';
         }
 
-        protected get canNotOpen(): boolean {
+        public get canNotOpen(): boolean {
             return this.mode === 'can-not-open';
         }
 
-        protected onEsc(): void {
+        public onEsc(): void {
             this.escCaught = true;
         }
     }

@@ -19,20 +19,20 @@ describe('Axes', () => {
     })
     class TestComponent {
         @ViewChild('defaultValues')
-        protected readonly defaultValues!: TuiAxesComponent;
+        public readonly defaultValues!: TuiAxesComponent;
 
         @ViewChild('customValues')
-        protected readonly customValues!: TuiAxesComponent;
+        public readonly customValues!: TuiAxesComponent;
 
-        protected axisXLabels = ['Label 1', 'Label 2'];
+        public axisXLabels = ['Label 1', 'Label 2'];
 
-        protected axisYLabels = ['', 'Label 2', 'Label 3'];
+        public axisYLabels = ['', 'Label 2', 'Label 3'];
 
-        protected axisYSecondaryLabels = ['', 'Label 2', 'Label 3'];
+        public axisYSecondaryLabels = ['', 'Label 2', 'Label 3'];
 
-        protected axisYName = '';
+        public axisYName = '';
 
-        protected axisYSecondaryName = '';
+        public axisYSecondaryName = '';
     }
 
     let fixture: ComponentFixture<TestComponent>;

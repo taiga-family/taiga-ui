@@ -71,7 +71,7 @@ export class TuiInputMonthComponent
 
     protected activeYear?: TuiYear;
 
-    protected open = false;
+    public open = false;
 
     protected readonly formatter = inject(TUI_MONTH_FORMATTER);
 
@@ -145,7 +145,7 @@ export class TuiInputMonthComponent
         this.onOpenChange(!this.nativePicker);
     }
 
-    protected onMonthClick(month: TuiMonth): void {
+    public onMonthClick(month: TuiMonth): void {
         this.value = month;
         this.close();
     }

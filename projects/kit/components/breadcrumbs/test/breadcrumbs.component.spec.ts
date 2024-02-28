@@ -42,11 +42,11 @@ describe('Breadcrumbs Wrapper', () => {
     })
     class TestComponent {
         @ViewChild(TuiBreadcrumbsComponent, {static: true})
-        protected component!: TuiBreadcrumbsComponent;
+        public component!: TuiBreadcrumbsComponent;
 
-        protected items = ITEMS;
+        public items = ITEMS;
 
-        protected size: TuiSizeL = 'm';
+        public size: TuiSizeL = 'm';
     }
 
     let fixture: ComponentFixture<TestComponent>;

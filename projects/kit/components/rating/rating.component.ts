@@ -63,7 +63,7 @@ export class TuiRatingComponent
         return !(this.readOnly || this.disabled);
     }
 
-    protected get percent(): number {
+    public get percent(): number {
         return tuiClamp((100 * this.value) / this.max, 0, 100);
     }
 
@@ -73,7 +73,7 @@ export class TuiRatingComponent
         this.updateFocused(focused);
     }
 
-    protected setRateByReverseIndex(index: number): void {
+    public setRateByReverseIndex(index: number): void {
         const reversedIndex = this.max - index;
 
         if (reversedIndex <= this.min) {
@@ -83,7 +83,7 @@ export class TuiRatingComponent
         this.value = reversedIndex;
     }
 
-    protected setRate(value: number): void {
+    public setRate(value: number): void {
         this.value = value;
     }
 

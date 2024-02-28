@@ -35,7 +35,7 @@ describe('TuiAutoFocus directive', () => {
         })
         class TestComponentWithDiv {
             @ViewChild(TuiAutoFocusDirective, {read: ElementRef})
-            protected element!: ElementRef<HTMLElement>;
+            public element!: ElementRef<HTMLElement>;
         }
 
         let fixture: ComponentFixture<TestComponentWithDiv>;
@@ -74,7 +74,7 @@ describe('TuiAutoFocus directive', () => {
         })
         class TestFocusableComponent implements TuiFocusableElementAccessor {
             @ViewChild('input')
-            protected input?: ElementRef<HTMLInputElement>;
+            public input?: ElementRef<HTMLInputElement>;
 
             public focusedChange = EMPTY;
 
@@ -97,7 +97,7 @@ describe('TuiAutoFocus directive', () => {
         })
         class TestComponentWithTuiButton {
             @ViewChild(TestFocusableComponent)
-            protected focusable!: TestFocusableComponent;
+            public focusable!: TestFocusableComponent;
         }
 
         let fixture: ComponentFixture<TestComponentWithTuiButton>;
@@ -132,7 +132,7 @@ describe('TuiAutoFocus directive', () => {
         })
         class TestComponentIos {
             @ViewChild(TuiAutoFocusDirective, {read: ElementRef})
-            protected element!: ElementRef<HTMLElement>;
+            public element!: ElementRef<HTMLElement>;
         }
 
         let fixture: ComponentFixture<TestComponentIos>;
@@ -194,9 +194,9 @@ describe('TuiAutoFocus directive', () => {
         })
         class TestComponentWithFocusFlag {
             @ViewChild(TuiAutoFocusDirective, {read: ElementRef})
-            protected element!: ElementRef<HTMLElement>;
+            public element!: ElementRef<HTMLElement>;
 
-            protected autoFocus = false;
+            public autoFocus = false;
         }
 
         let fixture: ComponentFixture<TestComponentWithFocusFlag>;

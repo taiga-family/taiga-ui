@@ -1,8 +1,9 @@
 {
     "extends": "./tsconfig.json",
-    "exclude": ["projects/demo-cypress", "**/scripts/**/*.ts"],
+    "exclude": ["projects/demo-cypress", "projects/demo-playwright", "**/scripts/**/*.ts"],
+    "include": ["**/*.spec.ts", "**/*.d.ts"],
     "compilerOptions": {
         "target": "es2016",
-        "types": ["jest", "node", "webpack-env", "ng-dev-mode"]
+        "types": ["jest", "node", "webpack-env"]
     }
 }

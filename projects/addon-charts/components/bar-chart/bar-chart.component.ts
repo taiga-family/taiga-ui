@@ -54,15 +54,15 @@ export class TuiBarChartComponent {
         return this.hintOptions?.content || '';
     }
 
-    protected get transposed(): ReadonlyArray<readonly number[]> {
+    public get transposed(): ReadonlyArray<readonly number[]> {
         return this.transpose(this.value);
     }
 
-    protected get computedMax(): number {
+    public get computedMax(): number {
         return this.max || this.getMax(this.value, this.collapsed);
     }
 
-    protected readonly percentMapper: TuiTypedMapper<
+    public readonly percentMapper: TuiTypedMapper<
         [readonly number[], boolean, number],
         number
     > = (set, collapsed, max) =>

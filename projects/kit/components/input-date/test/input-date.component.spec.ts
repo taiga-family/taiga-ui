@@ -39,21 +39,21 @@ describe('InputDate', () => {
     })
     class TestComponent {
         @ViewChild(TuiInputDateComponent)
-        protected readonly component!: TuiInputDateComponent;
+        public readonly component!: TuiInputDateComponent;
 
-        protected control = new FormControl(new TuiDay(2017, 2, 1));
+        public control = new FormControl<Date | TuiDay>(new TuiDay(2017, 2, 1));
 
-        protected cleaner = false;
+        public cleaner = false;
 
-        protected readOnly = false;
+        public readOnly = false;
 
-        protected min = new TuiDay(1900, 0, 1);
+        public min = new TuiDay(1900, 0, 1);
 
-        protected labelOutside = false;
+        public labelOutside = false;
 
-        protected size: TuiSizeL | TuiSizeS = 'm';
+        public size: TuiSizeL | TuiSizeS = 'm';
 
-        protected hintContent: string | null = 'prompt';
+        public hintContent: string | null = 'prompt';
     }
 
     let fixture: ComponentFixture<TestComponent>;
@@ -198,7 +198,7 @@ describe('InputDate', () => {
         it('accepts yyyy.mm.dd', () => {
             inputPO.sendText('2021.12.23');
 
-            const typedDay = testComponent.control.value;
+            const typedDay = testComponent.control.value as TuiDay;
 
             expect(inputPO.value).toBe('2021.12.23');
             expect(typedDay.day).toBe(23);
@@ -209,7 +209,7 @@ describe('InputDate', () => {
         it('does not accept mm.dd.yyyy (and set min day if it is less min day)', () => {
             inputPO.sendText('12.23.2021');
 
-            const typedDay = testComponent.control.value;
+            const typedDay = testComponent.control.value as TuiDay;
 
             expect(inputPO.value).toBe('1900.01.01');
             expect(typedDay.day).toBe(1);
@@ -245,7 +245,7 @@ describe('InputDate', () => {
         it('accepts mm.dd.yyyy', () => {
             inputPO.sendText('12.23.2021');
 
-            const typedDay = testComponent.control.value;
+            const typedDay = testComponent.control.value as TuiDay;
 
             expect(inputPO.value).toBe('12.23.2021');
             expect(typedDay.day).toBe(23);
@@ -256,7 +256,7 @@ describe('InputDate', () => {
         it('does not accept yyyy.mm.dd (and set min day if it is less min day)', () => {
             inputPO.sendText('2021.12.23');
 
-            const typedDay = testComponent.control.value;
+            const typedDay = testComponent.control.value as TuiDay;
 
             expect(inputPO.value).toBe('01.01.1900');
             expect(typedDay.day).toBe(1);
@@ -295,7 +295,7 @@ describe('InputDate', () => {
         it('accepts valid mm/dd/yyyy', () => {
             inputPO.sendText('12272021');
 
-            const typedDay = testComponent.control.value;
+            const typedDay = testComponent.control.value as TuiDay;
 
             expect(inputPO.value).toBe('12/27/2021');
             expect(typedDay.day).toBe(27);
@@ -306,7 +306,7 @@ describe('InputDate', () => {
         it('replaces dots by custom separator', () => {
             inputPO.sendText('05.14.1988');
 
-            const typedDay = testComponent.control.value;
+            const typedDay = testComponent.control.value as TuiDay;
 
             expect(inputPO.value).toBe('05/14/1988');
             expect(typedDay.day).toBe(14);

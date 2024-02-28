@@ -18,13 +18,13 @@ describe('PrimitiveYearMonthPaginationComponent', () => {
     })
     class TestComponent {
         @ViewChild(TuiPrimitiveYearMonthPaginationComponent)
-        protected readonly component!: TuiPrimitiveYearMonthPaginationComponent;
+        public readonly component!: TuiPrimitiveYearMonthPaginationComponent;
 
-        protected min = new TuiMonth(1900, 6);
+        public min = new TuiMonth(1900, 6);
 
-        protected max = new TuiMonth(2100, 6);
+        public max = new TuiMonth(2100, 6);
 
-        protected value = new TuiMonth(2000, 6);
+        public value = new TuiMonth(2000, 6);
     }
 
     let fixture: ComponentFixture<TestComponent>;

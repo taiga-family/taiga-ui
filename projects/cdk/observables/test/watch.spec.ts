@@ -19,7 +19,7 @@ describe('tuiWatch operator function', () => {
     it('initially emits nothing, after event emits "true" and after a tick emits "false"', fakeAsync(() => {
         $.pipe(tuiWatch(chrStub)).subscribe();
 
-        $.next();
+        $.next(undefined);
         tick();
 
         expect(called).toBe(1);

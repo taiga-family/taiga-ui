@@ -2,6 +2,7 @@ import {Component, TemplateRef, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiInputCardComponent, TuiInputCardModule} from '@taiga-ui/addon-commerce';
+import {Mock} from 'jest-mock';
 
 describe('InputCard', () => {
     @Component({
@@ -18,14 +19,14 @@ describe('InputCard', () => {
     })
     class TestComponent {
         @ViewChild(TuiInputCardComponent, {static: true})
-        protected component!: TuiInputCardComponent;
+        public component!: TuiInputCardComponent;
 
         @ViewChild('customIconTemplateRef', {read: TemplateRef})
-        protected customIconTemplateRef!: TemplateRef<any>;
+        public customIconTemplateRef!: TemplateRef<any>;
 
-        protected control = new FormControl('');
+        public control = new FormControl('');
 
-        protected onBinChange = jest.fn();
+        public onBinChange: (event: string | null) => void = jest.fn();
     }
 
     let fixture: ComponentFixture<TestComponent>;
@@ -97,7 +98,7 @@ describe('InputCard', () => {
 
         it('The value has changed, the first 6 characters are unchanged', () => {
             testComponent.control.setValue('123456789');
-            testComponent.onBinChange.mockClear();
+            (testComponent.onBinChange as Mock).mockClear();
             testComponent.control.setValue('123456987');
 
             expect(testComponent.onBinChange).not.toHaveBeenCalled();
@@ -105,7 +106,7 @@ describe('InputCard', () => {
 
         it('The value has changed, the first 6 characters have changed', () => {
             testComponent.control.setValue('123456789');
-            testComponent.onBinChange.mockClear();
+            (testComponent.onBinChange as Mock).mockClear();
             testComponent.control.setValue('654321789');
 
             expect(testComponent.onBinChange).toHaveBeenCalledWith('654321');
@@ -113,7 +114,7 @@ describe('InputCard', () => {
 
         it('The value has changed to less than 6 characters', () => {
             testComponent.control.setValue('123456789');
-            testComponent.onBinChange.mockClear();
+            (testComponent.onBinChange as Mock).mockClear();
             testComponent.control.setValue('123');
 
             expect(testComponent.onBinChange).toHaveBeenCalledWith(null);

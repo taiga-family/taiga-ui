@@ -70,7 +70,7 @@ export class TuiFilterComponent<T> extends AbstractTuiMultipleControl<T> {
         return badgeSizeMap[this.size];
     }
 
-    protected onCheckbox(value: boolean, item: T): void {
+    public onCheckbox(value: boolean, item: T): void {
         this.toggledItem.emit(item);
         this.value = value
             ? [...this.value, item]

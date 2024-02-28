@@ -38,24 +38,24 @@ describe('InputDateRangeComponent', () => {
     })
     class TestComponent {
         @ViewChild(TuiInputDateRangeComponent)
-        protected readonly component!: TuiInputDateRangeComponent;
+        public readonly component!: TuiInputDateRangeComponent;
 
-        protected readonly control = new FormControl(
+        public readonly control = new FormControl<TuiDayRange | [Date, Date] | null>(
             new TuiDayRange(
                 TuiDay.currentLocal().append({day: -2}),
                 TuiDay.currentLocal().append({day: -2}),
             ),
         );
 
-        protected cleaner = false;
+        public cleaner = false;
 
-        protected readOnly = false;
+        public readOnly = false;
 
-        protected items: readonly TuiDayRangePeriod[] = [];
+        public items: readonly TuiDayRangePeriod[] = [];
 
-        protected min = new TuiDay(1900, 0, 1);
+        public min = new TuiDay(1900, 0, 1);
 
-        protected max = TUI_LAST_DAY;
+        public max = TUI_LAST_DAY;
     }
 
     let fixture: ComponentFixture<TestComponent>;
@@ -150,9 +150,11 @@ describe('InputDateRangeComponent', () => {
             it('When entering two dates, the control value is updated', () => {
                 inputPO.sendText(`15.07.2000${RANGE_SEPARATOR_CHAR}15.07.2020`);
 
-                expect(testComponent.control.value.getFormattedDayRange('DMY', '.')).toBe(
-                    `15.07.2000${RANGE_SEPARATOR_CHAR}15.07.2020`,
-                );
+                expect(
+                    (
+                        testComponent.control.value as TuiDayRange | null
+                    )?.getFormattedDayRange('DMY', '.'),
+                ).toBe(`15.07.2000${RANGE_SEPARATOR_CHAR}15.07.2020`);
             });
 
             it('When entering two dates, the value is truncated by min / max is updated', () => {
@@ -161,9 +163,11 @@ describe('InputDateRangeComponent', () => {
                 fixture.detectChanges();
                 inputPO.sendText(`15.07.2000${RANGE_SEPARATOR_CHAR}15.07.2020`);
 
-                expect(testComponent.control.value.getFormattedDayRange('DMY', '.')).toBe(
-                    `15.07.2001${RANGE_SEPARATOR_CHAR}15.07.2019`,
-                );
+                expect(
+                    (
+                        testComponent.control.value as TuiDayRange | null
+                    )?.getFormattedDayRange('DMY', '.'),
+                ).toBe(`15.07.2001${RANGE_SEPARATOR_CHAR}15.07.2019`);
             });
 
             it('empty value opens dropdown', () => {
@@ -327,7 +331,7 @@ describe('InputDateRangeComponent', () => {
             `,
         })
         class TransformerTestComponent extends TestComponent {
-            public override control = new FormControl([
+            public override control = new FormControl<TuiDayRange | [Date, Date] | null>([
                 new Date(2022, 0, 31),
                 new Date(2022, 5, 14),
             ]);

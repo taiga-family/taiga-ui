@@ -127,15 +127,15 @@ export class TuiCalendarComponent implements TuiWithOptionalMinMax<TuiDay> {
         this.updateViewedMonth(new TuiMonth(year, this.month.month));
     }
 
-    protected onPaginationValueChange(month: TuiMonth): void {
+    public onPaginationValueChange(month: TuiMonth): void {
         this.updateViewedMonth(month);
     }
 
-    protected onDayClick(day: TuiDay): void {
+    public onDayClick(day: TuiDay): void {
         this.dayClick.emit(day);
     }
 
-    protected onHoveredItemChange(day: TuiDay | null): void {
+    public onHoveredItemChange(day: TuiDay | null): void {
         this.updateHoveredDay(day);
     }
 

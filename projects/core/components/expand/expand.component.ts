@@ -109,7 +109,7 @@ export class TuiExpandComponent {
         return null;
     }
 
-    protected get contentVisible(): boolean {
+    public get contentVisible(): boolean {
         return this.expanded || this.state !== State.Idle;
     }
 

@@ -16,10 +16,10 @@ describe('TuiDirectionOrder directive', () => {
     })
     class TestComponent {
         @ViewChild(TuiTableDirective)
-        protected readonly table!: TuiTableDirective<any>;
+        public readonly table!: TuiTableDirective<any>;
 
-        protected directionOrder = 'asc';
-        protected directionOrderChange = jest.fn();
+        public directionOrder = 'asc';
+        public directionOrderChange = jest.fn();
     }
 
     let fixture: ComponentFixture<TestComponent>;

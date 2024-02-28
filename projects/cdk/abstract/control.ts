@@ -94,19 +94,19 @@ export abstract class AbstractTuiControl<T>
         this.updateValue(value);
     }
 
-    protected get safeCurrentValue(): T {
+    public get safeCurrentValue(): T {
         return this.rawValue ?? this.fallbackValue;
     }
 
-    protected get invalid(): boolean {
+    public get invalid(): boolean {
         return this.safeNgControlData<boolean>(({invalid}) => invalid, false);
     }
 
-    protected get valid(): boolean {
+    public get valid(): boolean {
         return this.safeNgControlData<boolean>(({valid}) => valid, false);
     }
 
-    protected get touched(): boolean {
+    public get touched(): boolean {
         return this.safeNgControlData<boolean>(({touched}) => touched, false);
     }
 
@@ -114,7 +114,7 @@ export abstract class AbstractTuiControl<T>
         return this.safeNgControlData<boolean>(({disabled}) => disabled, false);
     }
 
-    protected get interactive(): boolean {
+    public get interactive(): boolean {
         return !this.readOnly && !this.computedDisabled;
     }
 
@@ -125,11 +125,11 @@ export abstract class AbstractTuiControl<T>
         );
     }
 
-    protected get computedName(): string | null {
+    public get computedName(): string | null {
         return this.controlName?.toString() ?? null;
     }
 
-    protected get controlName(): string | null {
+    public get controlName(): string | null {
         return this.ngControl?.name?.toString() ?? null;
     }
 
@@ -169,7 +169,7 @@ export abstract class AbstractTuiControl<T>
         this.destroy$.complete();
     }
 
-    protected checkControlUpdate(): void {
+    public checkControlUpdate(): void {
         this.cdr.markForCheck();
     }
 

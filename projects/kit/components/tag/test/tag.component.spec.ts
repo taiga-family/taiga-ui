@@ -21,9 +21,9 @@ describe('Tag', () => {
     })
     class TestComponent {
         @ViewChild(TuiTagComponent, {static: true})
-        protected component!: TuiTagComponent;
+        public component!: TuiTagComponent;
 
-        protected editedSpy = jest.fn();
+        public editedSpy = jest.fn();
     }
 
     let fixture: ComponentFixture<TestComponent>;

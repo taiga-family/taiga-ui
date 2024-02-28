@@ -242,7 +242,7 @@ export class TuiMultiSelectComponent<T>
         this.value = value;
     }
 
-    protected onSearch(search: string | null): void {
+    public onSearch(search: string | null): void {
         // Clearing sets the empty value, the dropdown should not be opened on clear.
         if (search !== '') {
             this.hostedDropdown?.updateOpen(true);

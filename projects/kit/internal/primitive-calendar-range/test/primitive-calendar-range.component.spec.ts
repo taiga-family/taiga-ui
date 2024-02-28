@@ -15,7 +15,7 @@ describe('PrimitiveRangeCalendar component', () => {
     })
     class TestComponent {
         @ViewChild(TuiPrimitiveCalendarRangeComponent, {static: true})
-        protected component!: TuiPrimitiveCalendarRangeComponent;
+        public component!: TuiPrimitiveCalendarRangeComponent;
     }
 
     let fixture: ComponentFixture<TestComponent>;

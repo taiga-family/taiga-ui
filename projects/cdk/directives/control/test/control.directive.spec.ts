@@ -19,7 +19,7 @@ describe('TuiControlDirective', () => {
         changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class TestComponent {
-        protected readonly form = new FormGroup({
+        public readonly form = new FormGroup({
             control: new FormControl('value'),
         });
     }

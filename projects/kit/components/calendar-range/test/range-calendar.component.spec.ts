@@ -46,19 +46,19 @@ describe('rangeCalendarComponent', () => {
     })
     class TestComponent {
         @ViewChild(TuiCalendarRangeComponent)
-        protected readonly component!: TuiCalendarRangeComponent;
+        public readonly component!: TuiCalendarRangeComponent;
 
-        protected readonly control = new FormControl(
+        public readonly control = new FormControl(
             new TuiDayRange(new TuiDay(2019, 2, 10), new TuiDay(2019, 2, 12)),
         );
 
-        protected items: readonly TuiDayRangePeriod[] = [];
+        public items: readonly TuiDayRangePeriod[] = [];
 
-        protected min = new TuiDay(1900, 0, 1);
+        public min = new TuiDay(1900, 0, 1);
 
-        protected max = TUI_LAST_DAY;
+        public max = TUI_LAST_DAY;
 
-        protected onRangeChange(range: TuiDayRange): void {
+        public onRangeChange(range: TuiDayRange | null): void {
             this.control.setValue(range);
         }
     }
@@ -130,7 +130,7 @@ describe('rangeCalendarComponent', () => {
             fixture.detectChanges();
 
             expect(
-                testComponent.control.value.daySame(
+                testComponent.control.value?.daySame(
                     new TuiDayRange(min, startOfMonth.append({day: -1})),
                 ),
             ).toBe(true);

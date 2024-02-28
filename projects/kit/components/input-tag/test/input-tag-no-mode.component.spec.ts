@@ -28,12 +28,12 @@ describe('InputTag [TUI_TAG_STATUS=neutral]', () => {
     })
     class TestComponent {
         @ViewChild(TuiInputTagComponent)
-        protected component!: TuiInputTagComponent;
+        public component!: TuiInputTagComponent;
 
-        protected tags = ['Tag1', 'Tag2'];
+        public tags = ['Tag1', 'Tag2'];
 
-        protected labelOutside = true;
-        protected size: TuiSizeL | TuiSizeS = 's';
+        public labelOutside = true;
+        public size: TuiSizeL | TuiSizeS = 's';
     }
 
     let fixture: ComponentFixture<TestComponent>;

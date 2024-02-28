@@ -46,11 +46,11 @@ export class TuiPrimitiveYearMonthPaginationComponent
         return this.max ?? TUI_LAST_DAY;
     }
 
-    protected get prevMonthDisabled(): boolean {
+    public get prevMonthDisabled(): boolean {
         return this.value.monthSameOrBefore(this.computedMin);
     }
 
-    protected get nextMonthDisabled(): boolean {
+    public get nextMonthDisabled(): boolean {
         return this.value.monthSameOrAfter(this.computedMax);
     }
 
@@ -60,15 +60,15 @@ export class TuiPrimitiveYearMonthPaginationComponent
         return computedMin.year === computedMax.year;
     }
 
-    protected onYearClick(): void {
+    public onYearClick(): void {
         this.yearClick.next(this.value);
     }
 
-    protected onPrevMonthClick(): void {
+    public onPrevMonthClick(): void {
         this.appendValueWithLimit({month: -1});
     }
 
-    protected onNextMonthClick(): void {
+    public onNextMonthClick(): void {
         this.appendValueWithLimit({month: 1});
     }
 

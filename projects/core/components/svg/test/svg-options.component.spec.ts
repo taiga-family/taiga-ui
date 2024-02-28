@@ -26,9 +26,9 @@ describe('SVG options', () => {
     })
     class TestComponent {
         @ViewChild(TuiSvgComponent)
-        protected svgComponent!: TuiSvgComponent;
+        public svgComponent!: TuiSvgComponent;
 
-        protected icon = '';
+        public icon = '';
     }
 
     let fixture: ComponentFixture<TestComponent> | null = null;

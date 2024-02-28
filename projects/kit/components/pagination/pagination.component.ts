@@ -140,11 +140,11 @@ export class TuiPaginationComponent
         return this.size === 'm' ? 'xs' : 's';
     }
 
-    protected get arrowIsDisabledLeft(): boolean {
+    public get arrowIsDisabledLeft(): boolean {
         return this.index === 0;
     }
 
-    protected get arrowIsDisabledRight(): boolean {
+    public get arrowIsDisabledRight(): boolean {
         return this.reverseIndex === 0;
     }
 

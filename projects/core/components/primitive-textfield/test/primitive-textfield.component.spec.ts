@@ -44,7 +44,9 @@ describe('PrimitiveTextfield', () => {
             </tui-primitive-textfield>
         `,
     })
-    class TestComponent {}
+    class TestComponent {
+        protected focused = false;
+    }
 
     let fixture: ComponentFixture<TestComponent>;
     let loader: HarnessLoader;

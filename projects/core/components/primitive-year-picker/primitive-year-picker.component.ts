@@ -97,7 +97,7 @@ export class TuiPrimitiveYearPickerComponent {
         return rowIndex * ITEMS_IN_ROW + colIndex + this.calculatedMin;
     }
 
-    protected getItemState(item: number): TuiInteractiveState | null {
+    public getItemState(item: number): TuiInteractiveState | null {
         const {disabledItemHandler, pressedItem, hoveredItem} = this;
         const max = this.computedMax;
 
@@ -119,7 +119,7 @@ export class TuiPrimitiveYearPickerComponent {
         return null;
     }
 
-    protected getItemRange(item: number): TuiRangeState | null {
+    public getItemRange(item: number): TuiRangeState | null {
         const {value, hoveredItem} = this;
 
         if (value === null) {
@@ -171,7 +171,7 @@ export class TuiPrimitiveYearPickerComponent {
         return this.currentYear === item;
     }
 
-    protected itemIsInterval(item: number): boolean {
+    public itemIsInterval(item: number): boolean {
         const {value, hoveredItem} = this;
 
         if (value === null || !this.isRange(value)) {
@@ -193,15 +193,15 @@ export class TuiPrimitiveYearPickerComponent {
         );
     }
 
-    protected onItemHovered(hovered: boolean, item: number): void {
+    public onItemHovered(hovered: boolean, item: number): void {
         this.updateHoveredItem(hovered, item);
     }
 
-    protected onItemPressed(pressed: boolean, item: number): void {
+    public onItemPressed(pressed: boolean, item: number): void {
         this.updatePressedItem(pressed, item);
     }
 
-    protected onItemClick(item: number): void {
+    public onItemClick(item: number): void {
         this.yearClick.emit(new TuiYear(item));
     }
 

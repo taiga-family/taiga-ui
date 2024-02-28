@@ -31,9 +31,9 @@ describe('Directive TuiProjectClassDirective', () => {
         `,
     })
     class TestComponent {
-        protected classNames = ['_focused'];
-        protected control = new FormControl();
-        protected items = [1, 2, 3];
+        public classNames = ['_focused'];
+        public control = new FormControl();
+        public items = [1, 2, 3];
     }
 
     let fixture: ComponentFixture<TestComponent>;

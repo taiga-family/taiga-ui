@@ -54,14 +54,14 @@ export class TuiPrimitiveSpinButtonComponent extends AbstractTuiInteractive {
     }
 
     @HostListener('keydown.arrowLeft.prevent')
-    protected onLeftClick(): void {
+    public onLeftClick(): void {
         if (!this.leftComputedDisabled) {
             this.leftClick.emit();
         }
     }
 
     @HostListener('keydown.arrowRight.prevent')
-    protected onRightClick(): void {
+    public onRightClick(): void {
         if (!this.rightComputedDisabled) {
             this.rightClick.emit();
         }
@@ -69,7 +69,7 @@ export class TuiPrimitiveSpinButtonComponent extends AbstractTuiInteractive {
 
     @HostListener('focusin', ['true'])
     @HostListener('focusout', ['false'])
-    protected onFocused(focused: boolean): void {
+    public onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
 

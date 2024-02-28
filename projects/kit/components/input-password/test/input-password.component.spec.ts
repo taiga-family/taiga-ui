@@ -20,11 +20,11 @@ describe('InputPassword', () => {
     })
     class TestComponent {
         @ViewChild(TuiInputPasswordComponent, {static: true})
-        protected component!: TuiInputPasswordComponent;
+        public component!: TuiInputPasswordComponent;
 
-        protected control = new FormControl();
-        protected readOnly = false;
-        protected size: TuiSizeL | TuiSizeS = 'm';
+        public control = new FormControl();
+        public readOnly = false;
+        public size: TuiSizeL | TuiSizeS = 'm';
     }
 
     let fixture: ComponentFixture<TestComponent>;

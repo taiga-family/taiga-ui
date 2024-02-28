@@ -40,7 +40,7 @@ export class TuiPreviewPaginationComponent {
 
     @HostListener('document:keydown.arrowRight.prevent', ['1'])
     @HostListener('document:keydown.arrowLeft.prevent', ['-1'])
-    protected onArrowClick(step: number): void {
+    public onArrowClick(step: number): void {
         this.updateIndex(tuiClamp(this.index + step, 0, this.length - 1));
     }
 

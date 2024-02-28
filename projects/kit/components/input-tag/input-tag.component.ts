@@ -223,11 +223,11 @@ export class TuiInputTagComponent
         return !!this.search;
     }
 
-    protected get hasValue(): boolean {
+    public get hasValue(): boolean {
         return !!this.value.length || this.hasNativeValue;
     }
 
-    protected get hasPlaceholder(): boolean {
+    public get hasPlaceholder(): boolean {
         return (
             !this.labelOutside ||
             (!this.hasValue && (!this.hasExampleText || this.inputHidden))
@@ -241,7 +241,7 @@ export class TuiInputTagComponent
         );
     }
 
-    protected get hasExampleText(): boolean {
+    public get hasExampleText(): boolean {
         return (
             !!this.nativeFocusableElement?.placeholder &&
             this.computedFocused &&
@@ -366,7 +366,7 @@ export class TuiInputTagComponent
         }
     }
 
-    protected onTagEdited(value: string, index: number): void {
+    public onTagEdited(value: string, index: number): void {
         this.focusInput(value === '');
         this.value = this.filterValue(
             this.value

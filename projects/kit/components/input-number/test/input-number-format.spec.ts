@@ -21,13 +21,13 @@ describe('InputNumber - backward compatibility for separators', () => {
     })
     class TestComponent {
         @ViewChild(TuiInputNumberComponent)
-        protected component!: TuiInputNumberComponent;
+        public component!: TuiInputNumberComponent;
 
-        protected control = new FormControl(12345.0);
-        protected form = new FormGroup({control: this.control});
+        public control = new FormControl(12345.0);
+        public form = new FormGroup({control: this.control});
 
-        protected decimal: TuiDecimal = 'always';
-        protected precision = 2;
+        public decimal: TuiDecimal = 'always';
+        public precision = 2;
     }
 
     let fixture: ComponentFixture<TestComponent>;

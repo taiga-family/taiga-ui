@@ -19,9 +19,9 @@ describe('AbstractTuiController', () => {
     })
     class TestComponent {
         @ViewChild(MyElementComponent)
-        protected element!: MyElementComponent;
+        public element!: MyElementComponent;
 
-        protected message = 'hello';
+        public message = 'hello';
     }
 
     let fixture: ComponentFixture<TestComponent>;

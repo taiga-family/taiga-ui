@@ -31,12 +31,12 @@ describe('Notification', () => {
         })
         class TestComponent {
             @ViewChild(TuiNotificationComponent, {static: false})
-            protected component!: TuiNotificationComponent;
+            public component!: TuiNotificationComponent;
 
-            protected hasCloseButton = true;
-            protected status: TuiNotification = 'info';
+            public hasCloseButton = true;
+            public status: TuiNotification = 'info';
 
-            protected onClose(): void {}
+            public onClose(): void {}
         }
 
         let fixture: ComponentFixture<TestComponent>;
@@ -92,7 +92,7 @@ describe('Notification', () => {
         })
         class TestComponent {
             @ViewChild(TuiNotificationComponent, {static: false})
-            protected component!: TuiNotificationComponent;
+            public component!: TuiNotificationComponent;
         }
 
         const status = 'error';

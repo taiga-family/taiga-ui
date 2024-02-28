@@ -60,13 +60,13 @@ export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth
 
     protected isYearPickerShown = false;
 
-    protected hoveredItem: TuiMonth | null = null;
-    protected pressedItem: TuiMonth | null = null;
+    public hoveredItem: TuiMonth | null = null;
+    public pressedItem: TuiMonth | null = null;
 
     protected readonly months$ = inject(TUI_CALENDAR_MONTHS);
 
     @HostBinding('class._single')
-    protected get isSingle(): boolean {
+    public get isSingle(): boolean {
         return (
             this.value !== null &&
             (this.value instanceof TuiMonth || this.value.isSingleMonth)
@@ -89,7 +89,7 @@ export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth
         return this.year.yearSameOrAfter(this.computedMax);
     }
 
-    protected getItemState(item: TuiMonth): TuiInteractiveState | null {
+    public getItemState(item: TuiMonth): TuiInteractiveState | null {
         const {disabledItemHandlerWithMinMax, pressedItem, hoveredItem} = this;
 
         if (disabledItemHandlerWithMinMax(item)) {
@@ -107,7 +107,7 @@ export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth
         return null;
     }
 
-    protected getItemRange(item: TuiMonth): TuiRangeState | null {
+    public getItemRange(item: TuiMonth): TuiRangeState | null {
         const {value, hoveredItem} = this;
 
         if (value === null) {
@@ -157,7 +157,7 @@ export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth
         return TODAY.monthSame(item);
     }
 
-    protected isItemInsideRange(month: TuiMonth): boolean {
+    public isItemInsideRange(month: TuiMonth): boolean {
         const {value, hoveredItem} = this;
 
         if (value === null || value instanceof TuiMonth) {
@@ -199,11 +199,11 @@ export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth
         this.isYearPickerShown = true;
     }
 
-    protected onNextYear(): void {
+    public onNextYear(): void {
         this.updateActiveYear(this.year.append({year: 1}));
     }
 
-    protected onPreviousYear(): void {
+    public onPreviousYear(): void {
         this.updateActiveYear(this.year.append({year: -1}));
     }
 

@@ -170,7 +170,7 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
         this.updateValue(TuiDayRange.sort(value.from, day));
     }
 
-    protected onItemSelect(item: TuiDayRangePeriod | string): void {
+    public onItemSelect(item: TuiDayRangePeriod | string): void {
         if (typeof item !== 'string') {
             this.updateValue(item.range.dayLimit(this.min, this.max));
 

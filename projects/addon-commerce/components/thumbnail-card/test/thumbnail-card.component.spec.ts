@@ -21,11 +21,11 @@ describe('TuiThumbnailCard', () => {
     })
     class TestComponent {
         @ViewChild(TuiThumbnailCardComponent, {static: true})
-        protected component!: TuiThumbnailCardComponent;
+        public component!: TuiThumbnailCardComponent;
 
-        protected paymentSystem: unknown | null = null;
-        protected brandLogo = '';
-        protected size: TuiSizeS = 'm';
+        public paymentSystem: unknown | null = null;
+        public brandLogo = '';
+        public size: TuiSizeS = 'm';
     }
 
     let fixture: ComponentFixture<TestComponent>;

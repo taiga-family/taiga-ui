@@ -14,9 +14,9 @@ describe('InputExpire', () => {
     })
     class TestComponent {
         @ViewChild(TuiInputExpireComponent)
-        protected input!: TuiInputExpireComponent;
+        public input!: TuiInputExpireComponent;
 
-        protected value = '';
+        public value = '';
     }
 
     let fixture: ComponentFixture<TestComponent>;
