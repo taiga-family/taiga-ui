@@ -18,6 +18,7 @@ import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
     imports: [NgIf, TuiScrollControlsComponent],
     templateUrl: './scrollbar.template.html',
     styleUrls: ['./scrollbar.style.less'],
+    host: {'[class._ios]': 'isIOS'},
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {
