@@ -897,6 +897,12 @@ export const pages: TuiDocPages = [
     },
     {
         section: 'Experimental',
+        title: 'BlockDetails',
+        keywords: 'details, block, детали, блок',
+        route: '/experimental/block-details',
+    },
+    {
+        section: 'Experimental',
         title: 'Button',
         subPages: [
             {

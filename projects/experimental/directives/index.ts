@@ -1,4 +1,5 @@
 export * from '@taiga-ui/experimental/directives/appearance';
+export * from '@taiga-ui/experimental/directives/block-details';
 export * from '@taiga-ui/experimental/directives/button-close';
 export * from '@taiga-ui/experimental/directives/button-group';
 export * from '@taiga-ui/experimental/directives/button-vertical';
