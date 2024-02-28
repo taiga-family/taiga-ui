@@ -19,19 +19,19 @@ describe('TuiSliderKeyStepsDirective', () => {
     })
     class TestComponent {
         @ViewChild('slider', {static: true, read: ElementRef})
-        protected inputElRef!: ElementRef<HTMLInputElement>;
+        public inputElRef!: ElementRef<HTMLInputElement>;
 
-        protected control = new FormControl(720_000);
+        public control = new FormControl(720_000);
 
-        protected keySteps: TuiKeySteps = [
+        public keySteps: TuiKeySteps = [
             [0, 5_000],
             [100 / 3, 100_000],
             [(100 / 3) * 2, 300_000],
             [100, 1_000_000],
         ];
 
-        protected max = 30;
-        protected min = 0;
+        public max = 30;
+        public min = 0;
     }
 
     let fixture: ComponentFixture<TestComponent>;

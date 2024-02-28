@@ -49,7 +49,7 @@ export class TuiDocCodeComponent {
     }
 
     @HostBinding('class._has-filename')
-    protected get hasFilename(): boolean {
+    public get hasFilename(): boolean {
         return !!this.filename;
     }
 }

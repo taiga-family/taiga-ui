@@ -56,9 +56,9 @@ export class TuiInputCVCComponent
         };
     }
 
-    protected exampleText = '000';
+    public exampleText = '000';
 
-    protected maskOptions: MaskitoOptions = {
+    public maskOptions: MaskitoOptions = {
         mask: new Array(3).fill(TUI_DIGIT_REGEXP),
     };
 

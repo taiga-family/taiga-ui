@@ -8,11 +8,11 @@ import {
 
 class Item {
     constructor(
-        protected readonly name: string,
-        protected readonly price: number,
+        public readonly name: string,
+        public readonly price: number,
     ) {}
 
-    protected toString(): string {
+    public toString(): string {
         return this.name;
     }
 }

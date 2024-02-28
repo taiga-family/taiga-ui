@@ -84,7 +84,7 @@ export class TuiPrimitiveCalendarComponent {
         return markers.length === 0 ? null : markers;
     };
 
-    protected getItemState(item: TuiDay): TuiInteractiveState | null {
+    public getItemState(item: TuiDay): TuiInteractiveState | null {
         const {disabledItemHandler, pressedItem, hoveredItem} = this;
 
         if (disabledItemHandler(item)) {
@@ -102,7 +102,7 @@ export class TuiPrimitiveCalendarComponent {
         return null;
     }
 
-    protected getItemRange(item: TuiDay): TuiRangeState | null {
+    public getItemRange(item: TuiDay): TuiRangeState | null {
         const {value, hoveredItem} = this;
 
         if (!value) {
@@ -152,7 +152,7 @@ export class TuiPrimitiveCalendarComponent {
         return !this.month.monthSame(item);
     }
 
-    protected itemIsInterval(day: TuiDay): boolean {
+    public itemIsInterval(day: TuiDay): boolean {
         const {value, hoveredItem} = this;
 
         if (!(value instanceof TuiDayRange)) {
@@ -172,11 +172,11 @@ export class TuiPrimitiveCalendarComponent {
         return range.from.daySameOrBefore(day) && range.to.dayAfter(day);
     }
 
-    protected onItemHovered(item: TuiDay | false): void {
+    public onItemHovered(item: TuiDay | false): void {
         this.updateHoveredItem(item || null);
     }
 
-    protected onItemPressed(item: TuiDay | false): void {
+    public onItemPressed(item: TuiDay | false): void {
         this.pressedItem = item || null;
     }
 

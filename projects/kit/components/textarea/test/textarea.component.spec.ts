@@ -33,19 +33,19 @@ describe('Textarea', () => {
     })
     class TestComponent {
         @ViewChild(TuiTextareaComponent, {static: true})
-        protected component!: TuiTextareaComponent;
+        public component!: TuiTextareaComponent;
 
-        protected control = new FormControl<string>();
+        public control = new FormControl<string>('');
 
-        protected readOnly = false;
+        public readOnly = false;
 
-        protected rows = DEFAULT_ROWS;
+        public rows = DEFAULT_ROWS;
 
-        protected maxLength: number | null = null;
+        public maxLength: number | null = null;
 
-        protected expandable = false;
+        public expandable = false;
 
-        protected hintContent: string | null = 'prompt';
+        public hintContent: string | null = 'prompt';
     }
 
     let fixture: ComponentFixture<TestComponent>;

@@ -22,17 +22,17 @@ describe('expand', () => {
     })
     class TestComponent {
         @ViewChild('content')
-        protected content!: ElementRef<HTMLDivElement>;
+        public content!: ElementRef<HTMLDivElement>;
 
         @ViewChild('expand', {read: ElementRef})
-        protected expandElement!: ElementRef<HTMLElement>;
+        public expandElement!: ElementRef<HTMLElement>;
 
         @ViewChild('expand')
-        protected expandComponent!: TuiExpandComponent;
+        public expandComponent!: TuiExpandComponent;
 
-        protected expanded = false;
+        public expanded = false;
 
-        protected async = false;
+        public async = false;
     }
 
     let fixture: ComponentFixture<TestComponent>;

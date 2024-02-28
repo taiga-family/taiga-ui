@@ -1,9 +1,9 @@
 import {TuiContentContainerComponentHarness} from '@taiga-ui/testing/utils';
 
 export class TuiAccordionHarness extends TuiContentContainerComponentHarness {
-    protected static hostSelector = 'tui-accordion';
+    public static hostSelector = 'tui-accordion';
 
-    protected async hasRoundedCorners(): Promise<boolean> {
+    public async hasRoundedCorners(): Promise<boolean> {
         return (await this.locatorFor('.t-group')()).hasClass('tui-group_rounded');
     }
 }

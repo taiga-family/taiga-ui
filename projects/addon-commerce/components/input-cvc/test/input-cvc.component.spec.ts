@@ -20,12 +20,12 @@ describe('InputCVC', () => {
     })
     class TestComponent {
         @ViewChild('default')
-        protected default!: TuiInputCVCComponent;
+        public default!: TuiInputCVCComponent;
 
         @ViewChild('custom')
-        protected custom!: TuiInputCVCComponent;
+        public custom!: TuiInputCVCComponent;
 
-        protected control = new FormControl('');
+        public control = new FormControl('');
     }
 
     let fixture: ComponentFixture<TestComponent>;

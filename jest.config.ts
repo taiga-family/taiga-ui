@@ -1,5 +1,5 @@
-import {Config} from 'jest';
 import {resolve} from 'path';
+import type {JestConfigWithTsJest} from 'ts-jest';
 import {pathsToModuleNameMapper} from 'ts-jest';
 
 process.env.TZ = 'Europe/Moscow';
@@ -9,7 +9,7 @@ process.env.TS_JEST_DISABLE_VER_CHECKER = 'true';
 const {compilerOptions} = require(resolve(__dirname, 'tsconfig.json'));
 const maxParallel = require('os').cpus().length / 2;
 
-const config: Config = {
+const config: JestConfigWithTsJest = {
     rootDir: __dirname,
 
     /**
@@ -31,13 +31,6 @@ const config: Config = {
      * A set of global variables that need
      * to be available in all test environments.
      */
-    globals: {
-        'ts-jest': {
-            tsconfig: resolve(__dirname, 'tsconfig.spec.json'),
-            stringifyContentPathRegex: '\\.html$',
-            isolatedModules: true,
-        },
-    },
 
     /**
      * Jest will run .mjs and .js files with nearest package.json's type
@@ -56,7 +49,15 @@ const config: Config = {
      * A map from regular expressions to paths to transformers.
      */
     transform: {
-        '^.+\\.(ts|js|mjs|html|svg)$': 'jest-preset-angular',
+        '^.+\\.(ts|js|mjs|html|svg)$': [
+            'jest-preset-angular',
+            {
+                tsconfig: resolve(__dirname, 'tsconfig.spec.json'),
+                stringifyContentPathRegex: '\\.html$',
+                isolatedModules: true,
+                diagnostics: true,
+            },
+        ],
     },
     transformIgnorePatterns: ['node_modules/(?!@angular|rxjs|ngx-highlightjs|@maskito)'],
 

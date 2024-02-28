@@ -86,7 +86,7 @@ export class TuiInputPhoneInternationalComponent
     @Output()
     public readonly countryIsoCodeChange = new EventEmitter<TuiCountryIsoCode>();
 
-    protected countryIsoCode = this.options.countryIsoCode;
+    public countryIsoCode = this.options.countryIsoCode;
 
     protected open = false;
 
@@ -114,11 +114,11 @@ export class TuiInputPhoneInternationalComponent
         );
     }
 
-    protected get inputPhoneCountryCode(): string {
+    public get inputPhoneCountryCode(): string {
         return tuiIsoToCountryCode(this.countriesMasks, this.countryIsoCode);
     }
 
-    protected get phoneMaskAfterCountryCode(): string {
+    public get phoneMaskAfterCountryCode(): string {
         const countryCode = this.inputPhoneCountryCode;
 
         return this.calculateMaskAfterCountryCode(
@@ -137,7 +137,7 @@ export class TuiInputPhoneInternationalComponent
 
     @HostListener('paste.capture.prevent.stop', ['$event'])
     @HostListener('drop.capture.prevent.stop', ['$event'])
-    protected onPaste(event: ClipboardEvent | DragEvent): void {
+    public onPaste(event: ClipboardEvent | DragEvent): void {
         let value = tuiExtractValueFromEvent(event).replace(TUI_NON_DIGITS_REGEXP, '');
         const countryIsoCode = this.extractCountryCodePipe.transform(
             value,
@@ -176,7 +176,7 @@ export class TuiInputPhoneInternationalComponent
         return this.flagPipe.transform(code);
     }
 
-    protected onItemClick(isoCode: TuiCountryIsoCode): void {
+    public onItemClick(isoCode: TuiCountryIsoCode): void {
         this.open = false;
         this.updateCountryIsoCode(isoCode);
         // recalculates mask inside inputPhone to prevent isoCode conflict
@@ -202,7 +202,7 @@ export class TuiInputPhoneInternationalComponent
      * @deprecated use `{{ countryIsoCode | tuiIsoToCountryCode }}`
      * TODO drop in v4.0
      */
-    protected isoToCountryCode(isoCode: TuiCountryIsoCode): string {
+    public isoToCountryCode(isoCode: TuiCountryIsoCode): string {
         return tuiIsoToCountryCode(this.countriesMasks, isoCode);
     }
 

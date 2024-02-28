@@ -26,16 +26,16 @@ describe('InputRange', () => {
     })
     class TestComponent {
         @ViewChild(TuiInputRangeComponent, {static: true})
-        protected component!: TuiInputRangeComponent;
+        public component!: TuiInputRangeComponent;
 
-        protected control = new FormControl([0, 1]);
-        protected default = false;
-        protected max = 10;
-        protected min = -10;
-        protected quantum = 5;
-        protected readOnly = false;
-        protected steps = 0;
-        protected pluralize = {one: 'год', few: 'года', many: 'лет', other: 'лет'};
+        public control = new FormControl([0, 1]);
+        public default = false;
+        public max = 10;
+        public min = -10;
+        public quantum = 5;
+        public readOnly = false;
+        public steps = 0;
+        public pluralize = {one: 'год', few: 'года', many: 'лет', other: 'лет'};
     }
 
     let fixture: ComponentFixture<TestComponent>;
@@ -127,7 +127,7 @@ describe('InputRange', () => {
         it('Rounds the left value to the nearest quantum on loss of focus', () => {
             inputPOLeft.sendTextAndBlur('-7');
 
-            expect(testComponent.control.value[0]).toBe(-5);
+            expect(testComponent.control.value?.[0]).toBe(-5);
         });
 
         it('Rounds the left value of an input field to the nearest quantum when focus is lost', () => {
@@ -139,7 +139,7 @@ describe('InputRange', () => {
         it('Rounds the right value to the nearest quantum on loss of focus', () => {
             inputPORight.sendTextAndBlur('7');
 
-            expect(testComponent.control.value[1]).toBe(5);
+            expect(testComponent.control.value?.[1]).toBe(5);
         });
 
         it('Rounds the right value of an input field to the nearest quantum on loss of focus', () => {
@@ -152,12 +152,12 @@ describe('InputRange', () => {
             inputPORight.sendText('8');
 
             expect(inputPORight.value).toBe('8 лет');
-            expect(testComponent.control.value[1]).toBe(10);
+            expect(testComponent.control.value?.[1]).toBe(10);
 
             inputPORight.blur();
 
             expect(inputPORight.value).toBe('10 лет');
-            expect(testComponent.control.value[1]).toBe(10);
+            expect(testComponent.control.value?.[1]).toBe(10);
         });
     });
 
@@ -168,7 +168,7 @@ describe('InputRange', () => {
             inputPOLeft.sendTextAndBlur('-5');
             inputPOLeft.sendTextAndBlur('');
 
-            expect(testComponent.control.value[0]).toBe(-5);
+            expect(testComponent.control.value?.[0]).toBe(-5);
             expect(inputPOLeft.value).toBe(`${CHAR_MINUS}5 лет`);
         });
 
@@ -176,7 +176,7 @@ describe('InputRange', () => {
             inputPORight.sendTextAndBlur('5');
             inputPORight.sendTextAndBlur('');
 
-            expect(testComponent.control.value[1]).toBe(5);
+            expect(testComponent.control.value?.[1]).toBe(5);
             expect(inputPORight.value).toBe('5 лет');
         });
     });
@@ -188,9 +188,11 @@ describe('InputRange', () => {
             inputPORight.sendTextAndBlur('5');
             inputPOLeft.sendTextAndBlur('123');
 
-            expect(testComponent.control.value[0]).toBe(testComponent.control.value[1]);
+            expect(testComponent.control.value?.[0]).toBe(
+                testComponent.control.value?.[1],
+            );
             expect(inputPOLeft.value).toBe(
-                `${testComponent.control.value[1].toString()} лет`,
+                `${testComponent.control.value?.[1].toString()} лет`,
             );
         });
 
@@ -200,9 +202,11 @@ describe('InputRange', () => {
 
             inputPORight.sendTextAndBlur('-10');
 
-            expect(testComponent.control.value[1]).toBe(testComponent.control.value[0]);
+            expect(testComponent.control.value?.[1]).toBe(
+                testComponent.control.value?.[0],
+            );
             expect(inputPORight.value).toBe(
-                `${testComponent.control.value[0]
+                `${testComponent.control.value?.[0]
                     .toString()
                     .replace(CHAR_HYPHEN, CHAR_MINUS)} лет`,
             );
@@ -230,7 +234,7 @@ describe('InputRange', () => {
         });
 
         it("Doesn't format the value", () => {
-            expect(testComponent.control.value[1]).toBe(12345.67);
+            expect(testComponent.control.value?.[1]).toBe(12345.67);
         });
     });
 
@@ -252,25 +256,25 @@ describe('InputRange', () => {
             it('The up arrow on the left margin does not increase the value', () => {
                 inputPOLeft.sendKeydown('arrowUp');
 
-                expect(testComponent.control.value[0]).toBe(2);
+                expect(testComponent.control.value?.[0]).toBe(2);
             });
 
             it('Down arrow on left margin does not decrease value', () => {
                 inputPOLeft.sendKeydown('arrowDown');
 
-                expect(testComponent.control.value[0]).toBe(2);
+                expect(testComponent.control.value?.[0]).toBe(2);
             });
 
             it('The up arrow on the right margin does not increase the value', () => {
                 inputPORight.sendKeydown('arrowUp');
 
-                expect(testComponent.control.value[1]).toBe(6);
+                expect(testComponent.control.value?.[1]).toBe(6);
             });
 
             it('Down arrow on right margin does not decrease value', () => {
                 inputPORight.sendKeydown('arrowDown');
 
-                expect(testComponent.control.value[1]).toBe(6);
+                expect(testComponent.control.value?.[1]).toBe(6);
             });
         });
 
@@ -280,25 +284,25 @@ describe('InputRange', () => {
             it('The up arrow on the left margin increases start by a quantum', () => {
                 inputPOLeft.sendKeydown('arrowUp');
 
-                expect(testComponent.control.value[0]).toBe(3);
+                expect(testComponent.control.value?.[0]).toBe(3);
             });
 
             it('The down arrow on the left margin decreases start by a quantum', () => {
                 inputPOLeft.sendKeydown('arrowDown');
 
-                expect(testComponent.control.value[0]).toBe(1);
+                expect(testComponent.control.value?.[0]).toBe(1);
             });
 
             it('The up arrow on the right margin increases end by a quantum', () => {
                 inputPORight.sendKeydown('arrowUp');
 
-                expect(testComponent.control.value[1]).toBe(7);
+                expect(testComponent.control.value?.[1]).toBe(7);
             });
 
             it('The down arrow on the right margin decreases end by a quantum', () => {
                 inputPORight.sendKeydown('arrowDown');
 
-                expect(testComponent.control.value[1]).toBe(5);
+                expect(testComponent.control.value?.[1]).toBe(5);
             });
         });
 
@@ -311,25 +315,25 @@ describe('InputRange', () => {
             it('The up arrow on the left margin increases start by one step', () => {
                 inputPOLeft.sendKeydown('arrowUp');
 
-                expect(testComponent.control.value[0]).toBe(4);
+                expect(testComponent.control.value?.[0]).toBe(4);
             });
 
             it('Down arrow on the left margin decreases start by one step', () => {
                 inputPOLeft.sendKeydown('arrowDown');
 
-                expect(testComponent.control.value[0]).toBe(0);
+                expect(testComponent.control.value?.[0]).toBe(0);
             });
 
             it('The up arrow on the right margin increases end by one step', () => {
                 inputPORight.sendKeydown('arrowUp');
 
-                expect(testComponent.control.value[1]).toBe(8);
+                expect(testComponent.control.value?.[1]).toBe(8);
             });
 
             it('Down arrow on the right margin decreases end by one step', () => {
                 inputPORight.sendKeydown('arrowDown');
 
-                expect(testComponent.control.value[1]).toBe(4);
+                expect(testComponent.control.value?.[1]).toBe(4);
             });
         });
 
@@ -340,28 +344,28 @@ describe('InputRange', () => {
                 testComponent.control.setValue([6, 6]);
                 inputPOLeft.sendKeydown('arrowUp');
 
-                expect(testComponent.control.value[0]).toBe(6);
+                expect(testComponent.control.value?.[0]).toBe(6);
             });
 
             it('The down arrow on the left margin does not decrease start to a value less than min', () => {
                 testComponent.control.setValue([0, 6]);
                 inputPOLeft.sendKeydown('arrowDown');
 
-                expect(testComponent.control.value[0]).toBe(0);
+                expect(testComponent.control.value?.[0]).toBe(0);
             });
 
             it('The up arrow on the right margin does not increase end to a value greater than max', () => {
                 testComponent.control.setValue([6, 10]);
                 inputPORight.sendKeydown('arrowUp');
 
-                expect(testComponent.control.value[1]).toBe(10);
+                expect(testComponent.control.value?.[1]).toBe(10);
             });
 
             it('The down arrow on the right margin does not decrease end to a value less than start', () => {
                 testComponent.control.setValue([6, 6]);
                 inputPORight.sendKeydown('arrowDown');
 
-                expect(testComponent.control.value[1]).toBe(6);
+                expect(testComponent.control.value?.[1]).toBe(6);
             });
 
             it('Keyboard input does not exceed max', () => {
@@ -389,7 +393,7 @@ describe('InputRange', () => {
                 expect(inputPORight.value).toBe(
                     '1 лет', // this plural form is expected because it is intermediate state and form control is not updated yet
                 );
-                expect(testComponent.control.value[1]).toBe(6);
+                expect(testComponent.control.value?.[1]).toBe(6);
             });
         });
     });

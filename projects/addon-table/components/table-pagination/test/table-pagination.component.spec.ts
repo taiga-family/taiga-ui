@@ -20,10 +20,10 @@ describe('TablePagination', () => {
     })
     class TestComponent {
         @ViewChild(TuiTablePaginationComponent, {static: true})
-        protected component!: TuiTablePaginationComponent;
+        public component!: TuiTablePaginationComponent;
 
-        protected page = 3;
-        protected size = 10;
+        public page = 3;
+        public size = 10;
     }
 
     beforeEach(async () => {

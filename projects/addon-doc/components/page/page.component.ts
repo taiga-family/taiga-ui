@@ -36,18 +36,18 @@ export class TuiDocPageComponent {
     public deprecated: boolean | '' = false;
 
     @ContentChildren(TuiDocPageTabConnectorDirective)
-    protected readonly tabConnectors: QueryList<TuiDocPageTabConnectorDirective> =
+    public readonly tabConnectors: QueryList<TuiDocPageTabConnectorDirective> =
         EMPTY_QUERY;
 
-    protected activeItemIndex = 0;
+    public activeItemIndex = 0;
 
     protected readonly from = / /g;
     protected readonly to = '_';
 
     protected readonly defaultTabs = inject(TUI_DOC_DEFAULT_TABS);
-    protected readonly seeAlso = inject(PAGE_SEE_ALSO);
+    public readonly seeAlso = inject(PAGE_SEE_ALSO);
 
-    protected get showSeeAlso(): boolean {
+    public get showSeeAlso(): boolean {
         return !!this.seeAlso.length && this.activeItemIndex === 0;
     }
 }

@@ -24,14 +24,14 @@ describe('Loader', () => {
     })
     class TestComponent {
         @ViewChild(TuiLoaderComponent, {static: true})
-        protected component!: TuiLoaderComponent;
+        public component!: TuiLoaderComponent;
 
         @ViewChild('template', {static: true})
-        protected template: PolymorpheusContent;
+        public template: PolymorpheusContent;
 
-        protected custom = false;
-        protected showLoader = false;
-        protected content: PolymorpheusContent;
+        public custom = false;
+        public showLoader = false;
+        public content: PolymorpheusContent;
     }
 
     let fixture: ComponentFixture<TestComponent>;

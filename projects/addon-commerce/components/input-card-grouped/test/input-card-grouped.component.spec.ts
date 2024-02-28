@@ -9,6 +9,7 @@ import {
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {
+    TuiCard,
     TuiInputCardGroupedComponent,
     TuiInputCardGroupedModule,
 } from '@taiga-ui/addon-commerce';
@@ -20,6 +21,7 @@ import {
 } from '@taiga-ui/cdk';
 import {TuiSvgModule} from '@taiga-ui/core';
 import {TuiNativeInputPO} from '@taiga-ui/testing';
+import {Mock} from 'jest-mock';
 
 describe('InputCardGrouped', () => {
     @Component({
@@ -36,14 +38,14 @@ describe('InputCardGrouped', () => {
     })
     class TestComponent {
         @ViewChild(TuiInputCardGroupedComponent, {static: true})
-        protected component!: TuiInputCardGroupedComponent;
+        public component!: TuiInputCardGroupedComponent;
 
         @ViewChild('customIconTemplate', {read: TemplateRef})
-        protected customIconTemplate!: TemplateRef<any>;
+        public customIconTemplate!: TemplateRef<any>;
 
-        protected control = new FormControl('');
+        public control = new FormControl<Partial<TuiCard>>({card: ''});
 
-        protected onBinChange = jest.fn();
+        public onBinChange: (event: string | null) => void = jest.fn();
     }
 
     let fixture: ComponentFixture<TestComponent>;
@@ -101,7 +103,7 @@ describe('InputCardGrouped', () => {
 
             it('Value has changed, first 6 digits are the same', () => {
                 setCard('123456789');
-                testComponent.onBinChange.mockClear();
+                (testComponent.onBinChange as Mock).mockClear();
                 setCard('123456987');
 
                 expect(testComponent.onBinChange).not.toHaveBeenCalled();
@@ -109,7 +111,7 @@ describe('InputCardGrouped', () => {
 
             it('Value has changed, first 6 digits have changed', () => {
                 setCard('123456789');
-                testComponent.onBinChange.mockClear();
+                (testComponent.onBinChange as Mock).mockClear();
                 setCard('654321789');
 
                 expect(testComponent.onBinChange).toHaveBeenCalledWith('654321');
@@ -117,7 +119,7 @@ describe('InputCardGrouped', () => {
 
             it('Value has changed, now it has less than 6 digits', () => {
                 setCard('123456789');
-                testComponent.onBinChange.mockClear();
+                (testComponent.onBinChange as Mock).mockClear();
                 setCard('123');
 
                 expect(testComponent.onBinChange).toHaveBeenCalledWith(null);
@@ -269,6 +271,6 @@ describe('InputCardGrouped', () => {
     }
 
     function getExpire(): string {
-        return testComponent.control.value.expire;
+        return testComponent.control.value?.expire ?? '';
     }
 });

@@ -107,7 +107,7 @@ export class TuiInputDateTimeComponent
         return this.timeMode$.value;
     }
 
-    protected open = false;
+    public open = false;
 
     protected readonly type!: TuiContext<TuiActiveZoneDirective>;
 

@@ -23,13 +23,13 @@ describe('InputPhone', () => {
     })
     class TestComponent {
         @ViewChild(TuiInputPhoneComponent, {static: true})
-        protected component!: TuiInputPhoneComponent;
+        public component!: TuiInputPhoneComponent;
 
-        protected control = new FormControl('+79110330102');
-        protected allowText = false;
-        protected countryCode = '+7';
-        protected phoneMaskAfterCountryCode = '### ###-##-##';
-        protected readOnly = false;
+        public control = new FormControl('+79110330102');
+        public allowText = false;
+        public countryCode = '+7';
+        public phoneMaskAfterCountryCode = '### ###-##-##';
+        public readOnly = false;
     }
 
     let fixture: ComponentFixture<TestComponent>;

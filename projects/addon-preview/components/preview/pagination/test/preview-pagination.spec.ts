@@ -17,10 +17,10 @@ describe('PreviewPagination', () => {
     })
     class TestComponent {
         @ViewChild(TuiPreviewPaginationComponent, {static: true})
-        protected component!: TuiPreviewPaginationComponent;
+        public component!: TuiPreviewPaginationComponent;
 
-        protected index = 0;
-        protected length = 11;
+        public index = 0;
+        public length = 11;
     }
 
     beforeEach(async () => {

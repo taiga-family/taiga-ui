@@ -67,22 +67,22 @@ export class TuiAxesComponent {
 
     protected readonly mode$ = inject(TUI_MODE);
 
-    protected get hasXLabels(): boolean {
+    public get hasXLabels(): boolean {
         return !!this.axisXLabels.length;
     }
 
-    protected get hasYLabels(): boolean {
+    public get hasYLabels(): boolean {
         return (!!this.axisYLabels.length && !this.axisYInset) || !!this.axisYName;
     }
 
-    protected get hasYSecondaryLabels(): boolean {
+    public get hasYSecondaryLabels(): boolean {
         return (
             (!!this.axisYSecondaryLabels.length && !this.axisYSecondaryInset) ||
             !!this.axisYSecondaryName
         );
     }
 
-    protected fallback(label: string | null): string {
+    public fallback(label: string | null): string {
         return label || CHAR_NO_BREAK_SPACE;
     }
 }

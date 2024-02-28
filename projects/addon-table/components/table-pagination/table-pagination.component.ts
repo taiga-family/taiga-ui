@@ -88,7 +88,7 @@ export class TuiTablePaginationComponent {
         };
     }
 
-    protected onItem(size: number): void {
+    public onItem(size: number): void {
         const {start} = this;
 
         this.size = size;

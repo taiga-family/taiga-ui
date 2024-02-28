@@ -36,18 +36,18 @@ export abstract class AbstractTuiInputCard<
 
     public abstract get nativeFocusableElement(): TuiNativeFocusableElement | null;
 
-    protected get defaultIcon(): string | null {
+    public get defaultIcon(): string | null {
         const paymentSystem = this.getPaymentSystem(this.card);
 
         return paymentSystem && this.options.icons[paymentSystem];
     }
 
-    protected get paymentSystem(): TuiPaymentSystem | null {
+    public get paymentSystem(): TuiPaymentSystem | null {
         return this.getPaymentSystem(this.card);
     }
 
     /** @deprecated remove in 4.0 */
-    protected get icon(): PolymorpheusContent {
+    public get icon(): PolymorpheusContent {
         return this.cardSrc || this.defaultIcon;
     }
 
@@ -59,11 +59,11 @@ export abstract class AbstractTuiInputCard<
      * @deprecated: drop in v4.0
      * use {@link autocomplete}
      */
-    protected get autocompleteCard(): TuiAutofillFieldName {
+    public get autocompleteCard(): TuiAutofillFieldName {
         return this.autocomplete;
     }
 
-    protected get bin(): string | null {
+    public get bin(): string | null {
         return this.card.length < 6 ? null : this.card.slice(0, 6);
     }
 

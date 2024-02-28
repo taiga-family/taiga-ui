@@ -17,8 +17,8 @@ describe('TuiDroppable Directive', () => {
         `,
     })
     class TestComponent {
-        protected onDragOver = jest.fn();
-        protected onDropped = jest.fn();
+        public onDragOver = jest.fn();
+        public onDropped = jest.fn();
     }
 
     let fixture: ComponentFixture<TestComponent>;

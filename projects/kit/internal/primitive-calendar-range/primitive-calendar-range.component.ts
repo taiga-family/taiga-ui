@@ -60,8 +60,8 @@ export class TuiPrimitiveCalendarRangeComponent implements OnInit {
     public readonly dayClick = new EventEmitter<TuiDay>();
 
     protected hoveredItem: TuiDay | null = null;
-    protected userViewedMonthFirst: TuiMonth = this.defaultViewedMonthFirst;
-    protected userViewedMonthSecond: TuiMonth = this.defaultViewedMonthSecond;
+    public userViewedMonthFirst: TuiMonth = this.defaultViewedMonthFirst;
+    public userViewedMonthSecond: TuiMonth = this.defaultViewedMonthSecond;
 
     protected valueChanges = inject<Observable<TuiDayRange | null> | null>(
         TUI_CALENDAR_DATE_STREAM,
@@ -80,7 +80,7 @@ export class TuiPrimitiveCalendarRangeComponent implements OnInit {
             });
     }
 
-    protected get cappedUserViewedMonthSecond(): TuiMonth {
+    public get cappedUserViewedMonthSecond(): TuiMonth {
         return this.userViewedMonthSecond.monthBefore(this.max)
             ? this.userViewedMonthSecond
             : this.max;

@@ -71,7 +71,7 @@ export class TuiInputMonthRangeComponent
     @Input()
     public defaultActiveYear: TuiYear = TuiDay.currentLocal();
 
-    protected open = false;
+    public open = false;
 
     protected readonly formatter = inject(TUI_MONTH_FORMATTER);
 
@@ -113,7 +113,7 @@ export class TuiInputMonthRangeComponent
         this.onOpenChange(true);
     }
 
-    protected onMonthClick(month: TuiMonth): void {
+    public onMonthClick(month: TuiMonth): void {
         if (this.value === null || !this.value.isSingleMonth) {
             this.writeValue(new TuiMonthRange(month, month));
 

@@ -16,11 +16,11 @@ describe('Let', () => {
     })
     class TestComponent {
         @ViewChild('test')
-        protected el!: ElementRef;
+        public el!: ElementRef;
 
-        protected counter = 0;
+        public counter = 0;
 
-        protected get getter(): string {
+        public get getter(): string {
             this.counter++;
 
             return '!';

@@ -27,12 +27,12 @@ import {TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 
 class Beast {
     constructor(
-        protected readonly species: string,
-        protected readonly trait: string,
-        protected readonly id: string,
+        public readonly species: string,
+        public readonly trait: string,
+        public readonly id: string,
     ) {}
 
-    protected toString(): string {
+    public toString(): string {
         return `${this.trait} ${this.species}`;
     }
 }
@@ -75,21 +75,21 @@ describe('ComboBox', () => {
     })
     class TestComponent {
         @ViewChild(TuiComboBoxComponent, {static: true})
-        protected component!: TuiComboBoxComponent<Beast | string>;
+        public component!: TuiComboBoxComponent<Beast | string>;
 
-        protected items = ITEMS;
-        protected control = new FormControl();
-        protected defaultInputs = false;
-        protected cleaner = false;
-        protected size: TuiSizeL | TuiSizeS = 'm';
-        protected readOnly = false;
-        protected hintContent: string | null = 'prompt';
+        public items = ITEMS;
+        public control = new FormControl();
+        public defaultInputs = false;
+        public cleaner = false;
+        public size: TuiSizeL | TuiSizeS = 'm';
+        public readOnly = false;
+        public hintContent: string | null = 'prompt';
 
-        protected get stringify(): TuiStringHandler<Beast> {
+        public get stringify(): TuiStringHandler<Beast> {
             return this.defaultInputs ? TUI_DEFAULT_STRINGIFY : stringify;
         }
 
-        protected get identityMatcher(): TuiIdentityMatcher<Beast> {
+        public get identityMatcher(): TuiIdentityMatcher<Beast> {
             return this.defaultInputs ? TUI_DEFAULT_IDENTITY_MATCHER : identityMatcher;
         }
     }

@@ -174,7 +174,7 @@ export class TuiTextareaComponent
         );
     }
 
-    protected get computeMaxHeight(): number | null {
+    public get computeMaxHeight(): number | null {
         return this.expandable ? this.rows * this.lineHeight : null;
     }
 

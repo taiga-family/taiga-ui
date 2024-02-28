@@ -116,7 +116,7 @@ export class TuiInputDateRangeComponent
     @Input()
     public maxLength: TuiDayLike | null = null;
 
-    protected open = false;
+    public open = false;
 
     protected readonly maxLengthMapper: TuiTypedMapper<
         [TuiDay, TuiDayRange | null, TuiDayLike | null, boolean],
@@ -241,7 +241,7 @@ export class TuiInputDateRangeComponent
     }
 
     @HostListener('click')
-    protected onClick(): void {
+    public onClick(): void {
         if (!this.isMobile) {
             this.toggle();
         }
@@ -304,7 +304,7 @@ export class TuiInputDateRangeComponent
                 : null;
     }
 
-    protected onRangeChange(range: TuiDayRange | null): void {
+    public onRangeChange(range: TuiDayRange | null): void {
         this.toggle();
         this.focusInput();
 

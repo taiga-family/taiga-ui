@@ -13,9 +13,9 @@ describe('tuiAsControl', () => {
 
     it('implement control interface', () => {
         class MyControlComponent extends AbstractTuiControl<string> {
-            protected focused = false;
+            public focused = false;
 
-            protected getFallbackValue(): string {
+            public getFallbackValue(): string {
                 return '';
             }
         }

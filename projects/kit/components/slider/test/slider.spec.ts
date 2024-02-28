@@ -31,25 +31,25 @@ describe('Slider', () => {
     })
     class TestComponent {
         @ViewChild('controller', {static: true, read: ElementRef})
-        protected formControllerElementRef!: ElementRef<HTMLInputElement>;
+        public formControllerElementRef!: ElementRef<HTMLInputElement>;
 
         @ViewChild('controller', {static: true})
-        protected formControllerComponentRef!: TuiSliderComponent;
+        public formControllerComponentRef!: TuiSliderComponent;
 
         @ViewChild('model', {static: true, read: ElementRef})
-        protected ngModelElementRef!: ElementRef<HTMLInputElement>;
+        public ngModelElementRef!: ElementRef<HTMLInputElement>;
 
         @ViewChild('model', {static: true})
-        protected ngModelComponentRef!: TuiSliderComponent;
+        public ngModelComponentRef!: TuiSliderComponent;
 
         @ViewChild('nativeUsageAllDefaults', {static: true})
-        protected nativeUsageAllDefaultsComponentRef!: TuiSliderComponent;
+        public nativeUsageAllDefaultsComponentRef!: TuiSliderComponent;
 
-        protected ngModelValue = 5;
-        protected formController = new FormControl(5);
+        public ngModelValue = 5;
+        public formController = new FormControl(5);
 
-        protected max = 11;
-        protected min = 0;
+        public max = 11;
+        public min = 0;
     }
 
     let fixture: ComponentFixture<TestComponent>;

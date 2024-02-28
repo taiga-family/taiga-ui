@@ -87,7 +87,7 @@ export class TuiRadioComponent<T>
                   this.identityMatcher(this.value, this.item);
     }
 
-    protected override get computedName(): string {
+    public override get computedName(): string {
         return this.name || this.radioGroupName || this.controlName || '';
     }
 

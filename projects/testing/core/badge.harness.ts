@@ -1,7 +1,7 @@
 import {TuiComponentHarness} from '@taiga-ui/testing/utils';
 
 export class TuiBadgeHarness extends TuiComponentHarness {
-    protected static hostSelector = 'tui-badge';
+    public static hostSelector = 'tui-badge';
 
     protected async text(): Promise<string> {
         return (await this.host()).text();

@@ -96,7 +96,7 @@ export class TuiSvgComponent {
         return this.icon;
     }
 
-    protected get use(): string {
+    public get use(): string {
         if (tuiIsString(this.icon)) {
             return this.icon.includes('.svg#')
                 ? this.icon
@@ -106,7 +106,7 @@ export class TuiSvgComponent {
         return '';
     }
 
-    protected get isInnerHTML(): boolean {
+    public get isInnerHTML(): boolean {
         return (
             !tuiIsString(this.icon) ||
             this.isSrc ||

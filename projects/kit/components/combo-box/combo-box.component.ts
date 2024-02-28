@@ -98,7 +98,7 @@ export class TuiComboBoxComponent<T>
     @ContentChild(TuiDataListDirective, {read: TemplateRef})
     protected readonly datalist: PolymorpheusContent<TuiContext<TuiActiveZoneDirective>>;
 
-    protected open = false;
+    public open = false;
 
     @HostBinding('attr.data-size')
     protected get size(): TuiSizeL | TuiSizeS {
@@ -201,7 +201,7 @@ export class TuiComboBoxComponent<T>
         super.updateValue(value);
     }
 
-    protected toggle(): void {
+    public toggle(): void {
         this.hostedDropdown?.updateOpen(!this.open);
     }
 

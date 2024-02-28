@@ -19,7 +19,7 @@ describe('AbstractTuiControl and NgControl not injected in MyControlComponent', 
         template: '',
     })
     class ChildComponent {
-        protected readonly parent = inject(AbstractTuiControl, {
+        public readonly parent = inject(AbstractTuiControl, {
             optional: true,
         }) as MyControlComponent;
     }
@@ -36,22 +36,19 @@ describe('AbstractTuiControl and NgControl not injected in MyControlComponent', 
         implements OnInit, OnDestroy
     {
         @ViewChild(ChildComponent)
-        protected child!: ChildComponent;
+        public child!: ChildComponent;
 
-        protected focused = false;
-        protected ngOnInitTick = false;
-        protected ngOnDestroyTick = false;
+        public focused = false;
+        public ngOnInitTick = false;
+        public ngOnDestroyTick = false;
 
-        protected forceUpdateFocused(focused: boolean): void {
+        public forceUpdateFocused(focused: boolean): void {
             super.updateFocused(focused);
 
             this.focused = focused;
         }
 
-        protected getTransformers():
-            | TuiControlValueTransformer<string>
-            | null
-            | undefined {
+        public getTransformers(): TuiControlValueTransformer<string> | null | undefined {
             return this.valueTransformer;
         }
 
@@ -67,7 +64,7 @@ describe('AbstractTuiControl and NgControl not injected in MyControlComponent', 
             this.ngOnDestroyTick = true;
         }
 
-        protected getFallbackValue(): string {
+        public getFallbackValue(): string {
             return 'fallback';
         }
     }
@@ -79,9 +76,9 @@ describe('AbstractTuiControl and NgControl not injected in MyControlComponent', 
     })
     class TestComponent {
         @ViewChild(MyControlComponent)
-        protected myControl!: MyControlComponent;
+        public myControl!: MyControlComponent;
 
-        protected enabled = true;
+        public enabled = true;
     }
 
     let fixture: ComponentFixture<TestComponent>;

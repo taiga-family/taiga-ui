@@ -17,7 +17,7 @@ describe('TableBarsHost', () => {
     })
     class TestComponent {
         @ViewChild(TuiTableBarsHostComponent, {static: true})
-        protected component!: TuiTableBarsHostComponent;
+        public component!: TuiTableBarsHostComponent;
     }
 
     let fixture: ComponentFixture<TestComponent>;

@@ -22,13 +22,13 @@ describe('TuiPrimitiveYearPickerComponent', () => {
     })
     class TestComponent {
         @ViewChild(TuiPrimitiveYearPickerComponent, {static: true})
-        protected component!: TuiPrimitiveYearPickerComponent;
+        public component!: TuiPrimitiveYearPickerComponent;
 
-        protected min = TUI_FIRST_DAY;
-        protected max = TuiDay.currentLocal().append({year: 200});
-        protected value = TuiDay.currentLocal();
-        protected initialItem = TuiDay.currentLocal();
-        protected disabledItemHandler = (item: TuiDay): boolean => item.day === 10;
+        public min = TUI_FIRST_DAY;
+        public max = TuiDay.currentLocal().append({year: 200});
+        public value = TuiDay.currentLocal();
+        public initialItem = TuiDay.currentLocal();
+        public disabledItemHandler = (day: number): boolean => day === 10;
     }
 
     let fixture: ComponentFixture<TestComponent>;

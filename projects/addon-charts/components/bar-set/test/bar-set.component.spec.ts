@@ -14,10 +14,10 @@ describe('BarSet', () => {
     })
     class TestComponent {
         @ViewChild(TuiBarSetComponent)
-        protected readonly component!: TuiBarSetComponent;
+        public readonly component!: TuiBarSetComponent;
 
-        protected readonly value = [10, 20, 30, 40];
-        protected collapsed = false;
+        public readonly value = [10, 20, 30, 40];
+        public collapsed = false;
     }
 
     let fixture: ComponentFixture<TestComponent>;

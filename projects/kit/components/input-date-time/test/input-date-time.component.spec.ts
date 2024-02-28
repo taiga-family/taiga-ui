@@ -33,12 +33,14 @@ describe('InputDateTime', () => {
     })
     class TestComponent {
         @ViewChild(TuiInputDateTimeComponent)
-        protected dateTimeComponent!: TuiInputDateTimeComponent;
+        public dateTimeComponent!: TuiInputDateTimeComponent;
 
-        protected readonly control = new FormControl([new TuiDay(2021, 6, 12), null]);
+        public readonly control = new FormControl<
+            string | [TuiDay | null, TuiDay | null] | null
+        >([new TuiDay(2021, 6, 12), null]);
 
-        protected min: TuiDay | [TuiDay, TuiTime] = TUI_FIRST_DAY;
-        protected max: TuiDay | [TuiDay, TuiTime] = TUI_LAST_DAY;
+        public min: TuiDay | [TuiDay, TuiTime] = TUI_FIRST_DAY;
+        public max: TuiDay | [TuiDay, TuiTime] = TUI_LAST_DAY;
     }
 
     let fixture: ComponentFixture<TestComponent>;
@@ -354,7 +356,10 @@ describe('InputDateTime', () => {
             `,
         })
         class TransformerTestComponent extends TestComponent {
-            public override control = new FormControl('19.01.2022, 12:33');
+            public override control = new FormControl<
+                string | [TuiDay | null, TuiDay | null] | null
+            >('19.01.2022, 12:33');
+
             public override min = new TuiDay(1900, 0, 1);
         }
 

@@ -25,12 +25,12 @@ describe('MultiSelect', () => {
 
         class User {
             constructor(
-                protected readonly firstName: string,
-                protected readonly lastName: string,
-                protected readonly id: string,
+                public readonly firstName: string,
+                public readonly lastName: string,
+                public readonly id: string,
             ) {}
 
-            protected toString(): string {
+            public toString(): string {
                 return `${this.firstName} ${this.lastName}`;
             }
         }
@@ -59,13 +59,13 @@ describe('MultiSelect', () => {
         })
         class TestComponent {
             @ViewChild(TuiMultiSelectComponent, {static: true})
-            protected component!: TuiMultiSelectComponent<User>;
+            public component!: TuiMultiSelectComponent<User>;
 
-            protected items = items;
+            public items = items;
 
-            protected control = new FormControl([items[0]]);
+            public control = new FormControl([items[0]]);
 
-            protected readOnly = false;
+            public readOnly = false;
         }
 
         beforeEach(async () => {
@@ -245,12 +245,12 @@ describe('MultiSelect', () => {
 
         class User {
             constructor(
-                protected readonly firstName: string,
-                protected readonly lastName: string,
-                protected readonly id: string,
+                public readonly firstName: string,
+                public readonly lastName: string,
+                public readonly id: string,
             ) {}
 
-            protected toString(): string {
+            public toString(): string {
                 return `${this.firstName} ${this.lastName}`;
             }
         }
@@ -275,13 +275,13 @@ describe('MultiSelect', () => {
         })
         class TestComponent {
             @ViewChild(TuiMultiSelectComponent, {static: true})
-            protected component!: TuiMultiSelectComponent<User>;
+            public component!: TuiMultiSelectComponent<User>;
 
-            protected items = items;
+            public items = items;
 
-            protected control = new FormControl([items[0]]);
+            public control = new FormControl([items[0]]);
 
-            protected readOnly = false;
+            public readOnly = false;
         }
 
         beforeEach(async () => {

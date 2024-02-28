@@ -96,7 +96,7 @@ export class TuiInputPhoneComponent
     @ContentChild(TuiDataListDirective, {read: TemplateRef})
     protected readonly datalist?: TemplateRef<TuiContext<TuiActiveZoneDirective>>;
 
-    protected countryCode = this.options.countryCode;
+    public countryCode = this.options.countryCode;
 
     protected open = false;
 

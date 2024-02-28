@@ -10,15 +10,15 @@ const BADGE_VALUE = 10;
 
 class ItemWithBadge {
     constructor(
-        protected readonly text: string,
-        protected readonly badgeValue?: number,
+        public readonly text: string,
+        public readonly badgeValue?: number,
     ) {}
 
-    protected toString(): string {
+    public toString(): string {
         return this.text;
     }
 
-    protected valueOf(): number | null {
+    public valueOf(): number | null {
         return this.badgeValue !== undefined ? this.badgeValue : null;
     }
 }

@@ -33,9 +33,9 @@ describe('Svg', () => {
     })
     class TestComponent {
         @ViewChild(TuiSvgComponent)
-        protected svgComponent!: TuiSvgComponent;
+        public svgComponent!: TuiSvgComponent;
 
-        protected icon = '';
+        public icon = '';
 
         constructor() {
             inject(TuiSvgService).define({customIcon: SVG_ICON});

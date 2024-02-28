@@ -328,7 +328,7 @@ export class TuiInputCardGroupedComponent
         }
     }
 
-    protected clear(): void {
+    public clear(): void {
         this.expireInert = false;
         this.value = null;
         this.focusCard();

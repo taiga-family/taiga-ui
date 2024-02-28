@@ -72,7 +72,7 @@ export class TuiInputCardComponent extends AbstractTuiInputCard<string> {
         }
     }
 
-    protected onFocused(focused: boolean): void {
+    public onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
 

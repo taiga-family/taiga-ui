@@ -13,7 +13,7 @@ describe('Tag component options', () => {
     })
     class TestComponent {
         @ViewChild(TuiTagComponent, {static: true})
-        protected component!: TuiTagComponent;
+        public component!: TuiTagComponent;
     }
 
     beforeEach(() => {
