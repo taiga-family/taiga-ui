@@ -13,7 +13,7 @@ describe('TuiPan', () => {
         `,
     })
     class TestComponent {
-        protected coords: readonly number[] = [0, 0];
+        public coords: readonly number[] = [0, 0];
 
         protected pan(delta: readonly [number, number]): void {
             this.coords = delta;

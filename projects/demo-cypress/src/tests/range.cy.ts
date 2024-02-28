@@ -27,14 +27,14 @@ describe('TuiRange', () => {
         protected component!: TuiRangeComponent;
 
         @ViewChild(TuiRangeComponent, {static: true, read: ElementRef})
-        protected el!: ElementRef<HTMLElement>;
+        public el!: ElementRef<HTMLElement>;
 
-        protected testValue = new FormControl([3, 5]);
-        protected max = 11;
-        protected min = 1;
-        protected segments = 10;
-        protected step = 1;
-        protected keySteps: TuiKeySteps | null = null;
+        public testValue = new FormControl([3, 5]);
+        public max = 11;
+        public min = 1;
+        public segments = 10;
+        public step = 1;
+        public keySteps: TuiKeySteps | null = null;
     }
 
     beforeEach(() => {
