@@ -35,10 +35,6 @@ export class ExampleTuiInputPhoneInternationalComponent extends AbstractExampleT
         LESS: import('./examples/2/index.less?raw'),
     };
 
-    public override cleaner = false;
-
-    public control = new FormControl('', [Validators.required, Validators.minLength(9)]);
-
     protected readonly countriesVariants: ReadonlyArray<readonly TuiCountryIsoCode[]> = [
         [
             TuiCountryIsoCode.RU,
@@ -59,5 +55,10 @@ export class ExampleTuiInputPhoneInternationalComponent extends AbstractExampleT
     ];
 
     protected countryIsoCode = this.countryIsoCodeVariants[0];
+
     public override labelOutside = true;
+
+    public control = new FormControl('', [Validators.required, Validators.minLength(9)]);
+
+    public override cleaner = false;
 }

@@ -110,6 +110,18 @@ export class TuiInputTagComponent
     private readonly mode$ = inject(TUI_MODE);
     private readonly options = inject(TUI_INPUT_TAG_OPTIONS);
 
+    @ContentChild(TuiDataListDirective, {read: TemplateRef})
+    protected readonly datalist?: TemplateRef<TuiContext<TuiActiveZoneDirective>>;
+
+    @ViewChild('errorIcon')
+    protected readonly errorIconTemplate?: TemplateRef<Record<string, unknown>>;
+
+    protected readonly hintOptions = inject(TuiHintOptionsDirective, {optional: true});
+    protected readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
+    protected readonly icons = inject(TUI_COMMON_ICONS);
+    protected status$: Observable<TuiStatus> = this.mode$.pipe(map(() => this.status));
+    protected open = false;
+
     @Input()
     public separator: RegExp | string = this.options.separator;
 
@@ -158,20 +170,6 @@ export class TuiInputTagComponent
     @Output()
     public readonly searchChange = new EventEmitter<string>();
 
-    @ContentChild(TuiDataListDirective, {read: TemplateRef})
-    protected readonly datalist?: TemplateRef<TuiContext<TuiActiveZoneDirective>>;
-
-    @ViewChild('errorIcon')
-    protected readonly errorIconTemplate?: TemplateRef<Record<string, unknown>>;
-
-    protected readonly hintOptions = inject(TuiHintOptionsDirective, {optional: true});
-    protected readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
-    protected readonly icons = inject(TUI_COMMON_ICONS);
-
-    protected status$: Observable<TuiStatus> = this.mode$.pipe(map(() => this.status));
-
-    protected open = false;
-
     public get nativeFocusableElement(): HTMLInputElement | null {
         return !this.focusableElement || this.computedDisabled
             ? null
@@ -180,6 +178,38 @@ export class TuiInputTagComponent
 
     public get focused(): boolean {
         return tuiIsNativeFocusedIn(this.el) || !!this.hostedDropdown?.focused;
+    }
+
+    public onTagEdited(value: string, index: number): void {
+        this.focusInput(value === '');
+        this.value = this.filterValue(
+            this.value
+                .map((tag, tagIndex) =>
+                    tagIndex !== index
+                        ? tag
+                        : value
+                              .split(this.separator)
+                              .map(tag => tag.trim())
+                              .filter(Boolean),
+                )
+                .reduce<string[]>(
+                    (result, item: string[] | string) => result.concat(item),
+                    [],
+                ),
+        );
+    }
+
+    public handleOption(item: string): void {
+        this.focusInput();
+        this.updateSearch('');
+        this.value = this.filterValue(this.value.concat(item));
+        this.open = false;
+        this.scrollTo();
+    }
+
+    public override setDisabledState(): void {
+        super.setDisabledState();
+        this.open = false;
     }
 
     protected get appearance(): string {
@@ -366,33 +396,6 @@ export class TuiInputTagComponent
         }
     }
 
-    public onTagEdited(value: string, index: number): void {
-        this.focusInput(value === '');
-        this.value = this.filterValue(
-            this.value
-                .map((tag, tagIndex) =>
-                    tagIndex !== index
-                        ? tag
-                        : value
-                              .split(this.separator)
-                              .map(tag => tag.trim())
-                              .filter(Boolean),
-                )
-                .reduce<string[]>(
-                    (result, item: string[] | string) => result.concat(item),
-                    [],
-                ),
-        );
-    }
-
-    public handleOption(item: string): void {
-        this.focusInput();
-        this.updateSearch('');
-        this.value = this.filterValue(this.value.concat(item));
-        this.open = false;
-        this.scrollTo();
-    }
-
     protected onInput(value: string): void {
         const array = value.split(this.separator);
         const tags = array
@@ -420,11 +423,6 @@ export class TuiInputTagComponent
         if (dataTransfer) {
             this.onInput(dataTransfer.getData('text') || '');
         }
-    }
-
-    public override setDisabledState(): void {
-        super.setDisabledState();
-        this.open = false;
     }
 
     protected trackByFn(_: number, tag: string): string {

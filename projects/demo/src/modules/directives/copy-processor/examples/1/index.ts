@@ -18,11 +18,6 @@ export class TuiCopyProcessorExample1 {
 
     protected value = 12345.67;
 
-    @HostListener('copy', ['$event'])
-    protected onCopy(event: ClipboardEvent): void {
-        this.alerts.open(event.clipboardData?.getData('text/plain') ?? '').subscribe();
-    }
-
     protected numberProcessor$ = this.format.pipe(
         map(
             format => (text: string) =>
@@ -31,6 +26,11 @@ export class TuiCopyProcessorExample1 {
                     .replaceAll(new RegExp(format.thousandSeparator, 'g'), ''),
         ),
     );
+
+    @HostListener('copy', ['$event'])
+    protected onCopy(event: ClipboardEvent): void {
+        this.alerts.open(event.clipboardData?.getData('text/plain') ?? '').subscribe();
+    }
 
     protected readonly textProcessor: TuiStringHandler<string> = text =>
         text.toUpperCase();

@@ -85,6 +85,17 @@ export class TuiInputDateMultiComponent
         AbstractTuiValueTransformer<readonly TuiDay[]>
     >(TUI_DATE_VALUE_TRANSFORMER, {optional: true});
 
+    protected open = false;
+    protected readonly dateFormat = inject(TUI_DATE_FORMAT);
+    protected readonly dateSeparator = inject(TUI_DATE_SEPARATOR);
+    protected readonly isMobile = inject(TUI_IS_MOBILE);
+    protected readonly doneWord$ = inject(TUI_DONE_WORD);
+    protected readonly filler$: Observable<string> = this.dateTexts$.pipe(
+        map(dateTexts =>
+            changeDateSeparator(dateTexts[this.dateFormat], this.dateSeparator),
+        ),
+    );
+
     @Input()
     public min: TuiDay | null = this.options.min;
 
@@ -116,24 +127,12 @@ export class TuiInputDateMultiComponent
     @Input()
     public rows = 1;
 
-    protected maskitoOptions: MaskitoOptions = maskitoDateOptionsGenerator({
+    public maskitoOptions: MaskitoOptions = maskitoDateOptionsGenerator({
         mode: 'dd/mm/yyyy',
         separator: '.',
         min: this.min?.toLocalNativeDate(),
         max: this.max?.toLocalNativeDate(),
     });
-
-    protected open = false;
-
-    protected readonly dateFormat = inject(TUI_DATE_FORMAT);
-    protected readonly dateSeparator = inject(TUI_DATE_SEPARATOR);
-    protected readonly isMobile = inject(TUI_IS_MOBILE);
-    protected readonly doneWord$ = inject(TUI_DONE_WORD);
-    protected readonly filler$: Observable<string> = this.dateTexts$.pipe(
-        map(dateTexts =>
-            changeDateSeparator(dateTexts[this.dateFormat], this.dateSeparator),
-        ),
-    );
 
     @Input()
     public tagValidator: TuiBooleanHandler<string> = (tag: TuiDay | string) => {
@@ -149,6 +148,11 @@ export class TuiInputDateMultiComponent
             false
         );
     };
+
+    public override setDisabledState(): void {
+        super.setDisabledState();
+        this.open = false;
+    }
 
     @HostListener('click')
     protected onClick(): void {
@@ -278,10 +282,5 @@ export class TuiInputDateMultiComponent
 
     protected onFocused(focused: boolean): void {
         this.updateFocused(focused);
-    }
-
-    public override setDisabledState(): void {
-        super.setDisabledState();
-        this.open = false;
     }
 }

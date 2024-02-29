@@ -14,17 +14,17 @@ import {TUI_ITEMS_HANDLERS} from '@taiga-ui/kit/tokens';
 @Directive()
 export abstract class AbstractTuiNativeSelect<H = TuiTextfieldHost, T = string> {
     private readonly idService = inject(TuiIdService);
-    protected readonly el: HTMLSelectElement = inject(ElementRef).nativeElement;
-
-    @Input()
-    public disabledItemHandler: TuiBooleanHandler<T> | null = null;
 
     @ViewChild(TuiDataListDirective, {read: TemplateRef, static: true})
     protected readonly datalist: TemplateRef<any> | null = null;
 
+    protected readonly el: HTMLSelectElement = inject(ElementRef).nativeElement;
     protected readonly host = inject<H>(TUI_TEXTFIELD_HOST);
     protected readonly control = inject(AbstractTuiControl);
     protected readonly itemsHandlers = inject(TUI_ITEMS_HANDLERS);
+
+    @Input()
+    public disabledItemHandler: TuiBooleanHandler<T> | null = null;
 
     @HostBinding('id')
     protected get id(): string {

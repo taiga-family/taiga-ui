@@ -51,10 +51,10 @@ export class TuiCheckboxComponent implements OnInit, DoCheck {
     private readonly destroy$ = inject(TuiDestroyService, {self: true});
     private readonly el: HTMLInputElement = inject(ElementRef).nativeElement;
 
+    protected readonly control: NgControl | null = inject(NgControl, {optional: true});
+
     @Input()
     public size: TuiSizeS = this.options.size;
-
-    protected readonly control: NgControl | null = inject(NgControl, {optional: true});
 
     public ngOnInit(): void {
         if (!this.control?.valueChanges) {

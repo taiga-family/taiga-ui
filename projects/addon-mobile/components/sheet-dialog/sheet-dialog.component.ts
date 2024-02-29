@@ -49,7 +49,6 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
 
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
     private readonly speed = inject(TUI_ANIMATIONS_SPEED);
-
     private pointers = 0;
 
     @HostBinding('@tuiSlideInTop')
@@ -62,11 +61,16 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
     };
 
     protected stuck$ = new BehaviorSubject(false);
-
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly closeWord$ = inject(TUI_CLOSE_WORD);
     protected readonly context =
         inject<TuiPopover<TuiSheetDialogOptions<I>, any>>(POLYMORPHEUS_CONTEXT);
+
+    public ngAfterViewInit(): void {
+        this.el.scrollTop = [...this.getStops(this.stopsRefs), this.sheetTop][
+            this.context.initial
+        ];
+    }
 
     @HostBinding('style.top.px')
     protected get offset(): number {
@@ -105,12 +109,6 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
         // TODO: Refactor focus visible on mobile
         this.el.dispatchEvent(new Event('mousedown', {bubbles: true}));
         this.context.$implicit.complete();
-    }
-
-    public ngAfterViewInit(): void {
-        this.el.scrollTop = [...this.getStops(this.stopsRefs), this.sheetTop][
-            this.context.initial
-        ];
     }
 
     private get sheetTop(): number {

@@ -90,9 +90,6 @@ export class ExampleTuiInputComponent extends AbstractExampleTuiControl {
     protected readonly iconVariants = ['', 'tuiIconSearchLarge', 'tuiIconCalendarLarge'];
 
     protected icon = this.iconVariants[0];
-    public override iconLeft = this.iconVariants[0];
-
-    public readonly control = new FormControl('111', Validators.required);
 
     protected placeholder = 'Field placeholder';
 
@@ -104,6 +101,10 @@ export class ExampleTuiInputComponent extends AbstractExampleTuiControl {
         'tuiIconMastercardMono',
         LONG_TEXT_TEMPLATE,
     ];
+
+    public override iconLeft = this.iconVariants[0];
+
+    public readonly control = new FormControl('111', Validators.required);
 
     public override get customContent(): PolymorpheusContent {
         return this.customContentSelected === LONG_TEXT_TEMPLATE

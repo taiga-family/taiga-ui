@@ -19,6 +19,9 @@ import {delay, of} from 'rxjs';
     },
 })
 export class TuiProgressCircleComponent {
+    protected readonly animationDelay$ = of(true).pipe(delay(0));
+    protected readonly mode$ = inject(TUI_MODE);
+
     @Input()
     public value = 0;
 
@@ -32,10 +35,6 @@ export class TuiProgressCircleComponent {
     @Input()
     @HostBinding('attr.data-size')
     public size: TuiSizeXXL | TuiSizeXXS = 'm';
-
-    protected readonly animationDelay$ = of(true).pipe(delay(0));
-
-    protected readonly mode$ = inject(TUI_MODE);
 
     @HostBinding('style.--progress-ratio')
     protected get progressRatio(): number {

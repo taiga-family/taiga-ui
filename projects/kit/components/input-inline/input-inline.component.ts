@@ -34,10 +34,10 @@ export class TuiInputInlineComponent
     @ViewChild('text')
     private readonly text?: ElementRef<HTMLElement>;
 
+    protected indent = -1;
+
     @Input()
     public maxLength: number | null = null;
-
-    protected indent = -1;
 
     public get nativeFocusableElement(): TuiNativeFocusableElement | null {
         return !this.native ? null : this.native.nativeElement;

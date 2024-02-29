@@ -52,6 +52,14 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
     private readonly cdr = inject(ChangeDetectorRef);
     private maxIndex = Infinity;
 
+    @ContentChildren(TuiItemDirective, {read: TemplateRef})
+    protected readonly items: QueryList<TemplateRef<Record<string, unknown>>> =
+        EMPTY_QUERY;
+
+    protected readonly moreWord$ = inject(TUI_MORE_WORD);
+    protected readonly arrowOptions = inject(TUI_ARROW_OPTIONS);
+    protected open = false;
+
     @Input()
     public moreContent: PolymorpheusContent;
 
@@ -74,16 +82,7 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
     @Output()
     public readonly activeItemIndexChange = new EventEmitter<number>();
 
-    @ContentChildren(TuiItemDirective, {read: TemplateRef})
-    protected readonly items: QueryList<TemplateRef<Record<string, unknown>>> =
-        EMPTY_QUERY;
-
-    protected readonly moreWord$ = inject(TUI_MORE_WORD);
-    protected readonly arrowOptions = inject(TUI_ARROW_OPTIONS);
-
     public activeItemIndex = 0;
-
-    protected open = false;
 
     // TODO: Improve performance
     protected get tabs(): readonly HTMLElement[] {

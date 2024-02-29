@@ -21,6 +21,8 @@ import {MODE_PROVIDER, TUI_MODE} from '@taiga-ui/core';
     },
 })
 export class TuiAxesComponent {
+    protected readonly mode$ = inject(TUI_MODE);
+
     @Input()
     public axisX: TuiLineType = 'solid';
 
@@ -64,8 +66,6 @@ export class TuiAxesComponent {
     protected get centeredXLabels(): boolean {
         return this.axisY === 'none';
     }
-
-    protected readonly mode$ = inject(TUI_MODE);
 
     public get hasXLabels(): boolean {
         return !!this.axisXLabels.length;

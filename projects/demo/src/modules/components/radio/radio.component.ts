@@ -50,10 +50,6 @@ export class ExampleTuiRadioComponent extends AbstractExampleTuiControl {
         },
     ];
 
-    public override readonly sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
-
-    public override size: TuiSizeL = this.sizeVariants[0];
-
     protected pseudoDisabled = false;
 
     protected identityMatcherVariants: ReadonlyArray<
@@ -63,6 +59,8 @@ export class ExampleTuiRadioComponent extends AbstractExampleTuiControl {
     protected identityMatcher = this.identityMatcherVariants[0];
 
     public control = new FormControl(this.items[1]);
+    public override readonly sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
+    public override size: TuiSizeL = this.sizeVariants[0];
 
     protected onClick(): void {
         this.control.setValue({id: 0, value: 'One'});

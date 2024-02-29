@@ -77,13 +77,13 @@ export class ExampleTuiInputNumberComponent extends AbstractExampleTuiControl {
 
     protected decimal = this.decimalVariants[0];
 
-    public override cleaner = false;
-
     protected readonly precisionVariants: readonly number[] = [2, 3, 4, Infinity];
 
     protected precision = this.precisionVariants[0];
 
+    protected step = 0;
+
     public readonly control = new FormControl(6432, Validators.required);
 
-    protected step = 0;
+    public override cleaner = false;
 }

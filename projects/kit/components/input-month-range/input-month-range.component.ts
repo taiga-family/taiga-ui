@@ -58,6 +58,8 @@ export class TuiInputMonthRangeComponent
     private readonly options = inject(TUI_INPUT_DATE_OPTIONS);
     private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
 
+    protected readonly formatter = inject(TUI_MONTH_FORMATTER);
+
     @Input()
     public min: TuiMonth = this.options.min;
 
@@ -72,8 +74,6 @@ export class TuiInputMonthRangeComponent
     public defaultActiveYear: TuiYear = TuiDay.currentLocal();
 
     public open = false;
-
-    protected readonly formatter = inject(TUI_MONTH_FORMATTER);
 
     @HostBinding('attr.data-size')
     protected get size(): TuiSizeL | TuiSizeS {
@@ -124,6 +124,11 @@ export class TuiInputMonthRangeComponent
         this.close();
     }
 
+    public override setDisabledState(): void {
+        super.setDisabledState();
+        this.close();
+    }
+
     protected onOpenChange(open: boolean): void {
         this.open = open;
     }
@@ -138,11 +143,6 @@ export class TuiInputMonthRangeComponent
         if (this.value?.isSingleMonth) {
             this.value = new TuiMonthRange(this.value.from, this.value.from);
         }
-    }
-
-    public override setDisabledState(): void {
-        super.setDisabledState();
-        this.close();
     }
 
     private close(): void {

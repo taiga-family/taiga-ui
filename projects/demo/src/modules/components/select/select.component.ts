@@ -125,8 +125,6 @@ export class ExampleTuiSelectComponent extends AbstractExampleTuiControl {
         'tuiIconCreditCardLarge',
     ];
 
-    public override iconLeft = this.iconVariants[0];
-
     protected selectedValueTemplate = this.valueTemplateVariants[0];
 
     protected readonly identityMatcherVariants: ReadonlyArray<
@@ -138,11 +136,13 @@ export class ExampleTuiSelectComponent extends AbstractExampleTuiControl {
 
     protected identityMatcher = this.identityMatcherVariants[0];
 
-    public control = new FormControl<Account | null>(null, Validators.required);
-
     protected readonly disabledItemHandlerVariants: ReadonlyArray<
         TuiBooleanHandler<Account>
     > = [ALWAYS_FALSE_HANDLER, (item: Account) => item.balance < 300];
+
+    public control = new FormControl<Account | null>(null, Validators.required);
+
+    public override iconLeft = this.iconVariants[0];
 
     protected get valueContent(): PolymorpheusContent<TuiValueContentContext<Account>> {
         return this.valueTemplateRef && this.selectedValueTemplate

@@ -80,9 +80,6 @@
             "plugin:@taiga-ui/experience/all",
             "plugin:@taiga-ui/experience/taiga-naming"
         ],
-        "rules": {
-            "@typescript-eslint/member-ordering": "off"
-        },
         "root": true
     },
     "stylelint": {

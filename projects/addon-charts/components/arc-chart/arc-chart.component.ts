@@ -64,6 +64,7 @@ function arcsToIndex(arcs: QueryList<ElementRef<SVGElement>>): Array<Observable<
 export class TuiArcChartComponent {
     private readonly sanitizer = inject(DomSanitizer);
     private readonly arcs$ = new ReplaySubject<QueryList<ElementRef<SVGElement>>>(1);
+    protected initialized = false;
 
     @ViewChildren('arc')
     protected set arcs(arcs: QueryList<ElementRef<SVGElement>>) {
@@ -101,8 +102,6 @@ export class TuiArcChartComponent {
             this.activeItemIndex = index;
         }),
     );
-
-    protected initialized = false;
 
     constructor() {
         timer(0)

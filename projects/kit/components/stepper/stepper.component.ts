@@ -47,6 +47,8 @@ export class TuiStepperComponent {
     private readonly speed = inject(TUI_ANIMATIONS_SPEED);
     private readonly destroy$ = inject(TuiDestroyService, {self: true});
 
+    protected activeItemIndex = 0;
+
     @Input()
     @HostBinding('attr.data-orientation')
     public orientation: TuiOrientation = 'horizontal';
@@ -60,12 +62,31 @@ export class TuiStepperComponent {
     @Output()
     public readonly activeItemIndexChange = new EventEmitter<number>();
 
-    protected activeItemIndex = 0;
-
     constructor() {
         this.resize$
             .pipe(takeUntil(this.destroy$))
             .subscribe(() => this.scrollIntoView(this.activeItemIndex));
+    }
+
+    public indexOf(step: HTMLElement): number {
+        return tuiGetOriginalArrayFromQueryList(this.steps).findIndex(
+            ({nativeElement}) => nativeElement === step,
+        );
+    }
+
+    public isActive(index: number): boolean {
+        return index === this.activeItemIndex;
+    }
+
+    public activate(index: number): void {
+        if (this.activeItemIndex === index) {
+            return;
+        }
+
+        this.activeItemIndex = index;
+        this.activeItemIndexChange.emit(index);
+        this.cdr.markForCheck();
+        this.scrollIntoView(index);
     }
 
     @tuiPure
@@ -95,27 +116,6 @@ export class TuiStepperComponent {
 
         event.preventDefault();
         this.moveFocus(event.target, step);
-    }
-
-    public indexOf(step: HTMLElement): number {
-        return tuiGetOriginalArrayFromQueryList(this.steps).findIndex(
-            ({nativeElement}) => nativeElement === step,
-        );
-    }
-
-    public isActive(index: number): boolean {
-        return index === this.activeItemIndex;
-    }
-
-    public activate(index: number): void {
-        if (this.activeItemIndex === index) {
-            return;
-        }
-
-        this.activeItemIndex = index;
-        this.activeItemIndexChange.emit(index);
-        this.cdr.markForCheck();
-        this.scrollIntoView(index);
     }
 
     @tuiPure

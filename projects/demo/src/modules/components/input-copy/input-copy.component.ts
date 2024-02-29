@@ -32,18 +32,14 @@ export class ExampleTuiInputCopyComponent extends AbstractExampleTuiControl {
     protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
     protected readonly exampleForm = import('./examples/import/declare-form.md?raw');
 
-    public readonly control = new FormControl('', Validators.required);
-
-    public override readonly maxLengthVariants: readonly number[] = [10];
-
-    public override readonly maxLength = null;
-
     protected readonly successMessageVariants = ['Copied', 'Template'];
-
     protected successMessage = this.successMessageVariants[0];
-
     protected messageDirection = this.hintDirectionVariants[0];
     protected messageMode = this.hintAppearanceVariants[0];
+
+    public readonly control = new FormControl('', Validators.required);
+    public override readonly maxLengthVariants: readonly number[] = [10];
+    public override readonly maxLength = null;
 
     protected get notificationTemplate(): PolymorpheusContent {
         return this.successMessage === 'Template'

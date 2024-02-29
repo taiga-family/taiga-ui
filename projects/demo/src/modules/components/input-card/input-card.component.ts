@@ -43,10 +43,6 @@ export class ExampleTuiInputCardComponent extends AbstractExampleTuiControl {
 
     protected length = this.lengthVariants[0];
 
-    public override cleaner = false;
-
-    public override exampleText = '0000 0000 0000 0000';
-
     protected hintContentCVC = null;
 
     protected hintDirectionCVC: TuiHintOptions['direction'] = 'bottom-left';
@@ -71,6 +67,10 @@ export class ExampleTuiInputCardComponent extends AbstractExampleTuiControl {
     protected autocompleteEnabledCVC = false;
 
     protected autocompleteEnabledExpire = false;
+
+    public override cleaner = false;
+
+    public override exampleText = '0000 0000 0000 0000';
 
     public control = new FormGroup({
         card: new FormControl('', [

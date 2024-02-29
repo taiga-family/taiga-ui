@@ -109,8 +109,6 @@ export class ExampleTuiMultiSelectComponent extends AbstractExampleTuiControl {
         HTML: import('./examples/11/index.html?raw'),
     };
 
-    public override labelOutside = true;
-
     protected readonly items = [
         new Account('Ruble', 500),
         new Account('Dollar', 500),
@@ -125,23 +123,12 @@ export class ExampleTuiMultiSelectComponent extends AbstractExampleTuiControl {
 
     protected search: string | null = '';
 
-    public override readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = [
-        's',
-        'm',
-        'l',
-    ];
-
     protected readonly iconVariants = [
         '',
         'tuiIconSearchLarge',
         'tuiIconPieChartLarge',
         'tuiIconCreditCardLarge',
     ];
-
-    public override iconLeft = '';
-
-    public override size: TuiSizeL | TuiSizeS =
-        this.sizeVariants[this.sizeVariants.length - 1];
 
     protected stringifyVariants: Array<TuiStringHandler<Account | string>> = [
         TUI_DEFAULT_STRINGIFY,
@@ -165,23 +152,36 @@ export class ExampleTuiMultiSelectComponent extends AbstractExampleTuiControl {
 
     protected tagValidator = this.tagValidatorVariants[0];
 
-    public override readonly maxLengthVariants: readonly number[] = [10];
-
-    public override maxLength = null;
-
     protected readonly valueContentVariants: ReadonlyArray<
         PolymorpheusContent<TuiContext<readonly Account[]>>
     > = ['', ({$implicit: {length}}) => `Selected: ${length}`];
 
     protected valueContent = this.valueContentVariants[0];
 
-    public control = new FormControl<Account[] | null>(null);
-
     protected readonly disabledItemHandlerVariants: ReadonlyArray<
         TuiBooleanHandler<Account>
     > = [ALWAYS_FALSE_HANDLER, (item: Account) => item.balance < 300];
 
     protected disabledItemHandler = this.disabledItemHandlerVariants[0];
+
+    public override readonly maxLengthVariants: readonly number[] = [10];
+
+    public override maxLength = null;
+
+    public override labelOutside = true;
+
+    public control = new FormControl<Account[] | null>(null);
+
+    public override iconLeft = '';
+
+    public override size: TuiSizeL | TuiSizeS =
+        this.sizeVariants[this.sizeVariants.length - 1];
+
+    public override readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = [
+        's',
+        'm',
+        'l',
+    ];
 
     protected setValue(): void {
         this.control.setValue([new Account('Dollar', 237)]);

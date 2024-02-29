@@ -62,13 +62,6 @@ export class TuiDocDemoComponent implements OnInit {
     private readonly urlSerializer = inject(UrlSerializer);
     private readonly urlStateHandler = inject(TUI_DOC_URL_STATE_HANDLER);
 
-    @Input()
-    public control: AbstractControl | null = null;
-
-    @Input()
-    @HostBinding('class._sticky')
-    public sticky = true;
-
     @ContentChild(TemplateRef)
     protected readonly template: TemplateRef<Record<string, unknown>> | null = null;
 
@@ -81,14 +74,26 @@ export class TuiDocDemoComponent implements OnInit {
 
     protected opaque = tuiCoerceValueIsTrue(this.params.sandboxOpaque ?? true);
     protected expanded = tuiCoerceValueIsTrue(this.params.sandboxExpanded ?? false);
-    public mode: TuiBrightness | null = this.params.tuiMode || null;
     protected sandboxWidth = tuiToInteger(this.params.sandboxWidth);
-
-    public readonly change$ = new Subject<void>();
     protected readonly items: readonly TuiBrightness[] = ['onLight', 'onDark'];
     protected readonly options = inject(TUI_ARROW_OPTIONS);
     protected readonly isMobile = inject(TUI_IS_MOBILE);
     protected readonly texts = inject(TUI_DOC_DEMO_TEXTS);
+
+    @Input()
+    public control: AbstractControl | null = null;
+
+    @Input()
+    @HostBinding('class._sticky')
+    public sticky = true;
+
+    public mode: TuiBrightness | null = this.params.tuiMode || null;
+    public readonly change$ = new Subject<void>();
+
+    public ngOnInit(): void {
+        this.createForm();
+        this.updateWidth(this.sandboxWidth + this.delta);
+    }
 
     @HostListener('window:resize')
     protected onResize(): void {
@@ -99,11 +104,6 @@ export class TuiDocDemoComponent implements OnInit {
     @HostListener('document:mouseup.silent')
     protected onMouseUp(): void {
         this.updateUrl({sandboxWidth: this.sandboxWidth});
-    }
-
-    public ngOnInit(): void {
-        this.createForm();
-        this.updateWidth(this.sandboxWidth + this.delta);
     }
 
     protected onModeChange(mode: TuiBrightness | null): void {

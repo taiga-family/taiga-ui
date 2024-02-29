@@ -110,6 +110,38 @@ export class TuiLineDaysChartComponent implements AfterViewInit {
 
     public value: ReadonlyArray<[TuiDay, number]> = [];
 
+    public ngAfterViewInit(): void {
+        combineLatest([tuiLineChartDrivers(this.charts), this.hovered$])
+            .pipe(
+                filter(result => !result.some(Boolean)),
+                tuiZonefree(this.zone),
+                takeUntil(this.destroy$),
+            )
+            .subscribe(() => {
+                this.onHovered(NaN);
+            });
+    }
+
+    public onHovered(day: TuiDay | number): void {
+        if (tuiIsNumber(day)) {
+            this.charts.forEach(chart => chart.onHovered(NaN));
+
+            return;
+        }
+
+        const index = TuiMonth.lengthBetween(this.value[0][0], day);
+        const x = TuiDay.lengthBetween(this.value[0][0], day) + this.value[0][0].day - 1;
+        const current = this.charts.get(index);
+
+        this.charts.forEach(chart => {
+            if (chart === current) {
+                current.onHovered(current.value.findIndex(point => point[0] === x));
+            } else {
+                chart.onHovered(NaN);
+            }
+        });
+    }
+
     protected get months(): ReadonlyArray<readonly TuiPoint[]> {
         return this.value.length ? this.breakMonths(this.value) : EMPTY_ARRAY;
     }
@@ -132,18 +164,6 @@ export class TuiLineDaysChartComponent implements AfterViewInit {
         return value[x - value[0][0].day + 1];
     }
 
-    public ngAfterViewInit(): void {
-        combineLatest([tuiLineChartDrivers(this.charts), this.hovered$])
-            .pipe(
-                filter(result => !result.some(Boolean)),
-                tuiZonefree(this.zone),
-                takeUntil(this.destroy$),
-            )
-            .subscribe(() => {
-                this.onHovered(NaN);
-            });
-    }
-
     protected readonly daysStringify: TuiStringHandler<number> = index =>
         this.xStringify ? this.xStringify(this.getDay(index)) : '';
 
@@ -153,26 +173,6 @@ export class TuiLineDaysChartComponent implements AfterViewInit {
         const offset = months * current.daysCount;
 
         return index - offset;
-    }
-
-    public onHovered(day: TuiDay | number): void {
-        if (tuiIsNumber(day)) {
-            this.charts.forEach(chart => chart.onHovered(NaN));
-
-            return;
-        }
-
-        const index = TuiMonth.lengthBetween(this.value[0][0], day);
-        const x = TuiDay.lengthBetween(this.value[0][0], day) + this.value[0][0].day - 1;
-        const current = this.charts.get(index);
-
-        this.charts.forEach(chart => {
-            if (chart === current) {
-                current.onHovered(current.value.findIndex(point => point[0] === x));
-            } else {
-                chart.onHovered(NaN);
-            }
-        });
     }
 
     protected raise(index: number, {value}: TuiLineChartComponent): void {

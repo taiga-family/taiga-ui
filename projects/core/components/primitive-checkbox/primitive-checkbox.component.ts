@@ -20,6 +20,11 @@ import {TUI_CHECKBOX_OPTIONS} from './checkbox.options';
 export class TuiPrimitiveCheckboxComponent {
     private readonly options = inject(TUI_CHECKBOX_OPTIONS);
 
+    protected icon: PolymorpheusContent<TuiContext<TuiSizeL>> =
+        this.options.icons.checked;
+
+    protected value: boolean | null = false;
+
     @Input()
     @HostBinding('attr.data-size')
     public size: TuiSizeL = this.options.size;
@@ -47,11 +52,6 @@ export class TuiPrimitiveCheckboxComponent {
 
         this.value = value;
     }
-
-    protected icon: PolymorpheusContent<TuiContext<TuiSizeL>> =
-        this.options.icons.checked;
-
-    protected value: boolean | null = false;
 
     protected get appearance(): string {
         switch (this.value) {

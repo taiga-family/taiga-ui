@@ -56,6 +56,13 @@ export class TuiPaginationComponent
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
     private readonly modeDirective = inject(TuiModeDirective, {optional: true});
 
+    protected readonly mode$ = this.modeDirective
+        ? this.modeDirective.change$.pipe(map(() => this.modeDirective?.mode || null))
+        : EMPTY;
+
+    protected readonly texts$ = inject(TUI_PAGINATION_TEXTS);
+    protected readonly icons = inject(TUI_SPIN_ICONS);
+
     @Input()
     public length = 1;
 
@@ -91,13 +98,6 @@ export class TuiPaginationComponent
 
     @Output()
     public readonly indexChange = new EventEmitter<number>();
-
-    protected readonly mode$ = this.modeDirective
-        ? this.modeDirective.change$.pipe(map(() => this.modeDirective?.mode || null))
-        : EMPTY;
-
-    protected readonly texts$ = inject(TUI_PAGINATION_TEXTS);
-    protected readonly icons = inject(TUI_SPIN_ICONS);
 
     public get nativeFocusableElement(): TuiNativeFocusableElement | null {
         if (this.disabled) {

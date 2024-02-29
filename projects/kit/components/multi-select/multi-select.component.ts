@@ -85,6 +85,24 @@ export class TuiMultiSelectComponent<T>
     private readonly itemsHandlers = inject<TuiItemsHandlers<T>>(TUI_ITEMS_HANDLERS);
     private readonly options = inject<TuiMultiSelectOptions<T>>(TUI_MULTI_SELECT_OPTIONS);
 
+    @ContentChild(TuiDataListDirective, {read: TemplateRef})
+    protected readonly datalist: PolymorpheusContent<TuiContext<TuiActiveZoneDirective>>;
+
+    protected open = false;
+    protected readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
+    protected readonly isMobile: boolean = inject(TUI_IS_MOBILE);
+
+    @HostBinding('attr.data-size')
+    protected get size(): TuiSizeL | TuiSizeS {
+        return this.controller.size;
+    }
+
+    protected get arrow(): PolymorpheusContent<
+        TuiContext<TuiSizeL | TuiSizeM | TuiSizeS>
+    > {
+        return this.interactive ? this.arrowMode.interactive : this.arrowMode.disabled;
+    }
+
     @Input()
     public stringify: TuiItemsHandlers<T>['stringify'] = this.itemsHandlers.stringify;
 
@@ -119,31 +137,39 @@ export class TuiMultiSelectComponent<T>
     @Output()
     public readonly searchChange = new EventEmitter<string | null>();
 
-    @ContentChild(TuiDataListDirective, {read: TemplateRef})
-    protected readonly datalist: PolymorpheusContent<TuiContext<TuiActiveZoneDirective>>;
-
-    protected open = false;
-
-    protected readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
-    protected readonly isMobile: boolean = inject(TUI_IS_MOBILE);
-
-    @HostBinding('attr.data-size')
-    protected get size(): TuiSizeL | TuiSizeS {
-        return this.controller.size;
-    }
-
-    protected get arrow(): PolymorpheusContent<
-        TuiContext<TuiSizeL | TuiSizeM | TuiSizeS>
-    > {
-        return this.interactive ? this.arrowMode.interactive : this.arrowMode.disabled;
-    }
-
     public get nativeFocusableElement(): HTMLInputElement | null {
         return this.input?.nativeFocusableElement ?? null;
     }
 
     public get focused(): boolean {
         return !!this.input?.focused || !!this.hostedDropdown?.focused;
+    }
+
+    public handleOption(option: T): void {
+        const {value, identityMatcher} = this;
+        const index = value.findIndex(item => identityMatcher(item, option));
+
+        this.value =
+            index === -1 ? [...value, option] : value.filter((_, i) => i !== index);
+        this.updateSearch(null);
+    }
+
+    public onValueChange(value: readonly T[]): void {
+        this.value = value;
+    }
+
+    public onSearch(search: string | null): void {
+        // Clearing sets the empty value, the dropdown should not be opened on clear.
+        if (search !== '') {
+            this.hostedDropdown?.updateOpen(true);
+        }
+
+        this.updateSearch(search);
+    }
+
+    public override setDisabledState(): void {
+        super.setDisabledState();
+        this.hostedDropdown?.updateOpen(false);
     }
 
     protected get nativeDropdownMode(): boolean {
@@ -202,15 +228,6 @@ export class TuiMultiSelectComponent<T>
         }
     }
 
-    public handleOption(option: T): void {
-        const {value, identityMatcher} = this;
-        const index = value.findIndex(item => identityMatcher(item, option));
-
-        this.value =
-            index === -1 ? [...value, option] : value.filter((_, i) => i !== index);
-        this.updateSearch(null);
-    }
-
     protected onEnter(event: Event): void {
         const {value} = this;
         const options = this.accessor ? this.accessor.getOptions() : [];
@@ -238,26 +255,8 @@ export class TuiMultiSelectComponent<T>
         this.value = value.map(({item}) => item);
     }
 
-    public onValueChange(value: readonly T[]): void {
-        this.value = value;
-    }
-
-    public onSearch(search: string | null): void {
-        // Clearing sets the empty value, the dropdown should not be opened on clear.
-        if (search !== '') {
-            this.hostedDropdown?.updateOpen(true);
-        }
-
-        this.updateSearch(search);
-    }
-
     protected onActiveZone(active: boolean): void {
         this.updateFocused(active);
-    }
-
-    public override setDisabledState(): void {
-        super.setDisabledState();
-        this.hostedDropdown?.updateOpen(false);
     }
 
     private updateSearch(search: string | null): void {

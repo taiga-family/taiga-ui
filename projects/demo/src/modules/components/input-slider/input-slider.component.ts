@@ -53,8 +53,6 @@ export class ExampleTuiInputSliderComponent extends AbstractExampleTuiControl {
         LESS: import('./examples/5/index.less?raw'),
     };
 
-    public readonly control = new FormControl(0);
-
     protected readonly minVariants: readonly number[] = [0, 1, 5, 7.77, -10];
 
     protected min = this.minVariants[0];
@@ -72,10 +70,6 @@ export class ExampleTuiInputSliderComponent extends AbstractExampleTuiControl {
     ];
 
     protected quantum = this.quantumVariants[0];
-
-    public override readonly sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
-
-    public override size = this.sizeVariants[1];
 
     protected readonly valueContentVariants = [
         '',
@@ -104,4 +98,10 @@ export class ExampleTuiInputSliderComponent extends AbstractExampleTuiControl {
     ];
 
     public override customContentSelected = this.customContentVariants[0];
+
+    public override readonly sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
+
+    public override size = this.sizeVariants[1];
+
+    public readonly control = new FormControl(0);
 }

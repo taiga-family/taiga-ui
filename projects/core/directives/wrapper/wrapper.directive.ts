@@ -13,6 +13,8 @@ import {Observable} from 'rxjs';
     },
 })
 export class TuiWrapperDirective {
+    protected readonly mode$ = inject<Observable<TuiBrightness | null>>(TUI_MODE);
+
     @Input()
     public disabled = false;
 
@@ -34,8 +36,6 @@ export class TuiWrapperDirective {
     @Input()
     @HostBinding('attr.data-appearance')
     public appearance = '';
-
-    protected readonly mode$ = inject<Observable<TuiBrightness | null>>(TUI_MODE);
 
     @HostBinding('class._invalid')
     protected get computedInvalid(): boolean {

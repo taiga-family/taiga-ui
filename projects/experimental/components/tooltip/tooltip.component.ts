@@ -38,14 +38,14 @@ export class TuiTooltipComponent<C = any> extends TuiHintOptionsDirective {
     @ViewChild(TuiHintHoverDirective)
     protected readonly driver$?: TuiHintHoverDirective;
 
+    protected readonly tooltipOptions = inject(TUI_TOOLTIP_OPTIONS);
+    protected readonly iconAppearance = inject(TuiAppearanceDirective, {optional: true});
+
     @Input()
     public describeId = '';
 
     @Input()
     public context?: C;
-
-    protected readonly tooltipOptions = inject(TUI_TOOLTIP_OPTIONS);
-    protected readonly iconAppearance = inject(TuiAppearanceDirective, {optional: true});
 
     constructor() {
         super();

@@ -78,6 +78,9 @@ export class TuiInputNumberComponent
 
     private unfinishedValue: string | null = '';
 
+    @ContentChildren(PolymorpheusOutletDirective, {descendants: true})
+    protected readonly polymorpheusValueContent: QueryList<unknown> = EMPTY_QUERY;
+
     protected override readonly valueTransformer = inject<
         AbstractTuiValueTransformer<number | null>
     >(TUI_NUMBER_VALUE_TRANSFORMER, {optional: true});
@@ -85,6 +88,13 @@ export class TuiInputNumberComponent
     protected readonly options = inject(TUI_INPUT_NUMBER_OPTIONS);
 
     protected numberFormat = TUI_DEFAULT_NUMBER_FORMAT;
+
+    protected readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
+    protected readonly numberFormat$ = inject(TUI_NUMBER_FORMAT)
+        .pipe(tuiWatch(this.cdr), takeUntil(this.destroy$))
+        .subscribe(format => {
+            this.numberFormat = format;
+        });
 
     @Input()
     public min: number | null = this.options.min;
@@ -101,15 +111,37 @@ export class TuiInputNumberComponent
     @Input()
     public step = this.options.step;
 
-    @ContentChildren(PolymorpheusOutletDirective, {descendants: true})
-    protected readonly polymorpheusValueContent: QueryList<unknown> = EMPTY_QUERY;
+    public override writeValue(value: number | null): void {
+        super.writeValue(value);
+        this.nativeValue = this.formattedValue;
+    }
 
-    protected readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
-    protected readonly numberFormat$ = inject(TUI_NUMBER_FORMAT)
-        .pipe(tuiWatch(this.cdr), takeUntil(this.destroy$))
-        .subscribe(format => {
-            this.numberFormat = format;
-        });
+    public onValueChange(nativeValue: string): void {
+        const parsedValue = maskitoParseNumber(
+            nativeValue,
+            this.numberFormat.decimalSeparator,
+        );
+
+        this.unfinishedValue = null;
+
+        if (Number.isNaN(parsedValue)) {
+            this.value = null;
+
+            return;
+        }
+
+        if (this.isNativeValueNotFinished) {
+            this.unfinishedValue = nativeValue;
+
+            return;
+        }
+
+        if (parsedValue < this.computedMin || parsedValue > this.computedMax) {
+            return;
+        }
+
+        this.value = parsedValue;
+    }
 
     @HostBinding('attr.data-size')
     protected get size(): TuiSizeL | TuiSizeS {
@@ -211,33 +243,6 @@ export class TuiInputNumberComponent
         this.nativeValue = this.formattedValue;
     }
 
-    public onValueChange(nativeValue: string): void {
-        const parsedValue = maskitoParseNumber(
-            nativeValue,
-            this.numberFormat.decimalSeparator,
-        );
-
-        this.unfinishedValue = null;
-
-        if (Number.isNaN(parsedValue)) {
-            this.value = null;
-
-            return;
-        }
-
-        if (this.isNativeValueNotFinished) {
-            this.unfinishedValue = nativeValue;
-
-            return;
-        }
-
-        if (parsedValue < this.computedMin || parsedValue > this.computedMax) {
-            return;
-        }
-
-        this.value = parsedValue;
-    }
-
     protected onFocused(focused: boolean): void {
         this.updateFocused(focused);
 
@@ -305,11 +310,6 @@ export class TuiInputNumberComponent
 
         this.textfield.value = value;
         this.nativeFocusableElement.value = value;
-    }
-
-    public override writeValue(value: number | null): void {
-        super.writeValue(value);
-        this.nativeValue = this.formattedValue;
     }
 
     private get nativeNumberValue(): number {

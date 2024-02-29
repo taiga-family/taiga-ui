@@ -20,16 +20,16 @@ import {TuiResizeableDirective} from './resizeable.directive';
 export class TuiResizerDirective {
     private readonly resizeable: ElementRef<HTMLElement> = inject(TuiResizeableDirective);
 
+    protected x = NaN;
+    protected y = NaN;
+    protected width = 0;
+    protected height = 0;
+
     @Input()
     public tuiResizer: readonly [x: number, y: number] = [0, 0];
 
     @Output()
     public readonly tuiSizeChange = new EventEmitter<readonly [x: number, y: number]>();
-
-    protected x = NaN;
-    protected y = NaN;
-    protected width = 0;
-    protected height = 0;
 
     @HostBinding('style.cursor')
     protected get cursor(): string {

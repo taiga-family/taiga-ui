@@ -65,6 +65,10 @@ export class TuiTabsComponent implements AfterViewChecked {
             .subscribe(() => this.cdr.detectChanges());
     }
 
+    public ngAfterViewChecked(): void {
+        this.scrollTo(this.tabs.activeItemIndex);
+    }
+
     /** @deprecated use `activeItemIndex` from {@link TuiTabsDirective} instead */
     protected get activeItemIndex(): number {
         return this.tabs.activeItemIndex;
@@ -83,10 +87,6 @@ export class TuiTabsComponent implements AfterViewChecked {
     @HostListener('keydown.arrowLeft.prevent', ['$event.target', '-1'])
     protected onKeyDownArrow(current: HTMLElement, step: number): void {
         this.tabs.moveFocus(current, step);
-    }
-
-    public ngAfterViewChecked(): void {
-        this.scrollTo(this.tabs.activeItemIndex);
     }
 
     @tuiPure

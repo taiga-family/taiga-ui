@@ -19,10 +19,6 @@ const rowsInSvg = 3;
 })
 export class TuiSensitiveDirective {
     protected readonly nothing = tuiWithStyles(TuiSensitiveComponent);
-
-    @Input()
-    public tuiSensitive: boolean | null = false;
-
     protected readonly offset = Math.round(Math.random() * 10) * 10;
     protected readonly height$ = inject(ResizeObserverService).pipe(
         map(([{contentRect}]) => [
@@ -31,4 +27,7 @@ export class TuiSensitiveDirective {
         ]),
         map(([rows, height]) => height * (rowsInSvg / rows)),
     );
+
+    @Input()
+    public tuiSensitive: boolean | null = false;
 }

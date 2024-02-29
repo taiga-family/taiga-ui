@@ -33,20 +33,18 @@ export class IconsGroupComponent implements OnInit {
     @ContentChild(IconsGroupDirective)
     protected readonly iconGroup?: IconsGroupDirective;
 
+    protected matcher = TUI_DEFAULT_MATCHER;
+    protected control = new FormControl<string>('');
+    protected search$: Observable<string> = this.route.queryParams.pipe(
+        map(queryParams => queryParams['search'] ?? ''),
+        distinctUntilChanged(),
+    );
+
     @Input()
     public icons: Record<string, readonly string[]> = {};
 
     @Input()
     public color: string | null = null;
-
-    protected matcher = TUI_DEFAULT_MATCHER;
-
-    protected control = new FormControl<string>('');
-
-    protected search$: Observable<string> = this.route.queryParams.pipe(
-        map(queryParams => queryParams['search'] ?? ''),
-        distinctUntilChanged(),
-    );
 
     public ngOnInit(): void {
         this.control.patchValue(this.route.snapshot.queryParams['search'] ?? '');

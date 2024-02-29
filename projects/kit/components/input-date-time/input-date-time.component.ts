@@ -86,6 +86,26 @@ export class TuiInputDateTimeComponent
         {optional: true},
     );
 
+    protected readonly type!: TuiContext<TuiActiveZoneDirective>;
+    protected readonly filler$: Observable<string> = combineLatest([
+        this.dateTexts$.pipe(
+            map(dateTexts =>
+                changeDateSeparator(dateTexts[this.dateFormat], this.dateSeparator),
+            ),
+        ),
+        this.timeTexts$,
+        this.timeMode$,
+    ]).pipe(
+        map(([dateFiller, timeTexts, timeMode]) =>
+            this.getDateTimeString(dateFiller, timeTexts[timeMode]),
+        ),
+    );
+
+    protected readonly dateFormat = inject(TUI_DATE_FORMAT);
+    protected readonly dateSeparator = inject(TUI_DATE_SEPARATOR);
+    protected readonly isMobile = inject(TUI_IS_MOBILE);
+    protected readonly isIos = inject(TUI_IS_IOS);
+
     @Input()
     public min: TuiDay | [TuiDay | null, TuiTime | null] | null = this.options.min;
 
@@ -109,26 +129,39 @@ export class TuiInputDateTimeComponent
 
     public open = false;
 
-    protected readonly type!: TuiContext<TuiActiveZoneDirective>;
+    public onValueChange(value: string): void {
+        if (!value) {
+            this.onOpenChange(true);
+        }
 
-    protected readonly filler$: Observable<string> = combineLatest([
-        this.dateTexts$.pipe(
-            map(dateTexts =>
-                changeDateSeparator(dateTexts[this.dateFormat], this.dateSeparator),
-            ),
-        ),
-        this.timeTexts$,
-        this.timeMode$,
-    ]).pipe(
-        map(([dateFiller, timeTexts, timeMode]) =>
-            this.getDateTimeString(dateFiller, timeTexts[timeMode]),
-        ),
-    );
+        if (value.length < DATE_FILLER_LENGTH) {
+            this.value = [null, null];
 
-    protected readonly dateFormat = inject(TUI_DATE_FORMAT);
-    protected readonly dateSeparator = inject(TUI_DATE_SEPARATOR);
-    protected readonly isMobile = inject(TUI_IS_MOBILE);
-    protected readonly isIos = inject(TUI_IS_IOS);
+            return;
+        }
+
+        const [date, time] = value.split(DATE_TIME_SEPARATOR);
+        const parsedDate = TuiDay.normalizeParse(date, this.dateFormat);
+        const parsedTime =
+            time && time.length === this.timeMode.length
+                ? TuiTime.fromString(time)
+                : null;
+
+        this.open = false;
+        this.value = [parsedDate, parsedTime];
+    }
+
+    public override setDisabledState(): void {
+        super.setDisabledState();
+        this.open = false;
+    }
+
+    public override writeValue(value: [TuiDay | null, TuiTime | null] | null): void {
+        super.writeValue(value);
+
+        this.nativeValue =
+            this.value && (this.value[0] || this.value[1]) ? this.computedValue : '';
+    }
 
     @HostBinding('attr.data-size')
     protected get size(): TuiSizeL | TuiSizeS {
@@ -236,28 +269,6 @@ export class TuiInputDateTimeComponent
         this.open = !this.open;
     }
 
-    public onValueChange(value: string): void {
-        if (!value) {
-            this.onOpenChange(true);
-        }
-
-        if (value.length < DATE_FILLER_LENGTH) {
-            this.value = [null, null];
-
-            return;
-        }
-
-        const [date, time] = value.split(DATE_TIME_SEPARATOR);
-        const parsedDate = TuiDay.normalizeParse(date, this.dateFormat);
-        const parsedTime =
-            time && time.length === this.timeMode.length
-                ? TuiTime.fromString(time)
-                : null;
-
-        this.open = false;
-        this.value = [parsedDate, parsedTime];
-    }
-
     protected onDayClick(day: TuiDay): void {
         const modifiedTime = this.value[1] && this.clampTime(this.value[1], day);
         const newCaretIndex = DATE_FILLER_LENGTH + DATE_TIME_SEPARATOR.length;
@@ -307,18 +318,6 @@ export class TuiInputDateTimeComponent
         const parsedTime = TuiTime.fromString(time);
 
         this.value = [this.value[0], parsedTime];
-    }
-
-    public override setDisabledState(): void {
-        super.setDisabledState();
-        this.open = false;
-    }
-
-    public override writeValue(value: [TuiDay | null, TuiTime | null] | null): void {
-        super.writeValue(value);
-
-        this.nativeValue =
-            this.value && (this.value[0] || this.value[1]) ? this.computedValue : '';
     }
 
     protected getFallbackValue(): [TuiDay | null, TuiTime | null] {

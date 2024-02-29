@@ -95,23 +95,6 @@ export class TuiInputCardGroupedComponent
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
     private expireInert = false;
 
-    @Input()
-    public exampleText = this.options.exampleText;
-
-    @Input()
-    public cardValidator = this.options.cardValidator;
-
-    @Input()
-    public set codeLength(length: TuiCodeCVCLength) {
-        this.exampleTextCVC = '0'.repeat(length);
-        this.maskCVC = {
-            mask: new Array(length).fill(TUI_DIGIT_REGEXP),
-        };
-    }
-
-    @Output()
-    public readonly autofilledChange = new EventEmitter<boolean>();
-
     @ContentChild(TuiDataListDirective, {read: TemplateRef})
     protected readonly dropdown: PolymorpheusContent;
 
@@ -133,16 +116,74 @@ export class TuiInputCardGroupedComponent
         separator: '/',
     });
 
-    public open = false;
-
     protected readonly mode$ = inject(TUI_MODE);
     protected readonly cardGroupedTexts$ = inject(TUI_INPUT_CARD_GROUPED_TEXTS);
     protected readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly arrowOptions = inject(TUI_ARROW_OPTIONS);
 
+    @Input()
+    public exampleText = this.options.exampleText;
+
+    @Input()
+    public cardValidator = this.options.cardValidator;
+
+    @Input()
+    public set codeLength(length: TuiCodeCVCLength) {
+        this.exampleTextCVC = '0'.repeat(length);
+        this.maskCVC = {
+            mask: new Array(length).fill(TUI_DIGIT_REGEXP),
+        };
+    }
+
+    @Output()
+    public readonly autofilledChange = new EventEmitter<boolean>();
+
+    public open = false;
+
     constructor() {
         super(inject(TUI_INPUT_CARD_GROUPED_OPTIONS));
+    }
+
+    public handleOption(option: Partial<TuiCard>): void {
+        const {card = '', expire = '', cvc = ''} = option;
+        const {bin} = this;
+        const element =
+            (!expire && this.inputExpire?.nativeElement) || this.inputCVC?.nativeElement;
+
+        this.value = {card, expire, cvc};
+        this.updateBin(bin);
+        this.open = false;
+        this.expireInert = !!expire;
+
+        element?.focus();
+    }
+
+    public clear(): void {
+        this.expireInert = false;
+        this.value = null;
+        this.focusCard();
+    }
+
+    public override writeValue(value: TuiCard | null): void {
+        const {bin} = this;
+
+        super.writeValue(value);
+        this.updateBin(bin);
+        this.expireInert = !!this.expire && this.cardPrefilled;
+    }
+
+    /** Public API for manual focus management */
+    public focusCard(): void {
+        this.cardNumberAutofocusRef?.focus();
+    }
+
+    public focusExpire(): void {
+        this.expireCardAutofocusRef?.focus();
+    }
+
+    public focusCVC(): void {
+        this.cvcCardAutofocusRef?.focus();
     }
 
     public get nativeFocusableElement(): HTMLInputElement | null {
@@ -159,6 +200,78 @@ export class TuiInputCardGroupedComponent
 
     public get card(): string {
         return this.value?.card || '';
+    }
+
+    @HostListener('keydown.esc')
+    protected onEsc(): void {
+        this.open = false;
+    }
+
+    @HostListener('keydown.arrowDown.prevent', ['$event.target', '1'])
+    @HostListener('keydown.arrowUp.prevent', ['$event.target', '-1'])
+    protected onArrow(element: HTMLElement, step: number): void {
+        this.open = this.hasDropdown;
+        this.cdr.detectChanges();
+        this.datalist?.onKeyDownArrow(element, step);
+    }
+
+    protected onScroll({currentTarget}: Event): void {
+        if (tuiIsElement(currentTarget)) {
+            currentTarget.scrollLeft = 0;
+        }
+    }
+
+    protected toggle(): void {
+        this.open = !this.open;
+    }
+
+    protected onCardChange(card: string): void {
+        const {value, bin} = this;
+        const parsed = card.split(' ').join('');
+
+        if (value && value.card === parsed) {
+            return;
+        }
+
+        this.updateProperty(parsed, 'card');
+        this.updateBin(bin);
+
+        if (this.cardValidator(this.card) && !this.expire && this.inputExpire) {
+            this.focusExpire();
+        }
+    }
+
+    protected onExpireChange(expire: string): void {
+        this.updateProperty(expire, 'expire');
+
+        if (
+            expire.length === EXPIRE_COMPLETE_LENGTH &&
+            this.expireSelectionStart >= EXPIRE_COMPLETE_LENGTH
+        ) {
+            this.focusCVC();
+        }
+    }
+
+    protected onCVCChange(cvc: string): void {
+        this.updateProperty(cvc, 'cvc');
+    }
+
+    protected transform({offsetWidth}: HTMLSpanElement): string {
+        return this.isCardCollapsed ? `translate3d(${offsetWidth}px, 0, 0)` : '';
+    }
+
+    protected onActiveZoneChange(active: boolean): void {
+        this.updateFocused(active);
+        this.open = active && this.open;
+    }
+
+    protected onMouseDown(event: MouseEvent): void {
+        if (tuiIsElement(event.target) && tuiIsInput(event.target)) {
+            return;
+        }
+
+        event.preventDefault();
+        this.focusInput();
     }
 
     protected get expire(): string {
@@ -244,119 +357,6 @@ export class TuiInputCardGroupedComponent
 
     private get expireSelectionStart(): number {
         return this.inputExpire?.nativeElement.selectionStart || 0;
-    }
-
-    @HostListener('keydown.esc')
-    protected onEsc(): void {
-        this.open = false;
-    }
-
-    @HostListener('keydown.arrowDown.prevent', ['$event.target', '1'])
-    @HostListener('keydown.arrowUp.prevent', ['$event.target', '-1'])
-    protected onArrow(element: HTMLElement, step: number): void {
-        this.open = this.hasDropdown;
-        this.cdr.detectChanges();
-        this.datalist?.onKeyDownArrow(element, step);
-    }
-
-    public handleOption(option: Partial<TuiCard>): void {
-        const {card = '', expire = '', cvc = ''} = option;
-        const {bin} = this;
-        const element =
-            (!expire && this.inputExpire?.nativeElement) || this.inputCVC?.nativeElement;
-
-        this.value = {card, expire, cvc};
-        this.updateBin(bin);
-        this.open = false;
-        this.expireInert = !!expire;
-
-        element?.focus();
-    }
-
-    protected onCardChange(card: string): void {
-        const {value, bin} = this;
-        const parsed = card.split(' ').join('');
-
-        if (value && value.card === parsed) {
-            return;
-        }
-
-        this.updateProperty(parsed, 'card');
-        this.updateBin(bin);
-
-        if (this.cardValidator(this.card) && !this.expire && this.inputExpire) {
-            this.focusExpire();
-        }
-    }
-
-    protected onExpireChange(expire: string): void {
-        this.updateProperty(expire, 'expire');
-
-        if (
-            expire.length === EXPIRE_COMPLETE_LENGTH &&
-            this.expireSelectionStart >= EXPIRE_COMPLETE_LENGTH
-        ) {
-            this.focusCVC();
-        }
-    }
-
-    protected onCVCChange(cvc: string): void {
-        this.updateProperty(cvc, 'cvc');
-    }
-
-    protected transform({offsetWidth}: HTMLSpanElement): string {
-        return this.isCardCollapsed ? `translate3d(${offsetWidth}px, 0, 0)` : '';
-    }
-
-    protected onActiveZoneChange(active: boolean): void {
-        this.updateFocused(active);
-        this.open = active && this.open;
-    }
-
-    protected onMouseDown(event: MouseEvent): void {
-        if (tuiIsElement(event.target) && tuiIsInput(event.target)) {
-            return;
-        }
-
-        event.preventDefault();
-        this.focusInput();
-    }
-
-    protected onScroll({currentTarget}: Event): void {
-        if (tuiIsElement(currentTarget)) {
-            currentTarget.scrollLeft = 0;
-        }
-    }
-
-    public clear(): void {
-        this.expireInert = false;
-        this.value = null;
-        this.focusCard();
-    }
-
-    protected toggle(): void {
-        this.open = !this.open;
-    }
-
-    public override writeValue(value: TuiCard | null): void {
-        const {bin} = this;
-
-        super.writeValue(value);
-        this.updateBin(bin);
-        this.expireInert = !!this.expire && this.cardPrefilled;
-    }
-
-    /** Public API for manual focus management */
-    public focusCard(): void {
-        this.cardNumberAutofocusRef?.focus();
-    }
-
-    public focusExpire(): void {
-        this.expireCardAutofocusRef?.focus();
-    }
-
-    public focusCVC(): void {
-        this.cvcCardAutofocusRef?.focus();
     }
 
     private get cardFocused(): boolean {

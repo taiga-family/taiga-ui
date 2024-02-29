@@ -13,6 +13,10 @@ import {tuiPure} from '@taiga-ui/cdk';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiDocSourceCodeComponent {
+    protected readonly icons = inject(TUI_DOC_ICONS);
+    protected readonly sourceCode = inject(TUI_DOC_SOURCE_CODE);
+    protected readonly text = inject(TUI_DOC_SOURCE_CODE_TEXT);
+
     @Input()
     public header = '';
 
@@ -24,10 +28,6 @@ export class TuiDocSourceCodeComponent {
 
     @Input()
     public path = '';
-
-    protected readonly icons = inject(TUI_DOC_ICONS);
-    protected readonly sourceCode = inject(TUI_DOC_SOURCE_CODE);
-    protected readonly text = inject(TUI_DOC_SOURCE_CODE_TEXT);
 
     protected get pathOptions(): TuiDocSourceCodePathOptions {
         return this.getPathOptions(this.header, this.package, this.type, this.path);

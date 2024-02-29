@@ -40,10 +40,10 @@ export class TuiCheckboxLabeledComponent
 
     private readonly options = inject(TUI_CHECKBOX_OPTIONS);
 
+    protected readonly mode$ = inject(TUI_MODE);
+
     @Input()
     public size: TuiSizeL = this.options.size;
-
-    protected readonly mode$ = inject(TUI_MODE);
 
     public get focused(): boolean {
         return tuiIsNativeFocused(this.nativeFocusableElement);

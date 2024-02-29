@@ -39,10 +39,10 @@ export class TuiRadioComponent implements DoCheck {
     private readonly options = inject(TUI_RADIO_OPTIONS);
     private readonly el: HTMLInputElement = inject(ElementRef).nativeElement;
 
+    protected readonly control = inject(NgControl, {optional: true});
+
     @Input()
     public size: TuiSizeS = this.options.size;
-
-    protected readonly control = inject(NgControl, {optional: true});
 
     public ngDoCheck(): void {
         this.appearance.tuiAppearance = this.options.appearance(this.el);

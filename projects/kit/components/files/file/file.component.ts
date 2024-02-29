@@ -48,6 +48,9 @@ export class TuiFileComponent {
     private readonly options = inject(TUI_FILE_OPTIONS);
     private readonly units$ = inject(TUI_DIGITAL_INFORMATION_UNITS);
 
+    protected readonly icons = inject(TUI_COMMON_ICONS);
+    protected readonly fileTexts$ = inject(TUI_FILE_TEXTS);
+
     @Input()
     public file: TuiFileLike = {name: ''};
 
@@ -69,9 +72,6 @@ export class TuiFileComponent {
 
     @Output()
     public readonly remove = new EventEmitter<void>();
-
-    protected readonly icons = inject(TUI_COMMON_ICONS);
-    protected readonly fileTexts$ = inject(TUI_FILE_TEXTS);
 
     protected get preview(): SafeValue {
         return this.isBig ? this.createPreview(this.file) : '';

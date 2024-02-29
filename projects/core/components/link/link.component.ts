@@ -42,6 +42,11 @@ import {map, merge} from 'rxjs';
 export class TuiLinkComponent implements TuiFocusableElementAccessor {
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
 
+    @HostBinding('class._focus-visible')
+    protected focusVisible = false;
+
+    protected readonly mode$ = inject(TUI_MODE);
+
     @Input()
     @HostBinding('class._pseudo')
     public pseudo = false;
@@ -59,11 +64,6 @@ export class TuiLinkComponent implements TuiFocusableElementAccessor {
     @Input()
     @HostBinding('attr.data-host-mode')
     public mode: 'negative' | 'positive' | null = null;
-
-    @HostBinding('class._focus-visible')
-    protected focusVisible = false;
-
-    protected readonly mode$ = inject(TUI_MODE);
 
     public readonly focusedChange = merge(
         tuiTypedFromEvent(this.el, 'focusin').pipe(map(ALWAYS_TRUE_HANDLER)),

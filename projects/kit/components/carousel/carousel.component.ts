@@ -34,6 +34,13 @@ export class TuiCarouselComponent {
     private readonly isMobile = inject(TUI_IS_MOBILE);
     private translate = 0;
 
+    @ContentChildren(TuiItemDirective, {read: TemplateRef})
+    protected readonly items: QueryList<TemplateRef<Record<string, unknown>>> =
+        EMPTY_QUERY;
+
+    @HostBinding('class._transitioned')
+    protected transitioned = true;
+
     @Input()
     @HostBinding('class._draggable')
     public draggable = false;
@@ -47,12 +54,17 @@ export class TuiCarouselComponent {
     @Output()
     public readonly indexChange = new EventEmitter<number>();
 
-    @ContentChildren(TuiItemDirective, {read: TemplateRef})
-    protected readonly items: QueryList<TemplateRef<Record<string, unknown>>> =
-        EMPTY_QUERY;
+    public next(): void {
+        if (this.items && this.index === this.items.length - this.itemsCount) {
+            return;
+        }
 
-    @HostBinding('class._transitioned')
-    protected transitioned = true;
+        this.updateIndex(this.index + 1);
+    }
+
+    public prev(): void {
+        this.updateIndex(this.index - 1);
+    }
 
     protected get transform(): string {
         const x = this.transitioned ? this.computedTranslate : this.translate;
@@ -81,18 +93,6 @@ export class TuiCarouselComponent {
             minWidth: percent,
             maxWidth: percent,
         };
-    }
-
-    public next(): void {
-        if (this.items && this.index === this.items.length - this.itemsCount) {
-            return;
-        }
-
-        this.updateIndex(this.index + 1);
-    }
-
-    public prev(): void {
-        this.updateIndex(this.index - 1);
     }
 
     protected isDisabled(index: number): boolean {

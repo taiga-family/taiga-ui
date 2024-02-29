@@ -74,15 +74,6 @@ export class TuiDropdownOpenDirective implements OnChanges {
     private readonly driver = inject(TuiDropdownDriver);
     private readonly obscured = inject(TuiObscuredDirective);
 
-    @Input()
-    public tuiDropdownEnabled = true;
-
-    @Input()
-    public tuiDropdownOpen: boolean | '' = false;
-
-    @Output()
-    public readonly tuiDropdownOpenChange = new EventEmitter<boolean>();
-
     protected readonly sub = merge(
         this.obscured.tuiObscured.pipe(filter(Boolean)),
         inject(TuiActiveZoneDirective).tuiActiveZoneChange.pipe(filter(a => !a)),
@@ -93,6 +84,27 @@ export class TuiDropdownOpenDirective implements OnChanges {
     )
         .pipe(takeUntil(inject(TuiDestroyService, {self: true})))
         .subscribe(() => this.toggle(false));
+
+    @Input()
+    public tuiDropdownEnabled = true;
+
+    @Input()
+    public tuiDropdownOpen: boolean | '' = false;
+
+    @Output()
+    public readonly tuiDropdownOpenChange = new EventEmitter<boolean>();
+
+    public ngOnChanges(): void {
+        this.drive();
+    }
+
+    public toggle(open: boolean): void {
+        if (this.focused && !open) {
+            this.host.focus({preventScroll: true});
+        }
+
+        this.update(open);
+    }
 
     public get dropdown(): HTMLElement | undefined {
         return this.directive?.dropdownBoxRef?.location.nativeElement;
@@ -138,18 +150,6 @@ export class TuiDropdownOpenDirective implements OnChanges {
 
         this.update(true);
         this.host.focus({preventScroll: true});
-    }
-
-    public ngOnChanges(): void {
-        this.drive();
-    }
-
-    public toggle(open: boolean): void {
-        if (this.focused && !open) {
-            this.host.focus({preventScroll: true});
-        }
-
-        this.update(open);
     }
 
     private get host(): HTMLElement {

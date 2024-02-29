@@ -86,6 +86,18 @@ export class TuiCalendarComponent implements TuiWithOptionalMinMax<TuiDay> {
     @Output()
     public readonly hoveredItemChange = new EventEmitter<TuiDay | null>();
 
+    public onPaginationValueChange(month: TuiMonth): void {
+        this.updateViewedMonth(month);
+    }
+
+    public onDayClick(day: TuiDay): void {
+        this.dayClick.emit(day);
+    }
+
+    public onHoveredItemChange(day: TuiDay | null): void {
+        this.updateHoveredDay(day);
+    }
+
     protected get isInYearView(): boolean {
         return this.view === 'year';
     }
@@ -125,18 +137,6 @@ export class TuiCalendarComponent implements TuiWithOptionalMinMax<TuiDay> {
     protected onPickerYearClick({year}: TuiYear): void {
         this.view = 'month';
         this.updateViewedMonth(new TuiMonth(year, this.month.month));
-    }
-
-    public onPaginationValueChange(month: TuiMonth): void {
-        this.updateViewedMonth(month);
-    }
-
-    public onDayClick(day: TuiDay): void {
-        this.dayClick.emit(day);
-    }
-
-    public onHoveredItemChange(day: TuiDay | null): void {
-        this.updateHoveredDay(day);
     }
 
     private updateViewedMonth(month: TuiMonth): void {

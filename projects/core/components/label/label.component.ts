@@ -25,6 +25,12 @@ import {Observable} from 'rxjs';
     },
 })
 export class TuiLabelComponent<T> {
+    @ContentChild(NgControl)
+    @HostBinding('class._control')
+    protected readonly control?: NgControl;
+
+    protected readonly mode$ = inject<Observable<TuiBrightness | null>>(TUI_MODE);
+
     @Input()
     public tuiLabel: PolymorpheusContent<TuiContext<T | null>>;
 
@@ -32,10 +38,4 @@ export class TuiLabelComponent<T> {
     public context: TuiContext<T | null> = {
         $implicit: null,
     };
-
-    @ContentChild(NgControl)
-    @HostBinding('class._control')
-    protected readonly control?: NgControl;
-
-    protected readonly mode$ = inject<Observable<TuiBrightness | null>>(TUI_MODE);
 }

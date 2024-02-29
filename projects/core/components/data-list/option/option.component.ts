@@ -49,6 +49,14 @@ export class TuiOptionComponent<T = unknown> implements OnDestroy {
         optional: true,
     });
 
+    protected readonly content = inject(TUI_OPTION_CONTENT, {optional: true});
+    protected readonly dropdown = inject(TuiDropdownDirective, {
+        self: true,
+        optional: true,
+    });
+
+    protected readonly icons = inject(TUI_COMMON_ICONS);
+
     /** @deprecated use size on {@link TuiDataListComponent} instead */
     @Input()
     @HostBinding('attr.data-size')
@@ -64,13 +72,10 @@ export class TuiOptionComponent<T = unknown> implements OnDestroy {
     @Input()
     public value?: T;
 
-    protected readonly content = inject(TUI_OPTION_CONTENT, {optional: true});
-    protected readonly dropdown = inject(TuiDropdownDirective, {
-        self: true,
-        optional: true,
-    });
-
-    protected readonly icons = inject(TUI_COMMON_ICONS);
+    // Preventing focus loss upon focused option removal
+    public ngOnDestroy(): void {
+        this.dataList?.handleFocusLossIfNecessary(this.el);
+    }
 
     @HostBinding('class._with-dropdown')
     protected get active(): boolean {
@@ -89,10 +94,5 @@ export class TuiOptionComponent<T = unknown> implements OnDestroy {
     @HostListener('mousemove.silent', ['$event'])
     protected onMouseMove({currentTarget}: TuiEventWith<MouseEvent, HTMLElement>): void {
         currentTarget.focus({preventScroll: true});
-    }
-
-    // Preventing focus loss upon focused option removal
-    public ngOnDestroy(): void {
-        this.dataList?.handleFocusLossIfNecessary(this.el);
     }
 }

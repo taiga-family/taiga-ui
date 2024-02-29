@@ -41,11 +41,11 @@ export class TuiMultiSelectGroupComponent<T> {
     private readonly host = inject<TuiDataListHost<T>>(TUI_DATA_LIST_HOST);
     private readonly control = inject(NgControl);
 
+    protected readonly multiSelectTexts$ = inject(TUI_MULTI_SELECT_TEXTS);
+
     @HostBinding('class._label')
     @Input()
     public label = '';
-
-    protected readonly multiSelectTexts$ = inject(TUI_MULTI_SELECT_TEXTS);
 
     protected get size(): TuiSizeL | TuiSizeXS {
         return this.options.first?.size || 'm';

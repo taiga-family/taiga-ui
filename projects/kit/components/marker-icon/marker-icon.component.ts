@@ -20,6 +20,8 @@ import {TuiMarkerIconMode} from '@taiga-ui/kit/types';
     },
 })
 export class TuiMarkerIconComponent {
+    protected readonly mode$ = inject(TUI_MODE);
+
     @Input()
     @HostBinding('attr.data-marker-mode')
     public mode: TuiMarkerIconMode | null = null;
@@ -30,6 +32,4 @@ export class TuiMarkerIconComponent {
 
     @Input()
     public src = '';
-
-    protected readonly mode$ = inject(TUI_MODE);
 }

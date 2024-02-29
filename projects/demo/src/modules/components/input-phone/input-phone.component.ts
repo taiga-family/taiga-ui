@@ -39,10 +39,6 @@ export class ExampleTuiInputPhoneComponent extends AbstractExampleTuiControl {
         LESS: import('./examples/3/index.less?raw'),
     };
 
-    public override cleaner = false;
-
-    public control = new FormControl('', [Validators.required, Validators.minLength(12)]);
-
     protected countryCodes = ['+7', '+850', '+1', '+52'];
 
     protected countryCode = this.countryCodes[0];
@@ -54,4 +50,8 @@ export class ExampleTuiInputPhoneComponent extends AbstractExampleTuiControl {
     ];
 
     protected phoneMaskAfterCountryCode = this.phoneMasksAfterCountryCode[0];
+
+    public override cleaner = false;
+
+    public control = new FormControl('', [Validators.required, Validators.minLength(12)]);
 }

@@ -38,15 +38,15 @@ export class TuiSelectDirective extends TuiTextfieldDirective {
     @Input()
     public placeholder = '';
 
+    public override setValue(value: string): void {
+        this.control.control?.setValue(value);
+    }
+
     protected get value(): string {
         return this.textfield.stringify(this.control.value);
     }
 
     protected async onCopy(): Promise<void> {
         await this.nav.clipboard.writeText(this.el.value);
-    }
-
-    public override setValue(value: string): void {
-        this.control.control?.setValue(value);
     }
 }

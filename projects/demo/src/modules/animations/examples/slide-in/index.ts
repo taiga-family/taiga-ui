@@ -19,13 +19,13 @@ import {
     animations: [tuiSlideInLeft, tuiSlideInTop, tuiSlideInBottom, tuiSlideInRight],
 })
 export class TuiSlideInExample {
-    @Input()
-    public speed = 0;
-
     protected isLeft = false;
     protected isTop = false;
     protected isRight = false;
     protected isBottom = false;
+
+    @Input()
+    public speed = 0;
 
     @tuiPure
     protected getAnimation(duration: number): TuiDurationOptions {

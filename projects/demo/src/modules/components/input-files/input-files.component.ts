@@ -60,11 +60,6 @@ export class ExampleTuiInputFilesComponent extends AbstractExampleTuiControl {
         HTML: import('./examples/7/index.html?raw'),
     };
 
-    public readonly control = new FormControl<File[] | null>(null);
-    protected readonly files$ = this.control.valueChanges.pipe(
-        map(() => tuiFilesAccepted(this.control)),
-    );
-
     protected multiple = true;
     protected showSize = true;
     protected showDelete: boolean | 'always' = true;
@@ -86,11 +81,16 @@ export class ExampleTuiInputFilesComponent extends AbstractExampleTuiControl {
         2.2 * 1000 * 1000,
     ];
 
-    public override readonly sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
-
-    public override size = this.sizeVariants[0];
     protected rejected: readonly File[] = [];
     protected maxFileSize = this.maxFileSizeVariants[2];
+
+    public readonly control = new FormControl<File[] | null>(null);
+    public readonly files$ = this.control.valueChanges.pipe(
+        map(() => tuiFilesAccepted(this.control)),
+    );
+
+    public override readonly sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
+    public override size = this.sizeVariants[0];
 
     protected removeFile(file: File): void {
         this.rejected = this.rejected.filter(current => current !== file);

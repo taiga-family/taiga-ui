@@ -71,12 +71,12 @@ export class TuiHintComponent<C = any> {
     private readonly mode = inject(TuiModeDirective, {optional: true});
     private readonly visualViewportService = inject(TuiVisualViewportService);
     private readonly viewport = inject(TUI_VIEWPORT);
-    protected readonly accessor = inject(TuiRectAccessor);
 
     @HostBinding('attr.data-appearance')
     protected readonly appearance =
         this.polymorpheus.$implicit.appearance || this.mode?.mode;
 
+    protected readonly accessor = inject(TuiRectAccessor);
     protected readonly options = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
     protected readonly pointer = inject(TuiHintPointerDirective, {optional: true});
 

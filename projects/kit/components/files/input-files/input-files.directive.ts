@@ -46,6 +46,8 @@ export class TuiInputFilesDirective
     extends AbstractTuiNullableControl<TuiFileLike | readonly TuiFileLike[]>
     implements TuiAppearanceOptions
 {
+    protected readonly host = inject(forwardRef(() => TuiInputFilesComponent));
+
     @Output()
     public readonly reject = timer(0).pipe(
         switchMap(() => tuiControlValue(this.control)),
@@ -54,8 +56,14 @@ export class TuiInputFilesDirective
     );
 
     public readonly appearance = 'file';
-    protected readonly host = inject(forwardRef(() => TuiInputFilesComponent));
+
     public readonly input: HTMLInputElement = inject(ElementRef).nativeElement;
+
+    public process(files: FileList): void {
+        this.value = this.input.multiple
+            ? [...toArray(this.value), ...Array.from(files)]
+            : files[0] || null;
+    }
 
     public get focused(): boolean {
         return tuiIsNativeFocused(this.input);
@@ -65,12 +73,6 @@ export class TuiInputFilesDirective
         if (this.input.readOnly) {
             event.preventDefault();
         }
-    }
-
-    public process(files: FileList): void {
-        this.value = this.input.multiple
-            ? [...toArray(this.value), ...Array.from(files)]
-            : files[0] || null;
     }
 }
 

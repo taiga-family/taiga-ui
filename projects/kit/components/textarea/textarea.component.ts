@@ -62,6 +62,11 @@ export class TuiTextareaComponent
     @ContentChild(TuiTextfieldComponent, {read: ElementRef})
     private readonly textfield?: ElementRef<HTMLTextAreaElement>;
 
+    protected readonly isIOS = inject(TUI_IS_IOS);
+    protected readonly mode$ = inject(TUI_MODE);
+    protected readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
+    protected readonly hintOptions = inject(TuiHintOptionsDirective, {optional: true});
+
     @Input()
     public rows = DEFAULT_ROWS;
 
@@ -72,14 +77,8 @@ export class TuiTextareaComponent
     @HostBinding('class._expandable')
     public expandable = false;
 
-    protected readonly isIOS = inject(TUI_IS_IOS);
-    protected readonly mode$ = inject(TUI_MODE);
-    protected readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
-    protected readonly hintOptions = inject(TuiHintOptionsDirective, {optional: true});
-
-    @HostBinding('class._label-outside')
-    protected get labelOutside(): boolean {
-        return this.controller.labelOutside;
+    public onValueChange(value: string): void {
+        this.value = value;
     }
 
     public get nativeFocusableElement(): HTMLTextAreaElement | null {
@@ -96,8 +95,9 @@ export class TuiTextareaComponent
         return tuiIsNativeFocused(this.nativeFocusableElement);
     }
 
-    protected get appearance(): string {
-        return this.controller.appearance;
+    @HostBinding('class._label-outside')
+    protected get labelOutside(): boolean {
+        return this.controller.labelOutside;
     }
 
     @HostBinding('attr.data-size')
@@ -121,10 +121,6 @@ export class TuiTextareaComponent
         );
     }
 
-    protected get hasCleaner(): boolean {
-        return this.controller.cleaner && this.hasValue && this.interactive;
-    }
-
     @HostBinding('class._has-tooltip')
     protected get hasTooltip(): boolean {
         return (
@@ -141,6 +137,20 @@ export class TuiTextareaComponent
     @HostBinding('class._has-counter')
     protected get hasCounter(): boolean {
         return !!this.maxLength && this.interactive;
+    }
+
+    @HostListener('focusin', ['true'])
+    @HostListener('focusout', ['false'])
+    protected onFocused(focused: boolean): void {
+        this.updateFocused(focused);
+    }
+
+    protected get appearance(): string {
+        return this.controller.appearance;
+    }
+
+    protected get hasCleaner(): boolean {
+        return this.controller.cleaner && this.hasValue && this.interactive;
     }
 
     protected get hasPlaceholder(): boolean {
@@ -191,16 +201,6 @@ export class TuiTextareaComponent
 
     protected get extraContent(): string {
         return this.value.slice(this.maxLength || Infinity);
-    }
-
-    @HostListener('focusin', ['true'])
-    @HostListener('focusout', ['false'])
-    protected onFocused(focused: boolean): void {
-        this.updateFocused(focused);
-    }
-
-    public onValueChange(value: string): void {
-        this.value = value;
     }
 
     protected onMouseDown(event: MouseEvent): void {

@@ -58,17 +58,15 @@ export class TuiSheetComponent<T> implements TuiSheetRequiredProps<T>, AfterView
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
     private readonly zone = inject(NgZone);
 
-    @Input()
-    public item!: TuiSheet<T>;
-
     protected id = '';
-
     protected readonly isIos = inject(TUI_IS_IOS);
     protected readonly moreWord$ = inject(TUI_MORE_WORD);
-
     protected readonly stuck$ = this.scroll$.pipe(
         map(y => Math.floor(y) > this.contentTop),
     );
+
+    @Input()
+    public item!: TuiSheet<T>;
 
     public get stops(): readonly number[] {
         return this.getStops(this.stopsRefs);
@@ -82,6 +80,12 @@ export class TuiSheetComponent<T> implements TuiSheetRequiredProps<T>, AfterView
         return this.contentTop - this.sheetTop;
     }
 
+    public ngAfterViewInit(): void {
+        this.el.scrollTop = [...this.stops, this.sheetTop, this.contentTop][
+            this.item.initial
+        ];
+    }
+
     @tuiPure
     public get context(): TuiSheet<T> {
         return {
@@ -93,12 +97,6 @@ export class TuiSheetComponent<T> implements TuiSheetRequiredProps<T>, AfterView
     @HostListener(TUI_SHEET_ID, ['$event.detail'])
     protected onId(id: string): void {
         this.id = id;
-    }
-
-    public ngAfterViewInit(): void {
-        this.el.scrollTop = [...this.stops, this.sheetTop, this.contentTop][
-            this.item.initial
-        ];
     }
 
     protected scrollTo(top: number = this.sheetTop): void {

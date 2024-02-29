@@ -33,6 +33,9 @@ const TODAY = TuiDay.currentLocal();
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth> {
+    protected isYearPickerShown = false;
+    protected readonly months$ = inject(TUI_CALENDAR_MONTHS);
+
     @Input()
     public value: TuiMonth | TuiMonthRange | null = null;
 
@@ -58,12 +61,8 @@ export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth
     @Output()
     public readonly yearChange = new EventEmitter<TuiYear>();
 
-    protected isYearPickerShown = false;
-
     public hoveredItem: TuiMonth | null = null;
     public pressedItem: TuiMonth | null = null;
-
-    protected readonly months$ = inject(TUI_CALENDAR_MONTHS);
 
     @HostBinding('class._single')
     public get isSingle(): boolean {
@@ -149,14 +148,6 @@ export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth
         return value.isSingleMonth && value.from.monthSame(item) ? 'single' : null;
     }
 
-    protected getTuiMonth(monthNumber: number, yearNumber: number): TuiMonth {
-        return new TuiMonth(yearNumber, monthNumber);
-    }
-
-    protected isItemToday(item: TuiMonth): boolean {
-        return TODAY.monthSame(item);
-    }
-
     public isItemInsideRange(month: TuiMonth): boolean {
         const {value, hoveredItem} = this;
 
@@ -175,6 +166,22 @@ export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth
         const range = TuiMonthRange.sort(value.from, hoveredItem);
 
         return range.from.monthSameOrBefore(month) && range.to.monthAfter(month);
+    }
+
+    public onNextYear(): void {
+        this.updateActiveYear(this.year.append({year: 1}));
+    }
+
+    public onPreviousYear(): void {
+        this.updateActiveYear(this.year.append({year: -1}));
+    }
+
+    protected getTuiMonth(monthNumber: number, yearNumber: number): TuiMonth {
+        return new TuiMonth(yearNumber, monthNumber);
+    }
+
+    protected isItemToday(item: TuiMonth): boolean {
+        return TODAY.monthSame(item);
     }
 
     protected onPickerYearClick(year: TuiYear): void {
@@ -197,14 +204,6 @@ export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth
 
     protected onYearClick(): void {
         this.isYearPickerShown = true;
-    }
-
-    public onNextYear(): void {
-        this.updateActiveYear(this.year.append({year: 1}));
-    }
-
-    public onPreviousYear(): void {
-        this.updateActiveYear(this.year.append({year: -1}));
     }
 
     protected onItemHovered(hovered: boolean, item: TuiMonth): void {

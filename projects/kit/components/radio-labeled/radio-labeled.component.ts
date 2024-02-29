@@ -41,6 +41,8 @@ export class TuiRadioLabeledComponent<T>
 
     private readonly options = inject(TUI_RADIO_OPTIONS);
 
+    protected readonly mode$ = inject(TUI_MODE);
+
     @Input()
     public item?: T;
 
@@ -52,8 +54,6 @@ export class TuiRadioLabeledComponent<T>
 
     @Input()
     public pseudoDisabled = false;
-
-    protected readonly mode$ = inject(TUI_MODE);
 
     public get nativeFocusableElement(): TuiNativeFocusableElement | null {
         return this.radio?.nativeFocusableElement ?? null;

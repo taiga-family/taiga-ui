@@ -73,6 +73,9 @@ export class TuiComboBoxComponent<T>
     private readonly itemsHandlers = inject<TuiItemsHandlers<T>>(TUI_ITEMS_HANDLERS);
     private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
 
+    @ContentChild(TuiDataListDirective, {read: TemplateRef})
+    protected readonly datalist: PolymorpheusContent<TuiContext<TuiActiveZoneDirective>>;
+
     @Input()
     public stringify: TuiItemsHandlers<T>['stringify'] = this.itemsHandlers.stringify;
 
@@ -95,10 +98,53 @@ export class TuiComboBoxComponent<T>
     @Output()
     public readonly searchChange = new EventEmitter<string | null>();
 
-    @ContentChild(TuiDataListDirective, {read: TemplateRef})
-    protected readonly datalist: PolymorpheusContent<TuiContext<TuiActiveZoneDirective>>;
-
     public open = false;
+
+    public toggle(): void {
+        this.hostedDropdown?.updateOpen(!this.open);
+    }
+
+    public checkOption(option: T): void {
+        if (!this.isStrictMatch(option)) {
+            return;
+        }
+
+        this.value = option;
+        this.updateSearch(null);
+    }
+
+    public handleOption(item: T): void {
+        this.focusInput();
+        this.close();
+        this.updateSearch(null);
+        this.value = item;
+
+        if (this.value) {
+            this.setNativeValue(this.stringify(item));
+        }
+    }
+
+    public onValueChange(value: string): void {
+        this.updateSearch(value);
+
+        const match = this.accessor?.getOptions().find(item => this.isStrictMatch(item));
+
+        if (match !== undefined) {
+            this.value = match;
+            this.updateSearch(null);
+
+            return;
+        }
+
+        if (this.strict || this.search === '') {
+            this.value = null;
+        }
+
+        // Clearing sets the empty value, the dropdown should not be opened on clear.
+        if (this.search !== '') {
+            this.hostedDropdown?.updateOpen(true);
+        }
+    }
 
     @HostBinding('attr.data-size')
     protected get size(): TuiSizeL | TuiSizeS {
@@ -138,26 +184,6 @@ export class TuiComboBoxComponent<T>
         this.updateFocused(active);
     }
 
-    public checkOption(option: T): void {
-        if (!this.isStrictMatch(option)) {
-            return;
-        }
-
-        this.value = option;
-        this.updateSearch(null);
-    }
-
-    public handleOption(item: T): void {
-        this.focusInput();
-        this.close();
-        this.updateSearch(null);
-        this.value = item;
-
-        if (this.value) {
-            this.setNativeValue(this.stringify(item));
-        }
-    }
-
     protected onFieldKeyDownEnter(event: Event): void {
         if (this.open) {
             event.preventDefault();
@@ -174,35 +200,9 @@ export class TuiComboBoxComponent<T>
         this.close();
     }
 
-    public onValueChange(value: string): void {
-        this.updateSearch(value);
-
-        const match = this.accessor?.getOptions().find(item => this.isStrictMatch(item));
-
-        if (match !== undefined) {
-            this.value = match;
-            this.updateSearch(null);
-
-            return;
-        }
-
-        if (this.strict || this.search === '') {
-            this.value = null;
-        }
-
-        // Clearing sets the empty value, the dropdown should not be opened on clear.
-        if (this.search !== '') {
-            this.hostedDropdown?.updateOpen(true);
-        }
-    }
-
     /** @deprecated use 'value' setter */
     protected override updateValue(value: T | null): void {
         super.updateValue(value);
-    }
-
-    public toggle(): void {
-        this.hostedDropdown?.updateOpen(!this.open);
     }
 
     private isStrictMatch(item: T): boolean {

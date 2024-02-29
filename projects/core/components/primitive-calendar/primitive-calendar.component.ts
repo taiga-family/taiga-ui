@@ -30,6 +30,9 @@ export class TuiPrimitiveCalendarComponent {
     private pressedItem: TuiDay | null = null;
     private readonly today = TuiDay.currentLocal();
 
+    protected readonly unorderedWeekDays$ = inject(TUI_SHORT_WEEK_DAYS);
+    protected readonly dayTypeHandler = inject(TUI_DAY_TYPE_HANDLER);
+
     @Input()
     public month: TuiMonth = TuiMonth.currentLocal();
 
@@ -53,36 +56,6 @@ export class TuiPrimitiveCalendarComponent {
 
     @Output()
     public readonly dayClick = new EventEmitter<TuiDay>();
-
-    protected readonly unorderedWeekDays$ = inject(TUI_SHORT_WEEK_DAYS);
-    protected readonly dayTypeHandler = inject(TUI_DAY_TYPE_HANDLER);
-
-    @HostBinding('class._single')
-    protected get isSingleDayRange(): boolean {
-        return this.value instanceof TuiDayRange && this.value.isSingleDay;
-    }
-
-    /**
-     * @deprecated: use {@link this.isSingleDayRange}
-     */
-    protected get isSingle(): boolean {
-        return this.isSingleDayRange;
-    }
-
-    protected readonly toMarkers = (
-        day: TuiDay,
-        today: boolean,
-        inRange: boolean,
-        markerHandler: TuiMarkerHandler,
-    ): [string, string] | [string] | null => {
-        if (today || inRange) {
-            return null;
-        }
-
-        const markers = markerHandler(day);
-
-        return markers.length === 0 ? null : markers;
-    };
 
     public getItemState(item: TuiDay): TuiInteractiveState | null {
         const {disabledItemHandler, pressedItem, hoveredItem} = this;
@@ -144,14 +117,6 @@ export class TuiPrimitiveCalendarComponent {
         return value.isSingleDay && value.from.daySame(item) ? 'single' : null;
     }
 
-    protected itemIsToday(item: TuiDay): boolean {
-        return this.today.daySame(item);
-    }
-
-    protected itemIsUnavailable(item: TuiDay): boolean {
-        return !this.month.monthSame(item);
-    }
-
     public itemIsInterval(day: TuiDay): boolean {
         const {value, hoveredItem} = this;
 
@@ -178,6 +143,41 @@ export class TuiPrimitiveCalendarComponent {
 
     public onItemPressed(item: TuiDay | false): void {
         this.pressedItem = item || null;
+    }
+
+    @HostBinding('class._single')
+    protected get isSingleDayRange(): boolean {
+        return this.value instanceof TuiDayRange && this.value.isSingleDay;
+    }
+
+    /**
+     * @deprecated: use {@link this.isSingleDayRange}
+     */
+    protected get isSingle(): boolean {
+        return this.isSingleDayRange;
+    }
+
+    protected readonly toMarkers = (
+        day: TuiDay,
+        today: boolean,
+        inRange: boolean,
+        markerHandler: TuiMarkerHandler,
+    ): [string, string] | [string] | null => {
+        if (today || inRange) {
+            return null;
+        }
+
+        const markers = markerHandler(day);
+
+        return markers.length === 0 ? null : markers;
+    };
+
+    protected itemIsToday(item: TuiDay): boolean {
+        return this.today.daySame(item);
+    }
+
+    protected itemIsUnavailable(item: TuiDay): boolean {
+        return !this.month.monthSame(item);
     }
 
     protected onItemClick(item: TuiDay): void {

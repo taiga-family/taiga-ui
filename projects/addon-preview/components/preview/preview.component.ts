@@ -33,20 +33,11 @@ const ROTATION_ANGLE = 90;
 export class TuiPreviewComponent {
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
 
-    @Input()
-    public zoomable = true;
-
-    @Input()
-    public rotatable = false;
-
     protected minZoom = 1;
-
     protected width = 0;
     protected height = 0;
-
     protected readonly texts$ = inject(TUI_PREVIEW_TEXTS);
     protected readonly icons = inject(TUI_PREVIEW_ICONS);
-
     protected readonly zoom$ = new BehaviorSubject<number>(this.minZoom);
     protected readonly rotation$ = new BehaviorSubject<number>(0);
     protected readonly coordinates$ = new BehaviorSubject<readonly [number, number]>(
@@ -80,6 +71,12 @@ export class TuiPreviewComponent {
                 `translate(${translate}) scale(${zoom}) rotate(${rotation}deg)`,
         ),
     );
+
+    @Input()
+    public zoomable = true;
+
+    @Input()
+    public rotatable = false;
 
     protected rotate(): void {
         this.rotation$.next(this.rotation$.value - ROTATION_ANGLE);

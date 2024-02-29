@@ -60,29 +60,20 @@ export class ExampleTuiTextareaComponent extends AbstractExampleTuiControl {
     protected readonly exampleModule = import('./examples/import/import-module.md?raw');
     protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
     protected readonly exampleForm = import('./examples/import/declare-form.md?raw');
-
-    public override readonly maxLengthVariants: readonly number[] = [50, 100, 500];
-
-    public override maxLength: number | null = null;
-
     protected readonly iconVariants = ['', 'tuiIconSearchLarge', 'tuiIconCalendarLarge'];
-
     protected icon = this.iconVariants[0];
-
     protected readonly rowsVariants: readonly number[] = [8, 15, 30];
-
     protected rows: number = this.rowsVariants[0];
-
     protected expandable = false;
+    protected placeholder = 'Placeholder';
 
     public control = new FormControl('');
-
     public override readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeM> = [
         'm',
         'l',
     ];
 
     public override size: TuiSizeL | TuiSizeM = this.sizeVariants[1];
-
-    protected placeholder = 'Placeholder';
+    public override readonly maxLengthVariants: readonly number[] = [50, 100, 500];
+    public override maxLength: number | null = null;
 }

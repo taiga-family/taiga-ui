@@ -65,10 +65,6 @@ export class ExampleTuiInputTimeComponent extends AbstractExampleTuiControl {
         HTML: import('./examples/6/index.html?raw'),
     };
 
-    public override cleaner = false;
-
-    public control = new FormControl(TuiTime.currentLocal(), Validators.required);
-
     protected readonly disabledItemHandlerVariants: ReadonlyArray<
         TuiBooleanHandler<TuiTime>
     > = [
@@ -102,4 +98,8 @@ export class ExampleTuiInputTimeComponent extends AbstractExampleTuiControl {
     ];
 
     protected mode = this.modeVariants[0];
+
+    public override cleaner = false;
+
+    public control = new FormControl(TuiTime.currentLocal(), Validators.required);
 }

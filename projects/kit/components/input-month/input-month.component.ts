@@ -57,6 +57,9 @@ export class TuiInputMonthComponent
     private readonly options = inject(TUI_INPUT_DATE_OPTIONS);
     private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
 
+    protected activeYear?: TuiYear;
+    protected readonly formatter = inject(TUI_MONTH_FORMATTER);
+
     @Input()
     public min: TuiMonth | null = this.options.min;
 
@@ -69,11 +72,26 @@ export class TuiInputMonthComponent
     @Input()
     public defaultActiveYear: TuiYear = TuiDay.currentLocal();
 
-    protected activeYear?: TuiYear;
-
     public open = false;
 
-    protected readonly formatter = inject(TUI_MONTH_FORMATTER);
+    public onValueChange(value: string): void {
+        if (value) {
+            return;
+        }
+
+        this.value = null;
+        this.onOpenChange(!this.nativePicker);
+    }
+
+    public onMonthClick(month: TuiMonth): void {
+        this.value = month;
+        this.close();
+    }
+
+    public override setDisabledState(): void {
+        super.setDisabledState();
+        this.close();
+    }
 
     @HostBinding('attr.data-size')
     protected get size(): TuiSizeL | TuiSizeS {
@@ -136,20 +154,6 @@ export class TuiInputMonthComponent
             : null;
     }
 
-    public onValueChange(value: string): void {
-        if (value) {
-            return;
-        }
-
-        this.value = null;
-        this.onOpenChange(!this.nativePicker);
-    }
-
-    public onMonthClick(month: TuiMonth): void {
-        this.value = month;
-        this.close();
-    }
-
     protected onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
@@ -160,11 +164,6 @@ export class TuiInputMonthComponent
         }
 
         this.open = open;
-    }
-
-    public override setDisabledState(): void {
-        super.setDisabledState();
-        this.close();
     }
 
     private close(): void {

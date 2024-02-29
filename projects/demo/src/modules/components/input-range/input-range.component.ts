@@ -57,8 +57,6 @@ export class ExampleTuiInputRangeComponent extends AbstractExampleTuiControl {
         'transformer.ts': import('./examples/6/transformer.ts?raw'),
     };
 
-    public control = new FormControl([0, 10]);
-
     protected minVariants: readonly number[] = [0, 5, 7.77, -10];
 
     protected min = this.minVariants[0];
@@ -74,10 +72,6 @@ export class ExampleTuiInputRangeComponent extends AbstractExampleTuiControl {
     protected quantumVariants: readonly number[] = [1, 0.001, 10, 100];
 
     protected quantum = this.quantumVariants[0];
-
-    public override sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
-
-    public override size = this.sizeVariants[1];
 
     protected readonly pluralizeVariants: ReadonlyArray<Record<string, string>> = [
         {one: 'thing', few: 'things', many: 'things', other: 'things'},
@@ -109,4 +103,10 @@ export class ExampleTuiInputRangeComponent extends AbstractExampleTuiControl {
 
     protected leftValueContent = this.valueContentVariants[0];
     protected rightValueContent = this.valueContentVariants[0];
+
+    public override sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
+
+    public override size = this.sizeVariants[1];
+
+    public control = new FormControl([0, 10]);
 }

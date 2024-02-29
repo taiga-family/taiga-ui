@@ -30,6 +30,11 @@ export class TuiLoaderComponent {
     private readonly isIOS = inject(TUI_IS_IOS);
     private readonly options = inject(TUI_LOADER_OPTIONS);
 
+    @HostBinding('class._loading')
+    protected loading = true;
+
+    protected readonly isApple = tuiIsSafari(this.el) || this.isIOS;
+
     @Input()
     @HostBinding('attr.data-size')
     public size = this.options.size;
@@ -52,11 +57,6 @@ export class TuiLoaderComponent {
 
         this.loading = value;
     }
-
-    @HostBinding('class._loading')
-    protected loading = true;
-
-    protected readonly isApple = tuiIsSafari(this.el) || this.isIOS;
 
     protected get hasOverlay(): boolean {
         return this.overlay && this.loading;

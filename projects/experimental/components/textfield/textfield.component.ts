@@ -87,6 +87,14 @@ export class TuiTextfieldComponent<T>
     @ContentChild(TuiLabelDirective)
     protected readonly label?: unknown;
 
+    protected side = 0;
+
+    protected readonly change$ = inject(TuiTextfieldOptionsDirective, {optional: true})
+        ?.change$;
+
+    protected readonly options = inject(TUI_TEXTFIELD_OPTIONS);
+    protected readonly control = inject(NgControl, {optional: true});
+
     @Input()
     public filler = '';
 
@@ -95,14 +103,6 @@ export class TuiTextfieldComponent<T>
 
     @Input()
     public content: PolymorpheusContent<TuiTextfieldContext<T>>;
-
-    protected side = 0;
-
-    protected readonly change$ = inject(TuiTextfieldOptionsDirective, {optional: true})
-        ?.change$;
-
-    protected readonly options = inject(TUI_TEXTFIELD_OPTIONS);
-    protected readonly control = inject(NgControl, {optional: true});
 
     // TODO: Refactor
     public readonly focusedChange = EMPTY;

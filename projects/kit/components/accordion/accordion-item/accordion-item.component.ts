@@ -43,6 +43,15 @@ export class TuiAccordionItemComponent
 
     private readonly cdr = inject(ChangeDetectorRef);
 
+    @ContentChild(TuiAccordionItemEagerContentDirective)
+    protected readonly eagerContent?: TuiAccordionItemEagerContentDirective;
+
+    @ContentChild(TuiAccordionItemContentDirective)
+    protected readonly lazyContent?: TuiAccordionItemContentDirective;
+
+    protected readonly options = inject(TUI_ARROW_OPTIONS);
+    protected readonly mode$ = inject(TUI_MODE);
+
     @Input()
     @HostBinding('class._no-padding')
     public noPadding = false;
@@ -75,14 +84,10 @@ export class TuiAccordionItemComponent
     @Output()
     public readonly openChange = new EventEmitter<boolean>();
 
-    @ContentChild(TuiAccordionItemEagerContentDirective)
-    protected readonly eagerContent?: TuiAccordionItemEagerContentDirective;
-
-    @ContentChild(TuiAccordionItemContentDirective)
-    protected readonly lazyContent?: TuiAccordionItemContentDirective;
-
-    protected readonly options = inject(TUI_ARROW_OPTIONS);
-    protected readonly mode$ = inject(TUI_MODE);
+    public close(): void {
+        this.updateOpen(false);
+        this.cdr.markForCheck();
+    }
 
     public get nativeFocusableElement(): TuiNativeFocusableElement | null {
         return this.disabled || !this.focusableElement
@@ -115,11 +120,6 @@ export class TuiAccordionItemComponent
 
         event.stopPropagation();
         this.updateOpen(false);
-    }
-
-    public close(): void {
-        this.updateOpen(false);
-        this.cdr.markForCheck();
     }
 
     private updateOpen(open: boolean): void {

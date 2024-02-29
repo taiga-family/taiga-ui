@@ -23,6 +23,9 @@ import {TUI_SPIN_ICONS, TUI_SPIN_TEXTS} from '@taiga-ui/core/tokens';
 export class TuiPrimitiveSpinButtonComponent extends AbstractTuiInteractive {
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
 
+    protected readonly icons = inject(TUI_SPIN_ICONS);
+    protected readonly spinTexts$ = inject(TUI_SPIN_TEXTS);
+
     @Input()
     public disabled = false;
 
@@ -37,9 +40,6 @@ export class TuiPrimitiveSpinButtonComponent extends AbstractTuiInteractive {
 
     @Output()
     public readonly rightClick = new EventEmitter<void>();
-
-    protected readonly icons = inject(TUI_SPIN_ICONS);
-    protected readonly spinTexts$ = inject(TUI_SPIN_TEXTS);
 
     public get focused(): boolean {
         return tuiIsNativeFocusedIn(this.el);

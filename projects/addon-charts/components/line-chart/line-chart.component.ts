@@ -43,6 +43,12 @@ export class TuiLineChartComponent {
     private readonly hover$ = new Subject<number>();
     private readonly autoIdString = inject(TuiIdService).generate();
 
+    protected readonly hintDirective = inject(TuiLineChartHintDirective, {
+        optional: true,
+    });
+
+    protected readonly hintOptions = inject(TuiHintOptionsDirective, {optional: true});
+
     @ViewChildren(TuiHintHoverDirective)
     public readonly drivers: QueryList<Observable<boolean>> = EMPTY_QUERY;
 
@@ -80,11 +86,9 @@ export class TuiLineChartComponent {
 
     public value: readonly TuiPoint[] = [];
 
-    protected readonly hintDirective = inject(TuiLineChartHintDirective, {
-        optional: true,
-    });
-
-    protected readonly hintOptions = inject(TuiHintOptionsDirective, {optional: true});
+    public onHovered(index: number): void {
+        this.hover$.next(index);
+    }
 
     @tuiPure
     protected get hovered$(): Observable<number> {
@@ -187,10 +191,6 @@ export class TuiLineChartComponent {
         } else {
             this.onHovered(index);
         }
-    }
-
-    public onHovered(index: number): void {
-        this.hover$.next(index);
     }
 
     private get isSinglePoint(): boolean {

@@ -120,8 +120,6 @@ export class ExampleTuiComboBoxComponent extends AbstractExampleTuiControl {
         'tuiIconCreditCardLarge',
     ];
 
-    public override iconLeft = this.iconVariants[0];
-
     protected readonly stringifyVariants: Array<TuiStringHandler<Account | string>> = [
         TUI_DEFAULT_STRINGIFY,
         item => String(String(item).match(/\d+/)),
@@ -146,6 +144,8 @@ export class ExampleTuiComboBoxComponent extends AbstractExampleTuiControl {
     ];
 
     protected identityMatcher = this.identityMatcherVariants[0];
+
+    public override iconLeft = this.iconVariants[0];
 
     public readonly control = new FormControl<Account | null>(null, Validators.required);
 

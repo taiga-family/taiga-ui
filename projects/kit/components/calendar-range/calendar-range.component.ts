@@ -48,6 +48,11 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
         {optional: true},
     );
 
+    protected readonly otherDateText$ = inject(TUI_OTHER_DATE_TEXT);
+    protected readonly icons = inject(TUI_COMMON_ICONS);
+    protected previousValue: TuiDayRange | null = null;
+    protected readonly maxLengthMapper = MAX_DAY_RANGE_LENGTH_MAPPER;
+
     @Input()
     public defaultViewedMonth: TuiMonth = TuiMonth.currentLocal();
 
@@ -78,12 +83,6 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
     @Output()
     public readonly valueChange = new EventEmitter<TuiDayRange | null>();
 
-    protected readonly otherDateText$ = inject(TUI_OTHER_DATE_TEXT);
-    protected readonly icons = inject(TUI_COMMON_ICONS);
-    protected previousValue: TuiDayRange | null = null;
-
-    protected readonly maxLengthMapper = MAX_DAY_RANGE_LENGTH_MAPPER;
-
     protected get computedMin(): TuiDay {
         return this.min ?? TUI_FIRST_DAY;
     }
@@ -101,6 +100,18 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
             .subscribe(value => {
                 this.value = value;
             });
+    }
+
+    public onItemSelect(item: TuiDayRangePeriod | string): void {
+        if (typeof item !== 'string') {
+            this.updateValue(item.range.dayLimit(this.min, this.max));
+
+            return;
+        }
+
+        if (this.activePeriod !== null) {
+            this.updateValue(null);
+        }
     }
 
     @HostListener('document:keydown.capture', ['$event'])
@@ -168,18 +179,6 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
         }
 
         this.updateValue(TuiDayRange.sort(value.from, day));
-    }
-
-    public onItemSelect(item: TuiDayRangePeriod | string): void {
-        if (typeof item !== 'string') {
-            this.updateValue(item.range.dayLimit(this.min, this.max));
-
-            return;
-        }
-
-        if (this.activePeriod !== null) {
-            this.updateValue(null);
-        }
     }
 
     protected updateValue(value: TuiDayRange | null): void {

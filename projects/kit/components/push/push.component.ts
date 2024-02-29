@@ -16,6 +16,10 @@ import {TUI_CLOSE_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiPushComponent {
+    protected readonly isString = tuiIsString;
+    protected readonly closeWord$ = inject(TUI_CLOSE_WORD);
+    protected readonly icons = inject(TUI_COMMON_ICONS);
+
     @Input()
     public heading = '';
 
@@ -27,11 +31,6 @@ export class TuiPushComponent {
 
     @Output()
     public readonly close = new EventEmitter<void>();
-
-    protected readonly isString = tuiIsString;
-
-    protected readonly closeWord$ = inject(TUI_CLOSE_WORD);
-    protected readonly icons = inject(TUI_COMMON_ICONS);
 
     protected get closeable(): boolean {
         return tuiIsObserved(this.close);

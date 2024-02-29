@@ -70,6 +70,13 @@ export class TuiInputPhoneInternationalComponent
     private readonly extractCountryCodePipe = inject(TuiToCountryCodePipe);
     private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
 
+    protected open = false;
+    protected readonly countriesNames$ = inject(TUI_COUNTRIES);
+    protected readonly countriesMasks = inject(TUI_COUNTRIES_MASKS);
+    protected readonly arrow: PolymorpheusContent<
+        TuiContext<TuiSizeL | TuiSizeM | TuiSizeS>
+    > = TUI_ARROW;
+
     @Input('countryIsoCode')
     public set isoCode(code: TuiCountryIsoCode) {
         if (this.countryIsoCode === code) {
@@ -87,53 +94,6 @@ export class TuiInputPhoneInternationalComponent
     public readonly countryIsoCodeChange = new EventEmitter<TuiCountryIsoCode>();
 
     public countryIsoCode = this.options.countryIsoCode;
-
-    protected open = false;
-
-    protected readonly countriesNames$ = inject(TUI_COUNTRIES);
-    protected readonly countriesMasks = inject(TUI_COUNTRIES_MASKS);
-    protected readonly arrow: PolymorpheusContent<
-        TuiContext<TuiSizeL | TuiSizeM | TuiSizeS>
-    > = TUI_ARROW;
-
-    @HostBinding('attr.data-size')
-    protected get size(): TuiSizeL | TuiSizeS {
-        return this.textfieldSize.size;
-    }
-
-    public get nativeFocusableElement(): HTMLElement | null {
-        return this.inputPhoneComponent && !this.computedDisabled
-            ? this.inputPhoneComponent.nativeFocusableElement
-            : null;
-    }
-
-    public get focused(): boolean {
-        return (
-            (!!this.primitiveTextfield && this.primitiveTextfield.focused) ||
-            (!!this.inputPhoneComponent && this.inputPhoneComponent.focused)
-        );
-    }
-
-    public get inputPhoneCountryCode(): string {
-        return tuiIsoToCountryCode(this.countriesMasks, this.countryIsoCode);
-    }
-
-    public get phoneMaskAfterCountryCode(): string {
-        const countryCode = this.inputPhoneCountryCode;
-
-        return this.calculateMaskAfterCountryCode(
-            this.countriesMasks[this.countryIsoCode],
-            countryCode,
-        );
-    }
-
-    /**
-     * @deprecated use `<img [src]="countryIsoCode | tuiFlagPipe" />`
-     * TODO drop in v4.0
-     */
-    protected get countryFlagPath(): string {
-        return this.getFlagPath(this.countryIsoCode);
-    }
 
     @HostListener('paste.capture.prevent.stop', ['$event'])
     @HostListener('drop.capture.prevent.stop', ['$event'])
@@ -163,17 +123,30 @@ export class TuiInputPhoneInternationalComponent
         this.value = `${CHAR_PLUS}${value}`;
     }
 
-    protected readonly isoToCountryCodeMapper: TuiTypedMapper<
-        [TuiCountryIsoCode],
-        string
-    > = item => tuiIsoToCountryCode(this.countriesMasks, item);
+    public get nativeFocusableElement(): HTMLElement | null {
+        return this.inputPhoneComponent && !this.computedDisabled
+            ? this.inputPhoneComponent.nativeFocusableElement
+            : null;
+    }
 
-    /**
-     * @deprecated use `<img [src]="countryIsoCode | tuiFlagPipe" />`
-     * TODO drop in v4.0
-     */
-    protected getFlagPath(code: TuiCountryIsoCode): string {
-        return this.flagPipe.transform(code);
+    public get focused(): boolean {
+        return (
+            (!!this.primitiveTextfield && this.primitiveTextfield.focused) ||
+            (!!this.inputPhoneComponent && this.inputPhoneComponent.focused)
+        );
+    }
+
+    public get inputPhoneCountryCode(): string {
+        return tuiIsoToCountryCode(this.countriesMasks, this.countryIsoCode);
+    }
+
+    public get phoneMaskAfterCountryCode(): string {
+        const countryCode = this.inputPhoneCountryCode;
+
+        return this.calculateMaskAfterCountryCode(
+            this.countriesMasks[this.countryIsoCode],
+            countryCode,
+        );
     }
 
     public onItemClick(isoCode: TuiCountryIsoCode): void {
@@ -204,6 +177,32 @@ export class TuiInputPhoneInternationalComponent
      */
     public isoToCountryCode(isoCode: TuiCountryIsoCode): string {
         return tuiIsoToCountryCode(this.countriesMasks, isoCode);
+    }
+
+    @HostBinding('attr.data-size')
+    protected get size(): TuiSizeL | TuiSizeS {
+        return this.textfieldSize.size;
+    }
+
+    /**
+     * @deprecated use `<img [src]="countryIsoCode | tuiFlagPipe" />`
+     * TODO drop in v4.0
+     */
+    protected get countryFlagPath(): string {
+        return this.getFlagPath(this.countryIsoCode);
+    }
+
+    protected readonly isoToCountryCodeMapper: TuiTypedMapper<
+        [TuiCountryIsoCode],
+        string
+    > = item => tuiIsoToCountryCode(this.countriesMasks, item);
+
+    /**
+     * @deprecated use `<img [src]="countryIsoCode | tuiFlagPipe" />`
+     * TODO drop in v4.0
+     */
+    protected getFlagPath(code: TuiCountryIsoCode): string {
+        return this.flagPipe.transform(code);
     }
 
     /** @deprecated use 'value' setter */

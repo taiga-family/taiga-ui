@@ -14,14 +14,14 @@ import {concatMap, delay, from, of, repeat, startWith} from 'rxjs';
     animations: [tuiFadeIn],
 })
 export class TuiFadeInExample {
-    @Input()
-    public speed = 0;
-
     protected isShown$ = from([false, true]).pipe(
         concatMap(val => of(val).pipe(delay(1.5 * this.speed))),
         repeat(),
         startWith(true),
     );
+
+    @Input()
+    public speed = 0;
 
     @tuiPure
     protected getAnimation(duration: number): TuiDurationOptions {

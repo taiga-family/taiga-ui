@@ -41,14 +41,13 @@ export class TuiToggleComponent implements DoCheck {
     private readonly resolver = inject(TUI_ICON_RESOLVER);
     private readonly options = inject(TUI_TOGGLE_OPTIONS);
     private readonly el: HTMLInputElement = inject(ElementRef).nativeElement;
+    protected readonly control = inject(NgControl, {optional: true});
 
     @Input()
     public size: TuiSizeS = this.options.size;
 
     @Input()
     public showIcons = this.options.showIcons;
-
-    protected readonly control = inject(NgControl, {optional: true});
 
     @HostBinding('style.--t-mask')
     protected get icon(): string {

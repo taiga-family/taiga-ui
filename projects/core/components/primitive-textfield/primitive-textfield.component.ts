@@ -62,6 +62,11 @@ export class TuiPrimitiveTextfieldComponent
 
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
 
+    @ContentChildren(PolymorpheusOutletDirective, {descendants: true})
+    protected readonly content?: QueryList<unknown>;
+
+    protected autofilled = false;
+    protected readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
     protected readonly hintOptions = inject(TuiHintOptionsDirective, {optional: true});
     protected readonly options = inject(TUI_TEXTFIELD_OPTIONS);
 
@@ -91,12 +96,9 @@ export class TuiPrimitiveTextfieldComponent
     @Output()
     public readonly valueChange = new EventEmitter<string>();
 
-    @ContentChildren(PolymorpheusOutletDirective, {descendants: true})
-    protected readonly content?: QueryList<unknown>;
-
-    protected autofilled = false;
-
-    protected readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
+    public onModelChange(value: string): void {
+        this.updateValue(value);
+    }
 
     public get prefix(): string {
         return this.controller.prefix;
@@ -261,10 +263,6 @@ export class TuiPrimitiveTextfieldComponent
 
         event.preventDefault();
         nativeFocusableElement.focus();
-    }
-
-    public onModelChange(value: string): void {
-        this.updateValue(value);
     }
 
     protected onAutofilled(autofilled: boolean): void {

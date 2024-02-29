@@ -60,6 +60,9 @@ export class TuiInputSliderComponent
     @ViewChild(TuiSliderComponent, {read: ElementRef})
     private readonly sliderRef?: ElementRef<HTMLInputElement>;
 
+    protected textfieldValue = this.safeCurrentValue;
+    protected readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
+
     @Input()
     public min = 0;
 
@@ -81,10 +84,6 @@ export class TuiInputSliderComponent
     @Input()
     public valueContent: PolymorpheusContent<TuiContext<number>>;
 
-    protected textfieldValue = this.safeCurrentValue;
-
-    protected readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
-
     protected get prefix(): string {
         return this.controller.prefix;
     }
@@ -104,6 +103,11 @@ export class TuiInputSliderComponent
             tuiIsNativeFocused(this.nativeFocusableElement) ||
             tuiIsNativeFocused(this.sliderRef?.nativeElement || null)
         );
+    }
+
+    public override writeValue(value: number | null): void {
+        super.writeValue(value);
+        this.textfieldValue = this.value;
     }
 
     protected get computedSteps(): number {
@@ -178,11 +182,6 @@ export class TuiInputSliderComponent
         }
 
         this.updateFocused(focused);
-    }
-
-    public override writeValue(value: number | null): void {
-        super.writeValue(value);
-        this.textfieldValue = this.value;
     }
 
     protected getFallbackValue(): number {

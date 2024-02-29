@@ -34,9 +34,6 @@ import {TuiTreeItemComponent} from '../tree-item/tree-item.component';
 export class TuiTreeComponent<T> implements DoCheck {
     private readonly check$ = new Subject<void>();
 
-    @Input()
-    public value!: T;
-
     @ViewChild(TuiTreeItemComponent)
     protected readonly item?: TuiTreeItemComponent;
 
@@ -55,6 +52,9 @@ export class TuiTreeComponent<T> implements DoCheck {
             optional: true,
         },
     );
+
+    @Input()
+    public value!: T;
 
     @Input()
     public trackBy: TrackByFunction<T> = (_: number, item: T) => item;

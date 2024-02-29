@@ -41,8 +41,8 @@ export abstract class AbstractTuiControl<T>
     private readonly ngControl = inject(NgControl, {optional: true});
     private previousInternalValue?: T | null;
     private readonly refresh$ = new Subject<void>();
-    private onTouched = EMPTY_FUNCTION;
-    private onChange = EMPTY_FUNCTION;
+    protected onTouched = EMPTY_FUNCTION;
+    protected onChange = EMPTY_FUNCTION;
     protected readonly fallbackValue = this.getFallbackValue();
     protected readonly destroy$ = new Subject<void>();
     protected readonly cdr = inject(ChangeDetectorRef);

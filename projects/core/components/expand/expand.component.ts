@@ -44,6 +44,13 @@ export class TuiExpandComponent {
     private readonly destroy$ = inject(TuiDestroyService, {self: true});
     private state: TuiValuesOf<typeof State> = State.Idle;
 
+    @ContentChild(TuiExpandContentDirective, {read: TemplateRef})
+    protected content: TemplateRef<NgIfContext<boolean>> | null = null;
+
+    @HostBinding('class._expanded')
+    @HostBinding('attr.aria-expanded')
+    protected expanded: boolean | null = null;
+
     @Input()
     public async = false;
 
@@ -65,13 +72,6 @@ export class TuiExpandComponent {
         this.expanded = expanded;
         this.retrigger(this.async && expanded ? State.Loading : State.Animated);
     }
-
-    @ContentChild(TuiExpandContentDirective, {read: TemplateRef})
-    protected content: TemplateRef<NgIfContext<boolean>> | null = null;
-
-    @HostBinding('class._expanded')
-    @HostBinding('attr.aria-expanded')
-    protected expanded: boolean | null = null;
 
     @HostBinding('class._overflow')
     protected get overflow(): boolean {

@@ -27,15 +27,15 @@ import {TUI_BREADCRUMBS_OPTIONS} from './breadcrumbs.options';
     ],
 })
 export class TuiBreadcrumbsComponent extends TuiModeDirective {
+    @ContentChildren(TuiItemDirective, {read: TemplateRef})
+    protected readonly items: QueryList<TemplateRef<Record<string, unknown>>> =
+        EMPTY_QUERY;
+
     protected readonly options = inject(TUI_BREADCRUMBS_OPTIONS);
 
     @Input()
     @HostBinding('attr.data-size')
     public size = this.options.size;
-
-    @ContentChildren(TuiItemDirective, {read: TemplateRef})
-    protected readonly items: QueryList<TemplateRef<Record<string, unknown>>> =
-        EMPTY_QUERY;
 
     public override readonly mode = this.options.mode;
 }

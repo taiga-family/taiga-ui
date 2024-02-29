@@ -92,6 +92,20 @@ export class TuiInputDateRangeComponent
         {optional: true},
     );
 
+    protected readonly maxLengthMapper: TuiTypedMapper<
+        [TuiDay, TuiDayRange | null, TuiDayLike | null, boolean],
+        TuiDay
+    > = MAX_DAY_RANGE_LENGTH_MAPPER;
+
+    protected readonly dateFiller$ = this.dateTexts$.pipe(
+        map(dateTexts =>
+            changeDateSeparator(dateTexts[this.dateFormat], this.dateSeparator),
+        ),
+    );
+
+    protected readonly dateFormat = inject(TUI_DATE_FORMAT);
+    protected readonly dateSeparator = inject(TUI_DATE_SEPARATOR);
+
     @Input()
     public disabledItemHandler: TuiBooleanHandler<TuiDay> = ALWAYS_FALSE_HANDLER;
 
@@ -118,19 +132,43 @@ export class TuiInputDateRangeComponent
 
     public open = false;
 
-    protected readonly maxLengthMapper: TuiTypedMapper<
-        [TuiDay, TuiDayRange | null, TuiDayLike | null, boolean],
-        TuiDay
-    > = MAX_DAY_RANGE_LENGTH_MAPPER;
+    @HostListener('click')
+    public onClick(): void {
+        if (!this.isMobile) {
+            this.toggle();
+        }
+    }
 
-    protected readonly dateFiller$ = this.dateTexts$.pipe(
-        map(dateTexts =>
-            changeDateSeparator(dateTexts[this.dateFormat], this.dateSeparator),
-        ),
-    );
+    public onValueChange(value: string): void {
+        if (this.control) {
+            this.control.updateValueAndValidity({emitEvent: false});
+        }
 
-    protected readonly dateFormat = inject(TUI_DATE_FORMAT);
-    protected readonly dateSeparator = inject(TUI_DATE_SEPARATOR);
+        if (!value) {
+            this.onOpenChange(true);
+        }
+
+        this.value =
+            value.length === DATE_RANGE_FILLER_LENGTH
+                ? TuiDayRange.normalizeParse(value, this.dateFormat)
+                : null;
+    }
+
+    public onRangeChange(range: TuiDayRange | null): void {
+        this.toggle();
+        this.focusInput();
+
+        if (!range) {
+            this.nativeValue = '';
+        }
+
+        this.value = range;
+    }
+
+    public override writeValue(value: TuiDayRange | null): void {
+        super.writeValue(value);
+        this.nativeValue = value ? this.computedValue : '';
+    }
 
     @HostBinding('attr.data-size')
     protected get size(): TuiSizeL | TuiSizeS {
@@ -240,13 +278,6 @@ export class TuiInputDateRangeComponent
         }
     }
 
-    @HostListener('click')
-    public onClick(): void {
-        if (!this.isMobile) {
-            this.toggle();
-        }
-    }
-
     protected getComputedRangeFiller(dateFiller: string): string {
         return this.activePeriod ? '' : this.getDateRangeFiller(dateFiller);
     }
@@ -289,32 +320,6 @@ export class TuiInputDateRangeComponent
         this.open = open;
     }
 
-    public onValueChange(value: string): void {
-        if (this.control) {
-            this.control.updateValueAndValidity({emitEvent: false});
-        }
-
-        if (!value) {
-            this.onOpenChange(true);
-        }
-
-        this.value =
-            value.length === DATE_RANGE_FILLER_LENGTH
-                ? TuiDayRange.normalizeParse(value, this.dateFormat)
-                : null;
-    }
-
-    public onRangeChange(range: TuiDayRange | null): void {
-        this.toggle();
-        this.focusInput();
-
-        if (!range) {
-            this.nativeValue = '';
-        }
-
-        this.value = range;
-    }
-
     // TODO: investigate if it is used anywhere and (if not) delete it in v4.0
     protected onItemSelect(item: TuiDayRangePeriod | string): void {
         this.toggle();
@@ -346,11 +351,6 @@ export class TuiInputDateRangeComponent
         ) {
             this.value = TuiDayRange.normalizeParse(this.nativeValue, this.dateFormat);
         }
-    }
-
-    public override writeValue(value: TuiDayRange | null): void {
-        super.writeValue(value);
-        this.nativeValue = value ? this.computedValue : '';
     }
 
     protected override valueIdenticalComparator(

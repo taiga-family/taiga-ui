@@ -43,6 +43,8 @@ export class TuiRangeComponent
 {
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
 
+    protected lastActiveThumb: 'left' | 'right' = 'right';
+
     @Input()
     public min = 0;
 
@@ -64,8 +66,6 @@ export class TuiRangeComponent
 
     @ViewChildren(TuiSliderComponent, {read: ElementRef})
     public slidersRefs: QueryList<ElementRef<HTMLInputElement>> = EMPTY_QUERY;
-
-    protected lastActiveThumb: 'left' | 'right' = 'right';
 
     public get nativeFocusableElement(): TuiNativeFocusableElement | null {
         const [sliderLeftRef, sliderRightRef] = this.slidersRefs;
@@ -112,6 +112,22 @@ export class TuiRangeComponent
         return 100 - this.getPercentageFromValue(this.value[1]);
     }
 
+    public processValue(value: number, right: boolean): void {
+        if (right) {
+            this.updateEnd(value);
+        } else {
+            this.updateStart(value);
+        }
+
+        this.lastActiveThumb = right ? 'right' : 'left';
+    }
+
+    public getValueFromFraction(fraction: number): number {
+        const guardedFraction = tuiClamp(tuiQuantize(fraction, this.fractionStep), 0, 1);
+
+        return tuiPercentageToKeyStepValue(guardedFraction * 100, this.computedKeySteps);
+    }
+
     @HostListener('focusin', ['true'])
     @HostListener('focusout', ['false'])
     protected onFocused(focused: boolean): void {
@@ -142,22 +158,6 @@ export class TuiRangeComponent
         if (activeThumbElement) {
             activeThumbElement.focus();
         }
-    }
-
-    public processValue(value: number, right: boolean): void {
-        if (right) {
-            this.updateEnd(value);
-        } else {
-            this.updateStart(value);
-        }
-
-        this.lastActiveThumb = right ? 'right' : 'left';
-    }
-
-    public getValueFromFraction(fraction: number): number {
-        const guardedFraction = tuiClamp(tuiQuantize(fraction, this.fractionStep), 0, 1);
-
-        return tuiPercentageToKeyStepValue(guardedFraction * 100, this.computedKeySteps);
     }
 
     protected getPercentageFromValue(value: number): number {

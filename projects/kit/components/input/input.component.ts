@@ -80,17 +80,9 @@ export class TuiInputComponent
         );
     }
 
-    protected get canOpen(): boolean {
-        return this.interactive && !!this.datalist;
-    }
-
     public onValueChange(value: string): void {
         this.value = value;
         this.open = true;
-    }
-
-    protected onActiveZone(active: boolean): void {
-        this.updateFocused(active);
     }
 
     public handleOption(item: unknown): void {
@@ -98,6 +90,14 @@ export class TuiInputComponent
         this.focusInput();
         this.value = String(item);
         this.open = false;
+    }
+
+    protected get canOpen(): boolean {
+        return this.interactive && !!this.datalist;
+    }
+
+    protected onActiveZone(active: boolean): void {
+        this.updateFocused(active);
     }
 
     protected getFallbackValue(): string {

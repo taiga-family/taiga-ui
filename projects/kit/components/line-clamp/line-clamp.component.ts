@@ -58,6 +58,19 @@ export class TuiLineClampComponent implements DoCheck, AfterViewInit {
     private readonly isOverflown$ = new Subject<boolean>();
     private initialized = false;
 
+    protected lineClamp$ = this.linesLimit$.pipe(
+        startWith(1),
+        pairwise(),
+        switchMap(([prev, next]) =>
+            next >= prev
+                ? of(next)
+                : tuiTypedFromEvent(this.el, 'transitionend').pipe(
+                      filter(tuiIsCurrentTarget),
+                      map(() => next),
+                  ),
+        ),
+    );
+
     @Input()
     public set linesLimit(linesLimit: number) {
         this.linesLimit$.next(linesLimit);
@@ -73,21 +86,17 @@ export class TuiLineClampComponent implements DoCheck, AfterViewInit {
     public readonly overflownChange: Observable<boolean> =
         this.isOverflown$.pipe(distinctUntilChanged());
 
-    protected lineClamp$ = this.linesLimit$.pipe(
-        startWith(1),
-        pairwise(),
-        switchMap(([prev, next]) =>
-            next >= prev
-                ? of(next)
-                : tuiTypedFromEvent(this.el, 'transitionend').pipe(
-                      filter(tuiIsCurrentTarget),
-                      map(() => next),
-                  ),
-        ),
-    );
-
     constructor() {
         this.skipInitialTransition();
+    }
+
+    public ngDoCheck(): void {
+        this.update();
+        this.isOverflown$.next(this.overflown);
+    }
+
+    public ngAfterViewInit(): void {
+        this.initialized = true;
     }
 
     protected get overflown(): boolean {
@@ -109,15 +118,6 @@ export class TuiLineClampComponent implements DoCheck, AfterViewInit {
     @HostListener('transitionend')
     protected updateView(): void {
         this.cd.detectChanges();
-    }
-
-    public ngDoCheck(): void {
-        this.update();
-        this.isOverflown$.next(this.overflown);
-    }
-
-    public ngAfterViewInit(): void {
-        this.initialized = true;
     }
 
     private skipInitialTransition(): void {

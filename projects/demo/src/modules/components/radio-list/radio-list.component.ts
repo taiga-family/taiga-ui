@@ -68,14 +68,12 @@ export class ExampleTuiRadioListComponent extends AbstractExampleTuiControl {
         },
     ];
 
-    public override readonly sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
-
-    public override size: TuiSizeL = this.sizeVariants[0];
-
     protected readonly disabledItemHandlerVariants: Array<TuiBooleanHandler<ItemRadio>> =
         [ALWAYS_FALSE_HANDLER, ALWAYS_TRUE_HANDLER, item => item.name === 'Advanced'];
 
     protected disabledItemHandler = this.disabledItemHandlerVariants[0];
 
     public control = new FormControl(this.items[0]);
+    public override readonly sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
+    public override size: TuiSizeL = this.sizeVariants[0];
 }

@@ -37,6 +37,12 @@ export class TuiButtonComponent
     private readonly options = inject(TUI_BUTTON_OPTIONS);
     private readonly mode$: Observable<unknown> = this.mode?.change$ || EMPTY;
 
+    protected readonly appearance$ = this.mode$.pipe(
+        startWith(null),
+        map(() => this.computedAppearance),
+        distinctUntilChanged(),
+    );
+
     @Input()
     public appearance: TuiButtonOptions['appearance'] = null;
 
@@ -60,12 +66,6 @@ export class TuiButtonComponent
     @Input()
     @HostBinding('attr.data-size')
     public size = this.options.size;
-
-    protected readonly appearance$ = this.mode$.pipe(
-        startWith(null),
-        map(() => this.computedAppearance),
-        distinctUntilChanged(),
-    );
 
     public get nativeFocusableElement(): HTMLElement | null {
         return this.nativeDisabled ? null : this.el;

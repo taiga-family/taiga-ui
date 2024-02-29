@@ -32,6 +32,11 @@ export class TuiStepComponent {
     private readonly routerLinkActive$: Observable<boolean> =
         inject(RouterLinkActive, {optional: true})?.isActiveChange || EMPTY;
 
+    @HostBinding('class._focus-visible')
+    protected focusVisible = false;
+
+    protected readonly icons = inject(TUI_COMMON_ICONS);
+
     @Input()
     @HostBinding('attr.data-state')
     public stepState: 'error' | 'normal' | 'pass' = 'normal';
@@ -39,15 +44,8 @@ export class TuiStepComponent {
     @Input()
     public icon = '';
 
-    @HostBinding('class._focus-visible')
-    protected focusVisible = false;
-
-    protected readonly icons = inject(TUI_COMMON_ICONS);
-
     constructor() {
-        this.routerLinkActive$.pipe(filter(Boolean)).subscribe(() => {
-            this.activate();
-        });
+        this.routerLinkActive$.pipe(filter(Boolean)).subscribe(() => this.activate());
 
         this.focusVisible$.subscribe(visible => {
             this.focusVisible = visible;

@@ -31,9 +31,7 @@ import {TuiSelectModule} from '@taiga-ui/kit';
 })
 export class TuiLanguageSwitcherComponent {
     private readonly flagPipe = inject(TuiFlagPipe);
-
     protected readonly switcher = inject(TuiLanguageSwitcher);
-
     protected readonly language = new FormControl(
         tuiCapitalizeFirstLetter(this.switcher.language),
     );
@@ -57,7 +55,7 @@ export class TuiLanguageSwitcherComponent {
         ['vietnamese', TuiCountryIsoCode.VN],
     ]);
 
-    protected readonly names: TuiLanguageName[] = Array.from(this.flags.keys());
+    public readonly names: TuiLanguageName[] = Array.from(this.flags.keys());
 
     /**
      * @deprecated use `<img [src]="countryIsoCode | tuiFlagPipe" />`

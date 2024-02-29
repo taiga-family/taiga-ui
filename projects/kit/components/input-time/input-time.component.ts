@@ -69,6 +69,8 @@ export class TuiInputTimeComponent
     private readonly isIOS: boolean = inject(TUI_IS_IOS);
     private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
 
+    protected open = false;
+
     @Input()
     public disabledItemHandler: TuiBooleanHandler<TuiTime> = ALWAYS_FALSE_HANDLER;
 
@@ -84,8 +86,6 @@ export class TuiInputTimeComponent
     @Input()
     public mode: TuiInputTimeOptions['mode'] = this.options.mode;
 
-    protected open = false;
-
     @HostBinding('attr.data-size')
     protected get size(): TuiSizeL | TuiSizeS {
         return this.textfieldSize.size;
@@ -97,6 +97,42 @@ export class TuiInputTimeComponent
 
     public get focused(): boolean {
         return tuiIsNativeFocused(this.nativeFocusableElement);
+    }
+
+    public onValueChange(value: string): void {
+        this.open = !!this.items.length;
+
+        if (this.control) {
+            this.control.updateValueAndValidity({emitEvent: false});
+        }
+
+        const match = this.getMatch(value);
+
+        if (match !== undefined) {
+            this.value = match;
+
+            return;
+        }
+
+        if (value.length !== this.mode.length) {
+            this.value = null;
+
+            return;
+        }
+
+        const time = TuiTime.fromString(value);
+
+        this.value = this.strict ? this.findNearestTimeFromItems(time) : time;
+    }
+
+    public handleOption(item: TuiTime): void {
+        this.focusInput();
+        this.value = item;
+    }
+
+    public override writeValue(value: TuiTime | null): void {
+        super.writeValue(value);
+        this.nativeValue = value ? this.computedValue : '';
     }
 
     protected get canOpen(): boolean {
@@ -168,32 +204,6 @@ export class TuiInputTimeComponent
         this.open = !this.open;
     }
 
-    public onValueChange(value: string): void {
-        this.open = !!this.items.length;
-
-        if (this.control) {
-            this.control.updateValueAndValidity({emitEvent: false});
-        }
-
-        const match = this.getMatch(value);
-
-        if (match !== undefined) {
-            this.value = match;
-
-            return;
-        }
-
-        if (value.length !== this.mode.length) {
-            this.value = null;
-
-            return;
-        }
-
-        const time = TuiTime.fromString(value);
-
-        this.value = this.strict ? this.findNearestTimeFromItems(time) : time;
-    }
-
     protected onFocused(focused: boolean): void {
         this.updateFocused(focused);
 
@@ -233,18 +243,8 @@ export class TuiInputTimeComponent
         this.processArrow(event, -1);
     }
 
-    public handleOption(item: TuiTime): void {
-        this.focusInput();
-        this.value = item;
-    }
-
     protected onOpen(open: boolean): void {
         this.open = open;
-    }
-
-    public override writeValue(value: TuiTime | null): void {
-        super.writeValue(value);
-        this.nativeValue = value ? this.computedValue : '';
     }
 
     private get nativePicker(): boolean {

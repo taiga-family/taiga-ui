@@ -132,6 +132,9 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
     @ViewChild(TuiActiveZoneDirective)
     protected readonly activeZone!: TuiActiveZoneDirective;
 
+    protected readonly focus$ = new BehaviorSubject(false);
+    protected readonly context!: TuiContext<TuiActiveZoneDirective>;
+
     @Input()
     public content: PolymorpheusContent<TuiHostedDropdownContext>;
 
@@ -152,12 +155,8 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
     @Output()
     public readonly focusedChange = new EventEmitter<boolean>();
 
-    protected readonly focus$ = new BehaviorSubject(false);
-
     /** TODO: rename in 4.0 */
     public readonly openChange = this.openChange$;
-
-    protected readonly context!: TuiContext<TuiActiveZoneDirective>;
 
     @Input()
     public set open(open: boolean) {
@@ -167,6 +166,14 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
     public get open(): boolean {
         return this.openChange.value;
     }
+
+    public updateOpen(open: boolean): void {
+        if (!open || this.canOpen) {
+            this.open = open;
+        }
+    }
+
+    public readonly close = (): void => this.updateOpen(false);
 
     protected get host(): HTMLElement {
         return this.dropdownHost?.nativeElement || this.el;
@@ -264,14 +271,6 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
             this.closeDropdown();
         }
     }
-
-    public updateOpen(open: boolean): void {
-        if (!open || this.canOpen) {
-            this.open = open;
-        }
-    }
-
-    public readonly close = (): void => this.updateOpen(false);
 
     private get hostEditable(): boolean {
         return tuiIsElementEditable(this.computedHost);
