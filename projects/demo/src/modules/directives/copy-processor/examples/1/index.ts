@@ -1,9 +1,9 @@
 import {Component, HostListener, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {tuiPure, TuiStringHandler} from '@taiga-ui/cdk';
+import {TuiStringHandler} from '@taiga-ui/cdk';
 import {TUI_NUMBER_FORMAT, TuiAlertService} from '@taiga-ui/core';
-import {map, Observable} from 'rxjs';
+import {map} from 'rxjs';
 
 @Component({
     selector: 'tui-copy-processor-example-1',
@@ -23,17 +23,14 @@ export class TuiCopyProcessorExample1 {
         this.alerts.open(event.clipboardData?.getData('text/plain') ?? '').subscribe();
     }
 
-    @tuiPure
-    protected get numberProcessor$(): Observable<TuiStringHandler<string>> {
-        return this.format.pipe(
-            map(
-                format => text =>
-                    text
-                        .replace(format.decimalSeparator, '.')
-                        .replaceAll(new RegExp(format.thousandSeparator, 'g'), ''),
-            ),
-        );
-    }
+    protected numberProcessor$ = this.format.pipe(
+        map(
+            format => (text: string) =>
+                text
+                    .replace(format.decimalSeparator, '.')
+                    .replaceAll(new RegExp(format.thousandSeparator, 'g'), ''),
+        ),
+    );
 
     protected readonly textProcessor: TuiStringHandler<string> = text =>
         text.toUpperCase();

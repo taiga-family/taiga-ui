@@ -29,26 +29,25 @@ import {
     TuiFocusableElementAccessor,
     TuiInputMode,
     tuiPure,
+    tuiWatch,
 } from '@taiga-ui/cdk';
 import {
     TEXTFIELD_CONTROLLER_PROVIDER,
+    TUI_DEFAULT_NUMBER_FORMAT,
+    TUI_NUMBER_FORMAT,
     TUI_TEXTFIELD_SIZE,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
     TuiDecimal,
     tuiFormatNumber,
     tuiGetFractionPartPadded,
-    TuiNumberFormatSettings,
     TuiPrimitiveTextfieldComponent,
     TuiSizeL,
     TuiSizeS,
 } from '@taiga-ui/core';
 import {PolymorpheusOutletDirective} from '@tinkoff/ng-polymorpheus';
+import {takeUntil} from 'rxjs';
 
 import {TUI_INPUT_NUMBER_OPTIONS} from './input-number.options';
-import {
-    TUI_NUMBER_FORMAT_PROVIDER,
-    TUI_NUMBER_FORMAT_SUBJ,
-} from './number-format.provider';
 
 const DEFAULT_MAX_LENGTH = 18;
 
@@ -65,7 +64,6 @@ export const TUI_NUMBER_VALUE_TRANSFORMER = new InjectionToken<
         tuiAsFocusableItemAccessor(TuiInputNumberComponent),
         tuiAsControl(TuiInputNumberComponent),
         TEXTFIELD_CONTROLLER_PROVIDER,
-        TUI_NUMBER_FORMAT_PROVIDER,
     ],
 })
 export class TuiInputNumberComponent
@@ -86,9 +84,7 @@ export class TuiInputNumberComponent
 
     protected readonly options = inject(TUI_INPUT_NUMBER_OPTIONS);
 
-    protected get numberFormat(): TuiNumberFormatSettings {
-        return this.numberFormat$.value;
-    }
+    protected numberFormat = TUI_DEFAULT_NUMBER_FORMAT;
 
     @Input()
     public min: number | null = this.options.min;
@@ -109,7 +105,11 @@ export class TuiInputNumberComponent
     protected readonly polymorpheusValueContent: QueryList<unknown> = EMPTY_QUERY;
 
     protected readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
-    protected readonly numberFormat$ = inject(TUI_NUMBER_FORMAT_SUBJ);
+    protected readonly numberFormat$ = inject(TUI_NUMBER_FORMAT)
+        .pipe(tuiWatch(this.cdr), takeUntil(this.destroy$))
+        .subscribe(format => {
+            this.numberFormat = format;
+        });
 
     @HostBinding('attr.data-size')
     protected get size(): TuiSizeL | TuiSizeS {
