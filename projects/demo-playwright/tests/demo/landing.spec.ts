@@ -7,7 +7,10 @@ test.describe('Landing', () => {
     });
 
     test('take snapshot', async ({page}) => {
-        await tuiGoto(page, '/', {hideHeader: false});
+        await tuiGoto(page, '/', {
+            hideHeader: false,
+        });
+
         await expect(page).toHaveScreenshot('landing-360-740.png');
     });
 });

@@ -1,7 +1,9 @@
 import {expect, Page} from '@playwright/test';
 
+import {tuiRemoveElement} from './hide-element';
 import {tuiMockDate} from './mock-date';
 import {tuiWaitForFonts} from './wait-for-fonts';
+import {waitStableState} from './wait-stable-state';
 
 interface TuiGotoOptions extends NonNullable<Parameters<Page['goto']>[1]> {
     date?: Date;
@@ -48,23 +50,24 @@ export async function tuiGoto(
     await tuiMockDate(page, date);
 
     const response = await page.goto(url, playwrightGotoOptions);
+    const app = page.locator('app');
 
     await page.waitForLoadState('domcontentloaded');
     await page.waitForLoadState('load');
-
-    await expect(page.locator('app')).toHaveClass(/_loaded/, {timeout: 30_000});
+    await expect(app).toHaveClass(/_loaded/, {timeout: 30_000});
     await tuiWaitForFonts(page);
+    await waitStableState(app);
 
     if (hideHeader) {
-        await page.locator('[tuidocheader]').evaluate(el => el.remove());
+        await tuiRemoveElement(page.locator('[tuiDocHeader]'));
     }
 
     if (hideVersionManager) {
-        await page.locator('version-manager').evaluate(el => el.remove());
+        await tuiRemoveElement(page.locator('version-manager'));
     }
 
     if (hideLanguageSwitcher) {
-        await page.locator('tui-language-switcher').evaluate(el => el.remove());
+        await tuiRemoveElement(page.locator('tui-language-switcher'));
     }
 
     expect(

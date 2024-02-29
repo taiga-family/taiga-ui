@@ -5,3 +5,4 @@ export * from './mock-date';
 export * from './mock-images';
 export * from './page-objects';
 export * from './wait-for-fonts';
+export * from './wait-stable-state';

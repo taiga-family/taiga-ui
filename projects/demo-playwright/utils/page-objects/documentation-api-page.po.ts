@@ -1,20 +1,18 @@
 import {expect, Locator, Page, Request} from '@playwright/test';
 
 import {tuiHideElement} from '../hide-element';
+import {waitStableState} from '../wait-stable-state';
 
 export class TuiDocumentationApiPagePO {
     private readonly pending = new Set<Request>();
 
+    public readonly pageExamples: Locator = this.page.locator('tui-doc-example');
     public readonly apiPageExample: Locator = this.page.locator('#demo-content');
 
     constructor(protected readonly page: Page) {
         page.on('request', request => this.pending.add(request));
-        page.on('requestfailed', request =>
-            setTimeout(() => this.pending.delete(request)),
-        );
-        page.on('requestfinished', request =>
-            setTimeout(() => this.pending.delete(request)),
-        );
+        page.on('requestfailed', request => this.pending.delete(request));
+        page.on('requestfinished', request => this.pending.delete(request));
     }
 
     /**
@@ -22,8 +20,6 @@ export class TuiDocumentationApiPagePO {
      * Doesn't work as expected
      */
     public async networkidle(): Promise<void> {
-        await this.page.waitForTimeout(100);
-
         await Promise.all(
             [...this.pending].map(
                 async req =>
@@ -35,7 +31,13 @@ export class TuiDocumentationApiPagePO {
             ),
         );
 
-        await this.page.waitForTimeout(200);
+        if ((await this.apiPageExample.all()).length) {
+            await waitStableState(this.apiPageExample);
+        } else if ((await this.pageExamples.all()).length) {
+            for (const example of await this.pageExamples.all()) {
+                await waitStableState(example);
+            }
+        }
     }
 
     public async hideNotifications(): Promise<void> {
