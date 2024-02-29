@@ -34,10 +34,10 @@ test.describe('Demo', () => {
                 await example.scrollIntoViewIfNeeded();
                 await documentation.networkidle(); // note: load lazy loading images
 
-                await expect(example).toHaveScreenshot([
-                    path.replace('/', '').replaceAll('/', '-'),
-                    `${i + 1}.png`,
-                ]);
+                await expect(example).toHaveScreenshot(
+                    [path.replace('/', '').replaceAll('/', '-'), `${i + 1}.png`],
+                    {threshold: 0.02},
+                );
             }
         });
     });

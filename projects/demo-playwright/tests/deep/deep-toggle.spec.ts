@@ -31,6 +31,7 @@ test.describe('Deep / Toggle', () => {
 
                 await expect(api.apiPageExample).toHaveScreenshot(
                     `deep-${path}__${name}-toggled.png`,
+                    {threshold: 0.02},
                 );
 
                 await toggle.click();

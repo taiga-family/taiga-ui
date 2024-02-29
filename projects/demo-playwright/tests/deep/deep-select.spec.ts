@@ -39,6 +39,7 @@ test.describe('Deep / Select', () => {
 
                     await expect(api.apiPageExample).toHaveScreenshot(
                         `deep-${path}__${name}-select-option-${index}.png`,
+                        {threshold: 0.02},
                     );
 
                     await select.click();
