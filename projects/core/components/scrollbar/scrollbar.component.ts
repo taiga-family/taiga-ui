@@ -18,7 +18,7 @@ import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
     imports: [NgIf, TuiScrollControlsComponent],
     templateUrl: './scrollbar.template.html',
     styleUrls: ['./scrollbar.style.less'],
-    host: {'[class._ios]': 'isIOS'},
+    host: {'[class._native-hidden]': '!isIOS || hidden'},
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {
@@ -33,9 +33,9 @@ export class TuiScrollbarComponent {
     protected readonly isIOS = inject(TUI_IS_IOS);
 
     @Input()
-    public hidden = false;
+    hidden = false;
 
-    public readonly browserScrollRef = new ElementRef(this.el);
+    readonly browserScrollRef = new ElementRef(this.el);
 
     protected get delegated(): boolean {
         return this.browserScrollRef.nativeElement !== this.el;
