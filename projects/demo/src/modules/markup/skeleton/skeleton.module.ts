@@ -9,8 +9,8 @@ import {
     TuiModeModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
+import {TuiCheckboxModule, TuiLabelDirective} from '@taiga-ui/experimental';
 import {
-    TuiCheckboxLabeledModule,
     TuiInputModule,
     TuiInputNumberModule,
     TuiInputPasswordModule,
@@ -32,7 +32,6 @@ import {SkeletonComponent} from './skeleton.component';
         StylesInfoModule,
         TuiModeModule,
         TuiInputTimeModule,
-        TuiCheckboxLabeledModule,
         TuiButtonModule,
         TuiInputPasswordModule,
         TuiInputModule,
@@ -43,6 +42,8 @@ import {SkeletonComponent} from './skeleton.component';
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(SkeletonComponent)),
         TuiTextfieldControllerModule,
+        TuiLabelDirective,
+        TuiCheckboxModule,
     ],
     declarations: [SkeletonComponent, TuiSkeletonExample1, TuiSkeletonExample2],
     exports: [SkeletonComponent],

@@ -1,4 +1,4 @@
-import {Directive, ElementRef, HostBinding, inject} from '@angular/core';
+import {ContentChild, Directive, ElementRef, forwardRef, inject} from '@angular/core';
 import {tuiWithStyles} from '@taiga-ui/cdk';
 
 import {TuiLabelComponent} from './label.component';
@@ -7,15 +7,19 @@ import {TuiTextfieldComponent} from './textfield.component';
 @Directive({
     standalone: true,
     selector: 'label[tuiLabel]',
+    host: {
+        '[attr.for]': 'el.htmlFor || parent?.id',
+        '[class._textfield]': 'textfield',
+    },
 })
 export class TuiLabelDirective {
-    // @ts-ignore
-    private readonly nothing = tuiWithStyles(TuiLabelComponent);
-    private readonly el: HTMLLabelElement = inject(ElementRef).nativeElement;
-    private readonly textfield = inject(TuiTextfieldComponent, {optional: true});
+    @ContentChild(forwardRef(() => TuiTextfieldComponent))
+    protected readonly textfield?: unknown;
 
-    @HostBinding('attr.for')
-    protected get for(): string | undefined {
-        return this.el.htmlFor || this.textfield?.id;
-    }
+    protected readonly el: HTMLLabelElement = inject(ElementRef).nativeElement;
+    protected readonly nothing = tuiWithStyles(TuiLabelComponent);
+    protected readonly parent = inject(
+        forwardRef(() => TuiTextfieldComponent),
+        {optional: true},
+    );
 }

@@ -5,9 +5,18 @@
 >
     Input example
 </tui-input>
-<div class="tui-space_vertical-4">
-    <tui-checkbox-labeled [(ngModel)]="checkbox">Checkbox example</tui-checkbox-labeled>
-</div>
+<label
+    tuiLabel
+    class="tui-space_vertical-4"
+>
+    <input
+        size="s"
+        tuiCheckbox
+        type="checkbox"
+        [(ngModel)]="checkbox"
+    />
+    <small>Checkbox example</small>
+</label>
 <button
     appearance="material-button"
     size="s"

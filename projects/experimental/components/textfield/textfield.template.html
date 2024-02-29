@@ -16,7 +16,7 @@
         tuiIconButton
         class="t-clear"
         (click)="directive?.setValue('')"
-        (pointerdown.silent.prevent)="el.focus()"
+        (pointerdown.silent.prevent)="input.focus()"
     ></button>
     <ng-content select="tui-tooltip"></ng-content>
 </span>

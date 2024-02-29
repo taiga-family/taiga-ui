@@ -1,4 +1,3 @@
-export * from './label.component';
 export * from './label.directive';
 export * from './select.directive';
 export * from './textfield.component';

@@ -11,6 +11,6 @@ export class FormComponent {
     protected readonly example1: TuiDocExample = {
         TypeScript: import('./example/index.ts?raw'),
         HTML: import('./example/index.html?raw'),
-        LESS: import('./example/index.style.less?raw'),
+        LESS: import('./example/index.less?raw'),
     };
 }

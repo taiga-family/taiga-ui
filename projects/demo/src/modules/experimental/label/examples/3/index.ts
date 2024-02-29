@@ -4,13 +4,12 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
 @Component({
-    selector: 'tui-checkbox-labeled-example-1',
+    selector: 'tui-label-example-3',
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiCheckboxLabeledExample1 {
+export class TuiLabelExample3 {
     protected testForm = new FormGroup({
         testValue1: new FormControl(true),
         testValue2: new FormControl(false),

@@ -28,7 +28,7 @@ class Account {
 @Component({
     selector: 'tui-form-example-1',
     templateUrl: './index.html',
-    styleUrls: ['./index.style.less'],
+    styleUrls: ['./index.less'],
     changeDetection,
 })
 export class TuiExample {
@@ -70,11 +70,9 @@ export class TuiExample {
         accountWherefrom: new FormControl<Account | null>(null),
         accountWhere: new FormControl<Account | null>(null),
         checkboxValue: new FormControl(false),
-        osnoValue: new FormControl(false),
+        osnoValue: new FormControl(true),
         usnValue: new FormControl(false),
         eshnValue: new FormControl(false),
         envdValue: new FormControl(false),
-        usn2Value: new FormControl(false),
-        patentValue: new FormControl(false),
     });
 }

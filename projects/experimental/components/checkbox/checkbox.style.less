@@ -2,10 +2,11 @@
 
 :host {
     --t-size: 1.5rem;
+    --t-radius: var(--tui-radius-s);
 
     width: var(--t-size);
     height: var(--t-size);
-    border-radius: var(--tui-radius-s);
+    border-radius: var(--t-radius);
     cursor: pointer;
     margin: 0;
     flex-shrink: 0;
@@ -43,7 +44,6 @@
 
     &[data-size='s'] {
         --t-size: 1rem;
-
-        border-radius: var(--tui-radius-xs);
+        --t-radius: var(--tui-radius-xs);
     }
 }

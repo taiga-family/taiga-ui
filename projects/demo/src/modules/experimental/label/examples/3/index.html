@@ -1,0 +1,69 @@
+<form [formGroup]="testForm">
+    <label tuiLabel>
+        <input
+            formControlName="testValue1"
+            tuiToggle
+            type="checkbox"
+        />
+        Taiga UI
+    </label>
+
+    <label
+        tuiLabel
+        class="tui-space_vertical-2"
+    >
+        <input
+            formControlName="testValue2"
+            tuiToggle
+            type="checkbox"
+        />
+        ng-polymorpheus
+    </label>
+
+    <label tuiLabel>
+        <input
+            formControlName="testValue3"
+            tuiToggle
+            type="checkbox"
+        />
+        ng-dompurify
+    </label>
+</form>
+
+<form
+    class="tui-space_top-4"
+    [formGroup]="testForm"
+>
+    <label tuiLabel>
+        <input
+            formControlName="testValue1"
+            size="s"
+            tuiToggle
+            type="checkbox"
+        />
+        <small>Taiga UI</small>
+    </label>
+
+    <label
+        tuiLabel
+        class="tui-space_vertical-2"
+    >
+        <input
+            formControlName="testValue2"
+            size="s"
+            tuiToggle
+            type="checkbox"
+        />
+        <small>ng-polymorpheus</small>
+    </label>
+
+    <label tuiLabel>
+        <input
+            formControlName="testValue3"
+            size="s"
+            tuiToggle
+            type="checkbox"
+        />
+        <small>ng-dompurify</small>
+    </label>
+</form>

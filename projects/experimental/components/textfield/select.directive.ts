@@ -20,6 +20,7 @@ import {TuiTextfieldDirective} from './textfield.directive';
         },
     ],
     host: {
+        '[id]': 'el.id || id',
         '(keydown.space.prevent)': '0',
         '(keydown.enter.prevent)': '0',
         '(keydown.backspace)': 'setValue("")',

@@ -1,0 +1,37 @@
+<form [formGroup]="testForm">
+    <label tuiLabel>
+        <input
+            formControlName="testValue"
+            size="s"
+            tuiRadio
+            type="radio"
+            value="taiga"
+        />
+        <small>Taiga UI</small>
+    </label>
+
+    <label
+        tuiLabel
+        class="tui-space_vertical-2"
+    >
+        <input
+            formControlName="testValue"
+            size="s"
+            tuiRadio
+            type="radio"
+            value="polymorpheus"
+        />
+        <small>ng-polymorpheus</small>
+    </label>
+
+    <label tuiLabel>
+        <input
+            formControlName="testValue"
+            size="s"
+            tuiRadio
+            type="radio"
+            value="dompurify"
+        />
+        <small>ng-dompurify</small>
+    </label>
+</form>

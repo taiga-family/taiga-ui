@@ -4,16 +4,15 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
 @Component({
-    selector: 'tui-radio-labeled-example-2',
+    selector: 'tui-label-example-1',
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiRadioLabeledExample2 {
-    protected items = [{name: 'tariff1'}, {name: 'tariff2'}, {name: 'tariff3'}];
-
+export class TuiLabelExample1 {
     protected testForm = new FormGroup({
-        testValue1: new FormControl(this.items[0]),
+        testValue1: new FormControl(true),
+        testValue2: new FormControl(false),
+        testValue3: new FormControl(false),
     });
 }

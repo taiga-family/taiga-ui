@@ -241,7 +241,7 @@ export const pages: TuiDocPages = [
     },
     {
         section: 'Components',
-        title: 'Checkboxes',
+        title: 'Toggles',
         subPages: [
             {
                 section: 'Components',
@@ -251,15 +251,22 @@ export const pages: TuiDocPages = [
             },
             {
                 section: 'Components',
-                title: 'CheckboxLabeled',
-                keywords: 'label, чек, форма, form, ввод, checkbox, checkboxLabeled',
-                route: '/components/checkbox-labeled',
+                title: 'Radio',
+                keywords: 'инпут, форма, ввод, radio, радио',
+                route: '/components/radio',
+            },
+            // TODO: Move into Radio page
+            {
+                section: 'Components',
+                title: 'RadioList',
+                keywords: 'инпут, форма, ввод, radio, радио, список, list',
+                route: '/components/radio-list',
             },
             {
                 section: 'Components',
-                title: 'PrimitiveCheckbox',
-                keywords: 'чек, checkbox, box, внутренние',
-                route: '/components/primitive-checkbox',
+                title: 'Toggle',
+                keywords: 'инпут, форма, ввод, toggle, переключение',
+                route: '/components/toggle',
             },
         ],
     },
@@ -670,30 +677,6 @@ export const pages: TuiDocPages = [
     },
     {
         section: 'Components',
-        title: 'Radio',
-        subPages: [
-            {
-                section: 'Components',
-                title: 'Radio',
-                keywords: 'инпут, форма, ввод, radio, радио',
-                route: '/components/radio',
-            },
-            {
-                section: 'Components',
-                title: 'RadioLabeled',
-                keywords: 'инпут, форма, ввод, radio, радио, label, лэйбл',
-                route: '/components/radio-labeled',
-            },
-            {
-                section: 'Components',
-                title: 'RadioList',
-                keywords: 'инпут, форма, ввод, radio, радио, список, list',
-                route: '/components/radio-list',
-            },
-        ],
-    },
-    {
-        section: 'Components',
         title: 'Rating',
         keywords: 'рейтинг, оценка, звезда, rating, star, rate',
         route: '/components/rating',
@@ -836,12 +819,6 @@ export const pages: TuiDocPages = [
     },
     {
         section: 'Components',
-        title: 'Toggle',
-        keywords: 'инпут, форма, ввод, toggle, переключение',
-        route: '/components/toggle',
-    },
-    {
-        section: 'Components',
         title: 'Tree',
         keywords: 'tree, view, multi, recursive, folders, рекурсия, дерево, папки',
         route: '/components/tree',
@@ -930,6 +907,12 @@ export const pages: TuiDocPages = [
         title: 'Icon',
         keywords: 'icons, image, картинка, свг, svg, графика, иконка',
         route: '/experimental/icon',
+    },
+    {
+        section: 'Experimental',
+        title: 'Label ',
+        keywords: 'лэйбл, метка, форма, label',
+        route: '/experimental/label',
     },
     {
         section: 'Experimental',

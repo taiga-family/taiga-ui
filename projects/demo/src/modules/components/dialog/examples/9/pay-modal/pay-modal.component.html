@@ -73,12 +73,14 @@
 
         <ng-container *ngIf="paymentMode === PAYMENT_MODE.ByNewCard">
             <div class="form-block">
-                <tui-checkbox-labeled
-                    formControlName="saveCard"
-                    size="l"
-                >
+                <label tuiLabel>
+                    <input
+                        formControlName="saveCard"
+                        tuiCheckbox
+                        type="checkbox"
+                    />
                     Remember card
-                </tui-checkbox-labeled>
+                </label>
             </div>
         </ng-container>
 

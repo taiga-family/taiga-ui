@@ -9,7 +9,8 @@ import {
     tuiGenerateRoutes,
 } from '@taiga-ui/addon-doc';
 import {TuiButtonModule, TuiLinkModule} from '@taiga-ui/core';
-import {TuiCheckboxLabeledModule, TuiInputModule} from '@taiga-ui/kit';
+import {TuiCheckboxModule, TuiLabelDirective} from '@taiga-ui/experimental';
+import {TuiInputModule} from '@taiga-ui/kit';
 
 import {TuiWrapperExample1} from './examples/1';
 import {WrapperComponent} from './wrapper.component';
@@ -21,11 +22,12 @@ import {WrapperComponent} from './wrapper.component';
         TuiButtonModule,
         TuiDocCopyModule,
         TuiInputModule,
-        TuiCheckboxLabeledModule,
         TuiAddonDocModule,
         TuiLinkModule,
         RouterModule.forChild(tuiGenerateRoutes(WrapperComponent)),
         FormsModule,
+        TuiCheckboxModule,
+        TuiLabelDirective,
     ],
     declarations: [WrapperComponent, TuiWrapperExample1],
     exports: [WrapperComponent],

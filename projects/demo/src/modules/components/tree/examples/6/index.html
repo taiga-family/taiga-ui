@@ -10,11 +10,17 @@
     #content
     let-item
 >
-    <tui-checkbox-labeled
+    <label
+        tuiLabel
         class="tui-space_vertical-2 tui-space_left-1"
-        [ngModel]="item | tuiMapper: getValue : map"
-        (ngModelChange)="onChecked(item, $event)"
     >
-        {{ item.text }}
-    </tui-checkbox-labeled>
+        <input
+            size="s"
+            tuiCheckbox
+            type="checkbox"
+            [ngModel]="item | tuiMapper: getValue : map"
+            (ngModelChange)="onChecked(item, $event)"
+        />
+        <small>{{ item.text }}</small>
+    </label>
 </ng-template>
