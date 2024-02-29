@@ -8,7 +8,7 @@ import {
     TuiTextCodeModule,
 } from '@taiga-ui/addon-doc';
 import {TuiElementModule, TuiScrollService} from '@taiga-ui/cdk';
-import {TuiButtonModule, TuiScrollbarModule} from '@taiga-ui/core';
+import {TuiButtonModule, TuiScrollbarComponent} from '@taiga-ui/core';
 import {TuiInputNumberModule} from '@taiga-ui/kit';
 
 import {TuiScrollExample1} from './examples/1';
@@ -20,7 +20,7 @@ import {ExampleTuiScrollComponent} from './scroll.component';
         FormsModule,
         TuiElementModule,
         TuiButtonModule,
-        TuiScrollbarModule,
+        TuiScrollbarComponent,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiScrollComponent)),
         TuiTextCodeModule,

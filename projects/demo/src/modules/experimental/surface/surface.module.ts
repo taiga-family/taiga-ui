@@ -11,7 +11,7 @@ import {
     TuiLinkModule,
     TuiModeModule,
     TuiNotificationModule,
-    TuiScrollbarModule,
+    TuiScrollbarComponent,
 } from '@taiga-ui/core';
 import {TuiButtonModule, TuiSurfaceModule} from '@taiga-ui/experimental';
 import {TuiAvatarComponent, TuiBadgeDirective} from '@taiga-ui/kit';
@@ -34,7 +34,7 @@ import {ExampleTuiSurfaceComponent} from './surface.component';
         TuiRippleModule,
         TuiRepeatTimesModule,
         TuiBadgeDirective,
-        TuiScrollbarModule,
+        TuiScrollbarComponent,
         TuiButtonModule,
         TuiLinkModule,
         TuiAvatarComponent,

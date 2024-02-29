@@ -4,7 +4,7 @@ import {RouterModule} from '@angular/router';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiElasticStickyModule} from '@taiga-ui/addon-mobile';
-import {TuiScrollbarModule} from '@taiga-ui/core';
+import {TuiScrollbarComponent} from '@taiga-ui/core';
 
 import {ExampleTuiElasticStickyComponent} from './elastic-sticky.component';
 import {TuiElasticStickyExample1} from './examples/1';
@@ -13,7 +13,7 @@ import {TuiElasticStickyExample1} from './examples/1';
     imports: [
         CommonModule,
         TuiAmountPipe,
-        TuiScrollbarModule,
+        TuiScrollbarComponent,
         TuiElasticStickyModule,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiElasticStickyComponent)),

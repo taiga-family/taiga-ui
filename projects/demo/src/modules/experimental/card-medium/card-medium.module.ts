@@ -11,7 +11,7 @@ import {
     TuiHostedDropdownModule,
     TuiLinkModule,
     TuiNotificationModule,
-    TuiScrollbarModule,
+    TuiScrollbarComponent,
     TuiSvgModule,
 } from '@taiga-ui/core';
 import {
@@ -59,7 +59,7 @@ import {TuiCardMediumExample7} from './examples/7';
         TuiTitleModule,
         TuiAvatarComponent,
         TuiAvatarStackComponent,
-        TuiScrollbarModule,
+        TuiScrollbarComponent,
         TuiHintModule,
         FormsModule,
         TuiRippleModule,

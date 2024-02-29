@@ -16,7 +16,8 @@ import {
     TuiLoaderModule,
     TuiNotificationModule,
     TuiNumberFormatModule,
-    TuiScrollbarModule,
+    TuiScrollableDirective,
+    TuiScrollbarComponent,
     TuiSvgModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
@@ -54,7 +55,7 @@ import {ExampleTuiSelectComponent} from './select.component';
         ReactiveFormsModule,
         PolymorpheusModule,
         ScrollingModule,
-        TuiScrollbarModule,
+        TuiScrollbarComponent,
         TuiDataListModule,
         TuiTextareaModule,
         TuiSelectModule,
@@ -81,6 +82,7 @@ import {ExampleTuiSelectComponent} from './select.component';
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiSelectComponent)),
         TuiAmountPipe,
         TuiNumberFormatModule,
+        TuiScrollableDirective,
         TuiInitialsModule,
     ],
     declarations: [

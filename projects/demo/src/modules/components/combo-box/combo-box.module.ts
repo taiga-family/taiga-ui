@@ -17,7 +17,8 @@ import {
     TuiLinkModule,
     TuiLoaderModule,
     TuiNotificationModule,
-    TuiScrollbarModule,
+    TuiScrollableDirective,
+    TuiScrollbarComponent,
     TuiSvgModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
@@ -49,7 +50,7 @@ import {TuiComboBoxExample8} from './examples/8';
         FormsModule,
         ReactiveFormsModule,
         ScrollingModule,
-        TuiScrollbarModule,
+        TuiScrollbarComponent,
         TuiComboBoxModule,
         TuiButtonModule,
         TuiLinkModule,
@@ -70,6 +71,7 @@ import {TuiComboBoxExample8} from './examples/8';
         InheritedDocumentationModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiComboBoxComponent)),
         TuiTextCodeModule,
+        TuiScrollableDirective,
         TuiInitialsModule,
     ],
     declarations: [

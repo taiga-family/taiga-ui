@@ -12,7 +12,7 @@ import {
     TuiHostedDropdownModule,
     TuiLinkModule,
     TuiNotificationModule,
-    TuiScrollbarModule,
+    TuiScrollbarComponent,
     TuiSvgModule,
 } from '@taiga-ui/core';
 import {
@@ -65,7 +65,7 @@ import {TuiCardLargeExample12} from './examples/12';
         TuiSvgModule,
         TuiBadgeDirective,
         TuiTitleModule,
-        TuiScrollbarModule,
+        TuiScrollbarComponent,
         TuiHintModule,
         FormsModule,
         TuiRippleModule,

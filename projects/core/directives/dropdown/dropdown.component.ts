@@ -20,7 +20,7 @@ import {
     tuiRectAccessorFor,
 } from '@taiga-ui/core/abstract';
 import {tuiDropdownAnimation} from '@taiga-ui/core/animations';
-import {TuiScrollbarModule} from '@taiga-ui/core/components/scrollbar';
+import {TuiScrollbarComponent} from '@taiga-ui/core/components/scrollbar';
 import {MODE_PROVIDER} from '@taiga-ui/core/providers';
 import {TuiPositionService, TuiVisualViewportService} from '@taiga-ui/core/services';
 import {TUI_ANIMATIONS_SPEED, TUI_MODE} from '@taiga-ui/core/tokens';
@@ -46,7 +46,7 @@ import {TuiDropdownPositionDirective} from './dropdown-position.directive';
         PolymorpheusModule,
         TuiActiveZoneModule,
         TuiOverscrollModule,
-        TuiScrollbarModule,
+        TuiScrollbarComponent,
     ],
     templateUrl: './dropdown.template.html',
     styleUrls: ['./dropdown.style.less'],

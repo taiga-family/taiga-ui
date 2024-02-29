@@ -10,7 +10,7 @@ import {
     TuiLinkModule,
     TuiPrimitiveSpinButtonModule,
     TuiPrimitiveYearPickerModule,
-    TuiScrollbarModule,
+    TuiScrollbarComponent,
 } from '@taiga-ui/core';
 
 import {TuiCalendarMonthComponent} from './calendar-month.component';
@@ -20,7 +20,7 @@ import {TuiCalendarMonthComponent} from './calendar-month.component';
         CommonModule,
         TuiPrimitiveYearPickerModule,
         TuiPrimitiveSpinButtonModule,
-        TuiScrollbarModule,
+        TuiScrollbarComponent,
         TuiLinkModule,
         TuiLetModule,
         TuiHoveredModule,

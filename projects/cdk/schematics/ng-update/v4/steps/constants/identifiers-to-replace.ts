@@ -103,6 +103,10 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifier[] = [
         to: {name: 'TUI_SCROLL_REF', moduleSpecifier: '@taiga-ui/core'},
     },
     {
+        from: {name: 'TuiScrollbarModule', moduleSpecifier: '@taiga-ui/core'},
+        to: {name: 'TuiScrollbarComponent', moduleSpecifier: '@taiga-ui/core'},
+    },
+    {
         from: {name: 'TuiGroupModule', moduleSpecifier: '@taiga-ui/core'},
         to: {name: 'TuiGroupDirective', moduleSpecifier: '@taiga-ui/core'},
     },
