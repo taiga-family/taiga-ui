@@ -1,3 +1,3 @@
 ```html
-Formatted number: {{index | tuiFormatNumber}}
+Formatted number: {{index | tuiFormatNumber | async}}
 ```

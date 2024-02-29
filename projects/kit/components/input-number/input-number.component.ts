@@ -10,7 +10,7 @@ import {
     QueryList,
     ViewChild,
 } from '@angular/core';
-import {maskitoInitialCalibrationPlugin, MaskitoOptions} from '@maskito/core';
+import {MaskitoOptions} from '@maskito/core';
 import {
     maskitoCaretGuard,
     maskitoNumberOptionsGenerator,
@@ -29,9 +29,11 @@ import {
     TuiFocusableElementAccessor,
     TuiInputMode,
     tuiPure,
+    tuiWatch,
 } from '@taiga-ui/cdk';
 import {
     TEXTFIELD_CONTROLLER_PROVIDER,
+    TUI_DEFAULT_NUMBER_FORMAT,
     TUI_NUMBER_FORMAT,
     TUI_TEXTFIELD_SIZE,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
@@ -43,6 +45,7 @@ import {
     TuiSizeS,
 } from '@taiga-ui/core';
 import {PolymorpheusOutletDirective} from '@tinkoff/ng-polymorpheus';
+import {takeUntil} from 'rxjs';
 
 import {TUI_INPUT_NUMBER_OPTIONS} from './input-number.options';
 
@@ -70,7 +73,6 @@ export class TuiInputNumberComponent
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
-    private readonly numberFormat = inject(TUI_NUMBER_FORMAT);
     private readonly isIOS = inject(TUI_IS_IOS);
     private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
 
@@ -81,6 +83,8 @@ export class TuiInputNumberComponent
     >(TUI_NUMBER_VALUE_TRANSFORMER, {optional: true});
 
     protected readonly options = inject(TUI_INPUT_NUMBER_OPTIONS);
+
+    protected numberFormat = TUI_DEFAULT_NUMBER_FORMAT;
 
     @Input()
     public min: number | null = this.options.min;
@@ -101,6 +105,11 @@ export class TuiInputNumberComponent
     protected readonly polymorpheusValueContent: QueryList<unknown> = EMPTY_QUERY;
 
     protected readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
+    protected readonly numberFormat$ = inject(TUI_NUMBER_FORMAT)
+        .pipe(tuiWatch(this.cdr), takeUntil(this.destroy$))
+        .subscribe(format => {
+            this.numberFormat = format;
+        });
 
     @HostBinding('attr.data-size')
     protected get size(): TuiSizeL | TuiSizeS {
@@ -345,19 +354,11 @@ export class TuiInputNumberComponent
             decimalZeroPadding: decimalMode === 'always',
         };
         const {plugins, ...options} = maskitoNumberOptionsGenerator(generatorParams);
-        const initialCalibrationPlugin = maskitoInitialCalibrationPlugin(
-            maskitoNumberOptionsGenerator({
-                ...generatorParams,
-                min: Number.MIN_SAFE_INTEGER,
-                max: Number.MAX_SAFE_INTEGER,
-            }),
-        );
 
         return {
             ...options,
             plugins: [
                 ...plugins,
-                initialCalibrationPlugin,
                 maskitoCaretGuard(value => [
                     prefix.length,
                     value.length - postfix.length,

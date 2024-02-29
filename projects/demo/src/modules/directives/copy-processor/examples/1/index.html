@@ -1,6 +1,6 @@
 <tui-input-number
     class="tui-space_bottom-2"
-    [tuiCopyProcessor]="numberProcessor"
+    [tuiCopyProcessor]="(numberProcessor$ | async)!"
     [(ngModel)]="value"
 >
     Copy this

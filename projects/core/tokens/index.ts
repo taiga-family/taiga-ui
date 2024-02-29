@@ -16,7 +16,6 @@ export * from './is-mobile-resolution';
 export * from './media';
 export * from './mode';
 export * from './number-format';
-export * from './number-format-observable';
 export * from './option-content';
 export * from './ordered-short-week-days';
 export * from './reduced-motion';

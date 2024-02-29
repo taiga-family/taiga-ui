@@ -1,27 +1,31 @@
-/* eslint-disable no-restricted-syntax,no-restricted-imports */
-import {Directive, forwardRef, Inject, Input} from '@angular/core';
+import {Directive, forwardRef, inject, Input} from '@angular/core';
 import {TuiNumberFormatSettings} from '@taiga-ui/core/interfaces';
-import {TUI_NUMBER_FORMAT, TUI_NUMBER_FORMAT_OBSERVABLE} from '@taiga-ui/core/tokens';
-import {BehaviorSubject} from 'rxjs';
+import {TUI_NUMBER_FORMAT} from '@taiga-ui/core/tokens';
+import {combineLatest, map, Observable, ReplaySubject} from 'rxjs';
 
 @Directive({
     selector: '[tuiNumberFormat]',
     providers: [
         {
-            provide: TUI_NUMBER_FORMAT_OBSERVABLE,
+            provide: TUI_NUMBER_FORMAT,
             useExisting: forwardRef(() => TuiNumberFormatDirective),
         },
     ],
 })
-export class TuiNumberFormatDirective extends BehaviorSubject<TuiNumberFormatSettings> {
+export class TuiNumberFormatDirective extends Observable<TuiNumberFormatSettings> {
+    private readonly settings = new ReplaySubject<Partial<TuiNumberFormatSettings>>(1);
+    private readonly parent = inject(TUI_NUMBER_FORMAT, {skipSelf: true});
+
     @Input()
     public set tuiNumberFormat(format: Partial<TuiNumberFormatSettings>) {
-        this.next({...this.settings, decimalLimit: NaN, ...format});
+        this.settings.next(format);
     }
 
-    constructor(
-        @Inject(TUI_NUMBER_FORMAT) private readonly settings: TuiNumberFormatSettings,
-    ) {
-        super({...settings, decimalLimit: NaN});
+    constructor() {
+        super(subscriber =>
+            combineLatest([this.parent, this.settings])
+                .pipe(map(([parent, settings]) => ({...parent, ...settings})))
+                .subscribe(subscriber),
+        );
     }
 }

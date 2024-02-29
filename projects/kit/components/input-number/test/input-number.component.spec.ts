@@ -360,6 +360,7 @@ describe('InputNumber', () => {
             component.decimal = 'always';
             component.precision = precision;
             inputPO.sendText(value);
+            inputPO.blur();
 
             expect(component.computedValue).toBe(`${value},00`);
         });
@@ -371,6 +372,7 @@ describe('InputNumber', () => {
             component.decimal = 'always';
             component.precision = precision;
             inputPO.sendText(value);
+            inputPO.blur();
 
             expect(component.computedValue).toBe(`${value},00`);
         });

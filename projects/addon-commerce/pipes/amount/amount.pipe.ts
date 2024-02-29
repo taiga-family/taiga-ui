@@ -3,7 +3,7 @@ import {TuiCurrencyVariants} from '@taiga-ui/addon-commerce/types';
 import {tuiFormatCurrency, tuiFormatSignSymbol} from '@taiga-ui/addon-commerce/utils';
 import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
 import {
-    TUI_NUMBER_FORMAT_OBSERVABLE,
+    TUI_NUMBER_FORMAT,
     TuiDecimal,
     tuiFormatNumber,
     TuiHorizontalDirection,
@@ -20,7 +20,7 @@ const DEFAULT_DECIMAL_LIMIT = 2;
 })
 export class TuiAmountPipe implements PipeTransform {
     private readonly options = inject(TUI_AMOUNT_OPTIONS);
-    private readonly format = inject(TUI_NUMBER_FORMAT_OBSERVABLE);
+    private readonly format = inject(TUI_NUMBER_FORMAT);
 
     public transform(
         value: number,

@@ -149,7 +149,7 @@ describe('InputRange', () => {
         });
 
         it('does not rounds to nearest multiple of [quantum] until text field losses focus', () => {
-            inputPORight.sendText('8');
+            inputPORight.sendText('8 лет');
 
             expect(inputPORight.value).toBe('8 лет');
             expect(testComponent.control.value?.[1]).toBe(10);
