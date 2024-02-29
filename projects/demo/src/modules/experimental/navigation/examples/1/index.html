@@ -8,7 +8,7 @@
     </button>
     <span tuiNavigationLogo>
         <tui-icon icon="tuiIconHome"></tui-icon>
-        A very very long product name
+        <span tuiFade>A very very long product name</span>
         <tui-badge>Test</tui-badge>
     </span>
     <button
@@ -18,7 +18,7 @@
         tuiDropdownOpen
         [tuiDropdown]="products"
     >
-        <span>A very very long project</span>
+        <span tuiFade>A very very long project</span>
         <ng-template #products>
             <tui-data-list size="s">
                 <button tuiOption>
@@ -66,7 +66,7 @@
                 iconLeft="tuiIconHome"
                 tuiButton
             >
-                <span>A very very long product name</span>
+                <span tuiFade>A very very long product name</span>
             </button>
         </header>
         <button
@@ -75,14 +75,15 @@
         >
             Search
         </button>
-        <button
+        <a
             iconLeft="tuiIconUsers"
+            routerLink="/experimental/navigation"
+            routerLinkActive="active"
             tuiAppearance="flat"
-            tuiAppearanceState="hover"
             tuiButton
         >
             Groups
-        </button>
+        </a>
         <button
             iconLeft="tuiIconSettings"
             iconRight="tuiIconChevronDown"
@@ -148,10 +149,12 @@
                 Back
             </a>
             /
-            <strong>Groups</strong>
-            <tui-badge iconLeft="tuiIconLock">Status</tui-badge>
+            <span tuiNavigationLogo>
+                <span tuiFade>Groups</span>
+                <tui-badge iconLeft="tuiIconLock">Status</tui-badge>
+            </span>
             <hr />
-            <tui-tabs>
+            <tui-tabs tuiFade>
                 <button tuiTab>Default view</button>
                 <button tuiTab>Details</button>
                 <button tuiTab>Followers</button>

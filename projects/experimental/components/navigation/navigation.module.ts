@@ -4,7 +4,7 @@ import {TuiScrollableDirective, TuiScrollbarComponent} from '@taiga-ui/core';
 import {TuiFadeModule} from '@taiga-ui/experimental/directives/fade';
 
 import {TuiAsideComponent} from './aside.component';
-import {TuiHeadComponent} from './head.component';
+import {TuiHeaderComponent} from './header.component';
 import {TuiLogoComponent} from './logo.component';
 import {TuiMainComponent} from './main.component';
 import {TuiNavComponent} from './nav.component';
@@ -12,14 +12,14 @@ import {TuiNavComponent} from './nav.component';
 @NgModule({
     imports: [CommonModule, TuiScrollbarComponent, TuiFadeModule, TuiScrollableDirective],
     declarations: [
-        TuiHeadComponent,
+        TuiHeaderComponent,
         TuiLogoComponent,
         TuiMainComponent,
         TuiAsideComponent,
         TuiNavComponent,
     ],
     exports: [
-        TuiHeadComponent,
+        TuiHeaderComponent,
         TuiLogoComponent,
         TuiMainComponent,
         TuiAsideComponent,

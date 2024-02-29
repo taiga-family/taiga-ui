@@ -4,7 +4,7 @@ import {TuiSizeXXL, TuiSizeXXS} from '@taiga-ui/core';
 import {tuiButtonOptionsProvider} from '@taiga-ui/experimental/components';
 import {tuiAvatarOptionsProvider, tuiBadgeOptionsProvider} from '@taiga-ui/kit';
 
-import {TuiHeaderComponent} from './header.component';
+import {TuiHeaderStylesComponent} from './header.component';
 
 @Directive({
     standalone: true,
@@ -21,7 +21,7 @@ import {TuiHeaderComponent} from './header.component';
 })
 export class TuiHeaderDirective {
     // @ts-ignore
-    private readonly nothing = tuiWithStyles(TuiHeaderComponent);
+    private readonly nothing = tuiWithStyles(TuiHeaderStylesComponent);
 
     @Input('tuiHeader')
     public size: TuiSizeXXL | TuiSizeXXS | '' = 's';

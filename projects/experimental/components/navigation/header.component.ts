@@ -7,7 +7,7 @@ import {tuiAvatarOptionsProvider, tuiBadgeOptionsProvider} from '@taiga-ui/kit';
 @Component({
     selector: 'header[tuiNavigationHeader]',
     template: '<ng-content></ng-content>',
-    styleUrls: ['./head.style.less'],
+    styleUrls: ['./header.style.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
@@ -21,4 +21,4 @@ import {tuiAvatarOptionsProvider, tuiBadgeOptionsProvider} from '@taiga-ui/kit';
         tuiTheme: 'night',
     },
 })
-export class TuiHeadComponent {}
+export class TuiHeaderComponent {}

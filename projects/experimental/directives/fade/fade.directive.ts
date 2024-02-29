@@ -10,6 +10,8 @@ import {fromEvent, merge, takeUntil} from 'rxjs';
 
 import {TuiFadeComponent} from './fade.component';
 
+const BUFFER = 1; // buffer for rounding issues
+
 @Directive({
     selector: '[tuiFade]',
     providers: [
@@ -61,10 +63,14 @@ export class TuiFadeDirective {
     }
 
     private isEnd(el: HTMLElement): boolean {
+        if (this.orientation === 'vertical') {
+            return Math.round(el.scrollTop) < el.scrollHeight - el.clientHeight - BUFFER;
+        }
+
         return (
-            Math.round(el.scrollLeft) < el.scrollWidth - el.clientWidth ||
-            Math.round(el.scrollTop) < el.scrollHeight - el.clientHeight ||
-            (this.orientation === 'horizontal' && el.scrollHeight > el.clientHeight)
+            Math.round(el.scrollLeft) < el.scrollWidth - el.clientWidth - BUFFER ||
+            // horizontal multiline fade can kick in early due to hanging elements of fonts so using bigger buffer
+            el.scrollHeight > el.clientHeight + 4 * BUFFER
         );
     }
 }

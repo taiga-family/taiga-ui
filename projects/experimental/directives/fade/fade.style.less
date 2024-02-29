@@ -2,14 +2,15 @@
 
 // prettier-ignore
 [tuiFade] {
+    .scrollbar-hidden();
     .transition(mask-position);
 
-    display: block;
-    overflow: hidden;
+    overflow: auto;
     text-overflow: unset !important;
     mask-repeat: no-repeat;
 
     &:not([data-orientation='vertical']) {
+        overflow-y: hidden;
         mask-image:
             linear-gradient(to right, transparent var(--fade-offset), #000 calc(var(--fade-size) + var(--fade-offset))),
             linear-gradient(to left, transparent var(--fade-offset), #000 calc(var(--fade-size) + var(--fade-offset))),
@@ -46,13 +47,14 @@
     }
 
     &[data-orientation='vertical'] {
+        overflow-x: hidden;
         mask-image:
             linear-gradient(to bottom, transparent var(--fade-offset), #000 calc(var(--fade-size) + var(--fade-offset))),
             linear-gradient(to top, transparent var(--fade-offset), #000 calc(var(--fade-size) + var(--fade-offset)));
         mask-position:
             left calc(-1 * var(--fade-size) - var(--fade-offset)),
             left calc(100% + var(--fade-size) + var(--fade-offset));
-        mask-size: 100% calc(50% + var(--fade-size) + var(--fade-offset));
+        mask-size: 100% calc(51% + var(--fade-size) + var(--fade-offset)); // +1% for Chrome issue https://github.com/taiga-family/taiga-ui/issues/6873
 
         &._start {
             mask-position: left top, left calc(100% + var(--fade-size) + var(--fade-offset));

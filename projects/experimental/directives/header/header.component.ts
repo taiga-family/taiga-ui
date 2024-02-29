@@ -10,4 +10,4 @@ import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/co
         class: 'tui-header',
     },
 })
-export class TuiHeaderComponent {}
+export class TuiHeaderStylesComponent {}

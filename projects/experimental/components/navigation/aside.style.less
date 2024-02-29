@@ -22,6 +22,11 @@ aside[tuiNavigationAside] {
         }
     }
 
+    /* stylelint-disable-next-line */
+    a[tuiButton].active {
+        background: var(--tui-clear-hover);
+    }
+
     .t-nav-scrollbar {
         margin: 0 -0.25rem;
     }
@@ -45,10 +50,6 @@ aside[tuiNavigationAside] {
 
             margin-left: auto;
             color: var(--tui-text-03-night);
-        }
-
-        > * {
-            .text-overflow();
         }
     }
 
