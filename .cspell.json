@@ -37,7 +37,15 @@
         "replicants",
         "tuiiconbutton",
         "hitbox",
-        "viewports"
+        "viewports",
+        "Grigori",
+        "Constantinopolsky",
+        "Rimsky",
+        "Korsakov",
+        "Wolfflegelstainhausenbergedorf",
+        "Arkhangelsky",
+        "Zoya",
+        "Kosmodemyanskaya"
     ],
     "ignoreRegExpList": ["\\(https?://.*?\\)", "\\/{1}.+\\/{1}", "\\%2F.+", "\\%2C.+", "\\ɵ.+", "\\ыва.+"],
     "overrides": [
