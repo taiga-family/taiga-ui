@@ -3,6 +3,7 @@ import {
     ChangeDetectionStrategy,
     Component,
     ContentChild,
+    ElementRef,
     inject,
     Input,
 } from '@angular/core';
@@ -59,7 +60,7 @@ export interface TuiTextfieldContext<T> extends TuiContext<T> {
         '[style.--t-side.px]': 'side',
         '[attr.data-size]': 'options.size',
         '[class._with-label]': 'label',
-        '[class._disabled]': 'el.disabled',
+        '[class._disabled]': 'input.disabled',
     },
     hostDirectives: [
         TuiNativeValidatorDirective,
@@ -72,6 +73,9 @@ export interface TuiTextfieldContext<T> extends TuiContext<T> {
 export class TuiTextfieldComponent<T>
     implements TuiDataListHost<T>, TuiFocusableElementAccessor
 {
+    @ContentChild(TuiTextfieldDirective, {read: ElementRef})
+    private readonly el?: ElementRef<HTMLInputElement>;
+
     private readonly dropdown = inject(TuiDropdownOpenDirective, {
         optional: true,
         self: true,
@@ -84,13 +88,13 @@ export class TuiTextfieldComponent<T>
     protected readonly label?: unknown;
 
     @Input()
-    public filler = '';
+    filler = '';
 
     @Input()
-    public stringify: TuiStringHandler<T> = String;
+    stringify: TuiStringHandler<T> = String;
 
     @Input()
-    public content: PolymorpheusContent<TuiTextfieldContext<T>>;
+    content: PolymorpheusContent<TuiTextfieldContext<T>>;
 
     protected side = 0;
 
@@ -101,30 +105,31 @@ export class TuiTextfieldComponent<T>
     protected readonly control = inject(NgControl, {optional: true});
 
     // TODO: Refactor
-    public readonly focusedChange = EMPTY;
+    readonly focusedChange = EMPTY;
 
-    public get nativeFocusableElement(): HTMLInputElement {
-        return this.el;
+    get nativeFocusableElement(): HTMLInputElement {
+        return this.input;
     }
 
-    protected get id(): string {
-        return this.el.id || '';
+    get id(): string {
+        return this.input.id || '';
     }
 
-    public get focused(): boolean {
-        return !!this.dropdown?.dropdown || tuiIsNativeFocused(this.directive?.el);
+    // TODO: Do not change to `this.input`, will be refactored
+    get focused(): boolean {
+        return !!this.dropdown?.dropdown || tuiIsNativeFocused(this.el?.nativeElement);
     }
 
-    protected get el(): HTMLInputElement {
-        if (!this.directive) {
+    protected get input(): HTMLInputElement {
+        if (!this.el) {
             throw new Error('[tuiTextfield] component is required');
         }
 
-        return this.directive.el;
+        return this.el.nativeElement;
     }
 
     protected get computedFiller(): string {
-        const value = this.el.value || '';
+        const value = this.input.value || '';
         const filler = value + this.filler.slice(value.length);
 
         return filler.length > value.length ? filler : '';
@@ -134,11 +139,11 @@ export class TuiTextfieldComponent<T>
         return (
             this.focused &&
             !!this.computedFiller &&
-            (!!this.el.value || !this.el.placeholder)
+            (!!this.input.value || !this.input.placeholder)
         );
     }
 
-    public handleOption(option: T): void {
+    handleOption(option: T): void {
         this.directive?.setValue(this.stringify(option));
         this.dropdown?.toggle(false);
     }
