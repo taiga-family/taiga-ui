@@ -27,5 +27,5 @@ import {BehaviorSubject, map, Observable, switchMap} from 'rxjs';
     ],
 })
 export class TuiInputNumberExample7 {
-    value = 1234.56;
+    protected value = 1234.56;
 }
