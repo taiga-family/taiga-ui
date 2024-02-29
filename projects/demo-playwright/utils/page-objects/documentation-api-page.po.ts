@@ -6,8 +6,8 @@ import {waitStableState} from '../wait-stable-state';
 export class TuiDocumentationApiPagePO {
     private readonly pending = new Set<Request>();
 
-    readonly pageExamples: Locator = this.page.locator('tui-doc-example');
-    readonly apiPageExample: Locator = this.page.locator('#demo-content');
+    public readonly pageExamples: Locator = this.page.locator('tui-doc-example');
+    public readonly apiPageExample: Locator = this.page.locator('#demo-content');
 
     constructor(protected readonly page: Page) {
         page.on('request', request => this.pending.add(request));
@@ -19,7 +19,7 @@ export class TuiDocumentationApiPagePO {
      * await page.waitForLoadState('networkidle');
      * Doesn't work as expected
      */
-    async networkidle(): Promise<void> {
+    public async networkidle(): Promise<void> {
         await Promise.all(
             [...this.pending].map(
                 async req =>
