@@ -1,11 +1,14 @@
 <tui-island [hoverable]="true">
     <tui-input [(ngModel)]="value">Input example</tui-input>
-    <div class="tui-space_top-4">
-        <tui-checkbox-labeled
-            size="l"
+    <label
+        tuiLabel
+        class="tui-space_top-4"
+    >
+        <input
+            tuiCheckbox
+            type="checkbox"
             [(ngModel)]="checkbox"
-        >
-            Checkbox example
-        </tui-checkbox-labeled>
-    </div>
+        />
+        Checkbox example
+    </label>
 </tui-island>

@@ -10,7 +10,8 @@ import {
     TuiLoaderModule,
     TuiSvgModule,
 } from '@taiga-ui/core';
-import {TuiCheckboxLabeledModule, TuiTreeModule} from '@taiga-ui/kit';
+import {TuiCheckboxModule, TuiLabelDirective} from '@taiga-ui/experimental';
+import {TuiTreeModule} from '@taiga-ui/kit';
 
 import {TuiTreeExample1} from './examples/1';
 import {TuiTreeExample2} from './examples/2';
@@ -28,13 +29,14 @@ import {ExampleTuiTreeComponent} from './tree.component';
         TuiSvgModule,
         TuiButtonModule,
         TuiLinkModule,
-        TuiCheckboxLabeledModule,
         TuiMapperPipeModule,
         TuiLoaderModule,
         FormsModule,
         CommonModule,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiTreeComponent)),
+        TuiCheckboxModule,
+        TuiLabelDirective,
     ],
     declarations: [
         ExampleTuiTreeComponent,

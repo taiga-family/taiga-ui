@@ -1,8 +1,6 @@
 import {Component, ViewEncapsulation} from '@angular/core';
-import {
-    TUI_TEXTFIELD_APPEARANCE_DIRECTIVE,
-    tuiCheckboxOptionsProvider,
-} from '@taiga-ui/core';
+import {TUI_TEXTFIELD_APPEARANCE_DIRECTIVE} from '@taiga-ui/core';
+import {tuiCheckboxOptionsProvider} from '@taiga-ui/experimental';
 
 @Component({
     selector: 'tui-wrapper-example-1',
@@ -17,11 +15,10 @@ import {
             },
         },
         tuiCheckboxOptionsProvider({
-            appearances: {
-                unchecked: 'material-checkbox-off',
-                checked: 'material-checkbox-on',
-                indeterminate: 'material-checkbox-on',
-            },
+            appearance: el =>
+                el.checked || el.indeterminate
+                    ? 'material-checkbox-on'
+                    : 'material-checkbox-off',
         }),
     ],
 })

@@ -79,43 +79,59 @@
                         </tui-input-time>
                     </div>
                     <div class="tui-form__row tui-form__row_checkboxes">
-                        <tui-checkbox-labeled
-                            formControlName="osnoValue"
-                            size="l"
+                        <label
+                            tuiLabel
                             class="tui-form__checkbox"
                             [class.tui-skeleton_light]="lightMode"
                             [class.tui-skeleton]="skeletonVisible"
                         >
+                            <input
+                                formControlName="osnoValue"
+                                tuiCheckbox
+                                type="checkbox"
+                            />
                             First option
-                        </tui-checkbox-labeled>
-                        <tui-checkbox-labeled
-                            formControlName="usnValue"
-                            size="l"
+                        </label>
+                        <label
+                            tuiLabel
                             class="tui-form__checkbox"
                             [class.tui-skeleton_light]="lightMode"
                             [class.tui-skeleton]="skeletonVisible"
                         >
+                            <input
+                                formControlName="usnValue"
+                                tuiCheckbox
+                                type="checkbox"
+                            />
                             Cool option
-                        </tui-checkbox-labeled>
-                        <tui-checkbox-labeled
-                            formControlName="eshnValue"
-                            size="l"
+                        </label>
+                        <label
+                            tuiLabel
                             class="tui-form__checkbox"
                             [class.tui-skeleton_light]="lightMode"
                             [class.tui-skeleton]="skeletonVisible"
                         >
+                            <input
+                                formControlName="eshnValue"
+                                tuiCheckbox
+                                type="checkbox"
+                            />
                             Boring option
-                        </tui-checkbox-labeled>
-                        <tui-checkbox-labeled
-                            formControlName="envdValue"
-                            size="l"
+                        </label>
+                        <label
+                            tuiLabel
                             class="tui-form__checkbox"
                             [class.tui-skeleton_light]="lightMode"
                             [class.tui-skeleton_short]="skeletonVisible"
                             [class.tui-skeleton]="skeletonVisible"
                         >
+                            <input
+                                formControlName="envdValue"
+                                tuiCheckbox
+                                type="checkbox"
+                            />
                             Interesting option
-                        </tui-checkbox-labeled>
+                        </label>
                     </div>
                     <div class="tui-form__buttons">
                         <button

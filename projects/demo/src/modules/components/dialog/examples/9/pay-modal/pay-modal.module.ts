@@ -11,7 +11,7 @@ import {
     TuiSvgModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiCheckboxLabeledModule} from '@taiga-ui/kit';
+import {TuiCheckboxModule, TuiLabelDirective} from '@taiga-ui/experimental';
 
 import {PayModalComponent} from './pay-modal.component';
 
@@ -26,10 +26,11 @@ import {PayModalComponent} from './pay-modal.component';
         TuiButtonModule,
         TuiAutoFocusModule,
         ReactiveFormsModule,
-        TuiCheckboxLabeledModule,
         TuiInputCardGroupedModule,
         TuiFormatNumberPipeModule,
         TuiTextfieldControllerModule,
+        TuiLabelDirective,
+        TuiCheckboxModule,
     ],
     declarations: [PayModalComponent],
 })

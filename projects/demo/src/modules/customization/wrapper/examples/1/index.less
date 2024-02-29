@@ -81,57 +81,45 @@
     });
 }
 
-[tuiWrapper][data-appearance='material-checkbox-on'],
-[tuiWrapper][data-appearance='material-checkbox-off'] {
+[tuiAppearance][data-appearance='material-checkbox-on'],
+[tuiAppearance][data-appearance='material-checkbox-off'] {
     color: #fff;
-
-    &:before {
-        position: absolute;
-        content: '';
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        border-radius: 0.125rem;
-        border: 2px solid rgba(0, 0, 0, 0.54);
-        transition: all var(--tui-duration);
-    }
+    border-radius: 0.125rem;
+    border: 0.125rem solid rgba(0, 0, 0, 0.54);
 
     &:after {
         .transition(opacity);
+        content: '';
         position: absolute;
-        top: -0.5rem;
-        left: -0.5rem;
-        right: -0.5rem;
-        bottom: -0.5rem;
+        top: -0.625rem;
+        left: -0.625rem;
+        right: -0.625rem;
+        bottom: -0.625rem;
         border-radius: 100%;
         background: #000;
         opacity: 0;
     }
 
-    .wrapper-hover({
+    .appearance-hover({
         &:after {
             opacity: 0.05;
         }
     });
 
-    .wrapper-active({
+    .appearance-active({
         &:after {
             opacity: 0.1;
         }
     });
 
-    .wrapper-focus({
+    .appearance-focus({
         &:after {
             opacity: 0.1;
         }
     });
 }
 
-[tuiWrapper][data-appearance='material-checkbox-on'] {
-    &:before,
-    &:after {
-        background: #6200ee;
-        border-color: transparent;
-    }
+[tuiAppearance][data-appearance='material-checkbox-on'] {
+    background: #6200ee;
+    border-color: transparent;
 }

@@ -9,7 +9,7 @@ import {TuiTextfieldComponent} from './textfield.component';
     selector: 'label[tuiLabel]',
     host: {
         '[attr.for]': 'el.htmlFor || parent?.id',
-        '[style.flex-direction]': 'textfield ? "column" : null',
+        '[class._textfield]': 'textfield',
     },
 })
 export class TuiLabelDirective {

@@ -11,13 +11,17 @@
             heading="Buttons"
             [content]="example1"
         >
-            <tui-checkbox-labeled
-                size="l"
+            <label
+                tuiLabel
                 class="tui-space_bottom-4"
-                [(ngModel)]="fixed"
             >
+                <input
+                    tuiCheckbox
+                    type="checkbox"
+                    [(ngModel)]="fixed"
+                />
                 Fixed
-            </tui-checkbox-labeled>
+            </label>
             <tui-tab-bar-example-1
                 *ngIf="!fixed"
                 class="bar"

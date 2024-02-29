@@ -111,7 +111,7 @@ export class TuiTextfieldComponent<T>
         return this.input;
     }
 
-    protected get id(): string {
+    public get id(): string {
         return this.input.id || '';
     }
 

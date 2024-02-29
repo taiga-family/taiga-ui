@@ -522,24 +522,6 @@ export const ROUTES: Routes = [
         },
     },
     {
-        path: 'components/checkbox-labeled',
-        loadChildren: async () =>
-            (await import('../components/checkbox-labeled/checkbox-labeled.module'))
-                .ExampleTuiCheckboxLabeledModule,
-        data: {
-            title: 'CheckboxLabeled',
-        },
-    },
-    {
-        path: 'components/primitive-checkbox',
-        loadChildren: async () =>
-            (await import('../components/primitive-checkbox/primitive-checkbox.module'))
-                .ExampleTuiPrimitiveCheckboxModule,
-        data: {
-            title: 'PrimitiveCheckbox',
-        },
-    },
-    {
         path: 'components/combo-box',
         loadChildren: async () =>
             (await import('../components/combo-box/combo-box.module'))
@@ -998,15 +980,6 @@ export const ROUTES: Routes = [
             (await import('../components/radio/radio.module')).ExampleTuiRadioModule,
         data: {
             title: 'Radio',
-        },
-    },
-    {
-        path: 'components/radio-labeled',
-        loadChildren: async () =>
-            (await import('../components/radio-labeled/radio-labeled.module'))
-                .ExampleTuiRadioLabeledModule,
-        data: {
-            title: 'RadioLabeled',
         },
     },
     {
