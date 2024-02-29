@@ -1,19 +1,19 @@
 import {Locator} from '@playwright/test';
 
 export class TuiInputCardGroupedPO {
-    protected readonly numberTextfield = this.host.locator(
+    public readonly numberTextfield = this.host.locator(
         '[automation-id="tui-input-card-grouped__card"]',
     );
 
-    protected readonly cleanerIcon = this.host.locator(
+    public readonly cleanerIcon = this.host.locator(
         '[automation-id="tui-input-card-grouped__cleaner"]',
     );
 
-    protected readonly expiryTextfield = this.host.locator(
+    public readonly expiryTextfield = this.host.locator(
         '[automation-id="tui-input-card-grouped__expire"]',
     );
 
-    protected readonly cvcTextfield = this.host.locator(
+    public readonly cvcTextfield = this.host.locator(
         '[automation-id="tui-input-card-grouped__cvc"]',
     );
 
