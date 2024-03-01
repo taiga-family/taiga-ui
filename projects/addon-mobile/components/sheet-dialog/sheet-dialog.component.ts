@@ -68,6 +68,12 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
     protected readonly context =
         inject<TuiPopover<TuiSheetDialogOptions<I>, any>>(POLYMORPHEUS_CONTEXT);
 
+    public ngAfterViewInit(): void {
+        this.el.scrollTop = [...this.getStops(this.stopsRefs), this.sheetTop][
+            this.context.initial
+        ];
+    }
+
     @HostBinding('style.top.px')
     protected get offset(): number {
         return this.context.offset;
@@ -105,12 +111,6 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
         // TODO: Refactor focus visible on mobile
         this.el.dispatchEvent(new Event('mousedown', {bubbles: true}));
         this.context.$implicit.complete();
-    }
-
-    public ngAfterViewInit(): void {
-        this.el.scrollTop = [...this.getStops(this.stopsRefs), this.sheetTop][
-            this.context.initial
-        ];
     }
 
     private get sheetTop(): number {

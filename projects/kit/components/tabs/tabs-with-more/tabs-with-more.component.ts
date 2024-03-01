@@ -62,17 +62,13 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
     @HostBinding('class._underline')
     public underline = this.options.underline;
 
-    @Input('activeItemIndex')
-    public set itemIndex(activeItemIndex: number) {
-        this.activeItemIndex = activeItemIndex;
-        this.maxIndex = this.getMaxIndex();
-    }
-
     @Input()
     public itemsLimit = this.options.itemsLimit;
 
     @Output()
     public readonly activeItemIndexChange = new EventEmitter<number>();
+
+    public activeItemIndex = 0;
 
     @ContentChildren(TuiItemDirective, {read: TemplateRef})
     protected readonly items: QueryList<TemplateRef<Record<string, unknown>>> =
@@ -80,10 +76,38 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
 
     protected readonly moreWord$ = inject(TUI_MORE_WORD);
     protected readonly arrowOptions = inject(TUI_ARROW_OPTIONS);
-
-    public activeItemIndex = 0;
-
     protected open = false;
+
+    @Input('activeItemIndex')
+    public set itemIndex(activeItemIndex: number) {
+        this.activeItemIndex = activeItemIndex;
+        this.maxIndex = this.getMaxIndex();
+    }
+
+    public get lastVisibleIndex(): number {
+        if (this.itemsLimit + 1 >= this.items.length) {
+            return this.maxIndex;
+        }
+
+        const offset =
+            this.itemsLimit - 1 > this.activeItemIndex || !this.options.exposeActive
+                ? 1
+                : 2;
+
+        return Math.min(this.itemsLimit - offset, this.maxIndex);
+    }
+
+    public ngAfterViewInit(): void {
+        this.refresh$
+            .pipe(
+                map(() => this.getMaxIndex()),
+                filter(maxIndex => this.maxIndex !== maxIndex),
+            )
+            .subscribe(maxIndex => {
+                this.maxIndex = maxIndex;
+                this.cdr.detectChanges();
+            });
+    }
 
     // TODO: Improve performance
     protected get tabs(): readonly HTMLElement[] {
@@ -116,31 +140,6 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
             this.open ||
             (!this.options.exposeActive && this.lastVisibleIndex < this.activeItemIndex)
         );
-    }
-
-    protected get lastVisibleIndex(): number {
-        if (this.itemsLimit + 1 >= this.items.length) {
-            return this.maxIndex;
-        }
-
-        const offset =
-            this.itemsLimit - 1 > this.activeItemIndex || !this.options.exposeActive
-                ? 1
-                : 2;
-
-        return Math.min(this.itemsLimit - offset, this.maxIndex);
-    }
-
-    public ngAfterViewInit(): void {
-        this.refresh$
-            .pipe(
-                map(() => this.getMaxIndex()),
-                filter(maxIndex => this.maxIndex !== maxIndex),
-            )
-            .subscribe(maxIndex => {
-                this.maxIndex = maxIndex;
-                this.cdr.detectChanges();
-            });
     }
 
     protected onActiveItemIndexChange(activeItemIndex: number): void {

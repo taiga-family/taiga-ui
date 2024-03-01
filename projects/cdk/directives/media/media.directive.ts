@@ -23,11 +23,6 @@ export class TuiMediaDirective {
     @HostBinding('volume')
     public volume = 1;
 
-    @Input('playbackRate')
-    public set playbackRateSetter(playbackRate: number) {
-        this.updatePlaybackRate(playbackRate);
-    }
-
     @Output()
     public readonly currentTimeChange = new EventEmitter<number>();
 
@@ -37,15 +32,16 @@ export class TuiMediaDirective {
     @Output()
     public readonly volumeChange = new EventEmitter<number>();
 
+    @Input('playbackRate')
+    public set playbackRateSetter(playbackRate: number) {
+        this.updatePlaybackRate(playbackRate);
+    }
+
     @Input()
     public set currentTime(currentTime: number) {
         if (Math.abs(currentTime - this.currentTime) > 0.05) {
             this.el.currentTime = currentTime;
         }
-    }
-
-    public get currentTime(): number {
-        return this.el.currentTime;
     }
 
     @Input()
@@ -56,6 +52,10 @@ export class TuiMediaDirective {
             void this.el.play();
             this.updatePlaybackRate(this.playbackRate);
         }
+    }
+
+    public get currentTime(): number {
+        return this.el.currentTime;
     }
 
     public get paused(): boolean {

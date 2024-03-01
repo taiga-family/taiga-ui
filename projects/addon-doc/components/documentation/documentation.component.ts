@@ -46,8 +46,6 @@ export class TuiDocDocumentationComponent implements AfterContentInit {
     private readonly destroy$ = inject(TuiDestroyService, {self: true});
     private readonly getColor = inject(TuiGetColorPipe);
     private readonly getOpacity = inject(TuiGetOpacityPipe);
-    protected readonly texts = inject(TUI_DOC_DOCUMENTATION_TEXTS);
-    protected readonly excludedProperties = inject(TUI_DOC_EXCLUDED_PROPERTIES);
 
     @Input()
     public heading = '';
@@ -63,6 +61,8 @@ export class TuiDocDocumentationComponent implements AfterContentInit {
         TuiDocDocumentationPropertyConnectorDirective<any>
     > = EMPTY_QUERY;
 
+    protected readonly texts = inject(TUI_DOC_DOCUMENTATION_TEXTS);
+    protected readonly excludedProperties = inject(TUI_DOC_EXCLUDED_PROPERTIES);
     protected activeItemIndex = 0;
 
     public ngAfterContentInit(): void {

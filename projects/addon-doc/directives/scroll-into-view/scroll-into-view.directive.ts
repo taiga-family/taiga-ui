@@ -10,11 +10,6 @@ import {debounceTime, filter, ReplaySubject, switchMap, takeUntil} from 'rxjs';
 export class TuiScrollIntoViewLinkDirective {
     private readonly scroll$ = new ReplaySubject<boolean>(1);
 
-    @Input()
-    public set tuiScrollIntoViewLink(shallWe: boolean) {
-        this.scroll$.next(shallWe);
-    }
-
     constructor() {
         const el: HTMLElement = inject(ElementRef).nativeElement;
 
@@ -27,5 +22,10 @@ export class TuiScrollIntoViewLinkDirective {
                 takeUntil(inject(TuiDestroyService, {self: true})),
             )
             .subscribe(() => el.scrollIntoView());
+    }
+
+    @Input()
+    public set tuiScrollIntoViewLink(shallWe: boolean) {
+        this.scroll$.next(shallWe);
     }
 }

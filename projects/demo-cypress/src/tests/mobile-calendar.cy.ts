@@ -45,11 +45,12 @@ describe('Mobile calendar', () => {
         public calendar!: TuiMobileCalendarComponent;
 
         public single = true;
+        public onCancel = new EventEmitter<boolean>();
+        public onConfirm = new EventEmitter<TuiDay | TuiDayRange | readonly TuiDay[]>();
+
         protected min = TUI_FIRST_DAY;
         protected max = TUI_LAST_DAY;
         protected disabledItemHandler = ALWAYS_FALSE_HANDLER;
-        public onCancel = new EventEmitter<boolean>();
-        public onConfirm = new EventEmitter<TuiDay | TuiDayRange | readonly TuiDay[]>();
     }
 
     it('the back button emits a cancel event', () => {

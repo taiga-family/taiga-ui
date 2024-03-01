@@ -61,10 +61,6 @@ export class TuiDocDocumentationPropertyConnectorDirective<T>
 
     public readonly template = inject(TemplateRef);
 
-    public ngOnInit(): void {
-        this.parseParams(this.activatedRoute.snapshot.queryParams);
-    }
-
     public get attrName(): string {
         switch (this.documentationPropertyMode) {
             case 'input':
@@ -78,12 +74,16 @@ export class TuiDocDocumentationPropertyConnectorDirective<T>
         }
     }
 
+    public get shouldShowValues(): boolean {
+        return this.documentationPropertyMode !== 'output';
+    }
+
     public get hasItems(): boolean {
         return !!this.documentationPropertyValues;
     }
 
-    public get shouldShowValues(): boolean {
-        return this.documentationPropertyMode !== 'output';
+    public ngOnInit(): void {
+        this.parseParams(this.activatedRoute.snapshot.queryParams);
     }
 
     public ngOnChanges(): void {

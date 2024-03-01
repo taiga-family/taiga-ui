@@ -47,7 +47,7 @@ import {
 import {PolymorpheusOutletDirective} from '@tinkoff/ng-polymorpheus';
 import {takeUntil} from 'rxjs';
 
-import {TUI_INPUT_NUMBER_OPTIONS} from './input-number.options';
+import {TUI_INPUT_NUMBER_OPTIONS, TuiInputNumberOptions} from './input-number.options';
 
 const DEFAULT_MAX_LENGTH = 18;
 
@@ -75,16 +75,8 @@ export class TuiInputNumberComponent
 
     private readonly isIOS = inject(TUI_IS_IOS);
     private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
-
+    private readonly options = inject(TUI_INPUT_NUMBER_OPTIONS);
     private unfinishedValue: string | null = '';
-
-    protected override readonly valueTransformer = inject<
-        AbstractTuiValueTransformer<number | null>
-    >(TUI_NUMBER_VALUE_TRANSFORMER, {optional: true});
-
-    protected readonly options = inject(TUI_INPUT_NUMBER_OPTIONS);
-
-    protected numberFormat = TUI_DEFAULT_NUMBER_FORMAT;
 
     @Input()
     public min: number | null = this.options.min;
@@ -104,25 +96,17 @@ export class TuiInputNumberComponent
     @ContentChildren(PolymorpheusOutletDirective, {descendants: true})
     protected readonly polymorpheusValueContent: QueryList<unknown> = EMPTY_QUERY;
 
+    protected override readonly valueTransformer = inject<
+        AbstractTuiValueTransformer<number | null>
+    >(TUI_NUMBER_VALUE_TRANSFORMER, {optional: true});
+
+    protected numberFormat = TUI_DEFAULT_NUMBER_FORMAT;
     protected readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
     protected readonly numberFormat$ = inject(TUI_NUMBER_FORMAT)
         .pipe(tuiWatch(this.cdr), takeUntil(this.destroy$))
         .subscribe(format => {
             this.numberFormat = format;
         });
-
-    @HostBinding('attr.data-size')
-    protected get size(): TuiSizeL | TuiSizeS {
-        return this.textfieldSize.size;
-    }
-
-    protected get computedMin(): number {
-        return this.computeMin(this.min, this.max);
-    }
-
-    protected get computedMax(): number {
-        return this.computeMax(this.min, this.max);
-    }
 
     public get nativeFocusableElement(): HTMLInputElement | null {
         return !this.textfield || this.computedDisabled
@@ -132,10 +116,6 @@ export class TuiInputNumberComponent
 
     public get focused(): boolean {
         return !!this.textfield?.focused;
-    }
-
-    protected get isNegativeAllowed(): boolean {
-        return this.computedMin < 0;
     }
 
     public get inputMode(): TuiInputMode {
@@ -157,12 +137,65 @@ export class TuiInputNumberComponent
         return DEFAULT_MAX_LENGTH + precision + takeThousand;
     }
 
-    protected get formattedValue(): string {
-        return this.value !== null ? this.getFormattedValue(this.value || 0) : '';
-    }
-
     public get computedValue(): string {
         return this.focused ? this.nativeValue : this.formattedValue;
+    }
+
+    public onValueChange(nativeValue: string): void {
+        const parsedValue = maskitoParseNumber(
+            nativeValue,
+            this.numberFormat.decimalSeparator,
+        );
+
+        this.unfinishedValue = null;
+
+        if (Number.isNaN(parsedValue)) {
+            this.value = null;
+
+            return;
+        }
+
+        if (this.isNativeValueNotFinished) {
+            this.unfinishedValue = nativeValue;
+
+            return;
+        }
+
+        if (parsedValue < this.computedMin || parsedValue > this.computedMax) {
+            return;
+        }
+
+        this.value = parsedValue;
+    }
+
+    public override writeValue(value: number | null): void {
+        super.writeValue(value);
+        this.nativeValue = this.formattedValue;
+    }
+
+    @HostBinding('attr.data-size')
+    protected get size(): TuiSizeL | TuiSizeS {
+        return this.textfieldSize.size;
+    }
+
+    protected get icons(): TuiInputNumberOptions['icons'] {
+        return this.options.icons;
+    }
+
+    protected get computedMin(): number {
+        return this.computeMin(this.min, this.max);
+    }
+
+    protected get computedMax(): number {
+        return this.computeMax(this.min, this.max);
+    }
+
+    protected get isNegativeAllowed(): boolean {
+        return this.computedMin < 0;
+    }
+
+    protected get formattedValue(): string {
+        return this.value !== null ? this.getFormattedValue(this.value || 0) : '';
     }
 
     protected get canDecrement(): boolean {
@@ -196,6 +229,19 @@ export class TuiInputNumberComponent
         );
     }
 
+    protected get nativeValue(): string {
+        return this.nativeFocusableElement?.value || '';
+    }
+
+    protected set nativeValue(value: string) {
+        if (!this.textfield || !this.nativeFocusableElement) {
+            return;
+        }
+
+        this.textfield.value = value;
+        this.nativeFocusableElement.value = value;
+    }
+
     @HostListener('keydown.arrowDown', ['-step'])
     @HostListener('keydown.arrowUp', ['step'])
     protected onArrow(step: number | null): void {
@@ -209,33 +255,6 @@ export class TuiInputNumberComponent
             this.computedMax,
         );
         this.nativeValue = this.formattedValue;
-    }
-
-    public onValueChange(nativeValue: string): void {
-        const parsedValue = maskitoParseNumber(
-            nativeValue,
-            this.numberFormat.decimalSeparator,
-        );
-
-        this.unfinishedValue = null;
-
-        if (Number.isNaN(parsedValue)) {
-            this.value = null;
-
-            return;
-        }
-
-        if (this.isNativeValueNotFinished) {
-            this.unfinishedValue = nativeValue;
-
-            return;
-        }
-
-        if (parsedValue < this.computedMin || parsedValue > this.computedMax) {
-            return;
-        }
-
-        this.value = parsedValue;
     }
 
     protected onFocused(focused: boolean): void {
@@ -292,24 +311,6 @@ export class TuiInputNumberComponent
         return nativeNumberValue < 0
             ? nativeNumberValue > this.computedMax
             : nativeNumberValue < this.computedMin;
-    }
-
-    protected get nativeValue(): string {
-        return this.nativeFocusableElement?.value || '';
-    }
-
-    protected set nativeValue(value: string) {
-        if (!this.textfield || !this.nativeFocusableElement) {
-            return;
-        }
-
-        this.textfield.value = value;
-        this.nativeFocusableElement.value = value;
-    }
-
-    public override writeValue(value: number | null): void {
-        super.writeValue(value);
-        this.nativeValue = this.formattedValue;
     }
 
     private get nativeNumberValue(): number {

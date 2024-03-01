@@ -16,13 +16,13 @@ import {TuiIconsComponent} from './icons.component';
     },
 })
 export class TuiIconsDirective {
-    protected readonly nothing = tuiWithStyles(TuiIconsComponent);
-
     @Input()
     public iconLeft = '';
 
     @Input()
     public iconRight = '';
+
+    protected readonly nothing = tuiWithStyles(TuiIconsComponent);
 
     protected readonly resolver = inject<TuiStringHandler<string>>(TUI_ICON_RESOLVER);
 }

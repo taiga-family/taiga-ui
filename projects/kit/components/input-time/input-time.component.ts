@@ -86,11 +86,6 @@ export class TuiInputTimeComponent
 
     protected open = false;
 
-    @HostBinding('attr.data-size')
-    protected get size(): TuiSizeL | TuiSizeS {
-        return this.textfieldSize.size;
-    }
-
     public get nativeFocusableElement(): HTMLInputElement | null {
         return this.textfield?.nativeFocusableElement ?? null;
     }
@@ -99,51 +94,8 @@ export class TuiInputTimeComponent
         return tuiIsNativeFocused(this.nativeFocusableElement);
     }
 
-    protected get canOpen(): boolean {
-        return this.interactive && !!this.filtered.length;
-    }
-
-    protected get filtered(): readonly TuiTime[] {
-        return this.filter(this.items, this.mode, this.computedSearch);
-    }
-
-    protected get showNativePicker(): boolean {
-        return (
-            this.nativePicker &&
-            (!this.isIOS || (this.mode === 'HH:MM' && !this.items.length))
-        );
-    }
-
-    protected get nativeDatalist(): boolean {
-        return this.nativePicker && !this.isIOS;
-    }
-
-    protected get maskOptions(): MaskitoOptions {
-        return this.calculateMask(this.mode);
-    }
-
     public get computedValue(): string {
         return this.value ? this.value.toString(this.mode) : this.nativeValue;
-    }
-
-    protected get computedSearch(): string {
-        return this.computedValue.length !== this.mode.length ? this.computedValue : '';
-    }
-
-    protected get innerPseudoFocused(): boolean | null {
-        if (this.pseudoFocus === false) {
-            return false;
-        }
-
-        if ((this.open && this.canOpen) || this.computedFocused) {
-            return true;
-        }
-
-        return null;
-    }
-
-    protected get icon(): TuiInputTimeOptions['icon'] {
-        return this.options.icon;
     }
 
     public get nativeValue(): string {
@@ -158,14 +110,14 @@ export class TuiInputTimeComponent
         this.nativeFocusableElement.value = value;
     }
 
-    @tuiPure
-    protected getFiller$(mode: TuiTimeMode): Observable<string> {
-        return this.timeTexts$.pipe(map(texts => texts[mode]));
+    public handleOption(item: TuiTime): void {
+        this.focusInput();
+        this.value = item;
     }
 
-    @HostListener('click')
-    protected onClick(): void {
-        this.open = !this.open;
+    public override writeValue(value: TuiTime | null): void {
+        super.writeValue(value);
+        this.nativeValue = value ? this.computedValue : '';
     }
 
     public onValueChange(value: string): void {
@@ -192,6 +144,64 @@ export class TuiInputTimeComponent
         const time = TuiTime.fromString(value);
 
         this.value = this.strict ? this.findNearestTimeFromItems(time) : time;
+    }
+
+    @HostBinding('attr.data-size')
+    protected get size(): TuiSizeL | TuiSizeS {
+        return this.textfieldSize.size;
+    }
+
+    protected get canOpen(): boolean {
+        return this.interactive && !!this.filtered.length;
+    }
+
+    protected get filtered(): readonly TuiTime[] {
+        return this.filter(this.items, this.mode, this.computedSearch);
+    }
+
+    protected get showNativePicker(): boolean {
+        return (
+            this.nativePicker &&
+            (!this.isIOS || (this.mode === 'HH:MM' && !this.items.length))
+        );
+    }
+
+    protected get nativeDatalist(): boolean {
+        return this.nativePicker && !this.isIOS;
+    }
+
+    protected get maskOptions(): MaskitoOptions {
+        return this.calculateMask(this.mode);
+    }
+
+    protected get computedSearch(): string {
+        return this.computedValue.length !== this.mode.length ? this.computedValue : '';
+    }
+
+    protected get innerPseudoFocused(): boolean | null {
+        if (this.pseudoFocus === false) {
+            return false;
+        }
+
+        if ((this.open && this.canOpen) || this.computedFocused) {
+            return true;
+        }
+
+        return null;
+    }
+
+    protected get icon(): TuiInputTimeOptions['icon'] {
+        return this.options.icon;
+    }
+
+    @tuiPure
+    protected getFiller$(mode: TuiTimeMode): Observable<string> {
+        return this.timeTexts$.pipe(map(texts => texts[mode]));
+    }
+
+    @HostListener('click')
+    protected onClick(): void {
+        this.open = !this.open;
     }
 
     protected onFocused(focused: boolean): void {
@@ -233,18 +243,8 @@ export class TuiInputTimeComponent
         this.processArrow(event, -1);
     }
 
-    public handleOption(item: TuiTime): void {
-        this.focusInput();
-        this.value = item;
-    }
-
     protected onOpen(open: boolean): void {
         this.open = open;
-    }
-
-    public override writeValue(value: TuiTime | null): void {
-        super.writeValue(value);
-        this.nativeValue = value ? this.computedValue : '';
     }
 
     private get nativePicker(): boolean {

@@ -30,6 +30,10 @@ export class TuiCarouselDirective extends Observable<unknown> {
         ),
     );
 
+    constructor() {
+        super(subscriber => this.output$.subscribe(subscriber));
+    }
+
     @Input()
     public set duration(duration: number) {
         this.duration$.next(duration);
@@ -38,9 +42,5 @@ export class TuiCarouselDirective extends Observable<unknown> {
     @Input()
     public set index(_: number) {
         this.duration$.next(this.duration$.value);
-    }
-
-    constructor() {
-        super(subscriber => this.output$.subscribe(subscriber));
     }
 }

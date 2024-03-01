@@ -54,6 +54,18 @@ export class TuiCarouselComponent {
     @HostBinding('class._transitioned')
     protected transitioned = true;
 
+    public next(): void {
+        if (this.items && this.index === this.items.length - this.itemsCount) {
+            return;
+        }
+
+        this.updateIndex(this.index + 1);
+    }
+
+    public prev(): void {
+        this.updateIndex(this.index - 1);
+    }
+
     protected get transform(): string {
         const x = this.transitioned ? this.computedTranslate : this.translate;
 
@@ -81,18 +93,6 @@ export class TuiCarouselComponent {
             minWidth: percent,
             maxWidth: percent,
         };
-    }
-
-    public next(): void {
-        if (this.items && this.index === this.items.length - this.itemsCount) {
-            return;
-        }
-
-        this.updateIndex(this.index + 1);
-    }
-
-    public prev(): void {
-        this.updateIndex(this.index - 1);
     }
 
     protected isDisabled(index: number): boolean {

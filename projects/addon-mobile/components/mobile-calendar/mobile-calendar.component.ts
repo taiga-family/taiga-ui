@@ -146,16 +146,30 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
             });
     }
 
-    protected get yearWidth(): number {
-        return this.doc.documentElement.clientWidth / YEARS_IN_ROW;
-    }
-
     public ngAfterViewInit(): void {
         this.activeYear = this.initialYear;
         this.activeMonth = this.initialMonth;
 
         // Virtual scroll has not yet rendered items even in ngAfterViewInit
         this.waitScrolledChange();
+    }
+
+    public setYear(year: number): void {
+        if (this.activeYear === year) {
+            return;
+        }
+
+        this.activeMonth += this.getMonthOffset(year);
+        this.activeYear = year;
+        this.scrollToActiveYear('smooth');
+
+        timer(0)
+            .pipe(tuiZonefree(this.ngZone), takeUntil(this.destroy$))
+            .subscribe(() => this.scrollToActiveMonth());
+    }
+
+    protected get yearWidth(): number {
+        return this.doc.documentElement.clientWidth / YEARS_IN_ROW;
     }
 
     protected onClose(): void {
@@ -214,20 +228,6 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
         this.scrollToActiveYear();
     }
 
-    public setYear(year: number): void {
-        if (this.activeYear === year) {
-            return;
-        }
-
-        this.activeMonth += this.getMonthOffset(year);
-        this.activeYear = year;
-        this.scrollToActiveYear('smooth');
-
-        timer(0)
-            .pipe(tuiZonefree(this.ngZone), takeUntil(this.destroy$))
-            .subscribe(() => this.scrollToActiveMonth());
-    }
-
     protected readonly disabledItemHandlerMapper: TuiTypedMapper<
         [TuiBooleanHandler<TuiDay>, TuiDay, TuiDay],
         TuiBooleanHandler<TuiDay>
@@ -235,14 +235,6 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
         item.dayBefore(min) ||
         (max !== null && item.dayAfter(max)) ||
         disabledItemHandler(item);
-
-    private isMultiValue(day: any): day is readonly TuiDay[] | undefined {
-        return !(day instanceof TuiDay) && !(day instanceof TuiDayRange) && this.multi;
-    }
-
-    private isSingleValue(day: any): day is TuiDay {
-        return day instanceof TuiDay || (day instanceof TuiDayRange && !day.isSingleDay);
-    }
 
     private get initialYear(): number {
         if (!this.value) {
@@ -281,6 +273,14 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
             this.value.from.month +
             (this.value.from.year - STARTING_YEAR) * MONTHS_IN_YEAR
         );
+    }
+
+    private isMultiValue(day: any): day is readonly TuiDay[] | undefined {
+        return !(day instanceof TuiDay) && !(day instanceof TuiDayRange) && this.multi;
+    }
+
+    private isSingleValue(day: any): day is TuiDay {
+        return day instanceof TuiDay || (day instanceof TuiDayRange && !day.isSingleDay);
     }
 
     private getYearsViewportSize(): number {

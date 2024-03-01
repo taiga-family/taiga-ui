@@ -27,6 +27,12 @@ export class TuiItemsWithMoreService extends Observable<number> {
         super(subscriber => this.stream$.subscribe(subscriber));
     }
 
+    private get maxItems(): number {
+        return this.directive.itemsLimit > this.directive.required
+            ? this.directive.itemsLimit - 1
+            : this.directive.itemsLimit - 2;
+    }
+
     private getOverflowIndex(): number {
         const {clientWidth, children} = this.el;
         const items = Array.from(children, ({clientWidth}) => clientWidth);
@@ -55,11 +61,5 @@ export class TuiItemsWithMoreService extends Observable<number> {
         }
 
         return -1;
-    }
-
-    private get maxItems(): number {
-        return this.directive.itemsLimit > this.directive.required
-            ? this.directive.itemsLimit - 1
-            : this.directive.itemsLimit - 2;
     }
 }

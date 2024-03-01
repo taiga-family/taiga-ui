@@ -30,14 +30,14 @@ export class IconsGroupComponent implements OnInit {
     private readonly router = inject(Router);
     private readonly destroy$ = inject(TuiDestroyService, {self: true});
 
-    @ContentChild(IconsGroupDirective)
-    protected readonly iconGroup?: IconsGroupDirective;
-
     @Input()
     public icons: Record<string, readonly string[]> = {};
 
     @Input()
     public color: string | null = null;
+
+    @ContentChild(IconsGroupDirective)
+    protected readonly iconGroup?: IconsGroupDirective;
 
     protected matcher = TUI_DEFAULT_MATCHER;
 

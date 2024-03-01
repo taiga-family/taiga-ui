@@ -9,7 +9,10 @@ import {
 import {TUI_TABLE_PAGINATION_TEXTS} from '@taiga-ui/addon-table/tokens';
 import {TUI_COMMON_ICONS, TUI_SPIN_ICONS, TUI_SPIN_TEXTS} from '@taiga-ui/core';
 
-import {TUI_TABLE_PAGINATION_OPTIONS} from './table-pagination.options';
+import {
+    TUI_TABLE_PAGINATION_OPTIONS,
+    TuiTablePaginationOptions,
+} from './table-pagination.options';
 
 export interface TuiTablePagination {
     readonly page: number;
@@ -23,7 +26,7 @@ export interface TuiTablePagination {
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiTablePaginationComponent {
-    protected readonly options = inject(TUI_TABLE_PAGINATION_OPTIONS);
+    private readonly options = inject(TUI_TABLE_PAGINATION_OPTIONS);
 
     @Input()
     public items: readonly number[] = this.options.items;
@@ -61,8 +64,27 @@ export class TuiTablePaginationComponent {
     protected readonly texts$ = inject(TUI_TABLE_PAGINATION_TEXTS);
     protected readonly commonIcons = inject(TUI_COMMON_ICONS);
 
+    public onItem(size: number): void {
+        const {start} = this;
+
+        this.size = size;
+        this.sizeChange.emit(size);
+        this.open = false;
+        this.page = Math.floor(start / this.size);
+        this.pageChange.emit(this.page);
+        this.paginationChange.emit(this.pagination);
+    }
+
     protected get pages(): number {
         return Math.ceil(this.total / this.size);
+    }
+
+    protected get showPages(): boolean {
+        return this.options.showPages;
+    }
+
+    protected get sizeOptionContent(): TuiTablePaginationOptions['sizeOptionContent'] {
+        return this.options.sizeOptionContent;
     }
 
     protected get start(): number {
@@ -86,17 +108,6 @@ export class TuiTablePaginationComponent {
             page: this.page,
             size: this.size,
         };
-    }
-
-    public onItem(size: number): void {
-        const {start} = this;
-
-        this.size = size;
-        this.sizeChange.emit(size);
-        this.open = false;
-        this.page = Math.floor(start / this.size);
-        this.pageChange.emit(this.page);
-        this.paginationChange.emit(this.pagination);
     }
 
     protected back(): void {

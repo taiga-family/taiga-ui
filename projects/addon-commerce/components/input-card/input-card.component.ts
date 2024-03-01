@@ -42,11 +42,6 @@ export class TuiInputCardComponent extends AbstractTuiInputCard<string> {
         super(inject(TUI_INPUT_CARD_OPTIONS));
     }
 
-    @HostBinding('attr.data-size')
-    protected get size(): TuiSizeL | TuiSizeS {
-        return this.textfieldSize.size;
-    }
-
     public get card(): string {
         return this.value ?? '';
     }
@@ -86,6 +81,11 @@ export class TuiInputCardComponent extends AbstractTuiInputCard<string> {
         if (currentBin !== newBin) {
             this.binChange.emit(newBin);
         }
+    }
+
+    @HostBinding('attr.data-size')
+    protected get size(): TuiSizeL | TuiSizeS {
+        return this.textfieldSize.size;
     }
 
     protected override getFallbackValue(): string {

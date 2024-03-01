@@ -26,6 +26,8 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
     ],
 })
 export class ExampleTuiInputDateMultiComponent extends AbstractExampleTuiControl {
+    public control = new FormControl<TuiDay[]>([], Validators.required);
+
     protected readonly exampleForm = import('./examples/import/declare-form.md?raw');
     protected readonly exampleModule = import('./examples/import/import-module.md?raw');
     protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
@@ -72,6 +74,4 @@ export class ExampleTuiInputDateMultiComponent extends AbstractExampleTuiControl
     ];
 
     protected markerHandler: TuiMarkerHandler = this.markerHandlerVariants[0];
-
-    public control = new FormControl<TuiDay[]>([], Validators.required);
 }

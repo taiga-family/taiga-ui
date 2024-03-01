@@ -33,11 +33,6 @@ export class TuiCalendarComponent implements TuiWithOptionalMinMax<TuiDay> {
     private view: TuiCalendarView = 'month';
 
     @Input()
-    public set initialView(view: TuiCalendarView) {
-        this.view = view;
-    }
-
-    @Input()
     public month: TuiMonth = TuiMonth.currentLocal();
 
     @Input()
@@ -64,19 +59,6 @@ export class TuiCalendarComponent implements TuiWithOptionalMinMax<TuiDay> {
     @Input()
     public markerHandler: TuiMarkerHandler = TUI_DEFAULT_MARKER_HANDLER;
 
-    @Input()
-    public set value(value: TuiDay | TuiDayRange | readonly TuiDay[] | null) {
-        this.day = value;
-
-        if (this.showAdjacent && value instanceof TuiDay) {
-            this.month = value;
-        }
-    }
-
-    public get value(): TuiDay | TuiDayRange | readonly TuiDay[] | null {
-        return this.day;
-    }
-
     @Output()
     public readonly dayClick = new EventEmitter<TuiDay>();
 
@@ -86,15 +68,35 @@ export class TuiCalendarComponent implements TuiWithOptionalMinMax<TuiDay> {
     @Output()
     public readonly hoveredItemChange = new EventEmitter<TuiDay | null>();
 
-    protected get isInYearView(): boolean {
-        return this.view === 'year';
+    @Input()
+    public set value(value: TuiDay | TuiDayRange | readonly TuiDay[] | null) {
+        this.day = value;
+
+        if (this.showAdjacent && value instanceof TuiDay) {
+            this.month = value;
+        }
     }
 
-    protected readonly disabledItemHandlerMapper: TuiTypedMapper<
-        [TuiBooleanHandler<TuiDay>, TuiDay, TuiDay],
-        TuiBooleanHandler<TuiDay>
-    > = (disabledItemHandler, min, max) => item =>
-        item.dayBefore(min) || item.dayAfter(max) || disabledItemHandler(item);
+    @Input()
+    public set initialView(view: TuiCalendarView) {
+        this.view = view;
+    }
+
+    public get value(): TuiDay | TuiDayRange | readonly TuiDay[] | null {
+        return this.day;
+    }
+
+    public onPaginationValueChange(month: TuiMonth): void {
+        this.updateViewedMonth(month);
+    }
+
+    public onDayClick(day: TuiDay): void {
+        this.dayClick.emit(day);
+    }
+
+    public onHoveredItemChange(day: TuiDay | null): void {
+        this.updateHoveredDay(day);
+    }
 
     protected get computedMin(): TuiDay {
         return this.min ?? TUI_FIRST_DAY;
@@ -118,6 +120,16 @@ export class TuiCalendarComponent implements TuiWithOptionalMinMax<TuiDay> {
         return maxViewed.monthSameOrBefore(max) ? maxViewed : max;
     }
 
+    protected get isInYearView(): boolean {
+        return this.view === 'year';
+    }
+
+    protected readonly disabledItemHandlerMapper: TuiTypedMapper<
+        [TuiBooleanHandler<TuiDay>, TuiDay, TuiDay],
+        TuiBooleanHandler<TuiDay>
+    > = (disabledItemHandler, min, max) => item =>
+        item.dayBefore(min) || item.dayAfter(max) || disabledItemHandler(item);
+
     protected onPaginationYearClick(): void {
         this.view = 'year';
     }
@@ -125,18 +137,6 @@ export class TuiCalendarComponent implements TuiWithOptionalMinMax<TuiDay> {
     protected onPickerYearClick({year}: TuiYear): void {
         this.view = 'month';
         this.updateViewedMonth(new TuiMonth(year, this.month.month));
-    }
-
-    public onPaginationValueChange(month: TuiMonth): void {
-        this.updateViewedMonth(month);
-    }
-
-    public onDayClick(day: TuiDay): void {
-        this.dayClick.emit(day);
-    }
-
-    public onHoveredItemChange(day: TuiDay | null): void {
-        this.updateHoveredDay(day);
     }
 
     private updateViewedMonth(month: TuiMonth): void {

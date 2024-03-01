@@ -31,6 +31,13 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
 export class ExampleTuiInputDateTimeComponent extends AbstractExampleTuiControl {
     private readonly today = TuiDay.currentLocal();
 
+    public override cleaner = false;
+
+    public readonly control = new FormControl<[TuiDay | null, TuiTime | null] | null>(
+        null,
+        Validators.required,
+    );
+
     protected readonly exampleForm = import('./examples/import/declare-form.md?raw');
     protected readonly exampleModule = import('./examples/import/import-module.md?raw');
     protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
@@ -101,13 +108,6 @@ export class ExampleTuiInputDateTimeComponent extends AbstractExampleTuiControl 
     ];
 
     protected items = this.itemsVariants[0];
-
-    public override cleaner = false;
-
-    public readonly control = new FormControl<[TuiDay | null, TuiTime | null] | null>(
-        null,
-        Validators.required,
-    );
 
     protected readonly modeVariants: readonly TuiTimeMode[] = [
         'HH:MM',

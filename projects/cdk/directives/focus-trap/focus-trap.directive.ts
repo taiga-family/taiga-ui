@@ -35,6 +35,23 @@ export class TuiFocusTrapDirective implements OnDestroy {
         void Promise.resolve().then(() => this.el.focus());
     }
 
+    public ngOnDestroy(): void {
+        tuiBlurNativeFocused(this.doc);
+
+        /**
+         * HostListeners are triggered even after ngOnDestroy
+         * {@link https://github.com/angular/angular/issues/38100}
+         * so we need to delay it but stay in the same sync cycle,
+         * therefore using Promise instead of setTimeout
+         */
+        // eslint-disable-next-line
+        Promise.resolve().then(() => {
+            if (tuiIsHTMLElement(this.activeElement)) {
+                this.activeElement.focus();
+            }
+        });
+    }
+
     @HostListener('blur')
     protected onBlur(): void {
         this.renderer.removeAttribute(this.el, 'tabIndex');
@@ -54,22 +71,5 @@ export class TuiFocusTrapDirective implements OnDestroy {
         if (focusable) {
             focusable.focus();
         }
-    }
-
-    public ngOnDestroy(): void {
-        tuiBlurNativeFocused(this.doc);
-
-        /**
-         * HostListeners are triggered even after ngOnDestroy
-         * {@link https://github.com/angular/angular/issues/38100}
-         * so we need to delay it but stay in the same sync cycle,
-         * therefore using Promise instead of setTimeout
-         */
-        // eslint-disable-next-line
-        Promise.resolve().then(() => {
-            if (tuiIsHTMLElement(this.activeElement)) {
-                this.activeElement.focus();
-            }
-        });
     }
 }

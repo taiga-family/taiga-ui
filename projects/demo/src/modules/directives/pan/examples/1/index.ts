@@ -24,14 +24,14 @@ export class TuiPanExample1 {
         ),
     );
 
+    protected get currentCoords(): number[] {
+        return this.coordinates$.value;
+    }
+
     protected onPan(delta: readonly [number, number]): void {
         this.coordinates$.next([
             this.currentCoords[0] + delta[0],
             this.currentCoords[1] + delta[1],
         ]);
-    }
-
-    protected get currentCoords(): number[] {
-        return this.coordinates$.value;
     }
 }

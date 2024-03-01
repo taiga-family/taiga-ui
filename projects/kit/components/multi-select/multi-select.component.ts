@@ -123,9 +123,43 @@ export class TuiMultiSelectComponent<T>
     protected readonly datalist: PolymorpheusContent<TuiContext<TuiActiveZoneDirective>>;
 
     protected open = false;
-
     protected readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
     protected readonly isMobile: boolean = inject(TUI_IS_MOBILE);
+
+    public get nativeFocusableElement(): HTMLInputElement | null {
+        return this.input?.nativeFocusableElement ?? null;
+    }
+
+    public get focused(): boolean {
+        return !!this.input?.focused || !!this.hostedDropdown?.focused;
+    }
+
+    public onValueChange(value: readonly T[]): void {
+        this.value = value;
+    }
+
+    public onSearch(search: string | null): void {
+        // Clearing sets the empty value, the dropdown should not be opened on clear.
+        if (search !== '') {
+            this.hostedDropdown?.updateOpen(true);
+        }
+
+        this.updateSearch(search);
+    }
+
+    public override setDisabledState(): void {
+        super.setDisabledState();
+        this.hostedDropdown?.updateOpen(false);
+    }
+
+    public handleOption(option: T): void {
+        const {value, identityMatcher} = this;
+        const index = value.findIndex(item => identityMatcher(item, option));
+
+        this.value =
+            index === -1 ? [...value, option] : value.filter((_, i) => i !== index);
+        this.updateSearch(null);
+    }
 
     @HostBinding('attr.data-size')
     protected get size(): TuiSizeL | TuiSizeS {
@@ -136,14 +170,6 @@ export class TuiMultiSelectComponent<T>
         TuiContext<TuiSizeL | TuiSizeM | TuiSizeS>
     > {
         return this.interactive ? this.arrowMode.interactive : this.arrowMode.disabled;
-    }
-
-    public get nativeFocusableElement(): HTMLInputElement | null {
-        return this.input?.nativeFocusableElement ?? null;
-    }
-
-    public get focused(): boolean {
-        return !!this.input?.focused || !!this.hostedDropdown?.focused;
     }
 
     protected get nativeDropdownMode(): boolean {
@@ -202,15 +228,6 @@ export class TuiMultiSelectComponent<T>
         }
     }
 
-    public handleOption(option: T): void {
-        const {value, identityMatcher} = this;
-        const index = value.findIndex(item => identityMatcher(item, option));
-
-        this.value =
-            index === -1 ? [...value, option] : value.filter((_, i) => i !== index);
-        this.updateSearch(null);
-    }
-
     protected onEnter(event: Event): void {
         const {value} = this;
         const options = this.accessor ? this.accessor.getOptions() : [];
@@ -238,26 +255,8 @@ export class TuiMultiSelectComponent<T>
         this.value = value.map(({item}) => item);
     }
 
-    public onValueChange(value: readonly T[]): void {
-        this.value = value;
-    }
-
-    public onSearch(search: string | null): void {
-        // Clearing sets the empty value, the dropdown should not be opened on clear.
-        if (search !== '') {
-            this.hostedDropdown?.updateOpen(true);
-        }
-
-        this.updateSearch(search);
-    }
-
     protected onActiveZone(active: boolean): void {
         this.updateFocused(active);
-    }
-
-    public override setDisabledState(): void {
-        super.setDisabledState();
-        this.hostedDropdown?.updateOpen(false);
     }
 
     private updateSearch(search: string | null): void {

@@ -25,6 +25,21 @@ export class ExampleTuiInputComponent extends AbstractExampleTuiControl {
     @ViewChild('justLongText', {static: true})
     private readonly longTextRef!: TemplateRef<HTMLElement>;
 
+    public readonly iconVariants = ['', 'tuiIconSearchLarge', 'tuiIconCalendarLarge'];
+
+    public override iconLeft = this.iconVariants[0];
+
+    public readonly control = new FormControl('111', Validators.required);
+
+    public override readonly customContentVariants = [
+        '',
+        'tuiIconSearchLarge',
+        'tuiIconCalendarLarge',
+        'tuiIconVisaMono',
+        'tuiIconMastercardMono',
+        LONG_TEXT_TEMPLATE,
+    ];
+
     protected readonly exampleModule = import('./examples/import/import-module.md?raw');
 
     protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
@@ -87,23 +102,9 @@ export class ExampleTuiInputComponent extends AbstractExampleTuiControl {
         HTML: import('./examples/10/index.html?raw'),
     };
 
-    protected readonly iconVariants = ['', 'tuiIconSearchLarge', 'tuiIconCalendarLarge'];
-
     protected icon = this.iconVariants[0];
-    public override iconLeft = this.iconVariants[0];
-
-    public readonly control = new FormControl('111', Validators.required);
 
     protected placeholder = 'Field placeholder';
-
-    public override readonly customContentVariants = [
-        '',
-        'tuiIconSearchLarge',
-        'tuiIconCalendarLarge',
-        'tuiIconVisaMono',
-        'tuiIconMastercardMono',
-        LONG_TEXT_TEMPLATE,
-    ];
 
     public override get customContent(): PolymorpheusContent {
         return this.customContentSelected === LONG_TEXT_TEMPLATE

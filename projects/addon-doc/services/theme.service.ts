@@ -21,12 +21,12 @@ export class TuiThemeService extends BehaviorSubject<string> {
         super(storage.getItem(key) || initialTheme);
     }
 
+    public get isDefaultTheme(): boolean {
+        return this.value === TUI_THEME_DEFAULT_NAME;
+    }
+
     public override next(theme: string): void {
         this.storage.setItem(this.key, theme);
         super.next(theme);
-    }
-
-    public get isDefaultTheme(): boolean {
-        return this.value === TUI_THEME_DEFAULT_NAME;
     }
 }

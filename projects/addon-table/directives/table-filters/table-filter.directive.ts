@@ -19,14 +19,14 @@ export class TuiTableFilterDirective<T> implements OnInit, OnDestroy, TuiTableFi
     @Input()
     public tuiTableFilter?: keyof T;
 
-    protected readonly filters = inject(TuiTableFiltersDirective<T>);
-
     public readonly refresh$ = defer(() =>
         merge(
             this.control.valueChanges || EMPTY,
             this.control.statusChanges?.pipe(distinctUntilChanged()) || EMPTY,
         ),
     );
+
+    protected readonly filters = inject(TuiTableFiltersDirective<T>);
 
     public ngOnInit(): void {
         this.filters.register(this);

@@ -57,15 +57,10 @@ export class TuiInputComponent
 
     private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
 
-    @ContentChild(TuiDataListDirective, {read: TemplateRef})
-    protected readonly datalist: PolymorpheusContent<TuiContext<TuiActiveZoneDirective>>;
-
     public open = false;
 
-    @HostBinding('attr.data-size')
-    protected get size(): TuiSizeL | TuiSizeS {
-        return this.textfieldSize.size;
-    }
+    @ContentChild(TuiDataListDirective, {read: TemplateRef})
+    protected readonly datalist: PolymorpheusContent<TuiContext<TuiActiveZoneDirective>>;
 
     public get nativeFocusableElement(): HTMLInputElement | null {
         return this.computedDisabled || !this.textfield
@@ -80,8 +75,11 @@ export class TuiInputComponent
         );
     }
 
-    protected get canOpen(): boolean {
-        return this.interactive && !!this.datalist;
+    public handleOption(item: unknown): void {
+        this.setNativeValue(String(item));
+        this.focusInput();
+        this.value = String(item);
+        this.open = false;
     }
 
     public onValueChange(value: string): void {
@@ -89,15 +87,17 @@ export class TuiInputComponent
         this.open = true;
     }
 
-    protected onActiveZone(active: boolean): void {
-        this.updateFocused(active);
+    @HostBinding('attr.data-size')
+    protected get size(): TuiSizeL | TuiSizeS {
+        return this.textfieldSize.size;
     }
 
-    public handleOption(item: unknown): void {
-        this.setNativeValue(String(item));
-        this.focusInput();
-        this.value = String(item);
-        this.open = false;
+    protected get canOpen(): boolean {
+        return this.interactive && !!this.datalist;
+    }
+
+    protected onActiveZone(active: boolean): void {
+        this.updateFocused(active);
     }
 
     protected getFallbackValue(): string {

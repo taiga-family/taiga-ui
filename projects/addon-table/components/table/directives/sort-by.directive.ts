@@ -22,12 +22,6 @@ export class TuiSortByDirective<T extends Partial<Record<keyof T, any>>> {
 
     private readonly table = inject(TuiTableDirective<T>);
 
-    @Input('tuiSortBy')
-    public set sortBy(sortBy: string | keyof T | null) {
-        this.tuiSortBy = sortBy;
-        this.checkSortables();
-    }
-
     @Output()
     public readonly tuiSortByChange = this.table.sorterChange.pipe(
         // delay is for getting actual ContentChildren (sortables) https://github.com/angular/angular/issues/38976
@@ -37,6 +31,12 @@ export class TuiSortByDirective<T extends Partial<Record<keyof T, any>>> {
     );
 
     public tuiSortBy: string | keyof T | null = null;
+
+    @Input('tuiSortBy')
+    public set sortBy(sortBy: string | keyof T | null) {
+        this.tuiSortBy = sortBy;
+        this.checkSortables();
+    }
 
     protected checkSortables(): void {
         this.sortables.forEach(s => s.check());

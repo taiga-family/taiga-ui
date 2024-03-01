@@ -20,12 +20,6 @@ export class TuiLazyLoadingDirective {
     private readonly el: HTMLImageElement = inject(ElementRef).nativeElement;
     private readonly src$ = inject(TuiLazyLoadingService);
 
-    @Input('src')
-    public set srcSetter(src: SafeResourceUrl | string) {
-        this.src = this.supported ? src : null;
-        this.src$.next(src);
-    }
-
     @HostBinding('style.animation')
     protected animation = 'tuiSkeletonVibe ease-in-out 1s infinite alternate';
 
@@ -43,13 +37,19 @@ export class TuiLazyLoadingDirective {
         }
     }
 
-    private get supported(): boolean {
-        return 'loading' in this.el;
+    @Input('src')
+    public set srcSetter(src: SafeResourceUrl | string) {
+        this.src = this.supported ? src : null;
+        this.src$.next(src);
     }
 
     @HostListener('load')
     protected onLoad(): void {
         this.background = '';
         this.animation = '';
+    }
+
+    private get supported(): boolean {
+        return 'loading' in this.el;
     }
 }

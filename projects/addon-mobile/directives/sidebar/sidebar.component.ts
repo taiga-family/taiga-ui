@@ -29,6 +29,10 @@ export class TuiSidebarComponent implements DoCheck {
     private readonly left = {...this.options, value: 'left'};
     private readonly right = {...this.options, value: 'right'};
 
+    public ngDoCheck(): void {
+        this.directive.check();
+    }
+
     @HostBinding('@tuiSlideIn')
     protected get animation(): AnimationOptions {
         return this.direction === 'left' ? this.left : this.right;
@@ -49,9 +53,5 @@ export class TuiSidebarComponent implements DoCheck {
 
     protected get autoWidth(): boolean {
         return this.directive.autoWidth;
-    }
-
-    public ngDoCheck(): void {
-        this.directive.check();
     }
 }

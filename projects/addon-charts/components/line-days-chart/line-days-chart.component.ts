@@ -63,27 +63,6 @@ export class TuiLineDaysChartComponent implements AfterViewInit {
     @ViewChildren(TuiLineChartComponent)
     public readonly charts: QueryList<TuiLineChartComponent> = EMPTY_QUERY;
 
-    @Input('value')
-    public set valueSetter(value: ReadonlyArray<[TuiDay, number]>) {
-        if (!value.length) {
-            this.value = [];
-
-            return;
-        }
-
-        const start = value[0][0];
-        const mutable = [...value];
-        const length = TuiDay.lengthBetween(start, value[value.length - 1][0]) + 1;
-
-        this.value = Array.from({length}, (_, day) => {
-            const currentDay = start.append({day});
-            const shifted = currentDay.daySame(mutable[0][0]) ? mutable.shift() : null;
-            const currentValue = shifted ? shifted[1] : NaN;
-
-            return [currentDay, currentValue] as [TuiDay, number];
-        });
-    }
-
     @Input()
     public y = 0;
 
@@ -110,6 +89,59 @@ export class TuiLineDaysChartComponent implements AfterViewInit {
 
     public value: ReadonlyArray<[TuiDay, number]> = [];
 
+    @Input('value')
+    public set valueSetter(value: ReadonlyArray<[TuiDay, number]>) {
+        if (!value.length) {
+            this.value = [];
+
+            return;
+        }
+
+        const start = value[0][0];
+        const mutable = [...value];
+        const length = TuiDay.lengthBetween(start, value[value.length - 1][0]) + 1;
+
+        this.value = Array.from({length}, (_, day) => {
+            const currentDay = start.append({day});
+            const shifted = currentDay.daySame(mutable[0][0]) ? mutable.shift() : null;
+            const currentValue = shifted ? shifted[1] : NaN;
+
+            return [currentDay, currentValue] as [TuiDay, number];
+        });
+    }
+
+    public ngAfterViewInit(): void {
+        combineLatest([tuiLineChartDrivers(this.charts), this.hovered$])
+            .pipe(
+                filter(result => !result.some(Boolean)),
+                tuiZonefree(this.zone),
+                takeUntil(this.destroy$),
+            )
+            .subscribe(() => {
+                this.onHovered(NaN);
+            });
+    }
+
+    public onHovered(day: TuiDay | number): void {
+        if (tuiIsNumber(day)) {
+            this.charts.forEach(chart => chart.onHovered(NaN));
+
+            return;
+        }
+
+        const index = TuiMonth.lengthBetween(this.value[0][0], day);
+        const x = TuiDay.lengthBetween(this.value[0][0], day) + this.value[0][0].day - 1;
+        const current = this.charts.get(index);
+
+        this.charts.forEach(chart => {
+            if (chart === current) {
+                current.onHovered(current.value.findIndex(point => point[0] === x));
+            } else {
+                chart.onHovered(NaN);
+            }
+        });
+    }
+
     protected get months(): ReadonlyArray<readonly TuiPoint[]> {
         return this.value.length ? this.breakMonths(this.value) : EMPTY_ARRAY;
     }
@@ -132,18 +164,6 @@ export class TuiLineDaysChartComponent implements AfterViewInit {
         return value[x - value[0][0].day + 1];
     }
 
-    public ngAfterViewInit(): void {
-        combineLatest([tuiLineChartDrivers(this.charts), this.hovered$])
-            .pipe(
-                filter(result => !result.some(Boolean)),
-                tuiZonefree(this.zone),
-                takeUntil(this.destroy$),
-            )
-            .subscribe(() => {
-                this.onHovered(NaN);
-            });
-    }
-
     protected readonly daysStringify: TuiStringHandler<number> = index =>
         this.xStringify ? this.xStringify(this.getDay(index)) : '';
 
@@ -153,26 +173,6 @@ export class TuiLineDaysChartComponent implements AfterViewInit {
         const offset = months * current.daysCount;
 
         return index - offset;
-    }
-
-    public onHovered(day: TuiDay | number): void {
-        if (tuiIsNumber(day)) {
-            this.charts.forEach(chart => chart.onHovered(NaN));
-
-            return;
-        }
-
-        const index = TuiMonth.lengthBetween(this.value[0][0], day);
-        const x = TuiDay.lengthBetween(this.value[0][0], day) + this.value[0][0].day - 1;
-        const current = this.charts.get(index);
-
-        this.charts.forEach(chart => {
-            if (chart === current) {
-                current.onHovered(current.value.findIndex(point => point[0] === x));
-            } else {
-                chart.onHovered(NaN);
-            }
-        });
     }
 
     protected raise(index: number, {value}: TuiLineChartComponent): void {

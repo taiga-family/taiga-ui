@@ -14,6 +14,9 @@ export class TuiCheckedDirective {
     private indeterminate = false;
     private checked = false;
 
+    @Output()
+    public readonly tuiCheckedChange = new EventEmitter<boolean>();
+
     @HostBinding('checked')
     public get isChecked(): boolean {
         return this.checked;
@@ -29,9 +32,6 @@ export class TuiCheckedDirective {
         this.checked = checked || false;
         this.indeterminate = checked === null;
     }
-
-    @Output()
-    public readonly tuiCheckedChange = new EventEmitter<boolean>();
 
     @HostListener('change', ['$event.target'])
     public onChange({checked}: HTMLInputElement): void {

@@ -35,6 +35,8 @@ export class TuiSidebarDirective<T = Record<string, unknown>>
     @Input('tuiSidebarAutoWidth')
     public autoWidth = false;
 
+    public readonly content = inject(TemplateRef<T>);
+
     @Input()
     public set tuiSidebar(open: boolean) {
         if (open) {
@@ -43,8 +45,6 @@ export class TuiSidebarDirective<T = Record<string, unknown>>
             this.hide();
         }
     }
-
-    public readonly content = inject(TemplateRef<T>);
 
     public ngOnDestroy(): void {
         this.hide();

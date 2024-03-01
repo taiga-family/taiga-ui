@@ -44,7 +44,7 @@
         [appearance]="textfield.appearance"
         [disabled]="!canIncrement"
         [focusable]="false"
-        [icon]="options.icons.up"
+        [icon]="icons.up"
         (click.prevent)="onArrow(step)"
         (mousedown.prevent)="nativeFocusableElement?.focus()"
     >
@@ -58,7 +58,7 @@
         [appearance]="textfield.appearance"
         [disabled]="!canDecrement"
         [focusable]="false"
-        [icon]="options.icons.down"
+        [icon]="icons.down"
         (click.prevent)="onArrow(-step)"
         (mousedown.prevent)="nativeFocusableElement?.focus()"
     >

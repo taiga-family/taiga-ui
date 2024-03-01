@@ -33,6 +33,17 @@ const ONE_DOT: [string] = ['var(--tui-success-fill)'];
     ],
 })
 export class ExampleTuiInputDateRangeComponent extends AbstractExampleTuiControl {
+    public override cleaner = false;
+    public control = new FormControl<TuiDayRange | null>(null, Validators.required);
+
+    public override readonly maxLengthVariants: readonly TuiDayLike[] = [
+        {day: 5},
+        {month: 1},
+        {year: 1},
+    ];
+
+    public override maxLength: TuiDayLike | null = null;
+
     protected readonly exampleModule = import('./examples/import/import-module.md?raw');
     protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
     protected readonly exampleForm = import('./examples/import/declare-form.md?raw');
@@ -79,14 +90,6 @@ export class ExampleTuiInputDateRangeComponent extends AbstractExampleTuiControl
 
     protected minLength: TuiDayLike | null = null;
 
-    public override readonly maxLengthVariants: readonly TuiDayLike[] = [
-        {day: 5},
-        {month: 1},
-        {year: 1},
-    ];
-
-    public override maxLength: TuiDayLike | null = null;
-
     protected max = this.dayVariants[this.dayVariants.length - 1];
 
     protected readonly markerHandlerVariants: readonly TuiMarkerHandler[] = [
@@ -96,15 +99,11 @@ export class ExampleTuiInputDateRangeComponent extends AbstractExampleTuiControl
 
     protected markerHandler: TuiMarkerHandler = this.markerHandlerVariants[0];
 
-    public override cleaner = false;
-
     protected readonly disabledItemHandlerVariants: ReadonlyArray<
         TuiBooleanHandler<TuiDay>
     > = [ALWAYS_FALSE_HANDLER, ({day}) => day % 3 === 0];
 
     protected disabledItemHandler = this.disabledItemHandlerVariants[0];
-
-    public control = new FormControl<TuiDayRange | null>(null, Validators.required);
 
     protected readonly itemsVariants: ReadonlyArray<readonly TuiDayRangePeriod[]> = [
         [],

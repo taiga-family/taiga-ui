@@ -19,6 +19,10 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
     ],
 })
 export class ExampleTuiInputPhoneComponent extends AbstractExampleTuiControl {
+    public override cleaner = false;
+
+    public control = new FormControl('', [Validators.required, Validators.minLength(12)]);
+
     protected readonly exampleForm = import('./examples/import/declare-form.md?raw');
     protected readonly exampleModule = import('./examples/import/import-module.md?raw');
     protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
@@ -38,10 +42,6 @@ export class ExampleTuiInputPhoneComponent extends AbstractExampleTuiControl {
         HTML: import('./examples/3/index.html?raw'),
         LESS: import('./examples/3/index.less?raw'),
     };
-
-    public override cleaner = false;
-
-    public control = new FormControl('', [Validators.required, Validators.minLength(12)]);
 
     protected countryCodes = ['+7', '+850', '+1', '+52'];
 

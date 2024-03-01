@@ -59,11 +59,6 @@ export class TuiLineClampComponent implements DoCheck, AfterViewInit {
     private initialized = false;
 
     @Input()
-    public set linesLimit(linesLimit: number) {
-        this.linesLimit$.next(linesLimit);
-    }
-
-    @Input()
     public lineHeight = 24;
 
     @Input()
@@ -90,6 +85,20 @@ export class TuiLineClampComponent implements DoCheck, AfterViewInit {
         this.skipInitialTransition();
     }
 
+    @Input()
+    public set linesLimit(linesLimit: number) {
+        this.linesLimit$.next(linesLimit);
+    }
+
+    public ngDoCheck(): void {
+        this.update();
+        this.isOverflown$.next(this.overflown);
+    }
+
+    public ngAfterViewInit(): void {
+        this.initialized = true;
+    }
+
     protected get overflown(): boolean {
         if (!this.outlet) {
             return false;
@@ -109,15 +118,6 @@ export class TuiLineClampComponent implements DoCheck, AfterViewInit {
     @HostListener('transitionend')
     protected updateView(): void {
         this.cd.detectChanges();
-    }
-
-    public ngDoCheck(): void {
-        this.update();
-        this.isOverflown$.next(this.overflown);
-    }
-
-    public ngAfterViewInit(): void {
-        this.initialized = true;
     }
 
     private skipInitialTransition(): void {

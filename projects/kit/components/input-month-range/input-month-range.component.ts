@@ -75,27 +75,17 @@ export class TuiInputMonthRangeComponent
 
     protected readonly formatter = inject(TUI_MONTH_FORMATTER);
 
-    @HostBinding('attr.data-size')
-    protected get size(): TuiSizeL | TuiSizeS {
-        return this.textfieldSize.size;
-    }
-
     public get nativeFocusableElement(): HTMLInputElement | null {
         return this.textfield?.nativeFocusableElement ?? null;
-    }
-
-    protected get computedDefaultActiveYear(): TuiYear {
-        return (
-            this.value?.from || tuiDateClamp(this.defaultActiveYear, this.min, this.max)
-        );
     }
 
     public get focused(): boolean {
         return !!this.textfield?.focused;
     }
 
-    protected get calendarIcon(): TuiInputDateOptions['icon'] {
-        return this.options.icon;
+    public override setDisabledState(): void {
+        super.setDisabledState();
+        this.close();
     }
 
     public computeValue(from: string | null, to: string | null): string {
@@ -124,6 +114,21 @@ export class TuiInputMonthRangeComponent
         this.close();
     }
 
+    @HostBinding('attr.data-size')
+    protected get size(): TuiSizeL | TuiSizeS {
+        return this.textfieldSize.size;
+    }
+
+    protected get computedDefaultActiveYear(): TuiYear {
+        return (
+            this.value?.from || tuiDateClamp(this.defaultActiveYear, this.min, this.max)
+        );
+    }
+
+    protected get calendarIcon(): TuiInputDateOptions['icon'] {
+        return this.options.icon;
+    }
+
     protected onOpenChange(open: boolean): void {
         this.open = open;
     }
@@ -138,11 +143,6 @@ export class TuiInputMonthRangeComponent
         if (this.value?.isSingleMonth) {
             this.value = new TuiMonthRange(this.value.from, this.value.from);
         }
-    }
-
-    public override setDisabledState(): void {
-        super.setDisabledState();
-        this.close();
     }
 
     private close(): void {

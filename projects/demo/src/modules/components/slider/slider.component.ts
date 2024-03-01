@@ -18,20 +18,6 @@ export class ExampleTuiSliderComponent {
     protected size: TuiSizeS = this.sizeVariants[1];
     protected segments = this.max;
 
-    protected get disabled(): boolean {
-        return this.control.disabled;
-    }
-
-    protected set disabled(value: boolean) {
-        if (value) {
-            this.control.disable();
-
-            return;
-        }
-
-        this.control.enable();
-    }
-
     protected readonly exampleImportModule = import(
         './examples/import/import-module.md?raw'
     );
@@ -77,4 +63,18 @@ export class ExampleTuiSliderComponent {
         LESS: import('./examples/6/index.less?raw'),
         TypeScript: import('./examples/6/index.ts?raw'),
     };
+
+    protected get disabled(): boolean {
+        return this.control.disabled;
+    }
+
+    protected set disabled(value: boolean) {
+        if (value) {
+            this.control.disable();
+
+            return;
+        }
+
+        this.control.enable();
+    }
 }

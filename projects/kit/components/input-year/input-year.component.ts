@@ -58,10 +58,27 @@ export class TuiInputYearComponent
     @Input()
     public disabledItemHandler: TuiBooleanHandler<number> = ALWAYS_FALSE_HANDLER;
 
-    protected open = false;
     public nativeValue = '';
 
+    protected open = false;
     protected readonly initialItem = new Date().getFullYear();
+
+    public get nativeFocusableElement(): HTMLInputElement | null {
+        return this.textfield?.nativeFocusableElement || null;
+    }
+
+    public get focused(): boolean {
+        return !!this.textfield?.focused;
+    }
+
+    public onValueChange(value: string): void {
+        this.value = value ? Number(value) : null;
+    }
+
+    public override writeValue(value: number | null): void {
+        super.writeValue(value);
+        this.updateNativeValue(value);
+    }
 
     @HostBinding('attr.data-size')
     protected get size(): TuiSizeL | TuiSizeS {
@@ -74,14 +91,6 @@ export class TuiInputYearComponent
 
     protected get computedMax(): number {
         return this.max ?? this.options.max.year;
-    }
-
-    public get nativeFocusableElement(): HTMLInputElement | null {
-        return this.textfield?.nativeFocusableElement || null;
-    }
-
-    public get focused(): boolean {
-        return !!this.textfield?.focused;
     }
 
     protected get calendarIcon(): TuiInputDateOptions['icon'] {
@@ -100,10 +109,6 @@ export class TuiInputYearComponent
         };
     }
 
-    public onValueChange(value: string): void {
-        this.value = value ? Number(value) : null;
-    }
-
     protected onYearClick({year}: TuiYear): void {
         this.value = year;
         this.updateNativeValue(year);
@@ -120,11 +125,6 @@ export class TuiInputYearComponent
 
     protected toggle(): void {
         this.open = !this.open;
-    }
-
-    public override writeValue(value: number | null): void {
-        super.writeValue(value);
-        this.updateNativeValue(value);
     }
 
     private updateNativeValue(value: number | null): void {

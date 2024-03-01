@@ -21,16 +21,6 @@ export class TuiReorderComponent<T> {
     private dragging = false;
 
     @Input()
-    public set items(items: readonly T[]) {
-        if (
-            items.length !== this.unsortedItems.length ||
-            !items.every(item => this.unsortedItems.includes(item))
-        ) {
-            this.unsortedItems = items;
-        }
-    }
-
-    @Input()
     public enabled: readonly T[] = [];
 
     @Output()
@@ -40,11 +30,19 @@ export class TuiReorderComponent<T> {
     public readonly enabledChange = new EventEmitter<T[]>();
 
     protected order = new Map<number, number>();
-
     protected unsortedItems: readonly T[] = [];
-
     protected readonly options = inject(TUI_REORDER_OPTIONS);
     protected readonly showHideText$ = inject(TUI_TABLE_SHOW_HIDE_MESSAGE);
+
+    @Input()
+    public set items(items: readonly T[]) {
+        if (
+            items.length !== this.unsortedItems.length ||
+            !items.every(item => this.unsortedItems.includes(item))
+        ) {
+            this.unsortedItems = items;
+        }
+    }
 
     @HostListener('focusout.stop')
     protected noop(): void {}

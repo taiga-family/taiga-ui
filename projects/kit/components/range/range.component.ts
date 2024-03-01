@@ -67,6 +67,16 @@ export class TuiRangeComponent
 
     protected lastActiveThumb: 'left' | 'right' = 'right';
 
+    @HostBinding('style.--left.%')
+    public get left(): number {
+        return this.getPercentageFromValue(this.value[0]);
+    }
+
+    @HostBinding('style.--right.%')
+    public get right(): number {
+        return 100 - this.getPercentageFromValue(this.value[1]);
+    }
+
     public get nativeFocusableElement(): TuiNativeFocusableElement | null {
         const [sliderLeftRef, sliderRightRef] = this.slidersRefs;
 
@@ -90,6 +100,22 @@ export class TuiRangeComponent
         return tuiIsNativeFocusedIn(this.el);
     }
 
+    public processValue(value: number, right: boolean): void {
+        if (right) {
+            this.updateEnd(value);
+        } else {
+            this.updateStart(value);
+        }
+
+        this.lastActiveThumb = right ? 'right' : 'left';
+    }
+
+    public getValueFromFraction(fraction: number): number {
+        const guardedFraction = tuiClamp(tuiQuantize(fraction, this.fractionStep), 0, 1);
+
+        return tuiPercentageToKeyStepValue(guardedFraction * 100, this.computedKeySteps);
+    }
+
     protected get fractionStep(): number {
         return this.step / (this.max - this.min);
     }
@@ -100,16 +126,6 @@ export class TuiRangeComponent
 
     protected get segmentWidthRatio(): number {
         return 1 / this.segments;
-    }
-
-    @HostBinding('style.--left.%')
-    public get left(): number {
-        return this.getPercentageFromValue(this.value[0]);
-    }
-
-    @HostBinding('style.--right.%')
-    public get right(): number {
-        return 100 - this.getPercentageFromValue(this.value[1]);
     }
 
     @HostListener('focusin', ['true'])
@@ -142,22 +158,6 @@ export class TuiRangeComponent
         if (activeThumbElement) {
             activeThumbElement.focus();
         }
-    }
-
-    public processValue(value: number, right: boolean): void {
-        if (right) {
-            this.updateEnd(value);
-        } else {
-            this.updateStart(value);
-        }
-
-        this.lastActiveThumb = right ? 'right' : 'left';
-    }
-
-    public getValueFromFraction(fraction: number): number {
-        const guardedFraction = tuiClamp(tuiQuantize(fraction, this.fractionStep), 0, 1);
-
-        return tuiPercentageToKeyStepValue(guardedFraction * 100, this.computedKeySteps);
     }
 
     protected getPercentageFromValue(value: number): number {

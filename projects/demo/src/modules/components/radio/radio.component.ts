@@ -20,22 +20,7 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
     ],
 })
 export class ExampleTuiRadioComponent extends AbstractExampleTuiControl {
-    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
-    protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
-    protected readonly exampleForm = import('./examples/import/declare-form.md?raw');
-    protected readonly exampleOptions = import('./examples/import/define-options.md?raw');
-
-    protected readonly example1: TuiDocExample = {
-        TypeScript: import('./examples/1/index.ts?raw'),
-        HTML: import('./examples/1/index.html?raw'),
-    };
-
-    protected readonly example2: TuiDocExample = {
-        TypeScript: import('./examples/2/index.ts?raw'),
-        HTML: import('./examples/2/index.html?raw'),
-    };
-
-    protected items = [
+    public items = [
         {
             id: 0,
             value: 'One',
@@ -54,6 +39,23 @@ export class ExampleTuiRadioComponent extends AbstractExampleTuiControl {
 
     public override size: TuiSizeL = this.sizeVariants[0];
 
+    public control = new FormControl(this.items[1]);
+
+    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
+    protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    protected readonly exampleForm = import('./examples/import/declare-form.md?raw');
+    protected readonly exampleOptions = import('./examples/import/define-options.md?raw');
+
+    protected readonly example1: TuiDocExample = {
+        TypeScript: import('./examples/1/index.ts?raw'),
+        HTML: import('./examples/1/index.html?raw'),
+    };
+
+    protected readonly example2: TuiDocExample = {
+        TypeScript: import('./examples/2/index.ts?raw'),
+        HTML: import('./examples/2/index.html?raw'),
+    };
+
     protected pseudoDisabled = false;
 
     protected identityMatcherVariants: ReadonlyArray<
@@ -61,8 +63,6 @@ export class ExampleTuiRadioComponent extends AbstractExampleTuiControl {
     > = [TUI_DEFAULT_IDENTITY_MATCHER, (item1, item2) => item1.id === item2.id];
 
     protected identityMatcher = this.identityMatcherVariants[0];
-
-    public control = new FormControl(this.items[1]);
 
     protected onClick(): void {
         this.control.setValue({id: 0, value: 'One'});

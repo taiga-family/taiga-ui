@@ -18,6 +18,12 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
     ],
 })
 export class ExampleTuiInputPasswordComponent extends AbstractExampleTuiControl {
+    public override readonly maxLengthVariants: readonly number[] = [10];
+
+    public override maxLength = null;
+
+    public control = new FormControl('', Validators.required);
+
     protected readonly exampleForm = import('./examples/import/declare-form.md?raw');
     protected readonly exampleModule = import('./examples/import/import-module.md?raw');
     protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
@@ -32,10 +38,4 @@ export class ExampleTuiInputPasswordComponent extends AbstractExampleTuiControl 
         TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
     };
-
-    public override readonly maxLengthVariants: readonly number[] = [10];
-
-    public override maxLength = null;
-
-    public control = new FormControl('', Validators.required);
 }

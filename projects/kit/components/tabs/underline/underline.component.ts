@@ -40,11 +40,6 @@ export class TuiUnderlineComponent {
         share(),
     );
 
-    @Input()
-    public set element(element: HTMLElement | null) {
-        this.el$.next(element);
-    }
-
     @HostListener('$.style.transitionProperty')
     protected readonly transition$ = asCallable(
         this.el$.pipe(
@@ -73,5 +68,10 @@ export class TuiUnderlineComponent {
         (this.el as any)['$.style.transitionProperty'] = this.transition$;
         (this.el as any)['$.style.transform'] = this.transform$;
         (this.el as any)['$.style.width.px'] = this.width$;
+    }
+
+    @Input()
+    public set element(element: HTMLElement | null) {
+        this.el$.next(element);
     }
 }

@@ -48,17 +48,17 @@ export class TuiInputExpireComponent
         separator: '/',
     });
 
-    @HostBinding('attr.data-size')
-    protected get size(): TuiSizeL | TuiSizeS {
-        return this.textfieldSize.size;
-    }
-
     public get nativeFocusableElement(): HTMLInputElement | null {
         return this.input?.nativeFocusableElement ?? null;
     }
 
     public get focused(): boolean {
         return !!this.input && this.input.focused;
+    }
+
+    @HostBinding('attr.data-size')
+    protected get size(): TuiSizeL | TuiSizeS {
+        return this.textfieldSize.size;
     }
 
     protected get autocomplete(): TuiAutofillFieldName {

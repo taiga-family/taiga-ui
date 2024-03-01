@@ -43,6 +43,11 @@ export class TuiLoaderComponent {
     @Input()
     public textContent: PolymorpheusContent;
 
+    @HostBinding('class._loading')
+    protected loading = true;
+
+    protected readonly isApple = tuiIsSafari(this.el) || this.isIOS;
+
     @Input()
     public set showLoader(value: boolean) {
         // @bad TODO: https://github.com/angular/angular/issues/32083 think of a better way
@@ -52,11 +57,6 @@ export class TuiLoaderComponent {
 
         this.loading = value;
     }
-
-    @HostBinding('class._loading')
-    protected loading = true;
-
-    protected readonly isApple = tuiIsSafari(this.el) || this.isIOS;
 
     protected get hasOverlay(): boolean {
         return this.overlay && this.loading;

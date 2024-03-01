@@ -61,16 +61,6 @@ export class TuiDropdownDirective
     private readonly service = inject(TuiDropdownService);
     private readonly cdr = inject(ChangeDetectorRef);
 
-    @Input()
-    public set tuiDropdown(
-        content: PolymorpheusContent<TuiContext<TuiActiveZoneDirective>>,
-    ) {
-        this.content =
-            content instanceof TemplateRef
-                ? new PolymorpheusTemplate(content, this.cdr)
-                : content;
-    }
-
     public readonly el: HTMLElement = inject(ElementRef).nativeElement;
     public readonly type = 'dropdown';
     public readonly component = new PolymorpheusComponent(
@@ -87,6 +77,16 @@ export class TuiDropdownDirective
             this.dropdownBoxRef?.changeDetectorRef.detectChanges();
             this.dropdownBoxRef?.changeDetectorRef.markForCheck();
         });
+
+    @Input()
+    public set tuiDropdown(
+        content: PolymorpheusContent<TuiContext<TuiActiveZoneDirective>>,
+    ) {
+        this.content =
+            content instanceof TemplateRef
+                ? new PolymorpheusTemplate(content, this.cdr)
+                : content;
+    }
 
     @tuiPure
     public get position(): 'absolute' | 'fixed' {

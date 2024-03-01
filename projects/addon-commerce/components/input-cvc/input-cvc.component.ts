@@ -48,6 +48,12 @@ export class TuiInputCVCComponent
     @Input()
     public autocompleteEnabled = false;
 
+    public exampleText = '000';
+
+    public maskOptions: MaskitoOptions = {
+        mask: new Array(3).fill(TUI_DIGIT_REGEXP),
+    };
+
     @Input()
     public set length(length: TuiCodeCVCLength) {
         this.exampleText = '0'.repeat(length);
@@ -56,23 +62,17 @@ export class TuiInputCVCComponent
         };
     }
 
-    public exampleText = '000';
-
-    public maskOptions: MaskitoOptions = {
-        mask: new Array(3).fill(TUI_DIGIT_REGEXP),
-    };
-
-    @HostBinding('attr.data-size')
-    protected get size(): TuiSizeL | TuiSizeS {
-        return this.textfieldSize.size;
-    }
-
     public get nativeFocusableElement(): TuiNativeFocusableElement | null {
         return this.input?.nativeFocusableElement ?? null;
     }
 
     public get focused(): boolean {
         return !!this.input && this.input.focused;
+    }
+
+    @HostBinding('attr.data-size')
+    protected get size(): TuiSizeL | TuiSizeS {
+        return this.textfieldSize.size;
     }
 
     protected get autocomplete(): TuiAutofillFieldName {

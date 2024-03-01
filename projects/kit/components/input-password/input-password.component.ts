@@ -69,11 +69,6 @@ export class TuiInputPasswordComponent
     protected readonly options = inject(TUI_INPUT_PASSWORD_OPTIONS);
     protected readonly type!: TuiContext<TuiSizeL | TuiSizeS>;
 
-    @HostBinding('attr.data-size')
-    protected get size(): TuiSizeL | TuiSizeS {
-        return this.textfieldSize.size;
-    }
-
     public get nativeFocusableElement(): TuiNativeFocusableElement | null {
         return this.computedDisabled || !this.textfield
             ? null
@@ -84,16 +79,21 @@ export class TuiInputPasswordComponent
         return !!this.textfield?.focused;
     }
 
-    protected get icon(): PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeS>> {
-        return this.isPasswordHidden ? this.options.icons.show : this.options.icons.hide;
-    }
-
     public get inputType(): TuiInputType {
         return this.isPasswordHidden || !this.interactive ? 'password' : 'text';
     }
 
     public onValueChange(textValue: string): void {
         this.value = textValue;
+    }
+
+    @HostBinding('attr.data-size')
+    protected get size(): TuiSizeL | TuiSizeS {
+        return this.textfieldSize.size;
+    }
+
+    protected get icon(): PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeS>> {
+        return this.isPasswordHidden ? this.options.icons.show : this.options.icons.hide;
     }
 
     protected onFocused(focused: boolean): void {

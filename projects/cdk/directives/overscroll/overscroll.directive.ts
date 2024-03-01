@@ -74,13 +74,13 @@ export class TuiOverscrollDirective {
             .subscribe();
     }
 
-    protected get enabled(): boolean {
-        return this.mode !== 'none';
-    }
-
     @HostBinding('style.overscrollBehavior')
     protected get overscrollBehavior(): 'contain' | null {
         return this.enabled ? 'contain' : null;
+    }
+
+    protected get enabled(): boolean {
+        return this.mode !== 'none';
     }
 
     private processEvent(

@@ -48,6 +48,11 @@ export class ExampleTuiTableBarComponent implements OnDestroy {
 
     protected subscription = new Subscription();
 
+    public ngOnDestroy(): void {
+        this.destroy$.next();
+        this.destroy$.complete();
+    }
+
     protected showTableBar(): void {
         this.subscription.unsubscribe();
 
@@ -63,10 +68,5 @@ export class ExampleTuiTableBarComponent implements OnDestroy {
 
     protected destroy(): void {
         this.destroy$.next();
-    }
-
-    public ngOnDestroy(): void {
-        this.destroy$.next();
-        this.destroy$.complete();
     }
 }

@@ -21,6 +21,18 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
     ],
 })
 export class ExampleTuiInputSliderComponent extends AbstractExampleTuiControl {
+    public override readonly sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
+    public override size = this.sizeVariants[1];
+    public readonly control = new FormControl(0);
+
+    public override readonly customContentVariants: string[] = [
+        '',
+        'tuiIconVisaMono',
+        'tuiIconMastercardMono',
+    ];
+
+    public override customContentSelected = this.customContentVariants[0];
+
     protected readonly exampleModule = import('./examples/import/import-module.md?raw');
     protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 
@@ -53,8 +65,6 @@ export class ExampleTuiInputSliderComponent extends AbstractExampleTuiControl {
         LESS: import('./examples/5/index.less?raw'),
     };
 
-    public readonly control = new FormControl(0);
-
     protected readonly minVariants: readonly number[] = [0, 1, 5, 7.77, -10];
 
     protected min = this.minVariants[0];
@@ -72,10 +82,6 @@ export class ExampleTuiInputSliderComponent extends AbstractExampleTuiControl {
     ];
 
     protected quantum = this.quantumVariants[0];
-
-    public override readonly sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
-
-    public override size = this.sizeVariants[1];
 
     protected readonly valueContentVariants = [
         '',
@@ -96,12 +102,4 @@ export class ExampleTuiInputSliderComponent extends AbstractExampleTuiControl {
     ];
 
     protected keySteps: TuiKeySteps | null = null;
-
-    public override readonly customContentVariants: string[] = [
-        '',
-        'tuiIconVisaMono',
-        'tuiIconMastercardMono',
-    ];
-
-    public override customContentSelected = this.customContentVariants[0];
 }

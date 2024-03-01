@@ -45,14 +45,6 @@ export class TuiPrimitiveSpinButtonComponent extends AbstractTuiInteractive {
         return tuiIsNativeFocusedIn(this.el);
     }
 
-    protected get leftComputedDisabled(): boolean {
-        return this.computedDisabled || this.leftDisabled;
-    }
-
-    protected get rightComputedDisabled(): boolean {
-        return this.computedDisabled || this.rightDisabled;
-    }
-
     @HostListener('keydown.arrowLeft.prevent')
     public onLeftClick(): void {
         if (!this.leftComputedDisabled) {
@@ -71,6 +63,14 @@ export class TuiPrimitiveSpinButtonComponent extends AbstractTuiInteractive {
     @HostListener('focusout', ['false'])
     public onFocused(focused: boolean): void {
         this.updateFocused(focused);
+    }
+
+    protected get leftComputedDisabled(): boolean {
+        return this.computedDisabled || this.leftDisabled;
+    }
+
+    protected get rightComputedDisabled(): boolean {
+        return this.computedDisabled || this.rightDisabled;
     }
 
     protected onFocusVisible(focusVisible: boolean): void {

@@ -28,10 +28,11 @@ export class TuiRippleDirective {
     private readonly destroy$ = inject(TuiDestroyService, {self: true});
     private readonly start$ = inject(TUI_RIPPLE_START);
     private readonly end$ = inject(TUI_RIPPLE_END);
-    protected readonly nothing = tuiWithStyles(TuiRippleStylesComponent);
 
     @Input()
     public tuiRipple?: string | '';
+
+    protected readonly nothing = tuiWithStyles(TuiRippleStylesComponent);
 
     constructor() {
         const touchEnd$ = tuiTypedFromEvent(this.el, 'touchend');

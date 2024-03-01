@@ -50,15 +50,15 @@ export class TuiToggleComponent implements DoCheck {
 
     protected readonly control = inject(NgControl, {optional: true});
 
+    public ngDoCheck(): void {
+        this.appearance.tuiAppearance = this.options.appearance(this.el);
+    }
+
     @HostBinding('style.--t-mask')
     protected get icon(): string {
         const {options, resolver, size} = this;
         const icon = tuiIsString(options.icon) ? options.icon : options.icon(size);
 
         return `url(${resolver(icon)})`;
-    }
-
-    public ngDoCheck(): void {
-        this.appearance.tuiAppearance = this.options.appearance(this.el);
     }
 }

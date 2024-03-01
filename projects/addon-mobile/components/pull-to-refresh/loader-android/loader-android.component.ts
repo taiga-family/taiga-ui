@@ -23,22 +23,9 @@ export class TuiMobileLoaderAndroidComponent {
     private readonly context = inject<TuiContext<number>>(POLYMORPHEUS_CONTEXT);
     private readonly threshold = inject(TUI_PULL_TO_REFRESH_THRESHOLD);
 
-    protected get transform(): string {
-        const rotateX = Math.min(
-            ROTATE_X_DEFAULT + this.percent * ROTATE_X_MULTIPLIER,
-            ROTATE_X_MAX,
-        );
-
-        return `rotate(${rotateX} 0 0)`;
-    }
-
     @HostBinding('class._visible')
     protected get percent(): number {
         return (this.context.$implicit * 100) / this.threshold;
-    }
-
-    protected get opacity(): number {
-        return this.context.$implicit / (this.threshold * 1.5);
     }
 
     @HostBinding('class._dropped')
@@ -52,6 +39,19 @@ export class TuiMobileLoaderAndroidComponent {
     @HostBinding('style.transform')
     protected get hostTransform(): string {
         return `translateY(${Math.min(this.context.$implicit, this.threshold * 1.5)}px)`;
+    }
+
+    protected get opacity(): number {
+        return this.context.$implicit / (this.threshold * 1.5);
+    }
+
+    protected get transform(): string {
+        const rotateX = Math.min(
+            ROTATE_X_DEFAULT + this.percent * ROTATE_X_MULTIPLIER,
+            ROTATE_X_MAX,
+        );
+
+        return `rotate(${rotateX} 0 0)`;
     }
 }
 

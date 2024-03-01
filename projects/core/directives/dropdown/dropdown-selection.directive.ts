@@ -80,17 +80,17 @@ export class TuiDropdownSelectionDirective
     @Input('tuiDropdownSelectionPosition')
     public position: 'selection' | 'tag' | 'word' = 'selection';
 
+    public readonly type = 'dropdown';
+
+    constructor() {
+        super(subscriber => this.stream$.subscribe(subscriber));
+    }
+
     @Input()
     public set tuiDropdownSelection(visible: TuiBooleanHandler<Range> | string) {
         if (!tuiIsString(visible)) {
             this.handler$.next(visible);
         }
-    }
-
-    public readonly type = 'dropdown';
-
-    constructor() {
-        super(subscriber => this.stream$.subscribe(subscriber));
     }
 
     public getClientRect(): DOMRect {

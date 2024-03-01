@@ -60,13 +60,13 @@ export default class LandingComponent implements OnInit {
         await this.clearQueryParams();
     }
 
-    protected get hidden(): boolean {
-        return !!this.storage.getItem('env');
-    }
-
     @HostBinding('style.background')
     protected get background(): string {
         return this.current ? '#5f6ed0' : '#3dc67c';
+    }
+
+    protected get hidden(): boolean {
+        return !!this.storage.getItem('env');
     }
 
     protected onIntersection(

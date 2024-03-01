@@ -11,6 +11,12 @@ import {AbstractExampleTuiControl} from '../abstract/control';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ExampleTuiInputInlineComponent extends AbstractExampleTuiControl {
+    public control = new FormControl('111', Validators.required);
+
+    public override readonly maxLengthVariants: readonly number[] = [10];
+
+    public override maxLength: number | null = null;
+
     protected readonly exampleModule = import('./examples/import/import-module.md?raw');
 
     protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
@@ -32,10 +38,4 @@ export class ExampleTuiInputInlineComponent extends AbstractExampleTuiControl {
         HTML: import('./examples/3/template.html?raw'),
         LESS: import('./examples/3/style.less?raw'),
     };
-
-    public control = new FormControl('111', Validators.required);
-
-    public override readonly maxLengthVariants: readonly number[] = [10];
-
-    public override maxLength: number | null = null;
 }

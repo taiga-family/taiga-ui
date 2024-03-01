@@ -41,15 +41,6 @@ export abstract class AbstractTuiControl<T>
     private readonly ngControl = inject(NgControl, {optional: true});
     private previousInternalValue?: T | null;
     private readonly refresh$ = new Subject<void>();
-    private onTouched = EMPTY_FUNCTION;
-    private onChange = EMPTY_FUNCTION;
-    protected readonly fallbackValue = this.getFallbackValue();
-    protected readonly destroy$ = new Subject<void>();
-    protected readonly cdr = inject(ChangeDetectorRef);
-    protected readonly valueTransformer = inject<TuiControlValueTransformer<T>>(
-        AbstractTuiValueTransformer,
-        {optional: true},
-    );
 
     @Input()
     @HostBinding('class._readonly')
@@ -57,6 +48,16 @@ export abstract class AbstractTuiControl<T>
 
     @Input()
     public pseudoInvalid: boolean | null = null;
+
+    protected onTouched = EMPTY_FUNCTION;
+    protected onChange = EMPTY_FUNCTION;
+    protected readonly fallbackValue = this.getFallbackValue();
+    protected readonly destroy$ = new Subject<void>();
+    protected readonly cdr = inject(ChangeDetectorRef);
+    protected readonly valueTransformer = inject<TuiControlValueTransformer<T>>(
+        AbstractTuiValueTransformer,
+        {optional: true},
+    );
 
     constructor() {
         super();
@@ -133,21 +134,6 @@ export abstract class AbstractTuiControl<T>
         return this.ngControl?.name?.toString() ?? null;
     }
 
-    private get rawValue(): T | undefined {
-        const {ngControl} = this;
-
-        if (ngControl === null) {
-            return undefined;
-        }
-
-        const controlValue =
-            ngControl instanceof NgModel && this.previousInternalValue === undefined
-                ? ngControl.viewModel
-                : ngControl.value;
-
-        return this.fromControlValue(controlValue);
-    }
-
     public ngOnInit(): void {
         this.refresh$
             .pipe(
@@ -220,6 +206,21 @@ export abstract class AbstractTuiControl<T>
 
     protected valueIdenticalComparator(oldValue: T, newValue: T): boolean {
         return oldValue === newValue;
+    }
+
+    private get rawValue(): T | undefined {
+        const {ngControl} = this;
+
+        if (ngControl === null) {
+            return undefined;
+        }
+
+        const controlValue =
+            ngControl instanceof NgModel && this.previousInternalValue === undefined
+                ? ngControl.viewModel
+                : ngControl.value;
+
+        return this.fromControlValue(controlValue);
     }
 
     private safeNgControlData<T>(

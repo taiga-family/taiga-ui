@@ -1,6 +1,16 @@
 import {TuiTsParserException} from '@taiga-ui/cdk';
 
 export class TsFileParser {
+    constructor(protected rawFileContent: string) {
+        const classesInside = rawFileContent.match(/export class/gi) || [];
+
+        if (classesInside.length > 1) {
+            throw new TuiTsParserException();
+        }
+
+        this.replaceMetaAssets();
+    }
+
     public get className(): string {
         const [, className] = this.rawFileContent.match(/(?:export class\s)(\w*)/i) || [];
 
@@ -20,16 +30,6 @@ export class TsFileParser {
 
     public get hasNgComponent(): boolean {
         return this.rawFileContent.includes('@Component');
-    }
-
-    constructor(protected rawFileContent: string) {
-        const classesInside = rawFileContent.match(/export class/gi) || [];
-
-        if (classesInside.length > 1) {
-            throw new TuiTsParserException();
-        }
-
-        this.replaceMetaAssets();
     }
 
     public addImport(entity: string, packageOrPath: string): void {

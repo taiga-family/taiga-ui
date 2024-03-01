@@ -24,6 +24,19 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
     ],
 })
 export class ExampleTuiTextareaComponent extends AbstractExampleTuiControl {
+    public control = new FormControl('');
+
+    public override readonly maxLengthVariants: readonly number[] = [50, 100, 500];
+
+    public override maxLength: number | null = null;
+
+    public override readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeM> = [
+        'm',
+        'l',
+    ];
+
+    public override size: TuiSizeL | TuiSizeM = this.sizeVariants[1];
+
     protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
@@ -61,10 +74,6 @@ export class ExampleTuiTextareaComponent extends AbstractExampleTuiControl {
     protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
     protected readonly exampleForm = import('./examples/import/declare-form.md?raw');
 
-    public override readonly maxLengthVariants: readonly number[] = [50, 100, 500];
-
-    public override maxLength: number | null = null;
-
     protected readonly iconVariants = ['', 'tuiIconSearchLarge', 'tuiIconCalendarLarge'];
 
     protected icon = this.iconVariants[0];
@@ -74,15 +83,6 @@ export class ExampleTuiTextareaComponent extends AbstractExampleTuiControl {
     protected rows: number = this.rowsVariants[0];
 
     protected expandable = false;
-
-    public control = new FormControl('');
-
-    public override readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeM> = [
-        'm',
-        'l',
-    ];
-
-    public override size: TuiSizeL | TuiSizeM = this.sizeVariants[1];
 
     protected placeholder = 'Placeholder';
 }

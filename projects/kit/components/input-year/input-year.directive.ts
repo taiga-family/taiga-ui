@@ -8,13 +8,13 @@ import {TuiInputYearComponent} from './input-year.component';
     providers: [tuiAsTextfieldHost(TuiInputYearDirective)],
 })
 export class TuiInputYearDirective extends AbstractTuiTextfieldHost<TuiInputYearComponent> {
+    public override get value(): string {
+        return this.host.nativeValue;
+    }
+
     public onValueChange(value: string): void {
         this.host.onValueChange(value);
         this.host.nativeValue = value;
-    }
-
-    public override get value(): string {
-        return this.host.nativeValue;
     }
 
     public override process(input: HTMLInputElement): void {

@@ -129,9 +129,6 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
         )
         .pipe(map(([visible, hovered]) => visible && hovered));
 
-    @ViewChild(TuiActiveZoneDirective)
-    protected readonly activeZone!: TuiActiveZoneDirective;
-
     @Input()
     public content: PolymorpheusContent<TuiHostedDropdownContext>;
 
@@ -152,11 +149,13 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
     @Output()
     public readonly focusedChange = new EventEmitter<boolean>();
 
-    protected readonly focus$ = new BehaviorSubject(false);
-
     /** TODO: rename in 4.0 */
     public readonly openChange = this.openChange$;
 
+    @ViewChild(TuiActiveZoneDirective)
+    protected readonly activeZone!: TuiActiveZoneDirective;
+
+    protected readonly focus$ = new BehaviorSubject(false);
     protected readonly context!: TuiContext<TuiActiveZoneDirective>;
 
     @Input()
@@ -166,22 +165,6 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
 
     public get open(): boolean {
         return this.openChange.value;
-    }
-
-    protected get host(): HTMLElement {
-        return this.dropdownHost?.nativeElement || this.el;
-    }
-
-    protected get computedHost(): HTMLElement {
-        return (
-            this.dropdownHost?.nativeElement ||
-            (this.nativeFocusableElement as HTMLElement) ||
-            this.el
-        );
-    }
-
-    protected get dropdown(): HTMLElement | undefined {
-        return this.dropdownDirective?.dropdownBoxRef?.location.nativeElement;
     }
 
     public get nativeFocusableElement(): TuiNativeFocusableElement | null {
@@ -200,6 +183,30 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
                 !!this.wrapper &&
                 tuiIsNativeFocusedIn(this.wrapper.nativeElement))
         );
+    }
+
+    public updateOpen(open: boolean): void {
+        if (!open || this.canOpen) {
+            this.open = open;
+        }
+    }
+
+    public readonly close = (): void => this.updateOpen(false);
+
+    protected get host(): HTMLElement {
+        return this.dropdownHost?.nativeElement || this.el;
+    }
+
+    protected get computedHost(): HTMLElement {
+        return (
+            this.dropdownHost?.nativeElement ||
+            (this.nativeFocusableElement as HTMLElement) ||
+            this.el
+        );
+    }
+
+    protected get dropdown(): HTMLElement | undefined {
+        return this.dropdownDirective?.dropdownBoxRef?.location.nativeElement;
     }
 
     @HostListener('focusin.capture.silent')
@@ -264,14 +271,6 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
             this.closeDropdown();
         }
     }
-
-    public updateOpen(open: boolean): void {
-        if (!open || this.canOpen) {
-            this.open = open;
-        }
-    }
-
-    public readonly close = (): void => this.updateOpen(false);
 
     private get hostEditable(): boolean {
         return tuiIsElementEditable(this.computedHost);

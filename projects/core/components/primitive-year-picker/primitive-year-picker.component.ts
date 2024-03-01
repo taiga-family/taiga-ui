@@ -52,51 +52,6 @@ export class TuiPrimitiveYearPickerComponent {
     @Output()
     public readonly yearClick = new EventEmitter<TuiYear>();
 
-    protected get computedMin(): TuiYear {
-        return this.min ?? TUI_FIRST_DAY;
-    }
-
-    protected get computedMax(): TuiYear {
-        return this.max ?? TUI_LAST_DAY;
-    }
-
-    @HostBinding('class._single')
-    protected get isSingle(): boolean {
-        return this.isRange(this.value) && this.value.from.yearSame(this.value.to);
-    }
-
-    protected get rows(): number {
-        return Math.ceil((this.calculatedMax - this.calculatedMin) / ITEMS_IN_ROW);
-    }
-
-    protected get calculatedMin(): number {
-        const initial = this.initialItem.year - LIMIT;
-        const min = this.computedMin;
-
-        return min.year > initial ? min.year : initial;
-    }
-
-    protected get calculatedMax(): number {
-        const initial = this.initialItem.year + LIMIT;
-        const max = this.computedMax;
-
-        return max.year < initial ? max.year + 1 : initial;
-    }
-
-    protected isRange(
-        item: TuiMonthRange | TuiYear | readonly TuiDay[] | null,
-    ): item is TuiMonthRange {
-        return item instanceof TuiMonthRange;
-    }
-
-    protected scrollItemIntoView(item: number): boolean {
-        return this.initialItem.year === item;
-    }
-
-    protected getItem(rowIndex: number, colIndex: number): number {
-        return rowIndex * ITEMS_IN_ROW + colIndex + this.calculatedMin;
-    }
-
     public getItemState(item: number): TuiInteractiveState | null {
         const {disabledItemHandler, pressedItem, hoveredItem} = this;
         const max = this.computedMax;
@@ -167,10 +122,6 @@ export class TuiPrimitiveYearPickerComponent {
             : null;
     }
 
-    protected itemIsToday(item: number): boolean {
-        return this.currentYear === item;
-    }
-
     public itemIsInterval(item: number): boolean {
         const {value, hoveredItem} = this;
 
@@ -203,6 +154,55 @@ export class TuiPrimitiveYearPickerComponent {
 
     public onItemClick(item: number): void {
         this.yearClick.emit(new TuiYear(item));
+    }
+
+    @HostBinding('class._single')
+    protected get isSingle(): boolean {
+        return this.isRange(this.value) && this.value.from.yearSame(this.value.to);
+    }
+
+    protected get computedMin(): TuiYear {
+        return this.min ?? TUI_FIRST_DAY;
+    }
+
+    protected get computedMax(): TuiYear {
+        return this.max ?? TUI_LAST_DAY;
+    }
+
+    protected get rows(): number {
+        return Math.ceil((this.calculatedMax - this.calculatedMin) / ITEMS_IN_ROW);
+    }
+
+    protected get calculatedMin(): number {
+        const initial = this.initialItem.year - LIMIT;
+        const min = this.computedMin;
+
+        return min.year > initial ? min.year : initial;
+    }
+
+    protected get calculatedMax(): number {
+        const initial = this.initialItem.year + LIMIT;
+        const max = this.computedMax;
+
+        return max.year < initial ? max.year + 1 : initial;
+    }
+
+    protected isRange(
+        item: TuiMonthRange | TuiYear | readonly TuiDay[] | null,
+    ): item is TuiMonthRange {
+        return item instanceof TuiMonthRange;
+    }
+
+    protected scrollItemIntoView(item: number): boolean {
+        return this.initialItem.year === item;
+    }
+
+    protected getItem(rowIndex: number, colIndex: number): number {
+        return rowIndex * ITEMS_IN_ROW + colIndex + this.calculatedMin;
+    }
+
+    protected itemIsToday(item: number): boolean {
+        return this.currentYear === item;
     }
 
     private updateHoveredItem(hovered: boolean, item: number): void {

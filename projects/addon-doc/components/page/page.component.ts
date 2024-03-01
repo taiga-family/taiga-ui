@@ -40,12 +40,12 @@ export class TuiDocPageComponent {
         EMPTY_QUERY;
 
     public activeItemIndex = 0;
+    public readonly seeAlso = inject(PAGE_SEE_ALSO);
 
     protected readonly from = / /g;
     protected readonly to = '_';
 
     protected readonly defaultTabs = inject(TUI_DOC_DEFAULT_TABS);
-    public readonly seeAlso = inject(PAGE_SEE_ALSO);
 
     public get showSeeAlso(): boolean {
         return !!this.seeAlso.length && this.activeItemIndex === 0;

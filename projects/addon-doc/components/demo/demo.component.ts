@@ -69,6 +69,9 @@ export class TuiDocDemoComponent implements OnInit {
     @HostBinding('class._sticky')
     public sticky = true;
 
+    public mode: TuiBrightness | null = this.params.tuiMode || null;
+    public readonly change$ = new Subject<void>();
+
     @ContentChild(TemplateRef)
     protected readonly template: TemplateRef<Record<string, unknown>> | null = null;
 
@@ -81,14 +84,16 @@ export class TuiDocDemoComponent implements OnInit {
 
     protected opaque = tuiCoerceValueIsTrue(this.params.sandboxOpaque ?? true);
     protected expanded = tuiCoerceValueIsTrue(this.params.sandboxExpanded ?? false);
-    public mode: TuiBrightness | null = this.params.tuiMode || null;
     protected sandboxWidth = tuiToInteger(this.params.sandboxWidth);
-
-    public readonly change$ = new Subject<void>();
     protected readonly items: readonly TuiBrightness[] = ['onLight', 'onDark'];
     protected readonly options = inject(TUI_ARROW_OPTIONS);
     protected readonly isMobile = inject(TUI_IS_MOBILE);
     protected readonly texts = inject(TUI_DOC_DEMO_TEXTS);
+
+    public ngOnInit(): void {
+        this.createForm();
+        this.updateWidth(this.sandboxWidth + this.delta);
+    }
 
     @HostListener('window:resize')
     protected onResize(): void {
@@ -99,11 +104,6 @@ export class TuiDocDemoComponent implements OnInit {
     @HostListener('document:mouseup.silent')
     protected onMouseUp(): void {
         this.updateUrl({sandboxWidth: this.sandboxWidth});
-    }
-
-    public ngOnInit(): void {
-        this.createForm();
-        this.updateWidth(this.sandboxWidth + this.delta);
     }
 
     protected onModeChange(mode: TuiBrightness | null): void {
@@ -150,6 +150,10 @@ export class TuiDocDemoComponent implements OnInit {
             : 0;
     }
 
+    private get params(): Params | TuiDemoParams {
+        return this.getUrlTree().queryParams;
+    }
+
     @tuiPure
     private updateUrl(params: TuiDemoParams): void {
         const tree = this.getUrlTree();
@@ -176,9 +180,5 @@ export class TuiDocDemoComponent implements OnInit {
 
     private getUrlTree(): UrlTree {
         return this.urlSerializer.parse(this.locationRef.path());
-    }
-
-    private get params(): Params | TuiDemoParams {
-        return this.getUrlTree().queryParams;
     }
 }

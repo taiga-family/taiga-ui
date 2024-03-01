@@ -49,10 +49,6 @@ export class TuiFieldErrorPipe implements PipeTransform, ControlValueAccessor {
         return this.computedError;
     }
 
-    protected get computedError(): Observable<TuiValidationError | null> {
-        return (this.invalid && this.touched && this.error) || of(null);
-    }
-
     public registerOnChange(): void {}
 
     public registerOnTouched(): void {}
@@ -60,6 +56,10 @@ export class TuiFieldErrorPipe implements PipeTransform, ControlValueAccessor {
     public setDisabledState(): void {}
 
     public writeValue(): void {}
+
+    protected get computedError(): Observable<TuiValidationError | null> {
+        return (this.invalid && this.touched && this.error) || of(null);
+    }
 
     private get error(): Observable<TuiValidationError> | null {
         const {errorId} = this;
@@ -95,17 +95,6 @@ export class TuiFieldErrorPipe implements PipeTransform, ControlValueAccessor {
     }
 
     @tuiPure
-    private getErrorId(
-        order: readonly string[],
-        controlErrors: Record<string, unknown>,
-    ): string {
-        const id = order?.find(errorId => controlErrors[errorId]);
-        const fallback = Object.keys(controlErrors)[0];
-
-        return id || fallback || '';
-    }
-
-    @tuiPure
     private getError(
         context: any,
         content?: Observable<PolymorpheusContent> | PolymorpheusContent,
@@ -133,5 +122,16 @@ export class TuiFieldErrorPipe implements PipeTransform, ControlValueAccessor {
         }
 
         return defaultError(content, context);
+    }
+
+    @tuiPure
+    private getErrorId(
+        order: readonly string[],
+        controlErrors: Record<string, unknown>,
+    ): string {
+        const id = order?.find(errorId => controlErrors[errorId]);
+        const fallback = Object.keys(controlErrors)[0];
+
+        return id || fallback || '';
     }
 }

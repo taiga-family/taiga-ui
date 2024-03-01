@@ -21,6 +21,12 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
     ],
 })
 export class ExampleTuiInputRangeComponent extends AbstractExampleTuiControl {
+    public control = new FormControl([0, 10]);
+
+    public override sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
+
+    public override size = this.sizeVariants[1];
+
     protected readonly exampleModule = import('./examples/import/import-module.md?raw');
     protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 
@@ -57,8 +63,6 @@ export class ExampleTuiInputRangeComponent extends AbstractExampleTuiControl {
         'transformer.ts': import('./examples/6/transformer.ts?raw'),
     };
 
-    public control = new FormControl([0, 10]);
-
     protected minVariants: readonly number[] = [0, 5, 7.77, -10];
 
     protected min = this.minVariants[0];
@@ -74,10 +78,6 @@ export class ExampleTuiInputRangeComponent extends AbstractExampleTuiControl {
     protected quantumVariants: readonly number[] = [1, 0.001, 10, 100];
 
     protected quantum = this.quantumVariants[0];
-
-    public override sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
-
-    public override size = this.sizeVariants[1];
 
     protected readonly pluralizeVariants: ReadonlyArray<Record<string, string>> = [
         {one: 'thing', few: 'things', many: 'things', other: 'things'},

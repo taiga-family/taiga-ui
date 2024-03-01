@@ -72,6 +72,11 @@ export class TuiOptionComponent<T = unknown> implements OnDestroy {
 
     protected readonly icons = inject(TUI_COMMON_ICONS);
 
+    // Preventing focus loss upon focused option removal
+    public ngOnDestroy(): void {
+        this.dataList?.handleFocusLossIfNecessary(this.el);
+    }
+
     @HostBinding('class._with-dropdown')
     protected get active(): boolean {
         return !!this.dropdown && !!this.dropdown.dropdownBoxRef;
@@ -89,10 +94,5 @@ export class TuiOptionComponent<T = unknown> implements OnDestroy {
     @HostListener('mousemove.silent', ['$event'])
     protected onMouseMove({currentTarget}: TuiEventWith<MouseEvent, HTMLElement>): void {
         currentTarget.focus({preventScroll: true});
-    }
-
-    // Preventing focus loss upon focused option removal
-    public ngOnDestroy(): void {
-        this.dataList?.handleFocusLossIfNecessary(this.el);
     }
 }

@@ -20,11 +20,6 @@ export class TuiPushAlertDirective extends PolymorpheusTemplate {
     private readonly push: TuiPushService = inject(forwardRef(() => TuiPushService));
     private readonly show$ = new Subject<boolean>();
 
-    @Input()
-    public set tuiPush(show: boolean) {
-        this.show$.next(show);
-    }
-
     constructor() {
         super(inject(TemplateRef), inject(ChangeDetectorRef));
 
@@ -34,5 +29,10 @@ export class TuiPushAlertDirective extends PolymorpheusTemplate {
                 takeUntil(inject(TuiDestroyService, {self: true})),
             )
             .subscribe();
+    }
+
+    @Input()
+    public set tuiPush(show: boolean) {
+        this.show$.next(show);
     }
 }

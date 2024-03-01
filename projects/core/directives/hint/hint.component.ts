@@ -71,7 +71,6 @@ export class TuiHintComponent<C = any> {
     private readonly mode = inject(TuiModeDirective, {optional: true});
     private readonly visualViewportService = inject(TuiVisualViewportService);
     private readonly viewport = inject(TUI_VIEWPORT);
-    protected readonly accessor = inject(TuiRectAccessor);
 
     @HostBinding('attr.data-appearance')
     protected readonly appearance =
@@ -79,6 +78,7 @@ export class TuiHintComponent<C = any> {
 
     protected readonly options = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
     protected readonly pointer = inject(TuiHintPointerDirective, {optional: true});
+    protected readonly accessor = inject(TuiRectAccessor);
 
     constructor() {
         inject(TuiPositionService)

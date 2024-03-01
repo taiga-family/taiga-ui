@@ -94,6 +94,11 @@ export class TuiAccordionItemComponent
         return tuiIsNativeFocused(this.nativeFocusableElement);
     }
 
+    public close(): void {
+        this.updateOpen(false);
+        this.cdr.markForCheck();
+    }
+
     protected onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
@@ -115,11 +120,6 @@ export class TuiAccordionItemComponent
 
         event.stopPropagation();
         this.updateOpen(false);
-    }
-
-    public close(): void {
-        this.updateOpen(false);
-        this.cdr.markForCheck();
     }
 
     private updateOpen(open: boolean): void {

@@ -39,9 +39,9 @@ export class TuiToggleComponent
     @ViewChild('focusableElement')
     private readonly focusableElement?: ElementRef<TuiNativeFocusableElement>;
 
-    private readonly modeDirective = inject(TuiModeDirective, {optional: true});
+    private readonly options = inject(TUI_TOGGLE_OPTIONS);
 
-    protected readonly options = inject(TUI_TOGGLE_OPTIONS);
+    private readonly modeDirective = inject(TuiModeDirective, {optional: true});
 
     @Input()
     public singleColor = this.options.singleColor;
@@ -56,20 +56,25 @@ export class TuiToggleComponent
     @HostBinding('attr.data-size')
     public size: TuiSizeL = this.options.size;
 
-    protected get iconOn(): PolymorpheusContent<TuiContext<TuiSizeL>> {
-        return this.options.icons.toggleOn;
-    }
-
-    protected get iconOff(): PolymorpheusContent<TuiContext<TuiSizeL>> {
-        return this.options.icons.toggleOff;
-    }
-
     public get nativeFocusableElement(): TuiNativeFocusableElement | null {
         return this.focusableElement?.nativeElement ?? null;
     }
 
     public get focused(): boolean {
         return tuiIsNativeFocused(this.nativeFocusableElement);
+    }
+
+    @HostBinding('attr.data-mode')
+    protected get hostMode(): TuiBrightness | null {
+        return this.modeDirective?.mode ?? null;
+    }
+
+    protected get iconOn(): PolymorpheusContent<TuiContext<TuiSizeL>> {
+        return this.options.icons.toggleOn;
+    }
+
+    protected get iconOff(): PolymorpheusContent<TuiContext<TuiSizeL>> {
+        return this.options.icons.toggleOff;
     }
 
     protected get appearance(): string {
@@ -84,11 +89,6 @@ export class TuiToggleComponent
 
     protected get loaderSize(): TuiSizeXS {
         return this.sizeM ? 'xs' : 's';
-    }
-
-    @HostBinding('attr.data-mode')
-    protected get hostMode(): TuiBrightness | null {
-        return this.modeDirective?.mode ?? null;
     }
 
     /** @deprecated use 'value' setter */

@@ -54,23 +54,24 @@ export class TuiInputFilesDirective
     );
 
     public readonly appearance = 'file';
-    protected readonly host = inject(forwardRef(() => TuiInputFilesComponent));
     public readonly input: HTMLInputElement = inject(ElementRef).nativeElement;
+
+    protected readonly host = inject(forwardRef(() => TuiInputFilesComponent));
 
     public get focused(): boolean {
         return tuiIsNativeFocused(this.input);
-    }
-
-    protected onClick(event: MouseEvent): void {
-        if (this.input.readOnly) {
-            event.preventDefault();
-        }
     }
 
     public process(files: FileList): void {
         this.value = this.input.multiple
             ? [...toArray(this.value), ...Array.from(files)]
             : files[0] || null;
+    }
+
+    protected onClick(event: MouseEvent): void {
+        if (this.input.readOnly) {
+            event.preventDefault();
+        }
     }
 }
 

@@ -60,15 +60,15 @@ export class TuiLinkComponent implements TuiFocusableElementAccessor {
     @HostBinding('attr.data-host-mode')
     public mode: 'negative' | 'positive' | null = null;
 
-    @HostBinding('class._focus-visible')
-    protected focusVisible = false;
-
-    protected readonly mode$ = inject(TUI_MODE);
-
     public readonly focusedChange = merge(
         tuiTypedFromEvent(this.el, 'focusin').pipe(map(ALWAYS_TRUE_HANDLER)),
         tuiTypedFromEvent(this.el, 'focusout').pipe(map(ALWAYS_FALSE_HANDLER)),
     );
+
+    @HostBinding('class._focus-visible')
+    protected focusVisible = false;
+
+    protected readonly mode$ = inject(TUI_MODE);
 
     constructor() {
         inject(TuiFocusVisibleService).subscribe(visible => {

@@ -41,13 +41,14 @@ export class TuiValueDecorationComponent implements DoCheck {
         distinctUntilChanged(),
     );
 
+    @HostListener('animationstart')
+    public ngDoCheck(): void {
+        this.prefix$.next(this.prefix);
+    }
+
     @HostBinding('class._table')
     protected get isContextTable(): boolean {
         return this.textfield.appearance === TuiAppearance.Table;
-    }
-
-    protected get value(): string {
-        return this.textfield.value;
     }
 
     @HostBinding('class._filler')
@@ -61,17 +62,16 @@ export class TuiValueDecorationComponent implements DoCheck {
         return focused ? exampleText || textfield.filler.slice(value.length) : '';
     }
 
+    protected get value(): string {
+        return this.textfield.value;
+    }
+
     protected get prefix(): string {
         return this.decorationsVisible ? this.textfield.prefix : '';
     }
 
     protected get postfix(): string {
         return this.decorationsVisible ? this.computedPostfix : '';
-    }
-
-    @HostListener('animationstart')
-    public ngDoCheck(): void {
-        this.prefix$.next(this.prefix);
     }
 
     private get placeholder(): string {

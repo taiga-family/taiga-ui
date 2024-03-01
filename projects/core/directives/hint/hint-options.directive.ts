@@ -58,7 +58,7 @@ export class TuiHintOptionsDirective
     extends AbstractTuiController
     implements TuiHintOptions
 {
-    protected readonly options = inject(TUI_HINT_OPTIONS, {skipSelf: true});
+    private readonly options = inject(TUI_HINT_OPTIONS, {skipSelf: true});
 
     @Input('tuiHintContent')
     public content: PolymorpheusContent;

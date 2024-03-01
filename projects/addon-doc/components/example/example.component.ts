@@ -36,7 +36,6 @@ export class TuiDocExampleComponent {
     private readonly copyTexts$ = inject(TUI_COPY_TEXTS);
     private readonly processContent = inject(TUI_DOC_EXAMPLE_CONTENT_PROCESSOR);
     private readonly rawLoader$$ = new BehaviorSubject<TuiDocExample>({});
-    protected readonly options = inject(TUI_DOC_EXAMPLE_OPTIONS);
 
     @Input()
     public id: string | null = null;
@@ -48,17 +47,13 @@ export class TuiDocExampleComponent {
     public description: PolymorpheusContent;
 
     @Input()
-    public set content(content: TuiDocExample) {
-        this.rawLoader$$.next(content);
-    }
-
-    @Input()
     @HostBinding('class._fullsize')
-    public fullsize = this.options.fullsize;
+    public fullsize = inject(TUI_DOC_EXAMPLE_OPTIONS).fullsize;
 
     @Input()
     public componentName: string = this.location.pathname.slice(1);
 
+    protected readonly options = inject(TUI_DOC_EXAMPLE_OPTIONS);
     protected readonly texts = inject(TUI_DOC_EXAMPLE_TEXTS);
     protected readonly codeEditor = inject(TUI_DOC_CODE_EDITOR, {optional: true});
     protected readonly isE2E = inject(TUI_IS_E2E);
@@ -82,6 +77,11 @@ export class TuiDocExampleComponent {
         );
 
     protected readonly loading$ = new Subject<boolean>();
+
+    @Input()
+    public set content(content: TuiDocExample) {
+        this.rawLoader$$.next(content);
+    }
 
     protected readonly visible = (files: Record<string, string>): boolean =>
         Boolean(this.codeEditor && this.options.codeEditorVisibilityHandler(files));

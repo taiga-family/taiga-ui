@@ -18,11 +18,10 @@ const rowsInSvg = 3;
     },
 })
 export class TuiSensitiveDirective {
-    protected readonly nothing = tuiWithStyles(TuiSensitiveComponent);
-
     @Input()
     public tuiSensitive: boolean | null = false;
 
+    protected readonly nothing = tuiWithStyles(TuiSensitiveComponent);
     protected readonly offset = Math.round(Math.random() * 10) * 10;
     protected readonly height$ = inject(ResizeObserverService).pipe(
         map(([{contentRect}]) => [

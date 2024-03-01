@@ -84,14 +84,6 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
 
     protected readonly maxLengthMapper = MAX_DAY_RANGE_LENGTH_MAPPER;
 
-    protected get computedMin(): TuiDay {
-        return this.min ?? TUI_FIRST_DAY;
-    }
-
-    protected get computedMax(): TuiDay {
-        return this.max ?? TUI_LAST_DAY;
-    }
-
     constructor() {
         this.valueChanges
             ?.pipe(
@@ -101,6 +93,38 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
             .subscribe(value => {
                 this.value = value;
             });
+    }
+
+    public onItemSelect(item: TuiDayRangePeriod | string): void {
+        if (typeof item !== 'string') {
+            this.updateValue(item.range.dayLimit(this.min, this.max));
+
+            return;
+        }
+
+        if (this.activePeriod !== null) {
+            this.updateValue(null);
+        }
+    }
+
+    protected get computedMin(): TuiDay {
+        return this.min ?? TUI_FIRST_DAY;
+    }
+
+    protected get computedMax(): TuiDay {
+        return this.max ?? TUI_LAST_DAY;
+    }
+
+    protected get calculatedDisabledItemHandler(): TuiBooleanHandler<TuiDay> {
+        return this.calculateDisabledItemHandler(
+            this.disabledItemHandler,
+            this.value,
+            this.minLength,
+        );
+    }
+
+    protected get computedMonth(): TuiMonth {
+        return this.value ? this.value.to : this.defaultViewedMonth;
     }
 
     @HostListener('document:keydown.capture', ['$event'])
@@ -133,18 +157,6 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
         otherDateText,
     ];
 
-    protected get calculatedDisabledItemHandler(): TuiBooleanHandler<TuiDay> {
-        return this.calculateDisabledItemHandler(
-            this.disabledItemHandler,
-            this.value,
-            this.minLength,
-        );
-    }
-
-    protected get computedMonth(): TuiMonth {
-        return this.value ? this.value.to : this.defaultViewedMonth;
-    }
-
     protected isItemActive(item: TuiDayRangePeriod | string): boolean {
         const {activePeriod} = this;
 
@@ -168,18 +180,6 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
         }
 
         this.updateValue(TuiDayRange.sort(value.from, day));
-    }
-
-    public onItemSelect(item: TuiDayRangePeriod | string): void {
-        if (typeof item !== 'string') {
-            this.updateValue(item.range.dayLimit(this.min, this.max));
-
-            return;
-        }
-
-        if (this.activePeriod !== null) {
-            this.updateValue(null);
-        }
     }
 
     protected updateValue(value: TuiDayRange | null): void {

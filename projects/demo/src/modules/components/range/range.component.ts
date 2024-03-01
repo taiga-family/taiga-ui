@@ -40,20 +40,6 @@ export class ExampleTuiRangeComponent {
 
     protected readonly control = new FormControl([0, 0]);
 
-    protected get disabled(): boolean {
-        return this.control.disabled;
-    }
-
-    protected set disabled(value: boolean) {
-        if (value) {
-            this.control.disable();
-
-            return;
-        }
-
-        this.control.enable();
-    }
-
     protected readonly sizeVariants: readonly TuiSizeS[] = ['s', 'm'];
 
     protected size: TuiSizeS = this.sizeVariants[1];
@@ -75,4 +61,18 @@ export class ExampleTuiRangeComponent {
     ];
 
     protected keySteps: TuiKeySteps | null = null;
+
+    protected get disabled(): boolean {
+        return this.control.disabled;
+    }
+
+    protected set disabled(value: boolean) {
+        if (value) {
+            this.control.disable();
+
+            return;
+        }
+
+        this.control.enable();
+    }
 }

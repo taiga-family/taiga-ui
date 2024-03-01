@@ -58,10 +58,9 @@ export class TuiRadioListComponent<T> extends AbstractTuiNullableControl<T> {
     @Input()
     public disabledItemHandler: TuiBooleanHandler<T> = ALWAYS_FALSE_HANDLER;
 
-    // @bad TODO: Remove & { index: number }
-    @Input()
-    public itemContent: PolymorpheusContent<TuiValueContentContext<T> & {index: number}> =
-        ({$implicit}) => String($implicit);
+    public get focused(): boolean {
+        return tuiIsNativeFocusedIn(this.el);
+    }
 
     public get nativeFocusableElement(): TuiNativeFocusableElement | null {
         const focusableRadioButton = this.radioButtons.find(
@@ -71,9 +70,10 @@ export class TuiRadioListComponent<T> extends AbstractTuiNullableControl<T> {
         return focusableRadioButton?.nativeFocusableElement ?? null;
     }
 
-    public get focused(): boolean {
-        return tuiIsNativeFocusedIn(this.el);
-    }
+    // @bad TODO: Remove & { index: number }
+    @Input()
+    public itemContent: PolymorpheusContent<TuiValueContentContext<T> & {index: number}> =
+        ({$implicit}) => String($implicit);
 
     protected computeId(index: number): string {
         return `${this.id}-${index}`;

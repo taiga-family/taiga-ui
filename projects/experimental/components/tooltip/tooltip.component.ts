@@ -35,14 +35,14 @@ export class TuiTooltipComponent<C = any> extends TuiHintOptionsDirective {
     private readonly platform = inject(TUI_PLATFORM);
     private mode: TuiBrightness | null = null;
 
-    @ViewChild(TuiHintHoverDirective)
-    protected readonly driver$?: TuiHintHoverDirective;
-
     @Input()
     public describeId = '';
 
     @Input()
     public context?: C;
+
+    @ViewChild(TuiHintHoverDirective)
+    protected readonly driver$?: TuiHintHoverDirective;
 
     protected readonly tooltipOptions = inject(TUI_TOOLTIP_OPTIONS);
     protected readonly iconAppearance = inject(TuiAppearanceDirective, {optional: true});

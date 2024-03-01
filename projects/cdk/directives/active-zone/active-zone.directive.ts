@@ -30,11 +30,6 @@ export class TuiActiveZoneDirective implements OnDestroy {
         optional: true,
     });
 
-    @Input('tuiActiveZoneParent')
-    public set tuiActiveZoneParentSetter(zone: TuiActiveZoneDirective | null) {
-        this.setZone(zone);
-    }
-
     @Output()
     public readonly tuiActiveZoneChange = this.active$.pipe(
         map(element => !!element && this.contains(element)),
@@ -46,6 +41,11 @@ export class TuiActiveZoneDirective implements OnDestroy {
 
     constructor() {
         this.directParentActiveZone?.addSubActiveZone(this);
+    }
+
+    @Input('tuiActiveZoneParent')
+    public set tuiActiveZoneParentSetter(zone: TuiActiveZoneDirective | null) {
+        this.setZone(zone);
     }
 
     public ngOnDestroy(): void {

@@ -77,11 +77,6 @@ export class TuiTextareaComponent
     protected readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
     protected readonly hintOptions = inject(TuiHintOptionsDirective, {optional: true});
 
-    @HostBinding('class._label-outside')
-    protected get labelOutside(): boolean {
-        return this.controller.labelOutside;
-    }
-
     public get nativeFocusableElement(): HTMLTextAreaElement | null {
         if (this.computedDisabled) {
             return null;
@@ -96,8 +91,17 @@ export class TuiTextareaComponent
         return tuiIsNativeFocused(this.nativeFocusableElement);
     }
 
-    protected get appearance(): string {
-        return this.controller.appearance;
+    public get computeMaxHeight(): number | null {
+        return this.expandable ? this.rows * this.lineHeight : null;
+    }
+
+    public onValueChange(value: string): void {
+        this.value = value;
+    }
+
+    @HostBinding('class._label-outside')
+    protected get labelOutside(): boolean {
+        return this.controller.labelOutside;
     }
 
     @HostBinding('attr.data-size')
@@ -121,10 +125,6 @@ export class TuiTextareaComponent
         );
     }
 
-    protected get hasCleaner(): boolean {
-        return this.controller.cleaner && this.hasValue && this.interactive;
-    }
-
     @HostBinding('class._has-tooltip')
     protected get hasTooltip(): boolean {
         return (
@@ -141,6 +141,14 @@ export class TuiTextareaComponent
     @HostBinding('class._has-counter')
     protected get hasCounter(): boolean {
         return !!this.maxLength && this.interactive;
+    }
+
+    protected get appearance(): string {
+        return this.controller.appearance;
+    }
+
+    protected get hasCleaner(): boolean {
+        return this.controller.cleaner && this.hasValue && this.interactive;
     }
 
     protected get hasPlaceholder(): boolean {
@@ -174,10 +182,6 @@ export class TuiTextareaComponent
         );
     }
 
-    public get computeMaxHeight(): number | null {
-        return this.expandable ? this.rows * this.lineHeight : null;
-    }
-
     protected get placeholderRaised(): boolean {
         return (
             this.placeholderRaisable &&
@@ -197,10 +201,6 @@ export class TuiTextareaComponent
     @HostListener('focusout', ['false'])
     protected onFocused(focused: boolean): void {
         this.updateFocused(focused);
-    }
-
-    public onValueChange(value: string): void {
-        this.value = value;
     }
 
     protected onMouseDown(event: MouseEvent): void {

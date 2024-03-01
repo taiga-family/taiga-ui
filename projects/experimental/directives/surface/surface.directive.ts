@@ -11,8 +11,8 @@ import {TuiSurfaceComponent} from './surface.component';
     },
 })
 export class TuiSurfaceDirective {
-    protected readonly nothing = tuiWithStyles(TuiSurfaceComponent);
-
     @Input()
     public tuiSurface = '';
+
+    protected readonly nothing = tuiWithStyles(TuiSurfaceComponent);
 }

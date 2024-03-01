@@ -19,6 +19,10 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
     ],
 })
 export class ExampleTuiInputNumberComponent extends AbstractExampleTuiControl {
+    public override cleaner = false;
+
+    public readonly control = new FormControl(6432, Validators.required);
+
     protected readonly exampleForm = import('./examples/import/declare-form.md?raw');
     protected readonly exampleModule = import('./examples/import/import-module.md?raw');
     protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
@@ -77,13 +81,9 @@ export class ExampleTuiInputNumberComponent extends AbstractExampleTuiControl {
 
     protected decimal = this.decimalVariants[0];
 
-    public override cleaner = false;
-
     protected readonly precisionVariants: readonly number[] = [2, 3, 4, Infinity];
 
     protected precision = this.precisionVariants[0];
-
-    public readonly control = new FormControl(6432, Validators.required);
 
     protected step = 0;
 }
