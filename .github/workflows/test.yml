@@ -11,9 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     name: Unit tests
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.51.13
-      - uses: taiga-family/ci/actions/setup/variables@v1.51.13
-      - uses: taiga-family/ci/actions/setup/node@v1.51.13
+      - uses: taiga-family/ci/actions/setup/checkout@v1.51.14
+      - uses: taiga-family/ci/actions/setup/variables@v1.51.14
+      - uses: taiga-family/ci/actions/setup/node@v1.51.14
       - run: npx tsc --project tsconfig.spec.json
       - run: npx nx run-many -t test --output-style=stream --nxBail
       - run: tree -L 2 ./coverage -P 'lcov.info'
