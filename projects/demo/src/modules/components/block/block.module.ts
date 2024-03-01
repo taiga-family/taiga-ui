@@ -7,7 +7,7 @@ import {TuiGroupDirective, TuiTooltipModule} from '@taiga-ui/core';
 import {
     TuiCheckboxModule,
     TuiIconModule,
-    TuiRadioModule,
+    TuiRadioComponent,
     TuiTitleModule,
     TuiToggleModule,
 } from '@taiga-ui/experimental';
@@ -28,7 +28,7 @@ import {TuiBlockExample3} from './examples/3';
         TuiAvatarComponent,
         TuiTooltipModule,
         TuiCheckboxModule,
-        TuiRadioModule,
+        TuiRadioComponent,
         TuiFadeDirective,
         TuiTitleModule,
         TuiToggleModule,

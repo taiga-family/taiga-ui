@@ -1,7 +1,7 @@
 <tui-doc-page
     header="Radio"
     package="EXPERIMENTAL"
-    type="components"
+    type="experimental"
 >
     <ng-template pageTab>
         <tui-notification status="warning">
@@ -12,10 +12,19 @@
 
         <p>A radio component that is able to imitate native control on mobile platforms.</p>
 
+        <tui-notification status="warning">
+            Due to internal Angular implementation of radio buttons, you are required to add
+            <code>name</code>
+            attribute to your
+            <code>input</code>
+            tag, unless you are using
+            <code>formControlName</code>
+        </tui-notification>
+
         <tui-doc-example
             id="platforms"
             heading="Platforms"
-            [content]="example1"
+            [content]="1 | tuiExample: 'html,ts'"
         >
             <tui-notification class="tui-space_bottom-4">
                 Use
@@ -23,6 +32,14 @@
                 CSS variable to customize color of native control emulation
             </tui-notification>
             <tui-radio-example-1></tui-radio-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="identity"
+            heading="Identity matcher"
+            [content]="2 | tuiExample: 'html,ts'"
+        >
+            <tui-radio-example-2></tui-radio-example-2>
         </tui-doc-example>
     </ng-template>
 

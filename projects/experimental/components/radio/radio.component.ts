@@ -13,6 +13,7 @@ import {TuiAppearanceDirective, TuiSizeS} from '@taiga-ui/core';
 import {TUI_RADIO_OPTIONS} from './radio.options';
 
 @Component({
+    standalone: true,
     selector: 'input[type="radio"][tuiRadio]',
     template: '',
     styleUrls: ['./radio.style.less'],
