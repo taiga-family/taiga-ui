@@ -16,14 +16,14 @@ export class TuiMultiSelectDirective<T = string> extends AbstractTuiTextfieldHos
         return true;
     }
 
+    public get stringify(): TuiItemsHandlers<T>['stringify'] {
+        return this.host.stringify;
+    }
+
     public disableItemHandler: TuiBooleanHandler<T> = item =>
         this.host.disabledItemHandler(item);
 
     public onValueChange(): void {}
-
-    public get stringify(): TuiItemsHandlers<T>['stringify'] {
-        return this.host.stringify;
-    }
 
     public onSelectionChange(value: T[]): void {
         this.host.onValueChange(value);

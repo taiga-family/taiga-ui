@@ -62,12 +62,12 @@ export class TuiHintDescribeDirective extends TuiDriver implements OnChanges {
         this.id$.next(this.tuiHintDescribe);
     }
 
-    private get focused(): boolean {
-        return tuiIsNativeFocused(this.element);
-    }
-
     @tuiPure
     private get element(): HTMLElement {
         return this.doc.getElementById(this.tuiHintDescribe || '') || this.el;
+    }
+
+    private get focused(): boolean {
+        return tuiIsNativeFocused(this.element);
     }
 }

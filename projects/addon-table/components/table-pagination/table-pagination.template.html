@@ -1,6 +1,6 @@
 <ng-container *ngIf="texts$ | async as texts">
     <span class="t-pages">
-        <ng-container *ngIf="options.showPages">
+        <ng-container *ngIf="showPages">
             {{ texts.pages }}
             <strong class="t-strong">{{ pages }}</strong>
         </ng-container>
@@ -27,7 +27,7 @@
                         >
                             <ng-container
                                 *polymorpheusOutlet="
-                                    options.sizeOptionContent as text;
+                                    sizeOptionContent as text;
                                     context: {$implicit: item, total: total}
                                 "
                             >

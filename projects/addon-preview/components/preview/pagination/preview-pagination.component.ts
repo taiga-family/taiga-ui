@@ -30,18 +30,18 @@ export class TuiPreviewPaginationComponent {
     protected readonly icons = inject(TUI_PREVIEW_ICONS);
     protected readonly texts$ = inject(TUI_PAGINATION_TEXTS);
 
+    @HostListener('document:keydown.arrowRight.prevent', ['1'])
+    @HostListener('document:keydown.arrowLeft.prevent', ['-1'])
+    public onArrowClick(step: number): void {
+        this.updateIndex(tuiClamp(this.index + step, 0, this.length - 1));
+    }
+
     protected get leftButtonDisabled(): boolean {
         return this.index === 0;
     }
 
     protected get rightButtonDisabled(): boolean {
         return this.index === this.length - 1;
-    }
-
-    @HostListener('document:keydown.arrowRight.prevent', ['1'])
-    @HostListener('document:keydown.arrowLeft.prevent', ['-1'])
-    public onArrowClick(step: number): void {
-        this.updateIndex(tuiClamp(this.index + step, 0, this.length - 1));
     }
 
     private updateIndex(index: number): void {

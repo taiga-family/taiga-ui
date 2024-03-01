@@ -20,6 +20,12 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
     ],
 })
 export class ExampleTuiInputCopyComponent extends AbstractExampleTuiControl {
+    public readonly control = new FormControl('', Validators.required);
+
+    public override readonly maxLengthVariants: readonly number[] = [10];
+
+    public override readonly maxLength = null;
+
     @ViewChild('customTemplate')
     protected customTemplate: PolymorpheusContent;
 
@@ -31,12 +37,6 @@ export class ExampleTuiInputCopyComponent extends AbstractExampleTuiControl {
     protected readonly exampleModule = import('./examples/import/import-module.md?raw');
     protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
     protected readonly exampleForm = import('./examples/import/declare-form.md?raw');
-
-    public readonly control = new FormControl('', Validators.required);
-
-    public override readonly maxLengthVariants: readonly number[] = [10];
-
-    public override readonly maxLength = null;
 
     protected readonly successMessageVariants = ['Copied', 'Template'];
 

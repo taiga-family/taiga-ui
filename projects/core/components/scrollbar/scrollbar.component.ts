@@ -30,10 +30,10 @@ import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
 export class TuiScrollbarComponent {
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
 
-    protected readonly isIOS = inject(TUI_IS_IOS);
-
     @Input()
     public hidden = false;
+
+    protected readonly isIOS = inject(TUI_IS_IOS);
 
     protected readonly browserScrollRef = new ElementRef(this.el);
 

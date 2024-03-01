@@ -88,17 +88,6 @@ export class TuiSelectComponent<T>
 
     protected readonly isMobile = inject(TUI_IS_MOBILE);
 
-    @HostBinding('attr.data-size')
-    protected get size(): TuiSizeL | TuiSizeS {
-        return this.textfieldSize.size;
-    }
-
-    protected get arrow(): PolymorpheusContent<
-        TuiContext<TuiSizeL | TuiSizeM | TuiSizeS>
-    > {
-        return !this.interactive ? this.arrowMode.disabled : this.arrowMode.interactive;
-    }
-
     public get nativeFocusableElement(): HTMLInputElement | null {
         return this.textfield?.nativeFocusableElement ?? null;
     }
@@ -110,20 +99,37 @@ export class TuiSelectComponent<T>
         );
     }
 
-    protected get nativeDropdownMode(): boolean {
-        return !!this.nativeSelect && this.isMobile;
-    }
-
     public get computedValue(): string {
         return this.value === null ? '' : this.stringify(this.value) || ' ';
     }
 
-    protected get computedContent(): PolymorpheusContent<TuiValueContentContext<T>> {
-        return this.valueContent || this.computedValue;
-    }
-
     public onValueChange(value: T): void {
         this.value = value || null;
+    }
+
+    public handleOption(option: T): void {
+        this.focusInput();
+        this.value = option;
+        this.hostedDropdown?.updateOpen(false);
+    }
+
+    @HostBinding('attr.data-size')
+    protected get size(): TuiSizeL | TuiSizeS {
+        return this.textfieldSize.size;
+    }
+
+    protected get arrow(): PolymorpheusContent<
+        TuiContext<TuiSizeL | TuiSizeM | TuiSizeS>
+    > {
+        return !this.interactive ? this.arrowMode.disabled : this.arrowMode.interactive;
+    }
+
+    protected get nativeDropdownMode(): boolean {
+        return !!this.nativeSelect && this.isMobile;
+    }
+
+    protected get computedContent(): PolymorpheusContent<TuiValueContentContext<T>> {
+        return this.valueContent || this.computedValue;
     }
 
     protected onActiveZone(active: boolean): void {
@@ -134,12 +140,6 @@ export class TuiSelectComponent<T>
         if (this.textfieldCleaner.cleaner) {
             this.value = null;
         }
-    }
-
-    public handleOption(option: T): void {
-        this.focusInput();
-        this.value = option;
-        this.hostedDropdown?.updateOpen(false);
     }
 
     private focusInput(preventScroll = false): void {

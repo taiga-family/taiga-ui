@@ -50,6 +50,22 @@ export class TuiSliderKeyStepsDirective
         return tuiIsNativeFocused(this.nativeFocusableElement);
     }
 
+    public override writeValue(controlValue: number | null): void {
+        if (controlValue === null) {
+            return;
+        }
+
+        const clampedControlValue = tuiClamp(controlValue, this.min, this.max);
+
+        ngDevMode &&
+            tuiAssert.assert(
+                controlValue === clampedControlValue,
+                '\n[SliderKeySteps]: You cannot programmatically set value which is less/more than min/max',
+            );
+
+        this.slider.value = this.transformToNativeValue(clampedControlValue);
+    }
+
     protected get min(): number {
         return this.keySteps[0][1];
     }
@@ -65,22 +81,6 @@ export class TuiSliderKeyStepsDirective
             this.slider.valuePercentage,
             this.keySteps,
         );
-    }
-
-    public override writeValue(controlValue: number | null): void {
-        if (controlValue === null) {
-            return;
-        }
-
-        const clampedControlValue = tuiClamp(controlValue, this.min, this.max);
-
-        ngDevMode &&
-            tuiAssert.assert(
-                controlValue === clampedControlValue,
-                '\n[SliderKeySteps]: You cannot programmatically set value which is less/more than min/max',
-            );
-
-        this.slider.value = this.transformToNativeValue(clampedControlValue);
     }
 
     protected getFallbackValue(): number {

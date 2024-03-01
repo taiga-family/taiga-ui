@@ -51,12 +51,6 @@ export class TuiStepperComponent {
     @HostBinding('attr.data-orientation')
     public orientation: TuiOrientation = 'horizontal';
 
-    @Input('activeItemIndex')
-    public set activeIndex(index: number) {
-        this.activeItemIndex = index;
-        this.scrollIntoView(index);
-    }
-
     @Output()
     public readonly activeItemIndexChange = new EventEmitter<number>();
 
@@ -66,6 +60,33 @@ export class TuiStepperComponent {
         this.resize$
             .pipe(takeUntil(this.destroy$))
             .subscribe(() => this.scrollIntoView(this.activeItemIndex));
+    }
+
+    @Input('activeItemIndex')
+    public set activeIndex(index: number) {
+        this.activeItemIndex = index;
+        this.scrollIntoView(index);
+    }
+
+    public indexOf(step: HTMLElement): number {
+        return tuiGetOriginalArrayFromQueryList(this.steps).findIndex(
+            ({nativeElement}) => nativeElement === step,
+        );
+    }
+
+    public isActive(index: number): boolean {
+        return index === this.activeItemIndex;
+    }
+
+    public activate(index: number): void {
+        if (this.activeItemIndex === index) {
+            return;
+        }
+
+        this.activeItemIndex = index;
+        this.activeItemIndexChange.emit(index);
+        this.cdr.markForCheck();
+        this.scrollIntoView(index);
     }
 
     @tuiPure
@@ -95,27 +116,6 @@ export class TuiStepperComponent {
 
         event.preventDefault();
         this.moveFocus(event.target, step);
-    }
-
-    public indexOf(step: HTMLElement): number {
-        return tuiGetOriginalArrayFromQueryList(this.steps).findIndex(
-            ({nativeElement}) => nativeElement === step,
-        );
-    }
-
-    public isActive(index: number): boolean {
-        return index === this.activeItemIndex;
-    }
-
-    public activate(index: number): void {
-        if (this.activeItemIndex === index) {
-            return;
-        }
-
-        this.activeItemIndex = index;
-        this.activeItemIndexChange.emit(index);
-        this.cdr.markForCheck();
-        this.scrollIntoView(index);
     }
 
     @tuiPure

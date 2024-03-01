@@ -65,11 +65,6 @@ export class TuiArcChartComponent {
     private readonly sanitizer = inject(DomSanitizer);
     private readonly arcs$ = new ReplaySubject<QueryList<ElementRef<SVGElement>>>(1);
 
-    @ViewChildren('arc')
-    protected set arcs(arcs: QueryList<ElementRef<SVGElement>>) {
-        this.arcs$.next(arcs);
-    }
-
     @Input()
     public value: readonly number[] = [];
 
@@ -113,6 +108,11 @@ export class TuiArcChartComponent {
             .subscribe(() => {
                 this.initialized = true;
             });
+    }
+
+    @ViewChildren('arc')
+    protected set arcs(arcs: QueryList<ElementRef<SVGElement>>) {
+        this.arcs$.next(arcs);
     }
 
     @HostBinding('style.width.rem')

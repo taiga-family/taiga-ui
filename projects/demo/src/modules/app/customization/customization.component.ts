@@ -28,6 +28,16 @@ export class TuiCustomizationComponent implements AfterViewInit {
 
     protected readonly change$ = new Subject<void>();
 
+    public ngAfterViewInit(): void {
+        if (!this.demo) {
+            return;
+        }
+
+        this.demo.change$
+            .pipe(takeUntil(this.destroy$))
+            .subscribe(() => this.change$.next());
+    }
+
     protected get style(): SafeStyle {
         return this.getStyle(this.sanitizer, this.stringify(this.variables));
     }
@@ -50,16 +60,6 @@ export class TuiCustomizationComponent implements AfterViewInit {
 
     protected get mode(): TuiBrightness | null {
         return this.demo?.mode || null;
-    }
-
-    public ngAfterViewInit(): void {
-        if (!this.demo) {
-            return;
-        }
-
-        this.demo.change$.pipe(takeUntil(this.destroy$)).subscribe(() => {
-            this.change$.next();
-        });
     }
 
     protected isLight(key: string): boolean {

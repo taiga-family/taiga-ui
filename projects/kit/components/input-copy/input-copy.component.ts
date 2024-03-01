@@ -61,6 +61,20 @@ export class TuiInputCopyComponent
     @Input()
     public messageAppearance = this.options.messageAppearance;
 
+    public get nativeFocusableElement(): TuiNativeFocusableElement | null {
+        return this.computedDisabled || !this.textfield
+            ? null
+            : this.textfield.nativeFocusableElement;
+    }
+
+    public get focused(): boolean {
+        return !!this.textfield?.focused;
+    }
+
+    public onValueChange(value: string): void {
+        this.value = value;
+    }
+
     @HostBinding('attr.data-size')
     protected get size(): TuiSizeL | TuiSizeS {
         return this.textfieldSize.size;
@@ -83,22 +97,8 @@ export class TuiInputCopyComponent
         );
     }
 
-    public get nativeFocusableElement(): TuiNativeFocusableElement | null {
-        return this.computedDisabled || !this.textfield
-            ? null
-            : this.textfield.nativeFocusableElement;
-    }
-
-    public get focused(): boolean {
-        return !!this.textfield?.focused;
-    }
-
     protected get icon(): TuiInputCopyOptions['icon'] {
         return this.options.icon;
-    }
-
-    public onValueChange(value: string): void {
-        this.value = value;
     }
 
     protected onFocused(focused: boolean): void {

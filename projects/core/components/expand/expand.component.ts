@@ -47,6 +47,13 @@ export class TuiExpandComponent {
     @Input()
     public async = false;
 
+    @ContentChild(TuiExpandContentDirective, {read: TemplateRef})
+    protected content: TemplateRef<NgIfContext<boolean>> | null = null;
+
+    @HostBinding('class._expanded')
+    @HostBinding('attr.aria-expanded')
+    protected expanded: boolean | null = null;
+
     @Input('expanded')
     public set expandedSetter(expanded: boolean | null) {
         if (this.expanded === null) {
@@ -66,12 +73,9 @@ export class TuiExpandComponent {
         this.retrigger(this.async && expanded ? State.Loading : State.Animated);
     }
 
-    @ContentChild(TuiExpandContentDirective, {read: TemplateRef})
-    protected content: TemplateRef<NgIfContext<boolean>> | null = null;
-
-    @HostBinding('class._expanded')
-    @HostBinding('attr.aria-expanded')
-    protected expanded: boolean | null = null;
+    public get contentVisible(): boolean {
+        return this.expanded || this.state !== State.Idle;
+    }
 
     @HostBinding('class._overflow')
     protected get overflow(): boolean {
@@ -107,10 +111,6 @@ export class TuiExpandComponent {
         }
 
         return null;
-    }
-
-    public get contentVisible(): boolean {
-        return this.expanded || this.state !== State.Idle;
     }
 
     @HostListener('transitionend.self', ['$event'])

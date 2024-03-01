@@ -17,11 +17,11 @@ export class TuiSortableDirective<T extends Partial<Record<keyof T, any>>>
         forwardRef(() => TuiSortByDirective),
     );
 
-    public sorter: TuiComparator<T> = (): number => 0;
-
     public get key(): keyof T {
         return this.th.key;
     }
+
+    public sorter: TuiComparator<T> = (): number => 0;
 
     public ngOnInit(): void {
         this.sorter = this.match ? this.table.sorter : this.sorter;

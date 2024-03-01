@@ -39,6 +39,12 @@ export class ExampleTuiSelectComponent extends AbstractExampleTuiControl {
         TuiValueContentContext<Account>
     >;
 
+    public readonly iconVariants = ['', 'tuiIconPieChartLarge', 'tuiIconCreditCardLarge'];
+
+    public override iconLeft = this.iconVariants[0];
+
+    public control = new FormControl<Account | null>(null, Validators.required);
+
     protected readonly exampleModule = import('./examples/import/import-module.md?raw');
     protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
     protected readonly exampleForm = import('./examples/import/declare-form.md?raw');
@@ -119,14 +125,6 @@ export class ExampleTuiSelectComponent extends AbstractExampleTuiControl {
 
     protected readonly valueTemplateVariants = ['', 'Template'];
 
-    protected readonly iconVariants = [
-        '',
-        'tuiIconPieChartLarge',
-        'tuiIconCreditCardLarge',
-    ];
-
-    public override iconLeft = this.iconVariants[0];
-
     protected selectedValueTemplate = this.valueTemplateVariants[0];
 
     protected readonly identityMatcherVariants: ReadonlyArray<
@@ -137,8 +135,6 @@ export class ExampleTuiSelectComponent extends AbstractExampleTuiControl {
     ];
 
     protected identityMatcher = this.identityMatcherVariants[0];
-
-    public control = new FormControl<Account | null>(null, Validators.required);
 
     protected readonly disabledItemHandlerVariants: ReadonlyArray<
         TuiBooleanHandler<Account>

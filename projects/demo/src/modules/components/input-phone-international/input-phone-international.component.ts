@@ -19,6 +19,10 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
     ],
 })
 export class ExampleTuiInputPhoneInternationalComponent extends AbstractExampleTuiControl {
+    public override cleaner = false;
+    public override labelOutside = true;
+    public control = new FormControl('', [Validators.required, Validators.minLength(9)]);
+
     protected readonly exampleForm = import('./examples/import/declare-form.md?raw');
     protected readonly exampleModule = import('./examples/import/import-module.md?raw');
     protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
@@ -34,10 +38,6 @@ export class ExampleTuiInputPhoneInternationalComponent extends AbstractExampleT
         HTML: import('./examples/2/index.html?raw'),
         LESS: import('./examples/2/index.less?raw'),
     };
-
-    public override cleaner = false;
-
-    public control = new FormControl('', [Validators.required, Validators.minLength(9)]);
 
     protected readonly countriesVariants: ReadonlyArray<readonly TuiCountryIsoCode[]> = [
         [
@@ -59,5 +59,4 @@ export class ExampleTuiInputPhoneInternationalComponent extends AbstractExampleT
     ];
 
     protected countryIsoCode = this.countryIsoCodeVariants[0];
-    public override labelOutside = true;
 }

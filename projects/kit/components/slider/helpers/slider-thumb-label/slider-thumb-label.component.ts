@@ -24,6 +24,15 @@ export class TuiSliderThumbLabelComponent implements AfterContentInit {
     @ContentChild(NgControl)
     protected readonly control?: NgControl;
 
+    public ngAfterContentInit(): void {
+        ngDevMode &&
+            tuiAssert.assert(
+                Boolean(this.control?.valueChanges),
+                '\n[tuiSliderThumbLabel] expected <input tuiSlider type="range" /> to use Angular Forms.\n' +
+                    'Use [(ngModel)] or [formControl] or formControlName for correct work.',
+            );
+    }
+
     protected get size(): TuiSizeS {
         return this.slider?.size || 'm';
     }
@@ -34,14 +43,5 @@ export class TuiSliderThumbLabelComponent implements AfterContentInit {
 
     protected get ghostLeft(): number {
         return this.ratio * (this.slider?.el.offsetWidth || 0);
-    }
-
-    public ngAfterContentInit(): void {
-        ngDevMode &&
-            tuiAssert.assert(
-                Boolean(this.control?.valueChanges),
-                '\n[tuiSliderThumbLabel] expected <input tuiSlider type="range" /> to use Angular Forms.\n' +
-                    'Use [(ngModel)] or [formControl] or formControlName for correct work.',
-            );
     }
 }

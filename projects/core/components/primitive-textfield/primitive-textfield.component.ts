@@ -60,10 +60,8 @@ export class TuiPrimitiveTextfieldComponent
     @ViewChild('focusableElement')
     private readonly focusableElement?: ElementRef<HTMLInputElement>;
 
+    private readonly options = inject(TUI_TEXTFIELD_OPTIONS);
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
-
-    protected readonly hintOptions = inject(TuiHintOptionsDirective, {optional: true});
-    protected readonly options = inject(TUI_TEXTFIELD_OPTIONS);
 
     @Input()
     public editable = true;
@@ -94,6 +92,7 @@ export class TuiPrimitiveTextfieldComponent
     @ContentChildren(PolymorpheusOutletDirective, {descendants: true})
     protected readonly content?: QueryList<unknown>;
 
+    protected readonly hintOptions = inject(TuiHintOptionsDirective, {optional: true});
     protected autofilled = false;
 
     protected readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
@@ -129,6 +128,10 @@ export class TuiPrimitiveTextfieldComponent
         return this.controller.appearance;
     }
 
+    public onModelChange(value: string): void {
+        this.updateValue(value);
+    }
+
     @HostBinding('attr.data-size')
     protected get size(): TuiSizeL | TuiSizeS {
         return this.controller.size;
@@ -142,6 +145,22 @@ export class TuiPrimitiveTextfieldComponent
     @HostBinding('class._hidden')
     protected get inputHidden(): boolean {
         return !!this.content?.length;
+    }
+
+    @HostBinding('style.--border-start.rem')
+    protected get borderStart(): number {
+        return this.iconLeftContent ? this.iconPaddingLeft : 0;
+    }
+
+    @HostBinding('style.--border-end.rem')
+    protected get borderEnd(): number {
+        return tuiGetBorder(
+            !!this.iconContent,
+            this.hasCleaner,
+            this.hasTooltip,
+            this.hasCustomContent,
+            this.size,
+        );
     }
 
     protected get hasValue(): boolean {
@@ -184,22 +203,6 @@ export class TuiPrimitiveTextfieldComponent
         return (
             this.placeholderRaisable &&
             ((this.computedFocused && !this.readOnly) || this.hasValue || this.autofilled)
-        );
-    }
-
-    @HostBinding('style.--border-start.rem')
-    protected get borderStart(): number {
-        return this.iconLeftContent ? this.iconPaddingLeft : 0;
-    }
-
-    @HostBinding('style.--border-end.rem')
-    protected get borderEnd(): number {
-        return tuiGetBorder(
-            !!this.iconContent,
-            this.hasCleaner,
-            this.hasTooltip,
-            this.hasCustomContent,
-            this.size,
         );
     }
 
@@ -261,10 +264,6 @@ export class TuiPrimitiveTextfieldComponent
 
         event.preventDefault();
         nativeFocusableElement.focus();
-    }
-
-    public onModelChange(value: string): void {
-        this.updateValue(value);
     }
 
     protected onAutofilled(autofilled: boolean): void {

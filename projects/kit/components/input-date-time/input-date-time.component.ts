@@ -79,12 +79,6 @@ export class TuiInputDateTimeComponent
     private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
     private month: TuiMonth | null = null;
     private readonly timeMode$ = new BehaviorSubject<TuiTimeMode>('HH:MM');
-    protected readonly timeTexts$ = inject(TUI_TIME_TEXTS);
-    protected readonly dateTexts$ = inject(TUI_DATE_TEXTS);
-    protected override readonly valueTransformer = inject(
-        TUI_DATE_TIME_VALUE_TRANSFORMER,
-        {optional: true},
-    );
 
     @Input()
     public min: TuiDay | [TuiDay | null, TuiTime | null] | null = this.options.min;
@@ -98,16 +92,14 @@ export class TuiInputDateTimeComponent
     @Input()
     public defaultActiveYearMonth = TuiMonth.currentLocal();
 
-    @Input()
-    public set timeMode(value: TuiTimeMode) {
-        this.timeMode$.next(value);
-    }
-
-    public get timeMode(): TuiTimeMode {
-        return this.timeMode$.value;
-    }
-
     public open = false;
+
+    protected readonly timeTexts$ = inject(TUI_TIME_TEXTS);
+    protected readonly dateTexts$ = inject(TUI_DATE_TEXTS);
+    protected override readonly valueTransformer = inject(
+        TUI_DATE_TIME_VALUE_TRANSFORMER,
+        {optional: true},
+    );
 
     protected readonly type!: TuiContext<TuiActiveZoneDirective>;
 
@@ -129,6 +121,69 @@ export class TuiInputDateTimeComponent
     protected readonly dateSeparator = inject(TUI_DATE_SEPARATOR);
     protected readonly isMobile = inject(TUI_IS_MOBILE);
     protected readonly isIos = inject(TUI_IS_IOS);
+
+    @Input()
+    public set timeMode(value: TuiTimeMode) {
+        this.timeMode$.next(value);
+    }
+
+    public get timeMode(): TuiTimeMode {
+        return this.timeMode$.value;
+    }
+
+    public get nativeFocusableElement(): HTMLInputElement | null {
+        return this.textfield?.nativeFocusableElement ?? null;
+    }
+
+    public get focused(): boolean {
+        return !!this.textfield?.focused;
+    }
+
+    public get computedValue(): string {
+        const {value, nativeValue, timeMode} = this;
+        const [date, time] = value;
+        const hasTimeInputChars = nativeValue.length > DATE_FILLER_LENGTH;
+
+        if (!date || (!time && hasTimeInputChars)) {
+            return nativeValue;
+        }
+
+        return this.getDateTimeString(date, time, timeMode);
+    }
+
+    public override setDisabledState(): void {
+        super.setDisabledState();
+        this.open = false;
+    }
+
+    public override writeValue(value: [TuiDay | null, TuiTime | null] | null): void {
+        super.writeValue(value);
+
+        this.nativeValue =
+            this.value && (this.value[0] || this.value[1]) ? this.computedValue : '';
+    }
+
+    public onValueChange(value: string): void {
+        if (!value) {
+            this.onOpenChange(true);
+        }
+
+        if (value.length < DATE_FILLER_LENGTH) {
+            this.value = [null, null];
+
+            return;
+        }
+
+        const [date, time] = value.split(DATE_TIME_SEPARATOR);
+        const parsedDate = TuiDay.normalizeParse(date, this.dateFormat);
+        const parsedTime =
+            time && time.length === this.timeMode.length
+                ? TuiTime.fromString(time)
+                : null;
+
+        this.open = false;
+        this.value = [parsedDate, parsedTime];
+    }
 
     @HostBinding('attr.data-size')
     protected get size(): TuiSizeL | TuiSizeS {
@@ -157,36 +212,12 @@ export class TuiInputDateTimeComponent
         );
     }
 
-    public get nativeFocusableElement(): HTMLInputElement | null {
-        return this.textfield?.nativeFocusableElement ?? null;
-    }
-
-    public get focused(): boolean {
-        return !!this.textfield?.focused;
-    }
-
     protected get calendarIcon(): TuiInputDateOptions['icon'] {
         return this.options.icon;
     }
 
-    private get nativePicker(): boolean {
-        return this.options.nativePicker && this.isMobile;
-    }
-
     protected get showNativePicker(): boolean {
         return this.nativePicker && this.timeMode === 'HH:MM';
-    }
-
-    public get computedValue(): string {
-        const {value, nativeValue, timeMode} = this;
-        const [date, time] = value;
-        const hasTimeInputChars = nativeValue.length > DATE_FILLER_LENGTH;
-
-        if (!date || (!time && hasTimeInputChars)) {
-            return nativeValue;
-        }
-
-        return this.getDateTimeString(date, time, timeMode);
     }
 
     protected get calendarValue(): TuiDay | null {
@@ -234,28 +265,6 @@ export class TuiInputDateTimeComponent
     @HostListener('click')
     protected onClick(): void {
         this.open = !this.open;
-    }
-
-    public onValueChange(value: string): void {
-        if (!value) {
-            this.onOpenChange(true);
-        }
-
-        if (value.length < DATE_FILLER_LENGTH) {
-            this.value = [null, null];
-
-            return;
-        }
-
-        const [date, time] = value.split(DATE_TIME_SEPARATOR);
-        const parsedDate = TuiDay.normalizeParse(date, this.dateFormat);
-        const parsedTime =
-            time && time.length === this.timeMode.length
-                ? TuiTime.fromString(time)
-                : null;
-
-        this.open = false;
-        this.value = [parsedDate, parsedTime];
     }
 
     protected onDayClick(day: TuiDay): void {
@@ -309,18 +318,6 @@ export class TuiInputDateTimeComponent
         this.value = [this.value[0], parsedTime];
     }
 
-    public override setDisabledState(): void {
-        super.setDisabledState();
-        this.open = false;
-    }
-
-    public override writeValue(value: [TuiDay | null, TuiTime | null] | null): void {
-        super.writeValue(value);
-
-        this.nativeValue =
-            this.value && (this.value[0] || this.value[1]) ? this.computedValue : '';
-    }
-
     protected getFallbackValue(): [TuiDay | null, TuiTime | null] {
         return [null, null];
     }
@@ -333,6 +330,10 @@ export class TuiInputDateTimeComponent
             tuiNullableSame(oldValue[0], newValue[0], (a, b) => a.daySame(b)) &&
             tuiNullableSame(oldValue[1], newValue[1], (a, b) => String(a) === String(b))
         );
+    }
+
+    private get nativePicker(): boolean {
+        return this.options.nativePicker && this.isMobile;
     }
 
     @tuiPure

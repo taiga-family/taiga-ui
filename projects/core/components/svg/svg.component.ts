@@ -115,6 +115,20 @@ export class TuiSvgComponent {
         );
     }
 
+    protected onError(message: string = MISSING_EXTERNAL_ICON): void {
+        const {icon} = this;
+        const event = new CustomEvent<TuiIconError>(TUI_ICON_ERROR, {
+            bubbles: true,
+            detail: {
+                message,
+                icon: icon as string,
+            },
+        });
+
+        ngDevMode && tuiAssert.assert(false, message, icon);
+        this.el.dispatchEvent(event);
+    }
+
     private get isShadowDOM(): boolean {
         return tuiGetDocumentOrShadowRoot(this.el) !== this.doc;
     }
@@ -148,20 +162,6 @@ export class TuiSvgComponent {
         return (
             isUse && use.startsWith('http') && !!win.origin && !use.startsWith(win.origin)
         );
-    }
-
-    protected onError(message: string = MISSING_EXTERNAL_ICON): void {
-        const {icon} = this;
-        const event = new CustomEvent<TuiIconError>(TUI_ICON_ERROR, {
-            bubbles: true,
-            detail: {
-                message,
-                icon: icon as string,
-            },
-        });
-
-        ngDevMode && tuiAssert.assert(false, message, icon);
-        this.el.dispatchEvent(event);
     }
 
     @tuiPure

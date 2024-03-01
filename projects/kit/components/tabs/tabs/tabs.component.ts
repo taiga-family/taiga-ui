@@ -49,12 +49,12 @@ export class TuiTabsComponent implements AfterViewChecked {
     private readonly cdr = inject(ChangeDetectorRef);
     private readonly tabs = inject(TuiTabsDirective);
 
-    @ContentChildren(forwardRef(() => TuiTabComponent))
-    protected readonly children: QueryList<unknown> = EMPTY_QUERY;
-
     @Input()
     @HostBinding('class._underline')
     public underline = this.options.underline;
+
+    @ContentChildren(forwardRef(() => TuiTabComponent))
+    protected readonly children: QueryList<unknown> = EMPTY_QUERY;
 
     constructor() {
         this.resize$
@@ -63,6 +63,10 @@ export class TuiTabsComponent implements AfterViewChecked {
                 takeUntil(this.destroy$),
             )
             .subscribe(() => this.cdr.detectChanges());
+    }
+
+    public ngAfterViewChecked(): void {
+        this.scrollTo(this.tabs.activeItemIndex);
     }
 
     /** @deprecated use `activeItemIndex` from {@link TuiTabsDirective} instead */
@@ -83,10 +87,6 @@ export class TuiTabsComponent implements AfterViewChecked {
     @HostListener('keydown.arrowLeft.prevent', ['$event.target', '-1'])
     protected onKeyDownArrow(current: HTMLElement, step: number): void {
         this.tabs.moveFocus(current, step);
-    }
-
-    public ngAfterViewChecked(): void {
-        this.scrollTo(this.tabs.activeItemIndex);
     }
 
     @tuiPure

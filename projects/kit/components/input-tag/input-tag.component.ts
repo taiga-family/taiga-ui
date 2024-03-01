@@ -146,15 +146,6 @@ export class TuiInputTagComponent
     public disabledItemHandler: TuiBooleanHandler<TuiStringifiableItem<any> | string> =
         ALWAYS_FALSE_HANDLER;
 
-    @Input('pseudoFocused')
-    public set pseudoFocusedSetter(value: boolean | null) {
-        if (!value && !this.focused) {
-            this.scrollTo(0);
-        }
-
-        this.pseudoFocus = value;
-    }
-
     @Output()
     public readonly searchChange = new EventEmitter<string>();
 
@@ -167,32 +158,16 @@ export class TuiInputTagComponent
     protected readonly hintOptions = inject(TuiHintOptionsDirective, {optional: true});
     protected readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
     protected readonly icons = inject(TUI_COMMON_ICONS);
-
     protected status$: Observable<TuiStatus> = this.mode$.pipe(map(() => this.status));
-
     protected open = false;
 
-    public get nativeFocusableElement(): HTMLInputElement | null {
-        return !this.focusableElement || this.computedDisabled
-            ? null
-            : this.focusableElement.nativeElement;
-    }
+    @Input('pseudoFocused')
+    public set pseudoFocusedSetter(value: boolean | null) {
+        if (!value && !this.focused) {
+            this.scrollTo(0);
+        }
 
-    public get focused(): boolean {
-        return tuiIsNativeFocusedIn(this.el) || !!this.hostedDropdown?.focused;
-    }
-
-    protected get appearance(): string {
-        return this.controller.appearance;
-    }
-
-    protected get expandable(): boolean {
-        return this.rows > 1;
-    }
-
-    @HostBinding('attr.data-size')
-    protected get size(): TuiSizeL | TuiSizeS {
-        return this.controller.size;
+        this.pseudoFocus = value;
     }
 
     @HostBinding('class._label-outside')
@@ -202,9 +177,84 @@ export class TuiInputTagComponent
         return size === 's' || labelOutside;
     }
 
+    public get nativeFocusableElement(): HTMLInputElement | null {
+        return !this.focusableElement || this.computedDisabled
+            ? null
+            : this.focusableElement.nativeElement;
+    }
+
+    public get hasValue(): boolean {
+        return !!this.value.length || this.hasNativeValue;
+    }
+
+    public get hasExampleText(): boolean {
+        return (
+            !!this.nativeFocusableElement?.placeholder &&
+            this.computedFocused &&
+            !this.hasValue &&
+            !this.readOnly
+        );
+    }
+
+    public get hasPlaceholder(): boolean {
+        return (
+            !this.labelOutside ||
+            (!this.hasValue && (!this.hasExampleText || this.inputHidden))
+        );
+    }
+
+    public get focused(): boolean {
+        return tuiIsNativeFocusedIn(this.el) || !!this.hostedDropdown?.focused;
+    }
+
+    public onTagEdited(value: string, index: number): void {
+        this.focusInput(value === '');
+        this.value = this.filterValue(
+            this.value
+                .map((tag, tagIndex) =>
+                    tagIndex !== index
+                        ? tag
+                        : value
+                              .split(this.separator)
+                              .map(tag => tag.trim())
+                              .filter(Boolean),
+                )
+                .reduce<string[]>(
+                    (result, item: string[] | string) => result.concat(item),
+                    [],
+                ),
+        );
+    }
+
+    public handleOption(item: string): void {
+        this.focusInput();
+        this.updateSearch('');
+        this.value = this.filterValue(this.value.concat(item));
+        this.open = false;
+        this.scrollTo();
+    }
+
+    public override setDisabledState(): void {
+        super.setDisabledState();
+        this.open = false;
+    }
+
+    @HostBinding('attr.data-size')
+    protected get size(): TuiSizeL | TuiSizeS {
+        return this.controller.size;
+    }
+
     @HostBinding('class._icon-left')
     protected get iconLeft(): PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeS>> {
         return this.controller.iconLeft;
+    }
+
+    protected get appearance(): string {
+        return this.controller.appearance;
+    }
+
+    protected get expandable(): boolean {
+        return this.rows > 1;
     }
 
     protected get icon(): PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeS>> {
@@ -223,30 +273,10 @@ export class TuiInputTagComponent
         return !!this.search;
     }
 
-    public get hasValue(): boolean {
-        return !!this.value.length || this.hasNativeValue;
-    }
-
-    public get hasPlaceholder(): boolean {
-        return (
-            !this.labelOutside ||
-            (!this.hasValue && (!this.hasExampleText || this.inputHidden))
-        );
-    }
-
     protected get placeholderRaised(): boolean {
         return (
             !this.labelOutside &&
             ((this.computedFocused && !this.readOnly) || this.hasValue)
-        );
-    }
-
-    public get hasExampleText(): boolean {
-        return (
-            !!this.nativeFocusableElement?.placeholder &&
-            this.computedFocused &&
-            !this.hasValue &&
-            !this.readOnly
         );
     }
 
@@ -366,33 +396,6 @@ export class TuiInputTagComponent
         }
     }
 
-    public onTagEdited(value: string, index: number): void {
-        this.focusInput(value === '');
-        this.value = this.filterValue(
-            this.value
-                .map((tag, tagIndex) =>
-                    tagIndex !== index
-                        ? tag
-                        : value
-                              .split(this.separator)
-                              .map(tag => tag.trim())
-                              .filter(Boolean),
-                )
-                .reduce<string[]>(
-                    (result, item: string[] | string) => result.concat(item),
-                    [],
-                ),
-        );
-    }
-
-    public handleOption(item: string): void {
-        this.focusInput();
-        this.updateSearch('');
-        this.value = this.filterValue(this.value.concat(item));
-        this.open = false;
-        this.scrollTo();
-    }
-
     protected onInput(value: string): void {
         const array = value.split(this.separator);
         const tags = array
@@ -422,14 +425,15 @@ export class TuiInputTagComponent
         }
     }
 
-    public override setDisabledState(): void {
-        super.setDisabledState();
-        this.open = false;
-    }
-
     protected trackByFn(_: number, tag: string): string {
         // Actually tag has TuiStringifiableItem type not string
         return tag.toString();
+    }
+
+    private get lineHeight(): number {
+        return this.labelOutside
+            ? TAG_SIZE_REM[this.controller.size] + 2 * TAG_VERTICAL_SPACE_REM
+            : LINE_HEIGHT_REM[this.controller.size];
     }
 
     private scrollTo(scrollLeft = this.scrollBar?.nativeElement.scrollWidth): void {
@@ -510,11 +514,5 @@ export class TuiInputTagComponent
 
     private clippedValue(value: string): string {
         return value.slice(0, this.maxLength || value.length);
-    }
-
-    private get lineHeight(): number {
-        return this.labelOutside
-            ? TAG_SIZE_REM[this.controller.size] + 2 * TAG_VERTICAL_SPACE_REM
-            : LINE_HEIGHT_REM[this.controller.size];
     }
 }

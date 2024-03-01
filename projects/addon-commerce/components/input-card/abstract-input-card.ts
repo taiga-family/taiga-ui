@@ -36,6 +36,18 @@ export abstract class AbstractTuiInputCard<
 
     public abstract get nativeFocusableElement(): TuiNativeFocusableElement | null;
 
+    /**
+     * @deprecated: drop in v4.0
+     * use {@link autocomplete}
+     */
+    public get autocompleteCard(): TuiAutofillFieldName {
+        return this.autocomplete;
+    }
+
+    public get bin(): string | null {
+        return this.card.length < 6 ? null : this.card.slice(0, 6);
+    }
+
     public get defaultIcon(): string | null {
         const paymentSystem = this.getPaymentSystem(this.card);
 
@@ -53,18 +65,6 @@ export abstract class AbstractTuiInputCard<
 
     protected get autocomplete(): TuiAutofillFieldName {
         return this.autocompleteEnabled ? 'cc-number' : 'off';
-    }
-
-    /**
-     * @deprecated: drop in v4.0
-     * use {@link autocomplete}
-     */
-    public get autocompleteCard(): TuiAutofillFieldName {
-        return this.autocomplete;
-    }
-
-    public get bin(): string | null {
-        return this.card.length < 6 ? null : this.card.slice(0, 6);
     }
 
     @tuiPure

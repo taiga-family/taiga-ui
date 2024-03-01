@@ -21,11 +21,6 @@ export class TuiSheetDirective extends PolymorpheusTemplate<TuiSheet<never>> {
     @Input('tuiSheetOptions')
     public options: Partial<TuiSheetOptions> = {};
 
-    @Input()
-    public set tuiSheet(open: boolean) {
-        this.open$.next(open);
-    }
-
     @Output()
     public readonly tuiSheetChange = this.open$.pipe(
         tuiIfMap(() =>
@@ -33,4 +28,9 @@ export class TuiSheetDirective extends PolymorpheusTemplate<TuiSheet<never>> {
         ),
         share(),
     );
+
+    @Input()
+    public set tuiSheet(open: boolean) {
+        this.open$.next(open);
+    }
 }

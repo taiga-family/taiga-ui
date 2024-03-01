@@ -60,11 +60,6 @@ export class TuiAxesComponent {
     @Input()
     public verticalLinesHandler: TuiLineHandler = TUI_ALWAYS_DASHED;
 
-    @HostBinding('class._centered')
-    protected get centeredXLabels(): boolean {
-        return this.axisY === 'none';
-    }
-
     protected readonly mode$ = inject(TUI_MODE);
 
     public get hasXLabels(): boolean {
@@ -84,5 +79,10 @@ export class TuiAxesComponent {
 
     public fallback(label: string | null): string {
         return label || CHAR_NO_BREAK_SPACE;
+    }
+
+    @HostBinding('class._centered')
+    protected get centeredXLabels(): boolean {
+        return this.axisY === 'none';
     }
 }

@@ -46,11 +46,6 @@ export class TuiLineChartComponent {
     @ViewChildren(TuiHintHoverDirective)
     public readonly drivers: QueryList<Observable<boolean>> = EMPTY_QUERY;
 
-    @Input('value')
-    public set valueSetter(value: readonly TuiPoint[]) {
-        this.value = value.filter(item => !item.some(Number.isNaN));
-    }
-
     @Input()
     public x = 0;
 
@@ -85,6 +80,15 @@ export class TuiLineChartComponent {
     });
 
     protected readonly hintOptions = inject(TuiHintOptionsDirective, {optional: true});
+
+    @Input('value')
+    public set valueSetter(value: readonly TuiPoint[]) {
+        this.value = value.filter(item => !item.some(Number.isNaN));
+    }
+
+    public onHovered(index: number): void {
+        this.hover$.next(index);
+    }
 
     @tuiPure
     protected get hovered$(): Observable<number> {
@@ -187,10 +191,6 @@ export class TuiLineChartComponent {
         } else {
             this.onHovered(index);
         }
-    }
-
-    public onHovered(index: number): void {
-        this.hover$.next(index);
     }
 
     private get isSinglePoint(): boolean {

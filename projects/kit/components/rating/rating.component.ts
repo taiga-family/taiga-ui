@@ -59,18 +59,8 @@ export class TuiRatingComponent
         return tuiIsNativeFocused(this.nativeFocusableElement);
     }
 
-    protected get isFocusable(): boolean {
-        return !(this.readOnly || this.disabled);
-    }
-
     public get percent(): number {
         return tuiClamp((100 * this.value) / this.max, 0, 100);
-    }
-
-    @HostListener('focusin', ['true'])
-    @HostListener('focusout', ['false'])
-    protected onFocused(focused: boolean): void {
-        this.updateFocused(focused);
     }
 
     public setRateByReverseIndex(index: number): void {
@@ -85,6 +75,16 @@ export class TuiRatingComponent
 
     public setRate(value: number): void {
         this.value = value;
+    }
+
+    protected get isFocusable(): boolean {
+        return !(this.readOnly || this.disabled);
+    }
+
+    @HostListener('focusin', ['true'])
+    @HostListener('focusout', ['false'])
+    protected onFocused(focused: boolean): void {
+        this.updateFocused(focused);
     }
 
     protected getFallbackValue(): number {

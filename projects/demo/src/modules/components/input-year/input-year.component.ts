@@ -24,6 +24,10 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
     ],
 })
 export class ExampleInputYearComponent extends AbstractExampleTuiControl {
+    public override cleaner = false;
+
+    public control = new FormControl<number | null>(null, Validators.required);
+
     protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
@@ -49,8 +53,4 @@ export class ExampleInputYearComponent extends AbstractExampleTuiControl {
     > = [ALWAYS_FALSE_HANDLER, year => year % 3 === 0];
 
     protected disabledItemHandler = this.disabledItemHandlerVariants[0];
-
-    public override cleaner = false;
-
-    public control = new FormControl<number | null>(null, Validators.required);
 }

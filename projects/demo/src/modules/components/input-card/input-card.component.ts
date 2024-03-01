@@ -24,6 +24,19 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
     ],
 })
 export class ExampleTuiInputCardComponent extends AbstractExampleTuiControl {
+    public control = new FormGroup({
+        card: new FormControl('', [
+            Validators.required,
+            tuiCreateLuhnValidator('Invalid card number'),
+        ]),
+        expire: new FormControl('', Validators.required),
+        cvc: new FormControl('', Validators.required),
+    });
+
+    public override cleaner = false;
+
+    public override exampleText = '0000 0000 0000 0000';
+
     @ViewChild('documentationPropertyBinChange', {
         read: TuiDocDocumentationPropertyConnectorDirective,
     })
@@ -42,10 +55,6 @@ export class ExampleTuiInputCardComponent extends AbstractExampleTuiControl {
     protected readonly lengthVariants: TuiCodeCVCLength[] = [3, 4];
 
     protected length = this.lengthVariants[0];
-
-    public override cleaner = false;
-
-    public override exampleText = '0000 0000 0000 0000';
 
     protected hintContentCVC = null;
 
@@ -71,15 +80,6 @@ export class ExampleTuiInputCardComponent extends AbstractExampleTuiControl {
     protected autocompleteEnabledCVC = false;
 
     protected autocompleteEnabledExpire = false;
-
-    public control = new FormGroup({
-        card: new FormControl('', [
-            Validators.required,
-            tuiCreateLuhnValidator('Invalid card number'),
-        ]),
-        expire: new FormControl('', Validators.required),
-        cvc: new FormControl('', Validators.required),
-    });
 
     protected get cardSrc(): string | null {
         return this.cardSrcSelected === null ? null : this.cards[this.cardSrcSelected];

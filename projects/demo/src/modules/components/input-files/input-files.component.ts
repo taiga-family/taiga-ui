@@ -21,6 +21,10 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
     ],
 })
 export class ExampleTuiInputFilesComponent extends AbstractExampleTuiControl {
+    public override readonly sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
+    public override size = this.sizeVariants[0];
+    public readonly control = new FormControl<File[] | null>(null);
+
     protected readonly exampleModule = import('./examples/import/import-module.md?raw');
     protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 
@@ -60,7 +64,6 @@ export class ExampleTuiInputFilesComponent extends AbstractExampleTuiControl {
         HTML: import('./examples/7/index.html?raw'),
     };
 
-    public readonly control = new FormControl<File[] | null>(null);
     protected readonly files$ = this.control.valueChanges.pipe(
         map(() => tuiFilesAccepted(this.control)),
     );
@@ -86,9 +89,6 @@ export class ExampleTuiInputFilesComponent extends AbstractExampleTuiControl {
         2.2 * 1000 * 1000,
     ];
 
-    public override readonly sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
-
-    public override size = this.sizeVariants[0];
     protected rejected: readonly File[] = [];
     protected maxFileSize = this.maxFileSizeVariants[2];
 

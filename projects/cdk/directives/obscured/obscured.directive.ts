@@ -19,11 +19,11 @@ export class TuiObscuredDirective {
         map(by => !!by?.every(el => !this.activeZone?.contains(el))),
     );
 
+    @Output()
+    public readonly tuiObscured = this.enabled$.pipe(tuiIfMap(() => this.obscured$));
+
     @Input()
     public set tuiObscuredEnabled(enabled: boolean) {
         this.enabled$.next(enabled);
     }
-
-    @Output()
-    public readonly tuiObscured = this.enabled$.pipe(tuiIfMap(() => this.obscured$));
 }

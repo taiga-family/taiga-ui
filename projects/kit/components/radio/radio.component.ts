@@ -58,25 +58,9 @@ export class TuiRadioComponent<T>
     @Input()
     public pseudoDisabled = false;
 
-    protected get appearance(): string {
-        return this.checked
-            ? this.options.appearances.checked
-            : this.options.appearances.unchecked;
-    }
-
     @HostBinding('class._disabled')
     public override get computedDisabled(): boolean {
         return this.disabled || this.pseudoDisabled;
-    }
-
-    public get nativeFocusableElement(): TuiNativeFocusableElement | null {
-        return !this.focusableElement || this.computedDisabled
-            ? null
-            : this.focusableElement.nativeElement;
-    }
-
-    public get focused(): boolean {
-        return tuiIsNativeFocused(this.nativeFocusableElement);
     }
 
     public get checked(): boolean {
@@ -89,6 +73,22 @@ export class TuiRadioComponent<T>
 
     public override get computedName(): string {
         return this.name || this.radioGroupName || this.controlName || '';
+    }
+
+    public get nativeFocusableElement(): TuiNativeFocusableElement | null {
+        return !this.focusableElement || this.computedDisabled
+            ? null
+            : this.focusableElement.nativeElement;
+    }
+
+    public get focused(): boolean {
+        return tuiIsNativeFocused(this.nativeFocusableElement);
+    }
+
+    protected get appearance(): string {
+        return this.checked
+            ? this.options.appearances.checked
+            : this.options.appearances.unchecked;
     }
 
     protected get isFocusable(): boolean {

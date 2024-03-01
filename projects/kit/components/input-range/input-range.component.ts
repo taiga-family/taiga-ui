@@ -97,14 +97,6 @@ export class TuiInputRangeComponent
 
     protected readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
 
-    protected get leftFocusableElement(): HTMLInputElement | null {
-        return this.inputNumberRefs.first?.nativeFocusableElement || null;
-    }
-
-    protected get rightFocusableElement(): HTMLInputElement | null {
-        return this.inputNumberRefs.last?.nativeFocusableElement || null;
-    }
-
     public get nativeFocusableElement(): TuiNativeFocusableElement | null {
         return this.disabled
             ? null
@@ -113,6 +105,19 @@ export class TuiInputRangeComponent
 
     public get focused(): boolean {
         return tuiIsNativeFocusedIn(this.el);
+    }
+
+    public override writeValue(value: [number, number]): void {
+        super.writeValue(value);
+        this.updateTextfieldValues(this.value);
+    }
+
+    protected get leftFocusableElement(): HTMLInputElement | null {
+        return this.inputNumberRefs.first?.nativeFocusableElement || null;
+    }
+
+    protected get rightFocusableElement(): HTMLInputElement | null {
+        return this.inputNumberRefs.last?.nativeFocusableElement || null;
     }
 
     protected get appearance(): string {
@@ -221,11 +226,6 @@ export class TuiInputRangeComponent
 
     protected onActiveThumbChange(activeThumb: 'left' | 'right'): void {
         this.lastActiveSide = activeThumb;
-    }
-
-    public override writeValue(value: [number, number]): void {
-        super.writeValue(value);
-        this.updateTextfieldValues(this.value);
     }
 
     protected getFallbackValue(): [number, number] {

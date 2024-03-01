@@ -16,16 +16,16 @@ export class TuiNumberFormatDirective extends Observable<TuiNumberFormatSettings
     private readonly settings = new ReplaySubject<Partial<TuiNumberFormatSettings>>(1);
     private readonly parent = inject(TUI_NUMBER_FORMAT, {skipSelf: true});
 
-    @Input()
-    public set tuiNumberFormat(format: Partial<TuiNumberFormatSettings>) {
-        this.settings.next(format);
-    }
-
     constructor() {
         super(subscriber =>
             combineLatest([this.parent, this.settings])
                 .pipe(map(([parent, settings]) => ({...parent, ...settings})))
                 .subscribe(subscriber),
         );
+    }
+
+    @Input()
+    public set tuiNumberFormat(format: Partial<TuiNumberFormatSettings>) {
+        this.settings.next(format);
     }
 }

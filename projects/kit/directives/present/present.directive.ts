@@ -17,13 +17,13 @@ export class TuiPresentDirective implements OnDestroy {
         skip(1),
     );
 
+    public ngOnDestroy(): void {
+        this.visibility$.next(false);
+    }
+
     @HostListener('animationcancel.self', ['false'])
     @HostListener('animationstart.self', ['true'])
     protected onAnimation(visibility: boolean): void {
         this.visibility$.next(visibility);
-    }
-
-    public ngOnDestroy(): void {
-        this.visibility$.next(false);
     }
 }

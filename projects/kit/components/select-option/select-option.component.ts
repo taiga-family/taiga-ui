@@ -54,10 +54,6 @@ export class TuiSelectOptionComponent<T> implements OnInit, DoCheck {
         distinctUntilChanged(),
     );
 
-    protected get matcher(): TuiIdentityMatcher<T> {
-        return this.host.identityMatcher || TUI_DEFAULT_IDENTITY_MATCHER;
-    }
-
     public ngOnInit(): void {
         /**
          * This would cause changes inside already checked parent component (during the same change detection cycle),
@@ -78,6 +74,10 @@ export class TuiSelectOptionComponent<T> implements OnInit, DoCheck {
 
     protected get value(): T | null {
         return this.abstractControl?.value ?? this.control.value;
+    }
+
+    protected get matcher(): TuiIdentityMatcher<T> {
+        return this.host.identityMatcher || TUI_DEFAULT_IDENTITY_MATCHER;
     }
 
     protected get selected(): boolean {

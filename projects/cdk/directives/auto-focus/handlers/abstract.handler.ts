@@ -12,6 +12,8 @@ export abstract class AbstractTuiAutofocusHandler implements TuiAutofocusHandler
         protected readonly el: ElementRef<HTMLElement>,
     ) {}
 
+    public abstract setFocus(): void;
+
     protected get element(): TuiNativeFocusableElement {
         return this.focusable?.nativeFocusableElement || this.el.nativeElement;
     }
@@ -19,6 +21,4 @@ export abstract class AbstractTuiAutofocusHandler implements TuiAutofocusHandler
     protected get isTextFieldElement(): boolean {
         return this.element.matches('input, textarea, [contenteditable]');
     }
-
-    public abstract setFocus(): void;
 }

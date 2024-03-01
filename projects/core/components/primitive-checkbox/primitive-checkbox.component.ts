@@ -39,6 +39,11 @@ export class TuiPrimitiveCheckboxComponent {
     @Input()
     public invalid = false;
 
+    protected icon: PolymorpheusContent<TuiContext<TuiSizeL>> =
+        this.options.icons.checked;
+
+    protected value: boolean | null = false;
+
     @Input('value')
     public set valueSetter(value: boolean | null) {
         if (value !== false) {
@@ -47,11 +52,6 @@ export class TuiPrimitiveCheckboxComponent {
 
         this.value = value;
     }
-
-    protected icon: PolymorpheusContent<TuiContext<TuiSizeL>> =
-        this.options.icons.checked;
-
-    protected value: boolean | null = false;
 
     protected get appearance(): string {
         switch (this.value) {

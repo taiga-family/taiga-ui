@@ -12,8 +12,8 @@ import {TuiProgressSegmentedComponent} from './progress-segmented.component';
     },
 })
 export class TuiProgressSegmentedDirective {
-    protected readonly nothing = tuiWithStyles(TuiProgressSegmentedComponent);
-
     @Input()
     public segments = 1;
+
+    protected readonly nothing = tuiWithStyles(TuiProgressSegmentedComponent);
 }

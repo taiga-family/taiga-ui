@@ -80,10 +80,6 @@ export class TuiInputDateMultiComponent
     private readonly mobileCalendar = inject(TUI_MOBILE_CALENDAR, {optional: true});
     private readonly options = inject(TUI_INPUT_DATE_OPTIONS);
     private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
-    protected readonly dateTexts$ = inject(TUI_DATE_TEXTS);
-    protected override readonly valueTransformer = inject<
-        AbstractTuiValueTransformer<readonly TuiDay[]>
-    >(TUI_DATE_VALUE_TRANSFORMER, {optional: true});
 
     @Input()
     public min: TuiDay | null = this.options.min;
@@ -116,6 +112,11 @@ export class TuiInputDateMultiComponent
     @Input()
     public rows = 1;
 
+    protected readonly dateTexts$ = inject(TUI_DATE_TEXTS);
+    protected override readonly valueTransformer = inject<
+        AbstractTuiValueTransformer<readonly TuiDay[]>
+    >(TUI_DATE_VALUE_TRANSFORMER, {optional: true});
+
     protected maskitoOptions: MaskitoOptions = maskitoDateOptionsGenerator({
         mode: 'dd/mm/yyyy',
         separator: '.',
@@ -135,6 +136,14 @@ export class TuiInputDateMultiComponent
         ),
     );
 
+    public get nativeFocusableElement(): HTMLInputElement | null {
+        return this.textfield?.nativeFocusableElement || null;
+    }
+
+    public get focused(): boolean {
+        return !!this.textfield?.focused;
+    }
+
     @Input()
     public tagValidator: TuiBooleanHandler<string> = (tag: TuiDay | string) => {
         const {year, month, day} = tuiIsString(tag)
@@ -150,18 +159,10 @@ export class TuiInputDateMultiComponent
         );
     };
 
-    @HostListener('click')
-    protected onClick(): void {
-        if (!this.isMobile) {
-            this.open = !this.open;
-        }
+    public override setDisabledState(): void {
+        super.setDisabledState();
+        this.open = false;
     }
-
-    protected readonly disabledItemHandlerWrapper: TuiMapper<
-        TuiBooleanHandler<string> | TuiBooleanHandler<TuiDay>,
-        TuiBooleanHandler<TuiStringifiableItem<any> | string>
-    > = handler => stringifiable =>
-        tuiIsString(stringifiable) || handler(stringifiable.item);
 
     @HostBinding('attr.data-size')
     protected get size(): TuiSizeL | TuiSizeS {
@@ -178,14 +179,6 @@ export class TuiInputDateMultiComponent
 
     protected get computedMax(): TuiDay {
         return this.max ?? this.options.max;
-    }
-
-    public get nativeFocusableElement(): HTMLInputElement | null {
-        return this.textfield?.nativeFocusableElement || null;
-    }
-
-    public get focused(): boolean {
-        return !!this.textfield?.focused;
     }
 
     protected get computedMobile(): boolean {
@@ -206,6 +199,13 @@ export class TuiInputDateMultiComponent
 
     protected get canOpen(): boolean {
         return this.interactive && !this.computedMobile;
+    }
+
+    @HostListener('click')
+    protected onClick(): void {
+        if (!this.isMobile) {
+            this.open = !this.open;
+        }
     }
 
     protected onIconClick(): void {
@@ -232,6 +232,12 @@ export class TuiInputDateMultiComponent
                 this.value = value;
             });
     }
+
+    protected readonly disabledItemHandlerWrapper: TuiMapper<
+        TuiBooleanHandler<string> | TuiBooleanHandler<TuiDay>,
+        TuiBooleanHandler<TuiStringifiableItem<any> | string>
+    > = handler => stringifiable =>
+        tuiIsString(stringifiable) || handler(stringifiable.item);
 
     protected onEnter(search: string): void {
         if (!this.tagValidator(search)) {
@@ -278,10 +284,5 @@ export class TuiInputDateMultiComponent
 
     protected onFocused(focused: boolean): void {
         this.updateFocused(focused);
-    }
-
-    public override setDisabledState(): void {
-        super.setDisabledState();
-        this.open = false;
     }
 }

@@ -27,6 +27,10 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
     ],
 })
 export class ExampleTuiInputMonthRangeComponent extends AbstractExampleTuiControl {
+    public override cleaner = false;
+
+    public control = new FormControl<TuiMonthRange | null>(null, Validators.required);
+
     protected readonly exampleForm = import('./examples/import/declare-form.md?raw');
     protected readonly exampleModule = import('./examples/import/import-module.md?raw');
     protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
@@ -68,8 +72,4 @@ export class ExampleTuiInputMonthRangeComponent extends AbstractExampleTuiContro
     > = [ALWAYS_FALSE_HANDLER, ({month}) => month % 3 === 0];
 
     protected disabledItemHandler = this.disabledItemHandlerVariants[0];
-
-    public override cleaner = false;
-
-    public control = new FormControl<TuiMonthRange | null>(null, Validators.required);
 }

@@ -32,12 +32,6 @@ import {TuiSelectModule} from '@taiga-ui/kit';
 export class TuiLanguageSwitcherComponent {
     private readonly flagPipe = inject(TuiFlagPipe);
 
-    protected readonly switcher = inject(TuiLanguageSwitcher);
-
-    protected readonly language = new FormControl(
-        tuiCapitalizeFirstLetter(this.switcher.language),
-    );
-
     public readonly flags = new Map<TuiLanguageName, TuiCountryIsoCode>([
         ['belarusian', TuiCountryIsoCode.BY],
         ['chinese', TuiCountryIsoCode.CN],
@@ -56,6 +50,12 @@ export class TuiLanguageSwitcherComponent {
         ['ukrainian', TuiCountryIsoCode.UA],
         ['vietnamese', TuiCountryIsoCode.VN],
     ]);
+
+    protected readonly switcher = inject(TuiLanguageSwitcher);
+
+    protected readonly language = new FormControl(
+        tuiCapitalizeFirstLetter(this.switcher.language),
+    );
 
     protected readonly names: TuiLanguageName[] = Array.from(this.flags.keys());
 

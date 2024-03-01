@@ -42,10 +42,10 @@ export class TuiBlockDirective {
 
     private readonly options = inject(TUI_BLOCK_OPTIONS);
 
-    protected readonly nothing = tuiWithStyles(TuiBlockComponent);
-
     @Input('tuiBlock')
     public size: TuiSizeL | TuiSizeXS | '' = this.options.size;
+
+    protected readonly nothing = tuiWithStyles(TuiBlockComponent);
 
     protected get disabled(): boolean {
         return !!this.control?.disabled;

@@ -86,8 +86,7 @@ function addAttrToExistingInput({
     templateOffset: number;
 }): void {
     attrs.forEach(attr => {
-        const insertTo =
-            existingInput.sourceCodeLocation?.attrs?.['tuitextfield']?.endOffset;
+        const insertTo = existingInput.sourceCodeLocation?.attrs?.tuitextfield?.endOffset;
 
         if (insertTo) {
             recorder.insertLeft(

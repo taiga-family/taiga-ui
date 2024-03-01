@@ -35,7 +35,6 @@ import {MICRO_OFFSET, TuiPullToRefreshService} from './pull-to-refresh.service';
 export class TuiPullToRefreshComponent {
     private readonly isIOS = inject(TUI_IS_IOS);
     private readonly threshold = inject(TUI_PULL_TO_REFRESH_THRESHOLD);
-    protected readonly pulling$ = inject(TuiPullToRefreshService);
 
     @Input()
     public styleHandler: TuiHandler<number, Record<string, any> | null> = this.isIOS
@@ -43,9 +42,11 @@ export class TuiPullToRefreshComponent {
         : () => null;
 
     @Output()
-    public readonly pulled: Observable<unknown> = this.pulling$.pipe(
+    public readonly pulled: Observable<unknown> = inject(TuiPullToRefreshService).pipe(
         filter(distance => distance === this.threshold),
     );
+
+    protected readonly pulling$ = inject(TuiPullToRefreshService);
 
     protected readonly component = inject<PolymorpheusContent<TuiContext<number>>>(
         TUI_PULL_TO_REFRESH_COMPONENT,

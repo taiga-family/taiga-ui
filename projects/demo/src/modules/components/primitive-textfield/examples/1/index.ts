@@ -17,14 +17,14 @@ export class TuiPrimitiveTextfieldExample1 extends AbstractTuiControl<string> {
 
     private isPasswordHidden = true;
 
+    public get focused(): boolean {
+        return !!this.textfield?.focused;
+    }
+
     protected get nativeFocusableElement(): TuiNativeFocusableElement | null {
         return this.computedDisabled || !this.textfield
             ? null
             : this.textfield.nativeFocusableElement;
-    }
-
-    public get focused(): boolean {
-        return !!this.textfield?.focused;
     }
 
     protected get icon(): string {

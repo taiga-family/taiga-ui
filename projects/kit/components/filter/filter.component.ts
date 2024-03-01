@@ -55,6 +55,10 @@ export class TuiFilterComponent<T> extends AbstractTuiMultipleControl<T> {
     @Output()
     public readonly toggledItem = new EventEmitter<T>();
 
+    public get focused(): boolean {
+        return tuiIsNativeFocusedIn(this.el);
+    }
+
     @Input()
     public content: PolymorpheusContent = ({$implicit}: TuiContext<unknown>) =>
         TUI_DEFAULT_STRINGIFY($implicit);
@@ -62,19 +66,15 @@ export class TuiFilterComponent<T> extends AbstractTuiMultipleControl<T> {
     @Input()
     public badgeHandler: TuiHandler<T, number> = item => Number(item);
 
-    public get focused(): boolean {
-        return tuiIsNativeFocusedIn(this.el);
-    }
-
-    protected get badgeSize(): TuiSizeS | TuiSizeXL {
-        return badgeSizeMap[this.size];
-    }
-
     public onCheckbox(value: boolean, item: T): void {
         this.toggledItem.emit(item);
         this.value = value
             ? [...this.value, item]
             : this.value.filter(arrItem => !this.identityMatcher(arrItem, item));
+    }
+
+    protected get badgeSize(): TuiSizeS | TuiSizeXL {
+        return badgeSizeMap[this.size];
     }
 
     protected isCheckboxEnabled(item: T): boolean {

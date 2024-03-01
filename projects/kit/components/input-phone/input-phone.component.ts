@@ -73,14 +73,6 @@ export class TuiInputPhoneComponent
     private readonly options = inject(TUI_INPUT_PHONE_OPTIONS);
     private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
 
-    @Input('countryCode')
-    public set countryCodeSetter(newCountryCode: string) {
-        const prevCountryCode = this.countryCode;
-
-        this.countryCode = newCountryCode;
-        this.updateValueWithNewCountryCode(prevCountryCode, newCountryCode);
-    }
-
     @Input()
     public phoneMaskAfterCountryCode = this.options.phoneMaskAfterCountryCode;
 
@@ -93,16 +85,19 @@ export class TuiInputPhoneComponent
     @Output()
     public readonly searchChange = new EventEmitter<string>();
 
+    public countryCode = this.options.countryCode;
+
     @ContentChild(TuiDataListDirective, {read: TemplateRef})
     protected readonly datalist?: TemplateRef<TuiContext<TuiActiveZoneDirective>>;
 
-    public countryCode = this.options.countryCode;
-
     protected open = false;
 
-    @HostBinding('attr.data-size')
-    protected get size(): TuiSizeL | TuiSizeS {
-        return this.textfieldSize.size;
+    @Input('countryCode')
+    public set countryCodeSetter(newCountryCode: string) {
+        const prevCountryCode = this.countryCode;
+
+        this.countryCode = newCountryCode;
+        this.updateValueWithNewCountryCode(prevCountryCode, newCountryCode);
     }
 
     public get nativeFocusableElement(): HTMLInputElement | null {
@@ -133,6 +128,44 @@ export class TuiInputPhoneComponent
 
     public get inputMode(): TuiInputMode {
         return this.allowText ? 'text' : 'numeric';
+    }
+
+    public onValueChange(value: string): void {
+        const parsed = isText(value)
+            ? value
+            : value.replace(TUI_MASK_SYMBOLS_REGEXP, '').slice(0, this.maxPhoneLength);
+
+        this.updateSearch(parsed);
+        this.value = parsed === this.countryCode || isText(parsed) ? '' : parsed;
+        this.open = true;
+
+        if (!this.value && !this.allowText) {
+            this.nativeValue = this.nonRemovablePrefix;
+        }
+    }
+
+    public handleOption(item: string): void {
+        this.focusInput();
+        this.value = item;
+        this.nativeValue = maskitoTransform(this.value, this.maskOptions);
+        this.updateSearch('');
+        this.open = false;
+    }
+
+    public override setDisabledState(): void {
+        super.setDisabledState();
+        this.open = false;
+    }
+
+    public override writeValue(value: string | null): void {
+        super.writeValue(value);
+        this.nativeValue = maskitoTransform(value || '', this.maskOptions);
+        this.updateSearch('');
+    }
+
+    @HostBinding('attr.data-size')
+    protected get size(): TuiSizeL | TuiSizeS {
+        return this.textfieldSize.size;
     }
 
     protected get canOpen(): boolean {
@@ -174,39 +207,6 @@ export class TuiInputPhoneComponent
         if (!active && !this.allowText && this.nativeFocusableElement) {
             this.nativeValue = this.nativeValue.replace(/\D$/, '');
         }
-    }
-
-    public onValueChange(value: string): void {
-        const parsed = isText(value)
-            ? value
-            : value.replace(TUI_MASK_SYMBOLS_REGEXP, '').slice(0, this.maxPhoneLength);
-
-        this.updateSearch(parsed);
-        this.value = parsed === this.countryCode || isText(parsed) ? '' : parsed;
-        this.open = true;
-
-        if (!this.value && !this.allowText) {
-            this.nativeValue = this.nonRemovablePrefix;
-        }
-    }
-
-    public handleOption(item: string): void {
-        this.focusInput();
-        this.value = item;
-        this.nativeValue = maskitoTransform(this.value, this.maskOptions);
-        this.updateSearch('');
-        this.open = false;
-    }
-
-    public override setDisabledState(): void {
-        super.setDisabledState();
-        this.open = false;
-    }
-
-    public override writeValue(value: string | null): void {
-        super.writeValue(value);
-        this.nativeValue = maskitoTransform(value || '', this.maskOptions);
-        this.updateSearch('');
     }
 
     protected getFallbackValue(): string {

@@ -32,20 +32,6 @@ export class TuiTabsDirective implements AfterViewChecked {
         return this.tabs[this.activeItemIndex] || null;
     }
 
-    @HostListener(TUI_TAB_ACTIVATE, ['$event', '$event.target'])
-    protected onActivate(event: Event, element: HTMLElement): void {
-        const index = this.tabs.findIndex(tab => tab === element);
-
-        event.stopPropagation();
-
-        if (index === this.activeItemIndex) {
-            return;
-        }
-
-        this.activeItemIndexChange.emit(index);
-        this.activeItemIndex = index;
-    }
-
     public moveFocus(current: HTMLElement, step: number): void {
         const {tabs} = this;
 
@@ -61,5 +47,19 @@ export class TuiTabsDirective implements AfterViewChecked {
             nativeElement.classList.toggle('_active', active);
             nativeElement.setAttribute('tabIndex', active ? '0' : '-1');
         });
+    }
+
+    @HostListener(TUI_TAB_ACTIVATE, ['$event', '$event.target'])
+    protected onActivate(event: Event, element: HTMLElement): void {
+        const index = this.tabs.findIndex(tab => tab === element);
+
+        event.stopPropagation();
+
+        if (index === this.activeItemIndex) {
+            return;
+        }
+
+        this.activeItemIndexChange.emit(index);
+        this.activeItemIndex = index;
     }
 }

@@ -78,10 +78,6 @@ export class TuiInputDateComponent
     private readonly dialogs = inject(TuiDialogService);
     private readonly mobileCalendar = inject(TUI_MOBILE_CALENDAR, {optional: true});
     private month: TuiMonth | null = null;
-    protected readonly dateTexts$ = inject(TUI_DATE_TEXTS);
-    protected override readonly valueTransformer = inject(TUI_DATE_VALUE_TRANSFORMER, {
-        optional: true,
-    });
 
     @Input()
     public min: TuiDay | null = this.options.min;
@@ -102,23 +98,20 @@ export class TuiInputDateComponent
     public defaultActiveYearMonth = TuiMonth.currentLocal();
 
     protected open = false;
+    protected readonly dateTexts$ = inject(TUI_DATE_TEXTS);
+    protected override readonly valueTransformer = inject(TUI_DATE_VALUE_TRANSFORMER, {
+        optional: true,
+    });
 
+    protected readonly isMobile = inject(TUI_IS_MOBILE);
+    protected readonly dateFormat = inject(TUI_DATE_FORMAT);
+    protected readonly dateSeparator = inject(TUI_DATE_SEPARATOR);
     protected readonly type!: TuiContext<TuiActiveZoneDirective>;
-
     protected readonly filler$: Observable<string> = this.dateTexts$.pipe(
         map(dateTexts =>
             changeDateSeparator(dateTexts[this.dateFormat], this.dateSeparator),
         ),
     );
-
-    protected readonly isMobile = inject(TUI_IS_MOBILE);
-    protected readonly dateFormat = inject(TUI_DATE_FORMAT);
-    protected readonly dateSeparator = inject(TUI_DATE_SEPARATOR);
-
-    @HostBinding('attr.data-size')
-    protected get size(): TuiSizeL | TuiSizeS {
-        return this.textfieldSize.size;
-    }
 
     public get computedMin(): TuiDay {
         return this.min ?? this.options.min;
@@ -136,16 +129,16 @@ export class TuiInputDateComponent
         return !!this.textfield?.focused;
     }
 
-    protected get computedMobile(): boolean {
-        return this.isMobile && (!!this.mobileCalendar || this.nativePicker);
+    public get nativeValue(): string {
+        return this.nativeFocusableElement?.value || '';
     }
 
-    protected get nativePicker(): boolean {
-        return this.options.nativePicker;
-    }
+    public set nativeValue(value: string) {
+        if (!this.nativeFocusableElement) {
+            return;
+        }
 
-    protected get calendarIcon(): TuiInputDateOptions['icon'] {
-        return this.options.icon;
+        this.nativeFocusableElement.value = value;
     }
 
     public get computedValue(): string {
@@ -158,6 +151,48 @@ export class TuiInputDateComponent
         return value ? value.toString(this.dateFormat, this.dateSeparator) : nativeValue;
     }
 
+    public onValueChange(value: string): void {
+        if (this.control) {
+            this.control.updateValueAndValidity({emitEvent: false});
+        }
+
+        if (!value) {
+            this.onOpenChange(true);
+        }
+
+        this.value =
+            value.length !== DATE_FILLER_LENGTH
+                ? null
+                : TuiDay.normalizeParse(value, this.dateFormat);
+    }
+
+    public override setDisabledState(): void {
+        super.setDisabledState();
+        this.open = false;
+    }
+
+    public override writeValue(value: TuiDay | null): void {
+        super.writeValue(value);
+        this.nativeValue = value ? this.computedValue : '';
+    }
+
+    @HostBinding('attr.data-size')
+    protected get size(): TuiSizeL | TuiSizeS {
+        return this.textfieldSize.size;
+    }
+
+    protected get computedMobile(): boolean {
+        return this.isMobile && (!!this.mobileCalendar || this.nativePicker);
+    }
+
+    protected get nativePicker(): boolean {
+        return this.options.nativePicker;
+    }
+
+    protected get calendarIcon(): TuiInputDateOptions['icon'] {
+        return this.options.icon;
+    }
+
     protected get computedActiveYearMonth(): TuiMonth {
         if (this.items[0] && this.value && this.value.daySame(this.items[0].day)) {
             return this.items[0].displayDay;
@@ -168,18 +203,6 @@ export class TuiInputDateComponent
             this.value ||
             tuiDateClamp(this.defaultActiveYearMonth, this.computedMin, this.computedMax)
         );
-    }
-
-    public get nativeValue(): string {
-        return this.nativeFocusableElement?.value || '';
-    }
-
-    public set nativeValue(value: string) {
-        if (!this.nativeFocusableElement) {
-            return;
-        }
-
-        this.nativeFocusableElement.value = value;
     }
 
     protected get canOpen(): boolean {
@@ -245,21 +268,6 @@ export class TuiInputDateComponent
             });
     }
 
-    public onValueChange(value: string): void {
-        if (this.control) {
-            this.control.updateValueAndValidity({emitEvent: false});
-        }
-
-        if (!value) {
-            this.onOpenChange(true);
-        }
-
-        this.value =
-            value.length !== DATE_FILLER_LENGTH
-                ? null
-                : TuiDay.normalizeParse(value, this.dateFormat);
-    }
-
     protected onDayClick(value: TuiDay): void {
         this.value = value;
         this.open = false;
@@ -275,16 +283,6 @@ export class TuiInputDateComponent
 
     protected onFocused(focused: boolean): void {
         this.updateFocused(focused);
-    }
-
-    public override setDisabledState(): void {
-        super.setDisabledState();
-        this.open = false;
-    }
-
-    public override writeValue(value: TuiDay | null): void {
-        super.writeValue(value);
-        this.nativeValue = value ? this.computedValue : '';
     }
 
     protected override valueIdenticalComparator(

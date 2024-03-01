@@ -17,6 +17,9 @@ export class TuiScrollbarDirective {
     private readonly el: HTMLElement = inject(TUI_SCROLL_REF).nativeElement;
     private readonly style: CSSStyleDeclaration = inject(ElementRef).nativeElement.style;
 
+    @Input()
+    public tuiScrollbar: 'horizontal' | 'vertical' = 'vertical';
+
     protected readonly scrollSub = inject(TuiScrollbarService)
         .pipe(takeUntil(inject(TuiDestroyService)))
         .subscribe(([top, left]) => {
@@ -39,9 +42,6 @@ export class TuiScrollbarDirective {
                 this.style.width = `${this.view * 100}%`;
             }
         });
-
-    @Input()
-    public tuiScrollbar: 'horizontal' | 'vertical' = 'vertical';
 
     private get scrolled(): number {
         const {

@@ -30,6 +30,10 @@ const ONE_DOT: [string] = ['var(--tui-success-fill)'];
     ],
 })
 export class ExampleTuiInputDateComponent extends AbstractExampleTuiControl {
+    public override cleaner = false;
+
+    public control = new FormControl<TuiDay | null>(null, Validators.required);
+
     protected readonly exampleForm = import('./examples/import/declare-form.md?raw');
 
     protected readonly exampleModule = import('./examples/import/import-module.md?raw');
@@ -106,8 +110,4 @@ export class ExampleTuiInputDateComponent extends AbstractExampleTuiControl {
     protected markerHandler: TuiMarkerHandler = this.markerHandlerVariants[0];
 
     protected items = this.itemsVariants[0];
-
-    public override cleaner = false;
-
-    public control = new FormControl<TuiDay | null>(null, Validators.required);
 }

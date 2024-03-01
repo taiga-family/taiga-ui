@@ -68,21 +68,6 @@ export class TuiDataListComponent<T> implements TuiDataListAccessor<T> {
 
     protected readonly defaultEmptyContent$ = inject(TUI_NOTHING_FOUND_MESSAGE);
 
-    @tuiPure
-    protected get empty$(): Observable<boolean> {
-        return tuiQueryListChanges(this.options).pipe(map(({length}) => !length));
-    }
-
-    @HostListener('focusin', ['$event.relatedTarget', '$event.currentTarget'])
-    protected onFocusIn(relatedTarget: HTMLElement, currentTarget: HTMLElement): void {
-        if (!currentTarget.contains(relatedTarget) && !this.origin) {
-            this.origin = relatedTarget;
-        }
-    }
-
-    @HostListener('mousedown.prevent')
-    protected noop(): void {}
-
     @HostListener('keydown.arrowDown.prevent', ['$event.target', '1'])
     @HostListener('keydown.arrowUp.prevent', ['$event.target', '-1'])
     public onKeyDownArrow(current: HTMLElement, step: number): void {
@@ -117,6 +102,21 @@ export class TuiDataListComponent<T> implements TuiDataListAccessor<T> {
         tuiMoveFocus(top ? -1 : elements.length, elements, top ? 1 : -1);
         this.handleFocusLossIfNecessary(target);
     }
+
+    @tuiPure
+    protected get empty$(): Observable<boolean> {
+        return tuiQueryListChanges(this.options).pipe(map(({length}) => !length));
+    }
+
+    @HostListener('focusin', ['$event.relatedTarget', '$event.currentTarget'])
+    protected onFocusIn(relatedTarget: HTMLElement, currentTarget: HTMLElement): void {
+        if (!currentTarget.contains(relatedTarget) && !this.origin) {
+            this.origin = relatedTarget;
+        }
+    }
+
+    @HostListener('mousedown.prevent')
+    protected noop(): void {}
 
     private get elements(): readonly HTMLElement[] {
         return Array.from(this.el.querySelectorAll('[tuiOption]'));

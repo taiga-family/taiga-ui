@@ -49,14 +49,6 @@ export abstract class TuiPortalsComponent {
 export abstract class TuiPortalService {
     protected host?: TuiPortalsComponent;
 
-    protected get safeHost(): TuiPortalsComponent {
-        if (!this.host) {
-            throw new TuiNoHostException();
-        }
-
-        return this.host;
-    }
-
     public attach(host: TuiPortalsComponent): void {
         this.host = host;
     }
@@ -79,6 +71,14 @@ export abstract class TuiPortalService {
         if (!viewRef.destroyed) {
             viewRef.destroy();
         }
+    }
+
+    protected get safeHost(): TuiPortalsComponent {
+        if (!this.host) {
+            throw new TuiNoHostException();
+        }
+
+        return this.host;
     }
 }
 

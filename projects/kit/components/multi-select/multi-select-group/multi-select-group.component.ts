@@ -47,10 +47,6 @@ export class TuiMultiSelectGroupComponent<T> {
 
     protected readonly multiSelectTexts$ = inject(TUI_MULTI_SELECT_TEXTS);
 
-    protected get size(): TuiSizeL | TuiSizeXS {
-        return this.options.first?.size || 'm';
-    }
-
     @tuiPure
     protected get empty$(): Observable<boolean> {
         return tuiQueryListChanges(this.options).pipe(map(({length}) => !length));
@@ -86,6 +82,10 @@ export class TuiMultiSelectGroupComponent<T> {
         );
     }
 
+    protected get size(): TuiSizeL | TuiSizeXS {
+        return this.options.first?.size || 'm';
+    }
+
     protected onClick(checked: boolean | null): void {
         if (!this.control.control) {
             return;
@@ -100,14 +100,6 @@ export class TuiMultiSelectGroupComponent<T> {
         this.control.control.setValue(checked ? filtered : [...filtered, ...values]);
     }
 
-    private get values(): readonly T[] {
-        return this.filter(tuiGetOriginalArrayFromQueryList(this.options));
-    }
-
-    private get matcher(): TuiIdentityMatcher<T> {
-        return this.host.identityMatcher || TUI_DEFAULT_IDENTITY_MATCHER;
-    }
-
     @tuiPure
     private get items$(): Observable<readonly T[]> {
         return tuiQueryListChanges(this.options).pipe(
@@ -120,6 +112,14 @@ export class TuiMultiSelectGroupComponent<T> {
         return tuiControlValue<readonly T[]>(this.control).pipe(
             map(value => value || []),
         );
+    }
+
+    private get values(): readonly T[] {
+        return this.filter(tuiGetOriginalArrayFromQueryList(this.options));
+    }
+
+    private get matcher(): TuiIdentityMatcher<T> {
+        return this.host.identityMatcher || TUI_DEFAULT_IDENTITY_MATCHER;
     }
 
     @tuiPure

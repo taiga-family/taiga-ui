@@ -20,9 +20,6 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 @Directive()
 export abstract class AbstractTuiDataListWrapper<T> {
-    @ViewChildren(forwardRef(() => TuiOptionComponent))
-    protected readonly optionsQuery: QueryList<TuiOptionComponent<T>> = EMPTY_QUERY;
-
     @Input()
     public disabledItemHandler: TuiItemsHandlers<T>['disabledItemHandler'] =
         this.itemsHandlers.disabledItemHandler;
@@ -35,6 +32,9 @@ export abstract class AbstractTuiDataListWrapper<T> {
 
     @Output()
     public readonly itemClick = new EventEmitter<T>();
+
+    @ViewChildren(forwardRef(() => TuiOptionComponent))
+    protected readonly optionsQuery: QueryList<TuiOptionComponent<T>> = EMPTY_QUERY;
 
     protected constructor(
         public readonly itemsHandlers: TuiItemsHandlers<T>,

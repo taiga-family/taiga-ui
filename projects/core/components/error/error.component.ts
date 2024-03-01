@@ -26,19 +26,16 @@ import {Observable} from 'rxjs';
     animations: [tuiHeightCollapse, tuiFadeIn],
 })
 export class TuiErrorComponent {
+    protected readonly options = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
+    protected error: TuiValidationError | null = null;
+    protected visible = true;
+    protected readonly mode$ = inject<Observable<TuiBrightness | null>>(TUI_MODE);
+    protected readonly defaultErrorMessage$ = inject(TUI_DEFAULT_ERROR_MESSAGE);
+
     @Input('error')
     public set errorSetter(error: TuiValidationError | string | null) {
         this.error = tuiIsString(error) ? new TuiValidationError(error) : error;
     }
-
-    protected readonly options = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
-
-    protected error: TuiValidationError | null = null;
-
-    protected visible = true;
-
-    protected readonly mode$ = inject<Observable<TuiBrightness | null>>(TUI_MODE);
-    protected readonly defaultErrorMessage$ = inject(TUI_DEFAULT_ERROR_MESSAGE);
 
     @HostListener('animationcancel.self', ['false'])
     @HostListener('animationstart.self', ['true'])

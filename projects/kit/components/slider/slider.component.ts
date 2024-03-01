@@ -34,14 +34,14 @@ import {TUI_SLIDER_OPTIONS} from './slider.options';
          * This function triggers change detection (for {@link valuePercentage} function) when we drag thumb of the input.
          */
         '(input)': '0',
-        '[style.--tui-slider-track-color]': 'options.trackColor',
+        '[style.--tui-slider-track-color]': 'trackColor',
     },
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiSliderComponent {
     private readonly injector = inject(INJECTOR);
     private readonly control = inject(NgControl, {self: true, optional: true});
-    protected readonly options = inject(TUI_SLIDER_OPTIONS);
+    private readonly options = inject(TUI_SLIDER_OPTIONS);
 
     @Input()
     @HostBinding('attr.data-size')
@@ -52,16 +52,41 @@ export class TuiSliderComponent {
 
     public readonly el: HTMLInputElement = inject(ElementRef).nativeElement;
 
+    constructor() {
+        if (this.control instanceof NgModel) {
+            /**
+             * The ValueAccessor.writeValue method is called twice on any value accessor during component initialization,
+             * when a control is bound using [(ngModel)], first time with a phantom null value.
+             * With `changeDetection: ChangeDetectionStrategy.OnPush` the second call of writeValue with real value don't re-render the view.
+             * ___
+             * See this {@link https://github.com/angular/angular/issues/14988 issue}
+             */
+            this.control.valueChanges
+                ?.pipe(tuiWatch(inject(ChangeDetectorRef)), take(1))
+                .subscribe();
+        }
+    }
+
+    @HostBinding('style.--tui-slider-fill-ratio')
+    public get valueRatio(): number {
+        return (this.value - this.min) / (this.max - this.min) || 0;
+    }
+
+    @HostBinding('style.--tui-slider-fill-percentage.%')
+    public get valuePercentage(): number {
+        return 100 * this.valueRatio;
+    }
+
+    public get trackColor(): string {
+        return this.options.trackColor;
+    }
+
     public get min(): number {
         return Number(this.el.min);
     }
 
     public get max(): number {
         return Number(this.el.max || 100);
-    }
-
-    protected get step(): number {
-        return Number(this.el.step) || 1;
     }
 
     public get value(): number {
@@ -80,16 +105,6 @@ export class TuiSliderComponent {
         this.el.value = `${newValue}`;
     }
 
-    @HostBinding('style.--tui-slider-fill-ratio')
-    public get valueRatio(): number {
-        return (this.value - this.min) / (this.max - this.min) || 0;
-    }
-
-    @HostBinding('style.--tui-slider-fill-percentage.%')
-    public get valuePercentage(): number {
-        return 100 * this.valueRatio;
-    }
-
     @HostBinding('style.--tui-slider-segment-width.%')
     protected get segmentWidth(): number {
         return 100 / Math.max(1, this.segments);
@@ -100,18 +115,7 @@ export class TuiSliderComponent {
         return Boolean(this.injector.get(TuiSliderKeyStepsDirective, null));
     }
 
-    constructor() {
-        if (this.control instanceof NgModel) {
-            /**
-             * The ValueAccessor.writeValue method is called twice on any value accessor during component initialization,
-             * when a control is bound using [(ngModel)], first time with a phantom null value.
-             * With `changeDetection: ChangeDetectionStrategy.OnPush` the second call of writeValue with real value don't re-render the view.
-             * ___
-             * See this {@link https://github.com/angular/angular/issues/14988 issue}
-             */
-            this.control.valueChanges
-                ?.pipe(tuiWatch(inject(ChangeDetectorRef)), take(1))
-                .subscribe();
-        }
+    protected get step(): number {
+        return Number(this.el.step) || 1;
     }
 }

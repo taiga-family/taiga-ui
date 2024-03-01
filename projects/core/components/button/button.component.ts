@@ -75,10 +75,6 @@ export class TuiButtonComponent
         return !this.showLoader && tuiIsNativeFocused(this.el);
     }
 
-    protected get loaderSize(): TuiSizeS {
-        return this.size === 'l' || this.size === 'xl' ? 'm' : 's';
-    }
-
     @HostBinding('attr.data-appearance')
     protected get computedAppearance(): string {
         return this.appearance ?? (this.options.appearance || '');
@@ -92,6 +88,10 @@ export class TuiButtonComponent
     @HostBinding('tabIndex')
     protected get tabIndex(): number {
         return this.focusable ? 0 : -1;
+    }
+
+    protected get loaderSize(): TuiSizeS {
+        return this.size === 'l' || this.size === 'xl' ? 'm' : 's';
     }
 
     @HostListener('focusin', ['true'])

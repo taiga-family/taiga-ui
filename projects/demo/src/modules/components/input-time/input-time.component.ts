@@ -27,6 +27,10 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
     ],
 })
 export class ExampleTuiInputTimeComponent extends AbstractExampleTuiControl {
+    public override cleaner = false;
+
+    public control = new FormControl(TuiTime.currentLocal(), Validators.required);
+
     protected readonly exampleModule = import('./examples/import/import-module.md?raw');
 
     protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
@@ -64,10 +68,6 @@ export class ExampleTuiInputTimeComponent extends AbstractExampleTuiControl {
         TypeScript: import('./examples/6/index.ts?raw'),
         HTML: import('./examples/6/index.html?raw'),
     };
-
-    public override cleaner = false;
-
-    public control = new FormControl(TuiTime.currentLocal(), Validators.required);
 
     protected readonly disabledItemHandlerVariants: ReadonlyArray<
         TuiBooleanHandler<TuiTime>

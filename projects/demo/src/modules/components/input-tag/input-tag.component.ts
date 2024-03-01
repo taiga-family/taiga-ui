@@ -30,6 +30,24 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
     ],
 })
 export class ExampleTuiInputTagComponent extends AbstractExampleTuiControl {
+    public override readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = [
+        's',
+        'm',
+        'l',
+    ];
+
+    public override size: TuiSizeL | TuiSizeS =
+        this.sizeVariants[this.sizeVariants.length - 1];
+
+    public readonly control = new FormControl(
+        ['John Cleese', 'Eric Idle', 'Michael Palin'],
+        Validators.required,
+    );
+
+    public override maxLengthVariants: number[] = [10, 20];
+
+    public override maxLength: number | null = null;
+
     protected readonly exampleModule = import('./examples/import/import-module.md?raw');
     protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 
@@ -81,11 +99,6 @@ export class ExampleTuiInputTagComponent extends AbstractExampleTuiControl {
         HTML: import('./examples/9/index.html?raw'),
     };
 
-    public readonly control = new FormControl(
-        ['John Cleese', 'Eric Idle', 'Michael Palin'],
-        Validators.required,
-    );
-
     protected editable = true;
 
     protected uniqueTags = true;
@@ -98,22 +111,9 @@ export class ExampleTuiInputTagComponent extends AbstractExampleTuiControl {
 
     protected icon = '';
 
-    public override maxLengthVariants: number[] = [10, 20];
-
-    public override maxLength: number | null = null;
-
     protected search = '';
 
     protected rows = 100;
-
-    public override readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = [
-        's',
-        'm',
-        'l',
-    ];
-
-    public override size: TuiSizeL | TuiSizeS =
-        this.sizeVariants[this.sizeVariants.length - 1];
 
     protected tagValidatorVariants: ReadonlyArray<TuiBooleanHandler<string>> = [
         ALWAYS_TRUE_HANDLER,

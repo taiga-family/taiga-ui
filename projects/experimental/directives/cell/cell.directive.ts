@@ -18,8 +18,8 @@ import {TuiCellComponent} from './cell.component';
     },
 })
 export class TuiCellDirective {
-    protected readonly nothing = tuiWithStyles(TuiCellComponent);
-
     @Input('tuiCell')
     public size: TuiSizeL | TuiSizeS | '' = 'l';
+
+    protected readonly nothing = tuiWithStyles(TuiCellComponent);
 }

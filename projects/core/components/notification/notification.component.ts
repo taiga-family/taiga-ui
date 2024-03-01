@@ -19,7 +19,7 @@ import {TUI_NOTIFICATION_OPTIONS} from './notification.options';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiNotificationComponent {
-    protected readonly options = inject(TUI_NOTIFICATION_OPTIONS);
+    private readonly options = inject(TUI_NOTIFICATION_OPTIONS);
 
     @Input()
     public icon = this.options.icon;

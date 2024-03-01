@@ -19,6 +19,16 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
     ],
 })
 export class ExampleTuiCheckboxComponent extends AbstractExampleTuiControl {
+    public override readonly sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
+
+    public override size: TuiSizeL = this.sizeVariants[0];
+
+    public readonly control = new FormGroup({
+        testValue1: new FormControl(false),
+        testValue2: new FormControl<boolean | null>(null),
+        testValue3: new FormControl(true),
+    });
+
     protected readonly exampleForm = import('./examples/import/declare-form.md?raw');
     protected readonly exampleOptions = import('./examples/import/define-options.md?raw');
     protected readonly exampleModule = import('./examples/import/import-module.md?raw');
@@ -33,14 +43,4 @@ export class ExampleTuiCheckboxComponent extends AbstractExampleTuiControl {
         TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
     };
-
-    public override readonly sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
-
-    public override size: TuiSizeL = this.sizeVariants[0];
-
-    public readonly control = new FormGroup({
-        testValue1: new FormControl(false),
-        testValue2: new FormControl<boolean | null>(null),
-        testValue3: new FormControl(true),
-    });
 }

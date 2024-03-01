@@ -95,21 +95,10 @@ export class TuiComboBoxComponent<T>
     @Output()
     public readonly searchChange = new EventEmitter<string | null>();
 
-    @ContentChild(TuiDataListDirective, {read: TemplateRef})
-    protected readonly datalist: PolymorpheusContent<TuiContext<TuiActiveZoneDirective>>;
-
     public open = false;
 
-    @HostBinding('attr.data-size')
-    protected get size(): TuiSizeL | TuiSizeS {
-        return this.textfieldSize.size;
-    }
-
-    protected get arrow(): PolymorpheusContent<
-        TuiContext<TuiSizeL | TuiSizeM | TuiSizeS>
-    > {
-        return !this.interactive ? this.arrowMode.disabled : this.arrowMode.interactive;
-    }
+    @ContentChild(TuiDataListDirective, {read: TemplateRef})
+    protected readonly datalist: PolymorpheusContent<TuiContext<TuiActiveZoneDirective>>;
 
     public get nativeFocusableElement(): HTMLInputElement | null {
         return this.textfield?.nativeFocusableElement ?? null;
@@ -124,18 +113,6 @@ export class TuiComboBoxComponent<T>
 
     public get nativeValue(): string {
         return this.value === null ? this.search || '' : this.stringify(this.value);
-    }
-
-    protected get showValueTemplate(): boolean {
-        return tuiIsPresent(this.value) && !this.focused;
-    }
-
-    protected get computedContent(): PolymorpheusContent<TuiValueContentContext<T>> {
-        return this.valueContent || this.nativeValue;
-    }
-
-    protected onActiveZone(active: boolean): void {
-        this.updateFocused(active);
     }
 
     public checkOption(option: T): void {
@@ -156,22 +133,6 @@ export class TuiComboBoxComponent<T>
         if (this.value) {
             this.setNativeValue(this.stringify(item));
         }
-    }
-
-    protected onFieldKeyDownEnter(event: Event): void {
-        if (this.open) {
-            event.preventDefault();
-        }
-
-        const options = this.accessor?.getOptions() || [];
-
-        if (options.length !== 1) {
-            return;
-        }
-
-        this.value = options[0];
-        this.updateSearch(null);
-        this.close();
     }
 
     public onValueChange(value: string): void {
@@ -196,13 +157,52 @@ export class TuiComboBoxComponent<T>
         }
     }
 
+    public toggle(): void {
+        this.hostedDropdown?.updateOpen(!this.open);
+    }
+
+    @HostBinding('attr.data-size')
+    protected get size(): TuiSizeL | TuiSizeS {
+        return this.textfieldSize.size;
+    }
+
+    protected get arrow(): PolymorpheusContent<
+        TuiContext<TuiSizeL | TuiSizeM | TuiSizeS>
+    > {
+        return !this.interactive ? this.arrowMode.disabled : this.arrowMode.interactive;
+    }
+
+    protected get showValueTemplate(): boolean {
+        return tuiIsPresent(this.value) && !this.focused;
+    }
+
+    protected get computedContent(): PolymorpheusContent<TuiValueContentContext<T>> {
+        return this.valueContent || this.nativeValue;
+    }
+
+    protected onActiveZone(active: boolean): void {
+        this.updateFocused(active);
+    }
+
+    protected onFieldKeyDownEnter(event: Event): void {
+        if (this.open) {
+            event.preventDefault();
+        }
+
+        const options = this.accessor?.getOptions() || [];
+
+        if (options.length !== 1) {
+            return;
+        }
+
+        this.value = options[0];
+        this.updateSearch(null);
+        this.close();
+    }
+
     /** @deprecated use 'value' setter */
     protected override updateValue(value: T | null): void {
         super.updateValue(value);
-    }
-
-    public toggle(): void {
-        this.hostedDropdown?.updateOpen(!this.open);
     }
 
     private isStrictMatch(item: T): boolean {

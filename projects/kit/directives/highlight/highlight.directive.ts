@@ -35,12 +35,12 @@ export class TuiHighlightDirective implements OnChanges {
             .subscribe(() => this.updateStyles());
     }
 
-    protected get match(): boolean {
-        return this.indexOf(this.el.textContent) !== -1;
-    }
-
     public ngOnChanges(): void {
         this.updateStyles();
+    }
+
+    protected get match(): boolean {
+        return this.indexOf(this.el.textContent) !== -1;
     }
 
     private updateStyles(): void {

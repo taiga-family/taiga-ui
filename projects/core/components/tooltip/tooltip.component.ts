@@ -26,14 +26,14 @@ export class TuiTooltipComponent<C = any> extends TuiHintOptionsDirective {
     private readonly isMobile = inject(TUI_IS_MOBILE);
     private mode: TuiBrightness | null = null;
 
-    @ViewChild(TuiHintHoverDirective)
-    protected readonly driver$?: TuiHintHoverDirective;
-
     @Input()
     public describeId = '';
 
     @Input()
     public context?: C;
+
+    @ViewChild(TuiHintHoverDirective)
+    protected readonly driver$?: TuiHintHoverDirective;
 
     constructor() {
         super();

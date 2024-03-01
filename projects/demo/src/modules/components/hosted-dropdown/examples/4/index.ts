@@ -21,10 +21,6 @@ export class TuiHostedDropdownExample4 {
 
     protected readonly arrow = TUI_ARROW;
 
-    private get value(): readonly string[] {
-        return this.form.get('control')?.value || [];
-    }
-
     protected get appearance(): string {
         return this.length ? 'whiteblock-active' : 'whiteblock';
     }
@@ -42,5 +38,9 @@ export class TuiHostedDropdownExample4 {
             default:
                 return `${this.length} selected`;
         }
+    }
+
+    private get value(): readonly string[] {
+        return this.form.get('control')?.value || [];
     }
 }

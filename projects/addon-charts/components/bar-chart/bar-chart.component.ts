@@ -35,9 +35,6 @@ export class TuiBarChartComponent {
     private readonly hintOptions = inject(TuiHintOptionsDirective, {optional: true});
     private readonly autoIdString = inject(TuiIdService).generate();
 
-    @ViewChildren(TuiHintHoverDirective)
-    protected readonly drivers: QueryList<Observable<boolean>> = EMPTY_QUERY;
-
     @Input()
     public value: ReadonlyArray<readonly number[]> = [];
 
@@ -50,9 +47,8 @@ export class TuiBarChartComponent {
     @Input()
     public collapsed = false;
 
-    protected get hintContent(): PolymorpheusContent<TuiContext<number>> {
-        return this.hintOptions?.content || '';
-    }
+    @ViewChildren(TuiHintHoverDirective)
+    protected readonly drivers: QueryList<Observable<boolean>> = EMPTY_QUERY;
 
     public get transposed(): ReadonlyArray<readonly number[]> {
         return this.transpose(this.value);
@@ -67,6 +63,10 @@ export class TuiBarChartComponent {
         number
     > = (set, collapsed, max) =>
         (100 * (collapsed ? tuiSum(...set) : Math.max(...set))) / max;
+
+    protected get hintContent(): PolymorpheusContent<TuiContext<number>> {
+        return this.hintOptions?.content || '';
+    }
 
     protected getHintId(index: number): string {
         return `${this.autoIdString}_${index}`;

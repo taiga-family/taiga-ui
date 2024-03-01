@@ -69,11 +69,37 @@ export class TuiInputMonthComponent
     @Input()
     public defaultActiveYear: TuiYear = TuiDay.currentLocal();
 
-    protected activeYear?: TuiYear;
-
     public open = false;
 
     protected readonly formatter = inject(TUI_MONTH_FORMATTER);
+    protected activeYear?: TuiYear;
+
+    public get nativeFocusableElement(): HTMLInputElement | null {
+        return this.textfield?.nativeFocusableElement || null;
+    }
+
+    public get focused(): boolean {
+        return !!this.textfield?.focused;
+    }
+
+    public onValueChange(value: string): void {
+        if (value) {
+            return;
+        }
+
+        this.value = null;
+        this.onOpenChange(!this.nativePicker);
+    }
+
+    public onMonthClick(month: TuiMonth): void {
+        this.value = month;
+        this.close();
+    }
+
+    public override setDisabledState(): void {
+        super.setDisabledState();
+        this.close();
+    }
 
     @HostBinding('attr.data-size')
     protected get size(): TuiSizeL | TuiSizeS {
@@ -88,20 +114,12 @@ export class TuiInputMonthComponent
         return this.max ?? this.options.max;
     }
 
-    public get nativeFocusableElement(): HTMLInputElement | null {
-        return this.textfield?.nativeFocusableElement || null;
-    }
-
     protected get computedDefaultActiveYear(): TuiYear {
         return (
             this.activeYear ||
             this.value ||
             tuiDateClamp(this.defaultActiveYear, this.computedMin, this.computedMax)
         );
-    }
-
-    public get focused(): boolean {
-        return !!this.textfield?.focused;
     }
 
     protected get calendarIcon(): TuiInputDateOptions['icon'] {
@@ -136,20 +154,6 @@ export class TuiInputMonthComponent
             : null;
     }
 
-    public onValueChange(value: string): void {
-        if (value) {
-            return;
-        }
-
-        this.value = null;
-        this.onOpenChange(!this.nativePicker);
-    }
-
-    public onMonthClick(month: TuiMonth): void {
-        this.value = month;
-        this.close();
-    }
-
     protected onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
@@ -160,11 +164,6 @@ export class TuiInputMonthComponent
         }
 
         this.open = open;
-    }
-
-    public override setDisabledState(): void {
-        super.setDisabledState();
-        this.close();
     }
 
     private close(): void {

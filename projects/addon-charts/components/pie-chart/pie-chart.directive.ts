@@ -12,11 +12,6 @@ import {BehaviorSubject, map, pairwise, switchMap, takeUntil, takeWhile} from 'r
 export class TuiPieChartDirective {
     private readonly sector$ = new BehaviorSubject<readonly [number, number]>([0, 0]);
 
-    @Input()
-    public set tuiPieChart(sector: readonly [number, number]) {
-        this.sector$.next(sector);
-    }
-
     constructor() {
         const el: SVGPathElement = inject(ElementRef).nativeElement;
         const performance = inject(PERFORMANCE);
@@ -50,5 +45,10 @@ export class TuiPieChartDirective {
             .subscribe(([start, end]) =>
                 el.setAttribute('d', tuiDescribeSector(start, end)),
             );
+    }
+
+    @Input()
+    public set tuiPieChart(sector: readonly [number, number]) {
+        this.sector$.next(sector);
     }
 }

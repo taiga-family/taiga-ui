@@ -98,6 +98,18 @@ export class TuiDropdownOpenDirective implements OnChanges {
         return this.directive?.dropdownBoxRef?.location.nativeElement;
     }
 
+    public ngOnChanges(): void {
+        this.drive();
+    }
+
+    public toggle(open: boolean): void {
+        if (this.focused && !open) {
+            this.host.focus({preventScroll: true});
+        }
+
+        this.update(open);
+    }
+
     @HostListener('click', ['$event.target', '$event.defaultPrevented'])
     protected onClick(target: HTMLElement, prevented: boolean): void {
         if (!this.editable && !prevented && this.host.contains(target)) {
@@ -138,18 +150,6 @@ export class TuiDropdownOpenDirective implements OnChanges {
 
         this.update(true);
         this.host.focus({preventScroll: true});
-    }
-
-    public ngOnChanges(): void {
-        this.drive();
-    }
-
-    public toggle(open: boolean): void {
-        if (this.focused && !open) {
-            this.host.focus({preventScroll: true});
-        }
-
-        this.update(open);
     }
 
     private get host(): HTMLElement {

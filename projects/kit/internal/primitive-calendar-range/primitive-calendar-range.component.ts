@@ -59,10 +59,10 @@ export class TuiPrimitiveCalendarRangeComponent implements OnInit {
     @Output()
     public readonly dayClick = new EventEmitter<TuiDay>();
 
-    protected hoveredItem: TuiDay | null = null;
     public userViewedMonthFirst: TuiMonth = this.defaultViewedMonthFirst;
     public userViewedMonthSecond: TuiMonth = this.defaultViewedMonthSecond;
 
+    protected hoveredItem: TuiDay | null = null;
     protected valueChanges = inject<Observable<TuiDayRange | null> | null>(
         TUI_CALENDAR_DATE_STREAM,
         {optional: true},
@@ -86,6 +86,10 @@ export class TuiPrimitiveCalendarRangeComponent implements OnInit {
             : this.max;
     }
 
+    public ngOnInit(): void {
+        this.setInitialMonths();
+    }
+
     protected get cappedUserViewedMonthFirst(): TuiMonth {
         return this.userViewedMonthFirst.monthSameOrBefore(this.userViewedMonthSecond)
             ? this.userViewedMonthFirst
@@ -96,10 +100,6 @@ export class TuiPrimitiveCalendarRangeComponent implements OnInit {
         value,
         offset,
     ) => value.append({month: offset});
-
-    public ngOnInit(): void {
-        this.setInitialMonths();
-    }
 
     protected onSectionFirstViewedMonth(month: TuiMonth): void {
         this.userViewedMonthFirst = month;

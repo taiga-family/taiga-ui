@@ -38,15 +38,6 @@ export class TuiTilesComponent {
     @Input()
     public debounce = 0;
 
-    @Input()
-    public set order(map: Map<number, number>) {
-        this.order$.next(map);
-    }
-
-    public get order(): Map<number, number> {
-        return this.order$.value;
-    }
-
     @Output()
     public readonly orderChange = this.el$.pipe(
         debounce(() => timer(this.debounce)),
@@ -58,6 +49,15 @@ export class TuiTilesComponent {
     public element: Element | null = null;
 
     public readonly order$ = new BehaviorSubject(new Map<number, number>());
+
+    @Input()
+    public set order(map: Map<number, number>) {
+        this.order$.next(map);
+    }
+
+    public get order(): Map<number, number> {
+        return this.order$.value;
+    }
 
     @HostListener('pointerleave.silent')
     public rearrange(element?: Element): void {

@@ -85,14 +85,6 @@ export class TuiInputSliderComponent
 
     protected readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
 
-    protected get prefix(): string {
-        return this.controller.prefix;
-    }
-
-    protected get postfix(): string {
-        return this.controller.postfix;
-    }
-
     public get nativeFocusableElement(): TuiNativeFocusableElement | null {
         return !this.inputNumberRef?.nativeFocusableElement || this.computedDisabled
             ? null
@@ -104,6 +96,19 @@ export class TuiInputSliderComponent
             tuiIsNativeFocused(this.nativeFocusableElement) ||
             tuiIsNativeFocused(this.sliderRef?.nativeElement || null)
         );
+    }
+
+    public override writeValue(value: number | null): void {
+        super.writeValue(value);
+        this.textfieldValue = this.value;
+    }
+
+    protected get prefix(): string {
+        return this.controller.prefix;
+    }
+
+    protected get postfix(): string {
+        return this.controller.postfix;
     }
 
     protected get computedSteps(): number {
@@ -178,11 +183,6 @@ export class TuiInputSliderComponent
         }
 
         this.updateFocused(focused);
-    }
-
-    public override writeValue(value: number | null): void {
-        super.writeValue(value);
-        this.textfieldValue = this.value;
     }
 
     protected getFallbackValue(): number {

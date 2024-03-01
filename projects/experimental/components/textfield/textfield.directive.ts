@@ -24,9 +24,6 @@ export class TuiTextfieldDirective implements DoCheck {
     private readonly appearance = inject(TuiAppearanceDirective);
     private readonly options = inject(TUI_TEXTFIELD_OPTIONS);
 
-    protected readonly textfield = inject(TuiTextfieldComponent);
-    protected readonly id = inject(TuiIdService).generate();
-
     @Input()
     public readOnly = false;
 
@@ -39,6 +36,8 @@ export class TuiTextfieldDirective implements DoCheck {
     @Input()
     public state: TuiInteractiveStateT | null = null;
 
+    protected readonly textfield = inject(TuiTextfieldComponent);
+    protected readonly id = inject(TuiIdService).generate();
     protected readonly el: HTMLInputElement = inject(ElementRef).nativeElement;
 
     public ngDoCheck(): void {

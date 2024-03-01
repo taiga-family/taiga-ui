@@ -25,13 +25,6 @@ export class TuiNativeValidatorDirective implements Validator {
     @Input()
     public tuiNativeValidator = 'Invalid';
 
-    @HostListener('blur')
-    protected handleValidation(): void {
-        this.el.setCustomValidity(
-            this.control?.touched && this.control?.invalid ? this.tuiNativeValidator : '',
-        );
-    }
-
     public validate(control: AbstractControl): null {
         this.control = control;
 
@@ -40,6 +33,13 @@ export class TuiNativeValidatorDirective implements Validator {
             .subscribe(() => this.handleValidation());
 
         return null;
+    }
+
+    @HostListener('blur')
+    protected handleValidation(): void {
+        this.el.setCustomValidity(
+            this.control?.touched && this.control?.invalid ? this.tuiNativeValidator : '',
+        );
     }
 
     private get el(): HTMLInputElement {

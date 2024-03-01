@@ -129,6 +129,14 @@ export class TuiPaginationComponent
         return tuiIsNativeFocusedIn(this.el);
     }
 
+    public get arrowIsDisabledLeft(): boolean {
+        return this.index === 0;
+    }
+
+    public get arrowIsDisabledRight(): boolean {
+        return this.reverseIndex === 0;
+    }
+
     /**
      * Number of items in a container.
      */
@@ -138,14 +146,6 @@ export class TuiPaginationComponent
 
     protected get buttonSize(): TuiSizeXS {
         return this.size === 'm' ? 'xs' : 's';
-    }
-
-    public get arrowIsDisabledLeft(): boolean {
-        return this.index === 0;
-    }
-
-    public get arrowIsDisabledRight(): boolean {
-        return this.reverseIndex === 0;
     }
 
     protected elementIsFocusable(index: number): boolean {

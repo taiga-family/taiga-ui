@@ -81,12 +81,6 @@ export class TuiTextfieldComponent<T>
         self: true,
     });
 
-    @ContentChild(TuiTextfieldDirective)
-    protected readonly directive?: TuiTextfieldDirective;
-
-    @ContentChild(TuiLabelDirective)
-    protected readonly label?: unknown;
-
     @Input()
     public filler = '';
 
@@ -96,16 +90,21 @@ export class TuiTextfieldComponent<T>
     @Input()
     public content: PolymorpheusContent<TuiTextfieldContext<T>>;
 
-    protected side = 0;
+    // TODO: Refactor
+    public readonly focusedChange = EMPTY;
 
+    @ContentChild(TuiTextfieldDirective)
+    protected readonly directive?: TuiTextfieldDirective;
+
+    @ContentChild(TuiLabelDirective)
+    protected readonly label?: unknown;
+
+    protected side = 0;
     protected readonly change$ = inject(TuiTextfieldOptionsDirective, {optional: true})
         ?.change$;
 
     protected readonly options = inject(TUI_TEXTFIELD_OPTIONS);
     protected readonly control = inject(NgControl, {optional: true});
-
-    // TODO: Refactor
-    public readonly focusedChange = EMPTY;
 
     public get nativeFocusableElement(): HTMLInputElement {
         return this.input;
@@ -118,6 +117,11 @@ export class TuiTextfieldComponent<T>
     // TODO: Do not change to `this.input`, will be refactored
     public get focused(): boolean {
         return !!this.dropdown?.dropdown || tuiIsNativeFocused(this.el?.nativeElement);
+    }
+
+    public handleOption(option: T): void {
+        this.directive?.setValue(this.stringify(option));
+        this.dropdown?.toggle(false);
     }
 
     protected get input(): HTMLInputElement {
@@ -141,10 +145,5 @@ export class TuiTextfieldComponent<T>
             !!this.computedFiller &&
             (!!this.input.value || !this.input.placeholder)
         );
-    }
-
-    public handleOption(option: T): void {
-        this.directive?.setValue(this.stringify(option));
-        this.dropdown?.toggle(false);
     }
 }

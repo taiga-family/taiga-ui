@@ -12,8 +12,8 @@ import {TuiTitleComponent} from './title.component';
     },
 })
 export class TuiTitleDirective {
-    protected readonly nothing = tuiWithStyles(TuiTitleComponent);
-
     @Input('tuiTitle')
     public size: TuiSizeL | TuiSizeS | '' = '';
+
+    protected readonly nothing = tuiWithStyles(TuiTitleComponent);
 }

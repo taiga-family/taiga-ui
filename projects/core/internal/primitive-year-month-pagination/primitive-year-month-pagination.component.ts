@@ -38,26 +38,12 @@ export class TuiPrimitiveYearMonthPaginationComponent
     @Output()
     public readonly yearClick = new EventEmitter<TuiYear>();
 
-    protected get computedMin(): TuiMonth {
-        return this.min ?? TUI_FIRST_DAY;
-    }
-
-    protected get computedMax(): TuiMonth {
-        return this.max ?? TUI_LAST_DAY;
-    }
-
     public get prevMonthDisabled(): boolean {
         return this.value.monthSameOrBefore(this.computedMin);
     }
 
     public get nextMonthDisabled(): boolean {
         return this.value.monthSameOrAfter(this.computedMax);
-    }
-
-    protected get oneYear(): boolean {
-        const {computedMin, computedMax} = this;
-
-        return computedMin.year === computedMax.year;
     }
 
     public onYearClick(): void {
@@ -70,6 +56,20 @@ export class TuiPrimitiveYearMonthPaginationComponent
 
     public onNextMonthClick(): void {
         this.appendValueWithLimit({month: 1});
+    }
+
+    protected get computedMin(): TuiMonth {
+        return this.min ?? TUI_FIRST_DAY;
+    }
+
+    protected get computedMax(): TuiMonth {
+        return this.max ?? TUI_LAST_DAY;
+    }
+
+    protected get oneYear(): boolean {
+        const {computedMin, computedMax} = this;
+
+        return computedMin.year === computedMax.year;
     }
 
     private appendValueWithLimit(date: TuiMonthLike): void {

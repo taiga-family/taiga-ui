@@ -26,16 +26,16 @@ export class TuiTreeItemContentComponent {
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly context = inject<TuiTreeItemContext>(POLYMORPHEUS_CONTEXT);
 
-    protected get isExpanded(): boolean {
-        return this.context.$implicit.isExpanded;
-    }
-
     @HostBinding('class._expandable')
     protected get isExpandable(): boolean {
         return (
             this.context.$implicit.isExpandable &&
             this.controller !== TUI_DEFAULT_TREE_CONTROLLER
         );
+    }
+
+    protected get isExpanded(): boolean {
+        return this.context.$implicit.isExpanded;
     }
 
     protected onClick(): void {
