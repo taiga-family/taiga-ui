@@ -31,15 +31,16 @@ import {distinctUntilChanged, map, share, startWith} from 'rxjs';
 export class TuiDocMainComponent {
     private readonly icons = inject(TUI_DOC_ICONS);
 
-    protected readonly theme = inject(TuiThemeService);
-    protected readonly night = inject(TuiThemeNightService);
-    protected readonly change$ = this.night;
-    protected readonly night$ = this.change$.pipe(
+    public readonly night = inject(TuiThemeNightService);
+    public readonly change$ = this.night;
+    public readonly night$ = this.change$.pipe(
         startWith(null),
         map(() => this.night.value),
         distinctUntilChanged(),
         share(),
     );
+
+    protected readonly theme = inject(TuiThemeService);
 
     @HostBinding('attr.data-mode')
     protected get mode(): TuiBrightness | null {
