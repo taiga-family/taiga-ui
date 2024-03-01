@@ -115,7 +115,7 @@
         "@schematics/angular": "15.2.10",
         "@taiga-ui/browserslist-config": "0.6.0",
         "@taiga-ui/commitlint-config": "0.6.0",
-        "@taiga-ui/cspell-config": "0.35.0",
+        "@taiga-ui/cspell-config": "0.35.1",
         "@taiga-ui/eslint-plugin-experience": "0.62.0",
         "@taiga-ui/prettier-config": "0.9.0",
         "@taiga-ui/stylelint-config": "0.19.0",
