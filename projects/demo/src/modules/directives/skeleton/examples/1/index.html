@@ -1,0 +1,60 @@
+<label tuiLabel>
+    <input
+        tuiToggle
+        type="checkbox"
+        [(ngModel)]="skeleton"
+    />
+    Show skeleton
+</label>
+<p>
+    <tui-avatar
+        src="AI"
+        [tuiSkeleton]="skeleton"
+    ></tui-avatar>
+    <tui-avatar
+        src="https://avatars.githubusercontent.com/u/11832552"
+        [tuiSkeleton]="skeleton"
+    ></tui-avatar>
+    <tui-avatar
+        src="❤️"
+        [tuiSkeleton]="skeleton"
+    ></tui-avatar>
+    <tui-avatar
+        appearance="primary"
+        src="$"
+        [tuiSkeleton]="skeleton"
+    ></tui-avatar>
+</p>
+<section
+    tuiCardLarge
+    tuiSurface="flat"
+    [tuiSkeleton]="skeleton"
+>
+    <h2 tuiHeader>
+        <span tuiTitle>
+            Card
+            <span tuiSubtitle>Subtitle</span>
+        </span>
+    </h2>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna
+    aliqua.
+</section>
+<p>
+    <button
+        tuiButton
+        [tuiSkeleton]="skeleton"
+    >
+        Awesome
+    </button>
+    <button
+        appearance="secondary"
+        tuiButton
+        [tuiSkeleton]="skeleton"
+    >
+        Cool
+    </button>
+</p>
+<p>
+    <tui-chip [tuiSkeleton]="skeleton">Chip</tui-chip>
+    <tui-badge [tuiSkeleton]="skeleton">Dale</tui-badge>
+</p>

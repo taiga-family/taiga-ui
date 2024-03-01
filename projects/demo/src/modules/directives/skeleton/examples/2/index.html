@@ -1,0 +1,33 @@
+<p>
+    You can pass
+    <code>boolean</code>
+    to toggle skeleton for elements. For multi line text you can use
+    <code>string</code>
+    to serve as a placeholder underneath the text skeleton or a
+    <code>number</code>
+    to generate this many random sized words, while your actual text is loading
+</p>
+<label tuiLabel>
+    <input
+        tuiToggle
+        type="checkbox"
+        [(ngModel)]="skeleton"
+    />
+    Show skeleton
+</label>
+
+<p>
+    <span
+        [tuiSkeleton]="
+            skeleton
+                ? 'This text serves as the content behind the skeleton and depending on its length, the skeleton will adjust to fit it.'
+                : ''
+        "
+    >
+        {{ skeleton ? '' : 'This text will be replaced by a placeholder.' }}
+    </span>
+</p>
+
+<span [tuiSkeleton]="skeleton && 20">
+    {{ skeleton ? '' : 'This text will be replaced by a skeleton made of 20 random length non-breaking spaces.' }}
+</span>
