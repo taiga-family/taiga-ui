@@ -138,7 +138,7 @@
         "@taiga-ui/stylelint-config": "0.12.2",
         "@taiga-ui/tsconfig": "0.11.0",
         "@testing-library/cypress": "10.0.1",
-        "@tinkoff/ng-event-plugins": "3.1.0",
+        "@tinkoff/ng-event-plugins": "3.1.1",
         "@tinkoff/tui-editor": "1.9.0",
         "@types/glob": "8.1.0",
         "@types/node": "20.10.4",
