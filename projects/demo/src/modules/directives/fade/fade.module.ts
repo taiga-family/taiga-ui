@@ -7,7 +7,7 @@ import {
     TuiScrollableDirective,
     TuiScrollbarComponent,
 } from '@taiga-ui/core';
-import {TuiFadeModule} from '@taiga-ui/experimental';
+import {TuiFadeDirective} from '@taiga-ui/kit';
 
 import {TuiFadeExample1} from './examples/1';
 import {TuiFadeExample2} from './examples/2';
@@ -17,7 +17,7 @@ import {ExampleTuiFadeComponent} from './fade.component';
 @NgModule({
     imports: [
         CommonModule,
-        TuiFadeModule,
+        TuiFadeDirective,
         TuiNotificationModule,
         TuiScrollbarComponent,
         TuiLinkModule,
@@ -32,4 +32,4 @@ import {ExampleTuiFadeComponent} from './fade.component';
     ],
     exports: [ExampleTuiFadeComponent],
 })
-export class ExampleTuiFadeModule {}
+export class ExampleTuiFadeDirective {}

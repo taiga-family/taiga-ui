@@ -349,14 +349,6 @@ export const ROUTES: Routes = [
         },
     },
     {
-        path: 'experimental/fade',
-        loadChildren: async () =>
-            (await import('../experimental/fade/fade.module')).ExampleTuiFadeModule,
-        data: {
-            title: 'Fade',
-        },
-    },
-    {
         path: 'experimental/header',
         loadChildren: async () =>
             (await import('../experimental/header/header.module')).ExampleTuiHeaderModule,
@@ -660,6 +652,14 @@ export const ROUTES: Routes = [
                 .ExampleTuiDropdownSelectionModule,
         data: {
             title: 'DropdownSelection',
+        },
+    },
+    {
+        path: 'directives/fade',
+        loadChildren: async () =>
+            (await import('../directives/fade/fade.module')).ExampleTuiFadeDirective,
+        data: {
+            title: 'Fade',
         },
     },
     {

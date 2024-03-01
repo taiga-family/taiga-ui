@@ -892,12 +892,6 @@ export const pages: TuiDocPages = [
     },
     {
         section: 'Experimental',
-        title: 'Fade',
-        keywords: 'overflow, ellipsis, gradient, clamp, line',
-        route: '/experimental/fade',
-    },
-    {
-        section: 'Experimental',
         title: 'Header',
         keywords: 'header, заголовок, item',
         route: '/experimental/header',
@@ -1386,6 +1380,12 @@ export const pages: TuiDocPages = [
                 title: 'Zoom',
                 keywords: 'zoom, scale, pinch, зум, масштаб',
                 route: '/directives/zoom',
+            },
+            {
+                section: 'Tools',
+                title: 'Fade',
+                keywords: 'overflow, ellipsis, gradient, clamp, line',
+                route: '/directives/fade',
             },
         ],
     },

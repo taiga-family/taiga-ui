@@ -13,6 +13,7 @@ import {TuiFadeComponent} from './fade.component';
 const BUFFER = 1; // buffer for rounding issues
 
 @Directive({
+    standalone: true,
     selector: '[tuiFade]',
     providers: [
         TuiDestroyService,

@@ -10,8 +10,8 @@ import {
     TuiNotificationModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiFadeModule, TuiIconModule} from '@taiga-ui/experimental';
-import {TuiBadgeDirective, TuiRadioListModule} from '@taiga-ui/kit';
+import {TuiIconModule} from '@taiga-ui/experimental';
+import {TuiBadgeDirective, TuiFadeDirective, TuiRadioListModule} from '@taiga-ui/kit';
 
 import {ExampleTuiBadgeComponent} from './badge.component';
 import {TuiBadgeExample1} from './examples/1';
@@ -30,7 +30,7 @@ import {TuiBadgeExample6} from './examples/6';
         TuiRadioListModule,
         FormsModule,
         CommonModule,
-        TuiFadeModule,
+        TuiFadeDirective,
         TuiNotificationModule,
         TuiBadgeDirective,
         TuiTextfieldControllerModule,

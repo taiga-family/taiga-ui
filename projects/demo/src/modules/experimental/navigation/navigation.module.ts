@@ -15,7 +15,6 @@ import {
     TuiBadgeNotificationModule,
     TuiButtonModule,
     TuiCardModule,
-    TuiFadeModule,
     TuiHeaderDirective,
     TuiIconModule,
     TuiNavigationModule,
@@ -27,6 +26,7 @@ import {
     TuiAvatarComponent,
     TuiBadgeDirective,
     TuiBreadcrumbsModule,
+    TuiFadeDirective,
     TuiTabsModule,
 } from '@taiga-ui/kit';
 
@@ -49,7 +49,7 @@ import {ExampleTuiNavigationComponent} from './navigation.component';
         TuiBadgeNotificationModule,
         TuiDropdownModule,
         TuiDataListModule,
-        TuiFadeModule,
+        TuiFadeDirective,
         TuiExpandModule,
         TuiTabsModule,
         TuiCardModule,
