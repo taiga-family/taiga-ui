@@ -31,16 +31,16 @@ export class TuiDirectiveStylesService implements OnDestroy {
 
     public readonly map = new Map();
 
-    public ngOnDestroy(): void {
-        this.map.forEach(component => component.destroy());
-    }
-
-    protected addComponent(component: Type<unknown>): void {
+    public addComponent(component: Type<unknown>): void {
         if (!this.map.has(component)) {
             this.map.set(
                 component,
                 this.resolver.resolveComponentFactory(component).create(this.injector),
             );
         }
+    }
+
+    public ngOnDestroy(): void {
+        this.map.forEach(component => component.destroy());
     }
 }
