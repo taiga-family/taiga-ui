@@ -388,6 +388,15 @@ export const ROUTES: Routes = [
         },
     },
     {
+        path: 'experimental/comment',
+        loadChildren: async () =>
+            (await import('../experimental/comment/comment.module'))
+                .ExampleTuiCommentModule,
+        data: {
+            title: 'Comment',
+        },
+    },
+    {
         path: 'experimental/compass',
         loadChildren: async () =>
             (await import('../experimental/compass/compass.module'))

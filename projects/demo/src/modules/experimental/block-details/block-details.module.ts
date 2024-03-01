@@ -1,13 +1,13 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {RouterModule} from '@angular/router';
-import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
+import {tuiGetDocModules} from '@taiga-ui/addon-doc';
 import {TuiNotificationModule} from '@taiga-ui/core';
 import {
     TuiAmountPipeModule,
     TuiAvatarModule,
     TuiBadgeModule,
     TuiBlockDetailsModule,
+    TuiCommentModule,
     TuiFadeModule,
     TuiTitleModule,
 } from '@taiga-ui/experimental';
@@ -19,15 +19,15 @@ import {TuiBlockDetailsExample2} from './examples/2';
 @NgModule({
     imports: [
         CommonModule,
-        TuiAddonDocModule,
         TuiAvatarModule,
         TuiAmountPipeModule,
         TuiBadgeModule,
         TuiTitleModule,
+        TuiCommentModule,
         TuiBlockDetailsModule,
         TuiFadeModule,
         TuiNotificationModule,
-        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiBlockDetailsComponent)),
+        tuiGetDocModules(ExampleTuiBlockDetailsComponent),
     ],
     declarations: [
         ExampleTuiBlockDetailsComponent,
