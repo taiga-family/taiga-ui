@@ -6,10 +6,10 @@ import {TuiNotificationModule} from '@taiga-ui/core';
 import {
     TuiBadgeNotificationModule,
     TuiButtonModule,
-    TuiFadeModule,
     TuiIconModule,
     TuiSegmentedComponent,
 } from '@taiga-ui/experimental';
+import {TuiFadeDirective} from '@taiga-ui/kit';
 
 import {TuiSegmentedExample1} from './examples/1';
 import {TuiSegmentedExample2} from './examples/2';
@@ -23,7 +23,7 @@ import {ExampleTuiSegmentedComponent} from './segmented.component';
         TuiSegmentedComponent,
         TuiNotificationModule,
         TuiBadgeNotificationModule,
-        TuiFadeModule,
+        TuiFadeDirective,
         tuiGetDocModules(ExampleTuiSegmentedComponent),
         FormsModule,
         TuiIconModule,

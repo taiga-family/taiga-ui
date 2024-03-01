@@ -6,13 +6,12 @@ import {tuiGetDocModules} from '@taiga-ui/addon-doc';
 import {TuiGroupDirective, TuiTooltipModule} from '@taiga-ui/core';
 import {
     TuiCheckboxModule,
-    TuiFadeModule,
     TuiIconModule,
     TuiRadioModule,
     TuiTitleModule,
     TuiToggleModule,
 } from '@taiga-ui/experimental';
-import {TuiAvatarComponent, TuiBlockDirective} from '@taiga-ui/kit';
+import {TuiAvatarComponent, TuiBlockDirective, TuiFadeDirective} from '@taiga-ui/kit';
 
 import {ExampleTuiBlockComponent} from './block.component';
 import {TuiBlockExample1} from './examples/1';
@@ -30,7 +29,7 @@ import {TuiBlockExample3} from './examples/3';
         TuiTooltipModule,
         TuiCheckboxModule,
         TuiRadioModule,
-        TuiFadeModule,
+        TuiFadeDirective,
         TuiTitleModule,
         TuiToggleModule,
         TuiIconModule,

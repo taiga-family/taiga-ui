@@ -20,7 +20,6 @@ import {
     TuiButtonModule,
     TuiCardModule,
     TuiCellModule,
-    TuiFadeModule,
     TuiFallbackSrcModule,
     TuiHeaderDirective,
     TuiIconModule,
@@ -33,6 +32,7 @@ import {
     TuiAvatarComponent,
     TuiAvatarStackComponent,
     TuiBadgeDirective,
+    TuiFadeDirective,
 } from '@taiga-ui/kit';
 
 import {ExampleTuiCardMediumComponent} from './card-medium.component';
@@ -51,7 +51,7 @@ import {TuiCardMediumExample7} from './examples/7';
         TuiInitialsModule,
         TuiNotificationModule,
         TuiFallbackSrcModule,
-        TuiFadeModule,
+        TuiFadeDirective,
         TuiCardModule,
         TuiSurfaceModule,
         TuiSvgModule,

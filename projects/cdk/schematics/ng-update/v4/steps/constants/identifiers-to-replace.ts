@@ -197,4 +197,11 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifier[] = [
             moduleSpecifier: '@tinkoff/tui-editor',
         },
     },
+    {
+        from: {name: 'TuiFadeModule', moduleSpecifier: '@taiga-ui/experimental'},
+        to: {
+            name: 'TuiFadeDirective',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
 ];

@@ -10,9 +10,12 @@ import {
     TuiButtonModule,
     TuiCheckboxModule,
     TuiChipModule,
-    TuiFadeModule,
 } from '@taiga-ui/experimental';
-import {TuiAvatarComponent, TuiBadgedContentComponent} from '@taiga-ui/kit';
+import {
+    TuiAvatarComponent,
+    TuiBadgedContentComponent,
+    TuiFadeDirective,
+} from '@taiga-ui/kit';
 
 import {ExampleTuiChipComponent} from './chip.component';
 import {TuiChipExample1} from './examples/1';
@@ -27,7 +30,7 @@ import {TuiChipExample4} from './examples/4';
         TuiAmountPipe,
         TuiChipModule,
         TuiRepeatTimesModule,
-        TuiFadeModule,
+        TuiFadeDirective,
         TuiNotificationModule,
         TuiButtonModule,
         TuiAvatarComponent,
