@@ -4,14 +4,14 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {
     TUI_IS_E2E,
     TuiDay,
-    TuiDayLike,
+    type TuiDayLike,
     TuiDayRange,
     TuiMonth,
     tuiPure,
-    TuiStringHandler,
+    type TuiStringHandler,
 } from '@taiga-ui/cdk';
 import {TUI_MONTHS} from '@taiga-ui/core';
-import {map, Observable} from 'rxjs';
+import {map, type Observable} from 'rxjs';
 
 @Component({
     selector: 'tui-line-days-chart-example-1',

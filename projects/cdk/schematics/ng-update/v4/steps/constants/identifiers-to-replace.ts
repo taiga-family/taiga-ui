@@ -1,4 +1,4 @@
-import {ReplacementIdentifier} from '../../../interfaces';
+import {type ReplacementIdentifier} from '../../../interfaces';
 
 export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifier[] = [
     {

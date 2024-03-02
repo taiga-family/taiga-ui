@@ -1,5 +1,5 @@
 import {
-    AfterViewChecked,
+    type AfterViewChecked,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
@@ -10,7 +10,7 @@ import {
     HostListener,
     inject,
     Input,
-    QueryList,
+    type QueryList,
 } from '@angular/core';
 import {
     MUTATION_OBSERVER_INIT,

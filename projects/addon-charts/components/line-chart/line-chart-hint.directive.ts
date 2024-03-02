@@ -1,5 +1,5 @@
 import {
-    AfterViewInit,
+    type AfterViewInit,
     ContentChildren,
     Directive,
     ElementRef,
@@ -7,26 +7,26 @@ import {
     inject,
     Input,
     NgZone,
-    QueryList,
+    type QueryList,
     Renderer2,
 } from '@angular/core';
 import {
     EMPTY_QUERY,
-    TuiContext,
+    type TuiContext,
     TuiDestroyService,
     TuiHoveredService,
     tuiPure,
     tuiQueryListChanges,
     tuiZonefree,
 } from '@taiga-ui/cdk';
-import {TuiPoint} from '@taiga-ui/core';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {type TuiPoint} from '@taiga-ui/core';
+import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {
     combineLatest,
     distinctUntilChanged,
     filter,
     map,
-    Observable,
+    type Observable,
     startWith,
     switchMap,
     takeUntil,

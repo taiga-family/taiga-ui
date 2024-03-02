@@ -14,27 +14,27 @@ import {
     tuiAsFocusableItemAccessor,
     tuiDateClamp,
     TuiDay,
-    TuiFocusableElementAccessor,
-    TuiMonth,
+    type TuiFocusableElementAccessor,
+    type TuiMonth,
     TuiMonthRange,
-    TuiYear,
+    type TuiYear,
 } from '@taiga-ui/cdk';
 import {
     TUI_TEXTFIELD_SIZE,
     TuiMonthPipe,
     TuiPrimitiveTextfieldComponent,
-    TuiSizeL,
-    TuiSizeS,
-    TuiWithOptionalMinMax,
+    type TuiSizeL,
+    type TuiSizeS,
+    type TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
-import {TuiMonthContext} from '@taiga-ui/kit/interfaces';
+import {type TuiMonthContext} from '@taiga-ui/kit/interfaces';
 import {TUI_MONTH_FORMATTER_PROVIDER} from '@taiga-ui/kit/providers';
 import {
     TUI_INPUT_DATE_OPTIONS,
     TUI_MONTH_FORMATTER,
-    TuiInputDateOptions,
+    type TuiInputDateOptions,
 } from '@taiga-ui/kit/tokens';
-import {TuiBooleanHandlerWithContext} from '@taiga-ui/kit/types';
+import {type TuiBooleanHandlerWithContext} from '@taiga-ui/kit/types';
 
 @Component({
     selector: 'tui-input-month-range',

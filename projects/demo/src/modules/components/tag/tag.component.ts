@@ -1,9 +1,9 @@
-import {Component, TemplateRef, ViewChild} from '@angular/core';
+import {Component, type TemplateRef, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocExample, TuiRawLoaderContent} from '@taiga-ui/addon-doc';
-import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {TuiStatus} from '@taiga-ui/kit';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {type TuiDocExample, type TuiRawLoaderContent} from '@taiga-ui/addon-doc';
+import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core';
+import {type TuiStatus} from '@taiga-ui/kit';
+import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 @Component({
     selector: 'example-tag',

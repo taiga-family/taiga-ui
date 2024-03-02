@@ -1,7 +1,7 @@
 import {Directive} from '@angular/core';
 import {tuiAsPopover, TuiPopoverDirective} from '@taiga-ui/cdk';
 
-import {TuiSheetDialogOptions} from './sheet-dialog.options';
+import {type TuiSheetDialogOptions} from './sheet-dialog.options';
 import {TuiSheetDialogService} from './sheet-dialog.service';
 
 @Directive({

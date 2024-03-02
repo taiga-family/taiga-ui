@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
-import {TuiDocCodeModule, TuiRawLoaderContent} from '@taiga-ui/addon-doc';
+import {TuiDocCodeModule, type TuiRawLoaderContent} from '@taiga-ui/addon-doc';
 
 @Component({
     standalone: true,

@@ -1,6 +1,6 @@
 import {HostTree} from '@angular-devkit/schematics';
 import {SchematicTestRunner, UnitTestTree} from '@angular-devkit/schematics/testing';
-import {TuiSchema} from '@taiga-ui/cdk/schematics/ng-add/schema';
+import {type TuiSchema} from '@taiga-ui/cdk/schematics/ng-add/schema';
 import {
     createProject,
     createSourceFile,

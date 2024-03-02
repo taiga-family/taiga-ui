@@ -1,4 +1,4 @@
-import {TestElement, TestKey} from '@angular/cdk/testing';
+import {type TestElement, TestKey} from '@angular/cdk/testing';
 import {TuiComponentHarness} from '@taiga-ui/testing/utils';
 
 import {TuiSvgHarness} from './svg.harness';

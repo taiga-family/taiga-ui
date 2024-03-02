@@ -11,15 +11,15 @@ import {
     ALWAYS_TRUE_HANDLER,
     tuiAsFocusableItemAccessor,
     TuiDestroyService,
-    TuiFocusableElementAccessor,
+    type TuiFocusableElementAccessor,
     TuiFocusVisibleService,
     tuiIsNativeFocused,
-    TuiNativeFocusableElement,
+    type TuiNativeFocusableElement,
     tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
 import {MODE_PROVIDER} from '@taiga-ui/core/providers';
 import {TUI_MODE} from '@taiga-ui/core/tokens';
-import {TuiHorizontalDirection} from '@taiga-ui/core/types';
+import {type TuiHorizontalDirection} from '@taiga-ui/core/types';
 import {map, merge} from 'rxjs';
 
 // @bad TODO: Think about extending Interactive

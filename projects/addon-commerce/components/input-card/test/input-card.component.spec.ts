@@ -1,8 +1,8 @@
 import {Component, TemplateRef, ViewChild} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiInputCardComponent, TuiInputCardModule} from '@taiga-ui/addon-commerce';
-import {Mock} from 'jest-mock';
+import {type Mock} from 'jest-mock';
 
 describe('InputCard', () => {
     @Component({

@@ -1,5 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {TUI_FIRST_DAY, TuiDay, TuiDayRange, TuiYear} from '@taiga-ui/cdk';
 import {
     TuiInteractiveState,

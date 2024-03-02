@@ -6,7 +6,7 @@ import {
     HostListener,
     inject,
     Input,
-    OnChanges,
+    type OnChanges,
     Output,
 } from '@angular/core';
 import {

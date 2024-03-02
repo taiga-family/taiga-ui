@@ -1,16 +1,16 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
+import {type TuiDocExample} from '@taiga-ui/addon-doc';
 import {
     ALWAYS_FALSE_HANDLER,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
-    TuiBooleanHandler,
+    type TuiBooleanHandler,
     TuiDay,
     TuiDayRange,
     TuiMonth,
 } from '@taiga-ui/cdk';
-import {TUI_DEFAULT_MARKER_HANDLER, TuiMarkerHandler} from '@taiga-ui/core';
+import {TUI_DEFAULT_MARKER_HANDLER, type TuiMarkerHandler} from '@taiga-ui/core';
 
 const TWO_DOTS: [string, string] = ['var(--tui-primary)', 'var(--tui-info-fill)'];
 const ONE_DOT: [string] = ['var(--tui-success-fill)'];

@@ -1,13 +1,13 @@
-import {Provider} from '@angular/core';
+import {type Provider} from '@angular/core';
 import {
     ALWAYS_FALSE_HANDLER,
     TUI_DEFAULT_IDENTITY_MATCHER,
     TUI_DEFAULT_STRINGIFY,
-    TuiBooleanHandler,
+    type TuiBooleanHandler,
     tuiCreateToken,
-    TuiIdentityMatcher,
+    type TuiIdentityMatcher,
     tuiProvideOptions,
-    TuiStringHandler,
+    type TuiStringHandler,
 } from '@taiga-ui/cdk';
 
 export interface TuiItemsHandlers<T> {

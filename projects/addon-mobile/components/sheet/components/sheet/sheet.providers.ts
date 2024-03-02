@@ -1,5 +1,5 @@
 import {DOCUMENT} from '@angular/common';
-import {ElementRef, forwardRef, NgZone, Provider} from '@angular/core';
+import {ElementRef, forwardRef, NgZone, type Provider} from '@angular/core';
 import {
     ALWAYS_FALSE_HANDLER,
     ALWAYS_TRUE_HANDLER,
@@ -8,7 +8,7 @@ import {
     tuiZonefree,
 } from '@taiga-ui/cdk';
 import {TUI_SCROLL_REF} from '@taiga-ui/core';
-import {map, merge, Observable, share} from 'rxjs';
+import {map, merge, type Observable, share} from 'rxjs';
 
 import {iosScrollFactory} from '../../ios.hacks';
 import {TUI_SHEET, TUI_SHEET_DRAGGED, TUI_SHEET_SCROLL} from '../../sheet-tokens';

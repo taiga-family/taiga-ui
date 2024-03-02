@@ -8,7 +8,7 @@ import {
     Input,
     ViewChild,
 } from '@angular/core';
-import {MASKITO_DEFAULT_OPTIONS, MaskitoOptions} from '@maskito/core';
+import {MASKITO_DEFAULT_OPTIONS, type MaskitoOptions} from '@maskito/core';
 import {maskitoDateRangeOptionsGenerator} from '@maskito/kit';
 import {
     AbstractTuiNullableControl,
@@ -24,29 +24,29 @@ import {
     TUI_LAST_DAY,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    TuiBooleanHandler,
-    TuiDateMode,
-    TuiDay,
-    TuiDayLike,
+    type TuiBooleanHandler,
+    type TuiDateMode,
+    type TuiDay,
+    type TuiDayLike,
     TuiDayRange,
-    TuiFocusableElementAccessor,
+    type TuiFocusableElementAccessor,
     tuiIsPresent,
     TuiMonth,
     tuiNullableSame,
     tuiPure,
-    TuiTypedMapper,
+    type TuiTypedMapper,
 } from '@taiga-ui/cdk';
 import {
     TUI_DEFAULT_MARKER_HANDLER,
     TUI_TEXTFIELD_SIZE,
     TuiDialogService,
-    TuiMarkerHandler,
+    type TuiMarkerHandler,
     TuiPrimitiveTextfieldComponent,
-    TuiSizeL,
-    TuiSizeS,
-    TuiWithOptionalMinMax,
+    type TuiSizeL,
+    type TuiSizeS,
+    type TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
-import {TuiDayRangePeriod} from '@taiga-ui/kit/classes';
+import {type TuiDayRangePeriod} from '@taiga-ui/kit/classes';
 import {
     MAX_DAY_RANGE_LENGTH_MAPPER,
     TUI_DATE_MODE_MASKITO_ADAPTER,
@@ -57,9 +57,9 @@ import {
     TUI_INPUT_DATE_OPTIONS,
     TUI_MOBILE_CALENDAR,
     tuiDateStreamWithTransformer,
-    TuiInputDateOptions,
+    type TuiInputDateOptions,
 } from '@taiga-ui/kit/tokens';
-import {PolymorpheusComponent, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusComponent, type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {map, takeUntil} from 'rxjs';
 
 @Component({

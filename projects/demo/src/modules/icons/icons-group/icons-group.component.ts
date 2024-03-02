@@ -1,5 +1,5 @@
 import {Clipboard} from '@angular/cdk/clipboard';
-import {Component, ContentChild, inject, Input, OnInit} from '@angular/core';
+import {Component, ContentChild, inject, Input, type OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -10,7 +10,7 @@ import {
     distinctUntilChanged,
     filter,
     map,
-    Observable,
+    type Observable,
     takeUntil,
 } from 'rxjs';
 

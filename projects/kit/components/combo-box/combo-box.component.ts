@@ -13,35 +13,35 @@ import {
 import {
     AbstractTuiNullableControl,
     TUI_STRICT_MATCHER,
-    TuiActiveZoneDirective,
+    type TuiActiveZoneDirective,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    TuiContext,
-    TuiFocusableElementAccessor,
+    type TuiContext,
+    type TuiFocusableElementAccessor,
     tuiIsNativeFocused,
     tuiIsPresent,
-    TuiStringMatcher,
+    type TuiStringMatcher,
 } from '@taiga-ui/cdk';
 import {
     TUI_DATA_LIST_ACCESSOR,
     TUI_TEXTFIELD_SIZE,
     tuiAsDataListHost,
     tuiAsOptionContent,
-    TuiDataListAccessor,
+    type TuiDataListAccessor,
     TuiDataListDirective,
-    TuiDataListHost,
+    type TuiDataListHost,
     TuiHostedDropdownComponent,
     TuiPrimitiveTextfieldComponent,
-    TuiSizeL,
-    TuiSizeM,
-    TuiSizeS,
-    TuiValueContentContext,
+    type TuiSizeL,
+    type TuiSizeM,
+    type TuiSizeS,
+    type TuiValueContentContext,
 } from '@taiga-ui/core';
 import {TUI_ARROW_MODE} from '@taiga-ui/kit/components/arrow';
 import {TUI_SELECT_OPTION} from '@taiga-ui/kit/components/select-option';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
-import {TUI_ITEMS_HANDLERS, TuiItemsHandlers} from '@taiga-ui/kit/tokens';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {TUI_ITEMS_HANDLERS, type TuiItemsHandlers} from '@taiga-ui/kit/tokens';
+import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 @Component({
     selector: 'tui-combo-box',

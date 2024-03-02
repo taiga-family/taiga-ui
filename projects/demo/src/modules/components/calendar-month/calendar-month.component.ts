@@ -1,11 +1,11 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
+import {type TuiDocExample} from '@taiga-ui/addon-doc';
 import {
     ALWAYS_FALSE_HANDLER,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
-    TuiBooleanHandler,
+    type TuiBooleanHandler,
     TuiDay,
     TuiMonth,
     TuiMonthRange,

@@ -1,4 +1,4 @@
-import {TuiMoneySign, TuiMoneySignSymbol} from '@taiga-ui/addon-commerce/types';
+import {type TuiMoneySign, type TuiMoneySignSymbol} from '@taiga-ui/addon-commerce/types';
 import {CHAR_MINUS, CHAR_PLUS} from '@taiga-ui/cdk';
 
 export function tuiFormatSignSymbol(

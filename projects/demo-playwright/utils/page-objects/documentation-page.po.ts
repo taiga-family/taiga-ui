@@ -1,4 +1,4 @@
-import {Locator} from '@playwright/test';
+import {type Locator} from '@playwright/test';
 
 import {TuiDocumentationApiPagePO} from './documentation-api-page.po';
 

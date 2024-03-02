@@ -6,7 +6,7 @@ import {
     TUI_DEFAULT_MATCHER,
     TUI_WINDOW_SIZE,
     tuiControlValue,
-    TuiSwipeDirection,
+    type TuiSwipeDirection,
 } from '@taiga-ui/cdk';
 import {TuiInputComponent} from '@taiga-ui/kit';
 import {map} from 'rxjs';

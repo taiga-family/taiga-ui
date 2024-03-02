@@ -1,4 +1,4 @@
-import {Pipe, PipeTransform} from '@angular/core';
+import {Pipe, type PipeTransform} from '@angular/core';
 
 @Pipe({name: 'tuiGetOpacity'})
 export class TuiGetOpacityPipe implements PipeTransform {

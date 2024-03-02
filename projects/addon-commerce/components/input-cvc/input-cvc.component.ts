@@ -6,23 +6,23 @@ import {
     Input,
     ViewChild,
 } from '@angular/core';
-import {MaskitoOptions} from '@maskito/core';
-import {TuiCodeCVCLength} from '@taiga-ui/addon-commerce/types';
+import {type MaskitoOptions} from '@maskito/core';
+import {type TuiCodeCVCLength} from '@taiga-ui/addon-commerce/types';
 import {
     AbstractTuiControl,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    TuiAutofillFieldName,
-    TuiFocusableElementAccessor,
-    TuiNativeFocusableElement,
+    type TuiAutofillFieldName,
+    type TuiFocusableElementAccessor,
+    type TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
 import {
     TUI_DIGIT_REGEXP,
     TUI_TEXTFIELD_LABEL_OUTSIDE,
     TUI_TEXTFIELD_SIZE,
     TuiPrimitiveTextfieldComponent,
-    TuiSizeL,
-    TuiSizeS,
+    type TuiSizeL,
+    type TuiSizeS,
 } from '@taiga-ui/core';
 
 @Component({

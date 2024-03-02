@@ -11,22 +11,22 @@ import {NgControl} from '@angular/forms';
 import {ResizeObserverModule} from '@ng-web-apis/resize-observer';
 import {
     tuiAsFocusableItemAccessor,
-    TuiContext,
-    TuiFocusableElementAccessor,
+    type TuiContext,
+    type TuiFocusableElementAccessor,
     tuiIsNativeFocused,
     TuiNativeValidatorDirective,
-    TuiStringHandler,
+    type TuiStringHandler,
 } from '@taiga-ui/cdk';
 import {
     tuiAppearanceOptionsProvider,
     tuiAsDataListHost,
-    TuiDataListHost,
+    type TuiDataListHost,
     TuiDropdownOpenDirective,
     tuiDropdownOptionsProvider,
     TuiIconsDirective,
 } from '@taiga-ui/core';
 import {TuiButtonModule} from '@taiga-ui/experimental/components/button';
-import {PolymorpheusContent, PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import {type PolymorpheusContent, PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import {EMPTY} from 'rxjs';
 
 import {TuiLabelDirective} from './label.directive';

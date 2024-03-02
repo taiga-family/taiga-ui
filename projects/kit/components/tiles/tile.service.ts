@@ -1,4 +1,4 @@
-import {ElementRef, inject, Injectable, OnDestroy} from '@angular/core';
+import {ElementRef, inject, Injectable, type OnDestroy} from '@angular/core';
 import {MutationObserverService} from '@ng-web-apis/mutation-observer';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {tuiArrayShallowEquals, tuiPx} from '@taiga-ui/cdk';
@@ -8,7 +8,7 @@ import {
     debounceTime,
     distinctUntilChanged,
     map,
-    Observable,
+    type Observable,
     startWith,
     Subscription,
 } from 'rxjs';

@@ -2,8 +2,8 @@ import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {
     TUI_ANIMATIONS_SPEED,
     tuiPop,
-    TuiSizeL,
-    TuiSizeXS,
+    type TuiSizeL,
+    type TuiSizeXS,
     tuiToAnimationOptions,
 } from '@taiga-ui/core';
 

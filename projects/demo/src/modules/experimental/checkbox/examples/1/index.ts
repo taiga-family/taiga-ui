@@ -1,9 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, type OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiPlatform} from '@taiga-ui/cdk';
-import {TuiSizeS} from '@taiga-ui/core';
+import {type TuiPlatform} from '@taiga-ui/cdk';
+import {type TuiSizeS} from '@taiga-ui/core';
 
 @Component({
     selector: 'tui-checkbox-example-1',

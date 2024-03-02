@@ -1,4 +1,4 @@
-import {Locator} from '@playwright/test';
+import {type Locator} from '@playwright/test';
 
 export class TuiRangePO {
     public readonly left = this.host.locator('input[type=range]:first-child');

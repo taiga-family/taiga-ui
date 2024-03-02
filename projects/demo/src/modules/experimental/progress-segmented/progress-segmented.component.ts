@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiProgressBarComponent} from '@taiga-ui/kit';
+import {type TuiDocExample} from '@taiga-ui/addon-doc';
+import {type TuiProgressBarComponent} from '@taiga-ui/kit';
 
 @Component({
     selector: 'example-progress-segmented',

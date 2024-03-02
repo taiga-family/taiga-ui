@@ -3,13 +3,13 @@ import {
     identity,
     map,
     merge,
-    Observable,
+    type Observable,
     ReplaySubject,
     startWith,
     switchMap,
 } from 'rxjs';
 
-import {TuiTableFilter} from './table-filter';
+import {type TuiTableFilter} from './table-filter';
 
 @Directive({
     selector: '[tuiTableFilters]',

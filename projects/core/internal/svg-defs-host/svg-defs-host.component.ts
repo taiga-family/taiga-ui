@@ -4,10 +4,10 @@ import {
     ChangeDetectorRef,
     Component,
     inject,
-    OnInit,
+    type OnInit,
     PLATFORM_ID,
 } from '@angular/core';
-import {SafeHtml} from '@angular/platform-browser';
+import {type SafeHtml} from '@angular/platform-browser';
 import {TuiDestroyService} from '@taiga-ui/cdk';
 import {TuiSvgService} from '@taiga-ui/core/services';
 import {takeUntil} from 'rxjs';

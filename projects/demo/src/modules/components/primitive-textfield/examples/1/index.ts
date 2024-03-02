@@ -1,7 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {AbstractTuiControl, TuiNativeFocusableElement} from '@taiga-ui/cdk';
+import {AbstractTuiControl, type TuiNativeFocusableElement} from '@taiga-ui/cdk';
 import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/core';
 
 @Component({

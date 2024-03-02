@@ -1,8 +1,8 @@
-import {Directive, DoCheck} from '@angular/core';
+import {Directive, type DoCheck} from '@angular/core';
 import {tuiIsInput} from '@taiga-ui/cdk';
 import {AbstractTuiTextfieldHost, tuiAsTextfieldHost} from '@taiga-ui/core';
 
-import {TuiInputPasswordComponent} from './input-password.component';
+import {type TuiInputPasswordComponent} from './input-password.component';
 
 @Directive({
     selector: 'tui-input-password',

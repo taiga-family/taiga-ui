@@ -1,7 +1,7 @@
-import {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
+import {type Rule, type SchematicContext, type Tree} from '@angular-devkit/schematics';
 import {getPackageJsonDependency, saveActiveProject} from 'ng-morph';
 
-import {TuiSchema} from '../../ng-add/schema';
+import {type TuiSchema} from '../../ng-add/schema';
 import {
     FINISH_SYMBOL,
     infoLog,

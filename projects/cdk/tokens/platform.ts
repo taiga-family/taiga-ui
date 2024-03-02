@@ -1,5 +1,5 @@
 import {inject} from '@angular/core';
-import {TuiPlatform} from '@taiga-ui/cdk/types';
+import {type TuiPlatform} from '@taiga-ui/cdk/types';
 import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk/utils';
 
 import {TUI_IS_ANDROID} from './is-android';

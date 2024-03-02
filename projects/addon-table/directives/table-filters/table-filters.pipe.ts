@@ -1,5 +1,5 @@
-import {inject, Pipe, PipeTransform} from '@angular/core';
-import {Observable} from 'rxjs';
+import {inject, Pipe, type PipeTransform} from '@angular/core';
+import {type Observable} from 'rxjs';
 
 import {TuiTableFiltersDirective} from './table-filters.directive';
 

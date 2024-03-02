@@ -3,7 +3,7 @@ import {
     Component,
     ElementRef,
     inject,
-    OnInit,
+    type OnInit,
 } from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
 import {
@@ -24,10 +24,10 @@ import {TuiScrollbarComponent} from '@taiga-ui/core/components/scrollbar';
 import {MODE_PROVIDER} from '@taiga-ui/core/providers';
 import {TuiPositionService, TuiVisualViewportService} from '@taiga-ui/core/services';
 import {TUI_ANIMATIONS_SPEED, TUI_MODE} from '@taiga-ui/core/tokens';
-import {TuiBrightness} from '@taiga-ui/core/types';
+import {type TuiBrightness} from '@taiga-ui/core/types';
 import {tuiToAnimationOptions} from '@taiga-ui/core/utils';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
-import {map, Observable, takeUntil} from 'rxjs';
+import {map, type Observable, takeUntil} from 'rxjs';
 
 import {TuiDropdownDirective} from './dropdown.directive';
 import {TUI_DROPDOWN_CONTEXT} from './dropdown.providers';

@@ -1,6 +1,6 @@
-import {Provider} from '@angular/core';
-import {tuiCreateToken, tuiProvideOptions, TuiStringHandler} from '@taiga-ui/cdk';
-import {TuiSizeS} from '@taiga-ui/core';
+import {type Provider} from '@angular/core';
+import {tuiCreateToken, tuiProvideOptions, type TuiStringHandler} from '@taiga-ui/cdk';
+import {type TuiSizeS} from '@taiga-ui/core';
 
 export interface TuiRadioOptions {
     readonly appearance: TuiStringHandler<HTMLInputElement>;

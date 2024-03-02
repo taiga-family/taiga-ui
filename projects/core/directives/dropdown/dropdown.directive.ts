@@ -1,33 +1,33 @@
 import {
-    AfterViewChecked,
+    type AfterViewChecked,
     ChangeDetectorRef,
-    ComponentRef,
+    type ComponentRef,
     Directive,
     ElementRef,
     inject,
     INJECTOR,
     Input,
-    OnChanges,
-    OnDestroy,
+    type OnChanges,
+    type OnDestroy,
     TemplateRef,
 } from '@angular/core';
 import {
-    TuiActiveZoneDirective,
-    TuiContext,
+    type TuiActiveZoneDirective,
+    type TuiContext,
     TuiDestroyService,
     tuiPure,
 } from '@taiga-ui/cdk';
 import {
     tuiAsRectAccessor,
     tuiAsVehicle,
-    TuiRectAccessor,
-    TuiVehicle,
+    type TuiRectAccessor,
+    type TuiVehicle,
 } from '@taiga-ui/core/abstract';
-import {TuiPortalItem} from '@taiga-ui/core/interfaces';
+import {type TuiPortalItem} from '@taiga-ui/core/interfaces';
 import {tuiCheckFixedPosition} from '@taiga-ui/core/utils';
 import {
     PolymorpheusComponent,
-    PolymorpheusContent,
+    type PolymorpheusContent,
     PolymorpheusTemplate,
 } from '@tinkoff/ng-polymorpheus';
 import {Subject, takeUntil, throttleTime} from 'rxjs';

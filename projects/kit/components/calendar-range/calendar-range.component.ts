@@ -12,28 +12,28 @@ import {
     ALWAYS_FALSE_HANDLER,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
-    TuiBooleanHandler,
-    TuiDay,
-    TuiDayLike,
+    type TuiBooleanHandler,
+    type TuiDay,
+    type TuiDayLike,
     TuiDayRange,
     TuiDestroyService,
     tuiIsString,
     TuiMonth,
     tuiNullableSame,
     tuiPure,
-    TuiTypedMapper,
+    type TuiTypedMapper,
     tuiWatch,
 } from '@taiga-ui/cdk';
 import {
     TUI_COMMON_ICONS,
     TUI_DEFAULT_MARKER_HANDLER,
-    TuiMarkerHandler,
-    TuiWithOptionalMinMax,
+    type TuiMarkerHandler,
+    type TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
-import {TuiDayRangePeriod} from '@taiga-ui/kit/classes';
+import {type TuiDayRangePeriod} from '@taiga-ui/kit/classes';
 import {MAX_DAY_RANGE_LENGTH_MAPPER} from '@taiga-ui/kit/constants';
 import {TUI_CALENDAR_DATE_STREAM, TUI_OTHER_DATE_TEXT} from '@taiga-ui/kit/tokens';
-import {Observable, takeUntil} from 'rxjs';
+import {type Observable, takeUntil} from 'rxjs';
 
 @Component({
     selector: 'tui-calendar-range',

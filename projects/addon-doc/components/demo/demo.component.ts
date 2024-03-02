@@ -9,13 +9,13 @@ import {
     HostListener,
     inject,
     Input,
-    OnInit,
+    type OnInit,
     TemplateRef,
     ViewChild,
 } from '@angular/core';
-import {AbstractControl, FormGroup} from '@angular/forms';
-import {Params, UrlSerializer, UrlTree} from '@angular/router';
-import {TuiDemoParams} from '@taiga-ui/addon-doc/interfaces';
+import {type AbstractControl, FormGroup} from '@angular/forms';
+import {type Params, UrlSerializer, type UrlTree} from '@angular/router';
+import {type TuiDemoParams} from '@taiga-ui/addon-doc/interfaces';
 import {TUI_DOC_DEMO_TEXTS, TUI_DOC_URL_STATE_HANDLER} from '@taiga-ui/addon-doc/tokens';
 import {tuiCoerceValueIsTrue} from '@taiga-ui/addon-doc/utils';
 import {
@@ -28,7 +28,7 @@ import {
     TuiResizeableDirective,
     tuiToInteger,
 } from '@taiga-ui/cdk';
-import {TuiBrightness, TuiModeDirective} from '@taiga-ui/core';
+import {type TuiBrightness, TuiModeDirective} from '@taiga-ui/core';
 import {TUI_ARROW_OPTIONS} from '@taiga-ui/kit';
 import {Subject} from 'rxjs';
 

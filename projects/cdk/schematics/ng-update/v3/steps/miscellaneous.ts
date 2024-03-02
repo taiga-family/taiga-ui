@@ -1,6 +1,6 @@
-import {Node, SyntaxKind, TypeReferenceNode} from 'ng-morph';
+import {Node, SyntaxKind, type TypeReferenceNode} from 'ng-morph';
 
-import {TuiSchema} from '../../../ng-add/schema';
+import {type TuiSchema} from '../../../ng-add/schema';
 import {
     infoLog,
     REPLACE_SYMBOL,

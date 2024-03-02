@@ -1,7 +1,7 @@
 import {InjectionToken} from '@angular/core';
-import {Observable} from 'rxjs';
+import {type Observable} from 'rxjs';
 
-import {TuiSheetRequiredProps} from './sheet';
+import {type TuiSheetRequiredProps} from './sheet';
 
 /**
  * Sheet main component

@@ -1,5 +1,5 @@
-import {Provider} from '@angular/core';
-import {tuiCreateToken, TuiPlatform, tuiProvideOptions} from '@taiga-ui/cdk';
+import {type Provider} from '@angular/core';
+import {tuiCreateToken, type TuiPlatform, tuiProvideOptions} from '@taiga-ui/cdk';
 
 export interface TuiTooltipOptions {
     readonly icons: Record<TuiPlatform, string> | string;

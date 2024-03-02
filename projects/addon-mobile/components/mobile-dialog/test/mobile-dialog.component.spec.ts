@@ -1,5 +1,5 @@
-import {Component, DebugElement} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {Component, type DebugElement} from '@angular/core';
+import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiRootModule} from '@taiga-ui/core';
 import {TuiPageObject} from '@taiga-ui/testing';

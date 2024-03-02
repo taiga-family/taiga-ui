@@ -1,6 +1,6 @@
 import {ChangeDetectorRef, Component, ElementRef, inject, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
+import {type TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiDestroyService} from '@taiga-ui/cdk';
 import {TUI_EXPAND_LOADED, TuiExpandComponent} from '@taiga-ui/core';
 import {takeUntil, timer} from 'rxjs';

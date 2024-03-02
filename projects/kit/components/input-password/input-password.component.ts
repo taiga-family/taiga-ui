@@ -9,10 +9,10 @@ import {
     AbstractTuiControl,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    TuiContext,
-    TuiFocusableElementAccessor,
-    TuiInputType,
-    TuiNativeFocusableElement,
+    type TuiContext,
+    type TuiFocusableElementAccessor,
+    type TuiInputType,
+    type TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
 import {
     MODE_PROVIDER,
@@ -20,12 +20,12 @@ import {
     TUI_TEXTFIELD_SIZE,
     TuiHintOptionsDirective,
     TuiPrimitiveTextfieldComponent,
-    TuiSizeL,
-    TuiSizeS,
+    type TuiSizeL,
+    type TuiSizeS,
 } from '@taiga-ui/core';
 import {TUI_PASSWORD_TEXTS} from '@taiga-ui/kit/tokens';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {combineLatest, EMPTY, map, Observable, startWith} from 'rxjs';
+import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {combineLatest, EMPTY, map, type Observable, startWith} from 'rxjs';
 
 import {TUI_INPUT_PASSWORD_OPTIONS} from './input-password.options';
 

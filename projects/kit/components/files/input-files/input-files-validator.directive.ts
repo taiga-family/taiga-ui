@@ -1,4 +1,11 @@
-import {Directive, HostBinding, inject, Input, OnChanges, OnInit} from '@angular/core';
+import {
+    Directive,
+    HostBinding,
+    inject,
+    Input,
+    type OnChanges,
+    type OnInit,
+} from '@angular/core';
 import {Validators} from '@angular/forms';
 import {TuiValidatorDirective} from '@taiga-ui/cdk';
 

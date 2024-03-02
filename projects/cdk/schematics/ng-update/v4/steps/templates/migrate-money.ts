@@ -1,7 +1,7 @@
-import {UpdateRecorder} from '@angular-devkit/schematics';
+import {type UpdateRecorder} from '@angular-devkit/schematics';
 import {tuiCleanObject} from '@taiga-ui/cdk';
 import {addImportToClosestModule} from '@taiga-ui/cdk/schematics';
-import {TemplateResource} from '@taiga-ui/cdk/schematics/ng-update/interfaces';
+import {type TemplateResource} from '@taiga-ui/cdk/schematics/ng-update/interfaces';
 import {removeAttrs} from '@taiga-ui/cdk/schematics/ng-update/v4/steps/utils/remove-attrs';
 import {findElementsByTagName} from '@taiga-ui/cdk/schematics/utils/templates/elements';
 import {findAttr, isBinding} from '@taiga-ui/cdk/schematics/utils/templates/inputs';
@@ -9,8 +9,8 @@ import {
     getTemplateFromTemplateResource,
     getTemplateOffset,
 } from '@taiga-ui/cdk/schematics/utils/templates/template-resource';
-import {DevkitFileSystem} from 'ng-morph';
-import {Attribute} from 'parse5';
+import {type DevkitFileSystem} from 'ng-morph';
+import {type Attribute} from 'parse5';
 
 export function migrateMoney({
     resource,

@@ -11,7 +11,7 @@ import {
     MODE_PROVIDER,
     TUI_MODE,
     TuiAppearanceDirective,
-    TuiBrightness,
+    type TuiBrightness,
     TuiHintHoverDirective,
     TuiHintOptionsDirective,
 } from '@taiga-ui/core';

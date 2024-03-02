@@ -5,7 +5,7 @@ import {
     HostBinding,
     inject,
     Input,
-    QueryList,
+    type QueryList,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {
@@ -13,20 +13,20 @@ import {
     TUI_DEFAULT_IDENTITY_MATCHER,
     tuiControlValue,
     tuiGetOriginalArrayFromQueryList,
-    TuiIdentityMatcher,
+    type TuiIdentityMatcher,
     tuiIsPresent,
     tuiPure,
     tuiQueryListChanges,
 } from '@taiga-ui/cdk';
 import {
     TUI_DATA_LIST_HOST,
-    TuiDataListHost,
+    type TuiDataListHost,
     TuiOptionComponent,
-    TuiSizeL,
-    TuiSizeXS,
+    type TuiSizeL,
+    type TuiSizeXS,
 } from '@taiga-ui/core';
 import {TUI_MULTI_SELECT_TEXTS} from '@taiga-ui/kit/tokens';
-import {combineLatest, map, Observable} from 'rxjs';
+import {combineLatest, map, type Observable} from 'rxjs';
 
 @Component({
     selector: 'tui-opt-group[tuiMultiSelectGroup]',

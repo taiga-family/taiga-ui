@@ -1,4 +1,4 @@
-import {expect, Page} from '@playwright/test';
+import {expect, type Page} from '@playwright/test';
 
 export async function tuiWaitForFonts(page: Page): Promise<void> {
     await expect(async () => {

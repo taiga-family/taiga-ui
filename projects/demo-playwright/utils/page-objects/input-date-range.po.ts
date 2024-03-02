@@ -1,4 +1,4 @@
-import {expect, Locator} from '@playwright/test';
+import {expect, type Locator} from '@playwright/test';
 
 export class TuiInputDateRangePO {
     public readonly textfield: Locator = this.host.getByRole('textbox');

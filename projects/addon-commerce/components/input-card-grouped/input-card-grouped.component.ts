@@ -11,18 +11,18 @@ import {
     TemplateRef,
     ViewChild,
 } from '@angular/core';
-import {MaskitoOptions} from '@maskito/core';
+import {type MaskitoOptions} from '@maskito/core';
 import {maskitoDateOptionsGenerator} from '@maskito/kit';
 import {AbstractTuiInputCard} from '@taiga-ui/addon-commerce/components/input-card';
 import {TUI_CARD_MASK} from '@taiga-ui/addon-commerce/constants';
-import {TuiCard} from '@taiga-ui/addon-commerce/interfaces';
-import {TuiCodeCVCLength} from '@taiga-ui/addon-commerce/types';
+import {type TuiCard} from '@taiga-ui/addon-commerce/interfaces';
+import {type TuiCodeCVCLength} from '@taiga-ui/addon-commerce/types';
 import {
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    TuiAutofillFieldName,
+    type TuiAutofillFieldName,
     TuiAutoFocusDirective,
-    TuiFocusableElementAccessor,
+    type TuiFocusableElementAccessor,
     tuiIsElement,
     tuiIsInput,
     tuiIsNativeFocused,
@@ -40,14 +40,14 @@ import {
     tuiAsDataListHost,
     TuiDataListComponent,
     TuiDataListDirective,
-    TuiDataListHost,
+    type TuiDataListHost,
 } from '@taiga-ui/core';
 import {TUI_ARROW_OPTIONS} from '@taiga-ui/kit';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {
     TUI_INPUT_CARD_GROUPED_OPTIONS,
-    TuiInputCardGroupedOptions,
+    type TuiInputCardGroupedOptions,
 } from './input-card-grouped.options';
 import {TUI_INPUT_CARD_GROUPED_TEXTS} from './input-card-grouped.providers';
 

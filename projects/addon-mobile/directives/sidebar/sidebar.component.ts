@@ -1,18 +1,18 @@
-import {AnimationOptions} from '@angular/animations';
+import {type AnimationOptions} from '@angular/animations';
 import {
     ChangeDetectionStrategy,
     Component,
-    DoCheck,
+    type DoCheck,
     HostBinding,
     inject,
 } from '@angular/core';
 import {
     TUI_ANIMATIONS_SPEED,
-    TuiHorizontalDirection,
+    type TuiHorizontalDirection,
     tuiSlideIn,
     tuiToAnimationOptions,
 } from '@taiga-ui/core';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {TuiSidebarDirective} from './sidebar.directive';
 

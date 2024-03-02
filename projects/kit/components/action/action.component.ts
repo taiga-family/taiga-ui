@@ -13,7 +13,7 @@ import {
     TuiDestroyService,
     TuiFocusVisibleService,
     tuiIsNativeFocused,
-    TuiNativeFocusableElement,
+    type TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
 
 @Component({

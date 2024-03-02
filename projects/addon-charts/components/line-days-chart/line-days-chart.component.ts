@@ -1,12 +1,12 @@
 import {
-    AfterViewInit,
+    type AfterViewInit,
     ChangeDetectionStrategy,
     Component,
     HostBinding,
     inject,
     Input,
     NgZone,
-    QueryList,
+    type QueryList,
     ViewChildren,
 } from '@angular/core';
 import {
@@ -18,7 +18,7 @@ import {
 import {
     EMPTY_ARRAY,
     EMPTY_QUERY,
-    TuiContext,
+    type TuiContext,
     TuiDay,
     TuiDestroyService,
     TuiHoveredService,
@@ -26,11 +26,11 @@ import {
     tuiIsPresent,
     TuiMonth,
     tuiPure,
-    TuiStringHandler,
+    type TuiStringHandler,
     tuiZonefree,
 } from '@taiga-ui/cdk';
-import {TuiPoint} from '@taiga-ui/core';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {type TuiPoint} from '@taiga-ui/core';
+import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {combineLatest, filter, takeUntil} from 'rxjs';
 
 import {TuiLineDaysChartHintDirective} from './line-days-chart-hint.directive';

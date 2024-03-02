@@ -1,5 +1,5 @@
 import {inject} from '@angular/core';
-import {tuiCreateTokenFromFactory, TuiStringHandler} from '@taiga-ui/cdk';
+import {tuiCreateTokenFromFactory, type TuiStringHandler} from '@taiga-ui/cdk';
 import {TUI_SVG_OPTIONS} from '@taiga-ui/core';
 import * as allIcons from '@taiga-ui/icons';
 

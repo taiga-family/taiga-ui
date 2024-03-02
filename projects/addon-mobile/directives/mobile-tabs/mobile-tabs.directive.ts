@@ -1,5 +1,5 @@
 import {Directive, HostBinding, inject} from '@angular/core';
-import {TUI_IS_ANDROID, TUI_IS_IOS, TuiPlatform, tuiWithStyles} from '@taiga-ui/cdk';
+import {TUI_IS_ANDROID, TUI_IS_IOS, type TuiPlatform, tuiWithStyles} from '@taiga-ui/cdk';
 import {TUI_TAB_MARGIN} from '@taiga-ui/kit';
 
 import {TuiMobileTabsComponent} from './mobile-tabs.component';

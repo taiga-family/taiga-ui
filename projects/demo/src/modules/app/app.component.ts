@@ -1,5 +1,5 @@
 import {APP_BASE_HREF, DOCUMENT} from '@angular/common';
-import {Component, inject, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, inject, type OnInit, ViewEncapsulation} from '@angular/core';
 import {NavigationEnd, Router} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {LOCAL_STORAGE} from '@ng-web-apis/common';

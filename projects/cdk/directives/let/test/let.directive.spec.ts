@@ -1,5 +1,10 @@
-import {ChangeDetectionStrategy, Component, ElementRef, ViewChild} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    type ElementRef,
+    ViewChild,
+} from '@angular/core';
+import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiLetModule} from '@taiga-ui/cdk';
 
 describe('Let', () => {

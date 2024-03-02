@@ -1,7 +1,7 @@
 import {Component, ElementRef, ViewChild} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {TuiSliderComponent, TuiSliderModule} from '@taiga-ui/kit';
+import {type TuiSliderComponent, TuiSliderModule} from '@taiga-ui/kit';
 
 describe('Slider', () => {
     @Component({

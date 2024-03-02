@@ -11,18 +11,22 @@ import {
     ALWAYS_FALSE_HANDLER,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
-    TuiBooleanHandler,
+    type TuiBooleanHandler,
     TuiDay,
     TuiMonth,
     TuiMonthRange,
     tuiNullableSame,
     tuiPure,
-    TuiYear,
+    type TuiYear,
 } from '@taiga-ui/cdk';
-import {TuiInteractiveState, TuiRangeState, TuiWithOptionalMinMax} from '@taiga-ui/core';
-import {TuiMonthContext} from '@taiga-ui/kit/interfaces';
+import {
+    TuiInteractiveState,
+    type TuiRangeState,
+    type TuiWithOptionalMinMax,
+} from '@taiga-ui/core';
+import {type TuiMonthContext} from '@taiga-ui/kit/interfaces';
 import {TUI_CALENDAR_MONTHS} from '@taiga-ui/kit/tokens';
-import {TuiBooleanHandlerWithContext} from '@taiga-ui/kit/types';
+import {type TuiBooleanHandlerWithContext} from '@taiga-ui/kit/types';
 
 const TODAY = TuiDay.currentLocal();
 

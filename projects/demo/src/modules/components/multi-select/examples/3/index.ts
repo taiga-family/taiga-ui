@@ -2,7 +2,11 @@ import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiContext, TuiIdentityMatcher, TuiStringHandler} from '@taiga-ui/cdk';
+import {
+    type TuiContext,
+    type TuiIdentityMatcher,
+    type TuiStringHandler,
+} from '@taiga-ui/cdk';
 
 interface Hero {
     readonly id: number;

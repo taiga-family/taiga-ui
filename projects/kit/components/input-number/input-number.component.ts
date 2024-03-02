@@ -7,10 +7,10 @@ import {
     inject,
     InjectionToken,
     Input,
-    QueryList,
+    type QueryList,
     ViewChild,
 } from '@angular/core';
-import {MaskitoOptions} from '@maskito/core';
+import {type MaskitoOptions} from '@maskito/core';
 import {
     maskitoCaretGuard,
     maskitoNumberOptionsGenerator,
@@ -18,7 +18,7 @@ import {
 } from '@maskito/kit';
 import {
     AbstractTuiNullableControl,
-    AbstractTuiValueTransformer,
+    type AbstractTuiValueTransformer,
     CHAR_HYPHEN,
     CHAR_MINUS,
     EMPTY_QUERY,
@@ -26,8 +26,8 @@ import {
     tuiAsControl,
     tuiAsFocusableItemAccessor,
     tuiClamp,
-    TuiFocusableElementAccessor,
-    TuiInputMode,
+    type TuiFocusableElementAccessor,
+    type TuiInputMode,
     tuiPure,
     tuiWatch,
 } from '@taiga-ui/cdk';
@@ -37,17 +37,20 @@ import {
     TUI_NUMBER_FORMAT,
     TUI_TEXTFIELD_SIZE,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
-    TuiDecimal,
+    type TuiDecimal,
     tuiFormatNumber,
     tuiGetFractionPartPadded,
     TuiPrimitiveTextfieldComponent,
-    TuiSizeL,
-    TuiSizeS,
+    type TuiSizeL,
+    type TuiSizeS,
 } from '@taiga-ui/core';
 import {PolymorpheusOutletDirective} from '@tinkoff/ng-polymorpheus';
 import {takeUntil} from 'rxjs';
 
-import {TUI_INPUT_NUMBER_OPTIONS, TuiInputNumberOptions} from './input-number.options';
+import {
+    TUI_INPUT_NUMBER_OPTIONS,
+    type TuiInputNumberOptions,
+} from './input-number.options';
 
 const DEFAULT_MAX_LENGTH = 18;
 

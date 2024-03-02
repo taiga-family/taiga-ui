@@ -1,9 +1,9 @@
-import {Component, inject, OnDestroy, ViewChild} from '@angular/core';
+import {Component, inject, type OnDestroy, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
+import {type TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiTableBarsService} from '@taiga-ui/addon-tablebars';
-import {TuiBrightness} from '@taiga-ui/core';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {type TuiBrightness} from '@taiga-ui/core';
+import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Subject, Subscription, takeUntil} from 'rxjs';
 
 @Component({

@@ -1,4 +1,4 @@
-import {TuiContext} from '@taiga-ui/cdk/interfaces';
+import {type TuiContext} from '@taiga-ui/cdk/interfaces';
 
 import type {TuiLetDirective} from './let.directive';
 

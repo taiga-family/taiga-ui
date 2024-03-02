@@ -7,7 +7,7 @@ import {
     inject,
     Input,
     Output,
-    QueryList,
+    type QueryList,
     TemplateRef,
     ViewEncapsulation,
 } from '@angular/core';

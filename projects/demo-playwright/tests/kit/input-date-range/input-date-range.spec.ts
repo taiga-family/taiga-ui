@@ -1,4 +1,4 @@
-import {expect, Locator, test} from '@playwright/test';
+import {expect, type Locator, test} from '@playwright/test';
 
 import {
     CHAR_NO_BREAK_SPACE,

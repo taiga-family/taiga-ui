@@ -2,16 +2,16 @@ import {
     ChangeDetectorRef,
     Component,
     inject,
-    OnDestroy,
-    OnInit,
+    type OnDestroy,
+    type OnInit,
     ViewChild,
 } from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {
     AbstractTuiControl,
     tuiAsControl,
-    TuiControlValueTransformer,
+    type TuiControlValueTransformer,
 } from '@taiga-ui/cdk';
 
 describe('AbstractTuiControl and FormControl', () => {

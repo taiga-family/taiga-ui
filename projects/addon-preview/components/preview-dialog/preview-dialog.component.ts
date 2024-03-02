@@ -5,7 +5,7 @@ import {
     inject,
     ViewEncapsulation,
 } from '@angular/core';
-import {TuiPopover} from '@taiga-ui/cdk';
+import {type TuiPopover} from '@taiga-ui/cdk';
 import {tuiSlideInTop} from '@taiga-ui/core';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 

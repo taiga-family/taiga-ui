@@ -4,7 +4,7 @@ import {
     ElementRef,
     HostBinding,
     inject,
-    OnDestroy,
+    type OnDestroy,
 } from '@angular/core';
 import {RouterLinkActive} from '@angular/router';
 import {tuiIsNativeFocused} from '@taiga-ui/cdk';

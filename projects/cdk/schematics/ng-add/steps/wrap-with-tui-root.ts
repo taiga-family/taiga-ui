@@ -1,11 +1,11 @@
-import {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
+import {type Rule, type SchematicContext, type Tree} from '@angular-devkit/schematics';
 import {getWorkspace} from '@schematics/angular/utility/workspace';
 import {
-    ClassDeclaration,
+    type ClassDeclaration,
     createProject,
-    Expression,
+    type Expression,
     getMainModule,
-    Identifier,
+    type Identifier,
     Node,
     saveActiveProject,
     setActiveProject,
@@ -16,7 +16,7 @@ import {getComponentFromIdentifier} from '../../utils/get-component-from-identif
 import {getProjectTargetOptions} from '../../utils/get-project-target-options';
 import {getProjects} from '../../utils/get-projects';
 import {getStandaloneBootstrapFunction} from '../../utils/get-standalone-bootstrap-function';
-import {TuiSchema} from '../schema';
+import {type TuiSchema} from '../schema';
 
 function addTuiRootComponent(
     filePath: string,

@@ -3,7 +3,7 @@ import {
     TUI_DEFAULT_MATCHER,
     TUI_DEFAULT_STRINGIFY,
     TUI_STRICT_MATCHER,
-    TuiStringHandler,
+    type TuiStringHandler,
 } from '@taiga-ui/cdk';
 
 class Item {

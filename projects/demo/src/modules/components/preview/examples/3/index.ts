@@ -1,14 +1,14 @@
-import {Component, inject, TemplateRef, ViewChild} from '@angular/core';
+import {Component, inject, type TemplateRef, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiPreviewDialogService} from '@taiga-ui/addon-preview';
 import {tuiIsPresent} from '@taiga-ui/cdk';
-import {TuiDialogContext} from '@taiga-ui/core';
+import {type TuiDialogContext} from '@taiga-ui/core';
 import {
     BehaviorSubject,
     filter,
     map,
-    Observable,
+    type Observable,
     of,
     startWith,
     switchMap,

@@ -1,4 +1,4 @@
-import {Type} from '@angular/core';
+import {type Type} from '@angular/core';
 import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk';
 
 import {TuiHintComponent} from './hint.component';

@@ -8,7 +8,7 @@ import {
     Input,
     SecurityContext,
 } from '@angular/core';
-import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
+import {DomSanitizer, type SafeHtml} from '@angular/platform-browser';
 import {WINDOW} from '@ng-web-apis/common';
 import {
     TUI_BASE_HREF,
@@ -16,21 +16,29 @@ import {
     tuiGetDocumentOrShadowRoot,
     tuiIsString,
     tuiPure,
-    TuiSafeHtml,
+    type TuiSafeHtml,
     TuiStaticRequestService,
 } from '@taiga-ui/cdk';
 import {TUI_CACHE_BUSTING_PAYLOAD, TUI_ICON_ERROR} from '@taiga-ui/core/constants';
-import {TuiIconError} from '@taiga-ui/core/interfaces';
+import {type TuiIconError} from '@taiga-ui/core/interfaces';
 import {TuiSvgService} from '@taiga-ui/core/services';
 import {TUI_SANITIZER} from '@taiga-ui/core/tokens';
 import {tuiIsPresumedHTMLString} from '@taiga-ui/core/utils/miscellaneous';
-import {catchError, map, Observable, of, ReplaySubject, startWith, switchMap} from 'rxjs';
+import {
+    catchError,
+    map,
+    type Observable,
+    of,
+    ReplaySubject,
+    startWith,
+    switchMap,
+} from 'rxjs';
 
 import {
     TUI_SVG_OPTIONS,
     TUI_SVG_SRC_INTERCEPTORS,
-    TuiSvgInterceptorHandler,
-    TuiSvgOptions,
+    type TuiSvgInterceptorHandler,
+    type TuiSvgOptions,
 } from './svg-options';
 
 const UNDEFINED_NAMED_ICON = 'Attempted to use undefined named icon';

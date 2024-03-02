@@ -1,4 +1,4 @@
-import {TuiLanguageEditor} from '@taiga-ui/i18n/interfaces';
+import {type TuiLanguageEditor} from '@taiga-ui/i18n/interfaces';
 
 export const TUI_MALAY_LANGUAGE_ADDON_EDITOR: TuiLanguageEditor = {
     colorSelectorModeNames: ['Warna padu', 'Kecerunan'],

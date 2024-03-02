@@ -1,9 +1,9 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    ElementRef,
+    type ElementRef,
     inject,
-    QueryList,
+    type QueryList,
     ViewChildren,
 } from '@angular/core';
 import {MutationObserverService} from '@ng-web-apis/mutation-observer';

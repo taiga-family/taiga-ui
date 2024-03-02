@@ -13,9 +13,9 @@ import {
     TUI_DEFAULT_ERROR_MESSAGE,
     TUI_MODE,
 } from '@taiga-ui/core/tokens';
-import {TuiBrightness} from '@taiga-ui/core/types';
+import {type TuiBrightness} from '@taiga-ui/core/types';
 import {tuiToAnimationOptions} from '@taiga-ui/core/utils';
-import {Observable} from 'rxjs';
+import {type Observable} from 'rxjs';
 
 @Component({
     selector: 'tui-error',

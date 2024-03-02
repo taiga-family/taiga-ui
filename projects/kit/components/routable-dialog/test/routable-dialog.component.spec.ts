@@ -1,12 +1,12 @@
-import {Component, Provider} from '@angular/core';
-import {ComponentFixture, fakeAsync, TestBed} from '@angular/core/testing';
+import {Component, type Provider} from '@angular/core';
+import {type ComponentFixture, fakeAsync, TestBed} from '@angular/core/testing';
 import {
     ActivatedRoute,
-    ActivatedRouteSnapshot,
-    Data,
-    NavigationExtras,
+    type ActivatedRouteSnapshot,
+    type Data,
+    type NavigationExtras,
     Router,
-    UrlSegment,
+    type UrlSegment,
 } from '@angular/router';
 import {TuiDialogService} from '@taiga-ui/core';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';

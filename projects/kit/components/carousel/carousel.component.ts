@@ -10,7 +10,7 @@ import {
     inject,
     Input,
     Output,
-    QueryList,
+    type QueryList,
     TemplateRef,
 } from '@angular/core';
 import {
@@ -19,7 +19,7 @@ import {
     tuiClamp,
     TuiItemDirective,
     tuiPure,
-    TuiSwipeDirection,
+    type TuiSwipeDirection,
 } from '@taiga-ui/cdk';
 
 @Component({

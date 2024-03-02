@@ -1,7 +1,7 @@
 import {inject, InjectionToken} from '@angular/core';
-import {TuiLanguage} from '@taiga-ui/i18n/interfaces';
+import {type TuiLanguage} from '@taiga-ui/i18n/interfaces';
 import {TUI_ENGLISH_LANGUAGE} from '@taiga-ui/i18n/languages/english';
-import {Observable, of} from 'rxjs';
+import {type Observable, of} from 'rxjs';
 
 /**
  * Default Language for Taiga UI libraries i18n

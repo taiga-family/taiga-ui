@@ -1,5 +1,5 @@
-import {Component, DebugElement, Optional, Self, ViewChild} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {Component, type DebugElement, Optional, Self, ViewChild} from '@angular/core';
+import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, NgControl, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {
@@ -19,7 +19,7 @@ import {
     TuiDayRangePeriod,
 } from '@taiga-ui/kit';
 import {TuiPageObject} from '@taiga-ui/testing';
-import {Observable, of} from 'rxjs';
+import {type Observable, of} from 'rxjs';
 
 describe('rangeCalendarComponent', () => {
     @Component({

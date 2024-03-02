@@ -1,8 +1,8 @@
-import {UpdateRecorder} from '@angular-devkit/schematics';
-import {addProviderToComponent, DevkitFileSystem} from 'ng-morph';
+import {type UpdateRecorder} from '@angular-devkit/schematics';
+import {addProviderToComponent, type DevkitFileSystem} from 'ng-morph';
 
 import {ALL_TS_FILES} from '../../../constants';
-import {TuiSchema} from '../../../ng-add/schema';
+import {type TuiSchema} from '../../../ng-add/schema';
 import {addImportToClosestModule} from '../../../utils/add-import-to-closest-module';
 import {addUniqueImport} from '../../../utils/add-unique-import';
 import {getNgComponents} from '../../../utils/angular/ng-component';
@@ -28,7 +28,7 @@ import {
     getTemplateFromTemplateResource,
     getTemplateOffset,
 } from '../../../utils/templates/template-resource';
-import {TemplateResource} from '../../interfaces/template-resource';
+import {type TemplateResource} from '../../interfaces/template-resource';
 import {removeInputs} from '../../utils/templates/remove-inputs';
 import {replaceAttrValues} from '../../utils/templates/replace-attr-values';
 import {replaceAttrs} from '../../utils/templates/replace-attrs';

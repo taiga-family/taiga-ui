@@ -1,6 +1,10 @@
 import {Directive, Input} from '@angular/core';
-import {MASKITO_DEFAULT_OPTIONS, MaskitoOptions, maskitoTransform} from '@maskito/core';
-import {AbstractTuiValueTransformer, TuiMapper} from '@taiga-ui/cdk';
+import {
+    MASKITO_DEFAULT_OPTIONS,
+    type MaskitoOptions,
+    maskitoTransform,
+} from '@maskito/core';
+import {AbstractTuiValueTransformer, type TuiMapper} from '@taiga-ui/cdk';
 import {identity} from 'rxjs';
 
 @Directive({

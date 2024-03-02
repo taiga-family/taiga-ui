@@ -4,7 +4,7 @@ import {
     ElementRef,
     inject,
     Input,
-    OnDestroy,
+    type OnDestroy,
     ViewContainerRef,
 } from '@angular/core';
 import {
@@ -13,7 +13,7 @@ import {
     CHAR_ZERO_WIDTH_SPACE,
     EMPTY_CLIENT_RECT,
     TUI_RANGE,
-    TuiBooleanHandler,
+    type TuiBooleanHandler,
     tuiGetNativeFocused,
     tuiIsElement,
     tuiIsString,
@@ -25,7 +25,7 @@ import {
     tuiAsDriver,
     tuiAsRectAccessor,
     TuiDriver,
-    TuiRectAccessor,
+    type TuiRectAccessor,
 } from '@taiga-ui/core/abstract';
 import {TUI_SELECTION_STREAM} from '@taiga-ui/core/tokens';
 import {tuiGetWordRange} from '@taiga-ui/core/utils';

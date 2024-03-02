@@ -1,6 +1,6 @@
 import {NgSwitch, NgSwitchCase, NgSwitchDefault} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
-import {SafeResourceUrl} from '@angular/platform-browser';
+import {type SafeResourceUrl} from '@angular/platform-browser';
 import {tuiIsString} from '@taiga-ui/cdk';
 import {
     TUI_ICON_RESOLVER,

@@ -12,26 +12,26 @@ import {
     TUI_IS_MOBILE,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    TuiBooleanHandler,
+    type TuiBooleanHandler,
     tuiDateClamp,
     TuiDay,
-    TuiFocusableElementAccessor,
+    type TuiFocusableElementAccessor,
     TuiMonth,
-    TuiYear,
+    type TuiYear,
 } from '@taiga-ui/cdk';
 import {
     TUI_TEXTFIELD_SIZE,
     TuiMonthPipe,
     TuiPrimitiveTextfieldComponent,
-    TuiSizeL,
-    TuiSizeS,
-    TuiWithOptionalMinMax,
+    type TuiSizeL,
+    type TuiSizeS,
+    type TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
 import {TUI_MONTH_FORMATTER_PROVIDER} from '@taiga-ui/kit/providers';
 import {
     TUI_INPUT_DATE_OPTIONS,
     TUI_MONTH_FORMATTER,
-    TuiInputDateOptions,
+    type TuiInputDateOptions,
 } from '@taiga-ui/kit/tokens';
 
 @Component({

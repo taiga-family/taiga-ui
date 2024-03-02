@@ -1,11 +1,11 @@
-import {Provider} from '@angular/core';
-import {TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
+import {type Provider} from '@angular/core';
+import {type TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
 import {
     TUI_PAYMENT_SYSTEM_ICONS,
     tuiGetPaymentSystem,
 } from '@taiga-ui/addon-commerce/utils';
-import {tuiCreateToken, TuiHandler, tuiProvideOptions} from '@taiga-ui/cdk';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {tuiCreateToken, type TuiHandler, tuiProvideOptions} from '@taiga-ui/cdk';
+import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface TuiInputCardOptions {
     readonly autocompleteEnabled: boolean;

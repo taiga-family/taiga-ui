@@ -6,7 +6,7 @@ import {
     Input,
 } from '@angular/core';
 import {tuiIsString} from '@taiga-ui/cdk';
-import {tuiSizeBigger, TuiSizeS} from '@taiga-ui/core';
+import {tuiSizeBigger, type TuiSizeS} from '@taiga-ui/core';
 
 import {TUI_BUTTON_OPTIONS} from './button.options';
 

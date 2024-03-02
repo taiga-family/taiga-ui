@@ -1,14 +1,14 @@
-import {inject, Type} from '@angular/core';
+import {inject, type Type} from '@angular/core';
 import {
     TUI_IS_MOBILE,
     tuiCreateToken,
     tuiCreateTokenFromFactory,
-    TuiPopover,
+    type TuiPopover,
 } from '@taiga-ui/cdk';
 import {TUI_NOTIFICATION_OPTIONS} from '@taiga-ui/core/components/notification';
 import {BehaviorSubject, combineLatest, map, of} from 'rxjs';
 
-import {TuiAlertOptions} from './alert.interfaces';
+import {type TuiAlertOptions} from './alert.interfaces';
 
 export const TUI_ALERT_DEFAULT_OPTIONS: Omit<TuiAlertOptions, 'icon' | 'status'> = {
     autoClose: 3000,

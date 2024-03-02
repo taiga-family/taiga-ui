@@ -1,14 +1,14 @@
-import {UpdateRecorder} from '@angular-devkit/schematics';
+import {type UpdateRecorder} from '@angular-devkit/schematics';
 import {findAttr} from '@taiga-ui/cdk/schematics/utils/templates/inputs';
-import {DevkitFileSystem} from 'ng-morph';
-import {Attribute, ElementLocation} from 'parse5';
+import {type DevkitFileSystem} from 'ng-morph';
+import {type Attribute, type ElementLocation} from 'parse5';
 
 import {findElementsByTagName} from '../../../../utils/templates/elements';
 import {
     getTemplateFromTemplateResource,
     getTemplateOffset,
 } from '../../../../utils/templates/template-resource';
-import {TemplateResource} from '../../../interfaces';
+import {type TemplateResource} from '../../../interfaces';
 import {removeAttrs} from '../utils/remove-attrs';
 
 export function migrateBadgedContent({

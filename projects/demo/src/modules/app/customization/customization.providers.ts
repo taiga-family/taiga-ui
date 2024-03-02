@@ -1,4 +1,4 @@
-import {forwardRef, InjectionToken, Provider} from '@angular/core';
+import {forwardRef, InjectionToken, type Provider} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
 import {TuiDestroyService} from '@taiga-ui/cdk';
 import {TuiModeDirective} from '@taiga-ui/core';

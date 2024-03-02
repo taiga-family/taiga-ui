@@ -3,11 +3,11 @@ import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiMobileCalendarDialogComponent} from '@taiga-ui/addon-mobile';
-import {tuiControlValue, TuiDay, TuiDayRange} from '@taiga-ui/cdk';
+import {tuiControlValue, TuiDay, type TuiDayRange} from '@taiga-ui/cdk';
 import {TUI_MONTHS, TuiDialogService} from '@taiga-ui/core';
 import {TUI_CALENDAR_DATE_STREAM} from '@taiga-ui/kit';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
-import {combineLatest, map, Observable} from 'rxjs';
+import {combineLatest, map, type Observable} from 'rxjs';
 
 @Component({
     selector: 'tui-mobile-calendar-example-4',

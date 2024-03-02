@@ -1,5 +1,5 @@
 import MarkdownIt from 'markdown-it';
-import Token from 'markdown-it/lib/token';
+import type Token from 'markdown-it/lib/token';
 
 export function tuiTryParseMarkdownCodeBlock(text = ''): string[] {
     const tokens: Token[] = new MarkdownIt().parse(text, {});

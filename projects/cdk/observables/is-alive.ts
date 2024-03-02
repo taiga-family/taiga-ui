@@ -2,7 +2,7 @@ import {ALWAYS_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import {
     distinctUntilChanged,
     map,
-    OperatorFunction,
+    type OperatorFunction,
     pipe,
     startWith,
     switchMap,

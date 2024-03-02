@@ -1,25 +1,25 @@
 import {
-    AfterContentInit,
+    type AfterContentInit,
     ContentChildren,
     Directive,
     forwardRef,
     inject,
     Input,
     NgZone,
-    QueryList,
+    type QueryList,
 } from '@angular/core';
 import {tuiLineChartDrivers} from '@taiga-ui/addon-charts/components/line-chart';
 import {
     EMPTY_QUERY,
-    TuiContext,
-    TuiDay,
+    type TuiContext,
+    type TuiDay,
     TuiDestroyService,
     TuiHoveredService,
     tuiPure,
     tuiZonefree,
 } from '@taiga-ui/cdk';
-import {TuiPoint} from '@taiga-ui/core';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {type TuiPoint} from '@taiga-ui/core';
+import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {combineLatest, filter, takeUntil} from 'rxjs';
 
 import {TuiLineDaysChartComponent} from './line-days-chart.component';

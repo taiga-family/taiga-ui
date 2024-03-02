@@ -1,5 +1,12 @@
 import {DOCUMENT} from '@angular/common';
-import {Directive, ElementRef, inject, Input, OnChanges, Renderer2} from '@angular/core';
+import {
+    Directive,
+    ElementRef,
+    inject,
+    Input,
+    type OnChanges,
+    Renderer2,
+} from '@angular/core';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {svgNodeFilter, TuiDestroyService, tuiPx} from '@taiga-ui/cdk';
 import {takeUntil} from 'rxjs';

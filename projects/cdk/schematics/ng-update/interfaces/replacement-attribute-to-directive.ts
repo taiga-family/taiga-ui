@@ -1,4 +1,4 @@
-import {Element} from 'parse5';
+import {type Element} from 'parse5';
 
 export interface ReplacementAttributeToDirective {
     readonly componentSelector: string[] | string;

@@ -11,22 +11,31 @@ import {
     AbstractTuiControl,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    TuiFocusableElementAccessor,
-    TuiNativeFocusableElement,
+    type TuiFocusableElementAccessor,
+    type TuiNativeFocusableElement,
     tuiPure,
 } from '@taiga-ui/cdk';
 import {
     TUI_TEXTFIELD_SIZE,
     TuiPrimitiveTextfieldComponent,
-    TuiSizeL,
-    TuiSizeS,
+    type TuiSizeL,
+    type TuiSizeS,
 } from '@taiga-ui/core';
 import {TUI_VALUE_ACCESSOR_PROVIDER} from '@taiga-ui/kit/providers';
 import {TUI_COPY_TEXTS} from '@taiga-ui/kit/tokens';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {map, merge, Observable, of, startWith, Subject, switchMap, timer} from 'rxjs';
+import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {
+    map,
+    merge,
+    type Observable,
+    of,
+    startWith,
+    Subject,
+    switchMap,
+    timer,
+} from 'rxjs';
 
-import {TUI_INPUT_COPY_OPTIONS, TuiInputCopyOptions} from './input-copy.options';
+import {TUI_INPUT_COPY_OPTIONS, type TuiInputCopyOptions} from './input-copy.options';
 
 @Component({
     selector: 'tui-input-copy',

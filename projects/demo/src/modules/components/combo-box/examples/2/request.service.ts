@@ -3,7 +3,7 @@ import {TUI_DEFAULT_MATCHER, TuiDestroyService} from '@taiga-ui/cdk';
 import {
     delay,
     distinctUntilChanged,
-    Observable,
+    type Observable,
     of,
     shareReplay,
     startWith,
@@ -13,7 +13,7 @@ import {
 } from 'rxjs';
 
 import {databaseMockData} from './database-mock-data';
-import {User} from './user';
+import {type User} from './user';
 
 @Injectable()
 export class RequestService {

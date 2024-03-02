@@ -1,4 +1,4 @@
-import {AfterViewInit, Directive, inject, Input} from '@angular/core';
+import {type AfterViewInit, Directive, inject, Input} from '@angular/core';
 import {tuiCoerceBooleanProperty} from '@taiga-ui/cdk/coercion';
 import {TuiDestroyService} from '@taiga-ui/cdk/services';
 import {takeUntil, timer} from 'rxjs';

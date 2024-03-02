@@ -1,14 +1,14 @@
 import {Component, inject, INJECTOR} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiPopoverContext} from '@taiga-ui/cdk';
+import {type TuiDocExample} from '@taiga-ui/addon-doc';
+import {type TuiPopoverContext} from '@taiga-ui/cdk';
 import {
     TUI_NOTIFICATION_OPTIONS,
-    TuiAlertOptions,
+    type TuiAlertOptions,
     TuiAlertService,
-    TuiNotification,
+    type TuiNotification,
 } from '@taiga-ui/core';
-import {PolymorpheusComponent, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusComponent, type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {switchMap} from 'rxjs';
 
 import {AlertExampleWithDataComponent} from './examples/4/alert-example-with-data/alert-example-with-data.component';

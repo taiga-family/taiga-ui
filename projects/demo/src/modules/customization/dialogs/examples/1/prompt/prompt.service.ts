@@ -3,7 +3,7 @@ import {TuiPopoverService} from '@taiga-ui/cdk';
 import {TUI_DIALOGS} from '@taiga-ui/core';
 
 import {PromptComponent} from './prompt.component';
-import {PromptOptions} from './prompt-options';
+import {type PromptOptions} from './prompt-options';
 
 @Injectable({
     providedIn: 'root',

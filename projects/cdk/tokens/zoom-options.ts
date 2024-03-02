@@ -1,4 +1,4 @@
-import {TuiZoomOptions} from '@taiga-ui/cdk/interfaces';
+import {type TuiZoomOptions} from '@taiga-ui/cdk/interfaces';
 import {tuiCreateToken} from '@taiga-ui/cdk/utils';
 
 /**

@@ -1,5 +1,5 @@
-import {UpdateRecorder} from '@angular-devkit/schematics';
-import {Attribute, ElementLocation} from 'parse5';
+import {type UpdateRecorder} from '@angular-devkit/schematics';
+import {type Attribute, type ElementLocation} from 'parse5';
 
 const sizeMap: Record<string, string> = {
     l: 'm',

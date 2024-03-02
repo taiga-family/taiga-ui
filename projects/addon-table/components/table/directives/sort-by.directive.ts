@@ -4,9 +4,9 @@ import {
     inject,
     Input,
     Output,
-    QueryList,
+    type QueryList,
 } from '@angular/core';
-import {TuiComparator} from '@taiga-ui/addon-table/types';
+import {type TuiComparator} from '@taiga-ui/addon-table/types';
 import {EMPTY_QUERY} from '@taiga-ui/cdk';
 import {delay, filter, map} from 'rxjs';
 

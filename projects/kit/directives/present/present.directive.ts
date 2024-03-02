@@ -1,4 +1,4 @@
-import {Directive, HostListener, OnDestroy, Output} from '@angular/core';
+import {Directive, HostListener, type OnDestroy, Output} from '@angular/core';
 import {BehaviorSubject, distinctUntilChanged, skip} from 'rxjs';
 
 @Directive({

@@ -1,6 +1,6 @@
 import {Directive, HostBinding, inject, Input} from '@angular/core';
 import {tuiWithStyles} from '@taiga-ui/cdk';
-import {TuiOrientation, TuiSizeL} from '@taiga-ui/core/types';
+import {type TuiOrientation, type TuiSizeL} from '@taiga-ui/core/types';
 
 import {TuiGroupComponent} from './group.component';
 import {TUI_GROUP_OPTIONS} from './group.options';

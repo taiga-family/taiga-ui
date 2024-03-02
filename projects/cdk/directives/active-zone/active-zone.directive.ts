@@ -4,14 +4,14 @@ import {
     inject,
     Input,
     NgZone,
-    OnDestroy,
+    type OnDestroy,
     Output,
 } from '@angular/core';
 import {tuiPure} from '@taiga-ui/cdk/decorators';
 import {tuiZoneOptimized} from '@taiga-ui/cdk/observables';
 import {TUI_ACTIVE_ELEMENT} from '@taiga-ui/cdk/tokens';
 import {tuiArrayRemove} from '@taiga-ui/cdk/utils';
-import {distinctUntilChanged, map, Observable, skip, startWith} from 'rxjs';
+import {distinctUntilChanged, map, type Observable, skip, startWith} from 'rxjs';
 
 @Directive({
     standalone: true,

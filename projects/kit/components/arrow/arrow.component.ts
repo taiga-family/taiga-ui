@@ -5,7 +5,7 @@ import {
     TuiHostedDropdownComponent,
     tuiSizeBigger,
 } from '@taiga-ui/core';
-import {PolymorpheusComponent, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusComponent, type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {TUI_ARROW_OPTIONS} from './arrow.options';
 

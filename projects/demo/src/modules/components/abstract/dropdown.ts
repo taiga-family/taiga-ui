@@ -1,8 +1,8 @@
 import {
     TUI_DROPDOWN_DEFAULT_OPTIONS,
-    TuiDropdownAlign,
-    TuiDropdownWidth,
-    TuiVerticalDirection,
+    type TuiDropdownAlign,
+    type TuiDropdownWidth,
+    type TuiVerticalDirection,
 } from '@taiga-ui/core';
 import {BehaviorSubject} from 'rxjs';
 

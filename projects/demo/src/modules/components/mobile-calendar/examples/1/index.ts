@@ -7,7 +7,7 @@ import {tuiControlValue, TuiDay} from '@taiga-ui/cdk';
 import {TUI_MONTHS, TuiDialogService} from '@taiga-ui/core';
 import {TUI_CALENDAR_DATE_STREAM} from '@taiga-ui/kit';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
-import {combineLatest, map, Observable} from 'rxjs';
+import {combineLatest, map, type Observable} from 'rxjs';
 
 @Component({
     selector: 'tui-mobile-calendar-example-1',

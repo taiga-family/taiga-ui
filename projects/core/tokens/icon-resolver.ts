@@ -1,5 +1,5 @@
-import {Provider} from '@angular/core';
-import {tuiCreateTokenFromFactory, TuiStringHandler} from '@taiga-ui/cdk';
+import {type Provider} from '@angular/core';
+import {tuiCreateTokenFromFactory, type TuiStringHandler} from '@taiga-ui/cdk';
 
 export const TUI_ICON_RESOLVER = tuiCreateTokenFromFactory<TuiStringHandler<string>>(
     // TODO: Remove backwards compatibility in 4.0

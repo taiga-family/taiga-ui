@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/core';
-import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core';
 
 @Component({
     selector: 'tui-island, a[tuiIsland]',

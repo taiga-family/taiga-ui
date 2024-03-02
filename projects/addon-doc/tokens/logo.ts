@@ -1,5 +1,5 @@
 import {tuiCreateToken} from '@taiga-ui/cdk';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 /**
  * Main logo

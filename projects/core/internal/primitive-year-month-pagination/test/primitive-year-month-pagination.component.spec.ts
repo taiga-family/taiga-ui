@@ -1,6 +1,6 @@
-import {Component, DebugElement, ViewChild} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {TuiMonth, TuiYear} from '@taiga-ui/cdk';
+import {Component, type DebugElement, ViewChild} from '@angular/core';
+import {type ComponentFixture, TestBed} from '@angular/core/testing';
+import {TuiMonth, type TuiYear} from '@taiga-ui/cdk';
 import {TuiPageObject} from '@taiga-ui/testing';
 
 import {TuiPrimitiveYearMonthPaginationComponent} from '../primitive-year-month-pagination.component';

@@ -1,4 +1,4 @@
-import {ReplacementIdentifier} from './replacement-identifier';
+import {type ReplacementIdentifier} from './replacement-identifier';
 
 export interface ReplacementService extends ReplacementIdentifier {
     readonly replaceMethods?: Array<{

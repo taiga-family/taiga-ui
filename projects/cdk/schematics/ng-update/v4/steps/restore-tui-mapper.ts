@@ -1,6 +1,6 @@
 import {Node} from 'ng-morph';
 
-import {TuiSchema} from '../../../ng-add/schema';
+import {type TuiSchema} from '../../../ng-add/schema';
 import {
     FINISH_SYMBOL,
     infoLog,

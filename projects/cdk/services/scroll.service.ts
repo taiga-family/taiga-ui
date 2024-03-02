@@ -8,7 +8,7 @@ import {
     defer,
     endWith,
     map,
-    Observable,
+    type Observable,
     of,
     switchMap,
     takeUntil,

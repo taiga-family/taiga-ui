@@ -4,7 +4,7 @@ import {
     ElementRef,
     HostListener,
     inject,
-    OnDestroy,
+    type OnDestroy,
     Renderer2,
 } from '@angular/core';
 import {tuiContainsOrAfter, tuiIsHTMLElement} from '@taiga-ui/cdk/utils/dom';

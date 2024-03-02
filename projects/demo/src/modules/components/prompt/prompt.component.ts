@@ -1,8 +1,8 @@
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
+import {type TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiAlertService, TuiDialogService} from '@taiga-ui/core';
-import {TUI_PROMPT, TuiPromptData} from '@taiga-ui/kit';
+import {TUI_PROMPT, type TuiPromptData} from '@taiga-ui/kit';
 import {switchMap} from 'rxjs';
 
 @Component({

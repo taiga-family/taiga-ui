@@ -15,8 +15,8 @@ import {
 import {
     TuiActiveZoneDirective,
     tuiAsFocusableItemAccessor,
-    TuiContext,
-    TuiFocusableElementAccessor,
+    type TuiContext,
+    type TuiFocusableElementAccessor,
     tuiGetActualTarget,
     tuiGetClosestFocusable,
     tuiIsElement,
@@ -25,7 +25,7 @@ import {
     tuiIsNativeFocusedIn,
     tuiIsNativeKeyboardFocusable,
     tuiIsPresent,
-    TuiNativeFocusableElement,
+    type TuiNativeFocusableElement,
     tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
 import {TuiPositionAccessor} from '@taiga-ui/core/abstract';
@@ -35,7 +35,7 @@ import {
 } from '@taiga-ui/core/directives/dropdown';
 import {tuiIsEditingKey} from '@taiga-ui/core/utils/miscellaneous';
 import {shouldCall} from '@tinkoff/ng-event-plugins';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {
     BehaviorSubject,
     combineLatestWith,
@@ -45,7 +45,7 @@ import {
     filter,
     map,
     merge,
-    Observable,
+    type Observable,
     of,
     share,
     skip,

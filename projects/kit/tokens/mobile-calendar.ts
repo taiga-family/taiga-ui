@@ -1,4 +1,4 @@
-import {InjectionToken, Type} from '@angular/core';
+import {InjectionToken, type Type} from '@angular/core';
 
 /**
  * A component for mobile data picker

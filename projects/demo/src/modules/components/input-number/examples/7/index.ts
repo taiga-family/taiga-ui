@@ -2,8 +2,8 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_DEFAULT_NUMBER_FORMAT, TUI_NUMBER_FORMAT} from '@taiga-ui/core';
-import {TUI_LANGUAGE, TuiLanguage} from '@taiga-ui/i18n';
-import {BehaviorSubject, map, Observable, switchMap} from 'rxjs';
+import {TUI_LANGUAGE, type TuiLanguage} from '@taiga-ui/i18n';
+import {type BehaviorSubject, map, type Observable, switchMap} from 'rxjs';
 
 @Component({
     selector: 'tui-input-number-example-7',

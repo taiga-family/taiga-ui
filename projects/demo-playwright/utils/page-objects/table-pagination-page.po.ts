@@ -1,4 +1,4 @@
-import {Locator} from '@playwright/test';
+import {type Locator} from '@playwright/test';
 
 export class TuiTablePaginationPO {
     public readonly linesPerPageButton = this.host.locator(

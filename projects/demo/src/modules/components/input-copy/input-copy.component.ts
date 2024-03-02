@@ -1,8 +1,8 @@
 import {Component, forwardRef, ViewChild} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocExample, tuiDocExcludeProperties} from '@taiga-ui/addon-doc';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {type TuiDocExample, tuiDocExcludeProperties} from '@taiga-ui/addon-doc';
+import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';

@@ -14,7 +14,7 @@ import {
     tuiPx,
     tuiRound,
     tuiTypedFromEvent,
-    TuiZoom,
+    type TuiZoom,
 } from '@taiga-ui/cdk';
 import {tuiSlideInTop} from '@taiga-ui/core';
 import {BehaviorSubject, combineLatest, map, merge, startWith} from 'rxjs';

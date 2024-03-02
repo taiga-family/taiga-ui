@@ -6,7 +6,7 @@ import {
     TemplateRef,
     ViewEncapsulation,
 } from '@angular/core';
-import {TuiContext} from '@taiga-ui/cdk';
+import {type TuiContext} from '@taiga-ui/cdk';
 import {PolymorpheusComponent, PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiInputFilesContent} from './input-files.content';

@@ -1,10 +1,10 @@
 import {
     Directive,
-    EmbeddedViewRef,
+    type EmbeddedViewRef,
     inject,
     Input,
-    OnChanges,
-    TemplateRef,
+    type OnChanges,
+    type TemplateRef,
     ViewContainerRef,
 } from '@angular/core';
 

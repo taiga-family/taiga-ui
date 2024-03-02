@@ -11,7 +11,7 @@ import {TUI_COMMON_ICONS, TUI_SPIN_ICONS, TUI_SPIN_TEXTS} from '@taiga-ui/core';
 
 import {
     TUI_TABLE_PAGINATION_OPTIONS,
-    TuiTablePaginationOptions,
+    type TuiTablePaginationOptions,
 } from './table-pagination.options';
 
 export interface TuiTablePagination {

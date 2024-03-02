@@ -1,16 +1,16 @@
 import {Component, forwardRef} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
+import {type TuiDocExample} from '@taiga-ui/addon-doc';
 import {
     ALWAYS_FALSE_HANDLER,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
     TuiDay,
     TuiMonth,
-    TuiMonthRange,
+    type TuiMonthRange,
 } from '@taiga-ui/cdk';
-import {TuiBooleanHandlerWithContext, TuiMonthContext} from '@taiga-ui/kit';
+import {type TuiBooleanHandlerWithContext, type TuiMonthContext} from '@taiga-ui/kit';
 
 import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';

@@ -1,6 +1,6 @@
-import {Provider} from '@angular/core';
+import {type Provider} from '@angular/core';
 import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
-import {TuiSizeL} from '@taiga-ui/core';
+import {type TuiSizeL} from '@taiga-ui/core';
 
 export interface TuiInputFilesOptions {
     accept: string;

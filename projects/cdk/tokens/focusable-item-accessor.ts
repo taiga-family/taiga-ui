@@ -1,5 +1,5 @@
-import {InjectionToken, Provider, Type} from '@angular/core';
-import {TuiFocusableElementAccessor} from '@taiga-ui/cdk/interfaces';
+import {InjectionToken, type Provider, type Type} from '@angular/core';
+import {type TuiFocusableElementAccessor} from '@taiga-ui/cdk/interfaces';
 
 /**
  * A component that can be focused

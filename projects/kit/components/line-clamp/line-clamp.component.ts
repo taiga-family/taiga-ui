@@ -1,9 +1,9 @@
 import {
-    AfterViewInit,
+    type AfterViewInit,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
-    DoCheck,
+    type DoCheck,
     ElementRef,
     HostListener,
     inject,
@@ -15,13 +15,13 @@ import {
 } from '@angular/core';
 import {tuiIsCurrentTarget, tuiPx, tuiTypedFromEvent, tuiZonefree} from '@taiga-ui/cdk';
 import {TUI_HINT_COMPONENT, TuiHintDirective} from '@taiga-ui/core';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {
     BehaviorSubject,
     distinctUntilChanged,
     filter,
     map,
-    Observable,
+    type Observable,
     of,
     pairwise,
     startWith,

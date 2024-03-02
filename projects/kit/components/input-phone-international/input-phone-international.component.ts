@@ -14,10 +14,10 @@ import {
     CHAR_PLUS,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    TuiContext,
-    TuiFocusableElementAccessor,
+    type TuiContext,
+    type TuiFocusableElementAccessor,
     tuiPure,
-    TuiTypedMapper,
+    type TuiTypedMapper,
 } from '@taiga-ui/cdk';
 import {
     TUI_MASK_SYMBOLS_REGEXP,
@@ -25,9 +25,9 @@ import {
     TUI_TEXTFIELD_SIZE,
     TuiFlagPipe,
     TuiPrimitiveTextfieldComponent,
-    TuiSizeL,
-    TuiSizeM,
-    TuiSizeS,
+    type TuiSizeL,
+    type TuiSizeM,
+    type TuiSizeS,
 } from '@taiga-ui/core';
 import {TuiCountryIsoCode} from '@taiga-ui/i18n';
 import {TUI_ARROW} from '@taiga-ui/kit/components/arrow';
@@ -36,7 +36,7 @@ import {TuiToCountryCodePipe} from '@taiga-ui/kit/pipes';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {TUI_COUNTRIES, TUI_COUNTRIES_MASKS} from '@taiga-ui/kit/tokens';
 import {tuiGetMaxAllowedPhoneLength, tuiIsoToCountryCode} from '@taiga-ui/kit/utils';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {TUI_INPUT_PHONE_INTERNATIONAL_OPTIONS} from './input-phone-international.options';
 import {tuiExtractValueFromEvent} from './utils/extract-value-from-event';

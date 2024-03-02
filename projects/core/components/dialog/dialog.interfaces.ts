@@ -1,7 +1,7 @@
-import {TuiPopover, TuiPopoverContext} from '@taiga-ui/cdk';
+import {type TuiPopover, type TuiPopoverContext} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
+import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {type Observable} from 'rxjs';
 
 export type TuiDialogSize = TuiSizeL | TuiSizeS | 'auto' | 'fullscreen' | 'page';
 

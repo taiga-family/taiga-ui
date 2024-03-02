@@ -1,4 +1,4 @@
-import {Component, ElementRef, inject} from '@angular/core';
+import {Component, type ElementRef, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDestroyService, TuiScrollService} from '@taiga-ui/cdk';

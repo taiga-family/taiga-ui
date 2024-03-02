@@ -1,7 +1,7 @@
 import {Directive} from '@angular/core';
 import {AbstractTuiTextfieldHost, tuiAsTextfieldHost} from '@taiga-ui/core';
 
-import {TuiTextareaComponent} from './textarea.component';
+import {type TuiTextareaComponent} from './textarea.component';
 
 @Directive({
     selector: 'tui-textarea',

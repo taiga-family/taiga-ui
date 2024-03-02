@@ -2,25 +2,25 @@ import {
     ChangeDetectionStrategy,
     Component,
     inject,
-    OnInit,
+    type OnInit,
     ViewChild,
 } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {
-    TuiCard,
+    type TuiCard,
     tuiCardNumberValidator,
     tuiDefaultCardValidator,
-    TuiInputCardGroupedComponent,
+    type TuiInputCardGroupedComponent,
 } from '@taiga-ui/addon-commerce';
-import {TUI_IS_IOS, TuiDestroyService, TuiValuesOf} from '@taiga-ui/cdk';
-import {TuiDialogContext} from '@taiga-ui/core';
+import {TUI_IS_IOS, TuiDestroyService, type TuiValuesOf} from '@taiga-ui/cdk';
+import {type TuiDialogContext} from '@taiga-ui/core';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 import {BehaviorSubject, map, switchMap, takeUntil} from 'rxjs';
 
 import {
-    AccountCard,
-    DataForPayCardModal,
-    FetchedCards,
+    type AccountCard,
+    type DataForPayCardModal,
+    type FetchedCards,
     PaymentMode,
 } from '../helpers/models';
 import {PayService} from '../helpers/pay.service';

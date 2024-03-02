@@ -1,6 +1,6 @@
-import {Directive, inject, Input, Provider} from '@angular/core';
+import {Directive, inject, Input, type Provider} from '@angular/core';
 import {AbstractTuiController, tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
-import {TuiAppearanceOptions, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import {type TuiAppearanceOptions, type TuiSizeL, type TuiSizeS} from '@taiga-ui/core';
 
 export interface TuiTextfieldOptions extends TuiAppearanceOptions {
     readonly size: TuiSizeL | TuiSizeS;

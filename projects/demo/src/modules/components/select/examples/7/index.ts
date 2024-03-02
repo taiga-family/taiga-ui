@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {EMPTY_ARRAY, TuiStringHandler} from '@taiga-ui/cdk';
-import {TuiValueContentContext} from '@taiga-ui/core';
+import {EMPTY_ARRAY, type TuiStringHandler} from '@taiga-ui/cdk';
+import {type TuiValueContentContext} from '@taiga-ui/core';
 
 interface Account {
     readonly account: string;

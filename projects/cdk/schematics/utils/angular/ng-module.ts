@@ -1,10 +1,10 @@
 import {
-    ClassDeclaration,
+    type ClassDeclaration,
     getClasses,
     getImports,
-    Pattern,
-    Query,
-    StructureType,
+    type Pattern,
+    type Query,
+    type StructureType,
 } from 'ng-morph';
 
 import {ALL_TS_FILES} from '../../constants';

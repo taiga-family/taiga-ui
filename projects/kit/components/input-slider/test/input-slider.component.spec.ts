@@ -1,7 +1,7 @@
-import {Component, TemplateRef, ViewChild} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {Component, type TemplateRef, ViewChild} from '@angular/core';
+import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {CHAR_MINUS, TuiContext} from '@taiga-ui/cdk';
+import {CHAR_MINUS, type TuiContext} from '@taiga-ui/cdk';
 import {TuiRootModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {TuiInputSliderComponent, TuiInputSliderModule} from '@taiga-ui/kit';
 import {TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';

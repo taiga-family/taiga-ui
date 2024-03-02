@@ -3,11 +3,11 @@ import {
     ChangeDetectorRef,
     Component,
     inject,
-    OnInit,
+    type OnInit,
 } from '@angular/core';
 import {TuiDestroyService} from '@taiga-ui/cdk';
 import {TUI_PARENT_ANIMATION} from '@taiga-ui/core/animations';
-import {TuiPortalItem} from '@taiga-ui/core/interfaces';
+import {type TuiPortalItem} from '@taiga-ui/core/interfaces';
 import {TuiHintService} from '@taiga-ui/core/services';
 import {takeUntil} from 'rxjs';
 

@@ -1,5 +1,5 @@
 import {
-    TuiKeySteps,
+    type TuiKeySteps,
     tuiKeyStepValueToPercentage,
     tuiPercentageToKeyStepValue,
 } from '@taiga-ui/kit';

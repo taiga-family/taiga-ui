@@ -1,6 +1,6 @@
-import {Directive, inject, OnChanges} from '@angular/core';
+import {Directive, inject, type OnChanges} from '@angular/core';
 import {tuiIfMap} from '@taiga-ui/cdk/observables';
-import {TuiPopover, TuiPopoverService} from '@taiga-ui/cdk/services';
+import {type TuiPopover, TuiPopoverService} from '@taiga-ui/cdk/services';
 import {PolymorpheusTemplate} from '@tinkoff/ng-polymorpheus';
 import {distinctUntilChanged, endWith, ignoreElements, share, Subject} from 'rxjs';
 

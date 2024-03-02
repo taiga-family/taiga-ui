@@ -12,7 +12,7 @@ import {
     distinctUntilChanged,
     filter,
     map,
-    Observable,
+    type Observable,
     race,
     startWith,
     switchMap,

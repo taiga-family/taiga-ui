@@ -5,15 +5,20 @@ import {
     HostBinding,
     inject,
     Input,
-    OnDestroy,
-    OnInit,
-    Provider,
-    Type,
+    type OnDestroy,
+    type OnInit,
+    type Provider,
+    type Type,
 } from '@angular/core';
-import {AbstractControl, ControlValueAccessor, NgControl, NgModel} from '@angular/forms';
+import {
+    type AbstractControl,
+    type ControlValueAccessor,
+    NgControl,
+    NgModel,
+} from '@angular/forms';
 import {tuiAssert} from '@taiga-ui/cdk/classes';
 import {EMPTY_FUNCTION} from '@taiga-ui/cdk/constants';
-import {TuiControlValueTransformer} from '@taiga-ui/cdk/interfaces';
+import {type TuiControlValueTransformer} from '@taiga-ui/cdk/interfaces';
 import {tuiIsPresent} from '@taiga-ui/cdk/utils';
 import {
     delay,

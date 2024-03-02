@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, type OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';

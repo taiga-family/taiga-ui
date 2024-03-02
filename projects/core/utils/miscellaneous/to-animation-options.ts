@@ -1,4 +1,4 @@
-import {AnimationOptions} from '@angular/animations';
+import {type AnimationOptions} from '@angular/animations';
 
 export const TUI_ANIMATIONS_DEFAULT_DURATION = 300;
 

@@ -9,10 +9,10 @@ import {
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
     TuiMonth,
-    TuiMonthLike,
-    TuiYear,
+    type TuiMonthLike,
+    type TuiYear,
 } from '@taiga-ui/cdk';
-import {TuiWithOptionalMinMax} from '@taiga-ui/core/interfaces';
+import {type TuiWithOptionalMinMax} from '@taiga-ui/core/interfaces';
 
 @Component({
     selector: 'tui-primitive-year-month-pagination',

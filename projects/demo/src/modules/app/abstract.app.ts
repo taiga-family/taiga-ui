@@ -1,5 +1,5 @@
-import {Directive, ElementRef, HostBinding, inject, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import {Directive, ElementRef, HostBinding, inject, type OnInit} from '@angular/core';
+import {type Router} from '@angular/router';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {TUI_DOC_PAGE_LOADED} from '@taiga-ui/addon-doc';
 import {TuiDestroyService, tuiPure} from '@taiga-ui/cdk';

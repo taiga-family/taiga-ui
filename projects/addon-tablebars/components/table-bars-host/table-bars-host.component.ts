@@ -1,19 +1,19 @@
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
-import {TuiContext} from '@taiga-ui/cdk';
+import {type TuiContext} from '@taiga-ui/cdk';
 import {
     TUI_ANIMATIONS_SPEED,
     TUI_CLOSE_WORD,
     TUI_COMMON_ICONS,
     TUI_MEDIA,
     TUI_PARENT_ANIMATION,
-    TuiBrightness,
+    type TuiBrightness,
     tuiIsMobile,
     tuiSlideInTop,
     tuiToAnimationOptions,
 } from '@taiga-ui/core';
 
-import {TuiTableBar} from '../../classes/table-bar';
+import {type TuiTableBar} from '../../classes/table-bar';
 import {TuiTableBarsService} from '../../services/table-bars.service';
 
 // TODO: Accessibility

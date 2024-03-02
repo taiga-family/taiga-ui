@@ -11,15 +11,15 @@ import {
     AbstractTuiInteractive,
     tuiAsFocusableItemAccessor,
     TuiDestroyService,
-    TuiFocusableElementAccessor,
+    type TuiFocusableElementAccessor,
     tuiIsNativeFocused,
 } from '@taiga-ui/cdk';
 import {TuiModeDirective} from '@taiga-ui/core/directives';
-import {TuiSizeS} from '@taiga-ui/core/types';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {distinctUntilChanged, EMPTY, map, Observable, startWith} from 'rxjs';
+import {type TuiSizeS} from '@taiga-ui/core/types';
+import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {distinctUntilChanged, EMPTY, map, type Observable, startWith} from 'rxjs';
 
-import {TUI_BUTTON_OPTIONS, TuiButtonOptions} from './button.options';
+import {TUI_BUTTON_OPTIONS, type TuiButtonOptions} from './button.options';
 
 @Component({
     selector: 'button[tuiButton], button[tuiIconButton], a[tuiButton], a[tuiIconButton]',

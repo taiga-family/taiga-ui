@@ -1,6 +1,6 @@
 import {
     Directive,
-    FactoryProvider,
+    type FactoryProvider,
     forwardRef,
     inject,
     Input,
@@ -8,9 +8,9 @@ import {
     SkipSelf,
 } from '@angular/core';
 import {AbstractTuiController, tuiCreateToken} from '@taiga-ui/cdk';
-import {TuiHintDirection} from '@taiga-ui/core/types';
+import {type TuiHintDirection} from '@taiga-ui/core/types';
 import {tuiOverrideOptions} from '@taiga-ui/core/utils';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface TuiHintOptions {
     readonly appearance: string;

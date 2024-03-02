@@ -5,24 +5,24 @@ import {
     EventEmitter,
     inject,
     Input,
-    OnInit,
+    type OnInit,
     Output,
 } from '@angular/core';
 import {
     ALWAYS_FALSE_HANDLER,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
-    TuiBooleanHandler,
-    TuiDay,
-    TuiDayRange,
+    type TuiBooleanHandler,
+    type TuiDay,
+    type TuiDayRange,
     TuiDestroyService,
     TuiMonth,
-    TuiTypedMapper,
+    type TuiTypedMapper,
     tuiWatch,
 } from '@taiga-ui/cdk';
-import {TUI_DEFAULT_MARKER_HANDLER, TuiMarkerHandler} from '@taiga-ui/core';
+import {TUI_DEFAULT_MARKER_HANDLER, type TuiMarkerHandler} from '@taiga-ui/core';
 import {TUI_CALENDAR_DATE_STREAM} from '@taiga-ui/kit/tokens';
-import {Observable, takeUntil} from 'rxjs';
+import {type Observable, takeUntil} from 'rxjs';
 
 /**
  * @internal

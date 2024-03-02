@@ -1,7 +1,7 @@
 import {
     tuiCreateToken,
-    TuiHandler,
-    TuiSafeHtml,
+    type TuiHandler,
+    type TuiSafeHtml,
     tuiSvgLinearGradientProcessor,
 } from '@taiga-ui/cdk';
 

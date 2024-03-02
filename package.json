@@ -80,6 +80,16 @@
             "plugin:@taiga-ui/experience/all",
             "plugin:@taiga-ui/experience/taiga-naming"
         ],
+        "rules": {
+            "@typescript-eslint/consistent-type-imports": [
+                "error",
+                {
+                    "prefer": "type-imports",
+                    "disallowTypeAnnotations": false,
+                    "fixStyle": "inline-type-imports"
+                }
+            ]
+        },
         "root": true
     },
     "stylelint": {

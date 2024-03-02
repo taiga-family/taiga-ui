@@ -1,5 +1,5 @@
-import {InjectionToken, Provider, Type} from '@angular/core';
-import {TuiDataListAccessor} from '@taiga-ui/core/interfaces';
+import {InjectionToken, type Provider, type Type} from '@angular/core';
+import {type TuiDataListAccessor} from '@taiga-ui/core/interfaces';
 
 /**
  * Accessor for data-list options

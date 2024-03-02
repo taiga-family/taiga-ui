@@ -2,7 +2,7 @@ import {
     tuiGetViewportHeight,
     tuiGetViewportWidth,
     tuiIsMobile,
-    TuiMedia,
+    type TuiMedia,
 } from '@taiga-ui/core';
 import {tuiTestingViewport} from '@taiga-ui/testing';
 

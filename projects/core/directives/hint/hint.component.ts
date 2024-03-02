@@ -9,7 +9,7 @@ import {
 import {
     EMPTY_CLIENT_RECT,
     tuiClamp,
-    TuiContext,
+    type TuiContext,
     TuiDestroyService,
     TuiHoveredService,
     tuiPure,
@@ -22,11 +22,11 @@ import {
 } from '@taiga-ui/core/abstract';
 import {tuiFadeIn} from '@taiga-ui/core/animations';
 import {TuiModeDirective} from '@taiga-ui/core/directives/mode';
-import {TuiPortalItem} from '@taiga-ui/core/interfaces';
+import {type TuiPortalItem} from '@taiga-ui/core/interfaces';
 import {TuiPositionService, TuiVisualViewportService} from '@taiga-ui/core/services';
 import {TUI_ANIMATIONS_SPEED, TUI_VIEWPORT} from '@taiga-ui/core/tokens';
 import {tuiIsObscured, tuiToAnimationOptions} from '@taiga-ui/core/utils';
-import {POLYMORPHEUS_CONTEXT, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {POLYMORPHEUS_CONTEXT, type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {map, takeUntil} from 'rxjs';
 
 import {TuiHintDirective} from './hint.directive';

@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/core';
-import {SafeValue} from '@angular/platform-browser';
+import {type SafeValue} from '@angular/platform-browser';
 import {tuiPure, tuiSum} from '@taiga-ui/cdk';
-import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core';
 
 @Component({
     selector: 'tui-bar',

@@ -1,7 +1,7 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    ElementRef,
+    type ElementRef,
     HostListener,
     inject,
     Input,
@@ -12,7 +12,7 @@ import {
     tuiAsControl,
     tuiAsFocusableItemAccessor,
     tuiClamp,
-    TuiFocusableElementAccessor,
+    type TuiFocusableElementAccessor,
     tuiIsNativeFocused,
 } from '@taiga-ui/cdk';
 

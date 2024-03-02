@@ -1,4 +1,4 @@
-import {Directive, inject, Input, OnChanges} from '@angular/core';
+import {Directive, inject, Input, type OnChanges} from '@angular/core';
 import {tuiAsDriver} from '@taiga-ui/core/abstract';
 
 import {TuiDropdownDriver} from './dropdown.driver';

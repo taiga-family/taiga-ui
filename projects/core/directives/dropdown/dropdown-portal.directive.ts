@@ -1,9 +1,9 @@
 import {
     Directive,
-    EmbeddedViewRef,
+    type EmbeddedViewRef,
     inject,
     Input,
-    OnDestroy,
+    type OnDestroy,
     TemplateRef,
 } from '@angular/core';
 

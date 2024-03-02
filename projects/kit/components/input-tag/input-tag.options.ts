@@ -1,6 +1,6 @@
-import {Provider} from '@angular/core';
+import {type Provider} from '@angular/core';
 import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
-import {TuiStatus} from '@taiga-ui/kit/types';
+import {type TuiStatus} from '@taiga-ui/kit/types';
 
 export interface TuiInputTagOptions {
     readonly separator: RegExp | string;

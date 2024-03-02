@@ -9,7 +9,7 @@ import {
     inject,
     Input,
     Output,
-    QueryList,
+    type QueryList,
     TemplateRef,
     ViewChild,
     ViewChildren,
@@ -19,13 +19,13 @@ import {
     ALWAYS_FALSE_HANDLER,
     ALWAYS_TRUE_HANDLER,
     EMPTY_QUERY,
-    TuiActiveZoneDirective,
+    type TuiActiveZoneDirective,
     tuiArrayRemove,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    TuiBooleanHandler,
-    TuiContext,
-    TuiFocusableElementAccessor,
+    type TuiBooleanHandler,
+    type TuiContext,
+    type TuiFocusableElementAccessor,
     tuiGetActualTarget,
     tuiGetClipboardDataText,
     tuiIsElement,
@@ -40,19 +40,19 @@ import {
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
     tuiAsDataListHost,
     TuiDataListDirective,
-    TuiDataListHost,
+    type TuiDataListHost,
     TuiHintOptionsDirective,
     TuiHostedDropdownComponent,
     TuiModeDirective,
     TuiScrollbarComponent,
-    TuiSizeL,
-    TuiSizeS,
+    type TuiSizeL,
+    type TuiSizeS,
 } from '@taiga-ui/core';
-import {TuiStringifiableItem} from '@taiga-ui/kit/classes';
+import {type TuiStringifiableItem} from '@taiga-ui/kit/classes';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
-import {TuiStatus} from '@taiga-ui/kit/types';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {map, Observable, takeUntil, timer} from 'rxjs';
+import {type TuiStatus} from '@taiga-ui/kit/types';
+import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {map, type Observable, takeUntil, timer} from 'rxjs';
 
 import {TUI_INPUT_TAG_OPTIONS} from './input-tag.options';
 

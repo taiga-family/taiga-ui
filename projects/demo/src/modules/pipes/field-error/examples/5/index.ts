@@ -1,8 +1,8 @@
 import {Component, inject} from '@angular/core';
 import {
-    AbstractControl,
-    AsyncValidatorFn,
-    FormGroup,
+    type AbstractControl,
+    type AsyncValidatorFn,
+    type FormGroup,
     UntypedFormBuilder,
     Validators,
 } from '@angular/forms';

@@ -10,10 +10,10 @@ import {
     AbstractTuiControl,
     tuiAssert,
     tuiClamp,
-    TuiFocusableElementAccessor,
+    type TuiFocusableElementAccessor,
     tuiIsNativeFocused,
 } from '@taiga-ui/cdk';
-import {TuiKeySteps} from '@taiga-ui/kit/types';
+import {type TuiKeySteps} from '@taiga-ui/kit/types';
 import {
     tuiKeyStepValueToPercentage,
     tuiPercentageToKeyStepValue,

@@ -3,7 +3,7 @@ import {
     ChangeDetectorRef,
     Component,
     ContentChild,
-    ElementRef,
+    type ElementRef,
     EventEmitter,
     HostBinding,
     inject,
@@ -14,11 +14,11 @@ import {
 import {
     AbstractTuiInteractive,
     tuiAsFocusableItemAccessor,
-    TuiFocusableElementAccessor,
+    type TuiFocusableElementAccessor,
     tuiIsNativeFocused,
-    TuiNativeFocusableElement,
+    type TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
-import {MODE_PROVIDER, TUI_MODE, TuiSizeS} from '@taiga-ui/core';
+import {MODE_PROVIDER, TUI_MODE, type TuiSizeS} from '@taiga-ui/core';
 import {TUI_ARROW_OPTIONS} from '@taiga-ui/kit/components/arrow';
 
 import {TuiAccordionItemContentDirective} from './accordion-item-content.directive';

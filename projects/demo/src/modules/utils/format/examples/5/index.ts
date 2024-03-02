@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiDecimalSymbol, tuiFormatNumber} from '@taiga-ui/core';
+import {type TuiDecimalSymbol, tuiFormatNumber} from '@taiga-ui/core';
 
 @Component({
     selector: 'tui-format-example-5',

@@ -1,7 +1,7 @@
 import {Directive} from '@angular/core';
 import {tuiAsPopover, TuiPopoverDirective} from '@taiga-ui/cdk';
 
-import {TuiAlertOptions} from './alert.interfaces';
+import {type TuiAlertOptions} from './alert.interfaces';
 import {TuiAlertService} from './alert.service';
 
 @Directive({

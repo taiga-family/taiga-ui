@@ -1,5 +1,5 @@
 import {Directive, ElementRef, inject} from '@angular/core';
-import {tuiAsPositionAccessor, TuiPoint, TuiPositionAccessor} from '@taiga-ui/core';
+import {tuiAsPositionAccessor, type TuiPoint, TuiPositionAccessor} from '@taiga-ui/core';
 
 @Directive({
     selector: '[topRight]',

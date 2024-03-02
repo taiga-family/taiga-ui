@@ -1,10 +1,10 @@
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiContext, TuiDay, TuiStringHandler} from '@taiga-ui/cdk';
+import {type TuiDocExample} from '@taiga-ui/addon-doc';
+import {type TuiContext, TuiDay, type TuiStringHandler} from '@taiga-ui/cdk';
 import {TUI_MONTHS} from '@taiga-ui/core';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {map, Observable} from 'rxjs';
+import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {map, type Observable} from 'rxjs';
 
 @Component({
     selector: 'example-tui-line-days-chart',

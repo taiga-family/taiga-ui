@@ -1,5 +1,5 @@
-import {ValidatorFn} from '@angular/forms';
-import {TuiContext} from '@taiga-ui/cdk';
+import {type ValidatorFn} from '@angular/forms';
+import {type TuiContext} from '@taiga-ui/cdk';
 
 export const TUI_SIZE_ERROR = 'tuiSize';
 export const TUI_FORMAT_ERROR = 'tuiFormat';

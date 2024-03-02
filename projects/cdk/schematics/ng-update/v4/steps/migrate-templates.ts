@@ -1,7 +1,7 @@
-import {DevkitFileSystem, UpdateRecorder} from 'ng-morph';
+import {type DevkitFileSystem, type UpdateRecorder} from 'ng-morph';
 
 import {ALL_TS_FILES} from '../../../constants';
-import {TuiSchema} from '../../../ng-add/schema';
+import {type TuiSchema} from '../../../ng-add/schema';
 import {
     infoLog,
     REPLACE_SYMBOL,
@@ -12,7 +12,7 @@ import {
 import {setupProgressLogger} from '../../../utils/progress';
 import {getComponentTemplates} from '../../../utils/templates/get-component-templates';
 import {getPathFromTemplateResource} from '../../../utils/templates/template-resource';
-import {TemplateResource} from '../../interfaces/template-resource';
+import {type TemplateResource} from '../../interfaces/template-resource';
 import {
     addHTMLCommentTags,
     removeInputs,

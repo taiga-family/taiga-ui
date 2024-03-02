@@ -1,14 +1,14 @@
-import {Provider} from '@angular/core';
+import {type Provider} from '@angular/core';
 import {
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
-    TuiContext,
+    type TuiContext,
     tuiCreateToken,
-    TuiDay,
+    type TuiDay,
     tuiProvideOptions,
 } from '@taiga-ui/cdk';
-import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core';
+import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface TuiInputDateOptions {
     readonly icon: PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeS>>;

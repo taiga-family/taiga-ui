@@ -1,11 +1,14 @@
 import {inject, Injectable} from '@angular/core';
-import {TuiPopoverContext, TuiPopoverService} from '@taiga-ui/cdk';
+import {type TuiPopoverContext, TuiPopoverService} from '@taiga-ui/cdk';
 import {TUI_DIALOGS} from '@taiga-ui/core';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
+import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {type Observable} from 'rxjs';
 
 import {TuiMobileDialogComponent} from './mobile-dialog.component';
-import {TUI_MOBILE_DIALOG_OPTIONS, TuiMobileDialogOptions} from './mobile-dialog.options';
+import {
+    TUI_MOBILE_DIALOG_OPTIONS,
+    type TuiMobileDialogOptions,
+} from './mobile-dialog.options';
 
 @Injectable({
     providedIn: 'root',

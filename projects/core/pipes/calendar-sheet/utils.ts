@@ -3,9 +3,9 @@ import {
     DAYS_IN_WEEK,
     tuiAssert,
     TuiDay,
-    TuiDayOfWeek,
+    type TuiDayOfWeek,
     tuiInRange,
-    TuiMonth,
+    type TuiMonth,
 } from '@taiga-ui/cdk';
 
 /**

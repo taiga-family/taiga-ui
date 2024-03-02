@@ -1,7 +1,7 @@
-import {HarnessLoader, TestKey} from '@angular/cdk/testing';
+import {type HarnessLoader, TestKey} from '@angular/cdk/testing';
 import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {Component, ViewChild} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiTagComponent, TuiTagModule} from '@taiga-ui/kit';
 import {TuiTagHarness} from '@taiga-ui/testing';
 

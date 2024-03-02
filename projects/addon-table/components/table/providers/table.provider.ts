@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Provider, SkipSelf} from '@angular/core';
+import {ChangeDetectorRef, type Provider, SkipSelf} from '@angular/core';
 import {TuiDestroyService} from '@taiga-ui/cdk';
 import {tuiWatchedControllerFactory} from '@taiga-ui/core';
 

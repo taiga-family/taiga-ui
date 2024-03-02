@@ -1,4 +1,4 @@
-import {Locator} from '@playwright/test';
+import {type Locator} from '@playwright/test';
 
 export class TuiInputDateTimePO {
     public readonly textfield: Locator = this.host.getByRole('textbox');

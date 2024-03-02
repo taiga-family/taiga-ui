@@ -6,7 +6,7 @@ import {
     inject,
     Input,
 } from '@angular/core';
-import {TuiHorizontalDirection} from '@taiga-ui/core';
+import {type TuiHorizontalDirection} from '@taiga-ui/core';
 
 import {TuiTabsDirective} from '../tabs.directive';
 

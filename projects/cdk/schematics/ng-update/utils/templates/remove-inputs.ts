@@ -1,13 +1,13 @@
-import {UpdateRecorder} from '@angular-devkit/schematics';
-import {DevkitFileSystem} from 'ng-morph';
+import {type UpdateRecorder} from '@angular-devkit/schematics';
+import {type DevkitFileSystem} from 'ng-morph';
 
 import {getInputPropertyOffsets} from '../../../utils/templates/ng-component-input-manipulations';
 import {
     getTemplateFromTemplateResource,
     getTemplateOffset,
 } from '../../../utils/templates/template-resource';
-import {RemovableInput} from '../../interfaces/removable-input';
-import {TemplateResource} from '../../interfaces/template-resource';
+import {type RemovableInput} from '../../interfaces/removable-input';
+import {type TemplateResource} from '../../interfaces/template-resource';
 
 export function removeInputs({
     resource,

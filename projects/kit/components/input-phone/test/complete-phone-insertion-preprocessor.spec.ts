@@ -1,4 +1,4 @@
-import {MaskitoOptions, maskitoTransform} from '@maskito/core';
+import {type MaskitoOptions, maskitoTransform} from '@maskito/core';
 
 import {
     tuiCreateCompletePhoneInsertionPreprocessor,

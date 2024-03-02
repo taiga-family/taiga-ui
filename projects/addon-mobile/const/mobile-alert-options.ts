@@ -1,4 +1,4 @@
-import {TuiDialogOptions} from '@taiga-ui/core';
+import {type TuiDialogOptions} from '@taiga-ui/core';
 
 const MOBILE_ALERT_OPTIONS: TuiMobileAlertOptions = {
     size: 'fullscreen',

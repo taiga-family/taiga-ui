@@ -1,22 +1,22 @@
 import {
     Directive,
-    ElementRef,
+    type ElementRef,
     EventEmitter,
     forwardRef,
     Input,
     Output,
-    QueryList,
+    type QueryList,
     ViewChildren,
 } from '@angular/core';
 import {EMPTY_QUERY, tuiIsNativeFocused, tuiIsPresent} from '@taiga-ui/cdk';
 import {
     TuiOptionComponent,
-    TuiSizeL,
-    TuiSizeXS,
-    TuiValueContentContext,
+    type TuiSizeL,
+    type TuiSizeXS,
+    type TuiValueContentContext,
 } from '@taiga-ui/core';
-import {TuiItemsHandlers} from '@taiga-ui/kit/tokens';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {type TuiItemsHandlers} from '@taiga-ui/kit/tokens';
+import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 @Directive()
 export abstract class AbstractTuiDataListWrapper<T> {

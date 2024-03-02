@@ -5,7 +5,7 @@ import {
     inject,
     Input,
 } from '@angular/core';
-import {MODE_PROVIDER, TUI_MODE, TuiSizeXS, TuiSizeXXL} from '@taiga-ui/core';
+import {MODE_PROVIDER, TUI_MODE, type TuiSizeXS, type TuiSizeXXL} from '@taiga-ui/core';
 
 @Component({
     selector: 'progress[tuiProgressBar]',

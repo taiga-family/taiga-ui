@@ -1,4 +1,4 @@
-import {ExistingProvider, Type} from '@angular/core';
+import {type ExistingProvider, type Type} from '@angular/core';
 
 export abstract class TuiVehicle {
     public abstract readonly type: string;

@@ -1,4 +1,4 @@
-import {InjectionToken, Sanitizer} from '@angular/core';
+import {InjectionToken, type Sanitizer} from '@angular/core';
 
 /**
  * A custom Sanitizer to sanitize source before inlining

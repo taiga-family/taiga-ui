@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {TuiPopover} from '@taiga-ui/cdk';
+import {type TuiPopover} from '@taiga-ui/cdk';
 import {
     TUI_ANIMATIONS_SPEED,
     tuiFadeIn,
@@ -9,7 +9,7 @@ import {
 } from '@taiga-ui/core';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 
-import {TuiPushOptions} from './push.options';
+import {type TuiPushOptions} from './push.options';
 import {TuiPushAlertDirective} from './push-alert.directive';
 
 @Component({

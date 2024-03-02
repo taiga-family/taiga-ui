@@ -1,5 +1,5 @@
 import {
-    BaseHarnessFilters,
+    type BaseHarnessFilters,
     ComponentHarness,
     HarnessPredicate,
 } from '@angular/cdk/testing';

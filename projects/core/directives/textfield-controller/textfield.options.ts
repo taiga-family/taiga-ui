@@ -1,7 +1,7 @@
-import {Provider} from '@angular/core';
-import {TuiContext, tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
-import {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {type Provider} from '@angular/core';
+import {type TuiContext, tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
+import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
+import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 /**
  * TODO: replace with TUI_COMMON_ICONS and drop hintOnDisabled, switching it to true in v.4

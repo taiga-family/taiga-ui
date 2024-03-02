@@ -1,5 +1,5 @@
 import {TuiDocumentationPagePO, tuiGoto, TuiInputMonthPO} from '@demo-playwright/utils';
-import {expect, Locator, test} from '@playwright/test';
+import {expect, type Locator, test} from '@playwright/test';
 
 test.describe('InputMonth', () => {
     test.describe('API', () => {
