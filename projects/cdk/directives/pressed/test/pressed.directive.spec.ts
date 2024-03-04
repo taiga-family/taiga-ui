@@ -1,5 +1,5 @@
-import {Component, DebugElement} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {Component, type DebugElement} from '@angular/core';
+import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {TuiPressedModule} from '@taiga-ui/cdk';
 import {TUI_TAKE_ONLY_TRUSTED_EVENTS} from '@taiga-ui/cdk/tokens';

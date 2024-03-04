@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocExample, TuiRawLoaderContent} from '@taiga-ui/addon-doc';
-import {TuiInteractiveStateT} from '@taiga-ui/core';
+import {type TuiDocExample, type TuiRawLoaderContent} from '@taiga-ui/addon-doc';
+import {type TuiInteractiveStateT} from '@taiga-ui/core';
 
 @Component({
     selector: 'example-appearance',

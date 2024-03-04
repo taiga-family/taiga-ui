@@ -7,7 +7,7 @@ import {
     Input,
 } from '@angular/core';
 import {LOCATION} from '@ng-web-apis/common';
-import {TuiDocExample} from '@taiga-ui/addon-doc/interfaces';
+import {type TuiDocExample} from '@taiga-ui/addon-doc/interfaces';
 import {
     TUI_DOC_CODE_ACTIONS,
     TUI_DOC_CODE_EDITOR,
@@ -15,11 +15,11 @@ import {
     TUI_DOC_EXAMPLE_TEXTS,
 } from '@taiga-ui/addon-doc/tokens';
 import {tuiRawLoadRecord} from '@taiga-ui/addon-doc/utils';
-import {TUI_IS_E2E, TuiContext} from '@taiga-ui/cdk';
+import {TUI_IS_E2E, type TuiContext} from '@taiga-ui/cdk';
 import {TuiAlertService} from '@taiga-ui/core';
 import {TUI_COPY_TEXTS} from '@taiga-ui/kit';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {BehaviorSubject, map, Observable, Subject, switchMap} from 'rxjs';
+import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {BehaviorSubject, map, type Observable, Subject, switchMap} from 'rxjs';
 
 import {TUI_DOC_EXAMPLE_OPTIONS} from './example.options';
 

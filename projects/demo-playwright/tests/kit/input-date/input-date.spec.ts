@@ -1,5 +1,5 @@
 import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
-import {expect, Locator, test} from '@playwright/test';
+import {expect, type Locator, test} from '@playwright/test';
 
 import {TUI_PLAYWRIGHT_MOBILE_USER_AGENT} from '../../../playwright.options';
 

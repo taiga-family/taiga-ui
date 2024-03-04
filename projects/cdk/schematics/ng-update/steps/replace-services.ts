@@ -1,6 +1,11 @@
-import {Node, PropertyAccessExpression, SyntaxKind, TypeReferenceNode} from 'ng-morph';
+import {
+    Node,
+    type PropertyAccessExpression,
+    SyntaxKind,
+    type TypeReferenceNode,
+} from 'ng-morph';
 
-import {TuiSchema} from '../../ng-add/schema';
+import {type TuiSchema} from '../../ng-add/schema';
 import {addUniqueImport} from '../../utils/add-unique-import';
 import {
     infoLog,
@@ -13,7 +18,7 @@ import {
 } from '../../utils/colored-log';
 import {getNamedImportReferences} from '../../utils/get-named-import-references';
 import {removeImport} from '../../utils/import-manipulations';
-import {ReplacementService} from '../interfaces/replacement-service';
+import {type ReplacementService} from '../interfaces/replacement-service';
 
 function replaceService(
     {from, to, replaceMethods}: ReplacementService,

@@ -14,8 +14,8 @@ import {
     TUI_IS_IOS,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    TuiContext,
-    TuiFocusableElementAccessor,
+    type TuiContext,
+    type TuiFocusableElementAccessor,
     tuiIsNativeFocused,
 } from '@taiga-ui/cdk';
 import {
@@ -26,11 +26,11 @@ import {
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
     tuiGetBorder,
     TuiHintOptionsDirective,
-    TuiSizeL,
-    TuiSizeS,
+    type TuiSizeL,
+    type TuiSizeS,
     TuiTextfieldComponent,
 } from '@taiga-ui/core';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export const DEFAULT_ROWS = 20;
 export const LINE_HEIGHT_M = 20;

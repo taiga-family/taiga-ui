@@ -1,5 +1,5 @@
 import {
-    AfterViewChecked,
+    type AfterViewChecked,
     Directive,
     ElementRef,
     EventEmitter,

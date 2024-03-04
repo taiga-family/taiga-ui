@@ -4,19 +4,19 @@ import {
     inject,
     INJECTOR,
     Input,
-    OnChanges,
-    OnDestroy,
+    type OnChanges,
+    type OnDestroy,
 } from '@angular/core';
 import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
 import {
     tuiAsRectAccessor,
     tuiAsVehicle,
-    TuiRectAccessor,
-    TuiVehicle,
+    type TuiRectAccessor,
+    type TuiVehicle,
 } from '@taiga-ui/core/abstract';
-import {TuiPortalItem} from '@taiga-ui/core/interfaces';
+import {type TuiPortalItem} from '@taiga-ui/core/interfaces';
 import {TuiHintService} from '@taiga-ui/core/services';
-import {PolymorpheusComponent, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusComponent, type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {TUI_HINT_COMPONENT} from './hint.providers';
 import {TUI_HINT_OPTIONS} from './hint-options.directive';

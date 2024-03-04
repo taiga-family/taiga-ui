@@ -1,6 +1,6 @@
-import {Component, DebugElement, Input} from '@angular/core';
+import {Component, type DebugElement, Input} from '@angular/core';
 import {
-    ComponentFixture,
+    type ComponentFixture,
     fakeAsync,
     TestBed,
     tick,
@@ -8,7 +8,7 @@ import {
 } from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import hljs from 'highlight.js';
-import {Highlight, HighlightLibrary, HighlightLoader} from 'ngx-highlightjs';
+import {Highlight, type HighlightLibrary, HighlightLoader} from 'ngx-highlightjs';
 import {BehaviorSubject} from 'rxjs';
 
 describe('Highlight Directive', () => {

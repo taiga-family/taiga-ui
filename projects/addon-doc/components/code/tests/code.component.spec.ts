@@ -1,4 +1,4 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiDocCodeComponent} from '@taiga-ui/addon-doc';
 import {HIGHLIGHT_OPTIONS, HighlightModule} from 'ngx-highlightjs';
 

@@ -1,8 +1,8 @@
-import {Provider} from '@angular/core';
-import {tuiCreateToken, TuiPopover, tuiProvideOptions} from '@taiga-ui/cdk';
-import {BehaviorSubject, EMPTY, Observable} from 'rxjs';
+import {type Provider} from '@angular/core';
+import {tuiCreateToken, type TuiPopover, tuiProvideOptions} from '@taiga-ui/cdk';
+import {BehaviorSubject, EMPTY, type Observable} from 'rxjs';
 
-import {TuiDialogOptions} from './dialog.interfaces';
+import {type TuiDialogOptions} from './dialog.interfaces';
 
 export const TUI_DIALOGS = tuiCreateToken(
     new BehaviorSubject<ReadonlyArray<TuiPopover<any, any>>>([]),

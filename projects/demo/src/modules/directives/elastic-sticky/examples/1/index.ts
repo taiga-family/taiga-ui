@@ -1,9 +1,9 @@
-import {AfterViewInit, Component, ViewChild} from '@angular/core';
+import {type AfterViewInit, Component, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiElasticStickyDirective} from '@taiga-ui/addon-mobile';
 import {tuiClamp} from '@taiga-ui/cdk';
-import {distinctUntilChanged, map, Observable, startWith} from 'rxjs';
+import {distinctUntilChanged, map, type Observable, startWith} from 'rxjs';
 
 @Component({
     selector: 'tui-elastic-sticky-example-1',

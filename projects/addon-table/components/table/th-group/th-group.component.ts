@@ -1,15 +1,15 @@
 import {
-    AfterContentInit,
+    type AfterContentInit,
     ChangeDetectionStrategy,
     Component,
     ContentChild,
     ContentChildren,
     forwardRef,
     inject,
-    QueryList,
+    type QueryList,
 } from '@angular/core';
 import {EMPTY_QUERY} from '@taiga-ui/cdk';
-import {map, Observable, startWith} from 'rxjs';
+import {map, type Observable, startWith} from 'rxjs';
 
 import {TuiHeadDirective} from '../directives/head.directive';
 import {TuiTableDirective} from '../directives/table.directive';

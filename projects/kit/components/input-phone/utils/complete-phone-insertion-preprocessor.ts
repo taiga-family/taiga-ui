@@ -1,4 +1,4 @@
-import {MaskitoPreprocessor} from '@maskito/core';
+import {type MaskitoPreprocessor} from '@maskito/core';
 
 const countDigits = (value: string): number => value.replaceAll(/\D/g, '').length;
 

@@ -1,4 +1,4 @@
-import {Locator} from '@playwright/test';
+import {type Locator} from '@playwright/test';
 
 export async function tuiHideElement(element: Locator): Promise<void> {
     return element.evaluate(el => {

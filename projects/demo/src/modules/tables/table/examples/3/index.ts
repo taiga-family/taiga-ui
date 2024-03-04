@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
-import {ValidatorFn} from '@angular/forms';
+import {type ValidatorFn} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiComparator} from '@taiga-ui/addon-table';
+import {type TuiComparator} from '@taiga-ui/addon-table';
 import {TuiDay, tuiDefaultSort} from '@taiga-ui/cdk';
 
 interface Item {

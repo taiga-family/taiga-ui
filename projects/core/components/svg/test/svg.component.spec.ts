@@ -1,7 +1,7 @@
-import {HarnessLoader} from '@angular/cdk/testing';
+import {type HarnessLoader} from '@angular/cdk/testing';
 import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {Component, inject, ViewChild} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiStaticRequestService} from '@taiga-ui/cdk';
 import {TuiSvgComponent, TuiSvgModule, TuiSvgService} from '@taiga-ui/core';
 import {TUI_SANITIZER_MOCK, TuiSvgHarness} from '@taiga-ui/testing';

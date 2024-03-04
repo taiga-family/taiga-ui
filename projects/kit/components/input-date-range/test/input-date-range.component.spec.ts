@@ -1,5 +1,11 @@
-import {Component, DebugElement, Optional, Type, ViewChild} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {
+    Component,
+    type DebugElement,
+    Optional,
+    type Type,
+    ViewChild,
+} from '@angular/core';
+import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {
@@ -15,7 +21,7 @@ import {TuiRootModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {
     TUI_DATE_RANGE_VALUE_TRANSFORMER,
     TUI_DATE_VALUE_TRANSFORMER,
-    TuiDayRangePeriod,
+    type TuiDayRangePeriod,
     TuiInputDateRangeComponent,
     TuiInputDateRangeModule,
 } from '@taiga-ui/kit';

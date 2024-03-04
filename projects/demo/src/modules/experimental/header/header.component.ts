@@ -1,9 +1,9 @@
 import {Component, ViewEncapsulation} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {
-    TuiDocExample,
+    type TuiDocExample,
     tuiDocExampleOptionsProvider,
-    TuiRawLoaderContent,
+    type TuiRawLoaderContent,
 } from '@taiga-ui/addon-doc';
 
 @Component({

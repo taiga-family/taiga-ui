@@ -1,5 +1,5 @@
 import {defineConfig, devices} from '@playwright/test';
-import {ViewportSize} from 'playwright-core';
+import {type ViewportSize} from 'playwright-core';
 
 import {pages as PUBLIC_PAGES} from '../demo/src/modules/app/pages';
 import {tuiGetDemoPathsForE2E} from './tests/demo/get-demo-paths';

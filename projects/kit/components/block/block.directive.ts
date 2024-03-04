@@ -4,8 +4,8 @@ import {TuiNativeValidatorDirective, tuiWithStyles} from '@taiga-ui/cdk';
 import {
     TuiAppearanceDirective,
     tuiAppearanceOptionsProvider,
-    TuiSizeL,
-    TuiSizeXS,
+    type TuiSizeL,
+    type TuiSizeXS,
 } from '@taiga-ui/core';
 import {tuiAvatarOptionsProvider} from '@taiga-ui/kit/components/avatar';
 

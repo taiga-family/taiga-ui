@@ -1,6 +1,6 @@
-import {Pipe, PipeTransform} from '@angular/core';
-import {TuiStringHandler} from '@taiga-ui/cdk';
-import {TuiValueContentContext} from '@taiga-ui/core';
+import {Pipe, type PipeTransform} from '@angular/core';
+import {type TuiStringHandler} from '@taiga-ui/cdk';
+import {type TuiValueContentContext} from '@taiga-ui/core';
 
 @Pipe({
     name: 'tuiStringifyContent',

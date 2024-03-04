@@ -1,4 +1,4 @@
-import {CommonExecOptions, execSync} from 'child_process';
+import {type CommonExecOptions, execSync} from 'child_process';
 
 import {infoLog} from '../../projects/cdk/schematics/utils/colored-log';
 

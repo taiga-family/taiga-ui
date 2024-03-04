@@ -1,16 +1,16 @@
 import {
-    AfterViewInit,
+    type AfterViewInit,
     ChangeDetectionStrategy,
     Component,
     ElementRef,
     HostBinding,
     HostListener,
     inject,
-    QueryList,
+    type QueryList,
     ViewChild,
     ViewChildren,
 } from '@angular/core';
-import {EMPTY_QUERY, TuiPopover, tuiPure} from '@taiga-ui/cdk';
+import {EMPTY_QUERY, type TuiPopover, tuiPure} from '@taiga-ui/cdk';
 import {
     TUI_ANIMATIONS_SPEED,
     TUI_CLOSE_WORD,
@@ -22,7 +22,7 @@ import {shouldCall} from '@tinkoff/ng-event-plugins';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 import {BehaviorSubject} from 'rxjs';
 
-import {TuiSheetDialogOptions} from './sheet-dialog.options';
+import {type TuiSheetDialogOptions} from './sheet-dialog.options';
 
 // So we re-enter ngZone and trigger change detection
 function isCloseable(this: TuiSheetDialogComponent<unknown>): boolean {

@@ -9,11 +9,16 @@ import {
     AbstractTuiNullableControl,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    TuiFocusableElementAccessor,
+    type TuiFocusableElementAccessor,
     tuiIsNativeFocused,
-    TuiNativeFocusableElement,
+    type TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
-import {MODE_PROVIDER, TUI_CHECKBOX_OPTIONS, TUI_MODE, TuiSizeL} from '@taiga-ui/core';
+import {
+    MODE_PROVIDER,
+    TUI_CHECKBOX_OPTIONS,
+    TUI_MODE,
+    type TuiSizeL,
+} from '@taiga-ui/core';
 import {TuiCheckboxComponent} from '@taiga-ui/kit/components/checkbox';
 
 @Component({

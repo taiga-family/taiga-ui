@@ -1,5 +1,5 @@
-import {Component, DebugElement, ViewChild} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {Component, type DebugElement, ViewChild} from '@angular/core';
+import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
@@ -9,7 +9,7 @@ import {
     TUI_LANGUAGE,
     TUI_RUSSIAN_LANGUAGE,
     TuiCountryIsoCode,
-    TuiLanguage,
+    type TuiLanguage,
 } from '@taiga-ui/i18n';
 import {
     TuiInputPhoneInternationalComponent,

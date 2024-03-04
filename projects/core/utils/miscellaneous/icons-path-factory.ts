@@ -1,4 +1,4 @@
-import {TuiStringHandler} from '@taiga-ui/cdk';
+import {type TuiStringHandler} from '@taiga-ui/cdk';
 import {DEFAULT_ICONS_PATH, TUI_CACHE_BUSTING_PAYLOAD} from '@taiga-ui/core/constants';
 
 export function tuiIconsPathFactory(staticPath: string): TuiStringHandler<string> {

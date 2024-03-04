@@ -1,6 +1,6 @@
-import {QueryList} from '@angular/core';
+import {type QueryList} from '@angular/core';
 import {tuiGetOriginalArrayFromQueryList} from '@taiga-ui/cdk/utils/miscellaneous';
-import {map, Observable, startWith} from 'rxjs';
+import {map, type Observable, startWith} from 'rxjs';
 
 /**
  * Converts changes observable of a QueryList to an Observable of arrays

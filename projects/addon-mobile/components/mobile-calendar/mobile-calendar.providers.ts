@@ -1,14 +1,14 @@
 import {VIRTUAL_SCROLL_STRATEGY} from '@angular/cdk/scrolling';
-import {ChangeDetectorRef, InjectionToken, Optional, Provider} from '@angular/core';
+import {ChangeDetectorRef, InjectionToken, Optional, type Provider} from '@angular/core';
 import {
     TUI_IS_IOS,
-    TuiDayRange,
+    type TuiDayRange,
     TuiDestroyService,
     TuiScrollService,
     tuiWatch,
 } from '@taiga-ui/cdk';
 import {TUI_CALENDAR_DATE_STREAM} from '@taiga-ui/kit';
-import {EMPTY, Observable, takeUntil} from 'rxjs';
+import {EMPTY, type Observable, takeUntil} from 'rxjs';
 
 import {TuiMobileCalendarStrategy} from './mobile-calendar.strategy';
 

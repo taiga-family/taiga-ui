@@ -3,7 +3,7 @@ import {
     tuiGoto,
     TuiInputCardGroupedPO,
 } from '@demo-playwright/utils';
-import {expect, Locator, test} from '@playwright/test';
+import {expect, type Locator, test} from '@playwright/test';
 
 test.describe('InputCardGrouped', () => {
     let documentationPage: TuiDocumentationPagePO;

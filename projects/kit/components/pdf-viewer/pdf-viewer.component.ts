@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, HostListener, inject} from '@angular/core';
-import {TuiPopover} from '@taiga-ui/cdk';
+import {type TuiPopover} from '@taiga-ui/cdk';
 import {
     TUI_ANIMATIONS_SPEED,
     TUI_CLOSE_WORD,
@@ -10,7 +10,7 @@ import {
 } from '@taiga-ui/core';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 
-import {TuiPdfViewerOptions} from './pdf-viewer.options';
+import {type TuiPdfViewerOptions} from './pdf-viewer.options';
 
 @Component({
     selector: 'tui-pdf-viewer',

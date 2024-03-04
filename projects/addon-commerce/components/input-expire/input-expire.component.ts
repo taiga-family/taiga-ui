@@ -11,14 +11,14 @@ import {
     AbstractTuiControl,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    TuiAutofillFieldName,
-    TuiFocusableElementAccessor,
+    type TuiAutofillFieldName,
+    type TuiFocusableElementAccessor,
 } from '@taiga-ui/cdk';
 import {
     TUI_TEXTFIELD_SIZE,
     TuiPrimitiveTextfieldComponent,
-    TuiSizeL,
-    TuiSizeS,
+    type TuiSizeL,
+    type TuiSizeS,
 } from '@taiga-ui/core';
 
 @Component({

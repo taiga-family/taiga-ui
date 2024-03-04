@@ -1,7 +1,7 @@
 import {Component, ElementRef, ViewChild} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {TuiKeySteps, TuiSliderModule} from '@taiga-ui/kit';
+import {type TuiKeySteps, TuiSliderModule} from '@taiga-ui/kit';
 
 describe('TuiSliderKeyStepsDirective', () => {
     @Component({

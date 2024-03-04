@@ -1,7 +1,7 @@
-import {Provider} from '@angular/core';
+import {type Provider} from '@angular/core';
 import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
-import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {TuiStatus} from '@taiga-ui/kit/types';
+import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core';
+import {type TuiStatus} from '@taiga-ui/kit/types';
 
 export interface TuiTagOptions {
     readonly autoColor: boolean;

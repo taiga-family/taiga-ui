@@ -1,11 +1,11 @@
 import {
-    AfterContentInit,
+    type AfterContentInit,
     ChangeDetectionStrategy,
     Component,
     ContentChildren,
     inject,
     Input,
-    QueryList,
+    type QueryList,
 } from '@angular/core';
 import {
     EMPTY_QUERY,

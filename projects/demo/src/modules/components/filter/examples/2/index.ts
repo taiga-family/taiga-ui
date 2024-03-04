@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiHandler, TuiIdentityMatcher} from '@taiga-ui/cdk';
+import {type TuiHandler, type TuiIdentityMatcher} from '@taiga-ui/cdk';
 
 interface Operations {
     operations: readonly Operation[];

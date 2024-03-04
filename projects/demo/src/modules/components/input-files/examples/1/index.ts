@@ -2,8 +2,8 @@ import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiFileLike} from '@taiga-ui/kit';
-import {finalize, map, Observable, of, Subject, switchMap, timer} from 'rxjs';
+import {type TuiFileLike} from '@taiga-ui/kit';
+import {finalize, map, type Observable, of, Subject, switchMap, timer} from 'rxjs';
 
 @Component({
     selector: 'tui-input-files-example-1',

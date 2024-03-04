@@ -1,4 +1,4 @@
-import {TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
+import {type TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
 
 // https://en.wikipedia.org/wiki/Payment_card_number#Issuer_identification_number_(IIN)
 export const TUI_BIN_TABLE: ReadonlyArray<

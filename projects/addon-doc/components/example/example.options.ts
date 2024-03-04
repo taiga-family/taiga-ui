@@ -1,7 +1,7 @@
-import {Provider} from '@angular/core';
+import {type Provider} from '@angular/core';
 import {TUI_EXAMPLE_PRIMARY_FILE_NAME} from '@taiga-ui/addon-doc/interfaces';
-import {TuiBooleanHandler, tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {type TuiBooleanHandler, tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
+import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface TuiDocExampleOptions {
     codeEditorVisibilityHandler: TuiBooleanHandler<Record<string, string>>;

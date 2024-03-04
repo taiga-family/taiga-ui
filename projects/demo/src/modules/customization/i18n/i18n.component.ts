@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {
     TuiDocCodeModule,
-    TuiDocExample,
+    type TuiDocExample,
     TuiDocExampleModule,
     TuiDocPageModule,
     TuiLanguageSwitcherComponent,

@@ -1,12 +1,12 @@
 import {inject} from '@angular/core';
 import {
     TUI_IS_IOS,
-    TuiContext,
+    type TuiContext,
     tuiCreateToken,
     tuiCreateTokenFromFactory,
 } from '@taiga-ui/cdk';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {EMPTY, Observable} from 'rxjs';
+import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {EMPTY, type Observable} from 'rxjs';
 
 import {TUI_ANDROID_LOADER} from './loader-android/loader-android.component';
 import {TUI_IOS_LOADER} from './loader-ios/loader-ios.component';

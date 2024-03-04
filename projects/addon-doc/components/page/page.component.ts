@@ -4,7 +4,7 @@ import {
     ContentChildren,
     inject,
     Input,
-    QueryList,
+    type QueryList,
 } from '@angular/core';
 import {TUI_DOC_DEFAULT_TABS} from '@taiga-ui/addon-doc/tokens';
 import {EMPTY_QUERY} from '@taiga-ui/cdk';

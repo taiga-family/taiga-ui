@@ -8,7 +8,7 @@ import {
     Self,
     ViewChild,
 } from '@angular/core';
-import {ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
+import {type ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
 import {WINDOW} from '@ng-web-apis/common';
 import {
     TUI_AUTOFOCUS_HANDLER,
@@ -16,7 +16,7 @@ import {
     tuiAsFocusableItemAccessor,
     TuiAutoFocusDirective,
     TuiAutoFocusModule,
-    TuiFocusableElementAccessor,
+    type TuiFocusableElementAccessor,
     TuiIosAutofocusHandler,
     tuiIsNativeFocused,
 } from '@taiga-ui/cdk';

@@ -9,7 +9,7 @@ import {
     HostListener,
     Input,
     Output,
-    QueryList,
+    type QueryList,
 } from '@angular/core';
 import {EMPTY_QUERY, tuiIsElement} from '@taiga-ui/cdk';
 

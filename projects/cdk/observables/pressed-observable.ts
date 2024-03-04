@@ -1,6 +1,6 @@
 import {ALWAYS_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import {TuiOwnerDocumentException} from '@taiga-ui/cdk/exceptions';
-import {filter, map, Observable, startWith, switchMap, take} from 'rxjs';
+import {filter, map, type Observable, startWith, switchMap, take} from 'rxjs';
 
 import {tuiMouseDragFinishFrom} from './mouse-drag-finish-from';
 import {tuiTypedFromEvent} from './typed-from-event';

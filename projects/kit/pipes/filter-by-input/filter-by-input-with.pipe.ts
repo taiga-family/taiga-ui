@@ -1,12 +1,12 @@
-import {inject, Pipe, PipeTransform} from '@angular/core';
+import {inject, Pipe, type PipeTransform} from '@angular/core';
 import {
     TUI_DEFAULT_MATCHER,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
-    TuiStringHandler,
+    type TuiStringHandler,
 } from '@taiga-ui/cdk';
 import {TuiMultiSelectDirective} from '@taiga-ui/kit/components/multi-select';
 
-import {AbstractTuiFilterByInput, TuiArrayElement} from './filter-by-input.base';
+import {AbstractTuiFilterByInput, type TuiArrayElement} from './filter-by-input.base';
 
 /**
  * @deprecated Use {@link TuiFilterByInputPipe} instead

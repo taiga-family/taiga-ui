@@ -8,11 +8,11 @@ import {
     inject,
     Input,
     Output,
-    QueryList,
+    type QueryList,
 } from '@angular/core';
 import {EMPTY_QUERY} from '@taiga-ui/cdk';
 import {TUI_ARROW_OPTIONS} from '@taiga-ui/kit';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {TuiRowDirective} from '../directives/row.directive';
 import {TuiTableDirective} from '../directives/table.directive';

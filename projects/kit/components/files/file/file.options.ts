@@ -1,8 +1,8 @@
-import {TuiContext, tuiCreateToken} from '@taiga-ui/cdk';
-import {TuiAppearanceOptions, TuiSizeL} from '@taiga-ui/core';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {type TuiContext, tuiCreateToken} from '@taiga-ui/cdk';
+import {type TuiAppearanceOptions, type TuiSizeL} from '@taiga-ui/core';
+import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-import {TuiFileState} from '../files.types';
+import {type TuiFileState} from '../files.types';
 import {tuiFormatSize} from '../files.utils';
 
 export interface TuiFileOptions extends TuiAppearanceOptions {

@@ -3,10 +3,10 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {
     TUI_ALWAYS_DASHED,
     TUI_ALWAYS_SOLID,
-    TuiLineHandler,
-    TuiLineType,
+    type TuiLineHandler,
+    type TuiLineType,
 } from '@taiga-ui/addon-charts';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
+import {type TuiDocExample} from '@taiga-ui/addon-doc';
 
 @Component({
     selector: 'example-tui-axes',

@@ -1,8 +1,12 @@
 import {Component, inject} from '@angular/core';
-import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
+import {DomSanitizer, type SafeResourceUrl} from '@angular/platform-browser';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiAddonDocModule, TuiDocExample, TuiRawLoaderContent} from '@taiga-ui/addon-doc';
-import {TuiNotificationModule, TuiSizeXS, TuiSizeXXL} from '@taiga-ui/core';
+import {
+    TuiAddonDocModule,
+    type TuiDocExample,
+    type TuiRawLoaderContent,
+} from '@taiga-ui/addon-doc';
+import {TuiNotificationModule, type TuiSizeXS, type TuiSizeXXL} from '@taiga-ui/core';
 import {TuiAvatarComponent} from '@taiga-ui/kit';
 
 import {TuiAvatarExample1} from './examples/1';

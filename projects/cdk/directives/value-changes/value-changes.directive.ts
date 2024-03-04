@@ -1,6 +1,6 @@
-import {Directive, DoCheck, inject, Output} from '@angular/core';
+import {Directive, type DoCheck, inject, Output} from '@angular/core';
 import {ControlContainer, NgControl} from '@angular/forms';
-import {distinctUntilChanged, EMPTY, Observable, Subject, switchAll} from 'rxjs';
+import {distinctUntilChanged, EMPTY, type Observable, Subject, switchAll} from 'rxjs';
 
 @Directive({
     selector: '[tuiValueChanges]',

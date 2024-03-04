@@ -1,7 +1,7 @@
-import {Component, inject, TemplateRef, ViewChild} from '@angular/core';
+import {Component, inject, type TemplateRef, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAlertContext, TuiAlertService} from '@taiga-ui/core';
+import {type TuiAlertContext, TuiAlertService} from '@taiga-ui/core';
 
 @Component({
     selector: 'tui-alerts-example-2',

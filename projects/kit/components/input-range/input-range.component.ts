@@ -4,7 +4,7 @@ import {
     ElementRef,
     inject,
     Input,
-    QueryList,
+    type QueryList,
     ViewChild,
     ViewChildren,
 } from '@angular/core';
@@ -15,26 +15,26 @@ import {
     tuiAsControl,
     tuiAsFocusableItemAccessor,
     tuiClamp,
-    TuiContext,
-    TuiFocusableElementAccessor,
+    type TuiContext,
+    type TuiFocusableElementAccessor,
     tuiIsNativeFocused,
     tuiIsNativeFocusedIn,
-    TuiNativeFocusableElement,
+    type TuiNativeFocusableElement,
     tuiPure,
     tuiRound,
 } from '@taiga-ui/cdk';
 import {
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
-    TuiDecimal,
+    type TuiDecimal,
     tuiGetFractionPartPadded,
-    TuiWithOptionalMinMax,
+    type TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
 import {TuiInputNumberComponent} from '@taiga-ui/kit/components/input-number';
 import {TuiRangeComponent} from '@taiga-ui/kit/components/range';
 import {TUI_FLOATING_PRECISION} from '@taiga-ui/kit/constants';
-import {TuiKeySteps} from '@taiga-ui/kit/types';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {type TuiKeySteps} from '@taiga-ui/kit/types';
+import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 @Component({
     selector: 'tui-input-range',

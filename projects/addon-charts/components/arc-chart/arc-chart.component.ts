@@ -2,21 +2,21 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
-    ElementRef,
+    type ElementRef,
     HostBinding,
     inject,
     Input,
     Output,
-    QueryList,
+    type QueryList,
     ViewChildren,
 } from '@angular/core';
-import {DomSanitizer, SafeValue} from '@angular/platform-browser';
+import {DomSanitizer, type SafeValue} from '@angular/platform-browser';
 import {TuiDestroyService, tuiTypedFromEvent, tuiWatch} from '@taiga-ui/cdk';
-import {TuiSizeXL} from '@taiga-ui/core';
+import {type TuiSizeXL} from '@taiga-ui/core';
 import {
     map,
     merge,
-    Observable,
+    type Observable,
     ReplaySubject,
     startWith,
     switchMap,

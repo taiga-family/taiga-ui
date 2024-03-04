@@ -7,7 +7,7 @@ import {
     Input,
     ViewChild,
 } from '@angular/core';
-import {MaskitoOptions} from '@maskito/core';
+import {type MaskitoOptions} from '@maskito/core';
 import {maskitoTimeOptionsGenerator} from '@maskito/kit';
 import {
     AbstractTuiNullableControl,
@@ -17,31 +17,31 @@ import {
     TUI_STRICT_MATCHER,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    TuiBooleanHandler,
-    TuiFocusableElementAccessor,
+    type TuiBooleanHandler,
+    type TuiFocusableElementAccessor,
     tuiIsElement,
     tuiIsInput,
     tuiIsNativeFocused,
     tuiPure,
     TuiTime,
-    TuiTimeLike,
-    TuiTimeMode,
+    type TuiTimeLike,
+    type TuiTimeMode,
 } from '@taiga-ui/cdk';
 import {
     TUI_TEXTFIELD_SIZE,
     tuiAsDataListHost,
     tuiAsOptionContent,
-    TuiDataListHost,
+    type TuiDataListHost,
     TuiPrimitiveTextfieldComponent,
-    TuiSizeL,
-    TuiSizeS,
+    type TuiSizeL,
+    type TuiSizeS,
 } from '@taiga-ui/core';
 import {TUI_SELECT_OPTION} from '@taiga-ui/kit/components/select-option';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {TUI_TIME_TEXTS} from '@taiga-ui/kit/tokens';
-import {map, Observable, takeUntil, timer} from 'rxjs';
+import {map, type Observable, takeUntil, timer} from 'rxjs';
 
-import {TUI_INPUT_TIME_OPTIONS, TuiInputTimeOptions} from './input-time.options';
+import {TUI_INPUT_TIME_OPTIONS, type TuiInputTimeOptions} from './input-time.options';
 
 @Component({
     selector: 'tui-input-time',

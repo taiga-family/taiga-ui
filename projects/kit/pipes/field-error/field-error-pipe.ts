@@ -1,13 +1,13 @@
-import {inject, Pipe, PipeTransform} from '@angular/core';
+import {inject, Pipe, type PipeTransform} from '@angular/core';
 import {
-    AbstractControl,
+    type AbstractControl,
     ControlContainer,
-    ControlValueAccessor,
+    type ControlValueAccessor,
     NgControl,
 } from '@angular/forms';
 import {tuiIsString, tuiPure, TuiValidationError} from '@taiga-ui/cdk';
 import {TUI_VALIDATION_ERRORS} from '@taiga-ui/kit/tokens';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {map, Observable, of} from 'rxjs';
 
 const EMPTY_RECORD = {};

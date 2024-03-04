@@ -1,12 +1,12 @@
-import {UpdateRecorder} from '@angular-devkit/schematics';
-import {TemplateResource} from '@taiga-ui/cdk/schematics/ng-update/interfaces';
+import {type UpdateRecorder} from '@angular-devkit/schematics';
+import {type TemplateResource} from '@taiga-ui/cdk/schematics/ng-update/interfaces';
 import {findElementsWithAttribute} from '@taiga-ui/cdk/schematics/utils/templates/elements';
 import {findAttr} from '@taiga-ui/cdk/schematics/utils/templates/inputs';
 import {
     getTemplateFromTemplateResource,
     getTemplateOffset,
 } from '@taiga-ui/cdk/schematics/utils/templates/template-resource';
-import {DevkitFileSystem} from 'ng-morph';
+import {type DevkitFileSystem} from 'ng-morph';
 
 export function migratePreventDefault({
     resource,

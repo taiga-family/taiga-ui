@@ -6,7 +6,7 @@ import {
     HostBinding,
     inject,
     Input,
-    QueryList,
+    type QueryList,
     TemplateRef,
 } from '@angular/core';
 import {EMPTY_QUERY, TuiItemDirective} from '@taiga-ui/cdk';

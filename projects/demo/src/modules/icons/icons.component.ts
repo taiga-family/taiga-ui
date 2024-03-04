@@ -1,8 +1,8 @@
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {assets} from '@demo/utils';
-import {TuiBrightness, TuiModeDirective} from '@taiga-ui/core';
-import {map, Observable, startWith} from 'rxjs';
+import {type TuiBrightness, TuiModeDirective} from '@taiga-ui/core';
+import {map, type Observable, startWith} from 'rxjs';
 
 import {TUI_DEMO_ICONS} from './icons.tokens';
 

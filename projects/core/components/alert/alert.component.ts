@@ -3,16 +3,16 @@ import {
     Component,
     ElementRef,
     inject,
-    OnInit,
+    type OnInit,
 } from '@angular/core';
-import {TuiDestroyService, TuiPopover} from '@taiga-ui/cdk';
+import {TuiDestroyService, type TuiPopover} from '@taiga-ui/cdk';
 import {tuiFadeIn, tuiHeightCollapse, tuiSlideIn} from '@taiga-ui/core/animations';
 import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
 import {tuiToAnimationOptions} from '@taiga-ui/core/utils';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 import {fromEvent, repeat, takeUntil, timer} from 'rxjs';
 
-import {TuiAlertOptions} from './alert.interfaces';
+import {type TuiAlertOptions} from './alert.interfaces';
 import {TUI_ALERT_POSITION} from './alert.tokens';
 
 // TODO: get rid of $any in template

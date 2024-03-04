@@ -5,14 +5,14 @@ import {
     inject,
     ViewChild,
 } from '@angular/core';
-import {MaskitoOptions} from '@maskito/core';
+import {type MaskitoOptions} from '@maskito/core';
 import {TUI_CARD_MASK} from '@taiga-ui/addon-commerce/constants';
 import {tuiAsControl, tuiAsFocusableItemAccessor} from '@taiga-ui/cdk';
 import {
     TUI_TEXTFIELD_SIZE,
     TuiPrimitiveTextfieldComponent,
-    TuiSizeL,
-    TuiSizeS,
+    type TuiSizeL,
+    type TuiSizeS,
 } from '@taiga-ui/core';
 
 import {AbstractTuiInputCard} from './abstract-input-card';

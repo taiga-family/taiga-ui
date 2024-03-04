@@ -1,7 +1,10 @@
-import {DevkitFileSystem} from 'ng-morph';
+import {type DevkitFileSystem} from 'ng-morph';
 
 import {replaceInputPropertyByDirective} from '../../../utils/templates/ng-component-input-manipulations';
-import {ReplacementAttributeToDirective, TemplateResource} from '../../interfaces';
+import {
+    type ReplacementAttributeToDirective,
+    type TemplateResource,
+} from '../../interfaces';
 
 export function replaceAttrsByDirective({
     resource,

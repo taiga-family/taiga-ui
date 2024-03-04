@@ -6,7 +6,7 @@ import {
     combineLatest,
     distinctUntilChanged,
     map,
-    Observable,
+    type Observable,
 } from 'rxjs';
 
 function calculateColorSegments(colors: string[], progressWidth: number): string {

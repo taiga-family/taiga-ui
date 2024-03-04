@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {IsActiveMatchOptions} from '@angular/router';
+import {type IsActiveMatchOptions} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 

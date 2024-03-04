@@ -1,11 +1,11 @@
 import {Component} from '@angular/core';
-import {AbstractControl, FormControl, ValidatorFn} from '@angular/forms';
+import {type AbstractControl, FormControl, type ValidatorFn} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {
     EMPTY_ARRAY,
     TUI_DEFAULT_MATCHER,
-    TuiBooleanHandler,
+    type TuiBooleanHandler,
     tuiPure,
     TuiValidationError,
 } from '@taiga-ui/cdk';

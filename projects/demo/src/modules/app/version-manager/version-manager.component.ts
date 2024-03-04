@@ -4,7 +4,7 @@ import {LOCATION} from '@ng-web-apis/common';
 import {tuiPure} from '@taiga-ui/cdk';
 
 import {TUI_SELECTED_VERSION_META} from './version-manager.providers';
-import {TUI_VERSIONS_META_OPTIONS, TuiVersionMeta} from './versions.constants';
+import {TUI_VERSIONS_META_OPTIONS, type TuiVersionMeta} from './versions.constants';
 
 @Component({
     selector: 'version-manager',

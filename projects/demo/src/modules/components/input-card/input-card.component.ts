@@ -1,12 +1,12 @@
 import {Component, forwardRef, ViewChild} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiCodeCVCLength, tuiCreateLuhnValidator} from '@taiga-ui/addon-commerce';
+import {type TuiCodeCVCLength, tuiCreateLuhnValidator} from '@taiga-ui/addon-commerce';
 import {
     TuiDocDocumentationPropertyConnectorDirective,
-    TuiDocExample,
+    type TuiDocExample,
 } from '@taiga-ui/addon-doc';
-import {TuiHintOptions} from '@taiga-ui/core';
+import {type TuiHintOptions} from '@taiga-ui/core';
 
 import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';

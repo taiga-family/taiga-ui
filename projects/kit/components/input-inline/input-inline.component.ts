@@ -1,16 +1,16 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    ElementRef,
+    type ElementRef,
     Input,
     ViewChild,
 } from '@angular/core';
 import {
     AbstractTuiControl,
     tuiAsFocusableItemAccessor,
-    TuiFocusableElementAccessor,
+    type TuiFocusableElementAccessor,
     tuiIsNativeFocused,
-    TuiNativeFocusableElement,
+    type TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
 import {TUI_VALUE_ACCESSOR_PROVIDER} from '@taiga-ui/kit/providers';
 

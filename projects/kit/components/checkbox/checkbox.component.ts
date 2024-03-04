@@ -1,7 +1,7 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    ElementRef,
+    type ElementRef,
     HostBinding,
     inject,
     Input,
@@ -11,10 +11,10 @@ import {
     AbstractTuiNullableControl,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    TuiFocusableElementAccessor,
+    type TuiFocusableElementAccessor,
     tuiIsNativeFocused,
 } from '@taiga-ui/cdk';
-import {TUI_CHECKBOX_OPTIONS, TuiSizeL} from '@taiga-ui/core';
+import {TUI_CHECKBOX_OPTIONS, type TuiSizeL} from '@taiga-ui/core';
 
 @Component({
     selector: 'tui-checkbox',

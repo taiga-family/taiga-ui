@@ -1,6 +1,6 @@
 import {createFilter} from '@rollup/pluginutils';
-import {Plugin, TransformResult} from 'rollup';
-import {Config, optimize} from 'svgo';
+import {type Plugin, type TransformResult} from 'rollup';
+import {type Config, optimize} from 'svgo';
 
 export interface TuiRollupSvgoConfig {
     readonly exclude?: string;

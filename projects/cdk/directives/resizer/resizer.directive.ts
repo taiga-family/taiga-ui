@@ -1,6 +1,6 @@
 import {
     Directive,
-    ElementRef,
+    type ElementRef,
     EventEmitter,
     HostBinding,
     HostListener,

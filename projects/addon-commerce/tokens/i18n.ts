@@ -1,6 +1,6 @@
 import {tuiCreateToken, tuiCreateTokenFromFactory} from '@taiga-ui/cdk';
 import {tuiExtractI18n} from '@taiga-ui/i18n';
-import {Observable, of} from 'rxjs';
+import {type Observable, of} from 'rxjs';
 
 /**
  * Number and card number i18n

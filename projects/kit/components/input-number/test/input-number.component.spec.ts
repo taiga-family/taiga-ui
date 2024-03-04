@@ -1,13 +1,13 @@
-import {Component, DebugElement, ViewChild} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {Component, type DebugElement, ViewChild} from '@angular/core';
+import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {CHAR_MINUS, CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
 import {
-    TuiDecimal,
+    type TuiDecimal,
     TuiHintModule,
-    TuiSizeL,
-    TuiSizeS,
+    type TuiSizeL,
+    type TuiSizeS,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {TuiInputNumberComponent, TuiInputNumberModule} from '@taiga-ui/kit';

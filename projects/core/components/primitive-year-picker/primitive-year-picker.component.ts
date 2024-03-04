@@ -10,15 +10,15 @@ import {
     ALWAYS_FALSE_HANDLER,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
-    TuiBooleanHandler,
-    TuiDay,
-    TuiDayRange,
+    type TuiBooleanHandler,
+    type TuiDay,
+    type TuiDayRange,
     tuiInRange,
     TuiMonth,
     TuiMonthRange,
     TuiYear,
 } from '@taiga-ui/cdk';
-import {TuiInteractiveState, TuiRangeState} from '@taiga-ui/core/enums';
+import {TuiInteractiveState, type TuiRangeState} from '@taiga-ui/core/enums';
 
 const LIMIT = 100;
 const ITEMS_IN_ROW = 4;

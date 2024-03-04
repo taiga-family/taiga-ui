@@ -1,4 +1,4 @@
-import {TuiCountryIsoCode} from '@taiga-ui/i18n';
+import {type TuiCountryIsoCode} from '@taiga-ui/i18n';
 
 export function tuiGetMaxAllowedPhoneLength(
     countries: Record<TuiCountryIsoCode, string>,

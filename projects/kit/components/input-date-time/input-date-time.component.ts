@@ -7,7 +7,7 @@ import {
     Input,
     ViewChild,
 } from '@angular/core';
-import {MaskitoOptions} from '@maskito/core';
+import {type MaskitoOptions} from '@maskito/core';
 import {maskitoDateTimeOptionsGenerator} from '@maskito/kit';
 import {
     AbstractTuiControl,
@@ -18,28 +18,28 @@ import {
     TUI_DATE_SEPARATOR,
     TUI_IS_IOS,
     TUI_IS_MOBILE,
-    TuiActiveZoneDirective,
+    type TuiActiveZoneDirective,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    TuiBooleanHandler,
+    type TuiBooleanHandler,
     tuiClamp,
-    TuiContext,
+    type TuiContext,
     tuiDateClamp,
-    TuiDateMode,
+    type TuiDateMode,
     TuiDay,
-    TuiFocusableElementAccessor,
+    type TuiFocusableElementAccessor,
     TuiMonth,
     tuiNullableSame,
     tuiPure,
     TuiTime,
-    TuiTimeMode,
+    type TuiTimeMode,
 } from '@taiga-ui/cdk';
 import {
     TUI_TEXTFIELD_SIZE,
     TuiPrimitiveTextfieldComponent,
-    TuiSizeL,
-    TuiSizeS,
-    TuiWithOptionalMinMax,
+    type TuiSizeL,
+    type TuiSizeS,
+    type TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
 import {
     DATE_TIME_SEPARATOR,
@@ -51,9 +51,16 @@ import {
     TUI_INPUT_DATE_OPTIONS,
     TUI_TIME_TEXTS,
     tuiDateStreamWithTransformer,
-    TuiInputDateOptions,
+    type TuiInputDateOptions,
 } from '@taiga-ui/kit/tokens';
-import {BehaviorSubject, combineLatest, map, Observable, takeUntil, timer} from 'rxjs';
+import {
+    BehaviorSubject,
+    combineLatest,
+    map,
+    type Observable,
+    takeUntil,
+    timer,
+} from 'rxjs';
 
 @Component({
     selector: 'tui-input-date-time',

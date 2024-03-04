@@ -1,6 +1,6 @@
-import {inject, Pipe, PipeTransform} from '@angular/core';
+import {inject, Pipe, type PipeTransform} from '@angular/core';
 import {TuiFormatDateService} from '@taiga-ui/core/services';
-import {Observable} from 'rxjs';
+import {type Observable} from 'rxjs';
 
 @Pipe({
     name: 'tuiFormatDate',

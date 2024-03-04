@@ -1,5 +1,5 @@
-import {UpdateRecorder} from '@angular-devkit/schematics';
-import {DevkitFileSystem} from 'ng-morph';
+import {type UpdateRecorder} from '@angular-devkit/schematics';
+import {type DevkitFileSystem} from 'ng-morph';
 
 import {TODO_MARK} from '../../../utils/insert-todo';
 import {findElementsWithAttributeOnTag} from '../../../utils/templates/elements';
@@ -7,7 +7,7 @@ import {
     getTemplateFromTemplateResource,
     getTemplateOffset,
 } from '../../../utils/templates/template-resource';
-import {HtmlComment, TemplateResource} from '../../interfaces';
+import {type HtmlComment, type TemplateResource} from '../../interfaces';
 
 export function addHTMLCommentTags({
     resource,

@@ -1,4 +1,4 @@
-import {tuiCreateToken, TuiHandler, TuiSafeHtml} from '@taiga-ui/cdk';
+import {tuiCreateToken, type TuiHandler, type TuiSafeHtml} from '@taiga-ui/cdk';
 import {identity} from 'rxjs';
 
 /**

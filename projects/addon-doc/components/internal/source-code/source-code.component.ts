@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
-import {TuiDocSourceCodePathOptions} from '@taiga-ui/addon-doc/interfaces';
+import {type TuiDocSourceCodePathOptions} from '@taiga-ui/addon-doc/interfaces';
 import {
     TUI_DOC_ICONS,
     TUI_DOC_SOURCE_CODE,

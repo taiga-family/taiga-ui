@@ -2,8 +2,8 @@ import {EMPTY_ARRAY} from '@taiga-ui/cdk';
 import {
     debounceTime,
     distinctUntilChanged,
-    Observable,
-    OperatorFunction,
+    type Observable,
+    type OperatorFunction,
     scan,
     startWith,
     switchMap,

@@ -1,6 +1,6 @@
 import {Directive, Optional} from '@angular/core';
 import {
-    ControlValueAccessor,
+    type ControlValueAccessor,
     DefaultValueAccessor,
     NG_VALUE_ACCESSOR,
 } from '@angular/forms';

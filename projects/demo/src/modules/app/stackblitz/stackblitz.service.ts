@@ -1,6 +1,6 @@
 import {inject, Injectable} from '@angular/core';
-import stackblitz, {OpenOptions, Project} from '@stackblitz/sdk';
-import {TuiCodeEditor} from '@taiga-ui/addon-doc';
+import stackblitz, {type OpenOptions, type Project} from '@stackblitz/sdk';
+import {type TuiCodeEditor} from '@taiga-ui/addon-doc';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 
 import {TsFileComponentParser, TsFileModuleParser} from '../classes';

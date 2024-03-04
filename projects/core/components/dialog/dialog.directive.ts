@@ -1,7 +1,7 @@
 import {Directive} from '@angular/core';
 import {tuiAsPopover, TuiPopoverDirective} from '@taiga-ui/cdk';
 
-import {TuiDialogOptions} from './dialog.interfaces';
+import {type TuiDialogOptions} from './dialog.interfaces';
 import {TuiDialogService} from './dialog.service';
 
 @Directive({

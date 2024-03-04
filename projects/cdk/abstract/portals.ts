@@ -1,17 +1,17 @@
 import {
-    ComponentRef,
+    type ComponentRef,
     Directive,
-    EmbeddedViewRef,
+    type EmbeddedViewRef,
     inject,
     Injectable,
     INJECTOR,
-    Provider,
-    TemplateRef,
+    type Provider,
+    type TemplateRef,
     ViewChild,
     ViewContainerRef,
 } from '@angular/core';
 import {TuiNoHostException} from '@taiga-ui/cdk/exceptions';
-import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
+import {type PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 
 /**
  * Abstract class for host element for dynamically created portals.

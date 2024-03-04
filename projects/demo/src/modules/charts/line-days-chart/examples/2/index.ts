@@ -3,13 +3,13 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {
     TUI_IS_E2E,
     TuiDay,
-    TuiDayLike,
+    type TuiDayLike,
     TuiDayRange,
     tuiPure,
-    TuiTypedMapper,
-    TuiTypedMatcher,
+    type TuiTypedMapper,
+    type TuiTypedMatcher,
 } from '@taiga-ui/cdk';
-import {TuiPoint} from '@taiga-ui/core';
+import {type TuiPoint} from '@taiga-ui/core';
 
 @Component({
     selector: 'tui-line-days-chart-example-2',

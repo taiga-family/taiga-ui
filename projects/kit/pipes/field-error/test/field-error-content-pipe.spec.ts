@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {
-    ComponentFixture,
+    type ComponentFixture,
     discardPeriodicTasks,
     fakeAsync,
     TestBed,

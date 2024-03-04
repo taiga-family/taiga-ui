@@ -5,10 +5,10 @@ import {
     inject,
     INJECTOR,
     Injector,
-    Type,
+    type Type,
     ViewEncapsulation,
 } from '@angular/core';
-import {TuiMapperPipeModule, TuiTypedMapper} from '@taiga-ui/cdk';
+import {TuiMapperPipeModule, type TuiTypedMapper} from '@taiga-ui/cdk';
 import {TUI_PARENT_ANIMATION} from '@taiga-ui/core/animations';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 import {identity} from 'rxjs';

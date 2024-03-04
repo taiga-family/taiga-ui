@@ -1,4 +1,4 @@
-import {InjectionToken, Type} from '@angular/core';
+import {InjectionToken, type Type} from '@angular/core';
 import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk';
 
 import {TuiDropdownComponent} from './dropdown.component';

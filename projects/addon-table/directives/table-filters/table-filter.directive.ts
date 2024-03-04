@@ -1,11 +1,11 @@
-import {Directive, inject, Input, OnDestroy, OnInit} from '@angular/core';
+import {Directive, inject, Input, type OnDestroy, type OnInit} from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {TuiHeadDirective} from '@taiga-ui/addon-table/components';
-import {TuiValuesOf} from '@taiga-ui/cdk';
+import {type TuiValuesOf} from '@taiga-ui/cdk';
 import {defer, distinctUntilChanged, EMPTY, merge} from 'rxjs';
 
 import {AbstractTuiTableFilter} from './abstract-table-filter';
-import {TuiTableFilter} from './table-filter';
+import {type TuiTableFilter} from './table-filter';
 import {TuiTableFiltersDirective} from './table-filters.directive';
 
 @Directive({

@@ -3,26 +3,26 @@ import {
     Component,
     inject,
     Input,
-    QueryList,
+    type QueryList,
     ViewChildren,
 } from '@angular/core';
 import {
     EMPTY_QUERY,
-    TuiContext,
+    type TuiContext,
     TuiIdService,
     tuiPure,
     tuiSum,
-    TuiTypedMapper,
+    type TuiTypedMapper,
 } from '@taiga-ui/cdk';
 import {
     TuiHintHoverDirective,
     TuiHintOptionsDirective,
     tuiHintOptionsProvider,
-    TuiSizeL,
-    TuiSizeS,
+    type TuiSizeL,
+    type TuiSizeS,
 } from '@taiga-ui/core';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
+import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {type Observable} from 'rxjs';
 
 @Component({
     selector: 'tui-bar-chart',

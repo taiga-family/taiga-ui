@@ -10,7 +10,7 @@ import {
 import {RouterLinkActive} from '@angular/router';
 import {TuiDestroyService, TuiFocusVisibleService} from '@taiga-ui/cdk';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core';
-import {EMPTY, filter, Observable} from 'rxjs';
+import {EMPTY, filter, type Observable} from 'rxjs';
 
 import {TuiStepperComponent} from '../stepper.component';
 

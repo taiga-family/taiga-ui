@@ -1,7 +1,7 @@
-import {CdkVirtualScrollViewport} from '@angular/cdk/scrolling';
+import {type CdkVirtualScrollViewport} from '@angular/cdk/scrolling';
 import {DOCUMENT} from '@angular/common';
 import {
-    AfterViewInit,
+    type AfterViewInit,
     ChangeDetectionStrategy,
     Component,
     EventEmitter,
@@ -18,13 +18,13 @@ import {
     TUI_IS_E2E,
     TUI_IS_IOS,
     TUI_LAST_DAY,
-    TuiBooleanHandler,
+    type TuiBooleanHandler,
     TuiDay,
     TuiDayRange,
     TuiDestroyService,
     TuiMonth,
     tuiTypedFromEvent,
-    TuiTypedMapper,
+    type TuiTypedMapper,
     tuiZonefree,
 } from '@taiga-ui/cdk';
 import {
@@ -47,7 +47,7 @@ import {
     identity,
     map,
     mergeMap,
-    MonoTypeOperatorFunction,
+    type MonoTypeOperatorFunction,
     race,
     switchMap,
     take,

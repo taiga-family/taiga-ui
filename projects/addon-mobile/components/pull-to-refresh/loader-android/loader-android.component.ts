@@ -1,6 +1,6 @@
 import {NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, HostBinding, inject} from '@angular/core';
-import {TuiContext} from '@taiga-ui/cdk';
+import {type TuiContext} from '@taiga-ui/cdk';
 import {TuiLoaderModule} from '@taiga-ui/core';
 import {POLYMORPHEUS_CONTEXT, PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 

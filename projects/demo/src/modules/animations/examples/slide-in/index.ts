@@ -3,7 +3,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiPure} from '@taiga-ui/cdk';
 import {
-    TuiDurationOptions,
+    type TuiDurationOptions,
     tuiSlideInBottom,
     tuiSlideInLeft,
     tuiSlideInRight,

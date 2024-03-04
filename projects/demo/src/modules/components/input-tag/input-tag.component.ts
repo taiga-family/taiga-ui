@@ -1,14 +1,14 @@
 import {Component, forwardRef} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocExample, tuiDocExcludeProperties} from '@taiga-ui/addon-doc';
+import {type TuiDocExample, tuiDocExcludeProperties} from '@taiga-ui/addon-doc';
 import {
     ALWAYS_FALSE_HANDLER,
     ALWAYS_TRUE_HANDLER,
-    TuiBooleanHandler,
+    type TuiBooleanHandler,
 } from '@taiga-ui/cdk';
-import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {TuiStringifiableItem} from '@taiga-ui/kit';
+import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core';
+import {type TuiStringifiableItem} from '@taiga-ui/kit';
 
 import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';

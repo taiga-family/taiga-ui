@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiComparator} from '@taiga-ui/addon-table';
+import {type TuiComparator} from '@taiga-ui/addon-table';
 import {
     TUI_DEFAULT_MATCHER,
     tuiControlValue,
@@ -19,7 +19,7 @@ import {
     debounceTime,
     filter,
     map,
-    Observable,
+    type Observable,
     share,
     startWith,
     switchMap,

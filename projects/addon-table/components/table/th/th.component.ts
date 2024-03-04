@@ -7,7 +7,7 @@ import {
     inject,
     Input,
 } from '@angular/core';
-import {TuiComparator} from '@taiga-ui/addon-table/types';
+import {type TuiComparator} from '@taiga-ui/addon-table/types';
 import {tuiDefaultSort, TuiTableSortKeyException} from '@taiga-ui/cdk';
 import {TUI_ELEMENT_REF} from '@taiga-ui/core';
 

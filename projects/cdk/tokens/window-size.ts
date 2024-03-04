@@ -1,7 +1,7 @@
 import {inject, InjectionToken} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
 import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
-import {map, Observable, shareReplay, startWith} from 'rxjs';
+import {map, type Observable, shareReplay, startWith} from 'rxjs';
 
 export const TUI_WINDOW_SIZE = new InjectionToken<Observable<DOMRect>>(
     '[TUI_WINDOW_SIZE]',

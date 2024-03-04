@@ -1,6 +1,6 @@
-import {ElementRef, InjectionToken, Provider} from '@angular/core';
+import {ElementRef, InjectionToken, type Provider} from '@angular/core';
 import {IntersectionObserverService} from '@ng-web-apis/intersection-observer';
-import {map, Observable} from 'rxjs';
+import {map, type Observable} from 'rxjs';
 /**
  * Stream of sticky stuck events
  */

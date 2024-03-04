@@ -1,17 +1,17 @@
 import {
-    FactoryProvider,
+    type FactoryProvider,
     inject,
     InjectionToken,
     Optional,
-    Provider,
+    type Provider,
     SkipSelf,
 } from '@angular/core';
 import {
     tuiCreateTokenFromFactory,
-    TuiHandler,
+    type TuiHandler,
     tuiIsString,
-    TuiSafeHtml,
-    TuiStringHandler,
+    type TuiSafeHtml,
+    type TuiStringHandler,
     tuiSvgLinearGradientProcessor,
 } from '@taiga-ui/cdk';
 import {

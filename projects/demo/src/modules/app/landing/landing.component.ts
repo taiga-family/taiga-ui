@@ -5,8 +5,8 @@ import {
     ElementRef,
     HostBinding,
     inject,
-    OnInit,
-    QueryList,
+    type OnInit,
+    type QueryList,
     ViewChildren,
 } from '@angular/core';
 import {ActivatedRoute, Router, RouterLink} from '@angular/router';

@@ -1,6 +1,6 @@
 import {tuiCreateToken} from '@taiga-ui/cdk';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Observable} from 'rxjs';
+import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {type Observable} from 'rxjs';
 
 /**
  * Validation errors

@@ -1,7 +1,7 @@
-import {HarnessLoader} from '@angular/cdk/testing';
+import {type HarnessLoader} from '@angular/cdk/testing';
 import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {Component, ElementRef, ViewChild} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiActionHarness} from '@taiga-ui/testing';
 
 import {TuiActionComponent} from '../action.component';

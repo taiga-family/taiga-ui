@@ -8,23 +8,23 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import {DomSanitizer, SafeValue} from '@angular/platform-browser';
-import {TuiContext, tuiIsObserved, tuiPure} from '@taiga-ui/cdk';
+import {DomSanitizer, type SafeValue} from '@angular/platform-browser';
+import {type TuiContext, tuiIsObserved, tuiPure} from '@taiga-ui/cdk';
 import {
     TUI_COMMON_ICONS,
     TuiAppearanceDirective,
     tuiAppearanceOptionsProvider,
     TuiButtonModule,
     TuiLoaderModule,
-    TuiSizeL,
+    type TuiSizeL,
     TuiSvgModule,
 } from '@taiga-ui/core';
-import {TuiLanguage} from '@taiga-ui/i18n';
+import {type TuiLanguage} from '@taiga-ui/i18n';
 import {TUI_DIGITAL_INFORMATION_UNITS, TUI_FILE_TEXTS} from '@taiga-ui/kit/tokens';
-import {PolymorpheusContent, PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
-import {map, Observable, of} from 'rxjs';
+import {type PolymorpheusContent, PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import {map, type Observable, of} from 'rxjs';
 
-import {TuiFileLike, TuiFileState} from '../files.types';
+import {type TuiFileLike, type TuiFileState} from '../files.types';
 import {TUI_FILE_OPTIONS} from './file.options';
 
 @Component({

@@ -6,7 +6,7 @@ import {
     TuiRectAccessor,
 } from '@taiga-ui/core/abstract';
 import {TUI_VIEWPORT} from '@taiga-ui/core/tokens';
-import {TuiPoint, TuiVerticalDirection} from '@taiga-ui/core/types';
+import {type TuiPoint, type TuiVerticalDirection} from '@taiga-ui/core/types';
 
 import {TuiDropdownDirective} from './dropdown.directive';
 import {TUI_DROPDOWN_OPTIONS} from './dropdown-options.directive';

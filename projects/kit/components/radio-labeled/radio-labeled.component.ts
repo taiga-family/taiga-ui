@@ -10,11 +10,11 @@ import {
     TUI_DEFAULT_IDENTITY_MATCHER,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    TuiFocusableElementAccessor,
-    TuiIdentityMatcher,
-    TuiNativeFocusableElement,
+    type TuiFocusableElementAccessor,
+    type TuiIdentityMatcher,
+    type TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
-import {MODE_PROVIDER, TUI_MODE, TuiSizeL} from '@taiga-ui/core';
+import {MODE_PROVIDER, TUI_MODE, type TuiSizeL} from '@taiga-ui/core';
 import {TUI_RADIO_OPTIONS, TuiRadioComponent} from '@taiga-ui/kit/components/radio';
 
 @Component({

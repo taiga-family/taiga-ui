@@ -1,6 +1,6 @@
-import {Component, TemplateRef} from '@angular/core';
+import {Component, type TemplateRef} from '@angular/core';
 import {
-    ComponentFixture,
+    type ComponentFixture,
     discardPeriodicTasks,
     fakeAsync,
     TestBed,

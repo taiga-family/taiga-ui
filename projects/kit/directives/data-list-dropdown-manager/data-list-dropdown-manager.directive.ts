@@ -1,10 +1,10 @@
 import {
-    AfterViewInit,
+    type AfterViewInit,
     ContentChildren,
     Directive,
     ElementRef,
     inject,
-    QueryList,
+    type QueryList,
 } from '@angular/core';
 import {
     EMPTY_QUERY,
@@ -22,7 +22,7 @@ import {
     filter,
     map,
     merge,
-    Observable,
+    type Observable,
     shareReplay,
     switchMap,
     take,

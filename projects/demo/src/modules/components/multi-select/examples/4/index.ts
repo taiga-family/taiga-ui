@@ -1,8 +1,21 @@
 import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TUI_DEFAULT_MATCHER, TuiContext, TuiHandler, tuiIsNumber} from '@taiga-ui/cdk';
-import {map, Observable, shareReplay, startWith, Subject, switchMap, timer} from 'rxjs';
+import {
+    TUI_DEFAULT_MATCHER,
+    type TuiContext,
+    type TuiHandler,
+    tuiIsNumber,
+} from '@taiga-ui/cdk';
+import {
+    map,
+    type Observable,
+    shareReplay,
+    startWith,
+    Subject,
+    switchMap,
+    timer,
+} from 'rxjs';
 
 const DICTIONARY = [
     {id: 1, name: 'Luke Skywalker'},

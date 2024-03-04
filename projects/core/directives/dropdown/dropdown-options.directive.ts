@@ -1,6 +1,6 @@
 import {
     Directive,
-    FactoryProvider,
+    type FactoryProvider,
     forwardRef,
     inject,
     Input,
@@ -9,9 +9,9 @@ import {
 } from '@angular/core';
 import {tuiCreateToken} from '@taiga-ui/cdk';
 import {
-    TuiDropdownAlign,
-    TuiDropdownWidth,
-    TuiVerticalDirection,
+    type TuiDropdownAlign,
+    type TuiDropdownWidth,
+    type TuiVerticalDirection,
 } from '@taiga-ui/core/types';
 import {tuiOverrideOptions} from '@taiga-ui/core/utils';
 

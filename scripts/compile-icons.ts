@@ -1,6 +1,6 @@
 import {readdirSync, unlinkSync} from 'fs';
 import * as path from 'path';
-import {Config} from 'prettier';
+import {type Config} from 'prettier';
 
 import {
     tuiConvertAllCompileFileToAllFile,

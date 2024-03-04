@@ -1,5 +1,5 @@
-import {inject, Pipe, PipeTransform} from '@angular/core';
-import {DAYS_IN_WEEK, TuiDay, TuiMonth} from '@taiga-ui/cdk';
+import {inject, Pipe, type PipeTransform} from '@angular/core';
+import {DAYS_IN_WEEK, type TuiDay, type TuiMonth} from '@taiga-ui/cdk';
 import {TUI_FIRST_DAY_OF_WEEK} from '@taiga-ui/core/tokens';
 
 import {getDayFromMonthRowCol} from './utils';

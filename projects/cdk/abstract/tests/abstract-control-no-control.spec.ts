@@ -2,15 +2,15 @@ import {
     ChangeDetectorRef,
     Component,
     inject,
-    OnDestroy,
-    OnInit,
+    type OnDestroy,
+    type OnInit,
     ViewChild,
 } from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {
     AbstractTuiControl,
     tuiAsControl,
-    TuiControlValueTransformer,
+    type TuiControlValueTransformer,
 } from '@taiga-ui/cdk';
 
 describe('AbstractTuiControl and NgControl not injected in MyControlComponent', () => {

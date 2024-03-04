@@ -12,7 +12,7 @@ import {
     filter,
     map,
     merge,
-    Observable,
+    type Observable,
     of,
     repeatWhen,
     share,

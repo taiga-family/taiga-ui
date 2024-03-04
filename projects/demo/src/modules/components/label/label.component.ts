@@ -1,7 +1,7 @@
-import {Component, TemplateRef} from '@angular/core';
+import {Component, type TemplateRef} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {type TuiDocExample} from '@taiga-ui/addon-doc';
+import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 @Component({
     selector: 'example-tui-label',

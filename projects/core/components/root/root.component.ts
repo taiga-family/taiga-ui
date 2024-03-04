@@ -10,7 +10,7 @@ import {TUI_DIALOGS} from '@taiga-ui/core/components/dialog';
 import {TuiBreakpointService} from '@taiga-ui/core/services';
 import {TUI_ANIMATIONS_SPEED, TUI_REDUCED_MOTION, TUI_THEME} from '@taiga-ui/core/tokens';
 import {tuiGetDuration} from '@taiga-ui/core/utils';
-import {debounceTime, map, Observable, of} from 'rxjs';
+import {debounceTime, map, type Observable, of} from 'rxjs';
 
 @Component({
     selector: 'tui-root',

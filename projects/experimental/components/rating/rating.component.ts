@@ -12,7 +12,7 @@ import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
     tuiClamp,
-    TuiFocusableElementAccessor,
+    type TuiFocusableElementAccessor,
     tuiIsNativeFocused,
 } from '@taiga-ui/cdk';
 

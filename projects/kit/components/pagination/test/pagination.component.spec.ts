@@ -1,5 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {tuiIsPresent} from '@taiga-ui/cdk';
 import {TuiPaginationComponent, TuiPaginationModule} from '@taiga-ui/kit';
 import {TuiPageObject} from '@taiga-ui/testing';

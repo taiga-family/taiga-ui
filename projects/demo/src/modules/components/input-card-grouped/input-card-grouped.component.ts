@@ -1,10 +1,10 @@
 import {Component, forwardRef} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiCard, TuiCodeCVCLength} from '@taiga-ui/addon-commerce';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
+import {type TuiCard, type TuiCodeCVCLength} from '@taiga-ui/addon-commerce';
+import {type TuiDocExample} from '@taiga-ui/addon-doc';
 import {tuiIsString} from '@taiga-ui/cdk';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
 import {AbstractExampleTuiInteractive} from '../abstract/interactive';

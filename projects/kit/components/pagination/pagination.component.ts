@@ -6,7 +6,7 @@ import {
     inject,
     Input,
     Output,
-    QueryList,
+    type QueryList,
     ViewChildren,
 } from '@angular/core';
 import {
@@ -15,25 +15,25 @@ import {
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     tuiAsFocusableItemAccessor,
     tuiClamp,
-    TuiContext,
-    TuiFocusableElementAccessor,
+    type TuiContext,
+    type TuiFocusableElementAccessor,
     tuiIsNativeFocusedIn,
-    TuiNativeFocusableElement,
+    type TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
 import {
     TUI_SPIN_ICONS,
     TuiAppearance,
-    TuiBrightness,
-    TuiButtonComponent,
-    TuiHorizontalDirection,
+    type TuiBrightness,
+    type TuiButtonComponent,
+    type TuiHorizontalDirection,
     TuiModeDirective,
-    TuiSizeL,
-    TuiSizeS,
-    TuiSizeXS,
+    type TuiSizeL,
+    type TuiSizeS,
+    type TuiSizeXS,
 } from '@taiga-ui/core';
 import {TUI_PAGINATION_TEXTS} from '@taiga-ui/kit/tokens';
 import {tuiHorizontalDirectionToNumber} from '@taiga-ui/kit/utils/math';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {EMPTY, map} from 'rxjs';
 
 const DOTS_LENGTH = 1;

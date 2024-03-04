@@ -6,22 +6,22 @@ import {
     TemplateRef,
     ViewChild,
 } from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {
-    TuiCard,
+    type TuiCard,
     TuiInputCardGroupedComponent,
     TuiInputCardGroupedModule,
 } from '@taiga-ui/addon-commerce';
 import {
     TUI_AUTOFOCUS_HANDLER,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
-    TuiFocusableElementAccessor,
+    type TuiFocusableElementAccessor,
     TuiSynchronousAutofocusHandler,
 } from '@taiga-ui/cdk';
 import {TuiSvgModule} from '@taiga-ui/core';
 import {TuiNativeInputPO} from '@taiga-ui/testing';
-import {Mock} from 'jest-mock';
+import {type Mock} from 'jest-mock';
 
 describe('InputCardGrouped', () => {
     @Component({

@@ -1,5 +1,5 @@
 import {Component, Directive, inject, ViewChild} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormBuilder, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TuiRatingComponent, TuiRatingModule} from '@taiga-ui/kit';
 

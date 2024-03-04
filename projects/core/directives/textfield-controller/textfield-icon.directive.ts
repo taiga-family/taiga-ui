@@ -1,11 +1,11 @@
 import {Directive, forwardRef, Input} from '@angular/core';
 import {
     AbstractTuiController,
-    TuiContext,
+    type TuiContext,
     tuiCreateTokenFromFactory,
 } from '@taiga-ui/cdk';
-import {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
+import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export const TUI_TEXTFIELD_ICON = tuiCreateTokenFromFactory(
     () => new TuiTextfieldIconDirective(),

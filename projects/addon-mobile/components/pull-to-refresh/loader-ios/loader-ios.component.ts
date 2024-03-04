@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {TuiContext} from '@taiga-ui/cdk';
+import {type TuiContext} from '@taiga-ui/cdk';
 import {POLYMORPHEUS_CONTEXT, PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 
 import {TUI_PULL_TO_REFRESH_THRESHOLD} from '../pull-to-refresh.providers';

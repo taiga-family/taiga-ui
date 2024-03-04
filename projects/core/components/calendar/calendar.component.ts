@@ -9,17 +9,17 @@ import {
     ALWAYS_FALSE_HANDLER,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
-    TuiBooleanHandler,
+    type TuiBooleanHandler,
     TuiDay,
-    TuiDayRange,
+    type TuiDayRange,
     TuiMonth,
     tuiNullableSame,
-    TuiTypedMapper,
-    TuiYear,
+    type TuiTypedMapper,
+    type TuiYear,
 } from '@taiga-ui/cdk';
 import {TUI_DEFAULT_MARKER_HANDLER} from '@taiga-ui/core/constants';
-import {TuiWithOptionalMinMax} from '@taiga-ui/core/interfaces';
-import {TuiCalendarView, TuiMarkerHandler} from '@taiga-ui/core/types';
+import {type TuiWithOptionalMinMax} from '@taiga-ui/core/interfaces';
+import {type TuiCalendarView, type TuiMarkerHandler} from '@taiga-ui/core/types';
 
 @Component({
     selector: 'tui-calendar',

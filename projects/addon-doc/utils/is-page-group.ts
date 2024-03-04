@@ -1,4 +1,4 @@
-import {TuiDocPage, TuiDocPageGroup} from '@taiga-ui/addon-doc/interfaces';
+import {type TuiDocPage, type TuiDocPageGroup} from '@taiga-ui/addon-doc/interfaces';
 
 export function tuiIsPageGroup(
     page: TuiDocPage | TuiDocPageGroup,

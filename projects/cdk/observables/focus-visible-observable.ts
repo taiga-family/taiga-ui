@@ -9,7 +9,7 @@ import {
     ignoreElements,
     map,
     merge,
-    Observable,
+    type Observable,
     repeat,
     shareReplay,
     startWith,

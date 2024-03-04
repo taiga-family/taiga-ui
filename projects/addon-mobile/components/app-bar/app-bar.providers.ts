@@ -1,4 +1,4 @@
-import {Provider} from '@angular/core';
+import {type Provider} from '@angular/core';
 import {
     MUTATION_OBSERVER_INIT,
     MutationObserverService,

@@ -3,12 +3,12 @@ import {
     ALWAYS_FALSE_HANDLER,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
-    TuiBooleanHandler,
-    TuiDay,
-    TuiDayRange,
+    type TuiBooleanHandler,
+    type TuiDay,
+    type TuiDayRange,
 } from '@taiga-ui/cdk';
-import {TuiDialogContext} from '@taiga-ui/core';
-import {TuiMobileCalendarData} from '@taiga-ui/kit';
+import {type TuiDialogContext} from '@taiga-ui/core';
+import {type TuiMobileCalendarData} from '@taiga-ui/kit';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 
 @Component({

@@ -1,4 +1,4 @@
-import {MigrationWarning} from '../../../interfaces';
+import {type MigrationWarning} from '../../../interfaces';
 
 export const MIGRATION_WARNINGS: MigrationWarning[] = [
     {

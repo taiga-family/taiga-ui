@@ -1,5 +1,5 @@
 import {TuiDestroyService} from '@taiga-ui/cdk';
-import {finalize, Observable, of, takeUntil, timer} from 'rxjs';
+import {finalize, type Observable, of, takeUntil, timer} from 'rxjs';
 
 describe('TuiDestroy service', () => {
     let service: TuiDestroyService;

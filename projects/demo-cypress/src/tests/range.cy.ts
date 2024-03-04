@@ -1,8 +1,8 @@
 import {Component, ElementRef, ViewChild} from '@angular/core';
-import {ComponentFixture} from '@angular/core/testing';
+import {type ComponentFixture} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiRootModule} from '@taiga-ui/core';
-import {TuiKeySteps, TuiRangeComponent, TuiRangeModule} from '@taiga-ui/kit';
+import {type TuiKeySteps, TuiRangeComponent, TuiRangeModule} from '@taiga-ui/kit';
 
 describe('TuiRange', () => {
     let component: TestComponent;

@@ -7,7 +7,7 @@ import {
     combineLatest,
     map,
     merge,
-    Observable,
+    type Observable,
     of,
     share,
     startWith,

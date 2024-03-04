@@ -10,16 +10,20 @@ import {
     TemplateRef,
     ViewChild,
 } from '@angular/core';
-import {MASKITO_DEFAULT_OPTIONS, MaskitoOptions, maskitoTransform} from '@maskito/core';
+import {
+    MASKITO_DEFAULT_OPTIONS,
+    type MaskitoOptions,
+    maskitoTransform,
+} from '@maskito/core';
 import {maskitoCaretGuard, maskitoPrefixPostprocessorGenerator} from '@maskito/kit';
 import {
     AbstractTuiControl,
-    TuiActiveZoneDirective,
+    type TuiActiveZoneDirective,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    TuiContext,
-    TuiFocusableElementAccessor,
-    TuiInputMode,
+    type TuiContext,
+    type TuiFocusableElementAccessor,
+    type TuiInputMode,
     tuiIsNativeFocused,
     tuiPure,
 } from '@taiga-ui/cdk';
@@ -29,11 +33,11 @@ import {
     TUI_TEXTFIELD_SIZE,
     tuiAsDataListHost,
     TuiDataListDirective,
-    TuiDataListHost,
+    type TuiDataListHost,
     TuiHostedDropdownComponent,
     TuiPrimitiveTextfieldComponent,
-    TuiSizeL,
-    TuiSizeS,
+    type TuiSizeL,
+    type TuiSizeS,
 } from '@taiga-ui/core';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 

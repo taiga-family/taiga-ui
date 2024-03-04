@@ -1,7 +1,7 @@
-import {HarnessLoader, parallel} from '@angular/cdk/testing';
+import {type HarnessLoader, parallel} from '@angular/cdk/testing';
 import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
-import {Component, QueryList, ViewChild, ViewChildren} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {Component, type QueryList, ViewChild, ViewChildren} from '@angular/core';
+import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiDataListModule, TuiTextfieldControllerModule} from '@taiga-ui/core';

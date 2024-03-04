@@ -6,7 +6,7 @@ import {
     Input,
 } from '@angular/core';
 import {tuiIsString} from '@taiga-ui/cdk';
-import {MODE_PROVIDER, TUI_MODE, TuiSizeS} from '@taiga-ui/core';
+import {MODE_PROVIDER, TUI_MODE, type TuiSizeS} from '@taiga-ui/core';
 
 /**
  * @deprecated Use {@link http://taiga-ui.dev/experimental/progress-segmented TuiProgressSegmentedModule} (from `@taiga-ui/experimental`)

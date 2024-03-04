@@ -1,4 +1,4 @@
-import {TuiRounding} from '@taiga-ui/cdk/types';
+import {type TuiRounding} from '@taiga-ui/cdk/types';
 
 import {tuiCeil, tuiFloor, tuiRound, tuiTrunc} from './round';
 

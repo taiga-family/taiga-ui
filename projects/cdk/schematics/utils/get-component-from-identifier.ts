@@ -1,4 +1,4 @@
-import {ClassDeclaration, getImports, Node} from 'ng-morph';
+import {type ClassDeclaration, getImports, type Node} from 'ng-morph';
 
 import {getNgComponents} from './angular/ng-component';
 

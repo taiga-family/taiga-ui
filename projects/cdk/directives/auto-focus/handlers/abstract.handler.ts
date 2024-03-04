@@ -1,7 +1,7 @@
-import {ElementRef} from '@angular/core';
+import {type ElementRef} from '@angular/core';
 import {
-    TuiFocusableElementAccessor,
-    TuiNativeFocusableElement,
+    type TuiFocusableElementAccessor,
+    type TuiNativeFocusableElement,
 } from '@taiga-ui/cdk/interfaces';
 
 import type {TuiAutofocusHandler} from '../autofocus.options';

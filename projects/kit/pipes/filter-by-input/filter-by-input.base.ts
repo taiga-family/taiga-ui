@@ -1,9 +1,9 @@
 import {
-    TuiFocusableElementAccessor,
+    type TuiFocusableElementAccessor,
     tuiIsPresent,
     tuiPure,
-    TuiStringHandler,
-    TuiStringMatcher,
+    type TuiStringHandler,
+    type TuiStringMatcher,
 } from '@taiga-ui/cdk';
 import {tuiIsFlat} from '@taiga-ui/kit/utils';
 

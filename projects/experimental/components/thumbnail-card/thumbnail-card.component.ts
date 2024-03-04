@@ -5,9 +5,9 @@ import {
     inject,
     Input,
 } from '@angular/core';
-import {TUI_INPUT_CARD_OPTIONS, TuiPaymentSystem} from '@taiga-ui/addon-commerce';
+import {TUI_INPUT_CARD_OPTIONS, type TuiPaymentSystem} from '@taiga-ui/addon-commerce';
 import type {TuiStringHandler} from '@taiga-ui/cdk';
-import {TUI_ICON_RESOLVER, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import {TUI_ICON_RESOLVER, type TuiSizeL, type TuiSizeS} from '@taiga-ui/core';
 
 @Component({
     selector: 'tui-thumbnail-card',

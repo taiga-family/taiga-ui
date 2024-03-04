@@ -6,22 +6,22 @@ import {
     HostListener,
     inject,
     Input,
-    QueryList,
+    type QueryList,
     ViewChildren,
 } from '@angular/core';
 import {
     AbstractTuiControl,
     EMPTY_QUERY,
     tuiClamp,
-    TuiFocusableElementAccessor,
+    type TuiFocusableElementAccessor,
     tuiIsNativeFocusedIn,
-    TuiNativeFocusableElement,
+    type TuiNativeFocusableElement,
     tuiPure,
     tuiQuantize,
 } from '@taiga-ui/cdk';
-import {TuiSizeS, TuiWithOptionalMinMax} from '@taiga-ui/core';
+import {type TuiSizeS, type TuiWithOptionalMinMax} from '@taiga-ui/core';
 import {TuiSliderComponent} from '@taiga-ui/kit/components/slider';
-import {TuiKeySteps} from '@taiga-ui/kit/types';
+import {type TuiKeySteps} from '@taiga-ui/kit/types';
 import {
     tuiKeyStepValueToPercentage,
     tuiPercentageToKeyStepValue,

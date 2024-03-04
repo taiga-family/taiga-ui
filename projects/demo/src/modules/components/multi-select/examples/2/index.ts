@@ -4,7 +4,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {assets} from '@demo/utils';
 import {TUI_DEFAULT_MATCHER} from '@taiga-ui/cdk';
-import {delay, filter, Observable, of, startWith, Subject, switchMap} from 'rxjs';
+import {delay, filter, type Observable, of, startWith, Subject, switchMap} from 'rxjs';
 
 class User {
     constructor(

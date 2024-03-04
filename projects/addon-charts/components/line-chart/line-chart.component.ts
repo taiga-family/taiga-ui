@@ -5,27 +5,27 @@ import {
     inject,
     Input,
     NgZone,
-    QueryList,
+    type QueryList,
     ViewChildren,
 } from '@angular/core';
-import {TuiLineChartHintContext} from '@taiga-ui/addon-charts/interfaces';
+import {type TuiLineChartHintContext} from '@taiga-ui/addon-charts/interfaces';
 import {tuiDraw} from '@taiga-ui/addon-charts/utils';
 import {
     EMPTY_QUERY,
     TuiIdService,
     tuiIsPresent,
     tuiPure,
-    TuiStringHandler,
+    type TuiStringHandler,
     tuiZoneOptimized,
 } from '@taiga-ui/cdk';
 import {
     TuiHintHoverDirective,
     TuiHintOptionsDirective,
     tuiHintOptionsProvider,
-    TuiPoint,
+    type TuiPoint,
 } from '@taiga-ui/core';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {distinctUntilChanged, Observable, Subject} from 'rxjs';
+import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {distinctUntilChanged, type Observable, Subject} from 'rxjs';
 
 import {TUI_LINE_CHART_OPTIONS} from './line-chart.options';
 import {TuiLineChartHintDirective} from './line-chart-hint.directive';

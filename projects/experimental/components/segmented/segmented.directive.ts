@@ -1,12 +1,12 @@
 import {
-    AfterContentChecked,
-    AfterContentInit,
+    type AfterContentChecked,
+    type AfterContentInit,
     ContentChildren,
     Directive,
     ElementRef,
     HostListener,
     inject,
-    QueryList,
+    type QueryList,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {RouterLinkActive} from '@angular/router';

@@ -1,7 +1,7 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    ElementRef,
+    type ElementRef,
     HostBinding,
     inject,
     Input,
@@ -11,13 +11,18 @@ import {
     AbstractTuiControl,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    TuiContext,
-    TuiFocusableElementAccessor,
+    type TuiContext,
+    type TuiFocusableElementAccessor,
     tuiIsNativeFocused,
-    TuiNativeFocusableElement,
+    type TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
-import {TuiBrightness, TuiModeDirective, TuiSizeL, TuiSizeXS} from '@taiga-ui/core';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {
+    type TuiBrightness,
+    TuiModeDirective,
+    type TuiSizeL,
+    type TuiSizeXS,
+} from '@taiga-ui/core';
+import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {TUI_TOGGLE_OPTIONS} from './toggle.options';
 

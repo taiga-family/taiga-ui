@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {
-    TuiCard,
+    type TuiCard,
     tuiCardExpireValidator,
     tuiCardNumberValidator,
 } from '@taiga-ui/addon-commerce';

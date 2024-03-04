@@ -2,9 +2,9 @@ import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {MaskitoOptions} from '@maskito/core';
+import {type MaskitoOptions} from '@maskito/core';
 import {maskitoDateOptionsGenerator} from '@maskito/kit';
-import {TuiBooleanHandler, TuiDay} from '@taiga-ui/cdk';
+import {type TuiBooleanHandler, TuiDay} from '@taiga-ui/cdk';
 
 @Component({
     selector: 'tui-input-tag-example-9',

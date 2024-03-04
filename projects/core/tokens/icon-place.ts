@@ -1,4 +1,4 @@
-import {InjectionToken} from '@angular/core';
+import {type InjectionToken} from '@angular/core';
 import {tuiCreateToken} from '@taiga-ui/cdk';
 
 export const TUI_DEFAULT_ICONS_PLACE = 'assets/taiga-ui/icons' as const;

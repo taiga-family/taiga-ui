@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {tuiFloor, TuiZoom, TuiZoomModule} from '@taiga-ui/cdk';
+import {tuiFloor, type TuiZoom, TuiZoomModule} from '@taiga-ui/cdk';
 import {TuiRootModule} from '@taiga-ui/core';
 
 describe('TuiZoom', () => {

@@ -1,9 +1,13 @@
 import {Component, ViewChild} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {ALWAYS_FALSE_HANDLER, TuiBooleanHandler, TuiHandler} from '@taiga-ui/cdk';
-import {TuiSizeS} from '@taiga-ui/core';
+import {
+    ALWAYS_FALSE_HANDLER,
+    type TuiBooleanHandler,
+    type TuiHandler,
+} from '@taiga-ui/cdk';
+import {type TuiSizeS} from '@taiga-ui/core';
 import {TuiFilterComponent, TuiFilterModule} from '@taiga-ui/kit';
 
 const BADGE_VALUE = 10;

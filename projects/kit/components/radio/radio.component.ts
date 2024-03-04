@@ -1,7 +1,7 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    ElementRef,
+    type ElementRef,
     HostBinding,
     inject,
     Input,
@@ -12,12 +12,12 @@ import {
     TUI_DEFAULT_IDENTITY_MATCHER,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    TuiFocusableElementAccessor,
-    TuiIdentityMatcher,
+    type TuiFocusableElementAccessor,
+    type TuiIdentityMatcher,
     tuiIsNativeFocused,
-    TuiNativeFocusableElement,
+    type TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
-import {TuiSizeL} from '@taiga-ui/core';
+import {type TuiSizeL} from '@taiga-ui/core';
 import {TuiRadioGroupComponent} from '@taiga-ui/kit/components/radio-group';
 
 import {TUI_RADIO_OPTIONS} from './radio.options';

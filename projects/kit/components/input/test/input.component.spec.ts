@@ -1,5 +1,5 @@
-import {Component, DebugElement, ElementRef, ViewChild} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {Component, type DebugElement, type ElementRef, ViewChild} from '@angular/core';
+import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {
@@ -7,8 +7,8 @@ import {
     tuiEditingKeys,
     TuiHintModule,
     TuiRootModule,
-    TuiSizeL,
-    TuiSizeS,
+    type TuiSizeL,
+    type TuiSizeS,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {TuiInputComponent, TuiInputModule} from '@taiga-ui/kit';

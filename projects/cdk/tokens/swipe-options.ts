@@ -1,4 +1,4 @@
-import {TuiSwipeOptions} from '@taiga-ui/cdk/interfaces';
+import {type TuiSwipeOptions} from '@taiga-ui/cdk/interfaces';
 import {tuiCreateToken} from '@taiga-ui/cdk/utils';
 
 /**

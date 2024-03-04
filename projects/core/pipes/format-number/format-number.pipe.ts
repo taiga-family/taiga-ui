@@ -1,8 +1,8 @@
-import {inject, Pipe, PipeTransform} from '@angular/core';
-import {TuiNumberFormatSettings} from '@taiga-ui/core/interfaces';
+import {inject, Pipe, type PipeTransform} from '@angular/core';
+import {type TuiNumberFormatSettings} from '@taiga-ui/core/interfaces';
 import {TUI_NUMBER_FORMAT} from '@taiga-ui/core/tokens';
 import {tuiFormatNumber} from '@taiga-ui/core/utils/format';
-import {map, Observable} from 'rxjs';
+import {map, type Observable} from 'rxjs';
 
 @Pipe({name: 'tuiFormatNumber'})
 export class TuiFormatNumberPipe implements PipeTransform {

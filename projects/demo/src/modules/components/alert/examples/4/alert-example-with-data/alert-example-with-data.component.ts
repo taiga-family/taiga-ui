@@ -1,7 +1,7 @@
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiPopover} from '@taiga-ui/cdk';
-import {TuiAlertOptions} from '@taiga-ui/core';
+import {type TuiPopover} from '@taiga-ui/cdk';
+import {type TuiAlertOptions} from '@taiga-ui/core';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 
 @Component({

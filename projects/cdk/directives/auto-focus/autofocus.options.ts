@@ -3,16 +3,16 @@ import {
     InjectionToken,
     NgZone,
     Optional,
-    Provider,
+    type Provider,
     Renderer2,
     Self,
 } from '@angular/core';
 import {ANIMATION_FRAME, WINDOW} from '@ng-web-apis/common';
-import {TuiFocusableElementAccessor} from '@taiga-ui/cdk/interfaces';
+import {type TuiFocusableElementAccessor} from '@taiga-ui/cdk/interfaces';
 import {TuiDestroyService} from '@taiga-ui/cdk/services';
 import {TUI_FOCUSABLE_ITEM_ACCESSOR, TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
 import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
-import {Observable} from 'rxjs';
+import {type Observable} from 'rxjs';
 
 import {TuiDefaultAutofocusHandler} from './handlers/default.handler';
 import {TuiIosAutofocusHandler} from './handlers/ios.handler';

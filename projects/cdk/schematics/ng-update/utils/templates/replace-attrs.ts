@@ -1,5 +1,5 @@
-import {UpdateRecorder} from '@angular-devkit/schematics';
-import {DevkitFileSystem} from 'ng-morph';
+import {type UpdateRecorder} from '@angular-devkit/schematics';
+import {type DevkitFileSystem} from 'ng-morph';
 
 import {
     findAttributeOnElementWithAttrs,
@@ -9,8 +9,8 @@ import {
     getTemplateFromTemplateResource,
     getTemplateOffset,
 } from '../../../utils/templates/template-resource';
-import {ReplacementAttribute} from '../../interfaces/replacement-attribute';
-import {TemplateResource} from '../../interfaces/template-resource';
+import {type ReplacementAttribute} from '../../interfaces/replacement-attribute';
+import {type TemplateResource} from '../../interfaces/template-resource';
 
 export function replaceAttrs({
     resource,

@@ -1,4 +1,4 @@
-import {ReplacementIdentifier} from '../../interfaces/replacement-identifier';
+import {type ReplacementIdentifier} from '../../interfaces/replacement-identifier';
 import {ICONS} from './icons';
 
 export const ICONS_TS: ReplacementIdentifier[] = ICONS.map(({from, to}) => ({

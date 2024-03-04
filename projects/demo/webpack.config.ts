@@ -1,5 +1,5 @@
 import TerserPlugin from 'terser-webpack-plugin';
-import {Configuration, RuleSetRule} from 'webpack';
+import {type Configuration, type RuleSetRule} from 'webpack';
 import {merge} from 'webpack-merge';
 
 interface Options {

@@ -11,7 +11,7 @@ import {TUI_IS_MOBILE, TuiDestroyService} from '@taiga-ui/cdk';
 import {TuiHintHoverDirective, TuiHintOptionsDirective} from '@taiga-ui/core/directives';
 import {MODE_PROVIDER} from '@taiga-ui/core/providers';
 import {TUI_MODE} from '@taiga-ui/core/tokens';
-import {TuiBrightness} from '@taiga-ui/core/types';
+import {type TuiBrightness} from '@taiga-ui/core/types';
 import {takeUntil} from 'rxjs';
 
 @Component({

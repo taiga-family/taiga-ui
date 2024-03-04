@@ -1,18 +1,18 @@
-import {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
+import {type Rule, type SchematicContext, type Tree} from '@angular-devkit/schematics';
 import {getWorkspace} from '@schematics/angular/utility/workspace';
 import {
     addImportToNgModule,
     addProviderToComponent,
     addProviderToNgModule,
-    ArrayLiteralExpression,
-    CallExpression,
-    ClassDeclaration,
+    type ArrayLiteralExpression,
+    type CallExpression,
+    type ClassDeclaration,
     createProject,
     getMainModule,
-    Identifier,
+    type Identifier,
     Node,
-    ObjectLiteralExpression,
-    PropertyAssignment,
+    type ObjectLiteralExpression,
+    type PropertyAssignment,
     saveActiveProject,
     setActiveProject,
     SyntaxKind,
@@ -30,11 +30,11 @@ import {
     ALERT_MODULES,
     BROWSER_ANIMATION_MODULE,
     DIALOG_MODULES,
-    ImportingModule,
+    type ImportingModule,
     MAIN_MODULE,
     SANITIZER_MODULES,
 } from '../constants/modules';
-import {TuiSchema} from '../schema';
+import {type TuiSchema} from '../schema';
 
 function addTuiModules({
     mainClass,

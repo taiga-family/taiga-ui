@@ -1,11 +1,11 @@
-import {NgZone} from '@angular/core';
+import {type NgZone} from '@angular/core';
 import {tuiTypedFromEvent, tuiZonefree} from '@taiga-ui/cdk';
 import {
     concat,
     delay,
     map,
     merge,
-    Observable,
+    type Observable,
     share,
     switchMap,
     take,

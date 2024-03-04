@@ -1,11 +1,11 @@
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
-import {TuiAppearance, TuiDialogContext} from '@taiga-ui/core';
+import {TuiAppearance, type TuiDialogContext} from '@taiga-ui/core';
 import {TUI_PROMPT_WORDS} from '@taiga-ui/kit/tokens';
 import {
     POLYMORPHEUS_CONTEXT,
     PolymorpheusComponent,
-    PolymorpheusContent,
+    type PolymorpheusContent,
 } from '@tinkoff/ng-polymorpheus';
 
 export interface TuiPromptData {

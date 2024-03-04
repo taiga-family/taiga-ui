@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiContext, tuiPure, TuiStringHandler} from '@taiga-ui/cdk';
+import {type TuiContext, tuiPure, type TuiStringHandler} from '@taiga-ui/cdk';
 import {delay, of} from 'rxjs';
 
 interface Python {

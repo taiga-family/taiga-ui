@@ -5,7 +5,7 @@ import {WINDOW} from '@ng-web-apis/common';
 import {TuiThemeService} from '@taiga-ui/addon-doc';
 import {delay} from 'rxjs';
 
-import {Color} from '../colors.constants';
+import {type Color} from '../colors.constants';
 
 @Component({
     selector: 'table[colors]',
