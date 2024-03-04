@@ -17,10 +17,11 @@
             >
                 <a
                     *ngFor="let item of group"
+                    rel="noopener noreferrer"
                     tuiOption
                     [fragment]="item.fragment"
                     [routerLink]="item.route"
-                    [target]="item.target"
+                    [target]="item.target || '_self'"
                     (click)="onClick(input)"
                 >
                     {{ item.title }}
@@ -79,11 +80,12 @@
         >
             <a
                 *ngIf="!item.subPages; else subPagesTemplate"
+                rel="noopener noreferrer"
                 routerLinkActive="t-sublink_active"
                 tuiLink
                 class="t-sublink"
                 [routerLink]="item.route"
-                [target]="item.target"
+                [target]="item.target || '_self'"
                 [tuiScrollIntoViewLink]="isActive(item.route)"
                 (click)="closeMenu()"
             >
@@ -127,12 +129,13 @@
                         <div class="t-section t-section_bordered">
                             <a
                                 *ngFor="let subPage of $pages(item.subPages)"
+                                rel="noopener noreferrer"
                                 routerLinkActive="t-sublink_active"
                                 tuiLink
                                 class="t-sublink t-sublink_small"
                                 [fragment]="subPage.fragment"
                                 [routerLink]="subPage.route"
-                                [target]="item.target"
+                                [target]="subPage.target || '_self'"
                                 [tuiScrollIntoViewLink]="isActive(subPage.route)"
                                 (click)="closeMenu()"
                             >
