@@ -33,6 +33,7 @@ import {
     tuiIsString,
     TuiMapper,
     TuiMonth,
+    TuiTypedMapper,
 } from '@taiga-ui/cdk';
 import {
     TUI_DEFAULT_MARKER_HANDLER,
@@ -191,6 +192,11 @@ export class TuiInputDateMultiComponent
     > = handler => stringifiable =>
         tuiIsString(stringifiable) || handler(stringifiable.item);
 
+    readonly valueMapper: TuiTypedMapper<
+        [readonly TuiDay[]],
+        ReadonlyArray<TuiStringifiableItem<TuiDay>>
+    > = value => value.map(item => new TuiStringifiableItem(item, item => String(item)));
+
     @HostBinding('attr.data-size')
     get size(): TuiSizeL | TuiSizeS {
         return this.textfieldSize.size;
@@ -278,14 +284,14 @@ export class TuiInputDateMultiComponent
         this.done();
     }
 
-    onValueChange(value: readonly TuiDay[]): void {
+    onValueChange(value: ReadonlyArray<TuiStringifiableItem<TuiDay>>): void {
         this.control?.updateValueAndValidity({emitEvent: false});
 
         if (!value.length) {
             this.onOpenChange(true);
         }
 
-        this.value = value;
+        this.value = value.map(({item}) => item);
     }
 
     onDayClick(value: TuiDay): void {
