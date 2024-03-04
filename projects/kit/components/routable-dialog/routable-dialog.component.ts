@@ -14,7 +14,7 @@ import {takeUntil} from 'rxjs';
 export class TuiRoutableDialogComponent {
     private readonly route = inject(ActivatedRoute);
     private readonly router = inject(Router);
-    private readonly initialDialogUrl = this.router.url;
+    private readonly initialUrl = this.router.url;
 
     constructor() {
         inject(TuiDialogService)
@@ -32,20 +32,14 @@ export class TuiRoutableDialogComponent {
     }
 
     private onDialogClosing(): void {
-        const navigatedFromDialog = this.initialDialogUrl !== this.router.url;
-
-        if (navigatedFromDialog) {
-            return;
+        if (this.initialUrl === this.router.url) {
+            this.navigateToParent();
         }
-
-        this.navigateToParent();
     }
 
     private navigateToParent(): void {
-        const isLazy = this.route.snapshot.data['isLazy'];
-
-        const backUrl = isLazy
-            ? this.getLazyLoadedBackUrl()
+        const backUrl = this.route.snapshot.data['isLazy']
+            ? this.lazyLoadedBackUrl
             : this.route.snapshot.data['backUrl'];
 
         void this.router.navigate([backUrl], {
@@ -53,7 +47,7 @@ export class TuiRoutableDialogComponent {
         });
     }
 
-    private getLazyLoadedBackUrl(): string {
+    private get lazyLoadedBackUrl(): string {
         return (this.route.parent?.snapshot.url || []).map(() => '..').join('/');
     }
 }
