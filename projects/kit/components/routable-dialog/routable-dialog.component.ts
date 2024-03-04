@@ -31,6 +31,10 @@ export class TuiRoutableDialogComponent {
             });
     }
 
+    private get lazyLoadedBackUrl(): string {
+        return (this.route.parent?.snapshot.url || []).map(() => '..').join('/');
+    }
+
     private onDialogClosing(): void {
         if (this.initialUrl === this.router.url) {
             this.navigateToParent();
@@ -45,9 +49,5 @@ export class TuiRoutableDialogComponent {
         void this.router.navigate([backUrl], {
             relativeTo: this.route,
         });
-    }
-
-    private get lazyLoadedBackUrl(): string {
-        return (this.route.parent?.snapshot.url || []).map(() => '..').join('/');
     }
 }
