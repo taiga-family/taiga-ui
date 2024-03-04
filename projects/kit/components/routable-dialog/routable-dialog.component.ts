@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, Inject, Injector, Self} from '@angular/core';
-import {ActivatedRoute, Router, UrlSegment} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {TuiDestroyService} from '@taiga-ui/cdk';
 import {TuiDialogService} from '@taiga-ui/core';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
@@ -12,6 +12,8 @@ import {takeUntil} from 'rxjs/operators';
     providers: [TuiDestroyService],
 })
 export class TuiRoutableDialogComponent {
+    private readonly initialUrl = this.router.url;
+
     constructor(
         @Inject(ActivatedRoute) private readonly route: ActivatedRoute,
         @Inject(Router) private readonly router: Router,
@@ -25,26 +27,26 @@ export class TuiRoutableDialogComponent {
                 this.route.snapshot.data['dialogOptions'],
             )
             .pipe(takeUntil(destroy$))
-            .subscribe({
-                complete: () => this.navigateToParent(),
-            });
+            .subscribe({complete: () => this.onDialogClosing()});
+    }
+
+    private get lazyLoadedBackUrl(): string {
+        return (this.route.parent?.snapshot.url || []).map(() => '..').join('/');
+    }
+
+    private onDialogClosing(): void {
+        if (this.initialUrl === this.router.url) {
+            this.navigateToParent();
+        }
     }
 
     private navigateToParent(): void {
-        const isLazy = this.route.snapshot.data['isLazy'];
-
-        const backUrl = isLazy
-            ? this.getLazyLoadedBackUrl()
+        const backUrl = this.route.snapshot.data['isLazy']
+            ? this.lazyLoadedBackUrl
             : this.route.snapshot.data['backUrl'];
 
         void this.router.navigate([backUrl], {
             relativeTo: this.route,
         });
-    }
-
-    private getLazyLoadedBackUrl(): string {
-        const urlSegments: UrlSegment[] = this.route.parent?.snapshot.url || [];
-
-        return urlSegments.map(() => '..').join('/');
     }
 }
