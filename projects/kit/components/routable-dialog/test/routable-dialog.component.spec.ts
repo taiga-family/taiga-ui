@@ -38,7 +38,10 @@ describe('TuiRoutableDialog', () => {
     let tuiDialogService: TuiDialogService;
     let router: Router;
 
-    function createComponent(activatedRoute?: Partial<ActivatedRoute>): void {
+    function createComponent(
+        activatedRoute?: Partial<ActivatedRoute>,
+        closeDialogImmediately = true,
+    ): void {
         tuiDialogService = mock(TuiDialogService);
         router = mock(Router);
 
@@ -54,16 +57,21 @@ describe('TuiRoutableDialog', () => {
             ],
         }).compileComponents();
 
-        when(tuiDialogService.open(anything(), anything())).thenReturn(NEVER);
+        when(tuiDialogService.open(anything(), anything())).thenReturn(
+            closeDialogImmediately ? EMPTY : NEVER,
+        );
 
         fixture = TestBed.createComponent(TuiRoutableDialogComponent);
     }
 
     it('Dialog content component is passed to the dialog open method, when RoutableDialog is created', () => {
+        // arrange
         createComponent();
 
+        // act
         fixture.detectChanges();
 
+        // assert
         verify(
             tuiDialogService.open(
                 deepEqual(new PolymorpheusComponent(DialogComponent, anything())),
@@ -73,6 +81,7 @@ describe('TuiRoutableDialog', () => {
     });
 
     it('dialog options are passed to the dialog open method', () => {
+        // arrange
         const dialogOptions = {
             dismissible: true,
         };
@@ -86,13 +95,16 @@ describe('TuiRoutableDialog', () => {
             } as unknown as ActivatedRouteSnapshot,
         });
 
+        // act
         fixture.detectChanges();
 
+        // assert
         verify(tuiDialogService.open(anything(), deepEqual(dialogOptions))).once();
     });
 
     it('Closing the dialog navigates back to the parent route for lazy loaded case', fakeAsync(() => {
-        createComponent({
+        // arrange
+        const activatedRouteMock = {
             snapshot: {
                 data: {
                     dialog: DialogComponent,
@@ -114,21 +126,26 @@ describe('TuiRoutableDialog', () => {
                     ],
                 } as unknown as ActivatedRouteSnapshot,
             } as unknown as ActivatedRoute,
-        });
+        };
 
-        when(tuiDialogService.open(anything(), anything())).thenReturn(EMPTY);
+        createComponent(activatedRouteMock);
 
+        // act
+        fixture.detectChanges();
+
+        // assert
         verify(
             router.navigate(
                 deepEqual(['../../..']),
                 deepEqual({
-                    relativeTo: DEFAULT_ACTIVATED_ROUTE_MOCK,
+                    relativeTo: activatedRouteMock,
                 }) as unknown as NavigationExtras,
             ),
-        );
+        ).once();
     }));
 
     it('Closing the dialog navigates back to the parent route for eager loaded case', fakeAsync(() => {
+        // arrange
         createComponent({
             snapshot: {
                 data: {
@@ -138,8 +155,35 @@ describe('TuiRoutableDialog', () => {
             } as unknown as ActivatedRouteSnapshot,
         });
 
-        when(tuiDialogService.open(anything(), anything())).thenReturn(EMPTY);
+        // act
+        fixture.detectChanges();
 
-        verify(router.navigate(deepEqual(['../../..']), anything()));
+        // assert
+        verify(router.navigate(deepEqual(['../../..']), anything())).once();
     }));
+
+    it('if navigation occurs from a dialog, then the navigation to parent is not called', () => {
+        // arrange
+        createComponent(
+            {
+                snapshot: {
+                    data: {
+                        dialog: DialogComponent,
+                        backUrl: '../../..',
+                    } as unknown as Data,
+                } as unknown as ActivatedRouteSnapshot,
+            },
+            false, // will close dialog only on destroy
+        );
+
+        fixture.detectChanges();
+
+        when(router.url).thenReturn('new/route/after/navigation'); // means the url has changed
+
+        // act
+        fixture.destroy(); // should trigger dialog closing logic
+
+        // assert
+        verify(router.navigate(anything(), anything())).never();
+    });
 });
