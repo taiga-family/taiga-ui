@@ -23,6 +23,8 @@ export class TuiAxesExample2 {
         [30, 14, 18, 14],
     ];
 
+    readonly maxValue = 40;
+
     readonly axisYSecondaryLabels = [
         '',
         `${this.getMax(this.value) / 2} k`,
