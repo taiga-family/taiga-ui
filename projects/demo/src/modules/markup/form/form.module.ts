@@ -14,7 +14,7 @@ import {
 import {
     TuiCheckboxModule,
     TuiLabelDirective,
-    TuiRadioModule,
+    TuiRadioComponent,
 } from '@taiga-ui/experimental';
 import {
     TuiBlockDirective,
@@ -69,7 +69,7 @@ import {FormComponent} from './form.component';
         TuiHintModule,
         TuiDataListModule,
         TuiDataListWrapperModule,
-        TuiRadioModule,
+        TuiRadioComponent,
         tuiGetDocModules(FormComponent),
         TuiCheckboxModule,
         TuiLabelDirective,

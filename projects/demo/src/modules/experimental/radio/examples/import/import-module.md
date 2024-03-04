@@ -1,12 +1,12 @@
 ```ts
 import {NgModule} from '@angular/core';
-import {TuiRadioModule} from '@taiga-ui/experimental';
+import {TuiRadioComponent} from '@taiga-ui/experimental';
 // ...
 
 @NgModule({
   imports: [
     // ...
-    TuiRadioModule,
+    TuiRadioComponent,
   ],
 })
 export class MyModule {}
