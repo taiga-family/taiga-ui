@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.69.0](https://github.com/taiga-family/taiga-ui/compare/v3.59.0...v3.69.0) (2024-03-04)
+
+### Features
+
+- **kit:** support `[label]` in `tui-avatar-labeled` ([#6921](https://github.com/taiga-family/taiga-ui/issues/6921))
+  ([8ff9592](https://github.com/taiga-family/taiga-ui/commit/8ff95927ba16e402d717dd52fe990a764d461e52))
+
+### Bug Fixes
+
+- **kit:** `InputDateTime` does not change filler on dynamic change of `[timeMode]` prop
+  ([#6897](https://github.com/taiga-family/taiga-ui/issues/6897))
+  ([14a8a8b](https://github.com/taiga-family/taiga-ui/commit/14a8a8b792b47e178064e9d7910a81129560b14f))
+- **kit:** prevent navigation to parent page if navigation occurs from dialog
+  ([#6944](https://github.com/taiga-family/taiga-ui/issues/6944))
+  ([d5bf23d](https://github.com/taiga-family/taiga-ui/commit/d5bf23ddeb648dc52762f48c4ff208337f591c79))
+
 ## [3.68.0](https://github.com/taiga-family/taiga-ui/compare/v3.59.0...v3.68.0) (2024-02-26)
 
 ### Features
