@@ -39,7 +39,7 @@ import {
     type TuiSizeS,
     type TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
-import {type TuiStringifiableItem} from '@taiga-ui/kit/classes';
+import {TuiStringifiableItem} from '@taiga-ui/kit/classes';
 import {TuiInputTagComponent} from '@taiga-ui/kit/components/input-tag';
 import {
     TUI_DATE_TEXTS,
