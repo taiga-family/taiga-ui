@@ -13,7 +13,7 @@ import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import {EMPTY, NEVER} from 'rxjs';
 import {anything, deepEqual, instance, mock, verify, when} from 'ts-mockito';
 
-import {TuiRoutableDialogComponent} from '../routable-dialog.component';
+import TuiRoutableDialogComponent from '../routable-dialog.component';
 
 function providerOf(serviceToken: any, mockedService: any): Provider {
     return {
@@ -46,7 +46,7 @@ describe('TuiRoutableDialog', () => {
         router = mock(Router);
 
         void TestBed.configureTestingModule({
-            declarations: [TuiRoutableDialogComponent],
+            imports: [TuiRoutableDialogComponent],
             providers: [
                 providerOf(TuiDialogService, tuiDialogService),
                 providerOf(Router, router),

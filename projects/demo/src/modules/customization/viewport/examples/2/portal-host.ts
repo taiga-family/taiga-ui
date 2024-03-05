@@ -3,6 +3,7 @@ import {tuiAsPortal, TuiPortalsComponent} from '@taiga-ui/cdk';
 import {tuiAsViewport, TuiDropdownService, type TuiRectAccessor} from '@taiga-ui/core';
 
 @Component({
+    standalone: true,
     selector: 'portal-host',
     template: `
         <ng-content></ng-content>

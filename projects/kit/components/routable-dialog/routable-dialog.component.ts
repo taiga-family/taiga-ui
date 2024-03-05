@@ -1,34 +1,40 @@
+import type {Type} from '@angular/core';
 import {ChangeDetectionStrategy, Component, inject, INJECTOR} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {TuiDestroyService} from '@taiga-ui/cdk';
 import {TuiDialogService} from '@taiga-ui/core';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
-import {takeUntil} from 'rxjs';
+import {from, of, switchMap, takeUntil} from 'rxjs';
 
 @Component({
+    standalone: true,
     selector: 'tui-routable-dialog',
     template: '',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiDestroyService],
 })
-export class TuiRoutableDialogComponent {
+export default class TuiRoutableDialogComponent {
     private readonly route = inject(ActivatedRoute);
     private readonly router = inject(Router);
+    private readonly injector = inject(INJECTOR);
     private readonly initialUrl = this.router.url;
+    private readonly dialog = inject(TuiDialogService);
+    private readonly destroy$ = inject(TuiDestroyService, {self: true});
 
     constructor() {
-        inject(TuiDialogService)
-            .open(
-                new PolymorpheusComponent(
-                    this.route.snapshot.data['dialog'],
-                    inject(INJECTOR),
+        const dialog = this.route.snapshot.data['dialog'];
+
+        from(isClass(dialog) ? of(dialog) : dialog().then((m: any) => m.default ?? m))
+            .pipe(
+                switchMap((dialog: any) =>
+                    this.dialog.open(
+                        new PolymorpheusComponent<Type<any>>(dialog, this.injector),
+                        this.route.snapshot.data['dialogOptions'],
+                    ),
                 ),
-                this.route.snapshot.data['dialogOptions'],
+                takeUntil(this.destroy$),
             )
-            .pipe(takeUntil(inject(TuiDestroyService, {self: true})))
-            .subscribe({
-                complete: () => this.onDialogClosing(),
-            });
+            .subscribe({complete: () => this.onDialogClosing()});
     }
 
     private get lazyLoadedBackUrl(): string {
@@ -50,4 +56,11 @@ export class TuiRoutableDialogComponent {
             relativeTo: this.route,
         });
     }
+}
+
+function isClass(fn: Type<any> | unknown): boolean {
+    return (
+        typeof fn === 'function' &&
+        Object.getOwnPropertyDescriptor(fn, 'prototype')?.writable === false
+    );
 }

@@ -1,8 +1,8 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 
 @Component({
-    selector: 'tui-example-dialog-content',
+    standalone: true,
     template: 'Eager loaded dialog content',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DialogContentComponent {}
+export class DialogComponent {}

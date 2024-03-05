@@ -1,17 +1,34 @@
 import {Component, type ElementRef, inject, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {type TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiAddonDocModule, type TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiDestroyService} from '@taiga-ui/cdk';
 import {TUI_EXPAND_LOADED, type TuiSizeS} from '@taiga-ui/core';
+import {TuiAccordionModule} from '@taiga-ui/kit';
 import {takeUntil, timer} from 'rxjs';
 
+import {TuiAccordionExample1} from './examples/1';
+import {TuiAccordionExample2} from './examples/2';
+import {TuiAccordionExample3} from './examples/3';
+import {TuiAccordionExample4} from './examples/4';
+import {TuiAccordionExample5} from './examples/5';
+
 @Component({
+    standalone: true,
     selector: 'example-accordion',
+    imports: [
+        TuiAddonDocModule,
+        TuiAccordionModule,
+        TuiAccordionExample1,
+        TuiAccordionExample2,
+        TuiAccordionExample3,
+        TuiAccordionExample4,
+        TuiAccordionExample5,
+    ],
     templateUrl: './accordion.template.html',
     changeDetection,
     providers: [TuiDestroyService],
 })
-export class ExampleTuiAccordionComponent {
+export default class ExampleTuiAccordionComponent {
     private readonly destroy$ = inject(TuiDestroyService, {self: true});
 
     @ViewChild('content')

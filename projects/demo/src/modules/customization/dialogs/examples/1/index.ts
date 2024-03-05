@@ -1,13 +1,17 @@
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiAlertService} from '@taiga-ui/core';
+import {TuiButtonModule} from '@taiga-ui/experimental';
+import {TuiAvatarComponent} from '@taiga-ui/kit';
 import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {switchMap} from 'rxjs';
 
 import {PromptService} from './prompt/prompt.service';
 
 @Component({
+    standalone: true,
     selector: 'tui-dialogs-example-1',
+    imports: [TuiButtonModule, TuiAvatarComponent],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,

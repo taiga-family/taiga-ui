@@ -1,13 +1,17 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {type TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiAddonDocModule, type TuiDocExample} from '@taiga-ui/addon-doc';
+
+import {TuiPortalsExample1} from './examples/1';
 
 @Component({
+    standalone: true,
     selector: 'portals',
+    imports: [TuiAddonDocModule, TuiPortalsExample1],
     templateUrl: './portals.template.html',
     changeDetection,
 })
-export class PortalsComponent {
+export default class PortalsComponent {
     protected host = import('./examples/setup/create-host.md?raw');
     protected service = import('./examples/setup/create-service.md?raw');
     protected insert = import('./examples/setup/insert-host.md?raw');
@@ -24,9 +28,6 @@ export class PortalsComponent {
         ),
         'portal/custom-host.template.html': import(
             './examples/1/portal/custom-host.template.html?raw'
-        ),
-        'portal/custom-host.module.ts': import(
-            './examples/1/portal/custom-host.module.ts?raw'
         ),
         'portal/custom-host.style.less': import(
             './examples/1/portal/custom-host.style.less?raw'

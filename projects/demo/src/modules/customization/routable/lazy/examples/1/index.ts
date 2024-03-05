@@ -1,15 +1,14 @@
 import {Component} from '@angular/core';
+import {RouterLink, RouterOutlet} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAccordionModule} from '@taiga-ui/kit';
+import {TuiButtonModule} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
-    selector: 'tui-accordion-example-3',
-    imports: [TuiAccordionModule],
+    imports: [RouterOutlet, RouterLink, RouterOutlet, TuiButtonModule],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiAccordionExample3 {}
+export default class TuiLazyExample1 {}

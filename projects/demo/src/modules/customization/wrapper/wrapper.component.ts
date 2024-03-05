@@ -1,14 +1,36 @@
+import {ClipboardModule} from '@angular/cdk/clipboard';
+import {NgForOf} from '@angular/common';
 import {Component, ViewEncapsulation} from '@angular/core';
+import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {type TuiDocExample} from '@taiga-ui/addon-doc';
+import {
+    TuiDocCopyModule,
+    type TuiDocExample,
+    TuiDocExampleModule,
+    TuiDocPageModule,
+} from '@taiga-ui/addon-doc';
+import {TuiLinkModule} from '@taiga-ui/core';
+
+import {TuiWrapperExample1} from './examples/1';
 
 @Component({
+    standalone: true,
     selector: 'wrapper',
+    imports: [
+        TuiDocPageModule,
+        NgForOf,
+        TuiDocCopyModule,
+        ClipboardModule,
+        RouterLink,
+        TuiLinkModule,
+        TuiDocExampleModule,
+        TuiWrapperExample1,
+    ],
     templateUrl: './wrapper.template.html',
     encapsulation: ViewEncapsulation.None,
     changeDetection,
 })
-export class WrapperComponent {
+export default class WrapperComponent {
     protected readonly example1: TuiDocExample = {
         HTML: import('./examples/1/index.html?raw'),
         LESS: import('./examples/1/index.less?raw'),

@@ -1,13 +1,36 @@
+import {ClipboardModule} from '@angular/cdk/clipboard';
+import {KeyValuePipe, NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
+import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {type TuiDocExample} from '@taiga-ui/addon-doc';
+import {
+    TuiDocCopyModule,
+    type TuiDocExample,
+    TuiDocExampleModule,
+    TuiDocPageModule,
+} from '@taiga-ui/addon-doc';
+import {TuiLinkModule} from '@taiga-ui/core';
+
+import {TuiVariablesExample1} from './examples/1';
 
 @Component({
+    standalone: true,
     selector: 'variables',
+    imports: [
+        TuiDocPageModule,
+        NgForOf,
+        TuiLinkModule,
+        KeyValuePipe,
+        TuiDocCopyModule,
+        ClipboardModule,
+        RouterLink,
+        TuiDocExampleModule,
+        TuiVariablesExample1,
+    ],
     templateUrl: './variables.template.html',
     changeDetection,
 })
-export class VariablesComponent {
+export default class VariablesComponent {
     protected readonly example1: TuiDocExample = {
         HTML: import('./examples/1/index.html?raw'),
         LESS: import('./examples/1/index.less?raw'),

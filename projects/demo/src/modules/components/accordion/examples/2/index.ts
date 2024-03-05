@@ -1,7 +1,16 @@
+import {AsyncPipe, NgIf} from '@angular/common';
 import {Component} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
+import {TuiButtonModule, TuiSvgModule} from '@taiga-ui/core';
+import {
+    TuiAccordionModule,
+    TuiDataListWrapperModule,
+    TuiInputModule,
+    TuiSelectModule,
+} from '@taiga-ui/kit';
 
 class Account {
     constructor(
@@ -15,7 +24,20 @@ class Account {
 }
 
 @Component({
+    standalone: true,
     selector: 'tui-accordion-example-2',
+    imports: [
+        NgIf,
+        TuiAccordionModule,
+        AsyncPipe,
+        TuiSvgModule,
+        TuiAmountPipe,
+        ReactiveFormsModule,
+        TuiInputModule,
+        TuiSelectModule,
+        TuiDataListWrapperModule,
+        TuiButtonModule,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

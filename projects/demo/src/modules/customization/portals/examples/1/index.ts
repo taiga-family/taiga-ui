@@ -1,10 +1,13 @@
 import {Component, type EmbeddedViewRef, inject, type TemplateRef} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiButtonModule, TuiSvgModule} from '@taiga-ui/core';
 
 import {CustomPortalService} from './portal/custom-portal.service';
 
 @Component({
+    standalone: true,
     selector: 'tui-portals-example-1',
+    imports: [TuiSvgModule, TuiButtonModule],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,

@@ -5,6 +5,7 @@ import {tuiAsPortal, TuiPortalsComponent} from '@taiga-ui/cdk';
 import {CustomPortalService} from './custom-portal.service';
 
 @Component({
+    standalone: true,
     selector: 'custom-host',
     templateUrl: './custom-host.template.html',
     styleUrls: ['./custom-host.style.less'],
