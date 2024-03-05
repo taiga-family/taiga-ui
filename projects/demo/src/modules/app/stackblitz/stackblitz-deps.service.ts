@@ -9,15 +9,14 @@ export class StackblitzDepsService {
 
     public async get(): Promise<Record<string, string>> {
         return {
-            ...(await this.getAngularPackages()),
+            ...this.getAngularPackages(),
             ...this.getTaigaPackages(),
             ...(await this.getCommonPackages()),
         };
     }
 
-    private async getAngularPackages(): Promise<Record<string, string>> {
-        const {devDependencies} = await import('@demo/root-package');
-        const ngVersion = `${devDependencies['@angular/cdk']?.split('.')?.[0] ?? ''}.x.x`;
+    private getAngularPackages(): Record<string, string> {
+        const ngVersion = '17.x.x';
 
         return {
             '@angular/cdk': ngVersion,
@@ -30,6 +29,7 @@ export class StackblitzDepsService {
             '@angular/platform-browser-dynamic': ngVersion,
             '@angular/animations': ngVersion,
             '@angular/router': ngVersion,
+            typescript: '5.3.x', // compatible with angular 17
         };
     }
 
@@ -82,7 +82,6 @@ export class StackblitzDepsService {
             dompurify: (await import('@tinkoff/ng-dompurify/package.json'))
                 .peerDependencies.dompurify,
             rxjs: rootDevDeps.rxjs,
-            typescript: rootDevDeps.typescript,
         };
     }
 }
