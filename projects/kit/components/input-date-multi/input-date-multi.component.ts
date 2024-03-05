@@ -27,6 +27,7 @@ import {
     tuiIsString,
     type TuiMapper,
     TuiMonth,
+    TuiTypedMapper,
 } from '@taiga-ui/cdk';
 import {
     TUI_DEFAULT_MARKER_HANDLER,
@@ -239,6 +240,11 @@ export class TuiInputDateMultiComponent
     > = handler => stringifiable =>
         tuiIsString(stringifiable) || handler(stringifiable.item);
 
+    protected readonly valueMapper: TuiTypedMapper<
+        [readonly TuiDay[]],
+        ReadonlyArray<TuiStringifiableItem<TuiDay>>
+    > = value => value.map(item => new TuiStringifiableItem(item, item => String(item)));
+
     protected onEnter(search: string): void {
         if (!this.tagValidator(search)) {
             return;
@@ -256,14 +262,14 @@ export class TuiInputDateMultiComponent
         this.done();
     }
 
-    protected onValueChange(value: readonly TuiDay[]): void {
+    protected onValueChange(value: ReadonlyArray<TuiStringifiableItem<TuiDay>>): void {
         this.control?.updateValueAndValidity({emitEvent: false});
 
         if (!value.length) {
             this.onOpenChange(true);
         }
 
-        this.value = value;
+        this.value = value.map(({item}) => item);
     }
 
     protected onDayClick(value: TuiDay): void {
