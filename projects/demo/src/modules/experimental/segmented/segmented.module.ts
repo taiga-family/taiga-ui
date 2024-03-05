@@ -4,12 +4,11 @@ import {FormsModule} from '@angular/forms';
 import {tuiGetDocModules} from '@taiga-ui/addon-doc';
 import {TuiNotificationModule} from '@taiga-ui/core';
 import {
-    TuiBadgeNotificationModule,
     TuiButtonModule,
     TuiIconModule,
     TuiSegmentedComponent,
 } from '@taiga-ui/experimental';
-import {TuiFadeDirective} from '@taiga-ui/kit';
+import {TuiBadgeNotificationComponent, TuiFadeDirective} from '@taiga-ui/kit';
 
 import {TuiSegmentedExample1} from './examples/1';
 import {TuiSegmentedExample2} from './examples/2';
@@ -22,7 +21,7 @@ import {ExampleTuiSegmentedComponent} from './segmented.component';
         CommonModule,
         TuiSegmentedComponent,
         TuiNotificationModule,
-        TuiBadgeNotificationModule,
+        TuiBadgeNotificationComponent,
         TuiFadeDirective,
         tuiGetDocModules(ExampleTuiSegmentedComponent),
         FormsModule,

@@ -13,7 +13,6 @@ import {
     TuiTooltipModule,
 } from '@taiga-ui/core';
 import {
-    TuiBadgeNotificationModule,
     TuiButtonModule,
     TuiCardModule,
     TuiCellModule,
@@ -30,6 +29,7 @@ import {
     TuiAvatarStackComponent,
     TuiBadgedContentComponent,
     TuiBadgeDirective,
+    TuiBadgeNotificationComponent,
     TuiDataListWrapperModule,
     TuiFadeDirective,
     TuiProgressModule,
@@ -52,7 +52,7 @@ import {TuiCellExample7} from './examples/7';
         TuiAvatarComponent,
         TuiAvatarStackComponent,
         TuiBadgeDirective,
-        TuiBadgeNotificationModule,
+        TuiBadgeNotificationComponent,
         TuiBadgedContentComponent,
         TuiCellModule,
         TuiFadeDirective,

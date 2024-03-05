@@ -1,4 +1,3 @@
-export * from '@taiga-ui/experimental/components/badge-notification';
 export * from '@taiga-ui/experimental/components/button';
 export * from '@taiga-ui/experimental/components/checkbox';
 export * from '@taiga-ui/experimental/components/chip';

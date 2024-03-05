@@ -288,9 +288,9 @@ export const ROUTES: Routes = [
         },
     },
     {
-        path: 'experimental/badge-notification',
+        path: 'components/badge-notification',
         loadChildren: async () =>
-            (await import('../experimental/badge-notification/badge-notification.module'))
+            (await import('../components/badge-notification/badge-notification.module'))
                 .ExampleTuiBadgeNotificationModule,
         data: {
             title: 'BadgeNotification',

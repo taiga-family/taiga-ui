@@ -179,6 +179,12 @@ export const pages: TuiDocPages = [
                 keywords: 'бэдж, бейдж, circle, овал, круг, badge, нотификация',
                 route: '/components/badged-content',
             },
+            {
+                section: 'Components',
+                title: 'BadgeNotification',
+                keywords: 'бэдж, бейдж, circle, круг, badge, alert, нотификация',
+                route: '/components/badge-notification',
+            },
         ],
     },
     {
@@ -830,18 +836,6 @@ export const pages: TuiDocPages = [
         route: '/icons/overview/Component',
     },
     // Experimental
-    {
-        section: 'Experimental',
-        title: 'Badge',
-        subPages: [
-            {
-                section: 'Experimental',
-                title: 'BadgeNotification',
-                keywords: 'бэдж, бейдж, circle, круг, badge, alert, нотификация',
-                route: '/experimental/badge-notification',
-            },
-        ],
-    },
     {
         section: 'Experimental',
         title: 'Button',
