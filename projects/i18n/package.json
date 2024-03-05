@@ -16,8 +16,8 @@
     "license": "Apache-2.0",
     "peerDependencies": {
         "@angular/core": ">=15.0.0",
-        "@ng-web-apis/common": "3.0.6",
+        "@ng-web-apis/common": "^3.0.6",
         "rxjs": ">=6.0.0",
-        "tslib": "2.6.2"
+        "tslib": "^2.6.2"
     }
 }

@@ -16,10 +16,10 @@
     "peerDependencies": {
         "@angular/common": ">=15.0.0",
         "@angular/core": ">=15.0.0",
-        "@ng-web-apis/common": "3.0.6",
+        "@ng-web-apis/common": "^3.0.6",
         "@taiga-ui/cdk": "^3.59.0",
         "@taiga-ui/core": "^3.59.0",
-        "@tinkoff/ng-polymorpheus": "4.3.0",
-        "tslib": "2.6.2"
+        "@tinkoff/ng-polymorpheus": "^4.3.0",
+        "tslib": "^2.6.2"
     }
 }
