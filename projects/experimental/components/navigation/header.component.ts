@@ -1,8 +1,11 @@
 import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/core';
 import {tuiDropdownOptionsProvider} from '@taiga-ui/core';
-import {tuiBadgeNotificationOptionsProvider} from '@taiga-ui/experimental/components/badge-notification';
 import {tuiButtonOptionsProvider} from '@taiga-ui/experimental/components/button';
-import {tuiAvatarOptionsProvider, tuiBadgeOptionsProvider} from '@taiga-ui/kit';
+import {
+    tuiAvatarOptionsProvider,
+    tuiBadgeNotificationOptionsProvider,
+    tuiBadgeOptionsProvider,
+} from '@taiga-ui/kit';
 
 @Component({
     selector: 'header[tuiNavigationHeader]',

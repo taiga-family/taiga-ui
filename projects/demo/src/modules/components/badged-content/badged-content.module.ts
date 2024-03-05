@@ -5,7 +5,6 @@ import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiPlatformModule} from '@taiga-ui/cdk';
 import {TuiNotificationModule} from '@taiga-ui/core';
 import {
-    TuiBadgeNotificationModule,
     TuiButtonModule,
     TuiFallbackSrcModule,
     TuiIconModule,
@@ -14,6 +13,7 @@ import {
     TuiAvatarComponent,
     TuiBadgedContentComponent,
     TuiBadgeDirective,
+    TuiBadgeNotificationComponent,
     TuiInputModule,
 } from '@taiga-ui/kit';
 
@@ -25,7 +25,7 @@ import {TuiBadgedContentExample3} from './examples/3';
 @NgModule({
     imports: [
         CommonModule,
-        TuiBadgeNotificationModule,
+        TuiBadgeNotificationComponent,
         TuiIconModule,
         TuiBadgeDirective,
         TuiBadgedContentComponent,

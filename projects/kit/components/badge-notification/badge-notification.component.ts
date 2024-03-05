@@ -10,6 +10,7 @@ import {
 import {TUI_BADGE_NOTIFICATION_OPTIONS} from './badge-notification.options';
 
 @Component({
+    standalone: true,
     selector: 'tui-badge-notification',
     template: '<ng-content></ng-content>',
     styleUrls: ['./badge-notification.style.less'],
