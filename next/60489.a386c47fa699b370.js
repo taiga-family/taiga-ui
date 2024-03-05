@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[60489],{60489:e=>{e.exports=".checkbox {\n    display: flex;\n    align-items: center;\n    gap: 0.5rem;\n}\n"}}]);
