@@ -4,15 +4,19 @@
 >
     <tui-tile
         *ngFor="let item of unsortedItems; let index = index"
-        tuiTileHandle
         [style.order]="order.get(index)"
     >
         <div class="t-item">
-            <tui-svg
-                class="t-icon"
-                [src]="options.icons.drag"
-            ></tui-svg>
-            {{ item }}
+            <div
+                tuiTileHandle
+                class="t-draggable"
+            >
+                <tui-svg
+                    class="t-icon"
+                    [src]="options.icons.drag"
+                ></tui-svg>
+                {{ item }}
+            </div>
             <button
                 appearance="icon"
                 size="xs"
