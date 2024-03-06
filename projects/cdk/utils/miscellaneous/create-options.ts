@@ -1,4 +1,4 @@
-import {type InjectionToken} from '@angular/core';
+import type {InjectionToken} from '@angular/core';
 
 import {tuiCreateTokenFromFactory} from './create-token';
 

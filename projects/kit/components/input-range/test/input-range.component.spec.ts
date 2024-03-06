@@ -1,5 +1,7 @@
-import {Component, type DebugElement, ViewChild} from '@angular/core';
-import {type ComponentFixture, TestBed} from '@angular/core/testing';
+import type {DebugElement} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
+import type {ComponentFixture} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {CHAR_HYPHEN, CHAR_MINUS} from '@taiga-ui/cdk';
 import {TuiInputRangeComponent, TuiInputRangeModule} from '@taiga-ui/kit';

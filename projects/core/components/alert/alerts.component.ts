@@ -1,14 +1,15 @@
 import {CommonModule} from '@angular/common';
+import type {Type} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     inject,
     INJECTOR,
     Injector,
-    type Type,
     ViewEncapsulation,
 } from '@angular/core';
-import {TuiMapperPipeModule, type TuiTypedMapper} from '@taiga-ui/cdk';
+import type {TuiTypedMapper} from '@taiga-ui/cdk';
+import {TuiMapperPipeModule} from '@taiga-ui/cdk';
 import {TUI_PARENT_ANIMATION} from '@taiga-ui/core/animations';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 import {identity} from 'rxjs';

@@ -1,6 +1,6 @@
-import {type Provider} from '@angular/core';
+import type {Provider} from '@angular/core';
 import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
-import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 
 export interface TuiTableOptions {
     readonly direction: -1 | 1;

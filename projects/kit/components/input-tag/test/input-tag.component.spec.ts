@@ -1,20 +1,12 @@
 import {Component, ViewChild} from '@angular/core';
-import {type ComponentFixture, TestBed} from '@angular/core/testing';
+import type {ComponentFixture} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {
-    ALWAYS_TRUE_HANDLER,
-    CHAR_NO_BREAK_SPACE,
-    type TuiBooleanHandler,
-    TuiFocusedModule,
-} from '@taiga-ui/cdk';
-import {
-    TuiHintModule,
-    TuiRootModule,
-    type TuiSizeL,
-    type TuiSizeS,
-    TuiTextfieldControllerModule,
-} from '@taiga-ui/core';
+import type {TuiBooleanHandler} from '@taiga-ui/cdk';
+import {ALWAYS_TRUE_HANDLER, CHAR_NO_BREAK_SPACE, TuiFocusedModule} from '@taiga-ui/cdk';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import {TuiHintModule, TuiRootModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {TuiInputTagComponent, TuiInputTagModule} from '@taiga-ui/kit';
 import {
     tuiIsActive,

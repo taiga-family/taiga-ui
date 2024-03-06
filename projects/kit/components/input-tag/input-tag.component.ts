@@ -1,3 +1,4 @@
+import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -9,29 +10,31 @@ import {
     inject,
     Input,
     Output,
-    type QueryList,
     TemplateRef,
     ViewChild,
     ViewChildren,
 } from '@angular/core';
+import type {
+    TuiActiveZoneDirective,
+    TuiBooleanHandler,
+    TuiContext,
+    TuiFocusableElementAccessor,
+} from '@taiga-ui/cdk';
 import {
     AbstractTuiMultipleControl,
     ALWAYS_FALSE_HANDLER,
     ALWAYS_TRUE_HANDLER,
     EMPTY_QUERY,
-    type TuiActiveZoneDirective,
     tuiArrayRemove,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    type TuiBooleanHandler,
-    type TuiContext,
-    type TuiFocusableElementAccessor,
     tuiGetActualTarget,
     tuiGetClipboardDataText,
     tuiIsElement,
     tuiIsNativeFocusedIn,
     tuiRetargetedBoundaryCrossing,
 } from '@taiga-ui/cdk';
+import type {TuiDataListHost, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {
     MODE_PROVIDER,
     TEXTFIELD_CONTROLLER_PROVIDER,
@@ -40,19 +43,17 @@ import {
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
     tuiAsDataListHost,
     TuiDataListDirective,
-    type TuiDataListHost,
     TuiHintOptionsDirective,
     TuiHostedDropdownComponent,
     TuiModeDirective,
     TuiScrollbarComponent,
-    type TuiSizeL,
-    type TuiSizeS,
 } from '@taiga-ui/core';
-import {type TuiStringifiableItem} from '@taiga-ui/kit/classes';
+import type {TuiStringifiableItem} from '@taiga-ui/kit/classes';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
-import {type TuiStatus} from '@taiga-ui/kit/types';
-import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {map, type Observable, takeUntil, timer} from 'rxjs';
+import type {TuiStatus} from '@taiga-ui/kit/types';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {Observable} from 'rxjs';
+import {map, takeUntil, timer} from 'rxjs';
 
 import {TUI_INPUT_TAG_OPTIONS} from './input-tag.options';
 

@@ -2,7 +2,7 @@ import {Component, inject} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {type TuiDocExample, type TuiRawLoaderContent} from '@taiga-ui/addon-doc';
+import type {TuiDocExample, TuiRawLoaderContent} from '@taiga-ui/addon-doc';
 import {TUI_RATING_OPTIONS} from '@taiga-ui/kit';
 
 @Component({

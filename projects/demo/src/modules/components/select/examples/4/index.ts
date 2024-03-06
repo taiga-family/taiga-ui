@@ -2,7 +2,7 @@ import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAlertService} from '@taiga-ui/core';
-import {type TuiSelectComponent} from '@taiga-ui/kit';
+import type {TuiSelectComponent} from '@taiga-ui/kit';
 
 @Component({
     selector: 'tui-select-example-4',

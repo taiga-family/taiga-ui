@@ -1,4 +1,5 @@
-import {type ClassDeclaration, Node} from 'ng-morph';
+import type {ClassDeclaration} from 'ng-morph';
+import {Node} from 'ng-morph';
 
 // TODO: add to ng-morph
 export function isStandaloneComponent(component: ClassDeclaration): boolean {

@@ -1,28 +1,16 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    inject,
-    type OnInit,
-    ViewChild,
-} from '@angular/core';
+import type {OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, ViewChild} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {
-    type TuiCard,
-    tuiCardNumberValidator,
-    tuiDefaultCardValidator,
-    type TuiInputCardGroupedComponent,
-} from '@taiga-ui/addon-commerce';
-import {TUI_IS_IOS, TuiDestroyService, type TuiValuesOf} from '@taiga-ui/cdk';
-import {type TuiDialogContext} from '@taiga-ui/core';
+import type {TuiCard, TuiInputCardGroupedComponent} from '@taiga-ui/addon-commerce';
+import {tuiCardNumberValidator, tuiDefaultCardValidator} from '@taiga-ui/addon-commerce';
+import type {TuiValuesOf} from '@taiga-ui/cdk';
+import {TUI_IS_IOS, TuiDestroyService} from '@taiga-ui/cdk';
+import type {TuiDialogContext} from '@taiga-ui/core';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 import {BehaviorSubject, map, switchMap, takeUntil} from 'rxjs';
 
-import {
-    type AccountCard,
-    type DataForPayCardModal,
-    type FetchedCards,
-    PaymentMode,
-} from '../helpers/models';
+import type {AccountCard, DataForPayCardModal, FetchedCards} from '../helpers/models';
+import {PaymentMode} from '../helpers/models';
 import {PayService} from '../helpers/pay.service';
 import {inputCardGroupedCVCValidator} from '../helpers/validator';
 

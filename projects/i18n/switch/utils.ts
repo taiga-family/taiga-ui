@@ -3,7 +3,8 @@ import type {
     TuiLanguageLoader,
     TuiLanguageName,
 } from '@taiga-ui/i18n/interfaces';
-import {from, map, type Observable, of} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {from, map, of} from 'rxjs';
 
 // CommonJS `module.exports` is wrapped as `default` in ESModule.
 async function normalizeCommonJSImport<T>(importPromise: Promise<T>): Promise<T> {

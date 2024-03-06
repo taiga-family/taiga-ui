@@ -1,5 +1,6 @@
 import {TuiDocumentationApiPagePO, tuiGoto} from '@demo-playwright/utils';
-import {expect, type Locator, test} from '@playwright/test';
+import type {Locator} from '@playwright/test';
+import {expect, test} from '@playwright/test';
 import {join} from 'path';
 
 test.describe('InputFiles', () => {

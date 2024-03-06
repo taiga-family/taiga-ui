@@ -1,4 +1,5 @@
 import {Location} from '@angular/common';
+import type {OnInit} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -9,13 +10,14 @@ import {
     HostListener,
     inject,
     Input,
-    type OnInit,
     TemplateRef,
     ViewChild,
 } from '@angular/core';
-import {type AbstractControl, FormGroup} from '@angular/forms';
-import {type Params, UrlSerializer, type UrlTree} from '@angular/router';
-import {type TuiDemoParams} from '@taiga-ui/addon-doc/interfaces';
+import type {AbstractControl} from '@angular/forms';
+import {FormGroup} from '@angular/forms';
+import type {Params, UrlTree} from '@angular/router';
+import {UrlSerializer} from '@angular/router';
+import type {TuiDemoParams} from '@taiga-ui/addon-doc/interfaces';
 import {TUI_DOC_DEMO_TEXTS, TUI_DOC_URL_STATE_HANDLER} from '@taiga-ui/addon-doc/tokens';
 import {tuiCoerceValueIsTrue} from '@taiga-ui/addon-doc/utils';
 import {
@@ -28,7 +30,8 @@ import {
     TuiResizeableDirective,
     tuiToInteger,
 } from '@taiga-ui/cdk';
-import {type TuiBrightness, TuiModeDirective} from '@taiga-ui/core';
+import type {TuiBrightness} from '@taiga-ui/core';
+import {TuiModeDirective} from '@taiga-ui/core';
 import {TUI_ARROW_OPTIONS} from '@taiga-ui/kit';
 import {Subject} from 'rxjs';
 

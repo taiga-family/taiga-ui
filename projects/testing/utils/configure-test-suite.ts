@@ -1,4 +1,5 @@
-import {type ComponentFixture, getTestBed, TestBed} from '@angular/core/testing';
+import type {ComponentFixture} from '@angular/core/testing';
+import {getTestBed, TestBed} from '@angular/core/testing';
 
 /** deprecated, will be removed in 4.0 */
 export const configureTestSuite = (configureModule?: () => void): void => {

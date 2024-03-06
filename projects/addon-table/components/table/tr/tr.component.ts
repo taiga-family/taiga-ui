@@ -1,11 +1,10 @@
+import type {AfterContentInit, QueryList} from '@angular/core';
 import {
-    type AfterContentInit,
     ChangeDetectionStrategy,
     Component,
     ContentChildren,
     forwardRef,
     inject,
-    type QueryList,
 } from '@angular/core';
 import {EMPTY_QUERY, tuiQueryListChanges} from '@taiga-ui/cdk';
 import {map, ReplaySubject, switchMap} from 'rxjs';

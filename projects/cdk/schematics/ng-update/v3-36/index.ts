@@ -1,4 +1,4 @@
-import {type Rule, type SchematicContext, type Tree} from '@angular-devkit/schematics';
+import type {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {NodePackageInstallTask} from '@angular-devkit/schematics/tasks';
 import {
     addPackageJsonDependency,
@@ -8,7 +8,7 @@ import {
 } from 'ng-morph';
 
 import {ALL_TS_FILES} from '../../constants';
-import {type TuiSchema} from '../../ng-add/schema';
+import type {TuiSchema} from '../../ng-add/schema';
 import {
     FINISH_SYMBOL,
     infoLog,

@@ -1,6 +1,6 @@
-import {type Type} from '@angular/core';
-import {type DefaultExport, LoadChildren, type Route} from '@angular/router';
-import {type Observable} from 'rxjs';
+import type {Type} from '@angular/core';
+import type {DefaultExport, LoadChildren, Route} from '@angular/router';
+import type {Observable} from 'rxjs';
 
 interface Options {
     path?: string;

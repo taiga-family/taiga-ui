@@ -1,7 +1,7 @@
+import type {DoCheck} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
-    type DoCheck,
     ElementRef,
     HostBinding,
     inject,
@@ -9,7 +9,8 @@ import {
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {tuiIsString, TuiNativeValidatorDirective} from '@taiga-ui/cdk';
-import {TUI_ICON_RESOLVER, TuiAppearanceDirective, type TuiSizeS} from '@taiga-ui/core';
+import type {TuiSizeS} from '@taiga-ui/core';
+import {TUI_ICON_RESOLVER, TuiAppearanceDirective} from '@taiga-ui/core';
 
 import {TUI_TOGGLE_OPTIONS} from './toggle.options';
 

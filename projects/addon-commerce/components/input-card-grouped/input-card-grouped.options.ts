@@ -1,10 +1,9 @@
-import {type Provider} from '@angular/core';
-import {
-    TUI_INPUT_CARD_DEFAULT_OPTIONS,
-    type TuiInputCardOptions,
-} from '@taiga-ui/addon-commerce/components/input-card';
+import type {Provider} from '@angular/core';
+import type {TuiInputCardOptions} from '@taiga-ui/addon-commerce/components/input-card';
+import {TUI_INPUT_CARD_DEFAULT_OPTIONS} from '@taiga-ui/addon-commerce/components/input-card';
 import {tuiDefaultCardValidator} from '@taiga-ui/addon-commerce/constants';
-import {type TuiBooleanHandler, tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
+import type {TuiBooleanHandler} from '@taiga-ui/cdk';
+import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 
 export interface TuiInputCardGroupedOptions extends TuiInputCardOptions {
     readonly cardValidator: TuiBooleanHandler<string>;

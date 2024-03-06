@@ -1,4 +1,5 @@
-import {type AfterViewChecked, Directive, ElementRef, inject, Input} from '@angular/core';
+import type {AfterViewChecked} from '@angular/core';
+import {Directive, ElementRef, inject, Input} from '@angular/core';
 
 /**
  * A directive for projecting classes from nested children to host

@@ -1,13 +1,13 @@
-import {type Rule, type SchematicContext, type Tree} from '@angular-devkit/schematics';
+import type {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {updateWorkspace} from '@schematics/angular/utility/workspace';
 import {getPackageJsonDependency, getSourceFiles} from 'ng-morph';
 
 import {tuiIsString} from '../../../../utils/miscellaneous/is-string';
-import {type TuiSchema} from '../../../ng-add/schema';
+import type {TuiSchema} from '../../../ng-add/schema';
 import {isInvalidAngularJson} from '../../../utils/angular-json-manipulations';
 import {getProjectTargetOptions} from '../../../utils/get-project-target-options';
 import {getProjects} from '../../../utils/get-projects';
-import {type Asset} from '../../interfaces/asset';
+import type {Asset} from '../../interfaces/asset';
 
 const PROPRIETARY_TDS_ICON_ASSETS = {
     glob: '**/*',

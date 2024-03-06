@@ -1,6 +1,6 @@
-import {type Provider} from '@angular/core';
+import type {Provider} from '@angular/core';
 import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
-import {type TuiAppearanceOptions, type TuiSizeXS, type TuiSizeXXL} from '@taiga-ui/core';
+import type {TuiAppearanceOptions, TuiSizeXS, TuiSizeXXL} from '@taiga-ui/core';
 
 export interface TuiAvatarOptions extends TuiAppearanceOptions {
     readonly appearance: string;

@@ -1,4 +1,4 @@
-import {type TuiDeepPartial} from '@taiga-ui/cdk/types';
+import type {TuiDeepPartial} from '@taiga-ui/cdk/types';
 
 import {tuiIsString} from './is-string';
 

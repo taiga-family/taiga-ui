@@ -1,16 +1,16 @@
-import {
-    type ClassDeclaration,
-    type Decorator,
-    getClasses,
-    type ObjectLiteralExpression,
-    type Pattern,
-    type PropertyAssignment,
-    type Query,
-    type StructureType,
+import type {
+    ClassDeclaration,
+    Decorator,
+    ObjectLiteralExpression,
+    Pattern,
+    PropertyAssignment,
+    Query,
+    StructureType,
 } from 'ng-morph';
+import {getClasses} from 'ng-morph';
 import * as path from 'path';
 
-import {type TemplateResource} from '../../ng-update/interfaces/template-resource';
+import type {TemplateResource} from '../../ng-update/interfaces/template-resource';
 
 function decoratorToTemplateResource(decorator: Decorator): TemplateResource | null {
     const [metadata] = decorator.getArguments() as ObjectLiteralExpression[];

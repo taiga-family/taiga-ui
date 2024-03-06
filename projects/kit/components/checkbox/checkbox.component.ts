@@ -1,20 +1,21 @@
+import type {ElementRef} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
-    type ElementRef,
     HostBinding,
     inject,
     Input,
     ViewChild,
 } from '@angular/core';
+import type {TuiFocusableElementAccessor} from '@taiga-ui/cdk';
 import {
     AbstractTuiNullableControl,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    type TuiFocusableElementAccessor,
     tuiIsNativeFocused,
 } from '@taiga-ui/cdk';
-import {TUI_CHECKBOX_OPTIONS, type TuiSizeL} from '@taiga-ui/core';
+import type {TuiSizeL} from '@taiga-ui/core';
+import {TUI_CHECKBOX_OPTIONS} from '@taiga-ui/core';
 
 @Component({
     selector: 'tui-checkbox',

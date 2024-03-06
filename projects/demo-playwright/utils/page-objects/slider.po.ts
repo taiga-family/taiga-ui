@@ -1,4 +1,5 @@
-import {expect, type Locator} from '@playwright/test';
+import type {Locator} from '@playwright/test';
+import {expect} from '@playwright/test';
 
 export class TuiSliderPO {
     constructor(private readonly host: Locator) {}

@@ -1,5 +1,6 @@
 import {Directive, ElementRef, HostListener, inject, Input, NgZone} from '@angular/core';
-import {type AbstractControl, NG_VALIDATORS, type Validator} from '@angular/forms';
+import type {AbstractControl, Validator} from '@angular/forms';
+import {NG_VALIDATORS} from '@angular/forms';
 import {tuiZonefree} from '@taiga-ui/cdk/observables';
 import {TuiDestroyService} from '@taiga-ui/cdk/services';
 import {takeUntil, timer} from 'rxjs';

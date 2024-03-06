@@ -9,13 +9,13 @@ import {
 import {FormControl} from '@angular/forms';
 import {Title} from '@angular/platform-browser';
 import {ActivatedRoute, Router, Scroll} from '@angular/router';
-import {type TuiDocPage} from '@taiga-ui/addon-doc/interfaces';
+import type {TuiDocPage} from '@taiga-ui/addon-doc/interfaces';
 import {
     TUI_DOC_ICONS,
     TUI_DOC_PAGE_LOADED,
     TUI_DOC_SEARCH_TEXT,
 } from '@taiga-ui/addon-doc/tokens';
-import {type TuiDocPages} from '@taiga-ui/addon-doc/types';
+import type {TuiDocPages} from '@taiga-ui/addon-doc/types';
 import {tuiTransliterateKeyboardLayout} from '@taiga-ui/addon-doc/utils';
 import {TuiSidebarDirective} from '@taiga-ui/addon-mobile';
 import {
@@ -25,18 +25,11 @@ import {
     tuiUniqBy,
     tuiWatch,
 } from '@taiga-ui/cdk';
-import {TUI_COMMON_ICONS, type TuiBrightness, TuiModeDirective} from '@taiga-ui/core';
-import {type TuiInputComponent} from '@taiga-ui/kit';
-import {
-    combineLatest,
-    filter,
-    map,
-    type Observable,
-    startWith,
-    switchMap,
-    take,
-    takeUntil,
-} from 'rxjs';
+import type {TuiBrightness} from '@taiga-ui/core';
+import {TUI_COMMON_ICONS, TuiModeDirective} from '@taiga-ui/core';
+import type {TuiInputComponent} from '@taiga-ui/kit';
+import type {Observable} from 'rxjs';
+import {combineLatest, filter, map, startWith, switchMap, take, takeUntil} from 'rxjs';
 
 import {
     NAVIGATION_ITEMS,

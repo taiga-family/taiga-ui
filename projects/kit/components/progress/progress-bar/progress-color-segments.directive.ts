@@ -1,13 +1,8 @@
 import {Directive, ElementRef, inject, Input} from '@angular/core';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {tuiPure} from '@taiga-ui/cdk';
-import {
-    BehaviorSubject,
-    combineLatest,
-    distinctUntilChanged,
-    map,
-    type Observable,
-} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {BehaviorSubject, combineLatest, distinctUntilChanged, map} from 'rxjs';
 
 function calculateColorSegments(colors: string[], progressWidth: number): string {
     const segmentWidth = Math.ceil(progressWidth / colors.length);

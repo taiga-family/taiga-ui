@@ -1,15 +1,8 @@
 import {Directive} from '@angular/core';
-import {
-    identity,
-    map,
-    merge,
-    type Observable,
-    ReplaySubject,
-    startWith,
-    switchMap,
-} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {identity, map, merge, ReplaySubject, startWith, switchMap} from 'rxjs';
 
-import {type TuiTableFilter} from './table-filter';
+import type {TuiTableFilter} from './table-filter';
 
 @Directive({
     selector: '[tuiTableFilters]',

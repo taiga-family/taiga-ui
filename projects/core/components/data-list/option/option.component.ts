@@ -1,3 +1,4 @@
+import type {OnDestroy} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -7,17 +8,17 @@ import {
     HostListener,
     inject,
     Input,
-    type OnDestroy,
 } from '@angular/core';
-import {type TuiEventWith, tuiIsNativeFocused} from '@taiga-ui/cdk';
+import type {TuiEventWith} from '@taiga-ui/cdk';
+import {tuiIsNativeFocused} from '@taiga-ui/cdk';
 import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
-import {type TuiDataListHost} from '@taiga-ui/core/interfaces';
+import type {TuiDataListHost} from '@taiga-ui/core/interfaces';
 import {
     TUI_COMMON_ICONS,
     TUI_DATA_LIST_HOST,
     TUI_OPTION_CONTENT,
 } from '@taiga-ui/core/tokens';
-import {type TuiOptionRole, type TuiSizeL, type TuiSizeXS} from '@taiga-ui/core/types';
+import type {TuiOptionRole, TuiSizeL, TuiSizeXS} from '@taiga-ui/core/types';
 import {shouldCall} from '@tinkoff/ng-event-plugins';
 
 import {TuiDataListComponent} from '../data-list.component';

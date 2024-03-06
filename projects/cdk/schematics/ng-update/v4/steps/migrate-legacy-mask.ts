@@ -10,7 +10,7 @@ import {
 } from '@taiga-ui/cdk/schematics';
 import {Node} from 'ng-morph';
 
-import {type TuiSchema} from '../../../ng-add/schema';
+import type {TuiSchema} from '../../../ng-add/schema';
 
 export function migrateLegacyMask(options: TuiSchema): void {
     !options['skip-logs'] &&

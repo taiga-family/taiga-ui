@@ -6,8 +6,9 @@ import {
     Input,
 } from '@angular/core';
 import {TuiDestroyService} from '@taiga-ui/cdk';
-import {MODE_PROVIDER, TUI_MODE, type TuiSizeXXL, type TuiSizeXXS} from '@taiga-ui/core';
-import {type TuiMarkerIconMode} from '@taiga-ui/kit/types';
+import type {TuiSizeXXL, TuiSizeXXS} from '@taiga-ui/core';
+import {MODE_PROVIDER, TUI_MODE} from '@taiga-ui/core';
+import type {TuiMarkerIconMode} from '@taiga-ui/kit/types';
 
 @Component({
     selector: 'tui-marker-icon, a[tuiMarkerIcon], button[tuiMarkerIcon]',

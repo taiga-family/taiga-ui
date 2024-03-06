@@ -1,4 +1,4 @@
-import {type TuiLanguageTable} from '@taiga-ui/i18n/interfaces';
+import type {TuiLanguageTable} from '@taiga-ui/i18n/interfaces';
 
 export const TUI_FRENCH_LANGUAGE_ADDON_TABLE: TuiLanguageTable = {
     showHideText: 'Afficher/Cacher',

@@ -1,12 +1,8 @@
 import {Component, ViewChild} from '@angular/core';
-import {type ComponentFixture, TestBed} from '@angular/core/testing';
-import {
-    TUI_BASE_HREF,
-    TUI_VERSION,
-    tuiIsString,
-    type TuiSafeHtml,
-    type TuiStringHandler,
-} from '@taiga-ui/cdk';
+import type {ComponentFixture} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
+import type {TuiSafeHtml, TuiStringHandler} from '@taiga-ui/cdk';
+import {TUI_BASE_HREF, TUI_VERSION, tuiIsString} from '@taiga-ui/cdk';
 import {
     TUI_ICONS_PATH,
     TUI_ICONS_PLACE,

@@ -1,5 +1,6 @@
-import {type ElementRef} from '@angular/core';
-import {debounceTime, map, type Observable, startWith, takeUntil} from 'rxjs';
+import type {ElementRef} from '@angular/core';
+import type {Observable} from 'rxjs';
+import {debounceTime, map, startWith, takeUntil} from 'rxjs';
 
 export function readyToScrollFactory(
     hostElement: ElementRef<HTMLElement>,

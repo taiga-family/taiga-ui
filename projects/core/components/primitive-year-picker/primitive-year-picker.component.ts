@@ -6,19 +6,18 @@ import {
     Input,
     Output,
 } from '@angular/core';
+import type {TuiBooleanHandler, TuiDay, TuiDayRange} from '@taiga-ui/cdk';
 import {
     ALWAYS_FALSE_HANDLER,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
-    type TuiBooleanHandler,
-    type TuiDay,
-    type TuiDayRange,
     tuiInRange,
     TuiMonth,
     TuiMonthRange,
     TuiYear,
 } from '@taiga-ui/cdk';
-import {TuiInteractiveState, type TuiRangeState} from '@taiga-ui/core/enums';
+import type {TuiRangeState} from '@taiga-ui/core/enums';
+import {TuiInteractiveState} from '@taiga-ui/core/enums';
 
 const LIMIT = 100;
 const ITEMS_IN_ROW = 4;

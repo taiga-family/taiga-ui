@@ -1,4 +1,4 @@
-import {type ImportSpecifier} from 'ng-morph';
+import type {ImportSpecifier} from 'ng-morph';
 
 export function removeImport(specifier: ImportSpecifier): void {
     if (specifier.getImportDeclaration().getNamedImports().length === 1) {

@@ -1,10 +1,12 @@
-import {inject, Pipe, type PipeTransform} from '@angular/core';
+import type {PipeTransform} from '@angular/core';
+import {inject, Pipe} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {TUI_DIGITAL_INFORMATION_UNITS, TUI_INPUT_FILE_TEXTS} from '@taiga-ui/kit/tokens';
-import {combineLatest, map, type Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {combineLatest, map} from 'rxjs';
 
 import {TUI_FILE_OPTIONS} from '../file/file.options';
-import {type TuiFileLike} from '../files.types';
+import type {TuiFileLike} from '../files.types';
 import {
     tuiCreateFileFormatValidator,
     tuiCreateFileSizeValidator,

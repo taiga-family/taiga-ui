@@ -1,3 +1,4 @@
+import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -11,7 +12,6 @@ import {
     inject,
     Input,
     Output,
-    type QueryList,
 } from '@angular/core';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {
@@ -24,8 +24,10 @@ import {
     tuiQueryListChanges,
     TuiScrollService,
 } from '@taiga-ui/cdk';
-import {TUI_ANIMATIONS_SPEED, tuiGetDuration, type TuiOrientation} from '@taiga-ui/core';
-import {delay, type Observable, takeUntil} from 'rxjs';
+import type {TuiOrientation} from '@taiga-ui/core';
+import {TUI_ANIMATIONS_SPEED, tuiGetDuration} from '@taiga-ui/core';
+import type {Observable} from 'rxjs';
+import {delay, takeUntil} from 'rxjs';
 
 import {TuiStepComponent} from './step/step.component';
 

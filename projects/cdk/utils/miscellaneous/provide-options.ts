@@ -1,9 +1,5 @@
-import {
-    type FactoryProvider,
-    type InjectionToken,
-    Optional,
-    SkipSelf,
-} from '@angular/core';
+import type {FactoryProvider, InjectionToken} from '@angular/core';
+import {Optional, SkipSelf} from '@angular/core';
 
 export function tuiProvideOptions<T>(
     provide: InjectionToken<T>,

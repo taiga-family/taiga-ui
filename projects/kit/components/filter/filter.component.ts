@@ -8,24 +8,21 @@ import {
     Input,
     Output,
 } from '@angular/core';
+import type {
+    TuiBooleanHandler,
+    TuiContext,
+    TuiHandler,
+    TuiIdentityMatcher,
+} from '@taiga-ui/cdk';
 import {
     AbstractTuiMultipleControl,
     ALWAYS_FALSE_HANDLER,
     TUI_DEFAULT_IDENTITY_MATCHER,
     TUI_DEFAULT_STRINGIFY,
-    type TuiBooleanHandler,
-    type TuiContext,
-    type TuiHandler,
-    type TuiIdentityMatcher,
     tuiIsNativeFocusedIn,
 } from '@taiga-ui/cdk';
-import {
-    type TuiSizeL,
-    type TuiSizeS,
-    type TuiSizeXL,
-    type TuiSizeXS,
-} from '@taiga-ui/core';
-import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {TuiSizeL, TuiSizeS, TuiSizeXL, TuiSizeXS} from '@taiga-ui/core';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 const badgeSizeMap: Record<TuiSizeL | TuiSizeXS, TuiSizeS | TuiSizeXL> = {
     xs: 's',

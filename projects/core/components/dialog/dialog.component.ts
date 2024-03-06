@@ -1,11 +1,7 @@
-import {type AnimationOptions} from '@angular/animations';
+import type {AnimationOptions} from '@angular/animations';
 import {ChangeDetectionStrategy, Component, HostBinding, inject} from '@angular/core';
-import {
-    ALWAYS_TRUE_HANDLER,
-    TUI_IS_MOBILE,
-    TuiDestroyService,
-    type TuiPopover,
-} from '@taiga-ui/cdk';
+import type {TuiPopover} from '@taiga-ui/cdk';
+import {ALWAYS_TRUE_HANDLER, TUI_IS_MOBILE, TuiDestroyService} from '@taiga-ui/cdk';
 import {tuiFadeIn, tuiSlideInTop} from '@taiga-ui/core/animations';
 import {
     TUI_ANIMATIONS_SPEED,
@@ -13,20 +9,12 @@ import {
     TUI_COMMON_ICONS,
 } from '@taiga-ui/core/tokens';
 import {tuiGetDuration} from '@taiga-ui/core/utils';
-import {POLYMORPHEUS_CONTEXT, type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {
-    filter,
-    isObservable,
-    map,
-    merge,
-    type Observable,
-    of,
-    Subject,
-    switchMap,
-    takeUntil,
-} from 'rxjs';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
+import type {Observable} from 'rxjs';
+import {filter, isObservable, map, merge, of, Subject, switchMap, takeUntil} from 'rxjs';
 
-import {type TuiDialogOptions, type TuiDialogSize} from './dialog.interfaces';
+import type {TuiDialogOptions, TuiDialogSize} from './dialog.interfaces';
 import {TUI_DIALOGS_CLOSE} from './dialog.tokens';
 import {TuiDialogCloseService} from './dialog-close.service';
 

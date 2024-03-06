@@ -1,13 +1,9 @@
-import {
-    createProject,
-    type DevkitFileSystem,
-    saveActiveProject,
-    setActiveProject,
-} from 'ng-morph';
-import {type Element} from 'parse5';
+import type {DevkitFileSystem} from 'ng-morph';
+import {createProject, saveActiveProject, setActiveProject} from 'ng-morph';
+import type {Element} from 'parse5';
 
 import {ALL_FILES, ALL_TS_FILES} from '../../../constants';
-import {type TuiSchema} from '../../../ng-add/schema';
+import type {TuiSchema} from '../../../ng-add/schema';
 import {
     infoLog,
     REPLACE_SYMBOL,
@@ -23,7 +19,7 @@ import {
     getTemplateFromTemplateResource,
     getTemplateOffset,
 } from '../../../utils/templates/template-resource';
-import {type TemplateResource} from '../../interfaces/template-resource';
+import type {TemplateResource} from '../../interfaces/template-resource';
 
 const PROPERTY_FOR_DEPRECATED_PIPES = '[color]';
 

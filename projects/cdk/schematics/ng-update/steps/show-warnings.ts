@@ -1,8 +1,8 @@
-import {type SchematicContext} from '@angular-devkit/schematics';
+import type {SchematicContext} from '@angular-devkit/schematics';
 import {getImports} from 'ng-morph';
 
 import {ALL_TS_FILES} from '../../constants';
-import {type MigrationWarning} from '../interfaces/migration-warning';
+import type {MigrationWarning} from '../interfaces/migration-warning';
 
 function showWarning(
     {name, message, moduleSpecifier = '**/**'}: MigrationWarning,

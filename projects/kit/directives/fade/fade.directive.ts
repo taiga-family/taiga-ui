@@ -5,7 +5,7 @@ import {
 } from '@ng-web-apis/mutation-observer';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {TuiDestroyService, tuiWithStyles, tuiZonefree} from '@taiga-ui/cdk';
-import {type TuiOrientation} from '@taiga-ui/core';
+import type {TuiOrientation} from '@taiga-ui/core';
 import {fromEvent, merge, takeUntil} from 'rxjs';
 
 import {TuiFadeComponent} from './fade.component';

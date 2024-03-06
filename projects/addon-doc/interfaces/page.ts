@@ -1,4 +1,4 @@
-import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface TuiDocPageBase {
     readonly section?: string;

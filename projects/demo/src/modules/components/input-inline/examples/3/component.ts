@@ -1,4 +1,5 @@
-import {ChangeDetectorRef, Component, inject, NgZone, type OnInit} from '@angular/core';
+import type {OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, inject, NgZone} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_IS_E2E, TuiDestroyService, tuiWatch, tuiZoneOptimized} from '@taiga-ui/cdk';

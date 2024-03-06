@@ -1,7 +1,8 @@
-import {Directive, type DoCheck} from '@angular/core';
+import type {DoCheck} from '@angular/core';
+import {Directive} from '@angular/core';
 import {AbstractTuiTextfieldHost, tuiAsTextfieldHost} from '@taiga-ui/core';
 
-import {type TuiInputPhoneComponent} from './input-phone.component';
+import type {TuiInputPhoneComponent} from './input-phone.component';
 
 @Directive({
     selector: 'tui-input-phone',

@@ -1,13 +1,6 @@
 import {EMPTY_ARRAY} from '@taiga-ui/cdk';
-import {
-    debounceTime,
-    distinctUntilChanged,
-    type Observable,
-    type OperatorFunction,
-    scan,
-    startWith,
-    switchMap,
-} from 'rxjs';
+import type {Observable, OperatorFunction} from 'rxjs';
+import {debounceTime, distinctUntilChanged, scan, startWith, switchMap} from 'rxjs';
 
 export function tuiSmartSearch<T>(
     getSearchFunction: (search: string) => Observable<readonly T[] | readonly T[][]>,

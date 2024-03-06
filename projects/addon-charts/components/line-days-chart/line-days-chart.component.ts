@@ -1,12 +1,11 @@
+import type {AfterViewInit, QueryList} from '@angular/core';
 import {
-    type AfterViewInit,
     ChangeDetectionStrategy,
     Component,
     HostBinding,
     inject,
     Input,
     NgZone,
-    type QueryList,
     ViewChildren,
 } from '@angular/core';
 import {
@@ -15,10 +14,10 @@ import {
     tuiLineChartDrivers,
     TuiLineChartHintDirective,
 } from '@taiga-ui/addon-charts/components/line-chart';
+import type {TuiContext, TuiStringHandler} from '@taiga-ui/cdk';
 import {
     EMPTY_ARRAY,
     EMPTY_QUERY,
-    type TuiContext,
     TuiDay,
     TuiDestroyService,
     TuiHoveredService,
@@ -26,11 +25,10 @@ import {
     tuiIsPresent,
     TuiMonth,
     tuiPure,
-    type TuiStringHandler,
     tuiZonefree,
 } from '@taiga-ui/cdk';
-import {type TuiPoint} from '@taiga-ui/core';
-import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {TuiPoint} from '@taiga-ui/core';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {combineLatest, filter, takeUntil} from 'rxjs';
 
 import {TuiLineDaysChartHintDirective} from './line-days-chart-hint.directive';

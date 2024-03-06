@@ -1,9 +1,6 @@
 import {Directive, inject} from '@angular/core';
-import {
-    TUI_BUTTON_OPTIONS,
-    type TuiButtonOptions,
-    TuiModeDirective,
-} from '@taiga-ui/core';
+import type {TuiButtonOptions} from '@taiga-ui/core';
+import {TUI_BUTTON_OPTIONS, TuiModeDirective} from '@taiga-ui/core';
 import {Subject} from 'rxjs';
 
 @Directive({

@@ -1,3 +1,4 @@
+import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -7,18 +8,21 @@ import {
     inject,
     InjectionToken,
     Input,
-    type QueryList,
     ViewChild,
 } from '@angular/core';
-import {type MaskitoOptions} from '@maskito/core';
+import type {MaskitoOptions} from '@maskito/core';
 import {
     maskitoCaretGuard,
     maskitoNumberOptionsGenerator,
     maskitoParseNumber,
 } from '@maskito/kit';
+import type {
+    AbstractTuiValueTransformer,
+    TuiFocusableElementAccessor,
+    TuiInputMode,
+} from '@taiga-ui/cdk';
 import {
     AbstractTuiNullableControl,
-    type AbstractTuiValueTransformer,
     CHAR_HYPHEN,
     CHAR_MINUS,
     EMPTY_QUERY,
@@ -26,31 +30,25 @@ import {
     tuiAsControl,
     tuiAsFocusableItemAccessor,
     tuiClamp,
-    type TuiFocusableElementAccessor,
-    type TuiInputMode,
     tuiPure,
     tuiWatch,
 } from '@taiga-ui/cdk';
+import type {TuiDecimal, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_DEFAULT_NUMBER_FORMAT,
     TUI_NUMBER_FORMAT,
     TUI_TEXTFIELD_SIZE,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
-    type TuiDecimal,
     tuiFormatNumber,
     tuiGetFractionPartPadded,
     TuiPrimitiveTextfieldComponent,
-    type TuiSizeL,
-    type TuiSizeS,
 } from '@taiga-ui/core';
 import {PolymorpheusOutletDirective} from '@tinkoff/ng-polymorpheus';
 import {takeUntil} from 'rxjs';
 
-import {
-    TUI_INPUT_NUMBER_OPTIONS,
-    type TuiInputNumberOptions,
-} from './input-number.options';
+import type {TuiInputNumberOptions} from './input-number.options';
+import {TUI_INPUT_NUMBER_OPTIONS} from './input-number.options';
 
 const DEFAULT_MAX_LENGTH = 18;
 

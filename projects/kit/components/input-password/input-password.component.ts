@@ -5,27 +5,29 @@ import {
     inject,
     ViewChild,
 } from '@angular/core';
+import type {
+    TuiContext,
+    TuiFocusableElementAccessor,
+    TuiInputType,
+    TuiNativeFocusableElement,
+} from '@taiga-ui/cdk';
 import {
     AbstractTuiControl,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    type TuiContext,
-    type TuiFocusableElementAccessor,
-    type TuiInputType,
-    type TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {
     MODE_PROVIDER,
     TUI_MODE,
     TUI_TEXTFIELD_SIZE,
     TuiHintOptionsDirective,
     TuiPrimitiveTextfieldComponent,
-    type TuiSizeL,
-    type TuiSizeS,
 } from '@taiga-ui/core';
 import {TUI_PASSWORD_TEXTS} from '@taiga-ui/kit/tokens';
-import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {combineLatest, EMPTY, map, type Observable, startWith} from 'rxjs';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {Observable} from 'rxjs';
+import {combineLatest, EMPTY, map, startWith} from 'rxjs';
 
 import {TUI_INPUT_PASSWORD_OPTIONS} from './input-password.options';
 

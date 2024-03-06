@@ -1,4 +1,4 @@
-import {type TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
+import type {TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
 
 // TODO: Make it a token in 4.0, think about mono icons for card component
 export const TUI_PAYMENT_SYSTEM_ICONS: Record<TuiPaymentSystem, string> = {

@@ -1,5 +1,7 @@
-import {rollup, type RollupOptions} from 'rollup';
-import typescript, {type RPT2Options} from 'rollup-plugin-typescript2';
+import type {RollupOptions} from 'rollup';
+import {rollup} from 'rollup';
+import type {RPT2Options} from 'rollup-plugin-typescript2';
+import typescript from 'rollup-plugin-typescript2';
 
 import {tuiRollupSvgo} from './rollup-svgo';
 

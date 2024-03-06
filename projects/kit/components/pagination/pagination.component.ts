@@ -1,3 +1,4 @@
+import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -6,34 +7,33 @@ import {
     inject,
     Input,
     Output,
-    type QueryList,
     ViewChildren,
 } from '@angular/core';
+import type {
+    TuiContext,
+    TuiFocusableElementAccessor,
+    TuiNativeFocusableElement,
+} from '@taiga-ui/cdk';
 import {
     AbstractTuiInteractive,
     EMPTY_QUERY,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     tuiAsFocusableItemAccessor,
     tuiClamp,
-    type TuiContext,
-    type TuiFocusableElementAccessor,
     tuiIsNativeFocusedIn,
-    type TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
-import {
-    TUI_SPIN_ICONS,
-    TuiAppearance,
-    type TuiBrightness,
-    type TuiButtonComponent,
-    type TuiHorizontalDirection,
-    TuiModeDirective,
-    type TuiSizeL,
-    type TuiSizeS,
-    type TuiSizeXS,
+import type {
+    TuiBrightness,
+    TuiButtonComponent,
+    TuiHorizontalDirection,
+    TuiSizeL,
+    TuiSizeS,
+    TuiSizeXS,
 } from '@taiga-ui/core';
+import {TUI_SPIN_ICONS, TuiAppearance, TuiModeDirective} from '@taiga-ui/core';
 import {TUI_PAGINATION_TEXTS} from '@taiga-ui/kit/tokens';
 import {tuiHorizontalDirectionToNumber} from '@taiga-ui/kit/utils/math';
-import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {EMPTY, map} from 'rxjs';
 
 const DOTS_LENGTH = 1;

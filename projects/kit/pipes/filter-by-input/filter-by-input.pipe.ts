@@ -1,14 +1,16 @@
-import {inject, Pipe, type PipeTransform} from '@angular/core';
+import type {PipeTransform} from '@angular/core';
+import {inject, Pipe} from '@angular/core';
+import type {TuiStringMatcher} from '@taiga-ui/cdk';
 import {
     TUI_DEFAULT_MATCHER,
     TUI_DEFAULT_STRINGIFY,
     TUI_FOCUSABLE_ITEM_ACCESSOR,
-    type TuiStringMatcher,
 } from '@taiga-ui/cdk';
 import {TUI_DATA_LIST_HOST} from '@taiga-ui/core';
 import {TuiMultiSelectDirective} from '@taiga-ui/kit/components/multi-select';
 
-import {AbstractTuiFilterByInput, type TuiArrayElement} from './filter-by-input.base';
+import type {TuiArrayElement} from './filter-by-input.base';
+import {AbstractTuiFilterByInput} from './filter-by-input.base';
 
 @Pipe({
     name: 'tuiFilterByInput',

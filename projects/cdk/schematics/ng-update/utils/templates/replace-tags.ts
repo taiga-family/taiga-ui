@@ -1,13 +1,13 @@
-import {type UpdateRecorder} from '@angular-devkit/schematics';
-import {type DevkitFileSystem} from 'ng-morph';
+import type {UpdateRecorder} from '@angular-devkit/schematics';
+import type {DevkitFileSystem} from 'ng-morph';
 
 import {findElementsByTagName} from '../../../utils/templates/elements';
 import {
     getTemplateFromTemplateResource,
     getTemplateOffset,
 } from '../../../utils/templates/template-resource';
-import {type ReplacementTag} from '../../interfaces/replacement-tag';
-import {type TemplateResource} from '../../interfaces/template-resource';
+import type {ReplacementTag} from '../../interfaces/replacement-tag';
+import type {TemplateResource} from '../../interfaces/template-resource';
 import {replaceTag} from './replace-tag';
 
 export function replaceTags({

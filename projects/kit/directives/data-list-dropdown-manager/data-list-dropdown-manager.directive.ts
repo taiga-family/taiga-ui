@@ -1,11 +1,5 @@
-import {
-    type AfterViewInit,
-    ContentChildren,
-    Directive,
-    ElementRef,
-    inject,
-    type QueryList,
-} from '@angular/core';
+import type {AfterViewInit, QueryList} from '@angular/core';
+import {ContentChildren, Directive, ElementRef, inject} from '@angular/core';
 import {
     EMPTY_QUERY,
     TuiDestroyService,
@@ -16,13 +10,13 @@ import {
     tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
 import {TuiDropdownDirective} from '@taiga-ui/core';
+import type {Observable} from 'rxjs';
 import {
     debounceTime,
     EMPTY,
     filter,
     map,
     merge,
-    type Observable,
     shareReplay,
     switchMap,
     take,

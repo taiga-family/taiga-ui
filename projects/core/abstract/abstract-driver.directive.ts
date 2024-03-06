@@ -1,4 +1,5 @@
-import {Directive, inject, type OnInit} from '@angular/core';
+import type {OnInit} from '@angular/core';
+import {Directive, inject} from '@angular/core';
 import {TuiDestroyService} from '@taiga-ui/cdk';
 import {distinctUntilChanged, merge, takeUntil} from 'rxjs';
 

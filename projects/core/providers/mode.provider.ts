@@ -1,8 +1,10 @@
-import {ElementRef, Optional, type Provider} from '@angular/core';
+import type {Provider} from '@angular/core';
+import {ElementRef, Optional} from '@angular/core';
 import {TuiModeDirective} from '@taiga-ui/core/directives/mode';
 import {TUI_MODE} from '@taiga-ui/core/tokens';
-import {type TuiBrightness} from '@taiga-ui/core/types';
-import {map, type Observable, of, startWith} from 'rxjs';
+import type {TuiBrightness} from '@taiga-ui/core/types';
+import type {Observable} from 'rxjs';
+import {map, of, startWith} from 'rxjs';
 
 export const MODE_PROVIDER: Provider = {
     provide: TUI_MODE,

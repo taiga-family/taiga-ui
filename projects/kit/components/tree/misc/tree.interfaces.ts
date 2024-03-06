@@ -1,8 +1,8 @@
-import {type TemplateRef} from '@angular/core';
-import {type TuiContext} from '@taiga-ui/cdk';
-import {type Observable} from 'rxjs';
+import type {TemplateRef} from '@angular/core';
+import type {TuiContext} from '@taiga-ui/cdk';
+import type {Observable} from 'rxjs';
 
-import {type TuiTreeItemComponent} from '../components/tree-item/tree-item.component';
+import type {TuiTreeItemComponent} from '../components/tree-item/tree-item.component';
 
 export interface TuiTreeItemContext extends TuiContext<TuiTreeItemComponent> {
     readonly template: TemplateRef<Record<string, unknown>>;

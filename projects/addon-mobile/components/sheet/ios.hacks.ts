@@ -1,17 +1,7 @@
-import {type NgZone} from '@angular/core';
+import type {NgZone} from '@angular/core';
 import {tuiTypedFromEvent, tuiZonefree} from '@taiga-ui/cdk';
-import {
-    concat,
-    delay,
-    map,
-    merge,
-    type Observable,
-    share,
-    switchMap,
-    take,
-    takeUntil,
-    zip,
-} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {concat, delay, map, merge, share, switchMap, take, takeUntil, zip} from 'rxjs';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function iosScrollFactory(

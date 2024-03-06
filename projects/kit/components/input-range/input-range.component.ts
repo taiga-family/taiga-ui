@@ -1,13 +1,18 @@
+import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     ElementRef,
     inject,
     Input,
-    type QueryList,
     ViewChild,
     ViewChildren,
 } from '@angular/core';
+import type {
+    TuiContext,
+    TuiFocusableElementAccessor,
+    TuiNativeFocusableElement,
+} from '@taiga-ui/cdk';
 import {
     AbstractTuiControl,
     EMPTY_QUERY,
@@ -15,26 +20,22 @@ import {
     tuiAsControl,
     tuiAsFocusableItemAccessor,
     tuiClamp,
-    type TuiContext,
-    type TuiFocusableElementAccessor,
     tuiIsNativeFocused,
     tuiIsNativeFocusedIn,
-    type TuiNativeFocusableElement,
     tuiPure,
     tuiRound,
 } from '@taiga-ui/cdk';
+import type {TuiDecimal, TuiWithOptionalMinMax} from '@taiga-ui/core';
 import {
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
-    type TuiDecimal,
     tuiGetFractionPartPadded,
-    type TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
 import {TuiInputNumberComponent} from '@taiga-ui/kit/components/input-number';
 import {TuiRangeComponent} from '@taiga-ui/kit/components/range';
 import {TUI_FLOATING_PRECISION} from '@taiga-ui/kit/constants';
-import {type TuiKeySteps} from '@taiga-ui/kit/types';
-import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {TuiKeySteps} from '@taiga-ui/kit/types';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 @Component({
     selector: 'tui-input-range',

@@ -1,14 +1,15 @@
+import type {DoCheck} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
-    type DoCheck,
     ElementRef,
     inject,
     Input,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {TuiNativeValidatorDirective} from '@taiga-ui/cdk';
-import {TuiAppearanceDirective, type TuiSizeS} from '@taiga-ui/core';
+import type {TuiSizeS} from '@taiga-ui/core';
+import {TuiAppearanceDirective} from '@taiga-ui/core';
 
 import {TUI_RADIO_OPTIONS} from './radio.options';
 

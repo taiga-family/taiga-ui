@@ -1,5 +1,5 @@
-import {type TuiRounding} from '@taiga-ui/cdk';
-import {type TuiDecimal, type TuiDecimalSymbol} from '@taiga-ui/core/types';
+import type {TuiRounding} from '@taiga-ui/cdk';
+import type {TuiDecimal, TuiDecimalSymbol} from '@taiga-ui/core/types';
 
 /**
  * Formatting configuration for displayed numbers

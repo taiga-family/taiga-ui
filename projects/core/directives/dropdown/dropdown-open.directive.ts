@@ -1,3 +1,4 @@
+import type {OnChanges} from '@angular/core';
 import {
     ContentChild,
     Directive,
@@ -6,7 +7,6 @@ import {
     HostListener,
     inject,
     Input,
-    type OnChanges,
     Output,
 } from '@angular/core';
 import {

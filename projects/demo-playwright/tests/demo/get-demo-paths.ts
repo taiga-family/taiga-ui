@@ -1,4 +1,4 @@
-import {type TuiDocPage, type TuiDocPages} from '@taiga-ui/addon-doc';
+import type {TuiDocPage, TuiDocPages} from '@taiga-ui/addon-doc';
 
 function flatPages(pages: TuiDocPages): readonly TuiDocPage[] {
     return pages.reduce(

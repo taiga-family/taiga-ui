@@ -1,11 +1,13 @@
-import {inject, Pipe, type PipeTransform, SecurityContext} from '@angular/core';
+import type {PipeTransform} from '@angular/core';
+import {inject, Pipe, SecurityContext} from '@angular/core';
 import {DomSanitizer} from '@angular/platform-browser';
-import {type TuiRawLoaderContent} from '@taiga-ui/addon-doc/interfaces';
+import type {TuiRawLoaderContent} from '@taiga-ui/addon-doc/interfaces';
 import {tuiRawLoad} from '@taiga-ui/addon-doc/utils';
-import {type TuiSafeHtml, type TuiStringHandler} from '@taiga-ui/cdk';
+import type {TuiSafeHtml, TuiStringHandler} from '@taiga-ui/cdk';
 import {TUI_SANITIZER} from '@taiga-ui/core';
 import {marked, Renderer} from 'marked';
-import {identity, map, type Observable, of, switchMap} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {identity, map, of, switchMap} from 'rxjs';
 
 @Pipe({
     standalone: true,

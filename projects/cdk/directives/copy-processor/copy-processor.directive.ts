@@ -1,6 +1,6 @@
 import {Directive, HostListener, inject, Input} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
-import {type TuiStringHandler} from '@taiga-ui/cdk/types';
+import type {TuiStringHandler} from '@taiga-ui/cdk/types';
 import {tuiGetSelectedText} from '@taiga-ui/cdk/utils';
 import {identity} from 'rxjs';
 

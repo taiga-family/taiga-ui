@@ -1,4 +1,5 @@
-import {type ModuleWithProviders, NgModule, type Type} from '@angular/core';
+import type {ModuleWithProviders, Type} from '@angular/core';
+import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {
     TuiDocCodeModule,

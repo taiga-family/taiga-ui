@@ -7,26 +7,22 @@ import {
     Input,
     Output,
 } from '@angular/core';
+import type {TuiBooleanHandler, TuiYear} from '@taiga-ui/cdk';
 import {
     ALWAYS_FALSE_HANDLER,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
-    type TuiBooleanHandler,
     TuiDay,
     TuiMonth,
     TuiMonthRange,
     tuiNullableSame,
     tuiPure,
-    type TuiYear,
 } from '@taiga-ui/cdk';
-import {
-    TuiInteractiveState,
-    type TuiRangeState,
-    type TuiWithOptionalMinMax,
-} from '@taiga-ui/core';
-import {type TuiMonthContext} from '@taiga-ui/kit/interfaces';
+import type {TuiRangeState, TuiWithOptionalMinMax} from '@taiga-ui/core';
+import {TuiInteractiveState} from '@taiga-ui/core';
+import type {TuiMonthContext} from '@taiga-ui/kit/interfaces';
 import {TUI_CALENDAR_MONTHS} from '@taiga-ui/kit/tokens';
-import {type TuiBooleanHandlerWithContext} from '@taiga-ui/kit/types';
+import type {TuiBooleanHandlerWithContext} from '@taiga-ui/kit/types';
 
 const TODAY = TuiDay.currentLocal();
 

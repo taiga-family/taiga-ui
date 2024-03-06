@@ -8,11 +8,17 @@ import {
     Input,
     ViewChild,
 } from '@angular/core';
-import {type MaskitoOptions} from '@maskito/core';
+import type {MaskitoOptions} from '@maskito/core';
 import {maskitoDateOptionsGenerator} from '@maskito/kit';
+import type {
+    AbstractTuiValueTransformer,
+    TuiBooleanHandler,
+    TuiFocusableElementAccessor,
+    TuiMapper,
+    TuiTypedMapper,
+} from '@taiga-ui/cdk';
 import {
     AbstractTuiMultipleControl,
-    type AbstractTuiValueTransformer,
     ALWAYS_FALSE_HANDLER,
     changeDateSeparator,
     TUI_DATE_FORMAT,
@@ -20,27 +26,26 @@ import {
     TUI_IS_MOBILE,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    type TuiBooleanHandler,
     tuiDateClamp,
     TuiDay,
-    type TuiFocusableElementAccessor,
     tuiIsString,
-    type TuiMapper,
     TuiMonth,
-    TuiTypedMapper,
 } from '@taiga-ui/cdk';
+import type {
+    TuiMarkerHandler,
+    TuiSizeL,
+    TuiSizeS,
+    TuiWithOptionalMinMax,
+} from '@taiga-ui/core';
 import {
     TUI_DEFAULT_MARKER_HANDLER,
     TUI_TEXTFIELD_SIZE,
     TuiDialogService,
-    type TuiMarkerHandler,
     TuiPrimitiveTextfieldComponent,
-    type TuiSizeL,
-    type TuiSizeS,
-    type TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
 import {TuiStringifiableItem} from '@taiga-ui/kit/classes';
 import {TuiInputTagComponent} from '@taiga-ui/kit/components/input-tag';
+import type {TuiInputDateOptions} from '@taiga-ui/kit/tokens';
 import {
     TUI_DATE_TEXTS,
     TUI_DATE_VALUE_TRANSFORMER,
@@ -48,11 +53,11 @@ import {
     TUI_INPUT_DATE_OPTIONS,
     TUI_MOBILE_CALENDAR,
     tuiDateStreamWithTransformer,
-    type TuiInputDateOptions,
 } from '@taiga-ui/kit/tokens';
 import {tuiImmutableUpdateInputDateMulti} from '@taiga-ui/kit/utils';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
-import {map, type Observable, takeUntil} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {map, takeUntil} from 'rxjs';
 
 @Component({
     selector: 'tui-input-date[multiple]',

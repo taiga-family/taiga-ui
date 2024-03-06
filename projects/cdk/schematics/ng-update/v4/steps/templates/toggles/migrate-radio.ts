@@ -1,12 +1,12 @@
-import {type UpdateRecorder} from '@angular-devkit/schematics';
-import {type DevkitFileSystem} from 'ng-morph';
+import type {UpdateRecorder} from '@angular-devkit/schematics';
+import type {DevkitFileSystem} from 'ng-morph';
 
 import {findElementsByTagName} from '../../../../../utils/templates/elements';
 import {
     getTemplateFromTemplateResource,
     getTemplateOffset,
 } from '../../../../../utils/templates/template-resource';
-import {type TemplateResource} from '../../../../interfaces';
+import type {TemplateResource} from '../../../../interfaces';
 import {closeStartTag, removeClosingTag, replaceOpenTag, replaceSizeAttr} from './common';
 
 export function migrateRadio({

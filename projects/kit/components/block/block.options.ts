@@ -1,6 +1,6 @@
-import {type Provider} from '@angular/core';
+import type {Provider} from '@angular/core';
 import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
-import {type TuiAppearanceOptions, type TuiSizeL, type TuiSizeXS} from '@taiga-ui/core';
+import type {TuiAppearanceOptions, TuiSizeL, TuiSizeXS} from '@taiga-ui/core';
 
 export interface TuiBlockOptions extends TuiAppearanceOptions {
     readonly size: TuiSizeL | TuiSizeXS;

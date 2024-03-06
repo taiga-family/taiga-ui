@@ -1,12 +1,6 @@
 import {DOCUMENT} from '@angular/common';
-import {
-    Directive,
-    ElementRef,
-    inject,
-    Input,
-    NgZone,
-    type OnChanges,
-} from '@angular/core';
+import type {OnChanges} from '@angular/core';
+import {Directive, ElementRef, inject, Input, NgZone} from '@angular/core';
 import {
     tuiIfMap,
     tuiIsNativeFocused,

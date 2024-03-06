@@ -6,33 +6,30 @@ import {
     Input,
     ViewChild,
 } from '@angular/core';
+import type {
+    TuiBooleanHandler,
+    TuiFocusableElementAccessor,
+    TuiYear,
+} from '@taiga-ui/cdk';
 import {
     AbstractTuiNullableControl,
     ALWAYS_FALSE_HANDLER,
     TUI_IS_MOBILE,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    type TuiBooleanHandler,
     tuiDateClamp,
     TuiDay,
-    type TuiFocusableElementAccessor,
     TuiMonth,
-    type TuiYear,
 } from '@taiga-ui/cdk';
+import type {TuiSizeL, TuiSizeS, TuiWithOptionalMinMax} from '@taiga-ui/core';
 import {
     TUI_TEXTFIELD_SIZE,
     TuiMonthPipe,
     TuiPrimitiveTextfieldComponent,
-    type TuiSizeL,
-    type TuiSizeS,
-    type TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
 import {TUI_MONTH_FORMATTER_PROVIDER} from '@taiga-ui/kit/providers';
-import {
-    TUI_INPUT_DATE_OPTIONS,
-    TUI_MONTH_FORMATTER,
-    type TuiInputDateOptions,
-} from '@taiga-ui/kit/tokens';
+import type {TuiInputDateOptions} from '@taiga-ui/kit/tokens';
+import {TUI_INPUT_DATE_OPTIONS, TUI_MONTH_FORMATTER} from '@taiga-ui/kit/tokens';
 
 @Component({
     selector: 'tui-input-month',

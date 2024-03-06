@@ -1,28 +1,21 @@
+import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     inject,
     Input,
-    type QueryList,
     ViewChildren,
 } from '@angular/core';
-import {
-    EMPTY_QUERY,
-    type TuiContext,
-    TuiIdService,
-    tuiPure,
-    tuiSum,
-    type TuiTypedMapper,
-} from '@taiga-ui/cdk';
+import type {TuiContext, TuiTypedMapper} from '@taiga-ui/cdk';
+import {EMPTY_QUERY, TuiIdService, tuiPure, tuiSum} from '@taiga-ui/cdk';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {
     TuiHintHoverDirective,
     TuiHintOptionsDirective,
     tuiHintOptionsProvider,
-    type TuiSizeL,
-    type TuiSizeS,
 } from '@taiga-ui/core';
-import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {type Observable} from 'rxjs';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {Observable} from 'rxjs';
 
 @Component({
     selector: 'tui-bar-chart',

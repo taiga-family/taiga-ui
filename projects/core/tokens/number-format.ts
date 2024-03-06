@@ -1,8 +1,10 @@
-import {type InjectionToken, Optional, type Provider, SkipSelf} from '@angular/core';
+import type {InjectionToken, Provider} from '@angular/core';
+import {Optional, SkipSelf} from '@angular/core';
 import {tuiCreateToken} from '@taiga-ui/cdk';
 import {TUI_DEFAULT_NUMBER_FORMAT} from '@taiga-ui/core/constants';
-import {type TuiNumberFormatSettings} from '@taiga-ui/core/interfaces';
-import {map, type Observable, of} from 'rxjs';
+import type {TuiNumberFormatSettings} from '@taiga-ui/core/interfaces';
+import type {Observable} from 'rxjs';
+import {map, of} from 'rxjs';
 
 /**
  * Formatting configuration for displayed numbers

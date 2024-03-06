@@ -1,5 +1,7 @@
-import {inject, Pipe, type PipeTransform} from '@angular/core';
-import {type TuiDocExample, TuiDocPageComponent} from '@taiga-ui/addon-doc';
+import type {PipeTransform} from '@angular/core';
+import {inject, Pipe} from '@angular/core';
+import type {TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiDocPageComponent} from '@taiga-ui/addon-doc';
 
 const toKebab: (str: string) => string = str =>
     str.replaceAll(

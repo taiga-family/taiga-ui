@@ -1,4 +1,4 @@
-import {type CHAR_MINUS, type CHAR_PLUS} from '@taiga-ui/cdk';
+import type {CHAR_MINUS, CHAR_PLUS} from '@taiga-ui/cdk';
 
 export type TuiMoneySign =
     | 'always'

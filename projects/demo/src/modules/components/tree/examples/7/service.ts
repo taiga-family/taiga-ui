@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
-import {type TuiTreeLoader} from '@taiga-ui/kit';
-import {map, type Observable, timer} from 'rxjs';
+import type {TuiTreeLoader} from '@taiga-ui/kit';
+import type {Observable} from 'rxjs';
+import {map, timer} from 'rxjs';
 
 import type {Item} from './index';
 

@@ -7,8 +7,16 @@ import {
     Input,
     ViewChild,
 } from '@angular/core';
-import {type MaskitoOptions} from '@maskito/core';
+import type {MaskitoOptions} from '@maskito/core';
 import {maskitoDateTimeOptionsGenerator} from '@maskito/kit';
+import type {
+    TuiActiveZoneDirective,
+    TuiBooleanHandler,
+    TuiContext,
+    TuiDateMode,
+    TuiFocusableElementAccessor,
+    TuiTimeMode,
+} from '@taiga-ui/cdk';
 import {
     AbstractTuiControl,
     ALWAYS_FALSE_HANDLER,
@@ -18,49 +26,32 @@ import {
     TUI_DATE_SEPARATOR,
     TUI_IS_IOS,
     TUI_IS_MOBILE,
-    type TuiActiveZoneDirective,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    type TuiBooleanHandler,
     tuiClamp,
-    type TuiContext,
     tuiDateClamp,
-    type TuiDateMode,
     TuiDay,
-    type TuiFocusableElementAccessor,
     TuiMonth,
     tuiNullableSame,
     tuiPure,
     TuiTime,
-    type TuiTimeMode,
 } from '@taiga-ui/cdk';
-import {
-    TUI_TEXTFIELD_SIZE,
-    TuiPrimitiveTextfieldComponent,
-    type TuiSizeL,
-    type TuiSizeS,
-    type TuiWithOptionalMinMax,
-} from '@taiga-ui/core';
+import type {TuiSizeL, TuiSizeS, TuiWithOptionalMinMax} from '@taiga-ui/core';
+import {TUI_TEXTFIELD_SIZE, TuiPrimitiveTextfieldComponent} from '@taiga-ui/core';
 import {
     DATE_TIME_SEPARATOR,
     TUI_DATE_MODE_MASKITO_ADAPTER,
 } from '@taiga-ui/kit/constants';
+import type {TuiInputDateOptions} from '@taiga-ui/kit/tokens';
 import {
     TUI_DATE_TEXTS,
     TUI_DATE_TIME_VALUE_TRANSFORMER,
     TUI_INPUT_DATE_OPTIONS,
     TUI_TIME_TEXTS,
     tuiDateStreamWithTransformer,
-    type TuiInputDateOptions,
 } from '@taiga-ui/kit/tokens';
-import {
-    BehaviorSubject,
-    combineLatest,
-    map,
-    type Observable,
-    takeUntil,
-    timer,
-} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {BehaviorSubject, combineLatest, map, takeUntil, timer} from 'rxjs';
 
 @Component({
     selector: 'tui-input-date-time',

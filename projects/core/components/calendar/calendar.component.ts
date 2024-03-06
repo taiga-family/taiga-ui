@@ -5,21 +5,23 @@ import {
     Input,
     Output,
 } from '@angular/core';
+import type {
+    TuiBooleanHandler,
+    TuiDayRange,
+    TuiTypedMapper,
+    TuiYear,
+} from '@taiga-ui/cdk';
 import {
     ALWAYS_FALSE_HANDLER,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
-    type TuiBooleanHandler,
     TuiDay,
-    type TuiDayRange,
     TuiMonth,
     tuiNullableSame,
-    type TuiTypedMapper,
-    type TuiYear,
 } from '@taiga-ui/cdk';
 import {TUI_DEFAULT_MARKER_HANDLER} from '@taiga-ui/core/constants';
-import {type TuiWithOptionalMinMax} from '@taiga-ui/core/interfaces';
-import {type TuiCalendarView, type TuiMarkerHandler} from '@taiga-ui/core/types';
+import type {TuiWithOptionalMinMax} from '@taiga-ui/core/interfaces';
+import type {TuiCalendarView, TuiMarkerHandler} from '@taiga-ui/core/types';
 
 @Component({
     selector: 'tui-calendar',

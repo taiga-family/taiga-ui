@@ -7,11 +7,11 @@ import {
     ViewChild,
 } from '@angular/core';
 import {TUI_PLATFORM, TuiDestroyService, tuiIsString} from '@taiga-ui/cdk';
+import type {TuiBrightness} from '@taiga-ui/core';
 import {
     MODE_PROVIDER,
     TUI_MODE,
     TuiAppearanceDirective,
-    type TuiBrightness,
     TuiHintHoverDirective,
     TuiHintOptionsDirective,
 } from '@taiga-ui/core';

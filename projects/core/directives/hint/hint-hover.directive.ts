@@ -16,7 +16,8 @@ import {
     tap,
 } from 'rxjs';
 
-import {TUI_HINT_OPTIONS, type TuiHintOptions} from './hint-options.directive';
+import type {TuiHintOptions} from './hint-options.directive';
+import {TUI_HINT_OPTIONS} from './hint-options.directive';
 
 @Directive({
     selector: '[tuiHint]:not(ng-container):not(ng-template)',

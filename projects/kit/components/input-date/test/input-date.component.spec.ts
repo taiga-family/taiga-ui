@@ -1,5 +1,7 @@
-import {Component, type DebugElement, type Type, ViewChild} from '@angular/core';
-import {type ComponentFixture, TestBed} from '@angular/core/testing';
+import type {DebugElement, Type} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
+import type {ComponentFixture} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {
@@ -8,13 +10,8 @@ import {
     TUI_DATE_SEPARATOR,
     TuiDay,
 } from '@taiga-ui/cdk';
-import {
-    TuiHintModule,
-    TuiRootModule,
-    type TuiSizeL,
-    type TuiSizeS,
-    TuiTextfieldControllerModule,
-} from '@taiga-ui/core';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import {TuiHintModule, TuiRootModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {TuiInputDateComponent, TuiInputDateModule} from '@taiga-ui/kit';
 import {TUI_DATE_VALUE_TRANSFORMER} from '@taiga-ui/kit/tokens';
 import {TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';

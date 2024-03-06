@@ -1,10 +1,10 @@
+import type {OnDestroy} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     ElementRef,
     HostBinding,
     inject,
-    type OnDestroy,
 } from '@angular/core';
 import {RouterLinkActive} from '@angular/router';
 import {tuiIsNativeFocused} from '@taiga-ui/cdk';

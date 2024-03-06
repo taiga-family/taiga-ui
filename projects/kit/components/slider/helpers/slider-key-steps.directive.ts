@@ -6,14 +6,9 @@ import {
     inject,
     Input,
 } from '@angular/core';
-import {
-    AbstractTuiControl,
-    tuiAssert,
-    tuiClamp,
-    type TuiFocusableElementAccessor,
-    tuiIsNativeFocused,
-} from '@taiga-ui/cdk';
-import {type TuiKeySteps} from '@taiga-ui/kit/types';
+import type {TuiFocusableElementAccessor} from '@taiga-ui/cdk';
+import {AbstractTuiControl, tuiAssert, tuiClamp, tuiIsNativeFocused} from '@taiga-ui/cdk';
+import type {TuiKeySteps} from '@taiga-ui/kit/types';
 import {
     tuiKeyStepValueToPercentage,
     tuiPercentageToKeyStepValue,

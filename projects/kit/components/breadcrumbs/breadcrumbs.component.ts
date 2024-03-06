@@ -1,3 +1,4 @@
+import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -6,7 +7,6 @@ import {
     HostBinding,
     inject,
     Input,
-    type QueryList,
     TemplateRef,
 } from '@angular/core';
 import {EMPTY_QUERY, TuiItemDirective} from '@taiga-ui/cdk';

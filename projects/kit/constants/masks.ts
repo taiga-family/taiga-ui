@@ -1,4 +1,4 @@
-import {type MaskitoOptions} from '@maskito/core';
+import type {MaskitoOptions} from '@maskito/core';
 import {CHAR_HYPHEN, CHAR_PLUS} from '@taiga-ui/cdk';
 import {TUI_DIGIT_REGEXP} from '@taiga-ui/core';
 

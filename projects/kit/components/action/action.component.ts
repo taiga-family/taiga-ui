@@ -7,13 +7,13 @@ import {
     inject,
     Input,
 } from '@angular/core';
+import type {TuiNativeFocusableElement} from '@taiga-ui/cdk';
 import {
     AbstractTuiInteractive,
     tuiAsFocusableItemAccessor,
     TuiDestroyService,
     TuiFocusVisibleService,
     tuiIsNativeFocused,
-    type TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
 
 @Component({

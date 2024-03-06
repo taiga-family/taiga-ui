@@ -1,6 +1,6 @@
 import {InjectionToken} from '@angular/core';
 import {tuiCreateToken} from '@taiga-ui/cdk';
-import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {TUI_DEFAULT_TREE_CONTROLLER, TUI_TREE_ITEM_CONTENT} from './tree.constants';
 import type {TuiTreeAccessor, TuiTreeItemContext, TuiTreeLoader} from './tree.interfaces';

@@ -1,4 +1,4 @@
-import {type ReplacementAttribute} from '../../../interfaces';
+import type {ReplacementAttribute} from '../../../interfaces';
 
 export const ATTRS_TO_REPLACE: ReplacementAttribute[] = [
     {

@@ -2,7 +2,8 @@ import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAlertService, TuiDialogService} from '@taiga-ui/core';
-import {TUI_PROMPT, type TuiPromptData} from '@taiga-ui/kit';
+import type {TuiPromptData} from '@taiga-ui/kit';
+import {TUI_PROMPT} from '@taiga-ui/kit';
 import {switchMap} from 'rxjs';
 
 @Component({

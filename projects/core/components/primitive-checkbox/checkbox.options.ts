@@ -1,8 +1,9 @@
-import {type Provider} from '@angular/core';
-import {type TuiContext, tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
+import type {Provider} from '@angular/core';
+import type {TuiContext} from '@taiga-ui/cdk';
+import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 import {TuiAppearance} from '@taiga-ui/core/enums';
-import {type TuiSizeL} from '@taiga-ui/core/types';
-import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {TuiSizeL} from '@taiga-ui/core/types';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface TuiCheckboxOptions {
     readonly appearances: Readonly<{

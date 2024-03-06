@@ -1,15 +1,7 @@
 import {TuiOwnerDocumentException} from '@taiga-ui/cdk/exceptions';
 import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
-import {
-    concat,
-    endWith,
-    map,
-    merge,
-    type Observable,
-    repeat,
-    take,
-    takeWhile,
-} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {concat, endWith, map, merge, repeat, take, takeWhile} from 'rxjs';
 
 import {tuiMouseDragFinishFrom} from './mouse-drag-finish-from';
 import {tuiTypedFromEvent} from './typed-from-event';

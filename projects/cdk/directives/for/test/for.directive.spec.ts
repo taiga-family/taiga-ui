@@ -1,5 +1,6 @@
 import {Component, ElementRef, inject} from '@angular/core';
-import {type ComponentFixture, TestBed} from '@angular/core/testing';
+import type {ComponentFixture} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 import {TuiForModule} from '@taiga-ui/cdk';
 import {Subject} from 'rxjs';
 

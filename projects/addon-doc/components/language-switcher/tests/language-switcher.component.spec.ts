@@ -1,4 +1,5 @@
-import {type ComponentFixture, TestBed} from '@angular/core/testing';
+import type {ComponentFixture} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 import {ReactiveFormsModule} from '@angular/forms';
 import {TuiLanguageSwitcherComponent} from '@taiga-ui/addon-doc';
 import {TuiDataListModule} from '@taiga-ui/core';

@@ -1,9 +1,9 @@
 import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
+import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import {
     TuiDocCodeModule,
-    type TuiDocExample,
     TuiDocExampleModule,
     TuiDocPageModule,
     TuiLanguageSwitcherComponent,

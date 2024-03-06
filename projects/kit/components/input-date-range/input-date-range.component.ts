@@ -8,8 +8,17 @@ import {
     Input,
     ViewChild,
 } from '@angular/core';
-import {MASKITO_DEFAULT_OPTIONS, type MaskitoOptions} from '@maskito/core';
+import type {MaskitoOptions} from '@maskito/core';
+import {MASKITO_DEFAULT_OPTIONS} from '@maskito/core';
 import {maskitoDateRangeOptionsGenerator} from '@maskito/kit';
+import type {
+    TuiBooleanHandler,
+    TuiDateMode,
+    TuiDay,
+    TuiDayLike,
+    TuiFocusableElementAccessor,
+    TuiTypedMapper,
+} from '@taiga-ui/cdk';
 import {
     AbstractTuiNullableControl,
     ALWAYS_FALSE_HANDLER,
@@ -24,42 +33,39 @@ import {
     TUI_LAST_DAY,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    type TuiBooleanHandler,
-    type TuiDateMode,
-    type TuiDay,
-    type TuiDayLike,
     TuiDayRange,
-    type TuiFocusableElementAccessor,
     tuiIsPresent,
     TuiMonth,
     tuiNullableSame,
     tuiPure,
-    type TuiTypedMapper,
 } from '@taiga-ui/cdk';
+import type {
+    TuiMarkerHandler,
+    TuiSizeL,
+    TuiSizeS,
+    TuiWithOptionalMinMax,
+} from '@taiga-ui/core';
 import {
     TUI_DEFAULT_MARKER_HANDLER,
     TUI_TEXTFIELD_SIZE,
     TuiDialogService,
-    type TuiMarkerHandler,
     TuiPrimitiveTextfieldComponent,
-    type TuiSizeL,
-    type TuiSizeS,
-    type TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
-import {type TuiDayRangePeriod} from '@taiga-ui/kit/classes';
+import type {TuiDayRangePeriod} from '@taiga-ui/kit/classes';
 import {
     MAX_DAY_RANGE_LENGTH_MAPPER,
     TUI_DATE_MODE_MASKITO_ADAPTER,
 } from '@taiga-ui/kit/constants';
+import type {TuiInputDateOptions} from '@taiga-ui/kit/tokens';
 import {
     TUI_DATE_RANGE_VALUE_TRANSFORMER,
     TUI_DATE_TEXTS,
     TUI_INPUT_DATE_OPTIONS,
     TUI_MOBILE_CALENDAR,
     tuiDateStreamWithTransformer,
-    type TuiInputDateOptions,
 } from '@taiga-ui/kit/tokens';
-import {PolymorpheusComponent, type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import {map, takeUntil} from 'rxjs';
 
 @Component({

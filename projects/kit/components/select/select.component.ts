@@ -8,38 +8,44 @@ import {
     TemplateRef,
     ViewChild,
 } from '@angular/core';
+import type {
+    TuiActiveZoneDirective,
+    TuiContext,
+    TuiFocusableElementAccessor,
+} from '@taiga-ui/cdk';
 import {
     AbstractTuiNullableControl,
     TUI_IS_MOBILE,
-    type TuiActiveZoneDirective,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    type TuiContext,
-    type TuiFocusableElementAccessor,
     tuiIsNativeFocused,
 } from '@taiga-ui/cdk';
+import type {
+    TuiDataListHost,
+    TuiSizeL,
+    TuiSizeM,
+    TuiSizeS,
+    TuiValueContentContext,
+} from '@taiga-ui/core';
 import {
     TUI_TEXTFIELD_CLEANER,
     TUI_TEXTFIELD_SIZE,
     tuiAsDataListHost,
     tuiAsOptionContent,
     TuiDataListDirective,
-    type TuiDataListHost,
     TuiHostedDropdownComponent,
     TuiPrimitiveTextfieldComponent,
-    type TuiSizeL,
-    type TuiSizeM,
-    type TuiSizeS,
-    type TuiValueContentContext,
 } from '@taiga-ui/core';
 import {AbstractTuiNativeSelect} from '@taiga-ui/kit/abstract';
 import {TUI_ARROW_MODE} from '@taiga-ui/kit/components/arrow';
 import {TUI_SELECT_OPTION} from '@taiga-ui/kit/components/select-option';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
-import {TUI_ITEMS_HANDLERS, type TuiItemsHandlers} from '@taiga-ui/kit/tokens';
-import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {TuiItemsHandlers} from '@taiga-ui/kit/tokens';
+import {TUI_ITEMS_HANDLERS} from '@taiga-ui/kit/tokens';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-import {TUI_SELECT_OPTIONS, type TuiSelectOptions} from './select.options';
+import type {TuiSelectOptions} from './select.options';
+import {TUI_SELECT_OPTIONS} from './select.options';
 
 @Component({
     selector: 'tui-select',

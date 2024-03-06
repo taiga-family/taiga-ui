@@ -1,6 +1,6 @@
-import {type DevkitFileSystem} from 'ng-morph';
+import type {DevkitFileSystem} from 'ng-morph';
 
-import {type TemplateResource} from '../../ng-update/interfaces/template-resource';
+import type {TemplateResource} from '../../ng-update/interfaces/template-resource';
 
 export function getTemplateFromTemplateResource(
     templateRes: TemplateResource,

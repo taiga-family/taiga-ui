@@ -1,18 +1,12 @@
-import {
-    Directive,
-    forwardRef,
-    Input,
-    type OnChanges,
-    type OnDestroy,
-} from '@angular/core';
-import {
-    type AbstractControl,
-    NG_VALIDATORS,
-    type ValidationErrors,
-    type Validator,
-    type ValidatorFn,
-    Validators,
+import type {OnChanges, OnDestroy} from '@angular/core';
+import {Directive, forwardRef, Input} from '@angular/core';
+import type {
+    AbstractControl,
+    ValidationErrors,
+    Validator,
+    ValidatorFn,
 } from '@angular/forms';
+import {NG_VALIDATORS, Validators} from '@angular/forms';
 import {EMPTY_FUNCTION} from '@taiga-ui/cdk/constants';
 
 @Directive({

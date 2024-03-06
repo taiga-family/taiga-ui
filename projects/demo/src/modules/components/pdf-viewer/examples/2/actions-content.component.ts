@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {type TuiPopover} from '@taiga-ui/cdk';
-import {type TuiPdfViewerOptions} from '@taiga-ui/kit';
+import type {TuiPopover} from '@taiga-ui/cdk';
+import type {TuiPdfViewerOptions} from '@taiga-ui/kit';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 
 import type {Buttons} from './index';

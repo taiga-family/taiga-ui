@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
-import {type ComponentFixture, TestBed} from '@angular/core/testing';
+import type {ComponentFixture} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {TuiDroppableDirective} from '@taiga-ui/cdk';
 import {TuiMockEvent} from '@taiga-ui/testing';

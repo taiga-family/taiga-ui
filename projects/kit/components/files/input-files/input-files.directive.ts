@@ -5,14 +5,11 @@ import {
     tuiControlValue,
     tuiIsNativeFocused,
 } from '@taiga-ui/cdk';
-import {
-    TuiAppearanceDirective,
-    type TuiAppearanceOptions,
-    tuiAppearanceOptionsProvider,
-} from '@taiga-ui/core';
+import type {TuiAppearanceOptions} from '@taiga-ui/core';
+import {TuiAppearanceDirective, tuiAppearanceOptionsProvider} from '@taiga-ui/core';
 import {filter, map, switchMap, timer} from 'rxjs';
 
-import {type TuiFileLike} from '../files.types';
+import type {TuiFileLike} from '../files.types';
 import {tuiFilesRejected} from '../files.utils';
 import {TuiInputFilesComponent} from './input-files.component';
 import {TuiInputFilesValidatorDirective} from './input-files-validator.directive';

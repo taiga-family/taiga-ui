@@ -1,9 +1,9 @@
+import type {OnInit} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
     inject,
-    type OnInit,
 } from '@angular/core';
 import {TUI_WINDOW_HEIGHT, TuiDestroyService} from '@taiga-ui/cdk';
 import {
@@ -14,7 +14,7 @@ import {
 } from '@taiga-ui/core';
 import {takeUntil} from 'rxjs';
 
-import {type TuiSheet} from '../../sheet';
+import type {TuiSheet} from '../../sheet';
 import {TuiSheetService} from '../../sheet.service';
 
 @Component({

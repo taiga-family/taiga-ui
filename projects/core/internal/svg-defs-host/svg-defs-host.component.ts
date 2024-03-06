@@ -1,13 +1,13 @@
 import {isPlatformBrowser} from '@angular/common';
+import type {OnInit} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
     inject,
-    type OnInit,
     PLATFORM_ID,
 } from '@angular/core';
-import {type SafeHtml} from '@angular/platform-browser';
+import type {SafeHtml} from '@angular/platform-browser';
 import {TuiDestroyService} from '@taiga-ui/cdk';
 import {TuiSvgService} from '@taiga-ui/core/services';
 import {takeUntil} from 'rxjs';

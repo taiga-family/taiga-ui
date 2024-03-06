@@ -1,9 +1,5 @@
-import {
-    tuiCreateToken,
-    type TuiHandler,
-    type TuiSafeHtml,
-    tuiSvgLinearGradientProcessor,
-} from '@taiga-ui/cdk';
+import type {TuiHandler, TuiSafeHtml} from '@taiga-ui/cdk';
+import {tuiCreateToken, tuiSvgLinearGradientProcessor} from '@taiga-ui/cdk';
 
 /**
  * Transform function the contents of the loaded svg file

@@ -1,10 +1,7 @@
 import {Component, ViewEncapsulation} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {
-    type TuiDocExample,
-    tuiDocExampleOptionsProvider,
-    type TuiRawLoaderContent,
-} from '@taiga-ui/addon-doc';
+import type {TuiDocExample, TuiRawLoaderContent} from '@taiga-ui/addon-doc';
+import {tuiDocExampleOptionsProvider} from '@taiga-ui/addon-doc';
 
 @Component({
     selector: 'example-cell',

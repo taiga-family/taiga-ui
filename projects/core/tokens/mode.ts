@@ -1,6 +1,6 @@
 import {InjectionToken} from '@angular/core';
-import {type TuiBrightness} from '@taiga-ui/core/types';
-import {type Observable} from 'rxjs';
+import type {TuiBrightness} from '@taiga-ui/core/types';
+import type {Observable} from 'rxjs';
 
 /**
  * Mode stream for private providers

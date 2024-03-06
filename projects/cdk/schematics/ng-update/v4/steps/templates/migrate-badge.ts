@@ -1,13 +1,13 @@
-import {type UpdateRecorder} from '@angular-devkit/schematics';
-import {type DevkitFileSystem} from 'ng-morph';
-import {type Attribute, type Element, type ElementLocation} from 'parse5';
+import type {UpdateRecorder} from '@angular-devkit/schematics';
+import type {DevkitFileSystem} from 'ng-morph';
+import type {Attribute, Element, ElementLocation} from 'parse5';
 
 import {findElementsByTagName} from '../../../../utils/templates/elements';
 import {
     getTemplateFromTemplateResource,
     getTemplateOffset,
 } from '../../../../utils/templates/template-resource';
-import {type TemplateResource} from '../../../interfaces';
+import type {TemplateResource} from '../../../interfaces';
 
 export function migrateBadge({
     resource,

@@ -1,10 +1,10 @@
-import {type NgIfContext} from '@angular/common';
+import type {NgIfContext} from '@angular/common';
+import type {ElementRef} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
     ContentChild,
-    type ElementRef,
     HostBinding,
     HostListener,
     inject,
@@ -12,7 +12,8 @@ import {
     TemplateRef,
     ViewChild,
 } from '@angular/core';
-import {TuiDestroyService, type TuiValuesOf} from '@taiga-ui/cdk';
+import type {TuiValuesOf} from '@taiga-ui/cdk';
+import {TuiDestroyService} from '@taiga-ui/cdk';
 import {TUI_PARENT_ANIMATION} from '@taiga-ui/core/animations';
 import {TUI_EXPAND_LOADED} from '@taiga-ui/core/constants';
 import {takeUntil, timer} from 'rxjs';

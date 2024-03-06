@@ -6,26 +6,24 @@ import {
     Input,
     ViewChild,
 } from '@angular/core';
-import {type MaskitoOptions} from '@maskito/core';
+import type {MaskitoOptions} from '@maskito/core';
 import {maskitoNumberOptionsGenerator} from '@maskito/kit';
+import type {
+    TuiBooleanHandler,
+    TuiFocusableElementAccessor,
+    TuiYear,
+} from '@taiga-ui/cdk';
 import {
     AbstractTuiNullableControl,
     ALWAYS_FALSE_HANDLER,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    type TuiBooleanHandler,
-    type TuiFocusableElementAccessor,
     tuiPure,
-    type TuiYear,
 } from '@taiga-ui/cdk';
-import {
-    TUI_TEXTFIELD_SIZE,
-    TuiPrimitiveTextfieldComponent,
-    type TuiSizeL,
-    type TuiSizeS,
-    type TuiWithOptionalMinMax,
-} from '@taiga-ui/core';
-import {TUI_INPUT_DATE_OPTIONS, type TuiInputDateOptions} from '@taiga-ui/kit/tokens';
+import type {TuiSizeL, TuiSizeS, TuiWithOptionalMinMax} from '@taiga-ui/core';
+import {TUI_TEXTFIELD_SIZE, TuiPrimitiveTextfieldComponent} from '@taiga-ui/core';
+import type {TuiInputDateOptions} from '@taiga-ui/kit/tokens';
+import {TUI_INPUT_DATE_OPTIONS} from '@taiga-ui/kit/tokens';
 
 const UP_TO_4_DIGITS_REG = /^\d{0,4}$/;
 

@@ -1,5 +1,7 @@
-import {Component, type DebugElement, ViewChild} from '@angular/core';
-import {type ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
+import type {DebugElement} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
+import type {ComponentFixture} from '@angular/core/testing';
+import {fakeAsync, TestBed, tick} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {
     TuiTableBarsHostComponent,
@@ -7,7 +9,8 @@ import {
     TuiTableBarsService,
 } from '@taiga-ui/addon-tablebars';
 import {TuiPageObject} from '@taiga-ui/testing';
-import {skip, type Subscription, take, takeUntil, timer} from 'rxjs';
+import type {Subscription} from 'rxjs';
+import {skip, take, takeUntil, timer} from 'rxjs';
 
 describe('TableBarsHost', () => {
     @Component({

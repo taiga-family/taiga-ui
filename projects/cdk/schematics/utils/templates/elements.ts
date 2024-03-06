@@ -1,5 +1,6 @@
 import {ALWAYS_TRUE_HANDLER} from '@taiga-ui/cdk';
-import {type ChildNode, type Element, parseFragment} from 'parse5';
+import type {ChildNode, Element} from 'parse5';
+import {parseFragment} from 'parse5';
 
 export function findElementsByFn(
     nodes: ChildNode[],

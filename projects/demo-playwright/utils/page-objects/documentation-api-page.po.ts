@@ -1,4 +1,5 @@
-import {expect, type Locator, type Page, type Request} from '@playwright/test';
+import type {Locator, Page, Request} from '@playwright/test';
+import {expect} from '@playwright/test';
 
 import {tuiHideElement} from '../hide-element';
 import {waitStableState} from '../wait-stable-state';

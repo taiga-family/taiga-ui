@@ -1,6 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {Component} from '@angular/core';
-import {type ComponentFixture, TestBed} from '@angular/core/testing';
+import type {ComponentFixture} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {TuiValidatorDirective} from '@taiga-ui/cdk';
 

@@ -1,4 +1,4 @@
-import {type TuiValuesOf} from '@taiga-ui/cdk/types';
+import type {TuiValuesOf} from '@taiga-ui/cdk/types';
 
 export function tuiUniqBy<T extends Record<string, any>>(
     array: readonly T[],

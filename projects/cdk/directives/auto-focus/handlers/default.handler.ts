@@ -1,7 +1,8 @@
-import {type ElementRef} from '@angular/core';
+import type {ElementRef} from '@angular/core';
 import {POLLING_TIME} from '@taiga-ui/cdk/constants';
-import {type TuiFocusableElementAccessor} from '@taiga-ui/cdk/interfaces';
-import {map, type Observable, race, skipWhile, take, throttleTime, timer} from 'rxjs';
+import type {TuiFocusableElementAccessor} from '@taiga-ui/cdk/interfaces';
+import type {Observable} from 'rxjs';
+import {map, race, skipWhile, take, throttleTime, timer} from 'rxjs';
 
 import {AbstractTuiAutofocusHandler} from './abstract.handler';
 

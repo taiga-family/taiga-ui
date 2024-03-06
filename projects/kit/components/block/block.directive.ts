@@ -1,12 +1,8 @@
 import {ContentChild, Directive, inject, Input} from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {TuiNativeValidatorDirective, tuiWithStyles} from '@taiga-ui/cdk';
-import {
-    TuiAppearanceDirective,
-    tuiAppearanceOptionsProvider,
-    type TuiSizeL,
-    type TuiSizeXS,
-} from '@taiga-ui/core';
+import type {TuiSizeL, TuiSizeXS} from '@taiga-ui/core';
+import {TuiAppearanceDirective, tuiAppearanceOptionsProvider} from '@taiga-ui/core';
 import {tuiAvatarOptionsProvider} from '@taiga-ui/kit/components/avatar';
 
 import {TuiBlockComponent} from './block.component';

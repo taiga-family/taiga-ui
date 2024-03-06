@@ -1,9 +1,9 @@
-import {
-    TUI_DROPDOWN_DEFAULT_OPTIONS,
-    type TuiDropdownAlign,
-    type TuiDropdownWidth,
-    type TuiVerticalDirection,
+import type {
+    TuiDropdownAlign,
+    TuiDropdownWidth,
+    TuiVerticalDirection,
 } from '@taiga-ui/core';
+import {TUI_DROPDOWN_DEFAULT_OPTIONS} from '@taiga-ui/core';
 import {BehaviorSubject} from 'rxjs';
 
 export abstract class AbstractExampleTuiDropdown {

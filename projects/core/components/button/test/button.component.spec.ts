@@ -1,7 +1,8 @@
-import {type HarnessLoader} from '@angular/cdk/testing';
+import type {HarnessLoader} from '@angular/cdk/testing';
 import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {Component} from '@angular/core';
-import {type ComponentFixture, TestBed} from '@angular/core/testing';
+import type {ComponentFixture} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 import {TuiButtonHarness, TuiLoaderHarness} from '@taiga-ui/testing';
 
 import {TuiButtonModule} from '../button.module';

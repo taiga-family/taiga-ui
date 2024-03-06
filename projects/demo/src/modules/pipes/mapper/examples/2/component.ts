@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {type TuiTypedMapper} from '@taiga-ui/cdk';
+import type {TuiTypedMapper} from '@taiga-ui/cdk';
 
 @Component({
     selector: 'tui-mapper-example2',

@@ -4,7 +4,8 @@ import {
     TuiInputDateTimePO,
     TuiSelectPO,
 } from '@demo-playwright/utils';
-import {expect, type Locator, test} from '@playwright/test';
+import type {Locator} from '@playwright/test';
+import {expect, test} from '@playwright/test';
 
 test.describe('InputDateTime', () => {
     test.describe('API page', () => {
