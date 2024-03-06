@@ -49,8 +49,13 @@ describe('TuiStaticRequestService', () => {
         let result2 = '';
         let completed = false;
 
-        service.request(`${baseUrl}/test`).subscribe(response => {
-            result1 = response;
+        service.request(`${baseUrl}/test`).subscribe({
+            next: response => {
+                result1 = response;
+            },
+            complete: () => {
+                completed = true;
+            },
         });
 
         service.request(`${baseUrl}/test`).subscribe({
@@ -65,7 +70,8 @@ describe('TuiStaticRequestService', () => {
         cy.get('@request.all')
             .should('have.length', 1)
             .then(() => {
-                expect(result1).to.equal(result2);
+                expect(JSON.stringify(response)).to.eql(result1);
+                expect(result1).to.eql(result2);
                 void expect(completed).to.be.true;
             });
     });
