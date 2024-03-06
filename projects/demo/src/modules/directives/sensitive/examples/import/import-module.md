@@ -1,13 +1,13 @@
 ```ts
 import {NgModule} from '@angular/core';
-import {TuiSensitiveModule} from '@taiga-ui/experimental';
+import {TuiSensitiveDirective} from '@taiga-ui/kit';
 
 // ...
 
 @NgModule({
   imports: [
     // ...
-    TuiSensitiveModule,
+    TuiSensitiveDirective,
   ],
 })
 export class MyModule {}

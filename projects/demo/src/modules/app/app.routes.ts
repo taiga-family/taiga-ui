@@ -354,15 +354,6 @@ export const ROUTES: Routes = [
         },
     },
     {
-        path: 'experimental/sensitive',
-        loadChildren: async () =>
-            (await import('../experimental/sensitive/sensitive.module'))
-                .ExampleTuiSensitiveModule,
-        data: {
-            title: 'Sensitive',
-        },
-    },
-    {
         path: 'experimental/surface',
         loadChildren: async () =>
             (await import('../experimental/surface/surface.module'))
@@ -615,6 +606,15 @@ export const ROUTES: Routes = [
             (await import('../directives/fade/fade.module')).ExampleTuiFadeDirective,
         data: {
             title: 'Fade',
+        },
+    },
+    {
+        path: 'directives/sensitive',
+        loadChildren: async () =>
+            (await import('../directives/sensitive/sensitive.module'))
+                .ExampleTuiSensitiveModule,
+        data: {
+            title: 'Sensitive',
         },
     },
     {

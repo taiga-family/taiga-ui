@@ -18,7 +18,6 @@ import {
     TuiCellModule,
     TuiCheckboxModule,
     TuiIconModule,
-    TuiSensitiveModule,
     TuiSurfaceModule,
     TuiThumbnailCardModule,
     TuiTitleModule,
@@ -34,6 +33,7 @@ import {
     TuiFadeDirective,
     TuiProgressModule,
     TuiSelectModule,
+    TuiSensitiveDirective,
 } from '@taiga-ui/kit';
 
 import {ExampleTuiCellComponent} from './cell.component';
@@ -66,7 +66,7 @@ import {TuiCellExample7} from './examples/7';
         TuiIconModule,
         TuiCheckboxModule,
         TuiLoaderModule,
-        TuiSensitiveModule,
+        TuiSensitiveDirective,
         TuiSurfaceModule,
         TuiSelectModule,
         TuiDataListWrapperModule,
