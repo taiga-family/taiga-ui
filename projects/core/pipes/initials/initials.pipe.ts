@@ -2,6 +2,7 @@ import type {PipeTransform} from '@angular/core';
 import {Pipe} from '@angular/core';
 
 @Pipe({
+    standalone: true,
     name: 'tuiInitials',
 })
 export class TuiInitialsPipe implements PipeTransform {

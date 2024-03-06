@@ -2,8 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
-import {TuiHintModule, TuiNotificationModule} from '@taiga-ui/core';
-import {TuiAutoColorModule} from '@taiga-ui/experimental';
+import {TuiAutoColorPipe, TuiHintModule, TuiNotificationModule} from '@taiga-ui/core';
 import {TuiAvatarComponent} from '@taiga-ui/kit';
 
 import {InheritedDocumentationModule} from '../../components/abstract/inherited-documentation/inherited-documentation.module';
@@ -20,7 +19,7 @@ import {ExampleTuiHintComponent} from './hint.component';
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiHintComponent)),
         TuiNotificationModule,
-        TuiAutoColorModule,
+        TuiAutoColorPipe,
     ],
     declarations: [ExampleTuiHintComponent, TuiHintExample1, TuiHintExample2],
     exports: [ExampleTuiHintComponent],

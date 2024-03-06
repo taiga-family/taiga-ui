@@ -7,12 +7,13 @@ import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiSheetDialogModule} from '@taiga-ui/addon-mobile';
 import {TuiSwipeModule} from '@taiga-ui/cdk';
 import {
+    TuiAutoColorPipe,
     TuiButtonModule,
+    TuiInitialsPipe,
     TuiLabelModule,
     TuiNotificationModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiAutoColorModule, TuiInitialsModule} from '@taiga-ui/experimental';
 import {TuiAvatarComponent, TuiInputModule} from '@taiga-ui/kit';
 
 import {TuiSheetDialogExample1} from './examples/1';
@@ -36,8 +37,8 @@ import {ExampleTuiSheetDialogComponent} from './sheet-dialog.component';
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiSheetDialogComponent)),
         TuiSwipeModule,
-        TuiAutoColorModule,
-        TuiInitialsModule,
+        TuiAutoColorPipe,
+        TuiInitialsPipe,
     ],
     declarations: [
         ExampleTuiSheetDialogComponent,

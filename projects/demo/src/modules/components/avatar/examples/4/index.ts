@@ -2,8 +2,7 @@ import {NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import type {TuiSizeXS, TuiSizeXXL} from '@taiga-ui/core';
-import {TuiAutoColorModule, TuiInitialsModule} from '@taiga-ui/experimental';
+import {TuiAutoColorPipe, TuiInitialsPipe, TuiSizeXS, TuiSizeXXL} from '@taiga-ui/core';
 import {TuiAvatarComponent, TuiAvatarStackComponent} from '@taiga-ui/kit';
 
 @Component({
@@ -13,8 +12,8 @@ import {TuiAvatarComponent, TuiAvatarStackComponent} from '@taiga-ui/kit';
         TuiAvatarStackComponent,
         NgForOf,
         TuiAvatarComponent,
-        TuiInitialsModule,
-        TuiAutoColorModule,
+        TuiInitialsPipe,
+        TuiAutoColorPipe,
     ],
     templateUrl: './index.html',
     encapsulation,

@@ -11,6 +11,7 @@ import {
     TuiDataListModule,
     TuiDropdownModule,
     TuiHintModule,
+    TuiInitialsPipe,
     TuiLabelModule,
     TuiLinkModule,
     TuiLoaderModule,
@@ -21,7 +22,6 @@ import {
     TuiSvgModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiInitialsModule} from '@taiga-ui/experimental';
 import {
     TuiAvatarComponent,
     TuiDataListWrapperModule,
@@ -83,7 +83,7 @@ import {ExampleTuiSelectComponent} from './select.component';
         TuiAmountPipe,
         TuiNumberFormatModule,
         TuiScrollableDirective,
-        TuiInitialsModule,
+        TuiInitialsPipe,
     ],
     declarations: [
         ExampleTuiSelectComponent,

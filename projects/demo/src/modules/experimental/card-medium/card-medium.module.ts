@@ -6,24 +6,24 @@ import {TuiRippleModule} from '@taiga-ui/addon-mobile';
 import {TuiPlatformModule, TuiRepeatTimesModule} from '@taiga-ui/cdk';
 import {
     TuiAppearanceDirective,
+    TuiAutoColorPipe,
     TuiDataListModule,
+    TuiFallbackSrcPipe,
     TuiHintModule,
     TuiHostedDropdownModule,
+    TuiInitialsPipe,
     TuiLinkModule,
     TuiNotificationModule,
     TuiScrollbarComponent,
     TuiSvgModule,
 } from '@taiga-ui/core';
 import {
-    TuiAutoColorModule,
     TuiButtonCloseModule,
     TuiButtonModule,
     TuiCardModule,
     TuiCellModule,
-    TuiFallbackSrcModule,
     TuiHeaderDirective,
     TuiIconModule,
-    TuiInitialsModule,
     TuiSurfaceModule,
     TuiThumbnailCardModule,
     TuiTitleModule,
@@ -47,10 +47,10 @@ import {TuiCardMediumExample7} from './examples/7';
 @NgModule({
     imports: [
         CommonModule,
-        TuiAutoColorModule,
-        TuiInitialsModule,
+        TuiAutoColorPipe,
+        TuiInitialsPipe,
         TuiNotificationModule,
-        TuiFallbackSrcModule,
+        TuiFallbackSrcPipe,
         TuiFadeDirective,
         TuiCardModule,
         TuiSurfaceModule,

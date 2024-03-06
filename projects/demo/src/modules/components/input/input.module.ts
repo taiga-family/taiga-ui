@@ -17,6 +17,7 @@ import {
     TuiDropdownModule,
     TuiGroupDirective,
     TuiHintModule,
+    TuiInitialsPipe,
     TuiLinkModule,
     TuiModeModule,
     TuiNotificationModule,
@@ -24,7 +25,6 @@ import {
     TuiSvgModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiInitialsModule} from '@taiga-ui/experimental';
 import {
     TuiAvatarComponent,
     TuiDataListWrapperModule,
@@ -87,7 +87,7 @@ import {ExampleTuiInputComponent} from './input.component';
         TuiTextCodeModule,
         MaskitoDirective,
         TuiUnmaskHandlerModule,
-        TuiInitialsModule,
+        TuiInitialsPipe,
     ],
     declarations: [
         ExampleTuiInputComponent,

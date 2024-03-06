@@ -108,10 +108,10 @@ export function migrateAvatar({
 
         const modules = [
             ...(fallbackModule
-                ? [{moduleName: 'TuiFallbackModule', moduleSpecifier: '@taiga-ui/cdk'}]
+                ? [{moduleName: 'TuiFallbackSrcPipe', moduleSpecifier: '@taiga-ui/core'}]
                 : []),
             ...(initialsModule
-                ? [{moduleName: 'TuiInitialsModule', moduleSpecifier: '@taiga-ui/cdk'}]
+                ? [{moduleName: 'TuiInitialsPipe', moduleSpecifier: '@taiga-ui/core'}]
                 : []),
         ];
 
