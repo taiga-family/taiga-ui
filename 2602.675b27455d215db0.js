@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[2602],{2602:t=>{t.exports='<button\n    routerLink="path/to/dialog"\n    tuiButton\n>\n    Open dialog\n</button>\n\n<router-outlet></router-outlet>\n'}}]);
