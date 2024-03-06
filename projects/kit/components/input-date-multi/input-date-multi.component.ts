@@ -10,9 +10,15 @@ import {
 } from '@angular/core';
 import {type MaskitoOptions} from '@maskito/core';
 import {maskitoDateOptionsGenerator} from '@maskito/kit';
+import type {
+    type AbstractTuiValueTransformer,
+    type TuiBooleanHandler,
+    type TuiFocusableElementAccessor,
+    type TuiMapper,
+    TuiTypedMapper,
+} from '@taiga-ui/cdk';
 import {
     AbstractTuiMultipleControl,
-    type AbstractTuiValueTransformer,
     ALWAYS_FALSE_HANDLER,
     changeDateSeparator,
     TUI_DATE_FORMAT,
@@ -20,14 +26,10 @@ import {
     TUI_IS_MOBILE,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    type TuiBooleanHandler,
     tuiDateClamp,
     TuiDay,
-    type TuiFocusableElementAccessor,
     tuiIsString,
-    type TuiMapper,
     TuiMonth,
-    TuiTypedMapper,
 } from '@taiga-ui/cdk';
 import {
     TUI_DEFAULT_MARKER_HANDLER,
