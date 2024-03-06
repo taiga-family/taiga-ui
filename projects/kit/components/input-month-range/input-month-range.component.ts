@@ -6,6 +6,7 @@ import {
     Input,
     ViewChild,
 } from '@angular/core';
+import type {TuiFocusableElementAccessor, TuiMonth, TuiYear} from '@taiga-ui/cdk';
 import {
     AbstractTuiNullableControl,
     ALWAYS_FALSE_HANDLER,
@@ -14,27 +15,19 @@ import {
     tuiAsFocusableItemAccessor,
     tuiDateClamp,
     TuiDay,
-    type TuiFocusableElementAccessor,
-    type TuiMonth,
     TuiMonthRange,
-    type TuiYear,
 } from '@taiga-ui/cdk';
+import type {TuiSizeL, TuiSizeS, TuiWithOptionalMinMax} from '@taiga-ui/core';
 import {
     TUI_TEXTFIELD_SIZE,
     TuiMonthPipe,
     TuiPrimitiveTextfieldComponent,
-    type TuiSizeL,
-    type TuiSizeS,
-    type TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
-import {type TuiMonthContext} from '@taiga-ui/kit/interfaces';
+import type {TuiMonthContext} from '@taiga-ui/kit/interfaces';
 import {TUI_MONTH_FORMATTER_PROVIDER} from '@taiga-ui/kit/providers';
-import {
-    TUI_INPUT_DATE_OPTIONS,
-    TUI_MONTH_FORMATTER,
-    type TuiInputDateOptions,
-} from '@taiga-ui/kit/tokens';
-import {type TuiBooleanHandlerWithContext} from '@taiga-ui/kit/types';
+import type {TuiInputDateOptions} from '@taiga-ui/kit/tokens';
+import {TUI_INPUT_DATE_OPTIONS, TUI_MONTH_FORMATTER} from '@taiga-ui/kit/tokens';
+import type {TuiBooleanHandlerWithContext} from '@taiga-ui/kit/types';
 
 @Component({
     selector: 'tui-input-month-range',

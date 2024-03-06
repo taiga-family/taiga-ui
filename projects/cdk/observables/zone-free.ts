@@ -1,5 +1,6 @@
-import {type NgZone} from '@angular/core';
-import {type MonoTypeOperatorFunction, Observable, pipe} from 'rxjs';
+import type {NgZone} from '@angular/core';
+import type {MonoTypeOperatorFunction} from 'rxjs';
+import {Observable, pipe} from 'rxjs';
 
 export function tuiZonefull<T>(zone: NgZone): MonoTypeOperatorFunction<T> {
     return source =>

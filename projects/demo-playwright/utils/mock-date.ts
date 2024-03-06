@@ -1,4 +1,4 @@
-import {type Page} from '@playwright/test';
+import type {Page} from '@playwright/test';
 
 export async function tuiMockDate(page: Page, date: Date): Promise<void> {
     await page.addInitScript(fakeNow => {

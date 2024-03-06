@@ -1,5 +1,6 @@
 import {tuiSmartSearch} from '@taiga-ui/core';
-import {from, type Observable, of, skip, take} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {from, of, skip, take} from 'rxjs';
 
 describe('tuiSmartSearch', () => {
     let source: Observable<string>;

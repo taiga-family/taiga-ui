@@ -1,6 +1,6 @@
 import {Directive, HostBinding, inject, Input} from '@angular/core';
 import {TUI_PLATFORM} from '@taiga-ui/cdk/tokens';
-import {type TuiPlatform} from '@taiga-ui/cdk/types';
+import type {TuiPlatform} from '@taiga-ui/cdk/types';
 
 @Directive({
     selector: '[tuiPlatform]',

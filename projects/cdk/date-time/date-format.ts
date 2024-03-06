@@ -1,4 +1,4 @@
-import {type TuiDateMode} from '@taiga-ui/cdk/types';
+import type {TuiDateMode} from '@taiga-ui/cdk/types';
 import {tuiCreateToken} from '@taiga-ui/cdk/utils';
 
 /**

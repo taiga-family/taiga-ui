@@ -1,6 +1,7 @@
 import {ChangeDetectionStrategy, Component, ElementRef, inject} from '@angular/core';
 import {tuiAsPortal, TuiPortalsComponent} from '@taiga-ui/cdk';
-import {tuiAsViewport, TuiDropdownService, type TuiRectAccessor} from '@taiga-ui/core';
+import type {TuiRectAccessor} from '@taiga-ui/core';
+import {tuiAsViewport, TuiDropdownService} from '@taiga-ui/core';
 
 @Component({
     standalone: true,

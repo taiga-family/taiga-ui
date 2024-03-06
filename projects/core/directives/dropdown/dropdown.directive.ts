@@ -1,35 +1,21 @@
+import type {AfterViewChecked, ComponentRef, OnChanges, OnDestroy} from '@angular/core';
 import {
-    type AfterViewChecked,
     ChangeDetectorRef,
-    type ComponentRef,
     Directive,
     ElementRef,
     inject,
     INJECTOR,
     Input,
-    type OnChanges,
-    type OnDestroy,
     TemplateRef,
 } from '@angular/core';
-import {
-    type TuiActiveZoneDirective,
-    type TuiContext,
-    TuiDestroyService,
-    tuiPure,
-} from '@taiga-ui/cdk';
-import {
-    tuiAsRectAccessor,
-    tuiAsVehicle,
-    type TuiRectAccessor,
-    type TuiVehicle,
-} from '@taiga-ui/core/abstract';
-import {type TuiPortalItem} from '@taiga-ui/core/interfaces';
+import type {TuiActiveZoneDirective, TuiContext} from '@taiga-ui/cdk';
+import {TuiDestroyService, tuiPure} from '@taiga-ui/cdk';
+import type {TuiRectAccessor, TuiVehicle} from '@taiga-ui/core/abstract';
+import {tuiAsRectAccessor, tuiAsVehicle} from '@taiga-ui/core/abstract';
+import type {TuiPortalItem} from '@taiga-ui/core/interfaces';
 import {tuiCheckFixedPosition} from '@taiga-ui/core/utils';
-import {
-    PolymorpheusComponent,
-    type PolymorpheusContent,
-    PolymorpheusTemplate,
-} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusComponent, PolymorpheusTemplate} from '@tinkoff/ng-polymorpheus';
 import {Subject, takeUntil, throttleTime} from 'rxjs';
 
 import {TuiDropdownDriverDirective} from './dropdown.driver';

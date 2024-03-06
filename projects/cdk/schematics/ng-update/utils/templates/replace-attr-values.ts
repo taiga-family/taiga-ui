@@ -1,13 +1,13 @@
-import {type UpdateRecorder} from '@angular-devkit/schematics';
-import {type DevkitFileSystem} from 'ng-morph';
+import type {UpdateRecorder} from '@angular-devkit/schematics';
+import type {DevkitFileSystem} from 'ng-morph';
 
 import {findElementsWithAttributeOnTag} from '../../../utils/templates/elements';
 import {
     getTemplateFromTemplateResource,
     getTemplateOffset,
 } from '../../../utils/templates/template-resource';
-import {type ReplacementAttributeValue} from '../../interfaces/replacement-attribute-value';
-import {type TemplateResource} from '../../interfaces/template-resource';
+import type {ReplacementAttributeValue} from '../../interfaces/replacement-attribute-value';
+import type {TemplateResource} from '../../interfaces/template-resource';
 
 export function replaceAttrValues({
     resource,

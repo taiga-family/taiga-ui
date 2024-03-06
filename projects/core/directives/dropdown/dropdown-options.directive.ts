@@ -1,17 +1,10 @@
-import {
-    Directive,
-    type FactoryProvider,
-    forwardRef,
-    inject,
-    Input,
-    Optional,
-    SkipSelf,
-} from '@angular/core';
+import type {FactoryProvider} from '@angular/core';
+import {Directive, forwardRef, inject, Input, Optional, SkipSelf} from '@angular/core';
 import {tuiCreateToken} from '@taiga-ui/cdk';
-import {
-    type TuiDropdownAlign,
-    type TuiDropdownWidth,
-    type TuiVerticalDirection,
+import type {
+    TuiDropdownAlign,
+    TuiDropdownWidth,
+    TuiVerticalDirection,
 } from '@taiga-ui/core/types';
 import {tuiOverrideOptions} from '@taiga-ui/core/utils';
 

@@ -1,23 +1,25 @@
+import type {ElementRef} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
-    type ElementRef,
     HostBinding,
     inject,
     Input,
     ViewChild,
 } from '@angular/core';
+import type {
+    TuiFocusableElementAccessor,
+    TuiIdentityMatcher,
+    TuiNativeFocusableElement,
+} from '@taiga-ui/cdk';
 import {
     AbstractTuiNullableControl,
     TUI_DEFAULT_IDENTITY_MATCHER,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    type TuiFocusableElementAccessor,
-    type TuiIdentityMatcher,
     tuiIsNativeFocused,
-    type TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
-import {type TuiSizeL} from '@taiga-ui/core';
+import type {TuiSizeL} from '@taiga-ui/core';
 import {TuiRadioGroupComponent} from '@taiga-ui/kit/components/radio-group';
 
 import {TUI_RADIO_OPTIONS} from './radio.options';

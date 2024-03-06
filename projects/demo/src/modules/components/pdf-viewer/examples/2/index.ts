@@ -1,9 +1,10 @@
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {type TuiPopover} from '@taiga-ui/cdk';
+import type {TuiPopover} from '@taiga-ui/cdk';
 import {TuiAlertService} from '@taiga-ui/core';
-import {type TuiPdfViewerOptions, TuiPdfViewerService} from '@taiga-ui/kit';
+import type {TuiPdfViewerOptions} from '@taiga-ui/kit';
+import {TuiPdfViewerService} from '@taiga-ui/kit';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import {switchMap} from 'rxjs';
 

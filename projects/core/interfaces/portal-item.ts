@@ -1,8 +1,5 @@
-import {type TuiActiveZoneDirective} from '@taiga-ui/cdk';
-import {
-    type PolymorpheusComponent,
-    type PolymorpheusContent,
-} from '@tinkoff/ng-polymorpheus';
+import type {TuiActiveZoneDirective} from '@taiga-ui/cdk';
+import type {PolymorpheusComponent, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface TuiPortalItem<C = any> {
     readonly activeZone?: TuiActiveZoneDirective | null;

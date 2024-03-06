@@ -1,11 +1,7 @@
-import {Component, type TemplateRef} from '@angular/core';
-import {
-    type ComponentFixture,
-    discardPeriodicTasks,
-    fakeAsync,
-    TestBed,
-    tick,
-} from '@angular/core/testing';
+import type {TemplateRef} from '@angular/core';
+import {Component} from '@angular/core';
+import type {ComponentFixture} from '@angular/core/testing';
+import {discardPeriodicTasks, fakeAsync, TestBed, tick} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiHintModule, TuiRootModule} from '@taiga-ui/core';
 

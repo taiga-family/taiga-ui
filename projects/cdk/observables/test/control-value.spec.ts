@@ -1,5 +1,6 @@
 import {fakeAsync} from '@angular/core/testing';
-import {type AbstractControl, FormControl} from '@angular/forms';
+import type {AbstractControl} from '@angular/forms';
+import {FormControl} from '@angular/forms';
 import {tuiControlValue} from '@taiga-ui/cdk';
 import {tuiSwitchNgDevMode} from '@taiga-ui/testing';
 import {skip} from 'rxjs';

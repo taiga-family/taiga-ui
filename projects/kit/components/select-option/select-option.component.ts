@@ -1,26 +1,18 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    type DoCheck,
-    ElementRef,
-    inject,
-    type OnInit,
-    type TemplateRef,
-} from '@angular/core';
+import type {DoCheck, OnInit, TemplateRef} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ElementRef, inject} from '@angular/core';
 import {NgControl} from '@angular/forms';
+import type {TuiContext, TuiIdentityMatcher} from '@taiga-ui/cdk';
 import {
     AbstractTuiControl,
     TUI_DEFAULT_IDENTITY_MATCHER,
-    type TuiContext,
-    type TuiIdentityMatcher,
     tuiIsPresent,
     tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
+import type {TuiDataListHost} from '@taiga-ui/core';
 import {
     TUI_COMMON_ICONS,
     TUI_DATA_LIST_HOST,
     TuiDataListComponent,
-    type TuiDataListHost,
     TuiOptionComponent,
 } from '@taiga-ui/core';
 import {POLYMORPHEUS_CONTEXT, PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';

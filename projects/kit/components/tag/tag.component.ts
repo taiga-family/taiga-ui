@@ -10,18 +10,11 @@ import {
     Output,
     ViewChild,
 } from '@angular/core';
-import {
-    MODE_PROVIDER,
-    TUI_COMMON_ICONS,
-    TUI_MODE,
-    tuiSizeBigger,
-    type TuiSizeL,
-    type TuiSizeS,
-    type TuiSizeXS,
-} from '@taiga-ui/core';
-import {type TuiStatus} from '@taiga-ui/kit/types';
+import type {TuiSizeL, TuiSizeS, TuiSizeXS} from '@taiga-ui/core';
+import {MODE_PROVIDER, TUI_COMMON_ICONS, TUI_MODE, tuiSizeBigger} from '@taiga-ui/core';
+import type {TuiStatus} from '@taiga-ui/kit/types';
 import {tuiStringHashToHsl} from '@taiga-ui/kit/utils/format';
-import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {TUI_TAG_OPTIONS} from './tag.options';
 

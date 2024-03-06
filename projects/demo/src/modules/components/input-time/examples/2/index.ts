@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {type TuiTime} from '@taiga-ui/cdk';
+import type {TuiTime} from '@taiga-ui/cdk';
 import {tuiCreateTimePeriods} from '@taiga-ui/kit';
 
 @Component({

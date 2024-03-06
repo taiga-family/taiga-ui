@@ -1,14 +1,12 @@
-import {inject, Pipe, type PipeTransform} from '@angular/core';
-import {type TuiCurrencyVariants} from '@taiga-ui/addon-commerce/types';
+import type {PipeTransform} from '@angular/core';
+import {inject, Pipe} from '@angular/core';
+import type {TuiCurrencyVariants} from '@taiga-ui/addon-commerce/types';
 import {tuiFormatCurrency, tuiFormatSignSymbol} from '@taiga-ui/addon-commerce/utils';
 import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
-import {
-    TUI_NUMBER_FORMAT,
-    type TuiDecimal,
-    tuiFormatNumber,
-    type TuiHorizontalDirection,
-} from '@taiga-ui/core';
-import {map, type Observable} from 'rxjs';
+import type {TuiDecimal, TuiHorizontalDirection} from '@taiga-ui/core';
+import {TUI_NUMBER_FORMAT, tuiFormatNumber} from '@taiga-ui/core';
+import type {Observable} from 'rxjs';
+import {map} from 'rxjs';
 
 import {TUI_AMOUNT_OPTIONS} from './amount.options';
 

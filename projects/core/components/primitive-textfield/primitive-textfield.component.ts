@@ -1,3 +1,4 @@
+import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -9,13 +10,12 @@ import {
     inject,
     Input,
     Output,
-    type QueryList,
     ViewChild,
 } from '@angular/core';
+import type {TuiContext} from '@taiga-ui/cdk';
 import {
     AbstractTuiInteractive,
     tuiAsFocusableItemAccessor,
-    type TuiContext,
     tuiIsNativeFocusedIn,
     tuiPure,
     tuiRetargetedBoundaryCrossing,
@@ -26,15 +26,14 @@ import {
     TUI_TEXTFIELD_OPTIONS,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
 } from '@taiga-ui/core/directives/textfield-controller';
-import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import {tuiGetBorder} from '@taiga-ui/core/utils/miscellaneous';
-import {
-    type PolymorpheusContent,
-    PolymorpheusOutletDirective,
-} from '@tinkoff/ng-polymorpheus';
-import {fromEvent, map, type Observable} from 'rxjs';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusOutletDirective} from '@tinkoff/ng-polymorpheus';
+import type {Observable} from 'rxjs';
+import {fromEvent, map} from 'rxjs';
 
-import {type TuiPrimitiveTextfield} from './primitive-textfield-types';
+import type {TuiPrimitiveTextfield} from './primitive-textfield-types';
 
 export const TUI_ICON_PADDINGS: Record<TuiSizeL | TuiSizeS, number> = {
     s: 1.25,

@@ -1,4 +1,4 @@
-import {type ReplacementType} from '../../interfaces/replacement-type';
+import type {ReplacementType} from '../../interfaces/replacement-type';
 
 export const DEPRECATED_FUNCTIONS: readonly ReplacementType[] = [
     {

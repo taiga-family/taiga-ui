@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {type MaskitoOptions} from '@maskito/core';
+import type {MaskitoOptions} from '@maskito/core';
 
 @Component({
     selector: 'tui-input-example-3',

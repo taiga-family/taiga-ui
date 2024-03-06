@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
-import {type TuiSwipe, TuiSwipeModule} from '@taiga-ui/cdk';
+import type {TuiSwipe} from '@taiga-ui/cdk';
+import {TuiSwipeModule} from '@taiga-ui/cdk';
 import {TuiRootModule} from '@taiga-ui/core';
 
 describe('TuiSwipe', () => {

@@ -1,5 +1,5 @@
+import type {AfterViewInit} from '@angular/core';
 import {
-    type AfterViewInit,
     ChangeDetectorRef,
     Directive,
     EventEmitter,
@@ -9,10 +9,10 @@ import {
     Output,
 } from '@angular/core';
 import {IntersectionObserverService} from '@ng-web-apis/intersection-observer';
-import {type TuiComparator} from '@taiga-ui/addon-table/types';
+import type {TuiComparator} from '@taiga-ui/addon-table/types';
 import {AbstractTuiController} from '@taiga-ui/cdk';
 import {TUI_MODE} from '@taiga-ui/core';
-import {type Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
 
 import {TUI_STUCK} from '../providers/stuck.provider';
 import {TUI_TABLE_PROVIDERS} from '../providers/table.providers';

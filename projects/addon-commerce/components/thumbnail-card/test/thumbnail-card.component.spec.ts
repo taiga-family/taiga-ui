@@ -1,12 +1,13 @@
-import {type HarnessLoader} from '@angular/cdk/testing';
+import type {HarnessLoader} from '@angular/cdk/testing';
 import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {Component, ViewChild} from '@angular/core';
-import {type ComponentFixture, TestBed} from '@angular/core/testing';
+import type {ComponentFixture} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 import {
     TuiThumbnailCardComponent,
     TuiThumbnailCardModule,
 } from '@taiga-ui/addon-commerce';
-import {type TuiSizeS} from '@taiga-ui/core';
+import type {TuiSizeS} from '@taiga-ui/core';
 import {TuiThumbnailCardHarness} from '@taiga-ui/testing';
 
 describe('TuiThumbnailCard', () => {

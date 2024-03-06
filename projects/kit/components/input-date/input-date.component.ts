@@ -8,8 +8,16 @@ import {
     Input,
     ViewChild,
 } from '@angular/core';
-import {MASKITO_DEFAULT_OPTIONS, type MaskitoOptions} from '@maskito/core';
+import type {MaskitoOptions} from '@maskito/core';
+import {MASKITO_DEFAULT_OPTIONS} from '@maskito/core';
 import {maskitoDateOptionsGenerator} from '@maskito/kit';
+import type {
+    TuiActiveZoneDirective,
+    TuiBooleanHandler,
+    TuiContext,
+    TuiDateMode,
+    TuiFocusableElementAccessor,
+} from '@taiga-ui/cdk';
 import {
     AbstractTuiNullableControl,
     ALWAYS_FALSE_HANDLER,
@@ -18,41 +26,39 @@ import {
     TUI_DATE_FORMAT,
     TUI_DATE_SEPARATOR,
     TUI_IS_MOBILE,
-    type TuiActiveZoneDirective,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    type TuiBooleanHandler,
-    type TuiContext,
     tuiDateClamp,
-    type TuiDateMode,
     TuiDay,
-    type TuiFocusableElementAccessor,
     TuiMonth,
     tuiNullableSame,
     tuiPure,
 } from '@taiga-ui/cdk';
+import type {
+    TuiMarkerHandler,
+    TuiSizeL,
+    TuiSizeS,
+    TuiWithOptionalMinMax,
+} from '@taiga-ui/core';
 import {
     TUI_DEFAULT_MARKER_HANDLER,
     TUI_TEXTFIELD_SIZE,
     TuiDialogService,
-    type TuiMarkerHandler,
     TuiPrimitiveTextfieldComponent,
-    type TuiSizeL,
-    type TuiSizeS,
-    type TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
-import {type TuiNamedDay} from '@taiga-ui/kit/classes';
+import type {TuiNamedDay} from '@taiga-ui/kit/classes';
 import {TUI_DATE_MODE_MASKITO_ADAPTER} from '@taiga-ui/kit/constants';
+import type {TuiInputDateOptions} from '@taiga-ui/kit/tokens';
 import {
     TUI_DATE_TEXTS,
     TUI_DATE_VALUE_TRANSFORMER,
     TUI_INPUT_DATE_OPTIONS,
     TUI_MOBILE_CALENDAR,
     tuiDateStreamWithTransformer,
-    type TuiInputDateOptions,
 } from '@taiga-ui/kit/tokens';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
-import {map, type Observable, takeUntil} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {map, takeUntil} from 'rxjs';
 
 @Component({
     selector: 'tui-input-date',

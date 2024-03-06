@@ -1,4 +1,4 @@
-import {type TuiKeySteps} from '@taiga-ui/kit';
+import type {TuiKeySteps} from '@taiga-ui/kit';
 
 describe('TuiKeySteps type', () => {
     /**

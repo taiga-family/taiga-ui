@@ -7,15 +7,12 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import {type SafeValue} from '@angular/platform-browser';
-import {type TuiContext, TuiIdService, tuiPure, tuiSum} from '@taiga-ui/cdk';
-import {
-    TuiHintOptionsDirective,
-    tuiHintOptionsProvider,
-    type TuiSizeXL,
-    type TuiSizeXS,
-} from '@taiga-ui/core';
-import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {SafeValue} from '@angular/platform-browser';
+import type {TuiContext} from '@taiga-ui/cdk';
+import {TuiIdService, tuiPure, tuiSum} from '@taiga-ui/cdk';
+import type {TuiSizeXL, TuiSizeXS} from '@taiga-ui/core';
+import {TuiHintOptionsDirective, tuiHintOptionsProvider} from '@taiga-ui/core';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 const RADII = {
     xs: '50',

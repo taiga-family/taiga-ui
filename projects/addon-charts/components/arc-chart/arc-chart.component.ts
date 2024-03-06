@@ -1,22 +1,22 @@
+import type {ElementRef, QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
-    type ElementRef,
     HostBinding,
     inject,
     Input,
     Output,
-    type QueryList,
     ViewChildren,
 } from '@angular/core';
-import {DomSanitizer, type SafeValue} from '@angular/platform-browser';
+import type {SafeValue} from '@angular/platform-browser';
+import {DomSanitizer} from '@angular/platform-browser';
 import {TuiDestroyService, tuiTypedFromEvent, tuiWatch} from '@taiga-ui/cdk';
-import {type TuiSizeXL} from '@taiga-ui/core';
+import type {TuiSizeXL} from '@taiga-ui/core';
+import type {Observable} from 'rxjs';
 import {
     map,
     merge,
-    type Observable,
     ReplaySubject,
     startWith,
     switchMap,

@@ -1,7 +1,8 @@
 import {Directive, ElementRef, inject, NgZone, Output} from '@angular/core';
 import {tuiTypedFromEvent, tuiZoneOptimized} from '@taiga-ui/cdk/observables';
 import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
-import {distinctUntilChanged, map, merge, type Observable, skip, startWith} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {distinctUntilChanged, map, merge, skip, startWith} from 'rxjs';
 
 /**
  * Directive to monitor focus/blur status, works with focusIn/focus-out

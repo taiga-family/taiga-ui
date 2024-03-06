@@ -3,7 +3,8 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiPure} from '@taiga-ui/cdk';
 import {TuiAppearance} from '@taiga-ui/core';
-import {BehaviorSubject, map, type Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {BehaviorSubject, map} from 'rxjs';
 
 const Department = {
     IT: 'IT',

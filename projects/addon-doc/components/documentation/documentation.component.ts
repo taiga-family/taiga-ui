@@ -1,24 +1,23 @@
 import {animate, style, transition, trigger} from '@angular/animations';
+import type {AfterContentInit, QueryList} from '@angular/core';
 import {
-    type AfterContentInit,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
     ContentChildren,
     inject,
     Input,
-    type QueryList,
 } from '@angular/core';
 import {
     TUI_DOC_DOCUMENTATION_TEXTS,
     TUI_DOC_EXCLUDED_PROPERTIES,
 } from '@taiga-ui/addon-doc/tokens';
+import type {TuiTypedMatcher} from '@taiga-ui/cdk';
 import {
     EMPTY_QUERY,
     TuiDestroyService,
     tuiHexToRgb,
     tuiQueryListChanges,
-    type TuiTypedMatcher,
     tuiWatch,
 } from '@taiga-ui/cdk';
 import {merge, switchMap, takeUntil} from 'rxjs';

@@ -1,9 +1,9 @@
 import {hasElementAttribute} from '../../../utils/templates/elements';
-import {type ReplacementAttributeToDirective} from '../../interfaces';
-import {type RemovableInput} from '../../interfaces/removable-input';
-import {type ReplacementAttribute} from '../../interfaces/replacement-attribute';
-import {type ReplacementAttributeValue} from '../../interfaces/replacement-attribute-value';
-import {type ReplacementTag} from '../../interfaces/replacement-tag';
+import type {ReplacementAttributeToDirective} from '../../interfaces';
+import type {RemovableInput} from '../../interfaces/removable-input';
+import type {ReplacementAttribute} from '../../interfaces/replacement-attribute';
+import type {ReplacementAttributeValue} from '../../interfaces/replacement-attribute-value';
+import type {ReplacementTag} from '../../interfaces/replacement-tag';
 import {TUI_INTERACTIVE_SELECTORS} from './tui-interactive-selectors';
 
 export const ATTRS_TO_REPLACE: ReplacementAttribute[] = [

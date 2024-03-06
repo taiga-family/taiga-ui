@@ -1,4 +1,5 @@
-import {inject, Pipe, type PipeTransform} from '@angular/core';
+import type {PipeTransform} from '@angular/core';
+import {inject, Pipe} from '@angular/core';
 import {CHAR_PLUS} from '@taiga-ui/cdk';
 import {TuiCountryIsoCode} from '@taiga-ui/i18n';
 import {TUI_COUNTRIES_MASKS} from '@taiga-ui/kit/tokens';

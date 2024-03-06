@@ -6,8 +6,8 @@ import {
     TuiInvalidMonthException,
     TuiInvalidYearException,
 } from '@taiga-ui/cdk/exceptions';
-import {type TuiDayLike} from '@taiga-ui/cdk/interfaces';
-import {type TuiDateMode} from '@taiga-ui/cdk/types';
+import type {TuiDayLike} from '@taiga-ui/cdk/interfaces';
+import type {TuiDateMode} from '@taiga-ui/cdk/types';
 import {tuiInRange, tuiNormalizeToIntNumber} from '@taiga-ui/cdk/utils/math';
 
 import {DATE_FILLER_LENGTH} from './date-fillers';

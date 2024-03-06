@@ -1,12 +1,6 @@
-import {
-    ContentChildren,
-    Directive,
-    inject,
-    Input,
-    Output,
-    type QueryList,
-} from '@angular/core';
-import {type TuiComparator} from '@taiga-ui/addon-table/types';
+import type {QueryList} from '@angular/core';
+import {ContentChildren, Directive, inject, Input, Output} from '@angular/core';
+import type {TuiComparator} from '@taiga-ui/addon-table/types';
 import {EMPTY_QUERY} from '@taiga-ui/cdk';
 import {delay, filter, map} from 'rxjs';
 

@@ -1,9 +1,9 @@
+import type {ElementRef} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
     ContentChild,
-    type ElementRef,
     EventEmitter,
     HostBinding,
     inject,
@@ -11,14 +11,14 @@ import {
     Output,
     ViewChild,
 } from '@angular/core';
+import type {TuiFocusableElementAccessor, TuiNativeFocusableElement} from '@taiga-ui/cdk';
 import {
     AbstractTuiInteractive,
     tuiAsFocusableItemAccessor,
-    type TuiFocusableElementAccessor,
     tuiIsNativeFocused,
-    type TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
-import {MODE_PROVIDER, TUI_MODE, type TuiSizeS} from '@taiga-ui/core';
+import type {TuiSizeS} from '@taiga-ui/core';
+import {MODE_PROVIDER, TUI_MODE} from '@taiga-ui/core';
 import {TUI_ARROW_OPTIONS} from '@taiga-ui/kit/components/arrow';
 
 import {TuiAccordionItemContentDirective} from './accordion-item-content.directive';

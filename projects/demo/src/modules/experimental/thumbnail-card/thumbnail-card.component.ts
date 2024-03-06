@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {type TuiPaymentSystem} from '@taiga-ui/addon-commerce';
-import {type TuiDocExample} from '@taiga-ui/addon-doc';
-import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core';
+import type {TuiPaymentSystem} from '@taiga-ui/addon-commerce';
+import type {TuiDocExample} from '@taiga-ui/addon-doc';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 
 @Component({
     selector: 'example-tui-thumbnail-card',

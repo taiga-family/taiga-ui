@@ -1,11 +1,9 @@
 import {Component, ElementRef, ViewChild} from '@angular/core';
-import {type ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
+import type {ComponentFixture} from '@angular/core/testing';
+import {fakeAsync, TestBed, tick} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {
-    TUI_EXPAND_LOADED,
-    type TuiExpandComponent,
-    TuiExpandModule,
-} from '@taiga-ui/core';
+import type {TuiExpandComponent} from '@taiga-ui/core';
+import {TUI_EXPAND_LOADED, TuiExpandModule} from '@taiga-ui/core';
 import {TuiPageObject} from '@taiga-ui/testing';
 
 const ANIMATION_DELAY = 900;

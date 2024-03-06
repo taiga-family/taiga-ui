@@ -1,8 +1,10 @@
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiBreakpointService, type TuiSizeL} from '@taiga-ui/core';
-import {map, type Observable} from 'rxjs';
+import type {TuiSizeL} from '@taiga-ui/core';
+import {TuiBreakpointService} from '@taiga-ui/core';
+import type {Observable} from 'rxjs';
+import {map} from 'rxjs';
 
 @Component({
     selector: 'tui-block-status-example-2',

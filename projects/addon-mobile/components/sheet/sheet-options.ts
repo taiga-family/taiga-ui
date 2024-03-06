@@ -1,7 +1,7 @@
 import {tuiCreateToken} from '@taiga-ui/cdk';
-import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-import {type TuiSheet} from './sheet';
+import type {TuiSheet} from './sheet';
 
 /**
  * @deprecated: drop in v4.0

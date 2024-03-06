@@ -1,3 +1,4 @@
+import type {OnChanges} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -7,13 +8,12 @@ import {
     inject,
     Input,
     NgZone,
-    type OnChanges,
     Output,
     ViewEncapsulation,
 } from '@angular/core';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {TuiDestroyService, tuiIsHTMLElement, tuiPx, tuiZonefree} from '@taiga-ui/cdk';
-import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {tuiBadgeNotificationOptionsProvider} from '@taiga-ui/kit';
 import {takeUntil} from 'rxjs';
 

@@ -5,16 +5,19 @@ import {
     Input,
     ViewChild,
 } from '@angular/core';
+import type {
+    TuiFocusableElementAccessor,
+    TuiIdentityMatcher,
+    TuiNativeFocusableElement,
+} from '@taiga-ui/cdk';
 import {
     AbstractTuiNullableControl,
     TUI_DEFAULT_IDENTITY_MATCHER,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    type TuiFocusableElementAccessor,
-    type TuiIdentityMatcher,
-    type TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
-import {MODE_PROVIDER, TUI_MODE, type TuiSizeL} from '@taiga-ui/core';
+import type {TuiSizeL} from '@taiga-ui/core';
+import {MODE_PROVIDER, TUI_MODE} from '@taiga-ui/core';
 import {TUI_RADIO_OPTIONS, TuiRadioComponent} from '@taiga-ui/kit/components/radio';
 
 @Component({

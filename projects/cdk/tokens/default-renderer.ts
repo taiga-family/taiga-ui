@@ -1,4 +1,5 @@
-import {inject, type Renderer2, RendererFactory2} from '@angular/core';
+import type {Renderer2} from '@angular/core';
+import {inject, RendererFactory2} from '@angular/core';
 import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk/utils';
 
 /**

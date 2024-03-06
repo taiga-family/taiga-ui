@@ -9,15 +9,15 @@ import {
     Input,
     ViewChild,
 } from '@angular/core';
+import type {TuiContext, TuiFocusableElementAccessor} from '@taiga-ui/cdk';
 import {
     AbstractTuiControl,
     TUI_IS_IOS,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    type TuiContext,
-    type TuiFocusableElementAccessor,
     tuiIsNativeFocused,
 } from '@taiga-ui/cdk';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {
     MODE_PROVIDER,
     TEXTFIELD_CONTROLLER_PROVIDER,
@@ -26,11 +26,9 @@ import {
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
     tuiGetBorder,
     TuiHintOptionsDirective,
-    type TuiSizeL,
-    type TuiSizeS,
     TuiTextfieldComponent,
 } from '@taiga-ui/core';
-import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export const DEFAULT_ROWS = 20;
 export const LINE_HEIGHT_M = 20;

@@ -1,4 +1,5 @@
-import {TuiMapperPipe, type TuiTypedMapper} from '@taiga-ui/cdk';
+import type {TuiTypedMapper} from '@taiga-ui/cdk';
+import {TuiMapperPipe} from '@taiga-ui/cdk';
 
 describe('TuiMapper pipe', () => {
     let pipe: TuiMapperPipe;

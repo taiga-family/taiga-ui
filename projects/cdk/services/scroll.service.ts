@@ -4,17 +4,8 @@ import {ANIMATION_FRAME, PERFORMANCE} from '@ng-web-apis/common';
 import {tuiAssert} from '@taiga-ui/cdk/classes';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {tuiEaseInOutQuad} from '@taiga-ui/cdk/utils/miscellaneous';
-import {
-    defer,
-    endWith,
-    map,
-    type Observable,
-    of,
-    switchMap,
-    takeUntil,
-    tap,
-    timer,
-} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {defer, endWith, map, of, switchMap, takeUntil, tap, timer} from 'rxjs';
 
 const SCROLL_TIME = 300;
 

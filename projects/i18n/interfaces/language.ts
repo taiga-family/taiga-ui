@@ -1,6 +1,6 @@
-import {type TuiCountryIsoCode} from '@taiga-ui/i18n/enums';
+import type {TuiCountryIsoCode} from '@taiga-ui/i18n/enums';
 
-import {type TuiLanguageName} from './language-names';
+import type {TuiLanguageName} from './language-names';
 
 // prettier-ignore
 type MONTHS_ARRAY = [string, string, string, string, string, string, string, string, string, string, string, string];

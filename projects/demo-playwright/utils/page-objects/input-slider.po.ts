@@ -1,4 +1,4 @@
-import {type Locator} from '@playwright/test';
+import type {Locator} from '@playwright/test';
 
 export class TuiInputSliderPO {
     public readonly textfield = this.host.getByRole('textbox');

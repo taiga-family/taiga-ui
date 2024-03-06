@@ -1,11 +1,5 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    type ElementRef,
-    inject,
-    type QueryList,
-    ViewChildren,
-} from '@angular/core';
+import type {ElementRef, QueryList} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, ViewChildren} from '@angular/core';
 import {MutationObserverService} from '@ng-web-apis/mutation-observer';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {EMPTY_QUERY} from '@taiga-ui/cdk';

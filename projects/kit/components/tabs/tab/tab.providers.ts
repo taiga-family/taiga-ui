@@ -1,9 +1,11 @@
-import {ElementRef, inject, InjectionToken, type Provider} from '@angular/core';
+import type {Provider} from '@angular/core';
+import {ElementRef, inject, InjectionToken} from '@angular/core';
 import {RouterLinkActive} from '@angular/router';
 import {MutationObserverService} from '@ng-web-apis/mutation-observer';
 import {TuiDestroyService, tuiTypedFromEvent} from '@taiga-ui/cdk';
 import {MODE_PROVIDER} from '@taiga-ui/core';
-import {EMPTY, filter, map, merge, type Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {EMPTY, filter, map, merge} from 'rxjs';
 /**
  * Stream of tab activation events
  */

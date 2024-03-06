@@ -1,5 +1,5 @@
 import {Directive, inject, Input, TemplateRef} from '@angular/core';
-import {type TuiRowContext} from '@taiga-ui/addon-table/interfaces';
+import type {TuiRowContext} from '@taiga-ui/addon-table/interfaces';
 
 /**
  * @deprecated use `*ngFor` + `tuiTableSort`-pipe instead.

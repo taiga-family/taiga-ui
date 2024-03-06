@@ -1,5 +1,5 @@
-import {type TuiContext, type TuiDayRange} from '@taiga-ui/cdk';
-import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {TuiContext, TuiDayRange} from '@taiga-ui/cdk';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export class TuiDayRangePeriod {
     constructor(

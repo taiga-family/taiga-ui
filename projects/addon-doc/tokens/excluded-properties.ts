@@ -1,4 +1,4 @@
-import {type Provider} from '@angular/core';
+import type {Provider} from '@angular/core';
 import {tuiCreateToken} from '@taiga-ui/cdk';
 
 /**

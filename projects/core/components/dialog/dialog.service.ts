@@ -2,7 +2,7 @@ import {inject, Injectable} from '@angular/core';
 import {TuiPopoverService} from '@taiga-ui/cdk';
 
 import {TuiDialogComponent} from './dialog.component';
-import {type TuiDialogOptions} from './dialog.interfaces';
+import type {TuiDialogOptions} from './dialog.interfaces';
 import {TUI_DIALOG_OPTIONS, TUI_DIALOGS} from './dialog.tokens';
 
 @Injectable({

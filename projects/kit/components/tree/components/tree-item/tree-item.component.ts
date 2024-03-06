@@ -1,16 +1,15 @@
+import type {DoCheck, QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     ContentChildren,
-    type DoCheck,
     ElementRef,
     forwardRef,
     HostBinding,
     inject,
-    type QueryList,
 } from '@angular/core';
 import {EMPTY_QUERY} from '@taiga-ui/cdk';
-import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {distinctUntilChanged, map, startWith, Subject} from 'rxjs';
 
 import type {TuiTreeController, TuiTreeItemContext} from '../../misc/tree.interfaces';

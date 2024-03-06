@@ -1,6 +1,6 @@
 import {Directive, Input} from '@angular/core';
 import {tuiWithStyles} from '@taiga-ui/cdk';
-import {type TuiSizeXXL, type TuiSizeXXS} from '@taiga-ui/core';
+import type {TuiSizeXXL, TuiSizeXXS} from '@taiga-ui/core';
 import {tuiButtonOptionsProvider} from '@taiga-ui/experimental/components';
 import {tuiAvatarOptionsProvider, tuiBadgeOptionsProvider} from '@taiga-ui/kit';
 

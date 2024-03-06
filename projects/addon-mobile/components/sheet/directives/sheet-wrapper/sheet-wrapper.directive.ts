@@ -7,12 +7,12 @@ import {
     tuiPure,
     tuiZonefull,
 } from '@taiga-ui/cdk';
+import type {Observable} from 'rxjs';
 import {
     debounceTime,
     distinctUntilChanged,
     filter,
     map,
-    type Observable,
     race,
     startWith,
     switchMap,

@@ -1,4 +1,5 @@
-import {Directive, type Provider, type Type} from '@angular/core';
+import type {Provider, Type} from '@angular/core';
+import {Directive} from '@angular/core';
 
 @Directive({
     selector: 'ng-template[tuiDataList]',

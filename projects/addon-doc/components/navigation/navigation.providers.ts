@@ -1,9 +1,11 @@
-import {InjectionToken, type Provider} from '@angular/core';
+import type {Provider} from '@angular/core';
+import {InjectionToken} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {TUI_DOC_PAGES, TUI_DOC_TITLE} from '@taiga-ui/addon-doc/tokens';
-import {type TuiDocPages} from '@taiga-ui/addon-doc/types';
+import type {TuiDocPages} from '@taiga-ui/addon-doc/types';
 import {TuiDestroyService, tuiIsPresent} from '@taiga-ui/cdk';
-import {filter, map, mergeMap, type Observable, takeUntil} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {filter, map, mergeMap, takeUntil} from 'rxjs';
 
 function labelsProviderFactory(pages: TuiDocPages): readonly string[] {
     return pages

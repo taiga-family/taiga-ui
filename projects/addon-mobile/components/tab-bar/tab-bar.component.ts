@@ -1,3 +1,4 @@
+import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -9,7 +10,6 @@ import {
     HostListener,
     Input,
     Output,
-    type QueryList,
 } from '@angular/core';
 import {EMPTY_QUERY, tuiIsElement} from '@taiga-ui/cdk';
 

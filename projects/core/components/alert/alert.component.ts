@@ -1,18 +1,14 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    ElementRef,
-    inject,
-    type OnInit,
-} from '@angular/core';
-import {TuiDestroyService, type TuiPopover} from '@taiga-ui/cdk';
+import type {OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ElementRef, inject} from '@angular/core';
+import type {TuiPopover} from '@taiga-ui/cdk';
+import {TuiDestroyService} from '@taiga-ui/cdk';
 import {tuiFadeIn, tuiHeightCollapse, tuiSlideIn} from '@taiga-ui/core/animations';
 import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
 import {tuiToAnimationOptions} from '@taiga-ui/core/utils';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 import {fromEvent, repeat, takeUntil, timer} from 'rxjs';
 
-import {type TuiAlertOptions} from './alert.interfaces';
+import type {TuiAlertOptions} from './alert.interfaces';
 import {TUI_ALERT_POSITION} from './alert.tokens';
 
 // TODO: get rid of $any in template

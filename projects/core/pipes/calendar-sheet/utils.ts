@@ -1,12 +1,6 @@
 /// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
-import {
-    DAYS_IN_WEEK,
-    tuiAssert,
-    TuiDay,
-    type TuiDayOfWeek,
-    tuiInRange,
-    type TuiMonth,
-} from '@taiga-ui/cdk';
+import type {TuiDayOfWeek, TuiMonth} from '@taiga-ui/cdk';
+import {DAYS_IN_WEEK, tuiAssert, TuiDay, tuiInRange} from '@taiga-ui/cdk';
 
 /**
  * Computes day of week offset of the beginning of the month

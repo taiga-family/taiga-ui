@@ -1,6 +1,7 @@
-import {ElementRef, type Provider, SkipSelf} from '@angular/core';
+import type {Provider} from '@angular/core';
+import {ElementRef, SkipSelf} from '@angular/core';
 import {TUI_IS_MOBILE_RES} from '@taiga-ui/core/tokens';
-import {type Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
 
 /**
  * @deprecated: drop in v4.0

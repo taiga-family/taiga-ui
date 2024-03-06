@@ -1,9 +1,9 @@
 import {InjectionToken} from '@angular/core';
-import {
-    type TuiControlValueTransformer,
-    type TuiDay,
-    type TuiDayRange,
-    type TuiTime,
+import type {
+    TuiControlValueTransformer,
+    TuiDay,
+    TuiDayRange,
+    TuiTime,
 } from '@taiga-ui/cdk';
 
 // TODO: Refactor to use `AbstractTuiValueTransformer` and add ability to provide it for all controls

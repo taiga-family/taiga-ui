@@ -1,9 +1,10 @@
 import {Component, forwardRef, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {type TuiDocExample} from '@taiga-ui/addon-doc';
-import {type TuiContext, type TuiInputMode, type TuiInputType} from '@taiga-ui/cdk';
-import {TUI_HINT_DIRECTIONS, type TuiSizeL, type TuiSizeS} from '@taiga-ui/core';
-import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {TuiDocExample} from '@taiga-ui/addon-doc';
+import type {TuiContext, TuiInputMode, TuiInputType} from '@taiga-ui/cdk';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import {TUI_HINT_DIRECTIONS} from '@taiga-ui/core';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
 import {AbstractExampleTuiInteractive} from '../abstract/interactive';

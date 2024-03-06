@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
-import {type TuiDocExample} from '@taiga-ui/addon-doc';
+import type {TuiDocExample} from '@taiga-ui/addon-doc';
 
 import {AbstractExampleTuiControl} from '../abstract/control';
 

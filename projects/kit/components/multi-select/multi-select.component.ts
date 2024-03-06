@@ -10,48 +10,51 @@ import {
     TemplateRef,
     ViewChild,
 } from '@angular/core';
+import type {
+    TuiActiveZoneDirective,
+    TuiBooleanHandler,
+    TuiContext,
+    TuiFocusableElementAccessor,
+    TuiStringHandler,
+    TuiTypedMapper,
+} from '@taiga-ui/cdk';
 import {
     AbstractTuiMultipleControl,
     ALWAYS_TRUE_HANDLER,
     EMPTY_ARRAY,
     TUI_IS_MOBILE,
-    type TuiActiveZoneDirective,
     tuiArrayToggle,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    type TuiBooleanHandler,
-    type TuiContext,
-    type TuiFocusableElementAccessor,
     tuiIsNativeFocused,
     tuiIsString,
     tuiPure,
-    type TuiStringHandler,
-    type TuiTypedMapper,
 } from '@taiga-ui/cdk';
+import type {
+    TuiDataListAccessor,
+    TuiDataListHost,
+    TuiSizeL,
+    TuiSizeM,
+    TuiSizeS,
+} from '@taiga-ui/core';
 import {
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_DATA_LIST_ACCESSOR,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
     tuiAsDataListHost,
-    type TuiDataListAccessor,
     TuiDataListDirective,
-    type TuiDataListHost,
     TuiHostedDropdownComponent,
-    type TuiSizeL,
-    type TuiSizeM,
-    type TuiSizeS,
 } from '@taiga-ui/core';
 import {TuiStringifiableItem} from '@taiga-ui/kit/classes';
 import {TUI_ARROW_MODE} from '@taiga-ui/kit/components/arrow';
 import {TuiInputTagComponent} from '@taiga-ui/kit/components/input-tag';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
-import {TUI_ITEMS_HANDLERS, type TuiItemsHandlers} from '@taiga-ui/kit/tokens';
-import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {TuiItemsHandlers} from '@taiga-ui/kit/tokens';
+import {TUI_ITEMS_HANDLERS} from '@taiga-ui/kit/tokens';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-import {
-    TUI_MULTI_SELECT_OPTIONS,
-    type TuiMultiSelectOptions,
-} from './multi-select.options';
+import type {TuiMultiSelectOptions} from './multi-select.options';
+import {TUI_MULTI_SELECT_OPTIONS} from './multi-select.options';
 import {AbstractTuiNativeMultiSelect} from './native-multi-select/native-multi-select';
 
 @Component({

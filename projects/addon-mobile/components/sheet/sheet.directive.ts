@@ -3,9 +3,9 @@ import {tuiIfMap} from '@taiga-ui/cdk';
 import {PolymorpheusTemplate} from '@tinkoff/ng-polymorpheus';
 import {endWith, ignoreElements, share, Subject} from 'rxjs';
 
-import {type TuiSheet} from './sheet';
+import type {TuiSheet} from './sheet';
 import {TuiSheetService} from './sheet.service';
-import {type TuiSheetOptions} from './sheet-options';
+import type {TuiSheetOptions} from './sheet-options';
 
 /**
  * @deprecated: use {@link TuiSheetDialogDirective}

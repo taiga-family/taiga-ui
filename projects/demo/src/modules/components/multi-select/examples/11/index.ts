@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {type TuiContext} from '@taiga-ui/cdk';
-import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {TuiContext} from '@taiga-ui/cdk';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 @Component({
     selector: 'tui-multi-select-example-11',

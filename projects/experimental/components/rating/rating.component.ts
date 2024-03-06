@@ -9,12 +9,8 @@ import {
     ViewChild,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
-import {
-    AbstractTuiControl,
-    tuiClamp,
-    type TuiFocusableElementAccessor,
-    tuiIsNativeFocused,
-} from '@taiga-ui/cdk';
+import type {TuiFocusableElementAccessor} from '@taiga-ui/cdk';
+import {AbstractTuiControl, tuiClamp, tuiIsNativeFocused} from '@taiga-ui/cdk';
 
 import {TUI_RATING_OPTIONS} from './rating.options';
 

@@ -1,5 +1,6 @@
 import {DOCUMENT, isPlatformBrowser} from '@angular/common';
-import {inject, Injectable, PLATFORM_ID, type Provider} from '@angular/core';
+import type {Provider} from '@angular/core';
+import {inject, Injectable, PLATFORM_ID} from '@angular/core';
 import {TUI_IS_E2E, tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 
 declare global {

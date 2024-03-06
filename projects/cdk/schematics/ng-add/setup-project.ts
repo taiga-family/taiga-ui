@@ -1,6 +1,7 @@
-import {chain, type Rule} from '@angular-devkit/schematics';
+import type {Rule} from '@angular-devkit/schematics';
+import {chain} from '@angular-devkit/schematics';
 
-import {type TuiSchema} from './schema';
+import type {TuiSchema} from './schema';
 import {addTaigaIcons} from './steps/add-taiga-icons';
 import {addTaigaModules} from './steps/add-taiga-modules';
 import {addTaigaStyles} from './steps/add-taiga-styles';

@@ -1,9 +1,9 @@
 import {inject, Injectable} from '@angular/core';
 import {TUI_DEFAULT_MATCHER, TuiDestroyService} from '@taiga-ui/cdk';
+import type {Observable} from 'rxjs';
 import {
     delay,
     distinctUntilChanged,
-    type Observable,
     of,
     shareReplay,
     startWith,
@@ -13,7 +13,7 @@ import {
 } from 'rxjs';
 
 import {databaseMockData} from './database-mock-data';
-import {type User} from './user';
+import type {User} from './user';
 
 @Injectable()
 export class RequestService {

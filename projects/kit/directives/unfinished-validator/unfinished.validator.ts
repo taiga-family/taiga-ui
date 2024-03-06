@@ -1,11 +1,7 @@
-import {type AbstractControl, type ValidatorFn} from '@angular/forms';
-import {
-    type TuiFocusableElementAccessor,
-    tuiIsHTMLElement,
-    tuiIsInput,
-    TuiValidationError,
-} from '@taiga-ui/cdk';
-import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {AbstractControl, ValidatorFn} from '@angular/forms';
+import type {TuiFocusableElementAccessor} from '@taiga-ui/cdk';
+import {tuiIsHTMLElement, tuiIsInput, TuiValidationError} from '@taiga-ui/cdk';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export function tuiCreateUnfinishedValidator(
     nativeInputGetter: () => TuiFocusableElementAccessor,

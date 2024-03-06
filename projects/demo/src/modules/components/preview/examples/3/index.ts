@@ -1,19 +1,12 @@
-import {Component, inject, type TemplateRef, ViewChild} from '@angular/core';
+import type {TemplateRef} from '@angular/core';
+import {Component, inject, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiPreviewDialogService} from '@taiga-ui/addon-preview';
 import {tuiIsPresent} from '@taiga-ui/cdk';
-import {type TuiDialogContext} from '@taiga-ui/core';
-import {
-    BehaviorSubject,
-    filter,
-    map,
-    type Observable,
-    of,
-    startWith,
-    switchMap,
-    timer,
-} from 'rxjs';
+import type {TuiDialogContext} from '@taiga-ui/core';
+import type {Observable} from 'rxjs';
+import {BehaviorSubject, filter, map, of, startWith, switchMap, timer} from 'rxjs';
 
 @Component({
     selector: 'tui-preview-example-3',

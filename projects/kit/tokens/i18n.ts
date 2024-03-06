@@ -1,6 +1,8 @@
-import {tuiCreateTokenFromFactory, type TuiDateMode} from '@taiga-ui/cdk';
-import {type TuiCountryIsoCode, tuiExtractI18n} from '@taiga-ui/i18n';
-import {type Observable} from 'rxjs';
+import type {TuiDateMode} from '@taiga-ui/cdk';
+import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk';
+import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
+import {tuiExtractI18n} from '@taiga-ui/i18n';
+import type {Observable} from 'rxjs';
 
 export const TUI_PROMPT_WORDS = tuiCreateTokenFromFactory(tuiExtractI18n('prompt'));
 

@@ -1,13 +1,10 @@
-import {
-    inject,
-    Injectable,
-    type Provider,
-    type ProviderToken,
-    type Type,
-} from '@angular/core';
-import {type TuiContext} from '@taiga-ui/cdk/interfaces';
-import {PolymorpheusComponent, type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {type BehaviorSubject, Observable, type Observer} from 'rxjs';
+import type {Provider, ProviderToken, Type} from '@angular/core';
+import {inject, Injectable} from '@angular/core';
+import type {TuiContext} from '@taiga-ui/cdk/interfaces';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
+import type {BehaviorSubject, Observer} from 'rxjs';
+import {Observable} from 'rxjs';
 
 import {TuiIdService} from './id.service';
 

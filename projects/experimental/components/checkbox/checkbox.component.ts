@@ -1,11 +1,10 @@
+import type {DoCheck, OnInit} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
-    type DoCheck,
     ElementRef,
     inject,
     Input,
-    type OnInit,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {
@@ -14,7 +13,8 @@ import {
     tuiIsString,
     TuiNativeValidatorDirective,
 } from '@taiga-ui/cdk';
-import {TUI_ICON_RESOLVER, TuiAppearanceDirective, type TuiSizeS} from '@taiga-ui/core';
+import type {TuiSizeS} from '@taiga-ui/core';
+import {TUI_ICON_RESOLVER, TuiAppearanceDirective} from '@taiga-ui/core';
 import {takeUntil} from 'rxjs';
 
 import {TUI_CHECKBOX_OPTIONS} from './checkbox.options';

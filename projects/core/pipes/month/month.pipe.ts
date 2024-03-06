@@ -1,7 +1,9 @@
-import {inject, Pipe, type PipeTransform} from '@angular/core';
-import {type TuiMonth} from '@taiga-ui/cdk';
+import type {PipeTransform} from '@angular/core';
+import {inject, Pipe} from '@angular/core';
+import type {TuiMonth} from '@taiga-ui/cdk';
 import {TUI_MONTHS} from '@taiga-ui/core/tokens';
-import {map, type Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {map} from 'rxjs';
 
 @Pipe({name: 'tuiMonth'})
 export class TuiMonthPipe implements PipeTransform {

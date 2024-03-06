@@ -9,10 +9,8 @@ import {
 import {TUI_TABLE_PAGINATION_TEXTS} from '@taiga-ui/addon-table/tokens';
 import {TUI_COMMON_ICONS, TUI_SPIN_ICONS, TUI_SPIN_TEXTS} from '@taiga-ui/core';
 
-import {
-    TUI_TABLE_PAGINATION_OPTIONS,
-    type TuiTablePaginationOptions,
-} from './table-pagination.options';
+import type {TuiTablePaginationOptions} from './table-pagination.options';
+import {TUI_TABLE_PAGINATION_OPTIONS} from './table-pagination.options';
 
 export interface TuiTablePagination {
     readonly page: number;

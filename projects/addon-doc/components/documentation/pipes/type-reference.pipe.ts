@@ -1,4 +1,5 @@
-import {inject, Pipe, type PipeTransform} from '@angular/core';
+import type {PipeTransform} from '@angular/core';
+import {inject, Pipe} from '@angular/core';
 import {
     TUI_DOC_TYPE_REFERENCE_HANDLER,
     TUI_DOC_TYPE_REFERENCE_PARSER,

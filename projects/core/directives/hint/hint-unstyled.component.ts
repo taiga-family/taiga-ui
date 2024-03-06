@@ -5,9 +5,9 @@ import {
     inject,
     TemplateRef,
 } from '@angular/core';
-import {type TuiContext} from '@taiga-ui/cdk';
+import type {TuiContext} from '@taiga-ui/cdk';
 import {TUI_PARENT_ANIMATION} from '@taiga-ui/core/animations';
-import {type TuiPortalItem} from '@taiga-ui/core/interfaces';
+import type {TuiPortalItem} from '@taiga-ui/core/interfaces';
 import {POLYMORPHEUS_CONTEXT, PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 
 import {TuiHintDirective} from './hint.directive';

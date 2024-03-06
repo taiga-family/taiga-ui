@@ -1,4 +1,4 @@
-import {type MaskitoOptions} from '@maskito/core';
+import type {MaskitoOptions} from '@maskito/core';
 
 const MAP: Record<string, string> = {
     А: 'F',

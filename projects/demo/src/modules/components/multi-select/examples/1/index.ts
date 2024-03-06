@@ -2,7 +2,8 @@ import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TUI_DEFAULT_MATCHER, type TuiBooleanHandler, tuiPure} from '@taiga-ui/cdk';
+import type {TuiBooleanHandler} from '@taiga-ui/cdk';
+import {TUI_DEFAULT_MATCHER, tuiPure} from '@taiga-ui/cdk';
 
 const ITEMS: readonly string[] = [
     'Luke Skywalker',

@@ -1,7 +1,9 @@
-import {type Provider} from '@angular/core';
-import {type TuiContext, tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
-import {TuiAppearance, type TuiSizeL} from '@taiga-ui/core';
-import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {Provider} from '@angular/core';
+import type {TuiContext} from '@taiga-ui/cdk';
+import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
+import type {TuiSizeL} from '@taiga-ui/core';
+import {TuiAppearance} from '@taiga-ui/core';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface TuiToggleOptions {
     readonly appearances: Readonly<{

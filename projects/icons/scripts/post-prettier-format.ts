@@ -1,5 +1,6 @@
 import {readFileSync, writeFileSync} from 'fs';
-import prettier, {type Options as PrettierOptions} from 'prettier';
+import type {Options as PrettierOptions} from 'prettier';
+import prettier from 'prettier';
 
 interface Options {
     config: PrettierOptions;

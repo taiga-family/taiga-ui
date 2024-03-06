@@ -7,11 +7,8 @@ import {
     TuiFlagPipe,
     TuiFlagPipeModule,
 } from '@taiga-ui/core';
-import {
-    TuiCountryIsoCode,
-    type TuiLanguageName,
-    TuiLanguageSwitcher,
-} from '@taiga-ui/i18n';
+import type {TuiLanguageName} from '@taiga-ui/i18n';
+import {TuiCountryIsoCode, TuiLanguageSwitcher} from '@taiga-ui/i18n';
 import {TuiSelectModule} from '@taiga-ui/kit';
 
 @Component({

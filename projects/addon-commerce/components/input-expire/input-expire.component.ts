@@ -7,19 +7,14 @@ import {
     ViewChild,
 } from '@angular/core';
 import {maskitoDateOptionsGenerator} from '@maskito/kit';
+import type {TuiAutofillFieldName, TuiFocusableElementAccessor} from '@taiga-ui/cdk';
 import {
     AbstractTuiControl,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    type TuiAutofillFieldName,
-    type TuiFocusableElementAccessor,
 } from '@taiga-ui/cdk';
-import {
-    TUI_TEXTFIELD_SIZE,
-    TuiPrimitiveTextfieldComponent,
-    type TuiSizeL,
-    type TuiSizeS,
-} from '@taiga-ui/core';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import {TUI_TEXTFIELD_SIZE, TuiPrimitiveTextfieldComponent} from '@taiga-ui/core';
 
 @Component({
     selector: 'tui-input-expire',

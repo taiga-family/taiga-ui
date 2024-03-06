@@ -1,4 +1,4 @@
-import {type TuiDocPages} from '@taiga-ui/addon-doc';
+import type {TuiDocPages} from '@taiga-ui/addon-doc';
 
 export const pages: TuiDocPages = [
     // Documentation

@@ -1,12 +1,11 @@
 import {NgIf} from '@angular/common';
+import type {OnInit, QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     ElementRef,
     HostBinding,
     inject,
-    type OnInit,
-    type QueryList,
     ViewChildren,
 } from '@angular/core';
 import {ActivatedRoute, Router, RouterLink} from '@angular/router';

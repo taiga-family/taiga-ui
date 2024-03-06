@@ -1,5 +1,6 @@
-import {inject, type InjectionToken} from '@angular/core';
-import {type TuiDocPage} from '@taiga-ui/addon-doc/interfaces';
+import type {InjectionToken} from '@angular/core';
+import {inject} from '@angular/core';
+import type {TuiDocPage} from '@taiga-ui/addon-doc/interfaces';
 import type {TuiDocPages} from '@taiga-ui/addon-doc/types';
 import {tuiToFlatMapPages} from '@taiga-ui/addon-doc/utils';
 import {tuiCreateToken, tuiCreateTokenFromFactory} from '@taiga-ui/cdk';

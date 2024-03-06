@@ -1,3 +1,4 @@
+import type {OnDestroy, Type} from '@angular/core';
 import {
     ComponentFactoryResolver,
     createComponent,
@@ -5,8 +6,6 @@ import {
     inject,
     Injectable,
     INJECTOR,
-    type OnDestroy,
-    type Type,
 } from '@angular/core';
 
 // TODO: Add cleanup with DestroyRef in Angular 16+ and replace service with just a map from a token

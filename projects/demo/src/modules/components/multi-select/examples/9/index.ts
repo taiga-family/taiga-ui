@@ -2,13 +2,9 @@ import {Component, inject} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {
-    type TuiDialogContext,
-    TuiDialogService,
-    type TuiSizeL,
-    type TuiSizeS,
-} from '@taiga-ui/core';
-import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {TuiDialogContext, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import {TuiDialogService} from '@taiga-ui/core';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 @Component({
     selector: 'tui-multi-select-example-9',

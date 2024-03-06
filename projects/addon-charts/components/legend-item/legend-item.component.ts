@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/core';
-import {type TuiSizeS} from '@taiga-ui/core';
+import type {TuiSizeS} from '@taiga-ui/core';
 
 @Component({
     selector: 'tui-legend-item',

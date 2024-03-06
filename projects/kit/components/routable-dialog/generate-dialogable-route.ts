@@ -1,6 +1,6 @@
 import {type Type} from '@angular/core';
-import {DefaultExport, type Route} from '@angular/router';
-import {type TuiDialogOptions} from '@taiga-ui/core';
+import type {DefaultExport, Route} from '@angular/router';
+import type {TuiDialogOptions} from '@taiga-ui/core';
 
 export function tuiGenerateDialogableRoute<I>(
     component: Type<any> | (() => Promise<DefaultExport<Type<any>> | Type<any>>),

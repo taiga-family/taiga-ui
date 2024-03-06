@@ -1,7 +1,7 @@
 import {Directive} from '@angular/core';
 import {tuiAsPopover, TuiPopoverDirective} from '@taiga-ui/cdk';
 
-import {type TuiPdfViewerOptions} from './pdf-viewer.options';
+import type {TuiPdfViewerOptions} from './pdf-viewer.options';
 import {TuiPdfViewerService} from './pdf-viewer.service';
 
 @Directive({

@@ -10,7 +10,7 @@ import {
 } from '@angular/core';
 import {NgControl, NgModel} from '@angular/forms';
 import {tuiPure, tuiWatch} from '@taiga-ui/cdk';
-import {type TuiSizeS} from '@taiga-ui/core';
+import type {TuiSizeS} from '@taiga-ui/core';
 import {take} from 'rxjs';
 
 import {TuiSliderKeyStepsDirective} from './helpers/slider-key-steps.directive';

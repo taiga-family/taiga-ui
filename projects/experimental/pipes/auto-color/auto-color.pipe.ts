@@ -1,4 +1,5 @@
-import {Pipe, type PipeTransform} from '@angular/core';
+import type {PipeTransform} from '@angular/core';
+import {Pipe} from '@angular/core';
 import {tuiStringHashToHsl} from '@taiga-ui/kit';
 
 @Pipe({

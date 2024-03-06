@@ -1,9 +1,11 @@
-import {Component, type DebugElement, ViewChild} from '@angular/core';
-import {type ComponentFixture, TestBed} from '@angular/core/testing';
+import type {DebugElement} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
+import type {ComponentFixture} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
+import type {TuiBooleanHandler} from '@taiga-ui/cdk';
 import {
     ALWAYS_FALSE_HANDLER,
-    type TuiBooleanHandler,
     TuiDay,
     TuiDayOfWeek,
     TuiDayRange,

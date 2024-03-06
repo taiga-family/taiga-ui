@@ -7,12 +7,10 @@ import {
     TemplateRef,
     ViewChild,
 } from '@angular/core';
-import {AbstractTuiControl, type TuiBooleanHandler, TuiIdService} from '@taiga-ui/cdk';
-import {
-    TUI_TEXTFIELD_HOST,
-    TuiDataListDirective,
-    type TuiTextfieldHost,
-} from '@taiga-ui/core';
+import type {TuiBooleanHandler} from '@taiga-ui/cdk';
+import {AbstractTuiControl, TuiIdService} from '@taiga-ui/cdk';
+import type {TuiTextfieldHost} from '@taiga-ui/core';
+import {TUI_TEXTFIELD_HOST, TuiDataListDirective} from '@taiga-ui/core';
 import {TUI_ITEMS_HANDLERS} from '@taiga-ui/kit/tokens';
 
 @Directive()

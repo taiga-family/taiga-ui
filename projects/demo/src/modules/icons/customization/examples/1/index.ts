@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {type TuiSafeHtml} from '@taiga-ui/cdk';
+import type {TuiSafeHtml} from '@taiga-ui/cdk';
 import {TUI_SANITIZER, tuiSvgSrcInterceptors} from '@taiga-ui/core';
 import {NgDompurifySanitizer} from '@tinkoff/ng-dompurify';
 

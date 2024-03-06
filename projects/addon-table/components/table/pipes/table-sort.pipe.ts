@@ -1,5 +1,6 @@
-import {inject, Pipe, type PipeTransform} from '@angular/core';
-import {type TuiComparator} from '@taiga-ui/addon-table/types';
+import type {PipeTransform} from '@angular/core';
+import {inject, Pipe} from '@angular/core';
+import type {TuiComparator} from '@taiga-ui/addon-table/types';
 import {tuiPure} from '@taiga-ui/cdk';
 
 import {TuiTableDirective} from '../directives/table.directive';

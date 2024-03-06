@@ -12,11 +12,14 @@ import {
     Self,
     ViewChild,
 } from '@angular/core';
+import type {
+    TuiContext,
+    TuiFocusableElementAccessor,
+    TuiNativeFocusableElement,
+} from '@taiga-ui/cdk';
 import {
     TuiActiveZoneDirective,
     tuiAsFocusableItemAccessor,
-    type TuiContext,
-    type TuiFocusableElementAccessor,
     tuiGetActualTarget,
     tuiGetClosestFocusable,
     tuiIsElement,
@@ -25,7 +28,6 @@ import {
     tuiIsNativeFocusedIn,
     tuiIsNativeKeyboardFocusable,
     tuiIsPresent,
-    type TuiNativeFocusableElement,
     tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
 import {TuiPositionAccessor} from '@taiga-ui/core/abstract';
@@ -35,7 +37,8 @@ import {
 } from '@taiga-ui/core/directives/dropdown';
 import {tuiIsEditingKey} from '@taiga-ui/core/utils/miscellaneous';
 import {shouldCall} from '@tinkoff/ng-event-plugins';
-import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {Observable} from 'rxjs';
 import {
     BehaviorSubject,
     combineLatestWith,
@@ -45,7 +48,6 @@ import {
     filter,
     map,
     merge,
-    type Observable,
     of,
     share,
     skip,

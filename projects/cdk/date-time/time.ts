@@ -1,7 +1,7 @@
 /// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
 import {tuiAssert} from '@taiga-ui/cdk/classes';
-import {type TuiTimeLike} from '@taiga-ui/cdk/interfaces';
-import {type TuiTimeMode} from '@taiga-ui/cdk/types';
+import type {TuiTimeLike} from '@taiga-ui/cdk/interfaces';
+import type {TuiTimeMode} from '@taiga-ui/cdk/types';
 import {tuiInRange} from '@taiga-ui/cdk/utils/math';
 
 import {

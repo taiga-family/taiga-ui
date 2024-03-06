@@ -6,7 +6,7 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import {type TuiSizeS, type TuiSizeXL} from '@taiga-ui/core';
+import type {TuiSizeS, TuiSizeXL} from '@taiga-ui/core';
 
 @Component({
     selector: 'tui-ring-chart',

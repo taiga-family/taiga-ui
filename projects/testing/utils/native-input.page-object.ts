@@ -1,5 +1,5 @@
-import {type DebugElement} from '@angular/core';
-import {type ComponentFixture} from '@angular/core/testing';
+import type {DebugElement} from '@angular/core';
+import type {ComponentFixture} from '@angular/core/testing';
 
 import {tuiCreateKeyboardEvent} from './keyboard-event';
 import {TuiPageObject} from './page-object';

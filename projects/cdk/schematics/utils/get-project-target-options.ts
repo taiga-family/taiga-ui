@@ -1,4 +1,4 @@
-import {type JsonArray, type JsonObject, type workspaces} from '@angular-devkit/core';
+import type {JsonArray, JsonObject, workspaces} from '@angular-devkit/core';
 import {SchematicsException} from '@angular-devkit/schematics';
 
 export function getProjectTargetOptions(

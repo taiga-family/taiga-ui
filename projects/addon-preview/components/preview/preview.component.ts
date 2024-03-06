@@ -6,6 +6,7 @@ import {
     Input,
 } from '@angular/core';
 import {TUI_PREVIEW_ICONS, TUI_PREVIEW_TEXTS} from '@taiga-ui/addon-preview/tokens';
+import type {TuiZoom} from '@taiga-ui/cdk';
 import {
     ALWAYS_FALSE_HANDLER,
     tuiClamp,
@@ -14,7 +15,6 @@ import {
     tuiPx,
     tuiRound,
     tuiTypedFromEvent,
-    type TuiZoom,
 } from '@taiga-ui/cdk';
 import {tuiSlideInTop} from '@taiga-ui/core';
 import {BehaviorSubject, combineLatest, map, merge, startWith} from 'rxjs';

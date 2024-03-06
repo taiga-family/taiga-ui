@@ -6,25 +6,18 @@ import {
     NgZone,
     Output,
 } from '@angular/core';
+import type {TuiContext, TuiHandler} from '@taiga-ui/cdk';
 import {
     TUI_IS_IOS,
-    type TuiContext,
     TuiDestroyService,
-    type TuiHandler,
     tuiPx,
     tuiScrollFrom,
     tuiZonefree,
 } from '@taiga-ui/cdk';
 import {TUI_SCROLL_REF} from '@taiga-ui/core';
-import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {
-    distinctUntilChanged,
-    filter,
-    map,
-    type Observable,
-    startWith,
-    takeUntil,
-} from 'rxjs';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {Observable} from 'rxjs';
+import {distinctUntilChanged, filter, map, startWith, takeUntil} from 'rxjs';
 
 import {
     TUI_PULL_TO_REFRESH_COMPONENT,

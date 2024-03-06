@@ -1,5 +1,7 @@
-import {Component, type DebugElement, type Type, ViewChild} from '@angular/core';
-import {type ComponentFixture, TestBed} from '@angular/core/testing';
+import type {DebugElement, Type} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
+import type {ComponentFixture} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {

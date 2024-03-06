@@ -1,4 +1,5 @@
-import {type CallExpression, Node} from 'ng-morph';
+import type {CallExpression} from 'ng-morph';
+import {Node} from 'ng-morph';
 
 import {getNamedImportReferences} from './get-named-import-references';
 

@@ -1,15 +1,14 @@
 import {Directive, EventEmitter, Input, Output} from '@angular/core';
-import {type TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
-import {
-    AbstractTuiNullableControl,
-    type TuiAutofillFieldName,
-    type TuiFocusableElementAccessor,
-    type TuiNativeFocusableElement,
-    tuiPure,
+import type {TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
+import type {
+    TuiAutofillFieldName,
+    TuiFocusableElementAccessor,
+    TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
-import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {AbstractTuiNullableControl, tuiPure} from '@taiga-ui/cdk';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-import {type TuiInputCardOptions} from './input-card.options';
+import type {TuiInputCardOptions} from './input-card.options';
 
 @Directive()
 export abstract class AbstractTuiInputCard<

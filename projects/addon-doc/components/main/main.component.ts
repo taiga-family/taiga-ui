@@ -9,7 +9,8 @@ import {
 import {TuiThemeNightService, TuiThemeService} from '@taiga-ui/addon-doc/services';
 import {TUI_DOC_ICONS} from '@taiga-ui/addon-doc/tokens';
 import {TuiSwipeService} from '@taiga-ui/cdk';
-import {type TuiBrightness, TuiModeDirective} from '@taiga-ui/core';
+import type {TuiBrightness} from '@taiga-ui/core';
+import {TuiModeDirective} from '@taiga-ui/core';
 import {distinctUntilChanged, map, share, startWith} from 'rxjs';
 
 @Component({

@@ -1,3 +1,4 @@
+import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -10,16 +11,15 @@ import {
     inject,
     Input,
     Output,
-    type QueryList,
     TemplateRef,
 } from '@angular/core';
+import type {TuiSwipeDirection} from '@taiga-ui/cdk';
 import {
     EMPTY_QUERY,
     TUI_IS_MOBILE,
     tuiClamp,
     TuiItemDirective,
     tuiPure,
-    type TuiSwipeDirection,
 } from '@taiga-ui/cdk';
 
 @Component({

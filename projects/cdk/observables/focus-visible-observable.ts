@@ -2,6 +2,7 @@ import {ALWAYS_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import {TuiOwnerDocumentException} from '@taiga-ui/cdk/exceptions';
 import {tuiIsFalsy} from '@taiga-ui/cdk/utils';
 import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
+import type {Observable} from 'rxjs';
 import {
     concat,
     distinctUntilChanged,
@@ -9,7 +10,6 @@ import {
     ignoreElements,
     map,
     merge,
-    type Observable,
     repeat,
     shareReplay,
     startWith,

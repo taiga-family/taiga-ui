@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {type TuiDocExample, type TuiRawLoaderContent} from '@taiga-ui/addon-doc';
-import {type TuiSizeL, type TuiSizeXS} from '@taiga-ui/core';
+import type {TuiDocExample, TuiRawLoaderContent} from '@taiga-ui/addon-doc';
+import type {TuiSizeL, TuiSizeXS} from '@taiga-ui/core';
 
 @Component({
     selector: 'example-button',

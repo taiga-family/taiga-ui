@@ -6,20 +6,19 @@ import {
     inject,
     Input,
 } from '@angular/core';
+import type {TuiFocusableElementAccessor, TuiNativeFocusableElement} from '@taiga-ui/cdk';
 import {
     ALWAYS_FALSE_HANDLER,
     ALWAYS_TRUE_HANDLER,
     tuiAsFocusableItemAccessor,
     TuiDestroyService,
-    type TuiFocusableElementAccessor,
     TuiFocusVisibleService,
     tuiIsNativeFocused,
-    type TuiNativeFocusableElement,
     tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
 import {MODE_PROVIDER} from '@taiga-ui/core/providers';
 import {TUI_MODE} from '@taiga-ui/core/tokens';
-import {type TuiHorizontalDirection} from '@taiga-ui/core/types';
+import type {TuiHorizontalDirection} from '@taiga-ui/core/types';
 import {map, merge} from 'rxjs';
 
 // @bad TODO: Think about extending Interactive

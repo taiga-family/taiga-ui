@@ -1,3 +1,4 @@
+import type {OnInit} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -5,24 +6,22 @@ import {
     EventEmitter,
     inject,
     Input,
-    type OnInit,
     Output,
 } from '@angular/core';
+import type {TuiBooleanHandler, TuiDay, TuiDayRange, TuiTypedMapper} from '@taiga-ui/cdk';
 import {
     ALWAYS_FALSE_HANDLER,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
-    type TuiBooleanHandler,
-    type TuiDay,
-    type TuiDayRange,
     TuiDestroyService,
     TuiMonth,
-    type TuiTypedMapper,
     tuiWatch,
 } from '@taiga-ui/cdk';
-import {TUI_DEFAULT_MARKER_HANDLER, type TuiMarkerHandler} from '@taiga-ui/core';
+import type {TuiMarkerHandler} from '@taiga-ui/core';
+import {TUI_DEFAULT_MARKER_HANDLER} from '@taiga-ui/core';
 import {TUI_CALENDAR_DATE_STREAM} from '@taiga-ui/kit/tokens';
-import {type Observable, takeUntil} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {takeUntil} from 'rxjs';
 
 /**
  * @internal

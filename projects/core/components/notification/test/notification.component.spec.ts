@@ -1,10 +1,12 @@
-import {Component, type DebugElement, ViewChild} from '@angular/core';
-import {type ComponentFixture, TestBed} from '@angular/core/testing';
+import type {DebugElement} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
+import type {ComponentFixture} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import type {TuiNotification} from '@taiga-ui/core';
 import {
     TUI_NOTIFICATION_DEFAULT_OPTIONS,
     TUI_NOTIFICATION_OPTIONS,
-    type TuiNotification,
     TuiNotificationComponent,
     TuiNotificationModule,
     TuiSvgService,

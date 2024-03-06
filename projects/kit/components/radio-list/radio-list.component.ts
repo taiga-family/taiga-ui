@@ -1,3 +1,4 @@
+import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -5,9 +6,13 @@ import {
     HostBinding,
     inject,
     Input,
-    type QueryList,
     ViewChildren,
 } from '@angular/core';
+import type {
+    TuiBooleanHandler,
+    TuiIdentityMatcher,
+    TuiNativeFocusableElement,
+} from '@taiga-ui/cdk';
 import {
     AbstractTuiNullableControl,
     ALWAYS_FALSE_HANDLER,
@@ -15,18 +20,11 @@ import {
     TUI_DEFAULT_IDENTITY_MATCHER,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
-    type TuiBooleanHandler,
-    type TuiIdentityMatcher,
     tuiIsNativeFocusedIn,
-    type TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
-import {
-    type TuiOrientation,
-    type TuiSizeL,
-    type TuiValueContentContext,
-} from '@taiga-ui/core';
+import type {TuiOrientation, TuiSizeL, TuiValueContentContext} from '@taiga-ui/core';
 import {TuiRadioLabeledComponent} from '@taiga-ui/kit/components/radio-labeled';
-import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 @Component({
     selector: 'tui-radio-list',

@@ -1,5 +1,5 @@
 import {tuiCreateToken} from '@taiga-ui/cdk';
-import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface TuiSpinIcons {
     readonly decrement: PolymorpheusContent;
