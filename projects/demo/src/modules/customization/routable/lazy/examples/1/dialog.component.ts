@@ -1,8 +1,8 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 
 @Component({
-    selector: 'tui-example-dialog-content',
-    template: 'Dialog content via named outlet',
+    standalone: true,
+    template: 'Lazy loaded dialog content',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DialogContentComponent {}
+export default class LazyDialogComponent {}

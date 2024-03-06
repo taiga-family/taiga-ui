@@ -1,34 +1,25 @@
 import {Component} from '@angular/core';
+import {RouterOutlet} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {type TuiDocExample} from '@taiga-ui/addon-doc';
+import {
+    TuiDocCodeModule,
+    type TuiDocExample,
+    TuiDocExampleModule,
+    TuiDocPageModule,
+} from '@taiga-ui/addon-doc';
 
 @Component({
+    standalone: true,
     selector: 'lazy-routable-dialog',
+    imports: [TuiDocPageModule, TuiDocExampleModule, RouterOutlet, TuiDocCodeModule],
     templateUrl: './lazy-routable-dialog.template.html',
     changeDetection,
 })
-export class LazyRoutableDialogComponent {
+export default class LazyRoutableDialogComponent {
     protected readonly example1: TuiDocExample = {
-        'page.template.html': import('./examples/1/page-1.component.html?raw'),
-        'page.module.ts': import('./examples/1/page-1.module.ts?raw'),
-        'dialog-content.component.ts': import(
-            './examples/1/dialog-content/dialog-content.component.ts?raw'
-        ),
-        'dialog-content.module.ts': import(
-            './examples/1/dialog-content/dialog-content.module.ts?raw'
-        ),
+        'page.routes.ts': import('./lazy-routable-dialog.routes.ts?raw'),
+        'page.template.html': import('./examples/1/index.html?raw'),
+        'page.ts': import('./examples/1/index.ts?raw'),
+        'dialog.component.ts': import('./examples/1/dialog.component.ts?raw'),
     };
-
-    protected readonly addRouterOutlet = import(
-        './examples/setup/add-router-outlet.md?raw'
-    );
-
-    protected readonly importModule = import('./examples/setup/import-module.md?raw');
-    protected readonly useRouteGenerator = import(
-        './examples/setup/use-route-generator.md?raw'
-    );
-
-    protected readonly addLazyLoadedModule = import(
-        './examples/setup/add-lazy-loaded-module.md?raw'
-    );
 }

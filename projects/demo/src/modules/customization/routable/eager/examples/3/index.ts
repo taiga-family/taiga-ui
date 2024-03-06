@@ -1,15 +1,16 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAccordionModule} from '@taiga-ui/kit';
+import {TuiAddonDocModule} from '@taiga-ui/addon-doc';
 
 @Component({
     standalone: true,
-    selector: 'tui-accordion-example-3',
-    imports: [TuiAccordionModule],
+    imports: [TuiAddonDocModule],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiAccordionExample3 {}
+export default class TuiEagerExample3 {
+    protected readonly html = import('../setup/html.md?raw');
+    protected readonly routes = import('../setup/routes.md?raw');
+}

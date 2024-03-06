@@ -3,170 +3,124 @@ import {RouterModule, type Routes} from '@angular/router';
 import {tuiProvideRoutePageTab as route} from '@taiga-ui/addon-doc';
 
 export const ROUTES: Routes = [
-    {
+    route({
         path: '',
+        title: 'A powerful set of open source components for Angular',
         loadComponent: async () => import('./landing/landing.component'),
-        data: {
-            title: 'A powerful set of open source components for Angular',
-        },
-    },
+    }),
     // Documentation
-    {
+    route({
         path: 'getting-started',
+        title: 'Getting started',
         loadComponent: async () => import('./getting-started/getting-started.component'),
-        data: {
-            title: 'Getting started',
-        },
-    },
-    {
+    }),
+    route({
         path: 'browser-support',
+        title: 'Browser support',
         loadComponent: async () => import('../info/browsers/browsers.component'),
-        data: {
-            title: 'Browser support',
-        },
-    },
-    {
+    }),
+    route({
         path: 'changelog',
+        title: 'Changelog',
         loadComponent: async () => import('../info/changelog/changelog.component'),
-        data: {
-            title: 'Changelog',
-        },
-    },
-    {
+    }),
+    route({
         path: 'ssr',
+        title: 'Server Side Rendering (SSR)',
         loadComponent: async () => import('../info/ssr/ssr.component'),
-        data: {
-            title: 'Server Side Rendering (SSR)',
-        },
-    },
-    {
+    }),
+    route({
         path: 'tui-doc',
+        title: 'Documentation engine',
         loadComponent: async () => import('../info/doc/doc.component'),
-        data: {
-            title: 'Documentation engine',
-        },
-    },
-    {
+    }),
+    route({
         path: 'related',
+        title: 'Taiga UI family',
         loadComponent: async () => import('../info/related/related.component'),
-        data: {
-            title: 'Taiga UI family',
-        },
-    },
-    {
+    }),
+    route({
         path: 'testing/jest',
+        title: 'Jest',
         loadComponent: async () => import('../info/testing/jest/jest.component'),
-        data: {
-            title: 'Jest',
-        },
-    },
-    {
+    }),
+    route({
         path: 'testing/disable-animation',
+        title: 'Disable animation',
         loadComponent: async () =>
             import('../info/testing/disable-animation/disable-animation.component'),
-        data: {
-            title: 'Disable animation',
-        },
-    },
-    {
+    }),
+    route({
         path: 'testing/screenshot-bot',
+        title: 'Our screenshot bot',
         loadComponent: async () =>
             import(
                 '../info/testing/screenshot-github-bot/screenshot-github-bot.component'
             ),
-        data: {
-            title: 'Our screenshot bot',
-        },
-    },
+    }),
     // Customization
-    {
+    route({
         path: 'i18n',
+        title: 'I18n',
         loadComponent: async () => import('../customization/i18n/i18n.component'),
-        data: {
-            title: 'I18n',
-        },
-    },
-    {
+    }),
+    route({
         path: 'variables',
-        loadChildren: async () =>
-            (await import('../customization/variables/variables.module')).VariablesModule,
-        data: {
-            title: 'Variables',
-        },
-    },
-    {
+        title: 'Variables',
+        loadComponent: async () =>
+            import('../customization/variables/variables.component'),
+    }),
+    route({
         path: 'wrapper',
-        loadChildren: async () =>
-            (await import('../customization/wrapper/wrapper.module')).WrapperModule,
-        data: {
-            title: 'Wrapper',
-        },
-    },
-    {
+        title: 'Wrapper',
+        loadComponent: async () => import('../customization/wrapper/wrapper.component'),
+    }),
+    route({
         path: 'dialog/custom',
-        loadChildren: async () =>
-            (await import('../customization/dialogs/dialogs.module')).DialogsModule,
-        data: {
-            title: 'Custom',
-        },
-    },
-    {
+        title: 'Custom',
+        loadComponent: async () => import('../customization/dialogs/dialogs.component'),
+    }),
+    route({
         path: 'dialog/routable',
+        title: 'Routable',
+        loadComponent: async () =>
+            import('../customization/routable/eager/routable-dialog.component'),
         loadChildren: async () =>
-            (await import('../customization/routable/eager/routable-dialog.module'))
-                .RoutableDialogModule,
-        data: {
-            title: 'Routable',
-        },
-    },
-    {
+            import('../customization/routable/eager/routable-dialog.routes'),
+    }),
+    route({
         path: 'dialog/lazy-routable',
+        title: 'LazyRoutable',
+        loadComponent: async () =>
+            import('../customization/routable/lazy/lazy-routable-dialog.component'),
         loadChildren: async () =>
-            (await import('../customization/routable/lazy/lazy-routable-dialog.module'))
-                .LazyRoutableDialogModule,
-        data: {
-            title: 'LazyRoutable',
-        },
-    },
-    {
+            import('../customization/routable/lazy/lazy-routable-dialog.routes'),
+    }),
+    route({
         path: 'portals',
-        loadChildren: async () =>
-            (await import('../customization/portals/portals.module')).PortalsModule,
-        data: {
-            title: 'Portals',
-        },
-    },
-    {
+        title: 'Portals',
+        loadComponent: async () => import('../customization/portals/portals.component'),
+    }),
+    route({
         path: 'viewport',
-        loadChildren: async () =>
-            (await import('../customization/viewport/viewport.module'))
-                .ExampleTuiViewportModule,
-        data: {
-            title: 'Viewport',
-        },
-    },
+        title: 'Viewport',
+        loadComponent: async () => import('../customization/viewport/viewport.component'),
+    }),
     // COMPONENTS
-    {
+    route({
         path: 'components/accordion',
-        loadChildren: async () =>
-            (await import('../components/accordion/accordion.module'))
-                .ExampleTuiAccordionModule,
-        data: {
-            title: 'Accordion',
-        },
-    },
-    {
+        title: 'Accordion',
+        loadComponent: async () => import('../components/accordion/accordion.component'),
+    }),
+    route({
         path: 'components/action',
-        loadChildren: async () =>
-            (await import('../components/action/action.module')).ExampleTuiActionModule,
-        data: {
-            title: 'Action',
-        },
-    },
+        title: 'Action',
+        loadComponent: async () => import('../components/action/action.component'),
+    }),
     route({
         path: 'components/avatar',
-        loadComponent: async () => import('../components/avatar/avatar.component'),
         title: 'Avatar',
+        loadComponent: async () => import('../components/avatar/avatar.component'),
     }),
     {
         path: 'components/badge',

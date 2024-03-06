@@ -1,16 +1,19 @@
 import {type Type} from '@angular/core';
-import {type Route} from '@angular/router';
+import {DefaultExport, type Route} from '@angular/router';
 import {type TuiDialogOptions} from '@taiga-ui/core';
 
-import {TuiRoutableDialogComponent} from './routable-dialog.component';
-
 export function tuiGenerateDialogableRoute<I>(
-    component: Type<any>,
-    {path = '', ...dialogOptions}: Partial<TuiDialogOptions<I>> & {path?: string} = {},
+    component: Type<any> | (() => Promise<DefaultExport<Type<any>> | Type<any>>),
+    {
+        path = '',
+        outlet = '',
+        ...dialogOptions
+    }: Partial<TuiDialogOptions<I>> & {path?: string; outlet?: string} = {},
 ): Route {
     return {
         path,
-        component: TuiRoutableDialogComponent,
+        outlet,
+        loadComponent: async () => import('./routable-dialog.component'),
         data: {
             dialog: component,
             backUrl: path

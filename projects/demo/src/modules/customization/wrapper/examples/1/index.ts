@@ -1,9 +1,23 @@
 import {Component, ViewEncapsulation} from '@angular/core';
-import {TUI_TEXTFIELD_APPEARANCE_DIRECTIVE} from '@taiga-ui/core';
-import {tuiCheckboxOptionsProvider} from '@taiga-ui/experimental';
+import {FormsModule} from '@angular/forms';
+import {TUI_TEXTFIELD_APPEARANCE_DIRECTIVE, TuiButtonModule} from '@taiga-ui/core';
+import {
+    TuiCheckboxModule,
+    tuiCheckboxOptionsProvider,
+    TuiLabelDirective,
+} from '@taiga-ui/experimental';
+import {TuiInputModule} from '@taiga-ui/kit';
 
 @Component({
+    standalone: true,
     selector: 'tui-wrapper-example-1',
+    imports: [
+        TuiInputModule,
+        FormsModule,
+        TuiLabelDirective,
+        TuiCheckboxModule,
+        TuiButtonModule,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation: ViewEncapsulation.None,

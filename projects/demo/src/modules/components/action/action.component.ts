@@ -1,15 +1,37 @@
 import {Component} from '@angular/core';
+import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {type TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiAddonDocModule, type TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiLinkModule, TuiNotificationModule} from '@taiga-ui/core';
+import {TuiActionModule} from '@taiga-ui/kit';
+
+import {TuiActionExample1} from './examples/1';
+import {TuiActionExample2} from './examples/2';
+import {TuiActionExample3} from './examples/3';
+import {TuiActionExample4} from './examples/4';
+import {TuiActionExample5} from './examples/5';
 
 @Component({
+    standalone: true,
     selector: 'example-action',
+    imports: [
+        TuiAddonDocModule,
+        TuiNotificationModule,
+        RouterLink,
+        TuiLinkModule,
+        TuiActionExample1,
+        TuiActionExample2,
+        TuiActionExample3,
+        TuiActionExample4,
+        TuiActionExample5,
+        TuiActionModule,
+    ],
     templateUrl: './action.template.html',
     encapsulation,
     changeDetection,
 })
-export class ExampleTuiActionComponent {
+export default class ExampleTuiActionComponent {
     protected readonly exampleModule = import('./examples/import/import-module.md?raw');
     protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 

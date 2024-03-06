@@ -1,13 +1,18 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {type TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiAddonDocModule, type TuiDocExample} from '@taiga-ui/addon-doc';
+
+import {TuiViewportExample1} from './examples/1';
+import {TuiViewportExample2} from './examples/2';
 
 @Component({
+    standalone: true,
     selector: 'example-tui-viewport',
+    imports: [TuiAddonDocModule, TuiViewportExample1, TuiViewportExample2],
     templateUrl: './viewport.template.html',
     changeDetection,
 })
-export class ExampleTuiViewportComponent {
+export default class ExampleTuiViewportComponent {
     protected readonly providers = import('./examples/import/providers.md?raw');
 
     protected readonly example1: TuiDocExample = {
