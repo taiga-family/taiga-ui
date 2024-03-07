@@ -43,7 +43,7 @@
             heading="Native attributes"
             [content]="example5"
         >
-            <tui-notification class="tui-space_bottom-4 b-form">
+            <tui-notification class="tui-space_bottom-4">
                 If you need to set some attributes or listen to events on native
                 <code>textarea</code>
                 , you can put it inside with
@@ -65,7 +65,6 @@
     <ng-template pageTab>
         <tui-doc-demo>
             <tui-textarea
-                class="b-form"
                 [expandable]="expandable"
                 [focusable]="focusable"
                 [formControl]="control"
@@ -75,6 +74,7 @@
                 [pseudoInvalid]="pseudoInvalid"
                 [readOnly]="readOnly"
                 [rows]="rows"
+                [style.max-width.rem]="20"
                 [tuiHintAppearance]="hintAppearance"
                 [tuiHintContent]="hintContent"
                 [tuiHintDirection]="hintDirection"
