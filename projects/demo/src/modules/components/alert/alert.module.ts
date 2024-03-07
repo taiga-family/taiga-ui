@@ -44,9 +44,10 @@ import {TuiAlertExampleComponent6} from './examples/6';
         TuiAlertExampleComponent3,
         TuiAlertExampleComponent4,
         TuiAlertExampleComponent5,
+        TuiAlertExampleComponent6,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiAlertComponent)),
     ],
-    declarations: [ExampleTuiAlertComponent, TuiAlertExampleComponent6],
+    declarations: [ExampleTuiAlertComponent],
     exports: [ExampleTuiAlertComponent],
 })
 export class ExampleTuiAlertModule {}
