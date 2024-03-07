@@ -1,4 +1,5 @@
 import {Component, inject, INJECTOR} from '@angular/core';
+import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {
     TuiAddonDocModule,
@@ -40,6 +41,7 @@ import {TuiAlertExampleComponent6} from './examples/6';
         TuiAlertExampleComponent4,
         TuiAlertExampleComponent5,
         TuiAlertExampleComponent6,
+        RouterLink,
     ],
     templateUrl: './alert.template.html',
     styleUrls: ['./alert.style.less'],
