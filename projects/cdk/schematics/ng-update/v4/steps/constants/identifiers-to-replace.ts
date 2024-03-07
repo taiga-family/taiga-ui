@@ -211,4 +211,20 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifier[] = [
             moduleSpecifier: '@taiga-ui/kit',
         },
     },
+    {
+        from: {name: 'TuiInitialsModule', moduleSpecifier: '@taiga-ui/experimental'},
+        to: {name: 'TuiInitialsPipe', moduleSpecifier: '@taiga-ui/core'},
+    },
+    {
+        from: {name: 'TuiFallbackSrcModule', moduleSpecifier: '@taiga-ui/experimental'},
+        to: {name: 'TuiFallbackSrcPipe', moduleSpecifier: '@taiga-ui/core'},
+    },
+    {
+        from: {name: 'TuiAutoColorModule', moduleSpecifier: '@taiga-ui/experimental'},
+        to: {name: 'TuiAutoColorPipe', moduleSpecifier: '@taiga-ui/core'},
+    },
+    {
+        from: {name: 'tuiStringHashToHsl', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'tuiStringHashToHsl', moduleSpecifier: '@taiga-ui/core'},
+    },
 ];

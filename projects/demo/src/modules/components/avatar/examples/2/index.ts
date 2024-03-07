@@ -1,13 +1,13 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAutoColorModule} from '@taiga-ui/experimental';
+import {TuiAutoColorPipe} from '@taiga-ui/core';
 import {TuiAvatarComponent, TuiFadeDirective} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
     selector: 'tui-avatar-example-2',
-    imports: [TuiAvatarComponent, TuiAutoColorModule, TuiFadeDirective],
+    imports: [TuiAvatarComponent, TuiAutoColorPipe, TuiFadeDirective],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

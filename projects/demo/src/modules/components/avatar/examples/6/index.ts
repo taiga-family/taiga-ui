@@ -2,7 +2,7 @@ import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiFallbackSrcModule} from '@taiga-ui/experimental';
+import {TuiFallbackSrcPipe} from '@taiga-ui/core';
 import {
     TuiAvatarComponent,
     TuiAvatarLabeledComponent,
@@ -14,7 +14,7 @@ import {
     selector: 'tui-avatar-example-6',
     imports: [
         AsyncPipe,
-        TuiFallbackSrcModule,
+        TuiFallbackSrcPipe,
         TuiAvatarLabeledComponent,
         TuiAvatarComponent,
         TuiFadeDirective,

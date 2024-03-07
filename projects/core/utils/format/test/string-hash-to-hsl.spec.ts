@@ -1,4 +1,4 @@
-import {tuiStringHashToHsl} from '@taiga-ui/kit';
+import {tuiStringHashToHsl} from '../string-hash-to-hsl';
 
 describe('Convert string to HSL color', () => {
     it('The name in Russian is converted correctly', () => {
