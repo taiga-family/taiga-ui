@@ -1,4 +1,3 @@
-import {CommonModule} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {Router} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -17,7 +16,6 @@ import {CustomLabelComponent} from './custom-label/custom-label.component';
         CustomLabelComponent,
         AlertExampleWithCustomLabelComponent,
         TuiButtonModule,
-        CommonModule,
     ],
     templateUrl: './index.html',
     encapsulation,

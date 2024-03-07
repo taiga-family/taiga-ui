@@ -1,6 +1,4 @@
-import {CommonModule} from '@angular/common';
 import {Component, inject} from '@angular/core';
-import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import type {TuiPopover} from '@taiga-ui/cdk';
@@ -11,14 +9,7 @@ import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 @Component({
     standalone: true,
     selector: 'tui-notifications-service-example',
-    imports: [
-        CommonModule,
-        FormsModule,
-        TuiButtonModule,
-        TuiModeModule,
-        TuiSelectModule,
-        TuiAmountPipe,
-    ],
+    imports: [TuiButtonModule, TuiModeModule, TuiSelectModule, TuiAmountPipe],
     templateUrl: './alert-example.template.html',
     changeDetection,
 })

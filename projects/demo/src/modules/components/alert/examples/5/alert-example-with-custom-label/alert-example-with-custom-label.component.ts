@@ -1,4 +1,3 @@
-import {CommonModule} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiPopover} from '@taiga-ui/cdk';
@@ -8,7 +7,7 @@ import {POLYMORPHEUS_CONTEXT, PolymorpheusModule} from '@tinkoff/ng-polymorpheus
 @Component({
     standalone: true,
     selector: 'tui-notifications-service-example-with-custom-label',
-    imports: [CommonModule, PolymorpheusModule],
+    imports: [PolymorpheusModule],
     templateUrl: './alert-example-with-custom-label.template.html',
     changeDetection,
 })

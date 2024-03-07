@@ -1,4 +1,4 @@
-import {CommonModule} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import type {TemplateRef} from '@angular/core';
 import {Component, inject, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -11,7 +11,7 @@ import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 @Component({
     standalone: true,
     selector: 'tui-alerts-example-2',
-    imports: [CommonModule, TuiButtonModule, TuiAmountPipe, PolymorpheusModule],
+    imports: [AsyncPipe, TuiButtonModule, TuiAmountPipe, PolymorpheusModule],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

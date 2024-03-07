@@ -1,4 +1,3 @@
-import {CommonModule} from '@angular/common';
 import {Component, inject, INJECTOR} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {
@@ -10,13 +9,10 @@ import type {TuiPopoverContext} from '@taiga-ui/cdk';
 import type {TuiAlertOptions, TuiNotification} from '@taiga-ui/core';
 import {
     TUI_NOTIFICATION_OPTIONS,
-    TuiAlertModule,
     TuiAlertService,
     TuiButtonModule,
     TuiLinkModule,
-    TuiModeModule,
 } from '@taiga-ui/core';
-import {TuiInputModule} from '@taiga-ui/kit';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {PolymorpheusComponent, PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import {switchMap} from 'rxjs';
@@ -33,13 +29,9 @@ import {TuiAlertExampleComponent6} from './examples/6';
     standalone: true,
     selector: 'example-tui-alert',
     imports: [
-        CommonModule,
         PolymorpheusModule,
         TuiTextCodeModule,
-        TuiAlertModule,
         TuiButtonModule,
-        TuiModeModule,
-        TuiInputModule,
         TuiLinkModule,
         TuiAddonDocModule,
         TuiAlertExampleComponent1,
