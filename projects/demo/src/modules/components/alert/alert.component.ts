@@ -76,9 +76,6 @@ export class ExampleTuiAlertComponent {
     protected readonly example5: TuiDocExample = {
         TypeScript: import('./examples/5/index.ts?raw'),
         HTML: import('./examples/5/index.html?raw'),
-        'custom-label/custom-label.module.ts': import(
-            './examples/5/custom-label/custom-label.module.ts?raw'
-        ),
         'custom-label/custom-label.component.ts': import(
             './examples/5/custom-label/custom-label.component.ts?raw'
         ),
@@ -88,10 +85,6 @@ export class ExampleTuiAlertComponent {
         'custom-label/custom-label.template.html': import(
             './examples/5/custom-label/custom-label.template.html?raw'
         ),
-        'alert-example-with-custom-label/alert-example-with-custom-label.module.ts':
-            import(
-                './examples/5/alert-example-with-custom-label/alert-example-with-custom-label.module.ts?raw'
-            ),
         'alert-example-with-custom-label/alert-example-with-custom-label.component.ts':
             import(
                 './examples/5/alert-example-with-custom-label/alert-example-with-custom-label.component.ts?raw'
