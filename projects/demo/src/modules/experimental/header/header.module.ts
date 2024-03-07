@@ -11,7 +11,6 @@ import {
     TuiButtonModule,
     TuiHeaderDirective,
     TuiIconModule,
-    TuiSensitiveModule,
     TuiTitleModule,
     TuiToggleModule,
 } from '@taiga-ui/experimental';
@@ -21,6 +20,7 @@ import {
     TuiBadgeNotificationComponent,
     TuiDataListWrapperModule,
     TuiSelectModule,
+    TuiSensitiveDirective,
 } from '@taiga-ui/kit';
 
 import {TuiHeaderExample1} from './examples/1';
@@ -39,7 +39,7 @@ import {ExampleTuiCellComponent} from './header.component';
         TuiHeaderDirective,
         TuiTitleModule,
         TuiIconModule,
-        TuiSensitiveModule,
+        TuiSensitiveDirective,
         TuiSelectModule,
         TuiDataListWrapperModule,
         TuiTextfieldControllerModule,

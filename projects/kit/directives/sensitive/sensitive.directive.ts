@@ -8,6 +8,7 @@ import {TuiSensitiveComponent} from './sensitive.component';
 const rowsInSvg = 3;
 
 @Directive({
+    standalone: true,
     selector: '[tuiSensitive]',
     providers: [ResizeObserverService],
     host: {

@@ -929,12 +929,6 @@ export const pages: TuiDocPages = [
     },
     {
         section: 'Experimental',
-        title: 'Sensitive',
-        keywords: 'sensitive, pixel, mask, пиксель, маска',
-        route: '/experimental/sensitive',
-    },
-    {
-        section: 'Experimental',
         title: 'Surface',
         keywords: 'card, container, wrapper, image, blur, overlay',
         route: '/experimental/surface',
@@ -1380,6 +1374,12 @@ export const pages: TuiDocPages = [
                 title: 'Fade',
                 keywords: 'overflow, ellipsis, gradient, clamp, line',
                 route: '/directives/fade',
+            },
+            {
+                section: 'Tools',
+                title: 'Sensitive',
+                keywords: 'sensitive, pixel, mask, пиксель, маска',
+                route: '/directives/sensitive',
             },
         ],
     },
