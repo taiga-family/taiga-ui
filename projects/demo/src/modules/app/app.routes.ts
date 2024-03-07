@@ -1756,14 +1756,11 @@ export const ROUTES: Routes = [
         },
     },
     // SERVICES
-    {
+    route({
         path: 'components/alert',
-        loadChildren: async () =>
-            (await import('../components/alert/alert.module')).ExampleTuiAlertModule,
-        data: {
-            title: 'Alert',
-        },
-    },
+        title: 'Alert',
+        loadComponent: async () => import('../components/alert/alert.component'),
+    }),
     {
         path: 'services/breakpoint-service',
         loadChildren: async () =>

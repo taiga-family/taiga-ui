@@ -1,22 +1,52 @@
 import {Component, inject, INJECTOR} from '@angular/core';
+import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
-import type {TuiDocExample} from '@taiga-ui/addon-doc';
+import {
+    TuiAddonDocModule,
+    type TuiDocExample,
+    TuiTextCodeModule,
+} from '@taiga-ui/addon-doc';
 import type {TuiPopoverContext} from '@taiga-ui/cdk';
 import type {TuiAlertOptions, TuiNotification} from '@taiga-ui/core';
-import {TUI_NOTIFICATION_OPTIONS, TuiAlertService} from '@taiga-ui/core';
+import {
+    TUI_NOTIFICATION_OPTIONS,
+    TuiAlertService,
+    TuiButtonModule,
+    TuiLinkModule,
+} from '@taiga-ui/core';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import {switchMap} from 'rxjs';
 
+import {TuiAlertExampleComponent1} from './examples/1';
+import {TuiAlertExampleComponent2} from './examples/2';
+import {TuiAlertExampleComponent3} from './examples/3';
+import {TuiAlertExampleComponent4} from './examples/4';
 import {AlertExampleWithDataComponent} from './examples/4/alert-example-with-data/alert-example-with-data.component';
+import {TuiAlertExampleComponent5} from './examples/5';
+import {TuiAlertExampleComponent6} from './examples/6';
 
 @Component({
+    standalone: true,
     selector: 'example-tui-alert',
+    imports: [
+        TuiTextCodeModule,
+        TuiButtonModule,
+        TuiLinkModule,
+        TuiAddonDocModule,
+        TuiAlertExampleComponent1,
+        TuiAlertExampleComponent2,
+        TuiAlertExampleComponent3,
+        TuiAlertExampleComponent4,
+        TuiAlertExampleComponent5,
+        TuiAlertExampleComponent6,
+        RouterLink,
+    ],
     templateUrl: './alert.template.html',
     styleUrls: ['./alert.style.less'],
     changeDetection,
 })
-export class ExampleTuiAlertComponent {
+export default class ExampleTuiAlertComponent {
     private readonly alerts = inject(TuiAlertService);
 
     private readonly defaultIcon = inject(TUI_NOTIFICATION_OPTIONS).icon;
@@ -57,9 +87,6 @@ export class ExampleTuiAlertComponent {
         'alert-example/alert-example.template.html': import(
             './examples/3/alert-example/alert-example.template.html?raw'
         ),
-        'alert-example/alert-example.module.ts': import(
-            './examples/3/alert-example/alert-example.module.ts?raw'
-        ),
     };
 
     protected readonly example4: TuiDocExample = {
@@ -74,17 +101,11 @@ export class ExampleTuiAlertComponent {
         'alert-example-with-data/alert-example-with-data.style.less': import(
             './examples/4/alert-example-with-data/alert-example-with-data.style.less?raw'
         ),
-        'alert-example-with-data/alert-example-with-data.module.ts': import(
-            './examples/4/alert-example-with-data/alert-example-with-data.module.ts?raw'
-        ),
     };
 
     protected readonly example5: TuiDocExample = {
         TypeScript: import('./examples/5/index.ts?raw'),
         HTML: import('./examples/5/index.html?raw'),
-        'custom-label/custom-label.module.ts': import(
-            './examples/5/custom-label/custom-label.module.ts?raw'
-        ),
         'custom-label/custom-label.component.ts': import(
             './examples/5/custom-label/custom-label.component.ts?raw'
         ),
@@ -94,10 +115,6 @@ export class ExampleTuiAlertComponent {
         'custom-label/custom-label.template.html': import(
             './examples/5/custom-label/custom-label.template.html?raw'
         ),
-        'alert-example-with-custom-label/alert-example-with-custom-label.module.ts':
-            import(
-                './examples/5/alert-example-with-custom-label/alert-example-with-custom-label.module.ts?raw'
-            ),
         'alert-example-with-custom-label/alert-example-with-custom-label.component.ts':
             import(
                 './examples/5/alert-example-with-custom-label/alert-example-with-custom-label.component.ts?raw'
