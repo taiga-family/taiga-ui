@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[14778],{14778:n=>{n.exports='<form [formGroup]="form">\n    <tui-input\n        formControlName="control"\n        (tuiValueChanges)="onChanges($event)"\n    >\n        Value changes on blur\n    </tui-input>\n</form>\n'}}]);
