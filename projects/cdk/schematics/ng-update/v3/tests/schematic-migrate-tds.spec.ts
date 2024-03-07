@@ -44,13 +44,11 @@ describe('ng-update angular.json', () => {
 
         saveActiveProject();
 
-        const tree = await runner
-            .runSchematicAsync(
-                'updateToV3',
-                {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
-                host,
-            )
-            .toPromise();
+        const tree = await runner.runSchematic(
+            'updateToV3',
+            {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+            host,
+        );
 
         expect(tree.readContent('angular.json')).toEqual(
             makeAngularJsonWithAssets(`
@@ -92,13 +90,11 @@ describe('ng-update angular.json', () => {
 
         saveActiveProject();
 
-        const tree = await runner
-            .runSchematicAsync(
-                'updateToV3',
-                {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
-                host,
-            )
-            .toPromise();
+        const tree = await runner.runSchematic(
+            'updateToV3',
+            {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+            host,
+        );
 
         expect(tree.readContent('angular.json')).toEqual(
             makeAngularJsonWithAssets(`
@@ -135,13 +131,11 @@ describe('ng-update angular.json', () => {
 
         saveActiveProject();
 
-        const tree = await runner
-            .runSchematicAsync(
-                'updateToV3',
-                {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
-                host,
-            )
-            .toPromise();
+        const tree = await runner.runSchematic(
+            'updateToV3',
+            {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+            host,
+        );
 
         expect(tree.readContent('angular.json')).toEqual(
             makeAngularJsonWithAssets(`
@@ -160,7 +154,6 @@ function makeAngularJsonWithAssets(assets: string): string {
     return `
 {
   "version": 1,
-  "defaultProject": "demo",
   "projects": {
     "demo": {
         "root": "",

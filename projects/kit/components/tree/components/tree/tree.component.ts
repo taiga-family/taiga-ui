@@ -2,6 +2,7 @@ import type {DoCheck, TrackByFunction} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
+    forwardRef,
     inject,
     Input,
     ViewChild,
@@ -36,10 +37,10 @@ export class TuiTreeComponent<T> implements DoCheck {
     @Input()
     public value!: T;
 
-    @ViewChild(TuiTreeItemComponent)
+    @ViewChild(forwardRef(() => TuiTreeItemComponent))
     protected readonly item?: TuiTreeItemComponent;
 
-    @ViewChild(TuiTreeComponent)
+    @ViewChild(forwardRef(() => TuiTreeComponent))
     protected readonly child?: TuiTreeComponent<T>;
 
     protected readonly children$ = this.check$.pipe(

@@ -77,13 +77,11 @@ describe('ng-update', () => {
     });
 
     it('migration works', async () => {
-        const tree = await runner
-            .runSchematicAsync(
-                'updateToV4',
-                {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
-                host,
-            )
-            .toPromise();
+        const tree = await runner.runSchematic(
+            'updateToV4',
+            {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+            host,
+        );
 
         const modifiedFile = tree.readContent('test/app/test.component.ts');
 

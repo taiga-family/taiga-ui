@@ -59,6 +59,6 @@ export class TuiScrollbarComponent {
         const scrollTop = offsetTop + offsetHeight / 2 - clientHeight / 2;
         const scrollLeft = offsetLeft + offsetWidth / 2 - clientWidth / 2;
 
-        nativeElement.scrollTo(scrollLeft, scrollTop);
+        nativeElement.scrollTo?.(scrollLeft, scrollTop);
     }
 }

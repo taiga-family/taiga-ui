@@ -79,25 +79,21 @@ describe('ng-update', () => {
     });
 
     it('should migrate icons in template', async () => {
-        const tree = await runner
-            .runSchematicAsync(
-                'updateToV3_30',
-                {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
-                host,
-            )
-            .toPromise();
+        const tree = await runner.runSchematic(
+            'updateToV3_30',
+            {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+            host,
+        );
 
         expect(tree.readContent('test/app/test.template.html')).toEqual(TEMPLATE_AFTER);
     });
 
     it('should migrate icons in ts files', async () => {
-        const tree = await runner
-            .runSchematicAsync(
-                'updateToV3_30',
-                {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
-                host,
-            )
-            .toPromise();
+        const tree = await runner.runSchematic(
+            'updateToV3_30',
+            {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+            host,
+        );
 
         expect(tree.readContent('test/app/test.component.ts')).toEqual(COMPONENT_AFTER);
     });

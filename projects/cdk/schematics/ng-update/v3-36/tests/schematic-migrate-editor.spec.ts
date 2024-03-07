@@ -114,13 +114,11 @@ describe('ng-update', () => {
     });
 
     it('should migrate addon-editor', async () => {
-        const tree = await runner
-            .runSchematicAsync(
-                'updateToV3_36',
-                {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
-                host,
-            )
-            .toPromise();
+        const tree = await runner.runSchematic(
+            'updateToV3_36',
+            {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+            host,
+        );
 
         expect(tree.readContent('test/app/test.component.ts')).toEqual(COMPONENT_AFTER);
         expect(tree.readContent('package.json')).toEqual(PACKAGE_AFTER);

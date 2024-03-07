@@ -50,7 +50,7 @@ describe('ng-add', () => {
             'skip-logs': process.env['TUI_CI'] === 'true',
         };
 
-        const tree = await runner.runSchematicAsync('ng-add', options, host).toPromise();
+        const tree = await runner.runSchematic('ng-add', options, host);
 
         expect(tree.readContent('package.json')).toBe(
             `{
@@ -76,7 +76,7 @@ describe('ng-add', () => {
             'skip-logs': process.env['TUI_CI'] === 'true',
         };
 
-        const tree = await runner.runSchematicAsync('ng-add', options, host).toPromise();
+        const tree = await runner.runSchematic('ng-add', options, host);
 
         expect(tree.readContent('package.json')).toBe(
             `{
@@ -110,7 +110,7 @@ describe('ng-add', () => {
             'skip-logs': process.env['TUI_CI'] === 'true',
         };
 
-        const tree = await runner.runSchematicAsync('ng-add', options, host).toPromise();
+        const tree = await runner.runSchematic('ng-add', options, host);
 
         expect(tree.readContent('package.json')).toBe(
             `{
@@ -135,18 +135,15 @@ describe('ng-add', () => {
     });
 
     it('should add assets and styles in angular.json', async () => {
-        const tree = await runner
-            .runSchematicAsync(
-                'ng-add-setup-project',
-                {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
-                host,
-            )
-            .toPromise();
+        const tree = await runner.runSchematic(
+            'ng-add-setup-project',
+            {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+            host,
+        );
 
         expect(tree.readContent('angular.json')).toBe(`
 {
   "version": 1,
-  "defaultProject": "demo",
   "projects": {
     "demo": {
         "root": "",
@@ -177,18 +174,15 @@ describe('ng-add', () => {
         createAngularJson({stylesExist: true});
         saveActiveProject();
 
-        const tree = await runner
-            .runSchematicAsync(
-                'ng-add-setup-project',
-                {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
-                host,
-            )
-            .toPromise();
+        const tree = await runner.runSchematic(
+            'ng-add-setup-project',
+            {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+            host,
+        );
 
         expect(tree.readContent('angular.json')).toBe(`
 {
   "version": 1,
-  "defaultProject": "demo",
   "projects": {
     "demo": {
         "root": "",
@@ -220,18 +214,15 @@ describe('ng-add', () => {
         createAngularJson({stylesExist: true});
         saveActiveProject();
 
-        const tree = await runner
-            .runSchematicAsync(
-                'ng-add-setup-project',
-                {addGlobalStyles: true} as Partial<TuiSchema>,
-                host,
-            )
-            .toPromise();
+        const tree = await runner.runSchematic(
+            'ng-add-setup-project',
+            {addGlobalStyles: true} as Partial<TuiSchema>,
+            host,
+        );
 
         expect(tree.readContent('angular.json')).toBe(`
 {
   "version": 1,
-  "defaultProject": "demo",
   "projects": {
     "demo": {
         "root": "",
@@ -271,9 +262,7 @@ describe('ng-add', () => {
             'skip-logs': process.env['TUI_CI'] === 'true',
         };
 
-        const tree = await runner
-            .runSchematicAsync('ng-add-setup-project', options, host)
-            .toPromise();
+        const tree = await runner.runSchematic('ng-add-setup-project', options, host);
 
         expect(tree.readContent('test/app/app.module.ts')).toBe(
             `import { NgDompurifySanitizer } from "@tinkoff/ng-dompurify";
@@ -292,13 +281,11 @@ export class AppModule {}
     });
 
     it('Should wrap main template with tui-root', async () => {
-        const tree = await runner
-            .runSchematicAsync(
-                'ng-add-setup-project',
-                {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
-                host,
-            )
-            .toPromise();
+        const tree = await runner.runSchematic(
+            'ng-add-setup-project',
+            {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+            host,
+        );
 
         expect(tree.readContent('test/app/app.template.html')).toBe(`<tui-root>
 <app></app>

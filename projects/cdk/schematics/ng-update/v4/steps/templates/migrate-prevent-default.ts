@@ -40,7 +40,7 @@ export function migratePreventDefault({
         const preventDefaultEnd =
             sourceCodeLocation?.attrs?.[preventDefaultAttr.name].endOffset || 0;
 
-        recorder.insertRight(
+        recorder.insertLeft(
             templateOffset + preventDefaultStart,
             `(${event}.prevent.silent)="0"`,
         );
