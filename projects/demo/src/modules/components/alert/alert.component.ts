@@ -71,9 +71,6 @@ export class ExampleTuiAlertComponent {
         'alert-example-with-data/alert-example-with-data.style.less': import(
             './examples/4/alert-example-with-data/alert-example-with-data.style.less?raw'
         ),
-        'alert-example-with-data/alert-example-with-data.module.ts': import(
-            './examples/4/alert-example-with-data/alert-example-with-data.module.ts?raw'
-        ),
     };
 
     protected readonly example5: TuiDocExample = {
