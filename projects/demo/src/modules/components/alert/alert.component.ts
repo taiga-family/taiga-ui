@@ -15,7 +15,7 @@ import {
     TuiLinkModule,
 } from '@taiga-ui/core';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {PolymorpheusComponent, PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import {switchMap} from 'rxjs';
 
 import {TuiAlertExampleComponent1} from './examples/1';
@@ -30,7 +30,6 @@ import {TuiAlertExampleComponent6} from './examples/6';
     standalone: true,
     selector: 'example-tui-alert',
     imports: [
-        PolymorpheusModule,
         TuiTextCodeModule,
         TuiButtonModule,
         TuiLinkModule,
