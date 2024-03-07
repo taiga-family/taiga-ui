@@ -19,7 +19,7 @@ import {
 import {MODE_PROVIDER} from '@taiga-ui/core/providers';
 import {TUI_MODE} from '@taiga-ui/core/tokens';
 import type {TuiHorizontalDirection} from '@taiga-ui/core/types';
-import {map, merge} from 'rxjs';
+import {map, merge, takeUntil} from 'rxjs';
 
 // @bad TODO: Think about extending Interactive
 @Component({
@@ -70,9 +70,11 @@ export class TuiLinkComponent implements TuiFocusableElementAccessor {
     protected readonly mode$ = inject(TUI_MODE);
 
     constructor() {
-        inject(TuiFocusVisibleService).subscribe(visible => {
-            this.focusVisible = visible;
-        });
+        inject(TuiFocusVisibleService)
+            .pipe(takeUntil(inject(TuiDestroyService, {self: true})))
+            .subscribe(visible => {
+                this.focusVisible = visible;
+            });
     }
 
     public get nativeFocusableElement(): TuiNativeFocusableElement {

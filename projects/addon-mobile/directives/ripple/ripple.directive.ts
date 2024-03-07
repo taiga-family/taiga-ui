@@ -38,7 +38,9 @@ export class TuiRippleDirective {
         const touchEnd$ = tuiTypedFromEvent(this.el, 'touchend');
         const touchMove$ = tuiTypedFromEvent(this.el, 'touchmove');
 
-        this.end$.subscribe(element => this.renderer.removeChild(this.el, element));
+        this.end$
+            .pipe(takeUntil(this.destroy$))
+            .subscribe(element => this.renderer.removeChild(this.el, element));
 
         this.start$
             .pipe(

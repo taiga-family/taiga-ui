@@ -15,6 +15,7 @@ import {
     TuiFocusVisibleService,
     tuiIsNativeFocused,
 } from '@taiga-ui/cdk';
+import {takeUntil} from 'rxjs';
 
 @Component({
     selector: 'button[tuiAction], a[tuiAction]',
@@ -41,9 +42,9 @@ export class TuiActionComponent extends AbstractTuiInteractive {
     constructor() {
         super();
 
-        inject(TuiFocusVisibleService).subscribe(visible => {
-            this.updateFocusVisible(visible);
-        });
+        inject(TuiFocusVisibleService)
+            .pipe(takeUntil(inject(TuiDestroyService, {self: true})))
+            .subscribe(visible => this.updateFocusVisible(visible));
     }
 
     public get nativeFocusableElement(): TuiNativeFocusableElement | null {

@@ -11,7 +11,7 @@ import {RouterLinkActive} from '@angular/router';
 import {TuiDestroyService, TuiFocusVisibleService} from '@taiga-ui/cdk';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core';
 import type {Observable} from 'rxjs';
-import {EMPTY, filter} from 'rxjs';
+import {EMPTY, filter, takeUntil} from 'rxjs';
 
 import {TuiStepperComponent} from '../stepper.component';
 
@@ -46,13 +46,16 @@ export class TuiStepComponent {
     protected readonly icons = inject(TUI_COMMON_ICONS);
 
     constructor() {
-        this.routerLinkActive$.pipe(filter(Boolean)).subscribe(() => {
-            this.activate();
-        });
+        this.routerLinkActive$
+            .pipe(filter(Boolean))
+            .pipe(takeUntil(inject(TuiDestroyService, {self: true})))
+            .subscribe(() => this.activate());
 
-        this.focusVisible$.subscribe(visible => {
-            this.focusVisible = visible;
-        });
+        this.focusVisible$
+            .pipe(takeUntil(inject(TuiDestroyService, {self: true})))
+            .subscribe(visible => {
+                this.focusVisible = visible;
+            });
     }
 
     @HostBinding('class._active')
