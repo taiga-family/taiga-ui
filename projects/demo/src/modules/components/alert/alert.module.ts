@@ -48,11 +48,11 @@ import {TuiAlertExampleComponent6} from './examples/6';
         TuiLinkModule,
         TuiAddonDocModule,
         TuiAlertExampleComponent1,
+        TuiAlertExampleComponent2,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiAlertComponent)),
     ],
     declarations: [
         ExampleTuiAlertComponent,
-        TuiAlertExampleComponent2,
         TuiAlertExampleComponent3,
         TuiAlertExampleComponent4,
         TuiAlertExampleComponent5,
