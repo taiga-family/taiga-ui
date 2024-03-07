@@ -21,7 +21,6 @@ import {ExampleTuiAlertComponent} from './alert.component';
 import {TuiAlertExampleComponent1} from './examples/1';
 import {TuiAlertExampleComponent2} from './examples/2';
 import {TuiAlertExampleComponent3} from './examples/3';
-import {AlertExampleModule} from './examples/3/alert-example/alert-example.module';
 import {TuiAlertExampleComponent4} from './examples/4';
 import {AlertExampleWithDataModule} from './examples/4/alert-example-with-data/alert-example-with-data.module';
 import {TuiAlertExampleComponent5} from './examples/5';
@@ -41,7 +40,6 @@ import {TuiAlertExampleComponent6} from './examples/6';
         TuiAmountPipe,
         AlertExampleWithCustomLabelModule,
         AlertExampleWithDataModule,
-        AlertExampleModule,
         CustomLabelModule,
         TuiRadioListModule,
         TuiInputModule,
@@ -49,11 +47,11 @@ import {TuiAlertExampleComponent6} from './examples/6';
         TuiAddonDocModule,
         TuiAlertExampleComponent1,
         TuiAlertExampleComponent2,
+        TuiAlertExampleComponent3,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiAlertComponent)),
     ],
     declarations: [
         ExampleTuiAlertComponent,
-        TuiAlertExampleComponent3,
         TuiAlertExampleComponent4,
         TuiAlertExampleComponent5,
         TuiAlertExampleComponent6,
