@@ -1,22 +1,59 @@
+import {CommonModule} from '@angular/common';
 import {Component, inject, INJECTOR} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import type {TuiDocExample} from '@taiga-ui/addon-doc';
+import {
+    TuiAddonDocModule,
+    type TuiDocExample,
+    TuiTextCodeModule,
+} from '@taiga-ui/addon-doc';
 import type {TuiPopoverContext} from '@taiga-ui/cdk';
 import type {TuiAlertOptions, TuiNotification} from '@taiga-ui/core';
-import {TUI_NOTIFICATION_OPTIONS, TuiAlertService} from '@taiga-ui/core';
+import {
+    TUI_NOTIFICATION_OPTIONS,
+    TuiAlertModule,
+    TuiAlertService,
+    TuiButtonModule,
+    TuiLinkModule,
+    TuiModeModule,
+} from '@taiga-ui/core';
+import {TuiInputModule} from '@taiga-ui/kit';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusComponent, PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import {switchMap} from 'rxjs';
 
+import {TuiAlertExampleComponent1} from './examples/1';
+import {TuiAlertExampleComponent2} from './examples/2';
+import {TuiAlertExampleComponent3} from './examples/3';
+import {TuiAlertExampleComponent4} from './examples/4';
 import {AlertExampleWithDataComponent} from './examples/4/alert-example-with-data/alert-example-with-data.component';
+import {TuiAlertExampleComponent5} from './examples/5';
+import {TuiAlertExampleComponent6} from './examples/6';
 
 @Component({
+    standalone: true,
     selector: 'example-tui-alert',
+    imports: [
+        CommonModule,
+        PolymorpheusModule,
+        TuiTextCodeModule,
+        TuiAlertModule,
+        TuiButtonModule,
+        TuiModeModule,
+        TuiInputModule,
+        TuiLinkModule,
+        TuiAddonDocModule,
+        TuiAlertExampleComponent1,
+        TuiAlertExampleComponent2,
+        TuiAlertExampleComponent3,
+        TuiAlertExampleComponent4,
+        TuiAlertExampleComponent5,
+        TuiAlertExampleComponent6,
+    ],
     templateUrl: './alert.template.html',
     styleUrls: ['./alert.style.less'],
     changeDetection,
 })
-export class ExampleTuiAlertComponent {
+export default class ExampleTuiAlertComponent {
     private readonly alerts = inject(TuiAlertService);
 
     private readonly defaultIcon = inject(TUI_NOTIFICATION_OPTIONS).icon;
