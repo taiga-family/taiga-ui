@@ -8,6 +8,7 @@ import {
     Output,
 } from '@angular/core';
 import {TUI_TABLE_SHOW_HIDE_MESSAGE} from '@taiga-ui/addon-table/tokens';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {TUI_REORDER_OPTIONS} from './reorder.options';
 
@@ -28,6 +29,9 @@ export class TuiReorderComponent<T> {
 
     @Output()
     public readonly enabledChange = new EventEmitter<T[]>();
+
+    @Input()
+    public container?: PolymorpheusContent;
 
     protected order = new Map<number, number>();
     protected unsortedItems: readonly T[] = [];

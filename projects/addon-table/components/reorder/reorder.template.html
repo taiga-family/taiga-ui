@@ -15,7 +15,14 @@
                     class="t-icon"
                     [src]="options.icons.drag"
                 ></tui-svg>
-                {{ item }}
+                <div *ngIf="container">
+                    <ng-container *polymorpheusOutlet="container as template; context: {$implicit: item, index: index}">
+                        {{ template }}
+                    </ng-container>
+                </div>
+                <div *ngIf="!container">
+                    {{ item }}
+                </div>
             </div>
             <button
                 appearance="icon"
