@@ -123,14 +123,11 @@ export const ROUTES: Routes = [
         title: 'Avatar',
         loadComponent: async () => import('../components/avatar/avatar.component'),
     }),
-    {
+    route({
         path: 'components/badge',
-        loadChildren: async () =>
-            (await import('../components/badge/badge.module')).ExampleTuiBadgeModule,
-        data: {
-            title: 'Badge',
-        },
-    },
+        loadComponent: async () => import('../components/badge/badge.component'),
+        title: 'Badge',
+    }),
     {
         path: 'components/badged-content',
         loadChildren: async () =>
