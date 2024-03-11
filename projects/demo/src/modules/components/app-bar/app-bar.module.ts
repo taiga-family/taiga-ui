@@ -18,9 +18,10 @@ import {TuiAppBarExample1} from './examples/1';
         TuiNotificationModule,
         TuiAppBarModule,
         TuiAddonDocModule,
+        TuiAppBarExample1,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiAppBarComponent)),
     ],
-    declarations: [ExampleTuiAppBarComponent, TuiAppBarExample1],
+    declarations: [ExampleTuiAppBarComponent],
     exports: [ExampleTuiAppBarComponent],
 })
 export class ExampleTuiAppBarModule {}
