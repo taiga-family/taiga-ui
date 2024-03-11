@@ -1,12 +1,12 @@
 ```ts
 import {NgModule} from '@angular/core';
-import {TuiIconModule} from '@taiga-ui/experimental';
+import {TuiIconComponent} from '@taiga-ui/core';
 // ...
 
 @NgModule({
   imports: [
     // ...
-    TuiIconModule,
+    TuiIconComponent,
   ],
 })
 export class MyModule {}

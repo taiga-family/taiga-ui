@@ -1,12 +1,8 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {tuiGetDocModules} from '@taiga-ui/addon-doc';
-import {TuiNotificationModule} from '@taiga-ui/core';
-import {
-    TuiButtonGroupModule,
-    TuiIconModule,
-    TuiSurfaceModule,
-} from '@taiga-ui/experimental';
+import {TuiIconComponent, TuiNotificationModule} from '@taiga-ui/core';
+import {TuiButtonGroupModule, TuiSurfaceModule} from '@taiga-ui/experimental';
 
 import {ExampleTuiButtonGroupComponent} from './button-group.component';
 import {TuiButtonGroupExample1} from './examples/1';
@@ -16,7 +12,7 @@ import {TuiButtonGroupExample3} from './examples/3';
 @NgModule({
     imports: [
         CommonModule,
-        TuiIconModule,
+        TuiIconComponent,
         TuiSurfaceModule,
         TuiNotificationModule,
         TuiButtonGroupModule,

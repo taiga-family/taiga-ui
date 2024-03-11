@@ -309,9 +309,9 @@ export const ROUTES: Routes = [
         },
     },
     {
-        path: 'experimental/icon',
+        path: 'components/icon',
         loadChildren: async () =>
-            (await import('../experimental/icon/icon.module')).ExampleTuiIconModule,
+            (await import('../components/icon/icon.module')).ExampleTuiIconModule,
         data: {
             title: 'Icon',
         },
@@ -1750,11 +1750,14 @@ export const ROUTES: Routes = [
         },
     },
     // SERVICES
-    route({
+    {
         path: 'components/alert',
-        title: 'Alert',
-        loadComponent: async () => import('../components/alert/alert.component'),
-    }),
+        loadChildren: async () =>
+            (await import('../components/alert/alert.module')).ExampleTuiAlertModule,
+        data: {
+            title: 'Alert',
+        },
+    },
     {
         path: 'services/breakpoint-service',
         loadChildren: async () =>

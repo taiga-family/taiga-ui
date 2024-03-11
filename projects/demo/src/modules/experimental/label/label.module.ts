@@ -4,9 +4,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiExamplePipe, TuiSetupComponent} from '@demo/utils';
 import {tuiGetDocModules} from '@taiga-ui/addon-doc';
+import {TuiIconComponent} from '@taiga-ui/core';
 import {
     TuiCheckboxModule,
-    TuiIconModule,
     TuiLabelDirective,
     TuiRadioComponent,
     TuiTextfieldComponent,
@@ -36,7 +36,7 @@ import {ExampleTuiLabelComponent} from './label.component';
         TuiSetupComponent,
         tuiGetDocModules(ExampleTuiLabelComponent),
         TuiToggleModule,
-        TuiIconModule,
+        TuiIconComponent,
         TuiTextfieldComponent,
         TuiTextfieldDirective,
         TuiTooltipModule,

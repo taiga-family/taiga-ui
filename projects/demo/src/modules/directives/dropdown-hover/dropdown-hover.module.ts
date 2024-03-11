@@ -3,8 +3,13 @@ import {NgModule} from '@angular/core';
 import {ReactiveFormsModule} from '@angular/forms';
 import {tuiGetDocModules} from '@taiga-ui/addon-doc';
 import {TuiActiveZoneModule} from '@taiga-ui/cdk';
-import {TuiDataListModule, TuiDropdownModule, TuiGroupDirective} from '@taiga-ui/core';
-import {TuiButtonModule, TuiIconModule} from '@taiga-ui/experimental';
+import {
+    TuiDataListModule,
+    TuiDropdownModule,
+    TuiGroupDirective,
+    TuiIconComponent,
+} from '@taiga-ui/core';
+import {TuiButtonModule} from '@taiga-ui/experimental';
 import {
     TuiDataListWrapperModule,
     TuiSelectModule,
@@ -32,7 +37,7 @@ import {TuiDropdownHoverExample4} from './examples/4';
         TuiToggleModule,
         TuiDataListModule,
         TuiGroupDirective,
-        TuiIconModule,
+        TuiIconComponent,
         DropdownDocumentationModule,
         tuiGetDocModules(ExampleTuiDropdownHoverComponent),
     ],

@@ -1,5 +1,6 @@
 <tui-select
     *tuiLet="items$ | async as items"
+    class="b-form"
     [tuiTextfieldLabelOutside]="true"
     [valueContent]="items ? stringify(items) : loading"
     [(ngModel)]="value"

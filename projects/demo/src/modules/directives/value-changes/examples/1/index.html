@@ -1,4 +1,7 @@
-<form [formGroup]="form">
+<form
+    class="b-form"
+    [formGroup]="form"
+>
     <tui-input
         formControlName="control"
         (tuiValueChanges)="onChanges($event)"
