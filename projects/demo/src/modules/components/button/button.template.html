@@ -23,7 +23,7 @@
             [content]="example1"
             [fullsize]="true"
         >
-            <tui-button-example-1></tui-button-example-1>
+            <tui-button-example-1 />
             <tui-notification>
                 Link cannot be
                 <code>disabled</code>
@@ -45,7 +45,7 @@
             [content]="example2"
             [fullsize]="true"
         >
-            <tui-button-example-2></tui-button-example-2>
+            <tui-button-example-2 />
         </tui-doc-example>
 
         <tui-doc-example
@@ -53,7 +53,7 @@
             heading="Rotating"
             [content]="example3"
         >
-            <tui-button-example-3></tui-button-example-3>
+            <tui-button-example-3 />
         </tui-doc-example>
 
         <tui-doc-example
@@ -61,7 +61,7 @@
             heading="Custom theme"
             [content]="example4"
         >
-            <tui-button-example-4></tui-button-example-4>
+            <tui-button-example-4 />
         </tui-doc-example>
 
         <tui-doc-example
@@ -69,7 +69,7 @@
             heading="Options"
             [content]="example5"
         >
-            <tui-button-example-5></tui-button-example-5>
+            <tui-button-example-5 />
         </tui-doc-example>
 
         <tui-doc-example
@@ -77,7 +77,7 @@
             heading="Custom padding"
             [content]="example6"
         >
-            <tui-button-example-6></tui-button-example-6>
+            <tui-button-example-6 />
         </tui-doc-example>
     </ng-template>
 
@@ -123,7 +123,7 @@
                 class="tui-space_horizontal-2"
                 [singleColor]="true"
                 [(ngModel)]="iconButton"
-            ></tui-toggle>
+            />
             tuiIconButton
         </tui-doc-demo>
         <ng-template #template>
@@ -132,7 +132,7 @@
                 paymentSystem="maestro"
                 size="s"
                 class="card"
-            ></tui-thumbnail-card>
+            />
         </ng-template>
         <tui-doc-documentation>
             <ng-template
@@ -198,7 +198,7 @@
                 Size
             </ng-template>
         </tui-doc-documentation>
-        <inherited-documentation></inherited-documentation>
+        <inherited-documentation />
     </ng-template>
 
     <ng-template pageTab>
@@ -213,7 +213,7 @@
                 <tui-doc-code
                     filename="my.module.ts"
                     [code]="exampleModule"
-                ></tui-doc-code>
+                />
             </li>
 
             <li>
@@ -222,7 +222,7 @@
                 <tui-doc-code
                     filename="my.component.html"
                     [code]="exampleHtml"
-                ></tui-doc-code>
+                />
             </li>
 
             <li>
@@ -235,7 +235,7 @@
                 <tui-doc-code
                     filename="my.module.ts"
                     [code]="exampleOptions"
-                ></tui-doc-code>
+                />
             </li>
         </ol>
     </ng-template>

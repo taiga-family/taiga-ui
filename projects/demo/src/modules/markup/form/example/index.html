@@ -41,7 +41,7 @@
                     <tui-error
                         formControlName="nameValue"
                         [error]="[] | tuiFieldError | async"
-                    ></tui-error>
+                    />
                 </div>
                 <div class="tui-form__row">
                     <tui-input-date formControlName="periodValue">
@@ -55,7 +55,7 @@
                     <tui-error
                         formControlName="periodValue"
                         [error]="[] | tuiFieldError | async"
-                    ></tui-error>
+                    />
                 </div>
                 <div class="tui-form__row tui-form__row_multi-fields">
                     <div class="tui-form__multi-field">
@@ -63,7 +63,7 @@
                         <tui-error
                             formControlName="passwordValue"
                             [error]="[] | tuiFieldError | async"
-                        ></tui-error>
+                        />
                     </div>
                     <div class="tui-form__multi-field">
                         <tui-input-number
@@ -75,7 +75,7 @@
                         <tui-error
                             formControlName="moneyValue"
                             [error]="[] | tuiFieldError | async"
-                        ></tui-error>
+                        />
                     </div>
                 </div>
                 <div class="tui-form__row">
@@ -96,7 +96,7 @@
                     <tui-error
                         formControlName="quantityValue"
                         [error]="[] | tuiFieldError | async"
-                    ></tui-error>
+                    />
                 </div>
                 <div class="tui-form__row tui-form__row_multi-fields">
                     <div class="tui-form__multi-field">
@@ -108,7 +108,7 @@
                             <tui-data-list-wrapper
                                 *tuiDataList
                                 [items]="persons"
-                            ></tui-data-list-wrapper>
+                            />
                         </tui-select>
                         <ng-template
                             #personValueContent
@@ -119,14 +119,14 @@
                         <tui-error
                             formControlName="personValue"
                             [error]="[] | tuiFieldError | async"
-                        ></tui-error>
+                        />
                     </div>
                     <div class="tui-form__multi-field">
                         <tui-input-phone formControlName="phoneValue">Input phone</tui-input-phone>
                         <tui-error
                             formControlName="phoneValue"
                             [error]="[] | tuiFieldError | async"
-                        ></tui-error>
+                        />
                     </div>
                 </div>
                 <h3 class="tui-form__header">Header</h3>
@@ -220,7 +220,7 @@
                                 *tuiDataList
                                 [itemContent]="accountContent"
                                 [items]="accounts"
-                            ></tui-data-list-wrapper>
+                            />
                         </tui-select>
                     </label>
                 </div>
@@ -238,7 +238,7 @@
                                 *tuiDataList
                                 [itemContent]="accountContent"
                                 [items]="accounts"
-                            ></tui-data-list-wrapper>
+                            />
                         </tui-select>
                     </label>
                 </div>

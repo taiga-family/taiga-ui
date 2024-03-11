@@ -15,7 +15,7 @@
             [inheritColor]="true"
             [showLoader]="value"
             [size]="loaderSize"
-        ></tui-loader>
+        />
         <span
             *ngIf="showIcons && !showLoader"
             class="t-icon-wrapper"
@@ -25,7 +25,7 @@
                 automation-id="tui-toggle__check-icon"
                 class="t-icon"
                 [src]="src"
-            ></tui-svg>
+            />
         </span>
         <div class="t-circle"></div>
         <tui-loader
@@ -34,7 +34,7 @@
             [inheritColor]="true"
             [showLoader]="!value"
             [size]="loaderSize"
-        ></tui-loader>
+        />
         <span
             *ngIf="showIcons && !showLoader"
             class="t-icon-wrapper"
@@ -44,7 +44,7 @@
                 automation-id="tui-toggle__cancel-icon"
                 class="t-icon t-icon_off"
                 [src]="src"
-            ></tui-svg>
+            />
         </span>
     </div>
     <input

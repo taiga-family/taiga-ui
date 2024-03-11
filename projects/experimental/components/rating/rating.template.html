@@ -11,13 +11,13 @@
             [class.t-icon_fraction]="isFraction(index)"
             [icon]="src.toString()"
             [style.--t-cut.%]="100 - getCut(index)"
-        ></tui-icon>
+        />
         <tui-icon
             *polymorpheusOutlet="icon as src; context: {$implicit: max - index}"
             class="t-icon"
             [icon]="src.toString()"
             [style.--t-cut.%]="getCut(index)"
-        ></tui-icon>
+        />
     </div>
 </div>
 <input

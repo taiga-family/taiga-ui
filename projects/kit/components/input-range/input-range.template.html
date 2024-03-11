@@ -26,7 +26,7 @@
         (keydown.arrowUp)="changeByStep($event, [1, 0])"
         (ngModelChange)="onInputLeft($event)"
     >
-        <ng-content></ng-content>
+        <ng-content />
         <div
             *ngIf="showLeftValueContent"
             ngProjectAs="tuiContent"
@@ -77,5 +77,5 @@
         (activeThumbChange)="onActiveThumbChange($event)"
         (ngModelChange)="onExternalValueUpdate($event)"
         (tuiPressedChange)="focusToTextInput()"
-    ></tui-range>
+    />
 </div>

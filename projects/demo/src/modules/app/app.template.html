@@ -1,4 +1,4 @@
-<router-outlet *ngIf="isLanding$ | async; else portal"></router-outlet>
+<router-outlet *ngIf="isLanding$ | async; else portal" />
 <ng-template #portal>
     <tui-doc-main>
         <ng-container ngProjectAs="tuiDocHeader">
@@ -64,8 +64,8 @@
             <tui-language-switcher>Language of components</tui-language-switcher>
             <version-manager>Version</version-manager>
         </div>
-        <tui-sheets-host ngProjectAs="tuiOverContent"></tui-sheets-host>
-        <custom-host ngProjectAs="tuiOverContent"></custom-host>
-        <tui-table-bars-host ngProjectAs="tuiOverAlerts"></tui-table-bars-host>
+        <tui-sheets-host ngProjectAs="tuiOverContent" />
+        <custom-host ngProjectAs="tuiOverContent" />
+        <tui-table-bars-host ngProjectAs="tuiOverAlerts" />
     </tui-doc-main>
 </ng-template>

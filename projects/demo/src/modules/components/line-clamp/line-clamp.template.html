@@ -11,7 +11,7 @@
             heading="Styles change"
             [content]="example1"
         >
-            <tui-line-clamp-example-1></tui-line-clamp-example-1>
+            <tui-line-clamp-example-1 />
         </tui-doc-example>
 
         <tui-doc-example
@@ -19,7 +19,7 @@
             heading="Expanding"
             [content]="example2"
         >
-            <tui-line-clamp-example-2></tui-line-clamp-example-2>
+            <tui-line-clamp-example-2 />
         </tui-doc-example>
 
         <tui-doc-example
@@ -27,7 +27,7 @@
             heading="Resize parent container"
             [content]="example3"
         >
-            <tui-line-clamp-example-3></tui-line-clamp-example-3>
+            <tui-line-clamp-example-3 />
         </tui-doc-example>
 
         <tui-doc-example
@@ -35,7 +35,7 @@
             heading="Clamp inside dropdown"
             [content]="example4"
         >
-            <tui-line-clamp-example-4></tui-line-clamp-example-4>
+            <tui-line-clamp-example-4 />
         </tui-doc-example>
 
         <tui-doc-example
@@ -43,7 +43,7 @@
             heading="Custom content workaround"
             [content]="example5"
         >
-            <tui-line-clamp-example-5></tui-line-clamp-example-5>
+            <tui-line-clamp-example-5 />
         </tui-doc-example>
     </ng-template>
 
@@ -55,7 +55,7 @@
                 [linesLimit]="linesLimit"
                 [style.maxWidth.px]="maxWidth"
                 (overflownChange)="documentationPropertyOverflownChange.emitEvent($event)"
-            ></tui-line-clamp>
+            />
             <ng-template #defaultExampleContent>
                 Lorem ipsum
                 <br />
@@ -128,7 +128,7 @@
                 <tui-doc-code
                     filename="my.module.ts"
                     [code]="exampleModule"
-                ></tui-doc-code>
+                />
             </li>
 
             <li>
@@ -137,7 +137,7 @@
                 <tui-doc-code
                     filename="my.component.html"
                     [code]="exampleHtml"
-                ></tui-doc-code>
+                />
             </li>
         </ol>
     </ng-template>

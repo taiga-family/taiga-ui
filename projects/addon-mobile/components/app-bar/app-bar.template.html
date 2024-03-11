@@ -2,17 +2,17 @@
     #side
     class="t-left"
 >
-    <ng-content select="[tuiSlot='left']"></ng-content>
+    <ng-content select="[tuiSlot='left']" />
 </div>
 <div
     class="t-content"
     [style.--sides.px]="width$ | async"
 >
-    <ng-content></ng-content>
+    <ng-content />
 </div>
 <div
     #side
     class="t-right"
 >
-    <ng-content select="[tuiSlot='right']"></ng-content>
+    <ng-content select="[tuiSlot='right']" />
 </div>

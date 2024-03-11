@@ -1,4 +1,4 @@
-<ng-content></ng-content>
+<ng-content />
 
 <div
     #badgeTop
@@ -6,9 +6,9 @@
     [style.--t-badge-height.px]="badgeTop.offsetHeight"
     (waResizeObserver)="(0)"
 >
-    <ng-content select="tui-badge-notification[tuiSlot='top']"></ng-content>
+    <ng-content select="tui-badge-notification[tuiSlot='top']" />
     <div class="t-border">
-        <ng-content select="[tuiSlot='top']"></ng-content>
+        <ng-content select="[tuiSlot='top']" />
     </div>
 </div>
 
@@ -18,8 +18,8 @@
     [style.--t-badge-height.px]="badgeBottom.offsetHeight"
     (waResizeObserver)="(0)"
 >
-    <ng-content select="tui-badge-notification[tuiSlot='bottom']"></ng-content>
+    <ng-content select="tui-badge-notification[tuiSlot='bottom']" />
     <div class="t-border">
-        <ng-content select="[tuiSlot='bottom']"></ng-content>
+        <ng-content select="[tuiSlot='bottom']" />
     </div>
 </div>

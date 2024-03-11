@@ -17,11 +17,11 @@
     (tuiDropdownOpenChange)="onOpenChange($event)"
     (valueChange)="onValueChange($event)"
 >
-    <ng-content></ng-content>
+    <ng-content />
     <ng-content
         ngProjectAs="input"
         select="input"
-    ></ng-content>
+    />
 </tui-primitive-textfield>
 
 <ng-template #dropdown>
@@ -35,7 +35,7 @@
                 [value]="value === null ? null : (value | tuiToYear)"
                 (mousedown.prevent.silent)="(0)"
                 (yearClick)="onYearClick($event)"
-            ></tui-primitive-year-picker>
+            />
         </tui-scrollbar>
     </div>
 </ng-template>

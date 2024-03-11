@@ -21,13 +21,13 @@
             heading="Basic"
             [content]="example1"
         >
-            <tui-error-example-1></tui-error-example-1>
+            <tui-error-example-1 />
         </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
         <tui-doc-demo>
-            <tui-error [error]="error"></tui-error>
+            <tui-error [error]="error" />
         </tui-doc-demo>
 
         <ng-template #errorContent>
@@ -64,7 +64,7 @@
                 <tui-doc-code
                     filename="my.module.ts"
                     [code]="exampleModule"
-                ></tui-doc-code>
+                />
             </li>
 
             <li>
@@ -73,7 +73,7 @@
                 <tui-doc-code
                     filename="my.component.html"
                     [code]="exampleHtml"
-                ></tui-doc-code>
+                />
             </li>
         </ol>
     </ng-template>

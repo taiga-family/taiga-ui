@@ -25,11 +25,11 @@
     <tui-doc-code
         *ngIf="add.activeItemIndex === 0"
         code="ng add taiga-ui"
-    ></tui-doc-code>
+    />
     <tui-doc-code
         *ngIf="add.activeItemIndex === 1"
         [code]="nxAdd"
-    ></tui-doc-code>
+    />
 
     <h2 class="tui-space_top-10">Manual</h2>
     <p class="tui-space_top-2">Use this guide to install Taiga UI manually:</p>
@@ -101,11 +101,11 @@
         <tui-doc-code
             *ngIf="install.activeItemIndex === 0"
             [code]="main"
-        ></tui-doc-code>
+        />
         <tui-doc-code
             *ngIf="install.activeItemIndex === 1"
             [code]="addons"
-        ></tui-doc-code>
+        />
 
         <h2
             id="styles"
@@ -144,7 +144,7 @@
             </button>
         </tui-tabs-with-more>
         <ng-container *ngIf="styles.activeItemIndex === 0">
-            <tui-doc-code [code]="angularJsonStyles"></tui-doc-code>
+            <tui-doc-code [code]="angularJsonStyles" />
 
             <tui-accordion class="tui-space_top-3">
                 <tui-accordion-item>
@@ -177,12 +177,12 @@
                         <tui-doc-code
                             filename="angular.json"
                             [code]="angularJsonGlobalSingleStyles"
-                        ></tui-doc-code>
+                        />
 
                         <tui-doc-code
                             filename="styles.less"
                             [code]="stylesLess"
-                        ></tui-doc-code>
+                        />
 
                         <tui-notification class="tui-space_top-3">
                             Also you can use not all styles from global, but only what you need partially import, for
@@ -194,7 +194,7 @@
                         <tui-doc-code
                             filename="styles.less"
                             [code]="customGlobalStyle"
-                        ></tui-doc-code>
+                        />
                     </ng-template>
                 </tui-accordion-item>
             </tui-accordion>
@@ -202,15 +202,15 @@
         <tui-doc-code
             *ngIf="styles.activeItemIndex === 1"
             [code]="projectJsonStyles"
-        ></tui-doc-code>
+        />
         <tui-doc-code
             *ngIf="styles.activeItemIndex === 2"
             [code]="componentsStyles"
-        ></tui-doc-code>
+        />
         <tui-doc-code
             *ngIf="styles.activeItemIndex === 3"
             [code]="importLocalLess"
-        ></tui-doc-code>
+        />
 
         <h2
             id="root"
@@ -240,7 +240,7 @@
             </button>
         </tui-tabs-with-more>
         <ng-container *ngIf="ngModules.activeItemIndex === 0">
-            <tui-doc-code [code]="appModule"></tui-doc-code>
+            <tui-doc-code [code]="appModule" />
             <tui-accordion class="tui-space_top-3">
                 <tui-accordion-item>
                     Taiga UI also has optional modules for dialogs and notifications. If you need these features, add
@@ -250,7 +250,7 @@
                         <tui-doc-code
                             filename="app.module.ts"
                             [code]="appModuleOptional"
-                        ></tui-doc-code>
+                        />
                     </ng-template>
                 </tui-accordion-item>
             </tui-accordion>
@@ -258,7 +258,7 @@
         <tui-doc-code
             *ngIf="ngModules.activeItemIndex === 1"
             [code]="appTemplate"
-        ></tui-doc-code>
+        />
 
         <h3 class="tui-space_top-10">Standalone</h3>
 
@@ -288,9 +288,9 @@
         <tui-doc-code
             *ngIf="ngStandalone.activeItemIndex === 0"
             [code]="standalone"
-        ></tui-doc-code>
+        />
         <ng-container *ngIf="ngStandalone.activeItemIndex === 1">
-            <tui-doc-code [code]="standaloneMain"></tui-doc-code>
+            <tui-doc-code [code]="standaloneMain" />
             <tui-accordion class="tui-space_top-3">
                 <tui-accordion-item>
                     Taiga UI also has optional modules for dialogs and notifications. If you need these features, add
@@ -300,7 +300,7 @@
                         <tui-doc-code
                             filename="main.ts"
                             [code]="standaloneMainOptional"
-                        ></tui-doc-code>
+                        />
                     </ng-template>
                 </tui-accordion-item>
             </tui-accordion>
@@ -308,7 +308,7 @@
         <tui-doc-code
             *ngIf="ngStandalone.activeItemIndex === 2"
             [code]="appTemplate"
-        ></tui-doc-code>
+        />
 
         <h2
             id="icons"
@@ -337,11 +337,11 @@
         <tui-doc-code
             *ngIf="icons.activeItemIndex === 0"
             [code]="assets"
-        ></tui-doc-code>
+        />
         <tui-doc-code
             *ngIf="icons.activeItemIndex === 1"
             [code]="nxAssets"
-        ></tui-doc-code>
+        />
     </div>
 </section>
 
@@ -369,9 +369,9 @@
     <tui-doc-code
         *ngIf="update.activeItemIndex === 0"
         code="ng update &#64;taiga-ui/cdk"
-    ></tui-doc-code>
+    />
     <tui-doc-code
         *ngIf="update.activeItemIndex === 1"
         [code]="nxMigrate"
-    ></tui-doc-code>
+    />
 </section>

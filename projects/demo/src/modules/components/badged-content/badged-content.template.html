@@ -11,7 +11,7 @@
             heading="basic"
             [content]="example1"
         >
-            <tui-badged-content-example-1></tui-badged-content-example-1>
+            <tui-badged-content-example-1 />
         </tui-doc-example>
 
         <tui-doc-example
@@ -27,7 +27,7 @@
                     variable with actual value.
                 </p>
             </ng-template>
-            <tui-badged-content-example-2></tui-badged-content-example-2>
+            <tui-badged-content-example-2 />
         </tui-doc-example>
 
         <tui-doc-example
@@ -35,7 +35,7 @@
             heading="with different components"
             [content]="example3"
         >
-            <tui-badged-content-example-3></tui-badged-content-example-3>
+            <tui-badged-content-example-3 />
         </tui-doc-example>
     </ng-template>
 
@@ -49,7 +49,7 @@
                     [src]="
                         'https://avatars.githubusercontent.com/u/11832552' | tuiFallbackSrc: 'tuiIconUserLarge' | async
                     "
-                ></tui-avatar>
+                />
             </tui-badged-content>
         </tui-doc-demo>
         <tui-doc-documentation heading="CSS customization">
@@ -73,7 +73,7 @@
                 <tui-doc-code
                     filename="my.module.ts"
                     [code]="exampleModule"
-                ></tui-doc-code>
+                />
             </li>
 
             <li>
@@ -82,7 +82,7 @@
                 <tui-doc-code
                     filename="my.component.html"
                     [code]="exampleHtml"
-                ></tui-doc-code>
+                />
             </li>
         </ol>
     </ng-template>

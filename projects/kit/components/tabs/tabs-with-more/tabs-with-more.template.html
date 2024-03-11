@@ -1,4 +1,4 @@
-<ng-container *ngIf="items.changes | async"></ng-container>
+<ng-container *ngIf="items.changes | async" />
 <div class="t-wrapper">
     <tui-tabs
         class="t-tabs"
@@ -11,10 +11,10 @@
             <ng-container
                 *ngIf="index <= lastVisibleIndex; else hidden"
                 [ngTemplateOutlet]="item"
-            ></ng-container>
+            />
             <ng-template #hidden>
                 <div [class.t-overflown]="isOverflown(index)">
-                    <ng-container [ngTemplateOutlet]="item"></ng-container>
+                    <ng-container [ngTemplateOutlet]="item" />
                 </div>
             </ng-template>
         </ng-container>
@@ -42,7 +42,7 @@
                 class="t-icon"
                 [class.t-icon_rotated]="open"
                 [src]="arrowOptions.iconSmall"
-            ></tui-svg>
+            />
         </ng-template>
     </tui-hosted-dropdown>
     <ng-template #dropdown>
@@ -60,12 +60,12 @@
                 <ng-container
                     *ngIf="shouldShow(index)"
                     [ngTemplateOutlet]="item"
-                ></ng-container>
+                />
             </div>
         </div>
     </ng-template>
     <tui-underline
         *ngIf="underline"
         [element]="activeElement"
-    ></tui-underline>
+    />
 </div>

@@ -11,7 +11,7 @@
             heading="Basic"
             [content]="example1"
         >
-            <tui-format-phone-example-1></tui-format-phone-example-1>
+            <tui-format-phone-example-1 />
         </tui-doc-example>
     </ng-template>
 
@@ -25,7 +25,7 @@
             class="slider"
             [tuiTextfieldLabelOutside]="true"
             [(ngModel)]="index"
-        ></tui-input>
+        />
         <tui-doc-documentation>
             <ng-template
                 documentationPropertyName="countryCode"
@@ -58,7 +58,7 @@
                 <tui-doc-code
                     filename="my.module.ts"
                     [code]="exampleModule"
-                ></tui-doc-code>
+                />
             </li>
 
             <li>
@@ -67,7 +67,7 @@
                 <tui-doc-code
                     filename="my.component.html"
                     [code]="exampleHtml"
-                ></tui-doc-code>
+                />
             </li>
         </ol>
     </ng-template>

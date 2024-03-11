@@ -19,7 +19,7 @@
             [content]="example1"
             [fullsize]="true"
         >
-            <tui-input-card-example-1></tui-input-card-example-1>
+            <tui-input-card-example-1 />
         </tui-doc-example>
     </ng-template>
 
@@ -89,7 +89,7 @@
                         formControlName="card"
                         class="error"
                         [error]="[] | tuiFieldError | async"
-                    ></tui-error>
+                    />
                 </form>
             </ng-template>
         </tui-doc-demo>
@@ -140,7 +140,7 @@
                             BIN value (card first 6 symbols)
                         </ng-template>
                     </tui-doc-documentation>
-                    <inherited-documentation></inherited-documentation>
+                    <inherited-documentation />
                 </ng-template>
             </tui-accordion-item>
 
@@ -166,7 +166,7 @@
                             Browser autocomplete of card
                         </ng-template>
                     </tui-doc-documentation>
-                    <inherited-documentation></inherited-documentation>
+                    <inherited-documentation />
                 </ng-template>
             </tui-accordion-item>
 
@@ -201,7 +201,7 @@
                             Code length
                         </ng-template>
                     </tui-doc-documentation>
-                    <inherited-documentation></inherited-documentation>
+                    <inherited-documentation />
                 </ng-template>
             </tui-accordion-item>
         </tui-accordion>
@@ -221,7 +221,7 @@
                 <tui-doc-code
                     filename="my.module.ts"
                     [code]="exampleModule"
-                ></tui-doc-code>
+                />
             </li>
 
             <li>
@@ -230,7 +230,7 @@
                 <tui-doc-code
                     filename="my.component.html"
                     [code]="exampleHtml"
-                ></tui-doc-code>
+                />
             </li>
         </ol>
     </ng-template>

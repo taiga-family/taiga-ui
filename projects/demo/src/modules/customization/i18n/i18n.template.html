@@ -1,13 +1,13 @@
 <tui-doc-page header="Internationalization">
     <ng-template pageTab="Supported languages">
-        <tui-doc-code [code]="(readme | async) || ''"></tui-doc-code>
+        <tui-doc-code [code]="(readme | async) || ''" />
     </ng-template>
 
     <ng-template pageTab="Dynamic loader">
         <tui-doc-code
             filename="app.module.ts"
             [code]="exampleModule"
-        ></tui-doc-code>
+        />
 
         <tui-doc-example
             id="theme-switcher"
@@ -31,6 +31,6 @@
             known potential files.
         </p>
 
-        <tui-doc-code [code]="exampleEsbuildModule"></tui-doc-code>
+        <tui-doc-code [code]="exampleEsbuildModule" />
     </ng-template>
 </tui-doc-page>

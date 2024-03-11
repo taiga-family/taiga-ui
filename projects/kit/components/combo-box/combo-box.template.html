@@ -21,11 +21,11 @@
         (keydown.enter)="onFieldKeyDownEnter($event)"
         (valueChange)="onValueChange($event)"
     >
-        <ng-content></ng-content>
+        <ng-content />
         <ng-content
             ngProjectAs="input"
             select="input"
-        ></ng-content>
+        />
         <div
             *ngIf="showValueTemplate"
             automation-id="tui-combo-box__template"
@@ -46,7 +46,7 @@
             tuiWrapper
             class="t-icon"
         >
-            <ng-container *polymorpheusOutlet="arrow"></ng-container>
+            <ng-container *polymorpheusOutlet="arrow" />
         </div>
     </ng-template>
 </tui-hosted-dropdown>

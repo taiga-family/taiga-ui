@@ -14,7 +14,7 @@
             heading="Basic"
             [content]="example1"
         >
-            <tui-filter-example-1></tui-filter-example-1>
+            <tui-filter-example-1 />
         </tui-doc-example>
 
         <tui-doc-example
@@ -22,7 +22,7 @@
             heading="With badges"
             [content]="example2"
         >
-            <tui-filter-example-2></tui-filter-example-2>
+            <tui-filter-example-2 />
         </tui-doc-example>
 
         <tui-doc-example
@@ -30,7 +30,7 @@
             heading="Custom"
             [content]="example3"
         >
-            <tui-filter-example-3></tui-filter-example-3>
+            <tui-filter-example-3 />
         </tui-doc-example>
 
         <tui-doc-example
@@ -39,7 +39,7 @@
             [content]="example4"
             [fullsize]="true"
         >
-            <tui-filter-example-4></tui-filter-example-4>
+            <tui-filter-example-4 />
         </tui-doc-example>
     </ng-template>
 
@@ -53,7 +53,7 @@
                     [items]="items"
                     [size]="size"
                     (toggledItem)="documentationPropertyToggledItem.emitEvent($event)"
-                ></tui-filter>
+                />
             </ng-template>
         </tui-doc-demo>
         <tui-doc-documentation>
@@ -140,7 +140,7 @@
                 <tui-doc-code
                     filename="my.module.ts"
                     [code]="exampleModule"
-                ></tui-doc-code>
+                />
             </li>
 
             <li>
@@ -149,7 +149,7 @@
                 <tui-doc-code
                     filename="my.component.html"
                     [code]="exampleHtml"
-                ></tui-doc-code>
+                />
             </li>
         </ol>
     </ng-template>

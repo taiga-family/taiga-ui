@@ -27,7 +27,7 @@
         [(tuiDropdownOpen)]="openSettings"
         (tui-tab-activate.stop)="(0)"
     >
-        <tui-icon name="tuiIconSettings"></tui-icon>
+        <tui-icon name="tuiIconSettings" />
         <ng-template #settings>
             <div
                 class="settings"
@@ -36,7 +36,7 @@
                 <tui-toggle
                     formControlName="option"
                     size="l"
-                ></tui-toggle>
+                />
                 Turn option
             </div>
         </ng-template>

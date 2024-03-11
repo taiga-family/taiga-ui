@@ -2,10 +2,10 @@
     {{ text }}
 </ng-container>
 <ng-template #base>
-    <ng-content></ng-content>
+    <ng-content />
     <tui-svg
         *ngIf="dropdown"
         class="t-arrow"
         [src]="icons.more"
-    ></tui-svg>
+    />
 </ng-template>

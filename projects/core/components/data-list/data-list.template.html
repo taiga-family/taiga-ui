@@ -3,7 +3,7 @@
     class="t-trap"
     (focusin)="onFocus($event, true)"
 ></div>
-<ng-content></ng-content>
+<ng-content />
 <div
     *ngIf="empty$ | async"
     class="t-empty"

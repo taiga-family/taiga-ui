@@ -1,5 +1,5 @@
 <ng-template #template>
-    <ng-content></ng-content>
+    <ng-content />
 </ng-template>
 <ng-container *polymorpheusOutlet="content as text; context: {$implicit: this, template: template}">
     {{ text }}
@@ -11,8 +11,8 @@
     [expanded]="expanded$ | async"
 >
     <div>
-        <ng-content select="tui-tree-item"></ng-content>
-        <ng-content select="tui-tree"></ng-content>
+        <ng-content select="tui-tree-item" />
+        <ng-content select="tui-tree" />
     </div>
 </tui-expand>
-<ng-container *ngIf="attached$ | async"></ng-container>
+<ng-container *ngIf="attached$ | async" />

@@ -15,18 +15,18 @@
         (waMutationObserver)="onMutation(contentWrapper)"
         (waResizeObserver)="onResize($event)"
     >
-        <ng-content></ng-content>
+        <ng-content />
     </section>
 
     <header class="t-header">
         <div class="t-title">
-            <ng-content select="tui-preview-title"></ng-content>
+            <ng-content select="tui-preview-title" />
         </div>
 
-        <ng-content select="tui-preview-pagination"></ng-content>
+        <ng-content select="tui-preview-pagination" />
 
         <div class="t-actions">
-            <ng-content select="[tuiPreviewAction]"></ng-content>
+            <ng-content select="[tuiPreviewAction]" />
         </div>
     </header>
 
@@ -51,6 +51,6 @@
             [value]="(zoom$ | async) || 1"
             (reset)="reset()"
             (valueChange)="setZoom($event)"
-        ></tui-preview-zoom>
+        />
     </footer>
 </ng-container>

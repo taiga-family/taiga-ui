@@ -4,14 +4,14 @@
         state="normal"
         [file]="file"
         [showDelete]="control.enabled"
-    ></tui-file>
+    />
 
     <tui-file
         *ngFor="let file of rejectedFiles"
         state="error"
         [file]="file"
         [showDelete]="control.enabled"
-    ></tui-file>
+    />
 
     <tui-file
         *ngIf="loadingFile && !isE2E"
@@ -19,7 +19,7 @@
         [file]="loadingFile"
         [showDelete]="control.enabled"
         (remove)="removeLoading()"
-    ></tui-file>
+    />
 </tui-files>
 
 <h4>With link</h4>
@@ -61,9 +61,9 @@
         [leftContent]="icon"
         [showDelete]="control.enabled"
         (remove)="remove(file)"
-    ></tui-file>
+    />
 </tui-files>
 
 <ng-template #icon>
-    <tui-svg src="tuiIconFileLarge"></tui-svg>
+    <tui-svg src="tuiIconFileLarge" />
 </ng-template>

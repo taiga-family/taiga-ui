@@ -14,17 +14,17 @@
         *ngFor="let file of accepted$ | async"
         [file]="file"
         (remove)="onRemove(file)"
-    ></tui-file>
+    />
 
     <tui-file
         *ngFor="let file of rejected"
         state="error"
         [file]="(file | tuiFileRejected: validator | async) || file"
         (remove)="onRemove(file)"
-    ></tui-file>
+    />
 </tui-files>
 
 <tui-error
     [error]="['maxLength'] | tuiFieldError | async"
     [formControl]="control"
-></tui-error>
+/>

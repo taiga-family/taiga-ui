@@ -5,15 +5,15 @@
     [class.t-sort_sorted]="isCurrent"
     (click)="updateSorterAndDirection()"
 >
-    <ng-container [ngTemplateOutlet]="content"></ng-container>
+    <ng-container [ngTemplateOutlet]="content" />
     {{ table.change$ | async }}
     <tui-svg
         class="t-sort-icon"
         [src]="icon"
-    ></tui-svg>
+    />
 </button>
 <ng-template #content>
-    <ng-content></ng-content>
+    <ng-content />
 </ng-template>
 <div
     *ngIf="resizable"

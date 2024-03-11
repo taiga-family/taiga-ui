@@ -3,7 +3,7 @@
         class="t-bar"
         [ngStyle]="{transform: 'rotate(-' + deg + 'deg)'}"
     ></div>
-    <ng-content *ngIf="deg"></ng-content>
+    <ng-content *ngIf="deg" />
     <div
         class="t-bar"
         [ngStyle]="{transform: 'rotate(' + deg + 'deg)'}"

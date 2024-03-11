@@ -19,11 +19,11 @@
         (focusedChange)="onFocused($event)"
         (valueChange)="onValueChange($event)"
     >
-        <ng-content></ng-content>
+        <ng-content />
         <ng-content
             ngProjectAs="input"
             select="input"
-        ></ng-content>
+        />
         <input
             *ngIf="nativePicker"
             type="month"
@@ -47,6 +47,6 @@
             (monthClick)="onMonthClick($event)"
             (mousedown.prevent.silent)="(0)"
             (yearChange)="activeYear = $event"
-        ></tui-calendar-month>
+        />
     </ng-template>
 </tui-hosted-dropdown>

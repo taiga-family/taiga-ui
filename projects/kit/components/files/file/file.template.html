@@ -25,7 +25,7 @@
             {{ text }}
         </ng-container>
     </div>
-    <ng-content></ng-content>
+    <ng-content />
 </div>
 <ng-container *ngIf="allowDelete">
     <button
@@ -54,7 +54,7 @@
             *ngIf="isLoading; else svg"
             class="t-loader"
             [inheritColor]="isBig"
-        ></tui-loader>
+        />
     </ng-template>
     <ng-template #svg>
         <tui-svg
@@ -63,6 +63,6 @@
             [class.t-icon_blank]="isBig || isDeleted"
             [class.t-icon_error]="isError"
             [src]="src"
-        ></tui-svg>
+        />
     </ng-template>
 </ng-template>

@@ -13,7 +13,7 @@
             *tuiDataList
             [itemContent]="itemContent"
             [items]="items | tuiHideSelected"
-        ></tui-data-list-wrapper>
+        />
     </tui-multi-select>
 </label>
 
@@ -26,7 +26,7 @@
             size="xs"
             class="avatar"
             [src]="data.avatarUrl || (data.toString() | tuiInitials)"
-        ></tui-avatar>
+        />
         {{ data }}
     </div>
 </ng-template>

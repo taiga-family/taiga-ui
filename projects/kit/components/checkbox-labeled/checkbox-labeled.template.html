@@ -11,11 +11,11 @@
         [size]="size"
         [(ngModel)]="value"
         (focusedChange)="onFocused($event)"
-    ></tui-checkbox>
+    />
     <div
         class="t-content"
         [class.t-content_disabled]="computedDisabled"
     >
-        <ng-content></ng-content>
+        <ng-content />
     </div>
 </label>

@@ -18,7 +18,7 @@
             *tuiDataList
             [itemContent]="content"
             [items]="items"
-        ></tui-data-list-wrapper>
+        />
     </tui-combo-box>
     <tui-combo-box
         tuiTextfieldSize="m"
@@ -36,7 +36,7 @@
             *tuiDataList
             [itemContent]="content"
             [items]="items"
-        ></tui-data-list-wrapper>
+        />
     </tui-combo-box>
     <tui-combo-box
         [formControl]="testValue"
@@ -52,7 +52,7 @@
             *tuiDataList
             [itemContent]="content"
             [items]="items"
-        ></tui-data-list-wrapper>
+        />
     </tui-combo-box>
 </form>
 
@@ -65,7 +65,7 @@
             size="xs"
             class="avatar"
             [src]="data.avatarUrl || (data.toString() | tuiInitials)"
-        ></tui-avatar>
+        />
         <div class="name">{{ data }}</div>
     </div>
 </ng-template>

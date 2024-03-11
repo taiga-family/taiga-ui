@@ -11,7 +11,7 @@
             *tuiDataList
             [itemContent]="cardContent"
             [items]="cards"
-        ></tui-data-list-wrapper>
+        />
     </tui-select>
     <tui-select
         formControlName="testValue"
@@ -24,7 +24,7 @@
             *tuiDataList
             [itemContent]="cardContent"
             [items]="cards"
-        ></tui-data-list-wrapper>
+        />
     </tui-select>
     <tui-select
         formControlName="accounts"
@@ -36,7 +36,7 @@
             *tuiDataList
             [itemContent]="accountContent"
             [items]="accounts"
-        ></tui-data-list-wrapper>
+        />
     </tui-select>
     <ng-template
         #cardContent
@@ -48,7 +48,7 @@
                 size="s"
                 class="card"
                 [cardNumber]="item.cardNumber.slice(1)"
-            ></tui-thumbnail-card>
+            />
             <span class="card-name">{{ item.cardName }}</span>
             <span class="card-number">{{ item.cardNumber }}</span>
         </div>

@@ -11,7 +11,7 @@
             heading="Basic"
             [content]="example1"
         >
-            <tui-calendar-range-example-1></tui-calendar-range-example-1>
+            <tui-calendar-range-example-1 />
         </tui-doc-example>
 
         <tui-doc-example
@@ -19,7 +19,7 @@
             heading="with value"
             [content]="example2"
         >
-            <tui-calendar-range-example-2></tui-calendar-range-example-2>
+            <tui-calendar-range-example-2 />
         </tui-doc-example>
 
         <tui-doc-example
@@ -27,7 +27,7 @@
             heading="with ranges"
             [content]="example3"
         >
-            <tui-calendar-range-example-3></tui-calendar-range-example-3>
+            <tui-calendar-range-example-3 />
         </tui-doc-example>
 
         <tui-doc-example
@@ -47,7 +47,7 @@
                 </a>
                 token to change start day of the week (Monday by default).
             </ng-template>
-            <tui-calendar-range-example-4></tui-calendar-range-example-4>
+            <tui-calendar-range-example-4 />
         </tui-doc-example>
     </ng-template>
 
@@ -63,7 +63,7 @@
                 [min]="min"
                 [minLength]="minLength"
                 (valueChange)="documentationPropertyRangeChange.emitEvent($event)"
-            ></tui-calendar-range>
+            />
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
@@ -163,7 +163,7 @@
                 <tui-doc-code
                     filename="my.module.ts"
                     [code]="exampleModule"
-                ></tui-doc-code>
+                />
             </li>
         </ol>
     </ng-template>

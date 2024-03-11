@@ -21,7 +21,7 @@
             [index]="index$$.value"
             [length]="items.length"
             (indexChange)="index$$.next($event)"
-        ></tui-preview-pagination>
+        />
 
         <button
             icon="tuiIconDownload"
@@ -46,7 +46,7 @@
                 <tui-svg
                     src="tuiIconFileLarge"
                     class="t-icon"
-                ></tui-svg>
+                />
                 <div>Preview unavailable</div>
             </div>
         </ng-container>
@@ -63,6 +63,6 @@
             *ngIf="loading$ | async"
             size="xl"
             class="t-loader"
-        ></tui-loader>
+        />
     </tui-preview>
 </ng-template>

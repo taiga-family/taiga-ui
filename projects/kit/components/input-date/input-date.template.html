@@ -24,11 +24,11 @@
         (focusedChange)="onFocused($event)"
         (valueChange)="onValueChange($event)"
     >
-        <ng-content></ng-content>
+        <ng-content />
         <ng-content
             ngProjectAs="input"
             select="input"
-        ></ng-content>
+        />
     </tui-primitive-textfield>
 
     <ng-template #iconContent>
@@ -40,7 +40,7 @@
             [class.t-icon]="!computedDisabled"
             [src]="src"
             (click)="onIconClick()"
-        ></tui-svg>
+        />
         <input
             *ngIf="isMobile && nativePicker"
             tuiDate
@@ -63,7 +63,7 @@
             (dayClick)="onDayClick($event)"
             (monthChange)="onMonthChange($event)"
             (mousedown.prevent.silent)="(0)"
-        ></tui-calendar>
+        />
         <div
             *ngIf="items.length === 1"
             class="t-button"

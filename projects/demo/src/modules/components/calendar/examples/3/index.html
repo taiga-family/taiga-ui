@@ -8,7 +8,7 @@
         [(hoveredItem)]="hoveredItem"
         (dayClick)="onDayClick($event)"
         (monthChange)="onMonthChangeFirst($event)"
-    ></tui-calendar>
+    />
     <tui-calendar
         [markerHandler]="markerHandler"
         [maxViewedMonth]="middleMonth"
@@ -19,7 +19,7 @@
         [(hoveredItem)]="hoveredItem"
         (dayClick)="onDayClick($event)"
         (monthChange)="onMonthChangeMiddle($event)"
-    ></tui-calendar>
+    />
     <tui-calendar
         [markerHandler]="markerHandler"
         [minViewedMonth]="lastMonth"
@@ -29,6 +29,6 @@
         [(hoveredItem)]="hoveredItem"
         (dayClick)="onDayClick($event)"
         (monthChange)="onMonthChangeLast($event)"
-    ></tui-calendar>
+    />
 </div>
 <div *ngIf="value">Chosen dates: {{ value }}</div>

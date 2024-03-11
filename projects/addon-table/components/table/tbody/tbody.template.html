@@ -17,17 +17,17 @@
                 class="t-chevron"
                 [class.t-chevron_rotated]="open"
                 [src]="arrowOptions.iconLarge"
-            ></tui-svg>
+            />
         </button>
     </th>
 </tr>
 <ng-container *ngIf="open">
-    <ng-content></ng-content>
+    <ng-content />
 </ng-container>
 <ng-container *ngIf="open && row">
     <ng-container
         *ngFor="let item of sorted; let index = index"
         [ngTemplateOutlet]="row.template"
         [ngTemplateOutletContext]="item | tuiMapper: toContext : index"
-    ></ng-container>
+    />
 </ng-container>

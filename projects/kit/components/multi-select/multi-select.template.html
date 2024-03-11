@@ -31,18 +31,18 @@
         (ngModelChange)="onInput($event)"
         (searchChange)="onSearch($event)"
     >
-        <ng-content></ng-content>
+        <ng-content />
         <ng-template #select>
             <ng-content
                 *ngIf="isMobile"
                 select="select"
-            ></ng-content>
+            />
         </ng-template>
 
         <ng-container
             *ngTemplateOutlet="select"
             ngProjectAs="select"
-        ></ng-container>
+        />
 
         <div
             *ngIf="computedGroup"
