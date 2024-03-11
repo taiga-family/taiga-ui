@@ -40,11 +40,12 @@ import {TuiBadgeExample6} from './examples/6';
         TuiBadgeExample3,
         TuiBadgeExample4,
         TuiBadgeExample5,
+        TuiBadgeExample6,
         tuiGetDocModules(ExampleTuiBadgeComponent),
         TuiPlatformModule,
         TuiExamplePipe,
     ],
-    declarations: [ExampleTuiBadgeComponent, TuiBadgeExample6],
+    declarations: [ExampleTuiBadgeComponent],
     exports: [ExampleTuiBadgeComponent],
 })
 export class ExampleTuiBadgeModule {}
