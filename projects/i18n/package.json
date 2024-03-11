@@ -15,9 +15,9 @@
     "repository": "https://github.com/taiga-family/taiga-ui",
     "license": "Apache-2.0",
     "peerDependencies": {
-        "@angular/core": ">=15.0.0",
+        "@angular/core": ">=16.0.0",
         "@ng-web-apis/common": "^3.0.6",
-        "rxjs": ">=6.0.0",
+        "rxjs": ">=7.0.0",
         "tslib": "^2.6.2"
     }
 }

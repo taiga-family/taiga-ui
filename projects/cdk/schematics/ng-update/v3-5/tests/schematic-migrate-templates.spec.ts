@@ -71,13 +71,11 @@ describe('ng-update', () => {
     });
 
     it('should edit templates', async () => {
-        const tree = await runner
-            .runSchematicAsync(
-                'updateToV3_5',
-                {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
-                host,
-            )
-            .toPromise();
+        const tree = await runner.runSchematic(
+            'updateToV3_5',
+            {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+            host,
+        );
 
         expect(tree.readContent('test/app/test.template.html')).toEqual(TEMPLATE_AFTER);
     });

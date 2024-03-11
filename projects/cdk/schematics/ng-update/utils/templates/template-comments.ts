@@ -37,7 +37,7 @@ export function addHTMLCommentTags({
         );
 
         elementStartOffsets.forEach(offset => {
-            recorder.insertRight(offset, `<!-- ${TODO_MARK} ${comment} -->\n`);
+            recorder.insertLeft(offset, `<!-- ${TODO_MARK} ${comment} -->\n`);
         });
     });
 }

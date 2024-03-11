@@ -13,12 +13,12 @@
     "repository": "https://github.com/taiga-family/taiga-ui",
     "license": "Apache-2.0",
     "peerDependencies": {
-        "@angular/common": ">=15.0.0",
-        "@angular/core": ">=15.0.0",
+        "@angular/common": ">=16.0.0",
+        "@angular/core": ">=16.0.0",
         "@taiga-ui/cdk": "^3.59.0",
         "@taiga-ui/core": "^3.59.0",
         "@tinkoff/ng-polymorpheus": "^4.3.0",
-        "rxjs": ">=6.0.0",
+        "rxjs": ">=7.0.0",
         "tslib": "2.6.2"
     }
 }
