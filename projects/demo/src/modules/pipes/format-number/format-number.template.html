@@ -29,7 +29,7 @@
     <ng-template pageTab>
         <p class="text b-full-width">
             Formatted number:
-            {{ value | tuiFormatNumber: {decimalLimit, decimalSeparator} }}
+            {{ value | tuiFormatNumber: {decimalLimit, decimalSeparator} | async }}
         </p>
         <tui-input-slider
             tuiTextfieldSize="m"
