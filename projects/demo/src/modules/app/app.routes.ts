@@ -1031,14 +1031,11 @@ export const ROUTES: Routes = [
             title: 'Preview',
         },
     },
-    {
+    route({
         path: 'navigation/app-bar',
-        loadChildren: async () =>
-            (await import('../components/app-bar/app-bar.module')).ExampleTuiAppBarModule,
-        data: {
-            title: 'AppBar',
-        },
-    },
+        loadComponent: async () => import('../components/app-bar/app-bar.component'),
+        title: 'AppBar',
+    }),
     {
         path: 'navigation/tab-bar',
         loadChildren: async () =>
