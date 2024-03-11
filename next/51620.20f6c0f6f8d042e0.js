@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[51620],{43591:n=>{n.exports="```ts\nimport {TuiErrorModule} from '@taiga-ui/core';\n\n// ...\n\n@NgModule({\n  imports: [\n    // ...\n    TuiErrorModule,\n  ],\n  // ...\n})\nexport class MyModule {}\n```\n"}}]);
