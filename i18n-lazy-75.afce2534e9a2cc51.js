@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[56966],{4028:(e,s,a)=>{a.r(s),a.d(s,{TUI_ENGLISH_LANGUAGE_ADDON_TABLE:()=>o});const o={showHideText:"Show/Hide",paginationTexts:{pages:"Pages",linesPerPage:"Lines per page",of:"of"}}}}]);
