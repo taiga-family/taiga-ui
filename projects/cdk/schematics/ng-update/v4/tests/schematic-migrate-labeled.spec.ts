@@ -10,8 +10,6 @@ import {
 } from 'ng-morph';
 import {join} from 'path';
 
-import {createAngularJson} from '../../../utils/create-angular-json';
-
 const collectionPath = join(__dirname, '../../../migration.json');
 
 const COMPONENT_BEFORE = `
@@ -102,10 +100,4 @@ function createMainFiles(): void {
     createSourceFile('test/app/test.component.ts', COMPONENT_BEFORE);
 
     createSourceFile('test/app/test.template.html', TEMPLATE_BEFORE);
-
-    createAngularJson();
-    createSourceFile(
-        'package.json',
-        '{"dependencies": {"@angular/core": "~13.0.0", "@taiga-ui/addon-commerce": "~3.42.0"}}',
-    );
 }
