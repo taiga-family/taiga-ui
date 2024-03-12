@@ -38,7 +38,13 @@
             "executor": "nx:run-commands",
             "options": {
                 "command": "schematics ./dist/cdk:updateToV{args.v} --allow-private --dry-run true"
-            }
+            },
+            "dependsOn": [
+                {
+                    "target": "build",
+                    "params": "ignore"
+                }
+            ]
         },
         "test": {
             "executor": "@nx/jest:jest",

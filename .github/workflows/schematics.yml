@@ -5,44 +5,14 @@ on:
       - 'projects/cdk/schematics/**'
 
 jobs:
-  build-cdk:
-    if: ${{ !contains(github.head_ref , 'release/') }}
-    name: Build @taiga-ui/cdk
-    runs-on: ubuntu-latest
-    steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.51.14
-      - uses: taiga-family/ci/actions/setup/variables@v1.51.14
-      - uses: taiga-family/ci/actions/setup/node@v1.51.14
-
-      - run: npx nx build cdk
-
-      - name: Upload cache / ${{ env.CACHE_DIST_KEY }}_cdk
-        uses: actions/cache/save@v4.0.1
-        with:
-          path: dist/cdk
-          key: ${{ env.CACHE_DIST_KEY }}_cdk
-
   schematics:
     if: ${{ !contains(github.head_ref , 'release/') }}
     runs-on: ubuntu-latest
-    needs: [build-cdk]
-    strategy:
-      fail-fast: false
-      matrix:
-        version: [4]
-    name: Testing v${{ matrix.version }} migration
+    name: Testing latest migration
     steps:
       - uses: taiga-family/ci/actions/setup/checkout@v1.51.14
-      - uses: taiga-family/ci/actions/setup/variables@v1.51.14
       - uses: taiga-family/ci/actions/setup/node@v1.51.14
-
-      - name: Download cache / ${{ env.CACHE_DIST_KEY }}_cdk
-        uses: actions/cache/restore@v4.0.1
-        with:
-          path: dist/cdk
-          key: ${{ env.CACHE_DIST_KEY }}_cdk
-
-      - run: npx nx run cdk:schematics --v=${{ matrix.version }}
+      - run: npx nx run cdk:schematics --v=4
 
 concurrency:
   group: schematics-${{ github.workflow }}-${{ github.ref }}
