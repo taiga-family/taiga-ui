@@ -9,11 +9,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: taiga-family/ci/actions/setup/checkout@v1.51.14
-        with:
-          fetch-depth: 10
-        continue-on-error: true
+      - uses: taiga-family/ci/actions/setup/variables@v1.51.14
       - uses: taiga-family/ci/actions/setup/node@v1.51.14
+
       - run: npx nx build cdk
+
+      - name: Upload cache / ${{ env.CACHE_DIST_KEY }}
+        uses: actions/cache/save@v4.0.1
+        with:
+          path: dist/demo
+          key: ${{ env.CACHE_DIST_KEY }}
 
   schematics:
     if: ${{ !contains(github.head_ref , 'release/') }}
@@ -23,10 +28,18 @@ jobs:
       fail-fast: false
       matrix:
         version: [3, 4]
-    name: Schematics / Testing v${{ matrix.version }} migration
+    name: Testing v${{ matrix.version }} migration
     steps:
       - uses: taiga-family/ci/actions/setup/checkout@v1.51.14
+      - uses: taiga-family/ci/actions/setup/variables@v1.51.14
       - uses: taiga-family/ci/actions/setup/node@v1.51.14
+
+      - name: Download cache / ${{ env.CACHE_DIST_KEY }}
+        uses: actions/cache/restore@v4.0.1
+        with:
+          path: dist/demo
+          key: ${{ env.CACHE_DIST_KEY }}
+
       - run: npx nx run cdk:schematics --v=${{ matrix.version }}
 
 concurrency:
