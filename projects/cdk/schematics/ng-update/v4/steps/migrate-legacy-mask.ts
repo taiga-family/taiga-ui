@@ -1,16 +1,16 @@
-import {
-    addUniqueImport,
-    FINISH_SYMBOL,
-    getNamedImportReferences,
-    infoLog,
-    removeImport,
-    REPLACE_SYMBOL,
-    SMALL_TAB_SYMBOL,
-    titleLog,
-} from '@taiga-ui/cdk/schematics';
 import {Node} from 'ng-morph';
 
 import type {TuiSchema} from '../../../ng-add/schema';
+import {addUniqueImport} from '../../../utils/add-unique-import';
+import {
+    FINISH_SYMBOL,
+    infoLog,
+    REPLACE_SYMBOL,
+    SMALL_TAB_SYMBOL,
+    titleLog,
+} from '../../../utils/colored-log';
+import {getNamedImportReferences} from '../../../utils/get-named-import-references';
+import {removeImport} from '../../../utils/import-manipulations';
 
 export function migrateLegacyMask(options: TuiSchema): void {
     !options['skip-logs'] &&

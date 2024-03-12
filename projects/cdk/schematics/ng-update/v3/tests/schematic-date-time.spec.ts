@@ -112,13 +112,11 @@ describe('ng-update', () => {
     });
 
     it('date-time migrations', async () => {
-        const tree = await runner
-            .runSchematicAsync(
-                'updateToV3',
-                {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
-                host,
-            )
-            .toPromise();
+        const tree = await runner.runSchematic(
+            'updateToV3',
+            {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+            host,
+        );
 
         expect(tree.readContent('test/app/app.component.ts')).toEqual(AFTER);
     });

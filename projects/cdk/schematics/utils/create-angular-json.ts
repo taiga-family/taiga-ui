@@ -8,7 +8,6 @@ export function createAngularJson(
         `
 {
   "version": 1,
-  "defaultProject": "demo",
   "projects": {
     "demo": {
         "root": "",
@@ -40,7 +39,6 @@ export function createAngularJsonWithAssets(): void {
         `
 {
   "version": 1,
-  "defaultProject": "demo",
   "projects": {
     "demo": {
         "root": "",

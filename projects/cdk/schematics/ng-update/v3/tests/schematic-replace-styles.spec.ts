@@ -274,13 +274,11 @@ describe('replace styles', () => {
     });
 
     it('should replace with new global styles', async () => {
-        const tree = await runner
-            .runSchematicAsync(
-                'updateToV3',
-                {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
-                host,
-            )
-            .toPromise();
+        const tree = await runner.runSchematic(
+            'updateToV3',
+            {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+            host,
+        );
 
         expect(tree.readContent('test/style.less')).toBe(AFTER_GLOBAL_STYLE);
         expect(tree.readContent('test/app/app.template.less')).toBe(AFTER_LOCAL_STYLE);

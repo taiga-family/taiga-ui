@@ -93,17 +93,14 @@
                 </form>
             </ng-template>
         </tui-doc-demo>
-        <div class="b-full-width tui-space_bottom-6">
+        <div class="tui-space_bottom-6">
             <p>
                 Add
                 <code>tuiCreateLuhnValidator(customMessage?)</code>
                 to control validators to validate it with Luhn algorithm
             </p>
         </div>
-        <tui-accordion
-            class="b-full-width"
-            [closeOthers]="false"
-        >
+        <tui-accordion [closeOthers]="false">
             <tui-accordion-item [open]="true">
                 TuiInputCardComponent
                 <ng-template tuiAccordionItemContent>

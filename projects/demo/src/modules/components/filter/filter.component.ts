@@ -75,7 +75,7 @@ export class ExampleTuiFilterComponent {
     > = [
         ALWAYS_FALSE_HANDLER,
         item => item === 'Roman Sedov',
-        item => (item.valueOf() || 0) >= 30,
+        item => (Number(item.valueOf()) || 0) >= 30,
     ];
 
     protected disabledItemHandler = this.disabledItemHandlerVariants[0];
