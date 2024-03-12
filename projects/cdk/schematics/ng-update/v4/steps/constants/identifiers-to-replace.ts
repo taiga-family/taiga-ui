@@ -227,4 +227,8 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifier[] = [
         from: {name: 'tuiStringHashToHsl', moduleSpecifier: '@taiga-ui/kit'},
         to: {name: 'tuiStringHashToHsl', moduleSpecifier: '@taiga-ui/core'},
     },
+    {
+        from: {name: 'TuiIconModule', moduleSpecifier: '@taiga-ui/experimental'},
+        to: {name: 'TuiIconComponent', moduleSpecifier: '@taiga-ui/core'},
+    },
 ];

@@ -3,8 +3,12 @@ import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiPlatformModule} from '@taiga-ui/cdk';
-import {TuiFallbackSrcPipe, TuiNotificationModule} from '@taiga-ui/core';
-import {TuiButtonModule, TuiIconModule} from '@taiga-ui/experimental';
+import {
+    TuiFallbackSrcPipe,
+    TuiIconComponent,
+    TuiNotificationModule,
+} from '@taiga-ui/core';
+import {TuiButtonModule} from '@taiga-ui/experimental';
 import {
     TuiAvatarComponent,
     TuiBadgedContentComponent,
@@ -22,7 +26,7 @@ import {TuiBadgedContentExample3} from './examples/3';
     imports: [
         CommonModule,
         TuiBadgeNotificationComponent,
-        TuiIconModule,
+        TuiIconComponent,
         TuiBadgeDirective,
         TuiBadgedContentComponent,
         TuiAvatarComponent,

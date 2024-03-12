@@ -309,9 +309,9 @@ export const ROUTES: Routes = [
         },
     },
     {
-        path: 'experimental/icon',
+        path: 'components/icon',
         loadChildren: async () =>
-            (await import('../experimental/icon/icon.module')).ExampleTuiIconModule,
+            (await import('../components/icon/icon.module')).ExampleTuiIconModule,
         data: {
             title: 'Icon',
         },

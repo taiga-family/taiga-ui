@@ -3,6 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {tuiGetDocModules} from '@taiga-ui/addon-doc';
 import {
+    TuiIconComponent,
     TuiNotificationModule,
     TuiTextfieldControllerModule,
     TuiTooltipModule,
@@ -10,7 +11,6 @@ import {
 import {
     TuiButtonModule,
     TuiHeaderDirective,
-    TuiIconModule,
     TuiTitleModule,
     TuiToggleModule,
 } from '@taiga-ui/experimental';
@@ -38,7 +38,7 @@ import {ExampleTuiCellComponent} from './header.component';
         TuiTooltipModule,
         TuiHeaderDirective,
         TuiTitleModule,
-        TuiIconModule,
+        TuiIconComponent,
         TuiSensitiveDirective,
         TuiSelectModule,
         TuiDataListWrapperModule,

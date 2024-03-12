@@ -2,12 +2,13 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {tuiGetDocModules} from '@taiga-ui/addon-doc';
-import {TuiDropdownModule, TuiHintModule, TuiNotificationModule} from '@taiga-ui/core';
 import {
-    TuiIconModule,
-    TuiTextfieldModule,
-    TuiTooltipModule,
-} from '@taiga-ui/experimental';
+    TuiDropdownModule,
+    TuiHintModule,
+    TuiIconComponent,
+    TuiNotificationModule,
+} from '@taiga-ui/core';
+import {TuiTextfieldModule, TuiTooltipModule} from '@taiga-ui/experimental';
 import {TuiDataListWrapperModule, TuiFilterByInputPipeModule} from '@taiga-ui/kit';
 
 import {TuiTextfieldExample1} from './examples/1';
@@ -23,7 +24,7 @@ import {ExampleTuiTextfieldComponent} from './textfield.component';
         TuiTooltipModule,
         TuiNotificationModule,
         TuiHintModule,
-        TuiIconModule,
+        TuiIconComponent,
         TuiDropdownModule,
         tuiGetDocModules(ExampleTuiTextfieldComponent),
         TuiDataListWrapperModule,
