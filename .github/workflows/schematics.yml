@@ -16,11 +16,11 @@ jobs:
 
       - run: npx nx build cdk
 
-      - name: Upload cache / ${{ env.CACHE_DIST_KEY }}
+      - name: Upload cache / ${{ env.CACHE_DIST_KEY }}_cdk
         uses: actions/cache/save@v4.0.1
         with:
           path: dist/cdk
-          key: ${{ env.CACHE_DIST_KEY }}
+          key: ${{ env.CACHE_DIST_KEY }}_cdk
 
   schematics:
     if: ${{ !contains(github.head_ref , 'release/') }}
@@ -36,11 +36,11 @@ jobs:
       - uses: taiga-family/ci/actions/setup/variables@v1.51.14
       - uses: taiga-family/ci/actions/setup/node@v1.51.14
 
-      - name: Download cache / ${{ env.CACHE_DIST_KEY }}
+      - name: Download cache / ${{ env.CACHE_DIST_KEY }}_cdk
         uses: actions/cache/restore@v4.0.1
         with:
           path: dist/cdk
-          key: ${{ env.CACHE_DIST_KEY }}
+          key: ${{ env.CACHE_DIST_KEY }}_cdk
 
       - run: npx nx run cdk:schematics --v=${{ matrix.version }}
 
