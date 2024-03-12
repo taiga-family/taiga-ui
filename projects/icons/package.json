@@ -14,7 +14,7 @@
     "devDependencies": {
         "@rollup/pluginutils": "5.1.0",
         "feather-icons": "4.29.1",
-        "rollup": "4.12.1",
+        "rollup": "4.13.0",
         "rollup-plugin-typescript2": "0.36.0",
         "svgo": "3.2.0"
     },
