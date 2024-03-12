@@ -56,4 +56,18 @@ export const ATTRS_TO_REPLACE: ReplacementAttribute[] = [
         },
         to: {attrName: '(waResizeObserver)'},
     },
+    {
+        from: {
+            attrName: 'item',
+            withTagNames: ['tui-radio-labeled'],
+        },
+        to: {attrName: 'value'},
+    },
+    {
+        from: {
+            attrName: '[item]',
+            withTagNames: ['tui-radio-labeled'],
+        },
+        to: {attrName: '[value]'},
+    },
 ];

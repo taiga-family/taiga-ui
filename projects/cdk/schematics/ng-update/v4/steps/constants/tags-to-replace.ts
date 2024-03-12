@@ -19,4 +19,14 @@ export const TAGS_TO_REPLACE: ReplacementTag[] = [
         from: 'tui-money',
         to: 'span',
     },
+    {
+        from: 'tui-checkbox-labeled',
+        to: 'input',
+        addAttributes: ['tuiCheckbox', 'type="checkbox"'],
+    },
+    {
+        from: 'tui-radio-labeled',
+        to: 'input',
+        addAttributes: ['tuiRadio', 'type="radio"'],
+    },
 ];
