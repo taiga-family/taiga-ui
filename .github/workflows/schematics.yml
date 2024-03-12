@@ -17,7 +17,7 @@ jobs:
       - name: Upload cache / ${{ env.CACHE_DIST_KEY }}
         uses: actions/cache/save@v4.0.1
         with:
-          path: dist/demo
+          path: dist/cdk
           key: ${{ env.CACHE_DIST_KEY }}
 
   schematics:
@@ -37,7 +37,7 @@ jobs:
       - name: Download cache / ${{ env.CACHE_DIST_KEY }}
         uses: actions/cache/restore@v4.0.1
         with:
-          path: dist/demo
+          path: dist/cdk
           key: ${{ env.CACHE_DIST_KEY }}
 
       - run: npx nx run cdk:schematics --v=${{ matrix.version }}
