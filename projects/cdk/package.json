@@ -20,6 +20,7 @@
     "devDependencies": {
         "@angular-devkit/core": "16.2.12",
         "@angular-devkit/schematics": "16.2.12",
+        "@angular-devkit/schematics-cli": "16.2.12",
         "@schematics/angular": "16.2.12",
         "@types/parse5": "6.0.3"
     },
