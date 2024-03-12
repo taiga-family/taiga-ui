@@ -1,9 +1,9 @@
 import type {UpdateRecorder} from '@angular-devkit/schematics';
-import {findAttr} from '@taiga-ui/cdk/schematics/utils/templates/inputs';
 import type {DevkitFileSystem} from 'ng-morph';
 import type {Attribute, ElementLocation} from 'parse5';
 
 import {findElementsByTagName} from '../../../../utils/templates/elements';
+import {findAttr} from '../../../../utils/templates/inputs';
 import {
     getTemplateFromTemplateResource,
     getTemplateOffset,
