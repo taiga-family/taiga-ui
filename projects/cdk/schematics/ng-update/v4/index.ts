@@ -1,15 +1,14 @@
 import type {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {chain} from '@angular-devkit/schematics';
-import {createProject, saveActiveProject} from 'ng-morph';
+import {saveActiveProject} from 'ng-morph';
 import {performance} from 'perf_hooks';
 
-import {ALL_FILES} from '../../constants';
 import {TAIGA_VERSION} from '../../ng-add/constants/versions';
 import type {TuiSchema} from '../../ng-add/schema';
 import {FINISH_SYMBOL, START_SYMBOL, titleLog} from '../../utils/colored-log';
 import {getExecutionTime} from '../../utils/get-execution-time';
-import {projectRoot} from '../../utils/project-root';
 import {removeModules, replaceIdentifiers, showWarnings} from '../steps';
+import {getFileSystem} from '../utils/get-file-system';
 import {
     migrateDestroyService,
     migrateLegacyMask,
@@ -25,9 +24,7 @@ import {
 
 function main(options: TuiSchema): Rule {
     return (tree: Tree, context: SchematicContext) => {
-        const project = createProject(tree, projectRoot(), ALL_FILES);
-
-        const fileSystem = project.getFileSystem().fs;
+        const fileSystem = getFileSystem(tree);
 
         replaceIdentifiers(options, IDENTIFIERS_TO_REPLACE);
         removeModules(options, MODULES_TO_REMOVE);

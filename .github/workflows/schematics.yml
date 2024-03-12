@@ -1,0 +1,19 @@
+name: ⚙️ Schematics
+on:
+  pull_request:
+    paths:
+      - 'projects/cdk/schematics/**'
+
+jobs:
+  schematics:
+    if: ${{ !contains(github.head_ref , 'release/') }}
+    runs-on: ubuntu-latest
+    name: Run the latest migration
+    steps:
+      - uses: taiga-family/ci/actions/setup/checkout@v1.51.14
+      - uses: taiga-family/ci/actions/setup/node@v1.51.14
+      - run: npx nx run cdk:schematics --v=4
+
+concurrency:
+  group: schematics-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true

@@ -34,6 +34,18 @@
                 "command": "tsc -p ./projects/cdk/schematics/tsconfig.schematics.json"
             }
         },
+        "schematics": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "schematics ./dist/cdk:updateToV{args.v} --allow-private --dry-run true"
+            },
+            "dependsOn": [
+                {
+                    "target": "build",
+                    "params": "ignore"
+                }
+            ]
+        },
         "test": {
             "executor": "@nx/jest:jest",
             "outputs": ["{workspaceRoot}/coverage/cdk"],
