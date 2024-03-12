@@ -29,7 +29,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        version: [3, 4]
+        version: [4]
     name: Testing v${{ matrix.version }} migration
     steps:
       - uses: taiga-family/ci/actions/setup/checkout@v1.51.14
