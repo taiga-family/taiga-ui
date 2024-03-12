@@ -1,6 +1,8 @@
 name: ⚙️ Schematics
 on:
   pull_request:
+    paths:
+      - 'projects/cdk/schematics/**'
 
 jobs:
   build-cdk:
