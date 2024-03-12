@@ -37,12 +37,12 @@
         "schematics": {
             "executor": "nx:run-commands",
             "options": {
-                "command": "schematics ./dist/cdk:updateToV4 --allow-private --dry-run true"
+                "command": "schematics ./dist/cdk:updateToV{args.v} --allow-private --dry-run true"
             },
             "dependsOn": [
                 {
                     "target": "postbuild",
-                    "params": "forward"
+                    "params": "ignore"
                 }
             ]
         },

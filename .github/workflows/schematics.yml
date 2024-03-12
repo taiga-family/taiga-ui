@@ -1,0 +1,21 @@
+name: ⚙️ Schematics
+on:
+  pull_request:
+
+jobs:
+  schematics:
+    if: ${{ !contains(github.head_ref , 'release/') }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        version: [3, 4]
+    name: Schematics / Testing v${{ matrix.version }} migration
+    steps:
+      - uses: taiga-family/ci/actions/setup/checkout@v1.51.14
+      - uses: taiga-family/ci/actions/setup/node@v1.51.14
+        run: npx nx run cdk:schematics --v=${{ matrix.version }}
+
+concurrency:
+  group: schematics-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
