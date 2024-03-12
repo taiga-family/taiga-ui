@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.70.0](https://github.com/taiga-family/taiga-ui/compare/v3.59.0...v3.70.0) (2024-03-12)
+
+### Bug Fixes
+
+- **addon-table:** eyes not draggable ([#6948](https://github.com/taiga-family/taiga-ui/issues/6948))
+  ([ac9ca4d](https://github.com/taiga-family/taiga-ui/commit/ac9ca4dc119a9b2f009d4b80c711fc41b075f3ae))
+- **kit:** `InputDateMulti` fix disableItemHandler ([#6947](https://github.com/taiga-family/taiga-ui/issues/6947))
+  ([97b2bea](https://github.com/taiga-family/taiga-ui/commit/97b2bea40e4522fd5601244f6a4178dc8dd104d4))
+
 ## [3.69.0](https://github.com/taiga-family/taiga-ui/compare/v3.59.0...v3.69.0) (2024-03-04)
 
 ### Features
