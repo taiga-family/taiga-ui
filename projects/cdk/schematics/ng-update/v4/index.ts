@@ -11,6 +11,7 @@ import {getExecutionTime} from '../../utils/get-execution-time';
 import {projectRoot} from '../../utils/project-root';
 import {removeModules, replaceIdentifiers, showWarnings} from '../steps';
 import {
+    migrateDestroyService,
     migrateLegacyMask,
     migrateTemplates,
     restoreTuiMapper,
@@ -34,6 +35,7 @@ function main(options: TuiSchema): Rule {
         restoreTuiMapper(options);
         restoreTuiMatcher(options);
         migrateLegacyMask(options);
+        migrateDestroyService(options);
 
         migrateTemplates(fileSystem, options);
         showWarnings(context, MIGRATION_WARNINGS);
