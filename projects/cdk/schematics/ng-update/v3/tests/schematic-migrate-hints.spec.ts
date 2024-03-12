@@ -98,7 +98,7 @@ describe('ng-update', () => {
         saveActiveProject();
     });
 
-    it('should migrate polymorpheus', async () => {
+    it('should migrate hints', async () => {
         const tree = await runner
             .runSchematicAsync(
                 'updateToV3',
