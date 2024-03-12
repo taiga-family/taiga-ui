@@ -2,7 +2,7 @@ import type {UpdateRecorder} from '@angular-devkit/schematics';
 import type {DevkitFileSystem} from 'ng-morph';
 import type {Attribute} from 'parse5';
 
-import {tuiCleanObject} from '../../../../../utils/miscellaneous/clean-object'; // TODO
+import {tuiCleanObject} from '../../../../../utils/miscellaneous/clean-object';
 import type {TemplateResource} from '../../../../ng-update/interfaces';
 import {removeAttrs} from '../../../../ng-update/v4/steps/utils/remove-attrs';
 import {addImportToClosestModule} from '../../../../utils/add-import-to-closest-module';
