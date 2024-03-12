@@ -14,7 +14,7 @@ jobs:
     steps:
       - uses: taiga-family/ci/actions/setup/checkout@v1.51.14
       - uses: taiga-family/ci/actions/setup/node@v1.51.14
-        run: npx nx run cdk:schematics --v=${{ matrix.version }}
+      - run: npx nx run cdk:schematics --v=${{ matrix.version }}
 
 concurrency:
   group: schematics-${{ github.workflow }}-${{ github.ref }}
