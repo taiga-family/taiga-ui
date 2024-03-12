@@ -3,9 +3,22 @@ on:
   pull_request:
 
 jobs:
+  build-cdk:
+    if: ${{ !contains(github.head_ref , 'release/') }}
+    name: Build @taiga-ui/cdk
+    runs-on: ubuntu-latest
+    steps:
+      - uses: taiga-family/ci/actions/setup/checkout@v1.51.14
+        with:
+          fetch-depth: 10
+        continue-on-error: true
+      - uses: taiga-family/ci/actions/setup/node@v1.51.14
+      - run: npx nx build cdk
+
   schematics:
     if: ${{ !contains(github.head_ref , 'release/') }}
     runs-on: ubuntu-latest
+    needs: [build-cdk]
     strategy:
       fail-fast: false
       matrix:
