@@ -1,13 +1,13 @@
 name: ⚙️ Lint
 on:
-  pull_request:
   push:
-    branches: [main]
+    branches:
+      - '**'
+      - '!release/*'
 
 jobs:
   lint:
     name: Lint
-    if: ${{ !contains(github.head_ref, 'release/') }}
     runs-on: ubuntu-latest
     steps:
       - uses: taiga-family/ci/actions/setup/checkout@v1.51.14

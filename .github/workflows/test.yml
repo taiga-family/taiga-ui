@@ -1,13 +1,12 @@
 name: ⚙️ Unit tests
 on:
-  pull_request:
   push:
     branches:
-      - main
+      - '**'
+      - '!release/*'
 
 jobs:
   test:
-    if: ${{ !contains(github.head_ref, 'release/') }}
     runs-on: ubuntu-latest
     name: Unit tests
     steps:

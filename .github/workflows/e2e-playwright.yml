@@ -1,10 +1,12 @@
 name: ⚙️ Playwright E2E testing
 on:
-  pull_request:
+  push:
+    branches:
+      - '**'
+      - '!release/*'
 
 jobs:
   build-demo:
-    if: ${{ !contains(github.head_ref , 'release/') }}
     name: Build demo
     runs-on: ubuntu-latest
     steps:
@@ -28,7 +30,6 @@ jobs:
           key: ${{ env.CACHE_DIST_KEY }}
 
   playwright:
-    if: ${{ !contains(github.head_ref , 'release/') }}
     runs-on: ubuntu-latest
     needs: [build-demo]
     strategy:
@@ -98,7 +99,6 @@ jobs:
           retention-days: 1
 
   result:
-    if: ${{ !contains(github.head_ref , 'release/') }}
     name: E2E result
     needs: [playwright]
     runs-on: ubuntu-latest

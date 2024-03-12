@@ -1,9 +1,12 @@
 name: 🚀 Deploy / preview
-on: pull_request
+on:
+  push:
+    branches:
+      - '**'
+      - '!release/*'
 
 jobs:
   build_and_preview:
-    if: ${{ !contains(github.head_ref, 'release/') }}
     name: Firebase
     runs-on: ubuntu-latest
     steps:
