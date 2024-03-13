@@ -4,7 +4,7 @@
 >
     <span class="t-label">{{ label }}</span>
     <button
-        *ngIf="label && !(empty$ | async)"
+        *ngIf="label && (empty$ | async) === false"
         tuiLink
         type="button"
         class="t-button"

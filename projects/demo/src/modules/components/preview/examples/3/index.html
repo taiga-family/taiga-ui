@@ -13,8 +13,8 @@
     let-preview
 >
     <tui-preview
-        [rotatable]="!(contentUnavailable$ | async)"
-        [zoomable]="!(contentUnavailable$ | async) && !(loading$ | async)"
+        [rotatable]="(contentUnavailable$ | async) === false"
+        [zoomable]="(contentUnavailable$ | async) === false && (loading$ | async) === false"
     >
         <tui-preview-title>{{ title$ | async }}</tui-preview-title>
         <tui-preview-pagination
