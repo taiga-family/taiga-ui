@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[83147],{83147:e=>{e.exports='<p>Modified icon</p>\n<tui-tooltip content="Oh, snap!" />\n'}}]);
