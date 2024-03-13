@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[47148],{47148:e=>{e.exports='<label\n    *ngIf="value$ | async as value"\n    tuiProgressLabel\n>\n    <span class="text">COMPLETED</span>\n    <span class="percent">{{ value }}%</span>\n\n    <tui-progress-circle\n        size="xl"\n        [max]="max"\n        [value]="value"\n    />\n</label>\n'}}]);

@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[87577],{87577:e=>{e.exports='<form [formGroup]="form">\n    <tui-filter\n        formControlName="filters"\n        size="s"\n        [disabledItemHandler]="disabledItemHandler"\n        [items]="items"\n    />\n</form>\n<div>\n    <pre>Form value: {{ form.value | json }}</pre>\n</div>\n'}}]);

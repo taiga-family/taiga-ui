@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[58130],{58130:e=>{e.exports='<tui-mobile-calendar [min]="min" />\n'}}]);

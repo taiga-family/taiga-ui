@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[7633],{7633:e=>{e.exports='<tui-input-tag\n    [tuiTextfieldLabelOutside]="true"\n    [(ngModel)]="value"\n    (searchChange)="onSearchChange($event)"\n>\n    Choose your Pythons\'\n    <tui-data-list-wrapper\n        *tuiDataList\n        [items]="items$ | async"\n    />\n</tui-input-tag>\n'}}]);
