@@ -20,8 +20,8 @@ test.describe('InputNumber', () => {
             input = example.getByTestId('tui-primitive-textfield__native-input');
         });
 
-        test('Infinite precision', async ({page}) => {
-            await tuiGoto(page, '/components/input-number/API?precision=Infinity');
+        test('Infinite decimal limit', async ({page}) => {
+            await tuiGoto(page, '/components/input-number/API?decimalLimit=Infinity');
             await input.focus();
             await input.fill('1,2345');
             await expect(example).toHaveScreenshot('01-input-number.png');
@@ -88,7 +88,7 @@ test.describe('InputNumber', () => {
             test.beforeEach(async ({page}) => {
                 await tuiGoto(
                     page,
-                    '/components/input-number/API?decimal=always&precision=2',
+                    '/components/input-number/API?decimal=always&decimalLimit=2',
                 );
 
                 example = new TuiDocumentationApiPagePO(page).apiPageExample;
@@ -322,7 +322,7 @@ test.describe('InputNumber', () => {
         test('Value 42 (decimal=not-zero) => 42', async ({page}) => {
             await tuiGoto(
                 page,
-                'components/input-number/API?precision=2&decimal=not-zero',
+                'components/input-number/API?decimalLimit=2&decimal=not-zero',
             );
 
             await input.fill('42');
@@ -334,7 +334,7 @@ test.describe('InputNumber', () => {
         test('Value 42,1 (decimal=not-zero) => 42,10', async ({page}) => {
             await tuiGoto(
                 page,
-                '/components/input-number/API?precision=2&decimal=not-zero',
+                '/components/input-number/API?decimalLimit=2&decimal=not-zero',
             );
 
             await input.fill('42,1');
@@ -346,7 +346,7 @@ test.describe('InputNumber', () => {
         test('Value 42,00 (decimal=not-zero) => 42', async ({page}) => {
             await tuiGoto(
                 page,
-                '/components/input-number/API?precision=2&decimal=not-zero',
+                '/components/input-number/API?decimalLimit=2&decimal=not-zero',
             );
 
             await input.fill('42,00');
@@ -356,7 +356,10 @@ test.describe('InputNumber', () => {
         });
 
         test('Value 42 (decimal=never) => 42', async ({page}) => {
-            await tuiGoto(page, '/components/input-number/API?precision=2&decimal=never');
+            await tuiGoto(
+                page,
+                '/components/input-number/API?decimalLimit=2&decimal=never',
+            );
 
             await input.fill('42');
             await expect(example).toHaveScreenshot('29-input-number.png');
@@ -365,7 +368,7 @@ test.describe('InputNumber', () => {
         test('Value 42 (decimal=always) => 42', async ({page}) => {
             await tuiGoto(
                 page,
-                '/components/input-number/API?precision=2&decimal=always',
+                '/components/input-number/API?decimalLimit=2&decimal=always',
             );
             await input.fill('42');
             await expect(input).toHaveJSProperty('selectionStart', 2);
