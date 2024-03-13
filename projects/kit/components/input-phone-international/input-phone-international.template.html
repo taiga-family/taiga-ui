@@ -20,7 +20,7 @@
             [tuiTextfieldCustomContent]="countryValueContent"
             [tuiTextfieldIcon]="icon"
             [tuiTextfieldLabelOutside]="true"
-        ></tui-primitive-textfield>
+        />
         <tui-input-phone
             class="t-input-phone tui-group__auto-width-item"
             [countryCode]="inputPhoneCountryCode"
@@ -33,7 +33,7 @@
             [readOnly]="readOnly"
             [(ngModel)]="value"
         >
-            <ng-content></ng-content>
+            <ng-content />
             <input
                 autocomplete="new-password"
                 tuiTextfield
@@ -76,7 +76,7 @@
             appearance="icon"
             tuiWrapper
         >
-            <ng-container *polymorpheusOutlet="arrow"></ng-container>
+            <ng-container *polymorpheusOutlet="arrow" />
         </div>
     </ng-template>
 </tui-hosted-dropdown>

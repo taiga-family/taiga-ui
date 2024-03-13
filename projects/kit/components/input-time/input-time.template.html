@@ -25,7 +25,7 @@
         (keydown.arrowUp)="onArrowUp($event)"
         (valueChange)="onValueChange($event)"
     >
-        <ng-content></ng-content>
+        <ng-content />
         <input
             inputmode="numeric"
             tuiTextfield
@@ -55,7 +55,7 @@
         appearance="icon"
         tuiWrapper
         [src]="src"
-    ></tui-svg>
+    />
     <input
         *ngIf="showNativePicker"
         tuiTime

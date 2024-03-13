@@ -19,7 +19,7 @@
             heading="Basic"
             [content]="example1"
         >
-            <tui-calendar-month-example-1></tui-calendar-month-example-1>
+            <tui-calendar-month-example-1 />
         </tui-doc-example>
 
         <tui-doc-example
@@ -27,7 +27,7 @@
             heading="Range"
             [content]="example2"
         >
-            <tui-calendar-month-example-2></tui-calendar-month-example-2>
+            <tui-calendar-month-example-2 />
         </tui-doc-example>
     </ng-template>
 
@@ -40,7 +40,7 @@
                 [value]="value"
                 [year]="year"
                 (monthClick)="documentationPropertyMonthClick.emitEvent($event)"
-            ></tui-calendar-month>
+            />
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
@@ -113,7 +113,7 @@
                 <tui-doc-code
                     filename="my.module.ts"
                     [code]="exampleModule"
-                ></tui-doc-code>
+                />
             </li>
 
             <li>
@@ -122,7 +122,7 @@
                 <tui-doc-code
                     filename="my.component.html"
                     [code]="exampleHtml"
-                ></tui-doc-code>
+                />
             </li>
         </ol>
     </ng-template>

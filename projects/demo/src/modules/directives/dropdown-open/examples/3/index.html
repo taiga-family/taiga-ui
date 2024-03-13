@@ -9,13 +9,13 @@
         src="tuiIconSortDown"
         class="sort"
         [class.sort_ascending]="ascending"
-    ></tui-svg>
+    />
     {{ primary }}
     <tui-svg
         src="tuiIconChevronDown"
         class="arrow"
         [class.arrow_open]="open"
-    ></tui-svg>
+    />
 </button>
 
 <ng-template #dropdown>
@@ -31,7 +31,7 @@
                 <tui-svg
                     *ngIf="itemIsActive(item)"
                     src="tuiIconCheck"
-                ></tui-svg>
+                />
             </button>
         </tui-opt-group>
     </tui-data-list>

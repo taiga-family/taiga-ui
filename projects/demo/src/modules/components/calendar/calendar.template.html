@@ -26,7 +26,7 @@
             heading="Basic"
             [content]="example1"
         >
-            <tui-calendar-example-1></tui-calendar-example-1>
+            <tui-calendar-example-1 />
         </tui-doc-example>
 
         <tui-doc-example
@@ -34,7 +34,7 @@
             heading="range"
             [content]="example2"
         >
-            <tui-calendar-example-2></tui-calendar-example-2>
+            <tui-calendar-example-2 />
         </tui-doc-example>
 
         <tui-doc-example
@@ -42,7 +42,7 @@
             heading="With markers"
             [content]="example3"
         >
-            <tui-calendar-example-3></tui-calendar-example-3>
+            <tui-calendar-example-3 />
         </tui-doc-example>
 
         <tui-doc-example
@@ -62,7 +62,7 @@
                 </a>
                 token to change start day of the week (Monday by default).
             </ng-template>
-            <tui-calendar-example-4></tui-calendar-example-4>
+            <tui-calendar-example-4 />
         </tui-doc-example>
 
         <tui-doc-example
@@ -77,7 +77,7 @@
                 token to change cell's data-type attribute and customize its color. (The default color for Saturday and
                 Sunday is var(--tui-negative))
             </ng-template>
-            <tui-calendar-example-5></tui-calendar-example-5>
+            <tui-calendar-example-5 />
         </tui-doc-example>
 
         <tui-doc-example
@@ -85,7 +85,7 @@
             heading="Select multiple dates"
             [content]="example6"
         >
-            <tui-calendar-example-6></tui-calendar-example-6>
+            <tui-calendar-example-6 />
         </tui-doc-example>
 
         <tui-doc-example
@@ -93,7 +93,7 @@
             heading="Open in year view"
             [content]="example7"
         >
-            <tui-calendar-example-7></tui-calendar-example-7>
+            <tui-calendar-example-7 />
         </tui-doc-example>
     </ng-template>
 
@@ -111,7 +111,7 @@
                 [(hoveredItem)]="hoveredItem"
                 [(month)]="month"
                 (dayClick)="documentationPropertyDayClick.emitEvent($event)"
-            ></tui-calendar>
+            />
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
@@ -226,7 +226,7 @@
                 <tui-doc-code
                     filename="my.module.ts"
                     [code]="exampleModule"
-                ></tui-doc-code>
+                />
             </li>
 
             <li>
@@ -235,7 +235,7 @@
                 <tui-doc-code
                     filename="my.component.html"
                     [code]="exampleHtml"
-                ></tui-doc-code>
+                />
             </li>
         </ol>
     </ng-template>

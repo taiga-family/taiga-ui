@@ -21,7 +21,7 @@
                                               ? 'tuiIconVisa'
                                               : 'tuiIconMir'
                                     "
-                                ></tui-svg>
+                                />
 
                                 <div class="saved-card-preset__item__info__number">
                                     {{ card.firstSix }}****{{ card.lastFour }}
@@ -66,7 +66,7 @@
                         [cardValidator]="cardValidator"
                         [class.without-date]="paymentMode === PAYMENT_MODE.BySavedCard"
                         [tuiTextfieldCleaner]="paymentMode === PAYMENT_MODE.ByNewCard"
-                    ></tui-input-card-grouped>
+                    />
                 </tui-loader>
             </ng-container>
         </div>

@@ -3,7 +3,7 @@
     [disabledItemHandler]="disabledItemHandler || itemsHandlers.disabledItemHandler"
     [itemContent]="stringify | tuiStringifyContent"
     [items]="items"
-></tui-data-list-wrapper>
+/>
 <option
     *ngFor="let option of items; let index = index"
     [disabled]="disabledItemHandler ? disabledItemHandler(option) : itemsHandlers.disabledItemHandler(option)"

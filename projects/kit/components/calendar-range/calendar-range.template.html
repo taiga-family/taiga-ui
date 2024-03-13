@@ -9,7 +9,7 @@
     [value]="value"
     (dayClick)="onDayClick($event)"
     (mousedown.prevent.silent)="(0)"
-></tui-primitive-calendar-range>
+/>
 <ng-template #presets>
     <div class="t-wrapper">
         <tui-calendar
@@ -22,7 +22,7 @@
             [value]="value"
             (dayClick)="onDayClick($event)"
             (mousedown.prevent.silent)="(0)"
-        ></tui-calendar>
+        />
         <tui-data-list
             automation-id="tui-calendar-range__menu"
             role="menu"
@@ -45,7 +45,7 @@
                     automation-id="tui-calendar-range__checkmark"
                     class="t-checkmark"
                     [src]="icons.check"
-                ></tui-svg>
+                />
             </button>
         </tui-data-list>
     </div>

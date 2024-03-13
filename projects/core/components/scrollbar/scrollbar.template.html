@@ -1,10 +1,10 @@
 <tui-scroll-controls
     *ngIf="!hidden && !isIOS"
     class="t-bars"
-></tui-scroll-controls>
+/>
 <div
     class="t-content"
     [class.t-content_delegated]="delegated"
 >
-    <ng-content></ng-content>
+    <ng-content />
 </div>

@@ -2,7 +2,7 @@
     #demo
     [attr.style]="style"
 >
-    <ng-content></ng-content>
+    <ng-content />
 </tui-doc-demo>
 <tui-doc-documentation
     *ngIf="basic; else withMode"
@@ -15,7 +15,7 @@
         [documentationPropertyType]="getType(variable)"
         [documentationPropertyValue]="getVariable(variable)"
         (documentationPropertyValueChange)="onModelChange(variable, $event)"
-    ></ng-template>
+    />
 </tui-doc-documentation>
 <ng-template #withMode>
     <tui-accordion
@@ -32,7 +32,7 @@
                         [documentationPropertyType]="getType(variable)"
                         [documentationPropertyValue]="getVariable(variable)"
                         (documentationPropertyValueChange)="onModelChange(variable, $event)"
-                    ></ng-template>
+                    />
                 </ng-container>
             </tui-doc-documentation>
         </tui-accordion-item>
@@ -46,7 +46,7 @@
                         [documentationPropertyType]="getType(variable)"
                         [documentationPropertyValue]="getVariable(variable)"
                         (documentationPropertyValueChange)="onModelChange(variable, $event)"
-                    ></ng-template>
+                    />
                 </ng-container>
             </tui-doc-documentation>
         </tui-accordion-item>
@@ -60,7 +60,7 @@
                         [documentationPropertyType]="getType(variable)"
                         [documentationPropertyValue]="getVariable(variable)"
                         (documentationPropertyValueChange)="onModelChange(variable, $event)"
-                    ></ng-template>
+                    />
                 </ng-container>
             </tui-doc-documentation>
         </tui-accordion-item>

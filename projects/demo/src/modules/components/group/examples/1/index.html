@@ -21,7 +21,7 @@
             <tui-error
                 formControlName="testValue"
                 [error]="[] | tuiFieldError | async"
-            ></tui-error>
+            />
         </div>
         <div>
             <tui-multi-select
@@ -37,12 +37,12 @@
                     *tuiDataList
                     tuiMultiSelectGroup
                     [items]="items"
-                ></tui-data-list-wrapper>
+                />
             </tui-multi-select>
             <tui-error
                 formControlName="multiSelectControl"
                 [error]="[] | tuiFieldError | async"
-            ></tui-error>
+            />
         </div>
         <div>
             <tui-input
@@ -59,7 +59,7 @@
             <tui-error
                 formControlName="testValue3"
                 [error]="[] | tuiFieldError | async"
-            ></tui-error>
+            />
         </div>
     </div>
 </form>

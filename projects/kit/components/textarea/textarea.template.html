@@ -1,4 +1,4 @@
-<ng-container *ngIf="hintOptions?.change$ | async"></ng-container>
+<ng-container *ngIf="hintOptions?.change$ | async" />
 <div
     automation-id="tui-text-area__wrapper"
     tuiWrapper
@@ -29,7 +29,7 @@
                 class="t-placeholder"
                 [class.t-placeholder_raised]="placeholderRaised"
             >
-                <ng-content></ng-content>
+                <ng-content />
             </div>
             <tui-scrollbar
                 automation-id="tui-text-area__scrollbar"
@@ -59,7 +59,7 @@
                             [tuiFocusable]="computedFocusable"
                             [(ngModel)]="value"
                         ></textarea>
-                        <ng-content select="textarea"></ng-content>
+                        <ng-content select="textarea" />
                     </div>
                 </div>
             </tui-scrollbar>
@@ -74,13 +74,13 @@
                     appearance="icon"
                     tuiWrapper
                     [src]="src"
-                ></tui-svg>
+                />
             </div>
             <ng-container *ngIf="hasCustomContent">
                 <tui-svg
                     *polymorpheusOutlet="controller.customContent as src"
                     [src]="src"
-                ></tui-svg>
+                />
             </ng-container>
             <ng-container *ngIf="hasCleaner">
                 <tui-svg
@@ -90,14 +90,14 @@
                     class="t-cleaner"
                     [src]="src"
                     (click.stop)="onValueChange('')"
-                ></tui-svg>
+                />
             </ng-container>
             <tui-tooltip
                 *ngIf="hasTooltip"
                 automation-id="tui-text-area__tooltip"
                 [content]="hintOptions?.content"
                 [describeId]="id"
-            ></tui-tooltip>
+            />
             <div
                 *ngIf="iconContent"
                 class="t-icon t-textfield-icon"
@@ -107,7 +107,7 @@
                     appearance="icon"
                     tuiWrapper
                     [src]="src"
-                ></tui-svg>
+                />
             </div>
         </div>
     </label>

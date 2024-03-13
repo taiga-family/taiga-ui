@@ -23,11 +23,11 @@
         "
         (valueChange)="onValueChange($event)"
     >
-        <ng-content></ng-content>
+        <ng-content />
         <ng-content
             ngProjectAs="input"
             select="input"
-        ></ng-content>
+        />
     </tui-primitive-textfield>
 
     <ng-template #dropdown>
@@ -39,6 +39,6 @@
             [year]="computedDefaultActiveYear"
             (monthClick)="onMonthClick($event)"
             (mousedown.prevent.silent)="(0)"
-        ></tui-calendar-month>
+        />
     </ng-template>
 </tui-hosted-dropdown>

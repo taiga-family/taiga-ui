@@ -12,7 +12,7 @@
             [content]="example1"
             [fullsize]="true"
         >
-            <tui-table-pagination-example-1></tui-table-pagination-example-1>
+            <tui-table-pagination-example-1 />
         </tui-doc-example>
 
         <tui-doc-example
@@ -33,7 +33,7 @@
                     to provide new value of this token.
                 </p>
             </ng-template>
-            <tui-table-pagination-example-2></tui-table-pagination-example-2>
+            <tui-table-pagination-example-2 />
         </tui-doc-example>
 
         <tui-doc-example
@@ -42,7 +42,7 @@
             [content]="example3"
             [fullsize]="true"
         >
-            <tui-table-pagination-example-3></tui-table-pagination-example-3>
+            <tui-table-pagination-example-3 />
         </tui-doc-example>
     </ng-template>
 
@@ -56,7 +56,7 @@
                 (pageChange)="documentationPropertyPageChange.emitEvent($event)"
                 (paginationChange)="documentationPropertyPaginationChange.emitEvent($event)"
                 (sizeChange)="documentationPropertySizeChange.emitEvent($event)"
-            ></tui-table-pagination>
+            />
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
@@ -151,7 +151,7 @@
                 <tui-doc-code
                     filename="my.module.ts"
                     [code]="exampleModule"
-                ></tui-doc-code>
+                />
             </li>
 
             <li>
@@ -160,7 +160,7 @@
                 <tui-doc-code
                     filename="my.component.html"
                     [code]="exampleHtml"
-                ></tui-doc-code>
+                />
             </li>
         </ol>
     </ng-template>

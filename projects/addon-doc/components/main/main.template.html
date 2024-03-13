@@ -1,15 +1,15 @@
-<tui-theme-night *ngIf="theme.isDefaultTheme && night.useDefaultNightTheme && (night$ | async)"></tui-theme-night>
+<tui-theme-night *ngIf="theme.isDefaultTheme && night.useDefaultNightTheme && (night$ | async)" />
 <tui-root>
     <div class="tui-doc-page">
         <tui-doc-navigation class="tui-doc-navigation">
-            <ng-content select="tuiDocNavigation"></ng-content>
+            <ng-content select="tuiDocNavigation" />
         </tui-doc-navigation>
         <div class="tui-doc-content">
-            <router-outlet class="tui-doc-outlet"></router-outlet>
+            <router-outlet class="tui-doc-outlet" />
         </div>
     </div>
     <header tuiDocHeader>
-        <ng-content select="tuiDocHeader"></ng-content>
+        <ng-content select="tuiDocHeader" />
         <button
             appearance="secondary"
             shape="rounded"
@@ -23,18 +23,18 @@
         ></button>
     </header>
     <ng-container ngProjectAs="tuiOverContent">
-        <ng-content select="tuiOverContent"></ng-content>
+        <ng-content select="tuiOverContent" />
     </ng-container>
     <ng-container ngProjectAs="tuiOverDialogs">
-        <ng-content select="tuiOverDialogs"></ng-content>
+        <ng-content select="tuiOverDialogs" />
     </ng-container>
     <ng-container ngProjectAs="tuiOverAlerts">
-        <ng-content select="tuiOverAlerts"></ng-content>
+        <ng-content select="tuiOverAlerts" />
     </ng-container>
     <ng-container ngProjectAs="tuiOverDropdowns">
-        <ng-content select="tuiOverDropdowns"></ng-content>
+        <ng-content select="tuiOverDropdowns" />
     </ng-container>
     <ng-container ngProjectAs="tuiOverHints">
-        <ng-content select="tuiOverHints"></ng-content>
+        <ng-content select="tuiOverHints" />
     </ng-container>
 </tui-root>

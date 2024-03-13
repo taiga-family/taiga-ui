@@ -9,9 +9,9 @@
         tuiTextfield
         [(ngModel)]="value"
     />
-    <tui-tooltip content="Editable combo-box"></tui-tooltip>
+    <tui-tooltip content="Editable combo-box" />
     <ng-template #combobox>
-        <tui-data-list-wrapper [items]="items | tuiFilterByInput"></tui-data-list-wrapper>
+        <tui-data-list-wrapper [items]="items | tuiFilterByInput" />
     </ng-template>
 </tui-textfield>
 
@@ -26,8 +26,8 @@
         tuiTextfield
         [(ngModel)]="value"
     ></select>
-    <tui-tooltip content="Fixed choice select"></tui-tooltip>
+    <tui-tooltip content="Fixed choice select" />
     <ng-template #select>
-        <tui-data-list-wrapper [items]="items"></tui-data-list-wrapper>
+        <tui-data-list-wrapper [items]="items" />
     </ng-template>
 </tui-textfield>

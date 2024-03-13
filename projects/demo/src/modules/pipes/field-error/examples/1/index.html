@@ -14,7 +14,7 @@
         <tui-error
             formControlName="testValue2"
             [error]="[] | tuiFieldError | async"
-        ></tui-error>
+        />
     </label>
 
     <label tuiLabel="Set a password">
@@ -29,7 +29,7 @@
         <tui-error
             formControlName="testValue1"
             [error]="[] | tuiFieldError | async"
-        ></tui-error>
+        />
     </label>
 
     <p>
@@ -72,5 +72,5 @@
 
     <p>Below is an error for the entire form:</p>
 
-    <tui-error [error]="[] | tuiFieldError | async"></tui-error>
+    <tui-error [error]="[] | tuiFieldError | async" />
 </form>

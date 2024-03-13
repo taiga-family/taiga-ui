@@ -24,11 +24,11 @@
         [value]="computedValue"
         (valueChange)="onValueChange($event)"
     >
-        <ng-content></ng-content>
+        <ng-content />
         <ng-content
             ngProjectAs="input"
             select="input"
-        ></ng-content>
+        />
 
         <div
             *ngIf="showValueTemplate"
@@ -50,7 +50,7 @@
             [class.t-icon]="!computedDisabled"
             [src]="src"
             (click)="onIconClick()"
-        ></tui-svg>
+        />
     </ng-template>
 
     <ng-template #dropdown>
@@ -65,6 +65,6 @@
             [minLength]="minLength"
             [value]="value"
             (valueChange)="onRangeChange($event)"
-        ></tui-calendar-range>
+        />
     </ng-template>
 </tui-hosted-dropdown>

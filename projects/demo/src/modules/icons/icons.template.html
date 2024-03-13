@@ -72,7 +72,7 @@
             <tui-svg
                 [src]="icon"
                 (tui-icon-error)="documentationPropertyIconErrorChange.emitEvent($event)"
-            ></tui-svg>
+            />
         </div>
 
         <tui-doc-documentation>
@@ -107,7 +107,7 @@
                 <tui-doc-code
                     filename="my.module.ts"
                     [code]="exampleModule"
-                ></tui-doc-code>
+                />
             </li>
 
             <li>
@@ -116,7 +116,7 @@
                 <tui-doc-code
                     filename="my.component.html"
                     [code]="exampleHtml"
-                ></tui-doc-code>
+                />
             </li>
         </ol>
     </ng-template>

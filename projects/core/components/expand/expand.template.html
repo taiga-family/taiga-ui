@@ -5,14 +5,14 @@
     [@.disabled]="overflow"
 >
     <ng-container *ngIf="contentVisible">
-        <ng-content></ng-content>
+        <ng-content />
         <tui-loader
             *ngIf="async; else content"
             size="l"
             [overlay]="true"
             [showLoader]="loading"
         >
-            <ng-container [ngTemplateOutlet]="content"></ng-container>
+            <ng-container [ngTemplateOutlet]="content" />
         </tui-loader>
     </ng-container>
 </div>

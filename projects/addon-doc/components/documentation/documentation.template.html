@@ -4,7 +4,7 @@
 >
     {{ heading }}
 </h1>
-<ng-content></ng-content>
+<ng-content />
 <ng-container *ngIf="$any(propertiesConnectors) | tuiFilter: matcher : excludedProperties as properties">
     <table
         *ngIf="properties.length"
@@ -41,15 +41,15 @@
                         size="s"
                         status="neutral"
                         value="Optional"
-                    ></tui-badge>
+                    />
                     <tui-badge
                         *ngIf="propertyConnector.documentationPropertyDeprecated"
                         size="s"
                         status="error"
                         value="Deprecated"
-                    ></tui-badge>
+                    />
                 </div>
-                <ng-container [ngTemplateOutlet]="propertyConnector.template"></ng-container>
+                <ng-container [ngTemplateOutlet]="propertyConnector.template" />
             </td>
             <td class="t-cell">
                 <span class="type">
@@ -97,7 +97,7 @@
                             *tuiDataList
                             [itemContent]="selectContent"
                             [items]="propertyConnector.documentationPropertyValues"
-                        ></tui-data-list-wrapper>
+                        />
                     </tui-select>
                     <ng-template
                         #selectContent
@@ -115,7 +115,7 @@
                                 [ngModel]="propertyConnector.documentationPropertyValue"
                                 [showIcons]="true"
                                 (ngModelChange)="propertyConnector.onValueChange($event)"
-                            ></tui-toggle>
+                            />
 
                             <tui-primitive-textfield
                                 *ngSwitchCase="'string'"
@@ -125,7 +125,7 @@
                                 [tuiTextfieldLabelOutside]="true"
                                 [value]="propertyConnector.documentationPropertyValue || ''"
                                 (valueChange)="propertyConnector.onValueChange($event)"
-                            ></tui-primitive-textfield>
+                            />
 
                             <div
                                 *ngSwitchCase="'color'"
@@ -164,7 +164,7 @@
                                 [step]="1"
                                 [tuiTextfieldLabelOutside]="true"
                                 (ngModelChange)="propertyConnector.onValueChange($event || 0)"
-                            ></tui-input-number>
+                            />
 
                             <ng-container *ngSwitchCase="'PolymorpheusContent'">
                                 <tui-primitive-textfield

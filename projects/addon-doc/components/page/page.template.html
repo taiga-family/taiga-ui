@@ -6,14 +6,14 @@
             status="custom"
             value="deprecated"
             class="t-tag t-tag_deprecated"
-        ></tui-tag>
+        />
         <tui-tag
             *ngIf="package"
             status="custom"
             class="t-tag t-tag_package"
             [autoColor]="true"
             [value]="package"
-        ></tui-tag>
+        />
     </h1>
     <tui-tabs-with-more
         *ngIf="tabConnectors.length"
@@ -40,19 +40,19 @@
         [package]="package"
         [path]="path"
         [type]="type"
-    ></tui-doc-source-code>
+    />
 </header>
 <div class="t-content">
-    <ng-content></ng-content>
+    <ng-content />
     <tui-doc-see-also
         *ngIf="showSeeAlso"
         class="t-see-also"
         [seeAlso]="seeAlso"
-    ></tui-doc-see-also>
+    />
     <ng-container *ngFor="let tab of tabConnectors; index as index">
         <ng-container
             *ngIf="index === activeItemIndex"
             [ngTemplateOutlet]="tab.template"
-        ></ng-container>
+        />
     </ng-container>
 </div>

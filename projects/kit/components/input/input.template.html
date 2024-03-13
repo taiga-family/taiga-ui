@@ -18,10 +18,10 @@
         [value]="value"
         (valueChange)="onValueChange($event)"
     >
-        <ng-content></ng-content>
+        <ng-content />
         <ng-content
             ngProjectAs="input"
             select="input"
-        ></ng-content>
+        />
     </tui-primitive-textfield>
 </tui-hosted-dropdown>

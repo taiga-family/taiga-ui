@@ -3,7 +3,7 @@
         *ngFor="let item of computedValue; let index = index"
         [ngTemplateOutlet]="bar"
         [ngTemplateOutletContext]="{$implicit: item, index: index, flexible: false}"
-    ></ng-container>
+    />
 </ng-container>
 <ng-template #flexible>
     <div
@@ -13,7 +13,7 @@
         <ng-container
             [ngTemplateOutlet]="bar"
             [ngTemplateOutletContext]="{$implicit: item, index: index, flexible: true}"
-        ></ng-container>
+        />
     </div>
 </ng-template>
 <ng-template
@@ -31,8 +31,8 @@
         [style.background]="getColor(index)"
         [style.height.%]="getHeight(item)"
         [value]="computedSegments"
-    ></tui-bar>
+    />
 </ng-template>
 <span class="t-label">
-    <ng-content></ng-content>
+    <ng-content />
 </span>

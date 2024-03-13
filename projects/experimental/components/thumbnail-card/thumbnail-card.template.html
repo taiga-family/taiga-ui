@@ -6,7 +6,7 @@
         <tui-icon
             class="t-icon"
             [icon]="iconLeft"
-        ></tui-icon>
+        />
     </div>
     <div
         *ngIf="iconRight"
@@ -15,15 +15,15 @@
         <tui-icon
             class="t-icon"
             [icon]="iconRight"
-        ></tui-icon>
+        />
     </div>
-    <ng-content></ng-content>
+    <ng-content />
     <ng-container *ngIf="paymentSystem">
         <tui-icon
             *ngIf="isMono; else colored"
             class="t-logo"
             [icon]="options.icons[paymentSystem]"
-        ></tui-icon>
+        />
         <ng-template #colored>
             <img
                 class="t-logo"

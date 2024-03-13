@@ -1,4 +1,4 @@
-<ng-container *ngIf="control.control?.valueChanges | async"></ng-container>
+<ng-container *ngIf="control.control?.valueChanges | async" />
 
 <tui-data-list-wrapper
     *tuiDataList
@@ -7,7 +7,7 @@
     [itemContent]="stringify | tuiStringifyContent"
     [items]="items"
     [labels]="labels"
-></tui-data-list-wrapper>
+/>
 <optgroup
     *ngFor="let group of items; let index = index"
     [label]="labels[index]"

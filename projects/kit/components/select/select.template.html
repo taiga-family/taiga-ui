@@ -22,23 +22,23 @@
         (keydown.delete.prevent)="onKeyDownDelete()"
         (valueChange)="onValueChange($any($event))"
     >
-        <ng-content></ng-content>
+        <ng-content />
         <ng-content
             ngProjectAs="input"
             select="input"
-        ></ng-content>
+        />
 
         <ng-template #select>
             <ng-content
                 *ngIf="isMobile"
                 select="select"
-            ></ng-content>
+            />
         </ng-template>
 
         <ng-container
             *ngTemplateOutlet="select"
             ngProjectAs="select"
-        ></ng-container>
+        />
 
         <div
             *ngIf="value !== null"
@@ -60,7 +60,7 @@
             tuiWrapper
             class="t-icon"
         >
-            <ng-container *polymorpheusOutlet="arrow"></ng-container>
+            <ng-container *polymorpheusOutlet="arrow" />
         </div>
     </ng-template>
 </tui-hosted-dropdown>

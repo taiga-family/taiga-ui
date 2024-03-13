@@ -3,7 +3,7 @@
     [content]="content"
     [tuiTreeController]="true"
     [value]="data"
-></tui-tree>
+/>
 
 <ng-template
     #content
@@ -17,7 +17,7 @@
         <tui-svg
             *ngIf="value.icon"
             [src]="value.icon"
-        ></tui-svg>
+        />
         {{ value.text }}
     </div>
 </ng-template>

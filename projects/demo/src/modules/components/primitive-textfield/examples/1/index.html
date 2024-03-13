@@ -7,7 +7,7 @@
     [(value)]="value"
     (focusedChange)="onFocused($event)"
 >
-    <ng-content></ng-content>
+    <ng-content />
     <input
         tuiTextfield
         [type]="inputType"
@@ -22,7 +22,7 @@
         [src]="icon"
         [tuiHint]="hintContent"
         (click)="togglePasswordVisibility()"
-    ></tui-svg>
+    />
 </ng-template>
 
 <ng-template #hintContent>{{ hint }}</ng-template>

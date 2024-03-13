@@ -17,7 +17,7 @@
     (keydown.arrowUp.prevent)="onVerticalArrowKeyDown(1)"
     (ngModelChange)="safelyUpdateValue($event)"
 >
-    <ng-content></ng-content>
+    <ng-content />
     <div
         *ngIf="showValueContent"
         automation-id="tui-input-slider__value-content"

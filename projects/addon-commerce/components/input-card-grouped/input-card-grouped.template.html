@@ -149,7 +149,7 @@
                 automation-id="tui-input-card-grouped__icon"
                 class="t-card"
                 [src]="text"
-            ></tui-svg>
+            />
         </div>
         <tui-svg
             *ngIf="hasCleaner"
@@ -159,7 +159,7 @@
             class="t-icon"
             [src]="icons.close"
             (click)="clear()"
-        ></tui-svg>
+        />
         <tui-svg
             *ngIf="hasDropdown"
             appearance="icon"
@@ -169,6 +169,6 @@
             [class.t-icon_rotated]="open"
             [src]="arrowOptions.iconLarge"
             (click)="toggle()"
-        ></tui-svg>
+        />
     </div>
 </div>

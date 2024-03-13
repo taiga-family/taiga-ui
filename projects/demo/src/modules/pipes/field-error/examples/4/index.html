@@ -32,14 +32,14 @@
         <tui-error
             formControlName="{{ i }}"
             [error]="[] | tuiFieldError | async"
-        ></tui-error>
+        />
     </label>
 
     <tui-error
         formArrayName="phones"
         class="form-array-error"
         [error]="[] | tuiFieldError | async"
-    ></tui-error>
+    />
 
     <button
         size="s"

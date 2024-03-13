@@ -14,7 +14,7 @@
             heading="With validation"
             [content]="example1"
         >
-            <tui-input-card-grouped-example-1></tui-input-card-grouped-example-1>
+            <tui-input-card-grouped-example-1 />
         </tui-doc-example>
 
         <tui-doc-example
@@ -22,7 +22,7 @@
             heading="With saved cards"
             [content]="example2"
         >
-            <tui-input-card-grouped-example-2></tui-input-card-grouped-example-2>
+            <tui-input-card-grouped-example-2 />
         </tui-doc-example>
 
         <tui-doc-example
@@ -30,7 +30,7 @@
             heading="With custom card template"
             [content]="example3"
         >
-            <tui-input-card-grouped-example-3></tui-input-card-grouped-example-3>
+            <tui-input-card-grouped-example-3 />
         </tui-doc-example>
 
         <tui-doc-example
@@ -38,7 +38,7 @@
             heading="Custom form state"
             [content]="example4"
         >
-            <tui-input-card-grouped-example-4></tui-input-card-grouped-example-4>
+            <tui-input-card-grouped-example-4 />
         </tui-doc-example>
 
         <tui-doc-example
@@ -46,7 +46,7 @@
             heading="Custom labels"
             [content]="example5"
         >
-            <tui-input-card-grouped-example-5></tui-input-card-grouped-example-5>
+            <tui-input-card-grouped-example-5 />
         </tui-doc-example>
     </ng-template>
 
@@ -66,7 +66,7 @@
                     [pseudoInvalid]="pseudoInvalid"
                     [readOnly]="readOnly"
                     (binChange)="documentationPropertyBinChange.emitEvent($event)"
-                ></tui-input-card-grouped>
+                />
             </ng-template>
         </tui-doc-demo>
         <div class="tui-space_bottom-6">
@@ -83,7 +83,7 @@
                 paymentSystem="maestro"
                 size="s"
                 class="card"
-            ></tui-thumbnail-card>
+            />
         </ng-template>
 
         <tui-doc-documentation>
@@ -139,7 +139,7 @@
                 BIN value (card first 6 symbols)
             </ng-template>
         </tui-doc-documentation>
-        <inherited-documentation></inherited-documentation>
+        <inherited-documentation />
     </ng-template>
 
     <ng-template pageTab>
@@ -154,7 +154,7 @@
                 <tui-doc-code
                     filename="my.module.ts"
                     [code]="exampleModule"
-                ></tui-doc-code>
+                />
             </li>
 
             <li>
@@ -163,7 +163,7 @@
                 <tui-doc-code
                     filename="my.component.html"
                     [code]="exampleHtml"
-                ></tui-doc-code>
+                />
             </li>
         </ol>
     </ng-template>

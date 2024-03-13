@@ -16,11 +16,11 @@
         state="error"
         [file]="(file | tuiFileRejected: validator | async) || file"
         (remove)="onRemove(file)"
-    ></tui-file>
+    />
     <tui-file
         *ngFor="let file of files"
         state="normal"
         [file]="file"
         (remove)="onRemove(file)"
-    ></tui-file>
+    />
 </tui-files>
