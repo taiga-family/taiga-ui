@@ -21,6 +21,17 @@ export function getNamedImportReferences(
     );
 
     return arrayFlat(
-        namedImports.map(specifier => specifier?.findReferencesAsNodes() || []),
+        namedImports.map(
+            specifier =>
+                specifier?.findReferencesAsNodes().filter(
+                    /**
+                     * Otherwise, each `findReferencesAsNodes` will return references across THE WHOLE project.
+                     * It will cause a lot of duplicates in the result and significantly slow down the process.
+                     */
+                    ref =>
+                        ref.getSourceFile().getFilePath() ===
+                        specifier?.getSourceFile().getFilePath(),
+                ) || [],
+        ),
     );
 }
