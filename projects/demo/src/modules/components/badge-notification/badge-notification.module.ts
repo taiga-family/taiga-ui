@@ -18,12 +18,9 @@ import {TuiBadgeNotificationExample2} from './examples/2';
         TuiPlatformModule,
         tuiGetDocModules(ExampleTuiBadgeNotificationComponent),
         TuiExamplePipe,
-    ],
-    declarations: [
-        ExampleTuiBadgeNotificationComponent,
         TuiBadgeNotificationExample1,
-        TuiBadgeNotificationExample2,
     ],
+    declarations: [ExampleTuiBadgeNotificationComponent, TuiBadgeNotificationExample2],
     exports: [ExampleTuiBadgeNotificationComponent],
 })
 export class ExampleTuiBadgeNotificationModule {}
