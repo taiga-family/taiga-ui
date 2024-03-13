@@ -86,12 +86,6 @@ export class TuiInputNumberComponent
     public max: number | null = this.options.max;
 
     @Input()
-    public decimal = this.options.decimal;
-
-    @Input()
-    public precision = this.options.precision;
-
-    @Input()
     public step = this.options.step;
 
     @ContentChildren(PolymorpheusOutletDirective, {descendants: true})
@@ -125,12 +119,12 @@ export class TuiInputNumberComponent
             return 'text';
         }
 
-        return this.decimal === 'never' ? 'numeric' : 'decimal';
+        return this.numberFormat.decimal === 'never' ? 'numeric' : 'decimal';
     }
 
     public get calculatedMaxLength(): number {
         const decimalPart =
-            this.decimal !== 'never' &&
+            this.numberFormat.decimal !== 'never' &&
             this.nativeValue.includes(this.numberFormat.decimalSeparator);
         const precision = decimalPart ? Math.min(this.precision + 1, 20) : 0;
         const takeThousand = this.numberFormat.thousandSeparator.repeat(5).length;
@@ -220,7 +214,7 @@ export class TuiInputNumberComponent
     protected get mask(): MaskitoOptions {
         return this.calculateMask(
             this.precision,
-            this.decimal,
+            this.numberFormat.decimal,
             this.numberFormat.decimalSeparator,
             this.numberFormat.thousandSeparator,
             this.computedMin,
@@ -284,7 +278,8 @@ export class TuiInputNumberComponent
         const absValue = Math.abs(value);
         const hasFraction = absValue % 1 > 0;
         let decimalLimit =
-            this.decimal === 'always' || (hasFraction && this.decimal !== 'never')
+            this.numberFormat.decimal === 'always' ||
+            (hasFraction && this.numberFormat.decimal !== 'never')
                 ? this.precision
                 : 0;
 
@@ -292,7 +287,7 @@ export class TuiInputNumberComponent
             ? tuiGetFractionPartPadded(value, this.precision)
             : '';
 
-        if (this.focused && this.decimal !== 'always') {
+        if (this.focused && this.numberFormat.decimal !== 'always') {
             decimalLimit = fraction.length;
         }
 
@@ -316,6 +311,12 @@ export class TuiInputNumberComponent
 
     private get nativeNumberValue(): number {
         return maskitoParseNumber(this.nativeValue, this.numberFormat.decimalSeparator);
+    }
+
+    private get precision(): number {
+        return Number.isNaN(this.numberFormat.decimalLimit)
+            ? 2
+            : this.numberFormat.decimalLimit;
     }
 
     @tuiPure

@@ -1360,6 +1360,12 @@ export const pages: TuiDocPages = [
             },
             {
                 section: 'Tools',
+                title: 'NumberFormat',
+                keywords: 'number, format, число, separator, precision, rounding, формат',
+                route: '/directives/number-format',
+            },
+            {
+                section: 'Tools',
                 title: 'Touchable',
                 keywords: 'touch, mobile, смартфон, pwa, native, hybrid, ios',
                 route: '/directives/touchable',

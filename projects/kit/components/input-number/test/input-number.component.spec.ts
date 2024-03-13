@@ -6,7 +6,11 @@ import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {CHAR_MINUS, CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
 import type {TuiDecimal, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {TuiHintModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
+import {
+    TuiHintModule,
+    TuiNumberFormatModule,
+    TuiTextfieldControllerModule,
+} from '@taiga-ui/core';
 import {TuiInputNumberComponent, TuiInputNumberModule} from '@taiga-ui/kit';
 import {TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 
@@ -17,9 +21,9 @@ describe('InputNumber', () => {
                 <tui-input-number
                     *ngIf="!defaultValues"
                     formControlName="control"
-                    [decimal]="decimal"
                     [readOnly]="readOnly"
                     [tuiHintContent]="hintContent"
+                    [tuiNumberFormat]="{decimal, decimalLimit}"
                     [tuiTextfieldCleaner]="cleaner"
                     [tuiTextfieldSize]="size"
                 >
@@ -43,6 +47,7 @@ describe('InputNumber', () => {
 
         public readOnly = false;
         public decimal: TuiDecimal = 'never';
+        public decimalLimit = NaN;
         public cleaner = true;
         public defaultValues = false;
         public size: TuiSizeL | TuiSizeS = 'm';
@@ -60,6 +65,7 @@ describe('InputNumber', () => {
             imports: [
                 NoopAnimationsModule,
                 TuiInputNumberModule,
+                TuiNumberFormatModule,
                 ReactiveFormsModule,
                 TuiTextfieldControllerModule,
                 TuiHintModule,
@@ -257,7 +263,7 @@ describe('InputNumber', () => {
         });
 
         it('The correctly filled value is passed to the form number', () => {
-            testComponent.component.decimal = 'not-zero';
+            testComponent.decimal = 'not-zero';
             inputPO.sendText(`-12${CHAR_NO_BREAK_SPACE}345,67`);
 
             expect(testComponent.control.value).toBe(-12345.67);
@@ -290,7 +296,7 @@ describe('InputNumber', () => {
         });
 
         it("Doesn't trim zeros if the input is focused", () => {
-            component.decimal = 'not-zero';
+            testComponent.decimal = 'not-zero';
 
             inputPO.focus();
             inputPO.sendText('10,07');
@@ -300,7 +306,7 @@ describe('InputNumber', () => {
         });
 
         it('formats a value if the element is out of focus', () => {
-            component.decimal = 'not-zero';
+            testComponent.decimal = 'not-zero';
 
             inputPO.sendTextAndBlur('10,0');
 
@@ -314,8 +320,8 @@ describe('InputNumber', () => {
 
     describe('Format value when element lose focus with precision > 6', () => {
         beforeEach(() => {
-            component.decimal = 'always';
-            component.precision = 10;
+            testComponent.decimal = 'always';
+            testComponent.decimalLimit = 10;
             inputPO.sendText('');
             inputPO.focus();
         });
@@ -354,8 +360,8 @@ describe('InputNumber', () => {
             const value = '123';
             const precision = 2;
 
-            component.decimal = 'always';
-            component.precision = precision;
+            testComponent.decimal = 'always';
+            testComponent.decimalLimit = precision;
             inputPO.sendText(value);
             inputPO.blur();
 
@@ -366,8 +372,8 @@ describe('InputNumber', () => {
             const value = '0';
             const precision = 2;
 
-            component.decimal = 'always';
-            component.precision = precision;
+            testComponent.decimal = 'always';
+            testComponent.decimalLimit = precision;
             inputPO.sendText(value);
             inputPO.blur();
 

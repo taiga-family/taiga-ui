@@ -3,6 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
+import {TuiNumberFormatModule} from '@taiga-ui/core';
 import {TuiInputNumberModule} from '@taiga-ui/kit';
 
 import {TuiMathExample1} from './examples/1';
@@ -20,6 +21,7 @@ import {ExampleMathComponent} from './math.component';
         ReactiveFormsModule,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleMathComponent)),
+        TuiNumberFormatModule,
     ],
     declarations: [
         ExampleMathComponent,

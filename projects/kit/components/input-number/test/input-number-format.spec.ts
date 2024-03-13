@@ -5,7 +5,7 @@ import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
 import type {TuiDecimal} from '@taiga-ui/core';
-import {tuiNumberFormatProvider} from '@taiga-ui/core';
+import {TuiNumberFormatModule, tuiNumberFormatProvider} from '@taiga-ui/core';
 import {TuiInputNumberComponent, TuiInputNumberModule} from '@taiga-ui/kit';
 import {TuiNativeInputPO} from '@taiga-ui/testing';
 
@@ -15,8 +15,7 @@ describe('InputNumber - backward compatibility for separators', () => {
             <ng-container [formGroup]="form">
                 <tui-input-number
                     formControlName="control"
-                    [decimal]="decimal"
-                    [precision]="precision"
+                    [tuiNumberFormat]="{decimal, decimalLimit}"
                 ></tui-input-number>
             </ng-container>
         `,
@@ -29,7 +28,7 @@ describe('InputNumber - backward compatibility for separators', () => {
         public form = new FormGroup({control: this.control});
 
         public decimal: TuiDecimal = 'always';
-        public precision = 2;
+        public decimalLimit = 2;
     }
 
     let fixture: ComponentFixture<TestComponent>;
@@ -42,6 +41,7 @@ describe('InputNumber - backward compatibility for separators', () => {
             TestBed.configureTestingModule({
                 imports: [
                     NoopAnimationsModule,
+                    TuiNumberFormatModule,
                     TuiInputNumberModule,
                     ReactiveFormsModule,
                 ],
@@ -81,6 +81,7 @@ describe('InputNumber - backward compatibility for separators', () => {
                 imports: [
                     NoopAnimationsModule,
                     TuiInputNumberModule,
+                    TuiNumberFormatModule,
                     ReactiveFormsModule,
                 ],
                 declarations: [TestComponent],

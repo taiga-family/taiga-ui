@@ -1,0 +1,75 @@
+<h6 class="tui-text_h6">
+    Can be expanded with
+    <a
+        routerLink="/directives/number-format"
+        target="_blank"
+        tuiLink
+    >
+        TuiNumberFormat
+    </a>
+</h6>
+<p>
+    Usage example:
+    <code>
+        [tuiNumberFormat]='&#123;decimal, decimalLimit, rounding, zeroPadding, thousandSeparator,
+        decimalSeparator&#125;'
+    </code>
+</p>
+<p>
+    Requires you to import
+    <code>TuiNumberFormatModule</code>
+    .
+</p>
+
+<tui-doc-documentation>
+    <ng-template
+        documentationPropertyMode="input"
+        documentationPropertyName="decimal"
+        documentationPropertyType="TuiDecimal"
+        [documentationPropertyValues]="documentedComponent.decimalVariants"
+        [(documentationPropertyValue)]="documentedComponent.decimal"
+    >
+        Show/hide decimal
+    </ng-template>
+    <ng-template
+        documentationPropertyMode="input"
+        documentationPropertyName="rounding"
+        documentationPropertyType="TuiRounding"
+        [documentationPropertyValues]="documentedComponent.roundingVariants"
+        [(documentationPropertyValue)]="documentedComponent.rounding"
+    >
+        Rounding
+    </ng-template>
+    <ng-template
+        documentationPropertyMode="input"
+        documentationPropertyName="decimalLimit"
+        documentationPropertyType="number"
+        [(documentationPropertyValue)]="documentedComponent.decimalLimit"
+    >
+        A number of digits after comma ( Infinity for an untouched decimal part)
+    </ng-template>
+    <ng-template
+        documentationPropertyMode="input"
+        documentationPropertyName="zeroPadding"
+        documentationPropertyType="boolean"
+        [(documentationPropertyValue)]="documentedComponent.zeroPadding"
+    >
+        Zero padding
+    </ng-template>
+    <ng-template
+        documentationPropertyMode="input"
+        documentationPropertyName="thousandSeparator"
+        documentationPropertyType="string"
+        [(documentationPropertyValue)]="documentedComponent.thousandSeparator"
+    >
+        Thousand separator
+    </ng-template>
+    <ng-template
+        documentationPropertyMode="input"
+        documentationPropertyName="decimalSeparator"
+        documentationPropertyType="string"
+        [(documentationPropertyValue)]="documentedComponent.decimalSeparator"
+    >
+        Decimal separator
+    </ng-template>
+</tui-doc-documentation>

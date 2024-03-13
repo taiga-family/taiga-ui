@@ -5,6 +5,7 @@ import {TUI_HINT_DIRECTIONS} from '@taiga-ui/core';
 import {AbstractExampleTuiControl} from '../control';
 import {AbstractExampleTuiHint} from '../hint';
 import {AbstractExampleTuiInteractive} from '../interactive';
+import {AbstractExampleTuiNumberFormat} from '../number-format';
 import {ABSTRACT_PROPS_ACCESSOR} from './abstract-props-accessor';
 import type {TuiSupportingDocumentationComponent} from './supporting-documentation-component';
 
@@ -47,5 +48,11 @@ export class InheritedDocumentationComponent {
         documentedComponent: TuiSupportingDocumentationComponent,
     ): documentedComponent is AbstractExampleTuiHint {
         return documentedComponent instanceof AbstractExampleTuiHint;
+    }
+
+    protected isTuiFormatNumber(
+        documentedComponent: TuiSupportingDocumentationComponent,
+    ): documentedComponent is AbstractExampleTuiHint {
+        return documentedComponent instanceof AbstractExampleTuiNumberFormat;
     }
 }
