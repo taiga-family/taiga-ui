@@ -5,7 +5,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 @Component({
     selector: 'tui-comment-example-1',
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })

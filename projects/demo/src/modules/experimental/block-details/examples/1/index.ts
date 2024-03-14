@@ -6,7 +6,6 @@ import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
 @Component({
     selector: 'tui-block-details-example-1',
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
