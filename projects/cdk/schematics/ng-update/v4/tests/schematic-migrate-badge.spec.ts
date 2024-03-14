@@ -40,6 +40,11 @@ const TEMPLATE_BEFORE = `
     status="primary"
     [value]="value"
     [hoverable]="true"
+/>
+<tui-badge
+    status="primary"
+    [value]="value"
+    [hoverable]="true"
 ></tui-badge>
 <tui-badge
     status="success"
@@ -61,11 +66,16 @@ const TEMPLATE_AFTER = `
     ${''}
 >{{ value }}</tui-badge>
 <tui-badge
+    appearance="primary"
+   ${''}
+    ${''}
+>{{ value }}</tui-badge>
+<tui-badge
     appearance="success"
    ${''}
-iconLeft="tuiIconHelpCircle">
+iconLeft="tuiIconHelpCircle">Taiga
     ${''}
-Taiga</tui-badge>
+</tui-badge>
 <!-- Taiga migration TODO: use "<tui-icon>" with "tuiBadge" directive for icon-only badges instead -->
 <tui-badge
     appearance="success"
