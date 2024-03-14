@@ -336,6 +336,15 @@ export const ROUTES: Routes = [
         },
     },
     {
+        path: 'experimental/block-details',
+        loadChildren: async () =>
+            (await import('../experimental/block-details/block-details.module'))
+                .ExampleTuiBlockDetailsModule,
+        data: {
+            title: 'BlockDetails',
+        },
+    },
+    {
         path: 'experimental/button',
         loadChildren: async () =>
             (await import('../experimental/button/button.module')).ExampleTuiButtonModule,
@@ -376,6 +385,15 @@ export const ROUTES: Routes = [
             (await import('../experimental/cell/cell.module')).ExampleTuiCellModule,
         data: {
             title: 'Cell',
+        },
+    },
+    {
+        path: 'experimental/comment',
+        loadChildren: async () =>
+            (await import('../experimental/comment/comment.module'))
+                .ExampleTuiCommentModule,
+        data: {
+            title: 'Comment',
         },
     },
     {
