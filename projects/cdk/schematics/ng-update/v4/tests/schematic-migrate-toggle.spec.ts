@@ -45,6 +45,10 @@ const TEMPLATE_BEFORE = `
     [showIcons]="true"
     [singleColor]="true"
 ></tui-toggle>
+<tui-toggle
+    formControlName="test"
+    class="toggle"
+/>
 `;
 
 const TEMPLATE_AFTER = `
@@ -61,6 +65,12 @@ const TEMPLATE_AFTER = `
     type="checkbox"
     [showIcons]="true"
     ${''}
+/>
+<input
+    tuiToggle
+    type="checkbox"
+    formControlName="test"
+    class="toggle"
 />
 `;
 

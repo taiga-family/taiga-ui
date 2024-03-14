@@ -51,6 +51,11 @@ export function removeClosingTag(
     templateOffset: number,
 ): void {
     const {endTag} = sourceCodeLocation;
+
+    if (!endTag) {
+        return;
+    }
+
     const {startOffset, endOffset} = endTag;
 
     const from = templateOffset + startOffset;
@@ -60,9 +65,13 @@ export function removeClosingTag(
 }
 
 export function closeStartTag(
-    {startTag}: ElementLocation,
+    {startTag, endTag}: ElementLocation,
     recorder: UpdateRecorder,
     templateOffset: number,
 ): void {
+    if (!endTag) {
+        return;
+    }
+
     recorder.insertRight(templateOffset + startTag.endOffset - 1, '/');
 }
