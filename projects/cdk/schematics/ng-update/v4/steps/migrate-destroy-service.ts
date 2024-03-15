@@ -140,16 +140,20 @@ export function migrateDestroyService(options: TuiSchema): void {
                     isReadonly: true,
                 });
 
-                possibleTakeUntil.replaceWithText('takeUntilDestroyed(this.destroyRef)');
-            } else {
-                const identifier = node.getFirstAncestorByKind(SyntaxKind.Identifier);
-
-                identifier &&
-                    insertTodo(
-                        identifier,
-                        'use takeUntilDestroyed instead (https://angular.io/api/core/rxjs-interop/takeUntilDestroyed)',
-                    );
+                return possibleTakeUntil.replaceWithText(
+                    'takeUntilDestroyed(this.destroyRef)',
+                );
             }
+
+            const identifier = node.getFirstAncestorByKind(SyntaxKind.Identifier);
+
+            return (
+                identifier &&
+                insertTodo(
+                    identifier,
+                    'use takeUntilDestroyed instead (https://angular.io/api/core/rxjs-interop/takeUntilDestroyed)',
+                )
+            );
         });
     });
 
