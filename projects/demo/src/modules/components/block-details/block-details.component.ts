@@ -1,0 +1,18 @@
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import type {TuiRawLoaderContent} from '@taiga-ui/addon-doc';
+
+@Component({
+    selector: 'example-block-details',
+    templateUrl: './block-details.template.html',
+    changeDetection,
+})
+export class ExampleTuiBlockDetailsComponent {
+    protected readonly exampleModule: TuiRawLoaderContent = import(
+        './examples/import/import-module.md?raw'
+    );
+
+    protected readonly exampleHtml: TuiRawLoaderContent = import(
+        './examples/import/insert-template.md?raw'
+    );
+}

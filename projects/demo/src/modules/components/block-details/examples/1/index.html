@@ -1,0 +1,18 @@
+<div tuiBlockDetails>
+    <tui-avatar
+        src="JW"
+        [size]="isMobile ? 'xl' : 'xxl'"
+    ></tui-avatar>
+    <h2 tuiTitle>
+        John W
+        <div tuiSubtitle>money transfers</div>
+    </h2>
+
+    <span>{{ -1050 | tuiAmount: 'USD' | async }}</span>
+    <span tuiSubtitle>today</span>
+    <span tuiComment>Birthday gift</span>
+    <div tuiAccessories>
+        <tui-badge appearance="neutral">private</tui-badge>
+        <tui-badge appearance="default">fast</tui-badge>
+    </div>
+</div>

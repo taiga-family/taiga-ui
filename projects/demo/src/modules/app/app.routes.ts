@@ -257,6 +257,15 @@ export const ROUTES: Routes = [
         },
     },
     {
+        path: 'layout/block-details',
+        loadChildren: async () =>
+            (await import('../components/block-details/block-details.module'))
+                .ExampleTuiBlockDetailsModule,
+        data: {
+            title: 'BlockDetails',
+        },
+    },
+    {
         path: 'experimental/button-vertical',
         loadChildren: async () =>
             (await import('../experimental/button-vertical/button-vertical.module'))
@@ -289,6 +298,15 @@ export const ROUTES: Routes = [
             (await import('../experimental/cell/cell.module')).ExampleTuiCellModule,
         data: {
             title: 'Cell',
+        },
+    },
+    {
+        path: 'components/comment',
+        loadChildren: async () =>
+            (await import('../directives/comment/comment.module'))
+                .ExampleTuiCommentModule,
+        data: {
+            title: 'Comment',
         },
     },
     {
