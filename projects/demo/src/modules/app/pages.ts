@@ -561,6 +561,13 @@ export const pages: TuiDocPages = [
     },
     {
         section: 'Components',
+        title: 'ColorPicker',
+        keywords: 'color, picker, input, color',
+        route: 'https://taiga-family.github.io/tui-editor/color-picker',
+        target: '_blank',
+    },
+    {
+        section: 'Components',
         title: 'Island',
         keywords: 'Island, остров, плашка',
         route: '/components/island',

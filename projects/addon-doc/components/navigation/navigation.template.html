@@ -15,22 +15,40 @@
                 *ngFor="let group of filtered$ | async; let index = index"
                 [label]="labels[index] || ''"
             >
-                <a
-                    *ngFor="let item of group"
-                    rel="noopener noreferrer"
-                    tuiOption
-                    [fragment]="item.fragment"
-                    [routerLink]="item.route"
-                    [target]="item.target || '_self'"
-                    (click)="onClick(input)"
-                >
-                    {{ item.title }}
-                    <tui-svg
-                        *polymorpheusOutlet="item.icon as icon"
-                        class="t-icon"
-                        [src]="icon"
-                    />
-                </a>
+                <ng-container *ngFor="let item of group">
+                    <a
+                        *ngIf="item.route.includes('://'); else internal"
+                        tuiOption
+                        [attr.rel]="item.rel"
+                        [href]="item.route"
+                        [target]="item.target || '_self'"
+                    >
+                        {{ item.title }}
+                        <tui-svg
+                            *polymorpheusOutlet="item.icon as icon"
+                            class="t-icon"
+                            [src]="icon"
+                        />
+                    </a>
+
+                    <ng-template #internal>
+                        <a
+                            tuiOption
+                            [attr.rel]="item.rel"
+                            [fragment]="item.fragment"
+                            [routerLink]="item.route"
+                            [target]="item.target || '_self'"
+                            (click)="onClick(input)"
+                        >
+                            {{ item.title }}
+                            <tui-svg
+                                *polymorpheusOutlet="item.icon as icon"
+                                class="t-icon"
+                                [src]="icon"
+                            />
+                        </a>
+                    </ng-template>
+                </ng-container>
             </tui-opt-group>
         </tui-data-list>
     </ng-container>
@@ -78,24 +96,43 @@
             let-index="index"
             let-item="item"
         >
-            <a
-                *ngIf="!item.subPages; else subPagesTemplate"
-                rel="noopener noreferrer"
-                routerLinkActive="t-sublink_active"
-                tuiLink
-                class="t-sublink"
-                [routerLink]="item.route"
-                [target]="item.target || '_self'"
-                [tuiScrollIntoViewLink]="isActive(item.route)"
-                (click)="closeMenu()"
-            >
-                {{ item.title }}
-                <tui-svg
-                    *polymorpheusOutlet="item.icon as icon"
-                    class="t-icon"
-                    [src]="icon"
-                />
-            </a>
+            <ng-container *ngIf="!item.subPages; else subPagesTemplate">
+                <a
+                    *ngIf="item.route.includes('://'); else internal"
+                    tuiLink
+                    class="t-sublink"
+                    [attr.rel]="item.rel"
+                    [href]="item.route"
+                    [target]="item.target || '_self'"
+                >
+                    {{ item.title }}
+                    <tui-svg
+                        *polymorpheusOutlet="item.icon as icon"
+                        class="t-icon"
+                        [src]="icon"
+                    />
+                </a>
+
+                <ng-template #internal>
+                    <a
+                        routerLinkActive="t-sublink_active"
+                        tuiLink
+                        class="t-sublink"
+                        [attr.rel]="item.rel"
+                        [routerLink]="item.route"
+                        [target]="item.target || '_self'"
+                        [tuiScrollIntoViewLink]="isActive(item.route)"
+                        (click)="closeMenu()"
+                    >
+                        {{ item.title }}
+                        <tui-svg
+                            *polymorpheusOutlet="item.icon as icon"
+                            class="t-icon"
+                            [src]="icon"
+                        />
+                    </a>
+                </ng-template>
+            </ng-container>
 
             <ng-template #subPagesTemplate>
                 <div
@@ -127,25 +164,44 @@
                         [expanded]="!!openPagesGroupsArr[index]"
                     >
                         <div class="t-section t-section_bordered">
-                            <a
-                                *ngFor="let subPage of $pages(item.subPages)"
-                                rel="noopener noreferrer"
-                                routerLinkActive="t-sublink_active"
-                                tuiLink
-                                class="t-sublink t-sublink_small"
-                                [fragment]="subPage.fragment"
-                                [routerLink]="subPage.route"
-                                [target]="subPage.target || '_self'"
-                                [tuiScrollIntoViewLink]="isActive(subPage.route)"
-                                (click)="closeMenu()"
-                            >
-                                {{ subPage.title }}
-                                <tui-svg
-                                    *polymorpheusOutlet="subPage.icon as icon"
-                                    class="t-icon"
-                                    [src]="icon"
-                                />
-                            </a>
+                            <ng-container *ngFor="let subPage of $pages(item.subPages)">
+                                <a
+                                    *ngIf="subPage.route.includes('://'); else internal"
+                                    tuiLink
+                                    class="t-sublink t-sublink_small"
+                                    [attr.rel]="subPage.rel"
+                                    [href]="subPage.route"
+                                    [target]="subPage.target || '_self'"
+                                >
+                                    {{ subPage.title }}
+                                    <tui-svg
+                                        *polymorpheusOutlet="subPage.icon as icon"
+                                        class="t-icon"
+                                        [src]="icon"
+                                    />
+                                </a>
+
+                                <ng-template #internal>
+                                    <a
+                                        routerLinkActive="t-sublink_active"
+                                        tuiLink
+                                        class="t-sublink t-sublink_small"
+                                        [attr.rel]="subPage.rel"
+                                        [fragment]="subPage.fragment"
+                                        [routerLink]="subPage.route"
+                                        [target]="subPage.target || '_self'"
+                                        [tuiScrollIntoViewLink]="isActive(subPage.route)"
+                                        (click)="closeMenu()"
+                                    >
+                                        {{ subPage.title }}
+                                        <tui-svg
+                                            *polymorpheusOutlet="subPage.icon as icon"
+                                            class="t-icon"
+                                            [src]="icon"
+                                        />
+                                    </a>
+                                </ng-template>
+                            </ng-container>
                         </div>
                     </tui-expand>
                 </div>

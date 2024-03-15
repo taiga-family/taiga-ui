@@ -10,7 +10,8 @@ export interface TuiDocPage extends TuiDocPageBase {
     readonly keywords?: string;
     readonly route: string;
     readonly icon?: PolymorpheusContent;
-    readonly target?: '_blank' | '_parent' | '_self' | '_top';
+    readonly rel?: HTMLAnchorElement['rel'];
+    readonly target?: HTMLAnchorElement['target'];
 }
 
 export interface TuiDocPageGroup extends TuiDocPageBase {
