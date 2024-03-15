@@ -20,10 +20,7 @@
         (valueChange)="onValueChange($event)"
     >
         <ng-content />
-        <ng-content
-            ngProjectAs="input"
-            select="input"
-        />
+        <ng-container ngProjectAs="input" />
         <input
             *ngIf="nativePicker"
             type="month"

@@ -29,10 +29,7 @@
         (ngModelChange)="onValueChange($event)"
     >
         <ng-content />
-        <ng-content
-            ngProjectAs="input"
-            select="input"
-        />
+        <ng-container ngProjectAs="input" />
     </tui-input-tag>
 
     <ng-template #iconContent>

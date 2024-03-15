@@ -25,10 +25,7 @@
         (valueChange)="onValueChange($event)"
     >
         <ng-content />
-        <ng-content
-            ngProjectAs="input"
-            select="input"
-        />
+        <ng-container ngProjectAs="input" />
 
         <div
             *ngIf="showValueTemplate"
