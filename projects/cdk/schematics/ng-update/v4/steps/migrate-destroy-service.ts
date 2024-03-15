@@ -1,4 +1,4 @@
-import {Node} from 'ng-morph';
+import {Node, SyntaxKind} from 'ng-morph';
 import type {CallExpression} from 'ts-morph';
 
 import type {TuiSchema} from '../../../ng-add/schema';
@@ -12,6 +12,7 @@ import {
 } from '../../../utils/colored-log';
 import {getNamedImportReferences} from '../../../utils/get-named-import-references';
 import {removeImport} from '../../../utils/import-manipulations';
+import {insertTodo} from '../../../utils/insert-todo';
 
 export function migrateDestroyService(options: TuiSchema): void {
     !options['skip-logs'] &&
@@ -88,15 +89,71 @@ export function migrateDestroyService(options: TuiSchema): void {
                     ...injectDestination.findReferencesAsNodes(),
                 );
                 injectDestination.remove();
+            } else {
+                const identifier = ref.getFirstAncestorByKind(SyntaxKind.Identifier);
+
+                identifier &&
+                    insertTodo(
+                        identifier,
+                        'use takeUntilDestroyed instead (https://angular.io/api/core/rxjs-interop/takeUntilDestroyed)',
+                    );
             }
         }
 
         destroyObservableUsages.forEach(node => {
             const possibleTakeUntil = findTakeUntil(node);
 
-            if (possibleTakeUntil) {
-                possibleTakeUntil.replaceWithText('takeUntilDestroyed()');
+            if (!possibleTakeUntil) {
+                return;
             }
+
+            const constructor = possibleTakeUntil.getFirstAncestorByKind(
+                SyntaxKind.Constructor,
+            );
+
+            if (constructor) {
+                // we are definitely inside an injection context
+                return possibleTakeUntil.replaceWithText('takeUntilDestroyed()');
+            }
+
+            // other cases when we are not sure if we are inside an injection context
+
+            addUniqueImport(
+                possibleTakeUntil.getSourceFile().getFilePath(),
+                'DestroyRef',
+                '@angular/core',
+            );
+            addUniqueImport(
+                possibleTakeUntil.getSourceFile().getFilePath(),
+                'inject',
+                '@angular/core',
+            );
+
+            const componentClass = possibleTakeUntil.getFirstAncestorByKind(
+                SyntaxKind.ClassDeclaration,
+            );
+
+            if (componentClass) {
+                componentClass.addProperty({
+                    name: 'destroyRef',
+                    initializer: 'inject(DestroyRef)',
+                    isReadonly: true,
+                });
+
+                return possibleTakeUntil.replaceWithText(
+                    'takeUntilDestroyed(this.destroyRef)',
+                );
+            }
+
+            const identifier = node.getFirstAncestorByKind(SyntaxKind.Identifier);
+
+            return (
+                identifier &&
+                insertTodo(
+                    identifier,
+                    'use takeUntilDestroyed instead (https://angular.io/api/core/rxjs-interop/takeUntilDestroyed)',
+                )
+            );
         });
     });
 
