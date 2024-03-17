@@ -15,7 +15,7 @@
         <tui-avatar
             appearance="accent"
             [src]="item.icon"
-        ></tui-avatar>
+        />
         <span tuiTitle>
             {{ item.title }}
             <span tuiSubtitle>{{ item.subtitle }}</span>
@@ -33,7 +33,7 @@
             *tuiDataList
             [itemContent]="content"
             [items]="items"
-        ></tui-data-list-wrapper>
+        />
         <ng-template
             #content
             let-item
@@ -42,7 +42,7 @@
                 <tui-avatar
                     appearance="primary"
                     [src]="item.icon"
-                ></tui-avatar>
+                />
                 <span tuiTitle>
                     {{ item.title }}
                     <span tuiSubtitle>{{ item.subtitle }}</span>

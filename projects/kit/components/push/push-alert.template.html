@@ -14,7 +14,7 @@
         *ngIf="context.icon"
         [src]="context.icon"
         [style.color]="context.iconColor"
-    ></tui-svg>
+    />
     <div
         *polymorpheusOutlet="context.content as text; context: context"
         [innerHTML]="text"
@@ -37,5 +37,5 @@
     </button>
 </tui-push>
 <ng-template #directive>
-    <ng-container *polymorpheusOutlet="context.content"></ng-container>
+    <ng-container *polymorpheusOutlet="context.content" />
 </ng-template>

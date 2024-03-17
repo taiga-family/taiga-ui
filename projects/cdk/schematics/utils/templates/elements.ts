@@ -1,4 +1,3 @@
-import {ALWAYS_TRUE_HANDLER} from '@taiga-ui/cdk';
 import type {ChildNode, Element} from 'parse5';
 import {parseFragment} from 'parse5';
 
@@ -44,7 +43,8 @@ export function findElementsInTemplateByFn(
 export function findElementsByTagName(
     html: string,
     tagName: string,
-    filterFn: (element: Element) => boolean = ALWAYS_TRUE_HANDLER,
+    // eslint-disable-next-line no-restricted-syntax
+    filterFn: (element: Element) => boolean = () => true,
 ): Element[] {
     return findElementsInTemplateByFn(html, el => el.tagName === tagName && filterFn(el));
 }

@@ -1,5 +1,5 @@
-<ng-container *ngIf="content?.changes | async"></ng-container>
-<ng-container *ngIf="hintOptions?.change$ | async"></ng-container>
+<ng-container *ngIf="content?.changes | async" />
+<ng-container *ngIf="hintOptions?.change$ | async" />
 <div
     automation-id="tui-primitive-textfield__wrapper"
     tuiWrapper
@@ -14,8 +14,8 @@
     (click.prevent.silent)="detectRetargetFromLabel($event)"
     (mousedown)="onMouseDown($event)"
 >
-    <ng-content select="input"></ng-content>
-    <ng-content select="select"></ng-content>
+    <ng-content select="input" />
+    <ng-content select="select" />
     <input
         #focusableElement
         automation-id="tui-primitive-textfield__native-input"
@@ -35,7 +35,7 @@
         automation-id="tui-primitive-textfield__value"
         class="t-input t-input_template"
     >
-        <ng-content select="tuiContent"></ng-content>
+        <ng-content select="tuiContent" />
     </div>
     <div class="t-content">
         <div
@@ -47,7 +47,7 @@
                 appearance="icon"
                 tuiWrapper
                 [src]="src"
-            ></tui-svg>
+            />
         </div>
         <div class="t-wrapper">
             <label
@@ -57,7 +57,7 @@
                 [class.t-placeholder_raised]="placeholderRaised"
                 [for]="computedId"
             >
-                <ng-content></ng-content>
+                <ng-content />
             </label>
             <div class="t-wrapper-value-decoration">
                 <tui-value-decoration
@@ -67,7 +67,7 @@
                     class="t-value-decoration"
                     [class.t-has-value]="value"
                     [style.textIndent.px]="getIndent$(focusableElement) | async"
-                ></tui-value-decoration>
+                />
             </div>
         </div>
         <div class="t-icons">
@@ -80,7 +80,7 @@
                     *polymorpheusOutlet="controller.customContent as src"
                     class="t-custom-icon"
                     [src]="src"
-                ></tui-svg>
+                />
             </div>
             <span
                 *ngIf="hasCleaner"
@@ -96,7 +96,7 @@
                         context: {$implicit: size}
                     "
                     [src]="src"
-                ></tui-svg>
+                />
             </span>
             <tui-tooltip
                 *ngIf="showHint"
@@ -104,7 +104,7 @@
                 class="t-tooltip"
                 [content]="hintOptions?.content"
                 [describeId]="computedId"
-            ></tui-tooltip>
+            />
             <div
                 *ngIf="iconContent"
                 class="t-icon t-textfield-icon"
@@ -114,7 +114,7 @@
                     appearance="icon"
                     tuiWrapper
                     [src]="src"
-                ></tui-svg>
+                />
             </div>
         </div>
     </div>

@@ -1,4 +1,4 @@
-<ng-container *ngIf="appearance$ | async"></ng-container>
+<ng-container *ngIf="appearance$ | async" />
 <div
     tuiWrapper
     class="t-wrapper"
@@ -16,9 +16,9 @@
                 *polymorpheusOutlet="icon as text"
                 class="t-icon"
                 [src]="text"
-            ></tui-svg>
+            />
         </span>
-        <ng-content></ng-content>
+        <ng-content />
         <span
             *ngIf="iconRight"
             class="t-right"
@@ -27,7 +27,7 @@
                 *polymorpheusOutlet="iconRight as text"
                 class="t-icon"
                 [src]="text"
-            ></tui-svg>
+            />
         </span>
     </span>
     <tui-loader
@@ -35,5 +35,5 @@
         class="t-loader"
         [inheritColor]="true"
         [size]="loaderSize"
-    ></tui-loader>
+    />
 </div>

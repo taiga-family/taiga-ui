@@ -12,11 +12,11 @@
     [(value)]="value"
     (focusedChange)="onFocused($event)"
 >
-    <ng-content></ng-content>
+    <ng-content />
     <ng-content
         ngProjectAs="input"
         select="input"
-    ></ng-content>
+    />
 </tui-primitive-textfield>
 
 <ng-template #iconContent>
@@ -32,7 +32,7 @@
         [tuiHintAppearance]="messageAppearance"
         [tuiHintDirection]="messageDirection"
         (click)="copy()"
-    ></tui-svg>
+    />
 </ng-template>
 
 <ng-template #hint>

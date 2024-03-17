@@ -97,7 +97,8 @@ function migrateBadgeValue({
     templateOffset: number;
 }): void {
     const attrValue = valueAttr?.value;
-    const insertTo = sourceCodeLocation?.endTag.startOffset;
+    const insertTo = sourceCodeLocation?.startTag.endOffset;
+    const selfClosing = !sourceCodeLocation?.endTag;
 
     if (!attrValue || !insertTo) {
         return;
@@ -105,7 +106,9 @@ function migrateBadgeValue({
 
     recorder.insertRight(
         insertTo + templateOffset,
-        valueAttr.name === 'value' ? attrValue : `{{ ${attrValue} }}`,
+        valueAttr.name === 'value'
+            ? attrValue
+            : `{{ ${attrValue} }}${selfClosing ? '</tui-badge>' : ''}`,
     );
 
     const attrOffset = sourceCodeLocation?.attrs?.[valueAttr.name];
@@ -114,6 +117,10 @@ function migrateBadgeValue({
         const {startOffset, endOffset} = attrOffset;
 
         recorder.remove(templateOffset + startOffset - 1, endOffset - startOffset + 1);
+    }
+
+    if (selfClosing) {
+        recorder.remove(sourceCodeLocation.startTag.endOffset - 2, 1);
     }
 }
 

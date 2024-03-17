@@ -891,10 +891,10 @@ export const pages: TuiDocPages = [
         route: '/experimental/header',
     },
     {
-        section: 'Experimental',
+        section: 'Components',
         title: 'Icon',
         keywords: 'icons, image, картинка, свг, svg, графика, иконка',
-        route: '/experimental/icon',
+        route: '/components/icon',
     },
     {
         section: 'Experimental',

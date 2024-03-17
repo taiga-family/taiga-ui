@@ -1,4 +1,4 @@
-<ng-container *ngIf="hintOptions?.change$ | async"></ng-container>
+<ng-container *ngIf="hintOptions?.change$ | async" />
 <tui-hosted-dropdown
     class="t-hosted"
     [canOpen]="canOpen"
@@ -27,7 +27,7 @@
                     appearance="icon"
                     tuiWrapper
                     [src]="src"
-                ></tui-svg>
+                />
             </div>
             <div class="t-wrapper">
                 <div class="t-absolute-wrapper">
@@ -37,7 +37,7 @@
                         class="t-placeholder"
                         [class.t-placeholder_raised]="placeholderRaised"
                     >
-                        <ng-content></ng-content>
+                        <ng-content />
                     </div>
                 </div>
                 <tui-scrollbar
@@ -69,7 +69,7 @@
                                 (edited)="onTagEdited($event, index)"
                                 (keydown.arrowLeft.prevent)="onTagKeyDownArrowLeft(index)"
                                 (keydown.arrowRight.prevent)="onTagKeyDownArrowRight(index)"
-                            ></tui-tag>
+                            />
                         </ng-container>
                         <ng-template #text>
                             <span
@@ -109,11 +109,11 @@
                         </div>
                     </div>
                     <div class="t-value-content">
-                        <ng-content select="tuiContent"></ng-content>
+                        <ng-content select="tuiContent" />
                     </div>
                 </tui-scrollbar>
             </div>
-            <ng-content select="select"></ng-content>
+            <ng-content select="select" />
             <div
                 *ngIf="hasRightIcons"
                 class="t-icons t-icon-wrapper"
@@ -128,7 +128,7 @@
                         class="t-cleaner"
                         [src]="src"
                         (click.stop)="onCleanerClick()"
-                    ></tui-svg>
+                    />
                 </ng-container>
                 <tui-tooltip
                     *ngIf="showHint"
@@ -136,7 +136,7 @@
                     class="t-tooltip"
                     [content]="hintOptions?.content"
                     [describeId]="id"
-                ></tui-tooltip>
+                />
                 <div
                     *ngIf="icon"
                     class="t-icon t-textfield-icon"
@@ -146,7 +146,7 @@
                         appearance="icon"
                         tuiWrapper
                         [src]="src"
-                    ></tui-svg>
+                    />
                 </div>
             </div>
         </div>
@@ -154,7 +154,7 @@
             <tui-svg
                 class="t-error-icon"
                 [src]="icons.error"
-            ></tui-svg>
+            />
         </ng-template>
     </div>
 </tui-hosted-dropdown>

@@ -89,12 +89,12 @@
             <ng-container
                 *ngIf="index === defaultTabIndex; else anotherTab"
                 [ngTemplateOutlet]="preview"
-            ></ng-container>
+            />
             <ng-template #anotherTab>
                 <ng-container
                     [ngTemplateOutlet]="codeSection"
                     [ngTemplateOutletContext]="{$implicit: files?.[tabs[activeItemIndex]] || ''}"
-                ></ng-container>
+                />
             </ng-template>
         </div>
     </ng-container>
@@ -105,7 +105,7 @@
         automation-id="tui-doc-example"
         class="t-demo"
     >
-        <ng-content></ng-content>
+        <ng-content />
     </div>
 </ng-template>
 

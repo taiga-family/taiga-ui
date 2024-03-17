@@ -15,15 +15,15 @@
     (focusedChange)="onFocused($event)"
     (valueChange)="onValueChange($event)"
 >
-    <ng-content></ng-content>
+    <ng-content />
     <ng-content
         ngProjectAs="input"
         select="input"
-    ></ng-content>
+    />
 </tui-primitive-textfield>
 <ng-template #logo>
     <tui-svg
         class="t-payment-system"
         [src]="defaultIcon"
-    ></tui-svg>
+    />
 </ng-template>

@@ -11,7 +11,7 @@
             heading="Basic single"
             [content]="example1"
         >
-            <tui-input-files-example-1></tui-input-files-example-1>
+            <tui-input-files-example-1 />
         </tui-doc-example>
 
         <tui-doc-example
@@ -19,7 +19,7 @@
             heading="multiple"
             [content]="example2"
         >
-            <tui-input-files-example-2></tui-input-files-example-2>
+            <tui-input-files-example-2 />
         </tui-doc-example>
 
         <tui-doc-example
@@ -27,7 +27,7 @@
             heading="Standalone files"
             [content]="example3"
         >
-            <tui-input-files-example-3></tui-input-files-example-3>
+            <tui-input-files-example-3 />
         </tui-doc-example>
 
         <tui-doc-example
@@ -35,7 +35,7 @@
             heading="With button"
             [content]="example4"
         >
-            <tui-input-files-example-4></tui-input-files-example-4>
+            <tui-input-files-example-4 />
         </tui-doc-example>
 
         <tui-doc-example
@@ -43,7 +43,7 @@
             heading="Custom content"
             [content]="example5"
         >
-            <tui-input-files-example-5></tui-input-files-example-5>
+            <tui-input-files-example-5 />
         </tui-doc-example>
 
         <tui-doc-example
@@ -57,7 +57,7 @@
             >
                 The capture attribute works only on mobile browsers
             </tui-notification>
-            <tui-input-files-example-6></tui-input-files-example-6>
+            <tui-input-files-example-6 />
         </tui-doc-example>
 
         <tui-doc-example
@@ -65,7 +65,7 @@
             heading="ngModel"
             [content]="example7"
         >
-            <tui-input-files-example-7></tui-input-files-example-7>
+            <tui-input-files-example-7 />
         </tui-doc-example>
     </ng-template>
 
@@ -95,7 +95,7 @@
                         [showSize]="showSize"
                         [size]="size"
                         (remove)="removeFile(file); documentationPropertyRemoved.emitEvent($event)"
-                    ></tui-file>
+                    />
                 </ng-container>
 
                 <ng-container *ngFor="let file of rejected">
@@ -107,7 +107,7 @@
                         [showSize]="showSize"
                         [size]="size"
                         (remove)="removeFile(file); documentationPropertyRemoved.emitEvent($event)"
-                    ></tui-file>
+                    />
                 </ng-container>
             </tui-files>
         </tui-doc-demo>
@@ -237,7 +237,7 @@
                 <tui-doc-code
                     filename="my.module.ts"
                     [code]="exampleModule"
-                ></tui-doc-code>
+                />
             </li>
 
             <li>
@@ -246,7 +246,7 @@
                 <tui-doc-code
                     filename="my.component.html"
                     [code]="exampleHtml"
-                ></tui-doc-code>
+                />
             </li>
         </ol>
     </ng-template>

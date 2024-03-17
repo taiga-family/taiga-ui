@@ -25,7 +25,7 @@
             <tui-data-list-wrapper
                 *tuiDataList
                 [items]="items"
-            ></tui-data-list-wrapper>
+            />
         </tui-select>
     </ng-container>
     <ng-template #desktop>
@@ -33,7 +33,7 @@
         <tui-tooltip
             describeId="form"
             [content]="tooltip"
-        ></tui-tooltip>
+        />
         <div
             tuiGroup
             class="t-group"
@@ -110,7 +110,7 @@
                 [formGroup]="testForm"
             >
                 <div class="t-input-wrapper">
-                    <ng-container [ngTemplateOutlet]="template"></ng-container>
+                    <ng-container [ngTemplateOutlet]="template" />
                 </div>
                 <button
                     automation-id="tui-demo-button__toggle-details"
@@ -128,7 +128,7 @@
                         class="t-icon"
                         [class.t-icon_rotated]="expanded"
                         [src]="options.iconSmall"
-                    ></tui-svg>
+                    />
                 </ng-template>
                 <tui-expand
                     class="t-expand"
@@ -152,7 +152,7 @@
                                 <tui-data-list-wrapper
                                     *tuiDataList
                                     [items]="updateOnVariants"
-                                ></tui-data-list-wrapper>
+                                />
                             </tui-select>
                             <button
                                 automation-id="tui-demo-button__reset-state"
@@ -176,7 +176,7 @@
                     </ng-template>
                 </tui-expand>
             </form>
-            <ng-content></ng-content>
+            <ng-content />
         </div>
     </div>
     <div

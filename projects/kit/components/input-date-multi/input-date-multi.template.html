@@ -28,11 +28,11 @@
         (keydown.enter)="onEnter(inputTag.search || '')"
         (ngModelChange)="onValueChange($event)"
     >
-        <ng-content></ng-content>
+        <ng-content />
         <ng-content
             ngProjectAs="input"
             select="input"
-        ></ng-content>
+        />
     </tui-input-tag>
 
     <ng-template #iconContent>
@@ -43,7 +43,7 @@
             [class.t-icon]="!computedDisabled"
             [src]="src"
             (click)="onIconClick()"
-        ></tui-svg>
+        />
     </ng-template>
 
     <ng-template #dropdown>
@@ -57,7 +57,7 @@
             (dayClick)="onDayClick($event)"
             (monthChange)="onMonthChange($event)"
             (mousedown.silent.prevent)="(0)"
-        ></tui-calendar>
+        />
         <div
             class="t-button"
             (mousedown.silent.prevent)="(0)"

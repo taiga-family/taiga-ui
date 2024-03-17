@@ -42,7 +42,7 @@
                 <code>Textfield</code>
                 directive as shown below
             </tui-notification>
-            <tui-primitive-textfield-example-2 [(ngModel)]="example2Value"></tui-primitive-textfield-example-2>
+            <tui-primitive-textfield-example-2 [(ngModel)]="example2Value" />
         </tui-doc-example>
     </ng-template>
 
@@ -92,7 +92,7 @@
                 src="tuiIconCalendarLarge"
                 class="icon-button"
                 (click)="onClick()"
-            ></tui-svg>
+            />
         </ng-template>
         <tui-doc-documentation>
             <ng-template
@@ -166,9 +166,9 @@
                 Value
             </ng-template>
         </tui-doc-documentation>
-        <hint-controller-documentation></hint-controller-documentation>
-        <textfield-controller-documentation></textfield-controller-documentation>
-        <inherited-documentation></inherited-documentation>
+        <hint-controller-documentation />
+        <textfield-controller-documentation />
+        <inherited-documentation />
         <tui-doc-documentation heading="CSS customization">
             <ng-template
                 documentationPropertyMode="input"
@@ -194,7 +194,7 @@
                 <tui-doc-code
                     filename="my.module.ts"
                     [code]="exampleModule"
-                ></tui-doc-code>
+                />
             </li>
 
             <li>
@@ -203,7 +203,7 @@
                 <tui-doc-code
                     filename="my.component.html"
                     [code]="exampleHtml"
-                ></tui-doc-code>
+                />
             </li>
         </ol>
     </ng-template>

@@ -1,4 +1,4 @@
-<ng-container *ngIf="control.control?.valueChanges | async"></ng-container>
+<ng-container *ngIf="control.control?.valueChanges | async" />
 
 <tui-data-list-wrapper
     *tuiDataList
@@ -6,7 +6,7 @@
     [disabledItemHandler]="disabledItemHandler || host.disableItemHandler"
     [itemContent]="stringify | tuiStringifyContent"
     [items]="items"
-></tui-data-list-wrapper>
+/>
 <option
     *ngFor="let option of items"
     [disabled]="disabledItemHandler ? disabledItemHandler(option) : host.disableItemHandler(option)"

@@ -20,7 +20,7 @@
             automation-id="tui-accordion__item-title"
             class="t-title"
         >
-            <ng-content></ng-content>
+            <ng-content />
         </span>
         <ng-container *ngIf="showArrow">
             <tui-svg
@@ -29,7 +29,7 @@
                 class="t-icon"
                 [class.t-icon_open]="open"
                 [src]="src"
-            ></tui-svg>
+            />
         </ng-container>
     </button>
     <tui-expand
@@ -51,7 +51,7 @@
             *ngIf="eagerContent"
             class="t-content"
         >
-            <ng-content select="[tuiAccordionItemContent]"></ng-content>
+            <ng-content select="[tuiAccordionItemContent]" />
         </div>
     </tui-expand>
 </div>

@@ -1,0 +1,7 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "taiga-ui-ng-update-v4",
+    "title": "Taiga UI ng-update v4",
+    "type": "object",
+    "properties": {}
+}

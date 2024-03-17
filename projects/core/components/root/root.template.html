@@ -1,18 +1,18 @@
 <tui-scroll-controls
     *ngIf="scrollbars$ | async"
     class="t-root-scrollbar"
-></tui-scroll-controls>
-<tui-svg-defs-host></tui-svg-defs-host>
+/>
+<tui-svg-defs-host />
 <tui-dropdowns>
     <div class="t-root-content">
-        <ng-content></ng-content>
+        <ng-content />
     </div>
-    <ng-content select="tuiOverContent"></ng-content>
-    <tui-dialogs></tui-dialogs>
-    <ng-content select="tuiOverDialogs"></ng-content>
-    <tui-alerts></tui-alerts>
-    <ng-content select="tuiOverAlerts"></ng-content>
+    <ng-content select="tuiOverContent" />
+    <tui-dialogs />
+    <ng-content select="tuiOverDialogs" />
+    <tui-alerts />
+    <ng-content select="tuiOverAlerts" />
 </tui-dropdowns>
-<ng-content select="tuiOverDropdowns"></ng-content>
-<tui-hints-host></tui-hints-host>
-<ng-content select="tuiOverHints"></ng-content>
+<ng-content select="tuiOverDropdowns" />
+<tui-hints-host />
+<ng-content select="tuiOverHints" />

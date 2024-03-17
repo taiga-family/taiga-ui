@@ -22,7 +22,7 @@
                 <code>Textfield</code>
                 directive as shown below
             </tui-notification>
-            <tui-combo-box-example-1></tui-combo-box-example-1>
+            <tui-combo-box-example-1 />
         </tui-doc-example>
 
         <tui-doc-example
@@ -30,7 +30,7 @@
             heading="DataList"
             [content]="example2"
         >
-            <tui-combo-box-example-2></tui-combo-box-example-2>
+            <tui-combo-box-example-2 />
         </tui-doc-example>
 
         <tui-doc-example
@@ -45,7 +45,7 @@
                 <code>stringify</code>
                 when new data comes, so they will be observables and you would need async pipe in the template
             </tui-notification>
-            <tui-combo-box-example-8></tui-combo-box-example-8>
+            <tui-combo-box-example-8 />
         </tui-doc-example>
 
         <tui-doc-example
@@ -54,7 +54,7 @@
             heading="DataListWrapper"
             [content]="example3"
         >
-            <tui-combo-box-example-3></tui-combo-box-example-3>
+            <tui-combo-box-example-3 />
         </tui-doc-example>
 
         <tui-doc-example
@@ -63,7 +63,7 @@
             heading="Stringify"
             [content]="example4"
         >
-            <tui-combo-box-example-4></tui-combo-box-example-4>
+            <tui-combo-box-example-4 />
         </tui-doc-example>
 
         <tui-doc-example
@@ -94,7 +94,7 @@
                 <code>IndexChange</code>
                 directive included in this example.
             </tui-notification>
-            <tui-combo-box-example-5></tui-combo-box-example-5>
+            <tui-combo-box-example-5 />
         </tui-doc-example>
 
         <tui-doc-example
@@ -102,7 +102,7 @@
             heading="Options (stringify)"
             [content]="example6"
         >
-            <tui-combo-box-example-6></tui-combo-box-example-6>
+            <tui-combo-box-example-6 />
         </tui-doc-example>
 
         <tui-doc-example
@@ -110,7 +110,7 @@
             heading="Don't allow disabled options to be selected by typing them"
             [content]="example7"
         >
-            <tui-combo-box-example-7></tui-combo-box-example-7>
+            <tui-combo-box-example-7 />
         </tui-doc-example>
     </ng-template>
 
@@ -152,7 +152,7 @@
                     <tui-data-list-wrapper
                         *tuiDataList
                         [items]="filter(search)"
-                    ></tui-data-list-wrapper>
+                    />
                 </tui-combo-box>
             </ng-template>
         </tui-doc-demo>
@@ -164,7 +164,7 @@
                 <tui-svg
                     src="tuiIconCheck"
                     class="item-template-icon"
-                ></tui-svg>
+                />
                 <span>{{ item }}</span>
             </div>
         </ng-template>
@@ -270,7 +270,7 @@
                 A template for custom view of selected value
             </ng-template>
         </tui-doc-documentation>
-        <inherited-documentation [dropdown]="true"></inherited-documentation>
+        <inherited-documentation [dropdown]="true" />
     </ng-template>
     <ng-template pageTab>
         <ol class="b-demo-steps">
@@ -284,7 +284,7 @@
                 <tui-doc-code
                     filename="my.module.ts"
                     [code]="exampleModule"
-                ></tui-doc-code>
+                />
 
                 <p>
                     See samples to learn more about working with
@@ -305,7 +305,7 @@
                 <tui-doc-code
                     filename="my.component.ts"
                     [code]="exampleForm"
-                ></tui-doc-code>
+                />
             </li>
 
             <li>
@@ -314,7 +314,7 @@
                 <tui-doc-code
                     filename="my.component.html"
                     [code]="exampleHtml"
-                ></tui-doc-code>
+                />
             </li>
         </ol>
     </ng-template>

@@ -1,12 +1,12 @@
-<ng-container *ngIf="change$ | async"></ng-container>
-<ng-content select="input"></ng-content>
-<ng-content select="select"></ng-content>
-<ng-content select="label"></ng-content>
+<ng-container *ngIf="change$ | async" />
+<ng-content select="input" />
+<ng-content select="select" />
+<ng-content select="label" />
 <span
     class="t-content"
     (waResizeObserver)="side = $event[0].contentRect.width"
 >
-    <ng-content></ng-content>
+    <ng-content />
     <button
         *ngIf="options.cleaner"
         appearance="icon"
@@ -18,7 +18,7 @@
         (click)="directive?.setValue('')"
         (pointerdown.silent.prevent)="input.focus()"
     ></button>
-    <ng-content select="tui-tooltip"></ng-content>
+    <ng-content select="tui-tooltip" />
 </span>
 <span class="t-template">
     <ng-container *polymorpheusOutlet="content as text; context: {$implicit: control?.value, active: focused}">

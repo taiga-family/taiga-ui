@@ -29,7 +29,7 @@
                         *polymorpheusOutlet="item.icon as icon"
                         class="t-icon"
                         [src]="icon"
-                    ></tui-svg>
+                    />
                 </a>
             </tui-opt-group>
         </tui-data-list>
@@ -60,7 +60,7 @@
                             *ngFor="let item of items[index]; index as subIndex"
                             [ngTemplateOutlet]="pages"
                             [ngTemplateOutletContext]="{item: item, index: index * 100 + subIndex}"
-                        ></ng-container>
+                        />
                     </div>
                 </ng-template>
             </tui-accordion-item>
@@ -70,7 +70,7 @@
                 *ngFor="let item of itemsWithoutSections; let index = index"
                 [ngTemplateOutlet]="pages"
                 [ngTemplateOutletContext]="{item: item, index: items.length - 1 + index}"
-            ></ng-container>
+            />
         </div>
 
         <ng-template
@@ -94,7 +94,7 @@
                     *polymorpheusOutlet="item.icon as icon"
                     class="t-icon"
                     [src]="icon"
-                ></tui-svg>
+                />
             </a>
 
             <ng-template #subPagesTemplate>
@@ -114,13 +114,13 @@
                             class="t-chevron"
                             [class.t-chevron_active]="!!openPagesGroupsArr[index]"
                             [src]="icons.more"
-                        ></tui-svg>
+                        />
                         {{ item.title }}
                         <tui-svg
                             *polymorpheusOutlet="item.icon as icon"
                             class="t-icon"
                             [src]="icon"
-                        ></tui-svg>
+                        />
                     </button>
                     <tui-expand
                         class="t-expand"
@@ -144,7 +144,7 @@
                                     *polymorpheusOutlet="subPage.icon as icon"
                                     class="t-icon"
                                     [src]="icon"
-                                ></tui-svg>
+                                />
                             </a>
                         </div>
                     </tui-expand>
@@ -154,4 +154,4 @@
     </tui-scrollbar>
 </nav>
 
-<ng-content></ng-content>
+<ng-content />

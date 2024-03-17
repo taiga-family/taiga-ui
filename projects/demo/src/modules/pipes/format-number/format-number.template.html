@@ -22,14 +22,14 @@
             heading="Basic"
             [content]="example1"
         >
-            <tui-format-number-example-1></tui-format-number-example-1>
+            <tui-format-number-example-1 />
         </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
-        <p class="text b-full-width">
+        <p class="text">
             Formatted number:
-            {{ value | tuiFormatNumber: {decimalLimit, decimalSeparator} }}
+            {{ value | tuiFormatNumber: {decimalLimit, decimalSeparator} | async }}
         </p>
         <tui-input-slider
             tuiTextfieldSize="m"
@@ -38,7 +38,7 @@
             [quantum]="0.111"
             [tuiTextfieldLabelOutside]="true"
             [(ngModel)]="value"
-        ></tui-input-slider>
+        />
         <tui-doc-documentation>
             <ng-template
                 documentationPropertyName="decimalLimit"
@@ -73,7 +73,7 @@
                 <tui-doc-code
                     filename="my.module.ts"
                     [code]="exampleModule"
-                ></tui-doc-code>
+                />
             </li>
 
             <li>
@@ -82,7 +82,7 @@
                 <tui-doc-code
                     filename="my.component.html"
                     [code]="exampleHtml"
-                ></tui-doc-code>
+                />
             </li>
         </ol>
     </ng-template>

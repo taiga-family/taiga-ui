@@ -11,8 +11,8 @@
         [attr.aria-labelledby]="item.id"
         [class.t-dialog_closing]="!dialogs.length"
     >
-        <ng-container *polymorpheusOutlet="item.component; context: item"></ng-container>
-        <tui-scroll-controls class="t-scrollbars"></tui-scroll-controls>
+        <ng-container *polymorpheusOutlet="item.component; context: item" />
+        <tui-scroll-controls class="t-scrollbars" />
     </section>
     <div
         class="t-overlay"

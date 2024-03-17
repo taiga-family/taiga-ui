@@ -1,5 +1,5 @@
 <div class="t-image">
-    <ng-content select="img"></ng-content>
+    <ng-content select="img" />
 </div>
 <button
     *ngIf="closeable"
@@ -15,7 +15,7 @@
 ></button>
 <div class="t-top">
     <span class="t-icon">
-        <ng-content select="tui-svg"></ng-content>
+        <ng-content select="tui-svg" />
     </span>
     {{ type }}
     <span
@@ -31,13 +31,13 @@
     {{ heading }}
 </h3>
 <div class="t-content">
-    <ng-content></ng-content>
+    <ng-content />
 </div>
 <div class="t-actions">
     <span class="t-button">
-        <ng-content select="[tuiButton]"></ng-content>
+        <ng-content select="[tuiButton]" />
     </span>
     <span class="t-link">
-        <ng-content select="[tuiLink]"></ng-content>
+        <ng-content select="[tuiLink]" />
     </span>
 </div>

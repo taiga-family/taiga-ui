@@ -9,7 +9,7 @@
         [disabledItemHandler]="disabledItemHandler"
         [itemContent]="content"
         [items]="items"
-    ></tui-data-list-wrapper>
+    />
 </tui-select>
 
 <ng-template
@@ -21,7 +21,7 @@
             size="xs"
             class="avatar"
             [src]="data.avatarUrl || (data.toString() | tuiInitials)"
-        ></tui-avatar>
+        />
         <div class="name">{{ data }}</div>
     </div>
 </ng-template>

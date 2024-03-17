@@ -6,7 +6,7 @@
     [tuiTextfieldCustomContent]="inputCustomContent"
     [tuiTextfieldLabelOutside]="true"
     [(ngModel)]="index"
-></tui-input-slider>
+/>
 
 <ng-template #inputCustomContent>index</ng-template>
 
@@ -14,4 +14,4 @@
     [index]="index"
     [length]="length"
     (indexChange)="goToPage($event)"
-></tui-pagination>
+/>

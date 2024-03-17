@@ -33,6 +33,7 @@ import {
     migrateBadgedContent,
     migrateCheckbox,
     migrateExpandable,
+    migrateLabeled,
     migrateMoney,
     migratePreventDefault,
     migrateRadio,
@@ -91,6 +92,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         migrateBadgedContent,
         migratePreventDefault,
         migrateMoney,
+        migrateLabeled,
     ] as const;
 
     const progressLog = setupProgressLogger({

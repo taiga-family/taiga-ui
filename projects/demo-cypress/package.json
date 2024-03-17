@@ -3,6 +3,6 @@
     "private": true,
     "devDependencies": {
         "@nx/cypress": "17.3.1",
-        "cypress": "13.6.6"
+        "cypress": "13.7.0"
     }
 }

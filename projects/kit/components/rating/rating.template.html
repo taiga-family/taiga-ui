@@ -1,5 +1,5 @@
 <label>
-    <ng-content></ng-content>
+    <ng-content />
 
     <div class="t-host">
         <div class="t-interactive">
@@ -9,7 +9,7 @@
                 [class.t-icon-rating-last]="index === 0"
                 [src]="iconFilled"
                 (click)="setRateByReverseIndex(index)"
-            ></tui-svg>
+            />
         </div>
 
         <div
@@ -21,7 +21,7 @@
                 class="t-icon-rating t-icon-filled"
                 [class.t-icon-rating-last]="index === 0"
                 [src]="iconFilled"
-            ></tui-svg>
+            />
         </div>
 
         <tui-svg
@@ -29,7 +29,7 @@
             class="t-icon-rating"
             [class.t-icon-rating-last]="max - 1 === index"
             [src]="iconNormal"
-        ></tui-svg>
+        />
 
         <input
             #focusableElement

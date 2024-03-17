@@ -38,7 +38,7 @@
                 >
                     Purchase
                 </th>
-                <ng-container *tuiHead="'unit'"></ng-container>
+                <ng-container *tuiHead="'unit'" />
                 <th
                     *tuiHead="'date'"
                     rowspan="2"
@@ -94,7 +94,7 @@
                         [ngModel]="item.name"
                         [ngModelOptions]="options"
                         (ngModelChange)="onValueChange($event, 'name', item, pythons)"
-                    ></tui-textarea>
+                    />
                 </th>
                 <ng-container *tuiCell="'price'">
                     <th
@@ -108,7 +108,7 @@
                             [ngModelOptions]="options"
                             [tuiValidator]="minPrice"
                             (ngModelChange)="onValueChange($event, 'price', item, pythons)"
-                        ></tui-input-number>
+                        />
                     </th>
                 </ng-container>
                 <td
@@ -120,7 +120,7 @@
                         [ngModel]="item.quantity"
                         [ngModelOptions]="options"
                         (ngModelChange)="onValueChange($event, 'quantity', item, pythons)"
-                    ></tui-input-number>
+                    />
                 </td>
                 <td
                     *tuiCell="'unit'"
@@ -135,7 +135,7 @@
                         <tui-data-list-wrapper
                             *tuiDataList
                             [items]="units"
-                        ></tui-data-list-wrapper>
+                        />
                     </tui-select>
                 </td>
                 <td
@@ -146,7 +146,7 @@
                         [ngModel]="item.date"
                         [ngModelOptions]="options"
                         (ngModelChange)="onValueChange($event, 'date', item, pythons)"
-                    ></tui-input-date>
+                    />
                 </td>
                 <td
                     *tuiCell="'total'"
@@ -178,7 +178,7 @@
                         [ngModel]="item.name"
                         [ngModelOptions]="options"
                         (ngModelChange)="onValueChange($event, 'name', item, starwars)"
-                    ></tui-textarea>
+                    />
                 </th>
                 <th
                     *tuiCell="'price'"
@@ -190,7 +190,7 @@
                         [ngModelOptions]="options"
                         [tuiValidator]="minPrice"
                         (ngModelChange)="onValueChange($event, 'price', item, starwars)"
-                    ></tui-input-number>
+                    />
                 </th>
                 <td
                     *tuiCell="'quantity'"
@@ -201,7 +201,7 @@
                         [ngModel]="item.quantity"
                         [ngModelOptions]="options"
                         (ngModelChange)="onValueChange($event, 'quantity', item, starwars)"
-                    ></tui-input-number>
+                    />
                 </td>
                 <td
                     *tuiCell="'unit'"
@@ -216,7 +216,7 @@
                         <tui-data-list-wrapper
                             *tuiDataList
                             [items]="units"
-                        ></tui-data-list-wrapper>
+                        />
                     </tui-select>
                 </td>
                 <td
@@ -227,7 +227,7 @@
                         [ngModel]="item.date"
                         [ngModelOptions]="options"
                         (ngModelChange)="onValueChange($event, 'date', item, starwars)"
-                    ></tui-input-date>
+                    />
                 </td>
                 <td
                     *tuiCell="'total'"
@@ -244,6 +244,6 @@
     <tui-svg
         src="tuiIconStarLarge"
         class="tui-space_right-3"
-    ></tui-svg>
+    />
     Star Wars
 </ng-template>

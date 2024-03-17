@@ -123,14 +123,11 @@ export const ROUTES: Routes = [
         title: 'Avatar',
         loadComponent: async () => import('../components/avatar/avatar.component'),
     }),
-    {
+    route({
         path: 'components/badge',
-        loadChildren: async () =>
-            (await import('../components/badge/badge.module')).ExampleTuiBadgeModule,
-        data: {
-            title: 'Badge',
-        },
-    },
+        loadComponent: async () => import('../components/badge/badge.component'),
+        title: 'Badge',
+    }),
     {
         path: 'components/badged-content',
         loadChildren: async () =>
@@ -312,9 +309,9 @@ export const ROUTES: Routes = [
         },
     },
     {
-        path: 'experimental/icon',
+        path: 'components/icon',
         loadChildren: async () =>
-            (await import('../experimental/icon/icon.module')).ExampleTuiIconModule,
+            (await import('../components/icon/icon.module')).ExampleTuiIconModule,
         data: {
             title: 'Icon',
         },
@@ -1031,14 +1028,11 @@ export const ROUTES: Routes = [
             title: 'Preview',
         },
     },
-    {
+    route({
         path: 'navigation/app-bar',
-        loadChildren: async () =>
-            (await import('../components/app-bar/app-bar.module')).ExampleTuiAppBarModule,
-        data: {
-            title: 'AppBar',
-        },
-    },
+        loadComponent: async () => import('../components/app-bar/app-bar.component'),
+        title: 'AppBar',
+    }),
     {
         path: 'navigation/tab-bar',
         loadChildren: async () =>

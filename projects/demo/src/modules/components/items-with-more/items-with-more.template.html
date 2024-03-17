@@ -15,7 +15,7 @@
             <tui-notification class="tui-space_bottom-3">
                 Resize the screen to see extra items disappear
             </tui-notification>
-            <tui-items-with-more-example-1></tui-items-with-more-example-1>
+            <tui-items-with-more-example-1 />
         </tui-doc-example>
 
         <tui-doc-example
@@ -24,7 +24,7 @@
             [content]="2 | tuiExample"
             [fullsize]="true"
         >
-            <tui-items-with-more-example-2></tui-items-with-more-example-2>
+            <tui-items-with-more-example-2 />
         </tui-doc-example>
     </ng-template>
 
@@ -39,7 +39,7 @@
                         *tuiItem
                         class="tui-space_right-2"
                         [value]="item"
-                    ></tui-tag>
+                    />
                 </ng-container>
                 <span *tuiMore>and now for something completely different!</span>
             </tui-items-with-more>
@@ -84,7 +84,7 @@
                 <tui-doc-code
                     filename="my.module.ts"
                     [code]="exampleModule"
-                ></tui-doc-code>
+                />
             </li>
 
             <li>
@@ -93,7 +93,7 @@
                 <tui-doc-code
                     filename="my.component.html"
                     [code]="exampleHtml"
-                ></tui-doc-code>
+                />
             </li>
         </ol>
     </ng-template>

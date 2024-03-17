@@ -1,10 +1,10 @@
-<ng-container *ngIf="items?.changes | async"></ng-container>
-<ng-content></ng-content>
+<ng-container *ngIf="items?.changes | async" />
+<ng-content />
 <ng-container *ngFor="let item of items; let index = index">
     <ng-container
         *ngIf="!max || index < max"
         [ngTemplateOutlet]="item"
-    ></ng-container>
+    />
 </ng-container>
 <tui-expand
     *ngIf="hasExtraItems"
@@ -15,7 +15,7 @@
             <ng-container
                 *ngIf="max && index >= max"
                 [ngTemplateOutlet]="item"
-            ></ng-container>
+            />
         </ng-container>
     </div>
 </tui-expand>

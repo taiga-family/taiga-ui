@@ -31,7 +31,7 @@
                 [enabled]="enabled"
                 [(items)]="initial"
                 (enabledChange)="onEnabled($event)"
-            ></tui-reorder>
+            />
         </ng-template>
     </tui-hosted-dropdown>
 </p>
@@ -114,7 +114,7 @@
                         [total]="(total$ | async) || 0"
                         (pageChange)="onPage($event)"
                         (sizeChange)="onSize($event)"
-                    ></tui-table-pagination>
+                    />
                 </td>
             </tr>
         </tfoot>

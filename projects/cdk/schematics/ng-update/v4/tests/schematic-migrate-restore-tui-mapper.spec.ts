@@ -122,13 +122,11 @@ describe('ng-update', () => {
     });
 
     it('should update TuiMapper generic parameters', async () => {
-        const tree = await runner
-            .runSchematicAsync(
-                'updateToV4',
-                {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
-                host,
-            )
-            .toPromise();
+        const tree = await runner.runSchematic(
+            'updateToV4',
+            {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+            host,
+        );
 
         const componentBefore = tree.readContent('test/app/tui-mapper.component.ts');
 
@@ -139,13 +137,11 @@ describe('ng-update', () => {
     });
 
     it('should rename TuiTypedMapper and remove unused imports', async () => {
-        const tree = await runner
-            .runSchematicAsync(
-                'updateToV4',
-                {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
-                host,
-            )
-            .toPromise();
+        const tree = await runner.runSchematic(
+            'updateToV4',
+            {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
+            host,
+        );
 
         expect(tree.readContent('test/app/tui-typed-mapper.component.ts')).toEqual(
             TYPED_TUI_MAPPER_COMPONENT_AFTER,
