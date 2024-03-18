@@ -1,5 +1,7 @@
-import {Directive, Input} from '@angular/core';
+import type {OnChanges} from '@angular/core';
+import {Directive, ElementRef, inject, Input} from '@angular/core';
 import {CHAR_NO_BREAK_SPACE, tuiPure, tuiWithStyles} from '@taiga-ui/cdk';
+import {TUI_ANIMATIONS_DEFAULT_DURATION, TUI_ANIMATIONS_SPEED} from '@taiga-ui/core';
 
 import {TuiSkeletonComponent} from './skeleton.component';
 
@@ -12,11 +14,21 @@ import {TuiSkeletonComponent} from './skeleton.component';
         '[attr.data-tui-skeleton]': 'getPlaceholder(tuiSkeleton)',
     },
 })
-export class TuiSkeletonDirective {
-    protected readonly nothing = tuiWithStyles(TuiSkeletonComponent);
+export class TuiSkeletonDirective implements OnChanges {
+    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly duration =
+        inject(TUI_ANIMATIONS_SPEED) * TUI_ANIMATIONS_DEFAULT_DURATION * 2;
 
     @Input()
     public tuiSkeleton: boolean | number | string = false;
+
+    protected readonly nothing = tuiWithStyles(TuiSkeletonComponent);
+
+    public ngOnChanges(): void {
+        if (!this.tuiSkeleton) {
+            this.el.animate([{opacity: 0.06}, {opacity: 1}], {duration: this.duration});
+        }
+    }
 
     @tuiPure
     protected getPlaceholder(value: boolean | number | string): string | null {

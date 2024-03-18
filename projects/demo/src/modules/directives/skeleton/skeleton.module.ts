@@ -3,6 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {TuiExamplePipe, TuiSetupComponent} from '@demo/utils';
 import {tuiGetDocModules} from '@taiga-ui/addon-doc';
+import {TuiNotificationModule} from '@taiga-ui/core';
 import {
     TuiButtonModule,
     TuiCardModule,
@@ -37,6 +38,7 @@ import {ExampleTuiSkeletonComponent} from './skeleton.component';
         TuiChipModule,
         TuiBadgeDirective,
         TuiSkeletonDirective,
+        TuiNotificationModule,
     ],
     declarations: [ExampleTuiSkeletonComponent, TuiSkeletonExample1, TuiSkeletonExample2],
     exports: [ExampleTuiSkeletonComponent],
