@@ -38,7 +38,7 @@ export class TuiNativeValidatorDirective implements Validator {
 
     @HostListener('blur')
     protected handleValidation(): void {
-        this.el.setCustomValidity(
+        this.el.setCustomValidity?.(
             this.control?.touched && this.control?.invalid ? this.tuiNativeValidator : '',
         );
     }
