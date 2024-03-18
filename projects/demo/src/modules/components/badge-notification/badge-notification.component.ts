@@ -14,9 +14,7 @@ import {TuiBadgeNotificationExample2} from './examples/2';
     imports: [
         TuiBadgeNotificationComponent,
         TuiExamplePipe,
-
         TuiAddonDocModule,
-
         TuiBadgeNotificationExample1,
         TuiBadgeNotificationExample2,
     ],
