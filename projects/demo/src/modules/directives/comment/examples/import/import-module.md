@@ -3,11 +3,12 @@ import {NgModule} from '@angular/core';
 import {TuiCommentDirective} from '@taiga-ui/experimental';
 // ...
 
-@NgModule({
+@Component({
+  standalone: true,
   imports: [
     // ...
     TuiCommentDirective,
   ],
 })
-export class MyModule {}
+export class MyComponent {}
 ```

@@ -3,11 +3,12 @@ import {NgModule} from '@angular/core';
 import {TuiBlockDetailsDirective} from '@taiga-ui/layout';
 // ...
 
-@NgModule({
+@Component({
+  standalone: true,
   imports: [
     // ...
     TuiBlockDetailsDirective,
   ],
 })
-export class MyModule {}
+export class MyComponent {}
 ```

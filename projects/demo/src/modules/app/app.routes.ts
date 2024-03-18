@@ -256,15 +256,12 @@ export const ROUTES: Routes = [
             title: 'Button ',
         },
     },
-    {
+    route({
         path: 'layout/block-details',
-        loadChildren: async () =>
-            (await import('../components/block-details/block-details.module'))
-                .ExampleTuiBlockDetailsModule,
-        data: {
-            title: 'BlockDetails',
-        },
-    },
+        loadComponent: async () =>
+            import('../components/block-details/block-details.component'),
+        title: 'BlockDetails',
+    }),
     {
         path: 'experimental/button-vertical',
         loadChildren: async () =>
@@ -300,15 +297,11 @@ export const ROUTES: Routes = [
             title: 'Cell',
         },
     },
-    {
+    route({
         path: 'components/comment',
-        loadChildren: async () =>
-            (await import('../directives/comment/comment.module'))
-                .ExampleTuiCommentModule,
-        data: {
-            title: 'Comment',
-        },
-    },
+        loadComponent: async () => import('../directives/comment/comment.component'),
+        title: 'Comment',
+    }),
     {
         path: 'experimental/compass',
         loadChildren: async () =>
