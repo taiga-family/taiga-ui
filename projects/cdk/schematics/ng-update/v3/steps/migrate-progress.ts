@@ -1,6 +1,6 @@
 import type {DevkitFileSystem} from 'ng-morph';
 import {createProject, saveActiveProject, setActiveProject} from 'ng-morph';
-import type {Element} from 'parse5';
+import type {Element} from 'parse5/dist/tree-adapters/default';
 
 import {ALL_FILES, ALL_TS_FILES} from '../../../constants';
 import type {TuiSchema} from '../../../ng-add/schema';

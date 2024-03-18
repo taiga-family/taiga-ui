@@ -48,7 +48,7 @@ function migrateExpand({
             attr => attr.name === 'tuiexpandcontent',
         );
 
-        const insertTo = templateElement?.sourceCodeLocation?.startTag.endOffset;
+        const insertTo = templateElement?.sourceCodeLocation?.startTag?.endOffset ?? 0;
 
         if (!insertTo || tuiExpandAttr) {
             return;
