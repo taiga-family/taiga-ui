@@ -239,15 +239,12 @@ export const ROUTES: Routes = [
             title: 'CardLarge',
         },
     },
-    {
+    route({
         path: 'components/badge-notification',
-        loadChildren: async () =>
-            (await import('../components/badge-notification/badge-notification.module'))
-                .ExampleTuiBadgeNotificationModule,
-        data: {
-            title: 'BadgeNotification',
-        },
-    },
+        loadComponent: async () =>
+            import('../components/badge-notification/badge-notification.component'),
+        title: 'BadgeNotification',
+    }),
     {
         path: 'experimental/button',
         loadChildren: async () =>
