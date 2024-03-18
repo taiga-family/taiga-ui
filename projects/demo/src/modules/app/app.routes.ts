@@ -623,6 +623,15 @@ export const ROUTES: Routes = [
         },
     },
     {
+        path: 'directives/skeleton',
+        loadChildren: async () =>
+            (await import('../directives/skeleton/skeleton.module'))
+                .ExampleTuiSkeletonModule,
+        data: {
+            title: 'Skeleton',
+        },
+    },
+    {
         path: 'components/input-inline',
         loadChildren: async () =>
             (await import('../components/input-inline/input-inline.module'))
@@ -1350,14 +1359,6 @@ export const ROUTES: Routes = [
             (await import('../markup/shadows/shadows.module')).ShadowsModule,
         data: {
             title: 'Shadows',
-        },
-    },
-    {
-        path: 'skeleton',
-        loadChildren: async () =>
-            (await import('../markup/skeleton/skeleton.module')).SkeletonModule,
-        data: {
-            title: 'Skeleton',
         },
     },
     {

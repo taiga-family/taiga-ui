@@ -1,0 +1,40 @@
+<tui-doc-page
+    header="Skeleton"
+    package="KIT"
+    type="directives"
+>
+    <ng-template pageTab>
+        <tui-doc-example
+            id="components"
+            heading="Components"
+            [content]="1 | tuiExample: 'html'"
+        >
+            <tui-skeleton-example-1></tui-skeleton-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="text"
+            heading="Text"
+            [content]="2 | tuiExample: 'html'"
+            [description]="description"
+        >
+            <ng-template #description>
+                You can pass
+                <code>boolean</code>
+                to toggle skeleton for elements. For multi line text you can use
+                <code>string</code>
+                to serve as a placeholder underneath the text skeleton or a
+                <code>number</code>
+                to generate this many random sized words, while your actual text is loading
+            </ng-template>
+            <tui-skeleton-example-2></tui-skeleton-example-2>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab="Setup">
+        <tui-setup
+            [import]="import"
+            [template]="template"
+        ></tui-setup>
+    </ng-template>
+</tui-doc-page>

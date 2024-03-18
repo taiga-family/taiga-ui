@@ -126,12 +126,6 @@ export const pages: TuiDocPages = [
             },
             {
                 section: 'Foundations',
-                title: 'Skeleton',
-                keywords: 'верстка, markup, скелетон, loader, загрузка, skeleton',
-                route: '/skeleton',
-            },
-            {
-                section: 'Foundations',
                 title: 'Form',
                 keywords: 'верстка, markup, форма, ввод, пример, input, form',
                 route: '/form',
@@ -1392,6 +1386,13 @@ export const pages: TuiDocPages = [
                 title: 'Sensitive',
                 keywords: 'sensitive, pixel, mask, пиксель, маска',
                 route: '/directives/sensitive',
+            },
+            {
+                section: 'Tools',
+                title: 'Skeleton',
+                keywords:
+                    'верстка, markup, скелетон, loader, загрузка, skeleton, shimmer',
+                route: 'directives/skeleton',
             },
         ],
     },
