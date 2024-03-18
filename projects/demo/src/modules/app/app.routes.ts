@@ -256,6 +256,12 @@ export const ROUTES: Routes = [
             title: 'Button ',
         },
     },
+    route({
+        path: 'layout/block-details',
+        loadComponent: async () =>
+            import('../components/block-details/block-details.component'),
+        title: 'BlockDetails',
+    }),
     {
         path: 'experimental/button-vertical',
         loadChildren: async () =>
@@ -291,6 +297,11 @@ export const ROUTES: Routes = [
             title: 'Cell',
         },
     },
+    route({
+        path: 'components/comment',
+        loadComponent: async () => import('../directives/comment/comment.component'),
+        title: 'Comment',
+    }),
     {
         path: 'experimental/compass',
         loadChildren: async () =>

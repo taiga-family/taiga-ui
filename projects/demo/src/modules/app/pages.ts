@@ -867,6 +867,12 @@ export const pages: TuiDocPages = [
         ],
     },
     {
+        section: 'Layout',
+        title: 'BlockDetails',
+        keywords: 'details, block, детали, блок',
+        route: '/layout/block-details',
+    },
+    {
         section: 'Experimental',
         title: 'Cell',
         keywords: 'cell, feed, item',
@@ -877,6 +883,12 @@ export const pages: TuiDocPages = [
         title: 'Chip',
         keywords: 'tag, тэг, badge',
         route: '/experimental/chip',
+    },
+    {
+        section: 'Components',
+        title: 'Comment',
+        keywords: 'comment, tip, коммент',
+        route: '/components/comment',
     },
     {
         section: 'Experimental',
