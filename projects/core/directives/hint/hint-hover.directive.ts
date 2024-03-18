@@ -31,7 +31,12 @@ export class TuiHintHoverDirective extends TuiDriver {
         ),
     ).pipe(
         filter(() => this.enabled),
-        map(value => value && !tuiIsObscured(this.el.nativeElement)),
+        map(
+            value =>
+                value &&
+                (this.el.nativeElement.hasAttribute('tuiHintPointer') ||
+                    !tuiIsObscured(this.el.nativeElement)),
+        ),
         tap(visible => {
             this.visible = visible;
         }),
