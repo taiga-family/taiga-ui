@@ -6,9 +6,12 @@
 
 :host-context(tui-tabs >):first-child,
 :host-context([tuiTabs] >):first-child,
-:host-context(tui-tabs > :first-child),
-:host-context([tuiTabs] > :first-child) {
+:host-context(tui-tabs > :not(.t-overflown) >):first-child {
     margin-left: 0;
+}
+
+:host-context(tui-tabs > [tuiTab] ~ :not(.t-overflown) >):first-child {
+    margin-left: var(--tui-tab-margin, 1.5rem);
 }
 
 :host {

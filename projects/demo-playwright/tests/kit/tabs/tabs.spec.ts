@@ -43,4 +43,12 @@ test.describe('Tabs', () => {
             });
         });
     });
+
+    test('Single button', async ({page}) => {
+        await tuiGoto(page, '/navigation/tabs/API?activeItemIndex=2&sandboxWidth=133');
+
+        await expect(new TuiDocumentationPagePO(page).apiPageExample).toHaveScreenshot(
+            '03-tabs-single-item-01.png',
+        );
+    });
 });
