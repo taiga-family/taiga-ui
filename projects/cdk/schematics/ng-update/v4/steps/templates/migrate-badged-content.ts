@@ -1,6 +1,6 @@
 import type {UpdateRecorder} from '@angular-devkit/schematics';
 import type {DevkitFileSystem} from 'ng-morph';
-import type {Attribute, ElementLocation} from 'parse5';
+import type {Attribute, ElementLocation} from 'parse5/dist/common/token';
 
 import {findElementsByTagName} from '../../../../utils/templates/elements';
 import {findAttr} from '../../../../utils/templates/inputs';
@@ -80,7 +80,7 @@ export function migrateBadgedContent({
         });
 
         if (!rounded || rounded.value === 'true') {
-            const insertTo = sourceCodeLocation.startTag.endOffset;
+            const insertTo = sourceCodeLocation.startTag?.endOffset ?? 0;
 
             recorder.insertRight(
                 insertTo + templateOffset - 1,
@@ -119,7 +119,7 @@ function migrateColor({
     }
 
     const value = attr.value;
-    const insertTo = sourceCodeLocation.startTag.endOffset || 0;
+    const insertTo = sourceCodeLocation.startTag?.endOffset ?? 0;
 
     recorder.insertRight(
         insertTo + templateOffset + 1,
@@ -154,7 +154,7 @@ function migrateContent({
 
     const value = attr.value;
     const colorAttrValue = colorAttr?.value;
-    const insertTo = sourceCodeLocation.startTag.endOffset || 0;
+    const insertTo = sourceCodeLocation.startTag?.endOffset ?? 0;
 
     if (value.startsWith('tuiIcon')) {
         recorder.insertRight(
@@ -170,7 +170,7 @@ function migrateContent({
         );
     } else if (Number.isNaN(Number(value))) {
         recorder.insertRight(
-            templateOffset + (sourceCodeLocation?.startTag.startOffset || 0),
+            templateOffset + (sourceCodeLocation?.startTag?.startOffset ?? 0),
             '<!-- Taiga migration TODO: contentTop and contentBottom inputs has been removed. Use ng-content, see taiga-ui.dev/components/badged-content  -->\n',
         );
     } else {

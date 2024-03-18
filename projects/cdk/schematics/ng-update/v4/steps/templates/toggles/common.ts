@@ -1,5 +1,5 @@
 import type {UpdateRecorder} from '@angular-devkit/schematics';
-import type {Attribute, ElementLocation} from 'parse5';
+import type {Attribute, ElementLocation} from 'parse5/dist/common/token';
 
 const sizeMap: Record<string, string> = {
     l: 'm',
@@ -12,13 +12,16 @@ export function replaceOpenTag(
     {tag, directive, type}: {tag: string; directive: string; type: string},
 ): void {
     const {startTag} = sourceCodeLocation;
-    const {startOffset, startCol} = startTag;
 
-    const spaces = ' '.repeat(startCol + 3);
+    if (!startTag) {
+        return;
+    }
 
-    recorder.remove(templateOffset + startOffset, `<${tag}`.length);
+    const spaces = ' '.repeat(startTag.startCol + 3);
+
+    recorder.remove(templateOffset + startTag.startOffset, `<${tag}`.length);
     recorder.insertRight(
-        templateOffset + startOffset,
+        templateOffset + startTag.startOffset,
         `<input\n${spaces}${directive}\n${spaces}type="${type}"`,
     );
 }
@@ -73,5 +76,5 @@ export function closeStartTag(
         return;
     }
 
-    recorder.insertRight(templateOffset + startTag.endOffset - 1, '/');
+    recorder.insertRight(templateOffset + (startTag?.endOffset ?? 1) - 1, '/');
 }

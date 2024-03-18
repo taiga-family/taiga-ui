@@ -141,7 +141,7 @@ function replaceBreadcrumbs({
     elements.forEach(element => {
         const itemsAttr = element.attrs.find(attr => attr.name === '[items]');
         const itemsValue = itemsAttr?.value;
-        const insertTo = element?.sourceCodeLocation?.startTag.endOffset;
+        const insertTo = element?.sourceCodeLocation?.startTag?.endOffset ?? 0;
 
         if (!itemsValue || !insertTo) {
             return;

@@ -1,6 +1,6 @@
 import type {UpdateRecorder} from '@angular-devkit/schematics';
 import type {DevkitFileSystem} from 'ng-morph';
-import type {Attribute} from 'parse5';
+import type {Attribute} from 'parse5/dist/common/token';
 
 import {tuiCleanObject} from '../../../../../utils/miscellaneous/clean-object';
 import type {TemplateResource} from '../../../../ng-update/interfaces';
@@ -42,7 +42,7 @@ export function migrateMoney({
             return;
         }
 
-        const insertTo = sourceCodeLocation?.endTag.startOffset;
+        const insertTo = sourceCodeLocation?.endTag?.startOffset ?? 0;
         const value = isBinding(valueAttr) ? valueAttr.value : `'${valueAttr.value}'`;
         const currency =
             currencyAttr && isBinding(currencyAttr)
@@ -70,7 +70,7 @@ export function migrateMoney({
 
             const formatPart = `[tuiNumberFormat]='${format}'`;
 
-            const insertTo = (sourceCodeLocation?.startTag.startOffset || 0) + 1;
+            const insertTo = (sourceCodeLocation?.startTag?.startOffset || 0) + 1;
 
             recorder.insertRight(templateOffset + insertTo, formatPart);
         }

@@ -1,5 +1,5 @@
 import type {DevkitFileSystem} from 'ng-morph/project/classes/devkit-file-system';
-import type {Element} from 'parse5';
+import type {Element} from 'parse5/dist/tree-adapters/default';
 
 import type {TemplateResource} from '../../ng-update/interfaces/template-resource';
 import {addImportToClosestModule} from '../add-import-to-closest-module';
