@@ -1810,15 +1810,12 @@ export const ROUTES: Routes = [
             title: 'TextfieldController',
         },
     },
-    {
+    route({
         path: 'directives/number-format',
-        loadChildren: async () =>
-            (await import('../directives/number-format/number-format.module'))
-                .ExampleTuiTextfieldControllerModule,
-        data: {
-            title: 'NumberFormat',
-        },
-    },
+        title: 'NumberFormat',
+        loadComponent: async () =>
+            import('../directives/number-format/number-format.component'),
+    }),
 
     // UTILS
     {
