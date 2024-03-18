@@ -1,6 +1,6 @@
 import type {UpdateRecorder} from '@angular-devkit/schematics';
 import type {DevkitFileSystem} from 'ng-morph';
-import type {Attribute} from 'parse5';
+import type {Attribute} from 'parse5/dist/common/token';
 
 import {addImportToClosestModule} from '../../../../utils/add-import-to-closest-module';
 import {findElementsByTagName} from '../../../../utils/templates/elements';
@@ -76,7 +76,8 @@ export function migrateAvatar({
             fallbackAttr?.value &&
             normalizeAttrValue(fallbackAttr.name, fallbackAttr.value);
 
-        const insertTo = sourceCodeLocation.startTag.startOffset + '<tui-avatar'.length;
+        const insertTo =
+            (sourceCodeLocation.startTag?.startOffset ?? 0) + '<tui-avatar'.length;
 
         if (!insertTo) {
             return;

@@ -1,6 +1,7 @@
 import type {UpdateRecorder} from '@angular-devkit/schematics';
 import type {DevkitFileSystem} from 'ng-morph';
-import type {Attribute, Element, ElementLocation} from 'parse5';
+import type {Attribute, ElementLocation} from 'parse5/dist/common/token';
+import type {Element} from 'parse5/dist/tree-adapters/default';
 
 import {findElementsByTagName} from '../../../../utils/templates/elements';
 import {
@@ -97,7 +98,7 @@ function migrateBadgeValue({
     templateOffset: number;
 }): void {
     const attrValue = valueAttr?.value;
-    const insertTo = sourceCodeLocation?.startTag.endOffset;
+    const insertTo = sourceCodeLocation?.startTag?.endOffset ?? 0;
     const selfClosing = !sourceCodeLocation?.endTag;
 
     if (!attrValue || !insertTo) {
@@ -120,7 +121,7 @@ function migrateBadgeValue({
     }
 
     if (selfClosing) {
-        recorder.remove(sourceCodeLocation.startTag.endOffset - 2, 1);
+        recorder.remove((sourceCodeLocation.startTag?.endOffset ?? 2) - 2, 1);
     }
 }
 
@@ -130,7 +131,7 @@ function addTodo(
     templateOffset: number,
 ): void {
     recorder.insertRight(
-        templateOffset + (sourceCodeLocation?.startTag.startOffset || 0),
+        templateOffset + (sourceCodeLocation?.startTag?.startOffset ?? 0),
         '<!-- Taiga migration TODO: use "<tui-icon>" with "tuiBadge" directive for icon-only badges instead -->\n',
     );
 }

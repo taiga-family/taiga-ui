@@ -57,16 +57,16 @@ export function migrateLabeled({
         );
 
         recorder.insertRight(
-            templateOffset + sourceCodeLocation.startTag.startOffset - 1,
+            templateOffset + (sourceCodeLocation.startTag?.startOffset ?? 1) - 1,
             '<label tuiLabel>',
         );
         recorder.insertRight(
-            templateOffset + sourceCodeLocation.endTag.startOffset - 1,
+            templateOffset + (sourceCodeLocation.endTag?.startOffset ?? 1) - 1,
             '\n</label>',
         );
 
         recorder.remove(
-            templateOffset + sourceCodeLocation.endTag.startOffset,
+            templateOffset + (sourceCodeLocation.endTag?.startOffset ?? 0),
             tagName === 'tui-checkbox-labeled'
                 ? '<tui-checkbox-labeled/>'.length
                 : '<tui-radio-labeled/>'.length,

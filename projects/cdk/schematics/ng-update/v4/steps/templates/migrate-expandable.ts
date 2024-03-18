@@ -35,21 +35,21 @@ export function migrateExpandable({
 
         const expandableValue = expandableAttr?.value;
         const expandableStart =
-            sourceCodeLocation?.attrs?.[expandableAttr.name].startOffset || 0;
+            sourceCodeLocation?.attrs?.[expandableAttr.name]?.startOffset ?? 0;
         const expandableEnd =
-            sourceCodeLocation?.attrs?.[expandableAttr.name].endOffset || 0;
+            sourceCodeLocation?.attrs?.[expandableAttr.name]?.endOffset ?? 0;
 
         if (expandableValue === 'false') {
             const rowsAttr = attrs.find(attr => attr.name === '[rows]');
 
-            const insertTo = (sourceCodeLocation?.startTag.endOffset || 0) - 1;
+            const insertTo = (sourceCodeLocation?.startTag?.endOffset ?? 0) - 1;
 
             recorder.insertRight(templateOffset + insertTo, rowsAttr ? '' : '[rows]="1"');
         }
 
         if (expandableValue !== 'false' && expandableValue !== 'true') {
             recorder.insertRight(
-                templateOffset + (sourceCodeLocation?.startTag.startOffset || 0),
+                templateOffset + (sourceCodeLocation?.startTag?.startOffset ?? 0),
                 '<!-- Taiga migration TODO: "expandable" property has been removed. Use "rows" property instead -->\n',
             );
         }

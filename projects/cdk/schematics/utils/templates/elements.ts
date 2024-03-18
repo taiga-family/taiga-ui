@@ -1,5 +1,5 @@
-import type {ChildNode, Element} from 'parse5';
 import {parseFragment} from 'parse5';
+import type {ChildNode, Element} from 'parse5/dist/tree-adapters/default';
 
 export function findElementsByFn(
     nodes: ChildNode[],
