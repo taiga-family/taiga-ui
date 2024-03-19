@@ -3,23 +3,21 @@ import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiButtonModule, TuiLinkModule, TuiNotificationModule} from '@taiga-ui/core';
-import {TuiPromptModule} from '@taiga-ui/kit';
 
-import {TuiPromptExample1} from './examples/1';
-import {ExampleTuiPromptComponent} from './prompt.component';
+import {ExampleTuiConfirmComponent} from './confirm.component';
+import {TuiConfirmExample1} from './examples/1';
 
 @NgModule({
     imports: [
         CommonModule,
         TuiButtonModule,
         TuiLinkModule,
-        TuiPromptModule,
         RouterModule,
         TuiAddonDocModule,
-        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiPromptComponent)),
+        RouterModule.forChild(tuiGenerateRoutes(ExampleTuiConfirmComponent)),
         TuiNotificationModule,
     ],
-    declarations: [ExampleTuiPromptComponent, TuiPromptExample1],
-    exports: [ExampleTuiPromptComponent],
+    declarations: [ExampleTuiConfirmComponent, TuiConfirmExample1],
+    exports: [ExampleTuiConfirmComponent],
 })
-export class ExampleTuiPromptModule {}
+export class ExampleTuiConfirmModule {}

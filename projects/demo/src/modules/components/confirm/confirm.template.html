@@ -1,11 +1,11 @@
 <tui-doc-page
-    header="Prompt"
+    header="Confirm"
     package="KIT"
     type="components"
 >
     <ng-template pageTab>
         <p>
-            Prompt is a ready to use
+            Confirm is a ready to use
             <a
                 routerLink="/components/dialog"
                 tuiLink
@@ -18,13 +18,13 @@
         <tui-notification>
             See
             <a
-                fragment="prompt"
+                fragment="confirm"
                 routerLink="/components/dialog"
                 tuiLink
             >
                 this example
             </a>
-            to learn how to use prompt to prevent data loss on forms inside other modals
+            to learn how to use confirm to prevent data loss on forms inside other modals
         </tui-notification>
 
         <tui-doc-example
@@ -32,7 +32,7 @@
             heading="Basic"
             [content]="example1"
         >
-            <tui-prompt-example-1 />
+            <tui-confirm-example-1 />
         </tui-doc-example>
     </ng-template>
 
@@ -47,7 +47,7 @@
         </tui-doc-demo>
         <p>
             You can pass
-            <code>data: TuiPromptData</code>
+            <code>data: TuiConfirmData</code>
             when opening a dialog to customize it
         </p>
         <tui-doc-documentation>
@@ -55,7 +55,16 @@
                 documentationPropertyName="content"
                 documentationPropertyType="PolymorpheusContent"
             >
-                Content of the prompt
+                Content of the confirm
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="appearance"
+                documentationPropertyType="string"
+                [documentationPropertyValues]="appearances"
+                [(documentationPropertyValue)]="appearance"
+            >
+                Appearance of the confirming button
             </ng-template>
             <ng-template
                 documentationPropertyMode="input"
@@ -81,19 +90,6 @@
     </ng-template>
     <ng-template pageTab>
         <ol class="b-demo-steps">
-            <li>
-                <p>
-                    Import
-                    <code>TuiPromptModule</code>
-                    into a module where you want to use our component
-                </p>
-
-                <tui-doc-code
-                    filename="my.module.ts"
-                    [code]="exampleModule"
-                />
-            </li>
-
             <li>
                 <p>
                     Open with

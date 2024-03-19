@@ -1132,11 +1132,12 @@ export const ROUTES: Routes = [
         },
     },
     {
-        path: 'components/prompt',
+        path: 'components/confirm',
         loadChildren: async () =>
-            (await import('../components/prompt/prompt.module')).ExampleTuiPromptModule,
+            (await import('../components/confirm/confirm.module'))
+                .ExampleTuiConfirmModule,
         data: {
-            title: 'Prompt',
+            title: 'Confirm',
         },
     },
     {
