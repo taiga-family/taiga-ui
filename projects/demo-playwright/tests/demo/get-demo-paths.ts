@@ -40,7 +40,8 @@ export function tuiGetDemoPathsForE2E(
                 .filter(
                     page =>
                         !exclusionSection.includes(page.section!) &&
-                        !exclusionRoutes.includes(page.route),
+                        !exclusionRoutes.includes(page.route) &&
+                        !page.route.includes('://'),
                 )
                 .map(({route}) => route),
         ),
