@@ -465,6 +465,15 @@ export const ROUTES: Routes = [
         },
     },
     {
+        path: 'experimental/skeleton',
+        loadChildren: async () =>
+            (await import('../experimental/skeleton/skeleton.module'))
+                .ExampleTuiSkeletonModule,
+        data: {
+            title: 'Skeleton',
+        },
+    },
+    {
         path: 'experimental/surface',
         loadChildren: async () =>
             (await import('../experimental/surface/surface.module'))
