@@ -54,7 +54,7 @@ export class TuiInputFilesComponent
     @ViewChild('input')
     private readonly input?: ElementRef<HTMLInputElement>;
 
-    private dataTransfer: DataTransfer | null = null;
+    private files?: FileList | null = null;
 
     @ContentChild(forwardRef(() => TuiInputFilesDirective))
     readonly nativeInput?: TuiInputFilesDirective;
@@ -158,7 +158,7 @@ export class TuiInputFilesComponent
     }
 
     get fileDragged(): boolean {
-        return !!this.dataTransfer?.types.includes('Files');
+        return !!this.files && !this.computedDisabled;
     }
 
     get arrayValue(): readonly TuiFileLike[] {
@@ -185,11 +185,12 @@ export class TuiInputFilesComponent
     }
 
     onDropped(event: DataTransfer): void {
+        this.files = null;
         this.processSelectedFiles(event.files);
     }
 
     onDragOver(dataTransfer: DataTransfer | null): void {
-        this.dataTransfer = dataTransfer;
+        this.files = dataTransfer?.files;
     }
 
     removeFile(removedFile: TuiFileLike): void {
