@@ -134,11 +134,12 @@ export function migrateDestroyService(options: TuiSchema): void {
             );
 
             if (componentClass) {
-                componentClass.addProperty({
-                    name: 'destroyRef',
-                    initializer: 'inject(DestroyRef)',
-                    isReadonly: true,
-                });
+                !componentClass.getProperty('destroyRef') &&
+                    componentClass.addProperty({
+                        name: 'destroyRef',
+                        initializer: 'inject(DestroyRef)',
+                        isReadonly: true,
+                    });
 
                 return possibleTakeUntil.replaceWithText(
                     'takeUntilDestroyed(this.destroyRef)',
