@@ -5,7 +5,7 @@ import {Directive, Inject, Input, TemplateRef} from '@angular/core';
 })
 export class TuiHeadDirective<T extends Partial<Record<keyof T, any>>> {
     @Input()
-    tuiHead!: keyof T;
+    tuiHead: string | keyof T = '';
 
     constructor(
         @Inject(TemplateRef) readonly template: TemplateRef<Record<string, unknown>>,
