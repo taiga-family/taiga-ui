@@ -19,32 +19,30 @@
             </ng-template>
         </ng-container>
     </tui-tabs>
-    <tui-hosted-dropdown
-        class="t-more_wrapper"
+
+    <button
+        tuiTab
+        class="t-more"
+        [class._active]="isMoreActive"
+        [class.t-no-margin]="isMoreAlone"
         [class.t-overflown]="!isMoreVisible"
-        [content]="dropdownContent || dropdown"
-        [(open)]="open"
+        [tuiDropdown]="dropdownContent || dropdown"
+        [tuiFocusable]="isMoreFocusable"
+        [(tuiDropdownOpen)]="open"
+        (keydown.arrowLeft.prevent)="onArrowLeft()"
     >
-        <button
-            tuiTab
-            [class._active]="isMoreActive"
-            [class.t-no-margin]="isMoreAlone"
-            [tuiFocusable]="isMoreFocusable"
-            (keydown.arrowLeft.prevent)="onArrowLeft()"
-        >
-            <ng-container *polymorpheusOutlet="moreContent || more as text">
-                {{ text }}
-            </ng-container>
-        </button>
-        <ng-template #more>
-            {{ moreWord$ | async }}
-            <tui-svg
-                class="t-icon"
-                [class.t-icon_rotated]="open"
-                [src]="arrowOptions.iconSmall"
-            />
-        </ng-template>
-    </tui-hosted-dropdown>
+        <ng-container *polymorpheusOutlet="moreContent || more as text">
+            {{ text }}
+        </ng-container>
+    </button>
+    <ng-template #more>
+        {{ moreWord$ | async }}
+        <tui-svg
+            class="t-icon"
+            [class.t-icon_rotated]="open"
+            [src]="arrowOptions.iconSmall"
+        />
+    </ng-template>
     <ng-template #dropdown>
         <div
             #element

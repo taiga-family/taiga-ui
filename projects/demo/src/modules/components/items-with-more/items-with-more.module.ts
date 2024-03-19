@@ -8,7 +8,6 @@ import {
     TuiDataListModule,
     TuiDropdownModule,
     TuiGroupDirective,
-    TuiHostedDropdownModule,
     TuiNotificationModule,
     TuiSvgModule,
 } from '@taiga-ui/core';
@@ -32,7 +31,6 @@ import {ExampleTuiItemsWithMoreComponent} from './items-with-more.component';
         TuiNotificationModule,
         TuiItemsWithMoreModule,
         TuiBadgeDirective,
-        TuiHostedDropdownModule,
         TuiDropdownModule,
         TuiButtonModule,
         TuiDataListModule,

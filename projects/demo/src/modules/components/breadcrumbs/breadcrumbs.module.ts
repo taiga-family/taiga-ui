@@ -7,7 +7,7 @@ import {TuiRepeatTimesModule} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
     TuiDataListModule,
-    TuiHostedDropdownModule,
+    TuiDropdownModule,
     TuiLinkModule,
 } from '@taiga-ui/core';
 import {TuiBreadcrumbsModule, TuiInputNumberModule} from '@taiga-ui/kit';
@@ -23,7 +23,7 @@ import {TuiBreadcrumbsExample2} from './examples/2';
         TuiBreadcrumbsModule,
         TuiLinkModule,
         TuiAddonDocModule,
-        TuiHostedDropdownModule,
+        TuiDropdownModule,
         TuiButtonModule,
         TuiDataListModule,
         TuiInputNumberModule,

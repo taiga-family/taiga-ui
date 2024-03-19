@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {TuiFocusableModule, TuiItemDirective, TuiItemModule} from '@taiga-ui/cdk';
-import {TuiHostedDropdownModule, TuiSvgModule} from '@taiga-ui/core';
+import {TuiDropdownModule, TuiSvgModule} from '@taiga-ui/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiTabComponent} from './tab/tab.component';
@@ -15,7 +15,7 @@ import {TuiUnderlineComponent} from './underline/underline.component';
     imports: [
         CommonModule,
         PolymorpheusModule,
-        TuiHostedDropdownModule,
+        TuiDropdownModule,
         TuiSvgModule,
         TuiFocusableModule,
         TuiItemModule,

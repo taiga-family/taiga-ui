@@ -11,6 +11,8 @@ import {TUI_ARROW} from '@taiga-ui/kit';
     changeDetection,
 })
 export class TuiDataListExample3 {
+    protected open = false;
+
     protected value = [];
 
     protected readonly burgers = ['Hamburger', 'Cheeseburger'];

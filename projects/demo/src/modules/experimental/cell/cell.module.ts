@@ -3,8 +3,8 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {tuiGetDocModules} from '@taiga-ui/addon-doc';
 import {
+    TuiDropdownModule,
     TuiGroupDirective,
-    TuiHostedDropdownModule,
     TuiIconComponent,
     TuiLabelModule,
     TuiLinkModule,
@@ -73,7 +73,7 @@ import {TuiCellExample7} from './examples/7';
         TuiTextfieldControllerModule,
         TuiLabelModule,
         TuiButtonModule,
-        TuiHostedDropdownModule,
+        TuiDropdownModule,
         TuiGroupDirective,
         TuiCardModule,
         tuiGetDocModules(ExampleTuiCellComponent),

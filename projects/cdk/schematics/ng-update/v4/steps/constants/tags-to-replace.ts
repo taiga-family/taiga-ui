@@ -29,4 +29,17 @@ export const TAGS_TO_REPLACE: ReplacementTag[] = [
         to: 'input',
         addAttributes: ['tuiRadio', 'type="radio"'],
     },
+    {
+        from: 'tui-hosted-dropdown',
+        to: 'div',
+        filterFn: el =>
+            el.attrs.some(attr => attr.name === '[open]' || attr.name === '[(open)]'),
+    },
+    {
+        from: 'tui-hosted-dropdown',
+        to: 'div',
+        filterFn: el =>
+            el.attrs.every(attr => attr.name !== '[open]' && attr.name !== '[(open)]'),
+        addAttributes: ['tuiDropdownOpen'],
+    },
 ];

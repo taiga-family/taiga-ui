@@ -14,8 +14,8 @@ import {TuiLetModule, TuiValidatorDirective} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
     TuiDataListModule,
+    TuiDropdownModule,
     TuiFormatNumberPipeModule,
-    TuiHostedDropdownModule,
     TuiLinkModule,
     TuiLoaderModule,
     TuiNotificationModule,
@@ -72,7 +72,7 @@ import {ExampleTuiTableComponent} from './table.component';
         TuiLetModule,
         TuiTablePaginationModule,
         TuiTextfieldControllerModule,
-        TuiHostedDropdownModule,
+        TuiDropdownModule,
         TuiArrowModule,
         TuiReorderModule,
         TuiAddonDocModule,

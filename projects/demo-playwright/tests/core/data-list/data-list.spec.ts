@@ -20,7 +20,7 @@ test.describe('DataList', () => {
         const example = documentationPagePO.getExample('#links');
 
         await example.scrollIntoViewIfNeeded();
-        await example.locator('tui-hosted-dropdown').click();
+        await example.locator('[tuiDropdownOpen]').click();
         await documentationPagePO.prepareBeforeScreenshot();
         await expect(page.locator('tui-dropdown')).toHaveScreenshot('02-data-list.png');
     });
@@ -33,7 +33,7 @@ test.describe('DataList', () => {
         const example = documentationPagePO.getExample('#submenu');
 
         await example.scrollIntoViewIfNeeded();
-        await example.locator('tui-hosted-dropdown').click();
+        await example.locator('button').click();
         await documentationPagePO.prepareBeforeScreenshot();
         await page.keyboard.down('ArrowDown');
         await page.keyboard.down('ArrowDown');
@@ -66,7 +66,7 @@ test.describe('DataList', () => {
         const example = documentationPagePO.getExample('#control');
 
         await example.scrollIntoViewIfNeeded();
-        await example.locator('tui-hosted-dropdown').click();
+        await example.locator('button').click();
         await documentationPagePO.prepareBeforeScreenshot();
         await expect(page.locator('tui-dropdown')).toHaveScreenshot('04-data-list.png');
     });
@@ -79,7 +79,7 @@ test.describe('DataList', () => {
         const example = documentationPagePO.getExample('#complex');
 
         await example.scrollIntoViewIfNeeded();
-        await example.locator('tui-hosted-dropdown').click();
+        await example.locator('button').click();
         await documentationPagePO.prepareBeforeScreenshot();
         await expect(page).toHaveScreenshot('05-data-list.png');
 
@@ -139,7 +139,7 @@ test.describe('DataList', () => {
         const example = documentationPagePO.getExample('#long-text-options');
 
         await example.scrollIntoViewIfNeeded();
-        await example.locator('tui-hosted-dropdown').click();
+        await example.locator('button').click();
         await documentationPagePO.prepareBeforeScreenshot();
         await expect(page).toHaveScreenshot('10-data-list.png');
     });

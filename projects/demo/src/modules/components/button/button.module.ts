@@ -8,7 +8,6 @@ import {TuiFocusableModule} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
     TuiDropdownModule,
-    TuiHostedDropdownModule,
     TuiLinkModule,
     TuiLoaderModule,
     TuiNotificationModule,
@@ -35,7 +34,7 @@ import {TuiButtonExample6} from './examples/6';
         TuiToggleModule,
         TuiFocusableModule,
         TuiButtonModule,
-        TuiHostedDropdownModule,
+        TuiDropdownModule,
         TuiDropdownModule,
         TuiArrowModule,
         TuiNotificationModule,
