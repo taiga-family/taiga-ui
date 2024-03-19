@@ -101,15 +101,6 @@
                     "sourceMap": false,
                     "namedChunks": false,
                     "statsJson": false
-                },
-                "coalescing": {
-                    "baseHref": "/",
-                    "fileReplacements": [
-                        {
-                            "replace": "projects/demo/src/emulate/ng-zone-options.ts",
-                            "with": "projects/demo/src/emulate/ng-zone-options.coalescing.ts"
-                        }
-                    ]
                 }
             },
             "defaultConfiguration": "production"
