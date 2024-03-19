@@ -21,6 +21,7 @@ export function migrateDestroyService(options: TuiSchema): void {
         );
 
     const references = getNamedImportReferences('TuiDestroyService', '@taiga-ui/cdk');
+    const nodesForComments: Node[] = [];
 
     references.forEach(ref => {
         if (ref.wasForgotten()) {
@@ -89,15 +90,9 @@ export function migrateDestroyService(options: TuiSchema): void {
                     ...injectDestination.findReferencesAsNodes(),
                 );
                 injectDestination.remove();
-            } else {
-                const identifier = ref.getFirstAncestorByKind(SyntaxKind.Identifier);
-
-                identifier &&
-                    insertTodo(
-                        identifier,
-                        'use takeUntilDestroyed instead (https://angular.io/api/core/rxjs-interop/takeUntilDestroyed)',
-                    );
             }
+        } else {
+            nodesForComments.push(ref);
         }
 
         destroyObservableUsages.forEach(node => {
@@ -146,16 +141,34 @@ export function migrateDestroyService(options: TuiSchema): void {
                 );
             }
 
-            const identifier = node.getFirstAncestorByKind(SyntaxKind.Identifier);
-
-            return (
-                identifier &&
-                insertTodo(
-                    identifier,
-                    'use takeUntilDestroyed instead (https://angular.io/api/core/rxjs-interop/takeUntilDestroyed)',
-                )
-            );
+            return nodesForComments.push(node);
         });
+    });
+
+    /**
+     * Inserting code comment should be placed after all AST-manipulations of this migration!
+     * When we insert some text into the source file,
+     * all previously queried refs will be forgotten and not be available for use.
+     * So, we should re-query them. It is not performance-friendly.
+     * ---
+     * We suppose that one code comment per file about `TuiDestroyService` is enough.
+     * ---
+     * @see https://ts-morph.com/manipulation/#strongwarningstrong
+     */
+    nodesForComments.forEach(ref => {
+        if (ref.wasForgotten()) {
+            return;
+        }
+
+        const identifier = Node.isIdentifier(ref)
+            ? ref
+            : ref.getFirstAncestorByKind(SyntaxKind.Identifier);
+
+        identifier &&
+            insertTodo(
+                identifier,
+                'use takeUntilDestroyed (https://angular.io/api/core/rxjs-interop/takeUntilDestroyed) instead of legacy TuiDestroyService',
+            );
     });
 
     !options['skip-logs'] && titleLog(`${FINISH_SYMBOL} successfully migrated \n`);

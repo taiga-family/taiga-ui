@@ -387,5 +387,40 @@ export class TuiDestroyExample implements OnInit {
         );
     });
 
+    describe('too tricky use cases (just add code comment)', () => {
+        it('deps of provided DI entity', async () => {
+            expect(
+                await runMigration(
+                    `
+import {ElementRef, Provider} from '@angular/core';
+import {TUI_DOC_PAGE_LOADED} from '@taiga-ui/addon-doc';
+import {TuiDestroyService} from '@taiga-ui/cdk';
+import {ResizeObserverService} from '@ng-web-apis/resize-observer';
+
+export const DEMO_PAGE_LOADED_PROVIDER = {
+    provide: TUI_DOC_PAGE_LOADED,
+    deps: [ElementRef, ResizeObserverService, TuiDestroyService],
+    useFactory: readyToScrollFactory,
+};
+`.trim(),
+                ),
+            ).toEqual(
+                `
+import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
+import {ElementRef, Provider} from '@angular/core';
+import {TUI_DOC_PAGE_LOADED} from '@taiga-ui/addon-doc';
+import {ResizeObserverService} from '@ng-web-apis/resize-observer';
+
+export const DEMO_PAGE_LOADED_PROVIDER = {
+    provide: TUI_DOC_PAGE_LOADED,
+// TODO: (Taiga UI migration) use takeUntilDestroyed (https://angular.io/api/core/rxjs-interop/takeUntilDestroyed) instead of legacy TuiDestroyService
+    deps: [ElementRef, ResizeObserverService, TuiDestroyService],
+    useFactory: readyToScrollFactory,
+};
+`.trim(),
+            );
+        });
+    });
+
     afterEach(() => resetActiveProject());
 });
