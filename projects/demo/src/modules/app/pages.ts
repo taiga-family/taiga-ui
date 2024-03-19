@@ -1000,6 +1000,12 @@ export const pages: TuiDocPages = [
     },
     {
         section: 'Experimental',
+        title: 'Skeleton ',
+        keywords: 'верстка, markup, скелетон, loader, загрузка, skeleton, shimmer',
+        route: '/experimental/skeleton',
+    },
+    {
+        section: 'Experimental',
         title: 'Surface',
         keywords: 'card, container, wrapper, image, blur, overlay',
         route: '/experimental/surface',

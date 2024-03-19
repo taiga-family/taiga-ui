@@ -11,5 +11,6 @@ export * from '@taiga-ui/experimental/directives/header';
 export * from '@taiga-ui/experimental/directives/icons';
 export * from '@taiga-ui/experimental/directives/progress-segmented';
 export * from '@taiga-ui/experimental/directives/sensitive';
+export * from '@taiga-ui/experimental/directives/skeleton';
 export * from '@taiga-ui/experimental/directives/surface';
 export * from '@taiga-ui/experimental/directives/title';
