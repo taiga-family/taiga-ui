@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.71.0](https://github.com/taiga-family/taiga-ui/compare/v3.59.0...v3.71.0) (2024-03-19)
+
+### Features
+
+- **addon-doc:** support external link in navigation ([#7030](https://github.com/taiga-family/taiga-ui/issues/7030))
+  ([4dbe8ac](https://github.com/taiga-family/taiga-ui/commit/4dbe8accb33383e996aa10799f345e3b97acefe8))
+- **experimental:** `BlockDetails` add new component ([#6910](https://github.com/taiga-family/taiga-ui/issues/6910))
+  ([af7e3ae](https://github.com/taiga-family/taiga-ui/commit/af7e3ae1b9068fbfdfa14fb1888ef4ea5f9ad581))
+- **experimental:** `Skeleton` add new directive ([#7024](https://github.com/taiga-family/taiga-ui/issues/7024))
+  ([3785a77](https://github.com/taiga-family/taiga-ui/commit/3785a77174b60f11d1ca3ff6b85d866d9c8f1588))
+
+### Bug Fixes
+
+- **addon-table:** key type check ([#7028](https://github.com/taiga-family/taiga-ui/issues/7028))
+  ([c783dab](https://github.com/taiga-family/taiga-ui/commit/c783dab98791f51070326a3db2f855e16ba6dbd0))
+- **core:** disable isObscured check for `HintPointer` ([#7016](https://github.com/taiga-family/taiga-ui/issues/7016))
+  ([d3cd092](https://github.com/taiga-family/taiga-ui/commit/d3cd092aef5d402c53e369a67ef7ea1823936dea))
+- **kit:** `InputFiles` fix drag over detection when zone.js event coalescing is enabled
+  ([#7031](https://github.com/taiga-family/taiga-ui/issues/7031))
+  ([5b9a605](https://github.com/taiga-family/taiga-ui/commit/5b9a605abbea5f687402e2918c7d1646770ab2b9))
+- **kit:** `TasbWithMore` fix redundant left margin for single element
+  ([#7022](https://github.com/taiga-family/taiga-ui/issues/7022))
+  ([#7026](https://github.com/taiga-family/taiga-ui/issues/7026))
+  ([d5818aa](https://github.com/taiga-family/taiga-ui/commit/d5818aaee44c419220b50145cb53f1c2d29b4c71))
+
 ## [3.70.0](https://github.com/taiga-family/taiga-ui/compare/v3.59.0...v3.70.0) (2024-03-12)
 
 ### Bug Fixes
