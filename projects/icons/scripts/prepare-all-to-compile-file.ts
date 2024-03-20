@@ -1,4 +1,4 @@
-import {readdirSync, writeFileSync} from 'fs';
+import {readdirSync, writeFileSync} from 'node:fs';
 
 export function tuiPrepareAllToCompileFile(iconsSrc: string, entryPointTs: string): void {
     const icons: string[] = readdirSync(iconsSrc).filter(file => file.endsWith('.svg'));

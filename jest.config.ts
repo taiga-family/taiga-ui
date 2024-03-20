@@ -1,4 +1,5 @@
-import {resolve} from 'path';
+import {resolve} from 'node:path';
+
 import type {JestConfigWithTsJest} from 'ts-jest';
 import {pathsToModuleNameMapper} from 'ts-jest';
 
@@ -7,7 +8,7 @@ process.env.FORCE_COLOR = 'true';
 process.env.TS_JEST_DISABLE_VER_CHECKER = 'true';
 
 const {compilerOptions} = require(resolve(__dirname, 'tsconfig.json'));
-const maxParallel = require('os').cpus().length / 2;
+const maxParallel = require('node:os').cpus().length / 2;
 
 const config: JestConfigWithTsJest = {
     rootDir: __dirname,

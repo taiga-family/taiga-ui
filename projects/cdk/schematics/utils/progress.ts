@@ -1,5 +1,5 @@
 /// <reference types="node" />
-import {clearLine, cursorTo} from 'readline';
+import {clearLine, cursorTo} from 'node:readline';
 
 import {SMALL_TAB_SYMBOL, SUCCESS_SYMBOL} from './colored-log';
 import {tuiIsCI} from './is-ci';
