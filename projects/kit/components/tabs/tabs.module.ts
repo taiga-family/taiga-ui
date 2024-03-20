@@ -1,39 +1,27 @@
-import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {TuiFocusableModule, TuiItemDirective, TuiItemModule} from '@taiga-ui/cdk';
-import {TuiDropdownModule, TuiSvgModule} from '@taiga-ui/core';
-import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import {TuiItemDirective, TuiItemModule} from '@taiga-ui/cdk';
 
-import {TuiTabComponent} from './tab/tab.component';
+import {TuiTabDirective} from './tab.directive';
 import {TuiTabsDirective} from './tabs.directive';
-import {TuiTabsComponent} from './tabs/tabs.component';
-import {TuiTabsVerticalComponent} from './tabs-vertical/tabs-vertical.component';
-import {TuiTabsWithMoreComponent} from './tabs-with-more/tabs-with-more.component';
-import {TuiUnderlineComponent} from './underline/underline.component';
+import {TuiTabsHorizontalDirective} from './tabs-horizontal.directive';
+import {TuiTabsVerticalDirective} from './tabs-vertical.directive';
+import {TuiTabsWithMoreComponent} from './tabs-with-more.component';
 
 @NgModule({
     imports: [
-        CommonModule,
-        PolymorpheusModule,
-        TuiDropdownModule,
-        TuiSvgModule,
-        TuiFocusableModule,
         TuiItemModule,
-    ],
-    declarations: [
-        TuiTabsWithMoreComponent,
-        TuiTabsComponent,
+        TuiTabDirective,
         TuiTabsDirective,
-        TuiTabsVerticalComponent,
-        TuiTabComponent,
-        TuiUnderlineComponent,
+        TuiTabsHorizontalDirective,
+        TuiTabsVerticalDirective,
+        TuiTabsWithMoreComponent,
     ],
     exports: [
         TuiTabsWithMoreComponent,
-        TuiTabsComponent,
+        TuiTabsHorizontalDirective,
         TuiTabsDirective,
-        TuiTabsVerticalComponent,
-        TuiTabComponent,
+        TuiTabsVerticalDirective,
+        TuiTabDirective,
         TuiItemDirective,
     ],
 })

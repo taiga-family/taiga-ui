@@ -1,58 +1,37 @@
-<div
-    tuiMode="onDark"
-    class="wrapper"
+<tui-tabs-with-more
+    [itemsLimit]="3"
+    [(activeItemIndex)]="activeItemIndex"
 >
-    <h1 class="tui-text_h3 title">Monty Python</h1>
-    <tui-tabs-with-more
-        class="tabs"
-        [activeItemIndex]="activeItemIndex"
-        [moreContent]="more"
-    >
-        <ng-container *ngFor="let tab of tabs">
-            <ng-container *ngIf="isString(tab); else submenu">
-                <button
-                    *tuiItem
-                    tuiTab
-                    (click)="onClick(tab)"
-                >
-                    {{ tab }}
-                </button>
-            </ng-container>
-            <ng-template #submenu>
-                <button
-                    *tuiItem
-                    tuiTab
-                    [tuiDropdown]="dropdown"
-                    [(tuiDropdownOpen)]="open"
-                    (tui-tab-activate)="stop($event)"
-                >
-                    Collaborators
-                    <tui-svg
-                        src="tuiIconChevronDown"
-                        class="icon"
-                        [class.icon_rotated]="open"
-                    />
-                </button>
-            </ng-template>
-        </ng-container>
-    </tui-tabs-with-more>
-</div>
-<section class="content">Currently active: {{ activeElement }}</section>
-<ng-template
-    #dropdown
-    let-activeZone
-    let-close="close"
->
-    <tui-data-list [tuiActiveZoneParent]="activeZone">
+    <ng-container *ngFor="let item of items">
         <button
-            *ngFor="let collaborator of collaborators"
-            tuiOption
-            (click)="onClick(collaborator); close()"
+            *tuiItem
+            tuiTab
+            (keydown.delete)="remove(item)"
         >
-            {{ collaborator }}
+            {{ item }}
+            <tui-svg
+                src="tuiIconClose"
+                class="tui-space_left-2"
+                (click.stop)="remove(item)"
+            />
         </button>
-    </tui-data-list>
-</ng-template>
-<ng-template #more>
-    <tui-svg src="tuiIconMoreHorizontalLarge" />
-</ng-template>
+    </ng-container>
+</tui-tabs-with-more>
+<p>{{ items[activeItemIndex] }}</p>
+<button
+    tuiButton
+    type="button"
+    (click)="add()"
+>
+    Add one more
+</button>
+<tui-input-number
+    decimal="never"
+    class="tui-space_top-4"
+    [max]="4"
+    [min]="0"
+    [step]="1"
+    [(ngModel)]="activeItemIndex"
+>
+    activeItemIndex
+</tui-input-number>

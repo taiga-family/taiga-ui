@@ -1,12 +1,13 @@
 import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/core';
 
 @Component({
-    host: {
-        class: 'tui-mobile-tabs-styles',
-    },
+    standalone: true,
     template: '',
-    styleUrls: ['./mobile-tabs.style.less'],
+    styleUrls: ['./tabs.style.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        class: 'tui-tabs',
+    },
 })
-export class TuiMobileTabsComponent {}
+export class TuiTabsComponent {}

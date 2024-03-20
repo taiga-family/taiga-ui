@@ -1,21 +1,20 @@
 import {DOCUMENT} from '@angular/common';
 import type {Provider} from '@angular/core';
 import {ChangeDetectorRef, ElementRef, InjectionToken} from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {
     MUTATION_OBSERVER_INIT,
     MutationObserverService,
 } from '@ng-web-apis/mutation-observer';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
-import {TuiDestroyService} from '@taiga-ui/cdk';
 import {tuiDropdownOptionsProvider} from '@taiga-ui/core';
 import type {Observable} from 'rxjs';
-import {debounceTime, filter, merge, startWith, takeUntil, tap} from 'rxjs';
+import {debounceTime, filter, merge, startWith, tap} from 'rxjs';
 
 export const TUI_TABS_REFRESH = new InjectionToken<Observable<unknown>>(
     '[TUI_TABS_REFRESH]',
 );
 export const TUI_TABS_PROVIDERS: Provider[] = [
-    TuiDestroyService,
     ResizeObserverService,
     MutationObserverService,
     tuiDropdownOptionsProvider({align: 'right'}),
@@ -32,7 +31,6 @@ export const TUI_TABS_PROVIDERS: Provider[] = [
         deps: [
             ResizeObserverService,
             MutationObserverService,
-            TuiDestroyService,
             DOCUMENT,
             ElementRef,
             ChangeDetectorRef,
@@ -40,7 +38,6 @@ export const TUI_TABS_PROVIDERS: Provider[] = [
         useFactory: (
             resize$: Observable<unknown>,
             mutations$: Observable<unknown>,
-            destroy$: Observable<unknown>,
             {body}: Document,
             {nativeElement}: ElementRef<Node>,
             cdr: ChangeDetectorRef,
@@ -50,7 +47,7 @@ export const TUI_TABS_PROVIDERS: Provider[] = [
                 filter(() => body.contains(nativeElement)),
                 debounceTime(0),
                 startWith(null),
-                takeUntil(destroy$),
+                takeUntilDestroyed(),
             ),
     },
 ];

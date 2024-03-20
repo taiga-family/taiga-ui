@@ -1,20 +1,49 @@
-import {Component, inject} from '@angular/core';
+import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAlertService} from '@taiga-ui/core';
+import {tuiIsString} from '@taiga-ui/cdk';
 
 @Component({
     selector: 'tui-tabs-example-3',
     templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
 export class TuiTabsExample3 {
-    private readonly alerts = inject(TuiAlertService);
+    protected open = false;
+    protected readonly collaborators = ['Carol Cleveland', 'Neil Innes'];
 
-    protected activeItemIndex = 0;
+    protected readonly tabs = [
+        'John Cleese',
+        'Eric Idle',
+        this.collaborators,
+        'Michael Palin',
+        'Terry Jones',
+        'Terry Gilliam',
+        'Graham Chapman',
+    ];
 
-    protected onClick(item: string): void {
-        this.alerts.open(item).subscribe();
+    protected activeElement = String(this.tabs[0]);
+
+    protected get activeItemIndex(): number {
+        if (this.collaborators.includes(this.activeElement)) {
+            return this.tabs.indexOf(this.collaborators);
+        }
+
+        return this.tabs.indexOf(this.activeElement);
+    }
+
+    protected stop(event: Event): void {
+        // We need to stop tab custom event so parent component does not think its active
+        event.stopPropagation();
+    }
+
+    protected onClick(activeElement: string): void {
+        this.activeElement = activeElement;
+    }
+
+    protected isString(tab: unknown): tab is string {
+        return tuiIsString(tab);
     }
 }
