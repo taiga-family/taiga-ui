@@ -11,27 +11,26 @@
         Multiple actions
         <div tuiSubtitle>With no content on the right</div>
     </div>
-    <tui-hosted-dropdown
+
+    <button
+        appearance="icon"
+        iconLeft="tuiIconMoreHorizontalLarge"
         tuiDropdownAlign="right"
-        [content]="dropdown"
+        tuiDropdownOpen
+        tuiIconButton
+        [tuiDropdown]="dropdown"
     >
-        <button
-            appearance="icon"
-            iconLeft="tuiIconMoreHorizontalLarge"
-            tuiIconButton
-        >
-            Action
-        </button>
-        <ng-template
-            #dropdown
-            let-close="close"
-        >
-            <tui-data-list-wrapper
-                [items]="items"
-                (itemClick)="close()"
-            />
-        </ng-template>
-    </tui-hosted-dropdown>
+        Action
+    </button>
+    <ng-template
+        #dropdown
+        let-close="close"
+    >
+        <tui-data-list-wrapper
+            [items]="items"
+            (itemClick)="close()"
+        />
+    </ng-template>
 </div>
 
 <button tuiCell>

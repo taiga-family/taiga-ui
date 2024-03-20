@@ -19,23 +19,20 @@
                 </button>
             </ng-container>
             <ng-template #submenu>
-                <tui-hosted-dropdown
+                <button
                     *tuiItem
-                    #hosted
-                    [content]="dropdown"
+                    tuiTab
+                    [tuiDropdown]="dropdown"
+                    [(tuiDropdownOpen)]="open"
+                    (tui-tab-activate)="stop($event)"
                 >
-                    <button
-                        tuiTab
-                        (tui-tab-activate)="stop($event)"
-                    >
-                        Collaborators
-                        <tui-svg
-                            src="tuiIconChevronDown"
-                            class="icon"
-                            [class.icon_rotated]="hosted.open"
-                        />
-                    </button>
-                </tui-hosted-dropdown>
+                    Collaborators
+                    <tui-svg
+                        src="tuiIconChevronDown"
+                        class="icon"
+                        [class.icon_rotated]="open"
+                    />
+                </button>
             </ng-template>
         </ng-container>
     </tui-tabs-with-more>

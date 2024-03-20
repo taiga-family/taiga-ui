@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {
     TuiButtonModule,
     TuiDataListModule,
-    TuiHostedDropdownModule,
+    TuiDropdownModule,
     TuiLinkModule,
     TuiSvgModule,
 } from '@taiga-ui/core';
@@ -16,7 +16,7 @@ import {TuiTablePaginationComponent} from './table-pagination.component';
         CommonModule,
         TuiButtonModule,
         TuiLinkModule,
-        TuiHostedDropdownModule,
+        TuiDropdownModule,
         TuiDataListModule,
         TuiSvgModule,
         PolymorpheusModule,

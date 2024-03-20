@@ -1,16 +1,16 @@
 <h3 class="header">
     Dropdown&nbsp;&mdash;
-    <tui-hosted-dropdown
-        #button
+
+    <a
         tuiDropdownAlign="left"
         tuiDropdownLimitWidth="auto"
-        [content]="template"
+        tuiLink
+        [tuiDropdown]="template"
+        [(tuiDropdownOpen)]="open"
     >
-        <a tuiLink>
-            Open
-            <tui-svg [src]="button.open ? 'tuiIconChevronUp' : 'tuiIconChevronDown'" />
-        </a>
-    </tui-hosted-dropdown>
+        Open
+        <tui-svg [src]="open ? 'tuiIconChevronUp' : 'tuiIconChevronDown'" />
+    </a>
 </h3>
 
 <ng-template

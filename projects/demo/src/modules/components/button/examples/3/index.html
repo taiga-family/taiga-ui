@@ -1,15 +1,13 @@
-<tui-hosted-dropdown
+<button
+    tuiButton
     tuiDropdownLimitWidth="fixed"
-    [content]="dropdown"
+    tuiDropdownOpen
+    type="button"
+    [iconRight]="arrow"
+    [tuiDropdown]="dropdown"
 >
-    <button
-        tuiButton
-        type="button"
-        [iconRight]="arrow"
-    >
-        Where could I find such an arrow...?
-    </button>
-</tui-hosted-dropdown>
+    Where could I find such an arrow...?
+</button>
 <ng-template #dropdown>
     <div class="content">
         Use

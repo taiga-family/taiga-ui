@@ -1,20 +1,16 @@
-<tui-hosted-dropdown
+<button
+    appearance="outline"
+    icon="tuiIconMoreVertical"
+    size="m"
+    tuiButton
     tuiDropdownLimitWidth="fixed"
+    type="button"
     class="example"
-    [content]="content"
-    [(open)]="dropdownOpen"
+    [tuiDropdown]="content"
+    [(tuiDropdownOpen)]="dropdownOpen"
 >
-    <button
-        appearance="outline"
-        icon="tuiIconMoreVertical"
-        size="m"
-        tuiButton
-        type="button"
-        class="example"
-    >
-        List of components
-    </button>
-</tui-hosted-dropdown>
+    List of components
+</button>
 
 <ng-template
     #content

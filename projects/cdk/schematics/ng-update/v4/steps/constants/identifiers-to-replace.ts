@@ -235,4 +235,8 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifier[] = [
         from: {name: 'TuiCheckboxLabeledModule', moduleSpecifier: '@taiga-ui/kit'},
         to: {name: 'TuiLabelComponent', moduleSpecifier: '@taiga-ui/core'},
     },
+    {
+        from: {name: 'TuiHostedDropdownModule', moduleSpecifier: '@taiga-ui/core'},
+        to: {name: 'TuiDropdownModule', moduleSpecifier: '@taiga-ui/core'},
+    },
 ];

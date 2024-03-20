@@ -8,7 +8,7 @@ import {TuiActiveZoneModule} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
     TuiDataListModule,
-    TuiHostedDropdownModule,
+    TuiDropdownModule,
     TuiModeModule,
     TuiNotificationModule,
     TuiScrollbarComponent,
@@ -38,7 +38,7 @@ import {ExampleTuiTabsComponent} from './tabs.component';
         TuiNotificationModule,
         TuiSvgModule,
         TuiButtonModule,
-        TuiHostedDropdownModule,
+        TuiDropdownModule,
         TuiDataListModule,
         TuiAddonDocModule,
         TuiMobileTabsModule,

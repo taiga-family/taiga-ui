@@ -6,8 +6,8 @@ import {TuiActiveZoneModule} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
     TuiDataListModule,
+    TuiDropdownModule,
     TuiHintModule,
-    TuiHostedDropdownModule,
     TuiLinkModule,
     TuiNotificationModule,
     TuiSvgModule,
@@ -34,7 +34,7 @@ import {ExampleTuiLineClampComponent} from './line-clamp.component';
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiLineClampComponent)),
         TuiButtonModule,
         TuiIslandModule,
-        TuiHostedDropdownModule,
+        TuiDropdownModule,
         TuiLinkModule,
         TuiDataListDropdownManagerModule,
         TuiActiveZoneModule,

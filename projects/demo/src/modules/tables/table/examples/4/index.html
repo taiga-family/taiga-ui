@@ -16,24 +16,24 @@
     >
         Minimum age
     </tui-input-number>
-    <tui-hosted-dropdown [content]="dropdown">
-        <button
-            size="m"
-            tuiButton
-            type="button"
-            [iconRight]="arrow"
-        >
-            Columns
-        </button>
-        <ng-template #dropdown>
-            <tui-reorder
-                class="columns"
-                [enabled]="enabled"
-                [(items)]="initial"
-                (enabledChange)="onEnabled($event)"
-            />
-        </ng-template>
-    </tui-hosted-dropdown>
+    <button
+        size="m"
+        tuiButton
+        tuiDropdownOpen
+        type="button"
+        [iconRight]="arrow"
+        [tuiDropdown]="dropdown"
+    >
+        Columns
+    </button>
+    <ng-template #dropdown>
+        <tui-reorder
+            class="columns"
+            [enabled]="enabled"
+            [(items)]="initial"
+            (enabledChange)="onEnabled($event)"
+        />
+    </ng-template>
 </p>
 <tui-loader
     [overlay]="true"

@@ -19,6 +19,8 @@ export class TuiDataListExample2 {
     protected readonly burgers = ['Classic', 'Cheeseburger', 'Royal Cheeseburger'];
     protected readonly drinks = ['Cola', 'Tea', 'Coffee', 'Slurm'];
 
+    protected open = false;
+
     protected selectOption(item: string): void {
         this.dropdownOpen = false;
         this.dialogs.open(`You selected ${item}`).subscribe();

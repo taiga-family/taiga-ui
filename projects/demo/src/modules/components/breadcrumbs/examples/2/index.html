@@ -1,27 +1,25 @@
 <tui-breadcrumbs [style.color]="'red'">
-    <tui-hosted-dropdown
+    <button
         *tuiItem
-        [content]="content"
-    >
-        <button
-            appearance="secondary"
-            icon="tuiIconMoreHorizontal"
-            size="xs"
-            title="More"
-            tuiIconButton
-        ></button>
-        <ng-template #content>
-            <tui-data-list>
-                <a
-                    *tuiRepeatTimes="let index of items.length - max"
-                    tuiOption
-                    [href]="items[index].link"
-                >
-                    {{ items[index].caption }}
-                </a>
-            </tui-data-list>
-        </ng-template>
-    </tui-hosted-dropdown>
+        appearance="secondary"
+        icon="tuiIconMoreHorizontal"
+        size="xs"
+        title="More"
+        tuiDropdownOpen
+        tuiIconButton
+        [tuiDropdown]="content"
+    ></button>
+    <ng-template #content>
+        <tui-data-list>
+            <a
+                *tuiRepeatTimes="let index of items.length - max"
+                tuiOption
+                [href]="items[index].link"
+            >
+                {{ items[index].caption }}
+            </a>
+        </tui-data-list>
+    </ng-template>
     <ng-container *tuiRepeatTimes="let index of max">
         <a
             *tuiItem

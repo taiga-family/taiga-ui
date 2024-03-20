@@ -1,19 +1,15 @@
-<tui-hosted-dropdown
-    tuiDropdownAlign="left"
-    [content]="content"
+<button
+    appearance="flat"
+    tuiButton
+    type="button"
+    [iconRight]="arrow"
+    [tuiDropdown]="content"
     [tuiDropdownLimitWidth]="isMobile ? 'fixed' : 'min'"
     [tuiDropdownMaxHeight]="700"
-    [(open)]="open"
+    [(tuiDropdownOpen)]="open"
 >
-    <button
-        appearance="flat"
-        tuiButton
-        type="button"
-        [iconRight]="arrow"
-    >
-        Why Taiga UI?
-    </button>
-</tui-hosted-dropdown>
+    Why Taiga UI?
+</button>
 
 <ng-template #content>
     <tui-data-list>

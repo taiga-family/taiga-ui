@@ -16,12 +16,12 @@ test.describe('Tabs', () => {
         await expect(example).toHaveScreenshot('01-tabs-3.png');
         await page.setViewportSize({width: 560, height: 500});
         await expect(example).toHaveScreenshot('01-tabs-4.png');
-        await example.locator('tui-tabs-with-more .t-more_wrapper:visible').click();
+        await example.locator('tui-tabs-with-more .t-more').click();
         await expect(example).toHaveScreenshot('01-tabs-5.png');
         await page.locator('button:has-text("John Cleese")').nth(1).focus();
         await page.keyboard.down('Enter');
         await expect(example).toHaveScreenshot('01-tabs-6.png');
-        await example.locator('tui-tabs-with-more .t-more_wrapper:visible').click();
+        await example.locator('tui-tabs-with-more .t-more').click();
         await page.locator('button:has-text("Collaborators")').nth(1).focus();
         await page.keyboard.down('Enter');
         await expect(example).toHaveScreenshot('01-tabs-7.png');

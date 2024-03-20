@@ -1,12 +1,12 @@
-<tui-hosted-dropdown [content]="content">
-    <button
-        tuiButton
-        type="button"
-        [iconRight]="arrow"
-    >
-        Menu
-    </button>
-</tui-hosted-dropdown>
+<button
+    tuiButton
+    tuiDropdownOpen
+    type="button"
+    [iconRight]="arrow"
+    [tuiDropdown]="content"
+>
+    Menu
+</button>
 <ng-template #content>
     <tui-data-list role="menu">
         <tui-opt-group

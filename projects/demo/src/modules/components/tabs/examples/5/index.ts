@@ -11,6 +11,7 @@ import {tuiIsString} from '@taiga-ui/cdk';
     changeDetection,
 })
 export class TuiTabsExample5 {
+    protected open = false;
     protected readonly collaborators = ['Carol Cleveland', 'Neil Innes'];
 
     protected readonly tabs = [

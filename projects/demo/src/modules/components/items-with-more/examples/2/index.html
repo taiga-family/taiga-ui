@@ -21,39 +21,36 @@
         let-lastIndex
         tuiMore
     >
-        <tui-hosted-dropdown
+        <button
+            appearance="whiteblock"
+            size="m"
+            tuiButton
             tuiDropdownAlign="right"
+            tuiDropdownOpen
+            type="button"
             class="item"
-            [content]="dropdown"
+            [tuiDropdown]="dropdown"
         >
-            <button
-                appearance="whiteblock"
-                size="m"
-                tuiButton
-                type="button"
-                class="item"
-            >
-                More
-                <tui-badge class="tui-space_left-2">{{ items.length - lastIndex - 1 }}</tui-badge>
-            </button>
-            <ng-template #dropdown>
-                <tui-data-list size="l">
-                    <ng-container *ngFor="let item of items; let index = index">
-                        <button
-                            *ngIf="index > lastIndex"
-                            tuiOption
-                            (click)="value[index] = !value[index]"
-                        >
-                            {{ item }}
-                            <tui-svg
-                                src="tuiIconCheck"
-                                class="tui-space_left-2"
-                                [class._hidden]="!value[index]"
-                            />
-                        </button>
-                    </ng-container>
-                </tui-data-list>
-            </ng-template>
-        </tui-hosted-dropdown>
+            More
+            <tui-badge class="tui-space_left-2">{{ items.length - lastIndex - 1 }}</tui-badge>
+        </button>
+        <ng-template #dropdown>
+            <tui-data-list size="l">
+                <ng-container *ngFor="let item of items; let index = index">
+                    <button
+                        *ngIf="index > lastIndex"
+                        tuiOption
+                        (click)="value[index] = !value[index]"
+                    >
+                        {{ item }}
+                        <tui-svg
+                            src="tuiIconCheck"
+                            class="tui-space_left-2"
+                            [class._hidden]="!value[index]"
+                        />
+                    </button>
+                </ng-container>
+            </tui-data-list>
+        </ng-template>
     </ng-template>
 </tui-items-with-more>
