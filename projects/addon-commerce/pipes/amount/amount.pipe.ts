@@ -46,8 +46,4 @@ export class TuiAmountPipe implements PipeTransform {
             }),
         );
     }
-
-    // private getPrecision(value: number, limit: number, decimal: TuiDecimal): number {
-    //     return decimal === 'always' || (decimal === 'not-zero' && value % 1) ? limit : 0;
-    // }
 }
