@@ -1,5 +1,5 @@
-import {readdirSync, readFileSync, statSync, writeFileSync} from 'fs';
-import {basename, join} from 'path';
+import {readdirSync, readFileSync, statSync, writeFileSync} from 'node:fs';
+import {basename, join} from 'node:path';
 
 (function main(): void {
     generateProjectsUsedIcons();

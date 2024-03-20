@@ -4,8 +4,9 @@
  * (not friendly for our external contributors).
  * https://github.com/Automattic/node-canvas/issues/1511
  */
+import {readdirSync, writeFileSync} from 'node:fs';
+
 import {createCanvas, loadImage, version} from 'canvas';
-import {readdirSync, writeFileSync} from 'fs';
 
 const FAILED_SCREENSHOTS_PATH = 'projects/demo-playwright/tests-results';
 const DIFF_IMAGE_POSTFIX = '-diff.png';

@@ -1,3 +1,5 @@
+import {join} from 'node:path';
+
 import {HostTree} from '@angular-devkit/schematics';
 import {SchematicTestRunner, UnitTestTree} from '@angular-devkit/schematics/testing';
 import type {TuiSchema} from '@taiga-ui/cdk/schematics/ng-add/schema';
@@ -8,7 +10,6 @@ import {
     saveActiveProject,
     setActiveProject,
 } from 'ng-morph';
-import {join} from 'path';
 
 import {createAngularJsonWithAssets} from '../../../utils/create-angular-json';
 

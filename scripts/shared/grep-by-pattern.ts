@@ -1,5 +1,5 @@
-import * as child_process from 'child_process';
-import * as util from 'util';
+import * as child_process from 'node:child_process';
+import * as util from 'node:util';
 
 interface Options {
     excludePattern?: string;

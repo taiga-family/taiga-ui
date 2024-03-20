@@ -1,3 +1,5 @@
+import {join} from 'node:path';
+
 import {HostTree} from '@angular-devkit/schematics';
 import {SchematicTestRunner, UnitTestTree} from '@angular-devkit/schematics/testing';
 import {
@@ -6,7 +8,6 @@ import {
     saveActiveProject,
     setActiveProject,
 } from 'ng-morph';
-import {join} from 'path';
 
 import type {TuiSchema} from '../../../../ng-add/schema';
 

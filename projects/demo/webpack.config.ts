@@ -47,7 +47,7 @@ const DO_NOT_MUTATE_RAW_FILE_CONTENTS = ['*.ts', '*.less', '*.html'];
  *
  * instead of:
  */
-const crypto = require('crypto');
+const crypto = require('node:crypto');
 
 const fallbackCreateHash = crypto.createHash;
 

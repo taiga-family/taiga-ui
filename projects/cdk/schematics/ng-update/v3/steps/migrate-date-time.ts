@@ -1,6 +1,7 @@
+import {performance} from 'node:perf_hooks';
+
 import type {CallExpression, Identifier} from 'ng-morph';
 import {Node, SyntaxKind} from 'ng-morph';
-import {performance} from 'perf_hooks';
 
 import type {TuiSchema} from '../../../ng-add/schema';
 import {

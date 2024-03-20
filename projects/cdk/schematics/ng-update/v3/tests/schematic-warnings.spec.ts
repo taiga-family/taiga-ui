@@ -1,3 +1,5 @@
+import {join} from 'node:path';
+
 import type {LogEntry} from '@angular-devkit/core/src/logger/logger';
 import {HostTree} from '@angular-devkit/schematics';
 import {SchematicTestRunner, UnitTestTree} from '@angular-devkit/schematics/testing';
@@ -9,7 +11,6 @@ import {
     saveActiveProject,
     setActiveProject,
 } from 'ng-morph';
-import {join} from 'path';
 import type {Subscription} from 'rxjs';
 
 import {createAngularJsonWithAssets} from '../../../utils/create-angular-json';

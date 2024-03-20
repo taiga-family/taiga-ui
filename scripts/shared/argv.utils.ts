@@ -1,4 +1,4 @@
-import process from 'process';
+import process from 'node:process';
 
 import {processLog} from '../../projects/cdk/schematics/utils/colored-log';
 
