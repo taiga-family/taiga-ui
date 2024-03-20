@@ -23,7 +23,7 @@ describe('InputNumber', () => {
                     formControlName="control"
                     [readOnly]="readOnly"
                     [tuiHintContent]="hintContent"
-                    [tuiNumberFormat]="{decimal, decimalLimit}"
+                    [tuiNumberFormat]="{decimal, precision}"
                     [tuiTextfieldCleaner]="cleaner"
                     [tuiTextfieldSize]="size"
                 >
@@ -46,8 +46,8 @@ describe('InputNumber', () => {
         });
 
         public readOnly = false;
-        public decimal: TuiDecimal = 'never';
-        public decimalLimit = NaN;
+        public decimal: TuiDecimal = 'pad';
+        public precision = NaN;
         public cleaner = true;
         public defaultValues = false;
         public size: TuiSizeL | TuiSizeS = 'm';
@@ -132,8 +132,9 @@ describe('InputNumber', () => {
         });
     });
 
-    it("Non-zero pennies are not shown when decimal = 'never'", async () => {
+    it('Non-zero pennies are not shown when precision = 0', async () => {
         testComponent.control.setValue(12.3);
+        testComponent.precision = 0;
         fixture.detectChanges();
 
         await fixture.whenStable();
@@ -272,6 +273,8 @@ describe('InputNumber', () => {
 
     describe('computedValue | value to display', () => {
         it('The given value from the form is correctly converted to a string', () => {
+            testComponent.precision = 0;
+            fixture.detectChanges();
             testComponent.control.setValue(-12345.67);
 
             expect(component.computedValue).toBe(
@@ -321,7 +324,7 @@ describe('InputNumber', () => {
     describe('Format value when element lose focus with precision > 6', () => {
         beforeEach(() => {
             testComponent.decimal = 'always';
-            testComponent.decimalLimit = 10;
+            testComponent.precision = 10;
             inputPO.sendText('');
             inputPO.focus();
         });
@@ -361,7 +364,7 @@ describe('InputNumber', () => {
             const precision = 2;
 
             testComponent.decimal = 'always';
-            testComponent.decimalLimit = precision;
+            testComponent.precision = precision;
             inputPO.sendText(value);
             inputPO.blur();
 
@@ -373,7 +376,7 @@ describe('InputNumber', () => {
             const precision = 2;
 
             testComponent.decimal = 'always';
-            testComponent.decimalLimit = precision;
+            testComponent.precision = precision;
             inputPO.sendText(value);
             inputPO.blur();
 

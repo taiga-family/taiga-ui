@@ -11,8 +11,7 @@
 <p>
     Usage example:
     <code>
-        [tuiNumberFormat]='&#123;decimal, decimalLimit, rounding, zeroPadding, thousandSeparator,
-        decimalSeparator&#125;'
+        [tuiNumberFormat]='&#123;decimal, precision, rounding, zeroPadding, thousandSeparator, decimalSeparator&#125;'
     </code>
 </p>
 <p>
@@ -42,24 +41,13 @@
     </ng-template>
     <ng-template
         documentationPropertyMode="input"
-        documentationPropertyName="decimalLimit"
+        documentationPropertyName="precision"
         documentationPropertyType="number"
-        [(documentationPropertyValue)]="documentedComponent.decimalLimit"
+        [(documentationPropertyValue)]="documentedComponent.precision"
     >
         A number of digits after comma (
         <code>Infinity</code>
         for an untouched decimal part)
-    </ng-template>
-    <ng-template
-        documentationPropertyMode="input"
-        documentationPropertyName="zeroPadding"
-        documentationPropertyType="boolean"
-        [(documentationPropertyValue)]="documentedComponent.zeroPadding"
-    >
-        If number of digits after
-        <code>decimalSeparator</code>
-        is always equal to the
-        <code>decimalLimit</code>
     </ng-template>
     <ng-template
         documentationPropertyMode="input"

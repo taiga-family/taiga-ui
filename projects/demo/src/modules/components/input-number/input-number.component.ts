@@ -19,7 +19,7 @@ import {AbstractExampleTuiNumberFormat} from '../abstract/number-format';
 })
 export class ExampleTuiInputNumberComponent extends AbstractExampleTuiNumberFormat {
     public override cleaner = false;
-    public override decimalLimit = 2;
+    public override precision = 2;
 
     public readonly control = new FormControl(6432, Validators.required);
 

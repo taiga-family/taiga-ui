@@ -10,7 +10,7 @@ import {tuiInputNumberOptionsProvider} from '@taiga-ui/kit';
     changeDetection,
     providers: [
         tuiInputNumberOptionsProvider({
-            decimal: 'never',
+            precision: 0,
             step: 1,
         }),
     ],

@@ -9,7 +9,7 @@ export interface TuiNumberFormatSettings {
      * Number of digits of decimal part.
      * @note Use `Infinity` to keep untouched.
      */
-    readonly decimalLimit: number;
+    readonly precision: number;
     /**
      * Separator between the integer and the decimal part.
      * @example 0,42 (',' by default)
@@ -24,10 +24,6 @@ export interface TuiNumberFormatSettings {
      * @example 360 000 (' ' by default)
      */
     readonly thousandSeparator: string;
-    /**
-     * Enable zeros at the end of decimal part.
-     */
-    readonly zeroPadding: boolean;
     /**
      * Decimal part display mode. ('not-zero' by default)
      */

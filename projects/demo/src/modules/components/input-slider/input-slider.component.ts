@@ -19,7 +19,7 @@ import {AbstractExampleTuiNumberFormat} from '../abstract/number-format';
             provide: ABSTRACT_PROPS_ACCESSOR,
             useExisting: forwardRef(() => ExampleTuiInputSliderComponent),
         },
-        tuiDocExcludeProperties(['decimal', 'decimalLimit', 'zeroPadding']),
+        tuiDocExcludeProperties(['precision']),
     ],
 })
 export class ExampleTuiInputSliderComponent extends AbstractExampleTuiNumberFormat {

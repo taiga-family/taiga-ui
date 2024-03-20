@@ -1,5 +1,5 @@
 ```html
 <tui-input-number
-  [tuiNumberFormat]="{decimal, decimalLimit, zeroPadding, rounding, thousandSeparator, decimalSeparator}"
+  [tuiNumberFormat]="{decimal, precision, zeroPadding, rounding, thousandSeparator, decimalSeparator}"
 ></tui-input-number>
 ```

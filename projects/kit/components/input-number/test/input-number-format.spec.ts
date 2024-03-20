@@ -15,7 +15,7 @@ describe('InputNumber - backward compatibility for separators', () => {
             <ng-container [formGroup]="form">
                 <tui-input-number
                     formControlName="control"
-                    [tuiNumberFormat]="{decimal, decimalLimit}"
+                    [tuiNumberFormat]="{decimal, precision}"
                 ></tui-input-number>
             </ng-container>
         `,
@@ -28,7 +28,7 @@ describe('InputNumber - backward compatibility for separators', () => {
         public form = new FormGroup({control: this.control});
 
         public decimal: TuiDecimal = 'always';
-        public decimalLimit = 2;
+        public precision = 2;
     }
 
     let fixture: ComponentFixture<TestComponent>;

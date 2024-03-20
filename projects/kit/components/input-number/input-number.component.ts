@@ -41,7 +41,7 @@ import {
     TUI_TEXTFIELD_SIZE,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
     tuiFormatNumber,
-    tuiGetFractionPartPadded,
+    // tuiGetFractionPartPadded,
     TuiPrimitiveTextfieldComponent,
 } from '@taiga-ui/core';
 import {PolymorpheusOutletDirective} from '@tinkoff/ng-polymorpheus';
@@ -119,12 +119,12 @@ export class TuiInputNumberComponent
             return 'text';
         }
 
-        return this.numberFormat.decimal === 'never' ? 'numeric' : 'decimal';
+        return !this.precision ? 'numeric' : 'decimal';
     }
 
     public get calculatedMaxLength(): number {
         const decimalPart =
-            this.numberFormat.decimal !== 'never' &&
+            !!this.precision &&
             this.nativeValue.includes(this.numberFormat.decimalSeparator);
         const precision = decimalPart ? Math.min(this.precision + 1, 20) : 0;
         const takeThousand = this.numberFormat.thousandSeparator.repeat(5).length;
@@ -275,27 +275,11 @@ export class TuiInputNumberComponent
     }
 
     protected getFormattedValue(value: number): string {
-        const absValue = Math.abs(value);
-        const hasFraction = absValue % 1 > 0;
-        let decimalLimit =
-            this.numberFormat.decimal === 'always' ||
-            (hasFraction && this.numberFormat.decimal !== 'never')
-                ? this.precision
-                : 0;
-
-        const fraction = hasFraction
-            ? tuiGetFractionPartPadded(value, this.precision)
-            : '';
-
-        if (this.focused && this.numberFormat.decimal !== 'always') {
-            decimalLimit = fraction.length;
-        }
-
         return (
             this.computedPrefix +
             tuiFormatNumber(value, {
                 ...this.numberFormat,
-                decimalLimit,
+                precision: this.precision,
             }).replace(CHAR_HYPHEN, CHAR_MINUS) +
             this.computedPostfix
         );
@@ -314,9 +298,9 @@ export class TuiInputNumberComponent
     }
 
     private get precision(): number {
-        return Number.isNaN(this.numberFormat.decimalLimit)
+        return Number.isNaN(this.numberFormat.precision)
             ? 2
-            : this.numberFormat.decimalLimit;
+            : this.numberFormat.precision;
     }
 
     @tuiPure
@@ -353,7 +337,7 @@ export class TuiInputNumberComponent
             max,
             prefix,
             postfix,
-            precision: decimalMode === 'never' ? 0 : precision,
+            precision,
             decimalZeroPadding: decimalMode === 'always',
         };
         const {plugins, ...options} = maskitoNumberOptionsGenerator(generatorParams);

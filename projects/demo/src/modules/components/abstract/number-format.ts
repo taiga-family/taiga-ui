@@ -5,9 +5,9 @@ import {TUI_DEFAULT_NUMBER_FORMAT} from '@taiga-ui/core';
 import {AbstractExampleTuiControl} from './control';
 
 export abstract class AbstractExampleTuiNumberFormat extends AbstractExampleTuiControl {
-    public decimalLimit = TUI_DEFAULT_NUMBER_FORMAT.decimalLimit;
+    public precision = TUI_DEFAULT_NUMBER_FORMAT.precision;
 
-    public readonly decimalVariants: TuiDecimal[] = ['always', 'never', 'not-zero'];
+    public readonly decimalVariants: TuiDecimal[] = ['always', 'pad', 'not-zero'];
     public decimal = TUI_DEFAULT_NUMBER_FORMAT.decimal;
 
     public readonly roundingVariants: TuiRounding[] = [
@@ -21,5 +21,4 @@ export abstract class AbstractExampleTuiNumberFormat extends AbstractExampleTuiC
 
     public decimalSeparator = TUI_DEFAULT_NUMBER_FORMAT.decimalSeparator;
     public thousandSeparator = TUI_DEFAULT_NUMBER_FORMAT.thousandSeparator;
-    public zeroPadding = TUI_DEFAULT_NUMBER_FORMAT.zeroPadding;
 }
