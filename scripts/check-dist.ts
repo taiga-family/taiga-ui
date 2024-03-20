@@ -1,5 +1,5 @@
-import * as path from 'path';
-import * as process from 'process';
+import * as path from 'node:path';
+import * as process from 'node:process';
 
 import {getValueByFlag, hasFlag} from './shared/argv.utils';
 import {checkImportWithSrc} from './shared/check-import-with-src';

@@ -1,5 +1,6 @@
-import {readdirSync, unlinkSync} from 'fs';
-import * as path from 'path';
+import {readdirSync, unlinkSync} from 'node:fs';
+import * as path from 'node:path';
+
 import type {Config} from 'prettier';
 
 import {

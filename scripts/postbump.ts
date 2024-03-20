@@ -1,4 +1,4 @@
-import {resolve} from 'path';
+import {resolve} from 'node:path';
 
 import {version} from '../package.json';
 import {execute} from './shared/execute';

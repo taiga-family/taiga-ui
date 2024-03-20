@@ -1,4 +1,5 @@
-import {readFileSync, writeFileSync} from 'fs';
+import {readFileSync, writeFileSync} from 'node:fs';
+
 import type {Options as PrettierOptions} from 'prettier';
 import prettier from 'prettier';
 

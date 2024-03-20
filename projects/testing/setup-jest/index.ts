@@ -1,6 +1,6 @@
 /// <reference types="jest" />
 
-const {TextEncoder: TextEncoderMock, TextDecoder: TextDecoderMock} = require('util');
+const {TextEncoder: TextEncoderMock, TextDecoder: TextDecoderMock} = require('node:util');
 
 global.TextEncoder = TextEncoderMock;
 global.TextDecoder = TextDecoderMock;

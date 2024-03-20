@@ -1,7 +1,8 @@
+import {performance} from 'node:perf_hooks';
+
 import type {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {chain} from '@angular-devkit/schematics';
 import {getPackageJsonDependency, saveActiveProject} from 'ng-morph';
-import {performance} from 'perf_hooks';
 
 import {
     TAIGA_GLOBAL_NEW_STYLE,
