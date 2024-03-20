@@ -1,6 +1,11 @@
 import {isPlatformBrowser, LocationStrategy, PathLocationStrategy} from '@angular/common';
 import type {ApplicationConfig} from '@angular/core';
-import {importProvidersFrom, inject, PLATFORM_ID} from '@angular/core';
+import {
+    importProvidersFrom,
+    inject,
+    PLATFORM_ID,
+    provideZoneChangeDetection,
+} from '@angular/core';
 import {Title} from '@angular/platform-browser';
 import {provideAnimations} from '@angular/platform-browser/animations';
 import {provideRouter, type UrlTree, withInMemoryScrolling} from '@angular/router';
@@ -220,5 +225,9 @@ export const config: ApplicationConfig = {
                     `dist/i18n/esm2022/languages/${language}`
                 ),
         ),
+        provideZoneChangeDetection({
+            eventCoalescing: false,
+            runCoalescing: false,
+        }),
     ],
 };
