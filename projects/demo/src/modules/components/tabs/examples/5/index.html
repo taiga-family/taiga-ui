@@ -21,9 +21,9 @@
             <ng-template #submenu>
                 <button
                     *tuiItem
-                    tuiDropdownOpen
                     tuiTab
                     [tuiDropdown]="dropdown"
+                    [(tuiDropdownOpen)]="open"
                     (tui-tab-activate)="stop($event)"
                 >
                     Collaborators
