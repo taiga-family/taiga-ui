@@ -121,7 +121,7 @@ export const ROUTES: Routes = [
     route({
         path: 'components/avatar',
         title: 'Avatar',
-        loadComponent: async () => import('../components/avatar/avatar.component'),
+        loadComponent: async () => import('../components/avatar'),
     }),
     route({
         path: 'components/badge',

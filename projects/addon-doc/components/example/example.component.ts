@@ -1,4 +1,5 @@
 import {Clipboard} from '@angular/cdk/clipboard';
+import type {Type} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -6,6 +7,7 @@ import {
     inject,
     Input,
 } from '@angular/core';
+import type {DefaultExport} from '@angular/router';
 import {LOCATION} from '@ng-web-apis/common';
 import type {TuiDocExample} from '@taiga-ui/addon-doc/interfaces';
 import {
@@ -20,8 +22,9 @@ import {TUI_IS_E2E} from '@taiga-ui/cdk';
 import {TuiAlertService} from '@taiga-ui/core';
 import {TUI_COPY_TEXTS} from '@taiga-ui/kit';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import type {Observable} from 'rxjs';
-import {BehaviorSubject, map, Subject, switchMap} from 'rxjs';
+import {BehaviorSubject, map, ReplaySubject, Subject, switchMap} from 'rxjs';
 
 import {TUI_DOC_EXAMPLE_OPTIONS} from './example.options';
 
@@ -38,6 +41,9 @@ export class TuiDocExampleComponent {
     private readonly copyTexts$ = inject(TUI_COPY_TEXTS);
     private readonly processContent = inject(TUI_DOC_EXAMPLE_CONTENT_PROCESSOR);
     private readonly rawLoader$$ = new BehaviorSubject<TuiDocExample>({});
+    private readonly lazyLoader$$ = new ReplaySubject<Promise<{readonly default: any}>>(
+        1,
+    );
 
     @Input()
     public id: string | null = null;
@@ -78,11 +84,25 @@ export class TuiDocExampleComponent {
             map(value => this.processContent(value)),
         );
 
+    protected readonly lazyComponent$ = this.lazyLoader$$.pipe(
+        switchMap(async lazyImport =>
+            lazyImport.then(
+                (module: DefaultExport<Type<any>>) =>
+                    new PolymorpheusComponent(module.default),
+            ),
+        ),
+    );
+
     protected readonly loading$ = new Subject<boolean>();
 
     @Input()
     public set content(content: TuiDocExample) {
         this.rawLoader$$.next(content);
+    }
+
+    @Input()
+    public set component(content: Promise<{readonly default: any}>) {
+        this.lazyLoader$$.next(content);
     }
 
     protected readonly visible = (files: Record<string, string>): boolean =>

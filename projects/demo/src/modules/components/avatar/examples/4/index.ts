@@ -8,7 +8,6 @@ import {TuiAvatarComponent, TuiAvatarStackComponent} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    selector: 'tui-avatar-example-4',
     imports: [
         TuiAvatarStackComponent,
         NgForOf,
@@ -20,7 +19,7 @@ import {TuiAvatarComponent, TuiAvatarStackComponent} from '@taiga-ui/kit';
     encapsulation,
     changeDetection,
 })
-export class TuiAvatarExample4 {
+export default class ExampleComponent {
     protected readonly names = ['Jason Statham', 'Silvester Stallone', 'Jackie Chan'];
     protected readonly sizes: ReadonlyArray<TuiSizeXS | TuiSizeXXL> = [
         'xxl',
