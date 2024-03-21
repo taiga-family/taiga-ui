@@ -1,5 +1,4 @@
 import {Clipboard} from '@angular/cdk/clipboard';
-import type {Type} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -7,7 +6,6 @@ import {
     inject,
     Input,
 } from '@angular/core';
-import type {DefaultExport} from '@angular/router';
 import {LOCATION} from '@ng-web-apis/common';
 import type {TuiDocExample} from '@taiga-ui/addon-doc/interfaces';
 import {
@@ -24,7 +22,7 @@ import {TUI_COPY_TEXTS} from '@taiga-ui/kit';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import type {Observable} from 'rxjs';
-import {BehaviorSubject, map, ReplaySubject, Subject, switchMap} from 'rxjs';
+import {BehaviorSubject, map, ReplaySubject, Subject, switchAll, switchMap} from 'rxjs';
 
 import {TUI_DOC_EXAMPLE_OPTIONS} from './example.options';
 
@@ -85,12 +83,8 @@ export class TuiDocExampleComponent {
         );
 
     protected readonly lazyComponent$ = this.lazyLoader$$.pipe(
-        switchMap(async lazyImport =>
-            lazyImport.then(
-                (module: DefaultExport<Type<any>>) =>
-                    new PolymorpheusComponent(module.default),
-            ),
-        ),
+        switchAll(),
+        map(module => new PolymorpheusComponent(module.default)),
     );
 
     protected readonly loading$ = new Subject<boolean>();
@@ -121,11 +115,8 @@ export class TuiDocExampleComponent {
 
     protected edit(files: Record<string, string>): void {
         this.loading$.next(true);
-        this.codeEditor
+        void this.codeEditor
             ?.edit(this.componentName, this.id || '', files)
-            // TODO: replace lines below with `finally` when we bump Firefox to 58+
-            // TODO: Add `es2018.promise` to `tsconfig.json` => `compilerOptions.lib`.
-            .then(() => this.loading$.next(false))
-            .catch(() => this.loading$.next(false));
+            .finally(() => this.loading$.next(false));
     }
 }
