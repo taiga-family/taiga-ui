@@ -1,10 +1,10 @@
 import {NgModule} from '@angular/core';
-import {TuiSvgModule} from '@taiga-ui/core';
+import {TuiIconComponent} from '@taiga-ui/core';
 
 import {TuiDocTabComponent} from './doc-tab.component';
 
 @NgModule({
-    imports: [TuiSvgModule],
+    imports: [TuiIconComponent],
     declarations: [TuiDocTabComponent],
     exports: [TuiDocTabComponent],
 })
