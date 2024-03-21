@@ -16,7 +16,7 @@
         "@nguniversal/express-engine": "16.2.0",
         "@stackblitz/sdk": "1.9.0",
         "@tinkoff/ng-dompurify": "4.0.0",
-        "date-fns": "3.4.0",
+        "date-fns": "3.6.0",
         "rxjs": "7.5.0"
     },
     "devDependencies": {
