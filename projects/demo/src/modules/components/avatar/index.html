@@ -7,62 +7,59 @@
         <tui-doc-example
             id="content"
             heading="Content types"
-            [content]="example1"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample"
         >
             <tui-notification class="tui-space_bottom-4">
                 This example requires import of
                 <code>TuiFallbackSrcPipe</code>
             </tui-notification>
-            <tui-avatar-example-1 />
         </tui-doc-example>
 
         <tui-doc-example
             id="color"
             heading="Colors"
-            [content]="example2"
+            [component]="2 | tuiComponent"
+            [content]="2 | tuiExample"
         >
             <tui-notification class="tui-space_bottom-4">
                 This example requires import of
                 <code>TuiFadeDirective</code>
             </tui-notification>
-            <tui-avatar-example-2 />
         </tui-doc-example>
 
         <tui-doc-example
             id="size"
             heading="Sizes"
-            [content]="example3"
-        >
-            <tui-avatar-example-3 />
-        </tui-doc-example>
+            [component]="3 | tuiComponent"
+            [content]="3 | tuiExample"
+        />
 
         <tui-doc-example
             id="stacking"
             heading="Stacking"
-            [content]="example4"
+            [component]="4 | tuiComponent"
+            [content]="4 | tuiExample: 'html,ts'"
         >
             <tui-notification class="tui-space_bottom-4">
                 This example requires import of
                 <code>TuiAvatarStackModule</code>
             </tui-notification>
-            <tui-avatar-example-4 />
         </tui-doc-example>
 
         <tui-doc-example
             id="options"
             heading="Options with DI"
-            [content]="example5"
-        >
-            <tui-avatar-example-5 />
-        </tui-doc-example>
+            [component]="5 | tuiComponent"
+            [content]="5 | tuiExample: 'html,ts'"
+        />
 
         <tui-doc-example
             id="labeled"
             heading="Labeled"
-            [content]="example6"
-        >
-            <tui-avatar-example-6 />
-        </tui-doc-example>
+            [component]="6 | tuiComponent"
+            [content]="6 | tuiExample"
+        />
     </ng-template>
 
     <ng-template pageTab>

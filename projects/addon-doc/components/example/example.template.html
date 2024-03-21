@@ -106,6 +106,9 @@
         class="t-demo"
     >
         <ng-content />
+        <ng-container *polymorpheusOutlet="lazyComponent$ | async as text">
+            {{ text }}
+        </ng-container>
     </div>
 </ng-template>
 

@@ -11,7 +11,6 @@ import {
 
 @Component({
     standalone: true,
-    selector: 'tui-avatar-example-6',
     imports: [
         AsyncPipe,
         TuiFallbackSrcPipe,
@@ -24,4 +23,4 @@ import {
     encapsulation,
     changeDetection,
 })
-export class TuiAvatarExample6 {}
+export default class ExampleComponent {}

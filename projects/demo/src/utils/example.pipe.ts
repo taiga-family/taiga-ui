@@ -3,7 +3,7 @@ import {inject, Pipe} from '@angular/core';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiDocPageComponent} from '@taiga-ui/addon-doc';
 
-const toKebab: (str: string) => string = str =>
+export const toKebab: (str: string) => string = str =>
     str.replaceAll(
         /[A-Z]+(?![a-z])|[A-Z]/g,
         ($, ofs) => (ofs ? '-' : '') + $.toLowerCase(),

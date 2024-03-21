@@ -7,11 +7,10 @@ import {TuiAvatarComponent} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    selector: 'tui-avatar-example-1',
     imports: [TuiAvatarComponent, TuiFallbackSrcPipe, AsyncPipe],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiAvatarExample1 {}
+export default class ExampleComponent {}

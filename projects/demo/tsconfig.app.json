@@ -1,7 +1,7 @@
 {
     "extends": "../../tsconfig.json",
     "files": ["src/main.ts", "src/polyfills.ts"],
-    "include": ["**/*.d.ts"],
+    "include": ["**/*.d.ts", "**/examples/**/index.ts"],
     "angularCompilerOptions": {
         "strictMetadataEmit": false,
         "compilationMode": "full"
