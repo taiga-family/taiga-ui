@@ -2,6 +2,7 @@
 <tui-tabs
     class="t-tabs"
     [activeItemIndex]="activeItemIndex"
+    [size]="size"
     [underline]="underline"
     (activeItemIndexChange)="onActiveItemIndexChange($event)"
     (keydown.arrowRight)="onArrowRight($event)"
@@ -46,6 +47,7 @@
     <div
         #element
         class="t-dropdown"
+        [attr.data-size]="size"
         (keydown.arrowDown.prevent)="onWrapperArrow($event, element, false)"
         (keydown.arrowUp.prevent)="onWrapperArrow($event, element, true)"
     >

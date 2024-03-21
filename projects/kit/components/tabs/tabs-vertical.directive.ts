@@ -9,7 +9,7 @@ import {TuiTabsDirective} from './tabs.directive';
     hostDirectives: [
         {
             directive: TuiTabsDirective,
-            inputs: ['activeItemIndex'],
+            inputs: ['activeItemIndex', 'size'],
             outputs: ['activeItemIndexChange'],
         },
     ],

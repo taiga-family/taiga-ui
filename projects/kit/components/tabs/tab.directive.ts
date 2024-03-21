@@ -3,10 +3,9 @@ import {Directive, ElementRef, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {RouterLinkActive} from '@angular/router';
 import {MutationObserverService} from '@ng-web-apis/mutation-observer';
-import {tuiCreateToken, tuiIsNativeFocused, tuiTypedFromEvent} from '@taiga-ui/cdk';
+import {tuiIsNativeFocused, tuiTypedFromEvent} from '@taiga-ui/cdk';
 import {EMPTY, filter, merge} from 'rxjs';
 
-export const TUI_TAB_MARGIN = tuiCreateToken(24);
 export const TUI_TAB_ACTIVATE = 'tui-tab-activate';
 
 @Directive({
@@ -14,7 +13,6 @@ export const TUI_TAB_ACTIVATE = 'tui-tab-activate';
     selector:
         'a[tuiTab]:not([routerLink]), a[tuiTab][routerLink][routerLinkActive], button[tuiTab]',
     host: {
-        '[style.--tui-tab-margin.px]': 'margin',
         type: 'button',
     },
 })
@@ -27,7 +25,6 @@ export class TuiTabDirective implements OnDestroy {
             filter(() => !!this.rla?.isActive),
         );
 
-    protected readonly margin = inject(TUI_TAB_MARGIN);
     protected readonly sub = merge(
         this.observer || EMPTY,
         this.rla?.isActiveChange.pipe(filter(Boolean)) || EMPTY,
