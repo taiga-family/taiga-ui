@@ -24,9 +24,9 @@ export class TuiFormatNumberPipe implements PipeTransform {
             map(format =>
                 tuiFormatNumber(value, {
                     ...format,
-                    decimalLimit: Number.isNaN(format.decimalLimit)
+                    precision: Number.isNaN(format.precision)
                         ? Infinity
-                        : format.decimalLimit,
+                        : format.precision,
                     ...settings,
                 }),
             ),

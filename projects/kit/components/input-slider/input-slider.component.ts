@@ -20,7 +20,7 @@ import {
     tuiPure,
     tuiRound,
 } from '@taiga-ui/cdk';
-import type {TuiDecimal, TuiWithOptionalMinMax} from '@taiga-ui/core';
+import type {TuiWithOptionalMinMax} from '@taiga-ui/core';
 import {
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
@@ -118,10 +118,6 @@ export class TuiInputSliderComponent
 
     protected get precision(): number {
         return tuiGetFractionPartPadded(this.quantum).length;
-    }
-
-    protected get decimal(): TuiDecimal {
-        return this.precision ? 'not-zero' : 'never';
     }
 
     protected get showValueContent(): boolean {

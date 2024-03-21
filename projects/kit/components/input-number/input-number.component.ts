@@ -33,7 +33,7 @@ import {
     tuiPure,
     tuiWatch,
 } from '@taiga-ui/cdk';
-import type {TuiDecimal, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import type {TuiDecimalMode, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_DEFAULT_NUMBER_FORMAT,
@@ -41,7 +41,6 @@ import {
     TUI_TEXTFIELD_SIZE,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
     tuiFormatNumber,
-    tuiGetFractionPartPadded,
     TuiPrimitiveTextfieldComponent,
 } from '@taiga-ui/core';
 import {PolymorpheusOutletDirective} from '@tinkoff/ng-polymorpheus';
@@ -86,12 +85,6 @@ export class TuiInputNumberComponent
     public max: number | null = this.options.max;
 
     @Input()
-    public decimal = this.options.decimal;
-
-    @Input()
-    public precision = this.options.precision;
-
-    @Input()
     public step = this.options.step;
 
     @ContentChildren(PolymorpheusOutletDirective, {descendants: true})
@@ -125,12 +118,12 @@ export class TuiInputNumberComponent
             return 'text';
         }
 
-        return this.decimal === 'never' ? 'numeric' : 'decimal';
+        return !this.precision ? 'numeric' : 'decimal';
     }
 
     public get calculatedMaxLength(): number {
         const decimalPart =
-            this.decimal !== 'never' &&
+            !!this.precision &&
             this.nativeValue.includes(this.numberFormat.decimalSeparator);
         const precision = decimalPart ? Math.min(this.precision + 1, 20) : 0;
         const takeThousand = this.numberFormat.thousandSeparator.repeat(5).length;
@@ -220,7 +213,7 @@ export class TuiInputNumberComponent
     protected get mask(): MaskitoOptions {
         return this.calculateMask(
             this.precision,
-            this.decimal,
+            this.numberFormat.decimalMode,
             this.numberFormat.decimalSeparator,
             this.numberFormat.thousandSeparator,
             this.computedMin,
@@ -281,26 +274,11 @@ export class TuiInputNumberComponent
     }
 
     protected getFormattedValue(value: number): string {
-        const absValue = Math.abs(value);
-        const hasFraction = absValue % 1 > 0;
-        let decimalLimit =
-            this.decimal === 'always' || (hasFraction && this.decimal !== 'never')
-                ? this.precision
-                : 0;
-
-        const fraction = hasFraction
-            ? tuiGetFractionPartPadded(value, this.precision)
-            : '';
-
-        if (this.focused && this.decimal !== 'always') {
-            decimalLimit = fraction.length;
-        }
-
         return (
             this.computedPrefix +
             tuiFormatNumber(value, {
                 ...this.numberFormat,
-                decimalLimit,
+                precision: this.precision,
             }).replace(CHAR_HYPHEN, CHAR_MINUS) +
             this.computedPostfix
         );
@@ -316,6 +294,12 @@ export class TuiInputNumberComponent
 
     private get nativeNumberValue(): number {
         return maskitoParseNumber(this.nativeValue, this.numberFormat.decimalSeparator);
+    }
+
+    private get precision(): number {
+        return Number.isNaN(this.numberFormat.precision)
+            ? 2
+            : this.numberFormat.precision;
     }
 
     @tuiPure
@@ -337,7 +321,7 @@ export class TuiInputNumberComponent
     @tuiPure
     private calculateMask(
         precision: number,
-        decimalMode: TuiDecimal,
+        decimalMode: TuiDecimalMode,
         decimalSeparator: string,
         thousandSeparator: string,
         min: number,
@@ -352,7 +336,7 @@ export class TuiInputNumberComponent
             max,
             prefix,
             postfix,
-            precision: decimalMode === 'never' ? 0 : precision,
+            precision,
             decimalZeroPadding: decimalMode === 'always',
         };
         const {plugins, ...options} = maskitoNumberOptionsGenerator(generatorParams);

@@ -1810,6 +1810,12 @@ export const ROUTES: Routes = [
             title: 'TextfieldController',
         },
     },
+    route({
+        path: 'directives/number-format',
+        title: 'NumberFormat',
+        loadComponent: async () =>
+            import('../directives/number-format/number-format.component'),
+    }),
 
     // UTILS
     {

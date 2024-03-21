@@ -2,12 +2,13 @@ import {Component, forwardRef} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
+import {tuiDocExcludeProperties} from '@taiga-ui/addon-doc';
 import type {TuiContext} from '@taiga-ui/cdk';
 import type {TuiSizeL} from '@taiga-ui/core';
 import type {TuiKeySteps} from '@taiga-ui/kit';
 
-import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
+import {AbstractExampleTuiNumberFormat} from '../abstract/number-format';
 
 @Component({
     selector: 'example-tui-input-slider',
@@ -18,9 +19,10 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
             provide: ABSTRACT_PROPS_ACCESSOR,
             useExisting: forwardRef(() => ExampleTuiInputSliderComponent),
         },
+        tuiDocExcludeProperties(['precision']),
     ],
 })
-export class ExampleTuiInputSliderComponent extends AbstractExampleTuiControl {
+export class ExampleTuiInputSliderComponent extends AbstractExampleTuiNumberFormat {
     public override readonly sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
     public override size = this.sizeVariants[1];
     public readonly control = new FormControl(0);

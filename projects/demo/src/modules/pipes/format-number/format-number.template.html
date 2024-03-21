@@ -29,36 +29,20 @@
     <ng-template pageTab>
         <p class="text">
             Formatted number:
-            {{ value | tuiFormatNumber: {decimalLimit, decimalSeparator} | async }}
+            {{
+                control.value ?? 0
+                    | tuiFormatNumber
+                        : {precision, decimalMode: decimalMode, rounding, thousandSeparator, decimalSeparator}
+                    | async
+            }}
         </p>
-        <tui-input-slider
+        <tui-input-number
             tuiTextfieldSize="m"
-            class="slider"
-            [max]="10000000"
-            [quantum]="0.111"
+            class="input-number"
+            [formControl]="control"
             [tuiTextfieldLabelOutside]="true"
-            [(ngModel)]="value"
         />
-        <tui-doc-documentation>
-            <ng-template
-                documentationPropertyName="decimalLimit"
-                documentationPropertyType="number"
-                [documentationPropertyValues]="decimalLimitVariants"
-                [(documentationPropertyValue)]="decimalLimit"
-            >
-                Digits after comma (use
-                <code>Infinity</code>
-                not to change)
-            </ng-template>
-            <ng-template
-                documentationPropertyName="decimalSeparator"
-                documentationPropertyType="TuiDecimalSymbol"
-                [documentationPropertyValues]="decimalSeparatorVariants"
-                [(documentationPropertyValue)]="decimalSeparator"
-            >
-                Symbol for separating fraction
-            </ng-template>
-        </tui-doc-documentation>
+        <number-format-documentation />
     </ng-template>
 
     <ng-template pageTab>

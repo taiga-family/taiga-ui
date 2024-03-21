@@ -3,14 +3,14 @@ import {inject, Pipe} from '@angular/core';
 import type {TuiCurrencyVariants} from '@taiga-ui/addon-commerce/types';
 import {tuiFormatCurrency, tuiFormatSignSymbol} from '@taiga-ui/addon-commerce/utils';
 import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
-import type {TuiDecimal, TuiHorizontalDirection} from '@taiga-ui/core';
+import type {TuiHorizontalDirection} from '@taiga-ui/core';
 import {TUI_NUMBER_FORMAT, tuiFormatNumber} from '@taiga-ui/core';
 import type {Observable} from 'rxjs';
 import {map} from 'rxjs';
 
 import {TUI_AMOUNT_OPTIONS} from './amount.options';
 
-const DEFAULT_DECIMAL_LIMIT = 2;
+const DEFAULT_PRECISION = 2;
 
 @Pipe({
     name: 'tuiAmount',
@@ -31,13 +31,9 @@ export class TuiAmountPipe implements PipeTransform {
                 const currencySymbol = tuiFormatCurrency(currency);
                 const formatted = tuiFormatNumber(Math.abs(value), {
                     ...format,
-                    decimalLimit: this.getDecimalLimit(
-                        value,
-                        Number.isNaN(format.decimalLimit)
-                            ? DEFAULT_DECIMAL_LIMIT
-                            : format.decimalLimit,
-                        format?.decimal || 'not-zero',
-                    ),
+                    precision: Number.isNaN(format.precision)
+                        ? DEFAULT_PRECISION
+                        : format.precision,
                 });
                 const space =
                     currencySymbol?.length > 1 || currencyAlign === 'right'
@@ -49,9 +45,5 @@ export class TuiAmountPipe implements PipeTransform {
                     : `${sign}${currencySymbol}${space}${formatted}`;
             }),
         );
-    }
-
-    private getDecimalLimit(value: number, limit: number, decimal: TuiDecimal): number {
-        return decimal === 'always' || (decimal === 'not-zero' && value % 1) ? limit : 0;
     }
 }

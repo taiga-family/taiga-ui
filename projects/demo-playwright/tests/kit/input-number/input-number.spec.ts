@@ -84,11 +84,11 @@ test.describe('InputNumber', () => {
     });
 
     test.describe('Caret navigation', () => {
-        test.describe('if user tries to erase padded decimal zeroes (decimal="always"), mask triggers caret navigation', () => {
+        test.describe('if user tries to erase padded decimal zeroes (decimalMode="always"), mask triggers caret navigation', () => {
             test.beforeEach(async ({page}) => {
                 await tuiGoto(
                     page,
-                    '/components/input-number/API?decimal=always&precision=2',
+                    '/components/input-number/API?decimalMode=always&precision=2',
                 );
 
                 example = new TuiDocumentationApiPagePO(page).apiPageExample;
@@ -134,7 +134,7 @@ test.describe('InputNumber', () => {
 
         test.describe('if user tries to erase thousand separator, mask triggers caret navigation', () => {
             test.beforeEach(async ({page}) => {
-                await tuiGoto(page, '/components/input-number/API?decimal=not-zero');
+                await tuiGoto(page, '/components/input-number/API?decimalMode=not-zero');
 
                 example = new TuiDocumentationApiPagePO(page).apiPageExample;
                 input = example.getByTestId('tui-primitive-textfield__native-input');
@@ -319,58 +319,79 @@ test.describe('InputNumber', () => {
             input = example.getByTestId('tui-primitive-textfield__native-input');
         });
 
-        test('Value 42 (decimal=not-zero) => 42', async ({page}) => {
+        test('Value 42 (decimalMode=not-zero) => 42', async ({page}) => {
             await tuiGoto(
                 page,
-                'components/input-number/API?precision=2&decimal=not-zero',
+                'components/input-number/API?precision=2&decimalMode=not-zero',
             );
 
             await input.fill('42');
+            await expect(input).toHaveValue('42');
             await expect(input).toHaveJSProperty('selectionStart', 2);
             await expect(input).toHaveJSProperty('selectionEnd', 2);
             await expect(example).toHaveScreenshot('26-input-number.png');
         });
 
-        test('Value 42,1 (decimal=not-zero) => 42,10', async ({page}) => {
+        test('Value 42,1 (decimalMode=not-zero) => 42,1', async ({page}) => {
             await tuiGoto(
                 page,
-                '/components/input-number/API?precision=2&decimal=not-zero',
+                '/components/input-number/API?precision=2&decimalMode=not-zero',
             );
 
             await input.fill('42,1');
+            await expect(input).toHaveValue('42,1');
             await expect(input).toHaveJSProperty('selectionStart', 4);
             await expect(input).toHaveJSProperty('selectionEnd', 4);
+            await input.blur();
+            await expect(input).toHaveValue('42,1');
             await expect(example).toHaveScreenshot('27-input-number.png');
         });
 
-        test('Value 42,00 (decimal=not-zero) => 42', async ({page}) => {
+        test('Value 42,1 (decimalMode=pad) => 42,10', async ({page}) => {
             await tuiGoto(
                 page,
-                '/components/input-number/API?precision=2&decimal=not-zero',
+                '/components/input-number/API?precision=2&decimalMode=pad',
+            );
+
+            await input.fill('42,1');
+            await expect(input).toHaveValue('42,1');
+            await expect(input).toHaveJSProperty('selectionStart', 4);
+            await expect(input).toHaveJSProperty('selectionEnd', 4);
+            await input.blur();
+            await expect(input).toHaveValue('42,10');
+            await expect(example).toHaveScreenshot('28-input-number.png');
+        });
+
+        test('Value 42,00 (decimalMode=not-zero) => 42', async ({page}) => {
+            await tuiGoto(
+                page,
+                '/components/input-number/API?precision=2&decimalMode=not-zero',
             );
 
             await input.fill('42,00');
             await expect(input).toHaveJSProperty('selectionStart', 5);
             await expect(input).toHaveJSProperty('selectionEnd', 5);
-            await expect(example).toHaveScreenshot('28-input-number.png');
-        });
-
-        test('Value 42 (decimal=never) => 42', async ({page}) => {
-            await tuiGoto(page, '/components/input-number/API?precision=2&decimal=never');
-
-            await input.fill('42');
             await expect(example).toHaveScreenshot('29-input-number.png');
         });
 
-        test('Value 42 (decimal=always) => 42', async ({page}) => {
+        test('Value 42,1 (precision=0) => 42', async ({page}) => {
+            await tuiGoto(page, '/components/input-number/API?precision=0');
+
+            await input.fill('42,1');
+            await expect(input).toHaveValue('42');
+            await expect(example).toHaveScreenshot('30-input-number.png');
+        });
+
+        test('Value 42 (decimalMode=always) => 42.00', async ({page}) => {
             await tuiGoto(
                 page,
-                '/components/input-number/API?precision=2&decimal=always',
+                '/components/input-number/API?precision=2&decimalMode=always',
             );
             await input.fill('42');
+            await expect(input).toHaveValue('42,00');
             await expect(input).toHaveJSProperty('selectionStart', 2);
             await expect(input).toHaveJSProperty('selectionEnd', 2);
-            await expect(example).toHaveScreenshot('30-input-number.png');
+            await expect(example).toHaveScreenshot('31-input-number.png');
         });
 
         test("text field does not contain any digit (only prefix + postfix) => clear text field's value on blur", async ({
@@ -385,7 +406,7 @@ test.describe('InputNumber', () => {
             await expect(input).toHaveValue('$ kg');
             await expect(input).toHaveJSProperty('selectionStart', 1);
             await expect(input).toHaveJSProperty('selectionEnd', 1);
-            await expect(example).toHaveScreenshot('31-input-number.png');
+            await expect(example).toHaveScreenshot('32-input-number.png');
         });
     });
 });

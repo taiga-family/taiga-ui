@@ -16,23 +16,25 @@ export function tuiFormatNumber(
     value: number,
     settings: Partial<TuiNumberFormatSettings> = {},
 ): string {
-    const {decimalLimit, decimalSeparator, thousandSeparator, zeroPadding, rounding} = {
+    const {precision, decimalSeparator, thousandSeparator, decimalMode, rounding} = {
         ...TUI_DEFAULT_NUMBER_FORMAT,
-        decimalLimit: Infinity,
+        decimalMode: 'always',
+        precision: Infinity,
         ...settings,
     };
 
-    const rounded = Number.isFinite(decimalLimit)
-        ? tuiRoundWith({value, precision: decimalLimit, method: rounding})
+    const rounded = Number.isFinite(precision)
+        ? tuiRoundWith({value, precision, method: rounding})
         : value;
     const integerPartString = String(Math.floor(Math.abs(rounded)));
 
-    let fractionPartPadded = tuiGetFractionPartPadded(rounded, decimalLimit);
+    let fractionPartPadded = tuiGetFractionPartPadded(rounded, precision);
+    const hasFraction = Number(fractionPartPadded) > 0;
 
-    if (Number.isFinite(decimalLimit)) {
-        if (zeroPadding) {
+    if (Number.isFinite(precision)) {
+        if (decimalMode === 'always' || (hasFraction && decimalMode === 'pad')) {
             const zeroPaddingSize: number = Math.max(
-                decimalLimit - fractionPartPadded.length,
+                precision - fractionPartPadded.length,
                 0,
             );
             const zeroPartString = '0'.repeat(zeroPaddingSize);

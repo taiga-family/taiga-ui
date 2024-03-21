@@ -158,12 +158,10 @@
         <tui-doc-demo [control]="control">
             <ng-template>
                 <tui-input-number
-                    [decimal]="decimal"
                     [focusable]="focusable"
                     [formControl]="control"
                     [max]="max"
                     [min]="min"
-                    [precision]="precision"
                     [pseudoActive]="pseudoPressed"
                     [pseudoFocus]="pseudoFocused"
                     [pseudoHover]="pseudoHovered"
@@ -174,6 +172,13 @@
                     [tuiHintAppearance]="hintAppearance"
                     [tuiHintContent]="hintContent"
                     [tuiHintDirection]="hintDirection"
+                    [tuiNumberFormat]="{
+                        precision,
+                        decimalMode: decimalMode,
+                        rounding,
+                        thousandSeparator,
+                        decimalSeparator
+                    }"
                     [tuiTextfieldCleaner]="cleaner"
                     [tuiTextfieldCustomContent]="customContent"
                     [tuiTextfieldFiller]="filler"
@@ -214,26 +219,6 @@
                 [(documentationPropertyValue)]="max"
             >
                 Max value
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="precision"
-                documentationPropertyType="number"
-                [documentationPropertyValues]="precisionVariants"
-                [(documentationPropertyValue)]="precision"
-            >
-                A number of digits after comma (
-                <code>Infinity</code>
-                for an untouched decimal part)
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="decimal"
-                documentationPropertyType="TuiDecimal"
-                [documentationPropertyValues]="decimalVariants"
-                [(documentationPropertyValue)]="decimal"
-            >
-                Show/hide decimal
             </ng-template>
             <ng-template
                 documentationPropertyMode="input"
