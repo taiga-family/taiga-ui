@@ -33,7 +33,7 @@ import {
     tuiPure,
     tuiWatch,
 } from '@taiga-ui/cdk';
-import type {TuiDecimal, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import type {TuiDecimalMode, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_DEFAULT_NUMBER_FORMAT,
@@ -41,7 +41,6 @@ import {
     TUI_TEXTFIELD_SIZE,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
     tuiFormatNumber,
-    // tuiGetFractionPartPadded,
     TuiPrimitiveTextfieldComponent,
 } from '@taiga-ui/core';
 import {PolymorpheusOutletDirective} from '@tinkoff/ng-polymorpheus';
@@ -214,7 +213,7 @@ export class TuiInputNumberComponent
     protected get mask(): MaskitoOptions {
         return this.calculateMask(
             this.precision,
-            this.numberFormat.decimal,
+            this.numberFormat.decimalMode,
             this.numberFormat.decimalSeparator,
             this.numberFormat.thousandSeparator,
             this.computedMin,
@@ -322,7 +321,7 @@ export class TuiInputNumberComponent
     @tuiPure
     private calculateMask(
         precision: number,
-        decimalMode: TuiDecimal,
+        decimalMode: TuiDecimalMode,
         decimalSeparator: string,
         thousandSeparator: string,
         min: number,

@@ -16,9 +16,9 @@ export function tuiFormatNumber(
     value: number,
     settings: Partial<TuiNumberFormatSettings> = {},
 ): string {
-    const {precision, decimalSeparator, thousandSeparator, decimal, rounding} = {
+    const {precision, decimalSeparator, thousandSeparator, decimalMode, rounding} = {
         ...TUI_DEFAULT_NUMBER_FORMAT,
-        decimal: 'always',
+        decimalMode: 'always',
         precision: Infinity,
         ...settings,
     };
@@ -32,7 +32,7 @@ export function tuiFormatNumber(
     const hasFraction = Number(fractionPartPadded) > 0;
 
     if (Number.isFinite(precision)) {
-        if (decimal === 'always' || (hasFraction && decimal === 'pad')) {
+        if (decimalMode === 'always' || (hasFraction && decimalMode === 'pad')) {
             const zeroPaddingSize: number = Math.max(
                 precision - fractionPartPadded.length,
                 0,

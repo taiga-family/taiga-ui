@@ -67,7 +67,7 @@ describe('Number formatting', () => {
                 precision: 2,
                 decimalSeparator: ',',
                 thousandSeparator: '.',
-                decimal: 'not-zero',
+                decimalMode: 'not-zero',
             }),
         ).toBe('12.345,6');
     });
@@ -92,7 +92,7 @@ describe('Number formatting', () => {
                 precision: 2,
                 decimalSeparator: ',',
                 thousandSeparator: '.',
-                decimal: 'not-zero',
+                decimalMode: 'not-zero',
             }),
         ).toBe('12.345,6');
     });
@@ -103,7 +103,7 @@ describe('Number formatting', () => {
                 precision: 2,
                 decimalSeparator: ',',
                 thousandSeparator: '.',
-                decimal: 'pad',
+                decimalMode: 'pad',
             }),
         ).toBe('12.345');
     });
@@ -114,7 +114,7 @@ describe('Number formatting', () => {
                 precision: 2,
                 decimalSeparator: ',',
                 thousandSeparator: '.',
-                decimal: 'pad',
+                decimalMode: 'pad',
             }),
         ).toBe('0,01');
     });
@@ -125,7 +125,7 @@ describe('Number formatting', () => {
                 precision: 2,
                 decimalSeparator: ',',
                 thousandSeparator: '.',
-                decimal: 'pad',
+                decimalMode: 'pad',
             }),
         ).toBe('0');
     });
@@ -136,7 +136,7 @@ describe('Number formatting', () => {
                 precision: 2,
                 decimalSeparator: ',',
                 thousandSeparator: '.',
-                decimal: 'not-zero',
+                decimalMode: 'not-zero',
             }),
         ).toBe('0');
     });

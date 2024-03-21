@@ -11,7 +11,8 @@
 <p>
     Usage example:
     <code>
-        [tuiNumberFormat]='&#123;decimal, precision, rounding, zeroPadding, thousandSeparator, decimalSeparator&#125;'
+        [tuiNumberFormat]='&#123;decimalMode, precision, rounding, zeroPadding, thousandSeparator,
+        decimalSeparator&#125;'
     </code>
 </p>
 <p>
@@ -23,12 +24,33 @@
 <tui-doc-documentation>
     <ng-template
         documentationPropertyMode="input"
-        documentationPropertyName="decimal"
-        documentationPropertyType="TuiDecimal"
+        documentationPropertyName="decimalMode"
+        documentationPropertyType="TuiDecimalMode"
         [documentationPropertyValues]="documentedComponent.decimalVariants"
-        [(documentationPropertyValue)]="documentedComponent.decimal"
+        [(documentationPropertyValue)]="documentedComponent.decimalMode"
     >
-        Show/hide decimal
+        <dl>
+            <dt>
+                <code>always</code>
+            </dt>
+            <dd>
+                number of digits after
+                <code>decimalSeparator</code>
+                is
+                <b>always</b>
+                equal to the precision.
+            </dd>
+
+            <dt>
+                <code>pad</code>
+            </dt>
+            <dd>pads trailing zeroes up to precision, if the number is fractional</dd>
+
+            <dt>
+                <code>not-zero</code>
+            </dt>
+            <dd>drops trailing zeroes</dd>
+        </dl>
     </ng-template>
     <ng-template
         documentationPropertyMode="input"

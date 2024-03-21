@@ -20,7 +20,7 @@ import {tuiNumberFormatProvider} from '@taiga-ui/core';
         tuiNumberFormatProvider({
             decimalSeparator: '.',
             thousandSeparator: ',',
-            decimal: 'always',
+            decimalMode: 'always',
         }),
     ],
 })

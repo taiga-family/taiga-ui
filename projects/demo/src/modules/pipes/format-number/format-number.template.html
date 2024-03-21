@@ -31,7 +31,8 @@
             Formatted number:
             {{
                 control.value ?? 0
-                    | tuiFormatNumber: {precision, decimal, rounding, thousandSeparator, decimalSeparator}
+                    | tuiFormatNumber
+                        : {precision, decimalMode: decimalMode, rounding, thousandSeparator, decimalSeparator}
                     | async
             }}
         </p>

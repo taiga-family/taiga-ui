@@ -1,5 +1,5 @@
 import type {TuiRounding} from '@taiga-ui/cdk';
-import type {TuiDecimal} from '@taiga-ui/core';
+import type {TuiDecimalMode} from '@taiga-ui/core';
 import {TUI_DEFAULT_NUMBER_FORMAT} from '@taiga-ui/core';
 
 import {AbstractExampleTuiControl} from './control';
@@ -7,8 +7,8 @@ import {AbstractExampleTuiControl} from './control';
 export abstract class AbstractExampleTuiNumberFormat extends AbstractExampleTuiControl {
     public precision = TUI_DEFAULT_NUMBER_FORMAT.precision;
 
-    public readonly decimalVariants: TuiDecimal[] = ['always', 'pad', 'not-zero'];
-    public decimal = TUI_DEFAULT_NUMBER_FORMAT.decimal;
+    public readonly decimalVariants: TuiDecimalMode[] = ['always', 'pad', 'not-zero'];
+    public decimalMode = TUI_DEFAULT_NUMBER_FORMAT.decimalMode;
 
     public readonly roundingVariants: TuiRounding[] = [
         'truncate',
