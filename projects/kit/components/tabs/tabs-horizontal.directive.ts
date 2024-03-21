@@ -72,6 +72,20 @@ export class TuiTabsHorizontalDirective implements AfterViewChecked {
         this.tabs.moveFocus(current, step);
     }
 
+    @HostListener('animationend')
+    protected refresh(): void {
+        const {activeElement} = this.tabs;
+
+        if (activeElement && !activeElement.isConnected) {
+            return;
+        }
+
+        const {offsetLeft = 0, offsetWidth = 0} = activeElement || {};
+
+        this.el.style.setProperty('--t-left', tuiPx(offsetLeft));
+        this.el.style.setProperty('--t-width', tuiPx(offsetWidth));
+    }
+
     @tuiPure
     private scrollTo(index: number): void {
         const element = this.tabs.tabs[index];
@@ -89,12 +103,5 @@ export class TuiTabsHorizontalDirective implements AfterViewChecked {
         if (offsetLeft + offsetWidth > this.el.scrollLeft + this.el.offsetWidth) {
             this.el.scrollLeft = offsetLeft + offsetWidth - this.el.offsetWidth;
         }
-    }
-
-    private refresh(): void {
-        const {offsetLeft = 0, offsetWidth = 0} = this.tabs.activeElement || {};
-
-        this.el.style.setProperty('--t-left', tuiPx(offsetLeft));
-        this.el.style.setProperty('--t-width', tuiPx(offsetWidth));
     }
 }
