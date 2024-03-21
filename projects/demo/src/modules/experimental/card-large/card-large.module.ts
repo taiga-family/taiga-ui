@@ -18,16 +18,15 @@ import {
     TuiNotificationModule,
     TuiScrollbarComponent,
     TuiSvgModule,
+    TuiTitleDirective,
 } from '@taiga-ui/core';
 import {
     TuiButtonCloseModule,
     TuiButtonModule,
     TuiCardModule,
     TuiCellModule,
-    TuiHeaderDirective,
     TuiSurfaceModule,
     TuiThumbnailCardModule,
-    TuiTitleModule,
 } from '@taiga-ui/experimental';
 import {
     TuiAvatarComponent,
@@ -35,6 +34,7 @@ import {
     TuiBadgeDirective,
     TuiFadeDirective,
 } from '@taiga-ui/kit';
+import {TuiHeaderDirective} from '@taiga-ui/layout';
 
 import {ExampleTuiCardLargeComponent} from './card-large.component';
 import {TuiCardLargeExample1} from './examples/1';
@@ -64,7 +64,7 @@ import {TuiCardLargeExample12} from './examples/12';
         TuiSurfaceModule,
         TuiSvgModule,
         TuiBadgeDirective,
-        TuiTitleModule,
+        TuiTitleDirective,
         TuiScrollbarComponent,
         TuiHintModule,
         FormsModule,

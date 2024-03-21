@@ -1,6 +1,7 @@
 import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/core';
 
 @Component({
+    standalone: true,
     template: '',
     styleUrls: ['./title.style.less'],
     encapsulation: ViewEncapsulation.None,

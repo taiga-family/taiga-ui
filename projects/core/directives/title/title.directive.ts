@@ -1,10 +1,11 @@
 import {Directive, Input} from '@angular/core';
 import {tuiWithStyles} from '@taiga-ui/cdk';
-import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 
 import {TuiTitleComponent} from './title.component';
 
 @Directive({
+    standalone: true,
     selector: '[tuiTitle]',
     host: {
         tuiTitle: '',

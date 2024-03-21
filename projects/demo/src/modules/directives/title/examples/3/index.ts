@@ -1,12 +1,15 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiTitleDirective} from '@taiga-ui/core';
+import {TuiAvatarComponent} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-title-example-1',
+    standalone: true,
+    imports: [TuiAvatarComponent, TuiTitleDirective],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiTitleExample1 {}
+export default class ExampleComponent {}

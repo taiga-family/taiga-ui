@@ -196,14 +196,11 @@ export const ROUTES: Routes = [
             title: 'Radio ',
         },
     },
-    {
-        path: 'experimental/title',
-        loadChildren: async () =>
-            (await import('../experimental/title/title.module')).ExampleTuiTitleModule,
-        data: {
-            title: 'Title',
-        },
-    },
+    route({
+        path: 'components/title',
+        title: 'Title',
+        loadComponent: async () => import('../directives/title'),
+    }),
     {
         path: 'experimental/toggle',
         loadChildren: async () =>
@@ -308,14 +305,11 @@ export const ROUTES: Routes = [
             title: 'Compass',
         },
     },
-    {
-        path: 'experimental/header',
-        loadChildren: async () =>
-            (await import('../experimental/header/header.module')).ExampleTuiHeaderModule,
-        data: {
-            title: 'Header',
-        },
-    },
+    route({
+        path: 'layout/header',
+        title: 'Header',
+        loadComponent: async () => import('../directives/header'),
+    }),
     {
         path: 'components/icon',
         loadChildren: async () =>
