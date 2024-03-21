@@ -22,7 +22,7 @@ jobs:
         run: npx nx prerender demo
 
       - name: Upload cache / ${{ env.CACHE_DIST_KEY }}
-        uses: actions/cache/save@v4.0.1
+        uses: actions/cache/save@v4.0.2
         with:
           path: dist/demo
           key: ${{ env.CACHE_DIST_KEY }}
@@ -46,7 +46,7 @@ jobs:
         run: npx playwright install --with-deps chromium
 
       - name: Download cache / ${{ env.CACHE_DIST_KEY }}
-        uses: actions/cache/restore@v4.0.1
+        uses: actions/cache/restore@v4.0.2
         with:
           path: dist/demo
           key: ${{ env.CACHE_DIST_KEY }}
