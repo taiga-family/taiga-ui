@@ -1,91 +1,89 @@
 import type {AfterViewChecked, QueryList} from '@angular/core';
 import {
-    ChangeDetectionStrategy,
-    ChangeDetectorRef,
-    Component,
     ContentChildren,
+    Directive,
     ElementRef,
     forwardRef,
-    HostBinding,
     HostListener,
     inject,
     Input,
+    NgZone,
 } from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {
     MUTATION_OBSERVER_INIT,
     MutationObserverService,
 } from '@ng-web-apis/mutation-observer';
-import {ResizeObserverService} from '@ng-web-apis/resize-observer';
-import {EMPTY_QUERY, TuiDestroyService, tuiPure} from '@taiga-ui/cdk';
-import {filter, takeUntil} from 'rxjs';
+import {EMPTY_QUERY, tuiPure, tuiPx, tuiZonefree} from '@taiga-ui/cdk';
 
-import {TuiTabComponent} from '../tab/tab.component';
-import {TuiTabsDirective} from '../tabs.directive';
-import {TUI_TABS_OPTIONS} from '../tabs.options';
+import {TuiTabDirective} from './tab.directive';
+import {TuiTabsDirective} from './tabs.directive';
+import {TUI_TABS_OPTIONS} from './tabs.options';
 
-@Component({
+@Directive({
+    standalone: true,
     selector: 'tui-tabs:not([vertical]), nav[tuiTabs]:not([vertical])',
-    templateUrl: './tabs.template.html',
-    styleUrls: ['./tabs.style.less'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
+    hostDirectives: [
+        {
+            directive: TuiTabsDirective,
+            inputs: ['activeItemIndex'],
+            outputs: ['activeItemIndexChange'],
+        },
+    ],
     providers: [
-        TuiDestroyService,
-        ResizeObserverService,
         MutationObserverService,
         {
             provide: MUTATION_OBSERVER_INIT,
             useValue: {
                 childList: true,
+                characterData: true,
+                subtree: true,
             },
         },
     ],
+    host: {
+        '[class._underline]': 'underline',
+        '[style.--t-color]': "underline === true ? 'var(--tui-primary)' : underline",
+    },
 })
-export class TuiTabsComponent implements AfterViewChecked {
-    private readonly destroy$ = inject(TuiDestroyService, {self: true});
+export class TuiTabsHorizontalDirective implements AfterViewChecked {
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
-    private readonly resize$ = inject(ResizeObserverService);
     private readonly options = inject(TUI_TABS_OPTIONS);
-    private readonly cdr = inject(ChangeDetectorRef);
     private readonly tabs = inject(TuiTabsDirective);
 
     @Input()
-    @HostBinding('class._underline')
     public underline = this.options.underline;
 
-    @ContentChildren(forwardRef(() => TuiTabComponent))
+    @ContentChildren(forwardRef(() => TuiTabDirective))
     protected readonly children: QueryList<unknown> = EMPTY_QUERY;
 
-    constructor() {
-        this.resize$
-            .pipe(
-                filter(() => this.underline),
-                takeUntil(this.destroy$),
-            )
-            .subscribe(() => this.cdr.detectChanges());
-    }
+    protected readonly sub = inject(MutationObserverService)
+        .pipe(tuiZonefree(inject(NgZone)), takeUntilDestroyed())
+        .subscribe(() => this.refresh());
 
     public ngAfterViewChecked(): void {
         this.scrollTo(this.tabs.activeItemIndex);
-    }
-
-    /** @deprecated use `activeItemIndex` from {@link TuiTabsDirective} instead */
-    protected get activeItemIndex(): number {
-        return this.tabs.activeItemIndex;
-    }
-
-    /** @deprecated use `activeItemIndex` from {@link TuiTabsDirective} instead */
-    protected set activeItemIndex(index: number) {
-        this.tabs.activeItemIndex = index;
-    }
-
-    protected get activeElement(): HTMLElement | null {
-        return this.tabs.activeElement;
+        this.refresh();
     }
 
     @HostListener('keydown.arrowRight.prevent', ['$event.target', '1'])
     @HostListener('keydown.arrowLeft.prevent', ['$event.target', '-1'])
     protected onKeyDownArrow(current: HTMLElement, step: number): void {
         this.tabs.moveFocus(current, step);
+    }
+
+    @HostListener('animationend')
+    protected refresh(): void {
+        const {activeElement} = this.tabs;
+
+        if (activeElement && !activeElement.isConnected) {
+            return;
+        }
+
+        const {offsetLeft = 0, offsetWidth = 0} = activeElement || {};
+
+        this.el.style.setProperty('--t-left', tuiPx(offsetLeft));
+        this.el.style.setProperty('--t-width', tuiPx(offsetWidth));
     }
 
     @tuiPure

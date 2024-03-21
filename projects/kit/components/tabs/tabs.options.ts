@@ -5,7 +5,7 @@ export interface TuiTabsOptions {
     readonly exposeActive: boolean;
     readonly itemsLimit: number;
     readonly minMoreWidth: number;
-    readonly underline: boolean;
+    readonly underline: boolean | string;
 }
 
 export const TUI_TABS_DEFAULT_OPTIONS: TuiTabsOptions = {

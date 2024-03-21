@@ -11,11 +11,6 @@
     overflow: hidden;
 }
 
-.t-wrapper {
-    position: relative;
-    display: flex;
-}
-
 .t-tabs {
     height: inherit;
     font-size: inherit;
@@ -68,11 +63,8 @@
         &:focus,
         &._active {
             box-shadow: none;
+            outline: none;
             background: var(--tui-clear);
-        }
-
-        .t-highlight {
-            background: transparent !important;
         }
     }
     /* stylelint-enable */

@@ -1,4 +1,5 @@
-import type {AfterViewInit, QueryList} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import type {AfterViewChecked, AfterViewInit, QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -6,7 +7,6 @@ import {
     ContentChildren,
     ElementRef,
     EventEmitter,
-    HostBinding,
     inject,
     Input,
     Output,
@@ -17,31 +17,49 @@ import type {TuiActiveZoneDirective, TuiContext} from '@taiga-ui/cdk';
 import {
     EMPTY_QUERY,
     tuiClamp,
+    TuiFocusableModule,
     tuiGetClosestFocusable,
     tuiIsElement,
     tuiIsNativeFocused,
     TuiItemDirective,
+    tuiPx,
     tuiToInt,
 } from '@taiga-ui/cdk';
+import {TuiDropdownModule, TuiSvgModule} from '@taiga-ui/core';
 import {TUI_ARROW_OPTIONS} from '@taiga-ui/kit/components/arrow';
-import {TUI_MORE_WORD, TUI_TAB_MARGIN} from '@taiga-ui/kit/tokens';
+import {TUI_MORE_WORD} from '@taiga-ui/kit/tokens';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {filter, map} from 'rxjs';
+import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import {filter, map, tap} from 'rxjs';
 
-import {TuiTabComponent} from '../tab/tab.component';
-import {TUI_TABS_OPTIONS} from '../tabs.options';
-import {TUI_TABS_PROVIDERS, TUI_TABS_REFRESH} from './tabs-with-more.providers';
+import {TUI_TAB_MARGIN, TuiTabDirective} from './tab.directive';
+import {TUI_TABS_OPTIONS} from './tabs.options';
+import {TUI_TABS_PROVIDERS, TUI_TABS_REFRESH} from './tabs.providers';
+import {TuiTabsHorizontalDirective} from './tabs-horizontal.directive';
 
 @Component({
+    standalone: true,
     selector: 'tui-tabs-with-more, nav[tuiTabsWithMore]',
+    imports: [
+        CommonModule,
+        PolymorpheusModule,
+        TuiDropdownModule,
+        TuiSvgModule,
+        TuiFocusableModule,
+        TuiTabDirective,
+        TuiTabsHorizontalDirective,
+    ],
     templateUrl: './tabs-with-more.template.html',
     styleUrls: ['./tabs-with-more.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: TUI_TABS_PROVIDERS,
 })
-export class TuiTabsWithMoreComponent implements AfterViewInit {
-    @ViewChild(TuiTabComponent, {read: ElementRef})
+export class TuiTabsWithMoreComponent implements AfterViewChecked, AfterViewInit {
+    @ViewChild(TuiTabDirective, {read: ElementRef})
     private readonly moreButton?: ElementRef<HTMLButtonElement>;
+
+    @ViewChild(TuiTabsHorizontalDirective, {read: ElementRef})
+    private readonly dir?: ElementRef<HTMLButtonElement>;
 
     private readonly options = inject(TUI_TABS_OPTIONS);
     private readonly margin = inject(TUI_TAB_MARGIN);
@@ -57,7 +75,6 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
     public dropdownContent: PolymorpheusContent<TuiContext<TuiActiveZoneDirective>>;
 
     @Input()
-    @HostBinding('class._underline')
     public underline = this.options.underline;
 
     @Input()
@@ -99,12 +116,17 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
         this.refresh$
             .pipe(
                 map(() => this.getMaxIndex()),
+                tap(() => this.refresh()),
                 filter(maxIndex => this.maxIndex !== maxIndex),
             )
             .subscribe(maxIndex => {
                 this.maxIndex = maxIndex;
                 this.cdr.detectChanges();
             });
+    }
+
+    public ngAfterViewChecked(): void {
+        this.refresh();
     }
 
     // TODO: Improve performance
@@ -240,5 +262,12 @@ export class TuiTabsWithMoreComponent implements AfterViewInit {
     private updateActiveItemIndex(activeItemIndex: number): void {
         this.itemIndex = activeItemIndex;
         this.activeItemIndexChange.emit(activeItemIndex);
+    }
+
+    private refresh(): void {
+        const {offsetLeft = 0, offsetWidth = 0} = this.activeElement || {};
+
+        this.dir?.nativeElement.style.setProperty('--t-left', tuiPx(offsetLeft));
+        this.dir?.nativeElement.style.setProperty('--t-width', tuiPx(offsetWidth));
     }
 }

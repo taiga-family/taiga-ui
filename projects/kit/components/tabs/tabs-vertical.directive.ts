@@ -1,24 +1,20 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    HostBinding,
-    HostListener,
-    inject,
-    Input,
-} from '@angular/core';
+import {Directive, HostBinding, HostListener, inject, Input} from '@angular/core';
 import type {TuiHorizontalDirection} from '@taiga-ui/core';
 
-import {TuiTabsDirective} from '../tabs.directive';
+import {TuiTabsDirective} from './tabs.directive';
 
-@Component({
+@Directive({
+    standalone: true,
     selector: 'tui-tabs[vertical], nav[tuiTabs][vertical]',
-    template: `
-        <ng-content></ng-content>
-    `,
-    styleUrls: ['./tabs-vertical.style.less'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
+    hostDirectives: [
+        {
+            directive: TuiTabsDirective,
+            inputs: ['activeItemIndex'],
+            outputs: ['activeItemIndexChange'],
+        },
+    ],
 })
-export class TuiTabsVerticalComponent {
+export class TuiTabsVerticalDirective {
     private readonly tabs = inject(TuiTabsDirective);
 
     @Input()

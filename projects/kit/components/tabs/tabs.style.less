@@ -1,0 +1,146 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+[tuiTabs],
+tui-tabs {
+    .scrollbar-hidden();
+
+    position: relative;
+    display: flex;
+    font: var(--tui-font-text-m);
+    color: var(--tui-text-02);
+    box-shadow: inset 0 -1px var(--tui-base-03);
+    overflow: auto;
+    isolation: isolate;
+
+    // TODO: Sizes
+    &:not([data-vertical]) {
+        height: var(--tui-height-l);
+    }
+
+    &:before {
+        .transition(~'width, left');
+
+        position: absolute;
+        left: var(--t-left);
+        bottom: 0;
+        height: 2px;
+        width: var(--t-width);
+        background: var(--t-color);
+        animation: tuiPresent 1ms;
+    }
+
+    &._underline:before {
+        content: '';
+    }
+}
+
+tui-tabs[data-vertical],
+[tuiTabs][data-vertical] {
+    flex-direction: column;
+    box-shadow: inset -1px 0 var(--tui-base-03);
+
+    [tuiTab] {
+        min-height: 2.75rem;
+        height: auto;
+        white-space: normal;
+        margin: 0;
+        text-align: left;
+        padding: 0.25rem 1.25rem 0.25rem 0;
+
+        &:after {
+            .transition(transform);
+
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            width: 2px;
+            background: var(--tui-primary);
+            transform: scaleX(0);
+            transform-origin: right;
+        }
+
+        &:hover {
+            box-shadow: inset -2px 0 var(--tui-base-03);
+        }
+
+        &._active:after {
+            transform: none;
+        }
+    }
+
+    &[data-vertical='right'] {
+        box-shadow: inset 1px 0 var(--tui-base-03);
+
+        [tuiTab] {
+            text-align: right;
+            padding: 0.25rem 0 0.25rem 1.25rem;
+
+            &:after {
+                right: auto;
+                left: 0;
+                transform-origin: left;
+            }
+
+            &:hover {
+                box-shadow: inset 2px 0 var(--tui-base-03);
+            }
+        }
+    }
+}
+
+[tuiTab] {
+    .transition(~'color, box-shadow, opacity, background');
+    .clearbtn();
+
+    position: relative;
+    display: flex;
+    flex-shrink: 0;
+    height: 100%;
+    box-sizing: border-box;
+    justify-content: space-between;
+    line-height: 1.5rem;
+    align-items: center;
+    white-space: nowrap;
+    cursor: pointer;
+    outline: none;
+    color: inherit;
+    margin-left: var(--tui-tab-margin, 1.5rem);
+
+    &:disabled {
+        opacity: var(--tui-disabled-opacity);
+        pointer-events: none;
+    }
+
+    &._active {
+        color: var(--tui-text-01);
+        box-shadow: none;
+    }
+
+    &:focus-visible {
+        outline: 2px solid var(--tui-focus);
+        outline-offset: -2px;
+    }
+
+    tui-tabs._underline &:hover:not(._active),
+    [tuiTabs]._underline &:hover:not(._active) {
+        box-shadow: inset 0 -2px var(--tui-base-03);
+    }
+
+    tui-tabs > &:first-child,
+    [tuiTabs] > &:first-child,
+    tui-tabs > :not(.t-overflown) > &:first-child {
+        margin-left: 0;
+    }
+
+    tui-tabs > [tuiTab] ~ :not(.t-overflown) > &:first-child {
+        margin-left: var(--tui-tab-margin, 1.5rem);
+    }
+
+    @media (hover: hover) {
+        &:hover {
+            color: var(--tui-text-01);
+        }
+    }
+}

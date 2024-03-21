@@ -8,12 +8,14 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import {tuiMoveFocus} from '@taiga-ui/cdk';
+import {tuiMoveFocus, tuiWithStyles} from '@taiga-ui/cdk';
 
-import {TUI_TAB_ACTIVATE} from './tab/tab.providers';
+import {TUI_TAB_ACTIVATE} from './tab.directive';
+import {TuiTabsComponent} from './tabs.component';
 
 @Directive({
-    selector: 'tui-tabs, nav[tuiTabs]',
+    standalone: true,
+    selector: 'tui-tabs:is(never)',
 })
 export class TuiTabsDirective implements AfterViewChecked {
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
@@ -23,6 +25,8 @@ export class TuiTabsDirective implements AfterViewChecked {
 
     @Output()
     public readonly activeItemIndexChange = new EventEmitter<number>();
+
+    protected readonly nothing = tuiWithStyles(TuiTabsComponent);
 
     public get tabs(): readonly HTMLElement[] {
         return Array.from(this.el.querySelectorAll<HTMLElement>('[tuiTab]'));
