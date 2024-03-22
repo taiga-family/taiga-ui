@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {tuiDocExampleOptionsProvider} from '@taiga-ui/addon-doc';
+import type {TuiSizeL} from '@taiga-ui/core';
 
 @Component({
     selector: 'example-tui-tabs',
@@ -11,8 +12,8 @@ import {tuiDocExampleOptionsProvider} from '@taiga-ui/addon-doc';
 export class ExampleTuiTabsComponent {
     protected buttons = ['Button 1', 'Button 2', 'Button 3', 'Button 4'];
 
-    protected readonly import = import('./examples/import/import-module.md?raw');
-    protected readonly template = import('./examples/import/insert-template.md?raw');
+    protected readonly import = import('./examples/import/import.md?raw');
+    protected readonly template = import('./examples/import/template.md?raw');
 
     protected readonly moreContentVariants = ['', 'And more'];
 
@@ -23,4 +24,8 @@ export class ExampleTuiTabsComponent {
     protected activeItemIndex = 0;
 
     protected itemsLimit = 999;
+
+    protected sizes: readonly TuiSizeL[] = ['m', 'l'];
+
+    protected size = this.sizes[1];
 }

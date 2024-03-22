@@ -9,16 +9,24 @@ import {
     Output,
 } from '@angular/core';
 import {tuiMoveFocus, tuiWithStyles} from '@taiga-ui/cdk';
+import type {TuiSizeL} from '@taiga-ui/core';
 
 import {TUI_TAB_ACTIVATE} from './tab.directive';
 import {TuiTabsComponent} from './tabs.component';
+import {TUI_TABS_OPTIONS} from './tabs.options';
 
 @Directive({
     standalone: true,
     selector: 'tui-tabs:is(never)',
+    host: {
+        '[attr.data-size]': 'size',
+    },
 })
 export class TuiTabsDirective implements AfterViewChecked {
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+
+    @Input()
+    public size: TuiSizeL = inject(TUI_TABS_OPTIONS).size;
 
     @Input()
     public activeItemIndex = 0;

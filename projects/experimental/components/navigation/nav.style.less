@@ -4,10 +4,11 @@ nav[tuiNavigationNav] {
     top: 3rem;
     z-index: 1;
     display: flex;
+    min-height: 3rem;
     align-items: center;
     gap: 0.5rem;
     box-shadow: inset 0 -1px var(--tui-base-03);
-    padding: 0 1.25rem;
+    padding: 0.25rem 1.25rem 0;
     margin: 0 -1.25rem;
     box-sizing: border-box;
     white-space: nowrap;
@@ -43,15 +44,10 @@ nav[tuiNavigationNav] {
 
     tui-tabs,
     [tuiTabs] {
-        height: 3rem;
         margin-inline-end: 1rem;
 
         &:before {
             background: var(--tui-base-07);
         }
-    }
-
-    [tuiTab] {
-        font: var(--tui-font-text-s);
     }
 }

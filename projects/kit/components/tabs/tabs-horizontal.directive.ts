@@ -26,7 +26,7 @@ import {TUI_TABS_OPTIONS} from './tabs.options';
     hostDirectives: [
         {
             directive: TuiTabsDirective,
-            inputs: ['activeItemIndex'],
+            inputs: ['activeItemIndex', 'size'],
             outputs: ['activeItemIndexChange'],
         },
     ],

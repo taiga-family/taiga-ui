@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/core';
 import {tuiButtonOptionsProvider} from '@taiga-ui/experimental/components/button';
-import {tuiBadgeOptionsProvider} from '@taiga-ui/kit';
+import {tuiBadgeOptionsProvider, tuiTabsOptionsProvider} from '@taiga-ui/kit';
 
 @Component({
     selector: 'nav[tuiNavigationNav]',
@@ -11,6 +11,7 @@ import {tuiBadgeOptionsProvider} from '@taiga-ui/kit';
     providers: [
         tuiBadgeOptionsProvider({size: 'm'}),
         tuiButtonOptionsProvider({size: 's'}),
+        tuiTabsOptionsProvider({size: 'm'}),
     ],
 })
 export class TuiNavComponent {}

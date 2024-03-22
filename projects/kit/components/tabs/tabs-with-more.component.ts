@@ -25,6 +25,7 @@ import {
     tuiPx,
     tuiToInt,
 } from '@taiga-ui/cdk';
+import type {TuiSizeL} from '@taiga-ui/core';
 import {TuiDropdownModule, TuiSvgModule} from '@taiga-ui/core';
 import {TUI_ARROW_OPTIONS} from '@taiga-ui/kit/components/arrow';
 import {TUI_MORE_WORD} from '@taiga-ui/kit/tokens';
@@ -32,7 +33,7 @@ import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import {filter, map, tap} from 'rxjs';
 
-import {TUI_TAB_MARGIN, TuiTabDirective} from './tab.directive';
+import {TuiTabDirective} from './tab.directive';
 import {TUI_TABS_OPTIONS} from './tabs.options';
 import {TUI_TABS_PROVIDERS, TUI_TABS_REFRESH} from './tabs.providers';
 import {TuiTabsHorizontalDirective} from './tabs-horizontal.directive';
@@ -62,11 +63,13 @@ export class TuiTabsWithMoreComponent implements AfterViewChecked, AfterViewInit
     private readonly dir?: ElementRef<HTMLButtonElement>;
 
     private readonly options = inject(TUI_TABS_OPTIONS);
-    private readonly margin = inject(TUI_TAB_MARGIN);
     private readonly refresh$ = inject(TUI_TABS_REFRESH);
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
     private readonly cdr = inject(ChangeDetectorRef);
     private maxIndex = Infinity;
+
+    @Input()
+    public size: TuiSizeL = this.options.size;
 
     @Input()
     public moreContent: PolymorpheusContent;
@@ -212,6 +215,10 @@ export class TuiTabsWithMoreComponent implements AfterViewChecked, AfterViewInit
 
     protected shouldShow(index: number): boolean {
         return index > this.lastVisibleIndex && this.isOverflown(index);
+    }
+
+    private get margin(): number {
+        return this.size === 'l' ? 24 : 16;
     }
 
     private focusMore(): void {

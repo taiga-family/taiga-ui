@@ -2,6 +2,7 @@
 <tui-tabs
     class="t-tabs"
     [activeItemIndex]="activeItemIndex"
+    [size]="size"
     [underline]="underline"
     (activeItemIndexChange)="onActiveItemIndexChange($event)"
     (keydown.arrowRight)="onArrowRight($event)"
@@ -12,7 +13,10 @@
             [ngTemplateOutlet]="item"
         />
         <ng-template #hidden>
-            <div [class.t-overflown]="isOverflown(index)">
+            <div
+                class="t-flex"
+                [class.t-overflown]="isOverflown(index)"
+            >
                 <ng-container [ngTemplateOutlet]="item" />
             </div>
         </ng-template>
@@ -46,6 +50,7 @@
     <div
         #element
         class="t-dropdown"
+        [attr.data-size]="size"
         (keydown.arrowDown.prevent)="onWrapperArrow($event, element, false)"
         (keydown.arrowUp.prevent)="onWrapperArrow($event, element, true)"
     >

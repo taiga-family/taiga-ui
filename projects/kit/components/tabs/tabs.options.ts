@@ -1,11 +1,13 @@
 import type {Provider} from '@angular/core';
 import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
+import type {TuiSizeL} from '@taiga-ui/core';
 
 export interface TuiTabsOptions {
     readonly exposeActive: boolean;
     readonly itemsLimit: number;
     readonly minMoreWidth: number;
     readonly underline: boolean | string;
+    readonly size: TuiSizeL;
 }
 
 export const TUI_TABS_DEFAULT_OPTIONS: TuiTabsOptions = {
@@ -13,6 +15,7 @@ export const TUI_TABS_DEFAULT_OPTIONS: TuiTabsOptions = {
     exposeActive: true,
     itemsLimit: Infinity,
     minMoreWidth: 0,
+    size: 'l',
 };
 
 /**
