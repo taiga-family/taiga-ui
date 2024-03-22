@@ -13,7 +13,10 @@
             [ngTemplateOutlet]="item"
         />
         <ng-template #hidden>
-            <div [class.t-overflown]="isOverflown(index)">
+            <div
+                class="t-flex"
+                [class.t-overflown]="isOverflown(index)"
+            >
                 <ng-container [ngTemplateOutlet]="item" />
             </div>
         </ng-template>

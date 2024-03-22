@@ -76,6 +76,7 @@
             <tui-tabs-with-more
                 [itemsLimit]="itemsLimit"
                 [moreContent]="moreContent"
+                [size]="size"
                 [underline]="underline"
                 [(activeItemIndex)]="activeItemIndex"
             >
@@ -128,6 +129,15 @@
                     <code>TabsWithMore</code>
                     only
                 </strong>
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="size"
+                documentationPropertyType="TuiSizeL"
+                [documentationPropertyValues]="sizes"
+                [(documentationPropertyValue)]="size"
+            >
+                Size
             </ng-template>
             <ng-template
                 documentationPropertyMode="input"
