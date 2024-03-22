@@ -11,6 +11,6 @@ import {TuiAddonDocModule} from '@taiga-ui/addon-doc';
     changeDetection,
 })
 export default class ExampleTuiTitleComponent {
-    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
-    protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    protected readonly import = import('./examples/import/import-module.md?raw');
+    protected readonly template = import('./examples/import/insert-template.md?raw');
 }

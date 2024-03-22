@@ -148,10 +148,9 @@
         </tui-doc-documentation>
     </ng-template>
 
-    <ng-template pageTab>
-        <tui-setup
-            [import]="import"
-            [template]="template"
-        />
-    </ng-template>
+    <tui-setup
+        *pageTab
+        [import]="import"
+        [template]="template"
+    />
 </tui-doc-page>

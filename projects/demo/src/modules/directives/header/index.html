@@ -27,10 +27,9 @@
         />
     </ng-template>
 
-    <ng-template pageTab="Setup">
-        <tui-setup
-            [import]="exampleModule"
-            [template]="exampleHtml"
-        />
-    </ng-template>
+    <tui-setup
+        *pageTab="'Setup'"
+        [import]="import"
+        [template]="template"
+    />
 </tui-doc-page>

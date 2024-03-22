@@ -14,11 +14,11 @@ import {TuiAddonDocModule, tuiDocExampleOptionsProvider} from '@taiga-ui/addon-d
     providers: [tuiDocExampleOptionsProvider({fullsize: true})],
 })
 export default class ExampleComponent {
-    protected readonly exampleModule: TuiRawLoaderContent = import(
+    protected readonly import: TuiRawLoaderContent = import(
         './examples/import/import-module.md?raw'
     );
 
-    protected readonly exampleHtml: TuiRawLoaderContent = import(
+    protected readonly template: TuiRawLoaderContent = import(
         './examples/import/insert-template.md?raw'
     );
 }
