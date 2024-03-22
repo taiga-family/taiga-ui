@@ -1,7 +1,7 @@
 import {NgFor, NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {TuiDocPageModule} from '@taiga-ui/addon-doc';
-import {TuiLinkModule, TuiNotificationModule} from "@taiga-ui/core";
+import {TuiLinkModule, TuiNotificationModule} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
