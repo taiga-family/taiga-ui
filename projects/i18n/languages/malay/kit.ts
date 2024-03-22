@@ -57,7 +57,7 @@ export const TUI_MALAY_LANGUAGE_KIT: TuiLanguageKit = {
         all: 'Pilih semua',
         none: 'pilih tiada',
     },
-    prompt: {
+    confirm: {
         yes: 'Ya',
         no: 'tidak',
     },

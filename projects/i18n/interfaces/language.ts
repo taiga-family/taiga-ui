@@ -77,7 +77,7 @@ export interface TuiLanguageKit {
      * [@string 'Show password', @param 'Hide password']
      */
     passwordTexts: [string, string];
-    prompt: {
+    confirm: {
         no: string;
         yes: string;
     };

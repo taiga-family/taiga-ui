@@ -57,7 +57,7 @@ export const TUI_POLISH_LANGUAGE_KIT: TuiLanguageKit = {
         all: 'Zaznacz wszystko',
         none: 'Nie zaznaczaj',
     },
-    prompt: {
+    confirm: {
         yes: 'Tak',
         no: 'Nie',
     },
