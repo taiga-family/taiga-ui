@@ -4,7 +4,7 @@ import {
     TuiMobileCalendarModule,
 } from '@taiga-ui/addon-mobile';
 import {
-    ALWAYS_FALSE_HANDLER,
+    TUI_FALSE_HANDLER,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
     TuiDay,
@@ -50,7 +50,7 @@ describe('Mobile calendar', () => {
 
         protected min = TUI_FIRST_DAY;
         protected max = TUI_LAST_DAY;
-        protected disabledItemHandler = ALWAYS_FALSE_HANDLER;
+        protected disabledItemHandler = TUI_FALSE_HANDLER;
     }
 
     it('the back button emits a cancel event', () => {

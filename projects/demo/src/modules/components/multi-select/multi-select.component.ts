@@ -9,11 +9,7 @@ import type {
     TuiIdentityMatcher,
     TuiStringHandler,
 } from '@taiga-ui/cdk';
-import {
-    ALWAYS_FALSE_HANDLER,
-    ALWAYS_TRUE_HANDLER,
-    TUI_DEFAULT_STRINGIFY,
-} from '@taiga-ui/cdk';
+import {TUI_FALSE_HANDLER, TUI_TRUE_HANDLER} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
@@ -153,7 +149,7 @@ export class ExampleTuiMultiSelectComponent extends AbstractExampleTuiControl {
     ];
 
     protected stringifyVariants: Array<TuiStringHandler<Account | string>> = [
-        TUI_DEFAULT_STRINGIFY,
+        String,
         item => String(String(item).match(/\d+/)),
     ];
 
@@ -167,7 +163,7 @@ export class ExampleTuiMultiSelectComponent extends AbstractExampleTuiControl {
     protected identityMatcher = this.identityMatcherVariants[0];
 
     protected tagValidatorVariants: ReadonlyArray<TuiBooleanHandler<Account>> = [
-        ALWAYS_TRUE_HANDLER,
+        TUI_TRUE_HANDLER,
         item => item.balance > 300,
         item => !item.name.startsWith('Pounds'),
     ];
@@ -182,7 +178,7 @@ export class ExampleTuiMultiSelectComponent extends AbstractExampleTuiControl {
 
     protected readonly disabledItemHandlerVariants: ReadonlyArray<
         TuiBooleanHandler<Account>
-    > = [ALWAYS_FALSE_HANDLER, (item: Account) => item.balance < 300];
+    > = [TUI_FALSE_HANDLER, (item: Account) => item.balance < 300];
 
     protected disabledItemHandler = this.disabledItemHandlerVariants[0];
 

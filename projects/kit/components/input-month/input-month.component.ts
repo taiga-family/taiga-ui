@@ -13,7 +13,7 @@ import type {
 } from '@taiga-ui/cdk';
 import {
     AbstractTuiNullableControl,
-    ALWAYS_FALSE_HANDLER,
+    TUI_FALSE_HANDLER,
     TUI_IS_MOBILE,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
@@ -61,7 +61,7 @@ export class TuiInputMonthComponent
     public max: TuiMonth | null = this.options.max;
 
     @Input()
-    public disabledItemHandler: TuiBooleanHandler<TuiMonth> = ALWAYS_FALSE_HANDLER;
+    public disabledItemHandler: TuiBooleanHandler<TuiMonth> = TUI_FALSE_HANDLER;
 
     @Input()
     public defaultActiveYear: TuiYear = TuiDay.currentLocal();

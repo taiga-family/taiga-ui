@@ -4,12 +4,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import {tuiDocExcludeProperties} from '@taiga-ui/addon-doc';
 import type {TuiIdentityMatcher, TuiStringHandler, TuiStringMatcher} from '@taiga-ui/cdk';
-import {
-    TUI_DEFAULT_MATCHER,
-    TUI_DEFAULT_STRINGIFY,
-    TUI_STRICT_MATCHER,
-    tuiPure,
-} from '@taiga-ui/cdk';
+import {TUI_DEFAULT_MATCHER, TUI_STRICT_MATCHER, tuiPure} from '@taiga-ui/cdk';
 import type {TuiValueContentContext} from '@taiga-ui/core';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
@@ -120,7 +115,7 @@ export class ExampleTuiComboBoxComponent extends AbstractExampleTuiControl {
     protected selectedValueTemplate = '';
 
     protected readonly stringifyVariants: Array<TuiStringHandler<Account | string>> = [
-        TUI_DEFAULT_STRINGIFY,
+        String,
         item => String(String(item).match(/\d+/)),
     ];
 

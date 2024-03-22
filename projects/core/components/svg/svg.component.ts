@@ -14,7 +14,6 @@ import {WINDOW} from '@ng-web-apis/common';
 import type {TuiSafeHtml} from '@taiga-ui/cdk';
 import {
     TUI_BASE_HREF,
-    tuiAssert,
     tuiGetDocumentOrShadowRoot,
     tuiIsString,
     tuiPure,
@@ -79,7 +78,7 @@ export class TuiSvgComponent {
     public set src(src: TuiSafeHtml | null | undefined) {
         const deprecated = this.options.deprecated(String(src));
 
-        ngDevMode && tuiAssert.assert(!deprecated, deprecated);
+        ngDevMode && console.assert(!deprecated, deprecated);
 
         this.icon = (this.srcInterceptors ?? []).reduce(
             (newSrc, interceptor: TuiSvgInterceptorHandler) =>
@@ -123,7 +122,7 @@ export class TuiSvgComponent {
             },
         });
 
-        ngDevMode && tuiAssert.assert(false, message, icon);
+        ngDevMode && console.assert(false, message, icon);
         this.el.dispatchEvent(event);
     }
 

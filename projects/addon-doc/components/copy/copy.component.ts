@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {ALWAYS_FALSE_HANDLER, TuiDestroyService, tuiPure} from '@taiga-ui/cdk';
+import {TUI_FALSE_HANDLER, TuiDestroyService, tuiPure} from '@taiga-ui/cdk';
 import {TUI_COPY_TEXTS} from '@taiga-ui/kit';
 import type {Observable} from 'rxjs';
 import {map, startWith, Subject, switchMap, timer} from 'rxjs';
@@ -22,7 +22,7 @@ export class TuiDocCopyComponent {
     protected get copied$(): Observable<boolean> {
         return this.copy$.pipe(
             switchMap(() =>
-                timer(COPIED_TIMEOUT).pipe(map(ALWAYS_FALSE_HANDLER), startWith(true)),
+                timer(COPIED_TIMEOUT).pipe(map(TUI_FALSE_HANDLER), startWith(true)),
             ),
         );
     }

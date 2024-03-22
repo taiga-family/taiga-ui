@@ -15,9 +15,9 @@ import type {
 } from '@taiga-ui/cdk';
 import {
     AbstractTuiNullableControl,
-    ALWAYS_FALSE_HANDLER,
     EMPTY_QUERY,
     TUI_DEFAULT_IDENTITY_MATCHER,
+    TUI_FALSE_HANDLER,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
     tuiIsNativeFocusedIn,
@@ -58,7 +58,7 @@ export class TuiRadioListComponent<T> extends AbstractTuiNullableControl<T> {
     public orientation: TuiOrientation = 'vertical';
 
     @Input()
-    public disabledItemHandler: TuiBooleanHandler<T> = ALWAYS_FALSE_HANDLER;
+    public disabledItemHandler: TuiBooleanHandler<T> = TUI_FALSE_HANDLER;
 
     public get focused(): boolean {
         return tuiIsNativeFocusedIn(this.el);

@@ -1,7 +1,7 @@
 /// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
 import type {PipeTransform} from '@angular/core';
 import {Pipe} from '@angular/core';
-import {CHAR_PLUS, tuiAssert} from '@taiga-ui/cdk';
+import {CHAR_PLUS} from '@taiga-ui/cdk';
 import {tuiFormatPhone} from '@taiga-ui/core/utils/format';
 
 @Pipe({name: 'tuiFormatPhone'})
@@ -19,7 +19,7 @@ export class TuiFormatPhonePipe implements PipeTransform {
         phoneMask = '(###) ###-##-##',
     ): string {
         ngDevMode &&
-            tuiAssert.assert(
+            console.assert(
                 value !== undefined,
                 'Undefined was passed to tuiFormatPhone pipe',
             );

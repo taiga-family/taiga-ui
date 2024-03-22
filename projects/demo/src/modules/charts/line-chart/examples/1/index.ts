@@ -2,7 +2,6 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiContext} from '@taiga-ui/cdk';
-import {TUI_DEFAULT_STRINGIFY} from '@taiga-ui/cdk';
 import type {TuiPoint} from '@taiga-ui/core';
 
 @Component({
@@ -23,7 +22,7 @@ export class TuiLineChartExample1 {
         [350, 90],
     ];
 
-    protected readonly stringify = TUI_DEFAULT_STRINGIFY;
+    protected readonly stringify = String;
 
     protected readonly hintContent = ({
         $implicit,

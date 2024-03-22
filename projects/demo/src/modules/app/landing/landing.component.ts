@@ -14,7 +14,7 @@ import {
     INTERSECTION_ROOT,
     IntersectionObserverModule,
 } from '@ng-web-apis/intersection-observer';
-import {EMPTY_QUERY, TuiAutoFocusModule, TuiRepeatTimesModule} from '@taiga-ui/cdk';
+import {EMPTY_QUERY, TuiAutoFocusDirective, TuiRepeatTimesModule} from '@taiga-ui/cdk';
 import {tuiFadeIn} from '@taiga-ui/core';
 import {TuiButtonModule} from '@taiga-ui/experimental';
 
@@ -25,7 +25,7 @@ import {TuiButtonModule} from '@taiga-ui/experimental';
         NgIf,
         RouterLink,
         TuiButtonModule,
-        TuiAutoFocusModule,
+        TuiAutoFocusDirective,
         TuiRepeatTimesModule,
         IntersectionObserverModule,
     ],

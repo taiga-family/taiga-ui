@@ -7,7 +7,7 @@ import {
     Output,
 } from '@angular/core';
 import {TUI_PREVIEW_ICONS, TUI_PREVIEW_ZOOM_TEXTS} from '@taiga-ui/addon-preview/tokens';
-import {ALWAYS_FALSE_HANDLER, tuiClamp} from '@taiga-ui/cdk';
+import {TUI_FALSE_HANDLER, tuiClamp} from '@taiga-ui/cdk';
 import {map, merge, of, startWith, switchMap, timer} from 'rxjs';
 
 const STEP = 0.5;
@@ -38,7 +38,7 @@ export class TuiPreviewZoomComponent {
     protected readonly zoomTexts$ = inject(TUI_PREVIEW_ZOOM_TEXTS);
 
     protected readonly hintShow$ = this.valueChange.pipe(
-        switchMap(() => merge(of(true), timer(1000).pipe(map(ALWAYS_FALSE_HANDLER)))),
+        switchMap(() => merge(of(true), timer(1000).pipe(map(TUI_FALSE_HANDLER)))),
         startWith(false),
     );
 

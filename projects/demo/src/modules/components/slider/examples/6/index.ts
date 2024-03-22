@@ -1,7 +1,7 @@
 import {Component, HostListener} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {ALWAYS_FALSE_HANDLER, tuiClamp} from '@taiga-ui/cdk';
+import {TUI_FALSE_HANDLER, tuiClamp} from '@taiga-ui/cdk';
 import {BehaviorSubject, distinctUntilChanged, map, of, switchMap, timer} from 'rxjs';
 
 @Component({
@@ -20,7 +20,7 @@ export class TuiSliderExample6 {
     protected readonly showHint$ = this.active$.pipe(
         distinctUntilChanged(),
         switchMap(active =>
-            active ? of(true) : timer(1000).pipe(map(ALWAYS_FALSE_HANDLER)),
+            active ? of(true) : timer(1000).pipe(map(TUI_FALSE_HANDLER)),
         ),
     );
 

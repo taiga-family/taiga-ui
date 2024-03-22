@@ -1,7 +1,5 @@
 import type {TuiHandler, TuiIdentityMatcher} from '@taiga-ui/cdk/types';
 
-import {TUI_DEFAULT_STRINGIFY} from './stringify';
-
 function bothEmpty(item1: unknown, item2: unknown): boolean {
     return Array.isArray(item1) && Array.isArray(item2) && !item1.length && !item2.length;
 }
@@ -15,7 +13,7 @@ function bothEmpty(item1: unknown, item2: unknown): boolean {
 export const TUI_DEFAULT_MATCHER = <T>(
     item: T,
     search: string,
-    stringify: TuiHandler<T, string> = TUI_DEFAULT_STRINGIFY,
+    stringify: TuiHandler<T, string> = String,
 ): boolean => stringify(item).toLowerCase().includes(search.toLowerCase());
 
 /**
@@ -27,7 +25,7 @@ export const TUI_DEFAULT_MATCHER = <T>(
 export const TUI_STRICT_MATCHER = <T>(
     item: T,
     search: string,
-    stringify: TuiHandler<T, string> = TUI_DEFAULT_STRINGIFY,
+    stringify: TuiHandler<T, string> = String,
 ): boolean => stringify(item).toLowerCase() === search.toLowerCase();
 
 /**

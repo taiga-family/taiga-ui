@@ -4,7 +4,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import {tuiDocExcludeProperties} from '@taiga-ui/addon-doc';
 import type {TuiBooleanHandler, TuiIdentityMatcher} from '@taiga-ui/cdk';
-import {ALWAYS_FALSE_HANDLER} from '@taiga-ui/cdk';
+import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk';
 import type {TuiValueContentContext} from '@taiga-ui/core';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
@@ -140,7 +140,7 @@ export class ExampleTuiSelectComponent extends AbstractExampleTuiControl {
 
     protected readonly disabledItemHandlerVariants: ReadonlyArray<
         TuiBooleanHandler<Account>
-    > = [ALWAYS_FALSE_HANDLER, (item: Account) => item.balance < 300];
+    > = [TUI_FALSE_HANDLER, (item: Account) => item.balance < 300];
 
     protected get valueContent(): PolymorpheusContent<TuiValueContentContext<Account>> {
         return this.valueTemplateRef && this.selectedValueTemplate

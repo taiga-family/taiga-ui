@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
-import {TuiActiveZoneModule, TuiLetModule} from '@taiga-ui/cdk';
+import {TuiActiveZoneDirective, TuiLetModule} from '@taiga-ui/cdk';
 import {
     TuiHostedDropdownModule,
     TuiPrimitiveTextfieldModule,
@@ -21,7 +21,7 @@ import {TuiInputDateRangeDirective} from './input-date-range.directive';
     imports: [
         CommonModule,
         MaskitoDirective,
-        TuiActiveZoneModule,
+        TuiActiveZoneDirective,
         TuiLetModule,
         PolymorpheusModule,
         TuiWrapperModule,

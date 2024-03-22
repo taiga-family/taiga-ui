@@ -1,8 +1,8 @@
 import {Directive, ElementRef, inject, Input} from '@angular/core';
 import {PAGE_VISIBILITY} from '@ng-web-apis/common';
 import {
-    ALWAYS_FALSE_HANDLER,
-    ALWAYS_TRUE_HANDLER,
+    TUI_FALSE_HANDLER,
+    TUI_TRUE_HANDLER,
     tuiIfMap,
     tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
@@ -16,10 +16,10 @@ export class TuiCarouselDirective extends Observable<unknown> {
     private readonly visible$ = inject(PAGE_VISIBILITY);
     private readonly duration$ = new BehaviorSubject(0);
     private readonly running$ = merge(
-        tuiTypedFromEvent(this.el, 'mouseenter').pipe(map(ALWAYS_FALSE_HANDLER)),
-        tuiTypedFromEvent(this.el, 'touchstart').pipe(map(ALWAYS_FALSE_HANDLER)),
-        tuiTypedFromEvent(this.el, 'touchend').pipe(map(ALWAYS_TRUE_HANDLER)),
-        tuiTypedFromEvent(this.el, 'mouseleave').pipe(map(ALWAYS_TRUE_HANDLER)),
+        tuiTypedFromEvent(this.el, 'mouseenter').pipe(map(TUI_FALSE_HANDLER)),
+        tuiTypedFromEvent(this.el, 'touchstart').pipe(map(TUI_FALSE_HANDLER)),
+        tuiTypedFromEvent(this.el, 'touchend').pipe(map(TUI_TRUE_HANDLER)),
+        tuiTypedFromEvent(this.el, 'mouseleave').pipe(map(TUI_TRUE_HANDLER)),
         this.visible$,
     );
 

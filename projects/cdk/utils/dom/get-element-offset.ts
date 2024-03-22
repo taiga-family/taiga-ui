@@ -1,5 +1,4 @@
 /// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
-import {tuiAssert} from '@taiga-ui/cdk/classes';
 
 import {tuiIsHTMLElement} from './element-checks';
 
@@ -14,7 +13,7 @@ export function tuiGetElementOffset(
     host: Element,
     element: HTMLElement,
 ): {offsetLeft: number; offsetTop: number} {
-    ngDevMode && tuiAssert.assert(host.contains(element), 'Host must contain element');
+    ngDevMode && console.assert(host.contains(element), 'Host must contain element');
 
     let {offsetTop, offsetLeft, offsetParent} = element;
 

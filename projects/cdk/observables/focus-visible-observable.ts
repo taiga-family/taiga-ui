@@ -1,4 +1,4 @@
-import {ALWAYS_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
+import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import {TuiOwnerDocumentException} from '@taiga-ui/cdk/exceptions';
 import {tuiIsFalsy} from '@taiga-ui/cdk/utils';
 import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
@@ -71,7 +71,7 @@ export function tuiFocusVisibleObservable(element: Element): Observable<boolean>
         ),
     ).pipe(
         switchMap(() =>
-            elementBlur$.pipe(map(ALWAYS_FALSE_HANDLER), take(1), startWith(true)),
+            elementBlur$.pipe(map(TUI_FALSE_HANDLER), take(1), startWith(true)),
         ),
         distinctUntilChanged(),
     );

@@ -31,7 +31,6 @@ import {
     TUI_IS_E2E,
     TUI_IS_PLAYWRIGHT,
     TUI_TAKE_ONLY_TRUSTED_EVENTS,
-    tuiAssert,
 } from '@taiga-ui/cdk';
 import {
     TUI_DROPDOWN_HOVER_DEFAULT_OPTIONS,
@@ -113,7 +112,7 @@ export const config: ApplicationConfig = {
                 }
 
                 ngDevMode &&
-                    tuiAssert.assert(
+                    console.assert(
                         !(type && path),
                         'Don\'t use "type" and "path" input params together in tui-doc-page',
                     );

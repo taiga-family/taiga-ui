@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
-import {TuiActiveZoneModule, TuiObscuredDirective} from '@taiga-ui/cdk';
+import {TuiActiveZoneDirective, TuiObscuredDirective} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
     TuiDropdownModule,
@@ -40,7 +40,7 @@ import {TuiDropdownExample5} from './examples/5';
         TuiSurfaceModule,
         TuiSelectModule,
         TuiObscuredDirective,
-        TuiActiveZoneModule,
+        TuiActiveZoneDirective,
         TuiToggleModule,
         TuiInputModule,
         TuiNotificationModule,

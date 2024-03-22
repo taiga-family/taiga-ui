@@ -17,7 +17,7 @@ import type {
 } from '@taiga-ui/cdk';
 import {
     AbstractTuiNullableControl,
-    ALWAYS_FALSE_HANDLER,
+    TUI_FALSE_HANDLER,
     TUI_IS_IOS,
     TUI_IS_MOBILE,
     TUI_STRICT_MATCHER,
@@ -72,7 +72,7 @@ export class TuiInputTimeComponent
     private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
 
     @Input()
-    public disabledItemHandler: TuiBooleanHandler<TuiTime> = ALWAYS_FALSE_HANDLER;
+    public disabledItemHandler: TuiBooleanHandler<TuiTime> = TUI_FALSE_HANDLER;
 
     @Input()
     public items: readonly TuiTime[] = [];

@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {TuiExamplePipe, TuiSetupComponent} from '@demo/utils';
 import {tuiGetDocModules} from '@taiga-ui/addon-doc';
-import {TuiActiveZoneModule} from '@taiga-ui/cdk';
+import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
     TuiDataListModule,
@@ -37,7 +37,7 @@ import {ExampleTuiTabsComponent} from './tabs.component';
         TuiDropdownModule,
         TuiDataListModule,
         TuiScrollbarComponent,
-        TuiActiveZoneModule,
+        TuiActiveZoneDirective,
         TuiExamplePipe,
         TuiSetupComponent,
         tuiGetDocModules(ExampleTuiTabsComponent),

@@ -2,7 +2,6 @@
 import {inject, Injectable, SecurityContext} from '@angular/core';
 import type {SafeHtml} from '@angular/platform-browser';
 import {DomSanitizer} from '@angular/platform-browser';
-import {tuiAssert} from '@taiga-ui/cdk';
 import {TUI_ICONS, TUI_SANITIZER} from '@taiga-ui/core/tokens';
 import {tuiProcessIcon} from '@taiga-ui/core/utils/dom';
 import {BehaviorSubject} from 'rxjs';
@@ -46,7 +45,7 @@ export class TuiSvgService {
         const parsed = this.parseSrc(name, src);
 
         if (!parsed) {
-            ngDevMode && tuiAssert.assert(false, 'Unable to parse given SVG src');
+            ngDevMode && console.assert(false, 'Unable to parse given SVG src');
 
             return;
         }

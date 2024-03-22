@@ -1,4 +1,4 @@
-import {ALWAYS_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
+import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import {TuiOwnerDocumentException} from '@taiga-ui/cdk/exceptions';
 import type {Observable} from 'rxjs';
 import {filter, map, startWith, switchMap, take} from 'rxjs';
@@ -24,7 +24,7 @@ export function tuiPressedObservable(
         filter(({isTrusted}) => isTrusted || !onlyTrusted),
         switchMap(() =>
             tuiMouseDragFinishFrom(ownerDocument).pipe(
-                map(ALWAYS_FALSE_HANDLER),
+                map(TUI_FALSE_HANDLER),
                 take(1),
                 startWith(true),
             ),
