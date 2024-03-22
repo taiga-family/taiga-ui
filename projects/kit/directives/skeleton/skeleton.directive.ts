@@ -1,0 +1,55 @@
+import type {OnChanges, SimpleChanges} from '@angular/core';
+import {Directive, ElementRef, inject, Input} from '@angular/core';
+import {CHAR_NO_BREAK_SPACE, tuiPure, tuiWithStyles} from '@taiga-ui/cdk';
+import {TUI_ANIMATIONS_DEFAULT_DURATION, TUI_ANIMATIONS_SPEED} from '@taiga-ui/core';
+
+import {TuiSkeletonComponent} from './skeleton.component';
+
+const FADE = [{opacity: 0.06}, {opacity: 1}];
+
+@Directive({
+    standalone: true,
+    selector: '[tuiSkeleton]',
+    host: {
+        tuiSkeleton: '',
+        '[class._skeleton]': 'tuiSkeleton',
+        '[attr.data-tui-skeleton]': 'getPlaceholder(tuiSkeleton)',
+    },
+})
+export class TuiSkeletonDirective implements OnChanges {
+    private animation?: Animation;
+    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly duration =
+        inject(TUI_ANIMATIONS_SPEED) * TUI_ANIMATIONS_DEFAULT_DURATION * 2;
+
+    @Input()
+    public tuiSkeleton: boolean | number | string = false;
+
+    protected readonly nothing = tuiWithStyles(TuiSkeletonComponent);
+
+    public ngOnChanges({tuiSkeleton}: SimpleChanges): void {
+        this.animation?.cancel();
+
+        if (!tuiSkeleton.currentValue && !tuiSkeleton.firstChange) {
+            this.animation = this.el.animate(FADE, this.duration);
+        }
+    }
+
+    @tuiPure
+    protected getPlaceholder(value: boolean | number | string): string | null {
+        switch (typeof value) {
+            case 'number':
+                return Array.from({length: value})
+                    .map(() => CHAR_NO_BREAK_SPACE.repeat(getLength()))
+                    .join(' ');
+            case 'string':
+                return value;
+            default:
+                return null;
+        }
+    }
+}
+
+function getLength(): number {
+    return Math.floor(Math.random() * (15 - 5 + 1)) + 5;
+}

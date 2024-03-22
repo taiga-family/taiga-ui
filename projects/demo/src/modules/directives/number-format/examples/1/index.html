@@ -1,0 +1,14 @@
+<!-- Works in several levels-->
+<div
+    class="wrapper tui-space_top-3"
+    [tuiNumberFormat]="{decimalMode: 'always', decimalSeparator: '.'}"
+>
+    <!-- You can also put directive directly on input-number -->
+    <tui-input-number
+        [formControl]="control"
+        [tuiNumberFormat]="{precision: 3}"
+    >
+        Cool
+        <input tuiTextfield />
+    </tui-input-number>
+</div>

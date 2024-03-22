@@ -3,14 +3,15 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {tuiGetDocModules} from '@taiga-ui/addon-doc';
 import {
+    TuiDropdownModule,
     TuiGroupDirective,
-    TuiHostedDropdownModule,
     TuiIconComponent,
     TuiLabelModule,
     TuiLinkModule,
     TuiLoaderModule,
     TuiNotificationModule,
     TuiTextfieldControllerModule,
+    TuiTitleDirective,
     TuiTooltipModule,
 } from '@taiga-ui/core';
 import {
@@ -20,7 +21,6 @@ import {
     TuiCheckboxModule,
     TuiSurfaceModule,
     TuiThumbnailCardModule,
-    TuiTitleModule,
     TuiToggleModule,
 } from '@taiga-ui/experimental';
 import {
@@ -62,7 +62,7 @@ import {TuiCellExample7} from './examples/7';
         TuiThumbnailCardModule,
         TuiToggleModule,
         TuiTooltipModule,
-        TuiTitleModule,
+        TuiTitleDirective,
         TuiIconComponent,
         TuiCheckboxModule,
         TuiLoaderModule,
@@ -73,7 +73,7 @@ import {TuiCellExample7} from './examples/7';
         TuiTextfieldControllerModule,
         TuiLabelModule,
         TuiButtonModule,
-        TuiHostedDropdownModule,
+        TuiDropdownModule,
         TuiGroupDirective,
         TuiCardModule,
         tuiGetDocModules(ExampleTuiCellComponent),

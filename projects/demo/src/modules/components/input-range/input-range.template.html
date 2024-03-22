@@ -123,6 +123,7 @@
                     [rightValueContent]="rightValueContent"
                     [segments]="segments"
                     [steps]="steps"
+                    [tuiNumberFormat]="{decimalMode: decimalMode, rounding, thousandSeparator, decimalSeparator}"
                     [tuiTextfieldLabelOutside]="labelOutside"
                     [tuiTextfieldSize]="size"
                 >
@@ -283,6 +284,7 @@
                 Size
             </ng-template>
         </tui-doc-documentation>
+        <number-format-documentation />
     </ng-template>
 
     <ng-template pageTab>

@@ -1,43 +1,60 @@
-<tui-tabs [(activeItemIndex)]="activeItemIndex">
-    <button
-        tuiTab
-        (click)="onClick('Maps')"
-    >
-        <tui-svg
-            src="tuiIconCreditCard"
-            class="tui-space_right-2"
-        />
-        Maps
-    </button>
-    <button
-        disabled
-        tuiTab
-        (click)="onClick('Calls')"
-    >
-        <tui-svg
-            src="tuiIconPhone"
-            class="tui-space_right-2"
-        />
-        Calls
-    </button>
-    <button
-        tuiTab
-        (click)="onClick('Settings')"
-    >
-        <tui-svg
-            src="tuiIconSettings"
-            class="tui-space_right-2"
-        />
-        Settings
-    </button>
-</tui-tabs>
-<tui-input-number
-    decimal="never"
-    class="tui-space_top-4"
-    [max]="2"
-    [min]="0"
-    [step]="1"
-    [(ngModel)]="activeItemIndex"
+<div
+    tuiMode="onDark"
+    tuiTheme="night"
+    class="wrapper"
 >
-    activeItemIndex
-</tui-input-number>
+    <h1 class="tui-text_h3 title">Monty Python</h1>
+    <tui-tabs-with-more
+        underline="var(--tui-text-01-night)"
+        class="tabs"
+        [activeItemIndex]="activeItemIndex"
+        [moreContent]="more"
+    >
+        <ng-container *ngFor="let tab of tabs">
+            <ng-container *ngIf="isString(tab); else submenu">
+                <button
+                    *tuiItem
+                    tuiTab
+                    (click)="onClick(tab)"
+                >
+                    {{ tab }}
+                </button>
+            </ng-container>
+            <ng-template #submenu>
+                <button
+                    *tuiItem
+                    tuiTab
+                    [tuiDropdown]="dropdown"
+                    [(tuiDropdownOpen)]="open"
+                    (tui-tab-activate)="stop($event)"
+                >
+                    Collaborators
+                    <tui-svg
+                        src="tuiIconChevronDown"
+                        class="icon"
+                        [class.icon_rotated]="open"
+                    />
+                </button>
+            </ng-template>
+        </ng-container>
+    </tui-tabs-with-more>
+</div>
+<section class="content">Currently active: {{ activeElement }}</section>
+<ng-template
+    #dropdown
+    let-activeZone
+    let-close="close"
+>
+    <tui-data-list [tuiActiveZoneParent]="activeZone">
+        <button
+            *ngFor="let collaborator of collaborators"
+            tuiOption
+            (click)="onClick(collaborator); close()"
+        >
+            {{ collaborator }}
+        </button>
+    </tui-data-list>
+</ng-template>
+<ng-template #more>
+    <tui-svg src="tuiIconMoreHorizontalLarge" />
+</ng-template>

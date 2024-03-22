@@ -1,68 +1,24 @@
-<tui-tabs-with-more
-    [itemsLimit]="3"
-    [(activeItemIndex)]="activeItemIndex"
->
-    <button
-        *tuiItem
-        tuiTab
-        (click)="onClick('Maps')"
-    >
+<tui-tabs [(activeItemIndex)]="activeItemIndex">
+    <ng-container *ngFor="let step of steps; let last = last">
+        <button
+            tuiTab
+            class="step"
+            [disabled]="last"
+            (click)="onClick(step)"
+        >
+            {{ step }}
+        </button>
         <tui-svg
-            src="tuiIconCreditCard"
-            class="tui-space_right-2"
+            *ngIf="!last"
+            src="tuiIconChevronRight"
+            class="separator"
         />
-        Maps
-    </button>
-    <button
-        *tuiItem
-        disabled
-        tuiTab
-        (click)="onClick('Calls')"
-    >
-        <tui-svg
-            src="tuiIconPhone"
-            class="tui-space_right-2"
-        />
-        Calls
-    </button>
-    <button
-        *tuiItem
-        tuiTab
-        (click)="onClick('Settings')"
-    >
-        <tui-svg
-            src="tuiIconSettings"
-            class="tui-space_right-2"
-        />
-        Settings
-    </button>
-    <button
-        *tuiItem
-        tuiTab
-        (click)="onClick('Favorite')"
-    >
-        <tui-svg
-            src="tuiIconHeart"
-            class="tui-space_right-2"
-        />
-        Favorite
-    </button>
-    <button
-        *tuiItem
-        tuiTab
-        (click)="onClick('Trash')"
-    >
-        <tui-svg
-            src="tuiIconTrash"
-            class="tui-space_right-2"
-        />
-        Trash
-    </button>
-</tui-tabs-with-more>
+    </ng-container>
+</tui-tabs>
 <tui-input-number
     decimal="never"
     class="tui-space_top-4"
-    [max]="4"
+    [max]="2"
     [min]="0"
     [step]="1"
     [(ngModel)]="activeItemIndex"

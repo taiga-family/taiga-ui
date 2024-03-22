@@ -1,4 +1,5 @@
 <dropdown-documentation *ngIf="dropdown" />
+<number-format-documentation *ngIf="isTuiFormatNumber(documentedComponent)" />
 <ng-container *ngIf="isTuiReactiveControl(documentedComponent)">
     <hint-controller-documentation *ngIf="withHint" />
     <textfield-controller-documentation *ngIf="withTextFieldController" />

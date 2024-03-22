@@ -53,6 +53,7 @@ export const ATTRS_TO_REPLACE: ReplacementAttribute[] = [
     {
         from: {
             attrName: '(tuiResize)',
+            withTagNames: ['*'],
         },
         to: {attrName: '(waResizeObserver)'},
     },
@@ -69,5 +70,48 @@ export const ATTRS_TO_REPLACE: ReplacementAttribute[] = [
             withTagNames: ['tui-radio-labeled'],
         },
         to: {attrName: '[value]'},
+    },
+    // Hosted dropdown
+    {
+        from: {
+            attrName: '[content]',
+            withTagNames: ['tui-hosted-dropdown'],
+        },
+        to: {attrName: '[tuiDropdown]'},
+    },
+    {
+        from: {
+            attrName: '[sided]',
+            withTagNames: ['tui-hosted-dropdown'],
+        },
+        to: {attrName: '[tuiDropdownSided]'},
+    },
+    {
+        from: {
+            attrName: '[canOpen]',
+            withTagNames: ['tui-hosted-dropdown'],
+        },
+        to: {attrName: '[tuiDropdownEnabled]'},
+    },
+    {
+        from: {
+            attrName: '[open]',
+            withTagNames: ['tui-hosted-dropdown'],
+        },
+        to: {attrName: '[tuiDropdownOpen]'},
+    },
+    {
+        from: {
+            attrName: '[(open)]',
+            withTagNames: ['tui-hosted-dropdown'],
+        },
+        to: {attrName: '[(tuiDropdownOpen)]'},
+    },
+    {
+        from: {
+            attrName: 'tuiHostedDropdownHost',
+            withTagNames: ['*'],
+        },
+        to: {attrName: '#tuiDropdownHost'},
     },
 ];

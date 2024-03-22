@@ -20,8 +20,9 @@ import {TUI_IS_E2E} from '@taiga-ui/cdk';
 import {TuiAlertService} from '@taiga-ui/core';
 import {TUI_COPY_TEXTS} from '@taiga-ui/kit';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import type {Observable} from 'rxjs';
-import {BehaviorSubject, map, Subject, switchMap} from 'rxjs';
+import {BehaviorSubject, map, ReplaySubject, Subject, switchAll, switchMap} from 'rxjs';
 
 import {TUI_DOC_EXAMPLE_OPTIONS} from './example.options';
 
@@ -38,6 +39,9 @@ export class TuiDocExampleComponent {
     private readonly copyTexts$ = inject(TUI_COPY_TEXTS);
     private readonly processContent = inject(TUI_DOC_EXAMPLE_CONTENT_PROCESSOR);
     private readonly rawLoader$$ = new BehaviorSubject<TuiDocExample>({});
+    private readonly lazyLoader$$ = new ReplaySubject<Promise<{readonly default: any}>>(
+        1,
+    );
 
     @Input()
     public id: string | null = null;
@@ -78,11 +82,21 @@ export class TuiDocExampleComponent {
             map(value => this.processContent(value)),
         );
 
+    protected readonly lazyComponent$ = this.lazyLoader$$.pipe(
+        switchAll(),
+        map(module => new PolymorpheusComponent(module.default)),
+    );
+
     protected readonly loading$ = new Subject<boolean>();
 
     @Input()
     public set content(content: TuiDocExample) {
         this.rawLoader$$.next(content);
+    }
+
+    @Input()
+    public set component(content: Promise<{readonly default: any}>) {
+        this.lazyLoader$$.next(content);
     }
 
     protected readonly visible = (files: Record<string, string>): boolean =>
@@ -101,11 +115,8 @@ export class TuiDocExampleComponent {
 
     protected edit(files: Record<string, string>): void {
         this.loading$.next(true);
-        this.codeEditor
+        void this.codeEditor
             ?.edit(this.componentName, this.id || '', files)
-            // TODO: replace lines below with `finally` when we bump Firefox to 58+
-            // TODO: Add `es2018.promise` to `tsconfig.json` => `compilerOptions.lib`.
-            .then(() => this.loading$.next(false))
-            .catch(() => this.loading$.next(false));
+            .finally(() => this.loading$.next(false));
     }
 }

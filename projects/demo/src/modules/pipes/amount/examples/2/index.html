@@ -4,6 +4,10 @@
 
 <div>{{ 200.536 | tuiAmount: 'EUR' | async }}</div>
 
-<div [tuiNumberFormat]="{rounding: 'ceil', decimalLimit: 1}">
+<div [tuiNumberFormat]="{rounding: 'ceil', precision: 1}">
     {{ 54000.643 | tuiAmount: 'USD' : 'left' | async }}
+</div>
+
+<div [tuiNumberFormat]="{decimalMode: 'always'}">
+    {{ 800 | tuiAmount: 'USD' : 'left' | async }}
 </div>

@@ -258,6 +258,60 @@ export class TuiDestroyExample implements OnInit {
 }`.trim(),
             );
         });
+
+        it('does not duplicate `destroyRef = inject(DestroyRef)`', async () => {
+            expect(
+                await runMigration(
+                    `
+import {Component, inject} from '@angular/core';
+import {TuiDestroyService} from '@taiga-ui/cdk';
+import {timer, takeUntil} from 'rxjs';
+
+@Component({
+    selector: 'tui-destroy-example',
+    template: '',
+    providers: [TuiDestroyService],
+})
+export class TuiDestroyExample implements OnInit {
+    private destroy$ = inject(TuiDestroyService);
+
+    ngOnInit() {
+        timer(3_000)
+            .pipe(takeUntil(this.destroy$))
+            .subscribe();
+
+        timer(5_000)
+            .pipe(takeUntil(this.destroy$))
+            .subscribe();
+    }
+}`.trim(),
+                ),
+            ).toEqual(
+                `
+import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
+import { Component, inject, DestroyRef } from '@angular/core';
+import {timer, takeUntil} from 'rxjs';
+
+@Component({
+    selector: 'tui-destroy-example',
+    template: '',
+    providers: [],
+})
+export class TuiDestroyExample implements OnInit {
+    ngOnInit() {
+        timer(3_000)
+            .pipe(takeUntilDestroyed(this.destroyRef))
+            .subscribe();
+
+        timer(5_000)
+            .pipe(takeUntilDestroyed(this.destroyRef))
+            .subscribe();
+    }
+
+    readonly destroyRef = inject(DestroyRef);
+}`.trim(),
+            );
+        });
     });
 
     it('complex combination of all cases', async () => {
@@ -331,6 +385,41 @@ export class TuiDestroyExample implements OnInit {
     readonly destroyRef = inject(DestroyRef);
 }`.trim(),
         );
+    });
+
+    describe('too tricky use cases (just add code comment)', () => {
+        it('deps of provided DI entity', async () => {
+            expect(
+                await runMigration(
+                    `
+import {ElementRef, Provider} from '@angular/core';
+import {TUI_DOC_PAGE_LOADED} from '@taiga-ui/addon-doc';
+import {TuiDestroyService} from '@taiga-ui/cdk';
+import {ResizeObserverService} from '@ng-web-apis/resize-observer';
+
+export const DEMO_PAGE_LOADED_PROVIDER = {
+    provide: TUI_DOC_PAGE_LOADED,
+    deps: [ElementRef, ResizeObserverService, TuiDestroyService],
+    useFactory: readyToScrollFactory,
+};
+`.trim(),
+                ),
+            ).toEqual(
+                `
+import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
+import {ElementRef, Provider} from '@angular/core';
+import {TUI_DOC_PAGE_LOADED} from '@taiga-ui/addon-doc';
+import {ResizeObserverService} from '@ng-web-apis/resize-observer';
+
+export const DEMO_PAGE_LOADED_PROVIDER = {
+    provide: TUI_DOC_PAGE_LOADED,
+// TODO: (Taiga UI migration) use takeUntilDestroyed (https://angular.io/api/core/rxjs-interop/takeUntilDestroyed) instead of legacy TuiDestroyService
+    deps: [ElementRef, ResizeObserverService, TuiDestroyService],
+    useFactory: readyToScrollFactory,
+};
+`.trim(),
+            );
+        });
     });
 
     afterEach(() => resetActiveProject());

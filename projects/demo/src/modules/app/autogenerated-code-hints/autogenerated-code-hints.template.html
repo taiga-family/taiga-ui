@@ -1,18 +1,16 @@
-<tui-hosted-dropdown
+<button
     *ngIf="shouldShowIcon(code)"
+    appearance=""
+    icon="tuiIconAlertCircleLarge"
+    size="s"
     tuiDropdownDirection="top"
     tuiDropdownHover
-    [content]="content"
->
-    <button
-        appearance=""
-        icon="tuiIconAlertCircleLarge"
-        size="s"
-        tuiIconButton
-        type="button"
-        class="icon"
-    ></button>
-</tui-hosted-dropdown>
+    tuiDropdownOpen
+    tuiIconButton
+    type="button"
+    class="icon"
+    [tuiDropdown]="content"
+></button>
 
 <ng-template #content>
     <ul class="tui-list tui-list_small hints">

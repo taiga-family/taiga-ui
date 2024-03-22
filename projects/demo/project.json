@@ -28,7 +28,7 @@
                 },
                 "outputPath": "dist/demo/browser",
                 "index": "projects/demo/src/index.html",
-                "main": "projects/demo/src/main.browser.ts",
+                "main": "projects/demo/src/main.ts",
                 "polyfills": "projects/demo/src/polyfills.ts",
                 "tsConfig": "projects/demo/tsconfig.app.json",
                 "assets": [
@@ -101,15 +101,6 @@
                     "sourceMap": false,
                     "namedChunks": false,
                     "statsJson": false
-                },
-                "coalescing": {
-                    "baseHref": "/",
-                    "fileReplacements": [
-                        {
-                            "replace": "projects/demo/src/emulate/ng-zone-options.ts",
-                            "with": "projects/demo/src/emulate/ng-zone-options.coalescing.ts"
-                        }
-                    ]
                 }
             },
             "defaultConfiguration": "production"

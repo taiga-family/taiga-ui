@@ -11,7 +11,7 @@ import {TUI_DOC_ICONS} from '@taiga-ui/addon-doc/tokens';
 import {TuiSwipeService} from '@taiga-ui/cdk';
 import type {TuiBrightness} from '@taiga-ui/core';
 import {TuiModeDirective} from '@taiga-ui/core';
-import {distinctUntilChanged, map, share, startWith} from 'rxjs';
+import {distinctUntilChanged, map, shareReplay, startWith} from 'rxjs';
 
 @Component({
     selector: 'tui-doc-main',
@@ -38,7 +38,7 @@ export class TuiDocMainComponent {
         startWith(null),
         map(() => this.night.value),
         distinctUntilChanged(),
-        share(),
+        shareReplay({bufferSize: 1, refCount: true}),
     );
 
     protected readonly theme = inject(TuiThemeService);

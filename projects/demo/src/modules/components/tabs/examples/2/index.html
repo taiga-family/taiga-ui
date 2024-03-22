@@ -1,23 +1,68 @@
-<tui-tabs
-    tuiMobileTabs
+<tui-tabs-with-more
+    [itemsLimit]="3"
     [(activeItemIndex)]="activeItemIndex"
 >
     <button
-        *ngFor="let item of items"
+        *tuiItem
         tuiTab
-        (click)="onClick(item.text)"
+        (click)="onClick('Maps')"
     >
         <tui-svg
+            src="tuiIconCreditCard"
             class="tui-space_right-2"
-            [src]="item.icon"
         />
-        {{ item.text }}
+        Maps
     </button>
-</tui-tabs>
+    <button
+        *tuiItem
+        disabled
+        tuiTab
+        (click)="onClick('Calls')"
+    >
+        <tui-svg
+            src="tuiIconPhone"
+            class="tui-space_right-2"
+        />
+        Calls
+    </button>
+    <button
+        *tuiItem
+        tuiTab
+        (click)="onClick('Settings')"
+    >
+        <tui-svg
+            src="tuiIconSettings"
+            class="tui-space_right-2"
+        />
+        Settings
+    </button>
+    <button
+        *tuiItem
+        tuiTab
+        (click)="onClick('Favorite')"
+    >
+        <tui-svg
+            src="tuiIconHeart"
+            class="tui-space_right-2"
+        />
+        Favorite
+    </button>
+    <button
+        *tuiItem
+        tuiTab
+        (click)="onClick('Trash')"
+    >
+        <tui-svg
+            src="tuiIconTrash"
+            class="tui-space_right-2"
+        />
+        Trash
+    </button>
+</tui-tabs-with-more>
 <tui-input-number
     decimal="never"
     class="tui-space_top-4"
-    [max]="2"
+    [max]="4"
     [min]="0"
     [step]="1"
     [(ngModel)]="activeItemIndex"

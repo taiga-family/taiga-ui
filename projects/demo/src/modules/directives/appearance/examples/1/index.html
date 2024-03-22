@@ -2,14 +2,11 @@
 
 <button tuiAppearance="secondary">Hovered state is only triggered on devices with pointer</button>
 
-<tui-hosted-dropdown
-    content="Button looks hovered when dropdown is open"
-    [(open)]="open"
+<button
+    tuiAppearance="secondary"
+    tuiDropdown="Button looks hovered when dropdown is open"
+    [tuiAppearanceState]="open ? 'hover' : null"
+    [(tuiDropdownOpen)]="open"
 >
-    <button
-        tuiAppearance="secondary"
-        [tuiAppearanceState]="open ? 'hover' : null"
-    >
-        Triggering state manually
-    </button>
-</tui-hosted-dropdown>
+    Triggering state manually
+</button>

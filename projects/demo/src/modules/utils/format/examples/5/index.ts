@@ -15,17 +15,17 @@ import {tuiFormatNumber} from '@taiga-ui/core';
 export class TuiFormatExample5 {
     protected parametersForm = new FormGroup({
         value: new FormControl(123456.789),
-        decimalLimit: new FormControl(2),
+        precision: new FormControl(2),
         decimalSeparator: new FormControl<TuiDecimalSymbol>('.'),
         thousandSeparator: new FormControl(' '),
     });
 
     protected get formattedNumber(): string {
-        const {value, decimalLimit, decimalSeparator, thousandSeparator} =
+        const {value, precision, decimalSeparator, thousandSeparator} =
             this.parametersForm.value;
 
         return tuiFormatNumber(value ?? 123456.789, {
-            decimalLimit: decimalLimit ?? 2,
+            precision: precision ?? 2,
             decimalSeparator: decimalSeparator ?? '.',
             thousandSeparator: thousandSeparator ?? ' ',
         });

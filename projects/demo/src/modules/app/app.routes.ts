@@ -121,7 +121,7 @@ export const ROUTES: Routes = [
     route({
         path: 'components/avatar',
         title: 'Avatar',
-        loadComponent: async () => import('../components/avatar/avatar.component'),
+        loadComponent: async () => import('../components/avatar'),
     }),
     route({
         path: 'components/badge',
@@ -196,14 +196,11 @@ export const ROUTES: Routes = [
             title: 'Radio ',
         },
     },
-    {
-        path: 'experimental/title',
-        loadChildren: async () =>
-            (await import('../experimental/title/title.module')).ExampleTuiTitleModule,
-        data: {
-            title: 'Title',
-        },
-    },
+    route({
+        path: 'components/title',
+        title: 'Title',
+        loadComponent: async () => import('../directives/title'),
+    }),
     {
         path: 'experimental/toggle',
         loadChildren: async () =>
@@ -239,15 +236,12 @@ export const ROUTES: Routes = [
             title: 'CardLarge',
         },
     },
-    {
+    route({
         path: 'components/badge-notification',
-        loadChildren: async () =>
-            (await import('../components/badge-notification/badge-notification.module'))
-                .ExampleTuiBadgeNotificationModule,
-        data: {
-            title: 'BadgeNotification',
-        },
-    },
+        loadComponent: async () =>
+            import('../components/badge-notification/badge-notification.component'),
+        title: 'BadgeNotification',
+    }),
     {
         path: 'experimental/button',
         loadChildren: async () =>
@@ -256,6 +250,12 @@ export const ROUTES: Routes = [
             title: 'Button ',
         },
     },
+    route({
+        path: 'layout/block-details',
+        loadComponent: async () =>
+            import('../components/block-details/block-details.component'),
+        title: 'BlockDetails',
+    }),
     {
         path: 'experimental/button-vertical',
         loadChildren: async () =>
@@ -291,6 +291,11 @@ export const ROUTES: Routes = [
             title: 'Cell',
         },
     },
+    route({
+        path: 'components/comment',
+        loadComponent: async () => import('../directives/comment/comment.component'),
+        title: 'Comment',
+    }),
     {
         path: 'experimental/compass',
         loadChildren: async () =>
@@ -300,14 +305,11 @@ export const ROUTES: Routes = [
             title: 'Compass',
         },
     },
-    {
-        path: 'experimental/header',
-        loadChildren: async () =>
-            (await import('../experimental/header/header.module')).ExampleTuiHeaderModule,
-        data: {
-            title: 'Header',
-        },
-    },
+    route({
+        path: 'layout/header',
+        title: 'Header',
+        loadComponent: async () => import('../directives/header'),
+    }),
     {
         path: 'components/icon',
         loadChildren: async () =>
@@ -612,6 +614,15 @@ export const ROUTES: Routes = [
                 .ExampleTuiSensitiveModule,
         data: {
             title: 'Sensitive',
+        },
+    },
+    {
+        path: 'directives/skeleton',
+        loadChildren: async () =>
+            (await import('../directives/skeleton/skeleton.module'))
+                .ExampleTuiSkeletonModule,
+        data: {
+            title: 'Skeleton',
         },
     },
     {
@@ -1345,14 +1356,6 @@ export const ROUTES: Routes = [
         },
     },
     {
-        path: 'skeleton',
-        loadChildren: async () =>
-            (await import('../markup/skeleton/skeleton.module')).SkeletonModule,
-        data: {
-            title: 'Skeleton',
-        },
-    },
-    {
         path: 'spaces',
         loadChildren: async () =>
             (await import('../markup/spaces/spaces.module')).SpacesModule,
@@ -1801,6 +1804,12 @@ export const ROUTES: Routes = [
             title: 'TextfieldController',
         },
     },
+    route({
+        path: 'directives/number-format',
+        title: 'NumberFormat',
+        loadComponent: async () =>
+            import('../directives/number-format/number-format.component'),
+    }),
 
     // UTILS
     {

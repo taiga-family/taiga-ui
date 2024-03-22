@@ -8,21 +8,33 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import {tuiMoveFocus} from '@taiga-ui/cdk';
+import {tuiMoveFocus, tuiWithStyles} from '@taiga-ui/cdk';
+import type {TuiSizeL} from '@taiga-ui/core';
 
-import {TUI_TAB_ACTIVATE} from './tab/tab.providers';
+import {TUI_TAB_ACTIVATE} from './tab.directive';
+import {TuiTabsComponent} from './tabs.component';
+import {TUI_TABS_OPTIONS} from './tabs.options';
 
 @Directive({
-    selector: 'tui-tabs, nav[tuiTabs]',
+    standalone: true,
+    selector: 'tui-tabs:is(never)',
+    host: {
+        '[attr.data-size]': 'size',
+    },
 })
 export class TuiTabsDirective implements AfterViewChecked {
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+
+    @Input()
+    public size: TuiSizeL = inject(TUI_TABS_OPTIONS).size;
 
     @Input()
     public activeItemIndex = 0;
 
     @Output()
     public readonly activeItemIndexChange = new EventEmitter<number>();
+
+    protected readonly nothing = tuiWithStyles(TuiTabsComponent);
 
     public get tabs(): readonly HTMLElement[] {
         return Array.from(this.el.querySelectorAll<HTMLElement>('[tuiTab]'));

@@ -40,10 +40,14 @@ export class TuiTableFilterDirective<T> implements OnInit, OnDestroy, TuiTableFi
     public filter(item: T): boolean {
         const {disabled, value} = this.control;
 
-        return !!disabled || !this.key || this.delegate.filter(item[this.key], value);
+        return (
+            !!disabled ||
+            !this.key ||
+            this.delegate.filter(item[this.key as keyof T], value)
+        );
     }
 
-    private get key(): keyof T | undefined {
+    private get key(): string | keyof T | undefined {
         return this.tuiTableFilter || this.head?.tuiHead;
     }
 }

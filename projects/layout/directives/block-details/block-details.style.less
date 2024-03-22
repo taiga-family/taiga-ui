@@ -1,0 +1,48 @@
+[tuiBlockDetails] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font: var(--tui-font-heading-3);
+    min-height: 2rem;
+
+    [tuiTitle] {
+        text-align: center;
+        font: var(--tui-font-text-l);
+        gap: 0;
+    }
+
+    [tuiSubtitle] {
+        font: var(--tui-font-text-m);
+        color: var(--tui-text-02);
+        margin-top: 0.25rem;
+
+        :host-context(tui-root._mobile) & {
+            font: var(--tui-font-text-s);
+        }
+    }
+
+    [tuiComment] {
+        margin-top: 1.0625rem;
+    }
+
+    [tuiAccessory] {
+        display: flex;
+        gap: 0.5rem;
+        margin-top: 1.25rem;
+    }
+
+    [tuiAccessories],
+    tui-badge:only-of-type {
+        margin-top: 1.25rem;
+    }
+
+    [tuiAccessories] {
+        display: flex;
+        gap: 0.5rem;
+    }
+
+    tui-avatar,
+    [tuiTitle] {
+        margin-bottom: 1rem;
+    }
+}

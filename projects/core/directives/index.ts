@@ -7,4 +7,5 @@ export * from '@taiga-ui/core/directives/mode';
 export * from '@taiga-ui/core/directives/number-format';
 export * from '@taiga-ui/core/directives/scroll-into-view';
 export * from '@taiga-ui/core/directives/textfield-controller';
+export * from '@taiga-ui/core/directives/title';
 export * from '@taiga-ui/core/directives/wrapper';

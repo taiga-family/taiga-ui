@@ -59,7 +59,7 @@ export class TuiThComponent<T extends Partial<Record<keyof T, any>>> {
             throw new TuiTableSortKeyException();
         }
 
-        return this.head.tuiHead;
+        return this.head.tuiHead as keyof T;
     }
 
     protected get isCurrent(): boolean {

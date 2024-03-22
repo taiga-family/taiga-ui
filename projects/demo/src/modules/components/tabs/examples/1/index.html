@@ -1,18 +1,34 @@
-<tui-tabs
-    tuiMobileTabs
-    [(activeItemIndex)]="activeItemIndex"
->
+<tui-tabs [(activeItemIndex)]="activeItemIndex">
     <button
-        *ngFor="let item of items"
-        tuiRipple="var(--tui-text-01)"
         tuiTab
-        (click)="onClick(item.text)"
+        (click)="onClick('Maps')"
     >
         <tui-svg
+            src="tuiIconCreditCard"
             class="tui-space_right-2"
-            [src]="item.icon"
         />
-        {{ item.text }}
+        Maps
+    </button>
+    <button
+        disabled
+        tuiTab
+        (click)="onClick('Calls')"
+    >
+        <tui-svg
+            src="tuiIconPhone"
+            class="tui-space_right-2"
+        />
+        Calls
+    </button>
+    <button
+        tuiTab
+        (click)="onClick('Settings')"
+    >
+        <tui-svg
+            src="tuiIconSettings"
+            class="tui-space_right-2"
+        />
+        Settings
     </button>
 </tui-tabs>
 <tui-input-number

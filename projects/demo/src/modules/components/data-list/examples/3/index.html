@@ -1,16 +1,13 @@
-<tui-hosted-dropdown
-    #dropdown
-    [content]="content"
+<button
+    appearance="flat"
+    tuiIconButton
+    type="button"
+    [icon]="arrow"
+    [pseudoHover]="open || null"
+    [tuiDropdown]="content"
     [tuiDropdownMaxHeight]="500"
->
-    <button
-        appearance="flat"
-        tuiIconButton
-        type="button"
-        [icon]="arrow"
-        [pseudoHover]="dropdown.open || null"
-    ></button>
-</tui-hosted-dropdown>
+    [(tuiDropdownOpen)]="open"
+></button>
 <ng-template #content>
     <tui-data-list
         size="l"

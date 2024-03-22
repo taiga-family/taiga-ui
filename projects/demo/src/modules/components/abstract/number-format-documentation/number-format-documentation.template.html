@@ -1,0 +1,90 @@
+<h6 class="tui-text_h6">
+    Can be expanded with
+    <a
+        routerLink="/directives/number-format"
+        target="_blank"
+        tuiLink
+    >
+        TuiNumberFormat
+    </a>
+</h6>
+<p>
+    Usage example:
+    <code>
+        [tuiNumberFormat]='&#123;decimalMode, precision, rounding, zeroPadding, thousandSeparator,
+        decimalSeparator&#125;'
+    </code>
+</p>
+<p>
+    Requires you to import
+    <code>TuiNumberFormatModule</code>
+    .
+</p>
+
+<tui-doc-documentation>
+    <ng-template
+        documentationPropertyMode="input"
+        documentationPropertyName="decimalMode"
+        documentationPropertyType="TuiDecimalMode"
+        [documentationPropertyValues]="documentedComponent.decimalVariants"
+        [(documentationPropertyValue)]="documentedComponent.decimalMode"
+    >
+        <dl>
+            <dt>
+                <code>always</code>
+            </dt>
+            <dd>
+                number of digits after
+                <code>decimalSeparator</code>
+                is
+                <b>always</b>
+                equal to the precision.
+            </dd>
+
+            <dt>
+                <code>pad</code>
+            </dt>
+            <dd>pads trailing zeroes up to precision, if the number is fractional</dd>
+
+            <dt>
+                <code>not-zero</code>
+            </dt>
+            <dd>drops trailing zeroes</dd>
+        </dl>
+    </ng-template>
+    <ng-template
+        documentationPropertyMode="input"
+        documentationPropertyName="rounding"
+        documentationPropertyType="TuiRounding"
+        [documentationPropertyValues]="documentedComponent.roundingVariants"
+        [(documentationPropertyValue)]="documentedComponent.rounding"
+    >
+        Rounding
+    </ng-template>
+    <ng-template
+        documentationPropertyMode="input"
+        documentationPropertyName="precision"
+        documentationPropertyType="number"
+        [(documentationPropertyValue)]="documentedComponent.precision"
+    >
+        A number of digits after comma (
+        <code>Infinity</code>
+        for an untouched decimal part)
+    </ng-template>
+    <ng-template
+        documentationPropertyMode="input"
+        documentationPropertyName="thousandSeparator"
+        documentationPropertyType="string"
+        [(documentationPropertyValue)]="documentedComponent.thousandSeparator"
+    >
+        Symbol for separating thousands
+    </ng-template>
+    <ng-template
+        documentationPropertyMode="input"
+        documentationPropertyName="decimalSeparator"
+        documentationPropertyType="string"
+        [(documentationPropertyValue)]="documentedComponent.decimalSeparator"
+    >
+        Symbol for separating fraction
+    </ng-template>
+</tui-doc-documentation>

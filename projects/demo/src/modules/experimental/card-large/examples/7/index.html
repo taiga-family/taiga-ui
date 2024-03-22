@@ -9,29 +9,29 @@
         </h1>
     </header>
 
-    <tui-hosted-dropdown
+    <button
         *tuiRepeatTimes="let index of 3"
+        tuiCell="l"
         tuiDropdownAlign="right"
-        [content]="dropdown"
-        [sided]="true"
+        tuiDropdownOpen
+        [tuiDropdown]="dropdown"
+        [tuiDropdownSided]="true"
     >
-        <button tuiCell="l">
-            <tui-avatar
-                appearance="primary"
-                src="tuiIconStar"
-            />
+        <tui-avatar
+            appearance="primary"
+            src="tuiIconStar"
+        />
 
-            <div tuiTitle>
-                Title
-                <div tuiSubtitle>Description</div>
-            </div>
+        <div tuiTitle>
+            Title
+            <div tuiSubtitle>Description</div>
+        </div>
 
-            <tui-icon
-                icon="tuiIconChevronRightLarge"
-                tuiAppearance="icon"
-            />
-        </button>
-    </tui-hosted-dropdown>
+        <tui-icon
+            icon="tuiIconChevronRightLarge"
+            tuiAppearance="icon"
+        />
+    </button>
 
     <button
         tuiLink

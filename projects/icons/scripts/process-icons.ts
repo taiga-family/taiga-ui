@@ -1,5 +1,5 @@
-import fs from 'fs';
-import {parse} from 'path';
+import fs from 'node:fs';
+import {parse} from 'node:path';
 
 const START = '<svg';
 const WIDTH_SEARCH = 'width="';

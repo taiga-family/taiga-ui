@@ -1,5 +1,5 @@
 <tui-theme-night *ngIf="theme.isDefaultTheme && night.useDefaultNightTheme && (night$ | async)" />
-<tui-root>
+<tui-root [attr.tuiTheme]="theme.isDefaultTheme && night.useDefaultNightTheme && (night$ | async) ? 'night' : null">
     <div class="tui-doc-page">
         <tui-doc-navigation class="tui-doc-navigation">
             <ng-content select="tuiDocNavigation" />

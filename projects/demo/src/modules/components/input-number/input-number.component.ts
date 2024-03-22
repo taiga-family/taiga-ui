@@ -2,10 +2,9 @@ import {Component, forwardRef} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
-import type {TuiDecimal} from '@taiga-ui/core';
 
-import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
+import {AbstractExampleTuiNumberFormat} from '../abstract/number-format';
 
 @Component({
     selector: 'example-tui-input-number',
@@ -18,8 +17,9 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
         },
     ],
 })
-export class ExampleTuiInputNumberComponent extends AbstractExampleTuiControl {
+export class ExampleTuiInputNumberComponent extends AbstractExampleTuiNumberFormat {
     public override cleaner = false;
+    public override precision = 2;
 
     public readonly control = new FormControl(6432, Validators.required);
 
@@ -72,18 +72,6 @@ export class ExampleTuiInputNumberComponent extends AbstractExampleTuiControl {
     protected readonly maxVariants: readonly number[] = [Infinity, 10, 500];
 
     protected max = this.maxVariants[0];
-
-    protected readonly decimalVariants: readonly TuiDecimal[] = [
-        'not-zero',
-        'always',
-        'never',
-    ];
-
-    protected decimal = this.decimalVariants[0];
-
-    protected readonly precisionVariants: readonly number[] = [2, 3, 4, Infinity];
-
-    protected precision = this.precisionVariants[0];
 
     protected step = 0;
 }

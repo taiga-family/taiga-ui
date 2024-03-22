@@ -1,13 +1,13 @@
-<tui-svg
+<tui-icon
     *ngIf="iconAlignLeft"
     class="t-icon t-icon_left"
-    [src]="icon || ''"
+    [icon]="icon || ''"
 />
 <span class="t-content">
     <ng-content />
 </span>
-<tui-svg
+<tui-icon
     *ngIf="iconAlignRight"
     class="t-icon t-icon_right"
-    [src]="icon || ''"
+    [icon]="icon || ''"
 />

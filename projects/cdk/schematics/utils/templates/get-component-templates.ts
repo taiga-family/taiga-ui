@@ -1,3 +1,5 @@
+import * as path from 'node:path';
+
 import type {
     ClassDeclaration,
     Decorator,
@@ -8,7 +10,6 @@ import type {
     StructureType,
 } from 'ng-morph';
 import {getClasses} from 'ng-morph';
-import * as path from 'path';
 
 import type {TemplateResource} from '../../ng-update/interfaces/template-resource';
 

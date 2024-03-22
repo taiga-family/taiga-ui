@@ -126,12 +126,6 @@ export const pages: TuiDocPages = [
             },
             {
                 section: 'Foundations',
-                title: 'Skeleton',
-                keywords: 'верстка, markup, скелетон, loader, загрузка, skeleton',
-                route: '/skeleton',
-            },
-            {
-                section: 'Foundations',
                 title: 'Form',
                 keywords: 'верстка, markup, форма, ввод, пример, input, form',
                 route: '/form',
@@ -567,6 +561,13 @@ export const pages: TuiDocPages = [
     },
     {
         section: 'Components',
+        title: 'ColorPicker',
+        keywords: 'color, picker, input, color',
+        route: 'https://taiga-family.github.io/tui-editor/color-picker',
+        target: '_blank',
+    },
+    {
+        section: 'Components',
         title: 'Island',
         keywords: 'Island, остров, плашка',
         route: '/components/island',
@@ -867,6 +868,12 @@ export const pages: TuiDocPages = [
         ],
     },
     {
+        section: 'Layout',
+        title: 'BlockDetails',
+        keywords: 'details, block, детали, блок',
+        route: '/layout/block-details',
+    },
+    {
         section: 'Experimental',
         title: 'Cell',
         keywords: 'cell, feed, item',
@@ -879,16 +886,22 @@ export const pages: TuiDocPages = [
         route: '/experimental/chip',
     },
     {
+        section: 'Components',
+        title: 'Comment',
+        keywords: 'comment, tip, коммент',
+        route: '/components/comment',
+    },
+    {
         section: 'Experimental',
         title: 'Compass',
         keywords: 'compass, user, point, dot, карта, точка',
         route: '/experimental/compass',
     },
     {
-        section: 'Experimental',
+        section: 'Layout',
         title: 'Header',
         keywords: 'header, заголовок, item',
-        route: '/experimental/header',
+        route: '/layout/header',
     },
     {
         section: 'Components',
@@ -901,12 +914,6 @@ export const pages: TuiDocPages = [
         title: 'Label ',
         keywords: 'лэйбл, метка, форма, label',
         route: '/experimental/label',
-    },
-    {
-        section: 'Experimental',
-        title: 'Header',
-        keywords: 'header, заголовок, item',
-        route: '/experimental/header',
     },
     {
         section: 'Experimental',
@@ -946,10 +953,10 @@ export const pages: TuiDocPages = [
         route: '/experimental/textfield',
     },
     {
-        section: 'Experimental',
+        section: 'Components',
         title: 'Title',
         keywords: 'subtitle, заголовок, caption, description, подзаголовок',
-        route: '/experimental/title',
+        route: '/components/title',
     },
     {
         section: 'Experimental',
@@ -1347,6 +1354,12 @@ export const pages: TuiDocPages = [
             },
             {
                 section: 'Tools',
+                title: 'NumberFormat',
+                keywords: 'number, format, число, separator, precision, rounding, формат',
+                route: '/directives/number-format',
+            },
+            {
+                section: 'Tools',
                 title: 'Touchable',
                 keywords: 'touch, mobile, смартфон, pwa, native, hybrid, ios',
                 route: '/directives/touchable',
@@ -1380,6 +1393,13 @@ export const pages: TuiDocPages = [
                 title: 'Sensitive',
                 keywords: 'sensitive, pixel, mask, пиксель, маска',
                 route: '/directives/sensitive',
+            },
+            {
+                section: 'Tools',
+                title: 'Skeleton',
+                keywords:
+                    'верстка, markup, скелетон, loader, загрузка, skeleton, shimmer',
+                route: 'directives/skeleton',
             },
         ],
     },

@@ -24,6 +24,7 @@ function randomString(len: number): string {
     changeDetection,
 })
 export class TuiLineClampExample4 {
+    protected open = false;
     protected texts = [
         randomString(100),
         // eslint-disable-next-line @typescript-eslint/quotes

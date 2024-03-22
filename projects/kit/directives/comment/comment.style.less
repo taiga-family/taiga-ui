@@ -1,0 +1,52 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+[tuiComment] {
+    position: relative;
+    display: inline-flex;
+    font: var(--tui-font-text-m);
+    color: var(--tui-text-01-night);
+    padding: 0.5rem 0.75rem;
+    border-radius: 1rem;
+    line-height: 1rem;
+    background: var(--tui-accent);
+    align-items: center;
+    justify-content: center;
+
+    &:before {
+        content: '';
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        width: 1.5625rem;
+        height: 0.5625rem;
+        background: inherit;
+        transform: translate(-50%);
+        mask: url("data:image/svg+xml,%3Csvg width='25' height='9' viewBox='0 0 25 9' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.23309 6.67813L7.56191 3.83178C9.4546 1.5185 10.4009 0.361853 11.5998 0.10488C12.0834 0.00123882 12.5834 0.00123882 13.0669 0.10488C14.2658 0.361853 15.2121 1.5185 17.1048 3.83178L19.4337 6.67813C20.636 8.14771 22.4346 9 24.3334 9H0.333374C2.23217 9 4.0307 8.14772 5.23309 6.67813Z' fill='black'/%3E%3C/svg%3E%0A")
+            no-repeat;
+    }
+
+    &[data-direction='bottom'] {
+        &:before {
+            top: 100%;
+            bottom: auto;
+            transform: translate(-50%) rotate(180deg);
+        }
+    }
+
+    &[data-direction='left'] {
+        &:before {
+            left: auto;
+            top: 50%;
+            right: 100%;
+            transform: translate(0.785rem, -50%) rotate(-90deg);
+        }
+    }
+
+    &[data-direction='right'] {
+        &:before {
+            top: 50%;
+            left: 100%;
+            transform: translate(-0.785rem, -50%) rotate(90deg);
+        }
+    }
+}

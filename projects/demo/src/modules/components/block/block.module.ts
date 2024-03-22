@@ -3,11 +3,15 @@ import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TuiExamplePipe} from '@demo/utils';
 import {tuiGetDocModules} from '@taiga-ui/addon-doc';
-import {TuiGroupDirective, TuiIconComponent, TuiTooltipModule} from '@taiga-ui/core';
+import {
+    TuiGroupDirective,
+    TuiIconComponent,
+    TuiTitleDirective,
+    TuiTooltipModule,
+} from '@taiga-ui/core';
 import {
     TuiCheckboxModule,
     TuiRadioComponent,
-    TuiTitleModule,
     TuiToggleModule,
 } from '@taiga-ui/experimental';
 import {TuiAvatarComponent, TuiBlockDirective, TuiFadeDirective} from '@taiga-ui/kit';
@@ -29,7 +33,7 @@ import {TuiBlockExample3} from './examples/3';
         TuiCheckboxModule,
         TuiRadioComponent,
         TuiFadeDirective,
-        TuiTitleModule,
+        TuiTitleDirective,
         TuiToggleModule,
         TuiIconComponent,
         TuiExamplePipe,

@@ -32,6 +32,7 @@ export const TUI_USED_ICONS = [
     'tuiIconLock',
     'tuiIconStar',
     'tuiIconHeartLarge',
+    'tuiIconGiftLarge',
     'tuiIconMoreHorizontal',
     'tuiIconArrowRight',
     'tuiIconEyeOff',

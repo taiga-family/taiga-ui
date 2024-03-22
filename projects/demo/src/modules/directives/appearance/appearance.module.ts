@@ -4,7 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {tuiGetDocModules} from '@taiga-ui/addon-doc';
 import {
     TuiAppearanceDirective,
-    TuiHostedDropdownModule,
+    TuiDropdownModule,
     TuiNotificationModule,
 } from '@taiga-ui/core';
 import {TuiButtonModule} from '@taiga-ui/experimental';
@@ -21,7 +21,7 @@ import {TuiAppearanceExample3} from './examples/3';
         TuiAppearanceDirective,
         TuiNotificationModule,
         TuiButtonModule,
-        TuiHostedDropdownModule,
+        TuiDropdownModule,
         tuiGetDocModules(ExampleTuiAppearanceComponent),
     ],
     declarations: [

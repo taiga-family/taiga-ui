@@ -1,4 +1,4 @@
-'{{ formattedNumber }}' = tuiFormatNumber(value, decimalLimit, decimalSeparator, thousandSeparator);
+'{{ formattedNumber }}' = tuiFormatNumber(value, precision, decimalSeparator, thousandSeparator);
 
 <form [formGroup]="parametersForm">
     <div class="parameters">
@@ -9,10 +9,10 @@
             value
         </tui-input>
         <tui-input
-            formControlName="decimalLimit"
+            formControlName="precision"
             class="tui-space_top-2"
         >
-            decimalLimit
+            precision
         </tui-input>
         <tui-input
             formControlName="decimalSeparator"
