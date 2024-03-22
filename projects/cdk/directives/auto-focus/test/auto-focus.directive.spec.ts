@@ -17,7 +17,6 @@ import {
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     tuiAsFocusableItemAccessor,
     TuiAutoFocusDirective,
-    TuiAutoFocusDirective,
     TuiIosAutofocusHandler,
     tuiIsNativeFocused,
 } from '@taiga-ui/cdk';
