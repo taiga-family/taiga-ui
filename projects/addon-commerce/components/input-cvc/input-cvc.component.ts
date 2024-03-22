@@ -52,6 +52,9 @@ export class TuiInputCVCComponent
     autocompleteEnabled = false;
 
     @Input()
+    hidden = false;
+
+    @Input()
     set length(length: TuiCodeCVCLength) {
         this.exampleText = '0'.repeat(length);
         this.maskOptions = {
