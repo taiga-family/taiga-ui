@@ -14,7 +14,7 @@
     "repository": "https://github.com/taiga-family/taiga-ui",
     "license": "Apache-2.0",
     "dependencies": {
-        "markdown-it": "14.0.0",
+        "markdown-it": "14.1.0",
         "marked": "11.2.0",
         "ngx-highlightjs": "9.0.0"
     },
