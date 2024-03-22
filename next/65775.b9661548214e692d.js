@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[65775],{65775:s=>{s.exports='```json\n{\n  "targets": {\n    "build": {\n      "options": {\n        // ...\n        "styles": [\n          "@taiga-ui/core/styles/taiga-ui-theme.less",\n          "@taiga-ui/core/styles/taiga-ui-fonts.less",\n          "src/styles.css"\n        ]\n      }\n    }\n  }\n}\n```\n'}}]);
