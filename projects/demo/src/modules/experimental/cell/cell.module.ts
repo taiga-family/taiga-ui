@@ -11,6 +11,7 @@ import {
     TuiLoaderModule,
     TuiNotificationModule,
     TuiTextfieldControllerModule,
+    TuiTitleDirective,
     TuiTooltipModule,
 } from '@taiga-ui/core';
 import {
@@ -20,7 +21,6 @@ import {
     TuiCheckboxModule,
     TuiSurfaceModule,
     TuiThumbnailCardModule,
-    TuiTitleModule,
     TuiToggleModule,
 } from '@taiga-ui/experimental';
 import {
@@ -62,7 +62,7 @@ import {TuiCellExample7} from './examples/7';
         TuiThumbnailCardModule,
         TuiToggleModule,
         TuiTooltipModule,
-        TuiTitleModule,
+        TuiTitleDirective,
         TuiIconComponent,
         TuiCheckboxModule,
         TuiLoaderModule,

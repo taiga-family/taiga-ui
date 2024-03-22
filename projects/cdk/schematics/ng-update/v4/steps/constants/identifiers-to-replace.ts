@@ -239,4 +239,12 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifier[] = [
         from: {name: 'TuiHostedDropdownModule', moduleSpecifier: '@taiga-ui/core'},
         to: {name: 'TuiDropdownModule', moduleSpecifier: '@taiga-ui/core'},
     },
+    {
+        from: {name: 'TuiTitleModule', moduleSpecifier: '@taiga-ui/experimental'},
+        to: {name: 'TuiTitleDirective', moduleSpecifier: '@taiga-ui/core'},
+    },
+    {
+        from: {name: 'TuiHeaderModule', moduleSpecifier: '@taiga-ui/experimental'},
+        to: {name: 'TuiHeaderDirective', moduleSpecifier: '@taiga-ui/layout'},
+    },
 ];

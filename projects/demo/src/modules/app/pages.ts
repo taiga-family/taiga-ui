@@ -898,10 +898,10 @@ export const pages: TuiDocPages = [
         route: '/experimental/compass',
     },
     {
-        section: 'Experimental',
+        section: 'Layout',
         title: 'Header',
         keywords: 'header, заголовок, item',
-        route: '/experimental/header',
+        route: '/layout/header',
     },
     {
         section: 'Components',
@@ -914,12 +914,6 @@ export const pages: TuiDocPages = [
         title: 'Label ',
         keywords: 'лэйбл, метка, форма, label',
         route: '/experimental/label',
-    },
-    {
-        section: 'Experimental',
-        title: 'Header',
-        keywords: 'header, заголовок, item',
-        route: '/experimental/header',
     },
     {
         section: 'Experimental',
@@ -959,10 +953,10 @@ export const pages: TuiDocPages = [
         route: '/experimental/textfield',
     },
     {
-        section: 'Experimental',
+        section: 'Components',
         title: 'Title',
         keywords: 'subtitle, заголовок, caption, description, подзаголовок',
-        route: '/experimental/title',
+        route: '/components/title',
     },
     {
         section: 'Experimental',

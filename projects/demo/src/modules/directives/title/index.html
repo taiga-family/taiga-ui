@@ -1,0 +1,36 @@
+<tui-doc-page
+    header="Title"
+    package="CORE"
+    type="directives"
+>
+    <ng-template pageTab>
+        <p>A directive for title with optional subtitle</p>
+
+        <tui-doc-example
+            id="base"
+            heading="Basic"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample: 'html,ts'"
+        />
+
+        <tui-doc-example
+            id="sizes"
+            heading="Sizes"
+            [component]="2 | tuiComponent"
+            [content]="2 | tuiExample: 'html,ts'"
+        />
+
+        <tui-doc-example
+            id="custom"
+            heading="Custom"
+            [component]="3 | tuiComponent"
+            [content]="3 | tuiExample"
+        />
+    </ng-template>
+
+    <tui-setup
+        *pageTab="'Setup'"
+        [import]="import"
+        [template]="template"
+    />
+</tui-doc-page>

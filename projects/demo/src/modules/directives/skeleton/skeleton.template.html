@@ -31,10 +31,9 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab="Setup">
-        <tui-setup
-            [import]="import"
-            [template]="template"
-        />
-    </ng-template>
+    <tui-setup
+        *pageTab="'Setup'"
+        [import]="import"
+        [template]="template"
+    />
 </tui-doc-page>

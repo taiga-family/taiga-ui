@@ -1,0 +1,35 @@
+<tui-doc-page
+    header="Header"
+    package="LAYOUT"
+    type="directives"
+>
+    <ng-template pageTab>
+        <tui-doc-example
+            id="base"
+            description="Buttons/badges sizes according to the header size"
+            heading="Sizes"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample: 'html'"
+        />
+
+        <tui-doc-example
+            id="accessories"
+            heading="Accessories"
+            [component]="2 | tuiComponent"
+            [content]="2 | tuiExample: 'html,less'"
+        />
+
+        <tui-doc-example
+            id="interactive"
+            heading="Interactive"
+            [component]="3 | tuiComponent"
+            [content]="3 | tuiExample: 'html,less'"
+        />
+    </ng-template>
+
+    <tui-setup
+        *pageTab="'Setup'"
+        [import]="import"
+        [template]="template"
+    />
+</tui-doc-page>
