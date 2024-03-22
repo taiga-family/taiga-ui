@@ -264,9 +264,9 @@ export const pages: TuiDocPages = [
             },
             {
                 section: 'Components',
-                title: 'Toggle',
+                title: 'Switch',
                 keywords: 'инпут, форма, ввод, toggle, переключение',
-                route: '/components/toggle',
+                route: '/components/switch',
             },
         ],
     },
@@ -982,12 +982,6 @@ export const pages: TuiDocPages = [
         title: 'Radio ',
         keywords: 'чек, радио, ввод, форма, form, checkbox, radio, toggle',
         route: '/experimental/radio',
-    },
-    {
-        section: 'Experimental',
-        title: 'Toggle ',
-        keywords: 'чек, радио, ввод, форма, form, checkbox, radio, toggle',
-        route: '/experimental/toggle',
     },
     {
         section: 'Pipes',

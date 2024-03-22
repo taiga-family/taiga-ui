@@ -3,22 +3,22 @@ import type {TuiStringHandler} from '@taiga-ui/cdk';
 import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 import type {TuiSizeS} from '@taiga-ui/core';
 
-export interface TuiToggleOptions {
+export interface TuiSwitchOptions {
     readonly showIcons: boolean;
     readonly size: TuiSizeS;
     readonly icon: TuiStringHandler<TuiSizeS> | string;
     readonly appearance: TuiStringHandler<HTMLInputElement>;
 }
 
-export const TUI_TOGGLE_DEFAULT_OPTIONS: TuiToggleOptions = {
+export const TUI_SWITCH_DEFAULT_OPTIONS: TuiSwitchOptions = {
     showIcons: true,
     size: 'm',
     icon: 'tuiIconCheck',
     appearance: el => (el.checked ? 'primary' : 'secondary'),
 };
 
-export const TUI_TOGGLE_OPTIONS = tuiCreateToken(TUI_TOGGLE_DEFAULT_OPTIONS);
+export const TUI_SWITCH_OPTIONS = tuiCreateToken(TUI_SWITCH_DEFAULT_OPTIONS);
 
-export function tuiToggleOptionsProvider(options: Partial<TuiToggleOptions>): Provider {
-    return tuiProvideOptions(TUI_TOGGLE_OPTIONS, options, TUI_TOGGLE_DEFAULT_OPTIONS);
+export function tuiSwitchOptionsProvider(options: Partial<TuiSwitchOptions>): Provider {
+    return tuiProvideOptions(TUI_SWITCH_OPTIONS, options, TUI_SWITCH_DEFAULT_OPTIONS);
 }

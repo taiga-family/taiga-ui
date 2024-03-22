@@ -31,7 +31,7 @@ export function migrateToggle({
         replaceSizeAttr(attrs, sourceCodeLocation, recorder, templateOffset);
         replaceOpenTag(sourceCodeLocation, recorder, templateOffset, {
             tag: 'tui-toggle',
-            directive: 'tuiToggle',
+            directive: 'tuiSwitch',
             type: 'checkbox',
         });
         closeStartTag(sourceCodeLocation, recorder, templateOffset);

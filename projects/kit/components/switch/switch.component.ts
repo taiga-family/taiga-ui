@@ -12,12 +12,13 @@ import {tuiIsString, TuiNativeValidatorDirective} from '@taiga-ui/cdk';
 import type {TuiSizeS} from '@taiga-ui/core';
 import {TUI_ICON_RESOLVER, TuiAppearanceDirective} from '@taiga-ui/core';
 
-import {TUI_TOGGLE_OPTIONS} from './toggle.options';
+import {TUI_SWITCH_OPTIONS} from './switch.options';
 
 @Component({
-    selector: 'input[type="checkbox"][tuiToggle]',
+    standalone: true,
+    selector: 'input[type="checkbox"][tuiSwitch]',
     template: '',
-    styleUrls: ['./toggle.style.less'],
+    styleUrls: ['./switch.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [
         {
@@ -37,10 +38,10 @@ import {TUI_TOGGLE_OPTIONS} from './toggle.options';
         '[class._icons]': 'showIcons',
     },
 })
-export class TuiToggleComponent implements DoCheck {
+export class TuiSwitchComponent implements DoCheck {
     private readonly appearance = inject(TuiAppearanceDirective);
     private readonly resolver = inject(TUI_ICON_RESOLVER);
-    private readonly options = inject(TUI_TOGGLE_OPTIONS);
+    private readonly options = inject(TUI_SWITCH_OPTIONS);
     private readonly el: HTMLInputElement = inject(ElementRef).nativeElement;
 
     @Input()

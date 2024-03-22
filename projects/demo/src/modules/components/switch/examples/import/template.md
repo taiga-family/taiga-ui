@@ -1,6 +1,6 @@
 ```html
 <input
-  tuiToggle
+  tuiSwitch
   type="checkbox"
   [(ngModel)]="value"
 />

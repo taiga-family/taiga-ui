@@ -202,14 +202,6 @@ export const ROUTES: Routes = [
         loadComponent: async () => import('../directives/title'),
     }),
     {
-        path: 'experimental/toggle',
-        loadChildren: async () =>
-            (await import('../experimental/toggle/toggle.module')).ExampleTuiToggleModule,
-        data: {
-            title: 'Toggle ',
-        },
-    },
-    {
         path: 'experimental/tooltip',
         loadChildren: async () =>
             (await import('../experimental/tooltip/tooltip.module'))
@@ -318,14 +310,11 @@ export const ROUTES: Routes = [
             title: 'Icon',
         },
     },
-    {
+    route({
         path: 'experimental/label',
-        loadChildren: async () =>
-            (await import('../experimental/label/label.module')).ExampleTuiLabelModule,
-        data: {
-            title: 'Label ',
-        },
-    },
+        title: 'Label ',
+        loadComponent: async () => import('../experimental/label'),
+    }),
     {
         path: 'experimental/progress-segmented',
         loadChildren: async () =>
@@ -1157,14 +1146,11 @@ export const ROUTES: Routes = [
             title: 'Tiles',
         },
     },
-    {
-        path: 'components/toggle',
-        loadChildren: async () =>
-            (await import('../components/toggle/toggle.module')).ExampleTuiToggleModule,
-        data: {
-            title: 'Toggle',
-        },
-    },
+    route({
+        path: 'components/switch',
+        title: 'Switch',
+        loadComponent: async () => import('../components/switch'),
+    }),
     {
         path: 'components/tooltip',
         loadChildren: async () =>

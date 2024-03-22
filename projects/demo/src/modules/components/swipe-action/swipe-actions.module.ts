@@ -22,12 +22,12 @@ import {
     TuiCellModule,
     TuiCheckboxModule,
     TuiSurfaceModule,
-    TuiToggleModule,
 } from '@taiga-ui/experimental';
 import {
     TuiAvatarComponent,
     TuiBadgeComponent,
     TuiBadgedContentComponent,
+    TuiSwitchComponent,
 } from '@taiga-ui/kit';
 
 import {TuiSwipeActionExample1} from './examples/1';
@@ -50,7 +50,7 @@ import {ExampleTuiSwipeActionsComponent} from './swipe-actions.component';
         TuiAmountPipe,
         TuiBadgedContentComponent,
         TuiIconComponent,
-        TuiToggleModule,
+        TuiSwitchComponent,
         TuiBadgeComponent,
         TuiNotificationModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiSwipeActionsComponent)),

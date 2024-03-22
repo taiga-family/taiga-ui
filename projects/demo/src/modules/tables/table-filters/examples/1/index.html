@@ -8,7 +8,9 @@
             Minimal balance
         </tui-input-number>
         <label class="toggle">
-            <tui-toggle
+            <input
+                tuiSwitch
+                type="checkbox"
                 [ngModel]="form.enabled"
                 [ngModelOptions]="{standalone: true}"
                 (ngModelChange)="onToggle($event)"

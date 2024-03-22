@@ -4,7 +4,11 @@
     [tuiDropdown]="dropdownContent"
     [tuiDropdownManual]="open"
 >
-    <tui-toggle [(ngModel)]="open" />
+    <input
+        tuiSwitch
+        type="checkbox"
+        [(ngModel)]="open"
+    />
     Open dropdown
 </label>
 

@@ -9,8 +9,9 @@
 </p>
 <elderly *ngIf="enabled" />
 <label>
-    <tui-toggle
-        size="l"
+    <input
+        tuiSwitch
+        type="checkbox"
         class="tui-space_right-1"
         [(ngModel)]="enabled"
     />

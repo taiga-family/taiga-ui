@@ -13,7 +13,7 @@ import {
     TuiNotificationModule,
     TuiSvgModule,
 } from '@taiga-ui/core';
-import {TuiArrowModule, TuiAvatarComponent, TuiToggleModule} from '@taiga-ui/kit';
+import {TuiArrowModule, TuiAvatarComponent, TuiSwitchComponent} from '@taiga-ui/kit';
 
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
 import {ExampleTuiButtonComponent} from './button.component';
@@ -31,7 +31,7 @@ import {TuiButtonExample6} from './examples/6';
         TuiThumbnailCardModule,
         TuiAvatarComponent,
         TuiSvgModule,
-        TuiToggleModule,
+        TuiSwitchComponent,
         TuiFocusableModule,
         TuiButtonModule,
         TuiDropdownModule,

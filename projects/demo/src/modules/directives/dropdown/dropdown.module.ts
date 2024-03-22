@@ -10,12 +10,12 @@ import {
     TuiLinkModule,
     TuiNotificationModule,
 } from '@taiga-ui/core';
-import {TuiCardModule, TuiSurfaceModule} from '@taiga-ui/experimental';
+import {TuiCardModule, TuiLabelDirective, TuiSurfaceModule} from '@taiga-ui/experimental';
 import {
     TuiAvatarComponent,
     TuiInputModule,
     TuiSelectModule,
-    TuiToggleModule,
+    TuiSwitchComponent,
 } from '@taiga-ui/kit';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
@@ -41,7 +41,8 @@ import {TuiDropdownExample5} from './examples/5';
         TuiSelectModule,
         TuiObscuredDirective,
         TuiActiveZoneDirective,
-        TuiToggleModule,
+        TuiSwitchComponent,
+        TuiLabelDirective,
         TuiInputModule,
         TuiNotificationModule,
         TuiAddonDocModule,
