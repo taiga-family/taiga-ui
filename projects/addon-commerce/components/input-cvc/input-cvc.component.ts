@@ -49,6 +49,9 @@ export class TuiInputCVCComponent
     @Input()
     public autocompleteEnabled = false;
 
+    @Input()
+    public hidden = true;
+
     public exampleText = '000';
 
     public maskOptions: MaskitoOptions = {
