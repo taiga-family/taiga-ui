@@ -10,6 +10,14 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifier[] = [
         to: {name: 'TuiAutoFocusDirective', moduleSpecifier: '@taiga-ui/cdk'},
     },
     {
+        from: {name: 'ALWAYS_TRUE_HANDLER', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TUI_TRUE_HANDLER', moduleSpecifier: '@taiga-ui/cdk'},
+    },
+    {
+        from: {name: 'ALWAYS_FALSE_HANDLER', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TUI_FALSE_HANDLER', moduleSpecifier: '@taiga-ui/cdk'},
+    },
+    {
         from: {name: 'TuiCardModule', moduleSpecifier: '@taiga-ui/addon-commerce'},
         to: {name: 'TuiThumbnailCardModule', moduleSpecifier: '@taiga-ui/addon-commerce'},
     },
