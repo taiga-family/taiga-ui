@@ -5,9 +5,11 @@
                 <div class="tui-island__content">
                     <div class="tui-island__figure">
                         <form [formGroup]="testForm">
-                            <tui-toggle
+                            <input
                                 formControlName="testValue"
-                                size="l"
+                                tuiSwitch
+                                type="checkbox"
+                                [showIcons]="false"
                             />
                         </form>
                     </div>

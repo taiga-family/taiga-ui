@@ -13,8 +13,8 @@ import {TuiButtonModule} from '@taiga-ui/experimental';
 import {
     TuiDataListWrapperModule,
     TuiSelectModule,
+    TuiSwitchComponent,
     TuiTabsModule,
-    TuiToggleModule,
 } from '@taiga-ui/kit';
 
 import {DropdownDocumentationModule} from '../../components/abstract/dropdown-documentation/dropdown-documentation.module';
@@ -34,7 +34,7 @@ import {TuiDropdownHoverExample4} from './examples/4';
         TuiSelectModule,
         TuiDataListWrapperModule,
         TuiActiveZoneDirective,
-        TuiToggleModule,
+        TuiSwitchComponent,
         TuiDataListModule,
         TuiGroupDirective,
         TuiIconComponent,

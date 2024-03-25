@@ -9,5 +9,4 @@ export * from '@taiga-ui/experimental/components/rating';
 export * from '@taiga-ui/experimental/components/segmented';
 export * from '@taiga-ui/experimental/components/textfield';
 export * from '@taiga-ui/experimental/components/thumbnail-card';
-export * from '@taiga-ui/experimental/components/toggle';
 export * from '@taiga-ui/experimental/components/tooltip';

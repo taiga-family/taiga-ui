@@ -4,6 +4,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import {tuiPure} from '@taiga-ui/cdk';
 import type {TuiSizeXL, TuiSizeXS} from '@taiga-ui/core';
+import {tuiSwitchOptionsProvider} from '@taiga-ui/kit';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
@@ -19,6 +20,7 @@ import {AbstractExampleTuiInteractive} from '../abstract/interactive';
             provide: ABSTRACT_PROPS_ACCESSOR,
             useExisting: forwardRef(() => ExampleTuiButtonComponent),
         },
+        tuiSwitchOptionsProvider({appearance: () => 'primary'}),
     ],
 })
 export class ExampleTuiButtonComponent extends AbstractExampleTuiInteractive {

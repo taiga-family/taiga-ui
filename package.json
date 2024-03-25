@@ -120,6 +120,7 @@
         "@taiga-ui/prettier-config": "0.10.0",
         "@taiga-ui/stylelint-config": "0.20.1",
         "@taiga-ui/tsconfig": "0.17.0",
+        "@tinkoff/ng-event-plugins": "^3.1.1",
         "@types/glob": "8.1.0",
         "@types/node": "20.11.30",
         "@types/webpack-env": "1.18.4",

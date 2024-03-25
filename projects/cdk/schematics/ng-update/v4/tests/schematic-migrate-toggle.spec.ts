@@ -26,12 +26,12 @@ import { TuiToggleModule } from "@taiga-ui/experimental";
 export class TestComponent {
 }`;
 
-const COMPONENT_AFTER = `import { TuiToggleModule } from "@taiga-ui/kit";
+const COMPONENT_AFTER = `import { TuiSwitchComponent } from "@taiga-ui/kit";
 
 @Component({
     standalone: true,
     templateUrl: './test.template.html',
-    imports: [TuiToggleModule]
+    imports: [TuiSwitchComponent]
 })
 export class TestComponent {
 }`;
@@ -54,7 +54,7 @@ const TEMPLATE_BEFORE = `
 
 const TEMPLATE_AFTER = `
 <input
-    tuiToggle
+    tuiSwitch
     type="checkbox"
     formControlName="test"
     class="toggle"
@@ -62,13 +62,13 @@ const TEMPLATE_AFTER = `
 />
 <!-- TODO: (Taiga UI migration) toggle [singleColor] and [showLoader] inputs have been removed due to design changes -->
 <input
-    tuiToggle
+    tuiSwitch
     type="checkbox"
     [showIcons]="true"
     ${''}
 />
 <input
-    tuiToggle
+    tuiSwitch
     type="checkbox"
     formControlName="test"
     class="toggle"

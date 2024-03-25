@@ -18,7 +18,6 @@ import {
     TuiCardModule,
     TuiNavigationModule,
     TuiSurfaceModule,
-    TuiToggleModule,
 } from '@taiga-ui/experimental';
 import {
     TuiAvatarComponent,
@@ -26,6 +25,7 @@ import {
     TuiBadgeNotificationComponent,
     TuiBreadcrumbsModule,
     TuiFadeDirective,
+    TuiSwitchComponent,
     TuiTabsModule,
 } from '@taiga-ui/kit';
 import {TuiHeaderDirective} from '@taiga-ui/layout';
@@ -58,7 +58,7 @@ import {ExampleTuiNavigationComponent} from './navigation.component';
         TuiHeaderDirective,
         TuiRepeatTimesModule,
         TuiAppearanceDirective,
-        TuiToggleModule,
+        TuiSwitchComponent,
         TuiBreadcrumbsModule,
         TuiLinkModule,
     ],

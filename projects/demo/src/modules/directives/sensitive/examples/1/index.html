@@ -13,7 +13,11 @@
     <span [tuiSensitive]="sensitive">100 000$</span>
 </span>
 
-<label>
-    <tui-toggle [(ngModel)]="sensitive" />
+<label tuiLabel>
+    <input
+        tuiSwitch
+        type="checkbox"
+        [(ngModel)]="sensitive"
+    />
     hide
 </label>

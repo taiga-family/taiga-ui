@@ -1,7 +1,8 @@
-<label>
-    <tui-toggle
-        size="l"
-        class="tui-space_right-2"
+<label tuiLabel>
+    <input
+        tuiSwitch
+        type="checkbox"
+        [showIcons]="false"
         [(ngModel)]="open"
     />
     Show dropdown

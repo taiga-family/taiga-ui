@@ -18,7 +18,7 @@ import {
     TuiDataListWrapperModule,
     TuiInputNumberModule,
     TuiSelectModule,
-    TuiToggleModule,
+    TuiSwitchComponent,
 } from '@taiga-ui/kit';
 
 import {TuiInputOpacityModule} from '../internal/input-opacity/input-opacity.module';
@@ -40,7 +40,7 @@ import {TuiDocTypeReferencePipe} from './pipes/type-reference.pipe';
         RouterModule,
         TuiBadgeDirective,
         TuiSelectModule,
-        TuiToggleModule,
+        TuiSwitchComponent,
         TuiLinkModule,
         TuiInputNumberModule,
         TuiModeModule,

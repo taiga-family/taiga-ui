@@ -1,0 +1,94 @@
+@import '../../../../node_modules/@taiga-ui/core/styles/taiga-ui-local';
+
+:host {
+    .transition(~'background, box-shadow');
+
+    width: 3rem;
+    height: 1.5rem;
+    border-radius: 2rem;
+    overflow: hidden;
+    cursor: pointer;
+    margin: 0;
+
+    &[data-appearance='secondary'],
+    &[data-appearance='secondary']:invalid {
+        color: var(--tui-text-01-night);
+    }
+
+    &[data-size='s'] {
+        height: 1rem;
+        width: 2rem;
+
+        &:before {
+            width: 1rem;
+            transform: translateX(-1rem);
+            mask-size: 0.75rem;
+        }
+
+        &:after {
+            width: 1rem;
+            box-shadow: -2rem 0 0 0.25rem currentColor;
+        }
+
+        &:checked:after {
+            transform: scale(0.5) translateX(2rem);
+        }
+    }
+
+    &:checked {
+        &:before {
+            transform: none;
+        }
+
+        &:after {
+            transform: scale(0.5) translateX(3rem);
+        }
+    }
+
+    &:disabled._readonly {
+        opacity: 1;
+    }
+
+    &:before,
+    &:after {
+        .transition(transform);
+
+        content: '';
+        position: absolute;
+        height: 100%;
+        width: 1.5rem;
+    }
+
+    &:before {
+        display: none;
+        background: currentColor;
+        mask: var(--t-mask) no-repeat center;
+        mask-size: 1rem;
+        transform: translateX(-1.5rem);
+    }
+
+    &:after {
+        right: 0;
+        border-radius: 100%;
+        transform: scale(0.5);
+        box-shadow: -3rem 0 0 0.25rem currentColor;
+    }
+
+    &._icons {
+        &:before {
+            display: block;
+        }
+
+        &:after {
+            box-shadow:
+                inset 0 0 0 0.25rem var(--tui-clear-active),
+                -3rem 0 0 0.25rem currentColor;
+        }
+
+        &[data-size='s']:after {
+            box-shadow:
+                inset 0 0 0 0.125rem var(--tui-clear-active),
+                -2rem 0 0 0.25rem currentColor;
+        }
+    }
+}

@@ -13,7 +13,7 @@ import {
 } from '@taiga-ui/core';
 import {
     TuiInputTimeModule,
-    TuiToggleModule,
+    TuiSwitchComponent,
     TuiUnfinishedValidatorModule,
 } from '@taiga-ui/kit';
 
@@ -39,7 +39,7 @@ import {ExampleTuiInputTimeComponent} from './input-time.component';
         TuiTextfieldControllerModule,
         TuiNotificationModule,
         TuiHintModule,
-        TuiToggleModule,
+        TuiSwitchComponent,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiInputTimeComponent)),
         TuiUnfinishedValidatorModule,

@@ -54,7 +54,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifier[] = [
     },
     {
         from: {name: 'TuiToggleModule', moduleSpecifier: '@taiga-ui/experimental'},
-        to: {name: 'TuiToggleModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiSwitchComponent', moduleSpecifier: '@taiga-ui/kit'},
     },
     {
         from: {name: 'TuiTextAreaModule', moduleSpecifier: '@taiga-ui/kit'},

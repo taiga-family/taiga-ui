@@ -8,8 +8,7 @@ import {
 } from '@taiga-ui/core';
 import {tuiButtonOptionsProvider} from '@taiga-ui/experimental/components/button';
 import {tuiCheckboxOptionsProvider} from '@taiga-ui/experimental/components/checkbox';
-import {tuiToggleOptionsProvider} from '@taiga-ui/experimental/components/toggle';
-import {tuiAvatarOptionsProvider} from '@taiga-ui/kit';
+import {tuiAvatarOptionsProvider, tuiSwitchOptionsProvider} from '@taiga-ui/kit';
 
 import {TuiChipComponent} from './chip.component';
 import {TUI_CHIP_OPTIONS} from './chip.options';
@@ -18,7 +17,7 @@ import {TUI_CHIP_OPTIONS} from './chip.options';
     selector: 'tui-chip,[tuiChip]',
     providers: [
         tuiAppearanceOptionsProvider(TUI_CHIP_OPTIONS),
-        tuiToggleOptionsProvider({size: 's'}),
+        tuiSwitchOptionsProvider({size: 's'}),
         tuiCheckboxOptionsProvider({size: 's'}),
         tuiAvatarOptionsProvider({size: 'xs'}),
         tuiButtonOptionsProvider({

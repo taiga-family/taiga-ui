@@ -18,4 +18,3 @@ export * from './select.harness';
 export * from './svg.harness';
 export * from './tag.harness';
 export * from './textfield.harness';
-export * from './toggle.harness';
