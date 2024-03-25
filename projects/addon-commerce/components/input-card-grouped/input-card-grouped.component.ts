@@ -111,6 +111,8 @@ export class TuiInputCardGroupedComponent
 
     protected exampleTextCVC = this.options.exampleTextCVC;
 
+    protected cvcHidden = this.options.cvcHidden;
+
     protected maskCVC: MaskitoOptions = {
         mask: new Array(3).fill(TUI_DIGIT_REGEXP),
     };
