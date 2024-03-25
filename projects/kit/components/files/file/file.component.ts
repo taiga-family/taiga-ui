@@ -146,8 +146,13 @@ export class TuiFileComponent {
             return file.src;
         }
 
-        // TODO: iframe warning
-        if (file instanceof File && file.type && file.type.startsWith('image/')) {
+        if (
+            globalThis.File &&
+            // TODO: iframe warning
+            file instanceof globalThis.File &&
+            file.type &&
+            file.type.startsWith('image/')
+        ) {
             return this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(file));
         }
 
