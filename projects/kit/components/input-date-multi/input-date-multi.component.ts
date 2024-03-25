@@ -107,10 +107,6 @@ export class TuiInputDateMultiComponent
     inputHidden = false;
 
     @Input()
-    @HostBinding('class._editable')
-    editable = true;
-
-    @Input()
     search: string | null = '';
 
     @Input()
@@ -203,7 +199,7 @@ export class TuiInputDateMultiComponent
     }
 
     get nativeDropdownMode(): boolean {
-        return this.isMobile && !this.editable;
+        return this.isMobile;
     }
 
     get computedMin(): TuiDay {
