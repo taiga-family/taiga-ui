@@ -4,13 +4,12 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
     selector: 'stackblitz-edit-button',
     template: `
         <button
+            icon="assets/icons/stackblitz.svg"
+            iconAlign="left"
             tuiLink
             type="button"
         >
-            <span class="t-content">
-                <tui-svg src="assets/icons/stackblitz.svg"></tui-svg>
-                Edit
-            </span>
+            Edit
         </button>
     `,
     styleUrls: ['./stackblitz-edit-button.component.less'],
