@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.72.0](https://github.com/taiga-family/taiga-ui/compare/v3.59.0...v3.72.0) (2024-03-25)
+
+### Features
+
+- **addon-charts:** `RingChart` add xs size ([#7077](https://github.com/taiga-family/taiga-ui/issues/7077))
+  ([a7b4ff3](https://github.com/taiga-family/taiga-ui/commit/a7b4ff37bbc9089dcbc6eaf56c4877274512ecf1))
+- **addon-commerce:** add flag hide cvc code in InputCard, InputCardGrouped
+  ([#7070](https://github.com/taiga-family/taiga-ui/issues/7070))
+  ([0efb113](https://github.com/taiga-family/taiga-ui/commit/0efb113ca234b67fb39a41545ae933da2e7ecb7b))
+- **experimental:** `Button` add manual :checked appearance
+  ([#7034](https://github.com/taiga-family/taiga-ui/issues/7034))
+  ([5a2f1c3](https://github.com/taiga-family/taiga-ui/commit/5a2f1c3a6469618299aae3d96e34e702ecad283c))
+
+### Bug Fixes
+
+- **core:** set text-align on host notification ([#7042](https://github.com/taiga-family/taiga-ui/issues/7042))
+  ([a1ae503](https://github.com/taiga-family/taiga-ui/commit/a1ae503aa4ecf40f5ad1f79daa380e91b837ff70))
+
 ## [3.71.0](https://github.com/taiga-family/taiga-ui/compare/v3.59.0...v3.71.0) (2024-03-19)
 
 ### Features
