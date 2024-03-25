@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[72065],{72065:e=>{e.exports='<input\n    tuiSwitch\n    type="checkbox"\n    [(ngModel)]="value"\n/>\n'}}]);
