@@ -1,9 +1,9 @@
 {
     "name": "@taiga-ui/styles",
-    "version": "3.71.0",
+    "version": "3.72.0",
     "description": "Global Styles for Taiga UI",
     "peerDependencies": {
-        "@taiga-ui/cdk": "^3.71.0",
+        "@taiga-ui/cdk": "^3.72.0",
         "tslib": "2.6.2"
     }
 }
