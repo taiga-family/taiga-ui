@@ -9,7 +9,7 @@ import {
     Optional,
     Self,
 } from '@angular/core';
-import {NgControl} from '@angular/forms';
+import {NgControl, NgModel} from '@angular/forms';
 import {
     tuiControlValue,
     TuiDestroyService,
@@ -68,7 +68,10 @@ export class TuiCheckboxComponent implements OnInit {
         tuiControlValue(this.control)
             .pipe(distinctUntilChanged(), tuiWatch(this.cdr), takeUntil(this.destroy$))
             .subscribe(value => {
-                this.el.nativeElement.indeterminate = value === null;
+                // https://github.com/angular/angular/issues/14988
+                const fix = this.control instanceof NgModel ? this.control.model : value;
+
+                this.el.nativeElement.indeterminate = fix === null;
             });
     }
 }
