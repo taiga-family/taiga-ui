@@ -2,6 +2,22 @@ import type {ReplacementIdentifier} from '../../../interfaces';
 
 export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifier[] = [
     {
+        from: {name: 'TuiActiveZoneModule', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiActiveZoneDirective', moduleSpecifier: '@taiga-ui/cdk'},
+    },
+    {
+        from: {name: 'TuiAutoFocusModule', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiAutoFocusDirective', moduleSpecifier: '@taiga-ui/cdk'},
+    },
+    {
+        from: {name: 'ALWAYS_TRUE_HANDLER', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TUI_TRUE_HANDLER', moduleSpecifier: '@taiga-ui/cdk'},
+    },
+    {
+        from: {name: 'ALWAYS_FALSE_HANDLER', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TUI_FALSE_HANDLER', moduleSpecifier: '@taiga-ui/cdk'},
+    },
+    {
         from: {name: 'TuiCardModule', moduleSpecifier: '@taiga-ui/addon-commerce'},
         to: {name: 'TuiThumbnailCardModule', moduleSpecifier: '@taiga-ui/addon-commerce'},
     },

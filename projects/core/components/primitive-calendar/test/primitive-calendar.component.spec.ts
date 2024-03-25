@@ -5,7 +5,7 @@ import {TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk';
 import {
-    ALWAYS_FALSE_HANDLER,
+    TUI_FALSE_HANDLER,
     TuiDay,
     TuiDayOfWeek,
     TuiDayRange,
@@ -41,7 +41,7 @@ describe('PrimitiveCalendar', () => {
 
         public value: TuiDayRange | null = null;
 
-        public disabledItemHandler: TuiBooleanHandler<TuiDay> = ALWAYS_FALSE_HANDLER;
+        public disabledItemHandler: TuiBooleanHandler<TuiDay> = TUI_FALSE_HANDLER;
 
         public onDayClick(_: TuiDay): void {}
     }

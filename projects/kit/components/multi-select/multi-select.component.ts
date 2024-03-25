@@ -20,9 +20,9 @@ import type {
 } from '@taiga-ui/cdk';
 import {
     AbstractTuiMultipleControl,
-    ALWAYS_TRUE_HANDLER,
     EMPTY_ARRAY,
     TUI_IS_MOBILE,
+    TUI_TRUE_HANDLER,
     tuiArrayToggle,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
@@ -117,7 +117,7 @@ export class TuiMultiSelectComponent<T>
         this.options.valueContent;
 
     @Input()
-    public tagValidator: TuiBooleanHandler<T> = ALWAYS_TRUE_HANDLER;
+    public tagValidator: TuiBooleanHandler<T> = TUI_TRUE_HANDLER;
 
     @Input()
     public rows: TuiMultiSelectOptions<T>['rows'] = this.options.rows;

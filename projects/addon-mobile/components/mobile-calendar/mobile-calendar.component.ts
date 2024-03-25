@@ -13,8 +13,8 @@ import {
 } from '@angular/core';
 import type {TuiBooleanHandler, TuiTypedMapper} from '@taiga-ui/cdk';
 import {
-    ALWAYS_FALSE_HANDLER,
     MONTHS_IN_YEAR,
+    TUI_FALSE_HANDLER,
     TUI_FIRST_DAY,
     TUI_IS_E2E,
     TUI_IS_IOS,
@@ -105,7 +105,7 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
     public max = TUI_LAST_DAY;
 
     @Input()
-    public disabledItemHandler: TuiBooleanHandler<TuiDay> = ALWAYS_FALSE_HANDLER;
+    public disabledItemHandler: TuiBooleanHandler<TuiDay> = TUI_FALSE_HANDLER;
 
     @Output()
     public readonly cancel = new EventEmitter<void>();

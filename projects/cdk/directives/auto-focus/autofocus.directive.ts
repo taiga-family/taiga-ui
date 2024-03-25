@@ -1,6 +1,7 @@
+import type {BooleanInput} from '@angular/cdk/coercion';
+import {coerceBooleanProperty} from '@angular/cdk/coercion';
 import type {AfterViewInit} from '@angular/core';
 import {Directive, inject, Input} from '@angular/core';
-import {tuiCoerceBooleanProperty} from '@taiga-ui/cdk/coercion';
 import {TuiDestroyService} from '@taiga-ui/cdk/services';
 import {takeUntil, timer} from 'rxjs';
 
@@ -11,6 +12,7 @@ import {
 } from './autofocus.options';
 
 @Directive({
+    standalone: true,
     selector: '[tuiAutoFocus]',
     providers: TUI_AUTOFOCUS_PROVIDERS,
 })
@@ -19,11 +21,14 @@ export class TuiAutoFocusDirective implements AfterViewInit {
     private readonly options = inject(TUI_AUTOFOCUS_OPTIONS);
     private readonly destroy$ = inject(TuiDestroyService, {self: true});
 
-    @Input('tuiAutoFocus')
-    public autoFocus: boolean | '' = true;
+    @Input({
+        alias: 'tuiAutoFocus',
+        transform: coerceBooleanProperty,
+    })
+    public autoFocus: BooleanInput;
 
     public ngAfterViewInit(): void {
-        if (tuiCoerceBooleanProperty(this.autoFocus)) {
+        if (this.autoFocus) {
             this.focus();
         }
     }

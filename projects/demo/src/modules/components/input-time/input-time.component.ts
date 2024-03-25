@@ -4,7 +4,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import {tuiDocExcludeProperties} from '@taiga-ui/addon-doc';
 import type {TuiBooleanHandler, TuiTimeMode} from '@taiga-ui/cdk';
-import {ALWAYS_FALSE_HANDLER, TuiTime} from '@taiga-ui/cdk';
+import {TUI_FALSE_HANDLER, TuiTime} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {tuiCreateTimePeriods} from '@taiga-ui/kit';
 
@@ -69,7 +69,7 @@ export class ExampleTuiInputTimeComponent extends AbstractExampleTuiControl {
     protected readonly disabledItemHandlerVariants: ReadonlyArray<
         TuiBooleanHandler<TuiTime>
     > = [
-        ALWAYS_FALSE_HANDLER,
+        TUI_FALSE_HANDLER,
         (item: TuiTime) => String(item) === '06:00' || item > TuiTime.currentLocal(),
     ];
 

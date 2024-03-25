@@ -10,7 +10,7 @@ import {
 } from '@angular/core';
 import type {TuiBooleanHandler, TuiDay, TuiDayRange, TuiTypedMapper} from '@taiga-ui/cdk';
 import {
-    ALWAYS_FALSE_HANDLER,
+    TUI_FALSE_HANDLER,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
     TuiDestroyService,
@@ -35,7 +35,7 @@ import {takeUntil} from 'rxjs';
 })
 export class TuiPrimitiveCalendarRangeComponent implements OnInit {
     @Input()
-    public disabledItemHandler: TuiBooleanHandler<TuiDay> = ALWAYS_FALSE_HANDLER;
+    public disabledItemHandler: TuiBooleanHandler<TuiDay> = TUI_FALSE_HANDLER;
 
     @Input()
     public markerHandler: TuiMarkerHandler = TUI_DEFAULT_MARKER_HANDLER;

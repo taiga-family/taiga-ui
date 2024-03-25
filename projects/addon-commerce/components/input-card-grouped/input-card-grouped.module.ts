@@ -5,8 +5,8 @@ import {MaskitoDirective} from '@maskito/angular';
 import {ResizeObserverModule} from '@ng-web-apis/resize-observer';
 import {TuiFormatCardModule} from '@taiga-ui/addon-commerce/pipes';
 import {
-    TuiActiveZoneModule,
-    TuiAutoFocusModule,
+    TuiActiveZoneDirective,
+    TuiAutoFocusDirective,
     TuiFocusableModule,
     TuiLetModule,
     TuiMapperPipeModule,
@@ -25,13 +25,13 @@ import {TuiInputCardGroupedComponent} from './input-card-grouped.component';
         TuiFocusableModule,
         TuiSvgModule,
         TuiWrapperModule,
-        TuiActiveZoneModule,
+        TuiActiveZoneDirective,
         TuiMapperPipeModule,
         TuiDropdownModule,
         PolymorpheusModule,
         TuiLetModule,
         TuiFormatCardModule,
-        TuiAutoFocusModule,
+        TuiAutoFocusDirective,
     ],
     declarations: [TuiInputCardGroupedComponent],
     exports: [TuiInputCardGroupedComponent],

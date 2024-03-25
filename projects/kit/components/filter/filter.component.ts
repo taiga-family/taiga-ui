@@ -8,17 +8,11 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import type {
-    TuiBooleanHandler,
-    TuiContext,
-    TuiHandler,
-    TuiIdentityMatcher,
-} from '@taiga-ui/cdk';
+import type {TuiBooleanHandler, TuiHandler, TuiIdentityMatcher} from '@taiga-ui/cdk';
 import {
     AbstractTuiMultipleControl,
-    ALWAYS_FALSE_HANDLER,
     TUI_DEFAULT_IDENTITY_MATCHER,
-    TUI_DEFAULT_STRINGIFY,
+    TUI_FALSE_HANDLER,
     tuiIsNativeFocusedIn,
 } from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS, TuiSizeXL, TuiSizeXS} from '@taiga-ui/core';
@@ -52,7 +46,7 @@ export class TuiFilterComponent<T> extends AbstractTuiMultipleControl<T> {
     public size: TuiSizeL | TuiSizeXS = 'm';
 
     @Input()
-    public disabledItemHandler: TuiBooleanHandler<T> = ALWAYS_FALSE_HANDLER;
+    public disabledItemHandler: TuiBooleanHandler<T> = TUI_FALSE_HANDLER;
 
     @Output()
     public readonly toggledItem = new EventEmitter<T>();
@@ -62,8 +56,7 @@ export class TuiFilterComponent<T> extends AbstractTuiMultipleControl<T> {
     }
 
     @Input()
-    public content: PolymorpheusContent = ({$implicit}: TuiContext<unknown>) =>
-        TUI_DEFAULT_STRINGIFY($implicit);
+    public content: PolymorpheusContent = ({$implicit}) => String($implicit);
 
     @Input()
     public badgeHandler: TuiHandler<T, number> = item => Number(item);

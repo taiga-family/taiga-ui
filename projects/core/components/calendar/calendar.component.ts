@@ -12,7 +12,7 @@ import type {
     TuiYear,
 } from '@taiga-ui/cdk';
 import {
-    ALWAYS_FALSE_HANDLER,
+    TUI_FALSE_HANDLER,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
     TuiDay,
@@ -38,7 +38,7 @@ export class TuiCalendarComponent implements TuiWithOptionalMinMax<TuiDay> {
     public month: TuiMonth = TuiMonth.currentLocal();
 
     @Input()
-    public disabledItemHandler: TuiBooleanHandler<TuiDay> = ALWAYS_FALSE_HANDLER;
+    public disabledItemHandler: TuiBooleanHandler<TuiDay> = TUI_FALSE_HANDLER;
 
     @Input()
     public min: TuiDay | null = TUI_FIRST_DAY;

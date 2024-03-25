@@ -8,7 +8,7 @@ import {
 import {TUI_PREVIEW_ICONS, TUI_PREVIEW_TEXTS} from '@taiga-ui/addon-preview/tokens';
 import type {TuiZoom} from '@taiga-ui/cdk';
 import {
-    ALWAYS_FALSE_HANDLER,
+    TUI_FALSE_HANDLER,
     tuiClamp,
     tuiDragAndDropFrom,
     TuiDragStage,
@@ -59,10 +59,8 @@ export class TuiPreviewComponent {
         ),
         tuiTypedFromEvent(this.el, 'touchmove', {
             passive: true,
-        }).pipe(map(ALWAYS_FALSE_HANDLER)),
-        tuiTypedFromEvent(this.el, 'wheel', {passive: true}).pipe(
-            map(ALWAYS_FALSE_HANDLER),
-        ),
+        }).pipe(map(TUI_FALSE_HANDLER)),
+        tuiTypedFromEvent(this.el, 'wheel', {passive: true}).pipe(map(TUI_FALSE_HANDLER)),
     );
 
     protected readonly cursor$ = tuiDragAndDropFrom(this.el).pipe(

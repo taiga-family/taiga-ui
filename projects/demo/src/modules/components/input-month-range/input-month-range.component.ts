@@ -4,7 +4,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import type {TuiMonthRange} from '@taiga-ui/cdk';
 import {
-    ALWAYS_FALSE_HANDLER,
+    TUI_FALSE_HANDLER,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
     TuiDay,
@@ -69,7 +69,7 @@ export class ExampleTuiInputMonthRangeComponent extends AbstractExampleTuiContro
 
     protected readonly disabledItemHandlerVariants: ReadonlyArray<
         TuiBooleanHandlerWithContext<TuiMonth, TuiMonthContext>
-    > = [ALWAYS_FALSE_HANDLER, ({month}) => month % 3 === 0];
+    > = [TUI_FALSE_HANDLER, ({month}) => month % 3 === 0];
 
     protected disabledItemHandler = this.disabledItemHandlerVariants[0];
 }

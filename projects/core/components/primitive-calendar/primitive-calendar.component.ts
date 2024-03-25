@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk';
 import {
-    ALWAYS_FALSE_HANDLER,
+    TUI_FALSE_HANDLER,
     TuiDay,
     TuiDayRange,
     TuiMonth,
@@ -35,7 +35,7 @@ export class TuiPrimitiveCalendarComponent {
     public month: TuiMonth = TuiMonth.currentLocal();
 
     @Input()
-    public disabledItemHandler: TuiBooleanHandler<TuiDay> = ALWAYS_FALSE_HANDLER;
+    public disabledItemHandler: TuiBooleanHandler<TuiDay> = TUI_FALSE_HANDLER;
 
     @Input()
     public markerHandler: TuiMarkerHandler = TUI_DEFAULT_MARKER_HANDLER;

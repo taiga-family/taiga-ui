@@ -3,7 +3,6 @@ import type {OnDestroy, OnInit, Provider, Type} from '@angular/core';
 import {ChangeDetectorRef, Directive, HostBinding, inject, Input} from '@angular/core';
 import type {AbstractControl, ControlValueAccessor} from '@angular/forms';
 import {NgControl, NgModel} from '@angular/forms';
-import {tuiAssert} from '@taiga-ui/cdk/classes';
 import {EMPTY_FUNCTION} from '@taiga-ui/cdk/constants';
 import type {TuiControlValueTransformer} from '@taiga-ui/cdk/interfaces';
 import {tuiIsPresent} from '@taiga-ui/cdk/utils';
@@ -55,7 +54,7 @@ export abstract class AbstractTuiControl<T>
         super();
 
         if (ngDevMode && this.ngControl === null) {
-            tuiAssert.assert(
+            console.assert(
                 false,
                 `NgControl not injected in ${this.constructor.name}!\n`,
                 'Use [(ngModel)] or [formControl] or formControlName for correct work.',

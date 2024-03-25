@@ -1,12 +1,12 @@
 ```ts
-import {TuiActiveZoneModule} from '@taiga-ui/cdk';
+import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
 
 // ...
 
 @NgModule({
   imports: [
     // ...
-    TuiActiveZoneModule,
+    TuiActiveZoneDirective,
   ],
   // ...
 })

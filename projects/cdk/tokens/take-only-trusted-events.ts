@@ -1,4 +1,4 @@
-import {ALWAYS_TRUE_HANDLER} from '@taiga-ui/cdk/constants';
+import {TUI_TRUE_HANDLER} from '@taiga-ui/cdk/constants';
 import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk/utils';
 
 /**
@@ -8,4 +8,4 @@ import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk/utils';
  * modified by a script or dispatched via EventTarget.dispatchEvent().
  */
 export const TUI_TAKE_ONLY_TRUSTED_EVENTS =
-    tuiCreateTokenFromFactory<boolean>(ALWAYS_TRUE_HANDLER);
+    tuiCreateTokenFromFactory<boolean>(TUI_TRUE_HANDLER);

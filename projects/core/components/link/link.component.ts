@@ -8,8 +8,8 @@ import {
 } from '@angular/core';
 import type {TuiFocusableElementAccessor, TuiNativeFocusableElement} from '@taiga-ui/cdk';
 import {
-    ALWAYS_FALSE_HANDLER,
-    ALWAYS_TRUE_HANDLER,
+    TUI_FALSE_HANDLER,
+    TUI_TRUE_HANDLER,
     tuiAsFocusableItemAccessor,
     TuiDestroyService,
     TuiFocusVisibleService,
@@ -60,8 +60,8 @@ export class TuiLinkComponent implements TuiFocusableElementAccessor {
     public mode: 'negative' | 'positive' | null = null;
 
     public readonly focusedChange = merge(
-        tuiTypedFromEvent(this.el, 'focusin').pipe(map(ALWAYS_TRUE_HANDLER)),
-        tuiTypedFromEvent(this.el, 'focusout').pipe(map(ALWAYS_FALSE_HANDLER)),
+        tuiTypedFromEvent(this.el, 'focusin').pipe(map(TUI_TRUE_HANDLER)),
+        tuiTypedFromEvent(this.el, 'focusout').pipe(map(TUI_FALSE_HANDLER)),
     );
 
     @HostBinding('class._focus-visible')

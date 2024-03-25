@@ -1,5 +1,5 @@
 /// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
-import {tuiAssert} from '@taiga-ui/cdk/classes';
+
 import type {TuiDateMode} from '@taiga-ui/cdk/types';
 
 import {DATE_FILLER_LENGTH, DATE_RANGE_FILLER_LENGTH} from './date-fillers';
@@ -17,7 +17,7 @@ export class TuiDayRange extends TuiMonthRange {
     ) {
         super(from, to);
 
-        ngDevMode && tuiAssert.assert(from.daySameOrBefore(to));
+        ngDevMode && console.assert(from.daySameOrBefore(to));
     }
 
     /**

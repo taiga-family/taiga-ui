@@ -21,13 +21,13 @@ import type {
 } from '@taiga-ui/cdk';
 import {
     AbstractTuiNullableControl,
-    ALWAYS_FALSE_HANDLER,
     changeDateSeparator,
     DATE_FILLER_LENGTH,
     DATE_RANGE_FILLER_LENGTH,
     RANGE_SEPARATOR_CHAR,
     TUI_DATE_FORMAT,
     TUI_DATE_SEPARATOR,
+    TUI_FALSE_HANDLER,
     TUI_FIRST_DAY,
     TUI_IS_MOBILE,
     TUI_LAST_DAY,
@@ -94,7 +94,7 @@ export class TuiInputDateRangeComponent
     private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
 
     @Input()
-    public disabledItemHandler: TuiBooleanHandler<TuiDay> = ALWAYS_FALSE_HANDLER;
+    public disabledItemHandler: TuiBooleanHandler<TuiDay> = TUI_FALSE_HANDLER;
 
     @Input()
     public markerHandler: TuiMarkerHandler = TUI_DEFAULT_MARKER_HANDLER;

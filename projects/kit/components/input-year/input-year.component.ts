@@ -15,7 +15,7 @@ import type {
 } from '@taiga-ui/cdk';
 import {
     AbstractTuiNullableControl,
-    ALWAYS_FALSE_HANDLER,
+    TUI_FALSE_HANDLER,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
     tuiPure,
@@ -54,7 +54,7 @@ export class TuiInputYearComponent
     public max: number | null = this.options.max.year;
 
     @Input()
-    public disabledItemHandler: TuiBooleanHandler<number> = ALWAYS_FALSE_HANDLER;
+    public disabledItemHandler: TuiBooleanHandler<number> = TUI_FALSE_HANDLER;
 
     public nativeValue = '';
 

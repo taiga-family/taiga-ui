@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
-import {TuiActiveZoneModule} from '@taiga-ui/cdk';
+import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
 import {TuiButtonModule} from '@taiga-ui/core';
 import {TuiInputModule} from '@taiga-ui/kit';
 
@@ -15,7 +15,7 @@ import {TuiActiveZoneExample1} from './examples/1';
         CommonModule,
         TuiInputModule,
         TuiButtonModule,
-        TuiActiveZoneModule,
+        TuiActiveZoneDirective,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiActiveZoneComponent)),
         ReactiveFormsModule,

@@ -1,9 +1,10 @@
+import type {BooleanInput} from '@angular/cdk/coercion';
+import {coerceBooleanProperty} from '@angular/cdk/coercion';
 import {DOCUMENT} from '@angular/common';
 import {Directive, ElementRef, HostListener, inject, Input} from '@angular/core';
 import {
-    ALWAYS_FALSE_HANDLER,
-    ALWAYS_TRUE_HANDLER,
-    tuiCoerceBooleanProperty,
+    TUI_FALSE_HANDLER,
+    TUI_TRUE_HANDLER,
     TuiDestroyService,
     tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
@@ -32,8 +33,8 @@ export class TuiSliderReadonlyDirective {
     private readonly el: HTMLInputElement = inject(ElementRef).nativeElement;
     private readonly doc = inject(DOCUMENT);
 
-    @Input()
-    public readonly: boolean | string = true;
+    @Input({transform: coerceBooleanProperty})
+    public readonly: BooleanInput = true;
 
     constructor() {
         const touchStart$ = tuiTypedFromEvent(this.el, 'touchstart', {
@@ -49,9 +50,9 @@ export class TuiSliderReadonlyDirective {
         const shouldPreventMove$ = merge(
             touchStart$.pipe(
                 tap(e => this.preventEvent(e)),
-                map(ALWAYS_TRUE_HANDLER),
+                map(TUI_TRUE_HANDLER),
             ),
-            touchEnd$.pipe(map(ALWAYS_FALSE_HANDLER)),
+            touchEnd$.pipe(map(TUI_FALSE_HANDLER)),
         );
 
         /**
@@ -68,7 +69,7 @@ export class TuiSliderReadonlyDirective {
 
     @HostListener('mousedown', ['$event'])
     protected preventEvent(event: Event): void {
-        if (event.cancelable && tuiCoerceBooleanProperty(this.readonly)) {
+        if (event.cancelable && this.readonly) {
             event.preventDefault();
         }
     }

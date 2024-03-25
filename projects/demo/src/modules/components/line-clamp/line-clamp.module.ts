@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
-import {TuiActiveZoneModule} from '@taiga-ui/cdk';
+import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
     TuiDataListModule,
@@ -37,7 +37,7 @@ import {ExampleTuiLineClampComponent} from './line-clamp.component';
         TuiDropdownModule,
         TuiLinkModule,
         TuiDataListDropdownManagerModule,
-        TuiActiveZoneModule,
+        TuiActiveZoneDirective,
         TuiDataListModule,
         TuiSvgModule,
         TuiHintModule,

@@ -4,7 +4,7 @@ import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import type {TuiBooleanHandler, TuiHandler} from '@taiga-ui/cdk';
-import {ALWAYS_FALSE_HANDLER} from '@taiga-ui/cdk';
+import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk';
 import type {TuiSizeS} from '@taiga-ui/core';
 import {TuiFilterComponent, TuiFilterModule} from '@taiga-ui/kit';
 
@@ -47,7 +47,7 @@ describe('Filter', () => {
         @ViewChild(TuiFilterComponent, {static: true})
         public component!: TuiFilterComponent<any>;
 
-        public disabledItemHandler: TuiBooleanHandler<any> = ALWAYS_FALSE_HANDLER;
+        public disabledItemHandler: TuiBooleanHandler<any> = TUI_FALSE_HANDLER;
 
         public control = new FormControl<string[]>([]);
 

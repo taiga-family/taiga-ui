@@ -19,10 +19,10 @@ import type {
 } from '@taiga-ui/cdk';
 import {
     AbstractTuiMultipleControl,
-    ALWAYS_FALSE_HANDLER,
     changeDateSeparator,
     TUI_DATE_FORMAT,
     TUI_DATE_SEPARATOR,
+    TUI_FALSE_HANDLER,
     TUI_IS_MOBILE,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
@@ -94,7 +94,7 @@ export class TuiInputDateMultiComponent
     public max: TuiDay | null = this.options.max;
 
     @Input()
-    public disabledItemHandler: TuiBooleanHandler<TuiDay> = ALWAYS_FALSE_HANDLER;
+    public disabledItemHandler: TuiBooleanHandler<TuiDay> = TUI_FALSE_HANDLER;
 
     @Input()
     public markerHandler: TuiMarkerHandler = TUI_DEFAULT_MARKER_HANDLER;

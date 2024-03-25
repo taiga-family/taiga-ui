@@ -22,9 +22,9 @@ import type {
 } from '@taiga-ui/cdk';
 import {
     AbstractTuiMultipleControl,
-    ALWAYS_FALSE_HANDLER,
-    ALWAYS_TRUE_HANDLER,
     EMPTY_QUERY,
+    TUI_FALSE_HANDLER,
+    TUI_TRUE_HANDLER,
     tuiArrayRemove,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
@@ -123,7 +123,7 @@ export class TuiInputTagComponent
     @Input()
     public tagValidator:
         | TuiBooleanHandler<string>
-        | TuiBooleanHandler<TuiStringifiableItem<unknown> | string> = ALWAYS_TRUE_HANDLER;
+        | TuiBooleanHandler<TuiStringifiableItem<unknown> | string> = TUI_TRUE_HANDLER;
 
     @Input()
     public rows = Infinity;
@@ -145,7 +145,7 @@ export class TuiInputTagComponent
 
     @Input()
     public disabledItemHandler: TuiBooleanHandler<TuiStringifiableItem<any> | string> =
-        ALWAYS_FALSE_HANDLER;
+        TUI_FALSE_HANDLER;
 
     @Output()
     public readonly searchChange = new EventEmitter<string>();

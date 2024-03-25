@@ -3,7 +3,7 @@ import {FormControl, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk';
-import {ALWAYS_FALSE_HANDLER, TUI_FIRST_DAY, TUI_LAST_DAY} from '@taiga-ui/cdk';
+import {TUI_FALSE_HANDLER, TUI_FIRST_DAY, TUI_LAST_DAY} from '@taiga-ui/cdk';
 
 import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
@@ -46,7 +46,7 @@ export class ExampleInputYearComponent extends AbstractExampleTuiControl {
 
     protected readonly disabledItemHandlerVariants: ReadonlyArray<
         TuiBooleanHandler<number>
-    > = [ALWAYS_FALSE_HANDLER, year => year % 3 === 0];
+    > = [TUI_FALSE_HANDLER, year => year % 3 === 0];
 
     protected disabledItemHandler = this.disabledItemHandlerVariants[0];
 }

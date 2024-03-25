@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {Router} from '@angular/router';
 import {TUI_DOC_ICONS, TUI_DOC_LOGO, TUI_DOC_MENU_TEXT} from '@taiga-ui/addon-doc/tokens';
-import {ALWAYS_FALSE_HANDLER} from '@taiga-ui/cdk';
+import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk';
 import {distinctUntilChanged, map, merge, startWith, Subject} from 'rxjs';
 
 @Component({
@@ -17,7 +17,7 @@ export class TuiDocHeaderComponent {
     protected readonly logo = inject(TUI_DOC_LOGO);
     protected readonly menu = inject(TUI_DOC_MENU_TEXT);
     protected readonly open$ = merge(
-        this.router.events.pipe(map(ALWAYS_FALSE_HANDLER)),
+        this.router.events.pipe(map(TUI_FALSE_HANDLER)),
         this.stream$,
     ).pipe(startWith(false), distinctUntilChanged());
 

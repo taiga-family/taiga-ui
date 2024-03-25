@@ -1,5 +1,4 @@
 /// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
-import {tuiAssert} from '@taiga-ui/cdk/classes';
 
 /**
  * Normalizes any number to an integer within inclusive range
@@ -10,9 +9,9 @@ import {tuiAssert} from '@taiga-ui/cdk/classes';
  * @return an integer between min and max inclusive
  */
 export function tuiNormalizeToIntNumber(value: number, min: number, max: number): number {
-    ngDevMode && tuiAssert.assert(Number.isInteger(min));
-    ngDevMode && tuiAssert.assert(Number.isInteger(max));
-    ngDevMode && tuiAssert.assert(min <= max);
+    ngDevMode && console.assert(Number.isInteger(min));
+    ngDevMode && console.assert(Number.isInteger(max));
+    ngDevMode && console.assert(min <= max);
 
     if (Number.isNaN(value) || value <= min) {
         return min;

@@ -2,7 +2,6 @@ import type {TuiStringHandler} from '@taiga-ui/cdk';
 import {
     TUI_DEFAULT_IDENTITY_MATCHER,
     TUI_DEFAULT_MATCHER,
-    TUI_DEFAULT_STRINGIFY,
     TUI_STRICT_MATCHER,
 } from '@taiga-ui/cdk';
 
@@ -18,7 +17,6 @@ class Item {
 }
 
 describe('Matcher functions', () => {
-    const defaultStringify = TUI_DEFAULT_STRINGIFY;
     const defaultMatcher = TUI_DEFAULT_MATCHER;
     const strictMatcher = TUI_STRICT_MATCHER;
     const identityMatcher = TUI_DEFAULT_IDENTITY_MATCHER;
@@ -26,31 +24,21 @@ describe('Matcher functions', () => {
     const search = 'HOLY GRAIL';
     const item = new Item('Monty Python and the Holy Grail DVD', 99);
 
-    describe('TUI_DEFAULT_STRINGIFY', () => {
-        it('calls String(item) which turns null into "null"', () => {
-            expect(defaultStringify(null)).toBe('null');
-        });
-
-        it('calls String(item) which executes toString from the class', () => {
-            expect(defaultStringify(item)).toBe(item.name);
-        });
-    });
-
     describe('TUI_DEFAULT_MATCHER', () => {
         it('compares stringified values, case insensitive', () => {
-            expect(defaultMatcher(item, search, defaultStringify)).toBe(true);
+            expect(defaultMatcher(item, search)).toBe(true);
         });
 
         it('does not do the trimming', () => {
-            expect(defaultMatcher(item, `    ${search}  `, defaultStringify)).toBe(false);
+            expect(defaultMatcher(item, `    ${search}  `)).toBe(false);
         });
 
-        it('uses TUI_DEFAULT_STRINGIFY if stringify function was not provided', () => {
+        it('uses String if stringify function was not provided', () => {
             expect(defaultMatcher(item, search)).toBe(true);
         });
 
         it('returns false if requested string is not found in stringified version', () => {
-            expect(defaultMatcher(item, 'Brian', defaultStringify)).toBe(false);
+            expect(defaultMatcher(item, 'Brian')).toBe(false);
         });
 
         it('accepts stringify function', () => {

@@ -3,7 +3,7 @@ import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk';
-import {ALWAYS_FALSE_HANDLER, ALWAYS_TRUE_HANDLER} from '@taiga-ui/cdk';
+import {TUI_FALSE_HANDLER, TUI_TRUE_HANDLER} from '@taiga-ui/cdk';
 import type {TuiOrientation, TuiSizeL} from '@taiga-ui/core';
 
 import {AbstractExampleTuiControl} from '../abstract/control';
@@ -72,7 +72,7 @@ export class ExampleTuiRadioListComponent extends AbstractExampleTuiControl {
     protected orientation: TuiOrientation = this.orientationVariants[0];
 
     protected readonly disabledItemHandlerVariants: Array<TuiBooleanHandler<ItemRadio>> =
-        [ALWAYS_FALSE_HANDLER, ALWAYS_TRUE_HANDLER, item => item.name === 'Advanced'];
+        [TUI_FALSE_HANDLER, TUI_TRUE_HANDLER, item => item.name === 'Advanced'];
 
     protected disabledItemHandler = this.disabledItemHandlerVariants[0];
 }

@@ -1,3 +1,4 @@
+import {coerceArray} from '@angular/cdk/coercion';
 import {Directive, ElementRef, forwardRef, inject, Output} from '@angular/core';
 import {
     AbstractTuiNullableControl,
@@ -72,10 +73,8 @@ export class TuiInputFilesDirective
     }
 }
 
-function toArray(value: TuiFileLike | readonly TuiFileLike[] | null): TuiFileLike[] {
-    if (!value) {
-        return EMPTY_ARRAY;
-    }
-
-    return Array.isArray(value) ? value : [value];
+function toArray(
+    value: TuiFileLike | readonly TuiFileLike[] | null,
+): readonly TuiFileLike[] {
+    return value ? coerceArray(value) : EMPTY_ARRAY;
 }

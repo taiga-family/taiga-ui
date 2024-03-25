@@ -1,7 +1,7 @@
 import {ContentChild, Directive, inject, Input, NgZone} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
 import {
-    ALWAYS_FALSE_HANDLER,
+    TUI_FALSE_HANDLER,
     tuiClamp,
     tuiIsFalsy,
     tuiPure,
@@ -35,7 +35,7 @@ function processDragged(
     const race$ = race(scroll$, timer(100)).pipe(
         debounceTime(200),
         take(1),
-        map(ALWAYS_FALSE_HANDLER),
+        map(TUI_FALSE_HANDLER),
     );
 
     return touchstart$.pipe(

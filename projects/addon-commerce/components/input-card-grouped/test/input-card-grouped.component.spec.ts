@@ -23,6 +23,7 @@ import {
 import {TuiSvgModule} from '@taiga-ui/core';
 import {TuiNativeInputPO} from '@taiga-ui/testing';
 import type {Mock} from 'jest-mock';
+import {firstValueFrom, timer} from 'rxjs';
 
 describe('InputCardGrouped', () => {
     @Component({
@@ -175,9 +176,11 @@ describe('InputCardGrouped', () => {
             expect(inputCardPO.focused).toBe(true);
         });
 
-        it('focuses expire input when valid card is entered', () => {
+        it('focuses expire input when valid card is entered', async () => {
             inputCardPO.focus();
             inputCardPO.sendText('563693784073');
+
+            await firstValueFrom(timer(100));
 
             expect(inputExpirePO.focused).toBe(true);
         });
@@ -190,10 +193,12 @@ describe('InputCardGrouped', () => {
             expect(inputExpirePO.focused).toBe(true);
         });
 
-        it('focuses cvc input when expiration date is fully entered', () => {
+        it('focuses cvc input when expiration date is fully entered', async () => {
             inputCardPO.focus();
             inputCardPO.sendText('563693784073');
             inputExpirePO.sendText('12/21');
+
+            await firstValueFrom(timer(100));
 
             expect(inputCVCPO.focused).toBe(true);
         });

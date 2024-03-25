@@ -9,7 +9,7 @@ import {
     TuiTextCodeModule,
 } from '@taiga-ui/addon-doc';
 import {TuiElasticStickyModule} from '@taiga-ui/addon-mobile';
-import {TuiAutoFocusModule} from '@taiga-ui/cdk';
+import {TuiAutoFocusDirective} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
     TuiDialogModule,
@@ -62,7 +62,7 @@ import {TuiDialogExampleComponent10} from './examples/10';
         TuiMarkerIconModule,
         TuiNotificationModule,
         TuiElasticStickyModule,
-        TuiAutoFocusModule,
+        TuiAutoFocusDirective,
         TuiAddonDocModule,
         DialogExampleModule,
         SearchDialogExampleModule,

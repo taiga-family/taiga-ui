@@ -1,3 +1,4 @@
+import {coerceArray} from '@angular/cdk/coercion';
 import type {AbstractControl} from '@angular/forms';
 import {tuiRound} from '@taiga-ui/cdk';
 
@@ -15,7 +16,7 @@ export function tuiFilesRejected(control?: AbstractControl | null): File[] {
 
 export function tuiFilesAccepted(control?: AbstractControl | null): File[] {
     const value = control?.value || [];
-    const files: File[] = Array.isArray(value) ? value : [value];
+    const files: File[] = coerceArray(value);
     const size: File[] = control?.getError(TUI_SIZE_ERROR)?.$implicit || [];
     const format: File[] = control?.getError(TUI_FORMAT_ERROR)?.$implicit || [];
 

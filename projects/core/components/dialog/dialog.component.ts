@@ -1,7 +1,7 @@
 import type {AnimationOptions} from '@angular/animations';
 import {ChangeDetectionStrategy, Component, HostBinding, inject} from '@angular/core';
 import type {TuiPopover} from '@taiga-ui/cdk';
-import {ALWAYS_TRUE_HANDLER, TUI_IS_MOBILE, TuiDestroyService} from '@taiga-ui/cdk';
+import {TUI_IS_MOBILE, TUI_TRUE_HANDLER, TuiDestroyService} from '@taiga-ui/cdk';
 import {tuiFadeIn, tuiSlideInTop} from '@taiga-ui/core/animations';
 import {
     TUI_ANIMATIONS_SPEED,
@@ -71,7 +71,7 @@ export class TuiDialogComponent<O, I> {
             inject(TuiDialogCloseService).pipe(
                 switchMap(() => toObservable(this.context.dismissible)),
             ),
-            inject(TUI_DIALOGS_CLOSE).pipe(map(ALWAYS_TRUE_HANDLER)),
+            inject(TUI_DIALOGS_CLOSE).pipe(map(TUI_TRUE_HANDLER)),
         )
             .pipe(filter(Boolean), takeUntil(inject(TuiDestroyService, {self: true})))
             .subscribe(() => {
