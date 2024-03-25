@@ -6,7 +6,7 @@ import {
     inject,
     Input,
 } from '@angular/core';
-import {NgControl} from '@angular/forms';
+import {NgControl, NgModel} from '@angular/forms';
 import {
     tuiControlValue,
     TuiDestroyService,
@@ -64,7 +64,10 @@ export class TuiCheckboxComponent implements OnInit, DoCheck {
         tuiControlValue(this.control)
             .pipe(takeUntil(this.destroy$))
             .subscribe(value => {
-                this.el.indeterminate = value === null;
+                // https://github.com/angular/angular/issues/14988
+                const fix = this.control instanceof NgModel ? this.control.model : value;
+
+                this.el.indeterminate = fix === null;
             });
     }
 
