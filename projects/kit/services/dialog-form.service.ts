@@ -19,7 +19,7 @@ export class TuiDialogFormService {
         this.dirty = false;
     }
 
-    public withPrompt(
+    public withConfirm(
         options: Partial<TuiDialogOptions<TuiConfirmData>>,
     ): Observable<boolean> {
         return defer(() =>
