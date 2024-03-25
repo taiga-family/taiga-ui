@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
-import type {TuiSizeS, TuiSizeXL} from '@taiga-ui/core';
+import type {TuiSizeXL, TuiSizeXS} from '@taiga-ui/core';
 
 @Component({
     selector: 'example-tui-ring-chart',
@@ -36,12 +36,13 @@ export class ExampleTuiRingChartComponent {
 
     protected activeItemIndex = this.activeItemIndexVariants[0];
 
-    protected readonly sizeVariants: ReadonlyArray<TuiSizeS | TuiSizeXL> = [
+    protected readonly sizeVariants: ReadonlyArray<TuiSizeXL | TuiSizeXS> = [
+        'xs',
         's',
         'm',
         'l',
         'xl',
     ];
 
-    protected size = this.sizeVariants[1];
+    protected size = this.sizeVariants[2];
 }
