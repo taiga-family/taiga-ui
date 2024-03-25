@@ -6,18 +6,19 @@
     <ng-template pageTab>
         A switch component that is able to imitate native control on mobile platforms.
 
+        <tui-notification class="tui-space_vertical-4">
+            Use
+            <code>--tui-accent</code>
+            CSS variable to customize color of native control emulation
+        </tui-notification>
+
         <tui-doc-example
-            id="platforms"
-            heading="Platforms"
-            [component]="1 | tuiComponent"
-            [content]="1 | tuiExample"
-        >
-            <tui-notification class="tui-space_bottom-4">
-                Use
-                <code>--tui-accent</code>
-                CSS variable to customize color of native control emulation
-            </tui-notification>
-        </tui-doc-example>
+            *ngFor="let example of examples; let index = index"
+            [component]="index + 1 | tuiComponent"
+            [content]="index + 1 | tuiExample"
+            [heading]="example"
+            [id]="example | tuiKebab"
+        />
     </ng-template>
 
     <tui-setup *pageTab="'Setup'" />

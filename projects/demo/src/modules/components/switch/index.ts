@@ -9,4 +9,6 @@ import {TuiNotificationModule} from '@taiga-ui/core';
     templateUrl: './index.html',
     changeDetection,
 })
-export default class PageComponent {}
+export default class PageComponent {
+    protected readonly examples = ['Platforms', 'Same color'];
+}

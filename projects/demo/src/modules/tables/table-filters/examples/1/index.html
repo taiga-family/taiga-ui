@@ -9,10 +9,12 @@
         </tui-input-number>
         <label class="toggle">
             <input
+                size="s"
                 tuiSwitch
                 type="checkbox"
                 [ngModel]="form.enabled"
                 [ngModelOptions]="{standalone: true}"
+                [showIcons]="false"
                 (ngModelChange)="onToggle($event)"
             />
             Enable filtering

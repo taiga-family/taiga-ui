@@ -1,0 +1,24 @@
+:host {
+    display: flex;
+    --tui-accent: var(--tui-info-fill);
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    flex: 1;
+    gap: 1rem;
+    padding: 1rem;
+
+    &_web {
+        border: 1px solid var(--tui-base-04);
+        border-left-width: 0;
+
+        &:first-child {
+            border-right-width: 0;
+            border-left-width: 1px;
+        }
+    }
+}

@@ -8,11 +8,11 @@
     component.
 </p>
 <elderly *ngIf="enabled" />
-<label>
+<label tuiLabel>
     <input
         tuiSwitch
         type="checkbox"
-        class="tui-space_right-1"
+        [showIcons]="false"
         [(ngModel)]="enabled"
     />
     Senior Citizen mode
