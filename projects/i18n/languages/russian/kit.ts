@@ -57,7 +57,7 @@ export const TUI_RUSSIAN_LANGUAGE_KIT: TuiLanguageKit = {
         all: 'Выбрать все',
         none: 'Снять выбор',
     },
-    prompt: {
+    confirm: {
         yes: 'Да',
         no: 'Нет',
     },

@@ -57,7 +57,7 @@ export const TUI_UKRAINIAN_LANGUAGE_KIT: TuiLanguageKit = {
         all: 'Вибрати все',
         none: 'Не вибирати',
     },
-    prompt: {
+    confirm: {
         yes: 'Так',
         no: 'Немає',
     },

@@ -1,13 +1,13 @@
 ```ts
-import {TUI_PROMPT} from '@taiga-ui/kit';
+import {TUI_CONFIRM} from '@taiga-ui/kit';
 
 // ...
 export class MyComponent {
   private readonly dialogs = inject(TuiDialogService);
 
-  prompt() {
+  confirm() {
     this.dialogs
-      .open<boolean>(TUI_PROMPT, {
+      .open<boolean>(TUI_CONFIRM, {
         label: 'Are you sure?',
         data: {
           content: 'This action has consequences',

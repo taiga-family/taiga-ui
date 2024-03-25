@@ -57,7 +57,7 @@ export const TUI_VIETNAMESE_LANGUAGE_KIT: TuiLanguageKit = {
         all: 'Chọn tất cả',
         none: 'Không chọn',
     },
-    prompt: {
+    confirm: {
         yes: 'Đúng',
         no: 'Không',
     },

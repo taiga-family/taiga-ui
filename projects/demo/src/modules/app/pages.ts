@@ -677,10 +677,10 @@ export const pages: TuiDocPages = [
     },
     {
         section: 'Components',
-        title: 'Prompt',
+        title: 'Confirm',
         keywords:
-            'попап, модал, popup, dialog, диалог, modal, окно, confirm, approve, подтверждение',
-        route: '/components/prompt',
+            'попап, модал, popup, dialog, диалог, modal, окно, confirm, approve, prompt, подтверждение',
+        route: '/components/confirm',
     },
     {
         section: 'Components',

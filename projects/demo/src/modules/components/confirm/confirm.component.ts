@@ -2,26 +2,27 @@ import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiAlertService, TuiDialogService} from '@taiga-ui/core';
-import type {TuiPromptData} from '@taiga-ui/kit';
-import {TUI_PROMPT} from '@taiga-ui/kit';
+import type {TuiConfirmData} from '@taiga-ui/kit';
+import {TUI_CONFIRM} from '@taiga-ui/kit';
 import {switchMap} from 'rxjs';
 
 @Component({
-    selector: 'example-tui-prompt',
-    templateUrl: './prompt.template.html',
+    selector: 'example-tui-confirm',
+    templateUrl: './confirm.template.html',
     changeDetection,
 })
-export class ExampleTuiPromptComponent implements TuiPromptData {
+export class ExampleTuiConfirmComponent implements TuiConfirmData {
     private readonly dialogs = inject(TuiDialogService);
     private readonly alerts = inject(TuiAlertService);
 
+    public readonly appearances = ['primary', 'accent', 'secondary'];
+    public appearance = this.appearances[0];
     public no = 'No';
     public yes = 'Yes';
 
     public readonly content =
         'This is <code>PolymorpheusContent</code>, so it can be anything you like!';
 
-    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
     protected readonly exampleService = import('./examples/import/service.md?raw');
 
     protected readonly example1: TuiDocExample = {
@@ -31,7 +32,7 @@ export class ExampleTuiPromptComponent implements TuiPromptData {
 
     protected onClick(): void {
         this.dialogs
-            .open<boolean>(TUI_PROMPT, {
+            .open<boolean>(TUI_CONFIRM, {
                 label: 'Are you sure?',
                 size: 's',
                 data: this,

@@ -23,6 +23,7 @@
         tuiButton
         type="button"
         class="t-button"
+        [appearance]="context.data?.appearance || 'primary'"
         (click)="context.completeWith(true)"
     >
         {{ context.data?.yes || words.yes }}

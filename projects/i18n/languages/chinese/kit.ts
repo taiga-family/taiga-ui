@@ -57,7 +57,7 @@ export const TUI_CHINESE_LANGUAGE_KIT: TuiLanguageKit = {
         all: '全选',
         none: '选择无',
     },
-    prompt: {
+    confirm: {
         yes: '是',
         no: '不',
     },

@@ -4,7 +4,7 @@ import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
 import {tuiExtractI18n} from '@taiga-ui/i18n';
 import type {Observable} from 'rxjs';
 
-export const TUI_PROMPT_WORDS = tuiCreateTokenFromFactory(tuiExtractI18n('prompt'));
+export const TUI_CONFIRM_WORDS = tuiCreateTokenFromFactory(tuiExtractI18n('confirm'));
 
 export const TUI_CANCEL_WORD = tuiCreateTokenFromFactory(tuiExtractI18n('cancel'));
 
