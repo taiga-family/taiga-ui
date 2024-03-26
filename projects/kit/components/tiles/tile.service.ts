@@ -1,5 +1,6 @@
+import {isPlatformBrowser} from '@angular/common';
 import type {OnDestroy} from '@angular/core';
-import {ElementRef, inject, Injectable} from '@angular/core';
+import {ElementRef, inject, Injectable, PLATFORM_ID} from '@angular/core';
 import {MutationObserverService} from '@ng-web-apis/mutation-observer';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {tuiArrayShallowEquals, tuiPx} from '@taiga-ui/cdk';
@@ -18,6 +19,7 @@ import {TuiTilesComponent} from './tiles.component';
 
 @Injectable()
 export class TuiTileService implements OnDestroy {
+    private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
     private readonly tiles = inject(TuiTilesComponent);
     private readonly sub = new Subscription();
@@ -30,12 +32,16 @@ export class TuiTileService implements OnDestroy {
     ]).pipe(map(([offset]) => offset));
 
     public init(element: HTMLElement): void {
-        this.sub.add(
-            this.position$.subscribe(offset => {
-                this.setPosition(element, offset);
-                this.setRect(element, offset);
-            }),
-        );
+        if (this.isBrowser) {
+            this.sub.add(
+                this.position$.subscribe(offset => {
+                    this.setPosition(element, offset);
+                    this.setRect(element, offset);
+                }),
+            );
+        } else {
+            this.el.style.setProperty('position', 'relative');
+        }
     }
 
     public setOffset(offset: readonly [number, number]): void {
