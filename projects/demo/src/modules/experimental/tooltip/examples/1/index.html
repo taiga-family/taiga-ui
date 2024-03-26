@@ -22,11 +22,12 @@
 
 <ng-template #tooltip>
     <tui-loader
+        *tuiLet="(isLoading$ | async)! as isLoading"
         size="s"
         class="tooltip"
         [inheritColor]="true"
-        [showLoader]="loader"
+        [showLoader]="isLoading"
     >
-        {{ text }}
+        {{ this.isLoading ? '' : 'Error 502: Bad Gateway' }}
     </tui-loader>
 </ng-template>
