@@ -10,6 +10,7 @@ import {
 } from '@angular/core';
 import type {SafeValue} from '@angular/platform-browser';
 import {DomSanitizer} from '@angular/platform-browser';
+import {WINDOW} from '@ng-web-apis/common';
 import type {TuiContext} from '@taiga-ui/cdk';
 import {tuiIsObserved, tuiPure} from '@taiga-ui/cdk';
 import type {TuiSizeL} from '@taiga-ui/core';
@@ -51,6 +52,7 @@ export class TuiFileComponent {
     private readonly sanitizer = inject(DomSanitizer);
     private readonly options = inject(TUI_FILE_OPTIONS);
     private readonly units$ = inject(TUI_DIGITAL_INFORMATION_UNITS);
+    private readonly win = inject(WINDOW) as Window & {File: typeof File};
 
     @Input()
     public file: TuiFileLike = {name: ''};
@@ -146,8 +148,12 @@ export class TuiFileComponent {
             return file.src;
         }
 
-        // TODO: iframe warning
-        if (file instanceof File && file.type && file.type.startsWith('image/')) {
+        if (
+            this.win.File &&
+            file instanceof this.win.File &&
+            file.type &&
+            file.type.startsWith('image/')
+        ) {
             return this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(file));
         }
 
