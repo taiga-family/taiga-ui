@@ -6,6 +6,7 @@ import {
     TuiAutoColorModule,
     TuiAvatarLabeledModule,
     TuiAvatarModule,
+    TuiAvatarOutlineModule,
     TuiAvatarStackModule,
     TuiFadeModule,
     TuiFallbackSrcModule,
@@ -19,6 +20,7 @@ import {TuiAvatarExample3} from './examples/3';
 import {TuiAvatarExample4} from './examples/4';
 import {TuiAvatarExample5} from './examples/5';
 import {TuiAvatarExample6} from './examples/6';
+import {TuiAvatarExample7} from './examples/7';
 
 @NgModule({
     imports: [
@@ -26,6 +28,7 @@ import {TuiAvatarExample6} from './examples/6';
         TuiAvatarModule,
         TuiAvatarStackModule,
         TuiAvatarLabeledModule,
+        TuiAvatarOutlineModule,
         TuiAutoColorModule,
         TuiInitialsModule,
         TuiNotificationModule,
@@ -41,6 +44,7 @@ import {TuiAvatarExample6} from './examples/6';
         TuiAvatarExample4,
         TuiAvatarExample5,
         TuiAvatarExample6,
+        TuiAvatarExample7,
     ],
     exports: [ExampleTuiAvatarComponent],
 })
