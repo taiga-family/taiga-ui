@@ -5,8 +5,6 @@ import {TuiRootModule, TuiDialogModule, TuiAlertModule, TuiPushModule} from '@ta
 bootstrapApplication(AppComponent, {
   providers: [
     provideAnimations(),
-    provideRouter(routes),
-    provideClientHydration(),
     importProvidersFrom(
       TuiRootModule,
       TuiDialogModule,
