@@ -1,64 +1,9 @@
-<form [formGroup]="form">
-    <tui-input formControlName="name">
-        Фамилия имя и отчество
+<form [formGroup]="testForm">
+    <tui-input formControlName="testValue">
+        Type an email
         <input
             tuiTextfield
             type="email"
         />
     </tui-input>
 </form>
-
-<form [formGroup]="form">
-    <h2>Оставьте контакты</h2>
-    <p>
-        <tui-input formControlName="name">
-            Фамилия имя и отчество
-            <input
-                aria-describedby="name-error"
-                required
-                tuiTextfield
-                type="text"
-            />
-        </tui-input>
-        <tui-error
-            id="name-error"
-            formControlName="name"
-            [error]="[] | tuiFieldError | async"
-        />
-    </p>
-    <p>
-        <tui-input-phone formControlName="phone">
-            Мобильный телефон
-            <input
-                aria-describedby="name-error"
-                required
-                tuiTextfield
-                type="text"
-            />
-        </tui-input-phone>
-        <tui-error
-            id="phone-error"
-            formControlName="phone"
-            [error]="[] | tuiFieldError | async"
-        />
-    </p>
-    <p style="display: flex; gap: 1rem; justify-content: space-between">
-        <span>
-            Заполняя форму, я принимаю
-            <button
-                tuiLink
-                type="button"
-                (click)="dialog = true"
-            >
-                условия передачи информации
-            </button>
-        </span>
-        <button tuiButton>Отправить</button>
-    </p>
-</form>
-<ng-template
-    [tuiDialogOptions]="{label: 'Условия передачи информации'}"
-    [(tuiDialog)]="dialog"
->
-    Я даю согласие Банку на обработку всех моих персональных данных
-</ng-template>

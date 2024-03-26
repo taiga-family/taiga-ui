@@ -14,9 +14,7 @@ import {TuiLetModule, TuiMapperPipeModule, TuiRepeatTimesModule} from '@taiga-ui
 import {
     TuiButtonModule,
     TuiDataListModule,
-    TuiDialogModule,
     TuiDropdownModule,
-    TuiErrorModule,
     TuiGroupDirective,
     TuiHintModule,
     TuiInitialsPipe,
@@ -30,11 +28,9 @@ import {
 import {
     TuiAvatarComponent,
     TuiDataListWrapperModule,
-    TuiFieldErrorPipeModule,
     TuiInputDateModule,
     TuiInputModule,
     TuiInputNumberModule,
-    TuiInputPhoneModule,
     TuiRadioListModule,
     TuiSelectModule,
     TuiUnmaskHandlerModule,
@@ -92,10 +88,6 @@ import {ExampleTuiInputComponent} from './input.component';
         MaskitoDirective,
         TuiUnmaskHandlerModule,
         TuiInitialsPipe,
-        TuiErrorModule,
-        TuiFieldErrorPipeModule,
-        TuiInputPhoneModule,
-        TuiDialogModule,
     ],
     declarations: [
         ExampleTuiInputComponent,
