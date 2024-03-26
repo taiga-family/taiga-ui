@@ -219,49 +219,6 @@
             3. Root component
         </h2>
 
-        <h3 class="tui-space_top-5">Modules</h3>
-
-        <tui-tabs-with-more
-            #ngModules
-            class="tabs"
-        >
-            <button
-                *tuiItem
-                tuiTab
-            >
-                <tui-doc-tab src="assets/icons/ts.svg">app.module.ts</tui-doc-tab>
-            </button>
-
-            <button
-                *tuiItem
-                tuiTab
-            >
-                <tui-doc-tab src="assets/icons/html.svg">app.component.html</tui-doc-tab>
-            </button>
-        </tui-tabs-with-more>
-        <ng-container *ngIf="ngModules.activeItemIndex === 0">
-            <tui-doc-code [code]="appModule" />
-            <tui-accordion class="tui-space_top-3">
-                <tui-accordion-item>
-                    Taiga UI also has optional modules for dialogs and notifications. If you need these features, add
-                    modules into your app.module.ts
-
-                    <ng-template tuiAccordionItemContent>
-                        <tui-doc-code
-                            filename="app.module.ts"
-                            [code]="appModuleOptional"
-                        />
-                    </ng-template>
-                </tui-accordion-item>
-            </tui-accordion>
-        </ng-container>
-        <tui-doc-code
-            *ngIf="ngModules.activeItemIndex === 1"
-            [code]="appTemplate"
-        />
-
-        <h3 class="tui-space_top-10">Standalone</h3>
-
         <tui-tabs-with-more
             #ngStandalone
             class="tabs"
@@ -289,22 +246,10 @@
             *ngIf="ngStandalone.activeItemIndex === 0"
             [code]="standalone"
         />
-        <ng-container *ngIf="ngStandalone.activeItemIndex === 1">
-            <tui-doc-code [code]="standaloneMain" />
-            <tui-accordion class="tui-space_top-3">
-                <tui-accordion-item>
-                    Taiga UI also has optional modules for dialogs and notifications. If you need these features, add
-                    modules into your main.ts
-
-                    <ng-template tuiAccordionItemContent>
-                        <tui-doc-code
-                            filename="main.ts"
-                            [code]="standaloneMainOptional"
-                        />
-                    </ng-template>
-                </tui-accordion-item>
-            </tui-accordion>
-        </ng-container>
+        <tui-doc-code
+            *ngIf="ngStandalone.activeItemIndex === 1"
+            [code]="standaloneMain"
+        />
         <tui-doc-code
             *ngIf="ngStandalone.activeItemIndex === 2"
             [code]="appTemplate"

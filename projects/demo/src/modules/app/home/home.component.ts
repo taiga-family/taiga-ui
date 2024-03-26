@@ -55,9 +55,6 @@ export class HomeComponent {
     protected readonly nxMigrate = import('./examples/nx-migrate.md?raw');
     protected readonly standalone = import('./examples/app-standalone.md?raw');
     protected readonly standaloneMain = import('./examples/main-standalone.md?raw');
-    protected readonly standaloneMainOptional = import(
-        './examples/main-standalone-optional.md?raw'
-    );
 
     protected readonly customGlobalStyle = import(
         '../../../../../styles/taiga-ui-global.less?raw'
