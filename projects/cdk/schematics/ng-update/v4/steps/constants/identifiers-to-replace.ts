@@ -38,7 +38,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifier[] = [
     },
     {
         from: {name: 'TuiCheckboxModule', moduleSpecifier: '@taiga-ui/experimental'},
-        to: {name: 'TuiCheckboxModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiCheckboxComponent', moduleSpecifier: '@taiga-ui/kit'},
     },
     {
         from: {name: 'TuiSwipeActionsModule', moduleSpecifier: '@taiga-ui/experimental'},

@@ -11,13 +11,10 @@ import {
     TuiHintModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {
-    TuiCheckboxModule,
-    TuiLabelDirective,
-    TuiRadioComponent,
-} from '@taiga-ui/experimental';
+import {TuiLabelDirective, TuiRadioComponent} from '@taiga-ui/experimental';
 import {
     TuiBlockDirective,
+    TuiCheckboxComponent,
     TuiDataListWrapperModule,
     TuiFieldErrorPipeModule,
     TuiInputDateModule,
@@ -71,7 +68,7 @@ import {FormComponent} from './form.component';
         TuiDataListWrapperModule,
         TuiRadioComponent,
         tuiGetDocModules(FormComponent),
-        TuiCheckboxModule,
+        TuiCheckboxComponent,
         TuiLabelDirective,
     ],
     declarations: [FormComponent, TuiExample],

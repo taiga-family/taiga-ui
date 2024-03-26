@@ -973,12 +973,6 @@ export const pages: TuiDocPages = [
     },
     {
         section: 'Experimental',
-        title: 'Checkbox ',
-        keywords: 'чек, радио, ввод, форма, form, checkbox, radio, toggle',
-        route: '/experimental/checkbox',
-    },
-    {
-        section: 'Experimental',
         title: 'Radio ',
         keywords: 'чек, радио, ввод, форма, form, checkbox, radio, toggle',
         route: '/experimental/radio',

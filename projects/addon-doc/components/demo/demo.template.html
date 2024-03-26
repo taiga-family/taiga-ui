@@ -83,14 +83,19 @@
             </label>
         </div>
     </ng-template>
-    <tui-checkbox-labeled
-        size="m"
+    <label
         class="t-checkbox"
-        [ngModel]="opaque"
-        (ngModelChange)="changeOpaque($event)"
+        [style.gap.rem]="0.5"
     >
+        <input
+            size="s"
+            tuiCheckbox
+            type="checkbox"
+            [ngModel]="opaque"
+            (ngModelChange)="changeOpaque($event)"
+        />
         {{ texts[1] }}
-    </tui-checkbox-labeled>
+    </label>
 </div>
 <div
     tuiResizeable

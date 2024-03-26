@@ -20,13 +20,13 @@ import {
     TuiButtonModule,
     TuiCardModule,
     TuiCellModule,
-    TuiCheckboxModule,
     TuiSurfaceModule,
 } from '@taiga-ui/experimental';
 import {
     TuiAvatarComponent,
     TuiBadgeComponent,
     TuiBadgedContentComponent,
+    TuiCheckboxComponent,
     TuiSwitchComponent,
 } from '@taiga-ui/kit';
 
@@ -57,7 +57,7 @@ import {ExampleTuiSwipeActionsComponent} from './swipe-actions.component';
         TuiButtonModule,
         FormsModule,
         TuiTitleDirective,
-        TuiCheckboxModule,
+        TuiCheckboxComponent,
         TuiDropdownOpenDirective,
         TuiDataListModule,
         TuiDropdownDirective,

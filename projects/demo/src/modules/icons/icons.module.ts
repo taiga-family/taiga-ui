@@ -11,7 +11,6 @@ import {
     TuiNotificationModule,
     TuiSvgModule,
 } from '@taiga-ui/core';
-import {TuiCheckboxLabeledModule} from '@taiga-ui/kit';
 
 import {IconsComponent} from './icons.component';
 import {IconsGroupModule} from './icons-group/icons-group.module';
@@ -27,7 +26,6 @@ import {IconsGroupModule} from './icons-group/icons-group.module';
         TuiAddonDocModule,
         IconsGroupModule,
         RouterModule.forChild(tuiGenerateRoutes(IconsComponent)),
-        TuiCheckboxLabeledModule,
         TuiActiveZoneDirective,
         IntersectionObserverModule,
     ],
