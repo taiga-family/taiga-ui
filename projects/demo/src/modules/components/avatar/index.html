@@ -5,60 +5,11 @@
 >
     <ng-template pageTab>
         <tui-doc-example
-            id="content"
-            heading="Content types"
-            [component]="1 | tuiComponent"
-            [content]="1 | tuiExample"
-        >
-            <tui-notification class="tui-space_bottom-4">
-                This example requires import of
-                <code>TuiFallbackSrcPipe</code>
-            </tui-notification>
-        </tui-doc-example>
-
-        <tui-doc-example
-            id="color"
-            heading="Colors"
-            [component]="2 | tuiComponent"
-            [content]="2 | tuiExample"
-        >
-            <tui-notification class="tui-space_bottom-4">
-                This example requires import of
-                <code>TuiFadeDirective</code>
-            </tui-notification>
-        </tui-doc-example>
-
-        <tui-doc-example
-            id="size"
-            heading="Sizes"
-            [component]="3 | tuiComponent"
-            [content]="3 | tuiExample"
-        />
-
-        <tui-doc-example
-            id="stacking"
-            heading="Stacking"
-            [component]="4 | tuiComponent"
-            [content]="4 | tuiExample: 'html,ts'"
-        >
-            <tui-notification class="tui-space_bottom-4">
-                This example requires import of
-                <code>TuiAvatarStackModule</code>
-            </tui-notification>
-        </tui-doc-example>
-
-        <tui-doc-example
-            id="options"
-            heading="Options with DI"
-            [component]="5 | tuiComponent"
-            [content]="5 | tuiExample: 'html,ts'"
-        />
-
-        <tui-doc-example
-            id="labeled"
-            heading="Labeled"
-            [component]="6 | tuiComponent"
-            [content]="6 | tuiExample"
+            *ngFor="let example of examples; let index = index"
+            [component]="index + 1 | tuiComponent"
+            [content]="index + 1 | tuiExample"
+            [heading]="example"
+            [id]="example | tuiKebab"
         />
     </ng-template>
 
@@ -102,25 +53,5 @@
         </tui-doc-documentation>
     </ng-template>
 
-    <ng-template pageTab>
-        <ol class="b-demo-steps">
-            <li>
-                <p>Import module:</p>
-
-                <tui-doc-code
-                    filename="my.module.ts"
-                    [code]="exampleModule"
-                />
-            </li>
-
-            <li>
-                <p>Add to the template:</p>
-
-                <tui-doc-code
-                    filename="my.component.html"
-                    [code]="exampleHtml"
-                />
-            </li>
-        </ol>
-    </ng-template>
+    <tui-setup *pageTab />
 </tui-doc-page>

@@ -1,0 +1,37 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+[tuiAvatarOutline] {
+    --t-outline: 0.1875rem;
+    --t-gap: 0.125rem;
+
+    &[data-size='xs'],
+    &[data-size='s'],
+    &[data-size='m'] {
+        --t-outline: 0.125rem;
+        --t-gap: 0.0625rem;
+    }
+
+    &._outline {
+        mask: radial-gradient(
+            closest-side,
+            #000,
+            #000 calc(100% - var(--t-gap) - var(--t-outline) - 0.5px),
+            transparent calc(100% - var(--t-gap) - var(--t-outline)),
+            transparent calc(100% - var(--t-outline) - 0.5px),
+            #000 calc(100% - var(--t-outline))
+        );
+
+        &:after {
+            content: '';
+            .fullsize();
+
+            background: var(--t-fill);
+            mask: radial-gradient(
+                closest-side,
+                transparent,
+                transparent calc(100% - var(--t-outline) - 0.5px),
+                #000 calc(100% - var(--t-outline))
+            );
+        }
+    }
+}

@@ -2,8 +2,6 @@ export * from '@taiga-ui/kit/components/accordion';
 export * from '@taiga-ui/kit/components/action';
 export * from '@taiga-ui/kit/components/arrow';
 export * from '@taiga-ui/kit/components/avatar';
-export * from '@taiga-ui/kit/components/avatar-labeled';
-export * from '@taiga-ui/kit/components/avatar-stack';
 export * from '@taiga-ui/kit/components/badge';
 export * from '@taiga-ui/kit/components/badge-notification';
 export * from '@taiga-ui/kit/components/badged-content';
