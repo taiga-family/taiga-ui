@@ -1,3 +1,4 @@
+import {isPlatformBrowser} from '@angular/common';
 import type {AfterViewInit, OnDestroy} from '@angular/core';
 import {
     ChangeDetectionStrategy,
@@ -7,6 +8,7 @@ import {
     HostListener,
     inject,
     Input,
+    PLATFORM_ID,
     ViewChild,
 } from '@angular/core';
 
@@ -25,6 +27,7 @@ export class TuiTileComponent implements OnDestroy, AfterViewInit {
 
     private readonly service = inject(TuiTileService);
     private readonly tiles = inject(TuiTilesComponent);
+    private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
 
     @Input()
     public width = 1;
@@ -46,7 +49,7 @@ export class TuiTileComponent implements OnDestroy, AfterViewInit {
     }
 
     public ngAfterViewInit(): void {
-        if (this.wrapper) {
+        if (this.wrapper && this.isBrowser) {
             this.service.init(this.wrapper.nativeElement);
         }
     }
