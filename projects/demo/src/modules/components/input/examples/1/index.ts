@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
@@ -10,7 +10,10 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiInputExample1 {
-    protected readonly testForm = new FormGroup({
-        testValue: new FormControl('mail@mail.ru'),
+    protected readonly form = new FormGroup({
+        name: new FormControl(''),
+        phone: new FormControl('', Validators.required),
     });
+
+    protected dialog = false;
 }

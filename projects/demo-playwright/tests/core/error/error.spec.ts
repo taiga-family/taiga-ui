@@ -6,7 +6,7 @@ test.describe('TuiError', () => {
         await tuiGoto(page, 'components/error#base');
         const example = new TuiDocumentationPagePO(page).getExample('#base');
 
-        const checkbox = example.locator('tui-toggle input[type="checkbox"]');
+        const checkbox = example.locator('input[tuiSwitch]');
         const error = example.locator('tui-error');
 
         await expect(error).not.toBeVisible();
