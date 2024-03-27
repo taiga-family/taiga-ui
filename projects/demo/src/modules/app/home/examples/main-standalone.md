@@ -5,8 +5,6 @@ import {TuiRootModule} from '@taiga-ui/core';
 bootstrapApplication(AppComponent, {
   providers: [
     provideAnimations(),
-    provideRouter(routes),
-    provideClientHydration(),
     importProvidersFrom(
       TuiRootModule,
       // ...
