@@ -22,8 +22,6 @@ import {
     AbstractTuiNullableControl,
     changeDateSeparator,
     DATE_FILLER_LENGTH,
-    TUI_DATE_FORMAT,
-    TUI_DATE_SEPARATOR,
     TUI_FALSE_HANDLER,
     TUI_IS_MOBILE,
     tuiAsControl,
@@ -33,6 +31,7 @@ import {
     TuiMonth,
     tuiNullableSame,
     tuiPure,
+    tuiWatch,
 } from '@taiga-ui/cdk';
 import type {
     TuiMarkerHandler,
@@ -41,6 +40,8 @@ import type {
     TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
 import {
+    TUI_DATE_FORMAT,
+    TUI_DEFAULT_DATE_FORMAT,
     TUI_DEFAULT_MARKER_HANDLER,
     TUI_TEXTFIELD_SIZE,
     TuiDialogService,
@@ -103,6 +104,7 @@ export class TuiInputDateComponent
     @Input()
     public defaultActiveYearMonth = TuiMonth.currentLocal();
 
+    public dateFormat = TUI_DEFAULT_DATE_FORMAT;
     protected open = false;
     protected readonly dateTexts$ = inject(TUI_DATE_TEXTS);
     protected override readonly valueTransformer = inject(TUI_DATE_VALUE_TRANSFORMER, {
@@ -110,14 +112,21 @@ export class TuiInputDateComponent
     });
 
     protected readonly isMobile = inject(TUI_IS_MOBILE);
-    protected readonly dateFormat = inject(TUI_DATE_FORMAT);
-    protected readonly dateSeparator = inject(TUI_DATE_SEPARATOR);
     protected readonly type!: TuiContext<TuiActiveZoneDirective>;
     protected readonly filler$: Observable<string> = this.dateTexts$.pipe(
         map(dateTexts =>
-            changeDateSeparator(dateTexts[this.dateFormat], this.dateSeparator),
+            changeDateSeparator(
+                dateTexts[this.dateFormat.mode],
+                this.dateFormat.separator,
+            ),
         ),
     );
+
+    protected readonly dateFormat$ = inject(TUI_DATE_FORMAT)
+        .pipe(tuiWatch(this.cdr), takeUntil(this.destroy$))
+        .subscribe(format => {
+            this.dateFormat = format;
+        });
 
     public get computedMin(): TuiDay {
         return this.min ?? this.options.min;
@@ -154,7 +163,9 @@ export class TuiInputDateComponent
             return String(activeItem);
         }
 
-        return value ? value.toString(this.dateFormat, this.dateSeparator) : nativeValue;
+        return value
+            ? value.toString(this.dateFormat.mode, this.dateFormat.separator)
+            : nativeValue;
     }
 
     public onValueChange(value: string): void {
@@ -169,7 +180,7 @@ export class TuiInputDateComponent
         this.value =
             value.length !== DATE_FILLER_LENGTH
                 ? null
-                : TuiDay.normalizeParse(value, this.dateFormat);
+                : TuiDay.normalizeParse(value, this.dateFormat.mode);
     }
 
     public override setDisabledState(): void {
@@ -219,8 +230,8 @@ export class TuiInputDateComponent
         return this.activeItem
             ? MASKITO_DEFAULT_OPTIONS
             : this.computeMaskOptions(
-                  this.dateFormat,
-                  this.dateSeparator,
+                  this.dateFormat.mode,
+                  this.dateFormat.separator,
                   this.computedMin,
                   this.computedMax,
               );

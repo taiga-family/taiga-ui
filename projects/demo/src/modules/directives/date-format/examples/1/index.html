@@ -1,0 +1,14 @@
+<!-- Works in several levels-->
+<div
+    class="wrapper tui-space_top-3"
+    [tuiDateFormat]="{mode: 'YMD'}"
+>
+    <!-- You can also put directive directly on input-date -->
+    <tui-input-date
+        [formControl]="control"
+        [tuiDateFormat]="{separator: '-'}"
+    >
+        Cool
+        <input tuiTextfield />
+    </tui-input-date>
+</div>

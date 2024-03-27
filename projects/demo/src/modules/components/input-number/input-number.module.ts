@@ -9,7 +9,7 @@ import {
     TuiHintModule,
     TuiLinkModule,
     TuiNotificationModule,
-    TuiNumberFormatModule,
+    TuiNumberFormatDirective,
     TuiSvgModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
@@ -42,7 +42,7 @@ import {ExampleTuiInputNumberComponent} from './input-number.component';
         InheritedDocumentationModule,
         TuiHintModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiInputNumberComponent)),
-        TuiNumberFormatModule,
+        TuiNumberFormatDirective,
     ],
     declarations: [
         ExampleTuiInputNumberComponent,

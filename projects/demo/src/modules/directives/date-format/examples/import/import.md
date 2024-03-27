@@ -1,5 +1,5 @@
 ```ts
-import {TuiNumberFormatModule} from '@taiga-ui/core';
+import {TuiDateFormatDirective} from '@taiga-ui/core';
 
 // ...
 
@@ -7,7 +7,7 @@ import {TuiNumberFormatModule} from '@taiga-ui/core';
   standalone: true,
   imports: [
     // ...
-    TuiNumberFormatModule,
+    TuiDateFormatDirective,
   ],
   // ...
 })

@@ -2,17 +2,15 @@ import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TUI_DATE_FORMAT, TUI_DATE_SEPARATOR, TuiDay, TuiDayRange} from '@taiga-ui/cdk';
+import {TuiDay, TuiDayRange} from '@taiga-ui/cdk';
+import {tuiDateFormatProvider} from '@taiga-ui/core';
 
 @Component({
     selector: 'tui-input-date-range-example-3',
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
-    providers: [
-        {provide: TUI_DATE_FORMAT, useValue: 'YMD'},
-        {provide: TUI_DATE_SEPARATOR, useValue: '/'},
-    ],
+    providers: [tuiDateFormatProvider({mode: 'YMD', separator: '/'})],
 })
 export class TuiInputDateRangeExample3 {
     protected readonly control = new FormControl(

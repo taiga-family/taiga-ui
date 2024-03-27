@@ -1,5 +1,6 @@
 export * from './cache-basting-payload';
 export * from './decimal-symbols';
+export * from './default-date-format';
 export * from './default-icons-path';
 export * from './default-marker-handler';
 export * from './default-number-format';

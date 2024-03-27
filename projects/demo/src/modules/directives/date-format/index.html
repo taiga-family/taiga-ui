@@ -1,0 +1,28 @@
+<tui-doc-page
+    header="DateFormat"
+    package="CORE"
+    type="directives"
+>
+    <ng-template pageTab>
+        <p>
+            Directive allows to customize
+            <code>TuiInputDate</code>
+            ,
+            <code>TuiInputDateRange</code>
+            ,
+            <code>TuiInputDateMulti</code>
+            and
+            <code>TuiInputDateTime</code>
+            date format.
+        </p>
+
+        <tui-doc-example
+            id="base"
+            heading="Basic"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample: 'html,ts'"
+        />
+    </ng-template>
+
+    <tui-setup *pageTab="'Setup'" />
+</tui-doc-page>

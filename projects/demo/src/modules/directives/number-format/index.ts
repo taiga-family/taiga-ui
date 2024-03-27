@@ -16,10 +16,7 @@ import {TuiNumberFormatExample1} from './examples/1';
         TuiAddonDocModule,
         TuiNumberFormatExample1,
     ],
-    templateUrl: './number-format.template.html',
+    templateUrl: './index.html',
     changeDetection,
 })
-export default class ExampleTuiNumberFormatComponent {
-    protected readonly import = import('./examples/import/import-module.md?raw');
-    protected readonly template = import('./examples/import/insert-template.md?raw');
-}
+export default class ExampleTuiNumberFormatComponent {}

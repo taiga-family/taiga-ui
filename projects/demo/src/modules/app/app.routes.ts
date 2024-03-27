@@ -618,15 +618,11 @@ export const ROUTES: Routes = [
             title: 'Input',
         },
     },
-    {
+    route({
         path: 'components/input-date',
-        loadChildren: async () =>
-            (await import('../components/input-date/input-date.module'))
-                .ExampleTuiInputDateModule,
-        data: {
-            title: 'InputDate',
-        },
-    },
+        title: 'InputDate',
+        loadComponent: async () => import('../components/input-date'),
+    }),
     {
         path: 'components/input-date-multi',
         loadChildren: async () =>
@@ -1781,8 +1777,12 @@ export const ROUTES: Routes = [
     route({
         path: 'directives/number-format',
         title: 'NumberFormat',
-        loadComponent: async () =>
-            import('../directives/number-format/number-format.component'),
+        loadComponent: async () => import('../directives/number-format'),
+    }),
+    route({
+        path: 'directives/date-format',
+        title: 'NumberFormat',
+        loadComponent: async () => import('../directives/date-format'),
     }),
 
     // UTILS

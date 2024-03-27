@@ -20,8 +20,6 @@ import type {
 import {
     AbstractTuiMultipleControl,
     changeDateSeparator,
-    TUI_DATE_FORMAT,
-    TUI_DATE_SEPARATOR,
     TUI_FALSE_HANDLER,
     TUI_IS_MOBILE,
     tuiAsControl,
@@ -30,6 +28,7 @@ import {
     TuiDay,
     tuiIsString,
     TuiMonth,
+    tuiWatch,
 } from '@taiga-ui/cdk';
 import type {
     TuiMarkerHandler,
@@ -38,6 +37,8 @@ import type {
     TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
 import {
+    TUI_DATE_FORMAT,
+    TUI_DEFAULT_DATE_FORMAT,
     TUI_DEFAULT_MARKER_HANDLER,
     TUI_TEXTFIELD_SIZE,
     TuiDialogService,
@@ -132,15 +133,23 @@ export class TuiInputDateMultiComponent
 
     protected open = false;
 
-    protected readonly dateFormat = inject(TUI_DATE_FORMAT);
-    protected readonly dateSeparator = inject(TUI_DATE_SEPARATOR);
+    protected dateFormat = TUI_DEFAULT_DATE_FORMAT;
     protected readonly isMobile = inject(TUI_IS_MOBILE);
     protected readonly doneWord$ = inject(TUI_DONE_WORD);
     protected readonly filler$: Observable<string> = this.dateTexts$.pipe(
         map(dateTexts =>
-            changeDateSeparator(dateTexts[this.dateFormat], this.dateSeparator),
+            changeDateSeparator(
+                dateTexts[this.dateFormat.mode],
+                this.dateFormat.separator,
+            ),
         ),
     );
+
+    protected readonly dateFormat$ = inject(TUI_DATE_FORMAT)
+        .pipe(tuiWatch(this.cdr), takeUntil(this.destroy$))
+        .subscribe(format => {
+            this.dateFormat = format;
+        });
 
     public get nativeFocusableElement(): HTMLInputElement | null {
         return this.textfield?.nativeFocusableElement || null;

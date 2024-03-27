@@ -1,5 +1,6 @@
 export * from './data-list-accessor';
 export * from './data-list-host';
+export * from './date-format-settings';
 export * from './icon-error';
 export * from './media';
 export * from './number-format-settings';

@@ -1,10 +1,4 @@
-import {tuiCreateToken} from '@taiga-ui/cdk/utils';
-
-/**
- * Date separator for Taiga UI components
- */
-export const TUI_DATE_SEPARATOR = tuiCreateToken('.');
-
+/* internal */
 export const changeDateSeparator = (
     dateString: string,
     newDateSeparator: string,

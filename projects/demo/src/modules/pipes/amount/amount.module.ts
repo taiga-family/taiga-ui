@@ -5,7 +5,7 @@ import {tuiGetDocModules} from '@taiga-ui/addon-doc';
 import {
     TuiLinkModule,
     TuiNotificationModule,
-    TuiNumberFormatModule,
+    TuiNumberFormatDirective,
 } from '@taiga-ui/core';
 
 import {ExampleTuiAmountComponent} from './amount.component';
@@ -18,7 +18,7 @@ import {TuiAmountExample3} from './examples/3';
         CommonModule,
         TuiAmountPipe,
         TuiNotificationModule,
-        TuiNumberFormatModule,
+        TuiNumberFormatDirective,
         tuiGetDocModules(ExampleTuiAmountComponent),
         TuiLinkModule,
     ],
