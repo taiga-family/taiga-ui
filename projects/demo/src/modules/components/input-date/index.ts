@@ -3,6 +3,7 @@ import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemoModule} from '@demo/utils';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiMobileCalendarDialogModule} from '@taiga-ui/addon-mobile';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk';
 import {TUI_FALSE_HANDLER, TUI_FIRST_DAY, TUI_LAST_DAY, TuiDay} from '@taiga-ui/cdk';
 import type {TuiMarkerHandler} from '@taiga-ui/core';
@@ -28,6 +29,7 @@ const ONE_DOT: [string] = ['var(--tui-success-fill)'];
         TuiDemoModule,
         TuiInputDateModule,
         TuiTextfieldControllerModule,
+        TuiMobileCalendarDialogModule,
         TuiDropdownModule,
         TuiHintModule,
         TuiLinkModule,
