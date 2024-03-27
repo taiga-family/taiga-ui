@@ -118,8 +118,12 @@ export class TuiExpandComponent {
     }
 
     @HostListener('transitionend.self', ['$event'])
-    onTransitionEnd({propertyName}: TransitionEvent): void {
-        if (propertyName === 'opacity' && this.state === State.Animated) {
+    onTransitionEnd({propertyName, pseudoElement}: TransitionEvent): void {
+        if (
+            propertyName === 'opacity' &&
+            !pseudoElement &&
+            this.state === State.Animated
+        ) {
             this.state = State.Idle;
         }
     }
