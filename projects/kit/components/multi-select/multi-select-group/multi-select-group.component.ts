@@ -18,7 +18,7 @@ import {
     tuiPure,
     tuiQueryListChanges,
 } from '@taiga-ui/cdk';
-import type {TuiDataListHost, TuiSizeL, TuiSizeXS} from '@taiga-ui/core';
+import type {TuiDataListHost} from '@taiga-ui/core';
 import {TUI_DATA_LIST_HOST, TuiOptionComponent} from '@taiga-ui/core';
 import {TUI_MULTI_SELECT_TEXTS} from '@taiga-ui/kit/tokens';
 import type {Observable} from 'rxjs';
@@ -76,10 +76,6 @@ export class TuiMultiSelectGroupComponent<T> {
                 return result;
             }),
         );
-    }
-
-    protected get size(): TuiSizeL | TuiSizeXS {
-        return this.options.first?.size || 'm';
     }
 
     protected onClick(checked: boolean | null): void {

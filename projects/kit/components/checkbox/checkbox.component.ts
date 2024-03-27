@@ -1,69 +1,88 @@
-import type {ElementRef} from '@angular/core';
+import type {DoCheck, OnInit} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
-    HostBinding,
+    ElementRef,
     inject,
     Input,
-    ViewChild,
 } from '@angular/core';
-import type {TuiFocusableElementAccessor} from '@taiga-ui/cdk';
+import {NgControl, NgModel} from '@angular/forms';
 import {
-    AbstractTuiNullableControl,
-    tuiAsControl,
-    tuiAsFocusableItemAccessor,
-    tuiIsNativeFocused,
+    tuiControlValue,
+    TuiDestroyService,
+    tuiIsString,
+    TuiNativeValidatorDirective,
 } from '@taiga-ui/cdk';
-import type {TuiSizeL} from '@taiga-ui/core';
-import {TUI_CHECKBOX_OPTIONS} from '@taiga-ui/core';
+import type {TuiSizeS} from '@taiga-ui/core';
+import {TUI_ICON_RESOLVER, TuiAppearanceDirective} from '@taiga-ui/core';
+import {takeUntil} from 'rxjs';
+
+import {TUI_CHECKBOX_OPTIONS} from './checkbox.options';
 
 @Component({
-    selector: 'tui-checkbox',
-    templateUrl: './checkbox.template.html',
+    standalone: true,
+    selector: 'input[type="checkbox"][tuiCheckbox]',
+    template: '',
     styleUrls: ['./checkbox.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        tuiAsFocusableItemAccessor(TuiCheckboxComponent),
-        tuiAsControl(TuiCheckboxComponent),
+    providers: [TuiDestroyService],
+    hostDirectives: [
+        {
+            directive: TuiAppearanceDirective,
+            inputs: [
+                'tuiAppearance: appearance',
+                'tuiAppearanceState',
+                'tuiAppearanceFocus',
+            ],
+        },
+        TuiNativeValidatorDirective,
     ],
+    host: {
+        '[disabled]': '!control || control.disabled',
+        '[attr.data-size]': 'size',
+        '[class._readonly]': '!control',
+        '[style.--t-checked]': 'getIcon("checked")',
+        '[style.--t-indeterminate]': 'getIcon("indeterminate")',
+    },
 })
-export class TuiCheckboxComponent
-    extends AbstractTuiNullableControl<boolean>
-    implements TuiFocusableElementAccessor
-{
-    @ViewChild('focusableElement')
-    private readonly focusableElement?: ElementRef<HTMLInputElement>;
-
+export class TuiCheckboxComponent implements OnInit, DoCheck {
+    private readonly appearance = inject(TuiAppearanceDirective);
     private readonly options = inject(TUI_CHECKBOX_OPTIONS);
+    private readonly resolver = inject(TUI_ICON_RESOLVER);
+    private readonly destroy$ = inject(TuiDestroyService, {self: true});
+    private readonly el: HTMLInputElement = inject(ElementRef).nativeElement;
 
     @Input()
-    @HostBinding('attr.data-size')
-    public size: TuiSizeL = this.options.size;
+    public size: TuiSizeS = this.options.size;
 
-    public get nativeFocusableElement(): HTMLInputElement | null {
-        return !this.focusableElement || this.computedDisabled
-            ? null
-            : this.focusableElement.nativeElement;
+    protected readonly control: NgControl | null = inject(NgControl, {
+        optional: true,
+        self: true,
+    });
+
+    public ngOnInit(): void {
+        if (!this.control?.valueChanges) {
+            return;
+        }
+
+        tuiControlValue(this.control)
+            .pipe(takeUntil(this.destroy$))
+            .subscribe(value => {
+                // https://github.com/angular/angular/issues/14988
+                const fix = this.control instanceof NgModel ? this.control.model : value;
+
+                this.el.indeterminate = fix === null;
+            });
     }
 
-    public get focused(): boolean {
-        return tuiIsNativeFocused(this.nativeFocusableElement);
+    public ngDoCheck(): void {
+        this.appearance.tuiAppearance = this.options.appearance(this.el);
     }
 
-    public override get computedFocusable(): boolean {
-        return this.interactive && this.focusable;
-    }
+    protected getIcon(state: 'checked' | 'indeterminate'): string {
+        const option = this.options.icons[state];
+        const icon = tuiIsString(option) ? option : option(this.size);
 
-    /** @deprecated use 'value' setter */
-    protected onChecked(checked: boolean): void {
-        this.value = checked;
-    }
-
-    protected onFocused(focused: boolean): void {
-        this.updateFocused(focused);
-    }
-
-    protected onFocusVisible(focusVisible: boolean): void {
-        this.updateFocusVisible(focusVisible);
+        return `url(${this.resolver(icon)})`;
     }
 }

@@ -1,18 +1,56 @@
-<form [formGroup]="testForm">
-    <tui-checkbox
-        formControlName="testValue1"
-        class="tui-space_bottom-3"
+<div
+    *ngFor="let platform of platforms; let first = first"
+    class="wrapper"
+    [class.wrapper_web]="platform === 'web'"
+    [tuiPlatform]="platform"
+>
+    <input
+        tuiCheckbox
+        type="checkbox"
+        [ngModel]="true"
+        [size]="getSize(first)"
     />
 
-    <tui-checkbox
-        formControlName="testValue2"
-        class="tui-space_bottom-3"
+    <input
+        tuiCheckbox
+        type="checkbox"
+        [indeterminate]="true"
+        [size]="getSize(first)"
     />
 
-    <tui-checkbox
-        formControlName="testValue3"
-        class="tui-space_bottom-3"
+    <input
+        tuiCheckbox
+        type="checkbox"
+        [disabled]="true"
+        [ngModel]="true"
+        [size]="getSize(first)"
     />
 
-    <tui-checkbox formControlName="testValue4" />
-</form>
+    <input
+        tuiCheckbox
+        type="checkbox"
+        [size]="getSize(first)"
+    />
+
+    <input
+        tuiCheckbox
+        type="checkbox"
+        [disabled]="true"
+        [ngModel]="false"
+        [size]="getSize(first)"
+    />
+
+    <input
+        tuiCheckbox
+        type="checkbox"
+        [formControl]="invalidTrue"
+        [size]="getSize(first)"
+    />
+
+    <input
+        tuiCheckbox
+        type="checkbox"
+        [formControl]="invalidFalse"
+        [size]="getSize(first)"
+    />
+</div>

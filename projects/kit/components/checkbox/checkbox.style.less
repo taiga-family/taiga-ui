@@ -1,34 +1,49 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
-@sizeM: 1rem;
-@sizeL: 1.5rem;
-
 :host {
-    .text-basic();
+    --t-size: 1.5rem;
+    --t-radius: var(--tui-radius-s);
 
-    position: relative;
-    display: block;
+    width: var(--t-size);
+    height: var(--t-size);
+    border-radius: var(--t-radius);
+    cursor: pointer;
+    margin: 0;
     flex-shrink: 0;
 
-    &[data-size='m'] {
-        width: @sizeM;
-        height: @sizeM;
+    &:before {
+        .fullsize();
+
+        content: '';
+        background: currentColor;
+        mask: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"></svg>') center/100%;
+        transform: scale(0);
+        transition:
+            transform var(--tui-duration) ease-in-out,
+            mask 0s var(--tui-duration) ease-in-out;
     }
 
-    &[data-size='l'] {
-        width: @sizeL;
-        height: @sizeL;
+    &:disabled._readonly {
+        opacity: 1;
     }
 
-    &._readonly tui-primitive-checkbox {
-        pointer-events: none;
+    &:checked,
+    &:indeterminate {
+        &:before {
+            mask-image: var(--t-checked);
+            transform: scale(1);
+            transition:
+                transform var(--tui-duration) ease-in-out,
+                mask 0s ease-in-out;
+        }
     }
-}
 
-.t-native {
-    .clearinput();
-    .fullsize();
+    &:indeterminate:before {
+        mask-image: var(--t-indeterminate);
+    }
 
-    opacity: 0;
-    cursor: pointer;
+    &[data-size='s'] {
+        --t-size: 1rem;
+        --t-radius: var(--tui-radius-xs);
+    }
 }

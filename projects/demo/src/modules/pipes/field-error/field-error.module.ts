@@ -13,8 +13,8 @@ import {
     TuiLinkModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiCheckboxModule} from '@taiga-ui/experimental';
 import {
+    TuiCheckboxComponent,
     TuiFieldErrorPipeModule,
     TuiInputModule,
     TuiInputNumberModule,
@@ -50,7 +50,7 @@ import {ExampleTuiFieldErrorPipeComponent} from './field-error.component';
         TuiInputNumberModule,
         TuiCurrencyPipeModule,
         PolymorpheusModule,
-        TuiCheckboxModule,
+        TuiCheckboxComponent,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiFieldErrorPipeComponent)),
     ],
     declarations: [

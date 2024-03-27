@@ -1,6 +1,7 @@
 ```ts
 import {FormsModule} from '@angular/forms';
-import {TuiCheckboxModule, TuiLabelDirective} from '@taiga-ui/experimental';
+import {TuiLabelDirective} from '@taiga-ui/experimental';
+import {TuiCheckboxComponent} from '@taiga-ui/kit';
 
 // ...
 
@@ -8,7 +9,7 @@ import {TuiCheckboxModule, TuiLabelDirective} from '@taiga-ui/experimental';
   imports: [
     // ...
     FormsModule,
-    TuiCheckboxModule,
+    TuiCheckboxComponent,
     TuiLabelDirective,
   ],
   // ...

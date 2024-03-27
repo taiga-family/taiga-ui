@@ -18,7 +18,7 @@ import {
     TUI_DATA_LIST_HOST,
     TUI_OPTION_CONTENT,
 } from '@taiga-ui/core/tokens';
-import type {TuiOptionRole, TuiSizeL, TuiSizeXS} from '@taiga-ui/core/types';
+import type {TuiOptionRole} from '@taiga-ui/core/types';
 import {shouldCall} from '@tinkoff/ng-event-plugins';
 
 import {TuiDataListComponent} from '../data-list.component';
@@ -49,11 +49,6 @@ export class TuiOptionComponent<T = unknown> implements OnDestroy {
     private readonly host = inject<TuiDataListHost<T>>(TUI_DATA_LIST_HOST, {
         optional: true,
     });
-
-    /** @deprecated use size on {@link TuiDataListComponent} instead */
-    @Input()
-    @HostBinding('attr.data-size')
-    public size: TuiSizeL | TuiSizeXS | null = null;
 
     @Input()
     @HostBinding('attr.role')

@@ -11,7 +11,6 @@ export * from '@taiga-ui/kit/components/calendar-month';
 export * from '@taiga-ui/kit/components/calendar-range';
 export * from '@taiga-ui/kit/components/carousel';
 export * from '@taiga-ui/kit/components/checkbox';
-export * from '@taiga-ui/kit/components/checkbox-labeled';
 export * from '@taiga-ui/kit/components/combo-box';
 export * from '@taiga-ui/kit/components/confirm';
 export * from '@taiga-ui/kit/components/data-list-wrapper';
