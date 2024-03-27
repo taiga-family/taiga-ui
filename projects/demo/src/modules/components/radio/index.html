@@ -1,0 +1,34 @@
+<tui-doc-page
+    header="Radio"
+    package="KIT"
+    type="components"
+>
+    <ng-template pageTab>
+        <p>A radio component that is able to imitate native control on mobile platforms.</p>
+
+        <tui-notification class="tui-space_bottom-4">
+            Use
+            <code>--tui-accent</code>
+            CSS variable to customize color of native control emulation
+        </tui-notification>
+
+        <tui-notification status="warning">
+            Due to internal Angular implementation of radio buttons, you are required to add
+            <code>name</code>
+            attribute to your
+            <code>input</code>
+            tag, unless you are using
+            <code>formControlName</code>
+        </tui-notification>
+
+        <tui-doc-example
+            *ngFor="let example of examples; let index = index"
+            [component]="index + 1 | tuiComponent"
+            [content]="index + 1 | tuiExample: 'html,ts'"
+            [heading]="example"
+            [id]="example | tuiKebab"
+        />
+    </ng-template>
+
+    <tui-setup *pageTab="'Setup'" />
+</tui-doc-page>

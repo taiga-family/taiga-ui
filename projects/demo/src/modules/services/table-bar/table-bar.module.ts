@@ -4,7 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiButtonModule, TuiLinkModule, TuiModeModule} from '@taiga-ui/core';
-import {TuiInputModule, TuiRadioListModule} from '@taiga-ui/kit';
+import {TuiInputModule, TuiRadioListComponent} from '@taiga-ui/kit';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiTableBarExampleComponent1} from './examples/1';
@@ -15,7 +15,7 @@ import {ExampleTuiTableBarComponent} from './table-bar.component';
         CommonModule,
         TuiButtonModule,
         PolymorpheusModule,
-        TuiRadioListModule,
+        TuiRadioListComponent,
         TuiInputModule,
         TuiLinkModule,
         FormsModule,

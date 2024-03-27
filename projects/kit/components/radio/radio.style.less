@@ -1,66 +1,37 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
-@sizeM: 1rem;
-@sizeL: 1.5rem;
-@dotSizeM: 0.5rem;
-@dotSizeL: 0.625rem;
-
 :host {
-    .text-basic();
+    --t-size: 1.5rem;
 
-    position: relative;
-    display: block;
+    .transition(~'background, box-shadow');
+
+    width: var(--t-size);
+    height: var(--t-size);
+    cursor: pointer;
+    margin: 0;
     flex-shrink: 0;
     border-radius: 100%;
+    color: var(--tui-primary-text);
 
-    &[data-size='m'] {
-        width: @sizeM;
-        height: @sizeM;
+    &:disabled._readonly {
+        opacity: 1;
     }
 
-    &[data-size='l'] {
-        width: @sizeL;
-        height: @sizeL;
+    &:before {
+        .fullsize();
+        .transition(transform);
+
+        content: '';
+        border-radius: 100%;
+        background: currentColor;
+        transform: scale(0);
     }
 
-    &._readonly {
-        pointer-events: none;
-    }
-}
-
-.t-mark {
-    .transition(transform);
-
-    position: absolute;
-    background-color: currentColor;
-    border-radius: 100%;
-    transform: scale(0);
-
-    &_visible {
-        transform: scale(1);
+    &:checked:before {
+        transform: scale(0.5);
     }
 
-    :host[data-size='m'] & {
-        margin: 0.25rem;
-        width: @dotSizeM;
-        height: @dotSizeM;
-    }
-
-    :host[data-size='l'] & {
-        margin: 0.4375rem;
-        width: @dotSizeL;
-        height: @dotSizeL;
-    }
-}
-
-.t-native {
-    .clearinput();
-    .fullsize();
-
-    opacity: 0;
-    cursor: pointer;
-
-    :host._disabled & {
-        cursor: default;
+    &[data-size='s'] {
+        --t-size: 1rem;
     }
 }

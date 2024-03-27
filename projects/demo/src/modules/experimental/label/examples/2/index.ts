@@ -2,7 +2,8 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiLabelDirective, TuiRadioComponent} from '@taiga-ui/experimental';
+import {TuiLabelDirective} from '@taiga-ui/experimental';
+import {TuiRadioComponent} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
