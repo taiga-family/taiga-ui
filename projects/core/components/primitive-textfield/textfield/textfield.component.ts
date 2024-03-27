@@ -51,7 +51,9 @@ export class TuiTextfieldComponent {
         return this.el.nativeElement.id || this.idService.generate();
     }
 
-    get inputMode(): string {
-        return this.el.nativeElement.inputMode || this.host.inputMode;
+    get inputMode(): string | null {
+        const mode = this.el.nativeElement.inputMode || this.host.inputMode;
+
+        return mode === 'text' ? null : mode;
     }
 }
