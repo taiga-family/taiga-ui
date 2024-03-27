@@ -19,7 +19,7 @@ import {
 } from '@taiga-ui/core';
 import {
     TuiFieldErrorPipeModule,
-    TuiRadioListModule,
+    TuiRadioListComponent,
     TuiTextareaModule,
 } from '@taiga-ui/kit';
 
@@ -41,7 +41,7 @@ import {ExampleTuiTextareaComponent} from './textarea.component';
         FormsModule,
         TuiSvgModule,
         CommonModule,
-        TuiRadioListModule,
+        TuiRadioListComponent,
         TuiButtonModule,
         TuiLinkModule,
         TuiLabelModule,

@@ -93,8 +93,10 @@
             class="tui-space_vertical-3"
         >
             <tui-radio-list
-                orientation="horizontal"
+                name="content-type"
+                size="s"
                 [items]="contentTypeVariants"
+                [style.flex-direction]="'row'"
                 [(ngModel)]="contentType"
             />
         </label>

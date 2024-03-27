@@ -12,7 +12,7 @@ import {
     type TuiRawLoaderContent,
 } from '@taiga-ui/addon-doc';
 import {TuiLabelModule, type TuiSizeS, type TuiSizeXL} from '@taiga-ui/core';
-import {TuiBadgeDirective, TuiFadeDirective, TuiRadioListModule} from '@taiga-ui/kit';
+import {TuiBadgeDirective, TuiFadeDirective, TuiRadioListComponent} from '@taiga-ui/kit';
 
 import {TuiBadgeExample1} from './examples/1';
 import {TuiBadgeExample2} from './examples/2';
@@ -30,7 +30,7 @@ import {TuiBadgeExample6} from './examples/6';
         NgIf,
         TuiFadeDirective,
         TuiLabelModule,
-        TuiRadioListModule,
+        TuiRadioListComponent,
         FormsModule,
 
         TuiBadgeExample1,

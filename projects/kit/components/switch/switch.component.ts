@@ -50,7 +50,7 @@ export class TuiSwitchComponent implements DoCheck {
     @Input()
     public showIcons = this.options.showIcons;
 
-    protected readonly control = inject(NgControl, {optional: true});
+    protected readonly control = inject(NgControl, {optional: true, self: true});
 
     public ngDoCheck(): void {
         this.appearance.tuiAppearance = this.options.appearance(this.el);

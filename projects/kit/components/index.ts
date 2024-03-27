@@ -46,8 +46,6 @@ export * from '@taiga-ui/kit/components/pdf-viewer';
 export * from '@taiga-ui/kit/components/progress';
 export * from '@taiga-ui/kit/components/push';
 export * from '@taiga-ui/kit/components/radio';
-export * from '@taiga-ui/kit/components/radio-group';
-export * from '@taiga-ui/kit/components/radio-labeled';
 export * from '@taiga-ui/kit/components/radio-list';
 export * from '@taiga-ui/kit/components/range';
 export * from '@taiga-ui/kit/components/rating';

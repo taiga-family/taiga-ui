@@ -31,7 +31,7 @@ import {
     TuiInputDateModule,
     TuiInputModule,
     TuiInputNumberModule,
-    TuiRadioListModule,
+    TuiRadioListComponent,
     TuiSelectModule,
     TuiUnmaskHandlerModule,
 } from '@taiga-ui/kit';
@@ -70,7 +70,7 @@ import {ExampleTuiInputComponent} from './input.component';
         TuiNotificationModule,
         TuiRepeatTimesModule,
         TuiSvgModule,
-        TuiRadioListModule,
+        TuiRadioListComponent,
         TuiButtonModule,
         TuiInputCardModule,
         TuiAvatarComponent,

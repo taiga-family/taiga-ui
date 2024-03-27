@@ -27,7 +27,7 @@ import {
     TuiDataListWrapperModule,
     TuiMarkerIconModule,
     TuiMultiSelectModule,
-    TuiRadioListModule,
+    TuiRadioListComponent,
     TuiSelectModule,
     TuiTextareaModule,
 } from '@taiga-ui/kit';
@@ -60,7 +60,7 @@ import {ExampleTuiSelectComponent} from './select.component';
         TuiTextareaModule,
         TuiSelectModule,
         TuiThumbnailCardModule,
-        TuiRadioListModule,
+        TuiRadioListComponent,
         TuiButtonModule,
         TuiLinkModule,
         TuiAvatarComponent,

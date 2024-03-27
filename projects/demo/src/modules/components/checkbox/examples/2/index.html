@@ -1,0 +1,26 @@
+<p>
+    <input
+        checked
+        tuiCheckbox
+        type="checkbox"
+    />
+</p>
+<p>
+    <input
+        tuiCheckbox
+        type="checkbox"
+    />
+</p>
+<p>
+    <input
+        tuiCheckbox
+        type="checkbox"
+        [checked]="checked"
+    />
+</p>
+<button
+    tuiButton
+    (click)="checked = !checked"
+>
+    Toggle
+</button>

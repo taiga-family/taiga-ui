@@ -1,4 +1,5 @@
 import {Directive, EventEmitter, HostBinding, Input, Output} from '@angular/core';
+import {tuiPure} from '@taiga-ui/cdk/decorators';
 
 const TUI = 'tui_interactive_';
 
@@ -73,6 +74,7 @@ export abstract class AbstractTuiInteractive {
         return this.nativeId || this.autoIdString;
     }
 
+    @tuiPure
     protected updateFocused(focused: boolean): void {
         this.focusedChange.emit(focused);
     }
