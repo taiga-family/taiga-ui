@@ -17,6 +17,7 @@ import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {
     EMPTY_QUERY,
     TuiDestroyService,
+    tuiGetOriginalArrayFromQueryList,
     tuiIsElement,
     tuiMoveFocus,
     tuiPure,
@@ -70,9 +71,9 @@ export class TuiStepperComponent {
     }
 
     public indexOf(step: HTMLElement): number {
-        return this.steps
-            .toArray()
-            .findIndex(({nativeElement}) => nativeElement === step);
+        return tuiGetOriginalArrayFromQueryList(this.steps).findIndex(
+            ({nativeElement}) => nativeElement === step,
+        );
     }
 
     public isActive(index: number): boolean {
