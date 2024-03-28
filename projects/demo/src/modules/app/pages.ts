@@ -1399,7 +1399,8 @@ export const pages: TuiDocPages = [
             {
                 section: 'Tools',
                 title: 'Amount',
-                keywords: 'amount, money, деньги, сумма, количество, cash, копейки, рубли, доллары, евро',
+                keywords:
+                    'amount, money, деньги, сумма, количество, cash, копейки, рубли, доллары, евро',
                 route: '/pipes/amount',
             },
         ],
