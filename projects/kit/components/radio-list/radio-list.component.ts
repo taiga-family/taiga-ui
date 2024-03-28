@@ -80,10 +80,13 @@ export class TuiRadioListComponent<T> extends AbstractTuiNullableControl<T> {
         return this.computedInvalid ? this.error : Validators.nullValidator;
     }
 
-    @HostListener('focusout', ['$event.currentTarget', '$event.relatedTarget'])
-    protected onFocusOut(element: HTMLElement, target: HTMLElement | null): void {
+    @HostListener('focusout')
+    protected onFocusOut(): void {
         this.controls.forEach(control => control.control?.markAsTouched());
-        this.updateFocused(element.contains(target));
+
+        if (!this.touched) {
+            this.updateFocused(false);
+        }
     }
 
     protected itemIsActive(item: T): boolean {
