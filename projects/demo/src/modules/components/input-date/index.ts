@@ -1,5 +1,6 @@
 import {Component, forwardRef} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
+import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemoModule} from '@demo/utils';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
@@ -35,6 +36,7 @@ const ONE_DOT: [string] = ['var(--tui-success-fill)'];
         TuiLinkModule,
         ReactiveFormsModule,
         InheritedDocumentationModule,
+        RouterLink,
     ],
     templateUrl: './index.html',
     changeDetection,

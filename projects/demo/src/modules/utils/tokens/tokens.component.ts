@@ -46,4 +46,8 @@ export class ExampleTokensComponent {
     protected readonly example8: TuiDocExample = {
         TypeScript: import('./examples/8/index.ts?raw'),
     };
+
+    protected readonly example9: TuiDocExample = {
+        TypeScript: import('./examples/9/index.ts?raw'),
+    };
 }

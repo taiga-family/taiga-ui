@@ -7,6 +7,7 @@ import {
     Input,
     ViewChild,
 } from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {MaskitoOptions} from '@maskito/core';
 import {maskitoDateTimeOptionsGenerator} from '@maskito/kit';
 import type {
@@ -54,7 +55,7 @@ import {
     tuiDateStreamWithTransformer,
 } from '@taiga-ui/kit/tokens';
 import type {Observable} from 'rxjs';
-import {BehaviorSubject, combineLatest, map, takeUntil, timer} from 'rxjs';
+import {BehaviorSubject, combineLatest, map, timer} from 'rxjs';
 
 @Component({
     selector: 'tui-input-date-time',
@@ -124,7 +125,7 @@ export class TuiInputDateTimeComponent
     protected dateFormat = TUI_DEFAULT_DATE_FORMAT;
     protected readonly isMobile = inject(TUI_IS_MOBILE);
     protected readonly dateFormat$ = inject(TUI_DATE_FORMAT)
-        .pipe(tuiWatch(this.cdr), takeUntil(this.destroy$))
+        .pipe(tuiWatch(this.cdr), takeUntilDestroyed())
         .subscribe(format => {
             this.dateFormat = format;
         });
@@ -300,7 +301,7 @@ export class TuiInputDateTimeComponent
         }
 
         timer(0)
-            .pipe(takeUntil(this.destroy$))
+            .pipe(takeUntilDestroyed(this.destroyRef))
             .subscribe(() => {
                 this.nativeValue = this.trimTrailingSeparator(this.nativeValue);
             });

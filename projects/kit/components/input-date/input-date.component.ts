@@ -8,6 +8,7 @@ import {
     Input,
     ViewChild,
 } from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {MaskitoOptions} from '@maskito/core';
 import {MASKITO_DEFAULT_OPTIONS} from '@maskito/core';
 import {maskitoDateOptionsGenerator} from '@maskito/kit';
@@ -59,7 +60,7 @@ import {
 } from '@taiga-ui/kit/tokens';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import type {Observable} from 'rxjs';
-import {map, takeUntil} from 'rxjs';
+import {map} from 'rxjs';
 
 @Component({
     selector: 'tui-input-date',
@@ -123,7 +124,7 @@ export class TuiInputDateComponent
     );
 
     protected readonly dateFormat$ = inject(TUI_DATE_FORMAT)
-        .pipe(tuiWatch(this.cdr), takeUntil(this.destroy$))
+        .pipe(tuiWatch(this.cdr), takeUntilDestroyed())
         .subscribe(format => {
             this.dateFormat = format;
         });
@@ -279,7 +280,7 @@ export class TuiInputDateComponent
                     disabledItemHandler: this.disabledItemHandler,
                 },
             })
-            .pipe(takeUntil(this.destroy$))
+            .pipe(takeUntilDestroyed(this.destroyRef))
             .subscribe(value => {
                 this.value = value;
             });
