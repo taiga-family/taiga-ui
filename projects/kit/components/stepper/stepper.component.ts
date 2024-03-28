@@ -1,5 +1,5 @@
 import type {QueryList} from '@angular/core';
-import {
+import {DestroyRef,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
@@ -16,7 +16,7 @@ import {
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {
     EMPTY_QUERY,
-    TuiDestroyService,
+    
     tuiGetOriginalArrayFromQueryList,
     tuiIsElement,
     tuiMoveFocus,
@@ -36,7 +36,7 @@ import {TuiStepComponent} from './step/step.component';
     templateUrl: './stepper.template.html',
     styleUrls: ['./stepper.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [ResizeObserverService, TuiDestroyService],
+    providers: [ResizeObserverService],
 })
 export class TuiStepperComponent {
     @ContentChildren(forwardRef(() => TuiStepComponent), {read: ElementRef})
@@ -47,7 +47,7 @@ export class TuiStepperComponent {
     private readonly scrollService = inject(TuiScrollService);
     private readonly resize$ = inject(ResizeObserverService);
     private readonly speed = inject(TUI_ANIMATIONS_SPEED);
-    private readonly destroy$ = inject(TuiDestroyService, {self: true});
+    private readonly destroyRef = inject(DestroyRef);
 
     @Input()
     @HostBinding('attr.data-orientation')
@@ -60,7 +60,7 @@ export class TuiStepperComponent {
 
     constructor() {
         this.resize$
-            .pipe(takeUntil(this.destroy$))
+            .pipe(takeUntilDestroyed())
             .subscribe(() => this.scrollIntoView(this.activeItemIndex));
     }
 
@@ -155,7 +155,7 @@ export class TuiStepperComponent {
                 Math.max(0, left),
                 tuiGetDuration(this.speed) / 3,
             )
-            .pipe(takeUntil(this.destroy$))
+            .pipe(takeUntilDestroyes(this.destroyRef))
             .subscribe();
     }
 }
