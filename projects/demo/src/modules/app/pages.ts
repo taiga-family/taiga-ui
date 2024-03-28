@@ -1396,7 +1396,6 @@ export const pages: TuiDocPages = [
                     'верстка, markup, скелетон, loader, загрузка, skeleton, shimmer',
                 route: 'directives/skeleton',
             },
-            
         ],
     },
     {
