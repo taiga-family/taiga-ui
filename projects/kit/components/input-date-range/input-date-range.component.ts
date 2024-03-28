@@ -8,6 +8,7 @@ import {
     Input,
     ViewChild,
 } from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {MaskitoOptions} from '@maskito/core';
 import {MASKITO_DEFAULT_OPTIONS} from '@maskito/core';
 import {maskitoDateRangeOptionsGenerator} from '@maskito/kit';
@@ -25,8 +26,6 @@ import {
     DATE_FILLER_LENGTH,
     DATE_RANGE_FILLER_LENGTH,
     RANGE_SEPARATOR_CHAR,
-    TUI_DATE_FORMAT,
-    TUI_DATE_SEPARATOR,
     TUI_FALSE_HANDLER,
     TUI_FIRST_DAY,
     TUI_IS_MOBILE,
@@ -38,6 +37,7 @@ import {
     TuiMonth,
     tuiNullableSame,
     tuiPure,
+    tuiWatch,
 } from '@taiga-ui/cdk';
 import type {
     TuiMarkerHandler,
@@ -46,6 +46,8 @@ import type {
     TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
 import {
+    TUI_DATE_FORMAT,
+    TUI_DEFAULT_DATE_FORMAT,
     TUI_DEFAULT_MARKER_HANDLER,
     TUI_TEXTFIELD_SIZE,
     TuiDialogService,
@@ -66,7 +68,7 @@ import {
 } from '@taiga-ui/kit/tokens';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
-import {map, takeUntil} from 'rxjs';
+import {map} from 'rxjs';
 
 @Component({
     selector: 'tui-input-date-range',
@@ -132,12 +134,19 @@ export class TuiInputDateRangeComponent
 
     protected readonly dateFiller$ = this.dateTexts$.pipe(
         map(dateTexts =>
-            changeDateSeparator(dateTexts[this.dateFormat], this.dateSeparator),
+            changeDateSeparator(
+                dateTexts[this.dateFormat.mode],
+                this.dateFormat.separator,
+            ),
         ),
     );
 
-    protected readonly dateFormat = inject(TUI_DATE_FORMAT);
-    protected readonly dateSeparator = inject(TUI_DATE_SEPARATOR);
+    protected dateFormat = TUI_DEFAULT_DATE_FORMAT;
+    protected readonly dateFormat$ = inject(TUI_DATE_FORMAT)
+        .pipe(tuiWatch(this.cdr), takeUntilDestroyed())
+        .subscribe(format => {
+            this.dateFormat = format;
+        });
 
     public get nativeFocusableElement(): HTMLInputElement | null {
         return this.textfield?.nativeFocusableElement ?? null;
@@ -161,7 +170,7 @@ export class TuiInputDateRangeComponent
         }
 
         return value
-            ? value.getFormattedDayRange(this.dateFormat, this.dateSeparator)
+            ? value.getFormattedDayRange(this.dateFormat.mode, this.dateFormat.separator)
             : nativeValue;
     }
 
@@ -183,7 +192,7 @@ export class TuiInputDateRangeComponent
 
         this.value =
             value.length === DATE_RANGE_FILLER_LENGTH
-                ? TuiDayRange.normalizeParse(value, this.dateFormat)
+                ? TuiDayRange.normalizeParse(value, this.dateFormat.mode)
                 : null;
     }
 
@@ -232,8 +241,8 @@ export class TuiInputDateRangeComponent
         return this.activePeriod
             ? MASKITO_DEFAULT_OPTIONS
             : this.calculateMask(
-                  this.dateFormat,
-                  this.dateSeparator,
+                  this.dateFormat.mode,
+                  this.dateFormat.separator,
                   this.computedMin,
                   this.computedMax,
                   this.minLength,
@@ -317,7 +326,7 @@ export class TuiInputDateRangeComponent
                     },
                 },
             )
-            .pipe(takeUntil(this.destroy$))
+            .pipe(takeUntilDestroyed(this.destroyRef))
             .subscribe(value => {
                 this.value = value;
             });
@@ -356,7 +365,10 @@ export class TuiInputDateRangeComponent
                 this.nativeValue.length ===
                     DATE_FILLER_LENGTH + RANGE_SEPARATOR_CHAR.length)
         ) {
-            this.value = TuiDayRange.normalizeParse(this.nativeValue, this.dateFormat);
+            this.value = TuiDayRange.normalizeParse(
+                this.nativeValue,
+                this.dateFormat.mode,
+            );
         }
     }
 

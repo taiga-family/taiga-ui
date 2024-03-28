@@ -7,7 +7,7 @@ import {
     TuiButtonModule,
     TuiLinkModule,
     TuiNotificationModule,
-    TuiNumberFormatModule,
+    TuiNumberFormatDirective,
     TuiSvgModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
@@ -43,7 +43,7 @@ import {ExampleTuiInputRangeComponent} from './input-range.component';
         TuiTextfieldControllerModule,
         TuiSvgModule,
         TuiNotificationModule,
-        TuiNumberFormatModule,
+        TuiNumberFormatDirective,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiInputRangeComponent)),
         NumberFormatDocumentationModule,
     ],

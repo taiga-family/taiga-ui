@@ -1,5 +1,6 @@
 import {Directive} from '@angular/core';
 import type {TuiDay} from '@taiga-ui/cdk';
+import type {TuiDateFormatSettings} from '@taiga-ui/core';
 import {AbstractTuiTextfieldHost, tuiAsTextfieldHost} from '@taiga-ui/core';
 
 import type {TuiInputDateComponent} from './input-date.component';
@@ -19,6 +20,10 @@ export class TuiInputDateDirective extends AbstractTuiTextfieldHost<TuiInputDate
 
     public get min(): TuiDay {
         return this.host.computedMin;
+    }
+
+    public get format(): TuiDateFormatSettings {
+        return this.host.dateFormat;
     }
 
     public onValueChange(value: string): void {

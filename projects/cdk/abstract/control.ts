@@ -1,6 +1,13 @@
 /// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
 import type {OnDestroy, OnInit, Provider, Type} from '@angular/core';
-import {ChangeDetectorRef, Directive, HostBinding, inject, Input} from '@angular/core';
+import {
+    ChangeDetectorRef,
+    DestroyRef,
+    Directive,
+    HostBinding,
+    inject,
+    Input,
+} from '@angular/core';
 import type {AbstractControl, ControlValueAccessor} from '@angular/forms';
 import {NgControl, NgModel} from '@angular/forms';
 import {EMPTY_FUNCTION} from '@taiga-ui/cdk/constants';
@@ -43,7 +50,9 @@ export abstract class AbstractTuiControl<T>
     protected onTouched = EMPTY_FUNCTION;
     protected onChange = EMPTY_FUNCTION;
     protected readonly fallbackValue = this.getFallbackValue();
+    // TODO: remove after migrating to takeUntilDestroyed()
     protected readonly destroy$ = new Subject<void>();
+    protected destroyRef = inject(DestroyRef);
     protected readonly cdr = inject(ChangeDetectorRef);
     protected readonly valueTransformer = inject<TuiControlValueTransformer<T>>(
         AbstractTuiValueTransformer,

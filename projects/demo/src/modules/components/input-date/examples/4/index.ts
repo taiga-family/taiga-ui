@@ -1,19 +1,19 @@
 import {Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TUI_DATE_FORMAT, TUI_DATE_SEPARATOR, TuiDay} from '@taiga-ui/cdk';
+import {TuiDay} from '@taiga-ui/cdk';
+import {tuiDateFormatProvider, TuiNotificationModule} from '@taiga-ui/core';
+import {TuiInputDateModule} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-input-date-example-4',
+    standalone: true,
+    imports: [TuiNotificationModule, TuiInputDateModule, ReactiveFormsModule],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
-    providers: [
-        {provide: TUI_DATE_FORMAT, useValue: 'YMD'},
-        {provide: TUI_DATE_SEPARATOR, useValue: '/'},
-    ],
+    providers: [tuiDateFormatProvider({mode: 'YMD', separator: '/'})],
 })
-export class TuiInputDateExample4 {
+export default class ExampleComponent {
     protected readonly control = new FormControl(new TuiDay(2017, 0, 15));
 }

@@ -17,7 +17,7 @@ import {
     TuiLinkModule,
     TuiLoaderModule,
     TuiNotificationModule,
-    TuiNumberFormatModule,
+    TuiNumberFormatDirective,
     TuiSvgModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
@@ -73,7 +73,7 @@ import {TuiDialogExampleComponent10} from './examples/10';
         PayExampleModalModule,
         TuiTextfieldControllerModule,
         TuiTextCodeModule,
-        TuiNumberFormatModule,
+        TuiNumberFormatDirective,
     ],
     declarations: [
         ExampleTuiDialogComponent,

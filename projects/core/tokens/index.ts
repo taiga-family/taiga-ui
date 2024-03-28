@@ -3,6 +3,7 @@ export * from './assert-enabled';
 export * from './common-icon';
 export * from './data-list-accessor';
 export * from './data-list-host';
+export * from './date-format';
 export * from './day-type-handler';
 export * from './document-or-shadow-root';
 export * from './element-ref';

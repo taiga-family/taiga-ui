@@ -1,60 +1,56 @@
 import {Component, forwardRef} from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
+import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiDemoModule} from '@demo/utils';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiMobileCalendarDialogModule} from '@taiga-ui/addon-mobile';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk';
 import {TUI_FALSE_HANDLER, TUI_FIRST_DAY, TUI_LAST_DAY, TuiDay} from '@taiga-ui/cdk';
 import type {TuiMarkerHandler} from '@taiga-ui/core';
-import {TUI_DEFAULT_MARKER_HANDLER} from '@taiga-ui/core';
-import {TuiNamedDay} from '@taiga-ui/kit';
+import {
+    TUI_DEFAULT_MARKER_HANDLER,
+    TuiDropdownModule,
+    TuiHintModule,
+    TuiLinkModule,
+    TuiTextfieldControllerModule,
+} from '@taiga-ui/core';
+import {TuiInputDateModule, TuiNamedDay} from '@taiga-ui/kit';
 
 import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
+import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
 
 const TWO_DOTS: [string, string] = ['var(--tui-primary)', 'var(--tui-info-fill)'];
 const ONE_DOT: [string] = ['var(--tui-success-fill)'];
 
 @Component({
-    selector: 'example-tui-input-date',
-    templateUrl: './input-date.template.html',
+    standalone: true,
+    imports: [
+        TuiDemoModule,
+        TuiInputDateModule,
+        TuiTextfieldControllerModule,
+        TuiMobileCalendarDialogModule,
+        TuiDropdownModule,
+        TuiHintModule,
+        TuiLinkModule,
+        ReactiveFormsModule,
+        InheritedDocumentationModule,
+        RouterLink,
+    ],
+    templateUrl: './index.html',
     changeDetection,
     providers: [
         {
             provide: ABSTRACT_PROPS_ACCESSOR,
-            useExisting: forwardRef(() => ExampleTuiInputDateComponent),
+            useExisting: forwardRef(() => ExampleComponent),
         },
     ],
 })
-export class ExampleTuiInputDateComponent extends AbstractExampleTuiControl {
+export default class ExampleComponent extends AbstractExampleTuiControl {
     public override cleaner = false;
 
     public control = new FormControl<TuiDay | null>(null, Validators.required);
-
-    protected readonly exampleForm = import('./examples/import/declare-form.md?raw');
-
-    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
-
-    protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
-
-    protected readonly example1: TuiDocExample = {
-        TypeScript: import('./examples/1/index.ts?raw'),
-        HTML: import('./examples/1/index.html?raw'),
-    };
-
-    protected readonly example2: TuiDocExample = {
-        TypeScript: import('./examples/2/index.ts?raw'),
-        HTML: import('./examples/2/index.html?raw'),
-    };
-
-    protected readonly example3: TuiDocExample = {
-        TypeScript: import('./examples/3/index.ts?raw'),
-        HTML: import('./examples/3/index.html?raw'),
-    };
-
-    protected readonly example4: TuiDocExample = {
-        TypeScript: import('./examples/4/index.ts?raw'),
-        HTML: import('./examples/4/index.html?raw'),
-    };
 
     protected readonly example5: TuiDocExample = {
         TypeScript: import('./examples/5/index.ts?raw'),
@@ -62,11 +58,6 @@ export class ExampleTuiInputDateComponent extends AbstractExampleTuiControl {
         'native-date-transformer.directive.ts': import(
             './examples/5/native-date-transformer.directive.ts?raw'
         ),
-    };
-
-    protected readonly example6: TuiDocExample = {
-        TypeScript: import('./examples/6/index.ts?raw'),
-        HTML: import('./examples/6/index.html?raw'),
     };
 
     protected minVariants = [

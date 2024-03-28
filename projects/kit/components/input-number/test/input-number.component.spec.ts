@@ -8,7 +8,7 @@ import {CHAR_MINUS, CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
 import type {TuiDecimalMode, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {
     TuiHintModule,
-    TuiNumberFormatModule,
+    TuiNumberFormatDirective,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {TuiInputNumberComponent, TuiInputNumberModule} from '@taiga-ui/kit';
@@ -65,7 +65,7 @@ describe('InputNumber', () => {
             imports: [
                 NoopAnimationsModule,
                 TuiInputNumberModule,
-                TuiNumberFormatModule,
+                TuiNumberFormatDirective,
                 ReactiveFormsModule,
                 TuiTextfieldControllerModule,
                 TuiHintModule,

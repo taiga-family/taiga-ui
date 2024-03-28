@@ -6,20 +6,19 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {
     AbstractTuiValueTransformer,
-    TUI_DATE_FORMAT,
-    TUI_DATE_SEPARATOR,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
     TuiDay,
     TuiTime,
 } from '@taiga-ui/cdk';
-import {TuiRootModule} from '@taiga-ui/core';
+import {TUI_DATE_FORMAT, TuiRootModule} from '@taiga-ui/core';
 import {TUI_DATE_TIME_VALUE_TRANSFORMER} from '@taiga-ui/kit';
 import {
     TuiInputDateTimeComponent,
     TuiInputDateTimeModule,
 } from '@taiga-ui/kit/components';
 import {TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
+import {of} from 'rxjs';
 
 describe('InputDateTime', () => {
     @Component({
@@ -242,8 +241,10 @@ describe('InputDateTime', () => {
             TestBed.configureTestingModule({
                 ...defaultTestingModuleMeta,
                 providers: [
-                    {provide: TUI_DATE_FORMAT, useValue: 'MDY'},
-                    {provide: TUI_DATE_SEPARATOR, useValue: '/'},
+                    {
+                        provide: TUI_DATE_FORMAT,
+                        useValue: of({mode: 'MDY', separator: '/'}),
+                    },
                 ],
             });
             await TestBed.compileComponents();
@@ -280,8 +281,10 @@ describe('InputDateTime', () => {
             TestBed.configureTestingModule({
                 ...defaultTestingModuleMeta,
                 providers: [
-                    {provide: TUI_DATE_FORMAT, useValue: 'YMD'},
-                    {provide: TUI_DATE_SEPARATOR, useValue: '-'},
+                    {
+                        provide: TUI_DATE_FORMAT,
+                        useValue: of({mode: 'YMD', separator: '-'}),
+                    },
                 ],
             });
             await TestBed.compileComponents();

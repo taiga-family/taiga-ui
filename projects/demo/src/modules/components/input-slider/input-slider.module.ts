@@ -8,7 +8,7 @@ import {
     TuiHintModule,
     TuiLinkModule,
     TuiNotificationModule,
-    TuiNumberFormatModule,
+    TuiNumberFormatDirective,
     TuiSvgModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
@@ -42,7 +42,7 @@ import {ExampleTuiInputSliderComponent} from './input-slider.component';
         TuiSvgModule,
         TuiNotificationModule,
         TuiTextfieldControllerModule,
-        TuiNumberFormatModule,
+        TuiNumberFormatDirective,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiInputSliderComponent)),
     ],
     declarations: [

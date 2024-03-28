@@ -1348,6 +1348,13 @@ export const pages: TuiDocPages = [
             },
             {
                 section: 'Tools',
+                title: 'DateFormat',
+                keywords:
+                    'date, format, дата, separator, год, year, month, месяц, день, day, формат',
+                route: '/directives/date-format',
+            },
+            {
+                section: 'Tools',
                 title: 'Touchable',
                 keywords: 'touch, mobile, смартфон, pwa, native, hybrid, ios',
                 route: '/directives/touchable',

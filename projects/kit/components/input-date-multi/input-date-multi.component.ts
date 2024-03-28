@@ -8,6 +8,7 @@ import {
     Input,
     ViewChild,
 } from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {MaskitoOptions} from '@maskito/core';
 import {maskitoDateOptionsGenerator} from '@maskito/kit';
 import type {
@@ -20,8 +21,6 @@ import type {
 import {
     AbstractTuiMultipleControl,
     changeDateSeparator,
-    TUI_DATE_FORMAT,
-    TUI_DATE_SEPARATOR,
     TUI_FALSE_HANDLER,
     TUI_IS_MOBILE,
     tuiAsControl,
@@ -30,6 +29,7 @@ import {
     TuiDay,
     tuiIsString,
     TuiMonth,
+    tuiWatch,
 } from '@taiga-ui/cdk';
 import type {
     TuiMarkerHandler,
@@ -38,6 +38,8 @@ import type {
     TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
 import {
+    TUI_DATE_FORMAT,
+    TUI_DEFAULT_DATE_FORMAT,
     TUI_DEFAULT_MARKER_HANDLER,
     TUI_TEXTFIELD_SIZE,
     TuiDialogService,
@@ -57,7 +59,7 @@ import {
 import {tuiImmutableUpdateInputDateMulti} from '@taiga-ui/kit/utils';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import type {Observable} from 'rxjs';
-import {map, takeUntil} from 'rxjs';
+import {map} from 'rxjs';
 
 @Component({
     selector: 'tui-input-date[multiple]',
@@ -132,15 +134,23 @@ export class TuiInputDateMultiComponent
 
     protected open = false;
 
-    protected readonly dateFormat = inject(TUI_DATE_FORMAT);
-    protected readonly dateSeparator = inject(TUI_DATE_SEPARATOR);
+    protected dateFormat = TUI_DEFAULT_DATE_FORMAT;
     protected readonly isMobile = inject(TUI_IS_MOBILE);
     protected readonly doneWord$ = inject(TUI_DONE_WORD);
     protected readonly filler$: Observable<string> = this.dateTexts$.pipe(
         map(dateTexts =>
-            changeDateSeparator(dateTexts[this.dateFormat], this.dateSeparator),
+            changeDateSeparator(
+                dateTexts[this.dateFormat.mode],
+                this.dateFormat.separator,
+            ),
         ),
     );
+
+    protected readonly dateFormat$ = inject(TUI_DATE_FORMAT)
+        .pipe(tuiWatch(this.cdr), takeUntilDestroyed())
+        .subscribe(format => {
+            this.dateFormat = format;
+        });
 
     public get nativeFocusableElement(): HTMLInputElement | null {
         return this.textfield?.nativeFocusableElement || null;
@@ -233,7 +243,7 @@ export class TuiInputDateMultiComponent
                     },
                 },
             )
-            .pipe(takeUntil(this.destroy$))
+            .pipe(takeUntilDestroyed(this.destroyRef))
             .subscribe(value => {
                 this.value = value;
             });
