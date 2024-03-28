@@ -1402,13 +1402,7 @@ export const pages: TuiDocPages = [
         section: 'Tools',
         title: 'Pipes',
         subPages: [
-            {
-                section: 'Tools',
-                title: 'Amount',
-                keywords:
-                    'amount, money, деньги, сумма, количество, cash, копейки, рубли, доллары, евро',
-                route: '/pipes/amount',
-            },
+            
             {
                 section: 'Tools',
                 title: 'Currency',
