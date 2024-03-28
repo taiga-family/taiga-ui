@@ -28,7 +28,7 @@ import {
 import type {TuiOrientation} from '@taiga-ui/core';
 import {TUI_ANIMATIONS_SPEED, tuiGetDuration} from '@taiga-ui/core';
 import type {Observable} from 'rxjs';
-import {delay, takeUntil} from 'rxjs';
+import {delay} from 'rxjs';
 
 import {TuiStepComponent} from './step/step.component';
 
