@@ -1,34 +1,35 @@
+import {NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import type {TuiDocExample} from '@taiga-ui/addon-doc';
+import {
+    TuiComponentPipe,
+    TuiExamplePipe,
+    TuiKebabPipe,
+    TuiSetupComponent,
+} from '@demo/utils';
+import {TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import type {TuiOrientation} from '@taiga-ui/core';
 import type {TuiStepState} from '@taiga-ui/kit';
+import {TuiStepperModule} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'example-tui-stepper',
+    standalone: true,
+    imports: [
+        TuiStepperModule,
+        TuiAddonDocModule,
+        TuiComponentPipe,
+        TuiExamplePipe,
+        TuiKebabPipe,
+        NgForOf,
+        TuiSetupComponent,
+    ],
     templateUrl: './stepper.template.html',
     changeDetection,
 })
-export class ExampleTuiStepperComponent {
-    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
-    protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
-
-    protected readonly example1: TuiDocExample = {
-        TypeScript: import('./examples/1/index.ts?raw'),
-        HTML: import('./examples/1/index.html?raw'),
-    };
-
-    protected readonly example2: TuiDocExample = {
-        TypeScript: import('./examples/2/index.ts?raw'),
-        HTML: import('./examples/2/index.html?raw'),
-    };
-
-    protected readonly example3: TuiDocExample = {
-        TypeScript: import('./examples/3/index.ts?raw'),
-        HTML: import('./examples/3/index.html?raw'),
-    };
-
+export default class ExampleComponent {
     protected activeItemIndex = 0;
+
+    protected readonly examples = ['Basic', 'Vertical', 'Vertical autoscroll'];
 
     protected readonly orientationVariants: readonly TuiOrientation[] = [
         'horizontal',

@@ -1,11 +1,13 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiStepperModule} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-stepper-example-1',
+    standalone: true,
+    imports: [TuiStepperModule],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class TuiStepperExample1 {}
+export default class ExampleComponent {}

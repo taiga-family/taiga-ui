@@ -993,15 +993,11 @@ export const ROUTES: Routes = [
             title: 'Slider',
         },
     },
-    {
+    route({
         path: 'navigation/stepper',
-        loadChildren: async () =>
-            (await import('../components/stepper/stepper.module'))
-                .ExampleTuiStepperModule,
-        data: {
-            title: 'Stepper',
-        },
-    },
+        loadComponent: async () => import('../components/stepper/stepper.component'),
+        title: 'Stepper',
+    }),
     {
         path: 'components/preview',
         loadChildren: async () =>
