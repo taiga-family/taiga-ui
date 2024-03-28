@@ -1,9 +1,10 @@
 import type {QueryList} from '@angular/core';
-import {DestroyRef,
+import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
     ContentChildren,
+    DestroyRef,
     ElementRef,
     EventEmitter,
     forwardRef,
@@ -17,7 +18,6 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {
     EMPTY_QUERY,
-    
     tuiGetOriginalArrayFromQueryList,
     tuiIsElement,
     tuiMoveFocus,
