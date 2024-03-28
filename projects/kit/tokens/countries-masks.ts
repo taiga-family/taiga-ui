@@ -1,7 +1,8 @@
-import {tuiCreateToken} from '@taiga-ui/cdk';
+import type {Provider} from '@angular/core';
+import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 import {TuiCountryIsoCode} from '@taiga-ui/i18n';
 
-export const TUI_COUNTRIES_MASKS = tuiCreateToken<Record<TuiCountryIsoCode, string>>({
+export const TUI_COUNTRIES_DEFAULT_MASKS: Record<TuiCountryIsoCode, string> = {
     [TuiCountryIsoCode.AD]: '+376###-###',
     [TuiCountryIsoCode.AE]: '+971-##-###-####',
     [TuiCountryIsoCode.AF]: '+93##-###-####',
@@ -217,4 +218,12 @@ export const TUI_COUNTRIES_MASKS = tuiCreateToken<Record<TuiCountryIsoCode, stri
     [TuiCountryIsoCode.ZA]: '+27##-###-####',
     [TuiCountryIsoCode.ZM]: '+260##-###-####',
     [TuiCountryIsoCode.ZW]: '+263#-######',
-});
+};
+
+export const TUI_COUNTRIES_MASKS = tuiCreateToken(TUI_COUNTRIES_DEFAULT_MASKS);
+
+export function tuiCountriesMasksProvider(
+    options: Partial<Record<TuiCountryIsoCode, string>>,
+): Provider {
+    return tuiProvideOptions(TUI_COUNTRIES_MASKS, options, TUI_COUNTRIES_DEFAULT_MASKS);
+}
