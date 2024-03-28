@@ -5,11 +5,12 @@ import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {tuiGetDocModules} from '@taiga-ui/addon-doc';
 import {TuiRepeatTimesModule} from '@taiga-ui/cdk';
 import {TuiNotificationModule} from '@taiga-ui/core';
-import {TuiButtonModule, TuiCheckboxModule, TuiChipModule} from '@taiga-ui/experimental';
+import {TuiButtonModule, TuiChipModule} from '@taiga-ui/experimental';
 import {
     TuiAvatarComponent,
     TuiBadgedContentComponent,
     TuiBadgeNotificationComponent,
+    TuiCheckboxComponent,
     TuiFadeDirective,
 } from '@taiga-ui/kit';
 
@@ -30,7 +31,7 @@ import {TuiChipExample4} from './examples/4';
         TuiNotificationModule,
         TuiButtonModule,
         TuiAvatarComponent,
-        TuiCheckboxModule,
+        TuiCheckboxComponent,
         TuiBadgedContentComponent,
         TuiBadgeNotificationComponent,
         tuiGetDocModules(ExampleTuiChipComponent),

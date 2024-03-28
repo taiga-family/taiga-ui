@@ -14,7 +14,6 @@ export * from '@taiga-ui/core/components/link';
 export * from '@taiga-ui/core/components/loader';
 export * from '@taiga-ui/core/components/notification';
 export * from '@taiga-ui/core/components/primitive-calendar';
-export * from '@taiga-ui/core/components/primitive-checkbox';
 export * from '@taiga-ui/core/components/primitive-spin-button';
 export * from '@taiga-ui/core/components/primitive-textfield';
 export * from '@taiga-ui/core/components/primitive-year-picker';

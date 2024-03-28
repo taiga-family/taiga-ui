@@ -97,7 +97,7 @@ describe('ng-update', () => {
         expect(tree.readContent('test/app/test.template.html')).toEqual(TEMPLATE_AFTER);
     });
 
-    it('should migrate checkbox references in ts files', async () => {
+    it('should migrate radio references in ts files', async () => {
         const tree = await runner.runSchematic(
             'updateToV4',
             {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,

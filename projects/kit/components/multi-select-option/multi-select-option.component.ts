@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {tuiIsPresent} from '@taiga-ui/cdk';
-import type {TuiSizeL} from '@taiga-ui/core';
+import type {TuiSizeS} from '@taiga-ui/core';
 import {TuiSelectOptionComponent} from '@taiga-ui/kit/components/select-option';
 
 @Component({
@@ -12,11 +12,8 @@ import {TuiSelectOptionComponent} from '@taiga-ui/kit/components/select-option';
 export class TuiMultiSelectOptionComponent<
     T extends any[],
 > extends TuiSelectOptionComponent<T> {
-    protected get size(): TuiSizeL {
-        return this.option.size === 'l' ||
-            (this.dataList?.size === 'l' && !this.option.size)
-            ? 'l'
-            : 'm';
+    protected get size(): TuiSizeS {
+        return this.dataList?.size === 'l' ? 'm' : 's';
     }
 
     protected override get selected(): boolean {

@@ -180,15 +180,6 @@ export const ROUTES: Routes = [
         },
     },
     {
-        path: 'experimental/checkbox',
-        loadChildren: async () =>
-            (await import('../experimental/checkbox/checkbox.module'))
-                .ExampleTuiCheckboxModule,
-        data: {
-            title: 'Checkbox ',
-        },
-    },
-    {
         path: 'experimental/radio',
         loadChildren: async () =>
             (await import('../experimental/radio/radio.module')).ExampleTuiRadioModule,
@@ -438,15 +429,11 @@ export const ROUTES: Routes = [
             title: 'ThumbnailCard',
         },
     },
-    {
+    route({
         path: 'components/checkbox',
-        loadChildren: async () =>
-            (await import('../components/checkbox/checkbox.module'))
-                .ExampleTuiCheckboxModule,
-        data: {
-            title: 'Checkbox',
-        },
-    },
+        title: 'Checkbox',
+        loadComponent: async () => import('../components/checkbox'),
+    }),
     {
         path: 'components/combo-box',
         loadChildren: async () =>

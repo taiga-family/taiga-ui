@@ -26,12 +26,12 @@ import { TuiCheckboxModule } from "@taiga-ui/experimental";
 export class TestComponent {
 }`;
 
-const COMPONENT_AFTER = `import { TuiCheckboxModule } from "@taiga-ui/kit";
+const COMPONENT_AFTER = `import { TuiCheckboxComponent } from "@taiga-ui/kit";
 
 @Component({
     standalone: true,
     templateUrl: './test.template.html',
-    imports: [TuiCheckboxModule]
+    imports: [TuiCheckboxComponent]
 })
 export class TestComponent {
 }`;

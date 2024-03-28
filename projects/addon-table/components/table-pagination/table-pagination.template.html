@@ -9,6 +9,7 @@
         {{ texts.linesPerPage }}
 
         <button
+            *ngIf="total !== 0; else zeroTotal"
             tuiLink
             type="button"
             [tuiDropdown]="content"
@@ -16,6 +17,9 @@
         >
             <strong>{{ start + 1 }}–{{ end }}</strong>
         </button>
+        <ng-template #zeroTotal>
+            <strong>0 - 0</strong>
+        </ng-template>
         <ng-template #content>
             <tui-data-list size="s">
                 <ng-container *ngFor="let item of items">

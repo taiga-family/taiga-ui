@@ -7,8 +7,11 @@ import {
     TuiIconsDirective,
 } from '@taiga-ui/core';
 import {tuiButtonOptionsProvider} from '@taiga-ui/experimental/components/button';
-import {tuiCheckboxOptionsProvider} from '@taiga-ui/experimental/components/checkbox';
-import {tuiAvatarOptionsProvider, tuiSwitchOptionsProvider} from '@taiga-ui/kit';
+import {
+    tuiAvatarOptionsProvider,
+    tuiCheckboxOptionsProvider,
+    tuiSwitchOptionsProvider,
+} from '@taiga-ui/kit';
 
 import {TuiChipComponent} from './chip.component';
 import {TUI_CHIP_OPTIONS} from './chip.options';
