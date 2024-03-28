@@ -103,7 +103,7 @@
         size="l"
         tuiButton
         type="submit"
-        [showLoader]="!!(payProcessing$ | async)"
+        [loading]="!!(payProcessing$ | async)"
         (click)="pay()"
     >
         Pay {{ amount | tuiFormatNumber | async }} ₽

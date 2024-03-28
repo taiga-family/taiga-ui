@@ -2,15 +2,16 @@
     <button
         appearance=""
         automation-id="tui-mobile-calendar__cancel"
-        shape="rounded"
         tuiIconButton
         tuiRipple
         type="button"
         class="t-close"
-        [icon]="icons.close"
-        [title]="closeWord$ | async"
+        [iconLeft]="icons.close"
+        [style.border-radius.%]="100"
         (click)="onClose()"
-    ></button>
+    >
+        {{ closeWord$ | async }}
+    </button>
     <button
         tuiLink
         tuiTouchable="opacity"

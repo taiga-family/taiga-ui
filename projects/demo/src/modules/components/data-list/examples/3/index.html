@@ -1,9 +1,10 @@
+<!--TODO: TUI_ARROW migration-->
 <button
     appearance="flat"
+    iconRight="tuiIconChevronDown"
     tuiIconButton
     type="button"
-    [icon]="arrow"
-    [pseudoHover]="open || null"
+    [tuiAppearanceState]="open ? 'hover' : null"
     [tuiDropdown]="content"
     [tuiDropdownMaxHeight]="500"
     [(tuiDropdownOpen)]="open"

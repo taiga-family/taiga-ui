@@ -3,12 +3,13 @@
     class="wrapper"
 >
     <button
-        icon="tuiIconChevronLeftLarge"
-        title="Previous"
+        iconLeft="tuiIconChevronLeftLarge"
         tuiIconButton
         type="button"
         (click)="carousel.prev()"
-    ></button>
+    >
+        Previous
+    </button>
     <tui-carousel
         #carousel
         class="carousel"
@@ -55,10 +56,11 @@
         </tui-island>
     </tui-carousel>
     <button
-        icon="tuiIconChevronRightLarge"
-        title="Next"
+        iconLeft="tuiIconChevronRightLarge"
         tuiIconButton
         type="button"
         (click)="carousel.next()"
-    ></button>
+    >
+        Next
+    </button>
 </div>

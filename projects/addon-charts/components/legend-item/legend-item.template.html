@@ -4,7 +4,7 @@
     tuiButton
     type="button"
     class="t-button"
-    [pseudoHover]="active || null"
+    [tuiAppearanceState]="active ? 'hover' : null"
 >
     <div class="t-wrapper">
         <ng-content select="[tuiCheckbox]" />

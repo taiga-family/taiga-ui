@@ -1,13 +1,14 @@
 <div class="wrapper">
     <button
         appearance="secondary"
-        icon="tuiIconCalendarLarge"
-        shape="rounded"
-        title="Choose a date"
+        iconLeft="tuiIconCalendarLarge"
         tuiIconButton
         type="button"
+        [style.border-radius.%]="100"
         (click)="onClick()"
-    ></button>
+    >
+        Choose a date
+    </button>
     <span
         class="date"
         [class.date_empty]="empty"

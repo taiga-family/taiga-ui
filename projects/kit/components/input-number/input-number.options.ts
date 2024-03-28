@@ -1,13 +1,12 @@
 import type {Provider} from '@angular/core';
 import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 import type {TuiDecimalMode} from '@taiga-ui/core';
-import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface TuiInputNumberOptions {
     readonly decimal: TuiDecimalMode;
     readonly icons: Readonly<{
-        down: PolymorpheusContent;
-        up: PolymorpheusContent;
+        down: string;
+        up: string;
     }>;
     readonly max: number;
     readonly min: number;

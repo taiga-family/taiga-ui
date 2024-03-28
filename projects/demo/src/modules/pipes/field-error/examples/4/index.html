@@ -19,14 +19,15 @@
             </tui-input-phone>
             <button
                 appearance="icon"
-                icon="tuiIconTrash"
+                iconLeft="tuiIconTrash"
                 size="m"
-                title="Delete phone number"
                 tuiIconButton
                 type="button"
                 class="tui-space_left-2 icon"
                 (click)="removePhone(i)"
-            ></button>
+            >
+                Delete phone number
+            </button>
         </span>
         <ng-template #phoneErrorContent>Invalid phone number length</ng-template>
         <tui-error

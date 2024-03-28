@@ -1,0 +1,59 @@
+<tui-doc-page
+    header="ButtonVertical"
+    package="KIT"
+    type="components"
+>
+    <ng-template pageTab>
+        <tui-doc-example
+            *ngFor="let example of examples; let index = index"
+            [component]="index + 1 | tuiComponent"
+            [content]="index + 1 | tuiExample"
+            [heading]="example"
+            [id]="example | tuiKebab"
+        />
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <button
+                tuiButton
+                tuiButtonVertical
+                [appearance]="appearance"
+                [iconLeft]="iconLeft"
+                [loading]="loading"
+            >
+                Button
+            </button>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="appearance"
+                documentationPropertyType="string"
+                [documentationPropertyValues]="appearances"
+                [(documentationPropertyValue)]="appearance"
+            >
+                Appearance
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="iconLeft"
+                documentationPropertyType="string"
+                [documentationPropertyValues]="icons"
+                [(documentationPropertyValue)]="iconLeft"
+            >
+                Icon on the left side
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="loading"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="loading"
+            >
+                Loading indicator
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <tui-setup *pageTab />
+</tui-doc-page>

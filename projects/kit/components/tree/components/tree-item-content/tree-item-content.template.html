@@ -1,13 +1,13 @@
 <button
     *ngIf="isExpandable"
     appearance="flat"
-    shape="rounded"
     size="xs"
     tuiIconButton
     type="button"
     class="t-button"
     [class.t-button_expanded]="isExpanded"
-    [icon]="icons.more"
+    [iconLeft]="icons.more"
+    [style.border-radius.%]="100"
     (click)="onClick()"
 ></button>
 <ng-container [ngTemplateOutlet]="context.template" />

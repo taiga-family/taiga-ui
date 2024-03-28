@@ -24,12 +24,13 @@
                 type="button"
                 class="t-button"
                 [class.t-button_hidden]="!isEnabled(item)"
-                [icon]="getIcon(item)"
-                [title]="showHideText$ | async"
+                [iconLeft]="getIcon(item)"
                 (click)="toggle(item)"
                 (keydown.arrowDown.prevent)="move(index, 1)"
                 (keydown.arrowUp.prevent)="move(index, -1)"
-            ></button>
+            >
+                {{ showHideText$ | async }}
+            </button>
         </div>
     </tui-tile>
 </tui-tiles>

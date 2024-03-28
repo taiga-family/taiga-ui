@@ -86,15 +86,16 @@
             >
                 <button
                     appearance="flat"
-                    icon="tuiIconTrash"
-                    shape="rounded"
+                    iconLeft="tuiIconTrash"
                     size="s"
-                    title="Remove"
                     tuiIconButton
                     type="button"
                     class="remove"
+                    [style.border-radius.%]="100"
                     (click)="remove(item)"
-                ></button>
+                >
+                    Remove
+                </button>
             </td>
         </tr>
     </tbody>

@@ -6,7 +6,7 @@
         tuiButton
         type="button"
         class="item tui-space_right-1"
-        [appearance]="buttonAppearance$ | async"
+        [appearance]="(buttonAppearance$ | async) || ''"
         (click)="toggleAll()"
     >
         All

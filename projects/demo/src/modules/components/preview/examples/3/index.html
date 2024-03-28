@@ -24,22 +24,24 @@
         />
 
         <button
-            icon="tuiIconDownload"
-            title="Download"
+            iconLeft="tuiIconDownload"
             tuiIconButton
             tuiPreviewAction
             type="button"
             (click)="download()"
-        ></button>
+        >
+            Download
+        </button>
 
         <button
-            icon="tuiIconClose"
-            title="Close"
+            iconLeft="tuiIconClose"
             tuiIconButton
             tuiPreviewAction
             type="button"
             (click)="preview.complete()"
-        ></button>
+        >
+            Close
+        </button>
 
         <ng-container *ngIf="contentUnavailable$ | async">
             <div class="t-container">
