@@ -1,17 +1,5 @@
 import {TuiPureException} from '@taiga-ui/cdk/exceptions';
 
-/** TODO Delete after updating typescript to version 5 and when backward compatibility will not be required */
-interface ClassGetterDecoratorContext {
-    kind: 'getter';
-    name: string;
-}
-
-/** TODO Delete after updating typescript to version 5 and when backward compatibility will not be required */
-interface ClassMethodDecoratorContext {
-    kind: 'method';
-    name: string;
-}
-
 function decorateMethod(
     originalMethod: (...args: unknown[]) => unknown,
 ): (this: object, ...args: unknown[]) => unknown {
