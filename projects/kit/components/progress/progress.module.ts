@@ -6,23 +6,22 @@ import {TuiProgressBarComponent} from './progress-bar/progress-bar.component';
 import {TuiProgressColorSegmentsDirective} from './progress-bar/progress-color-segments.directive';
 import {TuiProgressCircleComponent} from './progress-circle/progress-circle.component';
 import {TuiProgressLabelComponent} from './progress-label/progress-label.component';
-import {TuiProgressSegmentedComponent} from './progress-segmented/progress-segmented.component';
+import {TuiProgressSegmentedDirective} from './progress-segmented/progress-segmented.directive';
 
 @NgModule({
-    imports: [CommonModule, TuiRepeatTimesModule],
+    imports: [CommonModule, TuiRepeatTimesModule, TuiProgressSegmentedDirective],
     declarations: [
         TuiProgressBarComponent,
         TuiProgressColorSegmentsDirective,
         TuiProgressCircleComponent,
         TuiProgressLabelComponent,
-        TuiProgressSegmentedComponent,
     ],
     exports: [
         TuiProgressBarComponent,
         TuiProgressCircleComponent,
         TuiProgressColorSegmentsDirective,
         TuiProgressLabelComponent,
-        TuiProgressSegmentedComponent,
+        TuiProgressSegmentedDirective,
     ],
 })
 export class TuiProgressModule {}

@@ -114,4 +114,11 @@ export const ATTRS_TO_REPLACE: ReplacementAttribute[] = [
         },
         to: {attrName: '#tuiDropdownHost'},
     },
+    {
+        from: {
+            attrName: '[colors]',
+            withTagNames: ['tui-progress-segmented'],
+        },
+        to: {attrName: '[tuiProgressColorSegments]'},
+    },
 ];

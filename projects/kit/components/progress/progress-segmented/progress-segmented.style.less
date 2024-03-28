@@ -1,34 +1,25 @@
-@import '@taiga-ui/core/styles/taiga-ui-local';
+@radius: calc(var(--t-height) / 2);
+@mask-color: #999;
 
-:host {
-    display: flex;
-    color: var(--tui-primary);
+@jagged-edges-hack:
+    @mask-color 0 99%,
+    transparent calc(99% + 0.6px) 100%;
 
-    &[data-mode='onDark'] {
-        --tui-clear: var(--tui-clear-inverse);
-    }
-}
+@left-circle: radial-gradient(circle closest-side at @radius center, @jagged-edges-hack);
+@right-circle: radial-gradient(
+    circle closest-side at calc(100% - @radius - var(--tui-segment-gap)) center,
+    @jagged-edges-hack
+);
+@rectangle: linear-gradient(
+    to right,
+    transparent 0 @radius,
+    @mask-color @radius calc(100% - @radius - var(--tui-segment-gap)),
+    transparent calc(100% - @radius - var(--tui-segment-gap))
+);
 
-.t-segment {
-    .transition(background);
+[tuiProgressBar]._segmented {
+    --tui-segment-gap: 0.5rem;
 
-    flex: 1 1 100%;
-    border-radius: var(--tui-radius-xs);
-    background: var(--tui-clear);
-
-    &:not(:last-child) {
-        margin-right: 0.25rem;
-    }
-
-    :host[data-size='s'] & {
-        height: 0.25rem;
-    }
-
-    :host[data-size='m'] & {
-        height: 0.5rem;
-    }
-}
-
-.t-hidden-progress {
-    .sr-only();
+    mask-image: @left-circle, @right-circle, @rectangle;
+    mask-size: calc(100% * var(--t-segment-width) + var(--tui-segment-gap) * var(--t-segment-width));
 }

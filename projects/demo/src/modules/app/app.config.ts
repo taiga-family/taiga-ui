@@ -111,19 +111,13 @@ export const config: ApplicationConfig = {
                     return null;
                 }
 
-                ngDevMode &&
-                    console.assert(
-                        !(type && path),
-                        'Don\'t use "type" and "path" input params together in tui-doc-page',
-                    );
-
-                if (type) {
-                    return `${link}/${pkg.toLowerCase()}/${type.toLowerCase()}/${(
-                        header[0].toLowerCase() + header.slice(1)
-                    ).replaceAll(/[A-Z]/g, m => `-${m.toLowerCase()}`)}`;
+                if (path) {
+                    return `${link}/${path}`;
                 }
 
-                return `${link}/${path}`;
+                return `${link}/${pkg.toLowerCase()}/${type.toLowerCase()}/${(
+                    header[0].toLowerCase() + header.slice(1)
+                ).replaceAll(/[A-Z]/g, m => `-${m.toLowerCase()}`)}`;
             },
         },
         {
