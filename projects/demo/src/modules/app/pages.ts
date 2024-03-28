@@ -1402,7 +1402,6 @@ export const pages: TuiDocPages = [
         section: 'Tools',
         title: 'Pipes',
         subPages: [
-            
             {
                 section: 'Tools',
                 title: 'Currency',
