@@ -47,19 +47,19 @@ export class TuiMediaDirective {
     @Input()
     public set paused(paused: boolean) {
         if (paused) {
-            this.el.pause();
+            this.el.pause?.();
         } else {
-            void this.el.play();
+            void this.el.play?.();
             this.updatePlaybackRate(this.playbackRate);
         }
     }
 
     public get currentTime(): number {
-        return this.el.currentTime;
+        return this.el.currentTime ?? 0;
     }
 
     public get paused(): boolean {
-        return this.el.paused;
+        return Boolean(this.el.paused);
     }
 
     // @bad TODO: Make sure no other events can affect this like network issues etc.
