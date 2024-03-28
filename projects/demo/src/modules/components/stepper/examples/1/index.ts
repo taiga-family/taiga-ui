@@ -5,10 +5,9 @@ import {TuiStepperModule} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    selector: 'tui-stepper-example-1',
     imports: [TuiStepperModule],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class TuiStepperExample1 {}
+export default class ExampleComponent {}

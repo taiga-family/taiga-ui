@@ -4,32 +4,13 @@
     type="components"
 >
     <ng-template pageTab>
-        <p>Stepper makes visual step navigation</p>
-
         <tui-doc-example
-            id="base"
-            heading="Basic"
-            [content]="example1"
-            [fullsize]="true"
-        >
-            <tui-stepper-example-1 />
-        </tui-doc-example>
-
-        <tui-doc-example
-            id="vertical"
-            heading="Vertical"
-            [content]="example2"
-        >
-            <tui-stepper-example-2 />
-        </tui-doc-example>
-
-        <tui-doc-example
-            id="scroll"
-            heading="Vertical autoscroll"
-            [content]="example3"
-        >
-            <tui-stepper-example-3 />
-        </tui-doc-example>
+            *ngFor="let example of examples; let index = index"
+            [component]="index + 1 | tuiComponent"
+            [content]="index + 1 | tuiExample"
+            [heading]="example"
+            [id]="example | tuiKebab"
+        />
     </ng-template>
 
     <ng-template pageTab>
@@ -92,29 +73,5 @@
         </tui-doc-documentation>
     </ng-template>
 
-    <ng-template pageTab>
-        <ol class="b-demo-steps">
-            <li>
-                <p>
-                    Import
-                    <code>TuiStepperModule</code>
-                    into a module where you want to use our component
-                </p>
-
-                <tui-doc-code
-                    filename="my.module.ts"
-                    [code]="exampleModule"
-                />
-            </li>
-
-            <li>
-                <p>Add to the template:</p>
-
-                <tui-doc-code
-                    filename="my.component.html"
-                    [code]="exampleHtml"
-                />
-            </li>
-        </ol>
-    </ng-template>
+    <tui-setup *pageTab />
 </tui-doc-page>

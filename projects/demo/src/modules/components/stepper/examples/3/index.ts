@@ -6,13 +6,12 @@ import {TuiStepperModule} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    selector: 'tui-stepper-example-3',
     imports: [TuiStepperModule, NgForOf],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiStepperExample3 {
+export default class ExampleComponent {
     protected readonly steps = ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven'];
 }
