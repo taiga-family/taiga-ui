@@ -1474,7 +1474,7 @@ export const pages: TuiDocPages = [
                 route: '/pipes/stringify-content',
             },
             {
-                section: 'Pipes',
+                section: 'Tools',
                 title: 'Amount',
                 keywords:
                     'amount, money, деньги, сумма, количество, cash, копейки, рубли, доллары, евро',
