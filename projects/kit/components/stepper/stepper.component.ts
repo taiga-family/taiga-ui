@@ -13,6 +13,7 @@ import {DestroyRef,
     Input,
     Output,
 } from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {
     EMPTY_QUERY,
@@ -155,7 +156,7 @@ export class TuiStepperComponent {
                 Math.max(0, left),
                 tuiGetDuration(this.speed) / 3,
             )
-            .pipe(takeUntilDestroyes(this.destroyRef))
+            .pipe(takeUntilDestroyed(this.destroyRef))
             .subscribe();
     }
 }
