@@ -120,26 +120,19 @@ export class TuiStepperComponent {
         this.moveFocus(event.target, step);
     }
 
-    @tuiPure
-    private getNativeElements(
-        queryList: QueryList<ElementRef<HTMLElement>>,
-    ): HTMLElement[] {
-        return queryList.map(({nativeElement}) => nativeElement);
-    }
-
     private moveFocus(current: EventTarget, step: number): void {
         if (!tuiIsElement(current)) {
             return;
         }
 
-        const stepElements = this.getNativeElements(this.steps);
-        const index = stepElements.findIndex(item => item === current);
+        const stepElements = this.steps.toArray().map(({nativeElement}) => nativeElement);
+        const index = stepElements.findIndex(element => element === current);
 
         tuiMoveFocus(index, stepElements, step);
     }
 
     private scrollIntoView(index: number): void {
-        const step = this.getNativeElements(this.steps)[index];
+        const step = this.steps.get(index)?.nativeElement;
 
         if (!step) {
             return;
