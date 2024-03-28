@@ -2,11 +2,18 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {TuiButtonModule, TuiSvgModule} from '@taiga-ui/core';
 import {TuiTilesModule} from '@taiga-ui/kit';
+import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiReorderComponent} from './reorder.component';
 
 @NgModule({
-    imports: [CommonModule, TuiSvgModule, TuiButtonModule, TuiTilesModule],
+    imports: [
+        CommonModule,
+        TuiSvgModule,
+        TuiButtonModule,
+        TuiTilesModule,
+        PolymorpheusModule,
+    ],
     declarations: [TuiReorderComponent],
     exports: [TuiReorderComponent],
 })
