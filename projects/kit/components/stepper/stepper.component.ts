@@ -4,6 +4,7 @@ import {
     ChangeDetectorRef,
     Component,
     ContentChildren,
+    DestroyRef,
     ElementRef,
     EventEmitter,
     forwardRef,
@@ -13,10 +14,10 @@ import {
     Input,
     Output,
 } from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {
     EMPTY_QUERY,
-    TuiDestroyService,
     tuiGetOriginalArrayFromQueryList,
     tuiIsElement,
     tuiMoveFocus,
@@ -27,7 +28,7 @@ import {
 import type {TuiOrientation} from '@taiga-ui/core';
 import {TUI_ANIMATIONS_SPEED, tuiGetDuration} from '@taiga-ui/core';
 import type {Observable} from 'rxjs';
-import {delay, takeUntil} from 'rxjs';
+import {delay} from 'rxjs';
 
 import {TuiStepComponent} from './step/step.component';
 
@@ -36,7 +37,7 @@ import {TuiStepComponent} from './step/step.component';
     templateUrl: './stepper.template.html',
     styleUrls: ['./stepper.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [ResizeObserverService, TuiDestroyService],
+    providers: [ResizeObserverService],
 })
 export class TuiStepperComponent {
     @ContentChildren(forwardRef(() => TuiStepComponent), {read: ElementRef})
@@ -47,7 +48,7 @@ export class TuiStepperComponent {
     private readonly scrollService = inject(TuiScrollService);
     private readonly resize$ = inject(ResizeObserverService);
     private readonly speed = inject(TUI_ANIMATIONS_SPEED);
-    private readonly destroy$ = inject(TuiDestroyService, {self: true});
+    private readonly destroyRef = inject(DestroyRef);
 
     @Input()
     @HostBinding('attr.data-orientation')
@@ -60,7 +61,7 @@ export class TuiStepperComponent {
 
     constructor() {
         this.resize$
-            .pipe(takeUntil(this.destroy$))
+            .pipe(takeUntilDestroyed())
             .subscribe(() => this.scrollIntoView(this.activeItemIndex));
     }
 
@@ -155,7 +156,7 @@ export class TuiStepperComponent {
                 Math.max(0, left),
                 tuiGetDuration(this.speed) / 3,
             )
-            .pipe(takeUntil(this.destroy$))
+            .pipe(takeUntilDestroyed(this.destroyRef))
             .subscribe();
     }
 }
