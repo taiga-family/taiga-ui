@@ -17,7 +17,6 @@ import {
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {
-    TuiArrowModule,
     TuiDataListDropdownManagerModule,
     TuiInputDateRangeModule,
     TuiInputModule,
@@ -44,7 +43,6 @@ import {TuiDataListExample6} from './examples/6';
         TuiPrimitiveTextfieldModule,
         TuiSelectModule,
         TuiTextfieldControllerModule,
-        TuiArrowModule,
         TuiNotificationModule,
         TuiDataListModule,
         TuiDataListDropdownManagerModule,

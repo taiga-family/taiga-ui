@@ -4,8 +4,8 @@ import {FormsModule} from '@angular/forms';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {tuiGetDocModules} from '@taiga-ui/addon-doc';
 import {TuiRepeatTimesModule} from '@taiga-ui/cdk';
-import {TuiNotificationModule} from '@taiga-ui/core';
-import {TuiButtonModule, TuiChipModule} from '@taiga-ui/experimental';
+import {TuiButtonModule, TuiNotificationModule} from '@taiga-ui/core';
+import {TuiChipModule} from '@taiga-ui/experimental';
 import {
     TuiAvatarComponent,
     TuiBadgedContentComponent,

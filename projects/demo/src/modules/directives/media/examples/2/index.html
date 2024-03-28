@@ -19,12 +19,12 @@
     >
         <button
             appearance="flat"
-            shape="rounded"
             size="s"
             title="Play/Pause"
             tuiIconButton
             type="button"
-            [icon]="icon"
+            [iconLeft]="icon"
+            [style.border-radius.%]="100"
             (click)="toggleState()"
         ></button>
         <input

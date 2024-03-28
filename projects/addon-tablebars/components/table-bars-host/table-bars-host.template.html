@@ -29,11 +29,12 @@
                     tuiIconButton
                     type="button"
                     class="t-close-button"
-                    [icon]="icons.close"
-                    [title]="closeWord$ | async"
+                    [iconLeft]="icons.close"
                     [tuiMode]="getMode(item.mode)"
                     (click)="onCloseClick(item)"
-                ></button>
+                >
+                    {{ closeWord$ | async }}
+                </button>
             </div>
         </div>
     </div>

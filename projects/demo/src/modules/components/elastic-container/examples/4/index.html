@@ -13,26 +13,28 @@
         <h3 class="title">
             <button
                 appearance="secondary"
-                icon="tuiIconChevronDown"
-                shape="rounded"
+                iconLeft="tuiIconChevronDown"
                 size="s"
-                title="Expand"
                 tuiIconButton
                 class="expand"
                 [class.expand_open]="item.expanded"
+                [style.border-radius.%]="100"
                 (click)="item.expanded = !item.expanded"
-            ></button>
+            >
+                Expand
+            </button>
             Nested form
             <button
                 appearance="flat"
-                icon="tuiIconTrash"
-                shape="rounded"
+                iconLeft="tuiIconTrash"
                 size="s"
-                title="Remove"
                 tuiIconButton
                 class="remove"
+                [style.border-radius.%]="100"
                 (click)="remove(index)"
-            ></button>
+            >
+                Remove
+            </button>
         </h3>
         <tui-expand [expanded]="item.expanded">
             <tui-input

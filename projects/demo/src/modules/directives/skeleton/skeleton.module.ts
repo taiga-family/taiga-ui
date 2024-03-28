@@ -3,9 +3,8 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {TuiExamplePipe, TuiSetupComponent} from '@demo/utils';
 import {tuiGetDocModules} from '@taiga-ui/addon-doc';
-import {TuiNotificationModule, TuiTitleDirective} from '@taiga-ui/core';
+import {TuiButtonModule, TuiNotificationModule, TuiTitleDirective} from '@taiga-ui/core';
 import {
-    TuiButtonModule,
     TuiCardModule,
     TuiChipModule,
     TuiLabelDirective,

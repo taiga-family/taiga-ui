@@ -38,13 +38,13 @@
 >
     <button
         size="s"
+        tabindex="-1"
         tuiIconButton
         type="button"
         class="t-button"
         [appearance]="textfield.appearance"
         [disabled]="!canIncrement"
-        [focusable]="false"
-        [icon]="icons.up"
+        [iconLeft]="icons.up"
         (click.prevent)="onArrow(step)"
         (mousedown.prevent)="nativeFocusableElement?.focus()"
     >
@@ -52,13 +52,13 @@
     </button>
     <button
         size="s"
+        tabindex="-1"
         tuiIconButton
         type="button"
         class="t-button"
         [appearance]="textfield.appearance"
         [disabled]="!canDecrement"
-        [focusable]="false"
-        [icon]="icons.down"
+        [iconLeft]="icons.down"
         (click.prevent)="onArrow(-step)"
         (mousedown.prevent)="nativeFocusableElement?.focus()"
     >

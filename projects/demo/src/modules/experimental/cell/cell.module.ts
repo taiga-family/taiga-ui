@@ -3,6 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {tuiGetDocModules} from '@taiga-ui/addon-doc';
 import {
+    TuiButtonModule,
     TuiDropdownModule,
     TuiGroupDirective,
     TuiIconComponent,
@@ -15,7 +16,6 @@ import {
     TuiTooltipModule,
 } from '@taiga-ui/core';
 import {
-    TuiButtonModule,
     TuiCardModule,
     TuiCellModule,
     TuiSurfaceModule,

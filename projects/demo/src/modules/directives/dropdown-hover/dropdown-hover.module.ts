@@ -4,12 +4,12 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {tuiGetDocModules} from '@taiga-ui/addon-doc';
 import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
 import {
+    TuiButtonModule,
     TuiDataListModule,
     TuiDropdownModule,
     TuiGroupDirective,
     TuiIconComponent,
 } from '@taiga-ui/core';
-import {TuiButtonModule} from '@taiga-ui/experimental';
 import {
     TuiDataListWrapperModule,
     TuiSelectModule,

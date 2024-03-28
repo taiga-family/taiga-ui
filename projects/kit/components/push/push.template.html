@@ -4,15 +4,16 @@
 <button
     *ngIf="closeable"
     appearance=""
-    shape="rounded"
     size="xs"
     tuiIconButton
     type="button"
     class="t-close"
-    [icon]="icons.close"
-    [title]="closeWord$ | async"
+    [iconLeft]="icons.close"
+    [style.border-radius.%]="100"
     (click)="close.emit()"
-></button>
+>
+    {{ closeWord$ | async }}
+</button>
 <div class="t-top">
     <span class="t-icon">
         <ng-content select="tui-svg" />

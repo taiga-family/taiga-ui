@@ -5,10 +5,11 @@
         type="button"
         class="t-arrow_left"
         [disabled]="leftButtonDisabled"
-        [icon]="icons.prev"
-        [title]="texts[0]"
+        [iconLeft]="icons.prev"
         (click)="onArrowClick(-1)"
-    ></button>
+    >
+        {{ texts[0] }}
+    </button>
     {{ index + 1 }}/{{ length }}
     <button
         tuiIconButton
@@ -16,8 +17,9 @@
         type="button"
         class="t-arrow_right"
         [disabled]="rightButtonDisabled"
-        [icon]="icons.next"
-        [title]="texts[1]"
+        [iconLeft]="icons.next"
         (click)="onArrowClick(1)"
-    ></button>
+    >
+        {{ texts[1] }}
+    </button>
 </ng-container>

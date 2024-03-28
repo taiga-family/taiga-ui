@@ -15,10 +15,11 @@
         type="button"
         class="t-link-icon"
         [fragment]="id"
-        [icon]="options.linkIcon"
-        [title]="copy$ | async"
+        [iconLeft]="options.linkIcon"
         (click)="copyExampleLink($any($event.currentTarget))"
-    ></a>
+    >
+        {{ copy$ | async }}
+    </a>
 </h3>
 <h4
     *ngIf="description"

@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiElementModule} from '@taiga-ui/cdk';
-import {TuiButtonModule} from '@taiga-ui/core';
+import {TuiButtonModule, TuiLinkModule} from '@taiga-ui/core';
 
 import {ExampleTuiElementComponent} from './element.component';
 import {TuiElementExample1} from './examples/1';
@@ -13,6 +13,7 @@ import {TuiElementExample1} from './examples/1';
         TuiElementModule,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiElementComponent)),
+        TuiLinkModule,
     ],
     declarations: [ExampleTuiElementComponent, TuiElementExample1],
     exports: [ExampleTuiElementComponent],
