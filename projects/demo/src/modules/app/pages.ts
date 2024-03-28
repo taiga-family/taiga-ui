@@ -978,13 +978,6 @@ export const pages: TuiDocPages = [
         route: '/experimental/radio',
     },
     {
-        section: 'Pipes',
-        title: 'Amount',
-        keywords:
-            'amount, money, деньги, сумма, количество, cash, копейки, рубли, доллары, евро',
-        route: '/pipes/amount',
-    },
-    {
         section: 'Components',
         title: 'Appearance',
         keywords: 'colors, css, theme, custom, style',
@@ -1479,6 +1472,13 @@ export const pages: TuiDocPages = [
                 keywords:
                     'string, tostring, content, polymorpheus, мап, преобразование, пайп, pipe',
                 route: '/pipes/stringify-content',
+            },
+            {
+                section: 'Tools',
+                title: 'Amount',
+                keywords:
+                    'amount, money, деньги, сумма, количество, cash, копейки, рубли, доллары, евро',
+                route: '/pipes/amount',
             },
         ],
     },
