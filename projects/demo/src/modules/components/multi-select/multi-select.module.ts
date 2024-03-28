@@ -21,7 +21,7 @@ import {
     TuiAvatarComponent,
     TuiDataListWrapperModule,
     TuiMultiSelectModule,
-    TuiRadioListModule,
+    TuiRadioListComponent,
     TuiTagModule,
 } from '@taiga-ui/kit';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
@@ -48,7 +48,7 @@ import {ExampleTuiMultiSelectComponent} from './multi-select.component';
         ScrollingModule,
         TuiScrollbarComponent,
         TuiMultiSelectModule,
-        TuiRadioListModule,
+        TuiRadioListComponent,
         TuiButtonModule,
         TuiLinkModule,
         TuiAvatarComponent,

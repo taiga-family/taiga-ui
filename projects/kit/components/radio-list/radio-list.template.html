@@ -1,24 +1,20 @@
-<tui-radio-group class="t-group">
-    <tui-radio-labeled
-        *ngFor="let item of items; index as index"
-        class="t-item"
-        [disabled]="disabled"
+<label
+    *ngFor="let item of items; index as index"
+    class="t-item"
+    [class.t-item_disabled]="disabled || disabledItemHandler(item)"
+>
+    <input
+        tuiRadio
+        type="radio"
+        [disabled]="disabled || disabledItemHandler(item)"
         [identityMatcher]="identityMatcher"
-        [item]="item"
-        [nativeId]="computeId(index)"
-        [pseudoDisabled]="itemIsDisabled(item)"
-        [pseudoInvalid]="computedInvalid"
-        [readOnly]="readOnly"
+        [name]="name"
         [size]="size"
+        [tuiValidator]="validator"
+        [value]="item"
         [(ngModel)]="value"
-    >
-        <ng-container
-            *polymorpheusOutlet="
-                itemContent as text;
-                context: {$implicit: item, index: index, active: itemIsActive(item)}
-            "
-        >
-            {{ text }}
-        </ng-container>
-    </tui-radio-labeled>
-</tui-radio-group>
+    />
+    <ng-container *polymorpheusOutlet="itemContent as text; context: {$implicit: item, active: itemIsActive(item)}">
+        {{ text }}
+    </ng-container>
+</label>

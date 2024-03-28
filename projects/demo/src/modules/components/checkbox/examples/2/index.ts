@@ -1,14 +1,16 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiButtonModule} from '@taiga-ui/experimental';
+import {TuiCheckboxComponent} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-radio-example-2',
+    standalone: true,
+    imports: [TuiCheckboxComponent, TuiButtonModule],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class TuiRadioExample2 {
-    protected value: any = null;
-    protected identityMatcher = (a: any, b: any): boolean => a?.test === b?.test;
+export default class ExampleComponent {
+    protected checked = false;
 }

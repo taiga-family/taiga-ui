@@ -13,7 +13,7 @@ import {
     TuiTextfieldControllerModule,
     TuiTitleDirective,
 } from '@taiga-ui/core';
-import {TuiButtonModule, TuiRadioComponent} from '@taiga-ui/experimental';
+import {TuiButtonModule} from '@taiga-ui/experimental';
 import {
     TuiBadgeDirective,
     TuiBlockDirective,
@@ -24,6 +24,7 @@ import {
     TuiInputNumberModule,
     TuiMultiSelectModule,
     TuiProjectClassModule,
+    TuiRadioComponent,
     TuiSelectModule,
 } from '@taiga-ui/kit';
 

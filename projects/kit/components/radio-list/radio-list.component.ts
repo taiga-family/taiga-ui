@@ -1,45 +1,53 @@
+import {NgForOf} from '@angular/common';
 import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     ElementRef,
     HostBinding,
+    HostListener,
     inject,
     Input,
     ViewChildren,
+    ViewEncapsulation,
 } from '@angular/core';
-import type {
-    TuiBooleanHandler,
-    TuiIdentityMatcher,
-    TuiNativeFocusableElement,
-} from '@taiga-ui/cdk';
+import type {ValidatorFn} from '@angular/forms';
+import {FormsModule, NgControl, Validators} from '@angular/forms';
+import type {TuiBooleanHandler, TuiIdentityMatcher} from '@taiga-ui/cdk';
 import {
     AbstractTuiNullableControl,
     EMPTY_QUERY,
     TUI_DEFAULT_IDENTITY_MATCHER,
     TUI_FALSE_HANDLER,
     tuiAsControl,
-    tuiAsFocusableItemAccessor,
     tuiIsNativeFocusedIn,
+    TuiValidatorDirective,
 } from '@taiga-ui/cdk';
-import type {TuiOrientation, TuiSizeL, TuiValueContentContext} from '@taiga-ui/core';
-import {TuiRadioLabeledComponent} from '@taiga-ui/kit/components/radio-labeled';
+import type {TuiSizeS, TuiValueContentContext} from '@taiga-ui/core';
+import {TuiRadioComponent, TuiRadioDirective} from '@taiga-ui/kit/components/radio';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 @Component({
+    standalone: true,
     selector: 'tui-radio-list',
+    imports: [
+        NgForOf,
+        FormsModule,
+        PolymorpheusModule,
+        TuiRadioComponent,
+        TuiRadioDirective,
+        TuiValidatorDirective,
+    ],
     templateUrl: './radio-list.template.html',
     styleUrls: ['./radio-list.style.less'],
+    encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        tuiAsFocusableItemAccessor(TuiRadioListComponent),
-        tuiAsControl(TuiRadioListComponent),
-    ],
+    providers: [tuiAsControl(TuiRadioListComponent)],
 })
 export class TuiRadioListComponent<T> extends AbstractTuiNullableControl<T> {
-    @ViewChildren(TuiRadioLabeledComponent)
-    private readonly radioButtons: QueryList<TuiRadioLabeledComponent<unknown>> =
-        EMPTY_QUERY;
+    @ViewChildren(NgControl)
+    private readonly controls: QueryList<NgControl> = EMPTY_QUERY;
 
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
 
@@ -48,14 +56,10 @@ export class TuiRadioListComponent<T> extends AbstractTuiNullableControl<T> {
 
     @Input()
     @HostBinding('attr.data-size')
-    public size: TuiSizeL = 'm';
+    public size: TuiSizeS = 'm';
 
     @Input()
     public identityMatcher: TuiIdentityMatcher<T> = TUI_DEFAULT_IDENTITY_MATCHER;
-
-    @Input()
-    @HostBinding('attr.data-orientation')
-    public orientation: TuiOrientation = 'vertical';
 
     @Input()
     public disabledItemHandler: TuiBooleanHandler<T> = TUI_FALSE_HANDLER;
@@ -64,30 +68,25 @@ export class TuiRadioListComponent<T> extends AbstractTuiNullableControl<T> {
         return tuiIsNativeFocusedIn(this.el);
     }
 
-    public get nativeFocusableElement(): TuiNativeFocusableElement | null {
-        const focusableRadioButton = this.radioButtons.find(
-            radioButton => radioButton.nativeFocusableElement !== null,
-        );
-
-        return focusableRadioButton?.nativeFocusableElement ?? null;
-    }
-
-    // @bad TODO: Remove & { index: number }
     @Input()
-    public itemContent: PolymorpheusContent<TuiValueContentContext<T> & {index: number}> =
-        ({$implicit}) => String($implicit);
+    public itemContent: PolymorpheusContent<TuiValueContentContext<T>> = ({$implicit}) =>
+        String($implicit);
 
-    protected computeId(index: number): string {
-        return `${this.id}-${index}`;
+    protected get name(): string {
+        return this.computedName || '';
     }
 
-    protected itemIsDisabled(item: T): boolean {
-        return this.disabledItemHandler(item);
+    protected get validator(): ValidatorFn {
+        return this.computedInvalid ? this.error : Validators.nullValidator;
     }
 
-    /** @deprecated use 'value' setter */
-    protected onModelChange(value: T): void {
-        this.value = value;
+    @HostListener('focusout')
+    protected onFocusOut(): void {
+        this.controls.forEach(control => control.control?.markAsTouched());
+
+        if (!this.touched) {
+            this.updateFocused(false);
+        }
     }
 
     protected itemIsActive(item: T): boolean {
@@ -95,4 +94,6 @@ export class TuiRadioListComponent<T> extends AbstractTuiNullableControl<T> {
             ? item === null
             : this.identityMatcher(this.value, item);
     }
+
+    private readonly error: ValidatorFn = () => ({error: 'Invalid'});
 }

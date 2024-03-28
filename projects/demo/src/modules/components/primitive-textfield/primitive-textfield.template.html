@@ -207,36 +207,4 @@
             </li>
         </ol>
     </ng-template>
-
-    <!--    TODO: Possibly remove-->
-    <!--    <ng-template pageTab="Theming">-->
-    <!--        <tui-customization>-->
-    <!--            <bootstrap *ngIf="isBootstrap"></bootstrap>-->
-    <!--            <material *ngIf="isMaterial"></material>-->
-    <!--            <tui-radio-list-->
-    <!--                size="l"-->
-    <!--                orientation="horizontal"-->
-    <!--                class="tui-space_bottom-4"-->
-    <!--                [items]="themes"-->
-    <!--                [(ngModel)]="theme"-->
-    <!--            ></tui-radio-list>-->
-    <!--            <ng-template #label >Theming sample</ng-template>-->
-    <!--            <label-->
-    <!--                tuiLabel-->
-    <!--                class="theme-wrapper label"-->
-    <!--                [label]="isBootstrap ? label : ''"-->
-    <!--            >-->
-    <!--                <tui-primitive-textfield-->
-    <!--                    value="Value"-->
-    <!--                    tuiTextfieldExampleText="Example text"-->
-    <!--                    class="input"-->
-    <!--                    [tuiTextfieldCleaner]="!isBootstrap"-->
-    <!--                    [tuiTextfieldLabelOutside]="isBootstrap"-->
-    <!--                    [tuiTextfieldSize]="customizationSize"-->
-    <!--                >-->
-    <!--                    {{ placeholder }}-->
-    <!--                </tui-primitive-textfield>-->
-    <!--            </label>-->
-    <!--        </tui-customization>-->
-    <!--    </ng-template>-->
 </tui-doc-page>

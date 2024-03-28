@@ -179,14 +179,6 @@ export const ROUTES: Routes = [
             title: 'Chip',
         },
     },
-    {
-        path: 'experimental/radio',
-        loadChildren: async () =>
-            (await import('../experimental/radio/radio.module')).ExampleTuiRadioModule,
-        data: {
-            title: 'Radio ',
-        },
-    },
     route({
         path: 'components/title',
         title: 'Title',
@@ -909,23 +901,11 @@ export const ROUTES: Routes = [
             title: 'Pagination',
         },
     },
-    {
+    route({
         path: 'components/radio',
-        loadChildren: async () =>
-            (await import('../components/radio/radio.module')).ExampleTuiRadioModule,
-        data: {
-            title: 'Radio',
-        },
-    },
-    {
-        path: 'components/radio-list',
-        loadChildren: async () =>
-            (await import('../components/radio-list/radio-list.module'))
-                .ExampleTuiRadioListModule,
-        data: {
-            title: 'RadioList',
-        },
-    },
+        title: 'Radio',
+        loadComponent: async () => import('../components/radio'),
+    }),
     {
         path: 'components/rating',
         loadChildren: async () =>

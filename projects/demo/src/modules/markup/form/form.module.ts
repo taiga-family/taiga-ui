@@ -11,7 +11,7 @@ import {
     TuiHintModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiLabelDirective, TuiRadioComponent} from '@taiga-ui/experimental';
+import {TuiLabelDirective} from '@taiga-ui/experimental';
 import {
     TuiBlockDirective,
     TuiCheckboxComponent,
@@ -26,7 +26,8 @@ import {
     TuiInputSliderModule,
     TuiInputTagModule,
     TuiInputTimeModule,
-    TuiRadioListModule,
+    TuiRadioComponent,
+    TuiRadioListComponent,
     TuiSelectModule,
     TuiStepperModule,
     TuiTextareaModule,
@@ -49,7 +50,7 @@ import {FormComponent} from './form.component';
         TuiTextareaModule,
         TuiInputSliderModule,
         TuiInputRangeModule,
-        TuiRadioListModule,
+        TuiRadioListComponent,
         TuiButtonModule,
         TuiErrorModule,
         TuiFieldErrorPipeModule,

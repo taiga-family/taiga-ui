@@ -1,28 +1,18 @@
 import type {Provider} from '@angular/core';
+import type {TuiStringHandler} from '@taiga-ui/cdk';
 import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
-import type {TuiSizeL} from '@taiga-ui/core';
-import {TuiAppearance} from '@taiga-ui/core';
+import type {TuiSizeS} from '@taiga-ui/core';
 
 export interface TuiRadioOptions {
-    readonly appearances: Readonly<{
-        checked: string;
-        unchecked: string;
-    }>;
-    readonly size: TuiSizeL;
+    readonly appearance: TuiStringHandler<HTMLInputElement>;
+    readonly size: TuiSizeS;
 }
 
-/** Default values for the checkbox options. */
 export const TUI_RADIO_DEFAULT_OPTIONS: TuiRadioOptions = {
     size: 'm',
-    appearances: {
-        unchecked: TuiAppearance.Outline,
-        checked: TuiAppearance.Primary,
-    },
+    appearance: ({checked}) => (checked ? 'primary' : 'whiteblock'),
 };
 
-/**
- * Default parameters for Radio component
- */
 export const TUI_RADIO_OPTIONS = tuiCreateToken(TUI_RADIO_DEFAULT_OPTIONS);
 
 export function tuiRadioOptionsProvider(options: Partial<TuiRadioOptions>): Provider {
