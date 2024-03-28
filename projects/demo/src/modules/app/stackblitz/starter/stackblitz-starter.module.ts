@@ -1,13 +1,13 @@
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
-import {TuiLinkModule, TuiLoaderModule, TuiSvgModule} from '@taiga-ui/core';
+import {TuiIconComponent, TuiLinkModule, TuiLoaderModule} from '@taiga-ui/core';
 
 import {StackblitzEditButtonComponent} from './stackblitz-edit-button.component';
 import {StackblitzStarterComponent} from './stackblitz-starter.component';
 
 @NgModule({
     imports: [
-        TuiSvgModule,
+        TuiIconComponent,
         TuiLinkModule,
         TuiLoaderModule,
         RouterModule.forChild([{path: '', component: StackblitzStarterComponent}]),
