@@ -279,15 +279,6 @@ export const ROUTES: Routes = [
         loadComponent: async () => import('../directives/comment/comment.component'),
         title: 'Comment',
     }),
-    {
-        path: 'experimental/compass',
-        loadChildren: async () =>
-            (await import('../experimental/compass/compass.module'))
-                .ExampleTuiCompassModule,
-        data: {
-            title: 'Compass',
-        },
-    },
     route({
         path: 'layout/header',
         title: 'Header',
@@ -375,14 +366,6 @@ export const ROUTES: Routes = [
                 .ExampleTuiNavigationModule,
         data: {
             title: 'Navigation',
-        },
-    },
-    {
-        path: 'experimental/pin',
-        loadChildren: async () =>
-            (await import('../experimental/pin/pin.module')).ExampleTuiPinModule,
-        data: {
-            title: 'Pin',
         },
     },
     {
@@ -1072,6 +1055,16 @@ export const ROUTES: Routes = [
             title: 'PdfViewer',
         },
     },
+    route({
+        path: 'components/pin',
+        title: 'Pin',
+        loadComponent: async () => import('../components/pin'),
+    }),
+    route({
+        path: 'components/compass',
+        title: 'Compass',
+        loadComponent: async () => import('../components/compass'),
+    }),
     {
         path: 'components/progress-bar',
         loadChildren: async () =>
