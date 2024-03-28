@@ -26,7 +26,6 @@ import {
 } from '@taiga-ui/core';
 import {
     TuiAccordionModule,
-    TuiArrowModule,
     TuiDataListWrapperModule,
     TuiInputDateModule,
     TuiInputModule,
@@ -73,7 +72,6 @@ import {ExampleTuiTableComponent} from './table.component';
         TuiTablePaginationModule,
         TuiTextfieldControllerModule,
         TuiDropdownModule,
-        TuiArrowModule,
         TuiReorderModule,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiTableComponent)),

@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/core';
-import {tuiButtonOptionsProvider} from '@taiga-ui/experimental/components/button';
+import {tuiButtonOptionsProvider} from '@taiga-ui/core';
 import {tuiBadgeOptionsProvider, tuiTabsOptionsProvider} from '@taiga-ui/kit';
 
 @Component({

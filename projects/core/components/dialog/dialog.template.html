@@ -37,15 +37,16 @@
 >
     <button
         automation-id="tui-dialog__close"
-        shape="rounded"
         size="s"
         tuiIconButton
         type="button"
         class="t-close"
         [appearance]="fullscreen ? 'secondary' : ''"
-        [icon]="icons.close"
-        [title]="closeWord$ | async"
+        [iconLeft]="icons.close"
+        [style.border-radius.%]="100"
         (click)="close$.next()"
         (mousedown.prevent.silent)="(0)"
-    ></button>
+    >
+        {{ closeWord$ | async }}
+    </button>
 </div>

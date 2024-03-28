@@ -1,12 +1,11 @@
 import {Directive} from '@angular/core';
-import {TuiAppearance, tuiButtonOptionsProvider} from '@taiga-ui/core';
+import {tuiButtonOptionsProvider} from '@taiga-ui/core';
 
 @Directive({
     selector: '[tuiCarouselButtons]',
     providers: [
         tuiButtonOptionsProvider({
-            appearance: TuiAppearance.Secondary,
-            shape: 'rounded',
+            appearance: 'secondary',
             size: 'm',
         }),
     ],

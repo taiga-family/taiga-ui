@@ -5,7 +5,7 @@
     tuiButton
     tuiDropdownAlign="right"
     type="button"
-    [pseudoActive]="open || null"
+    [tuiAppearanceState]="open ? 'active' : null"
     [tuiDropdown]="dropdown"
     [tuiDropdownSided]="true"
     [(tuiDropdownOpen)]="open"

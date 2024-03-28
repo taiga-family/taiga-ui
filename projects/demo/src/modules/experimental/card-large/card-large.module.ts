@@ -8,6 +8,7 @@ import {TuiPlatformModule, TuiRepeatTimesModule} from '@taiga-ui/cdk';
 import {
     TuiAppearanceDirective,
     TuiAutoColorPipe,
+    TuiButtonModule,
     TuiDataListModule,
     TuiDropdownModule,
     TuiFallbackSrcPipe,
@@ -21,8 +22,6 @@ import {
     TuiTitleDirective,
 } from '@taiga-ui/core';
 import {
-    TuiButtonCloseModule,
-    TuiButtonModule,
     TuiCardModule,
     TuiCellModule,
     TuiSurfaceModule,
@@ -32,6 +31,7 @@ import {
     TuiAvatarComponent,
     TuiAvatarStackComponent,
     TuiBadgeDirective,
+    TuiButtonCloseDirective,
     TuiFadeDirective,
 } from '@taiga-ui/kit';
 import {TuiHeaderDirective} from '@taiga-ui/layout';
@@ -78,7 +78,7 @@ import {TuiCardLargeExample12} from './examples/12';
         TuiRepeatTimesModule,
         TuiDataListModule,
         TuiDropdownModule,
-        TuiButtonCloseModule,
+        TuiButtonCloseDirective,
         TuiPlatformModule,
         TuiLinkModule,
         TuiAppearanceDirective,

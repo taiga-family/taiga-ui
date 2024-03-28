@@ -4,9 +4,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TuiExamplePipe} from '@demo/utils';
 import {tuiGetDocModules} from '@taiga-ui/addon-doc';
 import {TuiPlatformModule} from '@taiga-ui/cdk';
-import {TuiNotificationModule} from '@taiga-ui/core';
+import {TuiButtonModule, TuiNotificationModule} from '@taiga-ui/core';
 import {
-    TuiButtonModule,
     TuiLabelDirective,
     TuiRadioComponent,
     TuiRadioDirective,

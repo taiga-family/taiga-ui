@@ -9,6 +9,7 @@ import {
     TuiSwipeActionsComponent,
 } from '@taiga-ui/addon-mobile';
 import {
+    TuiButtonModule,
     TuiDataListModule,
     TuiDropdownDirective,
     TuiDropdownOpenDirective,
@@ -16,12 +17,7 @@ import {
     TuiNotificationModule,
     TuiTitleDirective,
 } from '@taiga-ui/core';
-import {
-    TuiButtonModule,
-    TuiCardModule,
-    TuiCellModule,
-    TuiSurfaceModule,
-} from '@taiga-ui/experimental';
+import {TuiCardModule, TuiCellModule, TuiSurfaceModule} from '@taiga-ui/experimental';
 import {
     TuiAvatarComponent,
     TuiBadgeComponent,

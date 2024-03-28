@@ -12,7 +12,7 @@ import {
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {TuiLabelDirective} from '@taiga-ui/experimental';
-import {TuiCheckboxComponent} from '@taiga-ui/kit';
+import {TuiButtonLoadingComponent, TuiCheckboxComponent} from '@taiga-ui/kit';
 
 import {PayModalComponent} from './pay-modal.component';
 
@@ -32,6 +32,7 @@ import {PayModalComponent} from './pay-modal.component';
         TuiTextfieldControllerModule,
         TuiLabelDirective,
         TuiCheckboxComponent,
+        TuiButtonLoadingComponent,
     ],
     declarations: [PayModalComponent],
 })

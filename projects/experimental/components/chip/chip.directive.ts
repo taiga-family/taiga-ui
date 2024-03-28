@@ -4,9 +4,9 @@ import type {TuiSizeXXS} from '@taiga-ui/core';
 import {
     TuiAppearanceDirective,
     tuiAppearanceOptionsProvider,
+    tuiButtonOptionsProvider,
     TuiIconsDirective,
 } from '@taiga-ui/core';
-import {tuiButtonOptionsProvider} from '@taiga-ui/experimental/components/button';
 import {
     tuiAvatarOptionsProvider,
     tuiCheckboxOptionsProvider,

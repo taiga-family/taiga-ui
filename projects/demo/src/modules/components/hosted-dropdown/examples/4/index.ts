@@ -2,7 +2,6 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TUI_ARROW} from '@taiga-ui/kit';
 
 @Component({
     selector: 'tui-hosted-dropdown-example-4',
@@ -18,8 +17,6 @@ export class TuiHostedDropdownExample4 {
     protected open = false;
 
     protected readonly items = ['Drafts', 'In Progress', 'Completed'];
-
-    protected readonly arrow = TUI_ARROW;
 
     protected get appearance(): string {
         return this.length ? 'whiteblock-active' : 'whiteblock';

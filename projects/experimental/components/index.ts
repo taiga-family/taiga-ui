@@ -1,4 +1,3 @@
-export * from '@taiga-ui/experimental/components/button';
 export * from '@taiga-ui/experimental/components/chip';
 export * from '@taiga-ui/experimental/components/compass';
 export * from '@taiga-ui/experimental/components/navigation';

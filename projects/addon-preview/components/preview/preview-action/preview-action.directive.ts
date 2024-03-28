@@ -6,9 +6,11 @@ import {tuiButtonOptionsProvider} from '@taiga-ui/core';
     providers: [
         tuiButtonOptionsProvider({
             appearance: 'preview-action',
-            shape: 'rounded',
             size: 's',
         }),
     ],
+    host: {
+        '[style.border-radius.%]': '100',
+    },
 })
 export class TuiPreviewActionDirective {}

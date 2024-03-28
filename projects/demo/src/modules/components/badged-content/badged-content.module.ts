@@ -4,11 +4,11 @@ import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiPlatformModule} from '@taiga-ui/cdk';
 import {
+    TuiButtonModule,
     TuiFallbackSrcPipe,
     TuiIconComponent,
     TuiNotificationModule,
 } from '@taiga-ui/core';
-import {TuiButtonModule} from '@taiga-ui/experimental';
 import {
     TuiAvatarComponent,
     TuiBadgedContentComponent,

@@ -8,11 +8,11 @@
     ></audio>
     <button
         appearance="secondary"
-        shape="rounded"
         title="Play/Pause"
         tuiIconButton
         type="button"
-        [icon]="icon"
+        [iconLeft]="icon"
+        [style.border-radius.%]="100"
         (click)="toggleState()"
     ></button>
     <div>

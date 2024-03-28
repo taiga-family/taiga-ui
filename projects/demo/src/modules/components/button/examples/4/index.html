@@ -1,7 +1,8 @@
 <button
-    appearance="custom"
+    iconLeft="tuiIconClock"
     tuiButton
-    type="button"
+    [loading]="loading$ | async"
+    (click)="trigger$.next()"
 >
-    See LESS tab
+    Click to start
 </button>
