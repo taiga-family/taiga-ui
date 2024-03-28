@@ -1396,6 +1396,12 @@ export const pages: TuiDocPages = [
                     'верстка, markup, скелетон, loader, загрузка, skeleton, shimmer',
                 route: 'directives/skeleton',
             },
+            {
+                section: 'Tools',
+                title: 'Amount',
+                keywords: 'amount, money, деньги, сумма, количество, cash, копейки, рубли, доллары, евро',
+                route: '/pipes/amount',
+            },
         ],
     },
     {
