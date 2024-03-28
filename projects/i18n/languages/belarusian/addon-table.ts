@@ -6,5 +6,9 @@ export const TUI_BELARUSIAN_LANGUAGE_ADDON_TABLE: TuiLanguageTable = {
         pages: 'Старонак',
         linesPerPage: 'Радкоў на старонку',
         of: 'з',
+        firstPage: 'Першая старонка',
+        previousPage: 'Папярэдняя старонка',
+        nextPage: 'Наступная старонка',
+        lastPage: 'Апошняя старонка',
     },
 };

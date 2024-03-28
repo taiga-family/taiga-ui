@@ -6,5 +6,9 @@ export const TUI_VIETNAMESE_LANGUAGE_ADDON_TABLE: TuiLanguageTable = {
         pages: 'Tổng số trang',
         linesPerPage: 'Số dòng mỗi trang',
         of: 'trên',
+        firstPage: 'First page',
+        previousPage: 'Previous page',
+        nextPage: 'Next page',
+        lastPage: 'Last page',
     },
 };

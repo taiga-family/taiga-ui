@@ -6,5 +6,9 @@ export const TUI_KAZAKH_LANGUAGE_ADDON_TABLE: TuiLanguageTable = {
         pages: 'Беттер',
         linesPerPage: 'Әр беттегі жолдар',
         of: 'ның',
+        firstPage: 'First page',
+        previousPage: 'Previous page',
+        nextPage: 'Next page',
+        lastPage: 'Last page',
     },
 };
