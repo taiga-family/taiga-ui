@@ -1,0 +1,17 @@
+<tui-doc-page
+    header="Rating"
+    package="KIT"
+    type="components"
+>
+    <ng-template pageTab>
+        <tui-doc-example
+            *ngFor="let example of examples; let index = index"
+            [component]="index + 1 | tuiComponent"
+            [content]="index + 1 | tuiExample"
+            [heading]="example"
+            [id]="example | tuiKebab"
+        />
+    </ng-template>
+
+    <tui-setup *pageTab="'Setup'" />
+</tui-doc-page>

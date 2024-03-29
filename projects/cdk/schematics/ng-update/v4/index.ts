@@ -22,6 +22,7 @@ import {
     MIGRATION_WARNINGS,
     MODULES_TO_REMOVE,
 } from './steps/constants';
+import {migrateStyles} from './steps/migrate-styles';
 
 function main(options: TuiSchema): Rule {
     return (tree: Tree, context: SchematicContext) => {
@@ -36,6 +37,7 @@ function main(options: TuiSchema): Rule {
         migrateDestroyService(options);
 
         migrateTemplates(fileSystem, options);
+        migrateStyles();
         showWarnings(context, MIGRATION_WARNINGS);
 
         fileSystem.commitEdits();

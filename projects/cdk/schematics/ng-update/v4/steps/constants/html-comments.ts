@@ -19,4 +19,10 @@ export const HTML_COMMENTS: HtmlComment[] = [
         comment:
             'radio [identityMatcher] and [pseudoDisabled] inputs have been removed. If you need a workaround, please start a discussion on GitHub to think together',
     },
+    {
+        tag: 'tui-rating',
+        withAttrs: ['iconFilled', 'iconNormal'],
+        comment:
+            'rating [iconFilled] and [iconNormal] inputs have been removed. Use [icon] instead. See example https://taiga-ui.dev/components/rating#icons',
+    },
 ];

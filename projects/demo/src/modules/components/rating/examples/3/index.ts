@@ -8,11 +8,8 @@ import {TuiRatingComponent} from '@taiga-ui/kit';
 @Component({
     standalone: true,
     imports: [TuiRatingComponent, TuiLabelModule, FormsModule],
-    templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    templateUrl: 'index.html',
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {
-    protected value = 0;
-}
+export default class ExampleComponent {}

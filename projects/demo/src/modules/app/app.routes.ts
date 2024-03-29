@@ -290,14 +290,6 @@ export const ROUTES: Routes = [
         loadComponent: async () => import('../experimental/label'),
     }),
     {
-        path: 'experimental/rating',
-        loadChildren: async () =>
-            (await import('../experimental/rating/rating.module')).ExampleTuiRatingModule,
-        data: {
-            title: 'Rating',
-        },
-    },
-    {
         path: 'experimental/segmented',
         loadChildren: async () =>
             (await import('../experimental/segmented/segmented.module'))
@@ -880,14 +872,11 @@ export const ROUTES: Routes = [
         title: 'Radio',
         loadComponent: async () => import('../components/radio'),
     }),
-    {
+    route({
         path: 'components/rating',
-        loadChildren: async () =>
-            (await import('../components/rating/rating.module')).ExampleTuiRatingModule,
-        data: {
-            title: 'Rating',
-        },
-    },
+        title: 'Rating',
+        loadComponent: async () => import('../components/rating'),
+    }),
     {
         path: 'components/range',
         loadChildren: async () =>
