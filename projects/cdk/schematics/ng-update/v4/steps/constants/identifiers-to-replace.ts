@@ -271,4 +271,12 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifier[] = [
         from: {name: 'TuiCompassModule', moduleSpecifier: '@taiga-ui/experimental'},
         to: {name: 'TuiCompassComponent', moduleSpecifier: '@taiga-ui/kit'},
     },
+    {
+        from: {name: 'TuiRatingModule', moduleSpecifier: '@taiga-ui/experimental'},
+        to: {name: 'TuiRatingComponent', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {name: 'TuiRatingModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiRatingComponent', moduleSpecifier: '@taiga-ui/kit'},
+    },
 ];

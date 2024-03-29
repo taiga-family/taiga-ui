@@ -1,24 +1,23 @@
-@import '@taiga-ui/core/styles/taiga-ui-local';
-
-.example {
-    .tui-space(bottom, 2);
+.rating,
+.button {
+    display: inline-block;
+    vertical-align: middle;
 }
 
-.yellow {
-    color: #faaf00;
-}
+.rating {
+    &[data-value='1'] {
+        color: var(--tui-negative);
+    }
 
-.pink {
-    color: pink;
-}
+    &[data-value='2'] {
+        color: var(--tui-warning-fill);
+    }
 
-.red {
-    color: var(--tui-negative);
-}
+    &[data-value='3'] {
+        color: var(--tui-positive);
+    }
 
-.label {
-    color: #000;
-    font-weight: bold;
-    cursor: pointer;
-    .tui-space(bottom, 2);
+    &:hover {
+        color: var(--tui-info-fill);
+    }
 }

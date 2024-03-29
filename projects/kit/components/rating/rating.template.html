@@ -1,46 +1,31 @@
-<label>
-    <ng-content />
-
-    <div class="t-host">
-        <div class="t-interactive">
-            <tui-svg
-                *tuiRepeatTimes="let index of max"
-                class="t-icon-rating t-icon-filled"
-                [class.t-icon-rating-last]="index === 0"
-                [src]="iconFilled"
-                (click)="setRateByReverseIndex(index)"
-            />
-        </div>
-
-        <div
-            class="t-wrapper"
-            [style.width.%]="percent"
-        >
-            <tui-svg
-                *tuiRepeatTimes="let index of max"
-                class="t-icon-rating t-icon-filled"
-                [class.t-icon-rating-last]="index === 0"
-                [src]="iconFilled"
-            />
-        </div>
-
-        <tui-svg
-            *tuiRepeatTimes="let index of max"
-            class="t-icon-rating"
-            [class.t-icon-rating-last]="max - 1 === index"
-            [src]="iconNormal"
+<div class="t-items">
+    <div
+        *tuiRepeatTimes="let index of max"
+        class="t-item"
+        [class.t-item_active]="isActive(index)"
+        (pointerup)="onClick(max - index)"
+    >
+        <tui-icon
+            *polymorpheusOutlet="icon as src; context: {$implicit: max - index}"
+            class="t-icon t-icon_blank"
+            [class.t-icon_fraction]="isFraction(index)"
+            [icon]="src.toString()"
+            [style.--t-cut.%]="100 - getCut(index)"
         />
-
-        <input
-            #focusableElement
-            step="1"
-            type="range"
-            class="t-input"
-            [max]="max"
-            [min]="min"
-            [ngModel]="value"
-            [tuiFocusable]="isFocusable"
-            (ngModelChange)="setRate($event)"
+        <tui-icon
+            *polymorpheusOutlet="icon as src; context: {$implicit: max - index}"
+            class="t-icon"
+            [icon]="src.toString()"
+            [style.--t-cut.%]="getCut(index)"
         />
     </div>
-</label>
+</div>
+<input
+    min="1"
+    type="range"
+    class="t-range"
+    [attr.aria-disabled]="readOnly"
+    [disabled]="computedDisabled"
+    [max]="max"
+    [(ngModel)]="value"
+/>
