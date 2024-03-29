@@ -1,5 +1,4 @@
 import {AsyncPipe, NgIf} from '@angular/common';
-import {TuiDestroyService} from '@taiga-ui/cdk';
 import type {OnInit} from '@angular/core';
 import {Component, DestroyRef, inject, ViewEncapsulation} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
@@ -10,6 +9,7 @@ import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {TuiDocMainModule, TuiLanguageSwitcherComponent} from '@taiga-ui/addon-doc';
 import {TuiSheetModule} from '@taiga-ui/addon-mobile';
 import {TuiTableBarsHostModule} from '@taiga-ui/addon-tablebars';
+import {TuiDestroyService} from '@taiga-ui/cdk';
 import {TuiLinkModule, TuiModeModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {distinctUntilChanged, filter, map} from 'rxjs';
 
