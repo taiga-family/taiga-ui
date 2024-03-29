@@ -8,7 +8,8 @@ import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {TuiDocMainModule, TuiLanguageSwitcherComponent} from '@taiga-ui/addon-doc';
 import {TuiSheetModule} from '@taiga-ui/addon-mobile';
 import {TuiTableBarsHostModule} from '@taiga-ui/addon-tablebars';
-import {TuiDestroyService} from '@taiga-ui/cdk';
+import {DestroyRef} from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {TuiLinkModule, TuiModeModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {distinctUntilChanged, filter, map, takeUntil} from 'rxjs';
 
@@ -42,13 +43,12 @@ import {TUI_VERSION_MANAGER_PROVIDERS} from './version-manager/version-manager.p
     changeDetection,
     providers: [
         ResizeObserverService,
-        TuiDestroyService,
         DEMO_PAGE_LOADED_PROVIDER,
         TUI_VERSION_MANAGER_PROVIDERS,
     ],
 })
 export class AppComponent extends AbstractDemoComponent implements OnInit {
-    private readonly destroy$ = inject(TuiDestroyService, {self: true});
+    private readonly destroyRef = inject(DestroyRef);
     private readonly ym = inject(YaMetrikaService);
     protected readonly router = inject(Router);
     protected readonly storage = inject(LOCAL_STORAGE);
@@ -67,7 +67,7 @@ export class AppComponent extends AbstractDemoComponent implements OnInit {
         this.router.events
             .pipe(
                 filter((event): event is NavigationEnd => event instanceof NavigationEnd),
-                takeUntil(this.destroy$),
+                takeUntilDestroyed(this.destroyRef),
             )
             .subscribe(event =>
                 this.ym.hit(event.urlAfterRedirects, {referer: event.url}),
