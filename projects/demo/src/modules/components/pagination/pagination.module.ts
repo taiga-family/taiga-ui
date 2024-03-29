@@ -8,7 +8,7 @@ import {
     TuiBadgeDirective,
     TuiInputSliderModule,
     TuiPaginationModule,
-    TuiRadioListModule,
+    TuiRadioListComponent,
 } from '@taiga-ui/kit';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
@@ -24,7 +24,7 @@ import {ExampleTuiPaginationComponent} from './pagination.component';
         TuiPaginationModule,
         TuiInputSliderModule,
         CommonModule,
-        TuiRadioListModule,
+        TuiRadioListComponent,
         FormsModule,
         ReactiveFormsModule,
         TuiAddonDocModule,

@@ -5,7 +5,7 @@ import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiForModule, TuiRepeatTimesModule} from '@taiga-ui/cdk';
 import {TuiModeModule, TuiNotificationModule, TuiSvgModule} from '@taiga-ui/core';
-import {TuiRadioListModule, TuiTagModule} from '@taiga-ui/kit';
+import {TuiRadioListComponent, TuiTagModule} from '@taiga-ui/kit';
 
 import {TuiTagExample1} from './examples/1';
 import {TuiTagExample2} from './examples/2';
@@ -19,7 +19,7 @@ import {ExampleTuiTagComponent} from './tag.component';
     imports: [
         CommonModule,
         FormsModule,
-        TuiRadioListModule,
+        TuiRadioListComponent,
         TuiTagModule,
         TuiModeModule,
         TuiSvgModule,

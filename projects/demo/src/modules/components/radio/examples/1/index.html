@@ -1,24 +1,53 @@
-<form [formGroup]="testForm">
-    <tui-radio
-        formControlName="testValue1"
-        item="One"
-        class="tui-space_bottom-3"
+<div
+    *ngFor="let platform of platforms; let first = first"
+    class="wrapper"
+    [class.wrapper_web]="platform === 'web'"
+    [tuiPlatform]="platform"
+>
+    <input
+        ngModel="checked"
+        tuiRadio
+        type="radio"
+        value="checked"
+        [size]="getSize(first)"
     />
 
-    <tui-radio
-        formControlName="testValue1"
-        item="Two"
-        class="tui-space_bottom-3"
+    <input
+        ngModel="checked"
+        tuiRadio
+        type="radio"
+        value="checked"
+        [disabled]="true"
+        [size]="getSize(first)"
     />
 
-    <tui-radio
-        formControlName="testValue2"
-        item="One"
-        class="tui-space_bottom-3"
+    <input
+        tuiRadio
+        type="radio"
+        [size]="getSize(first)"
     />
 
-    <tui-radio
-        formControlName="testValue2"
-        item="Two"
+    <input
+        ngModel="checked"
+        tuiRadio
+        type="radio"
+        [disabled]="true"
+        [size]="getSize(first)"
     />
-</form>
+
+    <input
+        tuiRadio
+        type="radio"
+        [formControl]="invalidTrue"
+        [size]="getSize(first)"
+        [value]="true"
+    />
+
+    <input
+        tuiRadio
+        type="radio"
+        [formControl]="invalidFalse"
+        [size]="getSize(first)"
+        [value]="true"
+    />
+</div>

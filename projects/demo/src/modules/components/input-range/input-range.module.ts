@@ -14,7 +14,7 @@ import {
 import {
     TuiInputRangeModule,
     TuiInputSliderModule,
-    TuiRadioListModule,
+    TuiRadioListComponent,
 } from '@taiga-ui/kit';
 
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
@@ -36,7 +36,7 @@ import {ExampleTuiInputRangeComponent} from './input-range.component';
         ReactiveFormsModule,
         FormsModule,
         CommonModule,
-        TuiRadioListModule,
+        TuiRadioListComponent,
         TuiAddonDocModule,
         TuiButtonModule,
         TuiLinkModule,

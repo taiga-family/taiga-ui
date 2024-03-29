@@ -255,13 +255,6 @@ export const pages: TuiDocPages = [
                 keywords: 'инпут, форма, ввод, radio, радио',
                 route: '/components/radio',
             },
-            // TODO: Move into Radio page
-            {
-                section: 'Components',
-                title: 'RadioList',
-                keywords: 'инпут, форма, ввод, radio, радио, список, list',
-                route: '/components/radio-list',
-            },
             {
                 section: 'Components',
                 title: 'Switch',
@@ -970,12 +963,6 @@ export const pages: TuiDocPages = [
         title: 'Tooltip ',
         keywords: 'tooltip, тултип, hint, подсказка, помощь, help',
         route: '/experimental/tooltip',
-    },
-    {
-        section: 'Experimental',
-        title: 'Radio ',
-        keywords: 'чек, радио, ввод, форма, form, checkbox, radio, toggle',
-        route: '/experimental/radio',
     },
     {
         section: 'Components',

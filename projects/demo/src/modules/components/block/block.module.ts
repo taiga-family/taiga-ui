@@ -9,12 +9,12 @@ import {
     TuiTitleDirective,
     TuiTooltipModule,
 } from '@taiga-ui/core';
-import {TuiRadioComponent} from '@taiga-ui/experimental';
 import {
     TuiAvatarComponent,
     TuiBlockDirective,
     TuiCheckboxComponent,
     TuiFadeDirective,
+    TuiRadioComponent,
     TuiSwitchComponent,
 } from '@taiga-ui/kit';
 

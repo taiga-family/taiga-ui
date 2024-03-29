@@ -26,7 +26,7 @@ import {
     TuiInputModule,
     TuiInputNumberModule,
     TuiMarkerIconModule,
-    TuiRadioListModule,
+    TuiRadioListComponent,
 } from '@taiga-ui/kit';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
@@ -55,7 +55,7 @@ import {TuiDialogExampleComponent10} from './examples/10';
         TuiAccordionModule,
         TuiAmountPipe,
         TuiButtonModule,
-        TuiRadioListModule,
+        TuiRadioListComponent,
         TuiInputModule,
         TuiHintModule,
         TuiLinkModule,
