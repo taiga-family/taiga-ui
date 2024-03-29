@@ -10,7 +10,7 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
     templateUrl: './expand.template.html',
     styleUrls: ['./expand.style.less'],
     changeDetection,
-    providers: []
+
 })
 export class ExampleTuiExpandComponent {
     private readonly cdr = inject(ChangeDetectorRef);
