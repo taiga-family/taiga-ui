@@ -1,16 +1,16 @@
-import {Component, inject} from '@angular/core';
+import {Component, inject, DestroyRef} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiSheetService} from '@taiga-ui/addon-mobile';
-import {TuiDestroyService} from '@taiga-ui/cdk';
-import {Subject, switchMap, takeUntil} from 'rxjs';
+import {Subject, switchMap} from 'rxjs';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 
 @Component({
     selector: 'tui-sheet-example-1',
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
-    providers: [TuiDestroyService],
+    providers: []
 })
 export class TuiSheetExample1 {
     protected readonly stream$ = new Subject<void>();
@@ -21,7 +21,7 @@ export class TuiSheetExample1 {
                 switchMap(() =>
                     inject(TuiSheetService).open('Simple sheet', {overlay: true}),
                 ),
-                takeUntil(inject(TuiDestroyService, {self: true})),
+                takeUntilDestroyed(),
             )
             .subscribe();
     }
