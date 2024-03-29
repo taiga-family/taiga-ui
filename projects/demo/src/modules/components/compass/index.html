@@ -1,32 +1,24 @@
 <tui-doc-page
     header="Compass"
-    package="EXPERIMENTAL"
+    package="KIT"
     type="components"
 >
     <ng-template pageTab>
-        <tui-notification status="warning">
-            This code is
-            <strong>experimental</strong>
-            and is a subject to change. Expect final solution to be shipped in the next major version
-        </tui-notification>
-
         <tui-doc-example
             id="without-direction"
             description="Direction isn't present (direction is NaN)"
             heading="Basic"
-            [content]="example1"
-        >
-            <tui-compass-example-1 />
-        </tui-doc-example>
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample: 'ts'"
+        />
 
         <tui-doc-example
             id="user-position"
             description="Following pointer on the page"
             heading="Direction"
-            [content]="example2"
-        >
-            <tui-compass-example-2 />
-        </tui-doc-example>
+            [component]="2 | tuiComponent"
+            [content]="2 | tuiExample: 'ts'"
+        />
     </ng-template>
 
     <ng-template pageTab>
@@ -58,25 +50,5 @@
         </tui-doc-documentation>
     </ng-template>
 
-    <ng-template pageTab>
-        <ol class="b-demo-steps">
-            <li>
-                <p>Import module:</p>
-
-                <tui-doc-code
-                    filename="my.module.ts"
-                    [code]="exampleModule"
-                />
-            </li>
-
-            <li>
-                <p>Add to the template:</p>
-
-                <tui-doc-code
-                    filename="my.component.html"
-                    [code]="exampleHtml"
-                />
-            </li>
-        </ol>
-    </ng-template>
+    <tui-setup *pageTab />
 </tui-doc-page>

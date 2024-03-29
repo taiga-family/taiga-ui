@@ -643,6 +643,18 @@ export const pages: TuiDocPages = [
     },
     {
         section: 'Components',
+        title: 'Compass',
+        keywords: 'compass, user, point, dot, карта, точка',
+        route: '/components/compass',
+    },
+    {
+        section: 'Components',
+        title: 'Pin',
+        keywords: 'пин, pin, map, карта, точка, dot, point',
+        route: '/components/pin',
+    },
+    {
+        section: 'Components',
         title: 'Progress',
         subPages: [
             {
@@ -885,12 +897,6 @@ export const pages: TuiDocPages = [
         route: '/components/comment',
     },
     {
-        section: 'Experimental',
-        title: 'Compass',
-        keywords: 'compass, user, point, dot, карта, точка',
-        route: '/experimental/compass',
-    },
-    {
         section: 'Layout',
         title: 'Header',
         keywords: 'header, заголовок, item',
@@ -980,12 +986,6 @@ export const pages: TuiDocPages = [
         title: 'Navigation',
         keywords: 'шапка, header, sidebar, aside, сайдбар, навигация',
         route: '/experimental/navigation',
-    },
-    {
-        section: 'Experimental',
-        title: 'Pin',
-        keywords: 'пин, pin, map, карта, точка, dot, point',
-        route: '/experimental/pin',
     },
     // Charts
     {
