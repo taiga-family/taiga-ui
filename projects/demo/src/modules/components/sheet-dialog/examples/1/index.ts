@@ -9,8 +9,7 @@ import {Subject, switchMap} from 'rxjs';
     selector: 'tui-sheet-dialog-example-1',
     templateUrl: './index.html',
     encapsulation,
-    changeDetection,
-    
+    changeDetection
 })
 export class TuiSheetDialogExample1 {
     protected readonly stream$ = new Subject<void>();
@@ -21,7 +20,7 @@ export class TuiSheetDialogExample1 {
                 switchMap(() =>
                     inject(TuiSheetDialogService).open('', {label: 'Simple sheet'}),
                 ),
-                // Replacement needed for takeUntilDestroyed(inject(DestroyRef))
+                takeUntilDestroyed()
             )
             .subscribe();
     }
