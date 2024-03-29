@@ -916,12 +916,6 @@ export const pages: TuiDocPages = [
     },
     {
         section: 'Experimental',
-        title: 'Rating ',
-        keywords: 'рейтинг, оценка, звезда, rating, star, rate',
-        route: '/experimental/rating',
-    },
-    {
-        section: 'Experimental',
         title: 'Segmented',
         keywords: 'tabs, control, radio, navigation, навигация, вкладки, таб',
         route: '/experimental/segmented',
