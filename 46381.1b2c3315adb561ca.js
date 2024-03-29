@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[46381],{46381:n=>{n.exports=".description {\n    display: flex;\n    justify-content: space-between;\n\n    & > *:first-child {\n        text-align: left;\n    }\n\n    & > *:last-child {\n        text-align: right;\n    }\n}\n"}}]);
