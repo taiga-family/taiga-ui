@@ -6,15 +6,17 @@ import {
     Input,
     TemplateRef,
 } from '@angular/core';
-import {TuiDestroyService, tuiIfMap} from '@taiga-ui/cdk';
+import {tuiIfMap} from '@taiga-ui/cdk';
+import { DestroyRef } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import {PolymorpheusTemplate} from '@tinkoff/ng-polymorpheus';
-import {Subject, takeUntil} from 'rxjs';
+import {Subject} from 'rxjs';
 
 import {TuiPushService} from './push.service';
 
 @Directive({
     selector: '[tuiPush]',
-    providers: [TuiDestroyService],
+    providers: []
 })
 export class TuiPushAlertDirective extends PolymorpheusTemplate {
     private readonly push: TuiPushService = inject(forwardRef(() => TuiPushService));
@@ -26,7 +28,7 @@ export class TuiPushAlertDirective extends PolymorpheusTemplate {
         this.show$
             .pipe(
                 tuiIfMap(() => this.push.open(this)),
-                takeUntil(inject(TuiDestroyService, {self: true})),
+                takeUntilDestroyed(this.destroyRef),
             )
             .subscribe();
     }
