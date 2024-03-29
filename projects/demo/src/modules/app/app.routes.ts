@@ -1694,14 +1694,6 @@ export const ROUTES: Routes = [
         },
     },
     {
-        path: 'services/destroy-service',
-        loadChildren: async () =>
-            (await import('../services/destroy/destroy.module')).ExampleTuiDestroyModule,
-        data: {
-            title: 'DestroyService',
-        },
-    },
-    {
         path: 'services/scroll-service',
         loadChildren: async () =>
             (await import('../services/scroll/scroll.module')).ExampleTuiScrollModule,

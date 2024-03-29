@@ -9,7 +9,6 @@ import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {TuiDocMainModule, TuiLanguageSwitcherComponent} from '@taiga-ui/addon-doc';
 import {TuiSheetModule} from '@taiga-ui/addon-mobile';
 import {TuiTableBarsHostModule} from '@taiga-ui/addon-tablebars';
-import {TuiDestroyService} from '@taiga-ui/cdk';
 import {TuiLinkModule, TuiModeModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {distinctUntilChanged, filter, map} from 'rxjs';
 
@@ -43,7 +42,6 @@ import {TUI_VERSION_MANAGER_PROVIDERS} from './version-manager/version-manager.p
     changeDetection,
     providers: [
         ResizeObserverService,
-        TuiDestroyService,
         DEMO_PAGE_LOADED_PROVIDER,
         TUI_VERSION_MANAGER_PROVIDERS,
     ],

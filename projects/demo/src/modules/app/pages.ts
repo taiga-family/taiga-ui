@@ -1475,12 +1475,6 @@ export const pages: TuiDocPages = [
             },
             {
                 section: 'Tools',
-                title: 'DestroyService',
-                keywords: 'сервис',
-                route: '/services/destroy-service',
-            },
-            {
-                section: 'Tools',
                 title: 'ScrollService',
                 keywords: 'scroll, прокрутка, скролл',
                 route: '/services/scroll-service',
