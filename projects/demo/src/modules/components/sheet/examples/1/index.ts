@@ -1,4 +1,4 @@
-import {Component, inject, DestroyRef} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiSheetService} from '@taiga-ui/addon-mobile';
@@ -20,7 +20,7 @@ export class TuiSheetExample1 {
                 switchMap(() =>
                     inject(TuiSheetService).open('Simple sheet', {overlay: true}),
                 ),
-                takeUntilDestroyed(inject(DestroyRef)),
+                takeUntilDestroyed(),
             )
             .subscribe();
     }
