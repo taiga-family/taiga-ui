@@ -15,7 +15,7 @@ import {PayModalComponent} from './pay-modal/pay-modal.component';
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
-    providers: []
+
 })
 export class TuiDialogExampleComponent9 {
     private readonly dialogs = inject(TuiDialogService);
