@@ -13,7 +13,7 @@ import {takeUntil} from 'rxjs';
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
-    providers: []
+    
 })
 export class TuiScrollExample1 {
     private readonly scrollService = inject(TuiScrollService);
