@@ -5,7 +5,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiScrollService} from '@taiga-ui/cdk';
 import {DestroyRef} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {takeUntil} from 'rxjs';
 
 @Component({
     selector: 'tui-scroll-example-1',
