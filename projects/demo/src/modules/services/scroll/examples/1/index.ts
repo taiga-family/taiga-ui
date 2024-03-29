@@ -10,8 +10,7 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
-    changeDetection,
-    providers: []
+    changeDetection
 })
 export class TuiScrollExample1 {
     private readonly scrollService = inject(TuiScrollService);
