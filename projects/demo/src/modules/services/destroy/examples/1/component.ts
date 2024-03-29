@@ -1,20 +1,21 @@
 import {Component, ElementRef, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiDestroyService} from '@taiga-ui/cdk';
-import {fromEvent, takeUntil} from 'rxjs';
+
+import {fromEvent} from 'rxjs';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 
 @Component({
     selector: 'tui-destroy-example',
     templateUrl: './template.html',
     encapsulation,
     changeDetection,
-    providers: [TuiDestroyService],
+    providers: []
 })
 export class TuiDestroyExample {
     constructor() {
         fromEvent(inject(ElementRef<HTMLElement>).nativeElement, 'click')
-            .pipe(takeUntil(inject(TuiDestroyService, {self: true})))
+            .pipe(takeUntilDestroyed(inject(DestroyRef)))
             .subscribe(() => console.info('click'));
     }
 }
