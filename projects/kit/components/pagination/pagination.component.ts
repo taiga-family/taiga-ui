@@ -21,14 +21,8 @@ import {
     tuiClamp,
     tuiIsNativeFocusedIn,
 } from '@taiga-ui/cdk';
-import type {
-    TuiBrightness,
-    TuiHorizontalDirection,
-    TuiSizeL,
-    TuiSizeS,
-    TuiSizeXS,
-} from '@taiga-ui/core';
-import {TUI_SPIN_ICONS, TuiAppearance, TuiModeDirective} from '@taiga-ui/core';
+import type {TuiHorizontalDirection, TuiSizeL, TuiSizeS, TuiSizeXS} from '@taiga-ui/core';
+import {TUI_SPIN_ICONS, TuiModeDirective} from '@taiga-ui/core';
 import {TUI_PAGINATION_TEXTS} from '@taiga-ui/kit/tokens';
 import {tuiHorizontalDirectionToNumber} from '@taiga-ui/kit/utils/math';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
@@ -190,17 +184,10 @@ export class TuiPaginationComponent
         );
     }
 
-    protected getElementMode(index: number): TuiAppearance {
-        return this.index === index ? TuiAppearance.Primary : TuiAppearance.Flat;
-    }
+    protected getElementMode(index: number): string {
+        const fallback = this.size === 's' ? 'secondary' : 'flat';
 
-    protected getSmallElementMode(
-        index: number,
-        mode: TuiBrightness | null,
-    ): TuiAppearance {
-        return this.index === index && mode !== 'onLight'
-            ? TuiAppearance.Primary
-            : TuiAppearance.Secondary;
+        return this.index === index ? 'primary' : fallback;
     }
 
     protected onElementClick(index: number): void {

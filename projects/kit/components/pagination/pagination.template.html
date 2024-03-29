@@ -24,7 +24,6 @@
                         *ngIf="index !== null; else dotsTemplate"
                         #element
                         automation-id="tui-pagination__element"
-                        shape="square"
                         tuiButton
                         type="button"
                         class="t-button"
@@ -62,12 +61,10 @@
         <button
             *tuiRepeatTimes="let indexItem of length"
             #element
-            shape="square"
             tuiButton
             type="button"
             class="t-button t-button_small"
-            [appearance]="getSmallElementMode(indexItem, mode$ | async)"
-            [class.t-button_active]="indexItem === index"
+            [appearance]="getElementMode(indexItem)"
             [disabled]="disabled"
             [tuiFocusable]="elementIsFocusable(indexItem)"
             (click)="onElementClick(indexItem)"

@@ -28,7 +28,6 @@ import {TUI_BUTTON_OPTIONS} from './button.options';
         },
     ],
     host: {
-        tuiButtonNew: '',
         '[attr.data-size]': 'size',
     },
 })
