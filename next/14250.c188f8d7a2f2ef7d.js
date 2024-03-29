@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[14250],{14250:e=>{e.exports='```html\n<tui-compass [degrees]="degrees"></tui-compass>\n```\n'}}]);
