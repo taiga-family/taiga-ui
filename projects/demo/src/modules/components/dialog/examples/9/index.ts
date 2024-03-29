@@ -1,9 +1,9 @@
-import {Component, inject} from '@angular/core';
+import {Component, inject, DestroyRef} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiDestroyService} from '@taiga-ui/cdk';
 import {TuiDialogService} from '@taiga-ui/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import {takeUntil} from 'rxjs';
 
@@ -15,11 +15,11 @@ import {PayModalComponent} from './pay-modal/pay-modal.component';
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
-    providers: [TuiDestroyService],
+    providers: []
 })
 export class TuiDialogExampleComponent9 {
     private readonly dialogs = inject(TuiDialogService);
-    private readonly destroy$ = inject(TuiDestroyService, {self: true});
+    private readonly destroyRef = inject(DestroyRef);
 
     protected readonly amountControl = new FormControl(100);
 
@@ -32,7 +32,7 @@ export class TuiDialogExampleComponent9 {
                     amount: this.amountControl.value,
                 },
             })
-            .pipe(takeUntil(this.destroy$))
+            .pipe(takeUntilDestroyed(this.destroyRef))
             .subscribe();
     }
 }
