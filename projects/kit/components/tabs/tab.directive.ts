@@ -30,7 +30,7 @@ export class TuiTabDirective implements OnDestroy {
         this.rla?.isActiveChange.pipe(filter(Boolean)) || EMPTY,
         this.el.matches('button') ? tuiTypedFromEvent(this.el, 'click') : EMPTY,
     )
-        .pipe(takeUntilDestroyed())
+        .pipe(takeUntilDestroyed(this))
         .subscribe(() =>
             this.el.dispatchEvent(new CustomEvent(TUI_TAB_ACTIVATE, {bubbles: true})),
         );
