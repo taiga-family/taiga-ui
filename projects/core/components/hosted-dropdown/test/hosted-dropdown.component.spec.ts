@@ -6,7 +6,6 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiElementModule} from '@taiga-ui/cdk';
 import {
     TuiButtonDirective,
-    TuiButtonDirective,
     TuiDataListModule,
     TuiHostedDropdownModule,
     TuiPrimitiveTextfieldComponent,
