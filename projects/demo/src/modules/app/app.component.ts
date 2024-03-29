@@ -11,7 +11,7 @@ import {TuiTableBarsHostModule} from '@taiga-ui/addon-tablebars';
 import {DestroyRef} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {TuiLinkModule, TuiModeModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
-import {distinctUntilChanged, filter, map, takeUntil} from 'rxjs';
+import {distinctUntilChanged, filter, map} from 'rxjs';
 
 import {CustomHostComponent} from '../customization/portals/examples/1/portal/custom-host.component';
 import {AbstractDemoComponent, DEMO_PAGE_LOADED_PROVIDER} from './abstract.app';
