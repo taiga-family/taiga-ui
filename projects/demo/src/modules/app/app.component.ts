@@ -1,4 +1,5 @@
 import {AsyncPipe, NgIf} from '@angular/common';
+import {TuiDestroyService} from '@taiga-ui/cdk';
 import type {OnInit} from '@angular/core';
 import {Component, DestroyRef, inject, ViewEncapsulation} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
@@ -35,7 +36,6 @@ import {TUI_VERSION_MANAGER_PROVIDERS} from './version-manager/version-manager.p
         CustomHostComponent,
         TuiTableBarsHostModule,
         TuiTextfieldControllerModule,
-        TuiDestroyService,
     ],
     templateUrl: './app.template.html',
     styleUrls: ['./app.style.less'],
