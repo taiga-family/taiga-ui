@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[24723],{24723:e=>{e.exports='<label tuiLabel="Back to the Future">\n    <tui-rating\n        [max]="10"\n        [ngModel]="8.5"\n        [readOnly]="true"\n    />\n</label>\n'}}]);
