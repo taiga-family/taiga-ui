@@ -8,8 +8,7 @@ import {takeUntil, timer} from 'rxjs';
     selector: 'example-expand',
     templateUrl: './expand.template.html',
     styleUrls: ['./expand.style.less'],
-    changeDetection,
-    providers: []
+    changeDetection
 })
 export class ExampleTuiExpandComponent {
     private readonly cdr = inject(ChangeDetectorRef);
