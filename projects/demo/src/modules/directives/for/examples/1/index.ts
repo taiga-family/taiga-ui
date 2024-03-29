@@ -2,14 +2,14 @@ import {Component, inject, DestroyRef} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {BehaviorSubject, takeUntil, timer} from 'rxjs';
+import {BehaviorSubject, timer} from 'rxjs';
 
 @Component({
     selector: 'tui-for-example-1',
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
-    providers: [],
+    
 })
 export class TuiForExample1 {
     private readonly destroyRef = inject(DestroyRef);
