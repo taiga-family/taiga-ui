@@ -35,6 +35,7 @@ import {TUI_VERSION_MANAGER_PROVIDERS} from './version-manager/version-manager.p
         CustomHostComponent,
         TuiTableBarsHostModule,
         TuiTextfieldControllerModule,
+        TuiDestroyService,
     ],
     templateUrl: './app.template.html',
     styleUrls: ['./app.style.less'],
@@ -42,6 +43,7 @@ import {TUI_VERSION_MANAGER_PROVIDERS} from './version-manager/version-manager.p
     changeDetection,
     providers: [
         ResizeObserverService,
+        TuiDestroyService,
         DEMO_PAGE_LOADED_PROVIDER,
         TUI_VERSION_MANAGER_PROVIDERS,
     ],
