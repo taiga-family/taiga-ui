@@ -1,4 +1,4 @@
-import {inject, Injectable, DestroyRef} from '@angular/core';
+import {inject, Injectable} from '@angular/core';
 import {TUI_DEFAULT_MATCHER} from '@taiga-ui/cdk';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {Observable} from 'rxjs';
@@ -18,7 +18,7 @@ import type {User} from './user';
 
 @Injectable()
 export class RequestService {
-    private readonly destroyRef = inject(DestroyRef);
+
     private readonly request$ = new Subject<string>();
 
     // Imitating server request with switchMap + delay pair
