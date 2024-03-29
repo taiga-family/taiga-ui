@@ -1,4 +1,4 @@
-import {Component, inject, DestroyRef} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiSheetDialogService} from '@taiga-ui/addon-mobile';
@@ -10,7 +10,7 @@ import {Subject, switchMap} from 'rxjs';
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
-    providers: []
+    
 })
 export class TuiSheetDialogExample1 {
     protected readonly stream$ = new Subject<void>();
@@ -21,7 +21,7 @@ export class TuiSheetDialogExample1 {
                 switchMap(() =>
                     inject(TuiSheetDialogService).open('', {label: 'Simple sheet'}),
                 ),
-                takeUntilDestroyed(inject(DestroyRef)),
+                // Replacement needed for takeUntilDestroyed(inject(DestroyRef))
             )
             .subscribe();
     }
