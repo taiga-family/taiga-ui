@@ -1,8 +1,9 @@
 import type {Type} from '@angular/core';
 import {ChangeDetectionStrategy, Component, inject, INJECTOR} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {TuiDestroyService} from '@taiga-ui/cdk';
 import {TuiDialogService} from '@taiga-ui/core';
+import { DestroyRef } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import {from, of, switchMap, takeUntil} from 'rxjs';
 
@@ -11,7 +12,7 @@ import {from, of, switchMap, takeUntil} from 'rxjs';
     selector: 'tui-routable-dialog',
     template: '',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [TuiDestroyService],
+    providers: []
 })
 export default class TuiRoutableDialogComponent {
     private readonly route = inject(ActivatedRoute);
@@ -19,7 +20,7 @@ export default class TuiRoutableDialogComponent {
     private readonly injector = inject(INJECTOR);
     private readonly initialUrl = this.router.url;
     private readonly dialog = inject(TuiDialogService);
-    private readonly destroy$ = inject(TuiDestroyService, {self: true});
+    private readonly destroyRef = inject(DestroyRef);
 
     constructor() {
         const dialog = this.route.snapshot.data['dialog'];
@@ -32,7 +33,7 @@ export default class TuiRoutableDialogComponent {
                         this.route.snapshot.data['dialogOptions'],
                     ),
                 ),
-                takeUntil(this.destroy$),
+                takeUntilDestroyed(this.destroyRef),
             )
             .subscribe({complete: () => this.onDialogClosing()});
     }
