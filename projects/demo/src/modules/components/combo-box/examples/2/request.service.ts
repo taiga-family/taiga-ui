@@ -10,7 +10,6 @@ import {
     startWith,
     Subject,
     switchMap,
-    takeUntil,
 } from 'rxjs';
 
 import {databaseMockData} from './database-mock-data';
