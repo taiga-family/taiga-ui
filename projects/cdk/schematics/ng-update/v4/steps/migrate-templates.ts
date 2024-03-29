@@ -36,6 +36,7 @@ import {
     migrateLabeled,
     migrateMoney,
     migratePreventDefault,
+    migrateProgressSegmented,
     migrateRadio,
     migrateToggle,
 } from './templates';
@@ -93,6 +94,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         migratePreventDefault,
         migrateMoney,
         migrateLabeled,
+        migrateProgressSegmented,
     ] as const;
 
     const progressLog = setupProgressLogger({

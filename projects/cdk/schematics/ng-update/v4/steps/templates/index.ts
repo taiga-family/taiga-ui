@@ -5,4 +5,5 @@ export * from './migrate-expandable';
 export * from './migrate-labeled';
 export * from './migrate-money';
 export * from './migrate-prevent-default';
+export * from './migrate-progress-segmented';
 export * from './toggles';

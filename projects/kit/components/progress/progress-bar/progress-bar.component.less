@@ -41,62 +41,43 @@
 
     .clearProgress();
     .progressAnimation();
-    .progressValue({ background: @progress-color });
+    .progressValue({ background: @progress-color; border-radius: inherit });
 
     display: block;
     width: 100%;
     height: var(--t-height);
     color: var(--tui-primary);
     background: @track-color;
-    clip-path: inset(0 round var(--tui-radius-xs));
+    clip-path: inset(0 0.5px round var(--tui-radius-m)); // 0.5px is a hack to prevent jagged edges on low dpi screens
     overflow: hidden;
+    border-radius: 1rem;
 
     &[data-mode='onDark'] {
         --tui-clear: var(--tui-clear-inverse);
     }
 
-    &[data-size='m'] {
-        --t-height: 1.5rem;
+    &[data-size='xs'] {
+        --t-height: 0.25rem;
     }
 
     &[data-size='s'] {
-        .progressValue({ border-radius: var(--tui-radius-xs) });
-
         --t-height: 0.5rem;
     }
 
-    // TODO: drop new attribute in v4.0 and make all these styles as default ones
-    &[new] {
-        clip-path: inset(
-            0 0.5px round var(--tui-radius-m)
-        ); // 0.5px is a hack to prevent jagged edges on low dpi screens
+    &[data-size='m'] {
+        --t-height: 0.75rem;
+    }
 
-        border-radius: 1rem;
-        .progressValue({ border-radius: inherit });
+    &[data-size='l'] {
+        --t-height: 1rem;
+    }
 
-        &[data-size='xs'] {
-            --t-height: 0.25rem;
-        }
+    &[data-size='xl'] {
+        --t-height: 1.25rem;
+    }
 
-        &[data-size='s'] {
-            --t-height: 0.5rem;
-        }
-
-        &[data-size='m'] {
-            --t-height: 0.75rem;
-        }
-
-        &[data-size='l'] {
-            --t-height: 1rem;
-        }
-
-        &[data-size='xl'] {
-            --t-height: 1.25rem;
-        }
-
-        &[data-size='xxl'] {
-            --t-height: 1.5rem;
-        }
+    &[data-size='xxl'] {
+        --t-height: 1.5rem;
     }
 
     &:indeterminate {

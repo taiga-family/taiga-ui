@@ -299,15 +299,6 @@ export const ROUTES: Routes = [
         loadComponent: async () => import('../experimental/label'),
     }),
     {
-        path: 'experimental/progress-segmented',
-        loadChildren: async () =>
-            (await import('../experimental/progress-segmented/progress-segmented.module'))
-                .ExampleTuiProgressSegmentedModule,
-        data: {
-            title: 'ProgressSegmented',
-        },
-    },
-    {
         path: 'experimental/rating',
         loadChildren: async () =>
             (await import('../experimental/rating/rating.module')).ExampleTuiRatingModule,
@@ -1070,15 +1061,11 @@ export const ROUTES: Routes = [
             title: 'ProgressCircle',
         },
     },
-    {
+    route({
         path: 'components/progress-segmented',
-        loadChildren: async () =>
-            (await import('../components/progress-segmented/progress-segmented.module'))
-                .ExampleTuiProgressSegmentedModule,
-        data: {
-            title: 'ProgressSegmented',
-        },
-    },
+        title: 'ProgressSegmented',
+        loadComponent: async () => import('../directives/progress-segmented'),
+    }),
     {
         path: 'components/confirm',
         loadChildren: async () =>

@@ -42,4 +42,9 @@ export const TAGS_TO_REPLACE: ReplacementTag[] = [
             el.attrs.every(attr => attr.name !== '[open]' && attr.name !== '[(open)]'),
         addAttributes: ['tuiDropdownOpen'],
     },
+    {
+        from: 'tui-progress-segmented',
+        to: 'progress',
+        addAttributes: ['tuiProgressBar'],
+    },
 ];

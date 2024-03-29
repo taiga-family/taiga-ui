@@ -1,15 +1,17 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiProgressModule} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-progress-segmented-example-3',
+    standalone: true,
+    imports: [TuiProgressModule],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiProgressSegmentedExample3 {
+export default class ExampleComponent {
     protected readonly arrayColors = [
         '#39b54a',
         '#ffd450',
