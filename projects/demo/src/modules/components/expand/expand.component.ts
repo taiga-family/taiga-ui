@@ -1,16 +1,22 @@
-import {ChangeDetectorRef, Component, ElementRef, inject, ViewChild, DestroyRef} from '@angular/core';
+import {
+    ChangeDetectorRef,
+    Component,
+    DestroyRef,
+    ElementRef,
+    inject,
+    ViewChild,
+} from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TUI_EXPAND_LOADED, TuiExpandComponent} from '@taiga-ui/core';
 import {timer} from 'rxjs';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 
 @Component({
     selector: 'example-expand',
     templateUrl: './expand.template.html',
     styleUrls: ['./expand.style.less'],
     changeDetection,
-
 })
 export class ExampleTuiExpandComponent {
     private readonly cdr = inject(ChangeDetectorRef);

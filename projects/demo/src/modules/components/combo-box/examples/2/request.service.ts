@@ -1,6 +1,6 @@
-import {inject, Injectable, DestroyRef} from '@angular/core';
-import {TUI_DEFAULT_MATCHER} from '@taiga-ui/cdk';
+import {DestroyRef, inject, Injectable} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {TUI_DEFAULT_MATCHER} from '@taiga-ui/cdk';
 import type {Observable} from 'rxjs';
 import {
     delay,

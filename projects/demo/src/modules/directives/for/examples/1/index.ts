@@ -1,7 +1,7 @@
-import {Component, inject, DestroyRef} from '@angular/core';
+import {Component, DestroyRef, inject} from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {BehaviorSubject, timer} from 'rxjs';
 
 @Component({
@@ -9,7 +9,6 @@ import {BehaviorSubject, timer} from 'rxjs';
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
-    
 })
 export class TuiForExample1 {
     private readonly destroyRef = inject(DestroyRef);

@@ -1,9 +1,9 @@
-import {Component, inject, DestroyRef} from '@angular/core';
+import {Component, DestroyRef, inject} from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDialogService} from '@taiga-ui/core';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 
 import {PayModalComponent} from './pay-modal/pay-modal.component';
@@ -14,7 +14,6 @@ import {PayModalComponent} from './pay-modal/pay-modal.component';
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
-
 })
 export class TuiDialogExampleComponent9 {
     private readonly dialogs = inject(TuiDialogService);
