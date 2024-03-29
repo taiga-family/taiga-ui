@@ -1,18 +1,18 @@
-import {Component, inject} from '@angular/core';
+import {Component, inject, DestroyRef} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiDestroyService} from '@taiga-ui/cdk';
-import {BehaviorSubject, takeUntil, timer} from 'rxjs';
+import {BehaviorSubject, timer} from 'rxjs';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 
 @Component({
     selector: 'tui-for-example-1',
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
-    providers: [TuiDestroyService],
+    providers: []
 })
 export class TuiForExample1 {
-    private readonly destroy$ = inject(TuiDestroyService, {self: true});
+    private readonly destroyRef = inject(DestroyRef);
 
     protected readonly items$ = new BehaviorSubject<readonly string[] | null>([]);
 
@@ -22,7 +22,7 @@ export class TuiForExample1 {
         const delay = Math.round(Math.random() * 2000);
 
         timer(delay)
-            .pipe(takeUntil(this.destroy$))
+            .pipe(takeUntilDestroyed(this.destroyRef))
             .subscribe(() =>
                 this.items$.next(
                     delay % 2
