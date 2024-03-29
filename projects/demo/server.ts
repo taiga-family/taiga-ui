@@ -3,7 +3,6 @@ import 'zone.js/node';
 
 import {existsSync} from 'node:fs';
 import {join} from 'node:path';
-import * as zlib from 'node:zlib';
 
 import {APP_BASE_HREF} from '@angular/common';
 import {provideLocation, provideUserAgent} from '@ng-web-apis/universal';
@@ -33,14 +32,7 @@ if (moduleFilename === __filename || moduleFilename.includes('iisnode')) {
     const server = express();
     const dist = join(process.cwd(), 'dist/demo/browser');
 
-    server.use(
-        compression({
-            level: 9,
-            memLevel: 9,
-            strategy: zlib.constants.Z_HUFFMAN_ONLY,
-        }),
-    );
-
+    server.use(compression());
     server.engine('html', ngExpressEngine({bootstrap}));
     server.set('view engine', 'html');
     server.set('views', dist);
