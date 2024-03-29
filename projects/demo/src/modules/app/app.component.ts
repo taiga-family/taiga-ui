@@ -1,6 +1,6 @@
 import {AsyncPipe, NgIf} from '@angular/common';
 import type {OnInit} from '@angular/core';
-import {Component, inject, ViewEncapsulation} from '@angular/core';
+import {Component, inject, ViewEncapsulation, DestroyRef} from '@angular/core';
 import {NavigationEnd, Router, RouterLink, RouterOutlet} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {LOCAL_STORAGE} from '@ng-web-apis/common';
@@ -8,7 +8,7 @@ import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {TuiDocMainModule, TuiLanguageSwitcherComponent} from '@taiga-ui/addon-doc';
 import {TuiSheetModule} from '@taiga-ui/addon-mobile';
 import {TuiTableBarsHostModule} from '@taiga-ui/addon-tablebars';
-import {TuiDestroyService} from '@taiga-ui/cdk';
+// TuiDestroyService removed
 import {TuiLinkModule, TuiModeModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {distinctUntilChanged, filter, map, takeUntil} from 'rxjs';
 
@@ -42,13 +42,13 @@ import {TUI_VERSION_MANAGER_PROVIDERS} from './version-manager/version-manager.p
     changeDetection,
     providers: [
         ResizeObserverService,
-        TuiDestroyService,
+        // TuiDestroyService removed
         DEMO_PAGE_LOADED_PROVIDER,
         TUI_VERSION_MANAGER_PROVIDERS,
     ],
 })
 export class AppComponent extends AbstractDemoComponent implements OnInit {
-    private readonly destroy$ = inject(TuiDestroyService, {self: true});
+    private readonly destroyRef = inject(DestroyRef);
     private readonly ym = inject(YaMetrikaService);
     protected readonly router = inject(Router);
     protected readonly storage = inject(LOCAL_STORAGE);
@@ -67,7 +67,7 @@ export class AppComponent extends AbstractDemoComponent implements OnInit {
         this.router.events
             .pipe(
                 filter((event): event is NavigationEnd => event instanceof NavigationEnd),
-                takeUntil(this.destroy$),
+                takeUntilDestroyed(),
             )
             .subscribe(event =>
                 this.ym.hit(event.urlAfterRedirects, {referer: event.url}),
