@@ -1,20 +1,20 @@
-import {ChangeDetectorRef, Component, ElementRef, inject, ViewChild} from '@angular/core';
+import {ChangeDetectorRef, Component, ElementRef, inject, ViewChild, DestroyRef} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiDestroyService} from '@taiga-ui/cdk';
 import {TUI_EXPAND_LOADED, TuiExpandComponent} from '@taiga-ui/core';
-import {takeUntil, timer} from 'rxjs';
+import {timer} from 'rxjs';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 
 @Component({
     selector: 'example-expand',
     templateUrl: './expand.template.html',
     styleUrls: ['./expand.style.less'],
     changeDetection,
-    providers: [TuiDestroyService],
+    providers: []
 })
 export class ExampleTuiExpandComponent {
     private readonly cdr = inject(ChangeDetectorRef);
-    private readonly destroy$ = inject(TuiDestroyService, {self: true});
+    private readonly destroyRef = inject(DestroyRef);
 
     @ViewChild(TuiExpandComponent, {read: ElementRef})
     protected expand?: ElementRef;
@@ -42,7 +42,7 @@ export class ExampleTuiExpandComponent {
         }
 
         timer(5000)
-            .pipe(takeUntil(this.destroy$))
+            .pipe(takeUntilDestroyed(this.destroyRef))
             .subscribe(() => {
                 const event = new CustomEvent(TUI_EXPAND_LOADED, {bubbles: true});
 
