@@ -12,7 +12,7 @@ import {
 } from '@taiga-ui/addon-table';
 import {TuiLetModule, TuiValidatorDirective} from '@taiga-ui/cdk';
 import {
-    TuiButtonModule,
+    TuiButtonDirective,
     TuiDataListModule,
     TuiDropdownModule,
     TuiFormatNumberPipeModule,
@@ -63,7 +63,7 @@ import {ExampleTuiTableComponent} from './table.component';
         TuiFormatNumberPipeModule,
         TuiValidatorDirective,
         TuiSvgModule,
-        TuiButtonModule,
+        TuiButtonDirective,
         TuiLinkModule,
         TuiTagModule,
         TuiAccordionModule,

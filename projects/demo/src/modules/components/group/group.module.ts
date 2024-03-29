@@ -4,7 +4,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TuiCurrencyPipeModule} from '@taiga-ui/addon-commerce';
 import {tuiGetDocModules} from '@taiga-ui/addon-doc';
 import {
-    TuiButtonModule,
+    TuiButtonDirective,
     TuiDataListModule,
     TuiErrorModule,
     TuiGroupDirective,
@@ -39,7 +39,7 @@ import {ExampleTuiGroupComponent} from './group.component';
         TuiProjectClassModule,
         TuiLinkModule,
         TuiBadgeDirective,
-        TuiButtonModule,
+        TuiButtonDirective,
         TuiSelectModule,
         TuiGroupDirective,
         TuiInputModule,

@@ -5,7 +5,7 @@ import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiRepeatTimesModule} from '@taiga-ui/cdk';
 import {
-    TuiButtonModule,
+    TuiButtonDirective,
     TuiDataListModule,
     TuiDropdownModule,
     TuiLinkModule,
@@ -24,7 +24,7 @@ import {TuiBreadcrumbsExample2} from './examples/2';
         TuiLinkModule,
         TuiAddonDocModule,
         TuiDropdownModule,
-        TuiButtonModule,
+        TuiButtonDirective,
         TuiDataListModule,
         TuiInputNumberModule,
         TuiRepeatTimesModule,

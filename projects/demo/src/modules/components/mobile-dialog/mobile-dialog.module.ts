@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiMobileDialogModule} from '@taiga-ui/addon-mobile';
-import {TuiButtonModule} from '@taiga-ui/core';
+import {TuiButtonDirective} from '@taiga-ui/core';
 
 import {TuiMobileDialogExample1} from './examples/1';
 import {ExampleTuiMobileDialogComponent} from './mobile-dialog.component';
@@ -12,7 +12,7 @@ import {ExampleTuiMobileDialogComponent} from './mobile-dialog.component';
     imports: [
         CommonModule,
         TuiMobileDialogModule,
-        TuiButtonModule,
+        TuiButtonDirective,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiMobileDialogComponent)),
     ],

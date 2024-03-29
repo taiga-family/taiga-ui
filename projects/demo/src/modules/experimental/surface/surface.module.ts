@@ -7,7 +7,7 @@ import {TuiRippleModule} from '@taiga-ui/addon-mobile';
 import {TuiRepeatTimesModule} from '@taiga-ui/cdk';
 import {
     TuiAppearanceDirective,
-    TuiButtonModule,
+    TuiButtonDirective,
     TuiLabelModule,
     TuiLinkModule,
     TuiModeModule,
@@ -36,7 +36,7 @@ import {ExampleTuiSurfaceComponent} from './surface.component';
         TuiRepeatTimesModule,
         TuiBadgeDirective,
         TuiScrollbarComponent,
-        TuiButtonModule,
+        TuiButtonDirective,
         TuiLinkModule,
         TuiAvatarComponent,
         TuiLabelModule,

@@ -4,7 +4,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
-    TuiButtonModule,
+    TuiButtonDirective,
     TuiModeModule,
     TuiNotificationModule,
     TuiScrollableDirective,
@@ -23,7 +23,7 @@ import {ExampleTuiScrollbarComponent} from './scrollbar.component';
     imports: [
         CommonModule,
         ScrollingModule,
-        TuiButtonModule,
+        TuiButtonDirective,
         TuiScrollbarComponent,
         TuiModeModule,
         TuiNotificationModule,

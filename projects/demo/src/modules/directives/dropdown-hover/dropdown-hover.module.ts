@@ -4,7 +4,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {tuiGetDocModules} from '@taiga-ui/addon-doc';
 import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
 import {
-    TuiButtonModule,
+    TuiButtonDirective,
     TuiDataListModule,
     TuiDropdownModule,
     TuiGroupDirective,
@@ -28,7 +28,7 @@ import {TuiDropdownHoverExample4} from './examples/4';
     imports: [
         CommonModule,
         ReactiveFormsModule,
-        TuiButtonModule,
+        TuiButtonDirective,
         TuiDropdownModule,
         TuiTabsModule,
         TuiSelectModule,

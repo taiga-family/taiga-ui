@@ -8,7 +8,7 @@ import {TuiPlatformModule, TuiRepeatTimesModule} from '@taiga-ui/cdk';
 import {
     TuiAppearanceDirective,
     TuiAutoColorPipe,
-    TuiButtonModule,
+    TuiButtonDirective,
     TuiDataListModule,
     TuiDropdownModule,
     TuiFallbackSrcPipe,
@@ -71,7 +71,7 @@ import {TuiCardLargeExample12} from './examples/12';
         TuiRippleModule,
         TuiThumbnailCardModule,
         TuiIconComponent,
-        TuiButtonModule,
+        TuiButtonDirective,
         TuiHeaderDirective,
         TuiCellModule,
         tuiGetDocModules(ExampleTuiCardLargeComponent),

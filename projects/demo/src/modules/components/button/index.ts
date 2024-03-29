@@ -2,12 +2,12 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemoModule} from '@demo/utils';
 import type {TuiSizeL, TuiSizeXS} from '@taiga-ui/core';
-import {TuiButtonModule} from '@taiga-ui/core';
+import {TuiButtonDirective} from '@taiga-ui/core';
 import {TuiButtonLoadingComponent} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiDemoModule, TuiButtonModule, TuiButtonLoadingComponent],
+    imports: [TuiDemoModule, TuiButtonDirective, TuiButtonLoadingComponent],
     templateUrl: './index.html',
     changeDetection,
 })

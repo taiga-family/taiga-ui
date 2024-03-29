@@ -108,6 +108,7 @@
         <div
             #content
             id="demo-content"
+            [attr.tuiTheme]="mode === 'onDark' ? 'night' : null"
         >
             <form
                 *ngIf="testForm"

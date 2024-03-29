@@ -6,7 +6,7 @@ import {
     TuiLetModule,
     TuiRepeatTimesModule,
 } from '@taiga-ui/cdk';
-import {TuiButtonModule} from '@taiga-ui/core';
+import {TuiButtonDirective} from '@taiga-ui/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiPaginationComponent} from './pagination.component';
@@ -18,7 +18,7 @@ import {TuiPaginationComponent} from './pagination.component';
         TuiRepeatTimesModule,
         TuiLetModule,
         TuiActiveZoneDirective,
-        TuiButtonModule,
+        TuiButtonDirective,
         TuiFocusableModule,
     ],
     declarations: [TuiPaginationComponent],

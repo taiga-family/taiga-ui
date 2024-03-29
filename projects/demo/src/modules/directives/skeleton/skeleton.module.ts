@@ -3,7 +3,11 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {TuiExamplePipe, TuiSetupComponent} from '@demo/utils';
 import {tuiGetDocModules} from '@taiga-ui/addon-doc';
-import {TuiButtonModule, TuiNotificationModule, TuiTitleDirective} from '@taiga-ui/core';
+import {
+    TuiButtonDirective,
+    TuiNotificationModule,
+    TuiTitleDirective,
+} from '@taiga-ui/core';
 import {
     TuiCardModule,
     TuiChipModule,
@@ -36,7 +40,7 @@ import {ExampleTuiSkeletonComponent} from './skeleton.component';
         TuiTitleDirective,
         TuiSurfaceModule,
         TuiHeaderDirective,
-        TuiButtonModule,
+        TuiButtonDirective,
         TuiChipModule,
         TuiBadgeDirective,
         TuiSkeletonDirective,

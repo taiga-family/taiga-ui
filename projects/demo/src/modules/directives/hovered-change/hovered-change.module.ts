@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiHoveredModule} from '@taiga-ui/cdk';
-import {TuiButtonModule} from '@taiga-ui/core';
+import {TuiButtonDirective} from '@taiga-ui/core';
 
 import {TuiHoveredChangeExample1} from './examples/1';
 import {ExampleTuiHoveredChangeComponent} from './hovered-change.component';
@@ -13,7 +13,7 @@ import {ExampleTuiHoveredChangeComponent} from './hovered-change.component';
         CommonModule,
         TuiHoveredModule,
         TuiAddonDocModule,
-        TuiButtonModule,
+        TuiButtonDirective,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiHoveredChangeComponent)),
     ],
     declarations: [ExampleTuiHoveredChangeComponent, TuiHoveredChangeExample1],

@@ -4,7 +4,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
-    TuiButtonModule,
+    TuiButtonDirective,
     TuiErrorModule,
     TuiLinkModule,
     TuiNotificationModule,
@@ -31,7 +31,7 @@ import {ExampleTuiInputFilesComponent} from './input-files.component';
         ReactiveFormsModule,
         TuiFilesModule,
         TuiLinkModule,
-        TuiButtonModule,
+        TuiButtonDirective,
         TuiSvgModule,
         TuiErrorModule,
         TuiFieldErrorPipeModule,

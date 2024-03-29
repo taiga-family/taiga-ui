@@ -4,7 +4,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TuiInputCardGroupedModule} from '@taiga-ui/addon-commerce';
 import {TuiAutoFocusDirective, TuiLetModule} from '@taiga-ui/cdk';
 import {
-    TuiButtonModule,
+    TuiButtonDirective,
     TuiFormatNumberPipeModule,
     TuiLinkModule,
     TuiLoaderModule,
@@ -24,7 +24,7 @@ import {PayModalComponent} from './pay-modal.component';
         TuiSvgModule,
         TuiLetModule,
         TuiLoaderModule,
-        TuiButtonModule,
+        TuiButtonDirective,
         TuiAutoFocusDirective,
         ReactiveFormsModule,
         TuiInputCardGroupedModule,

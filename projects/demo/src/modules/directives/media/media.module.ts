@@ -4,7 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiHighDpiDirective, TuiMediaDirective} from '@taiga-ui/cdk';
-import {TuiButtonModule, TuiLinkModule, TuiModeModule} from '@taiga-ui/core';
+import {TuiButtonDirective, TuiLinkModule, TuiModeModule} from '@taiga-ui/core';
 import {TuiSliderModule} from '@taiga-ui/kit';
 
 import {TuiMediaExample1} from './examples/1';
@@ -19,7 +19,7 @@ import {ExampleTuiMediaComponent} from './media.component';
         TuiMediaDirective,
         TuiHighDpiDirective,
         TuiLinkModule,
-        TuiButtonModule,
+        TuiButtonDirective,
         TuiSliderModule,
         TuiModeModule,
         TuiAddonDocModule,

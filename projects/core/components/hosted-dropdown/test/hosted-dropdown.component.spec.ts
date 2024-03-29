@@ -6,7 +6,7 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiElementModule} from '@taiga-ui/cdk';
 import {
     TuiButtonDirective,
-    TuiButtonModule,
+    TuiButtonDirective,
     TuiDataListModule,
     TuiHostedDropdownModule,
     TuiPrimitiveTextfieldComponent,
@@ -122,7 +122,7 @@ describe('TuiHostedDropdown', () => {
             imports: [
                 NoopAnimationsModule,
                 TuiHostedDropdownModule,
-                TuiButtonModule,
+                TuiButtonDirective,
                 TuiPrimitiveTextfieldModule,
                 TuiTextfieldControllerModule,
                 TuiDataListModule,

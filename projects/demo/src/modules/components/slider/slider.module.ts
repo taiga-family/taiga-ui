@@ -8,7 +8,7 @@ import {
     TuiTextCodeModule,
 } from '@taiga-ui/addon-doc';
 import {
-    TuiButtonModule,
+    TuiButtonDirective,
     TuiHintModule,
     TuiLinkModule,
     TuiModeModule,
@@ -34,7 +34,7 @@ import {ExampleTuiSliderComponent} from './slider.component';
         TuiLinkModule,
         TuiNotificationModule,
         TuiModeModule,
-        TuiButtonModule,
+        TuiButtonDirective,
         TuiHintModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiSliderComponent)),
         TuiTextCodeModule,

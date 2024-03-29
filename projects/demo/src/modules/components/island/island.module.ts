@@ -4,7 +4,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
-    TuiButtonModule,
+    TuiButtonDirective,
     TuiErrorModule,
     TuiLinkModule,
     TuiNotificationModule,
@@ -29,7 +29,7 @@ import {ExampleTuiIslandComponent} from './island.component';
         TuiIslandModule,
         TuiLinkModule,
         TuiSwitchComponent,
-        TuiButtonModule,
+        TuiButtonDirective,
         TuiErrorModule,
         TuiFieldErrorPipeModule,
         TuiInputPhoneModule,
@@ -41,7 +41,7 @@ import {ExampleTuiIslandComponent} from './island.component';
         TuiNotificationModule,
         StylesInfoModule,
         TuiActionModule,
-        TuiButtonModule,
+        TuiButtonDirective,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiIslandComponent)),
     ],
     declarations: [

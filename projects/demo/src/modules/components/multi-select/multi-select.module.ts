@@ -6,7 +6,7 @@ import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiLetModule} from '@taiga-ui/cdk';
 import {
-    TuiButtonModule,
+    TuiButtonDirective,
     TuiDataListModule,
     TuiDropdownModule,
     TuiHintModule,
@@ -49,7 +49,7 @@ import {ExampleTuiMultiSelectComponent} from './multi-select.component';
         TuiScrollbarComponent,
         TuiMultiSelectModule,
         TuiRadioListComponent,
-        TuiButtonModule,
+        TuiButtonDirective,
         TuiLinkModule,
         TuiAvatarComponent,
         TuiDataListModule,

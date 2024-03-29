@@ -1,7 +1,7 @@
 import {ClipboardModule} from '@angular/cdk/clipboard';
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {TuiButtonModule, TuiSvgModule} from '@taiga-ui/core';
+import {TuiButtonDirective, TuiSvgModule} from '@taiga-ui/core';
 import {HighlightModule} from 'ngx-highlightjs';
 
 import {TuiDocCodeComponent} from './code.component';
@@ -11,7 +11,7 @@ import {TuiDocCodeComponent} from './code.component';
         CommonModule,
         TuiSvgModule,
         HighlightModule,
-        TuiButtonModule,
+        TuiButtonDirective,
         ClipboardModule,
     ],
     declarations: [TuiDocCodeComponent],

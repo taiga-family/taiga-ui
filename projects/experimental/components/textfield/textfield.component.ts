@@ -23,7 +23,7 @@ import type {TuiDataListHost} from '@taiga-ui/core';
 import {
     tuiAppearanceOptionsProvider,
     tuiAsDataListHost,
-    TuiButtonModule,
+    TuiButtonDirective,
     TuiDropdownOpenDirective,
     tuiDropdownOptionsProvider,
     TuiIconsDirective,
@@ -47,7 +47,7 @@ export interface TuiTextfieldContext<T> extends TuiContext<T> {
         CommonModule,
         ResizeObserverModule,
         TuiTextfieldDirective,
-        TuiButtonModule,
+        TuiButtonDirective,
         PolymorpheusModule,
     ],
     templateUrl: './textfield.template.html',

@@ -9,7 +9,7 @@ import {
     TuiSwipeActionsComponent,
 } from '@taiga-ui/addon-mobile';
 import {
-    TuiButtonModule,
+    TuiButtonDirective,
     TuiDataListModule,
     TuiDropdownDirective,
     TuiDropdownOpenDirective,
@@ -50,7 +50,7 @@ import {ExampleTuiSwipeActionsComponent} from './swipe-actions.component';
         TuiBadgeComponent,
         TuiNotificationModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiSwipeActionsComponent)),
-        TuiButtonModule,
+        TuiButtonDirective,
         FormsModule,
         TuiTitleDirective,
         TuiCheckboxComponent,

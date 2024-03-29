@@ -4,7 +4,7 @@ import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiPlatformModule} from '@taiga-ui/cdk';
 import {
-    TuiButtonModule,
+    TuiButtonDirective,
     TuiFallbackSrcPipe,
     TuiIconComponent,
     TuiNotificationModule,
@@ -32,7 +32,7 @@ import {TuiBadgedContentExample3} from './examples/3';
         TuiAvatarComponent,
         TuiFallbackSrcPipe,
         TuiInputModule,
-        TuiButtonModule,
+        TuiButtonDirective,
         TuiAddonDocModule,
         TuiNotificationModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiBadgedContentComponent)),
