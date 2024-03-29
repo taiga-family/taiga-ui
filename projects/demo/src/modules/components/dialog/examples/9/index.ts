@@ -5,7 +5,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDialogService} from '@taiga-ui/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
-import {takeUntil} from 'rxjs';
 
 import {PayModalComponent} from './pay-modal/pay-modal.component';
 
