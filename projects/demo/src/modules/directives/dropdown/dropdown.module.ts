@@ -3,19 +3,19 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
-import {TuiActiveZoneModule, TuiObscuredDirective} from '@taiga-ui/cdk';
+import {TuiActiveZoneDirective, TuiObscuredDirective} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
     TuiDropdownModule,
     TuiLinkModule,
     TuiNotificationModule,
 } from '@taiga-ui/core';
-import {TuiCardModule, TuiSurfaceModule} from '@taiga-ui/experimental';
+import {TuiCardModule, TuiLabelDirective, TuiSurfaceModule} from '@taiga-ui/experimental';
 import {
     TuiAvatarComponent,
     TuiInputModule,
     TuiSelectModule,
-    TuiToggleModule,
+    TuiSwitchComponent,
 } from '@taiga-ui/kit';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
@@ -40,8 +40,9 @@ import {TuiDropdownExample5} from './examples/5';
         TuiSurfaceModule,
         TuiSelectModule,
         TuiObscuredDirective,
-        TuiActiveZoneModule,
-        TuiToggleModule,
+        TuiActiveZoneDirective,
+        TuiSwitchComponent,
+        TuiLabelDirective,
         TuiInputModule,
         TuiNotificationModule,
         TuiAddonDocModule,

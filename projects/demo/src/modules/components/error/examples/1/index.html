@@ -1,2 +1,9 @@
-<tui-toggle [(ngModel)]="enabled">Show</tui-toggle>
+<label tuiLabel>
+    <input
+        tuiSwitch
+        type="checkbox"
+        [(ngModel)]="enabled"
+    />
+    Show
+</label>
 <tui-error [error]="computedError" />

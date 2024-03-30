@@ -9,6 +9,7 @@ export interface TuiInputCardGroupedOptions extends TuiInputCardOptions {
     readonly cardValidator: TuiBooleanHandler<string>;
     readonly exampleText: string;
     readonly exampleTextCVC: string;
+    readonly cvcHidden: boolean;
 }
 
 export const TUI_INPUT_CARD_GROUPED_DEFAULT_OPTIONS: TuiInputCardGroupedOptions = {
@@ -16,6 +17,7 @@ export const TUI_INPUT_CARD_GROUPED_DEFAULT_OPTIONS: TuiInputCardGroupedOptions 
     cardValidator: tuiDefaultCardValidator,
     exampleText: '0000 0000 0000 0000',
     exampleTextCVC: '000',
+    cvcHidden: true,
 };
 
 export const TUI_INPUT_CARD_GROUPED_OPTIONS = tuiCreateToken(

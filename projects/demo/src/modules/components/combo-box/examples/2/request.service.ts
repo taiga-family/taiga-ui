@@ -1,5 +1,6 @@
-import {inject, Injectable} from '@angular/core';
-import {TUI_DEFAULT_MATCHER, TuiDestroyService} from '@taiga-ui/cdk';
+import {DestroyRef, inject, Injectable} from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {TUI_DEFAULT_MATCHER} from '@taiga-ui/cdk';
 import type {Observable} from 'rxjs';
 import {
     delay,
@@ -9,7 +10,6 @@ import {
     startWith,
     Subject,
     switchMap,
-    takeUntil,
 } from 'rxjs';
 
 import {databaseMockData} from './database-mock-data';
@@ -17,7 +17,7 @@ import type {User} from './user';
 
 @Injectable()
 export class RequestService {
-    private readonly destroy$ = inject(TuiDestroyService, {self: true});
+    private readonly destroyRef = inject(DestroyRef);
     private readonly request$ = new Subject<string>();
 
     // Imitating server request with switchMap + delay pair
@@ -29,7 +29,7 @@ export class RequestService {
                 startWith(null),
             ),
         ),
-        takeUntil(this.destroy$),
+        takeUntilDestroyed(this.destroyRef),
         shareReplay({bufferSize: 1, refCount: true}),
     );
 

@@ -1,0 +1,54 @@
+<tui-doc-page
+    header="Compass"
+    package="KIT"
+    type="components"
+>
+    <ng-template pageTab>
+        <tui-doc-example
+            id="without-direction"
+            description="Direction isn't present (direction is NaN)"
+            heading="Basic"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample: 'ts'"
+        />
+
+        <tui-doc-example
+            id="user-position"
+            description="Following pointer on the page"
+            heading="Direction"
+            [component]="2 | tuiComponent"
+            [content]="2 | tuiExample: 'ts'"
+        />
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-compass
+                [degrees]="degrees"
+                [style.color]="color"
+            />
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="degrees"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="degrees"
+            >
+                Pointer direction in degrees
+            </ng-template>
+        </tui-doc-documentation>
+        <tui-doc-documentation heading="CSS customization">
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="style.color"
+                documentationPropertyType="string"
+                [documentationPropertyValues]="colorVariants"
+                [(documentationPropertyValue)]="color"
+            >
+                Custom color
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <tui-setup *pageTab />
+</tui-doc-page>

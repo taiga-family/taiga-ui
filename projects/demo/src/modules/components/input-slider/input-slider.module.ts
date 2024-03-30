@@ -8,14 +8,14 @@ import {
     TuiHintModule,
     TuiLinkModule,
     TuiNotificationModule,
-    TuiNumberFormatModule,
+    TuiNumberFormatDirective,
     TuiSvgModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {
     TuiInputRangeModule,
     TuiInputSliderModule,
-    TuiRadioListModule,
+    TuiRadioListComponent,
 } from '@taiga-ui/kit';
 
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
@@ -34,7 +34,7 @@ import {ExampleTuiInputSliderComponent} from './input-slider.component';
         ReactiveFormsModule,
         FormsModule,
         CommonModule,
-        TuiRadioListModule,
+        TuiRadioListComponent,
         TuiButtonModule,
         TuiHintModule,
         TuiAddonDocModule,
@@ -42,7 +42,7 @@ import {ExampleTuiInputSliderComponent} from './input-slider.component';
         TuiSvgModule,
         TuiNotificationModule,
         TuiTextfieldControllerModule,
-        TuiNumberFormatModule,
+        TuiNumberFormatDirective,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiInputSliderComponent)),
     ],
     declarations: [

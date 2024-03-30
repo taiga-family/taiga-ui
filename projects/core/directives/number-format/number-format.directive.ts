@@ -4,6 +4,7 @@ import {TUI_NUMBER_FORMAT} from '@taiga-ui/core/tokens';
 import {combineLatest, map, Observable, ReplaySubject} from 'rxjs';
 
 @Directive({
+    standalone: true,
     selector: '[tuiNumberFormat]',
     providers: [
         {

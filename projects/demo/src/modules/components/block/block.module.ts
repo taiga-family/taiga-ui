@@ -10,11 +10,13 @@ import {
     TuiTooltipModule,
 } from '@taiga-ui/core';
 import {
-    TuiCheckboxModule,
+    TuiAvatarComponent,
+    TuiBlockDirective,
+    TuiCheckboxComponent,
+    TuiFadeDirective,
     TuiRadioComponent,
-    TuiToggleModule,
-} from '@taiga-ui/experimental';
-import {TuiAvatarComponent, TuiBlockDirective, TuiFadeDirective} from '@taiga-ui/kit';
+    TuiSwitchComponent,
+} from '@taiga-ui/kit';
 
 import {ExampleTuiBlockComponent} from './block.component';
 import {TuiBlockExample1} from './examples/1';
@@ -30,11 +32,11 @@ import {TuiBlockExample3} from './examples/3';
         TuiGroupDirective,
         TuiAvatarComponent,
         TuiTooltipModule,
-        TuiCheckboxModule,
+        TuiCheckboxComponent,
         TuiRadioComponent,
         TuiFadeDirective,
         TuiTitleDirective,
-        TuiToggleModule,
+        TuiSwitchComponent,
         TuiIconComponent,
         TuiExamplePipe,
         tuiGetDocModules(ExampleTuiBlockComponent),

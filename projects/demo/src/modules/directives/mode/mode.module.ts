@@ -4,7 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiModeModule} from '@taiga-ui/core';
-import {TuiInputModule, TuiInputNumberModule, TuiToggleModule} from '@taiga-ui/kit';
+import {TuiInputModule, TuiInputNumberModule, TuiSwitchComponent} from '@taiga-ui/kit';
 
 import {TuiModeExample1} from './examples/1';
 import {ExampleTuiModeComponent} from './mode.component';
@@ -15,7 +15,7 @@ import {ExampleTuiModeComponent} from './mode.component';
         FormsModule,
         TuiModeModule,
         TuiInputModule,
-        TuiToggleModule,
+        TuiSwitchComponent,
         TuiInputNumberModule,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiModeComponent)),

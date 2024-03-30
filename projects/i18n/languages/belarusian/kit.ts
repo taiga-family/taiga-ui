@@ -57,7 +57,7 @@ export const TUI_BELARUSIAN_LANGUAGE_KIT: TuiLanguageKit = {
         all: 'Выбраць усё',
         none: 'Зняць выбар',
     },
-    prompt: {
+    confirm: {
         yes: 'Так',
         no: 'Не',
     },

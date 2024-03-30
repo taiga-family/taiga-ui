@@ -3,14 +3,14 @@ import {Directive, ElementRef, HostBinding, inject} from '@angular/core';
 import type {Router} from '@angular/router';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {TUI_DOC_PAGE_LOADED} from '@taiga-ui/addon-doc';
-import {TuiDestroyService, tuiPure} from '@taiga-ui/cdk';
+import {tuiPure} from '@taiga-ui/cdk';
 
 import {readyToScrollFactory} from './utils/ready-to-scroll-factory';
 import {TUI_SELECTED_VERSION_META} from './version-manager/version-manager.providers';
 
 export const DEMO_PAGE_LOADED_PROVIDER = {
     provide: TUI_DOC_PAGE_LOADED,
-    deps: [ElementRef, ResizeObserverService, TuiDestroyService],
+    deps: [ElementRef, ResizeObserverService],
     useFactory: readyToScrollFactory,
 };
 

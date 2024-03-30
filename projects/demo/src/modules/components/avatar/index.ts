@@ -2,28 +2,28 @@ import {Component, inject} from '@angular/core';
 import type {SafeResourceUrl} from '@angular/platform-browser';
 import {DomSanitizer} from '@angular/platform-browser';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiComponentPipe, TuiExamplePipe} from '@demo/utils';
-import {TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiDemoModule} from '@demo/utils';
 import type {TuiSizeXS, TuiSizeXXL} from '@taiga-ui/core';
-import {TuiNotificationModule} from '@taiga-ui/core';
 import {TuiAvatarComponent} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [
-        TuiAddonDocModule,
-        TuiNotificationModule,
-        TuiAvatarComponent,
-        TuiExamplePipe,
-        TuiComponentPipe,
-    ],
+    imports: [TuiAvatarComponent, TuiDemoModule],
     templateUrl: './index.html',
     changeDetection,
 })
 export default class ExampleComponent {
     private readonly sanitizer = inject(DomSanitizer);
-    protected readonly exampleModule = import('./examples/import/module.md?raw');
-    protected readonly exampleHtml = import('./examples/import/template.md?raw');
+
+    protected readonly examples = [
+        'Content types',
+        'Colors',
+        'Sizes',
+        'Stacking',
+        'Options with DI',
+        'Labeled',
+        'Outline',
+    ];
 
     protected readonly sizes: ReadonlyArray<TuiSizeXS | TuiSizeXXL> = [
         'xs',

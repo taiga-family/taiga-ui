@@ -9,7 +9,7 @@ import {
     TuiTextCodeModule,
 } from '@taiga-ui/addon-doc';
 import {TuiElasticStickyModule} from '@taiga-ui/addon-mobile';
-import {TuiAutoFocusModule} from '@taiga-ui/cdk';
+import {TuiAutoFocusDirective} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
     TuiDialogModule,
@@ -17,7 +17,7 @@ import {
     TuiLinkModule,
     TuiLoaderModule,
     TuiNotificationModule,
-    TuiNumberFormatModule,
+    TuiNumberFormatDirective,
     TuiSvgModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
@@ -26,7 +26,7 @@ import {
     TuiInputModule,
     TuiInputNumberModule,
     TuiMarkerIconModule,
-    TuiRadioListModule,
+    TuiRadioListComponent,
 } from '@taiga-ui/kit';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
@@ -55,14 +55,14 @@ import {TuiDialogExampleComponent10} from './examples/10';
         TuiAccordionModule,
         TuiAmountPipe,
         TuiButtonModule,
-        TuiRadioListModule,
+        TuiRadioListComponent,
         TuiInputModule,
         TuiHintModule,
         TuiLinkModule,
         TuiMarkerIconModule,
         TuiNotificationModule,
         TuiElasticStickyModule,
-        TuiAutoFocusModule,
+        TuiAutoFocusDirective,
         TuiAddonDocModule,
         DialogExampleModule,
         SearchDialogExampleModule,
@@ -73,7 +73,7 @@ import {TuiDialogExampleComponent10} from './examples/10';
         PayExampleModalModule,
         TuiTextfieldControllerModule,
         TuiTextCodeModule,
-        TuiNumberFormatModule,
+        TuiNumberFormatDirective,
     ],
     declarations: [
         ExampleTuiDialogComponent,

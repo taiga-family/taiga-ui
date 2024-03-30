@@ -31,7 +31,6 @@ import {
     TUI_IS_E2E,
     TUI_IS_PLAYWRIGHT,
     TUI_TAKE_ONLY_TRUSTED_EVENTS,
-    tuiAssert,
 } from '@taiga-ui/cdk';
 import {
     TUI_DROPDOWN_HOVER_DEFAULT_OPTIONS,
@@ -112,19 +111,13 @@ export const config: ApplicationConfig = {
                     return null;
                 }
 
-                ngDevMode &&
-                    tuiAssert.assert(
-                        !(type && path),
-                        'Don\'t use "type" and "path" input params together in tui-doc-page',
-                    );
-
-                if (type) {
-                    return `${link}/${pkg.toLowerCase()}/${type.toLowerCase()}/${(
-                        header[0].toLowerCase() + header.slice(1)
-                    ).replaceAll(/[A-Z]/g, m => `-${m.toLowerCase()}`)}`;
+                if (path) {
+                    return `${link}/${path}`;
                 }
 
-                return `${link}/${path}`;
+                return `${link}/${pkg.toLowerCase()}/${type.toLowerCase()}/${(
+                    header[0].toLowerCase() + header.slice(1)
+                ).replaceAll(/[A-Z]/g, m => `-${m.toLowerCase()}`)}`;
             },
         },
         {

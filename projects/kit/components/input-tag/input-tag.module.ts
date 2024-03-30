@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {
-    TuiActiveZoneModule,
+    TuiActiveZoneDirective,
     TuiFocusableModule,
     TuiHoveredModule,
     TuiScrollService,
@@ -26,7 +26,7 @@ import {TuiInputTagComponent} from './input-tag.component';
         PolymorpheusModule,
         TuiFocusableModule,
         TuiHoveredModule,
-        TuiActiveZoneModule,
+        TuiActiveZoneDirective,
         TuiSvgModule,
         TuiScrollbarComponent,
         TuiTooltipModule,

@@ -27,7 +27,7 @@ test.describe('Textarea', () => {
 
         await expect(textAreaComponent).toHaveScreenshot('textarea-line-break.png');
 
-        await page.locator('.t-row tui-toggle').first().click();
+        await page.locator('.t-row input[tuiSwitch]').first().click();
 
         await expect(textAreaComponent).toHaveScreenshot(
             'textarea-line-break-disabled.png',

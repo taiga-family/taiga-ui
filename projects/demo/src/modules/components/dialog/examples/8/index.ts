@@ -24,7 +24,7 @@ export class TuiDialogExampleComponent8 {
     }
 
     protected onClick(content: PolymorpheusContent): void {
-        const closeable = this.dialogForm.withPrompt({
+        const closeable = this.dialogForm.withConfirm({
             label: 'Are you sure?',
             data: {
                 content: 'Your data will be <strong>lost</strong>',

@@ -6,7 +6,7 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import type {TuiSizeS, TuiSizeXL} from '@taiga-ui/core';
+import type {TuiSizeXL, TuiSizeXS} from '@taiga-ui/core';
 
 @Component({
     selector: 'tui-ring-chart',
@@ -20,7 +20,7 @@ export class TuiRingChartComponent {
 
     @Input()
     @HostBinding('attr.data-size')
-    public size: TuiSizeS | TuiSizeXL = 'm';
+    public size: TuiSizeXL | TuiSizeXS = 'm';
 
     @Input()
     public activeItemIndex = NaN;

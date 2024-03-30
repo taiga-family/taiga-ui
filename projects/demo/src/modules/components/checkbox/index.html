@@ -1,0 +1,32 @@
+<tui-doc-page
+    header="Checkbox"
+    package="KIT"
+    type="components"
+>
+    <ng-template pageTab>
+        <p>A checkbox component that is able to imitate native control on mobile platforms.</p>
+
+        <tui-doc-example
+            id="platforms"
+            heading="Platforms"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample: 'html,ts'"
+        >
+            <tui-notification class="tui-space_bottom-4">
+                Use
+                <code>--tui-accent</code>
+                CSS variable to customize color of native control emulation
+            </tui-notification>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="decorative"
+            description="If you only want to show checkbox for decorative purpose, without it being interactive — use it without Angular forms"
+            heading="Decorative"
+            [component]="2 | tuiComponent"
+            [content]="2 | tuiExample: 'html,ts'"
+        />
+    </ng-template>
+
+    <tui-setup *pageTab="'Setup'" />
+</tui-doc-page>

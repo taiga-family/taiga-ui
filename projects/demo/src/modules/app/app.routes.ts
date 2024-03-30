@@ -179,36 +179,11 @@ export const ROUTES: Routes = [
             title: 'Chip',
         },
     },
-    {
-        path: 'experimental/checkbox',
-        loadChildren: async () =>
-            (await import('../experimental/checkbox/checkbox.module'))
-                .ExampleTuiCheckboxModule,
-        data: {
-            title: 'Checkbox ',
-        },
-    },
-    {
-        path: 'experimental/radio',
-        loadChildren: async () =>
-            (await import('../experimental/radio/radio.module')).ExampleTuiRadioModule,
-        data: {
-            title: 'Radio ',
-        },
-    },
     route({
         path: 'components/title',
         title: 'Title',
         loadComponent: async () => import('../directives/title'),
     }),
-    {
-        path: 'experimental/toggle',
-        loadChildren: async () =>
-            (await import('../experimental/toggle/toggle.module')).ExampleTuiToggleModule,
-        data: {
-            title: 'Toggle ',
-        },
-    },
     {
         path: 'experimental/tooltip',
         loadChildren: async () =>
@@ -296,15 +271,6 @@ export const ROUTES: Routes = [
         loadComponent: async () => import('../directives/comment/comment.component'),
         title: 'Comment',
     }),
-    {
-        path: 'experimental/compass',
-        loadChildren: async () =>
-            (await import('../experimental/compass/compass.module'))
-                .ExampleTuiCompassModule,
-        data: {
-            title: 'Compass',
-        },
-    },
     route({
         path: 'layout/header',
         title: 'Header',
@@ -318,31 +284,11 @@ export const ROUTES: Routes = [
             title: 'Icon',
         },
     },
-    {
+    route({
         path: 'experimental/label',
-        loadChildren: async () =>
-            (await import('../experimental/label/label.module')).ExampleTuiLabelModule,
-        data: {
-            title: 'Label ',
-        },
-    },
-    {
-        path: 'experimental/progress-segmented',
-        loadChildren: async () =>
-            (await import('../experimental/progress-segmented/progress-segmented.module'))
-                .ExampleTuiProgressSegmentedModule,
-        data: {
-            title: 'ProgressSegmented',
-        },
-    },
-    {
-        path: 'experimental/rating',
-        loadChildren: async () =>
-            (await import('../experimental/rating/rating.module')).ExampleTuiRatingModule,
-        data: {
-            title: 'Rating',
-        },
-    },
+        title: 'Label ',
+        loadComponent: async () => import('../experimental/label'),
+    }),
     {
         path: 'experimental/segmented',
         loadChildren: async () =>
@@ -398,14 +344,6 @@ export const ROUTES: Routes = [
         },
     },
     {
-        path: 'experimental/pin',
-        loadChildren: async () =>
-            (await import('../experimental/pin/pin.module')).ExampleTuiPinModule,
-        data: {
-            title: 'Pin',
-        },
-    },
-    {
         path: 'navigation/breadcrumbs',
         loadChildren: async () =>
             (await import('../components/breadcrumbs/breadcrumbs.module'))
@@ -449,15 +387,11 @@ export const ROUTES: Routes = [
             title: 'ThumbnailCard',
         },
     },
-    {
+    route({
         path: 'components/checkbox',
-        loadChildren: async () =>
-            (await import('../components/checkbox/checkbox.module'))
-                .ExampleTuiCheckboxModule,
-        data: {
-            title: 'Checkbox',
-        },
-    },
+        title: 'Checkbox',
+        loadComponent: async () => import('../components/checkbox'),
+    }),
     {
         path: 'components/combo-box',
         loadChildren: async () =>
@@ -642,15 +576,11 @@ export const ROUTES: Routes = [
             title: 'Input',
         },
     },
-    {
+    route({
         path: 'components/input-date',
-        loadChildren: async () =>
-            (await import('../components/input-date/input-date.module'))
-                .ExampleTuiInputDateModule,
-        data: {
-            title: 'InputDate',
-        },
-    },
+        title: 'InputDate',
+        loadComponent: async () => import('../components/input-date'),
+    }),
     {
         path: 'components/input-date-multi',
         loadChildren: async () =>
@@ -937,31 +867,16 @@ export const ROUTES: Routes = [
             title: 'Pagination',
         },
     },
-    {
+    route({
         path: 'components/radio',
-        loadChildren: async () =>
-            (await import('../components/radio/radio.module')).ExampleTuiRadioModule,
-        data: {
-            title: 'Radio',
-        },
-    },
-    {
-        path: 'components/radio-list',
-        loadChildren: async () =>
-            (await import('../components/radio-list/radio-list.module'))
-                .ExampleTuiRadioListModule,
-        data: {
-            title: 'RadioList',
-        },
-    },
-    {
+        title: 'Radio',
+        loadComponent: async () => import('../components/radio'),
+    }),
+    route({
         path: 'components/rating',
-        loadChildren: async () =>
-            (await import('../components/rating/rating.module')).ExampleTuiRatingModule,
-        data: {
-            title: 'Rating',
-        },
-    },
+        title: 'Rating',
+        loadComponent: async () => import('../components/rating'),
+    }),
     {
         path: 'components/range',
         loadChildren: async () =>
@@ -1021,15 +936,11 @@ export const ROUTES: Routes = [
             title: 'Slider',
         },
     },
-    {
+    route({
         path: 'navigation/stepper',
-        loadChildren: async () =>
-            (await import('../components/stepper/stepper.module'))
-                .ExampleTuiStepperModule,
-        data: {
-            title: 'Stepper',
-        },
-    },
+        loadComponent: async () => import('../components/stepper/stepper.component'),
+        title: 'Stepper',
+    }),
     {
         path: 'components/preview',
         loadChildren: async () =>
@@ -1104,6 +1015,16 @@ export const ROUTES: Routes = [
             title: 'PdfViewer',
         },
     },
+    route({
+        path: 'components/pin',
+        title: 'Pin',
+        loadComponent: async () => import('../components/pin'),
+    }),
+    route({
+        path: 'components/compass',
+        title: 'Compass',
+        loadComponent: async () => import('../components/compass'),
+    }),
     {
         path: 'components/progress-bar',
         loadChildren: async () =>
@@ -1122,21 +1043,18 @@ export const ROUTES: Routes = [
             title: 'ProgressCircle',
         },
     },
-    {
+    route({
         path: 'components/progress-segmented',
-        loadChildren: async () =>
-            (await import('../components/progress-segmented/progress-segmented.module'))
-                .ExampleTuiProgressSegmentedModule,
-        data: {
-            title: 'ProgressSegmented',
-        },
-    },
+        title: 'ProgressSegmented',
+        loadComponent: async () => import('../directives/progress-segmented'),
+    }),
     {
-        path: 'components/prompt',
+        path: 'components/confirm',
         loadChildren: async () =>
-            (await import('../components/prompt/prompt.module')).ExampleTuiPromptModule,
+            (await import('../components/confirm/confirm.module'))
+                .ExampleTuiConfirmModule,
         data: {
-            title: 'Prompt',
+            title: 'Confirm',
         },
     },
     {
@@ -1156,14 +1074,11 @@ export const ROUTES: Routes = [
             title: 'Tiles',
         },
     },
-    {
-        path: 'components/toggle',
-        loadChildren: async () =>
-            (await import('../components/toggle/toggle.module')).ExampleTuiToggleModule,
-        data: {
-            title: 'Toggle',
-        },
-    },
+    route({
+        path: 'components/switch',
+        title: 'Switch',
+        loadComponent: async () => import('../components/switch'),
+    }),
     {
         path: 'components/tooltip',
         loadChildren: async () =>
@@ -1768,14 +1683,6 @@ export const ROUTES: Routes = [
         },
     },
     {
-        path: 'services/destroy-service',
-        loadChildren: async () =>
-            (await import('../services/destroy/destroy.module')).ExampleTuiDestroyModule,
-        data: {
-            title: 'DestroyService',
-        },
-    },
-    {
         path: 'services/scroll-service',
         loadChildren: async () =>
             (await import('../services/scroll/scroll.module')).ExampleTuiScrollModule,
@@ -1807,8 +1714,12 @@ export const ROUTES: Routes = [
     route({
         path: 'directives/number-format',
         title: 'NumberFormat',
-        loadComponent: async () =>
-            import('../directives/number-format/number-format.component'),
+        loadComponent: async () => import('../directives/number-format'),
+    }),
+    route({
+        path: 'directives/date-format',
+        title: 'NumberFormat',
+        loadComponent: async () => import('../directives/date-format'),
     }),
 
     // UTILS

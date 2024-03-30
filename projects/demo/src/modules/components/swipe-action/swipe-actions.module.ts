@@ -20,14 +20,14 @@ import {
     TuiButtonModule,
     TuiCardModule,
     TuiCellModule,
-    TuiCheckboxModule,
     TuiSurfaceModule,
-    TuiToggleModule,
 } from '@taiga-ui/experimental';
 import {
     TuiAvatarComponent,
     TuiBadgeComponent,
     TuiBadgedContentComponent,
+    TuiCheckboxComponent,
+    TuiSwitchComponent,
 } from '@taiga-ui/kit';
 
 import {TuiSwipeActionExample1} from './examples/1';
@@ -50,14 +50,14 @@ import {ExampleTuiSwipeActionsComponent} from './swipe-actions.component';
         TuiAmountPipe,
         TuiBadgedContentComponent,
         TuiIconComponent,
-        TuiToggleModule,
+        TuiSwitchComponent,
         TuiBadgeComponent,
         TuiNotificationModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiSwipeActionsComponent)),
         TuiButtonModule,
         FormsModule,
         TuiTitleDirective,
-        TuiCheckboxModule,
+        TuiCheckboxComponent,
         TuiDropdownOpenDirective,
         TuiDataListModule,
         TuiDropdownDirective,

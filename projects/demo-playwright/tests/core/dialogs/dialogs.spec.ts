@@ -12,7 +12,7 @@ test.describe('Dialogs', () => {
             await page.setViewportSize({width, height});
             await tuiGoto(
                 page,
-                'components/prompt/API?no=Very%20Long%20long%20text&yes=Long%20long%20text',
+                'components/confirm/API?no=Very%20Long%20long%20text&yes=Long%20long%20text',
             );
 
             const documentationPagePO = new TuiDocumentationPagePO(page);
@@ -103,7 +103,7 @@ test.describe('Dialogs', () => {
             test.describe('Dialog with confirmation works', () => {
                 test.beforeEach(async ({page}) => {
                     const documentationPagePO = new TuiDocumentationPagePO(page);
-                    const example = documentationPagePO.getExample('#prompt');
+                    const example = documentationPagePO.getExample('#confirm');
 
                     await example.scrollIntoViewIfNeeded();
                     await example.locator('button').click();
@@ -116,12 +116,12 @@ test.describe('Dialogs', () => {
                     );
                 });
 
-                test('Pristine form does not show prompt', async ({page}) => {
+                test('Pristine form does not show confirmation', async ({page}) => {
                     await page.locator('tui-dialog .t-close').click();
                     await expect(page.locator('tui-dialog')).toHaveCount(0);
                 });
 
-                test('Dirty form shows prompt', async ({page}) => {
+                test('Dirty form shows confirmation', async ({page}) => {
                     await page.locator('tui-dialog input').fill('Test');
                     await page.locator('tui-dialog .t-close').click();
 
@@ -133,7 +133,7 @@ test.describe('Dialogs', () => {
                 test('Form is reset to pristine', async ({page}) => {
                     await page.locator('tui-dialog input').fill('Test');
                     await page.locator('tui-dialog .t-close').click();
-                    await page.locator('tui-prompt button').nth(1).click();
+                    await page.locator('tui-confirm button').nth(1).click();
                     await expect(page.locator('tui-dialog')).toHaveCount(0);
                 });
             });

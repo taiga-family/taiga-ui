@@ -2,6 +2,22 @@ import type {ReplacementIdentifier} from '../../../interfaces';
 
 export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifier[] = [
     {
+        from: {name: 'TuiActiveZoneModule', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiActiveZoneDirective', moduleSpecifier: '@taiga-ui/cdk'},
+    },
+    {
+        from: {name: 'TuiAutoFocusModule', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiAutoFocusDirective', moduleSpecifier: '@taiga-ui/cdk'},
+    },
+    {
+        from: {name: 'ALWAYS_TRUE_HANDLER', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TUI_TRUE_HANDLER', moduleSpecifier: '@taiga-ui/cdk'},
+    },
+    {
+        from: {name: 'ALWAYS_FALSE_HANDLER', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TUI_FALSE_HANDLER', moduleSpecifier: '@taiga-ui/cdk'},
+    },
+    {
         from: {name: 'TuiCardModule', moduleSpecifier: '@taiga-ui/addon-commerce'},
         to: {name: 'TuiThumbnailCardModule', moduleSpecifier: '@taiga-ui/addon-commerce'},
     },
@@ -22,7 +38,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifier[] = [
     },
     {
         from: {name: 'TuiCheckboxModule', moduleSpecifier: '@taiga-ui/experimental'},
-        to: {name: 'TuiCheckboxModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiCheckboxComponent', moduleSpecifier: '@taiga-ui/kit'},
     },
     {
         from: {name: 'TuiSwipeActionsModule', moduleSpecifier: '@taiga-ui/experimental'},
@@ -38,7 +54,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifier[] = [
     },
     {
         from: {name: 'TuiToggleModule', moduleSpecifier: '@taiga-ui/experimental'},
-        to: {name: 'TuiToggleModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiSwitchComponent', moduleSpecifier: '@taiga-ui/kit'},
     },
     {
         from: {name: 'TuiTextAreaModule', moduleSpecifier: '@taiga-ui/kit'},
@@ -246,5 +262,21 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifier[] = [
     {
         from: {name: 'TuiHeaderModule', moduleSpecifier: '@taiga-ui/experimental'},
         to: {name: 'TuiHeaderDirective', moduleSpecifier: '@taiga-ui/layout'},
+    },
+    {
+        from: {name: 'TuiPinModule', moduleSpecifier: '@taiga-ui/experimental'},
+        to: {name: 'TuiPinComponent', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {name: 'TuiCompassModule', moduleSpecifier: '@taiga-ui/experimental'},
+        to: {name: 'TuiCompassComponent', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {name: 'TuiRatingModule', moduleSpecifier: '@taiga-ui/experimental'},
+        to: {name: 'TuiRatingComponent', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {name: 'TuiRatingModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiRatingComponent', moduleSpecifier: '@taiga-ui/kit'},
     },
 ];

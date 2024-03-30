@@ -7,14 +7,14 @@ import {
     TuiButtonModule,
     TuiLinkModule,
     TuiNotificationModule,
-    TuiNumberFormatModule,
+    TuiNumberFormatDirective,
     TuiSvgModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {
     TuiInputRangeModule,
     TuiInputSliderModule,
-    TuiRadioListModule,
+    TuiRadioListComponent,
 } from '@taiga-ui/kit';
 
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
@@ -36,14 +36,14 @@ import {ExampleTuiInputRangeComponent} from './input-range.component';
         ReactiveFormsModule,
         FormsModule,
         CommonModule,
-        TuiRadioListModule,
+        TuiRadioListComponent,
         TuiAddonDocModule,
         TuiButtonModule,
         TuiLinkModule,
         TuiTextfieldControllerModule,
         TuiSvgModule,
         TuiNotificationModule,
-        TuiNumberFormatModule,
+        TuiNumberFormatDirective,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiInputRangeComponent)),
         NumberFormatDocumentationModule,
     ],

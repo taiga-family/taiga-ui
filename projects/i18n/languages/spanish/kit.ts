@@ -57,7 +57,7 @@ export const TUI_SPANISH_LANGUAGE_KIT: TuiLanguageKit = {
         all: 'Seleccionar todo',
         none: 'Seleccionar ninguno',
     },
-    prompt: {
+    confirm: {
         yes: 'Sí',
         no: 'No',
     },

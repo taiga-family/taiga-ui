@@ -18,10 +18,8 @@ import {
     TuiButtonModule,
     TuiCardModule,
     TuiCellModule,
-    TuiCheckboxModule,
     TuiSurfaceModule,
     TuiThumbnailCardModule,
-    TuiToggleModule,
 } from '@taiga-ui/experimental';
 import {
     TuiAvatarComponent,
@@ -29,11 +27,13 @@ import {
     TuiBadgedContentComponent,
     TuiBadgeDirective,
     TuiBadgeNotificationComponent,
+    TuiCheckboxComponent,
     TuiDataListWrapperModule,
     TuiFadeDirective,
     TuiProgressModule,
     TuiSelectModule,
     TuiSensitiveDirective,
+    TuiSwitchComponent,
 } from '@taiga-ui/kit';
 
 import {ExampleTuiCellComponent} from './cell.component';
@@ -60,11 +60,11 @@ import {TuiCellExample7} from './examples/7';
         TuiNotificationModule,
         TuiProgressModule,
         TuiThumbnailCardModule,
-        TuiToggleModule,
+        TuiSwitchComponent,
         TuiTooltipModule,
         TuiTitleDirective,
         TuiIconComponent,
-        TuiCheckboxModule,
+        TuiCheckboxComponent,
         TuiLoaderModule,
         TuiSensitiveDirective,
         TuiSurfaceModule,

@@ -108,10 +108,12 @@
 
                     <ng-template #noItems>
                         <ng-container [ngSwitch]="propertyConnector.documentationPropertyType">
-                            <tui-toggle
+                            <input
                                 *ngSwitchCase="'boolean'"
-                                size="l"
-                                [nativeId]="propertyConnector.attrName"
+                                tuiSwitch
+                                type="checkbox"
+                                class="t-switch"
+                                [id]="propertyConnector.attrName"
                                 [ngModel]="propertyConnector.documentationPropertyValue"
                                 [showIcons]="true"
                                 (ngModelChange)="propertyConnector.onValueChange($event)"

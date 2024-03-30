@@ -1,6 +1,7 @@
 import {AsyncPipe, NgIf} from '@angular/common';
 import type {OnInit} from '@angular/core';
-import {Component, inject, ViewEncapsulation} from '@angular/core';
+import {Component, DestroyRef, inject, ViewEncapsulation} from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {NavigationEnd, Router, RouterLink, RouterOutlet} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {LOCAL_STORAGE} from '@ng-web-apis/common';
@@ -8,9 +9,8 @@ import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {TuiDocMainModule, TuiLanguageSwitcherComponent} from '@taiga-ui/addon-doc';
 import {TuiSheetModule} from '@taiga-ui/addon-mobile';
 import {TuiTableBarsHostModule} from '@taiga-ui/addon-tablebars';
-import {TuiDestroyService} from '@taiga-ui/cdk';
 import {TuiLinkModule, TuiModeModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
-import {distinctUntilChanged, filter, map, takeUntil} from 'rxjs';
+import {distinctUntilChanged, filter, map} from 'rxjs';
 
 import {CustomHostComponent} from '../customization/portals/examples/1/portal/custom-host.component';
 import {AbstractDemoComponent, DEMO_PAGE_LOADED_PROVIDER} from './abstract.app';
@@ -42,13 +42,12 @@ import {TUI_VERSION_MANAGER_PROVIDERS} from './version-manager/version-manager.p
     changeDetection,
     providers: [
         ResizeObserverService,
-        TuiDestroyService,
         DEMO_PAGE_LOADED_PROVIDER,
         TUI_VERSION_MANAGER_PROVIDERS,
     ],
 })
 export class AppComponent extends AbstractDemoComponent implements OnInit {
-    private readonly destroy$ = inject(TuiDestroyService, {self: true});
+    private readonly destroyRef = inject(DestroyRef);
     private readonly ym = inject(YaMetrikaService);
     protected readonly router = inject(Router);
     protected readonly storage = inject(LOCAL_STORAGE);
@@ -67,7 +66,7 @@ export class AppComponent extends AbstractDemoComponent implements OnInit {
         this.router.events
             .pipe(
                 filter((event): event is NavigationEnd => event instanceof NavigationEnd),
-                takeUntil(this.destroy$),
+                takeUntilDestroyed(this.destroyRef),
             )
             .subscribe(event =>
                 this.ym.hit(event.urlAfterRedirects, {referer: event.url}),

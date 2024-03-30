@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import type {TuiBooleanHandler, TuiDay, TuiDayRange} from '@taiga-ui/cdk';
-import {ALWAYS_FALSE_HANDLER, TUI_FIRST_DAY, TUI_LAST_DAY} from '@taiga-ui/cdk';
+import {TUI_FALSE_HANDLER, TUI_FIRST_DAY, TUI_LAST_DAY} from '@taiga-ui/cdk';
 import type {TuiDialogContext} from '@taiga-ui/core';
 import type {TuiMobileCalendarData} from '@taiga-ui/kit';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
@@ -37,6 +37,6 @@ export class TuiMobileCalendarDialogComponent {
     }
 
     protected get disabledItemHandler(): TuiBooleanHandler<TuiDay> {
-        return this.context.data?.disabledItemHandler || ALWAYS_FALSE_HANDLER;
+        return this.context.data?.disabledItemHandler || TUI_FALSE_HANDLER;
     }
 }

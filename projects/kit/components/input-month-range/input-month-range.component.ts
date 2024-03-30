@@ -9,8 +9,8 @@ import {
 import type {TuiFocusableElementAccessor, TuiMonth, TuiYear} from '@taiga-ui/cdk';
 import {
     AbstractTuiNullableControl,
-    ALWAYS_FALSE_HANDLER,
     CHAR_EN_DASH,
+    TUI_FALSE_HANDLER,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
     tuiDateClamp,
@@ -59,7 +59,7 @@ export class TuiInputMonthRangeComponent
 
     @Input()
     public disabledItemHandler: TuiBooleanHandlerWithContext<TuiMonth, TuiMonthContext> =
-        ALWAYS_FALSE_HANDLER;
+        TUI_FALSE_HANDLER;
 
     @Input()
     public defaultActiveYear: TuiYear = TuiDay.currentLocal();

@@ -1,7 +1,7 @@
 import {Directive, ElementRef, inject, Input, Renderer2} from '@angular/core';
 import {
-    ALWAYS_FALSE_HANDLER,
-    ALWAYS_TRUE_HANDLER,
+    TUI_FALSE_HANDLER,
+    TUI_TRUE_HANDLER,
     TuiDestroyService,
     tuiTypedFromEvent,
     tuiWithStyles,
@@ -46,8 +46,8 @@ export class TuiRippleDirective {
                     const animationEndOn$ = tuiTypedFromEvent(ripple, 'animationend');
 
                     return race(
-                        timer(TOUCH_MOVE_DELAY).pipe(map(ALWAYS_FALSE_HANDLER)),
-                        touchEnd$.pipe(map(ALWAYS_TRUE_HANDLER)),
+                        timer(TOUCH_MOVE_DELAY).pipe(map(TUI_FALSE_HANDLER)),
+                        touchEnd$.pipe(map(TUI_TRUE_HANDLER)),
                     ).pipe(
                         take(1),
                         // eslint-disable-next-line rxjs/no-unsafe-takeuntil

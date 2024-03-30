@@ -18,7 +18,7 @@ export const SEE_ALSO_GROUPS: ReadonlyArray<readonly string[]> = [
     ['InputPhone', 'InputPhoneInternational'],
     ['Button', 'Action', 'Link'],
     ['Action', 'Island'],
-    ['Checkbox', 'Radio', 'Toggle', 'Block', 'Label'],
+    ['Checkbox', 'Radio', 'Switch', 'Block', 'Label'],
     ['Accordion', 'Expand'],
     ['ComboBox', 'MultiSelect', 'Select'],
     ['Badge', 'BadgedContent', 'Tag'],

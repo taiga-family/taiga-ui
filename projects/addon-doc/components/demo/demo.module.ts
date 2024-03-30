@@ -17,7 +17,7 @@ import {
 } from '@taiga-ui/core';
 import {
     TuiBlockDirective,
-    TuiCheckboxLabeledModule,
+    TuiCheckboxComponent,
     TuiDataListWrapperModule,
     TuiSelectModule,
 } from '@taiga-ui/kit';
@@ -37,7 +37,7 @@ import {TuiDocDemoComponent} from './demo.component';
         TuiGroupDirective,
         TuiTooltipModule,
         TuiModeModule,
-        TuiCheckboxLabeledModule,
+        TuiCheckboxComponent,
         TuiSvgModule,
         TuiDataListWrapperModule,
         TuiDataListModule,

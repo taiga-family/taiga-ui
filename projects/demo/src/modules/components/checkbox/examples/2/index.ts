@@ -1,19 +1,16 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiButtonModule} from '@taiga-ui/experimental';
+import {TuiCheckboxComponent} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-checkbox-example-2',
+    standalone: true,
+    imports: [TuiCheckboxComponent, TuiButtonModule],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class TuiCheckboxExample2 {
-    protected testForm = new FormGroup({
-        testValue1: new FormControl(true),
-        testValue2: new FormControl(false),
-        testValue3: new FormControl({value: true, disabled: true}),
-        testValue4: new FormControl({value: false, disabled: true}),
-    });
+export default class ExampleComponent {
+    protected checked = false;
 }

@@ -7,13 +7,15 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {
     AbstractTuiValueTransformer,
     RANGE_SEPARATOR_CHAR,
-    TUI_DATE_FORMAT,
-    TUI_DATE_SEPARATOR,
     TUI_LAST_DAY,
     TuiDay,
     TuiDayRange,
 } from '@taiga-ui/cdk';
-import {TuiRootModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
+import {
+    TUI_DATE_FORMAT,
+    TuiRootModule,
+    TuiTextfieldControllerModule,
+} from '@taiga-ui/core';
 import type {TuiDayRangePeriod} from '@taiga-ui/kit';
 import {
     TUI_DATE_RANGE_VALUE_TRANSFORMER,
@@ -22,6 +24,7 @@ import {
     TuiInputDateRangeModule,
 } from '@taiga-ui/kit';
 import {TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
+import {of} from 'rxjs';
 
 describe('InputDateRangeComponent', () => {
     @Component({
@@ -185,8 +188,10 @@ describe('InputDateRangeComponent', () => {
             TestBed.configureTestingModule({
                 ...defaultTestingModuleMeta,
                 providers: [
-                    {provide: TUI_DATE_FORMAT, useValue: 'MDY'},
-                    {provide: TUI_DATE_SEPARATOR, useValue: '/'},
+                    {
+                        provide: TUI_DATE_FORMAT,
+                        useValue: of({mode: 'MDY', separator: '/'}),
+                    },
                 ],
             });
             await TestBed.compileComponents();
@@ -224,8 +229,10 @@ describe('InputDateRangeComponent', () => {
             TestBed.configureTestingModule({
                 ...defaultTestingModuleMeta,
                 providers: [
-                    {provide: TUI_DATE_FORMAT, useValue: 'YMD'},
-                    {provide: TUI_DATE_SEPARATOR, useValue: '-'},
+                    {
+                        provide: TUI_DATE_FORMAT,
+                        useValue: of({mode: 'YMD', separator: '-'}),
+                    },
                 ],
             });
             await TestBed.compileComponents();

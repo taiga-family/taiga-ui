@@ -2,7 +2,7 @@ import type {OnInit} from '@angular/core';
 import {ChangeDetectionStrategy, Component, ElementRef, inject} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
 import {
-    TuiActiveZoneModule,
+    TuiActiveZoneDirective,
     TuiDestroyService,
     tuiGetClosestFocusable,
     tuiIsElement,
@@ -40,7 +40,7 @@ import {TuiDropdownPositionDirective} from './dropdown-position.directive';
     selector: 'tui-dropdown',
     imports: [
         PolymorpheusModule,
-        TuiActiveZoneModule,
+        TuiActiveZoneDirective,
         TuiOverscrollModule,
         TuiScrollbarComponent,
     ],

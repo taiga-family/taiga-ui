@@ -4,7 +4,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import type {TuiBooleanHandler, TuiTimeMode} from '@taiga-ui/cdk';
 import {
-    ALWAYS_FALSE_HANDLER,
+    TUI_FALSE_HANDLER,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
     TuiDay,
@@ -97,7 +97,7 @@ export class ExampleTuiInputDateTimeComponent extends AbstractExampleTuiControl 
 
     protected readonly disabledItemHandlerVariants: ReadonlyArray<
         TuiBooleanHandler<TuiDay>
-    > = [ALWAYS_FALSE_HANDLER, ({day}) => day % 3 === 0];
+    > = [TUI_FALSE_HANDLER, ({day}) => day % 3 === 0];
 
     protected disabledItemHandler = this.disabledItemHandlerVariants[0];
 

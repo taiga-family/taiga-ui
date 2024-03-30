@@ -1,15 +1,18 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiLabelDirective} from '@taiga-ui/experimental';
+import {TuiRadioComponent} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-label-example-2',
+    standalone: true,
+    imports: [ReactiveFormsModule, TuiLabelDirective, TuiRadioComponent],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class TuiLabelExample2 {
+export default class ExampleComponent {
     protected testForm = new FormGroup({
         testValue: new FormControl(),
     });

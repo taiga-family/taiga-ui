@@ -7,7 +7,7 @@ import {
     Input,
 } from '@angular/core';
 import type {TuiFocusableElementAccessor} from '@taiga-ui/cdk';
-import {AbstractTuiControl, tuiAssert, tuiClamp, tuiIsNativeFocused} from '@taiga-ui/cdk';
+import {AbstractTuiControl, tuiClamp, tuiIsNativeFocused} from '@taiga-ui/cdk';
 import type {TuiKeySteps} from '@taiga-ui/kit/types';
 import {
     tuiKeyStepValueToPercentage,
@@ -53,7 +53,7 @@ export class TuiSliderKeyStepsDirective
         const clampedControlValue = tuiClamp(controlValue, this.min, this.max);
 
         ngDevMode &&
-            tuiAssert.assert(
+            console.assert(
                 controlValue === clampedControlValue,
                 '\n[SliderKeySteps]: You cannot programmatically set value which is less/more than min/max',
             );

@@ -1,16 +1,18 @@
 import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_LAST_DAY, TuiDay} from '@taiga-ui/cdk';
-import {TuiNamedDay} from '@taiga-ui/kit';
+import {TuiInputDateModule, TuiNamedDay} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-input-date-example-3',
+    standalone: true,
+    imports: [TuiInputDateModule, FormsModule],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class TuiInputDateExample3 {
+export default class ExampleComponent {
     protected from: TuiDay | null = null;
     protected to: TuiDay | null = null;
     protected min = new TuiDay(2017, 9, 4);

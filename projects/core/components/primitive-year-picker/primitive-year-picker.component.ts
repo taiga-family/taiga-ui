@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import type {TuiBooleanHandler, TuiDay, TuiDayRange} from '@taiga-ui/cdk';
 import {
-    ALWAYS_FALSE_HANDLER,
+    TUI_FALSE_HANDLER,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
     tuiInRange,
@@ -46,7 +46,7 @@ export class TuiPrimitiveYearPickerComponent {
     public max: TuiYear | null = TUI_LAST_DAY;
 
     @Input()
-    public disabledItemHandler: TuiBooleanHandler<number> = ALWAYS_FALSE_HANDLER;
+    public disabledItemHandler: TuiBooleanHandler<number> = TUI_FALSE_HANDLER;
 
     @Output()
     public readonly yearClick = new EventEmitter<TuiYear>();
@@ -57,7 +57,7 @@ export class TuiPrimitiveYearPickerComponent {
 
         if (
             max.year < item ||
-            (disabledItemHandler !== ALWAYS_FALSE_HANDLER && disabledItemHandler(item))
+            (disabledItemHandler !== TUI_FALSE_HANDLER && disabledItemHandler(item))
         ) {
             return TuiInteractiveState.Disabled;
         }

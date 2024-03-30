@@ -1,3 +1,4 @@
+import {coerceArray} from '@angular/cdk/coercion';
 import type {ValidatorFn} from '@angular/forms';
 import type {TuiContext} from '@taiga-ui/cdk';
 
@@ -14,8 +15,8 @@ interface FileSizeError {
 
 export function tuiCreateFileSizeValidator(size: number): ValidatorFn {
     return ({value}: {value: File | readonly File[] | null}): FileSizeError | null => {
-        const files: readonly File[] = Array.isArray(value) ? value : [value];
-        const $implicit = value && files.filter(file => file.size > size);
+        const files = value && coerceArray(value);
+        const $implicit = value && files?.filter(file => file.size > size);
 
         return $implicit?.length ? {[TUI_SIZE_ERROR]: {$implicit, size}} : null;
     };
@@ -23,9 +24,9 @@ export function tuiCreateFileSizeValidator(size: number): ValidatorFn {
 
 export function tuiCreateFileFormatValidator(accept: string): ValidatorFn {
     return ({value}: {value: File | readonly File[] | null}): FileFormatError | null => {
-        const files: readonly File[] = Array.isArray(value) ? value : [value];
+        const files = value && coerceArray(value);
         const formats = toArray(accept);
-        const $implicit = value && files.filter(file => !checkFormat(file, formats));
+        const $implicit = value && files?.filter(file => !checkFormat(file, formats));
 
         return $implicit?.length && accept ? {[TUI_FORMAT_ERROR]: {$implicit}} : null;
     };

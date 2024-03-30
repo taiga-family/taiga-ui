@@ -5,7 +5,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAmountPipe, TuiThumbnailCardModule} from '@taiga-ui/addon-commerce';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
-import {TuiAutoFocusModule, TuiLetModule, TuiMapperPipeModule} from '@taiga-ui/cdk';
+import {TuiAutoFocusDirective, TuiLetModule, TuiMapperPipeModule} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
     TuiDataListModule,
@@ -16,7 +16,7 @@ import {
     TuiLinkModule,
     TuiLoaderModule,
     TuiNotificationModule,
-    TuiNumberFormatModule,
+    TuiNumberFormatDirective,
     TuiScrollableDirective,
     TuiScrollbarComponent,
     TuiSvgModule,
@@ -27,7 +27,7 @@ import {
     TuiDataListWrapperModule,
     TuiMarkerIconModule,
     TuiMultiSelectModule,
-    TuiRadioListModule,
+    TuiRadioListComponent,
     TuiSelectModule,
     TuiTextareaModule,
 } from '@taiga-ui/kit';
@@ -60,7 +60,7 @@ import {ExampleTuiSelectComponent} from './select.component';
         TuiTextareaModule,
         TuiSelectModule,
         TuiThumbnailCardModule,
-        TuiRadioListModule,
+        TuiRadioListComponent,
         TuiButtonModule,
         TuiLinkModule,
         TuiAvatarComponent,
@@ -68,7 +68,7 @@ import {ExampleTuiSelectComponent} from './select.component';
         TuiDropdownModule,
         TuiTextfieldControllerModule,
         TuiHintModule,
-        TuiAutoFocusModule,
+        TuiAutoFocusDirective,
         TuiLetModule,
         TuiLoaderModule,
         TuiDataListWrapperModule,
@@ -81,7 +81,7 @@ import {ExampleTuiSelectComponent} from './select.component';
         TuiMapperPipeModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiSelectComponent)),
         TuiAmountPipe,
-        TuiNumberFormatModule,
+        TuiNumberFormatDirective,
         TuiScrollableDirective,
         TuiInitialsPipe,
     ],

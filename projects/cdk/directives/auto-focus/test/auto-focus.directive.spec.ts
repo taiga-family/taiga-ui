@@ -17,7 +17,6 @@ import {
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     tuiAsFocusableItemAccessor,
     TuiAutoFocusDirective,
-    TuiAutoFocusModule,
     TuiIosAutofocusHandler,
     tuiIsNativeFocused,
 } from '@taiga-ui/cdk';
@@ -44,7 +43,7 @@ describe('TuiAutoFocus directive', () => {
 
         beforeEach(async () => {
             TestBed.configureTestingModule({
-                imports: [TuiAutoFocusModule],
+                imports: [TuiAutoFocusDirective],
                 declarations: [TestComponentWithDiv],
             });
             await TestBed.compileComponents();
@@ -106,7 +105,7 @@ describe('TuiAutoFocus directive', () => {
 
         beforeEach(() => {
             TestBed.configureTestingModule({
-                imports: [TuiAutoFocusModule],
+                imports: [TuiAutoFocusDirective],
                 declarations: [TestComponentWithTuiButton, TestFocusableComponent],
             });
 
@@ -141,7 +140,7 @@ describe('TuiAutoFocus directive', () => {
 
         beforeEach(async () => {
             TestBed.configureTestingModule({
-                imports: [TuiAutoFocusModule],
+                imports: [TuiAutoFocusDirective],
                 declarations: [TestComponentIos],
                 providers: [
                     {
@@ -205,7 +204,7 @@ describe('TuiAutoFocus directive', () => {
 
         beforeEach(() => {
             TestBed.configureTestingModule({
-                imports: [TuiAutoFocusModule],
+                imports: [TuiAutoFocusDirective],
                 declarations: [TestComponentWithFocusFlag],
             });
 

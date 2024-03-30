@@ -57,7 +57,7 @@ export const TUI_DUTCH_LANGUAGE_KIT: TuiLanguageKit = {
         all: 'Selecteer alles',
         none: 'Selecteer geen',
     },
-    prompt: {
+    confirm: {
         yes: 'Ja',
         no: 'Ingen',
     },

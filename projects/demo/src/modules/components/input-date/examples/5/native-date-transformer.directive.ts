@@ -18,6 +18,7 @@ class ExampleTransformer extends AbstractTuiValueTransformer<From, To> {
 }
 
 @Directive({
+    standalone: true,
     selector: 'tui-input-date[toNativeDate]',
     providers: [
         {

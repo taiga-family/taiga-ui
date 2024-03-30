@@ -1,6 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {TuiActiveZoneModule} from '@taiga-ui/cdk';
+import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
 import {
     TuiHostedDropdownModule,
     TuiPrimitiveTextfieldModule,
@@ -13,7 +13,7 @@ import {TuiInputDirective} from './input.directive';
 @NgModule({
     imports: [
         CommonModule,
-        TuiActiveZoneModule,
+        TuiActiveZoneDirective,
         TuiPrimitiveTextfieldModule,
         TuiHostedDropdownModule,
     ],

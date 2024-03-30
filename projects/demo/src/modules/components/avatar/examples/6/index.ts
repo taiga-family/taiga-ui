@@ -3,11 +3,7 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiFallbackSrcPipe} from '@taiga-ui/core';
-import {
-    TuiAvatarComponent,
-    TuiAvatarLabeledComponent,
-    TuiFadeDirective,
-} from '@taiga-ui/kit';
+import {TuiAvatarComponent, TuiAvatarLabeledComponent} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
@@ -16,7 +12,6 @@ import {
         TuiFallbackSrcPipe,
         TuiAvatarLabeledComponent,
         TuiAvatarComponent,
-        TuiFadeDirective,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

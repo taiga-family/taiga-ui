@@ -1,8 +1,8 @@
 import {inject, Injectable} from '@angular/core';
 import type {TuiDialogOptions} from '@taiga-ui/core';
 import {TuiDialogService} from '@taiga-ui/core';
-import type {TuiPromptData} from '@taiga-ui/kit/components';
-import {TUI_PROMPT} from '@taiga-ui/kit/components';
+import type {TuiConfirmData} from '@taiga-ui/kit/components';
+import {TUI_CONFIRM} from '@taiga-ui/kit/components';
 import type {Observable} from 'rxjs';
 import {defer, of} from 'rxjs';
 
@@ -19,12 +19,12 @@ export class TuiDialogFormService {
         this.dirty = false;
     }
 
-    public withPrompt(
-        options: Partial<TuiDialogOptions<TuiPromptData>>,
+    public withConfirm(
+        options: Partial<TuiDialogOptions<TuiConfirmData>>,
     ): Observable<boolean> {
         return defer(() =>
             this.dirty
-                ? this.dialogs.open<boolean>(TUI_PROMPT, {
+                ? this.dialogs.open<boolean>(TUI_CONFIRM, {
                       size: 's',
                       ...options,
                   })

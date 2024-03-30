@@ -1,3 +1,4 @@
+import {coerceArray} from 'ng-morph';
 import type {DevkitFileSystem} from 'ng-morph/project/classes/devkit-file-system';
 import type {Element} from 'parse5/dist/tree-adapters/default';
 
@@ -60,9 +61,7 @@ export function replaceInputProperty({
     const path = fileSystem.resolve(getPathFromTemplateResource(templateResource));
     const recorder = fileSystem.edit(path);
     const templateOffset = getTemplateOffset(templateResource);
-    const selector = Array.isArray(componentSelector)
-        ? componentSelector
-        : [componentSelector];
+    const selector = coerceArray(componentSelector);
 
     const stringProperties = [
         ...findAttributeOnElementWithTag(template, from, selector, filterFn),

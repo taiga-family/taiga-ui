@@ -1,6 +1,6 @@
 /// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
 import type {TuiDayOfWeek, TuiMonth} from '@taiga-ui/cdk';
-import {DAYS_IN_WEEK, tuiAssert, TuiDay, tuiInRange} from '@taiga-ui/cdk';
+import {DAYS_IN_WEEK, TuiDay, tuiInRange} from '@taiga-ui/cdk';
 
 /**
  * Computes day of week offset of the beginning of the month
@@ -40,10 +40,10 @@ export const getDayFromMonthRowCol = ({
      */
     rowIndex: number;
 }): TuiDay => {
-    ngDevMode && tuiAssert.assert(Number.isInteger(rowIndex));
-    ngDevMode && tuiAssert.assert(tuiInRange(rowIndex, 0, 6));
-    ngDevMode && tuiAssert.assert(Number.isInteger(colIndex));
-    ngDevMode && tuiAssert.assert(tuiInRange(colIndex, 0, DAYS_IN_WEEK));
+    ngDevMode && console.assert(Number.isInteger(rowIndex));
+    ngDevMode && console.assert(tuiInRange(rowIndex, 0, 6));
+    ngDevMode && console.assert(Number.isInteger(colIndex));
+    ngDevMode && console.assert(tuiInRange(colIndex, 0, DAYS_IN_WEEK));
 
     let day =
         rowIndex * DAYS_IN_WEEK +

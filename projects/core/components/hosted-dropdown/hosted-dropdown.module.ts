@@ -1,6 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {TuiActiveZoneModule, TuiLetModule, TuiObscuredDirective} from '@taiga-ui/cdk';
+import {TuiActiveZoneDirective, TuiLetModule, TuiObscuredDirective} from '@taiga-ui/cdk';
 import {
     TuiDropdownModule,
     TuiDropdownOptionsDirective,
@@ -21,7 +21,7 @@ import {TuiHostedDropdownConnectorDirective} from './hosted-dropdown-connector.d
         PolymorpheusModule,
         TuiLetModule,
         TuiObscuredDirective,
-        TuiActiveZoneModule,
+        TuiActiveZoneDirective,
         TuiDropdownModule,
     ],
     declarations: [

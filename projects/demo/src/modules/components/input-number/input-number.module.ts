@@ -9,11 +9,11 @@ import {
     TuiHintModule,
     TuiLinkModule,
     TuiNotificationModule,
-    TuiNumberFormatModule,
+    TuiNumberFormatDirective,
     TuiSvgModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiInputNumberModule, TuiRadioListModule} from '@taiga-ui/kit';
+import {TuiInputNumberModule, TuiRadioListComponent} from '@taiga-ui/kit';
 
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
 import {TuiInputNumberExample1} from './examples/1';
@@ -33,7 +33,7 @@ import {ExampleTuiInputNumberComponent} from './input-number.component';
         TuiInputNumberModule,
         TuiCurrencyPipeModule,
         TuiSvgModule,
-        TuiRadioListModule,
+        TuiRadioListComponent,
         TuiButtonModule,
         TuiLinkModule,
         TuiTextfieldControllerModule,
@@ -42,7 +42,7 @@ import {ExampleTuiInputNumberComponent} from './input-number.component';
         InheritedDocumentationModule,
         TuiHintModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiInputNumberComponent)),
-        TuiNumberFormatModule,
+        TuiNumberFormatDirective,
     ],
     declarations: [
         ExampleTuiInputNumberComponent,

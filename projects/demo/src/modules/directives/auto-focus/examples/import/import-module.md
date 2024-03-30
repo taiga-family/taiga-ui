@@ -1,12 +1,12 @@
 ```ts
-import {TuiAutoFocusModule} from '@taiga-ui/cdk';
+import {TuiAutoFocusDirective} from '@taiga-ui/cdk';
 
 // ...
 
 @NgModule({
   imports: [
     // ...
-    TuiAutoFocusModule,
+    TuiAutoFocusDirective,
   ],
   // ...
 })

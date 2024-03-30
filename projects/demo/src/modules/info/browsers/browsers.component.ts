@@ -1,11 +1,12 @@
 import {NgFor, NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {TuiDocPageModule} from '@taiga-ui/addon-doc';
+import {TuiLinkModule, TuiNotificationModule} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
     selector: 'browser-support',
-    imports: [TuiDocPageModule, NgFor, NgIf],
+    imports: [TuiDocPageModule, NgFor, NgIf, TuiNotificationModule, TuiLinkModule],
     templateUrl: './browsers.template.html',
     styles: ['td {width: 18.75rem}'],
     changeDetection: ChangeDetectionStrategy.OnPush,

@@ -5,9 +5,11 @@
     [tuiDropdown]="content"
     [tuiDropdownManual]="open"
 >
-    <tui-toggle
-        size="l"
+    <input
+        tuiSwitch
+        type="checkbox"
         class="tui-space_right-2"
+        [showIcons]="false"
         [(ngModel)]="open"
     />
     Show dropdown

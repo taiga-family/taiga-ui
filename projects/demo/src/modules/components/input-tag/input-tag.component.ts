@@ -4,7 +4,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import {tuiDocExcludeProperties} from '@taiga-ui/addon-doc';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk';
-import {ALWAYS_FALSE_HANDLER, ALWAYS_TRUE_HANDLER} from '@taiga-ui/cdk';
+import {TUI_FALSE_HANDLER, TUI_TRUE_HANDLER} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import type {TuiStringifiableItem} from '@taiga-ui/kit';
 
@@ -114,7 +114,7 @@ export class ExampleTuiInputTagComponent extends AbstractExampleTuiControl {
     protected rows = 100;
 
     protected tagValidatorVariants: ReadonlyArray<TuiBooleanHandler<string>> = [
-        ALWAYS_TRUE_HANDLER,
+        TUI_TRUE_HANDLER,
         item => item === 'test',
         item => item !== 'mail',
     ];
@@ -125,7 +125,7 @@ export class ExampleTuiInputTagComponent extends AbstractExampleTuiControl {
 
     protected readonly disabledItemHandlerVariants: Array<
         TuiBooleanHandler<TuiStringifiableItem<string> | string>
-    > = [ALWAYS_FALSE_HANDLER, item => String(item).startsWith('T')];
+    > = [TUI_FALSE_HANDLER, item => String(item).startsWith('T')];
 
     protected disabledItemHandler = this.disabledItemHandlerVariants[0];
 }

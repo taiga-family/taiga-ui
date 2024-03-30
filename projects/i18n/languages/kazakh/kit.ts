@@ -57,7 +57,7 @@ export const TUI_KAZAKH_LANGUAGE_KIT: TuiLanguageKit = {
         all: 'Барлығын таңдаңыз',
         none: 'Ешбіреуін таңдау',
     },
-    prompt: {
+    confirm: {
         yes: 'Иә',
         no: 'Жоқ',
     },

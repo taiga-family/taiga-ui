@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
-import {TuiAutoFocusModule} from '@taiga-ui/cdk';
+import {TuiAutoFocusDirective} from '@taiga-ui/cdk';
 import {TuiButtonModule} from '@taiga-ui/core';
 import {TuiInputInlineModule} from '@taiga-ui/kit';
 
@@ -19,7 +19,7 @@ import {ExampleTuiInputInlineComponent} from './input-inline.component';
         ReactiveFormsModule,
         TuiButtonModule,
         TuiInputInlineModule,
-        TuiAutoFocusModule,
+        TuiAutoFocusDirective,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiInputInlineComponent)),
     ],

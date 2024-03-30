@@ -4,14 +4,13 @@ import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {IntersectionObserverModule} from '@ng-web-apis/intersection-observer';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
-import {TuiActiveZoneModule} from '@taiga-ui/cdk';
+import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
     TuiLinkModule,
     TuiNotificationModule,
     TuiSvgModule,
 } from '@taiga-ui/core';
-import {TuiCheckboxLabeledModule} from '@taiga-ui/kit';
 
 import {IconsComponent} from './icons.component';
 import {IconsGroupModule} from './icons-group/icons-group.module';
@@ -27,8 +26,7 @@ import {IconsGroupModule} from './icons-group/icons-group.module';
         TuiAddonDocModule,
         IconsGroupModule,
         RouterModule.forChild(tuiGenerateRoutes(IconsComponent)),
-        TuiCheckboxLabeledModule,
-        TuiActiveZoneModule,
+        TuiActiveZoneDirective,
         IntersectionObserverModule,
     ],
     declarations: [IconsComponent],

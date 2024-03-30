@@ -6,7 +6,7 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import type {TuiIdentityMatcher, TuiStringHandler} from '@taiga-ui/cdk';
-import {TUI_DEFAULT_IDENTITY_MATCHER, TUI_DEFAULT_STRINGIFY} from '@taiga-ui/cdk';
+import {TUI_DEFAULT_IDENTITY_MATCHER} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {
     TuiDataListModule,
@@ -83,7 +83,7 @@ describe('ComboBox', () => {
         public hintContent: string | null = 'prompt';
 
         public get stringify(): TuiStringHandler<Beast> {
-            return this.defaultInputs ? TUI_DEFAULT_STRINGIFY : stringify;
+            return this.defaultInputs ? String : stringify;
         }
 
         public get identityMatcher(): TuiIdentityMatcher<Beast> {

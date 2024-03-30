@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {TuiActiveZoneModule} from '@taiga-ui/cdk';
+import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
 
 describe('TuiActiveZoneDirective', () => {
     @Component({
@@ -100,7 +100,7 @@ describe('TuiActiveZoneDirective', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [CommonModule, TuiActiveZoneModule, ReactiveFormsModule],
+            imports: [CommonModule, TuiActiveZoneDirective, ReactiveFormsModule],
             declarations: [TestComponent],
         });
         await TestBed.compileComponents();

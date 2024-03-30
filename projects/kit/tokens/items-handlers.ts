@@ -5,9 +5,8 @@ import type {
     TuiStringHandler,
 } from '@taiga-ui/cdk';
 import {
-    ALWAYS_FALSE_HANDLER,
     TUI_DEFAULT_IDENTITY_MATCHER,
-    TUI_DEFAULT_STRINGIFY,
+    TUI_FALSE_HANDLER,
     tuiCreateToken,
     tuiProvideOptions,
 } from '@taiga-ui/cdk';
@@ -19,9 +18,9 @@ export interface TuiItemsHandlers<T> {
 }
 
 export const TUI_DEFAULT_ITEMS_HANDLERS: TuiItemsHandlers<unknown> = {
-    stringify: TUI_DEFAULT_STRINGIFY,
+    stringify: String,
     identityMatcher: TUI_DEFAULT_IDENTITY_MATCHER,
-    disabledItemHandler: ALWAYS_FALSE_HANDLER,
+    disabledItemHandler: TUI_FALSE_HANDLER,
 };
 
 /**

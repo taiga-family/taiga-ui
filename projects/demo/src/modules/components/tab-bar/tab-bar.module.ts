@@ -5,7 +5,8 @@ import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiTabBarModule} from '@taiga-ui/addon-mobile';
 import {TuiButtonModule, TuiDropdownModule, TuiNotificationModule} from '@taiga-ui/core';
-import {TuiCheckboxModule, TuiLabelDirective} from '@taiga-ui/experimental';
+import {TuiLabelDirective} from '@taiga-ui/experimental';
+import {TuiCheckboxComponent} from '@taiga-ui/kit';
 
 import {TuiTabBarExample1} from './examples/1';
 import {TuiTabBarExample2} from './examples/2';
@@ -24,7 +25,7 @@ import {ExampleTuiTabBarComponent} from './tab-bar.component';
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiTabBarComponent)),
         TuiLabelDirective,
-        TuiCheckboxModule,
+        TuiCheckboxComponent,
     ],
     declarations: [
         ExampleTuiTabBarComponent,

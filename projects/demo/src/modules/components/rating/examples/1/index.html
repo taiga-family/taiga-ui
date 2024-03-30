@@ -1,51 +1,6 @@
-<div class="example">
-    <h2>Template Driven</h2>
-
-    <p>
-        <b>value = {{ rateValue }}</b>
-    </p>
+<label tuiLabel="Rate Taiga UI">
     <tui-rating
         class="rating"
-        [(ngModel)]="rateValue"
+        [(ngModel)]="value"
     />
-
-    <p>
-        <b>Read only</b>
-    </p>
-    <tui-rating
-        class="rating"
-        [readOnly]="true"
-        [(ngModel)]="rateValue"
-    />
-
-    <p>
-        <b>Disabled</b>
-    </p>
-    <tui-rating
-        class="rating"
-        [disabled]="true"
-        [(ngModel)]="rateValue"
-    />
-</div>
-
-<div class="example">
-    <h2>Reactive Forms / Disabled</h2>
-
-    <p>
-        <b>value = {{ rateControl.value }}</b>
-    </p>
-    <tui-rating
-        class="rating"
-        [formControl]="rateControl"
-    />
-</div>
-
-<button
-    size="xs"
-    tuiButton
-    type="button"
-    class="example"
-    (click)="enableOrDisable()"
->
-    {{ rateControl.disabled ? 'enable' : 'disable' }} form control
-</button>
+</label>

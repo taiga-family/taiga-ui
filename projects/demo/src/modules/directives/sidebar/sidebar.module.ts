@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiSidebarModule} from '@taiga-ui/addon-mobile';
-import {TuiActiveZoneModule} from '@taiga-ui/cdk';
+import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
 import {TuiButtonModule, TuiLinkModule} from '@taiga-ui/core';
 import {TuiAccordionModule} from '@taiga-ui/kit';
 
@@ -14,7 +14,7 @@ import {ExampleTuiSidebarComponent} from './sidebar.component';
     imports: [
         CommonModule,
         TuiSidebarModule,
-        TuiActiveZoneModule,
+        TuiActiveZoneDirective,
         TuiButtonModule,
         TuiAccordionModule,
         TuiLinkModule,

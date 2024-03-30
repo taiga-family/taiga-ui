@@ -14,7 +14,7 @@ import {
     TuiTextfieldControllerModule,
     TuiWrapperModule,
 } from '@taiga-ui/core';
-import {TuiAvatarComponent, TuiRadioListModule} from '@taiga-ui/kit';
+import {TuiAvatarComponent, TuiRadioListComponent} from '@taiga-ui/kit';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiCustomizationModule} from '../../app/customization/customization.module';
@@ -43,7 +43,7 @@ import {ExampleTuiPrimitiveTextfieldComponent} from './primitive-textfield.compo
         TuiButtonModule,
         PolymorpheusModule,
         TuiHintModule,
-        TuiRadioListModule,
+        TuiRadioListComponent,
         TuiCustomizationModule,
         TuiLabelModule,
         TuiWrapperModule,

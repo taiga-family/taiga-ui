@@ -2,9 +2,9 @@ import {DOCUMENT} from '@angular/common';
 import type {Provider} from '@angular/core';
 import {ElementRef, forwardRef, NgZone} from '@angular/core';
 import {
-    ALWAYS_FALSE_HANDLER,
-    ALWAYS_TRUE_HANDLER,
+    TUI_FALSE_HANDLER,
     TUI_IS_IOS,
+    TUI_TRUE_HANDLER,
     tuiTypedFromEvent,
     tuiZonefree,
 } from '@taiga-ui/cdk';
@@ -23,11 +23,9 @@ export const TUI_SHEET_PROVIDERS: Provider[] = [
         useFactory: ({nativeElement}: ElementRef<HTMLElement>): Observable<boolean> =>
             merge(
                 tuiTypedFromEvent(nativeElement, 'touchstart', {passive: true}).pipe(
-                    map(ALWAYS_TRUE_HANDLER),
+                    map(TUI_TRUE_HANDLER),
                 ),
-                tuiTypedFromEvent(nativeElement, 'touchend').pipe(
-                    map(ALWAYS_FALSE_HANDLER),
-                ),
+                tuiTypedFromEvent(nativeElement, 'touchend').pipe(map(TUI_FALSE_HANDLER)),
             ),
     },
     {

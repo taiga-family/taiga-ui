@@ -3,7 +3,7 @@ import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import type {TuiBooleanHandler, TuiHandler} from '@taiga-ui/cdk';
-import {ALWAYS_FALSE_HANDLER} from '@taiga-ui/cdk';
+import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeXS} from '@taiga-ui/core';
 
 class ItemWithBadge {
@@ -73,7 +73,7 @@ export class ExampleTuiFilterComponent {
     protected disabledItemHandlerVariants: ReadonlyArray<
         TuiBooleanHandler<ItemWithBadge | string>
     > = [
-        ALWAYS_FALSE_HANDLER,
+        TUI_FALSE_HANDLER,
         item => item === 'Roman Sedov',
         item => (Number(item.valueOf()) || 0) >= 30,
     ];

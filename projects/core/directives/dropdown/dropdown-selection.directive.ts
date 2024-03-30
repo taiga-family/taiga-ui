@@ -3,11 +3,11 @@ import type {OnDestroy} from '@angular/core';
 import {Directive, ElementRef, inject, Input, ViewContainerRef} from '@angular/core';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk';
 import {
-    ALWAYS_TRUE_HANDLER,
     CHAR_NO_BREAK_SPACE,
     CHAR_ZERO_WIDTH_SPACE,
     EMPTY_CLIENT_RECT,
     TUI_RANGE,
+    TUI_TRUE_HANDLER,
     tuiGetNativeFocused,
     tuiIsElement,
     tuiIsString,
@@ -40,7 +40,7 @@ export class TuiDropdownSelectionDirective
     private readonly dropdown = inject(TuiDropdownDirective);
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
     private readonly handler$ = new BehaviorSubject<TuiBooleanHandler<Range>>(
-        ALWAYS_TRUE_HANDLER,
+        TUI_TRUE_HANDLER,
     );
 
     private readonly stream$ = combineLatest([

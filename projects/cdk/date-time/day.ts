@@ -1,5 +1,5 @@
 /// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
-import {tuiAssert} from '@taiga-ui/cdk/classes';
+
 import {TuiDayOfWeek, TuiMonthNumber} from '@taiga-ui/cdk/enums';
 import {
     TuiInvalidDayException,
@@ -26,7 +26,7 @@ export class TuiDay extends TuiMonth {
         public readonly day: number,
     ) {
         super(year, month);
-        ngDevMode && tuiAssert.assert(TuiDay.isValidDay(year, month, day));
+        ngDevMode && console.assert(TuiDay.isValidDay(year, month, day));
     }
 
     /**
@@ -119,7 +119,7 @@ export class TuiDay extends TuiMonth {
         dateMode: TuiDateMode = 'DMY',
     ): {day: number; month: number; year: number} {
         ngDevMode &&
-            tuiAssert.assert(
+            console.assert(
                 date.length === DATE_FILLER_LENGTH,
                 '[parseRawDateString]: wrong date string length',
             );
@@ -195,7 +195,7 @@ export class TuiDay extends TuiMonth {
     }
 
     public static normalizeDayPart(day: number, month: number, year: number): number {
-        ngDevMode && tuiAssert.assert(TuiMonth.isValidMonth(year, month));
+        ngDevMode && console.assert(TuiMonth.isValidMonth(year, month));
 
         const monthDaysCount = TuiMonth.getMonthDaysCount(
             month,
@@ -346,7 +346,7 @@ export class TuiDay extends TuiMonth {
      */
     public getFormattedDay(dateFormat: TuiDateMode, separator: string): string {
         ngDevMode &&
-            tuiAssert.assert(
+            console.assert(
                 separator.length === 1,
                 'Separator should consist of only 1 symbol',
             );

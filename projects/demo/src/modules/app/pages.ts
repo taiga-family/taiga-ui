@@ -255,18 +255,11 @@ export const pages: TuiDocPages = [
                 keywords: 'инпут, форма, ввод, radio, радио',
                 route: '/components/radio',
             },
-            // TODO: Move into Radio page
             {
                 section: 'Components',
-                title: 'RadioList',
-                keywords: 'инпут, форма, ввод, radio, радио, список, list',
-                route: '/components/radio-list',
-            },
-            {
-                section: 'Components',
-                title: 'Toggle',
+                title: 'Switch',
                 keywords: 'инпут, форма, ввод, toggle, переключение',
-                route: '/components/toggle',
+                route: '/components/switch',
             },
         ],
     },
@@ -650,6 +643,18 @@ export const pages: TuiDocPages = [
     },
     {
         section: 'Components',
+        title: 'Compass',
+        keywords: 'compass, user, point, dot, карта, точка',
+        route: '/components/compass',
+    },
+    {
+        section: 'Components',
+        title: 'Pin',
+        keywords: 'пин, pin, map, карта, точка, dot, point',
+        route: '/components/pin',
+    },
+    {
+        section: 'Components',
         title: 'Progress',
         subPages: [
             {
@@ -677,10 +682,10 @@ export const pages: TuiDocPages = [
     },
     {
         section: 'Components',
-        title: 'Prompt',
+        title: 'Confirm',
         keywords:
-            'попап, модал, popup, dialog, диалог, modal, окно, confirm, approve, подтверждение',
-        route: '/components/prompt',
+            'попап, модал, popup, dialog, диалог, modal, окно, confirm, approve, prompt, подтверждение',
+        route: '/components/confirm',
     },
     {
         section: 'Components',
@@ -892,12 +897,6 @@ export const pages: TuiDocPages = [
         route: '/components/comment',
     },
     {
-        section: 'Experimental',
-        title: 'Compass',
-        keywords: 'compass, user, point, dot, карта, точка',
-        route: '/experimental/compass',
-    },
-    {
         section: 'Layout',
         title: 'Header',
         keywords: 'header, заголовок, item',
@@ -914,19 +913,6 @@ export const pages: TuiDocPages = [
         title: 'Label ',
         keywords: 'лэйбл, метка, форма, label',
         route: '/experimental/label',
-    },
-    {
-        section: 'Experimental',
-        title: 'ProgressSegmented ',
-        keywords:
-            'progress, progress-segmented, индикатор, загрузка, прогресс, segment, segments, segmented',
-        route: '/experimental/progress-segmented',
-    },
-    {
-        section: 'Experimental',
-        title: 'Rating ',
-        keywords: 'рейтинг, оценка, звезда, rating, star, rate',
-        route: '/experimental/rating',
     },
     {
         section: 'Experimental',
@@ -972,31 +958,6 @@ export const pages: TuiDocPages = [
         route: '/experimental/tooltip',
     },
     {
-        section: 'Experimental',
-        title: 'Checkbox ',
-        keywords: 'чек, радио, ввод, форма, form, checkbox, radio, toggle',
-        route: '/experimental/checkbox',
-    },
-    {
-        section: 'Experimental',
-        title: 'Radio ',
-        keywords: 'чек, радио, ввод, форма, form, checkbox, radio, toggle',
-        route: '/experimental/radio',
-    },
-    {
-        section: 'Experimental',
-        title: 'Toggle ',
-        keywords: 'чек, радио, ввод, форма, form, checkbox, radio, toggle',
-        route: '/experimental/toggle',
-    },
-    {
-        section: 'Pipes',
-        title: 'Amount',
-        keywords:
-            'amount, money, деньги, сумма, количество, cash, копейки, рубли, доллары, евро',
-        route: '/pipes/amount',
-    },
-    {
         section: 'Components',
         title: 'Appearance',
         keywords: 'colors, css, theme, custom, style',
@@ -1019,12 +980,6 @@ export const pages: TuiDocPages = [
         title: 'Navigation',
         keywords: 'шапка, header, sidebar, aside, сайдбар, навигация',
         route: '/experimental/navigation',
-    },
-    {
-        section: 'Experimental',
-        title: 'Pin',
-        keywords: 'пин, pin, map, карта, точка, dot, point',
-        route: '/experimental/pin',
     },
     // Charts
     {
@@ -1360,6 +1315,13 @@ export const pages: TuiDocPages = [
             },
             {
                 section: 'Tools',
+                title: 'DateFormat',
+                keywords:
+                    'date, format, дата, separator, год, year, month, месяц, день, day, формат',
+                route: '/directives/date-format',
+            },
+            {
+                section: 'Tools',
                 title: 'Touchable',
                 keywords: 'touch, mobile, смартфон, pwa, native, hybrid, ios',
                 route: '/directives/touchable',
@@ -1485,6 +1447,13 @@ export const pages: TuiDocPages = [
                     'string, tostring, content, polymorpheus, мап, преобразование, пайп, pipe',
                 route: '/pipes/stringify-content',
             },
+            {
+                section: 'Tools',
+                title: 'Amount',
+                keywords:
+                    'amount, money, деньги, сумма, количество, cash, копейки, рубли, доллары, евро',
+                route: '/pipes/amount',
+            },
         ],
     },
     {
@@ -1497,12 +1466,6 @@ export const pages: TuiDocPages = [
                 keywords:
                     'breakpoint, breakpoints, media, query, брейкпоинты, responsive, adaptive, адаптив',
                 route: '/services/breakpoint-service',
-            },
-            {
-                section: 'Tools',
-                title: 'DestroyService',
-                keywords: 'сервис',
-                route: '/services/destroy-service',
             },
             {
                 section: 'Tools',

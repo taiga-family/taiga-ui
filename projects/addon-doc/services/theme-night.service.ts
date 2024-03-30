@@ -1,5 +1,4 @@
-/* eslint-disable no-restricted-syntax,no-restricted-imports */
-import {Inject, Injectable} from '@angular/core';
+import {inject, Injectable} from '@angular/core';
 import {LOCAL_STORAGE, WINDOW} from '@ng-web-apis/common';
 import {BehaviorSubject} from 'rxjs';
 
@@ -12,17 +11,18 @@ import {
     providedIn: 'root',
 })
 export class TuiThemeNightService extends BehaviorSubject<boolean> {
-    constructor(
-        @Inject(WINDOW) public readonly win: Window,
-        @Inject(LOCAL_STORAGE) public readonly storage: Storage,
-        @Inject(TUI_THEME_NIGHT_STORAGE_KEY) public readonly key: string,
-        @Inject(TUI_USE_DEFAULT_NIGHT_THEME)
-        public readonly useDefaultNightTheme: boolean,
-    ) {
+    private readonly storage = inject(LOCAL_STORAGE);
+    private readonly key = inject(TUI_THEME_NIGHT_STORAGE_KEY);
+
+    public readonly useDefaultNightTheme = inject(TUI_USE_DEFAULT_NIGHT_THEME);
+
+    constructor() {
         super(
-            storage.getItem(key) === 'true' ||
-                (storage.getItem(key) === null &&
-                    win.matchMedia('(prefers-color-scheme: dark)').matches),
+            isDark(
+                inject(LOCAL_STORAGE),
+                inject(TUI_THEME_NIGHT_STORAGE_KEY),
+                inject(WINDOW),
+            ),
         );
     }
 
@@ -34,4 +34,12 @@ export class TuiThemeNightService extends BehaviorSubject<boolean> {
     public toggle(): void {
         this.next(!this.value);
     }
+}
+
+function isDark(storage: Storage, key: string, window: Window): boolean {
+    return (
+        storage[key] === 'true' ||
+        (storage[key] === null &&
+            window.matchMedia('(prefers-color-scheme: dark)').matches)
+    );
 }

@@ -10,9 +10,13 @@ import {
     TuiChipModule,
     TuiLabelDirective,
     TuiSurfaceModule,
-    TuiToggleModule,
 } from '@taiga-ui/experimental';
-import {TuiAvatarComponent, TuiBadgeDirective, TuiSkeletonDirective} from '@taiga-ui/kit';
+import {
+    TuiAvatarComponent,
+    TuiBadgeDirective,
+    TuiSkeletonDirective,
+    TuiSwitchComponent,
+} from '@taiga-ui/kit';
 import {TuiHeaderDirective} from '@taiga-ui/layout';
 
 import {TuiSkeletonExample1} from './examples/1';
@@ -27,7 +31,7 @@ import {ExampleTuiSkeletonComponent} from './skeleton.component';
         TuiSetupComponent,
         TuiExamplePipe,
         TuiLabelDirective,
-        TuiToggleModule,
+        TuiSwitchComponent,
         TuiAvatarComponent,
         TuiCardModule,
         TuiTitleDirective,

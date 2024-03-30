@@ -9,31 +9,29 @@
 :host {
     position: relative;
     display: block;
+    width: var(--t-size);
+    height: var(--t-size);
 
     &[data-size='xs'] {
-        width: @size-xs;
-        height: @size-xs;
+        --t-size: @size-xs;
+
         pointer-events: none;
     }
 
     &[data-size='s'] {
-        width: @size-s;
-        height: @size-s;
+        --t-size: @size-s;
     }
 
     &[data-size='m'] {
-        width: @size-m;
-        height: @size-m;
+        --t-size: @size-m;
     }
 
     &[data-size='l'] {
-        width: @size-l;
-        height: @size-l;
+        --t-size: @size-l;
     }
 
     &[data-size='xl'] {
-        width: @size-xl;
-        height: @size-xl;
+        --t-size: @size-xl;
     }
 }
 

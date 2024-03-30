@@ -85,9 +85,9 @@
         </tui-doc-example>
 
         <tui-doc-example
-            id="prompt"
+            id="confirm"
             description="Confirming closing of the dialog"
-            heading="Prompt"
+            heading="Confirmation"
             [content]="example8"
         >
             <tui-dialog-example-8 />
@@ -199,7 +199,7 @@
             >
                 Show a cross to close dialog. Pass
                 <code tuiText="Observable<boolean>"></code>
-                if you want prevent closing, for example, with a prompt.
+                if you want prevent closing, for example, with a confirmation prompt.
             </ng-template>
             <ng-template
                 documentationPropertyName="dismissible"
@@ -208,7 +208,7 @@
             >
                 Dialog can be canceled with Escape key or with a click outside. Pass
                 <code tuiText="Observable<boolean>"></code>
-                if you want prevent closing, for example, with a prompt.
+                if you want prevent closing, for example, with a confirmation prompt.
             </ng-template>
             <ng-template
                 documentationPropertyName="data"

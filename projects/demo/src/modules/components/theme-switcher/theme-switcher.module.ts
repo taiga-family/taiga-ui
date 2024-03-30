@@ -4,7 +4,8 @@ import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiNotificationModule} from '@taiga-ui/core';
-import {TuiToggleModule} from '@taiga-ui/kit';
+import {TuiLabelDirective} from '@taiga-ui/experimental';
+import {TuiSwitchComponent} from '@taiga-ui/kit';
 
 import {TuiThemeSwitcherExample1} from './examples/1';
 import {ElderlyComponent} from './examples/elderly/elderly.component';
@@ -14,9 +15,10 @@ import {ExampleTuiThemeSwitcherComponent} from './theme-switcher.component';
     imports: [
         CommonModule,
         FormsModule,
-        TuiToggleModule,
+        TuiSwitchComponent,
         TuiNotificationModule,
         TuiAddonDocModule,
+        TuiLabelDirective,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiThemeSwitcherComponent)),
     ],
     declarations: [

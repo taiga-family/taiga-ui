@@ -15,7 +15,7 @@ import {
     TuiFieldErrorPipeModule,
     TuiInputPhoneModule,
     TuiIslandModule,
-    TuiToggleModule,
+    TuiSwitchComponent,
 } from '@taiga-ui/kit';
 
 import {StylesInfoModule} from '../../app/styles-info/styles-info.module';
@@ -28,7 +28,7 @@ import {ExampleTuiIslandComponent} from './island.component';
     imports: [
         TuiIslandModule,
         TuiLinkModule,
-        TuiToggleModule,
+        TuiSwitchComponent,
         TuiButtonModule,
         TuiErrorModule,
         TuiFieldErrorPipeModule,

@@ -4,17 +4,18 @@ import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {
-    AbstractTuiValueTransformer,
-    TUI_DATE_FORMAT,
-    TUI_DATE_SEPARATOR,
-    TuiDay,
-} from '@taiga-ui/cdk';
+import {AbstractTuiValueTransformer, TuiDay} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {TuiHintModule, TuiRootModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
+import {
+    TUI_DATE_FORMAT,
+    TuiHintModule,
+    TuiRootModule,
+    TuiTextfieldControllerModule,
+} from '@taiga-ui/core';
 import {TuiInputDateComponent, TuiInputDateModule} from '@taiga-ui/kit';
 import {TUI_DATE_VALUE_TRANSFORMER} from '@taiga-ui/kit/tokens';
 import {TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
+import {of} from 'rxjs';
 
 describe('InputDate', () => {
     @Component({
@@ -186,7 +187,7 @@ describe('InputDate', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
                 ...meta,
-                providers: [{provide: TUI_DATE_FORMAT, useValue: 'YMD'}],
+                providers: [{provide: TUI_DATE_FORMAT, useValue: of({mode: 'YMD'})}],
             });
             await TestBed.compileComponents();
             await initializeEnvironment();
@@ -233,7 +234,7 @@ describe('InputDate', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
                 ...meta,
-                providers: [{provide: TUI_DATE_FORMAT, useValue: 'MDY'}],
+                providers: [{provide: TUI_DATE_FORMAT, useValue: of({mode: 'MDY'})}],
             });
             await TestBed.compileComponents();
             await initializeEnvironment();
@@ -281,8 +282,10 @@ describe('InputDate', () => {
             TestBed.configureTestingModule({
                 ...meta,
                 providers: [
-                    {provide: TUI_DATE_FORMAT, useValue: 'MDY'},
-                    {provide: TUI_DATE_SEPARATOR, useValue: '/'},
+                    {
+                        provide: TUI_DATE_FORMAT,
+                        useValue: of({mode: 'MDY', separator: '/'}),
+                    },
                 ],
             });
             await TestBed.compileComponents();

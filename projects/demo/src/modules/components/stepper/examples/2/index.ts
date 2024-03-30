@@ -1,13 +1,16 @@
+import {NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiStepperModule} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-stepper-example-2',
+    standalone: true,
+    imports: [TuiStepperModule, NgForOf],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class TuiStepperExample2 {
+export default class ExampleComponent {
     protected readonly steps = ['Start Up', 'Cash In', 'Sell Out', 'Bro Down'];
 }

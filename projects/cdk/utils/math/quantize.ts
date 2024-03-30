@@ -1,5 +1,4 @@
 /// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
-import {tuiAssert} from '@taiga-ui/cdk/classes';
 
 /**
  * Rounds a number to the closest value in a fixed discrete series
@@ -8,9 +7,9 @@ import {tuiAssert} from '@taiga-ui/cdk/classes';
  * @param quantum series step
  */
 export function tuiQuantize(value: number, quantum: number): number {
-    ngDevMode && tuiAssert.assert(Number.isFinite(value));
-    ngDevMode && tuiAssert.assert(Number.isFinite(quantum));
-    ngDevMode && tuiAssert.assert(quantum > 0);
+    ngDevMode && console.assert(Number.isFinite(value));
+    ngDevMode && console.assert(Number.isFinite(quantum));
+    ngDevMode && console.assert(quantum > 0);
 
     const remainder = value % quantum;
 
