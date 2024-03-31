@@ -15,15 +15,9 @@
                     class="t-icon"
                     [src]="options.icons.drag"
                 />
-                <ng-container
-                    *polymorpheusOutlet="
-                        container ? container : primitiveValue as template;
-                        context: {$implicit: item, index: index}
-                    "
-                >
+                <ng-container *polymorpheusOutlet="content as template; context: {$implicit: item, index: index}">
                     {{ template }}
                 </ng-container>
-                <ng-template #primitiveValue>{{ item }}</ng-template>
             </div>
             <button
                 appearance="icon"
