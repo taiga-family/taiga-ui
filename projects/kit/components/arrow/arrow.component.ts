@@ -16,7 +16,7 @@ import {TUI_ARROW_OPTIONS} from './arrow.options';
     styleUrls: ['./arrow.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiArrowComponent {
+export class TuiArrowOldComponent {
     private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
     private readonly options = inject(TUI_ARROW_OPTIONS);
     protected readonly directive = inject(TuiDropdownOpenDirective, {optional: true});
@@ -34,4 +34,4 @@ export class TuiArrowComponent {
     }
 }
 
-export const TUI_ARROW = new PolymorpheusComponent(TuiArrowComponent);
+export const TUI_ARROW = new PolymorpheusComponent(TuiArrowOldComponent);
