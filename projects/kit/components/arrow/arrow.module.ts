@@ -3,11 +3,11 @@ import {NgModule} from '@angular/core';
 import {TuiSvgModule} from '@taiga-ui/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
-import {TuiArrowOldComponent} from './arrow.component';
+import {TuiArrowComponent} from './arrow.component';
 
 @NgModule({
     imports: [CommonModule, TuiSvgModule, PolymorpheusModule],
-    declarations: [TuiArrowOldComponent],
-    exports: [TuiArrowOldComponent],
+    declarations: [TuiArrowComponent],
+    exports: [TuiArrowComponent],
 })
 export class TuiArrowModule {}
