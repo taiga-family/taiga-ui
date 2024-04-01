@@ -45,11 +45,13 @@ export class TuiDropdownSelectionDirective
     extends TuiDriver
     implements TuiRectAccessor, OnDestroy
 {
-    private readonly handler$ = new BehaviorSubject<TuiBooleanHandler<Range>>(
+    private ghost?: HTMLElement;
+
+    protected readonly handler$ = new BehaviorSubject<TuiBooleanHandler<Range>>(
         ALWAYS_TRUE_HANDLER,
     );
 
-    private readonly stream$ = combineLatest([
+    protected readonly stream$ = combineLatest([
         this.handler$,
         this.selection$.pipe(
             map(() => this.getRange()),
@@ -72,8 +74,6 @@ export class TuiDropdownSelectionDirective
         }),
     );
 
-    private ghost?: HTMLElement;
-
     @Input('tuiDropdownSelectionPosition')
     position: 'selection' | 'tag' | 'word' = 'selection';
 
@@ -87,12 +87,12 @@ export class TuiDropdownSelectionDirective
     readonly type = 'dropdown';
 
     constructor(
-        @Inject(TUI_RANGE) private range: Range,
-        @Inject(DOCUMENT) private readonly doc: Document,
-        @Inject(TUI_SELECTION_STREAM) private readonly selection$: Observable<unknown>,
-        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
-        @Inject(ViewContainerRef) private readonly vcr: ViewContainerRef,
-        @Inject(TuiDropdownDirective) private readonly dropdown: TuiDropdownDirective,
+        @Inject(TUI_RANGE) protected range: Range,
+        @Inject(DOCUMENT) protected readonly doc: Document,
+        @Inject(TUI_SELECTION_STREAM) protected readonly selection$: Observable<unknown>,
+        @Inject(ElementRef) protected readonly el: ElementRef<HTMLElement>,
+        @Inject(ViewContainerRef) protected readonly vcr: ViewContainerRef,
+        @Inject(TuiDropdownDirective) protected readonly dropdown: TuiDropdownDirective,
     ) {
         super(subscriber => this.stream$.subscribe(subscriber));
     }
@@ -122,7 +122,7 @@ export class TuiDropdownSelectionDirective
         }
     }
 
-    private getRange(): Range {
+    protected getRange(): Range {
         const active = tuiGetNativeFocused(this.doc);
         const selection = this.doc.getSelection();
         const range =
@@ -134,16 +134,9 @@ export class TuiDropdownSelectionDirective
     }
 
     /**
-     * Check if Node is inside dropdown
-     */
-    private boxContains(node: Node): boolean {
-        return !!this.dropdown.dropdownBoxRef?.location.nativeElement.contains(node);
-    }
-
-    /**
      * Check if given range is at least partially inside dropdown
      */
-    private inDropdown(range: Range): boolean {
+    protected inDropdown(range: Range): boolean {
         const {startContainer, endContainer} = range;
         const {nativeElement} = this.el;
         const inDropdown = this.boxContains(range.commonAncestorContainer);
@@ -172,6 +165,13 @@ export class TuiDropdownSelectionDirective
         range.setEnd(ghost.firstChild as Node, selectionEnd || 0);
 
         return range;
+    }
+
+    /**
+     * Check if Node is inside dropdown
+     */
+    private boxContains(node: Node): boolean {
+        return !!this.dropdown.dropdownBoxRef?.location.nativeElement.contains(node);
     }
 
     /**
