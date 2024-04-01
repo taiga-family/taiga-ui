@@ -1,0 +1,64 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+tui-app-bar {
+    position: relative;
+    display: flex;
+    height: 3rem;
+    align-items: center;
+    justify-content: space-between;
+    border: solid transparent;
+    border-width: 0 0.375rem;
+    box-sizing: border-box;
+    font: var(--tui-font-text-m);
+    font-weight: bold;
+    text-align: center;
+    color: var(--tui-text-01);
+    background: var(--tui-base-01);
+    backdrop-filter: blur(2rem);
+
+    > .t-content {
+        .center-left();
+
+        position: absolute;
+        display: flex;
+        height: 100%;
+        max-width: calc(100% - var(--t-sides, 0px));
+        flex-direction: column;
+        justify-content: center;
+        flex: 1;
+        padding: 0 0.375rem;
+        box-sizing: border-box;
+        text-align: inherit;
+        white-space: nowrap;
+    }
+
+    [tuiButton][data-size='m'] {
+        font-weight: normal;
+    }
+
+    [tuiTitle] {
+        text-align: inherit;
+        font: inherit;
+    }
+
+    [tuiSubtitle] {
+        color: var(--tui-text-02);
+    }
+
+    &[data-size='m'] {
+        [tuiTitle] {
+            line-height: 1.2em;
+            gap: 0;
+        }
+    }
+
+    &[data-size='l'] {
+        border: 0;
+        height: 4rem;
+
+        & > :first-child,
+        & > :last-child {
+            margin: 0 -0.75rem;
+        }
+    }
+}

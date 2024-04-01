@@ -1,0 +1,27 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+:host {
+    .clearbtn();
+
+    display: flex;
+    align-items: center;
+    padding: 0 0.625rem 0 0.125rem;
+    color: var(--tui-link);
+
+    :host-context([data-platform='android']) {
+        font-size: 0;
+        padding: 0 0.625rem;
+
+        .t-ios {
+            display: none;
+        }
+
+        .t-android {
+            display: block;
+        }
+    }
+}
+
+.t-android {
+    display: none;
+}
