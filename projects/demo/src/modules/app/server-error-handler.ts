@@ -1,6 +1,7 @@
 import type {ErrorHandler} from '@angular/core';
 import {Injectable} from '@angular/core';
-import {hasFlag} from 'scripts/shared/argv.utils';
+
+import {hasFlag} from '../../../../../scripts/shared/argv.utils';
 
 // TODO
 const KNOWN_ISSUES: string[] = [
