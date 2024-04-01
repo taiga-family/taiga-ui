@@ -4,10 +4,7 @@ import {TuiDocPageModule} from '@taiga-ui/addon-doc';
 import {TuiLinkModule} from '@taiga-ui/core';
 import {TuiActionModule, TuiIslandModule} from '@taiga-ui/kit';
 
-import {
-    SCREENSHOT_BOT_LINK,
-    SCREENSHOT_BOT_NAME,
-} from '../testing/screenshot-github-bot';
+import {SCREENSHOT_BOT_LINK, SCREENSHOT_BOT_NAME} from '../testing/screenshot-github-bot';
 
 @Component({
     standalone: true,
