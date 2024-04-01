@@ -246,7 +246,7 @@ export class TuiInputDateComponent
     }
 
     onIconClick(): void {
-        if (!this.computedMobile || !this.mobileCalendar) {
+        if (!this.computedMobile || !this.mobileCalendar || this.readOnly) {
             return;
         }
 
