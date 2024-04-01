@@ -8,4 +8,4 @@ import {TuiDemoModule} from '@demo/utils';
     templateUrl: './index.html',
     changeDetection,
 })
-export default class ExampleComponent {}
+export default class PageComponent {}

@@ -14,7 +14,6 @@ import {TuiAccordionExample5} from './examples/5';
 
 @Component({
     standalone: true,
-    selector: 'example-accordion',
     imports: [
         TuiAddonDocModule,
         TuiAccordionModule,
@@ -24,11 +23,11 @@ import {TuiAccordionExample5} from './examples/5';
         TuiAccordionExample4,
         TuiAccordionExample5,
     ],
-    templateUrl: './accordion.template.html',
+    templateUrl: './index.html',
     changeDetection,
     providers: [TuiDestroyService],
 })
-export default class ExampleTuiAccordionComponent {
+export default class PageComponent {
     private readonly destroy$ = inject(TuiDestroyService, {self: true});
 
     @ViewChild('content')

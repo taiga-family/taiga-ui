@@ -14,7 +14,6 @@ import {TuiActionExample5} from './examples/5';
 
 @Component({
     standalone: true,
-    selector: 'example-action',
     imports: [
         TuiAddonDocModule,
         TuiNotificationModule,
@@ -27,11 +26,11 @@ import {TuiActionExample5} from './examples/5';
         TuiActionExample5,
         TuiActionModule,
     ],
-    templateUrl: './action.template.html',
+    templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export default class ExampleTuiActionComponent {
+export default class PageComponent {
     protected readonly exampleModule = import('./examples/import/import-module.md?raw');
     protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 

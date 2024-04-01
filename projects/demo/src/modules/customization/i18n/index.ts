@@ -13,7 +13,6 @@ import {from, map} from 'rxjs';
 
 @Component({
     standalone: true,
-    selector: 'i18n',
     imports: [
         TuiDocPageModule,
         TuiDocCodeModule,
@@ -22,10 +21,10 @@ import {from, map} from 'rxjs';
         TuiDocExampleModule,
         TuiLanguageSwitcherComponent,
     ],
-    templateUrl: './i18n.template.html',
+    templateUrl: './index.html',
     changeDetection,
 })
-export default class I18nComponent {
+export default class PageComponent {
     protected readonly readme = from(
         import('../../../../../i18n/README.md?raw') as Promise<{
             default: string;

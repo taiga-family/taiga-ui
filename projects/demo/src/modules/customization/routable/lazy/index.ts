@@ -10,14 +10,13 @@ import {
 
 @Component({
     standalone: true,
-    selector: 'lazy-routable-dialog',
     imports: [TuiDocPageModule, TuiDocExampleModule, RouterOutlet, TuiDocCodeModule],
-    templateUrl: './lazy-routable-dialog.template.html',
+    templateUrl: './index.html',
     changeDetection,
 })
-export default class LazyRoutableDialogComponent {
+export default class PageComponent {
     protected readonly example1: TuiDocExample = {
-        'page.routes.ts': import('./lazy-routable-dialog.routes.ts?raw'),
+        'page.routes.ts': import('./routes.ts?raw'),
         'page.template.html': import('./examples/1/index.html?raw'),
         'page.ts': import('./examples/1/index.ts?raw'),
         'dialog.component.ts': import('./examples/1/dialog.component.ts?raw'),

@@ -26,7 +26,7 @@ import {TuiStepperModule} from '@taiga-ui/kit';
     templateUrl: './stepper.template.html',
     changeDetection,
 })
-export default class ExampleComponent {
+export default class PageComponent {
     protected activeItemIndex = 0;
 
     protected readonly examples = ['Basic', 'Vertical', 'Vertical autoscroll'];

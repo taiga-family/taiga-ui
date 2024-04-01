@@ -5,9 +5,8 @@ import {TuiLinkModule} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
-    selector: 'doc',
     imports: [TuiDocPageModule, TuiLinkModule],
-    templateUrl: './doc.template.html',
+    templateUrl: './index.html',
     changeDetection,
 })
-export default class DocComponent {}
+export default class PageComponent {}

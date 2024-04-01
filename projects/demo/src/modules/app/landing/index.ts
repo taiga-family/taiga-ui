@@ -20,7 +20,6 @@ import {TuiButtonModule} from '@taiga-ui/experimental';
 
 @Component({
     standalone: true,
-    selector: 'landing',
     imports: [
         NgIf,
         RouterLink,
@@ -29,8 +28,8 @@ import {TuiButtonModule} from '@taiga-ui/experimental';
         TuiRepeatTimesModule,
         IntersectionObserverModule,
     ],
-    templateUrl: './landing.template.html',
-    styleUrls: ['./landing.style.less'],
+    templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {
@@ -43,7 +42,7 @@ import {TuiButtonModule} from '@taiga-ui/experimental';
     },
     animations: [tuiFadeIn],
 })
-export default class LandingComponent implements OnInit {
+export default class PageComponent implements OnInit {
     @ViewChildren('block', {read: ElementRef})
     private readonly blocks: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 

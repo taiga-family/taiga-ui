@@ -15,7 +15,7 @@ import {TuiCompassComponent} from '@taiga-ui/kit';
     templateUrl: './index.html',
     changeDetection,
 })
-export default class ExampleComponent {
+export default class PageComponent {
     protected colorVariants = ['#428bf9', 'rgb(234, 56, 24)', 'var(--tui-positive)', ''];
 
     protected color = this.colorVariants[0];

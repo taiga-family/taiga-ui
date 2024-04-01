@@ -5,13 +5,12 @@ import {TuiLinkModule, TuiNotificationModule} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
-    selector: 'browser-support',
     imports: [TuiDocPageModule, NgFor, NgIf, TuiNotificationModule, TuiLinkModule],
-    templateUrl: './browsers.template.html',
+    templateUrl: './index.html',
     styles: ['td {width: 18.75rem}'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class BrowserSupportComponent {
+export default class PageComponent {
     protected readonly desktopBrowsers = [
         {name: 'Google Chrome', version: '88+'},
         {name: 'Mozilla Firefox', version: '120+'},

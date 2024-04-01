@@ -15,7 +15,6 @@ import {TuiWrapperExample1} from './examples/1';
 
 @Component({
     standalone: true,
-    selector: 'wrapper',
     imports: [
         TuiDocPageModule,
         NgForOf,
@@ -26,11 +25,11 @@ import {TuiWrapperExample1} from './examples/1';
         TuiDocExampleModule,
         TuiWrapperExample1,
     ],
-    templateUrl: './wrapper.template.html',
+    templateUrl: './index.html',
     encapsulation: ViewEncapsulation.None,
     changeDetection,
 })
-export default class WrapperComponent {
+export default class PageComponent {
     protected readonly example1: TuiDocExample = {
         HTML: import('./examples/1/index.html?raw'),
         LESS: import('./examples/1/index.less?raw'),
