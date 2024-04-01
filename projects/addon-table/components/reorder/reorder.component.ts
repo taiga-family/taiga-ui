@@ -47,7 +47,7 @@ export class TuiReorderComponent<T> {
     }
 
     @Input()
-    public content?: PolymorpheusContent<TuiContext<T> & {index: number}> = ({
+    public content: PolymorpheusContent<TuiContext<T> & {index: number}> = ({
         $implicit,
     }) => String($implicit);
 
