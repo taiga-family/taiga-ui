@@ -35,15 +35,22 @@ export class TuiDropdownSelectionDirective
     extends TuiDriver
     implements TuiRectAccessor, OnDestroy
 {
-    private readonly doc = inject(DOCUMENT);
-    private readonly vcr = inject(ViewContainerRef);
-    private readonly dropdown = inject(TuiDropdownDirective);
-    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
-    private readonly handler$ = new BehaviorSubject<TuiBooleanHandler<Range>>(
+    private ghost?: HTMLElement;
+
+    @Input('tuiDropdownSelectionPosition')
+    public position: 'selection' | 'tag' | 'word' = 'selection';
+
+    public readonly type = 'dropdown';
+
+    protected readonly doc = inject(DOCUMENT);
+    protected readonly vcr = inject(ViewContainerRef);
+    protected readonly dropdown = inject(TuiDropdownDirective);
+    protected readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    protected readonly handler$ = new BehaviorSubject<TuiBooleanHandler<Range>>(
         TUI_TRUE_HANDLER,
     );
 
-    private readonly stream$ = combineLatest([
+    protected readonly stream$ = combineLatest([
         this.handler$,
         inject(TUI_SELECTION_STREAM).pipe(
             map(() => this.getRange()),
@@ -64,13 +71,7 @@ export class TuiDropdownSelectionDirective
         }),
     );
 
-    private range = inject(TUI_RANGE);
-    private ghost?: HTMLElement;
-
-    @Input('tuiDropdownSelectionPosition')
-    public position: 'selection' | 'tag' | 'word' = 'selection';
-
-    public readonly type = 'dropdown';
+    protected range = inject(TUI_RANGE);
 
     constructor() {
         super(subscriber => this.stream$.subscribe(subscriber));
@@ -108,7 +109,7 @@ export class TuiDropdownSelectionDirective
         }
     }
 
-    private getRange(): Range {
+    protected getRange(): Range {
         const active = tuiGetNativeFocused(this.doc);
         const selection = this.doc.getSelection();
         const range =
@@ -120,16 +121,9 @@ export class TuiDropdownSelectionDirective
     }
 
     /**
-     * Check if Node is inside dropdown
-     */
-    private boxContains(node: Node): boolean {
-        return !!this.dropdown.dropdownBoxRef?.location.nativeElement.contains(node);
-    }
-
-    /**
      * Check if given range is at least partially inside dropdown
      */
-    private inDropdown(range: Range): boolean {
+    protected inDropdown(range: Range): boolean {
         const {startContainer, endContainer} = range;
         const inDropdown = this.boxContains(range.commonAncestorContainer);
         const hostToDropdown =
@@ -138,6 +132,13 @@ export class TuiDropdownSelectionDirective
             this.boxContains(startContainer) && this.el.contains(endContainer);
 
         return inDropdown || hostToDropdown || dropdownToHost;
+    }
+
+    /**
+     * Check if Node is inside dropdown
+     */
+    private boxContains(node: Node): boolean {
+        return !!this.dropdown.dropdownBoxRef?.location.nativeElement.contains(node);
     }
 
     private veryVerySadInputFix(element: HTMLInputElement | HTMLTextAreaElement): Range {
