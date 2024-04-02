@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[91058],{91058:n=>{n.exports='<button\n    size="l"\n    tuiButton\n>\n    Large\n</button>\n\n<button\n    size="m"\n    tuiButton\n>\n    Medium\n</button>\n\n<button\n    size="s"\n    tuiButton\n>\n    Small\n</button>\n\n<button\n    size="xs"\n    tuiButton\n>\n    Extra small\n</button>\n'}}]);

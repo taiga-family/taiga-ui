@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[73070],{73070:t=>{t.exports="<button tuiButton>Options with DI</button>\n"}}]);
