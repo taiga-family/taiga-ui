@@ -1,6 +1,6 @@
 import type {AbstractType, ExistingProvider, FactoryProvider, Type} from '@angular/core';
 import {Optional, SkipSelf} from '@angular/core';
-import type {TuiPoint} from '@taiga-ui/core';
+import type {TuiPoint} from '@taiga-ui/core/types';
 
 export abstract class TuiAccessor {
     public abstract readonly type: string;
