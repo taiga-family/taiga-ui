@@ -20,6 +20,9 @@ import {distinctUntilChanged, map, skip, startWith} from 'rxjs/operators';
     selector:
         '[tuiActiveZone]:not(ng-container), [tuiActiveZoneChange]:not(ng-container), [tuiActiveZoneParent]:not(ng-container)',
     exportAs: 'tuiActiveZone',
+    host: {
+        '(document:mousedown.silent)': '(0)',
+    },
 })
 export class TuiActiveZoneDirective implements OnDestroy {
     private subActiveZones: readonly TuiActiveZoneDirective[] = [];
