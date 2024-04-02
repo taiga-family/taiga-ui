@@ -57,19 +57,21 @@
             type="button"
             class="t-back"
             [disabled]="leftDisabled"
-            [icon]="icons.decrement"
-            [title]="spinTexts[0]"
+            [iconLeft]="icons.decrement"
             (click)="back()"
-        ></button>
+        >
+            {{ spinTexts[0] }}
+        </button>
         <button
             appearance="icon"
             size="xs"
             tuiIconButton
             type="button"
             [disabled]="rightDisabled"
-            [icon]="icons.increment"
-            [title]="spinTexts[1]"
+            [iconLeft]="icons.increment"
             (click)="forth()"
-        ></button>
+        >
+            {{ spinTexts[1] }}
+        </button>
     </ng-container>
 </ng-container>

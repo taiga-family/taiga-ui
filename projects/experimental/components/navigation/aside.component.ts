@@ -4,8 +4,7 @@ import {
     Input,
     ViewEncapsulation,
 } from '@angular/core';
-import {tuiDropdownOptionsProvider} from '@taiga-ui/core';
-import {tuiButtonOptionsProvider} from '@taiga-ui/experimental/components/button';
+import {tuiButtonOptionsProvider, tuiDropdownOptionsProvider} from '@taiga-ui/core';
 
 @Component({
     selector: 'aside[tuiNavigationAside]',

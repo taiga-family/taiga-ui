@@ -25,29 +25,32 @@
         />
 
         <button
-            icon="tuiIconTrash"
-            title="Delete"
+            iconLeft="tuiIconTrash"
             tuiIconButton
             tuiPreviewAction
             type="button"
             (click)="delete()"
-        ></button>
+        >
+            Delete
+        </button>
         <button
-            icon="tuiIconDownload"
-            title="Download"
+            iconLeft="tuiIconDownload"
             tuiIconButton
             tuiPreviewAction
             type="button"
             (click)="download()"
-        ></button>
+        >
+            Download
+        </button>
         <button
-            icon="tuiIconClose"
-            title="Close"
+            iconLeft="tuiIconClose"
             tuiIconButton
             tuiPreviewAction
             type="button"
             (click)="preview.complete()"
-        ></button>
+        >
+            Close
+        </button>
 
         <img
             *polymorpheusOutlet="previewContent as src"

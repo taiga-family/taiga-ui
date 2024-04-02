@@ -9,7 +9,7 @@ import {
     tuiGenerateRoutes,
 } from '@taiga-ui/addon-doc';
 import {
-    TuiButtonModule,
+    TuiButtonDirective,
     TuiExpandModule,
     TuiHintModule,
     TuiLinkModule,
@@ -30,7 +30,7 @@ import {IconsBundledComponent} from './icons-bundled.component';
         TuiDocCopyModule,
         TuiLinkModule,
         TuiExpandModule,
-        TuiButtonModule,
+        TuiButtonDirective,
         TuiInputDateRangeModule,
         TuiNotificationModule,
         TuiTextfieldControllerModule,

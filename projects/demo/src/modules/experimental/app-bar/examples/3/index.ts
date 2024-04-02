@@ -2,8 +2,8 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiPlatformModule} from '@taiga-ui/cdk';
-import {TuiTitleDirective} from '@taiga-ui/core';
-import {TuiAppBarModule, TuiButtonModule} from '@taiga-ui/experimental';
+import {TuiButtonDirective, TuiTitleDirective} from '@taiga-ui/core';
+import {TuiAppBarModule} from '@taiga-ui/experimental';
 import {TuiFadeDirective, TuiProgressModule} from '@taiga-ui/kit';
 
 @Component({
@@ -11,7 +11,7 @@ import {TuiFadeDirective, TuiProgressModule} from '@taiga-ui/kit';
     imports: [
         TuiAppBarModule,
         TuiProgressModule,
-        TuiButtonModule,
+        TuiButtonDirective,
         TuiTitleDirective,
         TuiPlatformModule,
         TuiFadeDirective,

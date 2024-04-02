@@ -5,7 +5,7 @@ import {RouterModule} from '@angular/router';
 import {TuiCurrencyPipeModule} from '@taiga-ui/addon-commerce';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
-    TuiButtonModule,
+    TuiButtonDirective,
     TuiHintModule,
     TuiLinkModule,
     TuiNotificationModule,
@@ -34,7 +34,7 @@ import {ExampleTuiInputNumberComponent} from './input-number.component';
         TuiCurrencyPipeModule,
         TuiSvgModule,
         TuiRadioListComponent,
-        TuiButtonModule,
+        TuiButtonDirective,
         TuiLinkModule,
         TuiTextfieldControllerModule,
         TuiNotificationModule,

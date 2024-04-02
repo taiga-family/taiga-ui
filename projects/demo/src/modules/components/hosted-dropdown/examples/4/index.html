@@ -7,11 +7,19 @@
             tuiButton
             type="button"
             [appearance]="appearance"
-            [iconRight]="length ? cleaner : arrow"
             [style.--tui-padding.rem]="1.25"
             (keydown.delete)="form.reset()"
         >
             {{ text }}
+            <!--TODO: TUI_ARROW migration-->
+            <button
+                appearance="icon"
+                size="xs"
+                tuiIconButton
+                type="reset"
+                [iconLeft]="length ? 'tuiIconClose' : 'tuiIconChevronDown'"
+                (mousedown.prevent.silent)="(0)"
+            ></button>
         </button>
         <ng-template #dropdown>
             <tui-data-list-wrapper
@@ -19,16 +27,6 @@
                 tuiMultiSelectGroup
                 [items]="items"
             />
-        </ng-template>
-        <ng-template #cleaner>
-            <button
-                appearance="icon"
-                icon="tuiIconClose"
-                size="xs"
-                tuiIconButton
-                type="reset"
-                (mousedown.prevent.silent)="(0)"
-            ></button>
         </ng-template>
     </tui-hosted-dropdown>
 </form>

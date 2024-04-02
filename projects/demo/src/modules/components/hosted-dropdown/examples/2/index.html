@@ -19,15 +19,13 @@
             tuiIconButton
             type="button"
             class="tui-group__auto-width-item"
-            [iconRight]="icon"
-        ></button>
-        <ng-template #icon>
+        >
             <tui-svg
                 src="tuiIconChevronDown"
                 class="icon"
                 [class.icon_rotated]="open"
             />
-        </ng-template>
+        </button>
     </div>
 </tui-hosted-dropdown>
 <ng-template

@@ -2136,6 +2136,9 @@ const tuiIconRotateCwLarge =
 const tuiIconRotateCwOutline =
     '<svg width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23 4v6h-6" vector-effect="non-scaling-stroke"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10" vector-effect="non-scaling-stroke"/></svg>';
 
+const tuiIconRotateOutline =
+    '<svg width="1em" height="1em" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1em" height="1em" x="50%" y="50%" overflow="visible" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><svg x="-8" y="-8"><path fill="currentColor" fill-rule="evenodd" d="M14.036 9a.97.97 0 0 1-.965-.977v-2.4c0-.406-.156-.792-.43-1.074v-.001a1.43 1.43 0 0 0-1.017-.434H9.292l.404.486c.377.382.377 1 0 1.382a.955.955 0 0 1-1.364 0l-2.05-2.155a.987.987 0 0 1 0-1.382L8.332.286a.955.955 0 0 1 1.364 0c.377.382.377 1 0 1.382l-.404.49h2.334A3.352 3.352 0 0 1 14.02 3.18c.63.653.981 1.531.981 2.444v2.4a.97.97 0 0 1-.964.977M4 9h5v4H4zM2 9a2 2 0 0 1 2-2h5a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2z" clip-rule="evenodd" vector-effect="non-scaling-stroke"/></svg></svg></g></svg>';
+
 const tuiIconRss =
     '<svg width="1em" height="1em" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1em" height="1em" x="50%" y="50%" overflow="visible" viewBox="0 0 16 16"><svg x="-8" y="-8"><svg width="16" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11a9 9 0 0 1 9 9M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/></svg></svg></svg></g></svg>';
 
@@ -3732,6 +3735,7 @@ export {
     tuiIconRotateCw,
     tuiIconRotateCwLarge,
     tuiIconRotateCwOutline,
+    tuiIconRotateOutline,
     tuiIconRss,
     tuiIconRssLarge,
     tuiIconRssOutline,

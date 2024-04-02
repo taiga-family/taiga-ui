@@ -8,7 +8,7 @@ import {
     TuiThemeIosModule,
     TuiTouchableModule,
 } from '@taiga-ui/addon-mobile';
-import {TuiButtonModule, TuiLinkModule} from '@taiga-ui/core';
+import {TuiButtonDirective, TuiLinkModule} from '@taiga-ui/core';
 import {TuiIslandModule} from '@taiga-ui/kit';
 
 import {TuiMobileThemesExample1} from './examples/1';
@@ -21,7 +21,7 @@ import {ExampleTuiMobileThemesComponent} from './mobile-themes.component';
         RouterModule,
         TuiThemeIosModule,
         TuiThemeAndroidModule,
-        TuiButtonModule,
+        TuiButtonDirective,
         TuiLinkModule,
         TuiIslandModule,
         TuiRippleModule,

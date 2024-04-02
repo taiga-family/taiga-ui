@@ -17,10 +17,11 @@
     tuiIconButton
     type="button"
     class="t-close"
-    [icon]="icons.close"
-    [title]="closeWord$ | async"
+    [iconLeft]="icons.close"
     (click)="close.emit()"
-></button>
+>
+    {{ closeWord$ | async }}
+</button>
 <tui-svg
     automation-id="tui-notification__more"
     class="t-more"

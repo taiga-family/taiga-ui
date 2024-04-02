@@ -6,7 +6,7 @@ import {TuiCurrencyPipeModule} from '@taiga-ui/addon-commerce';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiTableModule} from '@taiga-ui/addon-table';
 import {
-    TuiButtonModule,
+    TuiButtonDirective,
     TuiErrorModule,
     TuiHintModule,
     TuiLabelModule,
@@ -41,7 +41,7 @@ import {ExampleTuiFieldErrorPipeComponent} from './field-error.component';
         TuiLabelModule,
         TuiHintModule,
         TuiInputModule,
-        TuiButtonModule,
+        TuiButtonDirective,
         TuiInputPhoneModule,
         TuiInputNumberModule,
         TuiLinkModule,

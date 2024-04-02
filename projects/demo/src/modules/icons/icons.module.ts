@@ -6,7 +6,7 @@ import {IntersectionObserverModule} from '@ng-web-apis/intersection-observer';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
 import {
-    TuiButtonModule,
+    TuiButtonDirective,
     TuiLinkModule,
     TuiNotificationModule,
     TuiSvgModule,
@@ -22,7 +22,7 @@ import {IconsGroupModule} from './icons-group/icons-group.module';
         TuiNotificationModule,
         TuiLinkModule,
         TuiSvgModule,
-        TuiButtonModule,
+        TuiButtonDirective,
         TuiAddonDocModule,
         IconsGroupModule,
         RouterModule.forChild(tuiGenerateRoutes(IconsComponent)),

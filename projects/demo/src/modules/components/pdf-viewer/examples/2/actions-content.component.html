@@ -1,9 +1,9 @@
 <button
     *ngFor="let button of context.data"
-    shape="rounded"
     size="s"
     tuiButton
     class="tui-space_left-3"
+    [style.border-radius.%]="100"
     (click)="button.onClick(context)"
 >
     {{ button.text }}

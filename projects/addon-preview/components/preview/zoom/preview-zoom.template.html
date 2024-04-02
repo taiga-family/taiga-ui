@@ -6,10 +6,11 @@
             type="button"
             class="t-sign_minus"
             [disabled]="leftButtonDisabled"
-            [icon]="icons.zoomOut"
-            [title]="texts.zoomOut"
+            [iconLeft]="icons.zoomOut"
             (click)="onMinus()"
-        ></button>
+        >
+            {{ texts.zoomOut }}
+        </button>
         <label tuiSliderThumbLabel>
             <div
                 tuiHintAppearance="onDark"
@@ -39,10 +40,11 @@
             type="button"
             class="t-sign_plus"
             [disabled]="rightButtonDisabled"
-            [icon]="icons.zoomIn"
-            [title]="texts.zoomIn"
+            [iconLeft]="icons.zoomIn"
             (click)="onPlus()"
-        ></button>
+        >
+            {{ texts.zoomIn }}
+        </button>
     </section>
 
     <button
@@ -54,7 +56,7 @@
         type="button"
         class="t-reset-button"
         [class.t-invisible]="!collapseVisible"
-        [icon]="icons.zoomReset"
+        [iconLeft]="icons.zoomReset"
         [tuiHint]="texts.reset"
         (click)="onReset()"
     ></button>

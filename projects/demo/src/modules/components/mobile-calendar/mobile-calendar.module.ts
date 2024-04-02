@@ -7,7 +7,7 @@ import {
     TuiMobileCalendarDialogModule,
     TuiMobileCalendarModule,
 } from '@taiga-ui/addon-mobile';
-import {TuiButtonModule, TuiLinkModule} from '@taiga-ui/core';
+import {TuiButtonDirective, TuiLinkModule} from '@taiga-ui/core';
 
 import {TuiMobileCalendarExample1} from './examples/1';
 import {TuiMobileCalendarExample2} from './examples/2';
@@ -21,7 +21,7 @@ import {ExampleTuiMobileCalendarComponent} from './mobile-calendar.component';
         CommonModule,
         ReactiveFormsModule,
         TuiLinkModule,
-        TuiButtonModule,
+        TuiButtonDirective,
         TuiMobileCalendarModule,
         TuiMobileCalendarDialogModule,
         TuiAddonDocModule,

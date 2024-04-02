@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
-    TuiButtonModule,
+    TuiButtonDirective,
     TuiHintModule,
     TuiLinkModule,
     TuiModeModule,
@@ -16,7 +16,7 @@ import {ExampleTuiHintManualComponent} from './hint-manual.component';
 
 @NgModule({
     imports: [
-        TuiButtonModule,
+        TuiButtonDirective,
         TuiHintModule,
         TuiLinkModule,
         TuiModeModule,

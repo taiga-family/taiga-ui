@@ -19,15 +19,19 @@
         </ng-container>
     </div>
 </tui-expand>
-<button
+<div
     *ngIf="hasExtraItems"
-    appearance="outline"
-    size="m"
-    tuiButton
-    type="button"
-    class="t-button"
-    [class.t-button_collapsed]="!expanded"
-    (click)="toggle()"
+    class="t-bottom"
+    [class.t-bottom_collapsed]="!expanded"
 >
-    {{ (expanded ? hideText$ : showAllText$) | async }}
-</button>
+    <button
+        appearance="outline"
+        size="m"
+        tuiButton
+        type="button"
+        class="t-button"
+        (click)="toggle()"
+    >
+        {{ (expanded ? hideText$ : showAllText$) | async }}
+    </button>
+</div>

@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {
-    TuiButtonModule,
+    TuiButtonDirective,
     TuiFormatDatePipeModule,
     TuiLinkModule,
     TuiSvgModule,
@@ -17,7 +17,7 @@ import {TuiPushAlertDirective} from './push-alert.directive';
     imports: [
         CommonModule,
         PolymorpheusModule,
-        TuiButtonModule,
+        TuiButtonDirective,
         TuiLinkModule,
         TuiSvgModule,
         TuiFormatDatePipeModule,

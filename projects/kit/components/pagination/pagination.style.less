@@ -13,21 +13,23 @@
 }
 
 .t-button {
-    margin: 0 (@space / 2);
+    width: var(--tui-height-s);
+    margin: 0 0.125rem;
     flex-shrink: 0;
 
-    &_active {
-        background: currentColor;
+    &[data-size='xs'] {
+        width: var(--tui-height-xs);
     }
 
     &&&_small {
         // @note: (&&&_) it's increasing css cascade priority
         width: 0.5rem;
         height: 0.5rem;
+        padding: 0;
         margin: 0;
 
         &:not(:first-child) {
-            margin-left: @space * 2;
+            margin-left: 0.5rem;
         }
     }
 }
@@ -36,7 +38,7 @@
     width: var(--tui-height-s);
     height: var(--tui-height-s);
     line-height: var(--tui-height-s);
-    margin: 0 (@space / 2);
+    margin: 0 0.125rem;
     flex-shrink: 0;
     color: var(--tui-text-03);
     text-align: center;

@@ -4,13 +4,13 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
+    TuiButtonDirective,
     TuiHintModule,
     TuiLinkModule,
     TuiModeModule,
     TuiNotificationModule,
     TuiSvgModule,
 } from '@taiga-ui/core';
-import {TuiButtonModule} from '@taiga-ui/experimental';
 
 import {TuiNotificationExample1} from './examples/1';
 import {TuiNotificationExample2} from './examples/2';
@@ -20,7 +20,7 @@ import {ExampleTuiNotificationComponent} from './notification.component';
 @NgModule({
     imports: [
         TuiNotificationModule,
-        TuiButtonModule,
+        TuiButtonDirective,
         TuiLinkModule,
         TuiModeModule,
         CommonModule,

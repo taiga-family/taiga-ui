@@ -1,12 +1,13 @@
 <button
-    icon="tuiIconArrowUpRightLarge"
+    iconLeft="tuiIconArrowUpRightLarge"
     size="s"
-    title="Show details"
     topRight
     tuiDropdownOpen
     tuiIconButton
     [tuiDropdown]="content"
-></button>
+>
+    Show details
+</button>
 <ng-template #content>
     <div class="dropdown">
         <h2 class="tui-text_h6">Custom positioning</h2>

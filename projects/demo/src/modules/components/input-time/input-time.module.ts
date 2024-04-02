@@ -4,7 +4,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
-    TuiButtonModule,
+    TuiButtonDirective,
     TuiDropdownModule,
     TuiHintModule,
     TuiLinkModule,
@@ -34,7 +34,7 @@ import {ExampleTuiInputTimeComponent} from './input-time.component';
         TuiInputTimeModule,
         TuiLinkModule,
         InheritedDocumentationModule,
-        TuiButtonModule,
+        TuiButtonDirective,
         TuiDropdownModule,
         TuiTextfieldControllerModule,
         TuiNotificationModule,

@@ -6,6 +6,8 @@
     tuiIconButton
     type="button"
     [href]="link"
-    [icon]="icons.code"
-    [title]="text"
-></a>
+    [iconLeft]="icons.code"
+    [style.height]="'var(--tui-height-l)'"
+>
+    {{ text }}
+</a>

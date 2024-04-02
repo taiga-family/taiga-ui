@@ -4,7 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {TuiExamplePipe} from '@demo/utils';
 import {tuiGetDocModules} from '@taiga-ui/addon-doc';
 import {
-    TuiButtonModule,
+    TuiButtonDirective,
     TuiDataListModule,
     TuiDropdownModule,
     TuiGroupDirective,
@@ -32,7 +32,7 @@ import {ExampleTuiItemsWithMoreComponent} from './items-with-more.component';
         TuiItemsWithMoreModule,
         TuiBadgeDirective,
         TuiDropdownModule,
-        TuiButtonModule,
+        TuiButtonDirective,
         TuiDataListModule,
         TuiSvgModule,
         TuiBlockDirective,

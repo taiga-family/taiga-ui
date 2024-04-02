@@ -8,7 +8,7 @@ import {
     TuiTextCodeModule,
 } from '@taiga-ui/addon-doc';
 import {
-    TuiButtonModule,
+    TuiButtonDirective,
     TuiErrorModule,
     TuiHintModule,
     TuiLabelModule,
@@ -42,7 +42,7 @@ import {ExampleTuiTextareaComponent} from './textarea.component';
         TuiSvgModule,
         CommonModule,
         TuiRadioListComponent,
-        TuiButtonModule,
+        TuiButtonDirective,
         TuiLinkModule,
         TuiLabelModule,
         TuiTextfieldControllerModule,

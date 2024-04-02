@@ -4,7 +4,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiResizerModule} from '@taiga-ui/cdk';
 import {
-    TuiButtonModule,
+    TuiButtonDirective,
     TuiDataListModule,
     TuiExpandModule,
     TuiGroupDirective,
@@ -31,7 +31,7 @@ import {TuiDocDemoComponent} from './demo.component';
         FormsModule,
         RouterModule,
         TuiLinkModule,
-        TuiButtonModule,
+        TuiButtonDirective,
         TuiSelectModule,
         TuiExpandModule,
         TuiGroupDirective,

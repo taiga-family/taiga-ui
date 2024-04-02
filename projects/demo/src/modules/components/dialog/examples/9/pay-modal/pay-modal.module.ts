@@ -4,7 +4,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TuiInputCardGroupedModule} from '@taiga-ui/addon-commerce';
 import {TuiAutoFocusDirective, TuiLetModule} from '@taiga-ui/cdk';
 import {
-    TuiButtonModule,
+    TuiButtonDirective,
     TuiFormatNumberPipeModule,
     TuiLinkModule,
     TuiLoaderModule,
@@ -12,7 +12,7 @@ import {
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {TuiLabelDirective} from '@taiga-ui/experimental';
-import {TuiCheckboxComponent} from '@taiga-ui/kit';
+import {TuiButtonLoadingComponent, TuiCheckboxComponent} from '@taiga-ui/kit';
 
 import {PayModalComponent} from './pay-modal.component';
 
@@ -24,7 +24,7 @@ import {PayModalComponent} from './pay-modal.component';
         TuiSvgModule,
         TuiLetModule,
         TuiLoaderModule,
-        TuiButtonModule,
+        TuiButtonDirective,
         TuiAutoFocusDirective,
         ReactiveFormsModule,
         TuiInputCardGroupedModule,
@@ -32,6 +32,7 @@ import {PayModalComponent} from './pay-modal.component';
         TuiTextfieldControllerModule,
         TuiLabelDirective,
         TuiCheckboxComponent,
+        TuiButtonLoadingComponent,
     ],
     declarations: [PayModalComponent],
 })

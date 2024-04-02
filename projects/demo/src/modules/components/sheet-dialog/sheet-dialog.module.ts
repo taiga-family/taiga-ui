@@ -8,7 +8,7 @@ import {TuiSheetDialogModule} from '@taiga-ui/addon-mobile';
 import {TuiSwipeModule} from '@taiga-ui/cdk';
 import {
     TuiAutoColorPipe,
-    TuiButtonModule,
+    TuiButtonDirective,
     TuiInitialsPipe,
     TuiLabelModule,
     TuiNotificationModule,
@@ -28,7 +28,7 @@ import {ExampleTuiSheetDialogComponent} from './sheet-dialog.component';
         ReactiveFormsModule,
         TuiInputModule,
         TuiTextfieldControllerModule,
-        TuiButtonModule,
+        TuiButtonDirective,
         TuiLabelModule,
         TuiAmountPipe,
         TuiAvatarComponent,

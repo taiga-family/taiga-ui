@@ -5,13 +5,13 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import type {TuiAlertContext} from '@taiga-ui/core';
-import {TuiAlertService, TuiButtonModule} from '@taiga-ui/core';
+import {TuiAlertService, TuiButtonDirective} from '@taiga-ui/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 @Component({
     standalone: true,
     selector: 'tui-alerts-example-2',
-    imports: [AsyncPipe, TuiButtonModule, TuiAmountPipe, PolymorpheusModule],
+    imports: [AsyncPipe, TuiButtonDirective, TuiAmountPipe, PolymorpheusModule],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
