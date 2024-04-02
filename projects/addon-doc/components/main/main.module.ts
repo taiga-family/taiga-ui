@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {
     TuiAlertModule,
-    TuiButtonModule,
+    TuiButtonDirective,
     TuiDialogModule,
     TuiModeModule,
     TuiRootModule,
@@ -23,7 +23,7 @@ import {TuiDocMainComponent} from './main.component';
         TuiRootModule,
         TuiDialogModule,
         TuiAlertModule,
-        TuiButtonModule,
+        TuiButtonDirective,
         TuiModeModule,
         TuiDocNavigationModule,
     ],

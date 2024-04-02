@@ -3,12 +3,13 @@
     class="wrapper"
 >
     <button
-        icon="tuiIconChevronLeftLarge"
-        title="Previous"
+        iconLeft="tuiIconChevronLeftLarge"
         tuiIconButton
         type="button"
         (click)="carousel.prev()"
-    ></button>
+    >
+        Previous
+    </button>
     <tui-carousel
         #carousel
         class="carousel"
@@ -25,16 +26,14 @@
                     tuiButton
                     type="button"
                 >
-                    Buy $
-                    <span>{{ 12.99 | tuiAmount: 'RUB' | async }}</span>
+                    Buy ${{ 12.99 | tuiAmount: 'RUB' | async }}
                 </button>
                 <button
                     tuiButton
                     type="button"
                     class="tui-space_left-2"
                 >
-                    Rent $
-                    <span>{{ 4.99 | tuiAmount: 'RUB' | async }}</span>
+                    Rent ${{ 4.99 | tuiAmount: 'RUB' | async }}
                 </button>
             </div>
         </tui-island>
@@ -55,10 +54,11 @@
         </tui-island>
     </tui-carousel>
     <button
-        icon="tuiIconChevronRightLarge"
-        title="Next"
+        iconLeft="tuiIconChevronRightLarge"
         tuiIconButton
         type="button"
         (click)="carousel.next()"
-    ></button>
+    >
+        Next
+    </button>
 </div>

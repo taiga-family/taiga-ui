@@ -5,7 +5,7 @@ import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiLetModule} from '@taiga-ui/cdk';
 import {
-    TuiButtonModule,
+    TuiButtonDirective,
     TuiDataListModule,
     TuiDropdownModule,
     TuiHintModule,
@@ -31,7 +31,7 @@ import {ExampleTuiInputPhoneComponent} from './input-phone.component';
         PolymorpheusModule,
         TuiLetModule,
         TuiDataListModule,
-        TuiButtonModule,
+        TuiButtonDirective,
         TuiSvgModule,
         TuiAvatarComponent,
         TuiDropdownModule,

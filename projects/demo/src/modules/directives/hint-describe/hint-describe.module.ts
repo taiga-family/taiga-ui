@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
-import {TuiButtonModule, TuiHintModule, TuiTooltipModule} from '@taiga-ui/core';
+import {TuiButtonDirective, TuiHintModule, TuiTooltipModule} from '@taiga-ui/core';
 import {TuiInputModule} from '@taiga-ui/kit';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
@@ -17,7 +17,7 @@ import {ExampleTuiHintDescribeComponent} from './hint-describe.component';
         CommonModule,
         FormsModule,
         TuiHintModule,
-        TuiButtonModule,
+        TuiButtonDirective,
         TuiInputModule,
         TuiTooltipModule,
         InheritedDocumentationModule,

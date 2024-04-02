@@ -4,10 +4,11 @@
     tuiIconButton
     type="button"
     class="t-close"
-    [icon]="icons.close"
-    [title]="closeWord$ | async"
+    [iconLeft]="icons.close"
     (click)="onClick()"
-></button>
+>
+    {{ closeWord$ | async }}
+</button>
 <span [id]="id">
     <ng-content />
 </span>

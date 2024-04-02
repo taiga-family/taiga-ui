@@ -12,7 +12,7 @@ import {
 import {TuiTableModule} from '@taiga-ui/addon-table';
 import {TuiLetModule, TuiMapperPipeModule, TuiRepeatTimesModule} from '@taiga-ui/cdk';
 import {
-    TuiButtonModule,
+    TuiButtonDirective,
     TuiDataListModule,
     TuiDropdownModule,
     TuiGroupDirective,
@@ -71,7 +71,7 @@ import {ExampleTuiInputComponent} from './input.component';
         TuiRepeatTimesModule,
         TuiSvgModule,
         TuiRadioListComponent,
-        TuiButtonModule,
+        TuiButtonDirective,
         TuiInputCardModule,
         TuiAvatarComponent,
         TuiPrimitiveTextfieldModule,

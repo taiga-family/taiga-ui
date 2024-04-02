@@ -1,193 +1,110 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
-@padding-xs: 0.375rem;
-@padding-s: 0.75rem;
-@padding-m: 1.5rem;
-@padding-l: 2.25rem;
-@padding-xl: 2.5rem;
+[tuiButton],
+[tuiIconButton] {
+    --t-gap: 0.125rem;
 
-:host {
-    .clearbtn();
-    .text-basic();
+    .button-base();
 
-    position: relative;
-    display: inline-block;
-    flex-shrink: 0;
-    vertical-align: top;
-    border-radius: var(--tui-radius-m);
+    height: var(--t-size);
+    justify-content: center;
+    border-radius: var(--t-radius);
+    padding: var(--t-padding);
     user-select: none;
-    outline: none;
-    color: inherit;
+    cursor: pointer;
 
-    &[data-shape='rounded'] {
-        border-radius: 6.25rem;
+    > .t-loader {
+        .center-all();
+
+        .t-text {
+            position: absolute;
+        }
     }
 
     &[data-size='xs'] {
-        height: var(--tui-height-xs);
-        font-weight: normal;
+        --t-size: var(--tui-height-xs);
+        --t-radius: var(--tui-radius-xs);
+        --t-padding: 0 0.375rem;
+        --t-margin: -0.125rem;
 
-        &[data-shape='square'],
-        &[tuiIconButton] {
-            width: var(--tui-height-xs);
+        font: var(--tui-font-text-s);
+
+        tui-svg,
+        tui-icon,
+        &:before {
+            font-size: 1rem;
         }
     }
 
     &[data-size='s'] {
-        height: var(--tui-height-s);
-        font-weight: normal;
+        --t-size: var(--tui-height-s);
+        --t-radius: var(--tui-radius-s);
+        --t-padding: 0 0.625rem;
+        --t-margin: -0.125rem;
 
-        &[data-shape='square'],
-        &[tuiIconButton] {
-            width: var(--tui-height-s);
+        font: var(--tui-font-text-s);
+
+        tui-svg,
+        tui-icon,
+        &:not([tuiIconButton][data-appearance='icon']):not([tuiIconButton][data-appearance='link']):before {
+            font-size: 1rem;
         }
     }
 
     &[data-size='m'] {
-        height: var(--tui-height-m);
+        --t-size: var(--tui-height-m);
+        --t-radius: var(--tui-radius-m);
+        --t-padding: 0 1rem;
+        --t-margin: -0.375rem;
+
         font: var(--tui-font-text-m);
         font-weight: bold;
 
-        &[data-shape='square'],
-        &[tuiIconButton] {
-            width: var(--tui-height-m);
+        &:after {
+            margin-inline-end: -0.125rem;
         }
     }
 
     &[data-size='l'] {
-        height: var(--tui-height-l);
+        --t-size: var(--tui-height-l);
+        --t-radius: var(--tui-radius-l);
+        --t-padding: 0 1.25rem;
+        --t-gap: 0.25rem;
+        --t-margin: -0.25rem;
+
         font: var(--tui-font-text-m);
         font-weight: bold;
-
-        &[data-shape='square'],
-        &[tuiIconButton] {
-            width: var(--tui-height-l);
-        }
-    }
-
-    &[data-size='xl'] {
-        height: 3.75rem;
-        font: var(--tui-font-text-m);
-        font-weight: bold;
-
-        &[data-shape='square'],
-        &[tuiIconButton] {
-            width: 3.75rem;
-        }
-    }
-
-    &[tuiIconButton] {
-        font-size: 0 !important;
-
-        & .t-left,
-        & .t-right {
-            margin: 0 !important;
-        }
-    }
-}
-
-.t-loader {
-    .fullsize();
-
-    cursor: default;
-}
-
-.t-left {
-    margin-right: 0.5rem;
-
-    :host[data-size='s'] & {
-        margin-right: 0.375rem;
-    }
-
-    :host[data-size='xs'] & {
-        margin-right: 0.25rem;
-    }
-}
-
-.t-right {
-    margin: 0 -0.25rem 0 0.25rem;
-
-    :host[data-size='s'] & {
-        margin: 0 -0.25rem 0 0.375rem;
-    }
-
-    :host[data-size='xs'] & {
-        margin: 0 -0.125rem 0 0.25rem;
-    }
-}
-
-.t-icon {
-    display: flex;
-    max-width: 100%;
-    max-height: 100%;
-    align-items: center;
-    justify-content: center;
-}
-
-.t-left,
-.t-right {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 1.5rem;
-    height: 1.5rem;
-
-    :host[data-size='s'] &,
-    :host[data-size='xs'] & {
-        width: 1rem;
-        height: 1rem;
-    }
-
-    :host[tuiIconButton][data-appearance='icon'][data-size='s'] &,
-    :host[tuiIconButton][data-appearance='link'][data-size='s'] & {
-        width: 1.5rem;
-        height: 1.5rem;
-    }
-}
-
-.t-wrapper {
-    box-sizing: border-box;
-    cursor: pointer;
-    isolation: isolate;
-
-    :host[data-size='xs'] & {
-        padding: 0 var(--tui-padding, @padding-xs);
 
         &:after {
-            border-width: 1px;
+            margin-inline-start: 0.25rem;
+            margin-inline-end: -0.25rem;
         }
     }
 
-    :host[data-size='s'] & {
-        padding: 0 var(--tui-padding, @padding-s);
+    &._loading {
+        --tui-disabled-opacity: 1;
+
+        -webkit-text-fill-color: transparent;
+
+        > *,
+        &:before,
+        &:after {
+            opacity: 0;
+        }
+
+        > .t-loader {
+            opacity: 1;
+        }
     }
 
-    :host[data-size='m'] & {
-        padding: 0 var(--tui-padding, @padding-m);
-    }
-
-    :host[data-size='l'] & {
-        padding: 0 var(--tui-padding, @padding-l);
-    }
-
-    :host[data-size='xl'] & {
-        padding: 0 var(--tui-padding, @padding-xl);
-    }
-
-    :host[data-shape='square'] &,
-    :host[tuiIconButton] & {
-        padding: 0;
+    &[tuiIcons]:after {
+        font-size: 1rem;
     }
 }
 
-.t-content {
-    display: flex;
-    height: 100%;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-
-    :host._loading & {
-        opacity: 0;
-    }
+[tuiIconButton] {
+    gap: 0;
+    width: var(--t-size);
+    font-size: 0 !important;
+    padding: 0;
 }

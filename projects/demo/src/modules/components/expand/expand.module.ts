@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
-import {TuiButtonModule, TuiExpandModule} from '@taiga-ui/core';
+import {TuiButtonDirective, TuiExpandModule} from '@taiga-ui/core';
 
 import {TuiExpandExample1} from './examples/1';
 import {ExampleTuiExpandComponent} from './expand.component';
@@ -11,7 +11,7 @@ import {ExampleTuiExpandComponent} from './expand.component';
 @NgModule({
     imports: [
         TuiExpandModule,
-        TuiButtonModule,
+        TuiButtonDirective,
         CommonModule,
         FormsModule,
         ReactiveFormsModule,

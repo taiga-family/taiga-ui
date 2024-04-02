@@ -4,7 +4,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiAutoFocusDirective} from '@taiga-ui/cdk';
-import {TuiButtonModule} from '@taiga-ui/core';
+import {TuiButtonDirective} from '@taiga-ui/core';
 import {TuiInputInlineModule} from '@taiga-ui/kit';
 
 import {TuiInputInlineExample1} from './examples/1/component';
@@ -17,7 +17,7 @@ import {ExampleTuiInputInlineComponent} from './input-inline.component';
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
-        TuiButtonModule,
+        TuiButtonDirective,
         TuiInputInlineModule,
         TuiAutoFocusDirective,
         TuiAddonDocModule,

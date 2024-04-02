@@ -12,13 +12,12 @@
         <ng-content select="tuiDocHeader" />
         <button
             appearance="secondary"
-            shape="rounded"
             size="s"
             tuiIconButton
-            tuiMode="onLight"
             type="button"
             class="tui-doc-night-mode-switch"
-            [icon]="icon"
+            [iconLeft]="icon"
+            [style.border-radius.%]="100"
             (click)="night.toggle()"
         ></button>
     </header>

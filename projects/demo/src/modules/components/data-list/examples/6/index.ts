@@ -2,7 +2,6 @@ import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
-import {TUI_ARROW} from '@taiga-ui/kit';
 
 @Component({
     selector: 'tui-data-list-example-6',
@@ -19,8 +18,6 @@ import {TUI_ARROW} from '@taiga-ui/kit';
 })
 export class TuiDataListExample6 {
     protected open = false;
-
-    protected readonly arrow = TUI_ARROW;
 
     protected readonly groups = [
         {

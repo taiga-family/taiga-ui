@@ -2,7 +2,7 @@ import {Component, inject} from '@angular/core';
 import {Router} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAlertService, TuiButtonModule} from '@taiga-ui/core';
+import {TuiAlertService, TuiButtonDirective} from '@taiga-ui/core';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import {takeUntil} from 'rxjs';
 
@@ -15,7 +15,7 @@ import {CustomLabelComponent} from './custom-label/custom-label.component';
     imports: [
         CustomLabelComponent,
         AlertExampleWithCustomLabelComponent,
-        TuiButtonModule,
+        TuiButtonDirective,
     ],
     templateUrl: './index.html',
     encapsulation,

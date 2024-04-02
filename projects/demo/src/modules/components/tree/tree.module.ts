@@ -5,7 +5,7 @@ import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiMapperPipeModule} from '@taiga-ui/cdk';
 import {
-    TuiButtonModule,
+    TuiButtonDirective,
     TuiLinkModule,
     TuiLoaderModule,
     TuiSvgModule,
@@ -27,7 +27,7 @@ import {ExampleTuiTreeComponent} from './tree.component';
     imports: [
         TuiTreeModule,
         TuiSvgModule,
-        TuiButtonModule,
+        TuiButtonDirective,
         TuiLinkModule,
         TuiMapperPipeModule,
         TuiLoaderModule,

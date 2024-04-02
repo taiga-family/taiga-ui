@@ -108,6 +108,7 @@
         <div
             #content
             id="demo-content"
+            [attr.tuiTheme]="mode === 'onDark' ? 'night' : null"
         >
             <form
                 *ngIf="testForm"
@@ -123,18 +124,15 @@
                     tuiButton
                     type="button"
                     class="t-button"
-                    [iconRight]="icon"
                     (click)="toggleDetails()"
                 >
                     {{ texts[2] }}
-                </button>
-                <ng-template #icon>
                     <tui-svg
                         class="t-icon"
                         [class.t-icon_rotated]="expanded"
                         [src]="options.iconSmall"
                     />
-                </ng-template>
+                </button>
                 <tui-expand
                     class="t-expand"
                     [expanded]="expanded"

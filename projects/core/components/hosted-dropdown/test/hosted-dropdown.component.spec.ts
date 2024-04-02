@@ -5,8 +5,7 @@ import {TestBed} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiElementModule} from '@taiga-ui/cdk';
 import {
-    TuiButtonComponent,
-    TuiButtonModule,
+    TuiButtonDirective,
     TuiDataListModule,
     TuiHostedDropdownModule,
     TuiPrimitiveTextfieldComponent,
@@ -78,7 +77,7 @@ describe('TuiHostedDropdown', () => {
         @ViewChild(TuiPrimitiveTextfieldComponent)
         public tuiTextfield!: TuiPrimitiveTextfieldComponent;
 
-        @ViewChild(TuiButtonComponent, {read: ElementRef})
+        @ViewChild(TuiButtonDirective, {read: ElementRef})
         public tuiButton!: ElementRef<HTMLElement>;
 
         @ViewChild('host')
@@ -122,7 +121,7 @@ describe('TuiHostedDropdown', () => {
             imports: [
                 NoopAnimationsModule,
                 TuiHostedDropdownModule,
-                TuiButtonModule,
+                TuiButtonDirective,
                 TuiPrimitiveTextfieldModule,
                 TuiTextfieldControllerModule,
                 TuiDataListModule,

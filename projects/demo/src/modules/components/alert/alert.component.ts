@@ -11,7 +11,7 @@ import type {TuiAlertOptions, TuiNotification} from '@taiga-ui/core';
 import {
     TUI_NOTIFICATION_OPTIONS,
     TuiAlertService,
-    TuiButtonModule,
+    TuiButtonDirective,
     TuiLinkModule,
 } from '@taiga-ui/core';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
@@ -31,7 +31,7 @@ import {TuiAlertExampleComponent6} from './examples/6';
     selector: 'example-tui-alert',
     imports: [
         TuiTextCodeModule,
-        TuiButtonModule,
+        TuiButtonDirective,
         TuiLinkModule,
         TuiAddonDocModule,
         TuiAlertExampleComponent1,

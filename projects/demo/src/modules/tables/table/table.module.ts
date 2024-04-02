@@ -12,7 +12,7 @@ import {
 } from '@taiga-ui/addon-table';
 import {TuiLetModule, TuiValidatorDirective} from '@taiga-ui/cdk';
 import {
-    TuiButtonModule,
+    TuiButtonDirective,
     TuiDataListModule,
     TuiDropdownModule,
     TuiFormatNumberPipeModule,
@@ -26,7 +26,6 @@ import {
 } from '@taiga-ui/core';
 import {
     TuiAccordionModule,
-    TuiArrowModule,
     TuiDataListWrapperModule,
     TuiInputDateModule,
     TuiInputModule,
@@ -64,7 +63,7 @@ import {ExampleTuiTableComponent} from './table.component';
         TuiFormatNumberPipeModule,
         TuiValidatorDirective,
         TuiSvgModule,
-        TuiButtonModule,
+        TuiButtonDirective,
         TuiLinkModule,
         TuiTagModule,
         TuiAccordionModule,
@@ -73,7 +72,6 @@ import {ExampleTuiTableComponent} from './table.component';
         TuiTablePaginationModule,
         TuiTextfieldControllerModule,
         TuiDropdownModule,
-        TuiArrowModule,
         TuiReorderModule,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiTableComponent)),

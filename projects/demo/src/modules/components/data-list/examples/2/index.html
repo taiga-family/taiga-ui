@@ -1,9 +1,9 @@
 <button
     appearance="flat"
-    icon="tuiIconMoreVertical"
+    iconLeft="tuiIconMoreVertical"
     tuiIconButton
     type="button"
-    [pseudoHover]="open || null"
+    [tuiAppearanceState]="open ? 'hover' : null"
     [tuiDropdown]="content"
     [(tuiDropdownOpen)]="open"
 ></button>

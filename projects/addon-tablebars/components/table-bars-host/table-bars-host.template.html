@@ -11,6 +11,7 @@
     >
         <div
             class="t-container"
+            [attr.tuiTheme]="getMode(item.mode) === 'onDark' ? 'night' : null"
             [class.t-container_adaptive]="item.adaptive"
         >
             <div class="t-inner">
@@ -29,11 +30,12 @@
                     tuiIconButton
                     type="button"
                     class="t-close-button"
-                    [icon]="icons.close"
-                    [title]="closeWord$ | async"
+                    [iconLeft]="icons.close"
                     [tuiMode]="getMode(item.mode)"
                     (click)="onCloseClick(item)"
-                ></button>
+                >
+                    {{ closeWord$ | async }}
+                </button>
             </div>
         </div>
     </div>

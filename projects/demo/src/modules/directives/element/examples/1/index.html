@@ -1,6 +1,6 @@
 <button
     #component
-    tuiButton
+    tuiLink
     type="button"
     class="tui-space_right-3"
 >
@@ -8,14 +8,14 @@
 </button>
 <button
     #element="elementRef"
-    tuiButton
     tuiElement
+    tuiLink
     type="button"
     class="tui-space_right-3"
 >
     element
 </button>
-<p>component instanceof TuiButtonComponent: {{ isButton(component) }}</p>
+<p>component instanceof TuiLinkComponent: {{ isLink(component) }}</p>
 <p>element instanceof ElementRef: {{ isElement(element) }}</p>
 <button
     tuiButton

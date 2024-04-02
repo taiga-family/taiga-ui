@@ -5,7 +5,7 @@ import {TuiExamplePipe, TuiSetupComponent} from '@demo/utils';
 import {tuiGetDocModules} from '@taiga-ui/addon-doc';
 import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
 import {
-    TuiButtonModule,
+    TuiButtonDirective,
     TuiDataListModule,
     TuiDropdownModule,
     TuiModeModule,
@@ -33,7 +33,7 @@ import {ExampleTuiTabsComponent} from './tabs.component';
         TuiModeModule,
         TuiNotificationModule,
         TuiSvgModule,
-        TuiButtonModule,
+        TuiButtonDirective,
         TuiDropdownModule,
         TuiDataListModule,
         TuiScrollbarComponent,

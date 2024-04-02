@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {TuiAutoFocusDirective} from '@taiga-ui/cdk';
-import {TuiButtonModule, TuiPrimitiveTextfieldModule} from '@taiga-ui/core';
+import {TuiButtonDirective, TuiPrimitiveTextfieldModule} from '@taiga-ui/core';
 
 import {SearchDialogExampleComponent} from './search-dialog-example.component';
 
@@ -10,7 +10,7 @@ import {SearchDialogExampleComponent} from './search-dialog-example.component';
         CommonModule,
         TuiPrimitiveTextfieldModule,
         TuiAutoFocusDirective,
-        TuiButtonModule,
+        TuiButtonDirective,
     ],
     declarations: [SearchDialogExampleComponent],
     exports: [SearchDialogExampleComponent],

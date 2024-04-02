@@ -10,7 +10,7 @@ import {
 } from '@taiga-ui/addon-doc';
 import {TuiLetModule} from '@taiga-ui/cdk';
 import {
-    TuiButtonModule,
+    TuiButtonDirective,
     TuiDataListModule,
     TuiDropdownModule,
     TuiHintModule,
@@ -52,7 +52,7 @@ import {TuiComboBoxExample8} from './examples/8';
         ScrollingModule,
         TuiScrollbarComponent,
         TuiComboBoxModule,
-        TuiButtonModule,
+        TuiButtonDirective,
         TuiLinkModule,
         TuiAvatarComponent,
         TuiSvgModule,

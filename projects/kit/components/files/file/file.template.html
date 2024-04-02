@@ -35,11 +35,12 @@
         tuiIconButton
         type="button"
         class="t-remove"
-        [icon]="icons.close"
-        [title]="texts.remove"
+        [iconLeft]="icons.close"
         (click.prevent)="remove.emit()"
         (mousedown.prevent.silent)="(0)"
-    ></button>
+    >
+        {{ texts.remove }}
+    </button>
 </ng-container>
 
 <ng-template #defaultLeftContent>

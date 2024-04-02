@@ -5,7 +5,7 @@ import {RouterModule} from '@angular/router';
 import {TuiScrollIntoViewLinkModule} from '@taiga-ui/addon-doc/directives';
 import {TuiActiveZoneDirective, TuiAutoFocusDirective, TuiLetModule} from '@taiga-ui/cdk';
 import {
-    TuiButtonModule,
+    TuiButtonDirective,
     TuiDataListModule,
     TuiDropdownModule,
     TuiExpandModule,
@@ -28,7 +28,7 @@ import {TuiDocNavigationComponent} from './navigation.component';
         RouterModule,
         PolymorpheusModule,
         TuiScrollIntoViewLinkModule,
-        TuiButtonModule,
+        TuiButtonDirective,
         TuiInputModule,
         TuiTextfieldControllerModule,
         TuiActiveZoneDirective,

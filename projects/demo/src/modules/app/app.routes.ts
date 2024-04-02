@@ -206,47 +206,12 @@ export const ROUTES: Routes = [
             import('../components/badge-notification/badge-notification.component'),
         title: 'BadgeNotification',
     }),
-    {
-        path: 'experimental/button',
-        loadChildren: async () =>
-            (await import('../experimental/button/button.module')).ExampleTuiButtonModule,
-        data: {
-            title: 'Button ',
-        },
-    },
     route({
         path: 'layout/block-details',
         loadComponent: async () =>
             import('../components/block-details/block-details.component'),
         title: 'BlockDetails',
     }),
-    {
-        path: 'experimental/button-vertical',
-        loadChildren: async () =>
-            (await import('../experimental/button-vertical/button-vertical.module'))
-                .ExampleTuiButtonModule,
-        data: {
-            title: 'ButtonVertical',
-        },
-    },
-    {
-        path: 'experimental/button-close',
-        loadChildren: async () =>
-            (await import('../experimental/button-close/button-close.module'))
-                .ExampleTuiButtonCloseModule,
-        data: {
-            title: 'ButtonClose',
-        },
-    },
-    {
-        path: 'experimental/button-group',
-        loadChildren: async () =>
-            (await import('../experimental/button-group/button-group.module'))
-                .ExampleTuiButtonGroupModule,
-        data: {
-            title: 'ButtonGroup',
-        },
-    },
     {
         path: 'experimental/cell',
         loadChildren: async () =>
@@ -341,14 +306,26 @@ export const ROUTES: Routes = [
             title: 'Breadcrumbs',
         },
     },
-    {
+    route({
         path: 'components/button',
-        loadChildren: async () =>
-            (await import('../components/button/button.module')).ExampleTuiButtonModule,
-        data: {
-            title: 'Button',
-        },
-    },
+        title: 'Button',
+        loadComponent: async () => import('../components/button'),
+    }),
+    route({
+        path: 'components/button-vertical',
+        title: 'ButtonVertical',
+        loadComponent: async () => import('../components/button-vertical'),
+    }),
+    route({
+        path: 'components/button-close',
+        title: 'ButtonClose',
+        loadComponent: async () => import('../components/button-close'),
+    }),
+    route({
+        path: 'components/button-group',
+        title: 'ButtonGroup',
+        loadComponent: async () => import('../components/button-group'),
+    }),
     {
         path: 'components/calendar',
         loadChildren: async () =>

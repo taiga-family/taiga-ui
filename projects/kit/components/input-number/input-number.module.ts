@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
 import {
-    TuiButtonModule,
+    TuiButtonDirective,
     TuiPrimitiveTextfieldModule,
     TuiTextfieldComponent,
     TuiTextfieldControllerModule,
@@ -21,7 +21,7 @@ import {TuiInputNumberDirective} from './input-number.directive';
         TuiTextfieldControllerModule,
         TuiValueAccessorModule,
         PolymorpheusModule,
-        TuiButtonModule,
+        TuiButtonDirective,
     ],
     declarations: [TuiInputNumberComponent, TuiInputNumberDirective],
     exports: [TuiInputNumberComponent, TuiInputNumberDirective, TuiTextfieldComponent],

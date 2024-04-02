@@ -1,176 +1,27 @@
-<ng-template #icon>
-    <tui-avatar
-        size="xs"
-        [src]="avatarUrl"
-    />
-</ng-template>
-<h3>button[tuiButton]</h3>
-<p>
-    <button
-        tuiButton
-        type="button"
-        class="tui-space_right-3 tui-space_bottom-3"
-        [icon]="icon"
-        (click)="onClick($event)"
-    >
-        Button
-    </button>
+<button
+    size="l"
+    tuiButton
+>
+    Large
+</button>
 
-    <button
-        iconRight="tuiIconSearch"
-        tuiButton
-        type="button"
-        class="tui-space_right-3 tui-space_bottom-3"
-        [disabled]="true"
-        (click)="onClick($event)"
-    >
-        Disabled button
-    </button>
+<button
+    size="m"
+    tuiButton
+>
+    Medium
+</button>
 
-    <button
-        tuiButton
-        type="button"
-        class="tui-space_right-3 tui-space_bottom-3"
-        [showLoader]="true"
-        (click)="onClick($event)"
-    >
-        Loading button
-    </button>
+<button
+    size="s"
+    tuiButton
+>
+    Small
+</button>
 
-    <button
-        tuiButton
-        type="button"
-        [icon]="loader1"
-        (click)="onClick($event)"
-    >
-        Wait for it...
-    </button>
-    <ng-template #loader1>
-        <tui-svg
-            class="loader"
-            [src]="loader"
-        />
-    </ng-template>
-</p>
-<h3>button[tuiIconButton]</h3>
-<p>
-    <button
-        tuiIconButton
-        type="button"
-        class="tui-space_right-3 tui-space_bottom-3"
-        [icon]="icon"
-        (click)="onClick($event)"
-    ></button>
-
-    <button
-        icon="tuiIconSearch"
-        tuiIconButton
-        type="button"
-        class="tui-space_right-3 tui-space_bottom-3"
-        [disabled]="true"
-        (click)="onClick($event)"
-    ></button>
-
-    <button
-        tuiIconButton
-        type="button"
-        class="tui-space_right-3 tui-space_bottom-3"
-        [showLoader]="true"
-        (click)="onClick($event)"
-    ></button>
-
-    <button
-        tuiIconButton
-        type="button"
-        [icon]="loader2"
-        (click)="onClick($event)"
-    ></button>
-    <ng-template #loader2>
-        <tui-svg
-            class="loader"
-            [src]="loader"
-        />
-    </ng-template>
-</p>
-<h3>a[tuiButton]</h3>
-<p>
-    <a
-        href="http://google.com"
-        tuiButton
-        type="button"
-        class="tui-space_right-3 tui-space_bottom-3"
-        [icon]="icon"
-    >
-        Link
-    </a>
-
-    <a
-        tuiButton
-        class="tui-space_right-3 tui-space_bottom-3"
-        [showLoader]="true"
-    >
-        Loading button
-    </a>
-
-    <a
-        tuiButton
-        [icon]="loader3"
-    >
-        Wait for it...
-    </a>
-    <ng-template #loader3>
-        <tui-loader
-            size="s"
-            [inheritColor]="true"
-            [showLoader]="true"
-            [style.height.px]="30"
-            [style.width.px]="30"
-        />
-    </ng-template>
-</p>
-<h3>a[tuiIconButton]</h3>
-<p>
-    <a
-        tuiIconButton
-        type="button"
-        class="tui-space_right-3 tui-space_bottom-3"
-        [icon]="icon"
-        [routerLink]="['/tui-dropdown']"
-    ></a>
-
-    <a
-        icon="tuiIconSearch"
-        tuiIconButton
-        type="button"
-        class="tui-space_right-3 tui-space_bottom-3"
-        [disabled]="true"
-        [routerLink]="[]"
-        [tuiFocusable]="false"
-    ></a>
-
-    <a
-        tuiIconButton
-        type="button"
-        class="tui-space_right-3 tui-space_bottom-3"
-        [routerLink]="[]"
-        [showLoader]="true"
-        [tuiFocusable]="false"
-    ></a>
-
-    <a
-        tuiIconButton
-        type="button"
-        [icon]="loader4"
-        [routerLink]="[]"
-        [tuiFocusable]="false"
-    ></a>
-    <ng-template #loader4>
-        <tui-loader
-            size="s"
-            [inheritColor]="true"
-            [showLoader]="true"
-            [style.height.px]="30"
-            [style.width.px]="30"
-        />
-    </ng-template>
-</p>
+<button
+    size="xs"
+    tuiButton
+>
+    Extra small
+</button>

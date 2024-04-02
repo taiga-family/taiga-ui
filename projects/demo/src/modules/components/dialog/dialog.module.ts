@@ -11,7 +11,7 @@ import {
 import {TuiElasticStickyModule} from '@taiga-ui/addon-mobile';
 import {TuiAutoFocusDirective} from '@taiga-ui/cdk';
 import {
-    TuiButtonModule,
+    TuiButtonDirective,
     TuiDialogModule,
     TuiHintModule,
     TuiLinkModule,
@@ -54,7 +54,7 @@ import {TuiDialogExampleComponent10} from './examples/10';
         TuiDialogModule,
         TuiAccordionModule,
         TuiAmountPipe,
-        TuiButtonModule,
+        TuiButtonDirective,
         TuiRadioListComponent,
         TuiInputModule,
         TuiHintModule,
