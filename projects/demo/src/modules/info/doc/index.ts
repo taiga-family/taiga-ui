@@ -5,9 +5,8 @@ import {TuiLinkModule} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
-    selector: 'ssr',
     imports: [TuiDocPageModule, TuiLinkModule],
-    templateUrl: './ssr.template.html',
+    templateUrl: './index.html',
     changeDetection,
 })
-export default class SsrComponent {}
+export default class PageComponent {}

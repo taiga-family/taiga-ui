@@ -10,7 +10,6 @@ import {TuiTabsModule} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    selector: 'disable-animation',
     imports: [
         NgForOf,
         TuiDocDocumentationModule,
@@ -20,11 +19,11 @@ import {TuiTabsModule} from '@taiga-ui/kit';
         TuiAddonDocModule,
         NgIf,
     ],
-    templateUrl: './disable-animation.template.html',
-    styleUrls: ['./disable-animation.style.less'],
+    templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class DisableAnimationComponent {
+export default class PageComponent {
     protected readonly cypress = import('./examples/cypress.md?raw');
     protected readonly playwright = import('./examples/playwright.md?raw');
 }

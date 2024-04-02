@@ -10,11 +10,10 @@ export const TUI_HOME_COMPONENT = tuiCreateToken(HomeComponent);
 
 @Component({
     standalone: true,
-    selector: 'getting-started',
     imports: [TuiDocPageModule, NgComponentOutlet],
-    templateUrl: './getting-started.template.html',
+    templateUrl: './index.html',
     changeDetection,
 })
-export default class GettingStartedComponent {
+export default class PageComponent {
     protected readonly component = inject(TUI_HOME_COMPONENT);
 }

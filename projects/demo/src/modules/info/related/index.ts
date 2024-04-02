@@ -4,20 +4,17 @@ import {TuiDocPageModule} from '@taiga-ui/addon-doc';
 import {TuiLinkModule} from '@taiga-ui/core';
 import {TuiActionModule, TuiIslandModule} from '@taiga-ui/kit';
 
-import {
-    SCREENSHOT_BOT_LINK,
-    SCREENSHOT_BOT_NAME,
-} from '../testing/screenshot-github-bot/screenshot-github-bot.component';
+import {SCREENSHOT_BOT_LINK, SCREENSHOT_BOT_NAME} from '../testing/screenshot-github-bot';
 
 @Component({
     standalone: true,
     selector: 'related',
     imports: [TuiDocPageModule, TuiIslandModule, TuiActionModule, TuiLinkModule],
-    templateUrl: './related.template.html',
-    styleUrls: ['./related.style.less'],
+    templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     changeDetection,
 })
-export default class RelatedComponent {
+export default class PageComponent {
     protected readonly screenshotBotName = SCREENSHOT_BOT_NAME;
     protected readonly screenshotBotLink = SCREENSHOT_BOT_LINK;
 }

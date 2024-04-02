@@ -6,12 +6,11 @@ import {TuiPortalsExample1} from './examples/1';
 
 @Component({
     standalone: true,
-    selector: 'portals',
     imports: [TuiAddonDocModule, TuiPortalsExample1],
-    templateUrl: './portals.template.html',
+    templateUrl: './index.html',
     changeDetection,
 })
-export default class PortalsComponent {
+export default class PageComponent {
     protected host = import('./examples/setup/create-host.md?raw');
     protected service = import('./examples/setup/create-service.md?raw');
     protected insert = import('./examples/setup/insert-host.md?raw');

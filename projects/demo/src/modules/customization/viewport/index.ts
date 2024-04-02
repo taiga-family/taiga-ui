@@ -7,12 +7,11 @@ import {TuiViewportExample2} from './examples/2';
 
 @Component({
     standalone: true,
-    selector: 'example-tui-viewport',
     imports: [TuiAddonDocModule, TuiViewportExample1, TuiViewportExample2],
-    templateUrl: './viewport.template.html',
+    templateUrl: './index.html',
     changeDetection,
 })
-export default class ExampleTuiViewportComponent {
+export default class PageComponent {
     protected readonly providers = import('./examples/import/providers.md?raw');
 
     protected readonly example1: TuiDocExample = {

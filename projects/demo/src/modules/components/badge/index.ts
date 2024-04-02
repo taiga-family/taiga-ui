@@ -23,7 +23,6 @@ import {TuiBadgeExample6} from './examples/6';
 
 @Component({
     standalone: true,
-    selector: 'example-badge',
     imports: [
         TuiExamplePipe,
         TuiBadgeDirective,
@@ -46,10 +45,10 @@ import {TuiBadgeExample6} from './examples/6';
         TuiDocDemoModule,
         TuiDocDocumentationModule,
     ],
-    templateUrl: './badge.template.html',
+    templateUrl: './index.html',
     changeDetection,
 })
-export default class ExampleTuiBadgeComponent {
+export default class PageComponent {
     protected readonly exampleModule: TuiRawLoaderContent = import(
         './examples/import/import-module.md?raw'
     );

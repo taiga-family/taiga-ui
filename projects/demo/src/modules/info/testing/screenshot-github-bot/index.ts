@@ -7,10 +7,9 @@ export const SCREENSHOT_BOT_LINK = 'https://github.com/apps/lumberjack-bot';
 
 @Component({
     standalone: true,
-    selector: 'screenshot-github-bot',
     imports: [TuiDocPageModule, TuiLinkModule],
-    templateUrl: './screenshot-github-bot.template.html',
-    styleUrls: ['./screenshot-github-bot.style.less'],
+    templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class ScreenshotGithubBotComponent {

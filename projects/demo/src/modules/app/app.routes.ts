@@ -1,122 +1,111 @@
-import {NgModule} from '@angular/core';
 import type {Routes} from '@angular/router';
-import {RouterModule} from '@angular/router';
 import {tuiProvideRoutePageTab as route} from '@taiga-ui/addon-doc';
 
 export const ROUTES: Routes = [
     route({
         path: '',
         title: 'A powerful set of open source components for Angular',
-        loadComponent: async () => import('./landing/landing.component'),
+        loadComponent: async () => import('./landing'),
     }),
     // Documentation
     route({
         path: 'getting-started',
         title: 'Getting started',
-        loadComponent: async () => import('./getting-started/getting-started.component'),
+        loadComponent: async () => import('./getting-started'),
     }),
     route({
         path: 'browser-support',
         title: 'Browser support',
-        loadComponent: async () => import('../info/browsers/browsers.component'),
+        loadComponent: async () => import('../info/browsers'),
     }),
     route({
         path: 'changelog',
         title: 'Changelog',
-        loadComponent: async () => import('../info/changelog/changelog.component'),
+        loadComponent: async () => import('../info/changelog'),
     }),
     route({
         path: 'ssr',
         title: 'Server Side Rendering (SSR)',
-        loadComponent: async () => import('../info/ssr/ssr.component'),
+        loadComponent: async () => import('../info/ssr'),
     }),
     route({
         path: 'tui-doc',
         title: 'Documentation engine',
-        loadComponent: async () => import('../info/doc/doc.component'),
+        loadComponent: async () => import('../info/doc'),
     }),
     route({
         path: 'related',
         title: 'Taiga UI family',
-        loadComponent: async () => import('../info/related/related.component'),
+        loadComponent: async () => import('../info/related'),
     }),
     route({
         path: 'testing/jest',
         title: 'Jest',
-        loadComponent: async () => import('../info/testing/jest/jest.component'),
+        loadComponent: async () => import('../info/testing/jest'),
     }),
     route({
         path: 'testing/disable-animation',
         title: 'Disable animation',
-        loadComponent: async () =>
-            import('../info/testing/disable-animation/disable-animation.component'),
+        loadComponent: async () => import('../info/testing/disable-animation'),
     }),
     route({
         path: 'testing/screenshot-bot',
         title: 'Our screenshot bot',
-        loadComponent: async () =>
-            import(
-                '../info/testing/screenshot-github-bot/screenshot-github-bot.component'
-            ),
+        loadComponent: async () => import('../info/testing/screenshot-github-bot'),
     }),
     // Customization
     route({
         path: 'i18n',
         title: 'I18n',
-        loadComponent: async () => import('../customization/i18n/i18n.component'),
+        loadComponent: async () => import('../customization/i18n'),
     }),
     route({
         path: 'variables',
         title: 'Variables',
-        loadComponent: async () =>
-            import('../customization/variables/variables.component'),
+        loadComponent: async () => import('../customization/variables'),
     }),
     route({
         path: 'wrapper',
         title: 'Wrapper',
-        loadComponent: async () => import('../customization/wrapper/wrapper.component'),
+        loadComponent: async () => import('../customization/wrapper'),
     }),
     route({
         path: 'dialog/custom',
         title: 'Custom',
-        loadComponent: async () => import('../customization/dialogs/dialogs.component'),
+        loadComponent: async () => import('../customization/dialogs'),
     }),
     route({
         path: 'dialog/routable',
         title: 'Routable',
-        loadComponent: async () =>
-            import('../customization/routable/eager/routable-dialog.component'),
-        loadChildren: async () =>
-            import('../customization/routable/eager/routable-dialog.routes'),
+        loadComponent: async () => import('../customization/routable/eager'),
+        loadChildren: async () => import('../customization/routable/eager/routes'),
     }),
     route({
         path: 'dialog/lazy-routable',
         title: 'LazyRoutable',
-        loadComponent: async () =>
-            import('../customization/routable/lazy/lazy-routable-dialog.component'),
-        loadChildren: async () =>
-            import('../customization/routable/lazy/lazy-routable-dialog.routes'),
+        loadComponent: async () => import('../customization/routable/lazy'),
+        loadChildren: async () => import('../customization/routable/lazy/routes'),
     }),
     route({
         path: 'portals',
         title: 'Portals',
-        loadComponent: async () => import('../customization/portals/portals.component'),
+        loadComponent: async () => import('../customization/portals'),
     }),
     route({
         path: 'viewport',
         title: 'Viewport',
-        loadComponent: async () => import('../customization/viewport/viewport.component'),
+        loadComponent: async () => import('../customization/viewport'),
     }),
     // COMPONENTS
     route({
         path: 'components/accordion',
         title: 'Accordion',
-        loadComponent: async () => import('../components/accordion/accordion.component'),
+        loadComponent: async () => import('../components/accordion'),
     }),
     route({
         path: 'components/action',
         title: 'Action',
-        loadComponent: async () => import('../components/action/action.component'),
+        loadComponent: async () => import('../components/action'),
     }),
     route({
         path: 'components/avatar',
@@ -125,7 +114,7 @@ export const ROUTES: Routes = [
     }),
     route({
         path: 'components/badge',
-        loadComponent: async () => import('../components/badge/badge.component'),
+        loadComponent: async () => import('../components/badge'),
         title: 'Badge',
     }),
     {
@@ -1813,15 +1802,3 @@ export const ROUTES: Routes = [
         redirectTo: '',
     },
 ];
-
-@NgModule({
-    imports: [
-        RouterModule.forRoot(ROUTES, {
-            scrollPositionRestoration: 'enabled',
-            anchorScrolling: 'enabled',
-            scrollOffset: [0, 64],
-        }),
-    ],
-    exports: [RouterModule],
-})
-export class AppRoutingModule {}

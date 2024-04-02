@@ -10,12 +10,11 @@ import {TuiDialogsExample1} from './examples/1';
 
 @Component({
     standalone: true,
-    selector: 'dialogs',
     imports: [TuiDocPageModule, TuiDocExampleModule, TuiDialogsExample1],
-    templateUrl: './dialogs.template.html',
+    templateUrl: './index.html',
     changeDetection,
 })
-export default class DialogsComponent {
+export default class PageComponent {
     protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),

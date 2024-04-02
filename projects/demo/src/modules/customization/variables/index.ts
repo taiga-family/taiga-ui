@@ -15,7 +15,6 @@ import {TuiVariablesExample1} from './examples/1';
 
 @Component({
     standalone: true,
-    selector: 'variables',
     imports: [
         TuiDocPageModule,
         NgForOf,
@@ -27,10 +26,10 @@ import {TuiVariablesExample1} from './examples/1';
         TuiDocExampleModule,
         TuiVariablesExample1,
     ],
-    templateUrl: './variables.template.html',
+    templateUrl: './index.html',
     changeDetection,
 })
-export default class VariablesComponent {
+export default class PageComponent {
     protected readonly example1: TuiDocExample = {
         HTML: import('./examples/1/index.html?raw'),
         LESS: import('./examples/1/index.less?raw'),
