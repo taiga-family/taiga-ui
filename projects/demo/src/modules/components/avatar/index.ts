@@ -12,7 +12,7 @@ import {TuiAvatarComponent} from '@taiga-ui/kit';
     templateUrl: './index.html',
     changeDetection,
 })
-export default class ExampleComponent {
+export default class PageComponent {
     private readonly sanitizer = inject(DomSanitizer);
 
     protected readonly examples = [

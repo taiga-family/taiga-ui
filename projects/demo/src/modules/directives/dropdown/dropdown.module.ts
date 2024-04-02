@@ -5,7 +5,7 @@ import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiActiveZoneDirective, TuiObscuredDirective} from '@taiga-ui/cdk';
 import {
-    TuiButtonModule,
+    TuiButtonDirective,
     TuiDropdownModule,
     TuiLinkModule,
     TuiNotificationModule,
@@ -34,7 +34,7 @@ import {TuiDropdownExample5} from './examples/5';
         PolymorpheusModule,
         TuiLinkModule,
         TuiAvatarComponent,
-        TuiButtonModule,
+        TuiButtonDirective,
         TuiDropdownModule,
         TuiCardModule,
         TuiSurfaceModule,

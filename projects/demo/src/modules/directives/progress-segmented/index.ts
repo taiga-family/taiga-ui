@@ -9,7 +9,7 @@ import {TuiProgressModule} from '@taiga-ui/kit';
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class ExampleComponent {
+export default class PageComponent {
     protected value = 3;
     protected max = 5;
     protected segments = this.max;

@@ -5,6 +5,7 @@ import {tuiGetDocModules} from '@taiga-ui/addon-doc';
 import {TuiRepeatTimesModule} from '@taiga-ui/cdk';
 import {
     TuiAppearanceDirective,
+    TuiButtonDirective,
     TuiDataListModule,
     TuiDropdownModule,
     TuiExpandModule,
@@ -14,7 +15,6 @@ import {
     TuiTitleDirective,
 } from '@taiga-ui/core';
 import {
-    TuiButtonModule,
     TuiCardModule,
     TuiNavigationModule,
     TuiSurfaceModule,
@@ -43,7 +43,7 @@ import {ExampleTuiNavigationComponent} from './navigation.component';
         TuiNotificationModule,
         TuiNavigationModule,
         TuiAvatarComponent,
-        TuiButtonModule,
+        TuiButtonDirective,
         TuiIconComponent,
         TuiBadgeDirective,
         TuiBadgeNotificationComponent,

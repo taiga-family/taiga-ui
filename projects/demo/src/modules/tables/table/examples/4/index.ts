@@ -12,7 +12,6 @@ import {
     tuiIsPresent,
     tuiToInt,
 } from '@taiga-ui/cdk';
-import {TUI_ARROW} from '@taiga-ui/kit';
 import type {Observable} from 'rxjs';
 import {
     BehaviorSubject,
@@ -126,8 +125,6 @@ export class TuiTableExample4 {
     protected columns = ['name', 'dob', 'age'];
 
     protected search = '';
-
-    protected readonly arrow = TUI_ARROW;
 
     protected readonly loading$ = this.request$.pipe(map(tuiIsFalsy));
 

@@ -1,18 +1,41 @@
 <button
+    appearance="accent"
     tuiButton
-    tuiDropdownLimitWidth="fixed"
-    tuiDropdownOpen
-    type="button"
-    [iconRight]="arrow"
-    [tuiDropdown]="dropdown"
 >
-    Where could I find such an arrow...?
+    <tui-avatar
+        size="xs"
+        src="https://avatars.githubusercontent.com/u/11832552"
+    />
+    Alex Inkin
 </button>
-<ng-template #dropdown>
-    <div class="content">
-        Use
-        <code>TuiArrowModule</code>
-        from
-        <code>&#64;taiga-ui/kit</code>
-    </div>
-</ng-template>
+
+<button
+    appearance="secondary"
+    size="m"
+    tuiButton
+>
+    <tui-icon
+        icon="tuiIconUsers"
+        [style.height.rem]="1"
+    />
+    Users
+</button>
+
+<button
+    appearance="outline"
+    iconRight="tuiIconChevronDown"
+    size="s"
+    tuiButton
+>
+    More
+</button>
+
+<button
+    appearance="destructive"
+    iconLeft="tuiIconHeart"
+    size="xs"
+    tuiIconButton
+    [style.border-radius.%]="100"
+>
+    Favorite
+</button>

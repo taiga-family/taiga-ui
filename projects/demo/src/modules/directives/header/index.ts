@@ -13,7 +13,7 @@ import {TuiAddonDocModule, tuiDocExampleOptionsProvider} from '@taiga-ui/addon-d
     changeDetection,
     providers: [tuiDocExampleOptionsProvider({fullsize: true})],
 })
-export default class ExampleComponent {
+export default class PageComponent {
     protected readonly import: TuiRawLoaderContent = import(
         './examples/import/import-module.md?raw'
     );

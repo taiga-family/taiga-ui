@@ -5,7 +5,7 @@ import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiRepeatTimesModule} from '@taiga-ui/cdk';
 import {
-    TuiButtonModule,
+    TuiButtonDirective,
     TuiDialogModule,
     TuiLinkModule,
     TuiLoaderModule,
@@ -33,7 +33,7 @@ import {TuiCarouselExample5} from './examples/5';
         TuiPaginationModule,
         TuiNotificationModule,
         TuiLinkModule,
-        TuiButtonModule,
+        TuiButtonDirective,
         TuiIslandModule,
         TuiAmountPipe,
         TuiLoaderModule,

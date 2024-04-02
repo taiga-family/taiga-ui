@@ -7,13 +7,14 @@ import {TuiRippleModule} from '@taiga-ui/addon-mobile';
 import {TuiRepeatTimesModule} from '@taiga-ui/cdk';
 import {
     TuiAppearanceDirective,
+    TuiButtonDirective,
     TuiLabelModule,
     TuiLinkModule,
     TuiModeModule,
     TuiNotificationModule,
     TuiScrollbarComponent,
 } from '@taiga-ui/core';
-import {TuiButtonModule, TuiSurfaceModule} from '@taiga-ui/experimental';
+import {TuiSurfaceModule} from '@taiga-ui/experimental';
 import {TuiAvatarComponent, TuiBadgeDirective} from '@taiga-ui/kit';
 
 import {TuiSurfaceExample1} from './examples/1';
@@ -35,7 +36,7 @@ import {ExampleTuiSurfaceComponent} from './surface.component';
         TuiRepeatTimesModule,
         TuiBadgeDirective,
         TuiScrollbarComponent,
-        TuiButtonModule,
+        TuiButtonDirective,
         TuiLinkModule,
         TuiAvatarComponent,
         TuiLabelModule,

@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
-import {TuiButtonModule} from '@taiga-ui/core';
+import {TuiButtonDirective} from '@taiga-ui/core';
 import {TuiInputModule} from '@taiga-ui/kit';
 
 import {ExampleTuiPureComponent} from './pure.component';
@@ -15,7 +15,7 @@ import {ExampleTuiPureGetterComponent} from './pure-getter.component';
         CommonModule,
         FormsModule,
         TuiInputModule,
-        TuiButtonModule,
+        TuiButtonDirective,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiPureComponent)),
     ],

@@ -195,9 +195,33 @@ export const pages: TuiDocPages = [
     },
     {
         section: 'Components',
-        title: 'Button',
-        keywords: 'кнопка, button, icon-button, иконка',
-        route: '/components/button',
+        title: 'Buttons',
+        subPages: [
+            {
+                section: 'Components',
+                title: 'Button',
+                keywords: 'кнопка, button, icon-button, иконка',
+                route: '/components/button',
+            },
+            {
+                section: 'Components',
+                title: 'ButtonVertical',
+                keywords: 'кнопка, button, vertical-button, вертикальная',
+                route: '/components/button-vertical',
+            },
+            {
+                section: 'Components',
+                title: 'ButtonClose',
+                keywords: 'кнопка, button, close, закрыть',
+                route: '/components/button-close',
+            },
+            {
+                section: 'Components',
+                title: 'ButtonGroup',
+                keywords: 'кнопка, button, group, группа',
+                route: '/components/button-group',
+            },
+        ],
     },
     {
         section: 'Components',
@@ -842,36 +866,6 @@ export const pages: TuiDocPages = [
         route: '/icons/overview/Component',
     },
     // Experimental
-    {
-        section: 'Experimental',
-        title: 'Button',
-        subPages: [
-            {
-                section: 'Experimental',
-                title: 'Button ',
-                keywords: 'кнопка, button, icon-button, иконка',
-                route: '/experimental/button',
-            },
-            {
-                section: 'Experimental',
-                title: 'ButtonVertical',
-                keywords: 'кнопка, button, vertical-button, вертикальная',
-                route: '/experimental/button-vertical',
-            },
-            {
-                section: 'Experimental',
-                title: 'ButtonClose',
-                keywords: 'кнопка, button, close, закрыть',
-                route: '/experimental/button-close',
-            },
-            {
-                section: 'Experimental',
-                title: 'ButtonGroup',
-                keywords: 'кнопка, button, group, группа',
-                route: '/experimental/button-group',
-            },
-        ],
-    },
     {
         section: 'Layout',
         title: 'BlockDetails',

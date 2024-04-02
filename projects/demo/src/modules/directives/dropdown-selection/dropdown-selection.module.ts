@@ -4,7 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
-    TuiButtonModule,
+    TuiButtonDirective,
     TuiDataListModule,
     TuiDropdownModule,
     TuiInitialsPipe,
@@ -23,7 +23,7 @@ import {TuiDropdownSelectionExample2} from './examples/2';
         FormsModule,
         PolymorpheusModule,
         TuiDropdownModule,
-        TuiButtonModule,
+        TuiButtonDirective,
         TuiTextareaModule,
         TuiAvatarComponent,
         TuiDataListModule,

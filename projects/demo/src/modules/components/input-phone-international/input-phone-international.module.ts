@@ -4,7 +4,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
-    TuiButtonModule,
+    TuiButtonDirective,
     TuiDropdownModule,
     TuiHintModule,
     TuiNotificationModule,
@@ -31,7 +31,7 @@ import {ExampleTuiInputPhoneInternationalComponent} from './input-phone-internat
         TuiDropdownModule,
         TuiHintModule,
         TuiAddonDocModule,
-        TuiButtonModule,
+        TuiButtonDirective,
         TuiSortCountriesPipeModule,
         TuiNotificationModule,
         RouterModule.forChild(

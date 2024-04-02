@@ -23,11 +23,11 @@ import type {TuiDataListHost} from '@taiga-ui/core';
 import {
     tuiAppearanceOptionsProvider,
     tuiAsDataListHost,
+    TuiButtonDirective,
     TuiDropdownOpenDirective,
     tuiDropdownOptionsProvider,
     TuiIconsDirective,
 } from '@taiga-ui/core';
-import {TuiButtonModule} from '@taiga-ui/experimental/components/button';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import {EMPTY} from 'rxjs';
@@ -47,7 +47,7 @@ export interface TuiTextfieldContext<T> extends TuiContext<T> {
         CommonModule,
         ResizeObserverModule,
         TuiTextfieldDirective,
-        TuiButtonModule,
+        TuiButtonDirective,
         PolymorpheusModule,
     ],
     templateUrl: './textfield.template.html',

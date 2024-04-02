@@ -4,7 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiAutoFocusDirective} from '@taiga-ui/cdk';
 import {
-    TuiButtonModule,
+    TuiButtonDirective,
     TuiDataListModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
@@ -21,7 +21,7 @@ import {DialogExampleComponent} from './dialog-example.component';
     imports: [
         CommonModule,
         FormsModule,
-        TuiButtonModule,
+        TuiButtonDirective,
         TuiSelectModule,
         TuiInputModule,
         TuiAmountPipe,

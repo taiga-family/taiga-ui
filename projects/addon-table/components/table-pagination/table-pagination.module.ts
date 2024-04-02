@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {
-    TuiButtonModule,
+    TuiButtonDirective,
     TuiDataListModule,
     TuiDropdownModule,
     TuiLinkModule,
@@ -14,7 +14,7 @@ import {TuiTablePaginationComponent} from './table-pagination.component';
 @NgModule({
     imports: [
         CommonModule,
-        TuiButtonModule,
+        TuiButtonDirective,
         TuiLinkModule,
         TuiDropdownModule,
         TuiDataListModule,

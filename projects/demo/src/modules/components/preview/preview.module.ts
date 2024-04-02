@@ -5,7 +5,7 @@ import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiPreviewModule} from '@taiga-ui/addon-preview';
 import {TuiSwipeModule} from '@taiga-ui/cdk';
 import {
-    TuiButtonModule,
+    TuiButtonDirective,
     TuiLoaderModule,
     TuiNotificationModule,
     TuiSvgModule,
@@ -21,7 +21,7 @@ import {ExampleTuiPreviewComponent} from './preview.component';
     imports: [
         CommonModule,
         PolymorpheusModule,
-        TuiButtonModule,
+        TuiButtonDirective,
         TuiPreviewModule,
         TuiNotificationModule,
         TuiAddonDocModule,

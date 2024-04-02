@@ -7,7 +7,7 @@ import {TuiAmountPipe, TuiThumbnailCardModule} from '@taiga-ui/addon-commerce';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiAutoFocusDirective, TuiLetModule, TuiMapperPipeModule} from '@taiga-ui/cdk';
 import {
-    TuiButtonModule,
+    TuiButtonDirective,
     TuiDataListModule,
     TuiDropdownModule,
     TuiHintModule,
@@ -61,7 +61,7 @@ import {ExampleTuiSelectComponent} from './select.component';
         TuiSelectModule,
         TuiThumbnailCardModule,
         TuiRadioListComponent,
-        TuiButtonModule,
+        TuiButtonDirective,
         TuiLinkModule,
         TuiAvatarComponent,
         TuiSvgModule,

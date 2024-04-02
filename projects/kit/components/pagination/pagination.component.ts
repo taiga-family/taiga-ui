@@ -17,20 +17,12 @@ import type {
 import {
     AbstractTuiInteractive,
     EMPTY_QUERY,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
     tuiAsFocusableItemAccessor,
     tuiClamp,
     tuiIsNativeFocusedIn,
 } from '@taiga-ui/cdk';
-import type {
-    TuiBrightness,
-    TuiButtonComponent,
-    TuiHorizontalDirection,
-    TuiSizeL,
-    TuiSizeS,
-    TuiSizeXS,
-} from '@taiga-ui/core';
-import {TUI_SPIN_ICONS, TuiAppearance, TuiModeDirective} from '@taiga-ui/core';
+import type {TuiHorizontalDirection, TuiSizeL, TuiSizeS, TuiSizeXS} from '@taiga-ui/core';
+import {TUI_SPIN_ICONS, TuiModeDirective} from '@taiga-ui/core';
 import {TUI_PAGINATION_TEXTS} from '@taiga-ui/kit/tokens';
 import {tuiHorizontalDirectionToNumber} from '@taiga-ui/kit/utils/math';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
@@ -50,8 +42,8 @@ export class TuiPaginationComponent
     extends AbstractTuiInteractive
     implements TuiFocusableElementAccessor
 {
-    @ViewChildren('element', {read: TUI_FOCUSABLE_ITEM_ACCESSOR})
-    private readonly els: QueryList<TuiFocusableElementAccessor> = EMPTY_QUERY;
+    @ViewChildren('element', {read: ElementRef})
+    private readonly els: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
     private readonly modeDirective = inject(TuiModeDirective, {optional: true});
@@ -120,8 +112,8 @@ export class TuiPaginationComponent
         }
 
         return (
-            this.els.find((_, index) => index === activeElementIndex)
-                ?.nativeFocusableElement ?? null
+            this.els.find((_, index) => index === activeElementIndex)?.nativeElement ??
+            null
         );
     }
 
@@ -192,45 +184,38 @@ export class TuiPaginationComponent
         );
     }
 
-    protected getElementMode(index: number): TuiAppearance {
-        return this.index === index ? TuiAppearance.Primary : TuiAppearance.Flat;
-    }
+    protected getElementMode(index: number): string {
+        const fallback = this.size === 's' ? 'secondary' : 'flat';
 
-    protected getSmallElementMode(
-        index: number,
-        mode: TuiBrightness | null,
-    ): TuiAppearance {
-        return this.index === index && mode !== 'onLight'
-            ? TuiAppearance.Primary
-            : TuiAppearance.Secondary;
+        return this.index === index ? 'primary' : fallback;
     }
 
     protected onElementClick(index: number): void {
         this.updateIndex(index);
     }
 
-    protected onElementKeyDownArrowLeft(element: TuiButtonComponent): void {
-        if (element === this.els.first) {
+    protected onElementKeyDownArrowLeft(element: HTMLElement): void {
+        if (element === this.els.first.nativeElement) {
             return;
         }
 
-        const previous = this.els.find((_, index, array) => array[index + 1] === element);
+        const previous = this.els.find(
+            (_, index, array) => array[index + 1].nativeElement === element,
+        );
 
-        if (previous?.nativeFocusableElement) {
-            previous.nativeFocusableElement.focus();
-        }
+        previous?.nativeElement.focus();
     }
 
-    protected onElementKeyDownArrowRight(element: TuiButtonComponent): void {
-        if (element === this.els.last) {
+    protected onElementKeyDownArrowRight(element: HTMLElement): void {
+        if (element === this.els.last.nativeElement) {
             return;
         }
 
-        const next = this.els.find((_, index, array) => array[index - 1] === element);
+        const next = this.els.find(
+            (_, index, array) => array[index - 1].nativeElement === element,
+        );
 
-        if (next?.nativeFocusableElement) {
-            next.nativeFocusableElement.focus();
-        }
+        next?.nativeElement.focus();
     }
 
     protected onArrowClick(direction: TuiHorizontalDirection): void {

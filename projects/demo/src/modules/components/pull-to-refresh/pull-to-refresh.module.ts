@@ -4,7 +4,7 @@ import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiPullToRefreshModule} from '@taiga-ui/addon-mobile';
 import {
-    TuiButtonModule,
+    TuiButtonDirective,
     TuiNotificationModule,
     TuiScrollbarComponent,
 } from '@taiga-ui/core';
@@ -17,7 +17,7 @@ import {ExampleTuiPullToRefreshComponent} from './pull-to-refresh.component';
     imports: [
         CommonModule,
         TuiPullToRefreshModule,
-        TuiButtonModule,
+        TuiButtonDirective,
         TuiNotificationModule,
         TuiScrollbarComponent,
         TuiAddonDocModule,

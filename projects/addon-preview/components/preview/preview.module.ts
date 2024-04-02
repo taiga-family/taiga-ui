@@ -5,7 +5,7 @@ import {MutationObserverModule} from '@ng-web-apis/mutation-observer';
 import {ResizeObserverModule} from '@ng-web-apis/resize-observer';
 import {TuiDragModule, TuiPanModule, TuiZoomModule} from '@taiga-ui/cdk';
 import {
-    TuiButtonModule,
+    TuiButtonDirective,
     TuiHintModule,
     TuiLoaderModule,
     TuiSvgModule,
@@ -26,7 +26,7 @@ import {TuiPreviewZoomComponent} from './zoom/preview-zoom.component';
         PolymorpheusModule,
         MutationObserverModule,
         ResizeObserverModule,
-        TuiButtonModule,
+        TuiButtonDirective,
         FormsModule,
         TuiSliderModule,
         TuiHintModule,

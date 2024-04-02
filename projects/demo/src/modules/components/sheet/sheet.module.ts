@@ -6,7 +6,7 @@ import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiElasticStickyModule, TuiSheetModule} from '@taiga-ui/addon-mobile';
 import {
-    TuiButtonModule,
+    TuiButtonDirective,
     TuiLabelModule,
     TuiLinkModule,
     TuiNotificationModule,
@@ -24,7 +24,7 @@ import {ExampleTuiSheetComponent} from './sheet.component';
 @NgModule({
     imports: [
         CommonModule,
-        TuiButtonModule,
+        TuiButtonDirective,
         TuiLabelModule,
         TuiAvatarComponent,
         TuiNotificationModule,

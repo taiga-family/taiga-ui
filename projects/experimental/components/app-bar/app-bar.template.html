@@ -1,0 +1,13 @@
+<div #side>
+    <ng-content select="[tuiSlot='left']" />
+</div>
+<div
+    tuiFade
+    class="t-content"
+    [style.--t-sides.px]="width$ | async"
+>
+    <ng-content />
+</div>
+<div #side>
+    <ng-content select="[tuiSlot='right']" />
+</div>

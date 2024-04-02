@@ -2,7 +2,7 @@ import {Component, inject} from '@angular/core';
 import {Router} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAlertService, TuiButtonModule} from '@taiga-ui/core';
+import {TuiAlertService, TuiButtonDirective} from '@taiga-ui/core';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import {switchMap, takeUntil} from 'rxjs';
 
@@ -11,7 +11,7 @@ import {AlertExampleWithDataComponent} from './alert-example-with-data/alert-exa
 @Component({
     standalone: true,
     selector: 'tui-alerts-example-4',
-    imports: [AlertExampleWithDataComponent, TuiButtonModule],
+    imports: [AlertExampleWithDataComponent, TuiButtonDirective],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

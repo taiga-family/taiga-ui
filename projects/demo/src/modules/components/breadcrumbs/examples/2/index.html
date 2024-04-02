@@ -2,13 +2,14 @@
     <button
         *tuiItem
         appearance="secondary"
-        icon="tuiIconMoreHorizontal"
+        iconLeft="tuiIconMoreHorizontal"
         size="xs"
-        title="More"
         tuiDropdownOpen
         tuiIconButton
         [tuiDropdown]="content"
-    ></button>
+    >
+        More
+    </button>
     <ng-template #content>
         <tui-data-list>
             <a

@@ -1,19 +1,14 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAppearance, tuiButtonOptionsProvider} from '@taiga-ui/core';
+import {TuiButtonDirective, tuiButtonOptionsProvider} from '@taiga-ui/core';
 
 @Component({
-    selector: 'tui-button-example-5',
+    standalone: true,
+    imports: [TuiButtonDirective],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
-    providers: [
-        tuiButtonOptionsProvider({
-            shape: 'rounded',
-            appearance: TuiAppearance.Outline,
-            size: 'm',
-        }),
-    ],
+    providers: [tuiButtonOptionsProvider({size: 's'})],
 })
-export class TuiButtonExample5 {}
+export default class ExampleComponent {}

@@ -12,7 +12,7 @@ test.describe('Dialogs', () => {
             await page.setViewportSize({width, height});
             await tuiGoto(
                 page,
-                'components/confirm/API?no=Very%20Long%20long%20text&yes=Long%20long%20text',
+                'components/confirm/API?no=Very%20Long%20long%20long%20text&yes=Long%20long%20text',
             );
 
             const documentationPagePO = new TuiDocumentationPagePO(page);

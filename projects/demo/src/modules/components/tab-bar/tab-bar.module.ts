@@ -4,7 +4,11 @@ import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiTabBarModule} from '@taiga-ui/addon-mobile';
-import {TuiButtonModule, TuiDropdownModule, TuiNotificationModule} from '@taiga-ui/core';
+import {
+    TuiButtonDirective,
+    TuiDropdownModule,
+    TuiNotificationModule,
+} from '@taiga-ui/core';
 import {TuiLabelDirective} from '@taiga-ui/experimental';
 import {TuiCheckboxComponent} from '@taiga-ui/kit';
 
@@ -19,7 +23,7 @@ import {ExampleTuiTabBarComponent} from './tab-bar.component';
         CommonModule,
         FormsModule,
         TuiDropdownModule,
-        TuiButtonModule,
+        TuiButtonDirective,
         TuiNotificationModule,
         TuiTabBarModule,
         TuiAddonDocModule,

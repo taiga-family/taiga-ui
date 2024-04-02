@@ -6,7 +6,7 @@ import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiActiveZoneDirective, TuiFilterPipeModule, TuiLetModule} from '@taiga-ui/cdk';
 import {
-    TuiButtonModule,
+    TuiButtonDirective,
     TuiCalendarModule,
     TuiDataListModule,
     TuiDropdownModule,
@@ -17,7 +17,6 @@ import {
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {
-    TuiArrowModule,
     TuiDataListDropdownManagerModule,
     TuiInputDateRangeModule,
     TuiInputModule,
@@ -44,13 +43,12 @@ import {TuiDataListExample6} from './examples/6';
         TuiPrimitiveTextfieldModule,
         TuiSelectModule,
         TuiTextfieldControllerModule,
-        TuiArrowModule,
         TuiNotificationModule,
         TuiDataListModule,
         TuiDataListDropdownManagerModule,
         TuiSvgModule,
         TuiDropdownModule,
-        TuiButtonModule,
+        TuiButtonDirective,
         TuiDropdownModule,
         TuiActiveZoneDirective,
         TuiAddonDocModule,

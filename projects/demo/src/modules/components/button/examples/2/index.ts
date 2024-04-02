@@ -1,11 +1,14 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiButtonDirective} from '@taiga-ui/core';
 
 @Component({
-    selector: 'tui-button-example-2',
+    standalone: true,
+    imports: [TuiButtonDirective],
     templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiButtonExample2 {}
+export default class ExampleComponent {}

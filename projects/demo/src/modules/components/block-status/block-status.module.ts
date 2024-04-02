@@ -6,7 +6,7 @@ import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiPlatformModule} from '@taiga-ui/cdk';
 import {
     TuiAutoColorPipe,
-    TuiButtonModule,
+    TuiButtonDirective,
     TuiInitialsPipe,
     TuiLinkModule,
 } from '@taiga-ui/core';
@@ -28,7 +28,7 @@ import {TuiBlockStatusExample5} from './examples/5';
         FormsModule,
         ReactiveFormsModule,
         TuiAddonDocModule,
-        TuiButtonModule,
+        TuiButtonDirective,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiBlockStatusComponent)),
         TuiPlatformModule,
         TuiAvatarComponent,

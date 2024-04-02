@@ -7,6 +7,7 @@ export * from '@taiga-ui/kit/components/badge-notification';
 export * from '@taiga-ui/kit/components/badged-content';
 export * from '@taiga-ui/kit/components/block';
 export * from '@taiga-ui/kit/components/breadcrumbs';
+export * from '@taiga-ui/kit/components/button-loading';
 export * from '@taiga-ui/kit/components/calendar-month';
 export * from '@taiga-ui/kit/components/calendar-range';
 export * from '@taiga-ui/kit/components/carousel';

@@ -10,27 +10,27 @@
                 type="button"
                 class="t-button"
                 [disabled]="arrowIsDisabledLeft"
-                [focusable]="false"
-                [icon]="icons.decrement"
+                [iconLeft]="icons.decrement"
                 [size]="buttonSize"
-                [title]="texts[0]"
+                [tuiFocusable]="false"
                 (click)="onArrowClick('left')"
                 (mousedown.silent.prevent)="(0)"
-            ></button>
+            >
+                {{ texts[0] }}
+            </button>
             <ng-container *tuiRepeatTimes="let elementIndex of elementsLength">
                 <ng-container *tuiLet="getItemIndexByElementIndex(elementIndex) as index">
                     <button
                         *ngIf="index !== null; else dotsTemplate"
                         #element
                         automation-id="tui-pagination__element"
-                        shape="square"
                         tuiButton
                         type="button"
                         class="t-button"
                         [appearance]="getElementMode(index)"
                         [disabled]="disabled"
-                        [focusable]="elementIsFocusable(index)"
                         [size]="buttonSize"
+                        [tuiFocusable]="elementIsFocusable(index)"
                         (click)="onElementClick(index)"
                         (keydown.arrowLeft.prevent)="onElementKeyDownArrowLeft(element)"
                         (keydown.arrowRight.prevent)="onElementKeyDownArrowRight(element)"
@@ -47,27 +47,26 @@
                 type="button"
                 class="t-button"
                 [disabled]="arrowIsDisabledRight"
-                [focusable]="false"
-                [icon]="icons.increment"
+                [iconLeft]="icons.increment"
                 [size]="buttonSize"
-                [title]="texts[1]"
+                [tuiFocusable]="false"
                 (click)="onArrowClick('right')"
                 (mousedown.silent.prevent)="(0)"
-            ></button>
+            >
+                {{ texts[1] }}
+            </button>
         </ng-container>
     </ng-container>
     <ng-template #smallButtons>
         <button
             *tuiRepeatTimes="let indexItem of length"
             #element
-            shape="square"
             tuiButton
             type="button"
             class="t-button t-button_small"
-            [appearance]="getSmallElementMode(indexItem, mode$ | async)"
-            [class.t-button_active]="indexItem === index"
+            [appearance]="getElementMode(indexItem)"
             [disabled]="disabled"
-            [focusable]="elementIsFocusable(indexItem)"
+            [tuiFocusable]="elementIsFocusable(indexItem)"
             (click)="onElementClick(indexItem)"
             (keydown.arrowLeft.prevent)="onElementKeyDownArrowLeft(element)"
             (keydown.arrowRight.prevent)="onElementKeyDownArrowRight(element)"

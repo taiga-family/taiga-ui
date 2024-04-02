@@ -13,15 +13,16 @@
     </div>
     <button
         appearance=""
-        shape="rounded"
         size="s"
         tuiIconButton
         type="button"
         class="t-close"
-        [icon]="icons.close"
-        [title]="closeWord$ | async"
+        [iconLeft]="icons.close"
+        [style.border-radius.%]="100"
         (click)="context.$implicit.complete()"
-    ></button>
+    >
+        {{ closeWord$ | async }}
+    </button>
 </header>
 <section class="t-content">
     <!-- TODO: Polymorpheus fix type -->
