@@ -7,7 +7,13 @@ import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import {TuiReorderComponent} from './reorder.component';
 
 @NgModule({
-    imports: [CommonModule, TuiSvgModule, TuiButtonDirective, TuiTilesModule, PolymorpheusModule],
+    imports: [
+        CommonModule,
+        TuiSvgModule,
+        TuiButtonDirective,
+        TuiTilesModule,
+        PolymorpheusModule,
+    ],
     declarations: [TuiReorderComponent],
     exports: [TuiReorderComponent],
 })
