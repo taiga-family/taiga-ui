@@ -1,7 +1,6 @@
 import {Directive, Inject} from '@angular/core';
 import {EMPTY_CLIENT_RECT, tuiPure} from '@taiga-ui/cdk';
 import {
-    tuiAsPositionAccessor,
     tuiFallbackRectAccessor,
     TuiPositionAccessor,
     TuiRectAccessor,
@@ -13,8 +12,7 @@ import {TuiDropdownDirective} from './dropdown.directive';
 import {TUI_DROPDOWN_OPTIONS, TuiDropdownOptions} from './dropdown-options.directive';
 
 @Directive({
-    selector: '[tuiDropdown]:not([tuiDropdownCustomPosition]):not([tuiDropdownSided])',
-    providers: [tuiAsPositionAccessor(TuiDropdownPositionDirective)],
+    selector: '[tuiDropdown]',
 })
 export class TuiDropdownPositionDirective extends TuiPositionAccessor {
     private previous?: TuiVerticalDirection;
@@ -78,6 +76,9 @@ export class TuiDropdownPositionDirective extends TuiPositionAccessor {
 
     @tuiPure
     get accessor(): TuiRectAccessor {
-        return tuiFallbackRectAccessor('dropdown')(this.accessors, this.directive);
+        return tuiFallbackRectAccessor<TuiRectAccessor>('dropdown')(
+            this.accessors,
+            this.directive,
+        );
     }
 }

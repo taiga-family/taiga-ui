@@ -1,4 +1,6 @@
-import {ExistingProvider, FactoryProvider, SkipSelf, Type} from '@angular/core';
+import {ExistingProvider, FactoryProvider, Optional, SkipSelf, Type} from '@angular/core';
+
+import {tuiFallbackAccessor} from './accessors';
 
 // TODO: Rename to getBoundingClientRect to match the DOM API
 // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -13,18 +15,12 @@ export function tuiRectAccessorFor(
 ): FactoryProvider {
     return {
         provide: TuiRectAccessor,
-        deps: [[new SkipSelf(), TuiRectAccessor], fallback],
-        useFactory: tuiFallbackRectAccessor(type),
+        deps: [[new SkipSelf(), new Optional(), TuiRectAccessor], fallback],
+        useFactory: tuiFallbackAccessor<TuiRectAccessor>(type),
     };
 }
 
-export function tuiFallbackRectAccessor(
-    type: string,
-): (accessors: readonly TuiRectAccessor[], fallback: TuiRectAccessor) => TuiRectAccessor {
-    return (accessors, fallback) =>
-        accessors.find(accessor => accessor !== fallback && accessor.type === type) ||
-        fallback;
-}
+export const tuiFallbackRectAccessor = tuiFallbackAccessor;
 
 export function tuiAsRectAccessor(useExisting: Type<TuiRectAccessor>): ExistingProvider {
     return {

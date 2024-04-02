@@ -37,6 +37,7 @@ import {map, takeUntil} from 'rxjs/operators';
 import {TuiHintDirective} from './hint.directive';
 import {TuiHintHoverDirective} from './hint-hover.directive';
 import {TuiHintPointerDirective} from './hint-pointer.directive';
+import {TuiHintPositionDirective} from './hint-position.directive';
 
 const GAP = 4;
 
@@ -55,7 +56,7 @@ const GAP = 4;
         TuiDestroyService,
         TuiPositionService,
         TuiHoveredService,
-        tuiPositionAccessorFor('hint'),
+        tuiPositionAccessorFor('hint', TuiHintPositionDirective),
         tuiRectAccessorFor('hint', TuiHintDirective),
     ],
     animations: [tuiFadeIn],

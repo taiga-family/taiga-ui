@@ -25,6 +25,7 @@ import {map, takeUntil} from 'rxjs/operators';
 import {TuiDropdownDirective} from './dropdown.directive';
 import {TuiDropdownHoverDirective} from './dropdown-hover.directive';
 import {TUI_DROPDOWN_OPTIONS, TuiDropdownOptions} from './dropdown-options.directive';
+import {TuiDropdownPositionDirective} from './dropdown-position.directive';
 
 /**
  * @description:
@@ -41,7 +42,7 @@ import {TUI_DROPDOWN_OPTIONS, TuiDropdownOptions} from './dropdown-options.direc
     providers: [
         TuiDestroyService,
         TuiPositionService,
-        tuiPositionAccessorFor('dropdown'),
+        tuiPositionAccessorFor('dropdown', TuiDropdownPositionDirective),
         tuiRectAccessorFor('dropdown', TuiDropdownDirective),
         MODE_PROVIDER,
     ],
