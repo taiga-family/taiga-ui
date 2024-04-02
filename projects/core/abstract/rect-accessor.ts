@@ -1,4 +1,4 @@
-import {ExistingProvider, FactoryProvider, SkipSelf, Type} from '@angular/core';
+import {ExistingProvider, FactoryProvider, Optional, SkipSelf, Type} from '@angular/core';
 
 import {tuiFallbackAccessor} from './accessors';
 
@@ -15,7 +15,7 @@ export function tuiRectAccessorFor(
 ): FactoryProvider {
     return {
         provide: TuiRectAccessor,
-        deps: [[new SkipSelf(), TuiRectAccessor], fallback],
+        deps: [[new SkipSelf(), new Optional(), TuiRectAccessor], fallback],
         useFactory: tuiFallbackAccessor<TuiRectAccessor>(type),
     };
 }

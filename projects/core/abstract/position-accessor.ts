@@ -1,4 +1,4 @@
-import {ExistingProvider, FactoryProvider, SkipSelf, Type} from '@angular/core';
+import {ExistingProvider, FactoryProvider, Optional, SkipSelf, Type} from '@angular/core';
 import {TuiPoint} from '@taiga-ui/core/types';
 
 import {tuiFallbackAccessor} from './accessors';
@@ -17,8 +17,8 @@ export function tuiPositionAccessorFor(
     return {
         provide: TuiPositionAccessor,
         deps: fallback
-            ? [[new SkipSelf(), TuiPositionAccessor], fallback]
-            : [[new SkipSelf(), TuiPositionAccessor]],
+            ? [[new SkipSelf(), new Optional(), TuiPositionAccessor], fallback]
+            : [[new SkipSelf(), new Optional(), TuiPositionAccessor]],
         useFactory: tuiFallbackAccessor<TuiPositionAccessor>(type),
     };
 }
