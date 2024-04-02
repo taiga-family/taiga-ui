@@ -9,7 +9,11 @@ import {
     TuiNotificationModule,
 } from '@taiga-ui/core';
 import {TuiTextfieldModule, TuiTooltipModule} from '@taiga-ui/experimental';
-import {TuiDataListWrapperModule, TuiFilterByInputPipeModule} from '@taiga-ui/kit';
+import {
+    TuiChevronDirective,
+    TuiDataListWrapperModule,
+    TuiFilterByInputPipeModule,
+} from '@taiga-ui/kit';
 
 import {TuiTextfieldExample1} from './examples/1';
 import {TuiTextfieldExample2} from './examples/2';
@@ -29,6 +33,7 @@ import {ExampleTuiTextfieldComponent} from './textfield.component';
         tuiGetDocModules(ExampleTuiTextfieldComponent),
         TuiDataListWrapperModule,
         TuiFilterByInputPipeModule,
+        TuiChevronDirective,
     ],
     declarations: [
         ExampleTuiTextfieldComponent,

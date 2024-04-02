@@ -18,10 +18,6 @@ export class TuiDropdownOpenExample4 {
 
     protected readonly items = ['Drafts', 'In Progress', 'Completed'];
 
-    protected get appearance(): string {
-        return this.length ? 'whiteblock-active' : 'whiteblock';
-    }
-
     protected get length(): number {
         return this.value.length || 0;
     }

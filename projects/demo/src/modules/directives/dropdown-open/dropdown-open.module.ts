@@ -12,6 +12,7 @@ import {
     TuiSvgModule,
 } from '@taiga-ui/core';
 import {
+    TuiChevronDirective,
     TuiDataListWrapperModule,
     TuiInputModule,
     TuiMultiSelectModule,
@@ -45,6 +46,7 @@ import {TopRightDirective} from './examples/5/accessor';
         TuiMultiSelectModule,
         DropdownDocumentationModule,
         tuiGetDocModules(ExampleTuiDropdownOpenComponent),
+        TuiChevronDirective,
     ],
     declarations: [
         TuiDropdownOpenExample1,

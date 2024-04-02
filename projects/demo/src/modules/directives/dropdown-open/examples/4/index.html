@@ -1,20 +1,22 @@
 <form [formGroup]="form">
     <button
+        appearance="whiteblock"
         tuiButton
         type="button"
-        [appearance]="appearance"
+        [class._checked]="length"
         [tuiDropdown]="dropdown"
         [(tuiDropdownOpen)]="open"
         (keydown.delete)="form.reset()"
     >
         {{ text }}
-        <!--TODO: TUI_ARROW migration-->
         <button
             appearance="icon"
             size="xs"
+            tabindex="-1"
+            tuiChevron
             tuiIconButton
             type="reset"
-            [iconLeft]="length ? 'tuiIconClose' : 'tuiIconChevronDown'"
+            [iconLeft]="length ? 'tuiIconClose' : ''"
             (mousedown.silent.prevent)="(0)"
         ></button>
     </button>
