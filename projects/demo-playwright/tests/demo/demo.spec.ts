@@ -12,7 +12,7 @@ test.describe('Demo', () => {
 
             await tuiMockImages(page);
             await tuiGoto(page, path);
-            await documentation.networkidle();
+            await documentation.waitStableState();
 
             await expect(async () => {
                 const examples = await page.locator('tui-doc-example').all();
@@ -32,7 +32,7 @@ test.describe('Demo', () => {
                 }
 
                 await example.scrollIntoViewIfNeeded();
-                await documentation.networkidle(); // note: load lazy loading images
+                await documentation.waitStableState(); // note: load lazy loading images
 
                 await expect(example).toHaveScreenshot(
                     [path.replace('/', '').replaceAll('/', '-'), `${i + 1}.png`],

@@ -23,7 +23,7 @@ test.describe('Code blocks', () => {
             const locator = page.locator(`#basic [tuiTab]:has-text("${title}")`);
 
             await locator.click();
-            await documentation.networkidle();
+            await documentation.waitStableState();
 
             await expect(page.locator('tui-doc-example#basic')).toHaveScreenshot(
                 `02-0${index + 1}-code-block-${title}.png`,

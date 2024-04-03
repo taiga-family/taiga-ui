@@ -27,7 +27,7 @@ test.describe('Deep / Toggle', () => {
                 await expect(toggle).toBeVisible();
                 await toggle.click();
                 await api.hideNotifications();
-                await api.networkidle();
+                await api.waitStableState();
 
                 await expect(api.apiPageExample).toHaveScreenshot(
                     `deep-${path}__${name}-toggled.png`,
