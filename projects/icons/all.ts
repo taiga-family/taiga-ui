@@ -18,6 +18,9 @@ const tuiIconActivityOutline =
 const tuiIconAddRowLarge =
     '<svg width="1.5em" height="1.5em" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1.5em" height="1.5em" x="50%" y="50%" fill="none" overflow="visible" viewBox="0 0 24 24"><svg x="-12" y="-12" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" fill-rule="evenodd" d="M5.15 1a1 1 0 0 0-2 0v2H1a1 1 0 0 0 0 2h2.15v2a1 1 0 0 0 2 0V5H7a1 1 0 0 0 0-2H5.15zm6.545 2a1 1 0 0 0 0 2H20v6.5H3a1 1 0 0 0-1 1V20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zM4 13.5h16V20H4z" clip-rule="evenodd" vector-effect="non-scaling-stroke"/></svg></svg></g></svg>';
 
+const tuiIconAddRowOutline =
+    '<svg width="1.5em" height="1.5em" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1.5em" height="1.5em" x="50%" y="50%" fill="none" overflow="visible" viewBox="0 0 24 24"><svg x="-12" y="-12" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" fill-rule="evenodd" d="M5.15 1a1 1 0 0 0-2 0v2H1a1 1 0 0 0 0 2h2.15v2a1 1 0 0 0 2 0V5H7a1 1 0 0 0 0-2H5.15zm6.545 2a1 1 0 0 0 0 2H20v6.5H3a1 1 0 0 0-1 1V20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zM4 13.5h16V20H4z" clip-rule="evenodd" vector-effect="non-scaling-stroke"/></svg></svg></g></svg>';
+
 const tuiIconAirplay =
     '<svg width="1em" height="1em" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1em" height="1em" x="50%" y="50%" overflow="visible" viewBox="0 0 16 16"><svg x="-8" y="-8"><svg width="16" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 17H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-1"/><path d="m12 15 5 6H7z"/></svg></svg></svg></g></svg>';
 
@@ -474,6 +477,9 @@ const tuiIconCheckCircle =
 const tuiIconCheckCircleLarge =
     '<svg width="1.5em" height="1.5em" focusable="false" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1.5em" height="1.5em" x="50%" y="50%" fill="none" overflow="visible" viewBox="0 0 24 24"><svg x="-12" y="-12" xmlns="http://www.w3.org/2000/svg"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10" vector-effect="non-scaling-stroke"/><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m15.5 9.5-4.5 5-2.5-2.273" vector-effect="non-scaling-stroke"/></svg></svg></g></svg>';
 
+const tuiIconCheckCircleOutline =
+    '<svg width="1.5em" height="1.5em" focusable="false" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1.5em" height="1.5em" x="50%" y="50%" fill="none" overflow="visible" viewBox="0 0 24 24"><svg x="-12" y="-12" xmlns="http://www.w3.org/2000/svg"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10" vector-effect="non-scaling-stroke"/><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m15.5 9.5-4.5 5-2.5-2.273" vector-effect="non-scaling-stroke"/></svg></svg></g></svg>';
+
 const tuiIconCheckLarge =
     '<svg width="1.5em" height="1.5em" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1.5em" height="1.5em" x="50%" y="50%" overflow="visible" viewBox="0 0 24 24"><svg x="-12" y="-12"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 6 9 17l-5-5" vector-effect="non-scaling-stroke"/></svg></svg></svg></g></svg>';
 
@@ -586,6 +592,9 @@ const tuiIconCirrus =
     '<svg preserveAspectRatio="xMidYMid meet" style="width:inherit;height:inherit" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg x="50%" y="50%" overflow="visible" preserveAspectRatio="xMidYMid meet" style="width:inherit;height:inherit" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><svg x="-16" y="-16"><svg viewBox="0 0 500 500"><path fill="#2271ce" d="M200.7 132.6h98.7V310h-98.7z" vector-effect="non-scaling-stroke"/><path fill="#005eb6" d="M206.9 221.3c0-36 16.8-68 43.1-88.7-19.2-15.1-43.4-24.1-69.7-24.1-62.3 0-112.8 50.5-112.8 112.8S118 334.1 180.3 334.1c26.3 0 50.5-9 69.7-24.1-26.2-20.7-43.1-52.7-43.1-88.7" vector-effect="non-scaling-stroke"/><path fill="#0099df" d="M432.5 221.3c0 62.3-50.5 112.8-112.8 112.8-26.3 0-50.5-9-69.7-24.1 26.2-20.7 43.1-52.7 43.1-88.7s-16.8-68-43.1-88.7c19.2-15.1 43.4-24.1 69.7-24.1 62.3 0 112.8 50.5 112.8 112.8" vector-effect="non-scaling-stroke"/><path fill="currentColor" d="M326.6 363.2c-3.1-2.1-7.5-3.1-12.2-3.1-7.6 0-12.5 3.6-12.5 9.6 0 4.9 3.6 7.9 10.3 8.8l3.1.4c3.6.5 5.3 1.4 5.3 3.1 0 2.3-2.4 3.6-6.8 3.6-4.5 0-7.8-1.4-10-3.1l-3.1 5.1c3.6 2.6 8.1 3.9 13 3.9 8.6 0 13.7-4.1 13.7-9.8 0-5.3-3.9-8-10.5-9l-3.1-.4c-2.8-.4-5.1-.9-5.1-2.9 0-2.2 2.1-3.5 5.7-3.5 3.8 0 7.5 1.4 9.3 2.6zm-153.9 12.6c0 9.1 6.3 15.7 16 15.7 4.5 0 7.5-1 10.8-3.6l-3.1-5.3q-3.6 2.7-7.8 2.7c-5.2-.1-9-3.8-9-9.6s3.8-9.5 9-9.6q4.2 0 7.8 2.7l3.1-5.3c-3.3-2.6-6.3-3.6-10.8-3.6-9.7.1-16 6.8-16 15.9m62.8-15.7c-3.8 0-6.2 1.8-7.9 4.4v-3.6h-6.4v29.9h6.5V374c0-4.9 2.1-7.7 6.4-7.7 1.3 0 2.7.2 4.1.8l2-6.1c-1.5-.7-3.4-.9-4.7-.9m24.2 0c-3.8 0-6.2 1.8-7.9 4.4v-3.6h-6.4v29.9h6.5V374c0-4.9 2.1-7.7 6.4-7.7 1.3 0 2.7.2 4.1.8l2-6.1c-1.5-.7-3.4-.9-4.7-.9M214 390.7h-6.6v-29.9h6.6zm-3.3-44.8c.6 0 1.2.1 1.8.4.6.2 1 .6 1.5 1 .4.4.7.9 1 1.5.2.6.4 1.2.4 1.8s-.1 1.2-.4 1.8c-.2.6-.6 1-1 1.5q-.6.6-1.5.9t-1.8.3-1.8-.3c-.6-.2-1-.5-1.5-.9q-.6-.6-.9-1.5t-.3-1.8.3-1.8c.2-.6.5-1 .9-1.5.4-.4.9-.7 1.5-1s1.2-.4 1.8-.4m86 32.2c0 2.4-.4 4.4-1.2 6.1s-1.8 3.1-3.1 4.2-2.7 1.9-4.4 2.4c-1.6.5-3.3.8-5.1.8-1.7 0-3.4-.3-5.1-.8-1.6-.5-3.1-1.3-4.4-2.4s-2.3-2.5-3.1-4.2-1.2-3.7-1.2-6.1v-17.2h6.5v16.6c0 1.4.2 2.7.6 3.7q.6 1.5 1.5 2.4c.6.6 1.4 1.1 2.3 1.4s1.8.4 2.8.4 2-.1 2.8-.4 1.6-.7 2.3-1.4q1.05-.9 1.5-2.4c.4-1 .6-2.2.6-3.7v-16.6h6.5v17.2z" vector-effect="non-scaling-stroke"/></svg></svg></svg></g></svg>';
 
 const tuiIconClearFormatLarge =
+    '<svg width="1.5em" height="1.5em" focusable="false" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1.5em" height="1.5em" x="50%" y="50%" fill="none" overflow="visible" viewBox="0 0 24 24"><svg x="-12" y="-12" xmlns="http://www.w3.org/2000/svg"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m17 17 3 3m3 3-3-3m0 0-3 3m3-3 3-3M7 21v-9.5M17 3H7v8.5m0 0h6.5" vector-effect="non-scaling-stroke"/></svg></svg></g></svg>';
+
+const tuiIconClearFormatOutline =
     '<svg width="1.5em" height="1.5em" focusable="false" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1.5em" height="1.5em" x="50%" y="50%" fill="none" overflow="visible" viewBox="0 0 24 24"><svg x="-12" y="-12" xmlns="http://www.w3.org/2000/svg"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m17 17 3 3m3 3-3-3m0 0-3 3m3-3 3-3M7 21v-9.5M17 3H7v8.5m0 0h6.5" vector-effect="non-scaling-stroke"/></svg></svg></g></svg>';
 
 const tuiIconClipboard =
@@ -712,6 +721,9 @@ const tuiIconCollapse =
     '<svg width="1em" height="1em" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1em" height="1em" x="50%" y="50%" overflow="visible" viewBox="0 0 16 16"><svg x="-8" y="-8"><svg width="16" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 14h6v6M20 10h-6V4M14 10l7-7M3 21l7-7" vector-effect="non-scaling-stroke"/></svg></svg></svg></g></svg>';
 
 const tuiIconColorLarge =
+    '<svg width="1.5em" height="1.5em" focusable="false" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1.5em" height="1.5em" x="50%" y="50%" fill="none" overflow="visible" viewBox="0 0 24 24"><svg x="-12" y="-12" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M0 18h24v4H0z" vector-effect="non-scaling-stroke"/><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 15 1.667-3.84M17 15l-1.667-3.84m0 0L12 3l-3.333 8.16m6.666 0H8.667" vector-effect="non-scaling-stroke"/></svg></svg></g></svg>';
+
+const tuiIconColorOutline =
     '<svg width="1.5em" height="1.5em" focusable="false" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1.5em" height="1.5em" x="50%" y="50%" fill="none" overflow="visible" viewBox="0 0 24 24"><svg x="-12" y="-12" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M0 18h24v4H0z" vector-effect="non-scaling-stroke"/><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 15 1.667-3.84M17 15l-1.667-3.84m0 0L12 3l-3.333 8.16m6.666 0H8.667" vector-effect="non-scaling-stroke"/></svg></svg></g></svg>';
 
 const tuiIconColumns =
@@ -1200,7 +1212,13 @@ const tuiIconFolderPlusOutline =
 const tuiIconFontLarge =
     '<svg width="1.5em" height="1.5em" focusable="false" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1.5em" height="1.5em" x="50%" y="50%" fill="none" overflow="visible" viewBox="0 0 24 24"><svg x="-12" y="-12" xmlns="http://www.w3.org/2000/svg"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 21V3H2h14M18.5 21V10H15h7" vector-effect="non-scaling-stroke"/></svg></svg></g></svg>';
 
+const tuiIconFontOutline =
+    '<svg width="1.5em" height="1.5em" focusable="false" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1.5em" height="1.5em" x="50%" y="50%" fill="none" overflow="visible" viewBox="0 0 24 24"><svg x="-12" y="-12" xmlns="http://www.w3.org/2000/svg"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 21V3H2h14M18.5 21V10H15h7" vector-effect="non-scaling-stroke"/></svg></svg></g></svg>';
+
 const tuiIconFormatLarge =
+    '<svg width="1.5em" height="1.5em" focusable="false" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1.5em" height="1.5em" x="50%" y="50%" fill="none" overflow="visible" viewBox="0 0 24 24"><svg x="-12" y="-12" xmlns="http://www.w3.org/2000/svg"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m3 21.5 3-9M18 4H9l-3 8.5m0 0h7.5M14 21.5V19l6-6 2.5 2.5-6.5 6z" vector-effect="non-scaling-stroke"/></svg></svg></g></svg>';
+
+const tuiIconFormatOutline =
     '<svg width="1.5em" height="1.5em" focusable="false" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1.5em" height="1.5em" x="50%" y="50%" fill="none" overflow="visible" viewBox="0 0 24 24"><svg x="-12" y="-12" xmlns="http://www.w3.org/2000/svg"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m3 21.5 3-9M18 4H9l-3 8.5m0 0h7.5M14 21.5V19l6-6 2.5 2.5-6.5 6z" vector-effect="non-scaling-stroke"/></svg></svg></g></svg>';
 
 const tuiIconFrameLarge =
@@ -1377,6 +1395,9 @@ const tuiIconHideLarge =
 const tuiIconHiliteLarge =
     '<svg width="1.5em" height="1.5em" focusable="false" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1.5em" height="1.5em" x="50%" y="50%" fill="none" stroke="none" overflow="visible" viewBox="0 0 24 24"><svg x="-12" y="-12" xmlns="http://www.w3.org/2000/svg"><path fill="#E7E8EA" fill-rule="evenodd" d="M0 18h4v4H0z" clip-rule="evenodd" vector-effect="non-scaling-stroke"/><path fill="#CBCFD3" fill-rule="evenodd" d="M4 18h4v4H4z" clip-rule="evenodd" vector-effect="non-scaling-stroke"/><path fill="#E7E8EA" fill-rule="evenodd" d="M8 18h4v4H8z" clip-rule="evenodd" vector-effect="non-scaling-stroke"/><path fill="#CBCFD3" fill-rule="evenodd" d="M12 18h4v4h-4z" clip-rule="evenodd" vector-effect="non-scaling-stroke"/><path fill="#E7E8EA" fill-rule="evenodd" d="M16 18h4v4h-4z" clip-rule="evenodd" vector-effect="non-scaling-stroke"/><path fill="#CBCFD3" fill-rule="evenodd" d="M20 18h4v4h-4z" clip-rule="evenodd" vector-effect="non-scaling-stroke"/><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.182 16H5l2.727-4L10 13.714zM9 7.5 15.667 1 19 4l-4.762 8M9 7.5l5.238 4.5M9 7.5 7 11l4 3.5 3.238-2.5" vector-effect="non-scaling-stroke"/></svg></svg></g></svg>';
 
+const tuiIconHiliteOutline =
+    '<svg width="1.5em" height="1.5em" focusable="false" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1.5em" height="1.5em" x="50%" y="50%" fill="none" stroke="none" overflow="visible" viewBox="0 0 24 24"><svg x="-12" y="-12" xmlns="http://www.w3.org/2000/svg"><path fill="#E7E8EA" fill-rule="evenodd" d="M0 18h4v4H0z" clip-rule="evenodd" vector-effect="non-scaling-stroke"/><path fill="#CBCFD3" fill-rule="evenodd" d="M4 18h4v4H4z" clip-rule="evenodd" vector-effect="non-scaling-stroke"/><path fill="#E7E8EA" fill-rule="evenodd" d="M8 18h4v4H8z" clip-rule="evenodd" vector-effect="non-scaling-stroke"/><path fill="#CBCFD3" fill-rule="evenodd" d="M12 18h4v4h-4z" clip-rule="evenodd" vector-effect="non-scaling-stroke"/><path fill="#E7E8EA" fill-rule="evenodd" d="M16 18h4v4h-4z" clip-rule="evenodd" vector-effect="non-scaling-stroke"/><path fill="#CBCFD3" fill-rule="evenodd" d="M20 18h4v4h-4z" clip-rule="evenodd" vector-effect="non-scaling-stroke"/><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.182 16H5l2.727-4L10 13.714zM9 7.5 15.667 1 19 4l-4.762 8M9 7.5l5.238 4.5M9 7.5 7 11l4 3.5 3.238-2.5" vector-effect="non-scaling-stroke"/></svg></svg></g></svg>';
+
 const tuiIconHome =
     '<svg width="1em" height="1em" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1em" height="1em" x="50%" y="50%" overflow="visible" viewBox="0 0 16 16"><svg x="-8" y="-8"><svg width="16" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></svg></svg></g></svg>';
 
@@ -1387,6 +1408,9 @@ const tuiIconHomeOutline =
     '<svg width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" vector-effect="non-scaling-stroke"/><path d="M9 22V12h6v10" vector-effect="non-scaling-stroke"/></svg>';
 
 const tuiIconHrLarge =
+    '<svg width="1.5em" height="1.5em" focusable="false" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1.5em" height="1.5em" x="50%" y="50%" fill="none" overflow="visible" viewBox="0 0 24 24"><svg x="-12" y="-12" xmlns="http://www.w3.org/2000/svg"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12H3" vector-effect="non-scaling-stroke"/></svg></svg></g></svg>';
+
+const tuiIconHrOutline =
     '<svg width="1.5em" height="1.5em" focusable="false" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1.5em" height="1.5em" x="50%" y="50%" fill="none" overflow="visible" viewBox="0 0 24 24"><svg x="-12" y="-12" xmlns="http://www.w3.org/2000/svg"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12H3" vector-effect="non-scaling-stroke"/></svg></svg></g></svg>';
 
 const tuiIconHumo =
@@ -1414,6 +1438,9 @@ const tuiIconInboxOutline =
     '<svg width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22 12h-6l-2 3h-4l-2-3H2" vector-effect="non-scaling-stroke"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11" vector-effect="non-scaling-stroke"/></svg>';
 
 const tuiIconIndentLarge =
+    '<svg width="1.5em" height="1.5em" focusable="false" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1.5em" height="1.5em" x="50%" y="50%" fill="none" overflow="visible" viewBox="0 0 24 24"><svg x="-12" y="-12" xmlns="http://www.w3.org/2000/svg"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 10H9M21 6H2.5M2 9.5l3 2.4-3 2.4M21 14H9M11 18H3" vector-effect="non-scaling-stroke"/></svg></svg></g></svg>';
+
+const tuiIconIndentOutline =
     '<svg width="1.5em" height="1.5em" focusable="false" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1.5em" height="1.5em" x="50%" y="50%" fill="none" overflow="visible" viewBox="0 0 24 24"><svg x="-12" y="-12" xmlns="http://www.w3.org/2000/svg"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 10H9M21 6H2.5M2 9.5l3 2.4-3 2.4M21 14H9M11 18H3" vector-effect="non-scaling-stroke"/></svg></svg></g></svg>';
 
 const tuiIconInfo =
@@ -1827,6 +1854,9 @@ const tuiIconNavigationOutline =
 const tuiIconOLLarge =
     '<svg width="1.5em" height="1.5em" focusable="false" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1.5em" height="1.5em" x="50%" y="50%" fill="none" overflow="visible" viewBox="0 0 24 24"><svg x="-12" y="-12" xmlns="http://www.w3.org/2000/svg"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 6h13" vector-effect="non-scaling-stroke"/><path fill="currentColor" d="M3.125 5.451v2.005h1.159V4H3.253q-.051.329-.277.474-.225.146-.692.147v.83zM4.292 10.079a1.8 1.8 0 0 0-.752-.143q-.691 0-1.071.321-.38.32-.376.911H3.21q0-.21.093-.321a.3.3 0 0 1 .248-.11c.071-.004.14.02.195.066a.23.23 0 0 1 .07.18.3.3 0 0 1-.098.218 1 1 0 0 1-.24.175 15 15 0 0 1-.458.233q-.537.26-.754.616-.218.355-.218.927 0 .12.01.24h2.99v-.877H3.35a.3.3 0 0 1 .068-.135.7.7 0 0 1 .193-.133 4 4 0 0 1 .415-.177q.451-.171.689-.414t.237-.643a.93.93 0 0 0-.17-.546 1.14 1.14 0 0 0-.49-.388M4.29 16.054a2.2 2.2 0 0 0-.76-.118q-.695 0-1.085.323-.39.322-.39.892h1.09a.44.44 0 0 1 .1-.305q.1-.11.29-.11.155 0 .237.072a.26.26 0 0 1 .083.203.25.25 0 0 1-.107.21.48.48 0 0 1-.293.08h-.12v.77h.08q.24 0 .352.077.114.078.113.238 0 .13-.09.205a.38.38 0 0 1-.25.075q-.195 0-.297-.11-.103-.11-.103-.33H2q0 .605.398.923.397.317 1.147.317.44 0 .767-.13t.508-.37.18-.56a.75.75 0 0 0-.148-.48q-.147-.185-.472-.29v-.01q.305-.11.44-.285a.7.7 0 0 0 .135-.445.8.8 0 0 0-.172-.508 1.1 1.1 0 0 0-.493-.334" vector-effect="non-scaling-stroke"/><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h13M8 18h13" vector-effect="non-scaling-stroke"/></svg></svg></g></svg>';
 
+const tuiIconOLOutline =
+    '<svg width="1.5em" height="1.5em" focusable="false" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1.5em" height="1.5em" x="50%" y="50%" fill="none" overflow="visible" viewBox="0 0 24 24"><svg x="-12" y="-12" xmlns="http://www.w3.org/2000/svg"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 6h13" vector-effect="non-scaling-stroke"/><path fill="currentColor" d="M3.125 5.451v2.005h1.159V4H3.253q-.051.329-.277.474-.225.146-.692.147v.83zM4.292 10.079a1.8 1.8 0 0 0-.752-.143q-.691 0-1.071.321-.38.32-.376.911H3.21q0-.21.093-.321a.3.3 0 0 1 .248-.11c.071-.004.14.02.195.066a.23.23 0 0 1 .07.18.3.3 0 0 1-.098.218 1 1 0 0 1-.24.175 15 15 0 0 1-.458.233q-.537.26-.754.616-.218.355-.218.927 0 .12.01.24h2.99v-.877H3.35a.3.3 0 0 1 .068-.135.7.7 0 0 1 .193-.133 4 4 0 0 1 .415-.177q.451-.171.689-.414t.237-.643a.93.93 0 0 0-.17-.546 1.14 1.14 0 0 0-.49-.388M4.29 16.054a2.2 2.2 0 0 0-.76-.118q-.695 0-1.085.323-.39.322-.39.892h1.09a.44.44 0 0 1 .1-.305q.1-.11.29-.11.155 0 .237.072a.26.26 0 0 1 .083.203.25.25 0 0 1-.107.21.48.48 0 0 1-.293.08h-.12v.77h.08q.24 0 .352.077.114.078.113.238 0 .13-.09.205a.38.38 0 0 1-.25.075q-.195 0-.297-.11-.103-.11-.103-.33H2q0 .605.398.923.397.317 1.147.317.44 0 .767-.13t.508-.37.18-.56a.75.75 0 0 0-.148-.48q-.147-.185-.472-.29v-.01q.305-.11.44-.285a.7.7 0 0 0 .135-.445.8.8 0 0 0-.172-.508 1.1 1.1 0 0 0-.493-.334" vector-effect="non-scaling-stroke"/><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h13M8 18h13" vector-effect="non-scaling-stroke"/></svg></svg></g></svg>';
+
 const tuiIconOctagon =
     '<svg width="1em" height="1em" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1em" height="1em" x="50%" y="50%" overflow="visible" viewBox="0 0 16 16"><svg x="-8" y="-8"><svg width="16" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7.86 2h8.28L22 7.86v8.28L16.14 22H7.86L2 16.14V7.86z"/></svg></svg></svg></g></svg>';
 
@@ -1839,6 +1869,9 @@ const tuiIconOctagonOutline =
 const tuiIconOutdentLarge =
     '<svg width="1.5em" height="1.5em" focusable="false" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1.5em" height="1.5em" x="50%" y="50%" fill="none" overflow="visible" viewBox="0 0 24 24"><svg x="-12" y="-12" xmlns="http://www.w3.org/2000/svg"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 10H9M21 6H2.5M5 9.5l-3 2.4 3 2.4M21 14H9M11 18H3" vector-effect="non-scaling-stroke"/></svg></svg></g></svg>';
 
+const tuiIconOutdentOutline =
+    '<svg width="1.5em" height="1.5em" focusable="false" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1.5em" height="1.5em" x="50%" y="50%" fill="none" overflow="visible" viewBox="0 0 24 24"><svg x="-12" y="-12" xmlns="http://www.w3.org/2000/svg"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 10H9M21 6H2.5M5 9.5l-3 2.4 3 2.4M21 14H9M11 18H3" vector-effect="non-scaling-stroke"/></svg></svg></g></svg>';
+
 const tuiIconPackage =
     '<svg width="1em" height="1em" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1em" height="1em" x="50%" y="50%" overflow="visible" viewBox="0 0 16 16"><svg x="-8" y="-8"><svg width="16" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m16.5 9.4-9-5.19M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16"/><path d="M3.27 6.96 12 12.01l8.73-5.05M12 22.08V12"/></svg></svg></svg></g></svg>';
 
@@ -1849,6 +1882,9 @@ const tuiIconPackageOutline =
     '<svg width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m16.5 9.4-9-5.19M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16" vector-effect="non-scaling-stroke"/><path d="M3.27 6.96 12 12.01l8.73-5.05M12 22.08V12" vector-effect="non-scaling-stroke"/></svg>';
 
 const tuiIconPaintLarge =
+    '<svg width="1.5em" height="1.5em" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1.5em" height="1.5em" x="50%" y="50%" overflow="visible" viewBox="0 0 24 24"><svg x="-12" y="-12"><svg width="1.5em" height="1.5em" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" fill-rule="evenodd" d="M7.24 3.452 4.015 3.5a1 1 0 0 1-.03-2l6-.09q.054 0 .108.004A2 2 0 0 1 11.519 2L16 6.48a2 2 0 0 1 0 2.829l-3.45 3.45L10.308 15a2 2 0 0 1-2.829 0l-2.24-2.24L3 10.52A2 2 0 0 1 3 7.69zm2.865-.038-5.69 5.691L5.808 10.5h6.171l2.606-2.605zm10.316 10.13.001.001c.213-2.55-1.68-4.167-2.45-4.714a.13.13 0 0 0-.144-.006c-.044.027-.06.038-.052.089.194 1.175-1.509 2.629-1.509 2.629-.405.43-.678.847-.786 1.39-.263 1.333.617 2.651 1.971 2.919s2.665-.586 2.928-1.92c.027-.133.037-.256.04-.388M3 18a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1z" clip-rule="evenodd" vector-effect="non-scaling-stroke"/></svg></svg></svg></g></svg>';
+
+const tuiIconPaintOutline =
     '<svg width="1.5em" height="1.5em" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1.5em" height="1.5em" x="50%" y="50%" overflow="visible" viewBox="0 0 24 24"><svg x="-12" y="-12"><svg width="1.5em" height="1.5em" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" fill-rule="evenodd" d="M7.24 3.452 4.015 3.5a1 1 0 0 1-.03-2l6-.09q.054 0 .108.004A2 2 0 0 1 11.519 2L16 6.48a2 2 0 0 1 0 2.829l-3.45 3.45L10.308 15a2 2 0 0 1-2.829 0l-2.24-2.24L3 10.52A2 2 0 0 1 3 7.69zm2.865-.038-5.69 5.691L5.808 10.5h6.171l2.606-2.605zm10.316 10.13.001.001c.213-2.55-1.68-4.167-2.45-4.714a.13.13 0 0 0-.144-.006c-.044.027-.06.038-.052.089.194 1.175-1.509 2.629-1.509 2.629-.405.43-.678.847-.786 1.39-.263 1.333.617 2.651 1.971 2.919s2.665-.586 2.928-1.92c.027-.133.037-.256.04-.388M3 18a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1z" clip-rule="evenodd" vector-effect="non-scaling-stroke"/></svg></svg></svg></g></svg>';
 
 const tuiIconPaperclip =
@@ -2055,6 +2091,9 @@ const tuiIconPrinterOutline =
 const tuiIconQuoteLarge =
     '<svg width="1.5em" height="1.5em" focusable="false" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1.5em" height="1.5em" x="50%" y="50%" fill="none" overflow="visible" viewBox="0 0 24 24"><svg x="-12" y="-12" xmlns="http://www.w3.org/2000/svg"><rect width="8" height="9" x="2" y="5" stroke="currentColor" stroke-width="2" rx="2" vector-effect="non-scaling-stroke"/><rect width="8" height="9" x="14" y="5" stroke="currentColor" stroke-width="2" rx="2" vector-effect="non-scaling-stroke"/><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M10 12c0 5.625-4 9-4 9M22 12c0 5.625-4 9-4 9" vector-effect="non-scaling-stroke"/></svg></svg></g></svg>';
 
+const tuiIconQuoteOutline =
+    '<svg width="1.5em" height="1.5em" focusable="false" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1.5em" height="1.5em" x="50%" y="50%" fill="none" overflow="visible" viewBox="0 0 24 24"><svg x="-12" y="-12" xmlns="http://www.w3.org/2000/svg"><rect width="8" height="9" x="2" y="5" stroke="currentColor" stroke-width="2" rx="2" vector-effect="non-scaling-stroke"/><rect width="8" height="9" x="14" y="5" stroke="currentColor" stroke-width="2" rx="2" vector-effect="non-scaling-stroke"/><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M10 12c0 5.625-4 9-4 9M22 12c0 5.625-4 9-4 9" vector-effect="non-scaling-stroke"/></svg></svg></g></svg>';
+
 const tuiIconRadio =
     '<svg width="1em" height="1em" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1em" height="1em" x="50%" y="50%" overflow="visible" viewBox="0 0 16 16"><svg x="-8" y="-8"><svg width="16" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="2"/><path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49m11.31-2.82a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14"/></svg></svg></svg></g></svg>';
 
@@ -2068,6 +2107,9 @@ const tuiIconRedo =
     '<svg width="1em" height="1em" focusable="false" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1em" height="1em" x="50%" y="50%" fill="none" overflow="visible" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><svg x="-8" y="-8"><g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M15.333 2.667v4h-4" vector-effect="non-scaling-stroke"/><path d="M13.66 10a6 6 0 1 1-1.413-6.24l3.086 2.907" vector-effect="non-scaling-stroke"/></g></svg></svg></g></svg>';
 
 const tuiIconRedoLarge =
+    '<svg width="1.5em" height="1.5em" focusable="false" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1.5em" height="1.5em" x="50%" y="50%" fill="none" overflow="visible" viewBox="0 0 24 24"><svg x="-12" y="-12" xmlns="http://www.w3.org/2000/svg"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.712 10.967c0 .374-.161.756-.483 1.016h-.002l-7.018 5.665-.001.002a1.28 1.28 0 0 1-1.598.008h0l.527-1.134-.936-.352h0v-.002l.909-2.414c-1.97.024-3.388.256-4.607.875-1.482.752-2.816 2.154-4.431 4.875a1 1 0 0 1-1.843-.695c.459-2.442 1.173-4.98 3.014-6.975C5.92 10.02 8.415 8.77 12.155 8.295L11.2 5.76h0a1.31 1.31 0 0 1 .4-1.478 1.275 1.275 0 0 1 1.609 0l7.02 5.668h0l.008.007a1.3 1.3 0 0 1 .474 1.01m0 0v-.002h-1l1 .004zm-8.763 5.129.002-.002z" vector-effect="non-scaling-stroke"/></svg></svg></g></svg>';
+
+const tuiIconRedoOutline =
     '<svg width="1.5em" height="1.5em" focusable="false" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1.5em" height="1.5em" x="50%" y="50%" fill="none" overflow="visible" viewBox="0 0 24 24"><svg x="-12" y="-12" xmlns="http://www.w3.org/2000/svg"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.712 10.967c0 .374-.161.756-.483 1.016h-.002l-7.018 5.665-.001.002a1.28 1.28 0 0 1-1.598.008h0l.527-1.134-.936-.352h0v-.002l.909-2.414c-1.97.024-3.388.256-4.607.875-1.482.752-2.816 2.154-4.431 4.875a1 1 0 0 1-1.843-.695c.459-2.442 1.173-4.98 3.014-6.975C5.92 10.02 8.415 8.77 12.155 8.295L11.2 5.76h0a1.31 1.31 0 0 1 .4-1.478 1.275 1.275 0 0 1 1.609 0l7.02 5.668h0l.008.007a1.3 1.3 0 0 1 .474 1.01m0 0v-.002h-1l1 .004zm-8.763 5.129.002-.002z" vector-effect="non-scaling-stroke"/></svg></svg></g></svg>';
 
 const tuiIconRefresh =
@@ -2385,7 +2427,13 @@ const tuiIconSpeakerOutline =
 const tuiIconSpoilerDeleteLarge =
     '<svg width="1.5em" height="1.5em" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1.5em" height="1.5em" x="50%" y="50%" overflow="visible" viewBox="0 0 24 24"><svg x="-12" y="-12"><svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M5 4c-.5 0-1 .5-1 1v1.313a1 1 0 0 1-2 0V5c0-1.624 1.376-3 3-3h1.313a1 1 0 0 1 0 2zm4.688-1a1 1 0 0 1 1-1h2.624a1 1 0 1 1 0 2h-2.624a1 1 0 0 1-1-1M3 9.688a1 1 0 0 1 1 1v2.624a1 1 0 1 1-2 0v-2.624a1 1 0 0 1 1-1m18 0a1 1 0 0 1 1 1v2.624a1 1 0 1 1-2 0v-2.624a1 1 0 0 1 1-1M9.688 21a1 1 0 0 1 1-1h2.624a1 1 0 1 1 0 2h-2.624a1 1 0 0 1-1-1M20 5v1.313a1 1 0 1 0 2 0V5c0-1.624-1.376-3-3-3h-1.312a1 1 0 1 0 0 2H19c.5 0 1 .5 1 1m0 12.688V19c0 .5-.5 1-1 1h-1.312a1 1 0 1 0 0 2H19c1.624 0 3-1.376 3-3v-1.312a1 1 0 1 0-2 0M4 19v-1.312a1 1 0 1 0-2 0V19c0 1.624 1.376 3 3 3h1.313a1 1 0 1 0 0-2H5c-.5 0-1-.5-1-1M8.293 8.293a1 1 0 0 1 1.414 0L12 10.586l2.293-2.293a1 1 0 1 1 1.414 1.414L13.414 12l2.293 2.293a1 1 0 0 1-1.414 1.414L12 13.414l-2.293 2.293a1 1 0 0 1-1.414-1.414L10.586 12 8.293 9.707a1 1 0 0 1 0-1.414" vector-effect="non-scaling-stroke"/></svg></svg></svg></g></svg>';
 
+const tuiIconSpoilerDeleteOutline =
+    '<svg width="1.5em" height="1.5em" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1.5em" height="1.5em" x="50%" y="50%" overflow="visible" viewBox="0 0 24 24"><svg x="-12" y="-12"><svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M5 4c-.5 0-1 .5-1 1v1.313a1 1 0 0 1-2 0V5c0-1.624 1.376-3 3-3h1.313a1 1 0 0 1 0 2zm4.688-1a1 1 0 0 1 1-1h2.624a1 1 0 1 1 0 2h-2.624a1 1 0 0 1-1-1M3 9.688a1 1 0 0 1 1 1v2.624a1 1 0 1 1-2 0v-2.624a1 1 0 0 1 1-1m18 0a1 1 0 0 1 1 1v2.624a1 1 0 1 1-2 0v-2.624a1 1 0 0 1 1-1M9.688 21a1 1 0 0 1 1-1h2.624a1 1 0 1 1 0 2h-2.624a1 1 0 0 1-1-1M20 5v1.313a1 1 0 1 0 2 0V5c0-1.624-1.376-3-3-3h-1.312a1 1 0 1 0 0 2H19c.5 0 1 .5 1 1m0 12.688V19c0 .5-.5 1-1 1h-1.312a1 1 0 1 0 0 2H19c1.624 0 3-1.376 3-3v-1.312a1 1 0 1 0-2 0M4 19v-1.312a1 1 0 1 0-2 0V19c0 1.624 1.376 3 3 3h1.313a1 1 0 1 0 0-2H5c-.5 0-1-.5-1-1M8.293 8.293a1 1 0 0 1 1.414 0L12 10.586l2.293-2.293a1 1 0 1 1 1.414 1.414L13.414 12l2.293 2.293a1 1 0 0 1-1.414 1.414L12 13.414l-2.293 2.293a1 1 0 0 1-1.414-1.414L10.586 12 8.293 9.707a1 1 0 0 1 0-1.414" vector-effect="non-scaling-stroke"/></svg></svg></svg></g></svg>';
+
 const tuiIconSpoilerLarge =
+    '<svg width="1.5em" height="1.5em" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1.5em" height="1.5em" x="50%" y="50%" overflow="visible" viewBox="0 0 24 24"><svg x="-12" y="-12"><svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M5 2a3 3 0 0 0-3 3v14a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3V5a3 3 0 0 0-3-3zM4 5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1zm5.707 5.293a1 1 0 1 0-1.414 1.414l3 3a1 1 0 0 0 1.414 0l3-3a1 1 0 0 0-1.414-1.414L12 12.586z" vector-effect="non-scaling-stroke"/></svg></svg></svg></g></svg>';
+
+const tuiIconSpoilerOutline =
     '<svg width="1.5em" height="1.5em" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1.5em" height="1.5em" x="50%" y="50%" overflow="visible" viewBox="0 0 24 24"><svg x="-12" y="-12"><svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M5 2a3 3 0 0 0-3 3v14a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3V5a3 3 0 0 0-3-3zM4 5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1zm5.707 5.293a1 1 0 1 0-1.414 1.414l3 3a1 1 0 0 0 1.414 0l3-3a1 1 0 0 0-1.414-1.414L12 12.586z" vector-effect="non-scaling-stroke"/></svg></svg></svg></g></svg>';
 
 const tuiIconSquare =
@@ -2430,6 +2478,9 @@ const tuiIconStopLarge =
 const tuiIconStrikeThroughLarge =
     '<svg width="1.5em" height="1.5em" focusable="false" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1.5em" height="1.5em" x="50%" y="50%" fill="none" overflow="visible" viewBox="0 0 24 24"><svg x="-12" y="-12" xmlns="http://www.w3.org/2000/svg"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M23 12H1M17 5H9.5a3.5 3.5 0 1 0 0 7h5a3.5 3.5 0 1 1 0 7H6" vector-effect="non-scaling-stroke"/></svg></svg></g></svg>';
 
+const tuiIconStrikeThroughOutline =
+    '<svg width="1.5em" height="1.5em" focusable="false" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1.5em" height="1.5em" x="50%" y="50%" fill="none" overflow="visible" viewBox="0 0 24 24"><svg x="-12" y="-12" xmlns="http://www.w3.org/2000/svg"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M23 12H1M17 5H9.5a3.5 3.5 0 1 0 0 7h5a3.5 3.5 0 1 1 0 7H6" vector-effect="non-scaling-stroke"/></svg></svg></g></svg>';
+
 const tuiIconStructureLarge =
     '<svg width="1.5em" height="1.5em" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1.5em" height="1.5em" x="50%" y="50%" overflow="visible" viewBox="0 0 24 24"><svg x="-12" y="-12"><svg width="24" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z" vector-effect="non-scaling-stroke"/></svg></svg></svg></g></svg>';
 
@@ -2440,6 +2491,9 @@ const tuiIconSublevelLarge =
     '<svg width="1.5em" height="1.5em" focusable="false" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1.5em" height="1.5em" x="50%" y="50%" fill="none" overflow="visible" viewBox="0 0 24 24"><svg x="-12" y="-12" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="m15.6 16-2.3-2.3c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l3.3 3.3c.8.8.8 2 0 2.8l-3.3 3.3c-.4.4-1 .4-1.4 0s-.4-1 0-1.4l2.3-2.3H12c-3.3 0-6-2.7-6-6V3c0-.6.4-1 1-1s1 .4 1 1v9c0 2.2 1.8 4 4 4z" vector-effect="non-scaling-stroke"/></svg></svg></g></svg>';
 
 const tuiIconSubscriptLarge =
+    '<svg width="1.5em" height="1.5em" focusable="false" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1.5em" height="1.5em" x="50%" y="50%" fill="none" overflow="visible" viewBox="0 0 24 24"><svg x="-12" y="-12" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M21 21a1 1 0 1 0 0-2zm-4.667-5.105a1 1 0 1 0 2 0zm.753 3.86-.943-.332zm1.833-2.188-.466-.885zM19.08 15h.103v-2h-.102zm-1.819 6H21v-2h-3.74zm-.927-5.254v.149h2v-.149zm3.034.455-.914.48.932 1.77.913-.48zm-3.185 3.111-.039.11 1.887.664.038-.11zM17.26 19c.563 0 .956.556.77 1.086l-1.887-.663c-.271.77.3 1.577 1.117 1.577zm2.49-3.343a.73.73 0 0 1-.383.544l.931 1.77a2.73 2.73 0 0 0 1.432-2.029zm-1.297 1.025a4.76 4.76 0 0 0-2.271 2.63l1.887.664c.23-.656.7-1.2 1.316-1.524zM19.182 15c.35 0 .619.31.569.657l1.98.285A2.575 2.575 0 0 0 19.18 13zm-.102-2a2.747 2.747 0 0 0-2.747 2.746h2c0-.412.335-.746.747-.746z" vector-effect="non-scaling-stroke"/><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m6 6 4 5m4 5-4-5m0 0-4 5m4-5 4-5" vector-effect="non-scaling-stroke"/></svg></svg></g></svg>';
+
+const tuiIconSubscriptOutline =
     '<svg width="1.5em" height="1.5em" focusable="false" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1.5em" height="1.5em" x="50%" y="50%" fill="none" overflow="visible" viewBox="0 0 24 24"><svg x="-12" y="-12" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M21 21a1 1 0 1 0 0-2zm-4.667-5.105a1 1 0 1 0 2 0zm.753 3.86-.943-.332zm1.833-2.188-.466-.885zM19.08 15h.103v-2h-.102zm-1.819 6H21v-2h-3.74zm-.927-5.254v.149h2v-.149zm3.034.455-.914.48.932 1.77.913-.48zm-3.185 3.111-.039.11 1.887.664.038-.11zM17.26 19c.563 0 .956.556.77 1.086l-1.887-.663c-.271.77.3 1.577 1.117 1.577zm2.49-3.343a.73.73 0 0 1-.383.544l.931 1.77a2.73 2.73 0 0 0 1.432-2.029zm-1.297 1.025a4.76 4.76 0 0 0-2.271 2.63l1.887.664c.23-.656.7-1.2 1.316-1.524zM19.182 15c.35 0 .619.31.569.657l1.98.285A2.575 2.575 0 0 0 19.18 13zm-.102-2a2.747 2.747 0 0 0-2.747 2.746h2c0-.412.335-.746.747-.746z" vector-effect="non-scaling-stroke"/><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m6 6 4 5m4 5-4-5m0 0-4 5m4-5 4-5" vector-effect="non-scaling-stroke"/></svg></svg></g></svg>';
 
 const tuiIconSun =
@@ -2515,6 +2569,9 @@ const tuiIconTargetOutline =
     '<svg width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" vector-effect="non-scaling-stroke"/><circle cx="12" cy="12" r="6" vector-effect="non-scaling-stroke"/><circle cx="12" cy="12" r="2" vector-effect="non-scaling-stroke"/></svg>';
 
 const tuiIconTeXLarge =
+    '<svg width="1.5em" height="1.5em" focusable="false" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1.5em" height="1.5em" x="50%" y="50%" fill="none" overflow="visible" viewBox="0 0 24 24"><svg x="-12" y="-12" xmlns="http://www.w3.org/2000/svg"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16V8H1h6" vector-effect="non-scaling-stroke"/><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M9 13h3.667c.184 0 .333-.15.333-.333V12a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v1.784C9 15.008 9.992 16 11.217 16v0c.573 0 1.125-.223 1.538-.621l.245-.236" vector-effect="non-scaling-stroke"/><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m16 8 2.5 4m2.5 4-2.5-4m0 0L16 16m2.5-4L21 8" vector-effect="non-scaling-stroke"/></svg></svg></g></svg>';
+
+const tuiIconTeXOutline =
     '<svg width="1.5em" height="1.5em" focusable="false" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1.5em" height="1.5em" x="50%" y="50%" fill="none" overflow="visible" viewBox="0 0 24 24"><svg x="-12" y="-12" xmlns="http://www.w3.org/2000/svg"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16V8H1h6" vector-effect="non-scaling-stroke"/><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M9 13h3.667c.184 0 .333-.15.333-.333V12a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v1.784C9 15.008 9.992 16 11.217 16v0c.573 0 1.125-.223 1.538-.621l.245-.236" vector-effect="non-scaling-stroke"/><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m16 8 2.5 4m2.5 4-2.5-4m0 0L16 16m2.5-4L21 8" vector-effect="non-scaling-stroke"/></svg></svg></g></svg>';
 
 const tuiIconTerminal =
@@ -2730,10 +2787,16 @@ const tuiIconUndo =
 const tuiIconUndoLarge =
     '<svg width="1.5em" height="1.5em" focusable="false" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1.5em" height="1.5em" x="50%" y="50%" fill="none" overflow="visible" viewBox="0 0 24 24"><svg x="-12" y="-12" xmlns="http://www.w3.org/2000/svg"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1.212 10.967c0 .374.161.756.484 1.016h.001l7.018 5.665.001.002a1.28 1.28 0 0 0 1.599.008h0l-.528-1.134.936-.352h0v-.002l-.909-2.414c1.97.024 3.388.256 4.607.875 1.482.752 2.816 2.154 4.431 4.875a1 1 0 0 0 1.843-.695c-.459-2.442-1.173-4.98-3.014-6.975-1.676-1.816-4.172-3.066-7.912-3.541l.954-2.535h0a1.31 1.31 0 0 0-.4-1.478 1.275 1.275 0 0 0-1.607-.001l-.002.001-7.02 5.668h0l-.008.007a1.3 1.3 0 0 0-.474 1.01m0 0v-.002h1l-1 .004zm8.763 5.129-.002-.002z" vector-effect="non-scaling-stroke"/></svg></svg></g></svg>';
 
+const tuiIconUndoOutline =
+    '<svg width="1.5em" height="1.5em" focusable="false" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1.5em" height="1.5em" x="50%" y="50%" fill="none" overflow="visible" viewBox="0 0 24 24"><svg x="-12" y="-12" xmlns="http://www.w3.org/2000/svg"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1.212 10.967c0 .374.161.756.484 1.016h.001l7.018 5.665.001.002a1.28 1.28 0 0 0 1.599.008h0l-.528-1.134.936-.352h0v-.002l-.909-2.414c1.97.024 3.388.256 4.607.875 1.482.752 2.816 2.154 4.431 4.875a1 1 0 0 0 1.843-.695c-.459-2.442-1.173-4.98-3.014-6.975-1.676-1.816-4.172-3.066-7.912-3.541l.954-2.535h0a1.31 1.31 0 0 0-.4-1.478 1.275 1.275 0 0 0-1.607-.001l-.002.001-7.02 5.668h0l-.008.007a1.3 1.3 0 0 0-.474 1.01m0 0v-.002h1l-1 .004zm8.763 5.129-.002-.002z" vector-effect="non-scaling-stroke"/></svg></svg></g></svg>';
+
 const tuiIconUnionPay =
     '<svg preserveAspectRatio="xMidYMid meet" style="width:inherit;height:inherit" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg x="50%" y="50%" overflow="visible" preserveAspectRatio="xMidYMid meet" style="width:inherit;height:inherit" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><svg x="-16" y="-16"><svg viewBox="0 0 295.482 188.766" xmlns="http://www.w3.org/2000/svg"><path fill="#01798a" d="M281.252.478 208.488.459h-.02c-.057 0-.111.01-.166.01-9.996.306-22.447 8.324-24.714 18.21l-34.411 152.263c-2.268 9.979 3.9 18.098 13.824 18.247h76.443c9.771-.483 19.269-8.409 21.497-18.183l34.413-152.264C297.658 8.663 291.342.478 281.252.478" vector-effect="non-scaling-stroke"/><path fill="#024381" d="m149.178 170.941 34.411-152.263C185.856 8.792 198.307.774 208.303.468L179.371.45 127.246.44c-10.024.205-22.636 8.279-24.903 18.239L67.922 170.941c-2.276 9.979 3.902 18.098 13.819 18.247h81.261c-9.924-.149-16.092-8.268-13.824-18.247" vector-effect="non-scaling-stroke"/><path fill="#dd0228" d="m67.922 170.941 34.421-152.263C104.61 8.718 117.222.644 127.246.439L60.471.422c-10.08 0-23.004 8.167-25.308 18.256L.742 170.941c-.209.929-.326 1.84-.395 2.73v2.824c.674 7.274 6.229 12.571 14.214 12.692h67.18c-9.917-.148-16.095-8.267-13.819-18.246" vector-effect="non-scaling-stroke"/><path fill="#fff" d="M128.654 111.389h1.264c1.161 0 1.942-.391 2.309-1.162l3.284-4.914h8.793l-1.833 3.232h10.543l-1.338 4.953H139.13c-1.445 2.174-3.224 3.195-5.362 3.074h-6.535zm-1.444 7.097h23.101l-1.473 5.38h-9.291l-1.417 5.192h9.04l-1.472 5.38h-9.04l-2.1 7.673c-.52 1.283.164 1.859 2.04 1.729h7.367l-1.365 5h-14.145q-4.022.002-2.76-4.609l2.685-9.792h-5.778l1.468-5.38h5.779l1.417-5.192h-5.524zm36.87-13.211-.363 3.15s4.357-3.271 8.314-3.271h14.623l-5.592 20.244c-.464 2.314-2.453 3.465-5.965 3.465h-16.575l-3.882 14.215c-.225.762.092 1.152.928 1.152h3.262l-1.199 4.413h-8.291c-3.182 0-4.506-.957-3.981-2.88l10.971-40.488zm12.384 5.723h-13.053l-1.562 5.463s2.174-1.569 5.807-1.625c3.623-.057 7.758 0 7.758 0zm-4.73 12.672c.965.131 1.506-.25 1.57-1.152l.799-2.879h-13.072l-1.096 4.031zm-8.816 6.541h7.535l-.141 3.261h2.006c1.014 0 1.517-.325 1.517-.966l.594-2.109h6.263l-.836 3.075c-.708 2.564-2.583 3.902-5.631 4.033h-4.014l-.019 5.573c-.073.893.733 1.348 2.396 1.348h3.772l-1.217 4.414h-9.049c-2.537.12-3.781-1.088-3.754-3.652zM71.61 78.305c-1.022 5.008-3.391 8.854-7.066 11.585-3.642 2.685-8.338 4.032-14.089 4.032-5.412 0-9.379-1.375-11.911-4.134-1.756-1.96-2.629-4.45-2.629-7.46 0-1.245.149-2.583.446-4.022l6.127-29.543h9.253L45.699 77.97a9.4 9.4 0 0 0-.25 2.239q-.014 2.244 1.114 3.679c1.096 1.422 2.875 2.127 5.352 2.127 2.847 0 5.193-.696 7.014-2.1 1.821-1.394 3.01-3.372 3.544-5.946l6.062-29.209h9.207zm38.862-11.623h7.247l-5.677 26.367h-7.233zm2.281-9.606h7.312l-1.366 6.4h-7.311zm11.381 33.966c-1.896-1.812-2.853-4.255-2.862-7.358 0-.53.032-1.133.103-1.793.07-.669.158-1.319.283-1.923.859-4.283 2.69-7.683 5.509-10.192 2.815-2.518 6.211-3.781 10.188-3.781 3.256 0 5.839.911 7.73 2.731 1.89 1.831 2.837 4.301 2.837 7.442 0 .538-.041 1.161-.111 1.83a34 34 0 0 1-.302 1.97c-.84 4.218-2.665 7.581-5.485 10.043-2.82 2.48-6.207 3.715-10.155 3.715-3.27.001-5.844-.891-7.735-2.684m13.811-5.221c1.278-1.384 2.192-3.484 2.75-6.28.084-.437.158-.892.204-1.347.046-.446.065-.864.065-1.245q0-2.441-1.245-3.781c-.826-.901-2.001-1.347-3.52-1.347-2.007 0-3.643.705-4.924 2.118-1.292 1.413-2.208 3.549-2.784 6.392-.079.437-.144.874-.204 1.301-.046.437-.06.845-.051 1.217 0 1.617.414 2.862 1.245 3.744.827.883 1.997 1.319 3.535 1.319 2.017-.001 3.651-.698 4.929-2.091" vector-effect="non-scaling-stroke"/><path fill="#e02f41" d="M208.469.459 179.371.45l28.932.019c.054 0 .109-.01.166-.01" vector-effect="non-scaling-stroke"/><path fill="#2e4f7d" d="M179.371.45 127.646.422c-.13 0-.265.009-.4.018z" vector-effect="non-scaling-stroke"/><path fill="#fff" d="m194.942 111.611 1.747-6.15h8.836l-.381 2.258s4.514-2.258 7.766-2.258h10.925l-1.736 6.15h-1.719l-8.241 29.006h1.719l-1.635 5.76h-1.719l-.715 2.499h-8.557l.714-2.499h-16.88l1.645-5.76h1.691l8.249-29.006zm9.533 0-2.248 7.85s3.848-1.477 7.164-1.895c.732-2.74 1.689-5.955 1.689-5.955zm-3.289 11.53-2.257 8.223s4.264-2.1 7.19-2.276c.845-3.178 1.691-5.946 1.691-5.946h-6.624zm1.653 17.476 1.69-5.965h-6.594l-1.701 5.965zm21.368-35.537h8.307l.353 3.065c-.056.78.409 1.153 1.394 1.153h1.468l-1.485 5.192h-6.105c-2.33.12-3.529-.771-3.641-2.694zm-2.434 11.14h26.905l-1.579 5.575h-8.566l-1.469 5.183h8.559l-1.59 5.565h-9.531l-2.156 3.262h4.666l1.077 6.531c.128.65.704.966 1.69.966h1.448l-1.522 5.378h-5.129c-2.658.131-4.031-.761-4.144-2.684l-1.236-5.965-4.245 6.346c-1.004 1.793-2.547 2.629-4.627 2.499h-7.832l1.523-5.38h2.444c1.004 0 1.839-.445 2.591-1.347l6.645-9.606h-8.566l1.588-5.565h9.291l1.477-5.183h-9.299zM80.134 66.673h6.536l-.748 3.809.938-1.087c2.119-2.267 4.692-3.391 7.73-3.391 2.75 0 4.733.799 5.979 2.406 1.226 1.607 1.561 3.828.98 6.68l-3.601 17.968h-6.717l3.251-16.286c.335-1.682.242-2.936-.274-3.745-.51-.808-1.486-1.207-2.894-1.207q-2.59.002-4.367 1.607c-1.189 1.078-1.974 2.574-2.36 4.478l-2.996 15.153H74.86zm74.951 0h6.542l-.743 3.809.927-1.087c2.121-2.267 4.703-3.391 7.732-3.391 2.75 0 4.736.799 5.973 2.406 1.219 1.607 1.57 3.828.976 6.68l-3.587 17.968h-6.726l3.253-16.286c.334-1.682.24-2.936-.271-3.745-.53-.808-1.487-1.207-2.889-1.207-1.729 0-3.177.538-4.376 1.607-1.189 1.078-1.979 2.574-2.35 4.478l-3.011 15.153h-6.722zm32.333-16.352h18.99c3.65 0 6.475.827 8.416 2.452q2.899 2.468 2.899 7.08v.093c0 .585-.038 1.245-.094 1.96a29 29 0 0 1-.371 2.165c-.837 4.069-2.778 7.34-5.778 9.82-3.012 2.471-6.578 3.716-10.684 3.716h-10.184l-3.149 15.45h-8.817zm4.746 19.855h8.445c2.201 0 3.948-.512 5.223-1.524 1.264-1.022 2.1-2.583 2.562-4.701.074-.391.121-.744.177-1.069.028-.306.065-.614.065-.91 0-1.515-.538-2.611-1.617-3.299-1.077-.698-2.768-1.031-5.109-1.031h-7.172zm65.025 27.983c-2.788 5.927-5.444 9.382-7.004 10.989-1.562 1.59-4.656 5.287-12.107 5.008l.643-4.523c6.27-1.933 9.66-10.639 11.594-14.494l-2.305-28.392 4.85-.065h4.069l.438 17.81 7.626-17.81h7.722zm-21.59-29.331-3.067 2.109c-3.205-2.508-6.131-4.06-11.779-1.44-7.693 3.567-14.122 30.929 7.061 21.917l1.207 1.431 8.334.214 5.473-24.862zm-4.74 13.592c-1.338 3.949-4.328 6.559-6.67 5.816-2.341-.725-3.178-4.534-1.82-8.492 1.338-3.958 4.348-6.559 6.67-5.816 2.341.725 3.186 4.534 1.82 8.492" vector-effect="non-scaling-stroke"/></svg></svg></svg></g></svg>';
 
 const tuiIconUnlinkLarge =
+    '<svg width="1.5em" height="1.5em" focusable="false" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1.5em" height="1.5em" x="50%" y="50%" fill="none" overflow="visible" viewBox="0 0 24 24"><svg x="-12" y="-12" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" fill-rule="evenodd" d="M16.996 1.067a6 6 0 0 0-4.22 1.684l-.01.01-1.72 1.71a1 1 0 0 0 1.41 1.418l1.714-1.705a4 4 0 0 1 5.657 5.655l-2.994 2.994a4 4 0 0 1-6.032-.432A1 1 0 1 0 9.2 13.599a6 6 0 0 0 9.047.648l3-3 .013-.012a6 6 0 0 0-4.264-10.168M10.425 8.01a6 6 0 0 0-4.672 1.743l-3 3-.012.012a6 6 0 0 0 8.484 8.484l.012-.012 1.71-1.71a1 1 0 0 0-1.414-1.414L9.83 19.816a4 4 0 0 1-5.656-5.655l2.993-2.994a4 4 0 0 1 6.032.432 1 1 0 0 0 1.602-1.198 6 6 0 0 0-4.376-2.39m6.868 9.283a1 1 0 0 1 1.414 0l1.793 1.793 1.793-1.793a1 1 0 0 1 1.414 1.414L21.914 20.5l1.793 1.793a1 1 0 0 1-1.414 1.414L20.5 21.914l-1.793 1.793a1 1 0 0 1-1.414-1.414l1.793-1.793-1.793-1.793a1 1 0 0 1 0-1.414" clip-rule="evenodd" vector-effect="non-scaling-stroke"/></svg></svg></g></svg>';
+
+const tuiIconUnlinkOutline =
     '<svg width="1.5em" height="1.5em" focusable="false" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1.5em" height="1.5em" x="50%" y="50%" fill="none" overflow="visible" viewBox="0 0 24 24"><svg x="-12" y="-12" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" fill-rule="evenodd" d="M16.996 1.067a6 6 0 0 0-4.22 1.684l-.01.01-1.72 1.71a1 1 0 0 0 1.41 1.418l1.714-1.705a4 4 0 0 1 5.657 5.655l-2.994 2.994a4 4 0 0 1-6.032-.432A1 1 0 1 0 9.2 13.599a6 6 0 0 0 9.047.648l3-3 .013-.012a6 6 0 0 0-4.264-10.168M10.425 8.01a6 6 0 0 0-4.672 1.743l-3 3-.012.012a6 6 0 0 0 8.484 8.484l.012-.012 1.71-1.71a1 1 0 0 0-1.414-1.414L9.83 19.816a4 4 0 0 1-5.656-5.655l2.993-2.994a4 4 0 0 1 6.032.432 1 1 0 0 0 1.602-1.198 6 6 0 0 0-4.376-2.39m6.868 9.283a1 1 0 0 1 1.414 0l1.793 1.793 1.793-1.793a1 1 0 0 1 1.414 1.414L21.914 20.5l1.793 1.793a1 1 0 0 1-1.414 1.414L20.5 21.914l-1.793 1.793a1 1 0 0 1-1.414-1.414l1.793-1.793-1.793-1.793a1 1 0 0 1 0-1.414" clip-rule="evenodd" vector-effect="non-scaling-stroke"/></svg></svg></g></svg>';
 
 const tuiIconUnlock =
@@ -3029,6 +3092,7 @@ export {
     tuiIconActivityLarge,
     tuiIconActivityOutline,
     tuiIconAddRowLarge,
+    tuiIconAddRowOutline,
     tuiIconAirplay,
     tuiIconAirplayLarge,
     tuiIconAirplayOutline,
@@ -3181,6 +3245,7 @@ export {
     tuiIconCheck,
     tuiIconCheckCircle,
     tuiIconCheckCircleLarge,
+    tuiIconCheckCircleOutline,
     tuiIconCheckLarge,
     tuiIconCheckList,
     tuiIconCheckOutline,
@@ -3219,6 +3284,7 @@ export {
     tuiIconCircleOutline,
     tuiIconCirrus,
     tuiIconClearFormatLarge,
+    tuiIconClearFormatOutline,
     tuiIconClipboard,
     tuiIconClipboardLarge,
     tuiIconClipboardOutline,
@@ -3261,6 +3327,7 @@ export {
     tuiIconCoffeeOutline,
     tuiIconCollapse,
     tuiIconColorLarge,
+    tuiIconColorOutline,
     tuiIconColumns,
     tuiIconColumnsLarge,
     tuiIconColumnsOutline,
@@ -3423,7 +3490,9 @@ export {
     tuiIconFolderPlusLarge,
     tuiIconFolderPlusOutline,
     tuiIconFontLarge,
+    tuiIconFontOutline,
     tuiIconFormatLarge,
+    tuiIconFormatOutline,
     tuiIconFrameLarge,
     tuiIconFramer,
     tuiIconFramerLarge,
@@ -3482,10 +3551,12 @@ export {
     tuiIconHexagonOutline,
     tuiIconHideLarge,
     tuiIconHiliteLarge,
+    tuiIconHiliteOutline,
     tuiIconHome,
     tuiIconHomeLarge,
     tuiIconHomeOutline,
     tuiIconHrLarge,
+    tuiIconHrOutline,
     tuiIconHumo,
     tuiIconImage,
     tuiIconImageLarge,
@@ -3495,6 +3566,7 @@ export {
     tuiIconInboxLarge,
     tuiIconInboxOutline,
     tuiIconIndentLarge,
+    tuiIconIndentOutline,
     tuiIconInfo,
     tuiIconInfoCircleLarge,
     tuiIconInfoLarge,
@@ -3632,14 +3704,17 @@ export {
     tuiIconNavigationLarge,
     tuiIconNavigationOutline,
     tuiIconOLLarge,
+    tuiIconOLOutline,
     tuiIconOctagon,
     tuiIconOctagonLarge,
     tuiIconOctagonOutline,
     tuiIconOutdentLarge,
+    tuiIconOutdentOutline,
     tuiIconPackage,
     tuiIconPackageLarge,
     tuiIconPackageOutline,
     tuiIconPaintLarge,
+    tuiIconPaintOutline,
     tuiIconPaperclip,
     tuiIconPaperclipLarge,
     tuiIconPaperclipOutline,
@@ -3708,11 +3783,13 @@ export {
     tuiIconPrinterLarge,
     tuiIconPrinterOutline,
     tuiIconQuoteLarge,
+    tuiIconQuoteOutline,
     tuiIconRadio,
     tuiIconRadioLarge,
     tuiIconRadioOutline,
     tuiIconRedo,
     tuiIconRedoLarge,
+    tuiIconRedoOutline,
     tuiIconRefresh,
     tuiIconRefreshCcw,
     tuiIconRefreshCcwLarge,
@@ -3818,7 +3895,9 @@ export {
     tuiIconSpeakerLarge,
     tuiIconSpeakerOutline,
     tuiIconSpoilerDeleteLarge,
+    tuiIconSpoilerDeleteOutline,
     tuiIconSpoilerLarge,
+    tuiIconSpoilerOutline,
     tuiIconSquare,
     tuiIconSquareLarge,
     tuiIconSquareOutline,
@@ -3833,10 +3912,12 @@ export {
     tuiIconStopCircleOutline,
     tuiIconStopLarge,
     tuiIconStrikeThroughLarge,
+    tuiIconStrikeThroughOutline,
     tuiIconStructureLarge,
     tuiIconSubitem,
     tuiIconSublevelLarge,
     tuiIconSubscriptLarge,
+    tuiIconSubscriptOutline,
     tuiIconSun,
     tuiIconSunLarge,
     tuiIconSunOutline,
@@ -3862,6 +3943,7 @@ export {
     tuiIconTargetLarge,
     tuiIconTargetOutline,
     tuiIconTeXLarge,
+    tuiIconTeXOutline,
     tuiIconTerminal,
     tuiIconTerminalLarge,
     tuiIconTerminalOutline,
@@ -3933,8 +4015,10 @@ export {
     tuiIconUnderlineOutline,
     tuiIconUndo,
     tuiIconUndoLarge,
+    tuiIconUndoOutline,
     tuiIconUnionPay,
     tuiIconUnlinkLarge,
+    tuiIconUnlinkOutline,
     tuiIconUnlock,
     tuiIconUnlockLarge,
     tuiIconUnlockOutline,
