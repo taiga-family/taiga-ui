@@ -2526,6 +2526,9 @@ const tuiIconSunsetOutline =
 const tuiIconSuperscriptLarge =
     '<svg width="1.5em" height="1.5em" focusable="false" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1.5em" height="1.5em" x="50%" y="50%" fill="none" overflow="visible" viewBox="0 0 24 24"><svg x="-12" y="-12" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M21 11a1 1 0 1 0 0-2zm-4.667-5.105a1 1 0 1 0 2 0zm.753 3.86-.943-.332zm1.833-2.188-.466-.885zM19.08 5h.103V3h-.102zm-1.819 6H21V9h-3.74zm-.927-5.254v.149h2v-.149zm3.034.455-.914.48.932 1.77.913-.48zm-3.185 3.111-.039.11 1.887.664.038-.11zM17.26 9c.563 0 .956.556.77 1.086l-1.887-.663c-.271.77.3 1.577 1.117 1.577zm2.49-3.343a.73.73 0 0 1-.383.544l.931 1.77a2.73 2.73 0 0 0 1.432-2.029zm-1.297 1.025a4.76 4.76 0 0 0-2.271 2.63l1.887.664c.23-.656.7-1.2 1.316-1.524zM19.182 5c.35 0 .619.31.569.657l1.98.285A2.575 2.575 0 0 0 19.18 3zm-.102-2a2.747 2.747 0 0 0-2.747 2.746h2c0-.412.335-.746.747-.746z" vector-effect="non-scaling-stroke"/><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m5 7 4 5m4 5-4-5m0 0-4 5m4-5 4-5" vector-effect="non-scaling-stroke"/></svg></svg></g></svg>';
 
+const tuiIconSuperscriptOutline =
+    '<svg width="1.5em" height="1.5em" focusable="false" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1.5em" height="1.5em" x="50%" y="50%" fill="none" overflow="visible" viewBox="0 0 24 24"><svg x="-12" y="-12" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M21 11a1 1 0 1 0 0-2zm-4.667-5.105a1 1 0 1 0 2 0zm.753 3.86-.943-.332zm1.833-2.188-.466-.885zM19.08 5h.103V3h-.102zm-1.819 6H21V9h-3.74zm-.927-5.254v.149h2v-.149zm3.034.455-.914.48.932 1.77.913-.48zm-3.185 3.111-.039.11 1.887.664.038-.11zM17.26 9c.563 0 .956.556.77 1.086l-1.887-.663c-.271.77.3 1.577 1.117 1.577zm2.49-3.343a.73.73 0 0 1-.383.544l.931 1.77a2.73 2.73 0 0 0 1.432-2.029zm-1.297 1.025a4.76 4.76 0 0 0-2.271 2.63l1.887.664c.23-.656.7-1.2 1.316-1.524zM19.182 5c.35 0 .619.31.569.657l1.98.285A2.575 2.575 0 0 0 19.18 3zm-.102-2a2.747 2.747 0 0 0-2.747 2.746h2c0-.412.335-.746.747-.746z" vector-effect="non-scaling-stroke"/><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m5 7 4 5m4 5-4-5m0 0-4 5m4-5 4-5" vector-effect="non-scaling-stroke"/></svg></svg></g></svg>';
+
 const tuiIconTable =
     '<svg width="1em" height="1em" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1em" height="1em" x="50%" y="50%" overflow="visible" viewBox="0 0 16 16"><svg x="-8" y="-8"><svg width="16" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></svg></svg></svg></g></svg>';
 
@@ -2539,6 +2542,9 @@ const tuiIconTableOutline =
     '<svg width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18" vector-effect="non-scaling-stroke"/></svg>';
 
 const tuiIconTableSplitLarge =
+    '<svg width="1.5em" height="1.5em" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1.5em" height="1.5em" x="50%" y="50%" fill="none" overflow="visible" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><svg x="-12" y="-12"><path fill="currentColor" fill-rule="evenodd" d="M20 4H4v16h16zM4 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zm6.707 13.707a1 1 0 0 1-1.414 0l-3-3a1 1 0 0 1 0-1.414l3-3a1 1 0 0 1 1.414 1.414L8.414 12l2.293 2.293a1 1 0 0 1 0 1.414m4-7.414a1 1 0 1 0-1.414 1.414L15.586 12l-2.293 2.293a1 1 0 0 0 1.414 1.414l3-3a1 1 0 0 0 0-1.414z" clip-rule="evenodd" vector-effect="non-scaling-stroke"/></svg></svg></g></svg>';
+
+const tuiIconTableSplitOutline =
     '<svg width="1.5em" height="1.5em" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1.5em" height="1.5em" x="50%" y="50%" fill="none" overflow="visible" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><svg x="-12" y="-12"><path fill="currentColor" fill-rule="evenodd" d="M20 4H4v16h16zM4 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zm6.707 13.707a1 1 0 0 1-1.414 0l-3-3a1 1 0 0 1 0-1.414l3-3a1 1 0 0 1 1.414 1.414L8.414 12l2.293 2.293a1 1 0 0 1 0 1.414m4-7.414a1 1 0 1 0-1.414 1.414L15.586 12l-2.293 2.293a1 1 0 0 0 1.414 1.414l3-3a1 1 0 0 0 0-1.414z" clip-rule="evenodd" vector-effect="non-scaling-stroke"/></svg></svg></g></svg>';
 
 const tuiIconTablet =
@@ -3928,11 +3934,13 @@ export {
     tuiIconSunsetLarge,
     tuiIconSunsetOutline,
     tuiIconSuperscriptLarge,
+    tuiIconSuperscriptOutline,
     tuiIconTable,
     tuiIconTableLarge,
     tuiIconTableMergeLarge,
     tuiIconTableOutline,
     tuiIconTableSplitLarge,
+    tuiIconTableSplitOutline,
     tuiIconTablet,
     tuiIconTabletLarge,
     tuiIconTabletOutline,
