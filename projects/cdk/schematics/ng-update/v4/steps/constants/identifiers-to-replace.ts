@@ -290,6 +290,10 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifier[] = [
         to: {name: 'TuiRatingComponent', moduleSpecifier: '@taiga-ui/kit'},
     },
     {
+        from: {name: 'TuiSurfaceModule', moduleSpecifier: '@taiga-ui/experimental'},
+        to: {name: 'TuiSurfaceDirective', moduleSpecifier: '@taiga-ui/core'},
+    },
+    {
         from: {name: 'TuiFlagPipeModule', moduleSpecifier: '@taiga-ui/core'},
         to: {name: 'TuiFlagPipe', moduleSpecifier: '@taiga-ui/core'},
     },

@@ -230,6 +230,11 @@ export const ROUTES: Routes = [
         loadComponent: async () => import('../experimental/label'),
     }),
     route({
+        path: 'components/surface',
+        title: 'Surface ',
+        loadComponent: async () => import('../components/surface'),
+    }),
+    route({
         path: DemoRoute.Segmented,
         title: 'Segmented',
         loadComponent: async () => import('../components/segmented'),

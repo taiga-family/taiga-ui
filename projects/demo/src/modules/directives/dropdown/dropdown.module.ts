@@ -9,8 +9,9 @@ import {
     TuiDropdownModule,
     TuiLinkDirective,
     TuiNotificationModule,
+    TuiSurfaceDirective,
 } from '@taiga-ui/core';
-import {TuiCardModule, TuiLabelDirective, TuiSurfaceModule} from '@taiga-ui/experimental';
+import {TuiCardModule, TuiLabelDirective} from '@taiga-ui/experimental';
 import {
     TuiAvatarComponent,
     TuiChevronDirective,
@@ -38,7 +39,7 @@ import {TuiDropdownExample5} from './examples/5';
         TuiButtonDirective,
         TuiDropdownModule,
         TuiCardModule,
-        TuiSurfaceModule,
+        TuiSurfaceDirective,
         TuiSelectModule,
         TuiObscuredDirective,
         TuiActiveZoneDirective,

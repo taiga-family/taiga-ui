@@ -12,11 +12,15 @@ import {
     TuiLinkDirective,
     TuiLoaderModule,
     TuiNotificationModule,
+    TuiSurfaceDirective,
     TuiTextfieldControllerModule,
     TuiTitleDirective,
     TuiTooltipModule,
 } from '@taiga-ui/core';
-import {TuiCardModule, TuiCellModule, TuiSurfaceModule} from '@taiga-ui/experimental';
+import {
+    TuiCardModule,
+    TuiCellModule,
+} from '@taiga-ui/experimental';
 import {
     TuiAvatarComponent,
     TuiAvatarStackComponent,
@@ -63,7 +67,7 @@ import {TuiCellExample7} from './examples/7';
         TuiCheckboxComponent,
         TuiLoaderModule,
         TuiSensitiveDirective,
-        TuiSurfaceModule,
+        TuiSurfaceDirective,
         TuiSelectModule,
         TuiDataListWrapperModule,
         TuiTextfieldControllerModule,

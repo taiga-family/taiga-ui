@@ -1,15 +1,30 @@
+import {CommonModule} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
+import {TuiLabelModule, TuiScrollbarComponent, TuiSurfaceDirective} from '@taiga-ui/core';
+import {TuiThumbnailCardModule} from '@taiga-ui/experimental';
+import {TuiAvatarComponent, TuiBadgeDirective} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-surface-example-7',
+    standalone: true,
+    imports: [
+        TuiSurfaceDirective,
+        TuiThumbnailCardModule,
+        TuiAvatarComponent,
+        TuiAmountPipe,
+        TuiLabelModule,
+        TuiBadgeDirective,
+        CommonModule,
+        TuiScrollbarComponent,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less', './surface.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiSurfaceExample7 {
+export default class ExampleComponent {
     protected readonly reviews = [
         {
             name: 'Alex Inkin',

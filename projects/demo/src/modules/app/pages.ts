@@ -899,7 +899,7 @@ export const pages: TuiDocPages = [
         route: DemoRoute.Segmented,
     },
     {
-        section: 'Experimental',
+        section: 'Components',
         title: 'Surface',
         keywords: 'card, container, wrapper, image, blur, overlay',
         route: DemoRoute.Surface,
