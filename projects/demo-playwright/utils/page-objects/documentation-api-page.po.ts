@@ -1,37 +1,16 @@
-import type {Locator, Page, Request} from '@playwright/test';
+import type {Locator, Page} from '@playwright/test';
 import {expect} from '@playwright/test';
 
 import {tuiHideElement} from '../hide-element';
 import {waitStableState} from '../wait-stable-state';
 
 export class TuiDocumentationApiPagePO {
-    private readonly pending = new Set<Request>();
-
     public readonly pageExamples: Locator = this.page.locator('tui-doc-example');
     public readonly apiPageExample: Locator = this.page.locator('#demo-content');
 
-    constructor(protected readonly page: Page) {
-        page.on('request', request => this.pending.add(request));
-        page.on('requestfailed', request => this.pending.delete(request));
-        page.on('requestfinished', request => this.pending.delete(request));
-    }
+    constructor(protected readonly page: Page) {}
 
-    /**
-     * await page.waitForLoadState('networkidle');
-     * Doesn't work as expected
-     */
-    public async networkidle(): Promise<void> {
-        await Promise.all(
-            [...this.pending].map(
-                async req =>
-                    new Promise(resolve => {
-                        req.response()
-                            .then(response => resolve(response?.finished()))
-                            .catch(() => resolve(undefined));
-                    }),
-            ),
-        );
-
+    public async waitStableState(): Promise<void> {
         if ((await this.apiPageExample.all()).length) {
             await waitStableState(this.apiPageExample);
         } else if ((await this.pageExamples.all()).length) {
