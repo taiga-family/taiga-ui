@@ -8,6 +8,8 @@ import {
     Output,
 } from '@angular/core';
 import {TUI_TABLE_SHOW_HIDE_MESSAGE} from '@taiga-ui/addon-table/tokens';
+import type {TuiContext} from '@taiga-ui/cdk';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {TUI_REORDER_OPTIONS} from './reorder.options';
 
@@ -43,6 +45,11 @@ export class TuiReorderComponent<T> {
             this.unsortedItems = items;
         }
     }
+
+    @Input()
+    public content: PolymorpheusContent<TuiContext<T> & {index: number}> = ({
+        $implicit,
+    }) => String($implicit);
 
     @HostListener('focusout.stop')
     protected noop(): void {}
