@@ -1,0 +1,53 @@
+<tui-doc-page
+    header="BadgedContent"
+    package="KIT"
+    type="components"
+>
+    <ng-template pageTab>
+        <p>BadgedContent is a wrapper for other components to add badges and notifications to them.</p>
+
+        <tui-doc-example
+            *ngFor="let example of examples; let index = index"
+            [component]="index + 1 | tuiComponent"
+            [content]="index + 1 | tuiExample"
+            [description]="index === 1 && description"
+            [heading]="example"
+        />
+
+        <ng-template #description>
+            <p>
+                The wrapped element is assumed to have 12px border-radius. If it is different, override the
+                <code>--tui-radius</code>
+                variable with actual value.
+            </p>
+        </ng-template>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-badged-content [style.--tui-radius]="radius">
+                <tui-badge-notification tuiSlot="top">1</tui-badge-notification>
+                <tui-avatar
+                    size="l"
+                    [round]="radius === '50%'"
+                    [src]="
+                        'https://avatars.githubusercontent.com/u/11832552' | tuiFallbackSrc: 'tuiIconUserLarge' | async
+                    "
+                />
+            </tui-badged-content>
+        </tui-doc-demo>
+        <tui-doc-documentation heading="CSS customization">
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="style.--t-radius"
+                documentationPropertyType="string"
+                [documentationPropertyValues]="radiusVariants"
+                [(documentationPropertyValue)]="radius"
+            >
+                Border radius
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <tui-setup *pageTab />
+</tui-doc-page>
