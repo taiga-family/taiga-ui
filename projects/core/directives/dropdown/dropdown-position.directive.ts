@@ -1,7 +1,7 @@
 import {Directive, inject} from '@angular/core';
 import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk';
 import {
-    tuiFallbackRectAccessor,
+    tuiFallbackAccessor,
     TuiPositionAccessor,
     TuiRectAccessor,
 } from '@taiga-ui/core/abstract';
@@ -19,7 +19,7 @@ export class TuiDropdownPositionDirective extends TuiPositionAccessor {
     private previous?: TuiVerticalDirection;
 
     public readonly type = 'dropdown';
-    public readonly accessor = tuiFallbackRectAccessor('dropdown')(
+    public readonly accessor = tuiFallbackAccessor<TuiRectAccessor>('dropdown')(
         inject<any>(TuiRectAccessor),
         inject(TuiDropdownDirective),
     );

@@ -1,7 +1,7 @@
 import {Directive, inject, Input} from '@angular/core';
-import {EMPTY_CLIENT_RECT, tuiPure} from '@taiga-ui/cdk';
+import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk';
 import {
-    tuiFallbackRectAccessor,
+    tuiFallbackAccessor,
     TuiPositionAccessor,
     TuiRectAccessor,
 } from '@taiga-ui/core/abstract';
@@ -24,8 +24,10 @@ const LEFT = 1;
 export class TuiHintPositionDirective extends TuiPositionAccessor {
     private readonly options = inject(TUI_HINT_OPTIONS);
     private readonly viewport = inject(TUI_VIEWPORT);
-    private readonly directive = inject(TuiHintDirective);
-    private readonly accessors: readonly TuiRectAccessor[] = inject<any>(TuiRectAccessor);
+    private readonly accessor = tuiFallbackAccessor<TuiRectAccessor>('hint')(
+        inject<any>(TuiRectAccessor),
+        inject(TuiHintDirective),
+    );
 
     private readonly points: Record<TuiHintDirection, [number, number]> =
         TUI_HINT_DIRECTIONS.reduce(
@@ -39,7 +41,7 @@ export class TuiHintPositionDirective extends TuiPositionAccessor {
     public readonly type = 'hint';
 
     public getPosition({width, height}: ClientRect): TuiPoint {
-        const hostRect = this.accessor?.getClientRect() ?? EMPTY_CLIENT_RECT;
+        const hostRect = this.accessor.getClientRect() ?? EMPTY_CLIENT_RECT;
         const leftCenter = hostRect.left + hostRect.width / 2;
         const topCenter = hostRect.top + hostRect.height / 2;
 
@@ -80,11 +82,6 @@ export class TuiHintPositionDirective extends TuiPositionAccessor {
         );
 
         return this.points[direction || this.fallback];
-    }
-
-    @tuiPure
-    private get accessor(): TuiRectAccessor | undefined {
-        return tuiFallbackRectAccessor('hint')(this.accessors, this.directive);
     }
 
     private get fallback(): TuiHintDirection {
