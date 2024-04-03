@@ -13,8 +13,8 @@
     </span>
     <button
         appearance="secondary"
-        iconRight="tuiIconChevronDown"
         tuiButton
+        tuiChevron
         tuiDropdownOpen
         [tuiDropdown]="products"
     >
@@ -86,10 +86,10 @@
         </a>
         <button
             iconLeft="tuiIconSettings"
-            iconRight="tuiIconChevronDown"
             tuiAppearance="flat"
             tuiButton
             [tuiAppearanceState]="open ? 'hover' : null"
+            [tuiChevron]="expanded && submenu"
             [tuiDropdown]="dropdown"
             [tuiDropdownEnabled]="!expanded"
             [tuiDropdownSided]="true"

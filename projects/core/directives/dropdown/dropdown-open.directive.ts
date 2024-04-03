@@ -1,5 +1,6 @@
 import type {OnChanges} from '@angular/core';
 import {
+    ChangeDetectorRef,
     ContentChild,
     Directive,
     ElementRef,
@@ -9,9 +10,9 @@ import {
     Input,
     Output,
 } from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {
     TuiActiveZoneDirective,
-    TuiDestroyService,
     tuiGetActualTarget,
     tuiGetClosestFocusable,
     tuiIsElement,
@@ -20,11 +21,12 @@ import {
     tuiIsNativeFocusedIn,
     tuiIsNativeKeyboardFocusable,
     TuiObscuredDirective,
+    tuiWatch,
 } from '@taiga-ui/cdk';
 import {tuiAsDriver} from '@taiga-ui/core/abstract';
 import {tuiIsEditingKey} from '@taiga-ui/core/utils/miscellaneous';
 import {shouldCall} from '@tinkoff/ng-event-plugins';
-import {filter, fromEvent, map, merge, takeUntil} from 'rxjs';
+import {filter, fromEvent, map, merge} from 'rxjs';
 
 import {TuiDropdownDirective} from './dropdown.directive';
 import {TuiDropdownDriver} from './dropdown.driver';
@@ -48,7 +50,6 @@ function shouldClose(
     selector: '[tuiDropdownOpen],[tuiDropdownOpenChange]',
     hostDirectives: [TuiObscuredDirective, TuiActiveZoneDirective],
     providers: [
-        TuiDestroyService,
         TuiDropdownDriver,
         tuiAsDriver(TuiDropdownDriver),
         {
@@ -91,7 +92,7 @@ export class TuiDropdownOpenDirective implements OnChanges {
             filter(target => !this.host.contains(target)),
         ),
     )
-        .pipe(takeUntil(inject(TuiDestroyService, {self: true})))
+        .pipe(tuiWatch(inject(ChangeDetectorRef)), takeUntilDestroyed())
         .subscribe(() => this.toggle(false));
 
     public get dropdown(): HTMLElement | undefined {

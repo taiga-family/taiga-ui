@@ -24,6 +24,7 @@ import {
     TuiBadgeDirective,
     TuiBadgeNotificationComponent,
     TuiBreadcrumbsModule,
+    TuiChevronDirective,
     TuiFadeDirective,
     TuiSwitchComponent,
     TuiTabsModule,
@@ -61,6 +62,7 @@ import {ExampleTuiNavigationComponent} from './navigation.component';
         TuiSwitchComponent,
         TuiBreadcrumbsModule,
         TuiLinkModule,
+        TuiChevronDirective,
     ],
     declarations: [
         ExampleTuiNavigationComponent,

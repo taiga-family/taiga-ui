@@ -21,7 +21,7 @@ import {TUI_MODE} from '@taiga-ui/core/tokens';
 import type {TuiHorizontalDirection} from '@taiga-ui/core/types';
 import {map, merge} from 'rxjs';
 
-// @bad TODO: Think about extending Interactive
+// TODO: Use TuiIconsDirective and drop mode
 @Component({
     selector: 'a[tuiLink], button[tuiLink]',
     templateUrl: './link.template.html',

@@ -12,20 +12,15 @@
     >
         Button that does not open dropdown
     </button>
-    <!--TODO: TUI_ARROW migration-->
     <button
         #tuiDropdownHost
         size="l"
-        title="Menu"
+        tuiChevron
         tuiIconButton
         type="button"
         class="tui-group__auto-width-item"
     >
-        <tui-svg
-            src="tuiIconChevronDown"
-            class="icon"
-            [class.icon_rotated]="open"
-        />
+        Menu
     </button>
 </div>
 <ng-template

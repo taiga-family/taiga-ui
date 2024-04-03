@@ -13,6 +13,7 @@ import {
 import {TuiCardModule, TuiLabelDirective, TuiSurfaceModule} from '@taiga-ui/experimental';
 import {
     TuiAvatarComponent,
+    TuiChevronDirective,
     TuiInputModule,
     TuiSelectModule,
     TuiSwitchComponent,
@@ -48,6 +49,7 @@ import {TuiDropdownExample5} from './examples/5';
         TuiAddonDocModule,
         DropdownDocumentationModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiDropdownComponent)),
+        TuiChevronDirective,
     ],
     declarations: [
         ExampleTuiDropdownComponent,
