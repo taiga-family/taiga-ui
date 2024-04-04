@@ -1,16 +1,18 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiBlockDirective, TuiCheckboxComponent} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-block-example-1',
+    standalone: true,
+    imports: [ReactiveFormsModule, TuiBlockDirective, TuiCheckboxComponent],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiBlockExample1 {
+export default class ExampleComponent {
     protected readonly testForm = new FormGroup({
         testValue1: new FormControl(true),
         testValue2: new FormControl({value: false, disabled: true}),
