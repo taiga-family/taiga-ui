@@ -1,16 +1,26 @@
 import {Component} from '@angular/core';
+import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemoModule} from '@demo/utils';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiNotificationModule} from '@taiga-ui/core';
+import {TuiLinkModule, TuiNotificationModule} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
-    imports: [TuiDemoModule, TuiNotificationModule],
+    imports: [TuiDemoModule, TuiLinkModule, RouterLink, TuiNotificationModule],
     templateUrl: './index.html',
     changeDetection,
 })
 export default class ExampleComponent {
+    protected readonly examples = [
+        'Behaviors',
+        'Presets',
+        'Blur',
+        'Video',
+        'Selectable',
+        'Spacing compensation',
+    ];
+
     protected readonly layerExample: TuiDocExample = {
         HTML: import('./examples/7/index.html?raw'),
         'surface.less': import('./examples/7/surface.less?raw'),

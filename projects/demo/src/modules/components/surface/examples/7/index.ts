@@ -2,20 +2,32 @@ import {CommonModule} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
-import {TuiLabelModule, TuiScrollbarComponent, TuiSurfaceDirective} from '@taiga-ui/core';
-import {TuiThumbnailCardModule} from '@taiga-ui/experimental';
+import {TuiAmountPipe, TuiThumbnailCardComponent} from '@taiga-ui/addon-commerce';
+import {
+    TuiButtonDirective,
+    TuiLabelModule,
+    TuiLinkModule,
+    TuiModeModule,
+    TuiScrollbarComponent,
+    TuiSurfaceDirective,
+} from '@taiga-ui/core';
+import {TuiCardModule, TuiCellModule} from '@taiga-ui/experimental';
 import {TuiAvatarComponent, TuiBadgeDirective} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
     imports: [
         TuiSurfaceDirective,
-        TuiThumbnailCardModule,
+        TuiThumbnailCardComponent,
         TuiAvatarComponent,
         TuiAmountPipe,
         TuiLabelModule,
         TuiBadgeDirective,
+        TuiButtonDirective,
+        TuiLinkModule,
+        TuiCellModule,
+        TuiModeModule,
+        TuiCardModule,
         CommonModule,
         TuiScrollbarComponent,
     ],
