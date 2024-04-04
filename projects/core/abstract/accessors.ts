@@ -1,5 +1,6 @@
 import type {AbstractType, ExistingProvider, FactoryProvider, Type} from '@angular/core';
 import {Optional, SkipSelf} from '@angular/core';
+import {tuiProvide} from '@taiga-ui/cdk';
 import type {TuiPoint} from '@taiga-ui/core/types';
 
 export abstract class TuiAccessor {
@@ -24,13 +25,6 @@ export function tuiProvideAccessor<T extends TuiAccessor>(
         deps: [[new SkipSelf(), new Optional(), provide], fallback],
         useFactory: tuiFallbackAccessor<T>(type),
     };
-}
-
-export function tuiAsAccessor<T extends TuiAccessor>(
-    provide: AbstractType<T>,
-    useExisting: Type<T>,
-): ExistingProvider {
-    return {provide, multi: true, useExisting};
 }
 
 export function tuiFallbackAccessor<T extends TuiAccessor>(
@@ -58,9 +52,9 @@ export function tuiRectAccessorFor(
 export function tuiAsPositionAccessor(
     accessor: Type<TuiPositionAccessor>,
 ): ExistingProvider {
-    return tuiAsAccessor(TuiPositionAccessor, accessor);
+    return tuiProvide(TuiPositionAccessor, accessor, true);
 }
 
 export function tuiAsRectAccessor(accessor: Type<TuiRectAccessor>): ExistingProvider {
-    return tuiAsAccessor(TuiRectAccessor, accessor);
+    return tuiProvide(TuiRectAccessor, accessor, true);
 }

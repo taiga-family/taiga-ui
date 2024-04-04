@@ -1,4 +1,5 @@
-import {Directive, forwardRef, inject, Input} from '@angular/core';
+import {Directive, inject, Input} from '@angular/core';
+import {tuiProvide} from '@taiga-ui/cdk';
 import type {TuiDateFormatSettings} from '@taiga-ui/core/interfaces';
 import {TUI_DATE_FORMAT} from '@taiga-ui/core/tokens';
 import {combineLatest, map, Observable, ReplaySubject} from 'rxjs';
@@ -6,12 +7,7 @@ import {combineLatest, map, Observable, ReplaySubject} from 'rxjs';
 @Directive({
     standalone: true,
     selector: '[tuiDateFormat]',
-    providers: [
-        {
-            provide: TUI_DATE_FORMAT,
-            useExisting: forwardRef(() => TuiDateFormatDirective),
-        },
-    ],
+    providers: [tuiProvide(TUI_DATE_FORMAT, TuiDateFormatDirective)],
 })
 export class TuiDateFormatDirective extends Observable<TuiDateFormatSettings> {
     private readonly settings = new ReplaySubject<Partial<TuiDateFormatSettings>>(1);

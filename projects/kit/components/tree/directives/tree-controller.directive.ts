@@ -1,5 +1,5 @@
 import {Directive, EventEmitter, Input, Output} from '@angular/core';
-import {tuiIsPresent} from '@taiga-ui/cdk';
+import {tuiIsPresent, tuiProvide} from '@taiga-ui/cdk';
 
 import type {TuiTreeItemComponent} from '../components/tree-item/tree-item.component';
 import type {TuiTreeAccessor, TuiTreeController} from '../misc/tree.interfaces';
@@ -8,14 +8,8 @@ import {TUI_TREE_ACCESSOR, TUI_TREE_CONTROLLER} from '../misc/tree.tokens';
 @Directive({
     selector: '[tuiTreeController][map]',
     providers: [
-        {
-            provide: TUI_TREE_ACCESSOR,
-            useExisting: TuiTreeControllerDirective,
-        },
-        {
-            provide: TUI_TREE_CONTROLLER,
-            useExisting: TuiTreeControllerDirective,
-        },
+        tuiProvide(TUI_TREE_ACCESSOR, TuiTreeControllerDirective),
+        tuiProvide(TUI_TREE_CONTROLLER, TuiTreeControllerDirective),
     ],
     exportAs: 'tuiTreeController',
 })

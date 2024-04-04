@@ -1,4 +1,5 @@
 import {ChangeDetectionStrategy, Component, Input, TemplateRef} from '@angular/core';
+import {tuiProvide} from '@taiga-ui/cdk';
 import {tuiAsDataList} from '@taiga-ui/core';
 
 import {AbstractTuiNativeMultiSelect} from './native-multi-select';
@@ -10,15 +11,12 @@ import {AbstractTuiNativeMultiSelect} from './native-multi-select';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsDataList(TuiNativeMultiSelectGroupComponent),
+        tuiProvide(AbstractTuiNativeMultiSelect, TuiNativeMultiSelectGroupComponent),
         {
             provide: TemplateRef,
             deps: [TuiNativeMultiSelectGroupComponent],
             useFactory: ({datalist}: TuiNativeMultiSelectGroupComponent<unknown>) =>
                 datalist,
-        },
-        {
-            provide: AbstractTuiNativeMultiSelect,
-            useExisting: TuiNativeMultiSelectGroupComponent,
         },
     ],
     host: {

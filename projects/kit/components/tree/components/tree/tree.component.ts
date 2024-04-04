@@ -8,6 +8,7 @@ import {
     ViewChild,
 } from '@angular/core';
 import type {TuiHandler} from '@taiga-ui/cdk';
+import {tuiProvide} from '@taiga-ui/cdk';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {distinctUntilChanged, map, startWith, Subject} from 'rxjs';
 
@@ -21,15 +22,8 @@ import {TuiTreeItemComponent} from '../tree-item/tree-item.component';
     templateUrl: './tree.template.html',
     styleUrls: ['./tree.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: TUI_TREE_NODE,
-            useExisting: TuiTreeComponent,
-        },
-    ],
-    host: {
-        role: 'tree',
-    },
+    providers: [tuiProvide(TUI_TREE_NODE, TuiTreeComponent)],
+    host: {role: 'tree'},
 })
 export class TuiTreeComponent<T> implements DoCheck {
     private readonly check$ = new Subject<void>();

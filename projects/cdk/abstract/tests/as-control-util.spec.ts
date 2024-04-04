@@ -8,6 +8,7 @@ describe('tuiAsControl', () => {
         expect(tuiAsControl(MyNoControlComponent)).toEqual({
             provide: AbstractTuiControl,
             useExisting: MyNoControlComponent,
+            multi: false,
         });
     });
 
@@ -23,6 +24,7 @@ describe('tuiAsControl', () => {
         expect(tuiAsControl(MyControlComponent)).toEqual({
             provide: AbstractTuiControl,
             useExisting: MyControlComponent,
+            multi: false,
         });
     });
 });

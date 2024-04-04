@@ -7,8 +7,9 @@ import {
     forwardRef,
     HostBinding,
     inject,
+    SkipSelf,
 } from '@angular/core';
-import {EMPTY_QUERY} from '@taiga-ui/cdk';
+import {EMPTY_QUERY, tuiProvide} from '@taiga-ui/cdk';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {distinctUntilChanged, map, startWith, Subject} from 'rxjs';
 
@@ -19,14 +20,20 @@ import {
     TUI_TREE_LEVEL,
     TUI_TREE_NODE,
 } from '../../misc/tree.tokens';
-import {TUI_TREE_ITEM_PROVIDERS} from './tree-item.providers';
 
 @Component({
     selector: 'tui-tree-item',
     templateUrl: './tree-item.template.html',
     styleUrls: ['./tree-item.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: TUI_TREE_ITEM_PROVIDERS,
+    providers: [
+        tuiProvide(TUI_TREE_NODE, TuiTreeItemComponent),
+        {
+            provide: TUI_TREE_LEVEL,
+            deps: [[new SkipSelf(), TUI_TREE_LEVEL]],
+            useFactory: (level: number): number => ++level,
+        },
+    ],
     host: {
         role: 'treeitem',
     },

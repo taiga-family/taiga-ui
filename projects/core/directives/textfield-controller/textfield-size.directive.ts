@@ -1,5 +1,9 @@
-import {Directive, forwardRef, Input} from '@angular/core';
-import {AbstractTuiController, tuiCreateTokenFromFactory} from '@taiga-ui/cdk';
+import {Directive, Input} from '@angular/core';
+import {
+    AbstractTuiController,
+    tuiCreateTokenFromFactory,
+    tuiProvide,
+} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 
 export const TUI_TEXTFIELD_SIZE = tuiCreateTokenFromFactory(
@@ -8,12 +12,7 @@ export const TUI_TEXTFIELD_SIZE = tuiCreateTokenFromFactory(
 
 @Directive({
     selector: '[tuiTextfieldSize]',
-    providers: [
-        {
-            provide: TUI_TEXTFIELD_SIZE,
-            useExisting: forwardRef(() => TuiTextfieldSizeDirective),
-        },
-    ],
+    providers: [tuiProvide(TUI_TEXTFIELD_SIZE, TuiTextfieldSizeDirective)],
 })
 export class TuiTextfieldSizeDirective extends AbstractTuiController {
     @Input('tuiTextfieldSize')

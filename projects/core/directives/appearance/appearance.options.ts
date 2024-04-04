@@ -1,5 +1,5 @@
-import type {Provider, ProviderToken} from '@angular/core';
-import {tuiCreateToken} from '@taiga-ui/cdk';
+import type {ExistingProvider, ProviderToken} from '@angular/core';
+import {tuiCreateToken, tuiProvide} from '@taiga-ui/cdk';
 
 export interface TuiAppearanceOptions {
     readonly appearance: string;
@@ -12,7 +12,7 @@ export const TUI_APPEARANCE_DEFAULT_OPTIONS: TuiAppearanceOptions = {
 export const TUI_APPEARANCE_OPTIONS = tuiCreateToken(TUI_APPEARANCE_DEFAULT_OPTIONS);
 
 export function tuiAppearanceOptionsProvider(
-    useExisting: ProviderToken<TuiAppearanceOptions>,
-): Provider {
-    return {provide: TUI_APPEARANCE_OPTIONS, useExisting};
+    token: ProviderToken<TuiAppearanceOptions>,
+): ExistingProvider {
+    return tuiProvide(TUI_APPEARANCE_OPTIONS, token);
 }

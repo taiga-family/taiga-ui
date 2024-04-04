@@ -1,7 +1,8 @@
-import {Component, forwardRef, ViewChild} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import type {TuiContext, TuiInputMode, TuiInputType} from '@taiga-ui/cdk';
+import {tuiProvide} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {TUI_HINT_DIRECTIONS} from '@taiga-ui/core';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
@@ -25,10 +26,7 @@ const CUSTOM_SVG_NAME = 'Bell';
     styleUrls: ['./primitive-textfield.style.less'],
     changeDetection,
     providers: [
-        {
-            provide: ABSTRACT_PROPS_ACCESSOR,
-            useExisting: forwardRef(() => ExampleTuiPrimitiveTextfieldComponent),
-        },
+        tuiProvide(ABSTRACT_PROPS_ACCESSOR, ExampleTuiPrimitiveTextfieldComponent),
     ],
 })
 export class ExampleTuiPrimitiveTextfieldComponent extends AbstractExampleTuiInteractive {

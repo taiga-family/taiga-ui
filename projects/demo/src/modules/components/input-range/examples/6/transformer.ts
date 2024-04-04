@@ -1,15 +1,10 @@
 import {Directive} from '@angular/core';
-import {AbstractTuiValueTransformer} from '@taiga-ui/cdk';
+import {AbstractTuiValueTransformer, tuiProvide} from '@taiga-ui/cdk';
 import {TUI_NUMBER_VALUE_TRANSFORMER} from '@taiga-ui/kit';
 
 @Directive({
     selector: '[absTransformer]',
-    providers: [
-        {
-            provide: TUI_NUMBER_VALUE_TRANSFORMER,
-            useExisting: AbsTransformer,
-        },
-    ],
+    providers: [tuiProvide(TUI_NUMBER_VALUE_TRANSFORMER, AbsTransformer)],
 })
 export class AbsTransformer extends AbstractTuiValueTransformer<
     number | null,

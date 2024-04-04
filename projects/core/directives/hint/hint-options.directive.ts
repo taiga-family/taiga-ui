@@ -1,6 +1,6 @@
 import type {FactoryProvider} from '@angular/core';
-import {Directive, forwardRef, inject, Input, Optional, SkipSelf} from '@angular/core';
-import {AbstractTuiController, tuiCreateToken} from '@taiga-ui/cdk';
+import {Directive, inject, Input, Optional, SkipSelf} from '@angular/core';
+import {AbstractTuiController, tuiCreateToken, tuiProvide} from '@taiga-ui/cdk';
 import type {TuiHintDirection} from '@taiga-ui/core/types';
 import {tuiOverrideOptions} from '@taiga-ui/core/utils';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
@@ -40,12 +40,7 @@ export const tuiHintOptionsProvider: (
 
 @Directive({
     selector: '[tuiHintContent]',
-    providers: [
-        {
-            provide: TUI_HINT_OPTIONS,
-            useExisting: forwardRef(() => TuiHintOptionsDirective),
-        },
-    ],
+    providers: [tuiProvide(TUI_HINT_OPTIONS, TuiHintOptionsDirective)],
 })
 export class TuiHintOptionsDirective
     extends AbstractTuiController

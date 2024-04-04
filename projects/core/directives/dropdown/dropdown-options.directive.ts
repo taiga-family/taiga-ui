@@ -1,6 +1,6 @@
 import type {FactoryProvider} from '@angular/core';
-import {Directive, forwardRef, inject, Input, Optional, SkipSelf} from '@angular/core';
-import {tuiCreateToken} from '@taiga-ui/cdk';
+import {Directive, inject, Input, Optional, SkipSelf} from '@angular/core';
+import {tuiCreateToken, tuiProvide} from '@taiga-ui/cdk';
 import type {
     TuiDropdownAlign,
     TuiDropdownWidth,
@@ -49,12 +49,7 @@ export const tuiDropdownOptionsProvider: (
     standalone: true,
     selector:
         '[tuiDropdownAlign], [tuiDropdownAppearance], [tuiDropdownDirection], [tuiDropdownLimitWidth], [tuiDropdownMinHeight], [tuiDropdownMaxHeight], [tuiDropdownOffset]',
-    providers: [
-        {
-            provide: TUI_DROPDOWN_OPTIONS,
-            useExisting: forwardRef(() => TuiDropdownOptionsDirective),
-        },
-    ],
+    providers: [tuiProvide(TUI_DROPDOWN_OPTIONS, TuiDropdownOptionsDirective)],
 })
 export class TuiDropdownOptionsDirective implements TuiDropdownOptions {
     private readonly options = inject(TUI_DROPDOWN_OPTIONS, {skipSelf: true});

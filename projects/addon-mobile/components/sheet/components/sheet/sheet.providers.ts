@@ -5,6 +5,7 @@ import {
     TUI_FALSE_HANDLER,
     TUI_IS_IOS,
     TUI_TRUE_HANDLER,
+    tuiProvide,
     tuiTypedFromEvent,
     tuiZonefree,
 } from '@taiga-ui/cdk';
@@ -48,12 +49,9 @@ export const TUI_SHEET_PROVIDERS: Provider[] = [
                       share(),
                   ),
     },
-    {
-        provide: TUI_SCROLL_REF,
-        useExisting: ElementRef,
-    },
-    {
-        provide: TUI_SHEET,
-        useExisting: forwardRef(() => TuiSheetComponent),
-    },
+    tuiProvide(TUI_SCROLL_REF, ElementRef),
+    tuiProvide(
+        TUI_SHEET,
+        forwardRef(() => TuiSheetComponent),
+    ),
 ];

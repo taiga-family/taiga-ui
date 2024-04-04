@@ -1,6 +1,7 @@
 import type {Provider, ProviderToken, Type} from '@angular/core';
 import {inject, Injectable} from '@angular/core';
 import type {TuiContext} from '@taiga-ui/cdk/interfaces';
+import {tuiProvide} from '@taiga-ui/cdk/utils';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import type {BehaviorSubject, Observer} from 'rxjs';
@@ -63,9 +64,6 @@ export abstract class TuiPopoverService<T, K = void> {
     }
 }
 
-export function tuiAsPopover(useExisting: Type<TuiPopoverService<any>>): Provider {
-    return {
-        provide: TuiPopoverService,
-        useExisting,
-    };
+export function tuiAsPopover(popover: Type<TuiPopoverService<any>>): Provider {
+    return tuiProvide(TuiPopoverService, popover);
 }

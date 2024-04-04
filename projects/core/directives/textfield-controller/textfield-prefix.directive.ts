@@ -1,5 +1,9 @@
-import {Directive, forwardRef, Input} from '@angular/core';
-import {AbstractTuiController, tuiCreateTokenFromFactory} from '@taiga-ui/cdk';
+import {Directive, Input} from '@angular/core';
+import {
+    AbstractTuiController,
+    tuiCreateTokenFromFactory,
+    tuiProvide,
+} from '@taiga-ui/cdk';
 
 export const TUI_TEXTFIELD_PREFIX = tuiCreateTokenFromFactory(
     () => new TuiTextfieldPrefixDirective(),
@@ -7,12 +11,7 @@ export const TUI_TEXTFIELD_PREFIX = tuiCreateTokenFromFactory(
 
 @Directive({
     selector: '[tuiTextfieldPrefix]',
-    providers: [
-        {
-            provide: TUI_TEXTFIELD_PREFIX,
-            useExisting: forwardRef(() => TuiTextfieldPrefixDirective),
-        },
-    ],
+    providers: [tuiProvide(TUI_TEXTFIELD_PREFIX, TuiTextfieldPrefixDirective)],
 })
 export class TuiTextfieldPrefixDirective extends AbstractTuiController {
     @Input('tuiTextfieldPrefix')

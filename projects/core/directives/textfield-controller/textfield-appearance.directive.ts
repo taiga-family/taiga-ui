@@ -1,5 +1,9 @@
-import {Directive, forwardRef, Input} from '@angular/core';
-import {AbstractTuiController, tuiCreateTokenFromFactory} from '@taiga-ui/cdk';
+import {Directive, Input} from '@angular/core';
+import {
+    AbstractTuiController,
+    tuiCreateTokenFromFactory,
+    tuiProvide,
+} from '@taiga-ui/cdk';
 
 // TODO: rename to TUI_TEXTFIELD_APPEARANCE in v4
 export const TUI_TEXTFIELD_APPEARANCE_DIRECTIVE = tuiCreateTokenFromFactory(
@@ -9,10 +13,7 @@ export const TUI_TEXTFIELD_APPEARANCE_DIRECTIVE = tuiCreateTokenFromFactory(
 @Directive({
     selector: '[tuiTextfieldAppearance]',
     providers: [
-        {
-            provide: TUI_TEXTFIELD_APPEARANCE_DIRECTIVE,
-            useExisting: forwardRef(() => TuiTextfieldAppearanceDirective),
-        },
+        tuiProvide(TUI_TEXTFIELD_APPEARANCE_DIRECTIVE, TuiTextfieldAppearanceDirective),
     ],
 })
 export class TuiTextfieldAppearanceDirective extends AbstractTuiController {

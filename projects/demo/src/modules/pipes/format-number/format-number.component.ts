@@ -1,7 +1,8 @@
-import {Component, forwardRef} from '@angular/core';
+import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
+import {tuiProvide} from '@taiga-ui/cdk';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/inherited-documentation/abstract-props-accessor';
 import {AbstractExampleTuiNumberFormat} from '../../components/abstract/number-format';
@@ -11,12 +12,7 @@ import {AbstractExampleTuiNumberFormat} from '../../components/abstract/number-f
     templateUrl: './format-number.template.html',
     styleUrls: ['./format-number.style.less'],
     changeDetection,
-    providers: [
-        {
-            provide: ABSTRACT_PROPS_ACCESSOR,
-            useExisting: forwardRef(() => ExampleTuiFormatNumberComponent),
-        },
-    ],
+    providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, ExampleTuiFormatNumberComponent)],
 })
 export class ExampleTuiFormatNumberComponent extends AbstractExampleTuiNumberFormat {
     public readonly control = new FormControl(100);

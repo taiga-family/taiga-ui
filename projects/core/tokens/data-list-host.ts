@@ -1,5 +1,6 @@
 import type {Provider, Type} from '@angular/core';
 import {InjectionToken} from '@angular/core';
+import {tuiProvide} from '@taiga-ui/cdk';
 import type {TuiDataListHost} from '@taiga-ui/core/interfaces';
 
 /**
@@ -9,9 +10,6 @@ export const TUI_DATA_LIST_HOST = new InjectionToken<TuiDataListHost<unknown>>(
     '[TUI_DATA_LIST_HOST]',
 );
 
-export function tuiAsDataListHost(useExisting: Type<TuiDataListHost<unknown>>): Provider {
-    return {
-        provide: TUI_DATA_LIST_HOST,
-        useExisting,
-    };
+export function tuiAsDataListHost(host: Type<TuiDataListHost<unknown>>): Provider {
+    return tuiProvide(TUI_DATA_LIST_HOST, host);
 }

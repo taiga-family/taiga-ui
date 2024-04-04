@@ -12,7 +12,7 @@ import type {AbstractControl, ControlValueAccessor} from '@angular/forms';
 import {NgControl, NgModel} from '@angular/forms';
 import {EMPTY_FUNCTION} from '@taiga-ui/cdk/constants';
 import type {TuiControlValueTransformer} from '@taiga-ui/cdk/interfaces';
-import {tuiIsPresent} from '@taiga-ui/cdk/utils';
+import {tuiIsPresent, tuiProvide} from '@taiga-ui/cdk/utils';
 import {
     delay,
     distinctUntilChanged,
@@ -258,9 +258,6 @@ export abstract class AbstractTuiControl<T>
     }
 }
 
-export function tuiAsControl<T>(useExisting: Type<AbstractTuiControl<T>>): Provider {
-    return {
-        provide: AbstractTuiControl,
-        useExisting,
-    };
+export function tuiAsControl<T>(control: Type<AbstractTuiControl<T>>): Provider {
+    return tuiProvide(AbstractTuiControl, control);
 }

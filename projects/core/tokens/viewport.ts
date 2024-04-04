@@ -1,7 +1,7 @@
 import type {Provider, Type} from '@angular/core';
 import {inject} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
-import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk';
+import {tuiCreateTokenFromFactory, tuiProvide} from '@taiga-ui/cdk';
 import type {TuiRectAccessor} from '@taiga-ui/core/abstract';
 
 /**
@@ -32,9 +32,6 @@ export const TUI_VIEWPORT = tuiCreateTokenFromFactory<TuiRectAccessor>(() => {
     };
 });
 
-export function tuiAsViewport(useExisting: Type<TuiRectAccessor>): Provider {
-    return {
-        provide: TUI_VIEWPORT,
-        useExisting,
-    };
+export function tuiAsViewport(accessor: Type<TuiRectAccessor>): Provider {
+    return tuiProvide(TUI_VIEWPORT, accessor);
 }

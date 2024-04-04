@@ -1,4 +1,5 @@
 import {Directive, Input} from '@angular/core';
+import {tuiProvide} from '@taiga-ui/cdk';
 
 import type {TuiTreeItemComponent} from '../components/tree-item/tree-item.component';
 import type {TuiTreeController} from '../misc/tree.interfaces';
@@ -6,12 +7,7 @@ import {TUI_TREE_CONTROLLER} from '../misc/tree.tokens';
 
 @Directive({
     selector: '[tuiTreeController]:not([map])',
-    providers: [
-        {
-            provide: TUI_TREE_CONTROLLER,
-            useExisting: TuiTreeItemControllerDirective,
-        },
-    ],
+    providers: [tuiProvide(TUI_TREE_CONTROLLER, TuiTreeItemControllerDirective)],
     exportAs: 'tuiTreeController',
 })
 export class TuiTreeItemControllerDirective implements TuiTreeController {

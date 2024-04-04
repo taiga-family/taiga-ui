@@ -1,14 +1,12 @@
 import type {Provider, Type} from '@angular/core';
 import {Directive} from '@angular/core';
+import {tuiProvide} from '@taiga-ui/cdk';
 
 @Directive({
     selector: 'ng-template[tuiDataList]',
 })
 export class TuiDataListDirective {}
 
-export function tuiAsDataList(useExisting: Type<TuiDataListDirective>): Provider {
-    return {
-        provide: TuiDataListDirective,
-        useExisting,
-    };
+export function tuiAsDataList(list: Type<TuiDataListDirective>): Provider {
+    return tuiProvide(TuiDataListDirective, list);
 }

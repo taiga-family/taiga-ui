@@ -1,7 +1,8 @@
-import {Component, forwardRef} from '@angular/core';
+import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
+import {tuiProvide} from '@taiga-ui/cdk';
 import type {TuiSizeL} from '@taiga-ui/core';
 import {tuiFilesAccepted} from '@taiga-ui/kit';
 import {map} from 'rxjs';
@@ -13,12 +14,7 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
     selector: 'example-tui-input-files',
     templateUrl: './input-files.template.html',
     changeDetection,
-    providers: [
-        {
-            provide: ABSTRACT_PROPS_ACCESSOR,
-            useExisting: forwardRef(() => ExampleTuiInputFilesComponent),
-        },
-    ],
+    providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, ExampleTuiInputFilesComponent)],
 })
 export class ExampleTuiInputFilesComponent extends AbstractExampleTuiControl {
     public override readonly sizeVariants: readonly TuiSizeL[] = ['m', 'l'];

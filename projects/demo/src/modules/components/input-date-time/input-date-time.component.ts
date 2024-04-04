@@ -1,4 +1,4 @@
-import {Component, forwardRef} from '@angular/core';
+import {Component} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
@@ -9,6 +9,7 @@ import {
     TUI_LAST_DAY,
     TuiDay,
     TuiMonth,
+    tuiProvide,
     TuiTime,
 } from '@taiga-ui/cdk';
 import {TuiNamedDay} from '@taiga-ui/kit';
@@ -20,12 +21,7 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
     selector: 'example-tui-input-date-time',
     templateUrl: './input-date-time.template.html',
     changeDetection,
-    providers: [
-        {
-            provide: ABSTRACT_PROPS_ACCESSOR,
-            useExisting: forwardRef(() => ExampleTuiInputDateTimeComponent),
-        },
-    ],
+    providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, ExampleTuiInputDateTimeComponent)],
 })
 export class ExampleTuiInputDateTimeComponent extends AbstractExampleTuiControl {
     private readonly today = TuiDay.currentLocal();

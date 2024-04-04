@@ -8,6 +8,7 @@ import {
     ViewContainerRef,
 } from '@angular/core';
 import {TuiNoHostException} from '@taiga-ui/cdk/exceptions';
+import {tuiProvide} from '@taiga-ui/cdk/utils';
 import type {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 
 /**
@@ -79,9 +80,6 @@ export abstract class TuiPortalService {
     }
 }
 
-export function tuiAsPortal(useExisting: typeof TuiPortalService): Provider {
-    return {
-        provide: TuiPortalService,
-        useExisting,
-    };
+export function tuiAsPortal(portal: typeof TuiPortalService): Provider {
+    return tuiProvide(TuiPortalService, portal);
 }
