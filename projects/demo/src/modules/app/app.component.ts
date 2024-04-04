@@ -7,7 +7,11 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {LOCAL_STORAGE} from '@ng-web-apis/common';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {TuiDocMainModule, TuiLanguageSwitcherComponent} from '@taiga-ui/addon-doc';
-import {TuiSheetModule, TuiThemeAndroidModule, TuiThemeIosModule} from '@taiga-ui/addon-mobile';
+import {
+    TuiSheetModule,
+    TuiThemeAndroidModule,
+    TuiThemeIosModule,
+} from '@taiga-ui/addon-mobile';
 import {TuiTableBarsHostModule} from '@taiga-ui/addon-tablebars';
 import {TUI_IS_ANDROID, TUI_IS_IOS} from '@taiga-ui/cdk';
 import {TuiLinkModule, TuiModeModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
