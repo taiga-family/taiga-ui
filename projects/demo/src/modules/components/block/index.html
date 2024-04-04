@@ -1,0 +1,22 @@
+<tui-doc-page
+    header="Block"
+    package="KIT"
+    type="components"
+>
+    <ng-template pageTab>
+        <p>
+            <code>Block</code>
+            is a special presentation of a checkbox/radiobutton which can display actual control or be a control itself
+        </p>
+
+        <tui-doc-example
+            *ngFor="let example of examples; let index = index"
+            [component]="index + 1 | tuiComponent"
+            [content]="index + 1 | tuiExample: 'html,ts'"
+            [heading]="example"
+            [id]="example | tuiKebab"
+        />
+    </ng-template>
+
+    <tui-setup *pageTab="'Setup'" />
+</tui-doc-page>
