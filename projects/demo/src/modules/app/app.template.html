@@ -67,5 +67,7 @@
         <tui-sheets-host ngProjectAs="tuiOverContent" />
         <custom-host ngProjectAs="tuiOverContent" />
         <tui-table-bars-host ngProjectAs="tuiOverAlerts" />
+        <tui-theme-android *ngIf="isAndroid" />
+        <tui-theme-ios *ngIf="isIos" />
     </tui-doc-main>
 </ng-template>

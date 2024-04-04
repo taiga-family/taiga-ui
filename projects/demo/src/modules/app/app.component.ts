@@ -7,8 +7,9 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {LOCAL_STORAGE} from '@ng-web-apis/common';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {TuiDocMainModule, TuiLanguageSwitcherComponent} from '@taiga-ui/addon-doc';
-import {TuiSheetModule} from '@taiga-ui/addon-mobile';
+import {TuiSheetModule, TuiThemeAndroidModule, TuiThemeIosModule} from '@taiga-ui/addon-mobile';
 import {TuiTableBarsHostModule} from '@taiga-ui/addon-tablebars';
+import {TUI_IS_ANDROID, TUI_IS_IOS} from '@taiga-ui/cdk';
 import {TuiLinkModule, TuiModeModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {distinctUntilChanged, filter, map} from 'rxjs';
 
@@ -35,6 +36,8 @@ import {TUI_VERSION_MANAGER_PROVIDERS} from './version-manager/version-manager.p
         CustomHostComponent,
         TuiTableBarsHostModule,
         TuiTextfieldControllerModule,
+        TuiThemeIosModule,
+        TuiThemeAndroidModule,
     ],
     templateUrl: './app.template.html',
     styleUrls: ['./app.style.less'],
@@ -51,6 +54,8 @@ export class AppComponent extends AbstractDemoComponent implements OnInit {
     private readonly ym = inject(YaMetrikaService);
     protected readonly router = inject(Router);
     protected readonly storage = inject(LOCAL_STORAGE);
+    protected readonly isAndroid = inject(TUI_IS_ANDROID);
+    protected readonly isIos = inject(TUI_IS_IOS);
 
     protected readonly isLanding$ = this.router.events.pipe(
         map(() => this.router.routerState.snapshot.url === '/'),
