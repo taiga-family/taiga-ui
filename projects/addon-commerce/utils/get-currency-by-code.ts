@@ -1,7 +1,8 @@
 // cspell:disable
+import type {TuiCurrencyType} from '@taiga-ui/addon-commerce/enums';
 import {TuiCurrency, TuiCurrencyCode} from '@taiga-ui/addon-commerce/enums';
 
-export const TUI_CURRENCY_DICTIONARY: Record<TuiCurrencyCode, TuiCurrency> = {
+export const TUI_CURRENCY_DICTIONARY: Record<TuiCurrencyCode, TuiCurrencyType> = {
     [TuiCurrencyCode.Ruble]: TuiCurrency.Ruble,
     [TuiCurrencyCode.Dollar]: TuiCurrency.Dollar,
     [TuiCurrencyCode.MexicanPeso]: TuiCurrency.MexicanPeso,
@@ -44,6 +45,6 @@ export const TUI_CURRENCY_DICTIONARY: Record<TuiCurrencyCode, TuiCurrency> = {
     [TuiCurrencyCode.BrazilianReal]: TuiCurrency.BrazilianReal,
 };
 
-export function tuiGetCurrencyByCode(currency: TuiCurrencyCode): TuiCurrency | null {
+export function tuiGetCurrencyByCode(currency: TuiCurrencyCode): TuiCurrencyType | null {
     return TUI_CURRENCY_DICTIONARY[currency] ?? null;
 }

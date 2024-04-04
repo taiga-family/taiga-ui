@@ -3,6 +3,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {assets} from '@demo/utils';
+import type {TuiCurrencyType} from '@taiga-ui/addon-commerce';
 import {TuiCurrency} from '@taiga-ui/addon-commerce';
 import {TUI_DEFAULT_MATCHER, tuiControlValue} from '@taiga-ui/cdk';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
@@ -27,7 +28,7 @@ class Account {
         protected readonly id: string,
         protected readonly name: string,
         protected readonly amount: number,
-        protected readonly currency: TuiCurrency,
+        protected readonly currency: TuiCurrencyType,
         protected readonly cardSvg: string,
     ) {}
 

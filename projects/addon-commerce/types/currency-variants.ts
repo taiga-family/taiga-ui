@@ -1,9 +1,9 @@
-import type {TuiCurrency, TuiCurrencyCode} from '@taiga-ui/addon-commerce/enums';
+import type {TuiCurrencyCode, TuiCurrencyType} from '@taiga-ui/addon-commerce/enums';
 
 export type TuiCurrencyAutocompletion =
-    | keyof Record<TuiCurrency, string>
-    | keyof Record<TuiCurrencyCode, string>;
+    | keyof Record<TuiCurrencyCode, string>
+    | keyof Record<TuiCurrencyType, string>;
 
 export type TuiCurrencyVariants =
     | TuiCurrencyAutocompletion
-    | (TuiCurrency | TuiCurrencyCode | number | string | null);
+    | (TuiCurrencyCode | TuiCurrencyType | number | string | null);

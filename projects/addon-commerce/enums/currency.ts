@@ -7,9 +7,7 @@
  *
  * @link https://en.wikipedia.org/wiki/ISO_4217
  */
-// TODO: change type in v4.0
-// eslint-disable-next-line no-restricted-syntax
-export enum TuiCurrency {
+export const TuiCurrency = {
     /**
      * Armenian dram
      *
@@ -18,7 +16,7 @@ export enum TuiCurrency {
      * @description Countries and territories: Armenia
      * @description Currency symbol: ֏
      */
-    ArmenianDram = 'AMD',
+    ArmenianDram: 'AMD',
 
     /**
      * Australian dollar
@@ -28,9 +26,9 @@ export enum TuiCurrency {
      * @description Countries and territories: Australia, Christmas Island (CX), Cocos (Keeling) Islands (CC), Heard Island and McDonald Islands (HM), Kiribati (KI), Nauru (NR), Norfolk Island (NF), Tuvalu (TV)
      * @description Currency symbol: A$
      */
-    AustralianDollar = 'AUD',
+    AustralianDollar: 'AUD',
 
-    AzerbaijaniManat = 'AZN',
+    AzerbaijaniManat: 'AZN',
 
     /**
      * Thai baht
@@ -40,7 +38,7 @@ export enum TuiCurrency {
      * @description Countries and territories: Thailand
      * @description Currency symbol: ฿
      */
-    Baht = 'THB',
+    Baht: 'THB',
 
     /**
      * Belarusian ruble
@@ -50,7 +48,7 @@ export enum TuiCurrency {
      * @description Countries and territories: Belarus
      * @description Currency symbol: Br
      */
-    BelarusianRuble = 'BYN',
+    BelarusianRuble: 'BYN',
 
     /**
      * Brazilian Real
@@ -60,7 +58,7 @@ export enum TuiCurrency {
      * @description Countries and territories: Brazilia
      * @description Currency symbol: R$
      */
-    BrazilianReal = 'BRL',
+    BrazilianReal: 'BRL',
 
     /**
      * Canadian dollar
@@ -70,7 +68,7 @@ export enum TuiCurrency {
      * @description Countries and territories: Canada
      * @description Currency symbol: C$
      */
-    CanadianDollar = 'CAD',
+    CanadianDollar: 'CAD',
 
     /**
      * United Arab Emirates dirham
@@ -80,7 +78,7 @@ export enum TuiCurrency {
      * @description Countries and territories: United Arab Emirates
      * @description Currency symbol: Dh
      */
-    Dirham = 'AED',
+    Dirham: 'AED',
 
     /**
      * United States dollar
@@ -90,7 +88,7 @@ export enum TuiCurrency {
      * @description Countries and territories: United States, American Samoa (AS), British Indian Ocean Territory (IO) (also uses GBP), British Virgin Islands (VG), Caribbean Netherlands (BQ – Bonaire, Sint Eustatius and Saba), Ecuador (EC), El Salvador (SV), Guam (GU), Marshall Islands (MH), Federated States of Micronesia (FM), Northern Mariana Islands (MP), Palau (PW), Panama (PA) (as well as Panamanian Balboa), Puerto Rico (PR), Timor-Leste (TL), Turks and Caicos Islands (TC), U.S. Virgin Islands (VI), United States Minor Outlying Islands (UM)
      * @description Currency symbol: $
      */
-    Dollar = 'USD',
+    Dollar: 'USD',
 
     /**
      * Euro
@@ -100,9 +98,9 @@ export enum TuiCurrency {
      * @description Countries and territories: Åland Islands (AX), European Union (EU), Andorra (AD), Austria (AT), Belgium (BE), Cyprus (CY), Estonia (EE), Finland (FI), France (FR), French Southern and Antarctic Lands (TF), Germany (DE), Greece (GR), Guadeloupe (GP), Ireland (IE), Italy (IT), Latvia (LV), Lithuania (LT), Luxembourg (LU), Malta (MT), French Guiana (GF), Martinique (MQ), Mayotte (YT), Monaco (MC), Montenegro (ME), Netherlands (NL), Portugal (PT), Réunion (RE), Saint Barthélemy (BL), Saint Martin (MF), Saint Pierre and Miquelon (PM), San Marino (SM), Slovakia (SK), Slovenia (SI), Spain (ES), Vatican City (VA)
      * @description Currency symbol: €
      */
-    Euro = 'EUR',
+    Euro: 'EUR',
 
-    GeorgianLari = 'GEL',
+    GeorgianLari: 'GEL',
 
     /**
      * Hong Kong dollar
@@ -112,7 +110,7 @@ export enum TuiCurrency {
      * @description Countries and territories: Hong Kong
      * @description Currency symbol: HK$
      */
-    HongKongDollar = 'HKD',
+    HongKongDollar: 'HKD',
 
     /**
      * Ukrainian hryvnia
@@ -122,7 +120,7 @@ export enum TuiCurrency {
      * @description Countries and territories: Ukraine
      * @description Currency symbol: ₴
      */
-    Hryvnia = 'UAH',
+    Hryvnia: 'UAH',
 
     /**
      * Indian rupee
@@ -132,11 +130,11 @@ export enum TuiCurrency {
      * @description Countries and territories: India, Bhutan
      * @description Currency symbol: ₹
      */
-    IndianRupee = 'INR',
+    IndianRupee: 'INR',
 
-    IndonesianRupiah = 'IDR',
+    IndonesianRupiah: 'IDR',
 
-    IranianRial = 'IRR',
+    IranianRial: 'IRR',
 
     /**
      * Israeli new shekel
@@ -146,7 +144,7 @@ export enum TuiCurrency {
      * @description Countries and territories: Israel
      * @description Currency symbol: ₪
      */
-    IsraeliShekel = 'ILS',
+    IsraeliShekel: 'ILS',
 
     /**
      * Kyrgyzstani som
@@ -156,9 +154,9 @@ export enum TuiCurrency {
      * @description Countries and territories: Kyrgyzstan
      * @description Currency symbol: c
      */
-    KyrgyzstanSom = 'KGS',
+    KyrgyzstanSom: 'KGS',
 
-    MalaysianRinggit = 'MYR',
+    MalaysianRinggit: 'MYR',
 
     /**
      * Mexican peso
@@ -168,11 +166,11 @@ export enum TuiCurrency {
      * @description Countries and territories: Mexico
      * @description Currency symbol: $
      */
-    MexicanPeso = 'MXN',
+    MexicanPeso: 'MXN',
 
-    MongolianTugrik = 'MNT',
+    MongolianTugrik: 'MNT',
 
-    NewTurkmenManat = 'TMT',
+    NewTurkmenManat: 'TMT',
 
     /**
      * Pound sterling
@@ -182,7 +180,7 @@ export enum TuiCurrency {
      * @description Countries and territories: United Kingdom, Isle of Man (IM, see Manx pound), Jersey (JE, see Jersey pound), Guernsey (GG, see Guernsey pound), Tristan da Cunha (SH-TA)
      * @description Currency symbol: £
      */
-    Pound = 'GBP',
+    Pound: 'GBP',
 
     /**
      * Russian ruble
@@ -192,7 +190,7 @@ export enum TuiCurrency {
      * @description Countries and territories: Russia
      * @description Currency symbol: ₽
      */
-    Ruble = 'RUB',
+    Ruble: 'RUB',
 
     /**
      * Malaysian ringgit
@@ -203,7 +201,7 @@ export enum TuiCurrency {
      * @description Currency symbol: RM
      */
 
-    SaudiRiyal = 'SAR',
+    SaudiRiyal: 'SAR',
     /**
      *
      * Belarusian ruble
@@ -214,7 +212,7 @@ export enum TuiCurrency {
      * @description Currency symbol: Rbl
      */
 
-    SerbianDinar = 'RSD',
+    SerbianDinar: 'RSD',
     /**
      * Georgian lari
      *
@@ -232,7 +230,7 @@ export enum TuiCurrency {
      * @description Countries and territories: Singapore
      * @description Currency symbol: S$
      */
-    SingaporeDollar = 'SGD',
+    SingaporeDollar: 'SGD',
     /**
      * Azerbaijani manat
      *
@@ -242,7 +240,7 @@ export enum TuiCurrency {
      * @description Currency symbol: ₼
      */
 
-    SouthAfricanRand = 'ZAR',
+    SouthAfricanRand: 'ZAR',
     /**
      * Sri Lankan rupee
      *
@@ -252,7 +250,7 @@ export enum TuiCurrency {
      * @description Currency symbol: Rs.
      */
 
-    SriLankanRupee = 'LKR',
+    SriLankanRupee: 'LKR',
     /**
      * Serbian dinar
      *
@@ -270,7 +268,7 @@ export enum TuiCurrency {
      * @description Countries and territories: Switzerland, Liechtenstein (LI)
      * @description Currency symbol: ₣
      */
-    SwissFranc = 'CHF',
+    SwissFranc: 'CHF',
     /**
      * Saudi Riyal
      *
@@ -288,7 +286,7 @@ export enum TuiCurrency {
      * @description Countries and territories: Tajikistan
      * @description Currency symbol: SM
      */
-    TajikistaniSomoni = 'TJS',
+    TajikistaniSomoni: 'TJS',
     /**
      * Mongolian tugrik
      *
@@ -306,7 +304,7 @@ export enum TuiCurrency {
      * @description Countries and territories: Kazakhstan
      * @description Currency symbol: ₸
      */
-    Tenge = 'KZT',
+    Tenge: 'KZT',
     /**
      * South African rand
      *
@@ -324,7 +322,7 @@ export enum TuiCurrency {
      * @description Countries and territories: Turkey
      * @description Currency symbol: ₺
      */
-    TurkishLira = 'TRY',
+    TurkishLira: 'TRY',
     /**
      * Iranian rial
      *
@@ -342,7 +340,7 @@ export enum TuiCurrency {
      * @description Countries and territories: Uzbekistan
      * @description Currency symbol: So'm
      */
-    UzbekSum = 'UZS',
+    UzbekSum: 'UZS',
     /**
      * Indonesian rupiah
      *
@@ -352,7 +350,7 @@ export enum TuiCurrency {
      * @description Currency symbol: Rp
      */
 
-    VietnameseDong = 'VND',
+    VietnameseDong: 'VND',
     /**
      * Vietnamese dong
      *
@@ -370,7 +368,7 @@ export enum TuiCurrency {
      * @description Countries and territories: South Korea
      * @description Currency symbol: ₩
      */
-    Won = 'KRW',
+    Won: 'KRW',
     /**
      * New Turkmen manat
      *
@@ -388,7 +386,7 @@ export enum TuiCurrency {
      * @description Countries and territories: Japan
      * @description Currency symbol: ¥
      */
-    Yen = 'JPY',
+    Yen: 'JPY',
     /**
      * Chinese yuan
      *
@@ -397,5 +395,7 @@ export enum TuiCurrency {
      * @description Countries and territories: China
      * @description Currency symbol: CN¥
      */
-    YuanRenminbi = 'CNY',
-}
+    YuanRenminbi: 'CNY',
+} as const;
+
+export type TuiCurrencyType = (typeof TuiCurrency)[keyof typeof TuiCurrency];

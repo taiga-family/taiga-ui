@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
+import type {TuiCurrencyType} from '@taiga-ui/addon-commerce';
 import {TuiCurrency} from '@taiga-ui/addon-commerce';
 import {TuiDay, TuiTime} from '@taiga-ui/cdk';
 
@@ -20,7 +21,7 @@ class Account {
         protected readonly id: string,
         protected readonly name: string,
         protected readonly amount: number,
-        protected readonly currency: TuiCurrency,
+        protected readonly currency: TuiCurrencyType,
         protected readonly cardSvg: string,
     ) {}
 }
