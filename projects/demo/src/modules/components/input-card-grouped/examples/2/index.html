@@ -26,8 +26,9 @@
                 <tui-thumbnail-card
                     size="s"
                     class="card"
-                    [cardNumber]="item.card.slice(-4)"
-                />
+                >
+                    {{ item.card.slice(-4) }}
+                </tui-thumbnail-card>
                 <label
                     class="label"
                     [tuiLabel]="item.bank"

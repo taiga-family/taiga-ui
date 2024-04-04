@@ -47,8 +47,9 @@
                 paymentSystem="mastercard"
                 size="s"
                 class="card"
-                [cardNumber]="item.cardNumber.slice(1)"
-            />
+            >
+                {{ item.cardNumber.slice(1) }}
+            </tui-thumbnail-card>
             <span class="card-name">{{ item.cardName }}</span>
             <span class="card-number">{{ item.cardNumber }}</span>
         </div>

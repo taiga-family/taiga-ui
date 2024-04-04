@@ -1,35 +1,18 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiDemoModule} from '@demo/utils';
 import type {TuiPaymentSystem} from '@taiga-ui/addon-commerce';
-import type {TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiThumbnailCardComponent} from '@taiga-ui/addon-commerce';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 
 @Component({
-    selector: 'example-tui-thumbnail-card',
-    templateUrl: './thumbnail-card.template.html',
+    standalone: true,
+    imports: [TuiDemoModule, TuiThumbnailCardComponent],
+    templateUrl: './index.html',
     changeDetection,
 })
-export class ExampleTuiThumbnailCardComponent {
-    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
-    protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
-    protected readonly exampleCustomizeStyles = import(
-        './examples/import/customize-styles.md?raw'
-    );
-
-    protected readonly example1: TuiDocExample = {
-        HTML: import('./examples/1/index.html?raw'),
-    };
-
-    protected readonly example2: TuiDocExample = {
-        HTML: import('./examples/2/index.html?raw'),
-        LESS: import('./examples/2/index.less?raw'),
-    };
-
-    protected readonly example3: TuiDocExample = {
-        HTML: import('./examples/3/index.html?raw'),
-        LESS: import('./examples/3/index.less?raw'),
-    };
-
+export default class ExampleComponent {
+    protected examples = ['Sizes', 'A cool one', 'Backgrounds'];
     protected iconVariants = ['', 'tuiIconLock', 'tuiIconCloud', 'tuiIconUser'];
     protected iconLeft = this.iconVariants[0];
     protected iconRight = this.iconVariants[0];

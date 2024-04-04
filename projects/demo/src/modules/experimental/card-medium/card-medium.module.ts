@@ -1,6 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
+import {TuiThumbnailCardComponent} from '@taiga-ui/addon-commerce';
 import {tuiGetDocModules} from '@taiga-ui/addon-doc';
 import {TuiRippleModule} from '@taiga-ui/addon-mobile';
 import {TuiPlatformModule, TuiRepeatTimesModule} from '@taiga-ui/cdk';
@@ -20,12 +21,7 @@ import {
     TuiSvgModule,
     TuiTitleDirective,
 } from '@taiga-ui/core';
-import {
-    TuiCardModule,
-    TuiCellModule,
-    TuiSurfaceModule,
-    TuiThumbnailCardModule,
-} from '@taiga-ui/experimental';
+import {TuiCardModule, TuiCellModule, TuiSurfaceModule} from '@taiga-ui/experimental';
 import {
     TuiAvatarComponent,
     TuiAvatarStackComponent,
@@ -63,7 +59,7 @@ import {TuiCardMediumExample7} from './examples/7';
         TuiHintModule,
         FormsModule,
         TuiRippleModule,
-        TuiThumbnailCardModule,
+        TuiThumbnailCardComponent,
         TuiIconComponent,
         TuiButtonDirective,
         TuiHeaderDirective,
