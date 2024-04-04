@@ -12,6 +12,7 @@
             [content]="index + 1 | tuiExample"
             [description]="index === 1 && description"
             [heading]="example"
+            [id]="example | tuiKebab"
         />
 
         <ng-template #description>
