@@ -15,6 +15,7 @@
             "@demo/environments/*": ["projects/demo/src/environments/*"],
             "@demo/root-package": ["package.json"],
             "@demo/utils": ["projects/demo/src/utils/index"],
+            "@demo/routes": ["projects/demo/src/modules/app/demo-routes"],
             "@taiga-ui/addon-charts": ["projects/addon-charts/index"],
             "@taiga-ui/addon-charts/*": ["projects/addon-charts/*"],
             "@taiga-ui/addon-commerce": ["projects/addon-commerce/index"],
