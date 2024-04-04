@@ -19,5 +19,6 @@ export * from './is-string';
 export * from './is-valid-url';
 export * from './mark-control-as-touched-and-validate';
 export * from './nullable-same';
+export * from './provide';
 export * from './provide-options';
 export * from './uniq-by';

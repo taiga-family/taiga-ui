@@ -1,9 +1,15 @@
-import {Component, forwardRef} from '@angular/core';
+import {Component} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk';
-import {TUI_FALSE_HANDLER, TUI_FIRST_DAY, TUI_LAST_DAY, TuiDay} from '@taiga-ui/cdk';
+import {
+    TUI_FALSE_HANDLER,
+    TUI_FIRST_DAY,
+    TUI_LAST_DAY,
+    TuiDay,
+    tuiProvide,
+} from '@taiga-ui/cdk';
 import type {TuiMarkerHandler} from '@taiga-ui/core';
 import {TUI_DEFAULT_MARKER_HANDLER} from '@taiga-ui/core';
 
@@ -14,12 +20,7 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
     selector: 'example-tui-input-date-multi',
     templateUrl: './input-date-multi.template.html',
     changeDetection,
-    providers: [
-        {
-            provide: ABSTRACT_PROPS_ACCESSOR,
-            useExisting: forwardRef(() => ExampleTuiInputDateMultiComponent),
-        },
-    ],
+    providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, ExampleTuiInputDateMultiComponent)],
 })
 export class ExampleTuiInputDateMultiComponent extends AbstractExampleTuiControl {
     public control = new FormControl<TuiDay[]>([], Validators.required);

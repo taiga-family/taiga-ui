@@ -1,8 +1,9 @@
 import type {TemplateRef} from '@angular/core';
-import {Component, forwardRef, ViewChild} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
+import {tuiProvide} from '@taiga-ui/cdk';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {AbstractExampleTuiControl} from '../abstract/control';
@@ -15,12 +16,7 @@ const LONG_TEXT_TEMPLATE = '<span>LongTextContent</span>';
     templateUrl: './input.template.html',
     styleUrls: ['./input.style.less'],
     changeDetection,
-    providers: [
-        {
-            provide: ABSTRACT_PROPS_ACCESSOR,
-            useExisting: forwardRef(() => ExampleTuiInputComponent),
-        },
-    ],
+    providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, ExampleTuiInputComponent)],
 })
 export class ExampleTuiInputComponent extends AbstractExampleTuiControl {
     @ViewChild('justLongText', {static: true})

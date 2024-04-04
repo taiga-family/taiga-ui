@@ -1,7 +1,8 @@
-import {Component, forwardRef} from '@angular/core';
+import {Component} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
+import {tuiProvide} from '@taiga-ui/cdk';
 
 import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
@@ -11,12 +12,7 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
     templateUrl: './input-phone.template.html',
     styleUrls: ['./input-phone.style.less'],
     changeDetection,
-    providers: [
-        {
-            provide: ABSTRACT_PROPS_ACCESSOR,
-            useExisting: forwardRef(() => ExampleTuiInputPhoneComponent),
-        },
-    ],
+    providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, ExampleTuiInputPhoneComponent)],
 })
 export class ExampleTuiInputPhoneComponent extends AbstractExampleTuiControl {
     public override cleaner = false;

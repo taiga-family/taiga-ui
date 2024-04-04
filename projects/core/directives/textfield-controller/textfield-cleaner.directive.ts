@@ -1,5 +1,9 @@
-import {Directive, forwardRef, Input} from '@angular/core';
-import {AbstractTuiController, tuiCreateTokenFromFactory} from '@taiga-ui/cdk';
+import {Directive, Input} from '@angular/core';
+import {
+    AbstractTuiController,
+    tuiCreateTokenFromFactory,
+    tuiProvide,
+} from '@taiga-ui/cdk';
 
 export const TUI_TEXTFIELD_CLEANER = tuiCreateTokenFromFactory(
     () => new TuiTextfieldCleanerDirective(),
@@ -7,12 +11,7 @@ export const TUI_TEXTFIELD_CLEANER = tuiCreateTokenFromFactory(
 
 @Directive({
     selector: '[tuiTextfieldCleaner]',
-    providers: [
-        {
-            provide: TUI_TEXTFIELD_CLEANER,
-            useExisting: forwardRef(() => TuiTextfieldCleanerDirective),
-        },
-    ],
+    providers: [tuiProvide(TUI_TEXTFIELD_CLEANER, TuiTextfieldCleanerDirective)],
 })
 export class TuiTextfieldCleanerDirective extends AbstractTuiController {
     @Input('tuiTextfieldCleaner')

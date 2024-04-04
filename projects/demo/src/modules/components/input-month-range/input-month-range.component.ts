@@ -1,4 +1,4 @@
-import {Component, forwardRef} from '@angular/core';
+import {Component} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
@@ -9,6 +9,7 @@ import {
     TUI_LAST_DAY,
     TuiDay,
     TuiMonth,
+    tuiProvide,
 } from '@taiga-ui/cdk';
 import type {TuiBooleanHandlerWithContext, TuiMonthContext} from '@taiga-ui/kit';
 
@@ -19,12 +20,7 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
     selector: 'example-tui-input-month-range',
     templateUrl: './input-month-range.template.html',
     changeDetection,
-    providers: [
-        {
-            provide: ABSTRACT_PROPS_ACCESSOR,
-            useExisting: forwardRef(() => ExampleTuiInputMonthRangeComponent),
-        },
-    ],
+    providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, ExampleTuiInputMonthRangeComponent)],
 })
 export class ExampleTuiInputMonthRangeComponent extends AbstractExampleTuiControl {
     public override cleaner = false;

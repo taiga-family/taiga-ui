@@ -1,10 +1,10 @@
-import {Component, forwardRef} from '@angular/core';
+import {Component} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import {tuiDocExcludeProperties} from '@taiga-ui/addon-doc';
 import type {TuiBooleanHandler, TuiTimeMode} from '@taiga-ui/cdk';
-import {TUI_FALSE_HANDLER, TuiTime} from '@taiga-ui/cdk';
+import {TUI_FALSE_HANDLER, tuiProvide, TuiTime} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {tuiCreateTimePeriods} from '@taiga-ui/kit';
 
@@ -16,10 +16,7 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
     templateUrl: './input-time.template.html',
     changeDetection,
     providers: [
-        {
-            provide: ABSTRACT_PROPS_ACCESSOR,
-            useExisting: forwardRef(() => ExampleTuiInputTimeComponent),
-        },
+        tuiProvide(ABSTRACT_PROPS_ACCESSOR, ExampleTuiInputTimeComponent),
         tuiDocExcludeProperties(['tuiTextfieldFiller']),
     ],
 })

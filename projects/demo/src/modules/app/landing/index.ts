@@ -14,7 +14,12 @@ import {
     INTERSECTION_ROOT,
     IntersectionObserverModule,
 } from '@ng-web-apis/intersection-observer';
-import {EMPTY_QUERY, TuiAutoFocusDirective, TuiRepeatTimesModule} from '@taiga-ui/cdk';
+import {
+    EMPTY_QUERY,
+    TuiAutoFocusDirective,
+    tuiProvide,
+    TuiRepeatTimesModule,
+} from '@taiga-ui/cdk';
 import {TuiButtonDirective, tuiFadeIn} from '@taiga-ui/core';
 
 @Component({
@@ -30,12 +35,7 @@ import {TuiButtonDirective, tuiFadeIn} from '@taiga-ui/core';
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: INTERSECTION_ROOT,
-            useExisting: ElementRef,
-        },
-    ],
+    providers: [tuiProvide(INTERSECTION_ROOT, ElementRef)],
     host: {
         '[class._hide]': 'hidden',
     },

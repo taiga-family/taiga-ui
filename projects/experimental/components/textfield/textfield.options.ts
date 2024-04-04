@@ -1,6 +1,11 @@
 import type {Provider} from '@angular/core';
 import {Directive, inject, Input} from '@angular/core';
-import {AbstractTuiController, tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
+import {
+    AbstractTuiController,
+    tuiCreateToken,
+    tuiProvide,
+    tuiProvideOptions,
+} from '@taiga-ui/cdk';
 import type {TuiAppearanceOptions, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 
 export interface TuiTextfieldOptions extends TuiAppearanceOptions {
@@ -29,12 +34,7 @@ export function tuiTextfieldOptionsProvider(
 @Directive({
     standalone: true,
     selector: '[tuiTextfieldAppearance],[tuiTextfieldSize],[tuiTextfieldCleaner]',
-    providers: [
-        {
-            provide: TUI_TEXTFIELD_OPTIONS,
-            useExisting: TuiTextfieldOptionsDirective,
-        },
-    ],
+    providers: [tuiProvide(TUI_TEXTFIELD_OPTIONS, TuiTextfieldOptionsDirective)],
 })
 export class TuiTextfieldOptionsDirective
     extends AbstractTuiController

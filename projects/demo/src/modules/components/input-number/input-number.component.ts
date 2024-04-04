@@ -1,7 +1,8 @@
-import {Component, forwardRef} from '@angular/core';
+import {Component} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
+import {tuiProvide} from '@taiga-ui/cdk';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
 import {AbstractExampleTuiNumberFormat} from '../abstract/number-format';
@@ -10,12 +11,7 @@ import {AbstractExampleTuiNumberFormat} from '../abstract/number-format';
     selector: 'example-tui-input-number',
     templateUrl: './input-number.template.html',
     changeDetection,
-    providers: [
-        {
-            provide: ABSTRACT_PROPS_ACCESSOR,
-            useExisting: forwardRef(() => ExampleTuiInputNumberComponent),
-        },
-    ],
+    providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, ExampleTuiInputNumberComponent)],
 })
 export class ExampleTuiInputNumberComponent extends AbstractExampleTuiNumberFormat {
     public override cleaner = false;

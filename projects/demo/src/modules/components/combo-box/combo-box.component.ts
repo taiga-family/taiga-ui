@@ -1,10 +1,15 @@
-import {Component, forwardRef, ViewChild} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import {tuiDocExcludeProperties} from '@taiga-ui/addon-doc';
 import type {TuiIdentityMatcher, TuiStringHandler, TuiStringMatcher} from '@taiga-ui/cdk';
-import {TUI_DEFAULT_MATCHER, TUI_STRICT_MATCHER, tuiPure} from '@taiga-ui/cdk';
+import {
+    TUI_DEFAULT_MATCHER,
+    TUI_STRICT_MATCHER,
+    tuiProvide,
+    tuiPure,
+} from '@taiga-ui/cdk';
 import type {TuiValueContentContext} from '@taiga-ui/core';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
@@ -28,10 +33,7 @@ class Account {
     styleUrls: ['./combo-box.style.less'],
     changeDetection,
     providers: [
-        {
-            provide: ABSTRACT_PROPS_ACCESSOR,
-            useExisting: forwardRef(() => ExampleTuiComboBoxComponent),
-        },
+        tuiProvide(ABSTRACT_PROPS_ACCESSOR, ExampleTuiComboBoxComponent),
         tuiDocExcludeProperties(['tuiTextfieldPrefix', 'tuiTextfieldPostfix']),
     ],
 })

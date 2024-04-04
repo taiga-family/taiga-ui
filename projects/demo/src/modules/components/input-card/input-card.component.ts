@@ -1,10 +1,11 @@
-import {Component, forwardRef, ViewChild} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiCodeCVCLength} from '@taiga-ui/addon-commerce';
 import {tuiCreateLuhnValidator} from '@taiga-ui/addon-commerce';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiDocDocumentationPropertyConnectorDirective} from '@taiga-ui/addon-doc';
+import {tuiProvide} from '@taiga-ui/cdk';
 import type {TuiHintOptions} from '@taiga-ui/core';
 
 import {AbstractExampleTuiControl} from '../abstract/control';
@@ -15,12 +16,7 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
     templateUrl: './input-card.template.html',
     styleUrls: ['./input-card.style.less'],
     changeDetection,
-    providers: [
-        {
-            provide: ABSTRACT_PROPS_ACCESSOR,
-            useExisting: forwardRef(() => ExampleTuiInputCardComponent),
-        },
-    ],
+    providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, ExampleTuiInputCardComponent)],
 })
 export class ExampleTuiInputCardComponent extends AbstractExampleTuiControl {
     public control = new FormGroup({

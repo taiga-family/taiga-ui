@@ -1,4 +1,4 @@
-import {Component, forwardRef} from '@angular/core';
+import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
@@ -9,7 +9,7 @@ import type {
     TuiIdentityMatcher,
     TuiStringHandler,
 } from '@taiga-ui/cdk';
-import {TUI_FALSE_HANDLER, TUI_TRUE_HANDLER} from '@taiga-ui/cdk';
+import {TUI_FALSE_HANDLER, TUI_TRUE_HANDLER, tuiProvide} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
@@ -33,10 +33,7 @@ class Account {
     styleUrls: ['./multi-select.style.less'],
     changeDetection,
     providers: [
-        {
-            provide: ABSTRACT_PROPS_ACCESSOR,
-            useExisting: forwardRef(() => ExampleTuiMultiSelectComponent),
-        },
+        tuiProvide(ABSTRACT_PROPS_ACCESSOR, ExampleTuiMultiSelectComponent),
         tuiDocExcludeProperties([
             'tuiTextfieldPrefix',
             'tuiTextfieldPostfix',

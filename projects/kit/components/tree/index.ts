@@ -1,6 +1,5 @@
 export * from './components/tree/tree.component';
 export * from './components/tree-item/tree-item.component';
-export * from './components/tree-item/tree-item.providers';
 export * from './components/tree-item-content/tree-item-content.component';
 export * from './directives/tree-children.directive';
 export * from './directives/tree-controller.directive';

@@ -1,4 +1,5 @@
 import {Directive, inject} from '@angular/core';
+import {tuiProvide} from '@taiga-ui/cdk';
 import type {TuiButtonOptions} from '@taiga-ui/core';
 import {TUI_BUTTON_OPTIONS, TuiModeDirective} from '@taiga-ui/core';
 import {Subject} from 'rxjs';
@@ -6,14 +7,8 @@ import {Subject} from 'rxjs';
 @Directive({
     selector: 'tui-push',
     providers: [
-        {
-            provide: TuiModeDirective,
-            useExisting: TuiPushDirective,
-        },
-        {
-            provide: TUI_BUTTON_OPTIONS,
-            useExisting: TuiPushDirective,
-        },
+        tuiProvide(TuiModeDirective, TuiPushDirective),
+        tuiProvide(TUI_BUTTON_OPTIONS, TuiPushDirective),
     ],
 })
 export class TuiPushDirective extends TuiModeDirective implements TuiButtonOptions {

@@ -1,9 +1,9 @@
-import {Component, forwardRef} from '@angular/core';
+import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiCard, TuiCodeCVCLength} from '@taiga-ui/addon-commerce';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
-import {tuiIsString} from '@taiga-ui/cdk';
+import {tuiIsString, tuiProvide} from '@taiga-ui/cdk';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
@@ -14,12 +14,7 @@ import {AbstractExampleTuiInteractive} from '../abstract/interactive';
     templateUrl: './input-card-grouped.template.html',
     styleUrls: ['./input-card-grouped.style.less'],
     changeDetection,
-    providers: [
-        {
-            provide: ABSTRACT_PROPS_ACCESSOR,
-            useExisting: forwardRef(() => ExampleTuiInputCardGroupedComponent),
-        },
-    ],
+    providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, ExampleTuiInputCardGroupedComponent)],
 })
 export class ExampleTuiInputCardGroupedComponent extends AbstractExampleTuiInteractive {
     protected readonly exampleModule = import('./examples/import/import-module.md?raw');

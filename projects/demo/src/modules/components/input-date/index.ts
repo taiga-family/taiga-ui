@@ -1,4 +1,4 @@
-import {Component, forwardRef} from '@angular/core';
+import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -6,7 +6,13 @@ import {TuiDemoModule} from '@demo/utils';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiMobileCalendarDialogModule} from '@taiga-ui/addon-mobile';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk';
-import {TUI_FALSE_HANDLER, TUI_FIRST_DAY, TUI_LAST_DAY, TuiDay} from '@taiga-ui/cdk';
+import {
+    TUI_FALSE_HANDLER,
+    TUI_FIRST_DAY,
+    TUI_LAST_DAY,
+    TuiDay,
+    tuiProvide,
+} from '@taiga-ui/cdk';
 import type {TuiMarkerHandler} from '@taiga-ui/core';
 import {
     TUI_DEFAULT_MARKER_HANDLER,
@@ -40,12 +46,7 @@ const ONE_DOT: [string] = ['var(--tui-success-fill)'];
     ],
     templateUrl: './index.html',
     changeDetection,
-    providers: [
-        {
-            provide: ABSTRACT_PROPS_ACCESSOR,
-            useExisting: forwardRef(() => ExampleComponent),
-        },
-    ],
+    providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, ExampleComponent)],
 })
 export default class ExampleComponent extends AbstractExampleTuiControl {
     public override cleaner = false;

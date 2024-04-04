@@ -3,17 +3,14 @@ import type {AbstractControl, Validator} from '@angular/forms';
 import {NG_VALIDATORS} from '@angular/forms';
 import {tuiZonefree} from '@taiga-ui/cdk/observables';
 import {TuiDestroyService} from '@taiga-ui/cdk/services';
+import {tuiProvide} from '@taiga-ui/cdk/utils';
 import {takeUntil, timer} from 'rxjs';
 
 @Directive({
     standalone: true,
     selector: '[tuiNativeValidator]',
     providers: [
-        {
-            provide: NG_VALIDATORS,
-            multi: true,
-            useExisting: TuiNativeValidatorDirective,
-        },
+        tuiProvide(NG_VALIDATORS, TuiNativeValidatorDirective, true),
         TuiDestroyService,
     ],
 })

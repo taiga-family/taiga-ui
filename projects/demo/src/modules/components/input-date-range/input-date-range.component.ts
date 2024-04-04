@@ -1,4 +1,4 @@
-import {Component, forwardRef} from '@angular/core';
+import {Component} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
@@ -9,6 +9,7 @@ import {
     TUI_LAST_DAY,
     TuiDay,
     TuiMonth,
+    tuiProvide,
 } from '@taiga-ui/cdk';
 import type {TuiMarkerHandler} from '@taiga-ui/core';
 import {TUI_DEFAULT_MARKER_HANDLER} from '@taiga-ui/core';
@@ -25,12 +26,7 @@ const ONE_DOT: [string] = ['var(--tui-success-fill)'];
     selector: 'example-tui-input-date-range',
     templateUrl: './input-date-range.template.html',
     changeDetection,
-    providers: [
-        {
-            provide: ABSTRACT_PROPS_ACCESSOR,
-            useExisting: forwardRef(() => ExampleTuiInputDateRangeComponent),
-        },
-    ],
+    providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, ExampleTuiInputDateRangeComponent)],
 })
 export class ExampleTuiInputDateRangeComponent extends AbstractExampleTuiControl {
     public override cleaner = false;
