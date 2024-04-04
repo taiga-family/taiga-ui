@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {tuiGetDocModules} from '@taiga-ui/addon-doc';
 import {
-    TuiLinkModule,
+    TuiLinkDirective,
     TuiNotificationModule,
     TuiNumberFormatDirective,
 } from '@taiga-ui/core';
@@ -20,7 +20,7 @@ import {TuiAmountExample3} from './examples/3';
         TuiNotificationModule,
         TuiNumberFormatDirective,
         tuiGetDocModules(ExampleTuiAmountComponent),
-        TuiLinkModule,
+        TuiLinkDirective,
     ],
     declarations: [
         ExampleTuiAmountComponent,

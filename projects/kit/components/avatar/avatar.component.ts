@@ -12,7 +12,7 @@ import {TUI_AVATAR_OPTIONS} from './avatar.options';
 
 @Component({
     standalone: true,
-    selector: 'tui-avatar',
+    selector: 'tui-avatar,button[tuiAvatar],a[tuiAvatar]',
     imports: [NgSwitch, NgSwitchCase, NgSwitchDefault],
     templateUrl: './avatar.template.html',
     styleUrls: ['./avatar.style.less'],

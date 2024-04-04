@@ -3,7 +3,7 @@ import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAddonDocModule, type TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiLinkModule, TuiNotificationModule} from '@taiga-ui/core';
+import {TuiLinkDirective, TuiNotificationModule} from '@taiga-ui/core';
 import {TuiActionModule} from '@taiga-ui/kit';
 
 import {TuiActionExample1} from './examples/1';
@@ -18,7 +18,7 @@ import {TuiActionExample5} from './examples/5';
         TuiAddonDocModule,
         TuiNotificationModule,
         RouterLink,
-        TuiLinkModule,
+        TuiLinkDirective,
         TuiActionExample1,
         TuiActionExample2,
         TuiActionExample3,

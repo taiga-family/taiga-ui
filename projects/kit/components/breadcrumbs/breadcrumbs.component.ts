@@ -3,14 +3,13 @@ import {
     ChangeDetectionStrategy,
     Component,
     ContentChildren,
-    forwardRef,
     HostBinding,
     inject,
     Input,
     TemplateRef,
 } from '@angular/core';
 import {EMPTY_QUERY, TuiItemDirective} from '@taiga-ui/cdk';
-import {TuiModeDirective} from '@taiga-ui/core';
+import {tuiLinkOptionsProvider, TuiModeDirective} from '@taiga-ui/core';
 
 import {TUI_BREADCRUMBS_OPTIONS} from './breadcrumbs.options';
 
@@ -19,12 +18,7 @@ import {TUI_BREADCRUMBS_OPTIONS} from './breadcrumbs.options';
     templateUrl: './breadcrumbs.template.html',
     styleUrls: ['./breadcrumbs.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: TuiModeDirective,
-            useExisting: forwardRef(() => TuiBreadcrumbsComponent),
-        },
-    ],
+    providers: [tuiLinkOptionsProvider({appearance: 'icon'})],
 })
 export class TuiBreadcrumbsComponent extends TuiModeDirective {
     private readonly options = inject(TUI_BREADCRUMBS_OPTIONS);
@@ -32,8 +26,6 @@ export class TuiBreadcrumbsComponent extends TuiModeDirective {
     @Input()
     @HostBinding('attr.data-size')
     public size = this.options.size;
-
-    public override readonly mode = this.options.mode;
 
     @ContentChildren(TuiItemDirective, {read: TemplateRef})
     protected readonly items: QueryList<TemplateRef<Record<string, unknown>>> =

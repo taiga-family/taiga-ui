@@ -6,7 +6,7 @@ import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiMapperPipeModule} from '@taiga-ui/cdk';
 import {
     TuiButtonDirective,
-    TuiLinkModule,
+    TuiLinkDirective,
     TuiLoaderModule,
     TuiSvgModule,
 } from '@taiga-ui/core';
@@ -28,7 +28,7 @@ import {ExampleTuiTreeComponent} from './tree.component';
         TuiTreeModule,
         TuiSvgModule,
         TuiButtonDirective,
-        TuiLinkModule,
+        TuiLinkDirective,
         TuiMapperPipeModule,
         TuiLoaderModule,
         FormsModule,

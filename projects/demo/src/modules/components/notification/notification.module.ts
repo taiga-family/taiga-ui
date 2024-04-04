@@ -6,7 +6,7 @@ import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiButtonDirective,
     TuiHintModule,
-    TuiLinkModule,
+    TuiLinkDirective,
     TuiModeModule,
     TuiNotificationModule,
     TuiSvgModule,
@@ -21,7 +21,7 @@ import {ExampleTuiNotificationComponent} from './notification.component';
     imports: [
         TuiNotificationModule,
         TuiButtonDirective,
-        TuiLinkModule,
+        TuiLinkDirective,
         TuiModeModule,
         CommonModule,
         FormsModule,

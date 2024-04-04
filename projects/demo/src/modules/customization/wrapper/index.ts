@@ -9,7 +9,7 @@ import {
     TuiDocExampleModule,
     TuiDocPageModule,
 } from '@taiga-ui/addon-doc';
-import {TuiLinkModule} from '@taiga-ui/core';
+import {TuiLinkDirective} from '@taiga-ui/core';
 
 import {TuiWrapperExample1} from './examples/1';
 
@@ -21,7 +21,7 @@ import {TuiWrapperExample1} from './examples/1';
         TuiDocCopyModule,
         ClipboardModule,
         RouterLink,
-        TuiLinkModule,
+        TuiLinkDirective,
         TuiDocExampleModule,
         TuiWrapperExample1,
     ],

@@ -6,7 +6,7 @@ import {TuiAutoFocusDirective, TuiLetModule} from '@taiga-ui/cdk';
 import {
     TuiButtonDirective,
     TuiFormatNumberPipeModule,
-    TuiLinkModule,
+    TuiLinkDirective,
     TuiLoaderModule,
     TuiSvgModule,
     TuiTextfieldControllerModule,
@@ -20,7 +20,7 @@ import {PayModalComponent} from './pay-modal.component';
     imports: [
         CommonModule,
         FormsModule,
-        TuiLinkModule,
+        TuiLinkDirective,
         TuiSvgModule,
         TuiLetModule,
         TuiLoaderModule,

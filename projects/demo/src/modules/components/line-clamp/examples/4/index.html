@@ -1,7 +1,8 @@
 <h3 class="header">
     Dropdown&nbsp;&mdash;
 
-    <a
+    <button
+        tuiChevron
         tuiDropdownAlign="left"
         tuiDropdownLimitWidth="auto"
         tuiLink
@@ -9,9 +10,7 @@
         [(tuiDropdownOpen)]="open"
     >
         Open
-        <!--TODO: Switch to tuiChevron-->
-        <tui-svg [src]="open ? 'tuiIconChevronUp' : 'tuiIconChevronDown'" />
-    </a>
+    </button>
 </h3>
 
 <ng-template

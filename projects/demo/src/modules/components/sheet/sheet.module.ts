@@ -8,7 +8,7 @@ import {TuiElasticStickyModule, TuiSheetModule} from '@taiga-ui/addon-mobile';
 import {
     TuiButtonDirective,
     TuiLabelModule,
-    TuiLinkModule,
+    TuiLinkDirective,
     TuiNotificationModule,
 } from '@taiga-ui/core';
 import {TuiAvatarComponent} from '@taiga-ui/kit';
@@ -28,7 +28,7 @@ import {ExampleTuiSheetComponent} from './sheet.component';
         TuiLabelModule,
         TuiAvatarComponent,
         TuiNotificationModule,
-        TuiLinkModule,
+        TuiLinkDirective,
         TuiElasticStickyModule,
         TuiSheetModule,
         IntersectionObserverModule,

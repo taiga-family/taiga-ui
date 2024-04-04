@@ -4,7 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiMapperPipeModule} from '@taiga-ui/cdk';
-import {TuiErrorModule, TuiLinkModule} from '@taiga-ui/core';
+import {TuiErrorModule, TuiLinkDirective} from '@taiga-ui/core';
 import {TuiLabelDirective} from '@taiga-ui/experimental';
 import {TuiSwitchComponent} from '@taiga-ui/kit';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
@@ -19,7 +19,7 @@ import {TuiErrorExample1} from './examples/1';
         TuiSwitchComponent,
         TuiLabelDirective,
         TuiErrorModule,
-        TuiLinkModule,
+        TuiLinkDirective,
         PolymorpheusModule,
         TuiMapperPipeModule,
         TuiAddonDocModule,

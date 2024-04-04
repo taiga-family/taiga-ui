@@ -7,7 +7,7 @@ import {TuiActiveZoneDirective, TuiObscuredDirective} from '@taiga-ui/cdk';
 import {
     TuiButtonDirective,
     TuiDropdownModule,
-    TuiLinkModule,
+    TuiLinkDirective,
     TuiNotificationModule,
 } from '@taiga-ui/core';
 import {TuiCardModule, TuiLabelDirective, TuiSurfaceModule} from '@taiga-ui/experimental';
@@ -33,7 +33,7 @@ import {TuiDropdownExample5} from './examples/5';
         CommonModule,
         FormsModule,
         PolymorpheusModule,
-        TuiLinkModule,
+        TuiLinkDirective,
         TuiAvatarComponent,
         TuiButtonDirective,
         TuiDropdownModule,

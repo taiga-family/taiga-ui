@@ -6,7 +6,7 @@ import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiDropdownModule,
     TuiHintModule,
-    TuiLinkModule,
+    TuiLinkDirective,
     TuiNotificationModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
@@ -27,7 +27,7 @@ import {ExampleTuiInputDateTimeComponent} from './input-date-time.component';
         ReactiveFormsModule,
         FormsModule,
         CommonModule,
-        TuiLinkModule,
+        TuiLinkDirective,
         TuiInputDateTimeModule,
         TuiHintModule,
         TuiTextfieldControllerModule,

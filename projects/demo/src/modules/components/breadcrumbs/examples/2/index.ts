@@ -11,7 +11,6 @@ import {tuiBreadcrumbsOptionsProvider} from '@taiga-ui/kit';
     providers: [
         tuiBreadcrumbsOptionsProvider({
             icon: 'tuiIconArrowRight',
-            mode: null,
             size: 'l',
         }),
     ],

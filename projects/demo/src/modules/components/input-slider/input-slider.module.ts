@@ -6,7 +6,7 @@ import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiButtonDirective,
     TuiHintModule,
-    TuiLinkModule,
+    TuiLinkDirective,
     TuiNotificationModule,
     TuiNumberFormatDirective,
     TuiSvgModule,
@@ -38,7 +38,7 @@ import {ExampleTuiInputSliderComponent} from './input-slider.component';
         TuiButtonDirective,
         TuiHintModule,
         TuiAddonDocModule,
-        TuiLinkModule,
+        TuiLinkDirective,
         TuiSvgModule,
         TuiNotificationModule,
         TuiTextfieldControllerModule,

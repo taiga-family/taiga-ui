@@ -1,2 +1,3 @@
 export * from './link.component';
-export * from './link.module';
+export * from './link.directive';
+export * from './link.options';

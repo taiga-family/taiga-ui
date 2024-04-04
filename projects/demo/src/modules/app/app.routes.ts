@@ -718,14 +718,11 @@ export const ROUTES: Routes = [
             title: 'LineClamp',
         },
     },
-    {
+    route({
         path: DemoRoute.Link,
-        loadChildren: async () =>
-            (await import('../components/link/link.module')).ExampleTuiLinkModule,
-        data: {
-            title: 'Link',
-        },
-    },
+        loadComponent: async () => import('../components/link'),
+        title: 'Link',
+    }),
     {
         path: DemoRoute.Loader,
         loadChildren: async () =>

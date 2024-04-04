@@ -1,17 +1,15 @@
 import type {Provider} from '@angular/core';
 import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
-import type {TuiBrightness, TuiSizeL} from '@taiga-ui/core';
+import type {TuiSizeL} from '@taiga-ui/core';
 
 export interface TuiBreadcrumbsOptions {
     readonly icon: string;
-    readonly mode: TuiBrightness | null;
     readonly size: TuiSizeL;
 }
 
 export const TUI_BREADCRUMBS_DEFAULT_OPTIONS: TuiBreadcrumbsOptions = {
     icon: 'tuiIconChevronRight',
     size: 'm',
-    mode: 'onLight',
 };
 
 export const TUI_BREADCRUMBS_OPTIONS = tuiCreateToken(TUI_BREADCRUMBS_DEFAULT_OPTIONS);

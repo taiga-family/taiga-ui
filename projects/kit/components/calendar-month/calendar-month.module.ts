@@ -7,7 +7,7 @@ import {
     TuiPressedModule,
 } from '@taiga-ui/cdk';
 import {
-    TuiLinkModule,
+    TuiLinkDirective,
     TuiPrimitiveSpinButtonModule,
     TuiPrimitiveYearPickerModule,
     TuiScrollbarComponent,
@@ -21,7 +21,7 @@ import {TuiCalendarMonthComponent} from './calendar-month.component';
         TuiPrimitiveYearPickerModule,
         TuiPrimitiveSpinButtonModule,
         TuiScrollbarComponent,
-        TuiLinkModule,
+        TuiLinkDirective,
         TuiLetModule,
         TuiHoveredModule,
         TuiPressedModule,

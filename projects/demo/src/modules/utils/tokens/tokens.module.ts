@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
-import {TuiLinkModule} from '@taiga-ui/core';
+import {TuiLinkDirective} from '@taiga-ui/core';
 
 import {TuiTokensExample1} from './examples/1';
 import {TuiTokensExample2} from './examples/2';
@@ -19,7 +19,7 @@ import {ExampleTokensComponent} from './tokens.component';
 @NgModule({
     imports: [
         CommonModule,
-        TuiLinkModule,
+        TuiLinkDirective,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTokensComponent)),
     ],

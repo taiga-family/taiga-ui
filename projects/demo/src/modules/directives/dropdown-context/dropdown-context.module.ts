@@ -9,7 +9,7 @@ import {
     TuiButtonDirective,
     TuiDataListModule,
     TuiDropdownModule,
-    TuiLinkModule,
+    TuiLinkDirective,
     TuiSvgModule,
 } from '@taiga-ui/core';
 import {TuiDataListDropdownManagerModule, TuiTextareaModule} from '@taiga-ui/kit';
@@ -30,7 +30,7 @@ import {TuiDropdownContextExample3} from './examples/3';
         TuiDataListDropdownManagerModule,
         TuiTextareaModule,
         TuiButtonDirective,
-        TuiLinkModule,
+        TuiLinkDirective,
         TuiDropdownModule,
         TuiActiveZoneDirective,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiDropdownContextComponent)),

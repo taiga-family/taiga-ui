@@ -8,10 +8,9 @@
 
 <a
   tuiLink
-  iconAlign="left"
+  iconLeft="tuiIconSettings"
   href="#"
-  [icon]="tuiIconSettings"
 >
-  Link with icon left
+  Link with an icon on the left
 </a>
 ```

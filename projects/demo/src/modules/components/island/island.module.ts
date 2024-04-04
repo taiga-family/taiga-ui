@@ -6,7 +6,7 @@ import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiButtonDirective,
     TuiErrorModule,
-    TuiLinkModule,
+    TuiLinkDirective,
     TuiNotificationModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
@@ -27,7 +27,7 @@ import {ExampleTuiIslandComponent} from './island.component';
 @NgModule({
     imports: [
         TuiIslandModule,
-        TuiLinkModule,
+        TuiLinkDirective,
         TuiSwitchComponent,
         TuiButtonDirective,
         TuiErrorModule,

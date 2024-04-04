@@ -9,7 +9,7 @@ import {
     TuiExpandModule,
     TuiGroupDirective,
     TuiHintModule,
-    TuiLinkModule,
+    TuiLinkDirective,
     TuiModeModule,
     TuiSvgModule,
     TuiTextfieldControllerModule,
@@ -18,6 +18,7 @@ import {
 import {
     TuiBlockDirective,
     TuiCheckboxComponent,
+    TuiChevronDirective,
     TuiDataListWrapperModule,
     TuiSelectModule,
 } from '@taiga-ui/kit';
@@ -30,7 +31,7 @@ import {TuiDocDemoComponent} from './demo.component';
         ReactiveFormsModule,
         FormsModule,
         RouterModule,
-        TuiLinkModule,
+        TuiLinkDirective,
         TuiButtonDirective,
         TuiSelectModule,
         TuiExpandModule,
@@ -45,6 +46,7 @@ import {TuiDocDemoComponent} from './demo.component';
         TuiHintModule,
         TuiResizerModule,
         TuiBlockDirective,
+        TuiChevronDirective,
     ],
     declarations: [TuiDocDemoComponent],
     exports: [TuiDocDemoComponent],

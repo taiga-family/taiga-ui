@@ -24,7 +24,6 @@ export class ExampleTuiDropdownOpenComponent extends AbstractExampleTuiDropdown 
     protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
-        LESS: import('./examples/1/index.less?raw'),
     };
 
     protected readonly example2: TuiDocExample = {

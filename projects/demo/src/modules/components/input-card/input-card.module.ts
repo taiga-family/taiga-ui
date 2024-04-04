@@ -12,7 +12,7 @@ import {
     TuiErrorModule,
     TuiGroupDirective,
     TuiHintModule,
-    TuiLinkModule,
+    TuiLinkDirective,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {TuiAccordionModule, TuiFieldErrorPipeModule} from '@taiga-ui/kit';
@@ -27,7 +27,7 @@ import {ExampleTuiInputCardComponent} from './input-card.component';
         TuiInputCVCModule,
         TuiInputExpireModule,
         TuiGroupDirective,
-        TuiLinkModule,
+        TuiLinkDirective,
         TuiErrorModule,
         TuiFieldErrorPipeModule,
         TuiAccordionModule,

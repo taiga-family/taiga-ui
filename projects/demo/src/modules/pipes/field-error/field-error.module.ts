@@ -10,7 +10,7 @@ import {
     TuiErrorModule,
     TuiHintModule,
     TuiLabelModule,
-    TuiLinkModule,
+    TuiLinkDirective,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {
@@ -44,7 +44,7 @@ import {ExampleTuiFieldErrorPipeComponent} from './field-error.component';
         TuiButtonDirective,
         TuiInputPhoneModule,
         TuiInputNumberModule,
-        TuiLinkModule,
+        TuiLinkDirective,
         TuiTableModule,
         TuiHintModule,
         TuiInputNumberModule,

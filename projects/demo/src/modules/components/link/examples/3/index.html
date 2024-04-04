@@ -1,79 +1,40 @@
 <a
     href="#"
+    iconLeft="tuiIconHeart"
     tuiLink
+    [style.--tui-icon-size.rem]="1.5"
 >
-    normal
+    Large icon
 </a>
-<p>
-    <span
-        tuiMode="onLight"
-        class="plate plate_light"
-    >
-        See
-        <a
-            routerLink="/directives/mode"
-            tuiLink
-        >
-            tuiMode
-        </a>
-        directive
-        <button
-            tuiLink
-            type="button"
-            [pseudo]="true"
-            (click)="onClick($event)"
-        >
-            Pseudo-link
-        </button>
-    </span>
-</p>
-<span
-    tuiMode="onDark"
-    class="plate plate_dark"
->
-    See
-    <a
-        routerLink="/directives/mode"
-        tuiLink
-    >
-        tuiMode
-    </a>
-    directive
+<p tuiTheme="night">
     <button
+        appearance="icon"
+        iconRight="tuiIconHelpCircle"
         tuiLink
-        type="button"
         [pseudo]="true"
         (click)="onClick($event)"
     >
         Pseudo-link
     </button>
-</span>
-<p>
-    <a
-        href="#"
-        mode="positive"
-        tuiLink
-    >
-        Positive link
-    </a>
-</p>
-<p>
-    <a
-        href="#"
-        mode="negative"
-        tuiLink
-    >
-        Negative link
-    </a>
 </p>
 <button
+    appearance="icon"
+    iconRight="tuiIconHelpCircle"
     tuiLink
-    type="button"
     [pseudo]="true"
     (click)="onClick($event)"
 >
     Pseudo-link
 </button>
+<p>
+    <a
+        href="#"
+        tuiLink
+        [style.color]="'var(--tui-error-fill)'"
+    >
+        Custom color
+    </a>
+</p>
 (If you need a pseudo-link, use
 <code>button</code>
-element for correct work with focus)
+element for correct semantics)

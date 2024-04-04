@@ -10,7 +10,7 @@ import {
 import {
     TuiButtonDirective,
     TuiHintModule,
-    TuiLinkModule,
+    TuiLinkDirective,
     TuiModeModule,
     TuiNotificationModule,
 } from '@taiga-ui/core';
@@ -31,7 +31,7 @@ import {ExampleTuiSliderComponent} from './slider.component';
         TuiSliderModule,
         FormsModule,
         ReactiveFormsModule,
-        TuiLinkModule,
+        TuiLinkDirective,
         TuiNotificationModule,
         TuiModeModule,
         TuiButtonDirective,

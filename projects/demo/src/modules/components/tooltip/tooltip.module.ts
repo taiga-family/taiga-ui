@@ -7,7 +7,7 @@ import {TuiLetModule} from '@taiga-ui/cdk';
 import {
     TuiAutoColorPipe,
     TuiHintModule,
-    TuiLinkModule,
+    TuiLinkDirective,
     TuiLoaderModule,
     TuiModeModule,
     TuiTextfieldControllerModule,
@@ -26,7 +26,7 @@ import {ExampleTuiTooltipComponent} from './tooltip.component';
     imports: [
         TuiTooltipModule,
         TuiHintModule,
-        TuiLinkModule,
+        TuiLinkDirective,
         TuiAvatarComponent,
         TuiLoaderModule,
         TuiInputModule,

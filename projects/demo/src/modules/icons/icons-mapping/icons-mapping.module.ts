@@ -11,7 +11,7 @@ import {
 import {
     TuiButtonDirective,
     TuiExpandModule,
-    TuiLinkModule,
+    TuiLinkDirective,
     TuiSvgModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
@@ -27,7 +27,7 @@ import {IconsMappingComponent} from './icons-mapping.component';
         FormsModule,
         ClipboardModule,
         TuiDocCopyModule,
-        TuiLinkModule,
+        TuiLinkDirective,
         TuiExpandModule,
         TuiButtonDirective,
         TuiInputDateRangeModule,

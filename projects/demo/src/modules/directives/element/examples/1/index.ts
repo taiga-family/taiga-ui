@@ -1,7 +1,7 @@
 import {Component, ElementRef} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiLinkComponent} from '@taiga-ui/core';
+import {TuiAvatarComponent} from '@taiga-ui/kit';
 
 @Component({
     selector: 'tui-element-example-1',
@@ -11,7 +11,7 @@ import {TuiLinkComponent} from '@taiga-ui/core';
 })
 export class TuiElementExample1 {
     protected isLink(component: unknown): boolean {
-        return component instanceof TuiLinkComponent;
+        return component instanceof TuiAvatarComponent;
     }
 
     protected isElement(element: unknown): boolean {

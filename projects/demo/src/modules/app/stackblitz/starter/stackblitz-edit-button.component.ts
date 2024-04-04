@@ -4,8 +4,7 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
     selector: 'stackblitz-edit-button',
     template: `
         <button
-            icon="assets/icons/stackblitz.svg"
-            iconAlign="left"
+            iconLeft="assets/icons/stackblitz.svg"
             tuiLink
             type="button"
         >

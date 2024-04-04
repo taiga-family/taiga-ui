@@ -1,11 +1,14 @@
 import {Component} from '@angular/core';
+import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiLinkDirective} from '@taiga-ui/core';
 
 @Component({
-    selector: 'tui-link-example-1',
+    standalone: true,
+    imports: [TuiLinkDirective, RouterLink],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class TuiLinkExample1 {}
+export default class ExampleComponent {}

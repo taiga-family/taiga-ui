@@ -15,7 +15,7 @@ import {
     TuiHostedDropdownModule,
     TuiIconComponent,
     TuiInitialsPipe,
-    TuiLinkModule,
+    TuiLinkDirective,
     TuiNotificationModule,
     TuiScrollbarComponent,
     TuiSvgModule,
@@ -70,7 +70,7 @@ import {TuiCardMediumExample7} from './examples/7';
         TuiHostedDropdownModule,
         TuiButtonCloseDirective,
         TuiPlatformModule,
-        TuiLinkModule,
+        TuiLinkDirective,
         TuiAppearanceDirective,
     ],
     declarations: [

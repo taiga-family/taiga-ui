@@ -4,7 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAxesModule, TuiBarChartModule} from '@taiga-ui/addon-charts';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
-import {TuiHintModule, TuiLinkModule, TuiNotificationModule} from '@taiga-ui/core';
+import {TuiHintModule, TuiLinkDirective, TuiNotificationModule} from '@taiga-ui/core';
 import {TuiDataListWrapperModule, TuiSelectModule} from '@taiga-ui/kit';
 
 import {ExampleTuiBarChartComponent} from './bar-chart.component';
@@ -19,7 +19,7 @@ import {TuiBarChartExample2} from './examples/2';
         TuiBarChartModule,
         TuiHintModule,
         TuiNotificationModule,
-        TuiLinkModule,
+        TuiLinkDirective,
         TuiSelectModule,
         TuiDataListWrapperModule,
         TuiAddonDocModule,

@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
-import {TuiLinkModule, TuiNotificationModule, TuiSvgModule} from '@taiga-ui/core';
+import {TuiLinkDirective, TuiNotificationModule, TuiSvgModule} from '@taiga-ui/core';
 import {TuiMarkerIconModule} from '@taiga-ui/kit';
 
 import {TuiMarkerIconExample1} from './examples/1';
@@ -13,7 +13,7 @@ import {ExampleTuiMarkerIconComponent} from './marker-icon.component';
 @NgModule({
     imports: [
         CommonModule,
-        TuiLinkModule,
+        TuiLinkDirective,
         TuiMarkerIconModule,
         TuiSvgModule,
         TuiAddonDocModule,

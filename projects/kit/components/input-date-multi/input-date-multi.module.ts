@@ -6,7 +6,7 @@ import {TuiMapperPipeModule} from '@taiga-ui/cdk';
 import {
     TuiCalendarModule,
     TuiHostedDropdownModule,
-    TuiLinkModule,
+    TuiLinkDirective,
     TuiPrimitiveTextfieldModule,
     TuiSvgModule,
     TuiTextfieldControllerModule,
@@ -25,7 +25,7 @@ import {TuiInputDateMultiComponent} from './input-date-multi.component';
         TuiWrapperModule,
         TuiCalendarModule,
         TuiSvgModule,
-        TuiLinkModule,
+        TuiLinkDirective,
         TuiInputTagModule,
         FormsModule,
         TuiMapperPipeModule,

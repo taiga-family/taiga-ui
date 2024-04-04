@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {tuiGetDocModules} from '@taiga-ui/addon-doc';
 import {
-    TuiLinkModule,
+    TuiLinkDirective,
     TuiNotificationModule,
     TuiScrollableDirective,
     TuiScrollbarComponent,
@@ -20,7 +20,7 @@ import {ExampleTuiFadeComponent} from './fade.component';
         TuiFadeDirective,
         TuiNotificationModule,
         TuiScrollbarComponent,
-        TuiLinkModule,
+        TuiLinkDirective,
         tuiGetDocModules(ExampleTuiFadeComponent),
         TuiScrollableDirective,
     ],

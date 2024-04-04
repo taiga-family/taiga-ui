@@ -8,7 +8,7 @@ import {
     TuiAutoColorPipe,
     TuiButtonDirective,
     TuiInitialsPipe,
-    TuiLinkModule,
+    TuiLinkDirective,
 } from '@taiga-ui/core';
 import {TuiAvatarComponent} from '@taiga-ui/kit';
 import {TuiBlockStatusModule} from '@taiga-ui/layout';
@@ -22,7 +22,7 @@ import {TuiBlockStatusExample5} from './examples/5';
 
 @NgModule({
     imports: [
-        TuiLinkModule,
+        TuiLinkDirective,
         TuiBlockStatusModule,
         CommonModule,
         FormsModule,
