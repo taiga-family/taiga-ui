@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[75769],{75769:n=>{n.exports=".step {\n    margin: 0;\n    color: var(--tui-link);\n\n    &._active {\n        color: var(--tui-text-01);\n    }\n\n    &:hover {\n        color: var(--tui-link-hover);\n    }\n}\n\n.separator {\n    height: 100%;\n    color: var(--tui-base-03);\n    margin: 0 0.75rem;\n}\n"}}]);
