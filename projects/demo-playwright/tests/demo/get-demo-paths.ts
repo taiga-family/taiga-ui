@@ -1,3 +1,4 @@
+import {DemoRoute} from '@demo/routes';
 import type {TuiDocPage, TuiDocPages} from '@taiga-ui/addon-doc';
 
 function flatPages(pages: TuiDocPages): readonly TuiDocPage[] {
@@ -12,21 +13,20 @@ function flatPages(pages: TuiDocPages): readonly TuiDocPage[] {
 
 export const EXCLUDED_SECTIONS = ['Documentation', 'Foundations', 'Tools', 'Testing'];
 export const EXCLUDED_ROUTES = [
-    '/i18n',
-    '/components/primitive-checkbox',
-    '/components/theme-night',
-    '/components/preview', // no need take screenshot of buttons
-    '/components/dialog', // just buttons
-    '/dialog/custom', // just buttons
-    '/dialog/routable', // just buttons
-    '/dialog/lazy-routable', // just buttons
-    '/components/sheet', // just buttons
-    '/components/sheet-dialog', // just buttons
-    '/components/error',
-    '/icons/overview/Component',
-    '/icons/overview',
-    '/icons/mapping',
-    '/components/mobile-calendar', // TODO: flaky test, need investigate
+    DemoRoute.I18N,
+    DemoRoute.ThemeNight,
+    DemoRoute.Preview, // no need take screenshot of buttons
+    DemoRoute.Dialog, // just buttons
+    DemoRoute.DialogCustom, // just buttons
+    DemoRoute.DialogRoutable, // just buttons
+    DemoRoute.DialogLazyRoutable, // just buttons
+    DemoRoute.Sheet, // just buttons
+    DemoRoute.SheetDialog, // just buttons
+    DemoRoute.Error,
+    `${DemoRoute.IconsOverview}/Component`,
+    DemoRoute.IconsOverview,
+    DemoRoute.IconsMapping,
+    DemoRoute.MobileCalendar, // TODO: flaky test, need investigate
 ];
 
 export function tuiGetDemoPathsForE2E(
