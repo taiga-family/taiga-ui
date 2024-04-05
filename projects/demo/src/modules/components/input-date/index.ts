@@ -18,7 +18,7 @@ import {
     TUI_DEFAULT_MARKER_HANDLER,
     TuiDropdownModule,
     TuiHintModule,
-    TuiLinkModule,
+    TuiLinkDirective,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {TuiInputDateModule, TuiNamedDay} from '@taiga-ui/kit';
@@ -39,7 +39,7 @@ const ONE_DOT: [string] = ['var(--tui-success-fill)'];
         TuiMobileCalendarDialogModule,
         TuiDropdownModule,
         TuiHintModule,
-        TuiLinkModule,
+        TuiLinkDirective,
         ReactiveFormsModule,
         InheritedDocumentationModule,
         RouterLink,

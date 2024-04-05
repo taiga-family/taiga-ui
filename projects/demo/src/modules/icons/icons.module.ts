@@ -7,7 +7,7 @@ import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
 import {
     TuiButtonDirective,
-    TuiLinkModule,
+    TuiLinkDirective,
     TuiNotificationModule,
     TuiSvgModule,
 } from '@taiga-ui/core';
@@ -20,7 +20,7 @@ import {IconsGroupModule} from './icons-group/icons-group.module';
         CommonModule,
         FormsModule,
         TuiNotificationModule,
-        TuiLinkModule,
+        TuiLinkDirective,
         TuiSvgModule,
         TuiButtonDirective,
         TuiAddonDocModule,

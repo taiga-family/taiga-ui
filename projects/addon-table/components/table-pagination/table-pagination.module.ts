@@ -4,7 +4,7 @@ import {
     TuiButtonDirective,
     TuiDataListModule,
     TuiDropdownModule,
-    TuiLinkModule,
+    TuiLinkDirective,
     TuiSvgModule,
 } from '@taiga-ui/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
@@ -15,7 +15,7 @@ import {TuiTablePaginationComponent} from './table-pagination.component';
     imports: [
         CommonModule,
         TuiButtonDirective,
-        TuiLinkModule,
+        TuiLinkDirective,
         TuiDropdownModule,
         TuiDataListModule,
         TuiSvgModule,

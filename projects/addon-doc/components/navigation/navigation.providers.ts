@@ -4,6 +4,7 @@ import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {TUI_DOC_PAGES, TUI_DOC_TITLE} from '@taiga-ui/addon-doc/tokens';
 import type {TuiDocPages} from '@taiga-ui/addon-doc/types';
 import {TuiDestroyService, tuiIsPresent} from '@taiga-ui/cdk';
+import {tuiLinkOptionsProvider} from '@taiga-ui/core';
 import type {Observable} from 'rxjs';
 import {filter, map, mergeMap, takeUntil} from 'rxjs';
 
@@ -36,6 +37,7 @@ export const NAVIGATION_ITEMS: InjectionToken<readonly TuiDocPages[]> =
 
 export const NAVIGATION_PROVIDERS: Provider[] = [
     TuiDestroyService,
+    tuiLinkOptionsProvider({appearance: 'icon'}),
     {
         provide: NAVIGATION_TITLE,
         deps: [Router, ActivatedRoute, TUI_DOC_TITLE, TuiDestroyService],

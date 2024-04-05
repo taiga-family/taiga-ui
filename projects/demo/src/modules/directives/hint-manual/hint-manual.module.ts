@@ -5,7 +5,7 @@ import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiButtonDirective,
     TuiHintModule,
-    TuiLinkModule,
+    TuiLinkDirective,
     TuiModeModule,
 } from '@taiga-ui/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
@@ -18,7 +18,7 @@ import {ExampleTuiHintManualComponent} from './hint-manual.component';
     imports: [
         TuiButtonDirective,
         TuiHintModule,
-        TuiLinkModule,
+        TuiLinkDirective,
         TuiModeModule,
         PolymorpheusModule,
         CommonModule,

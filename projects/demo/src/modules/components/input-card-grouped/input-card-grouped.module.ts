@@ -11,7 +11,7 @@ import {
     TuiDataListModule,
     TuiErrorModule,
     TuiLabelModule,
-    TuiLinkModule,
+    TuiLinkDirective,
     TuiSvgModule,
 } from '@taiga-ui/core';
 import {TuiFieldErrorPipeModule} from '@taiga-ui/kit';
@@ -28,7 +28,7 @@ import {ExampleTuiInputCardGroupedComponent} from './input-card-grouped.componen
 @NgModule({
     imports: [
         TuiInputCardGroupedModule,
-        TuiLinkModule,
+        TuiLinkDirective,
         TuiErrorModule,
         TuiFieldErrorPipeModule,
         TuiDataListModule,

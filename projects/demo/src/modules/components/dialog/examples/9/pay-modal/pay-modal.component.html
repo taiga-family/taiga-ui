@@ -88,14 +88,13 @@
             *ngIf="paymentMode === PAYMENT_MODE.BySavedCard"
             class="form-block is--links"
         >
-            <a
-                icon="tuiIconPlus"
-                iconAlign="left"
+            <button
+                iconLeft="tuiIconPlus"
                 tuiLink
                 (click)="payByNewCard()"
             >
                 New card
-            </a>
+            </button>
         </div>
     </form>
     <button

@@ -1,11 +1,11 @@
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
-import {TuiLinkModule} from '@taiga-ui/core';
+import {TuiLinkDirective} from '@taiga-ui/core';
 
 import {LogoComponent} from './logo.component';
 
 @NgModule({
-    imports: [TuiLinkModule, RouterModule],
+    imports: [TuiLinkDirective, RouterModule],
     declarations: [LogoComponent],
     exports: [LogoComponent],
 })

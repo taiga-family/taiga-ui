@@ -15,7 +15,7 @@ import {TuiChevronService} from './chevron.service';
 })
 export class TuiChevronDirective implements DoCheck {
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
-    private readonly dropdown = inject(TuiDropdownDirective);
+    private readonly dropdown = inject(TuiDropdownDirective, {optional: true});
     private readonly icons = inject(TuiIconsDirective);
     private readonly handler = inject(TuiChevronService).getHandler(inject(INJECTOR));
 
@@ -28,7 +28,7 @@ export class TuiChevronDirective implements DoCheck {
         this.icons.iconRight = this.handler();
         this.el.classList.toggle(
             '_chevron-rotated',
-            !!this.dropdown.dropdownBoxRef || this.tuiChevron === true,
+            !!this.dropdown?.dropdownBoxRef || this.tuiChevron === true,
         );
     }
 }

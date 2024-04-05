@@ -6,7 +6,7 @@ import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiButtonDirective,
     TuiErrorModule,
-    TuiLinkModule,
+    TuiLinkDirective,
     TuiNotificationModule,
     TuiSvgModule,
 } from '@taiga-ui/core';
@@ -30,7 +30,7 @@ import {ExampleTuiInputFilesComponent} from './input-files.component';
         CommonModule,
         ReactiveFormsModule,
         TuiFilesModule,
-        TuiLinkModule,
+        TuiLinkDirective,
         TuiButtonDirective,
         TuiSvgModule,
         TuiErrorModule,

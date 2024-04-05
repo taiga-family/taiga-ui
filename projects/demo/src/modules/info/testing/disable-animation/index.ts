@@ -5,7 +5,7 @@ import {
     TuiDocDocumentationModule,
     TuiDocPageModule,
 } from '@taiga-ui/addon-doc';
-import {TuiLinkModule} from '@taiga-ui/core';
+import {TuiLinkDirective} from '@taiga-ui/core';
 import {TuiTabsModule} from '@taiga-ui/kit';
 
 @Component({
@@ -14,7 +14,7 @@ import {TuiTabsModule} from '@taiga-ui/kit';
         NgForOf,
         TuiDocDocumentationModule,
         TuiDocPageModule,
-        TuiLinkModule,
+        TuiLinkDirective,
         TuiTabsModule,
         TuiAddonDocModule,
         NgIf,

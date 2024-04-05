@@ -1,22 +1,13 @@
 <button
+    tuiChevron
     tuiDropdownAlign="right"
     tuiLink
     class="link"
+    [iconLeft]="ascending ? 'tuiIconSortAscending' : 'tuiIconSortDescending'"
     [tuiDropdown]="dropdown"
     [(tuiDropdownOpen)]="open"
 >
-    <tui-svg
-        src="tuiIconSortDown"
-        class="sort"
-        [class.sort_ascending]="ascending"
-    />
     {{ primary }}
-    <!--TODO: Switch to tuiChevron-->
-    <tui-svg
-        src="tuiIconChevronDown"
-        class="arrow"
-        [class.arrow_open]="open"
-    />
 </button>
 
 <ng-template #dropdown>
@@ -29,9 +20,9 @@
                 (click)="onClick(item)"
             >
                 {{ item }}
-                <tui-svg
+                <tui-icon
                     *ngIf="itemIsActive(item)"
-                    src="tuiIconCheck"
+                    icon="tuiIconCheck"
                 />
             </button>
         </tui-opt-group>

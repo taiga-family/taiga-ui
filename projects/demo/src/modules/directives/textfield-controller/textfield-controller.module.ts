@@ -5,7 +5,7 @@ import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiHintModule,
-    TuiLinkModule,
+    TuiLinkDirective,
     TuiPrimitiveTextfieldModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
@@ -19,7 +19,7 @@ import {ExampleTuiTextfieldControllerComponent} from './textfield-controller.com
     imports: [
         CommonModule,
         ReactiveFormsModule,
-        TuiLinkModule,
+        TuiLinkDirective,
         TuiPrimitiveTextfieldModule,
         TuiTextfieldControllerModule,
         TuiHintModule,

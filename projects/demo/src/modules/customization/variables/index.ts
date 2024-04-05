@@ -9,7 +9,7 @@ import {
     TuiDocExampleModule,
     TuiDocPageModule,
 } from '@taiga-ui/addon-doc';
-import {TuiLinkModule} from '@taiga-ui/core';
+import {TuiLinkDirective} from '@taiga-ui/core';
 
 import {TuiVariablesExample1} from './examples/1';
 
@@ -18,7 +18,7 @@ import {TuiVariablesExample1} from './examples/1';
     imports: [
         TuiDocPageModule,
         NgForOf,
-        TuiLinkModule,
+        TuiLinkDirective,
         KeyValuePipe,
         TuiDocCopyModule,
         ClipboardModule,

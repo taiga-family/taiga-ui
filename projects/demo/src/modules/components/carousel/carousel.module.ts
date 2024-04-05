@@ -7,7 +7,7 @@ import {TuiRepeatTimesModule} from '@taiga-ui/cdk';
 import {
     TuiButtonDirective,
     TuiDialogModule,
-    TuiLinkModule,
+    TuiLinkDirective,
     TuiLoaderModule,
     TuiModeModule,
     TuiNotificationModule,
@@ -32,7 +32,7 @@ import {TuiCarouselExample5} from './examples/5';
         TuiCarouselModule,
         TuiPaginationModule,
         TuiNotificationModule,
-        TuiLinkModule,
+        TuiLinkDirective,
         TuiButtonDirective,
         TuiIslandModule,
         TuiAmountPipe,

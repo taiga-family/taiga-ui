@@ -32,7 +32,6 @@ import {
 } from '@taiga-ui/cdk';
 import type {TuiBrightness} from '@taiga-ui/core';
 import {TuiModeDirective} from '@taiga-ui/core';
-import {TUI_ARROW_OPTIONS} from '@taiga-ui/kit';
 import {Subject} from 'rxjs';
 
 const MIN_WIDTH = 160;
@@ -89,7 +88,6 @@ export class TuiDocDemoComponent implements OnInit {
     protected expanded = tuiCoerceValueIsTrue(this.params.sandboxExpanded ?? false);
     protected sandboxWidth = tuiToInteger(this.params.sandboxWidth);
     protected readonly items: readonly TuiBrightness[] = ['onLight', 'onDark'];
-    protected readonly options = inject(TUI_ARROW_OPTIONS);
     protected readonly isMobile = inject(TUI_IS_MOBILE);
     protected readonly texts = inject(TUI_DOC_DEMO_TEXTS);
 

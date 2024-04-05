@@ -2391,7 +2391,13 @@ const tuiIconSmileOutline =
 const tuiIconSortAscending =
     '<svg width="1em" height="1em" focusable="false" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1em" height="1em" x="50%" y="50%" fill="none" overflow="visible" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><svg x="-8" y="-8"><path fill="currentColor" d="M4.1 5H12c.3 0 .5.2.5.5 0 .1 0 .2-.1.3l-3.9 4.7c-.2.2-.5.2-.7.1l-.1-.1-4-4.7c-.2-.2-.2-.5 0-.7.1-.1.3-.1.4-.1" vector-effect="non-scaling-stroke"/></svg></svg></g></svg>';
 
+const tuiIconSortAscendingOutline =
+    '<svg width="1em" height="1em" focusable="false" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1em" height="1em" x="50%" y="50%" fill="none" overflow="visible" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><svg x="-8" y="-8"><path fill="currentColor" d="M4.1 5H12c.3 0 .5.2.5.5 0 .1 0 .2-.1.3l-3.9 4.7c-.2.2-.5.2-.7.1l-.1-.1-4-4.7c-.2-.2-.2-.5 0-.7.1-.1.3-.1.4-.1" vector-effect="non-scaling-stroke"/></svg></svg></g></svg>';
+
 const tuiIconSortDescending =
+    '<svg width="1em" height="1em" focusable="false" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1em" height="1em" x="50%" y="50%" fill="none" overflow="visible" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><svg x="-8" y="-8"><path fill="currentColor" d="M4.1 10.665H12c.3 0 .5-.2.5-.5 0-.1 0-.2-.1-.3l-3.9-4.7c-.2-.2-.5-.2-.7-.1l-.1.1-4 4.7c-.2.2-.2.5 0 .7.1.1.3.1.4.1" vector-effect="non-scaling-stroke"/></svg></svg></g></svg>';
+
+const tuiIconSortDescendingOutline =
     '<svg width="1em" height="1em" focusable="false" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1em" height="1em" x="50%" y="50%" fill="none" overflow="visible" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><svg x="-8" y="-8"><path fill="currentColor" d="M4.1 10.665H12c.3 0 .5-.2.5-.5 0-.1 0-.2-.1-.3l-3.9-4.7c-.2-.2-.5-.2-.7-.1l-.1.1-4 4.7c-.2.2-.2.5 0 .7.1.1.3.1.4.1" vector-effect="non-scaling-stroke"/></svg></svg></g></svg>';
 
 const tuiIconSortDown =
@@ -3889,7 +3895,9 @@ export {
     tuiIconSmileLarge,
     tuiIconSmileOutline,
     tuiIconSortAscending,
+    tuiIconSortAscendingOutline,
     tuiIconSortDescending,
+    tuiIconSortDescendingOutline,
     tuiIconSortDown,
     tuiIconSortOff,
     tuiIconSortUp,

@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
-import {TuiLinkModule, TuiNotificationModule, TuiSvgModule} from '@taiga-ui/core';
+import {TuiLinkDirective, TuiNotificationModule, TuiSvgModule} from '@taiga-ui/core';
 import {TuiIslandModule, TuiRadioListComponent, TuiRangeModule} from '@taiga-ui/kit';
 
 import {TuiRangeExample1} from './examples/1';
@@ -19,7 +19,7 @@ import {ExampleTuiRangeComponent} from './range.component';
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
-        TuiLinkModule,
+        TuiLinkDirective,
         TuiAddonDocModule,
         TuiIslandModule,
         TuiNotificationModule,

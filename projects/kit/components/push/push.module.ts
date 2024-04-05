@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {
     TuiButtonDirective,
     TuiFormatDatePipeModule,
-    TuiLinkModule,
+    TuiLinkDirective,
     TuiSvgModule,
 } from '@taiga-ui/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
@@ -18,7 +18,7 @@ import {TuiPushAlertDirective} from './push-alert.directive';
         CommonModule,
         PolymorpheusModule,
         TuiButtonDirective,
-        TuiLinkModule,
+        TuiLinkDirective,
         TuiSvgModule,
         TuiFormatDatePipeModule,
     ],

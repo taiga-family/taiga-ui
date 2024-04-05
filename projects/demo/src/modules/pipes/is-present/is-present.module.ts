@@ -4,7 +4,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiIsPresentPipeModule, TuiLetModule} from '@taiga-ui/cdk';
-import {TuiButtonDirective, TuiLinkModule} from '@taiga-ui/core';
+import {TuiButtonDirective, TuiLinkDirective} from '@taiga-ui/core';
 import {TuiDataListWrapperModule, TuiSelectModule} from '@taiga-ui/kit';
 
 import {TuiIsPresentExample1} from './examples/1/component';
@@ -17,7 +17,7 @@ import {ExampleTuiIsPresentComponent} from './is-present.component';
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiIsPresentComponent)),
         ReactiveFormsModule,
         TuiIsPresentPipeModule,
-        TuiLinkModule,
+        TuiLinkDirective,
         TuiSelectModule,
         TuiDataListWrapperModule,
         TuiButtonDirective,

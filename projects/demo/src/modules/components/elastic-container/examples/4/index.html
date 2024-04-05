@@ -13,12 +13,11 @@
         <h3 class="title">
             <button
                 appearance="secondary"
-                iconLeft="tuiIconChevronDown"
                 size="s"
                 tuiIconButton
-                class="expand"
-                [class.expand_open]="item.expanded"
+                class="tui-space_right-2"
                 [style.border-radius.%]="100"
+                [tuiChevron]="item.expanded"
                 (click)="item.expanded = !item.expanded"
             >
                 Expand

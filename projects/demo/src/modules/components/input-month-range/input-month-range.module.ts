@@ -6,7 +6,7 @@ import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiButtonDirective,
     TuiHintModule,
-    TuiLinkModule,
+    TuiLinkDirective,
     TuiNotificationModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
@@ -25,7 +25,7 @@ import {ExampleTuiInputMonthRangeComponent} from './input-month-range.component'
         ReactiveFormsModule,
         FormsModule,
         CommonModule,
-        TuiLinkModule,
+        TuiLinkDirective,
         TuiButtonDirective,
         TuiInputMonthRangeModule,
         TuiTextfieldControllerModule,

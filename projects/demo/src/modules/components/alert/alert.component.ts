@@ -12,7 +12,7 @@ import {
     TUI_NOTIFICATION_OPTIONS,
     TuiAlertService,
     TuiButtonDirective,
-    TuiLinkModule,
+    TuiLinkDirective,
 } from '@taiga-ui/core';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
@@ -32,7 +32,7 @@ import {TuiAlertExampleComponent6} from './examples/6';
     imports: [
         TuiTextCodeModule,
         TuiButtonDirective,
-        TuiLinkModule,
+        TuiLinkDirective,
         TuiAddonDocModule,
         TuiAlertExampleComponent1,
         TuiAlertExampleComponent2,

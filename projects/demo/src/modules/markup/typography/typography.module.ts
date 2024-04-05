@@ -6,7 +6,7 @@ import {
     TuiDocCopyModule,
     tuiGenerateRoutes,
 } from '@taiga-ui/addon-doc';
-import {TuiLinkModule, TuiNotificationModule} from '@taiga-ui/core';
+import {TuiLinkDirective, TuiNotificationModule} from '@taiga-ui/core';
 
 import {TypographyComponent} from './typography.component';
 
@@ -15,7 +15,7 @@ import {TypographyComponent} from './typography.component';
         ClipboardModule,
         TuiDocCopyModule,
         TuiNotificationModule,
-        TuiLinkModule,
+        TuiLinkDirective,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(TypographyComponent)),
     ],

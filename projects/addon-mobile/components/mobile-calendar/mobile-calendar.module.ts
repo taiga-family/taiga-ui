@@ -7,7 +7,7 @@ import {TuiPrimitiveCalendarMobileModule} from '@taiga-ui/addon-mobile/internal/
 import {TuiMapperPipeModule} from '@taiga-ui/cdk';
 import {
     TuiButtonDirective,
-    TuiLinkModule,
+    TuiLinkDirective,
     TuiMonthPipeModule,
     TuiOrderWeekDaysPipeModule,
 } from '@taiga-ui/core';
@@ -21,7 +21,7 @@ import {TuiMobileCalendarComponent} from './mobile-calendar.component';
         TuiTouchableModule,
         TuiRippleModule,
         TuiMapperPipeModule,
-        TuiLinkModule,
+        TuiLinkDirective,
         TuiPrimitiveCalendarMobileModule,
         TuiButtonDirective,
         TuiMonthPipeModule,

@@ -10,7 +10,7 @@ import {
     TuiDropdownModule,
     TuiExpandModule,
     TuiIconComponent,
-    TuiLinkModule,
+    TuiLinkDirective,
     TuiNotificationModule,
     TuiTitleDirective,
 } from '@taiga-ui/core';
@@ -61,7 +61,7 @@ import {ExampleTuiNavigationComponent} from './navigation.component';
         TuiAppearanceDirective,
         TuiSwitchComponent,
         TuiBreadcrumbsModule,
-        TuiLinkModule,
+        TuiLinkDirective,
         TuiChevronDirective,
     ],
     declarations: [

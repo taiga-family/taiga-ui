@@ -124,14 +124,10 @@
                     tuiButton
                     type="button"
                     class="t-button"
+                    [tuiChevron]="expanded"
                     (click)="toggleDetails()"
                 >
                     {{ texts[2] }}
-                    <tui-svg
-                        class="t-icon"
-                        [class.t-icon_rotated]="expanded"
-                        [src]="options.iconSmall"
-                    />
                 </button>
                 <tui-expand
                     class="t-expand"

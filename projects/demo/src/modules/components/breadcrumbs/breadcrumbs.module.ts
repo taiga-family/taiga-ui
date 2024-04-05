@@ -8,7 +8,7 @@ import {
     TuiButtonDirective,
     TuiDataListModule,
     TuiDropdownModule,
-    TuiLinkModule,
+    TuiLinkDirective,
 } from '@taiga-ui/core';
 import {TuiBreadcrumbsModule, TuiInputNumberModule} from '@taiga-ui/kit';
 
@@ -21,7 +21,7 @@ import {TuiBreadcrumbsExample2} from './examples/2';
         CommonModule,
         FormsModule,
         TuiBreadcrumbsModule,
-        TuiLinkModule,
+        TuiLinkDirective,
         TuiAddonDocModule,
         TuiDropdownModule,
         TuiButtonDirective,

@@ -5,7 +5,7 @@ import {TuiLetModule} from '@taiga-ui/cdk';
 import {
     TuiCalendarModule,
     TuiHostedDropdownModule,
-    TuiLinkModule,
+    TuiLinkDirective,
     TuiPrimitiveTextfieldModule,
     TuiSvgModule,
     TuiTextfieldComponent,
@@ -27,7 +27,7 @@ import {TuiNativeDateDirective} from './native-date/native-date.component';
         TuiWrapperModule,
         TuiCalendarModule,
         TuiSvgModule,
-        TuiLinkModule,
+        TuiLinkDirective,
         TuiHostedDropdownModule,
         TuiPrimitiveTextfieldModule,
         TuiValueAccessorModule,

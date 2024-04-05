@@ -1,13 +1,13 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {TuiDocPageModule} from '@taiga-ui/addon-doc';
-import {TuiLinkModule} from '@taiga-ui/core';
+import {TuiLinkDirective} from '@taiga-ui/core';
 
 export const SCREENSHOT_BOT_NAME = 'Lumberjack';
 export const SCREENSHOT_BOT_LINK = 'https://github.com/apps/lumberjack-bot';
 
 @Component({
     standalone: true,
-    imports: [TuiDocPageModule, TuiLinkModule],
+    imports: [TuiDocPageModule, TuiLinkDirective],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

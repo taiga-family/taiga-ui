@@ -1,11 +1,11 @@
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
-import {TuiLinkModule, TuiNotificationModule} from '@taiga-ui/core';
+import {TuiLinkDirective, TuiNotificationModule} from '@taiga-ui/core';
 
 import {StylesInfoComponent} from './styles-info.component';
 
 @NgModule({
-    imports: [RouterModule, TuiNotificationModule, TuiLinkModule],
+    imports: [RouterModule, TuiNotificationModule, TuiLinkDirective],
     declarations: [StylesInfoComponent],
     exports: [StylesInfoComponent],
 })

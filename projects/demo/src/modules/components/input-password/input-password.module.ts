@@ -6,7 +6,7 @@ import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiButtonDirective,
     TuiHintModule,
-    TuiLinkModule,
+    TuiLinkDirective,
     TuiNotificationModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
@@ -23,7 +23,7 @@ import {ExampleTuiInputPasswordComponent} from './input-password.component';
         FormsModule,
         ReactiveFormsModule,
         TuiInputPasswordModule,
-        TuiLinkModule,
+        TuiLinkDirective,
         InheritedDocumentationModule,
         TuiAddonDocModule,
         TuiButtonDirective,

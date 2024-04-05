@@ -6,7 +6,7 @@ import {TuiMobileCalendarDialogModule} from '@taiga-ui/addon-mobile';
 import {
     TuiDropdownModule,
     TuiHintModule,
-    TuiLinkModule,
+    TuiLinkDirective,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {TuiInputDateMultiModule} from '@taiga-ui/kit';
@@ -18,7 +18,7 @@ import {ExampleTuiInputDateMultiComponent} from './input-date-multi.component';
 @NgModule({
     imports: [
         CommonModule,
-        TuiLinkModule,
+        TuiLinkDirective,
         TuiHintModule,
         TuiDropdownModule,
         TuiAddonDocModule,

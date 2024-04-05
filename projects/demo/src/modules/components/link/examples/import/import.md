@@ -1,12 +1,12 @@
 ```ts
-import {TuiLinkModule} from '@taiga-ui/core';
+import {TuiLinkDirective} from '@taiga-ui/core';
 
 // ...
 
 @NgModule({
   imports: [
     // ...
-    TuiLinkModule,
+    TuiLinkDirective,
   ],
   // ...
 })

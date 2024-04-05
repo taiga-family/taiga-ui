@@ -9,7 +9,7 @@ import {
     TuiErrorModule,
     TuiGroupDirective,
     TuiHintModule,
-    TuiLinkModule,
+    TuiLinkDirective,
     TuiModeModule,
     TuiTextfieldControllerModule,
     TuiTitleDirective,
@@ -37,7 +37,7 @@ import {ExampleTuiGroupComponent} from './group.component';
 @NgModule({
     imports: [
         TuiProjectClassModule,
-        TuiLinkModule,
+        TuiLinkDirective,
         TuiBadgeDirective,
         TuiButtonDirective,
         TuiSelectModule,

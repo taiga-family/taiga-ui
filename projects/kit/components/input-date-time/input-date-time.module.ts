@@ -4,7 +4,7 @@ import {MaskitoDirective} from '@maskito/angular';
 import {
     TuiCalendarModule,
     TuiHostedDropdownModule,
-    TuiLinkModule,
+    TuiLinkDirective,
     TuiPrimitiveTextfieldModule,
     TuiSvgModule,
     TuiTextfieldComponent,
@@ -26,7 +26,7 @@ import {TuiNativeDateTimeDirective} from './native-date-time/native-date-time.di
         TuiWrapperModule,
         TuiCalendarModule,
         TuiSvgModule,
-        TuiLinkModule,
+        TuiLinkDirective,
         TuiHostedDropdownModule,
         TuiPrimitiveTextfieldModule,
         TuiValueAccessorModule,

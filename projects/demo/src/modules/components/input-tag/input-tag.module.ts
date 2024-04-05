@@ -10,7 +10,7 @@ import {
     TuiErrorModule,
     TuiGroupDirective,
     TuiHintModule,
-    TuiLinkModule,
+    TuiLinkDirective,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {
@@ -40,7 +40,7 @@ import {ExampleTuiInputTagComponent} from './input-tag.component';
         InheritedDocumentationModule,
         TuiDataListModule,
         TuiDataListWrapperModule,
-        TuiLinkModule,
+        TuiLinkDirective,
         TuiInputModule,
         TuiGroupDirective,
         TuiInputTagModule,

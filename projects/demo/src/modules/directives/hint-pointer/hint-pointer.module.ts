@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
-import {TuiHintModule, TuiLinkModule, TuiModeModule} from '@taiga-ui/core';
+import {TuiHintModule, TuiLinkDirective, TuiModeModule} from '@taiga-ui/core';
 import {TuiIslandModule} from '@taiga-ui/kit';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
@@ -14,7 +14,7 @@ import {ExampleTuiHintPointerComponent} from './hint-pointer.component';
     imports: [
         TuiHintModule,
         TuiIslandModule,
-        TuiLinkModule,
+        TuiLinkDirective,
         TuiModeModule,
         PolymorpheusModule,
         CommonModule,

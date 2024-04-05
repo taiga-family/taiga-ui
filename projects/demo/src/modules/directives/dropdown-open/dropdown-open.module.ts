@@ -8,8 +8,8 @@ import {
     TuiDataListModule,
     TuiDropdownModule,
     TuiGroupDirective,
-    TuiLinkModule,
-    TuiSvgModule,
+    TuiIconComponent,
+    TuiLinkDirective,
 } from '@taiga-ui/core';
 import {
     TuiChevronDirective,
@@ -36,8 +36,8 @@ import {TopRightDirective} from './examples/5/accessor';
         TuiInputModule,
         TuiButtonDirective,
         TuiGroupDirective,
-        TuiSvgModule,
-        TuiLinkModule,
+        TuiIconComponent,
+        TuiLinkDirective,
         TuiSelectModule,
         TuiActiveZoneDirective,
         TuiDataListModule,

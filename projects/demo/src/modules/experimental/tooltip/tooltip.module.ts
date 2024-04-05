@@ -6,7 +6,7 @@ import {TuiLetModule} from '@taiga-ui/cdk';
 import {
     TuiAppearanceDirective,
     TuiIconComponent,
-    TuiLinkModule,
+    TuiLinkDirective,
     TuiLoaderModule,
     TuiModeModule,
     TuiNotificationModule,
@@ -24,7 +24,7 @@ import {ExampleTuiTooltipComponent} from './tooltip.component';
 @NgModule({
     imports: [
         TuiTooltipModule,
-        TuiLinkModule,
+        TuiLinkDirective,
         TuiLoaderModule,
         TuiInputModule,
         PolymorpheusModule,

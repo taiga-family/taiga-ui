@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
-import {TuiButtonDirective, TuiLinkModule, TuiSvgModule} from '@taiga-ui/core';
+import {TuiButtonDirective, TuiLinkDirective, TuiSvgModule} from '@taiga-ui/core';
 import {TuiPushModule} from '@taiga-ui/kit';
 
 import {TuiPushExample1} from './examples/1';
@@ -15,7 +15,7 @@ import {ExampleTuiPushComponent} from './push.component';
         CommonModule,
         TuiPushModule,
         TuiButtonDirective,
-        TuiLinkModule,
+        TuiLinkDirective,
         TuiSvgModule,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiPushComponent)),

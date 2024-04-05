@@ -5,7 +5,7 @@ import {TuiActiveZoneDirective, TuiLetModule, TuiMapperPipeModule} from '@taiga-
 import {
     TuiDataListModule,
     TuiHostedDropdownModule,
-    TuiLinkModule,
+    TuiLinkDirective,
     TuiSvgModule,
     TuiTextfieldControllerModule,
     TuiWrapperModule,
@@ -41,7 +41,7 @@ import {TuiNativeMultiSelectGroupComponent} from './native-multi-select/native-m
         TuiMultiSelectOptionModule,
         TuiDataListWrapperModule,
         TuiMapperPipeModule,
-        TuiLinkModule,
+        TuiLinkDirective,
         TuiDataListModule,
         TuiTextfieldControllerModule,
         TuiStringifyContentPipeModule,

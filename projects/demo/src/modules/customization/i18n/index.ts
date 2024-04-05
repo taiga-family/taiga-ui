@@ -8,7 +8,7 @@ import {
     TuiDocPageModule,
     TuiLanguageSwitcherComponent,
 } from '@taiga-ui/addon-doc';
-import {TuiLinkModule} from '@taiga-ui/core';
+import {TuiLinkDirective} from '@taiga-ui/core';
 import {from, map} from 'rxjs';
 
 @Component({
@@ -16,7 +16,7 @@ import {from, map} from 'rxjs';
     imports: [
         TuiDocPageModule,
         TuiDocCodeModule,
-        TuiLinkModule,
+        TuiLinkDirective,
         AsyncPipe,
         TuiDocExampleModule,
         TuiLanguageSwitcherComponent,
