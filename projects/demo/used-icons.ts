@@ -103,6 +103,7 @@ export const TUI_USED_ICONS = [
     'tuiIconCreditCard',
     'tuiIconPhone',
     'tuiIconAlertCircle',
+    'tuiIconCloud',
     'tuiIconUser',
     'tuiIconDragLarge',
     'tuiIconCameraLarge',
