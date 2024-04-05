@@ -13,9 +13,9 @@ import {
     TuiNotificationModule,
 } from '@taiga-ui/core';
 import {
+    TuiAvatarComponent,
     TuiCarouselModule,
     TuiIslandModule,
-    TuiMarkerIconModule,
     TuiPaginationModule,
 } from '@taiga-ui/kit';
 
@@ -37,7 +37,7 @@ import {TuiCarouselExample5} from './examples/5';
         TuiIslandModule,
         TuiAmountPipe,
         TuiLoaderModule,
-        TuiMarkerIconModule,
+        TuiAvatarComponent,
         TuiDialogModule,
         TuiModeModule,
         TuiRepeatTimesModule,

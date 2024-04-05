@@ -38,16 +38,19 @@
         margin-top: 2.1875rem;
     }
 
-    [tuiaction] {
+    [tuiCardLarge] {
+        .transition(transform);
+        text-align: left;
+        flex-direction: row;
+        align-items: center;
         box-shadow: none;
         border: 1px solid var(--tui-base-03);
         border-bottom: none;
-        border-radius-right-bottom: 0;
         border-bottom-right-radius: 0;
         border-bottom-left-radius: 0;
     }
 
-    &:hover [tuiaction] {
+    &:hover [tuiCardLarge] {
         transform: translateY(-1.6rem);
     }
 }

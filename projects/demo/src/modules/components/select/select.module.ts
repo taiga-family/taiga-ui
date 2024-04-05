@@ -25,7 +25,6 @@ import {
 import {
     TuiAvatarComponent,
     TuiDataListWrapperModule,
-    TuiMarkerIconModule,
     TuiMultiSelectModule,
     TuiRadioListComponent,
     TuiSelectModule,
@@ -77,7 +76,6 @@ import {ExampleTuiSelectComponent} from './select.component';
         TuiNotificationModule,
         InheritedDocumentationModule,
         TuiAddonDocModule,
-        TuiMarkerIconModule,
         TuiMapperPipeModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiSelectComponent)),
         TuiAmountPipe,

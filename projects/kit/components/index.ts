@@ -1,5 +1,4 @@
 export * from '@taiga-ui/kit/components/accordion';
-export * from '@taiga-ui/kit/components/action';
 export * from '@taiga-ui/kit/components/arrow';
 export * from '@taiga-ui/kit/components/avatar';
 export * from '@taiga-ui/kit/components/badge';
@@ -40,7 +39,6 @@ export * from '@taiga-ui/kit/components/input-year';
 export * from '@taiga-ui/kit/components/island';
 export * from '@taiga-ui/kit/components/items-with-more';
 export * from '@taiga-ui/kit/components/line-clamp';
-export * from '@taiga-ui/kit/components/marker-icon';
 export * from '@taiga-ui/kit/components/multi-select';
 export * from '@taiga-ui/kit/components/multi-select-option';
 export * from '@taiga-ui/kit/components/pagination';

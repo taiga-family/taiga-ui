@@ -8,16 +8,16 @@
             *ngIf="dragged; else base"
             class="content"
         >
-            <tui-marker-icon
-                mode="link"
+            <tui-avatar
+                appearance="secondary"
                 src="tuiIconDropletLarge"
             />
             <div>Drop it like it's hot!</div>
         </div>
         <ng-template #base>
             <div class="content">
-                <tui-marker-icon
-                    mode="link"
+                <tui-avatar
+                    appearance="secondary"
                     src="tuiIconUploadCloudLarge"
                 />
                 <div>

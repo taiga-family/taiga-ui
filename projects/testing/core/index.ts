@@ -1,6 +1,5 @@
 export * from './accordion.harness';
 export * from './accordion-item.harness';
-export * from './action.harness';
 export * from './avatar.harness';
 export * from './badge.harness';
 export * from './button.harness';
@@ -10,7 +9,6 @@ export * from './dialog.harness';
 export * from './hosted-dropdown.harness';
 export * from './island.harness';
 export * from './loader.harness';
-export * from './marker-icon.harness';
 export * from './primitive-calender.harness';
 export * from './primitive-spin-button.harness';
 export * from './primitive-textfield.harness';

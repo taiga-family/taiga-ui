@@ -10,8 +10,9 @@ import {
     TuiNotificationModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
+import {TuiCardModule} from '@taiga-ui/experimental';
 import {
-    TuiActionModule,
+    TuiAvatarComponent,
     TuiFieldErrorPipeModule,
     TuiInputPhoneModule,
     TuiIslandModule,
@@ -40,9 +41,10 @@ import {ExampleTuiIslandComponent} from './island.component';
         TuiAddonDocModule,
         TuiNotificationModule,
         StylesInfoModule,
-        TuiActionModule,
         TuiButtonDirective,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiIslandComponent)),
+        TuiCardModule,
+        TuiAvatarComponent,
     ],
     declarations: [
         ExampleTuiIslandComponent,
