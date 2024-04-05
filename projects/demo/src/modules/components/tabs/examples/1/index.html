@@ -1,38 +1,28 @@
 <tui-tabs [(activeItemIndex)]="activeItemIndex">
     <button
+        iconLeft="tuiIconCreditCard"
         tuiTab
         (click)="onClick('Maps')"
     >
-        <tui-svg
-            src="tuiIconCreditCard"
-            class="tui-space_right-2"
-        />
         Maps
     </button>
     <button
         disabled
+        iconLeft="tuiIconPhone"
         tuiTab
         (click)="onClick('Calls')"
     >
-        <tui-svg
-            src="tuiIconPhone"
-            class="tui-space_right-2"
-        />
         Calls
     </button>
     <button
+        iconLeft="tuiIconSettings"
         tuiTab
         (click)="onClick('Settings')"
     >
-        <tui-svg
-            src="tuiIconSettings"
-            class="tui-space_right-2"
-        />
         Settings
     </button>
 </tui-tabs>
 <tui-input-number
-    decimal="never"
     class="tui-space_top-4"
     [max]="2"
     [min]="0"

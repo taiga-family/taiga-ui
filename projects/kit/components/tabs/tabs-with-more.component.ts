@@ -26,8 +26,8 @@ import {
     tuiToInt,
 } from '@taiga-ui/cdk';
 import type {TuiSizeL} from '@taiga-ui/core';
-import {TuiDropdownModule, TuiSvgModule} from '@taiga-ui/core';
-import {TUI_ARROW_OPTIONS} from '@taiga-ui/kit/components/arrow';
+import {TuiDropdownModule} from '@taiga-ui/core';
+import {TuiChevronDirective} from '@taiga-ui/kit/directives';
 import {TUI_MORE_WORD} from '@taiga-ui/kit/tokens';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
@@ -45,10 +45,10 @@ import {TuiTabsHorizontalDirective} from './tabs-horizontal.directive';
         CommonModule,
         PolymorpheusModule,
         TuiDropdownModule,
-        TuiSvgModule,
         TuiFocusableModule,
         TuiTabDirective,
         TuiTabsHorizontalDirective,
+        TuiChevronDirective,
     ],
     templateUrl: './tabs-with-more.template.html',
     styleUrls: ['./tabs-with-more.style.less'],
@@ -93,7 +93,6 @@ export class TuiTabsWithMoreComponent implements AfterViewChecked, AfterViewInit
         EMPTY_QUERY;
 
     protected readonly moreWord$ = inject(TUI_MORE_WORD);
-    protected readonly arrowOptions = inject(TUI_ARROW_OPTIONS);
     protected open = false;
 
     @Input('activeItemIndex')

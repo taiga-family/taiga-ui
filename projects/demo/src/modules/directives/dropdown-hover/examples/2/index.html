@@ -4,6 +4,7 @@
 >
     <button tuiTab>Just a tab</button>
     <button
+        tuiChevron
         tuiDropdownHover
         tuiTab
         [tuiDropdown]="content"
@@ -21,26 +22,25 @@
     </button>
     <button tuiTab>Another tab</button>
     <button
+        iconLeft="tuiIconSettings"
         tuiDropdownHover
         tuiTab
         [tuiDropdown]="settings"
         [(tuiDropdownOpen)]="openSettings"
         (tui-tab-activate.stop)="(0)"
-    >
-        <tui-icon name="tuiIconSettings" />
-        <ng-template #settings>
-            <div
-                class="settings"
-                [formGroup]="testForm"
-            >
-                <input
-                    formControlName="option"
-                    tuiSwitch
-                    type="checkbox"
-                />
-                Turn option
-            </div>
-        </ng-template>
-    </button>
+    ></button>
+    <ng-template #settings>
+        <div
+            class="settings"
+            [formGroup]="testForm"
+        >
+            <input
+                formControlName="option"
+                tuiSwitch
+                type="checkbox"
+            />
+            Turn option
+        </div>
+    </ng-template>
 </nav>
 <p>Current state: {{ open ? 'open' : 'closed' }}</p>

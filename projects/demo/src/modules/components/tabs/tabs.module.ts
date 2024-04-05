@@ -8,12 +8,12 @@ import {
     TuiButtonDirective,
     TuiDataListModule,
     TuiDropdownModule,
+    TuiIconComponent,
     TuiModeModule,
     TuiNotificationModule,
     TuiScrollbarComponent,
-    TuiSvgModule,
 } from '@taiga-ui/core';
-import {TuiInputNumberModule, TuiTabsModule} from '@taiga-ui/kit';
+import {TuiChevronDirective, TuiInputNumberModule, TuiTabsModule} from '@taiga-ui/kit';
 
 import {TuiTabsExample1} from './examples/1';
 import {TuiTabsExample2} from './examples/2';
@@ -32,7 +32,6 @@ import {ExampleTuiTabsComponent} from './tabs.component';
         TuiInputNumberModule,
         TuiModeModule,
         TuiNotificationModule,
-        TuiSvgModule,
         TuiButtonDirective,
         TuiDropdownModule,
         TuiDataListModule,
@@ -41,6 +40,8 @@ import {ExampleTuiTabsComponent} from './tabs.component';
         TuiExamplePipe,
         TuiSetupComponent,
         tuiGetDocModules(ExampleTuiTabsComponent),
+        TuiChevronDirective,
+        TuiIconComponent,
     ],
     declarations: [
         ExampleTuiTabsComponent,
