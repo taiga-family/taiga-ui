@@ -1,7 +1,8 @@
+import {Location} from '@angular/common';
 import type {ErrorHandler} from '@angular/core';
-import {Injectable} from '@angular/core';
-
-import {hasFlag} from '../../../../../scripts/shared/argv.utils';
+import {inject, Injectable} from '@angular/core';
+// eslint-disable-next-line @taiga-ui/experience/no-deep-imports
+import {errorLog} from '@taiga-ui/cdk/schematics/utils/colored-log';
 
 // TODO
 const KNOWN_ISSUES: string[] = [
@@ -14,10 +15,13 @@ const KNOWN_ISSUES: string[] = [
     // TODO: drop all `Failed to parse URL from` errors after deletion of tui-svg component
     'TypeError: Failed to parse URL from assets/icons/android.svg',
     'TypeError: Failed to parse URL from assets/icons/ios.svg',
+    'TypeError: Failed to parse URL from assets/icons/polygon.svg',
 ];
 
 @Injectable()
 export class ServerErrorHandler implements ErrorHandler {
+    protected readonly location = inject(Location);
+
     public handleError(error: Error | string): void {
         const errorMessage = (typeof error === 'string' ? error : error.message) || '';
 
@@ -25,10 +29,8 @@ export class ServerErrorHandler implements ErrorHandler {
             return;
         }
 
+        errorLog(this.location.path());
         console.error(errorMessage);
-
-        if (hasFlag('--ci')) {
-            process.exit(1);
-        }
+        process.abort();
     }
 }
