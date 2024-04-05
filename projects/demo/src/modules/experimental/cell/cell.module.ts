@@ -17,10 +17,7 @@ import {
     TuiTitleDirective,
     TuiTooltipModule,
 } from '@taiga-ui/core';
-import {
-    TuiCardModule,
-    TuiCellModule,
-} from '@taiga-ui/experimental';
+import {TuiCardModule, TuiCellModule} from '@taiga-ui/experimental';
 import {
     TuiAvatarComponent,
     TuiAvatarStackComponent,
