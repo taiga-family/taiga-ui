@@ -8,9 +8,9 @@ import {
     TuiDataListModule,
     TuiDropdownModule,
     TuiGroupDirective,
-    TuiIconComponent,
 } from '@taiga-ui/core';
 import {
+    TuiChevronDirective,
     TuiDataListWrapperModule,
     TuiSelectModule,
     TuiSwitchComponent,
@@ -37,7 +37,7 @@ import {TuiDropdownHoverExample4} from './examples/4';
         TuiSwitchComponent,
         TuiDataListModule,
         TuiGroupDirective,
-        TuiIconComponent,
+        TuiChevronDirective,
         DropdownDocumentationModule,
         tuiGetDocModules(ExampleTuiDropdownHoverComponent),
     ],

@@ -23,18 +23,13 @@
             <ng-template #submenu>
                 <button
                     *tuiItem
+                    tuiChevron
                     tuiTab
                     [tuiDropdown]="dropdown"
                     [(tuiDropdownOpen)]="open"
                     (tui-tab-activate)="stop($event)"
                 >
                     Collaborators
-                    <!--TODO: Switch to tuiChevron-->
-                    <tui-svg
-                        src="tuiIconChevronDown"
-                        class="icon"
-                        [class.icon_rotated]="open"
-                    />
                 </button>
             </ng-template>
         </ng-container>
@@ -57,5 +52,5 @@
     </tui-data-list>
 </ng-template>
 <ng-template #more>
-    <tui-svg src="tuiIconMoreHorizontalLarge" />
+    <tui-icon icon="tuiIconMoreHorizontal" />
 </ng-template>
