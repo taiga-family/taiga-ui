@@ -186,7 +186,7 @@ export const DemoRoute = {
     Validator: 'directives/validator',
     ValueChanges: 'directives/value-changes',
     Media: 'media',
-    Mode: 'mode',
+    Mode: 'directives/mode',
     AutoFocus: 'directives/auto-focus',
     Currency: 'pipes/currency',
     FilterPipe: 'pipes/filter',
