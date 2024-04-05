@@ -10,6 +10,7 @@ import {
     inject,
     Input,
     Output,
+    Renderer2,
     TemplateRef,
     ViewChild,
 } from '@angular/core';
@@ -66,6 +67,7 @@ export class TuiTabsWithMoreComponent implements AfterViewChecked, AfterViewInit
     private readonly refresh$ = inject(TUI_TABS_REFRESH);
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
     private readonly cdr = inject(ChangeDetectorRef);
+    private readonly renderer = inject(Renderer2);
     private maxIndex = Infinity;
 
     @Input()
@@ -141,9 +143,11 @@ export class TuiTabsWithMoreComponent implements AfterViewChecked, AfterViewInit
         const {tabs} = this;
         const safeActiveIndex = tuiClamp(this.activeItemIndex || 0, 0, tabs.length - 2);
 
-        return this.options.exposeActive || this.lastVisibleIndex >= safeActiveIndex
-            ? tabs[safeActiveIndex] || null
-            : this.moreButton?.nativeElement || null;
+        if (this.options.exposeActive || this.lastVisibleIndex >= safeActiveIndex) {
+            return tabs[safeActiveIndex] || null;
+        }
+
+        return this.moreButton?.nativeElement || null;
     }
 
     protected get isMoreAlone(): boolean {
@@ -272,9 +276,19 @@ export class TuiTabsWithMoreComponent implements AfterViewChecked, AfterViewInit
     }
 
     private refresh(): void {
-        const {offsetLeft = 0, offsetWidth = 0} = this.activeElement || {};
+        requestAnimationFrame(() => {
+            const {offsetLeft = 0, offsetWidth = 0} = this.activeElement || {};
 
-        this.dir?.nativeElement.style.setProperty('--t-left', tuiPx(offsetLeft));
-        this.dir?.nativeElement.style.setProperty('--t-width', tuiPx(offsetWidth));
+            this.renderer.setStyle(
+                this.dir?.nativeElement,
+                '--t-left',
+                tuiPx(offsetLeft),
+            );
+            this.renderer.setStyle(
+                this.dir?.nativeElement,
+                '--t-width',
+                tuiPx(offsetWidth),
+            );
+        });
     }
 }
