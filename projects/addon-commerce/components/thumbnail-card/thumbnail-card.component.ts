@@ -1,3 +1,4 @@
+import {NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -7,39 +8,44 @@ import {
 } from '@angular/core';
 import {TUI_INPUT_CARD_OPTIONS} from '@taiga-ui/addon-commerce/components/input-card';
 import type {TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
-import type {TuiSizeS} from '@taiga-ui/core';
+import type {TuiStringHandler} from '@taiga-ui/cdk';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import {TUI_ICON_RESOLVER, TuiIconComponent} from '@taiga-ui/core';
 
 @Component({
+    standalone: true,
     selector: 'tui-thumbnail-card',
+    imports: [TuiIconComponent, NgIf],
     templateUrl: './thumbnail-card.template.html',
     styleUrls: ['./thumbnail-card.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiThumbnailCardComponent {
-    private readonly options = inject(TUI_INPUT_CARD_OPTIONS);
-
     @Input()
-    @HostBinding('class._active')
-    public active = false;
-
-    @Input()
-    public brandLogo = '';
-
-    @Input()
-    public cardNumber = '';
+    @HostBinding('attr.data-size')
+    public size: TuiSizeL | TuiSizeS = 'm';
 
     @Input()
     public paymentSystem: TuiPaymentSystem | null = null;
 
     @Input()
-    @HostBinding('attr.data-size')
-    public size: TuiSizeS = 'm';
+    public iconLeft = '';
 
-    protected get hasBrandLogo(): boolean {
-        return !!this.brandLogo && this.size === 'm';
-    }
+    @Input()
+    public iconRight = '';
 
-    protected get paymentSystemLogo(): string {
-        return this.paymentSystem ? this.options.icons[this.paymentSystem] : '';
+    protected readonly options = inject(TUI_INPUT_CARD_OPTIONS);
+    protected readonly resolver = inject<TuiStringHandler<string>>(TUI_ICON_RESOLVER);
+
+    // TODO: Revisit this approach in 4.0 when icons are moved away from InputCard options
+    protected get isMono(): boolean {
+        switch (this.paymentSystem) {
+            case 'mir':
+            case 'visa':
+            case 'electron':
+                return true;
+            default:
+                return false;
+        }
     }
 }

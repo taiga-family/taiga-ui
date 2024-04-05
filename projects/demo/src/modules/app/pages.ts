@@ -940,13 +940,6 @@ export const pages: TuiDocPages = [
     },
     {
         section: 'Experimental',
-        title: 'ThumbnailCard ',
-        keywords:
-            'карта, карточка, card, visa, mastercard, credit, icon, logo, дебетовая, кредитная, иконка, логотип',
-        route: '/experimental/thumbnail-card',
-    },
-    {
-        section: 'Experimental',
         title: 'Tooltip ',
         keywords: 'tooltip, тултип, hint, подсказка, помощь, help',
         route: '/experimental/tooltip',

@@ -29,12 +29,12 @@ export class TestComponent {
 }`;
 
 const COMPONENT_AFTER = `
-import { TuiThumbnailCardModule, TuiThumbnailCardComponent } from '@taiga-ui/addon-commerce';
+import { TuiThumbnailCardComponent } from '@taiga-ui/addon-commerce';
 
 @Component({
     standalone: true,
     templateUrl: './test.template.html',
-    imports: [TuiThumbnailCardModule]
+    imports: [TuiThumbnailCardComponent]
 })
 export class TestComponent {
     @ViewChild(TuiThumbnailCardComponent)
@@ -42,19 +42,19 @@ export class TestComponent {
 }`;
 
 const TEMPLATE_BEFORE = `
-<tui-card class="tui-card"></tui-card>
-<tui-card class="tui-card" />
-<tui-card class="tui-card" brandLogo="logo"></tui-card>
+<tui-card class="tui-card" [cardNumber]="cardNumber"></tui-card>
+<tui-card class="tui-card" [cardNumber]="cardNumber"/>
+<tui-card class="tui-card" brandLogo="logo" cardNumber="1234"></tui-card>
 <tui-card class="tui-card" brandLogo="logo" [active]="true"></tui-card>
-<tui-thumbnail-card [brandLogo]="logo"></tui-thumbnail-card>
+<tui-thumbnail-card [brandLogo]="logo" [cardNumber]="cardNumber"></tui-thumbnail-card>
 `;
 
 const TEMPLATE_AFTER = `
-<tui-thumbnail-card  class="tui-card"></tui-thumbnail-card>
-<tui-thumbnail-card  class="tui-card" />
-<tui-thumbnail-card  class="tui-card" iconLeft="logo"></tui-thumbnail-card>
+<tui-thumbnail-card  class="tui-card">{{ cardNumber }}</tui-thumbnail-card>
+<tui-thumbnail-card  class="tui-card">{{ cardNumber }}</tui-thumbnail-card>
+<tui-thumbnail-card  class="tui-card" iconLeft="logo">1234</tui-thumbnail-card>
 <tui-thumbnail-card  class="tui-card" iconLeft="logo" ></tui-thumbnail-card>
-<tui-thumbnail-card [iconLeft]="logo"></tui-thumbnail-card>
+<tui-thumbnail-card [iconLeft]="logo">{{ cardNumber }}</tui-thumbnail-card>
 `;
 
 describe('ng-update', () => {

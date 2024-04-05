@@ -1,6 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
+import {TuiThumbnailCardComponent} from '@taiga-ui/addon-commerce';
 import {tuiGetDocModules} from '@taiga-ui/addon-doc';
 import {
     TuiButtonDirective,
@@ -15,12 +16,7 @@ import {
     TuiTitleDirective,
     TuiTooltipModule,
 } from '@taiga-ui/core';
-import {
-    TuiCardModule,
-    TuiCellModule,
-    TuiSurfaceModule,
-    TuiThumbnailCardModule,
-} from '@taiga-ui/experimental';
+import {TuiCardModule, TuiCellModule, TuiSurfaceModule} from '@taiga-ui/experimental';
 import {
     TuiAvatarComponent,
     TuiAvatarStackComponent,
@@ -59,7 +55,7 @@ import {TuiCellExample7} from './examples/7';
         TuiLinkModule,
         TuiNotificationModule,
         TuiProgressModule,
-        TuiThumbnailCardModule,
+        TuiThumbnailCardComponent,
         TuiSwitchComponent,
         TuiTooltipModule,
         TuiTitleDirective,

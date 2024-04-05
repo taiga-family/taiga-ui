@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {TuiAmountPipe, TuiThumbnailCardModule} from '@taiga-ui/addon-commerce';
+import {TuiAmountPipe, TuiThumbnailCardComponent} from '@taiga-ui/addon-commerce';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiAutoFocusDirective, TuiLetModule, TuiMapperPipeModule} from '@taiga-ui/cdk';
 import {
@@ -59,7 +59,7 @@ import {ExampleTuiSelectComponent} from './select.component';
         TuiDataListModule,
         TuiTextareaModule,
         TuiSelectModule,
-        TuiThumbnailCardModule,
+        TuiThumbnailCardComponent,
         TuiRadioListComponent,
         TuiButtonDirective,
         TuiLinkModule,

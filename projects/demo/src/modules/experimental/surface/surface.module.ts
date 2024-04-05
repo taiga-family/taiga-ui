@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {TuiAmountPipe, TuiThumbnailCardModule} from '@taiga-ui/addon-commerce';
+import {TuiAmountPipe, TuiThumbnailCardComponent} from '@taiga-ui/addon-commerce';
 import {tuiGetDocModules} from '@taiga-ui/addon-doc';
 import {TuiRippleModule} from '@taiga-ui/addon-mobile';
 import {TuiRepeatTimesModule} from '@taiga-ui/cdk';
@@ -42,7 +42,7 @@ import {ExampleTuiSurfaceComponent} from './surface.component';
         TuiLabelModule,
         TuiModeModule,
         TuiAmountPipe,
-        TuiThumbnailCardModule,
+        TuiThumbnailCardComponent,
         tuiGetDocModules(ExampleTuiSurfaceComponent),
         TuiAppearanceDirective,
     ],

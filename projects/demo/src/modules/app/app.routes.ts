@@ -273,15 +273,6 @@ export const ROUTES: Routes = [
         },
     },
     {
-        path: 'experimental/thumbnail-card',
-        loadChildren: async () =>
-            (await import('../experimental/thumbnail-card/thumbnail-card.module'))
-                .ExampleTuiThumbnailCardModule,
-        data: {
-            title: 'ThumbnailCard ',
-        },
-    },
-    {
         path: 'experimental/navigation',
         loadChildren: async () =>
             (await import('../experimental/navigation/navigation.module'))
@@ -337,15 +328,11 @@ export const ROUTES: Routes = [
             title: 'Carousel',
         },
     },
-    {
+    route({
         path: 'components/thumbnail-card',
-        loadChildren: async () =>
-            (await import('../components/thumbnail-card/thumbnail-card.module'))
-                .ExampleTuiThumbnailCardModule,
-        data: {
-            title: 'ThumbnailCard',
-        },
-    },
+        title: 'ThumbnailCard',
+        loadComponent: async () => import('../components/thumbnail-card'),
+    }),
     route({
         path: 'components/checkbox',
         title: 'Checkbox',

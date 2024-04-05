@@ -18,8 +18,18 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifier[] = [
         to: {name: 'TUI_FALSE_HANDLER', moduleSpecifier: '@taiga-ui/cdk'},
     },
     {
+        from: {name: 'TuiThumbnailCardModule', moduleSpecifier: '@taiga-ui/experimental'},
+        to: {
+            name: 'TuiThumbnailCardComponent',
+            moduleSpecifier: '@taiga-ui/addon-commerce',
+        },
+    },
+    {
         from: {name: 'TuiCardModule', moduleSpecifier: '@taiga-ui/addon-commerce'},
-        to: {name: 'TuiThumbnailCardModule', moduleSpecifier: '@taiga-ui/addon-commerce'},
+        to: {
+            name: 'TuiThumbnailCardComponent',
+            moduleSpecifier: '@taiga-ui/addon-commerce',
+        },
     },
     {
         from: {name: 'TuiCardComponent', moduleSpecifier: '@taiga-ui/addon-commerce'},

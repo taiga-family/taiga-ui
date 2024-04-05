@@ -2,82 +2,138 @@
 
 :host {
     position: relative;
-    display: block;
+    display: inline-flex;
     flex-shrink: 0;
-    color: var(--tui-base-01);
+    background: #000;
+    color: #fff;
     transform-style: preserve-3d;
-    cursor: default;
-    border-radius: var(--tui-radius-xs);
-    background-size: 100%;
-
-    &[data-size='s'] {
-        width: 2rem;
-        height: 1.5rem;
-    }
-
-    &[data-size='m'] {
-        width: 3rem;
-        height: 2rem;
-    }
+    overflow: hidden;
 
     &:before {
         .fullsize();
 
         content: '';
-        box-shadow: inset 0 0 0 1px;
-        border-radius: inherit;
-        color: var(--tui-clear);
     }
 
-    &._active {
-        box-shadow: 0 0 0 1px var(--tui-base-01);
+    &[data-size='s'] {
+        width: 2.5rem;
+        height: 1.625rem;
+        border-radius: 0.25rem;
+        font-size: 0;
+
+        .t-left {
+            transform: translate(0.125rem, 0.125rem) scale(0.625);
+        }
+
+        .t-right {
+            display: none;
+        }
+
+        .t-logo {
+            bottom: -0.375rem;
+            transform: scale(0.55);
+        }
     }
+
+    &[data-size='m'] {
+        width: 3rem;
+        height: 2rem;
+        border-radius: 0.3125rem;
+        text-indent: 0.1875rem;
+        font: normal 0.5625rem/0.875rem var(--tui-font-text);
+
+        .t-left {
+            transform: translate(0.1875rem, 0.25rem) scale(0.75);
+        }
+
+        .t-right {
+            transform: translate(-0.1875rem, 0.1875rem) scale(0.875);
+
+            .t-icon {
+                transform: scale(0.714);
+            }
+        }
+
+        .t-logo {
+            bottom: -0.3125rem;
+            transform: scale(0.55);
+        }
+    }
+
+    &[data-size='l'] {
+        width: 3.375rem;
+        height: 2.25rem;
+        border-radius: 0.375rem;
+        text-indent: 0.3125rem;
+        font: normal 0.625rem/1.125rem var(--tui-font-text);
+
+        .t-left {
+            transform: translate(0.1875rem, 0.1875rem);
+        }
+
+        .t-right {
+            transform: translate(-0.1875rem, 0.1875rem);
+        }
+
+        .t-logo {
+            bottom: -0.1875rem;
+            transform: scale(0.75);
+        }
+    }
+}
+
+.t-left,
+.t-right {
+    position: absolute;
+    top: 0;
+    display: flex;
+}
+
+.t-left {
+    left: 0;
+    transform-origin: top left;
+}
+
+.t-right {
+    right: 0;
+    transform-origin: top right;
+
+    &:before {
+        content: '';
+        .fullsize();
+
+        border-radius: 100%;
+        background: currentColor;
+        opacity: 0.35;
+    }
+
+    .t-icon {
+        color: #fff;
+        transform: scale(0.625);
+    }
+}
+
+.t-logo {
+    position: absolute;
+    right: 0.1875rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    transform-origin: right;
+}
+
+.t-icon {
+    width: 1rem;
+    height: 1rem;
 }
 
 .t-front {
     .fullsize();
 
-    backface-visibility: hidden;
-}
-
-.t-brand-logo {
-    position: absolute;
-    top: 0.1875rem;
-    left: 0.125rem;
-    height: 0.875rem;
-    width: 0.875rem;
-}
-
-.t-number {
-    position: absolute;
-    right: 0.25rem;
     display: flex;
-    justify-content: center;
-    align-items: center;
-
-    :host[data-size='s'] & {
-        top: 0.125rem;
-        height: 0.625rem;
-        width: 1.1875rem;
-        font-size: 0.5rem;
-    }
-
-    :host[data-size='m'] & {
-        top: 0.1875rem;
-        height: 0.875rem;
-        width: 1.5rem;
-        font-size: 0.625rem;
-    }
-}
-
-.t-payment-system-logo {
-    position: absolute;
-    right: 0.25rem;
-    bottom: -0.5rem;
-    width: 2rem;
-    height: 2rem;
-    transform: scale(0.5);
-    transform-origin: right;
+    align-items: flex-end;
+    backface-visibility: hidden;
+    box-shadow: inset 0 0 0 1px var(--tui-clear);
+    border-radius: inherit;
 }
 
 .t-back {
@@ -85,16 +141,15 @@
 
     backface-visibility: hidden;
     transform: rotateY(180deg) translate3d(0, 0, 1px);
-    background-color: var(--tui-base-05);
-    border-radius: var(--tui-radius-xs);
+    background: #b0b0b0;
+    border-radius: inherit;
 
     &:after {
+        .fullsize(absolute, inset);
+
         content: '';
-        position: absolute;
         top: 20%;
-        left: 0;
-        right: 0;
-        height: 20%;
-        background-color: var(--tui-base-06);
+        bottom: 60%;
+        background: #959595;
     }
 }
