@@ -124,15 +124,11 @@ export const ROUTES: Routes = [
         title: 'Block',
         loadComponent: async () => import('../components/block'),
     }),
-    {
+    route({
         path: DemoRoute.BlockStatus,
-        loadChildren: async () =>
-            (await import('../components/block-status/block-status.module'))
-                .ExampleTuiBlockStatusModule,
-        data: {
-            title: 'BlockStatus',
-        },
-    },
+        title: 'BlockStatus',
+        loadComponent: async () => import('../components/block-status'),
+    }),
     {
         path: DemoRoute.Amount,
         loadChildren: async () =>
