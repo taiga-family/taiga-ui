@@ -105,11 +105,6 @@ export const ROUTES: Routes = [
         loadComponent: async () => import('../components/accordion'),
     }),
     route({
-        path: DemoRoute.Action,
-        title: 'Action',
-        loadComponent: async () => import('../components/action'),
-    }),
-    route({
         path: DemoRoute.Avatar,
         title: 'Avatar',
         loadComponent: async () => import('../components/avatar'),
@@ -1073,15 +1068,6 @@ export const ROUTES: Routes = [
                 .IconsCustomizationModule,
         data: {
             title: 'Icons customization',
-        },
-    },
-    {
-        path: DemoRoute.MarkerIcon,
-        loadChildren: async () =>
-            (await import('../icons/marker-icon/marker-icon.module'))
-                .ExampleTuiMarkerIconModule,
-        data: {
-            title: 'MarkerIcon',
         },
     },
     // FILTER

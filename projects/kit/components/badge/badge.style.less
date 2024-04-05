@@ -95,6 +95,14 @@ tui-badge,
             margin-inline-end: -0.125rem;
         }
     }
+
+    &[tuiAppearance][data-appearance='error'],
+    &[tuiAppearance][data-appearance='success'],
+    &[tuiAppearance][data-appearance='warning'],
+    &[tuiAppearance][data-appearance='info'],
+    &[tuiAppearance][data-appearance='neutral'] {
+        color: var(--tui-text-01);
+    }
 }
 
 img[tuiBadge] {

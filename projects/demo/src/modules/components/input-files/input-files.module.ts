@@ -10,11 +10,7 @@ import {
     TuiNotificationModule,
     TuiSvgModule,
 } from '@taiga-ui/core';
-import {
-    TuiFieldErrorPipeModule,
-    TuiFilesModule,
-    TuiMarkerIconModule,
-} from '@taiga-ui/kit';
+import {TuiAvatarComponent, TuiFieldErrorPipeModule, TuiFilesModule} from '@taiga-ui/kit';
 
 import {TuiInputFilesExample1} from './examples/1';
 import {TuiInputFilesExample2} from './examples/2';
@@ -36,7 +32,7 @@ import {ExampleTuiInputFilesComponent} from './input-files.component';
         TuiErrorModule,
         TuiFieldErrorPipeModule,
         TuiNotificationModule,
-        TuiMarkerIconModule,
+        TuiAvatarComponent,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiInputFilesComponent)),
         FormsModule,

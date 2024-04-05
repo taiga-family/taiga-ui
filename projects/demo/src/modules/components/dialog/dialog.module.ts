@@ -23,9 +23,9 @@ import {
 } from '@taiga-ui/core';
 import {
     TuiAccordionModule,
+    TuiAvatarComponent,
     TuiInputModule,
     TuiInputNumberModule,
-    TuiMarkerIconModule,
     TuiRadioListComponent,
 } from '@taiga-ui/kit';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
@@ -59,7 +59,7 @@ import {TuiDialogExampleComponent10} from './examples/10';
         TuiInputModule,
         TuiHintModule,
         TuiLinkDirective,
-        TuiMarkerIconModule,
+        TuiAvatarComponent,
         TuiNotificationModule,
         TuiElasticStickyModule,
         TuiAutoFocusDirective,

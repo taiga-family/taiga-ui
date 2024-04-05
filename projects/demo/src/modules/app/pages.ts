@@ -143,12 +143,6 @@ export const pages: TuiDocPages = [
     },
     {
         section: 'Components',
-        title: 'Action',
-        keywords: 'кнопка, button, ссылка, link, действие, icon, иконка',
-        route: DemoRoute.Action,
-    },
-    {
-        section: 'Components',
         title: 'Alert',
         keywords: 'уведомление, нотификация, бабл, облачко, alert, notification',
         route: DemoRoute.Alert,
@@ -1059,12 +1053,6 @@ export const pages: TuiDocPages = [
         keywords:
             'icons, icon, svg, customization, стили, иконки, картинка, свг, иконка, графика',
         route: DemoRoute.IconsCustomization,
-    },
-    {
-        section: 'Icons',
-        title: 'MarkerIcon',
-        keywords: 'icons, icon, marker, иконки, картинка, свг, иконка, графика',
-        route: DemoRoute.MarkerIcon,
     },
     // Navigation
     {
