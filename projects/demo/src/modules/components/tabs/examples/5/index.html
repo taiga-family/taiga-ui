@@ -10,9 +10,10 @@
             (keydown.delete)="remove(item)"
         >
             {{ item }}
-            <tui-svg
-                src="tuiIconClose"
+            <tui-icon
+                icon="tuiIconClose"
                 class="tui-space_left-2"
+                [style.font-size.rem]="1"
                 (click.stop)="remove(item)"
             />
         </button>

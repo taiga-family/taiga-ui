@@ -4,63 +4,47 @@
 >
     <button
         *tuiItem
+        iconLeft="tuiIconCreditCard"
         tuiTab
         (click)="onClick('Maps')"
     >
-        <tui-svg
-            src="tuiIconCreditCard"
-            class="tui-space_right-2"
-        />
         Maps
     </button>
     <button
         *tuiItem
         disabled
+        iconLeft="tuiIconPhone"
         tuiTab
         (click)="onClick('Calls')"
     >
-        <tui-svg
-            src="tuiIconPhone"
-            class="tui-space_right-2"
-        />
         Calls
     </button>
     <button
         *tuiItem
+        iconLeft="tuiIconSettings"
         tuiTab
         (click)="onClick('Settings')"
     >
-        <tui-svg
-            src="tuiIconSettings"
-            class="tui-space_right-2"
-        />
         Settings
     </button>
     <button
         *tuiItem
+        iconLeft="tuiIconHeart"
         tuiTab
         (click)="onClick('Favorite')"
     >
-        <tui-svg
-            src="tuiIconHeart"
-            class="tui-space_right-2"
-        />
         Favorite
     </button>
     <button
         *tuiItem
+        iconLeft="tuiIconTrash"
         tuiTab
         (click)="onClick('Trash')"
     >
-        <tui-svg
-            src="tuiIconTrash"
-            class="tui-space_right-2"
-        />
         Trash
     </button>
 </tui-tabs-with-more>
 <tui-input-number
-    decimal="never"
     class="tui-space_top-4"
     [max]="4"
     [min]="0"

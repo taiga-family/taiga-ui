@@ -24,6 +24,7 @@
 </tui-tabs>
 
 <button
+    *ngIf="moreContent; else chevron"
     tuiTab
     class="t-more"
     [class._active]="isMoreActive"
@@ -34,18 +35,25 @@
     [(tuiDropdownOpen)]="open"
     (keydown.arrowLeft.prevent)="onArrowLeft()"
 >
-    <ng-container *polymorpheusOutlet="moreContent || more as text">
+    <ng-container *polymorpheusOutlet="moreContent as text">
         {{ text }}
     </ng-container>
 </button>
-<ng-template #more>
-    {{ moreWord$ | async }}
-    <!--TODO: Switch to tuiChevron-->
-    <tui-svg
-        class="t-icon"
-        [class.t-icon_rotated]="open"
-        [src]="arrowOptions.iconSmall"
-    />
+<ng-template #chevron>
+    <button
+        tuiChevron
+        tuiTab
+        class="t-more"
+        [class._active]="isMoreActive"
+        [class.t-no-margin]="isMoreAlone"
+        [class.t-overflown]="!isMoreVisible"
+        [tuiDropdown]="dropdownContent || dropdown"
+        [tuiFocusable]="isMoreFocusable"
+        [(tuiDropdownOpen)]="open"
+        (keydown.arrowLeft.prevent)="onArrowLeft()"
+    >
+        {{ moreWord$ | async }}
+    </button>
 </ng-template>
 <ng-template #dropdown>
     <div

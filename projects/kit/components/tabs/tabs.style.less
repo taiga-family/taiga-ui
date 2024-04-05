@@ -55,6 +55,21 @@
         margin-left: var(--tui-tab-margin, 1.5rem);
     }
 
+    &._icon-left:before {
+        font-size: 1rem;
+        margin-inline-end: 0.5rem;
+    }
+
+    &._icon-right:after {
+        font-size: 1rem;
+        margin-inline-start: 0.5rem;
+    }
+
+    &:empty:after,
+    &:empty:before {
+        margin: 0.5rem;
+    }
+
     @media (hover: hover) {
         &:hover {
             color: var(--tui-text-01);
