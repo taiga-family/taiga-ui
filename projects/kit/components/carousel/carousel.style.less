@@ -40,11 +40,12 @@
 }
 
 .t-wrapper {
-    position: sticky;
-    left: 0;
-    right: 0;
+    position: static;
     min-width: 100%;
-    overflow: hidden;
+
+    :host(._transitioned) & {
+        overflow: hidden;
+    }
 }
 
 .t-scroller {
@@ -52,11 +53,4 @@
     display: flex;
     overflow: auto;
     overscroll-behavior-x: none;
-
-    &:before,
-    &:after {
-        content: '';
-        display: block;
-        min-width: 1rem;
-    }
 }
