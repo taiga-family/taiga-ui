@@ -2,6 +2,7 @@ import {performance} from 'node:perf_hooks';
 
 import type {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {chain} from '@angular-devkit/schematics';
+import {NodePackageInstallTask} from '@angular-devkit/schematics/tasks';
 import {saveActiveProject} from 'ng-morph';
 
 import {TAIGA_VERSION} from '../../ng-add/constants/versions';
@@ -22,6 +23,7 @@ import {
     MIGRATION_WARNINGS,
     MODULES_TO_REMOVE,
 } from './steps/constants';
+import {migrateProprietary} from './steps/migrate-proprietary';
 import {migrateStyles} from './steps/migrate-styles';
 
 function main(options: TuiSchema): Rule {
@@ -40,8 +42,12 @@ function main(options: TuiSchema): Rule {
         migrateStyles();
         showWarnings(context, MIGRATION_WARNINGS);
 
+        migrateProprietary(fileSystem, options);
+
         fileSystem.commitEdits();
         saveActiveProject();
+
+        context.addTask(new NodePackageInstallTask());
     };
 }
 
