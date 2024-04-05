@@ -8,7 +8,6 @@ import {
     Output,
 } from '@angular/core';
 import {tuiIsObserved} from '@taiga-ui/cdk';
-import {tuiLinkOptionsProvider} from '@taiga-ui/core/components/link';
 import {TUI_CLOSE_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 
 import {TUI_NOTIFICATION_OPTIONS} from './notification.options';
@@ -18,7 +17,6 @@ import {TUI_NOTIFICATION_OPTIONS} from './notification.options';
     templateUrl: './notification.template.html',
     styleUrls: ['./notification.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [tuiLinkOptionsProvider({appearance: ''})],
 })
 export class TuiNotificationComponent {
     private readonly options = inject(TUI_NOTIFICATION_OPTIONS);
