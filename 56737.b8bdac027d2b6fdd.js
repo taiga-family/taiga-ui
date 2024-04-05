@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[56737],{56737:o=>{o.exports=".logo {\n    color: #fff;\n    background-color: var(--tui-primary-hover);\n    margin: 1rem 0;\n}\n"}}]);
