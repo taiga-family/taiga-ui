@@ -905,7 +905,7 @@ export const pages: TuiDocPages = [
         route: DemoRoute.LabelExp,
     },
     {
-        section: 'Experimental',
+        section: 'Navigation',
         title: 'Segmented',
         keywords: 'tabs, control, radio, navigation, навигация, вкладки, таб',
         route: DemoRoute.Segmented,

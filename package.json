@@ -35,7 +35,7 @@
         "build:ssr": "nx build demo --baseHref=/ && nx run demo:server:production",
         "prerender": "nx run demo:prerender",
         "test": "nx run-many --target test --all --output-style=stream --parallel=1",
-        "test:e2e": "nx e2e-ui demo-cypress",
+        "test:e2e": "nx e2e-ui demo-playwright",
         "*** Workflow ***": "",
         "stylelint": "stylelint '**/*.{less,css}' --config package.json",
         "lint": "eslint .",

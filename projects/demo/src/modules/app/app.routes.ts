@@ -229,15 +229,11 @@ export const ROUTES: Routes = [
         title: 'Label ',
         loadComponent: async () => import('../experimental/label'),
     }),
-    {
+    route({
         path: DemoRoute.Segmented,
-        loadChildren: async () =>
-            (await import('../experimental/segmented/segmented.module'))
-                .ExampleTuiSegmentedModule,
-        data: {
-            title: 'Segmented',
-        },
-    },
+        title: 'Segmented',
+        loadComponent: async () => import('../components/segmented'),
+    }),
     {
         path: DemoRoute.Surface,
         loadChildren: async () =>
