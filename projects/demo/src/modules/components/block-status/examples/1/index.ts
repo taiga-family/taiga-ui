@@ -1,11 +1,14 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiBlockStatusModule} from '@taiga-ui/layout';
 
 @Component({
-    selector: 'tui-block-status-example-1',
+    standalone: true,
+    imports: [TuiBlockStatusModule],
     templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiBlockStatusExample1 {}
+export default class ExampleComponent {}
