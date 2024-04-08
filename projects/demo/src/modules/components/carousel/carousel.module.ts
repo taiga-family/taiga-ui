@@ -9,7 +9,6 @@ import {
     TuiDialogModule,
     TuiLinkDirective,
     TuiLoaderModule,
-    TuiModeModule,
     TuiNotificationModule,
 } from '@taiga-ui/core';
 import {
@@ -39,7 +38,6 @@ import {TuiCarouselExample5} from './examples/5';
         TuiLoaderModule,
         TuiAvatarComponent,
         TuiDialogModule,
-        TuiModeModule,
         TuiRepeatTimesModule,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiCarouselComponent)),

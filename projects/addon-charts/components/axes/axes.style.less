@@ -20,14 +20,6 @@
     border-width: 1px;
     border-color: var(--tui-base-03);
     isolation: isolate;
-
-    :host[data-mode='onDark'] & {
-        border-color: rgba(255, 255, 255, 0.48);
-    }
-
-    :host[data-mode='onLight'] & {
-        border-color: rgba(0, 0, 0, 0.48);
-    }
 }
 
 .t-horizontal {
@@ -54,14 +46,6 @@
     box-sizing: border-box;
     border-width: 1px;
     border-color: var(--tui-base-03);
-
-    :host[data-mode='onDark'] & {
-        border-color: rgba(255, 255, 255, 0.48);
-    }
-
-    :host[data-mode='onLight'] & {
-        border-color: rgba(0, 0, 0, 0.48);
-    }
 
     &_vertical {
         :host._centered &:first-child {
@@ -90,10 +74,6 @@
     &_primary {
         transform: rotate(180deg);
     }
-
-    :host[data-mode='onDark'] & {
-        color: var(--tui-text-02-night);
-    }
 }
 
 .t-labels-y {
@@ -102,10 +82,6 @@
     flex-direction: column-reverse;
     justify-content: space-between;
     color: var(--tui-text-02);
-
-    :host[data-mode='onDark'] & {
-        color: var(--tui-text-02-night);
-    }
 
     &_primary {
         text-align: right;
@@ -147,14 +123,6 @@
     border-left: 1px solid var(--tui-base-03);
     flex: 1;
     margin-bottom: 1.5625rem;
-
-    :host[data-mode='onDark'] & {
-        border-color: rgba(255, 255, 255, 0.48);
-    }
-
-    :host[data-mode='onLight'] & {
-        border-color: rgba(0, 0, 0, 0.48);
-    }
 
     &:before {
         content: '';

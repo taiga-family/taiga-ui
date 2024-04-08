@@ -1,12 +1,9 @@
 <span class="text">Your balance:</span>
 &nbsp;
 <span>{{ value | tuiAmount: 'RUB' | async }}</span>
-<div
-    tuiMode="onLight"
-    class="controls tui-space_top-3"
->
+<div class="controls tui-space_top-3">
     <button
-        appearance="outline"
+        appearance="whiteblock"
         size="m"
         tuiButton
         type="button"
@@ -16,6 +13,7 @@
         Submit
     </button>
     <button
+        appearance=""
         tuiLink
         type="button"
         [pseudo]="true"

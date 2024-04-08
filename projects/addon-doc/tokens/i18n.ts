@@ -7,10 +7,9 @@ import {tuiCreateToken} from '@taiga-ui/cdk';
 /**
  * tui-doc-demo i18n texts
  * Works with a tuple
- * [@string tuiMode tooltip content, @string word 'background', @string 'form value']
  */
 export const TUI_DOC_DEMO_TEXTS = tuiCreateToken<[string, string, string]>([
-    'Read more more about modes: ',
+    'Dark mode',
     'Background',
     'Form value',
 ]);

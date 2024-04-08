@@ -2,28 +2,17 @@ import {inject, Injectable} from '@angular/core';
 import {LOCAL_STORAGE, WINDOW} from '@ng-web-apis/common';
 import {BehaviorSubject} from 'rxjs';
 
-import {
-    TUI_THEME_NIGHT_STORAGE_KEY,
-    TUI_USE_DEFAULT_NIGHT_THEME,
-} from './theme-night.options';
+import {TUI_DARK_THEME, TUI_DARK_THEME_KEY} from './theme-night.options';
 
 @Injectable({
     providedIn: 'root',
 })
 export class TuiThemeNightService extends BehaviorSubject<boolean> {
     private readonly storage = inject(LOCAL_STORAGE);
-    private readonly key = inject(TUI_THEME_NIGHT_STORAGE_KEY);
-
-    public readonly useDefaultNightTheme = inject(TUI_USE_DEFAULT_NIGHT_THEME);
+    private readonly key = inject(TUI_DARK_THEME_KEY);
 
     constructor() {
-        super(
-            isDark(
-                inject(LOCAL_STORAGE),
-                inject(TUI_THEME_NIGHT_STORAGE_KEY),
-                inject(WINDOW),
-            ),
-        );
+        super(isDark(inject(LOCAL_STORAGE), inject(TUI_DARK_THEME_KEY), inject(WINDOW)));
     }
 
     public override next(night: boolean): void {
@@ -37,9 +26,9 @@ export class TuiThemeNightService extends BehaviorSubject<boolean> {
 }
 
 function isDark(storage: Storage, key: string, window: Window): boolean {
-    return (
-        storage[key] === 'true' ||
-        (storage[key] === null &&
-            window.matchMedia('(prefers-color-scheme: dark)').matches)
-    );
+    const fallback =
+        window.matchMedia('(prefers-color-scheme: dark)').matches ||
+        inject(TUI_DARK_THEME);
+
+    return storage.getItem(key) === 'true' || (storage.getItem(key) === null && fallback);
 }

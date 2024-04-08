@@ -9,7 +9,6 @@ import {
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiPushComponent} from './push.component';
-import {TuiPushDirective} from './push.directive';
 import {TuiPushAlertComponent} from './push-alert.component';
 import {TuiPushAlertDirective} from './push-alert.directive';
 
@@ -22,17 +21,7 @@ import {TuiPushAlertDirective} from './push-alert.directive';
         TuiSvgModule,
         TuiFormatDatePipeModule,
     ],
-    declarations: [
-        TuiPushComponent,
-        TuiPushDirective,
-        TuiPushAlertComponent,
-        TuiPushAlertDirective,
-    ],
-    exports: [
-        TuiPushComponent,
-        TuiPushDirective,
-        TuiPushAlertComponent,
-        TuiPushAlertDirective,
-    ],
+    declarations: [TuiPushComponent, TuiPushAlertComponent, TuiPushAlertDirective],
+    exports: [TuiPushComponent, TuiPushAlertComponent, TuiPushAlertDirective],
 })
 export class TuiPushModule {}

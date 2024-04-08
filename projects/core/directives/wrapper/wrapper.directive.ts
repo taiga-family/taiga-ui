@@ -1,16 +1,8 @@
-import {Directive, HostBinding, inject, Input} from '@angular/core';
+import {Directive, HostBinding, Input} from '@angular/core';
 import {TuiInteractiveState} from '@taiga-ui/core/enums';
-import {MODE_PROVIDER} from '@taiga-ui/core/providers';
-import {TUI_MODE} from '@taiga-ui/core/tokens';
-import type {TuiBrightness} from '@taiga-ui/core/types';
-import type {Observable} from 'rxjs';
 
 @Directive({
     selector: '[tuiWrapper]',
-    providers: [MODE_PROVIDER],
-    host: {
-        '($.data-mode.attr)': 'mode$',
-    },
 })
 export class TuiWrapperDirective {
     @Input()
@@ -34,8 +26,6 @@ export class TuiWrapperDirective {
     @Input()
     @HostBinding('attr.data-appearance')
     public appearance = '';
-
-    protected readonly mode$ = inject<Observable<TuiBrightness | null>>(TUI_MODE);
 
     @HostBinding('class._invalid')
     protected get computedInvalid(): boolean {

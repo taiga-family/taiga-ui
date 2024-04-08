@@ -14,7 +14,6 @@ function flatPages(pages: TuiDocPages): readonly TuiDocPage[] {
 export const EXCLUDED_SECTIONS = ['Documentation', 'Foundations', 'Tools', 'Testing'];
 export const EXCLUDED_ROUTES = [
     DemoRoute.I18N,
-    DemoRoute.ThemeNight,
     DemoRoute.Preview, // no need take screenshot of buttons
     DemoRoute.Dialog, // just buttons
     DemoRoute.DialogCustom, // just buttons

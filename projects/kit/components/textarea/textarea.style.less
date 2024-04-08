@@ -12,10 +12,6 @@
     border-radius: var(--tui-radius-m);
     color: var(--tui-text-01);
 
-    &[data-mode='onDark'] {
-        color: var(--tui-text-01-night);
-    }
-
     &[data-size='s'] {
         --tui-height: var(--tui-height-s);
         --tui-textarea-height: 4.5625rem;
@@ -201,10 +197,6 @@
         opacity: 0;
     }
 
-    :host[data-mode='onDark'] &::placeholder {
-        color: var(--tui-text-03-night);
-    }
-
     :host._focused &:not(:read-only)::placeholder {
         opacity: 1;
     }
@@ -216,10 +208,6 @@
 
     :host[data-size='l'] & {
         padding: 0 1rem;
-    }
-
-    :host[data-mode='onDark']._disabled & {
-        color: var(--tui-text-03-night);
     }
 
     /* Safari 9+, < 13.1 */
@@ -307,8 +295,4 @@
     margin-top: auto;
     text-align: right;
     color: var(--tui-text-03);
-
-    :host[data-mode='onDark'] & {
-        color: var(--tui-text-03-night);
-    }
 }

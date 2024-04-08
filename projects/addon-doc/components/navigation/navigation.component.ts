@@ -25,11 +25,9 @@ import {
     tuiUniqBy,
     tuiWatch,
 } from '@taiga-ui/cdk';
-import type {TuiBrightness} from '@taiga-ui/core';
-import {TUI_COMMON_ICONS, TuiModeDirective} from '@taiga-ui/core';
+import {TUI_COMMON_ICONS} from '@taiga-ui/core';
 import type {TuiInputComponent} from '@taiga-ui/kit';
-import type {Observable} from 'rxjs';
-import {combineLatest, filter, map, startWith, switchMap, take, takeUntil} from 'rxjs';
+import {combineLatest, filter, map, switchMap, take, takeUntil} from 'rxjs';
 
 import {
     NAVIGATION_ITEMS,
@@ -47,7 +45,6 @@ import {
 })
 export class TuiDocNavigationComponent {
     private readonly router = inject(Router);
-    private readonly mode = inject(TuiModeDirective);
     private readonly doc = inject(DOCUMENT);
 
     @HostBinding('class._open')
@@ -70,11 +67,6 @@ export class TuiDocNavigationComponent {
     protected readonly filtered$ = tuiControlValue<string>(this.search).pipe(
         filter(search => search.trim().length > 2),
         map(search => this.filterItems(this.flattenSubPages(this.items), search)),
-    );
-
-    protected readonly mode$: Observable<TuiBrightness> = this.mode.change$.pipe(
-        startWith(null),
-        map(() => this.mode.mode || 'onLight'),
     );
 
     constructor() {

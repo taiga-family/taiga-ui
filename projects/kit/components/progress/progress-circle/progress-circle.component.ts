@@ -1,12 +1,5 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    HostBinding,
-    inject,
-    Input,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/core';
 import type {TuiSizeXXL, TuiSizeXXS} from '@taiga-ui/core';
-import {MODE_PROVIDER, TUI_MODE} from '@taiga-ui/core';
 import {delay, of} from 'rxjs';
 
 @Component({
@@ -14,10 +7,6 @@ import {delay, of} from 'rxjs';
     templateUrl: './progress-circle.template.html',
     styleUrls: ['./progress-circle.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [MODE_PROVIDER],
-    host: {
-        '($.data-mode.attr)': 'mode$',
-    },
 })
 export class TuiProgressCircleComponent {
     @Input()
@@ -35,8 +24,6 @@ export class TuiProgressCircleComponent {
     public size: TuiSizeXXL | TuiSizeXXS = 'm';
 
     protected readonly animationDelay$ = of(true).pipe(delay(0));
-
-    protected readonly mode$ = inject(TUI_MODE);
 
     @HostBinding('style.--progress-ratio')
     protected get progressRatio(): number {

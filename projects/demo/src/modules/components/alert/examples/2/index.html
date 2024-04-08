@@ -42,10 +42,9 @@
         <span>{{ money | tuiAmount: 'RUB' | async }}</span>
     </p>
     <button
-        appearance="outline"
+        appearance="whiteblock"
         size="m"
         tuiButton
-        tuiMode="onLight"
         type="button"
         (click)="withdraw()"
     >
@@ -70,14 +69,15 @@
         <span>{{ money | tuiAmount: 'RUB' | async }}</span>
     </p>
     <button
-        appearance="outline"
+        appearance="whiteblock"
         size="m"
         tuiButton
-        tuiMode="onLight"
         type="button"
         (click)="deposit()"
     >
-        Add&nbsp;
-        <span>{{ 100 | tuiAmount: 'RUB' | async }}</span>
+        <span>
+            Add&nbsp;
+            <span>{{ 100 | tuiAmount: 'RUB' | async }}</span>
+        </span>
     </button>
 </ng-template>

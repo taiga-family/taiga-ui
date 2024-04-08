@@ -9,11 +9,7 @@ import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {TuiDocMainModule, TuiLanguageSwitcherComponent} from '@taiga-ui/addon-doc';
 import {TuiSheetModule} from '@taiga-ui/addon-mobile';
 import {TuiTableBarsHostModule} from '@taiga-ui/addon-tablebars';
-import {
-    TuiLinkDirective,
-    TuiModeModule,
-    TuiTextfieldControllerModule,
-} from '@taiga-ui/core';
+import {TuiLinkDirective, TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {distinctUntilChanged, filter, map} from 'rxjs';
 
 import {CustomHostComponent} from '../customization/portals/examples/1/portal/custom-host.component';
@@ -31,7 +27,6 @@ import {TUI_VERSION_MANAGER_PROVIDERS} from './version-manager/version-manager.p
         TuiDocMainModule,
         NgIf,
         TuiLinkDirective,
-        TuiModeModule,
         RouterLink,
         TuiLanguageSwitcherComponent,
         VersionManagerModule,

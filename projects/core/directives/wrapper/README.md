@@ -17,5 +17,3 @@ To apply styles use following mixins from
 4. `.wrapper-disabled(@ruleset)`
 5. `.wrapper-focus(@ruleset)`
 6. `.wrapper-invalid(@ruleset)`
-
-Use `[data-mode='onDark']/[data-mode='onLight']` selectors to account for _mode_

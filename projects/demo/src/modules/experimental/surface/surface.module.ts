@@ -10,7 +10,6 @@ import {
     TuiButtonDirective,
     TuiLabelModule,
     TuiLinkDirective,
-    TuiModeModule,
     TuiNotificationModule,
     TuiScrollbarComponent,
 } from '@taiga-ui/core';
@@ -40,7 +39,6 @@ import {ExampleTuiSurfaceComponent} from './surface.component';
         TuiLinkDirective,
         TuiAvatarComponent,
         TuiLabelModule,
-        TuiModeModule,
         TuiAmountPipe,
         TuiThumbnailCardComponent,
         tuiGetDocModules(ExampleTuiSurfaceComponent),

@@ -30,11 +30,9 @@ import {
 } from '@taiga-ui/cdk';
 import type {TuiDataListHost} from '@taiga-ui/core';
 import {
-    MODE_PROVIDER,
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_COMMON_ICONS,
     TUI_DIGIT_REGEXP,
-    TUI_MODE,
     TUI_NON_DIGIT_REGEXP,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
     tuiAsDataListHost,
@@ -59,11 +57,9 @@ const EXPIRE_COMPLETE_LENGTH = 5; // MM/YY
         tuiAsFocusableItemAccessor(TuiInputCardGroupedComponent),
         tuiAsControl(TuiInputCardGroupedComponent),
         tuiAsDataListHost(TuiInputCardGroupedComponent),
-        MODE_PROVIDER,
         TEXTFIELD_CONTROLLER_PROVIDER,
     ],
     host: {
-        '($.data-mode.attr)': 'mode$',
         'data-size': 'l',
     },
 })
@@ -126,7 +122,6 @@ export class TuiInputCardGroupedComponent
         separator: '/',
     });
 
-    protected readonly mode$ = inject(TUI_MODE);
     protected readonly cardGroupedTexts$ = inject(TUI_INPUT_CARD_GROUPED_TEXTS);
     protected readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
     protected readonly icons = inject(TUI_COMMON_ICONS);

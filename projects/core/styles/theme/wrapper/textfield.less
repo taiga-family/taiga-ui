@@ -46,7 +46,8 @@
     });
 }
 
-[tuiWrapper][data-appearance='textfield'][data-mode='onDark'] {
+[tuiWrapper][data-appearance='textfield'][tuiTheme='dark'],
+[tuiTheme='dark'] [tuiWrapper][data-appearance='textfield'] {
     background: var(--tui-clear-inverse);
     color: var(--tui-text-01-night);
 
@@ -77,27 +78,5 @@
         &:after {
             --tui-focus: var(--tui-error-fill-night);
         }
-    });
-}
-
-[tuiWrapper][data-appearance='textfield'][data-mode='onLight'] {
-    background: var(--tui-clear);
-
-    .wrapper-hover({
-        background: var(--tui-clear-hover);
-    });
-
-    .wrapper-readonly({
-        background: transparent;
-    });
-
-    .wrapper-invalid({
-        &:after {
-            color: var(--tui-error-fill);
-        }
-    });
-
-    .wrapper-focus({
-        background: transparent;
     });
 }

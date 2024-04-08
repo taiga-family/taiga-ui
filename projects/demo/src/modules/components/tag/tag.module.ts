@@ -4,7 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiForModule, TuiRepeatTimesModule} from '@taiga-ui/cdk';
-import {TuiModeModule, TuiNotificationModule, TuiSvgModule} from '@taiga-ui/core';
+import {TuiNotificationModule, TuiSvgModule} from '@taiga-ui/core';
 import {TuiRadioListComponent, TuiTagModule} from '@taiga-ui/kit';
 
 import {TuiTagExample1} from './examples/1';
@@ -21,7 +21,6 @@ import {ExampleTuiTagComponent} from './tag.component';
         FormsModule,
         TuiRadioListComponent,
         TuiTagModule,
-        TuiModeModule,
         TuiSvgModule,
         TuiRepeatTimesModule,
         TuiAddonDocModule,

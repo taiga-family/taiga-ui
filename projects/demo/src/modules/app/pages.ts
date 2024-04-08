@@ -833,12 +833,6 @@ export const pages: TuiDocPages = [
     },
     {
         section: 'Components',
-        title: 'ThemeNight',
-        keywords: 'theme, dark, night, тема, тэг',
-        route: DemoRoute.ThemeNight,
-    },
-    {
-        section: 'Components',
         title: 'ThemeSwitcher',
         keywords: 'тема, blue, цвета, стили, кастомизация, синий, синяя',
         route: DemoRoute.ThemeSwitcher,
@@ -1223,9 +1217,9 @@ export const pages: TuiDocPages = [
             },
             {
                 section: 'Tools',
-                title: 'Mode',
-                keywords: 'фон, вид, цвет',
-                route: DemoRoute.Mode,
+                title: 'Theme',
+                keywords: 'color, mode, dark, night, тема, фон, вид, цвет',
+                route: DemoRoute.Theme,
             },
             {
                 section: 'Tools',

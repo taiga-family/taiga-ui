@@ -3,7 +3,6 @@ import {NgForOf} from '@angular/common';
 import {Component, ViewEncapsulation} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {DemoRoute} from '@demo/routes';
 import {
     TuiDocCopyModule,
     type TuiDocExample,
@@ -31,8 +30,6 @@ import {TuiWrapperExample1} from './examples/1';
     changeDetection,
 })
 export default class PageComponent {
-    protected modeDocPage = `/${DemoRoute.Mode}`;
-
     protected readonly example1: TuiDocExample = {
         HTML: import('./examples/1/index.html?raw'),
         LESS: import('./examples/1/index.less?raw'),

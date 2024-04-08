@@ -71,7 +71,7 @@
             background-color: var(--tui-error-bg-hover);
         }
 
-        &[data-mode='onDark'] {
+        :host-context([tuiTheme='dark']) & {
             background-color: var(--tui-error-bg-night);
             color: var(--tui-text-01-night);
 
@@ -91,7 +91,7 @@
             background-color: var(--tui-success-bg-hover);
         }
 
-        &[data-mode='onDark'] {
+        :host-context([tuiTheme='dark']) & {
             background-color: var(--tui-success-bg-night);
             color: var(--tui-text-01-night);
 
@@ -111,7 +111,7 @@
             background-color: var(--tui-warning-bg-hover);
         }
 
-        &[data-mode='onDark'] {
+        :host-context([tuiTheme='dark']) & {
             background-color: var(--tui-warning-bg-night);
             color: var(--tui-text-01-night);
 
@@ -126,17 +126,15 @@
         color: var(--tui-text-01-night);
         background-color: var(--tui-base-06);
 
-        &:not([data-mode]) {
-            &._hoverable:hover {
-                background-color: var(--tui-base-07);
-            }
-
-            &._hoverable:active {
-                background-color: var(--tui-base-08);
-            }
+        &._hoverable:hover {
+            background-color: var(--tui-base-07);
         }
 
-        &[data-mode='onDark'] {
+        &._hoverable:active {
+            background-color: var(--tui-base-08);
+        }
+
+        :host-context([tuiTheme='dark']) & {
             color: var(--tui-text-01-night);
             background-color: var(--tui-clear-inverse);
 
@@ -150,19 +148,6 @@
 
             &:focus:after {
                 border: 2px solid var(--tui-base-01);
-            }
-        }
-
-        &[data-mode='onLight'] {
-            background-color: var(--tui-clear);
-            color: var(--tui-text-01);
-
-            &._hoverable:hover {
-                background-color: var(--tui-clear-hover);
-            }
-
-            &._hoverable:active {
-                background-color: var(--tui-clear-active);
             }
         }
     }

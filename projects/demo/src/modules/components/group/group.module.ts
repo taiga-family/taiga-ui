@@ -10,7 +10,6 @@ import {
     TuiGroupDirective,
     TuiHintModule,
     TuiLinkDirective,
-    TuiModeModule,
     TuiTextfieldControllerModule,
     TuiTitleDirective,
 } from '@taiga-ui/core';
@@ -48,7 +47,6 @@ import {ExampleTuiGroupComponent} from './group.component';
         TuiComboBoxModule,
         TuiCurrencyPipeModule,
         TuiInputNumberModule,
-        TuiModeModule,
         TuiDataListModule,
         TuiDataListWrapperModule,
         CommonModule,

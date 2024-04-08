@@ -18,8 +18,6 @@ import {
 } from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {
-    MODE_PROVIDER,
-    TUI_MODE,
     TUI_TEXTFIELD_SIZE,
     TuiHintOptionsDirective,
     TuiPrimitiveTextfieldComponent,
@@ -27,7 +25,7 @@ import {
 import {TUI_PASSWORD_TEXTS} from '@taiga-ui/kit/tokens';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import type {Observable} from 'rxjs';
-import {combineLatest, EMPTY, map, startWith} from 'rxjs';
+import {EMPTY, map, startWith} from 'rxjs';
 
 import {TUI_INPUT_PASSWORD_OPTIONS} from './input-password.options';
 
@@ -39,7 +37,6 @@ import {TUI_INPUT_PASSWORD_OPTIONS} from './input-password.options';
     providers: [
         tuiAsFocusableItemAccessor(TuiInputPasswordComponent),
         tuiAsControl(TuiInputPasswordComponent),
-        MODE_PROVIDER,
     ],
 })
 export class TuiInputPasswordComponent
@@ -50,20 +47,14 @@ export class TuiInputPasswordComponent
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
     private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
-    private readonly mode$ = inject(TUI_MODE);
     protected readonly hintOptions = inject(TuiHintOptionsDirective, {optional: true});
     protected readonly directive$: Observable<any> = this.hintOptions?.change$ || EMPTY;
 
     protected isPasswordHidden = true;
 
-    protected readonly computedAppearance$: Observable<string> = combineLatest([
-        this.mode$.pipe(map(val => (val === 'onDark' ? 'onDark' : ''))),
-        this.directive$.pipe(
-            startWith(null),
-            map(() => this.hintOptions?.appearance || ''),
-        ),
-    ]).pipe(
-        map(([mode, controller]) => controller || mode),
+    protected readonly computedAppearance$: Observable<string> = this.directive$.pipe(
+        startWith(null),
+        map(() => this.hintOptions?.appearance || ''),
         startWith(''),
     );
 

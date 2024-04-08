@@ -11,7 +11,6 @@ import {
 import {IntersectionObserverService} from '@ng-web-apis/intersection-observer';
 import type {TuiComparator} from '@taiga-ui/addon-table/types';
 import {AbstractTuiController} from '@taiga-ui/cdk';
-import {TUI_MODE} from '@taiga-ui/core';
 import type {Observable} from 'rxjs';
 
 import {TUI_STUCK} from '../providers/stuck.provider';
@@ -22,7 +21,6 @@ import {TUI_TABLE_OPTIONS} from '../table.options';
     selector: 'table[tuiTable]',
     providers: TUI_TABLE_PROVIDERS,
     host: {
-        '($.data-mode.attr)': 'mode$',
         '($.class._stuck)': 'stuck$',
         style: 'border-collapse: separate',
     },
@@ -50,7 +48,6 @@ export class TuiTableDirective<T extends Partial<Record<keyof T, any>>>
     @Output()
     public readonly sorterChange = new EventEmitter<TuiComparator<T> | null>();
 
-    protected readonly mode$ = inject(TUI_MODE);
     protected readonly stuck$ = inject(TUI_STUCK);
     protected readonly entries$ = inject<Observable<IntersectionObserverEntry[]>>(
         IntersectionObserverService,

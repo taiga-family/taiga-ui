@@ -22,11 +22,10 @@ import {
     tuiIsNativeFocusedIn,
 } from '@taiga-ui/cdk';
 import type {TuiHorizontalDirection, TuiSizeL, TuiSizeS, TuiSizeXS} from '@taiga-ui/core';
-import {TUI_SPIN_ICONS, TuiModeDirective} from '@taiga-ui/core';
+import {TUI_SPIN_ICONS} from '@taiga-ui/core';
 import {TUI_PAGINATION_TEXTS} from '@taiga-ui/kit/tokens';
 import {tuiHorizontalDirectionToNumber} from '@taiga-ui/kit/utils/math';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {EMPTY, map} from 'rxjs';
 
 const DOTS_LENGTH = 1;
 const ACTIVE_ITEM_LENGTH = 1;
@@ -46,7 +45,6 @@ export class TuiPaginationComponent
     private readonly els: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
-    private readonly modeDirective = inject(TuiModeDirective, {optional: true});
 
     @Input()
     public length = 1;
@@ -83,10 +81,6 @@ export class TuiPaginationComponent
 
     @Output()
     public readonly indexChange = new EventEmitter<number>();
-
-    protected readonly mode$ = this.modeDirective
-        ? this.modeDirective.change$.pipe(map(() => this.modeDirective?.mode || null))
-        : EMPTY;
 
     protected readonly texts$ = inject(TUI_PAGINATION_TEXTS);
     protected readonly icons = inject(TUI_SPIN_ICONS);

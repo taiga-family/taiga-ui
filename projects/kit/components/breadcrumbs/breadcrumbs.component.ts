@@ -9,7 +9,7 @@ import {
     TemplateRef,
 } from '@angular/core';
 import {EMPTY_QUERY, TuiItemDirective} from '@taiga-ui/cdk';
-import {tuiLinkOptionsProvider, TuiModeDirective} from '@taiga-ui/core';
+import {tuiLinkOptionsProvider} from '@taiga-ui/core';
 
 import {TUI_BREADCRUMBS_OPTIONS} from './breadcrumbs.options';
 
@@ -20,7 +20,7 @@ import {TUI_BREADCRUMBS_OPTIONS} from './breadcrumbs.options';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiLinkOptionsProvider({appearance: 'icon'})],
 })
-export class TuiBreadcrumbsComponent extends TuiModeDirective {
+export class TuiBreadcrumbsComponent {
     private readonly options = inject(TUI_BREADCRUMBS_OPTIONS);
 
     @Input()

@@ -11,13 +11,7 @@ import {
     ViewChild,
 } from '@angular/core';
 import type {TuiSizeL, TuiSizeS, TuiSizeXS} from '@taiga-ui/core';
-import {
-    MODE_PROVIDER,
-    TUI_COMMON_ICONS,
-    TUI_MODE,
-    tuiSizeBigger,
-    tuiStringHashToHsl,
-} from '@taiga-ui/core';
+import {TUI_COMMON_ICONS, tuiSizeBigger, tuiStringHashToHsl} from '@taiga-ui/core';
 import type {TuiStatus} from '@taiga-ui/kit/types';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
@@ -28,10 +22,6 @@ import {TUI_TAG_OPTIONS} from './tag.options';
     templateUrl: './tag.template.html',
     styleUrls: ['./tag.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [MODE_PROVIDER],
-    host: {
-        '($.data-mode.attr)': 'mode$',
-    },
 })
 export class TuiTagComponent {
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
@@ -86,7 +76,6 @@ export class TuiTagComponent {
     protected editing = false;
 
     protected readonly icons = inject(TUI_COMMON_ICONS);
-    protected readonly mode$ = inject(TUI_MODE);
 
     protected editedText: string | null = null;
 

@@ -5,7 +5,6 @@ import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiButtonDirective,
-    TuiModeModule,
     TuiNotificationModule,
     TuiScrollableDirective,
     TuiScrollbarComponent,
@@ -25,7 +24,6 @@ import {ExampleTuiScrollbarComponent} from './scrollbar.component';
         ScrollingModule,
         TuiButtonDirective,
         TuiScrollbarComponent,
-        TuiModeModule,
         TuiNotificationModule,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiScrollbarComponent)),

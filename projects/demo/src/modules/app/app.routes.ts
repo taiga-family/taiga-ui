@@ -919,15 +919,6 @@ export const ROUTES: Routes = [
         },
     },
     {
-        path: DemoRoute.ThemeNight,
-        loadChildren: async () =>
-            (await import('../components/theme-night/theme-night.module'))
-                .ExampleTuiThemeNightModule,
-        data: {
-            title: 'ThemeNight',
-        },
-    },
-    {
         path: DemoRoute.Textarea,
         loadChildren: async () =>
             (await import('../components/textarea/textarea.module'))
@@ -1483,14 +1474,11 @@ export const ROUTES: Routes = [
             title: 'Media',
         },
     },
-    {
-        path: DemoRoute.Mode,
-        loadChildren: async () =>
-            (await import('../directives/mode/mode.module')).ExampleTuiModeModule,
-        data: {
-            title: 'Mode',
-        },
-    },
+    route({
+        path: DemoRoute.Theme,
+        loadComponent: async () => import('../directives/theme'),
+        title: 'Theme',
+    }),
     {
         path: DemoRoute.AutoFocus,
         loadChildren: async () =>
