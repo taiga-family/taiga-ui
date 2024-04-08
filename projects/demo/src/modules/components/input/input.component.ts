@@ -2,6 +2,7 @@ import type {TemplateRef} from '@angular/core';
 import {Component, ViewChild} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import {tuiProvide} from '@taiga-ui/cdk';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
@@ -42,6 +43,8 @@ export class ExampleTuiInputComponent extends AbstractExampleTuiControl {
     protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 
     protected readonly exampleForm = import('./examples/import/declare-form.md?raw');
+
+    protected modeDocPage = `/${DemoRoute.Mode}`;
 
     protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
