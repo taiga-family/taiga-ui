@@ -120,7 +120,7 @@ export class ExampleTuiPrimitiveTextfieldComponent extends AbstractExampleTuiInt
 
     protected readonly hintDirectionVariants = TUI_HINT_DIRECTIONS;
 
-    protected readonly hintAppearanceVariants = ['', 'error', 'onDark'];
+    protected readonly hintAppearanceVariants = ['', 'error', 'dark'];
 
     protected invalid = false;
 

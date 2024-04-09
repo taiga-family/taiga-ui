@@ -72,6 +72,7 @@ export class TuiHintComponent<C = any> {
     private readonly viewport = inject(TUI_VIEWPORT);
 
     @HostBinding('attr.data-appearance')
+    @HostBinding('attr.tuiTheme')
     protected readonly appearance =
         this.polymorpheus.$implicit.appearance ||
         inject(TuiHintDirective).el.closest('[tuiTheme]')?.getAttribute('tuiTheme');

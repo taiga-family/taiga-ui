@@ -34,9 +34,7 @@ const TRANSFORM = {
     templateUrl: './pie-chart.template.html',
     styleUrls: ['./pie-chart.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    viewProviders: [
-        tuiHintOptionsProvider({direction: 'top-right', appearance: 'onDark'}),
-    ],
+    viewProviders: [tuiHintOptionsProvider({direction: 'top-right', appearance: 'dark'})],
 })
 export class TuiPieChartComponent {
     private readonly hintOptions = inject(TuiHintOptionsDirective, {optional: true});

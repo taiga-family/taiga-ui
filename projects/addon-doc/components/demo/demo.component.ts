@@ -28,7 +28,6 @@ import {
     TuiResizeableDirective,
     tuiToInteger,
 } from '@taiga-ui/cdk';
-import type {TuiBrightness} from '@taiga-ui/core';
 
 const MIN_WIDTH = 160;
 
@@ -77,7 +76,6 @@ export class TuiDocDemoComponent implements OnInit {
     protected opaque = tuiCoerceValueIsTrue(this.params.sandboxOpaque ?? true);
     protected expanded = tuiCoerceValueIsTrue(this.params.sandboxExpanded ?? false);
     protected sandboxWidth = tuiToInteger(this.params.sandboxWidth);
-    protected readonly items: readonly TuiBrightness[] = ['onLight', 'onDark'];
     protected readonly texts = inject(TUI_DOC_DEMO_TEXTS);
 
     public ngOnInit(): void {

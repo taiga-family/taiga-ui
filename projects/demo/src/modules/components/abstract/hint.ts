@@ -1,7 +1,7 @@
 import {TUI_HINT_DIRECTIONS} from '@taiga-ui/core';
 
 export abstract class AbstractExampleTuiHint {
-    public readonly appearanceVariants = ['', 'error', 'onDark'];
+    public readonly appearanceVariants = ['', 'error', 'dark'];
 
     public appearance = this.appearanceVariants[0];
 
