@@ -988,15 +988,6 @@ export const ROUTES: Routes = [
         },
     },
     {
-        path: DemoRoute.ThemeSwitcher,
-        loadChildren: async () =>
-            (await import('../components/theme-switcher/theme-switcher.module'))
-                .ExampleTuiThemeSwitcherModule,
-        data: {
-            title: 'ThemeSwitcher',
-        },
-    },
-    {
         path: DemoRoute.Tiles,
         loadChildren: async () =>
             (await import('../components/tiles/tiles.module')).ExampleTuiTilesModule,

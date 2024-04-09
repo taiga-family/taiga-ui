@@ -4,7 +4,7 @@ import {
     inject,
     ViewEncapsulation,
 } from '@angular/core';
-import {TuiThemeNightService} from '@taiga-ui/addon-doc/services';
+import {TuiThemeDarkService} from '@taiga-ui/addon-doc/services';
 import {TUI_DOC_ICONS} from '@taiga-ui/addon-doc/tokens';
 import {TuiSwipeService} from '@taiga-ui/cdk';
 
@@ -21,9 +21,9 @@ import {TuiSwipeService} from '@taiga-ui/cdk';
 export class TuiDocMainComponent {
     private readonly icons = inject(TUI_DOC_ICONS);
 
-    protected readonly dark$ = inject(TuiThemeNightService);
+    protected readonly dark$ = inject(TuiThemeDarkService);
 
     protected get icon(): string {
-        return this.dark$.value ? this.icons.day : this.icons.night;
+        return this.dark$.value ? this.icons.light : this.icons.dark;
     }
 }

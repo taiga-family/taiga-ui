@@ -2,7 +2,7 @@ import {TestBed} from '@angular/core/testing';
 import {WINDOW} from '@ng-web-apis/common';
 import {take} from 'rxjs';
 
-import {TuiDarkThemeService} from '../night-theme.service';
+import {TuiDarkThemeService} from '../dark-theme.service';
 
 describe('TuiDarkThemeService', () => {
     const mock: HTMLDivElement = document.createElement('div');

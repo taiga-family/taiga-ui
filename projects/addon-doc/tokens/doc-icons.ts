@@ -3,16 +3,16 @@ import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 
 export interface TuiDocIcons {
     readonly code: string;
-    readonly day: string;
+    readonly light: string;
     readonly menu: string;
-    readonly night: string;
+    readonly dark: string;
     readonly search: string;
 }
 
 export const TUI_DOC_DEFAULT_ICONS: TuiDocIcons = {
     search: 'tuiIconSearch',
-    day: 'tuiIconSun',
-    night: 'tuiIconMoon',
+    light: 'tuiIconSun',
+    dark: 'tuiIconMoon',
     code: 'tuiIconCode',
     menu: 'tuiIconMenuLarge',
 };

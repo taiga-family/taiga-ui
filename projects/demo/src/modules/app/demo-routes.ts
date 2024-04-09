@@ -128,7 +128,6 @@ export const DemoRoute = {
     ProgressCircle: 'components/progress-circle',
     ProgressSegmented: 'components/progress-segmented',
     Confirm: 'components/confirm',
-    ThemeSwitcher: 'components/theme-switcher',
     Tiles: 'components/tiles',
     Switch: 'components/switch',
     Tooltip: 'components/tooltip',

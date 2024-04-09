@@ -7,6 +7,8 @@ import {Directive, inject} from '@angular/core';
  * A component extending this class must have CSS variables definitions
  * and have ViewEncapsulation set to NONE. A boolean input allows to
  * switch theme on or off.
+ * TODO drop in 4.0
+ * @deprecated
  */
 @Directive()
 export abstract class AbstractTuiThemeSwitcher implements OnDestroy {

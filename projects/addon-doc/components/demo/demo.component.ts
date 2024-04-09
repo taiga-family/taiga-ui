@@ -17,7 +17,7 @@ import {FormGroup} from '@angular/forms';
 import type {Params, UrlTree} from '@angular/router';
 import {UrlSerializer} from '@angular/router';
 import type {TuiDemoParams} from '@taiga-ui/addon-doc/interfaces';
-import {TuiThemeNightService} from '@taiga-ui/addon-doc/services';
+import {TuiThemeDarkService} from '@taiga-ui/addon-doc/services';
 import {TUI_DOC_DEMO_TEXTS, TUI_DOC_URL_STATE_HANDLER} from '@taiga-ui/addon-doc/tokens';
 import {tuiCoerceValueIsTrue} from '@taiga-ui/addon-doc/utils';
 import {
@@ -64,7 +64,7 @@ export class TuiDocDemoComponent implements OnInit {
     protected readonly template: TemplateRef<Record<string, unknown>> | null = null;
 
     protected dark = tuiCoerceValueIsTrue(
-        this.params.darkMode ?? inject(TuiThemeNightService).value,
+        this.params.darkMode ?? inject(TuiThemeDarkService).value,
     );
 
     protected testForm?: FormGroup;

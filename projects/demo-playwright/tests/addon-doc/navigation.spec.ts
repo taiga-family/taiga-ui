@@ -17,7 +17,7 @@ test.describe('Navigation', () => {
         );
     });
 
-    test('getting started / [night mode]', async ({page}) => {
+    test('getting started / [dark mode]', async ({page}) => {
         await tuiGoto(page, '/getting-started', {
             hideHeader: false,
             enableNightMode: true,
@@ -28,7 +28,7 @@ test.describe('Navigation', () => {
 
         await sideNavigation.isVisible();
         await expect(sideNavigation).toHaveScreenshot(
-            '02-tui-doc-navigation-night-mode.png',
+            '02-tui-doc-navigation-dark-mode.png',
         );
     });
 

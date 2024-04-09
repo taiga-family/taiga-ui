@@ -20,7 +20,7 @@ import {
         tuiDropdownOptionsProvider({appearance: 'dropdown-navigation'}),
     ],
     host: {
-        tuiTheme: 'night',
+        tuiTheme: 'dark',
     },
 })
 export class TuiHeaderComponent {}

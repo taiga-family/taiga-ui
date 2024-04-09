@@ -833,12 +833,6 @@ export const pages: TuiDocPages = [
     },
     {
         section: 'Components',
-        title: 'ThemeSwitcher',
-        keywords: 'тема, blue, цвета, стили, кастомизация, синий, синяя',
-        route: DemoRoute.ThemeSwitcher,
-    },
-    {
-        section: 'Components',
         title: 'Tiles',
         keywords: 'tile, grid, грид, widgets, drag, drop',
         route: DemoRoute.Tiles,

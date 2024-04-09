@@ -2,12 +2,12 @@ import {inject, Injectable} from '@angular/core';
 import {LOCAL_STORAGE, WINDOW} from '@ng-web-apis/common';
 import {BehaviorSubject} from 'rxjs';
 
-import {TUI_DARK_THEME, TUI_DARK_THEME_KEY} from './theme-night.options';
+import {TUI_DARK_THEME, TUI_DARK_THEME_KEY} from './theme-dark.options';
 
 @Injectable({
     providedIn: 'root',
 })
-export class TuiThemeNightService extends BehaviorSubject<boolean> {
+export class TuiThemeDarkService extends BehaviorSubject<boolean> {
     private readonly storage = inject(LOCAL_STORAGE);
     private readonly key = inject(TUI_DARK_THEME_KEY);
 
@@ -15,9 +15,9 @@ export class TuiThemeNightService extends BehaviorSubject<boolean> {
         super(isDark(inject(LOCAL_STORAGE), inject(TUI_DARK_THEME_KEY), inject(WINDOW)));
     }
 
-    public override next(night: boolean): void {
-        this.storage.setItem(this.key, String(night));
-        super.next(night);
+    public override next(dark: boolean): void {
+        this.storage.setItem(this.key, String(dark));
+        super.next(dark);
     }
 
     public toggle(): void {
