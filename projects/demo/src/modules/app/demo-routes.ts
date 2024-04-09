@@ -36,7 +36,7 @@ export const DemoRoute = {
     Header: 'layout/header',
     Icon: 'components/icon',
     LabelExp: 'experimental/label',
-    Segmented: 'experimental/segmented',
+    Segmented: 'navigation/segmented',
     Surface: 'experimental/surface',
     SwipeActions: 'components/swipe-actions',
     Textfield: 'experimental/textfield',
