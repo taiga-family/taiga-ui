@@ -47,6 +47,7 @@ import {
 } from '@taiga-ui/core';
 import type {TuiStringifiableItem} from '@taiga-ui/kit/classes';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
+import type {TuiStatus} from '@taiga-ui/kit/types';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {takeUntil, timer} from 'rxjs';
 
@@ -151,7 +152,7 @@ export class TuiInputTagComponent
     protected readonly hintOptions = inject(TuiHintOptionsDirective, {optional: true});
     protected readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
     protected readonly icons = inject(TUI_COMMON_ICONS);
-    protected status = this.options.tagStatus;
+    protected status: TuiStatus = this.options.tagStatus;
     protected open = false;
 
     @Input('pseudoFocused')
