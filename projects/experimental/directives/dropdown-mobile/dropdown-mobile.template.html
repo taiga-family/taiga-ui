@@ -1,0 +1,8 @@
+<tui-scrollbar
+    tuiActiveZone
+    [hidden]="true"
+>
+    <ng-container *polymorpheusOutlet="directive.content as text">
+        {{ text }}
+    </ng-container>
+</tui-scrollbar>

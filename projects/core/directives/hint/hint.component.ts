@@ -84,12 +84,12 @@ export class TuiHintComponent<C = any> {
         @Inject(TuiModeDirective)
         private readonly mode: TuiModeDirective | null,
         @Inject(TuiVisualViewportService)
-        private readonly visualViewportService: TuiVisualViewportService,
+        private readonly vvs: TuiVisualViewportService,
         @Inject(TUI_VIEWPORT) private readonly viewport: TuiRectAccessor,
     ) {
         position$
             .pipe(
-                map(point => this.visualViewportService.correct(point)),
+                map(point => this.vvs.correct(point)),
                 takeUntil(destroy$),
             )
             .subscribe(([top, left]) => {
@@ -130,7 +130,7 @@ export class TuiHintComponent<C = any> {
         }
 
         const safeLeft = tuiClamp(left, GAP, viewport.width - width - GAP);
-        const [beakTop, beakLeft] = this.visualViewportService.correct([
+        const [beakTop, beakLeft] = this.vvs.correct([
             rect.top + rect.height / 2 - top,
             rect.left + rect.width / 2 - safeLeft,
         ]);
