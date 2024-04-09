@@ -13,12 +13,15 @@ export class TuiVisualViewportService {
     ) {}
 
     // https://bugs.webkit.org/show_bug.cgi?id=207089
-    correct(point: TuiPoint): TuiPoint {
-        return this.isWebkit
-            ? [
-                  point[0] + (this.win.visualViewport?.offsetTop ?? 0),
-                  point[1] + (this.win.visualViewport?.offsetLeft ?? 0),
-              ]
-            : point;
+    correct([y, x]: TuiPoint): TuiPoint {
+        return [this.correctY(y), this.correctX(x)];
+    }
+
+    correctX(x: number): number {
+        return this.isWebkit ? x + (this.win.visualViewport?.offsetLeft ?? 0) : x;
+    }
+
+    correctY(y: number): number {
+        return this.isWebkit ? y + (this.win.visualViewport?.offsetLeft ?? 0) : y;
     }
 }
