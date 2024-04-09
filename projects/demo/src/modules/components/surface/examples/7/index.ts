@@ -6,7 +6,7 @@ import {TuiAmountPipe, TuiThumbnailCardComponent} from '@taiga-ui/addon-commerce
 import {
     TuiButtonDirective,
     TuiLabelModule,
-    TuiLinkModule,
+    TuiLinkDirective,
     TuiModeModule,
     TuiScrollbarComponent,
     TuiSurfaceDirective,
@@ -24,7 +24,7 @@ import {TuiAvatarComponent, TuiBadgeDirective} from '@taiga-ui/kit';
         TuiLabelModule,
         TuiBadgeDirective,
         TuiButtonDirective,
-        TuiLinkModule,
+        TuiLinkDirective,
         TuiCellModule,
         TuiModeModule,
         TuiCardModule,

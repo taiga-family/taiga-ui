@@ -230,7 +230,7 @@ export const ROUTES: Routes = [
         loadComponent: async () => import('../experimental/label'),
     }),
     route({
-        path: 'components/surface',
+        path: DemoRoute.Surface,
         title: 'Surface ',
         loadComponent: async () => import('../components/surface'),
     }),
@@ -239,15 +239,6 @@ export const ROUTES: Routes = [
         title: 'Segmented',
         loadComponent: async () => import('../components/segmented'),
     }),
-    {
-        path: DemoRoute.Surface,
-        loadChildren: async () =>
-            (await import('../experimental/surface/surface.module'))
-                .ExampleTuiSurfaceModule,
-        data: {
-            title: 'Surface',
-        },
-    },
     {
         path: DemoRoute.SwipeActions,
         loadChildren: async () =>
