@@ -7,7 +7,12 @@ import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import {TuiMobileDialogComponent} from './mobile-dialog.component';
 
 @NgModule({
-    imports: [CommonModule, TuiButtonDirective, TuiRippleModule, PolymorpheusModule],
+    imports: [
+        CommonModule,
+        TuiButtonDirective,
+        TuiRippleModule,
+        PolymorpheusModule,
+    ],
     declarations: [TuiMobileDialogComponent],
     exports: [TuiMobileDialogComponent],
 })

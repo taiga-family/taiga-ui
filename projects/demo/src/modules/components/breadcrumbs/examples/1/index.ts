@@ -8,7 +8,12 @@ import {TuiBreadcrumbsModule} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [NgFor, RouterLink, TuiBreadcrumbsModule, TuiLinkDirective],
+    imports: [
+        NgFor,
+        RouterLink,
+        TuiBreadcrumbsModule,
+        TuiLinkDirective,
+    ],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

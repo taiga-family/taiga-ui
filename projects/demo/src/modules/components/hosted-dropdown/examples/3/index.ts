@@ -13,7 +13,12 @@ export class TuiHostedDropdownExample3 {
     protected open = false;
 
     protected readonly items = [
-        ['By interest', 'By genre', 'By release year', 'By subject'],
+        [
+            'By interest',
+            'By genre',
+            'By release year',
+            'By subject',
+        ],
         ['Ascending', 'Descending'],
     ];
 

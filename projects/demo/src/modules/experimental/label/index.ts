@@ -9,5 +9,10 @@ import {TuiDemoModule} from '@demo/utils';
     changeDetection,
 })
 export default class PageComponent {
-    protected readonly examples = ['Basic', 'Small size', 'Switch', 'Textfield'];
+    protected readonly examples = [
+        'Basic',
+        'Small size',
+        'Switch',
+        'Textfield',
+    ];
 }

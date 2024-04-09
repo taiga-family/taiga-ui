@@ -7,7 +7,12 @@ import {TuiProgressModule} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiAppBarModule, TuiButtonDirective, TuiTitleDirective, TuiProgressModule],
+    imports: [
+        TuiAppBarModule,
+        TuiButtonDirective,
+        TuiTitleDirective,
+        TuiProgressModule,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

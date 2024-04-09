@@ -159,9 +159,12 @@ function modifyClosestFocusable(): void {
             const args = fn.getArguments();
 
             if (args.length > 1) {
-                const [initial, prev = false, root, keyboard = true] = args.map(arg =>
-                    arg.getText(),
-                );
+                const [
+                    initial,
+                    prev = false,
+                    root,
+                    keyboard = true,
+                ] = args.map(arg => arg.getText());
 
                 fn.replaceWithText(
                     `tuiGetClosestFocusable({initial: ${initial}, root: ${root}, previous: ${prev}, keyboard: ${keyboard}})`,

@@ -14,13 +14,38 @@ const BENJI = 100;
     changeDetection,
 })
 export class TuiAxesExample2 {
-    private readonly setNames = ['cdk', 'core', 'kit', 'charts'];
+    private readonly setNames = [
+        'cdk',
+        'core',
+        'kit',
+        'charts',
+    ];
 
     protected readonly value: ReadonlyArray<[number, number, number, number]> = [
-        [10, 20, 3, 7],
-        [15, 18, 24, 1],
-        [34, 23, 12, 9],
-        [30, 14, 18, 14],
+        [
+            10,
+            20,
+            3,
+            7,
+        ],
+        [
+            15,
+            18,
+            24,
+            1,
+        ],
+        [
+            34,
+            23,
+            12,
+            9,
+        ],
+        [
+            30,
+            14,
+            18,
+            14,
+        ],
     ];
 
     protected readonly maxValue = 40;
@@ -31,7 +56,12 @@ export class TuiAxesExample2 {
         `${this.getMax(this.value)} k`,
     ];
 
-    protected readonly axisXLabels = ['Q1', 'Q2', 'Q3', 'Q4'];
+    protected readonly axisXLabels = [
+        'Q1',
+        'Q2',
+        'Q3',
+        'Q4',
+    ];
 
     protected readonly horizontalLinesHandler = TUI_ALWAYS_DASHED;
 

@@ -8,7 +8,12 @@ import {TuiRangeComponent} from './range.component';
 import {TuiRangeChangeDirective} from './range-change.directive';
 
 @NgModule({
-    imports: [CommonModule, TuiFocusableModule, TuiSliderModule, FormsModule],
+    imports: [
+        CommonModule,
+        TuiFocusableModule,
+        TuiSliderModule,
+        FormsModule,
+    ],
     declarations: [TuiRangeComponent, TuiRangeChangeDirective],
     exports: [TuiRangeComponent, TuiRangeChangeDirective],
 })

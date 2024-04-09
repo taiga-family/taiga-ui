@@ -21,6 +21,14 @@ export const TUI_ITALIAN_LANGUAGE_CORE: TuiLanguageCore = {
     nothingFoundMessage: 'Non abbiamo trovato nulla',
     defaultErrorMessage: 'Il valore non è valido',
     spinTexts: ['Precedente', 'Prossimo'],
-    shortWeekDays: ['Lun', 'Mar', 'Mer', 'Gio', 'Ven', 'Sab', 'Dom'],
+    shortWeekDays: [
+        'Lun',
+        'Mar',
+        'Mer',
+        'Gio',
+        'Ven',
+        'Sab',
+        'Dom',
+    ],
     countries: TUI_ITALIAN_LANGUAGE_COUNTRIES,
 };

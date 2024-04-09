@@ -11,6 +11,12 @@
         "tsBuildInfoFile": null,
         "types": ["node", "webpack-env"]
     },
-    "include": ["../constants/version.ts", "./**/*", "./**/collection.json", "./**/migration.json", "./**/schema.json"],
+    "include": [
+        "../constants/version.ts",
+        "./**/*",
+        "./**/collection.json",
+        "./**/migration.json",
+        "./**/schema.json"
+    ],
     "exclude": ["./**/*.spec.ts"]
 }

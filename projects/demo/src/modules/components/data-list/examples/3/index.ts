@@ -16,5 +16,10 @@ export class TuiDataListExample3 {
 
     protected readonly burgers = ['Hamburger', 'Cheeseburger'];
 
-    protected readonly drinks = ['Cola', 'Tea', 'Coffee', 'Slurm'];
+    protected readonly drinks = [
+        'Cola',
+        'Tea',
+        'Coffee',
+        'Slurm',
+    ];
 }

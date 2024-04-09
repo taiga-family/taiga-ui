@@ -17,7 +17,12 @@ export class TuiDataListExample2 {
     protected size: TuiSizeL | TuiSizeS = 's';
 
     protected readonly burgers = ['Classic', 'Cheeseburger', 'Royal Cheeseburger'];
-    protected readonly drinks = ['Cola', 'Tea', 'Coffee', 'Slurm'];
+    protected readonly drinks = [
+        'Cola',
+        'Tea',
+        'Coffee',
+        'Slurm',
+    ];
 
     protected open = false;
 

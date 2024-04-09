@@ -10,7 +10,13 @@ import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 @Component({
     standalone: true,
-    imports: [TuiRatingComponent, TuiLabelModule, FormsModule, NgFor, NgIf],
+    imports: [
+        TuiRatingComponent,
+        TuiLabelModule,
+        FormsModule,
+        NgFor,
+        NgIf,
+    ],
     templateUrl: 'index.html',
     styleUrls: ['index.less'],
     encapsulation,

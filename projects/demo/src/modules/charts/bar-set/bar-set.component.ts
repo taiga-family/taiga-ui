@@ -51,7 +51,13 @@ export class ExampleTuiBarSetComponent {
 
     protected readonly valueVariants = [
         [30, 20, 10],
-        [237, -50, 10, 5, 1],
+        [
+            237,
+            -50,
+            10,
+            5,
+            1,
+        ],
     ];
 
     protected value = this.valueVariants[0];

@@ -21,7 +21,12 @@ import {TuiThGroupComponent} from './th-group/th-group.component';
 import {TuiTrComponent} from './tr/tr.component';
 
 @NgModule({
-    imports: [CommonModule, PolymorpheusModule, TuiMapperPipeModule, TuiSvgModule],
+    imports: [
+        CommonModule,
+        PolymorpheusModule,
+        TuiMapperPipeModule,
+        TuiSvgModule,
+    ],
     declarations: [
         TuiTableDirective,
         TuiTbodyComponent,

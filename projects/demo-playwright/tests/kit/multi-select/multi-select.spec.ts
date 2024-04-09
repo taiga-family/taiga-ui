@@ -108,7 +108,13 @@ test.describe('MultiSelect', () => {
                     );
                     await multiSelect.arrow.click();
                     await documentationPage.waitStableState();
-                    await multiSelect.selectOptions([0, 1, 2, 3, 4]);
+                    await multiSelect.selectOptions([
+                        0,
+                        1,
+                        2,
+                        3,
+                        4,
+                    ]);
                     await documentationPage.prepareBeforeScreenshot();
                     await documentationPage.waitStableState();
                     await expect(page).toHaveScreenshot(
@@ -170,7 +176,13 @@ test.describe('MultiSelect', () => {
             await tuiGoto(page, 'components/multi-select/API?tuiTextfieldCleaner=true');
             await multiSelect.arrow.click();
             await documentationPage.waitStableState();
-            await multiSelect.selectOptions([0, 1, 2, 3, 4]);
+            await multiSelect.selectOptions([
+                0,
+                1,
+                2,
+                3,
+                4,
+            ]);
             await documentationPage.prepareBeforeScreenshot();
             await documentationPage.waitStableState();
             await expect(page).toHaveScreenshot('07-multi-select-before-clear.png');
@@ -184,7 +196,13 @@ test.describe('MultiSelect', () => {
             await tuiGoto(page, 'components/multi-select/API?rows=1&sandboxWidth=350');
             await multiSelect.arrow.click();
             await documentationPage.waitStableState();
-            await multiSelect.selectOptions([0, 1, 2, 3, 4]);
+            await multiSelect.selectOptions([
+                0,
+                1,
+                2,
+                3,
+                4,
+            ]);
             await documentationPage.prepareBeforeScreenshot();
             await documentationPage.waitStableState();
             await expect(page).toHaveScreenshot(

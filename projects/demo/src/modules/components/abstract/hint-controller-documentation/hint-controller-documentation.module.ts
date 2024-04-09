@@ -7,7 +7,12 @@ import {TuiLinkDirective} from '@taiga-ui/core';
 import {HintControllerDocumentationComponent} from './hint-controller-documentation.component';
 
 @NgModule({
-    imports: [CommonModule, RouterModule, TuiDocDocumentationModule, TuiLinkDirective],
+    imports: [
+        CommonModule,
+        RouterModule,
+        TuiDocDocumentationModule,
+        TuiLinkDirective,
+    ],
     declarations: [HintControllerDocumentationComponent],
     exports: [HintControllerDocumentationComponent],
 })

@@ -2,7 +2,12 @@
     "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/master/cspell.schema.json",
     "import": ["@taiga-ui/cspell-config/cspell.config.js"],
     "files": ["*/*.*"],
-    "ignoreWords": ["iisnode", "docstrings", "sweepai", "cardnumber"],
+    "ignoreWords": [
+        "iisnode",
+        "docstrings",
+        "sweepai",
+        "cardnumber"
+    ],
     "ignorePaths": [
         ".git",
         "CHANGELOG.md",
@@ -16,11 +21,23 @@
         "**/addon-commerce/enums/currency-code.ts",
         "**/addon-commerce/utils/get-currency-symbol.ts"
     ],
-    "ignoreRegExpList": ["\\(https?://.*?\\)", "\\/{1}.+\\/{1}", "\\%2F.+", "\\%2C.+", "\\ɵ.+", "\\ыва.+"],
+    "ignoreRegExpList": [
+        "\\(https?://.*?\\)",
+        "\\/{1}.+\\/{1}",
+        "\\%2F.+",
+        "\\%2C.+",
+        "\\ɵ.+",
+        "\\ыва.+"
+    ],
     "overrides": [
         {
             "filename": ["**/components/loader/loader.template.html"],
-            "ignoreWords": ["protestin", "spittin", "callin", "yellin"]
+            "ignoreWords": [
+                "protestin",
+                "spittin",
+                "callin",
+                "yellin"
+            ]
         },
         {
             "filename": ["**/i18n/README.md"],

@@ -79,9 +79,27 @@ describe('tuiPure', () => {
 
         const testObject = new TestClass();
 
-        expect(testObject.range).toEqual([1, 2, 3, 4, 5]);
-        expect(testObject.range).toEqual([1, 2, 3, 4, 5]);
-        expect(testObject.range).toEqual([1, 2, 3, 4, 5]);
+        expect(testObject.range).toEqual([
+            1,
+            2,
+            3,
+            4,
+            5,
+        ]);
+        expect(testObject.range).toEqual([
+            1,
+            2,
+            3,
+            4,
+            5,
+        ]);
+        expect(testObject.range).toEqual([
+            1,
+            2,
+            3,
+            4,
+            5,
+        ]);
         expect(testObject.sideEffect).toBe(1);
     });
 

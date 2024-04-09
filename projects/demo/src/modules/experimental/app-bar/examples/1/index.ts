@@ -7,7 +7,12 @@ import {TuiAppBarModule} from '@taiga-ui/experimental';
 
 @Component({
     standalone: true,
-    imports: [TuiAppBarModule, TuiButtonDirective, TuiPlatformModule, TuiTitleDirective],
+    imports: [
+        TuiAppBarModule,
+        TuiButtonDirective,
+        TuiPlatformModule,
+        TuiTitleDirective,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

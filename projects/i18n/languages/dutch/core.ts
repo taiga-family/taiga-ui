@@ -21,6 +21,14 @@ export const TUI_DUTCH_LANGUAGE_CORE: TuiLanguageCore = {
     nothingFoundMessage: 'Niets gevonden',
     defaultErrorMessage: 'Ongeldige waarde',
     spinTexts: ['Vorige', 'Volgende'],
-    shortWeekDays: ['Maa', 'Din', 'Woe', 'Don', 'Vri', 'Zat', 'Zon'],
+    shortWeekDays: [
+        'Maa',
+        'Din',
+        'Woe',
+        'Don',
+        'Vri',
+        'Zat',
+        'Zon',
+    ],
     countries: TUI_DUTCH_LANGUAGE_COUNTRIES,
 };

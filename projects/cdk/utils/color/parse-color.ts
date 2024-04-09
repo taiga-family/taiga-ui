@@ -1,4 +1,9 @@
-const DEFAULT: [number, number, number, number] = [0, 0, 0, 1];
+const DEFAULT: [number, number, number, number] = [
+    0,
+    0,
+    0,
+    1,
+];
 
 export function tuiParseColor(color: string): [number, number, number, number] {
     const stripped = color

@@ -33,7 +33,12 @@ export class TuiDataListExample6 {
         },
         {
             label: 'Well-engineered Taiga UI components',
-            items: ['Calendar', 'Dialog', 'ComboBox', 'Select'],
+            items: [
+                'Calendar',
+                'Dialog',
+                'ComboBox',
+                'Select',
+            ],
         },
     ];
 

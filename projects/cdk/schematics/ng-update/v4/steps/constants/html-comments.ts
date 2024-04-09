@@ -9,7 +9,12 @@ export const HTML_COMMENTS: HtmlComment[] = [
     },
     {
         tag: 'tui-table-pagination',
-        withAttrs: ['[(page)]', '[(size)]', '(pageChange)', '(sizeChange)'],
+        withAttrs: [
+            '[(page)]',
+            '[(size)]',
+            '(pageChange)',
+            '(sizeChange)',
+        ],
         comment:
             '(pageChange) and (sizeChange) outputs have been removed. Use (paginationChange) instead',
     },

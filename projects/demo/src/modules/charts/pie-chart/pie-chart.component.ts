@@ -31,14 +31,35 @@ export class ExampleTuiPieChartComponent {
     };
 
     protected readonly valueVariants = [
-        [0, 30, 20, 10],
-        [40, 30, 20, 10],
-        [13769, 12367, 10172, 3018, 2592],
+        [
+            0,
+            30,
+            20,
+            10,
+        ],
+        [
+            40,
+            30,
+            20,
+            10,
+        ],
+        [
+            13769,
+            12367,
+            10172,
+            3018,
+            2592,
+        ],
     ];
 
     protected value = this.valueVariants[0];
 
-    protected readonly activeItemIndexVariants = [NaN, 0, 1, 2];
+    protected readonly activeItemIndexVariants = [
+        NaN,
+        0,
+        1,
+        2,
+    ];
 
     protected activeItemIndex = this.activeItemIndexVariants[0];
 

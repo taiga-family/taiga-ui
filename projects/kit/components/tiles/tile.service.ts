@@ -52,7 +52,13 @@ export class TuiTileService implements OnDestroy {
         this.sub.unsubscribe();
     }
 
-    private getRect([left, top]: readonly [number, number]): DOMRect {
+    private getRect([
+        left,
+        top,
+    ]: readonly [
+        number,
+        number,
+    ]): DOMRect {
         const elTop = Number.isNaN(top) ? this.el.offsetTop : top;
         const elLeft = Number.isNaN(left) ? this.el.offsetLeft : left;
 
@@ -82,7 +88,15 @@ export class TuiTileService implements OnDestroy {
         style.height = tuiPx(height);
     }
 
-    private setPosition(element: HTMLElement, [left]: readonly [number, number]): void {
+    private setPosition(
+        element: HTMLElement,
+        [
+            left,
+        ]: readonly [
+            number,
+            number,
+        ],
+    ): void {
         if (!Number.isNaN(left)) {
             element.style.setProperty('position', 'fixed');
 

@@ -13,9 +13,22 @@ import {tuiSum} from '@taiga-ui/cdk';
 export class TuiLegendItemExample1 {
     protected activeItemIndex = NaN;
 
-    protected readonly value = [13769, 12367, 10172, 3018, 2592];
+    protected readonly value = [
+        13769,
+        12367,
+        10172,
+        3018,
+        2592,
+    ];
+
     protected readonly sum = tuiSum(...this.value);
-    protected readonly labels = ['Food', 'Cafe', 'OSS', 'Taxi', 'Other'];
+    protected readonly labels = [
+        'Food',
+        'Cafe',
+        'OSS',
+        'Taxi',
+        'Other',
+    ];
 
     protected isItemActive(index: number): boolean {
         return this.activeItemIndex === index;

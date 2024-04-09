@@ -10,7 +10,13 @@ import type {TuiTypedMapper} from '@taiga-ui/cdk';
     changeDetection,
 })
 export class TuiMapperExample2 {
-    protected numbers = [1, 2, 3, 4, 5] as const;
+    protected numbers = [
+        1,
+        2,
+        3,
+        4,
+        5,
+    ] as const;
 
     protected readonly mapper: TuiTypedMapper<[readonly number[], number], number[]> = (
         numbers,

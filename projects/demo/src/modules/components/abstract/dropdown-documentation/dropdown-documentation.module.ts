@@ -7,7 +7,12 @@ import {TuiLinkDirective} from '@taiga-ui/core';
 import {DropdownDocumentationComponent} from './dropdown-documentation.component';
 
 @NgModule({
-    imports: [CommonModule, RouterModule, TuiDocDocumentationModule, TuiLinkDirective],
+    imports: [
+        CommonModule,
+        RouterModule,
+        TuiDocDocumentationModule,
+        TuiLinkDirective,
+    ],
     declarations: [DropdownDocumentationComponent],
     exports: [DropdownDocumentationComponent],
 })

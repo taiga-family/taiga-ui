@@ -17,7 +17,12 @@ const getAlphaFloat = (a: number, alpha?: number): number => {
 };
 
 export function tuiHexToRGBA(hex: string, alpha?: number): string {
-    const [r, g, b, a] = tuiParseHex(hex, alpha);
+    const [
+        r,
+        g,
+        b,
+        a,
+    ] = tuiParseHex(hex, alpha);
 
     return a < 1 ? `rgba(${r}, ${g}, ${b}, ${a})` : `rgb(${r}, ${g}, ${b})`;
 }
@@ -37,8 +42,18 @@ export function tuiParseHex(
 
     const chunkSize = Math.floor((hex.length - 1) / 3);
     const hexArr = getChunksFromString(hex.slice(1), chunkSize);
-    const [r, g, b, a] = hexArr?.map(convertHexUnitTo256) ?? [];
+    const [
+        r,
+        g,
+        b,
+        a,
+    ] = hexArr?.map(convertHexUnitTo256) ?? [];
     const floatAlpha = getAlphaFloat(a, alpha);
 
-    return [r, g, b, floatAlpha];
+    return [
+        r,
+        g,
+        b,
+        floatAlpha,
+    ];
 }

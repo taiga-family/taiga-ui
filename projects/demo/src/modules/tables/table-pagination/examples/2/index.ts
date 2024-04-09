@@ -29,5 +29,10 @@ const customOptionContent: TuiTablePaginationOptions['sizeOptionContent'] = ({
 })
 export class TuiTablePaginationExample2 {
     protected total = 350;
-    protected sizeOptions = [10, 50, 100, this.total];
+    protected sizeOptions = [
+        10,
+        50,
+        100,
+        this.total,
+    ];
 }

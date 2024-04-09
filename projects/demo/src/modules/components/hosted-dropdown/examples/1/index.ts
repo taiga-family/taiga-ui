@@ -14,7 +14,12 @@ export class TuiHostedDropdownExample1 {
     @ViewChild(TuiHostedDropdownComponent)
     protected component?: TuiHostedDropdownComponent;
 
-    protected readonly items = ['Edit', 'Download', 'Rename', 'Delete'];
+    protected readonly items = [
+        'Edit',
+        'Download',
+        'Rename',
+        'Delete',
+    ];
 
     protected open = false;
 

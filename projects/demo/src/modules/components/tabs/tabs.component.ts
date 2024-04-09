@@ -10,7 +10,12 @@ import type {TuiSizeL} from '@taiga-ui/core';
     providers: [tuiDocExampleOptionsProvider({fullsize: true})],
 })
 export class ExampleTuiTabsComponent {
-    protected buttons = ['Button 1', 'Button 2', 'Button 3', 'Button 4'];
+    protected buttons = [
+        'Button 1',
+        'Button 2',
+        'Button 3',
+        'Button 4',
+    ];
 
     protected readonly import = import('./examples/import/import.md?raw');
     protected readonly template = import('./examples/import/template.md?raw');

@@ -12,7 +12,14 @@ import type {TuiLineHandler} from '@taiga-ui/addon-charts';
 })
 export class TuiAxesExample1 {
     protected readonly axisXLabels = ['Jan 2019', 'Feb', 'Mar'];
-    protected readonly axisYLabels = ['', '25%', '50%', '75%', '100%'];
+    protected readonly axisYLabels = [
+        '',
+        '25%',
+        '50%',
+        '75%',
+        '100%',
+    ];
+
     protected readonly axisYSecondaryLabels = ['80 k', '100 k', '120 k'];
     protected readonly verticalLinesHandler: TuiLineHandler = (index, total) =>
         index === total - 1 ? 'none' : 'dashed';

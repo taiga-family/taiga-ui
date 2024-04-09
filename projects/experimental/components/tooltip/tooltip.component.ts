@@ -24,7 +24,13 @@ import {TUI_TOOLTIP_OPTIONS} from './tooltip.options';
     styleUrls: ['./tooltip.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiDestroyService],
-    inputs: ['content', 'direction', 'appearance', 'showDelay', 'hideDelay'],
+    inputs: [
+        'content',
+        'direction',
+        'appearance',
+        'showDelay',
+        'hideDelay',
+    ],
 })
 export class TuiTooltipComponent<C = any> extends TuiHintOptionsDirective {
     private readonly textfield = inject(TuiTextfieldComponent, {optional: true});

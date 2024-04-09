@@ -10,7 +10,12 @@ import {
 
 @Component({
     standalone: true,
-    imports: [TuiDocPageModule, TuiDocExampleModule, RouterOutlet, TuiDocCodeModule],
+    imports: [
+        TuiDocPageModule,
+        TuiDocExampleModule,
+        RouterOutlet,
+        TuiDocCodeModule,
+    ],
     templateUrl: './index.html',
     changeDetection,
 })

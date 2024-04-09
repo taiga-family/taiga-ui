@@ -21,6 +21,14 @@ export const TUI_SPANISH_LANGUAGE_CORE: TuiLanguageCore = {
     nothingFoundMessage: 'Nada encontrado',
     defaultErrorMessage: 'El valor es inválido',
     spinTexts: ['Previo', 'Siguiente'],
-    shortWeekDays: ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'],
+    shortWeekDays: [
+        'Lun',
+        'Mar',
+        'Mié',
+        'Jue',
+        'Vie',
+        'Sáb',
+        'Dom',
+    ],
     countries: TUI_SPANISH_LANGUAGE_COUNTRIES,
 };

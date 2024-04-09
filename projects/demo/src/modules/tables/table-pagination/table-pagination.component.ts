@@ -11,7 +11,12 @@ import type {TuiDocExample} from '@taiga-ui/addon-doc';
 })
 export class ExampleTuiTablePaginationComponent {
     protected readonly itemsVariants = [
-        [10, 20, 50, 100],
+        [
+            10,
+            20,
+            50,
+            100,
+        ],
         [10, 100, 500],
     ];
 

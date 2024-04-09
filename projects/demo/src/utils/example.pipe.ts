@@ -19,14 +19,12 @@ export class TuiExamplePipe implements PipeTransform {
             | 'ts' = 'html,ts,less',
     ): TuiDocExample {
         return Object.fromEntries(
-            formats
-                .split(',')
-                .map(format => [
-                    format === 'ts' ? 'TypeScript' : format.toUpperCase(),
-                    import(
-                        `../modules/${this.page.type}/${toKebab(this.page.header)}/examples/${index}/index.${format}?raw`
-                    ),
-                ]),
+            formats.split(',').map(format => [
+                format === 'ts' ? 'TypeScript' : format.toUpperCase(),
+                import(
+                    `../modules/${this.page.type}/${toKebab(this.page.header)}/examples/${index}/index.${format}?raw`
+                ),
+            ]),
         );
     }
 }

@@ -9,7 +9,12 @@ import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 @Component({
     standalone: true,
     selector: 'tui-notifications-service-example-with-data',
-    imports: [AsyncPipe, TuiButtonDirective, TuiLinkDirective, TuiAmountPipe],
+    imports: [
+        AsyncPipe,
+        TuiButtonDirective,
+        TuiLinkDirective,
+        TuiAmountPipe,
+    ],
     templateUrl: './alert-example-with-data.template.html',
     styleUrls: ['./alert-example-with-data.style.less'],
     changeDetection,

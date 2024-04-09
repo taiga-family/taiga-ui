@@ -17,7 +17,19 @@ export class TuiInputExample3 {
     });
 
     protected readonly maskOptions1: MaskitoOptions = {
-        mask: [/\d/, /\d/, /\d/, /\d/, ' ', /\d/, /\d/, /\d/, /\d/, /\d/, /\d/],
+        mask: [
+            /\d/,
+            /\d/,
+            /\d/,
+            /\d/,
+            ' ',
+            /\d/,
+            /\d/,
+            /\d/,
+            /\d/,
+            /\d/,
+            /\d/,
+        ],
     };
 
     protected readonly maskOptions2: MaskitoOptions = {

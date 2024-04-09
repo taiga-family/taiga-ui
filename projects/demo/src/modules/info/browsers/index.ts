@@ -5,7 +5,13 @@ import {TuiLinkDirective, TuiNotificationModule} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
-    imports: [TuiDocPageModule, NgFor, NgIf, TuiNotificationModule, TuiLinkDirective],
+    imports: [
+        TuiDocPageModule,
+        NgFor,
+        NgIf,
+        TuiNotificationModule,
+        TuiLinkDirective,
+    ],
     templateUrl: './index.html',
     styles: ['td {width: 18.75rem}'],
     changeDetection: ChangeDetectionStrategy.OnPush,

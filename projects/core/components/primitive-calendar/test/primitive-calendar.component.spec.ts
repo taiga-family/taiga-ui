@@ -286,11 +286,25 @@ describe('PrimitiveCalendar', () => {
             });
 
             it('contains the first column with dates which are actual Sundays', () => {
-                expect(getColumnDates(0)).toEqual(['30', '6', '13', '20', '27', '4']);
+                expect(getColumnDates(0)).toEqual([
+                    '30',
+                    '6',
+                    '13',
+                    '20',
+                    '27',
+                    '4',
+                ]);
             });
 
             it('contains the fifth column with dates which are actual Thursday', () => {
-                expect(getColumnDates(4)).toEqual(['3', '10', '17', '24', '1', '8']);
+                expect(getColumnDates(4)).toEqual([
+                    '3',
+                    '10',
+                    '17',
+                    '24',
+                    '1',
+                    '8',
+                ]);
             });
         });
 
@@ -323,11 +337,25 @@ describe('PrimitiveCalendar', () => {
             });
 
             it('contains the first column with dates which are actual Mondays', () => {
-                expect(getColumnDates(0)).toEqual(['31', '7', '14', '21', '28', '5']);
+                expect(getColumnDates(0)).toEqual([
+                    '31',
+                    '7',
+                    '14',
+                    '21',
+                    '28',
+                    '5',
+                ]);
             });
 
             it('contains the fifth column with dates which are actual Fridays', () => {
-                expect(getColumnDates(4)).toEqual(['4', '11', '18', '25', '2', '9']);
+                expect(getColumnDates(4)).toEqual([
+                    '4',
+                    '11',
+                    '18',
+                    '25',
+                    '2',
+                    '9',
+                ]);
             });
         });
 
@@ -360,11 +388,25 @@ describe('PrimitiveCalendar', () => {
             });
 
             it('contains the first column with dates which are actual Wednesdays', () => {
-                expect(getColumnDates(0)).toEqual(['26', '2', '9', '16', '23', '30']);
+                expect(getColumnDates(0)).toEqual([
+                    '26',
+                    '2',
+                    '9',
+                    '16',
+                    '23',
+                    '30',
+                ]);
             });
 
             it('contains the fifth column with dates which are actual Sundays', () => {
-                expect(getColumnDates(4)).toEqual(['30', '6', '13', '20', '27', '4']);
+                expect(getColumnDates(4)).toEqual([
+                    '30',
+                    '6',
+                    '13',
+                    '20',
+                    '27',
+                    '4',
+                ]);
             });
         });
 

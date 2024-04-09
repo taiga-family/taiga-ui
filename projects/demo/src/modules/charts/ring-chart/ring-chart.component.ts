@@ -26,13 +26,28 @@ export class ExampleTuiRingChartComponent {
     };
 
     protected readonly valueVariants = [
-        [40, 30, 20, 10],
-        [13769, 10172, 3018, 2592],
+        [
+            40,
+            30,
+            20,
+            10,
+        ],
+        [
+            13769,
+            10172,
+            3018,
+            2592,
+        ],
     ];
 
     protected value = this.valueVariants[0];
 
-    protected readonly activeItemIndexVariants = [NaN, 0, 1, 2];
+    protected readonly activeItemIndexVariants = [
+        NaN,
+        0,
+        1,
+        2,
+    ];
 
     protected activeItemIndex = this.activeItemIndexVariants[0];
 

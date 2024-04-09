@@ -16,7 +16,12 @@ import {
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
-    animations: [tuiSlideInLeft, tuiSlideInTop, tuiSlideInBottom, tuiSlideInRight],
+    animations: [
+        tuiSlideInLeft,
+        tuiSlideInTop,
+        tuiSlideInBottom,
+        tuiSlideInRight,
+    ],
 })
 export class TuiSlideInExample {
     @Input()

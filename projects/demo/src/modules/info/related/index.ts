@@ -10,7 +10,12 @@ import {SCREENSHOT_BOT_LINK, SCREENSHOT_BOT_NAME} from '../testing/screenshot-gi
 @Component({
     standalone: true,
     selector: 'related',
-    imports: [TuiDocPageModule, TuiIslandModule, TuiLinkDirective, TuiCardModule],
+    imports: [
+        TuiDocPageModule,
+        TuiIslandModule,
+        TuiLinkDirective,
+        TuiCardModule,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,

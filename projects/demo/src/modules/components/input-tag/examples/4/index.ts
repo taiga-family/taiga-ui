@@ -23,7 +23,12 @@ function createControlValidator(handler: TuiBooleanHandler<string>): ValidatorFn
     };
 }
 
-const ITEMS = ['The Midnight', 'FM-84', 'Timecop1983', 'GUNSHIP'];
+const ITEMS = [
+    'The Midnight',
+    'FM-84',
+    'Timecop1983',
+    'GUNSHIP',
+];
 
 function tagValidator(tag: string): boolean {
     return !/\d/.test(tag);

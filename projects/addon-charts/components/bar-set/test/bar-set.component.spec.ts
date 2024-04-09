@@ -17,7 +17,13 @@ describe('BarSet', () => {
         @ViewChild(TuiBarSetComponent)
         public readonly component!: TuiBarSetComponent;
 
-        public readonly value = [10, 20, 30, 40];
+        public readonly value = [
+            10,
+            20,
+            30,
+            40,
+        ];
+
         public collapsed = false;
     }
 

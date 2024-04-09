@@ -6,7 +6,12 @@ import {TuiAddonDocModule} from '@taiga-ui/addon-doc';
 @Component({
     standalone: true,
     selector: 'example-title',
-    imports: [TuiExamplePipe, TuiComponentPipe, TuiAddonDocModule, TuiSetupComponent],
+    imports: [
+        TuiExamplePipe,
+        TuiComponentPipe,
+        TuiAddonDocModule,
+        TuiSetupComponent,
+    ],
     templateUrl: './index.html',
     changeDetection,
 })

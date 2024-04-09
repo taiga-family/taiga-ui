@@ -16,5 +16,10 @@ import {tuiTablePaginationOptionsProvider} from '@taiga-ui/addon-table';
 })
 export class TuiTablePaginationExample3 {
     protected total = 350;
-    protected sizeOptions = [10, 50, 100, this.total];
+    protected sizeOptions = [
+        10,
+        50,
+        100,
+        this.total,
+    ];
 }

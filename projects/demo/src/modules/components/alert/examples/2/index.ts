@@ -11,7 +11,12 @@ import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 @Component({
     standalone: true,
     selector: 'tui-alerts-example-2',
-    imports: [AsyncPipe, TuiButtonDirective, TuiAmountPipe, PolymorpheusModule],
+    imports: [
+        AsyncPipe,
+        TuiButtonDirective,
+        TuiAmountPipe,
+        PolymorpheusModule,
+    ],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

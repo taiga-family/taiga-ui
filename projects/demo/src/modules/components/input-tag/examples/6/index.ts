@@ -10,6 +10,14 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiInputTagExample6 {
-    protected value = ['not', 'unique', 'tags, with', 'custom', 'separator', 'separator'];
+    protected value = [
+        'not',
+        'unique',
+        'tags, with',
+        'custom',
+        'separator',
+        'separator',
+    ];
+
     protected customSeparator = ';';
 }

@@ -7,7 +7,12 @@ import {TuiLinkDirective} from '@taiga-ui/core';
 import {TextfieldControllerDocumentationComponent} from './textfield-controller-documentation.component';
 
 @NgModule({
-    imports: [CommonModule, RouterModule, TuiDocDocumentationModule, TuiLinkDirective],
+    imports: [
+        CommonModule,
+        RouterModule,
+        TuiDocDocumentationModule,
+        TuiLinkDirective,
+    ],
     declarations: [TextfieldControllerDocumentationComponent],
     exports: [TextfieldControllerDocumentationComponent],
 })

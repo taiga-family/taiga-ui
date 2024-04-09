@@ -41,22 +41,45 @@ export class ExampleTuiAxesComponent {
 
     protected readonly labelsXVariants: ReadonlyArray<ReadonlyArray<string | null>> = [
         [],
-        ['', '25%', '50%', '100%'],
+        [
+            '',
+            '25%',
+            '50%',
+            '100%',
+        ],
         ['One', 'Two', 'Three'],
-        ['One', null, '', 'Two and a half', 'Three', null],
+        [
+            'One',
+            null,
+            '',
+            'Two and a half',
+            'Three',
+            null,
+        ],
     ];
 
     protected readonly labelsYVariants: ReadonlyArray<readonly string[]> = [
         [],
-        ['', '25%', '50%', '100%'],
+        [
+            '',
+            '25%',
+            '50%',
+            '100%',
+        ],
         ['One', 'Two', 'Three'],
-        ['One', '', 'Two and a half', 'Three'],
+        [
+            'One',
+            '',
+            'Two and a half',
+            'Three',
+        ],
     ];
 
     protected readonly handlerVariants: readonly TuiLineHandler[] = [
         TUI_ALWAYS_SOLID,
         TUI_ALWAYS_DASHED,
-        index => (index % 2 ? 'dashed' : 'solid'),
+        index =>
+            index % 2 ? 'dashed' : 'solid',
     ];
 
     protected axisX = this.lineVariants[0];

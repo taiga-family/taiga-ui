@@ -21,7 +21,16 @@ export class ExampleTuiCurrencyComponent {
         HTML: import('./examples/2/template.html?raw'),
     };
 
-    protected readonly currencyVariants = [null, 826, 840, 'EUR', 'RUB', 'UGX', 'USD'];
+    protected readonly currencyVariants = [
+        null,
+        826,
+        840,
+        'EUR',
+        'RUB',
+        'UGX',
+        'USD',
+    ];
+
     protected currency = this.currencyVariants[0];
 
     protected readonly control = new FormControl(6432, Validators.required);

@@ -7,7 +7,12 @@ import {TuiDestroyService} from '@taiga-ui/cdk';
 
 @Component({
     standalone: true,
-    imports: [RouterOutlet, NgIf, AsyncPipe, TuiAddonDocModule],
+    imports: [
+        RouterOutlet,
+        NgIf,
+        AsyncPipe,
+        TuiAddonDocModule,
+    ],
     templateUrl: './index.html',
     changeDetection,
     providers: [TuiDestroyService],

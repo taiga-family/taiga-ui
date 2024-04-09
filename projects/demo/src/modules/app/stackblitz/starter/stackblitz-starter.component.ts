@@ -20,7 +20,12 @@ export class StackblitzStarterComponent implements OnInit {
     }
 
     protected async openStackblitz(): Promise<void> {
-        const [appTemplate, appComponent, indexHtml, stylesLess] = await Promise.all(
+        const [
+            appTemplate,
+            appComponent,
+            indexHtml,
+            stylesLess,
+        ] = await Promise.all(
             [
                 import('./files/app.component.html.md?raw'),
                 import('./files/app.component.ts.md?raw'),

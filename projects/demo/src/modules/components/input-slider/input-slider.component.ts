@@ -65,7 +65,13 @@ export class ExampleTuiInputSliderComponent extends AbstractExampleTuiNumberForm
         LESS: import('./examples/5/index.less?raw'),
     };
 
-    protected readonly minVariants: readonly number[] = [0, 1, 5, 7.77, -10];
+    protected readonly minVariants: readonly number[] = [
+        0,
+        1,
+        5,
+        7.77,
+        -10,
+    ];
 
     protected min = this.minVariants[0];
 
@@ -78,7 +84,13 @@ export class ExampleTuiInputSliderComponent extends AbstractExampleTuiNumberForm
     protected steps = 0;
 
     protected readonly quantumVariants: readonly number[] = [
-        1, 0.01, 0.001, 0.0001, 10, 20, 100,
+        1,
+        0.01,
+        0.001,
+        0.0001,
+        10,
+        20,
+        100,
     ];
 
     protected quantum = this.quantumVariants[0];
@@ -86,9 +98,12 @@ export class ExampleTuiInputSliderComponent extends AbstractExampleTuiNumberForm
     protected readonly valueContentVariants = [
         '',
         'TOP SECRET',
-        ({$implicit: val}: TuiContext<number>) => (val === this.max ? 'MAX' : val),
-        ({$implicit: val}: TuiContext<number>) => (val === this.min ? 'MIN' : val),
-        ({$implicit: val}: TuiContext<number>) => (val === 5 ? 'FIVE' : val),
+        ({$implicit: val}: TuiContext<number>) =>
+            val === this.max ? 'MAX' : val,
+        ({$implicit: val}: TuiContext<number>) =>
+            val === this.min ? 'MIN' : val,
+        ({$implicit: val}: TuiContext<number>) =>
+            val === 5 ? 'FIVE' : val,
     ];
 
     protected valueContent = this.valueContentVariants[0];

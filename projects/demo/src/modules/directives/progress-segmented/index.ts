@@ -7,7 +7,12 @@ import {TuiProgressModule} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiDemoModule, TuiProgressModule, TuiLinkDirective, RouterLink],
+    imports: [
+        TuiDemoModule,
+        TuiProgressModule,
+        TuiLinkDirective,
+        RouterLink,
+    ],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -16,7 +21,13 @@ export default class PageComponent {
     protected max = 5;
     protected segments = this.max;
 
-    protected examples = ['Basic', 'Sizes', 'Colors', 'With labels', 'No round corners'];
+    protected examples = [
+        'Basic',
+        'Sizes',
+        'Colors',
+        'With labels',
+        'No round corners',
+    ];
 
     protected readonly sizeVariants: ReadonlyArray<TuiProgressBarComponent['size']> = [
         'xs',
@@ -31,7 +42,15 @@ export default class PageComponent {
 
     protected readonly colorsVariants: readonly string[][] = [
         ['var(--tui-primary)'],
-        ['#39b54a', '#ffd450', '#ffd450', '#fcc521', '#fab619', '#f8a34d', '#e01f19'],
+        [
+            '#39b54a',
+            '#ffd450',
+            '#ffd450',
+            '#fcc521',
+            '#fab619',
+            '#f8a34d',
+            '#e01f19',
+        ],
         new Array(20).fill('').map((_, index) => `var(--tui-support-0${index + 1})`),
     ];
 

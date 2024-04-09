@@ -61,7 +61,12 @@ export class ExampleTuiInputNumberComponent extends AbstractExampleTuiNumberForm
         HTML: import('./examples/7/index.html?raw'),
     };
 
-    protected readonly minVariants: readonly number[] = [-Infinity, -500, 5, 25];
+    protected readonly minVariants: readonly number[] = [
+        -Infinity,
+        -500,
+        5,
+        25,
+    ];
 
     protected min = this.minVariants[0];
 

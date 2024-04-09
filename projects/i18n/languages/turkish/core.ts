@@ -20,7 +20,15 @@ export const TUI_TURKISH_LANGUAGE_CORE: TuiLanguageCore = {
     nothingFoundMessage: 'Kayıt Bulunamadı',
     defaultErrorMessage: 'Değer hatalı',
     spinTexts: ['Geri', 'İleri'],
-    shortWeekDays: ['Ptsi', 'Salı', 'Çrş', 'Prş', 'Cma', 'Ctsi', 'Pzr'],
+    shortWeekDays: [
+        'Ptsi',
+        'Salı',
+        'Çrş',
+        'Prş',
+        'Cma',
+        'Ctsi',
+        'Pzr',
+    ],
     // TODO: i18n replace with current language countries list
     countries: TUI_ENGLISH_LANGUAGE_COUNTRIES,
 };

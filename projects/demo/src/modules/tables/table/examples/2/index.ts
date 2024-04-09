@@ -17,7 +17,13 @@ interface User {
     changeDetection,
 })
 export class TuiTableExample2 {
-    protected readonly columns = ['name', 'email', 'status', 'tags', 'actions'];
+    protected readonly columns = [
+        'name',
+        'email',
+        'status',
+        'tags',
+        'actions',
+    ];
 
     protected users: readonly User[] = [
         {

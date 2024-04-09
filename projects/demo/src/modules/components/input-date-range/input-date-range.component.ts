@@ -90,7 +90,8 @@ export class ExampleTuiInputDateRangeComponent extends AbstractExampleTuiControl
 
     protected readonly markerHandlerVariants: readonly TuiMarkerHandler[] = [
         TUI_DEFAULT_MARKER_HANDLER,
-        (day: TuiDay) => (day.day % 2 === 0 ? TWO_DOTS : ONE_DOT),
+        (day: TuiDay) =>
+            day.day % 2 === 0 ? TWO_DOTS : ONE_DOT,
     ];
 
     protected markerHandler: TuiMarkerHandler = this.markerHandlerVariants[0];

@@ -19,7 +19,13 @@ const getIcon: Record<string, string> = {
     changeDetection,
 })
 export class TuiFilterExample3 {
-    protected items = ['Calendar', 'Favorite', 'Messages', 'FAQ', 'Settings'];
+    protected items = [
+        'Calendar',
+        'Favorite',
+        'Messages',
+        'FAQ',
+        'Settings',
+    ];
 
     protected form = new FormGroup({
         filters: new FormControl<string[]>([]),

@@ -8,7 +8,12 @@ import {TuiProgressModule} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiProgressModule, TuiLabelModule, TuiAmountPipe, AsyncPipe],
+    imports: [
+        TuiProgressModule,
+        TuiLabelModule,
+        TuiAmountPipe,
+        AsyncPipe,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

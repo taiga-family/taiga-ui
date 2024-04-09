@@ -6,7 +6,12 @@ describe('tuiArrayToggle', () => {
     });
 
     it('adds missing item', () => {
-        expect(tuiArrayToggle([1, 2, 3], 0)).toEqual([1, 2, 3, 0]);
+        expect(tuiArrayToggle([1, 2, 3], 0)).toEqual([
+            1,
+            2,
+            3,
+            0,
+        ]);
     });
 
     it('removes exact item', () => {

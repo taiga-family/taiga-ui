@@ -6,7 +6,12 @@ import {TuiInputModule, TuiInputNumberModule, TuiSwitchComponent} from '@taiga-u
 
 @Component({
     standalone: true,
-    imports: [TuiInputModule, FormsModule, TuiSwitchComponent, TuiInputNumberModule],
+    imports: [
+        TuiInputModule,
+        FormsModule,
+        TuiSwitchComponent,
+        TuiInputNumberModule,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

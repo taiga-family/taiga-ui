@@ -63,7 +63,12 @@ export class ExampleTuiInputRangeComponent extends AbstractExampleTuiNumberForma
         'transformer.ts': import('./examples/6/transformer.ts?raw'),
     };
 
-    protected minVariants: readonly number[] = [0, 5, 7.77, -10];
+    protected minVariants: readonly number[] = [
+        0,
+        5,
+        7.77,
+        -10,
+    ];
 
     protected min = this.minVariants[0];
 
@@ -75,7 +80,12 @@ export class ExampleTuiInputRangeComponent extends AbstractExampleTuiNumberForma
 
     protected steps = 0;
 
-    protected quantumVariants: readonly number[] = [1, 0.001, 10, 100];
+    protected quantumVariants: readonly number[] = [
+        1,
+        0.001,
+        10,
+        100,
+    ];
 
     protected quantum = this.quantumVariants[0];
 
@@ -102,9 +112,12 @@ export class ExampleTuiInputRangeComponent extends AbstractExampleTuiNumberForma
     protected readonly valueContentVariants = [
         '',
         'TOP SECRET',
-        ({$implicit: val}: TuiContext<number>) => (val === this.max ? 'MAX' : `${val}`),
-        ({$implicit: val}: TuiContext<number>) => (val === this.min ? 'MIN' : `${val}`),
-        ({$implicit: val}: TuiContext<number>) => (val === 5 ? 'FIVE' : `${val}`),
+        ({$implicit: val}: TuiContext<number>) =>
+            val === this.max ? 'MAX' : `${val}`,
+        ({$implicit: val}: TuiContext<number>) =>
+            val === this.min ? 'MIN' : `${val}`,
+        ({$implicit: val}: TuiContext<number>) =>
+            val === 5 ? 'FIVE' : `${val}`,
     ];
 
     protected leftValueContent = this.valueContentVariants[0];

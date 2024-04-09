@@ -7,7 +7,12 @@ import {TuiBreadcrumbsModule} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [RouterLink, TuiDemoModule, TuiBreadcrumbsModule, TuiLinkDirective],
+    imports: [
+        RouterLink,
+        TuiDemoModule,
+        TuiBreadcrumbsModule,
+        TuiLinkDirective,
+    ],
     templateUrl: './index.html',
     changeDetection,
 })

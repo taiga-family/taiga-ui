@@ -19,7 +19,13 @@ export class ExampleTuiFormatPhoneComponent {
 
     protected index = '+78005557778';
 
-    protected readonly countryCodes = [undefined, '+850', '+1', '+52'];
+    protected readonly countryCodes = [
+        undefined,
+        '+850',
+        '+1',
+        '+52',
+    ];
+
     protected countryCode = this.countryCodes[0];
 
     protected readonly phoneMasks = [

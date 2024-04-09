@@ -40,7 +40,12 @@ export const NAVIGATION_PROVIDERS: Provider[] = [
     tuiLinkOptionsProvider({appearance: 'icon'}),
     {
         provide: NAVIGATION_TITLE,
-        deps: [Router, ActivatedRoute, TUI_DOC_TITLE, TuiDestroyService],
+        deps: [
+            Router,
+            ActivatedRoute,
+            TUI_DOC_TITLE,
+            TuiDestroyService,
+        ],
         useFactory: (
             router: Router,
             activatedRoute: ActivatedRoute,

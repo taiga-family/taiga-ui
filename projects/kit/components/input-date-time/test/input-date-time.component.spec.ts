@@ -338,7 +338,13 @@ describe('InputDateTime', () => {
                 ];
             }
 
-            public toControlValue([day, time]: [TuiDay | null, TuiTime | null]): string {
+            public toControlValue([
+                day,
+                time,
+            ]: [
+                TuiDay | null,
+                TuiTime | null,
+            ]): string {
                 if (!day) {
                     return '';
                 }

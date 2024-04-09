@@ -9,5 +9,10 @@ import {TuiDemoModule} from '@demo/utils';
     changeDetection,
 })
 export default class ExampleComponent {
-    protected readonly examples = ['Sizes', 'Width', 'Customization', 'Content'];
+    protected readonly examples = [
+        'Sizes',
+        'Width',
+        'Customization',
+        'Content',
+    ];
 }

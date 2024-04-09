@@ -9,7 +9,13 @@ test.describe('InputTable', () => {
 
         await example.scrollIntoViewIfNeeded();
 
-        for (const index of [0, 1, 2, 3, 4]) {
+        for (const index of [
+            0,
+            1,
+            2,
+            3,
+            4,
+        ]) {
             await example
                 .locator('tbody tr td')
                 .nth(index)

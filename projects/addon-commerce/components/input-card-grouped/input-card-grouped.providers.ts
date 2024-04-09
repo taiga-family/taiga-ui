@@ -40,10 +40,17 @@ export const TUI_INPUT_CARD_GROUPED_TEXTS = tuiCreateTokenFromFactory<
                 cvcTexts,
             ]),
         ),
-        map(([index, cardNumber, expiry, cvcTexts]) => ({
-            cardNumberText: cardNumber[index],
-            expiryText: expiry[index],
-            cvcText: cvcTexts[index],
-        })),
+        map(
+            ([
+                index,
+                cardNumber,
+                expiry,
+                cvcTexts,
+            ]) => ({
+                cardNumberText: cardNumber[index],
+                expiryText: expiry[index],
+                cvcText: cvcTexts[index],
+            }),
+        ),
     );
 });

@@ -28,7 +28,12 @@ export class ExampleTuiMediaComponent {
         LESS: import('./examples/3/index.less?raw'),
     };
 
-    protected readonly volumeVariants: readonly number[] = [1, 0.5, 0.25, 0];
+    protected readonly volumeVariants: readonly number[] = [
+        1,
+        0.5,
+        0.25,
+        0,
+    ];
 
     protected playbackRate = 1;
     protected currentTime = 0;

@@ -1,9 +1,13 @@
 import type {TuiReleaseMode} from './release-mode';
 
 export function bumpVersion(version: string, mode: TuiReleaseMode): string {
-    let [major, minor, patch, , rc = -1] = version
-        .split(/[.-]/)
-        .map(value => Number(value));
+    let [
+        major,
+        minor,
+        patch,
+        ,
+        rc = -1,
+    ] = version.split(/[.-]/).map(value => Number(value));
 
     if (rc !== -1 && mode !== 'major' && mode !== 'prerelease') {
         throw new Error(

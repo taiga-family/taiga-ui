@@ -21,6 +21,14 @@ export const TUI_VIETNAMESE_LANGUAGE_CORE: TuiLanguageCore = {
     nothingFoundMessage: 'Không tìm thấy',
     defaultErrorMessage: 'Giá trị không hợp lệ',
     spinTexts: ['Trước', 'Sau'],
-    shortWeekDays: ['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN'],
+    shortWeekDays: [
+        'T2',
+        'T3',
+        'T4',
+        'T5',
+        'T6',
+        'T7',
+        'CN',
+    ],
     countries: TUI_VIETNAMESE_LANGUAGE_COUNTRIES,
 };

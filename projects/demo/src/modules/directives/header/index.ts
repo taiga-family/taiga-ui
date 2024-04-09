@@ -6,7 +6,12 @@ import {TuiAddonDocModule, tuiDocExampleOptionsProvider} from '@taiga-ui/addon-d
 
 @Component({
     standalone: true,
-    imports: [TuiExamplePipe, TuiComponentPipe, TuiAddonDocModule, TuiSetupComponent],
+    imports: [
+        TuiExamplePipe,
+        TuiComponentPipe,
+        TuiAddonDocModule,
+        TuiSetupComponent,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation: ViewEncapsulation.None,

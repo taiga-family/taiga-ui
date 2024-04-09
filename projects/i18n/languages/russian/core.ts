@@ -21,6 +21,14 @@ export const TUI_RUSSIAN_LANGUAGE_CORE: TuiLanguageCore = {
     nothingFoundMessage: 'Ничего не найдено',
     defaultErrorMessage: 'Поле заполнено неверно',
     spinTexts: ['Предыдущий', 'Следующий'],
-    shortWeekDays: ['ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ', 'ВС'],
+    shortWeekDays: [
+        'ПН',
+        'ВТ',
+        'СР',
+        'ЧТ',
+        'ПТ',
+        'СБ',
+        'ВС',
+    ],
     countries: TUI_RUSSIAN_LANGUAGE_COUNTRIES,
 };

@@ -39,7 +39,12 @@ export class ExampleTuiInputPhoneComponent extends AbstractExampleTuiControl {
         LESS: import('./examples/3/index.less?raw'),
     };
 
-    protected countryCodes = ['+7', '+850', '+1', '+52'];
+    protected countryCodes = [
+        '+7',
+        '+850',
+        '+1',
+        '+52',
+    ];
 
     protected countryCode = this.countryCodes[0];
 

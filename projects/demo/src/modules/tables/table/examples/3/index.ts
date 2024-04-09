@@ -73,7 +73,13 @@ export class TuiTableExample3 {
         },
     ];
 
-    protected readonly columns = ['name', 'price', 'quantity', 'unit', 'total'] as const;
+    protected readonly columns = [
+        'name',
+        'price',
+        'quantity',
+        'unit',
+        'total',
+    ] as const;
 
     protected readonly minPrice: ValidatorFn = ({value}) =>
         value > 400 ? null : {minPrice: 'Price must be above $400'};

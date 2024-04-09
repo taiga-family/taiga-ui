@@ -21,6 +21,14 @@ export const TUI_MALAY_LANGUAGE_CORE: TuiLanguageCore = {
     nothingFoundMessage: 'Tiada apa-apa Dijumpai',
     defaultErrorMessage: 'Nilai tidak sah',
     spinTexts: ['Sebelum', 'Selepas'],
-    shortWeekDays: ['Isn', 'Sel', 'Rab', 'Kha', 'Jum', 'Sab', 'Ahd'],
+    shortWeekDays: [
+        'Isn',
+        'Sel',
+        'Rab',
+        'Kha',
+        'Jum',
+        'Sab',
+        'Ahd',
+    ],
     countries: TUI_MALAY_LANGUAGE_COUNTRIES,
 };

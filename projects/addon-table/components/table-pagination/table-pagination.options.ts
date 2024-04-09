@@ -17,7 +17,12 @@ export interface TuiTablePaginationOptions {
 export const TUI_TABLE_PAGINATION_DEFAULT_OPTIONS: TuiTablePaginationOptions = {
     sizeOptionContent: defaultSizeOptionContent,
     showPages: true,
-    items: [10, 20, 50, 100],
+    items: [
+        10,
+        20,
+        50,
+        100,
+    ],
     size: 10,
 };
 

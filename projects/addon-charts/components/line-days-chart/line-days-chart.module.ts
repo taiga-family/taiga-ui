@@ -8,7 +8,12 @@ import {TuiLineDaysChartComponent} from './line-days-chart.component';
 import {TuiLineDaysChartHintDirective} from './line-days-chart-hint.directive';
 
 @NgModule({
-    imports: [CommonModule, TuiLineChartModule, PolymorpheusModule, TuiHintModule],
+    imports: [
+        CommonModule,
+        TuiLineChartModule,
+        PolymorpheusModule,
+        TuiHintModule,
+    ],
     declarations: [TuiLineDaysChartComponent, TuiLineDaysChartHintDirective],
     exports: [TuiLineDaysChartComponent, TuiLineDaysChartHintDirective],
 })

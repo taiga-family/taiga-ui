@@ -10,6 +10,19 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiPieChartExample2 {
-    protected readonly value = [13769, 12367, 10172, 3018, 2592];
-    protected readonly labels = ['Food', 'Cafe', 'Open Source', 'Taxi', 'Other'];
+    protected readonly value = [
+        13769,
+        12367,
+        10172,
+        3018,
+        2592,
+    ];
+
+    protected readonly labels = [
+        'Food',
+        'Cafe',
+        'Open Source',
+        'Taxi',
+        'Other',
+    ];
 }

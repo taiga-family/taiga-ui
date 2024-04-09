@@ -21,6 +21,14 @@ export const TUI_POLISH_LANGUAGE_CORE: TuiLanguageCore = {
     nothingFoundMessage: 'Nic nie znaleziono',
     defaultErrorMessage: 'Nieprawidłowa wartość',
     spinTexts: ['Poprzedni', 'Następny'],
-    shortWeekDays: ['Pon', 'Wt', 'Śr', 'Czw', 'Pt', 'Sob', 'Nie'],
+    shortWeekDays: [
+        'Pon',
+        'Wt',
+        'Śr',
+        'Czw',
+        'Pt',
+        'Sob',
+        'Nie',
+    ],
     countries: TUI_POLISH_LANGUAGE_COUNTRIES,
 };

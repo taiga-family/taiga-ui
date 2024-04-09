@@ -20,7 +20,15 @@ export const TUI_UKRAINIAN_LANGUAGE_CORE: TuiLanguageCore = {
     nothingFoundMessage: 'Нічого не знайдено',
     defaultErrorMessage: 'Поле заповнено невірно',
     spinTexts: ['Попередній', 'Наступний'],
-    shortWeekDays: ['ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ', 'НД'],
+    shortWeekDays: [
+        'ПН',
+        'ВТ',
+        'СР',
+        'ЧТ',
+        'ПТ',
+        'СБ',
+        'НД',
+    ],
     // TODO: i18n replace with current language countries list
     countries: TUI_ENGLISH_LANGUAGE_COUNTRIES,
 };

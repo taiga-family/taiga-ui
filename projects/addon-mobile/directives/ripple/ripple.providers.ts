@@ -32,7 +32,12 @@ export const TUI_RIPPLE_PROVIDERS: Provider[] = [
     TuiDestroyService,
     {
         provide: TUI_RIPPLE_START,
-        deps: [TUI_TOUCH_SUPPORTED, TUI_IS_IOS, ElementRef, Renderer2],
+        deps: [
+            TUI_TOUCH_SUPPORTED,
+            TUI_IS_IOS,
+            ElementRef,
+            Renderer2,
+        ],
         useFactory: (
             touchSupported: boolean,
             isIOS: boolean,
@@ -69,7 +74,12 @@ export const TUI_RIPPLE_PROVIDERS: Provider[] = [
     },
     {
         provide: TUI_RIPPLE_END,
-        deps: [TUI_TOUCH_SUPPORTED, TUI_IS_IOS, ElementRef, TuiDestroyService],
+        deps: [
+            TUI_TOUCH_SUPPORTED,
+            TUI_IS_IOS,
+            ElementRef,
+            TuiDestroyService,
+        ],
         useFactory: (
             touchSupported: boolean,
             isIOS: boolean,

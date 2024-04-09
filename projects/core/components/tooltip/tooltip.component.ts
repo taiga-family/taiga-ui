@@ -16,7 +16,13 @@ import {TuiHintHoverDirective, TuiHintOptionsDirective} from '@taiga-ui/core/dir
     styleUrls: ['./tooltip.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiDestroyService],
-    inputs: ['content', 'direction', 'appearance', 'showDelay', 'hideDelay'],
+    inputs: [
+        'content',
+        'direction',
+        'appearance',
+        'showDelay',
+        'hideDelay',
+    ],
 })
 export class TuiTooltipComponent<C = any> extends TuiHintOptionsDirective {
     private readonly isMobile = inject(TUI_IS_MOBILE);

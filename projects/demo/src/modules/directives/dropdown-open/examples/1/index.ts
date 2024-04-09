@@ -9,7 +9,12 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     changeDetection,
 })
 export class TuiDropdownOpenExample1 {
-    protected readonly items = ['Edit', 'Download', 'Rename', 'Delete'];
+    protected readonly items = [
+        'Edit',
+        'Download',
+        'Rename',
+        'Delete',
+    ];
 
     protected open = false;
 

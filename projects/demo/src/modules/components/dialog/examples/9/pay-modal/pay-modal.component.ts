@@ -108,7 +108,13 @@ export class PayModalComponent implements OnInit {
                 takeUntil(this.destroy$),
             )
             .subscribe({
-                next: ([, data]: [number, FetchedCards]) => {
+                next: ([
+                    ,
+                    data,
+                ]: [
+                    number,
+                    FetchedCards,
+                ]) => {
                     this.cards = data.cards;
 
                     if (data.primary) {

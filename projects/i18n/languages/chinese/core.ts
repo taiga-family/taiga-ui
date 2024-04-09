@@ -21,6 +21,14 @@ export const TUI_CHINESE_LANGUAGE_CORE: TuiLanguageCore = {
     nothingFoundMessage: '什么都没找到',
     defaultErrorMessage: '无效值',
     spinTexts: ['前', '后'],
-    shortWeekDays: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+    shortWeekDays: [
+        '周一',
+        '周二',
+        '周三',
+        '周四',
+        '周五',
+        '周六',
+        '周日',
+    ],
     countries: TUI_CHINESE_LANGUAGE_COUNTRIES,
 };

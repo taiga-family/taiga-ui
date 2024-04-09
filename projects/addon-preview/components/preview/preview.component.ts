@@ -199,7 +199,13 @@ export class TuiPreviewComponent {
 
     private getScaleCenter(
         {clientX, clientY}: {clientX: number; clientY: number},
-        [x, y]: readonly [number, number],
+        [
+            x,
+            y,
+        ]: readonly [
+            number,
+            number,
+        ],
         scale: number,
     ): [number, number] {
         return [

@@ -15,9 +15,22 @@ export class TuiLegendItemExample2 {
     private readonly alerts = inject(TuiAlertService);
     private enabled = new Array(5).fill(true);
 
-    protected readonly data = [13769, 12367, 10172, 3018, 2592];
+    protected readonly data = [
+        13769,
+        12367,
+        10172,
+        3018,
+        2592,
+    ];
+
     protected readonly sum = tuiSum(...this.data);
-    protected readonly labels = ['Axes', 'Faxes', 'Taxes', 'Saxes', 'Other'];
+    protected readonly labels = [
+        'Axes',
+        'Faxes',
+        'Taxes',
+        'Saxes',
+        'Other',
+    ];
 
     protected get value(): readonly number[] {
         return this.getValue(this.data, this.enabled);

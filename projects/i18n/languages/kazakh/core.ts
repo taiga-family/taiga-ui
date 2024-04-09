@@ -21,6 +21,14 @@ export const TUI_KAZAKH_LANGUAGE_CORE: TuiLanguageCore = {
     nothingFoundMessage: 'Ештеңе табылмады',
     defaultErrorMessage: 'Мән жарамсыз',
     spinTexts: ['Алдыңғы', 'Келесі'],
-    shortWeekDays: ['Дүй', 'Ссе', 'Сәр', 'Бсе', 'Жұм', 'Сб', 'Жек'],
+    shortWeekDays: [
+        'Дүй',
+        'Ссе',
+        'Сәр',
+        'Бсе',
+        'Жұм',
+        'Сб',
+        'Жек',
+    ],
     countries: TUI_KAZAKH_LANGUAGE_COUNTRIES,
 };

@@ -179,7 +179,13 @@ export class TuiInputRangeComponent
 
     protected changeByStep(
         event: Event | KeyboardEvent,
-        [leftCoefficient, rightCoefficient]: [number, number],
+        [
+            leftCoefficient,
+            rightCoefficient,
+        ]: [
+            number,
+            number,
+        ],
     ): void {
         if (this.readOnly) {
             return;
@@ -233,7 +239,13 @@ export class TuiInputRangeComponent
         this.value = this.valueGuard(value);
     }
 
-    private valueGuard([leftValue, rightValue]: [number, number]): [number, number] {
+    private valueGuard([
+        leftValue,
+        rightValue,
+    ]: [
+        number,
+        number,
+    ]): [number, number] {
         const leftCalibratedValue = this.calibrate(leftValue);
         const rightCalibratedValue = this.calibrate(rightValue);
 
@@ -252,7 +264,13 @@ export class TuiInputRangeComponent
         return tuiClamp(roundedValue, this.min, this.max);
     }
 
-    private updateTextfieldValues([leftValue, rightValue]: [number, number]): void {
+    private updateTextfieldValues([
+        leftValue,
+        rightValue,
+    ]: [
+        number,
+        number,
+    ]): void {
         this.leftTextfieldValue = leftValue;
         this.rightTextfieldValue = rightValue;
     }

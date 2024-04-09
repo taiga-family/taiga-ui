@@ -151,7 +151,13 @@ export default class ExampleTuiAlertComponent {
 
     protected content = this.contentVariants[0];
 
-    protected readonly autoCloseVariants = [0, 3000, 5000, 1000, 500];
+    protected readonly autoCloseVariants = [
+        0,
+        3000,
+        5000,
+        1000,
+        500,
+    ];
 
     protected autoClose = this.autoCloseVariants[1];
 

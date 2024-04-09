@@ -7,7 +7,12 @@ import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import {TuiNotificationComponent} from './notification.component';
 
 @NgModule({
-    imports: [CommonModule, TuiSvgModule, TuiButtonDirective, PolymorpheusModule],
+    imports: [
+        CommonModule,
+        TuiSvgModule,
+        TuiButtonDirective,
+        PolymorpheusModule,
+    ],
     declarations: [TuiNotificationComponent],
     exports: [TuiNotificationComponent],
 })

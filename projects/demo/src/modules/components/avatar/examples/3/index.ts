@@ -13,6 +13,14 @@ import {TuiAvatarComponent} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class ExampleComponent {
-    protected readonly sizes = ['xxl', 'xl', 'l', 'm', 's', 'xs'] as const;
+    protected readonly sizes = [
+        'xxl',
+        'xl',
+        'l',
+        'm',
+        's',
+        'xs',
+    ] as const;
+
     protected readonly names = ['Jason Statham', 'Silvester Stallone', 'Jackie Chan'];
 }

@@ -10,7 +10,14 @@ import type {TuiDocExample} from '@taiga-ui/addon-doc';
 })
 export class ExampleAnimationsComponent {
     protected speed = 1000;
-    protected readonly speedTicksLabels: number[] = [0, 600, 1200, 1800, 2400, 3000];
+    protected readonly speedTicksLabels: number[] = [
+        0,
+        600,
+        1200,
+        1800,
+        2400,
+        3000,
+    ];
 
     protected readonly heightCollapseExample: TuiDocExample = {
         HTML: import('./examples/height-collapse/index.html?raw'),

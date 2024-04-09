@@ -21,6 +21,14 @@ export const TUI_BELARUSIAN_LANGUAGE_CORE: TuiLanguageCore = {
     nothingFoundMessage: 'Нічога не знойдзена',
     defaultErrorMessage: 'Недапушчальнае значэнне',
     spinTexts: ['Папярэдні', 'Наступны'],
-    shortWeekDays: ['Пн', 'Аў', 'Ср', 'Чц', 'Пт', 'Сб', 'Нд'],
+    shortWeekDays: [
+        'Пн',
+        'Аў',
+        'Ср',
+        'Чц',
+        'Пт',
+        'Сб',
+        'Нд',
+    ],
     countries: TUI_BELARUSIAN_LANGUAGE_COUNTRIES,
 };

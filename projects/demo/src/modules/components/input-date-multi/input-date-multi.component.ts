@@ -52,7 +52,12 @@ export class ExampleTuiInputDateMultiComponent extends AbstractExampleTuiControl
 
     protected max = this.maxVariants[0];
 
-    protected rowsVariants = [Infinity, 10, 3, 2];
+    protected rowsVariants = [
+        Infinity,
+        10,
+        3,
+        2,
+    ];
 
     protected rows = this.rowsVariants[0];
 

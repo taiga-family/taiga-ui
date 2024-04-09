@@ -31,7 +31,12 @@ export const TUI_SHEET_PROVIDERS: Provider[] = [
     },
     {
         provide: TUI_SHEET_SCROLL,
-        deps: [ElementRef, NgZone, DOCUMENT, TUI_IS_IOS],
+        deps: [
+            ElementRef,
+            NgZone,
+            DOCUMENT,
+            TUI_IS_IOS,
+        ],
         useFactory: (
             {nativeElement}: ElementRef<HTMLElement>,
             zone: NgZone,

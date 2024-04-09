@@ -56,8 +56,20 @@ describe('TuiZoom', () => {
 
     function touch(
         eventType: 'touchend' | 'touchmove' | 'touchstart',
-        [x, y]: [number, number],
-        [x2, y2]: [number, number],
+        [
+            x,
+            y,
+        ]: [
+            number,
+            number,
+        ],
+        [
+            x2,
+            y2,
+        ]: [
+            number,
+            number,
+        ],
         element: HTMLElement,
     ): ['touchend' | 'touchmove' | 'touchstart', TouchEvent] {
         const touchObj1 = new Touch({

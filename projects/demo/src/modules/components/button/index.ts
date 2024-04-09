@@ -20,7 +20,12 @@ export default class PageComponent {
         'Options with DI',
     ];
 
-    protected readonly sizes: ReadonlyArray<TuiSizeL | TuiSizeXS> = ['xs', 's', 'm', 'l'];
+    protected readonly sizes: ReadonlyArray<TuiSizeL | TuiSizeXS> = [
+        'xs',
+        's',
+        'm',
+        'l',
+    ];
 
     protected size = this.sizes[3];
 

@@ -140,7 +140,12 @@ export class TuiStackblitzService implements TuiCodeEditor {
         return {
             template: 'angular-cli',
             dependencies: await this.deps.get(),
-            tags: ['Angular', 'Taiga UI', 'Angular components', 'UI Kit'],
+            tags: [
+                'Angular',
+                'Taiga UI',
+                'Angular components',
+                'UI Kit',
+            ],
         };
     }
 }

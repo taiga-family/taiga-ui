@@ -28,8 +28,18 @@ export class ExampleTuiArcChartComponent {
 
     protected readonly valueVariants = [
         [42],
-        [40, 30, 20, 10],
-        [13769, 10172, 3018, 2592],
+        [
+            40,
+            30,
+            20,
+            10,
+        ],
+        [
+            13769,
+            10172,
+            3018,
+            2592,
+        ],
     ];
 
     protected value = this.valueVariants[0];

@@ -4,7 +4,13 @@ import type {TuiKeySteps} from '@taiga-ui/kit/types';
 
 function tuiFindKeyStepsBoundariesByFn(
     keySteps: TuiKeySteps,
-    fn: ([keyStepPercent, keyStepValue]: [number, number]) => boolean,
+    fn: ([
+        keyStepPercent,
+        keyStepValue,
+    ]: [
+        number,
+        number,
+    ]) => boolean,
 ): [[number, number], [number, number]] {
     const keyStepUpperIndex = keySteps.findIndex((keyStep, i) => i && fn(keyStep));
 

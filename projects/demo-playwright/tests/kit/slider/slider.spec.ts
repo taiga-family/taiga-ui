@@ -6,7 +6,14 @@ test.describe('Slider', () => {
     test.use({viewport: {width: 500, height: 500}});
 
     test.describe('correctly displays values with float percentage progress', () => {
-        [4, 7, 13, 24, 39, 78].forEach(value => {
+        [
+            4,
+            7,
+            13,
+            24,
+            39,
+            78,
+        ].forEach(value => {
             test(`value = ${value}`, async ({page}) => {
                 await tuiGoto(page, 'components/slider/API?max=89&min=0&step=1');
 

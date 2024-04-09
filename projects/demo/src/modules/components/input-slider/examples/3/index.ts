@@ -16,7 +16,13 @@ export class TuiInputSliderExample3 {
     protected readonly max = 1_000_000;
     protected readonly min = 0;
     protected readonly totalSteps = 100;
-    protected readonly ticksLabels = ['0', '10K', '100K', '500k', '1000K'];
+    protected readonly ticksLabels = [
+        '0',
+        '10K',
+        '100K',
+        '500k',
+        '1000K',
+    ];
 
     protected readonly keySteps: TuiKeySteps = [
         // [percent, value]

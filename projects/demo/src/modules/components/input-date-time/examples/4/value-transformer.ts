@@ -16,7 +16,13 @@ export class ExampleDateTimeTransformer extends AbstractTuiValueTransformer<
             : [null, null];
     }
 
-    public toControlValue([day, time]: [TuiDay | null, TuiTime | null]): string {
+    public toControlValue([
+        day,
+        time,
+    ]: [
+        TuiDay | null,
+        TuiTime | null,
+    ]): string {
         return day
             ? day.toString() + (time ? `${this.separator}${time.toString()}` : '')
             : '';
