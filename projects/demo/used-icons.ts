@@ -126,7 +126,6 @@ export const TUI_USED_ICONS = [
     'tuiIconGrid',
     'tuiIconHome',
     'tuiIconGitlab',
-    'tuiIconThumbsDown',
     'tuiIconBellLarge',
     'tuiIconInfo',
     'tuiIconDeleteLarge',
