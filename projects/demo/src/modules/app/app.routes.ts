@@ -270,15 +270,11 @@ export const ROUTES: Routes = [
             title: 'Navigation',
         },
     },
-    {
+    route({
         path: DemoRoute.Breadcrumbs,
-        loadChildren: async () =>
-            (await import('../components/breadcrumbs/breadcrumbs.module'))
-                .ExampleTuiBreadcrumbsModule,
-        data: {
-            title: 'Breadcrumbs',
-        },
-    },
+        title: 'Breadcrumbs',
+        loadComponent: async () => import('../components/breadcrumbs'),
+    }),
     route({
         path: DemoRoute.Button,
         title: 'Button',

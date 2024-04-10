@@ -1,10 +1,32 @@
 import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {tuiBreadcrumbsOptionsProvider} from '@taiga-ui/kit';
+import {TuiRepeatTimesModule} from '@taiga-ui/cdk';
+import {
+    TuiButtonDirective,
+    TuiDataListModule,
+    TuiDropdownModule,
+    TuiLinkDirective,
+} from '@taiga-ui/core';
+import {
+    TuiBreadcrumbsModule,
+    tuiBreadcrumbsOptionsProvider,
+    TuiInputNumberModule,
+} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-breadcrumbs-example-2',
+    standalone: true,
+    imports: [
+        FormsModule,
+        TuiBreadcrumbsModule,
+        TuiDropdownModule,
+        TuiDataListModule,
+        TuiInputNumberModule,
+        TuiRepeatTimesModule,
+        TuiLinkDirective,
+        TuiButtonDirective,
+    ],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
@@ -15,7 +37,7 @@ import {tuiBreadcrumbsOptionsProvider} from '@taiga-ui/kit';
         }),
     ],
 })
-export class TuiBreadcrumbsExample2 {
+export default class ExampleComponent {
     protected readonly items = [
         {
             caption: 'Open Source',
