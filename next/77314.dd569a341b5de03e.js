@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[77314],{77314:n=>{n.exports="```ts\n@Component({\n  // ...\n})\nexport class AppComponent {\n  readonly night = inject(TuiThemeNightService);\n\n  get mode(): TuiBrightness | null {\n    return this.night.value ? 'onDark' : null;\n  }\n}\n```\n"}}]);
