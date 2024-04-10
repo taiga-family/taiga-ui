@@ -1,5 +1,4 @@
-<tui-theme-night *ngIf="theme.isDefaultTheme && night.useDefaultNightTheme && (night$ | async)" />
-<tui-root [attr.tuiTheme]="theme.isDefaultTheme && night.useDefaultNightTheme && (night$ | async) ? 'night' : null">
+<tui-root [attr.tuiTheme]="(dark$ | async) ? 'dark' : null">
     <div class="tui-doc-page">
         <tui-doc-navigation class="tui-doc-navigation">
             <ng-content select="tuiDocNavigation" />
@@ -15,10 +14,10 @@
             size="s"
             tuiIconButton
             type="button"
-            class="tui-doc-night-mode-switch"
+            class="tui-doc-dark-mode-switch"
             [iconLeft]="icon"
             [style.border-radius.%]="100"
-            (click)="night.toggle()"
+            (click)="dark$.toggle()"
         ></button>
     </header>
     <ng-container ngProjectAs="tuiOverContent">

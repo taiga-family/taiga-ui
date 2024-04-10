@@ -21,5 +21,4 @@ export * from '@taiga-ui/core/components/root';
 export * from '@taiga-ui/core/components/scroll-controls';
 export * from '@taiga-ui/core/components/scrollbar';
 export * from '@taiga-ui/core/components/svg';
-export * from '@taiga-ui/core/components/theme-night';
 export * from '@taiga-ui/core/components/tooltip';

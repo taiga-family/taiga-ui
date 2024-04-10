@@ -4,7 +4,6 @@
     class="t-message-text"
     [@tuiFadeIn]="options"
     [@tuiHeightCollapse]="options"
-    [class.t-message-text_light]="(mode$ | async) === 'onDark'"
 >
     <ng-container
         *polymorpheusOutlet="error.message || (defaultErrorMessage$ | async) as text; context: error.context || {}"

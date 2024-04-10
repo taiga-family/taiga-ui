@@ -1,17 +1,12 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    forwardRef,
-    HostBinding,
     inject,
     ViewEncapsulation,
 } from '@angular/core';
-import {TuiThemeNightService, TuiThemeService} from '@taiga-ui/addon-doc/services';
+import {TuiThemeDarkService} from '@taiga-ui/addon-doc/services';
 import {TUI_DOC_ICONS} from '@taiga-ui/addon-doc/tokens';
 import {TuiSwipeService} from '@taiga-ui/cdk';
-import type {TuiBrightness} from '@taiga-ui/core';
-import {TuiModeDirective} from '@taiga-ui/core';
-import {distinctUntilChanged, map, shareReplay, startWith} from 'rxjs';
 
 @Component({
     selector: 'tui-doc-main',
@@ -21,34 +16,14 @@ import {distinctUntilChanged, map, shareReplay, startWith} from 'rxjs';
     // @note: This one was default on purpose so we can test demo in default mode.
     // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
     changeDetection: ChangeDetectionStrategy.Default,
-    providers: [
-        {
-            provide: TuiModeDirective,
-            useExisting: forwardRef(() => TuiDocMainComponent),
-        },
-        TuiSwipeService,
-    ],
+    providers: [TuiSwipeService],
 })
 export class TuiDocMainComponent {
     private readonly icons = inject(TUI_DOC_ICONS);
 
-    public readonly night = inject(TuiThemeNightService);
-    public readonly change$ = this.night;
-    public readonly night$ = this.change$.pipe(
-        startWith(null),
-        map(() => this.night.value),
-        distinctUntilChanged(),
-        shareReplay({bufferSize: 1, refCount: true}),
-    );
-
-    protected readonly theme = inject(TuiThemeService);
-
-    @HostBinding('attr.data-mode')
-    protected get mode(): TuiBrightness | null {
-        return this.night.value ? 'onDark' : null;
-    }
+    protected readonly dark$ = inject(TuiThemeDarkService);
 
     protected get icon(): string {
-        return this.night.value ? this.icons.day : this.icons.night;
+        return this.dark$.value ? this.icons.light : this.icons.dark;
     }
 }

@@ -14,7 +14,8 @@ tui-wrapper[data-appearance='mono'],
         color: var(--tui-text-02);
     });
 
-    &[data-mode='onDark'] {
+    [tuiTheme='dark'] &,
+    &[tuiTheme='dark'] {
         .wrapper-focus({
             --tui-focus: var(--tui-text-01-night);
         });

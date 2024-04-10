@@ -11,7 +11,7 @@
     >
         <div
             class="t-container"
-            [attr.tuiTheme]="getMode(item.mode) === 'onDark' ? 'night' : null"
+            [attr.tuiTheme]="getMode(item.mode) === 'onDark' ? 'dark' : null"
             [class.t-container_adaptive]="item.adaptive"
         >
             <div class="t-inner">
@@ -31,7 +31,6 @@
                     type="button"
                     class="t-close-button"
                     [iconLeft]="icons.close"
-                    [tuiMode]="getMode(item.mode)"
                     (click)="onCloseClick(item)"
                 >
                     {{ closeWord$ | async }}

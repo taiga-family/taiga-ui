@@ -2,6 +2,6 @@ export interface TuiDemoParams {
     sandboxExpanded?: boolean;
     sandboxOpaque?: boolean;
     sandboxWidth?: number;
-    tuiMode?: 'onDark' | 'onLight' | null;
+    darkMode?: boolean;
     updateOn?: 'blur' | 'change' | 'submit';
 }

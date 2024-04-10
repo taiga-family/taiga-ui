@@ -7,7 +7,6 @@ import {
     TuiButtonDirective,
     TuiHintModule,
     TuiLinkDirective,
-    TuiModeModule,
     TuiNotificationModule,
     TuiSvgModule,
 } from '@taiga-ui/core';
@@ -22,7 +21,6 @@ import {ExampleTuiNotificationComponent} from './notification.component';
         TuiNotificationModule,
         TuiButtonDirective,
         TuiLinkDirective,
-        TuiModeModule,
         CommonModule,
         FormsModule,
         ReactiveFormsModule,

@@ -1,10 +1,6 @@
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {assets} from '@demo/utils';
-import type {TuiBrightness} from '@taiga-ui/core';
-import {TuiModeDirective} from '@taiga-ui/core';
-import type {Observable} from 'rxjs';
-import {map, startWith} from 'rxjs';
 
 import {TUI_DEMO_ICONS} from './icons.tokens';
 
@@ -15,7 +11,6 @@ import {TUI_DEMO_ICONS} from './icons.tokens';
     changeDetection,
 })
 export class IconsComponent {
-    private readonly mode = inject(TuiModeDirective);
     protected readonly icons = inject(TUI_DEMO_ICONS);
     protected readonly keys = Object.keys(this.icons);
     protected readonly exampleModule = import('./import/import-module.md?raw');
@@ -37,11 +32,6 @@ export class IconsComponent {
     ];
 
     protected icon = this.iconVariants[0];
-
-    protected readonly mode$: Observable<TuiBrightness> = this.mode.change$.pipe(
-        startWith(null),
-        map(() => this.mode.mode || 'onLight'),
-    );
 
     protected onIntersection(entries: IntersectionObserverEntry[]): boolean {
         return entries[entries.length - 1]?.isIntersecting ?? false;

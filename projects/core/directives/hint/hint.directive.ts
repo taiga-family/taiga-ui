@@ -26,7 +26,6 @@ import {TUI_HINT_OPTIONS} from './hint-options.directive';
 export class TuiHintDirective<C>
     implements OnDestroy, OnChanges, TuiPortalItem<C>, TuiRectAccessor, TuiVehicle
 {
-    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
     private readonly hintService = inject(TuiHintService);
     private readonly options = inject(TUI_HINT_OPTIONS);
 
@@ -40,6 +39,7 @@ export class TuiHintDirective<C>
     public tuiHintAppearance: string | null = null;
 
     public component = inject(PolymorpheusComponent<unknown>);
+    public readonly el: HTMLElement = inject(ElementRef).nativeElement;
     public readonly activeZone? = inject(TuiActiveZoneDirective, {optional: true});
     public readonly type = 'hint';
 

@@ -21,7 +21,6 @@ import {
     tuiRectAccessorFor,
 } from '@taiga-ui/core/abstract';
 import {tuiFadeIn} from '@taiga-ui/core/animations';
-import {TuiModeDirective} from '@taiga-ui/core/directives/mode';
 import type {TuiPortalItem} from '@taiga-ui/core/interfaces';
 import {TuiPositionService, TuiVisualViewportService} from '@taiga-ui/core/services';
 import {TUI_ANIMATIONS_SPEED, TUI_VIEWPORT} from '@taiga-ui/core/tokens';
@@ -69,13 +68,14 @@ export class TuiHintComponent<C = any> {
 
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
     private readonly hover = inject(TuiHintHoverDirective);
-    private readonly mode = inject(TuiModeDirective, {optional: true});
     private readonly visualViewportService = inject(TuiVisualViewportService);
     private readonly viewport = inject(TUI_VIEWPORT);
 
     @HostBinding('attr.data-appearance')
+    @HostBinding('attr.tuiTheme')
     protected readonly appearance =
-        this.polymorpheus.$implicit.appearance || this.mode?.mode;
+        this.polymorpheus.$implicit.appearance ||
+        inject(TuiHintDirective).el.closest('[tuiTheme]')?.getAttribute('tuiTheme');
 
     protected readonly options = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
     protected readonly pointer = inject(TuiHintPointerDirective, {optional: true});

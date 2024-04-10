@@ -6,7 +6,6 @@ import {
 } from '@ng-web-apis/intersection-observer';
 import {tuiProvide} from '@taiga-ui/cdk';
 import {
-    MODE_PROVIDER,
     TUI_TEXTFIELD_APPEARANCE_DIRECTIVE,
     TUI_TEXTFIELD_LABEL_OUTSIDE,
     TUI_TEXTFIELD_SIZE,
@@ -47,6 +46,5 @@ export const TUI_TABLE_PROVIDERS = [
         forwardRef(() => TuiTableDirective),
     ),
     IntersectionObserverService,
-    MODE_PROVIDER,
     TUI_STUCK_PROVIDER,
 ];

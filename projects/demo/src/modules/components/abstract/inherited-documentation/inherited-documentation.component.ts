@@ -28,7 +28,7 @@ export class InheritedDocumentationComponent {
 
     protected readonly directionVariants = TUI_HINT_DIRECTIONS;
 
-    protected readonly appearanceVariants = ['', 'error', 'onDark'];
+    protected readonly appearanceVariants = ['', 'error', 'dark'];
 
     protected readonly documentedComponent = inject(ABSTRACT_PROPS_ACCESSOR);
 

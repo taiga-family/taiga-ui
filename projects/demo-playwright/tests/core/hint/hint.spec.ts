@@ -47,12 +47,12 @@ test.describe('TuiHint', () => {
         });
     });
 
-    ['onDark', 'onLight'].forEach(mode => {
+    ['true', 'false'].forEach(mode => {
         test(`${mode} mode hint without delay`, async ({page}) => {
             await page.setViewportSize({width: 750, height: 200});
             await tuiGoto(
                 page,
-                `/directives/hint/API?tuiHintShowDelay=0&tuiMode=${mode}`,
+                `/directives/hint/API?tuiHintShowDelay=0&darkMode=${mode}`,
             );
             const example = new TuiDocumentationPagePO(page);
 
@@ -68,7 +68,7 @@ test.describe('TuiHint', () => {
             await page.setViewportSize({width: 750, height: 200});
             await tuiGoto(
                 page,
-                `/directives/hint/API?tuiHintShowDelay=1000&tuiMode=${mode}`,
+                `/directives/hint/API?tuiHintShowDelay=1000&darkMode=${mode}`,
             );
             const example = new TuiDocumentationPagePO(page);
 

@@ -18,18 +18,24 @@ html[data-tui-theme],
     .scrollbar-hidden();
 }
 
-html[data-tui-theme] body {
-    .text-basic();
-
-    background: var(--tui-base-01);
+body {
     margin: 0;
 }
 
 tui-root {
+    .text-basic();
+
     position: relative;
     display: block;
     flex: 1;
     -webkit-tap-highlight-color: transparent;
+
+    &:before {
+        .fullsize(fixed);
+
+        content: '';
+        background: var(--tui-base-01);
+    }
 }
 
 tui-root > .t-root-scrollbar {

@@ -35,7 +35,7 @@
     class="restaurant"
 >
     <header
-        tuiMode="onDark"
+        tuiTheme="dark"
         class="header"
     >
         <label tuiLabel="RESTAURANT">Eat all you can</label>
@@ -70,8 +70,8 @@
 </div>
 
 <div
-    tuiMode="onDark"
     tuiSurface
+    tuiTheme="dark"
     class="blur"
 >
     <tui-avatar src="/assets/images/avatar.jpg" />
@@ -136,8 +136,8 @@
 </div>
 
 <div
-    tuiMode="onDark"
     tuiSurface
+    tuiTheme="dark"
     class="mask"
 >
     <h3 class="heading">
@@ -155,15 +155,17 @@
     <span class="sum">{{ 23742 | tuiAmount: 'USD' : 'left' | async }}</span>
     <footer class="footer">
         <tui-thumbnail-card
-            cardNumber="1234"
             paymentSystem="mastercard"
             [style.background]="'#337'"
-        />
+        >
+            1234
+        </tui-thumbnail-card>
         <tui-thumbnail-card
-            cardNumber="5678"
             paymentSystem="visa"
             [style.background]="'#e33'"
-        />
+        >
+            5678
+        </tui-thumbnail-card>
         <button
             appearance="secondary"
             iconLeft="tuiIconPlus"

@@ -9,7 +9,6 @@ import {
     TuiHintModule,
     TuiLinkDirective,
     TuiLoaderModule,
-    TuiModeModule,
     TuiTextfieldControllerModule,
     TuiTooltipModule,
 } from '@taiga-ui/core';
@@ -31,7 +30,6 @@ import {ExampleTuiTooltipComponent} from './tooltip.component';
         TuiLoaderModule,
         TuiInputModule,
         PolymorpheusModule,
-        TuiModeModule,
         TuiAddonDocModule,
         CommonModule,
         FormsModule,

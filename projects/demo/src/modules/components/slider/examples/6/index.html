@@ -4,7 +4,7 @@
         iconLeft="tuiIconMinus"
         size="xs"
         tuiIconButton
-        tuiTheme="night"
+        tuiTheme="dark"
         type="button"
         class="minus"
         (click)="change(-0.25)"
@@ -14,7 +14,7 @@
         class="slider-wrapper"
     >
         <div
-            tuiHintAppearance="onDark"
+            tuiHintAppearance="dark"
             tuiHintDirection="top"
             [tuiHint]="hint"
             [tuiHintManual]="!!(showHint$ | async)"
@@ -38,7 +38,7 @@
         iconLeft="tuiIconPlus"
         size="xs"
         tuiIconButton
-        tuiTheme="night"
+        tuiTheme="dark"
         type="button"
         class="plus"
         (click)="change(+0.25)"

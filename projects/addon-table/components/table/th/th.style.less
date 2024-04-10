@@ -78,15 +78,15 @@
     box-shadow: 0 0.3125rem rgba(237, 237, 237, 0.7);
 }
 
-:host-context(table[data-mode='onDark']):after {
+:host-context([tuiTheme='dark'])._sticky:after {
     background: rgba(60, 60, 60, 0.9);
 }
 
-:host-context(table[data-mode='onDark'] thead[tuiThead]._stuck) {
+:host-context([tuiTheme='dark'] thead[tuiThead]._stuck) {
     box-shadow: 0 0.3125rem rgba(60, 60, 60, 0.9);
 }
 
-:host-context(table[data-mode='onDark'] thead[tuiThead]._stuck):first-child {
+:host-context([tuiTheme='dark'] thead[tuiThead]._stuck):first-child {
     box-shadow: 0.0625rem 0.3125rem rgba(60, 60, 60, 0.9);
 }
 

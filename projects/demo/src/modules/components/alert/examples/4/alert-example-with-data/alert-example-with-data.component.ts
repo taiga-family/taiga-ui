@@ -3,24 +3,13 @@ import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import type {TuiPopover} from '@taiga-ui/cdk';
-import {
-    type TuiAlertOptions,
-    TuiButtonDirective,
-    TuiLinkDirective,
-    TuiModeModule,
-} from '@taiga-ui/core';
+import {type TuiAlertOptions, TuiButtonDirective, TuiLinkDirective} from '@taiga-ui/core';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 
 @Component({
     standalone: true,
     selector: 'tui-notifications-service-example-with-data',
-    imports: [
-        AsyncPipe,
-        TuiModeModule,
-        TuiButtonDirective,
-        TuiLinkDirective,
-        TuiAmountPipe,
-    ],
+    imports: [AsyncPipe, TuiButtonDirective, TuiLinkDirective, TuiAmountPipe],
     templateUrl: './alert-example-with-data.template.html',
     styleUrls: ['./alert-example-with-data.style.less'],
     changeDetection,

@@ -56,6 +56,7 @@
     border-inline-start-width: var(--border-start, 0);
     border-inline-end-width: var(--border-end, 0);
     text-indent: var(--text-indent);
+    color: var(--tui-text-01);
     text-align: inherit;
     box-sizing: border-box;
     white-space: nowrap;
@@ -92,15 +93,6 @@
     :host-context(tui-textarea._focused:not(._readonly)) &::placeholder,
     :host-context(tui-text-area._focused:not(._readonly)) &::placeholder {
         opacity: 1;
-    }
-
-    [tuiWrapper][data-mode='onDark'] &,
-    :host-context([tuiWrapper][data-mode='onDark']) {
-        .autofill(dark);
-
-        &::placeholder {
-            color: var(--tui-text-03-night);
-        }
     }
 
     :host[data-size='s'] &,
@@ -208,11 +200,6 @@
         :host._invalid:not(._focused):hover & {
             color: var(--tui-error-fill);
         }
-
-        :host._invalid:not(._focused) [tuiWrapper][data-mode='onDark'] &,
-        :host._invalid:not(._focused):hover [tuiWrapper][data-mode='onDark'] & {
-            color: var(--tui-error-fill-night);
-        }
     }
 
     :host._focused &,
@@ -233,22 +220,6 @@
     :host[data-size='m']._focused:not(._label-outside) &,
     :host[data-size='l']._focused:not(._label-outside) & {
         color: var(--tui-text-01);
-    }
-
-    // textfield-light
-    [tuiWrapper][data-mode='onDark'] & {
-        color: var(--tui-text-02-night);
-    }
-
-    :host[data-size='m']._focused:not(._label-outside) [tuiWrapper][data-mode='onDark'] &,
-    :host[data-size='l']._focused:not(._label-outside) [tuiWrapper][data-mode='onDark'] & {
-        color: var(--tui-text-01-night);
-    }
-
-    :host._focused [tuiWrapper][data-mode='onDark'] &,
-    :host[data-size='m']._focused._label-outside [tuiWrapper][data-mode='onDark'] &,
-    :host[data-size='l']._focused._label-outside [tuiWrapper][data-mode='onDark'] & {
-        color: var(--tui-text-02-night);
     }
 }
 

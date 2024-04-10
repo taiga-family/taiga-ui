@@ -5,7 +5,6 @@ import {
     Component,
     ContentChild,
     ElementRef,
-    forwardRef,
     HostBinding,
     HostListener,
     inject,
@@ -18,21 +17,17 @@ import {FormGroup} from '@angular/forms';
 import type {Params, UrlTree} from '@angular/router';
 import {UrlSerializer} from '@angular/router';
 import type {TuiDemoParams} from '@taiga-ui/addon-doc/interfaces';
+import {TuiThemeDarkService} from '@taiga-ui/addon-doc/services';
 import {TUI_DOC_DEMO_TEXTS, TUI_DOC_URL_STATE_HANDLER} from '@taiga-ui/addon-doc/tokens';
 import {tuiCoerceValueIsTrue} from '@taiga-ui/addon-doc/utils';
 import {
-    TUI_IS_MOBILE,
     tuiClamp,
     tuiCleanObject,
-    TuiDestroyService,
     tuiPure,
     tuiPx,
     TuiResizeableDirective,
     tuiToInteger,
 } from '@taiga-ui/cdk';
-import type {TuiBrightness} from '@taiga-ui/core';
-import {TuiModeDirective} from '@taiga-ui/core';
-import {Subject} from 'rxjs';
 
 const MIN_WIDTH = 160;
 
@@ -41,13 +36,6 @@ const MIN_WIDTH = 160;
     templateUrl: './demo.template.html',
     styleUrls: ['./demo.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        TuiDestroyService,
-        {
-            provide: TuiModeDirective,
-            useExisting: forwardRef(() => TuiDocDemoComponent),
-        },
-    ],
 })
 export class TuiDocDemoComponent implements OnInit {
     @ViewChild(TuiResizeableDirective, {static: true})
@@ -71,11 +59,12 @@ export class TuiDocDemoComponent implements OnInit {
     @HostBinding('class._sticky')
     public sticky = true;
 
-    public mode: TuiBrightness | null = this.params.tuiMode || null;
-    public readonly change$ = new Subject<void>();
-
     @ContentChild(TemplateRef)
     protected readonly template: TemplateRef<Record<string, unknown>> | null = null;
+
+    protected dark = tuiCoerceValueIsTrue(
+        this.params.darkMode ?? inject(TuiThemeDarkService).value,
+    );
 
     protected testForm?: FormGroup;
 
@@ -87,8 +76,6 @@ export class TuiDocDemoComponent implements OnInit {
     protected opaque = tuiCoerceValueIsTrue(this.params.sandboxOpaque ?? true);
     protected expanded = tuiCoerceValueIsTrue(this.params.sandboxExpanded ?? false);
     protected sandboxWidth = tuiToInteger(this.params.sandboxWidth);
-    protected readonly items: readonly TuiBrightness[] = ['onLight', 'onDark'];
-    protected readonly isMobile = inject(TUI_IS_MOBILE);
     protected readonly texts = inject(TUI_DOC_DEMO_TEXTS);
 
     public ngOnInit(): void {
@@ -107,10 +94,9 @@ export class TuiDocDemoComponent implements OnInit {
         this.updateUrl({sandboxWidth: this.sandboxWidth});
     }
 
-    protected onModeChange(mode: TuiBrightness | null): void {
-        this.mode = mode;
-        this.updateUrl({sandboxWidth: this.sandboxWidth});
-        this.change$.next();
+    protected onModeChange(dark: boolean): void {
+        this.dark = dark;
+        this.updateUrl({sandboxWidth: this.sandboxWidth, darkMode: this.dark});
     }
 
     protected toggleDetails(): void {
@@ -161,11 +147,10 @@ export class TuiDocDemoComponent implements OnInit {
         const {queryParams} = tree;
 
         delete queryParams.sandboxWidth;
-        delete queryParams.tuiMode;
 
         tree.queryParams = {
             ...queryParams,
-            ...tuiCleanObject({tuiMode: this.mode, ...params}),
+            ...tuiCleanObject({...params}),
         };
 
         this.locationRef.go(this.urlStateHandler(tree));

@@ -1,13 +1,13 @@
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiPopover} from '@taiga-ui/cdk';
-import {type TuiAlertOptions, TuiButtonDirective, TuiModeModule} from '@taiga-ui/core';
+import {type TuiAlertOptions, TuiButtonDirective} from '@taiga-ui/core';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 
 @Component({
     standalone: true,
     selector: 'tui-notifications-service-example',
-    imports: [TuiButtonDirective, TuiModeModule],
+    imports: [TuiButtonDirective],
     templateUrl: './alert-example.template.html',
     changeDetection,
 })

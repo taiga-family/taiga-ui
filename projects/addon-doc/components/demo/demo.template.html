@@ -1,96 +1,18 @@
-<div
-    class="t-bg-toggle"
-    [tuiMode]="null"
->
-    <ng-template #tooltip>
-        {{ texts[0] }}
-        <!-- TODO: @taiga-ui/addon-doc should not include relative link of Taiga UI demo application -->
-        <a
-            routerLink="/directives/mode"
-            tuiLink
-            tuiMode="onDark"
-        >
-            <code>tuiMode</code>
-        </a>
-    </ng-template>
-    <ng-container *ngIf="isMobile; else desktop">
-        <tui-select
-            tuiTextfieldSize="s"
-            class="t-mode"
-            [ngModel]="mode"
-            [tuiHintContent]="tooltip"
-            [tuiTextfieldCleaner]="true"
-            (ngModelChange)="onModeChange($event)"
-        >
-            tuiMode
-            <tui-data-list-wrapper
-                *tuiDataList
-                [items]="items"
-            />
-        </tui-select>
-    </ng-container>
-    <ng-template #desktop>
-        tuiMode:
-        <tui-tooltip
-            describeId="form"
-            [content]="tooltip"
-        />
-        <div
-            tuiGroup
-            class="t-group"
-            [collapsed]="true"
-        >
-            <label
-                appearance=""
-                tuiBlock="s"
-                class="tui-group__auto-width-item"
-            >
-                null
-                <input
-                    tuiBlock
-                    type="radio"
-                    [ngModel]="mode"
-                    [value]="null"
-                    (ngModelChange)="onModeChange($event)"
-                />
-            </label>
-            <label
-                appearance=""
-                tuiBlock="s"
-                class="tui-group__auto-width-item"
-            >
-                onDark
-                <input
-                    tuiBlock
-                    type="radio"
-                    value="onDark"
-                    [ngModel]="mode"
-                    (ngModelChange)="onModeChange($event)"
-                />
-            </label>
-            <label
-                appearance=""
-                tuiBlock="s"
-                class="tui-group__auto-width-item"
-            >
-                onLight
-                <input
-                    tuiBlock
-                    type="radio"
-                    value="onLight"
-                    [ngModel]="mode"
-                    (ngModelChange)="onModeChange($event)"
-                />
-            </label>
-        </div>
-    </ng-template>
-    <label
-        class="t-checkbox"
-        [style.gap.rem]="0.5"
-    >
+<div class="t-settings">
+    <label class="t-label">
         <input
             size="s"
-            tuiCheckbox
+            tuiSwitch
+            type="checkbox"
+            [ngModel]="dark"
+            (ngModelChange)="onModeChange($event)"
+        />
+        {{ texts[0] }}
+    </label>
+    <label class="t-label">
+        <input
+            size="s"
+            tuiSwitch
             type="checkbox"
             [ngModel]="opaque"
             (ngModelChange)="changeOpaque($event)"
@@ -101,15 +23,13 @@
 <div
     tuiResizeable
     class="t-wrapper"
-    [class.t-wrapper_dark]="mode === 'onDark'"
-    [class.t-wrapper_gray]="mode === 'onLight'"
+    [attr.tuiTheme]="dark ? 'dark' : 'light'"
     [class.t-wrapper_transparent]="!opaque"
 >
     <div class="t-content">
         <div
             #content
             id="demo-content"
-            [attr.tuiTheme]="mode === 'onDark' ? 'night' : null"
         >
             <form
                 *ngIf="testForm"

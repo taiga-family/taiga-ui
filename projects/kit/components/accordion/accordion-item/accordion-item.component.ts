@@ -18,7 +18,6 @@ import {
     tuiIsNativeFocused,
 } from '@taiga-ui/cdk';
 import type {TuiSizeS} from '@taiga-ui/core';
-import {MODE_PROVIDER, TUI_MODE} from '@taiga-ui/core';
 import {TUI_ARROW_OPTIONS} from '@taiga-ui/kit/components/arrow';
 
 import {TuiAccordionItemContentDirective} from './accordion-item-content.directive';
@@ -29,10 +28,7 @@ import {TuiAccordionItemEagerContentDirective} from './accordion-item-eager-cont
     templateUrl: './accordion-item.template.html',
     styleUrls: ['./accordion-item.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [tuiAsFocusableItemAccessor(TuiAccordionItemComponent), MODE_PROVIDER],
-    host: {
-        '($.data-mode.attr)': 'mode$',
-    },
+    providers: [tuiAsFocusableItemAccessor(TuiAccordionItemComponent)],
 })
 export class TuiAccordionItemComponent
     extends AbstractTuiInteractive
@@ -82,7 +78,6 @@ export class TuiAccordionItemComponent
     protected readonly lazyContent?: TuiAccordionItemContentDirective;
 
     protected readonly options = inject(TUI_ARROW_OPTIONS);
-    protected readonly mode$ = inject(TUI_MODE);
 
     public get nativeFocusableElement(): TuiNativeFocusableElement | null {
         return this.disabled || !this.focusableElement

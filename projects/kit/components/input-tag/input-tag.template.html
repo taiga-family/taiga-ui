@@ -63,7 +63,7 @@
                                 [removable]="!readOnly && removable"
                                 [separator]="separator"
                                 [size]="controller.size"
-                                [status]="(status$ | async)!"
+                                [status]="status"
                                 [tuiFocusable]="false"
                                 [value]="item.toString()"
                                 (edited)="onTagEdited($event, index)"

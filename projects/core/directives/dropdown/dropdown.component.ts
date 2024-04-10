@@ -16,13 +16,10 @@ import {
 } from '@taiga-ui/core/abstract';
 import {tuiDropdownAnimation} from '@taiga-ui/core/animations';
 import {TuiScrollbarComponent} from '@taiga-ui/core/components/scrollbar';
-import {MODE_PROVIDER} from '@taiga-ui/core/providers';
 import {TuiPositionService, TuiVisualViewportService} from '@taiga-ui/core/services';
-import {TUI_ANIMATIONS_SPEED, TUI_MODE} from '@taiga-ui/core/tokens';
-import type {TuiBrightness} from '@taiga-ui/core/types';
+import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
 import {tuiToAnimationOptions} from '@taiga-ui/core/utils';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
-import type {Observable} from 'rxjs';
 import {map, takeUntil} from 'rxjs';
 
 import {TuiDropdownDirective} from './dropdown.directive';
@@ -54,12 +51,11 @@ import {TuiDropdownPositionDirective} from './dropdown-position.directive';
         TuiPositionService,
         tuiPositionAccessorFor('dropdown', TuiDropdownPositionDirective),
         tuiRectAccessorFor('dropdown', TuiDropdownDirective),
-        MODE_PROVIDER,
     ],
     host: {
         '[@tuiDropdownAnimation]': 'animation',
         '[attr.data-appearance]': 'options.appearance',
-        '($.data-mode.attr)': 'mode$',
+        '[attr.tuiTheme]': 'theme',
     },
     animations: [tuiDropdownAnimation],
 })
@@ -69,11 +65,13 @@ export class TuiDropdownComponent implements OnInit {
     private readonly win = inject(WINDOW);
     private readonly viewport = inject(TuiVisualViewportService);
 
-    protected readonly mode$: Observable<TuiBrightness | null> = inject(TUI_MODE);
     protected readonly animation = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
     protected readonly options = inject(TUI_DROPDOWN_OPTIONS);
     protected readonly directive = inject(TuiDropdownDirective);
     protected readonly context = inject(TUI_DROPDOWN_CONTEXT, {optional: true});
+    protected readonly theme = this.directive.el
+        .closest('[tuiTheme]')
+        ?.getAttribute('tuiTheme');
 
     protected readonly sub = inject(TuiPositionService)
         .pipe(

@@ -39,7 +39,7 @@ export abstract class AbstractExampleTuiControl
 
     public readonly hintDirectionVariants = TUI_HINT_DIRECTIONS;
 
-    public readonly hintAppearanceVariants = ['', 'error', 'onDark'];
+    public readonly hintAppearanceVariants = ['', 'error', 'dark'];
 
     public readonly typeVariants: readonly TuiInputType[] = [
         'text',

@@ -9,7 +9,6 @@ import {
     TuiDataListModule,
     TuiDropdownModule,
     TuiIconComponent,
-    TuiModeModule,
     TuiNotificationModule,
     TuiScrollbarComponent,
 } from '@taiga-ui/core';
@@ -30,7 +29,6 @@ import {ExampleTuiTabsComponent} from './tabs.component';
         FormsModule,
         TuiTabsModule,
         TuiInputNumberModule,
-        TuiModeModule,
         TuiNotificationModule,
         TuiButtonDirective,
         TuiDropdownModule,

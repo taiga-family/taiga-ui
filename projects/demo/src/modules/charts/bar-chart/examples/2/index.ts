@@ -19,9 +19,9 @@ export class TuiBarChartExample2 {
 
     protected readonly labelsX = ['Jan 2021', 'Feb', 'Mar'];
     protected readonly labelsY = ['0', '10 000'];
-    protected readonly appearances = ['onDark', 'error'];
+    protected readonly appearances = ['dark', 'error'];
 
-    protected appearance = 'onDark';
+    protected appearance = this.appearances[0];
 
     protected readonly hint = ({$implicit}: TuiContext<number>): string =>
         this.value

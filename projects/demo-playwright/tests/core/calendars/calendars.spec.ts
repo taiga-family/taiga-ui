@@ -5,10 +5,7 @@ test.describe('Calendars', () => {
     test.use({viewport: {width: 720, height: 700}});
 
     test('Calendar', async ({page}) => {
-        await tuiGoto(
-            page,
-            'components/calendar/API?tuiMode=null&value$=2&maxViewedMonth$=1&max$=0',
-        );
+        await tuiGoto(page, 'components/calendar/API?value$=2&maxViewedMonth$=1&max$=0');
         const {apiPageExample} = new TuiDocumentationPagePO(page);
 
         const calendar = apiPageExample.locator('tui-calendar').first();
@@ -44,10 +41,7 @@ test.describe('Calendars', () => {
     });
 
     test('Month', async ({page}) => {
-        await tuiGoto(
-            page,
-            'components/calendar-month/API?tuiMode=null&year$=1&value$=2',
-        );
+        await tuiGoto(page, 'components/calendar-month/API?year$=1&value$=2');
         const {apiPageExample} = new TuiDocumentationPagePO(page);
 
         const calendar = apiPageExample.locator('tui-calendar-month').first();

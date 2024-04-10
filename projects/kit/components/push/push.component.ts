@@ -7,13 +7,14 @@ import {
     Output,
 } from '@angular/core';
 import {tuiIsObserved, tuiIsString} from '@taiga-ui/cdk';
-import {TUI_CLOSE_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core';
+import {TUI_CLOSE_WORD, TUI_COMMON_ICONS, tuiButtonOptionsProvider} from '@taiga-ui/core';
 
 @Component({
     selector: 'tui-push',
     templateUrl: './push.template.html',
     styleUrls: ['./push.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [tuiButtonOptionsProvider({size: 's', appearance: 'secondary'})],
 })
 export class TuiPushComponent {
     @Input()

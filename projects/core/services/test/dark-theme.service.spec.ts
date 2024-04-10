@@ -2,11 +2,11 @@ import {TestBed} from '@angular/core/testing';
 import {WINDOW} from '@ng-web-apis/common';
 import {take} from 'rxjs';
 
-import {TuiNightThemeService} from '../night-theme.service';
+import {TuiDarkThemeService} from '../dark-theme.service';
 
-describe('TuiNightThemeService', () => {
+describe('TuiDarkThemeService', () => {
     const mock: HTMLDivElement = document.createElement('div');
-    let service!: TuiNightThemeService;
+    let service!: TuiDarkThemeService;
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
@@ -22,7 +22,7 @@ describe('TuiNightThemeService', () => {
             ],
         });
         await TestBed.compileComponents();
-        service = TestBed.inject(TuiNightThemeService);
+        service = TestBed.inject(TuiDarkThemeService);
         mock.matches = true as any;
     });
 

@@ -30,7 +30,7 @@ import {tuiButtonOptionsProvider, tuiDropdownOptionsProvider} from '@taiga-ui/co
     ],
     host: {
         tuiNavigationAside: '',
-        tuiTheme: 'night',
+        tuiTheme: 'dark',
         '[class._expanded]': 'tuiNavigationAside',
     },
 })

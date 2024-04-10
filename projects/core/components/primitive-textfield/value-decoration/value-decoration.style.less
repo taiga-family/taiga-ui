@@ -20,10 +20,6 @@
         .text-overflow();
     }
 
-    :host-context(tui-primitive-textfield [tuiWrapper][data-mode='onDark']) & {
-        color: var(--tui-text-03-night);
-    }
-
     :host-context(tui-primitive-textfield[data-size='m']:not(._label-outside)) & {
         line-height: calc(var(--tui-height) - 0.25rem);
     }
@@ -39,10 +35,6 @@
 .t-postfix {
     white-space: pre;
     color: var(--tui-text-01);
-
-    :host-context(tui-primitive-textfield [tuiWrapper][data-mode='onDark']) & {
-        color: var(--tui-text-01-night);
-    }
 }
 
 .t-filler {

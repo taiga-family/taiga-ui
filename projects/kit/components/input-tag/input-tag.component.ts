@@ -36,24 +36,20 @@ import {
 } from '@taiga-ui/cdk';
 import type {TuiDataListHost, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {
-    MODE_PROVIDER,
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_COMMON_ICONS,
-    TUI_MODE,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
     tuiAsDataListHost,
     TuiDataListDirective,
     TuiHintOptionsDirective,
     TuiHostedDropdownComponent,
-    TuiModeDirective,
     TuiScrollbarComponent,
 } from '@taiga-ui/core';
 import type {TuiStringifiableItem} from '@taiga-ui/kit/classes';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import type {TuiStatus} from '@taiga-ui/kit/types';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import type {Observable} from 'rxjs';
-import {map, takeUntil, timer} from 'rxjs';
+import {takeUntil, timer} from 'rxjs';
 
 import {TUI_INPUT_TAG_OPTIONS} from './input-tag.options';
 
@@ -80,7 +76,6 @@ const TAG_VERTICAL_SPACE_REM = 0.125;
         tuiAsControl(TuiInputTagComponent),
         tuiAsDataListHost(TuiInputTagComponent),
         TEXTFIELD_CONTROLLER_PROVIDER,
-        MODE_PROVIDER,
     ],
     viewProviders: [FIXED_DROPDOWN_CONTROLLER_PROVIDER],
 })
@@ -107,8 +102,6 @@ export class TuiInputTagComponent
     private readonly scrollBar?: ElementRef<HTMLElement>;
 
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
-    private readonly modeDirective = inject(TuiModeDirective, {optional: true});
-    private readonly mode$ = inject(TUI_MODE);
     private readonly options = inject(TUI_INPUT_TAG_OPTIONS);
 
     @Input()
@@ -159,7 +152,7 @@ export class TuiInputTagComponent
     protected readonly hintOptions = inject(TuiHintOptionsDirective, {optional: true});
     protected readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
     protected readonly icons = inject(TUI_COMMON_ICONS);
-    protected status$: Observable<TuiStatus> = this.mode$.pipe(map(() => this.status));
+    protected status: TuiStatus = this.options.tagStatus;
     protected open = false;
 
     @Input('pseudoFocused')
@@ -294,10 +287,6 @@ export class TuiInputTagComponent
             !!this.hintOptions?.content &&
             (this.controller.options.hintOnDisabled || !this.computedDisabled)
         );
-    }
-
-    protected get status(): TuiStatus {
-        return this.modeDirective?.mode ? 'default' : this.options.tagStatus;
     }
 
     protected get canOpen(): boolean {

@@ -11,7 +11,6 @@ import {
     TuiButtonDirective,
     TuiHintModule,
     TuiLinkDirective,
-    TuiModeModule,
     TuiNotificationModule,
 } from '@taiga-ui/core';
 import {TuiSliderModule} from '@taiga-ui/kit';
@@ -33,7 +32,6 @@ import {ExampleTuiSliderComponent} from './slider.component';
         ReactiveFormsModule,
         TuiLinkDirective,
         TuiNotificationModule,
-        TuiModeModule,
         TuiButtonDirective,
         TuiHintModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiSliderComponent)),

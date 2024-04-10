@@ -19,10 +19,8 @@ import {
 } from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {
-    MODE_PROVIDER,
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_ICON_PADDINGS,
-    TUI_MODE,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
     tuiGetBorder,
     TuiHintOptionsDirective,
@@ -43,10 +41,8 @@ export const LINE_HEIGHT_L = 24;
         tuiAsFocusableItemAccessor(TuiTextareaComponent),
         tuiAsControl(TuiTextareaComponent),
         TEXTFIELD_CONTROLLER_PROVIDER,
-        MODE_PROVIDER,
     ],
     host: {
-        '($.data-mode.attr)': 'mode$',
         '[class._ios]': 'isIOS',
     },
 })
@@ -71,7 +67,6 @@ export class TuiTextareaComponent
     public expandable = false;
 
     protected readonly isIOS = inject(TUI_IS_IOS);
-    protected readonly mode$ = inject(TUI_MODE);
     protected readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
     protected readonly hintOptions = inject(TuiHintOptionsDirective, {optional: true});
 

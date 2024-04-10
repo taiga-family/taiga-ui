@@ -17,8 +17,6 @@ import {
 import {TuiAvatarComponent, TuiRadioListComponent} from '@taiga-ui/kit';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
-import {TuiCustomizationModule} from '../../app/customization/customization.module';
-import {ThemesModule} from '../../themes/themes.module';
 import {HintControllerDocumentationModule} from '../abstract/hint-controller-documentation/hint-controller-documentation.module';
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
 import {TextfieldControllerDocumentationModule} from '../abstract/textfield-controller-documentation/textfield-controller-documentation.module';
@@ -44,10 +42,8 @@ import {ExampleTuiPrimitiveTextfieldComponent} from './primitive-textfield.compo
         PolymorpheusModule,
         TuiHintModule,
         TuiRadioListComponent,
-        TuiCustomizationModule,
         TuiLabelModule,
         TuiWrapperModule,
-        ThemesModule,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiPrimitiveTextfieldComponent)),
     ],

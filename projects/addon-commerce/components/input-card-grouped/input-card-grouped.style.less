@@ -13,10 +13,6 @@
     width: @width-full;
     border-radius: var(--tui-radius-m);
 
-    &[data-mode='onDark'] {
-        --tui-autofill: var(--tui-autofill-night);
-    }
-
     :host-context(tui-root._mobile) {
         width: @width-mobile;
     }
@@ -119,12 +115,7 @@
         opacity: 1;
     }
 
-    :host[data-mode='onDark'] &::placeholder {
-        color: var(--tui-text-03-night);
-    }
-
-    &&&_card,
-    :host[data-mode='onDark'] &&&_card {
+    &&&_card {
         // @note: (&&&_) it's increasing css cascade priority
         &:not(.t-input_hidden),
         &:not(.t-input_hidden)::placeholder,

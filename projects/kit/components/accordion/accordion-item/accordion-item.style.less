@@ -51,21 +51,9 @@
             border-top-width: 0;
         }
 
-        :host[data-mode='onDark'] & {
-            border-color: var(--tui-base-03);
-        }
-
-        :host[data-mode='onLight'] & {
-            border-color: var(--tui-text-01);
-        }
-
         :host._focus-visible & {
             border: 2px solid var(--tui-focus);
         }
-    }
-
-    :host:not([data-mode]) & {
-        background: var(--tui-base-01);
     }
 }
 
@@ -86,15 +74,6 @@
     text-align: left;
     outline: none;
 
-    :host[data-mode='onDark'] & {
-        color: var(--tui-text-01-night);
-        border-color: var(--tui-base-03);
-    }
-
-    :host[data-mode='onLight'] & {
-        border-color: var(--tui-text-01);
-    }
-
     :host:not([data-borders]) & {
         border-bottom-width: 0;
         box-shadow: none;
@@ -104,12 +83,8 @@
         padding-right: 0.75rem;
     }
 
-    :host[data-mode='onDark'] &_open {
+    :host-context([tuiTheme='dark']) &_open {
         background: var(--tui-clear-inverse);
-    }
-
-    :host[data-mode='onLight'] &_open {
-        background: var(--tui-clear);
     }
 
     :host[data-size='s'] & {
@@ -128,16 +103,8 @@
     }
 
     &_hoverable {
-        .t-wrapper:hover:not([data-mode]) > & {
+        .t-wrapper:hover > & {
             background: var(--tui-base-02);
-        }
-
-        .t-wrapper:hover[data-mode='onDark'] > & {
-            background: var(--tui-clear-inverse);
-        }
-
-        .t-wrapper:hover[data-mode='onLight'] > & {
-            background: var(--tui-clear);
         }
     }
 }
@@ -159,30 +126,14 @@
     width: 1.5rem;
     height: 1.5rem;
     margin-left: auto;
-    color: var(--tui-base-06);
+    color: var(--tui-text-03);
 
     &_open {
         transform: rotate(180deg);
     }
 
-    :host[data-mode] & {
-        opacity: var(--tui-disabled-opacity);
-    }
-
-    :host:hover[data-mode] & {
-        opacity: 0.8;
-    }
-
-    :host[data-mode='onDark'] & {
-        color: var(--tui-text-01-night);
-    }
-
-    :host[data-mode='onLight'] & {
-        color: var(--tui-text-01);
-    }
-
-    :host:hover:not([data-mode]) & {
-        color: var(--tui-base-07);
+    :host:hover & {
+        color: var(--tui-text-02);
     }
 }
 
