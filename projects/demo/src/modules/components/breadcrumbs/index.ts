@@ -1,27 +1,17 @@
 import {Component} from '@angular/core';
+import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
-import type {TuiDocExample} from '@taiga-ui/addon-doc';
-import type {TuiSizeL} from '@taiga-ui/core';
+import {TuiDemoModule} from '@demo/utils';
+import {TuiLinkDirective, type TuiSizeL} from '@taiga-ui/core';
+import {TuiBreadcrumbsModule} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'example-breadcrumbs',
-    templateUrl: './breadcrumbs.template.html',
+    standalone: true,
+    imports: [RouterLink, TuiDemoModule, TuiBreadcrumbsModule, TuiLinkDirective],
+    templateUrl: './index.html',
     changeDetection,
 })
-export class ExampleTuiBreadcrumbsComponent {
-    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
-    protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
-
-    protected readonly example1: TuiDocExample = {
-        TypeScript: import('./examples/1/index.ts?raw'),
-        HTML: import('./examples/1/index.html?raw'),
-    };
-
-    protected readonly example2: TuiDocExample = {
-        TypeScript: import('./examples/2/index.ts?raw'),
-        HTML: import('./examples/2/index.html?raw'),
-    };
-
+export default class ExampleComponent {
     protected readonly itemsVariants = [
         [
             {
@@ -48,4 +38,9 @@ export class ExampleTuiBreadcrumbsComponent {
     protected readonly sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
 
     protected size: TuiSizeL = this.sizeVariants[0];
+
+    protected readonly examples = [
+        {name: 'Basic'},
+        {name: 'More button', description: 'Plus using DI options'},
+    ];
 }
