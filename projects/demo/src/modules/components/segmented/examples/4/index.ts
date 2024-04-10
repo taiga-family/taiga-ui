@@ -1,16 +1,27 @@
 import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import type {IsActiveMatchOptions} from '@angular/router';
+import {RouterLink, RouterLinkActive} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiIconComponent} from '@taiga-ui/core';
+import {TuiSegmentedComponent} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-segmented-example-4',
+    standalone: true,
+    imports: [
+        TuiSegmentedComponent,
+        RouterLink,
+        FormsModule,
+        RouterLinkActive,
+        TuiIconComponent,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiSegmentedExample4 {
+export default class ExampleComponent {
     protected selected = 'a';
 
     protected readonly options: IsActiveMatchOptions = {

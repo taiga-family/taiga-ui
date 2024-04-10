@@ -14,7 +14,7 @@ import {
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {TuiDestroyService, tuiIsHTMLElement, tuiPx, tuiZonefree} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {tuiBadgeNotificationOptionsProvider} from '@taiga-ui/kit';
+import {tuiBadgeNotificationOptionsProvider} from '@taiga-ui/kit/components/badge-notification';
 import {takeUntil} from 'rxjs';
 
 import {TuiSegmentedDirective} from './segmented.directive';
