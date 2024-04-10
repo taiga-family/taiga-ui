@@ -1484,14 +1484,11 @@ export const ROUTES: Routes = [
             title: 'FilterByInput',
         },
     },
-    {
+    route({
         path: DemoRoute.Flag,
-        loadChildren: async () =>
-            (await import('../pipes/flag/flag.module')).ExampleTuiFlagModule,
-        data: {
-            title: 'Flag',
-        },
-    },
+        title: 'Flag',
+        loadComponent: async () => import('../pipes/flag'),
+    }),
     {
         path: DemoRoute.FormatDate,
         loadChildren: async () =>

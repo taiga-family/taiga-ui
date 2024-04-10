@@ -1,14 +1,16 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiFlagPipe} from '@taiga-ui/core';
 import {TuiCountryIsoCode} from '@taiga-ui/i18n';
 
 @Component({
-    selector: 'tui-flag-example1',
-    templateUrl: './template.html',
+    standalone: true,
+    imports: [TuiFlagPipe],
+    templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class TuiFlagExample1 {
+export default class ExampleComponent {
     protected readonly countryIsoCode = TuiCountryIsoCode.AE;
 }

@@ -4,7 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {TuiActiveZoneDirective, TuiLetModule, TuiMapperPipeModule} from '@taiga-ui/cdk';
 import {
     TuiDataListModule,
-    TuiFlagPipeModule,
+    TuiFlagPipe,
     TuiGroupDirective,
     TuiHintModule,
     TuiHostedDropdownModule,
@@ -37,7 +37,7 @@ import {TuiInputPhoneInternationalComponent} from './input-phone-international.c
         TuiLetModule,
         TuiMapperPipeModule,
         TuiActiveZoneDirective,
-        TuiFlagPipeModule,
+        TuiFlagPipe,
     ],
     declarations: [TuiInputPhoneInternationalComponent],
     exports: [TuiInputPhoneInternationalComponent],

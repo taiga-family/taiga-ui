@@ -1,12 +1,7 @@
 import {NgForOf, TitleCasePipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {
-    tuiCapitalizeFirstLetter,
-    TuiDataListModule,
-    TuiFlagPipe,
-    TuiFlagPipeModule,
-} from '@taiga-ui/core';
+import {tuiCapitalizeFirstLetter, TuiDataListModule, TuiFlagPipe} from '@taiga-ui/core';
 import type {TuiLanguageName} from '@taiga-ui/i18n';
 import {TuiCountryIsoCode, TuiLanguageSwitcher} from '@taiga-ui/i18n';
 import {TuiSelectModule} from '@taiga-ui/kit';
@@ -19,20 +14,14 @@ import {TuiSelectModule} from '@taiga-ui/kit';
         TuiDataListModule,
         NgForOf,
         TitleCasePipe,
-        TuiFlagPipeModule,
+        TuiFlagPipe,
         TuiSelectModule,
     ],
     templateUrl: './language-switcher.component.html',
     styleUrls: ['./language-switcher.component.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        // TODO: for backward compatibility only. Drop in v4.0
-        TuiFlagPipe,
-    ],
 })
 export class TuiLanguageSwitcherComponent {
-    private readonly flagPipe = inject(TuiFlagPipe);
-
     public readonly flags = new Map<TuiLanguageName, TuiCountryIsoCode>([
         ['belarusian', TuiCountryIsoCode.BY],
         ['chinese', TuiCountryIsoCode.CN],
@@ -59,12 +48,4 @@ export class TuiLanguageSwitcherComponent {
     );
 
     protected readonly names: TuiLanguageName[] = Array.from(this.flags.keys());
-
-    /**
-     * @deprecated use `<img [src]="countryIsoCode | tuiFlagPipe" />`
-     * TODO drop in v4.0
-     */
-    public getFlagPath(code?: TuiCountryIsoCode): string | null {
-        return this.flagPipe.transform(code);
-    }
 }

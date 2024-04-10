@@ -4,7 +4,10 @@ import {TUI_SVG_OPTIONS} from '@taiga-ui/core/components/svg';
 import {TUI_CACHE_BUSTING_PAYLOAD} from '@taiga-ui/core/constants';
 import {TuiCountryIsoCode} from '@taiga-ui/i18n';
 
-@Pipe({name: 'tuiFlag'})
+@Pipe({
+    standalone: true,
+    name: 'tuiFlag',
+})
 export class TuiFlagPipe implements PipeTransform {
     private readonly svgOptions = inject(TUI_SVG_OPTIONS);
 
