@@ -11,13 +11,14 @@ import {
     TuiDay,
     TuiTime,
 } from '@taiga-ui/cdk';
-import {TUI_DATE_FORMAT, TuiRootModule} from '@taiga-ui/core';
+import {TUI_DATE_FORMAT, TuiRootComponent} from '@taiga-ui/core';
 import {TUI_DATE_TIME_VALUE_TRANSFORMER} from '@taiga-ui/kit';
 import {
     TuiInputDateTimeComponent,
     TuiInputDateTimeModule,
 } from '@taiga-ui/kit/components';
 import {TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 import {of} from 'rxjs';
 
 describe('InputDateTime', () => {
@@ -63,7 +64,7 @@ describe('InputDateTime', () => {
 
     const defaultTestingModuleMeta = {
         imports: [
-            TuiRootModule,
+            TuiRootComponent,
             ReactiveFormsModule,
             NoopAnimationsModule,
             TuiInputDateTimeModule,
@@ -241,6 +242,7 @@ describe('InputDateTime', () => {
             TestBed.configureTestingModule({
                 ...defaultTestingModuleMeta,
                 providers: [
+                    NG_EVENT_PLUGINS,
                     {
                         provide: TUI_DATE_FORMAT,
                         useValue: of({mode: 'MDY', separator: '/'}),
@@ -281,6 +283,7 @@ describe('InputDateTime', () => {
             TestBed.configureTestingModule({
                 ...defaultTestingModuleMeta,
                 providers: [
+                    NG_EVENT_PLUGINS,
                     {
                         provide: TUI_DATE_FORMAT,
                         useValue: of({mode: 'YMD', separator: '-'}),
@@ -373,6 +376,7 @@ describe('InputDateTime', () => {
                 ...defaultTestingModuleMeta,
                 declarations: [TransformerTestComponent],
                 providers: [
+                    NG_EVENT_PLUGINS,
                     {
                         provide: TUI_DATE_TIME_VALUE_TRANSFORMER,
                         useClass: ExampleDateTimeTransformer,

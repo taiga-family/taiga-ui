@@ -6,7 +6,11 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk';
 import {CHAR_NO_BREAK_SPACE, TUI_TRUE_HANDLER, TuiFocusedModule} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {TuiHintModule, TuiRootModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
+import {
+    TuiHintModule,
+    TuiRootComponent,
+    TuiTextfieldControllerModule,
+} from '@taiga-ui/core';
 import {TuiInputTagComponent, TuiInputTagModule} from '@taiga-ui/kit';
 import {
     tuiIsActive,
@@ -16,6 +20,7 @@ import {
     tuiTestPlaceholder,
     tuiTestTooltip,
 } from '@taiga-ui/testing';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 const TAG = 'Tag';
 
@@ -93,11 +98,12 @@ describe('InputTag', () => {
                 NoopAnimationsModule,
                 TuiInputTagModule,
                 TuiFocusedModule,
-                TuiRootModule,
+                TuiRootComponent,
                 TuiHintModule,
                 TuiTextfieldControllerModule,
             ],
             declarations: [TestComponent],
+            providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);

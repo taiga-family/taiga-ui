@@ -13,7 +13,7 @@ import {
 } from '@taiga-ui/cdk';
 import {
     TUI_DATE_FORMAT,
-    TuiRootModule,
+    TuiRootComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import type {TuiDayRangePeriod} from '@taiga-ui/kit';
@@ -24,6 +24,7 @@ import {
     TuiInputDateRangeModule,
 } from '@taiga-ui/kit';
 import {TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 import {of} from 'rxjs';
 
 describe('InputDateRangeComponent', () => {
@@ -72,7 +73,7 @@ describe('InputDateRangeComponent', () => {
     const defaultTestingModuleMeta = {
         imports: [
             TuiInputDateRangeModule,
-            TuiRootModule,
+            TuiRootComponent,
             ReactiveFormsModule,
             NoopAnimationsModule,
             TuiTextfieldControllerModule,
@@ -188,6 +189,7 @@ describe('InputDateRangeComponent', () => {
             TestBed.configureTestingModule({
                 ...defaultTestingModuleMeta,
                 providers: [
+                    NG_EVENT_PLUGINS,
                     {
                         provide: TUI_DATE_FORMAT,
                         useValue: of({mode: 'MDY', separator: '/'}),
@@ -229,6 +231,7 @@ describe('InputDateRangeComponent', () => {
             TestBed.configureTestingModule({
                 ...defaultTestingModuleMeta,
                 providers: [
+                    NG_EVENT_PLUGINS,
                     {
                         provide: TUI_DATE_FORMAT,
                         useValue: of({mode: 'YMD', separator: '-'}),
@@ -351,6 +354,7 @@ describe('InputDateRangeComponent', () => {
                 ...defaultTestingModuleMeta,
                 declarations: [TransformerTestComponent],
                 providers: [
+                    NG_EVENT_PLUGINS,
                     {
                         provide: TUI_DATE_VALUE_TRANSFORMER,
                         useClass: TestDateTransformer,

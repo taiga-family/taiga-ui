@@ -7,7 +7,7 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {
     TuiDataListModule,
     TuiHintModule,
-    TuiRootModule,
+    TuiRootComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {TuiMultiSelectModule} from '@taiga-ui/kit';
@@ -17,6 +17,7 @@ import {
     TuiMultiSelectComponent,
 } from '@taiga-ui/kit/components';
 import {TUI_SANITIZER_MOCK, TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('MultiSelect', () => {
     describe('Basic', () => {
@@ -76,14 +77,14 @@ describe('MultiSelect', () => {
                     ReactiveFormsModule,
                     NoopAnimationsModule,
                     TuiMultiSelectModule,
-                    TuiRootModule,
+                    TuiRootComponent,
                     TuiDataListModule,
                     TuiDataListWrapperModule,
                     TuiTextfieldControllerModule,
                     TuiHintModule,
                 ],
                 declarations: [TestComponent],
-                providers: [TUI_SANITIZER_MOCK],
+                providers: [TUI_SANITIZER_MOCK, NG_EVENT_PLUGINS],
             });
             await TestBed.compileComponents();
             fixture = TestBed.createComponent(TestComponent);
@@ -292,7 +293,7 @@ describe('MultiSelect', () => {
                     ReactiveFormsModule,
                     NoopAnimationsModule,
                     TuiMultiSelectModule,
-                    TuiRootModule,
+                    TuiRootComponent,
                     TuiDataListModule,
                     TuiDataListWrapperModule,
                     TuiTextfieldControllerModule,
@@ -300,6 +301,7 @@ describe('MultiSelect', () => {
                 ],
                 declarations: [TestComponent],
                 providers: [
+                    NG_EVENT_PLUGINS,
                     {
                         provide: TUI_ARROW_MODE,
                         useValue: {interactive: '☆', disabled: '★'},

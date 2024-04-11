@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {TuiRootModule} from '@taiga-ui/core';
+import {TuiRootComponent} from '@taiga-ui/core';
 import {TuiPageObject} from '@taiga-ui/testing';
 
 import {TuiMobileDialogModule} from '../mobile-dialog.module';
@@ -30,7 +30,7 @@ describe('Mobile Dialog with TUI_MOBILE_DIALOG_OPTIONS', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [NoopAnimationsModule, TuiRootModule, TuiMobileDialogModule],
+            imports: [NoopAnimationsModule, TuiRootComponent, TuiMobileDialogModule],
             declarations: [TestComponent],
             providers: [tuiMobileDialogOptionsProvider({label})],
         });

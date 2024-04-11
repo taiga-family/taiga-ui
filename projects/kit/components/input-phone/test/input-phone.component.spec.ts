@@ -3,7 +3,11 @@ import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {TuiHintModule, TuiRootModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
+import {
+    TuiHintModule,
+    TuiRootComponent,
+    TuiTextfieldControllerModule,
+} from '@taiga-ui/core';
 import {TuiInputPhoneComponent, TuiInputPhoneModule} from '@taiga-ui/kit';
 import {TuiNativeInputPO} from '@taiga-ui/testing';
 import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
@@ -41,7 +45,7 @@ describe('InputPhone', () => {
     beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [
-                TuiRootModule,
+                TuiRootComponent,
                 TuiInputPhoneModule,
                 ReactiveFormsModule,
                 NoopAnimationsModule,
@@ -49,7 +53,7 @@ describe('InputPhone', () => {
                 TuiHintModule,
             ],
             declarations: [TestComponent],
-            providers: NG_EVENT_PLUGINS,
+            providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);

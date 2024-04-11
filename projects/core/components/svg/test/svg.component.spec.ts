@@ -6,6 +6,7 @@ import {TestBed} from '@angular/core/testing';
 import {TuiStaticRequestService} from '@taiga-ui/cdk';
 import {TuiSvgComponent, TuiSvgService} from '@taiga-ui/core';
 import {TUI_SANITIZER_MOCK, TuiSvgHarness} from '@taiga-ui/testing';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 import {of, throwError} from 'rxjs';
 
 const SVG_ICON = `<svg xmlns="http://www.w3.org/2000/svg"
@@ -52,6 +53,7 @@ describe('Svg', () => {
             imports: [TuiSvgComponent],
             declarations: [TestComponent],
             providers: [
+                NG_EVENT_PLUGINS,
                 {
                     provide: TuiStaticRequestService,
                     useValue: STATIC_REQUEST_MOCK,

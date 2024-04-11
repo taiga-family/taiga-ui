@@ -4,6 +4,7 @@ import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {TuiFocusedModule} from '@taiga-ui/cdk';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('TuiFocused directive', () => {
     @Component({
@@ -36,6 +37,7 @@ describe('TuiFocused directive', () => {
         TestBed.configureTestingModule({
             imports: [TuiFocusedModule],
             declarations: [TestComponent],
+            providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);

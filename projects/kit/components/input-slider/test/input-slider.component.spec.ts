@@ -5,9 +5,10 @@ import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import type {TuiContext} from '@taiga-ui/cdk';
 import {CHAR_MINUS} from '@taiga-ui/cdk';
-import {TuiRootModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
+import {TuiRootComponent, TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {TuiInputSliderComponent, TuiInputSliderModule} from '@taiga-ui/kit';
 import {TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 @Component({
     template: `
@@ -74,12 +75,13 @@ describe('InputSlider', () => {
     beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [
-                TuiRootModule,
+                TuiRootComponent,
                 TuiTextfieldControllerModule,
                 TuiInputSliderModule,
                 ReactiveFormsModule,
             ],
             declarations: [TestComponent],
+            providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);

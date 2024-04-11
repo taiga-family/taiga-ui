@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {TuiPanModule} from '@taiga-ui/cdk';
-import {TuiRootModule} from '@taiga-ui/core';
+import {TuiRootComponent} from '@taiga-ui/core';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('TuiPan', () => {
     let component: TestComponent;
@@ -23,7 +24,8 @@ describe('TuiPan', () => {
     beforeEach(() =>
         cy
             .mount(TestComponent, {
-                imports: [TuiRootModule, TuiPanModule],
+                imports: [TuiRootComponent, TuiPanModule],
+                providers: [NG_EVENT_PLUGINS],
             })
             .then(wrapper => {
                 component = wrapper.component;

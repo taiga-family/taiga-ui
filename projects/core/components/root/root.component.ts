@@ -1,4 +1,4 @@
-import {DOCUMENT} from '@angular/common';
+import {AsyncPipe, DOCUMENT, NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -6,7 +6,12 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {TUI_IS_ANDROID, TUI_IS_IOS, TUI_IS_MOBILE, TUI_VERSION} from '@taiga-ui/cdk';
-import {TUI_DIALOGS} from '@taiga-ui/core/components/dialog';
+import {TuiAlertsComponent} from '@taiga-ui/core/components/alert';
+import {TUI_DIALOGS, TuiDialogsComponent} from '@taiga-ui/core/components/dialog';
+import {TuiHintsHostModule} from '@taiga-ui/core/components/hints-host';
+import {TuiScrollControlsComponent} from '@taiga-ui/core/components/scroll-controls';
+import {TuiDropdownsComponent} from '@taiga-ui/core/directives';
+import {TuiSvgDefsHostModule} from '@taiga-ui/core/internal';
 import {TuiBreakpointService} from '@taiga-ui/core/services';
 import {TUI_ANIMATIONS_SPEED, TUI_REDUCED_MOTION, TUI_THEME} from '@taiga-ui/core/tokens';
 import {tuiGetDuration} from '@taiga-ui/core/utils';
@@ -14,11 +19,21 @@ import type {Observable} from 'rxjs';
 import {debounceTime, map, of} from 'rxjs';
 
 @Component({
+    standalone: true,
     selector: 'tui-root',
+    imports: [
+        NgIf,
+        AsyncPipe,
+        TuiSvgDefsHostModule,
+        TuiDropdownsComponent,
+        TuiDialogsComponent,
+        TuiAlertsComponent,
+        TuiHintsHostModule,
+        TuiScrollControlsComponent,
+    ],
     templateUrl: './root.template.html',
     styleUrls: ['./root.style.less'],
     encapsulation: ViewEncapsulation.None,
-    // So that we do not force OnPush on custom dialogs
     // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
     changeDetection: ChangeDetectionStrategy.Default,
     host: {

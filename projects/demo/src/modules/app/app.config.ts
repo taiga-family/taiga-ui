@@ -39,11 +39,11 @@ import {
     TUI_HINT_OPTIONS,
     TUI_SANITIZER,
     TuiDialogModule,
-    TuiRootModule,
 } from '@taiga-ui/core';
 import {type TuiLanguageName, tuiLanguageSwitcher} from '@taiga-ui/i18n';
 import {TuiPushModule} from '@taiga-ui/kit';
 import {NgDompurifySanitizer} from '@tinkoff/ng-dompurify';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 import {HIGHLIGHT_OPTIONS} from 'ngx-highlightjs';
 
 import {SEE_ALSO_GROUPS} from './app.const';
@@ -58,7 +58,7 @@ import {exampleContentProcessor} from './utils';
 export const config: ApplicationConfig = {
     providers: [
         provideAnimations(),
-        importProvidersFrom(TuiRootModule, TuiDialogModule, TuiPushModule),
+        importProvidersFrom(TuiDialogModule, TuiPushModule),
         provideRouter(
             ROUTES,
             withInMemoryScrolling({
@@ -66,6 +66,7 @@ export const config: ApplicationConfig = {
                 anchorScrolling: 'enabled',
             }),
         ),
+        NG_EVENT_PLUGINS,
         Title,
         {
             provide: TUI_IS_PLAYWRIGHT,

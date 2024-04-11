@@ -5,6 +5,7 @@ import {TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {TuiPressedModule} from '@taiga-ui/cdk';
 import {TUI_TAKE_ONLY_TRUSTED_EVENTS} from '@taiga-ui/cdk/tokens';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('TuiPressed directive', () => {
     @Component({
@@ -37,7 +38,10 @@ describe('TuiPressed directive', () => {
         TestBed.configureTestingModule({
             imports: [TuiPressedModule],
             declarations: [TestComponent],
-            providers: [{provide: TUI_TAKE_ONLY_TRUSTED_EVENTS, useValue: false}],
+            providers: [
+                {provide: TUI_TAKE_ONLY_TRUSTED_EVENTS, useValue: false},
+                NG_EVENT_PLUGINS,
+            ],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);

@@ -9,7 +9,7 @@ import {
     TuiDataListModule,
     tuiEditingKeys,
     TuiHintModule,
-    TuiRootModule,
+    TuiRootComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {TuiInputComponent, TuiInputModule} from '@taiga-ui/kit';
@@ -20,6 +20,7 @@ import {
     TuiNativeInputPO,
     TuiPageObject,
 } from '@taiga-ui/testing';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 class User {
     constructor(
@@ -109,7 +110,7 @@ describe('Input', () => {
     beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [
-                TuiRootModule,
+                TuiRootComponent,
                 NoopAnimationsModule,
                 ReactiveFormsModule,
                 TuiInputModule,
@@ -119,6 +120,7 @@ describe('Input', () => {
                 TuiDataListWrapperModule,
             ],
             declarations: [TestComponent],
+            providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);

@@ -5,6 +5,7 @@ import {TestBed} from '@angular/core/testing';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import type {TuiControlValueTransformer} from '@taiga-ui/cdk';
 import {AbstractTuiControl, tuiAsControl} from '@taiga-ui/cdk';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('AbstractTuiControl and FormControl', () => {
     @Component({
@@ -81,6 +82,7 @@ describe('AbstractTuiControl and FormControl', () => {
         TestBed.configureTestingModule({
             imports: [FormsModule, ReactiveFormsModule],
             declarations: [TestComponent, MyControlComponent, ChildComponent],
+            providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);

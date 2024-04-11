@@ -10,8 +10,9 @@ import {
     TuiDay,
     TuiDayRange,
 } from '@taiga-ui/cdk';
-import {TuiRootModule} from '@taiga-ui/core';
+import {TuiRootComponent} from '@taiga-ui/core';
 import {TUI_CALENDAR_DATE_STREAM} from '@taiga-ui/kit';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 import {createOutputSpy} from 'cypress/angular';
 import {of} from 'rxjs';
 
@@ -55,7 +56,8 @@ describe('Mobile calendar', () => {
 
     it('the back button emits a cancel event', () => {
         cy.mount(TestComponent, {
-            imports: [TuiRootModule, TuiMobileCalendarModule],
+            imports: [TuiRootComponent, TuiMobileCalendarModule],
+            providers: [NG_EVENT_PLUGINS],
             componentProperties: {
                 onCancel: createOutputSpy('onCancelSpy'),
             },
@@ -67,7 +69,7 @@ describe('Mobile calendar', () => {
 
     it('single === true', () => {
         cy.mount(TestComponent, {
-            imports: [TuiRootModule, TuiMobileCalendarModule],
+            imports: [TuiRootComponent, TuiMobileCalendarModule],
         });
 
         cy.get('[automation-id="tui-mobile-calendar__label"]').should(
@@ -78,7 +80,7 @@ describe('Mobile calendar', () => {
 
     it('single === false', () => {
         cy.mount(TestComponent, {
-            imports: [TuiRootModule, TuiMobileCalendarModule],
+            imports: [TuiRootComponent, TuiMobileCalendarModule],
             componentProperties: {
                 single: false,
             },
@@ -93,7 +95,7 @@ describe('Mobile calendar', () => {
     describe('when the done button emits', () => {
         it('confirm event with selected day', () => {
             cy.mount(TestComponent, {
-                imports: [TuiRootModule, TuiMobileCalendarModule],
+                imports: [TuiRootComponent, TuiMobileCalendarModule],
                 componentProperties: {
                     onConfirm: createOutputSpy('onConfirmSpy'),
                 },
@@ -108,7 +110,7 @@ describe('Mobile calendar', () => {
 
         it('confirm event at selected interval', () => {
             cy.mount(TestComponent, {
-                imports: [TuiRootModule, TuiMobileCalendarModule],
+                imports: [TuiRootComponent, TuiMobileCalendarModule],
                 componentProperties: {
                     single: false,
                     onConfirm: createOutputSpy('onConfirmSpy'),
@@ -127,7 +129,7 @@ describe('Mobile calendar', () => {
 
         it('year selection scrolls through months', () => {
             cy.mount(TestComponent, {
-                imports: [TuiRootModule, TuiMobileCalendarModule],
+                imports: [TuiRootComponent, TuiMobileCalendarModule],
                 componentProperties: {
                     onConfirm: createOutputSpy('onConfirmSpy'),
                 },

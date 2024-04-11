@@ -301,4 +301,8 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifier[] = [
         from: {name: 'TuiSvgModule', moduleSpecifier: '@taiga-ui/core'},
         to: {name: 'TuiSvgComponent', moduleSpecifier: '@taiga-ui/core'},
     },
+    {
+        from: {name: 'TuiRootModule', moduleSpecifier: '@taiga-ui/core'},
+        to: {name: 'TuiRootComponent', moduleSpecifier: '@taiga-ui/core'},
+    },
 ];

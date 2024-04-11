@@ -6,6 +6,7 @@ import {TestBed} from '@angular/core/testing';
 import {TuiDay, TuiMonth} from '@taiga-ui/cdk';
 import {TuiCalendarComponent, TuiCalendarModule} from '@taiga-ui/core';
 import {TuiCalendarHarness} from '@taiga-ui/testing';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('Calendar', () => {
     @Component({
@@ -59,6 +60,7 @@ describe('Calendar', () => {
         TestBed.configureTestingModule({
             imports: [TuiCalendarModule],
             declarations: [TestComponent],
+            providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);

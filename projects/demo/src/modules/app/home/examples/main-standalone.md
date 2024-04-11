@@ -1,14 +1,12 @@
 ```ts
 // ...
-import {TuiRootModule} from '@taiga-ui/core';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 bootstrapApplication(AppComponent, {
   providers: [
     provideAnimations(),
-    importProvidersFrom(
-      TuiRootModule,
-      // ...
-    ),
+    NG_EVENT_PLUGINS,
+    //...
   ],
 }).catch(err => console.error(err));
 ```

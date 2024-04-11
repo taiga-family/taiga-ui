@@ -6,6 +6,7 @@ import {
     TuiLoaderModule,
     tuiLoaderOptionsProvider,
 } from '@taiga-ui/core';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('Loader component options', () => {
     let fixture: ComponentFixture<TestComponent>;
@@ -26,6 +27,7 @@ describe('Loader component options', () => {
             imports: [TuiLoaderModule],
             declarations: [TestComponent],
             providers: [
+                NG_EVENT_PLUGINS,
                 tuiLoaderOptionsProvider({
                     size: 'xxl',
                     inheritColor: true,

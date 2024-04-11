@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {TestBed} from '@angular/core/testing';
 import {TuiHighlightModule} from '@taiga-ui/kit';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('TuiHighlight directive', () => {
     @Component({
@@ -32,6 +33,7 @@ describe('TuiHighlight directive', () => {
         TestBed.configureTestingModule({
             imports: [TuiHighlightModule],
             declarations: [TestComponent],
+            providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
         const fixture = TestBed.createComponent(TestComponent);

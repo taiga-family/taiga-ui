@@ -5,6 +5,7 @@ import {TestBed} from '@angular/core/testing';
 import type {TuiYear} from '@taiga-ui/cdk';
 import {TuiMonth} from '@taiga-ui/cdk';
 import {TuiPageObject} from '@taiga-ui/testing';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 import {TuiPrimitiveYearMonthPaginationComponent} from '../primitive-year-month-pagination.component';
 import {TuiPrimitiveYearMonthPaginationModule} from '../primitive-year-month-pagination.module';
@@ -44,6 +45,7 @@ describe('PrimitiveYearMonthPaginationComponent', () => {
         TestBed.configureTestingModule({
             imports: [TuiPrimitiveYearMonthPaginationModule],
             declarations: [TestComponent],
+            providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);

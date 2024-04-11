@@ -4,6 +4,7 @@ import {TestBed} from '@angular/core/testing';
 import {tuiIsPresent} from '@taiga-ui/cdk';
 import {TuiPaginationComponent, TuiPaginationModule} from '@taiga-ui/kit';
 import {TuiPageObject} from '@taiga-ui/testing';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 interface TuiPaginationParams {
     readonly activePadding?: number;
@@ -88,6 +89,7 @@ describe('TuiPaginationComponent', () => {
         TestBed.configureTestingModule({
             imports: [TuiPaginationModule],
             declarations: [TestComponent],
+            providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);

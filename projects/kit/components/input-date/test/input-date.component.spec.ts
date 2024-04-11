@@ -9,12 +9,13 @@ import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {
     TUI_DATE_FORMAT,
     TuiHintModule,
-    TuiRootModule,
+    TuiRootComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {TuiInputDateComponent, TuiInputDateModule} from '@taiga-ui/kit';
 import {TUI_DATE_VALUE_TRANSFORMER} from '@taiga-ui/kit/tokens';
 import {TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 import {of} from 'rxjs';
 
 describe('InputDate', () => {
@@ -79,7 +80,7 @@ describe('InputDate', () => {
 
     const meta = {
         imports: [
-            TuiRootModule,
+            TuiRootComponent,
             NoopAnimationsModule,
             TuiInputDateModule,
             ReactiveFormsModule,
@@ -187,7 +188,10 @@ describe('InputDate', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
                 ...meta,
-                providers: [{provide: TUI_DATE_FORMAT, useValue: of({mode: 'YMD'})}],
+                providers: [
+                    NG_EVENT_PLUGINS,
+                    {provide: TUI_DATE_FORMAT, useValue: of({mode: 'YMD'})},
+                ],
             });
             await TestBed.compileComponents();
             await initializeEnvironment();
@@ -234,7 +238,10 @@ describe('InputDate', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
                 ...meta,
-                providers: [{provide: TUI_DATE_FORMAT, useValue: of({mode: 'MDY'})}],
+                providers: [
+                    NG_EVENT_PLUGINS,
+                    {provide: TUI_DATE_FORMAT, useValue: of({mode: 'MDY'})},
+                ],
             });
             await TestBed.compileComponents();
             await initializeEnvironment();
@@ -282,6 +289,7 @@ describe('InputDate', () => {
             TestBed.configureTestingModule({
                 ...meta,
                 providers: [
+                    NG_EVENT_PLUGINS,
                     {
                         provide: TUI_DATE_FORMAT,
                         useValue: of({mode: 'MDY', separator: '/'}),
@@ -355,6 +363,7 @@ describe('InputDate', () => {
                 ...meta,
                 declarations: [TransformerTestComponent],
                 providers: [
+                    NG_EVENT_PLUGINS,
                     {
                         provide: TUI_DATE_VALUE_TRANSFORMER,
                         useClass: TestTransformer,

@@ -1,7 +1,8 @@
 import {Component} from '@angular/core';
 import type {TuiSwipe} from '@taiga-ui/cdk';
 import {TuiSwipeModule} from '@taiga-ui/cdk';
-import {TuiRootModule} from '@taiga-ui/core';
+import {TuiRootComponent} from '@taiga-ui/core';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('TuiSwipe', () => {
     let component: TestComponent;
@@ -27,7 +28,8 @@ describe('TuiSwipe', () => {
     beforeEach(() =>
         cy
             .mount(TestComponent, {
-                imports: [TuiRootModule, TuiSwipeModule],
+                imports: [TuiRootComponent, TuiSwipeModule],
+                providers: [NG_EVENT_PLUGINS],
             })
             .then(wrapper => {
                 component = wrapper.component;

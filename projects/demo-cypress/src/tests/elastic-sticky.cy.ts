@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Output} from '@angular/core';
 import {TuiElasticStickyModule} from '@taiga-ui/addon-mobile';
-import {TuiRootModule, TuiScrollbarComponent} from '@taiga-ui/core';
+import {TuiRootComponent, TuiScrollbarComponent} from '@taiga-ui/core';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 import {createOutputSpy} from 'cypress/angular';
 
 describe('ElasticSticky', () => {
@@ -36,7 +37,8 @@ describe('ElasticSticky', () => {
 
     beforeEach(() =>
         cy.mount(TestComponent, {
-            imports: [TuiRootModule, TuiScrollbarComponent, TuiElasticStickyModule],
+            imports: [TuiRootComponent, TuiScrollbarComponent, TuiElasticStickyModule],
+            providers: [NG_EVENT_PLUGINS],
             componentProperties: {
                 change: createOutputSpy<number>('changeSpy'),
             },

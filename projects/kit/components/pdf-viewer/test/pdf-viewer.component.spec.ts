@@ -4,8 +4,9 @@ import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {DomSanitizer} from '@angular/platform-browser';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {TuiRootModule} from '@taiga-ui/core';
+import {TuiRootComponent} from '@taiga-ui/core';
 import {TuiPageObject} from '@taiga-ui/testing';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 import {TuiPdfViewerModule} from '../pdf-viewer.module';
 import {tuiPdfViewerOptionsProvider} from '../pdf-viewer.options';
@@ -32,9 +33,9 @@ describe('Pdf Viewer with TUI_PDF_VIEWER_OPTIONS', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [NoopAnimationsModule, TuiRootModule, TuiPdfViewerModule],
+            imports: [NoopAnimationsModule, TuiRootComponent, TuiPdfViewerModule],
             declarations: [TestComponent],
-            providers: [tuiPdfViewerOptionsProvider({label})],
+            providers: [tuiPdfViewerOptionsProvider({label}), NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);

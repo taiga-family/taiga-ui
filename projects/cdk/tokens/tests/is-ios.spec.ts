@@ -1,12 +1,14 @@
 import {TestBed} from '@angular/core/testing';
 import {NAVIGATOR} from '@ng-web-apis/common';
 import {TUI_IS_IOS} from '@taiga-ui/cdk';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('TUI_IS_IOS', () => {
     describe('basic is IOS positive', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
                 providers: [
+                    NG_EVENT_PLUGINS,
                     {
                         provide: NAVIGATOR,
                         useValue: {
@@ -29,6 +31,7 @@ describe('TUI_IS_IOS', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
                 providers: [
+                    NG_EVENT_PLUGINS,
                     {
                         provide: NAVIGATOR,
                         useValue: {
@@ -53,6 +56,7 @@ describe('TUI_IS_IOS', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
                 providers: [
+                    NG_EVENT_PLUGINS,
                     {
                         provide: NAVIGATOR,
                         useValue: {
@@ -77,6 +81,7 @@ describe('TUI_IS_IOS', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
                 providers: [
+                    NG_EVENT_PLUGINS,
                     {
                         provide: NAVIGATOR,
                         useValue: {

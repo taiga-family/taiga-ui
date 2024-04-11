@@ -3,8 +3,9 @@ import {Component} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {TuiRootModule} from '@taiga-ui/core';
+import {TuiRootComponent} from '@taiga-ui/core';
 import {TuiPageObject} from '@taiga-ui/testing';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 import {TuiPushModule} from '../push.module';
 import {tuiPushOptionsProvider} from '../push.options';
@@ -30,9 +31,9 @@ describe('Push with TUI_PUSH_OPTIONS', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [NoopAnimationsModule, TuiRootModule, TuiPushModule],
+            imports: [NoopAnimationsModule, TuiRootComponent, TuiPushModule],
             declarations: [TestComponent],
-            providers: [tuiPushOptionsProvider({heading})],
+            providers: [tuiPushOptionsProvider({heading}), NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);

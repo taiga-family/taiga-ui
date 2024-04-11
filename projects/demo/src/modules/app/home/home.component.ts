@@ -39,12 +39,7 @@ export class HomeComponent {
     );
 
     protected readonly stylesLess = import('./examples/styles.less.md?raw');
-    protected readonly appModule = import('./examples/app-module.md?raw');
     protected readonly appTemplate = import('./examples/app-template.md?raw');
-    protected readonly appModuleOptional = import(
-        './examples/app-module-optional.md?raw'
-    );
-
     protected readonly assets = import('./examples/assets.md?raw');
     protected readonly nxAssets = import('./examples/nx-assets.md?raw');
     protected readonly componentsStyles = import('./examples/components-styles.md?raw');

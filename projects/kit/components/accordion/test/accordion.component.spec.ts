@@ -23,6 +23,7 @@ import {
     TuiSelectHarness,
     TuiTextfieldHarness,
 } from '@taiga-ui/testing';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 class Account {
     constructor(
@@ -147,6 +148,7 @@ describe('Accordion', () => {
                 TuiDataListModule,
                 TuiDataListWrapperModule,
             ],
+            providers: [NG_EVENT_PLUGINS],
             declarations: [TestComponent],
         });
         await TestBed.compileComponents();

@@ -5,6 +5,7 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import type {TuiExpandComponent} from '@taiga-ui/core';
 import {TUI_EXPAND_LOADED, TuiExpandModule} from '@taiga-ui/core';
 import {TuiPageObject} from '@taiga-ui/testing';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 const ANIMATION_DELAY = 900;
 
@@ -45,6 +46,7 @@ describe('expand', () => {
         TestBed.configureTestingModule({
             imports: [TuiExpandModule, NoopAnimationsModule],
             declarations: [TestComponent],
+            providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);

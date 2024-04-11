@@ -2,6 +2,7 @@ import {Component, Input, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {AbstractTuiController} from '@taiga-ui/cdk';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('AbstractTuiController', () => {
     @Component({
@@ -30,6 +31,7 @@ describe('AbstractTuiController', () => {
     beforeEach(async () => {
         TestBed.configureTestingModule({
             declarations: [TestComponent, MyElementComponent],
+            providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);

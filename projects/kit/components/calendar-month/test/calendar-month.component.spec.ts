@@ -4,6 +4,7 @@ import {TestBed} from '@angular/core/testing';
 import {TuiDay, TuiMonth, TuiMonthRange, TuiYear} from '@taiga-ui/cdk';
 import {TuiInteractiveState} from '@taiga-ui/core';
 import {TuiCalendarMonthComponent, TuiCalendarMonthModule} from '@taiga-ui/kit';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 const TODAY = TuiDay.currentLocal();
 
@@ -40,6 +41,7 @@ describe('CalendarMonth', () => {
         TestBed.configureTestingModule({
             imports: [TuiCalendarMonthModule],
             declarations: [TestComponent],
+            providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);

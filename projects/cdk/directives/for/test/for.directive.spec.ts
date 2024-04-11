@@ -2,6 +2,7 @@ import {Component, ElementRef, inject} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {TuiForModule} from '@taiga-ui/cdk';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 import {Subject} from 'rxjs';
 
 describe('TuiFor directive', () => {
@@ -27,6 +28,7 @@ describe('TuiFor directive', () => {
         TestBed.configureTestingModule({
             imports: [TuiForModule],
             declarations: [TestComponent],
+            providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);

@@ -12,6 +12,7 @@ import {
     tuiSvgOptionsProvider,
     tuiSvgSrcInterceptors,
 } from '@taiga-ui/core';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('SVG options', () => {
     @Component({
@@ -40,6 +41,7 @@ describe('SVG options', () => {
             TestBed.configureTestingModule({
                 imports: [TuiSvgComponent],
                 declarations: [TestComponent],
+                providers: [NG_EVENT_PLUGINS],
             });
             await TestBed.compileComponents();
             createComponent();
@@ -63,6 +65,7 @@ describe('SVG options', () => {
                 imports: [TuiSvgComponent],
                 declarations: [TestComponent],
                 providers: [
+                    NG_EVENT_PLUGINS,
                     {
                         provide: TUI_ICONS_PATH,
                         useValue: tuiIconsPathFactory(
@@ -93,6 +96,7 @@ describe('SVG options', () => {
                 imports: [TuiSvgComponent],
                 declarations: [TestComponent],
                 providers: [
+                    NG_EVENT_PLUGINS,
                     {
                         provide: TUI_BASE_HREF,
                         useValue: '/my/app/',
@@ -125,6 +129,7 @@ describe('SVG options', () => {
                 imports: [TuiSvgComponent],
                 declarations: [TestComponent],
                 providers: [
+                    NG_EVENT_PLUGINS,
                     {
                         provide: TUI_SVG_SRC_PROCESSOR,
                         useFactory:
@@ -171,6 +176,7 @@ describe('SVG options', () => {
                 imports: [TuiSvgComponent],
                 declarations: [TestComponent],
                 providers: [
+                    NG_EVENT_PLUGINS,
                     tuiSvgOptionsProvider({
                         path,
                         srcProcessor: src =>
@@ -212,6 +218,7 @@ describe('SVG options', () => {
                 imports: [TuiSvgComponent],
                 declarations: [TestComponent],
                 providers: [
+                    NG_EVENT_PLUGINS,
                     {
                         provide: TUI_SVG_SRC_PROCESSOR,
                         useFactory:
@@ -264,6 +271,7 @@ describe('SVG options', () => {
                 imports: [TuiSvgComponent],
                 declarations: [TestComponent],
                 providers: [
+                    NG_EVENT_PLUGINS,
                     {
                         provide: TUI_SVG_SRC_PROCESSOR,
                         useValue: (src: string): string => `https://${src}`,
@@ -289,6 +297,7 @@ describe('SVG options', () => {
                 imports: [TuiSvgComponent],
                 declarations: [TestComponent],
                 providers: [
+                    NG_EVENT_PLUGINS,
                     {
                         provide: TUI_SVG_SRC_PROCESSOR,
                         useValue: (src: string): string => `https://${src}`,
@@ -315,6 +324,7 @@ describe('SVG options', () => {
                 imports: [TuiSvgComponent],
                 declarations: [TestComponent],
                 providers: [
+                    NG_EVENT_PLUGINS,
                     tuiSvgOptionsProvider({path: 'assets/default-path-to-icons/'}),
                     tuiSvgSrcInterceptors((src: TuiSafeHtml) =>
                         String(src).startsWith('icons8::')

@@ -4,6 +4,7 @@ import {TestBed} from '@angular/core/testing';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
 import {TuiControlModule} from '@taiga-ui/cdk';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('TuiControlDirective', () => {
     @Component({
@@ -31,6 +32,7 @@ describe('TuiControlDirective', () => {
         TestBed.configureTestingModule({
             imports: [ReactiveFormsModule, TuiControlModule],
             declarations: [TestComponent],
+            providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);

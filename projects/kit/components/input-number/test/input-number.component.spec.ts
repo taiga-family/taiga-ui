@@ -13,6 +13,7 @@ import {
 } from '@taiga-ui/core';
 import {TuiInputNumberComponent, TuiInputNumberModule} from '@taiga-ui/kit';
 import {TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('InputNumber', () => {
     @Component({
@@ -70,6 +71,7 @@ describe('InputNumber', () => {
                 TuiTextfieldControllerModule,
                 TuiHintModule,
             ],
+            providers: [NG_EVENT_PLUGINS],
             declarations: [TestComponent],
         });
         await TestBed.compileComponents();

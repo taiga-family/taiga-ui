@@ -5,6 +5,7 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiMonth, TuiMonthRange} from '@taiga-ui/cdk';
 import {TuiInputMonthRangeComponent, TuiInputMonthRangeModule} from '@taiga-ui/kit';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('InputMonthRange', () => {
     @Component({
@@ -30,6 +31,7 @@ describe('InputMonthRange', () => {
                 NoopAnimationsModule,
                 TuiInputMonthRangeModule,
             ],
+            providers: [NG_EVENT_PLUGINS],
             declarations: [TestComponent],
         });
         await TestBed.compileComponents();

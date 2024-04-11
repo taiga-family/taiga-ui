@@ -267,13 +267,13 @@ describe('ng-add [Standalone]', () => {
 
         expect(tree.readContent('test/app/app.component.ts')).toBe(
             `import { NgDompurifySanitizer } from "@tinkoff/ng-dompurify";
-import { TuiRootModule, TuiDialogModule, TuiAlertModule, TUI_SANITIZER } from "@taiga-ui/core";
+import { TuiRootComponent, TuiDialogModule, TuiAlertModule, TUI_SANITIZER } from "@taiga-ui/core";
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @Component({
   standalone: true,
-  imports: [RouterModule, TuiRootModule, TuiDialogModule, TuiAlertModule],
+  imports: [RouterModule, TuiRootComponent, TuiDialogModule, TuiAlertModule],
   selector: 'standalone-test-root',
   templateUrl: './app.template.html',
   styleUrls: ['./app.component.less'],
@@ -305,8 +305,7 @@ export class AppComponent {
         );
 
         expect(tree.readContent('test/main.ts'))
-            .toBe(`import { importProvidersFrom } from "@angular/core";
-import { TuiRootModule } from "@taiga-ui/core";
+            .toBe(`import { NG_EVENT_PLUGINS } from "@tinkoff/ng-event-plugins";
 import { bootstrapApplication } from '@angular/platform-browser';
 import {
   provideRouter,
@@ -317,7 +316,7 @@ import { appRoutes } from './app/app.routes';
 import { AppComponent } from './app/app.component';
 
 bootstrapApplication(AppComponent, {
-  providers: [provideAnimations(), provideRouter(appRoutes, withEnabledBlockingInitialNavigation()), importProvidersFrom(SomeModule, TuiRootModule)],
+  providers: [provideAnimations(), provideRouter(appRoutes, withEnabledBlockingInitialNavigation()), importProvidersFrom(SomeModule), NG_EVENT_PLUGINS],
 }).catch((err) => console.error(err));
 `);
     });
@@ -333,9 +332,9 @@ bootstrapApplication(AppComponent, {
         );
 
         expect(tree.readContent('test/app/app.config.ts'))
-            .toBe(`import { TuiRootModule } from "@taiga-ui/core";
+            .toBe(`import { NG_EVENT_PLUGINS } from "@tinkoff/ng-event-plugins";
 
-import { ApplicationConfig, importProvidersFrom } from '@angular/core';
+import { ApplicationConfig } from '@angular/core';
 import {
   provideRouter,
   withEnabledBlockingInitialNavigation,
@@ -344,7 +343,7 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { appRoutes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(appRoutes, withEnabledBlockingInitialNavigation()), provideAnimations(), importProvidersFrom(TuiRootModule)],
+  providers: [provideRouter(appRoutes, withEnabledBlockingInitialNavigation()), provideAnimations(), NG_EVENT_PLUGINS],
 };`);
     });
 
@@ -359,9 +358,7 @@ export const appConfig: ApplicationConfig = {
         );
 
         expect(tree.readContent('test/main.ts'))
-            .toBe(`import { importProvidersFrom } from "@angular/core";
-import { provideAnimations } from "@angular/platform-browser/animations";
-import { TuiRootModule } from "@taiga-ui/core";
+            .toBe(`import { NG_EVENT_PLUGINS } from "@tinkoff/ng-event-plugins";
 import { bootstrapApplication } from '@angular/platform-browser';
 import {
   provideRouter,
@@ -371,7 +368,7 @@ import { appRoutes } from './app/app.routes';
 import { AppComponent } from './app/app.component';
 
 bootstrapApplication(AppComponent, {
-  providers: [provideAnimations(), provideRouter(appRoutes, withEnabledBlockingInitialNavigation()), importProvidersFrom(TuiRootModule)],
+  providers: [provideAnimations(), provideRouter(appRoutes, withEnabledBlockingInitialNavigation()), NG_EVENT_PLUGINS],
 }).catch((err) => console.error(err));
 `);
     });

@@ -10,6 +10,7 @@ import type {
 } from '@angular/router';
 import {ActivatedRoute, Router} from '@angular/router';
 import {TuiDialogService} from '@taiga-ui/core';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import {EMPTY, NEVER} from 'rxjs';
 import {anything, deepEqual, instance, mock, verify, when} from 'ts-mockito';
@@ -49,6 +50,7 @@ describe('TuiRoutableDialog', () => {
         void TestBed.configureTestingModule({
             imports: [TuiRoutableDialogComponent],
             providers: [
+                NG_EVENT_PLUGINS,
                 providerOf(TuiDialogService, tuiDialogService),
                 providerOf(Router, router),
                 {

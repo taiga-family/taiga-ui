@@ -7,6 +7,7 @@ import {
     TuiPrimitiveCalendarRangeComponent,
     TuiPrimitiveCalendarRangeModule,
 } from '@taiga-ui/kit';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('PrimitiveRangeCalendar component', () => {
     @Component({
@@ -27,6 +28,7 @@ describe('PrimitiveRangeCalendar component', () => {
         TestBed.configureTestingModule({
             imports: [TuiPrimitiveCalendarRangeModule, NoopAnimationsModule],
             declarations: [TestComponent],
+            providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);

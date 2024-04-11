@@ -6,6 +6,7 @@ import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {TuiTagComponent, TuiTagModule} from '@taiga-ui/kit';
 import {TuiTagHarness} from '@taiga-ui/testing';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('Tag', () => {
     @Component({
@@ -36,6 +37,7 @@ describe('Tag', () => {
         TestBed.configureTestingModule({
             imports: [TuiTagModule],
             declarations: [TestComponent],
+            providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
 

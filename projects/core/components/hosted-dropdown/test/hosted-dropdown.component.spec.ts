@@ -10,10 +10,11 @@ import {
     TuiHostedDropdownModule,
     TuiPrimitiveTextfieldComponent,
     TuiPrimitiveTextfieldModule,
-    TuiRootModule,
+    TuiRootComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {tuiDispatchOnActive, TuiPageObject} from '@taiga-ui/testing';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('TuiHostedDropdown', () => {
     @Component({
@@ -126,9 +127,10 @@ describe('TuiHostedDropdown', () => {
                 TuiTextfieldControllerModule,
                 TuiDataListModule,
                 TuiElementModule,
-                TuiRootModule,
+                TuiRootComponent,
             ],
             declarations: [TestComponent],
+            providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);

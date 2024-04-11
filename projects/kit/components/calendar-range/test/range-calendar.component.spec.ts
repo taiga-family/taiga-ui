@@ -12,7 +12,7 @@ import {
     TuiMonth,
     TuiYear,
 } from '@taiga-ui/cdk';
-import {TuiRootModule} from '@taiga-ui/core';
+import {TuiRootComponent} from '@taiga-ui/core';
 import {
     TUI_CALENDAR_DATE_STREAM,
     TuiCalendarRangeComponent,
@@ -21,6 +21,7 @@ import {
     TuiDayRangePeriod,
 } from '@taiga-ui/kit';
 import {TuiPageObject} from '@taiga-ui/testing';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 import type {Observable} from 'rxjs';
 import {of} from 'rxjs';
 
@@ -75,10 +76,11 @@ describe('rangeCalendarComponent', () => {
         TestBed.configureTestingModule({
             imports: [
                 TuiCalendarRangeModule,
-                TuiRootModule,
+                TuiRootComponent,
                 ReactiveFormsModule,
                 NoopAnimationsModule,
             ],
+            providers: [NG_EVENT_PLUGINS],
             declarations: [TestComponent],
         });
         await TestBed.compileComponents();

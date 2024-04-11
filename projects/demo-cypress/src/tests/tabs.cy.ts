@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
-import {TuiRootModule} from '@taiga-ui/core';
+import {TuiRootComponent} from '@taiga-ui/core';
 import {TuiTabsModule} from '@taiga-ui/kit';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('Tabs', () => {
     let component: TestComponent;
@@ -45,7 +46,8 @@ describe('Tabs', () => {
     beforeEach(() =>
         cy
             .mount(TestComponent, {
-                imports: [TuiRootModule, TuiTabsModule],
+                imports: [TuiRootComponent, TuiTabsModule],
+                providers: [NG_EVENT_PLUGINS],
             })
             .then(wrapper => {
                 component = wrapper.component;

@@ -9,7 +9,7 @@ import {
     TuiPrimitiveTextfieldModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiRootModule} from '@taiga-ui/core/components/root';
+import {TuiRootComponent} from '@taiga-ui/core/components/root';
 import {TuiPrimitiveTextfieldHarness} from '@taiga-ui/testing';
 
 describe('PrimitiveTextfield', () => {
@@ -59,7 +59,7 @@ describe('PrimitiveTextfield', () => {
                 TuiPrimitiveTextfieldModule,
                 TuiTextfieldControllerModule,
                 TuiHintModule,
-                TuiRootModule,
+                TuiRootComponent,
             ],
             declarations: [TestComponent],
         });

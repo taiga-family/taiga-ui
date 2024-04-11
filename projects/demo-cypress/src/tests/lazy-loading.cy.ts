@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
-import {TuiRootModule} from '@taiga-ui/core';
+import {TuiRootComponent} from '@taiga-ui/core';
 import {TuiLazyLoadingModule} from '@taiga-ui/kit';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('LazyLoading', () => {
     @Component({
@@ -28,7 +29,8 @@ describe('LazyLoading', () => {
 
     beforeEach(() =>
         cy.mount(TestComponent, {
-            imports: [TuiRootModule, TuiLazyLoadingModule],
+            imports: [TuiRootComponent, TuiLazyLoadingModule],
+            providers: [NG_EVENT_PLUGINS],
             componentProperties: {
                 src: '',
             },
