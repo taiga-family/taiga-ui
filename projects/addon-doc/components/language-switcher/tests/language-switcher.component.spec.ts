@@ -2,7 +2,7 @@ import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {ReactiveFormsModule} from '@angular/forms';
 import {TuiLanguageSwitcherComponent} from '@taiga-ui/addon-doc';
-import {TuiDataListModule} from '@taiga-ui/core';
+import {TuiDataListModule, TuiFlagPipe} from '@taiga-ui/core';
 import {TuiCountryIsoCode, TuiLanguageSwitcher} from '@taiga-ui/i18n';
 import {TuiSelectModule} from '@taiga-ui/kit';
 
@@ -36,9 +36,10 @@ describe('TuiLanguageSwitcherComponent', () => {
     });
 
     it('should correct return path to icon flag', () => {
-        expect(component.getFlagPath).toBeTruthy();
-        expect(component.getFlagPath(TuiCountryIsoCode.CN)).toBe(
-            'assets/taiga-ui/icons/CN.png',
-        );
+        TestBed.runInInjectionContext(() => {
+            expect(new TuiFlagPipe().transform(TuiCountryIsoCode.CN)).toBe(
+                'assets/taiga-ui/icons/CN.png',
+            );
+        });
     });
 });
