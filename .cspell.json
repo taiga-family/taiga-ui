@@ -2,7 +2,7 @@
     "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/master/cspell.schema.json",
     "import": ["@taiga-ui/cspell-config/cspell.config.js"],
     "files": ["*/*.*"],
-    "ignoreWords": ["iisnode", "docstrings", "sweepai", "cardnumber"],
+    "ignoreWords": ["iisnode", "docstrings", "sweepai", "cardnumber", "Acpekt"],
     "ignorePaths": [
         ".git",
         "CHANGELOG.md",
