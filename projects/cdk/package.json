@@ -62,12 +62,7 @@
             "@taiga-ui/addon-mobile",
             "@taiga-ui/layout",
             "@taiga-ui/experimental",
-            "@taiga-ui/proprietary-banking",
-            "@taiga-ui/proprietary-core",
-            "@taiga-ui/proprietary-icons",
-            "@taiga-ui/proprietary-navigation",
-            "@taiga-ui/proprietary-tds-icons",
-            "@taiga-ui/proprietary-tds-palette"
+            "@taiga-ui/proprietary"
         ]
     },
     "schematics": "./schematics/collection.json"

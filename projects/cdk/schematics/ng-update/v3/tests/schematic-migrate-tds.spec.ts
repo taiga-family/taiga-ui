@@ -12,6 +12,7 @@ import {
 } from 'ng-morph';
 
 import {TAIGA_VERSION} from '../../../ng-add/constants/versions';
+import {makeAngularJsonWithAssets} from '../../../utils/make-angular-json-with-assets';
 
 const collectionPath = join(__dirname, '../../../migration.json');
 
@@ -150,29 +151,3 @@ describe('ng-update angular.json', () => {
 
     afterEach(() => resetActiveProject());
 });
-
-function makeAngularJsonWithAssets(assets: string): string {
-    return `
-{
-  "version": 1,
-  "projects": {
-    "demo": {
-        "root": "",
-        "architect": {
-          "build": {
-            "options": {
-              "main": "test/main.ts",
-              "styles": [
-                "node_modules/@taiga-ui/core/styles/taiga-ui-fonts.less",
-                "node_modules/@taiga-ui/styles/taiga-ui-global.less",
-                "some.style"
-              ],
-              "assets": [${assets}
-              ]
-            }
-          }
-        }
-    }
-  }
-}`;
-}
