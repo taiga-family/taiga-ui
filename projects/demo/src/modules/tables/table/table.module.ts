@@ -21,7 +21,7 @@ import {
     TuiNotificationModule,
     TuiScrollableDirective,
     TuiScrollbarComponent,
-    TuiSvgModule,
+    TuiSvgComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {
@@ -63,7 +63,7 @@ import {ExampleTuiTableComponent} from './table.component';
         TuiDataListWrapperModule,
         TuiFormatNumberPipeModule,
         TuiValidatorDirective,
-        TuiSvgModule,
+        TuiSvgComponent,
         TuiButtonDirective,
         TuiLinkDirective,
         TuiTagModule,

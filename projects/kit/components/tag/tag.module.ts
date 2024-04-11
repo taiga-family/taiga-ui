@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {TuiIconComponent, TuiLoaderModule, TuiSvgModule} from '@taiga-ui/core';
+import {TuiIconComponent, TuiLoaderModule, TuiSvgComponent} from '@taiga-ui/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiTagComponent} from './tag.component';
@@ -10,7 +10,7 @@ import {TuiTagComponent} from './tag.component';
     imports: [
         CommonModule,
         FormsModule,
-        TuiSvgModule,
+        TuiSvgComponent,
         TuiIconComponent,
         TuiLoaderModule,
         PolymorpheusModule,

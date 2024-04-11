@@ -9,7 +9,7 @@ import {
     TuiGroupDirective,
     TuiHintModule,
     TuiLinkDirective,
-    TuiSvgModule,
+    TuiSvgComponent,
     TuiTextfieldControllerModule,
     TuiTooltipModule,
 } from '@taiga-ui/core';
@@ -36,7 +36,7 @@ import {TuiDocDemoComponent} from './demo.component';
         TuiGroupDirective,
         TuiTooltipModule,
         TuiCheckboxComponent,
-        TuiSvgModule,
+        TuiSvgComponent,
         TuiDataListWrapperModule,
         TuiDataListModule,
         TuiTextfieldControllerModule,

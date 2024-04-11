@@ -10,7 +10,7 @@ import {
     TuiDataListModule,
     TuiDropdownModule,
     TuiLinkDirective,
-    TuiSvgModule,
+    TuiSvgComponent,
 } from '@taiga-ui/core';
 import {TuiDataListDropdownManagerModule, TuiTextareaModule} from '@taiga-ui/kit';
 
@@ -25,7 +25,7 @@ import {TuiDropdownContextExample3} from './examples/3';
         CommonModule,
         TuiAddonDocModule,
         TuiDataListModule,
-        TuiSvgModule,
+        TuiSvgComponent,
         TuiTableModule,
         TuiDataListDropdownManagerModule,
         TuiTextareaModule,

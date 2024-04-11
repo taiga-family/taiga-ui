@@ -8,7 +8,7 @@ import {
     TuiButtonDirective,
     TuiHintModule,
     TuiLoaderModule,
-    TuiSvgModule,
+    TuiSvgComponent,
 } from '@taiga-ui/core';
 import {TuiSliderModule} from '@taiga-ui/kit';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
@@ -31,7 +31,7 @@ import {TuiPreviewZoomComponent} from './zoom/preview-zoom.component';
         TuiSliderModule,
         TuiHintModule,
         TuiDragModule,
-        TuiSvgModule,
+        TuiSvgComponent,
         TuiLoaderModule,
         TuiPanModule,
         TuiZoomModule,

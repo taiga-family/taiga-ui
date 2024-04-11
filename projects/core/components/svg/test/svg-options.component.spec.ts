@@ -9,7 +9,6 @@ import {
     TUI_SVG_SRC_PROCESSOR,
     tuiIconsPathFactory,
     TuiSvgComponent,
-    TuiSvgModule,
     tuiSvgOptionsProvider,
     tuiSvgSrcInterceptors,
 } from '@taiga-ui/core';
@@ -39,7 +38,7 @@ describe('SVG options', () => {
     describe('Default behaviour', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
-                imports: [TuiSvgModule],
+                imports: [TuiSvgComponent],
                 declarations: [TestComponent],
             });
             await TestBed.compileComponents();
@@ -61,7 +60,7 @@ describe('SVG options', () => {
     describe('TUI_ICONS_PATH', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
-                imports: [TuiSvgModule],
+                imports: [TuiSvgComponent],
                 declarations: [TestComponent],
                 providers: [
                     {
@@ -91,7 +90,7 @@ describe('SVG options', () => {
     describe('path uses baseUrl', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
-                imports: [TuiSvgModule],
+                imports: [TuiSvgComponent],
                 declarations: [TestComponent],
                 providers: [
                     {
@@ -123,7 +122,7 @@ describe('SVG options', () => {
     describe('TUI_SVG_SRC_PROCESSOR', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
-                imports: [TuiSvgModule],
+                imports: [TuiSvgComponent],
                 declarations: [TestComponent],
                 providers: [
                     {
@@ -169,7 +168,7 @@ describe('SVG options', () => {
             const path = 'assets/hello-world/icons';
 
             TestBed.configureTestingModule({
-                imports: [TuiSvgModule],
+                imports: [TuiSvgComponent],
                 declarations: [TestComponent],
                 providers: [
                     tuiSvgOptionsProvider({
@@ -210,7 +209,7 @@ describe('SVG options', () => {
     describe('TUI_SVG_SRC_PROCESSOR + tuiSvgOptionsProvider -> srcProcessor', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
-                imports: [TuiSvgModule],
+                imports: [TuiSvgComponent],
                 declarations: [TestComponent],
                 providers: [
                     {
@@ -262,7 +261,7 @@ describe('SVG options', () => {
     describe('TUI_SVG_SRC_PROCESSOR -> https prefix', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
-                imports: [TuiSvgModule],
+                imports: [TuiSvgComponent],
                 declarations: [TestComponent],
                 providers: [
                     {
@@ -287,7 +286,7 @@ describe('SVG options', () => {
     describe('TUI_SVG_SRC_PROCESSOR + tuiSvgOptionsProvider', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
-                imports: [TuiSvgModule],
+                imports: [TuiSvgComponent],
                 declarations: [TestComponent],
                 providers: [
                     {
@@ -313,7 +312,7 @@ describe('SVG options', () => {
     describe('multiple source processors', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
-                imports: [TuiSvgModule],
+                imports: [TuiSvgComponent],
                 declarations: [TestComponent],
                 providers: [
                     tuiSvgOptionsProvider({path: 'assets/default-path-to-icons/'}),

@@ -20,7 +20,7 @@ import {
     TuiNotificationModule,
     TuiScrollableDirective,
     TuiScrollbarComponent,
-    TuiSvgModule,
+    TuiSvgComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {
@@ -55,7 +55,7 @@ import {TuiComboBoxExample8} from './examples/8';
         TuiButtonDirective,
         TuiLinkDirective,
         TuiAvatarComponent,
-        TuiSvgModule,
+        TuiSvgComponent,
         TuiDataListModule,
         TuiLoaderModule,
         TuiLetModule,

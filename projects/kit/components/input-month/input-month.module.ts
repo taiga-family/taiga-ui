@@ -5,7 +5,7 @@ import {TuiMapperPipeModule} from '@taiga-ui/cdk';
 import {
     TuiHostedDropdownModule,
     TuiPrimitiveTextfieldModule,
-    TuiSvgModule,
+    TuiSvgComponent,
     TuiTextfieldComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
@@ -20,7 +20,7 @@ import {TuiInputMonthDirective} from './input-month.directive';
         TuiCalendarMonthModule,
         TuiHostedDropdownModule,
         TuiPrimitiveTextfieldModule,
-        TuiSvgModule,
+        TuiSvgComponent,
         TuiMapperPipeModule,
         TuiTextfieldControllerModule,
         FormsModule,

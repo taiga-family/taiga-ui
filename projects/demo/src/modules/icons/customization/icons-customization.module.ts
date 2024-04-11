@@ -14,7 +14,7 @@ import {
     TuiHintModule,
     TuiLinkDirective,
     TuiNotificationModule,
-    TuiSvgModule,
+    TuiSvgComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {TuiInputDateRangeModule} from '@taiga-ui/kit';
@@ -38,7 +38,7 @@ import {IconsCustomizationComponent} from './icons-customization.component';
         TuiHintModule,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(IconsCustomizationComponent)),
-        TuiSvgModule,
+        TuiSvgComponent,
     ],
     declarations: [
         IconsCustomizationComponent,

@@ -5,7 +5,7 @@ import {TuiLegendItemModule, TuiRingChartModule} from '@taiga-ui/addon-charts';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiHoveredModule} from '@taiga-ui/cdk';
-import {TuiNotificationModule, TuiSvgModule} from '@taiga-ui/core';
+import {TuiNotificationModule, TuiSvgComponent} from '@taiga-ui/core';
 import {TuiCheckboxComponent} from '@taiga-ui/kit';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
@@ -18,7 +18,7 @@ import {ExampleTuiLegendItemComponent} from './legend-item.component';
         CommonModule,
         TuiLegendItemModule,
         TuiRingChartModule,
-        TuiSvgModule,
+        TuiSvgComponent,
         TuiNotificationModule,
         PolymorpheusModule,
         TuiHoveredModule,

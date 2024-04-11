@@ -11,7 +11,7 @@ import {
     TuiLetModule,
     TuiMapperPipeModule,
 } from '@taiga-ui/cdk';
-import {TuiDropdownModule, TuiSvgModule, TuiWrapperModule} from '@taiga-ui/core';
+import {TuiDropdownModule, TuiSvgComponent, TuiWrapperModule} from '@taiga-ui/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiInputCardGroupedComponent} from './input-card-grouped.component';
@@ -23,7 +23,7 @@ import {TuiInputCardGroupedComponent} from './input-card-grouped.component';
         FormsModule,
         MaskitoDirective,
         TuiFocusableModule,
-        TuiSvgModule,
+        TuiSvgComponent,
         TuiWrapperModule,
         TuiActiveZoneDirective,
         TuiMapperPipeModule,

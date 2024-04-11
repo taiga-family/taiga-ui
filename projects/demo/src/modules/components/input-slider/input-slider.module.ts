@@ -9,7 +9,7 @@ import {
     TuiLinkDirective,
     TuiNotificationModule,
     TuiNumberFormatDirective,
-    TuiSvgModule,
+    TuiSvgComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {
@@ -39,7 +39,7 @@ import {ExampleTuiInputSliderComponent} from './input-slider.component';
         TuiHintModule,
         TuiAddonDocModule,
         TuiLinkDirective,
-        TuiSvgModule,
+        TuiSvgComponent,
         TuiNotificationModule,
         TuiTextfieldControllerModule,
         TuiNumberFormatDirective,

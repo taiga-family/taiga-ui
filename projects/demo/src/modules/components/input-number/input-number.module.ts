@@ -10,7 +10,7 @@ import {
     TuiLinkDirective,
     TuiNotificationModule,
     TuiNumberFormatDirective,
-    TuiSvgModule,
+    TuiSvgComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {TuiInputNumberModule, TuiRadioListComponent} from '@taiga-ui/kit';
@@ -32,7 +32,7 @@ import {ExampleTuiInputNumberComponent} from './input-number.component';
         ReactiveFormsModule,
         TuiInputNumberModule,
         TuiCurrencyPipeModule,
-        TuiSvgModule,
+        TuiSvgComponent,
         TuiRadioListComponent,
         TuiButtonDirective,
         TuiLinkDirective,

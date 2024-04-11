@@ -12,7 +12,7 @@ import {
     TuiErrorModule,
     TuiLabelModule,
     TuiLinkDirective,
-    TuiSvgModule,
+    TuiSvgComponent,
 } from '@taiga-ui/core';
 import {TuiFieldErrorPipeModule} from '@taiga-ui/kit';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
@@ -34,7 +34,7 @@ import {ExampleTuiInputCardGroupedComponent} from './input-card-grouped.componen
         TuiDataListModule,
         TuiThumbnailCardComponent,
         TuiLabelModule,
-        TuiSvgModule,
+        TuiSvgComponent,
         CommonModule,
         ReactiveFormsModule,
         TuiAddonDocModule,

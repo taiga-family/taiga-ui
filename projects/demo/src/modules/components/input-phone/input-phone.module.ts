@@ -11,7 +11,7 @@ import {
     TuiHintModule,
     TuiLinkDirective,
     TuiNotificationModule,
-    TuiSvgModule,
+    TuiSvgComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {TuiAvatarComponent, TuiInputPhoneModule} from '@taiga-ui/kit';
@@ -32,7 +32,7 @@ import {ExampleTuiInputPhoneComponent} from './input-phone.component';
         TuiLetModule,
         TuiDataListModule,
         TuiButtonDirective,
-        TuiSvgModule,
+        TuiSvgComponent,
         TuiAvatarComponent,
         TuiDropdownModule,
         TuiTextfieldControllerModule,

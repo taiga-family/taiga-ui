@@ -8,7 +8,7 @@ import {
     TuiButtonDirective,
     TuiLoaderModule,
     TuiNotificationModule,
-    TuiSvgModule,
+    TuiSvgComponent,
 } from '@taiga-ui/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
@@ -25,7 +25,7 @@ import {ExampleTuiPreviewComponent} from './preview.component';
         TuiPreviewModule,
         TuiNotificationModule,
         TuiAddonDocModule,
-        TuiSvgModule,
+        TuiSvgComponent,
         TuiLoaderModule,
         TuiSwipeModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiPreviewComponent)),

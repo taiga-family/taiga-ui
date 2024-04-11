@@ -9,7 +9,7 @@ import {
     TuiButtonDirective,
     TuiLinkDirective,
     TuiNotificationModule,
-    TuiSvgModule,
+    TuiSvgComponent,
 } from '@taiga-ui/core';
 
 import {IconsComponent} from './icons.component';
@@ -21,7 +21,7 @@ import {IconsGroupModule} from './icons-group/icons-group.module';
         FormsModule,
         TuiNotificationModule,
         TuiLinkDirective,
-        TuiSvgModule,
+        TuiSvgComponent,
         TuiButtonDirective,
         TuiAddonDocModule,
         IconsGroupModule,

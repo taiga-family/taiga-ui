@@ -9,7 +9,7 @@ import {
     TuiDropdownModule,
     TuiGroupDirective,
     TuiNotificationModule,
-    TuiSvgModule,
+    TuiSvgComponent,
 } from '@taiga-ui/core';
 import {
     TuiBadgeDirective,
@@ -34,7 +34,7 @@ import {ExampleTuiItemsWithMoreComponent} from './items-with-more.component';
         TuiDropdownModule,
         TuiButtonDirective,
         TuiDataListModule,
-        TuiSvgModule,
+        TuiSvgComponent,
         TuiBlockDirective,
         tuiGetDocModules(ExampleTuiItemsWithMoreComponent),
         TuiExamplePipe,

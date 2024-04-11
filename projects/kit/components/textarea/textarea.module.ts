@@ -5,7 +5,7 @@ import {TuiFocusableModule} from '@taiga-ui/cdk';
 import {
     TuiPrimitiveTextfieldModule,
     TuiScrollbarComponent,
-    TuiSvgModule,
+    TuiSvgComponent,
     TuiTextfieldComponent,
     TuiTooltipModule,
     TuiWrapperModule,
@@ -23,7 +23,7 @@ import {TuiTextareaDirective} from './textarea.directive';
         TuiScrollbarComponent,
         TuiTooltipModule,
         TuiWrapperModule,
-        TuiSvgModule,
+        TuiSvgComponent,
         TuiPrimitiveTextfieldModule,
         PolymorpheusModule,
     ],

@@ -8,7 +8,7 @@ import {
     TuiButtonDirective,
     TuiLinkDirective,
     TuiLoaderModule,
-    TuiSvgModule,
+    TuiSvgComponent,
 } from '@taiga-ui/core';
 import {TuiLabelDirective} from '@taiga-ui/experimental';
 import {TuiCheckboxComponent, TuiTreeModule} from '@taiga-ui/kit';
@@ -26,7 +26,7 @@ import {ExampleTuiTreeComponent} from './tree.component';
 @NgModule({
     imports: [
         TuiTreeModule,
-        TuiSvgModule,
+        TuiSvgComponent,
         TuiButtonDirective,
         TuiLinkDirective,
         TuiMapperPipeModule,
