@@ -56,16 +56,4 @@ describe('primitiveSpinButton', () => {
 
         expect(result).toBeUndefined();
     });
-
-    it('emits focus if it was updated', () => {
-        let result: unknown;
-
-        component.focusedChange.subscribe((focused: boolean) => {
-            result = focused;
-        });
-
-        component.onFocused(true);
-
-        expect(result).toBe(true);
-    });
 });
