@@ -7,5 +7,3 @@ export * from '@taiga-ui/addon-mobile/components/sheet';
 export * from '@taiga-ui/addon-mobile/components/sheet-dialog';
 export * from '@taiga-ui/addon-mobile/components/swipe-action';
 export * from '@taiga-ui/addon-mobile/components/tab-bar';
-export * from '@taiga-ui/addon-mobile/components/theme-android';
-export * from '@taiga-ui/addon-mobile/components/theme-ios';

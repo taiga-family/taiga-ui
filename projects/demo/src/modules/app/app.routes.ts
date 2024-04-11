@@ -715,15 +715,6 @@ export const ROUTES: Routes = [
         },
     },
     {
-        path: DemoRoute.Mobile,
-        loadChildren: async () =>
-            (await import('../components/mobile-themes/mobile-themes.module'))
-                .ExampleTuiMobileThemesModule,
-        data: {
-            title: 'Mobile',
-        },
-    },
-    {
         path: DemoRoute.Notification,
         loadChildren: async () =>
             (await import('../components/notification/notification.module'))
