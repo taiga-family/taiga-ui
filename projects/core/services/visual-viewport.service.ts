@@ -22,6 +22,6 @@ export class TuiVisualViewportService {
     }
 
     correctY(y: number): number {
-        return this.isWebkit ? y + (this.win.visualViewport?.offsetLeft ?? 0) : y;
+        return this.isWebkit ? y + (this.win.visualViewport?.offsetTop ?? 0) : y;
     }
 }
