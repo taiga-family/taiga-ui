@@ -9,18 +9,8 @@ import {
     Output,
     ViewChildren,
 } from '@angular/core';
-import type {
-    TuiContext,
-    TuiFocusableElementAccessor,
-    TuiNativeFocusableElement,
-} from '@taiga-ui/cdk';
-import {
-    AbstractTuiInteractive,
-    EMPTY_QUERY,
-    tuiAsFocusableItemAccessor,
-    tuiClamp,
-    tuiIsNativeFocusedIn,
-} from '@taiga-ui/cdk';
+import type {TuiContext, TuiNativeFocusableElement} from '@taiga-ui/cdk';
+import {EMPTY_QUERY, tuiClamp, tuiIsNativeFocusedIn} from '@taiga-ui/cdk';
 import type {TuiHorizontalDirection, TuiSizeL, TuiSizeS, TuiSizeXS} from '@taiga-ui/core';
 import {TUI_SPIN_ICONS} from '@taiga-ui/core';
 import {TUI_PAGINATION_TEXTS} from '@taiga-ui/kit/tokens';
@@ -35,12 +25,8 @@ const ACTIVE_ITEM_LENGTH = 1;
     templateUrl: './pagination.template.html',
     styleUrls: ['./pagination.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [tuiAsFocusableItemAccessor(TuiPaginationComponent)],
 })
-export class TuiPaginationComponent
-    extends AbstractTuiInteractive
-    implements TuiFocusableElementAccessor
-{
+export class TuiPaginationComponent {
     @ViewChildren('element', {read: ElementRef})
     private readonly els: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
@@ -48,6 +34,9 @@ export class TuiPaginationComponent
 
     @Input()
     public length = 1;
+
+    @Input()
+    public focusable = true;
 
     @Input()
     public size: TuiSizeL | TuiSizeS = 'l';
@@ -206,7 +195,7 @@ export class TuiPaginationComponent
         }
 
         const next = this.els.find(
-            (_, index, array) => array[index - 1].nativeElement === element,
+            (_, index, array) => array[index - 1]?.nativeElement === element,
         );
 
         next?.nativeElement.focus();
@@ -215,10 +204,6 @@ export class TuiPaginationComponent
     protected onArrowClick(direction: TuiHorizontalDirection): void {
         this.tryChangeTo(direction);
         this.focusActive();
-    }
-
-    protected onActiveZone(focused: boolean): void {
-        this.updateFocused(focused);
     }
 
     /**

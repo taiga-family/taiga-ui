@@ -1,7 +1,4 @@
-<div
-    class="t-content"
-    (tuiActiveZoneChange)="onActiveZone($event)"
->
+<div class="t-content">
     <ng-container *ngIf="size !== 's'; else smallButtons">
         <ng-container *ngIf="texts$ | async as texts">
             <button

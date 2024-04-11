@@ -1,4 +1,3 @@
-import type {ElementRef} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -9,14 +8,7 @@ import {
     inject,
     Input,
     Output,
-    ViewChild,
 } from '@angular/core';
-import type {TuiFocusableElementAccessor, TuiNativeFocusableElement} from '@taiga-ui/cdk';
-import {
-    AbstractTuiInteractive,
-    tuiAsFocusableItemAccessor,
-    tuiIsNativeFocused,
-} from '@taiga-ui/cdk';
 import type {TuiSizeS} from '@taiga-ui/core';
 import {TUI_ARROW_OPTIONS} from '@taiga-ui/kit/components/arrow';
 
@@ -28,15 +20,8 @@ import {TuiAccordionItemEagerContentDirective} from './accordion-item-eager-cont
     templateUrl: './accordion-item.template.html',
     styleUrls: ['./accordion-item.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [tuiAsFocusableItemAccessor(TuiAccordionItemComponent)],
 })
-export class TuiAccordionItemComponent
-    extends AbstractTuiInteractive
-    implements TuiFocusableElementAccessor
-{
-    @ViewChild('focusableElement')
-    private readonly focusableElement?: ElementRef<TuiNativeFocusableElement>;
-
+export class TuiAccordionItemComponent {
     private readonly cdr = inject(ChangeDetectorRef);
 
     @Input()
@@ -79,27 +64,9 @@ export class TuiAccordionItemComponent
 
     protected readonly options = inject(TUI_ARROW_OPTIONS);
 
-    public get nativeFocusableElement(): TuiNativeFocusableElement | null {
-        return this.disabled || !this.focusableElement
-            ? null
-            : this.focusableElement.nativeElement;
-    }
-
-    public get focused(): boolean {
-        return tuiIsNativeFocused(this.nativeFocusableElement);
-    }
-
     public close(): void {
         this.updateOpen(false);
         this.cdr.markForCheck();
-    }
-
-    protected onFocused(focused: boolean): void {
-        this.updateFocused(focused);
-    }
-
-    protected onFocusVisible(focusVisible: boolean): void {
-        this.updateFocusVisible(focusVisible);
     }
 
     protected onRowToggle(): void {

@@ -3,18 +3,14 @@
     class="t-wrapper"
 >
     <button
-        #focusableElement
         automation-id="tui-accordion__item-header"
         type="button"
         class="t-header"
         [class.t-header_hoverable]="!disableHover"
         [class.t-header_open]="open"
-        [disabled]="computedDisabled"
-        [tuiFocusable]="computedFocusable"
+        [disabled]="disabled"
         (click)="onRowToggle()"
         (keydown.esc)="onItemKeyDownEsc($event)"
-        (tuiFocusedChange)="onFocused($event)"
-        (tuiFocusVisibleChange)="onFocusVisible($event)"
     >
         <span
             automation-id="tui-accordion__item-title"

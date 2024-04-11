@@ -1,14 +1,12 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    ElementRef,
     EventEmitter,
     HostListener,
     inject,
     Input,
     Output,
 } from '@angular/core';
-import {AbstractTuiInteractive, tuiIsNativeFocusedIn} from '@taiga-ui/cdk';
 import {TUI_SPIN_ICONS, TUI_SPIN_TEXTS} from '@taiga-ui/core/tokens';
 
 @Component({
@@ -20,8 +18,9 @@ import {TUI_SPIN_ICONS, TUI_SPIN_TEXTS} from '@taiga-ui/core/tokens';
         '(mousedown.silent.prevent)': '(0)',
     },
 })
-export class TuiPrimitiveSpinButtonComponent extends AbstractTuiInteractive {
-    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+export class TuiPrimitiveSpinButtonComponent {
+    @Input()
+    public focusable = true;
 
     @Input()
     public disabled = false;
@@ -41,10 +40,6 @@ export class TuiPrimitiveSpinButtonComponent extends AbstractTuiInteractive {
     protected readonly icons = inject(TUI_SPIN_ICONS);
     protected readonly spinTexts$ = inject(TUI_SPIN_TEXTS);
 
-    public get focused(): boolean {
-        return tuiIsNativeFocusedIn(this.el);
-    }
-
     @HostListener('keydown.arrowLeft.prevent')
     public onLeftClick(): void {
         if (!this.leftComputedDisabled) {
@@ -59,21 +54,11 @@ export class TuiPrimitiveSpinButtonComponent extends AbstractTuiInteractive {
         }
     }
 
-    @HostListener('focusin', ['true'])
-    @HostListener('focusout', ['false'])
-    public onFocused(focused: boolean): void {
-        this.updateFocused(focused);
-    }
-
     protected get leftComputedDisabled(): boolean {
-        return this.computedDisabled || this.leftDisabled;
+        return this.disabled || this.leftDisabled;
     }
 
     protected get rightComputedDisabled(): boolean {
-        return this.computedDisabled || this.rightDisabled;
-    }
-
-    protected onFocusVisible(focusVisible: boolean): void {
-        this.updateFocusVisible(focusVisible);
+        return this.disabled || this.rightDisabled;
     }
 }
