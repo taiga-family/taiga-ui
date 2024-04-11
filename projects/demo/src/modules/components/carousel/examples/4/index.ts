@@ -31,6 +31,6 @@ export class TuiCarouselExample4 {
     }
 
     navigate(delta: number): void {
-        this.index = (this.index + delta) % 3;
+        this.index = this.index + delta < 0 ? 2 : (this.index + delta) % 3;
     }
 }

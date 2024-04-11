@@ -16,6 +16,7 @@ import {
 import {
     EMPTY_QUERY,
     TUI_IS_MOBILE,
+    TUI_SWIPE_OPTIONS,
     tuiClamp,
     TuiItemDirective,
     tuiPure,
@@ -27,6 +28,7 @@ import {
     templateUrl: './carousel.template.html',
     styleUrls: ['./carousel.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [{provide: TUI_SWIPE_OPTIONS, useValue: {timeout: 200, threshold: 30}}],
 })
 export class TuiCarouselComponent {
     private translate = 0;
@@ -102,8 +104,8 @@ export class TuiCarouselComponent {
     }
 
     onIntersection({intersectionRatio}: IntersectionObserverEntry, index: number): void {
-        if (intersectionRatio && intersectionRatio !== 1 && !this.transitioned) {
-            this.updateIndex(index - Math.floor(this.itemsCount / 2));
+        if (intersectionRatio && intersectionRatio >= 0.5 && !this.transitioned) {
+            this.updateIndex(this.index < index ? index - this.itemsCount + 1 : index);
         }
     }
 
