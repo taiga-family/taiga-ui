@@ -1,4 +1,5 @@
 export * from '@taiga-ui/core/directives/dropdown';
+export * from '@taiga-ui/core/directives/dropdown-mobile';
 export * from '@taiga-ui/core/directives/hint';
 export * from '@taiga-ui/core/directives/mask-accessor';
 export * from '@taiga-ui/core/directives/mode';

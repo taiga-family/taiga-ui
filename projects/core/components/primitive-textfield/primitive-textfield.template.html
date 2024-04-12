@@ -29,6 +29,7 @@
         [ngModel]="value"
         [readOnly]="readOnly || !editable"
         [tuiFocusable]="computedFocusable"
+        (mousedown)="onInputMousedown($event)"
         (ngModelChange)="onModelChange($event)"
     />
     <div

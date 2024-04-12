@@ -2,7 +2,6 @@ import {DOCUMENT} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
-    DoCheck,
     ElementRef,
     HostBinding,
     HostListener,
@@ -11,13 +10,10 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {tuiPx} from '@taiga-ui/cdk';
-import {
-    TUI_ANIMATIONS_DURATION,
-    TuiDropdownDirective,
-    tuiFadeIn,
-    tuiSlideInTop,
-    TuiVisualViewportService,
-} from '@taiga-ui/core';
+import {tuiFadeIn, tuiSlideInTop} from '@taiga-ui/core/animations';
+import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
+import {TuiVisualViewportService} from '@taiga-ui/core/services';
+import {TUI_ANIMATIONS_DURATION} from '@taiga-ui/core/tokens';
 
 const GAP = 16;
 
@@ -29,7 +25,7 @@ const GAP = 16;
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [tuiSlideInTop, tuiFadeIn],
 })
-export class TuiDropdownMobileComponent implements OnDestroy, DoCheck {
+export class TuiDropdownMobileComponent implements OnDestroy {
     private readonly observer = new ResizeObserver(() =>
         this.refresh(this.doc.defaultView!.visualViewport),
     );
@@ -78,10 +74,6 @@ export class TuiDropdownMobileComponent implements OnDestroy, DoCheck {
             '--t-top',
             tuiPx(offsetTop + GAP - this.vvs.correctY(rect.top)),
         );
-    }
-
-    ngDoCheck(): void {
-        this.refresh(this.doc.defaultView!.visualViewport);
     }
 
     ngOnDestroy(): void {

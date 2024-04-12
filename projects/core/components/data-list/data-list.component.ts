@@ -14,6 +14,7 @@ import {
 } from '@angular/core';
 import {
     EMPTY_QUERY,
+    TUI_IS_MOBILE,
     tuiIsElement,
     tuiIsNativeFocusedIn,
     tuiIsPresent,
@@ -72,6 +73,7 @@ export class TuiDataListComponent<T> implements TuiDataListAccessor<T> {
         @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
         @Inject(TUI_NOTHING_FOUND_MESSAGE)
         readonly defaultEmptyContent$: Observable<string>,
+        @Inject(TUI_IS_MOBILE) private readonly isMobile: boolean,
     ) {}
 
     @tuiPure
@@ -101,7 +103,7 @@ export class TuiDataListComponent<T> implements TuiDataListAccessor<T> {
     @HostListener('wheel.silent.passive')
     @HostListener('mouseleave', ['$event.target'])
     handleFocusLossIfNecessary(element: Element = this.el.nativeElement): void {
-        if (this.origin && tuiIsNativeFocusedIn(element)) {
+        if (this.origin && tuiIsNativeFocusedIn(element) && !this.isMobile) {
             tuiSetNativeMouseFocused(this.origin, true, true);
         }
     }

@@ -7,16 +7,13 @@ import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiActiveZoneModule, TuiObscuredModule} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
+    TuiDropdownMobileModule,
     TuiDropdownModule,
     TuiLinkModule,
     TuiNotificationModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {
-    TuiAmountPipeModule,
-    TuiDropdownMobileModule,
-    TuiTitleModule,
-} from '@taiga-ui/experimental';
+import {TuiAmountPipeModule, TuiTitleModule} from '@taiga-ui/experimental';
 import {
     TuiAvatarModule,
     TuiComboBoxModule,

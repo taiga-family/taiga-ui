@@ -47,6 +47,7 @@ import {
     TuiCommonIcons,
     TuiDataListDirective,
     TuiDataListHost,
+    TuiDropdownMobileDirective,
     TuiHintOptionsDirective,
     TuiHostedDropdownComponent,
     TuiModeDirective,
@@ -195,6 +196,9 @@ export class TuiInputTagComponent
         @Inject(TUI_INPUT_TAG_OPTIONS)
         private readonly options: TuiInputTagOptions,
         @Inject(TUI_COMMON_ICONS) readonly icons: TuiCommonIcons,
+        @Optional()
+        @Inject(TuiDropdownMobileDirective)
+        private readonly dropdownMobile: TuiDropdownMobileDirective | null,
     ) {
         super(control, cdr);
     }
@@ -352,7 +356,14 @@ export class TuiInputTagComponent
         }
 
         event.preventDefault();
-        this.focusInput();
+        this.focusInput(!!this.dropdownMobile);
+    }
+
+    onInputMousedown(event: MouseEvent): void {
+        if (this.dropdownMobile) {
+            event.preventDefault();
+            this.focusInput(true);
+        }
     }
 
     onFieldKeyDownBackspace(event: Event): void {

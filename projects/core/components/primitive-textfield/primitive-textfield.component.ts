@@ -21,6 +21,7 @@ import {
     tuiPure,
     tuiRetargetedBoundaryCrossing,
 } from '@taiga-ui/cdk';
+import {TuiDropdownMobileDirective} from '@taiga-ui/core/directives';
 import {TuiHintOptionsDirective} from '@taiga-ui/core/directives/hint';
 import {
     TEXTFIELD_CONTROLLER_PROVIDER,
@@ -116,6 +117,9 @@ export class TuiPrimitiveTextfieldComponent
         @Inject(TUI_TEXTFIELD_OPTIONS)
         readonly options: TuiTextfieldOptions,
         @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
+        @Optional()
+        @Inject(TuiDropdownMobileDirective)
+        private readonly dropdownMobile: TuiDropdownMobileDirective | null,
     ) {
         super();
     }
@@ -283,6 +287,13 @@ export class TuiPrimitiveTextfieldComponent
 
         event.preventDefault();
         nativeFocusableElement.focus();
+    }
+
+    onInputMousedown(event: MouseEvent): void {
+        if (this.dropdownMobile) {
+            event.preventDefault();
+            this.nativeFocusableElement?.focus({preventScroll: true});
+        }
     }
 
     onModelChange(value: string): void {

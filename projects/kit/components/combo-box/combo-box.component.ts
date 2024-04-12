@@ -16,6 +16,7 @@ import {
 import {NgControl} from '@angular/forms';
 import {
     AbstractTuiNullableControl,
+    TUI_IS_MOBILE,
     TUI_STRICT_MATCHER,
     TuiActiveZoneDirective,
     tuiAsControl,
@@ -113,6 +114,7 @@ export class TuiComboBoxComponent<T>
         @Inject(TUI_ITEMS_HANDLERS) private readonly itemsHandlers: TuiItemsHandlers<T>,
         @Inject(TUI_TEXTFIELD_SIZE)
         private readonly textfieldSize: TuiTextfieldSizeDirective,
+        @Inject(TUI_IS_MOBILE) private readonly isMobile: boolean,
     ) {
         super(control, cdr);
     }
@@ -165,7 +167,10 @@ export class TuiComboBoxComponent<T>
     }
 
     handleOption(item: T): void {
-        this.focusInput();
+        if (!this.isMobile) {
+            this.focusInput();
+        }
+
         this.close();
         this.updateSearch(null);
         this.value = item;
