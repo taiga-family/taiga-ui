@@ -1,6 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
+import {TuiSetupComponent} from '@demo/utils';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiSidebarModule} from '@taiga-ui/addon-mobile';
 import {TuiActiveZoneDirective, TuiSwipeModule} from '@taiga-ui/cdk';
@@ -17,6 +18,7 @@ import {ExampleTuiSwipeComponent} from './swipe.component';
         TuiSidebarModule,
         TuiActiveZoneDirective,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiSwipeComponent)),
+        TuiSetupComponent,
     ],
     declarations: [ExampleTuiSwipeComponent, TuiSwipeExample1, TuiSwipeExample2],
     exports: [ExampleTuiSwipeComponent],
