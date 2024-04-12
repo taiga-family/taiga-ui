@@ -270,18 +270,17 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.Calendar,
-        loadChildren: async () =>
-            (await import('../components/calendar/calendar.module'))
-                .ExampleTuiCalendarModule,
+
         title: 'Calendar',
+        loadComponent: async () => import('../components/calendar'),
     }),
-    route({
+    {
         path: DemoRoute.Carousel,
         loadChildren: async () =>
             (await import('../components/carousel/carousel.module'))
                 .ExampleTuiCarouselModule,
         title: 'Carousel',
-    }),
+    },
     route({
         path: DemoRoute.ThumbnailCard,
         title: 'ThumbnailCard',

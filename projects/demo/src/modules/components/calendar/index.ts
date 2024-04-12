@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
+import {RouterModule} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
-import type {TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiAddonDocModule, type TuiDocExample} from '@taiga-ui/addon-doc';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk';
 import {
     TUI_FALSE_HANDLER,
@@ -11,17 +12,43 @@ import {
     TuiMonth,
 } from '@taiga-ui/cdk';
 import type {TuiMarkerHandler} from '@taiga-ui/core';
-import {TUI_DEFAULT_MARKER_HANDLER} from '@taiga-ui/core';
+import {
+    TUI_DEFAULT_MARKER_HANDLER,
+    TuiCalendarModule,
+    TuiLinkDirective,
+} from '@taiga-ui/core';
+
+import {TuiCalendarExample1} from './examples/1';
+import {TuiCalendarExample2} from './examples/2';
+import {TuiCalendarExample3} from './examples/3';
+import {TuiCalendarExample4} from './examples/4';
+import {TuiCalendarExample5} from './examples/5';
+import {TuiCalendarExample6} from './examples/6';
+import {TuiCalendarExample7} from './examples/7';
 
 const TWO_DOTS: [string, string] = ['var(--tui-primary)', 'var(--tui-info-fill)'];
 const ONE_DOT: [string] = ['var(--tui-success-fill)'];
 
 @Component({
+    standalone: true,
     selector: 'example-tui-calendar',
-    templateUrl: './calendar.template.html',
+    imports: [
+        RouterModule,
+        TuiLinkDirective,
+        TuiCalendarModule,
+        TuiAddonDocModule,
+        TuiCalendarExample1,
+        TuiCalendarExample2,
+        TuiCalendarExample3,
+        TuiCalendarExample4,
+        TuiCalendarExample5,
+        TuiCalendarExample6,
+        TuiCalendarExample7,
+    ],
+    templateUrl: './index.html',
     changeDetection,
 })
-export class ExampleTuiCalendarComponent {
+export default class ExampleTuiCalendarComponent {
     protected readonly exampleModule = import('./examples/import/import-module.md?raw');
     protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 
