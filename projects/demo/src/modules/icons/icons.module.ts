@@ -12,6 +12,7 @@ import {
     TuiSvgComponent,
 } from '@taiga-ui/core';
 
+import {TuiSetupComponent} from '../../utils/setup.component';
 import {IconsComponent} from './icons.component';
 import {IconsGroupModule} from './icons-group/icons-group.module';
 
@@ -28,6 +29,7 @@ import {IconsGroupModule} from './icons-group/icons-group.module';
         RouterModule.forChild(tuiGenerateRoutes(IconsComponent)),
         TuiActiveZoneDirective,
         IntersectionObserverModule,
+        TuiSetupComponent,
     ],
     declarations: [IconsComponent],
     exports: [IconsComponent],
