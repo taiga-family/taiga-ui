@@ -2,6 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
+import {TuiSetupComponent} from '@demo/utils';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
@@ -58,6 +59,7 @@ import {ExampleTuiSwipeActionsComponent} from './swipe-actions.component';
         TuiDropdownOpenDirective,
         TuiDataListModule,
         TuiDropdownDirective,
+        TuiSetupComponent,
     ],
     declarations: [
         ExampleTuiSwipeActionsComponent,
