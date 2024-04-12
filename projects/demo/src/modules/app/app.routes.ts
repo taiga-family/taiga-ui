@@ -1513,7 +1513,7 @@ export const ROUTES: Routes = [
         },
     },
     {
-        path: DemoRoute.Present,
+        path: DemoRoute.IsPresent,
         loadChildren: async () =>
             (await import('../pipes/is-present/is-present.module'))
                 .ExampleTuiIsPresentModule,
