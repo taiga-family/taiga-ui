@@ -12,6 +12,7 @@ import {
 } from '@taiga-ui/cdk';
 import {TuiRootModule} from '@taiga-ui/core';
 import {TUI_CALENDAR_DATE_STREAM} from '@taiga-ui/kit';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 import {createOutputSpy} from 'cypress/angular';
 import {of} from 'rxjs';
 
@@ -21,17 +22,15 @@ describe('Mobile calendar', () => {
 
     @Component({
         template: `
-            <tui-root>
-                <tui-mobile-calendar
-                    style="height: 800px"
-                    [disabledItemHandler]="disabledItemHandler"
-                    [max]="max"
-                    [min]="min"
-                    [single]="single"
-                    (cancel)="onCancel.emit(true)"
-                    (confirm)="onConfirm.emit($event)"
-                ></tui-mobile-calendar>
-            </tui-root>
+            <tui-mobile-calendar
+                style="height: 800px"
+                [disabledItemHandler]="disabledItemHandler"
+                [max]="max"
+                [min]="min"
+                [single]="single"
+                (cancel)="onCancel.emit(true)"
+                (confirm)="onConfirm.emit($event)"
+            ></tui-mobile-calendar>
         `,
         providers: [
             {
@@ -55,7 +54,8 @@ describe('Mobile calendar', () => {
 
     it('the back button emits a cancel event', () => {
         cy.mount(TestComponent, {
-            imports: [TuiRootModule, TuiMobileCalendarModule],
+            imports: [TuiMobileCalendarModule],
+            providers: [NG_EVENT_PLUGINS],
             componentProperties: {
                 onCancel: createOutputSpy('onCancelSpy'),
             },

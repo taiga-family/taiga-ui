@@ -1,20 +1,18 @@
 import {Component} from '@angular/core';
-import {TuiRootModule} from '@taiga-ui/core';
 import {TuiLazyLoadingModule} from '@taiga-ui/kit';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('LazyLoading', () => {
     @Component({
         template: `
-            <tui-root>
-                <img
-                    alt="picsum"
-                    loading="lazy"
-                    style="--tui-clear-hover: rgba(0, 0, 0, 0.16); width: 100px; height: 100px; display: block"
-                    [attr.src]="src"
-                />
+            <img
+                alt="picsum"
+                loading="lazy"
+                style="--tui-clear-hover: rgba(0, 0, 0, 0.16); width: 100px; height: 100px; display: block"
+                [attr.src]="src"
+            />
 
-                <button (click)="updateSrc()">click</button>
-            </tui-root>
+            <button (click)="updateSrc()">click</button>
         `,
     })
     class TestComponent {
@@ -28,7 +26,8 @@ describe('LazyLoading', () => {
 
     beforeEach(() =>
         cy.mount(TestComponent, {
-            imports: [TuiRootModule, TuiLazyLoadingModule],
+            imports: [TuiLazyLoadingModule],
+            providers: [NG_EVENT_PLUGINS],
             componentProperties: {
                 src: '',
             },
