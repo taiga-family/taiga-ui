@@ -1,6 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
+import {TuiSetupComponent} from '@demo/utils';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
 import {
@@ -41,6 +42,7 @@ import {ExampleTuiLineClampComponent} from './line-clamp.component';
         TuiDataListModule,
         TuiHintModule,
         TuiChevronDirective,
+        TuiSetupComponent,
     ],
     declarations: [
         ExampleTuiLineClampComponent,
