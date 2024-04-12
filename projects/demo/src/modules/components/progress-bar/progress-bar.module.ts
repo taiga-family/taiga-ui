@@ -1,6 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
+import {TuiSetupComponent} from '@demo/utils';
 import {
     TuiAddonDocModule,
     tuiGenerateRoutes,
@@ -27,6 +28,7 @@ import {ExampleProgressBarComponent} from './progress-bar.component';
         TuiTextCodeModule,
         TuiNotificationModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleProgressBarComponent)),
+        TuiSetupComponent,
     ],
     declarations: [
         ExampleProgressBarComponent,
