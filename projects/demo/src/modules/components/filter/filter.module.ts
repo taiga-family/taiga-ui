@@ -2,6 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
+import {TuiSetupComponent} from '@demo/utils';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiButtonDirective, TuiSvgComponent} from '@taiga-ui/core';
 import {TuiFilterModule} from '@taiga-ui/kit';
@@ -24,6 +25,7 @@ import {ExampleTuiFilterComponent} from './filter.component';
         ReactiveFormsModule,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiFilterComponent)),
+        TuiSetupComponent,
     ],
     declarations: [
         ExampleTuiFilterComponent,
