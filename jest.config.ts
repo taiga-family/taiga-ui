@@ -1,3 +1,4 @@
+/// <reference lib="es2021" />
 import {resolve} from 'node:path';
 
 import type {JestConfigWithTsJest} from 'ts-jest';
