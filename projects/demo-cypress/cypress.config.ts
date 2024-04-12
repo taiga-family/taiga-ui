@@ -37,8 +37,8 @@ export default defineConfig({
                         baseHref: './',
                         styles: [
                             'projects/demo/src/styles/normalize.less',
-                            'projects/demo/src/styles/doc-global.style.less',
                             'projects/demo/src/styles/styles.less',
+                            'projects/demo/src/styles/doc-global.style.less',
                         ],
                     },
                 },

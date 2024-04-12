@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
 import type {TuiSwipe} from '@taiga-ui/cdk';
 import {TuiSwipeModule} from '@taiga-ui/cdk';
-import {TuiRootComponent} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('TuiSwipe', () => {
@@ -9,12 +8,10 @@ describe('TuiSwipe', () => {
 
     @Component({
         template: `
-            <tui-root>
-                <section
-                    style="background: var(--tui-primary); width: 500px; height: 500px"
-                    (tuiSwipe)="onSwipe($event)"
-                ></section>
-            </tui-root>
+            <section
+                style="background: var(--tui-primary); width: 500px; height: 500px"
+                (tuiSwipe)="onSwipe($event)"
+            ></section>
         `,
     })
     class TestComponent {
@@ -28,7 +25,7 @@ describe('TuiSwipe', () => {
     beforeEach(() =>
         cy
             .mount(TestComponent, {
-                imports: [TuiRootComponent, TuiSwipeModule],
+                imports: [TuiSwipeModule],
                 providers: [NG_EVENT_PLUGINS],
             })
             .then(wrapper => {
