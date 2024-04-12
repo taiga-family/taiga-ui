@@ -1,14 +1,14 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiAppearanceDirective, TuiSurfaceDirective} from '@taiga-ui/core';
 
 @Component({
-    selector: 'tui-surface-example-5',
+    standalone: true,
+    imports: [TuiSurfaceDirective, TuiAppearanceDirective],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrls: ['./base.less', './index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiSurfaceExample5 {
-    protected value = null;
-}
+export default class ExampleComponent {}

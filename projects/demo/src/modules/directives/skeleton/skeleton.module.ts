@@ -6,14 +6,10 @@ import {tuiGetDocModules} from '@taiga-ui/addon-doc';
 import {
     TuiButtonDirective,
     TuiNotificationModule,
+    TuiSurfaceDirective,
     TuiTitleDirective,
 } from '@taiga-ui/core';
-import {
-    TuiCardModule,
-    TuiChipModule,
-    TuiLabelDirective,
-    TuiSurfaceModule,
-} from '@taiga-ui/experimental';
+import {TuiCardModule, TuiChipModule, TuiLabelDirective} from '@taiga-ui/experimental';
 import {
     TuiAvatarComponent,
     TuiBadgeDirective,
@@ -38,7 +34,7 @@ import {ExampleTuiSkeletonComponent} from './skeleton.component';
         TuiAvatarComponent,
         TuiCardModule,
         TuiTitleDirective,
-        TuiSurfaceModule,
+        TuiSurfaceDirective,
         TuiHeaderDirective,
         TuiButtonDirective,
         TuiChipModule,

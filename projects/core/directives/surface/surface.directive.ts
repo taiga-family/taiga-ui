@@ -4,6 +4,7 @@ import {tuiWithStyles} from '@taiga-ui/cdk';
 import {TuiSurfaceComponent} from './surface.component';
 
 @Directive({
+    standalone: true,
     selector: '[tuiSurface]',
     host: {
         tuiSurface: '',

@@ -1,6 +1,7 @@
 import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/core';
 
 @Component({
+    standalone: true,
     template: '',
     styleUrls: ['./surface.style.less'],
     encapsulation: ViewEncapsulation.None,

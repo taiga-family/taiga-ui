@@ -19,10 +19,11 @@ import {
     TuiLinkDirective,
     TuiNotificationModule,
     TuiScrollbarComponent,
+    TuiSurfaceDirective,
     TuiSvgModule,
     TuiTitleDirective,
 } from '@taiga-ui/core';
-import {TuiCardModule, TuiCellModule, TuiSurfaceModule} from '@taiga-ui/experimental';
+import {TuiCardModule, TuiCellModule} from '@taiga-ui/experimental';
 import {
     TuiAvatarComponent,
     TuiAvatarStackComponent,
@@ -57,7 +58,7 @@ import {TuiCardLargeExample12} from './examples/12';
         TuiFallbackSrcPipe,
         TuiFadeDirective,
         TuiCardModule,
-        TuiSurfaceModule,
+        TuiSurfaceDirective,
         TuiSvgModule,
         TuiBadgeDirective,
         TuiTitleDirective,

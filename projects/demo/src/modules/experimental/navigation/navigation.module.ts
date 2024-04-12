@@ -12,13 +12,10 @@ import {
     TuiIconComponent,
     TuiLinkDirective,
     TuiNotificationModule,
+    TuiSurfaceDirective,
     TuiTitleDirective,
 } from '@taiga-ui/core';
-import {
-    TuiCardModule,
-    TuiNavigationModule,
-    TuiSurfaceModule,
-} from '@taiga-ui/experimental';
+import {TuiCardModule, TuiNavigationModule} from '@taiga-ui/experimental';
 import {
     TuiAvatarComponent,
     TuiBadgeDirective,
@@ -54,7 +51,7 @@ import {ExampleTuiNavigationComponent} from './navigation.component';
         TuiExpandModule,
         TuiTabsModule,
         TuiCardModule,
-        TuiSurfaceModule,
+        TuiSurfaceDirective,
         TuiTitleDirective,
         TuiHeaderDirective,
         TuiRepeatTimesModule,

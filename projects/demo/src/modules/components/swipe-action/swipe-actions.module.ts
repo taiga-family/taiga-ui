@@ -15,9 +15,10 @@ import {
     TuiDropdownOpenDirective,
     TuiIconComponent,
     TuiNotificationModule,
+    TuiSurfaceDirective,
     TuiTitleDirective,
 } from '@taiga-ui/core';
-import {TuiCardModule, TuiCellModule, TuiSurfaceModule} from '@taiga-ui/experimental';
+import {TuiCardModule, TuiCellModule} from '@taiga-ui/experimental';
 import {
     TuiAvatarComponent,
     TuiBadgeComponent,
@@ -40,7 +41,7 @@ import {ExampleTuiSwipeActionsComponent} from './swipe-actions.component';
         TuiAvatarComponent,
         TuiCellModule,
         TuiCardModule,
-        TuiSurfaceModule,
+        TuiSurfaceDirective,
         TuiSwipeActionsComponent,
         TuiSwipeActionsAutoCloseDirective,
         TuiAmountPipe,

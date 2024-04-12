@@ -1,8 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiButtonDirective, TuiIconComponent} from '@taiga-ui/core';
-import {TuiSurfaceModule} from '@taiga-ui/experimental';
+import {TuiButtonDirective, TuiIconComponent, TuiSurfaceDirective} from '@taiga-ui/core';
 import {TuiButtonGroupDirective} from '@taiga-ui/kit';
 
 @Component({
@@ -10,7 +9,7 @@ import {TuiButtonGroupDirective} from '@taiga-ui/kit';
     imports: [
         TuiButtonDirective,
         TuiButtonGroupDirective,
-        TuiSurfaceModule,
+        TuiSurfaceDirective,
         TuiIconComponent,
     ],
     templateUrl: './index.html',

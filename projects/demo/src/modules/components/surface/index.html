@@ -1,0 +1,123 @@
+<tui-doc-page
+    header="Surface"
+    package="CORE"
+    type="components"
+>
+    <ng-template pageTab>
+        <p>
+            General purpose container used in Taiga UI interfaces. Often used in conjunction with
+            <a
+                routerLink="/experimental/card"
+                tuiLink
+            >
+                Card
+            </a>
+            component.
+        </p>
+
+        <tui-doc-example
+            *ngFor="let example of examples; let index = index"
+            [component]="index + 1 | tuiComponent"
+            [content]="index + 1 | tuiExample"
+            [heading]="example"
+            [id]="example | tuiKebab"
+        >
+            <ng-container [ngSwitch]="index + 1">
+                <tui-notification
+                    *ngSwitchCase="1"
+                    class="tui-space_bottom-4"
+                >
+                    You can enable hover effects only on devices with pointer:
+                    <div>
+                        <code>&#64;media (hover: hover) and (pointer: fine)</code>
+                    </div>
+                </tui-notification>
+
+                <tui-notification
+                    *ngSwitchCase="2"
+                    class="tui-space_bottom-4"
+                >
+                    Note that
+                    <code>padding</code>
+                    and
+                    <code>border-radius</code>
+                    are not part of the surface. Take a look at
+                    <a
+                        routerLink="/experimental/card-large"
+                        tuiLink
+                    >
+                        Card
+                    </a>
+                    component for that.
+                </tui-notification>
+
+                <tui-notification
+                    *ngSwitchCase="3"
+                    status="warning"
+                    class="tui-space_bottom-4"
+                >
+                    Text should have vertical compensation to look properly aligned, either with unequal
+                    <code>padding</code>
+                    or with negative
+                    <code>margin</code>
+                    . Typical value is
+                    <strong>0.25rem</strong>
+                    , smaller line-height might require
+                    <strong>0.125rem</strong>
+                    instead.
+                </tui-notification>
+            </ng-container>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab="Layers">
+        You can combine element itself,
+        <code>::before</code>
+        and
+        <code>::after</code>
+        pseudo-elements to create complex surfaces.
+        <p>
+            For more complex cases like you can use
+            <code>tuiSurfaceLayer</code>
+            directive to introduce more layers behind content. But that is mostly necessary for additional elements like
+            <code>input type="radio"</code>
+            or a
+            <code>video</code>
+            tag as seen in the examples on the main tab.
+        </p>
+        <hr />
+        <p>
+            <b>Styles to to be applied to the element:</b>
+            <code>background</code>
+            ,
+            <code>border-radius</code>
+            ,
+            <code>box-shadow</code>
+            ,
+            <code>mask</code>
+            ,
+            <code>padding</code>
+            ,
+            <code>transform</code>
+        </p>
+        <p>
+            <b>Styles to be applied to ::BEFORE pseudo-element:</b>
+            <code>backdrop-filter</code>
+        </p>
+        <p>
+            <b>Styles to be applied to ::AFTER pseudo-element:</b>
+            Any overlays on top of
+            <code>backdrop-filter</code>
+            effect of ::BEFORE pseudo-element
+        </p>
+        <hr />
+
+        <tui-doc-example
+            heading="Examples"
+            [component]="7 | tuiComponent"
+            [content]="layerExample"
+        />
+    </ng-template>
+
+    <tui-setup *pageTab="'Setup'" />
+</tui-doc-page>
