@@ -21,11 +21,11 @@ import {TuiCalendarExample7} from './examples/7';
         TuiCalendarModule,
         TuiAddonDocModule,
         TuiCalendarExample1,
+        TuiCalendarExample2,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiCalendarComponent)),
     ],
     declarations: [
         ExampleTuiCalendarComponent,
-        TuiCalendarExample2,
         TuiCalendarExample3,
         TuiCalendarExample4,
         TuiCalendarExample5,
