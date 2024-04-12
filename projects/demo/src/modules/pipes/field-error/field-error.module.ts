@@ -2,6 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
+import {TuiSetupComponent} from '@demo/utils';
 import {TuiCurrencyPipeModule} from '@taiga-ui/addon-commerce';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiTableModule} from '@taiga-ui/addon-table';
@@ -52,6 +53,7 @@ import {ExampleTuiFieldErrorPipeComponent} from './field-error.component';
         PolymorpheusModule,
         TuiCheckboxComponent,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiFieldErrorPipeComponent)),
+        TuiSetupComponent,
     ],
     declarations: [
         ExampleTuiFieldErrorPipeComponent,
