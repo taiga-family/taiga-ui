@@ -1,6 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {TuiSetupComponent} from '@demo/utils';
 import {TuiCurrencyPipeModule} from '@taiga-ui/addon-commerce';
 import {tuiGetDocModules} from '@taiga-ui/addon-doc';
 import {
@@ -59,6 +60,7 @@ import {ExampleTuiGroupComponent} from './group.component';
         TuiRadioComponent,
         tuiGetDocModules(ExampleTuiGroupComponent),
         TuiTitleDirective,
+        TuiSetupComponent,
     ],
     declarations: [
         ExampleTuiGroupComponent,
