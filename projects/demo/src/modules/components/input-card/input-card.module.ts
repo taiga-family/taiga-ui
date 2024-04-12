@@ -2,6 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
+import {TuiSetupComponent} from '@demo/utils';
 import {
     TuiInputCardModule,
     TuiInputCVCModule,
@@ -38,6 +39,7 @@ import {ExampleTuiInputCardComponent} from './input-card.component';
         TuiAddonDocModule,
         InheritedDocumentationModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiInputCardComponent)),
+        TuiSetupComponent,
     ],
     declarations: [ExampleTuiInputCardComponent, TuiInputCardExample1],
     exports: [ExampleTuiInputCardComponent],
