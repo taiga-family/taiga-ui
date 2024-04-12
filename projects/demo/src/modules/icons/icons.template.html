@@ -50,18 +50,12 @@
                     class="icon-place"
                     (waIntersectionObservee)="entry.isIntersecting = entry.isIntersecting || onIntersection($event)"
                 >
-                    <button
+                    <tui-svg
                         *ngIf="entry.isIntersecting"
-                        appearance="icon"
-                        size="m"
-                        title="Copy"
-                        tuiIconButton
-                        type="button"
                         class="icon"
-                        [attr.aria-label]="icon"
-                        [iconLeft]="icon"
+                        [src]="icon"
                         (click)="copyPath(icon)"
-                    ></button>
+                    />
                 </div>
             </ng-template>
         </icons-group>
