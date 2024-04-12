@@ -10,7 +10,7 @@ import {
     TuiTextCodeModule,
 } from '@taiga-ui/addon-doc';
 import {TuiTableModule} from '@taiga-ui/addon-table';
-import {TuiLetModule, TuiMapperPipeModule, TuiRepeatTimesModule} from '@taiga-ui/cdk';
+import {TuiLetModule, TuiMapperPipe, TuiRepeatTimesModule} from '@taiga-ui/cdk';
 import {
     TuiButtonDirective,
     TuiDataListModule,
@@ -60,7 +60,7 @@ import {ExampleTuiInputComponent} from './input.component';
         TuiInputNumberModule,
         TuiSelectModule,
         TuiGroupDirective,
-        TuiMapperPipeModule,
+        TuiMapperPipe,
         TuiAmountPipe,
         TuiLinkDirective,
         TuiTableModule,

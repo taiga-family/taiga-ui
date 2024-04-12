@@ -1,8 +1,8 @@
 import {DOCUMENT} from '@angular/common';
 import {ElementRef, inject, Injectable} from '@angular/core';
-import type {TuiSwipe} from '@taiga-ui/cdk/interfaces';
 import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
 import {TUI_SWIPE_OPTIONS} from '@taiga-ui/cdk/tokens';
+import type {TuiSwipe} from '@taiga-ui/cdk/types';
 import {tuiGetSwipeDirection, tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import {filter, map, merge, Observable, pairwise} from 'rxjs';
 

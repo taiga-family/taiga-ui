@@ -3,8 +3,8 @@ import {NgModule} from '@angular/core';
 import {ReactiveFormsModule} from '@angular/forms';
 import {
     TuiAutoFocusDirective,
-    TuiFilterPipeModule,
-    TuiKeysPipeModule,
+    TuiFilterPipe,
+    TuiKeysPipe,
     TuiLetModule,
 } from '@taiga-ui/cdk';
 import {TuiHintModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
@@ -18,8 +18,8 @@ import {IconsGroupDirective} from './icons-group.directive';
         CommonModule,
         TuiInputModule,
         TuiBadgeDirective,
-        TuiKeysPipeModule,
-        TuiFilterPipeModule,
+        TuiKeysPipe,
+        TuiFilterPipe,
         TuiHintModule,
         TuiTextfieldControllerModule,
         ReactiveFormsModule,

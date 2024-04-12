@@ -1,11 +1,10 @@
 /// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
 
-import type {TuiDateMode} from '@taiga-ui/cdk/types';
-
 import {DATE_FILLER_LENGTH, DATE_RANGE_FILLER_LENGTH} from './date-fillers';
 import {RANGE_SEPARATOR_CHAR} from './date-time';
 import {TuiDay} from './day';
 import {TuiMonthRange} from './month-range';
+import type {TuiDateMode} from './types';
 
 /**
  * An immutable range of two {@link TuiDay} objects

@@ -1,6 +1,6 @@
 import type {Provider, Type} from '@angular/core';
 import {InjectionToken} from '@angular/core';
-import type {TuiFocusableElementAccessor} from '@taiga-ui/cdk/interfaces';
+import type {TuiFocusableElementAccessor} from '@taiga-ui/cdk/types';
 import {tuiProvide} from '@taiga-ui/cdk/utils';
 
 /**

@@ -1,4 +1,4 @@
-import type {TuiSafeHtml} from '@taiga-ui/cdk/interfaces';
+import type {TuiSafeHtml} from '@taiga-ui/cdk/types';
 import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
 
 function makeRandomSalt(): number {

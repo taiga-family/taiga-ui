@@ -9,7 +9,7 @@ import {
     TuiAutoFocusDirective,
     TuiFocusableModule,
     TuiLetModule,
-    TuiMapperPipeModule,
+    TuiMapperPipe,
 } from '@taiga-ui/cdk';
 import {TuiDropdownModule, TuiSvgComponent, TuiWrapperModule} from '@taiga-ui/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
@@ -26,7 +26,7 @@ import {TuiInputCardGroupedComponent} from './input-card-grouped.component';
         TuiSvgComponent,
         TuiWrapperModule,
         TuiActiveZoneDirective,
-        TuiMapperPipeModule,
+        TuiMapperPipe,
         TuiDropdownModule,
         PolymorpheusModule,
         TuiLetModule,

@@ -1,7 +1,7 @@
 import {ElementRef, inject, Injectable} from '@angular/core';
-import type {TuiZoom} from '@taiga-ui/cdk/interfaces';
 import {tuiPreventDefault, tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
 import {TUI_ZOOM_OPTIONS} from '@taiga-ui/cdk/tokens';
+import type {TuiZoom} from '@taiga-ui/cdk/types';
 import {tuiDistanceBetweenTouches} from '@taiga-ui/cdk/utils';
 import {filter, map, merge, Observable, scan, switchMap, takeUntil} from 'rxjs';
 

@@ -1,21 +1,20 @@
 /// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
 
-import {TuiDayOfWeek, TuiMonthNumber} from '@taiga-ui/cdk/enums';
 import {
     TuiInvalidDayException,
     TuiInvalidMonthException,
     TuiInvalidYearException,
 } from '@taiga-ui/cdk/exceptions';
-import type {TuiDayLike} from '@taiga-ui/cdk/interfaces';
-import type {TuiDateMode} from '@taiga-ui/cdk/types';
 import {tuiInRange, tuiNormalizeToIntNumber} from '@taiga-ui/cdk/utils/math';
 
 import {DATE_FILLER_LENGTH} from './date-fillers';
 import {MIN_DAY, MONTHS_IN_YEAR} from './date-time';
+import {TuiDayOfWeek} from './day-of-week';
 import {TuiMonth} from './month';
+import {TuiMonthNumber} from './month-number';
+import type {TuiDateMode, TuiDayLike} from './types';
 import {TuiYear} from './year';
 
-// TODO: Localized formatting
 /**
  * Immutable date object, consisting of day, month and year
  */

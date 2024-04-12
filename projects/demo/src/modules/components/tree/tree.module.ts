@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
-import {TuiMapperPipeModule} from '@taiga-ui/cdk';
+import {TuiMapperPipe} from '@taiga-ui/cdk';
 import {
     TuiButtonDirective,
     TuiLinkDirective,
@@ -29,7 +29,7 @@ import {ExampleTuiTreeComponent} from './tree.component';
         TuiSvgComponent,
         TuiButtonDirective,
         TuiLinkDirective,
-        TuiMapperPipeModule,
+        TuiMapperPipe,
         TuiLoaderModule,
         FormsModule,
         CommonModule,

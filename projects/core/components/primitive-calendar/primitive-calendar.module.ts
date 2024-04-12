@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {
     TuiHoveredModule,
     TuiLetModule,
-    TuiMapperPipeModule,
+    TuiMapperPipe,
     TuiPressedModule,
     TuiRepeatTimesModule,
 } from '@taiga-ui/cdk';
@@ -18,7 +18,7 @@ import {TuiPrimitiveCalendarComponent} from './primitive-calendar.component';
     imports: [
         CommonModule,
         TuiLetModule,
-        TuiMapperPipeModule,
+        TuiMapperPipe,
         TuiRepeatTimesModule,
         TuiHoveredModule,
         TuiPressedModule,

@@ -8,7 +8,6 @@ import {
     Input,
 } from '@angular/core';
 import {RouterLinkActive} from '@angular/router';
-import {TuiDestroyService, TuiFocusVisibleService} from '@taiga-ui/cdk';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core';
 import type {Observable} from 'rxjs';
 import {EMPTY, filter} from 'rxjs';
@@ -21,13 +20,11 @@ import {TuiStepperComponent} from '../stepper.component';
     templateUrl: './step.template.html',
     styleUrls: ['./step.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [TuiDestroyService, TuiFocusVisibleService],
     host: {
         type: 'button',
     },
 })
 export class TuiStepComponent {
-    private readonly focusVisible$ = inject(TuiFocusVisibleService);
     private readonly stepper = inject(TuiStepperComponent);
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
     private readonly routerLinkActive$: Observable<boolean> =
@@ -48,10 +45,6 @@ export class TuiStepComponent {
     constructor() {
         this.routerLinkActive$.pipe(filter(Boolean)).subscribe(() => {
             this.activate();
-        });
-
-        this.focusVisible$.subscribe(visible => {
-            this.focusVisible = visible;
         });
     }
 

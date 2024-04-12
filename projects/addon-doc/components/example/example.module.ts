@@ -2,7 +2,7 @@ import {ClipboardModule} from '@angular/cdk/clipboard';
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
-import {TuiMapperPipeModule} from '@taiga-ui/cdk';
+import {TuiMapperPipe} from '@taiga-ui/cdk';
 import {TuiButtonDirective, TuiLoaderModule} from '@taiga-ui/core';
 import {TuiTabsModule} from '@taiga-ui/kit';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
@@ -21,7 +21,7 @@ import {TuiDocExampleGetTabsPipe} from './example-get-tabs.pipe';
         TuiDocCopyModule,
         TuiDocCodeModule,
         PolymorpheusModule,
-        TuiMapperPipeModule,
+        TuiMapperPipe,
         TuiLoaderModule,
         RouterModule,
     ],

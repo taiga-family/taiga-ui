@@ -1,18 +1,22 @@
+import {AsyncPipe} from '@angular/common';
 import {Component, HostListener, inject} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiStringHandler} from '@taiga-ui/cdk';
+import {TuiCopyProcessorDirective} from '@taiga-ui/cdk';
 import {TUI_NUMBER_FORMAT, TuiAlertService} from '@taiga-ui/core';
+import {TuiInputNumberModule} from '@taiga-ui/kit';
 import {map} from 'rxjs';
 
 @Component({
-    selector: 'tui-copy-processor-example-1',
+    standalone: true,
+    imports: [TuiInputNumberModule, TuiCopyProcessorDirective, FormsModule, AsyncPipe],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiCopyProcessorExample1 {
+export default class ExampleComponent {
     private readonly format = inject(TUI_NUMBER_FORMAT);
     private readonly alerts = inject(TuiAlertService);
 

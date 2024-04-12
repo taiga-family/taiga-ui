@@ -1,6 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {TuiClickOutsideModule} from '@taiga-ui/cdk';
+import {TuiClickOutsideDirective} from '@taiga-ui/cdk';
 import {TuiButtonDirective} from '@taiga-ui/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
@@ -11,7 +11,7 @@ import {TuiSheetDialogDirective} from './sheet-dialog.directive';
     imports: [
         CommonModule,
         PolymorpheusModule,
-        TuiClickOutsideModule,
+        TuiClickOutsideDirective,
         TuiButtonDirective,
     ],
     declarations: [TuiSheetDialogComponent, TuiSheetDialogDirective],

@@ -1,6 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {TuiMapperPipeModule} from '@taiga-ui/cdk';
+import {TuiMapperPipe} from '@taiga-ui/cdk';
 import {TuiSvgComponent} from '@taiga-ui/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
@@ -21,7 +21,7 @@ import {TuiThGroupComponent} from './th-group/th-group.component';
 import {TuiTrComponent} from './tr/tr.component';
 
 @NgModule({
-    imports: [CommonModule, PolymorpheusModule, TuiMapperPipeModule, TuiSvgComponent],
+    imports: [CommonModule, PolymorpheusModule, TuiMapperPipe, TuiSvgComponent],
     declarations: [
         TuiTableDirective,
         TuiTbodyComponent,

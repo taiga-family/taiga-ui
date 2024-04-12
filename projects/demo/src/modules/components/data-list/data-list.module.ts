@@ -4,7 +4,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
-import {TuiActiveZoneDirective, TuiFilterPipeModule, TuiLetModule} from '@taiga-ui/cdk';
+import {TuiActiveZoneDirective, TuiFilterPipe, TuiLetModule} from '@taiga-ui/cdk';
 import {
     TuiButtonDirective,
     TuiCalendarModule,
@@ -54,7 +54,7 @@ import {TuiDataListExample6} from './examples/6';
         TuiActiveZoneDirective,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiDataListComponent)),
-        TuiFilterPipeModule,
+        TuiFilterPipe,
         TuiCalendarModule,
         TuiInputModule,
         TuiInputDateRangeModule,

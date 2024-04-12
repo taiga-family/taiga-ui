@@ -3,7 +3,7 @@ import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
-import {TuiControlModule} from '@taiga-ui/cdk';
+import {TuiControlDirective} from '@taiga-ui/cdk';
 import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('TuiControlDirective', () => {
@@ -30,7 +30,7 @@ describe('TuiControlDirective', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [ReactiveFormsModule, TuiControlModule],
+            imports: [ReactiveFormsModule, TuiControlDirective],
             declarations: [TestComponent],
             providers: [NG_EVENT_PLUGINS],
         });

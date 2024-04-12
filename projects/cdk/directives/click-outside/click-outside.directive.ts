@@ -6,6 +6,7 @@ import type {Observable} from 'rxjs';
 import {filter, fromEvent, map} from 'rxjs';
 
 @Directive({
+    standalone: true,
     selector: '[tuiClickOutside]',
 })
 export class TuiClickOutsideDirective {

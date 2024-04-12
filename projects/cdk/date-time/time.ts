@@ -1,7 +1,5 @@
 /// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
 
-import type {TuiTimeLike} from '@taiga-ui/cdk/interfaces';
-import type {TuiTimeMode} from '@taiga-ui/cdk/types';
 import {tuiInRange} from '@taiga-ui/cdk/utils/math';
 
 import {
@@ -12,6 +10,7 @@ import {
     MINUTES_IN_HOUR,
     SECONDS_IN_MINUTE,
 } from './date-time';
+import type {TuiTimeLike, TuiTimeMode} from './types';
 
 /**
  * Immutable time object with hours, minutes, seconds and ms

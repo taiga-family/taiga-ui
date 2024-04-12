@@ -4,33 +4,16 @@
     type="directives"
 >
     <ng-template pageTab>
-        <p>A directive for title with optional subtitle</p>
+        A directive for title with optional subtitle
 
         <tui-doc-example
-            id="base"
-            heading="Basic"
-            [component]="1 | tuiComponent"
-            [content]="1 | tuiExample: 'html,ts'"
-        />
-
-        <tui-doc-example
-            id="sizes"
-            heading="Sizes"
-            [component]="2 | tuiComponent"
-            [content]="2 | tuiExample: 'html,ts'"
-        />
-
-        <tui-doc-example
-            id="custom"
-            heading="Custom"
-            [component]="3 | tuiComponent"
-            [content]="3 | tuiExample"
+            *ngFor="let example of examples; let index = index"
+            [component]="index + 1 | tuiComponent"
+            [content]="index + 1 | tuiExample: 'html,ts'"
+            [heading]="example"
+            [id]="example | tuiKebab"
         />
     </ng-template>
 
-    <tui-setup
-        *pageTab="'Setup'"
-        [import]="import"
-        [template]="template"
-    />
+    <tui-setup *pageTab="'Setup'" />
 </tui-doc-page>

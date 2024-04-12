@@ -47,6 +47,42 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifier[] = [
         to: {name: 'TuiBadgeDirective', moduleSpecifier: '@taiga-ui/kit'},
     },
     {
+        from: {name: 'TuiClickOutsideModule', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiClickOutsideDirective', moduleSpecifier: '@taiga-ui/cdk'},
+    },
+    {
+        from: {name: 'TuiCopyProcessorModule', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiCopyProcessorDirective', moduleSpecifier: '@taiga-ui/cdk'},
+    },
+    {
+        from: {name: 'AbstractTuiValueTransformer', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiValueTransformer', moduleSpecifier: '@taiga-ui/cdk'},
+    },
+    {
+        from: {name: 'TuiControlValueTransformer', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiValueTransformer', moduleSpecifier: '@taiga-ui/cdk'},
+    },
+    {
+        from: {name: 'TuiFilterPipeModule', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiFilterPipe', moduleSpecifier: '@taiga-ui/cdk'},
+    },
+    {
+        from: {name: 'TuiIsPresentPipeModule', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiIsPresentPipe', moduleSpecifier: '@taiga-ui/cdk'},
+    },
+    {
+        from: {name: 'TuiKeysPipeModule', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiKeysPipe', moduleSpecifier: '@taiga-ui/cdk'},
+    },
+    {
+        from: {name: 'TuiMapperPipeModule', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiMapperPipe', moduleSpecifier: '@taiga-ui/cdk'},
+    },
+    {
+        from: {name: 'TuiReplacePipeModule', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiReplacePipe', moduleSpecifier: '@taiga-ui/cdk'},
+    },
+    {
         from: {name: 'TuiCheckboxModule', moduleSpecifier: '@taiga-ui/experimental'},
         to: {name: 'TuiCheckboxComponent', moduleSpecifier: '@taiga-ui/kit'},
     },

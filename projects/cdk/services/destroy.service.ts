@@ -9,6 +9,8 @@ import {ReplaySubject} from 'rxjs';
  * Why we use `ReplaySubject` instead of `Subject`?
  * Well, we’ll use ReplaySubject to emit the last message in case
  * the subscription is ended after the component is destroyed.
+ * TODO: Remove before 4.0
+ * @deprecated
  */
 @Injectable()
 export class TuiDestroyService extends ReplaySubject<void> implements OnDestroy {

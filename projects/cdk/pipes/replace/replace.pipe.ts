@@ -1,7 +1,10 @@
 import type {PipeTransform} from '@angular/core';
 import {Pipe} from '@angular/core';
 
-@Pipe({name: 'tuiReplace'})
+@Pipe({
+    standalone: true,
+    name: 'tuiReplace',
+})
 export class TuiReplacePipe implements PipeTransform {
     public transform(
         value: string | null | undefined,

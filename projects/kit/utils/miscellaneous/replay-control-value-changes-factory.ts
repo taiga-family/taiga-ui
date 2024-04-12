@@ -1,10 +1,5 @@
 import type {NgControl} from '@angular/forms';
-import type {
-    TuiControlValueTransformer,
-    TuiDay,
-    TuiDayRange,
-    TuiTime,
-} from '@taiga-ui/cdk';
+import type {TuiDay, TuiDayRange, TuiTime, TuiValueTransformer} from '@taiga-ui/cdk';
 import {tuiControlValue} from '@taiga-ui/cdk';
 import type {Observable} from 'rxjs';
 import {map, of} from 'rxjs';
@@ -16,7 +11,7 @@ export function tuiControlValueFactory<
     T extends TuiDay | TuiDayRange | [TuiDay | null, TuiTime | null],
 >(
     control: NgControl | null,
-    valueTransformer?: TuiControlValueTransformer<T> | null,
+    valueTransformer?: TuiValueTransformer<T> | null,
 ): Observable<T | null> | null {
     return control
         ? tuiControlValue(control).pipe(
