@@ -2,6 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
+import {TuiSetupComponent} from '@demo/utils';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiRepeatTimesModule} from '@taiga-ui/cdk';
 import {TuiButtonDirective, TuiExpandModule, TuiLinkDirective} from '@taiga-ui/core';
@@ -30,6 +31,7 @@ import {TuiElasticContainerExample4} from './examples/4';
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiElasticContainerComponent)),
         TuiChevronDirective,
+        TuiSetupComponent,
     ],
     declarations: [
         ExampleTuiElasticContainerComponent,
