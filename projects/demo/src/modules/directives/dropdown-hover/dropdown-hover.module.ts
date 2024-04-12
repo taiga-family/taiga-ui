@@ -1,6 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {ReactiveFormsModule} from '@angular/forms';
+import {TuiSetupComponent} from '@demo/utils';
 import {tuiGetDocModules} from '@taiga-ui/addon-doc';
 import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
 import {
@@ -40,6 +41,7 @@ import {TuiDropdownHoverExample4} from './examples/4';
         TuiChevronDirective,
         DropdownDocumentationModule,
         tuiGetDocModules(ExampleTuiDropdownHoverComponent),
+        TuiSetupComponent,
     ],
     declarations: [
         ExampleTuiDropdownHoverComponent,
