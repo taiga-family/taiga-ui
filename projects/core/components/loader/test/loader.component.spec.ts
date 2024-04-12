@@ -4,6 +4,7 @@ import {Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {TuiLoaderHarness} from '@taiga-ui/testing';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {TuiLoaderComponent} from '../loader.component';
@@ -43,6 +44,7 @@ describe('Loader', () => {
         TestBed.configureTestingModule({
             imports: [TuiLoaderModule],
             declarations: [TestComponent],
+            providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);

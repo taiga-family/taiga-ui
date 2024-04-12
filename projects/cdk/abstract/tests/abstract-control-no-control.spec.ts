@@ -4,6 +4,7 @@ import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import type {TuiControlValueTransformer} from '@taiga-ui/cdk';
 import {AbstractTuiControl, tuiAsControl} from '@taiga-ui/cdk';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('AbstractTuiControl and NgControl not injected in MyControlComponent', () => {
     @Component({
@@ -80,6 +81,7 @@ describe('AbstractTuiControl and NgControl not injected in MyControlComponent', 
     beforeEach(async () => {
         TestBed.configureTestingModule({
             declarations: [TestComponent, MyControlComponent, ChildComponent],
+            providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);

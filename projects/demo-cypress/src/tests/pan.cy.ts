@@ -1,15 +1,13 @@
 import {Component} from '@angular/core';
 import {TuiPanModule} from '@taiga-ui/cdk';
-import {TuiRootModule} from '@taiga-ui/core';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('TuiPan', () => {
     let component: TestComponent;
 
     @Component({
         template: `
-            <tui-root>
-                <section (tuiPan)="pan($event)"></section>
-            </tui-root>
+            <section (tuiPan)="pan($event)"></section>
         `,
     })
     class TestComponent {
@@ -23,7 +21,8 @@ describe('TuiPan', () => {
     beforeEach(() =>
         cy
             .mount(TestComponent, {
-                imports: [TuiRootModule, TuiPanModule],
+                imports: [TuiPanModule],
+                providers: [NG_EVENT_PLUGINS],
             })
             .then(wrapper => {
                 component = wrapper.component;

@@ -1,27 +1,25 @@
 import {Component, EventEmitter, Output} from '@angular/core';
 import {TuiElasticStickyModule} from '@taiga-ui/addon-mobile';
-import {TuiRootModule, TuiScrollbarComponent} from '@taiga-ui/core';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 import {createOutputSpy} from 'cypress/angular';
 
 describe('ElasticSticky', () => {
     @Component({
         template: `
-            <tui-root>
+            <div
+                id="scroll"
+                style="position: relative; height: 100px; overflow: auto"
+                tuiScrollRef
+            >
+                <div style="height: 50px">I'm header</div>
                 <div
-                    id="scroll"
-                    style="position: relative; height: 100px; overflow: auto"
-                    tuiScrollRef
+                    style="position: sticky; height: 50px; top: 0"
+                    (tuiElasticSticky)="change.emit(transform($event))"
                 >
-                    <div style="height: 50px">I'm header</div>
-                    <div
-                        style="position: sticky; height: 50px; top: 0"
-                        (tuiElasticSticky)="change.emit(transform($event))"
-                    >
-                        I'm sticky
-                    </div>
-                    <div style="height: 100px">I'm footer</div>
+                    I'm sticky
                 </div>
-            </tui-root>
+                <div style="height: 100px">I'm footer</div>
+            </div>
         `,
     })
     class TestComponent {
@@ -36,7 +34,8 @@ describe('ElasticSticky', () => {
 
     beforeEach(() =>
         cy.mount(TestComponent, {
-            imports: [TuiRootModule, TuiScrollbarComponent, TuiElasticStickyModule],
+            imports: [TuiElasticStickyModule],
+            providers: [NG_EVENT_PLUGINS],
             componentProperties: {
                 change: createOutputSpy<number>('changeSpy'),
             },

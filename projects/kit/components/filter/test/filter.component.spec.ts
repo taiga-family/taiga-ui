@@ -7,6 +7,7 @@ import type {TuiBooleanHandler, TuiHandler} from '@taiga-ui/cdk';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk';
 import type {TuiSizeS} from '@taiga-ui/core';
 import {TuiFilterComponent, TuiFilterModule} from '@taiga-ui/kit';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 const BADGE_VALUE = 10;
 
@@ -66,6 +67,7 @@ describe('Filter', () => {
         TestBed.configureTestingModule({
             imports: [ReactiveFormsModule, NoopAnimationsModule, TuiFilterModule],
             declarations: [TestComponent],
+            providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);

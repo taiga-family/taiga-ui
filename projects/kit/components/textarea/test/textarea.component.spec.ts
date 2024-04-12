@@ -17,6 +17,7 @@ import {
     TuiPageObject,
     tuiTestFormControlState,
 } from '@taiga-ui/testing';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 const DEFAULT_HEIGHT = 108;
 
@@ -100,6 +101,7 @@ describe('Textarea', () => {
                 TuiTextfieldControllerModule,
                 TuiHintModule,
             ],
+            providers: [NG_EVENT_PLUGINS],
             declarations: [TestComponent],
         });
         await TestBed.compileComponents();

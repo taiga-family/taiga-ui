@@ -4,6 +4,7 @@ import {TestBed} from '@angular/core/testing';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import type {TuiSliderComponent} from '@taiga-ui/kit';
 import {TuiSliderModule} from '@taiga-ui/kit';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('Slider', () => {
     @Component({
@@ -61,6 +62,7 @@ describe('Slider', () => {
         TestBed.configureTestingModule({
             imports: [FormsModule, ReactiveFormsModule, TuiSliderModule],
             declarations: [TestComponent],
+            providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);

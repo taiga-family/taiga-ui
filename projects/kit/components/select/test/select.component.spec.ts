@@ -8,7 +8,7 @@ import {TUI_DEFAULT_IDENTITY_MATCHER} from '@taiga-ui/cdk';
 import {
     TuiDataListModule,
     TuiHintModule,
-    TuiRootModule,
+    TuiRootComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {
@@ -17,6 +17,7 @@ import {
     TuiSelectModule,
 } from '@taiga-ui/kit';
 import {TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 class Beast {
     constructor(
@@ -78,13 +79,14 @@ describe('Select', () => {
                 ReactiveFormsModule,
                 NoopAnimationsModule,
                 TuiSelectModule,
-                TuiRootModule,
+                TuiRootComponent,
                 TuiTextfieldControllerModule,
                 TuiHintModule,
                 TuiDataListModule,
                 TuiDataListWrapperModule,
             ],
             declarations: [TestComponent],
+            providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
 

@@ -1,12 +1,12 @@
 ```ts
 import {Component} from '@angular/core';
-import {TuiRootModule} from '@taiga-ui/core';
+import {TuiRootComponent} from '@taiga-ui/core';
 
 @Component({
   standalone: true,
   selector: 'app-root',
   imports: [
-    TuiRootModule,
+    TuiRootComponent,
     // ...
   ],
   templateUrl: './app.component.html',

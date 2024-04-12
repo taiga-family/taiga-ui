@@ -9,6 +9,7 @@ import {
     TuiProjectClassModule,
 } from '@taiga-ui/kit';
 import {TuiNativeInputPO} from '@taiga-ui/testing';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('Directive TuiProjectClassDirective', () => {
     @Component({
@@ -49,6 +50,7 @@ describe('Directive TuiProjectClassDirective', () => {
                 TuiDataListWrapperModule,
                 ReactiveFormsModule,
             ],
+            providers: [NG_EVENT_PLUGINS],
             declarations: [TestComponent],
         });
         await TestBed.compileComponents();

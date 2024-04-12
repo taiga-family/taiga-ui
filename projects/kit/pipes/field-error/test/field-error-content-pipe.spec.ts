@@ -3,10 +3,11 @@ import type {ComponentFixture} from '@angular/core/testing';
 import {discardPeriodicTasks, fakeAsync, TestBed, tick} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {TuiHintModule, TuiRootModule} from '@taiga-ui/core';
+import {TuiHintModule, TuiRootComponent} from '@taiga-ui/core';
 import {TuiInputModule} from '@taiga-ui/kit/components';
 import {TuiFieldErrorPipeModule} from '@taiga-ui/kit/pipes';
 import {TUI_VALIDATION_ERRORS} from '@taiga-ui/kit/tokens';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('TuiFieldErrorContentPipe', () => {
     const testError = 'testError';
@@ -58,11 +59,12 @@ describe('TuiFieldErrorContentPipe', () => {
             imports: [
                 NoopAnimationsModule,
                 TuiHintModule,
-                TuiRootModule,
+                TuiRootComponent,
                 ReactiveFormsModule,
                 TuiInputModule,
                 TuiFieldErrorPipeModule,
             ],
+            providers: [NG_EVENT_PLUGINS],
             declarations: [TestComponent],
         });
         await TestBed.compileComponents();

@@ -3,6 +3,7 @@ import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {TuiLetModule} from '@taiga-ui/cdk';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('Let', () => {
     @Component({
@@ -36,6 +37,7 @@ describe('Let', () => {
         TestBed.configureTestingModule({
             imports: [TuiLetModule],
             declarations: [TestComponent],
+            providers: [NG_EVENT_PLUGINS],
         });
 
         await TestBed.compileComponents();

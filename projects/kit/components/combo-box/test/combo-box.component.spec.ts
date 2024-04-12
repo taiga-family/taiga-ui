@@ -11,7 +11,7 @@ import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {
     TuiDataListModule,
     TuiHintModule,
-    TuiRootModule,
+    TuiRootComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {TuiComboBoxComponent, TuiComboBoxModule} from '@taiga-ui/kit';
@@ -21,6 +21,7 @@ import {
     TuiDataListWrapperModule,
 } from '@taiga-ui/kit/components';
 import {TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 class Beast {
     constructor(
@@ -102,7 +103,7 @@ describe('ComboBox', () => {
                 NoopAnimationsModule,
                 ReactiveFormsModule,
                 TuiComboBoxModule,
-                TuiRootModule,
+                TuiRootComponent,
                 TuiTextfieldControllerModule,
                 TuiHintModule,
                 TuiDataListModule,
@@ -110,6 +111,7 @@ describe('ComboBox', () => {
             ],
             declarations: [TestComponent],
             providers: [
+                NG_EVENT_PLUGINS,
                 {
                     provide: TUI_ARROW_MODE,
                     useValue: {interactive: TUI_ARROW, disabled: ''},

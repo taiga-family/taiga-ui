@@ -4,7 +4,7 @@ export interface ImportingModule {
 }
 
 export const MAIN_MODULE: ImportingModule = {
-    name: 'TuiRootModule',
+    name: 'TuiRootComponent',
     packageName: '@taiga-ui/core',
 };
 

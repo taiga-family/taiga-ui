@@ -1,11 +1,11 @@
 ```ts
 import {TuiTableBarsHostModule} from '@taiga-ui/addon-tablebars';
-import {TuiRootModule} from '@taiga-ui/core';
+import {TuiRootComponent} from '@taiga-ui/core';
 // ...
 
 @NgModule({
   imports: [
-    TuiRootModule,
+    TuiRootComponent,
     TuiTableBarsHostModule,
     // ...
   ],

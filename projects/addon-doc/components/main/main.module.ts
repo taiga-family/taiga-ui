@@ -5,7 +5,7 @@ import {
     TuiAlertModule,
     TuiButtonDirective,
     TuiDialogModule,
-    TuiRootModule,
+    TuiRootComponent,
 } from '@taiga-ui/core';
 
 import {TuiDocHeaderModule} from '../internal/header/header.module';
@@ -17,7 +17,7 @@ import {TuiDocMainComponent} from './main.component';
         CommonModule,
         RouterModule,
         TuiDocHeaderModule,
-        TuiRootModule,
+        TuiRootComponent,
         TuiDialogModule,
         TuiAlertModule,
         TuiButtonDirective,

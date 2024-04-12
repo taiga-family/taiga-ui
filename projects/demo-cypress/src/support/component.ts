@@ -13,7 +13,7 @@ export const stableMount: typeof mount = (...mountArgs) =>
     mount(...mountArgs).then(mountResponse =>
         cy
             .get('body')
-            .find('tui-root')
+            .find('[data-cy-root]')
             .then(async () =>
                 mountResponse.fixture.whenStable().then(() => mountResponse),
             ),

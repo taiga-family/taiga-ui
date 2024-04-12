@@ -6,6 +6,7 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {CHAR_HYPHEN, CHAR_MINUS} from '@taiga-ui/cdk';
 import {TuiInputRangeComponent, TuiInputRangeModule} from '@taiga-ui/kit';
 import {TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('InputRange', () => {
     @Component({
@@ -69,6 +70,7 @@ describe('InputRange', () => {
         TestBed.configureTestingModule({
             imports: [TuiInputRangeModule, ReactiveFormsModule],
             declarations: [TestComponent],
+            providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);

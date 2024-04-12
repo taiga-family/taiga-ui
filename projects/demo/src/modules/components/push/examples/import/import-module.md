@@ -6,7 +6,7 @@ import {TuiPushModule} from '@taiga-ui/kit';
 @NgModule({
   imports: [
     // ...
-    TuiRootModule,
+    TuiRootComponent,
     TuiPushModule,
   ],
   // ...

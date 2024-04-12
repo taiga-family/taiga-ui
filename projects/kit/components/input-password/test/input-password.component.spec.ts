@@ -7,6 +7,7 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {TuiPageObject} from '@taiga-ui/testing';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 import {TuiInputPasswordComponent} from '../input-password.component';
 import {TuiInputPasswordModule} from '../input-password.module';
@@ -47,6 +48,7 @@ describe('InputPassword', () => {
                 TuiInputPasswordModule,
                 TuiTextfieldControllerModule,
             ],
+            providers: [NG_EVENT_PLUGINS],
             declarations: [TestComponent],
         });
         await TestBed.compileComponents();

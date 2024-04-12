@@ -45,6 +45,8 @@ describe('expand', () => {
         TestBed.configureTestingModule({
             imports: [TuiExpandModule, NoopAnimationsModule],
             declarations: [TestComponent],
+            // TODO: why tests are failed with NG_EVENT_PLUGINS
+            // providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);

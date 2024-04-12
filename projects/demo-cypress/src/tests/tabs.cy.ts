@@ -1,41 +1,39 @@
 import {Component} from '@angular/core';
-import {TuiRootModule} from '@taiga-ui/core';
 import {TuiTabsModule} from '@taiga-ui/kit';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('Tabs', () => {
     let component: TestComponent;
 
     @Component({
         template: `
-            <tui-root>
-                <tui-tabs [(activeItemIndex)]="activeItemIndex">
-                    <button
-                        id="cards"
-                        tuiTab
-                    >
-                        Cards
-                    </button>
-                    <button
-                        id="tariff"
-                        tuiTab
-                    >
-                        Rate
-                    </button>
-                    <button
-                        id="calls"
-                        disabled
-                        tuiTab
-                    >
-                        Challenges
-                    </button>
-                    <button
-                        id="settings"
-                        tuiTab
-                    >
-                        Settings
-                    </button>
-                </tui-tabs>
-            </tui-root>
+            <tui-tabs [(activeItemIndex)]="activeItemIndex">
+                <button
+                    id="cards"
+                    tuiTab
+                >
+                    Cards
+                </button>
+                <button
+                    id="tariff"
+                    tuiTab
+                >
+                    Rate
+                </button>
+                <button
+                    id="calls"
+                    disabled
+                    tuiTab
+                >
+                    Challenges
+                </button>
+                <button
+                    id="settings"
+                    tuiTab
+                >
+                    Settings
+                </button>
+            </tui-tabs>
         `,
     })
     class TestComponent {
@@ -45,7 +43,8 @@ describe('Tabs', () => {
     beforeEach(() =>
         cy
             .mount(TestComponent, {
-                imports: [TuiRootModule, TuiTabsModule],
+                imports: [TuiTabsModule],
+                providers: [NG_EVENT_PLUGINS],
             })
             .then(wrapper => {
                 component = wrapper.component;

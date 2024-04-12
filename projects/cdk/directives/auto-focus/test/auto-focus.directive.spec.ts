@@ -20,6 +20,7 @@ import {
     TuiIosAutofocusHandler,
     tuiIsNativeFocused,
 } from '@taiga-ui/cdk';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 import {EMPTY} from 'rxjs';
 
 describe('TuiAutoFocus directive', () => {
@@ -45,6 +46,7 @@ describe('TuiAutoFocus directive', () => {
             TestBed.configureTestingModule({
                 imports: [TuiAutoFocusDirective],
                 declarations: [TestComponentWithDiv],
+                providers: [NG_EVENT_PLUGINS],
             });
             await TestBed.compileComponents();
             fixture = TestBed.createComponent(TestComponentWithDiv);
@@ -107,6 +109,7 @@ describe('TuiAutoFocus directive', () => {
             TestBed.configureTestingModule({
                 imports: [TuiAutoFocusDirective],
                 declarations: [TestComponentWithTuiButton, TestFocusableComponent],
+                providers: [NG_EVENT_PLUGINS],
             });
 
             fixture = TestBed.createComponent(TestComponentWithTuiButton);
@@ -143,6 +146,7 @@ describe('TuiAutoFocus directive', () => {
                 imports: [TuiAutoFocusDirective],
                 declarations: [TestComponentIos],
                 providers: [
+                    NG_EVENT_PLUGINS,
                     {
                         provide: TUI_AUTOFOCUS_HANDLER,
                         useClass: TuiIosAutofocusHandler,
@@ -206,6 +210,7 @@ describe('TuiAutoFocus directive', () => {
             TestBed.configureTestingModule({
                 imports: [TuiAutoFocusDirective],
                 declarations: [TestComponentWithFocusFlag],
+                providers: [NG_EVENT_PLUGINS],
             });
 
             fixture = TestBed.createComponent(TestComponentWithFocusFlag);

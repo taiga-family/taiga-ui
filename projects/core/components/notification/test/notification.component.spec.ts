@@ -12,6 +12,7 @@ import {
     TuiSvgService,
 } from '@taiga-ui/core';
 import {TuiPageObject} from '@taiga-ui/testing';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('Notification', () => {
     describe('Without options', () => {
@@ -57,7 +58,7 @@ describe('Notification', () => {
             TestBed.configureTestingModule({
                 imports: [NoopAnimationsModule, TuiNotificationModule],
                 declarations: [TestComponent],
-                providers: [TuiSvgService],
+                providers: [TuiSvgService, NG_EVENT_PLUGINS],
             });
             await TestBed.compileComponents();
             fixture = TestBed.createComponent(TestComponent);

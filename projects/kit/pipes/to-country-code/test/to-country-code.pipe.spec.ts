@@ -1,6 +1,7 @@
 import {TestBed} from '@angular/core/testing';
 import {TuiCountryIsoCode} from '@taiga-ui/i18n';
 import {TuiIsoToCountryCodePipe, TuiToCountryCodePipe} from '@taiga-ui/kit';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('TuiToCountryCodePipe', () => {
     let pipe: TuiToCountryCodePipe;
@@ -68,7 +69,7 @@ describe('TuiToCountryCodePipe', () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            providers: [TuiIsoToCountryCodePipe, TuiToCountryCodePipe],
+            providers: [TuiIsoToCountryCodePipe, TuiToCountryCodePipe, NG_EVENT_PLUGINS],
         });
 
         pipe = TestBed.inject(TuiToCountryCodePipe);

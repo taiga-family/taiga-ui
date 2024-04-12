@@ -3,11 +3,9 @@ import {Component} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {TuiDropdownModule, TuiRootComponent} from '@taiga-ui/core';
 import {TuiPageObject} from '@taiga-ui/testing';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
-
-import {TuiRootModule} from '../../../components/root/root.module';
-import {TuiDropdownModule} from '../dropdown.module';
 
 describe('TuiDropdownDirective', () => {
     @Component({
@@ -51,7 +49,7 @@ describe('TuiDropdownDirective', () => {
             imports: [
                 TuiDropdownModule,
                 NoopAnimationsModule,
-                TuiRootModule,
+                TuiRootComponent,
                 PolymorpheusModule,
             ],
             declarations: [TestComponent],

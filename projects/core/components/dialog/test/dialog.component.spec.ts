@@ -4,12 +4,14 @@ import {Component} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {
+    TuiDialogModule,
+    tuiDialogOptionsProvider,
+    TuiDialogService,
+    TuiRootComponent,
+} from '@taiga-ui/core';
 import {TuiDialogHarness} from '@taiga-ui/testing';
-
-import {TuiRootModule} from '../../root/root.module';
-import {TuiDialogModule} from '../dialog.module';
-import {TuiDialogService} from '../dialog.service';
-import {tuiDialogOptionsProvider} from '../dialog.tokens';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('Dialog with TUI_DIALOG_OPTIONS', () => {
     @Component({
@@ -27,9 +29,9 @@ describe('Dialog with TUI_DIALOG_OPTIONS', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [NoopAnimationsModule, TuiRootModule, TuiDialogModule],
+            imports: [NoopAnimationsModule, TuiRootComponent, TuiDialogModule],
             declarations: [TestComponent],
-            providers: [tuiDialogOptionsProvider({closeable})],
+            providers: [tuiDialogOptionsProvider({closeable}), NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);

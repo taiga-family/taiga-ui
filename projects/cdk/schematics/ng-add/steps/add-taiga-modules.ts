@@ -122,13 +122,6 @@ function addRootTuiProvidersToBootstrapFn(
 ): void {
     const property = bootstrapOptions.getProperty('providers') as PropertyAssignment;
     const initializer = property.getInitializer() as ArrayLiteralExpression;
-    const providerFrom = initializer
-        .getElements()
-        .find(
-            el =>
-                Node.isCallExpression(el) &&
-                el.getExpression().getText() === 'importProvidersFrom',
-        );
     const provideAnimations = initializer
         .getElements()
         .find(
@@ -136,28 +129,11 @@ function addRootTuiProvidersToBootstrapFn(
                 Node.isCallExpression(el) &&
                 el.getExpression().getText() === 'provideAnimations',
         );
-    const modules = [MAIN_MODULE];
 
-    if (Node.isCallExpression(providerFrom)) {
-        const existing = providerFrom.getArguments();
-        const moduleNames = modules
-            .map(({name}) => name)
-            .filter(
-                module =>
-                    !existing.some(existingModule => existingModule.getText() === module),
-            );
-
-        providerFrom.addArguments(moduleNames);
-    } else {
-        pushToObjectArrayProperty(
-            bootstrapOptions,
-            'providers',
-            'importProvidersFrom(TuiRootModule)',
-        );
-    }
+    pushToObjectArrayProperty(bootstrapOptions, 'providers', 'NG_EVENT_PLUGINS');
 
     if (!provideAnimations) {
-        modules.push({
+        [MAIN_MODULE].push({
             name: 'provideAnimations',
             packageName: '@angular/platform-browser/animations',
         });
@@ -167,7 +143,7 @@ function addRootTuiProvidersToBootstrapFn(
         });
     }
 
-    [...modules, {name: 'importProvidersFrom', packageName: '@angular/core'}].forEach(
+    [{name: 'NG_EVENT_PLUGINS', packageName: '@tinkoff/ng-event-plugins'}].forEach(
         ({name, packageName}) => {
             addUniqueImport(
                 bootstrapOptions.getSourceFile().getFilePath(),

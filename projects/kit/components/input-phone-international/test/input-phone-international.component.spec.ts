@@ -5,7 +5,7 @@ import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {TuiRootModule, tuiSvgOptionsProvider} from '@taiga-ui/core';
+import {TuiRootComponent, tuiSvgOptionsProvider} from '@taiga-ui/core';
 import type {TuiLanguage} from '@taiga-ui/i18n';
 import {
     TUI_ENGLISH_LANGUAGE,
@@ -17,6 +17,7 @@ import {
     TuiInputPhoneInternationalComponent,
     TuiInputPhoneInternationalModule,
 } from '@taiga-ui/kit';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 import {of} from 'rxjs';
 
 describe('InputPhoneInternational', () => {
@@ -60,13 +61,14 @@ describe('InputPhoneInternational', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
                 imports: [
-                    TuiRootModule,
+                    TuiRootComponent,
                     TuiInputPhoneInternationalModule,
                     ReactiveFormsModule,
                     NoopAnimationsModule,
                 ],
                 declarations: [TestComponent],
                 providers: [
+                    NG_EVENT_PLUGINS,
                     tuiSvgOptionsProvider({
                         path: (_: string) => 'path/tuiIcon.svg#tuiIcon',
                     }),

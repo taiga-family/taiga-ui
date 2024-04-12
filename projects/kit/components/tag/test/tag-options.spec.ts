@@ -2,6 +2,7 @@ import {Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {TuiTagComponent, TuiTagModule, tuiTagOptionsProvider} from '@taiga-ui/kit';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('Tag component options', () => {
     let fixture: ComponentFixture<TestComponent>;
@@ -22,6 +23,7 @@ describe('Tag component options', () => {
             imports: [TuiTagModule],
             declarations: [TestComponent],
             providers: [
+                NG_EVENT_PLUGINS,
                 tuiTagOptionsProvider({
                     size: 'l',
                     status: 'error',

@@ -8,6 +8,7 @@ import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {TuiInputCopyComponent, TuiInputCopyModule} from '@taiga-ui/kit';
 import {TuiPageObject} from '@taiga-ui/testing';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('InputCopy', () => {
     @Component({
@@ -45,6 +46,7 @@ describe('InputCopy', () => {
                 TuiTextfieldControllerModule,
             ],
             declarations: [TestComponent],
+            providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);

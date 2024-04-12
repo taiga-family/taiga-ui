@@ -5,6 +5,7 @@ import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {TuiIslandComponent, TuiIslandModule} from '@taiga-ui/kit';
 import {TuiIslandHarness} from '@taiga-ui/testing';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('Island', () => {
     @Component({
@@ -48,6 +49,7 @@ describe('Island', () => {
         TestBed.configureTestingModule({
             imports: [TuiIslandModule],
             declarations: [TestComponent],
+            providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);

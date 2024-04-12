@@ -4,6 +4,7 @@ import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiPageObject} from '@taiga-ui/testing';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 import {TuiInputInlineComponent} from '../input-inline.component';
 import {TuiInputInlineModule} from '../input-inline.module';
@@ -34,6 +35,7 @@ describe('InputInline', () => {
         TestBed.configureTestingModule({
             imports: [ReactiveFormsModule, TuiInputInlineModule],
             declarations: [TestComponent],
+            providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);

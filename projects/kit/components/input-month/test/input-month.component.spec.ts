@@ -4,9 +4,10 @@ import {fakeAsync, TestBed, tick} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiDay, TuiMonth} from '@taiga-ui/cdk';
-import {TuiRootModule} from '@taiga-ui/core';
+import {TuiRootComponent} from '@taiga-ui/core';
 import {TuiInputMonthComponent, TuiInputMonthModule} from '@taiga-ui/kit';
 import {TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('InputMonth', () => {
     @Component({
@@ -32,11 +33,12 @@ describe('InputMonth', () => {
     beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [
-                TuiRootModule,
+                TuiRootComponent,
                 ReactiveFormsModule,
                 NoopAnimationsModule,
                 TuiInputMonthModule,
             ],
+            providers: [NG_EVENT_PLUGINS],
             declarations: [TestComponent],
         });
         await TestBed.compileComponents();
