@@ -2,6 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
+import {TuiSetupComponent} from '@demo/utils';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiTableModule} from '@taiga-ui/addon-table';
 import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
@@ -36,6 +37,7 @@ import {TuiDropdownContextExample3} from './examples/3';
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiDropdownContextComponent)),
         ReactiveFormsModule,
         DropdownDocumentationModule,
+        TuiSetupComponent,
     ],
     declarations: [
         ExampleTuiDropdownContextComponent,
