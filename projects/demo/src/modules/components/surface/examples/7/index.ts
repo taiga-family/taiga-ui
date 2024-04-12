@@ -7,7 +7,6 @@ import {
     TuiButtonDirective,
     TuiLabelModule,
     TuiLinkDirective,
-    TuiModeModule,
     TuiScrollbarComponent,
     TuiSurfaceDirective,
 } from '@taiga-ui/core';
@@ -26,7 +25,6 @@ import {TuiAvatarComponent, TuiBadgeDirective} from '@taiga-ui/kit';
         TuiButtonDirective,
         TuiLinkDirective,
         TuiCellModule,
-        TuiModeModule,
         TuiCardModule,
         CommonModule,
         TuiScrollbarComponent,
