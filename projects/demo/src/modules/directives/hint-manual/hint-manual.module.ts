@@ -1,6 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
+import {TuiSetupComponent} from '@demo/utils';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiButtonDirective, TuiHintModule, TuiLinkDirective} from '@taiga-ui/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
@@ -19,6 +20,7 @@ import {ExampleTuiHintManualComponent} from './hint-manual.component';
         InheritedDocumentationModule,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiHintManualComponent)),
+        TuiSetupComponent,
     ],
     declarations: [ExampleTuiHintManualComponent, TuiHintManualExample1],
     exports: [ExampleTuiHintManualComponent],
