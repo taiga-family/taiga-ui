@@ -12,7 +12,7 @@ import {
     TuiHostedDropdownModule,
     TuiLinkDirective,
     TuiScrollbarComponent,
-    TuiSvgModule,
+    TuiSvgComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {TuiAccordionModule, TuiInputModule} from '@taiga-ui/kit';
@@ -38,7 +38,7 @@ import {TuiDocNavigationComponent} from './navigation.component';
         TuiDropdownModule,
         TuiAccordionModule,
         TuiScrollbarComponent,
-        TuiSvgModule,
+        TuiSvgComponent,
         TuiDataListModule,
         TuiAutoFocusDirective,
     ],

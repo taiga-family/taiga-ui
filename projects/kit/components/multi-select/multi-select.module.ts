@@ -6,7 +6,7 @@ import {
     TuiDataListModule,
     TuiHostedDropdownModule,
     TuiLinkDirective,
-    TuiSvgModule,
+    TuiSvgComponent,
     TuiTextfieldControllerModule,
     TuiWrapperModule,
 } from '@taiga-ui/core';
@@ -35,7 +35,7 @@ import {TuiNativeMultiSelectGroupComponent} from './native-multi-select/native-m
         TuiArrowModule,
         TuiLetModule,
         TuiMapperPipeModule,
-        TuiSvgModule,
+        TuiSvgComponent,
         TuiHostedDropdownModule,
         TuiInputTagModule,
         TuiMultiSelectOptionModule,

@@ -5,7 +5,7 @@ import {
     TuiDataListModule,
     TuiHostedDropdownModule,
     TuiPrimitiveTextfieldModule,
-    TuiSvgModule,
+    TuiSvgComponent,
     TuiTextfieldControllerModule,
     TuiWrapperModule,
 } from '@taiga-ui/core';
@@ -28,7 +28,7 @@ import {TuiNativeTimeComponent} from './native-time/native-time.component';
         TuiPrimitiveTextfieldModule,
         TuiValueAccessorModule,
         TuiTextfieldControllerModule,
-        TuiSvgModule,
+        TuiSvgComponent,
         PolymorpheusModule,
     ],
     declarations: [TuiInputTimeComponent, TuiNativeTimeComponent, TuiInputTimeDirective],

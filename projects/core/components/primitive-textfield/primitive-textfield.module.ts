@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {TuiFocusableModule} from '@taiga-ui/cdk';
-import {TuiSvgModule} from '@taiga-ui/core/components/svg';
+import {TuiSvgComponent} from '@taiga-ui/core/components/svg';
 import {TuiTooltipModule} from '@taiga-ui/core/components/tooltip';
 import {TuiMaskAccessorModule} from '@taiga-ui/core/directives/mask-accessor';
 import {TuiWrapperModule} from '@taiga-ui/core/directives/wrapper';
@@ -21,7 +21,7 @@ import {TuiValueDecorationComponent} from './value-decoration/value-decoration.c
         TuiMaskAccessorModule,
         TuiFocusableModule,
         TuiWrapperModule,
-        TuiSvgModule,
+        TuiSvgComponent,
         TuiTooltipModule,
     ],
     declarations: [

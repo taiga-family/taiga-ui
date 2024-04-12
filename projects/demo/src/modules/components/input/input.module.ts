@@ -21,7 +21,7 @@ import {
     TuiLinkDirective,
     TuiNotificationModule,
     TuiPrimitiveTextfieldModule,
-    TuiSvgModule,
+    TuiSvgComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {
@@ -67,7 +67,7 @@ import {ExampleTuiInputComponent} from './input.component';
         TuiInputDateModule,
         TuiNotificationModule,
         TuiRepeatTimesModule,
-        TuiSvgModule,
+        TuiSvgComponent,
         TuiRadioListComponent,
         TuiButtonDirective,
         TuiInputCardModule,

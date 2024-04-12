@@ -14,7 +14,7 @@ import {
     TuiHintModule,
     TuiLinkDirective,
     TuiNotificationModule,
-    TuiSvgModule,
+    TuiSvgComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {TuiInputDateRangeModule} from '@taiga-ui/kit';
@@ -36,7 +36,7 @@ import {IconsBundledComponent} from './icons-bundled.component';
         TuiTextfieldControllerModule,
         TuiHintModule,
         TuiAddonDocModule,
-        TuiSvgModule,
+        TuiSvgComponent,
         RouterModule.forChild(tuiGenerateRoutes(IconsBundledComponent)),
     ],
     declarations: [IconsBundledComponent, TuiIconsBundledExample1],

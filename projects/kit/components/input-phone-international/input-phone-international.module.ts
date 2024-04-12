@@ -9,7 +9,7 @@ import {
     TuiHintModule,
     TuiHostedDropdownModule,
     TuiPrimitiveTextfieldModule,
-    TuiSvgModule,
+    TuiSvgComponent,
     TuiTextfieldControllerModule,
     TuiWrapperModule,
 } from '@taiga-ui/core';
@@ -24,7 +24,7 @@ import {TuiInputPhoneInternationalComponent} from './input-phone-international.c
         CommonModule,
         FormsModule,
         PolymorpheusModule,
-        TuiSvgModule,
+        TuiSvgComponent,
         TuiInputPhoneModule,
         TuiGroupDirective,
         TuiPrimitiveTextfieldModule,

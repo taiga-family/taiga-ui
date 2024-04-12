@@ -4,7 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {
     TuiHintModule,
     TuiPrimitiveTextfieldModule,
-    TuiSvgModule,
+    TuiSvgComponent,
     TuiTextfieldComponent,
     TuiTextfieldControllerModule,
     TuiWrapperModule,
@@ -20,7 +20,7 @@ import {TuiInputPasswordDirective} from './input-password.directive';
         FormsModule,
         PolymorpheusModule,
         TuiWrapperModule,
-        TuiSvgModule,
+        TuiSvgComponent,
         TuiHintModule,
         TuiPrimitiveTextfieldModule,
         TuiTextfieldControllerModule,

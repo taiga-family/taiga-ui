@@ -4,7 +4,7 @@ import {Component, inject, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {TuiStaticRequestService} from '@taiga-ui/cdk';
-import {TuiSvgComponent, TuiSvgModule, TuiSvgService} from '@taiga-ui/core';
+import {TuiSvgComponent, TuiSvgService} from '@taiga-ui/core';
 import {TUI_SANITIZER_MOCK, TuiSvgHarness} from '@taiga-ui/testing';
 import {of, throwError} from 'rxjs';
 
@@ -49,7 +49,7 @@ describe('Svg', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TuiSvgModule],
+            imports: [TuiSvgComponent],
             declarations: [TestComponent],
             providers: [
                 {

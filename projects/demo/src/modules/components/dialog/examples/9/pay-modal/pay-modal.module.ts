@@ -8,7 +8,7 @@ import {
     TuiFormatNumberPipeModule,
     TuiLinkDirective,
     TuiLoaderModule,
-    TuiSvgModule,
+    TuiSvgComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {TuiLabelDirective} from '@taiga-ui/experimental';
@@ -21,7 +21,7 @@ import {PayModalComponent} from './pay-modal.component';
         CommonModule,
         FormsModule,
         TuiLinkDirective,
-        TuiSvgModule,
+        TuiSvgComponent,
         TuiLetModule,
         TuiLoaderModule,
         TuiButtonDirective,

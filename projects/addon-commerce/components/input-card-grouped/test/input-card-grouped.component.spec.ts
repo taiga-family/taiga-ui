@@ -20,7 +20,7 @@ import {
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TuiSynchronousAutofocusHandler,
 } from '@taiga-ui/cdk';
-import {TuiSvgModule} from '@taiga-ui/core';
+import {TuiSvgComponent} from '@taiga-ui/core';
 import {TuiNativeInputPO} from '@taiga-ui/testing';
 import type {Mock} from 'jest-mock';
 import {firstValueFrom, timer} from 'rxjs';
@@ -64,7 +64,7 @@ describe('InputCardGrouped', () => {
             ) => new TuiSynchronousAutofocusHandler(focusable, el),
             deps: [[new Optional(), new Self(), TUI_FOCUSABLE_ITEM_ACCESSOR], ElementRef],
         }).configureTestingModule({
-            imports: [ReactiveFormsModule, TuiInputCardGroupedModule, TuiSvgModule],
+            imports: [ReactiveFormsModule, TuiInputCardGroupedModule, TuiSvgComponent],
             declarations: [TestComponent],
         });
         await TestBed.compileComponents();

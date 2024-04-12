@@ -19,7 +19,7 @@ import {
     TuiNumberFormatDirective,
     TuiScrollableDirective,
     TuiScrollbarComponent,
-    TuiSvgModule,
+    TuiSvgComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {
@@ -63,7 +63,7 @@ import {ExampleTuiSelectComponent} from './select.component';
         TuiButtonDirective,
         TuiLinkDirective,
         TuiAvatarComponent,
-        TuiSvgModule,
+        TuiSvgComponent,
         TuiDropdownModule,
         TuiTextfieldControllerModule,
         TuiHintModule,

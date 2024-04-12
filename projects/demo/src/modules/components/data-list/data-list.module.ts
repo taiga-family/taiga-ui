@@ -13,7 +13,7 @@ import {
     TuiGroupDirective,
     TuiNotificationModule,
     TuiPrimitiveTextfieldModule,
-    TuiSvgModule,
+    TuiSvgComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {
@@ -47,7 +47,7 @@ import {TuiDataListExample6} from './examples/6';
         TuiNotificationModule,
         TuiDataListModule,
         TuiDataListDropdownManagerModule,
-        TuiSvgModule,
+        TuiSvgComponent,
         TuiDropdownModule,
         TuiButtonDirective,
         TuiDropdownModule,

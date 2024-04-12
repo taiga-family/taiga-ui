@@ -5,7 +5,7 @@ import {TuiActiveZoneDirective, TuiLetModule} from '@taiga-ui/cdk';
 import {
     TuiHostedDropdownModule,
     TuiPrimitiveTextfieldModule,
-    TuiSvgModule,
+    TuiSvgComponent,
     TuiTextfieldComponent,
     TuiTextfieldControllerModule,
     TuiWrapperModule,
@@ -28,7 +28,7 @@ import {TuiInputDateRangeDirective} from './input-date-range.directive';
         TuiPrimitiveTextfieldModule,
         TuiTextfieldControllerModule,
         TuiHostedDropdownModule,
-        TuiSvgModule,
+        TuiSvgComponent,
         TuiCalendarRangeModule,
         TuiValueAccessorModule,
     ],

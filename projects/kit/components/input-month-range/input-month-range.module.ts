@@ -4,7 +4,7 @@ import {TuiActiveZoneDirective, TuiMapperPipeModule} from '@taiga-ui/cdk';
 import {
     TuiHostedDropdownModule,
     TuiPrimitiveTextfieldModule,
-    TuiSvgModule,
+    TuiSvgComponent,
     TuiTextfieldComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
@@ -19,7 +19,7 @@ import {TuiInputMonthRangeDirective} from './input-month-range.directive';
         TuiCalendarMonthModule,
         TuiHostedDropdownModule,
         TuiPrimitiveTextfieldModule,
-        TuiSvgModule,
+        TuiSvgComponent,
         TuiActiveZoneDirective,
         TuiMapperPipeModule,
         TuiTextfieldControllerModule,

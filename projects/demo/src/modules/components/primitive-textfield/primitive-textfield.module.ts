@@ -10,7 +10,7 @@ import {
     TuiLinkDirective,
     TuiNotificationModule,
     TuiPrimitiveTextfieldModule,
-    TuiSvgModule,
+    TuiSvgComponent,
     TuiTextfieldControllerModule,
     TuiWrapperModule,
 } from '@taiga-ui/core';
@@ -37,7 +37,7 @@ import {ExampleTuiPrimitiveTextfieldComponent} from './primitive-textfield.compo
         TuiNotificationModule,
         TuiAvatarComponent,
         TuiLinkDirective,
-        TuiSvgModule,
+        TuiSvgComponent,
         TuiButtonDirective,
         PolymorpheusModule,
         TuiHintModule,

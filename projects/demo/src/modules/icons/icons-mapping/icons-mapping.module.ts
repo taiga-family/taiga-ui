@@ -12,7 +12,7 @@ import {
     TuiButtonDirective,
     TuiExpandModule,
     TuiLinkDirective,
-    TuiSvgModule,
+    TuiSvgComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {TuiInputDateRangeModule} from '@taiga-ui/kit';
@@ -33,7 +33,7 @@ import {IconsMappingComponent} from './icons-mapping.component';
         TuiInputDateRangeModule,
         TuiTextfieldControllerModule,
         TuiAddonDocModule,
-        TuiSvgModule,
+        TuiSvgComponent,
         RouterModule.forChild(tuiGenerateRoutes(IconsMappingComponent)),
     ],
     declarations: [

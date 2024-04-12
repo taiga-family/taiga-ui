@@ -297,4 +297,8 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifier[] = [
         from: {name: 'TuiFlagPipeModule', moduleSpecifier: '@taiga-ui/core'},
         to: {name: 'TuiFlagPipe', moduleSpecifier: '@taiga-ui/core'},
     },
+    {
+        from: {name: 'TuiSvgModule', moduleSpecifier: '@taiga-ui/core'},
+        to: {name: 'TuiSvgComponent', moduleSpecifier: '@taiga-ui/core'},
+    },
 ];

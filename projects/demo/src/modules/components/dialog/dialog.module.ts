@@ -18,7 +18,7 @@ import {
     TuiLoaderModule,
     TuiNotificationModule,
     TuiNumberFormatDirective,
-    TuiSvgModule,
+    TuiSvgComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {
@@ -67,7 +67,7 @@ import {TuiDialogExampleComponent10} from './examples/10';
         DialogExampleModule,
         SearchDialogExampleModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiDialogComponent)),
-        TuiSvgModule,
+        TuiSvgComponent,
         TuiLoaderModule,
         TuiInputNumberModule,
         PayExampleModalModule,

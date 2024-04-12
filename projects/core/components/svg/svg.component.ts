@@ -1,5 +1,5 @@
 /// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
-import {DOCUMENT} from '@angular/common';
+import {AsyncPipe, DOCUMENT, NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -16,6 +16,7 @@ import {
     TUI_BASE_HREF,
     tuiGetDocumentOrShadowRoot,
     tuiIsString,
+    TuiLetModule,
     tuiPure,
     TuiStaticRequestService,
 } from '@taiga-ui/cdk';
@@ -36,7 +37,9 @@ const FAILED_EXTERNAL_ICON = 'Failed to load external SVG';
 
 // TODO: Consider moving to CDK along with SvgService and SvgDefsHostComponent
 @Component({
+    standalone: true,
     selector: 'tui-svg',
+    imports: [TuiLetModule, AsyncPipe, NgIf],
     templateUrl: './svg.template.html',
     styleUrls: ['./svg.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

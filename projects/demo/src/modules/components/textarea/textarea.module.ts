@@ -14,7 +14,7 @@ import {
     TuiLabelModule,
     TuiLinkDirective,
     TuiNotificationModule,
-    TuiSvgModule,
+    TuiSvgComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {
@@ -39,7 +39,7 @@ import {ExampleTuiTextareaComponent} from './textarea.component';
         InheritedDocumentationModule,
         ReactiveFormsModule,
         FormsModule,
-        TuiSvgModule,
+        TuiSvgComponent,
         CommonModule,
         TuiRadioListComponent,
         TuiButtonDirective,

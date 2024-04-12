@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {TuiRepeatTimesModule} from '@taiga-ui/cdk';
-import {TuiSvgModule} from '@taiga-ui/core';
+import {TuiSvgComponent} from '@taiga-ui/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiMobileLoaderAndroidComponent} from './loader-android/loader-android.component';
@@ -11,7 +11,7 @@ import {TuiPullToRefreshComponent} from './pull-to-refresh.component';
 @NgModule({
     imports: [
         CommonModule,
-        TuiSvgModule,
+        TuiSvgComponent,
         TuiRepeatTimesModule,
         PolymorpheusModule,
         TuiMobileLoaderAndroidComponent,

@@ -8,7 +8,7 @@ import {
     TuiErrorModule,
     TuiLinkDirective,
     TuiNotificationModule,
-    TuiSvgModule,
+    TuiSvgComponent,
 } from '@taiga-ui/core';
 import {TuiAvatarComponent, TuiFieldErrorPipeModule, TuiFilesModule} from '@taiga-ui/kit';
 
@@ -28,7 +28,7 @@ import {ExampleTuiInputFilesComponent} from './input-files.component';
         TuiFilesModule,
         TuiLinkDirective,
         TuiButtonDirective,
-        TuiSvgModule,
+        TuiSvgComponent,
         TuiErrorModule,
         TuiFieldErrorPipeModule,
         TuiNotificationModule,

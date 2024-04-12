@@ -8,7 +8,7 @@ import {
     TuiHintModule,
     TuiLinkDirective,
     TuiNotificationModule,
-    TuiSvgModule,
+    TuiSvgComponent,
 } from '@taiga-ui/core';
 
 import {TuiNotificationExample1} from './examples/1';
@@ -27,7 +27,7 @@ import {ExampleTuiNotificationComponent} from './notification.component';
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiNotificationComponent)),
         TuiHintModule,
-        TuiSvgModule,
+        TuiSvgComponent,
     ],
     declarations: [
         ExampleTuiNotificationComponent,
