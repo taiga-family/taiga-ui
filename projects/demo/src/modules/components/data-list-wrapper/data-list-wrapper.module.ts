@@ -2,6 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
+import {TuiSetupComponent} from '@demo/utils';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {
@@ -30,6 +31,7 @@ import {TuiDataListWrapperExample3} from './examples/3';
         TuiInputModule,
         TuiStringifyContentPipeModule,
         TuiTextfieldControllerModule,
+        TuiSetupComponent,
     ],
     declarations: [
         ExampleTuiDataListWrapperComponent,
