@@ -1,6 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
+import {TuiSetupComponent} from '@demo/utils';
 import {TuiBarSetModule} from '@taiga-ui/addon-charts';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiFormatNumberPipeModule} from '@taiga-ui/core';
@@ -20,6 +21,7 @@ import {TuiBarSetExample5} from './examples/5';
         TuiFormatNumberPipeModule,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiBarSetComponent)),
+        TuiSetupComponent,
     ],
     declarations: [
         ExampleTuiBarSetComponent,
