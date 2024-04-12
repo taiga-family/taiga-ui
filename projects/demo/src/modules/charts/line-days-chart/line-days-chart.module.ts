@@ -2,6 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
+import {TuiSetupComponent} from '@demo/utils';
 import {
     TuiAxesModule,
     TuiLineChartModule,
@@ -31,6 +32,7 @@ import {ExampleTuiLineDaysChartComponent} from './line-days-chart.component';
         TuiInputDateRangeModule,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiLineDaysChartComponent)),
+        TuiSetupComponent,
     ],
     declarations: [
         ExampleTuiLineDaysChartComponent,
