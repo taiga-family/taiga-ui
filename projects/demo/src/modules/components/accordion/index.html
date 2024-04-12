@@ -196,26 +196,9 @@
     </ng-template>
 
     <ng-template pageTab>
-        <ol class="b-demo-steps">
-            <li>
-                Import
-                <code>TuiAccordionModule</code>
-                into a module where you want to use our component
-
-                <tui-doc-code
-                    filename="my.module.ts"
-                    [code]="exampleModule"
-                />
-            </li>
-
-            <li>
-                Add it into template:
-
-                <tui-doc-code
-                    filename="my.component.html"
-                    [code]="exampleHtml"
-                />
-            </li>
-        </ol>
+        <tui-setup
+            [import]="exampleModule"
+            [template]="exampleHtml"
+        />
     </ng-template>
 </tui-doc-page>
