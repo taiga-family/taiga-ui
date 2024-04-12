@@ -2,6 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
+import {TuiSetupComponent} from '@demo/utils';
 import {MaskitoDirective} from '@maskito/angular';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
@@ -52,6 +53,7 @@ import {ExampleTuiInputTagComponent} from './input-tag.component';
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiInputTagComponent)),
         MaskitoDirective,
+        TuiSetupComponent,
     ],
     declarations: [
         ExampleTuiInputTagComponent,
