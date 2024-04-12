@@ -1,6 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
+import {TuiSetupComponent} from '@demo/utils';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiAutoColorPipe,
@@ -26,6 +27,7 @@ import {ExampleTuiHintComponent} from './hint.component';
         TuiNotificationModule,
         TuiAutoColorPipe,
         TuiLinkDirective,
+        TuiSetupComponent,
     ],
     declarations: [ExampleTuiHintComponent, TuiHintExample1, TuiHintExample2],
     exports: [ExampleTuiHintComponent],
