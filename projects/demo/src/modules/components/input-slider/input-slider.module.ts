@@ -2,6 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
+import {TuiSetupComponent} from '@demo/utils';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiButtonDirective,
@@ -44,6 +45,7 @@ import {ExampleTuiInputSliderComponent} from './input-slider.component';
         TuiTextfieldControllerModule,
         TuiNumberFormatDirective,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiInputSliderComponent)),
+        TuiSetupComponent,
     ],
     declarations: [
         ExampleTuiInputSliderComponent,
