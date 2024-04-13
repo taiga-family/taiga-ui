@@ -1,7 +1,8 @@
 import {Component, inject} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_IS_IOS} from '@taiga-ui/cdk';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
+import {encapsulation} from '#/demo/emulate/encapsulation';
 
 @Component({
     selector: 'tui-token-example-5',

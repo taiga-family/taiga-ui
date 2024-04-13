@@ -38,8 +38,8 @@ describe('Replacing a custom instructions in typescript', () => {
     it('absolute path', () => {
         const componentFile = `
                 import {Component} from '@angular/core';
-                import {changeDetection} from '@demo/emulate/change-detection';
-                import {encapsulation} from '@demo/emulate/encapsulation';
+                import {changeDetection} from '#/demo/emulate/change-detection';
+                import {encapsulation} from '#/demo/emulate/encapsulation';
 
                 @Component({
                     selector: 'tui-example-1',
@@ -62,13 +62,13 @@ describe('Replacing a custom instructions in typescript', () => {
 
         expect(
             preprocessed.includes(
-                "import {changeDetection} from '@demo/emulate/change-detection';",
+                "import {changeDetection} from '#/demo/emulate/change-detection';",
             ),
         ).toBeFalsy();
 
         expect(
             preprocessed.includes(
-                "import {encapsulation} from '@demo/emulate/encapsulation';",
+                "import {encapsulation} from '#/demo/emulate/encapsulation';",
             ),
         ).toBeFalsy();
     });

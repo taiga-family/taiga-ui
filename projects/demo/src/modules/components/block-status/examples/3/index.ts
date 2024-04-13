@@ -1,12 +1,13 @@
 import {AsyncPipe, NgIf} from '@angular/common';
 import {Component, inject} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiSizeL} from '@taiga-ui/core';
 import {TuiBreakpointService, TuiButtonDirective} from '@taiga-ui/core';
 import {TuiBlockStatusModule} from '@taiga-ui/layout';
 import type {Observable} from 'rxjs';
 import {map} from 'rxjs';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
+import {encapsulation} from '#/demo/emulate/encapsulation';
 
 @Component({
     standalone: true,

@@ -1,5 +1,6 @@
-import {tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
+
+import {tuiGoto} from '#/demo-playwright/utils';
 
 test.describe('Navigation', () => {
     test.use({viewport: {width: 1080, height: 600}});

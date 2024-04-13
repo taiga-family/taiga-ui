@@ -1,7 +1,4 @@
 import {Component} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
-import {assets} from '@demo/utils';
 import {TUI_DEFAULT_MATCHER, tuiPure} from '@taiga-ui/cdk';
 import type {Observable} from 'rxjs';
 import {
@@ -15,6 +12,10 @@ import {
     switchMap,
     tap,
 } from 'rxjs';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
+import {encapsulation} from '#/demo/emulate/encapsulation';
+import {assets} from '#/demo/utils';
 
 class User {
     constructor(

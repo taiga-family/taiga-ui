@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
+import {encapsulation} from '#/demo/emulate/encapsulation';
 
 function randomString(len: number): string {
     const charSet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';

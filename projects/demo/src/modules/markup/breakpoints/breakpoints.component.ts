@@ -1,8 +1,9 @@
 import {Component} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import fileWithBreakpoints from '@taiga-ui/core/styles/variables/media.less?raw';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
+import {encapsulation} from '#/demo/emulate/encapsulation';
 
 /**
  * Match all code comments.

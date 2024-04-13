@@ -1,10 +1,11 @@
 import {Component, inject, ViewChild} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import type {TuiSheet, TuiSheetOptions} from '@taiga-ui/addon-mobile';
 import {TUI_SHEET_DEFAULT_OPTIONS} from '@taiga-ui/addon-mobile';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
 
 @Component({
     selector: 'example-sheet',

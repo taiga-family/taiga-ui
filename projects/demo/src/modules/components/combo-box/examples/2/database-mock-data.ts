@@ -1,4 +1,4 @@
-import {assets} from '@demo/utils';
+import {assets} from '#/demo/utils';
 
 import {User} from './user';
 

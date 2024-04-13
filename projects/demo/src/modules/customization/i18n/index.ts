@@ -1,6 +1,5 @@
 import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import {
     TuiDocCodeModule,
@@ -10,6 +9,8 @@ import {
 } from '@taiga-ui/addon-doc';
 import {TuiLinkDirective} from '@taiga-ui/core';
 import {from, map} from 'rxjs';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
 
 @Component({
     standalone: true,

@@ -1,8 +1,9 @@
 import {Component} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDestroyService} from '@taiga-ui/cdk';
 import {interval, map, startWith} from 'rxjs';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
+import {encapsulation} from '#/demo/emulate/encapsulation';
 
 @Component({
     selector: 'tui-tooltip-example-1',

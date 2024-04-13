@@ -1,8 +1,9 @@
 import type {TemplateRef} from '@angular/core';
 import {Component, ViewChild} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiValidationError} from '@taiga-ui/cdk';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
 
 @Component({
     selector: 'example-tui-error',

@@ -1,8 +1,9 @@
 import {Component} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiLineHandler, TuiLineType} from '@taiga-ui/addon-charts';
 import {TUI_ALWAYS_DASHED, TUI_ALWAYS_SOLID} from '@taiga-ui/addon-charts';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
 
 @Component({
     selector: 'example-tui-axes',

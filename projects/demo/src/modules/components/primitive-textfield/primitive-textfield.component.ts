@@ -1,11 +1,12 @@
 import {Component, ViewChild} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import type {TuiContext, TuiInputMode, TuiInputType} from '@taiga-ui/cdk';
 import {tuiProvide} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {TUI_HINT_DIRECTIONS} from '@taiga-ui/core';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
 import {AbstractExampleTuiInteractive} from '../abstract/interactive';

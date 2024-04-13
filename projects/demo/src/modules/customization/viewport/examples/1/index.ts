@@ -1,12 +1,13 @@
 import {Component, ElementRef, inject} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
 import {
     tuiAsViewport,
     TuiDropdownDirective,
     TuiDropdownHoverDirective,
     TuiRectAccessor,
 } from '@taiga-ui/core';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
+import {encapsulation} from '#/demo/emulate/encapsulation';
 
 @Component({
     standalone: true,

@@ -1,8 +1,9 @@
 import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiExamplePipe, TuiSetupComponent} from '@demo/utils';
 import {TuiAddonDocModule} from '@taiga-ui/addon-doc';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
+import {TuiExamplePipe, TuiSetupComponent} from '#/demo/utils';
 
 import {TuiNumberFormatExample1} from './examples/1';
 

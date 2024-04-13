@@ -1,8 +1,9 @@
 import {Component, inject} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiPure, tuiSum} from '@taiga-ui/cdk';
 import {TuiAlertService, tuiFormatNumber} from '@taiga-ui/core';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
+import {encapsulation} from '#/demo/emulate/encapsulation';
 
 @Component({
     selector: 'tui-legend-item-example-2',

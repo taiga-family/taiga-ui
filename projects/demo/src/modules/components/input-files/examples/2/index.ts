@@ -1,11 +1,12 @@
 import {Component} from '@angular/core';
 import type {AbstractControl, ValidatorFn} from '@angular/forms';
 import {FormControl} from '@angular/forms';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiValidationError} from '@taiga-ui/cdk';
 import {tuiFilesAccepted} from '@taiga-ui/kit';
 import {map} from 'rxjs';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
+import {encapsulation} from '#/demo/emulate/encapsulation';
 
 @Component({
     selector: 'tui-input-files-example-2',

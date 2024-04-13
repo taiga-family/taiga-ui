@@ -1,8 +1,9 @@
 import {Component} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import type {TuiStringHandler} from '@taiga-ui/cdk';
 import type {TuiPoint} from '@taiga-ui/core';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
 
 @Component({
     selector: 'example-tui-line-chart',

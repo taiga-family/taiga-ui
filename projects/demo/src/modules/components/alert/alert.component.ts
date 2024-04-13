@@ -1,6 +1,5 @@
 import {Component, inject, INJECTOR} from '@angular/core';
 import {RouterLink} from '@angular/router';
-import {changeDetection} from '@demo/emulate/change-detection';
 import {
     TuiAddonDocModule,
     type TuiDocExample,
@@ -17,6 +16,8 @@ import {
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import {switchMap} from 'rxjs';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
 
 import {TuiAlertExampleComponent1} from './examples/1';
 import {TuiAlertExampleComponent2} from './examples/2';

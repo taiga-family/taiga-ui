@@ -1,8 +1,9 @@
 import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_DATE_TIME_VALUE_TRANSFORMER} from '@taiga-ui/kit';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
+import {encapsulation} from '#/demo/emulate/encapsulation';
 
 import {ExampleDateTimeTransformer} from './value-transformer';
 

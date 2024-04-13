@@ -1,5 +1,6 @@
 import {Component, ViewEncapsulation} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
 
 import {
     BASE,

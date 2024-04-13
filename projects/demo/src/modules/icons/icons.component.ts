@@ -1,6 +1,7 @@
 import {Component, inject} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {assets} from '@demo/utils';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
+import {assets} from '#/demo/utils';
 
 import {TUI_DEMO_ICONS} from './icons.tokens';
 

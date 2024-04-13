@@ -1,9 +1,10 @@
 import {Component} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
-import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import type {TuiInputMode, TuiInputType} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
 
 @Component({
     selector: 'example-tui-textfield-controller',

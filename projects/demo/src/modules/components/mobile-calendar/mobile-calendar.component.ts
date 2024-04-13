@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
-import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import type {TuiBooleanHandler, TuiDayRange} from '@taiga-ui/cdk';
 import {
@@ -12,6 +11,8 @@ import {
 } from '@taiga-ui/cdk';
 import {TUI_CALENDAR_DATE_STREAM} from '@taiga-ui/kit';
 import type {Observable} from 'rxjs';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
 
 @Component({
     selector: 'example-tui-mobile-calendar',

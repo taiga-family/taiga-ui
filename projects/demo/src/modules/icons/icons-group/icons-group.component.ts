@@ -3,11 +3,12 @@ import type {OnInit} from '@angular/core';
 import {Component, ContentChild, inject, Input} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
-import {changeDetection} from '@demo/emulate/change-detection';
 import {TUI_DEFAULT_MATCHER, TuiDestroyService} from '@taiga-ui/cdk';
 import {TuiAlertService} from '@taiga-ui/core';
 import type {Observable} from 'rxjs';
 import {debounceTime, distinctUntilChanged, filter, map, takeUntil} from 'rxjs';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
 
 import {IconsGroupDirective} from './icons-group.directive';
 

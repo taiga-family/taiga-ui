@@ -1,7 +1,8 @@
 import {Component, HostBinding} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiSwipe} from '@taiga-ui/cdk';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
+import {encapsulation} from '#/demo/emulate/encapsulation';
 
 @Component({
     selector: 'tui-swipe-example-1',

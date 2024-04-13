@@ -1,8 +1,9 @@
 import {isPlatformBrowser} from '@angular/common';
 import {Component, inject, PLATFORM_ID} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
 import {interval, NEVER, startWith} from 'rxjs';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
+import {encapsulation} from '#/demo/emulate/encapsulation';
 
 @Component({
     selector: 'tui-let-example-1',

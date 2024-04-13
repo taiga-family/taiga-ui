@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
 import {tuiAsPortal, TuiPortalsComponent} from '@taiga-ui/cdk';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
 
 import {CustomPortalService} from './custom-portal.service';
 

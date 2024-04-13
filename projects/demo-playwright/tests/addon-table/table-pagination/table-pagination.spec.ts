@@ -1,9 +1,10 @@
+import {expect, test} from '@playwright/test';
+
 import {
     TuiDocumentationPagePO,
     tuiGoto,
     TuiTablePaginationPO,
-} from '@demo-playwright/utils';
-import {expect, test} from '@playwright/test';
+} from '#/demo-playwright/utils';
 
 test.describe('TablePagination', () => {
     test.describe('Dropdown with [size]-options (amount items per page)', () => {

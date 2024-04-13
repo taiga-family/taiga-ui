@@ -1,11 +1,12 @@
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiPlatformModule} from '@taiga-ui/cdk';
 import {TuiButtonDirective} from '@taiga-ui/core';
 import {TuiLabelDirective} from '@taiga-ui/experimental';
 import {TuiRadioComponent, TuiRadioDirective} from '@taiga-ui/kit';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
+import {encapsulation} from '#/demo/emulate/encapsulation';
 
 @Component({
     standalone: true,

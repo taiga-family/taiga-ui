@@ -1,5 +1,6 @@
 import {Component, inject} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../inherited-documentation/abstract-props-accessor';
 import type {AbstractExampleTuiNumberFormat} from '../number-format';

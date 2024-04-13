@@ -1,7 +1,8 @@
 import type {EmbeddedViewRef, TemplateRef} from '@angular/core';
 import {Component, inject} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiButtonDirective, TuiSvgComponent} from '@taiga-ui/core';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
 
 import {CustomPortalService} from './portal/custom-portal.service';
 

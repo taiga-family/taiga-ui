@@ -1,9 +1,10 @@
 import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiMonth} from '@taiga-ui/cdk';
 import {tuiInputDateOptionsProvider} from '@taiga-ui/kit';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
+import {encapsulation} from '#/demo/emulate/encapsulation';
 
 @Component({
     selector: 'input-month-example-3',

@@ -1,9 +1,10 @@
 import {Component} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocPageModule} from '@taiga-ui/addon-doc';
 import {TuiLinkDirective} from '@taiga-ui/core';
 import {TuiCardModule} from '@taiga-ui/experimental';
 import {TuiIslandModule} from '@taiga-ui/kit';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
 
 import {SCREENSHOT_BOT_LINK, SCREENSHOT_BOT_NAME} from '../testing/screenshot-github-bot';
 

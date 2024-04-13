@@ -1,10 +1,11 @@
 import {Component, ViewChild} from '@angular/core';
 import type {AbstractControl, ValidationErrors, ValidatorFn} from '@angular/forms';
 import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiValidationError} from '@taiga-ui/cdk';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
+import {encapsulation} from '#/demo/emulate/encapsulation';
 
 @Component({
     selector: 'tui-field-error-pipe-example-4',

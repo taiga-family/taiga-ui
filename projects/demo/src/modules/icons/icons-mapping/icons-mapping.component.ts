@@ -1,7 +1,8 @@
 import {Component} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import {tuiKitIcons} from '@taiga-ui/icons';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
 
 @Component({
     selector: 'icons-mapping',

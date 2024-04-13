@@ -1,9 +1,10 @@
 import {Component} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiContext, TuiStringHandler} from '@taiga-ui/cdk';
 import {tuiPure} from '@taiga-ui/cdk';
 import {delay, of} from 'rxjs';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
+import {encapsulation} from '#/demo/emulate/encapsulation';
 
 interface Python {
     readonly id: number;

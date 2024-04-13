@@ -1,10 +1,11 @@
 import {Component} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
 import {
     type TuiDocExample,
     TuiDocExampleModule,
     TuiDocPageModule,
 } from '@taiga-ui/addon-doc';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
 
 import {TuiDialogsExample1} from './examples/1';
 

@@ -1,7 +1,5 @@
 import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiComparator} from '@taiga-ui/addon-table';
 import {
     TUI_DEFAULT_MATCHER,
@@ -24,6 +22,9 @@ import {
     switchMap,
     timer,
 } from 'rxjs';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
+import {encapsulation} from '#/demo/emulate/encapsulation';
 
 interface User {
     readonly dob: TuiDay;

@@ -1,10 +1,11 @@
+import type {Locator} from '@playwright/test';
+import {expect, test} from '@playwright/test';
+
 import {
     TuiDocumentationPagePO,
     tuiGoto,
     TuiInputMonthRangePO,
-} from '@demo-playwright/utils';
-import type {Locator} from '@playwright/test';
-import {expect, test} from '@playwright/test';
+} from '#/demo-playwright/utils';
 
 test.describe('InputMonthRange', () => {
     test.describe('API', () => {

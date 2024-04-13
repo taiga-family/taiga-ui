@@ -1,5 +1,6 @@
-import {tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
+
+import {tuiGoto} from '#/demo-playwright/utils';
 
 import {
     TUI_PLAYWRIGHT_MOBILE_USER_AGENT,

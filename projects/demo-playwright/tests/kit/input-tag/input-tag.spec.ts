@@ -1,9 +1,10 @@
+import {expect, test} from '@playwright/test';
+
 import {
     TuiDocumentationApiPagePO,
     TuiDocumentationPagePO,
     tuiGoto,
-} from '@demo-playwright/utils';
-import {expect, test} from '@playwright/test';
+} from '#/demo-playwright/utils';
 
 test.describe('InputTag', () => {
     test.describe('Examples', () => {

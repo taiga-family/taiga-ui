@@ -1,10 +1,11 @@
 import {Component, inject} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiPopover} from '@taiga-ui/cdk';
 import {TuiDestroyService} from '@taiga-ui/cdk';
 import {TuiButtonDirective, TuiDialogCloseService} from '@taiga-ui/core';
 import {POLYMORPHEUS_CONTEXT, PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import {takeUntil} from 'rxjs';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
 
 import type {PromptOptions} from './prompt-options';
 

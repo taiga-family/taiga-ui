@@ -1,7 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {TuiExamplePipe, TuiSetupComponent} from '@demo/utils';
 import {tuiGetDocModules} from '@taiga-ui/addon-doc';
 import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
 import {
@@ -13,6 +12,8 @@ import {
     TuiScrollbarComponent,
 } from '@taiga-ui/core';
 import {TuiChevronDirective, TuiInputNumberModule, TuiTabsModule} from '@taiga-ui/kit';
+
+import {TuiExamplePipe, TuiSetupComponent} from '#/demo/utils';
 
 import {TuiTabsExample1} from './examples/1';
 import {TuiTabsExample2} from './examples/2';

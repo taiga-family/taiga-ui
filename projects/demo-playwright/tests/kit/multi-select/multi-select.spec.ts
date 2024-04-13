@@ -1,6 +1,7 @@
-import {TuiDocumentationPagePO, tuiGoto, TuiMultiSelectPO} from '@demo-playwright/utils';
 import type {Locator} from '@playwright/test';
 import {expect, test} from '@playwright/test';
+
+import {TuiDocumentationPagePO, tuiGoto, TuiMultiSelectPO} from '#/demo-playwright/utils';
 
 test.describe('MultiSelect', () => {
     test.describe('Examples', () => {

@@ -1,3 +1,6 @@
+import type {Locator} from '@playwright/test';
+import {expect, test} from '@playwright/test';
+
 import {
     CHAR_EM_DASH,
     CHAR_EN_DASH,
@@ -6,9 +9,7 @@ import {
     TuiDocumentationApiPagePO,
     TuiDocumentationPagePO,
     tuiGoto,
-} from '@demo-playwright/utils';
-import type {Locator} from '@playwright/test';
-import {expect, test} from '@playwright/test';
+} from '#/demo-playwright/utils';
 
 test.describe('InputNumber', () => {
     let example: Locator;

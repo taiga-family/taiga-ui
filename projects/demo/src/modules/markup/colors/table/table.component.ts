@@ -1,9 +1,10 @@
 import {DOCUMENT} from '@angular/common';
 import {Component, HostBinding, inject, Input} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
 import {WINDOW} from '@ng-web-apis/common';
 import {TuiThemeService} from '@taiga-ui/addon-doc';
 import {delay} from 'rxjs';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
 
 import type {Color} from '../colors.constants';
 

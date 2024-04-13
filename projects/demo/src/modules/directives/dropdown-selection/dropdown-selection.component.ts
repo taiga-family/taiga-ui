@@ -1,7 +1,8 @@
 import {Component, forwardRef} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import type {TuiDropdownPosition} from '@taiga-ui/kit';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
 
 import {AbstractExampleTuiDropdown} from '../../components/abstract/dropdown';
 import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/inherited-documentation/abstract-props-accessor';

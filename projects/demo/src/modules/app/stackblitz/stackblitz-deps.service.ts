@@ -1,7 +1,8 @@
 import {inject, Injectable} from '@angular/core';
-import {environment} from '@demo/environments/environment';
 import {LOCATION} from '@ng-web-apis/common';
 import {TUI_VERSION} from '@taiga-ui/cdk';
+
+import {environment} from '#/demo/environments/environment';
 
 @Injectable({providedIn: 'root'})
 export class StackblitzDepsService {
@@ -62,7 +63,7 @@ export class StackblitzDepsService {
         const {dependencies: demoDeps} = await import('@taiga-ui/demo/package.json');
         const {peerDependencies: cdkDeps} = await import('@taiga-ui/cdk/package.json');
         const {peerDependencies: kitDeps} = await import('@taiga-ui/kit/package.json');
-        const {devDependencies: rootDevDeps} = await import('@demo/root-package');
+        const {devDependencies: rootDevDeps} = await import('#/demo/root-package');
 
         return {
             '@tinkoff/ng-dompurify': demoDeps['@tinkoff/ng-dompurify'],

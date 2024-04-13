@@ -1,6 +1,4 @@
 import {Component, inject} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiHandler} from '@taiga-ui/cdk';
 import {
     TUI_TREE_LOADER,
@@ -8,6 +6,9 @@ import {
     TUI_TREE_START,
     TuiTreeService,
 } from '@taiga-ui/kit';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
+import {encapsulation} from '#/demo/emulate/encapsulation';
 
 import {TreeLoader} from './service';
 

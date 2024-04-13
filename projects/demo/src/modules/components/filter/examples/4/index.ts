@@ -1,10 +1,11 @@
 import {Component} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiPure} from '@taiga-ui/cdk';
 import {TuiAppearance} from '@taiga-ui/core';
 import type {Observable} from 'rxjs';
 import {BehaviorSubject, map} from 'rxjs';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
+import {encapsulation} from '#/demo/emulate/encapsulation';
 
 const Department = {
     IT: 'IT',

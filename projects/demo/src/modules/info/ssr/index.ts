@@ -1,7 +1,8 @@
 import {Component} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocPageModule} from '@taiga-ui/addon-doc';
 import {TuiLinkDirective} from '@taiga-ui/core';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
 
 @Component({
     standalone: true,

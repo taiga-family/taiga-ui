@@ -1,8 +1,9 @@
 import {Component, ElementRef, HostListener, ViewChild} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
 import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk';
 import {TuiCompassComponent} from '@taiga-ui/kit';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
+import {encapsulation} from '#/demo/emulate/encapsulation';
 
 @Component({
     standalone: true,

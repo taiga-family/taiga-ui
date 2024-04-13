@@ -1,7 +1,8 @@
 import {isPlatformBrowser} from '@angular/common';
 import {Component, inject, PLATFORM_ID} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
+import {encapsulation} from '#/demo/emulate/encapsulation';
 
 @Component({
     selector: 'tui-carousel-example-1',

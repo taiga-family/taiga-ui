@@ -2,7 +2,6 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {TuiExamplePipe} from '@demo/utils';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiFormatNumberPipeModule,
@@ -10,6 +9,8 @@ import {
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {TuiInputNumberModule} from '@taiga-ui/kit';
+
+import {TuiExamplePipe} from '#/demo/utils';
 
 import {InheritedDocumentationModule} from '../../components/abstract/inherited-documentation/inherited-documentation.module';
 import {NumberFormatDocumentationModule} from '../../components/abstract/number-format-documentation/number-format-documentation.module';

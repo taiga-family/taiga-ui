@@ -1,6 +1,7 @@
-import {TuiDocumentationPagePO, tuiGoto, TuiInputCardPO} from '@demo-playwright/utils';
 import type {Locator} from '@playwright/test';
 import {expect, test} from '@playwright/test';
+
+import {TuiDocumentationPagePO, tuiGoto, TuiInputCardPO} from '#/demo-playwright/utils';
 
 test.describe('InputExpire', () => {
     let expiryTextfield: Locator;

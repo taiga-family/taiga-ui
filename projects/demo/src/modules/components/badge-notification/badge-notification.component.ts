@@ -1,9 +1,10 @@
 import {Component} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiExamplePipe} from '@demo/utils';
 import {TuiAddonDocModule, type TuiRawLoaderContent} from '@taiga-ui/addon-doc';
 import type {TuiSizeL, TuiSizeXS} from '@taiga-ui/core';
 import {TuiBadgeNotificationComponent} from '@taiga-ui/kit';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
+import {TuiExamplePipe} from '#/demo/utils';
 
 import {TuiBadgeNotificationExample1} from './examples/1';
 import {TuiBadgeNotificationExample2} from './examples/2';

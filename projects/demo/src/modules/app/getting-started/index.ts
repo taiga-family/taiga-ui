@@ -1,8 +1,9 @@
 import {NgComponentOutlet} from '@angular/common';
 import {Component, inject} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocPageModule} from '@taiga-ui/addon-doc';
 import {tuiCreateToken} from '@taiga-ui/cdk';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
 
 import {HomeComponent} from '../home/home.component';
 

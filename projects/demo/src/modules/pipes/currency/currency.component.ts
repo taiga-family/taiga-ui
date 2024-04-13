@@ -1,7 +1,8 @@
 import {Component} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
-import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
 
 @Component({
     selector: 'example-tui-currency',

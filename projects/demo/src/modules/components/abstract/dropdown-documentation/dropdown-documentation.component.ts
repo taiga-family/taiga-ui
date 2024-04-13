@@ -1,5 +1,6 @@
 import {Component, inject} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
 
 import type {AbstractExampleTuiDropdown} from '../dropdown';
 import {ABSTRACT_PROPS_ACCESSOR} from '../inherited-documentation/abstract-props-accessor';

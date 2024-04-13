@@ -1,8 +1,9 @@
 import {Component} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiSafeHtml} from '@taiga-ui/cdk';
 import {TUI_SANITIZER, tuiSvgSrcInterceptors} from '@taiga-ui/core';
 import {NgDompurifySanitizer} from '@tinkoff/ng-dompurify';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
 
 @Component({
     selector: 'tui-icons-customization-example-1',

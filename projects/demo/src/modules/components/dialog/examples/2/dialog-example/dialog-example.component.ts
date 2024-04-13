@@ -1,9 +1,10 @@
 import type {TemplateRef} from '@angular/core';
 import {Component, inject} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiDialogContext} from '@taiga-ui/core';
 import {TuiDialogService} from '@taiga-ui/core';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
 
 @Component({
     selector: 'dialog-example',

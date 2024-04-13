@@ -1,5 +1,6 @@
-import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
+
+import {TuiDocumentationPagePO, tuiGoto} from '#/demo-playwright/utils';
 
 test.describe('Stepper', () => {
     test.use({viewport: {width: 350, height: 170}});

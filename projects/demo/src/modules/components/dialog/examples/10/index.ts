@@ -1,6 +1,7 @@
 import {Component, inject, ViewEncapsulation} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDialogService} from '@taiga-ui/core';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
 
 @Component({
     selector: 'tui-dialog-example-10',

@@ -1,7 +1,5 @@
 import {CommonModule} from '@angular/common';
 import {Component} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAmountPipe, TuiThumbnailCardComponent} from '@taiga-ui/addon-commerce';
 import {
     TuiButtonDirective,
@@ -12,6 +10,9 @@ import {
 } from '@taiga-ui/core';
 import {TuiCardModule, TuiCellModule} from '@taiga-ui/experimental';
 import {TuiAvatarComponent, TuiBadgeDirective} from '@taiga-ui/kit';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
+import {encapsulation} from '#/demo/emulate/encapsulation';
 
 @Component({
     standalone: true,

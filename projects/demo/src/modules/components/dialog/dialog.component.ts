@@ -1,10 +1,11 @@
 import type {TemplateRef} from '@angular/core';
 import {Component, inject} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import type {TuiDialogContext, TuiDialogSize} from '@taiga-ui/core';
 import {TuiAlertService, TuiDialogService} from '@taiga-ui/core';
 import {switchMap} from 'rxjs';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
 
 @Component({
     selector: 'example-tui-dialog',

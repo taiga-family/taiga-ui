@@ -1,5 +1,6 @@
-import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
+
+import {TuiDocumentationPagePO, tuiGoto} from '#/demo-playwright/utils';
 
 test.describe('Input', () => {
     test("has custom content (text) + cleaner + hint which don't overlapping each others", async ({

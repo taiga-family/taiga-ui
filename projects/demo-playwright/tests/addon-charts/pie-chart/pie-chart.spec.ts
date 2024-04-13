@@ -1,5 +1,6 @@
-import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
+
+import {TuiDocumentationPagePO, tuiGoto} from '#/demo-playwright/utils';
 
 test.describe('PieChart', () => {
     test('should be show hints on charts', async ({page}) => {

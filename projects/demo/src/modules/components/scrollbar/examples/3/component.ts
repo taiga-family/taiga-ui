@@ -1,7 +1,8 @@
 import {Component, ElementRef, ViewChild} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiScrollbarComponent} from '@taiga-ui/core';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
+import {encapsulation} from '#/demo/emulate/encapsulation';
 
 const SOME_OFFSET_CONST = 20;
 

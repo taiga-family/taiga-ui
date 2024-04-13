@@ -1,16 +1,17 @@
 import {NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import type {TuiOrientation} from '@taiga-ui/core';
+import type {TuiStepState} from '@taiga-ui/kit';
+import {TuiStepperModule} from '@taiga-ui/kit';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
 import {
     TuiComponentPipe,
     TuiExamplePipe,
     TuiKebabPipe,
     TuiSetupComponent,
-} from '@demo/utils';
-import {TuiAddonDocModule} from '@taiga-ui/addon-doc';
-import type {TuiOrientation} from '@taiga-ui/core';
-import type {TuiStepState} from '@taiga-ui/kit';
-import {TuiStepperModule} from '@taiga-ui/kit';
+} from '#/demo/utils';
 
 @Component({
     standalone: true,

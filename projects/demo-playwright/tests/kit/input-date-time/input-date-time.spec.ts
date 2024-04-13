@@ -1,11 +1,12 @@
+import type {Locator} from '@playwright/test';
+import {expect, test} from '@playwright/test';
+
 import {
     TuiDocumentationPagePO,
     tuiGoto,
     TuiInputDateTimePO,
     TuiSelectPO,
-} from '@demo-playwright/utils';
-import type {Locator} from '@playwright/test';
-import {expect, test} from '@playwright/test';
+} from '#/demo-playwright/utils';
 
 test.describe('InputDateTime', () => {
     test.describe('API page', () => {

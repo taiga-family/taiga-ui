@@ -1,10 +1,11 @@
+import type {Locator} from '@playwright/test';
+import {expect, test} from '@playwright/test';
+
 import {
     TuiDocumentationApiPagePO,
     tuiGoto,
     TuiInputRangePO,
-} from '@demo-playwright/utils';
-import type {Locator} from '@playwright/test';
-import {expect, test} from '@playwright/test';
+} from '#/demo-playwright/utils';
 
 import {TUI_PLAYWRIGHT_MOBILE_USER_AGENT} from '../../../playwright.options';
 import {CHAR_MINUS} from '../../../utils/common';

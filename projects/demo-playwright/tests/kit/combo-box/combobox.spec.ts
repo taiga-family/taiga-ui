@@ -1,5 +1,6 @@
-import {TuiComboBoxPO, TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
+
+import {TuiComboBoxPO, TuiDocumentationPagePO, tuiGoto} from '#/demo-playwright/utils';
 
 test.describe('ComboBox', () => {
     test.use({viewport: {width: 500, height: 500}});

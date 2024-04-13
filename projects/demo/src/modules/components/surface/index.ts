@@ -1,9 +1,10 @@
 import {Component} from '@angular/core';
 import {RouterLink} from '@angular/router';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDemoModule} from '@demo/utils';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiLinkDirective, TuiNotificationModule} from '@taiga-ui/core';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
+import {TuiDemoModule} from '#/demo/utils';
 
 @Component({
     standalone: true,

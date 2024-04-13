@@ -1,9 +1,10 @@
 import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
-import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiCard} from '@taiga-ui/addon-commerce';
 import {TUI_INPUT_CARD_GROUPED_TEXTS} from '@taiga-ui/addon-commerce';
 import {of} from 'rxjs';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
 
 @Component({
     selector: 'tui-input-card-grouped-example-5',

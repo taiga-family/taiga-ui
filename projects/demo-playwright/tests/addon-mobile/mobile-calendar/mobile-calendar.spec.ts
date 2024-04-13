@@ -1,5 +1,6 @@
-import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
+
+import {TuiDocumentationPagePO, tuiGoto} from '#/demo-playwright/utils';
 
 test.describe('MobileCalendar', () => {
     test.use({viewport: {width: 400, height: 812}});

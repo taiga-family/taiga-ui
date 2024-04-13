@@ -2,7 +2,6 @@ import {ClipboardModule} from '@angular/cdk/clipboard';
 import {NgForOf} from '@angular/common';
 import {Component, ViewEncapsulation} from '@angular/core';
 import {RouterLink} from '@angular/router';
-import {changeDetection} from '@demo/emulate/change-detection';
 import {
     TuiDocCopyModule,
     type TuiDocExample,
@@ -10,6 +9,8 @@ import {
     TuiDocPageModule,
 } from '@taiga-ui/addon-doc';
 import {TuiLinkDirective} from '@taiga-ui/core';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
 
 import {TuiWrapperExample1} from './examples/1';
 

@@ -1,10 +1,11 @@
 import {Component} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiMonth} from '@taiga-ui/cdk';
 import {TuiMonthRange} from '@taiga-ui/cdk';
 import type {TuiBooleanHandlerWithContext, TuiMonthContext} from '@taiga-ui/kit';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
+import {encapsulation} from '#/demo/emulate/encapsulation';
 
 @Component({
     selector: 'tui-input-month-range-example-3',

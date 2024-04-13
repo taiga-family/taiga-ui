@@ -1,10 +1,11 @@
 import {Component, type ElementRef, inject, ViewChild} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiAddonDocModule, type TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiDestroyService} from '@taiga-ui/cdk';
 import {TUI_EXPAND_LOADED, type TuiSizeS} from '@taiga-ui/core';
 import {TuiAccordionModule} from '@taiga-ui/kit';
 import {takeUntil, timer} from 'rxjs';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
 
 import {TuiAccordionExample1} from './examples/1';
 import {TuiAccordionExample2} from './examples/2';

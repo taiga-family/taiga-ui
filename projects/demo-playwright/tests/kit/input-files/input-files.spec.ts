@@ -1,8 +1,9 @@
 import {join} from 'node:path';
 
-import {TuiDocumentationApiPagePO, tuiGoto} from '@demo-playwright/utils';
 import type {Locator} from '@playwright/test';
 import {expect, test} from '@playwright/test';
+
+import {TuiDocumentationApiPagePO, tuiGoto} from '#/demo-playwright/utils';
 
 test.describe('InputFiles', () => {
     let example: Locator;

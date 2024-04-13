@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiCurrency, tuiGetCurrencySymbol} from '@taiga-ui/addon-commerce';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import type {TuiContext} from '@taiga-ui/cdk';
@@ -7,6 +6,8 @@ import {tuiRound, tuiSum} from '@taiga-ui/cdk';
 import type {TuiSizeXL, TuiSizeXS} from '@taiga-ui/core';
 import {tuiFormatNumber} from '@taiga-ui/core';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
 
 @Component({
     selector: 'example-tui-pie-chart',

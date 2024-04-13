@@ -1,5 +1,6 @@
-import {TuiDocumentationApiPagePO, tuiGoto, tuiMockImages} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
+
+import {TuiDocumentationApiPagePO, tuiGoto, tuiMockImages} from '#/demo-playwright/utils';
 
 test.describe('Deep / Toggle', () => {
     const deepPaths: string[] = JSON.parse(process.env['DEMO_PATHS']!);

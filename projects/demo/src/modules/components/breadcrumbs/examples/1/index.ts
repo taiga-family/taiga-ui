@@ -1,10 +1,11 @@
 import {NgFor} from '@angular/common';
 import {Component} from '@angular/core';
 import {RouterLink} from '@angular/router';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiLinkDirective} from '@taiga-ui/core';
 import {TuiBreadcrumbsModule} from '@taiga-ui/kit';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
+import {encapsulation} from '#/demo/emulate/encapsulation';
 
 @Component({
     standalone: true,

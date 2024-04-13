@@ -1,6 +1,7 @@
-import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import type {Locator} from '@playwright/test';
 import {expect, test} from '@playwright/test';
+
+import {TuiDocumentationPagePO, tuiGoto} from '#/demo-playwright/utils';
 
 test.describe('Notification', () => {
     const viewports = generateDimensions(180, 320, 10);

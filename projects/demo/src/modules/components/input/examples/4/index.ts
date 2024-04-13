@@ -1,12 +1,13 @@
 import {Component, ViewChild} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
-import {assets} from '@demo/utils';
 import {TuiCurrency} from '@taiga-ui/addon-commerce';
 import {TUI_DEFAULT_MATCHER, tuiControlValue} from '@taiga-ui/cdk';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {map} from 'rxjs';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
+import {encapsulation} from '#/demo/emulate/encapsulation';
+import {assets} from '#/demo/utils';
 
 class User {
     constructor(

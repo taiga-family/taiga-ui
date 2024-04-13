@@ -1,5 +1,6 @@
-import {TuiDocumentationPagePO, tuiGoto, tuiMockImages} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
+
+import {TuiDocumentationPagePO, tuiGoto, tuiMockImages} from '#/demo-playwright/utils';
 
 import {tuiIsFlakyExample} from './is-flaky-examples';
 

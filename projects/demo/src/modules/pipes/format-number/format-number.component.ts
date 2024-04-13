@@ -1,8 +1,9 @@
 import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
-import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import {tuiProvide} from '@taiga-ui/cdk';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/inherited-documentation/abstract-props-accessor';
 import {AbstractExampleTuiNumberFormat} from '../../components/abstract/number-format';

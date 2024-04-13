@@ -1,6 +1,7 @@
-import {TuiDocumentationPagePO, tuiGoto, TuiRangePO} from '@demo-playwright/utils';
 import type {Locator} from '@playwright/test';
 import {expect, test} from '@playwright/test';
+
+import {TuiDocumentationPagePO, tuiGoto, TuiRangePO} from '#/demo-playwright/utils';
 
 test.describe('TuiRange', () => {
     test.beforeEach(async ({page}) => tuiGoto(page, '/components/range'));

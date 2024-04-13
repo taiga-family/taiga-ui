@@ -1,8 +1,9 @@
 import {Component, Input} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
 import {EMPTY_ARRAY, TUI_DEFAULT_MATCHER} from '@taiga-ui/cdk';
 import type {TuiDataListComponent} from '@taiga-ui/core';
 import {tuiIsEditingKey} from '@taiga-ui/core';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
 
 interface Items<T> {
     readonly items: readonly T[];

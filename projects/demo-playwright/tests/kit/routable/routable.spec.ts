@@ -1,5 +1,6 @@
-import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
+
+import {TuiDocumentationPagePO, tuiGoto} from '#/demo-playwright/utils';
 
 test.describe('Routable', () => {
     test('should open lazy loaded dialog by click and then close by outside click', async ({

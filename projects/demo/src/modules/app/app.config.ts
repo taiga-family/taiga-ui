@@ -9,7 +9,6 @@ import {
 import {Title} from '@angular/platform-browser';
 import {provideAnimations} from '@angular/platform-browser/animations';
 import {provideRouter, type UrlTree, withInMemoryScrolling} from '@angular/router';
-import {environment} from '@demo/environments/environment';
 import {SESSION_STORAGE} from '@ng-web-apis/common';
 import {
     TUI_DOC_CODE_EDITOR,
@@ -45,6 +44,8 @@ import {TuiPushModule} from '@taiga-ui/kit';
 import {NgDompurifySanitizer} from '@tinkoff/ng-dompurify';
 import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 import {HIGHLIGHT_OPTIONS} from 'ngx-highlightjs';
+
+import {environment} from '#/demo/environments/environment';
 
 import {SEE_ALSO_GROUPS} from './app.const';
 import {ROUTES} from './app.routes';

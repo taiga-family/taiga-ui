@@ -1,9 +1,10 @@
 import {AsyncPipe, NgIf} from '@angular/common';
 import {Component} from '@angular/core';
 import {RouterOutlet} from '@angular/router';
-import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiAddonDocModule, type TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiDestroyService} from '@taiga-ui/cdk';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
 
 @Component({
     standalone: true,

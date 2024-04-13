@@ -1,7 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {TuiExamplePipe, TuiSetupComponent} from '@demo/utils';
 import {tuiGetDocModules} from '@taiga-ui/addon-doc';
 import {
     TuiButtonDirective,
@@ -17,6 +16,8 @@ import {
     TuiSwitchComponent,
 } from '@taiga-ui/kit';
 import {TuiHeaderDirective} from '@taiga-ui/layout';
+
+import {TuiExamplePipe, TuiSetupComponent} from '#/demo/utils';
 
 import {TuiSkeletonExample1} from './examples/1';
 import {TuiSkeletonExample2} from './examples/2';

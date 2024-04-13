@@ -1,12 +1,13 @@
 import {AsyncPipe} from '@angular/common';
 import type {TemplateRef} from '@angular/core';
 import {Component, inject, ViewChild} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import type {TuiAlertContext} from '@taiga-ui/core';
 import {TuiAlertService, TuiButtonDirective} from '@taiga-ui/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
+import {encapsulation} from '#/demo/emulate/encapsulation';
 
 @Component({
     standalone: true,

@@ -1,11 +1,12 @@
 import {Component, inject, ViewChild} from '@angular/core';
 import {FormControl} from '@angular/forms';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiSwipeDirection} from '@taiga-ui/cdk';
 import {TUI_DEFAULT_MATCHER, TUI_WINDOW_SIZE, tuiControlValue} from '@taiga-ui/cdk';
 import {TuiInputComponent} from '@taiga-ui/kit';
 import {map} from 'rxjs';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
+import {encapsulation} from '#/demo/emulate/encapsulation';
 
 const USERS = [
     'John Doe',

@@ -1,5 +1,6 @@
-import {TuiDocumentationPagePO, tuiGoto, TuiInputSliderPO} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
+
+import {TuiDocumentationPagePO, tuiGoto, TuiInputSliderPO} from '#/demo-playwright/utils';
 
 import {CHAR_MINUS} from '../../../utils/common';
 

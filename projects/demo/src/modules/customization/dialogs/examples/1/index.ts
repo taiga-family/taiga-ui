@@ -1,9 +1,10 @@
 import {Component, inject} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiAlertService, TuiButtonDirective} from '@taiga-ui/core';
 import {TuiAvatarComponent} from '@taiga-ui/kit';
 import {type PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {switchMap} from 'rxjs';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
 
 import {PromptService} from './prompt/prompt.service';
 

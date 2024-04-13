@@ -61,7 +61,7 @@ export class TsFileParser {
      */
     private replaceMetaAssets(): void {
         this.rawFileContent = this.rawFileContent.replace(
-            "import {assets} from '@demo/utils';\n",
+            "import {assets} from '#/demo/utils';\n",
             '',
         );
 

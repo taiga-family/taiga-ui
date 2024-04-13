@@ -1,8 +1,9 @@
 import {Component, ViewEncapsulation} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiComponentPipe, TuiExamplePipe, TuiSetupComponent} from '@demo/utils';
 import type {TuiRawLoaderContent} from '@taiga-ui/addon-doc';
 import {TuiAddonDocModule, tuiDocExampleOptionsProvider} from '@taiga-ui/addon-doc';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
+import {TuiComponentPipe, TuiExamplePipe, TuiSetupComponent} from '#/demo/utils';
 
 @Component({
     standalone: true,

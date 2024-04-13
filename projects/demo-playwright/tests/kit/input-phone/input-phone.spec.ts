@@ -1,12 +1,13 @@
+import type {Locator} from '@playwright/test';
+import {expect, test} from '@playwright/test';
+
 import {
     CMD,
     TuiDocumentationApiPagePO,
     TuiDocumentationPagePO,
     tuiGoto,
     TuiInputPhonePO,
-} from '@demo-playwright/utils';
-import type {Locator} from '@playwright/test';
-import {expect, test} from '@playwright/test';
+} from '#/demo-playwright/utils';
 
 test.describe('InputPhone', () => {
     test.describe('API page', () => {

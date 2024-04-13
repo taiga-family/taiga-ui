@@ -1,10 +1,11 @@
 import {Component, inject} from '@angular/core';
 import type {AbstractControl, AsyncValidatorFn, FormGroup} from '@angular/forms';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_IS_E2E, TuiValidationError} from '@taiga-ui/cdk';
 import {delay, of} from 'rxjs';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
+import {encapsulation} from '#/demo/emulate/encapsulation';
 
 const latinChars = /^[a-zA-Z]+$/;
 

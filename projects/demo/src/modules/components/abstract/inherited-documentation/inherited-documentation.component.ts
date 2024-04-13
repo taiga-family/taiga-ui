@@ -1,6 +1,7 @@
 import {Component, inject, Input} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
 import {TUI_HINT_DIRECTIONS} from '@taiga-ui/core';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
 
 import {AbstractExampleTuiControl} from '../control';
 import {AbstractExampleTuiHint} from '../hint';

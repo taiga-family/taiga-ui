@@ -1,7 +1,5 @@
 import {Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDay} from '@taiga-ui/cdk';
 import {TUI_DATE_FORMAT, TUI_DEFAULT_DATE_FORMAT} from '@taiga-ui/core';
 import type {TuiLanguage} from '@taiga-ui/i18n';
@@ -9,6 +7,9 @@ import {TUI_LANGUAGE} from '@taiga-ui/i18n';
 import {TuiInputDateModule} from '@taiga-ui/kit';
 import type {BehaviorSubject, Observable} from 'rxjs';
 import {map, switchMap} from 'rxjs';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
+import {encapsulation} from '#/demo/emulate/encapsulation';
 
 @Component({
     standalone: true,

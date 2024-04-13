@@ -1,12 +1,13 @@
 import type {QueryList} from '@angular/core';
 import {Component, ElementRef, ViewChild, ViewChildren} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
-import {assets} from '@demo/utils';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk';
 import {EMPTY_QUERY, tuiPure} from '@taiga-ui/cdk';
 import {TuiDriver, tuiGetWordRange, TuiOptionComponent} from '@taiga-ui/core';
 import type {Observable} from 'rxjs';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
+import {encapsulation} from '#/demo/emulate/encapsulation';
+import {assets} from '#/demo/utils';
 
 export interface User {
     readonly avatar: string;

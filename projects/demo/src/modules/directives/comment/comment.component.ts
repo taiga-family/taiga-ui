@@ -1,8 +1,9 @@
 import {Component} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiExamplePipe, TuiSetupComponent} from '@demo/utils';
 import type {TuiRawLoaderContent} from '@taiga-ui/addon-doc';
 import {TuiAddonDocModule} from '@taiga-ui/addon-doc';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
+import {TuiExamplePipe, TuiSetupComponent} from '#/demo/utils';
 
 import {TuiCommentExample1} from './examples/1';
 import {TuiCommentExample2} from './examples/2';

@@ -1,7 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {TuiExamplePipe} from '@demo/utils';
 import {tuiGetDocModules} from '@taiga-ui/addon-doc';
 import {
     TuiButtonDirective,
@@ -17,6 +16,8 @@ import {
     TuiItemsWithMoreModule,
     TuiTagModule,
 } from '@taiga-ui/kit';
+
+import {TuiExamplePipe} from '#/demo/utils';
 
 import {TuiItemsWithMoreExample1} from './examples/1';
 import {TuiItemsWithMoreExample2} from './examples/2';

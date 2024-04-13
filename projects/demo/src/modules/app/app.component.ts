@@ -3,7 +3,6 @@ import type {OnInit} from '@angular/core';
 import {Component, DestroyRef, inject, ViewEncapsulation} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {NavigationEnd, Router, RouterLink, RouterOutlet} from '@angular/router';
-import {changeDetection} from '@demo/emulate/change-detection';
 import {LOCAL_STORAGE} from '@ng-web-apis/common';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {TuiDocMainModule, TuiLanguageSwitcherComponent} from '@taiga-ui/addon-doc';
@@ -11,6 +10,8 @@ import {TuiSheetModule} from '@taiga-ui/addon-mobile';
 import {TuiTableBarsHostModule} from '@taiga-ui/addon-tablebars';
 import {TuiLinkDirective, TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {distinctUntilChanged, filter, map} from 'rxjs';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
 
 import {CustomHostComponent} from '../customization/portals/examples/1/portal/custom-host.component';
 import {AbstractDemoComponent, DEMO_PAGE_LOADED_PROVIDER} from './abstract.app';

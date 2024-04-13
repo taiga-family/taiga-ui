@@ -1,7 +1,8 @@
 import {Component} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
-import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiInputCardGroupedComponent} from '@taiga-ui/addon-commerce';
+
+import {changeDetection} from '#/demo/emulate/change-detection';
 
 @Component({
     selector: 'tui-input-card-grouped-example-2',
