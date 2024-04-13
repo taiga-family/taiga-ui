@@ -30,7 +30,10 @@ export const TUI_PARENT_ANIMATION = trigger('tuiParentAnimation', [
 export const TUI_PARENT_STOP = trigger('tuiParentStop', [transition(':enter', [])]);
 
 export const tuiHost = trigger('tuiHost', [
-    transition(':enter', [query(':scope > *', [animateChild()], {optional: true})]),
+    transition(':enter', [
+        style({overflow: 'clip'}),
+        query(':scope > *', [animateChild()], {optional: true}),
+    ]),
     transition(':leave', [query(':scope > *', [animateChild()], {optional: true})]),
 ]);
 
