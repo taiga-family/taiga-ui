@@ -11,14 +11,13 @@ const ONE_DOT: [string] = ['var(--tui-success-fill)'];
 
 @Component({
     standalone: true,
-    selector: 'tui-calendar-example-3',
     imports: [NgIf, TuiCalendarModule],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiCalendarExample3 {
+export default class ExampleComponent {
     protected value: TuiDayRange | null = null;
 
     protected firstMonth = TuiMonth.currentLocal();

@@ -6,7 +6,6 @@ import {TUI_FIRST_DAY_OF_WEEK, TuiCalendarModule} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
-    selector: 'tui-calendar-example-4',
     imports: [TuiCalendarModule],
     templateUrl: './index.html',
     encapsulation,
@@ -18,4 +17,4 @@ import {TUI_FIRST_DAY_OF_WEEK, TuiCalendarModule} from '@taiga-ui/core';
         },
     ],
 })
-export class TuiCalendarExample4 {}
+export default class ExampleComponent {}

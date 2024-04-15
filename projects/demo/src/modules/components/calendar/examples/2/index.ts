@@ -8,14 +8,13 @@ import {TuiCalendarModule} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
-    selector: 'tui-calendar-example-2',
     imports: [NgIf, TuiCalendarModule],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiCalendarExample2 {
+export default class ExampleComponent {
     protected value: TuiDayRange | null = null;
 
     protected firstMonth = TuiMonth.currentLocal();

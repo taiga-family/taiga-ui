@@ -7,13 +7,12 @@ import {TuiCalendarModule} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
-    selector: 'tui-calendar-example-1',
     imports: [NgIf, TuiCalendarModule],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class TuiCalendarExample1 {
+export default class ExampleComponent {
     protected value: TuiDay | null = null;
 
     protected onDayClick(day: TuiDay): void {

@@ -1,7 +1,7 @@
-import {Component} from '@angular/core';
+import {type AfterViewInit, Component, ViewChild} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiAddonDocModule, type TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiDemoModule} from '@demo/utils';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk';
 import {
     TUI_FALSE_HANDLER,
@@ -18,75 +18,34 @@ import {
     TuiLinkDirective,
 } from '@taiga-ui/core';
 
-import {TuiCalendarExample1} from './examples/1';
-import {TuiCalendarExample2} from './examples/2';
-import {TuiCalendarExample3} from './examples/3';
-import {TuiCalendarExample4} from './examples/4';
-import {TuiCalendarExample5} from './examples/5';
-import {TuiCalendarExample6} from './examples/6';
-import {TuiCalendarExample7} from './examples/7';
-
 const TWO_DOTS: [string, string] = ['var(--tui-primary)', 'var(--tui-info-fill)'];
 const ONE_DOT: [string] = ['var(--tui-success-fill)'];
 
 @Component({
     standalone: true,
-    selector: 'example-tui-calendar',
-    imports: [
-        RouterModule,
-        TuiLinkDirective,
-        TuiCalendarModule,
-        TuiAddonDocModule,
-        TuiCalendarExample1,
-        TuiCalendarExample2,
-        TuiCalendarExample3,
-        TuiCalendarExample4,
-        TuiCalendarExample5,
-        TuiCalendarExample6,
-        TuiCalendarExample7,
-    ],
+    // selector: 'example-tui-calendar',
+    imports: [RouterModule, TuiLinkDirective, TuiCalendarModule, TuiDemoModule],
     templateUrl: './index.html',
     changeDetection,
 })
-export default class ExampleTuiCalendarComponent {
+export default class ExampleTuiCalendarComponent implements AfterViewInit {
+    @ViewChild('localizationExample')
+    private readonly localizationExample: any;
+
+    @ViewChild('colorCustomizationExample')
+    private readonly colorCustomizationExample: any;
+
     protected readonly exampleModule = import('./examples/import/import-module.md?raw');
     protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
-
-    protected readonly example1: TuiDocExample = {
-        TypeScript: import('./examples/1/index.ts?raw'),
-        HTML: import('./examples/1/index.html?raw'),
-    };
-
-    protected readonly example2: TuiDocExample = {
-        TypeScript: import('./examples/2/index.ts?raw'),
-        HTML: import('./examples/2/index.html?raw'),
-    };
-
-    protected readonly example3: TuiDocExample = {
-        TypeScript: import('./examples/3/index.ts?raw'),
-        HTML: import('./examples/3/index.html?raw'),
-    };
-
-    protected readonly example4: TuiDocExample = {
-        TypeScript: import('./examples/4/index.ts?raw'),
-        HTML: import('./examples/4/index.html?raw'),
-    };
-
-    protected readonly example5: TuiDocExample = {
-        TypeScript: import('./examples/5/index.ts?raw'),
-        HTML: import('./examples/5/index.html?raw'),
-        LESS: import('./examples/5/index.less?raw'),
-    };
-
-    protected readonly example6: TuiDocExample = {
-        TypeScript: import('./examples/6/index.ts?raw'),
-        HTML: import('./examples/6/index.html?raw'),
-    };
-
-    protected readonly example7: TuiDocExample = {
-        TypeScript: import('./examples/7/index.ts?raw'),
-        HTML: import('./examples/7/index.html?raw'),
-    };
+    protected readonly examples: Array<{name: string; description?: any}> = [
+        {name: 'Basic'},
+        {name: 'Range'},
+        {name: 'With markers'},
+        {name: 'Localizaition'},
+        {name: 'Color customization'},
+        {name: 'Select multiple dates'},
+        {name: 'Open in year view'},
+    ];
 
     protected showAdjacent = true;
 
@@ -146,4 +105,9 @@ export default class ExampleTuiCalendarComponent {
     protected month = TuiMonth.currentLocal();
 
     protected hoveredItem: TuiDay | null = null;
+
+    public ngAfterViewInit(): void {
+        this.examples[3].description = this.localizationExample;
+        this.examples[4].description = this.colorCustomizationExample;
+    }
 }

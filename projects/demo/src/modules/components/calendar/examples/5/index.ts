@@ -13,7 +13,6 @@ const handler: TuiHandler<TuiDay, string> = (day: TuiDay) => {
 
 @Component({
     standalone: true,
-    selector: 'tui-calendar-example-5',
     imports: [TuiCalendarModule],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
@@ -21,4 +20,4 @@ const handler: TuiHandler<TuiDay, string> = (day: TuiDay) => {
     changeDetection,
     providers: [{provide: TUI_DAY_TYPE_HANDLER, useValue: handler}],
 })
-export class TuiCalendarExample5 {}
+export default class ExampleComponent {}
