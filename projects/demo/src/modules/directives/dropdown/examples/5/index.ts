@@ -11,7 +11,6 @@ interface User {
 @Component({
     selector: 'tui-dropdown-example-5',
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })

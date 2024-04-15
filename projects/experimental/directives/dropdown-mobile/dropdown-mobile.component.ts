@@ -2,10 +2,7 @@ import {DOCUMENT} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
-    DoCheck,
     ElementRef,
-    HostBinding,
-    HostListener,
     Inject,
     OnDestroy,
     ViewEncapsulation,
@@ -16,7 +13,6 @@ import {
     TuiDropdownDirective,
     tuiFadeIn,
     tuiSlideInTop,
-    TuiVisualViewportService,
 } from '@taiga-ui/core';
 
 const GAP = 16;
@@ -28,14 +24,21 @@ const GAP = 16;
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [tuiSlideInTop, tuiFadeIn],
+    host: {
+        '[@tuiFadeIn]': 'animation',
+        '[@tuiSlideInTop]': 'animation',
+        '(mousedown.silent.prevent)': '0',
+        '(document:click.silent.capture)': 'onClick($event)',
+        '(window>scroll.silent.capture)': 'refresh($event.currentTarget.visualViewport)',
+        '(visualViewport>resize.silent)': 'refresh($event.target)',
+        '(visualViewport>scroll.silent)': 'refresh($event.target)',
+    },
 })
-export class TuiDropdownMobileComponent implements OnDestroy, DoCheck {
+export class TuiDropdownMobileComponent implements OnDestroy {
     private readonly observer = new ResizeObserver(() =>
         this.refresh(this.doc.defaultView!.visualViewport),
     );
 
-    @HostBinding('@tuiSlideInTop')
-    @HostBinding('@tuiFadeIn')
     readonly animation = {
         value: '',
         params: {
@@ -45,8 +48,6 @@ export class TuiDropdownMobileComponent implements OnDestroy, DoCheck {
     } as const;
 
     constructor(
-        @Inject(TuiVisualViewportService)
-        private readonly vvs: TuiVisualViewportService,
         @Inject(DOCUMENT) private readonly doc: Document,
         @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
         @Inject(TUI_ANIMATIONS_DURATION) private readonly duration: number,
@@ -55,16 +56,12 @@ export class TuiDropdownMobileComponent implements OnDestroy, DoCheck {
         this.observer.observe(this.directive.el.nativeElement);
     }
 
-    @HostListener('document:click.silent.capture', ['$event'])
     onClick(event: MouseEvent): void {
         if (!this.el.nativeElement?.contains(event.target as Node)) {
             event.stopPropagation();
         }
     }
 
-    @HostListener('window>scroll.silent.capture', ['$event.currentTarget.visualViewport'])
-    @HostListener('visualViewport>resize.silent', ['$event.target'])
-    @HostListener('visualViewport>scroll.silent', ['$event.target'])
     refresh({offsetTop, height}: VisualViewport): void {
         this.doc.body.style.removeProperty('--t-top');
 
@@ -74,14 +71,7 @@ export class TuiDropdownMobileComponent implements OnDestroy, DoCheck {
         this.el.nativeElement.style.setProperty('top', tuiPx(offsetTop + offset));
         this.el.nativeElement.style.setProperty('height', tuiPx(height - offset));
         this.doc.body.classList.add('t-dropdown-mobile');
-        this.doc.body.style.setProperty(
-            '--t-top',
-            tuiPx(offsetTop + GAP - this.vvs.correctY(rect.top)),
-        );
-    }
-
-    ngDoCheck(): void {
-        this.refresh(this.doc.defaultView!.visualViewport);
+        this.doc.body.style.setProperty('--t-top', tuiPx(offsetTop + GAP - rect.top));
     }
 
     ngOnDestroy(): void {

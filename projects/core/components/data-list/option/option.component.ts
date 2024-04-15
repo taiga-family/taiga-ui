@@ -12,7 +12,12 @@ import {
     Self,
     TemplateRef,
 } from '@angular/core';
-import {TuiContextWithImplicit, TuiEventWith, tuiIsNativeFocused} from '@taiga-ui/cdk';
+import {
+    TUI_IS_MOBILE,
+    TuiContextWithImplicit,
+    TuiEventWith,
+    tuiIsNativeFocused,
+} from '@taiga-ui/cdk';
 import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
 import {TuiDataListHost} from '@taiga-ui/core/interfaces';
 import {
@@ -27,8 +32,11 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {TuiDataListComponent} from '../data-list.component';
 
-function shouldFocus({currentTarget}: TuiEventWith<MouseEvent, HTMLElement>): boolean {
-    return !tuiIsNativeFocused(currentTarget);
+function shouldFocus(
+    this: TuiOptionComponent,
+    {currentTarget}: TuiEventWith<MouseEvent, HTMLElement>,
+): boolean {
+    return !this.isMobile && !tuiIsNativeFocused(currentTarget);
 }
 
 // TODO: Consider all use cases for aria roles
@@ -60,6 +68,7 @@ export class TuiOptionComponent<T = unknown> implements OnDestroy {
     value?: T;
 
     constructor(
+        @Inject(TUI_IS_MOBILE) readonly isMobile: boolean,
         @Optional()
         @Inject(TUI_OPTION_CONTENT)
         readonly content: PolymorpheusContent<
