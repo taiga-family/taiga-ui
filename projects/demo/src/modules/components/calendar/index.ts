@@ -23,7 +23,6 @@ const ONE_DOT: [string] = ['var(--tui-success-fill)'];
 
 @Component({
     standalone: true,
-    // selector: 'example-tui-calendar',
     imports: [RouterModule, TuiLinkDirective, TuiCalendarModule, TuiDemoModule],
     templateUrl: './index.html',
     changeDetection,
