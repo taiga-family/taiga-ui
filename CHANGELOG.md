@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.75.0](https://github.com/taiga-family/taiga-ui/compare/v3.74.0...v3.75.0) (2024-04-15)
+
+### Bug Fixes
+
+- **addon-commerce:** fix hidden card ([#7203](https://github.com/taiga-family/taiga-ui/issues/7203))
+  ([fed8e75](https://github.com/taiga-family/taiga-ui/commit/fed8e75b334e2e666b9debc33f29f7f079dc8d17))
+- **kit:** `Carousel` fix dragging in chrome ([#7197](https://github.com/taiga-family/taiga-ui/issues/7197))
+  ([a7bd01a](https://github.com/taiga-family/taiga-ui/commit/a7bd01ada4060b221d062d6ea25ce9548eaf9d49))
+- **kit:** `CheckboxLabeled` fix line-height ([#7205](https://github.com/taiga-family/taiga-ui/issues/7205))
+  ([376a2f9](https://github.com/taiga-family/taiga-ui/commit/376a2f9516c18dc2f0d48ad30adb4570933cffa1))
+
 ## [3.74.0](https://github.com/taiga-family/taiga-ui/compare/v3.73.0...v3.74.0) (2024-04-08)
 
 ### Bug Fixes
