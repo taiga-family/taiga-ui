@@ -193,7 +193,7 @@
             }
         },
         "server": {
-            "executor": "@angular-builders/custom-webpack:server",
+            "executor": "@nx/angular:webpack-server",
             "options": {
                 "customWebpackConfig": {
                     "path": "projects/demo/webpack.server.config.ts"
