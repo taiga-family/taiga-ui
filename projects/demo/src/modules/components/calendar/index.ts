@@ -34,8 +34,6 @@ export default class ExampleTuiCalendarComponent implements AfterViewInit {
     @ViewChild('colorCustomizationExample')
     private readonly colorCustomizationExample: any;
 
-    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
-    protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
     protected readonly examples: Array<{name: string; description?: any}> = [
         {name: 'Basic'},
         {name: 'Range'},
