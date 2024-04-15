@@ -24,7 +24,6 @@ jobs:
       - uses: taiga-family/ci/actions/setup/checkout@v1.52.1
       - uses: taiga-family/ci/actions/setup/variables@v1.52.1
       - uses: taiga-family/ci/actions/setup/node@v1.52.1
-      - run: npx nx build demo -c production --base-href='/'
       - run: npx nx prerender demo
       - run: tree ${{ env.DIST }} -P '*.html'
 

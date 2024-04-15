@@ -39,7 +39,7 @@ const EXCEPTIONS = [
     const routes =
         demoRoutesFileContent
             .match(/['"`](.*)['"`]/g)
-            // @ts-ignore
+            // @ts-ignore Try changing the lib compiler option to es2021 or later
             ?.map(route => route.replaceAll(/['"`]/g, '')) || [];
 
     routes.forEach(route => {
