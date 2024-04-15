@@ -1,4 +1,5 @@
-import {Component, Input} from '@angular/core';
+import {isPlatformBrowser} from '@angular/common';
+import {Component, inject, Input, PLATFORM_ID} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiPure} from '@taiga-ui/cdk';
@@ -18,11 +19,13 @@ export class TuiFadeInExample {
     @Input()
     public speed = 0;
 
-    protected isShown$ = from([false, true]).pipe(
-        concatMap(val => of(val).pipe(delay(1.5 * this.speed))),
-        repeat(),
-        startWith(true),
-    );
+    protected isShown$ = isPlatformBrowser(inject(PLATFORM_ID))
+        ? from([false, true]).pipe(
+              concatMap(val => of(val).pipe(delay(1.5 * this.speed))),
+              repeat(),
+              startWith(true),
+          )
+        : of(true);
 
     @tuiPure
     protected getAnimation(duration: number): TuiDurationOptions {
