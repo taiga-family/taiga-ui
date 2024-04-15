@@ -3,15 +3,17 @@ import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 import {TuiStatus} from '@taiga-ui/kit/types';
 
 export interface TuiInputTagOptions {
+    readonly autoColor: boolean;
     readonly separator: RegExp | string;
     readonly tagStatus: TuiStatus;
     readonly uniqueTags: boolean;
 }
 
 export const TUI_INPUT_TAG_DEFAULT_OPTIONS: TuiInputTagOptions = {
+    autoColor: false,
     separator: ',',
-    uniqueTags: true,
     tagStatus: 'primary',
+    uniqueTags: true,
 };
 
 /**

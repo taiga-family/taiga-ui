@@ -141,6 +141,9 @@ export class TuiInputTagComponent
     uniqueTags = this.options.uniqueTags;
 
     @Input()
+    autoColor = this.options.autoColor;
+
+    @Input()
     maxLength: number | null = null;
 
     @Input()

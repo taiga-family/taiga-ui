@@ -162,6 +162,8 @@ export class ExampleTuiMultiSelectComponent extends AbstractExampleTuiControl {
 
     tagValidator = this.tagValidatorVariants[0];
 
+    autoColor = false;
+
     override readonly maxLengthVariants: readonly number[] = [10];
 
     override maxLength = null;
