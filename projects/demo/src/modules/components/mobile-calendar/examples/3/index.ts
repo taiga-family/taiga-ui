@@ -1,11 +1,13 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiMobileCalendarComponent} from '@taiga-ui/addon-mobile';
 import {TuiDay, TuiDayOfWeek} from '@taiga-ui/cdk';
 import {TUI_FIRST_DAY_OF_WEEK} from '@taiga-ui/core';
 
 @Component({
-    selector: 'tui-mobile-calendar-example-3',
+    standalone: true,
+    imports: [TuiMobileCalendarComponent],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
@@ -17,6 +19,6 @@ import {TUI_FIRST_DAY_OF_WEEK} from '@taiga-ui/core';
         },
     ],
 })
-export class TuiMobileCalendarExample3 {
+export default class ExampleComponent {
     protected min = TuiDay.currentLocal();
 }

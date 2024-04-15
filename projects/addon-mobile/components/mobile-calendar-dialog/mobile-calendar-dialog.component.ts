@@ -1,4 +1,5 @@
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {TuiMobileCalendarComponent} from '@taiga-ui/addon-mobile/components/mobile-calendar';
 import type {TuiBooleanHandler, TuiDay, TuiDayRange} from '@taiga-ui/cdk';
 import {TUI_FALSE_HANDLER, TUI_FIRST_DAY, TUI_LAST_DAY} from '@taiga-ui/cdk';
 import type {TuiDialogContext} from '@taiga-ui/core';
@@ -6,7 +7,9 @@ import type {TuiMobileCalendarData} from '@taiga-ui/kit';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 
 @Component({
+    standalone: true,
     selector: 'tui-mobile-calendar-dialog',
+    imports: [TuiMobileCalendarComponent],
     templateUrl: './mobile-calendar-dialog.template.html',
     styleUrls: ['./mobile-calendar-dialog.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

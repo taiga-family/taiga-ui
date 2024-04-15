@@ -1,5 +1,9 @@
-import type {CdkVirtualScrollViewport} from '@angular/cdk/scrolling';
-import {DOCUMENT} from '@angular/common';
+import {
+    CdkFixedSizeVirtualScroll,
+    CdkVirtualForOf,
+    CdkVirtualScrollViewport,
+} from '@angular/cdk/scrolling';
+import {AsyncPipe, DOCUMENT, NgForOf, NgIf} from '@angular/common';
 import type {AfterViewInit} from '@angular/core';
 import {
     ChangeDetectionStrategy,
@@ -13,6 +17,8 @@ import {
     ViewChild,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {TuiRippleModule, TuiTouchableModule} from '@taiga-ui/addon-mobile/directives';
+import {TuiPrimitiveCalendarMobileModule} from '@taiga-ui/addon-mobile/internal';
 import type {TuiBooleanHandler, TuiTypedMapper} from '@taiga-ui/cdk';
 import {
     MONTHS_IN_YEAR,
@@ -23,6 +29,7 @@ import {
     TUI_LAST_DAY,
     TuiDay,
     TuiDayRange,
+    TuiMapperPipe,
     TuiMonth,
     tuiTypedFromEvent,
     tuiZonefree,
@@ -32,7 +39,11 @@ import {
     TUI_CLOSE_WORD,
     TUI_COMMON_ICONS,
     TUI_SHORT_WEEK_DAYS,
+    TuiButtonDirective,
     tuiGetDuration,
+    TuiLinkDirective,
+    TuiMonthPipeModule,
+    TuiOrderWeekDaysPipeModule,
 } from '@taiga-ui/core';
 import {
     TUI_CANCEL_WORD,
@@ -68,7 +79,24 @@ import {
 } from './mobile-calendar.providers';
 
 @Component({
+    standalone: true,
     selector: 'tui-mobile-calendar',
+    imports: [
+        TuiButtonDirective,
+        AsyncPipe,
+        TuiRippleModule,
+        TuiLinkDirective,
+        TuiTouchableModule,
+        CdkFixedSizeVirtualScroll,
+        CdkVirtualScrollViewport,
+        CdkVirtualForOf,
+        TuiOrderWeekDaysPipeModule,
+        TuiPrimitiveCalendarMobileModule,
+        TuiMonthPipeModule,
+        NgForOf,
+        NgIf,
+        TuiMapperPipe,
+    ],
     templateUrl: './mobile-calendar.template.html',
     styleUrls: ['./mobile-calendar.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

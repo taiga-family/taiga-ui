@@ -7,11 +7,9 @@ test.describe('MobileCalendar', () => {
     test('works', async ({page}) => {
         await tuiGoto(page, 'components/mobile-calendar');
         const example = new TuiDocumentationPagePO(page).getExample('#dropdown');
-        const chooseDateButton = example
-            .locator('tui-mobile-calendar-example-1 button')
-            .first();
 
-        await chooseDateButton.click();
+        await example.locator('button:has-text("Choose a date")').click();
+
         await page.waitForTimeout(100);
 
         await expect(page).toHaveScreenshot('01-mobile-calendar.png');
