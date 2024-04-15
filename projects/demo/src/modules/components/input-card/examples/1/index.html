@@ -8,10 +8,13 @@
 >
     <tui-input-card
         formControlName="card"
-        [autocompleteEnabled]="true"
         [cardSrc]="card"
     >
         Card number
+        <input
+            autocomplete="cc-number"
+            tuiTextfield
+        />
     </tui-input-card>
     <tui-input-expire
         formControlName="expire"
