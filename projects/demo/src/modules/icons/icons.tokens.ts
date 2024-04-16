@@ -104,8 +104,8 @@ export const TUI_DEMO_ICONS = tuiCreateTokenFromFactory(() =>
     ICONS(inject(TUI_SVG_OPTIONS).deprecated),
 );
 
-export const TUI_DEMO_ICONS_TYPE = tuiCreateToken<TuiStringHandler<string>>(group => {
+export const TUI_DEMO_ICONS_TYPE = tuiCreateToken<TuiStringHandler<string>>(group =>
     // console.log(group);
 
-    return group.includes('Payment') ? 'img' : 'icon';
-});
+    group.includes('Payment') ? 'img' : 'icon',
+);
