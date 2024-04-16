@@ -1,15 +1,41 @@
+import {NgFor} from '@angular/common';
 import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {
+    TuiNotificationModule,
+    TuiSurfaceDirective,
+    TuiTextfieldControllerModule,
+} from '@taiga-ui/core';
+import {TuiCardModule} from '@taiga-ui/experimental';
+import {
+    TuiAvatarComponent,
+    TuiCellDirective,
+    TuiDataListWrapperModule,
+    TuiSelectModule,
+} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-cell-example-7',
+    standalone: true,
+    imports: [
+        TuiNotificationModule,
+        TuiCellDirective,
+        TuiAvatarComponent,
+        TuiSelectModule,
+        TuiDataListWrapperModule,
+        TuiTextfieldControllerModule,
+        TuiCardModule,
+        TuiSurfaceDirective,
+        NgFor,
+        FormsModule,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiCellExample7 {
+export default class ExampleComponent {
     protected readonly items = [
         {
             icon: 'tuiIconEyeLarge',

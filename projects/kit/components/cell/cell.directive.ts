@@ -2,11 +2,12 @@ import {Directive, Input} from '@angular/core';
 import {tuiWithStyles} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core';
-import {tuiAvatarOptionsProvider} from '@taiga-ui/kit';
+import {tuiAvatarOptionsProvider} from '@taiga-ui/kit/components/avatar';
 
 import {TuiCellComponent} from './cell.component';
 
 @Directive({
+    standalone: true,
     selector: '[tuiCell]',
     providers: [
         tuiAvatarOptionsProvider({size: 's'}),

@@ -22,12 +22,13 @@ import {
     TuiSvgComponent,
     TuiTitleDirective,
 } from '@taiga-ui/core';
-import {TuiCardModule, TuiCellModule} from '@taiga-ui/experimental';
+import {TuiCardModule} from '@taiga-ui/experimental';
 import {
     TuiAvatarComponent,
     TuiAvatarStackComponent,
     TuiBadgeDirective,
     TuiButtonCloseDirective,
+    TuiCellDirective,
     TuiFadeDirective,
 } from '@taiga-ui/kit';
 import {TuiHeaderDirective} from '@taiga-ui/layout';
@@ -64,7 +65,7 @@ import {TuiCardMediumExample7} from './examples/7';
         TuiIconComponent,
         TuiButtonDirective,
         TuiHeaderDirective,
-        TuiCellModule,
+        TuiCellDirective,
         tuiGetDocModules(ExampleTuiCardMediumComponent),
         TuiRepeatTimesModule,
         TuiDataListModule,

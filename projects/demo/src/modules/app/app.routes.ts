@@ -198,14 +198,11 @@ export const ROUTES: Routes = [
             import('../components/block-details/block-details.component'),
         title: 'BlockDetails',
     }),
-    {
+    route({
         path: DemoRoute.Cell,
-        loadChildren: async () =>
-            (await import('../experimental/cell/cell.module')).ExampleTuiCellModule,
-        data: {
-            title: 'Cell',
-        },
-    },
+        loadComponent: async () => import('../components/cell'),
+        title: 'Cell',
+    }),
     route({
         path: DemoRoute.Comment,
         loadComponent: async () => import('../directives/comment/comment.component'),
