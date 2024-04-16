@@ -1,0 +1,33 @@
+<tui-doc-page
+    header="KeyboardService"
+    package="ADDON-MOBILE"
+    path="addon-mobile/services/keyboard.service.ts"
+>
+    <ng-template pageTab>
+        <p>
+            A service that allows hiding and showing virtual keyboard programmatically on both Android and iOS devices
+        </p>
+        <tui-notification>
+            Does nothing on devices with no virtual keyboard or when input is not focused
+        </tui-notification>
+        <tui-doc-example
+            id="basic"
+            heading="Basic"
+            [content]="example"
+        >
+            <tui-keyboard-example></tui-keyboard-example>
+        </tui-doc-example>
+    </ng-template>
+    <ng-template pageTab="Setup">
+        <ol class="b-demo-steps">
+            <li>
+                Inject service and call its methods:
+
+                <tui-doc-code
+                    filename="my.component.ts"
+                    [code]="injectService"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>
