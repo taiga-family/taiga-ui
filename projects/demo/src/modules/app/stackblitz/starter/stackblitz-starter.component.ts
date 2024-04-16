@@ -1,5 +1,6 @@
+import {isPlatformBrowser} from '@angular/common';
 import type {OnInit} from '@angular/core';
-import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, PLATFORM_ID} from '@angular/core';
 import {tuiRawLoad, tuiTryParseMarkdownCodeBlock} from '@taiga-ui/addon-doc';
 
 import {TuiStackblitzService} from '../stackblitz.service';
@@ -13,10 +14,13 @@ import {appPrefix} from '../utils';
     providers: [TuiStackblitzService],
 })
 export class StackblitzStarterComponent implements OnInit {
+    private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
     private readonly stackblitz = inject(TuiStackblitzService);
 
     public async ngOnInit(): Promise<void> {
-        await this.openStackblitz();
+        if (this.isBrowser) {
+            await this.openStackblitz();
+        }
     }
 
     protected async openStackblitz(): Promise<void> {

@@ -5,7 +5,7 @@ on:
     branches: [main]
 
 jobs:
-  build:
+  libs:
     if: ${{ !contains(github.head_ref, 'release/') }}
     name: Build packages
     runs-on: ubuntu-latest
@@ -15,6 +15,17 @@ jobs:
       - uses: taiga-family/ci/actions/setup/node@v1.52.1
       - run: npm run run-many:build:libs
       - run: npx ts-node ./scripts/check-dist.ts
+
+  demo:
+    if: ${{ !contains(github.head_ref, 'release/') }}
+    name: Prerender of demo application
+    runs-on: ubuntu-latest
+    steps:
+      - uses: taiga-family/ci/actions/setup/checkout@v1.52.1
+      - uses: taiga-family/ci/actions/setup/variables@v1.52.1
+      - uses: taiga-family/ci/actions/setup/node@v1.52.1
+      - run: npx nx prerender demo
+      - run: tree ${{ env.DIST }} -P '*.html'
 
 concurrency:
   group: build-${{ github.workflow }}-${{ github.ref }}

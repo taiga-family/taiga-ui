@@ -41,4 +41,5 @@ RELEASE_BODY.md
 /projects/demo-playwright/tests-report/
 /projects/demo-playwright/snapshots/
 /projects/demo-playwright/playwright/.cache/
+projects/demo/routes.txt
 migrations.json
