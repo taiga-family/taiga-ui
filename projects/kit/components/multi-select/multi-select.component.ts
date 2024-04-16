@@ -118,6 +118,9 @@ export class TuiMultiSelectComponent<T>
     @Input()
     rows = Infinity;
 
+    @Input()
+    autoColor = false;
+
     @Output()
     readonly searchChange = new EventEmitter<string | null>();
 

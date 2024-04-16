@@ -98,6 +98,7 @@
         <tui-doc-demo [control]="control">
             <ng-template>
                 <tui-input-tag
+                    [autoColor]="autoColor"
                     [disabledItemHandler]="disabledItemHandler"
                     [editable]="editable"
                     [expandable]="expandable"
@@ -242,6 +243,18 @@
                 [(documentationPropertyValue)]="tagValidator"
             >
                 A function that checks that tag is valid
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="autoColor"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="autoColor"
+            >
+                Auto color for tags (
+                <code>autoColor = true</code>
+                does not work together with
+                <code>labelOutside ==== false</code>
+                : use only outside labels)
             </ng-template>
             <ng-template
                 documentationPropertyMode="input"

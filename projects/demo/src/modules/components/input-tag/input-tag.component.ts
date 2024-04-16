@@ -120,6 +120,8 @@ export class ExampleTuiInputTagComponent extends AbstractExampleTuiControl {
 
     tagValidator = this.tagValidatorVariants[0];
 
+    autoColor = false;
+
     inputHidden = false;
 
     readonly disabledItemHandlerVariants: Array<
