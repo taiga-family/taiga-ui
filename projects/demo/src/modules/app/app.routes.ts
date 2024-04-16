@@ -1929,6 +1929,15 @@ export const ROUTES: Routes = [
         },
     },
     {
+        path: 'services/keyboard-service',
+        loadChildren: async () =>
+            (await import('../services/keyboard/keyboard.module'))
+                .ExampleTuiKeyboardModule,
+        data: {
+            title: 'KeyboardService',
+        },
+    },
+    {
         path: 'services/scroll-service',
         loadChildren: async () =>
             (await import('../services/scroll/scroll.module')).ExampleTuiScrollModule,
