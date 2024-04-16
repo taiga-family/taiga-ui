@@ -754,15 +754,11 @@ export const ROUTES: Routes = [
             title: 'PullToRefresh',
         },
     },
-    {
+    route({
         path: DemoRoute.CalendarMonth,
-        loadChildren: async () =>
-            (await import('../components/calendar-month/calendar-month.module'))
-                .ExampleTuiCalendarMonthModule,
-        data: {
-            title: 'CalendarMonth',
-        },
-    },
+        title: 'CalendarMonth',
+        loadComponent: async () => import('../components/calendar-month'),
+    }),
     {
         path: DemoRoute.MultiSelect,
         loadChildren: async () =>
