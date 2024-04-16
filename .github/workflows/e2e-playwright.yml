@@ -19,7 +19,7 @@ jobs:
       - run: npx tsc -p tsconfig.playwright.json
 
       - name: Building demo-app of git-branch without cache
-        run: npm run build:ssr
+        run: npx nx build demo
 
       - name: Upload cache / ${{ env.CACHE_DIST_KEY }}
         uses: actions/cache/save@v4.0.2
@@ -52,9 +52,7 @@ jobs:
           key: ${{ env.CACHE_DIST_KEY }}
 
       - name: Serve ${{ env.DIST }} in background
-        run: |
-          PORT=${{ env.NG_SERVER_PORT }} node dist/demo/server/main.js --ci & sleep 5
-          curl -X GET -I -f "http://localhost:${{ env.NG_SERVER_PORT }}"
+        run: npx nx serve-compiled demo --path ${{ env.DIST }} --port ${{ env.NG_SERVER_PORT }}
 
       - name: Run screenshot tests on ${{ env.DIST }}
         run: npx nx e2e demo-playwright -- --update-snapshots --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
