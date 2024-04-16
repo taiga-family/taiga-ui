@@ -16,7 +16,7 @@ jobs:
       - uses: taiga-family/ci/actions/setup/checkout@v1.52.1
       - uses: taiga-family/ci/actions/setup/variables@v1.52.1
       - uses: taiga-family/ci/actions/setup/node@v1.52.1
-      - run: npx nx prerender demo
+      - run: npx nx build demo
       - run: tree ${{ env.DIST }} -P '*.html'
 
       - name: Publish next snapshots
