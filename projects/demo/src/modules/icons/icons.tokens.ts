@@ -1,6 +1,6 @@
 import {inject} from '@angular/core';
 import type {TuiStringHandler} from '@taiga-ui/cdk';
-import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk';
+import {tuiCreateToken, tuiCreateTokenFromFactory} from '@taiga-ui/cdk';
 import {TUI_SVG_OPTIONS} from '@taiga-ui/core';
 import * as allIcons from '@taiga-ui/icons';
 
@@ -103,3 +103,9 @@ export const ICONS = (deprecated: TuiStringHandler<string>): DemoTuiIconsTabs =>
 export const TUI_DEMO_ICONS = tuiCreateTokenFromFactory(() =>
     ICONS(inject(TUI_SVG_OPTIONS).deprecated),
 );
+
+export const TUI_DEMO_ICONS_TYPE = tuiCreateToken<TuiStringHandler<string>>(group => {
+    // console.log(group);
+
+    return group.includes('Payment') ? 'img' : 'icon';
+});

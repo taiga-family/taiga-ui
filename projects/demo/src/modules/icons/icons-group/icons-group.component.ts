@@ -9,6 +9,7 @@ import {TuiAlertService} from '@taiga-ui/core';
 import type {Observable} from 'rxjs';
 import {debounceTime, distinctUntilChanged, filter, map, takeUntil} from 'rxjs';
 
+import {TUI_DEMO_ICONS_TYPE} from '../icons.tokens';
 import {IconsGroupDirective} from './icons-group.directive';
 
 @Component({
@@ -37,6 +38,8 @@ export class IconsGroupComponent implements OnInit {
     protected matcher = TUI_DEFAULT_MATCHER;
 
     protected control = new FormControl<string>('');
+
+    protected readonly typeHandler = inject(TUI_DEMO_ICONS_TYPE);
 
     protected search$: Observable<string> = this.route.queryParams.pipe(
         map(queryParams => queryParams['search'] ?? ''),

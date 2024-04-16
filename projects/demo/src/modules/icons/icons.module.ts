@@ -7,6 +7,8 @@ import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
 import {
     TuiButtonDirective,
+    TuiIconComponent,
+    TuiIconPipe,
     TuiLinkDirective,
     TuiNotificationModule,
     TuiSvgComponent,
@@ -28,6 +30,8 @@ import {IconsGroupModule} from './icons-group/icons-group.module';
         RouterModule.forChild(tuiGenerateRoutes(IconsComponent)),
         TuiActiveZoneDirective,
         IntersectionObserverModule,
+        TuiIconPipe,
+        TuiIconComponent,
     ],
     declarations: [IconsComponent],
     exports: [IconsComponent],

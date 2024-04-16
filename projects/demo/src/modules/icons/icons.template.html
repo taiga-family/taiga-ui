@@ -45,17 +45,27 @@
                 let-copyPath="copyPath"
                 let-entry="entry"
                 let-icon="icon"
+                let-type="type"
             >
                 <div
                     class="icon-place"
                     (waIntersectionObservee)="entry.isIntersecting = entry.isIntersecting || onIntersection($event)"
                 >
-                    <tui-svg
-                        *ngIf="entry.isIntersecting"
-                        class="icon"
-                        [src]="icon"
-                        (click)="copyPath(icon)"
-                    />
+                    <ng-container *ngIf="entry.isIntersecting">
+                        <tui-icon
+                            *ngIf="type === 'icon'"
+                            class="icon"
+                            [icon]="icon"
+                            (click)="copyPath(icon)"
+                        />
+                        <img
+                            *ngIf="type === 'img'"
+                            alt=""
+                            class="icon"
+                            [src]="icon | tuiIcon"
+                            (click)="copyPath(icon)"
+                        />
+                    </ng-container>
                 </div>
             </ng-template>
         </icons-group>
