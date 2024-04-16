@@ -1,6 +1,6 @@
 import {DOCUMENT} from '@angular/common';
 import {Inject, Injectable, OnDestroy} from '@angular/core';
-import {tuiGetNativeFocused} from '@taiga-ui/cdk/utils';
+import {tuiGetNativeFocused} from '@taiga-ui/cdk';
 import {fromEvent, merge} from 'rxjs';
 import {filter} from 'rxjs/operators';
 
