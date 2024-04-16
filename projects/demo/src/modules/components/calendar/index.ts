@@ -1,4 +1,4 @@
-import {type AfterViewInit, Component, ViewChild} from '@angular/core';
+import {Component} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemoModule} from '@demo/utils';
@@ -27,21 +27,15 @@ const ONE_DOT: [string] = ['var(--tui-success-fill)'];
     templateUrl: './index.html',
     changeDetection,
 })
-export default class ExampleTuiCalendarComponent implements AfterViewInit {
-    @ViewChild('localizationExample')
-    private readonly localizationExample: any;
-
-    @ViewChild('colorCustomizationExample')
-    private readonly colorCustomizationExample: any;
-
-    protected readonly examples: Array<{name: string; description?: any}> = [
-        {name: 'Basic'},
-        {name: 'Range'},
-        {name: 'With markers'},
-        {name: 'Localizaition'},
-        {name: 'Color customization'},
-        {name: 'Select multiple dates'},
-        {name: 'Open in year view'},
+export default class ExampleTuiCalendarComponent {
+    protected readonly examples = [
+        'Basic',
+        'Range',
+        'With markers',
+        'Localizaition',
+        'Color customization',
+        'Select multiple dates',
+        'Open in year view',
     ];
 
     protected showAdjacent = true;
@@ -102,9 +96,4 @@ export default class ExampleTuiCalendarComponent implements AfterViewInit {
     protected month = TuiMonth.currentLocal();
 
     protected hoveredItem: TuiDay | null = null;
-
-    public ngAfterViewInit(): void {
-        this.examples[3].description = this.localizationExample;
-        this.examples[4].description = this.colorCustomizationExample;
-    }
 }

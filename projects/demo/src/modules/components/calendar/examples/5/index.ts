@@ -15,7 +15,13 @@ const handler: TuiHandler<TuiDay, string> = (day: TuiDay) => {
     standalone: true,
     imports: [TuiCalendarModule],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styles: [
+        `
+            tui-primitive-calendar [data-type='holiday'] {
+                background-color: var(--tui-support-09);
+            }
+        `,
+    ],
     encapsulation: ViewEncapsulation.None,
     changeDetection,
     providers: [{provide: TUI_DAY_TYPE_HANDLER, useValue: handler}],

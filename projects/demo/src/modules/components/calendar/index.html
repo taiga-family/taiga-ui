@@ -25,29 +25,36 @@
             *ngFor="let example of examples; let index = index"
             [component]="index + 1 | tuiComponent"
             [content]="index + 1 | tuiExample: 'html,ts'"
-            [description]="example.description"
-            [heading]="example.name"
-            [id]="example.name | tuiKebab"
-        />
-
-        <ng-template #localizationExample>
-            Use
-            <a
-                fragment="first-day-of-week"
-                routerLink="/utils/tokens"
-                tuiLink
+            [description]="description"
+            [heading]="example"
+            [id]="example | tuiKebab"
+        >
+            <ng-template
+                #description
+                [ngSwitch]="index + 1"
             >
-                TUI_FIRST_DAY_OF_WEEK
-            </a>
-            token to change start day of the week (Monday by default)
-        </ng-template>
+                <ng-container *ngSwitchCase="4">
+                    Use
+                    <a
+                        fragment="first-day-of-week"
+                        routerLink="/utils/tokens"
+                        tuiLink
+                    >
+                        TUI_FIRST_DAY_OF_WEEK
+                    </a>
+                    token to change start day of the week (Monday by default)
+                </ng-container>
 
-        <ng-template #colorCustomizationExample>
-            Use
-            <code>TUI_DAY_TYPE_HANDLER</code>
-            token to change cell's data-type attribute and customize its color. (The default color for Saturday and
-            Sunday is var(--tui-negative))
-        </ng-template>
+                <ng-container *ngSwitchCase="5">
+                    Use
+                    <code>TUI_DAY_TYPE_HANDLER</code>
+                    token to change cell's data-type attribute and customize its color. (The default color for Saturday
+                    and Sunday is var(--tui-negative))
+                </ng-container>
+
+                <ng-container *ngSwitchDefault />
+            </ng-template>
+        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
