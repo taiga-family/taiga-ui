@@ -27,7 +27,7 @@ const ONE_DOT: [string] = ['var(--tui-success-fill)'];
     templateUrl: './index.html',
     changeDetection,
 })
-export default class ExampleTuiCalendarComponent {
+export default class ExampleComponent {
     protected readonly examples = [
         'Basic',
         'Range',
