@@ -13,13 +13,7 @@ const ONE_DOT: [string] = ['var(--tui-success-fill)'];
     standalone: true,
     imports: [NgIf, TuiCalendarModule],
     templateUrl: './index.html',
-    styles: [
-        `
-            .wrapper {
-                display: flex;
-            }
-        `,
-    ],
+    styles: ['.wrapper {display: flex;}'],
     encapsulation,
     changeDetection,
 })
