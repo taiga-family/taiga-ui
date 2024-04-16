@@ -92,7 +92,7 @@ export const APP_PROVIDERS: Provider[] = [
     {
         provide: TUI_DOC_SOURCE_CODE,
         useValue: ({type, path, header, package: pkg}: TuiDocSourceCodePathOptions) => {
-            const link = 'https://github.com/taiga-family/taiga-ui/tree/main/projects';
+            const link = 'https://github.com/taiga-family/taiga-ui/tree/v3.x/projects';
 
             if (!pkg) {
                 return null;
