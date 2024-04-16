@@ -2,14 +2,16 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiMonth} from '@taiga-ui/cdk';
+import {TuiCalendarMonthModule} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-calendar-month-example-1',
+    standalone: true,
+    imports: [TuiCalendarMonthModule],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class TuiMonthExample1 {
+export default class ExampleComponent {
     protected value: TuiMonth | null = null;
     protected hoveredMonth: TuiMonth | null = null;
 

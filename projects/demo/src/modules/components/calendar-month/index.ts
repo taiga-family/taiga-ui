@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
+import {RouterModule} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
-import type {TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiDemoModule} from '@demo/utils';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk';
 import {
     TUI_FALSE_HANDLER,
@@ -11,25 +12,17 @@ import {
     TuiMonthRange,
     TuiYear,
 } from '@taiga-ui/cdk';
+import {TuiLinkDirective} from '@taiga-ui/core';
+import {TuiCalendarMonthModule} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'example-tui-calendar-month',
-    templateUrl: './calendar-month.template.html',
+    standalone: true,
+    imports: [TuiDemoModule, TuiCalendarMonthModule, TuiLinkDirective, RouterModule],
+    templateUrl: './index.html',
     changeDetection,
 })
-export class ExampleTuiCalendarMonthComponent {
-    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
-    protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
-
-    protected readonly example1: TuiDocExample = {
-        TypeScript: import('./examples/1/index.ts?raw'),
-        HTML: import('./examples/1/index.html?raw'),
-    };
-
-    protected readonly example2: TuiDocExample = {
-        TypeScript: import('./examples/2/index.ts?raw'),
-        HTML: import('./examples/2/index.html?raw'),
-    };
+export default class ExampleComponent {
+    protected readonly examples = ['Basic', 'Range'];
 
     protected readonly minVariants = [
         TUI_FIRST_DAY,
