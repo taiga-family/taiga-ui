@@ -7,7 +7,8 @@ import {
     OnDestroy,
     ViewEncapsulation,
 } from '@angular/core';
-import {tuiPx} from '@taiga-ui/cdk';
+import {TuiKeyboardService} from '@taiga-ui/addon-mobile/services';
+import {tuiGetNativeFocused, tuiPx} from '@taiga-ui/cdk';
 import {
     TUI_ANIMATIONS_DURATION,
     TuiDropdownDirective,
@@ -48,6 +49,7 @@ export class TuiDropdownMobileComponent implements OnDestroy {
     } as const;
 
     constructor(
+        @Inject(TuiKeyboardService) private readonly keyboard: TuiKeyboardService,
         @Inject(DOCUMENT) private readonly doc: Document,
         @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
         @Inject(TUI_ANIMATIONS_DURATION) private readonly duration: number,
@@ -78,5 +80,9 @@ export class TuiDropdownMobileComponent implements OnDestroy {
         this.observer.disconnect();
         this.doc.body.classList.remove('t-dropdown-mobile');
         this.doc.body.style.removeProperty('--t-top');
+
+        if (this.directive.el.nativeElement.contains(tuiGetNativeFocused(this.doc))) {
+            this.keyboard.hide();
+        }
     }
 }

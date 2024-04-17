@@ -4,6 +4,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
+import {TuiDropdownMobileModule} from '@taiga-ui/addon-mobile';
 import {TuiActiveZoneModule, TuiObscuredModule} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
@@ -12,11 +13,7 @@ import {
     TuiNotificationModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {
-    TuiAmountPipeModule,
-    TuiDropdownMobileModule,
-    TuiTitleModule,
-} from '@taiga-ui/experimental';
+import {TuiAmountPipeModule, TuiTitleModule} from '@taiga-ui/experimental';
 import {
     TuiAvatarModule,
     TuiComboBoxModule,
