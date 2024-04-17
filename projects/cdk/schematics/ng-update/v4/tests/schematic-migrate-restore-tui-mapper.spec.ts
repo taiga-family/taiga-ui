@@ -36,12 +36,12 @@ export class TestComponent {
 }`;
 
 const TUI_MAPPER_COMPONENT_AFTER = `
-import { TuiMapper, TuiMapperPipeModule } from '@taiga-ui/cdk';
+import { TuiMapper, TuiMapperPipe } from '@taiga-ui/cdk';
 
 @Component({
     standalone: true,
     templateUrl: './tui-mapper.component.html',
-    imports: [TuiMapperPipeModule]
+    imports: [TuiMapperPipe]
 })
 export class TestComponent {
     mapper1: TuiMapper<[number, ...any], string> = (a, b) => \`\${a + b}\`;
@@ -78,12 +78,12 @@ export class TestComponent {
 }`;
 
 const TYPED_TUI_MAPPER_COMPONENT_AFTER = `
-import {TuiMapper, TuiMapperPipeModule} from '@taiga-ui/cdk';
+import { TuiMapper, TuiMapperPipe } from '@taiga-ui/cdk';
 
 @Component({
     standalone: true,
     templateUrl: './tui-typed-mapper.component.html',
-    imports: [TuiMapperPipeModule]
+    imports: [TuiMapperPipe]
 })
 export class TestComponent {
     mapper1: TuiMapper<[number, number], string> = (a, b) => \`\${a + b}\`;

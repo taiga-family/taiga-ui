@@ -1,6 +1,6 @@
 import type {Provider, ProviderToken, Type} from '@angular/core';
 import {inject, Injectable} from '@angular/core';
-import type {TuiContext} from '@taiga-ui/cdk/interfaces';
+import type {TuiContext} from '@taiga-ui/cdk/types';
 import {tuiProvide} from '@taiga-ui/cdk/utils';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';

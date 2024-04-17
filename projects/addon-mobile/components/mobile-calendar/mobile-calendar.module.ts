@@ -4,7 +4,7 @@ import {NgModule} from '@angular/core';
 import {TuiRippleModule} from '@taiga-ui/addon-mobile/directives/ripple';
 import {TuiTouchableModule} from '@taiga-ui/addon-mobile/directives/touchable';
 import {TuiPrimitiveCalendarMobileModule} from '@taiga-ui/addon-mobile/internal/primitive-calendar-mobile';
-import {TuiMapperPipeModule} from '@taiga-ui/cdk';
+import {TuiMapperPipe} from '@taiga-ui/cdk';
 import {
     TuiButtonDirective,
     TuiLinkDirective,
@@ -20,7 +20,7 @@ import {TuiMobileCalendarComponent} from './mobile-calendar.component';
         ScrollingModule,
         TuiTouchableModule,
         TuiRippleModule,
-        TuiMapperPipeModule,
+        TuiMapperPipe,
         TuiLinkDirective,
         TuiPrimitiveCalendarMobileModule,
         TuiButtonDirective,

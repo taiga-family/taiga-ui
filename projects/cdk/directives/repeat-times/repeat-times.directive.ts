@@ -1,5 +1,5 @@
 import {Directive, inject, Input, TemplateRef, ViewContainerRef} from '@angular/core';
-import type {TuiContext} from '@taiga-ui/cdk/interfaces';
+import type {TuiContext} from '@taiga-ui/cdk/types';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 
 const MAX_VALUE = 0x10000;

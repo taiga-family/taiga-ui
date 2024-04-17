@@ -1,4 +1,4 @@
-import type {TuiSwipeDirection} from '@taiga-ui/cdk/interfaces';
+import type {TuiSwipeDirection} from '@taiga-ui/cdk/types';
 
 export function tuiGetSwipeDirection(deltaX: number, deltaY: number): TuiSwipeDirection {
     if (Math.abs(deltaY) > Math.abs(deltaX)) {

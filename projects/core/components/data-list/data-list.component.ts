@@ -19,7 +19,6 @@ import {
     tuiMoveFocus,
     tuiPure,
     tuiQueryListChanges,
-    tuiSetNativeMouseFocused,
 } from '@taiga-ui/cdk';
 import {
     TEXTFIELD_CONTROLLER_PROVIDER,
@@ -81,8 +80,8 @@ export class TuiDataListComponent<T> implements TuiDataListAccessor<T> {
     @HostListener('wheel.silent.passive')
     @HostListener('mouseleave', ['$event.target'])
     public handleFocusLossIfNecessary(element: Element = this.el): void {
-        if (this.origin && tuiIsNativeFocusedIn(element)) {
-            tuiSetNativeMouseFocused(this.origin, true, true);
+        if (tuiIsNativeFocusedIn(element)) {
+            this.origin?.focus({preventScroll: true});
         }
     }
 

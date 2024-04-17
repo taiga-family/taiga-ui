@@ -1,8 +1,11 @@
 import type {PipeTransform} from '@angular/core';
 import {Pipe} from '@angular/core';
-import type {TuiMatcher, TuiTypedMatcher} from '@taiga-ui/cdk/types';
+import type {TuiTypedMatcher} from '@taiga-ui/cdk/types';
 
-@Pipe({name: 'tuiFilter'})
+@Pipe({
+    standalone: true,
+    name: 'tuiFilter',
+})
 export class TuiFilterPipe implements PipeTransform {
     /**
      * Filters an array through a matcher function using additional arguments
@@ -11,7 +14,6 @@ export class TuiFilterPipe implements PipeTransform {
      * @param matcher method for filtering
      * @param args arbitrary number of additional arguments
      */
-    public transform<T>(items: readonly T[], matcher: TuiMatcher<T>, ...args: any[]): T[];
     public transform<T, U extends unknown[]>(
         items: readonly T[],
         matcher: TuiTypedMatcher<[T, ...U]>,

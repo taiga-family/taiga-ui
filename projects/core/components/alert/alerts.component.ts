@@ -9,7 +9,7 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import type {TuiTypedMapper} from '@taiga-ui/cdk';
-import {TuiMapperPipeModule} from '@taiga-ui/cdk';
+import {TuiMapperPipe} from '@taiga-ui/cdk';
 import {TUI_PARENT_ANIMATION} from '@taiga-ui/core/animations';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 import {identity} from 'rxjs';
@@ -19,7 +19,7 @@ import {TUI_ALERTS_GROUPED} from './alert.tokens';
 @Component({
     standalone: true,
     selector: 'tui-alerts',
-    imports: [CommonModule, TuiMapperPipeModule],
+    imports: [CommonModule, TuiMapperPipe],
     templateUrl: './alerts.template.html',
     styleUrls: ['./alerts.style.less'],
     encapsulation: ViewEncapsulation.None,

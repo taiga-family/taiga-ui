@@ -4,7 +4,7 @@ import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {AbstractTuiValueTransformer, TuiDay} from '@taiga-ui/cdk';
+import {TuiDay, TuiValueTransformer} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {
     TUI_DATE_FORMAT,
@@ -324,10 +324,7 @@ describe('InputDate', () => {
     });
 
     describe('InputDate + TUI_DATE_VALUE_TRANSFORMER', () => {
-        class TestTransformer extends AbstractTuiValueTransformer<
-            TuiDay | null,
-            Date | null
-        > {
+        class TestTransformer extends TuiValueTransformer<TuiDay | null, Date | null> {
             public fromControlValue(controlValue: Date | null): TuiDay | null {
                 return controlValue && TuiDay.fromLocalNativeDate(controlValue);
             }

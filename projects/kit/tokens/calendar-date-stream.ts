@@ -1,7 +1,7 @@
 import type {Provider} from '@angular/core';
 import {InjectionToken, Optional, Self} from '@angular/core';
 import {NgControl} from '@angular/forms';
-import type {TuiControlValueTransformer, TuiDay, TuiDayRange} from '@taiga-ui/cdk';
+import type {TuiDay, TuiDayRange, TuiValueTransformer} from '@taiga-ui/cdk';
 import {tuiControlValueFactory} from '@taiga-ui/kit/utils';
 import type {Observable} from 'rxjs';
 
@@ -13,7 +13,7 @@ export const TUI_CALENDAR_DATE_STREAM = new InjectionToken<
 >('[TUI_CALENDAR_DATE_STREAM]');
 
 export function tuiDateStreamWithTransformer(
-    transformer: InjectionToken<TuiControlValueTransformer<any>>,
+    transformer: InjectionToken<TuiValueTransformer<any>>,
 ): Provider {
     return {
         provide: TUI_CALENDAR_DATE_STREAM,

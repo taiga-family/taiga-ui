@@ -12,11 +12,11 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {MaskitoOptions} from '@maskito/core';
 import {maskitoDateOptionsGenerator} from '@maskito/kit';
 import type {
-    AbstractTuiValueTransformer,
     TuiBooleanHandler,
     TuiFocusableElementAccessor,
     TuiMapper,
     TuiTypedMapper,
+    TuiValueTransformer,
 } from '@taiga-ui/cdk';
 import {
     AbstractTuiMultipleControl,
@@ -122,7 +122,7 @@ export class TuiInputDateMultiComponent
 
     protected readonly dateTexts$ = inject(TUI_DATE_TEXTS);
     protected override readonly valueTransformer = inject<
-        AbstractTuiValueTransformer<readonly TuiDay[]>
+        TuiValueTransformer<readonly TuiDay[]>
     >(TUI_DATE_VALUE_TRANSFORMER, {optional: true});
 
     protected maskitoOptions: MaskitoOptions = maskitoDateOptionsGenerator({

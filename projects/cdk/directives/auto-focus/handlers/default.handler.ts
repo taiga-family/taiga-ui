@@ -1,6 +1,6 @@
 import type {ElementRef} from '@angular/core';
 import {POLLING_TIME} from '@taiga-ui/cdk/constants';
-import type {TuiFocusableElementAccessor} from '@taiga-ui/cdk/interfaces';
+import type {TuiFocusableElementAccessor} from '@taiga-ui/cdk/types';
 import type {Observable} from 'rxjs';
 import {map, race, skipWhile, take, throttleTime, timer} from 'rxjs';
 

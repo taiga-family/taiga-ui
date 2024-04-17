@@ -5,11 +5,11 @@ import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {
-    AbstractTuiValueTransformer,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
     TuiDay,
     TuiTime,
+    TuiValueTransformer,
 } from '@taiga-ui/cdk';
 import {TUI_DATE_FORMAT, TuiRootComponent} from '@taiga-ui/core';
 import {TUI_DATE_TIME_VALUE_TRANSFORMER} from '@taiga-ui/kit';
@@ -320,7 +320,7 @@ describe('InputDateTime', () => {
     });
 
     describe('InputDateTime + TUI_DATE_TIME_VALUE_TRANSFORMER', () => {
-        class ExampleDateTimeTransformer extends AbstractTuiValueTransformer<
+        class ExampleDateTimeTransformer extends TuiValueTransformer<
             [TuiDay | null, TuiTime | null],
             string
         > {

@@ -1,5 +1,5 @@
 /// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
-import type {TuiDayOfWeek, TuiMonth} from '@taiga-ui/cdk';
+import type {TuiMonth} from '@taiga-ui/cdk';
 import {DAYS_IN_WEEK, TuiDay, tuiInRange} from '@taiga-ui/cdk';
 
 /**
@@ -7,7 +7,7 @@ import {DAYS_IN_WEEK, TuiDay, tuiInRange} from '@taiga-ui/cdk';
  */
 const getMonthStartDaysOffset = (
     month: TuiMonth,
-    firstDayOfWeek: TuiDayOfWeek,
+    firstDayOfWeek: 0 | 1 | 2 | 3 | 4 | 5 | 6,
 ): number => {
     const startMonthOffsetFromSunday = new Date(month.year, month.month, 1).getDay();
 
@@ -33,7 +33,7 @@ export const getDayFromMonthRowCol = ({
     /**
      * first day of the week index (Sunday - 0, Saturday - 6)
      */
-    firstDayOfWeek: TuiDayOfWeek;
+    firstDayOfWeek: 0 | 1 | 2 | 3 | 4 | 5 | 6;
     month: TuiMonth;
     /**
      * row in a calendar

@@ -2,14 +2,14 @@ import {Directive, Input} from '@angular/core';
 import type {MaskitoOptions} from '@maskito/core';
 import {MASKITO_DEFAULT_OPTIONS, maskitoTransform} from '@maskito/core';
 import type {TuiTypedMapper} from '@taiga-ui/cdk';
-import {AbstractTuiValueTransformer, tuiProvide} from '@taiga-ui/cdk';
+import {tuiProvide, TuiValueTransformer} from '@taiga-ui/cdk';
 import {identity} from 'rxjs';
 
 @Directive({
     selector: '[maskito][tuiUnmaskHandler]',
-    providers: [tuiProvide(AbstractTuiValueTransformer, TuiUnmaskHandlerDirective)],
+    providers: [tuiProvide(TuiValueTransformer, TuiUnmaskHandlerDirective)],
 })
-export class TuiUnmaskHandlerDirective extends AbstractTuiValueTransformer<string> {
+export class TuiUnmaskHandlerDirective extends TuiValueTransformer<string> {
     @Input()
     public tuiUnmaskHandler: TuiTypedMapper<[string], string> = identity;
 

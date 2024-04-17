@@ -17,9 +17,9 @@ import {
     maskitoParseNumber,
 } from '@maskito/kit';
 import type {
-    AbstractTuiValueTransformer,
     TuiFocusableElementAccessor,
     TuiInputMode,
+    TuiValueTransformer,
 } from '@taiga-ui/cdk';
 import {
     AbstractTuiNullableControl,
@@ -52,7 +52,7 @@ import {TUI_INPUT_NUMBER_OPTIONS} from './input-number.options';
 const DEFAULT_MAX_LENGTH = 18;
 
 export const TUI_NUMBER_VALUE_TRANSFORMER = new InjectionToken<
-    AbstractTuiValueTransformer<number | null>
+    TuiValueTransformer<number | null>
 >('');
 
 @Component({
@@ -91,7 +91,7 @@ export class TuiInputNumberComponent
     protected readonly polymorpheusValueContent: QueryList<unknown> = EMPTY_QUERY;
 
     protected override readonly valueTransformer = inject<
-        AbstractTuiValueTransformer<number | null>
+        TuiValueTransformer<number | null>
     >(TUI_NUMBER_VALUE_TRANSFORMER, {optional: true});
 
     protected numberFormat = TUI_DEFAULT_NUMBER_FORMAT;

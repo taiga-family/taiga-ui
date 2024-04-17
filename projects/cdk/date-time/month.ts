@@ -1,10 +1,10 @@
 /// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
 
-import {TuiMonthNumber} from '@taiga-ui/cdk/enums';
-import type {TuiMonthLike} from '@taiga-ui/cdk/interfaces';
 import {tuiInRange, tuiNormalizeToIntNumber} from '@taiga-ui/cdk/utils/math';
 
 import {MAX_MONTH, MIN_MONTH, MONTHS_IN_YEAR} from './date-time';
+import {TuiMonthNumber} from './month-number';
+import type {TuiMonthLike} from './types';
 import {TuiYear} from './year';
 
 /**

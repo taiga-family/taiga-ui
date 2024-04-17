@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {MaskitoDirective} from '@maskito/angular';
-import {TuiMapperPipeModule} from '@taiga-ui/cdk';
+import {TuiMapperPipe} from '@taiga-ui/cdk';
 import {
     TuiCalendarModule,
     TuiHostedDropdownModule,
@@ -28,7 +28,7 @@ import {TuiInputDateMultiComponent} from './input-date-multi.component';
         TuiLinkDirective,
         TuiInputTagModule,
         FormsModule,
-        TuiMapperPipeModule,
+        TuiMapperPipe,
         TuiHostedDropdownModule,
         TuiTextfieldControllerModule,
         TuiPrimitiveTextfieldModule,

@@ -137,10 +137,10 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
             TuiDay | null,
             TuiDay | null,
             TuiDayLike | null,
-            string?,
+            string | null | undefined,
         ],
         ReadonlyArray<TuiDayRangePeriod | string>
-    > = (items, min, max, minLength, otherDateText = '') => [
+    > = (items, min, max, minLength, otherDateText) => [
         ...items.filter(
             item =>
                 (minLength === null ||
@@ -148,7 +148,7 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
                 (min === null || item.range.to.daySameOrAfter(min)) &&
                 (max === null || item.range.from.daySameOrBefore(max)),
         ),
-        otherDateText,
+        otherDateText || '',
     ];
 
     protected isItemActive(item: TuiDayRangePeriod | string): boolean {

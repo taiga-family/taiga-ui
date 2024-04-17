@@ -5,11 +5,11 @@ import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {
-    AbstractTuiValueTransformer,
     RANGE_SEPARATOR_CHAR,
     TUI_LAST_DAY,
     TuiDay,
     TuiDayRange,
+    TuiValueTransformer,
 } from '@taiga-ui/cdk';
 import {
     TUI_DATE_FORMAT,
@@ -269,7 +269,7 @@ describe('InputDateRangeComponent', () => {
     });
 
     describe('InputDateRangeComponent + TUI_DATE_RANGE_VALUE_TRANSFORMER', () => {
-        class TestDateTransformer extends AbstractTuiValueTransformer<
+        class TestDateTransformer extends TuiValueTransformer<
             TuiDay | null,
             Date | null
         > {
@@ -282,12 +282,12 @@ describe('InputDateRangeComponent', () => {
             }
         }
 
-        class TestDateRangeTransformer extends AbstractTuiValueTransformer<
+        class TestDateRangeTransformer extends TuiValueTransformer<
             TuiDayRange | null,
             [Date, Date] | null
         > {
             constructor(
-                private readonly dateTransformer: AbstractTuiValueTransformer<
+                private readonly dateTransformer: TuiValueTransformer<
                     TuiDay | null,
                     Date | null
                 >,
@@ -324,7 +324,7 @@ describe('InputDateRangeComponent', () => {
 
         function getExampleDateRangeTransformer(
             dateTransformer: TestDateTransformer | null,
-        ): AbstractTuiValueTransformer<TuiDayRange | null, [Date, Date] | null> | null {
+        ): TuiValueTransformer<TuiDayRange | null, [Date, Date] | null> | null {
             return dateTransformer && new TestDateRangeTransformer(dateTransformer);
         }
 

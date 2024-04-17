@@ -3,6 +3,7 @@ import type {AbstractControl} from '@angular/forms';
 import {NgControl} from '@angular/forms';
 
 @Directive({
+    standalone: true,
     selector: '[tuiControl]',
     exportAs: 'ngControl',
 })

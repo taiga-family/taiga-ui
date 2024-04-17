@@ -1,9 +1,8 @@
 /// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
-
-import type {TuiYearLike} from '@taiga-ui/cdk/interfaces';
 import {tuiInRange, tuiNormalizeToIntNumber} from '@taiga-ui/cdk/utils/math';
 
 import {MAX_YEAR, MIN_YEAR} from './date-time';
+import type {TuiYearLike} from './types';
 
 /**
  * Immutable year object

@@ -1,15 +1,12 @@
 import {Injectable} from '@angular/core';
-import {AbstractTuiValueTransformer, TuiDay, TuiDayRange} from '@taiga-ui/cdk';
+import {TuiDay, TuiDayRange, TuiValueTransformer} from '@taiga-ui/cdk';
 
-class ExampleDateRangeTransformer extends AbstractTuiValueTransformer<
+class ExampleDateRangeTransformer extends TuiValueTransformer<
     TuiDayRange | null,
     [Date, Date] | null
 > {
     constructor(
-        private readonly dateTransformer: AbstractTuiValueTransformer<
-            TuiDay | null,
-            Date | null
-        >,
+        private readonly dateTransformer: TuiValueTransformer<TuiDay | null, Date | null>,
     ) {
         super();
     }
@@ -34,7 +31,7 @@ class ExampleDateRangeTransformer extends AbstractTuiValueTransformer<
 }
 
 @Injectable()
-export class ExampleDateTransformer extends AbstractTuiValueTransformer<
+export class ExampleDateTransformer extends TuiValueTransformer<
     TuiDay | null,
     Date | null
 > {
@@ -49,6 +46,6 @@ export class ExampleDateTransformer extends AbstractTuiValueTransformer<
 
 export function getExampleDateRangeTransformer(
     dateTransformer: ExampleDateTransformer | null,
-): AbstractTuiValueTransformer<TuiDayRange | null, [Date, Date] | null> | null {
+): TuiValueTransformer<TuiDayRange | null, [Date, Date] | null> | null {
     return dateTransformer && new ExampleDateRangeTransformer(dateTransformer);
 }

@@ -5,7 +5,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAmountPipe, TuiThumbnailCardComponent} from '@taiga-ui/addon-commerce';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
-import {TuiAutoFocusDirective, TuiLetModule, TuiMapperPipeModule} from '@taiga-ui/cdk';
+import {TuiAutoFocusDirective, TuiLetModule, TuiMapperPipe} from '@taiga-ui/cdk';
 import {
     TuiButtonDirective,
     TuiDataListModule,
@@ -76,7 +76,7 @@ import {ExampleTuiSelectComponent} from './select.component';
         TuiNotificationModule,
         InheritedDocumentationModule,
         TuiAddonDocModule,
-        TuiMapperPipeModule,
+        TuiMapperPipe,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiSelectComponent)),
         TuiAmountPipe,
         TuiNumberFormatDirective,

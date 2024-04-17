@@ -1194,15 +1194,11 @@ export const ROUTES: Routes = [
             title: 'ActiveZone',
         },
     },
-    {
+    route({
         path: DemoRoute.CopyProcessor,
-        loadChildren: async () =>
-            (await import('../directives/copy-processor/copy-processor.module'))
-                .ExampleTuiCopyProcessorModule,
-        data: {
-            title: 'CopyProcessor',
-        },
-    },
+        title: 'CopyProcessor',
+        loadComponent: async () => import('../directives/copy-processor'),
+    }),
     {
         path: DemoRoute.ElasticSticky,
         loadChildren: async () =>
@@ -1459,14 +1455,11 @@ export const ROUTES: Routes = [
             title: 'Currency',
         },
     },
-    {
+    route({
         path: DemoRoute.FilterPipe,
-        loadChildren: async () =>
-            (await import('../pipes/filter/filter.module')).ExampleTuiFilterModule,
-        data: {
-            title: 'Filter',
-        },
-    },
+        loadComponent: async () => import('../pipes/filter'),
+        title: 'Filter',
+    }),
     {
         path: DemoRoute.FilterByInput,
         loadChildren: async () =>
@@ -1508,23 +1501,16 @@ export const ROUTES: Routes = [
             title: 'FormatPhone',
         },
     },
-    {
+    route({
         path: DemoRoute.IsPresent,
-        loadChildren: async () =>
-            (await import('../pipes/is-present/is-present.module'))
-                .ExampleTuiIsPresentModule,
-        data: {
-            title: 'IsPresent',
-        },
-    },
-    {
+        loadComponent: async () => import('../pipes/is-present'),
+        title: 'IsPresent',
+    }),
+    route({
         path: DemoRoute.Mapper,
-        loadChildren: async () =>
-            (await import('../pipes/mapper/mapper.module')).ExampleTuiMapperModule,
-        data: {
-            title: 'Mapper',
-        },
-    },
+        loadComponent: async () => import('../pipes/mapper'),
+        title: 'Mapper',
+    }),
     {
         path: DemoRoute.Stringify,
         loadChildren: async () =>
