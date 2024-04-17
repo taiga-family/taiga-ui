@@ -32,7 +32,7 @@ export default class ExampleComponent {
         'Basic',
         'Range',
         'With markers',
-        'Localizaition',
+        'Localization',
         'Color customization',
         'Select multiple dates',
         'Open in year view',
