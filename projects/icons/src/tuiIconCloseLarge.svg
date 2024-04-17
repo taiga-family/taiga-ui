@@ -1,14 +1,29 @@
-<svg xmlns="http://www.w3.org/2000/svg" focusable="false" height="1.5em" width="1.5em">
+<svg xmlns="http://www.w3.org/2000/svg" width="0.0625em" height="0.0625em">
     <g id="tuiIconCloseLarge" xmlns="http://www.w3.org/2000/svg">
-        <svg x="50%" y="50%" fill="none" height="1.5em" overflow="visible" viewBox="0 0 24 24" width="1.5em">
-            <svg x="-12" y="-12" xmlns="http://www.w3.org/2000/svg">
-                <path
-                    vector-effect="non-scaling-stroke"
-                    clip-rule="evenodd"
-                    d="M8.707 7.293a1 1 0 0 0-1.414 1.414L10.586 12l-3.293 3.293a1 1 0 1 0 1.414 1.414L12 13.414l3.293 3.293a1 1 0 0 0 1.414-1.414L13.414 12l3.293-3.293a1 1 0 0 0-1.414-1.414L12 10.586 8.707 7.293z"
-                    fill="currentColor"
-                    fill-rule="evenodd"
-                />
+        <svg x="50%" y="50%" width="0.0625em" height="0.0625em" overflow="visible" viewBox="0 0 1 1">
+            <svg x="-0.5" y="-0.5">
+                <svg xmlns="http://www.w3.org/2000/svg" focusable="false" height="1em" width="1em">
+                    <line
+                        vector-effect="non-scaling-stroke"
+                        x1="4"
+                        y1="4"
+                        x2="12"
+                        y2="12"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                    />
+                    <line
+                        vector-effect="non-scaling-stroke"
+                        x1="12"
+                        y1="4"
+                        x2="4"
+                        y2="12"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                    />
+                </svg>
             </svg>
         </svg>
     </g>

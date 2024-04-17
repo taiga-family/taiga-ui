@@ -35,7 +35,6 @@ import {
     tuiIconToggleOn,
     tuiIconToggleOnLarge,
     tuiIconTrashLarge,
-    tuiIconWarningLarge,
     tuiIconXCircle,
 } from '../all';
 
@@ -84,5 +83,4 @@ export const tuiKitIcons = {
     tuiIconToggleOn,
     tuiIconToggleOnLarge,
     tuiIconTrashLarge,
-    tuiIconWarningLarge,
 };

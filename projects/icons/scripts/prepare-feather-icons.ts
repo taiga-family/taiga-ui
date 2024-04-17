@@ -1,8 +1,6 @@
 const path = require('node:path');
 const fs = require('node:fs');
 
-const NO_FILL = ['check.svg'];
-
 (function main(): void {
     const src = path.join(
         process.cwd(),
@@ -19,36 +17,21 @@ const NO_FILL = ['check.svg'];
         }
 
         const content = fs.readFileSync(path.join(src, filename), 'utf-8');
-        const processed = content.replace(/class="[a-zA-Z0-9:;.\s()\-,]*"/, '');
-
-        // TODO: Make icons just regular and filled if filled makes sense
-        fs.writeFileSync(
-            path.join(dest, processName(filename, 'Outline')),
-            processed.replaceAll(
+        const processed = content
+            .replace(/class="[a-zA-Z0-9:;.\s()\-,]*"/, '')
+            .replaceAll(
                 /<(circle|ellipse|line|polygon|polyline|path|rect)/g,
                 '<$1 vector-effect="non-scaling-stroke"',
-            ),
-        );
+            );
 
-        const filled = processed.replace(
-            ' fill="none"',
-            NO_FILL.includes(filename) ? ' fill="none"' : '',
-        );
-
-        fs.writeFileSync(
-            path.join(dest, processName(filename, 'Large')),
-            filled.replaceAll(
-                /<(circle|ellipsis|line|polygon|polyline|path|rect)/g,
-                '<$1 vector-effect="non-scaling-stroke"',
-            ),
-        );
         fs.writeFileSync(
             path.join(dest, processName(filename)),
-            filled
-                .replace('stroke-width="2"', 'stroke-width="3"')
+            processed
                 .replace('width="24"', 'width="16"')
                 .replace('height="24"', 'height="16"'),
         );
+
+        fs.writeFileSync(path.join(dest, processName(filename, 'Large')), processed);
     });
 })();
 

@@ -4,16 +4,6 @@ import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk';
 import {TUI_SVG_OPTIONS} from '@taiga-ui/core';
 import * as allIcons from '@taiga-ui/icons';
 
-// TODO: remove in 4.0
-const DEPRECATED: DemoTuiIcon[] = [
-    'tuiIconRedo',
-    'tuiIconRefresh',
-    'tuiIconRefreshLarge',
-    'tuiIconSortUp',
-    'tuiIconSortDown',
-    'tuiIconUndo',
-];
-
 export type DemoTuiIcon = keyof typeof import('@taiga-ui/icons');
 
 export type DemoTuiIconsList = ReadonlyArray<DemoTuiIcon | string>;
@@ -88,12 +78,8 @@ export const ICONS = (deprecated: TuiStringHandler<string>): DemoTuiIconsTabs =>
 
     return {
         'Description and examples': {
-            'Normal / 16px': NORMAL.filter(
-                icon => !deprecated(icon) && !DEPRECATED.includes(icon),
-            ),
-            'Large / 24px': LARGE.filter(
-                icon => !deprecated(icon) && !DEPRECATED.includes(icon),
-            ),
+            'Normal / 16px': NORMAL.filter(icon => !deprecated(icon)),
+            'Large / 24px': LARGE.filter(icon => !deprecated(icon)),
             'Payment systems': COMMERCE_SYSTEMS,
             'Payment services': COMMERCE_SERVICES,
         },
