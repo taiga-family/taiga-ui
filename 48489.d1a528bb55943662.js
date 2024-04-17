@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[48489],{48489:e=>{e.exports='```html\n<span [tuiCopyProcessor]="processor">\n  ...\n</div>\n```\n'}}]);
