@@ -5,7 +5,8 @@ import {
     HostBinding,
     HostListener,
     Inject,
-    Injector,
+    inject,
+    InjectFlags,
     Input,
     Optional,
     Self,
@@ -39,8 +40,8 @@ import {
 } from '@taiga-ui/cdk';
 import {
     TUI_DEFAULT_MARKER_HANDLER,
+    TUI_DROPDOWN_COMPONENT,
     TUI_TEXTFIELD_SIZE,
-    TuiDialogService,
     TuiMarkerHandler,
     TuiPrimitiveTextfieldComponent,
     TuiSizeL,
@@ -58,9 +59,8 @@ import {
     tuiDateStreamWithTransformer,
     TuiInputDateOptions,
 } from '@taiga-ui/kit/tokens';
-import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
-import {map, takeUntil} from 'rxjs/operators';
+import {map} from 'rxjs/operators';
 
 @Component({
     selector: 'tui-input-date',
@@ -71,6 +71,13 @@ import {map, takeUntil} from 'rxjs/operators';
         tuiAsFocusableItemAccessor(TuiInputDateComponent),
         tuiAsControl(TuiInputDateComponent),
         tuiDateStreamWithTransformer(TUI_DATE_VALUE_TRANSFORMER),
+        {
+            provide: TUI_DROPDOWN_COMPONENT,
+            useFactory: () =>
+                (inject(TUI_IS_MOBILE) &&
+                    inject(TUI_MOBILE_CALENDAR, InjectFlags.Optional)) ||
+                inject(TUI_DROPDOWN_COMPONENT, InjectFlags.SkipSelf),
+        },
     ],
 })
 export class TuiInputDateComponent
@@ -116,10 +123,7 @@ export class TuiInputDateComponent
         @Inject(NgControl)
         control: NgControl | null,
         @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
-        @Inject(Injector) private readonly injector: Injector,
         @Inject(TUI_IS_MOBILE) readonly isMobile: boolean,
-        @Inject(TuiDialogService)
-        private readonly dialogs: TuiDialogService,
         @Optional()
         @Inject(TUI_MOBILE_CALENDAR)
         private readonly mobileCalendar: Type<Record<string, any>> | null,
@@ -158,6 +162,9 @@ export class TuiInputDateComponent
         return !!this.textfield?.focused;
     }
 
+    /**
+     * @deprecated
+     */
     get computedMobile(): boolean {
         return this.isMobile && (!!this.mobileCalendar || this.nativePicker);
     }
@@ -204,10 +211,6 @@ export class TuiInputDateComponent
         this.nativeFocusableElement.value = value;
     }
 
-    get canOpen(): boolean {
-        return this.interactive && !this.computedMobile;
-    }
-
     get computedMask(): MaskitoOptions {
         return this.activeItem
             ? MASKITO_DEFAULT_OPTIONS
@@ -227,7 +230,7 @@ export class TuiInputDateComponent
 
     @HostListener('click')
     onClick(): void {
-        if (!this.isMobile) {
+        if (!this.isMobile && this.interactive) {
             this.open = !this.open;
         }
     }
@@ -246,25 +249,9 @@ export class TuiInputDateComponent
     }
 
     onIconClick(): void {
-        if (!this.computedMobile || !this.mobileCalendar || this.readOnly) {
-            return;
+        if (this.isMobile && this.interactive) {
+            this.open = true;
         }
-
-        this.dialogs
-            .open<TuiDay>(new PolymorpheusComponent(this.mobileCalendar, this.injector), {
-                size: 'fullscreen',
-                closeable: false,
-                data: {
-                    single: true,
-                    min: this.min,
-                    max: this.max,
-                    disabledItemHandler: this.disabledItemHandler,
-                },
-            })
-            .pipe(takeUntil(this.destroy$))
-            .subscribe(value => {
-                this.value = value;
-            });
     }
 
     onValueChange(value: string): void {
