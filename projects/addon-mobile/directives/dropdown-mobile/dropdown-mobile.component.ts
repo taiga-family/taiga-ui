@@ -57,6 +57,7 @@ export class TuiDropdownMobileComponent implements OnDestroy {
         @Inject(TuiDropdownDirective) readonly directive: TuiDropdownDirective,
     ) {
         this.observer.observe(this.directive.el.nativeElement);
+        this.doc.documentElement.style.setProperty('scroll-behavior', 'initial');
     }
 
     onClick(event: MouseEvent): void {
@@ -82,19 +83,21 @@ export class TuiDropdownMobileComponent implements OnDestroy {
             '--t-root-top',
             tuiPx(offsetTop + GAP - rect.top),
         );
+        this.doc.documentElement.scrollTop = 0;
     }
 
     ngOnDestroy(): void {
         this.observer.disconnect();
         this.doc.body.classList.remove('t-dropdown-mobile');
         this.doc.body.style.removeProperty('--t-root-top');
+        this.doc.documentElement.scrollTop = this.scrollTop;
+        this.doc.documentElement.style.removeProperty('scroll-behavior');
 
         if (!this.focused) {
             return;
         }
 
         this.keyboard.hide();
-        this.doc.documentElement.scrollTop = this.scrollTop;
     }
 
     private get focused(): boolean {
