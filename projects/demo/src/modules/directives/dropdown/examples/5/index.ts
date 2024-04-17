@@ -1,7 +1,6 @@
-import {Component, ElementRef, ViewChild} from '@angular/core';
+import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiMultiSelectComponent} from '@taiga-ui/kit';
 
 interface User {
     readonly name: string;
@@ -15,12 +14,6 @@ interface User {
     changeDetection,
 })
 export class TuiDropdownExample5 {
-    @ViewChild('multi', {read: TuiMultiSelectComponent})
-    private readonly multi?: TuiMultiSelectComponent<User>;
-
-    @ViewChild('money', {read: ElementRef})
-    private readonly money?: ElementRef<HTMLInputElement>;
-
     country = null;
     selected: readonly User[] = [];
     sum = null;
@@ -287,14 +280,4 @@ export class TuiDropdownExample5 {
     ];
 
     readonly stringify = ({name}: User): string => name;
-
-    next(): void {
-        this.multi?.nativeFocusableElement?.focus({preventScroll: true});
-        this.open = true;
-    }
-
-    finish(): void {
-        this.money?.nativeElement.focus();
-        this.open = false;
-    }
 }

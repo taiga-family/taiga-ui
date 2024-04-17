@@ -3,18 +3,10 @@
     [(ngModel)]="country"
 >
     Country
-    <ng-container *tuiDataList>
-        <tui-data-list-wrapper [items]="countries | tuiFilterByInput"></tui-data-list-wrapper>
-        <button
-            appearance="accent"
-            size="m"
-            tuiButton
-            tuiDropdownButton
-            (click)="next()"
-        >
-            Next
-        </button>
-    </ng-container>
+    <tui-data-list-wrapper
+        *tuiDataList
+        [items]="countries | tuiFilterByInput"
+    ></tui-data-list-wrapper>
 </tui-combo-box>
 
 <tui-multi-select
@@ -37,9 +29,9 @@
             size="m"
             tuiButton
             tuiDropdownButton
-            (click)="finish()"
+            (click)="open = false"
         >
-            Next
+            Done
         </button>
         <ng-template
             #template
