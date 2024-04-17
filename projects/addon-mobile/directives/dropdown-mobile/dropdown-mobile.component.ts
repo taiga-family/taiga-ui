@@ -68,7 +68,7 @@ export class TuiDropdownMobileComponent implements OnDestroy {
     refresh({offsetTop, height}: VisualViewport): void {
         this.doc.body.style.removeProperty('--t-top');
 
-        if (this.focused) {
+        if (!this.focused) {
             return;
         }
 
