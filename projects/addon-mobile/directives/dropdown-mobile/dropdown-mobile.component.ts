@@ -36,6 +36,7 @@ const GAP = 16;
     },
 })
 export class TuiDropdownMobileComponent implements OnDestroy {
+    private readonly scrollTop = this.doc.documentElement.scrollTop;
     private readonly observer = new ResizeObserver(() =>
         this.refresh(this.doc.defaultView!.visualViewport),
     );
@@ -67,6 +68,10 @@ export class TuiDropdownMobileComponent implements OnDestroy {
     refresh({offsetTop, height}: VisualViewport): void {
         this.doc.body.style.removeProperty('--t-top');
 
+        if (this.focused) {
+            return;
+        }
+
         const rect = this.directive.el.nativeElement.getBoundingClientRect();
         const offset = rect.height + GAP * 2;
 
@@ -74,6 +79,7 @@ export class TuiDropdownMobileComponent implements OnDestroy {
         this.el.nativeElement.style.setProperty('height', tuiPx(height - offset));
         this.doc.body.classList.add('t-dropdown-mobile');
         this.doc.body.style.setProperty('--t-top', tuiPx(offsetTop + GAP - rect.top));
+        this.doc.documentElement.scrollTop = this.scrollTop;
     }
 
     ngOnDestroy(): void {
@@ -81,8 +87,12 @@ export class TuiDropdownMobileComponent implements OnDestroy {
         this.doc.body.classList.remove('t-dropdown-mobile');
         this.doc.body.style.removeProperty('--t-top');
 
-        if (this.directive.el.nativeElement.contains(tuiGetNativeFocused(this.doc))) {
+        if (this.focused) {
             this.keyboard.hide();
         }
+    }
+
+    private get focused(): boolean {
+        return this.directive.el.nativeElement.contains(tuiGetNativeFocused(this.doc));
     }
 }

@@ -388,7 +388,7 @@ export class TuiInputTagComponent
 
     onTagKeyDownArrowRight(currentIndex: number): void {
         if (currentIndex === this.value.length - 1) {
-            this.focusInput();
+            this.focusInput(false);
         } else {
             this.onScrollKeyDown(currentIndex, 1);
         }
@@ -532,7 +532,7 @@ export class TuiInputTagComponent
         }
     }
 
-    private focusInput(preventScroll: boolean = false): void {
+    private focusInput(preventScroll: boolean = true): void {
         this.nativeFocusableElement?.focus({preventScroll});
     }
 
