@@ -14,6 +14,13 @@ const EXCEPTIONS = [
     `${DemoRoute.Colors}/Status`,
     `${DemoRoute.Colors}/Base_palette`,
     `${DemoRoute.Colors}/Setup`,
+    `${DemoRoute.IconsOverview}/Component`,
+    `${DemoRoute.DialogLazyRoutable}/Setup`,
+    `${DemoRoute.DialogRoutable}/NamedOutlet`,
+    `${DemoRoute.DialogRoutable}/Setup`,
+    `${DemoRoute.I18N}/Dynamic_loader`,
+    `${DemoRoute.Portals}/Setup`,
+    `${DemoRoute.Viewport}/Setup`,
 ];
 
 /**
@@ -43,7 +50,23 @@ const EXCEPTIONS = [
             ?.map(route => route.replaceAll(/['"`]/g, '')) || [];
 
     routes.forEach(route => {
-        if (route.startsWith('components')) {
+        if (
+            /**
+             * Temporarily workaround!
+             * False negatives (don't prerender existing `<path>/Setup` page) are more serious problem than
+             * false positives (attempt to prerender not-existing <path>/Setup page).
+             * False positives do not break build process
+             * (application has wildcard route). They will just slow down the process of the whole prerender.
+             * ___
+             * TODO: after solving of this issue https://github.com/taiga-family/taiga-ui/issues/6957
+             * (all routes will be standardized)
+             * use ng-morph (DemoRoute + `app.routes.ts` file + `*pageTab` directive) to create more accurate algorithm.
+             *
+             */
+            route.match(
+                /^(components|directives|pipes|services|utils|layout|navigation|charts|experimental)/,
+            )
+        ) {
             routes.push(`${route}/API`, `${route}/Setup`);
         }
     });
