@@ -23,7 +23,7 @@ import {
     TuiSvgComponent,
     TuiTitleDirective,
 } from '@taiga-ui/core';
-import {TuiCardModule, TuiCellModule} from '@taiga-ui/experimental';
+import {TuiCardModule} from '@taiga-ui/experimental';
 import {
     TuiAvatarComponent,
     TuiAvatarStackComponent,
@@ -31,7 +31,7 @@ import {
     TuiButtonCloseDirective,
     TuiFadeDirective,
 } from '@taiga-ui/kit';
-import {TuiHeaderDirective} from '@taiga-ui/layout';
+import {TuiCellDirective, TuiHeaderDirective} from '@taiga-ui/layout';
 
 import {ExampleTuiCardLargeComponent} from './card-large.component';
 import {TuiCardLargeExample1} from './examples/1';
@@ -70,7 +70,7 @@ import {TuiCardLargeExample12} from './examples/12';
         TuiIconComponent,
         TuiButtonDirective,
         TuiHeaderDirective,
-        TuiCellModule,
+        TuiCellDirective,
         tuiGetDocModules(ExampleTuiCardLargeComponent),
         TuiRepeatTimesModule,
         TuiDataListModule,

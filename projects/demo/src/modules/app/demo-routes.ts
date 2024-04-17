@@ -31,7 +31,7 @@ export const DemoRoute = {
     CardLarge: 'experimental/card-large',
     BadgeNotification: 'components/badge-notification',
     BlockDetails: 'layout/block-details',
-    Cell: 'experimental/cell',
+    Cell: 'layout/cell',
     Comment: 'components/comment',
     Header: 'layout/header',
     Icon: 'components/icon',

@@ -18,7 +18,7 @@ import {
     TuiSurfaceDirective,
     TuiTitleDirective,
 } from '@taiga-ui/core';
-import {TuiCardModule, TuiCellModule} from '@taiga-ui/experimental';
+import {TuiCardModule} from '@taiga-ui/experimental';
 import {
     TuiAvatarComponent,
     TuiBadgeComponent,
@@ -26,6 +26,7 @@ import {
     TuiCheckboxComponent,
     TuiSwitchComponent,
 } from '@taiga-ui/kit';
+import {TuiCellDirective} from '@taiga-ui/layout';
 
 import {TuiSwipeActionExample1} from './examples/1';
 import {TuiSwipeActionExample2} from './examples/2';
@@ -39,7 +40,7 @@ import {ExampleTuiSwipeActionsComponent} from './swipe-actions.component';
         CommonModule,
         TuiAddonDocModule,
         TuiAvatarComponent,
-        TuiCellModule,
+        TuiCellDirective,
         TuiCardModule,
         TuiSurfaceDirective,
         TuiSwipeActionsComponent,

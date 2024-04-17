@@ -857,7 +857,7 @@ export const pages: TuiDocPages = [
         route: DemoRoute.BlockDetails,
     },
     {
-        section: 'Experimental',
+        section: 'Layout',
         title: 'Cell',
         keywords: 'cell, feed, item',
         route: DemoRoute.Cell,

@@ -7,6 +7,7 @@ import {tuiAvatarOptionsProvider} from '@taiga-ui/kit';
 import {TuiCellComponent} from './cell.component';
 
 @Directive({
+    standalone: true,
     selector: '[tuiCell]',
     providers: [
         tuiAvatarOptionsProvider({size: 's'}),
