@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import {tuiProvide} from '@taiga-ui/cdk';
 
@@ -18,6 +19,8 @@ export class ExampleTuiInputNumberComponent extends AbstractExampleTuiNumberForm
     public override precision = 2;
 
     public readonly control = new FormControl(6432, Validators.required);
+
+    protected docPages = DemoRoute;
 
     protected readonly exampleForm = import('./examples/import/declare-form.md?raw');
     protected readonly exampleModule = import('./examples/import/import-module.md?raw');
