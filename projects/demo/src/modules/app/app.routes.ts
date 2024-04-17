@@ -1558,6 +1558,11 @@ export const ROUTES: Routes = [
             title: 'BreakpointService',
         },
     },
+    route({
+        path: DemoRoute.KeyboardService,
+        loadComponent: async () => import('../services/keyboard'),
+        title: 'Keyboard',
+    }),
     {
         path: DemoRoute.ScrollService,
         loadChildren: async () =>

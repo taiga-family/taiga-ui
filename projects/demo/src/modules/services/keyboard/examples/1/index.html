@@ -1,0 +1,9 @@
+<tui-input [(ngModel)]="value">Type something</tui-input>
+<p>
+    <button
+        tuiButton
+        (mousedown.prevent.silent)="keyboard.toggle()"
+    >
+        Toggle
+    </button>
+</p>

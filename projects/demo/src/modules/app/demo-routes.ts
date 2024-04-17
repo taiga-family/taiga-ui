@@ -199,6 +199,7 @@ export const DemoRoute = {
     StringifyContent: 'pipes/stringify-content',
     Alert: 'components/alert',
     BreakpointService: 'services/breakpoint-service',
+    KeyboardService: 'services/keyboard-service',
     ScrollService: 'services/scroll-service',
     TableBarService: 'services/table-bars-service',
     TextfieldController: 'directives/textfield-controller',
