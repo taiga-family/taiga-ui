@@ -64,7 +64,7 @@ const EXCEPTIONS = [
              *
              */
             route.match(
-                /^(components|directives|pipes|services|utils|layout|navigation|charts|experimental)/,
+                /^\/(components|directives|pipes|services|utils|layout|navigation|charts|experimental)/,
             )
         ) {
             routes.push(`${route}/API`, `${route}/Setup`);
