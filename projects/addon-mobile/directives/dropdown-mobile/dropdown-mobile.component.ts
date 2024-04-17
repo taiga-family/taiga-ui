@@ -82,7 +82,6 @@ export class TuiDropdownMobileComponent implements OnDestroy {
             '--t-root-top',
             tuiPx(offsetTop + GAP - rect.top),
         );
-        this.doc.documentElement.scrollTop = this.scrollTop;
     }
 
     ngOnDestroy(): void {
@@ -90,9 +89,12 @@ export class TuiDropdownMobileComponent implements OnDestroy {
         this.doc.body.classList.remove('t-dropdown-mobile');
         this.doc.body.style.removeProperty('--t-root-top');
 
-        if (this.focused) {
-            this.keyboard.hide();
+        if (!this.focused) {
+            return;
         }
+
+        this.keyboard.hide();
+        this.doc.documentElement.scrollTop = this.scrollTop;
     }
 
     private get focused(): boolean {
