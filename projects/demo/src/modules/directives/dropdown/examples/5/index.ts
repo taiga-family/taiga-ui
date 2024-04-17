@@ -289,7 +289,7 @@ export class TuiDropdownExample5 {
     readonly stringify = ({name}: User): string => name;
 
     next(): void {
-        this.multi?.nativeFocusableElement?.focus();
+        this.multi?.nativeFocusableElement?.focus({preventScroll: true});
         this.open = true;
     }
 

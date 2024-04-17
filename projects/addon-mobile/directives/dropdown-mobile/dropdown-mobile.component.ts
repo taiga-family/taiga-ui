@@ -66,7 +66,7 @@ export class TuiDropdownMobileComponent implements OnDestroy {
     }
 
     refresh({offsetTop, height}: VisualViewport): void {
-        this.doc.body.style.removeProperty('--t-top');
+        this.doc.body.style.removeProperty('--t-root-top');
 
         if (!this.focused) {
             return;
@@ -78,14 +78,17 @@ export class TuiDropdownMobileComponent implements OnDestroy {
         this.el.nativeElement.style.setProperty('top', tuiPx(offsetTop + offset));
         this.el.nativeElement.style.setProperty('height', tuiPx(height - offset));
         this.doc.body.classList.add('t-dropdown-mobile');
-        this.doc.body.style.setProperty('--t-top', tuiPx(offsetTop + GAP - rect.top));
+        this.doc.body.style.setProperty(
+            '--t-root-top',
+            tuiPx(offsetTop + GAP - rect.top),
+        );
         this.doc.documentElement.scrollTop = this.scrollTop;
     }
 
     ngOnDestroy(): void {
         this.observer.disconnect();
         this.doc.body.classList.remove('t-dropdown-mobile');
-        this.doc.body.style.removeProperty('--t-top');
+        this.doc.body.style.removeProperty('--t-root-top');
 
         if (this.focused) {
             this.keyboard.hide();
