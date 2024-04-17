@@ -343,6 +343,6 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifier[] = [
     },
     {
         from: {name: 'TuiCellModule', moduleSpecifier: '@taiga-ui/experimental'},
-        to: {name: 'TuiCellDirective', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiCellDirective', moduleSpecifier: '@taiga-ui/layout'},
     },
 ];

@@ -1,9 +1,9 @@
 ```ts
-import {NgModule} from '@angular/core';
+import {Component} from '@angular/core';
 import {TuiCellDirective} from '@taiga-ui/layout';
 // ...
 
-@NgComponent({
+@Component({
   imports: [
     // ...
     TuiCellDirective,
