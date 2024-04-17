@@ -11,7 +11,8 @@ import {
     TuiSurfaceDirective,
 } from '@taiga-ui/core';
 import {TuiCardModule} from '@taiga-ui/experimental';
-import {TuiAvatarComponent, TuiBadgeDirective, TuiCellDirective} from '@taiga-ui/kit';
+import {TuiAvatarComponent, TuiBadgeDirective} from '@taiga-ui/kit';
+import {TuiCellDirective} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,

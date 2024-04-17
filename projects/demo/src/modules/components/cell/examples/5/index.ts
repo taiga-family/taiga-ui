@@ -6,9 +6,9 @@ import {
     TuiAvatarComponent,
     TuiBadgeDirective,
     TuiBadgeNotificationComponent,
-    TuiCellDirective,
     TuiFadeDirective,
 } from '@taiga-ui/kit';
+import {TuiCellDirective} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,

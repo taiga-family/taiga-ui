@@ -28,10 +28,9 @@ import {
     TuiAvatarStackComponent,
     TuiBadgeDirective,
     TuiButtonCloseDirective,
-    TuiCellDirective,
     TuiFadeDirective,
 } from '@taiga-ui/kit';
-import {TuiHeaderDirective} from '@taiga-ui/layout';
+import {TuiCellDirective, TuiHeaderDirective} from '@taiga-ui/layout';
 
 import {ExampleTuiCardMediumComponent} from './card-medium.component';
 import {TuiCardMediumExample1} from './examples/1';

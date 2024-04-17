@@ -23,10 +23,10 @@ import {
     TuiAvatarComponent,
     TuiBadgeComponent,
     TuiBadgedContentComponent,
-    TuiCellDirective,
     TuiCheckboxComponent,
     TuiSwitchComponent,
 } from '@taiga-ui/kit';
+import {TuiCellDirective} from '@taiga-ui/layout';
 
 import {TuiSwipeActionExample1} from './examples/1';
 import {TuiSwipeActionExample2} from './examples/2';

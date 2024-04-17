@@ -7,10 +7,10 @@ import {TuiTooltipModule} from '@taiga-ui/experimental';
 import {
     TuiAvatarComponent,
     TuiBadgeNotificationComponent,
-    TuiCellDirective,
     TuiCheckboxComponent,
     TuiSensitiveDirective,
 } from '@taiga-ui/kit';
+import {TuiCellDirective} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,

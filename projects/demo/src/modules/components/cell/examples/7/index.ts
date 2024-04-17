@@ -11,10 +11,10 @@ import {
 import {TuiCardModule} from '@taiga-ui/experimental';
 import {
     TuiAvatarComponent,
-    TuiCellDirective,
     TuiDataListWrapperModule,
     TuiSelectModule,
 } from '@taiga-ui/kit';
+import {TuiCellDirective} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,

@@ -1,6 +1,6 @@
 ```ts
 import {NgModule} from '@angular/core';
-import {TuiCellDirective} from '@taiga-ui/kit';
+import {TuiCellDirective} from '@taiga-ui/layout';
 // ...
 
 @NgComponent({
