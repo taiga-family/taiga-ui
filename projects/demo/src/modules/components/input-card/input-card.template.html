@@ -33,7 +33,6 @@
                     <tui-input-card
                         formControlName="card"
                         class="control"
-                        [autocompleteEnabled]="autocompleteEnabledCard"
                         [cardSrc]="cardSrc"
                         [focusable]="focusable"
                         [pseudoActive]="pseudoPressed"
@@ -113,14 +112,6 @@
                             Disabled state (use
                             <code>formControl.disable()</code>
                             )
-                        </ng-template>
-                        <ng-template
-                            documentationPropertyMode="input"
-                            documentationPropertyName="autocompleteEnabled"
-                            documentationPropertyType="boolean"
-                            [(documentationPropertyValue)]="autocompleteEnabledCard"
-                        >
-                            Browser autocomplete of card
                         </ng-template>
                         <ng-template
                             documentationPropertyMode="input"
