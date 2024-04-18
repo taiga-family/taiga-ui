@@ -79,4 +79,8 @@ export const CSS_VARS_TO_REPLACE: ReadonlyArray<{from: RegExp | string; to: stri
         from: '--tui-negative',
         to: '--tui-text-negative',
     },
+    {
+        from: '--tui-primary-text',
+        to: '--tui-text-primary-on-accent-1',
+    },
 ];

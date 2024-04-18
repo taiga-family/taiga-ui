@@ -110,11 +110,11 @@
 
         &[data-range] {
             &:after {
-                background-color: var(--tui-primary-text);
+                background-color: var(--tui-text-primary-on-accent-1);
             }
 
             & > .t-item {
-                color: var(--tui-primary-text);
+                color: var(--tui-text-primary-on-accent-1);
 
                 &:before,
                 &:after {

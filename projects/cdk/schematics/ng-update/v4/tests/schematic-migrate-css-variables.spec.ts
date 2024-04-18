@@ -89,6 +89,10 @@ const BEFORE_LOCAL_STYLE = `
         }
     }
 }
+
+.a10 {
+    color: var(--tui-primary-text);
+}
 `;
 
 const AFTER_LOCAL_STYLE = `
@@ -164,6 +168,10 @@ const AFTER_LOCAL_STYLE = `
             color: var(--tui-text-negative-hover);
         }
     }
+}
+
+.a10 {
+    color: var(--tui-text-primary-on-accent-1);
 }
 `;
 
