@@ -1,0 +1,59 @@
+<tui-combo-box
+    tuiDropdownMobile
+    [(ngModel)]="country"
+>
+    Country
+    <tui-data-list-wrapper
+        *tuiDataList
+        [items]="countries | tuiFilterByInput"
+    ></tui-data-list-wrapper>
+</tui-combo-box>
+
+<tui-multi-select
+    #multi
+    tuiDropdownMobile
+    class="tui-space_vertical-4"
+    [stringify]="stringify"
+    [(ngModel)]="selected"
+    [(tuiDropdownOpen)]="open"
+>
+    User
+    <ng-container *tuiDataList>
+        <tui-data-list-wrapper
+            tuiMultiSelectGroup
+            [itemContent]="template"
+            [items]="users | tuiFilterByInputWith: stringify"
+        ></tui-data-list-wrapper>
+        <button
+            appearance="accent"
+            size="m"
+            tuiButton
+            tuiDropdownButton
+            (click)="open = false"
+        >
+            Done
+        </button>
+        <ng-template
+            #template
+            let-user
+        >
+            <span tuiTitle>
+                {{ user.name }}
+                <span tuiSubtitle>
+                    {{ user.balance | tuiAmount: '$' : 'left' | async }}
+                </span>
+            </span>
+        </ng-template>
+    </ng-container>
+</tui-multi-select>
+
+<tui-input-number
+    tuiTextfieldPrefix="$"
+    [(ngModel)]="sum"
+>
+    Sum
+    <input
+        #money
+        tuiTextfield
+    />
+</tui-input-number>

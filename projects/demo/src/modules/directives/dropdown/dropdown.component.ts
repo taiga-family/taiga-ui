@@ -42,6 +42,11 @@ export class ExampleTuiDropdownComponent extends AbstractExampleTuiDropdown {
         LESS: import('./examples/4/index.less?raw'),
     };
 
+    readonly example5: TuiDocExample = {
+        TypeScript: import('./examples/5/index.ts?raw'),
+        HTML: import('./examples/5/index.html?raw'),
+    };
+
     open = false;
 
     onClick(): void {

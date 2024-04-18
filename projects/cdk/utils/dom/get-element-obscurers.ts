@@ -53,7 +53,7 @@ export function tuiGetElementObscures(element: Element): readonly Element[] | nu
         return nonNull;
     }
 
-    const filtered = nonNull.filter(el => !element.contains(el));
+    const filtered = nonNull.filter(el => !element.contains(el) && !el.contains(element));
 
     return filtered.length === 4 ? filtered : null;
 }

@@ -55,7 +55,7 @@ import {TuiDropdownPositionDirective} from './dropdown-position.directive';
 })
 export class TuiDropdownComponent {
     constructor(
-        @Inject(TuiVisualViewportService) visualViewportService: TuiVisualViewportService,
+        @Inject(TuiVisualViewportService) vvs: TuiVisualViewportService,
         @Inject(TuiPositionService) position$: Observable<TuiPoint>,
         @Self() @Inject(TuiDestroyService) destroy$: Observable<void>,
         @Inject(TuiDropdownDirective) readonly directive: TuiDropdownDirective,
@@ -72,9 +72,7 @@ export class TuiDropdownComponent {
         position$
             .pipe(
                 map(point =>
-                    this.directive.position === 'fixed'
-                        ? visualViewportService.correct(point)
-                        : point,
+                    this.directive.position === 'fixed' ? vvs.correct(point) : point,
                 ),
                 takeUntil(destroy$),
             )
