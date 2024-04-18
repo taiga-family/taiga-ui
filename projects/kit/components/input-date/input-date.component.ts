@@ -162,9 +162,6 @@ export class TuiInputDateComponent
         return !!this.textfield?.focused;
     }
 
-    /**
-     * @deprecated
-     */
     get computedMobile(): boolean {
         return this.isMobile && (!!this.mobileCalendar || this.nativePicker);
     }
@@ -209,6 +206,10 @@ export class TuiInputDateComponent
         }
 
         this.nativeFocusableElement.value = value;
+    }
+
+    get canOpen(): boolean {
+        return this.interactive && !this.computedMobile;
     }
 
     get computedMask(): MaskitoOptions {

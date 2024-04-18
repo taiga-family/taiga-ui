@@ -1,8 +1,8 @@
 <tui-hosted-dropdown
     class="t-hosted"
-    [canOpen]="interactive"
+    [canOpen]="canOpen"
     [content]="dropdown"
-    [open]="open && interactive"
+    [open]="open && canOpen"
     (openChange)="onOpenChange($event)"
 >
     <tui-primitive-textfield
