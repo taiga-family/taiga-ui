@@ -18,10 +18,6 @@
     outline: none;
     overflow: auto;
 
-    &.ng-animating {
-        overflow: clip;
-    }
-
     /* stylelint-disable*/
     scrollbar-width: none;
     -ms-overflow-style: none;
@@ -29,9 +25,7 @@
 
     &::-webkit-scrollbar,
     &::-webkit-scrollbar-thumb {
-        background: transparent;
-        width: 0;
-        height: 0;
+        display: none;
     }
 }
 
