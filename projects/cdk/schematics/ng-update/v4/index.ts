@@ -25,6 +25,7 @@ import {
 } from './steps/constants';
 import {migrateProprietary} from './steps/migrate-proprietary';
 import {migrateStyles} from './steps/migrate-styles';
+import {replacesCssVariables} from './steps/replaces-css-variables';
 
 function main(options: TuiSchema): Rule {
     return (tree: Tree, context: SchematicContext) => {
@@ -32,16 +33,14 @@ function main(options: TuiSchema): Rule {
 
         replaceIdentifiers(options, IDENTIFIERS_TO_REPLACE);
         removeModules(options, MODULES_TO_REMOVE);
-
         restoreTuiMapper(options);
         restoreTuiMatcher(options);
         migrateLegacyMask(options);
         migrateDestroyService(options);
-
         migrateTemplates(fileSystem, options);
         migrateStyles();
         showWarnings(context, MIGRATION_WARNINGS);
-
+        replacesCssVariables(fileSystem, options);
         migrateProprietary(fileSystem, options);
 
         fileSystem.commitEdits();

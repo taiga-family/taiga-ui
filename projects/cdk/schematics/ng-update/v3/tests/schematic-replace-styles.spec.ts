@@ -41,7 +41,7 @@ const BEFORE_LOCAL_STYLE = `
 
 tui-wrapper[data-appearance='textfield'] {
     background: var(--tui-secondary);
-    color: var(--tui-text-01);
+    color: var(--tui-text-primary);
     box-shadow: none;
 
     &[data-state='hovered'] {
@@ -153,7 +153,7 @@ const AFTER_LOCAL_STYLE = `
 ${TUI_WARNING_WRAPPER_MIXINS}
 [tuiWrapper][data-appearance='textfield'] {
     background: var(--tui-secondary);
-    color: var(--tui-text-01);
+    color: var(--tui-text-primary);
     box-shadow: none;
 
     &[data-state='hover'] {

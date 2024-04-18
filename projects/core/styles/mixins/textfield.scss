@@ -203,7 +203,7 @@ $line-height-l: 1.25rem;
 
     :host[data-size='m']._focused:not(._label-outside) &,
     :host[data-size='l']._focused:not(._label-outside) & {
-        color: var(--tui-text-01);
+        color: var(--tui-text-primary);
     }
 
     @include safari-only {

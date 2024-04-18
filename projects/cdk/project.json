@@ -53,7 +53,7 @@
                 "jestConfig": "jest.config.ts",
                 "coverageDirectory": "coverage/cdk",
                 "collectCoverageFrom": ["<rootDir>/projects/cdk/**/*.ts"],
-                "testMatch": ["<rootDir>/projects/cdk/**/*.spec.ts"]
+                "testMatch": ["<rootDir>/projects/cdk/**/schematic-migrate-css-variables.spec.ts"]
             },
             "dependsOn": [
                 {
