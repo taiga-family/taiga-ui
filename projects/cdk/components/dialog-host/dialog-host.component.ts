@@ -1,4 +1,4 @@
-import {animateChild, query, style, transition, trigger} from '@angular/animations';
+import {animateChild, query, transition, trigger} from '@angular/animations';
 import {DOCUMENT} from '@angular/common';
 import {
     ChangeDetectionStrategy,
@@ -40,7 +40,6 @@ export const TUI_DIALOG_CLOSES_ON_BACK = tuiCreateToken(of(false));
     animations: [
         trigger('host', [
             transition(':enter', [
-                style({overflow: 'clip'}),
                 query(':scope > *', [animateChild()], {optional: true}),
             ]),
             transition(':leave', [
