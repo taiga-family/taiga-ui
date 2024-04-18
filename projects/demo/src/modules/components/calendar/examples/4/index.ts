@@ -8,6 +8,7 @@ import {TUI_FIRST_DAY_OF_WEEK, TuiCalendarModule} from '@taiga-ui/core';
     standalone: true,
     imports: [TuiCalendarModule],
     templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
     providers: [
