@@ -5,7 +5,7 @@ export interface Color {
 
 export const BASE: readonly Color[] = [
     {
-        name: '--tui-base-01',
+        name: '--tui-background-base',
         desc: 'Page primary background and icon fill for color inverted background',
     },
     {
