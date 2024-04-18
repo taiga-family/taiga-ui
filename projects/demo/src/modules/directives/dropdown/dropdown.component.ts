@@ -43,8 +43,8 @@ export class ExampleTuiDropdownComponent extends AbstractExampleTuiDropdown {
     };
 
     readonly example5: TuiDocExample = {
-        TypeScript: import('./examples/4/index.ts?raw'),
-        HTML: import('./examples/4/index.html?raw'),
+        TypeScript: import('./examples/5/index.ts?raw'),
+        HTML: import('./examples/5/index.html?raw'),
     };
 
     open = false;
