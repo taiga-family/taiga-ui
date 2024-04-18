@@ -91,7 +91,7 @@ export class TuiMobileCalendarDropdownComponent {
     }
 
     close(): void {
-        this.dropdown.computedHost.focus({preventScroll: true});
+        this.dropdown.computedHost.focus();
         this.dropdown.updateOpen(false);
         this.keyboard.show();
     }
