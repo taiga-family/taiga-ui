@@ -287,11 +287,11 @@ export const TEXT: readonly Color[] = [
         desc: 'Hovered state of link and secondary buttons text',
     },
     {
-        name: '--tui-positive',
+        name: '--tui-text-positive',
         desc: 'Positive values: income, stock price grow, etc.',
     },
     {
-        name: '--tui-positive-hover',
+        name: '--tui-text-positive-hover',
         desc: 'Hovered state of positive values: income, stock price grow, etc.',
     },
     {
@@ -326,11 +326,11 @@ export const TEXT_NIGHT: readonly Color[] = [
         desc: 'Hovered state of link and secondary buttons text',
     },
     {
-        name: '--tui-positive-night',
+        name: '--tui-text-positive',
         desc: 'Positive values: income, stock price grow, etc.',
     },
     {
-        name: '--tui-positive-night-hover',
+        name: '--tui-text-positive-hover',
         desc: 'Hovered state of positive values: income, stock price grow, etc.',
     },
     {

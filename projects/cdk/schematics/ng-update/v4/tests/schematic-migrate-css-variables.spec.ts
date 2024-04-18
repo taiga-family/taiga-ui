@@ -57,6 +57,22 @@ const BEFORE_LOCAL_STYLE = `
         }
     }
 }
+
+.a8 {
+    color: var(--tui-positive);
+
+    &:hover {
+        color: var(--tui-positive-hover);
+    }
+
+    &[tuiTheme='night'] {
+        color: var(--tui-positive-night);
+
+        &:hover {
+            color: var(--tui-positive-night-hover);
+        }
+    }
+}
 `;
 
 const AFTER_LOCAL_STYLE = `
@@ -98,6 +114,22 @@ const AFTER_LOCAL_STYLE = `
 
         &:hover {
             color: var(--tui-text-action-hover);
+        }
+    }
+}
+
+.a8 {
+    color: var(--tui-text-positive);
+
+    &:hover {
+        color: var(--tui-text-positive-hover);
+    }
+
+    &[tuiTheme='night'] {
+        color: var(--tui-text-positive);
+
+        &:hover {
+            color: var(--tui-text-positive-hover);
         }
     }
 }

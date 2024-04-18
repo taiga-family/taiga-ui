@@ -47,4 +47,20 @@ export const CSS_VARS_TO_REPLACE: ReadonlyArray<{from: RegExp | string; to: stri
         from: '--tui-link',
         to: '--tui-text-action',
     },
+    {
+        from: '--tui-positive-night-hover',
+        to: '--tui-text-positive-hover',
+    },
+    {
+        from: '--tui-positive-night',
+        to: '--tui-text-positive',
+    },
+    {
+        from: '--tui-positive-hover',
+        to: '--tui-text-positive-hover',
+    },
+    {
+        from: '--tui-positive',
+        to: '--tui-text-positive',
+    },
 ];
