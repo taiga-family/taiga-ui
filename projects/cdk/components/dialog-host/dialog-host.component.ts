@@ -44,7 +44,6 @@ export const TUI_DIALOG_CLOSES_ON_BACK = tuiCreateToken(of(false));
                 query(':scope > *', [animateChild()], {optional: true}),
             ]),
             transition(':leave', [
-                style({overflow: 'clip'}),
                 query(':scope > *', [animateChild()], {optional: true}),
             ]),
         ]),
