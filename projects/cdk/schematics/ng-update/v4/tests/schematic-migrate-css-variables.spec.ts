@@ -97,6 +97,10 @@ const BEFORE_LOCAL_STYLE = `
 .a11 {
     color: var(--tui-base-01);
 }
+
+.a12 {
+    color: var(--tui-base-02);
+}
 `;
 
 const AFTER_LOCAL_STYLE = `
@@ -180,6 +184,10 @@ const AFTER_LOCAL_STYLE = `
 
 .a11 {
     color: var(--tui-background-base);
+}
+
+.a12 {
+    color: var(--tui-background-base-alt);
 }
 `;
 

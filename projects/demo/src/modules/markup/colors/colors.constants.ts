@@ -9,7 +9,7 @@ export const BASE: readonly Color[] = [
         desc: 'Page primary background and icon fill for color inverted background',
     },
     {
-        name: '--tui-base-02',
+        name: '--tui-background-base-alt',
         desc: 'Page secondary background, tile on primary background and background of static marker icons',
     },
     {

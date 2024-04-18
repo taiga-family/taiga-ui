@@ -87,4 +87,8 @@ export const CSS_VARS_TO_REPLACE: ReadonlyArray<{from: RegExp | string; to: stri
         from: '--tui-base-01',
         to: '--tui-background-base',
     },
+    {
+        from: '--tui-base-02',
+        to: '--tui-background-base-alt',
+    },
 ];
