@@ -19,7 +19,7 @@ export function tuiProvideRoutePageTab({
     loadChildren,
 }: Options = {}): Route {
     return {
-        path,
+        path: path?.replace(/^\//, ''), // Error: NG04014: Invalid configuration of route: path cannot start with a slash
         loadComponent,
         loadChildren,
         data: {title},
