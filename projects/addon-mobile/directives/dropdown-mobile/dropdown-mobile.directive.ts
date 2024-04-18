@@ -1,4 +1,4 @@
-import {Directive, HostListener, Inject, inject} from '@angular/core';
+import {Directive, HostListener, Inject, inject, Input} from '@angular/core';
 import {TUI_IS_MOBILE, tuiIsHTMLElement} from '@taiga-ui/cdk';
 import {TUI_DROPDOWN_COMPONENT, TuiDropdownComponent} from '@taiga-ui/core';
 
@@ -9,8 +9,14 @@ import {TuiDropdownMobileComponent} from './dropdown-mobile.component';
     providers: [
         {
             provide: TUI_DROPDOWN_COMPONENT,
-            useFactory: () =>
-                inject(TUI_IS_MOBILE) ? TuiDropdownMobileComponent : TuiDropdownComponent,
+            useFactory: () => {
+                if (!inject(TUI_IS_MOBILE)) {
+                    return TuiDropdownComponent;
+                }
+
+                // TODO: Add sheet version
+                return TuiDropdownMobileComponent;
+            },
         },
     ],
     host: {
@@ -18,6 +24,9 @@ import {TuiDropdownMobileComponent} from './dropdown-mobile.component';
     },
 })
 export class TuiDropdownMobileDirective {
+    @Input()
+    tuiDropdownMobile: '' | 'inline' | 'sheet' = 'inline';
+
     constructor(@Inject(TUI_IS_MOBILE) private readonly isMobile: boolean) {}
 
     @HostListener('mousedown', ['$event'])
