@@ -14,7 +14,7 @@ import {
     tuiZonefree,
 } from '@taiga-ui/cdk';
 import {SCROLL_REF_SELECTOR, TUI_SCROLL_REF} from '@taiga-ui/core';
-import {map, Observable, takeUntil, tap} from 'rxjs';
+import {map, Observable, Subscription, takeUntil, tap} from 'rxjs';
 
 @Injectable()
 export class TuiElasticStickyService extends Observable<number> {
@@ -27,13 +27,14 @@ export class TuiElasticStickyService extends Observable<number> {
 
     constructor() {
         super(subscriber => {
+            const subscription = new Subscription();
+
             afterNextRender(
                 () => {
                     const host = this.el.closest(SCROLL_REF_SELECTOR) || this.scrollRef;
-                    const {offsetHeight} = this.el;
                     const {offsetTop} = tuiGetElementOffset(host, this.el);
-
-                    return tuiScrollFrom(host)
+                    const {offsetHeight} = this.el;
+                    const teardown = tuiScrollFrom(host)
                         .pipe(
                             tuiZonefree(this.zone),
                             map(() =>
@@ -51,9 +52,17 @@ export class TuiElasticStickyService extends Observable<number> {
                             takeUntil(this.destroy$),
                         )
                         .subscribe(subscriber);
+
+                    if (!subscription.closed) {
+                        subscription.add(teardown);
+                    } else {
+                        teardown.unsubscribe();
+                    }
                 },
                 {injector: this.injector},
             );
+
+            return subscription;
         });
     }
 }
