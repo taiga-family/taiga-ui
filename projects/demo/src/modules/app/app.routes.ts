@@ -161,16 +161,12 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.CardMedium,
-        loadChildren: async () =>
-            (await import('../experimental/card-medium/card-medium.module'))
-                .ExampleTuiCardMediumModule,
+        loadComponent: async () => import('../components/card-medium'),
         title: 'CardMedium',
     }),
     route({
         path: DemoRoute.CardLarge,
-        loadChildren: async () =>
-            (await import('../experimental/card-large/card-large.module'))
-                .ExampleTuiCardLargeModule,
+        loadComponent: async () => import('../components/card-large'),
         title: 'CardLarge',
     }),
     route({

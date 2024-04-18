@@ -349,4 +349,8 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifier[] = [
         from: {name: 'TuiChipModule', moduleSpecifier: '@taiga-ui/experimental'},
         to: {name: 'TuiChipDirective', moduleSpecifier: '@taiga-ui/kit'},
     },
+    {
+        from: {name: 'TuiCardModule', moduleSpecifier: '@taiga-ui/experimental'},
+        to: {name: 'TuiCardModule', moduleSpecifier: '@taiga-ui/layout'},
+    },
 ];

@@ -10,9 +10,8 @@ import {
     TuiScrollbarComponent,
     TuiSurfaceDirective,
 } from '@taiga-ui/core';
-import {TuiCardModule} from '@taiga-ui/experimental';
 import {TuiAvatarComponent, TuiBadgeDirective} from '@taiga-ui/kit';
-import {TuiCellDirective} from '@taiga-ui/layout';
+import {TuiCardLargeDirective, TuiCellDirective} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
@@ -26,7 +25,7 @@ import {TuiCellDirective} from '@taiga-ui/layout';
         TuiButtonDirective,
         TuiLinkDirective,
         TuiCellDirective,
-        TuiCardModule,
+        TuiCardLargeDirective,
         CommonModule,
         TuiScrollbarComponent,
     ],

@@ -9,7 +9,7 @@ import {
     TuiSurfaceDirective,
     TuiTitleDirective,
 } from '@taiga-ui/core';
-import {TuiCardModule, TuiLabelDirective} from '@taiga-ui/experimental';
+import {TuiLabelDirective} from '@taiga-ui/experimental';
 import {
     TuiAvatarComponent,
     TuiBadgeDirective,
@@ -17,7 +17,7 @@ import {
     TuiSkeletonDirective,
     TuiSwitchComponent,
 } from '@taiga-ui/kit';
-import {TuiHeaderDirective} from '@taiga-ui/layout';
+import {TuiCardLargeDirective, TuiHeaderDirective} from '@taiga-ui/layout';
 
 import {TuiSkeletonExample1} from './examples/1';
 import {TuiSkeletonExample2} from './examples/2';
@@ -33,7 +33,7 @@ import {ExampleTuiSkeletonComponent} from './skeleton.component';
         TuiLabelDirective,
         TuiSwitchComponent,
         TuiAvatarComponent,
-        TuiCardModule,
+        TuiCardLargeDirective,
         TuiTitleDirective,
         TuiSurfaceDirective,
         TuiHeaderDirective,
