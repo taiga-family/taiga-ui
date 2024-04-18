@@ -1,21 +1,23 @@
+import {NgIf} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiDay} from '@taiga-ui/cdk';
 import {TuiDayRange, TuiMonth} from '@taiga-ui/cdk';
-import type {TuiMarkerHandler} from '@taiga-ui/core';
+import {TuiCalendarModule, type TuiMarkerHandler} from '@taiga-ui/core';
 
 const TWO_DOTS: [string, string] = ['var(--tui-primary)', 'var(--tui-info-fill)'];
 const ONE_DOT: [string] = ['var(--tui-success-fill)'];
 
 @Component({
-    selector: 'tui-calendar-example-3',
+    standalone: true,
+    imports: [NgIf, TuiCalendarModule],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiCalendarExample3 {
+export default class ExampleComponent {
     protected value: TuiDayRange | null = null;
 
     protected firstMonth = TuiMonth.currentLocal();

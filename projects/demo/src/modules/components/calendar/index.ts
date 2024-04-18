@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
+import {RouterModule} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
-import type {TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiDemoModule} from '@demo/utils';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk';
 import {
     TUI_FALSE_HANDLER,
@@ -11,55 +12,31 @@ import {
     TuiMonth,
 } from '@taiga-ui/cdk';
 import type {TuiMarkerHandler} from '@taiga-ui/core';
-import {TUI_DEFAULT_MARKER_HANDLER} from '@taiga-ui/core';
+import {
+    TUI_DEFAULT_MARKER_HANDLER,
+    TuiCalendarModule,
+    TuiLinkDirective,
+} from '@taiga-ui/core';
 
 const TWO_DOTS: [string, string] = ['var(--tui-primary)', 'var(--tui-info-fill)'];
 const ONE_DOT: [string] = ['var(--tui-success-fill)'];
 
 @Component({
-    selector: 'example-tui-calendar',
-    templateUrl: './calendar.template.html',
+    standalone: true,
+    imports: [RouterModule, TuiLinkDirective, TuiCalendarModule, TuiDemoModule],
+    templateUrl: './index.html',
     changeDetection,
 })
-export class ExampleTuiCalendarComponent {
-    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
-    protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
-
-    protected readonly example1: TuiDocExample = {
-        TypeScript: import('./examples/1/index.ts?raw'),
-        HTML: import('./examples/1/index.html?raw'),
-    };
-
-    protected readonly example2: TuiDocExample = {
-        TypeScript: import('./examples/2/index.ts?raw'),
-        HTML: import('./examples/2/index.html?raw'),
-    };
-
-    protected readonly example3: TuiDocExample = {
-        TypeScript: import('./examples/3/index.ts?raw'),
-        HTML: import('./examples/3/index.html?raw'),
-    };
-
-    protected readonly example4: TuiDocExample = {
-        TypeScript: import('./examples/4/index.ts?raw'),
-        HTML: import('./examples/4/index.html?raw'),
-    };
-
-    protected readonly example5: TuiDocExample = {
-        TypeScript: import('./examples/5/index.ts?raw'),
-        HTML: import('./examples/5/index.html?raw'),
-        LESS: import('./examples/5/index.less?raw'),
-    };
-
-    protected readonly example6: TuiDocExample = {
-        TypeScript: import('./examples/6/index.ts?raw'),
-        HTML: import('./examples/6/index.html?raw'),
-    };
-
-    protected readonly example7: TuiDocExample = {
-        TypeScript: import('./examples/7/index.ts?raw'),
-        HTML: import('./examples/7/index.html?raw'),
-    };
+export default class ExampleComponent {
+    protected readonly examples = [
+        'Basic',
+        'Range',
+        'With markers',
+        'Localization',
+        'Color customization',
+        'Select multiple dates',
+        'Open in year view',
+    ];
 
     protected showAdjacent = true;
 

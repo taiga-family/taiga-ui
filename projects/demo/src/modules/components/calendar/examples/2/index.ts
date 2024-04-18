@@ -1,17 +1,20 @@
+import {NgIf} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiDay} from '@taiga-ui/cdk';
 import {TuiDayRange, TuiMonth} from '@taiga-ui/cdk';
+import {TuiCalendarModule} from '@taiga-ui/core';
 
 @Component({
-    selector: 'tui-calendar-example-2',
+    standalone: true,
+    imports: [NgIf, TuiCalendarModule],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiCalendarExample2 {
+export default class ExampleComponent {
     protected value: TuiDayRange | null = null;
 
     protected firstMonth = TuiMonth.currentLocal();

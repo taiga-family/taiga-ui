@@ -2,11 +2,13 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDayOfWeek} from '@taiga-ui/cdk';
-import {TUI_FIRST_DAY_OF_WEEK} from '@taiga-ui/core';
+import {TUI_FIRST_DAY_OF_WEEK, TuiCalendarModule} from '@taiga-ui/core';
 
 @Component({
-    selector: 'tui-calendar-example-4',
+    standalone: true,
+    imports: [TuiCalendarModule],
     templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
     providers: [
@@ -16,4 +18,4 @@ import {TUI_FIRST_DAY_OF_WEEK} from '@taiga-ui/core';
         },
     ],
 })
-export class TuiCalendarExample4 {}
+export default class ExampleComponent {}

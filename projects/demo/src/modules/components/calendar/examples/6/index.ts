@@ -2,14 +2,17 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiDay} from '@taiga-ui/cdk';
+import {TuiCalendarModule} from '@taiga-ui/core';
 
 @Component({
-    selector: 'tui-calendar-example-6',
+    standalone: true,
+    imports: [TuiCalendarModule],
     templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiCalendarExample6 {
+export default class ExampleComponent {
     protected value: readonly TuiDay[] = [];
 
     protected onDayClick(day: TuiDay): void {

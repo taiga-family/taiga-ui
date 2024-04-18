@@ -22,78 +22,38 @@
         </p>
 
         <tui-doc-example
-            id="base"
-            heading="Basic"
-            [content]="example1"
+            *ngFor="let example of examples; let index = index"
+            [component]="index + 1 | tuiComponent"
+            [content]="index + 1 | tuiExample"
+            [description]="description"
+            [heading]="example"
+            [id]="example | tuiKebab"
         >
-            <tui-calendar-example-1 />
-        </tui-doc-example>
+            <ng-template
+                #description
+                [ngSwitch]="index + 1"
+            >
+                <ng-container *ngSwitchCase="4">
+                    Use
+                    <a
+                        fragment="first-day-of-week"
+                        routerLink="/utils/tokens"
+                        tuiLink
+                    >
+                        TUI_FIRST_DAY_OF_WEEK
+                    </a>
+                    token to change start day of the week (Monday by default)
+                </ng-container>
 
-        <tui-doc-example
-            id="range"
-            heading="range"
-            [content]="example2"
-        >
-            <tui-calendar-example-2 />
-        </tui-doc-example>
+                <ng-container *ngSwitchCase="5">
+                    Use
+                    <code>TUI_DAY_TYPE_HANDLER</code>
+                    token to change cell's data-type attribute and customize its color. (The default color for Saturday
+                    and Sunday is var(--tui-negative))
+                </ng-container>
 
-        <tui-doc-example
-            id="markers"
-            heading="With markers"
-            [content]="example3"
-        >
-            <tui-calendar-example-3 />
-        </tui-doc-example>
-
-        <tui-doc-example
-            id="localization"
-            heading="Localization"
-            [content]="example4"
-            [description]="localizationDescription"
-        >
-            <ng-template #localizationDescription>
-                Use
-                <a
-                    fragment="first-day-of-week"
-                    routerLink="/utils/tokens"
-                    tuiLink
-                >
-                    TUI_FIRST_DAY_OF_WEEK
-                </a>
-                token to change start day of the week (Monday by default).
+                <ng-container *ngSwitchDefault />
             </ng-template>
-            <tui-calendar-example-4 />
-        </tui-doc-example>
-
-        <tui-doc-example
-            id="color"
-            heading="Color customization"
-            [content]="example5"
-            [description]="colorDescription"
-        >
-            <ng-template #colorDescription>
-                Use
-                <code>TUI_DAY_TYPE_HANDLER</code>
-                token to change cell's data-type attribute and customize its color. (The default color for Saturday and
-                Sunday is var(--tui-negative))
-            </ng-template>
-            <tui-calendar-example-5 />
-        </tui-doc-example>
-
-        <tui-doc-example
-            id="select-multi-dates"
-            heading="Select multiple dates"
-            [content]="example6"
-        >
-            <tui-calendar-example-6 />
-        </tui-doc-example>
-
-        <tui-doc-example
-            id="year-view"
-            heading="Open in year view"
-            [content]="example7"
-        >
-            <tui-calendar-example-7 />
         </tui-doc-example>
     </ng-template>
 
@@ -215,28 +175,6 @@
     </ng-template>
 
     <ng-template pageTab>
-        <ol class="b-demo-steps">
-            <li>
-                <p>
-                    Import
-                    <code>TuiCalendarModule</code>
-                    into a module where you want to use our component
-                </p>
-
-                <tui-doc-code
-                    filename="my.module.ts"
-                    [code]="exampleModule"
-                />
-            </li>
-
-            <li>
-                <p>Add to the template:</p>
-
-                <tui-doc-code
-                    filename="my.component.html"
-                    [code]="exampleHtml"
-                />
-            </li>
-        </ol>
+        <tui-setup />
     </ng-template>
 </tui-doc-page>
