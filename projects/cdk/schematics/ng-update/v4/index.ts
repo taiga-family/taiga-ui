@@ -31,6 +31,7 @@ function main(options: TuiSchema): Rule {
     return (tree: Tree, context: SchematicContext) => {
         const fileSystem = getFileSystem(tree);
 
+        replacesCssVariables(fileSystem, options);
         replaceIdentifiers(options, IDENTIFIERS_TO_REPLACE);
         removeModules(options, MODULES_TO_REMOVE);
         restoreTuiMapper(options);
@@ -40,7 +41,6 @@ function main(options: TuiSchema): Rule {
         migrateTemplates(fileSystem, options);
         migrateStyles();
         showWarnings(context, MIGRATION_WARNINGS);
-        replacesCssVariables(fileSystem, options);
         migrateProprietary(fileSystem, options);
 
         fileSystem.commitEdits();

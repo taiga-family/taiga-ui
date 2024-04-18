@@ -7,7 +7,7 @@
     display: flex;
     align-items: center;
     flex-shrink: 0;
-    color: var(--tui-link);
+    color: var(--tui-text-action);
     margin-right: 1.5rem;
     outline: none;
     cursor: pointer;
@@ -19,7 +19,7 @@
     }
 
     &:hover {
-        color: var(--tui-link-hover);
+        color: var(--tui-text-action-hover);
     }
 
     &:not(:last-of-type)._vertical {
@@ -56,7 +56,7 @@
     align-items: center;
     justify-content: center;
     background: var(--tui-secondary);
-    color: var(--tui-link);
+    color: var(--tui-text-action);
 
     :host:disabled & {
         background: var(--tui-base-03);
@@ -69,7 +69,7 @@
         }
 
         :host:hover & {
-            color: var(--tui-link-hover);
+            color: var(--tui-text-action-hover);
             background: var(--tui-secondary-hover);
         }
 
@@ -113,7 +113,7 @@
         }
 
         :host:hover & {
-            color: var(--tui-link-hover);
+            color: var(--tui-text-action-hover);
             background: var(--tui-secondary-hover);
         }
     }

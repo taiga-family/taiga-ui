@@ -41,6 +41,22 @@ const BEFORE_LOCAL_STYLE = `
     background-color: var(--tui-text-tertiary-night);
     color: var(--tui-text-03-night);
 }
+
+.a7 {
+    color: var(--tui-link);
+
+    &:hover {
+        color: var(--tui-link-hover);
+    }
+
+    &[tuiTheme='night'] {
+        color: var(--tui-link-night);
+
+        &:hover {
+            color: var(--tui-link-night-hover);
+        }
+    }
+}
 `;
 
 const AFTER_LOCAL_STYLE = `
@@ -68,6 +84,22 @@ const AFTER_LOCAL_STYLE = `
 .a6 {
     background-color: var(--tui-text-tertiary-on-dark);
     color: var(--tui-text-tertiary-on-dark);
+}
+
+.a7 {
+    color: var(--tui-text-action);
+
+    &:hover {
+        color: var(--tui-text-action-hover);
+    }
+
+    &[tuiTheme='night'] {
+        color: var(--tui-text-action);
+
+        &:hover {
+            color: var(--tui-text-action-hover);
+        }
+    }
 }
 `;
 

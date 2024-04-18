@@ -279,11 +279,11 @@ export const TEXT: readonly Color[] = [
         desc: 'Inactive and additional points, minor information and helpers',
     },
     {
-        name: '--tui-link',
+        name: '--tui-text-action',
         desc: 'Link and secondary buttons text',
     },
     {
-        name: '--tui-link-hover',
+        name: '--tui-text-action-hover',
         desc: 'Hovered state of link and secondary buttons text',
     },
     {
