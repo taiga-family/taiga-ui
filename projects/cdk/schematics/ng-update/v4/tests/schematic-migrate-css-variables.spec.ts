@@ -27,6 +27,10 @@ const BEFORE_LOCAL_STYLE = `
 .a3 {
     color: var(--tui-text-03);
 }
+
+.a4 {
+    color: var(--tui-text-01-night);
+}
 `;
 
 const AFTER_LOCAL_STYLE = `
@@ -40,6 +44,10 @@ const AFTER_LOCAL_STYLE = `
 
 .a3 {
     color: var(--tui-text-tertiary);
+}
+
+.a4 {
+    color: var(--tui-text-primary-on-dark);
 }
 `;
 

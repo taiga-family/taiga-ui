@@ -11,4 +11,8 @@ export const CSS_VARS_TO_REPLACE: ReadonlyArray<{from: RegExp | string; to: stri
         from: '--tui-text-03',
         to: '--tui-text-tertiary',
     },
+    {
+        from: '--tui-text-01-night',
+        to: '--tui-text-primary-on-dark',
+    },
 ];

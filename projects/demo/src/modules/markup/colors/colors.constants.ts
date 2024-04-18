@@ -306,7 +306,7 @@ export const TEXT: readonly Color[] = [
 
 export const TEXT_NIGHT: readonly Color[] = [
     {
-        name: '--tui-text-01-night',
+        name: '--tui-text-primary-on-dark',
         desc: 'Primary text and headings',
     },
     {
