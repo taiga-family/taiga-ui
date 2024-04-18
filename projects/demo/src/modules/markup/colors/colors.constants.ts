@@ -271,7 +271,7 @@ export const TEXT: readonly Color[] = [
         desc: 'Primary text and headings',
     },
     {
-        name: '--tui-text-02',
+        name: '--tui-text-secondary',
         desc: 'Secondary text and descriptions',
     },
     {
@@ -310,7 +310,7 @@ export const TEXT_NIGHT: readonly Color[] = [
         desc: 'Primary text and headings',
     },
     {
-        name: '--tui-text-02-night',
+        name: '--tui-text-secondary-night',
         desc: 'Secondary text and descriptions',
     },
     {

@@ -16,14 +16,22 @@ import {createAngularJson} from '../../../utils/create-angular-json';
 const collectionPath = join(__dirname, '../../../migration.json');
 
 const BEFORE_LOCAL_STYLE = `
-.class {
+.a1 {
     color: var(--tui-text-01);
+}
+
+.a2 {
+    color: var(--tui-text-02);
 }
 `;
 
 const AFTER_LOCAL_STYLE = `
-.class {
+.a1 {
     color: var(--tui-text-primary);
+}
+
+.a2 {
+    color: var(--tui-text-secondary);
 }
 `;
 
