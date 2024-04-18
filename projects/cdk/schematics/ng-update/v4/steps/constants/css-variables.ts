@@ -63,4 +63,20 @@ export const CSS_VARS_TO_REPLACE: ReadonlyArray<{from: RegExp | string; to: stri
         from: '--tui-positive',
         to: '--tui-text-positive',
     },
+    {
+        from: '--tui-negative-night-hover',
+        to: '--tui-text-negative-hover',
+    },
+    {
+        from: '--tui-negative-night',
+        to: '--tui-text-negative',
+    },
+    {
+        from: '--tui-negative-hover',
+        to: '--tui-text-negative-hover',
+    },
+    {
+        from: '--tui-negative',
+        to: '--tui-text-negative',
+    },
 ];

@@ -73,6 +73,22 @@ const BEFORE_LOCAL_STYLE = `
         }
     }
 }
+
+.a9 {
+    color: var(--tui-negative);
+
+    &:hover {
+        color: var(--tui-negative-hover);
+    }
+
+    &[tuiTheme='night'] {
+        color: var(--tui-negative-night);
+
+        &:hover {
+            color: var(--tui-negative-night-hover);
+        }
+    }
+}
 `;
 
 const AFTER_LOCAL_STYLE = `
@@ -130,6 +146,22 @@ const AFTER_LOCAL_STYLE = `
 
         &:hover {
             color: var(--tui-text-positive-hover);
+        }
+    }
+}
+
+.a9 {
+    color: var(--tui-text-negative);
+
+    &:hover {
+        color: var(--tui-text-negative-hover);
+    }
+
+    &[tuiTheme='night'] {
+        color: var(--tui-text-negative);
+
+        &:hover {
+            color: var(--tui-text-negative-hover);
         }
     }
 }

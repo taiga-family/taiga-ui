@@ -295,11 +295,11 @@ export const TEXT: readonly Color[] = [
         desc: 'Hovered state of positive values: income, stock price grow, etc.',
     },
     {
-        name: '--tui-negative',
+        name: '--tui-text-negative',
         desc: 'Negative values: expense, stock price fall, etc.',
     },
     {
-        name: '--tui-negative-hover',
+        name: '--tui-text-negative-hover',
         desc: 'Hovered state of negative values: expense, stock price fall, etc.',
     },
 ];
@@ -334,11 +334,11 @@ export const TEXT_NIGHT: readonly Color[] = [
         desc: 'Hovered state of positive values: income, stock price grow, etc.',
     },
     {
-        name: '--tui-negative-night',
+        name: '--tui-text-negative',
         desc: 'Negative values: expense, stock price fall, etc.',
     },
     {
-        name: '--tui-negative-night-hover',
+        name: '--tui-text-negative-hover',
         desc: 'Hovered state of negative values: expense, stock price fall, etc.',
     },
 ];
