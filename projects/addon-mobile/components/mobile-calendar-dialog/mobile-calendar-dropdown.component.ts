@@ -5,6 +5,7 @@ import {
     Inject,
     Optional,
 } from '@angular/core';
+import {TuiKeyboardService} from '@taiga-ui/addon-mobile/services';
 import {
     ALWAYS_FALSE_HANDLER,
     TUI_FIRST_DAY,
@@ -83,11 +84,16 @@ export class TuiMobileCalendarDropdownComponent {
         private readonly range: TuiInputDateRangeComponent | null,
         @Inject(TuiHostedDropdownComponent)
         private readonly dropdown: TuiHostedDropdownComponent,
-    ) {}
+        @Inject(TuiKeyboardService)
+        private readonly keyboard: TuiKeyboardService,
+    ) {
+        this.keyboard.hide();
+    }
 
     close(): void {
-        this.dropdown.computedHost.focus();
+        this.dropdown.computedHost.focus({preventScroll: true});
         this.dropdown.updateOpen(false);
+        this.keyboard.show();
     }
 
     confirm(value: any): void {
