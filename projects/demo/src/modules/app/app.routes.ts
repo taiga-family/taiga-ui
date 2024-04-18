@@ -270,7 +270,6 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.Calendar,
-
         title: 'Calendar',
         loadComponent: async () => import('../components/calendar'),
     }),
