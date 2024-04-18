@@ -275,7 +275,7 @@ export const TEXT: readonly Color[] = [
         desc: 'Secondary text and descriptions',
     },
     {
-        name: '--tui-text-03',
+        name: '--tui-text-tertiary',
         desc: 'Inactive and additional points, minor information and helpers',
     },
     {
@@ -314,7 +314,7 @@ export const TEXT_NIGHT: readonly Color[] = [
         desc: 'Secondary text and descriptions',
     },
     {
-        name: '--tui-text-03-night',
+        name: '--tui-text-tertiary-night',
         desc: 'Inactive and additional points, minor information and helpers',
     },
     {

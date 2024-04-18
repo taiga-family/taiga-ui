@@ -81,7 +81,7 @@ $line-height-l: 1.25rem;
     }
 
     &::placeholder {
-        color: var(--tui-text-03);
+        color: var(--tui-text-tertiary);
         opacity: 0;
     }
 
@@ -189,7 +189,7 @@ $line-height-l: 1.25rem;
     :host._focused &,
     :host[data-size='m']._focused._label-outside &,
     :host[data-size='l']._focused._label-outside & {
-        color: var(--tui-text-03);
+        color: var(--tui-text-tertiary);
     }
 
     :host[data-size='l'] & {
