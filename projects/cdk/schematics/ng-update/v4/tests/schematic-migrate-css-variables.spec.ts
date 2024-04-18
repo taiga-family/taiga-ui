@@ -33,7 +33,13 @@ const BEFORE_LOCAL_STYLE = `
 }
 
 .a5 {
+    background-color: var(--tui-text-secondary-night);
     color: var(--tui-text-02-night);
+}
+
+.a6 {
+    background-color: var(--tui-text-tertiary-night);
+    color: var(--tui-text-03-night);
 }
 `;
 
@@ -55,7 +61,13 @@ const AFTER_LOCAL_STYLE = `
 }
 
 .a5 {
+    background-color: var(--tui-text-secondary-on-dark);
     color: var(--tui-text-secondary-on-dark);
+}
+
+.a6 {
+    background-color: var(--tui-text-tertiary-on-dark);
+    color: var(--tui-text-tertiary-on-dark);
 }
 `;
 

@@ -310,11 +310,11 @@ export const TEXT_NIGHT: readonly Color[] = [
         desc: 'Primary text and headings',
     },
     {
-        name: '--tui-text-secondary-night',
+        name: '--tui-text-secondary-on-dark',
         desc: 'Secondary text and descriptions',
     },
     {
-        name: '--tui-text-tertiary-night',
+        name: '--tui-text-tertiary-on-dark',
         desc: 'Inactive and additional points, minor information and helpers',
     },
     {
