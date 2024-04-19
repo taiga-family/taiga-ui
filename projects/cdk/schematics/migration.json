@@ -1,36 +1,6 @@
 {
     "$schema": "../../../node_modules/@angular-devkit/schematics/collection-schema.json",
     "schematics": {
-        "updateToV3": {
-            "description": "Updates Taiga UI packages to v3",
-            "version": "3.0.0",
-            "factory": "./ng-update/v3/index#updateToV3"
-        },
-        "updateToV3_5": {
-            "description": "Small migration for expand",
-            "version": "3.5.0",
-            "factory": "./ng-update/v3-5/index#updateToV3_5"
-        },
-        "updateToV3_30": {
-            "description": "Proprietary marker icons migration",
-            "version": "3.30.0",
-            "factory": "./ng-update/v3-30/index#updateToV3_30"
-        },
-        "updateToV3_35": {
-            "description": "Proprietary all icons migration",
-            "version": "3.35.0",
-            "factory": "./ng-update/v3-35/index#updateToV3_35"
-        },
-        "updateToV3_36": {
-            "description": "Add @tinkoff/tui-editor",
-            "version": "3.36.0",
-            "factory": "./ng-update/v3-36/index#updateToV3_36"
-        },
-        "updateToV3_40": {
-            "description": "Rename tui-text-area to tui-textarea",
-            "version": "3.40.0",
-            "factory": "./ng-update/v3-40/index#updateToV3_40"
-        },
         "updateToV4": {
             "description": "Updates Taiga UI packages to v4",
             "version": "4.0.0",

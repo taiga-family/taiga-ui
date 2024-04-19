@@ -40,6 +40,7 @@ import {miscellaneousMigrations} from './steps/miscellaneous';
 import {replaceFunctions} from './steps/replace-functions';
 import {replaceStyles, TUI_WARNING_NORMALIZE} from './steps/replace-styles';
 
+// TODO: drop in v4.x
 function main(options: TuiSchema): Rule {
     return (tree: Tree, context: SchematicContext): void => {
         const fileSystem = getFileSystem(tree);
