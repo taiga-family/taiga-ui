@@ -1,8 +1,17 @@
-<tui-scrollbar
-    tuiActiveZone
-    [hidden]="true"
->
-    <ng-container *polymorpheusOutlet="directive.content as text">
-        {{ text }}
-    </ng-container>
-</tui-scrollbar>
+<div
+    class="t-filler"
+    (click.silent)="close(true)"
+></div>
+<div class="t-container">
+    <h2
+        *ngIf="directive.tuiDropdownMobile"
+        class="t-heading"
+    >
+        {{ directive.tuiDropdownMobile }}
+    </h2>
+    <div class="t-content">
+        <ng-container *polymorpheusOutlet="dropdown.content as text">
+            {{ text }}
+        </ng-container>
+    </div>
+</div>

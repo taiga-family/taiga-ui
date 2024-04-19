@@ -1,8 +1,10 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {assets} from '@demo/utils';
 
 interface User {
+    readonly url: string;
     readonly name: string;
     readonly balance: number;
 }
@@ -17,6 +19,7 @@ export class TuiDropdownExample5 {
     country = null;
     selected: readonly User[] = [];
     sum = null;
+    user: User | null = null;
 
     open = false;
 
@@ -272,11 +275,11 @@ export class TuiDropdownExample5 {
     ];
 
     readonly users: readonly User[] = [
-        {name: 'Alex Inkin', balance: 1323525},
-        {name: 'Roman Sedov', balance: 523242},
-        {name: 'Vladimir Potekhin', balance: 645465},
-        {name: 'Nikita Barsukov', balance: 468468},
-        {name: 'Maxim Ivanov', balance: 498654},
+        {name: 'Alex Inkin', balance: 1323525, url: assets`/images/avatar.jpg`},
+        {name: 'Roman Sedov', balance: 523242, url: 'RS'},
+        {name: 'Vladimir Potekhin', balance: 645465, url: 'VP'},
+        {name: 'Nikita Barsukov', balance: 468468, url: 'NB'},
+        {name: 'Maxim Ivanov', balance: 498654, url: 'MI'},
     ];
 
     readonly stringify = ({name}: User): string => name;
