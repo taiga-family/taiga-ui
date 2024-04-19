@@ -1,6 +1,6 @@
 <div
     class="t-filler"
-    (click.silent)="close(true)"
+    (click.silent)="dropdown.toggle(false)"
 ></div>
 <div class="t-container">
     <h2
@@ -10,6 +10,15 @@
         {{ directive.tuiDropdownMobile }}
     </h2>
     <div class="t-content">
+        <ng-container *polymorpheusOutlet="dropdown.content as text">
+            {{ text }}
+        </ng-container>
+        <ng-container *polymorpheusOutlet="dropdown.content as text">
+            {{ text }}
+        </ng-container>
+        <ng-container *polymorpheusOutlet="dropdown.content as text">
+            {{ text }}
+        </ng-container>
         <ng-container *polymorpheusOutlet="dropdown.content as text">
             {{ text }}
         </ng-container>

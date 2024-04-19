@@ -8,7 +8,6 @@ import {
     OnDestroy,
     ViewEncapsulation,
 } from '@angular/core';
-import {TuiDropdownMobileDirective} from '@taiga-ui/addon-mobile/directives';
 import {TuiKeyboardService} from '@taiga-ui/addon-mobile/services';
 import {TuiActiveZoneDirective, tuiGetNativeFocused, tuiPx} from '@taiga-ui/cdk';
 import {
@@ -17,6 +16,8 @@ import {
     tuiFadeIn,
     tuiSlideInTop,
 } from '@taiga-ui/core';
+
+import {TuiDropdownMobileDirective} from './dropdown-mobile.directive';
 
 const GAP = 16;
 
@@ -33,15 +34,15 @@ const GAP = 16;
         '[@tuiSlideInTop]': 'animation',
         '[class._sheet]': 'directive.tuiDropdownMobile',
         '(mousedown.silent.prevent)': '0',
+        '(scroll.silent)': 'onScroll()',
         '(document:click.silent.capture)': 'onClick($event)',
         '(window>scroll.silent.capture)': 'refresh($event.currentTarget.visualViewport)',
         '(visualViewport>resize.silent)': 'refresh($event.target)',
         '(visualViewport>scroll.silent)': 'refresh($event.target)',
-        '(scroll.silent)':
-            'close(!el.nativeElement.scrollTop && !el.nativeElement.matches(":active"))',
     },
 })
 export class TuiDropdownMobileComponent implements OnDestroy, AfterViewInit {
+    private prev = 0;
     private readonly scrollTop = this.doc.documentElement.scrollTop;
     private readonly observer = new ResizeObserver(() =>
         this.refresh(this.doc.defaultView!.visualViewport),
@@ -64,11 +65,25 @@ export class TuiDropdownMobileComponent implements OnDestroy, AfterViewInit {
         @Inject(TuiDropdownDirective) readonly dropdown: TuiDropdownDirective,
         @Inject(TuiDropdownMobileDirective)
         readonly directive: TuiDropdownMobileDirective,
-    ) {}
+    ) {
+        this.observer.observe(this.dropdown.el.nativeElement);
+        this.doc.documentElement.style.setProperty('scroll-behavior', 'initial');
+    }
 
     onClick(event: MouseEvent): void {
-        if (!this.el.nativeElement?.contains(event.target as Node)) {
+        if (!this.el.nativeElement.contains(event.target as Node)) {
             event.stopPropagation();
+        }
+    }
+
+    onScroll(): void {
+        if (
+            this.el.nativeElement.scrollTop < this.prev &&
+            !this.el.nativeElement.matches(':active')
+        ) {
+            this.dropdown.toggle(false);
+        } else {
+            this.prev = this.el.nativeElement.scrollTop;
         }
     }
 
@@ -96,15 +111,7 @@ export class TuiDropdownMobileComponent implements OnDestroy, AfterViewInit {
         );
     }
 
-    close(close: boolean): void {
-        if (close && this.directive.tuiDropdownMobile) {
-            this.dropdown.toggle(false);
-        }
-    }
-
     ngAfterViewInit(): void {
-        this.observer.observe(this.dropdown.el.nativeElement);
-        this.doc.documentElement.style.setProperty('scroll-behavior', 'initial');
         this.el.nativeElement.scrollTop = this.directive.tuiDropdownMobile
             ? this.el.nativeElement.clientHeight
             : 0;
