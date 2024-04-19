@@ -7,7 +7,7 @@ import {TuiCardLargeDirective} from '@taiga-ui/layout';
   standalone: true,
   imports: [
     // ...
-    TuiCardModule,
+    TuiCardLargeDirective,
   ],
 })
 export class Component {}
