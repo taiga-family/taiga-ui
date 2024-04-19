@@ -20,6 +20,6 @@
     },
     "peerDependencies": {
         "@taiga-ui/cdk": "^3.75.0",
-        "tslib": "2.6.2"
+        "tslib": "^2.6.2"
     }
 }
