@@ -1351,12 +1351,6 @@ export const ROUTES: Routes = [
                 .StackblitzStarterModule,
         title: 'Stackblitz Starter',
     }),
-    route({
-        path: DemoRoute.Cypress,
-        loadChildren: async () =>
-            (await import('../cypress/cypress.module')).CypressDocPageModule,
-        title: 'Cypress tests 🤫',
-    }),
     {
         path: '**',
         redirectTo: '',

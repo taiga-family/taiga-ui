@@ -214,5 +214,4 @@ export const DemoRoute = {
     Pure: '/utils/pure',
     Animations: '/animations',
     StackblitzStarter: '/stackblitz',
-    Cypress: '/cypress',
 } as const;
