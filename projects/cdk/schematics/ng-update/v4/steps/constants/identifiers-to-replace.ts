@@ -1,6 +1,6 @@
-import type {ReplacementIdentifier} from '../../../interfaces';
+import type {ReplacementIdentifierMulti} from '../../../interfaces';
 
-export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifier[] = [
+export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     {
         from: {name: 'TuiActiveZoneModule', moduleSpecifier: '@taiga-ui/cdk'},
         to: {name: 'TuiActiveZoneDirective', moduleSpecifier: '@taiga-ui/cdk'},
@@ -351,6 +351,9 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifier[] = [
     },
     {
         from: {name: 'TuiCardModule', moduleSpecifier: '@taiga-ui/experimental'},
-        to: {name: 'TuiCardModule', moduleSpecifier: '@taiga-ui/layout'},
+        to: [
+            {name: 'TuiCardLargeDirective', moduleSpecifier: '@taiga-ui/layout'},
+            {name: 'TuiCardMediumDirective', moduleSpecifier: '@taiga-ui/layout'},
+        ],
     },
 ];

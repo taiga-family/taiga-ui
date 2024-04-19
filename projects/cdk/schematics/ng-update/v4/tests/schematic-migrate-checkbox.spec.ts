@@ -17,21 +17,23 @@ const collectionPath = join(__dirname, '../../../migration.json');
 
 const COMPONENT_BEFORE = `
 import { TuiCheckboxModule } from "@taiga-ui/experimental";
+import { TuiCardModule } from "@taiga-ui/experimental";
 
 @Component({
     standalone: true,
     templateUrl: './test.template.html',
-    imports: [TuiCheckboxModule]
+    imports: [TuiCheckboxModule, TuiCardModule]
 })
 export class TestComponent {
 }`;
 
-const COMPONENT_AFTER = `import { TuiCheckboxComponent } from "@taiga-ui/kit";
+const COMPONENT_AFTER = `import { TuiCardLargeDirective, TuiCardMediumDirective } from "@taiga-ui/layout";
+import { TuiCheckboxComponent } from "@taiga-ui/kit";
 
 @Component({
     standalone: true,
     templateUrl: './test.template.html',
-    imports: [TuiCheckboxComponent]
+    imports: [TuiCheckboxComponent, TuiCardLargeDirective, TuiCardMediumDirective]
 })
 export class TestComponent {
 }`;
