@@ -144,8 +144,7 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.Chip,
-        loadChildren: async () =>
-            (await import('../experimental/chip/chip.module')).ExampleTuiChipModule,
+        loadComponent: async () => import('../components/chip'),
         title: 'Chip',
     }),
     route({

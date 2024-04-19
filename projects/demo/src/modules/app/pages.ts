@@ -863,7 +863,7 @@ export const pages: TuiDocPages = [
         route: DemoRoute.Cell,
     },
     {
-        section: 'Experimental',
+        section: 'Components',
         title: 'Chip',
         keywords: 'tag, тэг, badge',
         route: DemoRoute.Chip,

@@ -73,12 +73,14 @@
                 *tuiCell="'tags'"
                 tuiTd
             >
-                <tui-tag
+                <tui-chip
                     *ngFor="let tag of item.tags"
+                    size="xs"
                     class="tui-space_right-1"
-                    [autoColor]="true"
-                    [value]="tag"
-                />
+                    [style.background]="tag | tuiAutoColor"
+                >
+                    {{ tag }}
+                </tui-chip>
             </td>
             <td
                 *tuiCell="'actions'"

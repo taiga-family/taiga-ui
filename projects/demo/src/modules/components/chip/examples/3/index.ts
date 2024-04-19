@@ -1,16 +1,26 @@
 import {Component, inject} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAlertService} from '@taiga-ui/core';
+import {TuiRepeatTimesModule} from '@taiga-ui/cdk';
+import {TuiAlertService, TuiButtonDirective} from '@taiga-ui/core';
+import {TuiCheckboxComponent, TuiChipDirective} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-chip-example-3',
+    standalone: true,
+    imports: [
+        TuiChipDirective,
+        TuiRepeatTimesModule,
+        FormsModule,
+        TuiButtonDirective,
+        TuiCheckboxComponent,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiChipExample3 {
+export default class ExampleComponent {
     private readonly alerts = inject(TuiAlertService);
 
     protected readonly checked = [true, false, true];

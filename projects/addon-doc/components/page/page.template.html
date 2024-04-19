@@ -1,19 +1,21 @@
 <header class="t-header">
     <h1 class="t-title">
         {{ header }}
-        <tui-tag
+        <tui-chip
             *ngIf="!!deprecated || deprecated === ''"
-            status="custom"
-            value="deprecated"
+            appearance="custom"
             class="t-tag t-tag_deprecated"
-        />
-        <tui-tag
+        >
+            deprecated
+        </tui-chip>
+        <tui-chip
             *ngIf="package"
-            status="custom"
+            appearance="custom"
             class="t-tag t-tag_package"
-            [autoColor]="true"
-            [value]="package"
-        />
+            [style.background]="package | tuiAutoColor"
+        >
+            {{ package }}
+        </tui-chip>
     </h1>
     <tui-tabs-with-more
         *ngIf="tabConnectors.length"

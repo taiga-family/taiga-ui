@@ -1,12 +1,14 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiChipDirective} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-chip-example-1',
+    standalone: true,
+    imports: [TuiChipDirective],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiChipExample1 {}
+export default class ExampleComponent {}

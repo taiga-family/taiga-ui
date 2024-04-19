@@ -7,16 +7,15 @@ import {
     tuiButtonOptionsProvider,
     TuiIconsDirective,
 } from '@taiga-ui/core';
-import {
-    tuiAvatarOptionsProvider,
-    tuiCheckboxOptionsProvider,
-    tuiSwitchOptionsProvider,
-} from '@taiga-ui/kit';
+import {tuiAvatarOptionsProvider} from '@taiga-ui/kit/components/avatar';
+import {tuiCheckboxOptionsProvider} from '@taiga-ui/kit/components/checkbox';
+import {tuiSwitchOptionsProvider} from '@taiga-ui/kit/components/switch';
 
 import {TuiChipComponent} from './chip.component';
 import {TUI_CHIP_OPTIONS} from './chip.options';
 
 @Directive({
+    standalone: true,
     selector: 'tui-chip,[tuiChip]',
     providers: [
         tuiAppearanceOptionsProvider(TUI_CHIP_OPTIONS),
