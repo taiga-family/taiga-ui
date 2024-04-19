@@ -156,26 +156,9 @@ import {
     ${tablebars}
 } from '@taiga-ui/addon-tablebars';
 
-import {ScrollingModule} from '@angular/cdk/scrolling';
-import {HttpClientModule} from '@angular/common/http';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {RouterModule} from '@angular/router';
-import {BrowserModule} from '@angular/platform-browser';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MaskitoDirective} from '@maskito/angular';
-import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 ${additionalModulesImports}
 
 export const ALL_TAIGA_UI_MODULES = [
-    BrowserModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
-    ScrollingModule,
-    PolymorpheusModule,
-    MaskitoDirective,
-    RouterModule.forRoot([]),
     /* CDK */
     ${cdk},
     /* CORE */

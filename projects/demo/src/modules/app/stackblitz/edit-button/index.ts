@@ -1,7 +1,9 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {TuiButtonDirective, TuiLinkDirective} from '@taiga-ui/core';
 
 @Component({
-    selector: 'stackblitz-edit-button',
+    standalone: true,
+    imports: [TuiLinkDirective, TuiButtonDirective],
     template: `
         <button
             iconLeft="assets/icons/stackblitz.svg"
@@ -11,7 +13,7 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
             Edit
         </button>
     `,
-    styleUrls: ['./stackblitz-edit-button.component.less'],
+    styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StackblitzEditButtonComponent {}

@@ -1346,9 +1346,7 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.StackblitzStarter,
-        loadChildren: async () =>
-            (await import('./stackblitz/starter/stackblitz-starter.module'))
-                .StackblitzStarterModule,
+        loadComponent: async () => import('./stackblitz/starter'),
         title: 'Stackblitz Starter',
     }),
     route({

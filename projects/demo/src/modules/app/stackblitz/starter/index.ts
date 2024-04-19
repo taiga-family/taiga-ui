@@ -2,18 +2,20 @@ import {isPlatformBrowser} from '@angular/common';
 import type {OnInit} from '@angular/core';
 import {ChangeDetectionStrategy, Component, inject, PLATFORM_ID} from '@angular/core';
 import {tuiRawLoad, tuiTryParseMarkdownCodeBlock} from '@taiga-ui/addon-doc';
+import {TuiLoaderModule} from '@taiga-ui/core';
 
 import {TuiStackblitzService} from '../stackblitz.service';
 import {appPrefix} from '../utils';
 
 @Component({
-    selector: 'demo-stackblitz-starter',
-    templateUrl: './stackblitz-starter.component.html',
-    styleUrls: ['./stackblitz-starter.style.less'],
+    standalone: true,
+    imports: [TuiLoaderModule],
+    templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiStackblitzService],
 })
-export class StackblitzStarterComponent implements OnInit {
+export default class PageComponent implements OnInit {
     private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
     private readonly stackblitz = inject(TuiStackblitzService);
 
@@ -26,8 +28,8 @@ export class StackblitzStarterComponent implements OnInit {
     protected async openStackblitz(): Promise<void> {
         const [appTemplate, appComponent, indexHtml, stylesLess] = await Promise.all(
             [
-                import('./files/app.component.html.md?raw'),
-                import('./files/app.component.ts.md?raw'),
+                import('../project-files/src/app/app.component.html.md?raw'),
+                import('../project-files/src/app/app.component.ts.md?raw'),
                 import('./files/index.html.md?raw'),
                 import('./files/styles.less.md?raw'),
             ].map(tuiRawLoad),
