@@ -75,6 +75,7 @@ function replaceTextareaReferenceTypes(
     setActiveProject(createProject(fileSystem.tree, projectRoot(), ALL_FILES));
 }
 
+// TODO: drop in v4.x
 export function updateToV3_40(options: TuiSchema): Rule {
     return (tree: Tree, _: SchematicContext) => {
         const fileSystem = getFileSystem(tree);

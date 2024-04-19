@@ -19,6 +19,7 @@ function hasProprietaryIcons(tree: Tree): boolean {
     return !!getPackageJsonDependency(tree, '@taiga-ui/proprietary-icons');
 }
 
+// TODO: drop in v4.x
 export function updateToV3_30(options: TuiSchema): Rule {
     return (tree: Tree, _: SchematicContext) => {
         if (!hasProprietaryIcons(tree)) {

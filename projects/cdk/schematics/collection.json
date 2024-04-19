@@ -12,12 +12,6 @@
             "factory": "./ng-add/setup-project",
             "schema": "./ng-add/schema.json"
         },
-        "updateToV3": {
-            "private": true,
-            "description": "Manually run migration to update Taiga to v3.x.x",
-            "factory": "./ng-update/v3/index#updateToV3",
-            "schema": "./ng-update/v3/schema.json"
-        },
         "updateToV4": {
             "private": true,
             "description": "Manually run migration to update Taiga to v4.x.x",

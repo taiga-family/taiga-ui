@@ -7,6 +7,7 @@ import {FINISH_SYMBOL, titleLog} from '../../utils/colored-log';
 import {getFileSystem} from '../utils/get-file-system';
 import {migrateExpandTemplates} from './steps/migrate-expand-templates';
 
+// TODO: drop in v4.x
 export function updateToV3_5(options: TuiSchema): Rule {
     return (tree: Tree, _: SchematicContext) => {
         const fileSystem = getFileSystem(tree);
