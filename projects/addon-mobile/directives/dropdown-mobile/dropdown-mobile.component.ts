@@ -79,10 +79,11 @@ export class TuiDropdownMobileComponent implements OnDestroy, AfterViewInit {
         }
     }
 
-    onSwipe({direction}: TuiSwipe, el: HTMLElement): void {
+    onSwipe({direction}: TuiSwipe, element: HTMLElement): void {
         if (
             direction === 'bottom' ||
-            el.getBoundingClientRect().bottom > Number(this.doc.defaultView?.innerHeight)
+            element.getBoundingClientRect().bottom + GAP >
+                Number(this.doc.defaultView?.innerHeight)
         ) {
             this.close();
         }
