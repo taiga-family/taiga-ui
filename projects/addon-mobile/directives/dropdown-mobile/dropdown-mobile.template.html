@@ -1,4 +1,5 @@
 <div
+    *ngIf="directive.tuiDropdownMobile"
     waIntersectionObserver
     waIntersectionThreshold="1"
     class="t-filler"
@@ -17,12 +18,6 @@
         {{ directive.tuiDropdownMobile }}
     </h2>
     <div class="t-content">
-        <ng-container *polymorpheusOutlet="dropdown.content as text">
-            {{ text }}
-        </ng-container>
-        <ng-container *polymorpheusOutlet="dropdown.content as text">
-            {{ text }}
-        </ng-container>
         <ng-container *polymorpheusOutlet="dropdown.content as text">
             {{ text }}
         </ng-container>
