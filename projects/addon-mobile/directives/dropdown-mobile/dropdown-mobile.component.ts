@@ -9,7 +9,12 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {TuiKeyboardService} from '@taiga-ui/addon-mobile/services';
-import {TuiActiveZoneDirective, tuiGetNativeFocused, tuiPx} from '@taiga-ui/cdk';
+import {
+    TuiActiveZoneDirective,
+    tuiGetNativeFocused,
+    tuiPx,
+    TuiSwipe,
+} from '@taiga-ui/cdk';
 import {
     TUI_ANIMATIONS_DURATION,
     TuiDropdownDirective,
@@ -34,7 +39,6 @@ const GAP = 16;
         '[@tuiSlideInTop]': 'animation',
         '[class._sheet]': 'directive.tuiDropdownMobile',
         '(mousedown.silent.prevent)': '0',
-        '(scroll.silent)': 'onScroll()',
         '(document:click.silent.capture)': 'onClick($event)',
         '(window>scroll.silent.capture)': 'refresh($event.currentTarget.visualViewport)',
         '(visualViewport>resize.silent)': 'refresh($event.target)',
@@ -42,7 +46,6 @@ const GAP = 16;
     },
 })
 export class TuiDropdownMobileComponent implements OnDestroy, AfterViewInit {
-    private prev = 0;
     private readonly scrollTop = this.doc.documentElement.scrollTop;
     private readonly observer = new ResizeObserver(() =>
         this.refresh(this.doc.defaultView!.visualViewport),
@@ -76,15 +79,23 @@ export class TuiDropdownMobileComponent implements OnDestroy, AfterViewInit {
         }
     }
 
-    onScroll(): void {
+    onSwipe({direction}: TuiSwipe, el: HTMLElement): void {
         if (
-            this.el.nativeElement.scrollTop < this.prev &&
-            !this.el.nativeElement.matches(':active')
+            direction === 'bottom' ||
+            el.getBoundingClientRect().bottom > Number(this.doc.defaultView?.innerHeight)
         ) {
-            this.dropdown.toggle(false);
-        } else {
-            this.prev = this.el.nativeElement.scrollTop;
+            this.close();
         }
+    }
+
+    onIntersection([{isIntersecting}]: IntersectionObserverEntry[]): void {
+        if (isIntersecting) {
+            this.close();
+        }
+    }
+
+    close(): void {
+        this.dropdown.toggle(false);
     }
 
     refresh({offsetTop, height}: VisualViewport): void {

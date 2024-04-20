@@ -1,8 +1,15 @@
 <div
+    waIntersectionObserver
+    waIntersectionThreshold="1"
     class="t-filler"
-    (click.silent)="dropdown.toggle(false)"
+    (touchstart.silent)="close()"
+    (waIntersectionObservee)="onIntersection($event)"
 ></div>
-<div class="t-container">
+<div
+    #container
+    class="t-container"
+    (tuiSwipe)="onSwipe($event, container)"
+>
     <h2
         *ngIf="directive.tuiDropdownMobile"
         class="t-heading"
@@ -10,9 +17,6 @@
         {{ directive.tuiDropdownMobile }}
     </h2>
     <div class="t-content">
-        <ng-container *polymorpheusOutlet="dropdown.content as text">
-            {{ text }}
-        </ng-container>
         <ng-container *polymorpheusOutlet="dropdown.content as text">
             {{ text }}
         </ng-container>
