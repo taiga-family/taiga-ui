@@ -79,17 +79,10 @@ export class TuiDropdownMobileComponent implements OnDestroy, AfterViewInit {
         }
     }
 
-    onSwipe({direction}: TuiSwipe, element: HTMLElement): void {
-        // eslint-disable-next-line
-        console.log(
-            element.getBoundingClientRect().height,
-            this.doc.defaultView?.innerHeight,
-        );
-
+    onSwipe({direction}: TuiSwipe, el: HTMLElement): void {
         if (
-            direction === 'bottom' ||
-            element.getBoundingClientRect().bottom >
-                Number(this.doc.defaultView?.innerHeight) + GAP
+            direction === 'bottom' &&
+            el.getBoundingClientRect().bottom > Number(this.doc.defaultView?.innerHeight)
         ) {
             this.close();
         }
