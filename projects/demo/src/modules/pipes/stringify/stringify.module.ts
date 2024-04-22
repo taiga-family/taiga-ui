@@ -2,6 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
+import {TuiSetupComponent} from '@demo/utils';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiDataListModule, TuiLinkDirective, TuiNotificationModule} from '@taiga-ui/core';
 import {
@@ -29,6 +30,7 @@ import {ExampleTuiStringifyComponent} from './stringify.component';
         CommonModule,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiStringifyComponent)),
+        TuiSetupComponent,
     ],
     declarations: [ExampleTuiStringifyComponent, TuiStringifyExample1],
     exports: [ExampleTuiStringifyComponent],
