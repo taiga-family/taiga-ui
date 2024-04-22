@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.76.0](https://github.com/taiga-family/taiga-ui/compare/v3.75.0...v3.76.0) (2024-04-22)
+
+### Features
+
+- **addon-mobile:** `DropdownMobile` add sheet view ([#7274](https://github.com/taiga-family/taiga-ui/issues/7274))
+  ([f4a9f83](https://github.com/taiga-family/taiga-ui/commit/f4a9f83d809f27367b5946f0a392d0f328b9b6c2))
+- **addon-table:** reorder add possibility to transfer a template
+  ([#7271](https://github.com/taiga-family/taiga-ui/issues/7271))
+  ([86b694c](https://github.com/taiga-family/taiga-ui/commit/86b694c4d6b4fe0021a162c5cfd76f5060f3d554))
+- **cdk:** `Keyboard` add new service ([#7241](https://github.com/taiga-family/taiga-ui/issues/7241))
+  ([45cfc56](https://github.com/taiga-family/taiga-ui/commit/45cfc56477a1bb7db91b3ff437e2cc81dfca594f))
+- **experimental:** `DropdownMobile` add new dropdown behavior
+  ([#7193](https://github.com/taiga-family/taiga-ui/issues/7193))
+  ([2c330d4](https://github.com/taiga-family/taiga-ui/commit/2c330d44fa1f893540ab58766cc1a92974a509e7))
+- **kit:** add `autoColor` to `InputTag` and `MultiSelect`
+  ([#7236](https://github.com/taiga-family/taiga-ui/issues/7236))
+  ([31b4287](https://github.com/taiga-family/taiga-ui/commit/31b4287b5a7b04a3d7a28b1f1045111553b9ae02))
+
+### Bug Fixes
+
+- **cdk:** `Dialog` fix jumping to top on closing ([#7256](https://github.com/taiga-family/taiga-ui/issues/7256))
+  ([709acdc](https://github.com/taiga-family/taiga-ui/commit/709acdcc9bbcdaca7fce7993dd6542c5724df4f5))
+- **kit:** redesign focus to focus-visible in `TuiAccordion`
+  ([#7285](https://github.com/taiga-family/taiga-ui/issues/7285))
+  ([1357f78](https://github.com/taiga-family/taiga-ui/commit/1357f78898a01945540138518673da63568c8fc6))
+- non strict peer dependencies ([#7270](https://github.com/taiga-family/taiga-ui/issues/7270))
+  ([38da4b4](https://github.com/taiga-family/taiga-ui/commit/38da4b4f1f0ad14f080b79424a546d39811fa4ff))
+
 ## [3.75.0](https://github.com/taiga-family/taiga-ui/compare/v3.74.0...v3.75.0) (2024-04-15)
 
 ### Bug Fixes
