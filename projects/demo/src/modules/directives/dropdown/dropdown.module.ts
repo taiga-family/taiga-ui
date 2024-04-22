@@ -13,9 +13,13 @@ import {
     TuiNotificationModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiAmountPipeModule, TuiTitleModule} from '@taiga-ui/experimental';
 import {
+    TuiAmountPipeModule,
     TuiAvatarModule,
+    TuiCellModule,
+    TuiTitleModule,
+} from '@taiga-ui/experimental';
+import {
     TuiComboBoxModule,
     TuiDataListWrapperModule,
     TuiFilterByInputPipeModule,
@@ -63,6 +67,7 @@ import {TuiDropdownExample5} from './examples/5';
         TuiAmountPipeModule,
         TuiFilterByInputPipeModule,
         TuiMultiSelectModule,
+        TuiCellModule,
     ],
     declarations: [
         ExampleTuiDropdownComponent,
