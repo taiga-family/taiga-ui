@@ -43,15 +43,13 @@ import {TuiCarouselExample5} from './examples/5';
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiCarouselComponent)),
         TuiSetupComponent,
-    ],
-    declarations: [
-        ExampleTuiCarouselComponent,
         TuiCarouselExample1,
         TuiCarouselExample2,
         TuiCarouselExample3,
         TuiCarouselExample4,
         TuiCarouselExample5,
     ],
+    declarations: [ExampleTuiCarouselComponent],
     exports: [ExampleTuiCarouselComponent],
 })
 export class ExampleTuiCarouselModule {}

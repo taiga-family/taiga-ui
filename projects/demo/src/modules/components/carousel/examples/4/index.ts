@@ -1,9 +1,21 @@
 import {Component} from '@angular/core';
+import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiButtonDirective, TuiDialogModule, TuiLinkDirective} from '@taiga-ui/core';
+import {TuiCarouselModule, TuiPaginationModule} from '@taiga-ui/kit';
 
 @Component({
+    standalone: true,
     selector: 'tui-carousel-example-4',
+    imports: [
+        TuiButtonDirective,
+        TuiDialogModule,
+        TuiCarouselModule,
+        TuiLinkDirective,
+        RouterLink,
+        TuiPaginationModule,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
