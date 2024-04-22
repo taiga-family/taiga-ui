@@ -102,10 +102,6 @@ export class TuiAccordionItemComponent
         this.updateFocused(focused);
     }
 
-    onFocusVisible(focusVisible: boolean): void {
-        this.updateFocusVisible(focusVisible);
-    }
-
     onRowToggle(): void {
         if (!this.disabled) {
             this.updateOpen(!this.open);
