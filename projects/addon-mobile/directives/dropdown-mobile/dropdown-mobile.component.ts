@@ -38,7 +38,6 @@ const GAP = 16;
         '[@tuiFadeIn]': 'animation',
         '[@tuiSlideInTop]': 'animation',
         '[class._sheet]': 'directive.tuiDropdownMobile',
-        '(mousedown.silent.prevent)': '0',
         '(document:click.silent.capture)': 'onClick($event)',
         '(window>scroll.silent.capture)': 'refresh($event.currentTarget.visualViewport)',
         '(visualViewport>resize.silent)': 'refresh($event.target)',
