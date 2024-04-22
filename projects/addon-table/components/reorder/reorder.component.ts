@@ -8,6 +8,8 @@ import {
     Output,
 } from '@angular/core';
 import {TUI_TABLE_SHOW_HIDE_MESSAGE} from '@taiga-ui/addon-table/tokens';
+import {TuiContextWithImplicit} from '@taiga-ui/cdk';
+import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
 
 import {TUI_REORDER_OPTIONS, TuiReorderOptions} from './reorder.options';
@@ -48,6 +50,11 @@ export class TuiReorderComponent<T> {
         @Inject(TUI_REORDER_OPTIONS) readonly options: TuiReorderOptions,
         @Inject(TUI_TABLE_SHOW_HIDE_MESSAGE) readonly showHideText$: Observable<string>,
     ) {}
+
+    @Input()
+    content: PolymorpheusContent<TuiContextWithImplicit<T> & {index: number}> = ({
+        $implicit,
+    }) => String($implicit);
 
     @HostListener('focusout.stop')
     noop(): void {}
