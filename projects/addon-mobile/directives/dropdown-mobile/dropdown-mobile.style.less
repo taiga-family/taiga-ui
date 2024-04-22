@@ -26,6 +26,7 @@ tui-dropdown-mobile:not(._sheet) {
         position: sticky;
         top: 0;
         height: 100%;
+        overflow: auto;
         margin: 0 0.75rem;
         touch-action: pan-y !important;
     }
@@ -47,7 +48,7 @@ tui-dropdown-mobile._sheet {
     box-shadow: 0 -50vh 5rem 5rem rgba(0, 0, 0, 0.75);
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
-    overscroll-behavior: contain;
+    overscroll-behavior: none;
 
     > .t-filler {
         height: 100%;
