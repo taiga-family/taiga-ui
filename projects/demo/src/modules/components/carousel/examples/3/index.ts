@@ -23,4 +23,4 @@ import {TuiAvatarComponent, TuiCarouselModule, TuiIslandModule} from '@taiga-ui/
     encapsulation,
     changeDetection,
 })
-export class TuiCarouselExample3 {}
+export default class TuiCarouselExample3 {}

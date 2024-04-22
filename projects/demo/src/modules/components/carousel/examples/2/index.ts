@@ -13,7 +13,7 @@ import {TuiCarouselModule} from '@taiga-ui/kit';
     encapsulation,
     changeDetection,
 })
-export class TuiCarouselExample2 {
+export default class TuiCarouselExample2 {
     protected index = 0;
 
     protected readonly items = [

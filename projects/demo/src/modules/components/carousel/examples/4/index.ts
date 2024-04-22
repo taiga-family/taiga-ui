@@ -21,7 +21,7 @@ import {TuiCarouselModule, TuiPaginationModule} from '@taiga-ui/kit';
     encapsulation,
     changeDetection,
 })
-export class TuiCarouselExample4 {
+export default class TuiCarouselExample4 {
     protected open = false;
 
     protected index = 0;

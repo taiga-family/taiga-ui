@@ -1,57 +1,39 @@
-import {CommonModule} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
-import {TuiAddonDocModule, type TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiDemoModule} from '@demo/utils';
+import {type TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiRepeatTimesModule} from '@taiga-ui/cdk';
 import {
     TuiButtonDirective,
-    TuiDialogModule,
     TuiLinkDirective,
-    TuiLoaderModule,
     TuiNotificationModule,
 } from '@taiga-ui/core';
-import {
-    TuiAvatarComponent,
-    TuiCarouselModule,
-    TuiIslandModule,
-    TuiPaginationModule,
-} from '@taiga-ui/kit';
-
-import {TuiCarouselExample1} from './examples/1';
-import {TuiCarouselExample2} from './examples/2';
-import {TuiCarouselExample3} from './examples/3';
-import {TuiCarouselExample4} from './examples/4';
-import {TuiCarouselExample5} from './examples/5';
+import {TuiCarouselModule} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
     selector: 'example-carousel',
     imports: [
-        CommonModule,
-        TuiCarouselModule,
-        TuiPaginationModule,
+        TuiDemoModule,
         TuiNotificationModule,
-        TuiLinkDirective,
-        TuiButtonDirective,
-        TuiIslandModule,
-        TuiAmountPipe,
-        TuiLoaderModule,
-        TuiAvatarComponent,
-        TuiDialogModule,
+        TuiCarouselModule,
         TuiRepeatTimesModule,
-        TuiAddonDocModule,
-        TuiCarouselExample1,
-        TuiCarouselExample2,
-        TuiCarouselExample3,
-        TuiCarouselExample4,
-        TuiCarouselExample5,
+        TuiButtonDirective,
+        TuiLinkDirective,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,
 })
 export default class ExampleTuiCarouselComponent {
+    protected readonly examples = [
+        'Single',
+        'Multiple',
+        'Custom',
+        'Carousel inside dialog',
+        'Vertical alignment',
+    ];
+
     protected readonly durationVariants = [0, 3000, 10000];
     protected readonly itemPaddingVariants = [null, '0 10px', '0'];
     protected draggable = false;

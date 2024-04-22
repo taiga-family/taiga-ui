@@ -20,7 +20,7 @@ import {TuiCarouselModule, TuiIslandModule, TuiPaginationModule} from '@taiga-ui
     encapsulation,
     changeDetection,
 })
-export class TuiCarouselExample1 {
+export default class TuiCarouselExample1 {
     protected duration = isPlatformBrowser(inject(PLATFORM_ID)) ? 4_000 : 0;
     protected index = 2;
 
