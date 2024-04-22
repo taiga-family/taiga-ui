@@ -2,7 +2,6 @@ import {Component, inject} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemoModule} from '@demo/utils';
-import {type TuiDocExample} from '@taiga-ui/addon-doc';
 import {
     TuiAlertService,
     TuiButtonDirective,
@@ -41,11 +40,6 @@ export default class ExampleComponent implements TuiConfirmData {
     protected readonly examples = ['Basic'];
 
     protected readonly exampleService = import('./examples/import/service.md?raw');
-
-    protected readonly example1: TuiDocExample = {
-        TypeScript: import('./examples/1/index.ts?raw'),
-        HTML: import('./examples/1/index.html?raw'),
-    };
 
     protected onClick(): void {
         this.dialogs
