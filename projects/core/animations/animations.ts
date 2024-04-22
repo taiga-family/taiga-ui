@@ -34,10 +34,7 @@ export const tuiHost = trigger('tuiHost', [
         style({overflow: 'clip'}),
         query(':scope > *', [animateChild()], {optional: true}),
     ]),
-    transition(':leave', [
-        style({overflow: 'clip'}),
-        query(':scope > *', [animateChild()], {optional: true}),
-    ]),
+    transition(':leave', [query(':scope > *', [animateChild()], {optional: true})]),
 ]);
 
 export const tuiHeightCollapse = trigger('tuiHeightCollapse', [
