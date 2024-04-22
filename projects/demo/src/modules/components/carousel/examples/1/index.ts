@@ -7,7 +7,6 @@ import {TuiCarouselModule, TuiIslandModule, TuiPaginationModule} from '@taiga-ui
 
 @Component({
     standalone: true,
-    selector: 'tui-carousel-example-1',
     imports: [
         TuiCarouselModule,
         TuiIslandModule,
@@ -20,7 +19,7 @@ import {TuiCarouselModule, TuiIslandModule, TuiPaginationModule} from '@taiga-ui
     encapsulation,
     changeDetection,
 })
-export default class TuiCarouselExample1 {
+export default class ExampleComponent {
     protected duration = isPlatformBrowser(inject(PLATFORM_ID)) ? 4_000 : 0;
     protected index = 2;
 

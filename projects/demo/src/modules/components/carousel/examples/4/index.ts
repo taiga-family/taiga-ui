@@ -7,7 +7,6 @@ import {TuiCarouselModule, TuiPaginationModule} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    selector: 'tui-carousel-example-4',
     imports: [
         TuiButtonDirective,
         TuiDialogModule,
@@ -21,7 +20,7 @@ import {TuiCarouselModule, TuiPaginationModule} from '@taiga-ui/kit';
     encapsulation,
     changeDetection,
 })
-export default class TuiCarouselExample4 {
+export default class ExampleComponent {
     protected open = false;
 
     protected index = 0;

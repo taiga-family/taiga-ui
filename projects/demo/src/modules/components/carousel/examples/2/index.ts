@@ -6,14 +6,13 @@ import {TuiCarouselModule} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    selector: 'tui-carousel-example-2',
     imports: [TuiCarouselModule, NgFor],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export default class TuiCarouselExample2 {
+export default class ExampleComponent {
     protected index = 0;
 
     protected readonly items = [

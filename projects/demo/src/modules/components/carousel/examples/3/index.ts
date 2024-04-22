@@ -8,7 +8,6 @@ import {TuiAvatarComponent, TuiCarouselModule, TuiIslandModule} from '@taiga-ui/
 
 @Component({
     standalone: true,
-    selector: 'tui-carousel-example-3',
     imports: [
         TuiButtonDirective,
         TuiCarouselModule,
@@ -23,4 +22,4 @@ import {TuiAvatarComponent, TuiCarouselModule, TuiIslandModule} from '@taiga-ui/
     encapsulation,
     changeDetection,
 })
-export default class TuiCarouselExample3 {}
+export default class ExampleComponent {}
