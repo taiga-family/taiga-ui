@@ -1,17 +1,32 @@
 import {Component, inject} from '@angular/core';
+import {RouterModule} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
-import type {TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiAlertService, TuiDialogService} from '@taiga-ui/core';
+import {TuiDemoModule} from '@demo/utils';
+import {type TuiDocExample} from '@taiga-ui/addon-doc';
+import {
+    TuiAlertService,
+    TuiButtonDirective,
+    TuiDialogService,
+    TuiLinkDirective,
+    TuiNotificationModule,
+} from '@taiga-ui/core';
 import type {TuiConfirmData} from '@taiga-ui/kit';
 import {TUI_CONFIRM} from '@taiga-ui/kit';
 import {switchMap} from 'rxjs';
 
 @Component({
-    selector: 'example-tui-confirm',
-    templateUrl: './confirm.template.html',
+    standalone: true,
+    imports: [
+        TuiButtonDirective,
+        TuiLinkDirective,
+        RouterModule,
+        TuiNotificationModule,
+        TuiDemoModule,
+    ],
+    templateUrl: './index.html',
     changeDetection,
 })
-export class ExampleTuiConfirmComponent implements TuiConfirmData {
+export default class ExampleComponent implements TuiConfirmData {
     private readonly dialogs = inject(TuiDialogService);
     private readonly alerts = inject(TuiAlertService);
 
@@ -22,6 +37,8 @@ export class ExampleTuiConfirmComponent implements TuiConfirmData {
 
     public readonly content =
         'This is <code>PolymorpheusContent</code>, so it can be anything you like!';
+
+    protected readonly examples = ['Basic'];
 
     protected readonly exampleService = import('./examples/import/service.md?raw');
 

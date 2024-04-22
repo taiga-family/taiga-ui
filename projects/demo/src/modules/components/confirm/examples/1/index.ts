@@ -1,18 +1,19 @@
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAlertService, TuiDialogService} from '@taiga-ui/core';
+import {TuiAlertService, TuiButtonDirective, TuiDialogService} from '@taiga-ui/core';
 import type {TuiConfirmData} from '@taiga-ui/kit';
 import {TUI_CONFIRM} from '@taiga-ui/kit';
 import {switchMap} from 'rxjs';
 
 @Component({
-    selector: 'tui-confirm-example-1',
+    standalone: true,
+    imports: [TuiButtonDirective],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class TuiConfirmExample1 {
+export default class ExampleComponent {
     private readonly dialogs = inject(TuiDialogService);
     private readonly alerts = inject(TuiAlertService);
 
