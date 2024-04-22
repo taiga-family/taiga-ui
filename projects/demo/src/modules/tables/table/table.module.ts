@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
+import {TuiSetupComponent} from '@demo/utils';
 import {IntersectionObserverModule} from '@ng-web-apis/intersection-observer';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
@@ -80,6 +81,7 @@ import {ExampleTuiTableComponent} from './table.component';
         TuiScrollableDirective,
         TuiChevronDirective,
         TuiAutoColorPipe,
+        TuiSetupComponent,
     ],
     declarations: [
         ExampleTuiTableComponent,
