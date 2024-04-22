@@ -10,13 +10,13 @@ import {toKebab} from './kebab.pipe';
     selector: 'tui-setup',
     imports: [TuiDocCodeModule],
     template: `
-        <ol class="b-demo-steps">
-            <li>
+        <ol class="tui-list tui-list_ordered">
+            <li class="tui-list__item">
                 <p>Add an import:</p>
                 <tui-doc-code [code]="computedImport" />
             </li>
 
-            <li>
+            <li class="tui-list__item">
                 <p>Add to the template:</p>
                 <tui-doc-code [code]="computedTemplate" />
             </li>
