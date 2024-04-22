@@ -1,6 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
+import {TuiSetupComponent} from '@demo/utils';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiReorderModule} from '@taiga-ui/addon-table';
 
@@ -13,6 +14,7 @@ import {ExampleTuiReorderComponent} from './reorder.component';
         TuiReorderModule,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiReorderComponent)),
+        TuiSetupComponent,
     ],
     declarations: [ExampleTuiReorderComponent, TuiReorderExample1],
     exports: [ExampleTuiReorderComponent],
