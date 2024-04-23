@@ -40,7 +40,6 @@ export function replaceIdentifier({from, to}: ReplacementIdentifierMulti): void 
             removeImport(parent);
             addImports(to, parent.getSourceFile().getFilePath());
         } else {
-            Array.isArray(to);
             ref?.replaceWithText(
                 Array.isArray(to) ? to.map(({name}) => name).join(', ') : to.name,
             );
@@ -52,15 +51,13 @@ function addImports(
     identifier: ReplacementIdentifierMulti['to'],
     filePath: string,
 ): void {
-    if (Array.isArray(identifier)) {
-        identifier.forEach(({name, namedImport, moduleSpecifier}) => {
-            addUniqueImport(filePath, namedImport || name, moduleSpecifier);
-        });
-    } else {
-        addUniqueImport(
-            filePath,
-            identifier.namedImport || identifier.name,
-            identifier.moduleSpecifier,
-        );
-    }
+    Array.isArray(identifier)
+        ? identifier.forEach(({name, namedImport, moduleSpecifier}) => {
+              addUniqueImport(filePath, namedImport || name, moduleSpecifier);
+          })
+        : addUniqueImport(
+              filePath,
+              identifier.namedImport || identifier.name,
+              identifier.moduleSpecifier,
+          );
 }
