@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[92633],{45203:e=>{e.exports="```html\n<router-outlet></router-outlet>\n```\n"}}]);
