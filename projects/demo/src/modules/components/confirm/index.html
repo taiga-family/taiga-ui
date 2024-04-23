@@ -28,12 +28,13 @@
         </tui-notification>
 
         <tui-doc-example
-            id="base"
-            heading="Basic"
-            [content]="example1"
-        >
-            <tui-confirm-example-1 />
-        </tui-doc-example>
+            *ngFor="let example of examples; let index = index"
+            [component]="index + 1 | tuiComponent"
+            [content]="index + 1 | tuiExample: 'html,ts'"
+            [description]="null"
+            [heading]="example"
+            [id]="example | tuiKebab"
+        />
     </ng-template>
 
     <ng-template pageTab>

@@ -789,9 +789,7 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.Confirm,
-        loadChildren: async () =>
-            (await import('../components/confirm/confirm.module'))
-                .ExampleTuiConfirmModule,
+        loadComponent: async () => import('../components/confirm'),
         title: 'Confirm',
     }),
     route({
