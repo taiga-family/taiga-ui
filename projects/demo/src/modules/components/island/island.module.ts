@@ -10,7 +10,6 @@ import {
     TuiNotificationModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiCardModule} from '@taiga-ui/experimental';
 import {
     TuiAvatarComponent,
     TuiFieldErrorPipeModule,
@@ -18,6 +17,7 @@ import {
     TuiIslandModule,
     TuiSwitchComponent,
 } from '@taiga-ui/kit';
+import {TuiCardLargeDirective} from '@taiga-ui/layout';
 
 import {StylesInfoModule} from '../../app/styles-info/styles-info.module';
 import {TuiIslandExample1} from './examples/1';
@@ -43,7 +43,7 @@ import {ExampleTuiIslandComponent} from './island.component';
         StylesInfoModule,
         TuiButtonDirective,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiIslandComponent)),
-        TuiCardModule,
+        TuiCardLargeDirective,
         TuiAvatarComponent,
     ],
     declarations: [

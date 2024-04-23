@@ -11,7 +11,7 @@ import {
     TuiNotificationModule,
     TuiSurfaceDirective,
 } from '@taiga-ui/core';
-import {TuiCardModule, TuiLabelDirective} from '@taiga-ui/experimental';
+import {TuiLabelDirective} from '@taiga-ui/experimental';
 import {
     TuiAvatarComponent,
     TuiChevronDirective,
@@ -19,6 +19,7 @@ import {
     TuiSelectModule,
     TuiSwitchComponent,
 } from '@taiga-ui/kit';
+import {TuiCardLargeDirective} from '@taiga-ui/layout';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {DropdownDocumentationModule} from '../../components/abstract/dropdown-documentation/dropdown-documentation.module';
@@ -38,7 +39,7 @@ import {TuiDropdownExample5} from './examples/5';
         TuiAvatarComponent,
         TuiButtonDirective,
         TuiDropdownModule,
-        TuiCardModule,
+        TuiCardLargeDirective,
         TuiSurfaceDirective,
         TuiSelectModule,
         TuiObscuredDirective,

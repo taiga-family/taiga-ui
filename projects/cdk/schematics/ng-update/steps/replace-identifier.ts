@@ -11,11 +11,11 @@ import {
 } from '../../utils/colored-log';
 import {getNamedImportReferences} from '../../utils/get-named-import-references';
 import {removeImport} from '../../utils/import-manipulations';
-import type {ReplacementIdentifier} from '../interfaces/replacement-identifier';
+import type {ReplacementIdentifierMulti} from '../interfaces/replacement-identifier';
 
 export function replaceIdentifiers(
     options: TuiSchema,
-    constants: readonly ReplacementIdentifier[],
+    constants: readonly ReplacementIdentifierMulti[],
 ): void {
     !options['skip-logs'] &&
         infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} replacing identifiers...`);
@@ -26,7 +26,7 @@ export function replaceIdentifiers(
         successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} identifiers replaced \n`);
 }
 
-export function replaceIdentifier({from, to}: ReplacementIdentifier): void {
+export function replaceIdentifier({from, to}: ReplacementIdentifierMulti): void {
     const references = getNamedImportReferences(from.name, from.moduleSpecifier);
 
     references.forEach(ref => {
@@ -38,13 +38,26 @@ export function replaceIdentifier({from, to}: ReplacementIdentifier): void {
 
         if (Node.isImportSpecifier(parent)) {
             removeImport(parent);
-            addUniqueImport(
-                parent.getSourceFile().getFilePath(),
-                to.namedImport || to.name,
-                to.moduleSpecifier,
-            );
+            addImports(to, parent.getSourceFile().getFilePath());
         } else {
-            ref?.replaceWithText(to.name);
+            ref?.replaceWithText(
+                Array.isArray(to) ? to.map(({name}) => name).join(', ') : to.name,
+            );
         }
     });
+}
+
+function addImports(
+    identifier: ReplacementIdentifierMulti['to'],
+    filePath: string,
+): void {
+    Array.isArray(identifier)
+        ? identifier.forEach(({name, namedImport, moduleSpecifier}) => {
+              addUniqueImport(filePath, namedImport || name, moduleSpecifier);
+          })
+        : addUniqueImport(
+              filePath,
+              identifier.namedImport || identifier.name,
+              identifier.moduleSpecifier,
+          );
 }

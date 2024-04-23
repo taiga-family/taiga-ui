@@ -15,7 +15,7 @@ import {
     TuiSurfaceDirective,
     TuiTitleDirective,
 } from '@taiga-ui/core';
-import {TuiCardModule, TuiNavigationModule} from '@taiga-ui/experimental';
+import {TuiNavigationModule} from '@taiga-ui/experimental';
 import {
     TuiAvatarComponent,
     TuiBadgeDirective,
@@ -26,7 +26,7 @@ import {
     TuiSwitchComponent,
     TuiTabsModule,
 } from '@taiga-ui/kit';
-import {TuiHeaderDirective} from '@taiga-ui/layout';
+import {TuiCardLargeDirective, TuiHeaderDirective} from '@taiga-ui/layout';
 
 import {TuiNavigationExample1} from './examples/1';
 import {TuiNavigationExample2} from './examples/2';
@@ -50,7 +50,7 @@ import {ExampleTuiNavigationComponent} from './navigation.component';
         TuiFadeDirective,
         TuiExpandModule,
         TuiTabsModule,
-        TuiCardModule,
+        TuiCardLargeDirective,
         TuiSurfaceDirective,
         TuiTitleDirective,
         TuiHeaderDirective,

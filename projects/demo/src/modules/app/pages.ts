@@ -935,13 +935,13 @@ export const pages: TuiDocPages = [
         route: DemoRoute.Appearance,
     },
     {
-        section: 'Experimental',
+        section: 'Layout',
         title: 'CardMedium',
         keywords: 'card, card-medium, medium, block, карточка, блок',
         route: DemoRoute.CardMedium,
     },
     {
-        section: 'Experimental',
+        section: 'Layout',
         title: 'CardLarge',
         keywords: 'card, card-large, large, block, карточка, блок',
         route: DemoRoute.CardLarge,
