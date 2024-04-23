@@ -86,21 +86,6 @@
     :not(:disabled)& {
         cursor: ew-resize;
 
-        /*
-        TODO: delete it in v4.0
-        New version of slider doesn't change color for ":hover" or ":active" states.
-        Don't forget to update this example (just use css property "color" for host):
-        https://taiga-ui.dev/components/slider#colors
-         */
-        &:hover {
-            background-color: var(--tui-primary-hover);
-        }
-
-        // TODO: delete it in v4.0
-        :active& {
-            background-color: var(--tui-primary-active);
-        }
-
         &:hover,
         :active& {
             transform: var(--tui-slider-thumb-transform, @transform-noop) scale(@active-thumb-scale-factor[@@size]);
@@ -157,8 +142,6 @@
     background-clip: content-box; /* To clip filling of paddings */
     outline: none;
     border-radius: var(--tui-radius-m);
-    // TODO: Uncomment it in v4.0
-    // margin: 0; /* Drop browser default margins */
 
     &:active {
         cursor: ew-resize;
