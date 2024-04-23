@@ -2,6 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
+import {TuiSetupComponent} from '@demo/utils';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiActiveZoneDirective, TuiFilterPipe, TuiLetModule} from '@taiga-ui/cdk';
@@ -61,6 +62,7 @@ import {TuiDataListExample6} from './examples/6';
         TuiAmountPipe,
         TuiGroupDirective,
         TuiChevronDirective,
+        TuiSetupComponent,
     ],
     declarations: [
         ExampleTuiDataListComponent,

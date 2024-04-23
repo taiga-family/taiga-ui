@@ -1,5 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
+import {TuiSetupComponent} from '@demo/utils';
 import {tuiGetDocModules} from '@taiga-ui/addon-doc';
 import {
     TuiIconComponent,
@@ -21,6 +22,7 @@ import {ExampleTuiIconComponent} from './icon.component';
         TuiNotificationModule,
         tuiGetDocModules(ExampleTuiIconComponent),
         TuiIconPipe,
+        TuiSetupComponent,
     ],
     declarations: [
         ExampleTuiIconComponent,

@@ -1,6 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
+import {TuiSetupComponent} from '@demo/utils';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiPanModule} from '@taiga-ui/cdk';
 
@@ -13,6 +14,7 @@ import {ExampleTuiPanComponent} from './pan.component';
         TuiPanModule,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiPanComponent)),
+        TuiSetupComponent,
     ],
     declarations: [ExampleTuiPanComponent, TuiPanExample1],
     exports: [ExampleTuiPanComponent],

@@ -2,6 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
+import {TuiSetupComponent} from '@demo/utils';
 import {TuiArcChartModule} from '@taiga-ui/addon-charts';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
@@ -19,6 +20,7 @@ import {TuiArcChartExample2} from './examples/2';
         TuiAmountPipe,
         TuiArcChartModule,
         TuiAddonDocModule,
+        TuiSetupComponent,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiArcChartComponent)),
         TuiInputNumberModule,
     ],

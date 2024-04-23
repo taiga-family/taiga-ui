@@ -2,15 +2,8 @@ import {NgIf} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiExamplePipe} from '@demo/utils';
-import {
-    TuiDocCodeModule,
-    TuiDocDemoModule,
-    TuiDocDocumentationModule,
-    TuiDocExampleModule,
-    TuiDocPageModule,
-    type TuiRawLoaderContent,
-} from '@taiga-ui/addon-doc';
+import {TuiExamplePipe, TuiSetupComponent} from '@demo/utils';
+import {TuiAddonDocModule, type TuiRawLoaderContent} from '@taiga-ui/addon-doc';
 import {TuiLabelModule, type TuiSizeS, type TuiSizeXL} from '@taiga-ui/core';
 import {TuiBadgeDirective, TuiFadeDirective, TuiRadioListComponent} from '@taiga-ui/kit';
 
@@ -31,19 +24,14 @@ import {TuiBadgeExample6} from './examples/6';
         TuiLabelModule,
         TuiRadioListComponent,
         FormsModule,
-
         TuiBadgeExample1,
         TuiBadgeExample2,
         TuiBadgeExample3,
         TuiBadgeExample4,
         TuiBadgeExample5,
         TuiBadgeExample6,
-
-        TuiDocCodeModule,
-        TuiDocExampleModule,
-        TuiDocPageModule,
-        TuiDocDemoModule,
-        TuiDocDocumentationModule,
+        TuiAddonDocModule,
+        TuiSetupComponent,
     ],
     templateUrl: './index.html',
     changeDetection,

@@ -2,6 +2,7 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
+import {TuiSetupComponent} from '@demo/utils';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiButtonDirective,
@@ -28,6 +29,7 @@ import {ExampleTuiScrollbarComponent} from './scrollbar.component';
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiScrollbarComponent)),
         TuiScrollableDirective,
+        TuiSetupComponent,
     ],
     declarations: [
         ExampleTuiScrollbarComponent,

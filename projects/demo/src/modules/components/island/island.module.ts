@@ -2,6 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
+import {TuiSetupComponent} from '@demo/utils';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiButtonDirective,
@@ -45,6 +46,7 @@ import {ExampleTuiIslandComponent} from './island.component';
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiIslandComponent)),
         TuiCardLargeDirective,
         TuiAvatarComponent,
+        TuiSetupComponent,
     ],
     declarations: [
         ExampleTuiIslandComponent,

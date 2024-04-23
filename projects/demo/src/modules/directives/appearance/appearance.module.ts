@@ -1,6 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
+import {TuiSetupComponent} from '@demo/utils';
 import {tuiGetDocModules} from '@taiga-ui/addon-doc';
 import {
     TuiAppearanceDirective,
@@ -23,6 +24,7 @@ import {TuiAppearanceExample3} from './examples/3';
         TuiButtonDirective,
         TuiDropdownModule,
         tuiGetDocModules(ExampleTuiAppearanceComponent),
+        TuiSetupComponent,
     ],
     declarations: [
         ExampleTuiAppearanceComponent,

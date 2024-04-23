@@ -1,5 +1,6 @@
 import {Component, type ElementRef, inject, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiSetupComponent} from '@demo/utils';
 import {TuiAddonDocModule, type TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiDestroyService} from '@taiga-ui/cdk';
 import {TUI_EXPAND_LOADED, type TuiSizeS} from '@taiga-ui/core';
@@ -22,6 +23,7 @@ import {TuiAccordionExample5} from './examples/5';
         TuiAccordionExample3,
         TuiAccordionExample4,
         TuiAccordionExample5,
+        TuiSetupComponent,
     ],
     templateUrl: './index.html',
     changeDetection,

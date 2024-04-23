@@ -1,6 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
+import {TuiSetupComponent} from '@demo/utils';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiResizerModule} from '@taiga-ui/cdk';
 import {TuiNotificationModule} from '@taiga-ui/core';
@@ -15,6 +16,7 @@ import {ExampleTuiResizerComponent} from './resizer.component';
         TuiNotificationModule,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiResizerComponent)),
+        TuiSetupComponent,
     ],
     declarations: [ExampleTuiResizerComponent, TuiResizerExample1],
     exports: [ExampleTuiResizerComponent],

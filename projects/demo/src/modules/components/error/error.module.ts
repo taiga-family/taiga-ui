@@ -2,6 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
+import {TuiSetupComponent} from '@demo/utils';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiMapperPipe} from '@taiga-ui/cdk';
 import {TuiErrorModule, TuiLinkDirective} from '@taiga-ui/core';
@@ -24,6 +25,7 @@ import {TuiErrorExample1} from './examples/1';
         TuiMapperPipe,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiErrorComponent)),
+        TuiSetupComponent,
     ],
     declarations: [ExampleTuiErrorComponent, TuiErrorExample1],
     exports: [ExampleTuiErrorComponent],

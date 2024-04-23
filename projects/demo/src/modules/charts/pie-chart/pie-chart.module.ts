@@ -1,6 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
+import {TuiSetupComponent} from '@demo/utils';
 import {TuiPieChartModule} from '@taiga-ui/addon-charts';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
@@ -23,6 +24,7 @@ import {ExampleTuiPieChartComponent} from './pie-chart.component';
         TuiNotificationModule,
         TuiLinkDirective,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiPieChartComponent)),
+        TuiSetupComponent,
     ],
     declarations: [ExampleTuiPieChartComponent, TuiPieChartExample1, TuiPieChartExample2],
     exports: [ExampleTuiPieChartComponent],

@@ -1,6 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
+import {TuiSetupComponent} from '@demo/utils';
 import {tuiGetDocModules} from '@taiga-ui/addon-doc';
 import {TuiButtonDirective, TuiNotificationModule} from '@taiga-ui/core';
 import {TuiLabelDirective} from '@taiga-ui/experimental';
@@ -25,6 +26,7 @@ import {ExampleTuiSensitiveComponent} from './sensitive.component';
         TuiBadgeDirective,
         TuiButtonDirective,
         tuiGetDocModules(ExampleTuiSensitiveComponent),
+        TuiSetupComponent,
     ],
     declarations: [
         ExampleTuiSensitiveComponent,

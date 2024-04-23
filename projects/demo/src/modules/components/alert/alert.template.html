@@ -132,8 +132,8 @@
         </tui-doc-documentation>
     </ng-template>
     <ng-template pageTab>
-        <ol class="b-demo-steps">
-            <li>
+        <ol class="tui-list tui-list_ordered">
+            <li class="tui-list__item">
                 <p>
                     Use service
                     <code>open</code>
@@ -147,7 +147,7 @@
                 />
             </li>
 
-            <li>
+            <li class="tui-list__item">
                 To pass notification with custom content, you can use
                 <a
                     fragment="example-template"
@@ -159,7 +159,7 @@
                 .
             </li>
 
-            <li>
+            <li class="tui-list__item">
                 <p>
                     You can also customize notification logic with a component. Inject
                     <code>POLYMORPHEUS_CONTEXT</code>
@@ -173,7 +173,7 @@
                 </p>
             </li>
 
-            <li>
+            <li class="tui-list__item">
                 <p>
                     Use
                     <code>new PolymorpheusComponent(CustomNotificationComponent)</code>
@@ -186,7 +186,7 @@
                 />
             </li>
 
-            <li>
+            <li class="tui-list__item">
                 <p>
                     Use
                     <code>completeWith</code>
@@ -199,7 +199,7 @@
                 />
             </li>
 
-            <li>
+            <li class="tui-list__item">
                 <p>
                     If you use it from lazy loading modules, and want to reach for some local providers, you can pass
                     <code>Injector</code>
@@ -214,7 +214,7 @@
                 />
             </li>
 
-            <li>
+            <li class="tui-list__item">
                 <p>
                     You can customize default alert options by providing
                     <code>TUI_ALERT_OPTIONS</code>

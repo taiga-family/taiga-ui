@@ -1,5 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
+import {TuiSetupComponent} from '@demo/utils';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {tuiGetDocModules} from '@taiga-ui/addon-doc';
 import {
@@ -21,6 +22,7 @@ import {TuiAmountExample3} from './examples/3';
         TuiNumberFormatDirective,
         tuiGetDocModules(ExampleTuiAmountComponent),
         TuiLinkDirective,
+        TuiSetupComponent,
     ],
     declarations: [
         ExampleTuiAmountComponent,

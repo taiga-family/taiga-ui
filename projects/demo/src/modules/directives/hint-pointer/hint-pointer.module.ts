@@ -1,6 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
+import {TuiSetupComponent} from '@demo/utils';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiHintModule, TuiLinkDirective} from '@taiga-ui/core';
 import {TuiIslandModule} from '@taiga-ui/kit';
@@ -20,6 +21,7 @@ import {ExampleTuiHintPointerComponent} from './hint-pointer.component';
         InheritedDocumentationModule,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiHintPointerComponent)),
+        TuiSetupComponent,
     ],
     declarations: [ExampleTuiHintPointerComponent, TuiHintPointerExample1],
     exports: [ExampleTuiHintPointerComponent],

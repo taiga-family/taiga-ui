@@ -2,6 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
+import {TuiSetupComponent} from '@demo/utils';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiButtonDirective,
@@ -31,6 +32,7 @@ import {TuiDropdownSelectionExample2} from './examples/2';
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiDropdownSelectionComponent)),
         DropdownDocumentationModule,
         TuiInitialsPipe,
+        TuiSetupComponent,
     ],
     declarations: [
         ExampleTuiDropdownSelectionComponent,

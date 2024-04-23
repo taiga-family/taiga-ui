@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {TuiExamplePipe} from '@demo/utils';
+import {TuiExamplePipe, TuiSetupComponent} from '@demo/utils';
 import {tuiGetDocModules} from '@taiga-ui/addon-doc';
 import {
     TuiButtonDirective,
@@ -38,6 +38,7 @@ import {ExampleTuiItemsWithMoreComponent} from './items-with-more.component';
         TuiBlockDirective,
         tuiGetDocModules(ExampleTuiItemsWithMoreComponent),
         TuiExamplePipe,
+        TuiSetupComponent,
     ],
     declarations: [
         ExampleTuiItemsWithMoreComponent,
