@@ -2,7 +2,6 @@ import {Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {TuiDay, TuiMonth, TuiMonthRange, TuiYear} from '@taiga-ui/cdk';
-import {TuiInteractiveState} from '@taiga-ui/core';
 import {TuiCalendarMonthComponent, TuiCalendarMonthModule} from '@taiga-ui/kit';
 import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
@@ -74,9 +73,7 @@ describe('CalendarMonth', () => {
         it('returns disabled if there is', () => {
             const disabledMonth = new TuiMonth(TODAY.year, 10);
 
-            expect(component.getItemState(disabledMonth)).toBe(
-                TuiInteractiveState.Disabled,
-            );
+            expect(component.getItemState(disabledMonth)).toBe('disabled');
         });
 
         it('returns pressed if there is', () => {
@@ -84,7 +81,7 @@ describe('CalendarMonth', () => {
 
             component.pressedItem = pressedMonth;
 
-            expect(component.getItemState(pressedMonth)).toBe(TuiInteractiveState.Active);
+            expect(component.getItemState(pressedMonth)).toBe('active');
         });
 
         it('returns hovered if there is', () => {
@@ -92,7 +89,7 @@ describe('CalendarMonth', () => {
 
             component.hoveredItem = hoveredItem;
 
-            expect(component.getItemState(hoveredItem)).toBe(TuiInteractiveState.Hover);
+            expect(component.getItemState(hoveredItem)).toBe('hover');
         });
 
         it('returns null if there is no state', () => {

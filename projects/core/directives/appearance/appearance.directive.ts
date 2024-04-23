@@ -1,5 +1,5 @@
 import {Directive, inject, Input} from '@angular/core';
-import type {TuiInteractiveStateT} from '@taiga-ui/core/enums';
+import type {TuiInteractiveState} from '@taiga-ui/core/interfaces';
 
 import {TUI_APPEARANCE_OPTIONS} from './appearance.options';
 
@@ -18,7 +18,7 @@ export class TuiAppearanceDirective {
     public tuiAppearance = inject(TUI_APPEARANCE_OPTIONS).appearance;
 
     @Input()
-    public tuiAppearanceState: TuiInteractiveStateT | null = null;
+    public tuiAppearanceState: TuiInteractiveState | null = null;
 
     @Input()
     public tuiAppearanceFocus: boolean | null = null;

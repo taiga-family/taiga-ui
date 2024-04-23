@@ -17,7 +17,7 @@ import {
     TuiYear,
 } from '@taiga-ui/cdk';
 import type {TuiRangeState} from '@taiga-ui/core/enums';
-import {TuiInteractiveState} from '@taiga-ui/core/enums';
+import type {TuiInteractiveState} from '@taiga-ui/core/interfaces';
 
 const LIMIT = 100;
 const ITEMS_IN_ROW = 4;
@@ -59,15 +59,15 @@ export class TuiPrimitiveYearPickerComponent {
             max.year < item ||
             (disabledItemHandler !== TUI_FALSE_HANDLER && disabledItemHandler(item))
         ) {
-            return TuiInteractiveState.Disabled;
+            return 'disabled';
         }
 
         if (pressedItem === item) {
-            return TuiInteractiveState.Active;
+            return 'active';
         }
 
         if (hoveredItem === item) {
-            return TuiInteractiveState.Hover;
+            return 'hover';
         }
 
         return null;
