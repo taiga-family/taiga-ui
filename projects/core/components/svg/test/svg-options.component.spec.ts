@@ -1,12 +1,10 @@
 import {Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
-import type {TuiSafeHtml, TuiStringHandler} from '@taiga-ui/cdk';
+import type {TuiSafeHtml} from '@taiga-ui/cdk';
 import {TUI_BASE_HREF, TUI_VERSION, tuiIsString} from '@taiga-ui/cdk';
 import {
-    TUI_ICONS_PATH,
-    TUI_ICONS_PLACE,
-    TUI_SVG_SRC_PROCESSOR,
+    TUI_DEFAULT_ICONS_PLACE,
     tuiIconsPathFactory,
     TuiSvgComponent,
     tuiSvgOptionsProvider,
@@ -59,19 +57,16 @@ describe('SVG options', () => {
         });
     });
 
-    describe('TUI_ICONS_PATH', () => {
+    describe('path', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
                 imports: [TuiSvgComponent],
                 declarations: [TestComponent],
                 providers: [
                     NG_EVENT_PLUGINS,
-                    {
-                        provide: TUI_ICONS_PATH,
-                        useValue: tuiIconsPathFactory(
-                            'https://taiga-ui.dev/icons/public/',
-                        ),
-                    },
+                    tuiSvgOptionsProvider({
+                        path: tuiIconsPathFactory('https://taiga-ui.dev/icons/public/'),
+                    }),
                 ],
             });
             await TestBed.compileComponents();
@@ -123,23 +118,19 @@ describe('SVG options', () => {
         });
     });
 
-    describe('TUI_SVG_SRC_PROCESSOR', () => {
+    describe('srcProcessor', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
                 imports: [TuiSvgComponent],
                 declarations: [TestComponent],
                 providers: [
                     NG_EVENT_PLUGINS,
-                    {
-                        provide: TUI_SVG_SRC_PROCESSOR,
-                        useFactory:
-                            (base: string): TuiStringHandler<string> =>
-                            src =>
-                                tuiIsString(src) && src.startsWith('tuiIconTds')
-                                    ? `${base}/${src}.svg`
-                                    : src,
-                        deps: [TUI_ICONS_PLACE],
-                    },
+                    tuiSvgOptionsProvider({
+                        srcProcessor: src =>
+                            tuiIsString(src) && src.startsWith('tuiIconTds')
+                                ? `${TUI_DEFAULT_ICONS_PLACE}/${src}.svg`
+                                : src,
+                    }),
                 ],
             });
             await TestBed.compileComponents();
@@ -219,16 +210,6 @@ describe('SVG options', () => {
                 declarations: [TestComponent],
                 providers: [
                     NG_EVENT_PLUGINS,
-                    {
-                        provide: TUI_SVG_SRC_PROCESSOR,
-                        useFactory:
-                            (base: string): TuiStringHandler<string> =>
-                            src =>
-                                tuiIsString(src) && src.startsWith('tuiIconTds')
-                                    ? `${base}/${src}.svg`
-                                    : src,
-                        deps: [TUI_ICONS_PLACE],
-                    },
                     tuiSvgOptionsProvider({
                         srcProcessor: src => {
                             const myCustomPrefix = 'icons8::';
@@ -265,17 +246,16 @@ describe('SVG options', () => {
         });
     });
 
-    describe('TUI_SVG_SRC_PROCESSOR -> https prefix', () => {
+    describe('srcProcessor -> https prefix', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
                 imports: [TuiSvgComponent],
                 declarations: [TestComponent],
                 providers: [
                     NG_EVENT_PLUGINS,
-                    {
-                        provide: TUI_SVG_SRC_PROCESSOR,
-                        useValue: (src: string): string => `https://${src}`,
-                    },
+                    tuiSvgOptionsProvider({
+                        srcProcessor: src => `https://${src}`,
+                    }),
                 ],
             });
             await TestBed.compileComponents();
@@ -298,11 +278,10 @@ describe('SVG options', () => {
                 declarations: [TestComponent],
                 providers: [
                     NG_EVENT_PLUGINS,
-                    {
-                        provide: TUI_SVG_SRC_PROCESSOR,
-                        useValue: (src: string): string => `https://${src}`,
-                    },
-                    tuiSvgOptionsProvider({path: 'assets/taiga-ui/icons/'}),
+                    tuiSvgOptionsProvider({
+                        path: 'assets/taiga-ui/icons/',
+                        srcProcessor: src => `https://${src}`,
+                    }),
                 ],
             });
             await TestBed.compileComponents();

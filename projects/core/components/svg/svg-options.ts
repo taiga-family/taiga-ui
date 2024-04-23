@@ -1,24 +1,18 @@
 import type {FactoryProvider, Provider} from '@angular/core';
-import {inject, InjectionToken, Optional, SkipSelf} from '@angular/core';
+import {InjectionToken, Optional, SkipSelf} from '@angular/core';
 import type {TuiHandler, TuiSafeHtml, TuiStringHandler} from '@taiga-ui/cdk';
 import {
     tuiCreateTokenFromFactory,
     tuiIsString,
     tuiSvgLinearGradientProcessor,
 } from '@taiga-ui/cdk';
-import {
-    TUI_DEFAULT_ICONS_PLACE,
-    TUI_ICONS_PATH,
-    TUI_ICONS_PLACE,
-    TUI_SVG_CONTENT_PROCESSOR,
-    TUI_SVG_SRC_PROCESSOR,
-} from '@taiga-ui/core/tokens';
 import {tuiIconsPathFactory} from '@taiga-ui/core/utils';
 import {identity} from 'rxjs';
 
 import {TUI_DEPRECATED_ICONS} from './deprecated-icons';
 
-// TODO: Refactor it all in 4.0 and remove deprecated backward compatibility hacks
+export const TUI_DEFAULT_ICONS_PLACE = 'assets/taiga-ui/icons' as const;
+
 export interface TuiSvgOptions {
     readonly contentProcessor: TuiHandler<TuiSafeHtml, TuiSafeHtml>;
     readonly deprecated: TuiStringHandler<string>;
@@ -50,11 +44,11 @@ export const TUI_SVG_DEFAULT_OPTIONS: TuiSvgOptions = {
  * SVG component options
  */
 export const TUI_SVG_OPTIONS = tuiCreateTokenFromFactory<TuiSvgOptions>(() => ({
-    iconsPlace: inject(TUI_ICONS_PLACE),
-    path: inject(TUI_ICONS_PATH),
+    iconsPlace: TUI_DEFAULT_ICONS_PLACE,
+    path: tuiIconsPathFactory(TUI_DEFAULT_ICONS_PLACE),
     deprecated: TUI_SVG_DEFAULT_OPTIONS.deprecated,
-    srcProcessor: inject(TUI_SVG_SRC_PROCESSOR),
-    contentProcessor: inject(TUI_SVG_CONTENT_PROCESSOR),
+    srcProcessor: identity,
+    contentProcessor: tuiSvgLinearGradientProcessor,
 }));
 
 export const TUI_SVG_SRC_INTERCEPTORS = new InjectionToken<TuiSvgInterceptorHandler>(
@@ -75,28 +69,15 @@ export const tuiSvgOptionsProvider: (
     },
 ) => FactoryProvider = options => ({
     provide: TUI_SVG_OPTIONS,
-    deps: [
-        [new SkipSelf(), new Optional(), TUI_SVG_OPTIONS],
-        [new Optional(), TUI_ICONS_PLACE],
-        [new Optional(), TUI_ICONS_PATH],
-        [new Optional(), TUI_SVG_SRC_PROCESSOR],
-        [new Optional(), TUI_SVG_CONTENT_PROCESSOR],
-    ],
-    useFactory: (
-        fallback: TuiSvgOptions | null,
-        iconsPlace: string | null,
-        path: TuiSvgOptions['path'] | null,
-        srcProcessor: TuiSvgOptions['srcProcessor'] | null,
-        contentProcessor: TuiSvgOptions['contentProcessor'] | null,
-    ): TuiSvgOptions => ({
+    deps: [[new SkipSelf(), new Optional(), TUI_SVG_OPTIONS]],
+    useFactory: (fallback: TuiSvgOptions | null): TuiSvgOptions => ({
         iconsPlace:
             options.iconsPlace ??
             fallback?.iconsPlace ??
-            iconsPlace ??
             TUI_SVG_DEFAULT_OPTIONS.iconsPlace,
         path: tuiIsString(options.path)
             ? tuiIconsPathFactory(options.path)
-            : options.path ?? fallback?.path ?? path ?? TUI_SVG_DEFAULT_OPTIONS.path,
+            : options.path ?? fallback?.path ?? TUI_SVG_DEFAULT_OPTIONS.path,
         deprecated:
             options.deprecated ??
             fallback?.deprecated ??
@@ -104,12 +85,10 @@ export const tuiSvgOptionsProvider: (
         srcProcessor:
             options.srcProcessor ??
             fallback?.srcProcessor ??
-            srcProcessor ??
             TUI_SVG_DEFAULT_OPTIONS.srcProcessor,
         contentProcessor:
             options.contentProcessor ??
             fallback?.contentProcessor ??
-            contentProcessor ??
             TUI_SVG_DEFAULT_OPTIONS.contentProcessor,
     }),
 });
