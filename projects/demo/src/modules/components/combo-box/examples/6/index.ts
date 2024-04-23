@@ -1,9 +1,14 @@
 import {Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiStringHandler} from '@taiga-ui/cdk';
-import {tuiItemsHandlersProvider} from '@taiga-ui/kit';
+import {TuiTextfieldControllerModule} from '@taiga-ui/core';
+import {
+    TuiComboBoxModule,
+    TuiDataListWrapperModule,
+    tuiItemsHandlersProvider,
+} from '@taiga-ui/kit';
 
 interface Employee {
     readonly dept: {
@@ -18,13 +23,19 @@ const STRINGIFY_EMPLOYEE: TuiStringHandler<Employee> = (item: Employee) =>
     `${item.name} (${item.dept.title})`;
 
 @Component({
-    selector: 'tui-combo-box-example-6',
+    standalone: true,
+    imports: [
+        ReactiveFormsModule,
+        TuiComboBoxModule,
+        TuiDataListWrapperModule,
+        TuiTextfieldControllerModule,
+    ],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
     providers: [tuiItemsHandlersProvider({stringify: STRINGIFY_EMPLOYEE})],
 })
-export class TuiComboBoxExample6 {
+export default class ExampleComponent {
     protected readonly testValue = new FormControl<Employee | null>(null);
 
     protected readonly items: readonly Employee[] = [

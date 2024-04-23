@@ -287,10 +287,8 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.ComboBox,
-        loadChildren: async () =>
-            (await import('../components/combo-box/combo-box.module'))
-                .ExampleTuiComboBoxModule,
         title: 'ComboBox',
+        loadComponent: async () => import('../components/combo-box'),
     }),
     route({
         path: DemoRoute.DataList,

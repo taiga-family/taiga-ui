@@ -1,12 +1,26 @@
 import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {
+    TuiComboBoxModule,
+    TuiDataListWrapperModule,
+    TuiFilterByInputPipeModule,
+    TuiStringifyContentPipeModule,
+} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-combo-box-example-4',
+    standalone: true,
+    imports: [
+        FormsModule,
+        TuiComboBoxModule,
+        TuiDataListWrapperModule,
+        TuiFilterByInputPipeModule,
+        TuiStringifyContentPipeModule,
+    ],
     templateUrl: './index.html',
     changeDetection,
 })
-export class TuiComboBoxExample4 {
+export default class ExampleComponent {
     protected value = null;
 
     protected readonly items = [
