@@ -1,11 +1,13 @@
 <tui-items-with-more [required]="required">
     <ng-container *ngFor="let item of items">
-        <tui-tag
+        <tui-chip
             *tuiItem
-            size="m"
+            appearance="neutral"
+            size="s"
             class="tui-space_right-1"
-            [value]="item"
-        />
+        >
+            {{ item }}
+        </tui-chip>
     </ng-container>
     <ng-template
         let-index

@@ -14,8 +14,8 @@ import {
 import {
     TuiBadgeDirective,
     TuiBlockDirective,
+    TuiChipDirective,
     TuiItemsWithMoreModule,
-    TuiTagModule,
 } from '@taiga-ui/kit';
 
 import {TuiItemsWithMoreExample1} from './examples/1';
@@ -27,7 +27,7 @@ import {ExampleTuiItemsWithMoreComponent} from './items-with-more.component';
         CommonModule,
         FormsModule,
         TuiGroupDirective,
-        TuiTagModule,
+        TuiChipDirective,
         TuiNotificationModule,
         TuiItemsWithMoreModule,
         TuiBadgeDirective,

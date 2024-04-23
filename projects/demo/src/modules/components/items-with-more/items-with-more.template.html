@@ -35,11 +35,12 @@
                 [required]="required"
             >
                 <ng-container *ngFor="let item of items">
-                    <tui-tag
+                    <tui-chip
                         *tuiItem
                         class="tui-space_right-2"
-                        [value]="item"
-                    />
+                    >
+                        {{ item }}
+                    </tui-chip>
                 </ng-container>
                 <span *tuiMore>and now for something completely different!</span>
             </tui-items-with-more>

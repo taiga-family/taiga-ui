@@ -24,7 +24,7 @@ export const DemoRoute = {
     BlockStatus: '/layout/block-status',
     Amount: '/pipes/amount',
     Appearance: '/components/appearance',
-    Chip: '/experimental/chip',
+    Chip: '/components/chip',
     Title: '/components/title',
     TooltipExp: '/experimental/tooltip',
     CardMedium: '/experimental/card-medium',
