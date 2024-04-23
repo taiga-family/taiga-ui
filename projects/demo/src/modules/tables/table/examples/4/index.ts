@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import type {TuiComparator} from '@taiga-ui/addon-table';
+import type {TuiComparator, TuiTablePagination} from '@taiga-ui/addon-table';
 import {
     TUI_DEFAULT_MATCHER,
     tuiControlValue,
@@ -153,12 +153,9 @@ export class TuiTableExample4 {
         this.direction$.next(direction);
     }
 
-    protected onSize(size: number): void {
-        this.size$.next(size);
-    }
-
-    protected onPage(page: number): void {
+    protected onPagination({page, size}: TuiTablePagination): void {
         this.page$.next(page);
+        this.size$.next(size);
     }
 
     protected isMatch(value: unknown): boolean {

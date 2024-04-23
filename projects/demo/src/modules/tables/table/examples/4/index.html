@@ -112,8 +112,7 @@
                     <tui-table-pagination
                         class="tui-space_top-2"
                         [total]="(total$ | async) || 0"
-                        (pageChange)="onPage($event)"
-                        (sizeChange)="onSize($event)"
+                        (paginationChange)="onPagination($event)"
                     />
                 </td>
             </tr>

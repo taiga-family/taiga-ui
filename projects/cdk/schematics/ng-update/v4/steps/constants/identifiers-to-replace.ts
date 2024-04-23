@@ -350,6 +350,16 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {name: 'TuiChipDirective', moduleSpecifier: '@taiga-ui/kit'},
     },
     {
+        from: {
+            name: 'TuiTablePaginationModule',
+            moduleSpecifier: '@taiga-ui/addon-table',
+        },
+        to: {
+            name: 'TuiTablePaginationComponent',
+            moduleSpecifier: '@taiga-ui/addon-table',
+        },
+    },
+    {
         from: {name: 'TuiCardModule', moduleSpecifier: '@taiga-ui/experimental'},
         to: [
             {name: 'TuiCardLargeDirective', moduleSpecifier: '@taiga-ui/layout'},

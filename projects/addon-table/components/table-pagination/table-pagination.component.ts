@@ -1,3 +1,4 @@
+import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -7,7 +8,18 @@ import {
     Output,
 } from '@angular/core';
 import {TUI_TABLE_PAGINATION_TEXTS} from '@taiga-ui/addon-table/tokens';
-import {TUI_COMMON_ICONS, TUI_SPIN_ICONS, TUI_SPIN_TEXTS} from '@taiga-ui/core';
+import {
+    TUI_COMMON_ICONS,
+    TUI_SPIN_ICONS,
+    TUI_SPIN_TEXTS,
+    TuiButtonDirective,
+    TuiDataListModule,
+    TuiDropdownDirective,
+    TuiDropdownOpenDirective,
+    TuiLinkDirective,
+    TuiSvgComponent,
+} from '@taiga-ui/core';
+import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import type {TuiTablePaginationOptions} from './table-pagination.options';
 import {TUI_TABLE_PAGINATION_OPTIONS} from './table-pagination.options';
@@ -18,7 +30,20 @@ export interface TuiTablePagination {
 }
 
 @Component({
+    standalone: true,
     selector: 'tui-table-pagination',
+    imports: [
+        NgIf,
+        AsyncPipe,
+        TuiLinkDirective,
+        TuiDropdownDirective,
+        TuiDataListModule,
+        PolymorpheusModule,
+        NgForOf,
+        TuiDropdownOpenDirective,
+        TuiSvgComponent,
+        TuiButtonDirective,
+    ],
     templateUrl: './table-pagination.template.html',
     styleUrls: ['./table-pagination.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -38,20 +63,6 @@ export class TuiTablePaginationComponent {
     @Input()
     public size = this.options.size;
 
-    /**
-     * TODO: Remove in 4.0
-     * @deprecated use paginationChange
-     */
-    @Output()
-    public readonly pageChange = new EventEmitter<number>();
-
-    /**
-     * TODO: Remove in 4.0
-     * @deprecated use paginationChange
-     */
-    @Output()
-    public readonly sizeChange = new EventEmitter<number>();
-
     @Output()
     public readonly paginationChange = new EventEmitter<TuiTablePagination>();
 
@@ -66,10 +77,8 @@ export class TuiTablePaginationComponent {
         const {start} = this;
 
         this.size = size;
-        this.sizeChange.emit(size);
         this.open = false;
         this.page = Math.floor(start / this.size);
-        this.pageChange.emit(this.page);
         this.paginationChange.emit(this.pagination);
     }
 
@@ -110,13 +119,11 @@ export class TuiTablePaginationComponent {
 
     protected back(): void {
         this.page--;
-        this.pageChange.emit(this.page);
         this.paginationChange.emit(this.pagination);
     }
 
     protected forth(): void {
         this.page++;
-        this.pageChange.emit(this.page);
         this.paginationChange.emit(this.pagination);
     }
 }
