@@ -25,4 +25,16 @@ export const HTML_COMMENTS: HtmlComment[] = [
         comment:
             'rating [iconFilled] and [iconNormal] inputs have been removed. Use [icon] instead. See example https://taiga-ui.dev/components/rating#icons',
     },
+    {
+        tag: 'button',
+        withAttrs: ['tuiAction'],
+        comment:
+            'tuiAction has been removed in favour of tuiCardLarge + tuiSurface. Change the template according to this example https://taiga-ui.dev/layout/card-large',
+    },
+    {
+        tag: 'a',
+        withAttrs: ['tuiAction'],
+        comment:
+            'tuiAction has been removed in favour of tuiCardLarge + tuiSurface. Change the template according to this example https://taiga-ui.dev/layout/card-large',
+    },
 ];

@@ -47,4 +47,8 @@ export const TAGS_TO_REPLACE: ReplacementTag[] = [
         to: 'progress',
         addAttributes: ['tuiProgressBar'],
     },
+    {
+        from: 'tui-marker-icon',
+        to: 'tui-avatar',
+    },
 ];

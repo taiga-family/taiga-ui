@@ -121,4 +121,27 @@ export const ATTRS_TO_REPLACE: ReplacementAttribute[] = [
         },
         to: {attrName: '[tuiProgressColorSegments]'},
     },
+    {
+        from: {
+            attrName: 'tuiMarkerIcon',
+            withTagNames: ['button', 'a'],
+        },
+        to: {attrName: 'tuiAvatar'},
+    },
+    {
+        from: {
+            attrName: 'mode',
+            withTagNames: ['tui-marker-icon'],
+            withAttrsNames: ['tuiMarkerIcon'],
+        },
+        to: {attrName: 'appearance'},
+    },
+    {
+        from: {
+            attrName: 'tuiAction',
+            withTagNames: ['button', 'a'],
+            withAttrsNames: ['tuiMarkerIcon'],
+        },
+        to: {attrName: 'tuiCardLarge tuiSurface="elevated"'},
+    },
 ];

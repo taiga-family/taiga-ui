@@ -356,4 +356,19 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             {name: 'TuiCardMediumDirective', moduleSpecifier: '@taiga-ui/layout'},
         ],
     },
+    {
+        from: {name: 'TuiMarkerIconModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiAvatarComponent', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {name: 'TUI_PROMPT', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TUI_CONFIRM', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {name: 'TuiActionModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: [
+            {name: 'TuiCardLargeDirective', moduleSpecifier: '@taiga-ui/layout'},
+            {name: 'TuiSurfaceDirective', moduleSpecifier: '@taiga-ui/core'},
+        ],
+    },
 ];
