@@ -1,41 +1,42 @@
-import {ElementRef, inject, Injectable, NgZone} from '@angular/core';
+import {
+    afterNextRender,
+    ChangeDetectorRef,
+    ElementRef,
+    inject,
+    Injectable,
+    INJECTOR,
+    NgZone,
+} from '@angular/core';
 import {
     TuiDestroyService,
     tuiGetElementOffset,
     tuiScrollFrom,
-    tuiZoneOptimized,
+    tuiZonefree,
 } from '@taiga-ui/cdk';
 import {SCROLL_REF_SELECTOR, TUI_SCROLL_REF} from '@taiga-ui/core';
-import {
-    distinctUntilChanged,
-    map,
-    Observable,
-    skip,
-    startWith,
-    switchMap,
-    take,
-    takeUntil,
-} from 'rxjs';
+import {map, Observable, Subscription, takeUntil, tap} from 'rxjs';
 
 @Injectable()
 export class TuiElasticStickyService extends Observable<number> {
+    private readonly injector = inject(INJECTOR);
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
     private readonly scrollRef: HTMLElement = inject(TUI_SCROLL_REF).nativeElement;
     private readonly zone = inject(NgZone);
+    private readonly cd = inject(ChangeDetectorRef);
     private readonly destroy$ = inject(TuiDestroyService, {self: true});
 
     constructor() {
-        super(subscriber =>
-            this.zone.onStable
-                .pipe(
-                    take(1),
-                    switchMap(() => {
-                        const host =
-                            this.el.closest(SCROLL_REF_SELECTOR) || this.scrollRef;
-                        const {offsetHeight} = this.el;
-                        const {offsetTop} = tuiGetElementOffset(host, this.el);
+        super(subscriber => {
+            const subscription = new Subscription();
 
-                        return tuiScrollFrom(host).pipe(
+            afterNextRender(
+                () => {
+                    const host = this.el.closest(SCROLL_REF_SELECTOR) || this.scrollRef;
+                    const {offsetTop} = tuiGetElementOffset(host, this.el);
+                    const {offsetHeight} = this.el;
+                    const teardown = tuiScrollFrom(host)
+                        .pipe(
+                            tuiZonefree(this.zone),
                             map(() =>
                                 Math.max(
                                     1 -
@@ -47,15 +48,21 @@ export class TuiElasticStickyService extends Observable<number> {
                                     0,
                                 ),
                             ),
-                        );
-                    }),
-                    startWith(1),
-                    distinctUntilChanged(),
-                    skip(1),
-                    tuiZoneOptimized(this.zone),
-                    takeUntil(this.destroy$),
-                )
-                .subscribe(subscriber),
-        );
+                            tap(() => this.cd.detectChanges()),
+                            takeUntil(this.destroy$),
+                        )
+                        .subscribe(subscriber);
+
+                    if (!subscription.closed) {
+                        subscription.add(teardown);
+                    } else {
+                        teardown.unsubscribe();
+                    }
+                },
+                {injector: this.injector},
+            );
+
+            return subscription;
+        });
     }
 }
