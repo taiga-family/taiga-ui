@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[99180],{99180:e=>{e.exports=".loader {\n    display: flex;\n    width: fit-content;\n    margin: 1rem 0;\n}\n"}}]);

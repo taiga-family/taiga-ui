@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[33608],{33608:e=>{e.exports="section {\n    display: flex;\n    height: 3.125rem;\n    border-radius: 0.75rem;\n    justify-content: center;\n    align-items: center;\n    color: var(--tui-base-06);\n    border: 1px dashed var(--tui-base-06);\n}\n\n.label {\n    font: var(--tui-font-text-l);\n}\n"}}]);
