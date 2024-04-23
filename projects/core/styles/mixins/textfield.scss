@@ -157,8 +157,7 @@ $line-height-l: 1.25rem;
     padding-inline-end: 0.25rem;
 }
 
-// TODO: Rename to label in 4.0
-@mixin textfield-placeholder() {
+@mixin textfield-label() {
     @include transition('transform, font-size, color, letter-spacing');
     @include text-overflow();
     display: block;
@@ -271,7 +270,7 @@ $line-height-l: 1.25rem;
     }
 
     .t-placeholder {
-        @include textfield-placeholder();
+        @include textfield-label();
     }
 
     .t-cleaner {
