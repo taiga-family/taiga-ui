@@ -30,7 +30,6 @@
             *ngFor="let example of examples; let index = index"
             [component]="index + 1 | tuiComponent"
             [content]="index + 1 | tuiExample"
-            [description]="null"
             [heading]="example"
             [id]="example | tuiKebab"
         />
@@ -113,7 +112,5 @@
         </tui-doc-documentation>
     </ng-template>
 
-    <ng-template pageTab>
-        <tui-setup />
-    </ng-template>
+    <tui-setup *pageTab />
 </tui-doc-page>
