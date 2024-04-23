@@ -8,12 +8,12 @@ import {
     Input,
     Output,
 } from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {TuiBooleanHandler, TuiDay, TuiDayRange, TuiTypedMapper} from '@taiga-ui/cdk';
 import {
     TUI_FALSE_HANDLER,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
-    TuiDestroyService,
     TuiMonth,
     tuiWatch,
 } from '@taiga-ui/cdk';
@@ -21,7 +21,6 @@ import type {TuiMarkerHandler} from '@taiga-ui/core';
 import {TUI_DEFAULT_MARKER_HANDLER} from '@taiga-ui/core';
 import {TUI_CALENDAR_DATE_STREAM} from '@taiga-ui/kit/tokens';
 import type {Observable} from 'rxjs';
-import {takeUntil} from 'rxjs';
 
 /**
  * @internal
@@ -31,7 +30,6 @@ import {takeUntil} from 'rxjs';
     templateUrl: './primitive-calendar-range.template.html',
     styleUrls: ['./primitive-calendar-range.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [TuiDestroyService],
 })
 export class TuiPrimitiveCalendarRangeComponent implements OnInit {
     @Input()
@@ -69,10 +67,7 @@ export class TuiPrimitiveCalendarRangeComponent implements OnInit {
 
     constructor() {
         this.valueChanges
-            ?.pipe(
-                tuiWatch(inject(ChangeDetectorRef)),
-                takeUntil(inject(TuiDestroyService, {self: true})),
-            )
+            ?.pipe(tuiWatch(inject(ChangeDetectorRef)), takeUntilDestroyed())
             .subscribe(value => {
                 this.value = value;
                 this.updateViewedMonths();

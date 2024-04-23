@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiDestroyService} from '@taiga-ui/cdk';
 import {interval, map, startWith} from 'rxjs';
 
 @Component({
@@ -10,7 +9,6 @@ import {interval, map, startWith} from 'rxjs';
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
-    providers: [TuiDestroyService],
 })
 export class TuiTooltipExample1 {
     protected isLoading$ = interval(2000).pipe(

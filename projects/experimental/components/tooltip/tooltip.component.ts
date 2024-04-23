@@ -6,7 +6,7 @@ import {
     Input,
     ViewChild,
 } from '@angular/core';
-import {TUI_PLATFORM, TuiDestroyService, tuiIsString} from '@taiga-ui/cdk';
+import {TUI_PLATFORM, tuiIsString} from '@taiga-ui/cdk';
 import {
     TuiAppearanceDirective,
     TuiHintHoverDirective,
@@ -23,7 +23,6 @@ import {TUI_TOOLTIP_OPTIONS} from './tooltip.options';
     templateUrl: './tooltip.template.html',
     styleUrls: ['./tooltip.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [TuiDestroyService],
     inputs: ['content', 'direction', 'appearance', 'showDelay', 'hideDelay'],
 })
 export class TuiTooltipComponent<C = any> extends TuiHintOptionsDirective {

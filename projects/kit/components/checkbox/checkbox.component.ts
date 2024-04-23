@@ -2,20 +2,16 @@ import type {DoCheck, OnInit} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
+    DestroyRef,
     ElementRef,
     inject,
     Input,
 } from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {NgControl, NgModel} from '@angular/forms';
-import {
-    tuiControlValue,
-    TuiDestroyService,
-    tuiIsString,
-    TuiNativeValidatorDirective,
-} from '@taiga-ui/cdk';
+import {tuiControlValue, tuiIsString, TuiNativeValidatorDirective} from '@taiga-ui/cdk';
 import type {TuiSizeS} from '@taiga-ui/core';
 import {TUI_ICON_RESOLVER, TuiAppearanceDirective} from '@taiga-ui/core';
-import {takeUntil} from 'rxjs';
 
 import {TUI_CHECKBOX_OPTIONS} from './checkbox.options';
 
@@ -25,7 +21,6 @@ import {TUI_CHECKBOX_OPTIONS} from './checkbox.options';
     template: '',
     styleUrls: ['./checkbox.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [TuiDestroyService],
     hostDirectives: [
         {
             directive: TuiAppearanceDirective,
@@ -49,7 +44,7 @@ export class TuiCheckboxComponent implements OnInit, DoCheck {
     private readonly appearance = inject(TuiAppearanceDirective);
     private readonly options = inject(TUI_CHECKBOX_OPTIONS);
     private readonly resolver = inject(TUI_ICON_RESOLVER);
-    private readonly destroy$ = inject(TuiDestroyService, {self: true});
+    private readonly destroy$ = inject(DestroyRef);
     private readonly el: HTMLInputElement = inject(ElementRef).nativeElement;
 
     @Input()
@@ -66,7 +61,7 @@ export class TuiCheckboxComponent implements OnInit, DoCheck {
         }
 
         tuiControlValue(this.control)
-            .pipe(takeUntil(this.destroy$))
+            .pipe(takeUntilDestroyed(this.destroy$))
             .subscribe(value => {
                 // https://github.com/angular/angular/issues/14988
                 const fix = this.control instanceof NgModel ? this.control.model : value;

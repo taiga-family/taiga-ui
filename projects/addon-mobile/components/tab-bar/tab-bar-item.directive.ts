@@ -1,14 +1,14 @@
 import {ChangeDetectorRef, Directive, ElementRef, inject} from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {RouterLinkActive} from '@angular/router';
-import {TuiDestroyService, tuiWatch} from '@taiga-ui/cdk';
+import {tuiWatch} from '@taiga-ui/cdk';
 import type {Observable} from 'rxjs';
-import {EMPTY, filter, takeUntil} from 'rxjs';
+import {EMPTY, filter} from 'rxjs';
 
 import {TuiTabBarComponent} from './tab-bar.component';
 
 @Directive({
     selector: '[tuiTabBarItem][routerLinkActive]',
-    providers: [TuiDestroyService],
 })
 export class TuiTabBarItemDirective {
     constructor() {
@@ -20,7 +20,7 @@ export class TuiTabBarItemDirective {
         link.pipe(
             filter(Boolean),
             tuiWatch(inject(ChangeDetectorRef)),
-            takeUntil(inject(TuiDestroyService, {self: true})),
+            takeUntilDestroyed(),
         ).subscribe(() => tabs.setActive(el));
     }
 }

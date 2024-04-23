@@ -6,18 +6,13 @@ import {
     NgZone,
     Output,
 } from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {TuiContext, TuiHandler} from '@taiga-ui/cdk';
-import {
-    TUI_IS_IOS,
-    TuiDestroyService,
-    tuiPx,
-    tuiScrollFrom,
-    tuiZonefree,
-} from '@taiga-ui/cdk';
+import {TUI_IS_IOS, tuiPx, tuiScrollFrom, tuiZonefree} from '@taiga-ui/cdk';
 import {TUI_SCROLL_REF} from '@taiga-ui/core';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import type {Observable} from 'rxjs';
-import {distinctUntilChanged, filter, map, startWith, takeUntil} from 'rxjs';
+import {distinctUntilChanged, filter, map, startWith} from 'rxjs';
 
 import {
     TUI_PULL_TO_REFRESH_COMPONENT,
@@ -30,7 +25,7 @@ import {MICRO_OFFSET, TuiPullToRefreshService} from './pull-to-refresh.service';
     templateUrl: './pull-to-refresh.template.html',
     styleUrls: ['./pull-to-refresh.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [TuiPullToRefreshService, TuiDestroyService],
+    providers: [TuiPullToRefreshService],
 })
 export class TuiPullToRefreshComponent {
     private readonly isIOS = inject(TUI_IS_IOS);
@@ -65,11 +60,7 @@ export class TuiPullToRefreshComponent {
         const el: HTMLElement = inject(TUI_SCROLL_REF).nativeElement;
 
         tuiScrollFrom(el)
-            .pipe(
-                startWith(null),
-                tuiZonefree(inject(NgZone)),
-                takeUntil(inject(TuiDestroyService, {self: true})),
-            )
+            .pipe(startWith(null), tuiZonefree(inject(NgZone)), takeUntilDestroyed())
             .subscribe(() => {
                 if (el.scrollTop) {
                     el.style.touchAction = '';

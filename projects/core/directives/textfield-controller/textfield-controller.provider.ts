@@ -1,9 +1,9 @@
 import type {Provider} from '@angular/core';
 import {ChangeDetectorRef, InjectionToken} from '@angular/core';
-import {TuiDestroyService, tuiWatch} from '@taiga-ui/cdk';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {tuiWatch} from '@taiga-ui/cdk';
 import {TUI_TEXTFIELD_APPEARANCE} from '@taiga-ui/core/tokens';
-import type {Observable} from 'rxjs';
-import {merge, NEVER, takeUntil} from 'rxjs';
+import {merge, NEVER} from 'rxjs';
 
 import {TuiTextfieldController} from './textfield.controller';
 import type {TuiTextfieldOptions} from './textfield.options';
@@ -33,12 +33,10 @@ export const TUI_TEXTFIELD_WATCHED_CONTROLLER =
     new InjectionToken<TuiTextfieldController>('[TUI_TEXTFIELD_WATCHED_CONTROLLER]');
 
 export const TEXTFIELD_CONTROLLER_PROVIDER: Provider = [
-    TuiDestroyService,
     {
         provide: TUI_TEXTFIELD_WATCHED_CONTROLLER,
         deps: [
             ChangeDetectorRef,
-            TuiDestroyService,
             TUI_TEXTFIELD_OPTIONS,
             TUI_TEXTFIELD_APPEARANCE,
             TUI_TEXTFIELD_APPEARANCE_DIRECTIVE,
@@ -54,7 +52,6 @@ export const TEXTFIELD_CONTROLLER_PROVIDER: Provider = [
         ],
         useFactory: (
             cdr: ChangeDetectorRef,
-            destroy$: Observable<void>,
             options: TuiTextfieldOptions,
             legacyAppearance: string,
             ...controllers: [
@@ -72,7 +69,7 @@ export const TEXTFIELD_CONTROLLER_PROVIDER: Provider = [
         ) => {
             const change$ = merge(
                 ...controllers.map(({change$}) => change$ || NEVER),
-            ).pipe(tuiWatch(cdr), takeUntil(destroy$));
+            ).pipe(tuiWatch(cdr), takeUntilDestroyed());
 
             change$.subscribe();
 

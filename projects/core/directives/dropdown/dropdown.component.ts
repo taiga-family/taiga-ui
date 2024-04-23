@@ -1,9 +1,9 @@
 import type {OnInit} from '@angular/core';
 import {ChangeDetectionStrategy, Component, ElementRef, inject} from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {WINDOW} from '@ng-web-apis/common';
 import {
     TuiActiveZoneDirective,
-    TuiDestroyService,
     tuiGetClosestFocusable,
     tuiIsElement,
     TuiOverscrollModule,
@@ -20,7 +20,7 @@ import {TuiPositionService, TuiVisualViewportService} from '@taiga-ui/core/servi
 import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
 import {tuiToAnimationOptions} from '@taiga-ui/core/utils';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
-import {map, takeUntil} from 'rxjs';
+import {map} from 'rxjs';
 
 import {TuiDropdownDirective} from './dropdown.directive';
 import {TUI_DROPDOWN_CONTEXT} from './dropdown.providers';
@@ -47,7 +47,6 @@ import {TuiDropdownPositionDirective} from './dropdown-position.directive';
     // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
     changeDetection: ChangeDetectionStrategy.Default,
     providers: [
-        TuiDestroyService,
         TuiPositionService,
         tuiPositionAccessorFor('dropdown', TuiDropdownPositionDirective),
         tuiRectAccessorFor('dropdown', TuiDropdownDirective),
@@ -80,7 +79,7 @@ export class TuiDropdownComponent implements OnInit {
                     ? this.viewport.correct(point)
                     : point,
             ),
-            takeUntil(inject(TuiDestroyService, {self: true})),
+            takeUntilDestroyed(),
         )
         .subscribe(([top, left]) => {
             this.update(top, left);

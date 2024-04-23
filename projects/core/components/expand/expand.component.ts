@@ -5,6 +5,7 @@ import {
     ChangeDetectorRef,
     Component,
     ContentChild,
+    DestroyRef,
     HostBinding,
     HostListener,
     inject,
@@ -12,11 +13,11 @@ import {
     TemplateRef,
     ViewChild,
 } from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {TuiValuesOf} from '@taiga-ui/cdk';
-import {TuiDestroyService} from '@taiga-ui/cdk';
 import {TUI_PARENT_ANIMATION} from '@taiga-ui/core/animations';
 import {TUI_EXPAND_LOADED} from '@taiga-ui/core/constants';
-import {takeUntil, timer} from 'rxjs';
+import {timer} from 'rxjs';
 
 import {TuiExpandContentDirective} from './expand-content.directive';
 
@@ -34,7 +35,6 @@ const LOADER_HEIGHT = 48;
     templateUrl: './expand.template.html',
     styleUrls: ['./expand.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [TuiDestroyService],
     animations: [TUI_PARENT_ANIMATION],
 })
 export class TuiExpandComponent {
@@ -42,7 +42,7 @@ export class TuiExpandComponent {
     private readonly contentWrapper?: ElementRef<HTMLDivElement>;
 
     private readonly cdr = inject(ChangeDetectorRef);
-    private readonly destroy$ = inject(TuiDestroyService, {self: true});
+    private readonly destroy$ = inject(DestroyRef);
     private state: TuiValuesOf<typeof State> = State.Idle;
 
     @Input()
@@ -138,7 +138,7 @@ export class TuiExpandComponent {
         this.state = State.Prepared;
 
         timer(0)
-            .pipe(takeUntil(this.destroy$))
+            .pipe(takeUntilDestroyed(this.destroy$))
             .subscribe(() => {
                 // We need delay to re-trigger CSS height transition from the correct number
                 if (this.state !== State.Prepared) {

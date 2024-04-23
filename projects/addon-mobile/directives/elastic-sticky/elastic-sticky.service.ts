@@ -1,20 +1,17 @@
 import {
     afterNextRender,
     ChangeDetectorRef,
+    DestroyRef,
     ElementRef,
     inject,
     Injectable,
     INJECTOR,
     NgZone,
 } from '@angular/core';
-import {
-    TuiDestroyService,
-    tuiGetElementOffset,
-    tuiScrollFrom,
-    tuiZonefree,
-} from '@taiga-ui/cdk';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {tuiGetElementOffset, tuiScrollFrom, tuiZonefree} from '@taiga-ui/cdk';
 import {SCROLL_REF_SELECTOR, TUI_SCROLL_REF} from '@taiga-ui/core';
-import {map, Observable, Subscription, takeUntil, tap} from 'rxjs';
+import {map, Observable, Subscription, tap} from 'rxjs';
 
 @Injectable()
 export class TuiElasticStickyService extends Observable<number> {
@@ -23,7 +20,7 @@ export class TuiElasticStickyService extends Observable<number> {
     private readonly scrollRef: HTMLElement = inject(TUI_SCROLL_REF).nativeElement;
     private readonly zone = inject(NgZone);
     private readonly cd = inject(ChangeDetectorRef);
-    private readonly destroy$ = inject(TuiDestroyService, {self: true});
+    private readonly destroy$ = inject(DestroyRef);
 
     constructor() {
         super(subscriber => {
@@ -49,7 +46,7 @@ export class TuiElasticStickyService extends Observable<number> {
                                 ),
                             ),
                             tap(() => this.cd.detectChanges()),
-                            takeUntil(this.destroy$),
+                            takeUntilDestroyed(this.destroy$),
                         )
                         .subscribe(subscriber);
 

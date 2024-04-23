@@ -1,9 +1,10 @@
 import {Directive, ElementRef, inject, Input, Renderer2} from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {TuiTouchMode} from '@taiga-ui/addon-mobile/types';
 import {tuiFindTouchIndex} from '@taiga-ui/addon-mobile/utils';
-import {TUI_IS_IOS, TuiDestroyService, tuiTypedFromEvent} from '@taiga-ui/cdk';
+import {TUI_IS_IOS, tuiTypedFromEvent} from '@taiga-ui/cdk';
 import {TUI_ELEMENT_REF} from '@taiga-ui/core';
-import {filter, map, race, switchMap, take, takeUntil, tap} from 'rxjs';
+import {filter, map, race, switchMap, take, tap} from 'rxjs';
 
 const STYLE = {
     transform: 'scale(0.95)',
@@ -13,12 +14,10 @@ const STYLE = {
 
 @Directive({
     selector: '[tuiTouchable]',
-    providers: [TuiDestroyService],
 })
 export class TuiTouchableDirective {
     private readonly isIOS = inject(TUI_IS_IOS);
     private readonly renderer = inject(Renderer2);
-    private readonly destroy$ = inject(TuiDestroyService, {self: true});
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
     private readonly elementRef?: HTMLElement = inject(TUI_ELEMENT_REF, {optional: true})
         ?.nativeElement;
@@ -49,7 +48,7 @@ export class TuiTouchableDirective {
                         tuiTypedFromEvent(element, 'touchend'),
                     ).pipe(take(1)),
                 ),
-                takeUntil(this.destroy$),
+                takeUntilDestroyed(),
             )
             .subscribe(() => {
                 this.renderer.removeStyle(element, 'transform');

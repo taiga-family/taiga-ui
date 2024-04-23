@@ -2,12 +2,14 @@ import type {AfterViewInit, QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
+    DestroyRef,
     HostBinding,
     inject,
     Input,
     NgZone,
     ViewChildren,
 } from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {
     TUI_LINE_CHART_OPTIONS,
     TuiLineChartComponent,
@@ -19,7 +21,6 @@ import {
     EMPTY_ARRAY,
     EMPTY_QUERY,
     TuiDay,
-    TuiDestroyService,
     TuiHoveredService,
     tuiIsNumber,
     tuiIsPresent,
@@ -29,7 +30,7 @@ import {
 } from '@taiga-ui/cdk';
 import type {TuiPoint} from '@taiga-ui/core';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {combineLatest, filter, takeUntil} from 'rxjs';
+import {combineLatest, filter} from 'rxjs';
 
 import {TuiLineDaysChartHintDirective} from './line-days-chart-hint.directive';
 
@@ -41,7 +42,6 @@ const DUMMY: TuiPoint = [NaN, NaN];
     styleUrls: ['./line-days-chart.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        TuiDestroyService,
         TuiHoveredService,
         {
             provide: TuiLineChartHintDirective,
@@ -50,7 +50,7 @@ const DUMMY: TuiPoint = [NaN, NaN];
     ],
 })
 export class TuiLineDaysChartComponent implements AfterViewInit {
-    private readonly destroy$ = inject(TuiDestroyService, {self: true});
+    private readonly destroy$ = inject(DestroyRef);
     private readonly zone = inject(NgZone);
     private readonly hovered$ = inject(TuiHoveredService);
     private readonly options = inject(TUI_LINE_CHART_OPTIONS);
@@ -113,7 +113,7 @@ export class TuiLineDaysChartComponent implements AfterViewInit {
             .pipe(
                 filter(result => !result.some(Boolean)),
                 tuiZonefree(this.zone),
-                takeUntil(this.destroy$),
+                takeUntilDestroyed(this.destroy$),
             )
             .subscribe(() => {
                 this.onHovered(NaN);

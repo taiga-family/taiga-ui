@@ -5,22 +5,18 @@ import {
     ChangeDetectorRef,
     Component,
     ContentChildren,
+    DestroyRef,
     inject,
     Input,
 } from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {
     TUI_DOC_DOCUMENTATION_TEXTS,
     TUI_DOC_EXCLUDED_PROPERTIES,
 } from '@taiga-ui/addon-doc/tokens';
 import type {TuiTypedMatcher} from '@taiga-ui/cdk';
-import {
-    EMPTY_QUERY,
-    TuiDestroyService,
-    tuiHexToRgb,
-    tuiQueryListChanges,
-    tuiWatch,
-} from '@taiga-ui/cdk';
-import {merge, switchMap, takeUntil} from 'rxjs';
+import {EMPTY_QUERY, tuiHexToRgb, tuiQueryListChanges, tuiWatch} from '@taiga-ui/cdk';
+import {merge, switchMap} from 'rxjs';
 
 import {TuiDocDocumentationPropertyConnectorDirective} from './documentation-property-connector.directive';
 import {TuiGetColorPipe} from './pipes/color.pipe';
@@ -33,7 +29,7 @@ import {TuiGetOpacityPipe} from './pipes/opacity.pipe';
     templateUrl: './documentation.template.html',
     styleUrls: ['./documentation.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [TuiGetColorPipe, TuiGetOpacityPipe, TuiDestroyService],
+    providers: [TuiGetColorPipe, TuiGetOpacityPipe],
     animations: [
         trigger('emitEvent', [
             transition(':increment', [style({opacity: 1}), animate('500ms ease-in')]),
@@ -42,7 +38,7 @@ import {TuiGetOpacityPipe} from './pipes/opacity.pipe';
 })
 export class TuiDocDocumentationComponent implements AfterContentInit {
     private readonly cdr = inject(ChangeDetectorRef);
-    private readonly destroy$ = inject(TuiDestroyService, {self: true});
+    private readonly destroy$ = inject(DestroyRef);
     private readonly getColor = inject(TuiGetColorPipe);
     private readonly getOpacity = inject(TuiGetOpacityPipe);
 
@@ -69,7 +65,7 @@ export class TuiDocDocumentationComponent implements AfterContentInit {
             .pipe(
                 switchMap(items => merge(...items.map(({changed$}) => changed$))),
                 tuiWatch(this.cdr),
-                takeUntil(this.destroy$),
+                takeUntilDestroyed(this.destroy$),
             )
             .subscribe();
     }

@@ -1,15 +1,15 @@
 import type {Provider} from '@angular/core';
 import {ElementRef, InjectionToken, Renderer2} from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {
     TUI_IS_IOS,
     TUI_TOUCH_SUPPORTED,
-    TuiDestroyService,
     tuiIsPresent,
     tuiPx,
     tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
 import type {Observable} from 'rxjs';
-import {EMPTY, filter, map, takeUntil} from 'rxjs';
+import {EMPTY, filter, map} from 'rxjs';
 
 export const RIPPLE_ON = 'tuiRippleOn';
 export const RIPPLE_OFF = 'tuiRippleOff';
@@ -29,7 +29,6 @@ export const TUI_RIPPLE_END = new InjectionToken<Observable<HTMLElement>>(
 );
 
 export const TUI_RIPPLE_PROVIDERS: Provider[] = [
-    TuiDestroyService,
     {
         provide: TUI_RIPPLE_START,
         deps: [TUI_TOUCH_SUPPORTED, TUI_IS_IOS, ElementRef, Renderer2],
@@ -69,12 +68,11 @@ export const TUI_RIPPLE_PROVIDERS: Provider[] = [
     },
     {
         provide: TUI_RIPPLE_END,
-        deps: [TUI_TOUCH_SUPPORTED, TUI_IS_IOS, ElementRef, TuiDestroyService],
+        deps: [TUI_TOUCH_SUPPORTED, TUI_IS_IOS, ElementRef],
         useFactory: (
             touchSupported: boolean,
             isIOS: boolean,
             {nativeElement}: ElementRef<HTMLElement>,
-            destroy$: Observable<void>,
         ): Observable<EventTarget> =>
             isIOS || !touchSupported
                 ? EMPTY
@@ -82,7 +80,7 @@ export const TUI_RIPPLE_PROVIDERS: Provider[] = [
                       filter(({animationName}) => animationName === RIPPLE_OFF),
                       map(({target}) => target),
                       filter(tuiIsPresent),
-                      takeUntil(destroy$),
+                      takeUntilDestroyed(),
                   ),
     },
 ];

@@ -1,13 +1,20 @@
 import type {OnInit} from '@angular/core';
-import {ChangeDetectionStrategy, Component, inject, ViewChild} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    DestroyRef,
+    inject,
+    ViewChild,
+} from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import type {TuiCard, TuiInputCardGroupedComponent} from '@taiga-ui/addon-commerce';
 import {tuiCardNumberValidator, tuiDefaultCardValidator} from '@taiga-ui/addon-commerce';
 import type {TuiValuesOf} from '@taiga-ui/cdk';
-import {TUI_IS_IOS, TuiDestroyService} from '@taiga-ui/cdk';
+import {TUI_IS_IOS} from '@taiga-ui/cdk';
 import type {TuiDialogContext} from '@taiga-ui/core';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
-import {BehaviorSubject, map, switchMap, takeUntil} from 'rxjs';
+import {BehaviorSubject, map, switchMap} from 'rxjs';
 
 import type {AccountCard, DataForPayCardModal, FetchedCards} from '../helpers/models';
 import {PaymentMode} from '../helpers/models';
@@ -19,14 +26,13 @@ import {inputCardGroupedCVCValidator} from '../helpers/validator';
     templateUrl: './pay-modal.component.html',
     styleUrls: ['./pay-modal.component.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [TuiDestroyService],
 })
 export class PayModalComponent implements OnInit {
     @ViewChild('cardGroupedInput')
     private readonly cardGroupedInput?: TuiInputCardGroupedComponent;
 
     private readonly payService = inject(PayService);
-    private readonly destroy$ = inject(TuiDestroyService, {self: true});
+    private readonly destroy$ = inject(DestroyRef);
 
     protected readonly form = new FormGroup({
         card: new FormControl<TuiCard | null>(null, [
@@ -77,7 +83,7 @@ export class PayModalComponent implements OnInit {
         this.payProcessing$.next(true);
         this.payService
             .pay()
-            .pipe(takeUntil(this.destroy$))
+            .pipe(takeUntilDestroyed(this.destroy$))
             .subscribe(
                 () => {
                     this.payProcessing$.next(false);
@@ -105,7 +111,7 @@ export class PayModalComponent implements OnInit {
                         .getPrimaryCard()
                         .pipe(map(data => [amount, data] as [number, FetchedCards])),
                 ),
-                takeUntil(this.destroy$),
+                takeUntilDestroyed(this.destroy$),
             )
             .subscribe({
                 next: ([, data]: [number, FetchedCards]) => {

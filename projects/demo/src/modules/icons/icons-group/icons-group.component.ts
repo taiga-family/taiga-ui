@@ -1,13 +1,14 @@
 import {Clipboard} from '@angular/cdk/clipboard';
 import type {OnInit} from '@angular/core';
-import {Component, ContentChild, inject, Input} from '@angular/core';
+import {Component, ContentChild, DestroyRef, inject, Input} from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {FormControl} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TUI_DEFAULT_MATCHER, TuiDestroyService} from '@taiga-ui/cdk';
+import {TUI_DEFAULT_MATCHER} from '@taiga-ui/cdk';
 import {TuiAlertService} from '@taiga-ui/core';
 import type {Observable} from 'rxjs';
-import {debounceTime, distinctUntilChanged, filter, map, takeUntil} from 'rxjs';
+import {debounceTime, distinctUntilChanged, filter, map} from 'rxjs';
 
 import {IconsGroupDirective} from './icons-group.directive';
 
@@ -16,14 +17,13 @@ import {IconsGroupDirective} from './icons-group.directive';
     templateUrl: './icons-group.template.html',
     styleUrls: ['./icons-group.style.less'],
     changeDetection,
-    providers: [TuiDestroyService],
 })
 export class IconsGroupComponent implements OnInit {
     private readonly clipboard = inject(Clipboard);
     private readonly alerts = inject(TuiAlertService);
     private readonly route = inject(ActivatedRoute);
     private readonly router = inject(Router);
-    private readonly destroy$ = inject(TuiDestroyService, {self: true});
+    private readonly destroy$ = inject(DestroyRef);
 
     @Input()
     public icons: Record<string, readonly string[]> = {};
@@ -50,7 +50,7 @@ export class IconsGroupComponent implements OnInit {
                 debounceTime(500),
                 map(search => search || ''),
                 filter(search => search.length > 2 || search.length === 0),
-                takeUntil(this.destroy$),
+                takeUntilDestroyed(this.destroy$),
             )
             .subscribe(search => {
                 void this.router.navigate([], {queryParams: {search}});

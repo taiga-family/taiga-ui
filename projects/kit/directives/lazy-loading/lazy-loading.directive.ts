@@ -8,13 +8,12 @@ import {
 } from '@angular/core';
 import type {SafeResourceUrl} from '@angular/platform-browser';
 import {IntersectionObserverService} from '@ng-web-apis/intersection-observer';
-import {TuiDestroyService} from '@taiga-ui/cdk';
 
 import {TuiLazyLoadingService} from './lazy-loading.service';
 
 @Directive({
     selector: 'img[loading="lazy"]',
-    providers: [TuiLazyLoadingService, IntersectionObserverService, TuiDestroyService],
+    providers: [TuiLazyLoadingService, IntersectionObserverService],
 })
 export class TuiLazyLoadingDirective {
     private readonly el: HTMLImageElement = inject(ElementRef).nativeElement;

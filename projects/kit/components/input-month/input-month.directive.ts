@@ -1,16 +1,16 @@
 import type {DoCheck} from '@angular/core';
 import {Directive, inject} from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {TuiMonth} from '@taiga-ui/cdk';
-import {TuiDestroyService} from '@taiga-ui/cdk';
 import {AbstractTuiTextfieldHost, tuiAsTextfieldHost} from '@taiga-ui/core';
 import {TUI_MONTH_FORMATTER} from '@taiga-ui/kit/tokens';
-import {distinctUntilChanged, Subject, switchMap, takeUntil} from 'rxjs';
+import {distinctUntilChanged, Subject, switchMap} from 'rxjs';
 
 import type {TuiInputMonthComponent} from './input-month.component';
 
 @Directive({
     selector: 'tui-input-month',
-    providers: [tuiAsTextfieldHost(TuiInputMonthDirective), TuiDestroyService],
+    providers: [tuiAsTextfieldHost(TuiInputMonthDirective)],
 })
 export class TuiInputMonthDirective
     extends AbstractTuiTextfieldHost<TuiInputMonthComponent>
@@ -27,7 +27,7 @@ export class TuiInputMonthDirective
             .pipe(
                 distinctUntilChanged(),
                 switchMap(inject(TUI_MONTH_FORMATTER)),
-                takeUntil(inject(TuiDestroyService, {self: true})),
+                takeUntilDestroyed(),
             )
             .subscribe(localizedValue => {
                 this.localizedValue = localizedValue;

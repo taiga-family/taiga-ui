@@ -1,11 +1,11 @@
-import {Component, type ElementRef, inject, ViewChild} from '@angular/core';
+import {Component, DestroyRef, type ElementRef, inject, ViewChild} from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiSetupComponent} from '@demo/utils';
 import {TuiAddonDocModule, type TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiDestroyService} from '@taiga-ui/cdk';
 import {TUI_EXPAND_LOADED, type TuiSizeS} from '@taiga-ui/core';
 import {TuiAccordionModule} from '@taiga-ui/kit';
-import {takeUntil, timer} from 'rxjs';
+import {timer} from 'rxjs';
 
 import {TuiAccordionExample1} from './examples/1';
 import {TuiAccordionExample2} from './examples/2';
@@ -27,10 +27,9 @@ import {TuiAccordionExample5} from './examples/5';
     ],
     templateUrl: './index.html',
     changeDetection,
-    providers: [TuiDestroyService],
 })
 export default class PageComponent {
-    private readonly destroy$ = inject(TuiDestroyService, {self: true});
+    private readonly destroy$ = inject(DestroyRef);
 
     @ViewChild('content')
     protected content?: ElementRef;
@@ -92,7 +91,7 @@ export default class PageComponent {
         }
 
         timer(3000)
-            .pipe(takeUntil(this.destroy$))
+            .pipe(takeUntilDestroyed(this.destroy$))
             .subscribe(() =>
                 this.content?.nativeElement.dispatchEvent(
                     new CustomEvent(TUI_EXPAND_LOADED, {bubbles: true}),

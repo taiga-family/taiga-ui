@@ -1,6 +1,7 @@
 import type {AfterViewInit, QueryList} from '@angular/core';
 import {
     ContentChildren,
+    DestroyRef,
     Directive,
     ElementRef,
     forwardRef,
@@ -9,10 +10,10 @@ import {
     NgZone,
     Renderer2,
 } from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {TuiContext} from '@taiga-ui/cdk';
 import {
     EMPTY_QUERY,
-    TuiDestroyService,
     TuiHoveredService,
     tuiPure,
     tuiQueryListChanges,
@@ -28,14 +29,13 @@ import {
     map,
     startWith,
     switchMap,
-    takeUntil,
 } from 'rxjs';
 
 import {TuiLineChartComponent} from './line-chart.component';
 
 @Directive({
     selector: '[tuiLineChartHint]',
-    providers: [TuiDestroyService, TuiHoveredService],
+    providers: [TuiHoveredService],
 })
 export class TuiLineChartHintDirective implements AfterViewInit {
     @ContentChildren(forwardRef(() => TuiLineChartComponent))
@@ -45,7 +45,7 @@ export class TuiLineChartHintDirective implements AfterViewInit {
     private readonly chartsRef: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
     private readonly renderer = inject(Renderer2);
-    private readonly destroy$ = inject(TuiDestroyService, {self: true});
+    private readonly destroy$ = inject(DestroyRef);
     private readonly zone = inject(NgZone);
     private readonly hovered$ = inject(TuiHoveredService);
 
@@ -57,7 +57,7 @@ export class TuiLineChartHintDirective implements AfterViewInit {
             .pipe(
                 filter(result => !result.some(Boolean)),
                 tuiZonefree(this.zone),
-                takeUntil(this.destroy$),
+                takeUntilDestroyed(this.destroy$),
             )
             .subscribe(() => {
                 this.charts.forEach(chart => chart.onHovered(NaN));

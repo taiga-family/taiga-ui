@@ -1,12 +1,13 @@
 import type {Provider} from '@angular/core';
 import {InjectionToken} from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {TUI_DOC_PAGES, TUI_DOC_TITLE} from '@taiga-ui/addon-doc/tokens';
 import type {TuiDocPages} from '@taiga-ui/addon-doc/types';
-import {TuiDestroyService, tuiIsPresent} from '@taiga-ui/cdk';
+import {tuiIsPresent} from '@taiga-ui/cdk';
 import {tuiLinkOptionsProvider} from '@taiga-ui/core';
 import type {Observable} from 'rxjs';
-import {filter, map, mergeMap, takeUntil} from 'rxjs';
+import {filter, map, mergeMap} from 'rxjs';
 
 function labelsProviderFactory(pages: TuiDocPages): readonly string[] {
     return pages
@@ -36,16 +37,14 @@ export const NAVIGATION_ITEMS: InjectionToken<readonly TuiDocPages[]> =
     new InjectionToken<readonly TuiDocPages[]>('[NAVIGATION_ITEMS]');
 
 export const NAVIGATION_PROVIDERS: Provider[] = [
-    TuiDestroyService,
     tuiLinkOptionsProvider({appearance: 'icon'}),
     {
         provide: NAVIGATION_TITLE,
-        deps: [Router, ActivatedRoute, TUI_DOC_TITLE, TuiDestroyService],
+        deps: [Router, ActivatedRoute, TUI_DOC_TITLE],
         useFactory: (
             router: Router,
             activatedRoute: ActivatedRoute,
             titlePrefix: string,
-            destroy$: Observable<void>,
         ): Observable<string> =>
             router.events.pipe(
                 filter(event => event instanceof NavigationEnd),
@@ -53,7 +52,7 @@ export const NAVIGATION_PROVIDERS: Provider[] = [
                 filter(tuiIsPresent),
                 mergeMap(({data}) => data),
                 map(({title}) => `${titlePrefix}${title}`),
-                takeUntil(destroy$),
+                takeUntilDestroyed(),
             ),
     },
     {

@@ -6,11 +6,11 @@ import {
     HostListener,
     inject,
 } from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {TuiContext} from '@taiga-ui/cdk';
 import {
     EMPTY_CLIENT_RECT,
     tuiClamp,
-    TuiDestroyService,
     TuiHoveredService,
     tuiPure,
     tuiPx,
@@ -27,7 +27,7 @@ import {TUI_ANIMATIONS_SPEED, TUI_VIEWPORT} from '@taiga-ui/core/tokens';
 import {tuiIsObscured, tuiToAnimationOptions} from '@taiga-ui/core/utils';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
-import {map, takeUntil} from 'rxjs';
+import {map} from 'rxjs';
 
 import {TuiHintDirective} from './hint.directive';
 import {TuiHintHoverDirective} from './hint-hover.directive';
@@ -37,7 +37,6 @@ import {TuiHintPositionDirective} from './hint-position.directive';
 const GAP = 4;
 
 export const TUI_HINT_PROVIDERS = [
-    TuiDestroyService,
     TuiPositionService,
     TuiHoveredService,
     tuiPositionAccessorFor('hint', TuiHintPositionDirective),
@@ -85,14 +84,14 @@ export class TuiHintComponent<C = any> {
         inject(TuiPositionService)
             .pipe(
                 map(point => this.visualViewportService.correct(point)),
-                takeUntil(inject(TuiDestroyService, {self: true})),
+                takeUntilDestroyed(),
             )
             .subscribe(([top, left]) => {
                 this.update(top, left);
             });
 
         inject(TuiHoveredService)
-            .pipe(takeUntil(inject(TuiDestroyService, {self: true})))
+            .pipe(takeUntilDestroyed())
             .subscribe(hover => this.hover.toggle(hover));
     }
 

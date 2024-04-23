@@ -1,8 +1,8 @@
 import type {AfterViewInit, QueryList} from '@angular/core';
-import {ContentChildren, Directive, ElementRef, inject} from '@angular/core';
+import {ContentChildren, DestroyRef, Directive, ElementRef, inject} from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {
     EMPTY_QUERY,
-    TuiDestroyService,
     tuiGetClosestFocusable,
     tuiPreventDefault,
     tuiPure,
@@ -20,13 +20,11 @@ import {
     shareReplay,
     switchMap,
     take,
-    takeUntil,
     tap,
 } from 'rxjs';
 
 @Directive({
     selector: 'tui-data-list[tuiDataListDropdownManager]',
-    providers: [TuiDestroyService],
 })
 export class TuiDataListDropdownManagerDirective implements AfterViewInit {
     @ContentChildren(TuiDropdownDirective, {descendants: true})
@@ -35,10 +33,10 @@ export class TuiDataListDropdownManagerDirective implements AfterViewInit {
     @ContentChildren(TuiDropdownDirective, {read: ElementRef, descendants: true})
     private readonly els: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
-    private readonly destroy$ = inject(TuiDestroyService, {self: true});
+    private readonly destroy$ = inject(DestroyRef);
 
     public ngAfterViewInit(): void {
-        this.right$.pipe(takeUntil(this.destroy$)).subscribe(index => {
+        this.right$.pipe(takeUntilDestroyed(this.destroy$)).subscribe(index => {
             this.tryToFocus(index);
         });
 
@@ -77,7 +75,7 @@ export class TuiDataListDropdownManagerDirective implements AfterViewInit {
                         }),
                     );
                 }),
-                takeUntil(this.destroy$),
+                takeUntilDestroyed(this.destroy$),
             )
             .subscribe();
     }

@@ -2,13 +2,9 @@ import type {BooleanInput} from '@angular/cdk/coercion';
 import {coerceBooleanProperty} from '@angular/cdk/coercion';
 import {DOCUMENT} from '@angular/common';
 import {Directive, ElementRef, HostListener, inject, Input} from '@angular/core';
-import {
-    TUI_FALSE_HANDLER,
-    TUI_TRUE_HANDLER,
-    TuiDestroyService,
-    tuiTypedFromEvent,
-} from '@taiga-ui/cdk';
-import {combineLatest, filter, map, merge, takeUntil, tap} from 'rxjs';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {TUI_FALSE_HANDLER, TUI_TRUE_HANDLER, tuiTypedFromEvent} from '@taiga-ui/cdk';
+import {combineLatest, filter, map, merge, tap} from 'rxjs';
 
 const SLIDER_INTERACTION_KEYS = new Set([
     'ArrowLeft',
@@ -27,7 +23,6 @@ const SLIDER_INTERACTION_KEYS = new Set([
  */
 @Directive({
     selector: 'input[tuiSlider][readonly]',
-    providers: [TuiDestroyService],
 })
 export class TuiSliderReadonlyDirective {
     private readonly el: HTMLInputElement = inject(ElementRef).nativeElement;
@@ -62,7 +57,7 @@ export class TuiSliderReadonlyDirective {
         combineLatest([touchMove$, shouldPreventMove$])
             .pipe(
                 filter(([_, shouldPreventMove]) => shouldPreventMove),
-                takeUntil(inject(TuiDestroyService, {self: true})),
+                takeUntilDestroyed(),
             )
             .subscribe(([moveEvent]) => this.preventEvent(moveEvent));
     }

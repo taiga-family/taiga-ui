@@ -1,9 +1,10 @@
 import type {OnInit} from '@angular/core';
-import {ChangeDetectorRef, Component, inject, NgZone} from '@angular/core';
+import {ChangeDetectorRef, Component, DestroyRef, inject, NgZone} from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TUI_IS_E2E, TuiDestroyService, tuiWatch, tuiZoneOptimized} from '@taiga-ui/cdk';
-import {takeUntil, timer} from 'rxjs';
+import {TUI_IS_E2E, tuiWatch, tuiZoneOptimized} from '@taiga-ui/cdk';
+import {timer} from 'rxjs';
 
 @Component({
     selector: 'tui-input-inline-example-3',
@@ -11,11 +12,10 @@ import {takeUntil, timer} from 'rxjs';
     styleUrls: ['./style.less'],
     encapsulation,
     changeDetection,
-    providers: [TuiDestroyService],
 })
 export class TuiInputInlineExample3 implements OnInit {
     private readonly cd = inject(ChangeDetectorRef);
-    private readonly destroy$ = inject(TuiDestroyService, {self: true});
+    private readonly destroy$ = inject(DestroyRef);
     private readonly zone = inject(NgZone);
     protected readonly isE2E = inject(TUI_IS_E2E);
 
@@ -30,7 +30,7 @@ export class TuiInputInlineExample3 implements OnInit {
             .pipe(
                 tuiZoneOptimized(this.zone),
                 tuiWatch(this.cd),
-                takeUntil(this.destroy$),
+                takeUntilDestroyed(this.destroy$),
             )
             .subscribe(value => {
                 this.count = String(value);
