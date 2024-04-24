@@ -1,10 +1,14 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {tuiTablePaginationOptionsProvider} from '@taiga-ui/addon-table';
+import {
+    TuiTablePaginationComponent,
+    tuiTablePaginationOptionsProvider,
+} from '@taiga-ui/addon-table';
 
 @Component({
-    selector: 'tui-table-pagination-example-3',
+    standalone: true,
+    imports: [TuiTablePaginationComponent],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
@@ -14,7 +18,7 @@ import {tuiTablePaginationOptionsProvider} from '@taiga-ui/addon-table';
         }),
     ],
 })
-export class TuiTablePaginationExample3 {
+export default class ExampleComponent {
     protected total = 350;
     protected sizeOptions = [10, 50, 100, this.total];
 }

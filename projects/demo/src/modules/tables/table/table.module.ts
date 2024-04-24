@@ -9,7 +9,7 @@ import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiReorderModule,
     TuiTableModule,
-    TuiTablePaginationModule,
+    TuiTablePaginationComponent,
 } from '@taiga-ui/addon-table';
 import {TuiLetModule, TuiValidatorDirective} from '@taiga-ui/cdk';
 import {
@@ -72,7 +72,7 @@ import {ExampleTuiTableComponent} from './table.component';
         TuiAccordionModule,
         TuiLoaderModule,
         TuiLetModule,
-        TuiTablePaginationModule,
+        TuiTablePaginationComponent,
         TuiTextfieldControllerModule,
         TuiDropdownModule,
         TuiReorderModule,

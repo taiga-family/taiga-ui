@@ -1105,9 +1105,7 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.TablePagination,
-        loadChildren: async () =>
-            (await import('../tables/table-pagination/table-pagination.module'))
-                .ExampleTuiTablePaginationModule,
+        loadComponent: async () => import('../components/table-pagination'),
         title: 'TablePagination',
     }),
     route({

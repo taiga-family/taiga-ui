@@ -1,7 +1,8 @@
 <tui-table-pagination
+    [page]="page"
+    [size]="size"
     [total]="237"
-    [(page)]="page"
-    [(size)]="size"
+    (paginationChange)="onPagination($event)"
 />
 <p>Current page: {{ page }}</p>
 <p>Items per page: {{ size }}</p>
