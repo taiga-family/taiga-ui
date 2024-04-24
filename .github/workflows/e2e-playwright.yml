@@ -108,7 +108,7 @@ jobs:
 
       - name: Download artifacts / ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}
         continue-on-error: true
-        uses: actions/download-artifact@v4.1.6
+        uses: actions/download-artifact@v4.1.7
         with:
           path: ./total/playwright
           pattern: ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}_*
