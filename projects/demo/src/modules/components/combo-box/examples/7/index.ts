@@ -1,14 +1,26 @@
+import {JsonPipe, NgFor} from '@angular/common';
 import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiDataListModule} from '@taiga-ui/core';
+import {TuiComboBoxModule, TuiFilterByInputPipeModule} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-combo-box-example-7',
+    standalone: true,
+    imports: [
+        NgFor,
+        JsonPipe,
+        FormsModule,
+        TuiComboBoxModule,
+        TuiDataListModule,
+        TuiFilterByInputPipeModule,
+    ],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class TuiComboBoxExample7 {
+export default class ExampleComponent {
     protected value = null;
 
     protected readonly items = [

@@ -1,15 +1,30 @@
+import {ScrollingModule} from '@angular/cdk/scrolling';
 import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiLetModule} from '@taiga-ui/cdk';
+import {TuiDataListModule, TuiScrollableDirective} from '@taiga-ui/core';
+import {TuiComboBoxModule, TuiFilterByInputPipeModule} from '@taiga-ui/kit';
 
 @Component({
+    standalone: true,
     selector: 'tui-combo-box-example-5',
+    imports: [
+        FormsModule,
+        TuiLetModule,
+        TuiComboBoxModule,
+        TuiDataListModule,
+        TuiFilterByInputPipeModule,
+        ScrollingModule,
+        TuiScrollableDirective,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiComboBoxExample5 {
+export default class ExampleComponent {
     protected value = null;
 
     protected readonly countries = [

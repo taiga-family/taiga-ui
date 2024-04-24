@@ -1,6 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiDemoModule} from '@demo/utils';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import {tuiDocExcludeProperties} from '@taiga-ui/addon-doc';
 import type {TuiIdentityMatcher, TuiStringHandler, TuiStringMatcher} from '@taiga-ui/cdk';
@@ -10,11 +11,20 @@ import {
     tuiProvide,
     tuiPure,
 } from '@taiga-ui/cdk';
-import type {TuiValueContentContext} from '@taiga-ui/core';
+import {
+    TuiDropdownModule,
+    TuiHintModule,
+    TuiNotificationModule,
+    TuiSvgComponent,
+    TuiTextfieldControllerModule,
+    type TuiValueContentContext,
+} from '@taiga-ui/core';
+import {TuiComboBoxModule, TuiDataListWrapperModule} from '@taiga-ui/kit';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
+import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
 
 class Account {
     constructor(
@@ -28,16 +38,28 @@ class Account {
 }
 
 @Component({
-    selector: 'example-tui-combo-box',
-    templateUrl: './combo-box.template.html',
-    styleUrls: ['./combo-box.style.less'],
+    standalone: true,
+    imports: [
+        TuiDemoModule,
+        ReactiveFormsModule,
+        TuiComboBoxModule,
+        TuiDataListWrapperModule,
+        TuiNotificationModule,
+        TuiDropdownModule,
+        TuiHintModule,
+        TuiTextfieldControllerModule,
+        TuiSvgComponent,
+        InheritedDocumentationModule,
+    ],
+    templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     changeDetection,
     providers: [
-        tuiProvide(ABSTRACT_PROPS_ACCESSOR, ExampleTuiComboBoxComponent),
+        tuiProvide(ABSTRACT_PROPS_ACCESSOR, ExampleComponent),
         tuiDocExcludeProperties(['tuiTextfieldPrefix', 'tuiTextfieldPostfix']),
     ],
 })
-export class ExampleTuiComboBoxComponent extends AbstractExampleTuiControl {
+export default class ExampleComponent extends AbstractExampleTuiControl {
     @ViewChild('valueTemplateContent')
     private readonly valueTemplateRef: PolymorpheusContent<
         TuiValueContentContext<Account>
@@ -49,57 +71,26 @@ export class ExampleTuiComboBoxComponent extends AbstractExampleTuiControl {
 
     public override iconLeft = this.iconVariants[0];
 
-    protected readonly exampleForm = import('./examples/import/declare-form.md?raw');
+    protected readonly exampleForm = import('./examples/import/form.md?raw');
 
-    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
+    protected readonly exampleModule = import('./examples/import/import.md?raw');
 
-    protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
-
-    protected readonly example1: TuiDocExample = {
-        TypeScript: import('./examples/1/index.ts?raw'),
-        HTML: import('./examples/1/index.html?raw'),
-        LESS: import('./examples/1/index.less?raw'),
-    };
+    protected readonly exampleHtml = import('./examples/import/template.md?raw');
 
     protected readonly example2: TuiDocExample = {
-        TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
+        TypeScript: import('./examples/2/index.ts?raw'),
         LESS: import('./examples/2/index.less?raw'),
         'user.ts': import('./examples/2/user.ts?raw'),
         'request.service.ts': import('./examples/2/request.service.ts?raw'),
         'database-mock-data.ts': import('./examples/2/database-mock-data.ts?raw'),
     };
 
-    protected readonly example3: TuiDocExample = {
-        TypeScript: import('./examples/3/index.ts?raw'),
-        HTML: import('./examples/3/index.html?raw'),
-    };
-
-    protected readonly example4: TuiDocExample = {
-        TypeScript: import('./examples/4/index.ts?raw'),
-        HTML: import('./examples/4/index.html?raw'),
-    };
-
     protected readonly example5: TuiDocExample = {
-        TypeScript: import('./examples/5/index.ts?raw'),
         HTML: import('./examples/5/index.html?raw'),
+        TypeScript: import('./examples/5/index.ts?raw'),
         LESS: import('./examples/5/index.less?raw'),
         'index-change.directive.ts': import('./examples/5/index-change.directive.ts?raw'),
-    };
-
-    protected readonly example6: TuiDocExample = {
-        TypeScript: import('./examples/6/index.ts?raw'),
-        HTML: import('./examples/6/index.html?raw'),
-    };
-
-    protected readonly example7: TuiDocExample = {
-        TypeScript: import('./examples/7/index.ts?raw'),
-        HTML: import('./examples/7/index.html?raw'),
-    };
-
-    protected readonly example8: TuiDocExample = {
-        TypeScript: import('./examples/8/index.ts?raw'),
-        HTML: import('./examples/8/index.html?raw'),
     };
 
     protected readonly items = [

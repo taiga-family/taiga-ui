@@ -1,7 +1,14 @@
+import {JsonPipe} from '@angular/common';
 import {Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {
+    TuiComboBoxModule,
+    TuiDataListWrapperModule,
+    TuiFilterByInputPipeModule,
+    TuiStringifyContentPipeModule,
+} from '@taiga-ui/kit';
 
 interface Dictionary {
     readonly id: number;
@@ -18,12 +25,20 @@ const DICTIONARY: Dictionary[] = [
 ];
 
 @Component({
-    selector: 'tui-combo-box-example-8',
+    standalone: true,
+    imports: [
+        JsonPipe,
+        ReactiveFormsModule,
+        TuiComboBoxModule,
+        TuiDataListWrapperModule,
+        TuiStringifyContentPipeModule,
+        TuiFilterByInputPipeModule,
+    ],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class TuiComboBoxExample8 {
+export default class ExampleComponent {
     protected readonly control = new FormControl(3);
     protected readonly items = DICTIONARY.map(({id}) => id);
     protected readonly stringify = (id: number): string =>
