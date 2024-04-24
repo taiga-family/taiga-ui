@@ -1,4 +1,4 @@
-import {tuiDragAndDropFrom, TuiDragStage} from '@taiga-ui/cdk';
+import {tuiDragAndDropFrom} from '@taiga-ui/cdk';
 import {skip, take} from 'rxjs';
 
 describe('tuiDragAndDropFrom', () => {
@@ -27,7 +27,7 @@ describe('tuiDragAndDropFrom', () => {
 
         element.dispatchEvent(new Event('mousedown'));
         element.dispatchEvent(new Event('mousemove'));
-        expect(result).toBe(TuiDragStage.Start);
+        expect(result).toBe('start');
     });
 
     it('emits Continues when drag continues', () => {
@@ -42,7 +42,7 @@ describe('tuiDragAndDropFrom', () => {
 
         element.dispatchEvent(new Event('mousedown'));
         document.dispatchEvent(new Event('mousemove'));
-        expect(result).toBe(TuiDragStage.Continues);
+        expect(result).toBe('continues');
     });
 
     it('emits End when drag ends', () => {
@@ -58,6 +58,6 @@ describe('tuiDragAndDropFrom', () => {
         element.dispatchEvent(new Event('mousedown'));
         document.dispatchEvent(new Event('mousemove'));
         document.dispatchEvent(new Event('dragend'));
-        expect(result).toBe(TuiDragStage.End);
+        expect(result).toBe('end');
     });
 });

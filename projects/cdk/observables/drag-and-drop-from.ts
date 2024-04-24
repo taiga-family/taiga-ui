@@ -6,13 +6,7 @@ import {concat, endWith, map, merge, repeat, take, takeWhile} from 'rxjs';
 import {tuiMouseDragFinishFrom} from './mouse-drag-finish-from';
 import {tuiTypedFromEvent} from './typed-from-event';
 
-// TODO: change type in v4.0
-// eslint-disable-next-line no-restricted-syntax
-export enum TuiDragStage {
-    Start,
-    Continues,
-    End,
-}
+export type TuiDragStage = 'continues' | 'end' | 'start';
 
 export class TuiDragState {
     constructor(
@@ -31,15 +25,15 @@ export function tuiDragAndDropFrom(element: Element): Observable<TuiDragState> {
     return concat(
         tuiTypedFromEvent(element, 'mousedown').pipe(
             take(1),
-            map(event => new TuiDragState(TuiDragStage.Start, event)),
+            map(event => new TuiDragState('start', event)),
         ),
         merge(
             tuiTypedFromEvent(ownerDocument, 'mousemove').pipe(
-                map(event => new TuiDragState(TuiDragStage.Continues, event)),
+                map(event => new TuiDragState('continues', event)),
             ),
             tuiMouseDragFinishFrom(ownerDocument).pipe(
                 take(1),
-                map(event => new TuiDragState(TuiDragStage.End, event)),
+                map(event => new TuiDragState('end', event)),
                 endWith(null),
             ),
         ).pipe(takeWhile(tuiIsPresent)),

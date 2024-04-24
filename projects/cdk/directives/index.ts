@@ -3,7 +3,6 @@ export * from '@taiga-ui/cdk/directives/auto-focus';
 export * from '@taiga-ui/cdk/directives/click-outside';
 export * from '@taiga-ui/cdk/directives/control';
 export * from '@taiga-ui/cdk/directives/copy-processor';
-export * from '@taiga-ui/cdk/directives/drag';
 export * from '@taiga-ui/cdk/directives/droppable';
 export * from '@taiga-ui/cdk/directives/element';
 export * from '@taiga-ui/cdk/directives/focus-trap';
