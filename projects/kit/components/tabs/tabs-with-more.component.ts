@@ -243,7 +243,7 @@ export class TuiTabsWithMoreComponent implements AfterViewChecked, AfterViewInit
             maxIndex * margin -
             tabs[tabs.length - 1].scrollWidth;
 
-        if (total <= clientWidth) {
+        if (Number.isNaN(total) || total <= clientWidth) {
             return Infinity;
         }
 
