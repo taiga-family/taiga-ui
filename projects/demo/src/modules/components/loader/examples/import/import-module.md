@@ -1,11 +1,12 @@
 ```ts
 import {TuiLoaderModule} from '@taiga-ui/core';
 
-@NgModule({
+@Component({
+  standalone: true,
   imports: [
     // ...
     TuiLoaderModule,
   ],
 })
-export class MyModule {}
+export class MyComponent {}
 ```

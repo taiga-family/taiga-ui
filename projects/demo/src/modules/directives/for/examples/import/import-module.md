@@ -4,7 +4,8 @@ import {TuiForModule} from '@taiga-ui/cdk';
 
 // ...
 
-@NgModule({
+@Component({
+  standalone: true,
   imports: [
     // ...
     CommonModule,
@@ -12,5 +13,5 @@ import {TuiForModule} from '@taiga-ui/cdk';
   ],
   // ...
 })
-export class MyModule {}
+export class MyComponent {}
 ```

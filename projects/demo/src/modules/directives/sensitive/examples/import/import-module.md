@@ -1,14 +1,15 @@
 ```ts
-import {NgModule} from '@angular/core';
+import {Component} from '@angular/core';
 import {TuiSensitiveDirective} from '@taiga-ui/kit';
 
 // ...
 
-@NgModule({
+@Component({
+  standalone: true,
   imports: [
     // ...
     TuiSensitiveDirective,
   ],
 })
-export class MyModule {}
+export class MyComponent {}
 ```

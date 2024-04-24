@@ -3,12 +3,13 @@ import {TuiAutoFocusDirective} from '@taiga-ui/cdk';
 
 // ...
 
-@NgModule({
+@Component({
+  standalone: true,
   imports: [
     // ...
     TuiAutoFocusDirective,
   ],
   // ...
 })
-export class MyModule {}
+export class MyComponent {}
 ```

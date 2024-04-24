@@ -3,12 +3,13 @@ import {TuiPanModule} from '@taiga-ui/cdk';
 
 // ...
 
-@NgModule({
+@Component({
+  standalone: true,
   imports: [
     // ...
     TuiPanModule,
   ],
   // ...
 })
-export class MyModule {}
+export class MyComponent {}
 ```

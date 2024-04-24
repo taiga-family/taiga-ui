@@ -3,12 +3,13 @@ import {TuiDataListWrapperModule} from '@taiga-ui/kit';
 
 // ...
 
-@NgModule({
+@Component({
+  standalone: true,
   imports: [
     // ...
     TuiDataListWrapperModule,
   ],
   // ...
 })
-export class MyModule {}
+export class MyComponent {}
 ```

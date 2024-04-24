@@ -1,16 +1,17 @@
 ```ts
-import {NgModule} from '@angular/core';
+import {Component} from '@angular/core';
 import {TuiButtonDirective} from '@taiga-ui/core';
 import {TuiButtonVerticalDirective} from '@taiga-ui/kit';
 
 // ...
 
-@NgModule({
+@Component({
+  standalone: true,
   imports: [
     // ...
     TuiButtonDirective,
     TuiButtonVerticalDirective,
   ],
 })
-export class MyModule {}
+export class MyComponent {}
 ```

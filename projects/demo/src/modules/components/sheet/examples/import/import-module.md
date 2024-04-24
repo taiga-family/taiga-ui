@@ -3,12 +3,13 @@ import {TuiSheetModule} from '@taiga-ui/addon-mobile';
 
 // ...
 
-@NgModule({
+@Component({
+  standalone: true,
   imports: [
     // ...
     TuiSheetModule,
   ],
   // ...
 })
-export class MyModule {}
+export class MyComponent {}
 ```

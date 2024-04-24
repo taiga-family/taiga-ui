@@ -3,12 +3,13 @@ import {TuiCurrencyPipeModule} from '@taiga-ui/addon-commerce';
 
 //...
 
-@NgModule({
+@Component({
+  standalone: true,
   imports: [
     //...
     TuiCurrencyPipeModule,
   ],
   // ...
 })
-export class MyModule {}
+export class MyComponent {}
 ```

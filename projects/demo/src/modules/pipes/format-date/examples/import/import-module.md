@@ -3,12 +3,13 @@ import {TuiFormatDatePipeModule} from '@taiga-ui/core';
 
 //...
 
-@NgModule({
+@Component({
+  standalone: true,
   imports: [
     // ...
     TuiFormatDatePipeModule,
   ],
   //  ...
 })
-export class MyModule {}
+export class MyComponent {}
 ```

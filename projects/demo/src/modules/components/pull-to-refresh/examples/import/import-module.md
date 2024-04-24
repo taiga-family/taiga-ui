@@ -3,12 +3,13 @@ import {TuiPullToRefreshModule} from '@taiga-ui/addon-mobile';
 
 // ...
 
-@NgModule({
+@Component({
+  standalone: true,
   imports: [
     // ...
     TuiPullToRefreshModule,
   ],
   // ...
 })
-export class MyModule {}
+export class MyComponent {}
 ```

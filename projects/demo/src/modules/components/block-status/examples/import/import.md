@@ -3,12 +3,13 @@ import {TuiBlockStatusModule} from '@taiga-ui/layout';
 
 // ...
 
-@NgModule({
+@Component({
+  standalone: true,
   imports: [
     // ...
     TuiBlockStatusModule,
   ],
   // ...
 })
-export class MyModule {}
+export class MyComponent {}
 ```

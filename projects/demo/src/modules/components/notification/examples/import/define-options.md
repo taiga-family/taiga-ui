@@ -3,7 +3,8 @@ import {tuiNotificationOptionsProvider} from '@taiga-ui/core';
 
 // ...
 
-@NgModule({
+@Component({
+  standalone: true,
   providers: [
     tuiNotificationOptionsProvider({
       icon: 'tuiIconHelpCircle',
@@ -12,5 +13,5 @@ import {tuiNotificationOptionsProvider} from '@taiga-ui/core';
   ],
   // ...
 })
-export class MyModule {}
+export class MyComponent {}
 ```

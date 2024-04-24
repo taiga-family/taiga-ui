@@ -3,11 +3,12 @@ import {TuiAmountPipeModule} from '@taiga-ui/experimental';
 
 // ...
 
-@NgModule({
+@Component({
+  standalone: true,
   imports: [
     // ...
     TuiAmountPipeModule,
   ],
 })
-export class MyModule {}
+export class MyComponent {}
 ```

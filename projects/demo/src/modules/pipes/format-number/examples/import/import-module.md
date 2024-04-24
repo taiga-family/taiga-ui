@@ -3,12 +3,13 @@ import {TuiFormatNumberPipeModule} from '@taiga-ui/core';
 
 //...
 
-@NgModule({
+@Component({
+  standalone: true,
   imports: [
     // ...
     TuiFormatNumberPipeModule,
   ],
   //  ...
 })
-export class MyModule {}
+export class MyComponent {}
 ```

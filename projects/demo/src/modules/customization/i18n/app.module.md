@@ -2,7 +2,8 @@
 import {TuiLanguageName} from '@taiga-ui/i18n/interfaces';
 import {tuiLanguageSwitcher} from '@taiga-ui/i18n/switch';
 
-@NgModule({
+@Component({
+  standalone: true,
   imports: [
     // ...
   ],
@@ -23,5 +24,5 @@ import {tuiLanguageSwitcher} from '@taiga-ui/i18n/switch';
     ),
   ],
 })
-export class AppModule {}
+export class MyComponent {}
 ```

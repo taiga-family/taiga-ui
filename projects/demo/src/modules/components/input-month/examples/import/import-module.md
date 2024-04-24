@@ -3,12 +3,13 @@ import {TuiInputMonthModule} from 'packageName';
 
 // ...
 
-@NgModule({
+@Component({
+  standalone: true,
   imports: [
     // ...
     TuiInputMonthModule,
   ],
   // ...
 })
-export class MyModule {}
+export class MyComponent {}
 ```

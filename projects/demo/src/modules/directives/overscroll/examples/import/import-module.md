@@ -3,12 +3,13 @@ import {TuiOverscrollModule} from '@taiga-ui/cdk';
 
 // ...
 
-@NgModule({
+@Component({
+  standalone: true,
   imports: [
     // ...
     TuiOverscrollModule,
   ],
   // ...
 })
-export class MyModule {}
+export class MyComponent {}
 ```

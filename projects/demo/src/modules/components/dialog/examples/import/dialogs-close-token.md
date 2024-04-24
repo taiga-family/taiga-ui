@@ -1,5 +1,6 @@
 ```ts
-@NgModule({
+@Component({
+  standalone: true,
   // ...
   providers: [
     {
@@ -9,5 +10,5 @@
     },
   ],
 })
-export class MyModule {}
+export class MyComponent {}
 ```

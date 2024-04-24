@@ -3,7 +3,8 @@ import {TuiTooltipModule, TuiHintModule} from '@taiga-ui/core';
 
 // ...
 
-@NgModule({
+@Component({
+  standalone: true,
   imports: [
     // ...
     TuiTooltipModule,
@@ -11,5 +12,5 @@ import {TuiTooltipModule, TuiHintModule} from '@taiga-ui/core';
   ],
   // ...
 })
-export class MyModule {}
+export class MyComponent {}
 ```

@@ -3,7 +3,8 @@ import {TuiScrollbarComponent} from '@taiga-ui/core';
 
 // ...
 
-@NgModule({
+@Component({
+  standalone: true,
   // ...
   imports: [
     //  ...
@@ -11,5 +12,5 @@ import {TuiScrollbarComponent} from '@taiga-ui/core';
   ],
   // ...
 })
-export class MyModule {}
+export class MyComponent {}
 ```

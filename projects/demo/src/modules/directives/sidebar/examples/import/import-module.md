@@ -4,7 +4,8 @@ import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
 
 // ...
 
-@NgModule({
+@Component({
+  standalone: true,
   imports: [
     // ...
     TuiSidebarModule,
@@ -12,5 +13,5 @@ import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
   ],
   // ...
 })
-export class MyModule {}
+export class MyComponent {}
 ```

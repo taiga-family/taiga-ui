@@ -50,7 +50,8 @@ If you want to change it, you need to provide `TUI_LANGUAGE` token in your app.m
 ```ts
 import {TUI_LANGUAGE, TUI_RUSSIAN_LANGUAGE} from '@taiga-ui/i18n';
 
-@NgModule({
+@Component({
+  standalone: true,
   // ...
   providers: [
     {
@@ -59,7 +60,7 @@ import {TUI_LANGUAGE, TUI_RUSSIAN_LANGUAGE} from '@taiga-ui/i18n';
     },
   ],
 })
-export class AppModule {}
+export class AppComponent {}
 ```
 
 You can also switch languages on the fly. Use `useFactory` or `useClass` with a service to make a stream of
@@ -110,7 +111,8 @@ export const TUI_SERBIAN_LANGUAGE: TuiLanguage = {
 import {TUI_LANGUAGE} from '@taiga-ui/i18n';
 import {TUI_SERBIAN_LANGUAGE} from './serbian';
 
-@NgModule({
+@Component({
+  standalone: true,
   // ...
   providers: [
     {
@@ -119,7 +121,7 @@ import {TUI_SERBIAN_LANGUAGE} from './serbian';
     },
   ],
 })
-export class AppModule {}
+export class AppComponent {}
 ```
 
 Thank you!

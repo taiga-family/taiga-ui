@@ -3,12 +3,13 @@ import {TuiCalendarMonthModule} from '@taiga-ui/kit';
 
 // ...
 
-@NgModule({
+@Component({
+  standalone: true,
   imports: [
     // ...
     TuiCalendarMonthModule,
   ],
   // ...
 })
-export class MyModule {}
+export class MyComponent {}
 ```

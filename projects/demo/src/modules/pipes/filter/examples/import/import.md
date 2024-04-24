@@ -3,12 +3,13 @@ import {TuiFilterPipe} from '@taiga-ui/cdk';
 
 // ...
 
-@NgModule({
+@Component({
+  standalone: true,
   imports: [
     // ...
     TuiFilterPipe,
   ],
   // ...
 })
-export class MyModule {}
+export class MyComponent {}
 ```

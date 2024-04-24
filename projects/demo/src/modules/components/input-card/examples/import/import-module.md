@@ -3,7 +3,8 @@ import {TuiInputCardModule, TuiInputCVCModule, TuiInputExpireModule} from '@taig
 
 // ...
 
-@NgModule({
+@Component({
+  standalone: true,
   imports: [
     // ...
     TuiInputCardModule,
@@ -12,5 +13,5 @@ import {TuiInputCardModule, TuiInputCVCModule, TuiInputExpireModule} from '@taig
   ],
   // ...
 })
-export class MyModule {}
+export class MyComponent {}
 ```

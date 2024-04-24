@@ -3,12 +3,13 @@ import {TuiValueChangesModule} from '@taiga-ui/cdk';
 
 // ...
 
-@NgModule({
+@Component({
+  standalone: true,
   imports: [
     // ...
     TuiValueChangesModule,
   ],
   // ...
 })
-export class MyModule {}
+export class MyComponent {}
 ```

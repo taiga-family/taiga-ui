@@ -3,12 +3,13 @@ import {TuiTabBarModule} from '@taiga-ui/addon-mobile';
 
 // ...
 
-@NgModule({
+@Component({
+  standalone: true,
   imports: [
     // ...
     TuiTabBarModule,
   ],
   // ...
 })
-export class AppModule {}
+export class MyComponent {}
 ```

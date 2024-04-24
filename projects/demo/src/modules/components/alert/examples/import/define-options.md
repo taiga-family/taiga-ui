@@ -3,7 +3,8 @@ import {tuiNotificationOptionsProvider} from '@taiga-ui/core';
 
 // ...
 
-@NgModule({
+@Component({
+  standalone: true,
   providers: [
     tuiNotificationOptionsProvider({
       label: ({status}: any) => status[0].toUpperCase() + status.slice(1),
@@ -13,5 +14,5 @@ import {tuiNotificationOptionsProvider} from '@taiga-ui/core';
   ],
   //  ...
 })
-export class MyModule {}
+export class MyComponent {}
 ```

@@ -2,7 +2,8 @@
 import {tuiLoaderOptionsProvider} from '@taiga-ui/core';
 // ...
 
-@NgModule({
+@Component({
+  standalone: true,
   providers: [
     tuiLoaderOptionsProvider({
       size: 'l',
@@ -11,5 +12,5 @@ import {tuiLoaderOptionsProvider} from '@taiga-ui/core';
     }),
   ],
 })
-export class MyModule {}
+export class MyComponent {}
 ```

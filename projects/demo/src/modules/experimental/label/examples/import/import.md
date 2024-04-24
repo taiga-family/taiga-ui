@@ -5,7 +5,8 @@ import {TuiCheckboxComponent} from '@taiga-ui/kit';
 
 // ...
 
-@NgModule({
+@Component({
+  standalone: true,
   imports: [
     // ...
     FormsModule,
@@ -14,5 +15,5 @@ import {TuiCheckboxComponent} from '@taiga-ui/kit';
   ],
   // ...
 })
-export class MyModule {}
+export class MyComponent {}
 ```

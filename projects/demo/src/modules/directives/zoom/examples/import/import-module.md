@@ -3,12 +3,13 @@ import {TuiZoomModule} from '@taiga-ui/cdk';
 
 // ...
 
-@NgModule({
+@Component({
+  standalone: true,
   imports: [
     // ...
     TuiZoomModule,
   ],
   // ...
 })
-export class MyModule {}
+export class MyComponent {}
 ```

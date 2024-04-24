@@ -3,7 +3,8 @@ import {TUI_INPUT_PASSWORD_OPTIONS, TUI_INPUT_PASSWORD_DEFAULT_OPTIONS} from '@t
 
 // ...
 
-@NgModule({
+@Component({
+  standalone: true,
   providers: [
     {
       provide: TUI_INPUT_PASSWORD_OPTIONS,
@@ -18,5 +19,5 @@ import {TUI_INPUT_PASSWORD_OPTIONS, TUI_INPUT_PASSWORD_DEFAULT_OPTIONS} from '@t
   ],
   // ...
 })
-export class MyModule {}
+export class MyComponent {}
 ```

@@ -1,14 +1,15 @@
 ```ts
-import {TuiLazyLoadingModule} from '@taiga-ui/kit';
+import {TuiLazyLoadingComponent} from '@taiga-ui/kit';
 
 // ...
 
-@NgModule({
+@Component({
+  standalone: true,
   imports: [
     // ...
-    TuiLazyLoadingModule,
+    TuiLazyLoadingComponent,
   ],
   // ...
 })
-export class MyModule {}
+export class MyComponent {}
 ```

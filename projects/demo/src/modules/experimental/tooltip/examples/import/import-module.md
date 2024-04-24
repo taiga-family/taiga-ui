@@ -4,12 +4,13 @@ import {TuiTooltipModule} from '@taiga-ui/experimental';
 
 // ...
 
-@NgModule({
+@Component({
+  standalone: true,
   imports: [
     // ...
     TuiTooltipModule,
   ],
   // ...
 })
-export class MyModule {}
+export class MyComponent {}
 ```

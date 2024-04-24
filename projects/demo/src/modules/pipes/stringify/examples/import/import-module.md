@@ -3,12 +3,13 @@ import {TuiStringifyPipeModule} from '@taiga-ui/kit';
 
 // ...
 
-@NgModule({
+@Component({
+  standalone: true,
   imports: [
     //...
     TuiStringifyPipeModule,
   ],
   //  ...
 })
-export class MyModule {}
+export class MyComponent {}
 ```

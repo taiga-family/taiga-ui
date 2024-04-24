@@ -3,12 +3,13 @@ import {TuiGroupDirective} from '@taiga-ui/core';
 
 // ...
 
-@NgModule({
+@Component({
+  standalone: true,
   imports: [
     // ...
     TuiGroupDirective,
   ],
   // ...
 })
-export class MyModule {}
+export class MyComponent {}
 ```

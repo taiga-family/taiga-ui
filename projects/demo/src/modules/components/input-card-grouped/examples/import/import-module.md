@@ -3,12 +3,13 @@ import {TuiInputCardGroupedModule} from '@taiga-ui/addon-commerce';
 
 // ...
 
-@NgModule({
+@Component({
+  standalone: true,
   imports: [
     // ...
     TuiInputCardGroupedModule,
   ],
   // ...
 })
-export class MyModule {}
+export class MyComponent {}
 ```

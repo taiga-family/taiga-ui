@@ -4,7 +4,8 @@ import {TuiRangeModule} from '@taiga-ui/kit';
 
 // ...
 
-@NgModule({
+@Component({
+  standalone: true,
   imports: [
     // ...
     FormsModule,

@@ -2,12 +2,13 @@
 import {TuiDropdownModule} from '@taiga-ui/core';
 // ...
 
-@NgModule({
+@Component({
+  standalone: true,
   imports: [
     // ...
     TuiDropdownModule,
   ],
   // ...
 })
-export class MyModule {}
+export class MyComponent {}
 ```

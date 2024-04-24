@@ -2,7 +2,8 @@
 import {TuiDayOfWeek} from '@taiga-ui/cdk';
 import {TUI_FIRST_DAY_OF_WEEK} from '@taiga-ui/core';
 
-@NgModule({
+@Component({
+  standalone: true,
   // ...
   providers: [
     {
@@ -11,5 +12,5 @@ import {TUI_FIRST_DAY_OF_WEEK} from '@taiga-ui/core';
     },
   ],
 })
-export class MyModule {}
+export class MyComponent {}
 ```
