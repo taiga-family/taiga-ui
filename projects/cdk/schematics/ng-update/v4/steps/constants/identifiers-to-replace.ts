@@ -371,4 +371,8 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             {name: 'TuiSurfaceDirective', moduleSpecifier: '@taiga-ui/core'},
         ],
     },
+    {
+        from: {name: 'TuiLinkModule', moduleSpecifier: '@taiga-ui/core'},
+        to: {name: 'TuiLinkDirective', moduleSpecifier: '@taiga-ui/core'},
+    },
 ];

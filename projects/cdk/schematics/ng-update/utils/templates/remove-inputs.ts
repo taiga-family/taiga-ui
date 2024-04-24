@@ -23,10 +23,10 @@ export function removeInputs({
     const template = getTemplateFromTemplateResource(resource, fileSystem);
     const templateOffset = getTemplateOffset(resource);
 
-    data.forEach(({inputName, tags}) => {
+    data.forEach(({inputName, tags, filterFn}) => {
         const offsets = [
-            ...getInputPropertyOffsets(template, inputName, tags),
-            ...getInputPropertyOffsets(template, `[${inputName}]`, tags),
+            ...getInputPropertyOffsets(template, inputName, tags, filterFn),
+            ...getInputPropertyOffsets(template, `[${inputName}]`, tags, filterFn),
         ];
 
         offsets.forEach(([start, end]) => {

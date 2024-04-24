@@ -13,7 +13,8 @@ export function migrateStyles(): void {
                 // eslint-disable-next-line
                 .replace(/^(.*--tui-rating-size.*)$/gm, `${TUI_RATING_WARNING}\n$1`)
                 // eslint-disable-next-line
-                .replace(/^(.*--tui-rating-gap.*)$/gm, `${TUI_RATING_WARNING}\n$1`);
+                .replace(/^(.*--tui-rating-gap.*)$/gm, `${TUI_RATING_WARNING}\n$1`)
+                .replaceAll('--tui-link-icon-size', '--tui-icon-size');
 
             sourceFile.replaceWithText(fullText);
         });
