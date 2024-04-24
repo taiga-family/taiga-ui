@@ -270,10 +270,8 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.Carousel,
-        loadChildren: async () =>
-            (await import('../components/carousel/carousel.module'))
-                .ExampleTuiCarouselModule,
         title: 'Carousel',
+        loadComponent: async () => import('../components/carousel'),
     }),
     route({
         path: DemoRoute.ThumbnailCard,

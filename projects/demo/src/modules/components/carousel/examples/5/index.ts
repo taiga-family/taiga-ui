@@ -1,15 +1,18 @@
+import {NgFor} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiCarouselModule, TuiIslandModule, TuiPaginationModule} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-carousel-example-5',
+    standalone: true,
+    imports: [TuiCarouselModule, NgFor, TuiIslandModule, TuiPaginationModule],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiCarouselExample5 {
+export default class ExampleComponent {
     protected index = 0;
 
     protected readonly itemsCount = 3;

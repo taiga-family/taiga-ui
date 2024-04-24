@@ -27,44 +27,12 @@
         Carousel allows you to rotate through arbitrary items. Multiple items can be shown simultaneously.
 
         <tui-doc-example
-            id="single"
-            heading="Single"
-            [content]="example1"
-        >
-            <tui-carousel-example-1 (touchstart.passive.stop)="(0)" />
-        </tui-doc-example>
-
-        <tui-doc-example
-            id="multi"
-            heading="Multiple"
-            [content]="example2"
-        >
-            <tui-carousel-example-2 (touchstart.passive.stop)="(0)" />
-        </tui-doc-example>
-
-        <tui-doc-example
-            id="custom"
-            heading="Custom"
-            [content]="example3"
-        >
-            <tui-carousel-example-3 (touchstart.passive.stop)="(0)" />
-        </tui-doc-example>
-
-        <tui-doc-example
-            id="dialog"
-            heading="Carousel inside dialog"
-            [content]="example4"
-        >
-            <tui-carousel-example-4 />
-        </tui-doc-example>
-
-        <tui-doc-example
-            id="alignment"
-            heading="Vertical alignment"
-            [content]="example5"
-        >
-            <tui-carousel-example-5 />
-        </tui-doc-example>
+            *ngFor="let example of examples; let index = index"
+            [component]="index + 1 | tuiComponent"
+            [content]="index + 1 | tuiExample"
+            [heading]="example"
+            [id]="example | tuiKebab"
+        />
     </ng-template>
 
     <ng-template pageTab>
@@ -144,10 +112,5 @@
         </tui-doc-documentation>
     </ng-template>
 
-    <ng-template pageTab>
-        <tui-setup
-            [import]="exampleModule"
-            [template]="exampleHtml"
-        />
-    </ng-template>
+    <tui-setup *pageTab />
 </tui-doc-page>

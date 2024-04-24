@@ -1,16 +1,25 @@
-import {isPlatformBrowser} from '@angular/common';
+import {isPlatformBrowser, NgFor} from '@angular/common';
 import {Component, inject, PLATFORM_ID} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiButtonDirective} from '@taiga-ui/core';
+import {TuiCarouselModule, TuiIslandModule, TuiPaginationModule} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-carousel-example-1',
+    standalone: true,
+    imports: [
+        TuiCarouselModule,
+        TuiIslandModule,
+        TuiPaginationModule,
+        NgFor,
+        TuiButtonDirective,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiCarouselExample1 {
+export default class ExampleComponent {
     protected duration = isPlatformBrowser(inject(PLATFORM_ID)) ? 4_000 : 0;
     protected index = 2;
 
