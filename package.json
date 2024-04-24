@@ -25,7 +25,7 @@
         "projects/*"
     ],
     "scripts": {
-        "postinstall": "npx husky install",
+        "prepare": "husky",
         "start": "nx serve demo",
         "start:fast": "nx serve demo -c fast",
         "start:default": "nx serve demo -c def",
