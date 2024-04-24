@@ -1,9 +1,9 @@
 import type {BooleanInput} from '@angular/cdk/coercion';
 import {coerceBooleanProperty} from '@angular/cdk/coercion';
 import type {AfterViewInit} from '@angular/core';
-import {Directive, inject, Input} from '@angular/core';
-import {TuiDestroyService} from '@taiga-ui/cdk/services';
-import {takeUntil, timer} from 'rxjs';
+import {DestroyRef, Directive, inject, Input} from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {timer} from 'rxjs';
 
 import {
     TUI_AUTOFOCUS_HANDLER,
@@ -19,7 +19,7 @@ import {
 export class TuiAutoFocusDirective implements AfterViewInit {
     private readonly handler = inject(TUI_AUTOFOCUS_HANDLER);
     private readonly options = inject(TUI_AUTOFOCUS_OPTIONS);
-    private readonly destroy$ = inject(TuiDestroyService, {self: true});
+    private readonly destroy$ = inject(DestroyRef);
 
     @Input({
         alias: 'tuiAutoFocus',
@@ -38,7 +38,7 @@ export class TuiAutoFocusDirective implements AfterViewInit {
             void Promise.resolve().then(() => this.handler.setFocus());
         } else {
             timer(this.options.delay)
-                .pipe(takeUntil(this.destroy$))
+                .pipe(takeUntilDestroyed(this.destroy$))
                 .subscribe(() => this.handler.setFocus());
         }
     }

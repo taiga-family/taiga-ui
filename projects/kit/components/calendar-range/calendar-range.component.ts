@@ -8,13 +8,13 @@ import {
     Input,
     Output,
 } from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {TuiBooleanHandler, TuiDay, TuiDayLike, TuiTypedMapper} from '@taiga-ui/cdk';
 import {
     TUI_FALSE_HANDLER,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
     TuiDayRange,
-    TuiDestroyService,
     tuiIsString,
     TuiMonth,
     tuiNullableSame,
@@ -27,14 +27,12 @@ import type {TuiDayRangePeriod} from '@taiga-ui/kit/classes';
 import {MAX_DAY_RANGE_LENGTH_MAPPER} from '@taiga-ui/kit/constants';
 import {TUI_CALENDAR_DATE_STREAM, TUI_OTHER_DATE_TEXT} from '@taiga-ui/kit/tokens';
 import type {Observable} from 'rxjs';
-import {takeUntil} from 'rxjs';
 
 @Component({
     selector: 'tui-calendar-range',
     templateUrl: './calendar-range.template.html',
     styleUrls: ['./calendar-range.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [TuiDestroyService],
 })
 export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> {
     private readonly valueChanges = inject<Observable<TuiDayRange | null>>(
@@ -80,10 +78,7 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
 
     constructor() {
         this.valueChanges
-            ?.pipe(
-                tuiWatch(inject(ChangeDetectorRef)),
-                takeUntil(inject(TuiDestroyService, {self: true})),
-            )
+            ?.pipe(tuiWatch(inject(ChangeDetectorRef)), takeUntilDestroyed())
             .subscribe(value => {
                 this.value = value;
             });

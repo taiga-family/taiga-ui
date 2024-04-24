@@ -3,14 +3,12 @@ import {Component} from '@angular/core';
 import {RouterOutlet} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiAddonDocModule, type TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiDestroyService} from '@taiga-ui/cdk';
 
 @Component({
     standalone: true,
     imports: [RouterOutlet, NgIf, AsyncPipe, TuiAddonDocModule],
     templateUrl: './index.html',
     changeDetection,
-    providers: [TuiDestroyService],
 })
 export default class PageComponent {
     protected readonly example1: TuiDocExample = {

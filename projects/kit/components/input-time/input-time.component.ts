@@ -7,6 +7,7 @@ import {
     Input,
     ViewChild,
 } from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {MaskitoOptions} from '@maskito/core';
 import {maskitoTimeOptionsGenerator} from '@maskito/kit';
 import type {
@@ -40,7 +41,7 @@ import {TUI_SELECT_OPTION} from '@taiga-ui/kit/components/select-option';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {TUI_TIME_TEXTS} from '@taiga-ui/kit/tokens';
 import type {Observable} from 'rxjs';
-import {map, takeUntil, timer} from 'rxjs';
+import {map, timer} from 'rxjs';
 
 import type {TuiInputTimeOptions} from './input-time.options';
 import {TUI_INPUT_TIME_OPTIONS} from './input-time.options';
@@ -221,7 +222,7 @@ export class TuiInputTimeComponent
         this.value = TuiTime.fromString(this.nativeValue);
 
         timer(0)
-            .pipe(takeUntil(this.destroy$))
+            .pipe(takeUntilDestroyed(this.destroy$))
             .subscribe(() => {
                 if (this.nativeValue.endsWith('.') || this.nativeValue.endsWith(':')) {
                     this.nativeValue = this.nativeValue.slice(0, -1);

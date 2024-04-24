@@ -1,13 +1,13 @@
 import {Directive, ElementRef, inject, Input, NgZone} from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {ANIMATION_FRAME, PERFORMANCE} from '@ng-web-apis/common';
 import {tuiDescribeSector} from '@taiga-ui/addon-charts/utils';
-import {tuiClamp, TuiDestroyService, tuiEaseInOutQuad, tuiZonefree} from '@taiga-ui/cdk';
+import {tuiClamp, tuiEaseInOutQuad, tuiZonefree} from '@taiga-ui/cdk';
 import {TUI_ANIMATIONS_SPEED, tuiGetDuration} from '@taiga-ui/core';
-import {BehaviorSubject, map, pairwise, switchMap, takeUntil, takeWhile} from 'rxjs';
+import {BehaviorSubject, map, pairwise, switchMap, takeWhile} from 'rxjs';
 
 @Directive({
     selector: 'path[tuiPieChart]',
-    providers: [TuiDestroyService],
 })
 export class TuiPieChartDirective {
     private readonly sector$ = new BehaviorSubject<readonly [number, number]>([0, 0]);
@@ -40,7 +40,7 @@ export class TuiPieChartDirective {
                     );
                 }),
                 tuiZonefree(inject(NgZone)),
-                takeUntil(inject(TuiDestroyService, {self: true})),
+                takeUntilDestroyed(),
             )
             .subscribe(([start, end]) =>
                 el.setAttribute('d', tuiDescribeSector(start, end)),

@@ -1,11 +1,12 @@
 import {VIRTUAL_SCROLL_STRATEGY} from '@angular/cdk/scrolling';
 import type {Provider} from '@angular/core';
 import {ChangeDetectorRef, InjectionToken, Optional} from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {TuiDayRange} from '@taiga-ui/cdk';
-import {TUI_IS_IOS, TuiDestroyService, TuiScrollService, tuiWatch} from '@taiga-ui/cdk';
+import {TUI_IS_IOS, TuiScrollService, tuiWatch} from '@taiga-ui/cdk';
 import {TUI_CALENDAR_DATE_STREAM} from '@taiga-ui/kit';
 import type {Observable} from 'rxjs';
-import {EMPTY, takeUntil} from 'rxjs';
+import {EMPTY} from 'rxjs';
 
 import {TuiMobileCalendarStrategy} from './mobile-calendar.strategy';
 
@@ -17,7 +18,6 @@ export const TUI_VALUE_STREAM = new InjectionToken<Observable<TuiDayRange | null
 );
 
 export const TUI_MOBILE_CALENDAR_PROVIDERS: Provider[] = [
-    TuiDestroyService,
     TuiScrollService,
     {
         provide: VIRTUAL_SCROLL_STRATEGY,
@@ -26,16 +26,11 @@ export const TUI_MOBILE_CALENDAR_PROVIDERS: Provider[] = [
     },
     {
         provide: TUI_VALUE_STREAM,
-        deps: [
-            [new Optional(), TUI_CALENDAR_DATE_STREAM],
-            TuiDestroyService,
-            ChangeDetectorRef,
-        ],
+        deps: [[new Optional(), TUI_CALENDAR_DATE_STREAM], ChangeDetectorRef],
         useFactory: (
             value$: Observable<TuiDayRange | null> | null,
-            destroy$: Observable<void>,
             cdr: ChangeDetectorRef,
         ): Observable<TuiDayRange | null> =>
-            (value$ || EMPTY).pipe(tuiWatch(cdr), takeUntil(destroy$)),
+            (value$ || EMPTY).pipe(tuiWatch(cdr), takeUntilDestroyed()),
     },
 ];

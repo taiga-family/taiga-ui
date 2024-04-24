@@ -1,15 +1,17 @@
 import type {AfterContentChecked, AfterContentInit, QueryList} from '@angular/core';
 import {
     ContentChildren,
+    DestroyRef,
     Directive,
     ElementRef,
     HostListener,
     inject,
 } from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {NgControl} from '@angular/forms';
 import {RouterLinkActive} from '@angular/router';
-import {EMPTY_QUERY, TuiDestroyService, tuiQueryListChanges} from '@taiga-ui/cdk';
-import {EMPTY, switchMap, takeUntil} from 'rxjs';
+import {EMPTY_QUERY, tuiQueryListChanges} from '@taiga-ui/cdk';
+import {EMPTY, switchMap} from 'rxjs';
 
 import {TuiSegmentedComponent} from './segmented.component';
 
@@ -27,7 +29,7 @@ export class TuiSegmentedDirective implements AfterContentChecked, AfterContentI
     @ContentChildren(RouterLinkActive, {read: ElementRef})
     private readonly elements: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
-    private readonly destroy$ = inject(TuiDestroyService, {self: true});
+    private readonly destroy$ = inject(DestroyRef);
     private readonly component = inject(TuiSegmentedComponent);
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
 
@@ -35,7 +37,7 @@ export class TuiSegmentedDirective implements AfterContentChecked, AfterContentI
         tuiQueryListChanges(this.controls)
             .pipe(
                 switchMap(() => this.controls.last?.valueChanges || EMPTY),
-                takeUntil(this.destroy$),
+                takeUntilDestroyed(this.destroy$),
             )
             .subscribe(() => {
                 this.update(this.el.querySelector(':checked'));

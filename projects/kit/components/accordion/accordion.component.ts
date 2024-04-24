@@ -3,16 +3,13 @@ import {
     ChangeDetectionStrategy,
     Component,
     ContentChildren,
+    DestroyRef,
     inject,
     Input,
 } from '@angular/core';
-import {
-    EMPTY_QUERY,
-    TuiDestroyService,
-    tuiIsPresent,
-    tuiQueryListChanges,
-} from '@taiga-ui/cdk';
-import {filter, identity, map, merge, pairwise, switchMap, takeUntil} from 'rxjs';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {EMPTY_QUERY, tuiIsPresent, tuiQueryListChanges} from '@taiga-ui/cdk';
+import {filter, identity, map, merge, pairwise, switchMap} from 'rxjs';
 
 import {TuiAccordionItemComponent} from './accordion-item/accordion-item.component';
 
@@ -21,10 +18,9 @@ import {TuiAccordionItemComponent} from './accordion-item/accordion-item.compone
     templateUrl: './accordion.template.html',
     styleUrls: ['./accordion.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [TuiDestroyService],
 })
 export class TuiAccordionComponent implements AfterContentInit {
-    private readonly destroy$ = inject(TuiDestroyService, {self: true});
+    private readonly destroy$ = inject(DestroyRef);
 
     @Input()
     public closeOthers = true;
@@ -61,7 +57,7 @@ export class TuiAccordionComponent implements AfterContentInit {
             newOpenRow$,
         ).pipe(
             filter(() => this.closeOthers),
-            takeUntil(this.destroy$),
+            takeUntilDestroyed(this.destroy$),
         );
 
         rowsOpen$.subscribe(currentRow => {

@@ -1,13 +1,12 @@
 import {Directive, inject} from '@angular/core';
-import {TuiDestroyService} from '@taiga-ui/cdk';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {TuiDropdownDirective, TuiDropdownOpenDirective} from '@taiga-ui/core/directives';
-import {filter, takeUntil} from 'rxjs';
+import {filter} from 'rxjs';
 
 import {TUI_HOSTED_DROPDOWN_COMPONENT} from './hosted-dropdown.token';
 
 @Directive({
     selector: '[tuiDropdownOpenMonitor]',
-    providers: [TuiDestroyService],
 })
 export class TuiDropdownOpenMonitorDirective {
     constructor() {
@@ -21,7 +20,7 @@ export class TuiDropdownOpenMonitorDirective {
                     value =>
                         value && open.dropdown === (dropdown as any) && !hosted.focused,
                 ),
-                takeUntil(inject(TuiDestroyService)),
+                takeUntilDestroyed(),
             )
             .subscribe(() => {
                 hosted.nativeFocusableElement?.focus();

@@ -1,8 +1,9 @@
 import {Directive, ElementRef, inject, Input, NgZone} from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {ANIMATION_FRAME} from '@ng-web-apis/common';
-import {POLLING_TIME, TuiDestroyService, tuiScrollFrom, tuiZonefree} from '@taiga-ui/cdk';
+import {POLLING_TIME, tuiScrollFrom, tuiZonefree} from '@taiga-ui/cdk';
 import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
-import {merge, takeUntil, throttleTime} from 'rxjs';
+import {merge, throttleTime} from 'rxjs';
 
 import {TuiScrollbarService} from './scrollbar.service';
 
@@ -11,7 +12,7 @@ const MIN_WIDTH = 24;
 @Directive({
     standalone: true,
     selector: '[tuiScrollbar]',
-    providers: [TuiScrollbarService, TuiDestroyService],
+    providers: [TuiScrollbarService],
 })
 export class TuiScrollbarDirective {
     private readonly el: HTMLElement = inject(TUI_SCROLL_REF).nativeElement;
@@ -21,7 +22,7 @@ export class TuiScrollbarDirective {
     public tuiScrollbar: 'horizontal' | 'vertical' = 'vertical';
 
     protected readonly scrollSub = inject(TuiScrollbarService)
-        .pipe(takeUntil(inject(TuiDestroyService)))
+        .pipe(takeUntilDestroyed())
         .subscribe(([top, left]) => {
             this.el.style.scrollBehavior = 'auto';
             this.el.scrollTo({top, left});
@@ -32,7 +33,7 @@ export class TuiScrollbarDirective {
         inject(ANIMATION_FRAME).pipe(throttleTime(POLLING_TIME)),
         tuiScrollFrom(this.el),
     )
-        .pipe(tuiZonefree(inject(NgZone)), takeUntil(inject(TuiDestroyService)))
+        .pipe(tuiZonefree(inject(NgZone)), takeUntilDestroyed())
         .subscribe(() => {
             if (this.tuiScrollbar === 'vertical') {
                 this.style.top = `${this.thumb * 100}%`;

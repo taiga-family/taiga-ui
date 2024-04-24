@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {TUI_FALSE_HANDLER, TuiDestroyService, tuiPure} from '@taiga-ui/cdk';
+import {TUI_FALSE_HANDLER, tuiPure} from '@taiga-ui/cdk';
 import {TUI_COPY_TEXTS} from '@taiga-ui/kit';
 import type {Observable} from 'rxjs';
 import {map, startWith, Subject, switchMap, timer} from 'rxjs';
@@ -11,7 +11,6 @@ const COPIED_TIMEOUT = 1500;
     templateUrl: './copy.template.html',
     styleUrls: ['./copy.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [TuiDestroyService],
 })
 export class TuiDocCopyComponent {
     private readonly copy$ = new Subject<void>();

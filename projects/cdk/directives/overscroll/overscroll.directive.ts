@@ -1,21 +1,19 @@
 import {Directive, ElementRef, HostBinding, inject, Input, NgZone} from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {tuiTypedFromEvent, tuiZonefree} from '@taiga-ui/cdk/observables';
-import {TuiDestroyService} from '@taiga-ui/cdk/services';
 import type {TuiEventWith, TuiOverscrollMode} from '@taiga-ui/cdk/types';
 import {tuiCanScroll, tuiGetScrollParent, tuiIsElement} from '@taiga-ui/cdk/utils/dom';
-import {filter, switchMap, takeUntil, tap} from 'rxjs';
+import {filter, switchMap, tap} from 'rxjs';
 
 /**
  * Directive to isolate scrolling, i.e. prevent body scroll behind modal dialog
  */
 @Directive({
     selector: '[tuiOverscroll]',
-    providers: [TuiDestroyService],
 })
 export class TuiOverscrollDirective {
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
     private readonly zone = inject(NgZone);
-    private readonly destroy$ = inject(TuiDestroyService, {self: true});
 
     @Input('tuiOverscroll')
     public mode: TuiOverscrollMode | '' = 'scroll';
@@ -25,7 +23,7 @@ export class TuiOverscrollDirective {
             .pipe(
                 filter(() => this.enabled),
                 tuiZonefree(this.zone),
-                takeUntil(this.destroy$),
+                takeUntilDestroyed(),
             )
             .subscribe(event => {
                 this.processEvent(
@@ -69,7 +67,7 @@ export class TuiOverscrollDirective {
                     );
                 }),
                 tuiZonefree(this.zone),
-                takeUntil(this.destroy$),
+                takeUntilDestroyed(),
             )
             .subscribe();
     }

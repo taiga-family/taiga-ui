@@ -4,6 +4,7 @@ import type {AfterViewInit} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
+    DestroyRef,
     EventEmitter,
     inject,
     Input,
@@ -11,6 +12,7 @@ import {
     Output,
     ViewChild,
 } from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {TuiBooleanHandler, TuiTypedMapper} from '@taiga-ui/cdk';
 import {
     MONTHS_IN_YEAR,
@@ -21,7 +23,6 @@ import {
     TUI_LAST_DAY,
     TuiDay,
     TuiDayRange,
-    TuiDestroyService,
     TuiMonth,
     tuiTypedFromEvent,
     tuiZonefree,
@@ -87,7 +88,7 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
     private readonly today = TuiDay.currentLocal();
     private activeYear = 0;
     private activeMonth = 0;
-    private readonly destroy$ = inject(TuiDestroyService, {self: true});
+    private readonly destroy$ = inject(DestroyRef);
     private readonly doc = inject(DOCUMENT);
     private readonly speed = inject(TUI_ANIMATIONS_SPEED);
     private readonly ngZone = inject(NgZone);
@@ -139,7 +140,7 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
 
     constructor() {
         inject(TUI_VALUE_STREAM)
-            .pipe(takeUntil(this.destroy$))
+            .pipe(takeUntilDestroyed())
             .subscribe(value => {
                 this.value = value;
             });
@@ -163,7 +164,7 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
         this.scrollToActiveYear('smooth');
 
         timer(0)
-            .pipe(tuiZonefree(this.ngZone), takeUntil(this.destroy$))
+            .pipe(tuiZonefree(this.ngZone), takeUntilDestroyed(this.destroy$))
             .subscribe(() => this.scrollToActiveMonth());
     }
 
@@ -303,7 +304,7 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
                 delay(tuiGetDuration(this.speed)),
                 this.lateInit(),
                 take(1),
-                takeUntil(this.destroy$),
+                takeUntilDestroyed(this.destroy$),
             )
             .subscribe(() => {
                 this.initialized = true;
@@ -355,7 +356,7 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
                         STARTING_YEAR,
                 ),
                 filter(activeYear => activeYear !== this.activeYear),
-                takeUntil(this.destroy$),
+                takeUntilDestroyed(this.destroy$),
             )
             .subscribe(activeYear => {
                 this.activeMonth += this.getMonthOffset(activeYear);
@@ -377,7 +378,7 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
                         takeUntil(touchstart$),
                     ),
                 ),
-                takeUntil(this.destroy$),
+                takeUntilDestroyed(this.destroy$),
             )
             .subscribe(() => this.scrollToActiveYear('smooth'));
     }
@@ -414,7 +415,7 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
                         takeUntil(touchstart$),
                     ),
                 ),
-                takeUntil(this.destroy$),
+                takeUntilDestroyed(this.destroy$),
             )
             .subscribe(() => this.scrollToActiveMonth('smooth'));
     }

@@ -1,10 +1,9 @@
 import {Component, inject} from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiPopover} from '@taiga-ui/cdk';
-import {TuiDestroyService} from '@taiga-ui/cdk';
 import {TuiButtonDirective, TuiDialogCloseService} from '@taiga-ui/core';
 import {POLYMORPHEUS_CONTEXT, PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
-import {takeUntil} from 'rxjs';
 
 import type {PromptOptions} from './prompt-options';
 
@@ -15,7 +14,7 @@ import type {PromptOptions} from './prompt-options';
     templateUrl: './prompt.template.html',
     styleUrls: ['./prompt.style.less'],
     changeDetection,
-    providers: [TuiDestroyService, TuiDialogCloseService],
+    providers: [TuiDialogCloseService],
 })
 export class PromptComponent {
     protected readonly context =
@@ -25,7 +24,7 @@ export class PromptComponent {
     constructor() {
         // Close on click outside/Escape button
         inject(TuiDialogCloseService)
-            .pipe(takeUntil(inject(TuiDestroyService, {self: true})))
+            .pipe(takeUntilDestroyed())
             .subscribe(() => this.context.$implicit.complete());
     }
 

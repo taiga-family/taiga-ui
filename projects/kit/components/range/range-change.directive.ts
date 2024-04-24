@@ -1,6 +1,7 @@
 import {DOCUMENT} from '@angular/common';
 import {Directive, ElementRef, EventEmitter, inject, Output} from '@angular/core';
-import {tuiClamp, TuiDestroyService, tuiRound, tuiTypedFromEvent} from '@taiga-ui/cdk';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {tuiClamp, tuiRound, tuiTypedFromEvent} from '@taiga-ui/cdk';
 import {TUI_FLOATING_PRECISION} from '@taiga-ui/kit/constants';
 import {filter, map, merge, repeat, startWith, switchMap, takeUntil, tap} from 'rxjs';
 
@@ -8,7 +9,6 @@ import {TuiRangeComponent} from './range.component';
 
 @Directive({
     selector: 'tui-range',
-    providers: [TuiDestroyService],
 })
 export class TuiRangeChangeDirective {
     private readonly doc = inject(DOCUMENT);
@@ -62,7 +62,7 @@ export class TuiRangeChangeDirective {
                 map(({clientX}) => this.getFractionFromEvents(clientX)),
                 takeUntil(this.pointerUp$),
                 repeat(),
-                takeUntil(inject(TuiDestroyService, {self: true})),
+                takeUntilDestroyed(),
             )
             .subscribe(fraction => {
                 const value = this.range.getValueFromFraction(fraction);

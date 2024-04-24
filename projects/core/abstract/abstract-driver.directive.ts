@@ -1,7 +1,7 @@
 import type {OnInit} from '@angular/core';
-import {Directive, inject} from '@angular/core';
-import {TuiDestroyService} from '@taiga-ui/cdk';
-import {distinctUntilChanged, merge, takeUntil} from 'rxjs';
+import {DestroyRef, Directive, inject} from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {distinctUntilChanged, merge} from 'rxjs';
 
 import {TuiDriver} from './driver';
 import {TuiVehicle} from './vehicle';
@@ -10,7 +10,7 @@ import {TuiVehicle} from './vehicle';
 export abstract class AbstractTuiDriverDirective implements OnInit {
     public abstract type: string;
 
-    private readonly destroy$ = inject(TuiDestroyService, {self: true});
+    private readonly destroy$ = inject(DestroyRef);
     private readonly drivers: readonly TuiDriver[] = inject<any>(TuiDriver);
     private readonly vehicles: readonly TuiVehicle[] = inject<any>(TuiVehicle);
 
@@ -18,7 +18,7 @@ export abstract class AbstractTuiDriverDirective implements OnInit {
         const vehicle = this.vehicles.find(({type}) => type === this.type);
 
         merge(...this.drivers.filter(({type}) => type === this.type))
-            .pipe(distinctUntilChanged(), takeUntil(this.destroy$))
+            .pipe(distinctUntilChanged(), takeUntilDestroyed(this.destroy$))
             .subscribe(value => {
                 vehicle?.toggle(value);
             });

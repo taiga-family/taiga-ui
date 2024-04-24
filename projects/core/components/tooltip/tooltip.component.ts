@@ -7,7 +7,7 @@ import {
     Input,
     ViewChild,
 } from '@angular/core';
-import {TUI_IS_MOBILE, TuiDestroyService} from '@taiga-ui/cdk';
+import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
 import {TuiHintHoverDirective, TuiHintOptionsDirective} from '@taiga-ui/core/directives';
 
 @Component({
@@ -15,7 +15,6 @@ import {TuiHintHoverDirective, TuiHintOptionsDirective} from '@taiga-ui/core/dir
     templateUrl: './tooltip.template.html',
     styleUrls: ['./tooltip.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [TuiDestroyService],
     inputs: ['content', 'direction', 'appearance', 'showDelay', 'hideDelay'],
 })
 export class TuiTooltipComponent<C = any> extends TuiHintOptionsDirective {

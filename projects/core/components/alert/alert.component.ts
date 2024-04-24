@@ -1,7 +1,13 @@
 import type {OnInit} from '@angular/core';
-import {ChangeDetectionStrategy, Component, ElementRef, inject} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    DestroyRef,
+    ElementRef,
+    inject,
+} from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {TuiPopover} from '@taiga-ui/cdk';
-import {TuiDestroyService} from '@taiga-ui/cdk';
 import {tuiFadeIn, tuiHeightCollapse, tuiSlideIn} from '@taiga-ui/core/animations';
 import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
 import {tuiToAnimationOptions} from '@taiga-ui/core/utils';
@@ -17,7 +23,6 @@ import {TUI_ALERT_POSITION} from './alert.tokens';
     templateUrl: './alert.template.html',
     styleUrls: ['./alert.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [TuiDestroyService],
     animations: [tuiFadeIn, tuiSlideIn, tuiHeightCollapse],
     host: {
         role: 'alert',
@@ -29,7 +34,7 @@ import {TUI_ALERT_POSITION} from './alert.tokens';
 })
 export class TuiAlertComponent<O, I> implements OnInit {
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
-    private readonly destroy$ = inject(TuiDestroyService, {self: true});
+    private readonly destroy$ = inject(DestroyRef);
     protected readonly position = inject(TUI_ALERT_POSITION);
     protected readonly item =
         inject<TuiPopover<TuiAlertOptions<I>, O>>(POLYMORPHEUS_CONTEXT);
@@ -62,7 +67,7 @@ export class TuiAlertComponent<O, I> implements OnInit {
             .pipe(
                 takeUntil(fromEvent(this.el, 'mouseenter')),
                 repeat({delay: () => fromEvent(this.el, 'mouseleave')}),
-                takeUntil(this.destroy$),
+                takeUntilDestroyed(this.destroy$),
             )
             .subscribe(() => this.close());
     }

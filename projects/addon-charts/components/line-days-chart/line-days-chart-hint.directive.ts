@@ -1,24 +1,20 @@
 import type {AfterContentInit, QueryList} from '@angular/core';
 import {
     ContentChildren,
+    DestroyRef,
     Directive,
     forwardRef,
     inject,
     Input,
     NgZone,
 } from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {tuiLineChartDrivers} from '@taiga-ui/addon-charts/components/line-chart';
 import type {TuiContext, TuiDay} from '@taiga-ui/cdk';
-import {
-    EMPTY_QUERY,
-    TuiDestroyService,
-    TuiHoveredService,
-    tuiPure,
-    tuiZonefree,
-} from '@taiga-ui/cdk';
+import {EMPTY_QUERY, TuiHoveredService, tuiPure, tuiZonefree} from '@taiga-ui/cdk';
 import type {TuiPoint} from '@taiga-ui/core';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {combineLatest, filter, takeUntil} from 'rxjs';
+import {combineLatest, filter} from 'rxjs';
 
 import {TuiLineDaysChartComponent} from './line-days-chart.component';
 
@@ -29,13 +25,13 @@ function find(value: ReadonlyArray<[TuiDay, number]>, current: TuiDay): [TuiDay,
 // TODO: Consider extending TuiLineChartHintDirective
 @Directive({
     selector: '[tuiLineChartHint]',
-    providers: [TuiDestroyService, TuiHoveredService],
+    providers: [TuiHoveredService],
 })
 export class TuiLineDaysChartHintDirective implements AfterContentInit {
     @ContentChildren(forwardRef(() => TuiLineDaysChartComponent))
     private readonly charts: QueryList<TuiLineDaysChartComponent> = EMPTY_QUERY;
 
-    private readonly destroy$ = inject(TuiDestroyService, {self: true});
+    private readonly destroy$ = inject(DestroyRef);
     private readonly zone = inject(NgZone);
     private readonly hovered$ = inject(TuiHoveredService);
 
@@ -50,7 +46,7 @@ export class TuiLineDaysChartHintDirective implements AfterContentInit {
             .pipe(
                 filter(result => !result.some(Boolean)),
                 tuiZonefree(this.zone),
-                takeUntil(this.destroy$),
+                takeUntilDestroyed(this.destroy$),
             )
             .subscribe(() => {
                 this.charts.forEach(chart => chart.onHovered(NaN));

@@ -1,8 +1,8 @@
 import {Directive, ElementRef, inject, Input, Renderer2} from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {
     TUI_FALSE_HANDLER,
     TUI_TRUE_HANDLER,
-    TuiDestroyService,
     tuiTypedFromEvent,
     tuiWithStyles,
 } from '@taiga-ui/cdk';
@@ -25,7 +25,6 @@ const TOUCH_MOVE_DELAY = 100;
 export class TuiRippleDirective {
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
     private readonly renderer = inject(Renderer2);
-    private readonly destroy$ = inject(TuiDestroyService, {self: true});
     private readonly start$ = inject(TUI_RIPPLE_START);
     private readonly end$ = inject(TUI_RIPPLE_END);
 
@@ -71,7 +70,7 @@ export class TuiRippleDirective {
                         map(() => ripple),
                     );
                 }),
-                takeUntil(this.destroy$),
+                takeUntilDestroyed(),
             )
             .subscribe(element =>
                 this.renderer.setStyle(element, 'animationName', RIPPLE_OFF),

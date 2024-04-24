@@ -1,18 +1,9 @@
-import {ChangeDetectorRef, inject, Injectable} from '@angular/core';
+import {ChangeDetectorRef, DestroyRef, inject, Injectable} from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {SafeResourceUrl} from '@angular/platform-browser';
 import {IntersectionObserverService} from '@ng-web-apis/intersection-observer';
-import {TuiDestroyService, tuiWatch} from '@taiga-ui/cdk';
-import {
-    catchError,
-    filter,
-    map,
-    Observable,
-    of,
-    Subject,
-    switchMap,
-    take,
-    takeUntil,
-} from 'rxjs';
+import {tuiWatch} from '@taiga-ui/cdk';
+import {catchError, filter, map, Observable, of, Subject, switchMap, take} from 'rxjs';
 
 @Injectable()
 export class TuiLazyLoadingService extends Observable<SafeResourceUrl | string> {
@@ -20,7 +11,7 @@ export class TuiLazyLoadingService extends Observable<SafeResourceUrl | string> 
         IntersectionObserverService,
     );
 
-    private readonly destroy$ = inject(TuiDestroyService, {self: true});
+    private readonly destroy$ = inject(DestroyRef);
     private readonly src$ = new Subject<SafeResourceUrl | string>();
     private readonly cdr = inject(ChangeDetectorRef);
 
@@ -37,7 +28,7 @@ export class TuiLazyLoadingService extends Observable<SafeResourceUrl | string> 
                             take(1),
                         ),
                     ),
-                    takeUntil(this.destroy$),
+                    takeUntilDestroyed(this.destroy$),
                 )
                 .subscribe(subscriber),
         );

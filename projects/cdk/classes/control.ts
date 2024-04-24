@@ -1,5 +1,5 @@
 /// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
-import type {OnDestroy, OnInit, Provider, Type} from '@angular/core';
+import type {OnInit, Provider, Type} from '@angular/core';
 import {
     ChangeDetectorRef,
     DestroyRef,
@@ -8,6 +8,7 @@ import {
     inject,
     Input,
 } from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {AbstractControl, ControlValueAccessor} from '@angular/forms';
 import {NgControl, NgModel} from '@angular/forms';
 import {EMPTY_FUNCTION} from '@taiga-ui/cdk/constants';
@@ -21,7 +22,6 @@ import {
     startWith,
     Subject,
     switchMap,
-    takeUntil,
 } from 'rxjs';
 
 import {AbstractTuiInteractive} from './interactive';
@@ -33,7 +33,7 @@ import {TuiValueTransformer} from './value-transformer';
 @Directive()
 export abstract class AbstractTuiControl<T>
     extends AbstractTuiInteractive
-    implements OnDestroy, OnInit, ControlValueAccessor
+    implements OnInit, ControlValueAccessor
 {
     private readonly ngControl = inject(NgControl, {optional: true});
     private previousInternalValue?: T | null;
@@ -49,8 +49,7 @@ export abstract class AbstractTuiControl<T>
     protected onTouched = EMPTY_FUNCTION;
     protected onChange = EMPTY_FUNCTION;
     protected readonly fallbackValue = this.getFallbackValue();
-    // TODO: remove after migrating to takeUntilDestroyed()
-    protected readonly destroy$ = new Subject<void>();
+    protected readonly destroy$ = inject(DestroyRef);
     protected destroyRef = inject(DestroyRef);
     protected readonly cdr = inject(ChangeDetectorRef);
     protected readonly valueTransformer = inject<TuiValueTransformer<T>>(
@@ -142,16 +141,11 @@ export abstract class AbstractTuiControl<T>
                 filter(tuiIsPresent),
                 distinctUntilChanged(),
                 switchMap(control => merge(control.valueChanges, control.statusChanges)),
-                takeUntil(this.destroy$),
+                takeUntilDestroyed(this.destroy$),
             )
             .subscribe(() => {
                 this.refreshLocalValue(this.safeCurrentValue);
             });
-    }
-
-    public ngOnDestroy(): void {
-        this.destroy$.next();
-        this.destroy$.complete();
     }
 
     public checkControlUpdate(): void {

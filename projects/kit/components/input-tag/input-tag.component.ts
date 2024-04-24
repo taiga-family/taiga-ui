@@ -14,6 +14,7 @@ import {
     ViewChild,
     ViewChildren,
 } from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {
     TuiActiveZoneDirective,
     TuiBooleanHandler,
@@ -49,7 +50,7 @@ import type {TuiStringifiableItem} from '@taiga-ui/kit/classes';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import type {TuiStatus} from '@taiga-ui/kit/types';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {takeUntil, timer} from 'rxjs';
+import {timer} from 'rxjs';
 
 import {TUI_INPUT_TAG_OPTIONS} from './input-tag.options';
 
@@ -429,7 +430,7 @@ export class TuiInputTagComponent
     private scrollTo(scrollLeft = this.scrollBar?.nativeElement.scrollWidth): void {
         // Allow change detection to run and add new tag to DOM
         timer(0)
-            .pipe(takeUntil(this.destroy$))
+            .pipe(takeUntilDestroyed(this.destroy$))
             .subscribe(() => {
                 if (this.scrollBar) {
                     this.scrollBar.nativeElement.scrollLeft = scrollLeft || 0;

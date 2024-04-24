@@ -8,7 +8,6 @@ import {
     Self,
 } from '@angular/core';
 import {ANIMATION_FRAME, WINDOW} from '@ng-web-apis/common';
-import {TuiDestroyService} from '@taiga-ui/cdk/services';
 import {TUI_FOCUSABLE_ITEM_ACCESSOR, TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
 import type {TuiFocusableElementAccessor} from '@taiga-ui/cdk/types';
 import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -70,5 +69,4 @@ export const TUI_AUTOFOCUS_PROVIDERS = [
             TUI_IS_IOS,
         ],
     },
-    TuiDestroyService,
 ];

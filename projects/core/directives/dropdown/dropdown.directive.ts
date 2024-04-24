@@ -8,15 +8,16 @@ import {
     Input,
     TemplateRef,
 } from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {TuiActiveZoneDirective, TuiContext} from '@taiga-ui/cdk';
-import {TuiDestroyService, tuiPure} from '@taiga-ui/cdk';
+import {tuiPure} from '@taiga-ui/cdk';
 import type {TuiRectAccessor, TuiVehicle} from '@taiga-ui/core/abstract';
 import {tuiAsRectAccessor, tuiAsVehicle} from '@taiga-ui/core/abstract';
 import type {TuiPortalItem} from '@taiga-ui/core/interfaces';
 import {tuiCheckFixedPosition} from '@taiga-ui/core/utils';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {PolymorpheusComponent, PolymorpheusTemplate} from '@tinkoff/ng-polymorpheus';
-import {Subject, takeUntil, throttleTime} from 'rxjs';
+import {Subject, throttleTime} from 'rxjs';
 
 import {TuiDropdownDriverDirective} from './dropdown.driver';
 import {TUI_DROPDOWN_COMPONENT} from './dropdown.providers';
@@ -27,7 +28,6 @@ import {TuiDropdownPositionDirective} from './dropdown-position.directive';
     standalone: true,
     selector: '[tuiDropdown]:not(ng-container):not(ng-template)',
     providers: [
-        TuiDestroyService,
         tuiAsRectAccessor(TuiDropdownDirective),
         tuiAsVehicle(TuiDropdownDirective),
     ],
@@ -58,7 +58,7 @@ export class TuiDropdownDirective
     public content: PolymorpheusContent<TuiContext<TuiActiveZoneDirective>>;
 
     protected readonly sub = this.refresh$
-        .pipe(throttleTime(0), takeUntil(inject(TuiDestroyService, {self: true})))
+        .pipe(throttleTime(0), takeUntilDestroyed())
         .subscribe(() => {
             this.dropdownBoxRef?.changeDetectorRef.detectChanges();
             this.dropdownBoxRef?.changeDetectorRef.markForCheck();

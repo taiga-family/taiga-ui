@@ -1,11 +1,10 @@
-import {Directive, ElementRef, inject} from '@angular/core';
-import {TuiDestroyService} from '@taiga-ui/cdk';
+import {DestroyRef, Directive, ElementRef, inject} from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {TUI_SCROLL_REF} from '@taiga-ui/core';
 import {
     distinctUntilChanged,
     filter,
     map,
-    takeUntil,
     throttleTime,
     timer,
     withLatestFrom,
@@ -15,12 +14,11 @@ import {TUI_SHEET_DRAGGED, TUI_SHEET_SCROLL} from '../../sheet-tokens';
 
 @Directive({
     selector: '[tuiSheetStop]',
-    providers: [TuiDestroyService],
 })
 export class TuiSheetStopDirective {
     constructor() {
         const scrollRef = inject(TUI_SCROLL_REF).nativeElement;
-        const destroy$ = inject(TuiDestroyService, {self: true});
+        const destroy$ = inject(DestroyRef);
         const el: HTMLElement = inject(ElementRef).nativeElement;
 
         inject(TUI_SHEET_SCROLL)
@@ -31,7 +29,7 @@ export class TuiSheetStopDirective {
                 map(([above, dragged]) => !above && !dragged),
                 filter(Boolean),
                 throttleTime(100),
-                takeUntil(destroy$),
+                takeUntilDestroyed(destroy$),
             )
             .subscribe(() => {
                 scrollRef.style.overflow = 'hidden';
@@ -39,7 +37,7 @@ export class TuiSheetStopDirective {
                 scrollRef.scrollTop = el.offsetTop;
 
                 timer(100)
-                    .pipe(takeUntil(destroy$))
+                    .pipe(takeUntilDestroyed(destroy$))
                     // eslint-disable-next-line rxjs/no-nested-subscribe
                     .subscribe(() => {
                         scrollRef.style.overflow = '';

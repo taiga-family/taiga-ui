@@ -3,13 +3,13 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
+    DestroyRef,
     inject,
 } from '@angular/core';
-import {TuiDestroyService} from '@taiga-ui/cdk';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {TUI_PARENT_ANIMATION} from '@taiga-ui/core/animations';
 import type {TuiPortalItem} from '@taiga-ui/core/interfaces';
 import {TuiHintService} from '@taiga-ui/core/services';
-import {takeUntil} from 'rxjs';
 
 @Component({
     selector: 'tui-hints-host',
@@ -18,7 +18,6 @@ import {takeUntil} from 'rxjs';
     // So that we do not force OnPush on custom hints
     // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
     changeDetection: ChangeDetectionStrategy.Default,
-    providers: [TuiDestroyService],
     animations: [TUI_PARENT_ANIMATION],
     host: {
         'aria-live': 'polite',
@@ -26,7 +25,7 @@ import {takeUntil} from 'rxjs';
 })
 export class TuiHintsHostComponent implements OnInit {
     private readonly hints$ = inject(TuiHintService);
-    private readonly destroy$ = inject(TuiDestroyService, {self: true});
+    private readonly destroy$ = inject(DestroyRef);
     private readonly cdr = inject(ChangeDetectorRef);
 
     protected hints: readonly TuiPortalItem[] = [];
@@ -34,7 +33,7 @@ export class TuiHintsHostComponent implements OnInit {
     public ngOnInit(): void {
         // Due to this view being parallel to app content, `markForCheck` from `async` pipe
         // can happen after view was checked, so calling `detectChanges` instead
-        this.hints$.pipe(takeUntil(this.destroy$)).subscribe(hints => {
+        this.hints$.pipe(takeUntilDestroyed(this.destroy$)).subscribe(hints => {
             this.hints = hints;
             this.cdr.detectChanges();
         });

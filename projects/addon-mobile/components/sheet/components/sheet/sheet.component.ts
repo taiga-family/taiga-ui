@@ -2,6 +2,7 @@ import type {AfterViewInit, QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
+    DestroyRef,
     ElementRef,
     HostListener,
     inject,
@@ -10,16 +11,11 @@ import {
     ViewChild,
     ViewChildren,
 } from '@angular/core';
-import {
-    EMPTY_QUERY,
-    TUI_IS_IOS,
-    TuiDestroyService,
-    tuiPure,
-    tuiZonefull,
-} from '@taiga-ui/cdk';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {EMPTY_QUERY, TUI_IS_IOS, tuiPure, tuiZonefull} from '@taiga-ui/cdk';
 import {tuiSlideInTop} from '@taiga-ui/core';
 import {TUI_MORE_WORD} from '@taiga-ui/kit';
-import {map, takeUntil, timer} from 'rxjs';
+import {map, timer} from 'rxjs';
 
 import type {TuiSheet, TuiSheetRequiredProps} from '../../sheet';
 import {TUI_SHEET_SCROLL} from '../../sheet-tokens';
@@ -52,7 +48,7 @@ export class TuiSheetComponent<T> implements TuiSheetRequiredProps<T>, AfterView
     @ViewChildren('stops')
     private readonly stopsRefs: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
-    private readonly destroy$ = inject(TuiDestroyService, {self: true});
+    private readonly destroy$ = inject(DestroyRef);
     private readonly scroll$ = inject(TUI_SHEET_SCROLL);
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
     private readonly zone = inject(NgZone);
@@ -108,7 +104,7 @@ export class TuiSheetComponent<T> implements TuiSheetRequiredProps<T>, AfterView
             this.el.style.transform = `scaleX(-1) translate3d(0, ${offset}px, 0)`;
 
             timer(0)
-                .pipe(takeUntil(this.destroy$))
+                .pipe(takeUntilDestroyed(this.destroy$))
                 .subscribe(() => {
                     this.el.style.transition = '';
                     this.el.style.transform = '';

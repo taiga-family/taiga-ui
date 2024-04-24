@@ -11,11 +11,11 @@ import {
     Output,
     ViewEncapsulation,
 } from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
-import {TuiDestroyService, tuiIsHTMLElement, tuiPx, tuiZonefree} from '@taiga-ui/cdk';
+import {tuiIsHTMLElement, tuiPx, tuiZonefree} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {tuiBadgeNotificationOptionsProvider} from '@taiga-ui/kit/components/badge-notification';
-import {takeUntil} from 'rxjs';
 
 import {TuiSegmentedDirective} from './segmented.directive';
 
@@ -27,22 +27,10 @@ import {TuiSegmentedDirective} from './segmented.directive';
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiSegmentedDirective],
-    providers: [
-        TuiDestroyService,
-        ResizeObserverService,
-        tuiBadgeNotificationOptionsProvider({size: 's'}),
-    ],
+    providers: [ResizeObserverService, tuiBadgeNotificationOptionsProvider({size: 's'})],
 })
 export class TuiSegmentedComponent implements OnChanges {
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
-
-    // @ts-ignore
-    private readonly sub = inject(ResizeObserverService)
-        .pipe(
-            tuiZonefree(inject(NgZone)),
-            takeUntil(inject(TuiDestroyService, {self: true})),
-        )
-        .subscribe(() => this.refresh());
 
     @Input()
     @HostBinding('attr.data-size')
@@ -53,6 +41,10 @@ export class TuiSegmentedComponent implements OnChanges {
 
     @Output()
     public readonly activeItemIndexChange = new EventEmitter<number>();
+
+    protected readonly sub = inject(ResizeObserverService)
+        .pipe(tuiZonefree(inject(NgZone)), takeUntilDestroyed())
+        .subscribe(() => this.refresh());
 
     public ngOnChanges(): void {
         this.refresh();

@@ -10,6 +10,7 @@ import {
     Input,
     ViewChild,
 } from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {MaskitoOptions} from '@maskito/core';
 import {
     maskitoCaretGuard,
@@ -44,7 +45,6 @@ import {
     TuiPrimitiveTextfieldComponent,
 } from '@taiga-ui/core';
 import {PolymorpheusOutletDirective} from '@tinkoff/ng-polymorpheus';
-import {takeUntil} from 'rxjs';
 
 import type {TuiInputNumberOptions} from './input-number.options';
 import {TUI_INPUT_NUMBER_OPTIONS} from './input-number.options';
@@ -97,7 +97,7 @@ export class TuiInputNumberComponent
     protected numberFormat = TUI_DEFAULT_NUMBER_FORMAT;
     protected readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
     protected readonly numberFormat$ = inject(TUI_NUMBER_FORMAT)
-        .pipe(tuiWatch(this.cdr), takeUntil(this.destroy$))
+        .pipe(tuiWatch(this.cdr), takeUntilDestroyed())
         .subscribe(format => {
             this.numberFormat = format;
         });

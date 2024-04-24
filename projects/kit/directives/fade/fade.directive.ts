@@ -1,12 +1,13 @@
 import {Directive, ElementRef, HostBinding, inject, Input, NgZone} from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {
     MUTATION_OBSERVER_INIT,
     MutationObserverService,
 } from '@ng-web-apis/mutation-observer';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
-import {TuiDestroyService, tuiWithStyles, tuiZonefree} from '@taiga-ui/cdk';
+import {tuiWithStyles, tuiZonefree} from '@taiga-ui/cdk';
 import type {TuiOrientation} from '@taiga-ui/core';
-import {fromEvent, merge, takeUntil} from 'rxjs';
+import {fromEvent, merge} from 'rxjs';
 
 import {TuiFadeComponent} from './fade.component';
 
@@ -16,7 +17,6 @@ const BUFFER = 1; // buffer for rounding issues
     standalone: true,
     selector: '[tuiFade]',
     providers: [
-        TuiDestroyService,
         ResizeObserverService,
         MutationObserverService,
         {
@@ -53,10 +53,7 @@ export class TuiFadeDirective {
             inject(MutationObserverService),
             fromEvent(el, 'scroll'),
         )
-            .pipe(
-                tuiZonefree(inject(NgZone)),
-                takeUntil(inject(TuiDestroyService, {self: true})),
-            )
+            .pipe(tuiZonefree(inject(NgZone)), takeUntilDestroyed())
             .subscribe(() => {
                 el.classList.toggle('_start', !!el.scrollLeft || !!el.scrollTop);
                 el.classList.toggle('_end', this.isEnd(el));

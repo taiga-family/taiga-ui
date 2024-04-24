@@ -1,7 +1,8 @@
 import type {AnimationOptions} from '@angular/animations';
 import {ChangeDetectionStrategy, Component, HostBinding, inject} from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {TuiPopover} from '@taiga-ui/cdk';
-import {TUI_IS_MOBILE, TUI_TRUE_HANDLER, TuiDestroyService} from '@taiga-ui/cdk';
+import {TUI_IS_MOBILE, TUI_TRUE_HANDLER} from '@taiga-ui/cdk';
 import {tuiFadeIn, tuiSlideInTop} from '@taiga-ui/core/animations';
 import {
     TUI_ANIMATIONS_SPEED,
@@ -12,7 +13,7 @@ import {tuiGetDuration} from '@taiga-ui/core/utils';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 import type {Observable} from 'rxjs';
-import {filter, isObservable, map, merge, of, Subject, switchMap, takeUntil} from 'rxjs';
+import {filter, isObservable, map, merge, of, Subject, switchMap} from 'rxjs';
 
 import type {TuiDialogOptions, TuiDialogSize} from './dialog.interfaces';
 import {TUI_DIALOGS_CLOSE} from './dialog.tokens';
@@ -31,7 +32,7 @@ function toObservable<T>(valueOrStream: Observable<T> | T): Observable<T> {
     // So we don't force OnPush on dialog content
     // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
     changeDetection: ChangeDetectionStrategy.Default,
-    providers: [TuiDestroyService, TuiDialogCloseService],
+    providers: [TuiDialogCloseService],
     animations: [tuiSlideInTop, tuiFadeIn],
     host: {
         '[attr.data-appearance]': 'context.appearance',
@@ -73,7 +74,7 @@ export class TuiDialogComponent<O, I> {
             ),
             inject(TUI_DIALOGS_CLOSE).pipe(map(TUI_TRUE_HANDLER)),
         )
-            .pipe(filter(Boolean), takeUntil(inject(TuiDestroyService, {self: true})))
+            .pipe(filter(Boolean), takeUntilDestroyed())
             .subscribe(() => {
                 this.close();
             });

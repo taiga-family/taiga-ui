@@ -6,6 +6,7 @@ import {
     HostBinding,
     inject,
 } from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {FormControl} from '@angular/forms';
 import {Title} from '@angular/platform-browser';
 import {ActivatedRoute, Router, Scroll} from '@angular/router';
@@ -18,16 +19,10 @@ import {
 import type {TuiDocPages} from '@taiga-ui/addon-doc/types';
 import {tuiTransliterateKeyboardLayout} from '@taiga-ui/addon-doc/utils';
 import {TuiSidebarDirective} from '@taiga-ui/addon-mobile';
-import {
-    tuiControlValue,
-    TuiDestroyService,
-    tuiPure,
-    tuiUniqBy,
-    tuiWatch,
-} from '@taiga-ui/cdk';
+import {tuiControlValue, tuiPure, tuiUniqBy, tuiWatch} from '@taiga-ui/cdk';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core';
 import type {TuiInputComponent} from '@taiga-ui/kit';
-import {combineLatest, filter, map, switchMap, take, takeUntil} from 'rxjs';
+import {combineLatest, filter, map, switchMap, take} from 'rxjs';
 
 import {
     NAVIGATION_ITEMS,
@@ -74,7 +69,7 @@ export class TuiDocNavigationComponent {
         const readyToScroll$ = inject(TUI_DOC_PAGE_LOADED);
 
         inject(NAVIGATION_TITLE)
-            .pipe(tuiWatch(inject(ChangeDetectorRef)))
+            .pipe(tuiWatch(inject(ChangeDetectorRef)), takeUntilDestroyed())
             .subscribe(title => {
                 titleService.setTitle(title);
                 this.openActivePageGroup();
@@ -92,7 +87,7 @@ export class TuiDocNavigationComponent {
                 take(1),
                 map(([event]) => event.anchor || ''),
                 filter<string>(Boolean),
-                takeUntil(inject(TuiDestroyService, {self: true})),
+                takeUntilDestroyed(),
             )
             .subscribe(anchor => this.navigateToAnchorLink(anchor));
     }

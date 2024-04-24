@@ -1,11 +1,10 @@
 import {Directive, inject, Output} from '@angular/core';
-import {TuiDestroyService} from '@taiga-ui/cdk';
 
 import {TuiElasticStickyService} from './elastic-sticky.service';
 
 @Directive({
     selector: '[tuiElasticSticky]',
-    providers: [TuiElasticStickyService, TuiDestroyService],
+    providers: [TuiElasticStickyService],
     exportAs: 'tuiElasticSticky',
 })
 export class TuiElasticStickyDirective {
