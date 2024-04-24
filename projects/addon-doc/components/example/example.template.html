@@ -58,6 +58,7 @@
             <tui-loader
                 *ngIf="files | tuiMapper: visible"
                 size="xs"
+                class="t-code-editor"
                 [overlay]="true"
                 [showLoader]="!!(loading$ | async)"
                 (click)="edit(files)"
