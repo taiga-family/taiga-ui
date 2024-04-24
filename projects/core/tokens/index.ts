@@ -18,6 +18,7 @@ export * from './media';
 export * from './number-format';
 export * from './option-content';
 export * from './ordered-short-week-days';
+export * from './pagination-icons';
 export * from './reduced-motion';
 export * from './sanitizer';
 export * from './scroll-ref';

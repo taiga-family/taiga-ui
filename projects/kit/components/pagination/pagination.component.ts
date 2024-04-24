@@ -12,7 +12,7 @@ import {
 import type {TuiContext, TuiNativeFocusableElement} from '@taiga-ui/cdk';
 import {EMPTY_QUERY, tuiClamp, tuiIsNativeFocusedIn} from '@taiga-ui/cdk';
 import type {TuiHorizontalDirection, TuiSizeL, TuiSizeS, TuiSizeXS} from '@taiga-ui/core';
-import {TUI_SPIN_ICONS} from '@taiga-ui/core';
+import {TUI_PAGINATION_ICONS} from '@taiga-ui/core';
 import {TUI_PAGINATION_TEXTS} from '@taiga-ui/kit/tokens';
 import {tuiHorizontalDirectionToNumber} from '@taiga-ui/kit/utils/math';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
@@ -71,8 +71,8 @@ export class TuiPaginationComponent {
     @Output()
     public readonly indexChange = new EventEmitter<number>();
 
+    protected readonly icons = inject(TUI_PAGINATION_ICONS);
     protected readonly texts$ = inject(TUI_PAGINATION_TEXTS);
-    protected readonly icons = inject(TUI_SPIN_ICONS);
 
     public get nativeFocusableElement(): TuiNativeFocusableElement | null {
         if (this.disabled) {

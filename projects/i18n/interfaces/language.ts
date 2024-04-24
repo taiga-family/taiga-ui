@@ -112,6 +112,10 @@ export interface TuiLanguageTable {
         linesPerPage: string;
         of: string;
         pages: string;
+        firstPage: string;
+        previousPage: string;
+        nextPage: string;
+        lastPage: string;
     };
     /**
      * 'Show/hide' button title
