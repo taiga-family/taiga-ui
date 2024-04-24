@@ -1,3 +1,4 @@
+import {hasElementAttribute} from '../../../../utils/templates/elements';
 import type {ReplacementAttribute} from '../../../interfaces';
 
 export const ATTRS_TO_REPLACE: ReplacementAttribute[] = [
@@ -143,5 +144,24 @@ export const ATTRS_TO_REPLACE: ReplacementAttribute[] = [
             withAttrsNames: ['tuiMarkerIcon'],
         },
         to: {attrName: 'tuiCardLarge tuiSurface="elevated"'},
+    },
+    {
+        from: {
+            attrName: 'icon',
+            withAttrsNames: ['tuiLink'],
+            filterFn: element =>
+                !hasElementAttribute(element, 'iconAlign') ||
+                element.attrs.find(attr => attr.name === 'iconalign')?.value === 'right',
+        },
+        to: {attrName: 'iconRight'},
+    },
+    {
+        from: {
+            attrName: 'icon',
+            withAttrsNames: ['tuiLink'],
+            filterFn: element =>
+                element.attrs.find(attr => attr.name === 'iconalign')?.value === 'left',
+        },
+        to: {attrName: 'iconLeft'},
     },
 ];

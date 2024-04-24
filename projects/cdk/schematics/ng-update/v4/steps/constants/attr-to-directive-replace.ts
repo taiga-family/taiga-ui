@@ -1,3 +1,4 @@
+import {hasElementAttribute} from '../../../../utils/templates/elements';
 import type {ReplacementAttributeToDirective} from '../../../interfaces';
 
 export const ATTRS_TO_DIRECTIVE_REPLACE: ReplacementAttributeToDirective[] = [
@@ -35,6 +36,16 @@ export const ATTRS_TO_DIRECTIVE_REPLACE: ReplacementAttributeToDirective[] = [
         directiveModule: {
             name: 'TuiTextfieldControllerModule',
             moduleSpecifier: '@taiga-ui/core',
+        },
+    },
+    {
+        componentSelector: ['a', 'button'],
+        filterFn: el => hasElementAttribute(el, 'tuiLink'),
+        inputProperty: 'iconRotated',
+        directive: 'tuiChevron',
+        directiveModule: {
+            name: 'TuiChevronDirective',
+            moduleSpecifier: '@taiga-ui/kit',
         },
     },
 ];
