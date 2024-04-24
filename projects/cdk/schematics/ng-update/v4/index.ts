@@ -9,8 +9,9 @@ import {TAIGA_VERSION} from '../../ng-add/constants/versions';
 import type {TuiSchema} from '../../ng-add/schema';
 import {FINISH_SYMBOL, START_SYMBOL, titleLog} from '../../utils/colored-log';
 import {getExecutionTime} from '../../utils/get-execution-time';
-import {removeModules, replaceIdentifiers, showWarnings} from '../steps';
+import {removeModules, replaceEnums, replaceIdentifiers, showWarnings} from '../steps';
 import {getFileSystem} from '../utils/get-file-system';
+import {ENUMS_TO_REPLACE} from '../v4/steps/constants/enums';
 import {
     migrateDestroyService,
     migrateLegacyMask,
@@ -38,6 +39,7 @@ function main(options: TuiSchema): Rule {
         migrateLegacyMask(options);
         migrateDestroyService(options);
 
+        replaceEnums(options, ENUMS_TO_REPLACE);
         migrateTemplates(fileSystem, options);
         migrateStyles();
         showWarnings(context, MIGRATION_WARNINGS);

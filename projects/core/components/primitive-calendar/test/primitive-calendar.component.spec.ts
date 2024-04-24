@@ -13,7 +13,6 @@ import {
 } from '@taiga-ui/cdk';
 import {
     TuiCalendarSheetPipe,
-    TuiInteractiveState,
     TuiPrimitiveCalendarComponent,
     TuiPrimitiveCalendarModule,
 } from '@taiga-ui/core';
@@ -120,9 +119,7 @@ describe('PrimitiveCalendar', () => {
                 it('can be checked due itemIsDisabled', () => {
                     const disabledDay = new TuiDay(2010, 4, 20);
 
-                    expect(component.getItemState(disabledDay)).toBe(
-                        TuiInteractiveState.Disabled,
-                    );
+                    expect(component.getItemState(disabledDay)).toBe('disabled');
                 });
             });
         });
@@ -133,9 +130,7 @@ describe('PrimitiveCalendar', () => {
 
                 component.onItemPressed(dayToPress);
 
-                expect(component.getItemState(dayToPress)).toBe(
-                    TuiInteractiveState.Active,
-                );
+                expect(component.getItemState(dayToPress)).toBe('active');
             });
 
             it('returns hovered state if it is not disabled and pressed', () => {
@@ -143,9 +138,7 @@ describe('PrimitiveCalendar', () => {
 
                 component.onItemHovered(dayToHover);
 
-                expect(component.getItemState(dayToHover)).toBe(
-                    TuiInteractiveState.Hover,
-                );
+                expect(component.getItemState(dayToHover)).toBe('hover');
             });
         });
 

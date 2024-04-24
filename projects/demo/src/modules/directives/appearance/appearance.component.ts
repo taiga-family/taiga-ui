@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiDocExample, TuiRawLoaderContent} from '@taiga-ui/addon-doc';
-import type {TuiInteractiveStateT} from '@taiga-ui/core';
+import type {TuiInteractiveState} from '@taiga-ui/core';
 
 @Component({
     selector: 'example-appearance',
@@ -34,8 +34,8 @@ export class ExampleTuiAppearanceComponent {
     protected appearances = ['primary', 'secondary', 'flat'];
     protected appearance = this.appearances[0];
 
-    protected states: readonly TuiInteractiveStateT[] = ['hover', 'active', 'disabled'];
-    protected state: TuiInteractiveStateT | null = null;
+    protected states: readonly TuiInteractiveState[] = ['hover', 'active', 'disabled'];
+    protected state: TuiInteractiveState | null = null;
 
     protected focus: boolean | null = null;
 }

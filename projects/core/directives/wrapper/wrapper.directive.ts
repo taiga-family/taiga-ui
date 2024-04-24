@@ -1,5 +1,5 @@
 import {Directive, HostBinding, Input} from '@angular/core';
-import {TuiInteractiveState} from '@taiga-ui/core/enums';
+import type {TuiInteractiveState} from '@taiga-ui/core/interfaces';
 
 @Directive({
     selector: '[tuiWrapper]',
@@ -40,19 +40,19 @@ export class TuiWrapperDirective {
     @HostBinding('attr.data-state')
     protected get interactiveState(): TuiInteractiveState | string | null {
         if (this.disabled) {
-            return TuiInteractiveState.Disabled;
+            return 'disabled';
         }
 
         if (this.readOnly) {
-            return TuiInteractiveState.Readonly;
+            return 'readonly';
         }
 
         if (this.active) {
-            return TuiInteractiveState.Active;
+            return 'active';
         }
 
         if (this.hover) {
-            return TuiInteractiveState.Hover;
+            return 'hover';
         }
 
         return null;

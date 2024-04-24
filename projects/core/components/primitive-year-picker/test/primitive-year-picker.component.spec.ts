@@ -3,7 +3,6 @@ import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {TUI_FIRST_DAY, TuiDay, TuiDayRange, TuiYear} from '@taiga-ui/cdk';
 import {
-    TuiInteractiveState,
     TuiPrimitiveYearPickerComponent,
     TuiPrimitiveYearPickerModule,
 } from '@taiga-ui/core';
@@ -67,7 +66,7 @@ describe('TuiPrimitiveYearPickerComponent', () => {
 
             component.max = new TuiYear(item - 1);
 
-            expect(component.getItemState(item)).toBe(TuiInteractiveState.Disabled);
+            expect(component.getItemState(item)).toBe('disabled');
         });
 
         it('returns pressed state if it is not disabled', () => {
@@ -75,7 +74,7 @@ describe('TuiPrimitiveYearPickerComponent', () => {
 
             component.onItemPressed(true, item);
 
-            expect(component.getItemState(item)).toBe(TuiInteractiveState.Active);
+            expect(component.getItemState(item)).toBe('active');
         });
 
         it('returns hovered state if it is not disabled and pressed', () => {
@@ -83,7 +82,7 @@ describe('TuiPrimitiveYearPickerComponent', () => {
 
             component.onItemHovered(true, item);
 
-            expect(component.getItemState(item)).toBe(TuiInteractiveState.Hover);
+            expect(component.getItemState(item)).toBe('hover');
         });
     });
 

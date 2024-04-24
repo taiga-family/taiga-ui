@@ -2,6 +2,7 @@ export * from './data-list-accessor';
 export * from './data-list-host';
 export * from './date-format-settings';
 export * from './icon-error';
+export * from './interactive-state';
 export * from './media';
 export * from './number-format-settings';
 export * from './portal-item';

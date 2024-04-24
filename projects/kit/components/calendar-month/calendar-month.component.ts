@@ -18,8 +18,11 @@ import {
     tuiNullableSame,
     tuiPure,
 } from '@taiga-ui/cdk';
-import type {TuiRangeState, TuiWithOptionalMinMax} from '@taiga-ui/core';
-import {TuiInteractiveState} from '@taiga-ui/core';
+import type {
+    TuiInteractiveState,
+    TuiRangeState,
+    TuiWithOptionalMinMax,
+} from '@taiga-ui/core';
 import type {TuiMonthContext} from '@taiga-ui/kit/interfaces';
 import {TUI_CALENDAR_MONTHS} from '@taiga-ui/kit/tokens';
 import type {TuiBooleanHandlerWithContext} from '@taiga-ui/kit/types';
@@ -104,15 +107,15 @@ export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth
         const {disabledItemHandlerWithMinMax, pressedItem, hoveredItem} = this;
 
         if (disabledItemHandlerWithMinMax(item)) {
-            return TuiInteractiveState.Disabled;
+            return 'disabled';
         }
 
         if (pressedItem?.monthSame(item)) {
-            return TuiInteractiveState.Active;
+            return 'active';
         }
 
         if (hoveredItem?.monthSame(item)) {
-            return TuiInteractiveState.Hover;
+            return 'hover';
         }
 
         return null;
