@@ -27,9 +27,7 @@
     "scripts": {
         "prepare": "husky",
         "start": "nx serve demo",
-        "start:fast": "nx serve demo -c fast",
         "start:default": "nx serve demo -c def",
-        "start:coalescing": "nx serve demo -c coalescing",
         "start:shadow": "nx serve demo -c shadow",
         "start:host": "nx serve demo --open --host 0.0.0.0 --disable-host-check",
         "build:ssr": "nx build demo --baseHref=/ && nx run demo:server:production",
