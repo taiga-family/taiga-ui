@@ -2,12 +2,15 @@ import {getSourceFiles} from 'ng-morph';
 
 import {ALL_FILES} from '../../constants';
 
-replaceText([
-    {
-        from: 'Copyright 2020 Tinkoff Bank',
-        to: 'Copyright 2024 Acpekt'
-    }
-], 'projects/*/LICENSE');
+replaceText(
+    [
+        {
+            from: 'Copyright 2020 Tinkoff Bank',
+            to: 'Copyright 2024 Acpekt',
+        },
+    ],
+    'projects/*/LICENSE',
+);
 
 export function replaceText(
     replaceable: Array<{from: RegExp | string; to: string}>,
