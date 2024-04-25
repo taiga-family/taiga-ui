@@ -1,17 +1,19 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiPx} from '@taiga-ui/cdk';
+import {TuiInputNumberModule} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-format-example-1',
+    standalone: true,
+    imports: [ReactiveFormsModule, TuiInputNumberModule],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiFormatExample1 {
+export default class ExampleComponent {
     protected parametersForm = new FormGroup({
         value: new FormControl(11),
     });
