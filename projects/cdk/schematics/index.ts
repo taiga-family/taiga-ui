@@ -6,8 +6,6 @@ export * from './ng-add/constants/versions';
 export * from './ng-add/schema';
 export * from './utils/add-import-to-closest-module';
 export * from './utils/add-unique-import';
-export * from './utils/angular/ng-component';
-export * from './utils/angular/ng-module';
 export * from './utils/angular-json-manipulations';
 export * from './utils/colored-log';
 export * from './utils/create-angular-json';

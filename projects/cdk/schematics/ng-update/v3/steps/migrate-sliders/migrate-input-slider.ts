@@ -1,10 +1,9 @@
-import type {DevkitFileSystem} from 'ng-morph';
+import {DevkitFileSystem, getNgComponents} from 'ng-morph';
 import {addMethods, createProject, saveActiveProject, setActiveProject} from 'ng-morph';
 
 import {ALL_FILES, ALL_TS_FILES} from '../../../../constants';
 import type {TuiSchema} from '../../../../ng-add/schema';
 import {addUniqueImport} from '../../../../utils/add-unique-import';
-import {getNgComponents} from '../../../../utils/angular/ng-component';
 import {setupProgressLogger} from '../../../../utils/progress';
 import {projectRoot} from '../../../../utils/project-root';
 import {hasElementAttribute} from '../../../../utils/templates/elements';
