@@ -12,5 +12,11 @@
         ],
         "executionMode": "branch",
         "fileFilters": ["package-lock.json"]
-    }
+    },
+    "packageRules": [
+        {
+            "enabled": false,
+            "matchPackagePatterns": ["^@playwright.*"]
+        }
+    ]
 }
