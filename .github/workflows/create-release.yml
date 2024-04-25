@@ -95,6 +95,7 @@ jobs:
         with:
           name: Release ${{ steps.generate_body.outputs.tag_name }}
           tag: ${{ steps.generate_body.outputs.tag_name }}
+          commit: ${{ github.head_ref || github.ref_name }}
           bodyFile: 'RELEASE_BODY.md'
           token: ${{ secrets.GITHUB_TOKEN }}
 
