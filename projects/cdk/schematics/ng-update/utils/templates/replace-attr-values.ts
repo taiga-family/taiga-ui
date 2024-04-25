@@ -23,9 +23,14 @@ export function replaceAttrValues({
     const template = getTemplateFromTemplateResource(resource, fileSystem);
     const templateOffset = getTemplateOffset(resource);
 
-    data.forEach(({attrNames, values, withTagNames}) => {
+    data.forEach(({attrNames, values, withTagNames, filterFn, newAttrName}) => {
         const elements = [
-            ...findElementsWithAttributeOnTag(template, attrNames, withTagNames),
+            ...findElementsWithAttributeOnTag(
+                template,
+                attrNames,
+                withTagNames,
+                filterFn,
+            ),
         ];
 
         elements.forEach(element => {
@@ -54,7 +59,7 @@ export function replaceAttrValues({
                     );
                     recorder.insertRight(
                         templateOffset + startOffset,
-                        `${attributeName}="${to}"`,
+                        `${newAttrName || attributeName}="${to}"`,
                     );
                 }
             });

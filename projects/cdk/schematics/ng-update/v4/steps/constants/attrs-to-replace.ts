@@ -148,6 +148,20 @@ export const ATTRS_TO_REPLACE: ReplacementAttribute[] = [
     {
         from: {
             attrName: 'icon',
+            withAttrsNames: ['tuiButton'],
+        },
+        to: {attrName: 'iconLeft'},
+    },
+    {
+        from: {
+            attrName: '[icon]',
+            withAttrsNames: ['tuiButton'],
+        },
+        to: {attrName: '[iconLeft]'},
+    },
+    {
+        from: {
+            attrName: 'icon',
             withAttrsNames: ['tuiLink'],
             filterFn: element =>
                 !hasElementAttribute(element, 'iconAlign') ||

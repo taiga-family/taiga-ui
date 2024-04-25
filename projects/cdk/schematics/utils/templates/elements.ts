@@ -75,6 +75,8 @@ export function findElementsWithAttributeOnTag(
     html: string,
     attributeNames: string[],
     tagNames: string[] = [],
+    // eslint-disable-next-line no-restricted-syntax
+    filterFn: (element: Element) => boolean = () => true,
 ): Element[] {
     return findElementsInTemplateByFn(
         html,
@@ -82,7 +84,8 @@ export function findElementsWithAttributeOnTag(
             el.attrs?.some(attr =>
                 attributeNames.map(name => name.toLowerCase()).includes(attr.name),
             ) &&
-            (tagNames.includes(el.tagName) || !tagNames.length),
+            (tagNames.includes(el.tagName) || !tagNames.length) &&
+            filterFn(el),
     );
 }
 
