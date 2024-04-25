@@ -14,7 +14,7 @@ import {
     map,
     merge,
     of,
-    repeatWhen,
+    repeat,
     share,
     startWith,
     switchMap,
@@ -69,13 +69,7 @@ export const TUI_ACTIVE_ELEMENT = tuiCreateTokenFromFactory<
         focusout$.pipe(
             // eslint-disable-next-line rxjs/no-unsafe-takeuntil
             takeUntil(mousedown$),
-            /**
-             * TODO: replace to
-             * repeat({delay: () => mouseup$})
-             * in RxJS 7
-             */
-            // eslint-disable-next-line rxjs/no-ignored-notifier
-            repeatWhen(() => mouseup$),
+            repeat({delay: () => mouseup$}),
             withLatestFrom(removedElement$),
             filter(([event, removedElement]) =>
                 isValidFocusout(tuiGetActualTarget(event), removedElement),
