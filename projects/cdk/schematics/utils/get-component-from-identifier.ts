@@ -1,7 +1,5 @@
 import type {ClassDeclaration, Node} from 'ng-morph';
-import {getImports} from 'ng-morph';
-
-import {getNgComponents} from './angular/ng-component';
+import {getImports, getNgComponents} from 'ng-morph';
 
 export function getComponentFromIdentifier(
     identifier: Node,
@@ -13,7 +11,5 @@ export function getComponentFromIdentifier(
     const rootComponentPath =
         rootImportDeclaration.getModuleSpecifierSourceFile()?.getFilePath() || '';
 
-    return getNgComponents(rootComponentPath, {
-        name: identifier.getText(),
-    })[0];
+    return getNgComponents(rootComponentPath, {name: identifier.getText()})[0];
 }

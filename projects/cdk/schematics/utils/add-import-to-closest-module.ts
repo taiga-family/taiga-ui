@@ -1,10 +1,13 @@
-import {addImportToNgModule} from 'ng-morph';
-import {addImportToComponent} from 'ng-morph/ng/component/add-import-to-component';
+import {
+    addImportToComponent,
+    addImportToNgModule,
+    findNgModule,
+    getNgComponents,
+    isStandaloneComponent,
+} from 'ng-morph';
 
+import {ALL_TS_FILES} from '../constants/file-globs';
 import {addUniqueImport} from './add-unique-import';
-import {isStandaloneComponent} from './angular/is-standalone-component';
-import {getNgComponents} from './angular/ng-component';
-import {findNgModule} from './angular/ng-module';
 
 export function addImportToClosestModule(
     componentPath: string,
@@ -28,7 +31,7 @@ export function addImportToClosestModule(
         return;
     }
 
-    const ngModule = findNgModule(ngComponent);
+    const ngModule = findNgModule(ngComponent, ALL_TS_FILES);
 
     if (ngModule) {
         addImportToNgModule(ngModule, moduleName, {

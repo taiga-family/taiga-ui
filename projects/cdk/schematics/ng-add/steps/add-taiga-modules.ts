@@ -9,6 +9,7 @@ import type {
     PropertyAssignment,
 } from 'ng-morph';
 import {
+    addImportToComponent,
     addImportToNgModule,
     addProviderToComponent,
     addProviderToNgModule,
@@ -19,7 +20,6 @@ import {
     setActiveProject,
     SyntaxKind,
 } from 'ng-morph';
-import {addImportToComponent} from 'ng-morph/ng/component/add-import-to-component';
 
 import {ALL_FILES} from '../../constants';
 import {addUniqueImport} from '../../utils/add-unique-import';
