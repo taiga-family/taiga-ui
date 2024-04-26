@@ -1,5 +1,6 @@
-import {Directive, EventEmitter, Input, Output} from '@angular/core';
+import {Directive, EventEmitter, inject, Input, Output} from '@angular/core';
 import type {TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
+import {TUI_PAYMENT_SYSTEM_ICONS} from '@taiga-ui/addon-commerce/utils';
 import type {
     TuiAutofillFieldName,
     TuiFocusableElementAccessor,
@@ -27,6 +28,10 @@ export abstract class AbstractTuiInputCard<
     @Output()
     public readonly binChange = new EventEmitter<string | null>();
 
+    protected paymentIcons: Record<TuiPaymentSystem, string> = inject(
+        TUI_PAYMENT_SYSTEM_ICONS,
+    );
+
     protected constructor(protected readonly options: Options) {
         super();
     }
@@ -50,7 +55,7 @@ export abstract class AbstractTuiInputCard<
     public get defaultIcon(): string | null {
         const paymentSystem = this.getPaymentSystem(this.card);
 
-        return paymentSystem && this.options.icons[paymentSystem];
+        return paymentSystem && this.paymentIcons[paymentSystem];
     }
 
     public get paymentSystem(): TuiPaymentSystem | null {

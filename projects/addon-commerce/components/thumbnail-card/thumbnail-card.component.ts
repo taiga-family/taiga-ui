@@ -6,8 +6,8 @@ import {
     inject,
     Input,
 } from '@angular/core';
-import {TUI_INPUT_CARD_OPTIONS} from '@taiga-ui/addon-commerce/components/input-card';
 import type {TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
+import {TUI_PAYMENT_SYSTEM_ICONS} from '@taiga-ui/addon-commerce/utils';
 import type {TuiStringHandler} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {TUI_ICON_RESOLVER, TuiIconComponent} from '@taiga-ui/core';
@@ -34,7 +34,7 @@ export class TuiThumbnailCardComponent {
     @Input()
     public iconRight = '';
 
-    protected readonly options = inject(TUI_INPUT_CARD_OPTIONS);
+    protected readonly paymentIcons = inject(TUI_PAYMENT_SYSTEM_ICONS);
     protected readonly resolver = inject<TuiStringHandler<string>>(TUI_ICON_RESOLVER);
 
     // TODO: Revisit this approach in 4.0 when icons are moved away from InputCard options

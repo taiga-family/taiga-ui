@@ -22,13 +22,13 @@
         <tui-icon
             *ngIf="isMono; else colored"
             class="t-logo"
-            [icon]="options.icons[paymentSystem]"
+            [icon]="paymentIcons[paymentSystem]"
         />
         <ng-template #colored>
             <img
                 class="t-logo"
                 [alt]="paymentSystem"
-                [src]="resolver(options.icons[paymentSystem]).replace('Outline', '')"
+                [src]="resolver(paymentIcons[paymentSystem]).replace('Outline', '')"
             />
         </ng-template>
     </ng-container>
