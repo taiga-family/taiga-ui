@@ -1,4 +1,5 @@
 /// <reference lib="es2021" />
+import type {DevkitFileSystem} from 'ng-morph';
 import {
     addPackageJsonDependency,
     getActiveProject,
@@ -6,7 +7,6 @@ import {
     removePackageJsonDependency,
     saveActiveProject,
 } from 'ng-morph';
-import type {DevkitFileSystem} from 'ng-morph/project/classes/devkit-file-system';
 
 import {TUI_VERSION} from '../../../../constants/version';
 import type {TuiSchema} from '../../../ng-add/schema';

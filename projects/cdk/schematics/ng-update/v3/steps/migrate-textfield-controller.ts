@@ -1,6 +1,6 @@
 import type {UpdateRecorder} from '@angular-devkit/schematics';
+import type {DevkitFileSystem} from 'ng-morph';
 import {arrayFlat} from 'ng-morph';
-import type {DevkitFileSystem} from 'ng-morph/project/classes/devkit-file-system';
 import type {Attribute} from 'parse5/dist/common/token';
 import type {Element} from 'parse5/dist/tree-adapters/default';
 

@@ -1,5 +1,11 @@
-import {DevkitFileSystem, getNgComponents} from 'ng-morph';
-import {addMethods, createProject, saveActiveProject, setActiveProject} from 'ng-morph';
+import type {DevkitFileSystem} from 'ng-morph';
+import {
+    addMethods,
+    createProject,
+    getNgComponents,
+    saveActiveProject,
+    setActiveProject,
+} from 'ng-morph';
 
 import {ALL_FILES, ALL_TS_FILES} from '../../../../constants';
 import type {TuiSchema} from '../../../../ng-add/schema';

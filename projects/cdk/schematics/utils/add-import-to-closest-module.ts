@@ -1,12 +1,12 @@
-import {ALL_TS_FILES} from '@taiga-ui/cdk/schematics';
 import {
+    addImportToComponent,
     addImportToNgModule,
     findNgModule,
     getNgComponents,
     isStandaloneComponent,
 } from 'ng-morph';
-import {addImportToComponent} from 'ng-morph/ng/component/add-import-to-component';
 
+import {ALL_TS_FILES} from '../constants/file-globs';
 import {addUniqueImport} from './add-unique-import';
 
 export function addImportToClosestModule(
