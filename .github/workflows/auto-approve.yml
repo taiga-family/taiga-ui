@@ -11,8 +11,8 @@ jobs:
     outputs:
       matrix: ${{ steps.matrix.outputs.value }}
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.55.14
-      - uses: taiga-family/ci/actions/setup/variables@v1.55.14
+      - uses: taiga-family/ci/actions/setup/checkout@v1.55.16
+      - uses: taiga-family/ci/actions/setup/variables@v1.55.16
       - id: matrix
         if: env.IS_TAIGA_FAMILY_BOT_PR_AUTHOR == 'true'
         run: |
@@ -30,7 +30,7 @@ jobs:
       matrix:
         value: ${{ fromJSON(needs.setup.outputs.matrix) }}
     steps:
-      - uses: taiga-family/ci/actions/run/wait-job@v1.55.14
+      - uses: taiga-family/ci/actions/run/wait-job@v1.55.16
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           job: ${{ matrix.value }}
@@ -39,13 +39,13 @@ jobs:
     needs: [wait]
     runs-on: ubuntu-latest
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.55.14
-      - uses: taiga-family/ci/actions/setup/variables@v1.55.14
-      - uses: taiga-family/ci/actions/auto/approve/double@v1.55.14
+      - uses: taiga-family/ci/actions/setup/checkout@v1.55.16
+      - uses: taiga-family/ci/actions/setup/variables@v1.55.16
+      - uses: taiga-family/ci/actions/auto/approve/double@v1.55.16
         with:
           token1: ${{ secrets.GITHUB_TOKEN }}
           token2: ${{ secrets.TAIGA_FAMILY_APPROVE_BOT_PAT }}
-      - uses: taiga-family/ci/actions/run/merge@v1.55.14
+      - uses: taiga-family/ci/actions/run/merge@v1.55.16
         if: env.IS_RELEASE_BRANCH == 'false'
         with:
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
