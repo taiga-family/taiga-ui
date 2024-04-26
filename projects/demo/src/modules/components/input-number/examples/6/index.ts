@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {tuiNumberFormatProvider} from '@taiga-ui/core';
 import {tuiInputNumberOptionsProvider} from '@taiga-ui/kit';
 
 @Component({
@@ -9,8 +10,10 @@ import {tuiInputNumberOptionsProvider} from '@taiga-ui/kit';
     encapsulation,
     changeDetection,
     providers: [
-        tuiInputNumberOptionsProvider({
+        tuiNumberFormatProvider({
             precision: 0,
+        }),
+        tuiInputNumberOptionsProvider({
             step: 1,
         }),
     ],

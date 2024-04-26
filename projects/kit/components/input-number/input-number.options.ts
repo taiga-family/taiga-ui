@@ -1,16 +1,13 @@
 import type {Provider} from '@angular/core';
 import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
-import type {TuiDecimalMode} from '@taiga-ui/core';
 
 export interface TuiInputNumberOptions {
-    readonly decimal: TuiDecimalMode;
     readonly icons: Readonly<{
         down: string;
         up: string;
     }>;
     readonly max: number;
     readonly min: number;
-    readonly precision: number;
     readonly step: number;
 }
 
@@ -23,8 +20,6 @@ export const TUI_INPUT_NUMBER_DEFAULT_OPTIONS: TuiInputNumberOptions = {
     min: Number.MIN_SAFE_INTEGER,
     max: Number.MAX_SAFE_INTEGER,
     step: 0,
-    decimal: 'not-zero',
-    precision: 2,
 };
 
 /**
