@@ -2,14 +2,13 @@ import type {Provider} from '@angular/core';
 import {ChangeDetectorRef, InjectionToken} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {tuiWatch} from '@taiga-ui/cdk';
-import {TUI_TEXTFIELD_APPEARANCE} from '@taiga-ui/core/tokens';
 import {merge, NEVER} from 'rxjs';
 
 import {TuiTextfieldController} from './textfield.controller';
 import type {TuiTextfieldOptions} from './textfield.options';
 import {TUI_TEXTFIELD_OPTIONS} from './textfield.options';
 import type {TuiTextfieldAppearanceDirective} from './textfield-appearance.directive';
-import {TUI_TEXTFIELD_APPEARANCE_DIRECTIVE} from './textfield-appearance.directive';
+import {TUI_TEXTFIELD_APPEARANCE} from './textfield-appearance.directive';
 import type {TuiTextfieldCleanerDirective} from './textfield-cleaner.directive';
 import {TUI_TEXTFIELD_CLEANER} from './textfield-cleaner.directive';
 import type {TuiTextfieldCustomContentDirective} from './textfield-custom-content.directive';
@@ -39,7 +38,6 @@ export const TEXTFIELD_CONTROLLER_PROVIDER: Provider = [
             ChangeDetectorRef,
             TUI_TEXTFIELD_OPTIONS,
             TUI_TEXTFIELD_APPEARANCE,
-            TUI_TEXTFIELD_APPEARANCE_DIRECTIVE,
             TUI_TEXTFIELD_CLEANER,
             TUI_TEXTFIELD_CUSTOM_CONTENT,
             TUI_TEXTFIELD_ICON,
@@ -53,7 +51,6 @@ export const TEXTFIELD_CONTROLLER_PROVIDER: Provider = [
         useFactory: (
             cdr: ChangeDetectorRef,
             options: TuiTextfieldOptions,
-            legacyAppearance: string,
             ...controllers: [
                 TuiTextfieldAppearanceDirective,
                 TuiTextfieldCleanerDirective,
@@ -73,12 +70,7 @@ export const TEXTFIELD_CONTROLLER_PROVIDER: Provider = [
 
             change$.subscribe();
 
-            return new TuiTextfieldController(
-                change$,
-                options,
-                legacyAppearance,
-                ...controllers,
-            );
+            return new TuiTextfieldController(change$, options, ...controllers);
         },
     },
 ];

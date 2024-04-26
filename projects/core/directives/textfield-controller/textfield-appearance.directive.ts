@@ -5,16 +5,13 @@ import {
     tuiProvide,
 } from '@taiga-ui/cdk';
 
-// TODO: rename to TUI_TEXTFIELD_APPEARANCE in v4
-export const TUI_TEXTFIELD_APPEARANCE_DIRECTIVE = tuiCreateTokenFromFactory(
+export const TUI_TEXTFIELD_APPEARANCE = tuiCreateTokenFromFactory(
     () => new TuiTextfieldAppearanceDirective(),
 );
 
 @Directive({
     selector: '[tuiTextfieldAppearance]',
-    providers: [
-        tuiProvide(TUI_TEXTFIELD_APPEARANCE_DIRECTIVE, TuiTextfieldAppearanceDirective),
-    ],
+    providers: [tuiProvide(TUI_TEXTFIELD_APPEARANCE, TuiTextfieldAppearanceDirective)],
 })
 export class TuiTextfieldAppearanceDirective extends AbstractTuiController {
     // it's an empty string by default for backward compatibility

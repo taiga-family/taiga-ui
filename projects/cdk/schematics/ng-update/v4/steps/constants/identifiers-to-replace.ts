@@ -403,4 +403,14 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/kit',
         },
     },
+    {
+        from: {
+            name: 'TUI_TEXTFIELD_APPEARANCE_DIRECTIVE',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+        to: {
+            name: 'TUI_TEXTFIELD_APPEARANCE',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
 ];

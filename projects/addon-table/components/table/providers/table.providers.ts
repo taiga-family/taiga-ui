@@ -6,7 +6,7 @@ import {
 } from '@ng-web-apis/intersection-observer';
 import {tuiProvide} from '@taiga-ui/cdk';
 import {
-    TUI_TEXTFIELD_APPEARANCE_DIRECTIVE,
+    TUI_TEXTFIELD_APPEARANCE,
     TUI_TEXTFIELD_LABEL_OUTSIDE,
     TUI_TEXTFIELD_SIZE,
     TuiAppearance,
@@ -26,7 +26,7 @@ export const TUI_TABLE_PROVIDERS = [
         useValue: [0, 1],
     },
     {
-        provide: TUI_TEXTFIELD_APPEARANCE_DIRECTIVE,
+        provide: TUI_TEXTFIELD_APPEARANCE,
         useFactory: (): TuiTextfieldAppearanceDirective => {
             const directive = new TuiTextfieldAppearanceDirective();
 

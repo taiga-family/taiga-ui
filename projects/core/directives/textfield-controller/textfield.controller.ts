@@ -19,7 +19,6 @@ export class TuiTextfieldController {
     constructor(
         public readonly change$: Observable<void>,
         public readonly options: TuiTextfieldOptions,
-        private readonly legacyAppearance: string,
         private readonly appearanceDirective: TuiTextfieldAppearanceDirective,
         private readonly cleanerDirective: TuiTextfieldCleanerDirective,
         private readonly customContentDirective: TuiTextfieldCustomContentDirective,
@@ -33,7 +32,7 @@ export class TuiTextfieldController {
     ) {}
 
     public get appearance(): string {
-        return this.appearanceDirective.appearance || this.legacyAppearance;
+        return this.appearanceDirective.appearance;
     }
 
     public get cleaner(): boolean {

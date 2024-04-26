@@ -25,7 +25,6 @@ export * from './selection-stream';
 export * from './spin-icons';
 export * from './svg-content-processor';
 export * from './svg-src-processor';
-export * from './textfield-appearance';
 export * from './textfield-host';
 export * from './theme';
 export * from './value-accessor';

@@ -1,6 +1,6 @@
 import {Component, ViewEncapsulation} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {TUI_TEXTFIELD_APPEARANCE_DIRECTIVE, TuiButtonDirective} from '@taiga-ui/core';
+import {TUI_TEXTFIELD_APPEARANCE, TuiButtonDirective} from '@taiga-ui/core';
 import {TuiLabelDirective} from '@taiga-ui/experimental';
 import {
     TuiCheckboxComponent,
@@ -23,7 +23,7 @@ import {
     encapsulation: ViewEncapsulation.None,
     providers: [
         {
-            provide: TUI_TEXTFIELD_APPEARANCE_DIRECTIVE,
+            provide: TUI_TEXTFIELD_APPEARANCE,
             useValue: {
                 appearance: 'material-textfield',
             },
