@@ -1,16 +1,12 @@
-import {isPlatformServer} from '@angular/common';
-import {inject, Injectable, PLATFORM_ID} from '@angular/core';
-import {WINDOW} from '@ng-web-apis/common';
+import {Injectable} from '@angular/core';
 import type {Observable} from 'rxjs';
-import {defer, from, shareReplay, switchMap} from 'rxjs';
+import {shareReplay, switchMap} from 'rxjs';
 import {fromFetch} from 'rxjs/fetch';
 
 @Injectable({
     providedIn: 'root',
 })
 export class TuiStaticRequestService {
-    private readonly win = inject(WINDOW);
-    private readonly platformId = inject(PLATFORM_ID);
     private readonly cache = new Map<string, Observable<string>>();
 
     public request(url: string): Observable<string> {
@@ -20,16 +16,7 @@ export class TuiStaticRequestService {
             return cache;
         }
 
-        const response$ =
-            'AbortController' in this.win || isPlatformServer(this.platformId)
-                ? fromFetch(url)
-                : /**
-                   * Fallback for Firefox 55 and 56
-                   * TODO: drop after browser support bump
-                   */
-                  defer(() => from(fetch(url)));
-
-        const piped = response$.pipe(
+        const piped = fromFetch(url).pipe(
             switchMap(async response => {
                 if (response.ok) {
                     return response.text();
