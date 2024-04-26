@@ -1,4 +1,3 @@
-export * from './destroy.service';
 export * from './id.service';
 export * from './obscured.service';
 export * from './pan.service';
