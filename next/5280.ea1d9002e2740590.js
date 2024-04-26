@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[5280],{5280:n=>{n.exports=".first {\n    color: var(--tui-support-01);\n}\n\n.second {\n    color: var(--tui-support-03);\n}\n\n.third {\n    color: var(--tui-support-12);\n}\n"}}]);
