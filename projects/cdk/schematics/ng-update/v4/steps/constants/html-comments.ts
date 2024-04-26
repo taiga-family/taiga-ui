@@ -37,4 +37,10 @@ export const HTML_COMMENTS: HtmlComment[] = [
         comment:
             'tuiAction has been removed in favour of tuiCardLarge + tuiSurface. Change the template according to this example https://taiga-ui.dev/layout/card-large',
     },
+    {
+        tag: 'button',
+        withAttrs: ['[shape]'],
+        comment:
+            '[shape] input has been removed. Please use border-radius css property for rounding borders https://taiga-ui.dev/components/button',
+    },
 ];

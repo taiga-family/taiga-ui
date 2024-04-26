@@ -389,4 +389,18 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         from: {name: 'TuiInteractiveStateT', moduleSpecifier: '@taiga-ui/core'},
         to: {name: 'TuiInteractiveState', moduleSpecifier: '@taiga-ui/core'},
     },
+    {
+        from: {name: 'TuiButtonModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {
+            name: 'TuiButtonDirective',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {name: 'TuiButtonModule', moduleSpecifier: '@taiga-ui/experimental'},
+        to: {
+            name: 'TuiButtonDirective',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
 ];

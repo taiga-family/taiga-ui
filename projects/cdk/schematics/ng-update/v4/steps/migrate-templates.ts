@@ -17,10 +17,12 @@ import {
     addHTMLCommentTags,
     removeInputs,
     replaceAttrs,
+    replaceAttrValues,
     replaceTags,
 } from '../../utils/templates';
 import {replaceAttrsByDirective} from '../../utils/templates/replace-attrs-by-directives';
 import {
+    ATTR_WITH_VALUES_TO_REPLACE,
     ATTRS_TO_DIRECTIVE_REPLACE,
     ATTRS_TO_REPLACE,
     HTML_COMMENTS,
@@ -84,6 +86,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
         }),
         getAction({action: replaceTags, requiredData: TAGS_TO_REPLACE}),
         getAction({action: replaceAttrs, requiredData: ATTRS_TO_REPLACE}),
+        getAction({action: replaceAttrValues, requiredData: ATTR_WITH_VALUES_TO_REPLACE}),
         getAction({action: removeInputs, requiredData: INPUTS_TO_REMOVE}),
         migrateBadge,
         migrateCheckbox,

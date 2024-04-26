@@ -1,4 +1,5 @@
 export * from './attr-to-directive-replace';
+export * from './attr-with-values-to-replace';
 export * from './attrs-to-replace';
 export * from './html-comments';
 export * from './identifiers-to-replace';
