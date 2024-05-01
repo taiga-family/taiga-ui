@@ -40,6 +40,10 @@ describe('InputPassword', () => {
         return pageObject.getByAutomationId('tui-password__icon');
     }
 
+    function getInput(): HTMLInputElement {
+        return fixture.nativeElement.querySelector('input');
+    }
+
     beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [
@@ -65,14 +69,17 @@ describe('InputPassword', () => {
             const inputType = component.inputType;
 
             expect(inputType).toBe('password');
+            expect(getInput().type).toBe('password');
         });
 
         it('When you click on the "Show password" icon, the field becomes type = "text"', () => {
             getIcon()!.nativeElement.click();
+            fixture.detectChanges();
 
             const inputType = component.inputType;
 
             expect(inputType).toBe('text');
+            expect(getInput().type).toBe('text');
         });
 
         it('With readOnly, the type field="password"', () => {
@@ -82,6 +89,7 @@ describe('InputPassword', () => {
             const inputType = component.inputType;
 
             expect(inputType).toBe('password');
+            expect(getInput().type).toBe('password');
         });
 
         it('When the field is disabled type="password"', () => {
@@ -91,6 +99,7 @@ describe('InputPassword', () => {
             const inputType = component.inputType;
 
             expect(inputType).toBe('password');
+            expect(getInput().type).toBe('password');
         });
     });
 });

@@ -1,8 +1,10 @@
 import {
     ChangeDetectionStrategy,
     Component,
+    EventEmitter,
     HostBinding,
     inject,
+    Output,
     ViewChild,
 } from '@angular/core';
 import type {
@@ -47,6 +49,10 @@ export class TuiInputPasswordComponent
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
     private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
+
+    @Output()
+    public readonly passwordHidden = new EventEmitter<boolean>();
+
     protected readonly hintOptions = inject(TuiHintOptionsDirective, {optional: true});
     protected readonly directive$: Observable<any> = this.hintOptions?.change$ || EMPTY;
 
@@ -95,6 +101,7 @@ export class TuiInputPasswordComponent
 
     protected togglePasswordVisibility(): void {
         this.isPasswordHidden = !this.isPasswordHidden;
+        this.passwordHidden.emit(this.isPasswordHidden);
     }
 
     protected getFallbackValue(): string {
