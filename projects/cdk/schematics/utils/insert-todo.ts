@@ -1,10 +1,10 @@
-import type {Identifier} from 'ng-morph';
+import type {Node} from 'ng-morph';
 
 export const TODO_MARK = 'TODO: (Taiga UI migration)';
 
-export function insertTodo(identifier: Identifier, message: string): void {
-    const startLinePos = identifier.getStartLinePos();
-    const sourceFile = identifier.getSourceFile();
+export function insertTodo(node: Node, message: string): void {
+    const startLinePos = node.getStartLinePos();
+    const sourceFile = node.getSourceFile();
 
     sourceFile.insertText(startLinePos, `// ${TODO_MARK} ${message}\n`);
 }

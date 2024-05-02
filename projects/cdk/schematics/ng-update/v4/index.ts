@@ -24,6 +24,7 @@ import {
     MIGRATION_WARNINGS,
     MODULES_TO_REMOVE,
 } from './steps/constants';
+import {migrateOptionProviders} from './steps/migrate-option-providers';
 import {migrateProprietary} from './steps/migrate-proprietary';
 import {migrateStyles} from './steps/migrate-styles';
 
@@ -38,6 +39,7 @@ function main(options: TuiSchema): Rule {
         restoreTuiMatcher(options);
         migrateLegacyMask(options);
         migrateDestroyService(options);
+        migrateOptionProviders(options);
 
         replaceEnums(options, ENUMS_TO_REPLACE);
         migrateTemplates(fileSystem, options);
