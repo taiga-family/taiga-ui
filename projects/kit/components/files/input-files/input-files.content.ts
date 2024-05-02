@@ -1,12 +1,17 @@
 import {AsyncPipe} from '@angular/common';
-import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component,
+    inject,
+} from '@angular/core';
 import type {TuiContext} from '@taiga-ui/cdk';
 import {tuiPure} from '@taiga-ui/cdk';
 import {TuiBreakpointService, TuiLinkDirective} from '@taiga-ui/core';
 import {TUI_INPUT_FILE_TEXTS} from '@taiga-ui/kit/tokens';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 import type {Observable} from 'rxjs';
-import {combineLatest, map, of} from 'rxjs';
+import {combineLatest, map, of, tap} from 'rxjs';
 
 import {TuiInputFilesComponent} from './input-files.component';
 
@@ -17,13 +22,14 @@ import {TuiInputFilesComponent} from './input-files.component';
         <a tuiLink>{{ link$ | async }}</a>
         {{ label$ | async }}
     `,
-    changeDetection: ChangeDetectionStrategy.Default,
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiInputFilesContent {
     private readonly breakpoint$ = inject(TuiBreakpointService);
     private readonly text$ = inject(TUI_INPUT_FILE_TEXTS);
     private readonly context = inject(POLYMORPHEUS_CONTEXT) as TuiContext<boolean>;
     private readonly component = inject(TuiInputFilesComponent);
+    private readonly cd = inject(ChangeDetectorRef);
 
     protected get link$(): Observable<string> {
         return this.computeLink$(
@@ -41,35 +47,39 @@ export class TuiInputFilesContent {
 
     @tuiPure
     private computeLink$(fileDragged: boolean, multiple: boolean): Observable<string> {
-        return fileDragged
-            ? of('')
-            : this.text$.pipe(
-                  map(t => (multiple ? t.defaultLinkMultiple : t.defaultLinkSingle)),
-              );
+        return (
+            fileDragged
+                ? of('')
+                : this.text$.pipe(
+                      map(t => (multiple ? t.defaultLinkMultiple : t.defaultLinkSingle)),
+                  )
+        ).pipe(tap(() => this.cd.detectChanges()));
     }
 
     @tuiPure
     private computeLabel$(fileDragged: boolean, multiple: boolean): Observable<string> {
-        return fileDragged
-            ? combineLatest([this.breakpoint$, this.text$]).pipe(
-                  map(([breakpoint, text]) => {
-                      if (breakpoint === 'mobile') {
-                          return '';
-                      }
+        return (
+            fileDragged
+                ? combineLatest([this.breakpoint$, this.text$]).pipe(
+                      map(([breakpoint, text]) => {
+                          if (breakpoint === 'mobile') {
+                              return '';
+                          }
 
-                      return multiple ? text.dropMultiple : text.drop;
-                  }),
-              )
-            : combineLatest([this.breakpoint$, this.text$]).pipe(
-                  map(([breakpoint, text]) => {
-                      if (breakpoint === 'mobile') {
-                          return '';
-                      }
+                          return multiple ? text.dropMultiple : text.drop;
+                      }),
+                  )
+                : combineLatest([this.breakpoint$, this.text$]).pipe(
+                      map(([breakpoint, text]) => {
+                          if (breakpoint === 'mobile') {
+                              return '';
+                          }
 
-                      return multiple
-                          ? text.defaultLabelMultiple
-                          : text.defaultLabelSingle;
-                  }),
-              );
+                          return multiple
+                              ? text.defaultLabelMultiple
+                              : text.defaultLabelSingle;
+                      }),
+                  )
+        ).pipe(tap(() => this.cd.detectChanges()));
     }
 }
