@@ -32,7 +32,7 @@ export class PayModalComponent implements OnInit {
     private readonly cardGroupedInput?: TuiInputCardGroupedComponent;
 
     private readonly payService = inject(PayService);
-    private readonly destroy$ = inject(DestroyRef);
+    private readonly destroyRef = inject(DestroyRef);
 
     protected readonly form = new FormGroup({
         card: new FormControl<TuiCard | null>(null, [
@@ -83,7 +83,7 @@ export class PayModalComponent implements OnInit {
         this.payProcessing$.next(true);
         this.payService
             .pay()
-            .pipe(takeUntilDestroyed(this.destroy$))
+            .pipe(takeUntilDestroyed(this.destroyRef))
             .subscribe(
                 () => {
                     this.payProcessing$.next(false);
@@ -111,7 +111,7 @@ export class PayModalComponent implements OnInit {
                         .getPrimaryCard()
                         .pipe(map(data => [amount, data] as [number, FetchedCards])),
                 ),
-                takeUntilDestroyed(this.destroy$),
+                takeUntilDestroyed(this.destroyRef),
             )
             .subscribe({
                 next: ([, data]: [number, FetchedCards]) => {

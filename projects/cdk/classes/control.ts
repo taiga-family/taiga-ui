@@ -49,7 +49,6 @@ export abstract class AbstractTuiControl<T>
     protected onTouched = EMPTY_FUNCTION;
     protected onChange = EMPTY_FUNCTION;
     protected readonly fallbackValue = this.getFallbackValue();
-    protected readonly destroy$ = inject(DestroyRef);
     protected destroyRef = inject(DestroyRef);
     protected readonly cdr = inject(ChangeDetectorRef);
     protected readonly valueTransformer = inject<TuiValueTransformer<T>>(
@@ -141,7 +140,7 @@ export abstract class AbstractTuiControl<T>
                 filter(tuiIsPresent),
                 distinctUntilChanged(),
                 switchMap(control => merge(control.valueChanges, control.statusChanges)),
-                takeUntilDestroyed(this.destroy$),
+                takeUntilDestroyed(this.destroyRef),
             )
             .subscribe(() => {
                 this.refreshLocalValue(this.safeCurrentValue);

@@ -33,10 +33,10 @@ export class TuiDataListDropdownManagerDirective implements AfterViewInit {
     @ContentChildren(TuiDropdownDirective, {read: ElementRef, descendants: true})
     private readonly els: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
-    private readonly destroy$ = inject(DestroyRef);
+    private readonly destroyRef = inject(DestroyRef);
 
     public ngAfterViewInit(): void {
-        this.right$.pipe(takeUntilDestroyed(this.destroy$)).subscribe(index => {
+        this.right$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(index => {
             this.tryToFocus(index);
         });
 
@@ -75,7 +75,7 @@ export class TuiDataListDropdownManagerDirective implements AfterViewInit {
                         }),
                     );
                 }),
-                takeUntilDestroyed(this.destroy$),
+                takeUntilDestroyed(this.destroyRef),
             )
             .subscribe();
     }

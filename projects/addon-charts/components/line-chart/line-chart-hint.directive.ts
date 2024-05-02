@@ -45,7 +45,7 @@ export class TuiLineChartHintDirective implements AfterViewInit {
     private readonly chartsRef: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
     private readonly renderer = inject(Renderer2);
-    private readonly destroy$ = inject(DestroyRef);
+    private readonly destroyRef = inject(DestroyRef);
     private readonly zone = inject(NgZone);
     private readonly hovered$ = inject(TuiHoveredService);
 
@@ -57,7 +57,7 @@ export class TuiLineChartHintDirective implements AfterViewInit {
             .pipe(
                 filter(result => !result.some(Boolean)),
                 tuiZonefree(this.zone),
-                takeUntilDestroyed(this.destroy$),
+                takeUntilDestroyed(this.destroyRef),
             )
             .subscribe(() => {
                 this.charts.forEach(chart => chart.onHovered(NaN));

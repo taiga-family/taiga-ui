@@ -20,7 +20,7 @@ export class TuiElasticStickyService extends Observable<number> {
     private readonly scrollRef: HTMLElement = inject(TUI_SCROLL_REF).nativeElement;
     private readonly zone = inject(NgZone);
     private readonly cd = inject(ChangeDetectorRef);
-    private readonly destroy$ = inject(DestroyRef);
+    private readonly destroyRef = inject(DestroyRef);
 
     constructor() {
         super(subscriber => {
@@ -46,7 +46,7 @@ export class TuiElasticStickyService extends Observable<number> {
                                 ),
                             ),
                             tap(() => this.cd.detectChanges()),
-                            takeUntilDestroyed(this.destroy$),
+                            takeUntilDestroyed(this.destroyRef),
                         )
                         .subscribe(subscriber);
 

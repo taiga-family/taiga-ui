@@ -38,7 +38,7 @@ import {TuiGetOpacityPipe} from './pipes/opacity.pipe';
 })
 export class TuiDocDocumentationComponent implements AfterContentInit {
     private readonly cdr = inject(ChangeDetectorRef);
-    private readonly destroy$ = inject(DestroyRef);
+    private readonly destroyRef = inject(DestroyRef);
     private readonly getColor = inject(TuiGetColorPipe);
     private readonly getOpacity = inject(TuiGetOpacityPipe);
 
@@ -65,7 +65,7 @@ export class TuiDocDocumentationComponent implements AfterContentInit {
             .pipe(
                 switchMap(items => merge(...items.map(({changed$}) => changed$))),
                 tuiWatch(this.cdr),
-                takeUntilDestroyed(this.destroy$),
+                takeUntilDestroyed(this.destroyRef),
             )
             .subscribe();
     }

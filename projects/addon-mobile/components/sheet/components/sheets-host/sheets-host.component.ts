@@ -27,7 +27,7 @@ import {TuiSheetService} from '../../sheet.service';
 })
 export class TuiSheetsHostComponent implements OnInit {
     private readonly service = inject(TuiSheetService);
-    private readonly destroy$ = inject(DestroyRef);
+    private readonly destroyRef = inject(DestroyRef);
     private readonly cdr = inject(ChangeDetectorRef);
     protected readonly height$ = inject(TUI_WINDOW_HEIGHT);
 
@@ -38,10 +38,12 @@ export class TuiSheetsHostComponent implements OnInit {
     public ngOnInit(): void {
         // Due to this view being parallel to app content, `markForCheck` from `async` pipe
         // can happen after view was checked, so calling `detectChanges` instead
-        this.service.sheets$.pipe(takeUntilDestroyed(this.destroy$)).subscribe(sheets => {
-            this.sheets = sheets;
-            this.cdr.detectChanges();
-        });
+        this.service.sheets$
+            .pipe(takeUntilDestroyed(this.destroyRef))
+            .subscribe(sheets => {
+                this.sheets = sheets;
+                this.cdr.detectChanges();
+            });
     }
 
     protected close({closeable, $implicit}: TuiSheet<unknown>): void {

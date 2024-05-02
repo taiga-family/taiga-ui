@@ -21,14 +21,14 @@ import {TuiSvgService} from '@taiga-ui/core/services';
 export class TuiSvgDefsHostComponent implements OnInit {
     private readonly svgService = inject(TuiSvgService);
     private readonly cdr = inject(ChangeDetectorRef);
-    private readonly destroy$ = inject(DestroyRef);
+    private readonly destroyRef = inject(DestroyRef);
     protected readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
     protected items!: IterableIterator<SafeHtml>;
 
     // @bad TODO: Looks like it could be async piped but it was probably written like that for a reason
     public ngOnInit(): void {
         this.svgService.items$
-            .pipe(takeUntilDestroyed(this.destroy$))
+            .pipe(takeUntilDestroyed(this.destroyRef))
             .subscribe(defsMap => {
                 this.items = defsMap.values();
                 this.cdr.detectChanges();

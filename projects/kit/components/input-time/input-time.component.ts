@@ -222,7 +222,7 @@ export class TuiInputTimeComponent
         this.value = TuiTime.fromString(this.nativeValue);
 
         timer(0)
-            .pipe(takeUntilDestroyed(this.destroy$))
+            .pipe(takeUntilDestroyed(this.destroyRef))
             .subscribe(() => {
                 if (this.nativeValue.endsWith('.') || this.nativeValue.endsWith(':')) {
                     this.nativeValue = this.nativeValue.slice(0, -1);

@@ -19,7 +19,7 @@ import {
 export class TuiAutoFocusDirective implements AfterViewInit {
     private readonly handler = inject(TUI_AUTOFOCUS_HANDLER);
     private readonly options = inject(TUI_AUTOFOCUS_OPTIONS);
-    private readonly destroy$ = inject(DestroyRef);
+    private readonly destroyRef = inject(DestroyRef);
 
     @Input({
         alias: 'tuiAutoFocus',
@@ -38,7 +38,7 @@ export class TuiAutoFocusDirective implements AfterViewInit {
             void Promise.resolve().then(() => this.handler.setFocus());
         } else {
             timer(this.options.delay)
-                .pipe(takeUntilDestroyed(this.destroy$))
+                .pipe(takeUntilDestroyed(this.destroyRef))
                 .subscribe(() => this.handler.setFocus());
         }
     }
