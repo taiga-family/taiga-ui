@@ -8,6 +8,7 @@ import {
     tuiGenerateRoutes,
     TuiTextCodeModule,
 } from '@taiga-ui/addon-doc';
+import {TuiAlertHostModule} from '@taiga-ui/cdk';
 import {
     TuiAlertModule,
     TuiButtonModule,
@@ -28,6 +29,10 @@ import {TuiAlertsExampleComponent5} from './examples/5';
 import {AlertExampleWithCustomLabelModule} from './examples/5/alert-example-with-custom-label/alert-example-with-custom-label.module';
 import {CustomLabelModule} from './examples/5/custom-label/custom-label.module';
 import {TuiAlertsExampleComponent6} from './examples/6';
+import {TuiAlertsExampleComponent7} from './examples/7';
+import {TuiAlertsExampleComponent8} from './examples/8';
+import {CustomAlertsQueueOverrideDirective} from './overrides/custom-alerts-queue-override.directive';
+import {LimitOfAlertsOverrideDirective} from './overrides/limit-of-alerts-override.directive';
 
 @NgModule({
     imports: [
@@ -48,15 +53,20 @@ import {TuiAlertsExampleComponent6} from './examples/6';
         TuiLinkModule,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiAlertsComponent)),
+        TuiAlertHostModule,
     ],
     declarations: [
         ExampleTuiAlertsComponent,
+        LimitOfAlertsOverrideDirective,
+        CustomAlertsQueueOverrideDirective,
         TuiAlertsExampleComponent1,
         TuiAlertsExampleComponent2,
         TuiAlertsExampleComponent3,
         TuiAlertsExampleComponent4,
         TuiAlertsExampleComponent5,
         TuiAlertsExampleComponent6,
+        TuiAlertsExampleComponent7,
+        TuiAlertsExampleComponent8,
     ],
     exports: [ExampleTuiAlertsComponent],
 })

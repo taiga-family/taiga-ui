@@ -104,6 +104,19 @@ export class ExampleTuiAlertsComponent {
         HTML: import('./examples/6/index.html?raw'),
     };
 
+    readonly example7: TuiDocExample = {
+        TypeScript: import('./examples/7/index.ts?raw'),
+        HTML: import('./examples/7/index.html?raw'),
+        'app.module.ts': import('./examples/7/app.module.ts?raw'),
+    };
+
+    readonly example8: TuiDocExample = {
+        TypeScript: import('./examples/8/index.ts?raw'),
+        HTML: import('./examples/8/index.html?raw'),
+        'app.module.ts': import('./examples/8/app.module.ts?raw'),
+        'latest-all.ts': import('./examples/8/latest-all.ts?raw'),
+    };
+
     data = 100;
 
     label = 'Heading';
