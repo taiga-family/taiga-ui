@@ -407,4 +407,23 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         from: {name: 'TuiLetModule', moduleSpecifier: '@taiga-ui/cdk'},
         to: {name: 'TuiLetDirective', moduleSpecifier: '@taiga-ui/cdk'},
     },
+    {
+        from: {
+            name: 'TuiNavigationModule',
+            moduleSpecifier: '@taiga-ui/proprietary-navigation',
+        },
+        to: [
+            {
+                name: 'TuiMobileProductsComponent',
+                moduleSpecifier: '@taiga-ui/proprietary',
+            },
+            {name: 'TuiNavigationComponent', moduleSpecifier: '@taiga-ui/proprietary'},
+            {name: 'TuiMobileMenuComponent', moduleSpecifier: '@taiga-ui/proprietary'},
+            {name: 'TuiLogoComponent', moduleSpecifier: '@taiga-ui/proprietary'},
+            {name: 'TuiLoginComponent', moduleSpecifier: '@taiga-ui/proprietary'},
+            {name: 'TuiUserMenuComponent', moduleSpecifier: '@taiga-ui/proprietary'},
+            {name: 'TuiSideMenuComponent', moduleSpecifier: '@taiga-ui/proprietary'},
+            {name: 'TuiSideMenuGroupDirective', moduleSpecifier: '@taiga-ui/proprietary'},
+        ],
+    },
 ];
