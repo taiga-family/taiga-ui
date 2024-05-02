@@ -17,7 +17,7 @@ jobs:
       - run: npx tsc --project tsconfig.spec.json
       - run: npx nx run-many -t test --output-style=stream --nxBail
       - run: tree -L 2 ./coverage -P 'lcov.info'
-      - uses: codecov/codecov-action@v4.3.0
+      - uses: codecov/codecov-action@v4.3.1
         with:
           directory: ./coverage/
           flags: summary
