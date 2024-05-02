@@ -1,6 +1,7 @@
 import type {DoCheck} from '@angular/core';
 import {
     ChangeDetectionStrategy,
+    ChangeDetectorRef,
     Component,
     ElementRef,
     HostBinding,
@@ -10,7 +11,15 @@ import {
 } from '@angular/core';
 import {TUI_FOCUSABLE_ITEM_ACCESSOR, TUI_FONTS_READY} from '@taiga-ui/cdk';
 import {TuiAppearance} from '@taiga-ui/core/enums';
-import {BehaviorSubject, delay, distinctUntilChanged, filter, map, merge} from 'rxjs';
+import {
+    BehaviorSubject,
+    delay,
+    distinctUntilChanged,
+    filter,
+    map,
+    merge,
+    tap,
+} from 'rxjs';
 
 import type {TuiPrimitiveTextfield} from '../primitive-textfield-types';
 
@@ -18,9 +27,7 @@ import type {TuiPrimitiveTextfield} from '../primitive-textfield-types';
     selector: 'tui-value-decoration',
     templateUrl: './value-decoration.template.html',
     styleUrls: ['./value-decoration.style.less'],
-    // It follows Change Detection of PrimitiveTextfield
-    // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
-    changeDetection: ChangeDetectionStrategy.Default,
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiValueDecorationComponent implements DoCheck {
     @ViewChild('pre', {read: ElementRef, static: true})
@@ -31,6 +38,7 @@ export class TuiValueDecorationComponent implements DoCheck {
     );
 
     private readonly fontsReady$ = inject(TUI_FONTS_READY);
+    private readonly cd = inject(ChangeDetectorRef);
 
     private readonly prefix$ = new BehaviorSubject('');
 
@@ -39,6 +47,7 @@ export class TuiValueDecorationComponent implements DoCheck {
         filter(() => !!this.pre?.nativeElement.isConnected),
         map(() => this.pre?.nativeElement.offsetWidth || 0),
         distinctUntilChanged(),
+        tap(() => this.cd.detectChanges()),
     );
 
     @HostListener('animationstart')
