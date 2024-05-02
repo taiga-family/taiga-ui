@@ -131,7 +131,7 @@
         "lint-staged": "15.2.2",
         "ng-packagr": "16.2.3",
         "nx": "18.3.4",
-        "rollup": "4.14.3",
+        "rollup": "4.17.2",
         "rxjs": "7.5.0",
         "standard-version": "9.5.0",
         "ts-mockito": "2.6.1",
