@@ -18,7 +18,7 @@ import {TUI_SHEET_DRAGGED, TUI_SHEET_SCROLL} from '../../sheet-tokens';
 export class TuiSheetStopDirective {
     constructor() {
         const scrollRef = inject(TUI_SCROLL_REF).nativeElement;
-        const destroy$ = inject(DestroyRef);
+        const destroyRef = inject(DestroyRef);
         const el: HTMLElement = inject(ElementRef).nativeElement;
 
         inject(TUI_SHEET_SCROLL)
@@ -29,7 +29,7 @@ export class TuiSheetStopDirective {
                 map(([above, dragged]) => !above && !dragged),
                 filter(Boolean),
                 throttleTime(100),
-                takeUntilDestroyed(destroy$),
+                takeUntilDestroyed(destroyRef),
             )
             .subscribe(() => {
                 scrollRef.style.overflow = 'hidden';
@@ -37,7 +37,7 @@ export class TuiSheetStopDirective {
                 scrollRef.scrollTop = el.offsetTop;
 
                 timer(100)
-                    .pipe(takeUntilDestroyed(destroy$))
+                    .pipe(takeUntilDestroyed(destroyRef))
                     // eslint-disable-next-line rxjs/no-nested-subscribe
                     .subscribe(() => {
                         scrollRef.style.overflow = '';

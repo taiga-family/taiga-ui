@@ -34,7 +34,7 @@ import {TUI_ALERT_POSITION} from './alert.tokens';
 })
 export class TuiAlertComponent<O, I> implements OnInit {
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
-    private readonly destroy$ = inject(DestroyRef);
+    private readonly destroyRef = inject(DestroyRef);
     protected readonly position = inject(TUI_ALERT_POSITION);
     protected readonly item =
         inject<TuiPopover<TuiAlertOptions<I>, O>>(POLYMORPHEUS_CONTEXT);
@@ -67,7 +67,7 @@ export class TuiAlertComponent<O, I> implements OnInit {
             .pipe(
                 takeUntil(fromEvent(this.el, 'mouseenter')),
                 repeat({delay: () => fromEvent(this.el, 'mouseleave')}),
-                takeUntilDestroyed(this.destroy$),
+                takeUntilDestroyed(this.destroyRef),
             )
             .subscribe(() => this.close());
     }

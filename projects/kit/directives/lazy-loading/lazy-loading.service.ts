@@ -11,7 +11,7 @@ export class TuiLazyLoadingService extends Observable<SafeResourceUrl | string> 
         IntersectionObserverService,
     );
 
-    private readonly destroy$ = inject(DestroyRef);
+    private readonly destroyRef = inject(DestroyRef);
     private readonly src$ = new Subject<SafeResourceUrl | string>();
     private readonly cdr = inject(ChangeDetectorRef);
 
@@ -28,7 +28,7 @@ export class TuiLazyLoadingService extends Observable<SafeResourceUrl | string> 
                             take(1),
                         ),
                     ),
-                    takeUntilDestroyed(this.destroy$),
+                    takeUntilDestroyed(this.destroyRef),
                 )
                 .subscribe(subscriber),
         );

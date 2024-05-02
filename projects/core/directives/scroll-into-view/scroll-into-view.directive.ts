@@ -11,7 +11,7 @@ import {timer} from 'rxjs';
 })
 export class TuiScrollIntoViewDirective {
     private readonly el: Element = inject(ElementRef).nativeElement;
-    private readonly destroy$ = inject(DestroyRef);
+    private readonly destroyRef = inject(DestroyRef);
 
     @Input()
     public set tuiScrollIntoView(scroll: boolean) {
@@ -22,7 +22,7 @@ export class TuiScrollIntoViewDirective {
         // Timeout is necessary in order to give element render cycle to get into its final spot
         // (for example if it is inside dropdown box which has to be positioned first)
         timer(0)
-            .pipe(takeUntilDestroyed(this.destroy$))
+            .pipe(takeUntilDestroyed(this.destroyRef))
             .subscribe(() => {
                 this.el.dispatchEvent(
                     new CustomEvent<Element>(TUI_SCROLL_INTO_VIEW, {

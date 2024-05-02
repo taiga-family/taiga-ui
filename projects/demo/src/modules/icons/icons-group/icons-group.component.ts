@@ -23,7 +23,7 @@ export class IconsGroupComponent implements OnInit {
     private readonly alerts = inject(TuiAlertService);
     private readonly route = inject(ActivatedRoute);
     private readonly router = inject(Router);
-    private readonly destroy$ = inject(DestroyRef);
+    private readonly destroyRef = inject(DestroyRef);
 
     @Input()
     public icons: Record<string, readonly string[]> = {};
@@ -50,7 +50,7 @@ export class IconsGroupComponent implements OnInit {
                 debounceTime(500),
                 map(search => search || ''),
                 filter(search => search.length > 2 || search.length === 0),
-                takeUntilDestroyed(this.destroy$),
+                takeUntilDestroyed(this.destroyRef),
             )
             .subscribe(search => {
                 void this.router.navigate([], {queryParams: {search}});

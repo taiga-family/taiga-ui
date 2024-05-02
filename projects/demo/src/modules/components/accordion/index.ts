@@ -29,7 +29,7 @@ import {TuiAccordionExample5} from './examples/5';
     changeDetection,
 })
 export default class PageComponent {
-    private readonly destroy$ = inject(DestroyRef);
+    private readonly destroyRef = inject(DestroyRef);
 
     @ViewChild('content')
     protected content?: ElementRef;
@@ -91,7 +91,7 @@ export default class PageComponent {
         }
 
         timer(3000)
-            .pipe(takeUntilDestroyed(this.destroy$))
+            .pipe(takeUntilDestroyed(this.destroyRef))
             .subscribe(() =>
                 this.content?.nativeElement.dispatchEvent(
                     new CustomEvent(TUI_EXPAND_LOADED, {bubbles: true}),

@@ -20,7 +20,7 @@ import {TuiAccordionItemComponent} from './accordion-item/accordion-item.compone
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiAccordionComponent implements AfterContentInit {
-    private readonly destroy$ = inject(DestroyRef);
+    private readonly destroyRef = inject(DestroyRef);
 
     @Input()
     public closeOthers = true;
@@ -57,7 +57,7 @@ export class TuiAccordionComponent implements AfterContentInit {
             newOpenRow$,
         ).pipe(
             filter(() => this.closeOthers),
-            takeUntilDestroyed(this.destroy$),
+            takeUntilDestroyed(this.destroyRef),
         );
 
         rowsOpen$.subscribe(currentRow => {

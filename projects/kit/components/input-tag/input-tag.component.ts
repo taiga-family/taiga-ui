@@ -430,7 +430,7 @@ export class TuiInputTagComponent
     private scrollTo(scrollLeft = this.scrollBar?.nativeElement.scrollWidth): void {
         // Allow change detection to run and add new tag to DOM
         timer(0)
-            .pipe(takeUntilDestroyed(this.destroy$))
+            .pipe(takeUntilDestroyed(this.destroyRef))
             .subscribe(() => {
                 if (this.scrollBar) {
                     this.scrollBar.nativeElement.scrollLeft = scrollLeft || 0;

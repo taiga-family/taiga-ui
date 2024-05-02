@@ -44,7 +44,7 @@ export class TuiCheckboxComponent implements OnInit, DoCheck {
     private readonly appearance = inject(TuiAppearanceDirective);
     private readonly options = inject(TUI_CHECKBOX_OPTIONS);
     private readonly resolver = inject(TUI_ICON_RESOLVER);
-    private readonly destroy$ = inject(DestroyRef);
+    private readonly destroyRef = inject(DestroyRef);
     private readonly el: HTMLInputElement = inject(ElementRef).nativeElement;
 
     @Input()
@@ -61,7 +61,7 @@ export class TuiCheckboxComponent implements OnInit, DoCheck {
         }
 
         tuiControlValue(this.control)
-            .pipe(takeUntilDestroyed(this.destroy$))
+            .pipe(takeUntilDestroyed(this.destroyRef))
             .subscribe(value => {
                 // https://github.com/angular/angular/issues/14988
                 const fix = this.control instanceof NgModel ? this.control.model : value;

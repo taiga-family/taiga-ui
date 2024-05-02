@@ -42,7 +42,7 @@ export class TuiExpandComponent {
     private readonly contentWrapper?: ElementRef<HTMLDivElement>;
 
     private readonly cdr = inject(ChangeDetectorRef);
-    private readonly destroy$ = inject(DestroyRef);
+    private readonly destroyRef = inject(DestroyRef);
     private state: TuiValuesOf<typeof State> = State.Idle;
 
     @Input()
@@ -138,7 +138,7 @@ export class TuiExpandComponent {
         this.state = State.Prepared;
 
         timer(0)
-            .pipe(takeUntilDestroyed(this.destroy$))
+            .pipe(takeUntilDestroyed(this.destroyRef))
             .subscribe(() => {
                 // We need delay to re-trigger CSS height transition from the correct number
                 if (this.state !== State.Prepared) {

@@ -29,7 +29,7 @@ export class TuiSegmentedDirective implements AfterContentChecked, AfterContentI
     @ContentChildren(RouterLinkActive, {read: ElementRef})
     private readonly elements: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
-    private readonly destroy$ = inject(DestroyRef);
+    private readonly destroyRef = inject(DestroyRef);
     private readonly component = inject(TuiSegmentedComponent);
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
 
@@ -37,7 +37,7 @@ export class TuiSegmentedDirective implements AfterContentChecked, AfterContentI
         tuiQueryListChanges(this.controls)
             .pipe(
                 switchMap(() => this.controls.last?.valueChanges || EMPTY),
-                takeUntilDestroyed(this.destroy$),
+                takeUntilDestroyed(this.destroyRef),
             )
             .subscribe(() => {
                 this.update(this.el.querySelector(':checked'));

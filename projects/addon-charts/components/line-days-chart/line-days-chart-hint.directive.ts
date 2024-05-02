@@ -31,7 +31,7 @@ export class TuiLineDaysChartHintDirective implements AfterContentInit {
     @ContentChildren(forwardRef(() => TuiLineDaysChartComponent))
     private readonly charts: QueryList<TuiLineDaysChartComponent> = EMPTY_QUERY;
 
-    private readonly destroy$ = inject(DestroyRef);
+    private readonly destroyRef = inject(DestroyRef);
     private readonly zone = inject(NgZone);
     private readonly hovered$ = inject(TuiHoveredService);
 
@@ -46,7 +46,7 @@ export class TuiLineDaysChartHintDirective implements AfterContentInit {
             .pipe(
                 filter(result => !result.some(Boolean)),
                 tuiZonefree(this.zone),
-                takeUntilDestroyed(this.destroy$),
+                takeUntilDestroyed(this.destroyRef),
             )
             .subscribe(() => {
                 this.charts.forEach(chart => chart.onHovered(NaN));

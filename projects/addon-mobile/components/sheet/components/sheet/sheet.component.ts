@@ -48,7 +48,7 @@ export class TuiSheetComponent<T> implements TuiSheetRequiredProps<T>, AfterView
     @ViewChildren('stops')
     private readonly stopsRefs: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
-    private readonly destroy$ = inject(DestroyRef);
+    private readonly destroyRef = inject(DestroyRef);
     private readonly scroll$ = inject(TUI_SHEET_SCROLL);
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
     private readonly zone = inject(NgZone);
@@ -104,7 +104,7 @@ export class TuiSheetComponent<T> implements TuiSheetRequiredProps<T>, AfterView
             this.el.style.transform = `scaleX(-1) translate3d(0, ${offset}px, 0)`;
 
             timer(0)
-                .pipe(takeUntilDestroyed(this.destroy$))
+                .pipe(takeUntilDestroyed(this.destroyRef))
                 .subscribe(() => {
                     this.el.style.transition = '';
                     this.el.style.transform = '';

@@ -25,7 +25,7 @@ import {TuiHintService} from '@taiga-ui/core/services';
 })
 export class TuiHintsHostComponent implements OnInit {
     private readonly hints$ = inject(TuiHintService);
-    private readonly destroy$ = inject(DestroyRef);
+    private readonly destroyRef = inject(DestroyRef);
     private readonly cdr = inject(ChangeDetectorRef);
 
     protected hints: readonly TuiPortalItem[] = [];
@@ -33,7 +33,7 @@ export class TuiHintsHostComponent implements OnInit {
     public ngOnInit(): void {
         // Due to this view being parallel to app content, `markForCheck` from `async` pipe
         // can happen after view was checked, so calling `detectChanges` instead
-        this.hints$.pipe(takeUntilDestroyed(this.destroy$)).subscribe(hints => {
+        this.hints$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(hints => {
             this.hints = hints;
             this.cdr.detectChanges();
         });

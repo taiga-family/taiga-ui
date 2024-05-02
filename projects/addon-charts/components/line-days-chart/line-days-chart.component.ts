@@ -50,7 +50,7 @@ const DUMMY: TuiPoint = [NaN, NaN];
     ],
 })
 export class TuiLineDaysChartComponent implements AfterViewInit {
-    private readonly destroy$ = inject(DestroyRef);
+    private readonly destroyRef = inject(DestroyRef);
     private readonly zone = inject(NgZone);
     private readonly hovered$ = inject(TuiHoveredService);
     private readonly options = inject(TUI_LINE_CHART_OPTIONS);
@@ -113,7 +113,7 @@ export class TuiLineDaysChartComponent implements AfterViewInit {
             .pipe(
                 filter(result => !result.some(Boolean)),
                 tuiZonefree(this.zone),
-                takeUntilDestroyed(this.destroy$),
+                takeUntilDestroyed(this.destroyRef),
             )
             .subscribe(() => {
                 this.onHovered(NaN);

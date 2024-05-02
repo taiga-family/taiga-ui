@@ -15,7 +15,7 @@ import {timer} from 'rxjs';
 })
 export class TuiInputInlineExample3 implements OnInit {
     private readonly cd = inject(ChangeDetectorRef);
-    private readonly destroy$ = inject(DestroyRef);
+    private readonly destroyRef = inject(DestroyRef);
     private readonly zone = inject(NgZone);
     protected readonly isE2E = inject(TUI_IS_E2E);
 
@@ -30,7 +30,7 @@ export class TuiInputInlineExample3 implements OnInit {
             .pipe(
                 tuiZoneOptimized(this.zone),
                 tuiWatch(this.cd),
-                takeUntilDestroyed(this.destroy$),
+                takeUntilDestroyed(this.destroyRef),
             )
             .subscribe(value => {
                 this.count = String(value);
