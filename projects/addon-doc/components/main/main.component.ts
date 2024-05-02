@@ -13,9 +13,7 @@ import {TuiSwipeService} from '@taiga-ui/cdk';
     templateUrl: './main.template.html',
     styleUrls: ['./main.style.less'],
     encapsulation: ViewEncapsulation.None,
-    // @note: This one was default on purpose so we can test demo in default mode.
-    // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
-    changeDetection: ChangeDetectionStrategy.Default,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiSwipeService],
 })
 export class TuiDocMainComponent {
