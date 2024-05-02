@@ -1,13 +1,13 @@
-<div
-    *ngIf="error && visible"
-    automation-id="tui-error__text"
-    class="t-message-text"
-    [@tuiFadeIn]="options"
-    [@tuiHeightCollapse]="options"
->
-    <ng-container
-        *polymorpheusOutlet="error.message || (defaultErrorMessage$ | async) as text; context: error.context || {}"
+<ng-container *tuiLet="defaultErrorMessage$ | async as defaultErrorMessage">
+    <div
+        *ngIf="error && visible"
+        automation-id="tui-error__text"
+        class="t-message-text"
+        [@tuiFadeIn]="options"
+        [@tuiHeightCollapse]="options"
     >
-        {{ text }}
-    </ng-container>
-</div>
+        <ng-container *polymorpheusOutlet="error.message || defaultErrorMessage as text; context: error.context || {}">
+            {{ text }}
+        </ng-container>
+    </div>
+</ng-container>
