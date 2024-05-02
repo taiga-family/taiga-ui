@@ -1053,8 +1053,7 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.Let,
-        loadChildren: async () =>
-            (await import('../directives/let/let.module')).ExampleTuiLetModule,
+        loadComponent: async () => import('../directives/let'),
         title: 'Let',
     }),
     route({

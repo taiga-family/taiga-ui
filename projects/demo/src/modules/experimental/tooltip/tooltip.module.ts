@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {TuiSetupComponent} from '@demo/utils';
 import {tuiGetDocModules} from '@taiga-ui/addon-doc';
-import {TuiLetModule} from '@taiga-ui/cdk';
+import {TuiLetDirective} from '@taiga-ui/cdk';
 import {
     TuiAppearanceDirective,
     TuiIconComponent,
@@ -35,7 +35,7 @@ import {ExampleTuiTooltipComponent} from './tooltip.component';
         tuiGetDocModules(ExampleTuiTooltipComponent),
         TuiNotificationModule,
         TuiIconComponent,
-        TuiLetModule,
+        TuiLetDirective,
         TuiSetupComponent,
     ],
     declarations: [

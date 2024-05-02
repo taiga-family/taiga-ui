@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {TuiSetupComponent} from '@demo/utils';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
-import {TuiHoveredModule, TuiLetModule} from '@taiga-ui/cdk';
+import {TuiHoveredModule, TuiLetDirective} from '@taiga-ui/cdk';
 import {TuiBadgeDirective, TuiPresentDirective} from '@taiga-ui/kit';
 
 import {TuiPresentExample1} from './examples/1';
@@ -12,7 +12,7 @@ import {ExampleTuiPresentComponent} from './present.component';
 @NgModule({
     imports: [
         CommonModule,
-        TuiLetModule,
+        TuiLetDirective,
         TuiPresentDirective,
         TuiHoveredModule,
         TuiBadgeDirective,

@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TuiInputCardGroupedModule} from '@taiga-ui/addon-commerce';
-import {TuiAutoFocusDirective, TuiLetModule} from '@taiga-ui/cdk';
+import {TuiAutoFocusDirective, TuiLetDirective} from '@taiga-ui/cdk';
 import {
     TuiButtonDirective,
     TuiFormatNumberPipeModule,
@@ -22,7 +22,7 @@ import {PayModalComponent} from './pay-modal.component';
         FormsModule,
         TuiLinkDirective,
         TuiSvgComponent,
-        TuiLetModule,
+        TuiLetDirective,
         TuiLoaderModule,
         TuiButtonDirective,
         TuiAutoFocusDirective,

@@ -4,7 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiSetupComponent} from '@demo/utils';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
-import {TuiLetModule} from '@taiga-ui/cdk';
+import {TuiLetDirective} from '@taiga-ui/cdk';
 import {
     TuiAutoColorPipe,
     TuiHintModule,
@@ -37,7 +37,7 @@ import {ExampleTuiTooltipComponent} from './tooltip.component';
         TuiTextfieldControllerModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiTooltipComponent)),
         TuiAutoColorPipe,
-        TuiLetModule,
+        TuiLetDirective,
         TuiSetupComponent,
     ],
     declarations: [

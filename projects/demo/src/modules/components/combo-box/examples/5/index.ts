@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiLetModule} from '@taiga-ui/cdk';
+import {TuiLetDirective} from '@taiga-ui/cdk';
 import {TuiDataListModule, TuiScrollableDirective} from '@taiga-ui/core';
 import {TuiComboBoxModule, TuiFilterByInputPipeModule} from '@taiga-ui/kit';
 
@@ -12,7 +12,7 @@ import {TuiComboBoxModule, TuiFilterByInputPipeModule} from '@taiga-ui/kit';
     selector: 'tui-combo-box-example-5',
     imports: [
         FormsModule,
-        TuiLetModule,
+        TuiLetDirective,
         TuiComboBoxModule,
         TuiDataListModule,
         TuiFilterByInputPipeModule,

@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
-import {TuiLetModule} from '@taiga-ui/cdk';
+import {TuiLetDirective} from '@taiga-ui/cdk';
 import {
     TuiCalendarModule,
     TuiHostedDropdownModule,
@@ -31,7 +31,7 @@ import {TuiNativeDateDirective} from './native-date/native-date.component';
         TuiHostedDropdownModule,
         TuiPrimitiveTextfieldModule,
         TuiValueAccessorModule,
-        TuiLetModule,
+        TuiLetDirective,
         TuiTextfieldControllerModule,
     ],
     declarations: [TuiInputDateComponent, TuiInputDateDirective, TuiNativeDateDirective],

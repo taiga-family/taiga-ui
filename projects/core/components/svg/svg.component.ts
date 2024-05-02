@@ -16,7 +16,7 @@ import {
     TUI_BASE_HREF,
     tuiGetDocumentOrShadowRoot,
     tuiIsString,
-    TuiLetModule,
+    TuiLetDirective,
     tuiPure,
     TuiStaticRequestService,
 } from '@taiga-ui/cdk';
@@ -39,7 +39,7 @@ const FAILED_EXTERNAL_ICON = 'Failed to load external SVG';
 @Component({
     standalone: true,
     selector: 'tui-svg',
-    imports: [TuiLetModule, AsyncPipe, NgIf],
+    imports: [TuiLetDirective, AsyncPipe, NgIf],
     templateUrl: './svg.template.html',
     styleUrls: ['./svg.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
