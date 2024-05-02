@@ -1289,8 +1289,7 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.Format,
-        loadChildren: async () =>
-            (await import('../utils/format/format.module')).ExampleFormatModule,
+        loadComponent: async () => import('../utils/format'),
         title: 'Format',
     }),
     route({

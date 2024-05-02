@@ -1,18 +1,20 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiCurrencyVariants} from '@taiga-ui/addon-commerce';
 import {tuiGetCurrencySymbol} from '@taiga-ui/addon-commerce';
+import {TuiDataListWrapperModule, TuiSelectModule} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-format-example-2',
+    standalone: true,
+    imports: [ReactiveFormsModule, TuiSelectModule, TuiDataListWrapperModule],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiFormatExample2 {
+export default class ExampleComponent {
     protected readonly items = [
         'USD',
         'RUB',

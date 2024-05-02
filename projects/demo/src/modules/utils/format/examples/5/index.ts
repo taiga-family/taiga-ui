@@ -1,18 +1,20 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiDecimalSymbol} from '@taiga-ui/core';
 import {tuiFormatNumber} from '@taiga-ui/core';
+import {TuiInputModule} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-format-example-5',
+    standalone: true,
+    imports: [ReactiveFormsModule, TuiInputModule],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiFormatExample5 {
+export default class ExampleComponent {
     protected parametersForm = new FormGroup({
         value: new FormControl(123456.789),
         precision: new FormControl(2),
