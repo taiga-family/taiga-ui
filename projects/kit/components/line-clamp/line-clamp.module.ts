@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {ResizeObserverModule} from '@ng-web-apis/resize-observer';
-import {TuiLetModule} from '@taiga-ui/cdk';
+import {TuiLetDirective} from '@taiga-ui/cdk';
 import {TuiHintModule} from '@taiga-ui/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
@@ -15,7 +15,7 @@ import {TuiLineClampPositionDirective} from './line-clamp-position.directive';
         ResizeObserverModule,
         PolymorpheusModule,
         TuiHintModule,
-        TuiLetModule,
+        TuiLetDirective,
     ],
     declarations: [
         TuiLineClampComponent,

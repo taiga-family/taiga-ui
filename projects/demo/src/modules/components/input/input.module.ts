@@ -10,7 +10,7 @@ import {
     TuiTextCodeModule,
 } from '@taiga-ui/addon-doc';
 import {TuiTableModule} from '@taiga-ui/addon-table';
-import {TuiLetModule, TuiMapperPipe, TuiRepeatTimesModule} from '@taiga-ui/cdk';
+import {TuiLetDirective, TuiMapperPipe, TuiRepeatTimesModule} from '@taiga-ui/cdk';
 import {
     TuiButtonDirective,
     TuiDataListModule,
@@ -78,7 +78,7 @@ import {ExampleTuiInputComponent} from './input.component';
         TuiDropdownModule,
         TuiDataListModule,
         TuiDataListWrapperModule,
-        TuiLetModule,
+        TuiLetDirective,
         PolymorpheusModule,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiInputComponent)),

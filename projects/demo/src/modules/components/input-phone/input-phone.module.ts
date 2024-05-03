@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
-import {TuiLetModule} from '@taiga-ui/cdk';
+import {TuiLetDirective} from '@taiga-ui/cdk';
 import {
     TuiButtonDirective,
     TuiDataListModule,
@@ -29,7 +29,7 @@ import {ExampleTuiInputPhoneComponent} from './input-phone.component';
         FormsModule,
         ReactiveFormsModule,
         PolymorpheusModule,
-        TuiLetModule,
+        TuiLetDirective,
         TuiDataListModule,
         TuiButtonDirective,
         TuiSvgComponent,

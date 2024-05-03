@@ -3,7 +3,11 @@ import {NgModule} from '@angular/core';
 import {ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiScrollIntoViewLinkModule} from '@taiga-ui/addon-doc/directives';
-import {TuiActiveZoneDirective, TuiAutoFocusDirective, TuiLetModule} from '@taiga-ui/cdk';
+import {
+    TuiActiveZoneDirective,
+    TuiAutoFocusDirective,
+    TuiLetDirective,
+} from '@taiga-ui/cdk';
 import {
     TuiButtonDirective,
     TuiDataListModule,
@@ -31,7 +35,7 @@ import {TuiDocNavigationComponent} from './navigation.component';
         TuiInputModule,
         TuiTextfieldControllerModule,
         TuiActiveZoneDirective,
-        TuiLetModule,
+        TuiLetDirective,
         TuiLinkDirective,
         TuiExpandModule,
         TuiHostedDropdownModule,

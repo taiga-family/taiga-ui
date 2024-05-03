@@ -11,7 +11,7 @@ import {
     TuiTableModule,
     TuiTablePaginationComponent,
 } from '@taiga-ui/addon-table';
-import {TuiLetModule, TuiValidatorDirective} from '@taiga-ui/cdk';
+import {TuiLetDirective, TuiValidatorDirective} from '@taiga-ui/cdk';
 import {
     TuiAutoColorPipe,
     TuiButtonDirective,
@@ -71,7 +71,7 @@ import {ExampleTuiTableComponent} from './table.component';
         TuiChipDirective,
         TuiAccordionModule,
         TuiLoaderModule,
-        TuiLetModule,
+        TuiLetDirective,
         TuiTablePaginationComponent,
         TuiTextfieldControllerModule,
         TuiDropdownModule,

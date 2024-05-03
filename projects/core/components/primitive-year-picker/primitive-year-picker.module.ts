@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {
     TuiHoveredModule,
-    TuiLetModule,
+    TuiLetDirective,
     TuiPressedModule,
     TuiRepeatTimesModule,
 } from '@taiga-ui/cdk';
@@ -14,7 +14,7 @@ import {TuiPrimitiveYearPickerComponent} from './primitive-year-picker.component
         TuiHoveredModule,
         TuiPressedModule,
         TuiRepeatTimesModule,
-        TuiLetModule,
+        TuiLetDirective,
         TuiScrollIntoViewModule,
     ],
     declarations: [TuiPrimitiveYearPickerComponent],

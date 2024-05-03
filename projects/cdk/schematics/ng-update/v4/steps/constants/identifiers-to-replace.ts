@@ -403,4 +403,8 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/kit',
         },
     },
+    {
+        from: {name: 'TuiLetModule', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiLetDirective', moduleSpecifier: '@taiga-ui/cdk'},
+    },
 ];

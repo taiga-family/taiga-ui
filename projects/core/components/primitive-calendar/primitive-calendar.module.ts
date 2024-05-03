@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {
     TuiHoveredModule,
-    TuiLetModule,
+    TuiLetDirective,
     TuiMapperPipe,
     TuiPressedModule,
     TuiRepeatTimesModule,
@@ -17,7 +17,7 @@ import {TuiPrimitiveCalendarComponent} from './primitive-calendar.component';
 @NgModule({
     imports: [
         CommonModule,
-        TuiLetModule,
+        TuiLetDirective,
         TuiMapperPipe,
         TuiRepeatTimesModule,
         TuiHoveredModule,

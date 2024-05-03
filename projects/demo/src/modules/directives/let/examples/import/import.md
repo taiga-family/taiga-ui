@@ -1,12 +1,12 @@
 ```ts
-import {TuiLetModule} from '@taiga-ui/cdk';
+import {TuiLetDirective} from '@taiga-ui/cdk';
 
 // ...
 
 @NgModule({
   imports: [
     // ...
-    TuiLetModule,
+    TuiLetDirective,
   ],
   // ...
 })

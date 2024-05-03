@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
-import {TuiLetModule} from '@taiga-ui/cdk';
+import {TuiLetDirective} from '@taiga-ui/cdk';
 import {TuiButtonDirective, TuiLabelModule, TuiSvgComponent} from '@taiga-ui/core';
 import {TuiSliderModule} from '@taiga-ui/kit';
 
@@ -22,7 +22,7 @@ import {TuiWidthCollapseExample} from './examples/width-collapse';
         TuiAddonDocModule,
         TuiSliderModule,
         TuiButtonDirective,
-        TuiLetModule,
+        TuiLetDirective,
         TuiLabelModule,
         TuiSvgComponent,
         RouterModule.forChild(tuiGenerateRoutes(ExampleAnimationsComponent)),

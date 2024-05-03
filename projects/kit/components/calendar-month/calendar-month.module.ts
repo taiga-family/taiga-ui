@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {
     TuiFocusableModule,
     TuiHoveredModule,
-    TuiLetModule,
+    TuiLetDirective,
     TuiPressedModule,
 } from '@taiga-ui/cdk';
 import {
@@ -22,7 +22,7 @@ import {TuiCalendarMonthComponent} from './calendar-month.component';
         TuiPrimitiveSpinButtonModule,
         TuiScrollbarComponent,
         TuiLinkDirective,
-        TuiLetModule,
+        TuiLetDirective,
         TuiHoveredModule,
         TuiPressedModule,
         TuiFocusableModule,
