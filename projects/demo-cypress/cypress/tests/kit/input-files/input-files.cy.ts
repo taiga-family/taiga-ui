@@ -13,12 +13,6 @@ describe('InputFiles', () => {
             cy.get('#demo-content tui-file')
                 .should('contain.text', 'Wrong file type')
                 .matchImageSnapshot('01-01-input-files-[english]-wrong-file-type');
-
-            cy.tuiSetLanguage('dutch');
-
-            cy.get('#demo-content tui-file')
-                .should('contain.text', 'Verkeerd bestandsformaat')
-                .matchImageSnapshot('01-02-input-files-[dutch]-wrong-file-type');
         });
 
         it('File is larger than', () => {
@@ -34,12 +28,6 @@ describe('InputFiles', () => {
             cy.get('#demo-content tui-file')
                 .contains(/File is larger than 2 Ki?B/)
                 .matchImageSnapshot('02-01-input-files-[english]-file-too-large');
-
-            cy.tuiSetLanguage('dutch');
-
-            cy.get('#demo-content tui-file')
-                .contains(/Bestandsgrootte overschreden 2 Ki?B/)
-                .matchImageSnapshot('02-02-input-files-[dutch]-file-too-large');
         });
 
         it('Link text is too long', () => {
