@@ -1,6 +1,7 @@
 import {Component, inject, INJECTOR} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiComponentPipe, TuiExamplePipe} from '@demo/utils';
 import {
     TuiAddonDocModule,
     type TuiDocExample,
@@ -34,6 +35,8 @@ import {TuiAlertExampleComponent6} from './examples/6';
         TuiButtonDirective,
         TuiLinkDirective,
         TuiAddonDocModule,
+        TuiExamplePipe,
+        TuiComponentPipe,
         TuiAlertExampleComponent1,
         TuiAlertExampleComponent2,
         TuiAlertExampleComponent3,

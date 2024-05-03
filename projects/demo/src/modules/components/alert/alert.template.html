@@ -2,6 +2,7 @@
     header="Alert"
     package="CORE"
     path="core/components/alert/alert.service.ts"
+    type="components"
 >
     <ng-template pageTab>
         <p>Built-in implementation of notifications</p>
@@ -60,6 +61,26 @@
             [content]="example6"
         >
             <tui-alerts-example-6 />
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="concurrency"
+            heading="Concurrency limit"
+            [component]="7 | tuiComponent"
+            [content]="7 | tuiExample: 'html,ts'"
+            [description]="concurrencyDescription"
+        >
+            <ng-template #concurrencyDescription>
+                This example demonstrates how to limit maximum number of alert being shown to concurrently (it uses
+                <a
+                    href="https://rxjs.dev/api/index/function/mergeAll"
+                    target="_blank"
+                    tuiLink
+                >
+                    <code>mergeAll</code>
+                </a>
+                RxJS-operator to achieve it). Just frequently click on the button to see it in action.
+            </ng-template>
         </tui-doc-example>
     </ng-template>
 
