@@ -1,4 +1,5 @@
 import {TuiDocumentationPagePO, tuiGoto, TuiSliderPO} from '@demo-playwright/utils';
+import {maskitoParseNumber} from '@maskito/kit';
 import type {Locator} from '@playwright/test';
 import {expect, test} from '@playwright/test';
 
@@ -23,18 +24,18 @@ test.describe('Slider', () => {
 
     test.describe('correctly sets control value on input change (using TuiSliderKeyStepsDirective)', () => {
         const testsMeta = [
-            {inputStep: 1, prettifiedControlValue: '14,500'},
-            {inputStep: 4, prettifiedControlValue: '43,000'},
-            {inputStep: 9, prettifiedControlValue: '90,500'},
-            {inputStep: 16, prettifiedControlValue: '220,000'},
-            {inputStep: 18, prettifiedControlValue: '260,000'},
-            {inputStep: 21, prettifiedControlValue: '370,000'},
-            {inputStep: 27, prettifiedControlValue: '790,000'},
-            {inputStep: 30, prettifiedControlValue: '1,000,000'},
+            {inputStep: 1, expectedControlValue: 14_500},
+            {inputStep: 4, expectedControlValue: 43_000},
+            {inputStep: 9, expectedControlValue: 90_500},
+            {inputStep: 16, expectedControlValue: 220_000},
+            {inputStep: 18, expectedControlValue: 260_000},
+            {inputStep: 21, expectedControlValue: 370_000},
+            {inputStep: 27, expectedControlValue: 790_000},
+            {inputStep: 30, expectedControlValue: 1_000_000},
         ] as const;
 
-        testsMeta.forEach(({inputStep, prettifiedControlValue}) => {
-            test(`[inputStep]=${inputStep} & [prettifiedControlValue]=${prettifiedControlValue}`, async ({
+        testsMeta.forEach(({inputStep, expectedControlValue}) => {
+            test(`[inputStep]=${inputStep} & [prettifiedControlValue]=${expectedControlValue}`, async ({
                 page,
             }) => {
                 await tuiGoto(page, 'components/slider');
@@ -42,12 +43,15 @@ test.describe('Slider', () => {
                 const documentationPage = new TuiDocumentationPagePO(page);
                 const example = documentationPage.getExample('#key-steps');
                 const slider = new TuiSliderPO(example.getByRole('slider'));
-                const controlValue = example.getByTestId(
-                    'key-steps-example-control-value',
-                );
 
                 await slider.setValue(inputStep);
-                await expect(controlValue).toContainText(prettifiedControlValue);
+
+                const controlValue = await example
+                    .getByTestId('key-steps-example-control-value')
+                    .textContent()
+                    .then(x => maskitoParseNumber(x || ''));
+
+                expect(controlValue).toBe(expectedControlValue);
                 await expect(example).toHaveScreenshot(
                     `02-slider-key-steps-${inputStep}step.png`,
                 );
