@@ -10,7 +10,7 @@
             "outputs": ["{workspaceRoot}/dist/taiga-schematics"],
             "options": {
                 "tsConfig": "tsconfig.build.json",
-                "project": "projects/taiga-schematics/ng-package.json"
+                "project": "{projectRoot}/ng-package.json"
             },
             "dependsOn": [
                 {

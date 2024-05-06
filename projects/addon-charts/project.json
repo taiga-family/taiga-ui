@@ -11,7 +11,7 @@
             "outputs": ["{workspaceRoot}/dist/addon-charts"],
             "options": {
                 "tsConfig": "tsconfig.build.json",
-                "project": "projects/addon-charts/ng-package.json"
+                "project": "{projectRoot}/ng-package.json"
             },
             "dependsOn": [
                 {
@@ -27,8 +27,8 @@
             "options": {
                 "jestConfig": "jest.config.ts",
                 "coverageDirectory": "coverage/addon-charts",
-                "collectCoverageFrom": ["<rootDir>/projects/addon-charts/**/*.ts"],
-                "testMatch": ["<rootDir>/projects/addon-charts/**/*.spec.ts"]
+                "collectCoverageFrom": ["<rootDir>/{projectRoot}/**/*.ts"],
+                "testMatch": ["<rootDir>/{projectRoot}/**/*.spec.ts"]
             }
         },
         "publish": {

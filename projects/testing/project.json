@@ -9,8 +9,8 @@
             "executor": "@angular-devkit/build-angular:ng-packagr",
             "outputs": ["{workspaceRoot}/dist/testing"],
             "options": {
-                "tsConfig": "projects/testing/tsconfig.build.json",
-                "project": "projects/testing/ng-package.json"
+                "tsConfig": "{projectRoot}/tsconfig.build.json",
+                "project": "{projectRoot}/ng-package.json"
             },
             "dependsOn": [
                 {
@@ -26,7 +26,7 @@
             "options": {
                 "jestConfig": "jest.config.ts",
                 "collectCoverage": false,
-                "testMatch": ["<rootDir>/projects/testing/**/*.spec.ts"]
+                "testMatch": ["<rootDir>/{projectRoot}/**/*.spec.ts"]
             }
         },
         "publish": {

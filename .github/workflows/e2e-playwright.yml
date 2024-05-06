@@ -19,7 +19,7 @@ jobs:
       - run: npx tsc -p tsconfig.playwright.json
 
       - name: Building demo-app of git-branch without cache
-        run: npx nx build demo
+        run: npx nx build demo -- --base-href /
 
       - name: Upload cache / ${{ env.CACHE_DIST_KEY }}
         uses: actions/cache/save@v4.0.2
@@ -67,6 +67,12 @@ jobs:
                 --branch snapshots/demo/next/${{ github.base_ref }} \
                 https://github.com/${{ github.repository }}.git ${{ env.DIST_NEXT }}
 
+      - uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: '<base href="./">'
+          replace: '<base href="/">'
+          include: '${{ env.DIST_NEXT }}/index.html'
+          regex: false
       - name: Serve ${{ env.DIST_NEXT }} in background
         run: npx nx serve-compiled demo --path ${{ env.DIST_NEXT }} --port ${{ env.NG_SERVER_PORT }}
 

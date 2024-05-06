@@ -11,7 +11,7 @@
             "outputs": ["{workspaceRoot}/dist/i18n"],
             "options": {
                 "tsConfig": "tsconfig.build.json",
-                "project": "projects/i18n/ng-package.json"
+                "project": "{projectRoot}/ng-package.json"
             },
             "dependsOn": [
                 {
@@ -27,7 +27,7 @@
             "options": {
                 "jestConfig": "jest.config.ts",
                 "collectCoverage": false,
-                "testMatch": ["<rootDir>/projects/i18n/**/*.spec.ts"]
+                "testMatch": ["<rootDir>/{projectRoot}/**/*.spec.ts"]
             }
         },
         "publish": {

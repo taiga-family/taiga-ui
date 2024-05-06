@@ -1,7 +1,7 @@
 {
     "name": "addon-tablebars",
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
-    "sourceRoot": "projects/addon-tablebars/src",
+    "sourceRoot": "projects/addon-tablebars",
     "projectType": "library",
     "prefix": "tui",
     "implicitDependencies": ["!testing"],
@@ -11,7 +11,7 @@
             "outputs": ["{workspaceRoot}/dist/addon-tablebars"],
             "options": {
                 "tsConfig": "tsconfig.build.json",
-                "project": "projects/addon-tablebars/ng-package.json"
+                "project": "{projectRoot}/ng-package.json"
             },
             "dependsOn": [
                 {
@@ -27,8 +27,8 @@
             "options": {
                 "jestConfig": "jest.config.ts",
                 "coverageDirectory": "coverage/addon-tablebars",
-                "collectCoverageFrom": ["<rootDir>/projects/addon-tablebars/**/*.ts"],
-                "testMatch": ["<rootDir>/projects/addon-tablebars/**/*.spec.ts"]
+                "collectCoverageFrom": ["<rootDir>/{projectRoot}/**/*.ts"],
+                "testMatch": ["<rootDir>/{projectRoot}/**/*.spec.ts"]
             }
         },
         "publish": {

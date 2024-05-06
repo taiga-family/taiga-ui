@@ -11,7 +11,7 @@
             "outputs": ["{workspaceRoot}/dist/addon-doc"],
             "options": {
                 "tsConfig": "tsconfig.build.json",
-                "project": "projects/addon-doc/ng-package.json"
+                "project": "{projectRoot}/ng-package.json"
             },
             "dependsOn": [
                 {
@@ -27,8 +27,8 @@
             "options": {
                 "jestConfig": "jest.config.ts",
                 "coverageDirectory": "coverage/addon-doc",
-                "collectCoverageFrom": ["<rootDir>/projects/addon-doc/**/*.ts"],
-                "testMatch": ["<rootDir>/projects/addon-doc/**/*.spec.ts"]
+                "collectCoverageFrom": ["<rootDir>/{projectRoot}/**/*.ts"],
+                "testMatch": ["<rootDir>/{projectRoot}/**/*.spec.ts"]
             }
         },
         "publish": {

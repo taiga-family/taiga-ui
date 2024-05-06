@@ -1,7 +1,7 @@
 {
     "name": "icons",
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
-    "sourceRoot": "projects/icons/src",
+    "sourceRoot": "projects/icons",
     "projectType": "library",
     "prefix": "tui",
     "implicitDependencies": ["!testing"],
@@ -11,13 +11,13 @@
             "outputs": ["{workspaceRoot}/dist/icons"],
             "options": {
                 "tsConfig": "tsconfig.build.json",
-                "project": "projects/icons/ng-package.json"
+                "project": "{projectRoot}/ng-package.json"
             }
         },
         "preprocess": {
             "executor": "nx:run-commands",
             "options": {
-                "command": "ts-node ./projects/icons/scripts/prepare-feather-icons.ts && ts-node ./scripts/preprocess-icons.ts"
+                "command": "ts-node ./{projectRoot}/scripts/prepare-feather-icons.ts && ts-node ./scripts/preprocess-icons.ts"
             }
         },
         "prebuild": {
@@ -38,7 +38,7 @@
             "options": {
                 "jestConfig": "jest.config.ts",
                 "collectCoverage": false,
-                "testMatch": ["<rootDir>/projects/icons/**/*.spec.ts"]
+                "testMatch": ["<rootDir>/{projectRoot}/**/*.spec.ts"]
             }
         },
         "publish": {

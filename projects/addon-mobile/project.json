@@ -1,7 +1,7 @@
 {
     "name": "addon-mobile",
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
-    "sourceRoot": "projects/addon-mobile/src",
+    "sourceRoot": "projects/addon-mobile",
     "projectType": "library",
     "prefix": "tui",
     "implicitDependencies": ["!testing"],
@@ -11,7 +11,7 @@
             "outputs": ["{workspaceRoot}/dist/addon-mobile"],
             "options": {
                 "tsConfig": "tsconfig.build.json",
-                "project": "projects/addon-mobile/ng-package.json"
+                "project": "{projectRoot}/ng-package.json"
             },
             "dependsOn": [
                 {
@@ -27,8 +27,8 @@
             "options": {
                 "jestConfig": "jest.config.ts",
                 "coverageDirectory": "coverage/addon-mobile",
-                "collectCoverageFrom": ["<rootDir>/projects/addon-mobile/**/*.ts"],
-                "testMatch": ["<rootDir>/projects/addon-mobile/**/*.spec.ts"]
+                "collectCoverageFrom": ["<rootDir>/{projectRoot}/**/*.ts"],
+                "testMatch": ["<rootDir>/{projectRoot}/**/*.spec.ts"]
             }
         },
         "publish": {

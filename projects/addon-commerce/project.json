@@ -11,7 +11,7 @@
             "outputs": ["{workspaceRoot}/dist/addon-commerce"],
             "options": {
                 "tsConfig": "tsconfig.build.json",
-                "project": "projects/addon-commerce/ng-package.json"
+                "project": "{projectRoot}/ng-package.json"
             },
             "dependsOn": [
                 {
@@ -27,8 +27,8 @@
             "options": {
                 "jestConfig": "jest.config.ts",
                 "coverageDirectory": "coverage/addon-commerce",
-                "collectCoverageFrom": ["<rootDir>/projects/addon-commerce/**/*.ts"],
-                "testMatch": ["<rootDir>/projects/addon-commerce/**/*.spec.ts"]
+                "collectCoverageFrom": ["<rootDir>/{projectRoot}/**/*.ts"],
+                "testMatch": ["<rootDir>/{projectRoot}/**/*.spec.ts"]
             }
         },
         "publish": {

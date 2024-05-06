@@ -1,7 +1,7 @@
 {
     "name": "demo",
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
-    "sourceRoot": "projects/demo/src",
+    "sourceRoot": "projects/demo",
     "projectType": "application",
     "prefix": "app",
     "implicitDependencies": ["!testing"],
@@ -27,15 +27,15 @@
                     "path": "projects/demo/webpack.config.ts"
                 },
                 "outputPath": "dist/demo/browser",
-                "index": "projects/demo/src/index.html",
-                "main": "projects/demo/src/main.ts",
-                "polyfills": "projects/demo/src/polyfills.ts",
+                "index": "{projectRoot}/src/index.html",
+                "main": "{projectRoot}/src/main.ts",
+                "polyfills": "{projectRoot}/src/polyfills.ts",
                 "tsConfig": "projects/demo/tsconfig.app.json",
                 "assets": [
-                    "projects/demo/src/404.html",
+                    "{projectRoot}/src/404.html",
                     {
                         "glob": "**/*",
-                        "input": "projects/demo/src/assets/",
+                        "input": "{projectRoot}/src/assets/",
                         "output": "./assets/"
                     },
                     {
@@ -46,9 +46,9 @@
                 ],
                 "baseHref": "./",
                 "styles": [
-                    "projects/demo/src/styles/normalize.less",
-                    "projects/demo/src/styles/styles.less",
-                    "projects/demo/src/styles/styles.scss"
+                    "{projectRoot}/src/styles/normalize.less",
+                    "{projectRoot}/src/styles/styles.less",
+                    "{projectRoot}/src/styles/styles.scss"
                 ],
                 "scripts": [],
                 "allowedCommonJsDependencies": ["markdown-it"],
@@ -63,8 +63,8 @@
                 "production": {
                     "fileReplacements": [
                         {
-                            "replace": "projects/demo/src/environments/environment.ts",
-                            "with": "projects/demo/src/environments/environment.prod.ts"
+                            "replace": "{projectRoot}/src/environments/environment.ts",
+                            "with": "{projectRoot}/src/environments/environment.prod.ts"
                         }
                     ],
                     "optimization": true,
@@ -82,8 +82,8 @@
                     "baseHref": "/",
                     "fileReplacements": [
                         {
-                            "replace": "projects/demo/src/emulate/change-detection-strategy.ts",
-                            "with": "projects/demo/src/emulate/change-detection-strategy.def.ts"
+                            "replace": "{projectRoot}/src/emulate/change-detection-strategy.ts",
+                            "with": "{projectRoot}/src/emulate/change-detection-strategy.def.ts"
                         }
                     ]
                 },
@@ -91,8 +91,8 @@
                     "baseHref": "/",
                     "fileReplacements": [
                         {
-                            "replace": "projects/demo/src/emulate/view-encapsulation.ts",
-                            "with": "projects/demo/src/emulate/view-encapsulation.shadow.ts"
+                            "replace": "{projectRoot}/src/emulate/view-encapsulation.ts",
+                            "with": "{projectRoot}/src/emulate/view-encapsulation.shadow.ts"
                         }
                     ]
                 },
@@ -188,7 +188,7 @@
         "serve-compiled": {
             "executor": "nx:run-commands",
             "options": {
-                "command": "http-server {args.path} --brotli --port {args.port} > /dev/null & npx wait-on http://127.0.0.1:{args.port} --timeout 300000",
+                "command": "ws --port {args.port}  --directory {args.path} --spa index.html > /dev/null & npx wait-on http://127.0.0.1:{args.port} --timeout 300000",
                 "forwardAllArgs": false
             }
         },
@@ -196,11 +196,11 @@
             "executor": "@nx/angular:webpack-server",
             "options": {
                 "customWebpackConfig": {
-                    "path": "projects/demo/webpack.server.config.ts"
+                    "path": "{projectRoot}/webpack.server.config.ts"
                 },
                 "outputPath": "dist/demo/server",
-                "main": "projects/demo/server.ts",
-                "tsConfig": "projects/demo/tsconfig.server.json",
+                "main": "{projectRoot}/server.ts",
+                "tsConfig": "{projectRoot}/tsconfig.server.json",
                 "sourceMap": true,
                 "optimization": false
             },
@@ -250,7 +250,7 @@
             "options": {
                 "jestConfig": "jest.config.ts",
                 "collectCoverage": false,
-                "testMatch": ["<rootDir>/projects/demo/**/*.spec.ts"]
+                "testMatch": ["<rootDir>/{projectRoot}/src/**/*.spec.ts"]
             }
         }
     }

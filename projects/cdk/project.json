@@ -10,7 +10,7 @@
             "executor": "@angular-devkit/build-angular:ng-packagr",
             "options": {
                 "tsConfig": "tsconfig.build.json",
-                "project": "projects/cdk/ng-package.json"
+                "project": "{projectRoot}/ng-package.json"
             },
             "dependsOn": [
                 {
@@ -31,7 +31,7 @@
         "postbuild": {
             "executor": "nx:run-commands",
             "options": {
-                "command": "tsc -p ./projects/cdk/schematics/tsconfig.schematics.json"
+                "command": "tsc -p ./{projectRoot}/schematics/tsconfig.schematics.json"
             }
         },
         "schematics": {
@@ -52,8 +52,8 @@
             "options": {
                 "jestConfig": "jest.config.ts",
                 "coverageDirectory": "coverage/cdk",
-                "collectCoverageFrom": ["<rootDir>/projects/cdk/**/*.ts"],
-                "testMatch": ["<rootDir>/projects/cdk/**/*.spec.ts"]
+                "collectCoverageFrom": ["<rootDir>/{projectRoot}/**/*.ts"],
+                "testMatch": ["<rootDir>/{projectRoot}/**/*.spec.ts"]
             },
             "dependsOn": [
                 {
