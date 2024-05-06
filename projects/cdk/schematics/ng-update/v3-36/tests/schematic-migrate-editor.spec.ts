@@ -94,7 +94,7 @@ const PACKAGE_BEFORE = `{
 const PACKAGE_AFTER = `{
     "dependencies": {
         "@angular/core": "~13.0.0",
-        "@tinkoff/tui-editor": "^1.0.1"
+        "@tinkoff/tui-editor": "^1.25.1"
     }
 }`;
 
