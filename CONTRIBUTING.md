@@ -15,9 +15,7 @@ In order to make your contribution please make a fork of the repository. After y
 steps to kick-start the development:
 
 1. Run `npm ci` to install dependencies
-2. Run `npm start` to launch demo project where you could test your changes (see [angular.json](angular.json) to find
-   alternative configurations with `Default` change detection strategy or Russian Language)
-3. Run `npm run start:fast` to launch demo with about 10% faster reloading when serve.
+2. Run `npm start` to launch demo project
 
 ## Testing
 

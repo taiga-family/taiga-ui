@@ -95,12 +95,6 @@
                             "with": "{projectRoot}/src/emulate/view-encapsulation.shadow.ts"
                         }
                     ]
-                },
-                "fast": {
-                    "baseHref": "/",
-                    "sourceMap": false,
-                    "namedChunks": false,
-                    "statsJson": false
                 }
             },
             "defaultConfiguration": "production"
@@ -146,14 +140,8 @@
                 "def": {
                     "buildTarget": "demo:build:def"
                 },
-                "fast": {
-                    "buildTarget": "demo:build:fast"
-                },
                 "shadow": {
                     "buildTarget": "demo:build:shadow"
-                },
-                "coalescing": {
-                    "buildTarget": "demo:build:coalescing"
                 }
             },
             "defaultConfiguration": "development"
