@@ -4,7 +4,7 @@
             *ngIf="!isLeft"
             type="button"
             class="beaver"
-            [@tuiSlideInLeft]="getAnimation(speed)"
+            [@tuiSlideInLeft]="getAnimation((speed | async) || 0)"
             (click)="isLeft = !isLeft"
         >
             <span class="nose"></span>
@@ -17,7 +17,7 @@
             *ngIf="!isBottom"
             type="button"
             class="beaver"
-            [@tuiSlideInBottom]="getAnimation(speed)"
+            [@tuiSlideInBottom]="getAnimation((speed | async) || 0)"
             (click)="isBottom = !isBottom"
         >
             <span class="nose"></span>
@@ -30,7 +30,7 @@
             *ngIf="!isRight"
             type="button"
             class="beaver"
-            [@tuiSlideInRight]="getAnimation(speed)"
+            [@tuiSlideInRight]="getAnimation(speed.value)"
             (click)="isRight = !isRight"
         >
             <span class="nose"></span>
@@ -43,7 +43,7 @@
             *ngIf="!isTop"
             type="button"
             class="beaver"
-            [@tuiSlideInTop]="getAnimation(speed)"
+            [@tuiSlideInTop]="getAnimation(speed.value)"
             (click)="isTop = !isTop"
         >
             <span class="nose"></span>

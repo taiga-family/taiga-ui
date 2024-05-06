@@ -2,6 +2,7 @@
     header="Animations"
     package="CORE"
     path="core/animations"
+    type="components"
 >
     <ng-template pageTab>
         <label tuiLabel="Speed of animations:">
@@ -10,9 +11,10 @@
                 type="range"
                 [max]="3000"
                 [min]="0"
+                [ngModel]="speed.value"
                 [segments]="5"
                 [step]="100"
-                [(ngModel)]="speed"
+                (ngModelChange)="speed.next($event)"
             />
 
             <div class="labels">
@@ -28,49 +30,43 @@
         <tui-doc-example
             id="tui-height-collapse"
             heading="tuiHeightCollapse"
-            [content]="heightCollapseExample"
-        >
-            <tui-height-collapse-example [speed]="speed" />
-        </tui-doc-example>
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample"
+        />
 
         <tui-doc-example
             id="tui-width-collapse"
             heading="tuiWidthCollapse"
-            [content]="widthCollapseExample"
-        >
-            <tui-width-collapse-example [speed]="speed" />
-        </tui-doc-example>
+            [component]="2 | tuiComponent"
+            [content]="2 | tuiExample"
+        />
 
         <tui-doc-example
             id="tui-fade-in"
             heading="tuiFadeIn"
-            [content]="fadeInExample"
-        >
-            <tui-fade-in-example [speed]="speed" />
-        </tui-doc-example>
+            [component]="3 | tuiComponent"
+            [content]="3 | tuiExample"
+        />
 
         <tui-doc-example
             id="tui-scale-in"
             heading="tuiScaleIn"
-            [content]="scaleInExample"
-        >
-            <tui-scale-in-example [speed]="speed" />
-        </tui-doc-example>
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample"
+        />
 
         <tui-doc-example
             id="tui-slide-in"
             heading="tuiSlideIn"
-            [content]="slideInExample"
-        >
-            <tui-slide-in-example [speed]="speed" />
-        </tui-doc-example>
+            [component]="5 | tuiComponent"
+            [content]="5 | tuiExample"
+        />
 
         <tui-doc-example
             id="tui-dropdown"
             heading="tuiDropdown"
-            [content]="dropdownExample"
-        >
-            <tui-dropdown-example [speed]="speed" />
-        </tui-doc-example>
+            [component]="6 | tuiComponent"
+            [content]="6 | tuiExample"
+        />
     </ng-template>
 </tui-doc-page>

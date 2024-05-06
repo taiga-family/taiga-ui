@@ -5,7 +5,6 @@
  * Array of icons used in taiga-ui components
  */
 export const TUI_USED_ICONS = [
-    'tuiIconCheck',
     'tuiIconAlertCircleLarge',
     'tuiIconButton',
     'tuiIconClose',
@@ -16,6 +15,7 @@ export const TUI_USED_ICONS = [
     'tuiIconMailLarge',
     'tuiIconPieChartLarge',
     'tuiIconHeart',
+    'tuiIconCheck',
     'tuiIconUserLarge',
     'tuiIconBox',
     'tuiIconLock',

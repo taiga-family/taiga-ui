@@ -11,7 +11,7 @@
         <tui-svg
             *ngIf="task.completed"
             src="tuiIconCheck"
-            [@tuiScaleIn]="getAnimation(speed)"
+            [@tuiScaleIn]="getAnimation((speed | async) || 0)"
         />
     </li>
 </ul>
