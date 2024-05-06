@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[22127],{22127:e=>{e.exports="li {\n    height: 2rem;\n    cursor: pointer;\n}\n"}}]);
