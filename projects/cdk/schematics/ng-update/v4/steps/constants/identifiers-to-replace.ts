@@ -407,4 +407,312 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         from: {name: 'TuiLetModule', moduleSpecifier: '@taiga-ui/cdk'},
         to: {name: 'TuiLetDirective', moduleSpecifier: '@taiga-ui/cdk'},
     },
+    {
+        from: {
+            name: 'TuiAccountModule',
+            moduleSpecifier: '@taiga-ui/proprietary-banking',
+        },
+        to: {
+            name: 'TuiAccountComponent',
+            moduleSpecifier: '@taiga-ui/proprietary',
+        },
+    },
+    {
+        from: {
+            name: 'TuiPanelModule',
+            moduleSpecifier: '@taiga-ui/proprietary-banking',
+        },
+        to: {
+            name: 'TuiPanelComponent',
+            moduleSpecifier: '@taiga-ui/proprietary',
+        },
+    },
+    {
+        from: {
+            name: 'TuiBackModule',
+            moduleSpecifier: '@taiga-ui/proprietary-core',
+        },
+        to: {
+            name: 'TuiBackComponent',
+            moduleSpecifier: '@taiga-ui/proprietary',
+        },
+    },
+    {
+        from: {
+            name: 'TuiBackModule',
+            moduleSpecifier: '@taiga-ui/proprietary-core',
+        },
+        to: {
+            name: 'TuiBlockerComponent',
+            moduleSpecifier: '@taiga-ui/proprietary',
+        },
+    },
+    {
+        from: {
+            name: 'TuiConfirmDialogModule',
+            moduleSpecifier: '@taiga-ui/proprietary-core',
+        },
+        to: {
+            name: 'TuiConfirmDialogComponent',
+            moduleSpecifier: '@taiga-ui/proprietary',
+        },
+    },
+    {
+        from: {
+            name: 'TuiConfirmationDialog',
+            moduleSpecifier: '@taiga-ui/proprietary-core',
+        },
+        to: {
+            name: 'TuiConfirmationComponent',
+            moduleSpecifier: '@taiga-ui/proprietary',
+        },
+    },
+    {
+        from: {
+            name: 'TuiFeedItemModule',
+            moduleSpecifier: '@taiga-ui/proprietary-banking',
+        },
+        to: {
+            name: 'TuiFeedItemComponent',
+            moduleSpecifier: '@taiga-ui/proprietary',
+        },
+    },
+    {
+        from: {
+            name: 'TuiFeedItemDetailsModule',
+            moduleSpecifier: '@taiga-ui/proprietary-banking',
+        },
+        to: {
+            name: 'TuiFeedItemDetailsComponent',
+            moduleSpecifier: '@taiga-ui/proprietary',
+        },
+    },
+    {
+        from: {
+            name: 'TuiFeedItemDialogModule',
+            moduleSpecifier: '@taiga-ui/proprietary-banking',
+        },
+        to: {
+            name: 'TuiFeedItemDialogComponent',
+            moduleSpecifier: '@taiga-ui/proprietary',
+        },
+    },
+    {
+        from: {
+            name: 'TuiFeedItemActionModule',
+            moduleSpecifier: '@taiga-ui/proprietary-banking',
+        },
+        to: {
+            name: 'TuiFeedItemActionComponent',
+            moduleSpecifier: '@taiga-ui/proprietary',
+        },
+    },
+    {
+        from: {
+            name: 'TuiErrorPageModule',
+            moduleSpecifier: '@taiga-ui/proprietary-core',
+        },
+        to: {
+            name: 'TuiErrorPageComponent',
+            moduleSpecifier: '@taiga-ui/proprietary',
+        },
+    },
+    {
+        from: {
+            name: 'TuiPromptDialogModule',
+            moduleSpecifier: '@taiga-ui/proprietary-core',
+        },
+        to: {
+            name: 'TuiPromptDialogComponent',
+            moduleSpecifier: '@taiga-ui/proprietary',
+        },
+    },
+    {
+        from: {
+            name: 'TuiProprietaryRoot2023Module',
+            moduleSpecifier: '@taiga-ui/proprietary-core',
+        },
+        to: {
+            name: 'TuiProprietaryRoot2023Component',
+            moduleSpecifier: '@taiga-ui/proprietary',
+        },
+    },
+    {
+        from: {
+            name: 'TuiSignalModule',
+            moduleSpecifier: '@taiga-ui/proprietary-banking',
+        },
+        to: {
+            name: 'TuiSignalComponent',
+            moduleSpecifier: '@taiga-ui/proprietary',
+        },
+    },
+    {
+        from: {
+            name: 'TuiSubscriptionBadgeModule',
+            moduleSpecifier: '@taiga-ui/proprietary-banking',
+        },
+        to: {
+            name: 'TuiSubscriptionBadgeComponent',
+            moduleSpecifier: '@taiga-ui/proprietary',
+        },
+    },
+    {
+        from: {
+            name: 'TuiNavigationModule',
+            moduleSpecifier: '@taiga-ui/proprietary-navigation',
+        },
+        to: {
+            name: 'TuiNavigationComponent',
+            moduleSpecifier: '@taiga-ui/proprietary',
+        },
+    },
+    {
+        from: {
+            name: 'TuiEmailsPipeModule',
+            moduleSpecifier: '@taiga-ui/proprietary-banking',
+        },
+        to: {
+            name: 'TuiEmailsPipe',
+            moduleSpecifier: '@taiga-ui/proprietary',
+        },
+    },
+    {
+        from: {
+            name: 'TuiIllustrationsModule',
+            moduleSpecifier: '@taiga-ui/proprietary-icons',
+        },
+        to: {
+            name: 'TuiIllustrationModePipe',
+            moduleSpecifier: '@taiga-ui/proprietary',
+        },
+    },
+    {
+        from: {
+            name: 'ProductsNavigationModule',
+            moduleSpecifier: '@taiga-ui/proprietary-navigation',
+        },
+        to: {
+            name: 'ProductsNavigationComponent',
+            moduleSpecifier: '@taiga-ui/proprietary',
+        },
+    },
+    {
+        from: {
+            name: 'TuiDropdownSecureModule',
+            moduleSpecifier: '@taiga-ui/proprietary-banking',
+        },
+        to: [
+            {
+                name: 'TuiDropdownSecureDirective',
+                moduleSpecifier: '@taiga-ui/proprietary',
+            },
+            {
+                name: 'TuiDropdownSecureComponent',
+                moduleSpecifier: '@taiga-ui/proprietary',
+            },
+        ],
+    },
+    {
+        from: {
+            name: 'TuiProductMenuModule',
+            moduleSpecifier: '@taiga-ui/proprietary-banking',
+        },
+        to: [
+            {
+                name: 'TuiProductMenuDirective',
+                moduleSpecifier: '@taiga-ui/proprietary',
+            },
+            {
+                name: 'TuiProductMenuComponent',
+                moduleSpecifier: '@taiga-ui/proprietary',
+            },
+            {
+                name: 'TuiProductMenuButtonComponent',
+                moduleSpecifier: '@taiga-ui/proprietary',
+            },
+        ],
+    },
+    {
+        from: {
+            name: 'TuiCardLogoModule',
+            moduleSpecifier: '@taiga-ui/proprietary-core',
+        },
+        to: {
+            name: 'TuiCardLogoDirective',
+            moduleSpecifier: '@taiga-ui/proprietary',
+        },
+    },
+    {
+        from: {
+            name: 'TuiErrorDialogModule',
+            moduleSpecifier: '@taiga-ui/proprietary-core',
+        },
+        to: [
+            {
+                name: 'TuiErrorDialogComponent',
+                moduleSpecifier: '@taiga-ui/proprietary',
+            },
+            {
+                name: 'TuiErrorDialogHeaderComponent',
+                moduleSpecifier: '@taiga-ui/proprietary',
+            },
+        ],
+    },
+    {
+        from: {
+            name: 'TuiTimecodePlayerModule',
+            moduleSpecifier: '@taiga-ui/proprietary-core',
+        },
+        to: [
+            {
+                name: 'TuiTimecodePlayerComponent',
+                moduleSpecifier: '@taiga-ui/proprietary',
+            },
+            {
+                name: 'TuiTimecodeComponent',
+                moduleSpecifier: '@taiga-ui/proprietary',
+            },
+            {
+                name: 'TuiTimecodeProgressComponent',
+                moduleSpecifier: '@taiga-ui/proprietary',
+            },
+        ],
+    },
+    {
+        from: {
+            name: 'TuiTimelineStepsModule',
+            moduleSpecifier: '@taiga-ui/proprietary-banking',
+        },
+        to: [
+            {
+                name: 'TuiTimelineStepsComponent',
+                moduleSpecifier: '@taiga-ui/proprietary',
+            },
+            {
+                name: 'TuiTimelineStepComponent',
+                moduleSpecifier: '@taiga-ui/proprietary',
+            },
+            {
+                name: 'TuiTimelineStepDirective',
+                moduleSpecifier: '@taiga-ui/proprietary',
+            },
+        ],
+    },
+    {
+        from: {
+            name: 'TuiProfileMenuModule',
+            moduleSpecifier: '@taiga-ui/proprietary-navigation',
+        },
+        to: [
+            {
+                name: 'TuiProfileMenuComponent',
+                moduleSpecifier: '@taiga-ui/proprietary',
+            },
+            {
+                name: 'TuiProfileMenuDirective',
+                moduleSpecifier: '@taiga-ui/proprietary',
+            },
+        ],
+    },
 ];
