@@ -68,8 +68,8 @@
         </tui-doc-documentation>
     </ng-template>
     <ng-template pageTab>
-        <ol class="b-demo-steps">
-            <li>
+        <ol class="tui-list tui-list_ordered">
+            <li class="tui-list__item">
                 <p>
                     Add
                     <code>TuiTableBarsHostModule</code>
@@ -81,7 +81,7 @@
                     [code]="exampleModule"
                 />
             </li>
-            <li>
+            <li class="tui-list__item">
                 <p>
                     Add
                     <code>tui-table-bars-host</code>
@@ -93,7 +93,7 @@
                     [code]="exampleHtml"
                 />
             </li>
-            <li>
+            <li class="tui-list__item">
                 <p>
                     Use
                     <code>open</code>
@@ -112,7 +112,7 @@
                 />
             </li>
 
-            <li>
+            <li class="tui-list__item">
                 <p>
                     If you use component in lazy loading modules, do not forget to pass into
                     <code>new PolymorpheusComponent Injector</code>
