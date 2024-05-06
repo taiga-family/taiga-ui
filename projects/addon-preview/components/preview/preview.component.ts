@@ -11,7 +11,6 @@ import {
     TUI_FALSE_HANDLER,
     tuiClamp,
     tuiDragAndDropFrom,
-    TuiDragStage,
     tuiPx,
     tuiRound,
     tuiTypedFromEvent,
@@ -54,9 +53,7 @@ export class TuiPreviewComponent {
     );
 
     protected readonly transitioned$ = merge(
-        tuiDragAndDropFrom(this.el).pipe(
-            map(({stage}) => stage !== TuiDragStage.Continues),
-        ),
+        tuiDragAndDropFrom(this.el).pipe(map(({stage}) => stage !== 'continues')),
         tuiTypedFromEvent(this.el, 'touchmove', {
             passive: true,
         }).pipe(map(TUI_FALSE_HANDLER)),
@@ -64,7 +61,7 @@ export class TuiPreviewComponent {
     );
 
     protected readonly cursor$ = tuiDragAndDropFrom(this.el).pipe(
-        map(({stage}) => (stage === TuiDragStage.Continues ? 'grabbing' : 'initial')),
+        map(({stage}) => (stage === 'continues' ? 'grabbing' : 'initial')),
         startWith('initial'),
     );
 
