@@ -1,19 +1,21 @@
+import type {InjectionToken} from '@angular/core';
 import type {TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
+import {tuiCreateToken} from '@taiga-ui/cdk';
 
-// TODO: Make it a token in 4.0, think about mono icons for card component
-export const TUI_PAYMENT_SYSTEM_ICONS: Record<TuiPaymentSystem, string> = {
-    mir: 'tuiIconMirMono',
-    visa: 'tuiIconVisaMono',
-    electron: 'tuiIconElectronMono',
-    mastercard: 'tuiIconMastercard',
-    maestro: 'tuiIconMaestro',
-    amex: 'tuiIconAmex',
-    dinersclub: 'tuiIconDinersClub',
-    discover: 'tuiIconDiscover',
-    humo: 'tuiIconHumo',
-    jcb: 'tuiIconJCB',
-    rupay: 'tuiIconRuPay',
-    unionpay: 'tuiIconUnionPay',
-    uzcard: 'tuiIconUzcard',
-    verve: 'tuiIconVerve',
-};
+export const TUI_PAYMENT_SYSTEM_ICONS: InjectionToken<Record<TuiPaymentSystem, string>> =
+    tuiCreateToken({
+        mir: 'tuiIconMirMono',
+        visa: 'tuiIconVisaMono',
+        electron: 'tuiIconElectronMono',
+        mastercard: 'tuiIconMastercard',
+        maestro: 'tuiIconMaestro',
+        amex: 'tuiIconAmex',
+        dinersclub: 'tuiIconDinersClub',
+        discover: 'tuiIconDiscover',
+        humo: 'tuiIconHumo',
+        jcb: 'tuiIconJCB',
+        rupay: 'tuiIconRuPay',
+        unionpay: 'tuiIconUnionPay',
+        uzcard: 'tuiIconUzcard',
+        verve: 'tuiIconVerve',
+    });
