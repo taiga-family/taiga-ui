@@ -564,8 +564,7 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.Label,
-        loadChildren: async () =>
-            (await import('../components/label/label.module')).ExampleTuiLabelModule,
+        loadComponent: async () => import('../components/label'),
         title: 'Label',
     }),
     route({

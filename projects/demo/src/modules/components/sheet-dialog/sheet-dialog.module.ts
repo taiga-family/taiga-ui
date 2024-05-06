@@ -10,7 +10,7 @@ import {
     TuiAutoColorPipe,
     TuiButtonDirective,
     TuiInitialsPipe,
-    TuiLabelModule,
+    TuiLabelComponent,
     TuiNotificationModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
@@ -29,7 +29,7 @@ import {ExampleTuiSheetDialogComponent} from './sheet-dialog.component';
         TuiInputModule,
         TuiTextfieldControllerModule,
         TuiButtonDirective,
-        TuiLabelModule,
+        TuiLabelComponent,
         TuiAmountPipe,
         TuiAvatarComponent,
         TuiNotificationModule,

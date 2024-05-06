@@ -11,7 +11,7 @@ import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiDataListModule,
     TuiErrorModule,
-    TuiLabelModule,
+    TuiLabelComponent,
     TuiLinkDirective,
     TuiSvgComponent,
 } from '@taiga-ui/core';
@@ -34,7 +34,7 @@ import {ExampleTuiInputCardGroupedComponent} from './input-card-grouped.componen
         TuiFieldErrorPipeModule,
         TuiDataListModule,
         TuiThumbnailCardComponent,
-        TuiLabelModule,
+        TuiLabelComponent,
         TuiSvgComponent,
         CommonModule,
         ReactiveFormsModule,

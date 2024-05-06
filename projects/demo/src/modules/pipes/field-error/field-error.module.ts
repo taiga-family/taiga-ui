@@ -10,7 +10,7 @@ import {
     TuiButtonDirective,
     TuiErrorModule,
     TuiHintModule,
-    TuiLabelModule,
+    TuiLabelComponent,
     TuiLinkDirective,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
@@ -39,7 +39,7 @@ import {ExampleTuiFieldErrorPipeComponent} from './field-error.component';
         TuiTextfieldControllerModule,
         TuiErrorModule,
         TuiFieldErrorPipeModule,
-        TuiLabelModule,
+        TuiLabelComponent,
         TuiHintModule,
         TuiInputModule,
         TuiButtonDirective,

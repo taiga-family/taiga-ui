@@ -7,7 +7,7 @@ import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiButtonDirective,
     TuiHintModule,
-    TuiLabelModule,
+    TuiLabelComponent,
     TuiLinkDirective,
     TuiNotificationModule,
     TuiPrimitiveTextfieldModule,
@@ -43,7 +43,7 @@ import {ExampleTuiPrimitiveTextfieldComponent} from './primitive-textfield.compo
         PolymorpheusModule,
         TuiHintModule,
         TuiRadioListComponent,
-        TuiLabelModule,
+        TuiLabelComponent,
         TuiWrapperModule,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiPrimitiveTextfieldComponent)),

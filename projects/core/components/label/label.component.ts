@@ -10,6 +10,7 @@ import type {TuiContext} from '@taiga-ui/cdk';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 @Component({
+    standalone: true,
     selector: 'label[tuiLabel]',
     templateUrl: './label.template.html',
     styleUrls: ['./label.style.less'],

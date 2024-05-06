@@ -1,11 +1,13 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiLabelComponent} from '@taiga-ui/core';
 
 @Component({
-    selector: 'tui-label-example-3',
+    standalone: true,
+    imports: [TuiLabelComponent],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class TuiLabelExample3 {}
+export default class ExampleComponent {}
