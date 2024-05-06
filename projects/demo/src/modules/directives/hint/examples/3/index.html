@@ -1,0 +1,20 @@
+<tui-badge
+    #parent="tuiHintHover"
+    appearance="accent"
+    size="l"
+    class="badge tui-space_left-2"
+    [tuiHint]="badgeHint"
+    [tuiHintAppearance]="'onDark'"
+>
+    Hover me
+</tui-badge>
+
+<ng-template #badgeHint>
+    <a
+        [tuiHint]="linkHint"
+        [tuiHintParent]="parent"
+    >
+        Hover me again
+    </a>
+    <ng-template #linkHint>Nested hint</ng-template>
+</ng-template>

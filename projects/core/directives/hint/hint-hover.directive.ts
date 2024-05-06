@@ -48,6 +48,9 @@ export class TuiHintHoverDirective extends TuiDriver {
     @Input('tuiHintHideDelay')
     hideDelay: TuiHintOptions['hideDelay'] = this.options.hideDelay;
 
+    @Input('tuiHintParent')
+    parent?: TuiHintHoverDirective;
+
     readonly type = 'hint';
 
     enabled = true;
