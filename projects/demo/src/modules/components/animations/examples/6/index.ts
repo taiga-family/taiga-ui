@@ -1,23 +1,26 @@
-import {Component, Input} from '@angular/core';
+import {AsyncPipe, NgIf} from '@angular/common';
+import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiPure} from '@taiga-ui/cdk';
 import type {TuiDurationOptions} from '@taiga-ui/core';
-import {tuiWidthCollapse} from '@taiga-ui/core';
+import {TuiButtonDirective, tuiDropdownAnimation} from '@taiga-ui/core';
+
+import {AnimationState} from '../../state';
 
 @Component({
-    selector: 'tui-width-collapse-example',
+    standalone: true,
+    imports: [TuiButtonDirective, NgIf, AsyncPipe],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
-    animations: [tuiWidthCollapse],
+    animations: [tuiDropdownAnimation],
 })
-export class TuiWidthCollapseExample {
-    @Input()
-    public speed = 0;
+export default class ExampleComponent {
+    protected speed = inject(AnimationState);
 
-    protected isOpen = true;
+    protected isOpen = false;
 
     @tuiPure
     protected getAnimation(duration: number): TuiDurationOptions {

@@ -10,7 +10,7 @@
 <div
     *ngIf="isOpen"
     class="dropdown"
-    [@tuiDropdownAnimation]="getAnimation(speed)"
+    [@tuiDropdownAnimation]="getAnimation((speed | async) || 0)"
 >
     This is a dropdown menu!
 </div>

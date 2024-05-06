@@ -1,26 +1,30 @@
-import {Component, Input} from '@angular/core';
+import {AsyncPipe, NgIf} from '@angular/common';
+import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiPure} from '@taiga-ui/cdk';
 import type {TuiDurationOptions} from '@taiga-ui/core';
 import {
+    TuiButtonDirective,
     tuiSlideInBottom,
     tuiSlideInLeft,
     tuiSlideInRight,
     tuiSlideInTop,
 } from '@taiga-ui/core';
 
+import {AnimationState} from '../../state';
+
 @Component({
-    selector: 'tui-slide-in-example',
+    standalone: true,
+    imports: [NgIf, TuiButtonDirective, AsyncPipe],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
     animations: [tuiSlideInLeft, tuiSlideInTop, tuiSlideInBottom, tuiSlideInRight],
 })
-export class TuiSlideInExample {
-    @Input()
-    public speed = 0;
+export default class ExampleComponent {
+    protected speed = inject(AnimationState);
 
     protected isLeft = false;
     protected isTop = false;

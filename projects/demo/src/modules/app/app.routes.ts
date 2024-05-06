@@ -1325,8 +1325,7 @@ export const ROUTES: Routes = [
     // ANIMATIONS
     route({
         path: DemoRoute.Animations,
-        loadChildren: async () =>
-            (await import('../animations/animations.module')).ExampleAnimationsModule,
+        loadComponent: async () => import('../components/animations'),
         title: 'Animations',
     }),
     route({

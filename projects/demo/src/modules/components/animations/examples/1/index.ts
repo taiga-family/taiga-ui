@@ -1,27 +1,25 @@
-import {Component, Input} from '@angular/core';
+import {AsyncPipe, NgIf} from '@angular/common';
+import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiPure} from '@taiga-ui/cdk';
 import type {TuiDurationOptions} from '@taiga-ui/core';
-import {tuiScaleIn} from '@taiga-ui/core';
+import {TuiButtonDirective, tuiHeightCollapse} from '@taiga-ui/core';
+
+import {AnimationState} from '../../state';
 
 @Component({
-    selector: 'tui-scale-in-example',
+    standalone: true,
+    imports: [TuiButtonDirective, NgIf, AsyncPipe],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
-    animations: [tuiScaleIn],
+    animations: [tuiHeightCollapse],
 })
-export class TuiScaleInExample {
-    @Input()
-    public speed = 0;
-
-    protected readonly todoTasks = [
-        {title: 'Install Angular', completed: true},
-        {title: 'Install Taiga UI', completed: false},
-        {title: 'Look into "Getting Started"', completed: false},
-    ];
+export default class ExampleComponent {
+    protected speed = inject(AnimationState);
+    protected isOpen = false;
 
     @tuiPure
     protected getAnimation(duration: number): TuiDurationOptions {
