@@ -9,7 +9,7 @@ import {
 import {TuiCellComponent} from './cell.component';
 
 @Directive({
-    selector: '[tuiCell]',
+    selector: '[tuiCell]:not(ng-template)',
     providers: [
         tuiAvatarOptionsProvider({size: 's'}),
         tuiButtonOptionsProvider({size: 's'}),
