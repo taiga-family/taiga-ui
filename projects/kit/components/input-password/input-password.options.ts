@@ -11,19 +11,14 @@ export interface TuiInputPasswordOptions {
     }>;
 }
 
-// TODO: swap icon names in v4.0
-/** Default values for the input password options. */
 export const TUI_INPUT_PASSWORD_DEFAULT_OPTIONS: TuiInputPasswordOptions = {
     icons: {
-        hide: ({$implicit}) =>
+        hide: ({$implicit}) => ($implicit === 's' ? 'tuiIconEye' : 'tuiIconEyeLarge'),
+        show: ({$implicit}) =>
             $implicit === 's' ? 'tuiIconEyeOff' : 'tuiIconEyeOffLarge',
-        show: ({$implicit}) => ($implicit === 's' ? 'tuiIconEye' : 'tuiIconEyeLarge'),
     },
 };
 
-/**
- * Default parameters for input password component
- */
 export const TUI_INPUT_PASSWORD_OPTIONS = tuiCreateToken(
     TUI_INPUT_PASSWORD_DEFAULT_OPTIONS,
 );
