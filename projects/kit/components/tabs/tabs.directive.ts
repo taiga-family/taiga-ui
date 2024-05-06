@@ -1,10 +1,12 @@
 import type {AfterViewChecked} from '@angular/core';
 import {
+    afterNextRender,
     Directive,
     ElementRef,
     EventEmitter,
     HostListener,
     inject,
+    INJECTOR,
     Input,
     Output,
 } from '@angular/core';
@@ -24,6 +26,7 @@ import {TUI_TABS_OPTIONS} from './tabs.options';
 })
 export class TuiTabsDirective implements AfterViewChecked {
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly injector = inject(INJECTOR);
 
     @Input()
     public size: TuiSizeL = inject(TUI_TABS_OPTIONS).size;
@@ -51,14 +54,12 @@ export class TuiTabsDirective implements AfterViewChecked {
     }
 
     public ngAfterViewChecked(): void {
-        const {tabs, activeElement} = this;
-
-        tabs.forEach(nativeElement => {
-            const active = nativeElement === activeElement;
-
-            nativeElement.classList.toggle('_active', active);
-            nativeElement.setAttribute('tabIndex', active ? '0' : '-1');
-        });
+        afterNextRender(
+            () => {
+                this.markTabAsActive();
+            },
+            {injector: this.injector},
+        );
     }
 
     @HostListener(TUI_TAB_ACTIVATE, ['$event', '$event.target'])
@@ -73,5 +74,16 @@ export class TuiTabsDirective implements AfterViewChecked {
 
         this.activeItemIndexChange.emit(index);
         this.activeItemIndex = index;
+    }
+
+    protected markTabAsActive(): void {
+        const {tabs, activeElement} = this;
+
+        tabs.forEach(nativeElement => {
+            const active = nativeElement === activeElement;
+
+            nativeElement.classList.toggle('_active', active);
+            nativeElement.setAttribute('tabIndex', active ? '0' : '-1');
+        });
     }
 }
