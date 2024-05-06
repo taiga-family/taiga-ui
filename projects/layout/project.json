@@ -11,7 +11,7 @@
             "outputs": ["{workspaceRoot}/dist/layout"],
             "options": {
                 "tsConfig": "tsconfig.build.json",
-                "project": "projects/layout/ng-package.json"
+                "project": "{projectRoot}/ng-package.json"
             },
             "dependsOn": [
                 {
@@ -27,8 +27,8 @@
             "options": {
                 "jestConfig": "jest.config.ts",
                 "coverageDirectory": "coverage/layout",
-                "collectCoverageFrom": ["<rootDir>/projects/layout/**/*.ts"],
-                "testMatch": ["<rootDir>/projects/layout/**/*.spec.ts"]
+                "collectCoverageFrom": ["<rootDir>/{projectRoot}/**/*.ts"],
+                "testMatch": ["<rootDir>/{projectRoot}/**/*.spec.ts"]
             }
         },
         "publish": {

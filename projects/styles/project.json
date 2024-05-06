@@ -10,7 +10,7 @@
             "executor": "nx:run-commands",
             "outputs": ["{workspaceRoot}/dist/styles"],
             "options": {
-                "command": "cd projects/styles && npx cpy ./* '../../dist/styles'"
+                "command": "cd {projectRoot} && npx cpy ./* '../../dist/styles'"
             }
         },
         "publish": {

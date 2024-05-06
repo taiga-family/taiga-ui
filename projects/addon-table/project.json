@@ -11,7 +11,7 @@
             "outputs": ["{workspaceRoot}/dist/addon-table"],
             "options": {
                 "tsConfig": "tsconfig.build.json",
-                "project": "projects/addon-table/ng-package.json"
+                "project": "{projectRoot}/ng-package.json"
             },
             "dependsOn": [
                 {
@@ -27,8 +27,8 @@
             "options": {
                 "jestConfig": "jest.config.ts",
                 "coverageDirectory": "coverage/addon-table",
-                "collectCoverageFrom": ["<rootDir>/projects/addon-table/**/*.ts"],
-                "testMatch": ["<rootDir>/projects/addon-table/**/*.spec.ts"]
+                "collectCoverageFrom": ["<rootDir>/{projectRoot}/**/*.ts"],
+                "testMatch": ["<rootDir>/{projectRoot}/**/*.spec.ts"]
             }
         },
         "publish": {

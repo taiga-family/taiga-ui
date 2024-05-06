@@ -1,7 +1,7 @@
 {
     "name": "addon-preview",
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
-    "sourceRoot": "projects/addon-preview/src",
+    "sourceRoot": "projects/addon-preview",
     "projectType": "library",
     "prefix": "tui",
     "implicitDependencies": ["!testing"],
@@ -11,7 +11,7 @@
             "outputs": ["{workspaceRoot}/dist/addon-preview"],
             "options": {
                 "tsConfig": "tsconfig.build.json",
-                "project": "projects/addon-preview/ng-package.json"
+                "project": "{projectRoot}/ng-package.json"
             },
             "dependsOn": [
                 {
@@ -27,8 +27,8 @@
             "options": {
                 "jestConfig": "jest.config.ts",
                 "coverageDirectory": "coverage/addon-preview",
-                "collectCoverageFrom": ["<rootDir>/projects/addon-preview/**/*.ts"],
-                "testMatch": ["<rootDir>/projects/addon-preview/**/*.spec.ts"]
+                "collectCoverageFrom": ["<rootDir>/{projectRoot}/**/*.ts"],
+                "testMatch": ["<rootDir>/{projectRoot}/**/*.spec.ts"]
             }
         },
         "publish": {

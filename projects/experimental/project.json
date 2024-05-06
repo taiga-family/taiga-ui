@@ -11,7 +11,7 @@
             "outputs": ["{workspaceRoot}/dist/experimental"],
             "options": {
                 "tsConfig": "tsconfig.build.json",
-                "project": "projects/experimental/ng-package.json"
+                "project": "{projectRoot}/ng-package.json"
             },
             "dependsOn": [
                 {
@@ -27,8 +27,8 @@
             "options": {
                 "jestConfig": "jest.config.ts",
                 "coverageDirectory": "coverage/core",
-                "collectCoverageFrom": ["<rootDir>/projects/experimental/**/*.ts"],
-                "testMatch": ["<rootDir>/projects/experimental/**/*.spec.ts"]
+                "collectCoverageFrom": ["<rootDir>/{projectRoot}/**/*.ts"],
+                "testMatch": ["<rootDir>/{projectRoot}/**/*.spec.ts"]
             }
         },
         "publish": {

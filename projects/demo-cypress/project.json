@@ -1,14 +1,14 @@
 {
     "name": "demo-cypress",
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
-    "sourceRoot": "projects/demo-cypress/cypress",
+    "sourceRoot": "projects/demo-cypress",
     "projectType": "application",
     "prefix": "app",
     "targets": {
         "component-test": {
             "executor": "@nx/cypress:cypress",
             "options": {
-                "cypressConfig": "projects/demo-cypress/cypress.config.ts",
+                "cypressConfig": "{projectRoot}/cypress.config.ts",
                 "testingType": "component",
                 "skipServe": true,
                 "devServerTarget": "demo:build"
