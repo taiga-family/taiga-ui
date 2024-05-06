@@ -1,7 +1,6 @@
 import {AsyncPipe} from '@angular/common';
 import {
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
     inject,
 } from '@angular/core';
@@ -29,7 +28,6 @@ export class TuiInputFilesContent {
     private readonly text$ = inject(TUI_INPUT_FILE_TEXTS);
     private readonly context = inject(POLYMORPHEUS_CONTEXT) as TuiContext<boolean>;
     private readonly component = inject(TuiInputFilesComponent);
-    private readonly cd = inject(ChangeDetectorRef);
 
     protected get link$(): Observable<string> {
         return this.computeLink$(
@@ -53,7 +51,7 @@ export class TuiInputFilesContent {
                 : this.text$.pipe(
                       map(t => (multiple ? t.defaultLinkMultiple : t.defaultLinkSingle)),
                   )
-        ).pipe(tap(() => this.cd.detectChanges()));
+        );
     }
 
     @tuiPure
@@ -80,6 +78,6 @@ export class TuiInputFilesContent {
                               : text.defaultLabelSingle;
                       }),
                   )
-        ).pipe(tap(() => this.cd.detectChanges()));
+        );
     }
 }
