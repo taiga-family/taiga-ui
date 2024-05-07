@@ -1,4 +1,5 @@
 // cspell:disable
+
 import {tuiSvgLinearGradientProcessor} from '@taiga-ui/cdk';
 
 const ACTUAL = `

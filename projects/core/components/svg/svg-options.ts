@@ -11,7 +11,7 @@ import {identity} from 'rxjs';
 
 import {TUI_DEPRECATED_ICONS} from './deprecated-icons';
 
-export const TUI_DEFAULT_ICONS_PLACE = 'assets/taiga-ui/icons' as const;
+export const TUI_DEFAULT_ICONS_PLACE = 'assets/taiga-ui/icons';
 
 export interface TuiSvgOptions {
     readonly contentProcessor: TuiHandler<TuiSafeHtml, TuiSafeHtml>;

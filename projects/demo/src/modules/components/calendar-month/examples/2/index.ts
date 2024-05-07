@@ -18,7 +18,7 @@ export default class ExampleComponent {
     protected min = new TuiMonth(2019, 7);
 
     protected onMonthClick(month: TuiMonth): void {
-        if (this.value === null || !this.value.isSingleMonth) {
+        if (!this.value?.isSingleMonth) {
             this.value = new TuiMonthRange(month, month);
 
             return;

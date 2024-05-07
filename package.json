@@ -78,6 +78,9 @@
             "plugin:@taiga-ui/experience/all",
             "plugin:@taiga-ui/experience/taiga-naming"
         ],
+        "rules": {
+            "jest/prefer-importing-jest-globals": "off"
+        },
         "root": true
     },
     "stylelint": {
@@ -112,11 +115,11 @@
         "@nx/workspace": "18.3.4",
         "@schematics/angular": "16.2.12",
         "@taiga-ui/browserslist-config": "0.6.0",
-        "@taiga-ui/commitlint-config": "0.7.4",
-        "@taiga-ui/cspell-config": "0.36.5",
-        "@taiga-ui/eslint-plugin-experience": "0.70.0",
-        "@taiga-ui/prettier-config": "0.11.5",
-        "@taiga-ui/stylelint-config": "0.20.5",
+        "@taiga-ui/commitlint-config": "0.7.5",
+        "@taiga-ui/cspell-config": "0.38.1",
+        "@taiga-ui/eslint-plugin-experience": "0.74.2",
+        "@taiga-ui/prettier-config": "0.11.7",
+        "@taiga-ui/stylelint-config": "0.22.1",
         "@taiga-ui/tsconfig": "0.17.0",
         "@tinkoff/ng-event-plugins": "3.2.0",
         "@types/glob": "8.1.0",

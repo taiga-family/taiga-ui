@@ -31,10 +31,12 @@ describe('tuiToFlatMapPages', () => {
         },
     ];
 
-    let consoleErrorMock: jest.SpyInstance;
+    let consoleErrorMock: any;
 
     beforeEach(() => {
-        consoleErrorMock = jest.spyOn(global.console, 'error').mockImplementation();
+        consoleErrorMock = jest
+            .spyOn(global.console, 'error')
+            .mockImplementation(() => undefined);
 
         tuiSwitchNgDevMode(true);
     });

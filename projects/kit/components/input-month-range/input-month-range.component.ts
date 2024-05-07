@@ -97,7 +97,7 @@ export class TuiInputMonthRangeComponent
     }
 
     public onMonthClick(month: TuiMonth): void {
-        if (this.value === null || !this.value.isSingleMonth) {
+        if (!this.value?.isSingleMonth) {
             this.writeValue(new TuiMonthRange(month, month));
 
             return;

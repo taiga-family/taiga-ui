@@ -135,7 +135,9 @@ describe('ng-update proprietary', () => {
         expect(tree.readContent('package.json').trim()).toEqual(PACKAGE_JSON_AFTER);
     });
 
-    afterEach(() => resetActiveProject());
+    afterEach(() => {
+        resetActiveProject();
+    });
 });
 
 function createMainFiles(): void {

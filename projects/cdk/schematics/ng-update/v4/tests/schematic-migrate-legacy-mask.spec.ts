@@ -89,5 +89,7 @@ describe('ng-update', () => {
         expect(modifiedFile).toEqual(AFTER);
     });
 
-    afterEach(() => resetActiveProject());
+    afterEach(() => {
+        resetActiveProject();
+    });
 });

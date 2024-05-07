@@ -212,7 +212,7 @@ export class TuiInputDateComponent
     }
 
     protected get computedActiveYearMonth(): TuiMonth {
-        if (this.items[0] && this.value && this.value.daySame(this.items[0].day)) {
+        if (this.items[0] && this.value?.daySame(this.items[0].day)) {
             return this.items[0].displayDay;
         }
 
