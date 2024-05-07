@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[20226],{20226:e=>{e.exports="```ts\nimport {TuiActiveZoneDirective} from '@taiga-ui/cdk';\n\n// ...\n\n@NgModule({\n  imports: [\n    // ...\n    TuiActiveZoneDirective,\n  ],\n  // ...\n})\nexport class MyModule {}\n```\n"}}]);

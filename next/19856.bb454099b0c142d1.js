@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[19856],{19856:o=>{o.exports="```ts\nimport {FormsModule, ReactiveFormsModule} from '@angular/forms';\nimport {TuiInputNumberModule} from '@taiga-ui/kit';\n\n@Component({\n  standalone: true,\n  imports: [FormsModule, ReactiveFormsModule, TuiInputNumberModule],\n  // ...\n})\nexport class MyComponent {}\n```\n"}}]);
