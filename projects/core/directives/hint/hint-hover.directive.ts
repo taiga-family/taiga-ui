@@ -1,5 +1,5 @@
 /* eslint-disable rxjs/no-unsafe-takeuntil */
-import {Directive, ElementRef, Inject, Input} from '@angular/core';
+import {Directive, ElementRef, Inject, Input, Optional, SkipSelf} from '@angular/core';
 import {TuiHoveredService} from '@taiga-ui/cdk';
 import {tuiAsDriver, TuiDriver} from '@taiga-ui/core/abstract';
 import {tuiIsObscured} from '@taiga-ui/core/utils';
@@ -48,9 +48,6 @@ export class TuiHintHoverDirective extends TuiDriver {
     @Input('tuiHintHideDelay')
     hideDelay: TuiHintOptions['hideDelay'] = this.options.hideDelay;
 
-    @Input('tuiHintParent')
-    parent?: TuiHintHoverDirective;
-
     readonly type = 'hint';
 
     enabled = true;
@@ -59,6 +56,10 @@ export class TuiHintHoverDirective extends TuiDriver {
         @Inject(TuiHoveredService) private readonly hovered$: Observable<boolean>,
         @Inject(TUI_HINT_OPTIONS) private readonly options: TuiHintOptions,
         @Inject(ElementRef) readonly el: ElementRef<HTMLElement>,
+        @Optional()
+        @SkipSelf()
+        @Inject(TuiHintHoverDirective)
+        readonly parent: TuiHintHoverDirective | null,
     ) {
         super(subscriber => this.stream$.subscribe(subscriber));
     }
