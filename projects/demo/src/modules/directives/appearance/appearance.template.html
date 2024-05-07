@@ -38,7 +38,7 @@
         <tui-doc-demo>
             <button
                 tuiButton
-                [tuiAppearance]="appearance"
+                [appearance]="appearance"
                 [tuiAppearanceFocus]="focus"
                 [tuiAppearanceState]="state"
             >
@@ -53,7 +53,13 @@
                 [documentationPropertyValues]="appearances"
                 [(documentationPropertyValue)]="appearance"
             >
-                Appearance
+                Appearance (use
+                <code>appearance</code>
+                selector instead of
+                <code>tuiAppearance</code>
+                when used on a component that has such input due to
+                <code>hostDirectives</code>
+                )
             </ng-template>
             <ng-template
                 documentationPropertyMode="input"

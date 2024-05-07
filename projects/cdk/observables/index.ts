@@ -11,6 +11,7 @@ export * from './pressed-observable';
 export * from './prevent-default';
 export * from './scroll-from';
 export * from './stop-propagation';
+export * from './take-until-destroyed';
 export * from './typed-from-event';
 export * from './watch';
 export * from './zone-free';

@@ -5,7 +5,7 @@ import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiTableBarsService} from '@taiga-ui/addon-tablebars';
 import type {TuiBrightness} from '@taiga-ui/core';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {Subject, Subscription, takeUntil} from 'rxjs';
+import {Subscription} from 'rxjs';
 
 @Component({
     selector: 'example-tui-table-bar',
@@ -15,8 +15,6 @@ import {Subject, Subscription, takeUntil} from 'rxjs';
 })
 export class ExampleTuiTableBarComponent implements OnDestroy {
     private readonly tableBarsService = inject(TuiTableBarsService);
-
-    private readonly destroy$ = new Subject<void>();
 
     @ViewChild('tableBarTemplate')
     protected readonly tableBarTemplate: PolymorpheusContent;
@@ -50,24 +48,21 @@ export class ExampleTuiTableBarComponent implements OnDestroy {
     protected subscription = new Subscription();
 
     public ngOnDestroy(): void {
-        this.destroy$.next();
-        this.destroy$.complete();
+        this.subscription.unsubscribe();
     }
 
     protected showTableBar(): void {
         this.subscription.unsubscribe();
-
         this.subscription = this.tableBarsService
             .open(this.tableBarTemplate || '', {
                 adaptive: this.adaptive,
                 mode: this.mode,
                 hasCloseButton: this.hasCloseButton,
             })
-            .pipe(takeUntil(this.destroy$))
             .subscribe();
     }
 
     protected destroy(): void {
-        this.destroy$.next();
+        this.subscription.unsubscribe();
     }
 }
