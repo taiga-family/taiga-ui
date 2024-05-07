@@ -12,7 +12,6 @@
     (click.self)="close(item)"
 >
     <tui-sheet
-        tuiOverscroll="all"
         tuiScrollRef
         [item]="item"
         [style.height.px]="((height$ | async) || 0) - item.offset"

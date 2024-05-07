@@ -1,6 +1,6 @@
 import {DOCUMENT} from '@angular/common';
 import type {OnDestroy} from '@angular/core';
-import {Directive, ElementRef, HostListener, inject, Renderer2} from '@angular/core';
+import {Directive, ElementRef, HostListener, inject} from '@angular/core';
 import {tuiContainsOrAfter, tuiIsHTMLElement} from '@taiga-ui/cdk/utils/dom';
 import {
     tuiBlurNativeFocused,
@@ -9,6 +9,7 @@ import {
 } from '@taiga-ui/cdk/utils/focus';
 
 @Directive({
+    standalone: true,
     selector: '[tuiFocusTrap]',
     host: {
         tabIndex: '0',
@@ -17,7 +18,6 @@ import {
 export class TuiFocusTrapDirective implements OnDestroy {
     private readonly doc = inject(DOCUMENT);
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
-    private readonly renderer = inject(Renderer2);
     private readonly activeElement = tuiGetNativeFocused(this.doc);
 
     constructor() {
@@ -48,22 +48,16 @@ export class TuiFocusTrapDirective implements OnDestroy {
 
     @HostListener('blur')
     protected onBlur(): void {
-        this.renderer.removeAttribute(this.el, 'tabIndex');
+        this.el.removeAttribute('tabIndex');
     }
 
     @HostListener('window:focusin.silent', ['$event.target'])
     protected onFocusIn(node: Node): void {
-        if (tuiContainsOrAfter(this.el, node)) {
-            return;
-        }
-
-        const focusable = tuiGetClosestFocusable({
-            initial: this.el,
-            root: this.el,
-        });
-
-        if (focusable) {
-            focusable.focus();
+        if (!tuiContainsOrAfter(this.el, node)) {
+            tuiGetClosestFocusable({
+                initial: this.el,
+                root: this.el,
+            })?.focus();
         }
     }
 }

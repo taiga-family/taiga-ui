@@ -4,7 +4,6 @@
         aria-modal="true"
         role="dialog"
         tuiFocusTrap
-        tuiOverscroll="all"
         tuiScrollRef
         class="t-dialog"
         @tuiHost
@@ -16,6 +15,6 @@
     </section>
     <div
         class="t-overlay"
-        [class.t-overlay_visible]="dialogs.length"
+        [style.opacity]="dialogs.length"
     ></div>
 </ng-container>

@@ -10,6 +10,10 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {name: 'TuiAutoFocusDirective', moduleSpecifier: '@taiga-ui/cdk'},
     },
     {
+        from: {name: 'TuiFocusTrapModule', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiFocusTrapDirective', moduleSpecifier: '@taiga-ui/cdk'},
+    },
+    {
         from: {name: 'ALWAYS_TRUE_HANDLER', moduleSpecifier: '@taiga-ui/cdk'},
         to: {name: 'TUI_TRUE_HANDLER', moduleSpecifier: '@taiga-ui/cdk'},
     },

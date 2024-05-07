@@ -171,7 +171,6 @@ export const DemoRoute = {
     Swipe: '/directives/swipe',
     Let: '/directives/let',
     Zoom: '/directives/zoom',
-    Overscroll: '/directives/overscroll',
     Present: '/directives/present',
     HoveredChange: '/directives/hovered-change',
     ReorderColumns: '/components/reorder',
