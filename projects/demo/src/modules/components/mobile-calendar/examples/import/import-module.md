@@ -4,7 +4,8 @@ import {TuiDialogModule} from '@taiga-ui/core';
 
 // ...
 
-@NgModule({
+@Component({
+  standalone: true,
   imports: [
     // ...
     TuiDialogModule,
@@ -12,5 +13,5 @@ import {TuiDialogModule} from '@taiga-ui/core';
   ],
   // ...
 })
-export class MyModule {}
+export class MyComponent {}
 ```

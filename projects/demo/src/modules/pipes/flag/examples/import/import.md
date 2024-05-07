@@ -3,12 +3,13 @@ import {TuiFlagPipeModule} from '@taiga-ui/core';
 
 // ...
 
-@NgModule({
+@Component({
+  standalone: true,
   imports: [
     // ...
     TuiFlagPipeModule,
   ],
   // ...
 })
-export class MyModule {}
+export class MyComponent {}
 ```

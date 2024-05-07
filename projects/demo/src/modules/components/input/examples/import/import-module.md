@@ -2,7 +2,8 @@
 import {ReactiveFormsModule} from '@angular/forms';
 import {TuiInputModule} from '@taiga-ui/kit';
 
-@NgModule({
+@Component({
+  standalone: true,
   imports: [
     // ...
     ReactiveFormsModule,
@@ -10,5 +11,5 @@ import {TuiInputModule} from '@taiga-ui/kit';
   ],
   // ...
 })
-export class MyModule {}
+export class MyComponent {}
 ```

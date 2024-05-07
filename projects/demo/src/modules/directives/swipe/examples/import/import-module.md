@@ -3,12 +3,13 @@ import {TuiSwipeModule} from '@taiga-ui/cdk';
 
 // ...
 
-@NgModule({
+@Component({
+  standalone: true,
   imports: [
     // ...
     TuiSwipeModule,
   ],
   // ...
 })
-export class MyModule {}
+export class MyComponent {}
 ```

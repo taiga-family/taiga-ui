@@ -4,7 +4,8 @@ import {NgDompurifySanitizer} from '@tinkoff/ng-dompurify';
 
 // ...
 
-@NgModule({
+@Component({
+  standalone: true,
   // ...
   providers: [
     {
@@ -13,5 +14,5 @@ import {NgDompurifySanitizer} from '@tinkoff/ng-dompurify';
     },
   ],
 })
-export class AppModule {}
+export class MyComponent {}
 ```

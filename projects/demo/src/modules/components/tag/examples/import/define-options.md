@@ -2,7 +2,8 @@
 import {tuiTagOptionsProvider} from '@taiga-ui/core';
 // ...
 
-@NgModule({
+@Component({
+  standalone: true,
   providers: [
     tuiTagOptionsProvider({
       size: 'l',
@@ -10,5 +11,5 @@ import {tuiTagOptionsProvider} from '@taiga-ui/core';
     }),
   ],
 })
-export class MyModule {}
+export class MyComponent {}
 ```

@@ -3,9 +3,10 @@ import {TuiFilesModule} from '@taiga-ui/kit';
 
 // ...
 
-@NgModule({
+@Component({
+  standalone: true,
   imports: [TuiFilesModule],
   //...
 })
-export class MyModule {}
+export class MyComponent {}
 ```

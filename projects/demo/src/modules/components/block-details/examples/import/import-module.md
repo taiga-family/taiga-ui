@@ -1,5 +1,5 @@
 ```ts
-import {NgModule} from '@angular/core';
+import {Component} from '@angular/core';
 import {TuiBlockDetailsDirective} from '@taiga-ui/layout';
 // ...
 

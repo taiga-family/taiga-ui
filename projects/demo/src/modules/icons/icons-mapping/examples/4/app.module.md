@@ -1,7 +1,8 @@
 ```ts
 import {tuiSvgOptionsProvider, tuiSvgSrcInterceptors} from '@taiga-ui/core';
 
-@NgModule({
+@Component({
+  standalone: true,
   // ..
   providers: [
     tuiSvgOptionsProvider({
@@ -46,5 +47,5 @@ import {tuiSvgOptionsProvider, tuiSvgSrcInterceptors} from '@taiga-ui/core';
     ),
   ],
 })
-export class AppModule {}
+export class MyComponent {}
 ```

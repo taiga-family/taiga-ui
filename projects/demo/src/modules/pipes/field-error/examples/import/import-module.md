@@ -3,11 +3,12 @@ import {TuiFieldErrorPipeModule} from '@taiga-ui/kit';
 
 // ...
 
-@NgModule({
+@Component({
+  standalone: true,
   imports: [
     // ...
     TuiFieldErrorPipeModule,
   ],
 })
-export class MyModule {}
+export class MyComponent {}
 ```

@@ -3,7 +3,8 @@ import {TuiPushModule} from '@taiga-ui/kit';
 
 // ...
 
-@NgModule({
+@Component({
+  standalone: true,
   imports: [
     // ...
     TuiRootComponent,
@@ -11,5 +12,5 @@ import {TuiPushModule} from '@taiga-ui/kit';
   ],
   // ...
 })
-export class AppModule {}
+export class MyComponent {}
 ```

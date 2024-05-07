@@ -4,7 +4,8 @@ import {TuiInputDateModule} from '@taiga-ui/kit';
 
 // ...
 
-@NgModule({
+@Component({
+  standalone: true,
   imports: [
     // ...
     TuiMobileCalendarDialogModule,
@@ -12,5 +13,5 @@ import {TuiInputDateModule} from '@taiga-ui/kit';
   ],
   // ...
 })
-export class MyModule {}
+export class MyComponent {}
 ```

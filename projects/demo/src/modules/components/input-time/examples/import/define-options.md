@@ -3,7 +3,8 @@ import {TUI_INPUT_TIME_OPTIONS} from '@taiga-ui/kit';
 
 // ...
 
-@NgModule({
+@Component({
+  standalone: true,
   providers: [
     {
       provide: TUI_INPUT_TIME_OPTIONS,
@@ -16,5 +17,5 @@ import {TUI_INPUT_TIME_OPTIONS} from '@taiga-ui/kit';
   ],
   // ...
 })
-export class MyModule {}
+export class MyComponent {}
 ```

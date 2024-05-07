@@ -1,5 +1,5 @@
 ```ts
-import {NgModule} from '@angular/core';
+import {Component} from '@angular/core';
 import {TuiRatingComponent} from '@taiga-ui/kit';
 // ...
 

@@ -3,12 +3,13 @@ import {TuiAxesModule} from '@taiga-ui/addon-charts';
 
 // ...
 
-@NgModule({
+@Component({
+  standalone: true,
   imports: [
     // ...
     TuiAxesModule,
   ],
   // ...
 })
-export class MyModule {}
+export class MyComponent {}
 ```

@@ -3,12 +3,13 @@ import {TuiLineClampModule} from '@taiga-ui/kit';
 
 // ...
 
-@NgModule({
+@Component({
+  standalone: true,
   imports: [
     // ...
     TuiLineClampModule,
   ],
   // ...
 })
-export class MyModule {}
+export class MyComponent {}
 ```

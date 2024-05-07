@@ -3,12 +3,13 @@ import {TuiLineDaysChartModule} from '@taiga-ui/addon-charts';
 
 // ...
 
-@NgModule({
+@Component({
+  standalone: true,
   imports: [
     // ...
     TuiLineDaysChartModule,
   ],
   // ...
 })
-export class MyModule {}
+export class MyComponent {}
 ```

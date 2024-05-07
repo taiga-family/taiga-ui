@@ -5,7 +5,8 @@ import {TuiDataListWrapperModule, TuiMultiSelectModule} from '@taiga-ui/kit';
 
 // ...
 
-@NgModule({
+@Component({
+  standalone: true,
   imports: [
     // ...
     FormsModule,
@@ -16,5 +17,5 @@ import {TuiDataListWrapperModule, TuiMultiSelectModule} from '@taiga-ui/kit';
   ],
   // ...
 })
-export class MyModule {}
+export class MyComponent {}
 ```

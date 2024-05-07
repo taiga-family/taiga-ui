@@ -3,7 +3,8 @@ import {TuiTableBarsHostModule} from '@taiga-ui/addon-tablebars';
 import {TuiRootComponent} from '@taiga-ui/core';
 // ...
 
-@NgModule({
+@Component({
+  standalone: true,
   imports: [
     TuiRootComponent,
     TuiTableBarsHostModule,
@@ -11,5 +12,5 @@ import {TuiRootComponent} from '@taiga-ui/core';
   ],
   // ...
 })
-export class AppModule {}
+export class AppComponent {}
 ```

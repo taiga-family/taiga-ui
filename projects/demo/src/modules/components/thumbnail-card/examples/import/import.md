@@ -3,12 +3,13 @@ import {TuiThumbnailCardComponent} from '@taiga-ui/addon-commerce';
 
 // ...
 
-@NgModule({
+@Component({
+  standalone: true,
   imports: [
     // ...
     TuiThumbnailCardComponent,
   ],
   // ...
 })
-export class MyModule {}
+export class MyComponent {}
 ```

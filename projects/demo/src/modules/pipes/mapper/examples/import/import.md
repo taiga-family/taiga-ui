@@ -3,12 +3,13 @@ import {TuiMapperPipe} from '@taiga-ui/cdk';
 
 // ...
 
-@NgModule({
+@Component({
+  standalone: true,
   imports: [
     //    ...
     TuiMapperPipe,
   ],
   //  ...
 })
-export class MyModule {}
+export class MyComponent {}
 ```

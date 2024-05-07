@@ -33,16 +33,15 @@ npm i @taiga-ui/addon-doc
 2. Configure languages to highlight in your main module:
 
    ```typescript
-   import {NgModule} from '@angular/core';
+   import {Component} from '@angular/core';
    import {TuiDocMainModule} from '@taiga-ui/addon-doc';
    import {hljsLanguages} from './hljsLanguages';
    import {HIGHLIGHT_OPTIONS, HighlightLanguage} from 'ngx-highlightjs';
    import {AppComponent} from './app.component';
 
-   @NgModule({
-     bootstrap: [AppComponent],
+   @Component({
+     standalone: true,
      imports: [TuiDocMainModule],
-     declarations: [AppComponent],
      providers: [
        {
          provide: HIGHLIGHT_OPTIONS,
@@ -58,7 +57,7 @@ npm i @taiga-ui/addon-doc
        },
      ],
    })
-   export class AppBrowserModule {}
+   export class AppComponent {}
    ```
 
 3. Configure documentation providers:
@@ -98,12 +97,13 @@ npm i @taiga-ui/addon-doc
    _Module:_
 
    ```typescript
-   import {NgModule} from '@angular/core';
+   import {Component} from '@angular/core';
    import {RouterModule} from '@angular/router';
    import {tuiGenerateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
    import {SuperComponent} from './super.component';
 
-   @NgModule({
+   @Component({
+     standalone: true,
      imports: [TuiAddonDocModule, RouterModule.forChild(tuiGenerateRoutes(SuperComponent))],
      declarations: [SuperComponent],
      exports: [SuperComponent],
@@ -117,8 +117,9 @@ npm i @taiga-ui/addon-doc
    import {Component} from '@angular/core';
 
    @Component({
+     standalone: true,
      selector: 'super-component',
-     templateUrl: './account.template.html',
+     templateUrl: './super.component.html',
    })
    export class SuperComponent {
      // Keys would be used as tabs for code example

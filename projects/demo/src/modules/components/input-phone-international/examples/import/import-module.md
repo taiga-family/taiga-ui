@@ -4,9 +4,10 @@ import {TuiInputPhoneInternationalModule} from '@taiga-ui/kit';
 
 // ...
 
-@NgModule({
+@Component({
+  standalone: true,
   imports: [...FormsModule, ReactiveFormsModule, TuiInputPhoneInternationalModule],
   // ...
 })
-export class MyModule {}
+export class MyComponent {}
 ```

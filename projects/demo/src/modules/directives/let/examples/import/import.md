@@ -3,12 +3,13 @@ import {TuiLetDirective} from '@taiga-ui/cdk';
 
 // ...
 
-@NgModule({
+@Component({
+  standalone: true,
   imports: [
     // ...
     TuiLetDirective,
   ],
   // ...
 })
-export class MyModule {}
+export class MyComponent {}
 ```

@@ -3,12 +3,13 @@ import {TuiTabsModule} from '@taiga-ui/kit';
 
 // ...
 
-@NgModule({
+@Component({
+  standalone: true,
   imports: [
     // ...
     TuiTabsModule,
   ],
   // ...
 })
-export class MyModule {}
+export class MyComponent {}
 ```

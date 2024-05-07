@@ -1,13 +1,10 @@
 ```ts
 import {TuiTagModule} from '@taiga-ui/kit';
+// ...
 
-...
-
-@NgModule({
-    imports: [
-        ...
-        TuiTagModule
-    ],
-...
-
+@Component({
+  standalone: true,
+  imports: [TuiTagModule],
+})
+export class MyComponent {}
 ```

@@ -3,12 +3,13 @@ import {TuiLinkDirective} from '@taiga-ui/core';
 
 // ...
 
-@NgModule({
+@Component({
+  standalone: true,
   imports: [
     // ...
     TuiLinkDirective,
   ],
   // ...
 })
-export class MyModule {}
+export class MyComponent {}
 ```

@@ -1,13 +1,14 @@
 ```ts
-import {NgModule} from '@angular/core';
+import {Component} from '@angular/core';
 import {TuiCheckboxComponent} from '@taiga-ui/kit';
 // ...
 
-@NgModule({
+@Component({
+  standalone: true,
   imports: [
     // ...
     TuiCheckboxComponent,
   ],
 })
-export class MyModule {}
+export class MyComponent {}
 ```

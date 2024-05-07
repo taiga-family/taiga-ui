@@ -3,12 +3,13 @@ import {TuiTextfieldControllerModule} from '@taiga-ui/core';
 
 // ...
 
-@NgModule({
+@Component({
+  standalone: true,
   imports: [
     // ...
     TuiTextfieldControllerModule,
   ],
   // ...
 })
-export class MyModule {}
+export class MyComponent {}
 ```

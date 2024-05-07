@@ -1,6 +1,11 @@
 ```ts
 import {TuiTableBarsService} from '@taiga-ui/addon-tablebars';
 // ...
+
+@Component({
+  standalone: true,
+  // ..
+})
 export class AppComponent {
   private readonly tableBarsService = inject(TuiTableBarsService);
 

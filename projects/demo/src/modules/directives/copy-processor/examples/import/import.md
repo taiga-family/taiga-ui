@@ -3,12 +3,13 @@ import {TuiCopyProcessorDirective} from '@taiga-ui/core';
 
 // ...
 
-@NgModule({
+@Component({
+  standalone: true,
   imports: [
     // ...
     TuiCopyProcessorDirective,
   ],
   // ...
 })
-export class MyModule {}
+export class MyComponent {}
 ```

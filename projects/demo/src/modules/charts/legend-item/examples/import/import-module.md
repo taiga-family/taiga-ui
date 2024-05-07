@@ -3,12 +3,13 @@ import {TuiLegendItemModule} from '@taiga-ui/addon-charts';
 
 // ...
 
-@NgModule({
+@Component({
+  standalone: true,
   imports: [
     // ...
     TuiLegendItemModule,
   ],
   // ...
 })
-export class MyModule {}
+export class MyComponent {}
 ```

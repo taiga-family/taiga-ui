@@ -3,12 +3,13 @@ import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
 
 // ...
 
-@NgModule({
+@Component({
+  standalone: true,
   imports: [
     // ...
     TuiActiveZoneDirective,
   ],
   // ...
 })
-export class MyModule {}
+export class MyComponent {}
 ```

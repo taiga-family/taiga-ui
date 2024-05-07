@@ -3,12 +3,13 @@ import {TuiReorderModule} from '@taiga-ui/addon-table';
 
 // ...
 
-@NgModule({
+@Component({
+  standalone: true,
   imports: [
     // ...
     TuiReorderModule,
   ],
   // ...
 })
-export class MyModule {}
+export class MyComponent {}
 ```

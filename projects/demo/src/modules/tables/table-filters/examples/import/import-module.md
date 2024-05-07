@@ -1,12 +1,13 @@
 ```ts
 import {TuiTableFiltersModule} from '@taiga-ui/addon-table';
 
-@NgModule({
+@Component({
+  standalone: true,
   imports: [
     // ...
     TuiTableFiltersModule,
   ],
   // ...
 })
-export class MyModule {}
+export class MyComponent {}
 ```
