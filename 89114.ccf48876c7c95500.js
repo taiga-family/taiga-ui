@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[89114],{89114:n=>{n.exports="```ts\nimport {NgModule} from '@angular/core';\nimport {TuiCheckboxComponent} from '@taiga-ui/kit';\n// ...\n\n@NgModule({\n  imports: [\n    // ...\n    TuiCheckboxComponent,\n  ],\n})\nexport class MyModule {}\n```\n"}}]);

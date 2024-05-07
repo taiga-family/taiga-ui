@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[4272],{76288:e=>{e.exports="```ts\nimport {TuiTextfieldControllerModule} from '@taiga-ui/core';\n\n// ...\n\n@NgModule({\n  imports: [\n    // ...\n    TuiTextfieldControllerModule,\n  ],\n  // ...\n})\nexport class MyModule {}\n```\n"}}]);
