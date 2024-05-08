@@ -3,7 +3,10 @@ import {ChangeDetectionStrategy, Component, ElementRef, inject} from '@angular/c
 import type {TuiPopover} from '@taiga-ui/cdk';
 import {TuiFocusTrapDirective} from '@taiga-ui/cdk';
 import {tuiHost} from '@taiga-ui/core/animations';
-import {TuiScrollControlsComponent} from '@taiga-ui/core/components/scroll-controls';
+import {
+    TuiScrollControlsComponent,
+    TuiScrollRefDirective,
+} from '@taiga-ui/core/components/scroll-controls';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import type {Observable} from 'rxjs';
 
@@ -15,6 +18,7 @@ import {TUI_DIALOGS} from './dialog.tokens';
     imports: [
         CommonModule,
         PolymorpheusModule,
+        TuiScrollRefDirective,
         TuiScrollControlsComponent,
         TuiFocusTrapDirective,
     ],
