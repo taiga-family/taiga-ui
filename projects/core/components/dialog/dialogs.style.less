@@ -8,6 +8,10 @@
     overflow: auto;
     overscroll-behavior: none;
 
+    &:has(section) {
+        pointer-events: auto;
+    }
+
     &:before {
         content: '';
         display: block;
