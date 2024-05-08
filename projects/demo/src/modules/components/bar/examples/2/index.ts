@@ -1,12 +1,16 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiBarComponent} from '@taiga-ui/addon-charts';
 
 @Component({
-    selector: 'tui-bar-example-1',
+    standalone: true,
+    imports: [TuiBarComponent],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiBarExample1 {}
+export default class ExampleComponent {
+    protected readonly value = [30, 15, 10];
+}
