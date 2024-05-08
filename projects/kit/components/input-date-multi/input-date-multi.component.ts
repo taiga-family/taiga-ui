@@ -264,7 +264,7 @@ export class TuiInputDateMultiComponent
     onValueChange(value: ReadonlyArray<TuiStringifiableItem<TuiDay>>): void {
         this.control?.updateValueAndValidity({emitEvent: false});
 
-        if (!value.length) {
+        if (!value.length && !this.mobileCalendar) {
             this.onOpenChange(true);
         }
 
