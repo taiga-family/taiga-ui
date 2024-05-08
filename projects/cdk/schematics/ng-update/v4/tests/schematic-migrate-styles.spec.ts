@@ -62,7 +62,9 @@ describe('ng-update', () => {
         expect(tree.readContent('test/styles.less')).toEqual(STYLES_AFTER);
     });
 
-    afterEach(() => resetActiveProject());
+    afterEach(() => {
+        resetActiveProject();
+    });
 });
 
 function createMainFiles(): void {

@@ -103,7 +103,9 @@ describe('ng-update', () => {
         expect(tree.readContent('test/app/test.component.ts')).toEqual(COMPONENT_AFTER);
     });
 
-    afterEach(() => resetActiveProject());
+    afterEach(() => {
+        resetActiveProject();
+    });
 });
 
 function createMainFiles(): void {

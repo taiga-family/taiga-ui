@@ -47,8 +47,8 @@ describe('Calendar', () => {
         public max = new TuiDay(2019, 2, 1);
         public maxViewedMonth = new TuiDay(2019, 3, 1);
 
-        public dayClick = jest.fn();
-        public hoveredItemChange = jest.fn();
+        public dayClick: any = jest.fn();
+        public hoveredItemChange: any = jest.fn();
     }
 
     let fixture: ComponentFixture<TestComponent>;

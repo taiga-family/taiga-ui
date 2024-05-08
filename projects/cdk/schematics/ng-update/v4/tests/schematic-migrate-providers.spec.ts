@@ -61,7 +61,9 @@ describe('ng-update', () => {
         expect(componentBefore).toEqual(COMPONENT_AFTER);
     });
 
-    afterEach(() => resetActiveProject());
+    afterEach(() => {
+        resetActiveProject();
+    });
 });
 
 function createMainFiles(): void {

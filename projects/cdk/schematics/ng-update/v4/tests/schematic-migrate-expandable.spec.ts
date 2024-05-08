@@ -117,7 +117,9 @@ describe('ng-update', () => {
 
         expect(tree.readContent('test/app/test.template.html')).toEqual(TEMPLATE_AFTER);
     });
-    afterEach(() => resetActiveProject());
+    afterEach(() => {
+        resetActiveProject();
+    });
 });
 
 function createMainFiles(): void {

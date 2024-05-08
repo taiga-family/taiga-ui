@@ -26,7 +26,7 @@ export default class ExampleComponent {
     protected hoveredItem: TuiDay | null = null;
 
     protected onDayClick(day: TuiDay): void {
-        if (this.value === null || !this.value.isSingleDay) {
+        if (!this.value?.isSingleDay) {
             this.value = new TuiDayRange(day, day);
         }
 

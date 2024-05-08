@@ -33,7 +33,7 @@ export default class ExampleComponent {
         day.day % 2 === 0 ? TWO_DOTS : ONE_DOT;
 
     protected onDayClick(day: TuiDay): void {
-        if (this.value === null || !this.value.isSingleDay) {
+        if (!this.value?.isSingleDay) {
             this.value = new TuiDayRange(day, day);
         }
 

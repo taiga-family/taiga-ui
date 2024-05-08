@@ -162,7 +162,7 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
 
         this.previousValue = value;
 
-        if (value === null || !value.isSingleDay) {
+        if (!value?.isSingleDay) {
             this.value = new TuiDayRange(day, day);
 
             return;

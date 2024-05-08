@@ -49,7 +49,7 @@ function migrateInputNumberOptions(options: TuiSchema): void {
 
             [precision, decimal]
                 .filter((property): property is ObjectLiteralElementLike => !!property)
-                .map(property => property.remove());
+                .forEach(property => property.remove());
 
             if (precision || decimal) {
                 insertTodo(

@@ -422,5 +422,7 @@ export const DEMO_PAGE_LOADED_PROVIDER = {
         });
     });
 
-    afterEach(() => resetActiveProject());
+    afterEach(() => {
+        resetActiveProject();
+    });
 });

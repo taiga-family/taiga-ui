@@ -151,8 +151,7 @@ export class TuiFileComponent {
         if (
             this.win.File &&
             file instanceof this.win.File &&
-            file.type &&
-            file.type.startsWith('image/')
+            file.type?.startsWith('image/')
         ) {
             return this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(file));
         }

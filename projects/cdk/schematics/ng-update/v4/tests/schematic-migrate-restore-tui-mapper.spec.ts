@@ -152,7 +152,9 @@ describe('ng-update', () => {
         );
     });
 
-    afterEach(() => resetActiveProject());
+    afterEach(() => {
+        resetActiveProject();
+    });
 });
 
 function createMainFiles(): void {

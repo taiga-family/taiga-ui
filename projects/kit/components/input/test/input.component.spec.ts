@@ -101,7 +101,7 @@ describe('Input', () => {
     let testComponent: TestComponent;
     let pageObject: TuiPageObject<TestComponent>;
     let inputPO: TuiNativeInputPO;
-    let updateSpy: jest.SpyInstance;
+    let updateSpy: any;
 
     function getDropdown(): DebugElement | null {
         return pageObject.getByAutomationId('tui-data-list-wrapper');
