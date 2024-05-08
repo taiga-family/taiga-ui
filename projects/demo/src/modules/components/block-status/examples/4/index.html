@@ -3,17 +3,14 @@
         class="card"
         [card]="true"
     >
-        <div
-            tuiSlot="top"
-            class="tui-avatar-stack reversed"
-        >
+        <tui-avatar-stack tuiSlot="top">
             <tui-avatar
                 *ngFor="let user of users"
                 size="l"
                 [src]="user | tuiInitials"
                 [style.background]="user | tuiAutoColor"
             />
-        </div>
+        </tui-avatar-stack>
 
         You can put other content instead of image using
         <code>tui-block-content</code>
@@ -23,7 +20,7 @@
             appearance="primary"
             size="s"
             tuiButton
-            [style.border-radius.%]="100"
+            [style.border-radius.rem]="100"
         >
             Got it
         </button>

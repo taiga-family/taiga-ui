@@ -15,11 +15,11 @@ export class TuiSheetExample1 {
     protected readonly stream$ = new Subject<void>();
 
     constructor() {
+        const service = inject(TuiSheetService);
+
         this.stream$
             .pipe(
-                switchMap(() =>
-                    inject(TuiSheetService).open('Simple sheet', {overlay: true}),
-                ),
+                switchMap(() => service.open('Simple sheet', {overlay: true})),
                 takeUntilDestroyed(),
             )
             .subscribe();
