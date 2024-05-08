@@ -1,5 +1,6 @@
 <tui-combo-box
     tuiDropdownMobile
+    [tuiTextfieldCleaner]="true"
     [(ngModel)]="country"
 >
     Country
@@ -28,6 +29,7 @@
     tuiDropdownMobile
     class="tui-space_vertical-4"
     [stringify]="stringify"
+    [tuiTextfieldCleaner]="true"
     [(ngModel)]="selected"
     [(tuiDropdownOpen)]="open"
 >

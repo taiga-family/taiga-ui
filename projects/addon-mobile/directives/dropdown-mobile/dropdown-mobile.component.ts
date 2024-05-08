@@ -12,6 +12,8 @@ import {TuiKeyboardService} from '@taiga-ui/addon-mobile/services';
 import {
     TuiActiveZoneDirective,
     tuiGetNativeFocused,
+    tuiIsElement,
+    tuiIsNodeIn,
     tuiPx,
     TuiSwipe,
 } from '@taiga-ui/cdk';
@@ -73,7 +75,14 @@ export class TuiDropdownMobileComponent implements OnDestroy, AfterViewInit {
     }
 
     onClick(event: MouseEvent): void {
-        if (!this.el.nativeElement.contains(event.target as Node)) {
+        if (
+            !this.el.nativeElement.contains(event.target as Node) &&
+            // TODO: find a better way to check if the click is inside interactive element in textfield
+            !(
+                tuiIsNodeIn(event.target as Node, 'tui-svg') ||
+                (tuiIsElement(event.target) && event.target.tagName === 'button')
+            )
+        ) {
             event.stopPropagation();
         }
     }
