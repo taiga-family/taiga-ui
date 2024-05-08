@@ -2,8 +2,21 @@
 
 :host {
     .fullsize(fixed);
+    .scrollbar-hidden();
 
-    height: 0;
+    pointer-events: none;
+    overflow: auto;
+    overscroll-behavior: none;
+
+    &:has(section) {
+        pointer-events: auto;
+    }
+
+    &:before {
+        content: '';
+        display: block;
+        height: 1000%;
+    }
 }
 
 .t-overlay,
@@ -12,6 +25,7 @@
     .fullsize(fixed, inset);
 
     display: flex;
+    height: 100%;
     align-items: flex-start;
     outline: none;
     overflow: auto;
@@ -22,28 +36,16 @@
 }
 
 .t-dialog {
-    bottom: auto;
-    height: 100%;
+    position: sticky;
+    pointer-events: auto;
+    overscroll-behavior: none;
 }
 
 .t-overlay {
-    height: 100%;
-    pointer-events: none;
-    touch-action: none;
-    opacity: 0;
-    letter-spacing: normal;
+    .transition(opacity);
 
-    /* change of useless property 'letter-spacing' to ensure that transitionend event will fire */
-    transition:
-        opacity var(--tui-duration, 300ms),
-        letter-spacing 0.01s;
     background: rgba(0, 0, 0, 0.75);
     backdrop-filter: var(--tui-backdrop, none);
-
-    &_visible {
-        opacity: 1;
-        letter-spacing: 1px;
-    }
 }
 
 .t-dialog:last-of-type {

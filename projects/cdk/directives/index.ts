@@ -16,7 +16,6 @@ export * from '@taiga-ui/cdk/directives/let';
 export * from '@taiga-ui/cdk/directives/media';
 export * from '@taiga-ui/cdk/directives/native-validator';
 export * from '@taiga-ui/cdk/directives/obscured';
-export * from '@taiga-ui/cdk/directives/overscroll';
 export * from '@taiga-ui/cdk/directives/pan';
 export * from '@taiga-ui/cdk/directives/platform';
 export * from '@taiga-ui/cdk/directives/popover';

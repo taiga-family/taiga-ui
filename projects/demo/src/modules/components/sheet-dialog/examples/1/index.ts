@@ -15,11 +15,11 @@ export class TuiSheetDialogExample1 {
     protected readonly stream$ = new Subject<void>();
 
     constructor() {
+        const service = inject(TuiSheetDialogService);
+
         this.stream$
             .pipe(
-                switchMap(() =>
-                    inject(TuiSheetDialogService).open('', {label: 'Simple sheet'}),
-                ),
+                switchMap(() => service.open('', {label: 'Simple sheet'})),
                 takeUntilDestroyed(),
             )
             .subscribe();

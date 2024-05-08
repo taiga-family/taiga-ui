@@ -1217,12 +1217,6 @@ export const pages: TuiDocPages = [
             },
             {
                 section: 'Tools',
-                title: 'Overscroll',
-                keywords: 'overscroll, scroll, скролл',
-                route: DemoRoute.Overscroll,
-            },
-            {
-                section: 'Tools',
                 title: 'Pan',
                 keywords: 'pan, panning, панарамирование, пан',
                 route: DemoRoute.Pan,

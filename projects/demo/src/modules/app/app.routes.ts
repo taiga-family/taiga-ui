@@ -1063,13 +1063,6 @@ export const ROUTES: Routes = [
         title: 'Zoom',
     }),
     route({
-        path: DemoRoute.Overscroll,
-        loadChildren: async () =>
-            (await import('../directives/overscroll/overscroll.module'))
-                .ExampleTuiOverscrollModule,
-        title: 'Overscroll',
-    }),
-    route({
         path: DemoRoute.Present,
         loadChildren: async () =>
             (await import('../directives/present/present.module'))

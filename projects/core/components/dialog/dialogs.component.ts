@@ -1,12 +1,14 @@
-import {CommonModule, DOCUMENT} from '@angular/common';
-import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {ChangeDetectionStrategy, Component, ElementRef, inject} from '@angular/core';
 import type {TuiPopover} from '@taiga-ui/cdk';
-import {TuiFocusTrapModule, TuiOverscrollModule} from '@taiga-ui/cdk';
+import {TuiFocusTrapDirective} from '@taiga-ui/cdk';
 import {tuiHost} from '@taiga-ui/core/animations';
-import {TuiScrollControlsComponent} from '@taiga-ui/core/components/scroll-controls';
+import {
+    TuiScrollControlsComponent,
+    TuiScrollRefDirective,
+} from '@taiga-ui/core/components/scroll-controls';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import type {Observable} from 'rxjs';
-import {tap} from 'rxjs';
 
 import {TUI_DIALOGS} from './dialog.tokens';
 
@@ -16,9 +18,9 @@ import {TUI_DIALOGS} from './dialog.tokens';
     imports: [
         CommonModule,
         PolymorpheusModule,
+        TuiScrollRefDirective,
         TuiScrollControlsComponent,
-        TuiFocusTrapModule,
-        TuiOverscrollModule,
+        TuiFocusTrapDirective,
     ],
     templateUrl: './dialogs.template.html',
     styleUrls: ['./dialogs.style.less'],
@@ -26,18 +28,12 @@ import {TUI_DIALOGS} from './dialog.tokens';
     // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
     changeDetection: ChangeDetectionStrategy.Default,
     animations: [tuiHost],
+    host: {
+        '(keydown.silent)': 'el.scrollTop = el.scrollHeight / 2',
+    },
 })
 export class TuiDialogsComponent {
-    private readonly doc = inject(DOCUMENT);
-
-    protected readonly dialogs$: Observable<ReadonlyArray<TuiPopover<any, any>>> = inject(
-        TUI_DIALOGS,
-    ).pipe(
-        tap(({length}) => {
-            this.doc.defaultView?.document.documentElement.classList.toggle(
-                't-overscroll-none',
-                !!length,
-            );
-        }),
-    );
+    protected readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    protected readonly dialogs$: Observable<ReadonlyArray<TuiPopover<any, any>>> =
+        inject(TUI_DIALOGS);
 }

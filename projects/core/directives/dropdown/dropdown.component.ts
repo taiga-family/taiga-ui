@@ -6,7 +6,6 @@ import {
     TuiActiveZoneDirective,
     tuiGetClosestFocusable,
     tuiIsElement,
-    TuiOverscrollModule,
     tuiPx,
 } from '@taiga-ui/cdk';
 import {
@@ -35,12 +34,7 @@ import {TuiDropdownPositionDirective} from './dropdown-position.directive';
 @Component({
     standalone: true,
     selector: 'tui-dropdown',
-    imports: [
-        PolymorpheusModule,
-        TuiActiveZoneDirective,
-        TuiOverscrollModule,
-        TuiScrollbarComponent,
-    ],
+    imports: [PolymorpheusModule, TuiActiveZoneDirective, TuiScrollbarComponent],
     templateUrl: './dropdown.template.html',
     styleUrls: ['./dropdown.style.less'],
     // @bad TODO: OnPush

@@ -10,7 +10,7 @@ import {tuiButtonOptionsProvider} from '@taiga-ui/core';
         }),
     ],
     host: {
-        '[style.border-radius.%]': '100',
+        '[style.border-radius.rem]': '100',
     },
 })
 export class TuiPreviewActionDirective {}

@@ -1,12 +1,13 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
 :host {
-    .fullsize(fixed, inset);
+    .scrollbar-hidden();
 
-    right: -1rem;
     display: flex;
+    width: 100%;
+    height: 100%;
     flex-direction: column;
-    clip-path: inset(0 1rem 0 0 round 0.75rem 0.75rem 0 0);
+    clip-path: inset(0 0 0 0 round 0.75rem 0.75rem 0 0);
     font: var(--tui-font-text-m);
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
@@ -38,7 +39,6 @@
 
 .t-sheet {
     box-shadow: var(--tui-shadow);
-    width: calc(100% - 1rem);
     border-radius: 0.75rem 0.75rem 0 0;
     padding: 0 1rem;
     margin-top: auto;
