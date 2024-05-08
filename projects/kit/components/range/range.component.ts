@@ -5,7 +5,6 @@ import {
     ElementRef,
     HostBinding,
     HostListener,
-    inject,
     Input,
     ViewChildren,
 } from '@angular/core';
@@ -15,6 +14,7 @@ import {
     EMPTY_QUERY,
     tuiClamp,
     tuiIsNativeFocusedIn,
+    tuiNativeElement,
     tuiPure,
     tuiQuantize,
 } from '@taiga-ui/cdk';
@@ -40,7 +40,7 @@ export class TuiRangeComponent
     extends AbstractTuiControl<[number, number]>
     implements TuiWithOptionalMinMax<number>, TuiFocusableElementAccessor
 {
-    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly el = tuiNativeElement();
 
     @Input()
     public min = 0;

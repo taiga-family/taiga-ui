@@ -1,10 +1,8 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    ElementRef,
     HostBinding,
     HostListener,
-    inject,
     Input,
     Output,
     ViewEncapsulation,
@@ -14,6 +12,7 @@ import {
     MutationObserverService,
 } from '@ng-web-apis/mutation-observer';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
+import {tuiNativeElement} from '@taiga-ui/cdk';
 import {BehaviorSubject, debounce, filter, map, Subject, timer} from 'rxjs';
 
 @Component({
@@ -32,7 +31,7 @@ import {BehaviorSubject, debounce, filter, map, Subject, timer} from 'rxjs';
     ],
 })
 export class TuiTilesComponent {
-    private readonly el: Element = inject(ElementRef).nativeElement;
+    private readonly el = tuiNativeElement();
     private readonly el$ = new Subject<Element | undefined>();
 
     @Input()

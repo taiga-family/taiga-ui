@@ -1,8 +1,8 @@
+import type {ElementRef} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     ContentChild,
-    ElementRef,
     EventEmitter,
     HostListener,
     inject,
@@ -26,6 +26,7 @@ import {
     tuiIsInput,
     tuiIsNativeFocused,
     tuiIsNativeFocusedIn,
+    tuiNativeElement,
     tuiPure,
 } from '@taiga-ui/cdk';
 import type {TuiDataListHost} from '@taiga-ui/core';
@@ -85,7 +86,7 @@ export class TuiInputCardGroupedComponent
     @ViewChild('inputCVC', {read: TuiAutoFocusDirective})
     private readonly cvcCardAutofocusRef?: TuiAutoFocusDirective;
 
-    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly el = tuiNativeElement();
     private expireInert = false;
 
     @Input()

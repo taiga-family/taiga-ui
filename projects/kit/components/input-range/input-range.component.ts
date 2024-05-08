@@ -2,7 +2,6 @@ import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
-    ElementRef,
     inject,
     Input,
     ViewChild,
@@ -22,6 +21,7 @@ import {
     tuiClamp,
     tuiIsNativeFocused,
     tuiIsNativeFocusedIn,
+    tuiNativeElement,
     tuiPure,
     tuiRound,
 } from '@taiga-ui/cdk';
@@ -63,7 +63,7 @@ export class TuiInputRangeComponent
     private readonly rangeRef: TuiRangeComponent | null = null;
 
     private readonly isMobile = inject(TUI_IS_MOBILE);
-    private readonly el: Element = inject(ElementRef).nativeElement;
+    private readonly el = tuiNativeElement();
 
     @Input()
     public min = 0;

@@ -1,7 +1,6 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    ElementRef,
     HostBinding,
     HostListener,
     inject,
@@ -12,6 +11,7 @@ import {
     EMPTY_CLIENT_RECT,
     tuiClamp,
     TuiHoveredService,
+    tuiNativeElement,
     tuiPure,
     tuiPx,
 } from '@taiga-ui/cdk';
@@ -65,7 +65,7 @@ export class TuiHintComponent<C = any> {
     private readonly polymorpheus =
         inject<TuiContext<TuiPortalItem<C>>>(POLYMORPHEUS_CONTEXT);
 
-    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly el = tuiNativeElement();
     private readonly hover = inject(TuiHintHoverDirective);
     private readonly visualViewportService = inject(TuiVisualViewportService);
     private readonly viewport = inject(TUI_VIEWPORT);

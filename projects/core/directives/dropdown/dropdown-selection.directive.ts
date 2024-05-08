@@ -1,6 +1,6 @@
 import {DOCUMENT} from '@angular/common';
 import type {OnDestroy} from '@angular/core';
-import {Directive, ElementRef, inject, Input, ViewContainerRef} from '@angular/core';
+import {Directive, inject, Input, ViewContainerRef} from '@angular/core';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk';
 import {
     CHAR_NO_BREAK_SPACE,
@@ -13,6 +13,7 @@ import {
     tuiIsString,
     tuiIsTextfield,
     tuiIsTextNode,
+    tuiNativeElement,
     tuiPx,
 } from '@taiga-ui/cdk';
 import type {TuiRectAccessor} from '@taiga-ui/core/abstract';
@@ -45,7 +46,7 @@ export class TuiDropdownSelectionDirective
     protected readonly doc = inject(DOCUMENT);
     protected readonly vcr = inject(ViewContainerRef);
     protected readonly dropdown = inject(TuiDropdownDirective);
-    protected readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    protected readonly el = tuiNativeElement();
     protected readonly handler$ = new BehaviorSubject<TuiBooleanHandler<Range>>(
         TUI_TRUE_HANDLER,
     );

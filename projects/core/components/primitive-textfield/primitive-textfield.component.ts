@@ -1,9 +1,8 @@
-import type {QueryList} from '@angular/core';
+import type {ElementRef, QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     ContentChildren,
-    ElementRef,
     EventEmitter,
     HostBinding,
     HostListener,
@@ -17,6 +16,7 @@ import {
     AbstractTuiInteractive,
     tuiAsFocusableItemAccessor,
     tuiIsNativeFocusedIn,
+    tuiNativeElement,
     tuiPure,
     tuiRetargetedBoundaryCrossing,
 } from '@taiga-ui/cdk';
@@ -63,7 +63,7 @@ export class TuiPrimitiveTextfieldComponent
     private readonly focusableElement?: ElementRef<HTMLInputElement>;
 
     private readonly options = inject(TUI_TEXTFIELD_OPTIONS);
-    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly el = tuiNativeElement();
 
     @Input()
     public editable = true;

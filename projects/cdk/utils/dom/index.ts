@@ -12,5 +12,6 @@ export * from './is-current-target';
 export * from './is-element-editable';
 export * from './is-inside-iframe';
 export * from './is-node-in';
+export * from './native-element';
 export * from './point-to-client-rect';
 export * from './retarget-boundary-crossing';

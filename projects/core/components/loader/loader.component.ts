@@ -2,7 +2,6 @@ import {DOCUMENT} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
-    ElementRef,
     HostBinding,
     inject,
     Input,
@@ -12,6 +11,7 @@ import {
     tuiBlurNativeFocused,
     tuiIsNativeFocusedIn,
     tuiIsSafari,
+    tuiNativeElement,
 } from '@taiga-ui/cdk';
 import {tuiSizeBigger} from '@taiga-ui/core/utils/miscellaneous';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
@@ -26,7 +26,7 @@ import {TUI_LOADER_OPTIONS} from './loader.options';
 })
 export class TuiLoaderComponent {
     private readonly doc = inject(DOCUMENT);
-    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly el = tuiNativeElement();
     private readonly isIOS = inject(TUI_IS_IOS);
     private readonly options = inject(TUI_LOADER_OPTIONS);
 

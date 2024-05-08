@@ -22,6 +22,7 @@ import {
     tuiIsElement,
     tuiIsNativeFocused,
     TuiItemDirective,
+    tuiNativeElement,
     tuiPx,
     tuiToInt,
 } from '@taiga-ui/cdk';
@@ -64,7 +65,7 @@ export class TuiTabsWithMoreComponent implements AfterViewChecked, AfterViewInit
 
     private readonly options = inject(TUI_TABS_OPTIONS);
     private readonly refresh$ = inject(TUI_TABS_REFRESH);
-    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly el = tuiNativeElement();
     private readonly cdr = inject(ChangeDetectorRef);
     private maxIndex = Infinity;
 

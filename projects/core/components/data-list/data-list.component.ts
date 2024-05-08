@@ -3,7 +3,6 @@ import {
     ChangeDetectionStrategy,
     Component,
     ContentChildren,
-    ElementRef,
     forwardRef,
     HostBinding,
     HostListener,
@@ -17,6 +16,7 @@ import {
     tuiIsNativeFocusedIn,
     tuiIsPresent,
     tuiMoveFocus,
+    tuiNativeElement,
     tuiPure,
     tuiQueryListChanges,
 } from '@taiga-ui/cdk';
@@ -50,7 +50,7 @@ export class TuiDataListComponent<T> implements TuiDataListAccessor<T> {
     private readonly options: QueryList<TuiOptionComponent<T>> = EMPTY_QUERY;
 
     private origin?: HTMLElement;
-    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly el = tuiNativeElement();
     private readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER, {
         optional: true,
     });

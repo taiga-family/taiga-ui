@@ -4,7 +4,6 @@ import {
     ChangeDetectorRef,
     Component,
     ContentChildren,
-    ElementRef,
     EventEmitter,
     HostBinding,
     HostListener,
@@ -19,6 +18,7 @@ import {
     TUI_IS_MOBILE,
     tuiClamp,
     TuiItemDirective,
+    tuiNativeElement,
     tuiPure,
 } from '@taiga-ui/cdk';
 
@@ -29,7 +29,7 @@ import {
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiCarouselComponent {
-    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly el = tuiNativeElement();
     private readonly cdr = inject(ChangeDetectorRef);
     private readonly isMobile = inject(TUI_IS_MOBILE);
     private translate = 0;

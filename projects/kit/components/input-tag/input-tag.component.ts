@@ -33,6 +33,7 @@ import {
     tuiGetClipboardDataText,
     tuiIsElement,
     tuiIsNativeFocusedIn,
+    tuiNativeElement,
     tuiRetargetedBoundaryCrossing,
 } from '@taiga-ui/cdk';
 import type {TuiDataListHost, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
@@ -102,7 +103,7 @@ export class TuiInputTagComponent
     @ViewChild(TuiScrollbarComponent, {read: ElementRef})
     private readonly scrollBar?: ElementRef<HTMLElement>;
 
-    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly el = tuiNativeElement();
     private readonly options = inject(TUI_INPUT_TAG_OPTIONS);
 
     @Input()

@@ -1,10 +1,8 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    ElementRef,
     EventEmitter,
     HostBinding,
-    inject,
     Input,
     Output,
 } from '@angular/core';
@@ -14,6 +12,7 @@ import {
     TUI_DEFAULT_IDENTITY_MATCHER,
     TUI_FALSE_HANDLER,
     tuiIsNativeFocusedIn,
+    tuiNativeElement,
 } from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS, TuiSizeXL, TuiSizeXS} from '@taiga-ui/core';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
@@ -33,7 +32,7 @@ const badgeSizeMap: Record<TuiSizeL | TuiSizeXS, TuiSizeS | TuiSizeXL> = {
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiFilterComponent<T> extends AbstractTuiMultipleControl<T> {
-    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly el = tuiNativeElement();
 
     @Input()
     public identityMatcher: TuiIdentityMatcher<T> = TUI_DEFAULT_IDENTITY_MATCHER;
