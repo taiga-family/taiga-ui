@@ -131,8 +131,7 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.Amount,
-        loadChildren: async () =>
-            (await import('../pipes/amount/amount.module')).ExampleTuiAmountModule,
+        loadComponent: async () => import('../pipes/amount'),
         title: 'Amount',
     }),
     route({

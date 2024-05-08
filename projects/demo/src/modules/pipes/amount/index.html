@@ -1,0 +1,30 @@
+<tui-doc-page
+    header="Amount"
+    package="ADDON-COMMERCE"
+    type="pipes"
+>
+    <ng-template pageTab>
+        <p>Pipe to format number values to show money sums</p>
+
+        <p>
+            Number formatting can be customized by using
+            <a
+                fragment="number-format"
+                routerLink="/utils/tokens"
+                tuiLink
+            >
+                TUI_NUMBER_FORMAT
+            </a>
+        </p>
+
+        <tui-doc-example
+            *ngFor="let example of examples; let index = index"
+            [component]="index + 1 | tuiComponent"
+            [content]="index + 1 | tuiExample: 'html,ts'"
+            [heading]="example"
+            [id]="example | tuiKebab"
+        />
+    </ng-template>
+
+    <tui-setup *pageTab />
+</tui-doc-page>
