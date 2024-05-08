@@ -5,7 +5,8 @@ import {
     HostBinding,
     HostListener,
     Inject,
-    Injector,
+    inject,
+    InjectFlags,
     Input,
     Optional,
     Self,
@@ -37,8 +38,8 @@ import {
 } from '@taiga-ui/cdk';
 import {
     TUI_DEFAULT_MARKER_HANDLER,
+    TUI_DROPDOWN_COMPONENT,
     TUI_TEXTFIELD_SIZE,
-    TuiDialogService,
     TuiMarkerHandler,
     TuiPrimitiveTextfieldComponent,
     TuiSizeL,
@@ -58,9 +59,8 @@ import {
     TuiInputDateOptions,
 } from '@taiga-ui/kit/tokens';
 import {tuiImmutableUpdateInputDateMulti} from '@taiga-ui/kit/utils';
-import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
-import {map, takeUntil} from 'rxjs/operators';
+import {map} from 'rxjs/operators';
 
 @Component({
     selector: 'tui-input-date[multiple]',
@@ -71,6 +71,13 @@ import {map, takeUntil} from 'rxjs/operators';
         tuiAsFocusableItemAccessor(TuiInputDateMultiComponent),
         tuiAsControl(TuiInputDateMultiComponent),
         tuiDateStreamWithTransformer(TUI_DATE_VALUE_TRANSFORMER),
+        {
+            provide: TUI_DROPDOWN_COMPONENT,
+            useFactory: () =>
+                (inject(TUI_IS_MOBILE) &&
+                    inject(TUI_MOBILE_CALENDAR, InjectFlags.Optional)) ||
+                inject(TUI_DROPDOWN_COMPONENT, InjectFlags.SkipSelf),
+        },
     ],
 })
 export class TuiInputDateMultiComponent
@@ -136,10 +143,7 @@ export class TuiInputDateMultiComponent
         @Inject(NgControl)
         control: NgControl | null,
         @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
-        @Inject(Injector) private readonly injector: Injector,
         @Inject(TUI_IS_MOBILE) readonly isMobile: boolean,
-        @Inject(TuiDialogService)
-        private readonly dialogs: TuiDialogService,
         @Optional()
         @Inject(TUI_MOBILE_CALENDAR)
         private readonly mobileCalendar: Type<Record<string, any>> | null,
@@ -177,7 +181,7 @@ export class TuiInputDateMultiComponent
 
     @HostListener('click')
     onClick(): void {
-        if (!this.isMobile) {
+        if (!this.isMobile && this.interactive) {
             this.open = !this.open;
         }
     }
@@ -234,33 +238,10 @@ export class TuiInputDateMultiComponent
         );
     }
 
-    get canOpen(): boolean {
-        return this.interactive && !this.computedMobile;
-    }
-
     onIconClick(): void {
-        if (!this.computedMobile || !this.mobileCalendar) {
-            return;
+        if (this.isMobile && this.interactive) {
+            this.open = true;
         }
-
-        this.dialogs
-            .open<readonly TuiDay[]>(
-                new PolymorpheusComponent(this.mobileCalendar, this.injector),
-                {
-                    size: 'fullscreen',
-                    closeable: false,
-                    data: {
-                        multi: true,
-                        min: this.min,
-                        max: this.max,
-                        disabledItemHandler: this.disabledItemHandler,
-                    },
-                },
-            )
-            .pipe(takeUntil(this.destroy$))
-            .subscribe(value => {
-                this.value = value;
-            });
     }
 
     onEnter(search: string): void {
@@ -283,7 +264,7 @@ export class TuiInputDateMultiComponent
     onValueChange(value: ReadonlyArray<TuiStringifiableItem<TuiDay>>): void {
         this.control?.updateValueAndValidity({emitEvent: false});
 
-        if (!value.length) {
+        if (!value.length && !this.mobileCalendar) {
             this.onOpenChange(true);
         }
 

@@ -1,8 +1,8 @@
 <tui-hosted-dropdown
     class="t-hosted"
-    [canOpen]="canOpen"
+    [canOpen]="interactive"
     [content]="dropdown"
-    [open]="open && canOpen"
+    [open]="open && interactive"
     (openChange)="onOpenChange($event)"
     (tuiActiveZoneChange)="onActiveZone($event)"
 >

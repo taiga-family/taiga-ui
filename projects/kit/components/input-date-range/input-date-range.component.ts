@@ -5,7 +5,8 @@ import {
     HostBinding,
     HostListener,
     Inject,
-    Injector,
+    inject,
+    InjectFlags,
     Input,
     Optional,
     Self,
@@ -44,8 +45,8 @@ import {
 } from '@taiga-ui/cdk';
 import {
     TUI_DEFAULT_MARKER_HANDLER,
+    TUI_DROPDOWN_COMPONENT,
     TUI_TEXTFIELD_SIZE,
-    TuiDialogService,
     TuiMarkerHandler,
     TuiPrimitiveTextfieldComponent,
     TuiSizeL,
@@ -66,9 +67,9 @@ import {
     tuiDateStreamWithTransformer,
     TuiInputDateOptions,
 } from '@taiga-ui/kit/tokens';
-import {PolymorpheusComponent, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable} from 'rxjs';
-import {map, takeUntil} from 'rxjs/operators';
+import {map} from 'rxjs/operators';
 
 @Component({
     selector: 'tui-input-date-range',
@@ -79,6 +80,13 @@ import {map, takeUntil} from 'rxjs/operators';
         tuiAsFocusableItemAccessor(TuiInputDateRangeComponent),
         tuiAsControl(TuiInputDateRangeComponent),
         tuiDateStreamWithTransformer(TUI_DATE_RANGE_VALUE_TRANSFORMER),
+        {
+            provide: TUI_DROPDOWN_COMPONENT,
+            useFactory: () =>
+                (inject(TUI_IS_MOBILE) &&
+                    inject(TUI_MOBILE_CALENDAR, InjectFlags.Optional)) ||
+                inject(TUI_DROPDOWN_COMPONENT, InjectFlags.SkipSelf),
+        },
     ],
 })
 export class TuiInputDateRangeComponent
@@ -131,10 +139,7 @@ export class TuiInputDateRangeComponent
         @Inject(NgControl)
         control: NgControl | null,
         @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
-        @Inject(Injector) private readonly injector: Injector,
         @Inject(TUI_IS_MOBILE) private readonly isMobile: boolean,
-        @Inject(TuiDialogService)
-        private readonly dialogs: TuiDialogService,
         @Optional()
         @Inject(TUI_MOBILE_CALENDAR)
         private readonly mobileCalendar: Type<Record<string, any>> | null,
@@ -179,10 +184,6 @@ export class TuiInputDateRangeComponent
 
     get calendarIcon(): TuiInputDateOptions['icon'] {
         return this.options.icon;
-    }
-
-    get canOpen(): boolean {
-        return this.interactive && !this.computedMobile;
     }
 
     get computedExampleText(): string {
@@ -270,8 +271,8 @@ export class TuiInputDateRangeComponent
 
     @HostListener('click')
     onClick(): void {
-        if (!this.isMobile) {
-            this.toggle();
+        if (!this.isMobile && this.interactive) {
+            this.open = !this.open;
         }
     }
 
@@ -280,37 +281,9 @@ export class TuiInputDateRangeComponent
     }
 
     onIconClick(): void {
-        if (!this.computedMobile || !this.mobileCalendar) {
-            return;
+        if (this.isMobile && this.interactive) {
+            this.open = true;
         }
-
-        this.dialogs
-            .open<TuiDayRange>(
-                new PolymorpheusComponent(this.mobileCalendar, this.injector),
-                {
-                    size: 'fullscreen',
-                    closeable: false,
-                    data: {
-                        min: this.maxLengthMapper(
-                            this.computedMin,
-                            this.value,
-                            this.maxLength,
-                            true,
-                        ),
-                        max: this.maxLengthMapper(
-                            this.computedMax,
-                            this.value,
-                            this.maxLength,
-                            false,
-                        ),
-                        disabledItemHandler: this.disabledItemHandler,
-                    },
-                },
-            )
-            .pipe(takeUntil(this.destroy$))
-            .subscribe(value => {
-                this.value = value;
-            });
     }
 
     onOpenChange(open: boolean): void {
@@ -322,7 +295,7 @@ export class TuiInputDateRangeComponent
             this.control.updateValueAndValidity({emitEvent: false});
         }
 
-        if (!value) {
+        if (!value && !this.mobileCalendar) {
             this.onOpenChange(true);
         }
 

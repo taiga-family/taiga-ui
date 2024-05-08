@@ -4,11 +4,13 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiMobileCalendarDialogModule} from '@taiga-ui/addon-mobile';
+import {TuiActiveZoneModule} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
     TuiDropdownModule,
     TuiErrorModule,
     TuiHintModule,
+    TuiHostedDropdownModule,
     TuiLinkModule,
     TuiNotificationModule,
     TuiTextfieldControllerModule,
@@ -50,6 +52,8 @@ import {ExampleTuiInputDateComponent} from './input-date.component';
         TuiNotificationModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiInputDateComponent)),
         TuiDropdownModule,
+        TuiHostedDropdownModule,
+        TuiActiveZoneModule,
     ],
     declarations: [
         ExampleTuiInputDateComponent,
