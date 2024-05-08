@@ -5,20 +5,12 @@
 >
     <ng-template pageTab>
         <tui-doc-example
-            id="sizes"
-            heading="Sizes"
-            [content]="example1"
-        >
-            <tui-arc-chart-example-1 />
-        </tui-doc-example>
-
-        <tui-doc-example
-            id="stacked"
-            heading="Stacked"
-            [content]="example2"
-        >
-            <tui-arc-chart-example-2 />
-        </tui-doc-example>
+            *ngFor="let example of examples; let index = index"
+            [component]="index + 1 | tuiComponent"
+            [content]="index + 1 | tuiExample"
+            [heading]="example"
+            [id]="example | tuiKebab"
+        />
     </ng-template>
 
     <ng-template pageTab>
@@ -88,10 +80,5 @@
         </tui-doc-documentation>
     </ng-template>
 
-    <ng-template pageTab>
-        <tui-setup
-            [import]="exampleModule"
-            [template]="exampleHtml"
-        />
-    </ng-template>
+    <tui-setup *pageTab />
 </tui-doc-page>

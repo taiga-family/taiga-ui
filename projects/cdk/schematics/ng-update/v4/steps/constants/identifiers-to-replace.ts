@@ -775,4 +775,14 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/addon-charts',
         },
     },
+    {
+        from: {
+            name: 'TuiArcChartModule',
+            moduleSpecifier: '@taiga-ui/addon-charts',
+        },
+        to: {
+            name: 'TuiArcChartComponent',
+            moduleSpecifier: '@taiga-ui/addon-charts',
+        },
+    },
 ];
