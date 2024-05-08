@@ -15,6 +15,7 @@ interface TuiPaginationParams {
 
     readonly sidePadding?: number;
 }
+
 describe('TuiPaginationComponent', () => {
     @Component({
         template: `
