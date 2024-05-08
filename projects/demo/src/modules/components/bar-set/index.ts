@@ -1,0 +1,35 @@
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiDemoModule} from '@demo/utils';
+import {TuiBarSetComponent} from '@taiga-ui/addon-charts';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+
+@Component({
+    standalone: true,
+    imports: [TuiBarSetComponent, TuiDemoModule],
+    templateUrl: './index.html',
+    styleUrls: ['./index.less'],
+    changeDetection,
+})
+export default class PageComponent {
+    protected readonly examples = [
+        'Dynamic size',
+        'Fixed size',
+        'With negative values',
+        'Horizontal',
+        'With value label',
+    ];
+
+    protected collapsed = false;
+
+    protected readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
+
+    protected size: TuiSizeL | TuiSizeS | null = null;
+
+    protected readonly valueVariants = [
+        [30, 20, 10],
+        [237, -50, 10, 5, 1],
+    ];
+
+    protected value = this.valueVariants[0];
+}

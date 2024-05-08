@@ -849,15 +849,12 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.BarChart,
-        loadChildren: async () =>
-            (await import('../charts/bar-chart/bar-chart.module'))
-                .ExampleTuiBarChartModule,
+        loadComponent: async () => import('../components/bar-chart'),
         title: 'BarChart',
     }),
     route({
         path: DemoRoute.BarSet,
-        loadChildren: async () =>
-            (await import('../charts/bar-set/bar-set.module')).ExampleTuiBarSetModule,
+        loadComponent: async () => import('../components/bar-set'),
         title: 'BarSet',
     }),
     route({

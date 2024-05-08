@@ -1,15 +1,16 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiBarSetComponent} from '@taiga-ui/addon-charts';
 
 @Component({
-    selector: 'tui-bar-set-example-5',
+    standalone: true,
+    imports: [TuiBarSetComponent],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiBarSetExample5 {
-    protected readonly value = [451, 302, 203, 124, 65];
-    protected readonly sum = this.value.reduce((a, b) => a + b, 0);
+export default class ExampleComponent {
+    protected readonly value = [30, -15];
 }

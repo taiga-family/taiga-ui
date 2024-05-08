@@ -7,45 +7,12 @@
         <p>A group of bars for bar chart</p>
 
         <tui-doc-example
-            id="flexible"
-            heading="Dynamic size"
-            [content]="example1"
-        >
-            <tui-bar-set-example-1 />
-        </tui-doc-example>
-
-        <tui-doc-example
-            id="fixed"
-            heading="Fixed size"
-            [content]="example2"
-        >
-            <tui-bar-set-example-2 />
-        </tui-doc-example>
-
-        <tui-doc-example
-            id="negative"
-            heading="With negative values"
-            [content]="example3"
-        >
-            <tui-bar-set-example-3 />
-        </tui-doc-example>
-
-        <tui-doc-example
-            id="horizontal"
-            heading="Horizontal"
-            [content]="example4"
-        >
-            <tui-bar-set-example-4 />
-        </tui-doc-example>
-
-        <tui-doc-example
-            id="collapsed"
-            description="With value label"
-            heading="Collapsed"
-            [content]="example5"
-        >
-            <tui-bar-set-example-5 />
-        </tui-doc-example>
+            *ngFor="let example of examples; let index = index"
+            [component]="index + 1 | tuiComponent"
+            [content]="index + 1 | tuiExample"
+            [heading]="example"
+            [id]="example | tuiKebab"
+        />
     </ng-template>
 
     <ng-template pageTab>
@@ -89,10 +56,5 @@
         </tui-doc-documentation>
     </ng-template>
 
-    <ng-template pageTab>
-        <tui-setup
-            [import]="exampleModule"
-            [template]="exampleHtml"
-        />
-    </ng-template>
+    <tui-setup *pageTab />
 </tui-doc-page>

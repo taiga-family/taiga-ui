@@ -845,4 +845,24 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/addon-table',
         },
     },
+    {
+        from: {
+            name: 'TuiBarChartModule',
+            moduleSpecifier: '@taiga-ui/addon-charts',
+        },
+        to: {
+            name: 'TuiBarChartComponent',
+            moduleSpecifier: '@taiga-ui/addon-charts',
+        },
+    },
+    {
+        from: {
+            name: 'TuiBarSetModule',
+            moduleSpecifier: '@taiga-ui/addon-charts',
+        },
+        to: {
+            name: 'TuiBarSetComponent',
+            moduleSpecifier: '@taiga-ui/addon-charts',
+        },
+    },
 ];
