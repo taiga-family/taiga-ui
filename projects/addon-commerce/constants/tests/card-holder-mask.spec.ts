@@ -1,5 +1,4 @@
 // cspell:disable
-
 import {maskitoPipe} from '@maskito/core';
 import {TUI_CARD_HOLDER_MASK} from '@taiga-ui/addon-commerce';
 
