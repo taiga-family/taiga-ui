@@ -59,12 +59,13 @@ export class TuiHintHoverDirective extends TuiDriver {
         @Optional()
         @SkipSelf()
         @Inject(TuiHintHoverDirective)
-        readonly parent: TuiHintHoverDirective | null,
+        private readonly parent: TuiHintHoverDirective | null,
     ) {
         super(subscriber => this.stream$.subscribe(subscriber));
     }
 
     toggle(visible = !this.visible): void {
         this.toggle$.next(visible);
+        this.parent?.toggle(visible);
     }
 }
