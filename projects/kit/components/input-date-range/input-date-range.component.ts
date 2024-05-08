@@ -295,7 +295,7 @@ export class TuiInputDateRangeComponent
             this.control.updateValueAndValidity({emitEvent: false});
         }
 
-        if (!value) {
+        if (!value && !this.mobileCalendar) {
             this.onOpenChange(true);
         }
 
