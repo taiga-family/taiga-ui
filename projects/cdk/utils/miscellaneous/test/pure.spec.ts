@@ -1,7 +1,6 @@
-/** TODO this tests does not cover typescript@^5 and experimentalDecorators: false */
-
 import {tuiPure} from '@taiga-ui/cdk';
 
+/** TODO this tests does not cover typescript@^5 and experimentalDecorators: false */
 describe('tuiPure', () => {
     it('calls getter only once and then sets result as a value property on the object', () => {
         let count = 0;
