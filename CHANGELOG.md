@@ -3,6 +3,45 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.77.0](https://github.com/taiga-family/taiga-ui/compare/v3.76.0...v3.77.0) (2024-05-08)
+
+### Features
+
+- **addon-mobile:** `MobileCalendar` switch to dropdown ([#7254](https://github.com/taiga-family/taiga-ui/issues/7254))
+  ([33f0e54](https://github.com/taiga-family/taiga-ui/commit/33f0e54f8d838a6a8d855e842915f7045b8f88ac))
+- **core:** add `tuiIcon` pipe ([#7368](https://github.com/taiga-family/taiga-ui/issues/7368))
+  ([f95bb7f](https://github.com/taiga-family/taiga-ui/commit/f95bb7fb77fb5f61c56ed237a4fdc44277f2ddb4))
+- **core:** add ability to use nested hints ([#7376](https://github.com/taiga-family/taiga-ui/issues/7376))
+  ([9ad7c8c](https://github.com/taiga-family/taiga-ui/commit/9ad7c8c2c8cc90d3122a669503275b750dfafca1))
+
+### Bug Fixes
+
+- **addon-mobile:** `DropdownMobile` fix cleaner buttons ([#7358](https://github.com/taiga-family/taiga-ui/issues/7358))
+  ([8c5ed8b](https://github.com/taiga-family/taiga-ui/commit/8c5ed8b478b9382168f9e9784e4cc42fb7cac717))
+- **cdk:** `Destroy` fix post-destroy subscriptions ([#7380](https://github.com/taiga-family/taiga-ui/issues/7380))
+  ([fb6ff06](https://github.com/taiga-family/taiga-ui/commit/fb6ff06c517c436e00646be007e71c82ab833256))
+- **core:** fix compatibility tuiGroup & tuiLabel ([#7364](https://github.com/taiga-family/taiga-ui/issues/7364))
+  ([e1d2c6e](https://github.com/taiga-family/taiga-ui/commit/e1d2c6e43c848cb306aef4bfb65235581098132e))
+- **core:** fix loading defaultErrorMessage for tui-error
+  ([#7303](https://github.com/taiga-family/taiga-ui/issues/7303))
+  ([#7341](https://github.com/taiga-family/taiga-ui/issues/7341))
+  ([682ecf1](https://github.com/taiga-family/taiga-ui/commit/682ecf177c298918c644948b1cb86cac2c055bd8))
+- **experimental:** `tuiCell` conflicts ([#7369](https://github.com/taiga-family/taiga-ui/issues/7369))
+  ([291602e](https://github.com/taiga-family/taiga-ui/commit/291602e3f4e27f57288d2531c4007d9976d80863))
+- **experimental:** fix `tuiTitle` bold inside `tuiCell` ([#7382](https://github.com/taiga-family/taiga-ui/issues/7382))
+  ([f695179](https://github.com/taiga-family/taiga-ui/commit/f6951793b581df384595ad5dee5afa464f1529a8))
+- **kit:** `Textarea` incorrectly highlights extra characters for long words with hyphen in Safari/FF
+  ([#7336](https://github.com/taiga-family/taiga-ui/issues/7336))
+  ([1e4844a](https://github.com/taiga-family/taiga-ui/commit/1e4844a0c3fb8c2101b9120895fe68946ec51efc))
+- **kit:** fix compatibility tuiGroup & tui-input-slider ([#7363](https://github.com/taiga-family/taiga-ui/issues/7363))
+  ([#7372](https://github.com/taiga-family/taiga-ui/issues/7372))
+  ([25c7277](https://github.com/taiga-family/taiga-ui/commit/25c7277e6812681adf462d930f74a4e60b145ab4))
+- **kit:** fix horizontal scroll with `tuiMultiSelectGroup` and large item in `tui-data-list`
+  ([#7374](https://github.com/taiga-family/taiga-ui/issues/7374))
+  ([0e372c6](https://github.com/taiga-family/taiga-ui/commit/0e372c675e6d8c5082ddffd2e5c0c6d1467eaed3))
+- **schematics:** upgrade editor dependency ([#7316](https://github.com/taiga-family/taiga-ui/issues/7316))
+  ([e03b5dc](https://github.com/taiga-family/taiga-ui/commit/e03b5dc666bf88b0f62b65d1eb4ba45bb15a3333))
+
 ## [3.76.0](https://github.com/taiga-family/taiga-ui/compare/v3.75.0...v3.76.0) (2024-04-22)
 
 ### Features
