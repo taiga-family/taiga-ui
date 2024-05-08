@@ -847,8 +847,7 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.Axes,
-        loadChildren: async () =>
-            (await import('../charts/axes/axes.module')).ExampleTuiAxesModule,
+        loadComponent: async () => import('../components/axes'),
         title: 'Axes',
     }),
     route({

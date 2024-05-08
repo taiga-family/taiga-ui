@@ -7,32 +7,20 @@
         <p>Just axes for charts</p>
 
         <tui-doc-example
-            id="advanced"
-            heading="Cool one"
-            [content]="example1"
+            *ngFor="let example of examples; let index = index"
+            [component]="index + 1 | tuiComponent"
+            [content]="index + 1 | tuiExample"
+            [heading]="example"
+            [id]="example | tuiKebab"
         >
-            <tui-axes-example-1 />
-        </tui-doc-example>
-
-        <tui-doc-example
-            id="bars"
-            heading="With bars"
-            [content]="example2"
-        >
-            <tui-axes-example-2 />
-        </tui-doc-example>
-
-        <tui-doc-example
-            id="labels"
-            heading="With horizontal bars"
-            [content]="example3"
-        >
-            <tui-notification class="tui-space_bottom-4">
+            <tui-notification
+                *ngIf="index === 2"
+                class="tui-space_bottom-4"
+            >
                 Labels positioning on x axes were updated. To prevent breaking changes
                 <code>new</code>
                 attribute has to be added to enable new behaviour.
             </tui-notification>
-            <tui-axes-example-3 />
         </tui-doc-example>
     </ng-template>
 
@@ -172,10 +160,5 @@
         </tui-doc-documentation>
     </ng-template>
 
-    <ng-template pageTab>
-        <tui-setup
-            [import]="exampleModule"
-            [template]="exampleHtml"
-        />
-    </ng-template>
+    <tui-setup *pageTab />
 </tui-doc-page>

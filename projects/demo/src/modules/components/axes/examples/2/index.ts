@@ -1,19 +1,35 @@
+import {AsyncPipe, NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TUI_ALWAYS_DASHED, TUI_ALWAYS_NONE} from '@taiga-ui/addon-charts';
+import {
+    TUI_ALWAYS_DASHED,
+    TUI_ALWAYS_NONE,
+    TuiAxesComponent,
+    TuiBarChartModule,
+} from '@taiga-ui/addon-charts';
+import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {tuiCeil, tuiPure} from '@taiga-ui/cdk';
+import {TuiHintModule} from '@taiga-ui/core';
 
 const BENJI = 100;
 
 @Component({
-    selector: 'tui-axes-example-2',
+    standalone: true,
+    imports: [
+        TuiAxesComponent,
+        TuiBarChartModule,
+        TuiHintModule,
+        TuiAmountPipe,
+        AsyncPipe,
+        NgForOf,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiAxesExample2 {
+export default class ExampleComponent {
     private readonly setNames = ['cdk', 'core', 'kit', 'charts'];
 
     protected readonly value: ReadonlyArray<[number, number, number, number]> = [

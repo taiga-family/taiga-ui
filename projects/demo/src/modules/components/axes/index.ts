@@ -1,36 +1,23 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiDemoModule} from '@demo/utils';
 import type {TuiLineHandler, TuiLineType} from '@taiga-ui/addon-charts';
-import {TUI_ALWAYS_DASHED, TUI_ALWAYS_SOLID} from '@taiga-ui/addon-charts';
-import type {TuiDocExample} from '@taiga-ui/addon-doc';
+import {
+    TUI_ALWAYS_DASHED,
+    TUI_ALWAYS_SOLID,
+    TuiAxesComponent,
+} from '@taiga-ui/addon-charts';
+import {TuiNotificationModule} from '@taiga-ui/core';
 
 @Component({
-    selector: 'example-tui-axes',
-    templateUrl: './axes.template.html',
-    styleUrls: ['./axes.style.less'],
+    standalone: true,
+    imports: [TuiAxesComponent, TuiNotificationModule, TuiDemoModule],
+    templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     changeDetection,
 })
-export class ExampleTuiAxesComponent {
-    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
-    protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
-
-    protected readonly example1: TuiDocExample = {
-        TypeScript: import('./examples/1/index.ts?raw'),
-        HTML: import('./examples/1/index.html?raw'),
-        LESS: import('./examples/1/index.less?raw'),
-    };
-
-    protected readonly example2: TuiDocExample = {
-        TypeScript: import('./examples/2/index.ts?raw'),
-        HTML: import('./examples/2/index.html?raw'),
-        LESS: import('./examples/2/index.less?raw'),
-    };
-
-    protected readonly example3: TuiDocExample = {
-        TypeScript: import('./examples/3/index.ts?raw'),
-        HTML: import('./examples/3/index.html?raw'),
-        LESS: import('./examples/3/index.less?raw'),
-    };
+export default class PageComponent {
+    protected readonly examples = ['Cool one', 'With bars', 'With horizontal bars'];
 
     protected readonly lineVariants: readonly TuiLineType[] = [
         'solid',

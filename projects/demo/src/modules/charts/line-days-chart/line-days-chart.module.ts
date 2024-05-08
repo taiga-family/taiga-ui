@@ -4,7 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiSetupComponent} from '@demo/utils';
 import {
-    TuiAxesModule,
+    TuiAxesComponent,
     TuiLineChartModule,
     TuiLineDaysChartModule,
 } from '@taiga-ui/addon-charts';
@@ -22,7 +22,7 @@ import {ExampleTuiLineDaysChartComponent} from './line-days-chart.component';
     imports: [
         CommonModule,
         FormsModule,
-        TuiAxesModule,
+        TuiAxesComponent,
         TuiSelectModule,
         TuiLineChartModule,
         TuiMapperPipe,
