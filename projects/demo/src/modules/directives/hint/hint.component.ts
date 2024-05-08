@@ -29,6 +29,10 @@ export class ExampleTuiHintComponent extends AbstractExampleTuiHint {
         LESS: import('./examples/2/index.less?raw'),
     };
 
+    readonly example3: TuiDocExample = {
+        HTML: import('./examples/3/index.html?raw'),
+    };
+
     showDelay = 500;
     hideDelay = 200;
 }
