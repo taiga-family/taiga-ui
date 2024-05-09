@@ -10,8 +10,8 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {NgControl, NgModel} from '@angular/forms';
 import {
     tuiControlValue,
+    tuiInjectElement,
     tuiIsString,
-    tuiNativeElement,
     TuiNativeValidatorDirective,
 } from '@taiga-ui/cdk';
 import type {TuiSizeS} from '@taiga-ui/core';
@@ -49,7 +49,7 @@ export class TuiCheckboxComponent implements OnInit, DoCheck {
     private readonly options = inject(TUI_CHECKBOX_OPTIONS);
     private readonly resolver = inject(TUI_ICON_RESOLVER);
     private readonly destroyRef = inject(DestroyRef);
-    private readonly el = tuiNativeElement<HTMLInputElement>();
+    private readonly el = tuiInjectElement<HTMLInputElement>();
 
     @Input()
     public size: TuiSizeS = this.options.size;

@@ -1,7 +1,7 @@
 import {Directive, HostBinding, HostListener, inject, Input} from '@angular/core';
 import type {SafeResourceUrl} from '@angular/platform-browser';
 import {IntersectionObserverService} from '@ng-web-apis/intersection-observer';
-import {tuiNativeElement} from '@taiga-ui/cdk';
+import {tuiInjectElement} from '@taiga-ui/cdk';
 
 import {TuiLazyLoadingService} from './lazy-loading.service';
 
@@ -10,7 +10,7 @@ import {TuiLazyLoadingService} from './lazy-loading.service';
     providers: [TuiLazyLoadingService, IntersectionObserverService],
 })
 export class TuiLazyLoadingDirective {
-    private readonly el = tuiNativeElement<HTMLImageElement>();
+    private readonly el = tuiInjectElement<HTMLImageElement>();
     private readonly src$ = inject(TuiLazyLoadingService);
 
     @HostBinding('style.animation')

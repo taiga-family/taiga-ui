@@ -4,7 +4,7 @@ import {
     MutationObserverService,
 } from '@ng-web-apis/mutation-observer';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
-import {tuiNativeElement} from '@taiga-ui/cdk';
+import {tuiInjectElement} from '@taiga-ui/cdk';
 import {debounceTime, distinctUntilChanged, map, merge} from 'rxjs';
 
 @Directive({
@@ -23,7 +23,7 @@ import {debounceTime, distinctUntilChanged, map, merge} from 'rxjs';
     ],
 })
 export class TuiElasticContainerDirective {
-    private readonly el = tuiNativeElement();
+    private readonly el = tuiInjectElement();
     private readonly resize$ = inject(ResizeObserverService);
     private readonly mutation$ = inject(MutationObserverService);
 

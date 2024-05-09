@@ -17,8 +17,8 @@ import {
     EMPTY_QUERY,
     TUI_IS_MOBILE,
     tuiClamp,
+    tuiInjectElement,
     TuiItemDirective,
-    tuiNativeElement,
     tuiPure,
 } from '@taiga-ui/cdk';
 
@@ -29,7 +29,7 @@ import {
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiCarouselComponent {
-    private readonly el = tuiNativeElement();
+    private readonly el = tuiInjectElement();
     private readonly cdr = inject(ChangeDetectorRef);
     private readonly isMobile = inject(TUI_IS_MOBILE);
     private translate = 0;

@@ -2,7 +2,7 @@ import {Directive, inject, Input, Renderer2} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {TuiTouchMode} from '@taiga-ui/addon-mobile/types';
 import {tuiFindTouchIndex} from '@taiga-ui/addon-mobile/utils';
-import {TUI_IS_IOS, tuiNativeElement, tuiTypedFromEvent} from '@taiga-ui/cdk';
+import {TUI_IS_IOS, tuiInjectElement, tuiTypedFromEvent} from '@taiga-ui/cdk';
 import {TUI_ELEMENT_REF} from '@taiga-ui/core';
 import {filter, map, race, switchMap, take, tap} from 'rxjs';
 
@@ -18,7 +18,7 @@ const STYLE = {
 export class TuiTouchableDirective {
     private readonly isIOS = inject(TUI_IS_IOS);
     private readonly renderer = inject(Renderer2);
-    private readonly el = tuiNativeElement();
+    private readonly el = tuiInjectElement();
     private readonly elementRef?: HTMLElement = inject(TUI_ELEMENT_REF, {optional: true})
         ?.nativeElement;
 

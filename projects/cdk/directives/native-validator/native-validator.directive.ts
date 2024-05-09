@@ -2,7 +2,7 @@ import {DestroyRef, Directive, HostListener, inject, Input, NgZone} from '@angul
 import type {AbstractControl, Validator} from '@angular/forms';
 import {NG_VALIDATORS} from '@angular/forms';
 import {tuiTakeUntilDestroyed, tuiZonefree} from '@taiga-ui/cdk/observables';
-import {tuiNativeElement, tuiProvide} from '@taiga-ui/cdk/utils';
+import {tuiInjectElement, tuiProvide} from '@taiga-ui/cdk/utils';
 import {timer} from 'rxjs';
 
 @Directive({
@@ -13,7 +13,7 @@ import {timer} from 'rxjs';
 export class TuiNativeValidatorDirective implements Validator {
     private readonly destroyRef = inject(DestroyRef);
     private readonly zone = inject(NgZone);
-    private readonly host = tuiNativeElement<HTMLInputElement>();
+    private readonly host = tuiInjectElement<HTMLInputElement>();
     private control?: AbstractControl;
 
     @Input()

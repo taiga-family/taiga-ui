@@ -15,8 +15,8 @@ import type {TuiContext} from '@taiga-ui/cdk';
 import {
     AbstractTuiInteractive,
     tuiAsFocusableItemAccessor,
+    tuiInjectElement,
     tuiIsNativeFocusedIn,
-    tuiNativeElement,
     tuiPure,
     tuiRetargetedBoundaryCrossing,
 } from '@taiga-ui/cdk';
@@ -63,7 +63,7 @@ export class TuiPrimitiveTextfieldComponent
     private readonly focusableElement?: ElementRef<HTMLInputElement>;
 
     private readonly options = inject(TUI_TEXTFIELD_OPTIONS);
-    private readonly el = tuiNativeElement();
+    private readonly el = tuiInjectElement();
 
     @Input()
     public editable = true;

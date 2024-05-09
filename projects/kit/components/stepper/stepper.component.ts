@@ -19,9 +19,9 @@ import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {
     EMPTY_QUERY,
     tuiGetOriginalArrayFromQueryList,
+    tuiInjectElement,
     tuiIsElement,
     tuiMoveFocus,
-    tuiNativeElement,
     tuiPure,
     tuiQueryListChanges,
     TuiScrollService,
@@ -45,7 +45,7 @@ export class TuiStepperComponent {
     private readonly steps: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
     private readonly cdr = inject(ChangeDetectorRef);
-    private readonly el = tuiNativeElement();
+    private readonly el = tuiInjectElement();
     private readonly scrollService = inject(TuiScrollService);
     private readonly resize$ = inject(ResizeObserverService);
     private readonly speed = inject(TUI_ANIMATIONS_SPEED);

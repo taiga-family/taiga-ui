@@ -3,8 +3,8 @@ import type {TuiFocusableElementAccessor} from '@taiga-ui/cdk';
 import {
     AbstractTuiControl,
     tuiClamp,
+    tuiInjectElement,
     tuiIsNativeFocused,
-    tuiNativeElement,
 } from '@taiga-ui/cdk';
 import type {TuiKeySteps} from '@taiga-ui/kit/types';
 import {
@@ -27,7 +27,7 @@ export class TuiSliderKeyStepsDirective
     extends AbstractTuiControl<number>
     implements TuiFocusableElementAccessor
 {
-    private readonly el = tuiNativeElement<HTMLInputElement>();
+    private readonly el = tuiInjectElement<HTMLInputElement>();
     private readonly slider = inject<TuiSliderComponent>(
         forwardRef(() => TuiSliderComponent),
     );

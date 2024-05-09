@@ -1,6 +1,6 @@
 import {DestroyRef, Directive, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {tuiNativeElement} from '@taiga-ui/cdk';
+import {tuiInjectElement} from '@taiga-ui/cdk';
 import {TUI_SCROLL_REF} from '@taiga-ui/core';
 import {
     distinctUntilChanged,
@@ -20,7 +20,7 @@ export class TuiSheetStopDirective {
     constructor() {
         const scrollRef = inject(TUI_SCROLL_REF).nativeElement;
         const destroyRef = inject(DestroyRef);
-        const el = tuiNativeElement();
+        const el = tuiInjectElement();
 
         inject(TUI_SHEET_SCROLL)
             .pipe(

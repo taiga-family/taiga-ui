@@ -13,8 +13,8 @@ import {
     ViewChild,
 } from '@angular/core';
 import {
+    tuiInjectElement,
     tuiIsCurrentTarget,
-    tuiNativeElement,
     tuiPx,
     tuiTypedFromEvent,
     tuiZonefree,
@@ -55,7 +55,7 @@ export class TuiLineClampComponent implements DoCheck, AfterViewInit {
     private readonly outlet?: ElementRef<HTMLElement>;
 
     private readonly options = inject(TUI_LINE_CLAMP_OPTIONS);
-    private readonly el = tuiNativeElement();
+    private readonly el = tuiInjectElement();
     private readonly renderer = inject(Renderer2);
     private readonly cd = inject(ChangeDetectorRef);
     private readonly zone: NgZone = inject(NgZone);

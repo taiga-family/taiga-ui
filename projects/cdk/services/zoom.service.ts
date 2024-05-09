@@ -2,7 +2,7 @@ import {inject, Injectable} from '@angular/core';
 import {tuiPreventDefault, tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
 import {TUI_ZOOM_OPTIONS} from '@taiga-ui/cdk/tokens';
 import type {TuiZoom} from '@taiga-ui/cdk/types';
-import {tuiDistanceBetweenTouches, tuiNativeElement} from '@taiga-ui/cdk/utils';
+import {tuiDistanceBetweenTouches, tuiInjectElement} from '@taiga-ui/cdk/utils';
 import {filter, map, merge, Observable, scan, switchMap, takeUntil} from 'rxjs';
 
 const TOUCH_SENSITIVITY = 0.01;
@@ -10,7 +10,7 @@ const TOUCH_SENSITIVITY = 0.01;
 @Injectable()
 export class TuiZoomService extends Observable<TuiZoom> {
     constructor() {
-        const el = tuiNativeElement();
+        const el = tuiInjectElement();
         const {wheelSensitivity} = inject(TUI_ZOOM_OPTIONS);
 
         super(subscriber => {

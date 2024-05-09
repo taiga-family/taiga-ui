@@ -7,7 +7,7 @@ import {
     Input,
 } from '@angular/core';
 import {RouterLinkActive} from '@angular/router';
-import {tuiNativeElement} from '@taiga-ui/cdk';
+import {tuiInjectElement} from '@taiga-ui/cdk';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core';
 import type {Observable} from 'rxjs';
 import {EMPTY, filter} from 'rxjs';
@@ -26,7 +26,7 @@ import {TuiStepperComponent} from '../stepper.component';
 })
 export class TuiStepComponent {
     private readonly stepper = inject(TuiStepperComponent);
-    private readonly el = tuiNativeElement();
+    private readonly el = tuiInjectElement();
     private readonly routerLinkActive$: Observable<boolean> =
         inject(RouterLinkActive, {optional: true})?.isActiveChange || EMPTY;
 

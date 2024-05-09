@@ -1,5 +1,5 @@
 import {Directive} from '@angular/core';
-import {tuiNativeElement} from '@taiga-ui/cdk';
+import {tuiInjectElement} from '@taiga-ui/cdk';
 import type {TuiPoint} from '@taiga-ui/core';
 import {tuiAsPositionAccessor, TuiPositionAccessor} from '@taiga-ui/core';
 
@@ -8,7 +8,7 @@ import {tuiAsPositionAccessor, TuiPositionAccessor} from '@taiga-ui/core';
     providers: [tuiAsPositionAccessor(TopRightDirective)],
 })
 export class TopRightDirective extends TuiPositionAccessor {
-    private readonly el = tuiNativeElement();
+    private readonly el = tuiInjectElement();
 
     public readonly type = 'dropdown';
 

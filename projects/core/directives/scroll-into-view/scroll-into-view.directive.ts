@@ -1,6 +1,6 @@
 import {DestroyRef, Directive, inject, Input} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {tuiNativeElement} from '@taiga-ui/cdk';
+import {tuiInjectElement} from '@taiga-ui/cdk';
 import {TUI_SCROLL_INTO_VIEW} from '@taiga-ui/core/constants';
 import {timer} from 'rxjs';
 
@@ -11,7 +11,7 @@ import {timer} from 'rxjs';
     selector: '[tuiScrollIntoView]',
 })
 export class TuiScrollIntoViewDirective {
-    private readonly el = tuiNativeElement();
+    private readonly el = tuiInjectElement();
     private readonly destroyRef = inject(DestroyRef);
 
     @Input()

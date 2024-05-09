@@ -10,7 +10,7 @@ import {
     Output,
     ViewChild,
 } from '@angular/core';
-import {tuiNativeElement} from '@taiga-ui/cdk';
+import {tuiInjectElement} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS, TuiSizeXS} from '@taiga-ui/core';
 import {TUI_COMMON_ICONS, tuiSizeBigger, tuiStringHashToHsl} from '@taiga-ui/core';
 import type {TuiStatus} from '@taiga-ui/kit/types';
@@ -25,7 +25,7 @@ import {TUI_TAG_OPTIONS} from './tag.options';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiTagComponent {
-    private readonly el = tuiNativeElement();
+    private readonly el = tuiInjectElement();
     private readonly options = inject(TUI_TAG_OPTIONS);
 
     // TODO: Possibly implement standard focus mechanisms and outline

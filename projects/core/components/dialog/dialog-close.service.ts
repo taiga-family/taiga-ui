@@ -4,8 +4,8 @@ import {WINDOW} from '@ng-web-apis/common';
 import {
     tuiContainsOrAfter,
     tuiGetActualTarget,
+    tuiInjectElement,
     tuiIsElement,
-    tuiNativeElement,
     tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
 import {tuiGetViewportWidth} from '@taiga-ui/core/utils';
@@ -17,7 +17,7 @@ const SCROLLBAR_PLACEHOLDER = 17;
 export class TuiDialogCloseService extends Observable<unknown> {
     private readonly win = inject(WINDOW);
     private readonly doc = inject(DOCUMENT);
-    private readonly el = tuiNativeElement();
+    private readonly el = tuiInjectElement();
 
     private readonly esc$ = tuiTypedFromEvent(this.doc, 'keydown').pipe(
         filter(event => {

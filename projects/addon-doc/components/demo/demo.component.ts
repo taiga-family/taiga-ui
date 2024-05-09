@@ -22,7 +22,7 @@ import {tuiCoerceValueIsTrue} from '@taiga-ui/addon-doc/utils';
 import {
     tuiClamp,
     tuiCleanObject,
-    tuiNativeElement,
+    tuiInjectElement,
     tuiPure,
     tuiPx,
     TuiResizeableDirective,
@@ -47,7 +47,7 @@ export class TuiDocDemoComponent implements OnInit {
     @ViewChild('resizer', {static: true})
     private readonly resizer?: ElementRef<HTMLElement>;
 
-    private readonly el = tuiNativeElement();
+    private readonly el = tuiInjectElement();
     private readonly locationRef = inject(Location);
     private readonly urlSerializer = inject(UrlSerializer);
     private readonly urlStateHandler = inject(TUI_DOC_URL_STATE_HANDLER);

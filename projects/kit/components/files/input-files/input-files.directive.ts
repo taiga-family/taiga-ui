@@ -4,8 +4,8 @@ import {
     AbstractTuiNullableControl,
     EMPTY_ARRAY,
     tuiControlValue,
+    tuiInjectElement,
     tuiIsNativeFocused,
-    tuiNativeElement,
 } from '@taiga-ui/cdk';
 import type {TuiAppearanceOptions} from '@taiga-ui/core';
 import {TuiAppearanceDirective, tuiAppearanceOptionsProvider} from '@taiga-ui/core';
@@ -53,7 +53,7 @@ export class TuiInputFilesDirective
     );
 
     public readonly appearance = 'file';
-    public readonly input = tuiNativeElement<HTMLInputElement>();
+    public readonly input = tuiInjectElement<HTMLInputElement>();
 
     protected readonly host = inject(forwardRef(() => TuiInputFilesComponent));
 

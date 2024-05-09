@@ -3,7 +3,7 @@ import type {OnDestroy} from '@angular/core';
 import {inject, Injectable, PLATFORM_ID} from '@angular/core';
 import {MutationObserverService} from '@ng-web-apis/mutation-observer';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
-import {tuiArrayShallowEquals, tuiNativeElement, tuiPx} from '@taiga-ui/cdk';
+import {tuiArrayShallowEquals, tuiInjectElement, tuiPx} from '@taiga-ui/cdk';
 import type {Observable} from 'rxjs';
 import {
     BehaviorSubject,
@@ -20,7 +20,7 @@ import {TuiTilesComponent} from './tiles.component';
 @Injectable()
 export class TuiTileService implements OnDestroy {
     private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
-    private readonly el = tuiNativeElement();
+    private readonly el = tuiInjectElement();
     private readonly tiles = inject(TuiTilesComponent);
     private readonly sub = new Subscription();
     private readonly offset$ = new BehaviorSubject<readonly [number, number]>([NaN, NaN]);

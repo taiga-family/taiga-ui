@@ -9,9 +9,9 @@ import {
 import {
     TUI_IS_IOS,
     tuiBlurNativeFocused,
+    tuiInjectElement,
     tuiIsNativeFocusedIn,
     tuiIsSafari,
-    tuiNativeElement,
 } from '@taiga-ui/cdk';
 import {tuiSizeBigger} from '@taiga-ui/core/utils/miscellaneous';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
@@ -26,7 +26,7 @@ import {TUI_LOADER_OPTIONS} from './loader.options';
 })
 export class TuiLoaderComponent {
     private readonly doc = inject(DOCUMENT);
-    private readonly el = tuiNativeElement();
+    private readonly el = tuiInjectElement();
     private readonly isIOS = inject(TUI_IS_IOS);
     private readonly options = inject(TUI_LOADER_OPTIONS);
 

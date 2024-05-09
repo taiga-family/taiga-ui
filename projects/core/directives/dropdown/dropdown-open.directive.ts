@@ -15,12 +15,12 @@ import {
     TuiActiveZoneDirective,
     tuiGetActualTarget,
     tuiGetClosestFocusable,
+    tuiInjectElement,
     tuiIsElement,
     tuiIsElementEditable,
     tuiIsHTMLElement,
     tuiIsNativeFocusedIn,
     tuiIsNativeKeyboardFocusable,
-    tuiNativeElement,
     TuiObscuredDirective,
     tuiWatch,
 } from '@taiga-ui/cdk';
@@ -72,7 +72,7 @@ export class TuiDropdownOpenDirective implements OnChanges {
 
     // TODO: Remove optional after refactor is complete
     private readonly directive = inject(TuiDropdownDirective, {optional: true});
-    private readonly el = tuiNativeElement();
+    private readonly el = tuiInjectElement();
     private readonly driver = inject(TuiDropdownDriver);
     private readonly obscured = inject(TuiObscuredDirective);
 

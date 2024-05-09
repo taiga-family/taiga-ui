@@ -22,13 +22,13 @@ import {
     tuiAsFocusableItemAccessor,
     tuiGetActualTarget,
     tuiGetClosestFocusable,
+    tuiInjectElement,
     tuiIsElement,
     tuiIsElementEditable,
     tuiIsHTMLElement,
     tuiIsNativeFocusedIn,
     tuiIsNativeKeyboardFocusable,
     tuiIsPresent,
-    tuiNativeElement,
     tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
 import {TuiPositionAccessor} from '@taiga-ui/core/abstract';
@@ -116,7 +116,7 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
         optional: true,
     });
 
-    private readonly el = tuiNativeElement();
+    private readonly el = tuiInjectElement();
     private readonly openChange$ = new BehaviorSubject(false);
     private readonly hostHover$ = tuiTypedFromEvent(this.el, 'mouseover')
         .pipe(

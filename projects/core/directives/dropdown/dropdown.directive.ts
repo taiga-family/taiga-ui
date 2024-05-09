@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {TuiActiveZoneDirective, TuiContext} from '@taiga-ui/cdk';
-import {tuiNativeElement, tuiPure} from '@taiga-ui/cdk';
+import {tuiInjectElement, tuiPure} from '@taiga-ui/cdk';
 import type {TuiRectAccessor, TuiVehicle} from '@taiga-ui/core/abstract';
 import {tuiAsRectAccessor, tuiAsVehicle} from '@taiga-ui/core/abstract';
 import type {TuiPortalItem} from '@taiga-ui/core/interfaces';
@@ -46,7 +46,7 @@ export class TuiDropdownDirective
     private readonly service = inject(TuiDropdownService);
     private readonly cdr = inject(ChangeDetectorRef);
 
-    public readonly el = tuiNativeElement();
+    public readonly el = tuiInjectElement();
     public readonly type = 'dropdown';
     public readonly component = new PolymorpheusComponent(
         inject(TUI_DROPDOWN_COMPONENT),

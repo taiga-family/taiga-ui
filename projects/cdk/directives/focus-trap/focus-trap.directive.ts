@@ -3,8 +3,8 @@ import type {OnDestroy} from '@angular/core';
 import {Directive, HostListener, inject} from '@angular/core';
 import {
     tuiContainsOrAfter,
+    tuiInjectElement,
     tuiIsHTMLElement,
-    tuiNativeElement,
 } from '@taiga-ui/cdk/utils/dom';
 import {
     tuiBlurNativeFocused,
@@ -21,7 +21,7 @@ import {
 })
 export class TuiFocusTrapDirective implements OnDestroy {
     private readonly doc = inject(DOCUMENT);
-    private readonly el = tuiNativeElement();
+    private readonly el = tuiInjectElement();
     private readonly activeElement = tuiGetNativeFocused(this.doc);
 
     constructor() {

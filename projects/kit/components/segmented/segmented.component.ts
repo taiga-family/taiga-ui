@@ -12,7 +12,7 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
-import {tuiIsHTMLElement, tuiNativeElement, tuiPx, tuiZonefree} from '@taiga-ui/cdk';
+import {tuiInjectElement, tuiIsHTMLElement, tuiPx, tuiZonefree} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {tuiBadgeNotificationOptionsProvider} from '@taiga-ui/kit/components/badge-notification';
 
@@ -29,7 +29,7 @@ import {TuiSegmentedDirective} from './segmented.directive';
     providers: [ResizeObserverService, tuiBadgeNotificationOptionsProvider({size: 's'})],
 })
 export class TuiSegmentedComponent implements OnChanges {
-    private readonly el = tuiNativeElement();
+    private readonly el = tuiInjectElement();
 
     @Input()
     @HostBinding('attr.data-size')

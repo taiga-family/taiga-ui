@@ -9,7 +9,7 @@ import {
     ViewChildren,
 } from '@angular/core';
 import type {TuiPopover} from '@taiga-ui/cdk';
-import {EMPTY_QUERY, tuiNativeElement, tuiPure} from '@taiga-ui/cdk';
+import {EMPTY_QUERY, tuiInjectElement, tuiPure} from '@taiga-ui/cdk';
 import {
     TUI_ANIMATIONS_SPEED,
     TUI_CLOSE_WORD,
@@ -46,7 +46,7 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
     @ViewChildren('stops')
     private readonly stopsRefs: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
-    private readonly el = tuiNativeElement();
+    private readonly el = tuiInjectElement();
     private readonly speed = inject(TUI_ANIMATIONS_SPEED);
 
     private pointers = 0;

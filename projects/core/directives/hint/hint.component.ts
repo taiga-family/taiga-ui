@@ -11,7 +11,7 @@ import {
     EMPTY_CLIENT_RECT,
     tuiClamp,
     TuiHoveredService,
-    tuiNativeElement,
+    tuiInjectElement,
     tuiPure,
     tuiPx,
 } from '@taiga-ui/cdk';
@@ -65,7 +65,7 @@ export class TuiHintComponent<C = any> {
     private readonly polymorpheus =
         inject<TuiContext<TuiPortalItem<C>>>(POLYMORPHEUS_CONTEXT);
 
-    private readonly el = tuiNativeElement();
+    private readonly el = tuiInjectElement();
     private readonly hover = inject(TuiHintHoverDirective);
     private readonly visualViewportService = inject(TuiVisualViewportService);
     private readonly viewport = inject(TUI_VIEWPORT);

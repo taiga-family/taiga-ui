@@ -1,5 +1,5 @@
 import {Directive, Input} from '@angular/core';
-import {tuiGetActualTarget, tuiNativeElement} from '@taiga-ui/cdk';
+import {tuiGetActualTarget, tuiInjectElement} from '@taiga-ui/cdk';
 
 @Directive({
     standalone: true,
@@ -10,7 +10,7 @@ import {tuiGetActualTarget, tuiNativeElement} from '@taiga-ui/cdk';
     },
 })
 export class TuiSwipeActionsAutoCloseDirective {
-    private readonly el = tuiNativeElement();
+    private readonly el = tuiInjectElement();
 
     @Input()
     public autoClose: boolean | string = true;

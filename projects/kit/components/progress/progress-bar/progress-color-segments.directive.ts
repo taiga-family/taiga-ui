@@ -1,6 +1,6 @@
 import {Directive, inject, Input} from '@angular/core';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
-import {tuiNativeElement, tuiPure} from '@taiga-ui/cdk';
+import {tuiInjectElement, tuiPure} from '@taiga-ui/cdk';
 import type {Observable} from 'rxjs';
 import {BehaviorSubject, combineLatest, distinctUntilChanged, map} from 'rxjs';
 
@@ -25,7 +25,7 @@ function calculateColorSegments(colors: string[], progressWidth: number): string
 })
 export class TuiProgressColorSegmentsDirective {
     private readonly colors$ = new BehaviorSubject<string[]>([]);
-    private readonly el = tuiNativeElement<HTMLProgressElement>();
+    private readonly el = tuiInjectElement<HTMLProgressElement>();
     private readonly resize$ = inject(ResizeObserverService);
 
     @Input('tuiProgressColorSegments')

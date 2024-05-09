@@ -4,7 +4,7 @@ import {
     TUI_FALSE_HANDLER,
     TUI_TRUE_HANDLER,
     tuiIfMap,
-    tuiNativeElement,
+    tuiInjectElement,
     tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
 import {BehaviorSubject, combineLatest, interval, map, merge, Observable} from 'rxjs';
@@ -13,7 +13,7 @@ import {BehaviorSubject, combineLatest, interval, map, merge, Observable} from '
     selector: 'tui-carousel',
 })
 export class TuiCarouselDirective extends Observable<unknown> {
-    private readonly el = tuiNativeElement();
+    private readonly el = tuiInjectElement();
     private readonly visible$ = inject(PAGE_VISIBILITY);
     private readonly duration$ = new BehaviorSubject(0);
     private readonly running$ = merge(

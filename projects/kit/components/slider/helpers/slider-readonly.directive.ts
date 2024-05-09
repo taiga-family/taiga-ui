@@ -6,7 +6,7 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {
     TUI_FALSE_HANDLER,
     TUI_TRUE_HANDLER,
-    tuiNativeElement,
+    tuiInjectElement,
     tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
 import {combineLatest, filter, map, merge, tap} from 'rxjs';
@@ -30,7 +30,7 @@ const SLIDER_INTERACTION_KEYS = new Set([
     selector: 'input[tuiSlider][readonly]',
 })
 export class TuiSliderReadonlyDirective {
-    private readonly el = tuiNativeElement<HTMLInputElement>();
+    private readonly el = tuiInjectElement<HTMLInputElement>();
     private readonly doc = inject(DOCUMENT);
 
     @Input({transform: coerceBooleanProperty})

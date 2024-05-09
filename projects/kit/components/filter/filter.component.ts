@@ -11,8 +11,8 @@ import {
     AbstractTuiMultipleControl,
     TUI_DEFAULT_IDENTITY_MATCHER,
     TUI_FALSE_HANDLER,
+    tuiInjectElement,
     tuiIsNativeFocusedIn,
-    tuiNativeElement,
 } from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS, TuiSizeXL, TuiSizeXS} from '@taiga-ui/core';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
@@ -32,7 +32,7 @@ const badgeSizeMap: Record<TuiSizeL | TuiSizeXS, TuiSizeS | TuiSizeXL> = {
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiFilterComponent<T> extends AbstractTuiMultipleControl<T> {
-    private readonly el = tuiNativeElement();
+    private readonly el = tuiInjectElement();
 
     @Input()
     public identityMatcher: TuiIdentityMatcher<T> = TUI_DEFAULT_IDENTITY_MATCHER;

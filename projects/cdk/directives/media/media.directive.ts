@@ -6,7 +6,7 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import {tuiNativeElement} from '@taiga-ui/cdk/utils';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils';
 
 @Directive({
     standalone: true,
@@ -14,7 +14,7 @@ import {tuiNativeElement} from '@taiga-ui/cdk/utils';
     exportAs: 'tuiMedia',
 })
 export class TuiMediaDirective {
-    private readonly el = tuiNativeElement<HTMLMediaElement>();
+    private readonly el = tuiInjectElement<HTMLMediaElement>();
 
     private playbackRate = 1;
 

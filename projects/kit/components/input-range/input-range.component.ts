@@ -19,9 +19,9 @@ import {
     tuiAsControl,
     tuiAsFocusableItemAccessor,
     tuiClamp,
+    tuiInjectElement,
     tuiIsNativeFocused,
     tuiIsNativeFocusedIn,
-    tuiNativeElement,
     tuiPure,
     tuiRound,
 } from '@taiga-ui/cdk';
@@ -63,7 +63,7 @@ export class TuiInputRangeComponent
     private readonly rangeRef: TuiRangeComponent | null = null;
 
     private readonly isMobile = inject(TUI_IS_MOBILE);
-    private readonly el = tuiNativeElement();
+    private readonly el = tuiInjectElement();
 
     @Input()
     public min = 0;

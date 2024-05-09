@@ -8,7 +8,7 @@ import {
     Input,
 } from '@angular/core';
 import {NgControl, NgModel} from '@angular/forms';
-import {tuiNativeElement, tuiPure, tuiWatch} from '@taiga-ui/cdk';
+import {tuiInjectElement, tuiPure, tuiWatch} from '@taiga-ui/cdk';
 import type {TuiSizeS} from '@taiga-ui/core';
 import {take} from 'rxjs';
 
@@ -49,7 +49,7 @@ export class TuiSliderComponent {
     @Input()
     public segments = 1;
 
-    public readonly el = tuiNativeElement<HTMLInputElement>();
+    public readonly el = tuiInjectElement<HTMLInputElement>();
 
     constructor() {
         if (this.control instanceof NgModel) {

@@ -5,8 +5,8 @@ import {WINDOW} from '@ng-web-apis/common';
 import {
     TuiActiveZoneDirective,
     tuiGetClosestFocusable,
+    tuiInjectElement,
     tuiIsElement,
-    tuiNativeElement,
     tuiPx,
 } from '@taiga-ui/cdk';
 import {
@@ -54,7 +54,7 @@ import {TuiDropdownPositionDirective} from './dropdown-position.directive';
     animations: [tuiDropdownAnimation],
 })
 export class TuiDropdownComponent implements OnInit {
-    private readonly el = tuiNativeElement();
+    private readonly el = tuiInjectElement();
     private readonly accessor = inject(TuiRectAccessor);
     private readonly win = inject(WINDOW);
     private readonly viewport = inject(TuiVisualViewportService);

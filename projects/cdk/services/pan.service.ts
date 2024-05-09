@@ -1,7 +1,7 @@
 import {DOCUMENT} from '@angular/common';
 import {inject, Injectable} from '@angular/core';
 import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
-import {tuiNativeElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {
     filter,
     map,
@@ -16,7 +16,7 @@ import {
 @Injectable()
 export class TuiPanService extends Observable<readonly [number, number]> {
     constructor() {
-        const el = tuiNativeElement();
+        const el = tuiInjectElement();
         const doc = inject(DOCUMENT);
 
         super(subscriber => {

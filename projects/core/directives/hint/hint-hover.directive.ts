@@ -1,6 +1,6 @@
 /* eslint-disable rxjs/no-unsafe-takeuntil */
 import {Directive, inject, Input} from '@angular/core';
-import {TuiHoveredService, tuiNativeElement} from '@taiga-ui/cdk';
+import {TuiHoveredService, tuiInjectElement} from '@taiga-ui/cdk';
 import {tuiAsDriver, TuiDriver} from '@taiga-ui/core/abstract';
 import {tuiIsObscured} from '@taiga-ui/core/utils';
 import {
@@ -64,7 +64,7 @@ export class TuiHintHoverDirective extends TuiDriver {
 
     public enabled = true;
 
-    public readonly el = tuiNativeElement();
+    public readonly el = tuiInjectElement();
 
     constructor() {
         super(subscriber => this.stream$.subscribe(subscriber));

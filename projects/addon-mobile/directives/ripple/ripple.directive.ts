@@ -3,7 +3,7 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {
     TUI_FALSE_HANDLER,
     TUI_TRUE_HANDLER,
-    tuiNativeElement,
+    tuiInjectElement,
     tuiTypedFromEvent,
     tuiWithStyles,
 } from '@taiga-ui/cdk';
@@ -24,7 +24,7 @@ const TOUCH_MOVE_DELAY = 100;
     providers: TUI_RIPPLE_PROVIDERS,
 })
 export class TuiRippleDirective {
-    private readonly el = tuiNativeElement();
+    private readonly el = tuiInjectElement();
     private readonly renderer = inject(Renderer2);
     private readonly start$ = inject(TUI_RIPPLE_START);
     private readonly end$ = inject(TUI_RIPPLE_END);

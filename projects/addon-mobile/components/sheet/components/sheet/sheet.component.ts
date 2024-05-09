@@ -14,7 +14,7 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {
     EMPTY_QUERY,
     TUI_IS_IOS,
-    tuiNativeElement,
+    tuiInjectElement,
     tuiPure,
     tuiZonefull,
 } from '@taiga-ui/cdk';
@@ -55,7 +55,7 @@ export class TuiSheetComponent<T> implements TuiSheetRequiredProps<T>, AfterView
 
     private readonly destroyRef = inject(DestroyRef);
     private readonly scroll$ = inject(TUI_SHEET_SCROLL);
-    private readonly el = tuiNativeElement();
+    private readonly el = tuiInjectElement();
     private readonly zone = inject(NgZone);
 
     @Input()

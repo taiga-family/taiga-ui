@@ -1,12 +1,12 @@
 import {Directive, Output} from '@angular/core';
-import {tuiNativeElement, tuiTypedFromEvent} from '@taiga-ui/cdk';
+import {tuiInjectElement, tuiTypedFromEvent} from '@taiga-ui/cdk';
 import {filter, map, tap, throttleTime} from 'rxjs';
 
 @Directive({
     selector: '[tuiCarouselScroll]',
 })
 export class TuiCarouselScrollDirective {
-    private readonly el = tuiNativeElement();
+    private readonly el = tuiInjectElement();
 
     @Output()
     public readonly tuiCarouselScroll = tuiTypedFromEvent(this.el, 'wheel').pipe(

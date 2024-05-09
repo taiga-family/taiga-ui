@@ -11,8 +11,8 @@ import {
 import {
     TuiActiveZoneDirective,
     tuiGetActualTarget,
+    tuiInjectElement,
     tuiIsElement,
-    tuiNativeElement,
     tuiTypedFromEvent,
     tuiZoneOptimized,
 } from '@taiga-ui/cdk';
@@ -31,7 +31,7 @@ export class TuiDropdownHoverDirective extends TuiDriver {
     @ContentChild('tuiDropdownHost', {descendants: true, read: ElementRef})
     private readonly dropdownHost?: ElementRef<HTMLElement>;
 
-    private readonly el = tuiNativeElement();
+    private readonly el = tuiInjectElement();
     private readonly doc = inject(DOCUMENT);
     private readonly options = inject(TUI_DROPDOWN_HOVER_OPTIONS);
     private readonly activeZone = inject(TuiActiveZoneDirective);

@@ -22,11 +22,11 @@ import {
     tuiAsControl,
     tuiAsFocusableItemAccessor,
     TuiAutoFocusDirective,
+    tuiInjectElement,
     tuiIsElement,
     tuiIsInput,
     tuiIsNativeFocused,
     tuiIsNativeFocusedIn,
-    tuiNativeElement,
     tuiPure,
 } from '@taiga-ui/cdk';
 import type {TuiDataListHost} from '@taiga-ui/core';
@@ -86,7 +86,7 @@ export class TuiInputCardGroupedComponent
     @ViewChild('inputCVC', {read: TuiAutoFocusDirective})
     private readonly cvcCardAutofocusRef?: TuiAutoFocusDirective;
 
-    private readonly el = tuiNativeElement();
+    private readonly el = tuiInjectElement();
     private expireInert = false;
 
     @Input()

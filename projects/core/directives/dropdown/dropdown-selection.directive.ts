@@ -9,11 +9,11 @@ import {
     TUI_RANGE,
     TUI_TRUE_HANDLER,
     tuiGetNativeFocused,
+    tuiInjectElement,
     tuiIsElement,
     tuiIsString,
     tuiIsTextfield,
     tuiIsTextNode,
-    tuiNativeElement,
     tuiPx,
 } from '@taiga-ui/cdk';
 import type {TuiRectAccessor} from '@taiga-ui/core/abstract';
@@ -46,7 +46,7 @@ export class TuiDropdownSelectionDirective
     protected readonly doc = inject(DOCUMENT);
     protected readonly vcr = inject(ViewContainerRef);
     protected readonly dropdown = inject(TuiDropdownDirective);
-    protected readonly el = tuiNativeElement();
+    protected readonly el = tuiInjectElement();
     protected readonly handler$ = new BehaviorSubject<TuiBooleanHandler<Range>>(
         TUI_TRUE_HANDLER,
     );

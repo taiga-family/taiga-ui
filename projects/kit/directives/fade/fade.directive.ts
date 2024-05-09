@@ -5,7 +5,7 @@ import {
     MutationObserverService,
 } from '@ng-web-apis/mutation-observer';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
-import {tuiNativeElement, tuiWithStyles, tuiZonefree} from '@taiga-ui/cdk';
+import {tuiInjectElement, tuiWithStyles, tuiZonefree} from '@taiga-ui/cdk';
 import type {TuiOrientation} from '@taiga-ui/core';
 import {fromEvent, merge} from 'rxjs';
 
@@ -45,7 +45,7 @@ export class TuiFadeDirective {
     public orientation: TuiOrientation | '' = 'horizontal';
 
     constructor() {
-        const el = tuiNativeElement();
+        const el = tuiInjectElement();
 
         tuiWithStyles(TuiFadeComponent);
         merge(

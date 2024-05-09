@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {tuiAsPortal, tuiNativeElement, TuiPortalsComponent} from '@taiga-ui/cdk';
+import {tuiAsPortal, tuiInjectElement, TuiPortalsComponent} from '@taiga-ui/cdk';
 import type {TuiRectAccessor} from '@taiga-ui/core';
 import {tuiAsViewport, TuiDropdownService} from '@taiga-ui/core';
 
@@ -18,7 +18,7 @@ import {tuiAsViewport, TuiDropdownService} from '@taiga-ui/core';
     ],
 })
 export class PortalHost extends TuiPortalsComponent implements TuiRectAccessor {
-    private readonly el = tuiNativeElement();
+    private readonly el = tuiInjectElement();
 
     public readonly type = 'viewport';
 

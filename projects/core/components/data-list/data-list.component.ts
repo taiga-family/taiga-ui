@@ -12,11 +12,11 @@ import {
 } from '@angular/core';
 import {
     EMPTY_QUERY,
+    tuiInjectElement,
     tuiIsElement,
     tuiIsNativeFocusedIn,
     tuiIsPresent,
     tuiMoveFocus,
-    tuiNativeElement,
     tuiPure,
     tuiQueryListChanges,
 } from '@taiga-ui/cdk';
@@ -50,7 +50,7 @@ export class TuiDataListComponent<T> implements TuiDataListAccessor<T> {
     private readonly options: QueryList<TuiOptionComponent<T>> = EMPTY_QUERY;
 
     private origin?: HTMLElement;
-    private readonly el = tuiNativeElement();
+    private readonly el = tuiInjectElement();
     private readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER, {
         optional: true,
     });

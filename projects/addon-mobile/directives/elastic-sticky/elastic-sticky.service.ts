@@ -10,7 +10,7 @@ import {
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {
     tuiGetElementOffset,
-    tuiNativeElement,
+    tuiInjectElement,
     tuiScrollFrom,
     tuiZonefree,
 } from '@taiga-ui/cdk';
@@ -20,7 +20,7 @@ import {map, Observable, Subscription, tap} from 'rxjs';
 @Injectable()
 export class TuiElasticStickyService extends Observable<number> {
     private readonly injector = inject(INJECTOR);
-    private readonly el = tuiNativeElement();
+    private readonly el = tuiInjectElement();
     private readonly scrollRef = inject(TUI_SCROLL_REF).nativeElement;
     private readonly zone = inject(NgZone);
     private readonly cd = inject(ChangeDetectorRef);

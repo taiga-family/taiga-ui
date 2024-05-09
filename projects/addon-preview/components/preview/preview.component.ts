@@ -5,7 +5,7 @@ import {
     TUI_FALSE_HANDLER,
     tuiClamp,
     tuiDragAndDropFrom,
-    tuiNativeElement,
+    tuiInjectElement,
     tuiPx,
     tuiRound,
     tuiTypedFromEvent,
@@ -25,7 +25,7 @@ const ROTATION_ANGLE = 90;
     animations: [tuiSlideInTop],
 })
 export class TuiPreviewComponent {
-    private readonly el = tuiNativeElement();
+    private readonly el = tuiInjectElement();
 
     @Input()
     public zoomable = true;

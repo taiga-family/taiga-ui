@@ -13,8 +13,8 @@ import {
     AbstractTuiControl,
     EMPTY_QUERY,
     tuiClamp,
+    tuiInjectElement,
     tuiIsNativeFocusedIn,
-    tuiNativeElement,
     tuiPure,
     tuiQuantize,
 } from '@taiga-ui/cdk';
@@ -40,7 +40,7 @@ export class TuiRangeComponent
     extends AbstractTuiControl<[number, number]>
     implements TuiWithOptionalMinMax<number>, TuiFocusableElementAccessor
 {
-    private readonly el = tuiNativeElement();
+    private readonly el = tuiInjectElement();
 
     @Input()
     public min = 0;

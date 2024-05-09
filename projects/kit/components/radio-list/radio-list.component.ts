@@ -18,8 +18,8 @@ import {
     TUI_DEFAULT_IDENTITY_MATCHER,
     TUI_FALSE_HANDLER,
     tuiAsControl,
+    tuiInjectElement,
     tuiIsNativeFocusedIn,
-    tuiNativeElement,
     TuiValidatorDirective,
 } from '@taiga-ui/cdk';
 import type {TuiSizeS, TuiValueContentContext} from '@taiga-ui/core';
@@ -48,7 +48,7 @@ export class TuiRadioListComponent<T> extends AbstractTuiNullableControl<T> {
     @ViewChildren(NgControl)
     private readonly controls: QueryList<NgControl> = EMPTY_QUERY;
 
-    private readonly el = tuiNativeElement();
+    private readonly el = tuiInjectElement();
 
     @Input()
     public items: readonly T[] = [];
