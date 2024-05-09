@@ -1,6 +1,5 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {TuiFocusableModule, TuiFocusedModule} from '@taiga-ui/cdk';
 import {TuiExpandModule, TuiGroupDirective, TuiSvgComponent} from '@taiga-ui/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
@@ -12,8 +11,6 @@ import {TuiAccordionItemEagerContentDirective} from './accordion-item/accordion-
 @NgModule({
     imports: [
         CommonModule,
-        TuiFocusedModule,
-        TuiFocusableModule,
         PolymorpheusModule,
         TuiSvgComponent,
         TuiGroupDirective,

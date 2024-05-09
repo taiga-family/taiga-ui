@@ -9,13 +9,12 @@
             automation-id="tui-primitive-year-picker__cell"
             class="t-cell"
             [attr.data-range]="getItemRange(item)"
-            [attr.data-state]="getItemState(item)"
+            [class.t-cell_disabled]="isDisabled(item)"
             [class.t-cell_interval]="itemIsInterval(item)"
             [class.t-cell_today]="itemIsToday(item)"
             [tuiScrollIntoView]="scrollItemIntoView(item)"
             (click)="onItemClick(item)"
             (tuiHoveredChange)="onItemHovered($event, item)"
-            (tuiPressedChange)="onItemPressed($event, item)"
         >
             <div class="t-item">{{ item }}</div>
         </div>

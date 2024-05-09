@@ -1,11 +1,11 @@
-import type {TuiTypedMapper} from '@taiga-ui/cdk';
+import type {TuiMapper} from '@taiga-ui/cdk';
 import {TuiMapperPipe} from '@taiga-ui/cdk';
 
 describe('TuiMapper pipe', () => {
     let pipe: TuiMapperPipe;
     const data = 'test';
     const args = ['three', 'eleven'];
-    const mapper: TuiTypedMapper<[string, ...string[]], string> = (item, ...rest) =>
+    const mapper: TuiMapper<[string, ...string[]], string> = (item, ...rest) =>
         item.toUpperCase() + rest.join(' ');
 
     beforeEach(() => {

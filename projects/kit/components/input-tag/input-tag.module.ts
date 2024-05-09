@@ -3,8 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {
     TuiActiveZoneDirective,
-    TuiFocusableModule,
-    TuiHoveredModule,
+    TuiHoveredDirective,
     TuiScrollService,
 } from '@taiga-ui/cdk';
 import {
@@ -24,8 +23,7 @@ import {TuiInputTagComponent} from './input-tag.component';
         CommonModule,
         FormsModule,
         PolymorpheusModule,
-        TuiFocusableModule,
-        TuiHoveredModule,
+        TuiHoveredDirective,
         TuiActiveZoneDirective,
         TuiSvgComponent,
         TuiScrollbarComponent,

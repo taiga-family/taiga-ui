@@ -7,7 +7,7 @@ import {
     tuiGenerateRoutes,
     TuiTextCodeModule,
 } from '@taiga-ui/addon-doc';
-import {TuiElementModule, TuiScrollService} from '@taiga-ui/cdk';
+import {TuiElementDirective, TuiScrollService} from '@taiga-ui/cdk';
 import {TuiButtonDirective, TuiScrollbarComponent} from '@taiga-ui/core';
 import {TuiInputNumberModule} from '@taiga-ui/kit';
 
@@ -18,7 +18,7 @@ import {ExampleTuiScrollComponent} from './scroll.component';
     imports: [
         CommonModule,
         FormsModule,
-        TuiElementModule,
+        TuiElementDirective,
         TuiButtonDirective,
         TuiScrollbarComponent,
         TuiAddonDocModule,

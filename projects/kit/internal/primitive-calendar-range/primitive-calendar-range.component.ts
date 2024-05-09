@@ -9,7 +9,7 @@ import {
     Output,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import type {TuiBooleanHandler, TuiDay, TuiDayRange, TuiTypedMapper} from '@taiga-ui/cdk';
+import type {TuiBooleanHandler, TuiDay, TuiDayRange, TuiMapper} from '@taiga-ui/cdk';
 import {
     TUI_FALSE_HANDLER,
     TUI_FIRST_DAY,
@@ -90,10 +90,8 @@ export class TuiPrimitiveCalendarRangeComponent implements OnInit {
             : this.userViewedMonthSecond;
     }
 
-    protected monthOffset: TuiTypedMapper<[TuiMonth, number], TuiMonth> = (
-        value,
-        offset,
-    ) => value.append({month: offset});
+    protected monthOffset: TuiMapper<[TuiMonth, number], TuiMonth> = (value, offset) =>
+        value.append({month: offset});
 
     protected onSectionFirstViewedMonth(month: TuiMonth): void {
         this.userViewedMonthFirst = month;

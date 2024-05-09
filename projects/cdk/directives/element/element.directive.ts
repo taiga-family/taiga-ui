@@ -2,6 +2,7 @@ import {Directive, ElementRef} from '@angular/core';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils';
 
 @Directive({
+    standalone: true,
     selector: '[tuiElement]',
     exportAs: 'elementRef',
 })

@@ -1,1 +1,1 @@
-export type TuiInteractiveState = 'active' | 'disabled' | 'hover' | 'readonly';
+export type TuiInteractiveState = 'active' | 'disabled' | 'hover';

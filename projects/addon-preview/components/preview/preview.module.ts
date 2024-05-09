@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {MutationObserverModule} from '@ng-web-apis/mutation-observer';
 import {ResizeObserverModule} from '@ng-web-apis/resize-observer';
-import {TuiPanModule, TuiZoomModule} from '@taiga-ui/cdk';
+import {TuiPanDirective, TuiZoomDirective} from '@taiga-ui/cdk';
 import {
     TuiButtonDirective,
     TuiHintModule,
@@ -32,8 +32,8 @@ import {TuiPreviewZoomComponent} from './zoom/preview-zoom.component';
         TuiHintModule,
         TuiSvgComponent,
         TuiLoaderModule,
-        TuiPanModule,
-        TuiZoomModule,
+        TuiPanDirective,
+        TuiZoomDirective,
         TuiPreviewActionModule,
     ],
     declarations: [

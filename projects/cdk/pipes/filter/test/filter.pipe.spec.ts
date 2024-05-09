@@ -1,15 +1,12 @@
-import type {TuiTypedMatcher} from '@taiga-ui/cdk';
+import type {TuiMatcher} from '@taiga-ui/cdk';
 import {TuiFilterPipe} from '@taiga-ui/cdk';
 
 describe('TuiFilter pipe', () => {
     let pipe: TuiFilterPipe;
     const data = ['two', 'eleven'];
     const args = ['two', 'four'];
-    const matcher: TuiTypedMatcher<[string, number, ...string[]]> = (
-        item,
-        search,
-        ...rest
-    ) => item.length === search || rest.includes(item);
+    const matcher: TuiMatcher<[string, number, ...string[]]> = (item, search, ...rest) =>
+        item.length === search || rest.includes(item);
 
     beforeEach(() => {
         pipe = new TuiFilterPipe();

@@ -1,2 +1,2 @@
 export * from './pan.directive';
-export * from './pan.module';
+export * from './pan.service';

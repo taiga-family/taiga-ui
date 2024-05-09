@@ -15,10 +15,6 @@ import {TUI_DOC_CODE_EDITOR} from '@taiga-ui/addon-doc';
     ],
 })
 export class ExampleTokensComponent {
-    protected readonly example1: TuiDocExample = {
-        TypeScript: import('./examples/1/index.ts?raw'),
-    };
-
     protected readonly example2: TuiDocExample = {
         TypeScript: import('./examples/2/index.ts?raw'),
     };

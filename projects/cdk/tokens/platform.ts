@@ -10,9 +10,5 @@ export const TUI_PLATFORM = tuiCreateTokenFromFactory<TuiPlatform>(() => {
         return 'ios';
     }
 
-    if (inject(TUI_IS_ANDROID)) {
-        return 'android';
-    }
-
-    return 'web';
+    return inject(TUI_IS_ANDROID) ? 'android' : 'web';
 });

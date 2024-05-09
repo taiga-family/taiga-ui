@@ -1,11 +1,11 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {TuiRepeatTimesModule} from '@taiga-ui/cdk';
+import {TuiRepeatTimesDirective} from '@taiga-ui/cdk';
 
 import {TuiAxesComponent} from './axes.component';
 
 @NgModule({
-    imports: [CommonModule, TuiRepeatTimesModule],
+    imports: [CommonModule, TuiRepeatTimesDirective],
     declarations: [TuiAxesComponent],
     exports: [TuiAxesComponent],
 })

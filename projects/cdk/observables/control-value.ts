@@ -1,5 +1,6 @@
+/// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
+
 import type {AbstractControl, AbstractControlDirective} from '@angular/forms';
-import {TuiValueChangesException} from '@taiga-ui/cdk/exceptions';
 import {Observable, startWith} from 'rxjs';
 
 /**
@@ -15,4 +16,10 @@ export function tuiControlValue<T>(
 
         return control.valueChanges.pipe(startWith(control.value)).subscribe(subscriber);
     });
+}
+
+export class TuiValueChangesException extends Error {
+    constructor() {
+        super(ngDevMode ? 'Control does not have valueChanges' : '');
+    }
 }

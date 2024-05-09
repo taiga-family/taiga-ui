@@ -1,4 +1,3 @@
-export * from './can-scroll';
 export * from './contains-or-after';
 export * from './element-checks';
 export * from './get-actual-target';
@@ -6,7 +5,6 @@ export * from './get-clipboard-data-text';
 export * from './get-document-or-shadow-root';
 export * from './get-element-obscurers';
 export * from './get-element-offset';
-export * from './get-scroll-parent';
 export * from './get-selected-text';
 export * from './inject-element';
 export * from './is-current-target';

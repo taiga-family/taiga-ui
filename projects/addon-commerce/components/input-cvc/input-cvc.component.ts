@@ -8,11 +8,7 @@ import {
 } from '@angular/core';
 import type {MaskitoOptions} from '@maskito/core';
 import type {TuiCodeCVCLength} from '@taiga-ui/addon-commerce/types';
-import type {
-    TuiAutofillFieldName,
-    TuiFocusableElementAccessor,
-    TuiNativeFocusableElement,
-} from '@taiga-ui/cdk';
+import type {TuiFocusableElementAccessor, TuiNativeFocusableElement} from '@taiga-ui/cdk';
 import {
     AbstractTuiControl,
     tuiAsControl,
@@ -79,7 +75,7 @@ export class TuiInputCVCComponent
         return this.textfieldSize.size;
     }
 
-    protected get autocomplete(): TuiAutofillFieldName {
+    protected get autocomplete(): string {
         return this.autocompleteEnabled ? 'cc-csc' : 'off';
     }
 

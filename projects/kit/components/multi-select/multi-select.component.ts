@@ -15,8 +15,8 @@ import type {
     TuiBooleanHandler,
     TuiContext,
     TuiFocusableElementAccessor,
+    TuiMapper,
     TuiStringHandler,
-    TuiTypedMapper,
 } from '@taiga-ui/cdk';
 import {
     AbstractTuiMultipleControl,
@@ -210,7 +210,7 @@ export class TuiMultiSelectComponent<T>
         return ({$implicit}) => stringify($implicit);
     }
 
-    protected readonly valueMapper: TuiTypedMapper<
+    protected readonly valueMapper: TuiMapper<
         [readonly T[], TuiStringHandler<T>, boolean?],
         ReadonlyArray<TuiStringifiableItem<T>>
     > = (value, stringify, group) =>
@@ -218,7 +218,7 @@ export class TuiMultiSelectComponent<T>
             ? EMPTY_ARRAY
             : value.map(item => new TuiStringifiableItem(item, stringify));
 
-    protected readonly disabledItemHandlerWrapper: TuiTypedMapper<
+    protected readonly disabledItemHandlerWrapper: TuiMapper<
         [TuiBooleanHandler<T>],
         TuiBooleanHandler<TuiStringifiableItem<T> | string>
     > = handler => stringifiable =>

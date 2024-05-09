@@ -1,6 +1,5 @@
 <div
-    class="box tui-text_body-l"
-    [ngClass]="swiped"
+    class="box tui-text_body-l {{ swiped }}"
     (tuiSwipe)="onSwipe($event)"
 >
     Swiped {{ swiped }}

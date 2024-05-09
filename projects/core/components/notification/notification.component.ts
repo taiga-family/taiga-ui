@@ -7,7 +7,6 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import {tuiIsObserved} from '@taiga-ui/cdk';
 import {TUI_CLOSE_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 
 import {TUI_NOTIFICATION_OPTIONS} from './notification.options';
@@ -42,6 +41,6 @@ export class TuiNotificationComponent {
     protected readonly icons = inject(TUI_COMMON_ICONS);
 
     protected get hasClose(): boolean {
-        return !this.hideClose && tuiIsObserved(this.close);
+        return !this.hideClose && this.close.observed;
     }
 }

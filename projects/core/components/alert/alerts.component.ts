@@ -8,7 +8,7 @@ import {
     Injector,
     ViewEncapsulation,
 } from '@angular/core';
-import type {TuiTypedMapper} from '@taiga-ui/cdk';
+import type {TuiMapper} from '@taiga-ui/cdk';
 import {TuiMapperPipe} from '@taiga-ui/cdk';
 import {TUI_PARENT_ANIMATION} from '@taiga-ui/core/animations';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
@@ -33,7 +33,7 @@ export class TuiAlertsComponent {
 
     protected readonly alerts$ = inject(TUI_ALERTS_GROUPED);
     protected readonly trackBy = identity;
-    protected readonly mapper: TuiTypedMapper<[Type<any>], Injector> = useValue =>
+    protected readonly mapper: TuiMapper<[Type<any>], Injector> = useValue =>
         Injector.create({
             providers: [
                 {

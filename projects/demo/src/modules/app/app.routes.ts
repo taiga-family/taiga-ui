@@ -978,16 +978,8 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.Element,
-        loadChildren: async () =>
-            (await import('../directives/element/element.module'))
-                .ExampleTuiElementModule,
         title: 'Element',
-    }),
-    route({
-        path: DemoRoute.For,
-        loadChildren: async () =>
-            (await import('../directives/for/for.module')).ExampleTuiForModule,
-        title: 'For',
+        loadComponent: async () => import('../directives/element'),
     }),
     route({
         path: DemoRoute.Highlight,
@@ -1032,22 +1024,18 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.Pan,
-        loadChildren: async () =>
-            (await import('../directives/pan/pan.module')).ExampleTuiPanModule,
         title: 'Pan',
+        loadComponent: async () => import('../directives/pan'),
     }),
     route({
         path: DemoRoute.Resizer,
-        loadChildren: async () =>
-            (await import('../directives/resizer/resizer.module'))
-                .ExampleTuiResizerModule,
         title: 'Resizer',
+        loadComponent: async () => import('../directives/resizer'),
     }),
     route({
         path: DemoRoute.Swipe,
-        loadChildren: async () =>
-            (await import('../directives/swipe/swipe.module')).ExampleTuiSwipeModule,
         title: 'Swipe',
+        loadComponent: async () => import('../directives/swipe'),
     }),
     route({
         path: DemoRoute.Let,
@@ -1056,9 +1044,8 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.Zoom,
-        loadChildren: async () =>
-            (await import('../directives/zoom/zoom.module')).ExampleTuiZoomModule,
         title: 'Zoom',
+        loadComponent: async () => import('../directives/zoom'),
     }),
     route({
         path: DemoRoute.Present,
@@ -1069,10 +1056,8 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.HoveredChange,
-        loadChildren: async () =>
-            (await import('../directives/hovered-change/hovered-change.module'))
-                .ExampleTuiHoveredChangeModule,
         title: 'HoveredChange',
+        loadComponent: async () => import('../directives/hovered-change'),
     }),
     route({
         path: DemoRoute.ReorderColumns,
@@ -1127,10 +1112,8 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.ValueChanges,
-        loadChildren: async () =>
-            (await import('../directives/value-changes/value-changes.module'))
-                .ExampleTuiValueChangesModule,
         title: 'ValueChanges',
+        loadComponent: async () => import('../directives/value-changes'),
     }),
     route({
         path: DemoRoute.Media,

@@ -8,12 +8,12 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import {tuiPx} from '@taiga-ui/cdk/utils/format';
+import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 
 import {TuiResizeableDirective} from './resizeable.directive';
 
-// TODO: Migrate to PointerEvent in 4.0
 @Directive({
+    standalone: true,
     selector: '[tuiResizer]',
     host: {'[style.touchAction]': '"none"'},
 })
@@ -48,36 +48,25 @@ export class TuiResizerDirective {
         return 'nesw-resize';
     }
 
-    @HostListener('touchstart.silent.passive', ['$event'])
-    protected onTouchStart({touches}: TouchEvent): void {
-        this.onMouseDown(touches[0].clientX, touches[0].clientY);
-    }
-
-    @HostListener('mousedown.silent.prevent', ['$event.x', '$event.y'])
-    protected onMouseDown(x: number, y: number): void {
+    @HostListener('pointerdown.silent.prevent', ['$event.x', '$event.y'])
+    protected onPointerDown(x: number, y: number): void {
         this.x = x;
         this.y = y;
         this.width = this.resizeable.nativeElement.clientWidth;
         this.height = this.resizeable.nativeElement.clientHeight;
     }
 
-    @HostListener('document:mousemove.silent', ['$event'])
-    protected onMouseMove({x, y, buttons}: MouseEvent): void {
+    @HostListener('document:pointermove.silent', ['$event'])
+    protected onPointerMove({x, y, buttons}: PointerEvent): void {
         if (!buttons) {
-            this.onMouseUp();
+            this.onPointerUp();
         } else {
             this.onMove(x, y);
         }
     }
 
-    @HostListener('document:touchmove.silent', ['$event'])
-    protected onTouchMove({touches}: TouchEvent): void {
-        this.onMove(touches[0].clientX, touches[0].clientY);
-    }
-
-    @HostListener('document:mouseup.silent')
-    @HostListener('document:touchend.silent')
-    protected onMouseUp(): void {
+    @HostListener('document:pointerup.silent')
+    protected onPointerUp(): void {
         this.x = NaN;
     }
 

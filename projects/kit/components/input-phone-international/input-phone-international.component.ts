@@ -9,11 +9,7 @@ import {
     Output,
     ViewChild,
 } from '@angular/core';
-import type {
-    TuiContext,
-    TuiFocusableElementAccessor,
-    TuiTypedMapper,
-} from '@taiga-ui/cdk';
+import type {TuiContext, TuiFocusableElementAccessor, TuiMapper} from '@taiga-ui/cdk';
 import {
     AbstractTuiControl,
     CHAR_PLUS,
@@ -193,10 +189,8 @@ export class TuiInputPhoneInternationalComponent
         return this.getFlagPath(this.countryIsoCode);
     }
 
-    protected readonly isoToCountryCodeMapper: TuiTypedMapper<
-        [TuiCountryIsoCode],
-        string
-    > = item => tuiIsoToCountryCode(this.countriesMasks, item);
+    protected readonly isoToCountryCodeMapper: TuiMapper<[TuiCountryIsoCode], string> =
+        item => tuiIsoToCountryCode(this.countriesMasks, item);
 
     /**
      * @deprecated use `<img [src]="countryIsoCode | tuiFlagPipe" />`

@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemoModule} from '@demo/utils';
-import {TuiRepeatTimesModule} from '@taiga-ui/cdk';
+import {TuiRepeatTimesDirective} from '@taiga-ui/cdk';
 import {
     TuiButtonDirective,
     TuiLinkDirective,
@@ -15,7 +15,7 @@ import {TuiCarouselModule} from '@taiga-ui/kit';
         TuiDemoModule,
         TuiNotificationModule,
         TuiCarouselModule,
-        TuiRepeatTimesModule,
+        TuiRepeatTimesDirective,
         TuiButtonDirective,
         TuiLinkDirective,
     ],

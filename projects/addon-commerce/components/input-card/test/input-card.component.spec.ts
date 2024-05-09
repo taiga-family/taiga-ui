@@ -48,13 +48,13 @@ describe('InputCard', () => {
         it('enabled', () => {
             testComponent.component.autocompleteEnabled = true;
 
-            expect(testComponent.component.autocompleteCard).toBe('cc-number');
+            expect(testComponent.component.autocomplete).toBe('cc-number');
         });
 
         it('disabled', () => {
             testComponent.component.autocompleteEnabled = false;
 
-            expect(testComponent.component.autocompleteCard).toBe('off');
+            expect(testComponent.component.autocomplete).toBe('off');
         });
     });
 

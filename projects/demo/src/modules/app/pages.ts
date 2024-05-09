@@ -1180,12 +1180,6 @@ export const pages: TuiDocPages = [
             },
             {
                 section: 'Tools',
-                title: 'For',
-                keywords: 'loading, cycle, empty, list, iterate',
-                route: DemoRoute.For,
-            },
-            {
-                section: 'Tools',
                 title: 'Highlight',
                 keywords: 'поиск, подсветка, search, find, найти',
                 route: DemoRoute.Highlight,

@@ -22,7 +22,7 @@
             [collapsed]="collapsed"
             [id]="getHintId(index)"
             [size]="size"
-            [tuiFocusable]="!!hintContent"
+            [tabIndex]="hintContent ? 0 : -1"
             [value]="set"
         />
     </div>

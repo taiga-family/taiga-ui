@@ -17,7 +17,6 @@ import {
 } from '@taiga-ui/cdk';
 import {TUI_DEFAULT_MARKER_HANDLER} from '@taiga-ui/core/constants';
 import type {TuiRangeState} from '@taiga-ui/core/enums';
-import type {TuiInteractiveState} from '@taiga-ui/core/interfaces';
 import {TUI_DAY_TYPE_HANDLER, TUI_SHORT_WEEK_DAYS} from '@taiga-ui/core/tokens';
 import type {TuiMarkerHandler} from '@taiga-ui/core/types';
 
@@ -28,7 +27,6 @@ import type {TuiMarkerHandler} from '@taiga-ui/core/types';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiPrimitiveCalendarComponent {
-    private pressedItem: TuiDay | null = null;
     private readonly today = TuiDay.currentLocal();
 
     @Input()
@@ -58,24 +56,6 @@ export class TuiPrimitiveCalendarComponent {
     protected readonly unorderedWeekDays$ = inject(TUI_SHORT_WEEK_DAYS);
     protected readonly dayTypeHandler = inject(TUI_DAY_TYPE_HANDLER);
 
-    public getItemState(item: TuiDay): TuiInteractiveState | null {
-        const {disabledItemHandler, pressedItem, hoveredItem} = this;
-
-        if (disabledItemHandler(item)) {
-            return 'disabled';
-        }
-
-        if (pressedItem?.daySame(item)) {
-            return 'active';
-        }
-
-        if (hoveredItem?.daySame(item)) {
-            return 'hover';
-        }
-
-        return null;
-    }
-
     public itemIsInterval(day: TuiDay): boolean {
         const {value, hoveredItem} = this;
 
@@ -98,10 +78,6 @@ export class TuiPrimitiveCalendarComponent {
 
     public onItemHovered(item: TuiDay | false): void {
         this.updateHoveredItem(item || null);
-    }
-
-    public onItemPressed(item: TuiDay | false): void {
-        this.pressedItem = item || null;
     }
 
     public getItemRange(item: TuiDay): TuiRangeState | null {

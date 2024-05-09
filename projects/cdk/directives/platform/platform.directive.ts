@@ -3,6 +3,7 @@ import {TUI_PLATFORM} from '@taiga-ui/cdk/tokens';
 import type {TuiPlatform} from '@taiga-ui/cdk/types';
 
 @Directive({
+    standalone: true,
     selector: '[tuiPlatform]',
     providers: [
         {

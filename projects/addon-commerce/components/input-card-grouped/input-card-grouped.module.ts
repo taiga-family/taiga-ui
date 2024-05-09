@@ -7,7 +7,6 @@ import {TuiFormatCardModule} from '@taiga-ui/addon-commerce/pipes';
 import {
     TuiActiveZoneDirective,
     TuiAutoFocusDirective,
-    TuiFocusableModule,
     TuiLetDirective,
     TuiMapperPipe,
 } from '@taiga-ui/cdk';
@@ -22,7 +21,6 @@ import {TuiInputCardGroupedComponent} from './input-card-grouped.component';
         CommonModule,
         FormsModule,
         MaskitoDirective,
-        TuiFocusableModule,
         TuiSvgComponent,
         TuiWrapperModule,
         TuiActiveZoneDirective,

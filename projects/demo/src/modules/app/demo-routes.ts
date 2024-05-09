@@ -159,7 +159,6 @@ export const DemoRoute = {
     CopyProcessor: '/directives/copy-processor',
     ElasticSticky: '/directives/elastic-sticky',
     Element: '/directives/element',
-    For: '/directives/for',
     Highlight: '/directives/highlight',
     Hint: '/directives/hint',
     HintDescribe: '/directives/hint-describe',

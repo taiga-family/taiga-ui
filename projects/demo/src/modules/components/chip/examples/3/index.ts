@@ -2,7 +2,7 @@ import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiRepeatTimesModule} from '@taiga-ui/cdk';
+import {TuiRepeatTimesDirective} from '@taiga-ui/cdk';
 import {TuiAlertService, TuiButtonDirective} from '@taiga-ui/core';
 import {TuiCheckboxComponent, TuiChipDirective} from '@taiga-ui/kit';
 
@@ -10,7 +10,7 @@ import {TuiCheckboxComponent, TuiChipDirective} from '@taiga-ui/kit';
     standalone: true,
     imports: [
         TuiChipDirective,
-        TuiRepeatTimesModule,
+        TuiRepeatTimesDirective,
         FormsModule,
         TuiButtonDirective,
         TuiCheckboxComponent,

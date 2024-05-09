@@ -2,6 +2,7 @@ import type {EmbeddedViewRef, OnChanges, TemplateRef} from '@angular/core';
 import {Directive, inject, Input, ViewContainerRef} from '@angular/core';
 
 @Directive({
+    standalone: true,
     selector: '[ngFor][ngForOf][ngForElse],[ngFor][ngForOf][ngForEmpty]',
 })
 export class TuiForDirective<T, K = unknown> implements OnChanges {

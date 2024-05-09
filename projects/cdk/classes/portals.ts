@@ -1,3 +1,5 @@
+/// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
+
 import type {ComponentRef, EmbeddedViewRef, Provider, TemplateRef} from '@angular/core';
 import {
     Directive,
@@ -7,7 +9,6 @@ import {
     ViewChild,
     ViewContainerRef,
 } from '@angular/core';
-import {TuiNoHostException} from '@taiga-ui/cdk/exceptions';
 import {tuiProvide} from '@taiga-ui/cdk/utils';
 import type {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 
@@ -82,4 +83,10 @@ export abstract class TuiPortalService {
 
 export function tuiAsPortal(portal: typeof TuiPortalService): Provider {
     return tuiProvide(TuiPortalService, portal);
+}
+
+export class TuiNoHostException extends Error {
+    constructor() {
+        super(ngDevMode ? 'Portals cannot be used without TuiPortalHostComponent' : '');
+    }
 }

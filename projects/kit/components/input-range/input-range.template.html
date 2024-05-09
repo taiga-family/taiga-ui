@@ -74,6 +74,6 @@
         [step]="step"
         (activeThumbChange)="onActiveThumbChange($event)"
         (ngModelChange)="onExternalValueUpdate($event)"
-        (tuiPressedChange)="focusToTextInput()"
+        (pointerdown)="focusToTextInput()"
     />
 </div>

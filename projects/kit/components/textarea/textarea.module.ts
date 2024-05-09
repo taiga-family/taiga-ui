@@ -1,7 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {TuiFocusableModule} from '@taiga-ui/cdk';
 import {
     TuiPrimitiveTextfieldModule,
     TuiScrollbarComponent,
@@ -10,6 +9,7 @@ import {
     TuiTooltipModule,
     TuiWrapperModule,
 } from '@taiga-ui/core';
+import {TuiTabDirective} from '@taiga-ui/kit/components';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiTextareaComponent} from './textarea.component';
@@ -19,13 +19,13 @@ import {TuiTextareaDirective} from './textarea.directive';
     imports: [
         CommonModule,
         FormsModule,
-        TuiFocusableModule,
         TuiScrollbarComponent,
         TuiTooltipModule,
         TuiWrapperModule,
         TuiSvgComponent,
         TuiPrimitiveTextfieldModule,
         PolymorpheusModule,
+        TuiTabDirective,
     ],
     declarations: [TuiTextareaComponent, TuiTextareaDirective],
     exports: [TuiTextareaComponent, TuiTextareaDirective, TuiTextfieldComponent],

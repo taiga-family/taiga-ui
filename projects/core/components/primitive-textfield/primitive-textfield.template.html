@@ -27,7 +27,7 @@
         [id]="id"
         [ngModel]="value"
         [readOnly]="readOnly || !editable"
-        [tuiFocusable]="computedFocusable"
+        [tabIndex]="computedFocusable ? 0 : -1"
         (ngModelChange)="onModelChange($event)"
     />
     <div

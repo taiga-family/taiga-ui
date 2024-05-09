@@ -6,7 +6,7 @@ import {
     Input,
     ViewChildren,
 } from '@angular/core';
-import type {TuiContext, TuiTypedMapper} from '@taiga-ui/cdk';
+import type {TuiContext, TuiMapper} from '@taiga-ui/cdk';
 import {EMPTY_QUERY, TuiIdService, tuiPure, tuiSum} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {
@@ -51,7 +51,7 @@ export class TuiBarChartComponent {
         return this.max || this.getMax(this.value, this.collapsed);
     }
 
-    public readonly percentMapper: TuiTypedMapper<
+    public readonly percentMapper: TuiMapper<
         [readonly number[], boolean, number],
         number
     > = (set, collapsed, max) =>

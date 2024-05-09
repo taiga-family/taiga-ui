@@ -20,9 +20,9 @@
     >
         <button
             automation-id="tui-calendar-month__active-year"
+            tabIndex="-1"
             tuiLink
             type="button"
-            [tuiFocusable]="false"
             (click)="onYearClick()"
         >
             {{ year.formattedYear }}
@@ -34,12 +34,11 @@
                 *tuiLet="getTuiMonth(index, year.year) as item"
                 class="t-cell"
                 [attr.data-range]="getItemRange(item)"
-                [attr.data-state]="getItemState(item)"
+                [class.t-cell_disabled]="disabledItemHandlerWithMinMax(item)"
                 [class.t-cell_interval]="isItemInsideRange(item)"
                 [class.t-cell_today]="isItemToday(item)"
                 (click)="onItemClick(item)"
                 (tuiHoveredChange)="onItemHovered($event, item)"
-                (tuiPressedChange)="onItemHovered($event, item)"
             >
                 <div class="t-item">{{ month }}</div>
             </div>

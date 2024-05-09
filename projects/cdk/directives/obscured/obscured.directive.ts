@@ -1,8 +1,9 @@
 import {Directive, inject, Input, Output} from '@angular/core';
 import {TuiActiveZoneDirective} from '@taiga-ui/cdk/directives/active-zone';
 import {tuiIfMap} from '@taiga-ui/cdk/observables';
-import {TuiObscuredService} from '@taiga-ui/cdk/services';
 import {map, Subject} from 'rxjs';
+
+import {TuiObscuredService} from './obscured.service';
 
 /**
  * Directive that monitors element visibility

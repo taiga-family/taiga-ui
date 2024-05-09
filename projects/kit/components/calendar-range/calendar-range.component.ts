@@ -9,7 +9,7 @@ import {
     Output,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import type {TuiBooleanHandler, TuiDay, TuiDayLike, TuiTypedMapper} from '@taiga-ui/cdk';
+import type {TuiBooleanHandler, TuiDay, TuiDayLike, TuiMapper} from '@taiga-ui/cdk';
 import {
     TUI_FALSE_HANDLER,
     TUI_FIRST_DAY,
@@ -126,7 +126,7 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
         this.value = this.previousValue;
     }
 
-    protected readonly mapper: TuiTypedMapper<
+    protected readonly mapper: TuiMapper<
         [
             readonly TuiDayRangePeriod[],
             TuiDay | null,

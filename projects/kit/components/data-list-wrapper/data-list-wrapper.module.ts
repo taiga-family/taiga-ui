@@ -1,6 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {TuiElementModule} from '@taiga-ui/cdk';
+import {TuiElementDirective} from '@taiga-ui/cdk';
 import {TuiDataListDirective, TuiDataListModule, TuiLoaderModule} from '@taiga-ui/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
@@ -11,7 +11,7 @@ import {TuiDataListWrapperComponent} from './data-list-wrapper.component';
     imports: [
         CommonModule,
         PolymorpheusModule,
-        TuiElementModule,
+        TuiElementDirective,
         TuiDataListModule,
         TuiLoaderModule,
     ],

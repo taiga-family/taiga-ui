@@ -4,7 +4,6 @@ import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiLinkDirective} from '@taiga-ui/core';
 
-import {TuiTokensExample1} from './examples/1';
 import {TuiTokensExample2} from './examples/2';
 import {TuiTokensExample3} from './examples/3';
 import {TuiTokensExample4} from './examples/4';
@@ -25,7 +24,6 @@ import {ExampleTokensComponent} from './tokens.component';
     ],
     declarations: [
         ExampleTokensComponent,
-        TuiTokensExample1,
         TuiTokensExample2,
         TuiTokensExample3,
         TuiTokensExample4,

@@ -1,6 +1,6 @@
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import type {TuiDayLike, TuiTypedMapper, TuiTypedMatcher} from '@taiga-ui/cdk';
+import type {TuiDayLike, TuiMapper, TuiMatcher} from '@taiga-ui/cdk';
 import {TUI_IS_E2E, TuiDay, TuiDayRange, tuiPure} from '@taiga-ui/cdk';
 import type {TuiPoint} from '@taiga-ui/core';
 
@@ -40,10 +40,12 @@ export class TuiLineDaysChartExample2 {
         return day instanceof TuiDay ? day : date.append({day});
     }
 
-    protected readonly filter: TuiTypedMatcher<[readonly [TuiDay, number], TuiDayRange]> =
-        ([day], {from, to}) => day.daySameOrAfter(from) && day.daySameOrBefore(to);
+    protected readonly filter: TuiMatcher<[readonly [TuiDay, number], TuiDayRange]> = (
+        [day],
+        {from, to},
+    ) => day.daySameOrAfter(from) && day.daySameOrBefore(to);
 
-    protected readonly toNumbers: TuiTypedMapper<
+    protected readonly toNumbers: TuiMapper<
         [ReadonlyArray<readonly [TuiDay, number]>, TuiDayRange],
         readonly TuiPoint[]
     > = (days, {from}) =>

@@ -1,15 +1,18 @@
 import {Component, ElementRef} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiElementDirective} from '@taiga-ui/cdk';
+import {TuiButtonDirective} from '@taiga-ui/core';
 import {TuiAvatarComponent} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-element-example-1',
+    standalone: true,
+    imports: [TuiAvatarComponent, TuiElementDirective, TuiButtonDirective],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class TuiElementExample1 {
+export default class ExampleComponent {
     protected isLink(component: unknown): boolean {
         return component instanceof TuiAvatarComponent;
     }

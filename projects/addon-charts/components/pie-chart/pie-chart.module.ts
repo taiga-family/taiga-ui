@@ -1,6 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {TuiHoveredModule, TuiRepeatTimesModule} from '@taiga-ui/cdk';
+import {TuiHoveredDirective, TuiRepeatTimesDirective} from '@taiga-ui/cdk';
 import {TuiHintModule} from '@taiga-ui/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
@@ -10,8 +10,8 @@ import {TuiPieChartDirective} from './pie-chart.directive';
 @NgModule({
     imports: [
         CommonModule,
-        TuiRepeatTimesModule,
-        TuiHoveredModule,
+        TuiRepeatTimesDirective,
+        TuiHoveredDirective,
         PolymorpheusModule,
         TuiHintModule,
     ],

@@ -1,10 +1,5 @@
 /// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
 
-import {
-    TuiInvalidDayException,
-    TuiInvalidMonthException,
-    TuiInvalidYearException,
-} from '@taiga-ui/cdk/exceptions';
 import {tuiInRange, tuiNormalizeToIntNumber} from '@taiga-ui/cdk/utils/math';
 
 import {DATE_FILLER_LENGTH} from './date-fillers';
@@ -171,15 +166,8 @@ export class TuiDay extends TuiMonth {
     public static jsonParse(yearMonthDayString: string): TuiDay {
         const {day, month, year} = this.parseRawDateString(yearMonthDayString, 'YMD');
 
-        if (!TuiYear.isValidYear(year)) {
-            throw new TuiInvalidYearException(year);
-        }
-
-        if (!TuiMonth.isValidMonth(year, month)) {
-            throw new TuiInvalidMonthException(month);
-        }
-
         if (
+            !TuiMonth.isValidMonth(year, month) ||
             !Number.isInteger(day) ||
             !tuiInRange(
                 day,
@@ -187,7 +175,7 @@ export class TuiDay extends TuiMonth {
                 TuiMonth.getMonthDaysCount(month, TuiYear.isLeapYear(year)) + 1,
             )
         ) {
-            throw new TuiInvalidDayException(day);
+            throw new TuiInvalidDayException(year, month, day);
         }
 
         return new TuiDay(year, month, day);
@@ -385,5 +373,11 @@ export class TuiDay extends TuiMonth {
      */
     public override toUtcNativeDate(): Date {
         return new Date(Date.UTC(this.year, this.month, this.day));
+    }
+}
+
+export class TuiInvalidDayException extends Error {
+    constructor(year: number, month: number, day: number) {
+        super(ngDevMode ? `Invalid day: ${year}-${month}-${day}` : '');
     }
 }

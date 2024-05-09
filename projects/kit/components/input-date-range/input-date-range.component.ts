@@ -18,7 +18,7 @@ import type {
     TuiDay,
     TuiDayLike,
     TuiFocusableElementAccessor,
-    TuiTypedMapper,
+    TuiMapper,
 } from '@taiga-ui/cdk';
 import {
     AbstractTuiNullableControl,
@@ -127,7 +127,7 @@ export class TuiInputDateRangeComponent
         {optional: true},
     );
 
-    protected readonly maxLengthMapper: TuiTypedMapper<
+    protected readonly maxLengthMapper: TuiMapper<
         [TuiDay, TuiDayRange | null, TuiDayLike | null, boolean],
         TuiDay
     > = MAX_DAY_RANGE_LENGTH_MAPPER;

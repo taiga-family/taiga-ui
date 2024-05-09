@@ -1,25 +1,11 @@
-<div class="tags">
-    <tui-tag
-        *ngFor="let tag of tags; let index = index; empty: emptyTags"
-        size="l"
-        status="custom"
-        class="tag"
-        [editable]="true"
-        [hoverable]="true"
-        [removable]="true"
-        [value]="tag"
-        (edited)="handleTagEdited($event, index)"
-    />
-</div>
-
-<ng-template #emptyTags>All tags were removed. But Taiga UI is still an awesome UI-kit library ;)</ng-template>
-
-<tui-notification
-    status="info"
-    class="tui-space_top-2"
->
-    Import
-    <code>TuiForModule</code>
-    if you want to be able to pass empty list template to
-    <code>ngFor</code>
-</tui-notification>
+<tui-tag
+    *ngFor="let tag of tags; let index = index"
+    size="l"
+    status="custom"
+    class="tag"
+    [editable]="true"
+    [hoverable]="true"
+    [removable]="true"
+    [value]="tag"
+    (edited)="handleTagEdited($event, index)"
+/>

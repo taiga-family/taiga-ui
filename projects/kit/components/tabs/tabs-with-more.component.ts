@@ -17,7 +17,6 @@ import type {TuiActiveZoneDirective, TuiContext} from '@taiga-ui/cdk';
 import {
     EMPTY_QUERY,
     tuiClamp,
-    TuiFocusableModule,
     tuiGetClosestFocusable,
     tuiInjectElement,
     tuiIsElement,
@@ -46,7 +45,6 @@ import {TuiTabsHorizontalDirective} from './tabs-horizontal.directive';
         CommonModule,
         PolymorpheusModule,
         TuiDropdownModule,
-        TuiFocusableModule,
         TuiTabDirective,
         TuiTabsHorizontalDirective,
         TuiChevronDirective,

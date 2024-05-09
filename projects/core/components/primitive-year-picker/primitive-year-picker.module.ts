@@ -1,9 +1,8 @@
 import {NgModule} from '@angular/core';
 import {
-    TuiHoveredModule,
+    TuiHoveredDirective,
     TuiLetDirective,
-    TuiPressedModule,
-    TuiRepeatTimesModule,
+    TuiRepeatTimesDirective,
 } from '@taiga-ui/cdk';
 import {TuiScrollIntoViewModule} from '@taiga-ui/core/directives/scroll-into-view';
 
@@ -11,9 +10,8 @@ import {TuiPrimitiveYearPickerComponent} from './primitive-year-picker.component
 
 @NgModule({
     imports: [
-        TuiHoveredModule,
-        TuiPressedModule,
-        TuiRepeatTimesModule,
+        TuiHoveredDirective,
+        TuiRepeatTimesDirective,
         TuiLetDirective,
         TuiScrollIntoViewModule,
     ],

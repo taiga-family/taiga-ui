@@ -1,10 +1,10 @@
 import {NgModule} from '@angular/core';
-import {TuiRepeatTimesModule} from '@taiga-ui/cdk';
+import {TuiRepeatTimesDirective} from '@taiga-ui/cdk';
 
 import {TuiArcChartComponent} from './arc-chart.component';
 
 @NgModule({
-    imports: [TuiRepeatTimesModule],
+    imports: [TuiRepeatTimesDirective],
     declarations: [TuiArcChartComponent],
     exports: [TuiArcChartComponent],
 })

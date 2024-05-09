@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {TuiItemDirective, TuiItemModule} from '@taiga-ui/cdk';
+import {TuiItemDirective} from '@taiga-ui/cdk';
 
 import {TuiTabDirective} from './tab.directive';
 import {TuiTabsDirective} from './tabs.directive';
@@ -9,7 +9,7 @@ import {TuiTabsWithMoreComponent} from './tabs-with-more.component';
 
 @NgModule({
     imports: [
-        TuiItemModule,
+        TuiItemDirective,
         TuiTabDirective,
         TuiTabsDirective,
         TuiTabsHorizontalDirective,

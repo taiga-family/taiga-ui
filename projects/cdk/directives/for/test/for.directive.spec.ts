@@ -1,7 +1,8 @@
+import {CommonModule} from '@angular/common';
 import {Component} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
-import {TuiForModule, tuiInjectElement} from '@taiga-ui/cdk';
+import {TuiForDirective, tuiInjectElement} from '@taiga-ui/cdk';
 import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 import {Subject} from 'rxjs';
 
@@ -26,7 +27,7 @@ describe('TuiFor directive', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TuiForModule],
+            imports: [CommonModule, TuiForDirective],
             declarations: [TestComponent],
             providers: [NG_EVENT_PLUGINS],
         });

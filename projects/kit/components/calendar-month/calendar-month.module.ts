@@ -1,11 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {
-    TuiFocusableModule,
-    TuiHoveredModule,
-    TuiLetDirective,
-    TuiPressedModule,
-} from '@taiga-ui/cdk';
+import {TuiHoveredDirective, TuiLetDirective} from '@taiga-ui/cdk';
 import {
     TuiLinkDirective,
     TuiPrimitiveSpinButtonModule,
@@ -23,9 +18,7 @@ import {TuiCalendarMonthComponent} from './calendar-month.component';
         TuiScrollbarComponent,
         TuiLinkDirective,
         TuiLetDirective,
-        TuiHoveredModule,
-        TuiPressedModule,
-        TuiFocusableModule,
+        TuiHoveredDirective,
     ],
     declarations: [TuiCalendarMonthComponent],
     exports: [TuiCalendarMonthComponent],
