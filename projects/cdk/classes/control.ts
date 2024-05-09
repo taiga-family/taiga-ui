@@ -1,4 +1,3 @@
-/// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
 import type {OnInit, Provider, Type} from '@angular/core';
 import {
     ChangeDetectorRef,
