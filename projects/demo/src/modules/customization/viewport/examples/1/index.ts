@@ -1,6 +1,7 @@
-import {Component, ElementRef, inject} from '@angular/core';
+import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {tuiInjectElement} from '@taiga-ui/cdk';
 import {
     tuiAsViewport,
     TuiDropdownDirective,
@@ -19,7 +20,7 @@ import {
     providers: [tuiAsViewport(TuiViewportExample1)],
 })
 export class TuiViewportExample1 extends TuiRectAccessor {
-    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly el = tuiInjectElement();
 
     public readonly type = 'viewport';
 

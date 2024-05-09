@@ -1,6 +1,6 @@
 import type {AfterViewInit} from '@angular/core';
-import {ChangeDetectionStrategy, Component, ElementRef, inject} from '@angular/core';
-import {TuiIdService} from '@taiga-ui/cdk';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {TuiIdService, tuiInjectElement} from '@taiga-ui/cdk';
 import {TUI_CLOSE_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core';
 
 export const TUI_SHEET_CLOSE = 'tui-sheet-close';
@@ -13,7 +13,7 @@ export const TUI_SHEET_ID = 'tui-sheet-id';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiSheetHeadingComponent implements AfterViewInit {
-    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly el = tuiInjectElement();
     protected readonly closeWord$ = inject(TUI_CLOSE_WORD);
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly id = inject(TuiIdService).generate();

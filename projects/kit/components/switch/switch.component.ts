@@ -2,13 +2,12 @@ import type {DoCheck} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
-    ElementRef,
     HostBinding,
     inject,
     Input,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
-import {tuiIsString, TuiNativeValidatorDirective} from '@taiga-ui/cdk';
+import {tuiInjectElement, tuiIsString, TuiNativeValidatorDirective} from '@taiga-ui/cdk';
 import type {TuiSizeS} from '@taiga-ui/core';
 import {TUI_ICON_RESOLVER, TuiAppearanceDirective} from '@taiga-ui/core';
 
@@ -42,7 +41,7 @@ export class TuiSwitchComponent implements DoCheck {
     private readonly appearance = inject(TuiAppearanceDirective);
     private readonly resolver = inject(TUI_ICON_RESOLVER);
     private readonly options = inject(TUI_SWITCH_OPTIONS);
-    private readonly el: HTMLInputElement = inject(ElementRef).nativeElement;
+    private readonly el = tuiInjectElement<HTMLInputElement>();
 
     @Input()
     public size: TuiSizeS = this.options.size;

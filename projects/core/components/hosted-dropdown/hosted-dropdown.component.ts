@@ -22,6 +22,7 @@ import {
     tuiAsFocusableItemAccessor,
     tuiGetActualTarget,
     tuiGetClosestFocusable,
+    tuiInjectElement,
     tuiIsElement,
     tuiIsElementEditable,
     tuiIsHTMLElement,
@@ -115,7 +116,7 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
         optional: true,
     });
 
-    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly el = tuiInjectElement();
     private readonly openChange$ = new BehaviorSubject(false);
     private readonly hostHover$ = tuiTypedFromEvent(this.el, 'mouseover')
         .pipe(

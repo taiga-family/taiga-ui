@@ -1,10 +1,11 @@
 import type {DoCheck, OnInit, TemplateRef} from '@angular/core';
-import {ChangeDetectionStrategy, Component, ElementRef, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {NgControl} from '@angular/forms';
 import type {TuiContext, TuiIdentityMatcher} from '@taiga-ui/cdk';
 import {
     AbstractTuiControl,
     TUI_DEFAULT_IDENTITY_MATCHER,
+    tuiInjectElement,
     tuiIsPresent,
     tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
@@ -26,7 +27,7 @@ import {distinctUntilChanged, EMPTY, map, merge, startWith, Subject} from 'rxjs'
 })
 export class TuiSelectOptionComponent<T> implements OnInit, DoCheck {
     private readonly host = inject<TuiDataListHost<T>>(TUI_DATA_LIST_HOST);
-    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly el = tuiInjectElement();
     private readonly changeDetection$ = new Subject<void>();
     protected readonly abstractControl = inject(AbstractTuiControl<T>, {optional: true});
     protected readonly control = inject(NgControl);

@@ -1,9 +1,9 @@
 import {DOCUMENT} from '@angular/common';
 import type {OnChanges} from '@angular/core';
-import {Directive, ElementRef, inject, Input, Renderer2} from '@angular/core';
+import {Directive, inject, Input, Renderer2} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
-import {svgNodeFilter, tuiPx} from '@taiga-ui/cdk';
+import {svgNodeFilter, tuiInjectElement, tuiPx} from '@taiga-ui/cdk';
 
 @Directive({
     selector: '[tuiHighlight]',
@@ -14,7 +14,7 @@ import {svgNodeFilter, tuiPx} from '@taiga-ui/cdk';
     },
 })
 export class TuiHighlightDirective implements OnChanges {
-    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly el = tuiInjectElement();
     private readonly renderer = inject(Renderer2);
     private readonly doc = inject(DOCUMENT);
     private readonly highlight: HTMLElement = this.setUpHighlight();

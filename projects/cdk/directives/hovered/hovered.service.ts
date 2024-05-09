@@ -1,7 +1,7 @@
-import {ElementRef, inject, Injectable, NgZone} from '@angular/core';
+import {inject, Injectable, NgZone} from '@angular/core';
 import {TUI_FALSE_HANDLER, TUI_TRUE_HANDLER} from '@taiga-ui/cdk/constants';
 import {tuiTypedFromEvent, tuiZoneOptimized} from '@taiga-ui/cdk/observables';
-import {tuiIsElement} from '@taiga-ui/cdk/utils';
+import {tuiInjectElement, tuiIsElement} from '@taiga-ui/cdk/utils';
 import {distinctUntilChanged, filter, map, merge, Observable} from 'rxjs';
 
 function movedOut({currentTarget, relatedTarget}: MouseEvent): boolean {
@@ -14,7 +14,7 @@ function movedOut({currentTarget, relatedTarget}: MouseEvent): boolean {
 
 @Injectable()
 export class TuiHoveredService extends Observable<boolean> {
-    private readonly el: Element = inject(ElementRef).nativeElement;
+    private readonly el = tuiInjectElement();
     private readonly zone = inject(NgZone);
 
     private readonly stream$ = merge(

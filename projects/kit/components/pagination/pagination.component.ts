@@ -10,7 +10,12 @@ import {
     ViewChildren,
 } from '@angular/core';
 import type {TuiContext, TuiNativeFocusableElement} from '@taiga-ui/cdk';
-import {EMPTY_QUERY, tuiClamp, tuiIsNativeFocusedIn} from '@taiga-ui/cdk';
+import {
+    EMPTY_QUERY,
+    tuiClamp,
+    tuiInjectElement,
+    tuiIsNativeFocusedIn,
+} from '@taiga-ui/cdk';
 import type {TuiHorizontalDirection, TuiSizeL, TuiSizeS, TuiSizeXS} from '@taiga-ui/core';
 import {TUI_SPIN_ICONS} from '@taiga-ui/core';
 import {TUI_PAGINATION_TEXTS} from '@taiga-ui/kit/tokens';
@@ -30,7 +35,7 @@ export class TuiPaginationComponent {
     @ViewChildren('element', {read: ElementRef})
     private readonly els: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
-    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly el = tuiInjectElement();
 
     @Input()
     public length = 1;

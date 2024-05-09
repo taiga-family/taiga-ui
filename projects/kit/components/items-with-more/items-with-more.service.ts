@@ -1,14 +1,14 @@
-import {ElementRef, inject, Injectable, NgZone} from '@angular/core';
+import {inject, Injectable, NgZone} from '@angular/core';
 import {MutationObserverService} from '@ng-web-apis/mutation-observer';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
-import {tuiClamp, tuiZoneOptimized} from '@taiga-ui/cdk';
+import {tuiClamp, tuiInjectElement, tuiZoneOptimized} from '@taiga-ui/cdk';
 import {distinctUntilChanged, map, merge, Observable, share, throttleTime} from 'rxjs';
 
 import {TuiItemsWithMoreDirective} from './items-with-more.directive';
 
 @Injectable()
 export class TuiItemsWithMoreService extends Observable<number> {
-    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly el = tuiInjectElement();
     private readonly directive = inject(TuiItemsWithMoreDirective);
 
     protected readonly stream$ = merge(

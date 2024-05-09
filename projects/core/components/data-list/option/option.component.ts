@@ -2,7 +2,6 @@ import type {OnDestroy} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
-    ElementRef,
     forwardRef,
     HostBinding,
     HostListener,
@@ -10,7 +9,7 @@ import {
     Input,
 } from '@angular/core';
 import type {TuiEventWith} from '@taiga-ui/cdk';
-import {tuiIsNativeFocused} from '@taiga-ui/cdk';
+import {tuiInjectElement, tuiIsNativeFocused} from '@taiga-ui/cdk';
 import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
 import type {TuiDataListHost} from '@taiga-ui/core/interfaces';
 import {
@@ -40,7 +39,7 @@ function shouldFocus({currentTarget}: TuiEventWith<MouseEvent, HTMLElement>): bo
     },
 })
 export class TuiOptionComponent<T = unknown> implements OnDestroy {
-    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly el = tuiInjectElement();
     private readonly dataList = inject<TuiDataListComponent<T>>(
         forwardRef(() => TuiDataListComponent),
         {optional: true},

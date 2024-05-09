@@ -1,9 +1,10 @@
 import {DOCUMENT} from '@angular/common';
-import {ElementRef, inject, Injectable} from '@angular/core';
+import {inject, Injectable} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
 import {
     tuiContainsOrAfter,
     tuiGetActualTarget,
+    tuiInjectElement,
     tuiIsElement,
     tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
@@ -16,7 +17,7 @@ const SCROLLBAR_PLACEHOLDER = 17;
 export class TuiDialogCloseService extends Observable<unknown> {
     private readonly win = inject(WINDOW);
     private readonly doc = inject(DOCUMENT);
-    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly el = tuiInjectElement();
 
     private readonly esc$ = tuiTypedFromEvent(this.doc, 'keydown').pipe(
         filter(event => {

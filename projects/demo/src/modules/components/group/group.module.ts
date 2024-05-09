@@ -23,7 +23,6 @@ import {
     TuiInputModule,
     TuiInputNumberModule,
     TuiMultiSelectModule,
-    TuiProjectClassModule,
     TuiRadioComponent,
     TuiSelectModule,
 } from '@taiga-ui/kit';
@@ -36,7 +35,6 @@ import {ExampleTuiGroupComponent} from './group.component';
 
 @NgModule({
     imports: [
-        TuiProjectClassModule,
         TuiLinkDirective,
         TuiBadgeDirective,
         TuiButtonDirective,

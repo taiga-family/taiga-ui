@@ -1,8 +1,9 @@
 import {DOCUMENT} from '@angular/common';
-import {ElementRef, inject, Injectable} from '@angular/core';
+import {inject, Injectable} from '@angular/core';
 import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
 import {TUI_SWIPE_OPTIONS} from '@taiga-ui/cdk/tokens';
 import type {TuiSwipe} from '@taiga-ui/cdk/types';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiGetSwipeDirection, tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import {filter, map, merge, Observable, pairwise} from 'rxjs';
 
@@ -10,12 +11,12 @@ import {filter, map, merge, Observable, pairwise} from 'rxjs';
 export class TuiSwipeService extends Observable<TuiSwipe> {
     constructor() {
         const doc = inject(DOCUMENT);
-        const nativeElement = inject(ElementRef<Element>).nativeElement;
+        const el = tuiInjectElement();
         const {timeout, threshold} = inject(TUI_SWIPE_OPTIONS);
 
         super(subscriber => {
             merge(
-                tuiTypedFromEvent(nativeElement, 'touchstart', {passive: true}),
+                tuiTypedFromEvent(el, 'touchstart', {passive: true}),
                 tuiTypedFromEvent(doc, 'touchend'),
             )
                 .pipe(

@@ -2,7 +2,6 @@ import type {AfterViewChecked, ComponentRef, OnChanges, OnDestroy} from '@angula
 import {
     ChangeDetectorRef,
     Directive,
-    ElementRef,
     inject,
     INJECTOR,
     Input,
@@ -10,7 +9,7 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {TuiActiveZoneDirective, TuiContext} from '@taiga-ui/cdk';
-import {tuiPure} from '@taiga-ui/cdk';
+import {tuiInjectElement, tuiPure} from '@taiga-ui/cdk';
 import type {TuiRectAccessor, TuiVehicle} from '@taiga-ui/core/abstract';
 import {tuiAsRectAccessor, tuiAsVehicle} from '@taiga-ui/core/abstract';
 import type {TuiPortalItem} from '@taiga-ui/core/interfaces';
@@ -47,7 +46,7 @@ export class TuiDropdownDirective
     private readonly service = inject(TuiDropdownService);
     private readonly cdr = inject(ChangeDetectorRef);
 
-    public readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    public readonly el = tuiInjectElement();
     public readonly type = 'dropdown';
     public readonly component = new PolymorpheusComponent(
         inject(TUI_DROPDOWN_COMPONENT),

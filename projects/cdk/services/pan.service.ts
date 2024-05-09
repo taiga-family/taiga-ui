@@ -1,6 +1,7 @@
 import {DOCUMENT} from '@angular/common';
-import {ElementRef, inject, Injectable} from '@angular/core';
+import {inject, Injectable} from '@angular/core';
 import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {
     filter,
     map,
@@ -15,13 +16,13 @@ import {
 @Injectable()
 export class TuiPanService extends Observable<readonly [number, number]> {
     constructor() {
-        const nativeElement = inject(ElementRef<Element>).nativeElement;
+        const el = tuiInjectElement();
         const doc = inject(DOCUMENT);
 
         super(subscriber => {
             merge(
-                tuiTypedFromEvent(nativeElement, 'touchstart', {passive: true}),
-                tuiTypedFromEvent(nativeElement, 'mousedown'),
+                tuiTypedFromEvent(el, 'touchstart', {passive: true}),
+                tuiTypedFromEvent(el, 'mousedown'),
             )
                 .pipe(
                     switchMap(() =>

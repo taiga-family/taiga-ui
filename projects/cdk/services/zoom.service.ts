@@ -1,8 +1,8 @@
-import {ElementRef, inject, Injectable} from '@angular/core';
+import {inject, Injectable} from '@angular/core';
 import {tuiPreventDefault, tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
 import {TUI_ZOOM_OPTIONS} from '@taiga-ui/cdk/tokens';
 import type {TuiZoom} from '@taiga-ui/cdk/types';
-import {tuiDistanceBetweenTouches} from '@taiga-ui/cdk/utils';
+import {tuiDistanceBetweenTouches, tuiInjectElement} from '@taiga-ui/cdk/utils';
 import {filter, map, merge, Observable, scan, switchMap, takeUntil} from 'rxjs';
 
 const TOUCH_SENSITIVITY = 0.01;
@@ -10,17 +10,15 @@ const TOUCH_SENSITIVITY = 0.01;
 @Injectable()
 export class TuiZoomService extends Observable<TuiZoom> {
     constructor() {
-        const nativeElement = inject(ElementRef<HTMLElement>).nativeElement;
+        const el = tuiInjectElement();
         const {wheelSensitivity} = inject(TUI_ZOOM_OPTIONS);
 
         super(subscriber => {
             merge(
-                tuiTypedFromEvent(nativeElement, 'touchstart', {passive: true}).pipe(
+                tuiTypedFromEvent(el, 'touchstart', {passive: true}).pipe(
                     filter(({touches}) => touches.length > 1),
                     switchMap(startEvent =>
-                        tuiTypedFromEvent(nativeElement, 'touchmove', {
-                            passive: true,
-                        }).pipe(
+                        tuiTypedFromEvent(el, 'touchmove', {passive: true}).pipe(
                             tuiPreventDefault(),
                             scan(
                                 (prev, event) => {
@@ -52,11 +50,11 @@ export class TuiZoomService extends Observable<TuiZoom> {
 
                                 return {clientX, clientY, delta, event};
                             }),
-                            takeUntil(tuiTypedFromEvent(nativeElement, 'touchend')),
+                            takeUntil(tuiTypedFromEvent(el, 'touchend')),
                         ),
                     ),
                 ),
-                tuiTypedFromEvent(nativeElement, 'wheel', {passive: false}).pipe(
+                tuiTypedFromEvent(el, 'wheel', {passive: false}).pipe(
                     tuiPreventDefault(),
                     map(wheel => ({
                         clientX: wheel.clientX,

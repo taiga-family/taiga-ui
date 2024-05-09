@@ -1,13 +1,13 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    ElementRef,
     HostBinding,
     HostListener,
     inject,
     Input,
 } from '@angular/core';
 import {RouterLinkActive} from '@angular/router';
+import {tuiInjectElement} from '@taiga-ui/cdk';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core';
 import type {Observable} from 'rxjs';
 import {EMPTY, filter} from 'rxjs';
@@ -26,7 +26,7 @@ import {TuiStepperComponent} from '../stepper.component';
 })
 export class TuiStepComponent {
     private readonly stepper = inject(TuiStepperComponent);
-    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly el = tuiInjectElement();
     private readonly routerLinkActive$: Observable<boolean> =
         inject(RouterLinkActive, {optional: true})?.isActiveChange || EMPTY;
 

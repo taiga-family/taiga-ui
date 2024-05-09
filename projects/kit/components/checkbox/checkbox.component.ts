@@ -3,13 +3,17 @@ import {
     ChangeDetectionStrategy,
     Component,
     DestroyRef,
-    ElementRef,
     inject,
     Input,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {NgControl, NgModel} from '@angular/forms';
-import {tuiControlValue, tuiIsString, TuiNativeValidatorDirective} from '@taiga-ui/cdk';
+import {
+    tuiControlValue,
+    tuiInjectElement,
+    tuiIsString,
+    TuiNativeValidatorDirective,
+} from '@taiga-ui/cdk';
 import type {TuiSizeS} from '@taiga-ui/core';
 import {TUI_ICON_RESOLVER, TuiAppearanceDirective} from '@taiga-ui/core';
 
@@ -45,7 +49,7 @@ export class TuiCheckboxComponent implements OnInit, DoCheck {
     private readonly options = inject(TUI_CHECKBOX_OPTIONS);
     private readonly resolver = inject(TUI_ICON_RESOLVER);
     private readonly destroyRef = inject(DestroyRef);
-    private readonly el: HTMLInputElement = inject(ElementRef).nativeElement;
+    private readonly el = tuiInjectElement<HTMLInputElement>();
 
     @Input()
     public size: TuiSizeS = this.options.size;

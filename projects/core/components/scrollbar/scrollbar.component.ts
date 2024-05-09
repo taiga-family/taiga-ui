@@ -7,7 +7,7 @@ import {
     inject,
     Input,
 } from '@angular/core';
-import {TUI_IS_IOS, tuiGetElementOffset} from '@taiga-ui/cdk';
+import {TUI_IS_IOS, tuiGetElementOffset, tuiInjectElement} from '@taiga-ui/cdk';
 import {TuiScrollControlsComponent} from '@taiga-ui/core/components/scroll-controls';
 import {TUI_SCROLL_INTO_VIEW, TUI_SCROLLABLE} from '@taiga-ui/core/constants';
 import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
@@ -28,7 +28,7 @@ import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
     ],
 })
 export class TuiScrollbarComponent {
-    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly el = tuiInjectElement();
 
     @Input()
     public hidden = false;

@@ -1,13 +1,11 @@
-import {
-    Directive,
-    ElementRef,
-    forwardRef,
-    HostListener,
-    inject,
-    Input,
-} from '@angular/core';
+import {Directive, forwardRef, HostListener, inject, Input} from '@angular/core';
 import type {TuiFocusableElementAccessor} from '@taiga-ui/cdk';
-import {AbstractTuiControl, tuiClamp, tuiIsNativeFocused} from '@taiga-ui/cdk';
+import {
+    AbstractTuiControl,
+    tuiClamp,
+    tuiInjectElement,
+    tuiIsNativeFocused,
+} from '@taiga-ui/cdk';
 import type {TuiKeySteps} from '@taiga-ui/kit/types';
 import {
     tuiKeyStepValueToPercentage,
@@ -29,7 +27,7 @@ export class TuiSliderKeyStepsDirective
     extends AbstractTuiControl<number>
     implements TuiFocusableElementAccessor
 {
-    private readonly el: HTMLInputElement = inject(ElementRef).nativeElement;
+    private readonly el = tuiInjectElement<HTMLInputElement>();
     private readonly slider = inject<TuiSliderComponent>(
         forwardRef(() => TuiSliderComponent),
     );

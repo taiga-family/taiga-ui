@@ -1,13 +1,12 @@
 import {
     Directive,
-    ElementRef,
     EventEmitter,
     HostBinding,
     HostListener,
-    inject,
     Input,
     Output,
 } from '@angular/core';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils';
 
 @Directive({
     standalone: true,
@@ -15,7 +14,7 @@ import {
     exportAs: 'tuiMedia',
 })
 export class TuiMediaDirective {
-    private readonly el: HTMLMediaElement = inject(ElementRef).nativeElement;
+    private readonly el = tuiInjectElement<HTMLMediaElement>();
 
     private playbackRate = 1;
 

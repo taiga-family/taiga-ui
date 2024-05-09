@@ -10,7 +10,7 @@ import {
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {NgControl} from '@angular/forms';
 import {RouterLinkActive} from '@angular/router';
-import {EMPTY_QUERY, tuiQueryListChanges} from '@taiga-ui/cdk';
+import {EMPTY_QUERY, tuiInjectElement, tuiQueryListChanges} from '@taiga-ui/cdk';
 import {EMPTY, switchMap} from 'rxjs';
 
 import {TuiSegmentedComponent} from './segmented.component';
@@ -31,7 +31,7 @@ export class TuiSegmentedDirective implements AfterContentChecked, AfterContentI
 
     private readonly destroyRef = inject(DestroyRef);
     private readonly component = inject(TuiSegmentedComponent);
-    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly el = tuiInjectElement();
 
     public ngAfterContentInit(): void {
         tuiQueryListChanges(this.controls)

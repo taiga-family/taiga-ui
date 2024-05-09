@@ -1,6 +1,11 @@
 import type {OnChanges, SimpleChanges} from '@angular/core';
-import {Directive, ElementRef, inject, Input} from '@angular/core';
-import {CHAR_NO_BREAK_SPACE, tuiPure, tuiWithStyles} from '@taiga-ui/cdk';
+import {Directive, inject, Input} from '@angular/core';
+import {
+    CHAR_NO_BREAK_SPACE,
+    tuiInjectElement,
+    tuiPure,
+    tuiWithStyles,
+} from '@taiga-ui/cdk';
 import {TUI_ANIMATIONS_DEFAULT_DURATION, TUI_ANIMATIONS_SPEED} from '@taiga-ui/core';
 
 import {TuiSkeletonComponent} from './skeleton.component';
@@ -18,7 +23,7 @@ const FADE = [{opacity: 0.06}, {opacity: 1}];
 })
 export class TuiSkeletonDirective implements OnChanges {
     private animation?: Animation;
-    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly el = tuiInjectElement();
     private readonly duration =
         inject(TUI_ANIMATIONS_SPEED) * TUI_ANIMATIONS_DEFAULT_DURATION * 2;
 

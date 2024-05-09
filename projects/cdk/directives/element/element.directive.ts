@@ -1,4 +1,5 @@
-import {Directive, ElementRef, inject} from '@angular/core';
+import {Directive, ElementRef} from '@angular/core';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils';
 
 @Directive({
     selector: '[tuiElement]',
@@ -7,7 +8,7 @@ import {Directive, ElementRef, inject} from '@angular/core';
 export class TuiElementDirective<T extends Element = HTMLElement>
     implements ElementRef<T>
 {
-    public nativeElement = inject(ElementRef<T>).nativeElement;
+    public nativeElement = tuiInjectElement<T>();
 
     constructor() {
         /**

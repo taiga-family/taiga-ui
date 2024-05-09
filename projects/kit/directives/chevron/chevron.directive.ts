@@ -1,6 +1,6 @@
 import type {DoCheck} from '@angular/core';
-import {Directive, ElementRef, inject, INJECTOR, Input} from '@angular/core';
-import {tuiWithStyles} from '@taiga-ui/cdk';
+import {Directive, inject, INJECTOR, Input} from '@angular/core';
+import {tuiInjectElement, tuiWithStyles} from '@taiga-ui/cdk';
 import {TuiDropdownDirective, TuiIconsDirective} from '@taiga-ui/core';
 
 import {TuiChevronComponent} from './chevron.component';
@@ -14,7 +14,7 @@ import {TuiChevronService} from './chevron.service';
     },
 })
 export class TuiChevronDirective implements DoCheck {
-    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly el = tuiInjectElement();
     private readonly dropdown = inject(TuiDropdownDirective, {optional: true});
     private readonly icons = inject(TuiIconsDirective);
     private readonly handler = inject(TuiChevronService).getHandler(inject(INJECTOR));

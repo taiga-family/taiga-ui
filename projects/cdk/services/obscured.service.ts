@@ -1,8 +1,8 @@
-import {ElementRef, inject, Injectable, NgZone} from '@angular/core';
+import {inject, Injectable, NgZone} from '@angular/core';
 import {ANIMATION_FRAME} from '@ng-web-apis/common';
 import {POLLING_TIME} from '@taiga-ui/cdk/constants';
 import {tuiZoneOptimized} from '@taiga-ui/cdk/observables';
-import {tuiGetElementObscures} from '@taiga-ui/cdk/utils/dom';
+import {tuiGetElementObscures, tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {distinctUntilChanged, map, Observable, startWith, throttleTime} from 'rxjs';
 
 // @bad TODO: Consider Intersection Observer with fallback to current implementation
@@ -12,7 +12,7 @@ import {distinctUntilChanged, map, Observable, startWith, throttleTime} from 'rx
  */
 @Injectable()
 export class TuiObscuredService extends Observable<readonly Element[] | null> {
-    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly el = tuiInjectElement();
     private readonly obscured$ = inject(ANIMATION_FRAME).pipe(
         throttleTime(POLLING_TIME),
         map(() => tuiGetElementObscures(this.el)),

@@ -1,5 +1,5 @@
-import {ContentChild, Directive, ElementRef, forwardRef, inject} from '@angular/core';
-import {tuiWithStyles} from '@taiga-ui/cdk';
+import {ContentChild, Directive, forwardRef, inject} from '@angular/core';
+import {tuiInjectElement, tuiWithStyles} from '@taiga-ui/cdk';
 
 import {TuiLabelComponent} from './label.component';
 import {TuiTextfieldComponent} from './textfield.component';
@@ -16,7 +16,7 @@ export class TuiLabelDirective {
     @ContentChild(forwardRef(() => TuiTextfieldComponent))
     protected readonly textfield?: unknown;
 
-    protected readonly el: HTMLLabelElement = inject(ElementRef).nativeElement;
+    protected readonly el = tuiInjectElement<HTMLLabelElement>();
     protected readonly nothing = tuiWithStyles(TuiLabelComponent);
     protected readonly parent = inject(
         forwardRef(() => TuiTextfieldComponent),

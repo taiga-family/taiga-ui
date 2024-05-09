@@ -1,5 +1,6 @@
-import {Directive, ElementRef, inject, Output} from '@angular/core';
+import {Directive, Output} from '@angular/core';
 import {tuiPreventDefault, tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils';
 import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import {distinctUntilChanged, filter, map, merge, startWith, switchMap} from 'rxjs';
 
@@ -11,7 +12,7 @@ import {distinctUntilChanged, filter, map, merge, startWith, switchMap} from 'rx
     },
 })
 export class TuiDroppableDirective {
-    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly el = tuiInjectElement();
 
     @Output()
     public readonly tuiDroppableDropped = tuiTypedFromEvent(this.el, 'drop').pipe(

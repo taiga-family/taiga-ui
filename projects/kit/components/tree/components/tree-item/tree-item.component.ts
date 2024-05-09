@@ -3,13 +3,12 @@ import {
     ChangeDetectionStrategy,
     Component,
     ContentChildren,
-    ElementRef,
     forwardRef,
     HostBinding,
     inject,
     SkipSelf,
 } from '@angular/core';
-import {EMPTY_QUERY, tuiProvide} from '@taiga-ui/cdk';
+import {EMPTY_QUERY, tuiInjectElement, tuiProvide} from '@taiga-ui/cdk';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {distinctUntilChanged, map, startWith, Subject} from 'rxjs';
 
@@ -42,7 +41,7 @@ export class TuiTreeItemComponent implements DoCheck {
     @ContentChildren(TUI_TREE_NODE as any)
     private readonly nested: QueryList<unknown> = EMPTY_QUERY;
 
-    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly el = tuiInjectElement();
 
     private readonly controller = inject<TuiTreeController>(
         forwardRef(() => TUI_TREE_CONTROLLER),

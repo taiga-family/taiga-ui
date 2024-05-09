@@ -1,16 +1,11 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    ElementRef,
-    inject,
-    Input,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {TUI_PREVIEW_ICONS, TUI_PREVIEW_TEXTS} from '@taiga-ui/addon-preview/tokens';
 import type {TuiZoom} from '@taiga-ui/cdk';
 import {
     TUI_FALSE_HANDLER,
     tuiClamp,
     tuiDragAndDropFrom,
+    tuiInjectElement,
     tuiPx,
     tuiRound,
     tuiTypedFromEvent,
@@ -30,7 +25,7 @@ const ROTATION_ANGLE = 90;
     animations: [tuiSlideInTop],
 })
 export class TuiPreviewComponent {
-    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly el = tuiInjectElement();
 
     @Input()
     public zoomable = true;

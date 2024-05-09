@@ -1,8 +1,8 @@
-import {Component, ElementRef, inject} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {USER_AGENT} from '@ng-web-apis/common';
-import {tuiIsEdge, tuiIsFirefox, tuiIsSafari} from '@taiga-ui/cdk';
+import {tuiInjectElement, tuiIsEdge, tuiIsFirefox, tuiIsSafari} from '@taiga-ui/cdk';
 
 @Component({
     selector: 'tui-browser-example-1',
@@ -12,7 +12,7 @@ import {tuiIsEdge, tuiIsFirefox, tuiIsSafari} from '@taiga-ui/cdk';
 })
 export class TuiBrowserExample1 {
     private readonly userAgent = inject(USER_AGENT);
-    private readonly el: Element = inject(ElementRef).nativeElement;
+    private readonly el = tuiInjectElement();
 
     protected get aboutMyBrowser(): string {
         if (tuiIsEdge(this.userAgent)) {

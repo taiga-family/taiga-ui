@@ -2,7 +2,6 @@ import {DOCUMENT} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
-    ElementRef,
     HostBinding,
     inject,
     Input,
@@ -10,6 +9,7 @@ import {
 import {
     TUI_IS_IOS,
     tuiBlurNativeFocused,
+    tuiInjectElement,
     tuiIsNativeFocusedIn,
     tuiIsSafari,
 } from '@taiga-ui/cdk';
@@ -26,7 +26,7 @@ import {TUI_LOADER_OPTIONS} from './loader.options';
 })
 export class TuiLoaderComponent {
     private readonly doc = inject(DOCUMENT);
-    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly el = tuiInjectElement();
     private readonly isIOS = inject(TUI_IS_IOS);
     private readonly options = inject(TUI_LOADER_OPTIONS);
 

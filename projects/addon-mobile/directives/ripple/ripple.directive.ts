@@ -1,8 +1,9 @@
-import {Directive, ElementRef, inject, Input, Renderer2} from '@angular/core';
+import {Directive, inject, Input, Renderer2} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {
     TUI_FALSE_HANDLER,
     TUI_TRUE_HANDLER,
+    tuiInjectElement,
     tuiTypedFromEvent,
     tuiWithStyles,
 } from '@taiga-ui/cdk';
@@ -23,7 +24,7 @@ const TOUCH_MOVE_DELAY = 100;
     providers: TUI_RIPPLE_PROVIDERS,
 })
 export class TuiRippleDirective {
-    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly el = tuiInjectElement();
     private readonly renderer = inject(Renderer2);
     private readonly start$ = inject(TUI_RIPPLE_START);
     private readonly end$ = inject(TUI_RIPPLE_END);

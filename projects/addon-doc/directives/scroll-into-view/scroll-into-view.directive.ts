@@ -1,7 +1,7 @@
-import {Directive, ElementRef, inject, Input} from '@angular/core';
+import {Directive, inject, Input} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {TUI_DOC_PAGE_LOADED} from '@taiga-ui/addon-doc/tokens';
-import {tuiGetElementObscures} from '@taiga-ui/cdk';
+import {tuiGetElementObscures, tuiInjectElement} from '@taiga-ui/cdk';
 import {debounceTime, filter, ReplaySubject, switchMap} from 'rxjs';
 
 @Directive({
@@ -11,7 +11,7 @@ export class TuiScrollIntoViewLinkDirective {
     private readonly scroll$ = new ReplaySubject<boolean>(1);
 
     constructor() {
-        const el: HTMLElement = inject(ElementRef).nativeElement;
+        const el = tuiInjectElement();
 
         inject(TUI_DOC_PAGE_LOADED)
             .pipe(

@@ -3,10 +3,8 @@ import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
-    ElementRef,
     HostBinding,
     HostListener,
-    inject,
     Input,
     ViewChildren,
     ViewEncapsulation,
@@ -20,6 +18,7 @@ import {
     TUI_DEFAULT_IDENTITY_MATCHER,
     TUI_FALSE_HANDLER,
     tuiAsControl,
+    tuiInjectElement,
     tuiIsNativeFocusedIn,
     TuiValidatorDirective,
 } from '@taiga-ui/cdk';
@@ -49,7 +48,7 @@ export class TuiRadioListComponent<T> extends AbstractTuiNullableControl<T> {
     @ViewChildren(NgControl)
     private readonly controls: QueryList<NgControl> = EMPTY_QUERY;
 
-    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly el = tuiInjectElement();
 
     @Input()
     public items: readonly T[] = [];

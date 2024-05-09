@@ -1,7 +1,7 @@
-import {Directive, ElementRef, inject, Input, NgZone} from '@angular/core';
+import {Directive, inject, Input, NgZone} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {ANIMATION_FRAME} from '@ng-web-apis/common';
-import {POLLING_TIME, tuiScrollFrom, tuiZonefree} from '@taiga-ui/cdk';
+import {POLLING_TIME, tuiInjectElement, tuiScrollFrom, tuiZonefree} from '@taiga-ui/cdk';
 import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
 import {merge, throttleTime} from 'rxjs';
 
@@ -15,8 +15,8 @@ const MIN_WIDTH = 24;
     providers: [TuiScrollbarService],
 })
 export class TuiScrollbarDirective {
-    private readonly el: HTMLElement = inject(TUI_SCROLL_REF).nativeElement;
-    private readonly style: CSSStyleDeclaration = inject(ElementRef).nativeElement.style;
+    private readonly el = inject(TUI_SCROLL_REF).nativeElement;
+    private readonly style = tuiInjectElement().style;
 
     @Input()
     public tuiScrollbar: 'horizontal' | 'vertical' = 'vertical';

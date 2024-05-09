@@ -1,13 +1,8 @@
 import type {OnInit} from '@angular/core';
-import {
-    ChangeDetectionStrategy,
-    Component,
-    DestroyRef,
-    ElementRef,
-    inject,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, DestroyRef, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {TuiPopover} from '@taiga-ui/cdk';
+import {tuiInjectElement} from '@taiga-ui/cdk';
 import {tuiFadeIn, tuiHeightCollapse, tuiSlideIn} from '@taiga-ui/core/animations';
 import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
 import {tuiToAnimationOptions} from '@taiga-ui/core/utils';
@@ -33,7 +28,7 @@ import {TUI_ALERT_POSITION} from './alert.tokens';
     },
 })
 export class TuiAlertComponent<O, I> implements OnInit {
-    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly el = tuiInjectElement();
     private readonly destroyRef = inject(DestroyRef);
     protected readonly position = inject(TUI_ALERT_POSITION);
     protected readonly item =

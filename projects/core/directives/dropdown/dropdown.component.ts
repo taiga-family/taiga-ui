@@ -1,10 +1,11 @@
 import type {OnInit} from '@angular/core';
-import {ChangeDetectionStrategy, Component, ElementRef, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {WINDOW} from '@ng-web-apis/common';
 import {
     TuiActiveZoneDirective,
     tuiGetClosestFocusable,
+    tuiInjectElement,
     tuiIsElement,
     tuiPx,
 } from '@taiga-ui/cdk';
@@ -53,7 +54,7 @@ import {TuiDropdownPositionDirective} from './dropdown-position.directive';
     animations: [tuiDropdownAnimation],
 })
 export class TuiDropdownComponent implements OnInit {
-    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly el = tuiInjectElement();
     private readonly accessor = inject(TuiRectAccessor);
     private readonly win = inject(WINDOW);
     private readonly viewport = inject(TuiVisualViewportService);

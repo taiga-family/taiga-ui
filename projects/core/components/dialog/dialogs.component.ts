@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
-import {ChangeDetectionStrategy, Component, ElementRef, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import type {TuiPopover} from '@taiga-ui/cdk';
-import {TuiFocusTrapDirective} from '@taiga-ui/cdk';
+import {TuiFocusTrapDirective, tuiInjectElement} from '@taiga-ui/cdk';
 import {tuiHost} from '@taiga-ui/core/animations';
 import {
     TuiScrollControlsComponent,
@@ -33,7 +33,7 @@ import {TUI_DIALOGS} from './dialog.tokens';
     },
 })
 export class TuiDialogsComponent {
-    protected readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    protected readonly el = tuiInjectElement();
     protected readonly dialogs$: Observable<ReadonlyArray<TuiPopover<any, any>>> =
         inject(TUI_DIALOGS);
 }

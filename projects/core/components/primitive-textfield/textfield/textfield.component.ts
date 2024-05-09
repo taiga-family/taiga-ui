@@ -1,5 +1,5 @@
-import {ChangeDetectionStrategy, Component, ElementRef, inject} from '@angular/core';
-import {TuiIdService} from '@taiga-ui/cdk';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {TuiIdService, tuiInjectElement} from '@taiga-ui/cdk';
 import {
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
@@ -26,7 +26,7 @@ import {TUI_TEXTFIELD_HOST} from '@taiga-ui/core/tokens';
     },
 })
 export class TuiTextfieldComponent {
-    private readonly el: HTMLInputElement = inject(ElementRef).nativeElement;
+    private readonly el = tuiInjectElement<HTMLInputElement>();
     private readonly idService = inject(TuiIdService);
     protected readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
     protected readonly host = inject<TuiTextfieldHost>(TUI_TEXTFIELD_HOST);

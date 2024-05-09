@@ -1,7 +1,11 @@
 import {DOCUMENT} from '@angular/common';
-import {Directive, ElementRef, inject, NgZone, Output} from '@angular/core';
+import {Directive, inject, NgZone, Output} from '@angular/core';
 import {tuiZoneOptimized} from '@taiga-ui/cdk/observables';
-import {tuiContainsOrAfter, tuiGetActualTarget} from '@taiga-ui/cdk/utils';
+import {
+    tuiContainsOrAfter,
+    tuiGetActualTarget,
+    tuiInjectElement,
+} from '@taiga-ui/cdk/utils';
 import type {Observable} from 'rxjs';
 import {filter, fromEvent, map} from 'rxjs';
 
@@ -12,7 +16,7 @@ import {filter, fromEvent, map} from 'rxjs';
 export class TuiClickOutsideDirective {
     private readonly zone = inject(NgZone);
     private readonly doc = inject(DOCUMENT);
-    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly el = tuiInjectElement();
 
     @Output()
     public readonly tuiClickOutside: Observable<unknown> = fromEvent(

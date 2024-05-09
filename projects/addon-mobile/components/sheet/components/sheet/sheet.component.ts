@@ -1,9 +1,8 @@
-import type {AfterViewInit, QueryList} from '@angular/core';
+import type {AfterViewInit, ElementRef, QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     DestroyRef,
-    ElementRef,
     HostListener,
     inject,
     Input,
@@ -12,7 +11,13 @@ import {
     ViewChildren,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {EMPTY_QUERY, TUI_IS_IOS, tuiPure, tuiZonefull} from '@taiga-ui/cdk';
+import {
+    EMPTY_QUERY,
+    TUI_IS_IOS,
+    tuiInjectElement,
+    tuiPure,
+    tuiZonefull,
+} from '@taiga-ui/cdk';
 import {tuiSlideInTop} from '@taiga-ui/core';
 import {TUI_MORE_WORD} from '@taiga-ui/kit';
 import {map, timer} from 'rxjs';
@@ -50,7 +55,7 @@ export class TuiSheetComponent<T> implements TuiSheetRequiredProps<T>, AfterView
 
     private readonly destroyRef = inject(DestroyRef);
     private readonly scroll$ = inject(TUI_SHEET_SCROLL);
-    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly el = tuiInjectElement();
     private readonly zone = inject(NgZone);
 
     @Input()

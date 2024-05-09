@@ -3,7 +3,6 @@ import {AsyncPipe, DOCUMENT, NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
-    ElementRef,
     inject,
     Input,
     SecurityContext,
@@ -15,6 +14,7 @@ import type {TuiSafeHtml} from '@taiga-ui/cdk';
 import {
     TUI_BASE_HREF,
     tuiGetDocumentOrShadowRoot,
+    tuiInjectElement,
     tuiIsString,
     TuiLetDirective,
     tuiPure,
@@ -53,7 +53,7 @@ export class TuiSvgComponent {
     private readonly svgService = inject(TuiSvgService);
     private readonly staticRequestService = inject(TuiStaticRequestService);
     private readonly sanitizer = inject(DomSanitizer);
-    private readonly el: Element = inject(ElementRef).nativeElement;
+    private readonly el = tuiInjectElement();
     private readonly baseHref = inject(TUI_BASE_HREF);
     private readonly src$ = new ReplaySubject<void>(1);
     private readonly srcInterceptors = inject(TUI_SVG_SRC_INTERCEPTORS, {

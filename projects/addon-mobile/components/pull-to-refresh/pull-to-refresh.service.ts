@@ -1,5 +1,5 @@
-import {ElementRef, inject, Injectable} from '@angular/core';
-import {tuiScrollFrom, tuiTypedFromEvent} from '@taiga-ui/cdk';
+import {inject, Injectable} from '@angular/core';
+import {tuiInjectElement, tuiScrollFrom, tuiTypedFromEvent} from '@taiga-ui/cdk';
 import {TUI_SCROLL_REF} from '@taiga-ui/core';
 import {
     distinctUntilChanged,
@@ -27,7 +27,7 @@ export const MICRO_OFFSET = 10 ** -6;
 
 @Injectable()
 export class TuiPullToRefreshService extends Observable<number> {
-    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly el = tuiInjectElement();
     private readonly scrollRef: HTMLElement = inject(TUI_SCROLL_REF).nativeElement;
     private readonly loaded$ = inject(TUI_PULL_TO_REFRESH_LOADED);
     private readonly threshold = inject(TUI_PULL_TO_REFRESH_THRESHOLD);

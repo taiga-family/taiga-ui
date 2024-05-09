@@ -1,8 +1,8 @@
-import {Directive, ElementRef, inject, Input, NgZone} from '@angular/core';
+import {Directive, inject, Input, NgZone} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {ANIMATION_FRAME, PERFORMANCE} from '@ng-web-apis/common';
 import {tuiDescribeSector} from '@taiga-ui/addon-charts/utils';
-import {tuiClamp, tuiEaseInOutQuad, tuiZonefree} from '@taiga-ui/cdk';
+import {tuiClamp, tuiEaseInOutQuad, tuiInjectElement, tuiZonefree} from '@taiga-ui/cdk';
 import {TUI_ANIMATIONS_SPEED, tuiGetDuration} from '@taiga-ui/core';
 import {BehaviorSubject, map, pairwise, switchMap, takeWhile} from 'rxjs';
 
@@ -13,7 +13,7 @@ export class TuiPieChartDirective {
     private readonly sector$ = new BehaviorSubject<readonly [number, number]>([0, 0]);
 
     constructor() {
-        const el: SVGPathElement = inject(ElementRef).nativeElement;
+        const el = tuiInjectElement<SVGPathElement>();
         const performance = inject(PERFORMANCE);
         const animationFrame$ = inject(ANIMATION_FRAME);
         const speed = inject(TUI_ANIMATIONS_SPEED);

@@ -1,14 +1,14 @@
-import type {AfterViewInit, OnDestroy} from '@angular/core';
+import type {AfterViewInit, ElementRef, OnDestroy} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
-    ElementRef,
     HostBinding,
     HostListener,
     inject,
     Input,
     ViewChild,
 } from '@angular/core';
+import {tuiInjectElement} from '@taiga-ui/cdk';
 
 import {TuiTileService} from './tile.service';
 import {TuiTilesComponent} from './tiles.component';
@@ -32,7 +32,7 @@ export class TuiTileComponent implements OnDestroy, AfterViewInit {
     @Input()
     public height = 1;
 
-    public readonly element: HTMLElement = inject(ElementRef).nativeElement;
+    public readonly element = tuiInjectElement();
 
     @HostBinding('class._dragged')
     protected dragged = false;

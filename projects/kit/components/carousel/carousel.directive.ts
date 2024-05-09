@@ -1,9 +1,10 @@
-import {Directive, ElementRef, inject, Input} from '@angular/core';
+import {Directive, inject, Input} from '@angular/core';
 import {PAGE_VISIBILITY} from '@ng-web-apis/common';
 import {
     TUI_FALSE_HANDLER,
     TUI_TRUE_HANDLER,
     tuiIfMap,
+    tuiInjectElement,
     tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
 import {BehaviorSubject, combineLatest, interval, map, merge, Observable} from 'rxjs';
@@ -12,7 +13,7 @@ import {BehaviorSubject, combineLatest, interval, map, merge, Observable} from '
     selector: 'tui-carousel',
 })
 export class TuiCarouselDirective extends Observable<unknown> {
-    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly el = tuiInjectElement();
     private readonly visible$ = inject(PAGE_VISIBILITY);
     private readonly duration$ = new BehaviorSubject(0);
     private readonly running$ = merge(

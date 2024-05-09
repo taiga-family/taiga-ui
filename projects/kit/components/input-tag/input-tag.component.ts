@@ -31,6 +31,7 @@ import {
     tuiAsFocusableItemAccessor,
     tuiGetActualTarget,
     tuiGetClipboardDataText,
+    tuiInjectElement,
     tuiIsElement,
     tuiIsNativeFocusedIn,
     tuiRetargetedBoundaryCrossing,
@@ -102,7 +103,7 @@ export class TuiInputTagComponent
     @ViewChild(TuiScrollbarComponent, {read: ElementRef})
     private readonly scrollBar?: ElementRef<HTMLElement>;
 
-    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly el = tuiInjectElement();
     private readonly options = inject(TUI_INPUT_TAG_OPTIONS);
 
     @Input()

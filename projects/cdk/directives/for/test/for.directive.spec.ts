@@ -1,7 +1,7 @@
-import {Component, ElementRef, inject} from '@angular/core';
+import {Component} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
-import {TuiForModule} from '@taiga-ui/cdk';
+import {TuiForModule, tuiInjectElement} from '@taiga-ui/cdk';
 import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 import {Subject} from 'rxjs';
 
@@ -16,7 +16,7 @@ describe('TuiFor directive', () => {
         `,
     })
     class TestComponent {
-        public readonly el: HTMLElement = inject(ElementRef).nativeElement;
+        public readonly el = tuiInjectElement();
 
         public readonly items$ = new Subject<string[]>();
     }

@@ -2,7 +2,6 @@ import type {AfterViewChecked, QueryList} from '@angular/core';
 import {
     ContentChildren,
     Directive,
-    ElementRef,
     forwardRef,
     HostListener,
     inject,
@@ -14,7 +13,7 @@ import {
     MUTATION_OBSERVER_INIT,
     MutationObserverService,
 } from '@ng-web-apis/mutation-observer';
-import {EMPTY_QUERY, tuiPure, tuiPx, tuiZonefree} from '@taiga-ui/cdk';
+import {EMPTY_QUERY, tuiInjectElement, tuiPure, tuiPx, tuiZonefree} from '@taiga-ui/cdk';
 
 import {TuiTabDirective} from './tab.directive';
 import {TuiTabsDirective} from './tabs.directive';
@@ -47,7 +46,7 @@ import {TUI_TABS_OPTIONS} from './tabs.options';
     },
 })
 export class TuiTabsHorizontalDirective implements AfterViewChecked {
-    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly el = tuiInjectElement();
     private readonly options = inject(TUI_TABS_OPTIONS);
     private readonly tabs = inject(TuiTabsDirective);
 

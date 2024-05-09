@@ -1,6 +1,6 @@
 import type {OnChanges, OnDestroy} from '@angular/core';
-import {Directive, ElementRef, inject, INJECTOR, Input} from '@angular/core';
-import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
+import {Directive, inject, INJECTOR, Input} from '@angular/core';
+import {TuiActiveZoneDirective, tuiInjectElement} from '@taiga-ui/cdk';
 import type {TuiRectAccessor, TuiVehicle} from '@taiga-ui/core/abstract';
 import {tuiAsRectAccessor, tuiAsVehicle} from '@taiga-ui/core/abstract';
 import type {TuiPortalItem} from '@taiga-ui/core/interfaces';
@@ -39,7 +39,7 @@ export class TuiHintDirective<C>
     public tuiHintAppearance: string | null = null;
 
     public component = inject(PolymorpheusComponent<unknown>);
-    public readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    public readonly el = tuiInjectElement();
     public readonly activeZone? = inject(TuiActiveZoneDirective, {optional: true});
     public readonly type = 'hint';
 

@@ -8,6 +8,7 @@ export * from './get-element-obscurers';
 export * from './get-element-offset';
 export * from './get-scroll-parent';
 export * from './get-selected-text';
+export * from './inject-element';
 export * from './is-current-target';
 export * from './is-element-editable';
 export * from './is-inside-iframe';

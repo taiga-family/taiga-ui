@@ -1,8 +1,8 @@
 import type {OnDestroy} from '@angular/core';
-import {Directive, ElementRef, inject, Input, NgZone, Output} from '@angular/core';
+import {Directive, inject, Input, NgZone, Output} from '@angular/core';
 import {tuiZoneOptimized} from '@taiga-ui/cdk/observables';
 import {TUI_ACTIVE_ELEMENT} from '@taiga-ui/cdk/tokens';
-import {tuiArrayRemove, tuiPure} from '@taiga-ui/cdk/utils';
+import {tuiArrayRemove, tuiInjectElement, tuiPure} from '@taiga-ui/cdk/utils';
 import type {Observable} from 'rxjs';
 import {distinctUntilChanged, map, skip, startWith} from 'rxjs';
 
@@ -18,7 +18,7 @@ import {distinctUntilChanged, map, skip, startWith} from 'rxjs';
 export class TuiActiveZoneDirective implements OnDestroy {
     private readonly active$ = inject<Observable<Element | null>>(TUI_ACTIVE_ELEMENT);
     private readonly zone = inject(NgZone);
-    private readonly el: Element = inject(ElementRef).nativeElement;
+    private readonly el = tuiInjectElement();
     private tuiActiveZoneParent: TuiActiveZoneDirective | null = null;
     private subActiveZones: readonly TuiActiveZoneDirective[] = [];
     private readonly directParentActiveZone = inject(TuiActiveZoneDirective, {

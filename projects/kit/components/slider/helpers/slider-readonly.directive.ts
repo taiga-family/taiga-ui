@@ -1,9 +1,14 @@
 import type {BooleanInput} from '@angular/cdk/coercion';
 import {coerceBooleanProperty} from '@angular/cdk/coercion';
 import {DOCUMENT} from '@angular/common';
-import {Directive, ElementRef, HostListener, inject, Input} from '@angular/core';
+import {Directive, HostListener, inject, Input} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {TUI_FALSE_HANDLER, TUI_TRUE_HANDLER, tuiTypedFromEvent} from '@taiga-ui/cdk';
+import {
+    TUI_FALSE_HANDLER,
+    TUI_TRUE_HANDLER,
+    tuiInjectElement,
+    tuiTypedFromEvent,
+} from '@taiga-ui/cdk';
 import {combineLatest, filter, map, merge, tap} from 'rxjs';
 
 const SLIDER_INTERACTION_KEYS = new Set([
@@ -25,7 +30,7 @@ const SLIDER_INTERACTION_KEYS = new Set([
     selector: 'input[tuiSlider][readonly]',
 })
 export class TuiSliderReadonlyDirective {
-    private readonly el: HTMLInputElement = inject(ElementRef).nativeElement;
+    private readonly el = tuiInjectElement<HTMLInputElement>();
     private readonly doc = inject(DOCUMENT);
 
     @Input({transform: coerceBooleanProperty})

@@ -1,7 +1,7 @@
-import {ChangeDetectorRef, Directive, ElementRef, inject} from '@angular/core';
+import {ChangeDetectorRef, Directive, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {RouterLinkActive} from '@angular/router';
-import {tuiWatch} from '@taiga-ui/cdk';
+import {tuiInjectElement, tuiWatch} from '@taiga-ui/cdk';
 import type {Observable} from 'rxjs';
 import {EMPTY, filter} from 'rxjs';
 
@@ -13,7 +13,7 @@ import {TuiTabBarComponent} from './tab-bar.component';
 export class TuiTabBarItemDirective {
     constructor() {
         const tabs = inject(TuiTabBarComponent);
-        const el: HTMLElement = inject(ElementRef).nativeElement;
+        const el = tuiInjectElement();
         const link: Observable<boolean> =
             inject(RouterLinkActive, {optional: true})?.isActiveChange || EMPTY;
 

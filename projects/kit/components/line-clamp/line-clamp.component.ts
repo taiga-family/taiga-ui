@@ -12,7 +12,13 @@ import {
     Renderer2,
     ViewChild,
 } from '@angular/core';
-import {tuiIsCurrentTarget, tuiPx, tuiTypedFromEvent, tuiZonefree} from '@taiga-ui/cdk';
+import {
+    tuiInjectElement,
+    tuiIsCurrentTarget,
+    tuiPx,
+    tuiTypedFromEvent,
+    tuiZonefree,
+} from '@taiga-ui/cdk';
 import {TUI_HINT_COMPONENT, TuiHintDirective} from '@taiga-ui/core';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import type {Observable} from 'rxjs';
@@ -49,7 +55,7 @@ export class TuiLineClampComponent implements DoCheck, AfterViewInit {
     private readonly outlet?: ElementRef<HTMLElement>;
 
     private readonly options = inject(TUI_LINE_CLAMP_OPTIONS);
-    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly el = tuiInjectElement();
     private readonly renderer = inject(Renderer2);
     private readonly cd = inject(ChangeDetectorRef);
     private readonly zone: NgZone = inject(NgZone);

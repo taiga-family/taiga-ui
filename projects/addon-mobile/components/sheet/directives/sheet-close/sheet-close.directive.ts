@@ -1,6 +1,12 @@
-import {Directive, ElementRef, inject, NgZone, Output} from '@angular/core';
+import {Directive, inject, NgZone, Output} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
-import {tuiIfMap, tuiIsFalsy, tuiTypedFromEvent, tuiZonefull} from '@taiga-ui/cdk';
+import {
+    tuiIfMap,
+    tuiInjectElement,
+    tuiIsFalsy,
+    tuiTypedFromEvent,
+    tuiZonefull,
+} from '@taiga-ui/cdk';
 import type {Observable} from 'rxjs';
 import {distinctUntilChanged, filter, merge, startWith} from 'rxjs';
 
@@ -16,7 +22,7 @@ export class TuiSheetCloseDirective {
     private readonly dragged$ = inject(TUI_SHEET_DRAGGED);
     private readonly scroll$ = inject(TUI_SHEET_SCROLL);
     private readonly win = inject(WINDOW);
-    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly el = tuiInjectElement();
     private readonly sheet = inject(TuiSheetComponent);
 
     @Output()

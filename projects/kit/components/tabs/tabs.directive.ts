@@ -2,7 +2,6 @@ import type {AfterViewChecked} from '@angular/core';
 import {
     afterNextRender,
     Directive,
-    ElementRef,
     EventEmitter,
     HostListener,
     inject,
@@ -10,7 +9,7 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import {tuiMoveFocus, tuiWithStyles} from '@taiga-ui/cdk';
+import {tuiInjectElement, tuiMoveFocus, tuiWithStyles} from '@taiga-ui/cdk';
 import type {TuiSizeL} from '@taiga-ui/core';
 
 import {TUI_TAB_ACTIVATE} from './tab.directive';
@@ -25,7 +24,7 @@ import {TUI_TABS_OPTIONS} from './tabs.options';
     },
 })
 export class TuiTabsDirective implements AfterViewChecked {
-    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly el = tuiInjectElement();
     private readonly injector = inject(INJECTOR);
 
     @Input()

@@ -1,6 +1,6 @@
 import {DOCUMENT} from '@angular/common';
-import {Directive, ElementRef, inject, Output} from '@angular/core';
-import {tuiPreventDefault, tuiTypedFromEvent} from '@taiga-ui/cdk';
+import {Directive, inject, Output} from '@angular/core';
+import {tuiInjectElement, tuiPreventDefault, tuiTypedFromEvent} from '@taiga-ui/cdk';
 import {TUI_ELEMENT_REF} from '@taiga-ui/core';
 import {distinctUntilChanged, map, switchMap, takeUntil} from 'rxjs';
 
@@ -9,7 +9,7 @@ import {distinctUntilChanged, map, switchMap, takeUntil} from 'rxjs';
 })
 export class TuiResizedDirective {
     private readonly doc = inject(DOCUMENT);
-    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly el = tuiInjectElement();
     private readonly parentRef: HTMLTableCellElement =
         inject(TUI_ELEMENT_REF).nativeElement;
 

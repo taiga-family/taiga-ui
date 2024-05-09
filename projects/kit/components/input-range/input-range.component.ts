@@ -2,7 +2,6 @@ import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
-    ElementRef,
     inject,
     Input,
     ViewChild,
@@ -20,6 +19,7 @@ import {
     tuiAsControl,
     tuiAsFocusableItemAccessor,
     tuiClamp,
+    tuiInjectElement,
     tuiIsNativeFocused,
     tuiIsNativeFocusedIn,
     tuiPure,
@@ -63,7 +63,7 @@ export class TuiInputRangeComponent
     private readonly rangeRef: TuiRangeComponent | null = null;
 
     private readonly isMobile = inject(TUI_IS_MOBILE);
-    private readonly el: Element = inject(ElementRef).nativeElement;
+    private readonly el = tuiInjectElement();
 
     @Input()
     public min = 0;

@@ -1,8 +1,9 @@
 import {DOCUMENT} from '@angular/common';
 import type {OnChanges} from '@angular/core';
-import {Directive, ElementRef, inject, Input, NgZone} from '@angular/core';
+import {Directive, inject, Input, NgZone} from '@angular/core';
 import {
     tuiIfMap,
+    tuiInjectElement,
     tuiIsNativeFocused,
     tuiIsPresent,
     tuiPure,
@@ -31,7 +32,7 @@ import {
 export class TuiHintDescribeDirective extends TuiDriver implements OnChanges {
     private readonly zone = inject(NgZone);
     private readonly doc = inject(DOCUMENT);
-    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly el = tuiInjectElement();
     private readonly id$ = new ReplaySubject(1);
     private readonly stream$ = this.id$.pipe(
         tuiIfMap(() => fromEvent(this.doc, 'keydown', {capture: true}), tuiIsPresent),

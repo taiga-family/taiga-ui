@@ -19,6 +19,7 @@ import {
     tuiClamp,
     TuiFocusableModule,
     tuiGetClosestFocusable,
+    tuiInjectElement,
     tuiIsElement,
     tuiIsNativeFocused,
     TuiItemDirective,
@@ -64,7 +65,7 @@ export class TuiTabsWithMoreComponent implements AfterViewChecked, AfterViewInit
 
     private readonly options = inject(TUI_TABS_OPTIONS);
     private readonly refresh$ = inject(TUI_TABS_REFRESH);
-    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly el = tuiInjectElement();
     private readonly cdr = inject(ChangeDetectorRef);
     private maxIndex = Infinity;
 

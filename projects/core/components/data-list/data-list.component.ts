@@ -3,7 +3,6 @@ import {
     ChangeDetectionStrategy,
     Component,
     ContentChildren,
-    ElementRef,
     forwardRef,
     HostBinding,
     HostListener,
@@ -13,6 +12,7 @@ import {
 } from '@angular/core';
 import {
     EMPTY_QUERY,
+    tuiInjectElement,
     tuiIsElement,
     tuiIsNativeFocusedIn,
     tuiIsPresent,
@@ -50,7 +50,7 @@ export class TuiDataListComponent<T> implements TuiDataListAccessor<T> {
     private readonly options: QueryList<TuiOptionComponent<T>> = EMPTY_QUERY;
 
     private origin?: HTMLElement;
-    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly el = tuiInjectElement();
     private readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER, {
         optional: true,
     });

@@ -1,8 +1,8 @@
+import type {ElementRef} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     ContentChild,
-    ElementRef,
     EventEmitter,
     HostListener,
     inject,
@@ -22,6 +22,7 @@ import {
     tuiAsControl,
     tuiAsFocusableItemAccessor,
     TuiAutoFocusDirective,
+    tuiInjectElement,
     tuiIsElement,
     tuiIsInput,
     tuiIsNativeFocused,
@@ -85,7 +86,7 @@ export class TuiInputCardGroupedComponent
     @ViewChild('inputCVC', {read: TuiAutoFocusDirective})
     private readonly cvcCardAutofocusRef?: TuiAutoFocusDirective;
 
-    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly el = tuiInjectElement();
     private expireInert = false;
 
     @Input()

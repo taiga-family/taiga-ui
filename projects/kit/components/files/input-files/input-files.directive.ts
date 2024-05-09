@@ -1,9 +1,10 @@
 import {coerceArray} from '@angular/cdk/coercion';
-import {Directive, ElementRef, forwardRef, inject, Output} from '@angular/core';
+import {Directive, forwardRef, inject, Output} from '@angular/core';
 import {
     AbstractTuiNullableControl,
     EMPTY_ARRAY,
     tuiControlValue,
+    tuiInjectElement,
     tuiIsNativeFocused,
 } from '@taiga-ui/cdk';
 import type {TuiAppearanceOptions} from '@taiga-ui/core';
@@ -52,7 +53,7 @@ export class TuiInputFilesDirective
     );
 
     public readonly appearance = 'file';
-    public readonly input: HTMLInputElement = inject(ElementRef).nativeElement;
+    public readonly input = tuiInjectElement<HTMLInputElement>();
 
     protected readonly host = inject(forwardRef(() => TuiInputFilesComponent));
 
