@@ -38,7 +38,10 @@
         tuiTheme="dark"
         class="header"
     >
-        <label tuiLabel="RESTAURANT">Eat all you can</label>
+        <label tuiTitle>
+            <span tuiSubtitle>RESTAURANT</span>
+            Eat all you can
+        </label>
         <button
             appearance="icon"
             iconLeft="tuiIconMoreHorizontalLarge"
@@ -114,14 +117,12 @@
                 {{ review.body }}
                 <footer class="footer">
                     <tui-avatar
-                        size="s"
+                        size="m"
                         src="/assets/images/avatar.jpg"
                     />
-                    <label
-                        class="label"
-                        [tuiLabel]="review.time"
-                    >
+                    <label tuiTitle>
                         {{ review.name }}
+                        <span tuiSubtitle>{{ review.time }}</span>
                     </label>
                 </footer>
             </div>

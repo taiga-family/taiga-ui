@@ -1,20 +1,40 @@
 <form [formGroup]="testForm">
-    <label [tuiLabel]="label">
-        <tui-input
-            formControlName="testValue"
-            nativeId="uniqueId"
-            tuiTextfieldSize="m"
-            [tuiTextfieldLabelOutside]="true"
-        >
-            0,00
-        </tui-input>
-    </label>
-    <ng-template #label>
-        Sum
-        <tui-tooltip
-            content="I am a tooltip that is ready for Screen Readers"
-            describeId="uniqueId"
-            direction="top-right"
+    <label tuiLabel>
+        <input
+            formControlName="testValue1"
+            tuiCheckbox
+            type="checkbox"
         />
-    </ng-template>
+        <span tuiTitle>
+            Taiga UI
+            <span tuiSubtitle>Angular UI Kit for awesome people</span>
+        </span>
+    </label>
+
+    <label
+        tuiLabel
+        class="tui-space_vertical-2"
+    >
+        <input
+            formControlName="testValue2"
+            tuiCheckbox
+            type="checkbox"
+        />
+        <span tuiTitle>
+            ng-polymorpheus
+            <span tuiSubtitle>A tiny library for polymorphic templates in Angular</span>
+        </span>
+    </label>
+
+    <label tuiLabel>
+        <input
+            formControlName="testValue3"
+            tuiCheckbox
+            type="checkbox"
+        />
+        <span tuiTitle>
+            ng-dompurify
+            <span tuiSubtitle>Inclusive Angular API for DOMPurify</span>
+        </span>
+    </label>
 </form>

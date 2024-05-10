@@ -25,7 +25,7 @@ import {TUI_TEXTFIELD_HOST} from '@taiga-ui/core/tokens';
         '(input)': 'host.onValueChange($event.target.value)',
     },
 })
-export class TuiTextfieldComponent {
+export class TuiTextfieldLegacyComponent {
     private readonly el = tuiInjectElement<HTMLInputElement>();
     private readonly idService = inject(TuiIdService);
     protected readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);

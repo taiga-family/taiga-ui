@@ -11,8 +11,8 @@ import {
     TuiAppearanceDirective,
     TuiHintHoverDirective,
     TuiHintOptionsDirective,
+    TuiTextfieldComponent,
 } from '@taiga-ui/core';
-import {TuiTextfieldComponent} from '@taiga-ui/experimental/components/textfield';
 
 import {TUI_TOOLTIP_OPTIONS} from './tooltip.options';
 

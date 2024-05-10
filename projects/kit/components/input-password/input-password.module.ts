@@ -5,8 +5,8 @@ import {
     TuiHintModule,
     TuiPrimitiveTextfieldModule,
     TuiSvgComponent,
-    TuiTextfieldComponent,
     TuiTextfieldControllerModule,
+    TuiTextfieldLegacyComponent,
     TuiWrapperModule,
 } from '@taiga-ui/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
@@ -29,7 +29,7 @@ import {TuiInputPasswordDirective} from './input-password.directive';
     exports: [
         TuiInputPasswordComponent,
         TuiInputPasswordDirective,
-        TuiTextfieldComponent,
+        TuiTextfieldLegacyComponent,
     ],
 })
 export class TuiInputPasswordModule {}

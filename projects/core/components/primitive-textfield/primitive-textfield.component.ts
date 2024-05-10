@@ -23,7 +23,7 @@ import {
 import {TuiHintOptionsDirective} from '@taiga-ui/core/directives/hint';
 import {
     TEXTFIELD_CONTROLLER_PROVIDER,
-    TUI_TEXTFIELD_OPTIONS,
+    TUI_TEXTFIELD_OPTIONS_LEGACY,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
 } from '@taiga-ui/core/directives/textfield-controller';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
@@ -62,7 +62,7 @@ export class TuiPrimitiveTextfieldComponent
     @ViewChild('focusableElement')
     private readonly focusableElement?: ElementRef<HTMLInputElement>;
 
-    private readonly options = inject(TUI_TEXTFIELD_OPTIONS);
+    private readonly options = inject(TUI_TEXTFIELD_OPTIONS_LEGACY);
     private readonly el = tuiInjectElement();
 
     @Input()

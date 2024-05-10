@@ -6,8 +6,8 @@ import {
     TuiPrimitiveTextfieldModule,
     TuiPrimitiveYearPickerModule,
     TuiScrollbarComponent,
-    TuiTextfieldComponent,
     TuiTextfieldControllerModule,
+    TuiTextfieldLegacyComponent,
 } from '@taiga-ui/core';
 import {TuiToYearPipeModule} from '@taiga-ui/kit/pipes';
 
@@ -26,6 +26,6 @@ import {TuiInputYearDirective} from './input-year.directive';
         TuiToYearPipeModule,
     ],
     declarations: [TuiInputYearComponent, TuiInputYearDirective],
-    exports: [TuiInputYearComponent, TuiInputYearDirective, TuiTextfieldComponent],
+    exports: [TuiInputYearComponent, TuiInputYearDirective, TuiTextfieldLegacyComponent],
 })
 export class TuiInputYearModule {}

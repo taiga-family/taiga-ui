@@ -11,9 +11,9 @@ import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiDataListModule,
     TuiErrorModule,
-    TuiLabelModule,
     TuiLinkDirective,
     TuiSvgComponent,
+    TuiTitleDirective,
 } from '@taiga-ui/core';
 import {TuiFieldErrorPipeModule} from '@taiga-ui/kit';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
@@ -34,7 +34,6 @@ import {ExampleTuiInputCardGroupedComponent} from './input-card-grouped.componen
         TuiFieldErrorPipeModule,
         TuiDataListModule,
         TuiThumbnailCardComponent,
-        TuiLabelModule,
         TuiSvgComponent,
         CommonModule,
         ReactiveFormsModule,
@@ -43,6 +42,7 @@ import {ExampleTuiInputCardGroupedComponent} from './input-card-grouped.componen
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiInputCardGroupedComponent)),
         PolymorpheusModule,
         TuiSetupComponent,
+        TuiTitleDirective,
     ],
     declarations: [
         ExampleTuiInputCardGroupedComponent,

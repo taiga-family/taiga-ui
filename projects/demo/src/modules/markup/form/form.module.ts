@@ -9,9 +9,9 @@ import {
     TuiErrorModule,
     TuiGroupDirective,
     TuiHintModule,
+    TuiLabelDirective,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiLabelDirective} from '@taiga-ui/experimental';
 import {
     TuiBlockDirective,
     TuiCheckboxComponent,

@@ -5,10 +5,10 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAmountPipe, TuiThumbnailCardComponent} from '@taiga-ui/addon-commerce';
 import {
     TuiButtonDirective,
-    TuiLabelModule,
     TuiLinkDirective,
     TuiScrollbarComponent,
     TuiSurfaceDirective,
+    TuiTitleDirective,
 } from '@taiga-ui/core';
 import {TuiAvatarComponent, TuiBadgeDirective} from '@taiga-ui/kit';
 import {TuiCardLargeDirective, TuiCellDirective} from '@taiga-ui/layout';
@@ -20,7 +20,6 @@ import {TuiCardLargeDirective, TuiCellDirective} from '@taiga-ui/layout';
         TuiThumbnailCardComponent,
         TuiAvatarComponent,
         TuiAmountPipe,
-        TuiLabelModule,
         TuiBadgeDirective,
         TuiButtonDirective,
         TuiLinkDirective,
@@ -28,6 +27,7 @@ import {TuiCardLargeDirective, TuiCellDirective} from '@taiga-ui/layout';
         TuiCardLargeDirective,
         CommonModule,
         TuiScrollbarComponent,
+        TuiTitleDirective,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less', './surface.less'],

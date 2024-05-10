@@ -1,13 +1,37 @@
 <form [formGroup]="testForm">
-    <label
-        tuiLabel="Some long content about money and incoice sums to make a multiline label and to show how it works with line breaks"
-    >
-        <tui-input
+    <label tuiLabel>
+        <input
             formControlName="testValue"
-            tuiTextfieldSize="m"
-            [tuiTextfieldLabelOutside]="true"
-        >
-            0,00
-        </tui-input>
+            size="s"
+            tuiRadio
+            type="radio"
+            value="taiga"
+        />
+        <small>Taiga UI</small>
+    </label>
+
+    <label
+        tuiLabel
+        class="tui-space_vertical-2"
+    >
+        <input
+            formControlName="testValue"
+            size="s"
+            tuiRadio
+            type="radio"
+            value="polymorpheus"
+        />
+        <small>ng-polymorpheus</small>
+    </label>
+
+    <label tuiLabel>
+        <input
+            formControlName="testValue"
+            size="s"
+            tuiRadio
+            type="radio"
+            value="dompurify"
+        />
+        <small>ng-dompurify</small>
     </label>
 </form>

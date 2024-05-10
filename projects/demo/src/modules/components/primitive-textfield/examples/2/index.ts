@@ -5,7 +5,7 @@ import type {TuiNativeFocusableElement} from '@taiga-ui/cdk';
 import {AbstractTuiControl} from '@taiga-ui/cdk';
 import {
     TuiPrimitiveTextfieldComponent,
-    tuiTextfieldOptionsProvider,
+    tuiTextfieldOptionsProviderLegacy,
 } from '@taiga-ui/core';
 
 @Component({
@@ -14,7 +14,10 @@ import {
     encapsulation,
     changeDetection,
     providers: [
-        tuiTextfieldOptionsProvider({iconCleaner: 'tuiIconEdit2', hintOnDisabled: true}),
+        tuiTextfieldOptionsProviderLegacy({
+            iconCleaner: 'tuiIconEdit2',
+            hintOnDisabled: true,
+        }),
     ],
 })
 export class TuiPrimitiveTextfieldExample2 extends AbstractTuiControl<string> {

@@ -887,12 +887,6 @@ export const pages: TuiDocPages = [
         route: DemoRoute.Icon,
     },
     {
-        section: 'Experimental',
-        title: 'Label ',
-        keywords: 'лэйбл, метка, форма, label',
-        route: DemoRoute.LabelExp,
-    },
-    {
         section: 'Navigation',
         title: 'Segmented',
         keywords: 'tabs, control, radio, navigation, навигация, вкладки, таб',
@@ -911,7 +905,7 @@ export const pages: TuiDocPages = [
         route: DemoRoute.SwipeActions,
     },
     {
-        section: 'Experimental',
+        section: 'Components',
         title: 'Textfield',
         keywords: 'form, input, select, textarea, combobox, ввод, форма, поле',
         route: DemoRoute.Textfield,

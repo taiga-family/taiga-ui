@@ -8,11 +8,11 @@ import {TuiActiveZoneDirective, TuiObscuredDirective} from '@taiga-ui/cdk';
 import {
     TuiButtonDirective,
     TuiDropdownModule,
+    TuiLabelDirective,
     TuiLinkDirective,
     TuiNotificationModule,
     TuiSurfaceDirective,
 } from '@taiga-ui/core';
-import {TuiLabelDirective} from '@taiga-ui/experimental';
 import {
     TuiAvatarComponent,
     TuiChevronDirective,

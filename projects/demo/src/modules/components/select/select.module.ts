@@ -12,7 +12,6 @@ import {
     TuiDropdownModule,
     TuiHintModule,
     TuiInitialsPipe,
-    TuiLabelModule,
     TuiLinkDirective,
     TuiLoaderModule,
     TuiNotificationModule,
@@ -21,6 +20,7 @@ import {
     TuiScrollbarComponent,
     TuiSvgComponent,
     TuiTextfieldControllerModule,
+    TuiTitleDirective,
 } from '@taiga-ui/core';
 import {
     TuiAvatarComponent,
@@ -72,7 +72,6 @@ import {ExampleTuiSelectComponent} from './select.component';
         TuiLoaderModule,
         TuiDataListWrapperModule,
         TuiMultiSelectModule,
-        TuiLabelModule,
         TuiNotificationModule,
         InheritedDocumentationModule,
         TuiAddonDocModule,
@@ -82,6 +81,7 @@ import {ExampleTuiSelectComponent} from './select.component';
         TuiNumberFormatDirective,
         TuiScrollableDirective,
         TuiInitialsPipe,
+        TuiTitleDirective,
     ],
     declarations: [
         ExampleTuiSelectComponent,
