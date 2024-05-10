@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.77.1](https://github.com/taiga-family/taiga-ui/compare/v3.77.0...v3.77.1) (2024-05-10)
+
+### Bug Fixes
+
+- **core:** stackblitz compatibility ([#7396](https://github.com/taiga-family/taiga-ui/issues/7396))
+  ([ea9e6d7](https://github.com/taiga-family/taiga-ui/commit/ea9e6d77dc1a586fe5b1fb1dd1eabcaabc43a568))
+
 ## [3.77.0](https://github.com/taiga-family/taiga-ui/compare/v3.76.0...v3.77.0) (2024-05-08)
 
 ### Features
