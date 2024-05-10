@@ -1,5 +1,3 @@
-/// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
-
 export * from './context';
 export * from './deep-partial';
 export * from './event-with';
