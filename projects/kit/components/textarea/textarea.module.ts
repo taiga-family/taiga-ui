@@ -9,7 +9,6 @@ import {
     TuiTooltipModule,
     TuiWrapperModule,
 } from '@taiga-ui/core';
-import {TuiTabDirective} from '@taiga-ui/kit/components';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiTextareaComponent} from './textarea.component';
@@ -25,7 +24,6 @@ import {TuiTextareaDirective} from './textarea.directive';
         TuiSvgComponent,
         TuiPrimitiveTextfieldModule,
         PolymorpheusModule,
-        TuiTabDirective,
     ],
     declarations: [TuiTextareaComponent, TuiTextareaDirective],
     exports: [TuiTextareaComponent, TuiTextareaDirective, TuiTextfieldComponent],
