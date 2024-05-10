@@ -1,3 +1,4 @@
+import {AsyncPipe} from '@angular/common';
 import {Component, inject, INJECTOR, Injector} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -5,20 +6,21 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiMobileCalendarDialogComponent} from '@taiga-ui/addon-mobile';
 import type {TuiDayRange} from '@taiga-ui/cdk';
 import {tuiControlValue, TuiDay} from '@taiga-ui/cdk';
-import {TUI_MONTHS, TuiDialogService} from '@taiga-ui/core';
+import {TUI_MONTHS, TuiButtonDirective, TuiDialogService} from '@taiga-ui/core';
 import {TUI_CALENDAR_DATE_STREAM} from '@taiga-ui/kit';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import type {Observable} from 'rxjs';
 import {combineLatest, map} from 'rxjs';
 
 @Component({
-    selector: 'tui-mobile-calendar-example-4',
+    standalone: true,
+    imports: [TuiButtonDirective, AsyncPipe],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiMobileCalendarExample4 {
+export default class ExampleComponent {
     private readonly dialogs = inject(TuiDialogService);
     private readonly injector = inject(INJECTOR);
     private readonly months$ = inject(TUI_MONTHS);

@@ -4,7 +4,7 @@ import {expect, test} from '@playwright/test';
 test('screen inside nested folder', async ({page}) => {
     await tuiGoto(page, '/components/mobile-calendar');
 
-    await expect(page.locator('tui-mobile-calendar-example-1')).toHaveScreenshot(
-        'button-screen.png',
-    );
+    await expect(
+        page.locator('[heading="Custom dropdown"] .t-content').first(),
+    ).toHaveScreenshot('button-screen.png');
 });

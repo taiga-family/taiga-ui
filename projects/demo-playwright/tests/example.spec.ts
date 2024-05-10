@@ -10,7 +10,9 @@ test('has title', async ({page}) => {
 test('debug screenshot', async ({page}) => {
     await tuiGoto(page, '/components/mobile-calendar');
 
-    await page.locator('tui-mobile-calendar-example-1 button').click();
+    await page
+        .locator('[heading="Custom dropdown"] button:has-text("Choose a date")')
+        .click();
 
     await expect(page.locator('tui-dialog tui-mobile-calendar')).toHaveScreenshot(
         'test-playwright-screenshot.png',

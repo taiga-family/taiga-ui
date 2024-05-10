@@ -608,10 +608,8 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.MobileCalendar,
-        loadChildren: async () =>
-            (await import('../components/mobile-calendar/mobile-calendar.module'))
-                .ExampleTuiMobileCalendarModule,
         title: 'MobileCalendar',
+        loadComponent: async () => import('../components/mobile-calendar'),
     }),
     route({
         path: DemoRoute.PullToRefresh,
