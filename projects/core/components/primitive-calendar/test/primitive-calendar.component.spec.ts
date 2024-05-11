@@ -372,7 +372,7 @@ describe('PrimitiveCalendar', () => {
     }
 
     function getDisabledCalendarItems(): DebugElement[] {
-        return fixture.debugElement.queryAll(By.css('[data-state="disabled"]'));
+        return fixture.debugElement.queryAll(By.css('.t-cell_disabled'));
     }
 
     afterEach(() => {
