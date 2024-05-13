@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[509],{509:e=>{e.exports='```html\n<div (tuiPan)="..."></div>\n```\n'}}]);

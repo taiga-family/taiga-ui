@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[15979],{15979:e=>{e.exports='<tui-tag\n    *ngFor="let tag of tags; let index = index"\n    size="l"\n    status="custom"\n    class="tag"\n    [editable]="true"\n    [hoverable]="true"\n    [removable]="true"\n    [value]="tag"\n    (edited)="handleTagEdited($event, index)"\n/>\n'}}]);
