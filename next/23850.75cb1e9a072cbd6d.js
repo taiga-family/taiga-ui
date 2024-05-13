@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[23850],{23850:e=>{e.exports='```html\n<tui-scrollbar\n  #element="elementRef"\n  tuiElement\n>\n  <some-infinite-scroll-library [scrollingElement]="element.nativeElement" />\n</tui-scrollbar>\n```\n'}}]);

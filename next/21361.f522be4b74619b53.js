@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[21361],{21361:e=>{e.exports="```html\n<div (tuiZoom)=\"onZoom(scale += $event.delta)\">\n  <div [style.transform]=\"'scale(' + scale + ')'\">Zoomable</div>\n</div>\n```\n"}}]);
