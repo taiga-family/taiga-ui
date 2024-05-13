@@ -842,9 +842,7 @@ export const ROUTES: Routes = [
     // CHARTS
     route({
         path: DemoRoute.ArcChart,
-        loadChildren: async () =>
-            (await import('../charts/arc-chart/arc-chart.module'))
-                .ExampleTuiArcChartModule,
+        loadComponent: async () => import('../components/arc-chart'),
         title: 'ArcChart',
     }),
     route({
