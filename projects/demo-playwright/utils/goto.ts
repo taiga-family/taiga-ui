@@ -50,6 +50,10 @@ export async function tuiGoto(
 
     await tuiMockDate(page, date);
 
+    await page.route('https://fonts.gstatic.com/**/*.ttf', async route =>
+        route.fulfill({path: `${__dirname}/../stubs/manrope-fonts.ttf`}),
+    );
+
     const response = await page.goto(url, playwrightGotoOptions);
     const app = page.locator('app');
 
