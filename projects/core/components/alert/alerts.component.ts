@@ -10,7 +10,7 @@ import {
 } from '@angular/core';
 import type {TuiMapper} from '@taiga-ui/cdk';
 import {TuiMapperPipe} from '@taiga-ui/cdk';
-import {TUI_PARENT_ANIMATION} from '@taiga-ui/core/animations';
+import {tuiParentAnimation} from '@taiga-ui/core/animations';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 import {identity} from 'rxjs';
 
@@ -26,7 +26,7 @@ import {TUI_ALERTS_GROUPED} from './alert.tokens';
     // So that we do not force OnPush on custom alerts
     // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
     changeDetection: ChangeDetectionStrategy.Default,
-    animations: [TUI_PARENT_ANIMATION],
+    animations: [tuiParentAnimation],
 })
 export class TuiAlertsComponent {
     private readonly injector = inject(INJECTOR);

@@ -7,8 +7,8 @@ import {
     TUI_CLOSE_WORD,
     TUI_COMMON_ICONS,
     TUI_MEDIA,
-    TUI_PARENT_ANIMATION,
     tuiIsMobile,
+    tuiParentAnimation,
     tuiSlideInTop,
     tuiToAnimationOptions,
 } from '@taiga-ui/core';
@@ -22,7 +22,7 @@ import {TuiTableBarsService} from '../../services/table-bars.service';
     templateUrl: './table-bars-host.template.html',
     styleUrls: ['./table-bars-host.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    animations: [tuiSlideInTop, TUI_PARENT_ANIMATION],
+    animations: [tuiSlideInTop, tuiParentAnimation],
 })
 export class TuiTableBarsHostComponent {
     private readonly media = inject(TUI_MEDIA);

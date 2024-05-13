@@ -20,14 +20,14 @@ export interface TuiDurationOptions {
 /**
  * Add to enable child :leave animation (fixes https://github.com/angular/angular/issues/15753)
  */
-export const TUI_PARENT_ANIMATION = trigger('tuiParentAnimation', [
+export const tuiParentAnimation = trigger('tuiParentAnimation', [
     transition(':leave', [query(':scope > *', [animateChild()], {optional: true})]),
 ]);
 
 /**
  * Add on parent to stop initial :enter animation for children
  */
-export const TUI_PARENT_STOP = trigger('tuiParentStop', [transition(':enter', [])]);
+export const tuiParentStop = trigger('tuiParentStop', [transition(':enter', [])]);
 
 export const tuiHost = trigger('tuiHost', [
     transition(':enter', [

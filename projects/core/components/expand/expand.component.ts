@@ -15,7 +15,7 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {TuiValuesOf} from '@taiga-ui/cdk';
-import {TUI_PARENT_ANIMATION} from '@taiga-ui/core/animations';
+import {tuiParentAnimation} from '@taiga-ui/core/animations';
 import {TUI_EXPAND_LOADED} from '@taiga-ui/core/constants';
 import {timer} from 'rxjs';
 
@@ -35,7 +35,7 @@ const LOADER_HEIGHT = 48;
     templateUrl: './expand.template.html',
     styleUrls: ['./expand.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    animations: [TUI_PARENT_ANIMATION],
+    animations: [tuiParentAnimation],
 })
 export class TuiExpandComponent {
     @ViewChild('wrapper')
