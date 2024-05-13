@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
+import {TuiLabelDirective} from '@taiga-ui/core/components/label';
 
-import {TuiLabelDirective} from './label.directive';
 import {TuiSelectDirective} from './select.directive';
 import {TuiTextfieldComponent} from './textfield.component';
 import {TuiTextfieldDirective} from './textfield.directive';

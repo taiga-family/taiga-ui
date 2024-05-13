@@ -20,6 +20,7 @@ import {
     TuiNativeValidatorDirective,
 } from '@taiga-ui/cdk';
 import {TuiButtonDirective} from '@taiga-ui/core/components/button';
+import {TuiLabelDirective} from '@taiga-ui/core/components/label';
 import {tuiAppearanceOptionsProvider} from '@taiga-ui/core/directives/appearance';
 import {
     TuiDropdownOpenDirective,
@@ -32,7 +33,6 @@ import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import {EMPTY} from 'rxjs';
 
-import {TuiLabelDirective} from './label.directive';
 import {TuiTextfieldDirective} from './textfield.directive';
 import {TUI_TEXTFIELD_OPTIONS, TuiTextfieldOptionsDirective} from './textfield.options';
 

@@ -9,6 +9,7 @@ export * from '@taiga-ui/core/components/group';
 export * from '@taiga-ui/core/components/hints-host';
 export * from '@taiga-ui/core/components/hosted-dropdown';
 export * from '@taiga-ui/core/components/icon';
+export * from '@taiga-ui/core/components/label';
 export * from '@taiga-ui/core/components/link';
 export * from '@taiga-ui/core/components/loader';
 export * from '@taiga-ui/core/components/notification';

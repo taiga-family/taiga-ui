@@ -4,7 +4,7 @@ import {TUI_DATA_LIST_HOST} from '@taiga-ui/core/tokens';
 
 import {TuiLabelComponent} from './label.component';
 
-// TODO: Replace TUI_DATA_LIST_HOST with proper token once we refactor textfields and move label to separate directive
+// TODO: Replace TUI_DATA_LIST_HOST with proper token once we refactor textfields
 @Directive({
     standalone: true,
     selector: 'label[tuiLabel]',
