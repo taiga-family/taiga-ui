@@ -46,7 +46,8 @@
         "Wolfflegelstainhausenbergedorf",
         "Arkhangelsky",
         "Zoya",
-        "Kosmodemyanskaya"
+        "Kosmodemyanskaya",
+        "Siteheader"
     ],
     "ignoreRegExpList": ["\\(https?://.*?\\)", "\\/{1}.+\\/{1}", "\\%2F.+", "\\%2C.+", "\\ɵ.+", "\\ыва.+"],
     "overrides": [

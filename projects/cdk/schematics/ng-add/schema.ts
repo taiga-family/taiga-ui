@@ -21,4 +21,12 @@ export interface TuiSchema {
      * ```
      */
     'skip-logs'?: boolean;
+
+    /**
+     * @example
+     * ```console
+     * schematics ./dist/cdk:updateToV3 --experimental
+     * ```
+     */
+    experimental?: boolean;
 }
