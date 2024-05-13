@@ -1,9 +1,10 @@
 import {ContentChild, Directive, forwardRef, inject} from '@angular/core';
 import {tuiInjectElement, tuiWithStyles} from '@taiga-ui/cdk';
+import {TUI_DATA_LIST_HOST} from '@taiga-ui/core/tokens';
 
 import {TuiLabelComponent} from './label.component';
-import {TuiTextfieldComponent} from './textfield.component';
 
+// TODO: Replace TUI_DATA_LIST_HOST with proper token once we refactor textfields and move label to separate directive
 @Directive({
     standalone: true,
     selector: 'label[tuiLabel]',
@@ -13,13 +14,13 @@ import {TuiTextfieldComponent} from './textfield.component';
     },
 })
 export class TuiLabelDirective {
-    @ContentChild(forwardRef(() => TuiTextfieldComponent))
+    @ContentChild(forwardRef(() => TUI_DATA_LIST_HOST))
     protected readonly textfield?: unknown;
 
     protected readonly el = tuiInjectElement<HTMLLabelElement>();
     protected readonly nothing = tuiWithStyles(TuiLabelComponent);
     protected readonly parent = inject(
-        forwardRef(() => TuiTextfieldComponent),
+        forwardRef(() => TUI_DATA_LIST_HOST),
         {optional: true},
     );
 }
