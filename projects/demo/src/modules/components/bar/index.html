@@ -7,20 +7,12 @@
         <p>A bar for bar chart</p>
 
         <tui-doc-example
-            id="base"
-            heading="Basic"
-            [content]="example1"
-        >
-            <tui-bar-example-1 />
-        </tui-doc-example>
-
-        <tui-doc-example
-            id="segments"
-            heading="Segments"
-            [content]="example2"
-        >
-            <tui-bar-example-2 />
-        </tui-doc-example>
+            *ngFor="let example of examples; let index = index"
+            [component]="index + 1 | tuiComponent"
+            [content]="index + 1 | tuiExample"
+            [heading]="example"
+            [id]="example | tuiKebab"
+        />
     </ng-template>
 
     <ng-template pageTab>
@@ -53,10 +45,5 @@
         </tui-doc-documentation>
     </ng-template>
 
-    <ng-template pageTab>
-        <tui-setup
-            [import]="exampleModule"
-            [template]="exampleHtml"
-        />
-    </ng-template>
+    <tui-setup *pageTab />
 </tui-doc-page>

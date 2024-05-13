@@ -765,4 +765,14 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/addon-mobile',
         },
     },
+    {
+        from: {
+            name: 'TuiBarModule',
+            moduleSpecifier: '@taiga-ui/addon-charts',
+        },
+        to: {
+            name: 'TuiBarComponent',
+            moduleSpecifier: '@taiga-ui/addon-charts',
+        },
+    },
 ];

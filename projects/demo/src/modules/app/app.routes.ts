@@ -855,8 +855,7 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.Bar,
-        loadChildren: async () =>
-            (await import('../charts/bar/bar.module')).ExampleTuiBarModule,
+        loadComponent: async () => import('../components/bar'),
         title: 'Bar',
     }),
     route({

@@ -1,10 +1,13 @@
+import {NgForOf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/core';
 import type {SafeValue} from '@angular/platform-browser';
 import {tuiPure, tuiSum} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 
 @Component({
+    standalone: true,
     selector: 'tui-bar',
+    imports: [NgForOf],
     templateUrl: './bar.template.html',
     styleUrls: ['./bar.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
