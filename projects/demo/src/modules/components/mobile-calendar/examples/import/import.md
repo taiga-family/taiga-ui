@@ -1,21 +1,17 @@
 ```ts
+import {TuiMobileCalendarComponent, tuiProvideMobileCalendar} from '@taiga-ui/addon-mobile';
 import {TuiInputDateModule} from '@taiga-ui/kit';
+
 // ...
 
 @NgModule({
   standalone: true,
   imports: [
     // ...
-    TuiDialogModule,
-    TuiInputDateModule,
     TuiMobileCalendarComponent,
   ],
-  providers: [
-    {
-      provide: TUI_MOBILE_CALENDAR,
-      useValue: TuiMobileCalendarDialogComponent,
-    },
-  ],
+  // If you want it in date picker inputs
+  providers: [tuiProvideMobileCalendar()],
   // ...
 })
 export class MyComponent {}

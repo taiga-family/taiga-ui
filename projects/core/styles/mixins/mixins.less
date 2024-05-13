@@ -1,3 +1,5 @@
+@import 'browsers.less';
+
 .interactive(@ruleset) {
     // TODO switch to :is after Safari 14 and FF 78 support
     &:-webkit-any(a, button, select, textarea, input, label) {
@@ -134,6 +136,12 @@
     appearance: none;
     word-break: keep-all;
     -webkit-text-fill-color: currentColor; // for Safari
+
+    .ios-only({
+        &:active {
+            font-size: 1rem;
+        }
+    });
 }
 
 .visually-hidden() {

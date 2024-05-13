@@ -1,0 +1,10 @@
+<tui-mobile-calendar
+    tuiActiveZone
+    [disabledItemHandler]="disabledItemHandler"
+    [max]="max"
+    [min]="min"
+    [multi]="!!multi"
+    [single]="!!single"
+    (cancel)="close()"
+    (confirm)="confirm($event)"
+/>

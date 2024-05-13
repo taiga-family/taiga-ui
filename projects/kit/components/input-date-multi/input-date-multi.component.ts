@@ -4,7 +4,6 @@ import {
     HostBinding,
     HostListener,
     inject,
-    INJECTOR,
     Input,
     ViewChild,
 } from '@angular/core';
@@ -41,7 +40,6 @@ import {
     TUI_DEFAULT_DATE_FORMAT,
     TUI_DEFAULT_MARKER_HANDLER,
     TUI_TEXTFIELD_SIZE,
-    TuiDialogService,
     TuiPrimitiveTextfieldComponent,
 } from '@taiga-ui/core';
 import {TuiStringifiableItem} from '@taiga-ui/kit/classes';
@@ -53,10 +51,10 @@ import {
     TUI_DONE_WORD,
     TUI_INPUT_DATE_OPTIONS,
     TUI_MOBILE_CALENDAR,
+    TUI_MOBILE_CALENDAR_PROVIDER,
     tuiDateStreamWithTransformer,
 } from '@taiga-ui/kit/tokens';
 import {tuiImmutableUpdateInputDateMulti} from '@taiga-ui/kit/utils';
-import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import type {Observable} from 'rxjs';
 import {map} from 'rxjs';
 
@@ -69,6 +67,7 @@ import {map} from 'rxjs';
         tuiAsFocusableItemAccessor(TuiInputDateMultiComponent),
         tuiAsControl(TuiInputDateMultiComponent),
         tuiDateStreamWithTransformer(TUI_DATE_VALUE_TRANSFORMER),
+        TUI_MOBILE_CALENDAR_PROVIDER,
     ],
 })
 export class TuiInputDateMultiComponent
@@ -82,8 +81,6 @@ export class TuiInputDateMultiComponent
     private readonly inputTag?: TuiInputTagComponent;
 
     private month: TuiMonth | null = null;
-    private readonly injector = inject(INJECTOR);
-    private readonly dialogs = inject(TuiDialogService);
     private readonly mobileCalendar = inject(TUI_MOBILE_CALENDAR, {optional: true});
     private readonly options = inject(TUI_INPUT_DATE_OPTIONS);
     private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
@@ -212,40 +209,17 @@ export class TuiInputDateMultiComponent
         );
     }
 
-    protected get canOpen(): boolean {
-        return this.interactive && !this.computedMobile;
-    }
-
     @HostListener('click')
     protected onClick(): void {
-        if (!this.isMobile) {
+        if (!this.isMobile && this.interactive) {
             this.open = !this.open;
         }
     }
 
     protected onIconClick(): void {
-        if (!this.computedMobile || !this.mobileCalendar) {
-            return;
+        if (this.isMobile && this.interactive) {
+            this.open = true;
         }
-
-        this.dialogs
-            .open<readonly TuiDay[]>(
-                new PolymorpheusComponent(this.mobileCalendar, this.injector),
-                {
-                    size: 'fullscreen',
-                    closeable: false,
-                    data: {
-                        multi: true,
-                        min: this.min,
-                        max: this.max,
-                        disabledItemHandler: this.disabledItemHandler,
-                    },
-                },
-            )
-            .pipe(takeUntilDestroyed(this.destroyRef))
-            .subscribe(value => {
-                this.value = value;
-            });
     }
 
     protected readonly disabledItemHandlerWrapper: TuiMapper<
@@ -279,7 +253,7 @@ export class TuiInputDateMultiComponent
     protected onValueChange(value: ReadonlyArray<TuiStringifiableItem<TuiDay>>): void {
         this.control?.updateValueAndValidity({emitEvent: false});
 
-        if (!value.length) {
+        if (!value.length && !this.mobileCalendar) {
             this.onOpenChange(true);
         }
 

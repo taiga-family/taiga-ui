@@ -4,7 +4,6 @@ import {
     HostBinding,
     HostListener,
     inject,
-    INJECTOR,
     Input,
     ViewChild,
 } from '@angular/core';
@@ -50,7 +49,6 @@ import {
     TUI_DEFAULT_DATE_FORMAT,
     TUI_DEFAULT_MARKER_HANDLER,
     TUI_TEXTFIELD_SIZE,
-    TuiDialogService,
     TuiPrimitiveTextfieldComponent,
 } from '@taiga-ui/core';
 import type {TuiDayRangePeriod} from '@taiga-ui/kit/classes';
@@ -64,10 +62,10 @@ import {
     TUI_DATE_TEXTS,
     TUI_INPUT_DATE_OPTIONS,
     TUI_MOBILE_CALENDAR,
+    TUI_MOBILE_CALENDAR_PROVIDER,
     tuiDateStreamWithTransformer,
 } from '@taiga-ui/kit/tokens';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import {map} from 'rxjs';
 
 @Component({
@@ -79,6 +77,7 @@ import {map} from 'rxjs';
         tuiAsFocusableItemAccessor(TuiInputDateRangeComponent),
         tuiAsControl(TuiInputDateRangeComponent),
         tuiDateStreamWithTransformer(TUI_DATE_RANGE_VALUE_TRANSFORMER),
+        TUI_MOBILE_CALENDAR_PROVIDER,
     ],
 })
 export class TuiInputDateRangeComponent
@@ -88,9 +87,7 @@ export class TuiInputDateRangeComponent
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
-    private readonly injector = inject(INJECTOR);
     private readonly isMobile = inject(TUI_IS_MOBILE);
-    private readonly dialogs = inject(TuiDialogService);
     private readonly mobileCalendar = inject(TUI_MOBILE_CALENDAR, {optional: true});
     private readonly options = inject(TUI_INPUT_DATE_OPTIONS);
     private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
@@ -121,16 +118,16 @@ export class TuiInputDateRangeComponent
 
     public open = false;
 
+    public readonly maxLengthMapper: TuiMapper<
+        [TuiDay, TuiDayRange | null, TuiDayLike | null, boolean],
+        TuiDay
+    > = MAX_DAY_RANGE_LENGTH_MAPPER;
+
     protected readonly dateTexts$ = inject(TUI_DATE_TEXTS);
     protected override readonly valueTransformer = inject(
         TUI_DATE_RANGE_VALUE_TRANSFORMER,
         {optional: true},
     );
-
-    protected readonly maxLengthMapper: TuiMapper<
-        [TuiDay, TuiDayRange | null, TuiDayLike | null, boolean],
-        TuiDay
-    > = MAX_DAY_RANGE_LENGTH_MAPPER;
 
     protected readonly dateFiller$ = this.dateTexts$.pipe(
         map(dateTexts =>
@@ -174,10 +171,18 @@ export class TuiInputDateRangeComponent
             : nativeValue;
     }
 
+    public get computedMin(): TuiDay {
+        return this.min ?? TUI_FIRST_DAY;
+    }
+
+    public get computedMax(): TuiDay {
+        return this.max ?? TUI_LAST_DAY;
+    }
+
     @HostListener('click')
     public onClick(): void {
-        if (!this.isMobile) {
-            this.toggle();
+        if (!this.isMobile && this.interactive) {
+            this.open = !this.open;
         }
     }
 
@@ -186,7 +191,7 @@ export class TuiInputDateRangeComponent
             this.control.updateValueAndValidity({emitEvent: false});
         }
 
-        if (!value) {
+        if (!value && !this.mobileCalendar) {
             this.onOpenChange(true);
         }
 
@@ -217,24 +222,12 @@ export class TuiInputDateRangeComponent
         return this.textfieldSize.size;
     }
 
-    protected get computedMin(): TuiDay {
-        return this.min ?? TUI_FIRST_DAY;
-    }
-
-    protected get computedMax(): TuiDay {
-        return this.max ?? TUI_LAST_DAY;
-    }
-
     protected get computedMobile(): boolean {
         return this.isMobile && !!this.mobileCalendar;
     }
 
     protected get calendarIcon(): TuiInputDateOptions['icon'] {
         return this.options.icon;
-    }
-
-    protected get canOpen(): boolean {
-        return this.interactive && !this.computedMobile;
     }
 
     protected get computedMask(): MaskitoOptions {
@@ -299,60 +292,13 @@ export class TuiInputDateRangeComponent
     }
 
     protected onIconClick(): void {
-        if (!this.computedMobile || !this.mobileCalendar) {
-            return;
+        if (this.isMobile && this.interactive) {
+            this.open = true;
         }
-
-        this.dialogs
-            .open<TuiDayRange>(
-                new PolymorpheusComponent(this.mobileCalendar, this.injector),
-                {
-                    size: 'fullscreen',
-                    closeable: false,
-                    data: {
-                        min: this.maxLengthMapper(
-                            this.computedMin,
-                            this.value,
-                            this.maxLength,
-                            true,
-                        ),
-                        max: this.maxLengthMapper(
-                            this.computedMax,
-                            this.value,
-                            this.maxLength,
-                            false,
-                        ),
-                        disabledItemHandler: this.disabledItemHandler,
-                    },
-                },
-            )
-            .pipe(takeUntilDestroyed(this.destroyRef))
-            .subscribe(value => {
-                this.value = value;
-            });
     }
 
     protected onOpenChange(open: boolean): void {
         this.open = open;
-    }
-
-    // TODO: investigate if it is used anywhere and (if not) delete it in v4.0
-    protected onItemSelect(item: TuiDayRangePeriod | string): void {
-        this.toggle();
-        this.focusInput();
-
-        if (typeof item !== 'string') {
-            this.value = item.range.dayLimit(this.min, this.max);
-
-            return;
-        }
-
-        if (this.activePeriod === null) {
-            return;
-        }
-
-        this.value = null;
-        this.nativeValue = '';
     }
 
     protected onActiveZone(focused: boolean): void {

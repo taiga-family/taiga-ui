@@ -4,7 +4,7 @@ import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemoModule} from '@demo/utils';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiMobileCalendarDialogComponent} from '@taiga-ui/addon-mobile';
+import {tuiProvideMobileCalendar} from '@taiga-ui/addon-mobile';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk';
 import {
     TUI_FALSE_HANDLER,
@@ -21,7 +21,7 @@ import {
     TuiLinkDirective,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TUI_MOBILE_CALENDAR, TuiInputDateModule, TuiNamedDay} from '@taiga-ui/kit';
+import {TuiInputDateModule, TuiNamedDay} from '@taiga-ui/kit';
 
 import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
@@ -47,10 +47,7 @@ const ONE_DOT: [string] = ['var(--tui-success-fill)'];
     changeDetection,
     providers: [
         tuiProvide(ABSTRACT_PROPS_ACCESSOR, ExampleComponent),
-        {
-            provide: TUI_MOBILE_CALENDAR,
-            useValue: TuiMobileCalendarDialogComponent,
-        },
+        tuiProvideMobileCalendar(),
     ],
 })
 export default class ExampleComponent extends AbstractExampleTuiControl {

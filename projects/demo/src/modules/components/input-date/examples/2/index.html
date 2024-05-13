@@ -19,4 +19,21 @@
     >
         Choose a date
     </tui-input-date>
+    <p>
+        <tui-hosted-dropdown [content]="dropdown">
+            <button tuiButton>In dropdown</button>
+            <ng-template
+                #dropdown
+                let-activeZone
+            >
+                <tui-input-date
+                    formControlName="testValue"
+                    tuiTextfieldSize="l"
+                    [tuiActiveZoneParent]="activeZone"
+                >
+                    Choose a date
+                </tui-input-date>
+            </ng-template>
+        </tui-hosted-dropdown>
+    </p>
 </form>

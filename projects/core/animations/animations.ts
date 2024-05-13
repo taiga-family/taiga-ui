@@ -424,7 +424,7 @@ export const tuiSlideInTop = trigger('tuiSlideInTop', [
     transition(
         ':enter',
         [
-            style({transform: 'translate3d(0,{{start}},0)'}),
+            style({transform: 'translate3d(0,{{start}},0)', pointerEvents: 'none'}),
             animate(TRANSITION, style({transform: 'translate3d(0,{{end}},0)'})),
         ],
         {params: {end: 0, start: '100%', duration: 300}},

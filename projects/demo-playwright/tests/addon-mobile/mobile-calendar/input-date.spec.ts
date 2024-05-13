@@ -19,7 +19,7 @@ test.describe('InputDate and mobile user agent', () => {
             .locator('tui-input-date-range .t-icons')
             .click();
 
-        await page.waitForSelector('tui-dialog', {state: 'visible'});
+        await page.waitForSelector('tui-mobile-calendar-dropdown', {state: 'visible'});
         await expect(page).toHaveScreenshot('01-input-date-range-mobile-1.png');
 
         await page.locator(november).nth(0).click();
@@ -42,7 +42,7 @@ test.describe('InputDate and mobile user agent', () => {
             .locator('tui-input-date[multiple] .t-icons')
             .click();
 
-        await page.waitForSelector('tui-dialog', {state: 'visible'});
+        await page.waitForSelector('tui-mobile-calendar-dropdown', {state: 'visible'});
         await expect(page).toHaveScreenshot('02-input-date-range-mobile-1.png');
 
         await page.locator(november).nth(0).click();
@@ -72,7 +72,7 @@ test.describe('InputDate and mobile user agent', () => {
             .locator('tui-input-date .t-icons')
             .click();
 
-        await page.waitForSelector('tui-dialog', {state: 'visible'});
+        await page.waitForSelector('tui-mobile-calendar-dropdown', {state: 'visible'});
         await expect(page).toHaveScreenshot('03-input-date-range-mobile-1.png');
 
         await page.locator(november).nth(0).click();
