@@ -4,13 +4,13 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiButtonDirective, TuiLoaderModule} from '@taiga-ui/core';
-import {TuiAvatarComponent, TuiCarouselModule, TuiIslandModule} from '@taiga-ui/kit';
+import {TuiAvatarComponent, TuiCarouselComponent, TuiIslandModule} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
     imports: [
         TuiButtonDirective,
-        TuiCarouselModule,
+        TuiCarouselComponent,
         TuiIslandModule,
         TuiLoaderModule,
         TuiAvatarComponent,

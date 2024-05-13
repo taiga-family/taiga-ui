@@ -3,14 +3,14 @@ import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButtonDirective, TuiDialogModule, TuiLinkDirective} from '@taiga-ui/core';
-import {TuiCarouselModule, TuiPaginationModule} from '@taiga-ui/kit';
+import {TuiCarouselComponent, TuiPaginationModule} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
     imports: [
         TuiButtonDirective,
         TuiDialogModule,
-        TuiCarouselModule,
+        TuiCarouselComponent,
         TuiLinkDirective,
         RouterLink,
         TuiPaginationModule,

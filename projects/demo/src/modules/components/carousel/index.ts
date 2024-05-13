@@ -7,17 +7,18 @@ import {
     TuiLinkDirective,
     TuiNotificationModule,
 } from '@taiga-ui/core';
-import {TuiCarouselModule} from '@taiga-ui/kit';
+import {TuiCarouselComponent, TuiCarouselDirective} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
     imports: [
         TuiDemoModule,
         TuiNotificationModule,
-        TuiCarouselModule,
+        TuiCarouselComponent,
         TuiRepeatTimesDirective,
         TuiButtonDirective,
         TuiLinkDirective,
+        TuiCarouselDirective,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

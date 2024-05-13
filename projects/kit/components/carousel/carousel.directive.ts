@@ -10,6 +10,7 @@ import {
 import {BehaviorSubject, combineLatest, interval, map, merge, Observable} from 'rxjs';
 
 @Directive({
+    standalone: true,
     selector: 'tui-carousel',
 })
 export class TuiCarouselDirective extends Observable<unknown> {

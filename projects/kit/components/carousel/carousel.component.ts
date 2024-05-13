@@ -1,3 +1,4 @@
+import {AsyncPipe, NgForOf, NgIf, NgStyle, NgTemplateOutlet} from '@angular/common';
 import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
@@ -12,6 +13,7 @@ import {
     Output,
     TemplateRef,
 } from '@angular/core';
+import {IntersectionObserverModule} from '@ng-web-apis/intersection-observer';
 import type {TuiSwipeDirection} from '@taiga-ui/cdk';
 import {
     EMPTY_QUERY,
@@ -19,11 +21,29 @@ import {
     tuiClamp,
     tuiInjectElement,
     TuiItemDirective,
+    TuiPanDirective,
     tuiPure,
+    TuiSwipeDirective,
 } from '@taiga-ui/cdk';
 
+import {TuiCarouselAutoscrollDirective} from './carousel-autoscroll.directive';
+import {TuiCarouselScrollDirective} from './carousel-scroll.directive';
+
 @Component({
+    standalone: true,
     selector: 'tui-carousel',
+    imports: [
+        NgIf,
+        NgForOf,
+        NgStyle,
+        AsyncPipe,
+        TuiPanDirective,
+        NgTemplateOutlet,
+        TuiSwipeDirective,
+        TuiCarouselScrollDirective,
+        IntersectionObserverModule,
+        TuiCarouselAutoscrollDirective,
+    ],
     templateUrl: './carousel.template.html',
     styleUrls: ['./carousel.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
