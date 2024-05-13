@@ -6,12 +6,12 @@ import {TuiAutoFocusDirective, TuiLetDirective} from '@taiga-ui/cdk';
 import {
     TuiButtonDirective,
     TuiFormatNumberPipeModule,
+    TuiLabelDirective,
     TuiLinkDirective,
     TuiLoaderModule,
     TuiSvgComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiLabelDirective} from '@taiga-ui/experimental';
 import {TuiButtonLoadingComponent, TuiCheckboxComponent} from '@taiga-ui/kit';
 
 import {PayModalComponent} from './pay-modal.component';

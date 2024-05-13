@@ -4,8 +4,8 @@ import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
 import {
     TuiHostedDropdownModule,
     TuiPrimitiveTextfieldModule,
-    TuiTextfieldComponent,
     TuiTextfieldControllerModule,
+    TuiTextfieldLegacyComponent,
 } from '@taiga-ui/core';
 import {TuiValueAccessorModule} from '@taiga-ui/kit/directives';
 
@@ -22,6 +22,10 @@ import {TuiInputPhoneDirective} from './input-phone.directive';
         TuiValueAccessorModule,
     ],
     declarations: [TuiInputPhoneComponent, TuiInputPhoneDirective],
-    exports: [TuiInputPhoneComponent, TuiInputPhoneDirective, TuiTextfieldComponent],
+    exports: [
+        TuiInputPhoneComponent,
+        TuiInputPhoneDirective,
+        TuiTextfieldLegacyComponent,
+    ],
 })
 export class TuiInputPhoneModule {}

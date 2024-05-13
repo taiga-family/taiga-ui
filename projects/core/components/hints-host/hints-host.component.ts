@@ -7,7 +7,7 @@ import {
     inject,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {TUI_PARENT_ANIMATION} from '@taiga-ui/core/animations';
+import {tuiParentAnimation} from '@taiga-ui/core/animations';
 import type {TuiPortalItem} from '@taiga-ui/core/interfaces';
 import {TuiHintService} from '@taiga-ui/core/services';
 
@@ -18,7 +18,7 @@ import {TuiHintService} from '@taiga-ui/core/services';
     // So that we do not force OnPush on custom hints
     // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
     changeDetection: ChangeDetectionStrategy.Default,
-    animations: [TUI_PARENT_ANIMATION],
+    animations: [tuiParentAnimation],
     host: {
         'aria-live': 'polite',
     },

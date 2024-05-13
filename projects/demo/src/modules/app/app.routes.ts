@@ -202,9 +202,9 @@ export const ROUTES: Routes = [
         title: 'Icon',
     }),
     route({
-        path: DemoRoute.LabelExp,
+        path: DemoRoute.Label,
         title: 'Label ',
-        loadComponent: async () => import('../experimental/label'),
+        loadComponent: async () => import('../components/label'),
     }),
     route({
         path: DemoRoute.Surface,
@@ -225,9 +225,7 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.Textfield,
-        loadChildren: async () =>
-            (await import('../experimental/textfield/textfield.module'))
-                .ExampleTuiTextfieldModule,
+        loadComponent: async () => import('../components/textfield'),
         title: 'Textfield',
     }),
     route({
@@ -562,12 +560,6 @@ export const ROUTES: Routes = [
         title: 'ItemsWithMore',
     }),
     route({
-        path: DemoRoute.Label,
-        loadChildren: async () =>
-            (await import('../components/label/label.module')).ExampleTuiLabelModule,
-        title: 'Label',
-    }),
-    route({
         path: DemoRoute.LineClamp,
         loadChildren: async () =>
             (await import('../components/line-clamp/line-clamp.module'))
@@ -705,7 +697,7 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.AppBar,
-        loadComponent: async () => import('../experimental/app-bar'),
+        loadComponent: async () => import('../components/app-bar'),
         title: 'AppBar',
     }),
     route({

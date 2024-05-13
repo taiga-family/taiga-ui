@@ -7,8 +7,8 @@ import {
     TuiLinkDirective,
     TuiPrimitiveTextfieldModule,
     TuiSvgComponent,
-    TuiTextfieldComponent,
     TuiTextfieldControllerModule,
+    TuiTextfieldLegacyComponent,
     TuiWrapperModule,
 } from '@taiga-ui/core';
 import {TuiValueAccessorModule} from '@taiga-ui/kit/directives';
@@ -40,7 +40,7 @@ import {TuiNativeDateTimeDirective} from './native-date-time/native-date-time.di
     exports: [
         TuiInputDateTimeComponent,
         TuiInputDateTimeDirective,
-        TuiTextfieldComponent,
+        TuiTextfieldLegacyComponent,
     ],
 })
 export class TuiInputDateTimeModule {}

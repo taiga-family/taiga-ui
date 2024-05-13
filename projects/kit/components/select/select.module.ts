@@ -5,8 +5,8 @@ import {
     TuiDataListModule,
     TuiHostedDropdownModule,
     TuiPrimitiveTextfieldModule,
-    TuiTextfieldComponent,
     TuiTextfieldControllerModule,
+    TuiTextfieldLegacyComponent,
     TuiWrapperModule,
 } from '@taiga-ui/core';
 import {TuiArrowModule} from '@taiga-ui/kit/components/arrow';
@@ -44,7 +44,7 @@ import {TuiSelectDirective} from './select.directive';
     exports: [
         TuiSelectComponent,
         TuiSelectDirective,
-        TuiTextfieldComponent,
+        TuiTextfieldLegacyComponent,
         TuiNativeSelectComponent,
         TuiNativeSelectGroupComponent,
     ],

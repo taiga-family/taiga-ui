@@ -5,7 +5,7 @@ import {
     TuiPrimitiveTextfieldModule,
     TuiScrollbarComponent,
     TuiSvgComponent,
-    TuiTextfieldComponent,
+    TuiTextfieldLegacyComponent,
     TuiTooltipModule,
     TuiWrapperModule,
 } from '@taiga-ui/core';
@@ -26,6 +26,6 @@ import {TuiTextareaDirective} from './textarea.directive';
         PolymorpheusModule,
     ],
     declarations: [TuiTextareaComponent, TuiTextareaDirective],
-    exports: [TuiTextareaComponent, TuiTextareaDirective, TuiTextfieldComponent],
+    exports: [TuiTextareaComponent, TuiTextareaDirective, TuiTextfieldLegacyComponent],
 })
 export class TuiTextareaModule {}

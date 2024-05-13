@@ -3,7 +3,8 @@
     [tuiTextfieldCleaner]="true"
     [tuiTextfieldLabelOutside]="true"
 >
-    <label tuiLabel="Modified cleaner icon">
+    <label>
+        Modified cleaner icon
         <tui-primitive-textfield
             [(value)]="value"
             (focusedChange)="onFocused($event)"
@@ -15,11 +16,9 @@
             />
         </tui-primitive-textfield>
     </label>
-
-    <label
-        tuiLabel="Override modified cleaner icon"
-        class="tui-space_top-4"
-    >
+    <br />
+    <label>
+        Override modified cleaner icon
         <tui-primitive-textfield
             iconCleaner="tuiIconEdit2"
             tuiHintContent="Hint is shown for disabled control"

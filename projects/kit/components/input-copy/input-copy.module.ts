@@ -5,8 +5,8 @@ import {
     TuiHintModule,
     TuiPrimitiveTextfieldModule,
     TuiSvgComponent,
-    TuiTextfieldComponent,
     TuiTextfieldControllerModule,
+    TuiTextfieldLegacyComponent,
     TuiWrapperModule,
 } from '@taiga-ui/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
@@ -26,6 +26,6 @@ import {TuiInputCopyDirective} from './input-copy.directive';
         TuiTextfieldControllerModule,
     ],
     declarations: [TuiInputCopyComponent, TuiInputCopyDirective],
-    exports: [TuiInputCopyComponent, TuiInputCopyDirective, TuiTextfieldComponent],
+    exports: [TuiInputCopyComponent, TuiInputCopyDirective, TuiTextfieldLegacyComponent],
 })
 export class TuiInputCopyModule {}

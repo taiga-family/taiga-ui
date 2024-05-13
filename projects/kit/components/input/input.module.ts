@@ -4,7 +4,7 @@ import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
 import {
     TuiHostedDropdownModule,
     TuiPrimitiveTextfieldModule,
-    TuiTextfieldComponent,
+    TuiTextfieldLegacyComponent,
 } from '@taiga-ui/core';
 
 import {TuiInputComponent} from './input.component';
@@ -18,6 +18,6 @@ import {TuiInputDirective} from './input.directive';
         TuiHostedDropdownModule,
     ],
     declarations: [TuiInputComponent, TuiInputDirective],
-    exports: [TuiInputComponent, TuiInputDirective, TuiTextfieldComponent],
+    exports: [TuiInputComponent, TuiInputDirective, TuiTextfieldLegacyComponent],
 })
 export class TuiInputModule {}

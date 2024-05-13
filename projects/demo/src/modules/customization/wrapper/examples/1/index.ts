@@ -1,7 +1,10 @@
 import {Component, ViewEncapsulation} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {TUI_TEXTFIELD_APPEARANCE_DIRECTIVE, TuiButtonDirective} from '@taiga-ui/core';
-import {TuiLabelDirective} from '@taiga-ui/experimental';
+import {
+    TUI_TEXTFIELD_APPEARANCE_DIRECTIVE,
+    TuiButtonDirective,
+    TuiLabelDirective,
+} from '@taiga-ui/core';
 import {
     TuiCheckboxComponent,
     tuiCheckboxOptionsProvider,

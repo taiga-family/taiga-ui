@@ -2,9 +2,10 @@
     <label
         *ngFor="let phone of formData.controls; let i = index"
         formArrayName="phones"
-        tuiLabel="Phone number {{ i + 1 }}"
+        tuiLabel
         class="tui-space_bottom-4"
     >
+        Phone number {{ i + 1 }}
         <span class="row">
             <tui-input-phone
                 formControlName="{{ i }}"

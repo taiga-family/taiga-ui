@@ -88,18 +88,17 @@
                 />
             </p>
         </tui-doc-demo>
-        <label
-            tuiLabel="Content type"
-            class="tui-space_vertical-3"
-        >
+        <div>
+            Content type
             <tui-radio-list
                 name="content-type"
                 size="s"
+                class="tui-space_vertical-2"
                 [items]="contentTypeVariants"
                 [style.flex-direction]="'row'"
                 [(ngModel)]="contentType"
             />
-        </label>
+        </div>
         <tui-doc-documentation>
             <ng-template
                 documentationPropertyMode="input"

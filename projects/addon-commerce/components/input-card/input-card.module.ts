@@ -3,8 +3,8 @@ import {MaskitoDirective, MaskitoPipe} from '@maskito/angular';
 import {
     TuiPrimitiveTextfieldModule,
     TuiSvgComponent,
-    TuiTextfieldComponent,
     TuiTextfieldControllerModule,
+    TuiTextfieldLegacyComponent,
 } from '@taiga-ui/core';
 import {TuiValueAccessorModule} from '@taiga-ui/kit';
 
@@ -21,6 +21,6 @@ import {TuiInputCardDirective} from './input-card.directive';
         TuiSvgComponent,
     ],
     declarations: [TuiInputCardComponent, TuiInputCardDirective],
-    exports: [TuiInputCardComponent, TuiInputCardDirective, TuiTextfieldComponent],
+    exports: [TuiInputCardComponent, TuiInputCardDirective, TuiTextfieldLegacyComponent],
 })
 export class TuiInputCardModule {}

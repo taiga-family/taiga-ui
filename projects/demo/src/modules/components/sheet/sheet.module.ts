@@ -7,11 +7,12 @@ import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiElasticStickyModule, TuiSheetModule} from '@taiga-ui/addon-mobile';
 import {
     TuiButtonDirective,
-    TuiLabelModule,
     TuiLinkDirective,
     TuiNotificationModule,
+    TuiTitleDirective,
 } from '@taiga-ui/core';
 import {TuiAvatarComponent} from '@taiga-ui/kit';
+import {TuiHeaderDirective} from '@taiga-ui/layout';
 
 import {TuiSheetExample1} from './examples/1';
 import {TuiSheetExample2} from './examples/2';
@@ -25,7 +26,6 @@ import {ExampleTuiSheetComponent} from './sheet.component';
     imports: [
         CommonModule,
         TuiButtonDirective,
-        TuiLabelModule,
         TuiAvatarComponent,
         TuiNotificationModule,
         TuiLinkDirective,
@@ -35,6 +35,8 @@ import {ExampleTuiSheetComponent} from './sheet.component';
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiSheetComponent)),
         TuiAmountPipe,
+        TuiTitleDirective,
+        TuiHeaderDirective,
     ],
     declarations: [
         ExampleTuiSheetComponent,

@@ -1,8 +1,9 @@
 <form [formGroup]="testForm">
     <label
-        tuiLabel="Enter an email"
+        tuiLabel
         class="tui-space_bottom-4"
     >
+        Enter an email
         <tui-input
             formControlName="testValue2"
             tuiTextfieldSize="m"
@@ -18,9 +19,10 @@
     </label>
 
     <label
-        tuiLabel="Minimum and maximum length"
+        tuiLabel
         class="tui-space_bottom-4"
     >
+        Minimum and maximum length
         <tui-input
             formControlName="testValue1"
             tuiTextfieldSize="m"
@@ -34,9 +36,9 @@
         />
     </label>
 
-    <label tuiLabel="Minimum number">
+    <label tuiLabel>
+        Minimum number
         <tui-input-number
-            decimal="never"
             formControlName="testValue3"
             tuiTextfieldSize="m"
             [step]="1"

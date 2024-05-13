@@ -9,5 +9,5 @@ import {TuiDemoModule} from '@demo/utils';
     changeDetection,
 })
 export default class PageComponent {
-    protected readonly examples = ['Basic', 'Custom icons'];
+    protected readonly examples = ['Basic', 'Custom icons', 'Static'];
 }

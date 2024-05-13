@@ -4,8 +4,8 @@ import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
 import {
     TuiHostedDropdownModule,
     TuiPrimitiveTextfieldModule,
-    TuiTextfieldComponent,
     TuiTextfieldControllerModule,
+    TuiTextfieldLegacyComponent,
     TuiWrapperModule,
 } from '@taiga-ui/core';
 import {TuiArrowModule} from '@taiga-ui/kit/components/arrow';
@@ -37,7 +37,7 @@ import {TuiComboBoxStrictDirective} from './combo-box-strict.directive';
         TuiComboBoxComponent,
         TuiComboBoxStrictDirective,
         TuiComboBoxDirective,
-        TuiTextfieldComponent,
+        TuiTextfieldLegacyComponent,
     ],
 })
 export class TuiComboBoxModule {}

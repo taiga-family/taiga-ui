@@ -6,7 +6,7 @@ import {
     TemplateRef,
 } from '@angular/core';
 import type {TuiContext} from '@taiga-ui/cdk';
-import {TUI_PARENT_ANIMATION} from '@taiga-ui/core/animations';
+import {tuiParentAnimation} from '@taiga-ui/core/animations';
 import type {TuiPortalItem} from '@taiga-ui/core/interfaces';
 import {POLYMORPHEUS_CONTEXT, PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 
@@ -20,7 +20,7 @@ import {TuiHintDirective} from './hint.directive';
     `,
     host: {'[@tuiParentAnimation]': ''},
     changeDetection: ChangeDetectionStrategy.OnPush,
-    animations: [TUI_PARENT_ANIMATION],
+    animations: [tuiParentAnimation],
 })
 export class TuiHintUnstyledComponent {
     protected readonly context = inject<TuiContext<TuiPortalItem>>(POLYMORPHEUS_CONTEXT);

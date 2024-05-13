@@ -20,9 +20,10 @@
                         tuiOption
                         [value]="item"
                     >
-                        <label [tuiLabel]="item.name">
-                            {{ item.account }}
-                        </label>
+                        <span tuiTitle>
+                            {{ item.name }}
+                            <span tuiSubtitle>{{ item.account }}</span>
+                        </span>
                     </button>
                 </tui-opt-group>
             </tui-opt-group>
@@ -33,9 +34,10 @@
                         tuiOption
                         [value]="item"
                     >
-                        <label [tuiLabel]="item.name">
-                            {{ item.account }}
-                        </label>
+                        <span tuiTitle>
+                            {{ item.name }}
+                            <span tuiSubtitle>{{ item.account }}</span>
+                        </span>
                     </button>
                 </tui-opt-group>
             </tui-opt-group>

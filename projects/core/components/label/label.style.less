@@ -1,38 +1,45 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
-:host {
+[tuiLabel] {
     display: flex;
-    min-height: 2.75rem;
-    justify-content: space-between;
+    gap: 0.25rem;
     flex-direction: column;
-    pointer-events: none;
-}
-
-.t-label {
     font: var(--tui-font-text-s);
-    max-width: 100%;
-    align-self: inherit;
-    overflow: inherit;
-    pointer-events: auto;
+    color: var(--tui-text-01);
 
-    :host._control & {
-        margin-bottom: 0.25rem;
+    &:not(._textfield) {
+        flex-direction: row;
+        width: fit-content;
+        font: var(--tui-font-text-m);
     }
-}
 
-.t-text {
-    display: block;
-    overflow: inherit;
-    text-overflow: ellipsis;
+    //TODO: Remove after all inputs migrate to new textfield
+    &:has(tui-primitive-textfield),
+    &:has(tui-textarea) {
+        flex-direction: column !important;
+        width: auto !important;
+        font: var(--tui-font-text-s) !important;
+    }
 
-    :host:not(._control) & {
+    input[type='checkbox'],
+    input[type='radio'] {
+        margin-inline-end: 0.5rem;
+
+        &[data-size='s'] {
+            margin-inline-end: 0.25rem;
+            margin-top: 0.125rem;
+        }
+    }
+
+    small {
+        font: var(--tui-font-text-s);
+    }
+
+    [tuiTitle] {
+        margin-top: 0.125rem;
+    }
+
+    [tuiSubtitle] {
         color: var(--tui-text-02);
     }
-}
-
-.t-content {
-    line-height: 1.5rem;
-    overflow: inherit;
-    text-overflow: ellipsis;
-    pointer-events: auto;
 }

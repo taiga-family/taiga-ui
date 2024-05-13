@@ -1,30 +1,13 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    ContentChild,
-    HostBinding,
-    Input,
-} from '@angular/core';
-import {NgControl} from '@angular/forms';
-import type {TuiContext} from '@taiga-ui/cdk';
-import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/core';
 
 @Component({
-    selector: 'label[tuiLabel]',
-    templateUrl: './label.template.html',
+    standalone: true,
+    template: '',
     styleUrls: ['./label.style.less'],
+    encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        class: 'tui-label-styles',
+    },
 })
-export class TuiLabelComponent<T> {
-    @Input()
-    public tuiLabel: PolymorpheusContent<TuiContext<T | null>>;
-
-    @Input()
-    public context: TuiContext<T | null> = {
-        $implicit: null,
-    };
-
-    @ContentChild(NgControl)
-    @HostBinding('class._control')
-    protected readonly control?: NgControl;
-}
+export class TuiLabelComponent {}

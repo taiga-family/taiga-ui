@@ -1,0 +1,19 @@
+<tui-doc-page
+    header="Textfield"
+    package="CORE"
+    type="components"
+>
+    <ng-template pageTab>
+        Basic textfield component to implement more complex controls based upon it.
+
+        <tui-doc-example
+            *ngFor="let example of examples; let index = index"
+            [component]="index + 1 | tuiComponent"
+            [content]="index + 1 | tuiExample: 'html'"
+            [heading]="example"
+            [id]="example | tuiKebab"
+        />
+    </ng-template>
+
+    <tui-setup *pageTab="'Setup'" />
+</tui-doc-page>

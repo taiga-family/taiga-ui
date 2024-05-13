@@ -24,7 +24,7 @@ import {
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
     tuiGetBorder,
     TuiHintOptionsDirective,
-    TuiTextfieldComponent,
+    TuiTextfieldLegacyComponent,
 } from '@taiga-ui/core';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
@@ -53,7 +53,7 @@ export class TuiTextareaComponent
     @ViewChild('focusableElement')
     private readonly focusableElement?: ElementRef<HTMLTextAreaElement>;
 
-    @ContentChild(TuiTextfieldComponent, {read: ElementRef})
+    @ContentChild(TuiTextfieldLegacyComponent, {read: ElementRef})
     private readonly textfield?: ElementRef<HTMLTextAreaElement>;
 
     @Input()

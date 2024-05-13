@@ -29,12 +29,13 @@
                 >
                     {{ item.card.slice(-4) }}
                 </tui-thumbnail-card>
-                <label
+                <span
+                    tuiTitle
                     class="label"
-                    [tuiLabel]="item.bank"
                 >
-                    {{ item.name }}
-                </label>
+                    {{ item.bank }}
+                    <span tuiSubtitle>{{ item.name }}</span>
+                </span>
                 <span>{{ item.card.slice(-5) }}</span>
             </button>
         </tui-data-list>

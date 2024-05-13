@@ -5,11 +5,11 @@ import {TuiExamplePipe, TuiSetupComponent} from '@demo/utils';
 import {tuiGetDocModules} from '@taiga-ui/addon-doc';
 import {
     TuiButtonDirective,
+    TuiLabelDirective,
     TuiNotificationModule,
     TuiSurfaceDirective,
     TuiTitleDirective,
 } from '@taiga-ui/core';
-import {TuiLabelDirective} from '@taiga-ui/experimental';
 import {
     TuiAvatarComponent,
     TuiBadgeDirective,

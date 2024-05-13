@@ -7,11 +7,11 @@ import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiMapperPipe} from '@taiga-ui/cdk';
 import {
     TuiButtonDirective,
+    TuiLabelDirective,
     TuiLinkDirective,
     TuiLoaderModule,
     TuiSvgComponent,
 } from '@taiga-ui/core';
-import {TuiLabelDirective} from '@taiga-ui/experimental';
 import {TuiCheckboxComponent, TuiTreeModule} from '@taiga-ui/kit';
 
 import {TuiTreeExample1} from './examples/1';

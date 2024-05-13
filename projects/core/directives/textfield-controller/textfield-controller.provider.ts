@@ -6,8 +6,8 @@ import {TUI_TEXTFIELD_APPEARANCE} from '@taiga-ui/core/tokens';
 import {merge, NEVER} from 'rxjs';
 
 import {TuiTextfieldController} from './textfield.controller';
-import type {TuiTextfieldOptions} from './textfield.options';
-import {TUI_TEXTFIELD_OPTIONS} from './textfield.options';
+import type {TuiTextfieldOptionsLegacy} from './textfield.options';
+import {TUI_TEXTFIELD_OPTIONS_LEGACY} from './textfield.options';
 import type {TuiTextfieldAppearanceDirective} from './textfield-appearance.directive';
 import {TUI_TEXTFIELD_APPEARANCE_DIRECTIVE} from './textfield-appearance.directive';
 import type {TuiTextfieldCleanerDirective} from './textfield-cleaner.directive';
@@ -37,7 +37,7 @@ export const TEXTFIELD_CONTROLLER_PROVIDER: Provider = [
         provide: TUI_TEXTFIELD_WATCHED_CONTROLLER,
         deps: [
             ChangeDetectorRef,
-            TUI_TEXTFIELD_OPTIONS,
+            TUI_TEXTFIELD_OPTIONS_LEGACY,
             TUI_TEXTFIELD_APPEARANCE,
             TUI_TEXTFIELD_APPEARANCE_DIRECTIVE,
             TUI_TEXTFIELD_CLEANER,
@@ -52,7 +52,7 @@ export const TEXTFIELD_CONTROLLER_PROVIDER: Provider = [
         ],
         useFactory: (
             cdr: ChangeDetectorRef,
-            options: TuiTextfieldOptions,
+            options: TuiTextfieldOptionsLegacy,
             legacyAppearance: string,
             ...controllers: [
                 TuiTextfieldAppearanceDirective,

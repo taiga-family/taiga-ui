@@ -4,7 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiExamplePipe, TuiSetupComponent} from '@demo/utils';
 import {TuiAddonDocModule, type TuiRawLoaderContent} from '@taiga-ui/addon-doc';
-import {TuiLabelModule, type TuiSizeS, type TuiSizeXL} from '@taiga-ui/core';
+import {type TuiSizeS, type TuiSizeXL} from '@taiga-ui/core';
 import {TuiBadgeDirective, TuiFadeDirective, TuiRadioListComponent} from '@taiga-ui/kit';
 
 import {TuiBadgeExample1} from './examples/1';
@@ -21,7 +21,6 @@ import {TuiBadgeExample6} from './examples/6';
         TuiBadgeDirective,
         NgIf,
         TuiFadeDirective,
-        TuiLabelModule,
         TuiRadioListComponent,
         FormsModule,
         TuiBadgeExample1,

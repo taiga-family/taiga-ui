@@ -7,9 +7,9 @@ import {TuiTabBarModule} from '@taiga-ui/addon-mobile';
 import {
     TuiButtonDirective,
     TuiDropdownModule,
+    TuiLabelDirective,
     TuiNotificationModule,
 } from '@taiga-ui/core';
-import {TuiLabelDirective} from '@taiga-ui/experimental';
 import {TuiCheckboxComponent} from '@taiga-ui/kit';
 
 import {TuiTabBarExample1} from './examples/1';
