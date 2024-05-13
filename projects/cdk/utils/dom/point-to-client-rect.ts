@@ -12,8 +12,6 @@ export function tuiPointToClientRect(x = 0, y = 0): DOMRect {
 
     return {
         ...rect,
-        toJSON() {
-            return rect;
-        },
+        toJSON: () => rect,
     };
 }

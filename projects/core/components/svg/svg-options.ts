@@ -1,14 +1,11 @@
 import type {FactoryProvider, Provider} from '@angular/core';
 import {InjectionToken, Optional, SkipSelf} from '@angular/core';
 import type {TuiHandler, TuiSafeHtml, TuiStringHandler} from '@taiga-ui/cdk';
-import {
-    tuiCreateTokenFromFactory,
-    tuiIsString,
-    tuiSvgLinearGradientProcessor,
-} from '@taiga-ui/cdk';
+import {tuiCreateTokenFromFactory, tuiIsString} from '@taiga-ui/cdk';
 import {tuiIconsPathFactory} from '@taiga-ui/core/utils';
 import {identity} from 'rxjs';
 
+import {tuiSvgLinearGradientProcessor} from './content-processor';
 import {TUI_DEPRECATED_ICONS} from './deprecated-icons';
 
 export const TUI_DEFAULT_ICONS_PLACE = 'assets/taiga-ui/icons';

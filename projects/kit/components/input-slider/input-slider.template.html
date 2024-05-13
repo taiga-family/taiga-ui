@@ -29,6 +29,7 @@
 </tui-input-number>
 
 <input
+    tabIndex="-1"
     tuiSlider
     type="range"
     [disabled]="readOnly || computedDisabled"
@@ -36,7 +37,6 @@
     [max]="computedSteps"
     [ngModel]="value"
     [segments]="segments"
-    [tuiFocusable]="false"
     (click)="focusTextInput()"
     (ngModelChange)="onSliderChange($event)"
 />

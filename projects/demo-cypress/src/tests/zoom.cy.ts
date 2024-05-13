@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import type {TuiZoom} from '@taiga-ui/cdk';
-import {tuiFloor, TuiZoomModule} from '@taiga-ui/cdk';
+import {tuiFloor, TuiZoomDirective} from '@taiga-ui/cdk';
 import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('TuiZoom', () => {
@@ -25,7 +25,7 @@ describe('TuiZoom', () => {
     beforeEach(() =>
         cy
             .mount(TestComponent, {
-                imports: [TuiZoomModule],
+                imports: [TuiZoomDirective],
                 providers: [NG_EVENT_PLUGINS],
             })
             .then(wrapper => {

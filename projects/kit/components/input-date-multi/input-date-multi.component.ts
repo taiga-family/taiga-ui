@@ -15,7 +15,6 @@ import type {
     TuiBooleanHandler,
     TuiFocusableElementAccessor,
     TuiMapper,
-    TuiTypedMapper,
     TuiValueTransformer,
 } from '@taiga-ui/cdk';
 import {
@@ -250,12 +249,12 @@ export class TuiInputDateMultiComponent
     }
 
     protected readonly disabledItemHandlerWrapper: TuiMapper<
-        TuiBooleanHandler<string> | TuiBooleanHandler<TuiDay>,
+        [TuiBooleanHandler<string> | TuiBooleanHandler<TuiDay>],
         TuiBooleanHandler<TuiStringifiableItem<any> | string>
     > = handler => stringifiable =>
         tuiIsString(stringifiable) || handler(stringifiable.item);
 
-    protected readonly valueMapper: TuiTypedMapper<
+    protected readonly valueMapper: TuiMapper<
         [readonly TuiDay[]],
         ReadonlyArray<TuiStringifiableItem<TuiDay>>
     > = value => value.map(item => new TuiStringifiableItem(item, item => String(item)));

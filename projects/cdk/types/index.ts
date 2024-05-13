@@ -1,4 +1,3 @@
-export * from './autocomplete';
 export * from './context';
 export * from './deep-partial';
 export * from './event-with';
@@ -11,6 +10,4 @@ export * from './matcher';
 export * from './platform';
 export * from './rounding';
 export * from './safe-html';
-export * from './swipe';
 export * from './values-of';
-export * from './zoom';

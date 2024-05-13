@@ -5,7 +5,7 @@ import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiPlatform} from '@taiga-ui/cdk';
-import {TuiPlatformModule} from '@taiga-ui/cdk';
+import {TuiPlatformDirective} from '@taiga-ui/cdk';
 import type {TuiSizeS} from '@taiga-ui/core';
 import {TuiSwitchComponent} from '@taiga-ui/kit';
 
@@ -15,7 +15,7 @@ import {TuiSwitchComponent} from '@taiga-ui/kit';
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
-        TuiPlatformModule,
+        TuiPlatformDirective,
         TuiSwitchComponent,
     ],
     templateUrl: './index.html',

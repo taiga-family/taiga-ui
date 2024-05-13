@@ -1,16 +1,19 @@
 import {Component, inject} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiValueChangesDirective} from '@taiga-ui/cdk';
 import {TuiAlertService} from '@taiga-ui/core';
+import {TuiInputModule} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-value-changes-example-1',
+    standalone: true,
+    imports: [ReactiveFormsModule, TuiInputModule, TuiValueChangesDirective],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class TuiValueChangesExample1 {
+export default class ExampleComponent {
     private readonly alerts = inject(TuiAlertService);
 
     protected readonly form = new FormGroup({

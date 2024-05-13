@@ -44,20 +44,6 @@ describe('InputCard', () => {
         fixture.detectChanges();
     });
 
-    describe('autocomplete', () => {
-        it('enabled', () => {
-            testComponent.component.autocompleteEnabled = true;
-
-            expect(testComponent.component.autocompleteCard).toBe('cc-number');
-        });
-
-        it('disabled', () => {
-            testComponent.component.autocompleteEnabled = false;
-
-            expect(testComponent.component.autocompleteCard).toBe('off');
-        });
-    });
-
     describe('focusable', () => {
         it('touched', () => {
             testComponent.component.onFocused(true);

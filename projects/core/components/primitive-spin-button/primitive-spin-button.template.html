@@ -7,7 +7,7 @@
         type="button"
         [class.t-hidden]="leftComputedDisabled"
         [iconLeft]="icons.decrement"
-        [tuiFocusable]="focusable"
+        [tabIndex]="focusable ? 0 : -1"
         (click)="onLeftClick()"
     >
         {{ texts[0] }}
@@ -23,7 +23,7 @@
         type="button"
         [class.t-hidden]="rightComputedDisabled"
         [iconLeft]="icons.increment"
-        [tuiFocusable]="focusable"
+        [tabIndex]="focusable ? 0 : -1"
         (click)="onRightClick()"
     >
         {{ texts[1] }}

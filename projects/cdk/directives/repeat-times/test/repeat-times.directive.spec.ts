@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
-import {TuiRepeatTimesModule} from '@taiga-ui/cdk';
+import {TuiRepeatTimesDirective} from '@taiga-ui/cdk';
 import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 const DEFAULT_TEST_COUNT = 3;
@@ -30,7 +30,7 @@ describe('TuiRepeatTimes directive', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TuiRepeatTimesModule],
+            imports: [TuiRepeatTimesDirective],
             declarations: [TestComponent],
             providers: [NG_EVENT_PLUGINS],
         });

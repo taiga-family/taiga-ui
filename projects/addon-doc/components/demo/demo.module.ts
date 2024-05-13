@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {TuiResizerModule} from '@taiga-ui/cdk';
+import {TuiResizeableDirective, TuiResizerDirective} from '@taiga-ui/cdk';
 import {
     TuiButtonDirective,
     TuiDataListModule,
@@ -41,7 +41,8 @@ import {TuiDocDemoComponent} from './demo.component';
         TuiDataListModule,
         TuiTextfieldControllerModule,
         TuiHintModule,
-        TuiResizerModule,
+        TuiResizerDirective,
+        TuiResizeableDirective,
         TuiBlockDirective,
         TuiChevronDirective,
         TuiSwitchComponent,

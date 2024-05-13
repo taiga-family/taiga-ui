@@ -14,7 +14,7 @@ import {
     TUI_DOC_DOCUMENTATION_TEXTS,
     TUI_DOC_EXCLUDED_PROPERTIES,
 } from '@taiga-ui/addon-doc/tokens';
-import type {TuiTypedMatcher} from '@taiga-ui/cdk';
+import type {TuiMatcher} from '@taiga-ui/cdk';
 import {EMPTY_QUERY, tuiHexToRgb, tuiQueryListChanges, tuiWatch} from '@taiga-ui/cdk';
 import {merge, switchMap} from 'rxjs';
 
@@ -74,7 +74,7 @@ export class TuiDocDocumentationComponent implements AfterContentInit {
         return this.isAPI ? this.texts[0] : this.texts[1];
     }
 
-    protected matcher: TuiTypedMatcher<
+    protected matcher: TuiMatcher<
         [TuiDocDocumentationPropertyConnectorDirective<any>, Set<string>]
     > = (item, exclusions) => !exclusions.has(item.documentationPropertyName);
 

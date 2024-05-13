@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {TuiActiveZoneDirective, TuiPressedModule} from '@taiga-ui/cdk';
+import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
 import {
     TuiNumberFormatDirective,
     TuiTextfieldControllerModule,
@@ -20,7 +20,6 @@ import {TuiInputRangeComponent} from './input-range.component';
         PolymorpheusModule,
         TuiActiveZoneDirective,
         TuiInputNumberModule,
-        TuiPressedModule,
         TuiRangeModule,
         TuiWrapperModule,
         TuiTextfieldControllerModule,

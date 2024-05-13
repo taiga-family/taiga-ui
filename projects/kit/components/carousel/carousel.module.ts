@@ -1,12 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {IntersectionObserverModule} from '@ng-web-apis/intersection-observer';
-import {
-    TuiItemDirective,
-    TuiItemModule,
-    TuiPanModule,
-    TuiSwipeModule,
-} from '@taiga-ui/cdk';
+import {TuiItemDirective, TuiPanDirective, TuiSwipeDirective} from '@taiga-ui/cdk';
 
 import {TuiCarouselComponent} from './carousel.component';
 import {TuiCarouselDirective} from './carousel.directive';
@@ -18,9 +13,9 @@ import {TuiCarouselScrollDirective} from './carousel-scroll.directive';
     imports: [
         CommonModule,
         IntersectionObserverModule,
-        TuiPanModule,
-        TuiSwipeModule,
-        TuiItemModule,
+        TuiPanDirective,
+        TuiSwipeDirective,
+        TuiItemDirective,
     ],
     declarations: [
         TuiCarouselComponent,

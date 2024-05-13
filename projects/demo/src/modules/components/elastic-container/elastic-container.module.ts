@@ -4,7 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiSetupComponent} from '@demo/utils';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
-import {TuiRepeatTimesModule} from '@taiga-ui/cdk';
+import {TuiRepeatTimesDirective} from '@taiga-ui/cdk';
 import {TuiButtonDirective, TuiExpandModule, TuiLinkDirective} from '@taiga-ui/core';
 import {
     TuiChevronDirective,
@@ -24,7 +24,7 @@ import {TuiElasticContainerExample4} from './examples/4';
         FormsModule,
         TuiInputModule,
         TuiElasticContainerModule,
-        TuiRepeatTimesModule,
+        TuiRepeatTimesDirective,
         TuiExpandModule,
         TuiButtonDirective,
         TuiLinkDirective,

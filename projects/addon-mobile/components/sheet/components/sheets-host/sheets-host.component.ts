@@ -7,13 +7,14 @@ import {
     inject,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {TUI_WINDOW_HEIGHT} from '@taiga-ui/cdk';
+import {TUI_WINDOW_SIZE} from '@taiga-ui/cdk';
 import {
     TUI_ANIMATIONS_SPEED,
     tuiFadeIn,
     tuiSlideInTop,
     tuiToAnimationOptions,
 } from '@taiga-ui/core';
+import {map} from 'rxjs';
 
 import type {TuiSheet} from '../../sheet';
 import {TuiSheetService} from '../../sheet.service';
@@ -29,7 +30,7 @@ export class TuiSheetsHostComponent implements OnInit {
     private readonly service = inject(TuiSheetService);
     private readonly destroyRef = inject(DestroyRef);
     private readonly cdr = inject(ChangeDetectorRef);
-    protected readonly height$ = inject(TUI_WINDOW_HEIGHT);
+    protected readonly height$ = inject(TUI_WINDOW_SIZE).pipe(map(({height}) => height));
 
     protected sheets: ReadonlyArray<TuiSheet<any>> = [];
 

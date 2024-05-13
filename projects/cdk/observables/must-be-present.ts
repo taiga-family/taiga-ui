@@ -1,4 +1,5 @@
-import {TuiValuePresentException} from '@taiga-ui/cdk/exceptions';
+/// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
+
 import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {OperatorFunction} from 'rxjs';
 import {map} from 'rxjs';
@@ -11,4 +12,10 @@ export function tuiMustBePresent<T>(): OperatorFunction<T | null | undefined, T>
 
         return value;
     });
+}
+
+export class TuiValuePresentException extends Error {
+    constructor() {
+        super(ngDevMode ? 'Value must present' : '');
+    }
 }

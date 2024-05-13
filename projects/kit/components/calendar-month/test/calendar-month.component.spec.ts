@@ -69,36 +69,6 @@ describe('CalendarMonth', () => {
         });
     });
 
-    describe('getItemState', () => {
-        it('returns disabled if there is', () => {
-            const disabledMonth = new TuiMonth(TODAY.year, 10);
-
-            expect(component.getItemState(disabledMonth)).toBe('disabled');
-        });
-
-        it('returns pressed if there is', () => {
-            const pressedMonth = new TuiMonth(TODAY.year, 3);
-
-            component.pressedItem = pressedMonth;
-
-            expect(component.getItemState(pressedMonth)).toBe('active');
-        });
-
-        it('returns hovered if there is', () => {
-            const hoveredItem = new TuiMonth(TODAY.year, 3);
-
-            component.hoveredItem = hoveredItem;
-
-            expect(component.getItemState(hoveredItem)).toBe('hover');
-        });
-
-        it('returns null if there is no state', () => {
-            const ordinaryItem = new TuiMonth(TODAY.year, 3);
-
-            expect(component.getItemState(ordinaryItem)).toBeNull();
-        });
-    });
-
     describe('isItemInsideRange', () => {
         it('returns false if no value', () => {
             component.value = null;

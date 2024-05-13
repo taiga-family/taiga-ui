@@ -1,4 +1,4 @@
-import {TuiPureException} from '@taiga-ui/cdk/exceptions';
+/// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
 
 function decorateMethod(
     originalMethod: (...args: unknown[]) => unknown,
@@ -140,4 +140,10 @@ export function tuiPure(
             return patched as unknown;
         },
     };
+}
+
+export class TuiPureException extends Error {
+    constructor() {
+        super(ngDevMode ? 'tuiPure can only be used with functions or getters' : '');
+    }
 }

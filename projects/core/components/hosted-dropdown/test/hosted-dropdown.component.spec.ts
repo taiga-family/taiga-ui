@@ -3,7 +3,6 @@ import {Component, ElementRef, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {TuiElementModule} from '@taiga-ui/cdk';
 import {
     TuiButtonDirective,
     TuiDataListModule,
@@ -51,9 +50,8 @@ describe('TuiHostedDropdown', () => {
                     <div>
                         <button tuiButton>Button</button>
                         <button
-                            #host="elementRef"
+                            #host
                             tuiButton
-                            tuiElement
                             tuiHostedDropdownHost
                         >
                             Arrow
@@ -126,7 +124,6 @@ describe('TuiHostedDropdown', () => {
                 TuiPrimitiveTextfieldModule,
                 TuiTextfieldControllerModule,
                 TuiDataListModule,
-                TuiElementModule,
                 TuiRootComponent,
             ],
             declarations: [TestComponent],

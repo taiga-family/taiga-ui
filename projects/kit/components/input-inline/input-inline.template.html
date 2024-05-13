@@ -24,8 +24,9 @@
     [id]="id"
     [ngModel]="value"
     [readOnly]="readOnly"
-    [tuiFocusable]="focusable"
+    [tabIndex]="focusable ? 0 : -1"
+    (blur)="onFocused(false)"
+    (focus)="onFocused(true)"
     (ngModelChange)="onValueChange($event)"
     (scroll)="onScroll()"
-    (tuiFocusedChange)="onFocused($event)"
 />

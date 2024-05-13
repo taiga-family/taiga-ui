@@ -1,3 +1,5 @@
+@import 'mixins.less';
+
 .picker(@itemSize) {
     :host {
         display: block;
@@ -20,12 +22,9 @@
 
         &:before,
         &:after {
+            .fullsize(absolute, inset);
+
             content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
             z-index: -1;
             border-radius: var(--tui-radius-m);
         }
@@ -67,7 +66,7 @@
             height: 0.125rem;
             width: 0.75rem;
             border-radius: 0.375rem;
-            background-color: var(--tui-text-01);
+            background: var(--tui-text-01);
         }
 
         &_interval {
@@ -111,7 +110,7 @@
 
         &[data-range] {
             &:after {
-                background-color: var(--tui-primary-text);
+                background: var(--tui-primary-text);
             }
 
             & > .t-item {
@@ -119,18 +118,18 @@
 
                 &:before,
                 &:after {
-                    background-color: var(--tui-primary);
+                    background: var(--tui-primary);
                 }
             }
 
-            &[data-state='hover'] > .t-item:before,
-            &[data-state='hover'] > .t-item:after {
-                background-color: var(--tui-primary-hover);
+            &:hover > .t-item:before,
+            &:hover > .t-item:after {
+                background: var(--tui-primary-hover);
             }
 
-            &[data-state='active'] > .t-item:before,
-            &[data-state='active'] > .t-item:after {
-                background-color: var(--tui-primary-active);
+            &:active > .t-item:before,
+            &:active > .t-item:after {
+                background: var(--tui-primary-active);
             }
         }
 
@@ -181,7 +180,7 @@
             display: none;
         }
 
-        &[data-state='disabled'] {
+        &_disabled {
             pointer-events: none;
 
             & > .t-item {
@@ -189,12 +188,12 @@
             }
         }
 
-        &[data-state='hover']:hover:not([data-range]) > .t-item {
-            background-color: var(--tui-secondary-hover);
+        &:hover:not([data-range]) > .t-item {
+            background: var(--tui-secondary-hover);
         }
 
-        &[data-state='active']:hover:not([data-range]) > .t-item {
-            background-color: var(--tui-secondary-active);
+        &:active:not([data-range]) > .t-item {
+            background: var(--tui-secondary-active);
         }
     }
 }

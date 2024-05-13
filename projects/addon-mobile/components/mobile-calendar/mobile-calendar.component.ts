@@ -19,7 +19,7 @@ import {
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {TuiRippleModule, TuiTouchableModule} from '@taiga-ui/addon-mobile/directives';
 import {TuiPrimitiveCalendarMobileModule} from '@taiga-ui/addon-mobile/internal';
-import type {TuiBooleanHandler, TuiTypedMapper} from '@taiga-ui/cdk';
+import type {TuiBooleanHandler, TuiMapper} from '@taiga-ui/cdk';
 import {
     MONTHS_IN_YEAR,
     TUI_FALSE_HANDLER,
@@ -256,7 +256,7 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
         this.scrollToActiveYear();
     }
 
-    protected readonly disabledItemHandlerMapper: TuiTypedMapper<
+    protected readonly disabledItemHandlerMapper: TuiMapper<
         [TuiBooleanHandler<TuiDay>, TuiDay, TuiDay],
         TuiBooleanHandler<TuiDay>
     > = (disabledItemHandler, min, max) => item =>

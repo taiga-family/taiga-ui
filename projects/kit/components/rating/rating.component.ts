@@ -15,7 +15,7 @@ import {
     AbstractTuiControl,
     tuiClamp,
     tuiIsNativeFocused,
-    TuiRepeatTimesModule,
+    TuiRepeatTimesDirective,
 } from '@taiga-ui/cdk';
 import {TuiIconComponent} from '@taiga-ui/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
@@ -29,7 +29,7 @@ import {TUI_RATING_OPTIONS} from './rating.options';
         CommonModule,
         FormsModule,
         TuiIconComponent,
-        TuiRepeatTimesModule,
+        TuiRepeatTimesDirective,
         PolymorpheusModule,
     ],
     templateUrl: './rating.template.html',

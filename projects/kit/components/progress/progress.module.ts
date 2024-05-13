@@ -1,6 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {TuiRepeatTimesModule} from '@taiga-ui/cdk';
+import {TuiRepeatTimesDirective} from '@taiga-ui/cdk';
 
 import {TuiProgressBarComponent} from './progress-bar/progress-bar.component';
 import {TuiProgressColorSegmentsDirective} from './progress-bar/progress-color-segments.directive';
@@ -9,7 +9,7 @@ import {TuiProgressLabelComponent} from './progress-label/progress-label.compone
 import {TuiProgressSegmentedDirective} from './progress-segmented/progress-segmented.directive';
 
 @NgModule({
-    imports: [CommonModule, TuiRepeatTimesModule, TuiProgressSegmentedDirective],
+    imports: [CommonModule, TuiRepeatTimesDirective, TuiProgressSegmentedDirective],
     declarations: [
         TuiProgressBarComponent,
         TuiProgressColorSegmentsDirective,

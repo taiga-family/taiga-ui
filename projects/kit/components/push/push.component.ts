@@ -6,7 +6,7 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import {tuiIsObserved, tuiIsString} from '@taiga-ui/cdk';
+import {tuiIsString} from '@taiga-ui/cdk';
 import {TUI_CLOSE_WORD, TUI_COMMON_ICONS, tuiButtonOptionsProvider} from '@taiga-ui/core';
 
 @Component({
@@ -33,8 +33,4 @@ export class TuiPushComponent {
 
     protected readonly closeWord$ = inject(TUI_CLOSE_WORD);
     protected readonly icons = inject(TUI_COMMON_ICONS);
-
-    protected get closeable(): boolean {
-        return tuiIsObserved(this.close);
-    }
 }

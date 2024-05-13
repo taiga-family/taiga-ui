@@ -26,12 +26,7 @@ import {
     type TuiDocSourceCodePathOptions,
     tuiSortPages,
 } from '@taiga-ui/addon-doc';
-import {
-    TUI_BASE_HREF,
-    TUI_IS_E2E,
-    TUI_IS_PLAYWRIGHT,
-    TUI_TAKE_ONLY_TRUSTED_EVENTS,
-} from '@taiga-ui/cdk';
+import {TUI_BASE_HREF, TUI_IS_E2E, TUI_IS_PLAYWRIGHT} from '@taiga-ui/cdk';
 import {
     TUI_DROPDOWN_HOVER_DEFAULT_OPTIONS,
     TUI_DROPDOWN_HOVER_OPTIONS,
@@ -169,10 +164,6 @@ export const config: ApplicationConfig = {
                 inject(TUI_IS_E2E)
                     ? {...TUI_DROPDOWN_HOVER_DEFAULT_OPTIONS, showDelay: 0, hideDelay: 0}
                     : TUI_DROPDOWN_HOVER_DEFAULT_OPTIONS,
-        },
-        {
-            provide: TUI_TAKE_ONLY_TRUSTED_EVENTS,
-            useFactory: () => !inject(TUI_IS_E2E),
         },
         {
             provide: TUI_DOC_URL_STATE_HANDLER,

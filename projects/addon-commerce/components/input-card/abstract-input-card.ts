@@ -1,11 +1,7 @@
 import {Directive, EventEmitter, inject, Input, Output} from '@angular/core';
 import type {TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
 import {TUI_PAYMENT_SYSTEM_ICONS} from '@taiga-ui/addon-commerce/utils';
-import type {
-    TuiAutofillFieldName,
-    TuiFocusableElementAccessor,
-    TuiNativeFocusableElement,
-} from '@taiga-ui/cdk';
+import type {TuiFocusableElementAccessor, TuiNativeFocusableElement} from '@taiga-ui/cdk';
 import {AbstractTuiNullableControl, tuiPure} from '@taiga-ui/cdk';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
@@ -40,14 +36,6 @@ export abstract class AbstractTuiInputCard<
 
     public abstract get nativeFocusableElement(): TuiNativeFocusableElement | null;
 
-    /**
-     * @deprecated: drop in v4.0
-     * use {@link autocomplete}
-     */
-    public get autocompleteCard(): TuiAutofillFieldName {
-        return this.autocomplete;
-    }
-
     public get bin(): string | null {
         return this.card.length < 6 ? null : this.card.slice(0, 6);
     }
@@ -67,7 +55,7 @@ export abstract class AbstractTuiInputCard<
         return this.cardSrc || this.defaultIcon;
     }
 
-    protected get autocomplete(): TuiAutofillFieldName {
+    protected get autocomplete(): string {
         return this.autocompleteEnabled ? 'cc-number' : 'off';
     }
 

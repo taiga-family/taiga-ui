@@ -56,7 +56,7 @@
                             [disabled]="computedDisabled"
                             [id]="id"
                             [readOnly]="readOnly"
-                            [tuiFocusable]="computedFocusable"
+                            [tabIndex]="computedFocusable ? 0 : -1"
                             [(ngModel)]="value"
                         ></textarea>
                         <ng-content select="textarea" />

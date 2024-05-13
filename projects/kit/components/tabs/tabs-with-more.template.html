@@ -30,8 +30,8 @@
     [class._active]="isMoreActive"
     [class.t-no-margin]="isMoreAlone"
     [class.t-overflown]="!isMoreVisible"
+    [tabIndex]="isMoreFocusable ? 0 : -1"
     [tuiDropdown]="dropdownContent || dropdown"
-    [tuiFocusable]="isMoreFocusable"
     [(tuiDropdownOpen)]="open"
     (keydown.arrowLeft.prevent)="onArrowLeft()"
 >
@@ -47,8 +47,8 @@
         [class._active]="isMoreActive"
         [class.t-no-margin]="isMoreAlone"
         [class.t-overflown]="!isMoreVisible"
+        [tabIndex]="isMoreFocusable ? 0 : -1"
         [tuiDropdown]="dropdownContent || dropdown"
-        [tuiFocusable]="isMoreFocusable"
         [(tuiDropdownOpen)]="open"
         (keydown.arrowLeft.prevent)="onArrowLeft()"
     >

@@ -115,30 +115,6 @@ describe('PrimitiveCalendar', () => {
                     fixture.detectChanges();
                     expect(testComponent.value).toBeNull();
                 });
-
-                it('can be checked due itemIsDisabled', () => {
-                    const disabledDay = new TuiDay(2010, 4, 20);
-
-                    expect(component.getItemState(disabledDay)).toBe('disabled');
-                });
-            });
-        });
-
-        describe('getItemState', () => {
-            it('returns pressed state if it is not disabled', () => {
-                const dayToPress = new TuiDay(2019, 4, 16);
-
-                component.onItemPressed(dayToPress);
-
-                expect(component.getItemState(dayToPress)).toBe('active');
-            });
-
-            it('returns hovered state if it is not disabled and pressed', () => {
-                const dayToHover = new TuiDay(2019, 4, 16);
-
-                component.onItemHovered(dayToHover);
-
-                expect(component.getItemState(dayToHover)).toBe('hover');
             });
         });
 
@@ -396,7 +372,7 @@ describe('PrimitiveCalendar', () => {
     }
 
     function getDisabledCalendarItems(): DebugElement[] {
-        return fixture.debugElement.queryAll(By.css('[data-state="disabled"]'));
+        return fixture.debugElement.queryAll(By.css('.t-cell_disabled'));
     }
 
     afterEach(() => {

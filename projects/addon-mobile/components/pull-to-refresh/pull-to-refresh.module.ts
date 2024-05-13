@@ -1,6 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {TuiRepeatTimesModule} from '@taiga-ui/cdk';
+import {TuiRepeatTimesDirective} from '@taiga-ui/cdk';
 import {TuiSvgComponent} from '@taiga-ui/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
@@ -12,7 +12,7 @@ import {TuiPullToRefreshComponent} from './pull-to-refresh.component';
     imports: [
         CommonModule,
         TuiSvgComponent,
-        TuiRepeatTimesModule,
+        TuiRepeatTimesDirective,
         PolymorpheusModule,
         TuiMobileLoaderAndroidComponent,
     ],

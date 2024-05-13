@@ -17,7 +17,7 @@ import {AbstractTuiInputCard} from '@taiga-ui/addon-commerce/components/input-ca
 import {TUI_CARD_MASK} from '@taiga-ui/addon-commerce/constants';
 import type {TuiCard} from '@taiga-ui/addon-commerce/interfaces';
 import type {TuiCodeCVCLength} from '@taiga-ui/addon-commerce/types';
-import type {TuiAutofillFieldName, TuiFocusableElementAccessor} from '@taiga-ui/cdk';
+import type {TuiFocusableElementAccessor} from '@taiga-ui/cdk';
 import {
     tuiAsControl,
     tuiAsFocusableItemAccessor,
@@ -237,11 +237,11 @@ export class TuiInputCardGroupedComponent
         return this.isFocusable(this.card) && !this.cardFocused;
     }
 
-    protected get autocompleteExpire(): TuiAutofillFieldName {
+    protected get autocompleteExpire(): string {
         return this.autocompleteEnabled ? 'cc-exp' : 'off';
     }
 
-    protected get autocompleteCVC(): TuiAutofillFieldName {
+    protected get autocompleteCVC(): string {
         return this.autocompleteEnabled ? 'cc-csc' : 'off';
     }
 

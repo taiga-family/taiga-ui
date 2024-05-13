@@ -7,9 +7,11 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import {tuiIsObserved} from '@taiga-ui/cdk';
+import type {TuiContext} from '@taiga-ui/cdk';
 import {TUI_CLOSE_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
+import type {TuiNotification} from './notification.options';
 import {TUI_NOTIFICATION_OPTIONS} from './notification.options';
 
 @Component({
@@ -22,7 +24,7 @@ export class TuiNotificationComponent {
     private readonly options = inject(TUI_NOTIFICATION_OPTIONS);
 
     @Input()
-    public icon = this.options.icon;
+    public icon: PolymorpheusContent<TuiContext<TuiNotification>> = this.options.icon;
 
     @Input()
     @HostBinding('attr.data-status')
@@ -42,6 +44,6 @@ export class TuiNotificationComponent {
     protected readonly icons = inject(TUI_COMMON_ICONS);
 
     protected get hasClose(): boolean {
-        return !this.hideClose && tuiIsObserved(this.close);
+        return !this.hideClose && this.close.observed;
     }
 }

@@ -2,7 +2,6 @@ export * from '@taiga-ui/cdk/classes';
 export * from '@taiga-ui/cdk/constants';
 export * from '@taiga-ui/cdk/date-time';
 export * from '@taiga-ui/cdk/directives';
-export * from '@taiga-ui/cdk/exceptions';
 export * from '@taiga-ui/cdk/observables';
 export * from '@taiga-ui/cdk/pipes';
 export * from '@taiga-ui/cdk/services';

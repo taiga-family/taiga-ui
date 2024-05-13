@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {TuiSetupComponent} from '@demo/utils';
 import {tuiGetDocModules} from '@taiga-ui/addon-doc';
-import {TuiRepeatTimesModule} from '@taiga-ui/cdk';
+import {TuiRepeatTimesDirective} from '@taiga-ui/cdk';
 import {
     TuiAppearanceDirective,
     TuiButtonDirective,
@@ -55,7 +55,7 @@ import {ExampleTuiNavigationComponent} from './navigation.component';
         TuiSurfaceDirective,
         TuiTitleDirective,
         TuiHeaderDirective,
-        TuiRepeatTimesModule,
+        TuiRepeatTimesDirective,
         TuiAppearanceDirective,
         TuiSwitchComponent,
         TuiBreadcrumbsModule,

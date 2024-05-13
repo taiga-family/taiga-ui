@@ -5,7 +5,7 @@ import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiPlatform} from '@taiga-ui/cdk';
-import {TuiPlatformModule} from '@taiga-ui/cdk';
+import {TuiPlatformDirective} from '@taiga-ui/cdk';
 import type {TuiSizeS} from '@taiga-ui/core';
 import {TuiCheckboxComponent} from '@taiga-ui/kit';
 
@@ -16,7 +16,7 @@ import {TuiCheckboxComponent} from '@taiga-ui/kit';
         FormsModule,
         ReactiveFormsModule,
         TuiCheckboxComponent,
-        TuiPlatformModule,
+        TuiPlatformDirective,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

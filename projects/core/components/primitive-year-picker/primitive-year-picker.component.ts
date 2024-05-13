@@ -17,7 +17,6 @@ import {
     TuiYear,
 } from '@taiga-ui/cdk';
 import type {TuiRangeState} from '@taiga-ui/core/enums';
-import type {TuiInteractiveState} from '@taiga-ui/core/interfaces';
 
 const LIMIT = 100;
 const ITEMS_IN_ROW = 4;
@@ -30,7 +29,6 @@ const ITEMS_IN_ROW = 4;
 })
 export class TuiPrimitiveYearPickerComponent {
     private hoveredItem: number | null = null;
-    private pressedItem: number | null = null;
     private readonly currentYear = TuiMonth.currentLocal().year;
 
     @Input()
@@ -51,26 +49,12 @@ export class TuiPrimitiveYearPickerComponent {
     @Output()
     public readonly yearClick = new EventEmitter<TuiYear>();
 
-    public getItemState(item: number): TuiInteractiveState | null {
-        const {disabledItemHandler, pressedItem, hoveredItem} = this;
-        const max = this.computedMax;
-
-        if (
-            max.year < item ||
-            (disabledItemHandler !== TUI_FALSE_HANDLER && disabledItemHandler(item))
-        ) {
-            return 'disabled';
-        }
-
-        if (pressedItem === item) {
-            return 'active';
-        }
-
-        if (hoveredItem === item) {
-            return 'hover';
-        }
-
-        return null;
+    public isDisabled(item: number): boolean {
+        return (
+            this.computedMax.year < item ||
+            this.computedMin.year > item ||
+            this.disabledItemHandler(item)
+        );
     }
 
     public getItemRange(item: number): TuiRangeState | null {
@@ -147,10 +131,6 @@ export class TuiPrimitiveYearPickerComponent {
         this.updateHoveredItem(hovered, item);
     }
 
-    public onItemPressed(pressed: boolean, item: number): void {
-        this.updatePressedItem(pressed, item);
-    }
-
     public onItemClick(item: number): void {
         this.yearClick.emit(new TuiYear(item));
     }
@@ -206,9 +186,5 @@ export class TuiPrimitiveYearPickerComponent {
 
     private updateHoveredItem(hovered: boolean, item: number): void {
         this.hoveredItem = hovered ? item : null;
-    }
-
-    private updatePressedItem(pressed: boolean, item: number): void {
-        this.pressedItem = pressed ? item : null;
     }
 }

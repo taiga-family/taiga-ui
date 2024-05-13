@@ -5,6 +5,7 @@ import type {Observable} from 'rxjs';
 import {distinctUntilChanged, EMPTY, Subject, switchAll} from 'rxjs';
 
 @Directive({
+    standalone: true,
     selector: '[tuiValueChanges]',
 })
 export class TuiValueChangesDirective<T> implements DoCheck {

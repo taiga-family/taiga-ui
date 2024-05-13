@@ -60,32 +60,6 @@ describe('TuiPrimitiveYearPickerComponent', () => {
         );
     });
 
-    describe('getItemState', () => {
-        it('returns disabled state correctly', () => {
-            const item = 2019;
-
-            component.max = new TuiYear(item - 1);
-
-            expect(component.getItemState(item)).toBe('disabled');
-        });
-
-        it('returns pressed state if it is not disabled', () => {
-            const item = 2019;
-
-            component.onItemPressed(true, item);
-
-            expect(component.getItemState(item)).toBe('active');
-        });
-
-        it('returns hovered state if it is not disabled and pressed', () => {
-            const item = 2019;
-
-            component.onItemHovered(true, item);
-
-            expect(component.getItemState(item)).toBe('hover');
-        });
-    });
-
     describe('getItemRange', () => {
         it('returns null if there is no value', () => {
             const item = 2019;

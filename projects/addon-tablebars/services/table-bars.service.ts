@@ -1,6 +1,5 @@
 /// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
 import {Injectable} from '@angular/core';
-import {tuiIsObserved} from '@taiga-ui/cdk';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable, ReplaySubject} from 'rxjs';
 
@@ -22,7 +21,7 @@ export class TuiTableBarsService {
         options?: TuiTableBarOptions,
     ): Observable<never> {
         return new Observable(observer => {
-            ngDevMode && console.assert(tuiIsObserved(this.bar$), NO_HOST);
+            ngDevMode && console.assert(this.bar$.observed, NO_HOST);
 
             const tableBar = new TuiTableBar(observer, content, options);
 

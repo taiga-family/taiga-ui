@@ -4,7 +4,7 @@ import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk';
-import {CHAR_NO_BREAK_SPACE, TUI_TRUE_HANDLER, TuiFocusedModule} from '@taiga-ui/cdk';
+import {CHAR_NO_BREAK_SPACE, TUI_TRUE_HANDLER} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {
     TuiHintModule,
@@ -97,7 +97,6 @@ describe('InputTag', () => {
                 ReactiveFormsModule,
                 NoopAnimationsModule,
                 TuiInputTagModule,
-                TuiFocusedModule,
                 TuiRootComponent,
                 TuiHintModule,
                 TuiTextfieldControllerModule,

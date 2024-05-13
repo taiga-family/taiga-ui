@@ -12,7 +12,7 @@ import type {SafeValue} from '@angular/platform-browser';
 import {DomSanitizer} from '@angular/platform-browser';
 import {WINDOW} from '@ng-web-apis/common';
 import type {TuiContext} from '@taiga-ui/cdk';
-import {tuiIsObserved, tuiPure} from '@taiga-ui/cdk';
+import {tuiPure} from '@taiga-ui/cdk';
 import type {TuiSizeL} from '@taiga-ui/core';
 import {
     TUI_COMMON_ICONS,
@@ -100,7 +100,7 @@ export class TuiFileComponent {
     }
 
     protected get allowDelete(): boolean {
-        return this.showDelete && tuiIsObserved(this.remove);
+        return this.showDelete && this.remove.observed;
     }
 
     protected get icon(): PolymorpheusContent<TuiContext<TuiSizeL>> {

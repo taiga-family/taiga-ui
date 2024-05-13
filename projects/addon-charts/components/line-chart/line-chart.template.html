@@ -75,7 +75,7 @@
                     [id]="getHintId(index)"
                     [style.bottom.%]="getBottom(point[1])"
                     [style.left.%]="getOffset(index)"
-                    [tuiFocusable]="isFocusable"
+                    [tabIndex]="isFocusable ? 0 : -1"
                 ></div>
             </div>
             <div

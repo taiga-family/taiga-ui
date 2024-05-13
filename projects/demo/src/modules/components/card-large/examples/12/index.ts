@@ -1,14 +1,14 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiPlatformModule} from '@taiga-ui/cdk';
+import {TuiPlatformDirective} from '@taiga-ui/cdk';
 import {TuiButtonDirective, TuiSurfaceDirective} from '@taiga-ui/core';
 import {TuiCardLargeDirective, TuiHeaderDirective} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
     imports: [
-        TuiPlatformModule,
+        TuiPlatformDirective,
         TuiCardLargeDirective,
         TuiSurfaceDirective,
         TuiHeaderDirective,

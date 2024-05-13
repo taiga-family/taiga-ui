@@ -295,25 +295,25 @@ describe('TuiDay', () => {
 
                     it("'2018-aa-20'", () => {
                         expect(() => TuiDay.jsonParse('2018-aa-20')).toThrow(
-                            'Invalid month: NaN',
+                            'Invalid day: 2018-NaN-20',
                         );
                     });
 
                     it("'2018-99-20'", () => {
                         expect(() => TuiDay.jsonParse('2018-99-20')).toThrow(
-                            'Invalid month: 98',
+                            'Invalid day: 2018-98-20',
                         );
                     });
 
                     it("'2001-02-29'", () => {
                         expect(() => TuiDay.jsonParse('2001-02-29')).toThrow(
-                            'Invalid day: 29',
+                            'Invalid day: 2001-1-29',
                         );
                     });
 
                     it("'test'", () => {
                         expect(() => TuiDay.jsonParse('test')).toThrow(
-                            'Invalid year: NaN',
+                            'Invalid day: NaN-NaN-NaN',
                         );
                     });
 

@@ -16,7 +16,7 @@
         [min]="min"
         [ngModel]="value[0]"
         [size]="size"
-        [tuiFocusable]="focusable"
+        [tabIndex]="focusable ? 0 : -1"
     />
     <input
         automation-id="tui-range__right"
@@ -31,6 +31,6 @@
         [min]="min"
         [ngModel]="value[1]"
         [size]="size"
-        [tuiFocusable]="focusable"
+        [tabIndex]="focusable ? 0 : -1"
     />
 </div>

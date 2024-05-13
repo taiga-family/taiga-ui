@@ -1,3 +1,5 @@
+/// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
+
 import {
     ChangeDetectionStrategy,
     Component,
@@ -8,7 +10,7 @@ import {
     Input,
 } from '@angular/core';
 import type {TuiComparator} from '@taiga-ui/addon-table/types';
-import {tuiDefaultSort, tuiProvide, TuiTableSortKeyException} from '@taiga-ui/cdk';
+import {tuiDefaultSort, tuiProvide} from '@taiga-ui/cdk';
 import {TUI_ELEMENT_REF} from '@taiga-ui/core';
 
 import {TuiHeadDirective} from '../directives/head.directive';
@@ -83,5 +85,11 @@ export class TuiThComponent<T extends Partial<Record<keyof T, any>>> {
 
     private get isCurrentAndAscDirection(): boolean {
         return this.sorter === this.table?.sorter && this.table?.direction === -1;
+    }
+}
+
+export class TuiTableSortKeyException extends Error {
+    constructor() {
+        super(ngDevMode ? 'Trying to sort with no key' : '');
     }
 }

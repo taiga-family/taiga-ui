@@ -3,13 +3,13 @@
         <ng-container *ngIf="texts$ | async as texts">
             <button
                 appearance="flat"
+                tabIndex="-1"
                 tuiIconButton
                 type="button"
                 class="t-button"
                 [disabled]="arrowIsDisabledLeft"
                 [iconLeft]="icons.decrement"
                 [size]="buttonSize"
-                [tuiFocusable]="false"
                 (click)="onArrowClick('left')"
                 (mousedown.silent.prevent)="(0)"
             >
@@ -27,7 +27,7 @@
                         [appearance]="getElementMode(index)"
                         [disabled]="disabled"
                         [size]="buttonSize"
-                        [tuiFocusable]="elementIsFocusable(index)"
+                        [tabIndex]="elementIsFocusable(index) ? 0 : -1"
                         (click)="onElementClick(index)"
                         (keydown.arrowLeft.prevent)="onElementKeyDownArrowLeft(element)"
                         (keydown.arrowRight.prevent)="onElementKeyDownArrowRight(element)"
@@ -40,13 +40,13 @@
             </ng-container>
             <button
                 appearance="flat"
+                tabIndex="-1"
                 tuiIconButton
                 type="button"
                 class="t-button"
                 [disabled]="arrowIsDisabledRight"
                 [iconLeft]="icons.increment"
                 [size]="buttonSize"
-                [tuiFocusable]="false"
                 (click)="onArrowClick('right')"
                 (mousedown.silent.prevent)="(0)"
             >
@@ -63,7 +63,7 @@
             class="t-button t-button_small"
             [appearance]="getElementMode(indexItem)"
             [disabled]="disabled"
-            [tuiFocusable]="elementIsFocusable(indexItem)"
+            [tabIndex]="elementIsFocusable(indexItem) ? 0 : -1"
             (click)="onElementClick(indexItem)"
             (keydown.arrowLeft.prevent)="onElementKeyDownArrowLeft(element)"
             (keydown.arrowRight.prevent)="onElementKeyDownArrowRight(element)"

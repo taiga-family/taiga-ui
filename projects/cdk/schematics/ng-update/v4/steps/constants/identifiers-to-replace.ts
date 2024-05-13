@@ -14,6 +14,42 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {name: 'TuiFocusTrapDirective', moduleSpecifier: '@taiga-ui/cdk'},
     },
     {
+        from: {name: 'TuiElementModule', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiElementDirective', moduleSpecifier: '@taiga-ui/cdk'},
+    },
+    {
+        from: {name: 'TuiForModule', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiForDirective', moduleSpecifier: '@taiga-ui/cdk'},
+    },
+    {
+        from: {name: 'TuiHoveredModule', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiHoveredDirective', moduleSpecifier: '@taiga-ui/cdk'},
+    },
+    {
+        from: {name: 'TuiItemModule', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiItemDirective', moduleSpecifier: '@taiga-ui/cdk'},
+    },
+    {
+        from: {name: 'TuiPanModule', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiPanDirective', moduleSpecifier: '@taiga-ui/cdk'},
+    },
+    {
+        from: {name: 'TuiRepeatTimesModule', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiRepeatTimesDirective', moduleSpecifier: '@taiga-ui/cdk'},
+    },
+    {
+        from: {name: 'TuiSwipeModule', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiSwipeDirective', moduleSpecifier: '@taiga-ui/cdk'},
+    },
+    {
+        from: {name: 'TuiValueChangesModule', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiValueChangesDirective', moduleSpecifier: '@taiga-ui/cdk'},
+    },
+    {
+        from: {name: 'TuiZoomModule', moduleSpecifier: '@taiga-ui/cdk'},
+        to: {name: 'TuiZoomDirective', moduleSpecifier: '@taiga-ui/cdk'},
+    },
+    {
         from: {name: 'ALWAYS_TRUE_HANDLER', moduleSpecifier: '@taiga-ui/cdk'},
         to: {name: 'TUI_TRUE_HANDLER', moduleSpecifier: '@taiga-ui/cdk'},
     },

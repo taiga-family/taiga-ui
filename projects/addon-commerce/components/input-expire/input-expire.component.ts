@@ -7,7 +7,7 @@ import {
     ViewChild,
 } from '@angular/core';
 import {maskitoDateOptionsGenerator} from '@maskito/kit';
-import type {TuiAutofillFieldName, TuiFocusableElementAccessor} from '@taiga-ui/cdk';
+import type {TuiFocusableElementAccessor} from '@taiga-ui/cdk';
 import {
     AbstractTuiControl,
     tuiAsControl,
@@ -56,7 +56,7 @@ export class TuiInputExpireComponent
         return this.textfieldSize.size;
     }
 
-    protected get autocomplete(): TuiAutofillFieldName {
+    protected get autocomplete(): string {
         return this.autocompleteEnabled ? 'cc-exp' : 'off';
     }
 

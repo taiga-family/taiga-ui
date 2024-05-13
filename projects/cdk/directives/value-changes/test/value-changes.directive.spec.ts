@@ -3,7 +3,7 @@ import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
-import {TuiValueChangesModule} from '@taiga-ui/cdk';
+import {TuiValueChangesDirective} from '@taiga-ui/cdk';
 import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('TuiValueChangesDirective', () => {
@@ -35,7 +35,7 @@ describe('TuiValueChangesDirective', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [ReactiveFormsModule, TuiValueChangesModule],
+            imports: [ReactiveFormsModule, TuiValueChangesDirective],
             declarations: [TestComponent],
             providers: [NG_EVENT_PLUGINS],
         });

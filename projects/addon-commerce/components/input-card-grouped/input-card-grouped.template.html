@@ -29,7 +29,7 @@
                 class="t-input t-input_card"
                 [attr.aria-invalid]="!cardPrefilled && !(this.card | tuiMapper: cardValidator)"
                 [attr.id]="idCard"
-                [autocomplete]="autocompleteCard"
+                [autocomplete]="autocomplete"
                 [class.t-input_hidden]="!card.length && focused"
                 [class.t-input_inert]="cardPrefilled"
                 [disabled]="computedDisabled"
@@ -37,8 +37,8 @@
                 [ngModel]="formattedCard"
                 [placeholder]="cardPrefilled ? '' : exampleText"
                 [readOnly]="readOnly"
+                [tabIndex]="cardFocusable ? 0 : -1"
                 [tuiAutoFocus]="false"
-                [tuiFocusable]="cardFocusable"
                 (focus)="(0)"
                 (ngModelChange)="onCardChange($event)"
             />
@@ -93,8 +93,8 @@
                 [maskito]="maskExpire"
                 [ngModel]="expire"
                 [readOnly]="readOnly"
+                [tabIndex]="expireFocusable ? 0 : -1"
                 [tuiAutoFocus]="false"
-                [tuiFocusable]="expireFocusable"
                 (focus)="(0)"
                 (ngModelChange)="onExpireChange($event)"
             />
@@ -127,8 +127,8 @@
                 [ngModel]="cvc"
                 [placeholder]="cvcPrefilled ? '•••' : exampleTextCVC"
                 [readOnly]="readOnly || cvcPrefilled"
+                [tabIndex]="cvcFocusable ? 0 : -1"
                 [tuiAutoFocus]="false"
-                [tuiFocusable]="cvcFocusable"
                 (focus)="(0)"
                 (ngModelChange)="onCVCChange($event)"
             />

@@ -1,12 +1,14 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiResizeableDirective, TuiResizerDirective} from '@taiga-ui/cdk';
 
 @Component({
-    selector: 'tui-resizer-example-1',
+    standalone: true,
+    imports: [TuiResizeableDirective, TuiResizerDirective],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiResizerExample1 {}
+export default class ExampleComponent {}

@@ -1,17 +1,20 @@
+import {AsyncPipe} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {DomSanitizer} from '@angular/platform-browser';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiPanDirective} from '@taiga-ui/cdk';
 import {BehaviorSubject, map} from 'rxjs';
 
 @Component({
-    selector: 'tui-pan-example-1',
+    standalone: true,
+    imports: [TuiPanDirective, AsyncPipe],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiPanExample1 {
+export default class ExampleComponent {
     private readonly sanitizer = inject(DomSanitizer);
 
     protected readonly coordinates$ = new BehaviorSubject([0, 0]);

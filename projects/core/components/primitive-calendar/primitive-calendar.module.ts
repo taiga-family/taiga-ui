@@ -1,11 +1,10 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {
-    TuiHoveredModule,
+    TuiHoveredDirective,
     TuiLetDirective,
     TuiMapperPipe,
-    TuiPressedModule,
-    TuiRepeatTimesModule,
+    TuiRepeatTimesDirective,
 } from '@taiga-ui/cdk';
 import {
     TuiCalendarSheetPipeModule,
@@ -19,9 +18,8 @@ import {TuiPrimitiveCalendarComponent} from './primitive-calendar.component';
         CommonModule,
         TuiLetDirective,
         TuiMapperPipe,
-        TuiRepeatTimesModule,
-        TuiHoveredModule,
-        TuiPressedModule,
+        TuiRepeatTimesDirective,
+        TuiHoveredDirective,
         TuiCalendarSheetPipeModule,
         TuiOrderWeekDaysPipeModule,
     ],
