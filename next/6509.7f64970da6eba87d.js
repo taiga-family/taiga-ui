@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[6509],{6509:a=>{a.exports="@import '@taiga-ui/core/styles/taiga-ui-local';\n\ntui-app-bar {\n    box-shadow: var(--tui-shadow-navigation);\n    width: 30rem;\n    margin-bottom: 1rem;\n}\n"}}]);
