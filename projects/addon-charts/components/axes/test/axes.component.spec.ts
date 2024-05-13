@@ -1,8 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
-import type {TuiAxesComponent} from '@taiga-ui/addon-charts';
-import {TuiAxesModule} from '@taiga-ui/addon-charts';
+import {TuiAxesComponent} from '@taiga-ui/addon-charts';
 import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
 
 describe('Axes', () => {
@@ -42,7 +41,7 @@ describe('Axes', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TuiAxesModule],
+            imports: [TuiAxesComponent],
             declarations: [TestComponent],
         });
         await TestBed.compileComponents();
