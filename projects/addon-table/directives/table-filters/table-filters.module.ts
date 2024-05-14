@@ -6,7 +6,7 @@ import {TuiTableFiltersDirective} from './table-filters.directive';
 import {TuiTableFiltersPipe} from './table-filters.pipe';
 
 @NgModule({
-    declarations: [
+    imports: [
         TuiTableFiltersDirective,
         TuiTableFilterDirective,
         TuiTableFiltersPipe,
@@ -19,4 +19,4 @@ import {TuiTableFiltersPipe} from './table-filters.pipe';
         TuiGenericFilterDirective,
     ],
 })
-export class TuiTableFiltersModule {}
+export class TuiTableFilters {}

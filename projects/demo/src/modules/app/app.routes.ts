@@ -1060,9 +1060,7 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.TableFilters,
-        loadChildren: async () =>
-            (await import('../tables/table-filters/table-filters.module'))
-                .ExampleTuiTableFiltersModule,
+        loadComponent: async () => import('../components/table-filters'),
         title: 'TableFilters',
     }),
     route({

@@ -1,11 +1,11 @@
 ```ts
-import {TuiTableFiltersModule} from '@taiga-ui/addon-table';
+import {TuiTableFilters} from '@taiga-ui/addon-table';
 
 @Component({
   standalone: true,
   imports: [
     // ...
-    TuiTableFiltersModule,
+    TuiTableFilters,
   ],
   // ...
 })
