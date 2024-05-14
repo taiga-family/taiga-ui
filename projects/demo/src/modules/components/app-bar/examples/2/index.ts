@@ -3,11 +3,11 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButtonDirective, TuiTitleDirective} from '@taiga-ui/core';
 import {TuiProgressModule} from '@taiga-ui/kit';
-import {TuiAppBarModule} from '@taiga-ui/layout';
+import {TuiAppBar} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
-    imports: [TuiAppBarModule, TuiButtonDirective, TuiTitleDirective, TuiProgressModule],
+    imports: [TuiAppBar, TuiButtonDirective, TuiTitleDirective, TuiProgressModule],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

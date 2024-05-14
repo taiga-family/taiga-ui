@@ -4,12 +4,12 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiPlatformDirective} from '@taiga-ui/cdk';
 import {TuiButtonDirective, TuiTitleDirective} from '@taiga-ui/core';
 import {TuiFadeDirective, TuiProgressModule} from '@taiga-ui/kit';
-import {TuiAppBarModule} from '@taiga-ui/layout';
+import {TuiAppBar} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
     imports: [
-        TuiAppBarModule,
+        TuiAppBar,
         TuiProgressModule,
         TuiButtonDirective,
         TuiTitleDirective,
