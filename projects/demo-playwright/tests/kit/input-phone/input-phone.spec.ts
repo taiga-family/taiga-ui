@@ -26,13 +26,14 @@ test.describe('InputPhone', () => {
                 'components/input-phone/API?countryCode=%2B52&tuiTextfieldCleaner=true',
             );
 
-            await inputPhone.textfield.fill('52');
+            await inputPhone.textfield.focus();
+            await inputPhone.textfield.pressSequentially('52');
             await expect(inputPhone.textfield).toHaveValue('+52 (52');
 
             await inputPhone.cleaner.click();
             await expect(inputPhone.textfield).toHaveValue('+52 ');
 
-            await inputPhone.textfield.fill('52');
+            await inputPhone.textfield.pressSequentially('52');
             await expect(inputPhone.textfield).toHaveValue('+52 (52');
         });
 
@@ -1374,7 +1375,7 @@ test.describe('InputPhone', () => {
 
             test.describe('New typed character is equal to the previous (already existing) fixed character', () => {
                 test('+7 | => Type 7 => +7 (7', async () => {
-                    await input.fill('7');
+                    await input.pressSequentially('7');
 
                     await expect(input).toHaveJSProperty(
                         'selectionStart',
@@ -1386,7 +1387,7 @@ test.describe('InputPhone', () => {
                 });
 
                 test('+7 (7| => Type 7 => +7 (77', async () => {
-                    await input.fill('77');
+                    await input.pressSequentially('77');
 
                     await expect(input).toHaveJSProperty(
                         'selectionStart',
