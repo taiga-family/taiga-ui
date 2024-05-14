@@ -1,16 +1,31 @@
+import {AsyncPipe, NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiTableFilters, TuiTableModule} from '@taiga-ui/addon-table';
+import {TuiFormatNumberPipeModule} from '@taiga-ui/core';
+import {TuiInputNumberModule, TuiSwitchComponent} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-table-filters-example-1',
+    standalone: true,
+    imports: [
+        TuiTableFilters,
+        ReactiveFormsModule,
+        TuiInputNumberModule,
+        TuiSwitchComponent,
+        FormsModule,
+        TuiTableModule,
+        AsyncPipe,
+        NgForOf,
+        TuiFormatNumberPipeModule,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiTableFiltersExample1 {
+export default class ExampleComponent {
     protected readonly form = new FormGroup({
         balance: new FormControl(0),
     });
