@@ -10,7 +10,7 @@ import {
     TuiTextfieldControllerModule,
     TuiWrapperModule,
 } from '@taiga-ui/core';
-import {TuiArrowModule} from '@taiga-ui/kit/components/arrow';
+import {TuiArrowComponent} from '@taiga-ui/kit/components/arrow';
 import {TuiDataListWrapperModule} from '@taiga-ui/kit/components/data-list-wrapper';
 import {TuiInputTagModule} from '@taiga-ui/kit/components/input-tag';
 import {TuiMultiSelectOptionModule} from '@taiga-ui/kit/components/multi-select-option';
@@ -32,7 +32,7 @@ import {TuiNativeMultiSelectGroupComponent} from './native-multi-select/native-m
         PolymorpheusModule,
         TuiWrapperModule,
         TuiActiveZoneDirective,
-        TuiArrowModule,
+        TuiArrowComponent,
         TuiLetDirective,
         TuiMapperPipe,
         TuiSvgComponent,

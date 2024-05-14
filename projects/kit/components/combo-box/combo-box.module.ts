@@ -8,7 +8,7 @@ import {
     TuiTextfieldLegacyComponent,
     TuiWrapperModule,
 } from '@taiga-ui/core';
-import {TuiArrowModule} from '@taiga-ui/kit/components/arrow';
+import {TuiArrowComponent} from '@taiga-ui/kit/components/arrow';
 import {TuiSelectOptionModule} from '@taiga-ui/kit/components/select-option';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
@@ -24,7 +24,7 @@ import {TuiComboBoxStrictDirective} from './combo-box-strict.directive';
         TuiPrimitiveTextfieldModule,
         TuiHostedDropdownModule,
         TuiSelectOptionModule,
-        TuiArrowModule,
+        TuiArrowComponent,
         TuiWrapperModule,
         TuiTextfieldControllerModule,
     ],

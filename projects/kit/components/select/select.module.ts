@@ -9,7 +9,7 @@ import {
     TuiTextfieldLegacyComponent,
     TuiWrapperModule,
 } from '@taiga-ui/core';
-import {TuiArrowModule} from '@taiga-ui/kit/components/arrow';
+import {TuiArrowComponent} from '@taiga-ui/kit/components/arrow';
 import {TuiDataListWrapperModule} from '@taiga-ui/kit/components/data-list-wrapper';
 import {TuiSelectOptionModule} from '@taiga-ui/kit/components/select-option';
 import {TuiStringifyContentPipeModule} from '@taiga-ui/kit/pipes';
@@ -28,7 +28,7 @@ import {TuiSelectDirective} from './select.directive';
         TuiPrimitiveTextfieldModule,
         TuiHostedDropdownModule,
         TuiSelectOptionModule,
-        TuiArrowModule,
+        TuiArrowComponent,
         TuiWrapperModule,
         TuiTextfieldControllerModule,
         TuiDataListWrapperModule,

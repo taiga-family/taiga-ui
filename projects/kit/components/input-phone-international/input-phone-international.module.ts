@@ -13,7 +13,7 @@ import {
     TuiTextfieldControllerModule,
     TuiWrapperModule,
 } from '@taiga-ui/core';
-import {TuiArrowModule} from '@taiga-ui/kit/components/arrow';
+import {TuiArrowComponent} from '@taiga-ui/kit/components/arrow';
 import {TuiInputPhoneModule} from '@taiga-ui/kit/components/input-phone';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
@@ -32,7 +32,7 @@ import {TuiInputPhoneInternationalComponent} from './input-phone-international.c
         TuiHintModule,
         TuiHostedDropdownModule,
         TuiDataListModule,
-        TuiArrowModule,
+        TuiArrowComponent,
         TuiWrapperModule,
         TuiLetDirective,
         TuiMapperPipe,
