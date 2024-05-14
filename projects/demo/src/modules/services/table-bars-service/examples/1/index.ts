@@ -2,17 +2,19 @@ import {Component, inject, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTableBarsService} from '@taiga-ui/addon-tablebars';
+import {TuiButtonDirective} from '@taiga-ui/core';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Subscription} from 'rxjs';
 
 @Component({
-    selector: 'tui-table-bar-example-1',
+    standalone: true,
+    imports: [TuiButtonDirective],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiTableBarExampleComponent1 {
+export default class ExampleComponent {
     private readonly tableBarsService = inject(TuiTableBarsService);
 
     @ViewChild('tableBarTemplate')

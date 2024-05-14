@@ -1,3 +1,4 @@
+import {AsyncPipe, NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
 import type {TuiContext} from '@taiga-ui/cdk';
@@ -7,18 +8,22 @@ import {
     TUI_CLOSE_WORD,
     TUI_COMMON_ICONS,
     TUI_MEDIA,
+    TuiButtonDirective,
     tuiIsMobile,
     tuiParentAnimation,
     tuiSlideInTop,
     tuiToAnimationOptions,
 } from '@taiga-ui/core';
+import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import type {TuiTableBar} from '../../classes/table-bar';
 import {TuiTableBarsService} from '../../services/table-bars.service';
 
 // TODO: Accessibility
 @Component({
+    standalone: true,
     selector: 'tui-table-bars-host',
+    imports: [NgIf, AsyncPipe, TuiButtonDirective, PolymorpheusModule],
     templateUrl: './table-bars-host.template.html',
     styleUrls: ['./table-bars-host.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

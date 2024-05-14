@@ -825,4 +825,14 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/kit',
         },
     },
+    {
+        from: {
+            name: 'TuiTableBarsHostModule',
+            moduleSpecifier: '@taiga-ui/addon-tablebars',
+        },
+        to: {
+            name: 'TuiTableBarsHostComponent',
+            moduleSpecifier: '@taiga-ui/addon-tablebars',
+        },
+    },
 ];

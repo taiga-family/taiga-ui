@@ -44,6 +44,7 @@ export class TuiDocExampleComponent {
     );
 
     @Input()
+    @HostBinding('attr.id')
     public id: string | null = null;
 
     @Input()

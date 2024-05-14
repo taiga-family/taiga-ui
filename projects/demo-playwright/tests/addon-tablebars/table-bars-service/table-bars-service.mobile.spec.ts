@@ -19,9 +19,7 @@ test.describe('TableBarsService', () => {
     test('works', async ({page}) => {
         await tuiGoto(page, '/services/table-bars-service');
         const example = page.locator('#base');
-        const showTableBarButton = example
-            .locator('tui-table-bar-example-1 button')
-            .first();
+        const showTableBarButton = example.locator('button:has-text("Show TableBar")');
 
         await showTableBarButton.click();
         const tableBarExample = page.getByTestId('tui-table-bar__bar');
