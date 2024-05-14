@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
-import {TuiMobileCalendarDialogComponent} from '@taiga-ui/addon-mobile';
+import {tuiProvideMobileCalendar} from '@taiga-ui/addon-mobile';
 import {
     TuiButtonDirective,
     TuiHintModule,
@@ -11,11 +11,7 @@ import {
     TuiNotificationModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {
-    TUI_MOBILE_CALENDAR,
-    TuiInputDateRangeModule,
-    TuiUnfinishedValidatorModule,
-} from '@taiga-ui/kit';
+import {TuiInputDateRangeModule, TuiUnfinishedValidatorModule} from '@taiga-ui/kit';
 
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
 import {TuiInputDateRangeExample1} from './examples/1';
@@ -48,12 +44,7 @@ import {ExampleTuiInputDateRangeComponent} from './input-date-range.component';
         TuiInputDateRangeExample4,
         TuiInputDateRangeExample5,
     ],
-    providers: [
-        {
-            provide: TUI_MOBILE_CALENDAR,
-            useValue: TuiMobileCalendarDialogComponent,
-        },
-    ],
+    providers: [tuiProvideMobileCalendar()],
     exports: [ExampleTuiInputDateRangeComponent],
 })
 export class ExampleTuiInputDateRangeModule {}

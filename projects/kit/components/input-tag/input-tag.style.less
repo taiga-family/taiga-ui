@@ -249,6 +249,10 @@
     padding: 0;
     cursor: inherit;
 
+    &[inputMode='none'] {
+        caret-color: transparent;
+    }
+
     // Hide blinking caret even in IE
     &_hidden {
         opacity: 0;

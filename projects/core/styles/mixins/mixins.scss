@@ -1,3 +1,5 @@
+@import 'browsers.scss';
+
 @mixin interactive {
     // TODO switch to :is after Safari 14 and FF 78 support
     &:-webkit-any(a, button, select, textarea, input) {
@@ -132,6 +134,12 @@
     appearance: none;
     word-break: keep-all;
     -webkit-text-fill-color: currentColor; // for Safari
+
+    @include ios-only {
+        &:active {
+            font-size: 1rem;
+        }
+    }
 }
 
 @mixin visually-hidden() {

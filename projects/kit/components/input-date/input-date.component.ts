@@ -4,7 +4,6 @@ import {
     HostBinding,
     HostListener,
     inject,
-    INJECTOR,
     Input,
     ViewChild,
 } from '@angular/core';
@@ -45,7 +44,6 @@ import {
     TUI_DEFAULT_DATE_FORMAT,
     TUI_DEFAULT_MARKER_HANDLER,
     TUI_TEXTFIELD_SIZE,
-    TuiDialogService,
     TuiPrimitiveTextfieldComponent,
 } from '@taiga-ui/core';
 import type {TuiNamedDay} from '@taiga-ui/kit/classes';
@@ -56,9 +54,9 @@ import {
     TUI_DATE_VALUE_TRANSFORMER,
     TUI_INPUT_DATE_OPTIONS,
     TUI_MOBILE_CALENDAR,
+    TUI_MOBILE_CALENDAR_PROVIDER,
     tuiDateStreamWithTransformer,
 } from '@taiga-ui/kit/tokens';
-import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import type {Observable} from 'rxjs';
 import {map} from 'rxjs';
 
@@ -71,6 +69,7 @@ import {map} from 'rxjs';
         tuiAsFocusableItemAccessor(TuiInputDateComponent),
         tuiAsControl(TuiInputDateComponent),
         tuiDateStreamWithTransformer(TUI_DATE_VALUE_TRANSFORMER),
+        TUI_MOBILE_CALENDAR_PROVIDER,
     ],
 })
 export class TuiInputDateComponent
@@ -82,8 +81,6 @@ export class TuiInputDateComponent
 
     private readonly options = inject(TUI_INPUT_DATE_OPTIONS);
     private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
-    private readonly injector = inject(INJECTOR);
-    private readonly dialogs = inject(TuiDialogService);
     private readonly mobileCalendar = inject(TUI_MOBILE_CALENDAR, {optional: true});
     private month: TuiMonth | null = null;
 
@@ -150,11 +147,9 @@ export class TuiInputDateComponent
     }
 
     public set nativeValue(value: string) {
-        if (!this.nativeFocusableElement) {
-            return;
+        if (this.nativeFocusableElement) {
+            this.nativeFocusableElement.value = value;
         }
-
-        this.nativeFocusableElement.value = value;
     }
 
     public get computedValue(): string {
@@ -174,7 +169,7 @@ export class TuiInputDateComponent
             this.control.updateValueAndValidity({emitEvent: false});
         }
 
-        if (!value) {
+        if (!value && !this.mobileCalendar) {
             this.onOpenChange(true);
         }
 
@@ -199,10 +194,6 @@ export class TuiInputDateComponent
         return this.textfieldSize.size;
     }
 
-    protected get computedMobile(): boolean {
-        return this.isMobile && (!!this.mobileCalendar || this.nativePicker);
-    }
-
     protected get nativePicker(): boolean {
         return this.options.nativePicker;
     }
@@ -221,10 +212,6 @@ export class TuiInputDateComponent
             this.value ||
             tuiDateClamp(this.defaultActiveYearMonth, this.computedMin, this.computedMax)
         );
-    }
-
-    protected get canOpen(): boolean {
-        return this.interactive && !this.computedMobile;
     }
 
     protected get computedMask(): MaskitoOptions {
@@ -246,7 +233,7 @@ export class TuiInputDateComponent
 
     @HostListener('click')
     protected onClick(): void {
-        if (!this.isMobile) {
+        if (!this.isMobile && this.interactive) {
             this.open = !this.open;
         }
     }
@@ -256,25 +243,9 @@ export class TuiInputDateComponent
     }
 
     protected onIconClick(): void {
-        if (!this.computedMobile || !this.mobileCalendar || this.readOnly) {
-            return;
+        if (this.isMobile && this.interactive) {
+            this.open = true;
         }
-
-        this.dialogs
-            .open<TuiDay>(new PolymorpheusComponent(this.mobileCalendar, this.injector), {
-                size: 'fullscreen',
-                closeable: false,
-                data: {
-                    single: true,
-                    min: this.min,
-                    max: this.max,
-                    disabledItemHandler: this.disabledItemHandler,
-                },
-            })
-            .pipe(takeUntilDestroyed(this.destroyRef))
-            .subscribe(value => {
-                this.value = value;
-            });
     }
 
     protected onDayClick(value: TuiDay): void {

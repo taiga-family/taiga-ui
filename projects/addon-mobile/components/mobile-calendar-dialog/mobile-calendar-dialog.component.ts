@@ -6,6 +6,10 @@ import type {TuiDialogContext} from '@taiga-ui/core';
 import type {TuiMobileCalendarData} from '@taiga-ui/kit';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 
+/**
+ * @deprecated in favor of dropdown
+ * TODO: remove before 4.0
+ */
 @Component({
     standalone: true,
     selector: 'tui-mobile-calendar-dialog',

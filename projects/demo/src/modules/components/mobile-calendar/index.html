@@ -5,32 +5,14 @@
 >
     <ng-template pageTab>
         <p>
-            A calendar for mobile devices. It is used in
-            <a
-                tuiLink
-                [routerLink]="['/components/input-date']"
-            >
-                InputDate
-            </a>
-            and
-            <a
-                tuiLink
-                [routerLink]="['/components/input-date-range']"
-            >
-                InputDateRange
-            </a>
-            if
-            <code>TUI_MOBILE_CALENDAR</code>
-            and
-            <code>TuiDialogModule</code>
-            are both imported once in the main module
+            A calendar for mobile devices. It is used in date picker controls if provided with
+            <code>tuiProvideMobileCalendar()</code>
         </p>
         <p>
             You can use
             <code>TUI_CALENDAR_DATE_STREAM</code>
             token to set value from outside (see samples)
         </p>
-        <strong>Component should be used on mobile devices as fullscreen dialog</strong>
 
         <tui-doc-example
             id="dropdown"
