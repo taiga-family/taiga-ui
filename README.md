@@ -19,6 +19,8 @@
 
 </div>
 
+This PR is just reproduction of problem. Don't close me, don't merge me, don't rebase me.
+
 **Taiga UI** is fully-treeshakable Angular UI Kit consisting of multiple base libraries and several add-ons.
 
 It is based on [ng-polymorpheus](https://github.com/taiga-family/ng-polymorpheus) dynamic content approach and uses
