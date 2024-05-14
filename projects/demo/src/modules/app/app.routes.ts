@@ -353,9 +353,7 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.Dropdown,
-        loadChildren: async () =>
-            (await import('../directives/dropdown/dropdown.module'))
-                .ExampleTuiDropdownModule,
+        loadComponent: async () => import('../directives/dropdown'),
         title: 'Dropdown',
     }),
     route({

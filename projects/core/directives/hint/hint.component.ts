@@ -67,7 +67,7 @@ export class TuiHintComponent<C = any> {
 
     private readonly el = tuiInjectElement();
     private readonly hover = inject(TuiHintHoverDirective);
-    private readonly visualViewportService = inject(TuiVisualViewportService);
+    private readonly vvs = inject(TuiVisualViewportService);
     private readonly viewport = inject(TUI_VIEWPORT);
 
     @HostBinding('attr.data-appearance')
@@ -83,7 +83,7 @@ export class TuiHintComponent<C = any> {
     constructor() {
         inject(TuiPositionService)
             .pipe(
-                map(point => this.visualViewportService.correct(point)),
+                map(point => this.vvs.correct(point)),
                 takeUntilDestroyed(),
             )
             .subscribe(([top, left]) => {
@@ -124,7 +124,7 @@ export class TuiHintComponent<C = any> {
         }
 
         const safeLeft = tuiClamp(left, GAP, viewport.width - width - GAP);
-        const [beakTop, beakLeft] = this.visualViewportService.correct([
+        const [beakTop, beakLeft] = this.vvs.correct([
             rect.top + rect.height / 2 - top,
             rect.left + rect.width / 2 - safeLeft,
         ]);

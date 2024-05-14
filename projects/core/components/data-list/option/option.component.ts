@@ -9,7 +9,7 @@ import {
     Input,
 } from '@angular/core';
 import type {TuiEventWith} from '@taiga-ui/cdk';
-import {tuiInjectElement, tuiIsNativeFocused} from '@taiga-ui/cdk';
+import {TUI_IS_MOBILE, tuiInjectElement, tuiIsNativeFocused} from '@taiga-ui/cdk';
 import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
 import type {TuiDataListHost} from '@taiga-ui/core/interfaces';
 import {
@@ -22,8 +22,11 @@ import {shouldCall} from '@tinkoff/ng-event-plugins';
 
 import {TuiDataListComponent} from '../data-list.component';
 
-function shouldFocus({currentTarget}: TuiEventWith<MouseEvent, HTMLElement>): boolean {
-    return !tuiIsNativeFocused(currentTarget);
+function shouldFocus(
+    this: TuiOptionComponent,
+    {currentTarget}: TuiEventWith<MouseEvent, HTMLElement>,
+): boolean {
+    return !this.isMobile && !tuiIsNativeFocused(currentTarget);
 }
 
 // TODO: Consider all use cases for aria roles
@@ -58,6 +61,8 @@ export class TuiOptionComponent<T = unknown> implements OnDestroy {
 
     @Input()
     public value?: T;
+
+    public readonly isMobile = inject(TUI_IS_MOBILE);
 
     protected readonly content = inject(TUI_OPTION_CONTENT, {optional: true});
     protected readonly dropdown = inject(TuiDropdownDirective, {

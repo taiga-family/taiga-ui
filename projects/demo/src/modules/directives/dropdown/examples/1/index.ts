@@ -1,15 +1,25 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiActiveZoneDirective, TuiObscuredDirective} from '@taiga-ui/cdk';
+import {TuiButtonDirective, TuiDropdownModule} from '@taiga-ui/core';
+import {TuiChevronDirective} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-dropdown-example-1',
+    standalone: true,
+    imports: [
+        TuiDropdownModule,
+        TuiButtonDirective,
+        TuiChevronDirective,
+        TuiActiveZoneDirective,
+        TuiObscuredDirective,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiDropdownExample1 {
+export default class ExampleComponent {
     protected open = false;
 
     protected onClick(): void {
