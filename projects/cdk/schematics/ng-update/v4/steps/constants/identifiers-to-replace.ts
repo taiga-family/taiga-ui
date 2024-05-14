@@ -815,4 +815,14 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/addon-table',
         },
     },
+    {
+        from: {
+            name: 'TuiArrowModule',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TuiArrowComponent',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
 ];
