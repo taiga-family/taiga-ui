@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[50236],{50236:e=>{e.exports='```html\n<tui-reorder\n  [(items)]="items"\n  [(enabled)]="enabled"\n></tui-reorder>\n```\n'}}]);

@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[59182],{59182:n=>{n.exports="```ts\nimport {TuiReorderModule} from '@taiga-ui/addon-table';\n\n// ...\n\n@Component({\n  standalone: true,\n  imports: [\n    // ...\n    TuiReorderModule,\n  ],\n  // ...\n})\nexport class MyComponent {}\n```\n"}}]);
