@@ -2,17 +2,19 @@ import type {TemplateRef} from '@angular/core';
 import {Component, inject, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiPreviewDialogService} from '@taiga-ui/addon-preview';
+import {TuiPreview, TuiPreviewDialogService} from '@taiga-ui/addon-preview';
 import type {TuiDialogContext} from '@taiga-ui/core';
+import {TuiButtonDirective} from '@taiga-ui/core';
 
 @Component({
-    selector: 'tui-preview-example-2',
+    standalone: true,
+    imports: [TuiButtonDirective, TuiPreview],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiPreviewExample2 {
+export default class ExampleComponent {
     private readonly previewDialogService = inject(TuiPreviewDialogService);
 
     @ViewChild('preview')

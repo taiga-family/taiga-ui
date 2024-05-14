@@ -688,9 +688,7 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.Preview,
-        loadChildren: async () =>
-            (await import('../components/preview/preview.module'))
-                .ExampleTuiPreviewModule,
+        loadComponent: async () => import('../components/preview'),
         title: 'Preview',
     }),
     route({
