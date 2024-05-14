@@ -13,7 +13,7 @@ test.describe('TuiPrimitiveTextfield', () => {
         const {apiPageExample} = new TuiDocumentationPagePO(page);
 
         await apiPageExample.scrollIntoViewIfNeeded();
-        await apiPageExample.locator('tui-tooltip').click();
+        await apiPageExample.locator('tui-tooltip').hover();
 
         await expect(page.locator('tui-hint')).toBeAttached();
         await expect(apiPageExample).toHaveScreenshot('01-hint.png');
