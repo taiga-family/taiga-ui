@@ -33,10 +33,12 @@ export default defineConfig({
         },
     },
     projects: [
+        // TODO: revert to chromium
+        // after https://github.com/microsoft/playwright/issues/30785 is fixed
         {
-            name: 'chromium',
+            name: 'firefox',
             use: {
-                ...devices['Desktop Chrome HiDPI'],
+                ...devices['Desktop Firefox HiDPI'],
                 viewport: DEFAULT_VIEWPORT,
             },
         },
