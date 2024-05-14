@@ -7,7 +7,7 @@ import {TuiSetupComponent} from '@demo/utils';
 import {IntersectionObserverModule} from '@ng-web-apis/intersection-observer';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
-    TuiReorderModule,
+    TuiReorderComponent,
     TuiTableModule,
     TuiTablePaginationComponent,
 } from '@taiga-ui/addon-table';
@@ -75,7 +75,7 @@ import {ExampleTuiTableComponent} from './table.component';
         TuiTablePaginationComponent,
         TuiTextfieldControllerModule,
         TuiDropdownModule,
-        TuiReorderModule,
+        TuiReorderComponent,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiTableComponent)),
         TuiScrollableDirective,

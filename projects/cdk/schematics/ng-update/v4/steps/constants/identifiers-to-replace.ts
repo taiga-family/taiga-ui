@@ -805,4 +805,14 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/addon-table',
         },
     },
+    {
+        from: {
+            name: 'TuiReorderModule',
+            moduleSpecifier: '@taiga-ui/addon-table',
+        },
+        to: {
+            name: 'TuiReorderComponent',
+            moduleSpecifier: '@taiga-ui/addon-table',
+        },
+    },
 ];

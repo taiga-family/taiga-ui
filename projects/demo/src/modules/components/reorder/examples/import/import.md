@@ -1,5 +1,5 @@
 ```ts
-import {TuiReorderModule} from '@taiga-ui/addon-table';
+import {TuiReorderComponent} from '@taiga-ui/addon-table';
 
 // ...
 
@@ -7,7 +7,7 @@ import {TuiReorderModule} from '@taiga-ui/addon-table';
   standalone: true,
   imports: [
     // ...
-    TuiReorderModule,
+    TuiReorderComponent,
   ],
   // ...
 })
