@@ -7,44 +7,13 @@
         <p>This module allows you to create various tables, both static and editable.</p>
 
         <tui-doc-example
-            id="basic"
-            heading="Basic"
-            [content]="example1"
-        >
-            <tui-table-example-1 />
-        </tui-doc-example>
-
-        <tui-doc-example
-            id="custom"
-            heading="Custom"
-            [content]="example2"
-        >
-            <tui-table-example-2 />
-        </tui-doc-example>
-
-        <tui-doc-example
-            id="editable"
-            heading="Editable"
-            [content]="example3"
-        >
-            <tui-table-example-3 />
-        </tui-doc-example>
-
-        <tui-doc-example
-            id="server"
-            description="With tuiSortBy directive to work with column titles instead of sorters"
-            heading="Server sorting"
-            [content]="example4"
-        >
-            <tui-table-example-4 />
-        </tui-doc-example>
-
-        <tui-doc-example
-            id="virtual"
-            heading="Virtual scroll"
-            [content]="example5"
-            [description]="cdkVirtualScrollDescription"
-            [fullsize]="true"
+            *ngFor="let example of examples; let index = index"
+            [component]="index + 1 | tuiComponent"
+            [content]="index + 1 | tuiExample"
+            [description]="index === 4 ? cdkVirtualScrollDescription : null"
+            [fullsize]="index === 4 || index === 5"
+            [heading]="example"
+            [id]="example | tuiKebab"
         >
             <ng-template #cdkVirtualScrollDescription>
                 You can use
@@ -62,16 +31,6 @@
                 </a>
                 .
             </ng-template>
-            <tui-table-example-5 />
-        </tui-doc-example>
-
-        <tui-doc-example
-            id="dynamic"
-            heading="Dynamic columns"
-            [content]="example6"
-            [fullsize]="true"
-        >
-            <tui-table-example-6 />
         </tui-doc-example>
     </ng-template>
 
@@ -256,10 +215,5 @@
         </tui-accordion>
     </ng-template>
 
-    <ng-template pageTab>
-        <tui-setup
-            [import]="exampleModule"
-            [template]="exampleHtml"
-        />
-    </ng-template>
+    <tui-setup *pageTab />
 </tui-doc-page>

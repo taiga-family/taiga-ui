@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiTableFilters, TuiTableModule} from '@taiga-ui/addon-table';
+import {TuiTable, TuiTableFilters} from '@taiga-ui/addon-table';
 import {TuiFormatNumberPipeModule} from '@taiga-ui/core';
 import {TuiInputNumberModule, TuiSwitchComponent} from '@taiga-ui/kit';
 
@@ -15,7 +15,7 @@ import {TuiInputNumberModule, TuiSwitchComponent} from '@taiga-ui/kit';
         TuiInputNumberModule,
         TuiSwitchComponent,
         FormsModule,
-        TuiTableModule,
+        TuiTable,
         AsyncPipe,
         NgForOf,
         TuiFormatNumberPipeModule,

@@ -1,15 +1,20 @@
+import {NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiTable} from '@taiga-ui/addon-table';
+import {TuiLetDirective} from '@taiga-ui/cdk';
+import {TuiButtonDirective} from '@taiga-ui/core';
 
 @Component({
-    selector: 'tui-table-example-6',
+    standalone: true,
+    imports: [NgForOf, TuiTable, TuiLetDirective, TuiButtonDirective],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiTableExample6 {
+export default class ExampleComponent {
     protected data: Array<Record<string, number | string>> = [{id: 1, name: 'name'}];
 
     protected get columns(): string[] {

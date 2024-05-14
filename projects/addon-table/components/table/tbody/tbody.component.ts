@@ -1,3 +1,4 @@
+import {NgForOf, NgIf, NgTemplateOutlet} from '@angular/common';
 import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
@@ -10,9 +11,11 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import {EMPTY_QUERY} from '@taiga-ui/cdk';
+import {EMPTY_QUERY, TuiMapperPipe} from '@taiga-ui/cdk';
+import {TuiSvgComponent} from '@taiga-ui/core';
 import {TUI_ARROW_OPTIONS} from '@taiga-ui/kit';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiRowDirective} from '../directives/row.directive';
 import {TuiTableDirective} from '../directives/table.directive';
@@ -22,7 +25,16 @@ import {TUI_TABLE_OPTIONS} from '../table.options';
 import {TuiTrComponent} from '../tr/tr.component';
 
 @Component({
+    standalone: true,
     selector: 'tbody[tuiTbody]',
+    imports: [
+        NgForOf,
+        NgIf,
+        NgTemplateOutlet,
+        TuiSvgComponent,
+        TuiMapperPipe,
+        PolymorpheusModule,
+    ],
     templateUrl: './tbody.template.html',
     styleUrls: ['./tbody.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

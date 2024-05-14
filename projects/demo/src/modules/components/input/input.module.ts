@@ -9,7 +9,7 @@ import {
     tuiGenerateRoutes,
     TuiTextCodeModule,
 } from '@taiga-ui/addon-doc';
-import {TuiTableModule} from '@taiga-ui/addon-table';
+import {TuiTable} from '@taiga-ui/addon-table';
 import {TuiLetDirective, TuiMapperPipe, TuiRepeatTimesDirective} from '@taiga-ui/cdk';
 import {
     TuiButtonDirective,
@@ -63,7 +63,7 @@ import {ExampleTuiInputComponent} from './input.component';
         TuiMapperPipe,
         TuiAmountPipe,
         TuiLinkDirective,
-        TuiTableModule,
+        TuiTable,
         TuiInputDateModule,
         TuiNotificationModule,
         TuiRepeatTimesDirective,

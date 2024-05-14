@@ -1,6 +1,11 @@
+import {NgForOf, NgIf} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiTable} from '@taiga-ui/addon-table';
+import {TuiLetDirective} from '@taiga-ui/cdk';
+import {TuiAutoColorPipe, TuiButtonDirective, TuiLinkDirective} from '@taiga-ui/core';
+import {TuiChipDirective} from '@taiga-ui/kit';
 
 interface User {
     readonly email: string;
@@ -10,13 +15,24 @@ interface User {
 }
 
 @Component({
+    standalone: true,
     selector: 'tui-table-example-2',
+    imports: [
+        TuiTable,
+        TuiChipDirective,
+        NgForOf,
+        TuiAutoColorPipe,
+        TuiLinkDirective,
+        NgIf,
+        TuiButtonDirective,
+        TuiLetDirective,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiTableExample2 {
+export default class ExampleComponent {
     protected readonly columns = ['name', 'email', 'status', 'tags', 'actions'];
 
     protected users: readonly User[] = [

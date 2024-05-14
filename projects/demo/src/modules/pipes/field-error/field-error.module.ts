@@ -5,7 +5,7 @@ import {RouterModule} from '@angular/router';
 import {TuiSetupComponent} from '@demo/utils';
 import {TuiCurrencyPipeModule} from '@taiga-ui/addon-commerce';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
-import {TuiTableModule} from '@taiga-ui/addon-table';
+import {TuiTable} from '@taiga-ui/addon-table';
 import {
     TuiButtonDirective,
     TuiErrorModule,
@@ -46,7 +46,7 @@ import {ExampleTuiFieldErrorPipeComponent} from './field-error.component';
         TuiInputPhoneModule,
         TuiInputNumberModule,
         TuiLinkDirective,
-        TuiTableModule,
+        TuiTable,
         TuiHintModule,
         TuiInputNumberModule,
         TuiCurrencyPipeModule,
