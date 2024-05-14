@@ -1,19 +1,22 @@
 import type {OnDestroy} from '@angular/core';
 import {Component, inject, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiDemoModule} from '@demo/utils';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiTableBarsService} from '@taiga-ui/addon-tablebars';
 import type {TuiBrightness} from '@taiga-ui/core';
+import {TuiButtonDirective} from '@taiga-ui/core';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Subscription} from 'rxjs';
 
 @Component({
-    selector: 'example-tui-table-bar',
-    templateUrl: './table-bar.template.html',
-    styleUrls: ['./table-bar.style.less'],
+    standalone: true,
+    imports: [TuiDemoModule, TuiButtonDirective],
+    templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     changeDetection,
 })
-export class ExampleTuiTableBarComponent implements OnDestroy {
+export default class PageComponent implements OnDestroy {
     private readonly tableBarsService = inject(TuiTableBarsService);
 
     @ViewChild('tableBarTemplate')
@@ -28,7 +31,7 @@ export class ExampleTuiTableBarComponent implements OnDestroy {
     );
 
     protected readonly exampleLazyModule = import('./examples/import/lazy-module.md?raw');
-    protected readonly exampleModule = import('./examples/import/module.md?raw');
+    protected readonly exampleModule = import('./examples/import/import.md?raw');
     protected readonly exampleHtml = import('./examples/import/template.md?raw');
 
     protected readonly example1: TuiDocExample = {

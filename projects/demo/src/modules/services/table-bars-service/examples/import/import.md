@@ -1,5 +1,5 @@
 ```ts
-import {TuiTableBarsHostModule} from '@taiga-ui/addon-tablebars';
+import {TuiTableBarsHostComponent} from '@taiga-ui/addon-tablebars';
 import {TuiRootComponent} from '@taiga-ui/core';
 // ...
 
@@ -7,7 +7,7 @@ import {TuiRootComponent} from '@taiga-ui/core';
   standalone: true,
   imports: [
     TuiRootComponent,
-    TuiTableBarsHostModule,
+    TuiTableBarsHostComponent,
     // ...
   ],
   // ...

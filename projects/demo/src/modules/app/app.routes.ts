@@ -1212,9 +1212,7 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.TableBarService,
-        loadChildren: async () =>
-            (await import('../services/table-bar/table-bar.module'))
-                .ExampleTuiTableBarModule,
+        loadComponent: async () => import('../services/table-bars-service'),
         title: 'TableBarService',
     }),
     route({
