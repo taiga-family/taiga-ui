@@ -1,3 +1,4 @@
+import {AsyncPipe, NgForOf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -9,12 +10,24 @@ import {
 } from '@angular/core';
 import {TUI_TABLE_SHOW_HIDE_MESSAGE} from '@taiga-ui/addon-table/tokens';
 import type {TuiContext} from '@taiga-ui/cdk';
+import {TuiButtonDirective, TuiSvgComponent} from '@taiga-ui/core';
+import {TuiTilesModule} from '@taiga-ui/kit';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TUI_REORDER_OPTIONS} from './reorder.options';
 
 @Component({
+    standalone: true,
     selector: 'tui-reorder',
+    imports: [
+        TuiTilesModule,
+        NgForOf,
+        TuiSvgComponent,
+        TuiButtonDirective,
+        AsyncPipe,
+        PolymorpheusModule,
+    ],
     templateUrl: './reorder.template.html',
     styleUrls: ['./reorder.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

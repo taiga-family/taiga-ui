@@ -1,15 +1,18 @@
+import {JsonPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiReorderComponent} from '@taiga-ui/addon-table';
 
 @Component({
-    selector: 'tui-reorder-example-1',
+    standalone: true,
+    imports: [TuiReorderComponent, JsonPipe],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiReorderExample1 {
+export default class ExampleComponent {
     protected items: readonly string[] = [
         'John Cleese',
         'Eric Idle',

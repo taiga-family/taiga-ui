@@ -1048,8 +1048,7 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.ReorderColumns,
-        loadChildren: async () =>
-            (await import('../tables/reorder/reorder.module')).ExampleTuiReorderModule,
+        loadComponent: async () => import('../components/reorder'),
         title: 'ReorderColumns',
     }),
     route({
