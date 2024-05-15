@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[11723],{11723:e=>{e.exports='<tui-bar-set\n    class="bars"\n    [collapsed]="true"\n    [value]="value"\n>\n    {{ sum | tuiFormatNumber | async }}\n</tui-bar-set>\n'}}]);
