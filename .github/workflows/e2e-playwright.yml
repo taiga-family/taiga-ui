@@ -8,13 +8,13 @@ jobs:
     name: Build demo
     runs-on: ubuntu-latest
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.55.18
+      - uses: taiga-family/ci/actions/setup/checkout@v1.45.1
         with:
           fetch-depth: 10
       - uses: taiga-family/ci/actions/setup/variables@v1.55.18
-      - uses: taiga-family/ci/actions/run/rebase@v1.55.18
+      - uses: taiga-family/ci/actions/run/rebase@v1.45.1
         continue-on-error: true
-      - uses: taiga-family/ci/actions/setup/node@v1.55.18
+      - uses: taiga-family/ci/actions/setup/node@v1.45.1
 
       - run: npx tsc -p tsconfig.playwright.json
 
@@ -22,7 +22,7 @@ jobs:
         run: npx nx build demo -- --base-href /
 
       - name: Upload cache / ${{ env.CACHE_DIST_KEY }}
-        uses: actions/cache/save@v4.0.2
+        uses: actions/cache/save@v3.3.2
         with:
           path: dist/demo
           key: ${{ env.CACHE_DIST_KEY }}
@@ -38,15 +38,15 @@ jobs:
         shardTotal: [8]
     name: playwright / (${{ matrix.shardIndex }} of ${{ matrix.shardTotal }})
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.55.18
+      - uses: taiga-family/ci/actions/setup/checkout@v1.45.1
       - uses: taiga-family/ci/actions/setup/variables@v1.55.18
-      - uses: taiga-family/ci/actions/setup/node@v1.55.18
+      - uses: taiga-family/ci/actions/setup/node@v1.45.1
 
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps chromium
 
       - name: Download cache / ${{ env.CACHE_DIST_KEY }}
-        uses: actions/cache/restore@v4.0.2
+        uses: actions/cache/restore@v3.3.2
         with:
           path: dist/demo
           key: ${{ env.CACHE_DIST_KEY }}
@@ -93,7 +93,7 @@ jobs:
         run: tree ${{ env.PLAYWRIGHT_SNAPSHOTS_PATH }}
 
       - name: Upload artifacts / ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}
-        uses: actions/upload-artifact@v4.3.3
+        uses: actions/upload-artifact@v3.1.3
         with:
           path: |
             ./projects/demo-playwright/tests-results/**/*.diff.png
@@ -109,12 +109,12 @@ jobs:
     needs: [playwright]
     runs-on: ubuntu-latest
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.55.18
+      - uses: taiga-family/ci/actions/setup/checkout@v1.45.1
       - uses: taiga-family/ci/actions/setup/variables@v1.55.18
 
       - name: Download artifacts / ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}
         continue-on-error: true
-        uses: actions/download-artifact@v4.1.7
+        uses: actions/download-artifact@v3.0.2
         with:
           path: ./total/playwright
           pattern: ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}_*
