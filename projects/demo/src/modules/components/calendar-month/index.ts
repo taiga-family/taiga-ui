@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDemoModule} from '@demo/utils';
+import {TuiDemo} from '@demo/utils';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk';
 import {
     TUI_FALSE_HANDLER,
@@ -17,7 +17,7 @@ import {TuiCalendarMonthModule} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiDemoModule, TuiCalendarMonthModule, TuiLinkDirective, RouterModule],
+    imports: [TuiDemo, TuiCalendarMonthModule, TuiLinkDirective, RouterModule],
     templateUrl: './index.html',
     changeDetection,
 })

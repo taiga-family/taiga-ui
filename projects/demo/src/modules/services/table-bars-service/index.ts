@@ -1,7 +1,7 @@
 import type {OnDestroy} from '@angular/core';
 import {Component, inject, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDemoModule} from '@demo/utils';
+import {TuiDemo} from '@demo/utils';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiTableBarsService} from '@taiga-ui/addon-tablebars';
 import type {TuiBrightness} from '@taiga-ui/core';
@@ -11,7 +11,7 @@ import {Subscription} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [TuiDemoModule, TuiButtonDirective],
+    imports: [TuiDemo, TuiButtonDirective],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,

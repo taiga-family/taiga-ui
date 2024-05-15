@@ -1,7 +1,7 @@
 import {Component, inject} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDemoModule} from '@demo/utils';
+import {TuiDemo} from '@demo/utils';
 import {
     TuiAlertService,
     TuiButtonDirective,
@@ -20,7 +20,7 @@ import {switchMap} from 'rxjs';
         TuiLinkDirective,
         RouterModule,
         TuiNotificationModule,
-        TuiDemoModule,
+        TuiDemo,
     ],
     templateUrl: './index.html',
     changeDetection,

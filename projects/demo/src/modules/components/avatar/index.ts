@@ -2,13 +2,13 @@ import {Component, inject} from '@angular/core';
 import type {SafeResourceUrl} from '@angular/platform-browser';
 import {DomSanitizer} from '@angular/platform-browser';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDemoModule} from '@demo/utils';
+import {TuiDemo} from '@demo/utils';
 import type {TuiSizeXS, TuiSizeXXL} from '@taiga-ui/core';
 import {TuiAvatarComponent} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiAvatarComponent, TuiDemoModule],
+    imports: [TuiAvatarComponent, TuiDemo],
     templateUrl: './index.html',
     changeDetection,
 })

@@ -1,7 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDemoModule} from '@demo/utils';
+import {TuiDemo} from '@demo/utils';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import {tuiDocExcludeProperties} from '@taiga-ui/addon-doc';
 import type {TuiIdentityMatcher, TuiStringHandler, TuiStringMatcher} from '@taiga-ui/cdk';
@@ -40,7 +40,7 @@ class Account {
 @Component({
     standalone: true,
     imports: [
-        TuiDemoModule,
+        TuiDemo,
         ReactiveFormsModule,
         TuiComboBoxModule,
         TuiDataListWrapperModule,

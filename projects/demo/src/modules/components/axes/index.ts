@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDemoModule} from '@demo/utils';
+import {TuiDemo} from '@demo/utils';
 import type {TuiLineHandler, TuiLineType} from '@taiga-ui/addon-charts';
 import {
     TUI_ALWAYS_DASHED,
@@ -11,7 +11,7 @@ import {TuiNotificationModule} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
-    imports: [TuiAxesComponent, TuiNotificationModule, TuiDemoModule],
+    imports: [TuiAxesComponent, TuiNotificationModule, TuiDemo],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,
