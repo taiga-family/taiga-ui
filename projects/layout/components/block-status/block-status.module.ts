@@ -9,4 +9,4 @@ import {TuiBlockStatusDirective} from './block-status.directive';
     declarations: [TuiBlockStatusComponent, TuiBlockStatusDirective],
     exports: [TuiBlockStatusComponent, TuiBlockStatusDirective],
 })
-export class TuiBlockStatusModule {}
+export class TuiBlockStatus {}

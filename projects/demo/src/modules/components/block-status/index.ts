@@ -2,11 +2,11 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TuiButtonDirective} from '@taiga-ui/core';
-import {TuiBlockStatusModule} from '@taiga-ui/layout';
+import {TuiBlockStatus} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiBlockStatusModule, TuiButtonDirective],
+    imports: [TuiDemo, TuiBlockStatus, TuiButtonDirective],
     templateUrl: './index.html',
     changeDetection,
 })
