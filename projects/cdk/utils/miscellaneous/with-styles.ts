@@ -11,11 +11,13 @@ const MAP = tuiCreateTokenFromFactory(() => {
     return map;
 });
 
-export function tuiWithStyles(component: Type<unknown>): void {
+export function tuiWithStyles(component: Type<unknown>): undefined {
     const map = inject(MAP);
     const environmentInjector = inject(EnvironmentInjector);
 
     if (!map.has(component)) {
         map.set(component, createComponent(component, {environmentInjector}));
     }
+
+    return undefined;
 }
