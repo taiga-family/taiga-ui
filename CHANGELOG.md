@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.78.0](https://github.com/taiga-family/taiga-ui/compare/v3.77.1...v3.78.0) (2024-05-15)
+
+### Features
+
+- **schematics:** add experimental migration ([#7399](https://github.com/taiga-family/taiga-ui/issues/7399))
+  ([474af06](https://github.com/taiga-family/taiga-ui/commit/474af064f3efea7b20a69214a4cc7d06b2482e66))
+
+### Bug Fixes
+
+- **core:** fix tuiGroup styles ([#7402](https://github.com/taiga-family/taiga-ui/issues/7402))
+  ([e18d991](https://github.com/taiga-family/taiga-ui/commit/e18d991ff3e925a17f30331a9f020703b7503ca9))
+
 ### [3.77.1](https://github.com/taiga-family/taiga-ui/compare/v3.77.0...v3.77.1) (2024-05-10)
 
 ### Bug Fixes
