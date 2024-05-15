@@ -132,7 +132,7 @@
         "local-web-server": "5.3.3",
         "ng-packagr": "16.2.3",
         "nx": "18.3.4",
-        "rollup": "4.17.2",
+        "rollup": "4.14.0",
         "rxjs": "7.5.0",
         "standard-version": "9.5.0",
         "ts-mockito": "2.6.1",
