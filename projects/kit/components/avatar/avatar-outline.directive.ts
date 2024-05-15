@@ -1,7 +1,23 @@
-import {Directive, Input} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    Directive,
+    Input,
+    ViewEncapsulation,
+} from '@angular/core';
 import {tuiWithStyles} from '@taiga-ui/cdk';
 
-import {TuiAvatarOutlineComponent} from './avatar-outline.component';
+@Component({
+    standalone: true,
+    template: '',
+    styleUrls: ['./avatar-outline.styles.less'],
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        class: 'tui-avatar-outline',
+    },
+})
+class TuiAvatarOutlineStyles {}
 
 @Directive({
     standalone: true,
@@ -15,7 +31,7 @@ export class TuiAvatarOutlineDirective {
     @Input()
     public tuiAvatarOutline: string | null = '';
 
-    protected readonly nothing = tuiWithStyles(TuiAvatarOutlineComponent);
+    protected readonly nothing = tuiWithStyles(TuiAvatarOutlineStyles);
 
     protected get value(): string | null {
         return this.tuiAvatarOutline === ''

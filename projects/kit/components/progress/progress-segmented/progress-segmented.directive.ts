@@ -1,7 +1,21 @@
-import {Directive, Input} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    Directive,
+    Input,
+    ViewEncapsulation,
+} from '@angular/core';
 import {tuiWithStyles} from '@taiga-ui/cdk';
 
-import {TuiProgressSegmentedComponent} from './progress-segmented.component';
+@Component({
+    standalone: true,
+    host: {class: 'tui-progress-segmented'},
+    template: '',
+    styleUrls: ['./progress-segmented.style.less'],
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+})
+class TuiProgressSegmentedStyles {}
 
 @Directive({
     standalone: true,
@@ -15,5 +29,5 @@ export class TuiProgressSegmentedDirective {
     @Input()
     public segments = 1;
 
-    protected readonly nothing = tuiWithStyles(TuiProgressSegmentedComponent);
+    protected readonly nothing = tuiWithStyles(TuiProgressSegmentedStyles);
 }

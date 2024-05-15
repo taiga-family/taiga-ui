@@ -1,9 +1,28 @@
-import {Directive, HostBinding, inject, Input} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    Directive,
+    HostBinding,
+    inject,
+    Input,
+    ViewEncapsulation,
+} from '@angular/core';
 import {tuiWithStyles} from '@taiga-ui/cdk';
 import type {TuiOrientation, TuiSizeL} from '@taiga-ui/core/types';
 
-import {TuiGroupComponent} from './group.component';
 import {TUI_GROUP_OPTIONS} from './group.options';
+
+@Component({
+    standalone: true,
+    host: {
+        class: 'tui-group-styles',
+    },
+    template: '',
+    styleUrls: ['./group.style.less'],
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+})
+class TuiGroupStyles {}
 
 @Directive({
     standalone: true,
@@ -33,5 +52,5 @@ export class TuiGroupDirective {
     @Input()
     public size: TuiSizeL = this.options.size;
 
-    protected readonly nothing = tuiWithStyles(TuiGroupComponent);
+    protected readonly nothing = tuiWithStyles(TuiGroupStyles);
 }

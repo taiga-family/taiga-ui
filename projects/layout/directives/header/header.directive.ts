@@ -1,10 +1,26 @@
-import {Directive, Input} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    Directive,
+    Input,
+    ViewEncapsulation,
+} from '@angular/core';
 import {tuiWithStyles} from '@taiga-ui/cdk';
 import type {TuiSizeXXL, TuiSizeXXS} from '@taiga-ui/core';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core';
 import {tuiAvatarOptionsProvider, tuiBadgeOptionsProvider} from '@taiga-ui/kit';
 
-import {TuiHeaderStylesComponent} from './header.component';
+@Component({
+    standalone: true,
+    template: '',
+    styleUrls: ['./header.styles.less'],
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        class: 'tui-header',
+    },
+})
+class TuiHeaderStyles {}
 
 @Directive({
     standalone: true,
@@ -20,9 +36,8 @@ import {TuiHeaderStylesComponent} from './header.component';
     },
 })
 export class TuiHeaderDirective {
-    // @ts-ignore
-    private readonly nothing = tuiWithStyles(TuiHeaderStylesComponent);
-
     @Input('tuiHeader')
     public size: TuiSizeXXL | TuiSizeXXS | '' = 's';
+
+    protected readonly nothing = tuiWithStyles(TuiHeaderStyles);
 }

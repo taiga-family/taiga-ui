@@ -1,8 +1,24 @@
-import {Directive, Input} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    Directive,
+    Input,
+    ViewEncapsulation,
+} from '@angular/core';
 import {tuiWithStyles} from '@taiga-ui/cdk';
 import type {TuiHorizontalDirection, TuiVerticalDirection} from '@taiga-ui/core';
 
-import {TuiCommentComponent} from './comment.component';
+@Component({
+    standalone: true,
+    template: '',
+    styleUrls: ['./comment.style.less'],
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        class: 'tui-comment-styles',
+    },
+})
+class TuiCommentStyles {}
 
 @Directive({
     standalone: true,
@@ -15,5 +31,5 @@ export class TuiCommentDirective {
     @Input()
     public tuiComment: TuiHorizontalDirection | TuiVerticalDirection | '' = 'top';
 
-    protected readonly nothing = tuiWithStyles(TuiCommentComponent);
+    protected readonly nothing = tuiWithStyles(TuiCommentStyles);
 }

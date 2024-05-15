@@ -1,4 +1,11 @@
-import {Directive, inject, Input} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    Directive,
+    inject,
+    Input,
+    ViewEncapsulation,
+} from '@angular/core';
 import {tuiWithStyles} from '@taiga-ui/cdk';
 import {
     TuiAppearanceDirective,
@@ -6,8 +13,19 @@ import {
 } from '@taiga-ui/core/directives/appearance';
 import {TuiIconsDirective} from '@taiga-ui/core/directives/icons';
 
-import {TuiButtonComponent} from './button.component';
 import {TUI_BUTTON_OPTIONS} from './button.options';
+
+@Component({
+    standalone: true,
+    template: '',
+    styleUrls: ['./button.style.less'],
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        class: 'tui-button',
+    },
+})
+class TuiButtonStyles {}
 
 @Directive({
     standalone: true,
@@ -37,5 +55,5 @@ export class TuiButtonDirective {
     @Input()
     public size = this.options.size;
 
-    protected readonly nothing = tuiWithStyles(TuiButtonComponent);
+    protected readonly nothing = tuiWithStyles(TuiButtonStyles);
 }

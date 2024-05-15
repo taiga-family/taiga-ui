@@ -1,5 +1,12 @@
 import type {OnChanges, SimpleChanges} from '@angular/core';
-import {Directive, inject, Input} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    Directive,
+    inject,
+    Input,
+    ViewEncapsulation,
+} from '@angular/core';
 import {
     CHAR_NO_BREAK_SPACE,
     tuiInjectElement,
@@ -8,9 +15,19 @@ import {
 } from '@taiga-ui/cdk';
 import {TUI_ANIMATIONS_DEFAULT_DURATION, TUI_ANIMATIONS_SPEED} from '@taiga-ui/core';
 
-import {TuiSkeletonComponent} from './skeleton.component';
-
 const FADE = [{opacity: 0.06}, {opacity: 1}];
+
+@Component({
+    standalone: true,
+    template: '',
+    styleUrls: ['./skeleton.style.less'],
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        class: 'tui-skeleton-styles',
+    },
+})
+class TuiSkeletonStyles {}
 
 @Directive({
     standalone: true,
@@ -30,7 +47,7 @@ export class TuiSkeletonDirective implements OnChanges {
     @Input()
     public tuiSkeleton: boolean | number | string = false;
 
-    protected readonly nothing = tuiWithStyles(TuiSkeletonComponent);
+    protected readonly nothing = tuiWithStyles(TuiSkeletonStyles);
 
     public ngOnChanges({tuiSkeleton}: SimpleChanges): void {
         this.animation?.cancel();

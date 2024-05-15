@@ -21,7 +21,6 @@ import {
 } from '@taiga-ui/core';
 import {
     TuiAvatarComponent,
-    TuiBadgeComponent,
     TuiBadgedContentComponent,
     TuiCheckboxComponent,
     TuiSwitchComponent,
@@ -49,7 +48,6 @@ import {ExampleTuiSwipeActionsComponent} from './swipe-actions.component';
         TuiBadgedContentComponent,
         TuiIconComponent,
         TuiSwitchComponent,
-        TuiBadgeComponent,
         TuiNotificationComponent,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiSwipeActionsComponent)),
         TuiButtonDirective,

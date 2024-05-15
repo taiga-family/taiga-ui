@@ -1,4 +1,11 @@
-import {Directive, inject, Input} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    Directive,
+    inject,
+    Input,
+    ViewEncapsulation,
+} from '@angular/core';
 import {tuiWithStyles} from '@taiga-ui/cdk';
 import type {TuiSizeXXS} from '@taiga-ui/core';
 import {
@@ -11,8 +18,19 @@ import {tuiAvatarOptionsProvider} from '@taiga-ui/kit/components/avatar';
 import {tuiCheckboxOptionsProvider} from '@taiga-ui/kit/components/checkbox';
 import {tuiSwitchOptionsProvider} from '@taiga-ui/kit/components/switch';
 
-import {TuiChipComponent} from './chip.component';
 import {TUI_CHIP_OPTIONS} from './chip.options';
+
+@Component({
+    standalone: true,
+    template: '',
+    styleUrls: ['./chip.style.less'],
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        class: 'tui-chip',
+    },
+})
+class TuiChipStyles {}
 
 @Directive({
     standalone: true,
@@ -49,5 +67,5 @@ export class TuiChipDirective {
     @Input()
     public size: TuiSizeXXS = this.options.size;
 
-    protected readonly nothing = tuiWithStyles(TuiChipComponent);
+    protected readonly nothing = tuiWithStyles(TuiChipStyles);
 }

@@ -1,7 +1,23 @@
-import {Directive, Input} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    Directive,
+    Input,
+    ViewEncapsulation,
+} from '@angular/core';
 import {tuiWithStyles} from '@taiga-ui/cdk';
 
-import {TuiSurfaceComponent} from './surface.component';
+@Component({
+    standalone: true,
+    template: '',
+    styleUrls: ['./surface.style.less'],
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        class: 'tui-surface-styles',
+    },
+})
+class TuiSurfaceStyles {}
 
 @Directive({
     standalone: true,
@@ -15,5 +31,5 @@ export class TuiSurfaceDirective {
     @Input()
     public tuiSurface = '';
 
-    protected readonly nothing = tuiWithStyles(TuiSurfaceComponent);
+    protected readonly nothing = tuiWithStyles(TuiSurfaceStyles);
 }

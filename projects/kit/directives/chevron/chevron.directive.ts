@@ -1,10 +1,29 @@
 import type {DoCheck} from '@angular/core';
-import {Directive, inject, INJECTOR, Input} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    Directive,
+    inject,
+    INJECTOR,
+    Input,
+    ViewEncapsulation,
+} from '@angular/core';
 import {tuiInjectElement, tuiWithStyles} from '@taiga-ui/cdk';
 import {TuiDropdownDirective, TuiIconsDirective} from '@taiga-ui/core';
 
-import {TuiChevronComponent} from './chevron.component';
 import {TuiChevronService} from './chevron.service';
+
+@Component({
+    standalone: true,
+    template: '',
+    styleUrls: ['./chevron.style.less'],
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        class: 'tui-chevron',
+    },
+})
+class TuiChevronStyles {}
 
 @Directive({
     standalone: true,
@@ -22,7 +41,7 @@ export class TuiChevronDirective implements DoCheck {
     @Input()
     public tuiChevron: boolean | '' = '';
 
-    protected readonly nothing = tuiWithStyles(TuiChevronComponent);
+    protected readonly nothing = tuiWithStyles(TuiChevronStyles);
 
     public ngDoCheck(): void {
         this.icons.iconRight = this.handler();

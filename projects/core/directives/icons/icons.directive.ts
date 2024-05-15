@@ -1,9 +1,26 @@
-import {Directive, inject, Input} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    Directive,
+    inject,
+    Input,
+    ViewEncapsulation,
+} from '@angular/core';
 import type {TuiStringHandler} from '@taiga-ui/cdk';
 import {tuiWithStyles} from '@taiga-ui/cdk';
 import {TUI_ICON_RESOLVER} from '@taiga-ui/core/tokens';
 
-import {TuiIconsComponent} from './icons.component';
+@Component({
+    standalone: true,
+    template: '',
+    styleUrls: ['./icons.styles.less'],
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        class: 'tui-icons',
+    },
+})
+class TuiIconsStyles {}
 
 @Directive({
     standalone: true,
@@ -23,7 +40,7 @@ export class TuiIconsDirective {
     @Input()
     public iconRight = '';
 
-    protected readonly nothing = tuiWithStyles(TuiIconsComponent);
+    protected readonly nothing = tuiWithStyles(TuiIconsStyles);
 
     protected readonly resolver = inject<TuiStringHandler<string>>(TUI_ICON_RESOLVER);
 }

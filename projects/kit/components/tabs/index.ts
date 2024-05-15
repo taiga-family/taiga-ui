@@ -1,5 +1,4 @@
 export * from './tab.directive';
-export * from './tabs.component';
 export * from './tabs.directive';
 export * from './tabs.module';
 export * from './tabs.options';

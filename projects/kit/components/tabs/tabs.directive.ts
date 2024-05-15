@@ -1,6 +1,8 @@
 import type {AfterViewChecked} from '@angular/core';
 import {
     afterNextRender,
+    ChangeDetectionStrategy,
+    Component,
     Directive,
     EventEmitter,
     HostListener,
@@ -8,13 +10,25 @@ import {
     INJECTOR,
     Input,
     Output,
+    ViewEncapsulation,
 } from '@angular/core';
 import {tuiInjectElement, tuiMoveFocus, tuiWithStyles} from '@taiga-ui/cdk';
 import type {TuiSizeL} from '@taiga-ui/core';
 
 import {TUI_TAB_ACTIVATE} from './tab.directive';
-import {TuiTabsComponent} from './tabs.component';
 import {TUI_TABS_OPTIONS} from './tabs.options';
+
+@Component({
+    standalone: true,
+    template: '',
+    styleUrls: ['./tabs.style.less'],
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        class: 'tui-tabs',
+    },
+})
+class TuiTabsStyles {}
 
 @Directive({
     standalone: true,
@@ -36,7 +50,7 @@ export class TuiTabsDirective implements AfterViewChecked {
     @Output()
     public readonly activeItemIndexChange = new EventEmitter<number>();
 
-    protected readonly nothing = tuiWithStyles(TuiTabsComponent);
+    protected readonly nothing = tuiWithStyles(TuiTabsStyles);
 
     public get tabs(): readonly HTMLElement[] {
         return Array.from(this.el.querySelectorAll<HTMLElement>('[tuiTab]'));

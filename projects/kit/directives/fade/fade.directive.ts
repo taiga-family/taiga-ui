@@ -1,4 +1,13 @@
-import {Directive, HostBinding, inject, Input, NgZone} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    Directive,
+    HostBinding,
+    inject,
+    Input,
+    NgZone,
+    ViewEncapsulation,
+} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {
     MUTATION_OBSERVER_INIT,
@@ -9,9 +18,19 @@ import {tuiInjectElement, tuiWithStyles, tuiZonefree} from '@taiga-ui/cdk';
 import type {TuiOrientation} from '@taiga-ui/core';
 import {fromEvent, merge} from 'rxjs';
 
-import {TuiFadeComponent} from './fade.component';
-
 const BUFFER = 1; // buffer for rounding issues
+
+@Component({
+    standalone: true,
+    template: '',
+    styleUrls: ['./fade.style.less'],
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        class: 'tui-fade-styles',
+    },
+})
+class TuiFadeStyles {}
 
 @Directive({
     standalone: true,
@@ -47,7 +66,7 @@ export class TuiFadeDirective {
     constructor() {
         const el = tuiInjectElement();
 
-        tuiWithStyles(TuiFadeComponent);
+        tuiWithStyles(TuiFadeStyles);
         merge(
             inject(ResizeObserverService),
             inject(MutationObserverService),
