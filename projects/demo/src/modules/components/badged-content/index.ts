@@ -1,7 +1,7 @@
 import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDemoModule} from '@demo/utils';
+import {TuiDemo} from '@demo/utils';
 import {TuiFallbackSrcPipe} from '@taiga-ui/core';
 import {
     TuiAvatarComponent,
@@ -17,7 +17,7 @@ import {
         TuiBadgeNotificationComponent,
         TuiAvatarComponent,
         TuiFallbackSrcPipe,
-        TuiDemoModule,
+        TuiDemo,
     ],
     templateUrl: './index.html',
     changeDetection,

@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDemoModule} from '@demo/utils';
+import {TuiDemo} from '@demo/utils';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import {tuiProvideMobileCalendar} from '@taiga-ui/addon-mobile';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk';
@@ -33,7 +33,7 @@ const ONE_DOT: [string] = ['var(--tui-success-fill)'];
 @Component({
     standalone: true,
     imports: [
-        TuiDemoModule,
+        TuiDemo,
         TuiInputDateModule,
         TuiTextfieldControllerModule,
         TuiDropdownModule,

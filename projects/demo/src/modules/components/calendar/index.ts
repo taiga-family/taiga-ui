@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDemoModule} from '@demo/utils';
+import {TuiDemo} from '@demo/utils';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk';
 import {
     TUI_FALSE_HANDLER,
@@ -23,7 +23,7 @@ const ONE_DOT: [string] = ['var(--tui-success-fill)'];
 
 @Component({
     standalone: true,
-    imports: [RouterModule, TuiLinkDirective, TuiCalendarModule, TuiDemoModule],
+    imports: [RouterModule, TuiLinkDirective, TuiCalendarModule, TuiDemo],
     templateUrl: './index.html',
     changeDetection,
 })

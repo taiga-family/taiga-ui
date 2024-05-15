@@ -1,13 +1,13 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDemoModule} from '@demo/utils';
+import {TuiDemo} from '@demo/utils';
 import type {TuiPaymentSystem} from '@taiga-ui/addon-commerce';
 import {TuiThumbnailCardComponent} from '@taiga-ui/addon-commerce';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
-    imports: [TuiDemoModule, TuiThumbnailCardComponent],
+    imports: [TuiDemo, TuiThumbnailCardComponent],
     templateUrl: './index.html',
     changeDetection,
 })

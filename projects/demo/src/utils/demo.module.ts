@@ -25,4 +25,4 @@ import {TuiSetupComponent} from './setup.component';
         TuiSetupComponent,
     ],
 })
-export class TuiDemoModule {}
+export class TuiDemo {}
