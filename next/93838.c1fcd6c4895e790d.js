@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[93838],{93838:n=>{n.exports="table {\n    width: 100%;\n\n    tr {\n        height: 45px;\n    }\n\n    td {\n        &:first-child {\n            width: 10rem;\n            font-weight: bold;\n        }\n\n        &:last-child {\n            width: 3rem;\n        }\n    }\n}\n\n.viewport {\n    height: 250px;\n}\n"}}]);
