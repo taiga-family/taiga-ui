@@ -15,7 +15,8 @@
         "*.{log,svg,snap,png,ogv,yml}",
         "**/projects/i18n/languages/**",
         "**/addon-commerce/enums/currency-code.ts",
-        "**/addon-commerce/utils/get-currency-symbol.ts"
+        "**/addon-commerce/utils/get-currency-symbol.ts",
+        "**/demo-playwright/stubs"
     ],
     "ignoreRegExpList": ["\\(https?://.*?\\)", "\\/{1}.+\\/{1}", "\\%2F.+", "\\%2C.+", "\\ɵ.+", "\\ыва.+"],
     "overrides": [
