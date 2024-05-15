@@ -42,8 +42,8 @@ import {
     TuiButtonDirective,
     tuiGetDuration,
     TuiLinkDirective,
-    TuiMonthPipeModule,
-    TuiOrderWeekDaysPipeModule,
+    TuiMonthPipe,
+    TuiOrderWeekDaysPipe,
 } from '@taiga-ui/core';
 import {
     TUI_CANCEL_WORD,
@@ -90,9 +90,9 @@ import {
         CdkFixedSizeVirtualScroll,
         CdkVirtualScrollViewport,
         CdkVirtualForOf,
-        TuiOrderWeekDaysPipeModule,
+        TuiOrderWeekDaysPipe,
         TuiPrimitiveCalendarMobileModule,
-        TuiMonthPipeModule,
+        TuiMonthPipe,
         NgForOf,
         NgIf,
         TuiMapperPipe,

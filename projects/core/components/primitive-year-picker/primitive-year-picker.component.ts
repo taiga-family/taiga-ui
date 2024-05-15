@@ -16,7 +16,7 @@ import {
     TuiMonthRange,
     TuiYear,
 } from '@taiga-ui/cdk';
-import type {TuiRangeState} from '@taiga-ui/core/enums';
+import type {TuiRangeState} from '@taiga-ui/core/types';
 
 const LIMIT = 100;
 const ITEMS_IN_ROW = 4;

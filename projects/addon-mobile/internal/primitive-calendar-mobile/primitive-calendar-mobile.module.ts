@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {TuiRippleModule} from '@taiga-ui/addon-mobile/directives/ripple';
 import {TuiLetDirective, TuiRepeatTimesDirective} from '@taiga-ui/cdk';
-import {TuiCalendarSheetPipeModule} from '@taiga-ui/core';
+import {TuiCalendarSheetPipe} from '@taiga-ui/core';
 
 import {TuiPrimitiveCalendarMobileComponent} from './primitive-calendar-mobile.component';
 
@@ -11,7 +11,7 @@ import {TuiPrimitiveCalendarMobileComponent} from './primitive-calendar-mobile.c
 @NgModule({
     imports: [
         TuiRepeatTimesDirective,
-        TuiCalendarSheetPipeModule,
+        TuiCalendarSheetPipe,
         TuiRippleModule,
         TuiLetDirective,
     ],

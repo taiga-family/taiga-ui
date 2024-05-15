@@ -1,22 +1,23 @@
 import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
-import type {TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiDemoModule} from '@demo/utils';
+import {TuiFormatPhonePipe, TuiTextfieldControllerModule} from '@taiga-ui/core';
+import {TuiInputModule} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'example-tui-format-phone',
-    templateUrl: './format-phone.template.html',
-    styleUrls: ['./format-phone.style.less'],
+    standalone: true,
+    imports: [
+        TuiDemoModule,
+        TuiInputModule,
+        TuiTextfieldControllerModule,
+        FormsModule,
+        TuiFormatPhonePipe,
+    ],
+    templateUrl: './index.html',
     changeDetection,
 })
-export class ExampleTuiFormatPhoneComponent {
-    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
-    protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
-
-    protected readonly example1: TuiDocExample = {
-        TypeScript: import('./examples/1/index.ts?raw'),
-        HTML: import('./examples/1/index.html?raw'),
-    };
-
+export default class PageComponent {
     protected index = '+78005557778';
 
     protected readonly countryCodes = [undefined, '+850', '+1', '+52'];

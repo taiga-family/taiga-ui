@@ -27,8 +27,8 @@ import {
     tuiDropdownOptionsProvider,
 } from '@taiga-ui/core/directives/dropdown';
 import {TuiIconsDirective} from '@taiga-ui/core/directives/icons';
-import type {TuiDataListHost} from '@taiga-ui/core/interfaces';
 import {tuiAsDataListHost} from '@taiga-ui/core/tokens';
+import type {TuiDataListHost} from '@taiga-ui/core/types';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import {EMPTY} from 'rxjs';

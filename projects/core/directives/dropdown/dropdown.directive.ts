@@ -12,7 +12,7 @@ import type {TuiActiveZoneDirective, TuiContext} from '@taiga-ui/cdk';
 import {tuiInjectElement, tuiPure} from '@taiga-ui/cdk';
 import type {TuiRectAccessor, TuiVehicle} from '@taiga-ui/core/abstract';
 import {tuiAsRectAccessor, tuiAsVehicle} from '@taiga-ui/core/abstract';
-import type {TuiPortalItem} from '@taiga-ui/core/interfaces';
+import type {TuiPortalItem} from '@taiga-ui/core/types';
 import {tuiCheckFixedPosition} from '@taiga-ui/core/utils';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {PolymorpheusComponent, PolymorpheusTemplate} from '@tinkoff/ng-polymorpheus';

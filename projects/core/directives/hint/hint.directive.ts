@@ -3,8 +3,8 @@ import {Directive, inject, INJECTOR, Input} from '@angular/core';
 import {TuiActiveZoneDirective, tuiInjectElement} from '@taiga-ui/cdk';
 import type {TuiRectAccessor, TuiVehicle} from '@taiga-ui/core/abstract';
 import {tuiAsRectAccessor, tuiAsVehicle} from '@taiga-ui/core/abstract';
-import type {TuiPortalItem} from '@taiga-ui/core/interfaces';
 import {TuiHintService} from '@taiga-ui/core/services';
+import type {TuiPortalItem} from '@taiga-ui/core/types';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 

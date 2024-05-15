@@ -1,7 +1,7 @@
 import type {Provider, Type} from '@angular/core';
 import {InjectionToken} from '@angular/core';
 import {tuiProvide} from '@taiga-ui/cdk';
-import type {TuiDataListHost} from '@taiga-ui/core/interfaces';
+import type {TuiDataListHost} from '@taiga-ui/core/types';
 
 /**
  * DataList controller

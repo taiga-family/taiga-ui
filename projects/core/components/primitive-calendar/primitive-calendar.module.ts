@@ -6,10 +6,7 @@ import {
     TuiMapperPipe,
     TuiRepeatTimesDirective,
 } from '@taiga-ui/cdk';
-import {
-    TuiCalendarSheetPipeModule,
-    TuiOrderWeekDaysPipeModule,
-} from '@taiga-ui/core/pipes';
+import {TuiCalendarSheetPipe, TuiOrderWeekDaysPipe} from '@taiga-ui/core/pipes';
 
 import {TuiPrimitiveCalendarComponent} from './primitive-calendar.component';
 
@@ -20,8 +17,8 @@ import {TuiPrimitiveCalendarComponent} from './primitive-calendar.component';
         TuiMapperPipe,
         TuiRepeatTimesDirective,
         TuiHoveredDirective,
-        TuiCalendarSheetPipeModule,
-        TuiOrderWeekDaysPipeModule,
+        TuiCalendarSheetPipe,
+        TuiOrderWeekDaysPipe,
     ],
     declarations: [TuiPrimitiveCalendarComponent],
     exports: [TuiPrimitiveCalendarComponent],

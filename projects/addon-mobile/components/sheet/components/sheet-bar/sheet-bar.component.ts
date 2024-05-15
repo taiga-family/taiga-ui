@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, inject, NgZone} from '@angular/core';
-import {tuiClamp} from '@taiga-ui/cdk';
-import {tuiZonefulMap} from '@taiga-ui/core';
+import {tuiClamp, tuiZonefull} from '@taiga-ui/cdk';
+import {distinctUntilChanged, map} from 'rxjs';
 
 import {TUI_SHEET, TUI_SHEET_SCROLL} from '../../sheet-tokens';
 
@@ -16,7 +16,9 @@ export class TuiSheetBarComponent {
     private readonly zone = inject(NgZone);
 
     protected readonly rotate$ = this.scroll$.pipe(
-        tuiZonefulMap(y => tuiClamp(10 - (y - this.stop) / 5, 0, 10), this.zone),
+        map(y => tuiClamp(10 - (y - this.stop) / 5, 0, 10)),
+        distinctUntilChanged(),
+        tuiZonefull(this.zone),
     );
 
     private get stop(): number {

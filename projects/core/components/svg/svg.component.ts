@@ -21,9 +21,9 @@ import {
     TuiStaticRequestService,
 } from '@taiga-ui/cdk';
 import {TUI_CACHE_BUSTING_PAYLOAD, TUI_ICON_ERROR} from '@taiga-ui/core/constants';
-import type {TuiIconError} from '@taiga-ui/core/interfaces';
 import {TuiSvgService} from '@taiga-ui/core/services';
 import {TUI_SANITIZER} from '@taiga-ui/core/tokens';
+import type {TuiIconError} from '@taiga-ui/core/types';
 import {tuiIsPresumedHTMLString} from '@taiga-ui/core/utils/miscellaneous';
 import type {Observable} from 'rxjs';
 import {catchError, map, of, ReplaySubject, startWith, switchMap} from 'rxjs';

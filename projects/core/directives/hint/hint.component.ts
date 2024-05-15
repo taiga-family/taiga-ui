@@ -21,9 +21,9 @@ import {
     tuiRectAccessorFor,
 } from '@taiga-ui/core/abstract';
 import {tuiFadeIn} from '@taiga-ui/core/animations';
-import type {TuiPortalItem} from '@taiga-ui/core/interfaces';
 import {TuiPositionService, TuiVisualViewportService} from '@taiga-ui/core/services';
 import {TUI_ANIMATIONS_SPEED, TUI_VIEWPORT} from '@taiga-ui/core/tokens';
+import type {TuiPortalItem} from '@taiga-ui/core/types';
 import {tuiIsObscured, tuiToAnimationOptions} from '@taiga-ui/core/utils';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';

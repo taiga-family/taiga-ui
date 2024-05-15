@@ -2,7 +2,6 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiPure} from '@taiga-ui/cdk';
-import {TuiAppearance} from '@taiga-ui/core';
 import type {Observable} from 'rxjs';
 import {BehaviorSubject, map} from 'rxjs';
 
@@ -41,12 +40,10 @@ export class TuiFilterExample4 {
     }
 
     @tuiPure
-    protected get buttonAppearance$(): Observable<TuiAppearance> {
+    protected get buttonAppearance$(): Observable<string> {
         return this.filters$.pipe(
             map(value =>
-                value.length === this.items.length
-                    ? TuiAppearance.WhiteblockActive
-                    : TuiAppearance.Whiteblock,
+                value.length === this.items.length ? 'whiteblock-active' : 'whiteblock',
             ),
         );
     }

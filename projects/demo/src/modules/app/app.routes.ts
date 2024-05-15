@@ -1137,23 +1137,17 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.FormatDate,
-        loadChildren: async () =>
-            (await import('../pipes/format-date/format-date.module'))
-                .ExampleTuiFormatDateModule,
+        loadComponent: async () => import('../pipes/format-date'),
         title: 'FormatDate',
     }),
     route({
         path: DemoRoute.FormatNumber,
-        loadChildren: async () =>
-            (await import('../pipes/format-number/format-number.module'))
-                .ExampleTuiFormatNumberModule,
+        loadComponent: async () => import('../pipes/format-number'),
         title: 'FormatNumber',
     }),
     route({
         path: DemoRoute.FormatPhone,
-        loadChildren: async () =>
-            (await import('../pipes/format-phone/format-phone.module'))
-                .ExampleTuiFormatPhoneModule,
+        loadComponent: async () => import('../pipes/format-phone'),
         title: 'FormatPhone',
     }),
     route({

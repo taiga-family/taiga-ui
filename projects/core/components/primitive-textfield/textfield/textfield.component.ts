@@ -4,8 +4,8 @@ import {
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
 } from '@taiga-ui/core/directives';
-import type {TuiTextfieldHost} from '@taiga-ui/core/interfaces';
 import {TUI_TEXTFIELD_HOST} from '@taiga-ui/core/tokens';
+import type {TuiTextfieldHost} from '@taiga-ui/core/types';
 
 @Component({
     selector: 'input[tuiTextfield], textarea[tuiTextfield]',

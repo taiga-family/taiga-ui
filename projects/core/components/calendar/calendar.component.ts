@@ -15,8 +15,11 @@ import {
     tuiNullableSame,
 } from '@taiga-ui/cdk';
 import {TUI_DEFAULT_MARKER_HANDLER} from '@taiga-ui/core/constants';
-import type {TuiWithOptionalMinMax} from '@taiga-ui/core/interfaces';
-import type {TuiCalendarView, TuiMarkerHandler} from '@taiga-ui/core/types';
+import type {
+    TuiCalendarView,
+    TuiMarkerHandler,
+    TuiWithOptionalMinMax,
+} from '@taiga-ui/core/types';
 
 @Component({
     selector: 'tui-calendar',
