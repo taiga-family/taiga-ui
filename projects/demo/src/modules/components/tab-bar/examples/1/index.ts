@@ -1,6 +1,8 @@
+import {NgForOf} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiTabBar} from '@taiga-ui/addon-mobile';
 import {TuiAlertService} from '@taiga-ui/core';
 
 interface Item {
@@ -10,13 +12,15 @@ interface Item {
 }
 
 @Component({
-    selector: 'tui-tab-bar-example-1',
+    standalone: true,
+    selector: 'tui-tab-bar-example',
+    imports: [TuiTabBar, NgForOf],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiTabBarExample1 {
+export default class ExampleComponent {
     private readonly alerts = inject(TuiAlertService);
 
     protected activeItemIndex = 1;

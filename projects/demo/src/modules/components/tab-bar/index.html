@@ -9,7 +9,7 @@
         <tui-doc-example
             id="buttons"
             heading="Buttons"
-            [content]="example1"
+            [content]="1 | tuiExample: 'html,ts'"
         >
             <label
                 tuiLabel
@@ -22,11 +22,11 @@
                 />
                 Fixed
             </label>
-            <tui-tab-bar-example-1
+            <tui-tab-bar-example
                 *ngIf="!fixed"
                 class="bar"
             />
-            <tui-tab-bar-example-1
+            <tui-tab-bar-example
                 *tuiDropdown="fixed"
                 class="fixed"
             />
@@ -35,7 +35,8 @@
         <tui-doc-example
             id="links"
             heading="Links"
-            [content]="example2"
+            [component]="2 | tuiComponent"
+            [content]="2 | tuiExample: 'html,ts'"
         >
             <tui-notification class="bar tui-space_bottom-4">
                 If you use
@@ -44,58 +45,28 @@
                 <code>routerLinkActive</code>
                 directive.
             </tui-notification>
-            <tui-tab-bar-example-2 class="bar" />
         </tui-doc-example>
 
         <tui-doc-example
             id="customization"
             heading="Customization"
-            [content]="example3"
-        >
-            <tui-tab-bar-example-3 class="bar" />
-        </tui-doc-example>
+            [component]="3 | tuiComponent"
+            [content]="3 | tuiExample: 'html,ts'"
+        />
 
         <tui-doc-example
             id="skeleton"
             heading="Skeleton"
-            [content]="example4"
+            [component]="4 | tuiComponent"
+            [content]="4 | tuiExample: 'html,ts'"
         >
             <tui-notification class="bar tui-space_bottom-4">
                 When there are no
                 <code>TabBarItem</code>
                 children, the component shows skeleton for 4 items
             </tui-notification>
-            <tui-tab-bar-example-4 class="bar" />
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab="Setup">
-        <ol class="tui-list tui-list_ordered">
-            <li class="tui-list__item">
-                <p>
-                    Import
-                    <code>TuiTabBarModule</code>
-                    into your main module
-                </p>
-
-                <tui-doc-code
-                    filename="my.module.ts"
-                    [code]="exampleModule"
-                />
-            </li>
-
-            <li class="tui-list__item">
-                <p>
-                    Add to the template inside
-                    <code>Root</code>
-                    component at the required layer and position with CSS:
-                </p>
-
-                <tui-doc-code
-                    filename="my.component.html"
-                    [code]="exampleHtml"
-                />
-            </li>
-        </ol>
-    </ng-template>
+    <tui-setup *pageTab />
 </tui-doc-page>

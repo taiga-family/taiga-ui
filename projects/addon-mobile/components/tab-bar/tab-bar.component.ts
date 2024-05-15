@@ -11,12 +11,14 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import {EMPTY_QUERY, tuiIsElement} from '@taiga-ui/cdk';
+import {EMPTY_QUERY, tuiIsElement, TuiRepeatTimesDirective} from '@taiga-ui/cdk';
 
 import {TuiTabBarItemComponent} from './tab-bar-item.component';
 
 @Component({
+    standalone: true,
     selector: 'nav[tuiTabBar]',
+    imports: [TuiRepeatTimesDirective],
     templateUrl: './tab-bar.template.html',
     styleUrls: ['./tab-bar.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

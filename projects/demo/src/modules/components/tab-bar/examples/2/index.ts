@@ -1,11 +1,14 @@
 import {Component} from '@angular/core';
+import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiTabBar} from '@taiga-ui/addon-mobile';
 
 @Component({
-    selector: 'tui-tab-bar-example-2',
+    standalone: true,
+    imports: [TuiTabBar, RouterLink],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class TuiTabBarExample2 {}
+export default class ExampleComponent {}
