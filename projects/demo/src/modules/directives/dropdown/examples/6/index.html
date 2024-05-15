@@ -1,0 +1,76 @@
+<tui-combo-box
+    tuiDropdownMobile
+    [tuiTextfieldCleaner]="true"
+    [(ngModel)]="country"
+>
+    Country
+    <tui-data-list-wrapper
+        *tuiDataList
+        [items]="countries | tuiFilterByInput"
+    />
+</tui-combo-box>
+
+<tui-select
+    class="tui-space_vertical-4"
+    [tuiDropdownMobile]="'Select user'"
+    [tuiTextfieldLabelOutside]="true"
+    [valueContent]="template"
+    [(ngModel)]="user"
+>
+    Select user
+    <tui-data-list-wrapper
+        *tuiDataList
+        [itemContent]="template"
+        [items]="users"
+    />
+</tui-select>
+
+<tui-multi-select
+    tuiDropdownMobile
+    class="tui-space_vertical-4"
+    [stringify]="stringify"
+    [tuiTextfieldCleaner]="true"
+    [(ngModel)]="selected"
+    [(tuiDropdownOpen)]="open"
+>
+    Pick more users
+    <ng-container *tuiDataList>
+        <tui-data-list-wrapper
+            tuiMultiSelectGroup
+            [itemContent]="template"
+            [items]="users | tuiFilterByInputWith: stringify"
+        />
+        <button
+            appearance="accent"
+            size="m"
+            tuiButton
+            tuiDropdownButton
+            (click)="open = false"
+        >
+            Done
+        </button>
+    </ng-container>
+</tui-multi-select>
+
+<tui-input-number
+    tuiTextfieldPrefix="$"
+    [(ngModel)]="sum"
+>
+    Sum
+    <input tuiTextfield />
+</tui-input-number>
+
+<ng-template
+    #template
+    let-user
+>
+    <span tuiCell>
+        <tui-avatar [src]="user.url" />
+        <span tuiTitle>
+            {{ user.name }}
+            <span tuiSubtitle>
+                {{ user.balance | tuiAmount: '$' : 'left' | async }}
+            </span>
+        </span>
+    </span>
+</ng-template>

@@ -1,34 +1,65 @@
-import {ScrollingModule} from '@angular/cdk/scrolling';
+import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiLetDirective} from '@taiga-ui/cdk';
-import {TuiDataListModule, TuiScrollableDirective} from '@taiga-ui/core';
-import {TuiComboBoxModule, TuiFilterByInputPipeModule} from '@taiga-ui/kit';
+import {assets} from '@demo/utils';
+import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
+import {TuiDropdownMobileDirective} from '@taiga-ui/addon-mobile';
+import {
+    TuiButtonDirective,
+    TuiDropdownModule,
+    TuiTextfieldControllerModule,
+    TuiTitleDirective,
+} from '@taiga-ui/core';
+import {
+    TuiAvatarComponent,
+    TuiComboBoxModule,
+    TuiDataListWrapperModule,
+    TuiFilterByInputPipeModule,
+    TuiInputNumberModule,
+    TuiMultiSelectModule,
+    TuiSelectModule,
+} from '@taiga-ui/kit';
+import {TuiCellDirective} from '@taiga-ui/layout';
 
-import {IndexChangeDirective} from './index-change.directive';
+interface User {
+    readonly url: string;
+    readonly name: string;
+    readonly balance: number;
+}
 
 @Component({
     standalone: true,
-    selector: 'tui-combo-box-example-5',
     imports: [
+        AsyncPipe,
         FormsModule,
-        TuiLetDirective,
+        TuiDropdownModule,
         TuiComboBoxModule,
-        TuiDataListModule,
+        TuiDropdownMobileDirective,
+        TuiTextfieldControllerModule,
+        TuiDataListWrapperModule,
         TuiFilterByInputPipeModule,
-        ScrollingModule,
-        TuiScrollableDirective,
-        IndexChangeDirective,
+        TuiSelectModule,
+        TuiMultiSelectModule,
+        TuiButtonDirective,
+        TuiInputNumberModule,
+        TuiCellDirective,
+        TuiAvatarComponent,
+        TuiTitleDirective,
+        TuiAmountPipe,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
 export default class ExampleComponent {
-    protected value = null;
+    protected country = null;
+    protected selected: readonly User[] = [];
+    protected sum = null;
+    protected user: User | null = null;
+
+    protected open = false;
 
     protected readonly countries = [
         'Afghanistan',
@@ -280,4 +311,14 @@ export default class ExampleComponent {
         'Zimbabwe',
         'Åland Islands',
     ];
+
+    protected readonly users: readonly User[] = [
+        {name: 'Alex Inkin', balance: 1323525, url: assets`/images/avatar.jpg`},
+        {name: 'Roman Sedov', balance: 523242, url: 'RS'},
+        {name: 'Vladimir Potekhin', balance: 645465, url: 'VP'},
+        {name: 'Nikita Barsukov', balance: 468468, url: 'NB'},
+        {name: 'Maxim Ivanov', balance: 498654, url: 'MI'},
+    ];
+
+    protected readonly stringify = ({name}: User): string => name;
 }

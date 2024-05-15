@@ -1,0 +1,108 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+tui-dropdown-mobile:not(._sheet) {
+    .scrollbar-hidden();
+    .fullsize(fixed);
+    .transition(transform);
+
+    visibility: visible !important;
+    transform: translate3d(0, 0, 0);
+    background: var(--tui-base-01);
+    overscroll-behavior: contain;
+    overflow: auto;
+    box-shadow:
+        0 -0.5rem 0.5rem var(--tui-base-01),
+        0 10rem var(--tui-base-01),
+        0 20rem var(--tui-base-01),
+        0 30rem var(--tui-base-01);
+
+    &:after {
+        content: '';
+        display: block;
+        height: 1px;
+    }
+
+    > .t-container {
+        .scrollbar-hidden();
+
+        position: sticky;
+        top: 0;
+        height: 100%;
+        overflow: auto;
+        margin: 0 0.75rem;
+        touch-action: pan-y !important;
+    }
+
+    [tuiDropdownButton][tuiDropdownButton] {
+        position: fixed;
+        right: 1rem;
+        bottom: 1rem;
+        display: inline-flex;
+    }
+}
+
+tui-dropdown-mobile._sheet {
+    .fullsize(fixed, inset);
+    .scrollbar-hidden();
+
+    overflow: auto;
+    background: rgba(0, 0, 0, 0.75);
+    /* stylelint-disable-next-line */
+    box-shadow: 0 -50vh 5rem 5rem rgba(0, 0, 0, 0.75);
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    overscroll-behavior: none;
+
+    > .t-filler {
+        height: 100%;
+        scroll-snap-stop: always;
+        scroll-snap-align: start;
+    }
+
+    > .t-container {
+        display: flex;
+        max-height: calc(100% - 1rem);
+        flex-direction: column;
+        border-top-left-radius: 1rem;
+        border-top-right-radius: 1rem;
+        padding: 0 0.5rem;
+        scroll-snap-stop: always;
+        scroll-snap-align: start;
+        background: var(--tui-elevation-01);
+
+        > .t-heading {
+            position: relative;
+            margin: 0;
+            padding: 2rem 0.5rem 0.75rem;
+            font: var(--tui-font-heading-6);
+
+            &:before {
+                content: '';
+                position: absolute;
+                left: 50%;
+                top: 0.75rem;
+                width: 2rem;
+                height: 0.25rem;
+                border-radius: 1rem;
+                background: var(--tui-clear-hover);
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        > .t-content {
+            .scrollbar-hidden();
+
+            overflow: auto;
+        }
+    }
+}
+
+.t-dropdown-mobile {
+    touch-action: none;
+    visibility: hidden;
+
+    * {
+        touch-action: inherit;
+        visibility: inherit;
+    }
+}

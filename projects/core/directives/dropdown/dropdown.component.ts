@@ -57,7 +57,7 @@ export class TuiDropdownComponent implements OnInit {
     private readonly el = tuiInjectElement();
     private readonly accessor = inject(TuiRectAccessor);
     private readonly win = inject(WINDOW);
-    private readonly viewport = inject(TuiVisualViewportService);
+    private readonly vvs = inject(TuiVisualViewportService);
 
     protected readonly animation = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
     protected readonly options = inject(TUI_DROPDOWN_OPTIONS);
@@ -69,11 +69,7 @@ export class TuiDropdownComponent implements OnInit {
 
     protected readonly sub = inject(TuiPositionService)
         .pipe(
-            map(point =>
-                this.directive.position === 'fixed'
-                    ? this.viewport.correct(point)
-                    : point,
-            ),
+            map(v => (this.directive.position === 'fixed' ? this.vvs.correct(v) : v)),
             takeUntilDestroyed(),
         )
         .subscribe(([top, left]) => {

@@ -1,12 +1,14 @@
 <tui-combo-box [(ngModel)]="value">
     Country
     <ng-container *tuiDataList>
+        <!--48 = 44 height + 4 margin-->
+        <!--8 = data list padding-->
         <cdk-virtual-scroll-viewport
             *tuiLet="countries | tuiFilterByInput as items"
             tuiScrollable
             class="scroll"
-            [itemSize]="44"
-            [style.height.px]="items.length * 44"
+            [itemSize]="48"
+            [style.height.px]="items.length * 48 + 8"
             (indexChange)="list.handleFocusLossIfNecessary()"
         >
             <tui-data-list #list>
