@@ -6,7 +6,7 @@ test.describe('Dropdown', () => {
 
     test('base', async ({page}) => {
         await tuiGoto(page, '/directives/dropdown');
-        const example = new TuiDocumentationPagePO(page).getExample('#base');
+        const example = new TuiDocumentationPagePO(page).getExample('#basic');
 
         await example.scrollIntoViewIfNeeded();
         await example.locator('button').click();
@@ -15,7 +15,7 @@ test.describe('Dropdown', () => {
 
     test('Interesting', async ({page}) => {
         await tuiGoto(page, '/directives/dropdown');
-        const example = new TuiDocumentationPagePO(page).getExample('#full-featured');
+        const example = new TuiDocumentationPagePO(page).getExample('#interesting');
 
         await example.scrollIntoViewIfNeeded();
         await example.locator('input').click();
