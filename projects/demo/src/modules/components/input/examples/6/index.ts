@@ -1,16 +1,36 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiTable} from '@taiga-ui/addon-table';
+import {TuiTextfieldControllerModule, TuiTextfieldOptionsDirective} from '@taiga-ui/core';
+import {
+    TuiDataListWrapperModule,
+    TuiInputDateModule,
+    TuiInputModule,
+    TuiInputNumberModule,
+    TuiSelectModule,
+} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-input-example-6',
+    standalone: true,
+    imports: [
+        TuiTextfieldOptionsDirective,
+        ReactiveFormsModule,
+        TuiTextfieldControllerModule,
+        TuiInputModule,
+        TuiTable,
+        TuiInputDateModule,
+        TuiSelectModule,
+        TuiDataListWrapperModule,
+        TuiInputNumberModule,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiInputExample6 {
+export default class ExampleComponent {
     protected readonly items = ['Black', 'Gold', 'Silver'];
     protected readonly form = new FormGroup({
         name: new FormControl('', Validators.required),

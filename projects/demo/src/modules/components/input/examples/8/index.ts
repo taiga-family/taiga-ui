@@ -1,9 +1,12 @@
+import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
 import {Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {assets} from '@demo/utils';
-import {TUI_DEFAULT_MATCHER} from '@taiga-ui/cdk';
+import {TUI_DEFAULT_MATCHER, TuiLetDirective} from '@taiga-ui/cdk';
+import {TuiDataList, TuiInitialsPipe} from '@taiga-ui/core';
+import {TuiAvatarComponent, TuiInputModule} from '@taiga-ui/kit';
 import type {Observable} from 'rxjs';
 import {map, of, startWith, switchMap} from 'rxjs';
 
@@ -27,13 +30,24 @@ const DATA: readonly User[] = [
 ];
 
 @Component({
-    selector: 'tui-input-example-8',
+    standalone: true,
+    imports: [
+        TuiInputModule,
+        TuiLetDirective,
+        ReactiveFormsModule,
+        AsyncPipe,
+        TuiDataList,
+        NgIf,
+        NgForOf,
+        TuiAvatarComponent,
+        TuiInitialsPipe,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiInputExample8 {
+export default class ExampleComponent {
     protected readonly control = new FormControl('');
 
     protected firstName = '';

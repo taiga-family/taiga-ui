@@ -11,5 +11,9 @@ import {TuiInputModule} from '@taiga-ui/kit';
   ],
   // ...
 })
-export class MyComponent {}
+export class MyComponent {
+  testForm = new FormGroup({
+    testValue: new FormControl('mail@mail.ru'),
+  });
+}
 ```

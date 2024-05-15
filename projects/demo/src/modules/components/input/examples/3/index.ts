@@ -1,16 +1,26 @@
+import {JsonPipe} from '@angular/common';
 import {Component} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {MaskitoDirective} from '@maskito/angular';
 import type {MaskitoOptions} from '@maskito/core';
+import {TuiInputModule, TuiUnmaskHandlerModule} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-input-example-3',
+    standalone: true,
+    imports: [
+        ReactiveFormsModule,
+        TuiInputModule,
+        MaskitoDirective,
+        TuiUnmaskHandlerModule,
+        JsonPipe,
+    ],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class TuiInputExample3 {
+export default class ExampleComponent {
     protected readonly testForm = new FormGroup({
         testValue1: new FormControl(''),
         testValue2: new FormControl(''),

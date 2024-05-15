@@ -1,16 +1,25 @@
 import {Component} from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiHint, TuiSvgComponent, TuiTextfieldControllerModule} from '@taiga-ui/core';
+import {TuiInputModule} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-input-example-7',
+    standalone: true,
+    imports: [
+        TuiInputModule,
+        TuiHint,
+        ReactiveFormsModule,
+        TuiSvgComponent,
+        TuiTextfieldControllerModule,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiInputExample7 {
+export default class ExampleComponent {
     protected readonly control = new FormControl('', [
         Validators.required,
         Validators.minLength(5),
