@@ -1,7 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
-import {TuiTableDirective, TuiTableModule} from '@taiga-ui/addon-table';
+import {TuiTable, TuiTableDirective} from '@taiga-ui/addon-table';
 
 describe('TuiDirectionOrder directive', () => {
     @Component({
@@ -28,7 +28,7 @@ describe('TuiDirectionOrder directive', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TuiTableModule],
+            imports: [TuiTable],
             declarations: [TestComponent],
         });
         await TestBed.compileComponents();

@@ -7,7 +7,7 @@ import {
     TuiDocCopyModule,
     tuiGenerateRoutes,
 } from '@taiga-ui/addon-doc';
-import {TuiTableModule} from '@taiga-ui/addon-table';
+import {TuiTable} from '@taiga-ui/addon-table';
 
 import {BreakpointsComponent} from './breakpoints.component';
 import {ExampleBreakpointsComponent1} from './examples/1';
@@ -16,7 +16,7 @@ import {ExampleBreakpointsComponent1} from './examples/1';
     imports: [
         CommonModule,
         TuiAddonDocModule,
-        TuiTableModule,
+        TuiTable,
         TuiDocCopyModule,
         ClipboardModule,
         RouterModule.forChild(tuiGenerateRoutes(BreakpointsComponent)),

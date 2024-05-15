@@ -4,7 +4,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiSetupComponent} from '@demo/utils';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
-import {TuiTableModule} from '@taiga-ui/addon-table';
+import {TuiTable} from '@taiga-ui/addon-table';
 import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
 import {
     TuiButtonDirective,
@@ -27,7 +27,7 @@ import {TuiDropdownContextExample3} from './examples/3';
         TuiAddonDocModule,
         TuiDataListModule,
         TuiSvgComponent,
-        TuiTableModule,
+        TuiTable,
         TuiDataListDropdownManagerModule,
         TuiTextareaModule,
         TuiButtonDirective,

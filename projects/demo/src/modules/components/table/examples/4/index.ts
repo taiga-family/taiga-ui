@@ -1,8 +1,14 @@
+import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
 import {Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiComparator, TuiTablePagination} from '@taiga-ui/addon-table';
+import {
+    TuiReorderComponent,
+    TuiTable,
+    TuiTablePaginationComponent,
+} from '@taiga-ui/addon-table';
 import {
     TUI_DEFAULT_MATCHER,
     tuiControlValue,
@@ -10,8 +16,17 @@ import {
     tuiDefaultSort,
     tuiIsFalsy,
     tuiIsPresent,
+    TuiLetDirective,
     tuiToInt,
 } from '@taiga-ui/cdk';
+import {
+    TuiButtonDirective,
+    TuiDropdownDirective,
+    TuiDropdownOpenDirective,
+    TuiLoaderModule,
+    TuiTextfieldControllerModule,
+} from '@taiga-ui/core';
+import {TuiChevronDirective, TuiInputModule, TuiInputNumberModule} from '@taiga-ui/kit';
 import type {Observable} from 'rxjs';
 import {
     BehaviorSubject,
@@ -90,13 +105,32 @@ function getAge({dob}: User): number {
 }
 
 @Component({
-    selector: 'tui-table-example-4',
+    standalone: true,
+    imports: [
+        TuiTable,
+        TuiTextfieldControllerModule,
+        TuiInputModule,
+        TuiInputNumberModule,
+        TuiReorderComponent,
+        TuiLoaderModule,
+        AsyncPipe,
+        NgIf,
+        TuiTablePaginationComponent,
+        ReactiveFormsModule,
+        TuiDropdownDirective,
+        TuiButtonDirective,
+        TuiChevronDirective,
+        TuiDropdownOpenDirective,
+        FormsModule,
+        NgForOf,
+        TuiLetDirective,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiTableExample4 {
+export default class ExampleComponent {
     private readonly size$ = new BehaviorSubject(10);
     private readonly page$ = new BehaviorSubject(0);
 

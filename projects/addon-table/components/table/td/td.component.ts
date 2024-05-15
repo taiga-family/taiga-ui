@@ -7,6 +7,7 @@ import {
 import {NgControl} from '@angular/forms';
 
 @Component({
+    standalone: true,
     selector: 'th[tuiTd], td[tuiTd]',
     template: `
         <ng-content></ng-content>

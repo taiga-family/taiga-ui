@@ -1053,8 +1053,7 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.Table,
-        loadChildren: async () =>
-            (await import('../tables/table/table.module')).ExampleTuiTableModule,
+        loadComponent: async () => import('../components/table'),
         title: 'Table',
     }),
     route({

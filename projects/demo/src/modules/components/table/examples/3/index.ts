@@ -1,9 +1,30 @@
+import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
 import {Component} from '@angular/core';
 import type {ValidatorFn} from '@angular/forms';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {IntersectionObserverModule} from '@ng-web-apis/intersection-observer';
 import type {TuiComparator} from '@taiga-ui/addon-table';
-import {TuiDay, tuiDefaultSort} from '@taiga-ui/cdk';
+import {TuiTable} from '@taiga-ui/addon-table';
+import {
+    TuiDay,
+    tuiDefaultSort,
+    TuiLetDirective,
+    TuiValidatorDirective,
+} from '@taiga-ui/cdk';
+import {
+    TuiFormatNumberPipeModule,
+    TuiScrollbarComponent,
+    TuiSvgComponent,
+} from '@taiga-ui/core';
+import {
+    TuiDataListWrapperModule,
+    TuiInputDateModule,
+    TuiInputNumberModule,
+    TuiSelectModule,
+    TuiTextareaModule,
+} from '@taiga-ui/kit';
 
 interface Item {
     readonly date: TuiDay;
@@ -14,13 +35,31 @@ interface Item {
 }
 
 @Component({
-    selector: 'tui-table-example-3',
+    standalone: true,
+    imports: [
+        TuiTable,
+        IntersectionObserverModule,
+        TuiTextareaModule,
+        FormsModule,
+        TuiInputNumberModule,
+        NgIf,
+        TuiValidatorDirective,
+        TuiInputDateModule,
+        TuiDataListWrapperModule,
+        TuiSelectModule,
+        NgForOf,
+        TuiLetDirective,
+        TuiScrollbarComponent,
+        TuiFormatNumberPipeModule,
+        AsyncPipe,
+        TuiSvgComponent,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiTableExample3 {
+export default class ExampleComponent {
     protected readonly options = {updateOn: 'blur'} as const;
 
     protected readonly units = ['items', 'kg', 'm'];

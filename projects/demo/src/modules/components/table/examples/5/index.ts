@@ -1,8 +1,15 @@
+import {
+    CdkFixedSizeVirtualScroll,
+    CdkVirtualForOf,
+    CdkVirtualScrollViewport,
+} from '@angular/cdk/scrolling';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiComparator} from '@taiga-ui/addon-table';
+import {TuiTable} from '@taiga-ui/addon-table';
 import {TuiDay, tuiToInt} from '@taiga-ui/cdk';
+import {TuiScrollableDirective, TuiScrollbarComponent} from '@taiga-ui/core';
 
 interface User {
     readonly dob: TuiDay;
@@ -53,13 +60,21 @@ function getAge({dob}: User): number {
 }
 
 @Component({
-    selector: 'tui-table-example-5',
+    standalone: true,
+    imports: [
+        TuiTable,
+        TuiScrollbarComponent,
+        CdkFixedSizeVirtualScroll,
+        CdkVirtualScrollViewport,
+        TuiScrollableDirective,
+        CdkVirtualForOf,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiTableExample5 {
+export default class ExampleComponent {
     protected readonly data = DATA;
 
     protected readonly columns = ['name', 'dob', 'age'];

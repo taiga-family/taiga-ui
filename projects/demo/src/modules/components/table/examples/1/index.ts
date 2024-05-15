@@ -1,15 +1,19 @@
+import {AsyncPipe, NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiTable} from '@taiga-ui/addon-table';
+import {TuiFormatNumberPipeModule} from '@taiga-ui/core';
 
 @Component({
-    selector: 'tui-table-example-1',
+    standalone: true,
+    imports: [TuiTable, NgForOf, TuiFormatNumberPipeModule, AsyncPipe],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiTableExample1 {
+export default class ExampleComponent {
     protected readonly data = [
         {
             name: 'Alex Inkin',
