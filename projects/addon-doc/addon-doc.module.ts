@@ -3,6 +3,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {
     TuiDocCodeModule,
+    TuiDocCopyComponent,
     TuiDocDemoModule,
     TuiDocDocumentationModule,
     TuiDocExampleModule,
@@ -12,7 +13,9 @@ import {
 import {tuiGenerateRoutes} from '@taiga-ui/addon-doc/utils';
 
 @NgModule({
+    imports: [TuiDocCopyComponent],
     exports: [
+        TuiDocCopyComponent,
         TuiDocCodeModule,
         TuiDocDemoModule,
         TuiDocDocumentationModule,

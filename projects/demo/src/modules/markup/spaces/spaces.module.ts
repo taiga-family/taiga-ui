@@ -4,7 +4,6 @@ import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {
     TuiAddonDocModule,
-    TuiDocCopyModule,
     tuiGenerateRoutes,
     TuiTextCodeModule,
 } from '@taiga-ui/addon-doc';
@@ -19,7 +18,6 @@ import {SpacesComponent} from './spaces.component';
         CommonModule,
         ClipboardModule,
         StylesInfoModule,
-        TuiDocCopyModule,
         TuiAddonDocModule,
         TuiTextCodeModule,
         RouterModule.forChild(tuiGenerateRoutes(SpacesComponent)),

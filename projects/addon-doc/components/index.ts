@@ -1,7 +1,6 @@
 export * from './code/code.component';
 export * from './code/code.module';
 export * from './copy/copy.component';
-export * from './copy/copy.module';
 export * from './demo/demo.component';
 export * from './demo/demo.module';
 export * from './doc-tab/doc-tab.component';
