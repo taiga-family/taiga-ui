@@ -911,4 +911,14 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/addon-preview',
         },
     },
+    {
+        from: {
+            name: 'TuiBlockStatusModule',
+            moduleSpecifier: '@taiga-ui/layout',
+        },
+        to: {
+            name: 'TuiBlockStatus',
+            moduleSpecifier: '@taiga-ui/layout',
+        },
+    },
 ];

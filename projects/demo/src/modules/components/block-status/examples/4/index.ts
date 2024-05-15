@@ -4,13 +4,13 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAutoColorPipe, TuiButtonDirective, TuiInitialsPipe} from '@taiga-ui/core';
 import {TuiAvatarComponent, TuiAvatarStackComponent} from '@taiga-ui/kit';
-import {TuiBlockStatusModule} from '@taiga-ui/layout';
+import {TuiBlockStatus} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
     imports: [
         NgFor,
-        TuiBlockStatusModule,
+        TuiBlockStatus,
         TuiButtonDirective,
         TuiAvatarComponent,
         TuiAutoColorPipe,
