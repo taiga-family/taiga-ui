@@ -6,7 +6,7 @@ import {
     TUI_ALWAYS_DASHED,
     TUI_ALWAYS_NONE,
     TuiAxesComponent,
-    TuiBarChartModule,
+    TuiBarChartComponent,
 } from '@taiga-ui/addon-charts';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {tuiCeil, tuiPure} from '@taiga-ui/cdk';
@@ -18,7 +18,7 @@ const BENJI = 100;
     standalone: true,
     imports: [
         TuiAxesComponent,
-        TuiBarChartModule,
+        TuiBarChartComponent,
         TuiHintModule,
         TuiAmountPipe,
         AsyncPipe,

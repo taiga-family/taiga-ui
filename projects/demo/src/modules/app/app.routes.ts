@@ -847,15 +847,12 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.BarChart,
-        loadChildren: async () =>
-            (await import('../charts/bar-chart/bar-chart.module'))
-                .ExampleTuiBarChartModule,
+        loadComponent: async () => import('../components/bar-chart'),
         title: 'BarChart',
     }),
     route({
         path: DemoRoute.BarSet,
-        loadChildren: async () =>
-            (await import('../charts/bar-set/bar-set.module')).ExampleTuiBarSetModule,
+        loadComponent: async () => import('../components/bar-set'),
         title: 'BarSet',
     }),
     route({
@@ -1051,8 +1048,7 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.Table,
-        loadChildren: async () =>
-            (await import('../tables/table/table.module')).ExampleTuiTableModule,
+        loadComponent: async () => import('../components/table'),
         title: 'Table',
     }),
     route({
@@ -1210,9 +1206,7 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.TableBarService,
-        loadChildren: async () =>
-            (await import('../services/table-bar/table-bar.module'))
-                .ExampleTuiTableBarModule,
+        loadComponent: async () => import('../services/table-bars-service'),
         title: 'TableBarService',
     }),
     route({

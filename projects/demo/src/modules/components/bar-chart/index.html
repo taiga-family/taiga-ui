@@ -1,0 +1,96 @@
+<tui-doc-page
+    header="BarChart"
+    package="ADDON-CHARTS"
+    type="components"
+>
+    <ng-template pageTab>
+        <p>
+            Bar chart that can be used as a content to
+            <a
+                tuiLink
+                [routerLink]="['/components/axes']"
+            >
+                axes
+            </a>
+            .
+        </p>
+
+        <tui-doc-example
+            id="axes"
+            heading="With axes"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample"
+        />
+
+        <tui-doc-example
+            id="collapsed"
+            heading="Same values with collapsed mode"
+            [component]="2 | tuiComponent"
+            [content]="2 | tuiExample"
+        >
+            <tui-notification class="tui-space_bottom-6">
+                Use
+                <a
+                    routerLink="/directives/hint"
+                    tuiLink
+                >
+                    <code>Hint</code>
+                </a>
+                directive to enable hints with
+                <code>tuiHintContent</code>
+            </tui-notification>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-bar-chart
+                class="chart"
+                [collapsed]="collapsed"
+                [max]="max"
+                [size]="size"
+                [value]="value"
+            />
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="collapsed"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="collapsed"
+            >
+                Shows data set in a single bar
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="max"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="max"
+            >
+                Sets chart max manually
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="size"
+                documentationPropertyType="TuiSizeS | TuiSizeL | null"
+                [documentationPropertyValues]="sizeVariants"
+                [(documentationPropertyValue)]="size"
+            >
+                Size (use
+                <code>null</code>
+                for autosize)
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="value"
+                documentationPropertyType="ReadonlyArray<readonly number[]>"
+                [documentationPropertyValues]="valueVariants"
+                [(documentationPropertyValue)]="value"
+            >
+                Array of segments
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <tui-setup *pageTab />
+</tui-doc-page>

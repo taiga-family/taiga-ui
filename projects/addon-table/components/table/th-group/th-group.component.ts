@@ -1,3 +1,4 @@
+import {AsyncPipe, NgForOf, NgIf, NgTemplateOutlet} from '@angular/common';
 import type {AfterContentInit, QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
@@ -17,7 +18,9 @@ import {TUI_TABLE_PROVIDER} from '../providers/table.provider';
 import {TuiThComponent} from '../th/th.component';
 
 @Component({
+    standalone: true,
     selector: 'tr[tuiThGroup]',
+    imports: [NgIf, NgForOf, NgTemplateOutlet, TuiThComponent, AsyncPipe],
     templateUrl: './th-group.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TUI_TABLE_PROVIDER],

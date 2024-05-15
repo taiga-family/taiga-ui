@@ -1,3 +1,4 @@
+import {AsyncPipe, NgForOf, NgIf, NgTemplateOutlet} from '@angular/common';
 import type {AfterContentInit, QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
@@ -13,9 +14,12 @@ import {TuiCellDirective} from '../directives/cell.directive';
 import {TuiTableDirective} from '../directives/table.directive';
 import {TUI_TABLE_PROVIDER} from '../providers/table.provider';
 import {TuiTbodyComponent} from '../tbody/tbody.component';
+import {TuiTdComponent} from '../td/td.component';
 
 @Component({
+    standalone: true,
     selector: 'tr[tuiTr]',
+    imports: [NgIf, NgForOf, AsyncPipe, NgTemplateOutlet, TuiTdComponent],
     templateUrl: './tr.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TUI_TABLE_PROVIDER],

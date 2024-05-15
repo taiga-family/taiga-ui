@@ -1,0 +1,219 @@
+<tui-doc-page
+    header="Table"
+    package="ADDON-TABLE"
+    type="components"
+>
+    <ng-template pageTab>
+        <p>This module allows you to create various tables, both static and editable.</p>
+
+        <tui-doc-example
+            *ngFor="let example of examples; let index = index"
+            [component]="index + 1 | tuiComponent"
+            [content]="index + 1 | tuiExample"
+            [description]="index === 4 ? cdkVirtualScrollDescription : null"
+            [fullsize]="index === 4 || index === 5"
+            [heading]="example"
+            [id]="example | tuiKebab"
+        >
+            <ng-template #cdkVirtualScrollDescription>
+                You can use
+                <code>Table</code>
+                with
+                <code>ScrollingModule</code>
+                from
+                <a
+                    href="https://material.angular.io/cdk/scrolling/overview"
+                    rel="noreferrer"
+                    target="_blank"
+                    tuiLink
+                >
+                    &#64;angular/cdk/scrolling
+                </a>
+                .
+            </ng-template>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-accordion>
+            <tui-accordion-item [open]="true">
+                Directives
+                <ng-template tuiAccordionItemContent>
+                    <h2>table[tuiTable]</h2>
+                    <p>Parent directive that sets the table up.</p>
+                    <tui-doc-documentation [showValues]="false">
+                        <ng-template
+                            documentationPropertyMode="input"
+                            documentationPropertyName="columns"
+                            documentationPropertyType="readonly string[]"
+                        >
+                            An array of keys to set up columns order
+                        </ng-template>
+                        <ng-template
+                            documentationPropertyMode="input"
+                            documentationPropertyName="size"
+                            documentationPropertyType="TuiSizeS | TuiSizeL"
+                        >
+                            Cells size
+                        </ng-template>
+                        <ng-template
+                            documentationPropertyMode="input-output"
+                            documentationPropertyName="sorter"
+                            documentationPropertyType="TuiComparator<T>"
+                        >
+                            Sort function (basic JavaScript array sort API)
+                        </ng-template>
+                        <ng-template
+                            documentationPropertyMode="input-output"
+                            documentationPropertyName="direction"
+                            documentationPropertyType="-1 | 1"
+                        >
+                            Direction for sorting
+                        </ng-template>
+                    </tui-doc-documentation>
+
+                    <hr />
+
+                    <h2>thead[tuiThead]</h2>
+                    <p>
+                        Used on
+                        <code>thead</code>
+                        to make it sticky
+                    </p>
+
+                    <hr />
+
+                    <h2>tr[tuiThGroup]</h2>
+                    <p>
+                        Used inside
+                        <code>thead</code>
+                        to layout headings for the columns. You can have multiple rows and use
+                        <code>rowSpan</code>
+                        on
+                        <code>th</code>
+                        elements if you want to create some complex heading for your table.
+                    </p>
+
+                    <hr />
+
+                    <h2>th[tuiTh]</h2>
+                    <p>
+                        Used inside
+                        <code>tr[tuiThGroup]</code>
+                        to style heading cells.
+                    </p>
+                    <tui-doc-documentation [showValues]="false">
+                        <ng-template
+                            documentationPropertyMode="input"
+                            documentationPropertyName="resizable"
+                            documentationPropertyType="boolean"
+                        >
+                            Makes this column resizable
+                        </ng-template>
+                        <ng-template
+                            documentationPropertyMode="input"
+                            documentationPropertyName="sorter"
+                            documentationPropertyType="TuiComparator<T> | null"
+                        >
+                            Sorter function for this column
+                        </ng-template>
+                        <ng-template
+                            documentationPropertyMode="input"
+                            documentationPropertyName="sticky"
+                            documentationPropertyType="boolean"
+                        >
+                            Makes heading cell horizontally sticky
+                        </ng-template>
+                    </tui-doc-documentation>
+
+                    <hr />
+
+                    <h2>tbody[tuiTbody]</h2>
+                    <p>
+                        Sets up a group of data. You can have multiple
+                        <code>tbody</code>
+                        inside your table.
+                    </p>
+                    <tui-doc-documentation [showValues]="false">
+                        <ng-template
+                            documentationPropertyMode="input"
+                            documentationPropertyName="data"
+                            documentationPropertyType="readonly T[]"
+                        >
+                            Data to display
+                        </ng-template>
+                        <ng-template
+                            documentationPropertyMode="input"
+                            documentationPropertyName="heading"
+                            documentationPropertyType="PolymorpheusContent"
+                        >
+                            Optional heading content for the group that makes it collapsable
+                        </ng-template>
+                        <ng-template
+                            documentationPropertyMode="input-output"
+                            documentationPropertyName="open"
+                            documentationPropertyType="boolean"
+                        >
+                            Open/collapsed state of the group
+                        </ng-template>
+                    </tui-doc-documentation>
+
+                    <hr />
+
+                    <h2>tr[tuiTr]</h2>
+                    <p>
+                        Used inside
+                        <code>tbody</code>
+                        to layout cells.
+                    </p>
+
+                    <hr />
+
+                    <h2>td[tuiTd] or th[tuiTd]</h2>
+                    <p>
+                        A cell directive to be placed in
+                        <code>tr</code>
+                        of
+                        <code>tbody</code>
+                        . Use it on
+                        <code>th</code>
+                        if you want to make a sticky column
+                    </p>
+                </ng-template>
+            </tui-accordion-item>
+            <tui-accordion-item>
+                Structural directives
+                <ng-template tuiAccordionItemContent>
+                    <h2>*tuiHead="key"</h2>
+                    <p>
+                        Used to define template for
+                        <em>heading</em>
+                        for particular key
+                    </p>
+                    <p>
+                        Goes inside
+                        <code>tr</code>
+                        element inside
+                        <code>thead</code>
+                    </p>
+
+                    <hr />
+
+                    <h2>*tuiCell="key"</h2>
+                    <p>
+                        Used to define template for
+                        <em>cell</em>
+                        for particular key
+                    </p>
+                    <p>
+                        Goes inside
+                        <code>tr</code>
+                        element
+                    </p>
+                </ng-template>
+            </tui-accordion-item>
+        </tui-accordion>
+    </ng-template>
+
+    <tui-setup *pageTab />
+</tui-doc-page>

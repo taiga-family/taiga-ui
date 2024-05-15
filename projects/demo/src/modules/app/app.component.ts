@@ -8,7 +8,7 @@ import {LOCAL_STORAGE} from '@ng-web-apis/common';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {TuiDocMainModule, TuiLanguageSwitcherComponent} from '@taiga-ui/addon-doc';
 import {TuiSheetModule} from '@taiga-ui/addon-mobile';
-import {TuiTableBarsHostModule} from '@taiga-ui/addon-tablebars';
+import {TuiTableBarsHostComponent} from '@taiga-ui/addon-tablebars';
 import {TuiLinkDirective, TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {distinctUntilChanged, filter, map} from 'rxjs';
 
@@ -32,7 +32,7 @@ import {TUI_VERSION_MANAGER_PROVIDERS} from './version-manager/version-manager.p
         VersionManagerModule,
         TuiSheetModule,
         CustomHostComponent,
-        TuiTableBarsHostModule,
+        TuiTableBarsHostComponent,
         TuiTextfieldControllerModule,
     ],
     templateUrl: './app.template.html',

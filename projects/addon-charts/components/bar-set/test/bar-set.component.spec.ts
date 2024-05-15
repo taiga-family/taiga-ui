@@ -2,7 +2,7 @@ import {Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
-import {TuiBarSetComponent, TuiBarSetModule} from '@taiga-ui/addon-charts';
+import {TuiBarSetComponent} from '@taiga-ui/addon-charts';
 
 describe('BarSet', () => {
     @Component({
@@ -26,7 +26,7 @@ describe('BarSet', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TuiBarSetModule],
+            imports: [TuiBarSetComponent],
             declarations: [TestComponent],
         });
         await TestBed.compileComponents();

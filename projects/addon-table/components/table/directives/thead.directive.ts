@@ -7,6 +7,7 @@ import {
 import {TUI_STUCK, TUI_STUCK_PROVIDER} from '../providers/stuck.provider';
 
 @Directive({
+    standalone: true,
     selector: 'thead[tuiThead]',
     providers: [
         TUI_STUCK_PROVIDER,
