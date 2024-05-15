@@ -1,12 +1,15 @@
 import type {PipeTransform} from '@angular/core';
 import {inject, Pipe} from '@angular/core';
-import type {TuiNumberFormatSettings} from '@taiga-ui/core/interfaces';
 import {TUI_NUMBER_FORMAT} from '@taiga-ui/core/tokens';
+import type {TuiNumberFormatSettings} from '@taiga-ui/core/types';
 import {tuiFormatNumber} from '@taiga-ui/core/utils/format';
 import type {Observable} from 'rxjs';
 import {map} from 'rxjs';
 
-@Pipe({name: 'tuiFormatNumber'})
+@Pipe({
+    standalone: true,
+    name: 'tuiFormatNumber',
+})
 export class TuiFormatNumberPipe implements PipeTransform {
     private readonly numberFormat = inject(TUI_NUMBER_FORMAT);
 

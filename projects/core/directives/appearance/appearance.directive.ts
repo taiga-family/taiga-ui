@@ -1,5 +1,5 @@
 import {Directive, inject, Input} from '@angular/core';
-import type {TuiInteractiveState} from '@taiga-ui/core/interfaces';
+import type {TuiInteractiveState} from '@taiga-ui/core/types';
 
 import {TUI_APPEARANCE_OPTIONS} from './appearance.options';
 

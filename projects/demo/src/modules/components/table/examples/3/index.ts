@@ -14,7 +14,7 @@ import {
     TuiValidatorDirective,
 } from '@taiga-ui/cdk';
 import {
-    TuiFormatNumberPipeModule,
+    TuiFormatNumberPipe,
     TuiScrollbarComponent,
     TuiSvgComponent,
 } from '@taiga-ui/core';
@@ -50,7 +50,7 @@ interface Item {
         NgForOf,
         TuiLetDirective,
         TuiScrollbarComponent,
-        TuiFormatNumberPipeModule,
+        TuiFormatNumberPipe,
         AsyncPipe,
         TuiSvgComponent,
     ],

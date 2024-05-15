@@ -24,9 +24,8 @@ import {
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
 } from '@taiga-ui/core/directives';
-import type {TuiDataListAccessor} from '@taiga-ui/core/interfaces';
 import {TUI_NOTHING_FOUND_MESSAGE, tuiAsDataListAccessor} from '@taiga-ui/core/tokens';
-import type {TuiDataListRole} from '@taiga-ui/core/types';
+import type {TuiDataListAccessor, TuiDataListRole} from '@taiga-ui/core/types';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import type {Observable} from 'rxjs';
 import {map} from 'rxjs';

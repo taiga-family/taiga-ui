@@ -8,8 +8,8 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {tuiParentAnimation} from '@taiga-ui/core/animations';
-import type {TuiPortalItem} from '@taiga-ui/core/interfaces';
 import {TuiHintService} from '@taiga-ui/core/services';
+import type {TuiPortalItem} from '@taiga-ui/core/types';
 
 @Component({
     selector: 'tui-hints-host',

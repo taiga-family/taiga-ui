@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {TUI_IS_MOBILE, TuiAutoFocusDirective} from '@taiga-ui/cdk';
 import type {TuiDialogContext} from '@taiga-ui/core';
-import {TuiAppearance, TuiButtonDirective} from '@taiga-ui/core';
+import {TuiButtonDirective} from '@taiga-ui/core';
 import {TUI_CONFIRM_WORDS} from '@taiga-ui/kit/tokens';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {
@@ -40,8 +40,8 @@ export class TuiConfirmComponent {
             POLYMORPHEUS_CONTEXT,
         );
 
-    protected get appearance(): TuiAppearance {
-        return this.isMobile ? TuiAppearance.Secondary : TuiAppearance.Flat;
+    protected get appearance(): string {
+        return this.isMobile ? 'secondary' : 'flat';
     }
 }
 

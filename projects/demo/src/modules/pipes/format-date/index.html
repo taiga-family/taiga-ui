@@ -1,0 +1,31 @@
+<tui-doc-page
+    header="FormatDate"
+    package="CORE"
+    type="pipes"
+>
+    <ng-template pageTab>
+        <p>Pipe to format timestamps/dates dynamically</p>
+        <p>
+            Differs from built-in Angular date formatting pipe because it returns an
+            <code>Observable</code>
+        </p>
+
+        <tui-doc-example
+            id="base"
+            heading="Custom service"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample: 'html,ts'"
+        />
+    </ng-template>
+
+    <tui-setup *pageTab="'Setup'">
+        <li>
+            <p>Provide custom service for formatting</p>
+
+            <tui-doc-code
+                filename="my.component.ts"
+                [code]="provide"
+            />
+        </li>
+    </tui-setup>
+</tui-doc-page>

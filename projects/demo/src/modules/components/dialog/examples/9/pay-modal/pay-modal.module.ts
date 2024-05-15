@@ -5,7 +5,7 @@ import {TuiInputCardGroupedModule} from '@taiga-ui/addon-commerce';
 import {TuiAutoFocusDirective, TuiLetDirective} from '@taiga-ui/cdk';
 import {
     TuiButtonDirective,
-    TuiFormatNumberPipeModule,
+    TuiFormatNumberPipe,
     TuiLabelDirective,
     TuiLinkDirective,
     TuiLoaderModule,
@@ -28,7 +28,7 @@ import {PayModalComponent} from './pay-modal.component';
         TuiAutoFocusDirective,
         ReactiveFormsModule,
         TuiInputCardGroupedModule,
-        TuiFormatNumberPipeModule,
+        TuiFormatNumberPipe,
         TuiTextfieldControllerModule,
         TuiLabelDirective,
         TuiCheckboxComponent,

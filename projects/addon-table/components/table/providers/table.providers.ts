@@ -9,7 +9,6 @@ import {
     TUI_TEXTFIELD_APPEARANCE_DIRECTIVE,
     TUI_TEXTFIELD_LABEL_OUTSIDE,
     TUI_TEXTFIELD_SIZE,
-    TuiAppearance,
     TuiTextfieldAppearanceDirective,
 } from '@taiga-ui/core';
 
@@ -30,7 +29,7 @@ export const TUI_TABLE_PROVIDERS = [
         useFactory: (): TuiTextfieldAppearanceDirective => {
             const directive = new TuiTextfieldAppearanceDirective();
 
-            directive.appearance = TuiAppearance.Table;
+            directive.appearance = 'table';
 
             return directive;
         },

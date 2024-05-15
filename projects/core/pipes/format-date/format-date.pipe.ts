@@ -4,6 +4,7 @@ import {TuiFormatDateService} from '@taiga-ui/core/services';
 import type {Observable} from 'rxjs';
 
 @Pipe({
+    standalone: true,
     name: 'tuiFormatDate',
 })
 export class TuiFormatDatePipe implements PipeTransform {

@@ -5,7 +5,10 @@ import {TUI_MONTHS} from '@taiga-ui/core/tokens';
 import type {Observable} from 'rxjs';
 import {map} from 'rxjs';
 
-@Pipe({name: 'tuiMonth'})
+@Pipe({
+    standalone: true,
+    name: 'tuiMonth',
+})
 export class TuiMonthPipe implements PipeTransform {
     private readonly months$ = inject(TUI_MONTHS);
 

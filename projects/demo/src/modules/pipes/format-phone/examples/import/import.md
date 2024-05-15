@@ -1,15 +1,15 @@
 ```ts
-import {TuiFormatNumberPipeModule} from '@taiga-ui/core';
+import {TuiFormatPhonePipe} from '@taiga-ui/core';
 
-//...
+// ...
 
 @Component({
   standalone: true,
   imports: [
     // ...
-    TuiFormatNumberPipeModule,
+    TuiFormatPhonePipe,
   ],
-  //  ...
+  // ...
 })
 export class MyComponent {}
 ```

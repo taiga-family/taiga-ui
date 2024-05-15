@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {
     TuiButtonDirective,
-    TuiFormatDatePipeModule,
+    TuiFormatDatePipe,
     TuiLinkDirective,
     TuiSvgComponent,
 } from '@taiga-ui/core';
@@ -19,7 +19,7 @@ import {TuiPushAlertDirective} from './push-alert.directive';
         TuiButtonDirective,
         TuiLinkDirective,
         TuiSvgComponent,
-        TuiFormatDatePipeModule,
+        TuiFormatDatePipe,
     ],
     declarations: [TuiPushComponent, TuiPushAlertComponent, TuiPushAlertDirective],
     exports: [TuiPushComponent, TuiPushAlertComponent, TuiPushAlertDirective],

@@ -1,5 +1,5 @@
 import {tuiCreateToken} from '@taiga-ui/cdk';
-import type {TuiMedia} from '@taiga-ui/core/interfaces';
+import type {TuiMedia} from '@taiga-ui/core/types';
 
 /**
  * Token for media constant

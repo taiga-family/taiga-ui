@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import type {TuiPortalItem} from '@taiga-ui/core/interfaces';
+import type {TuiPortalItem} from '@taiga-ui/core/types';
 import {BehaviorSubject} from 'rxjs';
 
 /**

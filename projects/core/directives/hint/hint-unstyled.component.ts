@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import type {TuiContext} from '@taiga-ui/cdk';
 import {tuiParentAnimation} from '@taiga-ui/core/animations';
-import type {TuiPortalItem} from '@taiga-ui/core/interfaces';
+import type {TuiPortalItem} from '@taiga-ui/core/types';
 import {POLYMORPHEUS_CONTEXT, PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 
 import {TuiHintDirective} from './hint.directive';

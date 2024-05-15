@@ -1,12 +1,26 @@
-import {Component} from '@angular/core';
+import {AsyncPipe, isPlatformBrowser} from '@angular/common';
+import {Component, inject, Injectable, PLATFORM_ID} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiFormatDateService} from '@taiga-ui/core';
+import {TuiFormatDatePipe, TuiFormatDateService} from '@taiga-ui/core';
+import {formatDistance} from 'date-fns';
+import type {Observable} from 'rxjs';
+import {map, of, timer} from 'rxjs';
 
-import {FormatService} from './service';
+@Injectable()
+export class FormatService extends TuiFormatDateService {
+    private readonly delay$ = isPlatformBrowser(inject(PLATFORM_ID))
+        ? timer(0, 1000)
+        : of(0);
+
+    public override format(timestamp: number): Observable<string> {
+        return this.delay$.pipe(map(() => formatDistance(timestamp, Date.now())));
+    }
+}
 
 @Component({
-    selector: 'tui-format-date-example-1',
+    standalone: true,
+    imports: [TuiFormatDatePipe, AsyncPipe],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
@@ -17,6 +31,6 @@ import {FormatService} from './service';
         },
     ],
 })
-export class TuiFormatDateExample1 {
+export default class ExampleComponent {
     protected readonly now = Date.now();
 }

@@ -1,0 +1,50 @@
+<tui-doc-page
+    header="FormatNumber"
+    package="CORE"
+    type="pipes"
+>
+    <ng-template pageTab>
+        <p>Pipe to format number values to separate thousands</p>
+
+        <p>
+            Number formatting can be customized by using
+            <a
+                fragment="number-format"
+                routerLink="/utils/tokens"
+                tuiLink
+            >
+                TUI_NUMBER_FORMAT
+            </a>
+        </p>
+
+        <tui-doc-example
+            id="base"
+            heading="Basic"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample: 'html,ts'"
+        />
+    </ng-template>
+
+    <ng-template pageTab>
+        <div [style.max-width.rem]="20">
+            <tui-input-number
+                tuiTextfieldSize="m"
+                class="tui-space_bottom-4"
+                [formControl]="control"
+                [tuiTextfieldLabelOutside]="true"
+            />
+            Formatted number:
+            <b>
+                {{
+                    control.value ?? 0
+                        | tuiFormatNumber
+                            : {precision, decimalMode: decimalMode, rounding, thousandSeparator, decimalSeparator}
+                        | async
+                }}
+            </b>
+        </div>
+        <number-format-documentation />
+    </ng-template>
+
+    <tui-setup *pageTab />
+</tui-doc-page>

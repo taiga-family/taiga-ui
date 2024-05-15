@@ -11,13 +11,12 @@ import {
 import type {TuiEventWith} from '@taiga-ui/cdk';
 import {TUI_IS_MOBILE, tuiInjectElement, tuiIsNativeFocused} from '@taiga-ui/cdk';
 import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
-import type {TuiDataListHost} from '@taiga-ui/core/interfaces';
 import {
     TUI_COMMON_ICONS,
     TUI_DATA_LIST_HOST,
     TUI_OPTION_CONTENT,
 } from '@taiga-ui/core/tokens';
-import type {TuiOptionRole} from '@taiga-ui/core/types';
+import type {TuiDataListHost, TuiOptionRole} from '@taiga-ui/core/types';
 import {shouldCall} from '@tinkoff/ng-event-plugins';
 
 import {TuiDataListComponent} from '../data-list.component';

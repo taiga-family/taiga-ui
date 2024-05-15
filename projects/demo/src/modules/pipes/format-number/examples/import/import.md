@@ -1,5 +1,5 @@
 ```ts
-import {TuiFormatDatePipeModule} from '@taiga-ui/core';
+import {TuiFormatNumberPipe} from '@taiga-ui/core';
 
 //...
 
@@ -7,7 +7,7 @@ import {TuiFormatDatePipeModule} from '@taiga-ui/core';
   standalone: true,
   imports: [
     // ...
-    TuiFormatDatePipeModule,
+    TuiFormatNumberPipe,
   ],
   //  ...
 })

@@ -58,6 +58,22 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {name: 'TUI_FALSE_HANDLER', moduleSpecifier: '@taiga-ui/cdk'},
     },
     {
+        from: {name: 'TuiFormatDatePipeModule', moduleSpecifier: '@taiga-ui/core'},
+        to: {name: 'TuiFormatDatePipe', moduleSpecifier: '@taiga-ui/core'},
+    },
+    {
+        from: {name: 'TuiFormatNumberPipeModule', moduleSpecifier: '@taiga-ui/core'},
+        to: {name: 'TuiFormatNumberPipe', moduleSpecifier: '@taiga-ui/core'},
+    },
+    {
+        from: {name: 'TuiFormatPhonePipeModule', moduleSpecifier: '@taiga-ui/core'},
+        to: {name: 'TuiFormatPhonePipe', moduleSpecifier: '@taiga-ui/core'},
+    },
+    {
+        from: {name: 'TuiMonthPipeModule', moduleSpecifier: '@taiga-ui/core'},
+        to: {name: 'TuiMonthPipe', moduleSpecifier: '@taiga-ui/core'},
+    },
+    {
         from: {name: 'TuiThumbnailCardModule', moduleSpecifier: '@taiga-ui/experimental'},
         to: {
             name: 'TuiThumbnailCardComponent',

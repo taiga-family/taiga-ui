@@ -20,6 +20,8 @@ import {toKebab} from './kebab.pipe';
                 <p>Add to the template:</p>
                 <tui-doc-code [code]="computedTemplate" />
             </li>
+
+            <ng-content />
         </ol>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,

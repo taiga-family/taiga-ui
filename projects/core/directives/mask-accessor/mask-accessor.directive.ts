@@ -3,6 +3,10 @@ import type {ControlValueAccessor} from '@angular/forms';
 import {DefaultValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {TUI_VALUE_ACCESSOR} from '@taiga-ui/core/tokens';
 
+/**
+ * @deprecated
+ * TODO: Remove before v4.0
+ */
 @Directive({
     selector: 'input[tuiMaskAccessor]',
     providers: [

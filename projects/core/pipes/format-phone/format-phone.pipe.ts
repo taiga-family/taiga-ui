@@ -4,7 +4,10 @@ import {Pipe} from '@angular/core';
 import {CHAR_PLUS} from '@taiga-ui/cdk';
 import {tuiFormatPhone} from '@taiga-ui/core/utils/format';
 
-@Pipe({name: 'tuiFormatPhone'})
+@Pipe({
+    standalone: true,
+    name: 'tuiFormatPhone',
+})
 export class TuiFormatPhonePipe implements PipeTransform {
     /**
      * Formats phone number string of +7XXXXXXXXXX format with adding separator symbols

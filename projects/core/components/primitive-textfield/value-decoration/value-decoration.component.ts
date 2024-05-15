@@ -9,7 +9,6 @@ import {
     ViewChild,
 } from '@angular/core';
 import {TUI_FOCUSABLE_ITEM_ACCESSOR, TUI_FONTS_READY} from '@taiga-ui/cdk';
-import {TuiAppearance} from '@taiga-ui/core/enums';
 import {BehaviorSubject, delay, distinctUntilChanged, filter, map, merge} from 'rxjs';
 
 import type {TuiPrimitiveTextfield} from '../primitive-textfield-types';
@@ -48,7 +47,7 @@ export class TuiValueDecorationComponent implements DoCheck {
 
     @HostBinding('class._table')
     protected get isContextTable(): boolean {
-        return this.textfield.appearance === TuiAppearance.Table;
+        return this.textfield.appearance === 'table';
     }
 
     @HostBinding('class._filler')
