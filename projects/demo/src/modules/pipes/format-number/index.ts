@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDemoModule} from '@demo/utils';
+import {TuiDemo} from '@demo/utils';
 import {tuiProvide} from '@taiga-ui/cdk';
 import {
     TuiFormatNumberPipe,
@@ -18,7 +18,7 @@ import {NumberFormatDocumentationModule} from '../../components/abstract/number-
 @Component({
     standalone: true,
     imports: [
-        TuiDemoModule,
+        TuiDemo,
         TuiFormatNumberPipe,
         TuiInputNumberModule,
         TuiTextfieldControllerModule,

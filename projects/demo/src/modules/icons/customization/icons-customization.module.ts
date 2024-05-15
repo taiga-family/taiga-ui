@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {TuiDemoModule} from '@demo/utils';
+import {TuiDemo} from '@demo/utils';
 import {tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiButtonDirective,
@@ -25,7 +25,7 @@ import {IconsCustomizationComponent} from './icons-customization.component';
         CommonModule,
         FormsModule,
         ClipboardModule,
-        TuiDemoModule,
+        TuiDemo,
         TuiLinkDirective,
         TuiExpandModule,
         TuiButtonDirective,

@@ -3,7 +3,7 @@ import {KeyValuePipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDemoModule} from '@demo/utils';
+import {TuiDemo} from '@demo/utils';
 import {type TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiLinkDirective} from '@taiga-ui/core';
 
@@ -12,7 +12,7 @@ import {TuiVariablesExample1} from './examples/1';
 @Component({
     standalone: true,
     imports: [
-        TuiDemoModule,
+        TuiDemo,
         TuiLinkDirective,
         KeyValuePipe,
         ClipboardModule,
