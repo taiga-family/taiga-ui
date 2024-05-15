@@ -891,4 +891,14 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/addon-doc',
         },
     },
+    {
+        from: {
+            name: 'TuiAppBarModule',
+            moduleSpecifier: '@taiga-ui/layout',
+        },
+        to: {
+            name: 'TuiAppBar',
+            moduleSpecifier: '@taiga-ui/layout',
+        },
+    },
 ];

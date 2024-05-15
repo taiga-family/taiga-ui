@@ -8,4 +8,4 @@ import {TuiAppBarBackComponent} from './app-bar-back.component';
     imports: [TuiAppBarComponent, TuiAppBarDirective, TuiAppBarBackComponent],
     exports: [TuiAppBarComponent, TuiAppBarDirective, TuiAppBarBackComponent],
 })
-export class TuiAppBarModule {}
+export class TuiAppBar {}

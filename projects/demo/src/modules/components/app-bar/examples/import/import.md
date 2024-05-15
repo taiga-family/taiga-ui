@@ -1,5 +1,5 @@
 ```ts
-import {TuiAppBarModule} from '@taiga-ui/experimental';
+import {TuiAppBar} from '@taiga-ui/layout';
 
 // ...
 
@@ -7,7 +7,7 @@ import {TuiAppBarModule} from '@taiga-ui/experimental';
   standalone: true,
   imports: [
     // ...
-    TuiAppBarModule,
+    TuiAppBar,
   ],
   // ...
 })

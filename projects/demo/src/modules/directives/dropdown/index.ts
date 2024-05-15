@@ -1,7 +1,7 @@
 import {Component, forwardRef} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDemoModule} from '@demo/utils';
+import {TuiDemo} from '@demo/utils';
 import {TuiActiveZoneDirective, TuiObscuredDirective} from '@taiga-ui/cdk';
 import {
     TuiButtonDirective,
@@ -17,7 +17,7 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/inherited-docum
 @Component({
     standalone: true,
     imports: [
-        TuiDemoModule,
+        TuiDemo,
         TuiDropdownModule,
         TuiNotificationModule,
         TuiActiveZoneDirective,
