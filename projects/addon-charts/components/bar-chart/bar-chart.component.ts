@@ -1,3 +1,4 @@
+import {AsyncPipe, NgForOf} from '@angular/common';
 import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
@@ -6,11 +7,13 @@ import {
     Input,
     ViewChildren,
 } from '@angular/core';
+import {TuiBarSetComponent} from '@taiga-ui/addon-charts/components/bar-set';
 import type {TuiContext, TuiMapper} from '@taiga-ui/cdk';
-import {EMPTY_QUERY, TuiIdService, tuiPure, tuiSum} from '@taiga-ui/cdk';
+import {EMPTY_QUERY, TuiIdService, TuiMapperPipe, tuiPure, tuiSum} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {
     TuiHintHoverDirective,
+    TuiHintModule,
     TuiHintOptionsDirective,
     tuiHintOptionsProvider,
 } from '@taiga-ui/core';
@@ -18,7 +21,9 @@ import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import type {Observable} from 'rxjs';
 
 @Component({
+    standalone: true,
     selector: 'tui-bar-chart',
+    imports: [NgForOf, TuiHintModule, TuiMapperPipe, AsyncPipe, TuiBarSetComponent],
     templateUrl: './bar-chart.template.html',
     styleUrls: ['./bar-chart.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

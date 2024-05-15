@@ -1,5 +1,5 @@
 ```ts
-import {TuiBarSetModule} from '@taiga-ui/addon-charts';
+import {TuiBarSetComponent} from '@taiga-ui/addon-charts';
 
 // ...
 
@@ -7,7 +7,7 @@ import {TuiBarSetModule} from '@taiga-ui/addon-charts';
   standalone: true,
   imports: [
     // ...
-    TuiBarSetModule,
+    TuiBarSetComponent,
   ],
 })
 // ...
