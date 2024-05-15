@@ -3,11 +3,8 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {
-    TuiAddonDocModule,
-    TuiDocCopyModule,
-    tuiGenerateRoutes,
-} from '@taiga-ui/addon-doc';
+import {TuiDemoModule} from '@demo/utils';
+import {tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiButtonDirective,
     TuiExpandModule,
@@ -28,7 +25,7 @@ import {IconsCustomizationComponent} from './icons-customization.component';
         CommonModule,
         FormsModule,
         ClipboardModule,
-        TuiDocCopyModule,
+        TuiDemoModule,
         TuiLinkDirective,
         TuiExpandModule,
         TuiButtonDirective,
@@ -36,7 +33,6 @@ import {IconsCustomizationComponent} from './icons-customization.component';
         TuiNotificationModule,
         TuiTextfieldControllerModule,
         TuiHintModule,
-        TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(IconsCustomizationComponent)),
         TuiSvgComponent,
     ],

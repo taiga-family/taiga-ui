@@ -865,4 +865,14 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/addon-charts',
         },
     },
+    {
+        from: {
+            name: 'TuiDocCopyModule',
+            moduleSpecifier: '@taiga-ui/addon-doc',
+        },
+        to: {
+            name: 'TuiDocCopyComponent',
+            moduleSpecifier: '@taiga-ui/addon-doc',
+        },
+    },
 ];

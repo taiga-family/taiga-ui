@@ -8,7 +8,7 @@ import {TuiTabsModule} from '@taiga-ui/kit';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiDocCodeModule} from '../code/code.module';
-import {TuiDocCopyModule} from '../copy/copy.module';
+import {TuiDocCopyComponent} from '../copy/copy.component';
 import {TuiDocExampleComponent} from './example.component';
 import {TuiDocExampleGetTabsPipe} from './example-get-tabs.pipe';
 
@@ -18,7 +18,7 @@ import {TuiDocExampleGetTabsPipe} from './example-get-tabs.pipe';
         ClipboardModule,
         TuiTabsModule,
         TuiButtonDirective,
-        TuiDocCopyModule,
+        TuiDocCopyComponent,
         TuiDocCodeModule,
         PolymorpheusModule,
         TuiMapperPipe,

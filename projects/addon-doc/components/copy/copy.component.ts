@@ -1,5 +1,7 @@
+import {AsyncPipe, NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {TUI_FALSE_HANDLER, tuiPure} from '@taiga-ui/cdk';
+import {TuiButtonDirective} from '@taiga-ui/core';
 import {TUI_COPY_TEXTS} from '@taiga-ui/kit';
 import type {Observable} from 'rxjs';
 import {map, startWith, Subject, switchMap, timer} from 'rxjs';
@@ -7,7 +9,9 @@ import {map, startWith, Subject, switchMap, timer} from 'rxjs';
 const COPIED_TIMEOUT = 1500;
 
 @Component({
+    standalone: true,
     selector: 'tui-doc-copy',
+    imports: [NgIf, AsyncPipe, TuiButtonDirective],
     templateUrl: './copy.template.html',
     styleUrls: ['./copy.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
