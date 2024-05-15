@@ -26,6 +26,11 @@ jobs:
       - uses: taiga-family/ci/actions/setup/node@v1.55.18
       - run: npx nx prerender demo
       - run: tree ${{ env.DIST }} -P '*.html'
+      - name: Bundle size tracking
+        run: npx --yes bundlemon --config .github/.bundlemonrc.json
+        continue-on-error: true
+        env:
+          CI_COMMIT_SHA: ${{ env.CI_COMMIT_SHA }}
 
 concurrency:
   group: build-${{ github.workflow }}-${{ github.ref }}
