@@ -20,6 +20,10 @@ const DEFAULT_MOCKS = [
         ],
         mockImage: `${__dirname}/../stubs/web-api.svg`,
     },
+    {
+        patterns: [/.*.mp4/],
+        mockImage: `${__dirname}/../stubs/angular-logo.mp4`,
+    },
 ] as const;
 
 export async function tuiMockImages(
