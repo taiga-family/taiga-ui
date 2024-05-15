@@ -1,21 +1,31 @@
+import {AsyncPipe, NgIf} from '@angular/common';
 import type {TemplateRef} from '@angular/core';
 import {Component, inject, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiPreviewDialogService} from '@taiga-ui/addon-preview';
+import {TuiPreview, TuiPreviewDialogService} from '@taiga-ui/addon-preview';
 import {tuiIsPresent} from '@taiga-ui/cdk';
 import type {TuiDialogContext} from '@taiga-ui/core';
+import {TuiButtonDirective, TuiLoaderModule, TuiSvgComponent} from '@taiga-ui/core';
 import type {Observable} from 'rxjs';
 import {BehaviorSubject, filter, map, of, startWith, switchMap, timer} from 'rxjs';
 
 @Component({
-    selector: 'tui-preview-example-3',
+    standalone: true,
+    imports: [
+        TuiButtonDirective,
+        TuiPreview,
+        AsyncPipe,
+        NgIf,
+        TuiSvgComponent,
+        TuiLoaderModule,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiPreviewExample3 {
+export default class ExampleComponent {
     private readonly previewDialogService = inject(TuiPreviewDialogService);
 
     @ViewChild('preview')

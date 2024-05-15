@@ -15,7 +15,7 @@ test.describe('Preview', () => {
         });
 
         test('Preview can be zoomed via wheel scroll', async ({page}) => {
-            const example = documentationPage.getExample('#default');
+            const example = documentationPage.getExample('#full-preview');
             const preview = page.locator('tui-preview');
 
             await example.getByRole('button').click();
@@ -29,7 +29,10 @@ test.describe('Preview', () => {
         });
 
         test('No preview available', async ({page}) => {
-            const example = documentationPage.getExample('#loading');
+            const example = documentationPage.getExample(
+                '#with-loading-and-unavailable-image',
+            );
+
             const preview = page.locator('tui-preview');
 
             await example.getByRole('button').click();

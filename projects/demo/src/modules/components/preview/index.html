@@ -1,0 +1,28 @@
+<tui-doc-page
+    header="Preview"
+    package="ADDON-PREVIEW"
+    type="components"
+>
+    <ng-template pageTab>
+        <p>
+            Preview component allows to open modal for viewing some document and to work with it (download, zoom, rotate
+            etc)
+        </p>
+
+        <p>As a document you can provide images, embeds and other arbitrary content.</p>
+
+        <tui-notification class="tui-space_bottom-4">
+            The component automatically adjusts to the mobile device
+        </tui-notification>
+
+        <tui-doc-example
+            *ngFor="let example of examples; let index = index"
+            [component]="index + 1 | tuiComponent"
+            [content]="index + 1 | tuiExample"
+            [heading]="example"
+            [id]="example | tuiKebab"
+        />
+    </ng-template>
+
+    <tui-setup *pageTab />
+</tui-doc-page>

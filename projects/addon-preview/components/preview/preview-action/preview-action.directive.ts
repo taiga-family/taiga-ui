@@ -2,6 +2,7 @@ import {Directive} from '@angular/core';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core';
 
 @Directive({
+    standalone: true,
     selector: '[tuiPreviewAction]',
     providers: [
         tuiButtonOptionsProvider({
