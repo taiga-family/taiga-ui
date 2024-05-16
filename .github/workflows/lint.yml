@@ -10,9 +10,9 @@ jobs:
     if: ${{ !contains(github.head_ref, 'release/') }}
     runs-on: ubuntu-latest
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.56.3
-      - uses: taiga-family/ci/actions/setup/variables@v1.56.3
-      - uses: taiga-family/ci/actions/setup/node@v1.56.3
+      - uses: taiga-family/ci/actions/setup/checkout@v1.57.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.57.0
+      - uses: taiga-family/ci/actions/setup/node@v1.57.0
       - run: npm run typecheck
       - run: npm run cspell -- --no-progress
       - run: |
@@ -25,7 +25,7 @@ jobs:
               npm run stylelint
               npm run lint
           fi
-      - uses: taiga-family/ci/actions/auto/push@v1.56.3
+      - uses: taiga-family/ci/actions/auto/push@v1.57.0
         with:
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
 
