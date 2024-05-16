@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
-import {TuiNotificationModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
+import {TuiNotificationComponent, TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {TuiInputMonthModule} from '@taiga-ui/kit';
 
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
@@ -20,7 +20,7 @@ import {ExampleInputMonthComponent} from './input-month.component';
         InheritedDocumentationModule,
         TuiInputMonthModule,
         TuiTextfieldControllerModule,
-        TuiNotificationModule,
+        TuiNotificationComponent,
         RouterModule.forChild(tuiGenerateRoutes(ExampleInputMonthComponent)),
     ],
     declarations: [

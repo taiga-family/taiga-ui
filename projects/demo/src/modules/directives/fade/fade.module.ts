@@ -4,7 +4,7 @@ import {TuiSetupComponent} from '@demo/utils';
 import {tuiGetDocModules} from '@taiga-ui/addon-doc';
 import {
     TuiLinkDirective,
-    TuiNotificationModule,
+    TuiNotificationComponent,
     TuiScrollableDirective,
     TuiScrollbarComponent,
 } from '@taiga-ui/core';
@@ -19,7 +19,7 @@ import {ExampleTuiFadeComponent} from './fade.component';
     imports: [
         CommonModule,
         TuiFadeDirective,
-        TuiNotificationModule,
+        TuiNotificationComponent,
         TuiScrollbarComponent,
         TuiLinkDirective,
         tuiGetDocModules(ExampleTuiFadeComponent),

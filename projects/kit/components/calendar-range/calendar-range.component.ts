@@ -22,7 +22,7 @@ import {
     tuiWatch,
 } from '@taiga-ui/cdk';
 import type {TuiMarkerHandler, TuiWithOptionalMinMax} from '@taiga-ui/core';
-import {TUI_COMMON_ICONS, TUI_DEFAULT_MARKER_HANDLER} from '@taiga-ui/core';
+import {TUI_COMMON_ICONS} from '@taiga-ui/core';
 import type {TuiDayRangePeriod} from '@taiga-ui/kit/classes';
 import {MAX_DAY_RANGE_LENGTH_MAPPER} from '@taiga-ui/kit/constants';
 import {TUI_CALENDAR_DATE_STREAM, TUI_OTHER_DATE_TEXT} from '@taiga-ui/kit/tokens';
@@ -47,7 +47,7 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
     public disabledItemHandler: TuiBooleanHandler<TuiDay> = TUI_FALSE_HANDLER;
 
     @Input()
-    public markerHandler: TuiMarkerHandler = TUI_DEFAULT_MARKER_HANDLER;
+    public markerHandler: TuiMarkerHandler | null = null;
 
     @Input()
     public items: readonly TuiDayRangePeriod[] = [];

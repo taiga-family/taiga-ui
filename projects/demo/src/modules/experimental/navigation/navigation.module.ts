@@ -12,7 +12,7 @@ import {
     TuiExpandModule,
     TuiIconComponent,
     TuiLinkDirective,
-    TuiNotificationModule,
+    TuiNotificationComponent,
     TuiSurfaceDirective,
     TuiTitleDirective,
 } from '@taiga-ui/core';
@@ -39,7 +39,7 @@ import {ExampleTuiNavigationComponent} from './navigation.component';
         tuiGetDocModules(ExampleTuiNavigationComponent),
         CommonModule,
         FormsModule,
-        TuiNotificationModule,
+        TuiNotificationComponent,
         TuiNavigationModule,
         TuiAvatarComponent,
         TuiButtonDirective,

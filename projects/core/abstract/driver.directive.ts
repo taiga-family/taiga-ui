@@ -7,7 +7,7 @@ import {TuiDriver} from './driver';
 import {TuiVehicle} from './vehicle';
 
 @Directive()
-export abstract class AbstractTuiDriverDirective implements OnInit {
+export abstract class TuiDriverDirective implements OnInit {
     public abstract type: string;
 
     private readonly destroyRef = inject(DestroyRef);

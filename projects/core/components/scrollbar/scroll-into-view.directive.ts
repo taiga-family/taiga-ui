@@ -1,8 +1,9 @@
 import {DestroyRef, Directive, inject, Input} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {tuiInjectElement} from '@taiga-ui/cdk';
-import {TUI_SCROLL_INTO_VIEW} from '@taiga-ui/core/constants';
 import {timer} from 'rxjs';
+
+import {TUI_SCROLL_INTO_VIEW} from './scrollbar.component';
 
 /**
  * Directive scrolls element into view inside tui-scrollbar

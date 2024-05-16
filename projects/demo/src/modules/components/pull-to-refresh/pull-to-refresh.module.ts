@@ -6,7 +6,7 @@ import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiPullToRefreshModule} from '@taiga-ui/addon-mobile';
 import {
     TuiButtonDirective,
-    TuiNotificationModule,
+    TuiNotificationComponent,
     TuiScrollbarComponent,
 } from '@taiga-ui/core';
 
@@ -19,7 +19,7 @@ import {ExampleTuiPullToRefreshComponent} from './pull-to-refresh.component';
         CommonModule,
         TuiPullToRefreshModule,
         TuiButtonDirective,
-        TuiNotificationModule,
+        TuiNotificationComponent,
         TuiScrollbarComponent,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiPullToRefreshComponent)),

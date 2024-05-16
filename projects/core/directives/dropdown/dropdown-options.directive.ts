@@ -1,12 +1,11 @@
 import type {FactoryProvider} from '@angular/core';
 import {Directive, inject, Input, Optional, SkipSelf} from '@angular/core';
 import {tuiCreateToken, tuiProvide} from '@taiga-ui/cdk';
-import type {
-    TuiDropdownAlign,
-    TuiDropdownWidth,
-    TuiVerticalDirection,
-} from '@taiga-ui/core/types';
+import type {TuiVerticalDirection} from '@taiga-ui/core/types';
 import {tuiOverrideOptions} from '@taiga-ui/core/utils';
+
+export type TuiDropdownAlign = 'center' | 'left' | 'right';
+export type TuiDropdownWidth = 'auto' | 'fixed' | 'min';
 
 export interface TuiDropdownOptions {
     readonly align: TuiDropdownAlign;

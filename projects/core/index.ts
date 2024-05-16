@@ -1,7 +1,6 @@
 export * from '@taiga-ui/core/abstract';
 export * from '@taiga-ui/core/animations';
 export * from '@taiga-ui/core/components';
-export * from '@taiga-ui/core/constants';
 export * from '@taiga-ui/core/directives';
 export * from '@taiga-ui/core/pipes';
 export * from '@taiga-ui/core/services';

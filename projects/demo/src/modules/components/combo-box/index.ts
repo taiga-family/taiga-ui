@@ -14,7 +14,7 @@ import {
 import {
     TuiDropdownModule,
     TuiHintModule,
-    TuiNotificationModule,
+    TuiNotificationComponent,
     TuiSvgComponent,
     TuiTextfieldControllerModule,
     type TuiValueContentContext,
@@ -44,7 +44,7 @@ class Account {
         ReactiveFormsModule,
         TuiComboBoxModule,
         TuiDataListWrapperModule,
-        TuiNotificationModule,
+        TuiNotificationComponent,
         TuiDropdownModule,
         TuiHintModule,
         TuiTextfieldControllerModule,

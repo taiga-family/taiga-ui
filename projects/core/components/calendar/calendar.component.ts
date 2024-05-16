@@ -1,3 +1,4 @@
+import {NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -5,16 +6,23 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import type {TuiBooleanHandler, TuiDayRange, TuiMapper, TuiYear} from '@taiga-ui/cdk';
 import {
     TUI_FALSE_HANDLER,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
+    TuiBooleanHandler,
     TuiDay,
+    TuiDayRange,
+    TuiMapper,
+    TuiMapperPipe,
     TuiMonth,
     tuiNullableSame,
+    TuiYear,
 } from '@taiga-ui/cdk';
-import {TUI_DEFAULT_MARKER_HANDLER} from '@taiga-ui/core/constants';
+import {TuiPrimitiveCalendarModule} from '@taiga-ui/core/components/primitive-calendar';
+import {TuiPrimitiveYearMonthPaginationModule} from '@taiga-ui/core/components/primitive-year-month-pagination';
+import {TuiPrimitiveYearPickerModule} from '@taiga-ui/core/components/primitive-year-picker';
+import {TuiScrollbarComponent} from '@taiga-ui/core/components/scrollbar';
 import type {
     TuiCalendarView,
     TuiMarkerHandler,
@@ -22,10 +30,19 @@ import type {
 } from '@taiga-ui/core/types';
 
 @Component({
+    standalone: true,
     selector: 'tui-calendar',
     templateUrl: './calendar.template.html',
     styleUrls: ['./calendar.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        NgIf,
+        TuiScrollbarComponent,
+        TuiPrimitiveYearPickerModule,
+        TuiPrimitiveYearMonthPaginationModule,
+        TuiPrimitiveCalendarModule,
+        TuiMapperPipe,
+    ],
 })
 export class TuiCalendarComponent implements TuiWithOptionalMinMax<TuiDay> {
     private day: TuiDay | TuiDayRange | readonly TuiDay[] | null = null;
@@ -57,7 +74,7 @@ export class TuiCalendarComponent implements TuiWithOptionalMinMax<TuiDay> {
     public showAdjacent = true;
 
     @Input()
-    public markerHandler: TuiMarkerHandler = TUI_DEFAULT_MARKER_HANDLER;
+    public markerHandler: TuiMarkerHandler | null = null;
 
     @Output()
     public readonly dayClick = new EventEmitter<TuiDay>();

@@ -15,7 +15,6 @@ import {
 } from '@taiga-ui/cdk';
 import type {TuiMarkerHandler} from '@taiga-ui/core';
 import {
-    TUI_DEFAULT_MARKER_HANDLER,
     TuiDropdownModule,
     TuiHintModule,
     TuiLinkDirective,
@@ -93,11 +92,10 @@ export default class ExampleComponent extends AbstractExampleTuiControl {
     ];
 
     protected readonly markerHandlerVariants: readonly TuiMarkerHandler[] = [
-        TUI_DEFAULT_MARKER_HANDLER,
         (day: TuiDay) => (day.day % 2 === 0 ? TWO_DOTS : ONE_DOT),
     ];
 
-    protected markerHandler: TuiMarkerHandler = this.markerHandlerVariants[0];
+    protected markerHandler: TuiMarkerHandler | null = null;
 
     protected items = this.itemsVariants[0];
 }

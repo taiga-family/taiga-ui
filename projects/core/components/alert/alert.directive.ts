@@ -5,6 +5,7 @@ import type {TuiAlertOptions} from './alert.interfaces';
 import {TuiAlertService} from './alert.service';
 
 @Directive({
+    standalone: true,
     selector: 'ng-template[tuiAlert]',
     inputs: ['options: tuiAlertOptions', 'open: tuiAlert'],
     outputs: ['openChange: tuiAlertChange'],

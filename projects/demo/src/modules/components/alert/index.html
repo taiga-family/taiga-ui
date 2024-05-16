@@ -16,72 +16,25 @@
         </p>
 
         <tui-doc-example
-            id="text"
-            heading="Text"
-            [content]="example1"
-        >
-            <tui-alerts-example-1 />
-        </tui-doc-example>
+            *ngFor="let example of examples; let index = index"
+            [component]="index + 1 | tuiComponent"
+            [content]="index + 1 | tuiExample: 'html,ts'"
+            [description]="index === 6 ? concurrency : ''"
+            [heading]="example"
+            [id]="example | tuiKebab"
+        />
 
-        <tui-doc-example
-            id="template"
-            heading="Template"
-            [content]="example2"
-        >
-            <tui-alerts-example-2 />
-        </tui-doc-example>
-
-        <tui-doc-example
-            id="component"
-            heading="Component"
-            [content]="example3"
-        >
-            <tui-alerts-example-3 />
-        </tui-doc-example>
-
-        <tui-doc-example
-            id="data"
-            heading="Component with data"
-            [content]="example4"
-        >
-            <tui-alerts-example-4 />
-        </tui-doc-example>
-
-        <tui-doc-example
-            id="label"
-            heading="Component with custom label"
-            [content]="example5"
-        >
-            <tui-alerts-example-5 />
-        </tui-doc-example>
-
-        <tui-doc-example
-            id="directive"
-            heading="Directive"
-            [content]="example6"
-        >
-            <tui-alerts-example-6 />
-        </tui-doc-example>
-
-        <tui-doc-example
-            id="concurrency"
-            heading="Concurrency limit"
-            [component]="7 | tuiComponent"
-            [content]="7 | tuiExample: 'html,ts'"
-            [description]="concurrencyDescription"
-        >
-            <ng-template #concurrencyDescription>
-                This example demonstrates how to limit maximum number of alert being shown to concurrently (it uses
-                <a
-                    href="https://rxjs.dev/api/index/function/mergeAll"
-                    target="_blank"
-                    tuiLink
-                >
-                    <code>mergeAll</code>
-                </a>
-                RxJS-operator to achieve it). Just frequently click on the button to see it in action.
-            </ng-template>
-        </tui-doc-example>
+        <ng-template #concurrency>
+            This example demonstrates how to limit maximum number of alert being shown to concurrently (it uses
+            <a
+                href="https://rxjs.dev/api/index/function/mergeAll"
+                target="_blank"
+                tuiLink
+            >
+                <code>mergeAll</code>
+            </a>
+            RxJS-operator to achieve it). Just frequently click on the button to see it in action.
+        </ng-template>
     </ng-template>
 
     <ng-template pageTab>

@@ -10,7 +10,7 @@ import {
     TuiDropdownModule,
     TuiHintModule,
     TuiLinkDirective,
-    TuiNotificationModule,
+    TuiNotificationComponent,
 } from '@taiga-ui/core';
 import {
     TuiChevronDirective,
@@ -29,7 +29,7 @@ import {ExampleTuiLineClampComponent} from './line-clamp.component';
 @NgModule({
     imports: [
         CommonModule,
-        TuiNotificationModule,
+        TuiNotificationComponent,
         TuiLineClampModule,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiLineClampComponent)),

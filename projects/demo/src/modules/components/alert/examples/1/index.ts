@@ -5,13 +5,12 @@ import {TuiAlertService, TuiButtonDirective} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
-    selector: 'tui-alerts-example-1',
     imports: [TuiButtonDirective],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class TuiAlertExampleComponent1 {
+export default class ExampleComponent {
     private readonly alerts = inject(TuiAlertService);
 
     protected showNotification(): void {

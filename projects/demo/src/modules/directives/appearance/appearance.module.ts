@@ -7,7 +7,7 @@ import {
     TuiAppearanceDirective,
     TuiButtonDirective,
     TuiDropdownModule,
-    TuiNotificationModule,
+    TuiNotificationComponent,
 } from '@taiga-ui/core';
 
 import {ExampleTuiAppearanceComponent} from './appearance.component';
@@ -20,7 +20,7 @@ import {TuiAppearanceExample3} from './examples/3';
         CommonModule,
         FormsModule,
         TuiAppearanceDirective,
-        TuiNotificationModule,
+        TuiNotificationComponent,
         TuiButtonDirective,
         TuiDropdownModule,
         tuiGetDocModules(ExampleTuiAppearanceComponent),

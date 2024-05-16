@@ -1,10 +1,17 @@
 import type {InjectionToken, Provider} from '@angular/core';
 import {Optional, SkipSelf} from '@angular/core';
-import {tuiCreateToken} from '@taiga-ui/cdk';
-import {TUI_DEFAULT_NUMBER_FORMAT} from '@taiga-ui/core/constants';
+import {CHAR_NO_BREAK_SPACE, tuiCreateToken} from '@taiga-ui/cdk';
 import type {TuiNumberFormatSettings} from '@taiga-ui/core/types';
 import type {Observable} from 'rxjs';
 import {map, of} from 'rxjs';
+
+export const TUI_DEFAULT_NUMBER_FORMAT: TuiNumberFormatSettings = {
+    precision: NaN,
+    decimalSeparator: ',',
+    thousandSeparator: CHAR_NO_BREAK_SPACE,
+    rounding: 'truncate',
+    decimalMode: 'pad',
+};
 
 /**
  * Formatting configuration for displayed numbers

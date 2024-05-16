@@ -4,14 +4,14 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TuiBarChartComponent} from '@taiga-ui/addon-charts';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {TuiLinkDirective, TuiNotificationModule} from '@taiga-ui/core';
+import {TuiLinkDirective, TuiNotificationComponent} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
     imports: [
         TuiLinkDirective,
         RouterLink,
-        TuiNotificationModule,
+        TuiNotificationComponent,
         TuiBarChartComponent,
         TuiDemo,
     ],

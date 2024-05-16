@@ -11,7 +11,6 @@ import {
     tuiProvide,
 } from '@taiga-ui/cdk';
 import type {TuiMarkerHandler} from '@taiga-ui/core';
-import {TUI_DEFAULT_MARKER_HANDLER} from '@taiga-ui/core';
 
 import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
@@ -63,12 +62,11 @@ export class ExampleTuiInputDateMultiComponent extends AbstractExampleTuiControl
     protected disabledItemHandler = this.disabledItemHandlerVariants[0];
 
     protected readonly markerHandlerVariants: readonly TuiMarkerHandler[] = [
-        TUI_DEFAULT_MARKER_HANDLER,
         (day: TuiDay) =>
             day.day % 2 === 0
                 ? ['var(--tui-primary)', 'var(--tui-info-fill)']
                 : ['var(--tui-success-fill)'],
     ];
 
-    protected markerHandler: TuiMarkerHandler = this.markerHandlerVariants[0];
+    protected markerHandler: TuiMarkerHandler | null = null;
 }

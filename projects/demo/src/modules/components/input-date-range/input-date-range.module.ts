@@ -8,7 +8,7 @@ import {
     TuiButtonDirective,
     TuiHintModule,
     TuiLinkDirective,
-    TuiNotificationModule,
+    TuiNotificationComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {TuiInputDateRangeModule, TuiUnfinishedValidatorModule} from '@taiga-ui/kit';
@@ -31,7 +31,7 @@ import {ExampleTuiInputDateRangeComponent} from './input-date-range.component';
         TuiLinkDirective,
         TuiTextfieldControllerModule,
         TuiHintModule,
-        TuiNotificationModule,
+        TuiNotificationComponent,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiInputDateRangeComponent)),
         TuiUnfinishedValidatorModule,

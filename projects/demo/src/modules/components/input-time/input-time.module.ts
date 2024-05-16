@@ -8,7 +8,7 @@ import {
     TuiDropdownModule,
     TuiHintModule,
     TuiLinkDirective,
-    TuiNotificationModule,
+    TuiNotificationComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {
@@ -37,7 +37,7 @@ import {ExampleTuiInputTimeComponent} from './input-time.component';
         TuiButtonDirective,
         TuiDropdownModule,
         TuiTextfieldControllerModule,
-        TuiNotificationModule,
+        TuiNotificationComponent,
         TuiHintModule,
         TuiSwitchComponent,
         TuiAddonDocModule,

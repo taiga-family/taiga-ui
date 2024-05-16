@@ -4,7 +4,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiTableBarsService} from '@taiga-ui/addon-tablebars';
-import type {TuiBrightness} from '@taiga-ui/core';
 import {TuiButtonDirective} from '@taiga-ui/core';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Subscription} from 'rxjs';
@@ -40,9 +39,9 @@ export default class PageComponent implements OnDestroy {
         LESS: import('./examples/1/index.less?raw'),
     };
 
-    protected readonly modeVariants: readonly TuiBrightness[] = ['onLight', 'onDark'];
+    protected readonly modeVariants = ['onLight', 'onDark'] as const;
 
-    protected mode = this.modeVariants[0];
+    protected mode: 'onDark' | 'onLight' = this.modeVariants[0];
 
     protected adaptive = false;
 

@@ -16,7 +16,6 @@ import {
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {TuiValuesOf} from '@taiga-ui/cdk';
 import {tuiParentAnimation} from '@taiga-ui/core/animations';
-import {TUI_EXPAND_LOADED} from '@taiga-ui/core/constants';
 import {timer} from 'rxjs';
 
 import {TuiExpandContentDirective} from './expand-content.directive';
@@ -29,6 +28,12 @@ const State = {
 } as const;
 
 const LOADER_HEIGHT = 48;
+
+/**
+ * An event indicating that async data for expand has finished loading.
+ * Dispatch to finish loading states for {@link TuiExpandComponent}.
+ */
+export const TUI_EXPAND_LOADED = 'tui-expand-loaded';
 
 @Component({
     selector: 'tui-expand',

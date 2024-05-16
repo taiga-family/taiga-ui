@@ -2,26 +2,59 @@ import {Component, inject} from '@angular/core';
 import {Router} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAlertService, TuiButtonDirective} from '@taiga-ui/core';
-import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
+import type {TuiPopover} from '@taiga-ui/cdk';
+import {
+    type TuiAlertOptions,
+    TuiAlertService,
+    TuiButtonDirective,
+    TuiIconComponent,
+} from '@taiga-ui/core';
+import {
+    POLYMORPHEUS_CONTEXT,
+    PolymorpheusComponent,
+    PolymorpheusModule,
+} from '@tinkoff/ng-polymorpheus';
 import {takeUntil} from 'rxjs';
 
-import {AlertExampleWithCustomLabelComponent} from './alert-example-with-custom-label/alert-example-with-custom-label.component';
-import {CustomLabelComponent} from './custom-label/custom-label.component';
+@Component({
+    standalone: true,
+    imports: [TuiIconComponent],
+    template: `
+        <label style="display: flex; align-items: center">
+            <em>From custom label component with</em>
+            <tui-icon icon="tuiIconHeart" />
+        </label>
+    `,
+    changeDetection,
+})
+class CustomLabelComponent {}
+
+@Component({
+    standalone: true,
+    imports: [PolymorpheusModule],
+    template: `
+        <h4>Start content</h4>
+        <ng-container *polymorpheusOutlet="context.label as text; context: context">
+            {{ text }}
+        </ng-container>
+        <h4>End content</h4>
+    `,
+    changeDetection,
+})
+class AlertExampleWithCustomLabelComponent {
+    protected readonly context =
+        inject<TuiPopover<TuiAlertOptions<unknown>, boolean>>(POLYMORPHEUS_CONTEXT);
+}
 
 @Component({
     standalone: true,
     selector: 'tui-alerts-example-5',
-    imports: [
-        CustomLabelComponent,
-        AlertExampleWithCustomLabelComponent,
-        TuiButtonDirective,
-    ],
+    imports: [TuiButtonDirective],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class TuiAlertExampleComponent5 {
+export default class ExampleComponent {
     private readonly router = inject(Router);
     private readonly alerts = inject(TuiAlertService);
 

@@ -1,9 +1,9 @@
 <ng-container *ngIf="icon">
-    <tui-svg
+    <tui-icon
         *polymorpheusOutlet="icon as iconName; context: {$implicit: status}"
         automation-id="tui-notification__icon"
         class="t-icon"
-        [src]="iconName"
+        [icon]="iconName.toString()"
     />
 </ng-container>
 <div class="t-content">
@@ -22,8 +22,8 @@
 >
     {{ closeWord$ | async }}
 </button>
-<tui-svg
+<tui-icon
     automation-id="tui-notification__more"
     class="t-more"
-    [src]="icons.more"
+    [icon]="icons.more"
 />

@@ -1,7 +1,6 @@
 import type {PipeTransform} from '@angular/core';
 import {Pipe} from '@angular/core';
 import {tuiInjectElement} from '@taiga-ui/cdk';
-import {TUI_ICON_ERROR} from '@taiga-ui/core/constants';
 import type {Observable} from 'rxjs';
 import {fromEvent, map, merge, startWith} from 'rxjs';
 
@@ -14,7 +13,7 @@ export class TuiFallbackSrcPipe implements PipeTransform {
 
     public transform(src: string, fallback: string): Observable<string> {
         return merge(
-            fromEvent(this.el, TUI_ICON_ERROR),
+            fromEvent(this.el, 'tui-icon-error'),
             fromEvent(this.el, 'error', {capture: true}),
         ).pipe(
             map(() => fallback),

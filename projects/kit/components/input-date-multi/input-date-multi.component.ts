@@ -38,7 +38,6 @@ import type {
 import {
     TUI_DATE_FORMAT,
     TUI_DEFAULT_DATE_FORMAT,
-    TUI_DEFAULT_MARKER_HANDLER,
     TUI_TEXTFIELD_SIZE,
     TuiPrimitiveTextfieldComponent,
 } from '@taiga-ui/core';
@@ -95,7 +94,7 @@ export class TuiInputDateMultiComponent
     public disabledItemHandler: TuiBooleanHandler<TuiDay> = TUI_FALSE_HANDLER;
 
     @Input()
-    public markerHandler: TuiMarkerHandler = TUI_DEFAULT_MARKER_HANDLER;
+    public markerHandler: TuiMarkerHandler | null = null;
 
     @Input()
     public defaultActiveYearMonth = TuiMonth.currentLocal();

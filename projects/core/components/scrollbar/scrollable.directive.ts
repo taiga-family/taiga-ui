@@ -1,7 +1,8 @@
 import type {OnInit} from '@angular/core';
 import {Directive} from '@angular/core';
 import {tuiInjectElement} from '@taiga-ui/cdk';
-import {TUI_SCROLLABLE} from '@taiga-ui/core/constants';
+
+import {TUI_SCROLLABLE} from './scrollbar.component';
 
 @Directive({
     standalone: true,

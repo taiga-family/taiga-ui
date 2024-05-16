@@ -10,7 +10,7 @@ import {
     TuiAutoColorPipe,
     TuiButtonDirective,
     TuiInitialsPipe,
-    TuiNotificationModule,
+    TuiNotificationComponent,
     TuiTextfieldControllerModule,
     TuiTitleDirective,
 } from '@taiga-ui/core';
@@ -31,7 +31,7 @@ import {ExampleTuiSheetDialogComponent} from './sheet-dialog.component';
         TuiButtonDirective,
         TuiAmountPipe,
         TuiAvatarComponent,
-        TuiNotificationModule,
+        TuiNotificationComponent,
         TuiSheetDialogModule,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiSheetDialogComponent)),

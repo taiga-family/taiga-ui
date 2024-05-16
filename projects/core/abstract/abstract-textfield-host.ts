@@ -2,6 +2,9 @@ import {Directive, inject} from '@angular/core';
 import {AbstractTuiControl} from '@taiga-ui/cdk';
 import type {TuiTextfieldHost} from '@taiga-ui/core/types';
 
+/**
+ * @deprecated
+ */
 @Directive()
 export abstract class AbstractTuiTextfieldHost<T extends AbstractTuiControl<any>>
     implements TuiTextfieldHost

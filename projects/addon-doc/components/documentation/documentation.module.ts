@@ -8,7 +8,7 @@ import {
     TuiDropdownModule,
     TuiGroupDirective,
     TuiLinkDirective,
-    TuiNotificationModule,
+    TuiNotificationComponent,
     TuiPrimitiveTextfieldModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
@@ -49,7 +49,7 @@ import {TuiDocTypeReferencePipe} from './pipes/type-reference.pipe';
         TuiDropdownModule,
         TuiDataListModule,
         TuiDataListWrapperModule,
-        TuiNotificationModule,
+        TuiNotificationComponent,
         TuiFilterPipe,
     ],
     declarations: [

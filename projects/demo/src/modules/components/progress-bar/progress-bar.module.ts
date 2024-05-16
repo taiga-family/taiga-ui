@@ -7,7 +7,7 @@ import {
     tuiGenerateRoutes,
     TuiTextCodeModule,
 } from '@taiga-ui/addon-doc';
-import {TuiLinkDirective, TuiNotificationModule} from '@taiga-ui/core';
+import {TuiLinkDirective, TuiNotificationComponent} from '@taiga-ui/core';
 import {TuiProgressModule} from '@taiga-ui/kit';
 
 import {TuiProgressBarExample1} from './examples/1';
@@ -26,7 +26,7 @@ import {ExampleProgressBarComponent} from './progress-bar.component';
         TuiProgressModule,
         TuiLinkDirective,
         TuiTextCodeModule,
-        TuiNotificationModule,
+        TuiNotificationComponent,
         RouterModule.forChild(tuiGenerateRoutes(ExampleProgressBarComponent)),
         TuiSetupComponent,
     ],

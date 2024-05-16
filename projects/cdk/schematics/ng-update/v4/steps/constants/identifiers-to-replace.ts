@@ -58,6 +58,30 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {name: 'TUI_FALSE_HANDLER', moduleSpecifier: '@taiga-ui/cdk'},
     },
     {
+        from: {name: 'TUI_DIGIT_REGEXP', moduleSpecifier: '@taiga-ui/core'},
+        to: {name: 'TUI_DIGIT_REGEXP', moduleSpecifier: '@taiga-ui/cdk'},
+    },
+    {
+        from: {name: 'TUI_NON_DIGIT_REGEXP', moduleSpecifier: '@taiga-ui/core'},
+        to: {name: 'TUI_NON_DIGIT_REGEXP', moduleSpecifier: '@taiga-ui/cdk'},
+    },
+    {
+        from: {name: 'TUI_NON_DIGITS_REGEXP', moduleSpecifier: '@taiga-ui/core'},
+        to: {name: 'TUI_NON_DIGITS_REGEXP', moduleSpecifier: '@taiga-ui/cdk'},
+    },
+    {
+        from: {name: 'TuiAlertModule', moduleSpecifier: '@taiga-ui/core'},
+        to: {name: 'TuiAlertDirective', moduleSpecifier: '@taiga-ui/core'},
+    },
+    {
+        from: {name: 'TuiNotificationModule', moduleSpecifier: '@taiga-ui/core'},
+        to: {name: 'TuiNotificationComponent', moduleSpecifier: '@taiga-ui/core'},
+    },
+    {
+        from: {name: 'TuiCalendarModule', moduleSpecifier: '@taiga-ui/core'},
+        to: {name: 'TuiCalendarComponent', moduleSpecifier: '@taiga-ui/core'},
+    },
+    {
         from: {name: 'TuiFormatDatePipeModule', moduleSpecifier: '@taiga-ui/core'},
         to: {name: 'TuiFormatDatePipe', moduleSpecifier: '@taiga-ui/core'},
     },

@@ -1,22 +1,68 @@
+import {AsyncPipe} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {Router} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAlertService, TuiButtonDirective} from '@taiga-ui/core';
-import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
+import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
+import type {TuiPopover} from '@taiga-ui/cdk';
+import {
+    type TuiAlertOptions,
+    TuiAlertService,
+    TuiButtonDirective,
+    TuiLinkDirective,
+} from '@taiga-ui/core';
+import {POLYMORPHEUS_CONTEXT, PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import {switchMap, takeUntil} from 'rxjs';
-
-import {AlertExampleWithDataComponent} from './alert-example-with-data/alert-example-with-data.component';
 
 @Component({
     standalone: true,
-    selector: 'tui-alerts-example-4',
-    imports: [AlertExampleWithDataComponent, TuiButtonDirective],
+    imports: [AsyncPipe, TuiButtonDirective, TuiLinkDirective, TuiAmountPipe],
+    template: `
+        <em>Your balance:</em>
+        <span>{{ value | tuiAmount: 'RUB' | async }}</span>
+        <p [style.display]="'flex'">
+            <button
+                appearance="whiteblock"
+                size="m"
+                tuiButton
+                type="button"
+                class="tui-space_right-3"
+                (click)="context.completeWith(value)"
+            >
+                Submit
+            </button>
+            <button
+                appearance=""
+                tuiLink
+                type="button"
+                [pseudo]="true"
+                (click)="increaseBalance()"
+            >
+                Increase
+            </button>
+        </p>
+    `,
+    changeDetection,
+})
+export class AlertExampleWithDataComponent {
+    protected readonly context =
+        inject<TuiPopover<TuiAlertOptions<number>, number>>(POLYMORPHEUS_CONTEXT);
+
+    protected value = this.context.data;
+
+    protected increaseBalance(): void {
+        this.value += 10;
+    }
+}
+
+@Component({
+    standalone: true,
+    imports: [TuiButtonDirective],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class TuiAlertExampleComponent4 {
+export default class ExampleComponent {
     private readonly alerts = inject(TuiAlertService);
     private readonly notification = this.alerts
         .open<number>(new PolymorpheusComponent(AlertExampleWithDataComponent), {

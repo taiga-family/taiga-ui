@@ -9,7 +9,7 @@ import {
     TuiDataListModule,
     TuiDropdownModule,
     TuiIconComponent,
-    TuiNotificationModule,
+    TuiNotificationComponent,
     TuiScrollbarComponent,
 } from '@taiga-ui/core';
 import {TuiChevronDirective, TuiInputNumberModule, TuiTabsModule} from '@taiga-ui/kit';
@@ -29,7 +29,7 @@ import {ExampleTuiTabsComponent} from './tabs.component';
         FormsModule,
         TuiTabsModule,
         TuiInputNumberModule,
-        TuiNotificationModule,
+        TuiNotificationComponent,
         TuiButtonDirective,
         TuiDropdownModule,
         TuiDataListModule,

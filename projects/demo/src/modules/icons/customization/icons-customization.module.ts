@@ -10,7 +10,7 @@ import {
     TuiExpandModule,
     TuiHintModule,
     TuiLinkDirective,
-    TuiNotificationModule,
+    TuiNotificationComponent,
     TuiSvgComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
@@ -30,7 +30,7 @@ import {IconsCustomizationComponent} from './icons-customization.component';
         TuiExpandModule,
         TuiButtonDirective,
         TuiInputDateRangeModule,
-        TuiNotificationModule,
+        TuiNotificationComponent,
         TuiTextfieldControllerModule,
         TuiHintModule,
         RouterModule.forChild(tuiGenerateRoutes(IconsCustomizationComponent)),

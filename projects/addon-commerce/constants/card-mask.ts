@@ -1,4 +1,4 @@
-import {TUI_DIGIT_REGEXP} from '@taiga-ui/core';
+import {TUI_DIGIT_REGEXP} from '@taiga-ui/cdk';
 
 /**
  * @internal

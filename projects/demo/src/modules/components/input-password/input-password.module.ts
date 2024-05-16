@@ -7,7 +7,7 @@ import {
     TuiButtonDirective,
     TuiHintModule,
     TuiLinkDirective,
-    TuiNotificationModule,
+    TuiNotificationComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {TuiInputPasswordModule} from '@taiga-ui/kit';
@@ -29,7 +29,7 @@ import {ExampleTuiInputPasswordComponent} from './input-password.component';
         TuiButtonDirective,
         TuiTextfieldControllerModule,
         TuiHintModule,
-        TuiNotificationModule,
+        TuiNotificationComponent,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiInputPasswordComponent)),
     ],
     declarations: [

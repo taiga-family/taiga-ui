@@ -1,7 +1,7 @@
 import type {PipeTransform} from '@angular/core';
 import {inject, Pipe} from '@angular/core';
 import {TUI_SVG_OPTIONS} from '@taiga-ui/core/components/svg';
-import {TUI_CACHE_BUSTING_PAYLOAD} from '@taiga-ui/core/constants';
+import {TUI_CACHE_BUSTING_PAYLOAD} from '@taiga-ui/core/utils/miscellaneous';
 import {TuiCountryIsoCode} from '@taiga-ui/i18n';
 
 @Pipe({

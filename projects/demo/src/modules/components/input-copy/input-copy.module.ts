@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
-import {TuiNotificationModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
+import {TuiNotificationComponent, TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {TuiInputCopyModule} from '@taiga-ui/kit';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
@@ -19,7 +19,7 @@ import {ExampleTuiInputCopyComponent} from './input-copy.component';
         InheritedDocumentationModule,
         PolymorpheusModule,
         TuiTextfieldControllerModule,
-        TuiNotificationModule,
+        TuiNotificationComponent,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiInputCopyComponent)),
     ],

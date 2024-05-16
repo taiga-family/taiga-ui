@@ -7,7 +7,7 @@ import {
     TuiDropdownModule,
     TuiHintModule,
     TuiLinkDirective,
-    TuiNotificationModule,
+    TuiNotificationComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {TuiInputDateTimeModule} from '@taiga-ui/kit';
@@ -31,7 +31,7 @@ import {ExampleTuiInputDateTimeComponent} from './input-date-time.component';
         TuiInputDateTimeModule,
         TuiHintModule,
         TuiTextfieldControllerModule,
-        TuiNotificationModule,
+        TuiNotificationComponent,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiInputDateTimeComponent)),
         TuiDropdownModule,
     ],
