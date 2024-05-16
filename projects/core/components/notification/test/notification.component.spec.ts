@@ -8,7 +8,6 @@ import {
     TUI_NOTIFICATION_DEFAULT_OPTIONS,
     TUI_NOTIFICATION_OPTIONS,
     TuiNotificationComponent,
-    TuiNotificationComponent,
     TuiSvgService,
 } from '@taiga-ui/core';
 import {TuiPageObject} from '@taiga-ui/testing';

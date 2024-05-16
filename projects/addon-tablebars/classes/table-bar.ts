@@ -8,7 +8,7 @@ export class TuiTableBar {
 
     public readonly hasCloseButton: boolean;
 
-    // TODO: remame before 4.0
+    // TODO: rename before 4.0
     public readonly mode: 'onDark' | 'onLight';
 
     constructor(
