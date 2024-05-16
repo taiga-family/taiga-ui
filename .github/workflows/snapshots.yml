@@ -13,9 +13,9 @@ jobs:
   snapshots:
     runs-on: ubuntu-latest
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.56.3
-      - uses: taiga-family/ci/actions/setup/variables@v1.56.3
-      - uses: taiga-family/ci/actions/setup/node@v1.56.3
+      - uses: taiga-family/ci/actions/setup/checkout@v1.57.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.57.0
+      - uses: taiga-family/ci/actions/setup/node@v1.57.0
       - run: npx nx build demo
       - run: tree ${{ env.DIST }} -P '*.html'
 
