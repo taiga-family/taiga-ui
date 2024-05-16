@@ -300,55 +300,55 @@ describe('Input', () => {
             expect(document.activeElement).toBe(inputPO.nativeElement);
         });
 
-        it(`Pressing 'Space' moves focus to the input field`, () => {
-            tuiDispatchOnActive('Space');
+        it("Pressing 'Spacebar' moves focus to the input field", () => {
+            tuiDispatchOnActive('Spacebar');
 
             expect(document.activeElement).toBe(inputPO.nativeElement);
         });
 
-        it(`Pressing 'Backspace' moves focus to the input field`, () => {
+        it("Pressing 'Backspace' moves focus to the input field", () => {
             tuiDispatchOnActive('Backspace');
 
             expect(document.activeElement).toBe(inputPO.nativeElement);
         });
 
-        it(`Pressing 'Delete' moves focus to the input field`, () => {
+        it("Pressing 'Delete' moves focus to the input field", () => {
             tuiDispatchOnActive('Delete');
 
             expect(document.activeElement).toBe(inputPO.nativeElement);
         });
 
-        it(`Pressing 'ArrowLeft' moves focus to the input field`, () => {
+        it("Pressing 'ArrowLeft' moves focus to the input field", () => {
             tuiDispatchOnActive('ArrowLeft');
 
             expect(document.activeElement).toBe(inputPO.nativeElement);
         });
 
-        it(`Pressing 'ArrowRight' moves focus to the input field`, () => {
+        it("Pressing 'ArrowRight' moves focus to the input field", () => {
             tuiDispatchOnActive('ArrowRight');
 
             expect(document.activeElement).toBe(inputPO.nativeElement);
         });
 
-        it(`Pressing 'Left' moves focus to the input field`, () => {
+        it("Pressing 'Left' moves focus to the input field", () => {
             tuiDispatchOnActive('Left');
 
             expect(document.activeElement).toBe(inputPO.nativeElement);
         });
 
-        it(`Pressing 'Right' moves focus to the input field`, () => {
+        it("Pressing 'Right' moves focus to the input field", () => {
             tuiDispatchOnActive('Right');
 
             expect(document.activeElement).toBe(inputPO.nativeElement);
         });
 
-        it(`Pressing 'End' moves focus to the input field`, () => {
+        it("Pressing 'End' moves focus to the input field", () => {
             tuiDispatchOnActive('End');
 
             expect(document.activeElement).toBe(inputPO.nativeElement);
         });
 
-        it(`Pressing 'Home' moves focus to the input field`, () => {
+        it("Pressing 'Home' moves focus to the input field", () => {
             tuiDispatchOnActive('Home');
 
             expect(document.activeElement).toBe(inputPO.nativeElement);

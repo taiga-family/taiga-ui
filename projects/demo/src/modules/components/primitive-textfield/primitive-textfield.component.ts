@@ -3,7 +3,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import type {TuiContext, TuiInputMode, TuiInputType} from '@taiga-ui/cdk';
 import {tuiProvide} from '@taiga-ui/cdk';
-import type {TuiHintDirection, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {TUI_HINT_DIRECTIONS} from '@taiga-ui/core';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
@@ -126,7 +126,7 @@ export class ExampleTuiPrimitiveTextfieldComponent extends AbstractExampleTuiInt
 
     protected hintContent = this.hintContentVariants[0];
 
-    protected hintDirection: TuiHintDirection = this.hintDirectionVariants[0];
+    protected hintDirection = this.hintDirectionVariants[0];
 
     protected hintAppearance = this.hintAppearanceVariants[0];
 

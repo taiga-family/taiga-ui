@@ -4,7 +4,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import {tuiDocExcludeProperties} from '@taiga-ui/addon-doc';
 import {tuiProvide} from '@taiga-ui/cdk';
-import {TuiHintDirection} from '@taiga-ui/core';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {AbstractExampleTuiControl} from '../abstract/control';
@@ -42,7 +41,7 @@ export class ExampleTuiInputCopyComponent extends AbstractExampleTuiControl {
 
     protected successMessage = this.successMessageVariants[0];
 
-    protected messageDirection: TuiHintDirection = this.hintDirectionVariants[0];
+    protected messageDirection = this.hintDirectionVariants[0];
     protected messageMode = this.hintAppearanceVariants[0];
 
     protected get notificationTemplate(): PolymorpheusContent {

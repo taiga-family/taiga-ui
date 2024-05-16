@@ -4,7 +4,21 @@ import {AbstractTuiController, tuiCreateToken, tuiProvide} from '@taiga-ui/cdk';
 import {tuiOverrideOptions} from '@taiga-ui/core/utils';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-export const TUI_HINT_DIRECTIONS = [
+export type TuiHintDirection =
+    | 'bottom-left'
+    | 'bottom-right'
+    | 'bottom'
+    | 'left-bottom'
+    | 'left-top'
+    | 'left'
+    | 'right-bottom'
+    | 'right-top'
+    | 'right'
+    | 'top-left'
+    | 'top-right'
+    | 'top';
+
+export const TUI_HINT_DIRECTIONS: readonly TuiHintDirection[] = [
     'bottom-left',
     'bottom',
     'bottom-right',
@@ -17,9 +31,7 @@ export const TUI_HINT_DIRECTIONS = [
     'right-top',
     'right',
     'right-bottom',
-] as const;
-
-export type TuiHintDirection = (typeof TUI_HINT_DIRECTIONS)[number];
+];
 
 export interface TuiHintOptions {
     readonly appearance: string;

@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
-import {TUI_HINT_DIRECTIONS, TuiHintDirection} from '@taiga-ui/core';
+import {TUI_HINT_DIRECTIONS} from '@taiga-ui/core';
 
 @Component({
     selector: 'example-tooltip',
@@ -42,7 +42,7 @@ export class ExampleTuiTooltipComponent {
 
     protected directionVariants = TUI_HINT_DIRECTIONS;
 
-    protected direction: TuiHintDirection = this.directionVariants[0];
+    protected direction = this.directionVariants[0];
 
     protected describeId = '';
 

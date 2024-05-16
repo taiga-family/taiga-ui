@@ -3,7 +3,6 @@ import type {TuiInputMode, TuiInputType} from '@taiga-ui/cdk';
 import type {
     TuiDropdownAlign,
     TuiDropdownWidth,
-    TuiHintDirection,
     TuiSizeL,
     TuiSizeS,
     TuiVerticalDirection,
@@ -97,7 +96,7 @@ export abstract class AbstractExampleTuiControl
 
     public hintContent = this.hintContentVariants[0];
 
-    public hintDirection: TuiHintDirection = this.hintDirectionVariants[0];
+    public hintDirection = this.hintDirectionVariants[0];
 
     public hintAppearance = this.hintAppearanceVariants[0];
 
