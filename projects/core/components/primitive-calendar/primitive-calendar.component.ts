@@ -7,9 +7,9 @@ import {
     Input,
     Output,
 } from '@angular/core';
+import type {TuiBooleanHandler} from '@taiga-ui/cdk';
 import {
     TUI_FALSE_HANDLER,
-    TuiBooleanHandler,
     TuiDay,
     TuiDayRange,
     TuiMonth,

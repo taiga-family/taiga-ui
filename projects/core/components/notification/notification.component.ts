@@ -12,7 +12,8 @@ import type {TuiContext} from '@taiga-ui/cdk';
 import {TuiButtonDirective} from '@taiga-ui/core/components/button';
 import {TuiIconComponent} from '@taiga-ui/core/components/icon';
 import {TUI_CLOSE_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
-import {PolymorpheusContent, PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import type {TuiNotification} from './notification.options';
 import {TUI_NOTIFICATION_OPTIONS} from './notification.options';

@@ -4,7 +4,11 @@ import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiSetupComponent} from '@demo/utils';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
-import {TuiDataListModule, TuiLinkDirective, TuiNotificationComponent} from '@taiga-ui/core';
+import {
+    TuiDataListModule,
+    TuiLinkDirective,
+    TuiNotificationComponent,
+} from '@taiga-ui/core';
 import {
     TuiComboBoxModule,
     TuiDataListWrapperModule,

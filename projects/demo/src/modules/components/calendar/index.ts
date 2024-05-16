@@ -3,9 +3,16 @@ import {RouterModule} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk';
-import {TUI_FALSE_HANDLER, TUI_FIRST_DAY, TUI_LAST_DAY, TuiDay, TuiDayRange, TuiMonth,} from '@taiga-ui/cdk';
+import {
+    TUI_FALSE_HANDLER,
+    TUI_FIRST_DAY,
+    TUI_LAST_DAY,
+    TuiDay,
+    TuiDayRange,
+    TuiMonth,
+} from '@taiga-ui/cdk';
 import type {TuiMarkerHandler} from '@taiga-ui/core';
-import {TuiCalendarComponent, TuiLinkDirective,} from '@taiga-ui/core';
+import {TuiCalendarComponent, TuiLinkDirective} from '@taiga-ui/core';
 
 const TWO_DOTS: [string, string] = ['var(--tui-primary)', 'var(--tui-info-fill)'];
 const ONE_DOT: [string] = ['var(--tui-success-fill)'];

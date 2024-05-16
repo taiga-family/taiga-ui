@@ -46,7 +46,7 @@ import {
 const MASK_SYMBOLS = /[ \-_()]/g;
 
 function isText(value: string): boolean {
-    return Number.isNaN(parseInt(value.replace(MASK_SYMBOLS, ''), 10));
+    return Number.isNaN(parseInt(value.replaceAll(MASK_SYMBOLS, ''), 10));
 }
 
 @Component({
@@ -135,7 +135,7 @@ export class TuiInputPhoneComponent
     public onValueChange(value: string): void {
         const parsed = isText(value)
             ? value
-            : value.replace(MASK_SYMBOLS, '').slice(0, this.maxPhoneLength);
+            : value.replaceAll(MASK_SYMBOLS, '').slice(0, this.maxPhoneLength);
 
         this.updateSearch(parsed);
         this.value = parsed === this.countryCode || isText(parsed) ? '' : parsed;

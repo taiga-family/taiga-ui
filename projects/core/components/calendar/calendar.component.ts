@@ -6,18 +6,15 @@ import {
     Input,
     Output,
 } from '@angular/core';
+import type {TuiBooleanHandler, TuiDayRange, TuiMapper, TuiYear} from '@taiga-ui/cdk';
 import {
     TUI_FALSE_HANDLER,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
-    TuiBooleanHandler,
     TuiDay,
-    TuiDayRange,
-    TuiMapper,
     TuiMapperPipe,
     TuiMonth,
     tuiNullableSame,
-    TuiYear,
 } from '@taiga-ui/cdk';
 import {TuiPrimitiveCalendarModule} from '@taiga-ui/core/components/primitive-calendar';
 import {TuiPrimitiveYearMonthPaginationModule} from '@taiga-ui/core/components/primitive-year-month-pagination';
@@ -32,9 +29,6 @@ import type {
 @Component({
     standalone: true,
     selector: 'tui-calendar',
-    templateUrl: './calendar.template.html',
-    styleUrls: ['./calendar.style.less'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         NgIf,
         TuiScrollbarComponent,
@@ -43,6 +37,9 @@ import type {
         TuiPrimitiveCalendarModule,
         TuiMapperPipe,
     ],
+    templateUrl: './calendar.template.html',
+    styleUrls: ['./calendar.style.less'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiCalendarComponent implements TuiWithOptionalMinMax<TuiDay> {
     private day: TuiDay | TuiDayRange | readonly TuiDay[] | null = null;

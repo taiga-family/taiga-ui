@@ -9,8 +9,8 @@ import {TUI_VIEWPORT} from '@taiga-ui/core/tokens';
 import type {TuiPoint} from '@taiga-ui/core/types';
 
 import {TuiHintDirective} from './hint.directive';
-import {TUI_HINT_DIRECTIONS, TuiHintDirection, TuiHintOptions} from './hint-options.directive';
-import {TUI_HINT_OPTIONS} from './hint-options.directive';
+import type {TuiHintDirection, TuiHintOptions} from './hint-options.directive';
+import {TUI_HINT_DIRECTIONS, TUI_HINT_OPTIONS} from './hint-options.directive';
 
 const OFFSET = 8;
 const ARROW_OFFSET = 22;

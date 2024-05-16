@@ -18,6 +18,7 @@ import {TUI_ALERT_POSITION} from './alert.tokens';
 @Component({
     standalone: true,
     selector: 'tui-alert',
+    imports: [TuiNotificationComponent, NgIf, PolymorpheusModule],
     templateUrl: './alert.template.html',
     styleUrls: ['./alert.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -29,7 +30,6 @@ import {TUI_ALERT_POSITION} from './alert.tokens';
         '[@tuiSlideIn]': 'animation',
         '[@tuiHeightCollapse]': 'animation',
     },
-    imports: [TuiNotificationComponent, NgIf, PolymorpheusModule],
 })
 export class TuiAlertComponent<O, I> implements OnInit {
     private readonly el = tuiInjectElement();

@@ -4,13 +4,12 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TuiTextCodeModule} from '@taiga-ui/addon-doc';
 import type {TuiPopoverContext} from '@taiga-ui/cdk';
+import type {TuiAlertOptions, TuiNotification} from '@taiga-ui/core';
 import {
     TUI_NOTIFICATION_OPTIONS,
-    TuiAlertOptions,
     TuiAlertService,
     TuiButtonDirective,
     TuiLinkDirective,
-    TuiNotification,
 } from '@taiga-ui/core';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';

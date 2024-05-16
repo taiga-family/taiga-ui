@@ -9,15 +9,11 @@ import {
     Output,
     ViewChild,
 } from '@angular/core';
-import {
-    TUI_NON_DIGITS_REGEXP,
-    TuiContext,
-    TuiFocusableElementAccessor,
-    TuiMapper,
-} from '@taiga-ui/cdk';
+import type {TuiContext, TuiFocusableElementAccessor, TuiMapper} from '@taiga-ui/cdk';
 import {
     AbstractTuiControl,
     CHAR_PLUS,
+    TUI_NON_DIGITS_REGEXP,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
     tuiPure,
@@ -134,7 +130,7 @@ export class TuiInputPhoneInternationalComponent
 
         if (!countryIsoCode) {
             this.value = `${this.inputPhoneCountryCode}${value}`
-                .replace(MASK_SYMBOLS, '')
+                .replaceAll(MASK_SYMBOLS, '')
                 .slice(
                     0,
                     tuiGetMaxAllowedPhoneLength(this.countriesMasks, this.countryIsoCode),
