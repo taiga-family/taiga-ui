@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.79.0](https://github.com/taiga-family/taiga-ui/compare/v3.78.0...v3.79.0) (2024-05-16)
+
+### Features
+
+- **schematics:** add manual migration ([#7458](https://github.com/taiga-family/taiga-ui/issues/7458))
+  ([f96c494](https://github.com/taiga-family/taiga-ui/commit/f96c4949fb15b8070efd0dd9af51e00bc1a46271))
+
 ## [3.78.0](https://github.com/taiga-family/taiga-ui/compare/v3.77.1...v3.78.0) (2024-05-15)
 
 ### Features
