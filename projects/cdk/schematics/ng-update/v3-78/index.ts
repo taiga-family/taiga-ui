@@ -28,13 +28,9 @@ export function updateToV3_78(options: TuiSchema): Rule {
 
         const fileSystem = getFileSystem(tree);
 
-        if (options.experimental) {
-            !options['skip-logs'] &&
-                infoLog(
-                    `${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} replacing deprecated logos...`,
-                );
-            replaceText(ICONS);
-        }
+        !options['skip-logs'] &&
+            infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} replacing deprecated logos...`);
+        replaceText(ICONS);
 
         fileSystem.commitEdits();
         saveActiveProject();
