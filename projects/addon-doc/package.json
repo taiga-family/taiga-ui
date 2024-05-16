@@ -16,7 +16,7 @@
     "dependencies": {
         "markdown-it": "14.1.0",
         "marked": "12.0.2",
-        "ngx-highlightjs": "9.0.0"
+        "ngx-highlightjs": "10.0.0"
     },
     "devDependencies": {
         "@types/markdown-it": "13.0.7"

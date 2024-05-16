@@ -77,7 +77,7 @@ export const config: ApplicationConfig = {
                     lineNumbersLoader: async () =>
                         // SSR ReferenceError: window is not defined
                         isBrowser
-                            ? import('highlightjs-line-numbers.js')
+                            ? import('ngx-highlightjs/line-numbers')
                             : Promise.resolve(),
                     languages: {
                         typescript: async () =>
