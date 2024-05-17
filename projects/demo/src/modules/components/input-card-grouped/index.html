@@ -10,44 +10,12 @@
         </p>
 
         <tui-doc-example
-            id="validation"
-            heading="With validation"
-            [content]="example1"
-        >
-            <tui-input-card-grouped-example-1 />
-        </tui-doc-example>
-
-        <tui-doc-example
-            id="select"
-            heading="With saved cards"
-            [content]="example2"
-        >
-            <tui-input-card-grouped-example-2 />
-        </tui-doc-example>
-
-        <tui-doc-example
-            id="card-src"
-            heading="With custom card template"
-            [content]="example3"
-        >
-            <tui-input-card-grouped-example-3 />
-        </tui-doc-example>
-
-        <tui-doc-example
-            id="form-state"
-            heading="Custom form state"
-            [content]="example4"
-        >
-            <tui-input-card-grouped-example-4 />
-        </tui-doc-example>
-
-        <tui-doc-example
-            id="custom-labels"
-            heading="Custom labels"
-            [content]="example5"
-        >
-            <tui-input-card-grouped-example-5 />
-        </tui-doc-example>
+            *ngFor="let example of examples; let index = index"
+            [component]="index + 1 | tuiComponent"
+            [content]="index + 1 | tuiExample: 'html,ts'"
+            [heading]="example"
+            [id]="example | tuiKebab"
+        />
     </ng-template>
 
     <ng-template pageTab>
@@ -143,10 +111,5 @@
         <inherited-documentation />
     </ng-template>
 
-    <ng-template pageTab>
-        <tui-setup
-            [import]="exampleModule"
-            [template]="exampleHtml"
-        />
-    </ng-template>
+    <tui-setup *pageTab />
 </tui-doc-page>

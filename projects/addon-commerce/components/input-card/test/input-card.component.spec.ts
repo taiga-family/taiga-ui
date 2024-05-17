@@ -2,7 +2,7 @@ import {Component, TemplateRef, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {TuiInputCardComponent, TuiInputCardModule} from '@taiga-ui/addon-commerce';
+import {TuiInputCardComponent} from '@taiga-ui/addon-commerce';
 import type {Mock} from 'jest-mock';
 
 describe('InputCard', () => {
@@ -35,7 +35,7 @@ describe('InputCard', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [ReactiveFormsModule, TuiInputCardModule],
+            imports: [ReactiveFormsModule, TuiInputCardComponent],
             declarations: [TestComponent],
         });
         await TestBed.compileComponents();

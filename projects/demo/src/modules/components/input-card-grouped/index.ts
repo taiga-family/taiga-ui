@@ -1,50 +1,41 @@
 import {Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiDemo} from '@demo/utils';
 import type {TuiCard, TuiCodeCVCLength} from '@taiga-ui/addon-commerce';
-import type {TuiDocExample} from '@taiga-ui/addon-doc';
+import {
+    TuiInputCardGroupedComponent,
+    TuiThumbnailCardComponent,
+} from '@taiga-ui/addon-commerce';
 import {tuiIsString, tuiProvide} from '@taiga-ui/cdk';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
+import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
 import {AbstractExampleTuiInteractive} from '../abstract/interactive';
 
 @Component({
-    selector: 'example-input-card-grouped',
-    templateUrl: './input-card-grouped.template.html',
-    styleUrls: ['./input-card-grouped.style.less'],
+    standalone: true,
+    imports: [
+        TuiDemo,
+        TuiInputCardGroupedComponent,
+        ReactiveFormsModule,
+        TuiThumbnailCardComponent,
+        InheritedDocumentationModule,
+    ],
+    templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     changeDetection,
-    providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, ExampleTuiInputCardGroupedComponent)],
+    providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, PageComponent)],
 })
-export class ExampleTuiInputCardGroupedComponent extends AbstractExampleTuiInteractive {
-    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
-    protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
-
-    protected readonly example1: TuiDocExample = {
-        TypeScript: import('./examples/1/index.ts?raw'),
-        HTML: import('./examples/1/index.html?raw'),
-    };
-
-    protected readonly example2: TuiDocExample = {
-        TypeScript: import('./examples/2/index.ts?raw'),
-        HTML: import('./examples/2/index.html?raw'),
-        LESS: import('./examples/2/index.less?raw'),
-    };
-
-    protected readonly example3: TuiDocExample = {
-        TypeScript: import('./examples/3/index.ts?raw'),
-        HTML: import('./examples/3/index.html?raw'),
-    };
-
-    protected readonly example4: TuiDocExample = {
-        TypeScript: import('./examples/4/index.ts?raw'),
-        HTML: import('./examples/4/index.html?raw'),
-    };
-
-    protected readonly example5: TuiDocExample = {
-        TypeScript: import('./examples/5/index.ts?raw'),
-        HTML: import('./examples/5/index.html?raw'),
-    };
+export default class PageComponent extends AbstractExampleTuiInteractive {
+    protected readonly examples = [
+        'With validation',
+        'With saved cards',
+        'With custom card template',
+        'Custom form state',
+        'Custom labels',
+    ];
 
     protected readonly cards: Record<string, string> = {
         common: 'https://ng-web-apis.github.io/dist/assets/images/common.svg',

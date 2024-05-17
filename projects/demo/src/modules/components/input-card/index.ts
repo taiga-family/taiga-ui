@@ -1,24 +1,45 @@
 import {Component, ViewChild} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiDemo} from '@demo/utils';
 import type {TuiCodeCVCLength} from '@taiga-ui/addon-commerce';
-import {tuiCreateLuhnValidator} from '@taiga-ui/addon-commerce';
-import type {TuiDocExample} from '@taiga-ui/addon-doc';
+import {
+    tuiCreateLuhnValidator,
+    TuiInputCardComponent,
+    TuiInputCVCComponent,
+    TuiInputExpireComponent,
+} from '@taiga-ui/addon-commerce';
 import {TuiDocDocumentationPropertyConnectorDirective} from '@taiga-ui/addon-doc';
 import {tuiProvide} from '@taiga-ui/cdk';
 import type {TuiHintOptions} from '@taiga-ui/core';
+import {TuiErrorComponent, TuiHint, TuiTextfieldControllerModule} from '@taiga-ui/core';
+import {TuiAccordionModule, TuiFieldErrorPipeModule} from '@taiga-ui/kit';
 
 import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
+import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
 
 @Component({
-    selector: 'example-input-card',
-    templateUrl: './input-card.template.html',
-    styleUrls: ['./input-card.style.less'],
+    standalone: true,
+    imports: [
+        TuiDemo,
+        TuiHint,
+        ReactiveFormsModule,
+        TuiInputCardComponent,
+        TuiInputExpireComponent,
+        TuiTextfieldControllerModule,
+        TuiInputCVCComponent,
+        TuiErrorComponent,
+        TuiFieldErrorPipeModule,
+        TuiAccordionModule,
+        InheritedDocumentationModule,
+    ],
+    templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     changeDetection,
-    providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, ExampleTuiInputCardComponent)],
+    providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, PageComponent)],
 })
-export class ExampleTuiInputCardComponent extends AbstractExampleTuiControl {
+export default class PageComponent extends AbstractExampleTuiControl {
     public control = new FormGroup({
         card: new FormControl('', [
             Validators.required,
@@ -36,14 +57,6 @@ export class ExampleTuiInputCardComponent extends AbstractExampleTuiControl {
         read: TuiDocDocumentationPropertyConnectorDirective,
     })
     protected binChangeProperty?: TuiDocDocumentationPropertyConnectorDirective<unknown>;
-
-    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
-    protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
-
-    protected readonly example1: TuiDocExample = {
-        TypeScript: import('./examples/1/index.ts?raw'),
-        HTML: import('./examples/1/index.html?raw'),
-    };
 
     protected card = '';
 

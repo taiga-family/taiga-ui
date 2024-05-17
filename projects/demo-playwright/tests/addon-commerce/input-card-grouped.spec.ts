@@ -68,7 +68,7 @@ test.describe('InputCardGrouped', () => {
         });
 
         test('input card grouped with validation', async () => {
-            const example = documentationPage.getExample('#validation');
+            const example = documentationPage.getExample('#with-validation');
             const {numberTextfield, expiryTextfield, cvcTextfield, cleanerIcon} =
                 new TuiInputCardGroupedPO(example);
             const cardInfo = {
@@ -122,7 +122,7 @@ test.describe('InputCardGrouped', () => {
         });
 
         test('input card grouped with saved cards', async () => {
-            const example = documentationPage.getExample('#select');
+            const example = documentationPage.getExample('#with-saved-cards');
             const {numberTextfield, cvcTextfield, cleanerIcon} =
                 new TuiInputCardGroupedPO(example);
             const cvc = '123';

@@ -6,6 +6,7 @@ import {
     Input,
     ViewChild,
 } from '@angular/core';
+import {MaskitoDirective} from '@maskito/angular';
 import type {MaskitoOptions} from '@maskito/core';
 import type {TuiCodeCVCLength} from '@taiga-ui/addon-commerce/types';
 import type {TuiFocusableElementAccessor, TuiNativeFocusableElement} from '@taiga-ui/cdk';
@@ -20,10 +21,14 @@ import {
     TUI_TEXTFIELD_LABEL_OUTSIDE,
     TUI_TEXTFIELD_SIZE,
     TuiPrimitiveTextfieldComponent,
+    TuiPrimitiveTextfieldModule,
 } from '@taiga-ui/core';
+import {TuiValueAccessorModule} from '@taiga-ui/kit';
 
 @Component({
+    standalone: true,
     selector: 'tui-input-cvc',
+    imports: [TuiPrimitiveTextfieldModule, TuiValueAccessorModule, MaskitoDirective],
     templateUrl: './input-cvc.template.html',
     styleUrls: ['./input-cvc.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

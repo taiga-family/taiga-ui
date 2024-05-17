@@ -1,12 +1,16 @@
 import {Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiCard} from '@taiga-ui/addon-commerce';
-import {TUI_INPUT_CARD_GROUPED_TEXTS} from '@taiga-ui/addon-commerce';
+import {
+    TUI_INPUT_CARD_GROUPED_TEXTS,
+    TuiInputCardGroupedComponent,
+} from '@taiga-ui/addon-commerce';
 import {of} from 'rxjs';
 
 @Component({
-    selector: 'tui-input-card-grouped-example-5',
+    standalone: true,
+    imports: [TuiInputCardGroupedComponent, ReactiveFormsModule],
     templateUrl: './index.html',
     changeDetection,
     providers: [
@@ -20,7 +24,7 @@ import {of} from 'rxjs';
         },
     ],
 })
-export class TuiInputCardGroupedExample5 {
+export default class ExampleComponent {
     protected readonly control = new FormControl<Partial<TuiCard>>({
         card: '558620******2158',
         expire: '12/25',

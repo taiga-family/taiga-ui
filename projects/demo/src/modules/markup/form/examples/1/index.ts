@@ -2,11 +2,7 @@ import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {
-    TuiAmountPipe,
-    TuiCurrency,
-    TuiCurrencyPipeModule,
-} from '@taiga-ui/addon-commerce';
+import {TuiAmountPipe, TuiCurrency, TuiCurrencyPipe} from '@taiga-ui/addon-commerce';
 import {TuiDay, TuiTime} from '@taiga-ui/cdk';
 import {
     TuiButtonDirective,
@@ -66,7 +62,7 @@ class Account {
         TuiInputPasswordModule,
         TuiInputNumberModule,
         TuiTextfieldControllerModule,
-        TuiCurrencyPipeModule,
+        TuiCurrencyPipe,
         TuiInputSliderModule,
         TuiSelectModule,
         TuiDataListWrapperModule,

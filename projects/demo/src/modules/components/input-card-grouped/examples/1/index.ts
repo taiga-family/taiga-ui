@@ -1,15 +1,29 @@
+import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiCard} from '@taiga-ui/addon-commerce';
-import {tuiCardExpireValidator, tuiCardNumberValidator} from '@taiga-ui/addon-commerce';
+import {
+    tuiCardExpireValidator,
+    tuiCardNumberValidator,
+    TuiInputCardGroupedComponent,
+} from '@taiga-ui/addon-commerce';
+import {TuiErrorComponent} from '@taiga-ui/core';
+import {TuiFieldErrorPipeModule} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-input-card-grouped-example-1',
+    standalone: true,
+    imports: [
+        TuiInputCardGroupedComponent,
+        TuiFieldErrorPipeModule,
+        AsyncPipe,
+        ReactiveFormsModule,
+        TuiErrorComponent,
+    ],
     templateUrl: './index.html',
     changeDetection,
 })
-export class TuiInputCardGroupedExample1 {
+export default class ExampleComponent {
     protected readonly control = new FormControl<TuiCard | null>(null, [
         tuiCardNumberValidator,
         tuiCardExpireValidator,

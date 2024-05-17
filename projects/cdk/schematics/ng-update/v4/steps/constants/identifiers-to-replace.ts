@@ -1180,4 +1180,64 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/addon-charts',
         },
     },
+    {
+        from: {
+            name: 'TuiInputCardModule',
+            moduleSpecifier: '@taiga-ui/addon-commerce',
+        },
+        to: {
+            name: 'TuiInputCardComponent',
+            moduleSpecifier: '@taiga-ui/addon-mobile',
+        },
+    },
+    {
+        from: {
+            name: 'TuiInputCardGroupedModule',
+            moduleSpecifier: '@taiga-ui/addon-commerce',
+        },
+        to: {
+            name: 'TuiInputCardGroupedComponent',
+            moduleSpecifier: '@taiga-ui/addon-mobile',
+        },
+    },
+    {
+        from: {
+            name: 'TuiInputCVCModule',
+            moduleSpecifier: '@taiga-ui/addon-commerce',
+        },
+        to: {
+            name: 'TuiInputCVCComponent',
+            moduleSpecifier: '@taiga-ui/addon-mobile',
+        },
+    },
+    {
+        from: {
+            name: 'TuiInputExpireModule',
+            moduleSpecifier: '@taiga-ui/addon-commerce',
+        },
+        to: {
+            name: 'TuiInputExpireComponent',
+            moduleSpecifier: '@taiga-ui/addon-mobile',
+        },
+    },
+    {
+        from: {
+            name: 'TuiCurrencyPipeModule',
+            moduleSpecifier: '@taiga-ui/addon-commerce',
+        },
+        to: {
+            name: 'TuiCurrencyPipe',
+            moduleSpecifier: '@taiga-ui/addon-mobile',
+        },
+    },
+    {
+        from: {
+            name: 'TuiFormatCardModule',
+            moduleSpecifier: '@taiga-ui/addon-commerce',
+        },
+        to: {
+            name: 'TuiFormatCardPipe',
+            moduleSpecifier: '@taiga-ui/addon-mobile',
+        },
+    },
 ];

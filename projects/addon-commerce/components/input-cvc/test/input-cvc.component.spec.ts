@@ -2,8 +2,7 @@ import {Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import type {TuiInputCVCComponent} from '@taiga-ui/addon-commerce';
-import {TuiInputCVCModule} from '@taiga-ui/addon-commerce';
+import {TuiInputCVCComponent} from '@taiga-ui/addon-commerce';
 import {TUI_DIGIT_REGEXP} from '@taiga-ui/cdk';
 
 describe('InputCVC', () => {
@@ -35,7 +34,7 @@ describe('InputCVC', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [ReactiveFormsModule, TuiInputCVCModule],
+            imports: [ReactiveFormsModule, TuiInputCVCComponent],
             declarations: [TestComponent],
         });
         await TestBed.compileComponents();

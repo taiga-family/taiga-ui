@@ -10,10 +10,7 @@ import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import type {TuiCard} from '@taiga-ui/addon-commerce';
-import {
-    TuiInputCardGroupedComponent,
-    TuiInputCardGroupedModule,
-} from '@taiga-ui/addon-commerce';
+import {TuiInputCardGroupedComponent} from '@taiga-ui/addon-commerce';
 import type {TuiFocusableElementAccessor} from '@taiga-ui/cdk';
 import {
     TUI_AUTOFOCUS_HANDLER,
@@ -64,7 +61,7 @@ describe('InputCardGrouped', () => {
             ) => new TuiSynchronousAutofocusHandler(focusable, el),
             deps: [[new Optional(), new Self(), TUI_FOCUSABLE_ITEM_ACCESSOR], ElementRef],
         }).configureTestingModule({
-            imports: [ReactiveFormsModule, TuiInputCardGroupedModule, TuiSvgComponent],
+            imports: [ReactiveFormsModule, TuiInputCardGroupedComponent, TuiSvgComponent],
             declarations: [TestComponent],
         });
         await TestBed.compileComponents();

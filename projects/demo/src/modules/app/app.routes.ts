@@ -429,16 +429,12 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.InputCard,
-        loadChildren: async () =>
-            (await import('../components/input-card/input-card.module'))
-                .ExampleTuiInputCardModule,
+        loadComponent: async () => import('../components/input-card'),
         title: 'InputCard',
     }),
     route({
         path: DemoRoute.InputCardGrouped,
-        loadChildren: async () =>
-            (await import('../components/input-card-grouped/input-card-grouped.module'))
-                .ExampleTuiInputCardGroupedModule,
+        loadComponent: async () => import('../components/input-card-grouped'),
         title: 'InputCardGrouped',
     }),
     route({
