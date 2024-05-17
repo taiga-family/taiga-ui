@@ -9,7 +9,7 @@ import {
     TuiExpandModule,
     TuiHintModule,
     TuiLinkDirective,
-    TuiNotificationModule,
+    TuiNotificationComponent,
     TuiSvgComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
@@ -27,7 +27,7 @@ import {IconsBundledComponent} from './icons-bundled.component';
         TuiExpandModule,
         TuiButtonDirective,
         TuiInputDateRangeModule,
-        TuiNotificationModule,
+        TuiNotificationComponent,
         TuiTextfieldControllerModule,
         TuiHintModule,
         TuiAddonDocModule,

@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
 import {
-    TuiCalendarModule,
+    TuiCalendarComponent,
     TuiHostedDropdownModule,
     TuiLinkDirective,
     TuiPrimitiveTextfieldModule,
@@ -24,7 +24,7 @@ import {TuiNativeDateTimeDirective} from './native-date-time/native-date-time.di
         MaskitoDirective,
         PolymorpheusModule,
         TuiWrapperModule,
-        TuiCalendarModule,
+        TuiCalendarComponent,
         TuiSvgComponent,
         TuiLinkDirective,
         TuiHostedDropdownModule,

@@ -8,7 +8,7 @@ import {
     TuiButtonDirective,
     TuiErrorModule,
     TuiLinkDirective,
-    TuiNotificationModule,
+    TuiNotificationComponent,
     TuiSvgComponent,
 } from '@taiga-ui/core';
 import {TuiAvatarComponent, TuiFieldErrorPipeModule, TuiFilesModule} from '@taiga-ui/kit';
@@ -32,7 +32,7 @@ import {ExampleTuiInputFilesComponent} from './input-files.component';
         TuiSvgComponent,
         TuiErrorModule,
         TuiFieldErrorPipeModule,
-        TuiNotificationModule,
+        TuiNotificationComponent,
         TuiAvatarComponent,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiInputFilesComponent)),

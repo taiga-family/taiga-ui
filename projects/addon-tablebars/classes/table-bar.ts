@@ -1,4 +1,3 @@
-import type {TuiBrightness} from '@taiga-ui/core';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import type {Observer} from 'rxjs';
 
@@ -9,7 +8,8 @@ export class TuiTableBar {
 
     public readonly hasCloseButton: boolean;
 
-    public readonly mode: TuiBrightness;
+    // TODO: rename before 4.0
+    public readonly mode: 'onDark' | 'onLight';
 
     constructor(
         private readonly observer: Observer<never>,

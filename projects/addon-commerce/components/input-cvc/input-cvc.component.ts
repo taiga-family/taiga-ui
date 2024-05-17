@@ -11,12 +11,12 @@ import type {TuiCodeCVCLength} from '@taiga-ui/addon-commerce/types';
 import type {TuiFocusableElementAccessor, TuiNativeFocusableElement} from '@taiga-ui/cdk';
 import {
     AbstractTuiControl,
+    TUI_DIGIT_REGEXP,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
 } from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {
-    TUI_DIGIT_REGEXP,
     TUI_TEXTFIELD_LABEL_OUTSIDE,
     TUI_TEXTFIELD_SIZE,
     TuiPrimitiveTextfieldComponent,

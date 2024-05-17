@@ -4,7 +4,7 @@ import {
     TuiLetDirective,
     TuiRepeatTimesDirective,
 } from '@taiga-ui/cdk';
-import {TuiScrollIntoViewDirective} from '@taiga-ui/core/directives/scroll-into-view';
+import {TuiScrollIntoViewDirective} from '@taiga-ui/core/components/scrollbar';
 
 import {TuiPrimitiveYearPickerComponent} from './primitive-year-picker.component';
 

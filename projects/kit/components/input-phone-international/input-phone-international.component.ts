@@ -13,14 +13,13 @@ import type {TuiContext, TuiFocusableElementAccessor, TuiMapper} from '@taiga-ui
 import {
     AbstractTuiControl,
     CHAR_PLUS,
+    TUI_NON_DIGITS_REGEXP,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
     tuiPure,
 } from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeM, TuiSizeS} from '@taiga-ui/core';
 import {
-    TUI_MASK_SYMBOLS_REGEXP,
-    TUI_NON_DIGITS_REGEXP,
     TUI_TEXTFIELD_SIZE,
     TuiFlagPipe,
     TuiPrimitiveTextfieldComponent,
@@ -36,6 +35,8 @@ import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {TUI_INPUT_PHONE_INTERNATIONAL_OPTIONS} from './input-phone-international.options';
 import {tuiExtractValueFromEvent} from './utils/extract-value-from-event';
+
+const MASK_SYMBOLS = /[ \-_()]/g;
 
 @Component({
     selector: 'tui-input-phone-international',
@@ -129,7 +130,7 @@ export class TuiInputPhoneInternationalComponent
 
         if (!countryIsoCode) {
             this.value = `${this.inputPhoneCountryCode}${value}`
-                .replace(TUI_MASK_SYMBOLS_REGEXP, '')
+                .replaceAll(MASK_SYMBOLS, '')
                 .slice(
                     0,
                     tuiGetMaxAllowedPhoneLength(this.countriesMasks, this.countryIsoCode),

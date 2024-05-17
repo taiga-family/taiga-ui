@@ -9,7 +9,7 @@ import {
     TuiIconComponent,
     TuiLinkDirective,
     TuiLoaderModule,
-    TuiNotificationModule,
+    TuiNotificationComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {TuiTooltipModule} from '@taiga-ui/experimental';
@@ -33,7 +33,7 @@ import {ExampleTuiTooltipComponent} from './tooltip.component';
         TuiAppearanceDirective,
         TuiTextfieldControllerModule,
         tuiGetDocModules(ExampleTuiTooltipComponent),
-        TuiNotificationModule,
+        TuiNotificationComponent,
         TuiIconComponent,
         TuiLetDirective,
         TuiSetupComponent,

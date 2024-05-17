@@ -28,7 +28,6 @@ import {
 } from '@taiga-ui/cdk';
 import type {TuiDataListHost, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {
-    TUI_MASK_SYMBOLS_REGEXP,
     TUI_TEXTFIELD_CLEANER,
     TUI_TEXTFIELD_SIZE,
     tuiAsDataListHost,
@@ -44,8 +43,10 @@ import {
     tuiCreatePhoneMaskExpression,
 } from './utils';
 
+const MASK_SYMBOLS = /[ \-_()]/g;
+
 function isText(value: string): boolean {
-    return Number.isNaN(parseInt(value.replace(TUI_MASK_SYMBOLS_REGEXP, ''), 10));
+    return Number.isNaN(parseInt(value.replaceAll(MASK_SYMBOLS, ''), 10));
 }
 
 @Component({
@@ -134,7 +135,7 @@ export class TuiInputPhoneComponent
     public onValueChange(value: string): void {
         const parsed = isText(value)
             ? value
-            : value.replace(TUI_MASK_SYMBOLS_REGEXP, '').slice(0, this.maxPhoneLength);
+            : value.replaceAll(MASK_SYMBOLS, '').slice(0, this.maxPhoneLength);
 
         this.updateSearch(parsed);
         this.value = parsed === this.countryCode || isText(parsed) ? '' : parsed;

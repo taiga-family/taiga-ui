@@ -2,7 +2,6 @@ import {AsyncPipe, NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
 import type {TuiContext} from '@taiga-ui/cdk';
-import type {TuiBrightness} from '@taiga-ui/core';
 import {
     TUI_ANIMATIONS_SPEED,
     TUI_CLOSE_WORD,
@@ -41,8 +40,8 @@ export class TuiTableBarsHostComponent {
         return tuiIsMobile(this.win, this.media);
     }
 
-    protected getMode(mode: TuiBrightness): TuiBrightness | null {
-        return mode === 'onLight' ? 'onDark' : null;
+    protected getMode(mode: string): string | null {
+        return mode === 'onLight' ? 'dark' : null;
     }
 
     protected onCloseClick(itemToRemove: TuiTableBar): void {

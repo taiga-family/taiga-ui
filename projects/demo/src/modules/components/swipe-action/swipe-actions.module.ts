@@ -15,7 +15,7 @@ import {
     TuiDropdownDirective,
     TuiDropdownOpenDirective,
     TuiIconComponent,
-    TuiNotificationModule,
+    TuiNotificationComponent,
     TuiSurfaceDirective,
     TuiTitleDirective,
 } from '@taiga-ui/core';
@@ -50,7 +50,7 @@ import {ExampleTuiSwipeActionsComponent} from './swipe-actions.component';
         TuiIconComponent,
         TuiSwitchComponent,
         TuiBadgeComponent,
-        TuiNotificationModule,
+        TuiNotificationComponent,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiSwipeActionsComponent)),
         TuiButtonDirective,
         FormsModule,

@@ -7,7 +7,7 @@ import {
     TuiButtonDirective,
     TuiDialogService,
     TuiLinkDirective,
-    TuiNotificationModule,
+    TuiNotificationComponent,
 } from '@taiga-ui/core';
 import type {TuiConfirmData} from '@taiga-ui/kit';
 import {TUI_CONFIRM} from '@taiga-ui/kit';
@@ -19,7 +19,7 @@ import {switchMap} from 'rxjs';
         TuiButtonDirective,
         TuiLinkDirective,
         RouterModule,
-        TuiNotificationModule,
+        TuiNotificationComponent,
         TuiDemo,
     ],
     templateUrl: './index.html',

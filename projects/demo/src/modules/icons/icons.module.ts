@@ -8,7 +8,7 @@ import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
 import {
     TuiButtonDirective,
     TuiLinkDirective,
-    TuiNotificationModule,
+    TuiNotificationComponent,
     TuiSvgComponent,
 } from '@taiga-ui/core';
 
@@ -20,7 +20,7 @@ import {IconsGroupModule} from './icons-group/icons-group.module';
     imports: [
         CommonModule,
         FormsModule,
-        TuiNotificationModule,
+        TuiNotificationComponent,
         TuiLinkDirective,
         TuiSvgComponent,
         TuiButtonDirective,

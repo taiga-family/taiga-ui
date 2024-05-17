@@ -5,7 +5,7 @@ import {TuiRepeatTimesDirective} from '@taiga-ui/cdk';
 import {
     TuiButtonDirective,
     TuiLinkDirective,
-    TuiNotificationModule,
+    TuiNotificationComponent,
 } from '@taiga-ui/core';
 import {TuiCarouselModule} from '@taiga-ui/kit';
 
@@ -13,7 +13,7 @@ import {TuiCarouselModule} from '@taiga-ui/kit';
     standalone: true,
     imports: [
         TuiDemo,
-        TuiNotificationModule,
+        TuiNotificationComponent,
         TuiCarouselModule,
         TuiRepeatTimesDirective,
         TuiButtonDirective,

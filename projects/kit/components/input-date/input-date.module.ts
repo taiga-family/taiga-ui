@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
 import {TuiLetDirective} from '@taiga-ui/cdk';
 import {
-    TuiCalendarModule,
+    TuiCalendarComponent,
     TuiHostedDropdownModule,
     TuiLinkDirective,
     TuiPrimitiveTextfieldModule,
@@ -25,7 +25,7 @@ import {TuiNativeDateDirective} from './native-date/native-date.component';
         MaskitoDirective,
         PolymorpheusModule,
         TuiWrapperModule,
-        TuiCalendarModule,
+        TuiCalendarComponent,
         TuiSvgComponent,
         TuiLinkDirective,
         TuiHostedDropdownModule,

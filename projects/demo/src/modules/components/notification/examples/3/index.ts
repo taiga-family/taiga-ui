@@ -1,12 +1,18 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {
+    TuiButtonDirective,
+    TuiLinkDirective,
+    TuiNotificationComponent,
+} from '@taiga-ui/core';
 
 @Component({
-    selector: 'tui-notification-example-3',
+    standalone: true,
+    imports: [TuiNotificationComponent, TuiButtonDirective, TuiLinkDirective],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiNotificationExample3 {}
+export default class ExampleComponent {}

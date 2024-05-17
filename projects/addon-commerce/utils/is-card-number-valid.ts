@@ -1,4 +1,4 @@
-import {TUI_NON_DIGITS_REGEXP} from '@taiga-ui/core';
+import {TUI_NON_DIGITS_REGEXP} from '@taiga-ui/cdk';
 
 /**
  * Validates card number using Luhn algorithm

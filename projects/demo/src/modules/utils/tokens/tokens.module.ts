@@ -9,7 +9,6 @@ import {TuiTokensExample3} from './examples/3';
 import {TuiTokensExample4} from './examples/4';
 import {TuiTokensExample5} from './examples/5';
 import {TuiTokensExample6} from './examples/6';
-import {TuiTokensExample7} from './examples/7';
 import {TuiTokensExample8} from './examples/8';
 import {TuiTokensExample9} from './examples/9';
 import {TuiTokensExample10} from './examples/10';
@@ -29,7 +28,6 @@ import {ExampleTokensComponent} from './tokens.component';
         TuiTokensExample4,
         TuiTokensExample5,
         TuiTokensExample6,
-        TuiTokensExample7,
         TuiTokensExample8,
         TuiTokensExample9,
         TuiTokensExample10,

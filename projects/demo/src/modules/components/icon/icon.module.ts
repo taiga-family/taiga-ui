@@ -6,7 +6,7 @@ import {
     TuiIconComponent,
     TuiIconPipe,
     TuiLinkDirective,
-    TuiNotificationModule,
+    TuiNotificationComponent,
 } from '@taiga-ui/core';
 
 import {TuiIconExample1} from './examples/1';
@@ -19,7 +19,7 @@ import {ExampleTuiIconComponent} from './icon.component';
         CommonModule,
         TuiIconComponent,
         TuiLinkDirective,
-        TuiNotificationModule,
+        TuiNotificationComponent,
         tuiGetDocModules(ExampleTuiIconComponent),
         TuiIconPipe,
         TuiSetupComponent,

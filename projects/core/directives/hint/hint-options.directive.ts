@@ -1,9 +1,37 @@
 import type {FactoryProvider} from '@angular/core';
 import {Directive, inject, Input, Optional, SkipSelf} from '@angular/core';
 import {AbstractTuiController, tuiCreateToken, tuiProvide} from '@taiga-ui/cdk';
-import type {TuiHintDirection} from '@taiga-ui/core/types';
 import {tuiOverrideOptions} from '@taiga-ui/core/utils';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+
+export type TuiHintDirection =
+    | 'bottom-left'
+    | 'bottom-right'
+    | 'bottom'
+    | 'left-bottom'
+    | 'left-top'
+    | 'left'
+    | 'right-bottom'
+    | 'right-top'
+    | 'right'
+    | 'top-left'
+    | 'top-right'
+    | 'top';
+
+export const TUI_HINT_DIRECTIONS: readonly TuiHintDirection[] = [
+    'bottom-left',
+    'bottom',
+    'bottom-right',
+    'top-left',
+    'top',
+    'top-right',
+    'left-top',
+    'left',
+    'left-bottom',
+    'right-top',
+    'right',
+    'right-bottom',
+];
 
 export interface TuiHintOptions {
     readonly appearance: string;

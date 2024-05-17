@@ -6,7 +6,7 @@ import {tuiGetDocModules} from '@taiga-ui/addon-doc';
 import {
     TuiButtonDirective,
     TuiLabelDirective,
-    TuiNotificationModule,
+    TuiNotificationComponent,
     TuiSurfaceDirective,
     TuiTitleDirective,
 } from '@taiga-ui/core';
@@ -41,7 +41,7 @@ import {ExampleTuiSkeletonComponent} from './skeleton.component';
         TuiChipDirective,
         TuiBadgeDirective,
         TuiSkeletonDirective,
-        TuiNotificationModule,
+        TuiNotificationComponent,
     ],
     declarations: [ExampleTuiSkeletonComponent, TuiSkeletonExample1, TuiSkeletonExample2],
     exports: [ExampleTuiSkeletonComponent],

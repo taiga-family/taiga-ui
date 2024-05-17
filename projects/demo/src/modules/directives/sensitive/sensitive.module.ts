@@ -6,7 +6,7 @@ import {tuiGetDocModules} from '@taiga-ui/addon-doc';
 import {
     TuiButtonDirective,
     TuiLabelDirective,
-    TuiNotificationModule,
+    TuiNotificationComponent,
 } from '@taiga-ui/core';
 import {
     TuiBadgeDirective,
@@ -23,7 +23,7 @@ import {ExampleTuiSensitiveComponent} from './sensitive.component';
         FormsModule,
         CommonModule,
         TuiSensitiveDirective,
-        TuiNotificationModule,
+        TuiNotificationComponent,
         TuiSwitchComponent,
         TuiLabelDirective,
         TuiBadgeDirective,

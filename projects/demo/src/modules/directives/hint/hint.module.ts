@@ -7,7 +7,7 @@ import {
     TuiAutoColorPipe,
     TuiHintModule,
     TuiLinkDirective,
-    TuiNotificationModule,
+    TuiNotificationComponent,
 } from '@taiga-ui/core';
 import {TuiAvatarComponent} from '@taiga-ui/kit';
 
@@ -24,7 +24,7 @@ import {ExampleTuiHintComponent} from './hint.component';
         InheritedDocumentationModule,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiHintComponent)),
-        TuiNotificationModule,
+        TuiNotificationComponent,
         TuiAutoColorPipe,
         TuiLinkDirective,
         TuiSetupComponent,

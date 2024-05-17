@@ -7,7 +7,6 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {
     TuiDataListModule,
-    tuiEditingKeys,
     TuiHintModule,
     TuiRootComponent,
     TuiTextfieldControllerModule,
@@ -301,44 +300,56 @@ describe('Input', () => {
             expect(document.activeElement).toBe(inputPO.nativeElement);
         });
 
-        it(`Pressing ${tuiEditingKeys[0]} moves focus to the input field`, () => {
-            tuiDispatchOnActive(tuiEditingKeys[0]);
+        it("Pressing 'Spacebar' moves focus to the input field", () => {
+            tuiDispatchOnActive('Spacebar');
 
             expect(document.activeElement).toBe(inputPO.nativeElement);
         });
 
-        it(`Pressing ${tuiEditingKeys[1]} moves focus to the input field`, () => {
-            tuiDispatchOnActive(tuiEditingKeys[1]);
+        it("Pressing 'Backspace' moves focus to the input field", () => {
+            tuiDispatchOnActive('Backspace');
 
             expect(document.activeElement).toBe(inputPO.nativeElement);
         });
 
-        it(`Pressing ${tuiEditingKeys[2]} moves focus to the input field`, () => {
-            tuiDispatchOnActive(tuiEditingKeys[2]);
+        it("Pressing 'Delete' moves focus to the input field", () => {
+            tuiDispatchOnActive('Delete');
 
             expect(document.activeElement).toBe(inputPO.nativeElement);
         });
 
-        it(`Pressing ${tuiEditingKeys[3]} moves focus to the input field`, () => {
-            tuiDispatchOnActive(tuiEditingKeys[3]);
+        it("Pressing 'ArrowLeft' moves focus to the input field", () => {
+            tuiDispatchOnActive('ArrowLeft');
 
             expect(document.activeElement).toBe(inputPO.nativeElement);
         });
 
-        it(`Pressing ${tuiEditingKeys[4]} moves focus to the input field`, () => {
-            tuiDispatchOnActive(tuiEditingKeys[4]);
+        it("Pressing 'ArrowRight' moves focus to the input field", () => {
+            tuiDispatchOnActive('ArrowRight');
 
             expect(document.activeElement).toBe(inputPO.nativeElement);
         });
 
-        it(`Pressing ${tuiEditingKeys[5]} moves focus to the input field`, () => {
-            tuiDispatchOnActive(tuiEditingKeys[5]);
+        it("Pressing 'Left' moves focus to the input field", () => {
+            tuiDispatchOnActive('Left');
 
             expect(document.activeElement).toBe(inputPO.nativeElement);
         });
 
-        it(`Pressing ${tuiEditingKeys[6]} moves focus to the input field`, () => {
-            tuiDispatchOnActive(tuiEditingKeys[6]);
+        it("Pressing 'Right' moves focus to the input field", () => {
+            tuiDispatchOnActive('Right');
+
+            expect(document.activeElement).toBe(inputPO.nativeElement);
+        });
+
+        it("Pressing 'End' moves focus to the input field", () => {
+            tuiDispatchOnActive('End');
+
+            expect(document.activeElement).toBe(inputPO.nativeElement);
+        });
+
+        it("Pressing 'Home' moves focus to the input field", () => {
+            tuiDispatchOnActive('Home');
 
             expect(document.activeElement).toBe(inputPO.nativeElement);
         });

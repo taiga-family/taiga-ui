@@ -18,7 +18,6 @@ import {
     tuiWatch,
 } from '@taiga-ui/cdk';
 import type {TuiMarkerHandler} from '@taiga-ui/core';
-import {TUI_DEFAULT_MARKER_HANDLER} from '@taiga-ui/core';
 import {TUI_CALENDAR_DATE_STREAM} from '@taiga-ui/kit/tokens';
 import type {Observable} from 'rxjs';
 
@@ -36,7 +35,7 @@ export class TuiPrimitiveCalendarRangeComponent implements OnInit {
     public disabledItemHandler: TuiBooleanHandler<TuiDay> = TUI_FALSE_HANDLER;
 
     @Input()
-    public markerHandler: TuiMarkerHandler = TUI_DEFAULT_MARKER_HANDLER;
+    public markerHandler: TuiMarkerHandler | null = null;
 
     @Input()
     public defaultViewedMonthFirst = TuiMonth.currentLocal();

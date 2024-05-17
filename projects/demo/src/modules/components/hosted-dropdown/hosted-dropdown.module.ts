@@ -12,7 +12,7 @@ import {
     TuiGroupDirective,
     TuiHostedDropdownModule,
     TuiLinkDirective,
-    TuiNotificationModule,
+    TuiNotificationComponent,
     TuiSvgComponent,
 } from '@taiga-ui/core';
 import {
@@ -40,7 +40,7 @@ import {ExampleTuiHostedDropdownComponent} from './hosted-dropdown.component';
         PolymorpheusModule,
         FormsModule,
         TuiHostedDropdownModule,
-        TuiNotificationModule,
+        TuiNotificationComponent,
         TuiTabsModule,
         TuiInputModule,
         TuiButtonDirective,

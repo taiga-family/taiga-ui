@@ -7,7 +7,7 @@ import {
     TuiButtonDirective,
     TuiDropdownModule,
     TuiHintModule,
-    TuiNotificationModule,
+    TuiNotificationComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {
@@ -33,7 +33,7 @@ import {ExampleTuiInputPhoneInternationalComponent} from './input-phone-internat
         TuiAddonDocModule,
         TuiButtonDirective,
         TuiSortCountriesPipeModule,
-        TuiNotificationModule,
+        TuiNotificationComponent,
         RouterModule.forChild(
             tuiGenerateRoutes(ExampleTuiInputPhoneInternationalComponent),
         ),

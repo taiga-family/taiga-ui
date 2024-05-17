@@ -19,6 +19,8 @@ import type {TuiCard} from '@taiga-ui/addon-commerce/interfaces';
 import type {TuiCodeCVCLength} from '@taiga-ui/addon-commerce/types';
 import type {TuiFocusableElementAccessor} from '@taiga-ui/cdk';
 import {
+    TUI_DIGIT_REGEXP,
+    TUI_NON_DIGIT_REGEXP,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
     TuiAutoFocusDirective,
@@ -33,8 +35,6 @@ import type {TuiDataListHost} from '@taiga-ui/core';
 import {
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_COMMON_ICONS,
-    TUI_DIGIT_REGEXP,
-    TUI_NON_DIGIT_REGEXP,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
     tuiAsDataListHost,
     TuiDataListComponent,

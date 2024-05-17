@@ -577,9 +577,7 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.Notification,
-        loadChildren: async () =>
-            (await import('../components/notification/notification.module'))
-                .ExampleTuiNotificationModule,
+        loadComponent: async () => import('../components/notification'),
         title: 'Notification',
     }),
     route({
@@ -1175,7 +1173,7 @@ export const ROUTES: Routes = [
     route({
         path: DemoRoute.Alert,
         title: 'Alert',
-        loadComponent: async () => import('../components/alert/alert.component'),
+        loadComponent: async () => import('../components/alert'),
     }),
     route({
         path: DemoRoute.BreakpointService,

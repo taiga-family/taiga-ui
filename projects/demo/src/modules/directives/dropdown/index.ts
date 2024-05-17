@@ -7,7 +7,7 @@ import {
     TuiButtonDirective,
     TuiDropdownModule,
     TuiLinkDirective,
-    TuiNotificationModule,
+    TuiNotificationComponent,
 } from '@taiga-ui/core';
 
 import {AbstractExampleTuiDropdown} from '../../components/abstract/dropdown';
@@ -19,7 +19,7 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/inherited-docum
     imports: [
         TuiDemo,
         TuiDropdownModule,
-        TuiNotificationModule,
+        TuiNotificationComponent,
         TuiActiveZoneDirective,
         TuiButtonDirective,
         TuiObscuredDirective,

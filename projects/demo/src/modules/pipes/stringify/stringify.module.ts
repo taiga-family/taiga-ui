@@ -4,7 +4,11 @@ import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiSetupComponent} from '@demo/utils';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
-import {TuiDataListModule, TuiLinkDirective, TuiNotificationModule} from '@taiga-ui/core';
+import {
+    TuiDataListModule,
+    TuiLinkDirective,
+    TuiNotificationComponent,
+} from '@taiga-ui/core';
 import {
     TuiComboBoxModule,
     TuiDataListWrapperModule,
@@ -22,7 +26,7 @@ import {ExampleTuiStringifyComponent} from './stringify.component';
         TuiFilterByInputPipeModule,
         TuiStringifyPipeModule,
         TuiStringifyContentPipeModule,
-        TuiNotificationModule,
+        TuiNotificationComponent,
         TuiLinkDirective,
         TuiComboBoxModule,
         TuiDataListModule,

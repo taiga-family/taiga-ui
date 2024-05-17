@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {TuiMapperPipe} from '@taiga-ui/cdk';
-import {TuiCalendarModule, TuiScrollbarComponent} from '@taiga-ui/core';
+import {TuiCalendarComponent, TuiScrollbarComponent} from '@taiga-ui/core';
 
 import {TuiPrimitiveCalendarRangeComponent} from './primitive-calendar-range.component';
 
@@ -8,7 +8,7 @@ import {TuiPrimitiveCalendarRangeComponent} from './primitive-calendar-range.com
  * @internal
  */
 @NgModule({
-    imports: [TuiMapperPipe, TuiScrollbarComponent, TuiCalendarModule],
+    imports: [TuiMapperPipe, TuiScrollbarComponent, TuiCalendarComponent],
     declarations: [TuiPrimitiveCalendarRangeComponent],
     exports: [TuiPrimitiveCalendarRangeComponent],
 })

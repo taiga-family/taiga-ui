@@ -13,7 +13,7 @@ import {
     TuiHintModule,
     TuiLabelDirective,
     TuiLinkDirective,
-    TuiNotificationModule,
+    TuiNotificationComponent,
     TuiSvgComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
@@ -47,7 +47,7 @@ import {ExampleTuiTextareaComponent} from './textarea.component';
         TuiLabelDirective,
         TuiTextfieldControllerModule,
         TuiHintModule,
-        TuiNotificationModule,
+        TuiNotificationComponent,
         TuiErrorModule,
         TuiFieldErrorPipeModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiTextareaComponent)),

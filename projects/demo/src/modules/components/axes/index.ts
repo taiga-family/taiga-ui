@@ -7,11 +7,11 @@ import {
     TUI_ALWAYS_SOLID,
     TuiAxesComponent,
 } from '@taiga-ui/addon-charts';
-import {TuiNotificationModule} from '@taiga-ui/core';
+import {TuiNotificationComponent} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
-    imports: [TuiAxesComponent, TuiNotificationModule, TuiDemo],
+    imports: [TuiAxesComponent, TuiNotificationComponent, TuiDemo],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,

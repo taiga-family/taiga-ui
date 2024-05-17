@@ -3,7 +3,11 @@ import {NgModule} from '@angular/core';
 import {ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
-import {TuiLinkDirective, TuiNotificationModule, TuiSvgComponent} from '@taiga-ui/core';
+import {
+    TuiLinkDirective,
+    TuiNotificationComponent,
+    TuiSvgComponent,
+} from '@taiga-ui/core';
 import {TuiCheckboxComponent, TuiInputTagModule} from '@taiga-ui/kit';
 
 import {StylesInfoModule} from '../../app/styles-info/styles-info.module';
@@ -17,7 +21,7 @@ import {TablesComponent} from './tables.component';
         TuiCheckboxComponent,
         TuiInputTagModule,
         TuiSvgComponent,
-        TuiNotificationModule,
+        TuiNotificationComponent,
         TuiAddonDocModule,
         TuiLinkDirective,
         StylesInfoModule,

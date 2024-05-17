@@ -15,7 +15,6 @@ import {
     TuiMonth,
     tuiNullableSame,
 } from '@taiga-ui/cdk';
-import {TUI_DEFAULT_MARKER_HANDLER} from '@taiga-ui/core/constants';
 import {TUI_DAY_TYPE_HANDLER, TUI_SHORT_WEEK_DAYS} from '@taiga-ui/core/tokens';
 import type {TuiMarkerHandler, TuiRangeState} from '@taiga-ui/core/types';
 
@@ -35,7 +34,7 @@ export class TuiPrimitiveCalendarComponent {
     public disabledItemHandler: TuiBooleanHandler<TuiDay> = TUI_FALSE_HANDLER;
 
     @Input()
-    public markerHandler: TuiMarkerHandler = TUI_DEFAULT_MARKER_HANDLER;
+    public markerHandler: TuiMarkerHandler | null = null;
 
     @Input()
     public value: TuiDay | TuiDayRange | readonly TuiDay[] | null = null;
@@ -137,15 +136,15 @@ export class TuiPrimitiveCalendarComponent {
         day: TuiDay,
         today: boolean,
         inRange: boolean,
-        markerHandler: TuiMarkerHandler,
+        markerHandler: TuiMarkerHandler | null,
     ): [string, string] | [string] | null => {
         if (today || inRange) {
             return null;
         }
 
-        const markers = markerHandler(day);
+        const markers = markerHandler?.(day);
 
-        return markers.length === 0 ? null : markers;
+        return markers?.length ? markers : null;
     };
 
     protected itemIsToday(item: TuiDay): boolean {

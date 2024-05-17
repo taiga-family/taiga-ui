@@ -1,5 +1,10 @@
 import type {TuiStringHandler} from '@taiga-ui/cdk';
-import {DEFAULT_ICONS_PATH, TUI_CACHE_BUSTING_PAYLOAD} from '@taiga-ui/core/constants';
+import {TUI_VERSION} from '@taiga-ui/cdk';
+
+export const TUI_CACHE_BUSTING_PAYLOAD = `?v=${TUI_VERSION}` as const;
+
+export const DEFAULT_ICONS_PATH: TuiStringHandler<string> = name =>
+    name.includes('.svg#') ? name : `#${name}`;
 
 export function tuiIconsPathFactory(staticPath: string): TuiStringHandler<string> {
     const base = staticPath.endsWith('/') ? staticPath : `${staticPath}/`;

@@ -9,8 +9,18 @@ import {
 } from '@angular/core';
 import {TUI_IS_IOS, tuiGetElementOffset, tuiInjectElement} from '@taiga-ui/cdk';
 import {TuiScrollControlsComponent} from '@taiga-ui/core/components/scroll-controls';
-import {TUI_SCROLL_INTO_VIEW, TUI_SCROLLABLE} from '@taiga-ui/core/constants';
 import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
+
+/**
+ * An event for scrolling an element into view within {@link TuiScrollbarComponent}.
+ */
+export const TUI_SCROLL_INTO_VIEW = 'tui-scroll-into-view';
+
+/**
+ * An event to notify {@link TuiScrollbarComponent} that
+ * it should control a nested element.
+ */
+export const TUI_SCROLLABLE = 'tui-scrollable';
 
 @Component({
     standalone: true,

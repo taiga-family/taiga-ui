@@ -10,7 +10,6 @@ import {
     TuiMonth,
 } from '@taiga-ui/cdk';
 import type {TuiMarkerHandler} from '@taiga-ui/core';
-import {TUI_DEFAULT_MARKER_HANDLER} from '@taiga-ui/core';
 import type {TuiDayRangePeriod} from '@taiga-ui/kit';
 import {tuiCreateDefaultDayRangePeriods} from '@taiga-ui/kit';
 
@@ -82,11 +81,10 @@ export class ExampleTuiCalendarRangeComponent {
     ];
 
     protected readonly markerHandlerVariants: readonly TuiMarkerHandler[] = [
-        TUI_DEFAULT_MARKER_HANDLER,
         (day: TuiDay) => (day.day % 2 === 0 ? TWO_DOTS : ONE_DOT),
     ];
 
-    protected markerHandler: TuiMarkerHandler = this.markerHandlerVariants[0];
+    protected markerHandler: TuiMarkerHandler | null = null;
     protected min: TuiDay = this.minVariants[0];
     protected max: TuiDay = this.maxVariants[0];
     protected cleaner = false;

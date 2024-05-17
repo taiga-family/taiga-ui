@@ -4,7 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {
-    TuiNotificationModule,
+    TuiNotificationComponent,
     TuiSurfaceDirective,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
@@ -18,7 +18,7 @@ import {TuiCardLargeDirective, TuiCellDirective} from '@taiga-ui/layout';
 @Component({
     standalone: true,
     imports: [
-        TuiNotificationModule,
+        TuiNotificationComponent,
         TuiCellDirective,
         TuiAvatarComponent,
         TuiSelectModule,

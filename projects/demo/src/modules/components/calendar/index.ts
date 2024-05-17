@@ -12,18 +12,14 @@ import {
     TuiMonth,
 } from '@taiga-ui/cdk';
 import type {TuiMarkerHandler} from '@taiga-ui/core';
-import {
-    TUI_DEFAULT_MARKER_HANDLER,
-    TuiCalendarModule,
-    TuiLinkDirective,
-} from '@taiga-ui/core';
+import {TuiCalendarComponent, TuiLinkDirective} from '@taiga-ui/core';
 
 const TWO_DOTS: [string, string] = ['var(--tui-primary)', 'var(--tui-info-fill)'];
 const ONE_DOT: [string] = ['var(--tui-success-fill)'];
 
 @Component({
     standalone: true,
-    imports: [RouterModule, TuiLinkDirective, TuiCalendarModule, TuiDemo],
+    imports: [RouterModule, TuiLinkDirective, TuiCalendarComponent, TuiDemo],
     templateUrl: './index.html',
     changeDetection,
 })
@@ -79,11 +75,10 @@ export default class ExampleComponent {
     protected disabledItemHandler = this.disabledItemHandlerVariants[0];
 
     protected readonly markerHandlerVariants: readonly TuiMarkerHandler[] = [
-        TUI_DEFAULT_MARKER_HANDLER,
         (day: TuiDay) => (day.day % 2 === 0 ? TWO_DOTS : ONE_DOT),
     ];
 
-    protected markerHandler: TuiMarkerHandler = this.markerHandlerVariants[0];
+    protected markerHandler: TuiMarkerHandler | null = null;
 
     protected readonly valueVariants: ReadonlyArray<TuiDay | TuiDayRange> = [
         TuiDay.currentLocal(),

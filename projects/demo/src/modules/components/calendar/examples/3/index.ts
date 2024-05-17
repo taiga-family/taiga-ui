@@ -4,14 +4,14 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiDay} from '@taiga-ui/cdk';
 import {TuiDayRange, TuiMonth} from '@taiga-ui/cdk';
-import {TuiCalendarModule, type TuiMarkerHandler} from '@taiga-ui/core';
+import {TuiCalendarComponent, type TuiMarkerHandler} from '@taiga-ui/core';
 
 const TWO_DOTS: [string, string] = ['var(--tui-primary)', 'var(--tui-info-fill)'];
 const ONE_DOT: [string] = ['var(--tui-success-fill)'];
 
 @Component({
     standalone: true,
-    imports: [NgIf, TuiCalendarModule],
+    imports: [NgIf, TuiCalendarComponent],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
