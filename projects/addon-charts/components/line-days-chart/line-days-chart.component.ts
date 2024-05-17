@@ -1,3 +1,4 @@
+import {NgForOf} from '@angular/common';
 import type {AfterViewInit, QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
@@ -29,7 +30,9 @@ import {
     tuiZonefree,
 } from '@taiga-ui/cdk';
 import type {TuiPoint} from '@taiga-ui/core';
+import {TuiHint} from '@taiga-ui/core';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import {combineLatest, filter} from 'rxjs';
 
 import {TuiLineDaysChartHintDirective} from './line-days-chart-hint.directive';
@@ -37,7 +40,9 @@ import {TuiLineDaysChartHintDirective} from './line-days-chart-hint.directive';
 const DUMMY: TuiPoint = [NaN, NaN];
 
 @Component({
+    standalone: true,
     selector: 'tui-line-days-chart',
+    imports: [TuiLineChartComponent, NgForOf, TuiHint, PolymorpheusModule],
     templateUrl: './line-days-chart.template.html',
     styleUrls: ['./line-days-chart.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

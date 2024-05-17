@@ -849,37 +849,27 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.LegendItem,
-        loadChildren: async () =>
-            (await import('../charts/legend-item/legend-item.module'))
-                .ExampleTuiLegendItemModule,
+        loadComponent: async () => import('../components/legend-item'),
         title: 'LegendItem',
     }),
     route({
         path: DemoRoute.LineChart,
-        loadChildren: async () =>
-            (await import('../charts/line-chart/line-chart.module'))
-                .ExampleTuiLineChartModule,
+        loadComponent: async () => import('../components/line-chart'),
         title: 'LineChart',
     }),
     route({
         path: DemoRoute.LineDaysChart,
-        loadChildren: async () =>
-            (await import('../charts/line-days-chart/line-days-chart.module'))
-                .ExampleTuiLineDaysChartModule,
+        loadComponent: async () => import('../components/line-days-chart'),
         title: 'LineDaysChart',
     }),
     route({
         path: DemoRoute.PieChart,
-        loadChildren: async () =>
-            (await import('../charts/pie-chart/pie-chart.module'))
-                .ExampleTuiPieChartModule,
+        loadComponent: async () => import('../components/pie-chart'),
         title: 'PieChart',
     }),
     route({
         path: DemoRoute.RingChart,
-        loadChildren: async () =>
-            (await import('../charts/ring-chart/ring-chart.module'))
-                .ExampleTuiRingChartModule,
+        loadComponent: async () => import('../components/ring-chart'),
         title: 'RingChart',
     }),
     // STYLES

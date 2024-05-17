@@ -1117,4 +1117,67 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/addon-doc',
         },
     },
+    {
+        from: {
+            name: 'TuiLegendItemModule',
+            moduleSpecifier: '@taiga-ui/addon-charts',
+        },
+        to: {
+            name: 'TuiLegendItemComponent',
+            moduleSpecifier: '@taiga-ui/addon-charts',
+        },
+    },
+    {
+        from: {
+            name: 'TuiLineChartModule',
+            moduleSpecifier: '@taiga-ui/addon-charts',
+        },
+        to: [
+            {
+                name: 'TuiLineChartComponent',
+                moduleSpecifier: '@taiga-ui/addon-charts',
+            },
+            {
+                name: 'TuiLineChartHintDirective',
+                moduleSpecifier: '@taiga-ui/addon-charts',
+            },
+        ],
+    },
+
+    {
+        from: {
+            name: 'TuiLineDaysChartModule',
+            moduleSpecifier: '@taiga-ui/addon-charts',
+        },
+        to: [
+            {
+                name: 'TuiLineDaysChartComponent',
+                moduleSpecifier: '@taiga-ui/addon-charts',
+            },
+            {
+                name: 'TuiLineDaysChartHintDirective',
+                moduleSpecifier: '@taiga-ui/addon-charts',
+            },
+        ],
+    },
+    {
+        from: {
+            name: 'TuiPieChartModule',
+            moduleSpecifier: '@taiga-ui/addon-charts',
+        },
+        to: {
+            name: 'TuiPieChartComponent',
+            moduleSpecifier: '@taiga-ui/addon-charts',
+        },
+    },
+    {
+        from: {
+            name: 'TuiRingChartModule',
+            moduleSpecifier: '@taiga-ui/addon-charts',
+        },
+        to: {
+            name: 'TuiRingChartComponent',
+            moduleSpecifier: '@taiga-ui/addon-charts',
+        },
+    },
 ];

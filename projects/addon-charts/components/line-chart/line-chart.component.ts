@@ -1,3 +1,4 @@
+import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
 import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
@@ -15,11 +16,13 @@ import {
     EMPTY_QUERY,
     TuiIdService,
     tuiIsPresent,
+    TuiLetDirective,
     tuiPure,
     tuiZoneOptimized,
 } from '@taiga-ui/cdk';
 import type {TuiPoint} from '@taiga-ui/core';
 import {
+    TuiHint,
     TuiHintHoverDirective,
     TuiHintOptionsDirective,
     tuiHintOptionsProvider,
@@ -32,7 +35,9 @@ import {TUI_LINE_CHART_OPTIONS} from './line-chart.options';
 import {TuiLineChartHintDirective} from './line-chart-hint.directive';
 
 @Component({
+    standalone: true,
     selector: 'tui-line-chart',
+    imports: [TuiLetDirective, AsyncPipe, NgIf, TuiHint, NgForOf],
     templateUrl: './line-chart.template.html',
     styleUrls: ['./line-chart.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

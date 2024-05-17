@@ -1,8 +1,11 @@
 import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/core';
 import type {TuiSizeS} from '@taiga-ui/core';
+import {TuiButtonDirective} from '@taiga-ui/core';
 
 @Component({
+    standalone: true,
     selector: 'tui-legend-item',
+    imports: [TuiButtonDirective],
     templateUrl: './legend-item.template.html',
     styleUrls: ['./legend-item.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

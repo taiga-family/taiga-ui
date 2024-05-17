@@ -9,10 +9,18 @@ import {
 } from '@angular/core';
 import type {SafeValue} from '@angular/platform-browser';
 import type {TuiContext} from '@taiga-ui/cdk';
-import {TuiIdService, tuiPure, tuiSum} from '@taiga-ui/cdk';
+import {
+    TuiHoveredDirective,
+    TuiIdService,
+    tuiPure,
+    TuiRepeatTimesDirective,
+    tuiSum,
+} from '@taiga-ui/cdk';
 import type {TuiSizeXL, TuiSizeXS} from '@taiga-ui/core';
-import {TuiHintOptionsDirective, tuiHintOptionsProvider} from '@taiga-ui/core';
+import {TuiHint, TuiHintOptionsDirective, tuiHintOptionsProvider} from '@taiga-ui/core';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+
+import {TuiPieChartDirective} from './pie-chart.directive';
 
 const RADII = {
     xs: '50',
@@ -30,7 +38,14 @@ const TRANSFORM = {
 };
 
 @Component({
+    standalone: true,
     selector: 'tui-pie-chart',
+    imports: [
+        TuiHint,
+        TuiRepeatTimesDirective,
+        TuiHoveredDirective,
+        TuiPieChartDirective,
+    ],
     templateUrl: './pie-chart.template.html',
     styleUrls: ['./pie-chart.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

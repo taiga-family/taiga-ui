@@ -6,10 +6,13 @@ import {
     Input,
     Output,
 } from '@angular/core';
+import {TuiPieChartComponent} from '@taiga-ui/addon-charts/components/pie-chart';
 import type {TuiSizeXL, TuiSizeXS} from '@taiga-ui/core';
 
 @Component({
+    standalone: true,
     selector: 'tui-ring-chart',
+    imports: [TuiPieChartComponent],
     templateUrl: './ring-chart.template.html',
     styleUrls: ['./ring-chart.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
