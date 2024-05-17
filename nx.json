@@ -42,14 +42,12 @@
             "inputs": ["default", "^default"]
         }
     },
-    "affected": {
-        "defaultBase": "origin/main"
-    },
     "workspaceLayout": {
         "libsDir": "projects",
         "appsDir": "projects"
     },
     "cli": {
         "analytics": "ce6ae05d-f6ae-4271-89e4-40e616f7090f"
-    }
+    },
+    "defaultBase": "origin/main"
 }

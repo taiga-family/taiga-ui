@@ -4,6 +4,7 @@
     "sourceRoot": "projects/demo-cypress",
     "projectType": "application",
     "prefix": "app",
+    "implicitDependencies": ["demo"],
     "targets": {
         "component-test": {
             "executor": "@nx/cypress:cypress",
@@ -14,6 +15,5 @@
                 "devServerTarget": "demo:build"
             }
         }
-    },
-    "implicitDependencies": ["demo"]
+    }
 }
