@@ -5,7 +5,7 @@ import {TuiDemo} from '@demo/utils';
 import {
     TuiDropdownPortalDirective,
     TuiLabelDirective,
-    TuiNotificationModule,
+    TuiNotificationComponent,
 } from '@taiga-ui/core';
 import {TuiCheckboxComponent} from '@taiga-ui/kit';
 
@@ -15,7 +15,7 @@ import TuiTabBarExample from './examples/1';
     standalone: true,
     imports: [
         TuiDemo,
-        TuiNotificationModule,
+        TuiNotificationComponent,
         TuiCheckboxComponent,
         TuiLabelDirective,
         TuiTabBarExample,
