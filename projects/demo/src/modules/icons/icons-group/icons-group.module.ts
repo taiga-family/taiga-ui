@@ -7,7 +7,7 @@ import {
     TuiKeysPipe,
     TuiLetDirective,
 } from '@taiga-ui/cdk';
-import {TuiHintModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
+import {TuiHint, TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {TuiBadgeDirective, TuiInputModule} from '@taiga-ui/kit';
 
 import {IconsGroupComponent} from './icons-group.component';
@@ -20,7 +20,7 @@ import {IconsGroupDirective} from './icons-group.directive';
         TuiBadgeDirective,
         TuiKeysPipe,
         TuiFilterPipe,
-        TuiHintModule,
+        TuiHint,
         TuiTextfieldControllerModule,
         ReactiveFormsModule,
         TuiLetDirective,

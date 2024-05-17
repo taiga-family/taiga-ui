@@ -7,7 +7,7 @@ import type {TuiIdentityMatcher} from '@taiga-ui/cdk';
 import {TUI_DEFAULT_IDENTITY_MATCHER} from '@taiga-ui/cdk';
 import {
     TuiDataList,
-    TuiHintModule,
+    TuiHint,
     TuiRootComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
@@ -81,7 +81,7 @@ describe('Select', () => {
                 TuiSelectModule,
                 TuiRootComponent,
                 TuiTextfieldControllerModule,
-                TuiHintModule,
+                TuiHint,
                 TuiDataList,
                 TuiDataListWrapperModule,
             ],

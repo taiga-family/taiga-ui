@@ -6,6 +6,7 @@ import {BehaviorSubject} from 'rxjs';
 import {TuiHintHoverDirective} from './hint-hover.directive';
 
 @Directive({
+    standalone: true,
     selector: '[tuiHint][tuiHintManual]',
     providers: [tuiAsDriver(TuiHintManualDirective)],
 })

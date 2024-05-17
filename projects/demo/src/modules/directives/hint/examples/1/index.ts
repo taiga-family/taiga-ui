@@ -1,12 +1,15 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiAutoColorPipe, TuiHint} from '@taiga-ui/core';
+import {TuiAvatarComponent} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-hint-example-1',
+    standalone: true,
+    imports: [TuiAvatarComponent, TuiHint, TuiAutoColorPipe],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiHintExample1 {}
+export default class ExampleComponent {}

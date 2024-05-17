@@ -12,6 +12,7 @@ import {TuiHintService} from './hint.service';
 import {TUI_HINT_OPTIONS} from './hint-options.directive';
 
 @Directive({
+    standalone: true,
     selector: '[tuiHint]:not(ng-container):not(ng-template)',
     providers: [
         tuiAsRectAccessor(TuiHintDirective),

@@ -5,7 +5,7 @@ import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiButtonDirective,
-    TuiHintModule,
+    TuiHint,
     TuiLinkDirective,
     TuiNotificationComponent,
     TuiTextfieldControllerModule,
@@ -29,7 +29,7 @@ import {ExampleTuiInputMonthRangeComponent} from './input-month-range.component'
         TuiButtonDirective,
         TuiInputMonthRangeModule,
         TuiTextfieldControllerModule,
-        TuiHintModule,
+        TuiHint,
         TuiNotificationComponent,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiInputMonthRangeComponent)),
     ],

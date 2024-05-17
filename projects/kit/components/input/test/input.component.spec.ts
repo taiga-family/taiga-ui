@@ -7,7 +7,7 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {
     TuiDataList,
-    TuiHintModule,
+    TuiHint,
     TuiRootComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
@@ -114,7 +114,7 @@ describe('Input', () => {
                 ReactiveFormsModule,
                 TuiInputModule,
                 TuiTextfieldControllerModule,
-                TuiHintModule,
+                TuiHint,
                 TuiDataList,
                 TuiDataListWrapperModule,
             ],

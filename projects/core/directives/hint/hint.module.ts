@@ -1,6 +1,4 @@
-import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiHintComponent} from './hint.component';
 import {TuiHintDirective} from './hint.directive';
@@ -18,8 +16,7 @@ import {
 } from './hint-unstyled.component';
 
 @NgModule({
-    imports: [CommonModule, PolymorpheusModule],
-    declarations: [
+    imports: [
         TuiHintComponent,
         TuiHintDirective,
         TuiHintDriverDirective,
@@ -47,4 +44,4 @@ import {
         TuiHintUnstyledDirective,
     ],
 })
-export class TuiHintModule {}
+export class TuiHint {}

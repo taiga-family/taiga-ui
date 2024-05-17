@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiHintModule, TuiSurfaceDirective, TuiTitleDirective} from '@taiga-ui/core';
+import {TuiHint, TuiSurfaceDirective, TuiTitleDirective} from '@taiga-ui/core';
 import {TuiFadeDirective} from '@taiga-ui/kit';
 import {TuiCardMediumDirective} from '@taiga-ui/layout';
 
@@ -12,7 +12,7 @@ import {TuiCardMediumDirective} from '@taiga-ui/layout';
         TuiSurfaceDirective,
         TuiTitleDirective,
         TuiFadeDirective,
-        TuiHintModule,
+        TuiHint,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

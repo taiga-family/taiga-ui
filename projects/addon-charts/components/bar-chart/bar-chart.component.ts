@@ -12,8 +12,8 @@ import type {TuiContext, TuiMapper} from '@taiga-ui/cdk';
 import {EMPTY_QUERY, TuiIdService, TuiMapperPipe, tuiPure, tuiSum} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {
+    TuiHint,
     TuiHintHoverDirective,
-    TuiHintModule,
     TuiHintOptionsDirective,
     tuiHintOptionsProvider,
 } from '@taiga-ui/core';
@@ -23,7 +23,7 @@ import type {Observable} from 'rxjs';
 @Component({
     standalone: true,
     selector: 'tui-bar-chart',
-    imports: [NgForOf, TuiHintModule, TuiMapperPipe, AsyncPipe, TuiBarSetComponent],
+    imports: [NgForOf, TuiHint, TuiMapperPipe, AsyncPipe, TuiBarSetComponent],
     templateUrl: './bar-chart.template.html',
     styleUrls: ['./bar-chart.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

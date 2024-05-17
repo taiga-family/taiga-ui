@@ -5,7 +5,7 @@ import {RouterModule} from '@angular/router';
 import {TuiSetupComponent} from '@demo/utils';
 import {TuiAxesComponent, TuiLineChartModule} from '@taiga-ui/addon-charts';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
-import {TuiHintModule, TuiLinkDirective, TuiNotificationComponent} from '@taiga-ui/core';
+import {TuiHint, TuiLinkDirective, TuiNotificationComponent} from '@taiga-ui/core';
 
 import {TuiLineChartExample1} from './examples/1';
 import {TuiLineChartExample2} from './examples/2';
@@ -19,7 +19,7 @@ import {ExampleTuiLineChartComponent} from './line-chart.component';
         CommonModule,
         FormsModule,
         TuiLinkDirective,
-        TuiHintModule,
+        TuiHint,
         TuiAxesComponent,
         TuiNotificationComponent,
         TuiLineChartModule,

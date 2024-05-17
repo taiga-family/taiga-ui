@@ -1047,4 +1047,14 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/kit',
         },
     },
+    {
+        from: {
+            name: 'TuiHintModule',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+        to: {
+            name: 'TuiHint',
+            moduleSpecifier: '@taiga-ui/core',
+        },
+    },
 ];

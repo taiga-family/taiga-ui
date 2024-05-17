@@ -5,7 +5,7 @@ import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {tuiPx} from '@taiga-ui/cdk';
-import {TuiHintModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
+import {TuiHint, TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {
     DEFAULT_ROWS,
     LINE_HEIGHT_L,
@@ -99,7 +99,7 @@ describe('Textarea', () => {
                 ReactiveFormsModule,
                 TuiTextareaModule,
                 TuiTextfieldControllerModule,
-                TuiHintModule,
+                TuiHint,
             ],
             providers: [NG_EVENT_PLUGINS],
             declarations: [TestComponent],

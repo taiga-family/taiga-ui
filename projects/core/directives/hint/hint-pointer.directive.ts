@@ -6,6 +6,7 @@ import {tuiAsDriver, tuiAsRectAccessor} from '@taiga-ui/core/classes';
 import {TuiHintHoverDirective} from './hint-hover.directive';
 
 @Directive({
+    standalone: true,
     selector: '[tuiHint][tuiHintPointer]',
     providers: [
         tuiAsRectAccessor(TuiHintPointerDirective),

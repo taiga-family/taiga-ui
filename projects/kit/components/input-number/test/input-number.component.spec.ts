@@ -7,7 +7,7 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {CHAR_MINUS, CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
 import type {TuiDecimalMode, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {
-    TuiHintModule,
+    TuiHint,
     TuiNumberFormatDirective,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
@@ -69,7 +69,7 @@ describe('InputNumber', () => {
                 TuiNumberFormatDirective,
                 ReactiveFormsModule,
                 TuiTextfieldControllerModule,
-                TuiHintModule,
+                TuiHint,
             ],
             providers: [NG_EVENT_PLUGINS],
             declarations: [TestComponent],

@@ -6,7 +6,7 @@ import {TuiSetupComponent} from '@demo/utils';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiButtonDirective,
-    TuiHintModule,
+    TuiHint,
     TuiLinkDirective,
     TuiNotificationComponent,
     TuiPrimitiveTextfieldModule,
@@ -40,7 +40,7 @@ import {ExampleTuiPrimitiveTextfieldComponent} from './primitive-textfield.compo
         TuiSvgComponent,
         TuiButtonDirective,
         PolymorpheusModule,
-        TuiHintModule,
+        TuiHint,
         TuiRadioListComponent,
         TuiWrapperModule,
         TuiAddonDocModule,

@@ -8,7 +8,7 @@ import {TuiDay, TuiValueTransformer} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {
     TUI_DATE_FORMAT,
-    TuiHintModule,
+    TuiHint,
     TuiRootComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
@@ -84,7 +84,7 @@ describe('InputDate', () => {
             NoopAnimationsModule,
             TuiInputDateModule,
             ReactiveFormsModule,
-            TuiHintModule,
+            TuiHint,
             TuiTextfieldControllerModule,
         ],
         declarations: [TestComponent],

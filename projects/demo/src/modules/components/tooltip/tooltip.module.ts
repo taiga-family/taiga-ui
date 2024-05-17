@@ -7,7 +7,7 @@ import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiLetDirective} from '@taiga-ui/cdk';
 import {
     TuiAutoColorPipe,
-    TuiHintModule,
+    TuiHint,
     TuiLinkDirective,
     TuiLoaderComponent,
     TuiTextfieldControllerModule,
@@ -25,7 +25,7 @@ import {ExampleTuiTooltipComponent} from './tooltip.component';
 @NgModule({
     imports: [
         TuiTooltipModule,
-        TuiHintModule,
+        TuiHint,
         TuiLinkDirective,
         TuiAvatarComponent,
         TuiLoaderComponent,

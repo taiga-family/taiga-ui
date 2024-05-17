@@ -67,6 +67,7 @@ export const tuiHintOptionsProvider: (
 });
 
 @Directive({
+    standalone: true,
     selector: '[tuiHintContent]',
     providers: [tuiProvide(TUI_HINT_OPTIONS, TuiHintOptionsDirective)],
 })

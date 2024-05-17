@@ -10,7 +10,7 @@ import {
 } from '@taiga-ui/addon-charts';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {tuiCeil, tuiPure} from '@taiga-ui/cdk';
-import {TuiHintModule} from '@taiga-ui/core';
+import {TuiHint} from '@taiga-ui/core';
 
 const BENJI = 100;
 
@@ -19,7 +19,7 @@ const BENJI = 100;
     imports: [
         TuiAxesComponent,
         TuiBarChartComponent,
-        TuiHintModule,
+        TuiHint,
         TuiAmountPipe,
         AsyncPipe,
         NgForOf,

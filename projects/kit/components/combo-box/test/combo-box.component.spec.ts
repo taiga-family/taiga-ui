@@ -10,7 +10,7 @@ import {TUI_DEFAULT_IDENTITY_MATCHER} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {
     TuiDataList,
-    TuiHintModule,
+    TuiHint,
     TuiRootComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
@@ -105,7 +105,7 @@ describe('ComboBox', () => {
                 TuiComboBoxModule,
                 TuiRootComponent,
                 TuiTextfieldControllerModule,
-                TuiHintModule,
+                TuiHint,
                 TuiDataList,
                 TuiDataListWrapperModule,
             ],

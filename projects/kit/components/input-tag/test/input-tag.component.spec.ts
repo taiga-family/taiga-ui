@@ -6,11 +6,7 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk';
 import {CHAR_NO_BREAK_SPACE, TUI_TRUE_HANDLER} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {
-    TuiHintModule,
-    TuiRootComponent,
-    TuiTextfieldControllerModule,
-} from '@taiga-ui/core';
+import {TuiHint, TuiRootComponent, TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {TuiInputTagComponent, TuiInputTagModule} from '@taiga-ui/kit';
 import {
     tuiIsActive,
@@ -98,7 +94,7 @@ describe('InputTag', () => {
                 NoopAnimationsModule,
                 TuiInputTagModule,
                 TuiRootComponent,
-                TuiHintModule,
+                TuiHint,
                 TuiTextfieldControllerModule,
             ],
             declarations: [TestComponent],

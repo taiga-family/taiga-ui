@@ -7,11 +7,7 @@ import {By} from '@angular/platform-browser';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiTime} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {
-    TuiHintModule,
-    TuiRootComponent,
-    TuiTextfieldControllerModule,
-} from '@taiga-ui/core';
+import {TuiHint, TuiRootComponent, TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {TuiInputTimeComponent, TuiInputTimeModule} from '@taiga-ui/kit';
 import {tuiCreateKeyboardEvent, TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
@@ -76,7 +72,7 @@ describe('InputTime', () => {
                 ReactiveFormsModule,
                 NoopAnimationsModule,
                 TuiTextfieldControllerModule,
-                TuiHintModule,
+                TuiHint,
             ],
             declarations: [TestComponent],
             providers: [NG_EVENT_PLUGINS],

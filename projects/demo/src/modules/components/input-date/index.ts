@@ -16,7 +16,7 @@ import {
 import type {TuiMarkerHandler} from '@taiga-ui/core';
 import {
     TuiDropdownModule,
-    TuiHintModule,
+    TuiHint,
     TuiLinkDirective,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
@@ -36,7 +36,7 @@ const ONE_DOT: [string] = ['var(--tui-success-fill)'];
         TuiInputDateModule,
         TuiTextfieldControllerModule,
         TuiDropdownModule,
-        TuiHintModule,
+        TuiHint,
         TuiLinkDirective,
         ReactiveFormsModule,
         InheritedDocumentationModule,

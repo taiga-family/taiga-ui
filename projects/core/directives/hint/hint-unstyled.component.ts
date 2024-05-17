@@ -8,25 +8,32 @@ import {
 import type {TuiContext} from '@taiga-ui/cdk';
 import {tuiParentAnimation} from '@taiga-ui/core/animations';
 import type {TuiPortalItem} from '@taiga-ui/core/types';
-import {POLYMORPHEUS_CONTEXT, PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
+import {
+    POLYMORPHEUS_CONTEXT,
+    PolymorpheusComponent,
+    PolymorpheusModule,
+} from '@tinkoff/ng-polymorpheus';
 
 import {TuiHintDirective} from './hint.directive';
 
 @Component({
+    standalone: true,
+    imports: [PolymorpheusModule],
     template: `
         <ng-container
             *polymorpheusOutlet="context.$implicit.content; context: context"
         ></ng-container>
     `,
-    host: {'[@tuiParentAnimation]': ''},
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [tuiParentAnimation],
+    host: {'[@tuiParentAnimation]': ''},
 })
 export class TuiHintUnstyledComponent {
     protected readonly context = inject<TuiContext<TuiPortalItem>>(POLYMORPHEUS_CONTEXT);
 }
 
 @Directive({
+    standalone: true,
     selector: 'ng-template[tuiHint]',
     providers: [
         {

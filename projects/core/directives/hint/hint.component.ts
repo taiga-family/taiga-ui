@@ -26,7 +26,7 @@ import {TUI_ANIMATIONS_SPEED, TUI_VIEWPORT} from '@taiga-ui/core/tokens';
 import type {TuiPortalItem} from '@taiga-ui/core/types';
 import {tuiIsObscured, tuiToAnimationOptions} from '@taiga-ui/core/utils';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
+import {POLYMORPHEUS_CONTEXT, PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import {map} from 'rxjs';
 
 import {TuiHintDirective} from './hint.directive';
@@ -44,7 +44,9 @@ export const TUI_HINT_PROVIDERS = [
 ];
 
 @Component({
+    standalone: true,
     selector: 'tui-hint',
+    imports: [PolymorpheusModule],
     template: `
         <ng-content></ng-content>
         <span

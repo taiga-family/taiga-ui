@@ -6,7 +6,7 @@ import {TuiSetupComponent} from '@demo/utils';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiButtonDirective,
-    TuiHintModule,
+    TuiHint,
     TuiLinkDirective,
     TuiNotificationComponent,
     TuiNumberFormatDirective,
@@ -37,7 +37,7 @@ import {ExampleTuiInputSliderComponent} from './input-slider.component';
         CommonModule,
         TuiRadioListComponent,
         TuiButtonDirective,
-        TuiHintModule,
+        TuiHint,
         TuiAddonDocModule,
         TuiLinkDirective,
         TuiSvgComponent,

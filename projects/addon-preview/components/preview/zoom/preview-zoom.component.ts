@@ -10,7 +10,7 @@ import {
 import {FormsModule} from '@angular/forms';
 import {TUI_PREVIEW_ICONS, TUI_PREVIEW_ZOOM_TEXTS} from '@taiga-ui/addon-preview/tokens';
 import {TUI_FALSE_HANDLER, tuiClamp} from '@taiga-ui/cdk';
-import {TuiButtonDirective, TuiHintModule} from '@taiga-ui/core';
+import {TuiButtonDirective, TuiHint} from '@taiga-ui/core';
 import {TuiSliderModule} from '@taiga-ui/kit';
 import {map, merge, of, startWith, switchMap, timer} from 'rxjs';
 
@@ -27,7 +27,7 @@ const STEP = 0.5;
         TuiButtonDirective,
         TuiPreviewActionDirective,
         TuiSliderModule,
-        TuiHintModule,
+        TuiHint,
         PercentPipe,
         FormsModule,
     ],

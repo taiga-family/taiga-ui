@@ -26,6 +26,7 @@ import {
 } from 'rxjs';
 
 @Directive({
+    standalone: true,
     selector: '[tuiHintDescribe]',
     providers: [tuiAsDriver(TuiHintDescribeDirective)],
 })
