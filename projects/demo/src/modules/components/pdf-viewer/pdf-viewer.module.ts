@@ -4,7 +4,7 @@ import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiButtonDirective,
-    TuiLoaderModule,
+    TuiLoaderComponent,
     TuiNotificationComponent,
 } from '@taiga-ui/core';
 import {TuiPdfViewerModule} from '@taiga-ui/kit';
@@ -20,7 +20,7 @@ import {ExampleTuiPdfViewerComponent} from './pdf-viewer.component';
     imports: [
         CommonModule,
         TuiPdfViewerModule,
-        TuiLoaderModule,
+        TuiLoaderComponent,
         TuiButtonDirective,
         TuiNotificationComponent,
         TuiAddonDocModule,

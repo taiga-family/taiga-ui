@@ -8,7 +8,7 @@ import {TuiTable} from '@taiga-ui/addon-table';
 import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
 import {
     TuiButtonDirective,
-    TuiDataListModule,
+    TuiDataList,
     TuiDropdownModule,
     TuiLinkDirective,
     TuiSvgComponent,
@@ -25,7 +25,7 @@ import {TuiDropdownContextExample3} from './examples/3';
     imports: [
         CommonModule,
         TuiAddonDocModule,
-        TuiDataListModule,
+        TuiDataList,
         TuiSvgComponent,
         TuiTable,
         TuiDataListDropdownManagerModule,

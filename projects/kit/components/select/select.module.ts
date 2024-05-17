@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
 import {
-    TuiDataListModule,
+    TuiDataList,
     TuiHostedDropdownModule,
     TuiPrimitiveTextfieldModule,
     TuiTextfieldControllerModule,
@@ -32,7 +32,7 @@ import {TuiSelectDirective} from './select.directive';
         TuiWrapperModule,
         TuiTextfieldControllerModule,
         TuiDataListWrapperModule,
-        TuiDataListModule,
+        TuiDataList,
         TuiStringifyContentPipeModule,
     ],
     declarations: [

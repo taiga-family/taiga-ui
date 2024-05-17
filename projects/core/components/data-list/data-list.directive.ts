@@ -3,6 +3,7 @@ import {Directive} from '@angular/core';
 import {tuiProvide} from '@taiga-ui/cdk';
 
 @Directive({
+    standalone: true,
     selector: 'ng-template[tuiDataList]',
 })
 export class TuiDataListDirective {}

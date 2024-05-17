@@ -1,7 +1,7 @@
 import {NgForOf, TitleCasePipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {tuiCapitalizeFirstLetter, TuiDataListModule, TuiFlagPipe} from '@taiga-ui/core';
+import {tuiCapitalizeFirstLetter, TuiDataList, TuiFlagPipe} from '@taiga-ui/core';
 import type {TuiLanguageName} from '@taiga-ui/i18n';
 import {TuiCountryIsoCode, TuiLanguageSwitcher} from '@taiga-ui/i18n';
 import {TuiSelectModule} from '@taiga-ui/kit';
@@ -11,7 +11,7 @@ import {TuiSelectModule} from '@taiga-ui/kit';
     selector: 'tui-language-switcher',
     imports: [
         ReactiveFormsModule,
-        TuiDataListModule,
+        TuiDataList,
         NgForOf,
         TitleCasePipe,
         TuiFlagPipe,

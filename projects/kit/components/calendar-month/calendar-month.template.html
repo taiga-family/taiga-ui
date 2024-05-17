@@ -2,7 +2,7 @@
     *ngIf="isYearPickerShown; else monthSelect"
     class="t-scrollbar"
 >
-    <tui-primitive-year-picker
+    <tui-calendar-year
         [initialItem]="year"
         [max]="computedMax"
         [min]="computedMin"
@@ -11,7 +11,7 @@
     />
 </tui-scrollbar>
 <ng-template #monthSelect>
-    <tui-primitive-spin-button
+    <tui-spin-button
         [focusable]="false"
         [leftDisabled]="previousYearDisabled"
         [rightDisabled]="nextYearDisabled"
@@ -27,7 +27,7 @@
         >
             {{ year.formattedYear }}
         </button>
-    </tui-primitive-spin-button>
+    </tui-spin-button>
     <div class="t-row">
         <ng-container *ngFor="let month of months$ | async; let index = index">
             <div

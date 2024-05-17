@@ -20,6 +20,10 @@ import {
     TuiNativeValidatorDirective,
 } from '@taiga-ui/cdk';
 import {TuiButtonDirective} from '@taiga-ui/core/components/button';
+import {
+    tuiAsDataListHost,
+    type TuiDataListHost,
+} from '@taiga-ui/core/components/data-list';
 import {TuiLabelDirective} from '@taiga-ui/core/components/label';
 import {tuiAppearanceOptionsProvider} from '@taiga-ui/core/directives/appearance';
 import {
@@ -27,8 +31,6 @@ import {
     tuiDropdownOptionsProvider,
 } from '@taiga-ui/core/directives/dropdown';
 import {TuiIconsDirective} from '@taiga-ui/core/directives/icons';
-import {tuiAsDataListHost} from '@taiga-ui/core/tokens';
-import type {TuiDataListHost} from '@taiga-ui/core/types';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import {EMPTY} from 'rxjs';
@@ -40,6 +42,7 @@ export interface TuiTextfieldContext<T> extends TuiContext<T> {
     readonly active: boolean;
 }
 
+// TODO: Move to legacy package before 4.0
 @Component({
     standalone: true,
     selector: 'tui-textfield',

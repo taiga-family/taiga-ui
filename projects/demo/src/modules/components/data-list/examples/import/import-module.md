@@ -1,5 +1,5 @@
 ```ts
-import {TuiDataListModule} from '@taiga-ui/core';
+import {TuiDataList} from '@taiga-ui/core';
 
 // ...
 
@@ -7,7 +7,7 @@ import {TuiDataListModule} from '@taiga-ui/core';
   standalone: true,
   imports: [
     // ...
-    TuiDataListModule,
+    TuiDataList,
   ],
   // ...
 })

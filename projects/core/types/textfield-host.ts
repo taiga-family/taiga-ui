@@ -1,3 +1,4 @@
+// TODO: move to legacy before 4.0
 export interface TuiTextfieldHost {
     readonly disabled: boolean;
     readonly focusable: boolean;

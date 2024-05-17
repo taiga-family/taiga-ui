@@ -1,14 +1,14 @@
 import type {OnChanges, OnDestroy} from '@angular/core';
 import {Directive, inject, INJECTOR, Input} from '@angular/core';
 import {TuiActiveZoneDirective, tuiInjectElement} from '@taiga-ui/cdk';
-import type {TuiRectAccessor, TuiVehicle} from '@taiga-ui/core/abstract';
-import {tuiAsRectAccessor, tuiAsVehicle} from '@taiga-ui/core/abstract';
-import {TuiHintService} from '@taiga-ui/core/services';
+import type {TuiRectAccessor, TuiVehicle} from '@taiga-ui/core/classes';
+import {tuiAsRectAccessor, tuiAsVehicle} from '@taiga-ui/core/classes';
 import type {TuiPortalItem} from '@taiga-ui/core/types';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 
 import {TUI_HINT_COMPONENT} from './hint.providers';
+import {TuiHintService} from './hint.service';
 import {TUI_HINT_OPTIONS} from './hint-options.directive';
 
 @Directive({
@@ -26,7 +26,7 @@ import {TUI_HINT_OPTIONS} from './hint-options.directive';
 export class TuiHintDirective<C>
     implements OnDestroy, OnChanges, TuiPortalItem<C>, TuiRectAccessor, TuiVehicle
 {
-    private readonly hintService = inject(TuiHintService);
+    private readonly service = inject(TuiHintService);
     private readonly options = inject(TUI_HINT_OPTIONS);
 
     @Input('tuiHint')
@@ -63,9 +63,9 @@ export class TuiHintDirective<C>
 
     public toggle(show: boolean): void {
         if (show && this.content) {
-            this.hintService.add(this);
+            this.service.add(this);
         } else {
-            this.hintService.remove(this);
+            this.service.remove(this);
         }
     }
 }

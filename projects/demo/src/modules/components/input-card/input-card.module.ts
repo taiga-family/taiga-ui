@@ -10,7 +10,7 @@ import {
 } from '@taiga-ui/addon-commerce';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
-    TuiErrorModule,
+    TuiErrorComponent,
     TuiGroupDirective,
     TuiHintModule,
     TuiLinkDirective,
@@ -29,7 +29,7 @@ import {ExampleTuiInputCardComponent} from './input-card.component';
         TuiInputExpireModule,
         TuiGroupDirective,
         TuiLinkDirective,
-        TuiErrorModule,
+        TuiErrorComponent,
         TuiFieldErrorPipeModule,
         TuiAccordionModule,
         CommonModule,

@@ -15,12 +15,12 @@ import {
     tuiPure,
     tuiPx,
 } from '@taiga-ui/cdk';
+import {tuiFadeIn} from '@taiga-ui/core/animations';
 import {
     tuiPositionAccessorFor,
     TuiRectAccessor,
     tuiRectAccessorFor,
-} from '@taiga-ui/core/abstract';
-import {tuiFadeIn} from '@taiga-ui/core/animations';
+} from '@taiga-ui/core/classes';
 import {TuiPositionService, TuiVisualViewportService} from '@taiga-ui/core/services';
 import {TUI_ANIMATIONS_SPEED, TUI_VIEWPORT} from '@taiga-ui/core/tokens';
 import type {TuiPortalItem} from '@taiga-ui/core/types';

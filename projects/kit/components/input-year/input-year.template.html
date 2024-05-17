@@ -27,7 +27,7 @@
 <ng-template #dropdown>
     <div class="t-container">
         <tui-scrollbar class="t-scrollbar">
-            <tui-primitive-year-picker
+            <tui-calendar-year
                 [disabledItemHandler]="disabledItemHandler"
                 [initialItem]="value || initialItem | tuiToYear"
                 [max]="computedMax | tuiToYear"

@@ -10,8 +10,8 @@ import {
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {TuiActiveZoneDirective, TuiContext} from '@taiga-ui/cdk';
 import {tuiInjectElement, tuiPure} from '@taiga-ui/cdk';
-import type {TuiRectAccessor, TuiVehicle} from '@taiga-ui/core/abstract';
-import {tuiAsRectAccessor, tuiAsVehicle} from '@taiga-ui/core/abstract';
+import type {TuiRectAccessor, TuiVehicle} from '@taiga-ui/core/classes';
+import {tuiAsRectAccessor, tuiAsVehicle} from '@taiga-ui/core/classes';
 import type {TuiPortalItem} from '@taiga-ui/core/types';
 import {tuiCheckFixedPosition} from '@taiga-ui/core/utils';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';

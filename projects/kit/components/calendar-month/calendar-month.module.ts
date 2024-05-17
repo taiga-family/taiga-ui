@@ -2,10 +2,10 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {TuiHoveredDirective, TuiLetDirective} from '@taiga-ui/cdk';
 import {
+    TuiCalendarYearComponent,
     TuiLinkDirective,
-    TuiPrimitiveSpinButtonModule,
-    TuiPrimitiveYearPickerModule,
     TuiScrollbarComponent,
+    TuiSpinButtonComponent,
 } from '@taiga-ui/core';
 
 import {TuiCalendarMonthComponent} from './calendar-month.component';
@@ -13,8 +13,8 @@ import {TuiCalendarMonthComponent} from './calendar-month.component';
 @NgModule({
     imports: [
         CommonModule,
-        TuiPrimitiveYearPickerModule,
-        TuiPrimitiveSpinButtonModule,
+        TuiCalendarYearComponent,
+        TuiSpinButtonComponent,
         TuiScrollbarComponent,
         TuiLinkDirective,
         TuiLetDirective,

@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {TUI_IS_IOS} from '@taiga-ui/cdk';
-import {TuiPrimitiveCalendarComponent} from '@taiga-ui/core';
+import {TuiCalendarSheetComponent} from '@taiga-ui/core';
 
 /**
  * @internal
@@ -14,6 +14,6 @@ import {TuiPrimitiveCalendarComponent} from '@taiga-ui/core';
         '[class._ios]': 'isIOS',
     },
 })
-export class TuiPrimitiveCalendarMobileComponent extends TuiPrimitiveCalendarComponent {
+export class TuiPrimitiveCalendarMobileComponent extends TuiCalendarSheetComponent {
     protected readonly isIOS = inject(TUI_IS_IOS);
 }

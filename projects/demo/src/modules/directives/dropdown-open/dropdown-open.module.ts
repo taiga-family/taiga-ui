@@ -5,7 +5,7 @@ import {tuiGetDocModules} from '@taiga-ui/addon-doc';
 import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
 import {
     TuiButtonDirective,
-    TuiDataListModule,
+    TuiDataList,
     TuiDropdownModule,
     TuiGroupDirective,
     TuiIconComponent,
@@ -40,7 +40,7 @@ import {TopRightDirective} from './examples/5/accessor';
         TuiLinkDirective,
         TuiSelectModule,
         TuiActiveZoneDirective,
-        TuiDataListModule,
+        TuiDataList,
         TuiDataListWrapperModule,
         TuiDropdownModule,
         TuiMultiSelectModule,

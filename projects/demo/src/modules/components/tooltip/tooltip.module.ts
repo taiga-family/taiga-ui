@@ -9,7 +9,7 @@ import {
     TuiAutoColorPipe,
     TuiHintModule,
     TuiLinkDirective,
-    TuiLoaderModule,
+    TuiLoaderComponent,
     TuiTextfieldControllerModule,
     TuiTooltipModule,
 } from '@taiga-ui/core';
@@ -28,7 +28,7 @@ import {ExampleTuiTooltipComponent} from './tooltip.component';
         TuiHintModule,
         TuiLinkDirective,
         TuiAvatarComponent,
-        TuiLoaderModule,
+        TuiLoaderComponent,
         TuiInputModule,
         PolymorpheusModule,
         TuiAddonDocModule,

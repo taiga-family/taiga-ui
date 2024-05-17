@@ -1,6 +1,6 @@
 import {Directive, Input} from '@angular/core';
 import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk';
-import {tuiAsRectAccessor, TuiRectAccessor} from '@taiga-ui/core/abstract';
+import {tuiAsRectAccessor, TuiRectAccessor} from '@taiga-ui/core/classes';
 
 @Directive({
     selector: '[tuiHint][tuiHintHost]',

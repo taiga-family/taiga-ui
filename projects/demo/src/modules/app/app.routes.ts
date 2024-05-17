@@ -288,8 +288,7 @@ export const ROUTES: Routes = [
     route({
         path: DemoRoute.DataList,
         loadChildren: async () =>
-            (await import('../components/data-list/data-list.module'))
-                .ExampleTuiDataListModule,
+            (await import('../components/data-list/data-list.module')).ExampleTuiDataList,
         title: 'DataList',
     }),
     route({

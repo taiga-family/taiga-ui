@@ -1,11 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
-import {
-    TuiLoaderComponent,
-    TuiLoaderModule,
-    tuiLoaderOptionsProvider,
-} from '@taiga-ui/core';
+import {TuiLoaderComponent, tuiLoaderOptionsProvider} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('Loader component options', () => {
@@ -24,7 +20,7 @@ describe('Loader component options', () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            imports: [TuiLoaderModule],
+            imports: [TuiLoaderComponent],
             declarations: [TestComponent],
             providers: [
                 NG_EVENT_PLUGINS,

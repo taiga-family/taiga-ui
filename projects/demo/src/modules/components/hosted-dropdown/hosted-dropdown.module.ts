@@ -7,7 +7,7 @@ import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
 import {
     TuiButtonDirective,
-    TuiDataListModule,
+    TuiDataList,
     TuiDropdownModule,
     TuiGroupDirective,
     TuiHostedDropdownModule,
@@ -50,7 +50,7 @@ import {ExampleTuiHostedDropdownComponent} from './hosted-dropdown.component';
         TuiSelectModule,
         TuiActiveZoneDirective,
         TuiDropdownModule,
-        TuiDataListModule,
+        TuiDataList,
         TuiDataListWrapperModule,
         DropdownDocumentationModule,
         TuiAddonDocModule,

@@ -4,7 +4,7 @@ import {
     TuiActiveZoneDirective,
     tuiPointToClientRect,
 } from '@taiga-ui/cdk';
-import {tuiAsDriver, tuiAsRectAccessor, TuiRectAccessor} from '@taiga-ui/core/abstract';
+import {tuiAsDriver, tuiAsRectAccessor, TuiRectAccessor} from '@taiga-ui/core/classes';
 import {shouldCall} from '@tinkoff/ng-event-plugins';
 
 import {TuiDropdownDriver} from './dropdown.driver';

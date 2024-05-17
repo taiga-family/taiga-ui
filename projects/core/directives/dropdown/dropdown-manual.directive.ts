@@ -1,6 +1,6 @@
 import type {OnChanges} from '@angular/core';
 import {Directive, inject, Input} from '@angular/core';
-import {tuiAsDriver} from '@taiga-ui/core/abstract';
+import {tuiAsDriver} from '@taiga-ui/core/classes';
 
 import {TuiDropdownDriver} from './dropdown.driver';
 

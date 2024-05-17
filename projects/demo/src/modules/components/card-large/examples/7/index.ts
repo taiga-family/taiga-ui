@@ -5,7 +5,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiRepeatTimesDirective} from '@taiga-ui/cdk';
 import {
     TuiAppearanceDirective,
-    TuiDataListModule,
+    TuiDataList,
     TuiDropdownModule,
     TuiIconComponent,
     TuiLinkDirective,
@@ -26,7 +26,7 @@ import {
         TuiRepeatTimesDirective,
         TuiAvatarComponent,
         TuiIconComponent,
-        TuiDataListModule,
+        TuiDataList,
         NgForOf,
         TuiCellDirective,
         TuiLinkDirective,

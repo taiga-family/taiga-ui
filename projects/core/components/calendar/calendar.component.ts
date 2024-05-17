@@ -16,15 +16,15 @@ import {
     TuiMonth,
     tuiNullableSame,
 } from '@taiga-ui/cdk';
-import {TuiPrimitiveCalendarModule} from '@taiga-ui/core/components/primitive-calendar';
-import {TuiPrimitiveYearMonthPaginationModule} from '@taiga-ui/core/components/primitive-year-month-pagination';
-import {TuiPrimitiveYearPickerModule} from '@taiga-ui/core/components/primitive-year-picker';
 import {TuiScrollbarComponent} from '@taiga-ui/core/components/scrollbar';
-import type {
-    TuiCalendarView,
-    TuiMarkerHandler,
-    TuiWithOptionalMinMax,
-} from '@taiga-ui/core/types';
+import type {TuiWithOptionalMinMax} from '@taiga-ui/core/types';
+
+import {
+    TuiCalendarSheetComponent,
+    type TuiMarkerHandler,
+} from './calendar-sheet.component';
+import {TuiCalendarSpinComponent} from './calendar-spin.component';
+import {TuiCalendarYearComponent} from './calendar-year.component';
 
 @Component({
     standalone: true,
@@ -32,9 +32,9 @@ import type {
     imports: [
         NgIf,
         TuiScrollbarComponent,
-        TuiPrimitiveYearPickerModule,
-        TuiPrimitiveYearMonthPaginationModule,
-        TuiPrimitiveCalendarModule,
+        TuiCalendarYearComponent,
+        TuiCalendarSpinComponent,
+        TuiCalendarSheetComponent,
         TuiMapperPipe,
     ],
     templateUrl: './calendar.template.html',
@@ -44,7 +44,7 @@ import type {
 export class TuiCalendarComponent implements TuiWithOptionalMinMax<TuiDay> {
     private day: TuiDay | TuiDayRange | readonly TuiDay[] | null = null;
 
-    private view: TuiCalendarView = 'month';
+    private view: 'month' | 'year' = 'month';
 
     @Input()
     public month: TuiMonth = TuiMonth.currentLocal();
@@ -92,7 +92,7 @@ export class TuiCalendarComponent implements TuiWithOptionalMinMax<TuiDay> {
     }
 
     @Input()
-    public set initialView(view: TuiCalendarView) {
+    public set initialView(view: 'month' | 'year') {
         this.view = view;
     }
 

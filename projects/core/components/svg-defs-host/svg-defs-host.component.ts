@@ -1,4 +1,4 @@
-import {isPlatformBrowser} from '@angular/common';
+import {isPlatformBrowser, NgForOf, NgIf} from '@angular/common';
 import type {OnInit} from '@angular/core';
 import {
     ChangeDetectionStrategy,
@@ -12,8 +12,11 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {SafeHtml} from '@angular/platform-browser';
 import {TuiSvgService} from '@taiga-ui/core/services';
 
+// TODO: Consider for legacy in 4.0
 @Component({
+    standalone: true,
     selector: 'tui-svg-defs-host',
+    imports: [NgForOf, NgIf],
     templateUrl: './svg-defs-host.template.html',
     styleUrls: ['./svg-defs-host.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

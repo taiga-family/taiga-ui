@@ -8,10 +8,10 @@ import {
 import {TUI_IS_ANDROID, TUI_IS_IOS, TUI_IS_MOBILE, TUI_VERSION} from '@taiga-ui/cdk';
 import {TuiAlertsComponent} from '@taiga-ui/core/components/alert';
 import {TUI_DIALOGS, TuiDialogsComponent} from '@taiga-ui/core/components/dialog';
-import {TuiHintsHostModule} from '@taiga-ui/core/components/hints-host';
-import {TuiScrollControlsComponent} from '@taiga-ui/core/components/scroll-controls';
-import {TuiSvgDefsHostModule} from '@taiga-ui/core/components/svg-defs-host';
+import {TuiScrollControlsComponent} from '@taiga-ui/core/components/scrollbar';
+import {TuiSvgDefsHostComponent} from '@taiga-ui/core/components/svg-defs-host';
 import {TuiDropdownsComponent} from '@taiga-ui/core/directives';
+import {TuiHintsComponent} from '@taiga-ui/core/directives/hint';
 import {TuiBreakpointService} from '@taiga-ui/core/services';
 import {TUI_ANIMATIONS_SPEED, TUI_REDUCED_MOTION, TUI_THEME} from '@taiga-ui/core/tokens';
 import {tuiGetDuration} from '@taiga-ui/core/utils';
@@ -24,11 +24,11 @@ import {debounceTime, map, of} from 'rxjs';
     imports: [
         NgIf,
         AsyncPipe,
-        TuiSvgDefsHostModule,
+        TuiSvgDefsHostComponent,
         TuiDropdownsComponent,
         TuiDialogsComponent,
         TuiAlertsComponent,
-        TuiHintsHostModule,
+        TuiHintsComponent,
         TuiScrollControlsComponent,
     ],
     templateUrl: './root.template.html',

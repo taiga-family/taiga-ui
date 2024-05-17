@@ -1,3 +1,4 @@
+import {AsyncPipe, NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -5,13 +6,16 @@ import {
     inject,
     Input,
 } from '@angular/core';
-import {tuiIsString, TuiValidationError} from '@taiga-ui/cdk';
+import {tuiIsString, TuiLetDirective, TuiValidationError} from '@taiga-ui/cdk';
 import {tuiFadeIn, tuiHeightCollapse} from '@taiga-ui/core/animations';
 import {TUI_ANIMATIONS_SPEED, TUI_DEFAULT_ERROR_MESSAGE} from '@taiga-ui/core/tokens';
 import {tuiToAnimationOptions} from '@taiga-ui/core/utils';
+import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 @Component({
+    standalone: true,
     selector: 'tui-error',
+    imports: [TuiLetDirective, AsyncPipe, NgIf, PolymorpheusModule],
     templateUrl: './error.template.html',
     styleUrls: ['./error.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

@@ -10,7 +10,7 @@ import {
     tuiTypedFromEvent,
     tuiZoneOptimized,
 } from '@taiga-ui/cdk';
-import {tuiAsDriver, TuiDriver} from '@taiga-ui/core/abstract';
+import {tuiAsDriver, TuiDriver} from '@taiga-ui/core/classes';
 import {
     debounce,
     distinctUntilChanged,

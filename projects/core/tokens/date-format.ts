@@ -1,9 +1,24 @@
 import type {InjectionToken, Provider} from '@angular/core';
 import {Optional, SkipSelf} from '@angular/core';
+import type {TuiDateMode} from '@taiga-ui/cdk';
 import {tuiCreateToken} from '@taiga-ui/cdk';
-import type {TuiDateFormatSettings} from '@taiga-ui/core/types';
 import type {Observable} from 'rxjs';
 import {map, of} from 'rxjs';
+
+/**
+ * Formatting configuration for displayed dates
+ */
+export interface TuiDateFormatSettings {
+    /**
+     * Date format mode.
+     */
+    readonly mode: TuiDateMode;
+    /**
+     * Separator between date segments
+     * @example 10.02 ('.' by default)
+     */
+    readonly separator: string;
+}
 
 export const TUI_DEFAULT_DATE_FORMAT: TuiDateFormatSettings = {
     mode: 'DMY',

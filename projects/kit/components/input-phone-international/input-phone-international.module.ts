@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {TuiActiveZoneDirective, TuiLetDirective, TuiMapperPipe} from '@taiga-ui/cdk';
 import {
-    TuiDataListModule,
+    TuiDataList,
     TuiFlagPipe,
     TuiGroupDirective,
     TuiHintModule,
@@ -31,7 +31,7 @@ import {TuiInputPhoneInternationalComponent} from './input-phone-international.c
         TuiTextfieldControllerModule,
         TuiHintModule,
         TuiHostedDropdownModule,
-        TuiDataListModule,
+        TuiDataList,
         TuiArrowComponent,
         TuiWrapperModule,
         TuiLetDirective,
