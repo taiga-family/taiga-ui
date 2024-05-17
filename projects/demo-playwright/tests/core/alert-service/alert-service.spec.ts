@@ -9,7 +9,7 @@ test.describe('AlertService', () => {
     test('is shown correctly', async ({page}) => {
         await tuiGoto(page, '/components/alert');
         const example = page.locator('#text');
-        const showAlertButton = example.locator('#text button').first();
+        const showAlertButton = example.locator('ng-component button').first();
 
         await showAlertButton.click();
 
