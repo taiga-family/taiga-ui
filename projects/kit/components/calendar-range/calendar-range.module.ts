@@ -11,7 +11,6 @@ import {TuiCalendarRangeComponent} from './calendar-range.component';
         CommonModule,
         TuiMapperPipe,
         TuiCalendarComponent,
-        TuiCalendarComponent,
         TuiSvgComponent,
         TuiDataListModule,
         TuiPrimitiveCalendarRangeModule,
