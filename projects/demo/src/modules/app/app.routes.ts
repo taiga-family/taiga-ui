@@ -698,8 +698,7 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.TabBar,
-        loadChildren: async () =>
-            (await import('../components/tab-bar/tab-bar.module')).ExampleTuiTabBarModule,
+        loadComponent: async () => import('../components/tab-bar'),
         title: 'TabBar',
     }),
     route({

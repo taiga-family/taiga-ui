@@ -1,5 +1,5 @@
 ```ts
-import {TuiTabBarModule} from '@taiga-ui/addon-mobile';
+import {TuiTabBar} from '@taiga-ui/addon-mobile';
 
 // ...
 
@@ -7,7 +7,7 @@ import {TuiTabBarModule} from '@taiga-ui/addon-mobile';
   standalone: true,
   imports: [
     // ...
-    TuiTabBarModule,
+    TuiTabBar,
   ],
   // ...
 })

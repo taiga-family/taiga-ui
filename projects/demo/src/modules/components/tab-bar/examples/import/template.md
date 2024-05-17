@@ -1,4 +1,8 @@
 ```html
+<!--
+    Add to the template inside your root component
+    at the required layer and position with CSS:
+-->
 <tui-root>
   Your app
   <nav
