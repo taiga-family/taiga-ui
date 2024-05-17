@@ -1017,4 +1017,14 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/cdk',
         },
     },
+    {
+        from: {
+            name: 'TuiNavigationModule',
+            moduleSpecifier: '@taiga-ui/proprietary-navigation',
+        },
+        to: {
+            name: 'TuiProprietaryNavigation',
+            moduleSpecifier: '@taiga-ui/proprietary',
+        },
+    },
 ];
