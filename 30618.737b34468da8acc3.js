@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[30618],{30618:n=>{n.exports=":host {\n    display: flex;\n    flex-direction: column;\n    gap: 1rem;\n}\n\ntui-svg:last-child {\n    display: flex;\n    align-self: center;\n    width: 1rem;\n    height: 1rem;\n    margin: 0 0 0 0.75rem;\n    color: var(--tui-text-01);\n    opacity: 0.5;\n    float: right;\n}\n"}}]);
