@@ -1,7 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
-import {TuiSpinButtonComponent, TuiSpinButtonComponent} from '@taiga-ui/core';
+import {TuiSpinButtonComponent} from '@taiga-ui/core';
 
 describe('primitiveSpinButton', () => {
     @Component({
