@@ -212,7 +212,7 @@ function replaceFieldError({
     if (elements.length) {
         addImportToClosestModule(
             resource.componentPath,
-            'TuiErrorModule',
+            'TuiErrorComponent',
             '@taiga-ui/core',
         );
     }

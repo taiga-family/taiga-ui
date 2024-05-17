@@ -1,25 +1,20 @@
 import type {TemplateRef} from '@angular/core';
 import {Component, ViewChild} from '@angular/core';
+import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
-import type {TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiDemo} from '@demo/utils';
 import {TuiValidationError} from '@taiga-ui/cdk';
+import {TuiErrorComponent, TuiLinkDirective} from '@taiga-ui/core';
 
 @Component({
-    selector: 'example-tui-error',
-    templateUrl: './error.template.html',
+    standalone: true,
+    imports: [RouterLink, TuiDemo, TuiErrorComponent, TuiLinkDirective],
+    templateUrl: './index.html',
     changeDetection,
 })
-export class ExampleTuiErrorComponent {
+export default class PageComponent {
     @ViewChild('errorContent')
     protected errorContent?: TemplateRef<Record<string, unknown>>;
-
-    protected readonly exampleModule = import('./examples/import/import-module.md?raw');
-    protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
-
-    protected readonly example1: TuiDocExample = {
-        TypeScript: import('./examples/1/index.ts?raw'),
-        HTML: import('./examples/1/index.html?raw'),
-    };
 
     protected readonly errorVariants: readonly string[] = [
         'Error as string',

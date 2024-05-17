@@ -15,7 +15,7 @@ import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 @Component({
     standalone: true,
     selector: 'tui-error',
-    imports: [TuiLetDirective, AsyncPipe, NgIf, PolymorpheusModule],
+    imports: [AsyncPipe, NgIf, PolymorpheusModule, TuiLetDirective],
     templateUrl: './error.template.html',
     styleUrls: ['./error.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
