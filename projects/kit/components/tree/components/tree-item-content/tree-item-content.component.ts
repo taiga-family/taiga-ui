@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
-import {map, Subject} from 'rxjs';
+import {map, startWith, Subject} from 'rxjs';
 
 import {TUI_DEFAULT_TREE_CONTROLLER} from '../../misc/tree.constants';
 import type {TuiTreeController, TuiTreeItemContext} from '../../misc/tree.interfaces';
@@ -30,7 +30,10 @@ export class TuiTreeItemContentComponent implements DoCheck {
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly context = inject<TuiTreeItemContext>(POLYMORPHEUS_CONTEXT);
 
-    protected readonly expanded$ = this.change$.pipe(map(() => this.isExpanded));
+    protected readonly expanded$ = this.change$.pipe(
+        startWith(null),
+        map(() => this.isExpanded),
+    );
 
     public ngDoCheck(): void {
         this.checkChanges();
