@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
-import {map, startWith, Subject} from 'rxjs';
+import {distinctUntilChanged, map, startWith, Subject} from 'rxjs';
 
 import {TUI_DEFAULT_TREE_CONTROLLER} from '../../misc/tree.constants';
 import type {TuiTreeController, TuiTreeItemContext} from '../../misc/tree.interfaces';
@@ -33,13 +33,10 @@ export class TuiTreeItemContentComponent implements DoCheck {
     protected readonly expanded$ = this.change$.pipe(
         startWith(null),
         map(() => this.isExpanded),
+        distinctUntilChanged(),
     );
 
     public ngDoCheck(): void {
-        this.checkChanges();
-    }
-
-    public checkChanges(): void {
         this.change$.next();
     }
 
