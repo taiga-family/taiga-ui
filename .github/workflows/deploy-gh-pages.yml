@@ -32,7 +32,7 @@ jobs:
         run: tree ${{ env.DIST }} -P '*.html'
 
       - name: Deploy to taiga-ui.dev
-        uses: peaceiris/actions-gh-pages@v3.9.3
+        uses: peaceiris/actions-gh-pages@v4.0.0
         if: ${{ github.event.inputs.dryRun != 'true' }}
         with:
           github_token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
