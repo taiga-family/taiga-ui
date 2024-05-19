@@ -6,7 +6,7 @@
     tuiIconButton
     type="button"
     class="t-button"
-    [class.t-button_expanded]="isExpanded"
+    [class.t-button_expanded]="expanded$ | async"
     [icon]="icons.more"
     (click)="onClick()"
 ></button>
