@@ -12,10 +12,7 @@ import {TUI_AMOUNT_OPTIONS} from './amount.options';
 
 const DEFAULT_PRECISION = 2;
 
-@Pipe({
-    name: 'tuiAmount',
-    standalone: true,
-})
+@Pipe({standalone: true, name: 'tuiAmount'})
 export class TuiAmountPipe implements PipeTransform {
     private readonly options = inject(TUI_AMOUNT_OPTIONS);
     private readonly format = inject(TUI_NUMBER_FORMAT);
