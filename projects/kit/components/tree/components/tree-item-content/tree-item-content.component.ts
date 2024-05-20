@@ -1,12 +1,15 @@
 import {
     ChangeDetectionStrategy,
     Component,
+    DoCheck,
     forwardRef,
     HostBinding,
     Inject,
 } from '@angular/core';
 import {TUI_COMMON_ICONS, TuiCommonIcons} from '@taiga-ui/core';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
+import {Subject} from 'rxjs';
+import {distinctUntilChanged, map, startWith} from 'rxjs/operators';
 
 import {TUI_DEFAULT_TREE_CONTROLLER} from '../../misc/tree.constants';
 import type {TuiTreeController, TuiTreeItemContext} from '../../misc/tree.interfaces';
@@ -18,7 +21,15 @@ import {TUI_TREE_CONTROLLER} from '../../misc/tree.tokens';
     styleUrls: ['./tree-item-content.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiTreeItemContentComponent {
+export class TuiTreeItemContentComponent implements DoCheck {
+    private readonly change$ = new Subject<void>();
+
+    readonly expanded$ = this.change$.pipe(
+        startWith(null),
+        map(() => this.isExpanded),
+        distinctUntilChanged(),
+    );
+
     constructor(
         @Inject(TUI_COMMON_ICONS) readonly icons: TuiCommonIcons,
         @Inject(POLYMORPHEUS_CONTEXT) readonly context: TuiTreeItemContext,
@@ -40,5 +51,9 @@ export class TuiTreeItemContentComponent {
 
     onClick(): void {
         this.controller.toggle(this.context.$implicit);
+    }
+
+    ngDoCheck(): void {
+        this.change$.next();
     }
 }
