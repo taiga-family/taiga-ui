@@ -7,8 +7,7 @@
     {{ context.label }}
 </h2>
 <div class="t-content">
-    <!-- TODO: Polymorpheus fix type -->
-    <ng-container *polymorpheusOutlet="$any(context.content) as text; context: context">
+    <ng-container *polymorpheusOutlet="context.content as text; context: context">
         {{ text }}
     </ng-container>
 </div>
