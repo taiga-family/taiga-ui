@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {TuiFilterPipe} from '@taiga-ui/cdk';
+import {TuiFilterPipe, TuiToArrayPipe} from '@taiga-ui/cdk';
 import {
     TuiDataListModule,
     TuiDropdownModule,
@@ -31,7 +31,6 @@ import {TuiIsOptionalPipe} from './pipes/optional.pipe';
 import {TuiIsPrimitivePolymorpheusContentPipe} from './pipes/primitive-polymorpheus-content.pipe';
 import {TuiStripOptionalPipe} from './pipes/strip-optional.pipe';
 import {TuiDocTypeReferencePipe} from './pipes/type-reference.pipe';
-import {TuiToArrayPipe} from "@taiga-ui/cdk/pipes/to-array";
 
 @NgModule({
     imports: [
