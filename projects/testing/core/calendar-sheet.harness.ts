@@ -34,7 +34,7 @@ class TuiDayCellHarness extends ComponentHarness {
 }
 
 export class TuiCalendarSheetHarness extends TuiComponentHarness {
-    public static hostSelector = 'tui-primitive-calendar';
+    public static hostSelector = 'tui-calendar-sheet';
 
     public async clickDay(day: number): Promise<void> {
         const dayCell = await this.locatorFor(
