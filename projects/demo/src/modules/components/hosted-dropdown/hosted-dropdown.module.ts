@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiSetupComponent} from '@demo/utils';
-import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
+import {TuiAddonDoc, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
 import {
     TuiButtonDirective,
@@ -53,7 +53,7 @@ import {ExampleTuiHostedDropdownComponent} from './hosted-dropdown.component';
         TuiDataList,
         TuiDataListWrapperModule,
         DropdownDocumentationModule,
-        TuiAddonDocModule,
+        TuiAddonDoc,
         TuiMultiSelectModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiHostedDropdownComponent)),
         TuiSetupComponent,

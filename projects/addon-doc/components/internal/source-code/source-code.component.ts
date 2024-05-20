@@ -6,9 +6,13 @@ import {
     TUI_DOC_SOURCE_CODE_TEXT,
 } from '@taiga-ui/addon-doc/tokens';
 import {tuiPure} from '@taiga-ui/cdk';
+import {TuiButtonDirective} from '@taiga-ui/core';
+import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 @Component({
+    standalone: true,
     selector: 'tui-doc-source-code',
+    imports: [PolymorpheusModule, TuiButtonDirective],
     templateUrl: './source-code.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })

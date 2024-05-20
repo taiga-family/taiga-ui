@@ -1,13 +1,13 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiAddonDocModule, type TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiAddonDoc, type TuiDocExample} from '@taiga-ui/addon-doc';
 
 import {TuiViewportExample1} from './examples/1';
 import {TuiViewportExample2} from './examples/2';
 
 @Component({
     standalone: true,
-    imports: [TuiAddonDocModule, TuiViewportExample1, TuiViewportExample2],
+    imports: [TuiAddonDoc, TuiViewportExample1, TuiViewportExample2],
     templateUrl: './index.html',
     changeDetection,
 })

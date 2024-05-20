@@ -1,7 +1,7 @@
 import {ClipboardModule} from '@angular/cdk/clipboard';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
-import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
+import {TuiAddonDoc, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiLinkDirective, TuiNotificationComponent} from '@taiga-ui/core';
 
 import {TypographyComponent} from './typography.component';
@@ -11,7 +11,7 @@ import {TypographyComponent} from './typography.component';
         ClipboardModule,
         TuiNotificationComponent,
         TuiLinkDirective,
-        TuiAddonDocModule,
+        TuiAddonDoc,
         RouterModule.forChild(tuiGenerateRoutes(TypographyComponent)),
     ],
     declarations: [TypographyComponent],

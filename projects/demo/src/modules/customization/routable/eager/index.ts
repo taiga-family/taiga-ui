@@ -2,11 +2,11 @@ import {AsyncPipe, NgIf} from '@angular/common';
 import {Component} from '@angular/core';
 import {RouterOutlet} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiAddonDocModule, type TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiAddonDoc, type TuiDocExample} from '@taiga-ui/addon-doc';
 
 @Component({
     standalone: true,
-    imports: [RouterOutlet, NgIf, AsyncPipe, TuiAddonDocModule],
+    imports: [RouterOutlet, NgIf, AsyncPipe, TuiAddonDoc],
     templateUrl: './index.html',
     changeDetection,
 })

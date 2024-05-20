@@ -8,7 +8,7 @@ import {
     TuiInputCVCModule,
     TuiInputExpireModule,
 } from '@taiga-ui/addon-commerce';
-import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
+import {TuiAddonDoc, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiErrorComponent,
     TuiGroupDirective,
@@ -36,7 +36,7 @@ import {ExampleTuiInputCardComponent} from './input-card.component';
         TuiHint,
         TuiTextfieldControllerModule,
         ReactiveFormsModule,
-        TuiAddonDocModule,
+        TuiAddonDoc,
         InheritedDocumentationModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiInputCardComponent)),
         TuiSetupComponent,

@@ -2,7 +2,7 @@ import {ClipboardModule} from '@angular/cdk/clipboard';
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
-import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
+import {TuiAddonDoc, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiTable} from '@taiga-ui/addon-table';
 
 import {BreakpointsComponent} from './breakpoints.component';
@@ -11,7 +11,7 @@ import {ExampleBreakpointsComponent1} from './examples/1';
 @NgModule({
     imports: [
         CommonModule,
-        TuiAddonDocModule,
+        TuiAddonDoc,
         TuiTable,
         ClipboardModule,
         RouterModule.forChild(tuiGenerateRoutes(BreakpointsComponent)),

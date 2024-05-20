@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiSetupComponent} from '@demo/utils';
-import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
+import {TuiAddonDoc, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiDataList, TuiLinkDirective, TuiNotificationComponent} from '@taiga-ui/core';
 import {
     TuiComboBoxModule,
@@ -26,7 +26,7 @@ import {ExampleTuiStringifyContentComponent} from './stringify-content.component
         TuiDataList,
         TuiDataListWrapperModule,
         CommonModule,
-        TuiAddonDocModule,
+        TuiAddonDoc,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiStringifyContentComponent)),
         TuiSetupComponent,
     ],

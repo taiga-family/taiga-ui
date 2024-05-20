@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiExamplePipe, TuiSetupComponent} from '@demo/utils';
-import {TuiAddonDocModule, type TuiRawLoaderContent} from '@taiga-ui/addon-doc';
+import {TuiAddonDoc, type TuiRawLoaderContent} from '@taiga-ui/addon-doc';
 import {type TuiSizeS, type TuiSizeXL} from '@taiga-ui/core';
 import {TuiBadgeDirective, TuiFadeDirective, TuiRadioListComponent} from '@taiga-ui/kit';
 
@@ -29,7 +29,7 @@ import {TuiBadgeExample6} from './examples/6';
         TuiBadgeExample4,
         TuiBadgeExample5,
         TuiBadgeExample6,
-        TuiAddonDocModule,
+        TuiAddonDoc,
         TuiSetupComponent,
     ],
     templateUrl: './index.html',

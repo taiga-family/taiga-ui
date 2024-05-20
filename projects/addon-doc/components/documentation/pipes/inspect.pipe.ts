@@ -3,7 +3,10 @@ import {inject, Pipe} from '@angular/core';
 import {tuiInspectAny} from '@taiga-ui/addon-doc/utils';
 import {TUI_IS_E2E} from '@taiga-ui/cdk';
 
-@Pipe({name: 'tuiInspectAny'})
+@Pipe({
+    standalone: true,
+    name: 'tuiInspectAny',
+})
 export class TuiInspectPipe implements PipeTransform {
     private readonly isE2E = inject(TUI_IS_E2E);
 

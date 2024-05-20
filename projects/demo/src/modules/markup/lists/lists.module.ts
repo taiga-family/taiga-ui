@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
-import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
+import {TuiAddonDoc, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiLinkDirective} from '@taiga-ui/core';
 
 import {StylesInfoModule} from '../../app/styles-info/styles-info.module';
@@ -19,7 +19,7 @@ import {ListsComponent} from './lists.component';
         CommonModule,
         StylesInfoModule,
         TuiLinkDirective,
-        TuiAddonDocModule,
+        TuiAddonDoc,
         RouterModule.forChild(tuiGenerateRoutes(ListsComponent)),
     ],
     declarations: [

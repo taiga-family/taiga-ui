@@ -12,8 +12,8 @@ const COPIED_TIMEOUT = 1500;
     standalone: true,
     selector: 'tui-doc-copy',
     imports: [NgIf, AsyncPipe, TuiButtonDirective],
-    templateUrl: './copy.template.html',
-    styleUrls: ['./copy.style.less'],
+    templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiDocCopyComponent {

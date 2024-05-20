@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {TuiSetupComponent} from '@demo/utils';
-import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
+import {TuiAddonDoc, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiHoveredDirective, TuiLetDirective} from '@taiga-ui/cdk';
 import {TuiBadgeDirective, TuiPresentDirective} from '@taiga-ui/kit';
 
@@ -16,7 +16,7 @@ import {ExampleTuiPresentComponent} from './present.component';
         TuiPresentDirective,
         TuiHoveredDirective,
         TuiBadgeDirective,
-        TuiAddonDocModule,
+        TuiAddonDoc,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiPresentComponent)),
         TuiSetupComponent,
     ],

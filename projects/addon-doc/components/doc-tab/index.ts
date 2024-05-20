@@ -1,9 +1,10 @@
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 
 @Component({
+    standalone: true,
     selector: 'tui-doc-tab',
-    templateUrl: './doc-tab.component.html',
-    styleUrls: ['./doc-tab.component.less'],
+    templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiDocTabComponent {

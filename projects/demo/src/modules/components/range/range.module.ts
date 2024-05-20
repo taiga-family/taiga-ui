@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
+import {TuiAddonDoc, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiLinkDirective,
     TuiNotificationComponent,
@@ -24,7 +24,7 @@ import {ExampleTuiRangeComponent} from './range.component';
         FormsModule,
         ReactiveFormsModule,
         TuiLinkDirective,
-        TuiAddonDocModule,
+        TuiAddonDoc,
         TuiIslandModule,
         TuiNotificationComponent,
         TuiSvgComponent,

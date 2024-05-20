@@ -1,4 +1,12 @@
 import {animate, style, transition, trigger} from '@angular/animations';
+import {
+    AsyncPipe,
+    NgForOf,
+    NgIf,
+    NgSwitch,
+    NgSwitchCase,
+    NgTemplateOutlet,
+} from '@angular/common';
 import type {AfterContentInit, QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
@@ -10,22 +18,84 @@ import {
     Input,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {FormsModule} from '@angular/forms';
 import {
     TUI_DOC_DOCUMENTATION_TEXTS,
     TUI_DOC_EXCLUDED_PROPERTIES,
 } from '@taiga-ui/addon-doc/tokens';
 import type {TuiMatcher} from '@taiga-ui/cdk';
-import {EMPTY_QUERY, tuiHexToRgb, tuiQueryListChanges, tuiWatch} from '@taiga-ui/cdk';
+import {
+    EMPTY_QUERY,
+    TuiFilterPipe,
+    tuiHexToRgb,
+    tuiQueryListChanges,
+    TuiToArrayPipe,
+    tuiWatch,
+} from '@taiga-ui/cdk';
+import {
+    TuiDropdownOptionsDirective,
+    TuiGroupDirective,
+    TuiNotificationComponent,
+    TuiPrimitiveTextfieldModule,
+    TuiTextfieldControllerModule,
+    TuiTextfieldOptionsDirective,
+} from '@taiga-ui/core';
+import {
+    TuiBadgeDirective,
+    TuiDataListWrapperModule,
+    TuiInputNumberModule,
+    TuiSelectModule,
+    TuiSwitchComponent,
+} from '@taiga-ui/kit';
 import {merge, switchMap} from 'rxjs';
 
+import {TuiInputOpacityDirective} from '../internal/input-opacity';
 import {TuiDocDocumentationPropertyConnectorDirective} from './documentation-property-connector.directive';
+import {TuiShowCleanerPipe} from './pipes/cleaner.pipe';
 import {TuiGetColorPipe} from './pipes/color.pipe';
+import {TuiInspectPipe} from './pipes/inspect.pipe';
 import {TuiGetOpacityPipe} from './pipes/opacity.pipe';
+import {TuiIsOptionalPipe} from './pipes/optional.pipe';
+import {TuiIsPrimitivePolymorpheusContentPipe} from './pipes/primitive-polymorpheus-content.pipe';
+import {TuiStripOptionalPipe} from './pipes/strip-optional.pipe';
+import {TuiDocTypeReferencePipe} from './pipes/type-reference.pipe';
 
 // @bad TODO subscribe propertiesConnectors changes
 // @bad TODO refactor to make more flexible
 @Component({
+    standalone: true,
     selector: 'tui-doc-documentation',
+    imports: [
+        NgIf,
+        TuiFilterPipe,
+        NgForOf,
+        TuiStripOptionalPipe,
+        TuiIsOptionalPipe,
+        TuiBadgeDirective,
+        NgTemplateOutlet,
+        TuiDocTypeReferencePipe,
+        TuiSelectModule,
+        TuiTextfieldOptionsDirective,
+        FormsModule,
+        TuiDropdownOptionsDirective,
+        TuiTextfieldControllerModule,
+        TuiShowCleanerPipe,
+        TuiDataListWrapperModule,
+        TuiInspectPipe,
+        NgSwitch,
+        NgSwitchCase,
+        TuiSwitchComponent,
+        TuiPrimitiveTextfieldModule,
+        TuiGroupDirective,
+        TuiInputOpacityDirective,
+        TuiGetOpacityPipe,
+        TuiGetColorPipe,
+        TuiInputNumberModule,
+        TuiIsPrimitivePolymorpheusContentPipe,
+        TuiNotificationComponent,
+        AsyncPipe,
+        TuiToArrayPipe,
+    ],
     templateUrl: './documentation.template.html',
     styleUrls: ['./documentation.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

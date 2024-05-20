@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiExamplePipe, TuiSetupComponent} from '@demo/utils';
-import {TuiAddonDocModule, type TuiRawLoaderContent} from '@taiga-ui/addon-doc';
+import {TuiAddonDoc, type TuiRawLoaderContent} from '@taiga-ui/addon-doc';
 import type {TuiSizeL, TuiSizeXS} from '@taiga-ui/core';
 import {TuiBadgeNotificationComponent} from '@taiga-ui/kit';
 
@@ -14,7 +14,7 @@ import {TuiBadgeNotificationExample2} from './examples/2';
     imports: [
         TuiBadgeNotificationComponent,
         TuiExamplePipe,
-        TuiAddonDocModule,
+        TuiAddonDoc,
         TuiBadgeNotificationExample1,
         TuiBadgeNotificationExample2,
         TuiSetupComponent,

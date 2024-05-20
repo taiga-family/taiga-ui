@@ -2,14 +2,14 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiComponentPipe, TuiExamplePipe, TuiSetupComponent} from '@demo/utils';
-import {TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiAddonDoc} from '@taiga-ui/addon-doc';
 import type {TuiTablePagination} from '@taiga-ui/addon-table';
 import {TuiTablePaginationComponent} from '@taiga-ui/addon-table';
 
 @Component({
     standalone: true,
     imports: [
-        TuiAddonDocModule,
+        TuiAddonDoc,
         TuiTablePaginationComponent,
         TuiSetupComponent,
         TuiComponentPipe,

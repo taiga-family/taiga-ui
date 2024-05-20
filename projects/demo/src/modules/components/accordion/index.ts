@@ -2,7 +2,7 @@ import {Component, DestroyRef, type ElementRef, inject, ViewChild} from '@angula
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiSetupComponent} from '@demo/utils';
-import {TuiAddonDocModule, type TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiAddonDoc, type TuiDocExample} from '@taiga-ui/addon-doc';
 import {TUI_EXPAND_LOADED, type TuiSizeS} from '@taiga-ui/core';
 import {TuiAccordionModule} from '@taiga-ui/kit';
 import {timer} from 'rxjs';
@@ -16,7 +16,7 @@ import {TuiAccordionExample5} from './examples/5';
 @Component({
     standalone: true,
     imports: [
-        TuiAddonDocModule,
+        TuiAddonDoc,
         TuiAccordionModule,
         TuiAccordionExample1,
         TuiAccordionExample2,

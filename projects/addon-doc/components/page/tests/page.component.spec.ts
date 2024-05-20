@@ -10,7 +10,7 @@ describe('TuiDocPageComponent', () => {
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            declarations: [TuiDocPageComponent],
+            imports: [TuiDocPageComponent],
             providers: [
                 {
                     provide: TUI_DOC_DEFAULT_TABS,

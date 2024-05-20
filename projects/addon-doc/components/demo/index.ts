@@ -1,4 +1,4 @@
-import {Location} from '@angular/common';
+import {JsonPipe, Location, NgIf, NgTemplateOutlet} from '@angular/common';
 import type {ElementRef, OnInit} from '@angular/core';
 import {
     ChangeDetectionStrategy,
@@ -12,7 +12,7 @@ import {
     ViewChild,
 } from '@angular/core';
 import type {AbstractControl} from '@angular/forms';
-import {FormGroup} from '@angular/forms';
+import {FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import type {Params, UrlTree} from '@angular/router';
 import {UrlSerializer} from '@angular/router';
 import type {TuiDemoParams} from '@taiga-ui/addon-doc/interfaces';
@@ -26,15 +26,46 @@ import {
     tuiPure,
     tuiPx,
     TuiResizeableDirective,
+    TuiResizerDirective,
     tuiToInteger,
 } from '@taiga-ui/cdk';
+import {
+    TuiButtonDirective,
+    TuiExpand,
+    TuiGroupDirective,
+    TuiTextfieldControllerModule,
+} from '@taiga-ui/core';
+import {
+    TuiChevronDirective,
+    TuiDataListWrapperModule,
+    TuiSelectModule,
+    TuiSwitchComponent,
+} from '@taiga-ui/kit';
 
 const MIN_WIDTH = 160;
 
 @Component({
+    standalone: true,
     selector: 'tui-doc-demo',
-    templateUrl: './demo.template.html',
-    styleUrls: ['./demo.style.less'],
+    imports: [
+        TuiResizerDirective,
+        FormsModule,
+        TuiSwitchComponent,
+        TuiResizeableDirective,
+        NgIf,
+        ReactiveFormsModule,
+        NgTemplateOutlet,
+        TuiButtonDirective,
+        TuiChevronDirective,
+        TuiExpand,
+        JsonPipe,
+        TuiSelectModule,
+        TuiGroupDirective,
+        TuiTextfieldControllerModule,
+        TuiDataListWrapperModule,
+    ],
+    templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiDocDemoComponent implements OnInit {

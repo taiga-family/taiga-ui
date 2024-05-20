@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiDocCodeModule, TuiDocTabModule} from '@taiga-ui/addon-doc';
+import {TuiDocCodeComponent, TuiDocTabComponent} from '@taiga-ui/addon-doc';
 import {TuiLinkDirective, TuiNotificationComponent} from '@taiga-ui/core';
 import {TuiAccordionModule, TuiTabsModule} from '@taiga-ui/kit';
 
@@ -12,9 +12,9 @@ import {TuiAccordionModule, TuiTabsModule} from '@taiga-ui/kit';
     selector: 'demo-home',
     imports: [
         TuiTabsModule,
-        TuiDocTabModule,
+        TuiDocTabComponent,
         NgIf,
-        TuiDocCodeModule,
+        TuiDocCodeComponent,
         TuiLinkDirective,
         RouterLink,
         TuiAccordionModule,

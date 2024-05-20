@@ -6,7 +6,7 @@ import {NavigationEnd, Router, RouterLink, RouterOutlet} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {LOCAL_STORAGE} from '@ng-web-apis/common';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
-import {TuiDocMainModule, TuiLanguageSwitcherComponent} from '@taiga-ui/addon-doc';
+import {TuiAddonDoc, TuiLanguageSwitcherComponent} from '@taiga-ui/addon-doc';
 import {TuiSheetModule} from '@taiga-ui/addon-mobile';
 import {TuiTableBarsHostComponent} from '@taiga-ui/addon-tablebars';
 import {TuiLinkDirective, TuiTextfieldControllerModule} from '@taiga-ui/core';
@@ -24,7 +24,7 @@ import {TUI_VERSION_MANAGER_PROVIDERS} from './version-manager/version-manager.p
     imports: [
         RouterOutlet,
         AsyncPipe,
-        TuiDocMainModule,
+        TuiAddonDoc,
         NgIf,
         TuiLinkDirective,
         RouterLink,

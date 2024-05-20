@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiSetupComponent} from '@demo/utils';
-import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
+import {TuiAddonDoc, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiButtonDirective,
     TuiErrorComponent,
@@ -34,7 +34,7 @@ import {ExampleTuiInputFilesComponent} from './input-files.component';
         TuiFieldErrorPipeModule,
         TuiNotificationComponent,
         TuiAvatarComponent,
-        TuiAddonDocModule,
+        TuiAddonDoc,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiInputFilesComponent)),
         FormsModule,
         TuiSetupComponent,

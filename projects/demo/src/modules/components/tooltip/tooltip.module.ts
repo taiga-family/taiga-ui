@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiSetupComponent} from '@demo/utils';
-import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
+import {TuiAddonDoc, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiLetDirective} from '@taiga-ui/cdk';
 import {
     TuiAutoColorPipe,
@@ -31,7 +31,7 @@ import {ExampleTuiTooltipComponent} from './tooltip.component';
         TuiLoaderComponent,
         TuiInputModule,
         PolymorpheusModule,
-        TuiAddonDocModule,
+        TuiAddonDoc,
         CommonModule,
         FormsModule,
         TuiTextfieldControllerModule,

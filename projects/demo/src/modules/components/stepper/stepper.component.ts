@@ -7,7 +7,7 @@ import {
     TuiKebabPipe,
     TuiSetupComponent,
 } from '@demo/utils';
-import {TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiAddonDoc} from '@taiga-ui/addon-doc';
 import type {TuiOrientation} from '@taiga-ui/core';
 import type {TuiStepState} from '@taiga-ui/kit';
 import {TuiStepperModule} from '@taiga-ui/kit';
@@ -16,7 +16,7 @@ import {TuiStepperModule} from '@taiga-ui/kit';
     standalone: true,
     imports: [
         TuiStepperModule,
-        TuiAddonDocModule,
+        TuiAddonDoc,
         TuiComponentPipe,
         TuiExamplePipe,
         TuiKebabPipe,

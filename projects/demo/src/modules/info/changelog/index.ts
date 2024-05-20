@@ -1,10 +1,10 @@
-import {AsyncPipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {TuiDocPageModule, TuiMarkdownPipe} from '@taiga-ui/addon-doc';
+import {TuiDemo} from '@demo/utils';
+import {TuiMarkdownPipe} from '@taiga-ui/addon-doc';
 
 @Component({
     standalone: true,
-    imports: [TuiDocPageModule, TuiMarkdownPipe, AsyncPipe],
+    imports: [TuiDemo, TuiMarkdownPipe],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

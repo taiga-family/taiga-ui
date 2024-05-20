@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
+import {TuiAddonDoc, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiLetDirective} from '@taiga-ui/cdk';
 import {
     TuiButtonDirective,
@@ -59,7 +59,7 @@ import {ExampleTuiMultiSelectComponent} from './multi-select.component';
         TuiTagModule,
         TuiTextfieldControllerModule,
         InheritedDocumentationModule,
-        TuiAddonDocModule,
+        TuiAddonDoc,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiMultiSelectComponent)),
         PolymorpheusModule,
         TuiScrollableDirective,

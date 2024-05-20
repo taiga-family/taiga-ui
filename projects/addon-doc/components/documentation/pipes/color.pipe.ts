@@ -2,7 +2,10 @@ import type {PipeTransform} from '@angular/core';
 import {Pipe} from '@angular/core';
 import {tuiRgbToHex} from '@taiga-ui/cdk';
 
-@Pipe({name: 'tuiGetColorPipe'})
+@Pipe({
+    standalone: true,
+    name: 'tuiGetColorPipe',
+})
 export class TuiGetColorPipe implements PipeTransform {
     public transform(color: string): string {
         if (color.length === 4) {

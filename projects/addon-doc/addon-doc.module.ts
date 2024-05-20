@@ -2,32 +2,59 @@ import type {ModuleWithProviders, Type} from '@angular/core';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {
-    TuiDocCodeModule,
+    TuiDocCodeComponent,
     TuiDocCopyComponent,
-    TuiDocDemoModule,
-    TuiDocDocumentationModule,
-    TuiDocExampleModule,
-    TuiDocPageModule,
-    TuiDocTabModule,
+    TuiDocDemoComponent,
+    TuiDocDocumentationComponent,
+    TuiDocDocumentationPropertyConnectorDirective,
+    TuiDocExampleComponent,
+    TuiDocExampleGetTabsPipe,
+    TuiDocMainComponent,
+    TuiDocNavigationComponent,
+    TuiDocPageComponent,
+    TuiDocPageTabConnectorDirective,
+    TuiDocTabComponent,
+    TuiDocTypeReferencePipe,
 } from '@taiga-ui/addon-doc/components';
 import {tuiGenerateRoutes} from '@taiga-ui/addon-doc/utils';
 
 @NgModule({
-    imports: [TuiDocCopyComponent],
+    imports: [
+        TuiDocCopyComponent,
+        TuiDocTabComponent,
+        TuiDocDemoComponent,
+        TuiDocCodeComponent,
+        TuiDocExampleComponent,
+        TuiDocExampleGetTabsPipe,
+        TuiDocTypeReferencePipe,
+        TuiDocDocumentationComponent,
+        TuiDocDocumentationPropertyConnectorDirective,
+        TuiDocPageComponent,
+        TuiDocPageTabConnectorDirective,
+        TuiDocNavigationComponent,
+        TuiDocMainComponent,
+    ],
     exports: [
         TuiDocCopyComponent,
-        TuiDocCodeModule,
-        TuiDocDemoModule,
-        TuiDocDocumentationModule,
-        TuiDocPageModule,
-        TuiDocExampleModule,
-        TuiDocTabModule,
+        TuiDocCodeComponent,
+        TuiDocDemoComponent,
+        TuiDocTypeReferencePipe,
+        TuiDocDocumentationComponent,
+        TuiDocDocumentationPropertyConnectorDirective,
+        TuiDocExampleComponent,
+        TuiDocExampleGetTabsPipe,
+        TuiDocTabComponent,
+        TuiDocPageComponent,
+        TuiDocPageTabConnectorDirective,
+        TuiDocNavigationComponent,
+        TuiDocMainComponent,
     ],
 })
-export class TuiAddonDocModule {}
+export class TuiAddonDoc {}
 
+// TODO: drop in v4.0
 export function tuiGetDocModules(
     type: Type<unknown>,
-): [Type<TuiAddonDocModule>, ModuleWithProviders<RouterModule>] {
-    return [TuiAddonDocModule, RouterModule.forChild(tuiGenerateRoutes(type))];
+): [Type<TuiAddonDoc>, ModuleWithProviders<RouterModule>] {
+    return [TuiAddonDoc, RouterModule.forChild(tuiGenerateRoutes(type))];
 }

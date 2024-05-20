@@ -17,8 +17,8 @@ import {TuiSelectModule} from '@taiga-ui/kit';
         TuiFlagPipe,
         TuiSelectModule,
     ],
-    templateUrl: './language-switcher.component.html',
-    styleUrls: ['./language-switcher.component.less'],
+    templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiLanguageSwitcherComponent {

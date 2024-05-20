@@ -3,7 +3,7 @@ import {FormControl} from '@angular/forms';
 import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiComponentPipe, TuiExamplePipe, TuiSetupComponent} from '@demo/utils';
-import {TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiAddonDoc} from '@taiga-ui/addon-doc';
 import {TuiMobileCalendarComponent} from '@taiga-ui/addon-mobile';
 import type {TuiBooleanHandler, TuiDayRange} from '@taiga-ui/cdk';
 import {
@@ -20,7 +20,7 @@ import type {Observable} from 'rxjs';
 @Component({
     standalone: true,
     imports: [
-        TuiAddonDocModule,
+        TuiAddonDoc,
         TuiLinkDirective,
         RouterLink,
         TuiMobileCalendarComponent,

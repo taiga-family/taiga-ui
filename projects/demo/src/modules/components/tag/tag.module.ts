@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
+import {TuiAddonDoc, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiRepeatTimesDirective} from '@taiga-ui/cdk';
 import {TuiSvgComponent} from '@taiga-ui/core';
 import {TuiRadioListComponent, TuiTagModule} from '@taiga-ui/kit';
@@ -23,7 +23,7 @@ import {ExampleTuiTagComponent} from './tag.component';
         TuiTagModule,
         TuiSvgComponent,
         TuiRepeatTimesDirective,
-        TuiAddonDocModule,
+        TuiAddonDoc,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiTagComponent)),
     ],
     declarations: [

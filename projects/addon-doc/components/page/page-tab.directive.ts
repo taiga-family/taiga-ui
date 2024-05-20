@@ -1,6 +1,7 @@
 import {Directive, inject, Input, TemplateRef} from '@angular/core';
 
 @Directive({
+    standalone: true,
     selector: '[pageTab]',
 })
 export class TuiDocPageTabConnectorDirective {
