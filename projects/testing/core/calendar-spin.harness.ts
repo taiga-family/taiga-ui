@@ -3,7 +3,7 @@ import {TuiComponentHarness} from '@taiga-ui/testing/utils';
 import {TuiSpinButtonHarness} from './spin-button.harness';
 
 export class TuiCalendarSpinHarness extends TuiComponentHarness {
-    public static hostSelector = 'tui-primitive-year-month-pagination';
+    public static hostSelector = 'tui-calendar-spin';
 
     private readonly buttonLeft = this.locatorForOptional(
         'button[tuiIconButton]:first-child',

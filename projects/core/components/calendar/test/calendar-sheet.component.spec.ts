@@ -1,5 +1,5 @@
 import type {DebugElement} from '@angular/core';
-import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
@@ -27,7 +27,6 @@ describe('CalendarSheet', () => {
                 (dayClick)="onDayClick($event)"
             />
         `,
-        changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class TestComponent {
         @ViewChild(TuiCalendarSheetComponent, {static: true})
@@ -119,9 +118,8 @@ describe('CalendarSheet', () => {
             it('returns start correctly if there is range in value', () => {
                 const day1 = new TuiDay(2019, 4, 16);
                 const day2 = new TuiDay(2020, 1, 1);
-                const range = new TuiDayRange(day1, day2);
 
-                component.value = range;
+                component.value = new TuiDayRange(day1, day2);
 
                 expect(component.getItemRange(day1)).toBe('start');
             });
@@ -129,18 +127,16 @@ describe('CalendarSheet', () => {
             it('returns end correctly if there is range in value', () => {
                 const day1 = new TuiDay(2019, 4, 16);
                 const day2 = new TuiDay(2020, 1, 1);
-                const range = new TuiDayRange(day1, day2);
 
-                component.value = range;
+                component.value = new TuiDayRange(day1, day2);
 
                 expect(component.getItemRange(day2)).toBe('end');
             });
 
             it('returns single if value is single day and item equals this', () => {
                 const day1 = new TuiDay(2019, 4, 24);
-                const range = new TuiDayRange(day1, day1);
 
-                component.value = range;
+                component.value = new TuiDayRange(day1, day1);
 
                 expect(component.getItemRange(day1)).toBe('single');
             });

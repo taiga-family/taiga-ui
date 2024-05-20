@@ -38,7 +38,7 @@ export class TuiCalendarSheetHarness extends TuiComponentHarness {
 
     public async clickDay(day: number): Promise<void> {
         const dayCell = await this.locatorFor(
-            TuiDayCellHarness.with({day, ancestor: '#date-rows'}),
+            TuiDayCellHarness.with({day, ancestor: '.t-row:not(.t-row_weekday)'}),
         )();
 
         return dayCell.click();
@@ -46,7 +46,7 @@ export class TuiCalendarSheetHarness extends TuiComponentHarness {
 
     public async hoverDay(day: number): Promise<void> {
         const dayCell = await this.locatorFor(
-            TuiDayCellHarness.with({day, ancestor: '#date-rows'}),
+            TuiDayCellHarness.with({day, ancestor: '.t-row:not(.t-row_weekday)'}),
         )();
 
         return dayCell.hover();

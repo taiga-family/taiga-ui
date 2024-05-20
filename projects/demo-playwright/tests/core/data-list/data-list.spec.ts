@@ -123,10 +123,7 @@ test.describe('DataList', () => {
         await expect(page).toHaveScreenshot('08-data-list.png');
 
         await page.locator('[automation-id="tui-data-list-calendar-option"]').click();
-        await page
-            .locator('[automation-id="tui-primitive-calendar__cell"]')
-            .nth(4)
-            .click();
+        await page.locator('[automation-id="tui-calendar-sheet__cell"]').nth(4).click();
 
         await expect(page).toHaveScreenshot('09-data-list.png');
     });
