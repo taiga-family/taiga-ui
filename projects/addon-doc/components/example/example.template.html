@@ -16,7 +16,7 @@
         class="t-link-icon"
         [fragment]="id"
         [iconLeft]="options.linkIcon"
-        (click)="copyExampleLink($any($event.currentTarget))"
+        (click)="copyExampleLink($event.currentTarget)"
     >
         {{ copy$ | async }}
     </a>

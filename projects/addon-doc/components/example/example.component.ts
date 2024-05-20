@@ -107,8 +107,8 @@ export class TuiDocExampleComponent {
         return this.options.tabTitles.get(fileName) || fileName;
     }
 
-    protected copyExampleLink({href}: HTMLAnchorElement): void {
-        this.clipboard.copy(href);
+    protected copyExampleLink(target: EventTarget | null): void {
+        this.clipboard.copy((target as HTMLAnchorElement | null)?.href ?? '');
         this.alerts
             .open(this.texts[1], {label: this.texts[2], status: 'success'})
             .subscribe();
