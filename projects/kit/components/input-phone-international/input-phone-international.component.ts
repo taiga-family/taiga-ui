@@ -20,7 +20,7 @@ import {
 } from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeM, TuiSizeS} from '@taiga-ui/core';
 import {TUI_TEXTFIELD_SIZE, TuiPrimitiveTextfieldComponent} from '@taiga-ui/core';
-import {TuiCountryIsoCode} from '@taiga-ui/i18n';
+import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
 import {TUI_ARROW} from '@taiga-ui/kit/components/arrow';
 import {TuiInputPhoneComponent} from '@taiga-ui/kit/components/input-phone';
 import {TuiToCountryCodePipe} from '@taiga-ui/kit/pipes';
@@ -132,7 +132,7 @@ export class TuiInputPhoneInternationalComponent
             return;
         }
 
-        if (countryIsoCode === TuiCountryIsoCode.RU) {
+        if (countryIsoCode === 'RU') {
             value = value.replace(/^8/, '7');
         }
 

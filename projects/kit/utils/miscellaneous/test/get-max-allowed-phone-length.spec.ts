@@ -1,4 +1,4 @@
-import {TuiCountryIsoCode} from '@taiga-ui/i18n';
+import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
 import {tuiGetMaxAllowedPhoneLength} from '@taiga-ui/kit';
 
 describe('tuiGetMaxAllowedPhoneLength', () => {
@@ -8,28 +8,28 @@ describe('tuiGetMaxAllowedPhoneLength', () => {
         fn = (isoCode: TuiCountryIsoCode) =>
             tuiGetMaxAllowedPhoneLength(
                 {
-                    [TuiCountryIsoCode.US]: '+1 (###) ###-####',
-                    [TuiCountryIsoCode.GB]: '+44 #### ######',
-                    [TuiCountryIsoCode.AU]: '+61 #### ####',
+                    US: '+1 (###) ###-####',
+                    GB: '+44 #### ######',
+                    AU: '+61 #### ####',
                 } as Record<TuiCountryIsoCode, string>,
                 isoCode,
             );
     });
 
     it('should return max allowed phone length for US iso code', () => {
-        const transformed = fn(TuiCountryIsoCode.US);
+        const transformed = fn('US');
 
         expect(transformed).toBe(12);
     });
 
     it('should return max allowed phone length for GB iso code', () => {
-        const transformed = fn(TuiCountryIsoCode.GB);
+        const transformed = fn('GB');
 
         expect(transformed).toBe(13);
     });
 
     it('should return max allowed phone length for AU iso code', () => {
-        const transformed = fn(TuiCountryIsoCode.AU);
+        const transformed = fn('AU');
 
         expect(transformed).toBe(11);
     });

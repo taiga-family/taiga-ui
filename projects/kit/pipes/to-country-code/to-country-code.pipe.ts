@@ -1,7 +1,7 @@
 import type {PipeTransform} from '@angular/core';
 import {inject, Pipe} from '@angular/core';
 import {CHAR_PLUS} from '@taiga-ui/cdk';
-import {TuiCountryIsoCode} from '@taiga-ui/i18n';
+import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
 import {TUI_COUNTRIES_MASKS} from '@taiga-ui/kit/tokens';
 import {
     tuiGetMaxAllowedPhoneLength,
@@ -21,14 +21,11 @@ export class TuiToCountryCodePipe implements PipeTransform {
     ): TuiCountryIsoCode | undefined {
         return countries.find(countryIsoCode => {
             const ruCodeTest =
-                countryIsoCode === TuiCountryIsoCode.RU &&
+                countryIsoCode === 'RU' &&
                 /^[78]/.test(value) &&
                 /^(?!880[1-9 ])/.test(value) &&
                 value.length + 1 ===
-                    tuiGetMaxAllowedPhoneLength(
-                        this.countriesMasks,
-                        TuiCountryIsoCode.RU,
-                    );
+                    tuiGetMaxAllowedPhoneLength(this.countriesMasks, 'RU');
 
             const matched =
                 ruCodeTest ||
@@ -43,9 +40,9 @@ export class TuiToCountryCodePipe implements PipeTransform {
 
             if (matched) {
                 switch (countryIsoCode) {
-                    case TuiCountryIsoCode.RU:
+                    case 'RU':
                         return tuiNotKzRegion(value);
-                    case TuiCountryIsoCode.KZ:
+                    case 'KZ':
                         return !tuiNotKzRegion(value);
                     default:
                         return true;
