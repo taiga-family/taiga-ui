@@ -19,11 +19,7 @@ import {
     tuiPure,
 } from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeM, TuiSizeS} from '@taiga-ui/core';
-import {
-    TUI_TEXTFIELD_SIZE,
-    TuiFlagPipe,
-    TuiPrimitiveTextfieldComponent,
-} from '@taiga-ui/core';
+import {TUI_TEXTFIELD_SIZE, TuiPrimitiveTextfieldComponent} from '@taiga-ui/core';
 import {TuiCountryIsoCode} from '@taiga-ui/i18n';
 import {TUI_ARROW} from '@taiga-ui/kit/components/arrow';
 import {TuiInputPhoneComponent} from '@taiga-ui/kit/components/input-phone';
@@ -46,8 +42,6 @@ const MASK_SYMBOLS = /[ \-_()]/g;
     providers: [
         tuiAsFocusableItemAccessor(TuiInputPhoneInternationalComponent),
         tuiAsControl(TuiInputPhoneInternationalComponent),
-        // TODO: for backward compatibility only. Drop in v4.0
-        TuiFlagPipe,
         TuiToCountryCodePipe,
     ],
     viewProviders: [FIXED_DROPDOWN_CONTROLLER_PROVIDER],
@@ -63,7 +57,6 @@ export class TuiInputPhoneInternationalComponent
     private readonly primitiveTextfield?: TuiPrimitiveTextfieldComponent;
 
     private readonly options = inject(TUI_INPUT_PHONE_INTERNATIONAL_OPTIONS);
-    private readonly flagPipe = inject(TuiFlagPipe);
     private readonly extractCountryCodePipe = inject(TuiToCountryCodePipe);
     private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
 
@@ -182,29 +175,8 @@ export class TuiInputPhoneInternationalComponent
         return this.textfieldSize.size;
     }
 
-    /**
-     * @deprecated use `<img [src]="countryIsoCode | tuiFlagPipe" />`
-     * TODO drop in v4.0
-     */
-    protected get countryFlagPath(): string {
-        return this.getFlagPath(this.countryIsoCode);
-    }
-
     protected readonly isoToCountryCodeMapper: TuiMapper<[TuiCountryIsoCode], string> =
         item => tuiIsoToCountryCode(this.countriesMasks, item);
-
-    /**
-     * @deprecated use `<img [src]="countryIsoCode | tuiFlagPipe" />`
-     * TODO drop in v4.0
-     */
-    protected getFlagPath(code: TuiCountryIsoCode): string {
-        return this.flagPipe.transform(code);
-    }
-
-    /** @deprecated use 'value' setter */
-    protected onModelChange(value: string): void {
-        this.value = value;
-    }
 
     protected onActiveZone(active: boolean): void {
         this.updateFocused(active);
