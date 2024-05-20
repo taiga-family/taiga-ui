@@ -25,7 +25,12 @@ import {
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
 } from '@taiga-ui/core/directives';
 import {TUI_NOTHING_FOUND_MESSAGE, tuiAsDataListAccessor} from '@taiga-ui/core/tokens';
-import type {TuiDataListAccessor, TuiDataListRole} from '@taiga-ui/core/types';
+import type {
+    TuiDataListAccessor,
+    TuiDataListRole,
+    TuiSizeL,
+    TuiSizeXS,
+} from '@taiga-ui/core/types';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import type {Observable} from 'rxjs';
 import {map} from 'rxjs';
@@ -63,7 +68,7 @@ export class TuiDataListComponent<T> implements TuiDataListAccessor<T> {
 
     @Input()
     @HostBinding('attr.data-list-size')
-    public size = this.controller?.size || 'm';
+    public size: TuiSizeL | TuiSizeXS = this.controller?.size || 'm';
 
     protected readonly defaultEmptyContent$ = inject(TUI_NOTHING_FOUND_MESSAGE);
 
