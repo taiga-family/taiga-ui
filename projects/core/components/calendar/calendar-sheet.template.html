@@ -5,7 +5,7 @@
         [textContent]="day"
     ></div>
 </div>
-<ng-container *tuiLet="month | tuiCalendarSheet: true as sheet">
+<div *tuiLet="month | tuiCalendarSheet: true as sheet">
     <div
         *tuiRepeatTimes="let rowIndex of sheet.length"
         automation-id="tui-calendar-sheet__row"
@@ -58,4 +58,4 @@
             </ng-container>
         </ng-container>
     </div>
-</ng-container>
+</div>
