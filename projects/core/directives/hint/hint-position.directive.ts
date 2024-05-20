@@ -31,7 +31,7 @@ export class TuiHintPositionDirective extends TuiPositionAccessor {
     private readonly points: Record<TuiHintDirection, [number, number]> =
         TUI_HINT_DIRECTIONS.reduce(
             (acc, direction) => ({...acc, [direction]: [0, 0]}),
-            {} as any,
+            {} as Record<TuiHintDirection, [number, number]>,
         );
 
     @Input('tuiHintDirection')
