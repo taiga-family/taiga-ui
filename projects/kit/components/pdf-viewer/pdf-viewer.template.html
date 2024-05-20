@@ -6,8 +6,7 @@
         {{ context.label }}
     </h2>
     <div class="t-actions">
-        <!-- TODO: Polymorpheus fix type -->
-        <ng-container *polymorpheusOutlet="$any(context.actions) as text; context: context">
+        <ng-container *polymorpheusOutlet="context.actions as text; context: context">
             {{ text }}
         </ng-container>
     </div>
@@ -25,9 +24,8 @@
     </button>
 </header>
 <section class="t-content">
-    <!-- TODO: Polymorpheus fix type -->
     <iframe
-        *polymorpheusOutlet="$any(context.content) as content; context: context"
+        *polymorpheusOutlet="context.content as content; context: context"
         title="pdf"
         class="t-iframe"
         [src]="content"
