@@ -58,6 +58,7 @@ export class TuiTreeItemComponent implements DoCheck {
     protected readonly expanded$ = this.change$.pipe(
         startWith(null),
         map(() => this.isExpanded),
+        distinctUntilChanged(),
     );
 
     protected readonly attached$ = this.change$.pipe(
