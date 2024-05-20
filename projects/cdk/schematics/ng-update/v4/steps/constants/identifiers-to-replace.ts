@@ -107,7 +107,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {name: 'TuiExpandModule', moduleSpecifier: '@taiga-ui/core'},
-        to: {name: 'TuiExpandComponent', moduleSpecifier: '@taiga-ui/core'},
+        to: {name: 'TuiExpand', moduleSpecifier: '@taiga-ui/core'},
     },
     {
         from: {name: 'TuiLoaderModule', moduleSpecifier: '@taiga-ui/core'},

@@ -5,7 +5,7 @@ import {TuiResizeableDirective, TuiResizerDirective} from '@taiga-ui/cdk';
 import {
     TuiButtonDirective,
     TuiDataList,
-    TuiExpandComponent,
+    TuiExpand,
     TuiGroupDirective,
     TuiHintModule,
     TuiLinkDirective,
@@ -32,7 +32,7 @@ import {TuiDocDemoComponent} from './demo.component';
         TuiLinkDirective,
         TuiButtonDirective,
         TuiSelectModule,
-        TuiExpandComponent,
+        TuiExpand,
         TuiGroupDirective,
         TuiTooltipModule,
         TuiCheckboxComponent,

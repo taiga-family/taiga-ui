@@ -2,7 +2,8 @@ import {Component, ElementRef, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {fakeAsync, TestBed, tick} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {TUI_EXPAND_LOADED, TuiExpandComponent} from '@taiga-ui/core';
+import type {TuiExpandComponent} from '@taiga-ui/core';
+import {TUI_EXPAND_LOADED, TuiExpand} from '@taiga-ui/core';
 import {TuiPageObject} from '@taiga-ui/testing';
 
 const ANIMATION_DELAY = 900;
@@ -42,7 +43,7 @@ describe('expand', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TuiExpandComponent, NoopAnimationsModule],
+            imports: [TuiExpand, NoopAnimationsModule],
             declarations: [TestComponent],
             // TODO: why tests are failed with NG_EVENT_PLUGINS
             // providers: [NG_EVENT_PLUGINS],

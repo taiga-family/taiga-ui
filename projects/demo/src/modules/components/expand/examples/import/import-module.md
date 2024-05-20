@@ -1,5 +1,5 @@
 ```ts
-import {TuiExpandComponent} from '@taiga-ui/core';
+import {TuiExpand} from '@taiga-ui/core';
 
 // ...
 
@@ -7,7 +7,7 @@ import {TuiExpandComponent} from '@taiga-ui/core';
   standalone: true,
   imports: [
     // ...
-    TuiExpandComponent,
+    TuiExpand,
   ],
   // ...
 })

@@ -6,7 +6,7 @@ import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiButtonDirective,
-    TuiExpandComponent,
+    TuiExpand,
     TuiHintModule,
     TuiLinkDirective,
     TuiNotificationComponent,
@@ -24,7 +24,7 @@ import {IconsBundledComponent} from './icons-bundled.component';
         FormsModule,
         ClipboardModule,
         TuiLinkDirective,
-        TuiExpandComponent,
+        TuiExpand,
         TuiButtonDirective,
         TuiInputDateRangeModule,
         TuiNotificationComponent,
