@@ -1,12 +1,15 @@
+import {ClipboardModule} from '@angular/cdk/clipboard';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiDocCopyComponent, TuiTextCodeDirective} from '@taiga-ui/addon-doc';
 
 @Component({
-    selector: 'tui-spaces-example-1',
+    standalone: true,
+    imports: [TuiTextCodeDirective, TuiDocCopyComponent, ClipboardModule],
     templateUrl: './index.html',
-    styleUrls: ['./index.style.less'],
+    styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiSpacingExample1 {}
+export default class ExampleComponent {}

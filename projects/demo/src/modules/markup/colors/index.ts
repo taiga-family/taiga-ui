@@ -1,5 +1,6 @@
 import {Component, ViewEncapsulation} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiDemo} from '@demo/utils';
 
 import {
     BASE,
@@ -9,16 +10,18 @@ import {
     SUPPORT,
     TEXT,
     TEXT_NIGHT,
-} from './colors.constants';
+} from './constants';
+import {TableComponent} from './examples/table/table.component';
 
 @Component({
-    selector: 'colors',
-    templateUrl: './colors.template.html',
-    styleUrls: ['./colors.style.less'],
+    standalone: true,
+    imports: [TuiDemo, TableComponent],
+    templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection,
 })
-export class ColorsComponent {
+export default class PageComponent {
     protected readonly basicImportsLess = import(
         './examples/import/basic-imports-less.md?raw'
     );

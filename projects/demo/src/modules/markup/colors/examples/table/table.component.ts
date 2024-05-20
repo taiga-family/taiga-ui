@@ -1,14 +1,17 @@
-import {DOCUMENT} from '@angular/common';
+import {ClipboardModule} from '@angular/cdk/clipboard';
+import {AsyncPipe, DOCUMENT, NgForOf, NgIf} from '@angular/common';
 import {Component, HostBinding, inject, Input} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {WINDOW} from '@ng-web-apis/common';
-import {TuiThemeService} from '@taiga-ui/addon-doc';
+import {TuiDocCopyComponent, TuiThemeService} from '@taiga-ui/addon-doc';
 import {delay} from 'rxjs';
 
-import type {Color} from '../colors.constants';
+import type {Color} from '../../constants';
 
 @Component({
+    standalone: true,
     selector: 'table[colors]',
+    imports: [NgIf, AsyncPipe, NgForOf, TuiDocCopyComponent, ClipboardModule],
     templateUrl: './table.template.html',
     styleUrls: ['./table.style.less'],
     changeDetection,

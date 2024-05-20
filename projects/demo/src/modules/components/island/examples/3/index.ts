@@ -1,16 +1,44 @@
+import {AsyncPipe, NgIf} from '@angular/common';
 import {Component} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {
+    TuiButtonDirective,
+    TuiErrorComponent,
+    TuiLinkDirective,
+    TuiTextfieldControllerModule,
+} from '@taiga-ui/core';
+import {
+    TuiAvatarComponent,
+    TuiFieldErrorPipeModule,
+    TuiInputPhoneModule,
+    TuiIslandModule,
+} from '@taiga-ui/kit';
+import {TuiCardLargeDirective} from '@taiga-ui/layout';
 
 @Component({
-    selector: 'tui-island-example-3',
+    standalone: true,
+    imports: [
+        TuiIslandModule,
+        ReactiveFormsModule,
+        TuiInputPhoneModule,
+        TuiErrorComponent,
+        TuiTextfieldControllerModule,
+        TuiFieldErrorPipeModule,
+        AsyncPipe,
+        TuiCardLargeDirective,
+        TuiAvatarComponent,
+        TuiButtonDirective,
+        TuiLinkDirective,
+        NgIf,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiIslandExample3 {
+export default class ExampleComponent {
     protected bannerImage =
         'https://ng-web-apis.github.io/dist/assets/images/web-api.svg';
 

@@ -1,11 +1,13 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiDemo} from '@demo/utils';
+
+import {StylesInfoComponent} from '../../app/styles-info';
 
 @Component({
     standalone: true,
+    imports: [TuiDemo, StylesInfoComponent],
     templateUrl: './index.html',
-    encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {}
+export default class PageComponent {}

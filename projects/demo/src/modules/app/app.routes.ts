@@ -544,8 +544,7 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.Island,
-        loadChildren: async () =>
-            (await import('../components/island/island.module')).ExampleTuiIslandModule,
+        loadComponent: async () => import('../components/island'),
         title: 'Island',
     }),
     route({
@@ -886,49 +885,42 @@ export const ROUTES: Routes = [
     // STYLES
     route({
         path: DemoRoute.Colors,
-        loadChildren: async () =>
-            (await import('../markup/colors/colors.module')).ColorsModule,
+        loadComponent: async () => import('../markup/colors'),
         title: 'Colors',
     }),
     route({
         path: DemoRoute.Form,
-        loadChildren: async () => (await import('../markup/form/form.module')).FormModule,
+        loadComponent: async () => import('../markup/form'),
         title: 'Form',
     }),
     route({
         path: DemoRoute.Lists,
-        loadChildren: async () =>
-            (await import('../markup/lists/lists.module')).ListsModule,
+        loadComponent: async () => import('../markup/lists'),
         title: 'Lists',
     }),
     route({
         path: DemoRoute.Shadows,
-        loadChildren: async () =>
-            (await import('../markup/shadows/shadows.module')).ShadowsModule,
+        loadComponent: async () => import('../markup/shadows'),
         title: 'Shadows',
     }),
     route({
         path: DemoRoute.Spaces,
-        loadChildren: async () =>
-            (await import('../markup/spaces/spaces.module')).SpacesModule,
+        loadComponent: async () => import('../markup/spaces'),
         title: 'Spaces',
     }),
     route({
         path: DemoRoute.Tables,
-        loadChildren: async () =>
-            (await import('../markup/tables/tables.module')).TablesModule,
+        loadComponent: async () => import('../markup/tables'),
         title: 'Tables',
     }),
     route({
         path: DemoRoute.Typography,
-        loadChildren: async () =>
-            (await import('../markup/typography/typography.module')).TypographyModule,
+        loadComponent: async () => import('../markup/typography'),
         title: 'Typography',
     }),
     route({
         path: DemoRoute.Breakpoints,
-        loadChildren: async () =>
-            (await import('../markup/breakpoints/breakpoints.module')).BreakpointsModule,
+        loadComponent: async () => import('../markup/breakpoints'),
         title: 'Breakpoints',
     }),
     // DIRECTIVES

@@ -16,6 +16,7 @@ import {
     TuiDocTabComponent,
     TuiDocTypeReferencePipe,
 } from '@taiga-ui/addon-doc/components';
+import {TuiTextCodeDirective} from '@taiga-ui/addon-doc/directives';
 import {tuiGenerateRoutes} from '@taiga-ui/addon-doc/utils';
 
 @NgModule({
@@ -33,6 +34,7 @@ import {tuiGenerateRoutes} from '@taiga-ui/addon-doc/utils';
         TuiDocPageTabConnectorDirective,
         TuiDocNavigationComponent,
         TuiDocMainComponent,
+        TuiTextCodeDirective,
     ],
     exports: [
         TuiDocCopyComponent,
@@ -48,6 +50,7 @@ import {tuiGenerateRoutes} from '@taiga-ui/addon-doc/utils';
         TuiDocPageTabConnectorDirective,
         TuiDocNavigationComponent,
         TuiDocMainComponent,
+        TuiTextCodeDirective,
     ],
 })
 export class TuiAddonDoc {}

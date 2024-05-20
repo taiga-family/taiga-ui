@@ -1,15 +1,17 @@
+import {NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
 @Component({
-    selector: 'example-css-breakpoints-1',
+    standalone: true,
+    imports: [NgForOf],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class ExampleBreakpointsComponent1 {
+export default class ExampleComponent {
     protected breakpoints = [
         'tui-mobile',
         'tui-mobile-min',

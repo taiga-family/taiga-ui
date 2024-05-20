@@ -1,7 +1,9 @@
+import {ClipboardModule} from '@angular/cdk/clipboard';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import type {TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiDemo} from '@demo/utils';
+import {TuiTable} from '@taiga-ui/addon-table';
 import fileWithBreakpoints from '@taiga-ui/core/styles/variables/media.less?raw';
 
 /**
@@ -30,13 +32,14 @@ function parseBreakpoints(file: string): Array<{name: string; value: string}> {
 }
 
 @Component({
-    selector: 'css-breakpoints',
-    templateUrl: './breakpoints.template.html',
-    styleUrls: ['./breakpoints.style.less'],
+    standalone: true,
+    imports: [TuiDemo, TuiTable, ClipboardModule],
+    templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class BreakpointsComponent {
+export default class PageComponent {
     protected readonly breakpoints = parseBreakpoints(fileWithBreakpoints);
     protected readonly columnsNames = Object.keys(this.breakpoints[0]);
 
@@ -47,10 +50,4 @@ export class BreakpointsComponent {
     protected readonly exampleBaseUsage = import(
         './examples/import/base-breakpoint-usage.md?raw'
     );
-
-    protected readonly example1: TuiDocExample = {
-        HTML: import('./examples/1/index.html?raw'),
-        LESS: import('./examples/1/index.less?raw'),
-        TypeScript: import('./examples/1/index.ts?raw'),
-    };
 }

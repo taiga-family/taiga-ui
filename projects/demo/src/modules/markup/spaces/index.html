@@ -1,4 +1,7 @@
-<tui-doc-page header="Spaces">
+<tui-doc-page
+    header="Spaces"
+    type="markup"
+>
     <ng-template pageTab>
         <tui-styles-info />
 
@@ -32,17 +35,15 @@
         <tui-doc-example
             id="classes"
             heading="Classes"
-            [content]="example1"
-        >
-            <tui-spaces-example-1 />
-        </tui-doc-example>
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample"
+        />
 
         <tui-doc-example
             id="mixins"
             heading="Mixins"
-            [content]="example2"
-        >
-            <tui-spaces-example-2 />
-        </tui-doc-example>
+            [component]="2 | tuiComponent"
+            [content]="2 | tuiExample"
+        />
     </ng-template>
 </tui-doc-page>

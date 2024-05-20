@@ -1,8 +1,36 @@
+import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiCurrency} from '@taiga-ui/addon-commerce';
+import {
+    TuiAmountPipe,
+    TuiCurrency,
+    TuiCurrencyPipeModule,
+} from '@taiga-ui/addon-commerce';
 import {TuiDay, TuiTime} from '@taiga-ui/cdk';
+import {
+    TuiButtonDirective,
+    TuiErrorComponent,
+    TuiGroupDirective,
+    TuiLabelDirective,
+    TuiTextfieldControllerModule,
+} from '@taiga-ui/core';
+import {
+    TuiBlockDirective,
+    TuiCheckboxComponent,
+    TuiDataListWrapperModule,
+    TuiFieldErrorPipeModule,
+    TuiInputDateModule,
+    TuiInputModule,
+    TuiInputNumberModule,
+    TuiInputPasswordModule,
+    TuiInputPhoneModule,
+    TuiInputSliderModule,
+    TuiInputTimeModule,
+    TuiRadioComponent,
+    TuiSelectModule,
+    TuiStepperModule,
+} from '@taiga-ui/kit';
 
 class User {
     constructor(
@@ -26,12 +54,37 @@ class Account {
 }
 
 @Component({
-    selector: 'tui-form-example-1',
+    standalone: true,
+    imports: [
+        TuiStepperModule,
+        ReactiveFormsModule,
+        TuiInputModule,
+        TuiErrorComponent,
+        TuiFieldErrorPipeModule,
+        AsyncPipe,
+        TuiInputDateModule,
+        TuiInputPasswordModule,
+        TuiInputNumberModule,
+        TuiTextfieldControllerModule,
+        TuiCurrencyPipeModule,
+        TuiInputSliderModule,
+        TuiSelectModule,
+        TuiDataListWrapperModule,
+        TuiInputPhoneModule,
+        TuiGroupDirective,
+        TuiBlockDirective,
+        TuiRadioComponent,
+        TuiInputTimeModule,
+        TuiLabelDirective,
+        TuiCheckboxComponent,
+        TuiButtonDirective,
+        TuiAmountPipe,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,
 })
-export class TuiExample {
+export default class ExampleComponent {
     protected readonly svgIcons = {
         common: 'https://ng-web-apis.github.io/dist/assets/images/common.svg',
         universal: 'https://ng-web-apis.github.io/dist/assets/images/universal.svg',
