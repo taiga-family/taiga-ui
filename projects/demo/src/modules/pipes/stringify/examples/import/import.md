@@ -1,5 +1,5 @@
 ```ts
-import {TuiStringifyPipeModule} from '@taiga-ui/kit';
+import {TuiStringifyPipe} from '@taiga-ui/kit';
 
 // ...
 
@@ -7,7 +7,7 @@ import {TuiStringifyPipeModule} from '@taiga-ui/kit';
   standalone: true,
   imports: [
     //...
-    TuiStringifyPipeModule,
+    TuiStringifyPipe,
   ],
   //  ...
 })

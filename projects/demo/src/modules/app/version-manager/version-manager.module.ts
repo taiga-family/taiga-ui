@@ -5,7 +5,7 @@ import {TuiDataList, TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {
     TuiSelectModule,
     TuiStringifyContentPipeModule,
-    TuiStringifyPipeModule,
+    TuiStringifyPipe,
 } from '@taiga-ui/kit';
 
 import {VersionManagerComponent} from './version-manager.component';
@@ -17,7 +17,7 @@ import {VersionManagerComponent} from './version-manager.component';
         TuiSelectModule,
         TuiDataList,
         TuiTextfieldControllerModule,
-        TuiStringifyPipeModule,
+        TuiStringifyPipe,
         TuiStringifyContentPipeModule,
     ],
     declarations: [VersionManagerComponent],

@@ -3,6 +3,7 @@ import {Pipe} from '@angular/core';
 import type {TuiStringHandler} from '@taiga-ui/cdk';
 
 @Pipe({
+    standalone: true,
     name: 'tuiStringify',
 })
 export class TuiStringifyPipe implements PipeTransform {
