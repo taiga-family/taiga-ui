@@ -7,12 +7,7 @@ import {By} from '@angular/platform-browser';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiRootComponent, tuiSvgOptionsProvider} from '@taiga-ui/core';
 import type {TuiLanguage} from '@taiga-ui/i18n';
-import {
-    TUI_ENGLISH_LANGUAGE,
-    TUI_LANGUAGE,
-    TUI_RUSSIAN_LANGUAGE,
-    TuiCountryIsoCode,
-} from '@taiga-ui/i18n';
+import {TUI_ENGLISH_LANGUAGE, TUI_LANGUAGE, TUI_RUSSIAN_LANGUAGE} from '@taiga-ui/i18n';
 import {
     TuiInputPhoneInternationalComponent,
     TuiInputPhoneInternationalModule,
@@ -39,16 +34,9 @@ describe('InputPhoneInternational', () => {
 
         public control = new FormControl('+79110330102');
 
-        public countries = [
-            TuiCountryIsoCode.RU,
-            TuiCountryIsoCode.KZ,
-            TuiCountryIsoCode.UA,
-            TuiCountryIsoCode.BY,
-            TuiCountryIsoCode.TW,
-            TuiCountryIsoCode.BD,
-        ];
+        public countries = ['RU', 'KZ', 'UA', 'BY', 'TW', 'BD'];
 
-        public countryIsoCode = TuiCountryIsoCode.RU;
+        public countryIsoCode = 'RU';
 
         public readOnly = false;
     }
@@ -90,13 +78,13 @@ describe('InputPhoneInternational', () => {
         initializeTestModule();
 
         it('calculates country code by iso code', () => {
-            const iso = TuiCountryIsoCode.RU;
+            const iso = 'RU';
 
             expect(component.isoToCountryCode(iso)).toBe('+7');
         });
 
         it('correct country code in inputPhoneCountryCode', () => {
-            component.countryIsoCode = TuiCountryIsoCode.DM;
+            component.countryIsoCode = 'DM';
 
             expect(component.inputPhoneCountryCode).toBe('+1(767)');
         });
@@ -106,7 +94,7 @@ describe('InputPhoneInternational', () => {
         initializeTestModule();
 
         it('should truncate value if current mask is shorter then previous', () => {
-            component.onItemClick(TuiCountryIsoCode.UA);
+            component.onItemClick('UA');
             expect(testComponent.control.value).toBe('+380911033010');
         });
     });
@@ -125,7 +113,7 @@ describe('InputPhoneInternational', () => {
 
             component.onPaste(pasteEvent);
 
-            expect(component.countryIsoCode).toBe(TuiCountryIsoCode.UA);
+            expect(component.countryIsoCode).toBe('UA');
         });
 
         it('should set country code on paste event', () => {
@@ -139,7 +127,7 @@ describe('InputPhoneInternational', () => {
 
             component.onPaste(pasteEvent);
 
-            expect(component.countryIsoCode).toBe(TuiCountryIsoCode.RU);
+            expect(component.countryIsoCode).toBe('RU');
         });
 
         describe('should set KZ country code on paste event', () => {
@@ -155,7 +143,7 @@ describe('InputPhoneInternational', () => {
 
                     component.onPaste(pasteEvent);
 
-                    expect(component.countryIsoCode).toBe(TuiCountryIsoCode.KZ);
+                    expect(component.countryIsoCode).toBe('KZ');
                 });
             });
         });
@@ -227,7 +215,7 @@ describe('InputPhoneInternational', () => {
 
             component.onPaste(pasteEvent);
 
-            expect(component.countryIsoCode).toBe(TuiCountryIsoCode.RU);
+            expect(component.countryIsoCode).toBe('RU');
         });
 
         it('should set country code on paste event +886', () => {
@@ -241,7 +229,7 @@ describe('InputPhoneInternational', () => {
 
             component.onPaste(pasteEvent);
 
-            expect(component.countryIsoCode).toBe(TuiCountryIsoCode.TW);
+            expect(component.countryIsoCode).toBe('TW');
         });
 
         it('should paste current code + paste value, if code from paste data not found', () => {
@@ -253,7 +241,7 @@ describe('InputPhoneInternational', () => {
                 clipboardData: data as unknown as DataTransfer,
             });
 
-            component.countryIsoCode = TuiCountryIsoCode.DM;
+            component.countryIsoCode = 'DM';
             component.onPaste(pasteEvent);
 
             expect(testComponent.control.value).toBe('+176743578');
@@ -271,7 +259,7 @@ describe('InputPhoneInternational', () => {
                 result = value;
             });
 
-            testComponent.countryIsoCode = TuiCountryIsoCode.UA;
+            testComponent.countryIsoCode = 'UA';
             testComponent.control.patchValue(phoneNumber);
             expect(result).toEqual(phoneNumber);
         });
@@ -281,11 +269,11 @@ describe('InputPhoneInternational', () => {
         initializeTestModule();
 
         it('is calculated correctly', () => {
-            component.countryIsoCode = TuiCountryIsoCode.RU;
+            component.countryIsoCode = 'RU';
 
             expect(component.phoneMaskAfterCountryCode).toBe('### ###-##-##');
 
-            component.countryIsoCode = TuiCountryIsoCode.KZ;
+            component.countryIsoCode = 'KZ';
 
             expect(component.phoneMaskAfterCountryCode).toBe('(###) ###-##-##');
         });

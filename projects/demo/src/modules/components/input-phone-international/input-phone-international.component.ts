@@ -3,7 +3,8 @@ import {FormControl, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import {tuiProvide} from '@taiga-ui/cdk';
-import {TuiCountryIsoCode} from '@taiga-ui/i18n';
+import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
+import {TUI_ALL_COUNTRIES_ISO_CODES} from '@taiga-ui/kit';
 
 import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
@@ -38,22 +39,17 @@ export class ExampleTuiInputPhoneInternationalComponent extends AbstractExampleT
     };
 
     protected readonly countriesVariants: ReadonlyArray<readonly TuiCountryIsoCode[]> = [
-        [
-            TuiCountryIsoCode.RU,
-            TuiCountryIsoCode.KZ,
-            TuiCountryIsoCode.UA,
-            TuiCountryIsoCode.BY,
-        ],
-        Object.values(TuiCountryIsoCode),
+        ['RU', 'KZ', 'UA', 'BY'],
+        TUI_ALL_COUNTRIES_ISO_CODES,
     ];
 
     protected countries = this.countriesVariants[0];
 
     protected readonly countryIsoCodeVariants: readonly TuiCountryIsoCode[] = [
-        TuiCountryIsoCode.RU,
-        TuiCountryIsoCode.KZ,
-        TuiCountryIsoCode.UA,
-        TuiCountryIsoCode.BY,
+        'RU',
+        'KZ',
+        'UA',
+        'BY',
     ];
 
     protected countryIsoCode = this.countryIsoCodeVariants[0];

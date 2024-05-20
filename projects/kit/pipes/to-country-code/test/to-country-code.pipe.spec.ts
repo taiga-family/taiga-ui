@@ -1,5 +1,5 @@
 import {TestBed} from '@angular/core/testing';
-import {TuiCountryIsoCode} from '@taiga-ui/i18n';
+import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
 import {TuiIsoToCountryCodePipe, TuiToCountryCodePipe} from '@taiga-ui/kit';
 import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
@@ -13,22 +13,22 @@ describe('TuiToCountryCodePipe', () => {
     }> = [
         {
             input: '79123456789',
-            countries: [TuiCountryIsoCode.US, TuiCountryIsoCode.RU, TuiCountryIsoCode.UA],
-            expected: TuiCountryIsoCode.RU,
+            countries: ['US', 'RU', 'UA'],
+            expected: 'RU',
         },
         {
             input: '12024561111',
-            countries: [TuiCountryIsoCode.US, TuiCountryIsoCode.RU, TuiCountryIsoCode.UA],
-            expected: TuiCountryIsoCode.US,
+            countries: ['US', 'RU', 'UA'],
+            expected: 'US',
         },
         {
             input: '380442228888',
-            countries: [TuiCountryIsoCode.US, TuiCountryIsoCode.RU, TuiCountryIsoCode.UA],
-            expected: TuiCountryIsoCode.UA,
+            countries: ['US', 'RU', 'UA'],
+            expected: 'UA',
         },
         {
             input: '0123456789',
-            countries: [TuiCountryIsoCode.DE],
+            countries: ['DE'],
             expected: undefined,
         },
 
@@ -36,34 +36,34 @@ describe('TuiToCountryCodePipe', () => {
 
         {
             input: '79123456789',
-            countries: [TuiCountryIsoCode.KZ],
+            countries: ['KZ'],
             expected: undefined,
         },
         {
             input: '76861234568',
-            countries: [TuiCountryIsoCode.RU],
+            countries: ['RU'],
             expected: undefined,
         },
 
         {
             input: '79123456789',
-            countries: [TuiCountryIsoCode.RU, TuiCountryIsoCode.KZ],
-            expected: TuiCountryIsoCode.RU,
+            countries: ['RU', 'KZ'],
+            expected: 'RU',
         },
         {
             input: '79123456789',
-            countries: [TuiCountryIsoCode.KZ, TuiCountryIsoCode.RU],
-            expected: TuiCountryIsoCode.RU,
+            countries: ['KZ', 'RU'],
+            expected: 'RU',
         },
         {
             input: '76861234568',
-            countries: [TuiCountryIsoCode.KZ, TuiCountryIsoCode.RU],
-            expected: TuiCountryIsoCode.KZ,
+            countries: ['KZ', 'RU'],
+            expected: 'KZ',
         },
         {
             input: '76861234568',
-            countries: [TuiCountryIsoCode.RU, TuiCountryIsoCode.KZ],
-            expected: TuiCountryIsoCode.KZ,
+            countries: ['RU', 'KZ'],
+            expected: 'KZ',
         },
     ];
 

@@ -1,6 +1,6 @@
 import type {Provider} from '@angular/core';
 import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
-import {TuiCountryIsoCode} from '@taiga-ui/i18n';
+import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
 
 export interface TuiInputPhoneInternationalOptions {
     readonly countries: readonly TuiCountryIsoCode[];
@@ -10,7 +10,7 @@ export interface TuiInputPhoneInternationalOptions {
 export const TUI_INPUT_PHONE_INTERNATIONAL_DEFAULT_OPTIONS: TuiInputPhoneInternationalOptions =
     {
         countries: [],
-        countryIsoCode: TuiCountryIsoCode.RU,
+        countryIsoCode: 'RU',
     };
 
 /**
