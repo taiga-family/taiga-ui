@@ -1,0 +1,33 @@
+{
+    "name": "legacy",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "projects/legacy",
+    "projectType": "library",
+    "prefix": "tui",
+    "implicitDependencies": ["!testing"],
+    "targets": {
+        "build": {
+            "executor": "@angular-devkit/build-angular:ng-packagr",
+            "options": {
+                "tsConfig": "tsconfig.build.json",
+                "project": "{projectRoot}/ng-package.json"
+            }
+        },
+        "test": {
+            "executor": "@nx/jest:jest",
+            "outputs": ["{workspaceRoot}/coverage/legacy"],
+            "options": {
+                "jestConfig": "jest.config.ts",
+                "coverageDirectory": "coverage/legacy",
+                "collectCoverageFrom": ["<rootDir>/{projectRoot}/**/*.ts"],
+                "testMatch": ["<rootDir>/{projectRoot}/**/*.spec.ts"]
+            }
+        },
+        "publish": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "ts-node ./scripts/publish.ts --path ./dist/legacy --dry-run {args.dry-run} --customVersion {args.customVersion} --customTag {args.customTag}"
+            }
+        }
+    }
+}
