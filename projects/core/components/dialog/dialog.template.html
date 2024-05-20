@@ -13,8 +13,7 @@
         [textContent]="context.label"
     ></h2>
     <section>
-        <!-- TODO: Polymorpheus fix type -->
-        <ng-container *polymorpheusOutlet="$any(context.content) as text; context: context">
+        <ng-container *polymorpheusOutlet="context.content as text; context: context">
             <div [innerHTML]="text"></div>
             <div class="t-buttons">
                 <button
@@ -24,7 +23,7 @@
                     type="button"
                     (click)="context.$implicit.complete()"
                 >
-                    {{ $any(context.data)?.button || 'OK' }}
+                    {{ context.data?.button || 'OK' }}
                 </button>
             </div>
         </ng-container>
