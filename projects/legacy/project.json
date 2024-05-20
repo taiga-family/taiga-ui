@@ -4,21 +4,14 @@
     "sourceRoot": "projects/legacy",
     "projectType": "library",
     "prefix": "tui",
-    "implicitDependencies": ["!testing", "!core", "!styles"],
+    "implicitDependencies": ["!testing"],
     "targets": {
         "build": {
             "executor": "@angular-devkit/build-angular:ng-packagr",
             "options": {
                 "tsConfig": "tsconfig.build.json",
                 "project": "{projectRoot}/ng-package.json"
-            },
-            "dependsOn": [
-                {
-                    "target": "build",
-                    "params": "forward",
-                    "dependencies": true
-                }
-            ]
+            }
         },
         "test": {
             "executor": "@nx/jest:jest",
@@ -28,13 +21,7 @@
                 "coverageDirectory": "coverage/legacy",
                 "collectCoverageFrom": ["<rootDir>/{projectRoot}/**/*.ts"],
                 "testMatch": ["<rootDir>/{projectRoot}/**/*.spec.ts"]
-            },
-            "dependsOn": [
-                {
-                    "target": "postbuild",
-                    "params": "forward"
-                }
-            ]
+            }
         },
         "publish": {
             "executor": "nx:run-commands",
