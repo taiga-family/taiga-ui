@@ -9,7 +9,7 @@ import {
 } from '@taiga-ui/addon-doc';
 import {
     TuiButtonDirective,
-    TuiErrorModule,
+    TuiErrorComponent,
     TuiHintModule,
     TuiLabelDirective,
     TuiLinkDirective,
@@ -48,7 +48,7 @@ import {ExampleTuiTextareaComponent} from './textarea.component';
         TuiTextfieldControllerModule,
         TuiHintModule,
         TuiNotificationComponent,
-        TuiErrorModule,
+        TuiErrorComponent,
         TuiFieldErrorPipeModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiTextareaComponent)),
         TuiTextCodeModule,

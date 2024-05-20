@@ -3,6 +3,7 @@ import {inject} from '@angular/core';
 import {tuiCreateTokenFromFactory, tuiTypedFromEvent} from '@taiga-ui/cdk';
 import type {Observable} from 'rxjs';
 import {merge, share, switchMap, takeUntil} from 'rxjs';
+
 /**
  * A stream of possible selection changes
  */

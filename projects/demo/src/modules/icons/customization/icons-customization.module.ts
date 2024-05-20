@@ -7,7 +7,7 @@ import {TuiDemo} from '@demo/utils';
 import {tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiButtonDirective,
-    TuiExpandModule,
+    TuiExpand,
     TuiHintModule,
     TuiLinkDirective,
     TuiNotificationComponent,
@@ -27,7 +27,7 @@ import {IconsCustomizationComponent} from './icons-customization.component';
         ClipboardModule,
         TuiDemo,
         TuiLinkDirective,
-        TuiExpandModule,
+        TuiExpand,
         TuiButtonDirective,
         TuiInputDateRangeModule,
         TuiNotificationComponent,

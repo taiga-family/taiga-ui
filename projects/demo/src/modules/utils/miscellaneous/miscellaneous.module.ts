@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
-import {TuiDataListModule, TuiErrorModule} from '@taiga-ui/core';
+import {TuiDataList, TuiErrorComponent} from '@taiga-ui/core';
 import {
     TuiDataListWrapperModule,
     TuiFieldErrorPipeModule,
@@ -24,10 +24,10 @@ import {ExampleMiscellaneousComponent} from './miscellaneous.component';
         FormsModule,
         ReactiveFormsModule,
         TuiSelectModule,
-        TuiDataListModule,
+        TuiDataList,
         TuiDataListWrapperModule,
         TuiInputModule,
-        TuiErrorModule,
+        TuiErrorComponent,
         TuiFieldErrorPipeModule,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleMiscellaneousComponent)),

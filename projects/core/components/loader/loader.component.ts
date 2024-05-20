@@ -1,4 +1,4 @@
-import {DOCUMENT} from '@angular/common';
+import {DOCUMENT, NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -15,11 +15,14 @@ import {
 } from '@taiga-ui/cdk';
 import {tuiSizeBigger} from '@taiga-ui/core/utils/miscellaneous';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TUI_LOADER_OPTIONS} from './loader.options';
 
 @Component({
+    standalone: true,
     selector: 'tui-loader',
+    imports: [NgIf, PolymorpheusModule],
     templateUrl: './loader.template.html',
     styleUrls: ['./loader.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

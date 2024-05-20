@@ -432,7 +432,7 @@ describe('InputDate', () => {
     function getCalendarCell(dayNumber: number): DebugElement | null {
         return (
             pageObject
-                .getAllByAutomationId('tui-primitive-calendar__cell')
+                .getAllByAutomationId('tui-calendar-sheet__cell')
                 .find(el => Number(el.nativeElement.textContent.trim()) === dayNumber) ||
             null
         );

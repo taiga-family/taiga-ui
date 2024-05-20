@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {TuiActiveZoneDirective, TuiLetDirective, TuiMapperPipe} from '@taiga-ui/cdk';
 import {
-    TuiDataListModule,
+    TuiDataList,
     TuiHostedDropdownModule,
     TuiLinkDirective,
     TuiSvgComponent,
@@ -42,7 +42,7 @@ import {TuiNativeMultiSelectGroupComponent} from './native-multi-select/native-m
         TuiDataListWrapperModule,
         TuiMapperPipe,
         TuiLinkDirective,
-        TuiDataListModule,
+        TuiDataList,
         TuiTextfieldControllerModule,
         TuiStringifyContentPipeModule,
     ],

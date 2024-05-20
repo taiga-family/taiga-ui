@@ -1,7 +1,6 @@
 import {Directive, inject, Input} from '@angular/core';
 import {tuiProvide} from '@taiga-ui/cdk';
-import {TUI_DATE_FORMAT} from '@taiga-ui/core/tokens';
-import type {TuiDateFormatSettings} from '@taiga-ui/core/types';
+import {TUI_DATE_FORMAT, type TuiDateFormatSettings} from '@taiga-ui/core/tokens';
 import {combineLatest, map, Observable, ReplaySubject} from 'rxjs';
 
 @Directive({

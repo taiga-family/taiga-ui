@@ -4,9 +4,9 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiLetDirective} from '@taiga-ui/cdk';
 import {
-    TuiDataListModule,
+    TuiDataList,
     TuiInitialsPipe,
-    TuiLoaderModule,
+    TuiLoaderComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {TuiAvatarComponent, TuiComboBoxModule} from '@taiga-ui/kit';
@@ -24,9 +24,9 @@ import {RequestService} from './request.service';
         ReactiveFormsModule,
         TuiLetDirective,
         TuiComboBoxModule,
-        TuiDataListModule,
+        TuiDataList,
         TuiAvatarComponent,
-        TuiLoaderModule,
+        TuiLoaderComponent,
         TuiInitialsPipe,
         TuiTextfieldControllerModule,
     ],

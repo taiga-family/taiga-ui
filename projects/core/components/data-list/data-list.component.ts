@@ -1,3 +1,4 @@
+import {AsyncPipe, NgIf} from '@angular/common';
 import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
@@ -24,22 +25,22 @@ import {
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
 } from '@taiga-ui/core/directives';
-import {TUI_NOTHING_FOUND_MESSAGE, tuiAsDataListAccessor} from '@taiga-ui/core/tokens';
-import type {
-    TuiDataListAccessor,
-    TuiDataListRole,
-    TuiSizeL,
-    TuiSizeXS,
-} from '@taiga-ui/core/types';
+import {TUI_NOTHING_FOUND_MESSAGE} from '@taiga-ui/core/tokens';
+import type {TuiSizeL, TuiSizeXS} from '@taiga-ui/core/types';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import type {Observable} from 'rxjs';
 import {map} from 'rxjs';
 
-import {TuiOptionComponent} from './option/option.component';
+import {tuiAsDataListAccessor} from './data-list.tokens';
+import type {TuiDataListAccessor} from './data-list.types';
+import {TuiOptionComponent} from './option.component';
 
 // TODO: Consider aria-activedescendant for proper accessibility implementation
 @Component({
+    standalone: true,
     selector: 'tui-data-list',
+    imports: [NgIf, AsyncPipe, PolymorpheusModule],
     templateUrl: './data-list.template.html',
     styleUrls: ['./data-list.style.less'],
     encapsulation: ViewEncapsulation.None,
@@ -48,6 +49,9 @@ import {TuiOptionComponent} from './option/option.component';
         tuiAsDataListAccessor(TuiDataListComponent),
         TEXTFIELD_CONTROLLER_PROVIDER,
     ],
+    host: {
+        role: 'listbox',
+    },
 })
 export class TuiDataListComponent<T> implements TuiDataListAccessor<T> {
     @ContentChildren(forwardRef(() => TuiOptionComponent), {descendants: true})
@@ -58,10 +62,6 @@ export class TuiDataListComponent<T> implements TuiDataListAccessor<T> {
     private readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER, {
         optional: true,
     });
-
-    @Input()
-    @HostBinding('attr.role')
-    public role: TuiDataListRole = 'listbox';
 
     @Input()
     public emptyContent: PolymorpheusContent;

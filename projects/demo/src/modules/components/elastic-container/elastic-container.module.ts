@@ -5,7 +5,7 @@ import {RouterModule} from '@angular/router';
 import {TuiSetupComponent} from '@demo/utils';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiRepeatTimesDirective} from '@taiga-ui/cdk';
-import {TuiButtonDirective, TuiExpandModule, TuiLinkDirective} from '@taiga-ui/core';
+import {TuiButtonDirective, TuiExpand, TuiLinkDirective} from '@taiga-ui/core';
 import {
     TuiChevronDirective,
     TuiElasticContainerModule,
@@ -25,7 +25,7 @@ import {TuiElasticContainerExample4} from './examples/4';
         TuiInputModule,
         TuiElasticContainerModule,
         TuiRepeatTimesDirective,
-        TuiExpandModule,
+        TuiExpand,
         TuiButtonDirective,
         TuiLinkDirective,
         TuiAddonDocModule,

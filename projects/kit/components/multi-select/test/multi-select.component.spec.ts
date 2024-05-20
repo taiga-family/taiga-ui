@@ -5,7 +5,7 @@ import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {
-    TuiDataListModule,
+    TuiDataList,
     TuiHintModule,
     TuiRootComponent,
     TuiTextfieldControllerModule,
@@ -78,7 +78,7 @@ describe('MultiSelect', () => {
                     NoopAnimationsModule,
                     TuiMultiSelectModule,
                     TuiRootComponent,
-                    TuiDataListModule,
+                    TuiDataList,
                     TuiDataListWrapperModule,
                     TuiTextfieldControllerModule,
                     TuiHintModule,
@@ -294,7 +294,7 @@ describe('MultiSelect', () => {
                     NoopAnimationsModule,
                     TuiMultiSelectModule,
                     TuiRootComponent,
-                    TuiDataListModule,
+                    TuiDataList,
                     TuiDataListWrapperModule,
                     TuiTextfieldControllerModule,
                     TuiHintModule,

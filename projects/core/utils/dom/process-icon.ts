@@ -2,6 +2,7 @@ const WIDTH_SEARCH = 'width="';
 const HEIGHT_SEARCH = 'height="';
 const START = '<svg';
 
+// TODO: move to legacy
 export function tuiProcessIcon(source: string, name: string): string {
     if (source.includes(`id="${name}"`)) {
         return source;

@@ -7,7 +7,7 @@ import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {TuiDataListModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
+import {TuiDataList, TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {
     TuiAccordionComponent,
     TuiAccordionItemComponent,
@@ -145,7 +145,7 @@ describe('Accordion', () => {
                 ReactiveFormsModule,
                 NoopAnimationsModule,
                 TuiTextfieldControllerModule,
-                TuiDataListModule,
+                TuiDataList,
                 TuiDataListWrapperModule,
             ],
             providers: [NG_EVENT_PLUGINS],

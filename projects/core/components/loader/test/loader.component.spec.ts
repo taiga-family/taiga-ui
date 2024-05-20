@@ -3,7 +3,7 @@ import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
-import {TuiLoaderComponent, TuiLoaderModule} from '@taiga-ui/core';
+import {TuiLoaderComponent} from '@taiga-ui/core';
 import {TuiLoaderHarness} from '@taiga-ui/testing';
 import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
@@ -40,7 +40,7 @@ describe('Loader', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TuiLoaderModule],
+            imports: [TuiLoaderComponent],
             declarations: [TestComponent],
             providers: [NG_EVENT_PLUGINS],
         });

@@ -98,6 +98,22 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {name: 'TuiMonthPipe', moduleSpecifier: '@taiga-ui/core'},
     },
     {
+        from: {name: 'TuiDataListModule', moduleSpecifier: '@taiga-ui/core'},
+        to: {name: 'TuiDataList', moduleSpecifier: '@taiga-ui/core'},
+    },
+    {
+        from: {name: 'TuiErrorModule', moduleSpecifier: '@taiga-ui/core'},
+        to: {name: 'TuiErrorComponent', moduleSpecifier: '@taiga-ui/core'},
+    },
+    {
+        from: {name: 'TuiExpandModule', moduleSpecifier: '@taiga-ui/core'},
+        to: {name: 'TuiExpand', moduleSpecifier: '@taiga-ui/core'},
+    },
+    {
+        from: {name: 'TuiLoaderModule', moduleSpecifier: '@taiga-ui/core'},
+        to: {name: 'TuiLoaderComponent', moduleSpecifier: '@taiga-ui/core'},
+    },
+    {
         from: {name: 'TuiThumbnailCardModule', moduleSpecifier: '@taiga-ui/experimental'},
         to: {
             name: 'TuiThumbnailCardComponent',

@@ -5,7 +5,7 @@ import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiAutoFocusDirective} from '@taiga-ui/cdk';
 import {
     TuiButtonDirective,
-    TuiDataListModule,
+    TuiDataList,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {
@@ -26,7 +26,7 @@ import {DialogExampleComponent} from './dialog-example.component';
         TuiInputModule,
         TuiAmountPipe,
         TuiTextfieldControllerModule,
-        TuiDataListModule,
+        TuiDataList,
         TuiDataListWrapperModule,
         TuiSliderModule,
         TuiAutoFocusDirective,

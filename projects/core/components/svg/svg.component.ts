@@ -22,7 +22,6 @@ import {
 } from '@taiga-ui/cdk';
 import {TuiSvgService} from '@taiga-ui/core/services';
 import {TUI_SANITIZER} from '@taiga-ui/core/tokens';
-import type {TuiIconError} from '@taiga-ui/core/types';
 import {
     TUI_CACHE_BUSTING_PAYLOAD,
     tuiIsPresumedHTMLString,
@@ -36,6 +35,11 @@ import {TUI_SVG_OPTIONS, TUI_SVG_SRC_INTERCEPTORS} from './svg-options';
 const UNDEFINED_NAMED_ICON = 'Attempted to use undefined named icon';
 const MISSING_EXTERNAL_ICON = 'External icon is missing on the given URL';
 const FAILED_EXTERNAL_ICON = 'Failed to load external SVG';
+
+export interface TuiIconError {
+    readonly icon: string;
+    readonly message: string;
+}
 
 // TODO: Consider moving to CDK along with SvgService and SvgDefsHostComponent
 @Component({

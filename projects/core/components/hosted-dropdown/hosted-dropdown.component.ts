@@ -31,7 +31,7 @@ import {
     tuiIsPresent,
     tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
-import {TuiPositionAccessor} from '@taiga-ui/core/abstract';
+import {TuiPositionAccessor} from '@taiga-ui/core/classes';
 import {
     TuiDropdownDirective,
     TuiDropdownHoverDirective,

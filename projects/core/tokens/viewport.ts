@@ -2,7 +2,7 @@ import type {Provider, Type} from '@angular/core';
 import {inject} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
 import {tuiCreateTokenFromFactory, tuiProvide} from '@taiga-ui/cdk';
-import type {TuiRectAccessor} from '@taiga-ui/core/abstract';
+import type {TuiRectAccessor} from '@taiga-ui/core/classes';
 
 /**
  * Viewport accessor

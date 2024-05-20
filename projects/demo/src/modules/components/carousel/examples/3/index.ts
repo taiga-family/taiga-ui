@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
-import {TuiButtonDirective, TuiLoaderModule} from '@taiga-ui/core';
+import {TuiButtonDirective, TuiLoaderComponent} from '@taiga-ui/core';
 import {TuiAvatarComponent, TuiCarouselModule, TuiIslandModule} from '@taiga-ui/kit';
 
 @Component({
@@ -12,7 +12,7 @@ import {TuiAvatarComponent, TuiCarouselModule, TuiIslandModule} from '@taiga-ui/
         TuiButtonDirective,
         TuiCarouselModule,
         TuiIslandModule,
-        TuiLoaderModule,
+        TuiLoaderComponent,
         TuiAvatarComponent,
         TuiAmountPipe,
         AsyncPipe,

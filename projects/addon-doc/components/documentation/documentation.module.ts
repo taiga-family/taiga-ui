@@ -4,7 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiFilterPipe} from '@taiga-ui/cdk';
 import {
-    TuiDataListModule,
+    TuiDataList,
     TuiDropdownModule,
     TuiGroupDirective,
     TuiLinkDirective,
@@ -47,7 +47,7 @@ import {TuiDocTypeReferencePipe} from './pipes/type-reference.pipe';
         TuiPrimitiveTextfieldModule,
         TuiTextfieldControllerModule,
         TuiDropdownModule,
-        TuiDataListModule,
+        TuiDataList,
         TuiDataListWrapperModule,
         TuiNotificationComponent,
         TuiFilterPipe,

@@ -6,7 +6,7 @@ import {tuiHost} from '@taiga-ui/core/animations';
 import {
     TuiScrollControlsComponent,
     TuiScrollRefDirective,
-} from '@taiga-ui/core/components/scroll-controls';
+} from '@taiga-ui/core/components/scrollbar';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import type {Observable} from 'rxjs';
 

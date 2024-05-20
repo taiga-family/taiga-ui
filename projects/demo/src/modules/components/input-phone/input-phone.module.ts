@@ -6,7 +6,7 @@ import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiLetDirective} from '@taiga-ui/cdk';
 import {
     TuiButtonDirective,
-    TuiDataListModule,
+    TuiDataList,
     TuiDropdownModule,
     TuiHintModule,
     TuiLinkDirective,
@@ -30,7 +30,7 @@ import {ExampleTuiInputPhoneComponent} from './input-phone.component';
         ReactiveFormsModule,
         PolymorpheusModule,
         TuiLetDirective,
-        TuiDataListModule,
+        TuiDataList,
         TuiButtonDirective,
         TuiSvgComponent,
         TuiAvatarComponent,

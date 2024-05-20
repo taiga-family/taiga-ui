@@ -1,7 +1,7 @@
 import {Directive, HostListener} from '@angular/core';
 import {EMPTY_CLIENT_RECT, tuiPointToClientRect} from '@taiga-ui/cdk';
-import type {TuiRectAccessor} from '@taiga-ui/core/abstract';
-import {tuiAsDriver, tuiAsRectAccessor} from '@taiga-ui/core/abstract';
+import type {TuiRectAccessor} from '@taiga-ui/core/classes';
+import {tuiAsDriver, tuiAsRectAccessor} from '@taiga-ui/core/classes';
 
 import {TuiHintHoverDirective} from './hint-hover.directive';
 

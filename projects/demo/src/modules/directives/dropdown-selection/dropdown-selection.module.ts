@@ -6,7 +6,7 @@ import {TuiSetupComponent} from '@demo/utils';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiButtonDirective,
-    TuiDataListModule,
+    TuiDataList,
     TuiDropdownModule,
     TuiInitialsPipe,
 } from '@taiga-ui/core';
@@ -27,7 +27,7 @@ import {TuiDropdownSelectionExample2} from './examples/2';
         TuiButtonDirective,
         TuiTextareaModule,
         TuiAvatarComponent,
-        TuiDataListModule,
+        TuiDataList,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiDropdownSelectionComponent)),
         DropdownDocumentationModule,

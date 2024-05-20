@@ -1,0 +1,31 @@
+<ng-container *ngIf="spinTexts$ | async as texts">
+    <button
+        appearance="flat"
+        automation-id="tui-spin-button__left"
+        size="xs"
+        tuiIconButton
+        type="button"
+        [class.t-hidden]="leftComputedDisabled"
+        [iconLeft]="icons.decrement"
+        [tabIndex]="focusable ? 0 : -1"
+        (click)="onLeftClick()"
+    >
+        {{ texts[0] }}
+    </button>
+    <span class="t-content t-calendar-title">
+        <ng-content />
+    </span>
+    <button
+        appearance="flat"
+        automation-id="tui-spin-button__right"
+        size="xs"
+        tuiIconButton
+        type="button"
+        [class.t-hidden]="rightComputedDisabled"
+        [iconLeft]="icons.increment"
+        [tabIndex]="focusable ? 0 : -1"
+        (click)="onRightClick()"
+    >
+        {{ texts[1] }}
+    </button>
+</ng-container>

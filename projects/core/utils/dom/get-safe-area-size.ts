@@ -3,6 +3,7 @@
  *
  * ATTENTION: Only use in browser environment
  */
+// TODO: move to legacy
 export function tuiGetSafeAreaSize(): number {
     if (!CSS.supports('padding-top: env(safe-area-inset-top)')) {
         return 0;

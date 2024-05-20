@@ -9,7 +9,7 @@ import {TuiActiveZoneDirective, TuiFilterPipe, TuiLetDirective} from '@taiga-ui/
 import {
     TuiButtonDirective,
     TuiCalendarComponent,
-    TuiDataListModule,
+    TuiDataList,
     TuiDropdownModule,
     TuiGroupDirective,
     TuiNotificationComponent,
@@ -46,7 +46,7 @@ import {TuiDataListExample6} from './examples/6';
         TuiSelectModule,
         TuiTextfieldControllerModule,
         TuiNotificationComponent,
-        TuiDataListModule,
+        TuiDataList,
         TuiDataListDropdownManagerModule,
         TuiSvgComponent,
         TuiDropdownModule,
@@ -76,4 +76,4 @@ import {TuiDataListExample6} from './examples/6';
     ],
     exports: [ExampleTuiDataListComponent],
 })
-export class ExampleTuiDataListModule {}
+export class ExampleTuiDataList {}

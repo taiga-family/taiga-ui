@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {TuiDataListModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
+import {TuiDataList, TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {
     TuiSelectModule,
     TuiStringifyContentPipeModule,
@@ -15,7 +15,7 @@ import {VersionManagerComponent} from './version-manager.component';
         CommonModule,
         FormsModule,
         TuiSelectModule,
-        TuiDataListModule,
+        TuiDataList,
         TuiTextfieldControllerModule,
         TuiStringifyPipeModule,
         TuiStringifyContentPipeModule,

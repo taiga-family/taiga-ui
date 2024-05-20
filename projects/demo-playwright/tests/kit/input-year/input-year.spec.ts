@@ -73,7 +73,7 @@ test.describe('InputYear', () => {
             page,
         }) => {
             const cell = page.locator(
-                '[automation-id="tui-primitive-year-picker__cell"]:has-text("2020")',
+                '[automation-id="tui-calendar-year__cell"]:has-text("2020")',
             );
 
             await cell.scrollIntoViewIfNeeded();
@@ -89,7 +89,7 @@ test.describe('InputYear', () => {
             await input.fill('2020');
 
             const cell = page.locator(
-                '[automation-id="tui-primitive-year-picker__cell"]:has-text("2030")',
+                '[automation-id="tui-calendar-year__cell"]:has-text("2030")',
             );
 
             await cell.scrollIntoViewIfNeeded();

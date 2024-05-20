@@ -7,7 +7,7 @@ import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiLetDirective} from '@taiga-ui/cdk';
 import {
     TuiButtonDirective,
-    TuiDataListModule,
+    TuiDataList,
     TuiDropdownModule,
     TuiHintModule,
     TuiInitialsPipe,
@@ -51,7 +51,7 @@ import {ExampleTuiMultiSelectComponent} from './multi-select.component';
         TuiButtonDirective,
         TuiLinkDirective,
         TuiAvatarComponent,
-        TuiDataListModule,
+        TuiDataList,
         TuiDataListWrapperModule,
         TuiLetDirective,
         TuiDropdownModule,
