@@ -96,7 +96,9 @@ export class TuiLineChartComponent {
         return this.hover$.pipe(distinctUntilChanged(), tuiZoneOptimized(this.zone));
     }
 
-    protected get hintContent(): PolymorpheusContent<TuiLineChartHintContext<TuiPoint>> {
+    protected get hintContent(): PolymorpheusContent<
+        TuiLineChartHintContext<readonly TuiPoint[]>
+    > {
         return this.hintOptions?.content || '';
     }
 
@@ -160,10 +162,11 @@ export class TuiLineChartComponent {
         return `${this.autoIdString}_${index}`;
     }
 
-    protected getImplicit($implicit: TuiPoint): TuiPoint | readonly TuiPoint[] {
+    protected getImplicit($implicit: TuiPoint): readonly TuiPoint[] {
         return (
-            this.hintDirective?.getContext(this.value.indexOf($implicit), this) ||
-            $implicit
+            this.hintDirective?.getContext(this.value.indexOf($implicit), this) || [
+                $implicit,
+            ]
         );
     }
 
