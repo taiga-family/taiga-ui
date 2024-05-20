@@ -7,7 +7,7 @@ import {TuiAmountPipe, TuiInputCardModule} from '@taiga-ui/addon-commerce';
 import {
     TuiAddonDocModule,
     tuiGenerateRoutes,
-    TuiTextCodeModule,
+    TuiTextCodeDirective,
 } from '@taiga-ui/addon-doc';
 import {TuiTable} from '@taiga-ui/addon-table';
 import {TuiLetDirective, TuiMapperPipe, TuiRepeatTimesDirective} from '@taiga-ui/cdk';
@@ -82,7 +82,7 @@ import {ExampleTuiInputComponent} from './input.component';
         PolymorpheusModule,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiInputComponent)),
-        TuiTextCodeModule,
+        TuiTextCodeDirective,
         MaskitoDirective,
         TuiUnmaskHandlerModule,
         TuiInitialsPipe,

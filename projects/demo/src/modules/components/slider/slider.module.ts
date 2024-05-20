@@ -5,7 +5,7 @@ import {RouterModule} from '@angular/router';
 import {
     TuiAddonDocModule,
     tuiGenerateRoutes,
-    TuiTextCodeModule,
+    TuiTextCodeDirective,
 } from '@taiga-ui/addon-doc';
 import {
     TuiButtonDirective,
@@ -35,7 +35,7 @@ import {ExampleTuiSliderComponent} from './slider.component';
         TuiButtonDirective,
         TuiHintModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiSliderComponent)),
-        TuiTextCodeModule,
+        TuiTextCodeDirective,
     ],
     declarations: [
         ExampleTuiSliderComponent,

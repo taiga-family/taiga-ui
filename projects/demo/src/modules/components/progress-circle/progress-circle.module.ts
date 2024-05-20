@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {TuiSetupComponent} from '@demo/utils';
-import {tuiGetDocModules, TuiTextCodeModule} from '@taiga-ui/addon-doc';
+import {tuiGetDocModules, TuiTextCodeDirective} from '@taiga-ui/addon-doc';
 import {TuiRepeatTimesDirective} from '@taiga-ui/cdk';
 import {TuiLinkDirective, TuiNotificationComponent} from '@taiga-ui/core';
 import {TuiProgressModule} from '@taiga-ui/kit';
@@ -23,7 +23,7 @@ import {ExampleProgressCircleComponent} from './progress-circle.component';
         TuiNotificationComponent,
         TuiProgressModule,
         TuiRepeatTimesDirective,
-        TuiTextCodeModule,
+        TuiTextCodeDirective,
         TuiSetupComponent,
     ],
     declarations: [

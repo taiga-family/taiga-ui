@@ -5,7 +5,7 @@ import {RouterModule} from '@angular/router';
 import {
     TuiAddonDocModule,
     tuiGenerateRoutes,
-    TuiTextCodeModule,
+    TuiTextCodeDirective,
 } from '@taiga-ui/addon-doc';
 import {
     TuiButtonDirective,
@@ -51,7 +51,7 @@ import {ExampleTuiTextareaComponent} from './textarea.component';
         TuiErrorComponent,
         TuiFieldErrorPipeModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiTextareaComponent)),
-        TuiTextCodeModule,
+        TuiTextCodeDirective,
     ],
     declarations: [
         ExampleTuiTextareaComponent,
