@@ -1063,9 +1063,7 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.Sidebar,
-        loadChildren: async () =>
-            (await import('../directives/sidebar/sidebar.module'))
-                .ExampleTuiSidebarModule,
+        loadComponent: async () => import('../directives/sidebar'),
         title: 'Sidebar',
     }),
     route({

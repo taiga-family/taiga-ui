@@ -1,14 +1,18 @@
 import type {AnimationOptions} from '@angular/animations';
 import type {DoCheck} from '@angular/core';
 import {ChangeDetectionStrategy, Component, HostBinding, inject} from '@angular/core';
+import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
 import type {TuiHorizontalDirection} from '@taiga-ui/core';
 import {TUI_ANIMATIONS_SPEED, tuiSlideIn, tuiToAnimationOptions} from '@taiga-ui/core';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiSidebarDirective} from './sidebar.directive';
 
 @Component({
+    standalone: true,
     selector: 'aside[tuiSidebar]',
+    imports: [TuiActiveZoneDirective, PolymorpheusModule],
     templateUrl: './sidebar.template.html',
     styleUrls: ['./sidebar.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

@@ -1,15 +1,28 @@
+import {NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiSidebarDirective} from '@taiga-ui/addon-mobile';
+import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
+import {TuiButtonDirective, TuiLinkDirective} from '@taiga-ui/core';
+import {TuiAccordionModule} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-sidebar-example-1',
+    standalone: true,
+    imports: [
+        TuiButtonDirective,
+        TuiActiveZoneDirective,
+        TuiSidebarDirective,
+        TuiAccordionModule,
+        NgForOf,
+        TuiLinkDirective,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiSidebarExample1 {
+export default class ExampleComponent {
     protected open = false;
 
     protected readonly webApis = [
