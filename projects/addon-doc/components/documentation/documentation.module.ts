@@ -31,6 +31,7 @@ import {TuiIsOptionalPipe} from './pipes/optional.pipe';
 import {TuiIsPrimitivePolymorpheusContentPipe} from './pipes/primitive-polymorpheus-content.pipe';
 import {TuiStripOptionalPipe} from './pipes/strip-optional.pipe';
 import {TuiDocTypeReferencePipe} from './pipes/type-reference.pipe';
+import {TuiToArrayPipe} from "@taiga-ui/cdk/pipes/to-array";
 
 @NgModule({
     imports: [
@@ -51,6 +52,7 @@ import {TuiDocTypeReferencePipe} from './pipes/type-reference.pipe';
         TuiDataListWrapperModule,
         TuiNotificationComponent,
         TuiFilterPipe,
+        TuiToArrayPipe,
     ],
     declarations: [
         TuiInspectPipe,
