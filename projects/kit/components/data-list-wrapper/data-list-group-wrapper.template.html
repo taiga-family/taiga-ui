@@ -1,8 +1,7 @@
-<!-- TODO: remove $any in 4.0 -->
 <tui-data-list
     *ngIf="items; else loading"
     [emptyContent]="emptyContent"
-    [size]="$any(size)"
+    [size]="size"
 >
     <tui-opt-group
         *ngFor="let group of items; let index = index"
