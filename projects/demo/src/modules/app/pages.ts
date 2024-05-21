@@ -1357,13 +1357,6 @@ export const pages: TuiDocPages = [
             },
             {
                 section: 'Tools',
-                title: 'FormatPhone',
-                keywords:
-                    'format, форматирование, преобразование, phone, телефон, пайп, pipe',
-                route: DemoRoute.FormatPhone,
-            },
-            {
-                section: 'Tools',
                 title: 'IsPresent',
                 keywords:
                     'present, существует, ngif, if, пайп, pipe, null, undefined, nil',
