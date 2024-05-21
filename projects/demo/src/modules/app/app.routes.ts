@@ -306,8 +306,7 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.Error,
-        loadChildren: async () =>
-            (await import('../components/error/error.module')).ExampleTuiErrorModule,
+        loadComponent: async () => import('../components/error'),
         title: 'Error',
     }),
     route({
