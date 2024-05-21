@@ -1,7 +1,7 @@
 import {NgForOf, TitleCasePipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {tuiCapitalizeFirstLetter, TuiDataList, TuiFlagPipe} from '@taiga-ui/core';
+import {TuiDataList, TuiFlagPipe} from '@taiga-ui/core';
 import type {TuiCountryIsoCode, TuiLanguageName} from '@taiga-ui/i18n';
 import {TuiLanguageSwitcher} from '@taiga-ui/i18n';
 import {TuiSelectModule} from '@taiga-ui/kit';
@@ -43,9 +43,11 @@ export class TuiLanguageSwitcherComponent {
 
     protected readonly switcher = inject(TuiLanguageSwitcher);
 
-    protected readonly language = new FormControl(
-        tuiCapitalizeFirstLetter(this.switcher.language),
-    );
+    protected readonly language = new FormControl(capitalize(this.switcher.language));
 
     protected readonly names: TuiLanguageName[] = Array.from(this.flags.keys());
+}
+
+function capitalize(value: string): string {
+    return `${value.charAt(0).toUpperCase()}${value.slice(1)}`;
 }

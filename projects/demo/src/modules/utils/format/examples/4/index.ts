@@ -2,7 +2,8 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {tuiFormatPhone} from '@taiga-ui/core';
+import type {TuiDecimalSymbol} from '@taiga-ui/core';
+import {tuiFormatNumber} from '@taiga-ui/core';
 import {TuiInputModule} from '@taiga-ui/kit';
 
 @Component({
@@ -15,14 +16,20 @@ import {TuiInputModule} from '@taiga-ui/kit';
 })
 export default class ExampleComponent {
     protected parametersForm = new FormGroup({
-        value: new FormControl('+79991234567'),
-        countryCode: new FormControl('+7'),
-        phoneMask: new FormControl('### ###-##-##'),
+        value: new FormControl(123456.789),
+        precision: new FormControl(2),
+        decimalSeparator: new FormControl<TuiDecimalSymbol>('.'),
+        thousandSeparator: new FormControl(' '),
     });
 
-    protected get formattedPhone(): string {
-        const {value, countryCode, phoneMask} = this.parametersForm.value;
+    protected get formattedNumber(): string {
+        const {value, precision, decimalSeparator, thousandSeparator} =
+            this.parametersForm.value;
 
-        return tuiFormatPhone(value ?? '', countryCode ?? '', phoneMask ?? '');
+        return tuiFormatNumber(value ?? 123456.789, {
+            precision: precision ?? 2,
+            decimalSeparator: decimalSeparator ?? '.',
+            thousandSeparator: thousandSeparator ?? ' ',
+        });
     }
 }

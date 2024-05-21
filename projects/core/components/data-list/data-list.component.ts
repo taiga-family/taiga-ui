@@ -14,7 +14,6 @@ import {
 import {
     EMPTY_QUERY,
     tuiInjectElement,
-    tuiIsElement,
     tuiIsNativeFocusedIn,
     tuiIsPresent,
     tuiMoveFocus,
@@ -26,7 +25,6 @@ import {
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
 } from '@taiga-ui/core/directives';
 import {TUI_NOTHING_FOUND_MESSAGE} from '@taiga-ui/core/tokens';
-import type {TuiSizeL, TuiSizeXS} from '@taiga-ui/core/types';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import type {Observable} from 'rxjs';
@@ -67,8 +65,8 @@ export class TuiDataListComponent<T> implements TuiDataListAccessor<T> {
     public emptyContent: PolymorpheusContent;
 
     @Input()
-    @HostBinding('attr.data-list-size')
-    public size: TuiSizeL | TuiSizeXS = this.controller?.size || 'm';
+    @HostBinding('attr.data-size')
+    public size = this.controller?.size || 'm';
 
     protected readonly defaultEmptyContent$ = inject(TUI_NOTHING_FOUND_MESSAGE);
 
@@ -83,6 +81,8 @@ export class TuiDataListComponent<T> implements TuiDataListAccessor<T> {
     // TODO: Consider aria-activedescendant for proper accessibility implementation
     @HostListener('wheel.silent.passive')
     @HostListener('mouseleave', ['$event.target'])
+    @HostListener('keydown.tab')
+    @HostListener('keydown.shift.tab')
     public handleFocusLossIfNecessary(element: Element = this.el): void {
         if (tuiIsNativeFocusedIn(element)) {
             this.origin?.focus({preventScroll: true});
@@ -94,17 +94,6 @@ export class TuiDataListComponent<T> implements TuiDataListAccessor<T> {
             .filter(({disabled}) => includeDisabled || !disabled)
             .map(({value}) => value)
             .filter(tuiIsPresent);
-    }
-
-    public onFocus({target}: Event, top: boolean): void {
-        if (!tuiIsElement(target)) {
-            return;
-        }
-
-        const {elements} = this;
-
-        tuiMoveFocus(top ? -1 : elements.length, elements, top ? 1 : -1);
-        this.handleFocusLossIfNecessary(target);
     }
 
     @tuiPure
@@ -123,6 +112,8 @@ export class TuiDataListComponent<T> implements TuiDataListAccessor<T> {
     protected noop(): void {}
 
     private get elements(): readonly HTMLElement[] {
-        return Array.from(this.el.querySelectorAll('[tuiOption]'));
+        return Array.from(
+            this.el.querySelectorAll('a[tuiOption],button[tuiOption],input'),
+        );
     }
 }

@@ -4,17 +4,9 @@
     class="t-scroll"
 >
     <div
-        tabindex="0"
-        (focus)="onTopFocus($event)"
-    ></div>
-    <div
         *polymorpheusOutlet="directive.content as text; context: context || {$implicit: activeZone}"
         class="t-primitive"
     >
         {{ text }}
     </div>
-    <div
-        tabindex="0"
-        (focus)="onBottomFocus($event)"
-    ></div>
 </tui-scrollbar>

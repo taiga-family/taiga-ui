@@ -2,13 +2,7 @@ import type {OnInit} from '@angular/core';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {WINDOW} from '@ng-web-apis/common';
-import {
-    TuiActiveZoneDirective,
-    tuiGetClosestFocusable,
-    tuiInjectElement,
-    tuiIsElement,
-    tuiPx,
-} from '@taiga-ui/cdk';
+import {TuiActiveZoneDirective, tuiInjectElement, tuiPx} from '@taiga-ui/cdk';
 import {tuiDropdownAnimation} from '@taiga-ui/core/animations';
 import {
     tuiPositionAccessorFor,
@@ -80,30 +74,6 @@ export class TuiDropdownComponent implements OnInit {
         this.updateWidth(this.accessor.getClientRect().width);
     }
 
-    protected onTopFocus({target, relatedTarget}: FocusEvent): void {
-        if (
-            tuiIsElement(target) &&
-            tuiIsElement(relatedTarget) &&
-            !this.el.contains(relatedTarget)
-        ) {
-            this.moveFocusInside(target, true);
-        } else {
-            this.moveFocusOutside(true);
-        }
-    }
-
-    protected onBottomFocus({target, relatedTarget}: FocusEvent): void {
-        if (
-            tuiIsElement(target) &&
-            tuiIsElement(relatedTarget) &&
-            !this.el.contains(relatedTarget)
-        ) {
-            this.moveFocusInside(target, false);
-        } else {
-            this.moveFocusOutside(false);
-        }
-    }
-
     private update(top: number, left: number): void {
         const {style} = this.el;
         const {right} = this.el.getBoundingClientRect();
@@ -151,27 +121,5 @@ export class TuiDropdownComponent implements OnInit {
             case 'auto':
                 break;
         }
-    }
-
-    private moveFocusInside(initial: Element, next: boolean): void {
-        const focusable = tuiGetClosestFocusable({
-            initial,
-            root: this.el,
-            previous: !next,
-        });
-
-        focusable?.focus();
-    }
-
-    private moveFocusOutside(previous: boolean): void {
-        const initial = this.directive.el;
-        const root = initial.ownerDocument.body || initial;
-        let focusable = tuiGetClosestFocusable({initial, root, previous});
-
-        while (focusable !== null && initial.contains(focusable)) {
-            focusable = tuiGetClosestFocusable({initial: focusable, root, previous});
-        }
-
-        focusable?.focus();
     }
 }

@@ -1,1 +1,1 @@
-export * from 'projects/legacy/components';
+export * from '@taiga-ui/legacy/utils';
