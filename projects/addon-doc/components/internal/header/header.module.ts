@@ -1,6 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {TuiSidebarModule} from '@taiga-ui/addon-mobile';
+import {TuiSidebarComponent, TuiSidebarDirective} from '@taiga-ui/addon-mobile';
 import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
 import {TuiButtonDirective} from '@taiga-ui/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
@@ -13,7 +13,8 @@ import {TuiDocHeaderComponent} from './header.component';
         CommonModule,
         PolymorpheusModule,
         TuiButtonDirective,
-        TuiSidebarModule,
+        TuiSidebarDirective,
+        TuiSidebarComponent,
         TuiActiveZoneDirective,
         TuiDocNavigationModule,
     ],
