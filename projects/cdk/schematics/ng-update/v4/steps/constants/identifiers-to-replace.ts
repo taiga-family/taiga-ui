@@ -971,4 +971,14 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/addon-mobile',
         },
     },
+    {
+        from: {
+            name: 'TuiScrollIntoViewLinkModule',
+            moduleSpecifier: '@taiga-ui/addon-doc',
+        },
+        to: {
+            name: 'TuiScrollIntoViewLinkDirective',
+            moduleSpecifier: '@taiga-ui/addon-doc',
+        },
+    },
 ];
