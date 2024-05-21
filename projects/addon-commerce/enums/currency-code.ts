@@ -93,7 +93,7 @@ export enum TuiCurrencyCode {
      * Czech Koruna
      *
      * @description Numeric code: 203
-     * @description Alphabetic code: СZK
+     * @description Alphabetic code: CZK
      * @description Countries and territories: Czech Republic
      * @description Currency symbol: Kč
      */
