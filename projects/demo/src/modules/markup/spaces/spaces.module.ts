@@ -5,7 +5,7 @@ import {RouterModule} from '@angular/router';
 import {
     TuiAddonDocModule,
     tuiGenerateRoutes,
-    TuiTextCodeModule,
+    TuiTextCodeDirective,
 } from '@taiga-ui/addon-doc';
 
 import {StylesInfoModule} from '../../app/styles-info/styles-info.module';
@@ -19,7 +19,7 @@ import {SpacesComponent} from './spaces.component';
         ClipboardModule,
         StylesInfoModule,
         TuiAddonDocModule,
-        TuiTextCodeModule,
+        TuiTextCodeDirective,
         RouterModule.forChild(tuiGenerateRoutes(SpacesComponent)),
     ],
     declarations: [SpacesComponent, TuiSpacingExample1, TuiSpacingExample2],

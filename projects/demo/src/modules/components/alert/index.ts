@@ -2,7 +2,7 @@ import {Component, inject, INJECTOR} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {TuiTextCodeModule} from '@taiga-ui/addon-doc';
+import {TuiTextCodeDirective} from '@taiga-ui/addon-doc';
 import type {TuiPopoverContext} from '@taiga-ui/cdk';
 import type {TuiAlertOptions, TuiNotification} from '@taiga-ui/core';
 import {
@@ -23,7 +23,7 @@ import {AlertExampleWithDataComponent} from './examples/4';
         TuiDemo,
         TuiLinkDirective,
         TuiButtonDirective,
-        TuiTextCodeModule,
+        TuiTextCodeDirective,
         RouterLink,
     ],
     templateUrl: './index.html',

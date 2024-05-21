@@ -6,7 +6,7 @@ import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {
     TuiAddonDocModule,
     tuiGenerateRoutes,
-    TuiTextCodeModule,
+    TuiTextCodeDirective,
 } from '@taiga-ui/addon-doc';
 import {TuiElasticStickyModule} from '@taiga-ui/addon-mobile';
 import {TuiAutoFocusDirective} from '@taiga-ui/cdk';
@@ -72,7 +72,7 @@ import {TuiDialogExampleComponent10} from './examples/10';
         TuiInputNumberModule,
         PayExampleModalModule,
         TuiTextfieldControllerModule,
-        TuiTextCodeModule,
+        TuiTextCodeDirective,
         TuiNumberFormatDirective,
     ],
     declarations: [

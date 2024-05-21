@@ -981,4 +981,14 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/addon-doc',
         },
     },
+    {
+        from: {
+            name: 'TuiTextCodeModule',
+            moduleSpecifier: '@taiga-ui/addon-doc',
+        },
+        to: {
+            name: 'TuiTextCodeDirective',
+            moduleSpecifier: '@taiga-ui/addon-doc',
+        },
+    },
 ];
