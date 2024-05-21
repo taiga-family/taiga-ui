@@ -43,6 +43,16 @@ export enum TuiCurrency {
     Baht = 'THB',
 
     /**
+     * 	Bahraini Dinar
+     *
+     * @description Numeric code: 048
+     * @description Alphabetic code: BHD
+     * @description Countries and territories: Bahrain
+     * @description Currency symbol: BD
+     */
+    BahrainiDinar = 'BHD',
+
+    /**
      * Belarusian ruble
      *
      * @description Numeric code: 933
@@ -73,6 +83,16 @@ export enum TuiCurrency {
     CanadianDollar = 'CAD',
 
     /**
+     * Czech Koruna
+     *
+     * @description Numeric code: 203
+     * @description Alphabetic code: СZK
+     * @description Countries and territories: Czech Republic
+     * @description Currency symbol: Kč
+     */
+    CzechKoruna = 'CZK',
+
+    /**
      * United Arab Emirates dirham
      *
      * @description Numeric code: 784
@@ -93,6 +113,16 @@ export enum TuiCurrency {
     Dollar = 'USD',
 
     /**
+     * East Caribbean Dollar
+     *
+     * @description Numeric code: 951
+     * @description Alphabetic code: XCD
+     * @description Countries and territories: Anguilla, Antigua and Barbuda, Dominica, Grenada, Montserrat, Saint Kitts and Nevis, Saint Lucia, Saint Vincent and the Grenadines
+     * @description Currency symbol: EC$
+     */
+    EastCaribbeanDollar = 'XCD',
+
+    /**
      * Euro
      *
      * @description Numeric code: 978
@@ -101,6 +131,16 @@ export enum TuiCurrency {
      * @description Currency symbol: €
      */
     Euro = 'EUR',
+
+    /**
+     * Forint
+     *
+     * @description Numeric code: 348
+     * @description Alphabetic code: HUF
+     * @description Countries and territories: Hungray
+     * @description Currency symbol: Ft
+     */
+    Forint = 'HUF',
 
     GeorgianLari = 'GEL',
 
@@ -170,9 +210,29 @@ export enum TuiCurrency {
      */
     MexicanPeso = 'MXN',
 
+    /**
+     * Moldovan Leu
+     *
+     * @description Numeric code: 498
+     * @description Alphabetic code: MDL
+     * @description Countries and territories: Moldova
+     * @description Currency symbol: L
+     */
+    MoldovanLeu = 'MDL',
+
     MongolianTugrik = 'MNT',
 
     NewTurkmenManat = 'TMT',
+
+    /**
+     * Poland Zloty
+     *
+     * @description Numeric code: 985
+     * @description Alphabetic code: PLN
+     * @description Countries and territories: Poland
+     * @description Currency symbol: zł
+     */
+    PolandZloty = 'PLN',
 
     /**
      * Pound sterling

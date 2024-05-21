@@ -50,6 +50,16 @@ export enum TuiCurrencyCode {
     Baht = '764',
 
     /**
+     * 	Bahraini Dinar
+     *
+     * @description Numeric code: 048
+     * @description Alphabetic code: BHD
+     * @description Countries and territories: Bahrain
+     * @description Currency symbol: BD
+     */
+    BahrainiDinar = '048',
+
+    /**
      * Belarusian ruble
      *
      * @description Numeric code: 933
@@ -80,6 +90,16 @@ export enum TuiCurrencyCode {
     CanadianDollar = '124',
 
     /**
+     * Czech Koruna
+     *
+     * @description Numeric code: 203
+     * @description Alphabetic code: CZK
+     * @description Countries and territories: Czech Republic
+     * @description Currency symbol: Kč
+     */
+    CzechKoruna = '203',
+
+    /**
      * United Arab Emirates dirham
      *
      * @description Numeric code: 784
@@ -100,6 +120,16 @@ export enum TuiCurrencyCode {
     Dollar = '840',
 
     /**
+     * East Caribbean Dollar
+     *
+     * @description Numeric code: 951
+     * @description Alphabetic code: XCD
+     * @description Countries and territories: Anguilla, Antigua and Barbuda, Dominica, Grenada, Montserrat, Saint Kitts and Nevis, Saint Lucia, Saint Vincent and the Grenadines
+     * @description Currency symbol: EC$
+     */
+    EastCaribbeanDollar = '951',
+
+    /**
      * Euro
      *
      * @description Numeric code: 978
@@ -108,6 +138,16 @@ export enum TuiCurrencyCode {
      * @description Currency symbol: €
      */
     Euro = '978',
+
+    /**
+     * Forint
+     *
+     * @description Numeric code: 348
+     * @description Alphabetic code: HUF
+     * @description Countries and territories: Hungray
+     * @description Currency symbol: Ft
+     */
+    Forint = '348',
 
     /**
      * Georgian lari
@@ -210,6 +250,16 @@ export enum TuiCurrencyCode {
     MexicanPeso = '484',
 
     /**
+     * Moldovan Leu
+     *
+     * @description Numeric code: 498
+     * @description Alphabetic code: MDL
+     * @description Countries and territories: Moldova
+     * @description Currency symbol: L
+     */
+    MoldovanLeu = '498',
+
+    /**
      * Mongolian tugrik
      *
      * @description Numeric code: 496
@@ -228,6 +278,16 @@ export enum TuiCurrencyCode {
      * @description Currency symbol: TMT
      */
     NewTurkmenManat = '934',
+
+    /**
+     * Poland Zloty
+     *
+     * @description Numeric code: 985
+     * @description Alphabetic code: PLN
+     * @description Countries and territories: Poland
+     * @description Currency symbol: zł
+     */
+    PolandZloty = '985',
 
     /**
      * Pound sterling

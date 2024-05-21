@@ -17,15 +17,27 @@ export function tuiGetCurrencySymbol(currency: TuiCurrencyVariants): string | nu
         case TuiCurrency.AustralianDollar:
         case TuiCurrencyCode.AustralianDollar:
             return 'A$';
+        case TuiCurrency.BahrainiDinar:
+        case TuiCurrencyCode.BahrainiDinar:
+            return 'BD';
+        case TuiCurrency.CzechKoruna:
+        case TuiCurrencyCode.CzechKoruna:
+            return 'Kč';
         case TuiCurrency.HongKongDollar:
         case TuiCurrencyCode.HongKongDollar:
             return 'HK$';
         case TuiCurrency.CanadianDollar:
         case TuiCurrencyCode.CanadianDollar:
             return 'C$';
+        case TuiCurrency.EastCaribbeanDollar:
+        case TuiCurrencyCode.EastCaribbeanDollar:
+            return 'EC$';
         case TuiCurrency.Euro:
         case TuiCurrencyCode.Euro:
             return '€';
+        case TuiCurrency.Forint:
+        case TuiCurrencyCode.Forint:
+            return 'Ft';
         case TuiCurrency.Pound:
         case TuiCurrencyCode.Pound:
             return '£';
@@ -95,9 +107,15 @@ export function tuiGetCurrencySymbol(currency: TuiCurrencyVariants): string | nu
         case TuiCurrency.SaudiRiyal:
         case TuiCurrencyCode.SaudiRiyal:
             return 'SR';
+        case TuiCurrency.MoldovanLeu:
+        case TuiCurrencyCode.MoldovanLeu:
+            return 'L';
         case TuiCurrency.MongolianTugrik:
         case TuiCurrencyCode.MongolianTugrik:
             return '₮';
+        case TuiCurrency.PolandZloty:
+        case TuiCurrencyCode.PolandZloty:
+            return 'zł';
         case TuiCurrency.SouthAfricanRand:
         case TuiCurrencyCode.SouthAfricanRand:
             return 'R';
