@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[6911],{73043:(e,s,n)=>{n.r(s),n.d(s,{TUI_POLISH_LANGUAGE_ADDON_TABLE:()=>o});const o={showHideText:"Pokaż/Ukryj",paginationTexts:{pages:"Strony",linesPerPage:"Wierszy na stronę",of:"z"}}}}]);
