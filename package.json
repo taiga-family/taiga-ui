@@ -128,7 +128,7 @@
         "cpy-cli": "5.0.0",
         "husky": "9.0.11",
         "kill-port": "2.0.1",
-        "lint-staged": "15.2.2",
+        "lint-staged": "15.2.4",
         "local-web-server": "5.3.3",
         "ng-packagr": "16.2.3",
         "nx": "18.3.4",
