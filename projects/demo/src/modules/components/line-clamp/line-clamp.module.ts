@@ -6,7 +6,7 @@ import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
 import {
     TuiButtonDirective,
-    TuiDataListModule,
+    TuiDataList,
     TuiDropdownModule,
     TuiHintModule,
     TuiLinkDirective,
@@ -39,7 +39,7 @@ import {ExampleTuiLineClampComponent} from './line-clamp.component';
         TuiLinkDirective,
         TuiDataListDropdownManagerModule,
         TuiActiveZoneDirective,
-        TuiDataListModule,
+        TuiDataList,
         TuiHintModule,
         TuiChevronDirective,
         TuiSetupComponent,

@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiDataListModule} from '@taiga-ui/core';
+import {TuiDataList} from '@taiga-ui/core';
 import {TuiComboBoxModule, TuiFilterByInputPipeModule} from '@taiga-ui/kit';
 
 @Component({
@@ -13,7 +13,7 @@ import {TuiComboBoxModule, TuiFilterByInputPipeModule} from '@taiga-ui/kit';
         JsonPipe,
         FormsModule,
         TuiComboBoxModule,
-        TuiDataListModule,
+        TuiDataList,
         TuiFilterByInputPipeModule,
     ],
     templateUrl: './index.html',

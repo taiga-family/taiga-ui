@@ -10,7 +10,7 @@ export const TUI_DIALOGS = tuiCreateToken(
     new BehaviorSubject<ReadonlyArray<TuiPopover<any, any>>>([]),
 );
 
-export const TUI_DIALOG_DEFAULT_OPTIONS: TuiDialogOptions = {
+export const TUI_DIALOG_DEFAULT_OPTIONS: TuiDialogOptions<void> = {
     appearance: '',
     size: 'm',
     required: false,

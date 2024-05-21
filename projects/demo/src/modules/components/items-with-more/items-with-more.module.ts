@@ -5,7 +5,7 @@ import {TuiExamplePipe, TuiSetupComponent} from '@demo/utils';
 import {tuiGetDocModules} from '@taiga-ui/addon-doc';
 import {
     TuiButtonDirective,
-    TuiDataListModule,
+    TuiDataList,
     TuiDropdownModule,
     TuiGroupDirective,
     TuiNotificationComponent,
@@ -33,7 +33,7 @@ import {ExampleTuiItemsWithMoreComponent} from './items-with-more.component';
         TuiBadgeDirective,
         TuiDropdownModule,
         TuiButtonDirective,
-        TuiDataListModule,
+        TuiDataList,
         TuiSvgComponent,
         TuiBlockDirective,
         tuiGetDocModules(ExampleTuiItemsWithMoreComponent),

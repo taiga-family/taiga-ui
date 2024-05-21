@@ -19,7 +19,7 @@ import {
     TuiAppearanceDirective,
     tuiAppearanceOptionsProvider,
     TuiButtonDirective,
-    TuiLoaderModule,
+    TuiLoaderComponent,
     TuiSvgComponent,
 } from '@taiga-ui/core';
 import type {TuiLanguage} from '@taiga-ui/i18n';
@@ -38,7 +38,7 @@ import {TUI_FILE_OPTIONS} from './file.options';
     imports: [
         CommonModule,
         PolymorpheusModule,
-        TuiLoaderModule,
+        TuiLoaderComponent,
         TuiSvgComponent,
         TuiButtonDirective,
     ],

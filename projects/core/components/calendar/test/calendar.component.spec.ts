@@ -15,23 +15,23 @@ describe('Calendar', () => {
                 [value]="value"
                 (dayClick)="dayClick($event)"
                 (hoveredItemChange)="hoveredItemChange($event)"
-            ></tui-calendar>
+            />
             <tui-calendar
                 id="min-case"
                 [min]="min"
                 [minViewedMonth]="minViewedMonth"
                 [(month)]="month"
-            ></tui-calendar>
+            />
             <tui-calendar
                 id="max-case"
                 [max]="max"
                 [maxViewedMonth]="maxViewedMonth"
                 [(month)]="month"
-            ></tui-calendar>
+            />
             <tui-calendar
                 id="year-view"
                 initialView="year"
-            ></tui-calendar>
+            />
         `,
     })
     class TestComponent {

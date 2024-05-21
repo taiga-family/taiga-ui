@@ -1,10 +1,10 @@
 import {NgModule} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
 import {
+    TuiCalendarYearComponent,
     TuiDropdownModule,
     TuiDropdownOpenDirective,
     TuiPrimitiveTextfieldModule,
-    TuiPrimitiveYearPickerModule,
     TuiScrollbarComponent,
     TuiTextfieldControllerModule,
     TuiTextfieldLegacyComponent,
@@ -21,7 +21,7 @@ import {TuiInputYearDirective} from './input-year.directive';
         TuiDropdownOpenDirective,
         TuiPrimitiveTextfieldModule,
         TuiScrollbarComponent,
-        TuiPrimitiveYearPickerModule,
+        TuiCalendarYearComponent,
         TuiTextfieldControllerModule,
         TuiToYearPipeModule,
     ],

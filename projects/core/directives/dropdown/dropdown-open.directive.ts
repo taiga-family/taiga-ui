@@ -24,7 +24,7 @@ import {
     TuiObscuredDirective,
     tuiWatch,
 } from '@taiga-ui/cdk';
-import {tuiAsDriver} from '@taiga-ui/core/abstract';
+import {tuiAsDriver} from '@taiga-ui/core/classes';
 import {tuiIsEditingKey} from '@taiga-ui/core/utils/miscellaneous';
 import {shouldCall} from '@tinkoff/ng-event-plugins';
 import {filter, fromEvent, map, merge} from 'rxjs';

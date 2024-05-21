@@ -5,7 +5,7 @@ import {TestBed} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {
     TuiButtonDirective,
-    TuiDataListModule,
+    TuiDataList,
     TuiHostedDropdownModule,
     TuiPrimitiveTextfieldComponent,
     TuiPrimitiveTextfieldModule,
@@ -123,7 +123,7 @@ describe('TuiHostedDropdown', () => {
                 TuiButtonDirective,
                 TuiPrimitiveTextfieldModule,
                 TuiTextfieldControllerModule,
-                TuiDataListModule,
+                TuiDataList,
                 TuiRootComponent,
             ],
             declarations: [TestComponent],

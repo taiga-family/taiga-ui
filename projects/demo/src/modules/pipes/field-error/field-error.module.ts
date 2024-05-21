@@ -8,7 +8,7 @@ import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiTable} from '@taiga-ui/addon-table';
 import {
     TuiButtonDirective,
-    TuiErrorModule,
+    TuiErrorComponent,
     TuiHintModule,
     TuiLabelDirective,
     TuiLinkDirective,
@@ -37,7 +37,7 @@ import {ExampleTuiFieldErrorPipeComponent} from './field-error.component';
         ReactiveFormsModule,
         TuiAddonDocModule,
         TuiTextfieldControllerModule,
-        TuiErrorModule,
+        TuiErrorComponent,
         TuiFieldErrorPipeModule,
         TuiLabelDirective,
         TuiHintModule,

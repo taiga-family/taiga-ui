@@ -1,0 +1,11 @@
+<ng-container *polymorpheusOutlet="content || base as text; context: {$implicit: base}">
+    {{ text }}
+</ng-container>
+<ng-template #base>
+    <ng-content />
+    <tui-icon
+        *ngIf="dropdown"
+        class="t-arrow"
+        [icon]="icons.more"
+    />
+</ng-template>

@@ -4,7 +4,7 @@ import {
     tuiFallbackAccessor,
     TuiPositionAccessor,
     TuiRectAccessor,
-} from '@taiga-ui/core/abstract';
+} from '@taiga-ui/core/classes';
 import {TUI_VIEWPORT} from '@taiga-ui/core/tokens';
 import type {TuiPoint, TuiVerticalDirection} from '@taiga-ui/core/types';
 

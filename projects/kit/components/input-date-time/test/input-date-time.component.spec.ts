@@ -55,7 +55,7 @@ describe('InputDateTime', () => {
             return 'tui-input-date-time__';
         },
         get calendarCellAutomationId() {
-            return 'tui-primitive-calendar__cell';
+            return 'tui-calendar-sheet__cell';
         },
         get nativeInputAutomationId() {
             return 'tui-primitive-textfield__native-input';

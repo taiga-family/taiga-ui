@@ -1,6 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {TuiExpandModule, TuiGroupDirective, TuiSvgComponent} from '@taiga-ui/core';
+import {TuiExpand, TuiGroupDirective, TuiSvgComponent} from '@taiga-ui/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiAccordionComponent} from './accordion.component';
@@ -14,7 +14,7 @@ import {TuiAccordionItemEagerContentDirective} from './accordion-item/accordion-
         PolymorpheusModule,
         TuiSvgComponent,
         TuiGroupDirective,
-        TuiExpandModule,
+        TuiExpand,
     ],
     declarations: [
         TuiAccordionComponent,

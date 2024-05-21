@@ -2,7 +2,7 @@ import type {PipeTransform} from '@angular/core';
 import {inject, Pipe} from '@angular/core';
 import {TUI_SVG_OPTIONS} from '@taiga-ui/core/components/svg';
 import {TUI_CACHE_BUSTING_PAYLOAD} from '@taiga-ui/core/utils/miscellaneous';
-import {TuiCountryIsoCode} from '@taiga-ui/i18n';
+import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
 
 @Pipe({
     standalone: true,
@@ -27,19 +27,19 @@ export class TuiFlagPipe implements PipeTransform {
         }
 
         switch (countryIsoCode) {
-            case TuiCountryIsoCode.BL:
-            case TuiCountryIsoCode.BQ:
-            case TuiCountryIsoCode.CW:
-            case TuiCountryIsoCode.GF:
-            case TuiCountryIsoCode.GP:
-            case TuiCountryIsoCode.MF:
-            case TuiCountryIsoCode.MQ:
-            case TuiCountryIsoCode.NC:
-            case TuiCountryIsoCode.RE:
-            case TuiCountryIsoCode.YT:
-                return `${this.staticPath}${TuiCountryIsoCode.FR}.png`;
-            case TuiCountryIsoCode.SX:
-                return `${this.staticPath}${TuiCountryIsoCode.NL}.png`;
+            case 'BL':
+            case 'BQ':
+            case 'CW':
+            case 'GF':
+            case 'GP':
+            case 'MF':
+            case 'MQ':
+            case 'NC':
+            case 'RE':
+            case 'YT':
+                return `${this.staticPath}FR.png`;
+            case 'SX':
+                return `${this.staticPath}NL.png`;
             default:
                 return `${this.staticPath}${countryIsoCode}.png`;
         }

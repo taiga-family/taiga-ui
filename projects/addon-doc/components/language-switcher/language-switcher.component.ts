@@ -1,9 +1,9 @@
 import {NgForOf, TitleCasePipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {tuiCapitalizeFirstLetter, TuiDataListModule, TuiFlagPipe} from '@taiga-ui/core';
-import type {TuiLanguageName} from '@taiga-ui/i18n';
-import {TuiCountryIsoCode, TuiLanguageSwitcher} from '@taiga-ui/i18n';
+import {tuiCapitalizeFirstLetter, TuiDataList, TuiFlagPipe} from '@taiga-ui/core';
+import type {TuiCountryIsoCode, TuiLanguageName} from '@taiga-ui/i18n';
+import {TuiLanguageSwitcher} from '@taiga-ui/i18n';
 import {TuiSelectModule} from '@taiga-ui/kit';
 
 @Component({
@@ -11,7 +11,7 @@ import {TuiSelectModule} from '@taiga-ui/kit';
     selector: 'tui-language-switcher',
     imports: [
         ReactiveFormsModule,
-        TuiDataListModule,
+        TuiDataList,
         NgForOf,
         TitleCasePipe,
         TuiFlagPipe,
@@ -23,22 +23,22 @@ import {TuiSelectModule} from '@taiga-ui/kit';
 })
 export class TuiLanguageSwitcherComponent {
     public readonly flags = new Map<TuiLanguageName, TuiCountryIsoCode>([
-        ['belarusian', TuiCountryIsoCode.BY],
-        ['chinese', TuiCountryIsoCode.CN],
-        ['dutch', TuiCountryIsoCode.NL],
-        ['english', TuiCountryIsoCode.GB],
-        ['french', TuiCountryIsoCode.FR],
-        ['german', TuiCountryIsoCode.DE],
-        ['italian', TuiCountryIsoCode.IT],
-        ['kazakh', TuiCountryIsoCode.KZ],
-        ['malay', TuiCountryIsoCode.MY],
-        ['polish', TuiCountryIsoCode.PL],
-        ['portuguese', TuiCountryIsoCode.PT],
-        ['russian', TuiCountryIsoCode.RU],
-        ['spanish', TuiCountryIsoCode.ES],
-        ['turkish', TuiCountryIsoCode.TR],
-        ['ukrainian', TuiCountryIsoCode.UA],
-        ['vietnamese', TuiCountryIsoCode.VN],
+        ['belarusian', 'BY'],
+        ['chinese', 'CN'],
+        ['dutch', 'NL'],
+        ['english', 'GB'],
+        ['french', 'FR'],
+        ['german', 'DE'],
+        ['italian', 'IT'],
+        ['kazakh', 'KZ'],
+        ['malay', 'MY'],
+        ['polish', 'PL'],
+        ['portuguese', 'PT'],
+        ['russian', 'RU'],
+        ['spanish', 'ES'],
+        ['turkish', 'TR'],
+        ['ukrainian', 'UA'],
+        ['vietnamese', 'VN'],
     ]);
 
     protected readonly switcher = inject(TuiLanguageSwitcher);

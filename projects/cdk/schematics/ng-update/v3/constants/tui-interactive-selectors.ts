@@ -1,6 +1,6 @@
 export const TUI_INTERACTIVE_SELECTORS = [
     'tui-primitive-textfield',
-    'tui-primitive-spin-button',
+    'tui-spin-button',
     'tui-action',
     'tui-input-range',
     'tui-pagination',

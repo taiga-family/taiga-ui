@@ -6,7 +6,7 @@ import {TuiSetupComponent} from '@demo/utils';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiButtonDirective,
-    TuiErrorModule,
+    TuiErrorComponent,
     TuiLinkDirective,
     TuiNotificationComponent,
     TuiTextfieldControllerModule,
@@ -32,7 +32,7 @@ import {ExampleTuiIslandComponent} from './island.component';
         TuiLinkDirective,
         TuiSwitchComponent,
         TuiButtonDirective,
-        TuiErrorModule,
+        TuiErrorComponent,
         TuiFieldErrorPipeModule,
         TuiInputPhoneModule,
         CommonModule,

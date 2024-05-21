@@ -5,7 +5,7 @@ import {TuiDocPageComponent} from '@taiga-ui/addon-doc';
 
 import {toKebab} from './kebab.pipe';
 
-@Pipe({name: 'tuiExample', standalone: true})
+@Pipe({standalone: true, name: 'tuiExample'})
 export class TuiExamplePipe implements PipeTransform {
     private readonly page = inject(TuiDocPageComponent);
 

@@ -1,0 +1,19 @@
+{
+    "name": "@taiga-ui/legacy",
+    "version": "3.59.0",
+    "description": "Legacy Taiga UI entities from the previous major release to simplify migration",
+    "keywords": [
+        "legacy",
+        "deprecated",
+        "outdated"
+    ],
+    "homepage": "https://github.com/taiga-family/taiga-ui",
+    "repository": "https://github.com/taiga-family/taiga-ui",
+    "license": "Apache-2.0",
+    "dependencies": {
+        "tslib": "2.6.2"
+    },
+    "peerDependencies": {
+        "@angular/core": ">=16.0.0"
+    }
+}

@@ -5,7 +5,7 @@ import {RouterModule} from '@angular/router';
 import {TuiSetupComponent} from '@demo/utils';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiValidatorDirective} from '@taiga-ui/cdk';
-import {TuiDataListModule} from '@taiga-ui/core';
+import {TuiDataList} from '@taiga-ui/core';
 import {
     TuiDataListWrapperModule,
     TuiInputModule,
@@ -25,7 +25,7 @@ import {ExampleTuiValidatorComponent} from './validator.component';
         TuiSelectModule,
         TuiValidatorDirective,
         TuiInputPhoneModule,
-        TuiDataListModule,
+        TuiDataList,
         TuiDataListWrapperModule,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiValidatorComponent)),

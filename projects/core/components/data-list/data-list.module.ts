@@ -1,16 +1,12 @@
-import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {TuiSvgComponent} from '@taiga-ui/core/components/svg';
-import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiDataListComponent} from './data-list.component';
 import {TuiDataListDirective} from './data-list.directive';
 import {TuiOptGroupDirective} from './opt-group.directive';
-import {TuiOptionComponent} from './option/option.component';
+import {TuiOptionComponent} from './option.component';
 
 @NgModule({
-    imports: [CommonModule, TuiSvgComponent, PolymorpheusModule],
-    declarations: [
+    imports: [
         TuiDataListComponent,
         TuiOptionComponent,
         TuiOptGroupDirective,
@@ -23,4 +19,4 @@ import {TuiOptionComponent} from './option/option.component';
         TuiDataListDirective,
     ],
 })
-export class TuiDataListModule {}
+export class TuiDataList {}

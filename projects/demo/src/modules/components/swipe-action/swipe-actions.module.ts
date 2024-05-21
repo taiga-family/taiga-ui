@@ -11,7 +11,7 @@ import {
 } from '@taiga-ui/addon-mobile';
 import {
     TuiButtonDirective,
-    TuiDataListModule,
+    TuiDataList,
     TuiDropdownDirective,
     TuiDropdownOpenDirective,
     TuiIconComponent,
@@ -57,7 +57,7 @@ import {ExampleTuiSwipeActionsComponent} from './swipe-actions.component';
         TuiTitleDirective,
         TuiCheckboxComponent,
         TuiDropdownOpenDirective,
-        TuiDataListModule,
+        TuiDataList,
         TuiDropdownDirective,
         TuiSetupComponent,
     ],

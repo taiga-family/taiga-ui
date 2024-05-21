@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
 import {
-    TuiDataListModule,
+    TuiDataList,
     TuiHostedDropdownModule,
     TuiPrimitiveTextfieldModule,
     TuiSvgComponent,
@@ -22,7 +22,7 @@ import {TuiNativeTimeComponent} from './native-time/native-time.component';
         CommonModule,
         MaskitoDirective,
         TuiSelectOptionModule,
-        TuiDataListModule,
+        TuiDataList,
         TuiWrapperModule,
         TuiHostedDropdownModule,
         TuiPrimitiveTextfieldModule,

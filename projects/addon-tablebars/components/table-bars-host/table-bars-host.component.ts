@@ -8,7 +8,7 @@ import {
     TUI_COMMON_ICONS,
     TUI_MEDIA,
     TuiButtonDirective,
-    tuiIsMobile,
+    tuiGetViewportWidth,
     tuiParentAnimation,
     tuiSlideInTop,
     tuiToAnimationOptions,
@@ -37,7 +37,7 @@ export class TuiTableBarsHostComponent {
     protected readonly options = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
 
     protected get isMobile(): boolean {
-        return tuiIsMobile(this.win, this.media);
+        return tuiGetViewportWidth(this.win) < this.media.mobile;
     }
 
     protected getMode(mode: string): string | null {

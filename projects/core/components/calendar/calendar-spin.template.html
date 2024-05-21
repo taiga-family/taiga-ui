@@ -1,0 +1,24 @@
+<tui-spin-button
+    [focusable]="false"
+    [leftDisabled]="value.monthSameOrBefore(min)"
+    [rightDisabled]="value.monthSameOrAfter(max)"
+    (leftClick)="append({month: -1})"
+    (rightClick)="append({month: 1})"
+>
+    {{ value | tuiMonth | async }}
+    <ng-container *ngIf="min.year === max.year; else button">
+        {{ value.formattedYear }}
+    </ng-container>
+    <ng-template #button>
+        <button
+            id="year-btn"
+            automation-id="tui-primitive-year-month-pagination__year-button"
+            tabIndex="-1"
+            tuiLink
+            type="button"
+            (click)="onYearClick()"
+        >
+            {{ value.formattedYear }}
+        </button>
+    </ng-template>
+</tui-spin-button>

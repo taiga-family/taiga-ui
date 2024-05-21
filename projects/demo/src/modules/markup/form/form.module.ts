@@ -5,8 +5,8 @@ import {TuiAmountPipe, TuiCurrencyPipeModule} from '@taiga-ui/addon-commerce';
 import {tuiGetDocModules} from '@taiga-ui/addon-doc';
 import {
     TuiButtonDirective,
-    TuiDataListModule,
-    TuiErrorModule,
+    TuiDataList,
+    TuiErrorComponent,
     TuiGroupDirective,
     TuiHintModule,
     TuiLabelDirective,
@@ -52,7 +52,7 @@ import {FormComponent} from './form.component';
         TuiInputRangeModule,
         TuiRadioListComponent,
         TuiButtonDirective,
-        TuiErrorModule,
+        TuiErrorComponent,
         TuiFieldErrorPipeModule,
         TuiInputPasswordModule,
         TuiInputPhoneModule,
@@ -65,7 +65,7 @@ import {FormComponent} from './form.component';
         TuiBlockDirective,
         TuiTextfieldControllerModule,
         TuiHintModule,
-        TuiDataListModule,
+        TuiDataList,
         TuiDataListWrapperModule,
         TuiRadioComponent,
         tuiGetDocModules(FormComponent),

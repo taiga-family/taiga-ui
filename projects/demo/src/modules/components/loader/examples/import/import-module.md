@@ -1,11 +1,11 @@
 ```ts
-import {TuiLoaderModule} from '@taiga-ui/core';
+import {TuiLoaderComponent} from '@taiga-ui/core';
 
 @Component({
   standalone: true,
   imports: [
     // ...
-    TuiLoaderModule,
+    TuiLoaderComponent,
   ],
 })
 export class MyComponent {}

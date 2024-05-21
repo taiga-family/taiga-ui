@@ -9,7 +9,7 @@ import {
     TuiButtonDirective,
     TuiLabelDirective,
     TuiLinkDirective,
-    TuiLoaderModule,
+    TuiLoaderComponent,
     TuiSvgComponent,
 } from '@taiga-ui/core';
 import {TuiCheckboxComponent, TuiTreeModule} from '@taiga-ui/kit';
@@ -31,7 +31,7 @@ import {ExampleTuiTreeComponent} from './tree.component';
         TuiButtonDirective,
         TuiLinkDirective,
         TuiMapperPipe,
-        TuiLoaderModule,
+        TuiLoaderComponent,
         FormsModule,
         CommonModule,
         TuiAddonDocModule,

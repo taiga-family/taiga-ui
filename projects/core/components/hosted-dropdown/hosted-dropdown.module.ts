@@ -18,6 +18,7 @@ import {TuiHostedDropdownConnectorDirective} from './hosted-dropdown-connector.d
 
 /**
  * @deprecated use {@link TuiDropdownOpenDirective} instead
+ * // TODO: Move to legacy package before 4.0
  */
 @NgModule({
     imports: [

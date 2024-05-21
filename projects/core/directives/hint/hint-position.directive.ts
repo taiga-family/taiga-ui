@@ -4,7 +4,7 @@ import {
     tuiFallbackAccessor,
     TuiPositionAccessor,
     TuiRectAccessor,
-} from '@taiga-ui/core/abstract';
+} from '@taiga-ui/core/classes';
 import {TUI_VIEWPORT} from '@taiga-ui/core/tokens';
 import type {TuiPoint} from '@taiga-ui/core/types';
 
@@ -31,7 +31,7 @@ export class TuiHintPositionDirective extends TuiPositionAccessor {
     private readonly points: Record<TuiHintDirection, [number, number]> =
         TUI_HINT_DIRECTIONS.reduce(
             (acc, direction) => ({...acc, [direction]: [0, 0]}),
-            {} as any,
+            {} as Record<TuiHintDirection, [number, number]>,
         );
 
     @Input('tuiHintDirection')

@@ -9,12 +9,12 @@ import {
     tuiIsElement,
     tuiPx,
 } from '@taiga-ui/cdk';
+import {tuiDropdownAnimation} from '@taiga-ui/core/animations';
 import {
     tuiPositionAccessorFor,
     TuiRectAccessor,
     tuiRectAccessorFor,
-} from '@taiga-ui/core/abstract';
-import {tuiDropdownAnimation} from '@taiga-ui/core/animations';
+} from '@taiga-ui/core/classes';
 import {TuiScrollbarComponent} from '@taiga-ui/core/components/scrollbar';
 import {TuiPositionService, TuiVisualViewportService} from '@taiga-ui/core/services';
 import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';

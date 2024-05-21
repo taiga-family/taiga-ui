@@ -2,9 +2,9 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {TuiFilterPipe} from '@taiga-ui/cdk';
+import {TuiFilterPipe, TuiToArrayPipe} from '@taiga-ui/cdk';
 import {
-    TuiDataListModule,
+    TuiDataList,
     TuiDropdownModule,
     TuiGroupDirective,
     TuiLinkDirective,
@@ -47,10 +47,11 @@ import {TuiDocTypeReferencePipe} from './pipes/type-reference.pipe';
         TuiPrimitiveTextfieldModule,
         TuiTextfieldControllerModule,
         TuiDropdownModule,
-        TuiDataListModule,
+        TuiDataList,
         TuiDataListWrapperModule,
         TuiNotificationComponent,
         TuiFilterPipe,
+        TuiToArrayPipe,
     ],
     declarations: [
         TuiInspectPipe,

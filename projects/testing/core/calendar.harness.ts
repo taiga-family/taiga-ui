@@ -1,77 +1,67 @@
 import {TuiComponentHarness} from '@taiga-ui/testing/utils';
 
-import {TuiPrimitiveCalendarHarness} from './primitive-calender.harness';
-import {TuiPrimitiveYearMonthPaginationHarness} from './primitive-year-month-pagination.harness';
-import {TuiPrimitiveYearPickerHarness} from './primitive-year-picker.harness';
+import {TuiCalendarSheetHarness} from './calendar-sheet.harness';
+import {TuiCalendarSpinHarness} from './calendar-spin.harness';
+import {TuiCalendarYearHarness} from './calendar-year.harness';
 
 export class TuiCalendarHarness extends TuiComponentHarness {
     public static hostSelector = 'tui-calendar';
 
-    private readonly getPrimitiveYearPickerHarness = this.locatorForOptional(
-        TuiPrimitiveYearPickerHarness,
-    );
+    private readonly getCalendarYearHarness =
+        this.locatorForOptional(TuiCalendarYearHarness);
 
-    private readonly getPrimitiveYearMonthPaginationHarness = this.locatorForOptional(
-        TuiPrimitiveYearMonthPaginationHarness,
-    );
+    private readonly getCalendarSpinHarness =
+        this.locatorForOptional(TuiCalendarSpinHarness);
 
-    private readonly getPrimitiveCalendarHarness = this.locatorForOptional(
-        TuiPrimitiveCalendarHarness,
+    private readonly getCalendarSheetHarness = this.locatorForOptional(
+        TuiCalendarSheetHarness,
     );
 
     public async yearPickerShown(): Promise<boolean> {
-        return !!(await this.getPrimitiveYearPickerHarness());
+        return !!(await this.getCalendarYearHarness());
     }
 
     public async yearMonthPaginationShown(): Promise<boolean> {
-        return !!(await this.getPrimitiveYearMonthPaginationHarness());
+        return !!(await this.getCalendarSpinHarness());
     }
 
     public async primitiveCalendarShown(): Promise<boolean> {
-        return !!(await this.getPrimitiveCalendarHarness());
+        return !!(await this.getCalendarSheetHarness());
     }
 
     public async isPaginationLeftDisabled(): Promise<boolean> {
-        return (
-            (await this.getPrimitiveYearMonthPaginationHarness())?.isLeftDisabled() ??
-            false
-        );
+        return (await this.getCalendarSpinHarness())?.isLeftDisabled() ?? false;
     }
 
     public async isPaginationRightDisabled(): Promise<boolean> {
-        return (
-            (await this.getPrimitiveYearMonthPaginationHarness())?.isRightDisabled() ??
-            false
-        );
+        return (await this.getCalendarSpinHarness())?.isRightDisabled() ?? false;
     }
 
     public async clickMonthLeft(): Promise<void> {
-        return (await this.getPrimitiveYearMonthPaginationHarness())?.clickLeft();
+        return (await this.getCalendarSpinHarness())?.clickLeft();
     }
 
     public async getContentText(): Promise<string> {
-        return (
-            (await this.getPrimitiveYearMonthPaginationHarness())?.getContentText() ?? ''
-        );
+        return (await this.getCalendarSpinHarness())?.getContentText() ?? '';
     }
 
     public async clickMonthRight(): Promise<void> {
-        return (await this.getPrimitiveYearMonthPaginationHarness())?.clickRight();
+        return (await this.getCalendarSpinHarness())?.clickRight();
     }
 
     public async clickPaginationYear(): Promise<void> {
-        return (await this.getPrimitiveYearMonthPaginationHarness())?.clickYear();
+        return (await this.getCalendarSpinHarness())?.clickYear();
     }
 
     public async clickPickerYear(year: string): Promise<void> {
-        return (await this.getPrimitiveYearPickerHarness())?.clickYear(year);
+        return (await this.getCalendarYearHarness())?.clickYear(year);
     }
 
     public async clickDay(day: number): Promise<void> {
-        return (await this.getPrimitiveCalendarHarness())?.clickDay(day);
+        return (await this.getCalendarSheetHarness())?.clickDay(day);
     }
 
     public async hoverDay(day: number): Promise<void> {
-        return (await this.getPrimitiveCalendarHarness())?.hoverDay(day);
+        return (await this.getCalendarSheetHarness())?.hoverDay(day);
     }
 }

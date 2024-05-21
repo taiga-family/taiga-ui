@@ -62,7 +62,8 @@
             "@taiga-ui/addon-mobile",
             "@taiga-ui/layout",
             "@taiga-ui/experimental",
-            "@taiga-ui/proprietary"
+            "@taiga-ui/proprietary",
+            "@taiga-ui/legacy"
         ]
     },
     "schematics": "./schematics/collection.json"

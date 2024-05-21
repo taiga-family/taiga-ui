@@ -1,5 +1,11 @@
 import {tuiCreateToken} from '@taiga-ui/cdk';
-import type {TuiMedia} from '@taiga-ui/core/types';
+
+export interface TuiMedia {
+    readonly desktopLarge: number;
+    readonly desktopSmall: number;
+    readonly mobile: number;
+    readonly tablet?: number;
+}
 
 /**
  * Token for media constant

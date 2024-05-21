@@ -7,12 +7,12 @@ import {
 } from '@angular/core';
 import {tuiIsString} from '@taiga-ui/cdk';
 import type {TuiSizeS} from '@taiga-ui/core';
-import {TUI_BUTTON_OPTIONS, TuiLoaderModule, tuiSizeBigger} from '@taiga-ui/core';
+import {TUI_BUTTON_OPTIONS, TuiLoaderComponent, tuiSizeBigger} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
     selector: '[tuiButton][loading],[tuiIconButton][loading]',
-    imports: [TuiLoaderModule],
+    imports: [TuiLoaderComponent],
     template: `
         <ng-content />
         <tui-loader

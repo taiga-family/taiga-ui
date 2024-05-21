@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {TuiMapperPipe} from '@taiga-ui/cdk';
-import {TuiButtonDirective, TuiLoaderModule} from '@taiga-ui/core';
+import {TuiButtonDirective, TuiLoaderComponent} from '@taiga-ui/core';
 import {TuiTabsModule} from '@taiga-ui/kit';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
@@ -22,7 +22,7 @@ import {TuiDocExampleGetTabsPipe} from './example-get-tabs.pipe';
         TuiDocCodeModule,
         PolymorpheusModule,
         TuiMapperPipe,
-        TuiLoaderModule,
+        TuiLoaderComponent,
         RouterModule,
     ],
     declarations: [TuiDocExampleComponent, TuiDocExampleGetTabsPipe],

@@ -1,12 +1,13 @@
-export function tuiCheckFixedPosition(element: HTMLElement | null): boolean {
-    if (!element || typeof getComputedStyle === 'undefined') {
-        return false;
-    }
-
-    const style = getComputedStyle(element);
-
+export function tuiCheckFixedPosition(element?: HTMLElement | null): boolean {
     return (
-        style.getPropertyValue('position') === 'fixed' ||
-        tuiCheckFixedPosition(element.parentElement)
+        !!element && (isFixed(element) || tuiCheckFixedPosition(element.parentElement))
+    );
+}
+
+function isFixed(element: HTMLElement): boolean {
+    return (
+        element.ownerDocument.defaultView
+            ?.getComputedStyle(element)
+            .getPropertyValue('position') === 'fixed'
     );
 }

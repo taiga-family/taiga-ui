@@ -1,7 +1,7 @@
 /* eslint-disable rxjs/no-unsafe-takeuntil */
 import {Directive, inject, Input} from '@angular/core';
 import {TuiHoveredService, tuiInjectElement} from '@taiga-ui/cdk';
-import {tuiAsDriver, TuiDriver} from '@taiga-ui/core/abstract';
+import {tuiAsDriver, TuiDriver} from '@taiga-ui/core/classes';
 import {tuiIsObscured} from '@taiga-ui/core/utils';
 import {
     delay,

@@ -8,8 +8,9 @@ import {
     Input,
 } from '@angular/core';
 import {TUI_IS_IOS, tuiGetElementOffset, tuiInjectElement} from '@taiga-ui/cdk';
-import {TuiScrollControlsComponent} from '@taiga-ui/core/components/scroll-controls';
 import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
+
+import {TuiScrollControlsComponent} from './scroll-controls.component';
 
 /**
  * An event for scrolling an element into view within {@link TuiScrollbarComponent}.

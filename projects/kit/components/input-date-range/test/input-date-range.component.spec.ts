@@ -464,7 +464,7 @@ describe('InputDateRangeComponent', () => {
     ): DebugElement | null {
         return (
             pageObject
-                .getAllByAutomationId('tui-primitive-calendar__cell', calendarEl)
+                .getAllByAutomationId('tui-calendar-sheet__cell', calendarEl)
                 .find(el => Number(el.nativeElement.textContent.trim()) === dayNumber) ||
             null
         );

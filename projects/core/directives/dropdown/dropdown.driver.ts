@@ -1,6 +1,6 @@
 import {Directive, Injectable} from '@angular/core';
-import type {TuiDriver} from '@taiga-ui/core/abstract';
-import {TuiDriverDirective} from '@taiga-ui/core/abstract';
+import type {TuiDriver} from '@taiga-ui/core/classes';
+import {TuiDriverDirective} from '@taiga-ui/core/classes';
 import {Subject} from 'rxjs';
 
 @Injectable()

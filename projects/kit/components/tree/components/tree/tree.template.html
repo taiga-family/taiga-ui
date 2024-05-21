@@ -3,7 +3,7 @@
     #view
     [tuiTreeNode]="value"
 >
-    <ng-container *ngIf="$any(value) !== children">
+    <ng-container *ngIf="value !== children">
         <ng-container *polymorpheusOutlet="content as text; context: {$implicit: value, node: view}">
             {{ text }}
         </ng-container>

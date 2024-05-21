@@ -1,5 +1,4 @@
 import {TestBed} from '@angular/core/testing';
-import {TuiCountryIsoCode} from '@taiga-ui/i18n';
 import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 import {TuiIsoToCountryCodePipe} from '../iso-to-country-code.pipe';
@@ -16,19 +15,19 @@ describe('TuiIsoToCountryCodePipe', () => {
     });
 
     it('should transform US iso code to country code', () => {
-        const transformed = pipe.transform(TuiCountryIsoCode.US);
+        const transformed = pipe.transform('US');
 
         expect(transformed).toBe('+1');
     });
 
     it('should transform GB iso code to country code', () => {
-        const transformed = pipe.transform(TuiCountryIsoCode.GB);
+        const transformed = pipe.transform('GB');
 
         expect(transformed).toBe('+44');
     });
 
     it('should transform AU iso code to country code', () => {
-        const transformed = pipe.transform(TuiCountryIsoCode.AU);
+        const transformed = pipe.transform('AU');
 
         expect(transformed).toBe('+61');
     });

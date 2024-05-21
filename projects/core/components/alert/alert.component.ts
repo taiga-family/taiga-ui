@@ -14,7 +14,6 @@ import {fromEvent, repeat, takeUntil, timer} from 'rxjs';
 import type {TuiAlertOptions} from './alert.interfaces';
 import {TUI_ALERT_POSITION} from './alert.tokens';
 
-// TODO: get rid of $any in template
 @Component({
     standalone: true,
     selector: 'tui-alert',

@@ -6,9 +6,9 @@ import {TuiSetupComponent} from '@demo/utils';
 import {MaskitoDirective} from '@maskito/angular';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
-    TuiDataListModule,
+    TuiDataList,
     TuiDropdownModule,
-    TuiErrorModule,
+    TuiErrorComponent,
     TuiGroupDirective,
     TuiHintModule,
     TuiLinkDirective,
@@ -39,13 +39,13 @@ import {ExampleTuiInputTagComponent} from './input-tag.component';
         FormsModule,
         ReactiveFormsModule,
         InheritedDocumentationModule,
-        TuiDataListModule,
+        TuiDataList,
         TuiDataListWrapperModule,
         TuiLinkDirective,
         TuiInputModule,
         TuiGroupDirective,
         TuiInputTagModule,
-        TuiErrorModule,
+        TuiErrorComponent,
         TuiFieldErrorPipeModule,
         TuiDropdownModule,
         TuiTextfieldControllerModule,

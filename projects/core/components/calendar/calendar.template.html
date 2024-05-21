@@ -3,7 +3,7 @@
     automation-id="tui-calendar__scrollbar"
     class="t-scrollbar"
 >
-    <tui-primitive-year-picker
+    <tui-calendar-year
         automation-id="tui-calendar__year"
         [initialItem]="month"
         [max]="computedMax"
@@ -13,7 +13,7 @@
     />
 </tui-scrollbar>
 <ng-template #calendar>
-    <tui-primitive-year-month-pagination
+    <tui-calendar-spin
         automation-id="tui-calendar__pagination"
         class="t-pagination"
         [max]="computedMaxViewedMonth"
@@ -22,7 +22,7 @@
         (valueChange)="onPaginationValueChange($event)"
         (yearClick)="onPaginationYearClick()"
     />
-    <tui-primitive-calendar
+    <tui-calendar-sheet
         automation-id="tui-calendar__calendar"
         [disabledItemHandler]="disabledItemHandler | tuiMapper: disabledItemHandlerMapper : computedMin : computedMax"
         [hoveredItem]="hoveredItem"

@@ -1,5 +1,5 @@
 import {Directive, Optional, SkipSelf} from '@angular/core';
-import {TuiPositionAccessor} from '@taiga-ui/core/abstract';
+import {TuiPositionAccessor} from '@taiga-ui/core/classes';
 import type {TuiPoint} from '@taiga-ui/core/types';
 
 @Directive({
