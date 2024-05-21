@@ -2,7 +2,7 @@
 import type {PipeTransform} from '@angular/core';
 import {Pipe} from '@angular/core';
 import {CHAR_PLUS} from '@taiga-ui/cdk';
-import {tuiFormatPhone} from '@taiga-ui/core/utils/format';
+import {tuiFormatPhone} from '@taiga-ui/legacy/utils';
 
 @Pipe({
     standalone: true,
@@ -10,6 +10,26 @@ import {tuiFormatPhone} from '@taiga-ui/core/utils/format';
 })
 export class TuiFormatPhonePipe implements PipeTransform {
     /**
+     * Use {@link https://maskito.dev/frameworks/angular#pipe MaskitoPipe} instead!
+     * ```ts
+     * import {maskitoTransform} from '@maskito/core';
+     * import {maskitoPhoneOptionsGenerator} from '@maskito/phone';
+     * import metadata from 'libphonenumber-js/min/metadata';
+     *
+     * @Component({
+     *     standalone: true,
+     *     imports: [MaskitoPipe],
+     *     template: `
+     *         Phone: ${{'12125552368' | maskito: options}}
+     *         <!-- Phone: +1 (212) 555-2368 -->
+     *     `,
+     * })
+     * export class YourComponent {
+     *     options = maskitoPhoneOptionsGenerator({countryIsoCode: 'US', metadata});
+     * }
+     * ```
+     * ___
+     * @deprecated Use {@link https://maskito.dev/frameworks/angular#pipe MaskitoPipe} instead!
      * Formats phone number string of +7XXXXXXXXXX format with adding separator symbols
      * @param value
      * @param countryCode

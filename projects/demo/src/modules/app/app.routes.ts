@@ -1114,11 +1114,6 @@ export const ROUTES: Routes = [
         title: 'FormatNumber',
     }),
     route({
-        path: DemoRoute.FormatPhone,
-        loadComponent: async () => import('../pipes/format-phone'),
-        title: 'FormatPhone',
-    }),
-    route({
         path: DemoRoute.IsPresent,
         loadComponent: async () => import('../pipes/is-present'),
         title: 'IsPresent',

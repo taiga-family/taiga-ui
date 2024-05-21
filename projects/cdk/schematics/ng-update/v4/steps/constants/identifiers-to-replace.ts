@@ -91,7 +91,11 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {name: 'TuiFormatPhonePipeModule', moduleSpecifier: '@taiga-ui/core'},
-        to: {name: 'TuiFormatPhonePipe', moduleSpecifier: '@taiga-ui/core'},
+        to: {name: 'TuiFormatPhonePipe', moduleSpecifier: '@taiga-ui/legacy'},
+    },
+    {
+        from: {name: 'tuiFormatPhone', moduleSpecifier: '@taiga-ui/core'},
+        to: {name: 'tuiFormatPhone', moduleSpecifier: '@taiga-ui/legacy'},
     },
     {
         from: {name: 'TuiMonthPipeModule', moduleSpecifier: '@taiga-ui/core'},

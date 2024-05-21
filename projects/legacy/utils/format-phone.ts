@@ -1,8 +1,7 @@
 import {CHAR_PLUS} from '@taiga-ui/cdk';
 
 /**
- * TODO: delete in v4.0
- * @deprecated Use {@link https://maskito.dev/core-concepts/transformer maskitoTransform} instead<br/>
+ * Use {@link https://maskito.dev/core-concepts/transformer maskitoTransform} instead!
  * @example
  * import {maskitoTransform} from '@maskito/core';
  *
@@ -11,6 +10,16 @@ import {CHAR_PLUS} from '@taiga-ui/cdk';
  * };
  * maskitoTransform('12125552368', mask); // +1 (212) 555-2368
  * ___
+ * @example
+ * import {maskitoTransform} from '@maskito/core';
+ * import {maskitoPhoneOptionsGenerator} from '@maskito/phone';
+ * import metadata from 'libphonenumber-js/min/metadata';
+ *
+ * const options = maskitoPhoneOptionsGenerator({countryIsoCode: 'US', metadata});
+ *
+ * maskitoTransform('12125552368', mask); // +1 (212) 555-2368
+ * ___
+ * @deprecated Use {@link https://maskito.dev/core-concepts/transformer maskitoTransform} instead<br/>
  * Formats a string with the phone format +7XXXXXXXXXXXX or XXXXXXXXXXXX,
  * adding parentheses and hyphens.
  *
