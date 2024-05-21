@@ -5,7 +5,7 @@
     {{ heading }}
 </h1>
 <ng-content />
-<ng-container *ngIf="$any(propertiesConnectors) | tuiFilter: matcher : excludedProperties as properties">
+<ng-container *ngIf="propertiesConnectors | tuiToArray | tuiFilter: matcher : excludedProperties as properties">
     <table
         *ngIf="properties.length"
         class="t-table"
