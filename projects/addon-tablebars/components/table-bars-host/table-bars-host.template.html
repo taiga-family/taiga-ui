@@ -16,8 +16,7 @@
         >
             <div class="t-inner">
                 <div class="t-content">
-                    <!-- TODO: Polymorpheus fix type -->
-                    <ng-container *polymorpheusOutlet="$any(item.content) as text; context: getItemContext(item)">
+                    <ng-container *polymorpheusOutlet="item.content as text; context: getItemContext(item)">
                         {{ text }}
                     </ng-container>
                 </div>
