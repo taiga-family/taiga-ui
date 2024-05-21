@@ -1,3 +1,4 @@
+// cspell:disable
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {TuiDocCodeComponent} from '@taiga-ui/addon-doc';
@@ -9,8 +10,7 @@ describe('TuiDocCodeComponent', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            declarations: [TuiDocCodeComponent],
-            imports: [HighlightModule],
+            imports: [HighlightModule, TuiDocCodeComponent],
             providers: [
                 {
                     provide: HIGHLIGHT_OPTIONS,
@@ -55,7 +55,7 @@ describe('TuiDocCodeComponent', () => {
         expect(fixture.nativeElement.querySelector('.t-code')?.innerHTML.trim()).toEqual(
             `<code class="hljs"><span class="hljs-keyword">const</span> a = <span class="hljs-number">5</span>;</code>
     <div class="t-code-actions">
-        <button tuiiconbutton="" appearance="icon" size="xs" class="t-copy-button">
+        <button tuiappearance="" tuiicons="" tuiiconbutton="" appearance="icon" size="xs" class="t-copy-button _icon-left" data-appearance="icon" style="--t-mask-left: url(/assets/taiga-ui/icons/tuiIconCopyOutline.svg); --t-mask-right: url();" data-size="xs">
         </button>
 \t
     </div>`.replace('\t', '        '), // prettier problem
@@ -71,7 +71,7 @@ describe('TuiDocCodeComponent', () => {
         expect(fixture.nativeElement.querySelector('.t-code')?.innerHTML.trim()).toEqual(
             `<code class="hljs"><span class="hljs-keyword">const</span> a = <span class="hljs-number">10</span>;</code>
     <div class="t-code-actions">
-        <button tuiiconbutton="" appearance="icon" size="xs" class="t-copy-button">
+        <button tuiappearance="" tuiicons="" tuiiconbutton="" appearance="icon" size="xs" class="t-copy-button _icon-left" data-appearance="icon" style="--t-mask-left: url(/assets/taiga-ui/icons/tuiIconCopyOutline.svg); --t-mask-right: url();" data-size="xs">
         </button>
 \t
     </div>`.replace('\t', '        '), // prettier problem
@@ -89,7 +89,7 @@ describe('TuiDocCodeComponent', () => {
         expect(fixture.nativeElement.querySelector('.t-code')?.innerHTML.trim()).toEqual(
             `<code class="hljs"><span class="hljs-keyword">const</span> a = <span class="hljs-number">15</span>;</code>
     <div class="t-code-actions">
-        <button tuiiconbutton="" appearance="icon" size="xs" class="t-copy-button">
+        <button tuiappearance="" tuiicons="" tuiiconbutton="" appearance="icon" size="xs" class="t-copy-button _icon-left" data-appearance="icon" style="--t-mask-left: url(/assets/taiga-ui/icons/tuiIconCopyOutline.svg); --t-mask-right: url();" data-size="xs">
         </button>
 \t
     </div>`.replace('\t', '        '), // prettier problem

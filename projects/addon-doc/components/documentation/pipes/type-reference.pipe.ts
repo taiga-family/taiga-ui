@@ -5,7 +5,10 @@ import {
     TUI_DOC_TYPE_REFERENCE_PARSER,
 } from '@taiga-ui/addon-doc/tokens';
 
-@Pipe({name: 'tuiDocTypeReference'})
+@Pipe({
+    standalone: true,
+    name: 'tuiDocTypeReference',
+})
 export class TuiDocTypeReferencePipe implements PipeTransform {
     private readonly parser = inject(TUI_DOC_TYPE_REFERENCE_PARSER);
     private readonly linkHandler = inject(TUI_DOC_TYPE_REFERENCE_HANDLER);

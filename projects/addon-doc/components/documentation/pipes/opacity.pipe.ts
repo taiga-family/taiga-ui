@@ -1,7 +1,10 @@
 import type {PipeTransform} from '@angular/core';
 import {Pipe} from '@angular/core';
 
-@Pipe({name: 'tuiGetOpacity'})
+@Pipe({
+    standalone: true,
+    name: 'tuiGetOpacity',
+})
 export class TuiGetOpacityPipe implements PipeTransform {
     public transform(color: string): number {
         if (color.startsWith('#') || color.startsWith('rgb(')) {

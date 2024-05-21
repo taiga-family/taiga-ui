@@ -2,11 +2,7 @@ import {ClipboardModule} from '@angular/cdk/clipboard';
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
-import {
-    TuiAddonDocModule,
-    tuiGenerateRoutes,
-    TuiTextCodeDirective,
-} from '@taiga-ui/addon-doc';
+import {TuiAddonDoc, tuiGenerateRoutes, TuiTextCodeDirective} from '@taiga-ui/addon-doc';
 
 import {StylesInfoModule} from '../../app/styles-info/styles-info.module';
 import {TuiSpacingExample1} from './examples/1';
@@ -18,8 +14,8 @@ import {SpacesComponent} from './spaces.component';
         CommonModule,
         ClipboardModule,
         StylesInfoModule,
-        TuiAddonDocModule,
         TuiTextCodeDirective,
+        TuiAddonDoc,
         RouterModule.forChild(tuiGenerateRoutes(SpacesComponent)),
     ],
     declarations: [SpacesComponent, TuiSpacingExample1, TuiSpacingExample2],

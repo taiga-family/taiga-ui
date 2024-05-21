@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
+import {TuiAddonDoc, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiNotificationComponent, TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {TuiInputYearModule} from '@taiga-ui/kit';
 
@@ -15,7 +15,7 @@ import {ExampleInputYearComponent} from './input-year.component';
     imports: [
         CommonModule,
         ReactiveFormsModule,
-        TuiAddonDocModule,
+        TuiAddonDoc,
         InheritedDocumentationModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleInputYearComponent)),
         TuiInputYearModule,

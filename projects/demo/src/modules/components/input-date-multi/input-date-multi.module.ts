@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {ReactiveFormsModule} from '@angular/forms';
-import {TuiAddonDocModule, tuiGetDocModules} from '@taiga-ui/addon-doc';
+import {TuiAddonDoc, tuiGetDocModules} from '@taiga-ui/addon-doc';
 import {tuiProvideMobileCalendar} from '@taiga-ui/addon-mobile';
 import {
     TuiDropdownModule,
@@ -21,7 +21,7 @@ import {ExampleTuiInputDateMultiComponent} from './input-date-multi.component';
         TuiLinkDirective,
         TuiHint,
         TuiDropdownModule,
-        TuiAddonDocModule,
+        TuiAddonDoc,
         ReactiveFormsModule,
         TuiInputDateMultiModule,
         TuiTextfieldControllerModule,

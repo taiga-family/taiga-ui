@@ -3,11 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
-import {
-    TuiAddonDocModule,
-    tuiGenerateRoutes,
-    TuiTextCodeDirective,
-} from '@taiga-ui/addon-doc';
+import {TuiAddonDoc, tuiGenerateRoutes, TuiTextCodeDirective} from '@taiga-ui/addon-doc';
 import {TuiElasticStickyModule} from '@taiga-ui/addon-mobile';
 import {TuiAutoFocusDirective} from '@taiga-ui/cdk';
 import {
@@ -63,7 +59,7 @@ import {TuiDialogExampleComponent10} from './examples/10';
         TuiNotificationComponent,
         TuiElasticStickyModule,
         TuiAutoFocusDirective,
-        TuiAddonDocModule,
+        TuiAddonDoc,
         DialogExampleModule,
         SearchDialogExampleModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiDialogComponent)),

@@ -1,13 +1,29 @@
+import {AsyncPipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {Router} from '@angular/router';
 import {TUI_DOC_ICONS, TUI_DOC_LOGO, TUI_DOC_MENU_TEXT} from '@taiga-ui/addon-doc/tokens';
-import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk';
+import {TuiSidebarComponent, TuiSidebarDirective} from '@taiga-ui/addon-mobile';
+import {TUI_FALSE_HANDLER, TuiActiveZoneDirective} from '@taiga-ui/cdk';
+import {TuiButtonDirective} from '@taiga-ui/core';
+import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import {distinctUntilChanged, map, merge, startWith, Subject} from 'rxjs';
 
+import {TuiDocNavigationComponent} from '../../navigation/navigation.component';
+
 @Component({
+    standalone: true,
     selector: 'header[tuiDocHeader]',
-    templateUrl: './header.template.html',
-    styleUrls: ['./header.style.less'],
+    imports: [
+        TuiButtonDirective,
+        TuiActiveZoneDirective,
+        TuiSidebarComponent,
+        TuiSidebarDirective,
+        AsyncPipe,
+        PolymorpheusModule,
+        TuiDocNavigationComponent,
+    ],
+    templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiDocHeaderComponent {

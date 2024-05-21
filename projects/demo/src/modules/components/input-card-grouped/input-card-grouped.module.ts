@@ -7,7 +7,7 @@ import {
     TuiInputCardGroupedModule,
     TuiThumbnailCardComponent,
 } from '@taiga-ui/addon-commerce';
-import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
+import {TuiAddonDoc, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiDataList,
     TuiErrorComponent,
@@ -37,7 +37,7 @@ import {ExampleTuiInputCardGroupedComponent} from './input-card-grouped.componen
         TuiSvgComponent,
         CommonModule,
         ReactiveFormsModule,
-        TuiAddonDocModule,
+        TuiAddonDoc,
         InheritedDocumentationModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiInputCardGroupedComponent)),
         PolymorpheusModule,

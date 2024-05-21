@@ -1,26 +1,14 @@
-import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiDemo} from '@demo/utils';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
-import {
-    TuiDocCodeModule,
-    TuiDocExampleModule,
-    TuiDocPageModule,
-    TuiLanguageSwitcherComponent,
-} from '@taiga-ui/addon-doc';
+import {TuiLanguageSwitcherComponent} from '@taiga-ui/addon-doc';
 import {TuiLinkDirective} from '@taiga-ui/core';
 import {from, map} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [
-        TuiDocPageModule,
-        TuiDocCodeModule,
-        TuiLinkDirective,
-        AsyncPipe,
-        TuiDocExampleModule,
-        TuiLanguageSwitcherComponent,
-    ],
+    imports: [TuiDemo, TuiLinkDirective, TuiLanguageSwitcherComponent],
     templateUrl: './index.html',
     changeDetection,
 })
@@ -36,13 +24,13 @@ export default class PageComponent {
 
     protected example1: TuiDocExample = {
         'language-switcher.component.html': import(
-            '../../../../../addon-doc/components/language-switcher/language-switcher.component.html?raw'
+            '../../../../../addon-doc/components/language-switcher/index.html?raw'
         ),
         'language-switcher.component.ts': import(
-            '../../../../../addon-doc/components/language-switcher/language-switcher.component.ts?raw'
+            '../../../../../addon-doc/components/language-switcher/index.ts?raw'
         ),
         'language-switcher.module.less': import(
-            '../../../../../addon-doc/components/language-switcher/language-switcher.component.less?raw'
+            '../../../../../addon-doc/components/language-switcher/index.less?raw'
         ),
     };
 }

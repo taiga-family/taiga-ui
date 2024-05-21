@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
+import {TuiAddonDoc, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiButtonDirective,
     TuiExpand,
@@ -27,7 +27,7 @@ import {IconsMappingComponent} from './icons-mapping.component';
         TuiButtonDirective,
         TuiInputDateRangeModule,
         TuiTextfieldControllerModule,
-        TuiAddonDocModule,
+        TuiAddonDoc,
         TuiSvgComponent,
         RouterModule.forChild(tuiGenerateRoutes(IconsMappingComponent)),
     ],

@@ -4,7 +4,7 @@ import {RouterModule} from '@angular/router';
 import {TuiSetupComponent} from '@demo/utils';
 import {TuiLegendItemModule, TuiRingChartModule} from '@taiga-ui/addon-charts';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
-import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
+import {TuiAddonDoc, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiHoveredDirective} from '@taiga-ui/cdk';
 import {TuiNotificationComponent, TuiSvgComponent} from '@taiga-ui/core';
 import {TuiCheckboxComponent} from '@taiga-ui/kit';
@@ -23,7 +23,7 @@ import {ExampleTuiLegendItemComponent} from './legend-item.component';
         TuiNotificationComponent,
         PolymorpheusModule,
         TuiHoveredDirective,
-        TuiAddonDocModule,
+        TuiAddonDoc,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiLegendItemComponent)),
         TuiAmountPipe,
         TuiCheckboxComponent,

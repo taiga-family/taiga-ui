@@ -96,25 +96,20 @@ npm i @taiga-ui/addon-doc
 
    _Module:_
 
-   ```typescript
-   import {Component} from '@angular/core';
-   import {RouterModule} from '@angular/router';
-   import {tuiGenerateRoutes, TuiAddonDocModule} from '@taiga-ui/addon-doc';
-   import {SuperComponent} from './super.component';
+   ```ts
+   import {TuiAddonDoc} from '@taiga-ui/addon-doc';
 
    @Component({
      standalone: true,
-     imports: [TuiAddonDocModule, RouterModule.forChild(tuiGenerateRoutes(SuperComponent))],
-     declarations: [SuperComponent],
-     exports: [SuperComponent],
+     imports: [TuiAddonDoc, SuperComponent],
    })
-   export class SuperModule {}
+   export class AppComponent {}
    ```
 
    _Component:_
 
-   ```typescript
-   import {Component} from '@angular/core';
+   ```ts
+   // ..
 
    @Component({
      standalone: true,

@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
+import {TuiAddonDoc, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiDataList, TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {
     TuiComboBoxModule,
@@ -23,7 +23,7 @@ import {ExampleTuiFilterByInputComponent} from './filter-by-input.component';
         CommonModule,
         ReactiveFormsModule,
         TuiFilterByInputPipeModule,
-        TuiAddonDocModule,
+        TuiAddonDoc,
         TuiInputModule,
         TuiDataList,
         TuiDataListWrapperModule,

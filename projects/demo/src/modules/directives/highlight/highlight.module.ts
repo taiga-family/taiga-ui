@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiSetupComponent} from '@demo/utils';
-import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
+import {TuiAddonDoc, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {TuiHighlightModule, TuiInputModule} from '@taiga-ui/kit';
 
@@ -16,7 +16,7 @@ import {ExampleTuiHighlightComponent} from './highlight.component';
         FormsModule,
         TuiInputModule,
         TuiHighlightModule,
-        TuiAddonDocModule,
+        TuiAddonDoc,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiHighlightComponent)),
         TuiTextfieldControllerModule,
         TuiSetupComponent,

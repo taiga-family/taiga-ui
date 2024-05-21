@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
-import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
+import {TuiAddonDoc, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 
 import {ExampleBrowserComponent} from './browser.component';
 import {TuiBrowserExample1} from './examples/1';
@@ -9,7 +9,7 @@ import {TuiBrowserExample1} from './examples/1';
 @NgModule({
     imports: [
         CommonModule,
-        TuiAddonDocModule,
+        TuiAddonDoc,
         RouterModule.forChild(tuiGenerateRoutes(ExampleBrowserComponent)),
     ],
     declarations: [ExampleBrowserComponent, TuiBrowserExample1],

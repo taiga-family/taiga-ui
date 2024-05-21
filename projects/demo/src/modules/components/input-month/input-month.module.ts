@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
+import {TuiAddonDoc, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiNotificationComponent, TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {TuiInputMonthModule} from '@taiga-ui/kit';
 
@@ -16,7 +16,7 @@ import {ExampleInputMonthComponent} from './input-month.component';
     imports: [
         CommonModule,
         ReactiveFormsModule,
-        TuiAddonDocModule,
+        TuiAddonDoc,
         InheritedDocumentationModule,
         TuiInputMonthModule,
         TuiTextfieldControllerModule,

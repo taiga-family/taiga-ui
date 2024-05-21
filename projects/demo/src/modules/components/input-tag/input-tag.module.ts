@@ -4,7 +4,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiSetupComponent} from '@demo/utils';
 import {MaskitoDirective} from '@maskito/angular';
-import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
+import {TuiAddonDoc, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiDataList,
     TuiDropdownModule,
@@ -50,7 +50,7 @@ import {ExampleTuiInputTagComponent} from './input-tag.component';
         TuiDropdownModule,
         TuiTextfieldControllerModule,
         TuiHint,
-        TuiAddonDocModule,
+        TuiAddonDoc,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiInputTagComponent)),
         MaskitoDirective,
         TuiSetupComponent,

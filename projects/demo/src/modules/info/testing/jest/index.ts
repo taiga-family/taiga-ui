@@ -1,9 +1,9 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {TuiDocCodeModule, TuiDocPageModule} from '@taiga-ui/addon-doc';
+import {TuiDemo} from '@demo/utils';
 
 @Component({
     standalone: true,
-    imports: [TuiDocPageModule, TuiDocCodeModule],
+    imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })

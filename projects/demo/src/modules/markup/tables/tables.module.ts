@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
+import {TuiAddonDoc, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiLinkDirective,
     TuiNotificationComponent,
@@ -22,7 +22,7 @@ import {TablesComponent} from './tables.component';
         TuiInputTagModule,
         TuiSvgComponent,
         TuiNotificationComponent,
-        TuiAddonDocModule,
+        TuiAddonDoc,
         TuiLinkDirective,
         StylesInfoModule,
         RouterModule.forChild(tuiGenerateRoutes(TablesComponent)),

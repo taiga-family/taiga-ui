@@ -1,3 +1,5 @@
+import {ClipboardModule} from '@angular/cdk/clipboard';
+import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -9,12 +11,16 @@ import type {TuiRawLoaderContent} from '@taiga-ui/addon-doc/interfaces';
 import {TUI_DOC_EXAMPLE_MARKDOWN_CODE_PROCESSOR} from '@taiga-ui/addon-doc/tokens';
 import {tuiRawLoad} from '@taiga-ui/addon-doc/utils';
 import type {TuiHandler} from '@taiga-ui/cdk';
+import {TuiButtonDirective} from '@taiga-ui/core';
+import {Highlight} from 'ngx-highlightjs';
 import {BehaviorSubject, map, startWith, Subject, switchMap, timer} from 'rxjs';
 
 @Component({
+    standalone: true,
     selector: 'tui-doc-code',
-    templateUrl: './code.template.html',
-    styleUrls: ['./code.style.less'],
+    imports: [NgIf, AsyncPipe, NgForOf, Highlight, TuiButtonDirective, ClipboardModule],
+    templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiDocCodeComponent {

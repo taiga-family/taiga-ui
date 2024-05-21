@@ -4,7 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiSetupComponent} from '@demo/utils';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
-import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
+import {TuiAddonDoc, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiSwipeActionsAutoCloseDirective,
     TuiSwipeActionsComponent,
@@ -38,7 +38,7 @@ import {ExampleTuiSwipeActionsComponent} from './swipe-actions.component';
 @NgModule({
     imports: [
         CommonModule,
-        TuiAddonDocModule,
+        TuiAddonDoc,
         TuiAvatarComponent,
         TuiCellDirective,
         TuiCardLargeDirective,

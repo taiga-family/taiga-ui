@@ -2,11 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {TuiSetupComponent} from '@demo/utils';
-import {
-    TuiAddonDocModule,
-    tuiGenerateRoutes,
-    TuiTextCodeDirective,
-} from '@taiga-ui/addon-doc';
+import {TuiAddonDoc, tuiGenerateRoutes, TuiTextCodeDirective} from '@taiga-ui/addon-doc';
 import {TuiLinkDirective, TuiNotificationComponent} from '@taiga-ui/core';
 import {TuiProgressModule} from '@taiga-ui/kit';
 
@@ -22,7 +18,7 @@ import {ExampleProgressBarComponent} from './progress-bar.component';
 @NgModule({
     imports: [
         CommonModule,
-        TuiAddonDocModule,
+        TuiAddonDoc,
         TuiProgressModule,
         TuiLinkDirective,
         TuiTextCodeDirective,

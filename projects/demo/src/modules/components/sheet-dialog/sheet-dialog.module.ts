@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
-import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
+import {TuiAddonDoc, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiSheetDialogModule} from '@taiga-ui/addon-mobile';
 import {TuiSwipeDirective} from '@taiga-ui/cdk';
 import {
@@ -33,7 +33,7 @@ import {ExampleTuiSheetDialogComponent} from './sheet-dialog.component';
         TuiAvatarComponent,
         TuiNotificationComponent,
         TuiSheetDialogModule,
-        TuiAddonDocModule,
+        TuiAddonDoc,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiSheetDialogComponent)),
         TuiSwipeDirective,
         TuiAutoColorPipe,

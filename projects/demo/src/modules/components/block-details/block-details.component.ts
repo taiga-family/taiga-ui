@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiExamplePipe, TuiSetupComponent} from '@demo/utils';
 import type {TuiRawLoaderContent} from '@taiga-ui/addon-doc';
-import {TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiAddonDoc} from '@taiga-ui/addon-doc';
 
 import {TuiBlockDetailsExample1} from './examples/1';
 import {TuiBlockDetailsExample2} from './examples/2';
@@ -14,7 +14,7 @@ import {TuiBlockDetailsExample2} from './examples/2';
         TuiExamplePipe,
         TuiBlockDetailsExample1,
         TuiBlockDetailsExample2,
-        TuiAddonDocModule,
+        TuiAddonDoc,
         TuiSetupComponent,
     ],
     templateUrl: './block-details.template.html',

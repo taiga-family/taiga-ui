@@ -15,6 +15,7 @@ export type TuiDocumentationPropertyType = 'input-output' | 'input' | 'output' |
 
 // @bad TODO: refactor output and value sync
 @Directive({
+    standalone: true,
     selector: 'ng-template[documentationPropertyName]',
     exportAs: 'documentationProperty',
 })

@@ -1057,4 +1057,64 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/core',
         },
     },
+    {
+        from: {
+            name: 'TuiDocDocumentationModule',
+            moduleSpecifier: '@taiga-ui/addon-doc',
+        },
+        to: {
+            name: 'TuiAddonDoc',
+            moduleSpecifier: '@taiga-ui/addon-doc',
+        },
+    },
+    {
+        from: {
+            name: 'TuiDocCodeModule',
+            moduleSpecifier: '@taiga-ui/addon-doc',
+        },
+        to: {
+            name: 'TuiAddonDoc',
+            moduleSpecifier: '@taiga-ui/addon-doc',
+        },
+    },
+    {
+        from: {
+            name: 'TuiDocDemoModule',
+            moduleSpecifier: '@taiga-ui/addon-doc',
+        },
+        to: {
+            name: 'TuiAddonDoc',
+            moduleSpecifier: '@taiga-ui/addon-doc',
+        },
+    },
+    {
+        from: {
+            name: 'TuiDocMainModule',
+            moduleSpecifier: '@taiga-ui/addon-doc',
+        },
+        to: {
+            name: 'TuiAddonDoc',
+            moduleSpecifier: '@taiga-ui/addon-doc',
+        },
+    },
+    {
+        from: {
+            name: 'TuiDocNavigationModule',
+            moduleSpecifier: '@taiga-ui/addon-doc',
+        },
+        to: {
+            name: 'TuiAddonDoc',
+            moduleSpecifier: '@taiga-ui/addon-doc',
+        },
+    },
+    {
+        from: {
+            name: 'TuiDocPageModule',
+            moduleSpecifier: '@taiga-ui/addon-doc',
+        },
+        to: {
+            name: 'TuiAddonDoc',
+            moduleSpecifier: '@taiga-ui/addon-doc',
+        },
+    },
 ];

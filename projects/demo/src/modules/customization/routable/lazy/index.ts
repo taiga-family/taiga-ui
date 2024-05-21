@@ -1,16 +1,12 @@
 import {Component} from '@angular/core';
 import {RouterOutlet} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {
-    TuiDocCodeModule,
-    type TuiDocExample,
-    TuiDocExampleModule,
-    TuiDocPageModule,
-} from '@taiga-ui/addon-doc';
+import {TuiDemo} from '@demo/utils';
+import type {TuiDocExample} from '@taiga-ui/addon-doc';
 
 @Component({
     standalone: true,
-    imports: [TuiDocPageModule, TuiDocExampleModule, RouterOutlet, TuiDocCodeModule],
+    imports: [TuiDemo, RouterOutlet],
     templateUrl: './index.html',
     changeDetection,
 })

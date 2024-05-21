@@ -1,4 +1,5 @@
 import {Clipboard} from '@angular/cdk/clipboard';
+import {AsyncPipe, NgForOf, NgIf, NgTemplateOutlet} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -6,6 +7,7 @@ import {
     inject,
     Input,
 } from '@angular/core';
+import {RouterLink} from '@angular/router';
 import {LOCATION} from '@ng-web-apis/common';
 import type {TuiDocExample} from '@taiga-ui/addon-doc/interfaces';
 import {
@@ -16,18 +18,37 @@ import {
 } from '@taiga-ui/addon-doc/tokens';
 import {tuiRawLoadRecord} from '@taiga-ui/addon-doc/utils';
 import type {TuiContext} from '@taiga-ui/cdk';
-import {TUI_IS_E2E} from '@taiga-ui/cdk';
-import {TuiAlertService} from '@taiga-ui/core';
-import {TUI_COPY_TEXTS} from '@taiga-ui/kit';
+import {TUI_IS_E2E, TuiItemDirective, TuiMapperPipe} from '@taiga-ui/cdk';
+import {TuiAlertService, TuiButtonDirective, TuiLoaderComponent} from '@taiga-ui/core';
+import {TUI_COPY_TEXTS, TuiTabDirective, TuiTabsWithMoreComponent} from '@taiga-ui/kit';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
-import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusComponent, PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import type {Observable} from 'rxjs';
 import {BehaviorSubject, map, ReplaySubject, Subject, switchAll, switchMap} from 'rxjs';
 
+import {TuiDocCodeComponent} from '../code';
 import {TUI_DOC_EXAMPLE_OPTIONS} from './example.options';
+import {TuiDocExampleGetTabsPipe} from './example-get-tabs.pipe';
 
 @Component({
+    standalone: true,
     selector: 'tui-doc-example',
+    imports: [
+        NgIf,
+        PolymorpheusModule,
+        TuiButtonDirective,
+        RouterLink,
+        AsyncPipe,
+        TuiDocExampleGetTabsPipe,
+        TuiTabsWithMoreComponent,
+        NgForOf,
+        TuiItemDirective,
+        TuiTabDirective,
+        TuiLoaderComponent,
+        TuiMapperPipe,
+        NgTemplateOutlet,
+        TuiDocCodeComponent,
+    ],
     templateUrl: './example.template.html',
     styleUrls: ['./example.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

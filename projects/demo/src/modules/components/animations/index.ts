@@ -3,7 +3,7 @@ import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiComponentPipe, TuiExamplePipe} from '@demo/utils';
-import {TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiAddonDoc} from '@taiga-ui/addon-doc';
 import {TuiSliderModule} from '@taiga-ui/kit';
 
 import {AnimationState} from './state';
@@ -11,7 +11,7 @@ import {AnimationState} from './state';
 @Component({
     standalone: true,
     imports: [
-        TuiAddonDocModule,
+        TuiAddonDoc,
         TuiSliderModule,
         FormsModule,
         NgForOf,

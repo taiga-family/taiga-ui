@@ -1,6 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {TuiDocDocumentationModule} from '@taiga-ui/addon-doc';
+import {TuiAddonDoc} from '@taiga-ui/addon-doc';
 
 import {DropdownDocumentationModule} from '../dropdown-documentation/dropdown-documentation.module';
 import {HintControllerDocumentationModule} from '../hint-controller-documentation/hint-controller-documentation.module';
@@ -11,7 +11,7 @@ import {InheritedDocumentationComponent} from './inherited-documentation.compone
 @NgModule({
     imports: [
         CommonModule,
-        TuiDocDocumentationModule,
+        TuiAddonDoc,
         DropdownDocumentationModule,
         HintControllerDocumentationModule,
         TextfieldControllerDocumentationModule,

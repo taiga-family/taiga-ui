@@ -1,4 +1,4 @@
-import {DOCUMENT} from '@angular/common';
+import {AsyncPipe, DOCUMENT, NgForOf, NgIf, NgTemplateOutlet} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -7,9 +7,16 @@ import {
     inject,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {FormControl} from '@angular/forms';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {Title} from '@angular/platform-browser';
-import {ActivatedRoute, Router, Scroll} from '@angular/router';
+import {
+    ActivatedRoute,
+    Router,
+    RouterLink,
+    RouterLinkActive,
+    Scroll,
+} from '@angular/router';
+import {TuiScrollIntoViewLinkDirective} from '@taiga-ui/addon-doc/directives';
 import type {TuiDocPage} from '@taiga-ui/addon-doc/interfaces';
 import {
     TUI_DOC_ICONS,
@@ -19,9 +26,26 @@ import {
 import type {TuiDocPages} from '@taiga-ui/addon-doc/types';
 import {tuiTransliterateKeyboardLayout} from '@taiga-ui/addon-doc/utils';
 import {TuiSidebarDirective} from '@taiga-ui/addon-mobile';
-import {tuiControlValue, tuiPure, tuiUniqBy, tuiWatch} from '@taiga-ui/cdk';
-import {TUI_COMMON_ICONS} from '@taiga-ui/core';
+import {
+    TuiAutoFocusDirective,
+    tuiControlValue,
+    tuiPure,
+    tuiUniqBy,
+    tuiWatch,
+} from '@taiga-ui/cdk';
+import {
+    TUI_COMMON_ICONS,
+    TuiDataList,
+    TuiExpand,
+    TuiLinkDirective,
+    TuiScrollbarComponent,
+    TuiSvgComponent,
+    TuiTextfieldControllerModule,
+    TuiTextfieldOptionsDirective,
+} from '@taiga-ui/core';
 import type {TuiInputComponent} from '@taiga-ui/kit';
+import {TuiAccordionModule, TuiInputModule} from '@taiga-ui/kit';
+import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import {combineLatest, filter, map, switchMap, take} from 'rxjs';
 
 import {
@@ -32,7 +56,29 @@ import {
 } from './navigation.providers';
 
 @Component({
+    standalone: true,
     selector: 'tui-doc-navigation',
+    imports: [
+        TuiInputModule,
+        TuiTextfieldOptionsDirective,
+        ReactiveFormsModule,
+        TuiAutoFocusDirective,
+        TuiTextfieldControllerModule,
+        TuiDataList,
+        AsyncPipe,
+        NgForOf,
+        NgIf,
+        TuiSvgComponent,
+        PolymorpheusModule,
+        RouterLink,
+        TuiScrollbarComponent,
+        TuiAccordionModule,
+        NgTemplateOutlet,
+        TuiLinkDirective,
+        TuiScrollIntoViewLinkDirective,
+        RouterLinkActive,
+        TuiExpand,
+    ],
     templateUrl: './navigation.template.html',
     styleUrls: ['./navigation.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

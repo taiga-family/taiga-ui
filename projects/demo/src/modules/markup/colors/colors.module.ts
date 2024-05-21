@@ -2,7 +2,7 @@ import {ClipboardModule} from '@angular/cdk/clipboard';
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
-import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
+import {TuiAddonDoc, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 
 import {ColorsComponent} from './colors.component';
 import {TableComponent} from './table/table.component';
@@ -11,7 +11,7 @@ import {TableComponent} from './table/table.component';
     imports: [
         CommonModule,
         ClipboardModule,
-        TuiAddonDocModule,
+        TuiAddonDoc,
         RouterModule.forChild(tuiGenerateRoutes(ColorsComponent)),
     ],
     declarations: [ColorsComponent, TableComponent],

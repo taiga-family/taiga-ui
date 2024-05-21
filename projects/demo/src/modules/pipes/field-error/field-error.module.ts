@@ -4,7 +4,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiSetupComponent} from '@demo/utils';
 import {TuiCurrencyPipeModule} from '@taiga-ui/addon-commerce';
-import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
+import {TuiAddonDoc, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiTable} from '@taiga-ui/addon-table';
 import {
     TuiButtonDirective,
@@ -35,7 +35,7 @@ import {ExampleTuiFieldErrorPipeComponent} from './field-error.component';
     imports: [
         CommonModule,
         ReactiveFormsModule,
-        TuiAddonDocModule,
+        TuiAddonDoc,
         TuiTextfieldControllerModule,
         TuiErrorComponent,
         TuiFieldErrorPipeModule,
