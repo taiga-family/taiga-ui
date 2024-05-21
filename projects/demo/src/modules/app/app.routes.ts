@@ -1153,9 +1153,7 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.Stringify,
-        loadChildren: async () =>
-            (await import('../pipes/stringify/stringify.module'))
-                .ExampleTuiStringifyModule,
+        loadComponent: async () => import('../pipes/stringify'),
         title: 'Stringify',
     }),
     route({

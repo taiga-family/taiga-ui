@@ -11,9 +11,9 @@
         <tui-doc-example
             id="base"
             heading="Basic"
-            [content]="example1"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample: 'html,ts'"
         >
-            <tui-stringify-example1 />
             <tui-notification class="tui-space_top-4">
                 With
                 <a
@@ -34,10 +34,5 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab="Setup">
-        <tui-setup
-            [import]="exampleModule"
-            [template]="exampleHtml"
-        />
-    </ng-template>
+    <tui-setup *pageTab="'Setup'" />
 </tui-doc-page>

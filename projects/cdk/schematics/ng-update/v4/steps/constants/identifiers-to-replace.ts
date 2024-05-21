@@ -1037,4 +1037,14 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/core',
         },
     },
+    {
+        from: {
+            name: 'TuiStringifyPipeModule',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TuiStringifyPipe',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
 ];
