@@ -5,6 +5,7 @@
         "projects/**/*.spec.ts",
         "projects/demo-cypress",
         "projects/demo-playwright/tests-report",
+        "projects/demo/webpack-loaders",
         "**/schematics/**/*"
     ],
     "compilerOptions": {
