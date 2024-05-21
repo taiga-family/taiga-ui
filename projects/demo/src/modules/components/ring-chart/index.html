@@ -1,0 +1,63 @@
+<tui-doc-page
+    header="RingChart"
+    package="ADDON-CHARTS"
+    type="components"
+>
+    <ng-template pageTab>
+        <tui-doc-example
+            id="sizes"
+            heading="sizes"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample"
+        />
+
+        <tui-doc-example
+            id="labels"
+            heading="With labels"
+            [component]="2 | tuiComponent"
+            [content]="2 | tuiExample"
+        />
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-ring-chart
+                class="chart"
+                [size]="size"
+                [value]="value"
+                [(activeItemIndex)]="activeItemIndex"
+            />
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyMode="input-output"
+                documentationPropertyName="activeItemIndex"
+                documentationPropertyType="number"
+                [documentationPropertyValues]="activeItemIndexVariants"
+                [(documentationPropertyValue)]="activeItemIndex"
+            >
+                Active fragment
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="size"
+                documentationPropertyType="TuiSizeXS | TuiSizeXL"
+                [documentationPropertyValues]="sizeVariants"
+                [(documentationPropertyValue)]="size"
+            >
+                Size
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="value"
+                documentationPropertyType="readonly number[]"
+                [documentationPropertyValues]="valueVariants"
+                [(documentationPropertyValue)]="value"
+            >
+                Value
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <tui-setup *pageTab />
+</tui-doc-page>

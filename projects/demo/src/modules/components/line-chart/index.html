@@ -1,0 +1,123 @@
+<tui-doc-page
+    header="LineChart"
+    package="ADDON-CHARTS"
+    type="components"
+>
+    <ng-template pageTab>
+        <tui-doc-example
+            *ngFor="let example of examples; let index = index"
+            [component]="index + 1 | tuiComponent"
+            [content]="index + 1 | tuiExample"
+            [heading]="example"
+            [id]="example | tuiKebab"
+        />
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-axes
+                class="axes"
+                [horizontalLines]="2"
+                [verticalLines]="4"
+            >
+                <tui-line-chart
+                    [dots]="dots"
+                    [filled]="filled"
+                    [height]="height"
+                    [smoothingFactor]="smoothingFactor"
+                    [value]="value"
+                    [width]="width"
+                    [x]="x"
+                    [xStringify]="xStringify"
+                    [y]="y"
+                    [yStringify]="yStringify"
+                />
+            </tui-axes>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="dots"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="dots"
+            >
+                Show dots on chart
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="filled"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="filled"
+            >
+                Filled with gradient
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="height"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="height"
+            >
+                Axis Y range, pixel scale is 1:1
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="y"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="y"
+            >
+                Start of Y axis
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="width"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="width"
+            >
+                Axis X range, pixel scale is 1:1
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="x"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="x"
+            >
+                Start of X axis
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="smoothingFactor"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="smoothingFactor"
+            >
+                Smoothing factor from 0 to 99
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="value"
+                documentationPropertyType="TuiPoint[]"
+            >
+                Array of data
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="xStringify"
+                documentationPropertyType="TuiStringHandler<number> | null"
+                [documentationPropertyValues]="xStringifyVariants"
+                [(documentationPropertyValue)]="xStringify"
+            >
+                Function to stringify a value number to a string in axis X hint
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="yStringify"
+                documentationPropertyType="TuiStringHandler<number> | null"
+                [documentationPropertyValues]="yStringifyVariants"
+                [(documentationPropertyValue)]="yStringify"
+            >
+                Function to stringify a value number to a string in axis Y hint
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <tui-setup *pageTab />
+</tui-doc-page>

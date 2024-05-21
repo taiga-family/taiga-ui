@@ -2,7 +2,7 @@ import {Location} from '@angular/common';
 import {Component} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
-import {TuiPieChartModule} from '@taiga-ui/addon-charts';
+import {TuiPieChartComponent} from '@taiga-ui/addon-charts';
 import {TuiPageObject} from '@taiga-ui/testing';
 
 describe('PieChart', () => {
@@ -20,7 +20,7 @@ describe('PieChart', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TuiPieChartModule],
+            imports: [TuiPieChartComponent],
             declarations: [TestComponent],
             providers: [
                 {

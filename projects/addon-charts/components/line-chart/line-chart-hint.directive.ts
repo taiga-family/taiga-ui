@@ -34,6 +34,7 @@ import {
 import {TuiLineChartComponent} from './line-chart.component';
 
 @Directive({
+    standalone: true,
     selector: '[tuiLineChartHint]',
     providers: [TuiHoveredService],
 })
