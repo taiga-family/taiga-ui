@@ -991,4 +991,14 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/addon-doc',
         },
     },
+    {
+        from: {
+            name: 'TuiPreviewDialogModule',
+            moduleSpecifier: '@taiga-ui/addon-preview',
+        },
+        to: {
+            name: 'TuiPreviewDialogComponent',
+            moduleSpecifier: '@taiga-ui/addon-preview',
+        },
+    },
 ];
