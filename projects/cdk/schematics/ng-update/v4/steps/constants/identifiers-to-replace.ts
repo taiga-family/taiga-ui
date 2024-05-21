@@ -1007,4 +1007,14 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/addon-preview',
         },
     },
+    {
+        from: {
+            name: 'tuiDefaultSort',
+            moduleSpecifier: '@taiga-ui/addon-table',
+        },
+        to: {
+            name: 'tuiDefaultSort',
+            moduleSpecifier: '@taiga-ui/cdk',
+        },
+    },
 ];
