@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {MaskitoDirective} from '@maskito/angular';
-import {TuiAmountPipe, TuiInputCardModule} from '@taiga-ui/addon-commerce';
+import {TuiAmountPipe, TuiInputCardComponent} from '@taiga-ui/addon-commerce';
 import {TuiAddonDoc, tuiGenerateRoutes, TuiTextCodeDirective} from '@taiga-ui/addon-doc';
 import {TuiTable} from '@taiga-ui/addon-table';
 import {TuiLetDirective, TuiMapperPipe, TuiRepeatTimesDirective} from '@taiga-ui/cdk';
@@ -66,7 +66,7 @@ import {ExampleTuiInputComponent} from './input.component';
         TuiSvgComponent,
         TuiRadioListComponent,
         TuiButtonDirective,
-        TuiInputCardModule,
+        TuiInputCardComponent,
         TuiAvatarComponent,
         TuiPrimitiveTextfieldModule,
         TuiTextfieldControllerModule,

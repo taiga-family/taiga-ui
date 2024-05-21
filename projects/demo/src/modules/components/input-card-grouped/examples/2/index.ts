@@ -1,15 +1,29 @@
+import {NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
-import type {TuiInputCardGroupedComponent} from '@taiga-ui/addon-commerce';
+import {
+    TuiInputCardGroupedComponent,
+    TuiThumbnailCardComponent,
+} from '@taiga-ui/addon-commerce';
+import {TuiDataList, TuiSvgComponent, TuiTitleDirective} from '@taiga-ui/core';
 
 @Component({
-    selector: 'tui-input-card-grouped-example-2',
+    standalone: true,
+    imports: [
+        ReactiveFormsModule,
+        TuiInputCardGroupedComponent,
+        TuiDataList,
+        TuiSvgComponent,
+        NgForOf,
+        TuiThumbnailCardComponent,
+        TuiTitleDirective,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,
 })
-export class TuiInputCardGroupedExample2 {
+export default class ExampleComponent {
     protected readonly items = [
         {card: '4321***1234', expire: '12/21', name: 'Salary', bank: 'Tinkoff'},
         {

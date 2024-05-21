@@ -1,7 +1,10 @@
 import type {PipeTransform} from '@angular/core';
 import {Pipe} from '@angular/core';
 
-@Pipe({name: 'tuiFormatCard'})
+@Pipe({
+    standalone: true,
+    name: 'tuiFormatCard',
+})
 export class TuiFormatCardPipe implements PipeTransform {
     public transform(value: string | null = '', cardPrefilled = false): string {
         return value && !cardPrefilled

@@ -1,15 +1,29 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {
+    TuiInputCardComponent,
+    TuiInputCVCComponent,
+    TuiInputExpireComponent,
+} from '@taiga-ui/addon-commerce';
+import {TuiGroupDirective, TuiPrimitiveTextfieldModule} from '@taiga-ui/core';
 
 @Component({
-    selector: 'tui-input-card-example-1',
+    standalone: true,
+    imports: [
+        TuiGroupDirective,
+        ReactiveFormsModule,
+        TuiInputCardComponent,
+        TuiInputExpireComponent,
+        TuiInputCVCComponent,
+        TuiPrimitiveTextfieldModule,
+    ],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class TuiInputCardExample1 {
+export default class ExampleComponent {
     protected readonly form = new FormGroup({
         card: new FormControl(''),
         expire: new FormControl(''),

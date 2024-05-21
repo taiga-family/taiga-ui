@@ -1,3 +1,4 @@
+import {AsyncPipe, NgIf} from '@angular/common';
 import type {ElementRef} from '@angular/core';
 import {
     ChangeDetectionStrategy,
@@ -11,16 +12,21 @@ import {
     TemplateRef,
     ViewChild,
 } from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {MaskitoDirective} from '@maskito/angular';
 import type {MaskitoOptions} from '@maskito/core';
 import {maskitoDateOptionsGenerator} from '@maskito/kit';
+import {ResizeObserverModule} from '@ng-web-apis/resize-observer';
 import {AbstractTuiInputCard} from '@taiga-ui/addon-commerce/components/input-card';
 import {TUI_CARD_MASK} from '@taiga-ui/addon-commerce/constants';
 import type {TuiCard} from '@taiga-ui/addon-commerce/interfaces';
+import {TuiFormatCardPipe} from '@taiga-ui/addon-commerce/pipes';
 import type {TuiCodeCVCLength} from '@taiga-ui/addon-commerce/types';
 import type {TuiFocusableElementAccessor} from '@taiga-ui/cdk';
 import {
     TUI_DIGIT_REGEXP,
     TUI_NON_DIGIT_REGEXP,
+    TuiActiveZoneDirective,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
     TuiAutoFocusDirective,
@@ -29,6 +35,8 @@ import {
     tuiIsInput,
     tuiIsNativeFocused,
     tuiIsNativeFocusedIn,
+    TuiLetDirective,
+    TuiMapperPipe,
     tuiPure,
 } from '@taiga-ui/cdk';
 import type {TuiDataListHost} from '@taiga-ui/core';
@@ -39,9 +47,13 @@ import {
     tuiAsDataListHost,
     TuiDataListComponent,
     TuiDataListDirective,
+    TuiDropdownModule,
+    TuiSvgComponent,
+    TuiWrapperModule,
 } from '@taiga-ui/core';
 import {TUI_ARROW_OPTIONS} from '@taiga-ui/kit';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import type {TuiInputCardGroupedOptions} from './input-card-grouped.options';
 import {TUI_INPUT_CARD_GROUPED_OPTIONS} from './input-card-grouped.options';
@@ -50,7 +62,24 @@ import {TUI_INPUT_CARD_GROUPED_TEXTS} from './input-card-grouped.providers';
 const EXPIRE_COMPLETE_LENGTH = 5; // MM/YY
 
 @Component({
+    standalone: true,
     selector: 'tui-input-card-grouped',
+    imports: [
+        NgIf,
+        AsyncPipe,
+        TuiDropdownModule,
+        TuiWrapperModule,
+        TuiActiveZoneDirective,
+        TuiFormatCardPipe,
+        TuiMapperPipe,
+        MaskitoDirective,
+        FormsModule,
+        TuiAutoFocusDirective,
+        TuiLetDirective,
+        ResizeObserverModule,
+        TuiSvgComponent,
+        PolymorpheusModule,
+    ],
     templateUrl: './input-card-grouped.template.html',
     styleUrls: ['./input-card-grouped.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

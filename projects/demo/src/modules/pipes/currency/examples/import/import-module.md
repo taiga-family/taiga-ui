@@ -1,5 +1,5 @@
 ```ts
-import {TuiCurrencyPipeModule} from '@taiga-ui/addon-commerce';
+import {TuiCurrencyPipe} from '@taiga-ui/addon-commerce';
 
 //...
 
@@ -7,7 +7,7 @@ import {TuiCurrencyPipeModule} from '@taiga-ui/addon-commerce';
   standalone: true,
   imports: [
     //...
-    TuiCurrencyPipeModule,
+    TuiCurrencyPipe,
   ],
   // ...
 })

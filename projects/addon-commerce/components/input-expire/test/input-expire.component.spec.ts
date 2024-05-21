@@ -3,9 +3,7 @@ import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
-
-import {TuiInputExpireComponent} from '../input-expire.component';
-import {TuiInputExpireModule} from '../input-expire.module';
+import {TuiInputExpireComponent} from '@taiga-ui/addon-commerce';
 
 describe('InputExpire', () => {
     @Component({
@@ -26,7 +24,7 @@ describe('InputExpire', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [FormsModule, TuiInputExpireModule],
+            imports: [FormsModule, TuiInputExpireComponent],
             declarations: [TestComponent],
         });
         await TestBed.compileComponents();
