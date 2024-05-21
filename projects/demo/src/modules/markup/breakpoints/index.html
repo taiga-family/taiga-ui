@@ -2,6 +2,7 @@
     header="Breakpoints"
     package="CORE"
     path="core/styles/variables"
+    type="markup"
 >
     <ng-template pageTab>
         <p>Breakpoints are widths that determine how your responsive layout behaves across different viewport sizes.</p>
@@ -49,10 +50,9 @@
         <tui-doc-example
             id="usage"
             heading="Usage"
-            [content]="example1"
-        >
-            <example-css-breakpoints-1 />
-        </tui-doc-example>
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample"
+        />
     </ng-template>
 
     <ng-template pageTab="Setup">

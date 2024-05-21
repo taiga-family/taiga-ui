@@ -1,14 +1,16 @@
 import {Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiCheckboxComponent} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-tables-example-1',
+    standalone: true,
+    imports: [TuiCheckboxComponent, ReactiveFormsModule],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class TuiTablesExample1 {
+export default class ExampleComponent {
     protected testValue = new FormControl(true);
 }

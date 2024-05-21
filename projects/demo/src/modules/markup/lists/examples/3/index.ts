@@ -3,9 +3,9 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
 @Component({
-    selector: 'tui-lists-example-3',
+    standalone: true,
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class TuiList3 {}
+export default class ExampleComponent {}

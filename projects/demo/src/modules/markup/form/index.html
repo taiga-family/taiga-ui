@@ -1,4 +1,7 @@
-<tui-doc-page header="Form">
+<tui-doc-page
+    header="Form"
+    type="markup"
+>
     <ng-template pageTab>
         <tui-styles-info />
 
@@ -88,9 +91,8 @@
         <tui-doc-example
             id="form"
             heading="Basic"
-            [content]="example1"
-        >
-            <tui-form-example-1 />
-        </tui-doc-example>
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample"
+        />
     </ng-template>
 </tui-doc-page>

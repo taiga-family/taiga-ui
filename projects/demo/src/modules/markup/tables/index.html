@@ -1,4 +1,7 @@
-<tui-doc-page header="Tables">
+<tui-doc-page
+    header="Tables"
+    type="markup"
+>
     <ng-template pageTab>
         <div class="tui-space_bottom-3">
             Use
@@ -131,10 +134,9 @@
         <tui-doc-example
             id="base"
             heading="Basic"
-            [content]="example1"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample: 'html,ts'"
             [fullsize]="true"
-        >
-            <tui-tables-example-1 />
-        </tui-doc-example>
+        />
     </ng-template>
 </tui-doc-page>
