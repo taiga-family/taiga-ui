@@ -21,7 +21,7 @@ export class TuiSidebarExample1 {
         'Workers',
     ];
 
-    protected readonly tinkoff = [
+    protected readonly taigaFamilyProducts = [
         'Taiga-UI',
         'ng-event-plugins',
         'ng-polymorpheus',
