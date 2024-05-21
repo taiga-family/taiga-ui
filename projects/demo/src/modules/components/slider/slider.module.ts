@@ -9,7 +9,7 @@ import {
 } from '@taiga-ui/addon-doc';
 import {
     TuiButtonDirective,
-    TuiHintModule,
+    TuiHint,
     TuiLinkDirective,
     TuiNotificationComponent,
 } from '@taiga-ui/core';
@@ -33,7 +33,7 @@ import {ExampleTuiSliderComponent} from './slider.component';
         TuiLinkDirective,
         TuiNotificationComponent,
         TuiButtonDirective,
-        TuiHintModule,
+        TuiHint,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiSliderComponent)),
         TuiTextCodeDirective,
     ],

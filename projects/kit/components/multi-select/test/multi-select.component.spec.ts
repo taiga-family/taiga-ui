@@ -6,7 +6,7 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {
     TuiDataList,
-    TuiHintModule,
+    TuiHint,
     TuiRootComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
@@ -81,7 +81,7 @@ describe('MultiSelect', () => {
                     TuiDataList,
                     TuiDataListWrapperModule,
                     TuiTextfieldControllerModule,
-                    TuiHintModule,
+                    TuiHint,
                 ],
                 declarations: [TestComponent],
                 providers: [TUI_SANITIZER_MOCK, NG_EVENT_PLUGINS],
@@ -297,7 +297,7 @@ describe('MultiSelect', () => {
                     TuiDataList,
                     TuiDataListWrapperModule,
                     TuiTextfieldControllerModule,
-                    TuiHintModule,
+                    TuiHint,
                 ],
                 declarations: [TestComponent],
                 providers: [

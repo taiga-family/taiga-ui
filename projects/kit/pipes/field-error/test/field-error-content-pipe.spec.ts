@@ -3,7 +3,7 @@ import type {ComponentFixture} from '@angular/core/testing';
 import {discardPeriodicTasks, fakeAsync, TestBed, tick} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {TuiHintModule, TuiRootComponent} from '@taiga-ui/core';
+import {TuiHint, TuiRootComponent} from '@taiga-ui/core';
 import {TuiInputModule} from '@taiga-ui/kit/components';
 import {TuiFieldErrorPipeModule} from '@taiga-ui/kit/pipes';
 import {TUI_VALIDATION_ERRORS} from '@taiga-ui/kit/tokens';
@@ -58,7 +58,7 @@ describe('TuiFieldErrorContentPipe', () => {
         TestBed.configureTestingModule({
             imports: [
                 NoopAnimationsModule,
-                TuiHintModule,
+                TuiHint,
                 TuiRootComponent,
                 ReactiveFormsModule,
                 TuiInputModule,

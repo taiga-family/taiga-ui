@@ -18,6 +18,7 @@ const TOP = 0;
 const LEFT = 1;
 
 @Directive({
+    standalone: true,
     selector: '[tuiHint]:not(ng-container):not(ng-template)',
 })
 export class TuiHintPositionDirective extends TuiPositionAccessor {

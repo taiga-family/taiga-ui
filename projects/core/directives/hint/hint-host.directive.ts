@@ -3,6 +3,7 @@ import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk';
 import {tuiAsRectAccessor, TuiRectAccessor} from '@taiga-ui/core/classes';
 
 @Directive({
+    standalone: true,
     selector: '[tuiHint][tuiHintHost]',
     providers: [tuiAsRectAccessor(TuiHintHostDirective)],
 })

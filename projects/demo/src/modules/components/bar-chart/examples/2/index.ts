@@ -4,7 +4,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAxesComponent, TuiBarChartComponent} from '@taiga-ui/addon-charts';
 import type {TuiContext} from '@taiga-ui/cdk';
-import {tuiFormatNumber, TuiHintModule} from '@taiga-ui/core';
+import {tuiFormatNumber, TuiHint} from '@taiga-ui/core';
 import {TuiDataListWrapperModule, TuiSelectModule} from '@taiga-ui/kit';
 
 @Component({
@@ -15,7 +15,7 @@ import {TuiDataListWrapperModule, TuiSelectModule} from '@taiga-ui/kit';
         TuiSelectModule,
         FormsModule,
         TuiDataListWrapperModule,
-        TuiHintModule,
+        TuiHint,
         TuiAxesComponent,
     ],
     templateUrl: './index.html',

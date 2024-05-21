@@ -10,7 +10,7 @@ import {
 import {
     TuiButtonDirective,
     TuiErrorComponent,
-    TuiHintModule,
+    TuiHint,
     TuiLabelDirective,
     TuiLinkDirective,
     TuiNotificationComponent,
@@ -46,7 +46,7 @@ import {ExampleTuiTextareaComponent} from './textarea.component';
         TuiLinkDirective,
         TuiLabelDirective,
         TuiTextfieldControllerModule,
-        TuiHintModule,
+        TuiHint,
         TuiNotificationComponent,
         TuiErrorComponent,
         TuiFieldErrorPipeModule,

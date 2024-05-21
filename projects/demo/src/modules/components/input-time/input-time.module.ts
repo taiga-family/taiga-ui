@@ -6,7 +6,7 @@ import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiButtonDirective,
     TuiDropdownModule,
-    TuiHintModule,
+    TuiHint,
     TuiLinkDirective,
     TuiNotificationComponent,
     TuiTextfieldControllerModule,
@@ -38,7 +38,7 @@ import {ExampleTuiInputTimeComponent} from './input-time.component';
         TuiDropdownModule,
         TuiTextfieldControllerModule,
         TuiNotificationComponent,
-        TuiHintModule,
+        TuiHint,
         TuiSwitchComponent,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiInputTimeComponent)),

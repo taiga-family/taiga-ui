@@ -965,8 +965,7 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.Hint,
-        loadChildren: async () =>
-            (await import('../directives/hint/hint.module')).ExampleTuiHintModule,
+        loadComponent: async () => import('../directives/hint'),
         title: 'Hint',
     }),
     route({

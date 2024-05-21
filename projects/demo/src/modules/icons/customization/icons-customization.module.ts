@@ -8,7 +8,7 @@ import {tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiButtonDirective,
     TuiExpand,
-    TuiHintModule,
+    TuiHint,
     TuiLinkDirective,
     TuiNotificationComponent,
     TuiSvgComponent,
@@ -32,7 +32,7 @@ import {IconsCustomizationComponent} from './icons-customization.component';
         TuiInputDateRangeModule,
         TuiNotificationComponent,
         TuiTextfieldControllerModule,
-        TuiHintModule,
+        TuiHint,
         RouterModule.forChild(tuiGenerateRoutes(IconsCustomizationComponent)),
         TuiSvgComponent,
     ],

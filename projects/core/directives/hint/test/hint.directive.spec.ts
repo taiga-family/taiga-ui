@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {discardPeriodicTasks, fakeAsync, TestBed, tick} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {TuiHintModule, TuiRootComponent} from '@taiga-ui/core';
+import {TuiHint, TuiRootComponent} from '@taiga-ui/core';
 
 type Hint = TemplateRef<Record<string, unknown>> | string | null | undefined;
 
@@ -43,7 +43,7 @@ describe('Hint', () => {
         TestBed.configureTestingModule({
             imports: [
                 NoopAnimationsModule,
-                TuiHintModule,
+                TuiHint,
                 TuiRootComponent,
                 NoopAnimationsModule,
             ],

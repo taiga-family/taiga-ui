@@ -10,7 +10,7 @@ import {
     TuiDropdownModule,
     TuiErrorComponent,
     TuiGroupDirective,
-    TuiHintModule,
+    TuiHint,
     TuiLinkDirective,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
@@ -49,7 +49,7 @@ import {ExampleTuiInputTagComponent} from './input-tag.component';
         TuiFieldErrorPipeModule,
         TuiDropdownModule,
         TuiTextfieldControllerModule,
-        TuiHintModule,
+        TuiHint,
         TuiAddonDocModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiInputTagComponent)),
         MaskitoDirective,

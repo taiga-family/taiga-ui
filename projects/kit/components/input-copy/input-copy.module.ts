@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {
-    TuiHintModule,
+    TuiHint,
     TuiPrimitiveTextfieldModule,
     TuiSvgComponent,
     TuiTextfieldControllerModule,
@@ -19,7 +19,7 @@ import {TuiInputCopyDirective} from './input-copy.directive';
         PolymorpheusModule,
         TuiWrapperModule,
         TuiSvgComponent,
-        TuiHintModule,
+        TuiHint,
         TuiPrimitiveTextfieldModule,
         TuiTextfieldControllerModule,
     ],

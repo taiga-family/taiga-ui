@@ -13,7 +13,7 @@ import {TuiAutoFocusDirective} from '@taiga-ui/cdk';
 import {
     TuiButtonDirective,
     TuiDialogModule,
-    TuiHintModule,
+    TuiHint,
     TuiLinkDirective,
     TuiLoaderComponent,
     TuiNotificationComponent,
@@ -57,7 +57,7 @@ import {TuiDialogExampleComponent10} from './examples/10';
         TuiButtonDirective,
         TuiRadioListComponent,
         TuiInputModule,
-        TuiHintModule,
+        TuiHint,
         TuiLinkDirective,
         TuiAvatarComponent,
         TuiNotificationComponent,

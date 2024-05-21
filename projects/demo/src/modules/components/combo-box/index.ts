@@ -13,7 +13,7 @@ import {
 } from '@taiga-ui/cdk';
 import {
     TuiDropdownModule,
-    TuiHintModule,
+    TuiHint,
     TuiNotificationComponent,
     TuiSvgComponent,
     TuiTextfieldControllerModule,
@@ -46,7 +46,7 @@ class Account {
         TuiDataListWrapperModule,
         TuiNotificationComponent,
         TuiDropdownModule,
-        TuiHintModule,
+        TuiHint,
         TuiTextfieldControllerModule,
         TuiSvgComponent,
         InheritedDocumentationModule,

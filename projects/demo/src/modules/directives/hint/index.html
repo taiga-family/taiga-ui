@@ -9,15 +9,15 @@
         <tui-doc-example
             id="multiple"
             heading="Basic"
-            [content]="example1"
-        >
-            <tui-hint-example-1 />
-        </tui-doc-example>
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample"
+        />
 
         <tui-doc-example
             id="custom"
             heading="Customizing bubble"
-            [content]="example2"
+            [component]="2 | tuiComponent"
+            [content]="2 | tuiExample"
         >
             <tui-notification class="tui-space_bottom-4">
                 Make sure
@@ -26,7 +26,6 @@
                 <code>tuiHint</code>
                 directive so that dependency injection works properly
             </tui-notification>
-            <tui-hint-example-2 />
         </tui-doc-example>
     </ng-template>
 
@@ -81,10 +80,5 @@
         <inherited-documentation />
     </ng-template>
 
-    <ng-template pageTab>
-        <tui-setup
-            [import]="exampleModule"
-            [template]="exampleHtml"
-        />
-    </ng-template>
+    <tui-setup *pageTab />
 </tui-doc-page>

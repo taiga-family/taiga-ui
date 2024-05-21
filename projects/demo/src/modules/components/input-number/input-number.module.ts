@@ -6,7 +6,7 @@ import {TuiCurrencyPipeModule} from '@taiga-ui/addon-commerce';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiButtonDirective,
-    TuiHintModule,
+    TuiHint,
     TuiLinkDirective,
     TuiNotificationComponent,
     TuiNumberFormatDirective,
@@ -40,7 +40,7 @@ import {ExampleTuiInputNumberComponent} from './input-number.component';
         TuiNotificationComponent,
         TuiAddonDocModule,
         InheritedDocumentationModule,
-        TuiHintModule,
+        TuiHint,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiInputNumberComponent)),
         TuiNumberFormatDirective,
     ],

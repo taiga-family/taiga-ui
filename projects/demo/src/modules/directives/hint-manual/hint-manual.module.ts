@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {TuiSetupComponent} from '@demo/utils';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
-import {TuiButtonDirective, TuiHintModule, TuiLinkDirective} from '@taiga-ui/core';
+import {TuiButtonDirective, TuiHint, TuiLinkDirective} from '@taiga-ui/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {InheritedDocumentationModule} from '../../components/abstract/inherited-documentation/inherited-documentation.module';
@@ -13,7 +13,7 @@ import {ExampleTuiHintManualComponent} from './hint-manual.component';
 @NgModule({
     imports: [
         TuiButtonDirective,
-        TuiHintModule,
+        TuiHint,
         TuiLinkDirective,
         PolymorpheusModule,
         CommonModule,
