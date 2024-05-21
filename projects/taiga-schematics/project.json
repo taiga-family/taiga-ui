@@ -23,7 +23,11 @@
         "publish": {
             "executor": "nx:run-commands",
             "options": {
-                "command": "ts-node ./scripts/publish.ts --path ./dist/taiga-schematics --dry-run {args.dry-run} --customVersion {args.customVersion} --customTag {args.customTag}"
+                "commands": [
+                    "cp ./LICENSE ./dist/taiga-schematics",
+                    "ts-node ./scripts/publish.ts --path ./dist/taiga-schematics --dry-run {args.dry-run} --customVersion {args.customVersion} --customTag {args.customTag}"
+                ],
+                "parallel": false
             }
         }
     }
