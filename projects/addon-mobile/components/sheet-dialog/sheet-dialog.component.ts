@@ -1,3 +1,4 @@
+import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
 import type {AfterViewInit, ElementRef, QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
@@ -9,16 +10,22 @@ import {
     ViewChildren,
 } from '@angular/core';
 import type {TuiPopover} from '@taiga-ui/cdk';
-import {EMPTY_QUERY, tuiInjectElement, tuiPure} from '@taiga-ui/cdk';
+import {
+    EMPTY_QUERY,
+    TuiClickOutsideDirective,
+    tuiInjectElement,
+    tuiPure,
+} from '@taiga-ui/cdk';
 import {
     TUI_ANIMATIONS_SPEED,
     TUI_CLOSE_WORD,
     TUI_COMMON_ICONS,
+    TuiButtonDirective,
     tuiGetDuration,
     tuiSlideInTop,
 } from '@taiga-ui/core';
 import {shouldCall} from '@tinkoff/ng-event-plugins';
-import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
+import {POLYMORPHEUS_CONTEXT, PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import {BehaviorSubject} from 'rxjs';
 
 import type {TuiSheetDialogOptions} from './sheet-dialog.options';
@@ -29,7 +36,16 @@ function isCloseable(this: TuiSheetDialogComponent<unknown>): boolean {
 }
 
 @Component({
+    standalone: true,
     selector: 'tui-sheet-dialog',
+    imports: [
+        NgForOf,
+        TuiClickOutsideDirective,
+        NgIf,
+        PolymorpheusModule,
+        TuiButtonDirective,
+        AsyncPipe,
+    ],
     templateUrl: './sheet-dialog.template.html',
     styleUrls: ['./sheet-dialog.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

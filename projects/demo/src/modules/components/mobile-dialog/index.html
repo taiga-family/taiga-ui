@@ -11,10 +11,9 @@
         <tui-doc-example
             id="base"
             heading="Basic"
-            [content]="example1"
-        >
-            <tui-mobile-dialog-example-1 />
-        </tui-doc-example>
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample: 'html,ts'"
+        />
     </ng-template>
 
     <ng-template pageTab="Setup">
@@ -24,7 +23,7 @@
 
                 <tui-doc-code
                     filename="my.component.html"
-                    [code]="exampleInsertComponent"
+                    [code]="template"
                 />
             </li>
         </ol>

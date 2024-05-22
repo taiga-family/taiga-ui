@@ -1,6 +1,7 @@
 <tui-doc-page
     header="Dialog"
     package="CORE"
+    type="components"
 >
     <ng-template pageTab>
         <p>Built-in implementation of Taiga UI modals</p>
@@ -30,86 +31,76 @@
         <tui-doc-example
             id="string"
             heading="Dialog from string"
-            [content]="example1"
-        >
-            <tui-dialog-example-1 />
-        </tui-doc-example>
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample: 'html,ts'"
+        />
 
         <tui-doc-example
             id="directive"
             heading="Dialog with directive"
-            [content]="example6"
-        >
-            <tui-dialog-example-6 />
-        </tui-doc-example>
+            [component]="6 | tuiComponent"
+            [content]="6 | tuiExample: 'html,ts'"
+        />
 
         <tui-doc-example
             id="data"
             description="Using two-way data transfer"
             heading="Component dialog"
+            [component]="2 | tuiComponent"
             [content]="example2"
-        >
-            <tui-dialog-example-2 />
-        </tui-doc-example>
+        />
 
         <tui-doc-example
             id="template"
             heading="Dialog from template"
-            [content]="example3"
-        >
-            <tui-dialog-example-3 />
-        </tui-doc-example>
+            [component]="3 | tuiComponent"
+            [content]="3 | tuiExample: 'html,ts'"
+        />
 
         <tui-doc-example
             id="mobile"
             heading="Mobile dialog"
-            [content]="example4"
-        >
-            <tui-dialog-example-4 />
-        </tui-doc-example>
+            [component]="4 | tuiComponent"
+            [content]="4 | tuiExample"
+        />
 
         <tui-doc-example
             id="header"
             heading="Dialog with header"
-            [content]="example5"
-        >
-            <tui-dialog-example-5 />
-        </tui-doc-example>
+            [component]="5 | tuiComponent"
+            [content]="5 | tuiExample"
+        />
 
         <tui-doc-example
             id="mobile-fullscreen"
             heading="Fullscreen mobile dialog with autofocus"
+            [component]="7 | tuiComponent"
             [content]="example7"
-        >
-            <tui-dialog-example-7 />
-        </tui-doc-example>
+        />
 
         <tui-doc-example
             id="confirm"
             description="Confirming closing of the dialog"
             heading="Confirmation"
-            [content]="example8"
-        >
-            <tui-dialog-example-8 />
-        </tui-doc-example>
+            [component]="8 | tuiComponent"
+            [content]="8 | tuiExample: 'html,ts'"
+        />
 
         <tui-doc-example
             id="pay"
             description="Example with pay from modal"
             heading="Pay"
+            [component]="9 | tuiComponent"
             [content]="example9"
-        >
-            <tui-dialog-example-9 />
-        </tui-doc-example>
+        />
 
         <tui-doc-example
             id="appearance"
             description="Custom appearance with CSS style"
             heading="Appearance"
-            [content]="example10"
-        >
-            <tui-dialog-example-10 />
-        </tui-doc-example>
+            [component]="10 | tuiComponent"
+            [content]="10 | tuiExample"
+        />
     </ng-template>
 
     <ng-template pageTab>

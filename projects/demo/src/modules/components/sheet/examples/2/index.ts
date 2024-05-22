@@ -1,15 +1,18 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import type {TuiSheetOptions} from '@taiga-ui/addon-mobile';
+import {TuiButtonDirective} from '@taiga-ui/core';
+import type {TuiSheetOptions} from '@taiga-ui/legacy';
+import {TuiSheetModule} from '@taiga-ui/legacy';
 
 @Component({
-    selector: 'tui-sheet-example-2',
+    standalone: true,
+    imports: [TuiButtonDirective, TuiSheetModule],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class TuiSheetExample2 {
+export default class ExampleComponent {
     protected open = false;
 
     protected readonly options: Partial<TuiSheetOptions> = {

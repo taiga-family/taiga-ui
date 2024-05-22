@@ -1,19 +1,37 @@
+import {AsyncPipe, NgIf} from '@angular/common';
 import type {TemplateRef} from '@angular/core';
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
+import {TuiElasticStickyDirective} from '@taiga-ui/addon-mobile';
 import {tuiClamp} from '@taiga-ui/cdk';
-import {TuiDialogService, TuiDropdownService} from '@taiga-ui/core';
+import {
+    TuiButtonDirective,
+    TuiDialogService,
+    TuiDropdownService,
+    TuiNumberFormatDirective,
+} from '@taiga-ui/core';
+import {TuiAvatarComponent} from '@taiga-ui/kit';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 @Component({
-    selector: 'tui-dialog-example-4',
+    standalone: true,
+    imports: [
+        TuiNumberFormatDirective,
+        TuiAmountPipe,
+        AsyncPipe,
+        TuiAvatarComponent,
+        TuiElasticStickyDirective,
+        TuiButtonDirective,
+        NgIf,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiDialogExampleComponent4 {
+export default class ExampleComponent {
     private readonly dialogs = inject(TuiDialogService);
     private readonly dropdowns = inject(TuiDropdownService);
 

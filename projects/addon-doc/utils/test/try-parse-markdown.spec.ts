@@ -5,17 +5,17 @@ describe('tryParseMarkdown', () => {
 
     it('should be correct parse markdown', () => {
         const tsCode = `
-import {TuiAvatarModule} from '@taiga-ui/kit';
+import {TuiAvatar} from '@taiga-ui/kit';
 
 // ...
 
 @NgModule({
     imports: [
         // ...
-        TuiAvatarModule,
+        TuiAvatar,
     ],
 })
-export class MyAvatarModule {
+export class MyAvatar {
 }`;
 
         const htmlCode = '<p>hello world</p>';
@@ -42,10 +42,10 @@ ${codeSection}html\n${htmlCode}\n${codeSection}
 @NgModule({
     imports: [
         // ...
-        TuiAvatarModule,
+        TuiAvatar,
     ],
 })
-export class MyAvatarModule {
+export class MyAvatar {
 }
 `;
 
@@ -64,7 +64,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
     styleUrls: ['./index.less'],
     changeDetection,
 })
-export class TuiRatingExample1 {
+export class TuiRatingExample {
     control = new FormControl('');
 
     setDisable(): void {

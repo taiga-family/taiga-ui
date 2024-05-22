@@ -3,11 +3,12 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiMobileDialogService} from '@taiga-ui/addon-mobile';
 import {TUI_IS_IOS} from '@taiga-ui/cdk';
-import {TuiAlertService} from '@taiga-ui/core';
+import {TuiAlertService, TuiButtonDirective} from '@taiga-ui/core';
 import {switchMap} from 'rxjs';
 
 @Component({
-    selector: 'tui-mobile-dialog-example-1',
+    standalone: true,
+    imports: [TuiButtonDirective],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
@@ -18,7 +19,7 @@ import {switchMap} from 'rxjs';
         },
     ],
 })
-export class TuiMobileDialogExample1 {
+export default class ExampleComponent {
     private readonly dialogs = inject(TuiMobileDialogService);
     private readonly alerts = inject(TuiAlertService);
 

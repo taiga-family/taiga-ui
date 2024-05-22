@@ -1,18 +1,35 @@
 import type {TemplateRef} from '@angular/core';
 import {Component, inject} from '@angular/core';
+import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiDemo} from '@demo/utils';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import type {TuiDialogContext, TuiDialogSize} from '@taiga-ui/core';
-import {TuiAlertService, TuiDialogService} from '@taiga-ui/core';
+import {
+    TuiAlertService,
+    TuiButtonDirective,
+    TuiDialogService,
+    TuiLinkDirective,
+    TuiNotificationComponent,
+} from '@taiga-ui/core';
+import {TuiAccordionModule} from '@taiga-ui/kit';
 import {switchMap} from 'rxjs';
 
 @Component({
-    selector: 'example-tui-dialog',
-    templateUrl: './dialog.template.html',
-    styleUrls: ['./dialog.style.less'],
+    standalone: true,
+    imports: [
+        TuiDemo,
+        TuiLinkDirective,
+        RouterLink,
+        TuiNotificationComponent,
+        TuiButtonDirective,
+        TuiAccordionModule,
+    ],
+    templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     changeDetection,
 })
-export class ExampleTuiDialogComponent {
+export default class PageComponent {
     private readonly alerts = inject(TuiAlertService);
     private readonly dialogs = inject(TuiDialogService);
 
@@ -22,17 +39,9 @@ export class ExampleTuiDialogComponent {
         './examples/import/dialogs-close-token.md?raw'
     );
 
-    protected readonly example1: TuiDocExample = {
-        TypeScript: import('./examples/1/index.ts?raw'),
-        HTML: import('./examples/1/index.html?raw'),
-    };
-
     protected readonly example2: TuiDocExample = {
         TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
-        'dialog-example/dialog-example.module.ts': import(
-            './examples/2/dialog-example/dialog-example.module.ts?raw'
-        ),
         'dialog-example/dialog-example.component.ts': import(
             './examples/2/dialog-example/dialog-example.component.ts?raw'
         ),
@@ -42,28 +51,6 @@ export class ExampleTuiDialogComponent {
         'dialog-example/dialog-example.template.html': import(
             './examples/2/dialog-example/dialog-example.template.html?raw'
         ),
-    };
-
-    protected readonly example3: TuiDocExample = {
-        TypeScript: import('./examples/3/index.ts?raw'),
-        HTML: import('./examples/3/index.html?raw'),
-    };
-
-    protected readonly example4: TuiDocExample = {
-        TypeScript: import('./examples/4/index.ts?raw'),
-        HTML: import('./examples/4/index.html?raw'),
-        LESS: import('./examples/4/index.less?raw'),
-    };
-
-    protected readonly example5: TuiDocExample = {
-        TypeScript: import('./examples/5/index.ts?raw'),
-        HTML: import('./examples/5/index.html?raw'),
-        LESS: import('./examples/5/index.less?raw'),
-    };
-
-    protected readonly example6: TuiDocExample = {
-        TypeScript: import('./examples/6/index.ts?raw'),
-        HTML: import('./examples/6/index.html?raw'),
     };
 
     protected readonly example7: TuiDocExample = {
@@ -78,14 +65,6 @@ export class ExampleTuiDialogComponent {
         'search-example/search-dialog-example.component.less': import(
             './examples/7/search-example/search-dialog-example.component.less?raw'
         ),
-        'search-example/search-dialog.module.ts': import(
-            './examples/7/search-example/search-dialog.module.ts?raw'
-        ),
-    };
-
-    protected readonly example8: TuiDocExample = {
-        TypeScript: import('./examples/8/index.ts?raw'),
-        HTML: import('./examples/8/index.html?raw'),
     };
 
     protected readonly example9: TuiDocExample = {
@@ -105,15 +84,6 @@ export class ExampleTuiDialogComponent {
         'pay-modal/pay-modal.component.html': import(
             './examples/9/pay-modal/pay-modal.component.html?raw'
         ),
-        'pay-modal/pay-modal.module.ts': import(
-            './examples/9/pay-modal/pay-modal.module.ts?raw'
-        ),
-    };
-
-    protected readonly example10: TuiDocExample = {
-        TypeScript: import('./examples/10/index.ts?raw'),
-        HTML: import('./examples/10/index.html?raw'),
-        LESS: import('./examples/10/index.less?raw'),
     };
 
     protected readonly exampleServiceUsage = import(

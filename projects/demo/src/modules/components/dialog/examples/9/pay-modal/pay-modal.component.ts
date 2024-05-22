@@ -1,3 +1,4 @@
+import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
 import type {OnInit} from '@angular/core';
 import {
     ChangeDetectionStrategy,
@@ -7,12 +8,26 @@ import {
     ViewChild,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
-import type {TuiCard, TuiInputCardGroupedComponent} from '@taiga-ui/addon-commerce';
-import {tuiCardNumberValidator, tuiDefaultCardValidator} from '@taiga-ui/addon-commerce';
+import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import type {TuiCard} from '@taiga-ui/addon-commerce';
+import {
+    tuiCardNumberValidator,
+    tuiDefaultCardValidator,
+    TuiInputCardGroupedComponent,
+} from '@taiga-ui/addon-commerce';
 import type {TuiValuesOf} from '@taiga-ui/cdk';
-import {TUI_IS_IOS} from '@taiga-ui/cdk';
+import {TUI_IS_IOS, TuiAutoFocusDirective, TuiLetDirective} from '@taiga-ui/cdk';
 import type {TuiDialogContext} from '@taiga-ui/core';
+import {
+    TuiButtonDirective,
+    TuiFormatNumberPipe,
+    TuiLabelDirective,
+    TuiLinkDirective,
+    TuiLoaderComponent,
+    TuiSvgComponent,
+    TuiTextfieldOptionsDirective,
+} from '@taiga-ui/core';
+import {TuiButtonLoadingComponent, TuiCheckboxComponent} from '@taiga-ui/kit';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 import {BehaviorSubject, map, switchMap} from 'rxjs';
 
@@ -22,7 +37,26 @@ import {PayService} from '../helpers/pay.service';
 import {inputCardGroupedCVCValidator} from '../helpers/validator';
 
 @Component({
+    standalone: true,
     selector: 'pay-modal',
+    imports: [
+        ReactiveFormsModule,
+        NgForOf,
+        TuiSvgComponent,
+        NgIf,
+        TuiLinkDirective,
+        TuiButtonDirective,
+        TuiButtonLoadingComponent,
+        AsyncPipe,
+        TuiFormatNumberPipe,
+        TuiLetDirective,
+        TuiAutoFocusDirective,
+        TuiLoaderComponent,
+        TuiInputCardGroupedComponent,
+        TuiTextfieldOptionsDirective,
+        TuiLabelDirective,
+        TuiCheckboxComponent,
+    ],
     templateUrl: './pay-modal.component.html',
     styleUrls: ['./pay-modal.component.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

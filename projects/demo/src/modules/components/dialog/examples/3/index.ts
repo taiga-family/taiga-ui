@@ -1,17 +1,20 @@
+import {AsyncPipe} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import type {TuiDialogContext} from '@taiga-ui/core';
-import {TuiDialogService} from '@taiga-ui/core';
+import {TuiButtonDirective, TuiDialogService} from '@taiga-ui/core';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 @Component({
-    selector: 'tui-dialog-example-3',
+    standalone: true,
+    imports: [TuiButtonDirective, TuiAmountPipe, AsyncPipe],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class TuiDialogExampleComponent3 {
+export default class ExampleComponent {
     private readonly dialogs = inject(TuiDialogService);
 
     protected money = 1000;

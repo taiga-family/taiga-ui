@@ -1,15 +1,16 @@
 import {Component, inject, ViewEncapsulation} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDialogService} from '@taiga-ui/core';
+import {TuiButtonDirective, TuiDialogService} from '@taiga-ui/core';
 
 @Component({
-    selector: 'tui-dialog-example-10',
+    standalone: true,
+    imports: [TuiButtonDirective],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection,
 })
-export class TuiDialogExampleComponent10 {
+export default class ExampleComponent {
     private readonly dialogs = inject(TuiDialogService);
 
     protected showDialog(): void {

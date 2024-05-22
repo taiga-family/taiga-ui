@@ -19,7 +19,6 @@ export const EXCLUDED_ROUTES = [
     DemoRoute.DialogCustom, // just buttons
     DemoRoute.DialogRoutable, // just buttons
     DemoRoute.DialogLazyRoutable, // just buttons
-    DemoRoute.Sheet, // just buttons
     DemoRoute.SheetDialog, // just buttons
     DemoRoute.Error,
     `${DemoRoute.IconsOverview}/Component`,

@@ -31,28 +31,23 @@
         <tui-doc-example
             id="android"
             heading="Android"
-            [content]="example1"
+            [content]="1 | tuiExample: 'html,ts'"
         >
             <tui-scrollbar class="scrollbar">
-                <tui-pull-to-refresh-example-1 />
+                <ng-container *polymorpheusOutlet="example1 | async as text">{{ text }}</ng-container>
             </tui-scrollbar>
         </tui-doc-example>
 
         <tui-doc-example
             id="ios"
             heading="iOS"
-            [content]="example2"
+            [content]="2 | tuiExample: 'html,ts'"
         >
             <tui-scrollbar class="scrollbar">
-                <tui-pull-to-refresh-example-2 />
+                <ng-container *polymorpheusOutlet="example2 | async as text">{{ text }}</ng-container>
             </tui-scrollbar>
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab="Setup">
-        <tui-setup
-            [import]="exampleModule"
-            [template]="exampleHtml"
-        />
-    </ng-template>
+    <tui-setup *pageTab="'Setup'" />
 </tui-doc-page>

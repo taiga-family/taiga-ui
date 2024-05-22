@@ -17,8 +17,11 @@ import {
     ViewChild,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {TuiRippleModule, TuiTouchableModule} from '@taiga-ui/addon-mobile/directives';
-import {TuiPrimitiveCalendarMobileModule} from '@taiga-ui/addon-mobile/internal';
+import {
+    TuiRippleDirective,
+    TuiTouchableDirective,
+} from '@taiga-ui/addon-mobile/directives';
+import {TuiPrimitiveCalendarMobileComponent} from '@taiga-ui/addon-mobile/internal';
 import type {TuiBooleanHandler, TuiMapper} from '@taiga-ui/cdk';
 import {
     MONTHS_IN_YEAR,
@@ -84,14 +87,14 @@ import {
     imports: [
         TuiButtonDirective,
         AsyncPipe,
-        TuiRippleModule,
+        TuiRippleDirective,
         TuiLinkDirective,
-        TuiTouchableModule,
+        TuiTouchableDirective,
         CdkFixedSizeVirtualScroll,
         CdkVirtualScrollViewport,
         CdkVirtualForOf,
         TuiOrderWeekDaysPipe,
-        TuiPrimitiveCalendarMobileModule,
+        TuiPrimitiveCalendarMobileComponent,
         TuiMonthPipe,
         NgForOf,
         NgIf,

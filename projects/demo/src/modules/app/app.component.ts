@@ -7,9 +7,9 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {LOCAL_STORAGE} from '@ng-web-apis/common';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {TuiAddonDoc, TuiLanguageSwitcherComponent} from '@taiga-ui/addon-doc';
-import {TuiSheetModule} from '@taiga-ui/addon-mobile';
 import {TuiTableBarsHostComponent} from '@taiga-ui/addon-tablebars';
 import {TuiLinkDirective, TuiTextfieldControllerModule} from '@taiga-ui/core';
+import {TuiSheetModule} from '@taiga-ui/legacy';
 import {distinctUntilChanged, filter, map} from 'rxjs';
 
 import {CustomHostComponent} from '../customization/portals/examples/1/portal/custom-host.component';
@@ -30,10 +30,10 @@ import {TUI_VERSION_MANAGER_PROVIDERS} from './version-manager/version-manager.p
         RouterLink,
         TuiLanguageSwitcherComponent,
         VersionManagerModule,
-        TuiSheetModule,
         CustomHostComponent,
         TuiTableBarsHostComponent,
         TuiTextfieldControllerModule,
+        TuiSheetModule,
     ],
     templateUrl: './app.template.html',
     styleUrls: ['./app.style.less'],

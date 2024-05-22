@@ -5,13 +5,15 @@ import {
     TUI_IOS_LOADER,
     TUI_PULL_TO_REFRESH_COMPONENT,
     TUI_PULL_TO_REFRESH_LOADED,
+    TuiPullToRefreshComponent,
 } from '@taiga-ui/addon-mobile';
 import {TUI_IS_ANDROID, TUI_IS_IOS} from '@taiga-ui/cdk';
-import {TuiAlertService} from '@taiga-ui/core';
+import {TuiAlertService, TuiButtonDirective} from '@taiga-ui/core';
 import {Subject} from 'rxjs';
 
 @Component({
-    selector: 'tui-pull-to-refresh-example-2',
+    standalone: true,
+    imports: [TuiPullToRefreshComponent, TuiButtonDirective],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
@@ -34,7 +36,7 @@ import {Subject} from 'rxjs';
         },
     ],
 })
-export class TuiPullToRefreshExample2 {
+export default class ExampleComponent {
     private readonly alerts = inject(TuiAlertService);
     private readonly loaded$ = inject<Subject<void>>(TUI_PULL_TO_REFRESH_LOADED);
 

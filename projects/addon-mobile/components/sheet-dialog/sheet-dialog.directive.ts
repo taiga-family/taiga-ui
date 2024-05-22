@@ -5,6 +5,7 @@ import type {TuiSheetDialogOptions} from './sheet-dialog.options';
 import {TuiSheetDialogService} from './sheet-dialog.service';
 
 @Directive({
+    standalone: true,
     selector: 'ng-template[tuiSheetDialog]',
     inputs: ['options: tuiSheetDialogOptions', 'open: tuiSheetDialog'],
     outputs: ['openChange: tuiSheetDialogChange'],
