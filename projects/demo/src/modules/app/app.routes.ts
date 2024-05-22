@@ -629,10 +629,8 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.CalendarRange,
-        loadChildren: async () =>
-            (await import('../components/calendar-range/calendar-range.module'))
-                .ExampleTuiCalendarRangeModule,
         title: 'CalendarRange',
+        loadComponent: async () => import('../components/calendar-range'),
     }),
     route({
         path: DemoRoute.Select,

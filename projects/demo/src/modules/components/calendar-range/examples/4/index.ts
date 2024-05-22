@@ -3,9 +3,11 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDayOfWeek} from '@taiga-ui/cdk';
 import {TUI_FIRST_DAY_OF_WEEK} from '@taiga-ui/core';
+import {TuiCalendarRangeModule} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-calendar-range-example-4',
+    standalone: true,
+    imports: [TuiCalendarRangeModule],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
@@ -16,4 +18,4 @@ import {TUI_FIRST_DAY_OF_WEEK} from '@taiga-ui/core';
         },
     ],
 })
-export class TuiCalendarRangeExample4 {}
+export default class ExampleComponent {}
