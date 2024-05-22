@@ -1244,4 +1244,80 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/addon-mobile',
         },
     },
+    {
+        from: {
+            name: 'TuiMobileDialogModule',
+            moduleSpecifier: '@taiga-ui/addon-mobile',
+        },
+        to: {
+            name: 'TuiMobileDialogComponent',
+            moduleSpecifier: '@taiga-ui/addon-mobile',
+        },
+    },
+    {
+        from: {
+            name: 'TuiRippleModule',
+            moduleSpecifier: '@taiga-ui/addon-mobile',
+        },
+        to: {
+            name: 'TuiRippleDirective',
+            moduleSpecifier: '@taiga-ui/addon-mobile',
+        },
+    },
+    {
+        from: {
+            name: 'TuiTouchableModule',
+            moduleSpecifier: '@taiga-ui/addon-mobile',
+        },
+        to: {
+            name: 'TuiTouchableDirective',
+            moduleSpecifier: '@taiga-ui/addon-mobile',
+        },
+    },
+    {
+        from: {
+            name: 'TuiElasticStickyModule',
+            moduleSpecifier: '@taiga-ui/addon-mobile',
+        },
+        to: {
+            name: 'TuiElasticStickyDirective',
+            moduleSpecifier: '@taiga-ui/addon-mobile',
+        },
+    },
+    {
+        from: {
+            name: 'TuiSheetDialogModule',
+            moduleSpecifier: '@taiga-ui/addon-mobile',
+        },
+        to: [
+            {
+                name: 'TuiSheetDialogComponent',
+                moduleSpecifier: '@taiga-ui/addon-mobile',
+            },
+            {
+                name: 'TuiSheetDialogDirective',
+                moduleSpecifier: '@taiga-ui/addon-mobile',
+            },
+        ],
+    },
+    {
+        from: {
+            name: 'TuiPullToRefreshModule',
+            moduleSpecifier: '@taiga-ui/addon-mobile',
+        },
+        to: {
+            name: 'TuiPullToRefreshComponent',
+            moduleSpecifier: '@taiga-ui/addon-mobile',
+        },
+    },
+    {
+        from: {
+            name: 'TuiSheetModule',
+            moduleSpecifier: '@taiga-ui/addon-mobile',
+        },
+        to: {
+            name: 'TuiSheetModule',
+            moduleSpecifier: '@taiga-ui/legacy',
+        },
+    },
 ];

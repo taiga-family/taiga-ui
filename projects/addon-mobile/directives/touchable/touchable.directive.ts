@@ -13,6 +13,7 @@ const STYLE = {
 } as const;
 
 @Directive({
+    standalone: true,
     selector: '[tuiTouchable]',
 })
 export class TuiTouchableDirective {

@@ -1,18 +1,19 @@
 import {Component, inject, INJECTOR} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiDialogService} from '@taiga-ui/core';
+import {TuiButtonDirective, TuiDialogService} from '@taiga-ui/core';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 
 import {SearchDialogExampleComponent} from './search-example/search-dialog-example.component';
 
 @Component({
-    selector: 'tui-dialog-example-7',
+    standalone: true,
+    imports: [TuiButtonDirective],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class TuiDialogExampleComponent7 {
+export default class ExampleComponent {
     private readonly dialogs = inject(TuiDialogService);
     private readonly injector = inject(INJECTOR);
 

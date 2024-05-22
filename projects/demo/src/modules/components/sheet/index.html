@@ -1,49 +1,90 @@
 <tui-doc-page
-    header="SheetDialog"
-    package="ADDON-MOBILE"
+    deprecated
+    header="Sheet"
+    package="LEGACY"
     type="components"
 >
     <ng-template pageTab>
-        A mobile draggable sheet dialog
+        <tui-notification status="warning">
+            If you need overlay and do not need image related functionality, it is recommended to use
+            <a
+                routerLink="/components/sheet-dialog"
+                tuiLink
+            >
+                SheetDialog
+            </a>
+            .
+            <code>Sheet</code>
+            component is on track to be deprecated.
+        </tui-notification>
 
         <tui-notification
             *ngIf="!isMobile"
             class="tui-space_top-4"
         >
-            This component only works on mobile devices. Enable emulation in DevTools and refresh the page.
+            This component only works on mobile devices. Enable emulation in DevTools
         </tui-notification>
 
         <tui-doc-example
             id="string"
             heading="String"
-            [content]="example1"
-        >
-            <tui-sheet-dialog-example-1 />
-        </tui-doc-example>
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample: 'html,ts'"
+        />
 
         <tui-doc-example
             id="basic"
             heading="Basic"
-            [content]="example2"
+            [component]="2 | tuiComponent"
+            [content]="2 | tuiExample: 'html,ts'"
         >
-            <tui-sheet-dialog-example-2 />
+            <tui-notification class="tui-space_bottom-4">
+                Note
+                <code>SheetHeading</code>
+                component that styles the heading and adds close button if sheet is closeable.
+            </tui-notification>
         </tui-doc-example>
 
         <tui-doc-example
             id="advanced"
             heading="Advanced"
-            [content]="example3"
+            [component]="3 | tuiComponent"
+            [content]="3 | tuiExample"
+        />
+
+        <tui-doc-example
+            id="elastic"
+            heading="Elastic sticky"
+            [component]="4 | tuiComponent"
+            [content]="4 | tuiExample"
         >
-            <tui-sheet-dialog-example-3 />
+            <tui-notification class="tui-space_bottom-4">
+                Using
+                <a
+                    routerLink="directives/elastic-sticky"
+                    tuiLink
+                >
+                    <code>ElasticSticky</code>
+                </a>
+                directive.
+            </tui-notification>
         </tui-doc-example>
 
         <tui-doc-example
-            id="sticky"
-            heading="Sticky elements"
-            [content]="example4"
-        >
-            <tui-sheet-dialog-example-4 />
-        </tui-doc-example>
+            id="scroll"
+            description="Modifying content using scroll stream from the context"
+            heading="Scroll"
+            [component]="5 | tuiComponent"
+            [content]="5 | tuiExample"
+        />
+
+        <tui-doc-example
+            id="intersection"
+            description="Modifying content with IntersectionObserver"
+            heading="IntersectionObserver"
+            [component]="6 | tuiComponent"
+            [content]="6 | tuiExample"
+        />
     </ng-template>
 
     <ng-template pageTab>
@@ -56,22 +97,14 @@
                 Toggle
             </button>
             <ng-template #template>
-                <div class="label">
-                    <tui-avatar size="m">KG</tui-avatar>
-                    <label tuiTitle>
-                        <span tuiSubtitle>Terry Jones</span>
-                        <b>Karl Gambolputty</b>
-                    </label>
+                <div class="top">
+                    <tui-avatar size="l">Karl Gambolputty</tui-avatar>
+                    <h2>Karl Gambolputty</h2>
                 </div>
             </ng-template>
             <ng-template
-                [tuiSheetDialogOptions]="{
-                    label: label === 'Template' ? template : label,
-                    closeable: closeable,
-                    stops: stops,
-                    initial: initial
-                }"
-                [(tuiSheetDialog)]="open"
+                [tuiSheetOptions]="options"
+                [(tuiSheet)]="open"
             >
                 Karl Gambolputty de von
                 Ausfern-schplenden-schlitter-crasscrenbon-fried-digger-dingle-dangle-dongle-dungle-burstein-von-knacker-thrasher-apple-banger-horowitz-ticolensic-grander-knotty-spelltinkle-grandlich-grumblemeyer-spelterwasser-kurstlich-himbleeisen-bahnwagen-gutenabend-bitte-ein-nürnburger-bratwustle-gerspurten-mitzweimache-luber-hundsfut-gumberaber-shönendanker-kalbsfleisch-mittler-aucher
@@ -104,12 +137,19 @@
                 Optional data to be passed to the sheet.
             </ng-template>
             <ng-template
-                documentationPropertyName="label"
-                documentationPropertyType="PolymorpheusContent"
-                [documentationPropertyValues]="labelVariants"
-                [(documentationPropertyValue)]="label"
+                documentationPropertyName="image"
+                documentationPropertyType="PolymorpheusContent<TuiSheetOptions<I>>"
+                [documentationPropertyValues]="imageVariants"
+                [(documentationPropertyValue)]="image"
             >
-                Sheet label.
+                A content to show above the sheet.
+            </ng-template>
+            <ng-template
+                documentationPropertyName="imageSlide"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="imageSlide"
+            >
+                Should image slide as the sheet is dragged.
             </ng-template>
             <ng-template
                 documentationPropertyName="stops"
@@ -124,23 +164,19 @@
                 documentationPropertyType="number"
                 [(documentationPropertyValue)]="initial"
             >
-                Initial stop index to open on. Index exceeding
+                Initial stop index to open on. Indices exceeding
                 <code>stops</code>
-                means to stop on top of the sheet's content.
+                are treated as stop on image then stop on top of the sheet's content.
+            </ng-template>
+            <ng-template
+                documentationPropertyName="overlay"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="overlay"
+            >
+                Show overlay under the sheet.
             </ng-template>
         </tui-doc-documentation>
     </ng-template>
 
-    <ng-template pageTab>
-        <ol class="tui-list tui-list_ordered">
-            <li class="tui-list__item">
-                Inject service and show dialog:
-
-                <tui-doc-code
-                    filename="my.component.html"
-                    [code]="exampleComponent"
-                />
-            </li>
-        </ol>
-    </ng-template>
+    <tui-setup *pageTab />
 </tui-doc-page>

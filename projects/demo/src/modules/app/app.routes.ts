@@ -300,8 +300,7 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.Dialog,
-        loadChildren: async () =>
-            (await import('../components/dialog/dialog.module')).ExampleTuiDialogModule,
+        loadComponent: async () => import('../components/dialog'),
         title: 'Dialog',
     }),
     route({
@@ -580,9 +579,7 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.MobileDialog,
-        loadChildren: async () =>
-            (await import('../components/mobile-dialog/mobile-dialog.module'))
-                .ExampleTuiMobileDialogModule,
+        loadComponent: async () => import('../components/mobile-dialog'),
         title: 'MobileDialog',
     }),
     route({
@@ -592,9 +589,7 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.PullToRefresh,
-        loadChildren: async () =>
-            (await import('../components/pull-to-refresh/pull-to-refresh.module'))
-                .ExampleTuiPullToRefreshModule,
+        loadComponent: async () => import('../components/pull-to-refresh'),
         title: 'PullToRefresh',
     }),
     route({
@@ -654,15 +649,12 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.Sheet,
-        loadChildren: async () =>
-            (await import('../components/sheet/sheet.module')).ExampleTuiSheetModule,
+        loadComponent: async () => import('../components/sheet'),
         title: 'Sheet',
     }),
     route({
         path: DemoRoute.SheetDialog,
-        loadChildren: async () =>
-            (await import('../components/sheet-dialog/sheet-dialog.module'))
-                .ExampleTuiSheetDialogModule,
+        loadComponent: async () => import('../components/sheet-dialog'),
         title: 'SheetDialog',
     }),
     route({
@@ -923,9 +915,7 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.ElasticSticky,
-        loadChildren: async () =>
-            (await import('../directives/elastic-sticky/elastic-sticky.module'))
-                .ExampleTuiElasticStickyModule,
+        loadComponent: async () => import('../directives/elastic-sticky'),
         title: 'ElasticSticky',
     }),
     route({
@@ -1032,8 +1022,7 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.Ripple,
-        loadChildren: async () =>
-            (await import('../directives/ripple/ripple.module')).ExampleTuiRippleModule,
+        loadComponent: async () => import('../directives/ripple'),
         title: 'Ripple',
     }),
     route({
@@ -1043,9 +1032,7 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.Touchable,
-        loadChildren: async () =>
-            (await import('../directives/touchable/touchable.module'))
-                .ExampleTuiTouchableModule,
+        loadComponent: async () => import('../directives/touchable'),
         title: 'Touchable',
     }),
     route({

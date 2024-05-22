@@ -1,3 +1,4 @@
+import {AsyncPipe, NgStyle} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -11,6 +12,7 @@ import type {TuiContext, TuiHandler} from '@taiga-ui/cdk';
 import {TUI_IS_IOS, tuiPx, tuiScrollFrom, tuiZonefree} from '@taiga-ui/cdk';
 import {TUI_SCROLL_REF} from '@taiga-ui/core';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import type {Observable} from 'rxjs';
 import {distinctUntilChanged, filter, map, startWith} from 'rxjs';
 
@@ -21,7 +23,9 @@ import {
 import {MICRO_OFFSET, TuiPullToRefreshService} from './pull-to-refresh.service';
 
 @Component({
+    standalone: true,
     selector: 'tui-pull-to-refresh',
+    imports: [AsyncPipe, NgStyle, PolymorpheusModule],
     templateUrl: './pull-to-refresh.template.html',
     styleUrls: ['./pull-to-refresh.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

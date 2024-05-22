@@ -1,10 +1,23 @@
+import {AsyncPipe, NgForOf} from '@angular/common';
 import {Component, inject, ViewChild} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiSheetDialogDirective} from '@taiga-ui/addon-mobile';
 import type {TuiSwipeDirection} from '@taiga-ui/cdk';
-import {TUI_DEFAULT_MATCHER, TUI_WINDOW_SIZE, tuiControlValue} from '@taiga-ui/cdk';
-import {TuiInputComponent} from '@taiga-ui/kit';
+import {
+    TUI_DEFAULT_MATCHER,
+    TUI_WINDOW_SIZE,
+    tuiControlValue,
+    TuiSwipeDirective,
+} from '@taiga-ui/cdk';
+import {
+    TuiAutoColorPipe,
+    TuiButtonDirective,
+    TuiInitialsPipe,
+    TuiTextfieldControllerModule,
+} from '@taiga-ui/core';
+import {TuiAvatarComponent, TuiInputComponent, TuiInputModule} from '@taiga-ui/kit';
 import {map} from 'rxjs';
 
 const USERS = [
@@ -27,13 +40,26 @@ const USERS = [
 ];
 
 @Component({
-    selector: 'tui-sheet-dialog-example-4',
+    standalone: true,
+    imports: [
+        TuiButtonDirective,
+        TuiSheetDialogDirective,
+        TuiInputModule,
+        TuiTextfieldControllerModule,
+        ReactiveFormsModule,
+        AsyncPipe,
+        TuiSwipeDirective,
+        NgForOf,
+        TuiAvatarComponent,
+        TuiInitialsPipe,
+        TuiAutoColorPipe,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiSheetDialogExample4 {
+export default class ExampleComponent {
     @ViewChild(TuiInputComponent)
     private readonly input?: TuiInputComponent;
 

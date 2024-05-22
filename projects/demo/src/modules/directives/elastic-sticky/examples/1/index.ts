@@ -1,20 +1,24 @@
+import {AsyncPipe} from '@angular/common';
 import type {AfterViewInit} from '@angular/core';
 import {Component, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiElasticStickyDirective} from '@taiga-ui/addon-mobile';
 import {tuiClamp} from '@taiga-ui/cdk';
+import {TuiScrollbarComponent} from '@taiga-ui/core';
 import type {Observable} from 'rxjs';
 import {distinctUntilChanged, map, startWith} from 'rxjs';
 
 @Component({
-    selector: 'tui-elastic-sticky-example-1',
+    standalone: true,
+    imports: [TuiScrollbarComponent, TuiElasticStickyDirective, TuiAmountPipe, AsyncPipe],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiElasticStickyExample1 implements AfterViewInit {
+export default class ExampleComponent implements AfterViewInit {
     @ViewChild(TuiElasticStickyDirective)
     protected readonly elasticSticky?: TuiElasticStickyDirective;
 

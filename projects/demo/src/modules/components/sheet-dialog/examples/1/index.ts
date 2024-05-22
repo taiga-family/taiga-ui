@@ -3,15 +3,18 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiSheetDialogService} from '@taiga-ui/addon-mobile';
+import {TuiButtonDirective} from '@taiga-ui/core';
 import {Subject, switchMap} from 'rxjs';
 
 @Component({
-    selector: 'tui-sheet-dialog-example-1',
+    standalone: true,
+    imports: [TuiButtonDirective],
     templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiSheetDialogExample1 {
+export default class ExampleComponent {
     protected readonly stream$ = new Subject<void>();
 
     constructor() {

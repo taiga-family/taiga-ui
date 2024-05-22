@@ -1,21 +1,38 @@
 import {Component, DestroyRef, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {FormControl} from '@angular/forms';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiDialogService} from '@taiga-ui/core';
+import {
+    TuiButtonDirective,
+    TuiDialogService,
+    TuiHintOptionsDirective,
+    TuiSvgComponent,
+    TuiTextfieldControllerModule,
+    TuiTextfieldOptionsDirective,
+} from '@taiga-ui/core';
+import {TuiInputNumberModule} from '@taiga-ui/kit';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 
 import {PayModalComponent} from './pay-modal/pay-modal.component';
 
 @Component({
-    selector: 'tui-dialog-example-9',
+    standalone: true,
+    imports: [
+        TuiInputNumberModule,
+        ReactiveFormsModule,
+        TuiTextfieldOptionsDirective,
+        TuiTextfieldControllerModule,
+        TuiHintOptionsDirective,
+        TuiButtonDirective,
+        TuiSvgComponent,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiDialogExampleComponent9 {
+export default class ExampleComponent {
     private readonly dialogs = inject(TuiDialogService);
     private readonly destroyRef = inject(DestroyRef);
 

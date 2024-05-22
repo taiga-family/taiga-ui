@@ -1,18 +1,20 @@
 import {Component, inject} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiDialogService} from '@taiga-ui/core';
-import {TuiDialogFormService} from '@taiga-ui/kit';
+import {TuiButtonDirective, TuiDialogService} from '@taiga-ui/core';
+import {TuiDialogFormService, TuiInputModule} from '@taiga-ui/kit';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 @Component({
-    selector: 'tui-dialog-example-8',
+    standalone: true,
+    imports: [TuiInputModule, FormsModule, TuiButtonDirective],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
     providers: [TuiDialogFormService],
 })
-export class TuiDialogExampleComponent8 {
+export default class ExampleComponent {
     private readonly dialogForm = inject(TuiDialogFormService);
     private readonly dialogs = inject(TuiDialogService);
 

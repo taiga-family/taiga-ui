@@ -1,5 +1,5 @@
 ```ts
-import {TuiPullToRefreshModule} from '@taiga-ui/addon-mobile';
+import {TuiSheetModule} from '@taiga-ui/legacy';
 
 // ...
 
@@ -7,7 +7,7 @@ import {TuiPullToRefreshModule} from '@taiga-ui/addon-mobile';
   standalone: true,
   imports: [
     // ...
-    TuiPullToRefreshModule,
+    TuiSheetModule,
   ],
   // ...
 })

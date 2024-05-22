@@ -1,0 +1,122 @@
+<tui-doc-page
+    header="SheetDialog"
+    package="ADDON-MOBILE"
+    type="components"
+>
+    <ng-template pageTab>
+        A mobile draggable sheet dialog
+
+        <tui-notification
+            *ngIf="!isMobile"
+            class="tui-space_top-4"
+        >
+            This component only works on mobile devices. Enable emulation in DevTools and refresh the page.
+        </tui-notification>
+
+        <tui-doc-example
+            *ngFor="let example of examples; let index = index"
+            [component]="index + 1 | tuiComponent"
+            [content]="index + 1 | tuiExample"
+            [heading]="example"
+            [id]="example | tuiKebab"
+        />
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <button
+                tuiButton
+                type="button"
+                (click)="toggle()"
+            >
+                Toggle
+            </button>
+            <ng-template #template>
+                <div class="label">
+                    <tui-avatar size="m">KG</tui-avatar>
+                    <label tuiTitle>
+                        <span tuiSubtitle>Terry Jones</span>
+                        <b>Karl Gambolputty</b>
+                    </label>
+                </div>
+            </ng-template>
+            <ng-template
+                [tuiSheetDialogOptions]="{
+                    label: label === 'Template' ? template : label,
+                    closeable: closeable,
+                    stops: stops,
+                    initial: initial
+                }"
+                [(tuiSheetDialog)]="open"
+            >
+                Karl Gambolputty de von
+                Ausfern-schplenden-schlitter-crasscrenbon-fried-digger-dingle-dangle-dongle-dungle-burstein-von-knacker-thrasher-apple-banger-horowitz-ticolensic-grander-knotty-spelltinkle-grandlich-grumblemeyer-spelterwasser-kurstlich-himbleeisen-bahnwagen-gutenabend-bitte-ein-nürnburger-bratwustle-gerspurten-mitzweimache-luber-hundsfut-gumberaber-shönendanker-kalbsfleisch-mittler-aucher
+                von Hautkopft of Ulm was the last-surviving relative of Johann Gambolputty de von
+                Ausfern-schplenden-schlitter-crasscrenbon-fried-digger-dingle-dangle-dongle-dungle-burstein-von-knacker-thrasher-apple-banger-horowitz-ticolensic-grander-knotty-spelltinkle-grandlich-grumblemeyer-spelterwasser-kurstlich-himbleeisen-bahnwagen-gutenabend-bitte-ein-nürnburger-bratwustle-gerspurten-mitzweimache-luber-hundsfut-gumberaber-shönendanker-kalbsfleisch-mittler-aucher
+                von Hautkopft of Ulm.
+                <div class="tui-space_top-4">
+                    <button
+                        tuiButton
+                        type="button"
+                        (click)="toggle()"
+                    >
+                        Close
+                    </button>
+                </div>
+            </ng-template>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="closeable"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="closeable"
+            >
+                Whether or not a sheet can be closed by user.
+            </ng-template>
+            <ng-template
+                documentationPropertyName="data"
+                documentationPropertyType="I"
+            >
+                Optional data to be passed to the sheet.
+            </ng-template>
+            <ng-template
+                documentationPropertyName="label"
+                documentationPropertyType="PolymorpheusContent"
+                [documentationPropertyValues]="labelVariants"
+                [(documentationPropertyValue)]="label"
+            >
+                Sheet label.
+            </ng-template>
+            <ng-template
+                documentationPropertyName="stops"
+                documentationPropertyType="string[]"
+                [documentationPropertyValues]="stopsVariants"
+                [(documentationPropertyValue)]="stops"
+            >
+                An array of stop points in any units for the sheet.
+            </ng-template>
+            <ng-template
+                documentationPropertyName="initial"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="initial"
+            >
+                Initial stop index to open on. Index exceeding
+                <code>stops</code>
+                means to stop on top of the sheet's content.
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="tui-list tui-list_ordered">
+            <li class="tui-list__item">
+                Inject service and show dialog:
+
+                <tui-doc-code
+                    filename="my.component.html"
+                    [code]="exampleComponent"
+                />
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

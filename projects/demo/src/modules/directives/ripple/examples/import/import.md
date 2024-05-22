@@ -1,5 +1,5 @@
 ```ts
-import {TuiSheetModule} from '@taiga-ui/addon-mobile';
+import {TuiRippleDirective} from '@taiga-ui/addon-mobile';
 
 // ...
 
@@ -7,7 +7,7 @@ import {TuiSheetModule} from '@taiga-ui/addon-mobile';
   standalone: true,
   imports: [
     // ...
-    TuiSheetModule,
+    TuiRippleDirective,
   ],
   // ...
 })

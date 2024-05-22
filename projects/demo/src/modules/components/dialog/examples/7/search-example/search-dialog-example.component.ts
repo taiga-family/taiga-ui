@@ -1,10 +1,13 @@
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiAutoFocusDirective} from '@taiga-ui/cdk';
 import type {TuiDialogContext} from '@taiga-ui/core';
+import {TuiPrimitiveTextfieldModule} from '@taiga-ui/core';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 
 @Component({
-    selector: 'search-dialog-example',
+    standalone: true,
+    imports: [TuiPrimitiveTextfieldModule, TuiAutoFocusDirective],
     templateUrl: './search-dialog-example.template.html',
     styleUrls: ['./search-dialog-example.component.less'],
     changeDetection,

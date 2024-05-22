@@ -1,12 +1,40 @@
+import {AsyncPipe} from '@angular/common';
 import type {TemplateRef} from '@angular/core';
 import {Component, inject} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
+import {TuiAutoFocusDirective} from '@taiga-ui/cdk';
 import type {TuiDialogContext} from '@taiga-ui/core';
-import {TuiDialogService} from '@taiga-ui/core';
+import {
+    TuiButtonDirective,
+    TuiDialogService,
+    TuiTextfieldControllerModule,
+    TuiTextfieldOptionsDirective,
+} from '@taiga-ui/core';
+import {
+    TuiDataListWrapperModule,
+    TuiInputModule,
+    TuiSelectModule,
+    TuiSliderModule,
+} from '@taiga-ui/kit';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 
 @Component({
-    selector: 'dialog-example',
+    standalone: true,
+    imports: [
+        TuiInputModule,
+        TuiAmountPipe,
+        AsyncPipe,
+        TuiAutoFocusDirective,
+        TuiTextfieldOptionsDirective,
+        FormsModule,
+        TuiSelectModule,
+        TuiTextfieldControllerModule,
+        TuiDataListWrapperModule,
+        TuiSliderModule,
+        TuiButtonDirective,
+    ],
     templateUrl: './dialog-example.template.html',
     styleUrls: ['./dialog-example.style.less'],
     changeDetection,
