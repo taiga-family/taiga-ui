@@ -7,8 +7,8 @@ import {
     inject,
     Input,
 } from '@angular/core';
-import type {TuiRawLoaderContent} from '@taiga-ui/addon-doc/interfaces';
 import {TUI_DOC_EXAMPLE_MARKDOWN_CODE_PROCESSOR} from '@taiga-ui/addon-doc/tokens';
+import type {TuiRawLoaderContent} from '@taiga-ui/addon-doc/types';
 import {tuiRawLoad} from '@taiga-ui/addon-doc/utils';
 import type {TuiHandler} from '@taiga-ui/cdk';
 import {TuiButtonDirective} from '@taiga-ui/core';

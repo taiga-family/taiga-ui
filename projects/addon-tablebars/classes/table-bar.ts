@@ -1,7 +1,12 @@
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import type {Observer} from 'rxjs';
 
-import type {TuiTableBarOptions} from '../interfaces/table-bar-options';
+export interface TuiTableBarOptions {
+    readonly adaptive?: boolean;
+    readonly hasCloseButton?: boolean;
+    // TODO: rename before 4.0
+    readonly mode?: 'onDark' | 'onLight';
+}
 
 export class TuiTableBar {
     public readonly adaptive: boolean;

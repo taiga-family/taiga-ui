@@ -6,7 +6,12 @@ import {
     Input,
     ViewChild,
 } from '@angular/core';
-import type {TuiFocusableElementAccessor, TuiMonth, TuiYear} from '@taiga-ui/cdk';
+import type {
+    TuiBooleanHandler,
+    TuiFocusableElementAccessor,
+    TuiMonth,
+    TuiYear,
+} from '@taiga-ui/cdk';
 import {
     AbstractTuiNullableControl,
     CHAR_EN_DASH,
@@ -23,11 +28,9 @@ import {
     TuiMonthPipe,
     TuiPrimitiveTextfieldComponent,
 } from '@taiga-ui/core';
-import type {TuiMonthContext} from '@taiga-ui/kit/interfaces';
 import {TUI_MONTH_FORMATTER_PROVIDER} from '@taiga-ui/kit/providers';
 import type {TuiInputDateOptions} from '@taiga-ui/kit/tokens';
 import {TUI_INPUT_DATE_OPTIONS, TUI_MONTH_FORMATTER} from '@taiga-ui/kit/tokens';
-import type {TuiBooleanHandlerWithContext} from '@taiga-ui/kit/types';
 
 @Component({
     selector: 'tui-input-month-range',
@@ -58,8 +61,13 @@ export class TuiInputMonthRangeComponent
     public max: TuiMonth = this.options.max;
 
     @Input()
-    public disabledItemHandler: TuiBooleanHandlerWithContext<TuiMonth, TuiMonthContext> =
-        TUI_FALSE_HANDLER;
+    public disabledItemHandler: TuiBooleanHandler<TuiMonth> = TUI_FALSE_HANDLER;
+
+    @Input()
+    public minLength: number | null = null;
+
+    @Input()
+    public maxLength: number | null = null;
 
     @Input()
     public defaultActiveYear: TuiYear = TuiDay.currentLocal();

@@ -9,13 +9,13 @@ import {
 } from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {LOCATION} from '@ng-web-apis/common';
-import type {TuiDocExample} from '@taiga-ui/addon-doc/interfaces';
 import {
     TUI_DOC_CODE_ACTIONS,
     TUI_DOC_CODE_EDITOR,
     TUI_DOC_EXAMPLE_CONTENT_PROCESSOR,
     TUI_DOC_EXAMPLE_TEXTS,
 } from '@taiga-ui/addon-doc/tokens';
+import type {TuiDocExample} from '@taiga-ui/addon-doc/types';
 import {tuiRawLoadRecord} from '@taiga-ui/addon-doc/utils';
 import type {TuiContext} from '@taiga-ui/cdk';
 import {TUI_IS_E2E, TuiItemDirective, TuiMapperPipe} from '@taiga-ui/cdk';

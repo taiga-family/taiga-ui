@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
-import type {TuiMonthRange} from '@taiga-ui/cdk';
+import type {TuiBooleanHandler, TuiMonthRange} from '@taiga-ui/cdk';
 import {
     TUI_FALSE_HANDLER,
     TUI_FIRST_DAY,
@@ -11,7 +11,6 @@ import {
     TuiMonth,
     tuiProvide,
 } from '@taiga-ui/cdk';
-import type {TuiBooleanHandlerWithContext, TuiMonthContext} from '@taiga-ui/kit';
 
 import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
@@ -24,6 +23,7 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
 })
 export class ExampleTuiInputMonthRangeComponent extends AbstractExampleTuiControl {
     public override cleaner = false;
+    public override maxLength = 0;
 
     public control = new FormControl<TuiMonthRange | null>(null, Validators.required);
 
@@ -62,9 +62,10 @@ export class ExampleTuiInputMonthRangeComponent extends AbstractExampleTuiContro
 
     protected min = this.minVariants[0];
     protected max = this.maxVariants[0];
+    protected minLength = 0;
 
     protected readonly disabledItemHandlerVariants: ReadonlyArray<
-        TuiBooleanHandlerWithContext<TuiMonth, TuiMonthContext>
+        TuiBooleanHandler<TuiMonth>
     > = [TUI_FALSE_HANDLER, ({month}) => month % 3 === 0];
 
     protected disabledItemHandler = this.disabledItemHandlerVariants[0];

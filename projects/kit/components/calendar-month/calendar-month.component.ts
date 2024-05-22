@@ -19,9 +19,7 @@ import {
     tuiPure,
 } from '@taiga-ui/cdk';
 import type {TuiRangeState, TuiWithOptionalMinMax} from '@taiga-ui/core';
-import type {TuiMonthContext} from '@taiga-ui/kit/interfaces';
 import {TUI_CALENDAR_MONTHS} from '@taiga-ui/kit/tokens';
-import type {TuiBooleanHandlerWithContext} from '@taiga-ui/kit/types';
 
 const TODAY = TuiDay.currentLocal();
 
@@ -39,8 +37,13 @@ export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth
     public year: TuiYear = TODAY;
 
     @Input()
-    public disabledItemHandler: TuiBooleanHandlerWithContext<TuiMonth, TuiMonthContext> =
-        TUI_FALSE_HANDLER;
+    public disabledItemHandler: TuiBooleanHandler<TuiMonth> = TUI_FALSE_HANDLER;
+
+    @Input()
+    public minLength: number | null = null;
+
+    @Input()
+    public maxLength: number | null = null;
 
     @Input()
     public min: TuiMonth | null = TUI_FIRST_DAY;
@@ -162,6 +165,8 @@ export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth
             this.value,
             this.computedMin,
             this.computedMax,
+            this.minLength,
+            this.maxLength,
         );
     }
 
@@ -197,15 +202,35 @@ export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth
 
     @tuiPure
     private calculateDisabledItemHandlerWithMinMax(
-        disabledItemHandler: TuiBooleanHandlerWithContext<TuiMonth, TuiMonthContext>,
+        disabledItemHandler: TuiBooleanHandler<TuiMonth>,
         value: TuiMonth | TuiMonthRange | null,
         min: TuiMonth,
         max: TuiMonth,
+        minLength: number | null,
+        maxLength: number | null,
     ): TuiBooleanHandler<TuiMonth> {
-        return item =>
-            item.monthBefore(min) ||
-            item.monthAfter(max) ||
-            disabledItemHandler(item, {value});
+        return item => {
+            const delta =
+                value instanceof TuiMonthRange && value.isSingleMonth
+                    ? Math.abs(
+                          item.year * 12 +
+                              item.month -
+                              value.from.year * 12 -
+                              value.from.month,
+                      )
+                    : 0;
+
+            const tooLong = delta && maxLength && delta > maxLength;
+            const tooShort = delta && minLength && delta < minLength;
+
+            return (
+                tooLong ||
+                tooShort ||
+                item.monthBefore(min) ||
+                item.monthAfter(max) ||
+                disabledItemHandler(item)
+            );
+        };
     }
 
     private updateHoveredItem(month: TuiMonth | null): void {

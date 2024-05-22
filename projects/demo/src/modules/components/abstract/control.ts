@@ -86,10 +86,6 @@ export abstract class AbstractExampleTuiControl
 
     public filler = '';
 
-    public minHeight: number | null = null;
-
-    public maxHeight: number | null = null;
-
     public readonly iconLeftVariants = ['', 'tuiIconMailLarge', 'tuiIconPieChartLarge'];
 
     public iconLeft = this.iconLeftVariants[0];

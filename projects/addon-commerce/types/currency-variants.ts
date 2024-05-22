@@ -1,4 +1,5 @@
-import type {TuiCurrency, TuiCurrencyCode} from '@taiga-ui/addon-commerce/enums';
+import type {TuiCurrency} from './currency';
+import type {TuiCurrencyCode} from './currency-code';
 
 export type TuiCurrencyAutocompletion =
     | keyof Record<TuiCurrency, string>
