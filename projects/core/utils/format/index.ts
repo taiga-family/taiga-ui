@@ -1,5 +1,3 @@
-export * from './capitalize';
-export * from './capitalize-first-letter';
 export * from './format-number';
 export * from './format-phone';
 export * from './get-fractional-part-padded';

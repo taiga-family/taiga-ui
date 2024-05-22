@@ -1,5 +1,4 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
-@import './mixin.style.less';
 
 tui-data-list {
     --tui-data-list-padding: 0.25rem;
@@ -21,26 +20,42 @@ tui-data-list {
         }
     }
 
-    &[data-list-size='s'] {
+    &[data-size='s'] {
         /* stylelint-disable-next-line */
         --tui-data-list-margin: 0rem;
 
-        & > .t-empty {
-            .data-list-item('s');
+        & > .t-empty,
+        [tuiOption] {
+            font: var(--tui-font-text-s);
+            min-height: 2rem;
+            padding: 0.3125rem 0.5rem;
         }
     }
 
-    &[data-list-size='m'] > .t-empty {
-        .data-list-item('m');
+    &[data-size='m'] > .t-empty,
+    &[data-size='m'] [tuiOption] {
+        font: var(--tui-font-text-s);
+        min-height: 2.5rem;
+        padding: 0.375rem 0.5rem;
     }
 
-    &[data-list-size='l'] {
+    &[data-size='l'] {
         --tui-data-list-padding: 0.375rem;
         --tui-data-list-margin: 0.125rem;
 
-        & > .t-empty {
-            .data-list-item('l');
+        & > .t-empty,
+        [tuiOption] {
+            font: var(--tui-font-text-m);
+            min-height: 2.75rem;
+            padding: 0.375rem 0.625rem;
         }
+    }
+
+    & > .t-empty {
+        display: flex;
+        align-items: center;
+        box-sizing: border-box;
+        margin: var(--tui-data-list-margin) 0;
     }
 }
 
@@ -52,7 +67,7 @@ tui-opt-group {
     flex-direction: column;
     line-height: 1rem;
 
-    tui-data-list[data-list-size='l'] & {
+    tui-data-list[data-size='l'] & {
         font: var(--tui-font-text-s);
         line-height: 1.25rem;
 
@@ -108,5 +123,37 @@ tui-opt-group {
     &:not([data-label]):before {
         padding: 0;
         margin: 0;
+    }
+}
+
+[tuiOption] {
+    .clearbtn();
+    .transition(background);
+
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    margin: var(--tui-data-list-margin) 0;
+    justify-content: space-between;
+    text-align: left;
+    color: var(--tui-text-01);
+    border-radius: var(--tui-radius-s);
+    outline: none;
+    cursor: pointer;
+    background-clip: padding-box;
+
+    &:disabled {
+        opacity: var(--tui-disabled-opacity);
+        cursor: default;
+    }
+
+    &:focus-within,
+    &._with-dropdown {
+        background-color: var(--tui-clear);
+    }
+
+    &:after {
+        font-size: 1rem;
+        margin: 0 -0.25rem 0 1rem;
     }
 }

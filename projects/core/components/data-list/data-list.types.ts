@@ -1,7 +1,5 @@
 import type {TuiIdentityMatcher, TuiStringHandler} from '@taiga-ui/cdk';
 
-export type TuiOptionRole = 'menuitem' | 'menuitemcheckbox' | 'menuitemradio' | 'option';
-
 export interface TuiDataListAccessor<T = unknown> {
     getOptions(includeDisabled?: boolean): readonly T[];
 }

@@ -1,4 +1,4 @@
-'{{ capitalized }}' = capitalize(value);
+'{{ formattedPhone }}' = formatPhone(value, countryCode, phoneMask);
 
 <form [formGroup]="parametersForm">
     <div class="parameters">
@@ -7,6 +7,18 @@
             class="tui-space_top-2"
         >
             value
+        </tui-input>
+        <tui-input
+            formControlName="countryCode"
+            class="tui-space_top-2"
+        >
+            countryCode
+        </tui-input>
+        <tui-input
+            formControlName="phoneMask"
+            class="tui-space_top-2"
+        >
+            phoneMask
         </tui-input>
     </div>
 </form>

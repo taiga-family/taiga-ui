@@ -18,12 +18,14 @@ import {
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {
+    TuiCheckboxComponent,
     TuiChevronDirective,
     TuiDataListDropdownManagerModule,
     TuiInputDateRangeModule,
     TuiInputModule,
     TuiMultiSelectModule,
     TuiSelectModule,
+    TuiSwitchComponent,
 } from '@taiga-ui/kit';
 
 import {ExampleTuiDataListComponent} from './data-list.component';
@@ -63,6 +65,8 @@ import {TuiDataListExample6} from './examples/6';
         TuiGroupDirective,
         TuiChevronDirective,
         TuiSetupComponent,
+        TuiCheckboxComponent,
+        TuiSwitchComponent,
     ],
     declarations: [
         ExampleTuiDataListComponent,

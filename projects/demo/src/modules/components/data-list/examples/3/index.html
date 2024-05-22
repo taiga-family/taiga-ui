@@ -1,18 +1,16 @@
+<h3>Multi select control</h3>
 <button
     appearance="flat"
     tuiChevron
     tuiIconButton
     type="button"
-    [tuiAppearanceState]="open ? 'hover' : null"
+    [tuiAppearanceState]="control ? 'hover' : null"
     [tuiDropdown]="content"
     [tuiDropdownMaxHeight]="500"
-    [(tuiDropdownOpen)]="open"
+    [(tuiDropdownOpen)]="control"
 ></button>
 <ng-template #content>
-    <tui-data-list
-        size="l"
-        class="list"
-    >
+    <tui-data-list [style.width.rem]="12">
         <tui-opt-group
             tuiMultiSelectGroup
             [(ngModel)]="value"
@@ -39,3 +37,34 @@
     </tui-data-list>
 </ng-template>
 <p>{{ value }}</p>
+<h3>Separate toggles</h3>
+<button
+    appearance="flat"
+    tuiChevron
+    tuiIconButton
+    type="button"
+    [tuiAppearanceState]="label ? 'hover' : null"
+    [tuiDropdown]="separate"
+    [tuiDropdownMaxHeight]="500"
+    [(tuiDropdownOpen)]="label"
+></button>
+<ng-template #separate>
+    <tui-data-list [style.width.rem]="10">
+        <label tuiOption>
+            First
+            <input
+                tuiCheckbox
+                type="checkbox"
+                [(ngModel)]="first"
+            />
+        </label>
+        <label tuiOption>
+            Second
+            <input
+                tuiSwitch
+                type="checkbox"
+                [(ngModel)]="second"
+            />
+        </label>
+    </tui-data-list>
+</ng-template>

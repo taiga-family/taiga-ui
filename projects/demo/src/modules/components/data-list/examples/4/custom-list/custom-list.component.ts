@@ -1,7 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {EMPTY_ARRAY, TUI_DEFAULT_MATCHER} from '@taiga-ui/cdk';
-import type {TuiDataListComponent} from '@taiga-ui/core';
 import {tuiIsEditingKey} from '@taiga-ui/core';
 
 interface Items<T> {
@@ -23,10 +22,6 @@ export class CustomListComponent<T> {
     protected readonly all = EMPTY_ARRAY;
 
     protected readonly filter = TUI_DEFAULT_MATCHER;
-
-    protected onArrowDown<T>(list: TuiDataListComponent<T>, event: Event): void {
-        list.onFocus(event, true);
-    }
 
     protected onKeyDown(key: string, element: HTMLElement | null): void {
         if (element && tuiIsEditingKey(key)) {

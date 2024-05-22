@@ -8,7 +8,7 @@ import {
     ViewChildren,
 } from '@angular/core';
 import {EMPTY_QUERY, tuiIsNativeFocused, tuiIsPresent} from '@taiga-ui/cdk';
-import type {TuiSizeL, TuiSizeXS, TuiValueContentContext} from '@taiga-ui/core';
+import type {TuiSizeL, TuiSizeS, TuiValueContentContext} from '@taiga-ui/core';
 import {TuiOptionComponent} from '@taiga-ui/core';
 import type {TuiItemsHandlers} from '@taiga-ui/kit/tokens';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
@@ -23,7 +23,7 @@ export abstract class AbstractTuiDataListWrapper<T> {
     public emptyContent: PolymorpheusContent;
 
     @Input()
-    public size: TuiSizeL | TuiSizeXS = this.defaultSize;
+    public size = this.defaultSize;
 
     @Output()
     public readonly itemClick = new EventEmitter<T>();
@@ -33,7 +33,7 @@ export abstract class AbstractTuiDataListWrapper<T> {
 
     protected constructor(
         public readonly itemsHandlers: TuiItemsHandlers<T>,
-        public readonly defaultSize: TuiSizeL | TuiSizeXS,
+        public readonly defaultSize: TuiSizeL | TuiSizeS,
     ) {}
 
     @Input()

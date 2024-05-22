@@ -5,12 +5,14 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 @Component({
     selector: 'tui-data-list-example-3',
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
 export class TuiDataListExample3 {
-    protected open = false;
+    protected first = false;
+    protected second = true;
+    protected control = false;
+    protected label = false;
 
     protected value = [];
 

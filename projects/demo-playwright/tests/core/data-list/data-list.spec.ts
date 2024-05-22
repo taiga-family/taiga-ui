@@ -66,7 +66,7 @@ test.describe('DataList', () => {
         const example = documentationPagePO.getExample('#control');
 
         await example.scrollIntoViewIfNeeded();
-        await example.locator('button').click();
+        await example.locator('button').first().click();
         await documentationPagePO.prepareBeforeScreenshot();
         await expect(page.locator('tui-dropdown')).toHaveScreenshot('04-data-list.png');
     });
