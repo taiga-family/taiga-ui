@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[64707],{64707:e=>{e.exports="```html\nFormatted number: {{ phone | tuiFormatPhone}} Formatted number with custom params: {{ phone | tuiFormatPhone: 'country\ncode' : 'mask'}}\n```\n"}}]);
