@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.80.0](https://github.com/taiga-family/taiga-ui/compare/v3.79.0...v3.80.0) (2024-05-22)
+
+### Features
+
+- **addon-commerce:** missing currency codes ([#7513](https://github.com/taiga-family/taiga-ui/issues/7513))
+  ([710e1f6](https://github.com/taiga-family/taiga-ui/commit/710e1f6c5471e55308a9f8524ca134c9e80fcf7c))
+
+### Bug Fixes
+
+- **kit:** `Tree` fix control chevron rotation programmatically
+  ([#7476](https://github.com/taiga-family/taiga-ui/issues/7476))
+  ([ba90b0d](https://github.com/taiga-family/taiga-ui/commit/ba90b0d5b6d6e8e8d7dfd2a910f0a55bd8b3e2b3))
+
 ## [3.79.0](https://github.com/taiga-family/taiga-ui/compare/v3.78.0...v3.79.0) (2024-05-16)
 
 ### Features
