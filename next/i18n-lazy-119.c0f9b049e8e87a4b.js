@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[54538],{65455:(e,n,s)=>{s.r(n),s.d(n,{TUI_GERMAN_LANGUAGE_ADDON_TABLE:()=>i});const i={showHideText:"Anzeigen/Ausblenden",paginationTexts:{pages:"Seiten",linesPerPage:"Zeilen pro Seite",of:"von"}}}}]);
