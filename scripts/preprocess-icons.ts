@@ -1,4 +1,4 @@
-import glob from 'glob';
+import {sync as globSync} from 'glob';
 
 import {tuiProcessIcons} from '../projects/icons/scripts';
 
@@ -9,5 +9,5 @@ import {tuiProcessIcons} from '../projects/icons/scripts';
     console.info('\x1B[35m%s\x1B[0m', '[cwd]:', process.cwd());
     console.info('\x1B[35m%s\x1B[0m', '[match]:', pattern);
 
-    glob(pattern, {}, (_err: Error | null, files: string[]) => tuiProcessIcons(files));
+    tuiProcessIcons(globSync(pattern));
 })();
