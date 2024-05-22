@@ -1,4 +1,11 @@
-import {Directive, inject, Input} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    Directive,
+    inject,
+    Input,
+    ViewEncapsulation,
+} from '@angular/core';
 import {tuiWithStyles} from '@taiga-ui/cdk';
 import {
     TuiAppearanceDirective,
@@ -6,8 +13,19 @@ import {
 } from '@taiga-ui/core/directives/appearance';
 import {TuiIconsDirective} from '@taiga-ui/core/directives/icons';
 
-import {TuiLinkComponent} from './link.component';
 import {TUI_LINK_OPTIONS} from './link.options';
+
+@Component({
+    standalone: true,
+    template: '',
+    styleUrls: ['./link.style.less'],
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        class: 'tui-link',
+    },
+})
+class TuiLinkStyles {}
 
 @Directive({
     standalone: true,
@@ -36,5 +54,5 @@ export class TuiLinkDirective {
     @Input()
     public pseudo = inject(TUI_LINK_OPTIONS).pseudo;
 
-    protected readonly nothing = tuiWithStyles(TuiLinkComponent);
+    protected readonly nothing = tuiWithStyles(TuiLinkStyles);
 }

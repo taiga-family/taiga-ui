@@ -1,8 +1,24 @@
-import {Directive, Input} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    Directive,
+    Input,
+    ViewEncapsulation,
+} from '@angular/core';
 import {tuiWithStyles} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 
-import {TuiTitleComponent} from './title.component';
+@Component({
+    standalone: true,
+    template: '',
+    styleUrls: ['./title.style.less'],
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        class: 'tui-title',
+    },
+})
+class TuiTitleStyles {}
 
 @Directive({
     standalone: true,
@@ -16,5 +32,5 @@ export class TuiTitleDirective {
     @Input('tuiTitle')
     public size: TuiSizeL | TuiSizeS | '' = '';
 
-    protected readonly nothing = tuiWithStyles(TuiTitleComponent);
+    protected readonly nothing = tuiWithStyles(TuiTitleStyles);
 }

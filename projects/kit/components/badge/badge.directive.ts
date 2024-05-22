@@ -1,4 +1,11 @@
-import {Directive, inject, Input} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    Directive,
+    inject,
+    Input,
+    ViewEncapsulation,
+} from '@angular/core';
 import {tuiWithStyles} from '@taiga-ui/cdk';
 import {
     TuiAppearanceDirective,
@@ -6,8 +13,19 @@ import {
     TuiIconsDirective,
 } from '@taiga-ui/core';
 
-import {TuiBadgeComponent} from './badge.component';
 import {TUI_BADGE_OPTIONS} from './badge.options';
+
+@Component({
+    standalone: true,
+    template: '',
+    styleUrls: ['./badge.style.less'],
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        class: 'tui-badge',
+    },
+})
+class TuiBadgeStyles {}
 
 @Directive({
     standalone: true,
@@ -41,5 +59,5 @@ export class TuiBadgeDirective {
     @Input()
     public dot = this.options.dot;
 
-    protected readonly nothing = tuiWithStyles(TuiBadgeComponent);
+    protected readonly nothing = tuiWithStyles(TuiBadgeStyles);
 }

@@ -1,7 +1,23 @@
-import {Directive, Input} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    Directive,
+    Input,
+    ViewEncapsulation,
+} from '@angular/core';
 import {tuiWithStyles} from '@taiga-ui/cdk';
 
-import {TuiCardComponent} from './card.component';
+@Component({
+    standalone: true,
+    template: '',
+    styleUrls: ['./card.styles.less'],
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        class: 'tui-card',
+    },
+})
+class TuiCardStyles {}
 
 @Directive({
     standalone: true,
@@ -11,7 +27,7 @@ import {TuiCardComponent} from './card.component';
     },
 })
 export class TuiCardMediumDirective {
-    protected readonly nothing = tuiWithStyles(TuiCardComponent);
+    protected readonly nothing = tuiWithStyles(TuiCardStyles);
 }
 
 @Directive({
@@ -26,5 +42,5 @@ export class TuiCardLargeDirective {
     @Input('tuiCardLarge')
     public space: '' | 'compact' | 'normal' = 'normal';
 
-    protected readonly nothing = tuiWithStyles(TuiCardComponent);
+    protected readonly nothing = tuiWithStyles(TuiCardStyles);
 }

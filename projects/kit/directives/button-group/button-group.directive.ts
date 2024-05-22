@@ -1,12 +1,27 @@
-import {Directive} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    Directive,
+    ViewEncapsulation,
+} from '@angular/core';
 import {tuiWithStyles} from '@taiga-ui/cdk';
 
-import {TuiButtonGroupComponent} from './button-group.component';
+@Component({
+    standalone: true,
+    template: '',
+    styleUrls: ['./button-group.style.less'],
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        class: 'tui-button-group-styles',
+    },
+})
+class TuiButtonGroupStyles {}
 
 @Directive({
     standalone: true,
     selector: '[tuiButtonGroup]',
 })
 export class TuiButtonGroupDirective {
-    protected readonly nothing = tuiWithStyles(TuiButtonGroupComponent);
+    protected readonly nothing = tuiWithStyles(TuiButtonGroupStyles);
 }

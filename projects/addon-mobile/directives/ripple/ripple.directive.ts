@@ -1,4 +1,12 @@
-import {Directive, inject, Input, Renderer2} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    Directive,
+    inject,
+    Input,
+    Renderer2,
+    ViewEncapsulation,
+} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {
     TUI_FALSE_HANDLER,
@@ -15,11 +23,23 @@ import {
     TUI_RIPPLE_PROVIDERS,
     TUI_RIPPLE_START,
 } from './ripple.providers';
-import {TuiRippleStylesComponent} from './ripple-styles.component';
 
 const TOUCH_MOVE_DELAY = 100;
 
+@Component({
+    standalone: true,
+    template: '',
+    styleUrls: ['./ripple.style.less'],
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        class: 'tui-ripple-styles',
+    },
+})
+class TuiRippleStyles {}
+
 @Directive({
+    standalone: true,
     selector: '[tuiRipple]',
     providers: TUI_RIPPLE_PROVIDERS,
 })
@@ -32,7 +52,7 @@ export class TuiRippleDirective {
     @Input()
     public tuiRipple?: string | '';
 
-    protected readonly nothing = tuiWithStyles(TuiRippleStylesComponent);
+    protected readonly nothing = tuiWithStyles(TuiRippleStyles);
 
     constructor() {
         const touchEnd$ = tuiTypedFromEvent(this.el, 'touchend');

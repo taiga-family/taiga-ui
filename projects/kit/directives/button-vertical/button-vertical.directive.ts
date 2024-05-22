@@ -1,12 +1,27 @@
-import {Directive} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    Directive,
+    ViewEncapsulation,
+} from '@angular/core';
 import {tuiWithStyles} from '@taiga-ui/cdk';
 
-import {TuiButtonVerticalComponent} from './button-vertical.component';
+@Component({
+    standalone: true,
+    template: '',
+    styleUrls: ['./button-vertical.style.less'],
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        class: 'tui-button-vertical-styles',
+    },
+})
+class TuiButtonVerticalStyles {}
 
 @Directive({
     standalone: true,
     selector: '[tuiButtonVertical]',
 })
 export class TuiButtonVerticalDirective {
-    protected readonly nothing = tuiWithStyles(TuiButtonVerticalComponent);
+    protected readonly nothing = tuiWithStyles(TuiButtonVerticalStyles);
 }

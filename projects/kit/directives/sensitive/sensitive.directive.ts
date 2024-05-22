@@ -1,11 +1,28 @@
-import {Directive, inject, Input} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    Directive,
+    inject,
+    Input,
+    ViewEncapsulation,
+} from '@angular/core';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {tuiWithStyles} from '@taiga-ui/cdk';
 import {map} from 'rxjs';
 
-import {TuiSensitiveComponent} from './sensitive.component';
-
 const rowsInSvg = 3;
+
+@Component({
+    standalone: true,
+    template: '',
+    styleUrls: ['./sensitive.style.less'],
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        class: 'tui-sensitive-styles',
+    },
+})
+class TuiSensitiveStyles {}
 
 @Directive({
     standalone: true,
@@ -22,7 +39,7 @@ export class TuiSensitiveDirective {
     @Input()
     public tuiSensitive: boolean | null = false;
 
-    protected readonly nothing = tuiWithStyles(TuiSensitiveComponent);
+    protected readonly nothing = tuiWithStyles(TuiSensitiveStyles);
     protected readonly offset = Math.round(Math.random() * 10) * 10;
     protected readonly height$ = inject(ResizeObserverService).pipe(
         map(([{contentRect}]) => [
