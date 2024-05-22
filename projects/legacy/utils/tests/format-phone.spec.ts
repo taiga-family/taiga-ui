@@ -1,4 +1,4 @@
-import {tuiFormatPhone} from '../format-phone';
+import {tuiFormatPhone} from '@taiga-ui/legacy/utils';
 
 describe('Phone number formatting', () => {
     it('inserts parentheses and hyphens correctly', () => {

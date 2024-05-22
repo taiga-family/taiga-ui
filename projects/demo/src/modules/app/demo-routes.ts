@@ -189,7 +189,6 @@ export const DemoRoute = {
     Flag: '/pipes/flag',
     FormatDate: '/pipes/format-date',
     FormatNumber: '/pipes/format-number',
-    FormatPhone: '/pipes/format-phone',
     IsPresent: '/pipes/is-present',
     Mapper: '/pipes/mapper',
     Stringify: '/pipes/stringify',
