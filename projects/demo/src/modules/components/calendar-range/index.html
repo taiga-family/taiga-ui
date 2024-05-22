@@ -7,47 +7,29 @@
         <p>Component for choosing date range in calendar</p>
 
         <tui-doc-example
-            id="base"
-            heading="Basic"
-            [content]="example1"
+            *ngFor="let example of examples; let index = index"
+            [component]="index + 1 | tuiComponent"
+            [content]="index + 1 | tuiExample: 'html,ts'"
+            [description]="description"
+            [heading]="example"
+            [id]="example | tuiKebab"
         >
-            <tui-calendar-range-example-1 />
-        </tui-doc-example>
-
-        <tui-doc-example
-            id="with-value"
-            heading="with value"
-            [content]="example2"
-        >
-            <tui-calendar-range-example-2 />
-        </tui-doc-example>
-
-        <tui-doc-example
-            id="periods"
-            heading="with ranges"
-            [content]="example3"
-        >
-            <tui-calendar-range-example-3 />
-        </tui-doc-example>
-
-        <tui-doc-example
-            id="localization"
-            heading="Localization"
-            [content]="example4"
-            [description]="localizationDescription"
-        >
-            <ng-template #localizationDescription>
-                Use
-                <a
-                    fragment="first-day-of-week"
-                    routerLink="/utils/tokens"
-                    tuiLink
-                >
-                    TUI_FIRST_DAY_OF_WEEK
-                </a>
-                token to change start day of the week (Monday by default).
+            <ng-template
+                #description
+                [ngSwitch]="index + 1"
+            >
+                <div *ngSwitchCase="4">
+                    Use
+                    <a
+                        fragment="first-day-of-week"
+                        routerLink="/utils/tokens"
+                        tuiLink
+                    >
+                        TUI_FIRST_DAY_OF_WEEK
+                    </a>
+                    token to change start day of the week (Monday by default).
+                </div>
             </ng-template>
-            <tui-calendar-range-example-4 />
         </tui-doc-example>
     </ng-template>
 
@@ -151,20 +133,5 @@
         </tui-doc-documentation>
     </ng-template>
 
-    <ng-template pageTab>
-        <ol class="tui-list tui-list_ordered">
-            <li class="tui-list__item">
-                <p>
-                    Import
-                    <code>TuiCalendarRangeModule</code>
-                    into a module where you want to use our component
-                </p>
-
-                <tui-doc-code
-                    filename="my.module.ts"
-                    [code]="exampleModule"
-                />
-            </li>
-        </ol>
-    </ng-template>
+    <tui-setup *pageTab />
 </tui-doc-page>

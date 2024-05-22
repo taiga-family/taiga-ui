@@ -1,11 +1,13 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiCalendarRangeModule} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-calendar-range-example-1',
+    standalone: true,
+    imports: [TuiCalendarRangeModule],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class TuiCalendarRangeExample1 {}
+export default class ExampleComponent {}

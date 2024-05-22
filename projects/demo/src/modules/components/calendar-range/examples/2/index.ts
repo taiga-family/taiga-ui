@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDay, TuiDayRange} from '@taiga-ui/cdk';
-import {TUI_CALENDAR_DATE_STREAM} from '@taiga-ui/kit';
+import {TUI_CALENDAR_DATE_STREAM, TuiCalendarRangeModule} from '@taiga-ui/kit';
 import {of} from 'rxjs';
 
 export const calendarStream$ = of(
@@ -10,7 +10,8 @@ export const calendarStream$ = of(
 );
 
 @Component({
-    selector: 'tui-calendar-range-example-2',
+    standalone: true,
+    imports: [TuiCalendarRangeModule],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
@@ -21,4 +22,4 @@ export const calendarStream$ = of(
         },
     ],
 })
-export class TuiCalendarRangeExample2 {}
+export default class ExampleComponent {}
