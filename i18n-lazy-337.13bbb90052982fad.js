@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[50511],{84157:(e,n,s)=>{s.r(n),s.d(n,{TUI_VIETNAMESE_LANGUAGE_ADDON_TABLE:()=>a});const a={showHideText:"Hiện/Ẩn",paginationTexts:{pages:"Tổng số trang",linesPerPage:"Số dòng mỗi trang",of:"trên"}}}}]);

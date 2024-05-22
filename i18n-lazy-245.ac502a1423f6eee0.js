@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[85871],{19633:(e,c,d)=>{d.r(c),d.d(c,{TUI_RUSSIAN_LANGUAGE_ADDON_COMMERCE:()=>r});const r={cardNumber:["Номер","Номер карты"],cardExpiry:["Срок","Срок действия"]}}}]);
