@@ -1,10 +1,21 @@
+import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
 import {Component, ViewChild} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {assets} from '@demo/utils';
-import {TuiCurrency} from '@taiga-ui/addon-commerce';
-import {TUI_DEFAULT_MATCHER, tuiControlValue} from '@taiga-ui/cdk';
+import {
+    TuiAmountPipe,
+    TuiCurrency,
+    TuiInputCardComponent,
+} from '@taiga-ui/addon-commerce';
+import {TUI_DEFAULT_MATCHER, tuiControlValue, TuiLetDirective} from '@taiga-ui/cdk';
+import {TuiDataList, TuiInitialsPipe, TuiTextfieldControllerModule} from '@taiga-ui/core';
+import {
+    TuiAvatarComponent,
+    TuiDataListWrapperModule,
+    TuiInputModule,
+} from '@taiga-ui/kit';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {map} from 'rxjs';
 
@@ -90,13 +101,28 @@ const USERS = [
 ];
 
 @Component({
-    selector: 'tui-input-example-4',
+    standalone: true,
+    imports: [
+        ReactiveFormsModule,
+        TuiInputModule,
+        TuiLetDirective,
+        AsyncPipe,
+        TuiTextfieldControllerModule,
+        NgIf,
+        TuiDataList,
+        NgForOf,
+        TuiAvatarComponent,
+        TuiInitialsPipe,
+        TuiDataListWrapperModule,
+        TuiAmountPipe,
+        TuiInputCardComponent,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiInputExample4 {
+export default class ExampleComponent {
     @ViewChild('avatar')
     private readonly avatar: PolymorpheusContent;
 

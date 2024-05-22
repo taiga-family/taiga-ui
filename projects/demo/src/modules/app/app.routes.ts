@@ -411,8 +411,7 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.Input,
-        loadChildren: async () =>
-            (await import('../components/input/input.module')).ExampleTuiInputModule,
+        loadComponent: async () => import('../components/input'),
         title: 'Input',
     }),
     route({
