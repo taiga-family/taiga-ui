@@ -10,9 +10,8 @@
             class="link"
         >
             <tui-svg
-                src="tuiIconSortDown"
                 class="sort"
-                [class.sort_ascending]="ascending"
+                [src]="ascending ? 'tuiIconSortAscending' : 'tuiIconSortDescending'"
             />
             {{ primary }}
             <tui-svg

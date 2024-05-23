@@ -2,7 +2,7 @@ import {Directive, inject, Input, TemplateRef} from '@angular/core';
 
 @Directive({
     standalone: true,
-    selector: '[pageTab]',
+    selector: 'ng-template[pageTab]',
 })
 export class TuiDocPageTabConnectorDirective {
     @Input()

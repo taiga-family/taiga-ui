@@ -775,28 +775,22 @@ export const ROUTES: Routes = [
     // ICONS
     route({
         path: DemoRoute.IconsOverview,
-        loadChildren: async () => (await import('../icons/icons.module')).IconsModule,
+        loadComponent: async () => import('../components/icons'),
         title: 'Overview',
     }),
     route({
         path: DemoRoute.IconsMapping,
-        loadChildren: async () =>
-            (await import('../icons/icons-mapping/icons-mapping.module'))
-                .IconsMappingModule,
+        loadComponent: async () => import('../components/icons/icons-mapping'),
         title: 'Icons mapping',
     }),
     route({
         path: DemoRoute.IconsBundled,
-        loadChildren: async () =>
-            (await import('../icons/icons-bundled/icons-bundled.module'))
-                .IconsBundledModule,
+        loadComponent: async () => import('../components/icons/icons-bundled'),
         title: 'Icons bundled',
     }),
     route({
         path: DemoRoute.IconsCustomization,
-        loadChildren: async () =>
-            (await import('../icons/customization/icons-customization.module'))
-                .IconsCustomizationModule,
+        loadComponent: async () => import('../components/icons/customization'),
         title: 'Icons customization',
     }),
     // FILTER
