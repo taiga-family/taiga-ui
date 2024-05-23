@@ -952,7 +952,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         },
         to: {
             name: 'TuiPreview',
-            moduleSpecifier: '@taiga-ui/addon-preview',
+            moduleSpecifier: '@taiga-ui/kit',
         },
     },
     {
@@ -1008,7 +1008,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         },
         to: {
             name: 'TuiPreviewDialogComponent',
-            moduleSpecifier: '@taiga-ui/addon-preview',
+            moduleSpecifier: '@taiga-ui/kit',
         },
     },
     {

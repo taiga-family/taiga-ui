@@ -62,4 +62,12 @@ export const TUI_GERMAN_LANGUAGE_KIT: TuiLanguageKit = {
         yes: 'Ja',
         no: 'Nein',
     },
+    previewTexts: {
+        rotate: 'Rotieren',
+    },
+    zoomTexts: {
+        zoomOut: 'Verkleinern',
+        zoomIn: 'Vergrößern',
+        reset: 'Zurücksetzen',
+    },
 };

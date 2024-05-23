@@ -65,3 +65,11 @@ export const TUI_MULTI_SELECT_TEXTS = tuiCreateTokenFromFactory(
 export const TUI_COUNTRIES = tuiCreateTokenFromFactory<
     Observable<Record<TuiCountryIsoCode, string>>
 >(tuiExtractI18n('countries'));
+
+export const TUI_PREVIEW_TEXTS = tuiCreateTokenFromFactory(
+    tuiExtractI18n('previewTexts'),
+);
+
+export const TUI_PREVIEW_ZOOM_TEXTS = tuiCreateTokenFromFactory(
+    tuiExtractI18n('zoomTexts'),
+);

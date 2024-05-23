@@ -103,7 +103,7 @@ export async function getAllTaigaUIModulesFile(
      * You can't just iterate the array with package-names - it will cause error:
      * `Warning: Critical dependency: the request of a dependency is an expression`
      * */
-    const [cdk, core, kit, charts, commerce, mobile, preview, table, tablebars] =
+    const [cdk, core, kit, charts, commerce, mobile, table, tablebars] =
         await Promise.all([
             import('@taiga-ui/cdk'),
             import('@taiga-ui/core'),
@@ -111,7 +111,6 @@ export async function getAllTaigaUIModulesFile(
             import('@taiga-ui/addon-charts'),
             import('@taiga-ui/addon-commerce'),
             import('@taiga-ui/addon-mobile'),
-            import('@taiga-ui/addon-preview'),
             import('@taiga-ui/addon-table'),
             import('@taiga-ui/addon-tablebars'),
         ]).then(modules => {
@@ -146,9 +145,6 @@ import {
 import {
     ${mobile}
 } from '@taiga-ui/addon-mobile';
-import {
-    ${preview}
-} from '@taiga-ui/addon-preview';
 import {
     ${table}
 } from '@taiga-ui/addon-table';
@@ -188,8 +184,6 @@ export const ALL_TAIGA_UI_MODULES = [
     ${commerce},
     /* ADDON-MOBILE */
     ${mobile},
-    /* ADDON-PREVIEW */
-    ${preview},
     /* ADDON-TABLE */
     ${table},
     /* ADDON-TABLEBARS */

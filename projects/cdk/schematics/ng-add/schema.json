@@ -80,10 +80,6 @@
                         "label": "addon-tablebars   Group action sliding toolbar"
                     },
                     {
-                        "value": "addon-preview",
-                        "label": "addon-preview     Custom fullscreen dialog to preview various content such as documents, images etc."
-                    },
-                    {
                         "value": "layout",
                         "label": "layout            Layout components"
                     }

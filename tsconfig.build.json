@@ -26,8 +26,6 @@
             "@taiga-ui/addon-commerce": ["./dist/addon-commerce/index"],
             "@taiga-ui/addon-tablebars/*": ["./dist/addon-tablebars/*"],
             "@taiga-ui/addon-tablebars": ["./dist/addon-tablebars/index"],
-            "@taiga-ui/addon-preview/*": ["./dist/addon-preview/*"],
-            "@taiga-ui/addon-preview": ["./dist/addon-preview/index"],
             "@taiga-ui/testing": ["./dist/testing/index"],
             "@taiga-ui/testing/*": ["./dist/testing/*"],
             "@taiga-ui/icons": ["./dist/icons"],

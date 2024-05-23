@@ -61,4 +61,12 @@ export const TUI_ENGLISH_LANGUAGE_KIT: TuiLanguageKit = {
         yes: 'Yes',
         no: 'No',
     },
+    previewTexts: {
+        rotate: 'Rotate',
+    },
+    zoomTexts: {
+        zoomOut: 'Zoom out',
+        zoomIn: 'Zoom in',
+        reset: 'Reset',
+    },
 };

@@ -61,4 +61,12 @@ export const TUI_UKRAINIAN_LANGUAGE_KIT: TuiLanguageKit = {
         yes: 'Так',
         no: 'Немає',
     },
+    previewTexts: {
+        rotate: 'Обертати',
+    },
+    zoomTexts: {
+        zoomOut: 'Зменшення',
+        zoomIn: 'Збільшувати',
+        reset: 'Скинути',
+    },
 };

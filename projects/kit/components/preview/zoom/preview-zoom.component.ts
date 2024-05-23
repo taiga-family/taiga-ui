@@ -8,10 +8,10 @@ import {
     Output,
 } from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {TUI_PREVIEW_ICONS, TUI_PREVIEW_ZOOM_TEXTS} from '@taiga-ui/addon-preview/tokens';
 import {TUI_FALSE_HANDLER, tuiClamp} from '@taiga-ui/cdk';
 import {TuiButtonDirective, TuiHint} from '@taiga-ui/core';
-import {TuiSliderModule} from '@taiga-ui/kit';
+import {TuiSliderModule} from '@taiga-ui/kit/components/slider';
+import {TUI_PREVIEW_ICONS, TUI_PREVIEW_ZOOM_TEXTS} from '@taiga-ui/kit/tokens';
 import {map, merge, of, startWith, switchMap, timer} from 'rxjs';
 
 import {TuiPreviewActionDirective} from '../preview-action/preview-action.directive';

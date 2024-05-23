@@ -12,6 +12,7 @@ import {TuiNotificationComponent} from '@taiga-ui/core';
 export default class PageComponent {
     protected readonly examples = [
         'Full preview',
+        'Preview with directive',
         'Simple mode',
         'With loading and unavailable image',
     ];

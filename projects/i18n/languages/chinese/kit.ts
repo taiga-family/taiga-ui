@@ -61,4 +61,12 @@ export const TUI_CHINESE_LANGUAGE_KIT: TuiLanguageKit = {
         yes: '是',
         no: '不',
     },
+    previewTexts: {
+        rotate: '旋转',
+    },
+    zoomTexts: {
+        zoomOut: '缩小',
+        zoomIn: '放大',
+        reset: '重置',
+    },
 };

@@ -92,6 +92,14 @@ export interface TuiLanguageKit {
         'HH:MM:SS': string;
         'HH:MM:SS.MSS': string;
     };
+    previewTexts: {
+        rotate: string;
+    };
+    zoomTexts: {
+        zoomIn: string;
+        zoomOut: string;
+        reset: string;
+    };
 }
 
 export interface TuiLanguageCommerce {
@@ -181,17 +189,6 @@ export interface TuiLanguageEditor {
     };
 }
 
-export interface TuiLanguagePreview {
-    previewTexts: {
-        rotate: string;
-    };
-    zoomTexts: {
-        reset: string;
-        zoomIn: string;
-        zoomOut: string;
-    };
-}
-
 export interface TuiLanguageMeta {
     name: TuiLanguageName;
 }
@@ -202,5 +199,4 @@ export interface TuiLanguage
         TuiLanguageCommerce,
         TuiLanguageTable,
         TuiLanguageEditor,
-        TuiLanguagePreview,
         TuiLanguageMeta {}

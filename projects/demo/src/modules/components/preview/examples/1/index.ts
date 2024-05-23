@@ -2,11 +2,11 @@ import type {TemplateRef} from '@angular/core';
 import {Component, inject, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiPreview, TuiPreviewDialogService} from '@taiga-ui/addon-preview';
 import type {TuiSwipe} from '@taiga-ui/cdk';
 import {tuiClamp, TuiSwipeDirective} from '@taiga-ui/cdk';
 import type {TuiDialogContext} from '@taiga-ui/core';
 import {TuiAlertService, TuiButtonDirective} from '@taiga-ui/core';
+import {TuiPreview, TuiPreviewDialogService} from '@taiga-ui/kit';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
@@ -30,10 +30,7 @@ export default class ExampleComponent {
 
     protected index = 0;
     protected length = 2;
-
-    protected get title(): string {
-        return this.index === 0 ? 'Transaction cert.jpg' : 'My face.jpg';
-    }
+    protected titles = ['Transaction cert.jpg', 'My face.jpg'];
 
     protected get previewContent(): PolymorpheusContent {
         return this.index === 0 && this.contentSample

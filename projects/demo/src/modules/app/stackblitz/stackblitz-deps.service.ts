@@ -51,7 +51,6 @@ export class StackblitzDepsService {
             '@taiga-ui/addon-charts': version,
             '@taiga-ui/addon-commerce': version,
             '@taiga-ui/addon-mobile': version,
-            '@taiga-ui/addon-preview': version,
             '@taiga-ui/addon-table': version,
             '@taiga-ui/addon-tablebars': version,
             '@taiga-ui/layout': version,

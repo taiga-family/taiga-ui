@@ -61,4 +61,12 @@ export const TUI_DUTCH_LANGUAGE_KIT: TuiLanguageKit = {
         yes: 'Ja',
         no: 'Ingen',
     },
+    previewTexts: {
+        rotate: 'Draaien',
+    },
+    zoomTexts: {
+        zoomOut: 'Uitzoomen',
+        zoomIn: 'Inzoomen',
+        reset: 'Opnieuw instellen',
+    },
 };

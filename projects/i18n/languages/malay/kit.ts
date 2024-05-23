@@ -61,4 +61,12 @@ export const TUI_MALAY_LANGUAGE_KIT: TuiLanguageKit = {
         yes: 'Ya',
         no: 'tidak',
     },
+    previewTexts: {
+        rotate: 'Putar',
+    },
+    zoomTexts: {
+        zoomOut: 'Zum keluar',
+        zoomIn: 'Zum masuk',
+        reset: 'Set semula',
+    },
 };

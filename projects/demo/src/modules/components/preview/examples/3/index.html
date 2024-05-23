@@ -5,7 +5,7 @@
     class="tui-space_bottom-4"
     (click)="show()"
 >
-    Show preview
+    Show simple preview
 </button>
 
 <ng-template
@@ -13,25 +13,17 @@
     let-preview
 >
     <tui-preview
-        [rotatable]="!(contentUnavailable$ | async)"
-        [zoomable]="!(contentUnavailable$ | async) && !(loading$ | async)"
+        [rotatable]="false"
+        [zoomable]="false"
     >
-        <tui-preview-title>{{ title$ | async }}</tui-preview-title>
-        <tui-preview-pagination
-            [index]="index$$.value"
-            [length]="items.length"
-            (indexChange)="index$$.next($event)"
-        />
-
-        <button
-            iconLeft="tuiIconDownload"
-            tuiIconButton
-            tuiPreviewAction
-            type="button"
-            (click)="download()"
-        >
-            Download
-        </button>
+        <iframe
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            frameborder="0"
+            src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"
+            title="Youtube"
+            class="content"
+        ></iframe>
 
         <button
             iconLeft="tuiIconClose"
@@ -42,29 +34,5 @@
         >
             Close
         </button>
-
-        <ng-container *ngIf="contentUnavailable$ | async">
-            <div class="t-container">
-                <tui-svg
-                    src="tuiIconFileLarge"
-                    class="t-icon"
-                />
-                <div>Preview unavailable</div>
-            </div>
-        </ng-container>
-
-        <img
-            *ngIf="imageSrc$ | async as src"
-            alt="img source"
-            height="512"
-            width="512"
-            [src]="src"
-        />
-
-        <tui-loader
-            *ngIf="loading$ | async"
-            size="xl"
-            class="t-loader"
-        />
     </tui-preview>
 </ng-template>
