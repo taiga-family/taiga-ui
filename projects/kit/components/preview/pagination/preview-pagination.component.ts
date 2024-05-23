@@ -8,10 +8,9 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import {TUI_PREVIEW_ICONS} from '@taiga-ui/addon-preview/tokens';
 import {tuiClamp} from '@taiga-ui/cdk';
 import {TuiButtonDirective} from '@taiga-ui/core';
-import {TUI_PAGINATION_TEXTS} from '@taiga-ui/kit';
+import {TUI_PAGINATION_TEXTS, TUI_PREVIEW_ICONS} from '@taiga-ui/kit/tokens';
 
 import {TuiPreviewActionDirective} from '../preview-action/preview-action.directive';
 

@@ -2,7 +2,6 @@ import {AsyncPipe, NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {MutationObserverModule} from '@ng-web-apis/mutation-observer';
 import {ResizeObserverModule} from '@ng-web-apis/resize-observer';
-import {TUI_PREVIEW_ICONS, TUI_PREVIEW_TEXTS} from '@taiga-ui/addon-preview/tokens';
 import type {TuiZoom} from '@taiga-ui/cdk';
 import {
     TUI_FALSE_HANDLER,
@@ -16,6 +15,7 @@ import {
     TuiZoomDirective,
 } from '@taiga-ui/cdk';
 import {TuiButtonDirective, TuiHint, tuiSlideInTop} from '@taiga-ui/core';
+import {TUI_PREVIEW_ICONS, TUI_PREVIEW_TEXTS} from '@taiga-ui/kit/tokens';
 import {BehaviorSubject, combineLatest, map, merge, startWith} from 'rxjs';
 
 import {TuiPreviewActionDirective} from './preview-action/preview-action.directive';

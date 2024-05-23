@@ -61,4 +61,12 @@ export const TUI_VIETNAMESE_LANGUAGE_KIT: TuiLanguageKit = {
         yes: 'Đúng',
         no: 'Không',
     },
+    previewTexts: {
+        rotate: 'Xoay',
+    },
+    zoomTexts: {
+        zoomOut: 'Thu nhỏ',
+        zoomIn: 'Phóng to',
+        reset: 'Đặt lại',
+    },
 };

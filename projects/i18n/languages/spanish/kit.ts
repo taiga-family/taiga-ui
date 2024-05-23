@@ -61,4 +61,12 @@ export const TUI_SPANISH_LANGUAGE_KIT: TuiLanguageKit = {
         yes: 'Sí',
         no: 'No',
     },
+    previewTexts: {
+        rotate: 'Girar',
+    },
+    zoomTexts: {
+        zoomOut: 'Disminuir el zoom',
+        zoomIn: 'Acercarse',
+        reset: 'Reiniciar',
+    },
 };

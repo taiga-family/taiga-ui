@@ -18,7 +18,7 @@
         [rotatable]="true"
         (tuiSwipe)="onSwipe($event)"
     >
-        <tui-preview-title>{{ title }}</tui-preview-title>
+        <tui-preview-title>{{ titles[index] }}</tui-preview-title>
         <tui-preview-pagination
             [length]="length"
             [(index)]="index"
