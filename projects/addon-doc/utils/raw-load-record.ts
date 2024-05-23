@@ -1,4 +1,4 @@
-import type {TuiDocExample} from '@taiga-ui/addon-doc/interfaces';
+import type {TuiDocExample} from '@taiga-ui/addon-doc/types';
 
 import {tuiRawLoad} from './raw-load';
 

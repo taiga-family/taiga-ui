@@ -19,9 +19,8 @@ import {maskitoDateOptionsGenerator} from '@maskito/kit';
 import {ResizeObserverModule} from '@ng-web-apis/resize-observer';
 import {AbstractTuiInputCard} from '@taiga-ui/addon-commerce/components/input-card';
 import {TUI_CARD_MASK} from '@taiga-ui/addon-commerce/constants';
-import type {TuiCard} from '@taiga-ui/addon-commerce/interfaces';
 import {TuiFormatCardPipe} from '@taiga-ui/addon-commerce/pipes';
-import type {TuiCodeCVCLength} from '@taiga-ui/addon-commerce/types';
+import type {TuiCard, TuiCodeCVCLength} from '@taiga-ui/addon-commerce/types';
 import type {TuiFocusableElementAccessor} from '@taiga-ui/cdk';
 import {
     TUI_DIGIT_REGEXP,

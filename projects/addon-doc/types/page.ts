@@ -1,5 +1,7 @@
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
+export type TuiDocPages = ReadonlyArray<TuiDocPage | TuiDocPageGroup>;
+
 export interface TuiDocPageBase {
     readonly section?: string;
     readonly title: string;

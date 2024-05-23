@@ -1,6 +1,5 @@
 /// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
-import type {TuiDocPage} from '@taiga-ui/addon-doc/interfaces';
-import type {TuiDocPages} from '@taiga-ui/addon-doc/types';
+import type {TuiDocPage, TuiDocPages} from '@taiga-ui/addon-doc/types';
 
 function assertTitle(page: TuiDocPage, map: Map<string, TuiDocPage>): void {
     if (map.has(page.title) && map.get(page.title)?.route !== page.route) {

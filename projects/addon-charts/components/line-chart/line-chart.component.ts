@@ -9,7 +9,7 @@ import {
     NgZone,
     ViewChildren,
 } from '@angular/core';
-import type {TuiLineChartHintContext} from '@taiga-ui/addon-charts/interfaces';
+import type {TuiLineChartHintContext} from '@taiga-ui/addon-charts/types';
 import {tuiDraw} from '@taiga-ui/addon-charts/utils';
 import type {TuiStringHandler} from '@taiga-ui/cdk';
 import {

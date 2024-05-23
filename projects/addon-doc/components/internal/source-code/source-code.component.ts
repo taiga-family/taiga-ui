@@ -1,10 +1,10 @@
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
-import type {TuiDocSourceCodePathOptions} from '@taiga-ui/addon-doc/interfaces';
 import {
     TUI_DOC_ICONS,
     TUI_DOC_SOURCE_CODE,
     TUI_DOC_SOURCE_CODE_TEXT,
 } from '@taiga-ui/addon-doc/tokens';
+import type {TuiDocSourceCodePathOptions} from '@taiga-ui/addon-doc/types';
 import {tuiPure} from '@taiga-ui/cdk';
 import {TuiButtonDirective} from '@taiga-ui/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';

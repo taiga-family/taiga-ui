@@ -17,13 +17,12 @@ import {
     Scroll,
 } from '@angular/router';
 import {TuiScrollIntoViewLinkDirective} from '@taiga-ui/addon-doc/directives';
-import type {TuiDocPage} from '@taiga-ui/addon-doc/interfaces';
 import {
     TUI_DOC_ICONS,
     TUI_DOC_PAGE_LOADED,
     TUI_DOC_SEARCH_TEXT,
 } from '@taiga-ui/addon-doc/tokens';
-import type {TuiDocPages} from '@taiga-ui/addon-doc/types';
+import type {TuiDocPage, TuiDocPages} from '@taiga-ui/addon-doc/types';
 import {tuiTransliterateKeyboardLayout} from '@taiga-ui/addon-doc/utils';
 import {TuiSidebarDirective} from '@taiga-ui/addon-mobile';
 import {

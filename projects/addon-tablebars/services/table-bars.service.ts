@@ -3,8 +3,8 @@ import {Injectable} from '@angular/core';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Observable, ReplaySubject} from 'rxjs';
 
+import type {TuiTableBarOptions} from '../classes/table-bar';
 import {TuiTableBar} from '../classes/table-bar';
-import type {TuiTableBarOptions} from '../interfaces/table-bar-options';
 
 const NO_HOST =
     'Table bars are disabled, enable support by adding TuiTableBarsHostModule to your main app module ' +

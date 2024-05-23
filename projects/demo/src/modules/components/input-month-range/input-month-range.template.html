@@ -31,7 +31,7 @@
 
         <tui-doc-example
             id="context"
-            heading="With a context usage in disabledItemHandler"
+            heading="limit"
             [content]="example3"
         >
             <tui-input-month-range-example-3 />
@@ -46,7 +46,9 @@
                     [focusable]="focusable"
                     [formControl]="control"
                     [max]="max"
+                    [maxLength]="maxLength"
                     [min]="min"
+                    [minLength]="minLength"
                     [pseudoActive]="pseudoPressed"
                     [pseudoFocus]="pseudoFocused"
                     [pseudoHover]="pseudoHovered"
@@ -78,7 +80,7 @@
             <ng-template
                 documentationPropertyMode="input"
                 documentationPropertyName="disabledItemHandler"
-                documentationPropertyType="TuiBooleanHandlerWithContext<TuiMonth, TuiMonthContext>"
+                documentationPropertyType="TuiBooleanHandler<TuiMonth>"
                 [documentationPropertyValues]="disabledItemHandlerVariants"
                 [(documentationPropertyValue)]="disabledItemHandler"
             >
@@ -103,6 +105,22 @@
                 [(documentationPropertyValue)]="max"
             >
                 Maximum date
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="maxLength"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="maxLength"
+            >
+                Maximum length
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="minLength"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="minLength"
+            >
+                Minimum length
             </ng-template>
         </tui-doc-documentation>
         <inherited-documentation />

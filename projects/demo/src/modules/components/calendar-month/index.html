@@ -28,7 +28,9 @@
             <tui-calendar-month
                 [disabledItemHandler]="disabledItemHandler"
                 [max]="max"
+                [maxLength]="maxLength"
                 [min]="min"
+                [minLength]="minLength"
                 [value]="value"
                 [year]="year"
                 (monthClick)="documentationPropertyMonthClick.emitEvent($event)"
@@ -38,7 +40,7 @@
             <ng-template
                 documentationPropertyMode="input"
                 documentationPropertyName="disabledItemHandler"
-                documentationPropertyType="TuiBooleanHandlerWithContext<TuiMonth, TuiMonthContext>"
+                documentationPropertyType="TuiBooleanHandler<TuiMonth>"
                 [documentationPropertyValues]="disabledItemHandlerVariants"
                 [(documentationPropertyValue)]="disabledItemHandler"
             >
@@ -63,6 +65,22 @@
                 [(documentationPropertyValue)]="min"
             >
                 Minimal month
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="maxLength"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="maxLength"
+            >
+                Maximum length
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="minLength"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="minLength"
+            >
+                Minimum length
             </ng-template>
             <ng-template
                 documentationPropertyMode="input"

@@ -1,7 +1,7 @@
 import type {PipeTransform} from '@angular/core';
 import {inject, Pipe, SecurityContext} from '@angular/core';
 import {DomSanitizer} from '@angular/platform-browser';
-import type {TuiRawLoaderContent} from '@taiga-ui/addon-doc/interfaces';
+import type {TuiRawLoaderContent} from '@taiga-ui/addon-doc/types';
 import {tuiRawLoad} from '@taiga-ui/addon-doc/utils';
 import type {TuiSafeHtml, TuiStringHandler} from '@taiga-ui/cdk';
 import {TUI_SANITIZER} from '@taiga-ui/core';
