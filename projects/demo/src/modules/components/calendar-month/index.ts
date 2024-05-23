@@ -13,11 +13,17 @@ import {
     TuiYear,
 } from '@taiga-ui/cdk';
 import {TuiLinkDirective} from '@taiga-ui/core';
-import {TuiCalendarMonthModule} from '@taiga-ui/kit';
+import {TuiCalendarMonthModule, TuiInputMonthRangeModule} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiCalendarMonthModule, TuiLinkDirective, RouterModule],
+    imports: [
+        TuiDemo,
+        TuiCalendarMonthModule,
+        TuiLinkDirective,
+        RouterModule,
+        TuiInputMonthRangeModule,
+    ],
     templateUrl: './index.html',
     changeDetection,
 })
@@ -39,6 +45,8 @@ export default class ExampleComponent {
 
     protected min = this.minVariants[0];
     protected max = this.maxVariants[0];
+    protected maxLength = 0;
+    protected minLength = 0;
 
     protected readonly disabledItemHandlerVariants: ReadonlyArray<
         TuiBooleanHandler<TuiMonth>
