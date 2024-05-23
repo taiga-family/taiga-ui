@@ -112,9 +112,9 @@ export class TuiDropdownOpenDirective implements OnChanges {
         this.update(open);
     }
 
-    @HostListener('click', ['$event.target', '$event.defaultPrevented'])
-    protected onClick(target: HTMLElement, prevented: boolean): void {
-        if (!this.editable && !prevented && this.host.contains(target)) {
+    @HostListener('click', ['$event.target'])
+    protected onClick(target: HTMLElement): void {
+        if (!this.editable && this.host.contains(target)) {
             this.update(!this.tuiDropdownOpen);
         }
     }

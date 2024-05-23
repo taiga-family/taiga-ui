@@ -1,3 +1,4 @@
+import {CommonModule} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -9,25 +10,42 @@ import {
     Output,
     ViewChild,
 } from '@angular/core';
-import type {TuiContext, TuiFocusableElementAccessor, TuiMapper} from '@taiga-ui/cdk';
+import {FormsModule} from '@angular/forms';
+import type {TuiContext, TuiFocusableElementAccessor} from '@taiga-ui/cdk';
 import {
     AbstractTuiControl,
     CHAR_PLUS,
     TUI_NON_DIGITS_REGEXP,
+    TuiActiveZoneDirective,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
     tuiPure,
 } from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeM, TuiSizeS} from '@taiga-ui/core';
-import {TUI_TEXTFIELD_SIZE, TuiPrimitiveTextfieldComponent} from '@taiga-ui/core';
+import {
+    TUI_TEXTFIELD_SIZE,
+    TuiAppearanceDirective,
+    TuiDataList,
+    TuiDropdownModule,
+    TuiFlagPipe,
+    TuiGroupDirective,
+    TuiHint,
+    TuiPrimitiveTextfieldComponent,
+    TuiPrimitiveTextfieldModule,
+    TuiTextfieldControllerModule,
+} from '@taiga-ui/core';
 import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
-import {TUI_ARROW} from '@taiga-ui/kit/components/arrow';
-import {TuiInputPhoneComponent} from '@taiga-ui/kit/components/input-phone';
-import {TuiToCountryCodePipe} from '@taiga-ui/kit/pipes';
+import {TUI_ARROW, TuiArrowComponent} from '@taiga-ui/kit/components/arrow';
+import {
+    TuiInputPhoneComponent,
+    TuiInputPhoneModule,
+} from '@taiga-ui/kit/components/input-phone';
+import {TuiIsoToCountryCodePipe, TuiToCountryCodePipe} from '@taiga-ui/kit/pipes';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
 import {TUI_COUNTRIES, TUI_COUNTRIES_MASKS} from '@taiga-ui/kit/tokens';
 import {tuiGetMaxAllowedPhoneLength, tuiIsoToCountryCode} from '@taiga-ui/kit/utils';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TUI_INPUT_PHONE_INTERNATIONAL_OPTIONS} from './input-phone-international.options';
 import {tuiExtractValueFromEvent} from './utils/extract-value-from-event';
@@ -35,7 +53,25 @@ import {tuiExtractValueFromEvent} from './utils/extract-value-from-event';
 const MASK_SYMBOLS = /[ \-_()]/g;
 
 @Component({
+    standalone: true,
     selector: 'tui-input-phone-international',
+    imports: [
+        CommonModule,
+        FormsModule,
+        PolymorpheusModule,
+        TuiInputPhoneModule,
+        TuiGroupDirective,
+        TuiPrimitiveTextfieldModule,
+        TuiTextfieldControllerModule,
+        TuiHint,
+        TuiDropdownModule,
+        TuiDataList,
+        TuiArrowComponent,
+        TuiAppearanceDirective,
+        TuiIsoToCountryCodePipe,
+        TuiActiveZoneDirective,
+        TuiFlagPipe,
+    ],
     templateUrl: './input-phone-international.template.html',
     styleUrls: ['./input-phone-international.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -162,21 +198,10 @@ export class TuiInputPhoneInternationalComponent
         this.close();
     }
 
-    /**
-     * @deprecated use `{{ countryIsoCode | tuiIsoToCountryCode }}`
-     * TODO drop in v4.0
-     */
-    public isoToCountryCode(isoCode: TuiCountryIsoCode): string {
-        return tuiIsoToCountryCode(this.countriesMasks, isoCode);
-    }
-
     @HostBinding('attr.data-size')
     protected get size(): TuiSizeL | TuiSizeS {
         return this.textfieldSize.size;
     }
-
-    protected readonly isoToCountryCodeMapper: TuiMapper<[TuiCountryIsoCode], string> =
-        item => tuiIsoToCountryCode(this.countriesMasks, item);
 
     protected onActiveZone(active: boolean): void {
         this.updateFocused(active);

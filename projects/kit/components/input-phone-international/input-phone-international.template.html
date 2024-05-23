@@ -1,9 +1,8 @@
-<tui-hosted-dropdown
+<div
     *ngIf="countriesNames$ | async as countriesNames"
-    class="t-hosted-dropdown"
-    [canOpen]="!readOnly"
-    [content]="dropdown"
-    [(open)]="open"
+    [tuiDropdown]="dropdown"
+    [tuiDropdownEnabled]="!readOnly"
+    [(tuiDropdownOpen)]="open"
     (tuiActiveZoneChange)="onActiveZone($event)"
 >
     <div tuiGroup>
@@ -57,7 +56,7 @@
                     {{ countriesNames[item] }}
                 </span>
                 <span class="t-country-item-code">
-                    {{ item | tuiMapper: isoToCountryCodeMapper }}
+                    {{ item | tuiIsoToCountryCode }}
                 </span>
             </button>
         </tui-data-list>
@@ -72,11 +71,8 @@
     </ng-template>
 
     <ng-template #icon>
-        <div
-            appearance="icon"
-            tuiWrapper
-        >
+        <div tuiAppearance="icon">
             <ng-container *polymorpheusOutlet="arrow" />
         </div>
     </ng-template>
-</tui-hosted-dropdown>
+</div>

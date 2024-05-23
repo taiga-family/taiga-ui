@@ -1,12 +1,12 @@
 ```ts
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {TuiInputPhoneInternationalModule} from '@taiga-ui/kit';
+import {TuiInputPhoneInternationalComponent} from '@taiga-ui/kit';
 
 // ...
 
 @Component({
   standalone: true,
-  imports: [...FormsModule, ReactiveFormsModule, TuiInputPhoneInternationalModule],
+  imports: [...FormsModule, ReactiveFormsModule, TuiInputPhoneInternationalComponent],
   // ...
 })
 export class MyComponent {}

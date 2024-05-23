@@ -11,7 +11,7 @@ import {
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {
-    TuiInputPhoneInternationalModule,
+    TuiInputPhoneInternationalComponent,
     TuiSortCountriesPipeModule,
 } from '@taiga-ui/kit';
 
@@ -25,7 +25,7 @@ import {ExampleTuiInputPhoneInternationalComponent} from './input-phone-internat
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
-        TuiInputPhoneInternationalModule,
+        TuiInputPhoneInternationalComponent,
         InheritedDocumentationModule,
         TuiTextfieldControllerModule,
         TuiDropdownModule,
