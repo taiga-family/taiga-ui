@@ -14,6 +14,7 @@
         "tslib": "2.6.2"
     },
     "peerDependencies": {
-        "@angular/core": ">=16.0.0"
+        "@angular/core": ">=16.0.0",
+        "@maskito/phone": "2.3.2"
     }
 }
