@@ -622,6 +622,11 @@ export const ROUTES: Routes = [
         loadComponent: async () => import('../components/rating'),
     }),
     route({
+        path: DemoRoute.Pulse,
+        title: 'Pulse',
+        loadComponent: async () => import('../components/pulse'),
+    }),
+    route({
         path: DemoRoute.Range,
         loadChildren: async () =>
             (await import('../components/range/range.module')).ExampleTuiRangeModule,

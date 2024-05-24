@@ -1,0 +1,75 @@
+@keyframes tuiPulse {
+    0% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+
+    20% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    25% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+
+    45% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    50% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+
+    70% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    75% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+
+    95% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+}
+
+:host {
+    position: relative;
+    color: var(--tui-primary);
+
+    &:before {
+        content: '';
+        position: absolute;
+        top: -0.5rem;
+        left: -0.5rem;
+        width: 1rem;
+        height: 1rem;
+        border-radius: 100%;
+        background: currentColor;
+        opacity: 0.3;
+        animation: tuiPulse 3s ease-in-out infinite;
+        animation-play-state: var(--t-animation-state);
+    }
+
+    &:after {
+        content: '';
+        position: absolute;
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 100%;
+        transform: translate(-50%, -50%);
+        background: currentColor;
+    }
+}
