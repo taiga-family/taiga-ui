@@ -1,6 +1,14 @@
-import {ChangeDetectionStrategy, Component, Inject, Input} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    HostListener,
+    Inject,
+    Input,
+    Renderer2,
+} from '@angular/core';
 import {SafeResourceUrl} from '@angular/platform-browser';
 import {tuiIsString, TuiStringHandler} from '@taiga-ui/cdk';
+import {TUI_ICON_COLORED} from '@taiga-ui/experimental/constants';
 import {TUI_ICON_RESOLVER} from '@taiga-ui/experimental/tokens';
 
 import {TUI_AVATAR_OPTIONS, TuiAvatarOptions} from './avatar.options';
@@ -35,6 +43,7 @@ export class TuiAvatarComponent {
     constructor(
         @Inject(TUI_AVATAR_OPTIONS) private readonly options: TuiAvatarOptions,
         @Inject(TUI_ICON_RESOLVER) readonly resolver: TuiStringHandler<string>,
+        @Inject(Renderer2) private readonly renderer: Renderer2,
     ) {}
 
     get safeSrc(): string {
@@ -59,5 +68,11 @@ export class TuiAvatarComponent {
         }
 
         return this.value.length ? 'img' : 'content';
+    }
+
+    // TODO: Consider another way in v4.0
+    @HostListener(TUI_ICON_COLORED, ['$event.target'])
+    onColoredIcon(target: HTMLElement): void {
+        this.renderer.setStyle(target, 'padding', '20%');
     }
 }
