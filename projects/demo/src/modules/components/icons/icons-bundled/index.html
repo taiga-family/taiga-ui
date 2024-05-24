@@ -1,0 +1,31 @@
+<tui-doc-page
+    header="Icons bundled"
+    type="components/icons"
+>
+    <ng-template pageTab>
+        <p>
+            Use
+            <code>TuiSvgService</code>
+            into your component for define any icons in js bundle. Don't forget
+            <a
+                fragment="sanitizer"
+                routerLink="/icons/bundled"
+                tuiLink
+            >
+                provide TUI_SANITIZER:
+            </a>
+        </p>
+
+        <tui-doc-code
+            filename="my.component.ts"
+            [code]="injectService"
+        />
+
+        <tui-doc-example
+            id="all"
+            heading="Bundled / inline / external"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample"
+        />
+    </ng-template>
+</tui-doc-page>

@@ -1,0 +1,52 @@
+<h2 class="title">Search by name</h2>
+<tui-input
+    tuiAutoFocus
+    tuiHintContent="You can copy icon's name with a click"
+    tuiTextfieldSize="m"
+    [formControl]="control"
+    [tuiTextfieldCleaner]="true"
+    [tuiTextfieldLabelOutside]="true"
+>
+    Input icon name to highlight
+</tui-input>
+
+<ng-content />
+
+<ng-container *ngFor="let key of icons | tuiKeys">
+    <ng-container *ngIf="icons[key] | tuiFilter: matcher : (search$ | async) ?? '' as filtered">
+        <ng-container *ngIf="filtered.length">
+            <div class="header-group">
+                <h2 class="title">
+                    {{ key }}
+                </h2>
+
+                <tui-badge
+                    appearance="success"
+                    size="m"
+                    class="badge"
+                >
+                    {{ filtered.length.toString() }}
+                </tui-badge>
+            </div>
+
+            <div
+                class="icons"
+                [style.--tui-text-01-night]="color"
+                [style.--tui-text-01]="color"
+            >
+                <ng-container
+                    *ngFor="let icon of filtered"
+                    [ngTemplateOutlet]="iconGroup?.template || null"
+                    [ngTemplateOutletContext]="{
+                        icon: icon,
+                        group: key,
+                        copyPath: copyPath,
+                        entry: {isIntersecting: false}
+                    }"
+                />
+            </div>
+        </ng-container>
+    </ng-container>
+</ng-container>
+
+<div class="nothing tui-space_top-8">Nothing found</div>
