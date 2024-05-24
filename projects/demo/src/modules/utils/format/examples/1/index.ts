@@ -3,7 +3,7 @@ import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiPx} from '@taiga-ui/cdk';
-import {TuiInputNumberModule} from '@taiga-ui/kit';
+import {TuiInputNumberModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,

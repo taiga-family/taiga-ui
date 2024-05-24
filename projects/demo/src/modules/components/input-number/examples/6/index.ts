@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiNumberFormatProvider} from '@taiga-ui/core';
-import {tuiInputNumberOptionsProvider} from '@taiga-ui/kit';
+import {tuiInputNumberOptionsProvider} from '@taiga-ui/legacy';
 
 @Component({
     selector: 'tui-input-number-example-6',

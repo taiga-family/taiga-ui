@@ -90,7 +90,7 @@ export class TuiOptionComponent<T = unknown> implements OnDestroy {
 
     // @bad TODO: Consider aria-activedescendant for proper accessibility implementation
     protected onMouseMove(): void {
-        if (this.isMobile && !tuiIsNativeFocused(this.el)) {
+        if (!this.isMobile && !tuiIsNativeFocused(this.el)) {
             this.el.focus({preventScroll: true});
         }
     }

@@ -10,10 +10,8 @@ import {
     TuiNotificationComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {
-    TuiInputPhoneInternationalComponent,
-    TuiSortCountriesPipeModule,
-} from '@taiga-ui/kit';
+import {TuiSortCountriesPipeModule} from '@taiga-ui/kit';
+import {TuiInputPhoneInternationalComponent} from '@taiga-ui/legacy';
 
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
 import {TuiInputPhoneExample1} from './examples/1';

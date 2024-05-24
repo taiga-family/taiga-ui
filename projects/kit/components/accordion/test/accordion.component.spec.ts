@@ -12,11 +12,9 @@ import {
     TuiAccordionComponent,
     TuiAccordionItemComponent,
     TuiAccordionModule,
-    TuiInputModule,
-    TuiSelectComponent,
-    TuiSelectModule,
 } from '@taiga-ui/kit';
 import {TuiDataListWrapperModule} from '@taiga-ui/kit/components';
+import {TuiInputModule, TuiSelectComponent, TuiSelectModule} from '@taiga-ui/legacy';
 import {
     TuiAccordionHarness,
     TuiAccordionItemHarness,

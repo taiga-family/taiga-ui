@@ -9,7 +9,7 @@ import {
     TuiPrimitiveTextfieldModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiInputModule} from '@taiga-ui/kit';
+import {TuiInputModule} from '@taiga-ui/legacy';
 
 import {TextfieldControllerDocumentationModule} from '../../components/abstract/textfield-controller-documentation/textfield-controller-documentation.module';
 import {TuiTextfieldControllerExample1} from './examples/1';

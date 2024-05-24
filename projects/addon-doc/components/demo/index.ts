@@ -38,9 +38,9 @@ import {
 import {
     TuiChevronDirective,
     TuiDataListWrapperModule,
-    TuiSelectModule,
     TuiSwitchComponent,
 } from '@taiga-ui/kit';
+import {TuiSelectModule} from '@taiga-ui/legacy';
 
 const MIN_WIDTH = 160;
 

@@ -14,10 +14,9 @@ import {
 } from '@taiga-ui/core';
 import {
     TuiDataListWrapperModule,
-    TuiInputModule,
-    TuiSelectModule,
     TuiSliderModule,
 } from '@taiga-ui/kit';
+import {TuiInputModule, TuiSelectModule} from '@taiga-ui/legacy';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 
 @Component({

@@ -5,7 +5,7 @@ import {RouterModule} from '@angular/router';
 import {TuiAddonDoc, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiAutoFocusDirective} from '@taiga-ui/cdk';
 import {TuiButtonDirective, TuiLinkDirective} from '@taiga-ui/core';
-import {TuiInputModule} from '@taiga-ui/kit';
+import {TuiInputModule} from '@taiga-ui/legacy';
 
 import {ExampleTuiAutoFocusComponent} from './auto-focus.component';
 import {TuiAutoFocusExample1} from './examples/1';

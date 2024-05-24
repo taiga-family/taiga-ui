@@ -3,7 +3,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiTime} from '@taiga-ui/cdk';
-import {tuiInputTimeOptionsProvider} from '@taiga-ui/kit';
+import {tuiInputTimeOptionsProvider} from '@taiga-ui/legacy';
 
 @Component({
     selector: 'tui-input-time-example-4',

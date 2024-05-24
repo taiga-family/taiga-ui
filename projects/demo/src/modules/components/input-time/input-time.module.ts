@@ -11,11 +11,8 @@ import {
     TuiNotificationComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {
-    TuiInputTimeModule,
-    TuiSwitchComponent,
-    TuiUnfinishedValidatorModule,
-} from '@taiga-ui/kit';
+import {TuiSwitchComponent, TuiUnfinishedValidatorModule} from '@taiga-ui/kit';
+import {TuiInputTimeModule} from '@taiga-ui/legacy';
 
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
 import {TuiInputTimeExample1} from './examples/1';

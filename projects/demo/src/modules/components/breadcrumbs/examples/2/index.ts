@@ -9,11 +9,8 @@ import {
     TuiDropdownModule,
     TuiLinkDirective,
 } from '@taiga-ui/core';
-import {
-    TuiBreadcrumbsModule,
-    tuiBreadcrumbsOptionsProvider,
-    TuiInputNumberModule,
-} from '@taiga-ui/kit';
+import {TuiBreadcrumbsModule, tuiBreadcrumbsOptionsProvider} from '@taiga-ui/kit';
+import {TuiInputNumberModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,

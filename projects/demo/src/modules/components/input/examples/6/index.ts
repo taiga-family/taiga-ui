@@ -4,13 +4,13 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTable} from '@taiga-ui/addon-table';
 import {TuiTextfieldControllerModule, TuiTextfieldOptionsDirective} from '@taiga-ui/core';
+import {TuiDataListWrapperModule} from '@taiga-ui/kit';
 import {
-    TuiDataListWrapperModule,
     TuiInputDateModule,
     TuiInputModule,
     TuiInputNumberModule,
     TuiSelectModule,
-} from '@taiga-ui/kit';
+} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,

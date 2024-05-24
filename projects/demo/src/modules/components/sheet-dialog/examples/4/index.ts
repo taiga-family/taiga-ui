@@ -17,7 +17,8 @@ import {
     TuiInitialsPipe,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiAvatarComponent, TuiInputComponent, TuiInputModule} from '@taiga-ui/kit';
+import {TuiAvatarComponent} from '@taiga-ui/kit';
+import {TuiInputComponent, TuiInputModule} from '@taiga-ui/legacy';
 import {map} from 'rxjs';
 
 const USERS = [

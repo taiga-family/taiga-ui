@@ -15,13 +15,8 @@ import {
     TuiNotificationComponent,
     TuiSvgComponent,
 } from '@taiga-ui/core';
-import {
-    TuiDataListWrapperModule,
-    TuiInputModule,
-    TuiMultiSelectModule,
-    TuiSelectModule,
-    TuiTabsModule,
-} from '@taiga-ui/kit';
+import {TuiDataListWrapperModule, TuiTabsModule} from '@taiga-ui/kit';
+import {TuiInputModule, TuiMultiSelectModule, TuiSelectModule} from '@taiga-ui/legacy';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {DropdownDocumentationModule} from '../abstract/dropdown-documentation/dropdown-documentation.module';

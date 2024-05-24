@@ -1,6 +1,6 @@
 import {Directive} from '@angular/core';
 import {tuiProvide, TuiValueTransformer} from '@taiga-ui/cdk';
-import {TUI_NUMBER_VALUE_TRANSFORMER} from '@taiga-ui/kit';
+import {TUI_NUMBER_VALUE_TRANSFORMER} from '@taiga-ui/legacy';
 
 @Directive({
     selector: '[absTransformer]',

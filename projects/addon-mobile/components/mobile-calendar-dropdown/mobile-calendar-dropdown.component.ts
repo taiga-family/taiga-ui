@@ -15,12 +15,12 @@ import {
     TuiHostedDropdownComponent,
     tuiSlideInTop,
 } from '@taiga-ui/core';
+import {TUI_MOBILE_CALENDAR} from '@taiga-ui/kit';
 import {
-    TUI_MOBILE_CALENDAR,
     TuiInputDateComponent,
     TuiInputDateMultiComponent,
     TuiInputDateRangeComponent,
-} from '@taiga-ui/kit';
+} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,

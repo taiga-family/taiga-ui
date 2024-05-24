@@ -18,13 +18,13 @@ import {
     TuiScrollbarComponent,
     TuiSvgComponent,
 } from '@taiga-ui/core';
+import {TuiDataListWrapperModule} from '@taiga-ui/kit';
 import {
-    TuiDataListWrapperModule,
     TuiInputDateModule,
     TuiInputNumberModule,
     TuiSelectModule,
     TuiTextareaModule,
-} from '@taiga-ui/kit';
+} from '@taiga-ui/legacy';
 
 interface Item {
     readonly date: TuiDay;

@@ -1,6 +1,6 @@
 ```ts
 import {TuiMobileCalendarComponent, tuiProvideMobileCalendar} from '@taiga-ui/addon-mobile';
-import {TuiInputDateModule} from '@taiga-ui/kit';
+import {TuiInputDateModule} from '@taiga-ui/legacy';
 
 // ...
 

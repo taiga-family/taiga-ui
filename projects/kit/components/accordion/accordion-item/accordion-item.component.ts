@@ -10,7 +10,6 @@ import {
     Output,
 } from '@angular/core';
 import type {TuiSizeS} from '@taiga-ui/core';
-import {TUI_ARROW_OPTIONS} from '@taiga-ui/kit/components/arrow';
 
 import {TuiAccordionItemContentDirective} from './accordion-item-content.directive';
 import {TuiAccordionItemEagerContentDirective} from './accordion-item-eager-content.directive';
@@ -61,8 +60,6 @@ export class TuiAccordionItemComponent {
 
     @ContentChild(TuiAccordionItemContentDirective)
     protected readonly lazyContent?: TuiAccordionItemContentDirective;
-
-    protected readonly options = inject(TUI_ARROW_OPTIONS);
 
     public close(): void {
         this.updateOpen(false);

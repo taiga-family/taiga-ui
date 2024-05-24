@@ -7,9 +7,8 @@ import {TuiDataList, TuiErrorComponent} from '@taiga-ui/core';
 import {
     TuiDataListWrapperModule,
     TuiFieldErrorPipeModule,
-    TuiInputModule,
-    TuiSelectModule,
 } from '@taiga-ui/kit';
+import {TuiInputModule, TuiSelectModule} from '@taiga-ui/legacy';
 
 import {TuiMiscellaneousExample1} from './examples/1';
 import {TuiMiscellaneousExample2} from './examples/2';

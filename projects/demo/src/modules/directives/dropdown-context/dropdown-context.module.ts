@@ -13,7 +13,8 @@ import {
     TuiLinkDirective,
     TuiSvgComponent,
 } from '@taiga-ui/core';
-import {TuiDataListDropdownManagerModule, TuiTextareaModule} from '@taiga-ui/kit';
+import {TuiDataListDropdownManagerModule} from '@taiga-ui/kit';
+import {TuiTextareaModule} from '@taiga-ui/legacy';
 
 import {DropdownDocumentationModule} from '../../components/abstract/dropdown-documentation/dropdown-documentation.module';
 import {ExampleTuiDropdownContextComponent} from './dropdown-context.component';

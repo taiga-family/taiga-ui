@@ -11,9 +11,9 @@ import {
 import {
     TuiAvatarComponent,
     TuiDataListWrapperModule,
-    TuiSelectModule,
 } from '@taiga-ui/kit';
 import {TuiCardLargeDirective, TuiCellDirective} from '@taiga-ui/layout';
+import {TuiSelectModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,

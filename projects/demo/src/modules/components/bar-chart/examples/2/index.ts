@@ -5,7 +5,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAxesComponent, TuiBarChartComponent} from '@taiga-ui/addon-charts';
 import type {TuiContext} from '@taiga-ui/cdk';
 import {tuiFormatNumber, TuiHint} from '@taiga-ui/core';
-import {TuiDataListWrapperModule, TuiSelectModule} from '@taiga-ui/kit';
+import {TuiDataListWrapperModule} from '@taiga-ui/kit';
+import {TuiSelectModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,

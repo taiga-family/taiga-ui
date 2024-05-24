@@ -3,12 +3,12 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {
-    TuiComboBoxModule,
     TuiDataListWrapperModule,
     TuiFilterByInputPipeModule,
     TuiStringifyContentPipeModule,
     TuiStringifyPipe,
 } from '@taiga-ui/kit';
+import {TuiComboBoxModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,

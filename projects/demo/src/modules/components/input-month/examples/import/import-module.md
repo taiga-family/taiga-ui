@@ -1,5 +1,5 @@
 ```ts
-import {TuiInputMonthModule} from 'packageName';
+import {TuiInputMonthModule} from '@taiga-ui/legacy';
 
 // ...
 

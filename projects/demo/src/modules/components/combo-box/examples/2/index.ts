@@ -9,7 +9,8 @@ import {
     TuiLoaderComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiAvatarComponent, TuiComboBoxModule} from '@taiga-ui/kit';
+import {TuiAvatarComponent} from '@taiga-ui/kit';
+import {TuiComboBoxModule} from '@taiga-ui/legacy';
 
 import {databaseMockData} from './database-mock-data';
 import {RequestService} from './request.service';

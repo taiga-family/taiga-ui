@@ -8,7 +8,7 @@ import {
     TuiHostedDropdownModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiInputDateModule} from '@taiga-ui/kit';
+import {TuiInputDateModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,

@@ -14,7 +14,8 @@ import {
     TuiSvgComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiAvatarComponent, TuiInputPhoneModule} from '@taiga-ui/kit';
+import {TuiAvatarComponent} from '@taiga-ui/kit';
+import {TuiInputPhoneModule} from '@taiga-ui/legacy';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';

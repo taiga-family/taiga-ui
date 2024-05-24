@@ -13,7 +13,8 @@ import {
     TuiYear,
 } from '@taiga-ui/cdk';
 import {TuiLinkDirective} from '@taiga-ui/core';
-import {TuiCalendarMonthModule, TuiInputMonthRangeModule} from '@taiga-ui/kit';
+import {TuiCalendarMonthModule} from '@taiga-ui/kit';
+import {TuiInputMonthRangeModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,

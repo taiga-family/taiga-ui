@@ -3,7 +3,8 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_LAST_DAY, TuiDay} from '@taiga-ui/cdk';
-import {TuiInputDateModule, TuiNamedDay} from '@taiga-ui/kit';
+import {TuiNamedDay} from '@taiga-ui/kit';
+import {TuiInputDateModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,

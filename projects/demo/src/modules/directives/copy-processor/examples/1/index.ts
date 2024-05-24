@@ -6,7 +6,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiStringHandler} from '@taiga-ui/cdk';
 import {TuiCopyProcessorDirective} from '@taiga-ui/cdk';
 import {TUI_NUMBER_FORMAT, TuiAlertService} from '@taiga-ui/core';
-import {TuiInputNumberModule} from '@taiga-ui/kit';
+import {TuiInputNumberModule} from '@taiga-ui/legacy';
 import {map} from 'rxjs';
 
 @Component({

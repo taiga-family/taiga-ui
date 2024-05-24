@@ -1,6 +1,6 @@
 ```ts
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {TuiInputSliderModule} from '@taiga-ui/kit';
+import {TuiInputSliderModule} from '@taiga-ui/legacy';
 
 // ...
 

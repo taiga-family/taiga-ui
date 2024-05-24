@@ -14,14 +14,16 @@ import {
 } from '@taiga-ui/core';
 import {
     TuiAvatarComponent,
-    TuiComboBoxModule,
     TuiDataListWrapperModule,
     TuiFilterByInputPipeModule,
+} from '@taiga-ui/kit';
+import {TuiCellDirective} from '@taiga-ui/layout';
+import {
+    TuiComboBoxModule,
     TuiInputNumberModule,
     TuiMultiSelectModule,
     TuiSelectModule,
-} from '@taiga-ui/kit';
-import {TuiCellDirective} from '@taiga-ui/layout';
+} from '@taiga-ui/legacy';
 
 interface User {
     readonly url: string;

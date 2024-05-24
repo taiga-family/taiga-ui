@@ -4,7 +4,8 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiCurrencyVariants} from '@taiga-ui/addon-commerce';
 import {tuiGetCurrencySymbol} from '@taiga-ui/addon-commerce';
-import {TuiDataListWrapperModule, TuiSelectModule} from '@taiga-ui/kit';
+import {TuiDataListWrapperModule} from '@taiga-ui/kit';
+import {TuiSelectModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,

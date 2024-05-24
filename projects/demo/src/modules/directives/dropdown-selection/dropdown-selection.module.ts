@@ -10,7 +10,8 @@ import {
     TuiDropdownModule,
     TuiInitialsPipe,
 } from '@taiga-ui/core';
-import {TuiAvatarComponent, TuiTextareaModule} from '@taiga-ui/kit';
+import {TuiAvatarComponent} from '@taiga-ui/kit';
+import {TuiTextareaModule} from '@taiga-ui/legacy';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {DropdownDocumentationModule} from '../../components/abstract/dropdown-documentation/dropdown-documentation.module';

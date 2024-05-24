@@ -18,7 +18,8 @@ import {
     TuiTextfieldControllerModule,
     TuiTextfieldOptionsDirective,
 } from '@taiga-ui/core';
-import {TuiBadgeDirective, TuiInputModule} from '@taiga-ui/kit';
+import {TuiBadgeDirective} from '@taiga-ui/kit';
+import {TuiInputModule} from '@taiga-ui/legacy';
 import type {Observable} from 'rxjs';
 import {debounceTime, distinctUntilChanged, filter, map} from 'rxjs';
 

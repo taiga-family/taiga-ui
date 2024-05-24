@@ -1,6 +1,6 @@
 ```ts
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {TuiTextAreaModule} from '@taiga-ui/kit';
+import {TuiTextareaModule} from '@taiga-ui/legacy';
 
 @Component({
   standalone: true,
@@ -8,7 +8,7 @@ import {TuiTextAreaModule} from '@taiga-ui/kit';
     // ...
     FormsModule,
     ReactiveFormsModule,
-    TuiTextAreaModule,
+    TuiTextareaModule,
   ],
 })
 export class MyComponent {}

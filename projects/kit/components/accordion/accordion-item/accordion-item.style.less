@@ -120,16 +120,9 @@
 }
 
 .t-icon {
-    .transition(~'transform, color');
-
-    width: 1.5rem;
-    height: 1.5rem;
+    .transition(color);
     margin-left: auto;
     color: var(--tui-text-03);
-
-    &_open {
-        transform: rotate(180deg);
-    }
 
     :host:hover & {
         color: var(--tui-text-02);

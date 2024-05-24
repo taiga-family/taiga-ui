@@ -5,7 +5,7 @@ import {RouterModule} from '@angular/router';
 import {TuiAddonDoc, tuiGenerateRoutes, TuiTextCodeDirective} from '@taiga-ui/addon-doc';
 import {TuiElementDirective, TuiScrollService} from '@taiga-ui/cdk';
 import {TuiButtonDirective, TuiScrollbarComponent} from '@taiga-ui/core';
-import {TuiInputNumberModule} from '@taiga-ui/kit';
+import {TuiInputNumberModule} from '@taiga-ui/legacy';
 
 import {TuiScrollExample1} from './examples/1';
 import {ExampleTuiScrollComponent} from './scroll.component';

@@ -6,7 +6,7 @@ import {TuiDay} from '@taiga-ui/cdk';
 import {TUI_DATE_FORMAT, TUI_DEFAULT_DATE_FORMAT} from '@taiga-ui/core';
 import type {TuiLanguage} from '@taiga-ui/i18n';
 import {TUI_LANGUAGE} from '@taiga-ui/i18n';
-import {TuiInputDateModule} from '@taiga-ui/kit';
+import {TuiInputDateModule} from '@taiga-ui/legacy';
 import type {BehaviorSubject, Observable} from 'rxjs';
 import {map, switchMap} from 'rxjs';
 

@@ -5,7 +5,8 @@ import {RouterModule} from '@angular/router';
 import {TuiSetupComponent} from '@demo/utils';
 import {TuiAddonDoc, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiTextfieldControllerModule} from '@taiga-ui/core';
-import {TuiHighlightModule, TuiInputModule} from '@taiga-ui/kit';
+import {TuiHighlightModule} from '@taiga-ui/kit';
+import {TuiInputModule} from '@taiga-ui/legacy';
 
 import {TuiHighlightExample1} from './examples/1';
 import {ExampleTuiHighlightComponent} from './highlight.component';

@@ -9,7 +9,7 @@ import {
     TuiLinkDirective,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiInputNumberModule} from '@taiga-ui/kit';
+import {TuiInputNumberModule} from '@taiga-ui/legacy';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/inherited-documentation/abstract-props-accessor';
 import {AbstractExampleTuiNumberFormat} from '../../components/abstract/number-format';

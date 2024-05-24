@@ -4,7 +4,7 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiDataList, TuiFlagPipe} from '@taiga-ui/core';
 import type {TuiCountryIsoCode, TuiLanguageName} from '@taiga-ui/i18n';
 import {TuiLanguageSwitcher} from '@taiga-ui/i18n';
-import {TuiSelectModule} from '@taiga-ui/kit';
+import {TuiSelectModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,

@@ -1,6 +1,6 @@
 ```ts
 import {ReactiveFormsModule} from '@angular/forms';
-import {TuiInputModule} from '@taiga-ui/kit';
+import {TuiInputModule} from '@taiga-ui/legacy';
 
 @Component({
   standalone: true,

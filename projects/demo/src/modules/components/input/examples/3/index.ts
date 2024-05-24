@@ -5,7 +5,8 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {MaskitoDirective} from '@maskito/angular';
 import type {MaskitoOptions} from '@maskito/core';
-import {TuiInputModule, TuiUnmaskHandlerModule} from '@taiga-ui/kit';
+import {TuiUnmaskHandlerModule} from '@taiga-ui/kit';
+import {TuiInputModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,

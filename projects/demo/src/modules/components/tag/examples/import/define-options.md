@@ -1,5 +1,5 @@
 ```ts
-import {tuiTagOptionsProvider} from '@taiga-ui/core';
+import {tuiTagOptionsProvider} from '@taiga-ui/legacy';
 // ...
 
 @Component({

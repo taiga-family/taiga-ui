@@ -5,7 +5,8 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDay} from '@taiga-ui/cdk';
 import {TuiErrorComponent, TuiTextfieldControllerModule} from '@taiga-ui/core';
-import {TuiFieldErrorPipeModule, TuiInputDateModule} from '@taiga-ui/kit';
+import {TuiFieldErrorPipeModule} from '@taiga-ui/kit';
+import {TuiInputDateModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,

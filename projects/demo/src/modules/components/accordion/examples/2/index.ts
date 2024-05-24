@@ -5,12 +5,8 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiButtonDirective, TuiSvgComponent} from '@taiga-ui/core';
-import {
-    TuiAccordionModule,
-    TuiDataListWrapperModule,
-    TuiInputModule,
-    TuiSelectModule,
-} from '@taiga-ui/kit';
+import {TuiAccordionModule, TuiDataListWrapperModule} from '@taiga-ui/kit';
+import {TuiInputModule, TuiSelectModule} from '@taiga-ui/legacy';
 
 class Account {
     constructor(

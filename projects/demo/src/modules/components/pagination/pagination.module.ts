@@ -7,10 +7,10 @@ import {TuiAddonDoc, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {
     TuiBadgeDirective,
-    TuiInputSliderModule,
     TuiPaginationModule,
     TuiRadioListComponent,
 } from '@taiga-ui/kit';
+import {TuiInputSliderModule} from '@taiga-ui/legacy';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiPaginationExample1} from './examples/1';
