@@ -26,6 +26,7 @@ export * from '@taiga-ui/kit/components/pdf-viewer';
 export * from '@taiga-ui/kit/components/pin';
 export * from '@taiga-ui/kit/components/preview';
 export * from '@taiga-ui/kit/components/progress';
+export * from '@taiga-ui/kit/components/pulse';
 export * from '@taiga-ui/kit/components/push';
 export * from '@taiga-ui/kit/components/radio';
 export * from '@taiga-ui/kit/components/radio-list';

@@ -105,6 +105,7 @@ export const DemoRoute = {
     Pagination: '/navigation/pagination',
     Radio: '/components/radio',
     Rating: '/components/rating',
+    Pulse: '/components/pulse',
     Range: '/components/range',
     CalendarRange: '/components/calendar-range',
     Select: '/components/select',

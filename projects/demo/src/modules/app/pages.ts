@@ -715,6 +715,12 @@ export const pages: TuiDocPages = [
     },
     {
         section: 'Components',
+        title: 'Pulse',
+        keywords: 'сигнал, пульс, pulse, signal',
+        route: DemoRoute.Pulse,
+    },
+    {
+        section: 'Components',
         title: 'Selects',
         subPages: [
             {
