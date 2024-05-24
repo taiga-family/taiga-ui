@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[15314],{15314:s=>{s.exports="```ts\n// This example is only if you are running via ts-node\n// $ ts-node ./my-path-to-script/process-icons.ts\nimport {sync as globSync} from 'glob';\n\nimport {processIcons} from '@taiga-ui/icons/scripts';\n\nprocessIcons(globSync('./my-path-to-icons/**/*.svg'));\n```\n"}}]);
