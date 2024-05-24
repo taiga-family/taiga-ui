@@ -128,7 +128,7 @@
         "@types/node": "20.12.12",
         "@types/webpack-env": "1.18.5",
         "cpy-cli": "5.0.0",
-        "glob": "10.3.16",
+        "glob": "10.4.1",
         "husky": "9.0.11",
         "kill-port": "2.0.1",
         "lint-staged": "15.2.4",
