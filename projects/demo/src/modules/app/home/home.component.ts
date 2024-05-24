@@ -5,7 +5,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDocCodeComponent, TuiDocTabComponent} from '@taiga-ui/addon-doc';
 import {TuiLinkDirective, TuiNotificationComponent} from '@taiga-ui/core';
-import {TuiAccordionModule, TuiTabsModule} from '@taiga-ui/kit';
+import {TuiAccordion, TuiTabsModule} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
@@ -17,7 +17,7 @@ import {TuiAccordionModule, TuiTabsModule} from '@taiga-ui/kit';
         TuiDocCodeComponent,
         TuiLinkDirective,
         RouterLink,
-        TuiAccordionModule,
+        TuiAccordion,
         TuiNotificationComponent,
     ],
     templateUrl: './home.template.html',

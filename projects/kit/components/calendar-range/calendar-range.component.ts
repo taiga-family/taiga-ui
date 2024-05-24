@@ -1,3 +1,4 @@
+import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -9,7 +10,13 @@ import {
     Output,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import type {TuiBooleanHandler, TuiDay, TuiDayLike, TuiMapper} from '@taiga-ui/cdk';
+import {
+    TuiBooleanHandler,
+    TuiDay,
+    TuiDayLike,
+    TuiMapper,
+    TuiMapperPipe,
+} from '@taiga-ui/cdk';
 import {
     TUI_FALSE_HANDLER,
     TUI_FIRST_DAY,
@@ -21,15 +28,33 @@ import {
     tuiPure,
     tuiWatch,
 } from '@taiga-ui/cdk';
-import type {TuiMarkerHandler, TuiWithOptionalMinMax} from '@taiga-ui/core';
+import {
+    TuiCalendarComponent,
+    TuiDataList,
+    TuiIconComponent,
+    TuiMarkerHandler,
+    TuiWithOptionalMinMax,
+} from '@taiga-ui/core';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core';
 import type {TuiDayRangePeriod} from '@taiga-ui/kit/classes';
 import {MAX_DAY_RANGE_LENGTH_MAPPER} from '@taiga-ui/kit/constants';
+import {TuiPrimitiveCalendarRangeModule} from '@taiga-ui/kit/internal';
 import {TUI_CALENDAR_DATE_STREAM, TUI_OTHER_DATE_TEXT} from '@taiga-ui/kit/tokens';
 import type {Observable} from 'rxjs';
 
 @Component({
+    standalone: true,
     selector: 'tui-calendar-range',
+    imports: [
+        AsyncPipe,
+        NgIf,
+        NgForOf,
+        TuiMapperPipe,
+        TuiCalendarComponent,
+        TuiDataList,
+        TuiPrimitiveCalendarRangeModule,
+        TuiIconComponent,
+    ],
     templateUrl: './calendar-range.template.html',
     styleUrls: ['./calendar-range.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -150,11 +175,6 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
         const {activePeriod} = this;
 
         return (tuiIsString(item) && activePeriod === null) || activePeriod === item;
-    }
-
-    // TODO: investigate if it is used anywhere and (if not) delete it in v4.0
-    protected onRangeChange(dayRange: TuiDayRange): void {
-        this.updateValue(dayRange);
     }
 
     protected onDayClick(day: TuiDay): void {

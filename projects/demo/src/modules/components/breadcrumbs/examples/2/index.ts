@@ -2,27 +2,28 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiRepeatTimesDirective} from '@taiga-ui/cdk';
+import {TuiItemDirective, TuiRepeatTimesDirective} from '@taiga-ui/cdk';
 import {
     TuiButtonDirective,
     TuiDataList,
     TuiDropdownModule,
     TuiLinkDirective,
 } from '@taiga-ui/core';
-import {TuiBreadcrumbsModule, tuiBreadcrumbsOptionsProvider} from '@taiga-ui/kit';
+import {TuiBreadcrumbsComponent, tuiBreadcrumbsOptionsProvider} from '@taiga-ui/kit';
 import {TuiInputNumberModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
     imports: [
         FormsModule,
-        TuiBreadcrumbsModule,
+        TuiBreadcrumbsComponent,
         TuiDropdownModule,
         TuiDataList,
         TuiInputNumberModule,
         TuiRepeatTimesDirective,
         TuiLinkDirective,
         TuiButtonDirective,
+        TuiItemDirective,
     ],
     templateUrl: './index.html',
     encapsulation,

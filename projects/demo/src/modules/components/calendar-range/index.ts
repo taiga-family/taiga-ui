@@ -12,14 +12,14 @@ import {
 import type {TuiMarkerHandler} from '@taiga-ui/core';
 import {TuiLinkDirective} from '@taiga-ui/core';
 import type {TuiDayRangePeriod} from '@taiga-ui/kit';
-import {TuiCalendarRangeModule, tuiCreateDefaultDayRangePeriods} from '@taiga-ui/kit';
+import {TuiCalendarRangeComponent, tuiCreateDefaultDayRangePeriods} from '@taiga-ui/kit';
 
 const TWO_DOTS: [string, string] = ['var(--tui-primary)', 'var(--tui-info-fill)'];
 const ONE_DOT: [string] = ['var(--tui-success-fill)'];
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiCalendarRangeModule, TuiLinkDirective],
+    imports: [TuiDemo, TuiCalendarRangeComponent, TuiLinkDirective],
     templateUrl: './index.html',
     changeDetection,
 })

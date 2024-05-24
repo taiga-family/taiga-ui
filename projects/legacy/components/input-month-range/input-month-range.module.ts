@@ -8,7 +8,7 @@ import {
     TuiTextfieldControllerModule,
     TuiTextfieldLegacyComponent,
 } from '@taiga-ui/core';
-import {TuiCalendarMonthModule} from '@taiga-ui/kit';
+import {TuiCalendarMonthComponent} from '@taiga-ui/kit';
 
 import {TuiInputMonthRangeComponent} from './input-month-range.component';
 import {TuiInputMonthRangeDirective} from './input-month-range.directive';
@@ -16,7 +16,7 @@ import {TuiInputMonthRangeDirective} from './input-month-range.directive';
 @NgModule({
     imports: [
         CommonModule,
-        TuiCalendarMonthModule,
+        TuiCalendarMonthComponent,
         TuiHostedDropdownModule,
         TuiPrimitiveTextfieldModule,
         TuiSvgComponent,

@@ -10,7 +10,8 @@ import {
 import {BehaviorSubject, combineLatest, interval, map, merge, Observable} from 'rxjs';
 
 @Directive({
-    selector: 'tui-carousel',
+    standalone: true,
+    selector: 'tui-carousel:is(never)',
 })
 export class TuiCarouselDirective extends Observable<unknown> {
     private readonly el = tuiInjectElement();
@@ -37,11 +38,6 @@ export class TuiCarouselDirective extends Observable<unknown> {
 
     @Input()
     public set duration(duration: number) {
-        this.duration$.next(duration);
-    }
-
-    @Input()
-    public set index(_: number) {
-        this.duration$.next(this.duration$.value);
+        this.duration$.next(Number.isNaN(duration) ? this.duration$.value : duration);
     }
 }

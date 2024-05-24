@@ -2,17 +2,19 @@ import {isPlatformBrowser, NgFor} from '@angular/common';
 import {Component, inject, PLATFORM_ID} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiItemDirective} from '@taiga-ui/cdk';
 import {TuiButtonDirective} from '@taiga-ui/core';
-import {TuiCarouselModule, TuiIslandModule, TuiPaginationModule} from '@taiga-ui/kit';
+import {TuiCarouselComponent, TuiIslandModule, TuiPaginationModule} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
     imports: [
-        TuiCarouselModule,
+        TuiCarouselComponent,
         TuiIslandModule,
         TuiPaginationModule,
         NgFor,
         TuiButtonDirective,
+        TuiItemDirective,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

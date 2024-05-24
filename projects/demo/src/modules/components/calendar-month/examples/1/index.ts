@@ -2,11 +2,11 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiMonth} from '@taiga-ui/cdk';
-import {TuiCalendarMonthModule} from '@taiga-ui/kit';
+import {TuiCalendarMonthComponent} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiCalendarMonthModule],
+    imports: [TuiCalendarMonthComponent],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

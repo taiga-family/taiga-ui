@@ -10,7 +10,7 @@ import {
     TuiTextfieldLegacyComponent,
     TuiWrapperModule,
 } from '@taiga-ui/core';
-import {TuiCalendarRangeModule, TuiValueAccessorModule} from '@taiga-ui/kit';
+import {TuiCalendarRangeComponent, TuiValueAccessorModule} from '@taiga-ui/kit';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiInputDateRangeComponent} from './input-date-range.component';
@@ -28,7 +28,7 @@ import {TuiInputDateRangeDirective} from './input-date-range.directive';
         TuiTextfieldControllerModule,
         TuiHostedDropdownModule,
         TuiSvgComponent,
-        TuiCalendarRangeModule,
+        TuiCalendarRangeComponent,
         TuiValueAccessorModule,
     ],
     declarations: [TuiInputDateRangeComponent, TuiInputDateRangeDirective],

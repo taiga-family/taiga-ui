@@ -5,7 +5,7 @@ import {TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {RouterTestingModule} from '@angular/router/testing';
 import type {TuiSizeL} from '@taiga-ui/core';
-import {TuiBreadcrumbsComponent, TuiBreadcrumbsModule} from '@taiga-ui/kit';
+import {TuiBreadcrumbsComponent} from '@taiga-ui/kit';
 import {TuiPageObject} from '@taiga-ui/testing';
 import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
@@ -67,7 +67,7 @@ describe('Breadcrumbs Wrapper', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TuiBreadcrumbsModule, RouterTestingModule],
+            imports: [TuiBreadcrumbsComponent, RouterTestingModule],
             declarations: [TestComponent],
             providers: [NG_EVENT_PLUGINS],
         });

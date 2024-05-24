@@ -1,3 +1,4 @@
+import {AsyncPipe, NgForOf, NgIf, NgStyle, NgTemplateOutlet} from '@angular/common';
 import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
@@ -12,7 +13,8 @@ import {
     Output,
     TemplateRef,
 } from '@angular/core';
-import type {TuiSwipeDirection} from '@taiga-ui/cdk';
+import {IntersectionObserverModule} from '@ng-web-apis/intersection-observer';
+import {TuiPanDirective, TuiSwipeDirection, TuiSwipeDirective} from '@taiga-ui/cdk';
 import {
     EMPTY_QUERY,
     TUI_IS_MOBILE,
@@ -21,17 +23,43 @@ import {
     TuiItemDirective,
     tuiPure,
 } from '@taiga-ui/cdk';
+import {
+    TuiCarouselAutoscrollDirective,
+    TuiCarouselScrollDirective,
+} from '@taiga-ui/kit/components';
+
+import {TuiCarouselDirective} from './carousel.directive';
 
 @Component({
+    standalone: true,
     selector: 'tui-carousel',
+    imports: [
+        AsyncPipe,
+        NgIf,
+        NgForOf,
+        NgStyle,
+        NgTemplateOutlet,
+        IntersectionObserverModule,
+        TuiPanDirective,
+        TuiSwipeDirective,
+        TuiCarouselScrollDirective,
+        TuiCarouselAutoscrollDirective,
+    ],
     templateUrl: './carousel.template.html',
     styleUrls: ['./carousel.style.less'],
+    hostDirectives: [
+        {
+            directive: TuiCarouselDirective,
+            inputs: ['duration'],
+        },
+    ],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiCarouselComponent {
     private readonly el = tuiInjectElement();
     private readonly cdr = inject(ChangeDetectorRef);
     private readonly isMobile = inject(TUI_IS_MOBILE);
+    private readonly directive = inject(TuiCarouselDirective);
     private translate = 0;
 
     @Input()
@@ -40,9 +68,6 @@ export class TuiCarouselComponent {
 
     @Input()
     public itemsCount = 1;
-
-    @Input()
-    public index = 0;
 
     @Output()
     public readonly indexChange = new EventEmitter<number>();
@@ -53,6 +78,14 @@ export class TuiCarouselComponent {
 
     @HostBinding('class._transitioned')
     protected transitioned = true;
+
+    protected index = 0;
+
+    @Input('index')
+    public set indexSetter(index: number) {
+        this.index = index;
+        this.directive.duration = NaN;
+    }
 
     public next(): void {
         if (this.items && this.index === this.items.length - this.itemsCount) {

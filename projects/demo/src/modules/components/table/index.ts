@@ -2,11 +2,11 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TuiLinkDirective} from '@taiga-ui/core';
-import {TuiAccordionModule} from '@taiga-ui/kit';
+import {TuiAccordion} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiAccordionModule, TuiLinkDirective],
+    imports: [TuiDemo, TuiAccordion, TuiLinkDirective],
     templateUrl: './index.html',
     changeDetection,
 })

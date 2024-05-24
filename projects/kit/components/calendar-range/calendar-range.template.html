@@ -40,11 +40,11 @@
                 (mousedown.prevent.silent)="(0)"
             >
                 {{ item }}
-                <tui-svg
+                <tui-icon
                     *ngIf="isItemActive(item)"
                     automation-id="tui-calendar-range__checkmark"
                     class="t-checkmark"
-                    [src]="icons.check"
+                    [icon]="icons.check"
                 />
             </button>
         </tui-data-list>

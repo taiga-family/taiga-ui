@@ -3,11 +3,11 @@ import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TuiLinkDirective, type TuiSizeL} from '@taiga-ui/core';
-import {TuiBreadcrumbsModule} from '@taiga-ui/kit';
+import {TuiBreadcrumbsComponent} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [RouterLink, TuiDemo, TuiBreadcrumbsModule, TuiLinkDirective],
+    imports: [RouterLink, TuiDemo, TuiBreadcrumbsComponent, TuiLinkDirective],
     templateUrl: './index.html',
     changeDetection,
 })
