@@ -8,8 +8,7 @@ describe('TuiIsoToCountryCodePipe', () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            imports: [TuiIsoToCountryCodePipe],
-            providers: [NG_EVENT_PLUGINS],
+            providers: [TuiIsoToCountryCodePipe, NG_EVENT_PLUGINS],
         });
 
         pipe = TestBed.inject(TuiIsoToCountryCodePipe);
