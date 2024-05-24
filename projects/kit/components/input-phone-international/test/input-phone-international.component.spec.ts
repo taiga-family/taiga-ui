@@ -6,12 +6,9 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiRootComponent, tuiSvgOptionsProvider} from '@taiga-ui/core';
-import type {TuiLanguage} from '@taiga-ui/i18n';
+import type {TuiCountryIsoCode, TuiLanguage} from '@taiga-ui/i18n';
 import {TUI_ENGLISH_LANGUAGE, TUI_LANGUAGE, TUI_RUSSIAN_LANGUAGE} from '@taiga-ui/i18n';
-import {
-    TuiInputPhoneInternationalComponent,
-    TuiInputPhoneInternationalModule,
-} from '@taiga-ui/kit';
+import {TuiInputPhoneInternationalComponent} from '@taiga-ui/kit';
 import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 import {of} from 'rxjs';
 
@@ -34,9 +31,9 @@ describe('InputPhoneInternational', () => {
 
         public control = new FormControl('+79110330102');
 
-        public countries = ['RU', 'KZ', 'UA', 'BY', 'TW', 'BD'];
+        public countries: TuiCountryIsoCode[] = ['RU', 'KZ', 'UA', 'BY', 'TW', 'BD'];
 
-        public countryIsoCode = 'RU';
+        public countryIsoCode: TuiCountryIsoCode = 'RU';
 
         public readOnly = false;
     }
@@ -50,7 +47,7 @@ describe('InputPhoneInternational', () => {
             TestBed.configureTestingModule({
                 imports: [
                     TuiRootComponent,
-                    TuiInputPhoneInternationalModule,
+                    TuiInputPhoneInternationalComponent,
                     ReactiveFormsModule,
                     NoopAnimationsModule,
                 ],
@@ -76,12 +73,6 @@ describe('InputPhoneInternational', () => {
 
     describe('country codes', () => {
         initializeTestModule();
-
-        it('calculates country code by iso code', () => {
-            const iso = 'RU';
-
-            expect(component.isoToCountryCode(iso)).toBe('+7');
-        });
 
         it('correct country code in inputPhoneCountryCode', () => {
             component.countryIsoCode = 'DM';
