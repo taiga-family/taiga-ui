@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[15323],{15323:n=>{n.exports="```ts\nimport {TuiInputMonthModule} from 'packageName';\n\n// ...\n\n@Component({\n  standalone: true,\n  imports: [\n    // ...\n    TuiInputMonthModule,\n  ],\n  // ...\n})\nexport class MyComponent {}\n```\n"}}]);
