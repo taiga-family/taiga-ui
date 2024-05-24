@@ -29,7 +29,7 @@ import {
 import {
     FIXED_DROPDOWN_CONTROLLER_PROVIDER,
     TUI_VALUE_ACCESSOR_PROVIDER,
-} from '@taiga-ui/kit/providers';
+} from '@taiga-ui/kit';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 @Component({

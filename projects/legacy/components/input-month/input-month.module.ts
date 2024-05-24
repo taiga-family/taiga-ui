@@ -9,7 +9,7 @@ import {
     TuiTextfieldControllerModule,
     TuiTextfieldLegacyComponent,
 } from '@taiga-ui/core';
-import {TuiCalendarMonthModule} from '@taiga-ui/kit/components/calendar-month';
+import {TuiCalendarMonthModule} from '@taiga-ui/kit';
 
 import {TuiInputMonthComponent} from './input-month.component';
 import {TuiInputMonthDirective} from './input-month.directive';

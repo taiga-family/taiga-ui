@@ -14,13 +14,13 @@ import {
     TuiRootComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
+import {TuiDataListWrapperModule} from '@taiga-ui/kit/components';
 import {
-    TuiComboBoxComponent,
-    TuiComboBoxModule,
     TUI_ARROW,
     TUI_ARROW_MODE,
+    TuiComboBoxComponent,
+    TuiComboBoxModule,
 } from '@taiga-ui/legacy';
-import {TuiDataListWrapperModule} from '@taiga-ui/kit/components';
 import {TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 

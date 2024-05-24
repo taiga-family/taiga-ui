@@ -8,10 +8,7 @@ import {
     TuiSurfaceDirective,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {
-    TuiAvatarComponent,
-    TuiDataListWrapperModule,
-} from '@taiga-ui/kit';
+import {TuiAvatarComponent, TuiDataListWrapperModule} from '@taiga-ui/kit';
 import {TuiCardLargeDirective, TuiCellDirective} from '@taiga-ui/layout';
 import {TuiSelectModule} from '@taiga-ui/legacy';
 

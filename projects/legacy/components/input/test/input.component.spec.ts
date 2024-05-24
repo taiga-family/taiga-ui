@@ -11,8 +11,8 @@ import {
     TuiRootComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiInputComponent, TuiInputModule} from '@taiga-ui/legacy';
 import {TuiDataListWrapperModule} from '@taiga-ui/kit/components';
+import {TuiInputComponent, TuiInputModule} from '@taiga-ui/legacy';
 import {
     tuiActiveText,
     tuiDispatchOnActive,

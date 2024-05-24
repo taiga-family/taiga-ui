@@ -26,7 +26,7 @@ import {
     TuiInputModule,
     TuiInputNumberModule,
     TuiMultiSelectModule,
-    TuiSelectModule
+    TuiSelectModule,
 } from '@taiga-ui/legacy';
 
 import {TuiGroupExample1} from './examples/1';

@@ -38,15 +38,17 @@ import {
     TuiMapperPipe,
     tuiPure,
 } from '@taiga-ui/cdk';
-import {TuiAppearanceDirective, TuiDataListHost, TuiIconComponent} from '@taiga-ui/core';
+import type {TuiDataListHost} from '@taiga-ui/core';
 import {
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_COMMON_ICONS,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
+    TuiAppearanceDirective,
     tuiAsDataListHost,
     TuiDataListComponent,
     TuiDataListDirective,
     TuiDropdownModule,
+    TuiIconComponent,
     TuiSvgComponent,
     TuiWrapperModule,
 } from '@taiga-ui/core';

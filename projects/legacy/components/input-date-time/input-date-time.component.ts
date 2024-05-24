@@ -42,18 +42,16 @@ import {
     TUI_TEXTFIELD_SIZE,
     TuiPrimitiveTextfieldComponent,
 } from '@taiga-ui/core';
+import type {TuiInputDateOptions} from '@taiga-ui/kit';
 import {
     DATE_TIME_SEPARATOR,
     TUI_DATE_MODE_MASKITO_ADAPTER,
-} from '@taiga-ui/kit/constants';
-import type {TuiInputDateOptions} from '@taiga-ui/kit/tokens';
-import {
     TUI_DATE_TEXTS,
     TUI_DATE_TIME_VALUE_TRANSFORMER,
     TUI_INPUT_DATE_OPTIONS,
     TUI_TIME_TEXTS,
     tuiDateStreamWithTransformer,
-} from '@taiga-ui/kit/tokens';
+} from '@taiga-ui/kit';
 import type {Observable} from 'rxjs';
 import {BehaviorSubject, combineLatest, map, timer} from 'rxjs';
 

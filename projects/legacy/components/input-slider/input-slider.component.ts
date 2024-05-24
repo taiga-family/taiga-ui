@@ -26,13 +26,13 @@ import {
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
     tuiGetFractionPartPadded,
 } from '@taiga-ui/core';
-import {TuiInputNumberComponent} from '@taiga-ui/legacy/components/input-number';
+import type {TuiKeySteps} from '@taiga-ui/kit';
 import {
+    TUI_FLOATING_PRECISION,
     TuiSliderComponent,
     tuiSliderOptionsProvider,
-} from '@taiga-ui/kit/components/slider';
-import {TUI_FLOATING_PRECISION} from '@taiga-ui/kit/constants';
-import type {TuiKeySteps} from '@taiga-ui/kit/types';
+} from '@taiga-ui/kit';
+import {TuiInputNumberComponent} from '@taiga-ui/legacy/components/input-number';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 @Component({

@@ -3,7 +3,6 @@ import {inject, Pipe} from '@angular/core';
 import type {TuiStringMatcher} from '@taiga-ui/cdk';
 import {TUI_DEFAULT_MATCHER, TUI_FOCUSABLE_ITEM_ACCESSOR} from '@taiga-ui/cdk';
 import {TUI_DATA_LIST_HOST} from '@taiga-ui/core';
-// import {TuiMultiSelectDirective} from '@taiga-ui/kit/components/multi-select';
 
 import type {TuiArrayElement} from './filter-by-input.base';
 import {AbstractTuiFilterByInput} from './filter-by-input.base';

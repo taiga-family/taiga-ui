@@ -47,9 +47,8 @@ import {
     TuiHostedDropdownComponent,
     TuiScrollbarComponent,
 } from '@taiga-ui/core';
-import type {TuiStringifiableItem} from '@taiga-ui/kit/classes';
-import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
-import type {TuiStatus} from '@taiga-ui/kit/types';
+import type {TuiStatus, TuiStringifiableItem} from '@taiga-ui/kit';
+import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {timer} from 'rxjs';
 

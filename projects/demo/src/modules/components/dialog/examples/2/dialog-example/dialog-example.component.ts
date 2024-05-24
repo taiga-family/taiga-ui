@@ -12,10 +12,7 @@ import {
     TuiTextfieldControllerModule,
     TuiTextfieldOptionsDirective,
 } from '@taiga-ui/core';
-import {
-    TuiDataListWrapperModule,
-    TuiSliderModule,
-} from '@taiga-ui/kit';
+import {TuiDataListWrapperModule, TuiSliderModule} from '@taiga-ui/kit';
 import {TuiInputModule, TuiSelectModule} from '@taiga-ui/legacy';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 

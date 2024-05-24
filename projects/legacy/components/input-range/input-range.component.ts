@@ -31,10 +31,9 @@ import {
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
     tuiGetFractionPartPadded,
 } from '@taiga-ui/core';
+import type {TuiKeySteps} from '@taiga-ui/kit';
+import {TUI_FLOATING_PRECISION, TuiRangeComponent} from '@taiga-ui/kit';
 import {TuiInputNumberComponent} from '@taiga-ui/legacy/components/input-number';
-import {TuiRangeComponent} from '@taiga-ui/kit/components/range';
-import {TUI_FLOATING_PRECISION} from '@taiga-ui/kit/constants';
-import type {TuiKeySteps} from '@taiga-ui/kit/types';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 @Component({

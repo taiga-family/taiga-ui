@@ -9,7 +9,7 @@ import {
     TuiFilterByInputPipeModule,
     TuiStringifyContentPipeModule,
 } from '@taiga-ui/kit';
-import {TuiComboBoxModule, TuiMultiSelectModule, TuiInputModule} from '@taiga-ui/legacy';
+import {TuiComboBoxModule, TuiInputModule, TuiMultiSelectModule} from '@taiga-ui/legacy';
 
 import {TuiFilterByInputExample1} from './examples/1';
 import {TuiFilterByInputExample2} from './examples/2';

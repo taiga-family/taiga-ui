@@ -50,20 +50,17 @@ import {
     TUI_TEXTFIELD_SIZE,
     TuiPrimitiveTextfieldComponent,
 } from '@taiga-ui/core';
-import type {TuiDayRangePeriod} from '@taiga-ui/kit/classes';
+import type {TuiDayRangePeriod, TuiInputDateOptions} from '@taiga-ui/kit';
 import {
     MAX_DAY_RANGE_LENGTH_MAPPER,
     TUI_DATE_MODE_MASKITO_ADAPTER,
-} from '@taiga-ui/kit/constants';
-import type {TuiInputDateOptions} from '@taiga-ui/kit/tokens';
-import {
     TUI_DATE_RANGE_VALUE_TRANSFORMER,
     TUI_DATE_TEXTS,
     TUI_INPUT_DATE_OPTIONS,
     TUI_MOBILE_CALENDAR,
     TUI_MOBILE_CALENDAR_PROVIDER,
     tuiDateStreamWithTransformer,
-} from '@taiga-ui/kit/tokens';
+} from '@taiga-ui/kit';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {map} from 'rxjs';
 

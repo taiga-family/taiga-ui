@@ -2,7 +2,7 @@ import type {PipeTransform} from '@angular/core';
 import {inject, Pipe} from '@angular/core';
 import type {TuiIdentityMatcher} from '@taiga-ui/cdk';
 import {tuiPure} from '@taiga-ui/cdk';
-import {tuiIsFlat} from '@taiga-ui/kit/utils';
+import {tuiIsFlat} from '@taiga-ui/kit';
 
 import {TuiMultiSelectComponent} from './multi-select.component';
 

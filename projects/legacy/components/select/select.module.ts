@@ -9,10 +9,9 @@ import {
     TuiTextfieldLegacyComponent,
     TuiWrapperModule,
 } from '@taiga-ui/core';
+import {TuiDataListWrapperModule, TuiStringifyContentPipeModule} from '@taiga-ui/kit';
 import {TuiArrowComponent} from '@taiga-ui/legacy/components/arrow';
-import {TuiDataListWrapperModule} from '@taiga-ui/kit/components/data-list-wrapper';
 import {TuiSelectOptionModule} from '@taiga-ui/legacy/components/select-option';
-import {TuiStringifyContentPipeModule} from '@taiga-ui/kit/pipes';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiNativeSelectComponent} from './native-select/native-select.component';

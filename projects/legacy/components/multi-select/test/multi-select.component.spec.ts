@@ -10,12 +10,12 @@ import {
     TuiRootComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
+import {TuiDataListWrapperModule} from '@taiga-ui/kit/components';
 import {
-    TuiMultiSelectModule,
     TUI_ARROW_MODE,
     TuiMultiSelectComponent,
+    TuiMultiSelectModule,
 } from '@taiga-ui/legacy';
-import {TuiDataListWrapperModule} from '@taiga-ui/kit/components';
 import {TUI_SANITIZER_MOCK, TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 

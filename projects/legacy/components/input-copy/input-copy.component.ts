@@ -16,8 +16,7 @@ import {
 } from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {TUI_TEXTFIELD_SIZE, TuiPrimitiveTextfieldComponent} from '@taiga-ui/core';
-import {TUI_VALUE_ACCESSOR_PROVIDER} from '@taiga-ui/kit/providers';
-import {TUI_COPY_TEXTS} from '@taiga-ui/kit/tokens';
+import {TUI_COPY_TEXTS, TUI_VALUE_ACCESSOR_PROVIDER} from '@taiga-ui/kit';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import type {Observable} from 'rxjs';
 import {map, merge, of, startWith, Subject, switchMap, timer} from 'rxjs';

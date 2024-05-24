@@ -7,8 +7,8 @@ import {
     TuiTextfieldControllerModule,
     TuiWrapperModule,
 } from '@taiga-ui/core';
+import {TuiRangeModule} from '@taiga-ui/kit';
 import {TuiInputNumberModule} from '@taiga-ui/legacy/components/input-number';
-import {TuiRangeModule} from '@taiga-ui/kit/components/range';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiInputRangeComponent} from './input-range.component';

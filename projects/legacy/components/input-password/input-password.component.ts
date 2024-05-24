@@ -22,7 +22,7 @@ import {
     TuiHintOptionsDirective,
     TuiPrimitiveTextfieldComponent,
 } from '@taiga-ui/core';
-import {TUI_PASSWORD_TEXTS} from '@taiga-ui/kit/tokens';
+import {TUI_PASSWORD_TEXTS} from '@taiga-ui/kit';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import type {Observable} from 'rxjs';
 import {EMPTY, map, startWith} from 'rxjs';

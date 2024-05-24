@@ -10,8 +10,7 @@ import {
     TuiTextfieldLegacyComponent,
     TuiWrapperModule,
 } from '@taiga-ui/core';
-import {TuiCalendarRangeModule} from '@taiga-ui/kit/components/calendar-range';
-import {TuiValueAccessorModule} from '@taiga-ui/kit/directives';
+import {TuiCalendarRangeModule, TuiValueAccessorModule} from '@taiga-ui/kit';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiInputDateRangeComponent} from './input-date-range.component';

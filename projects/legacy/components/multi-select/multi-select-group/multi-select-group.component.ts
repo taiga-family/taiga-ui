@@ -20,7 +20,7 @@ import {
 } from '@taiga-ui/cdk';
 import type {TuiDataListHost} from '@taiga-ui/core';
 import {TUI_DATA_LIST_HOST, TuiOptionComponent} from '@taiga-ui/core';
-import {TUI_MULTI_SELECT_TEXTS} from '@taiga-ui/kit/tokens';
+import {TUI_MULTI_SELECT_TEXTS} from '@taiga-ui/kit';
 import type {Observable} from 'rxjs';
 import {combineLatest, map} from 'rxjs';
 
