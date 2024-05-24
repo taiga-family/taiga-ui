@@ -1,5 +1,5 @@
 import {TestBed} from '@angular/core/testing';
-import {TuiHideSelectedPipe, TuiMultiSelectComponent} from '@taiga-ui/kit';
+import {TuiHideSelectedPipe, TuiMultiSelectComponent} from '@taiga-ui/legacy';
 
 describe('tuiHideSelected pipe', () => {
     let multiSelect: any;
