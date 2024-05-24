@@ -19,7 +19,7 @@ const LEFT = 1;
 
 @Directive({
     standalone: true,
-    selector: '[tuiHint]:not(ng-container):not(ng-template)',
+    selector: '[tuiHint]:is(never)',
 })
 export class TuiHintPositionDirective extends TuiPositionAccessor {
     private readonly options = inject(TUI_HINT_OPTIONS);

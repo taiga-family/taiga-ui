@@ -21,7 +21,7 @@ import {TUI_HINT_OPTIONS} from './hint-options.directive';
 
 @Directive({
     standalone: true,
-    selector: '[tuiHint]:not(ng-container):not(ng-template)',
+    selector: '[tuiHint]:is(never)',
     providers: [tuiAsDriver(TuiHintHoverDirective), TuiHoveredService],
     exportAs: 'tuiHintHover',
 })
@@ -32,13 +32,17 @@ export class TuiHintHoverDirective extends TuiDriver {
     private readonly toggle$ = new Subject<boolean>();
     private readonly stream$ = merge(
         this.toggle$.pipe(
-            switchMap(visible => of(visible).pipe(delay(visible ? 0 : this.hideDelay))),
+            switchMap(visible =>
+                of(visible).pipe(delay(visible ? 0 : this.tuiHintHideDelay)),
+            ),
             takeUntil(this.hovered$),
             repeat(),
         ),
         this.hovered$.pipe(
             switchMap(visible =>
-                of(visible).pipe(delay(visible ? this.showDelay : this.hideDelay)),
+                of(visible).pipe(
+                    delay(visible ? this.tuiHintShowDelay : this.tuiHintHideDelay),
+                ),
             ),
             takeUntil(this.toggle$),
             repeat(),
@@ -55,11 +59,11 @@ export class TuiHintHoverDirective extends TuiDriver {
         }),
     );
 
-    @Input('tuiHintShowDelay')
-    public showDelay: TuiHintOptions['showDelay'] = this.options.showDelay;
+    @Input()
+    public tuiHintShowDelay: TuiHintOptions['showDelay'] = this.options.showDelay;
 
-    @Input('tuiHintHideDelay')
-    public hideDelay: TuiHintOptions['hideDelay'] = this.options.hideDelay;
+    @Input()
+    public tuiHintHideDelay: TuiHintOptions['hideDelay'] = this.options.hideDelay;
 
     public readonly type = 'hint';
 

@@ -9,7 +9,10 @@ import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 
 import {TUI_HINT_COMPONENT} from './hint.providers';
 import {TuiHintService} from './hint.service';
+import {TuiHintDriverDirective} from './hint-driver.directive';
+import {TuiHintHoverDirective} from './hint-hover.directive';
 import {TUI_HINT_OPTIONS} from './hint-options.directive';
+import {TuiHintPositionDirective} from './hint-position.directive';
 
 @Directive({
     standalone: true,
@@ -21,6 +24,17 @@ import {TUI_HINT_OPTIONS} from './hint-options.directive';
             provide: PolymorpheusComponent,
             deps: [TUI_HINT_COMPONENT, INJECTOR],
             useClass: PolymorpheusComponent,
+        },
+    ],
+    hostDirectives: [
+        TuiHintDriverDirective,
+        {
+            directive: TuiHintHoverDirective,
+            inputs: ['tuiHintHideDelay', 'tuiHintShowDelay'],
+        },
+        {
+            directive: TuiHintPositionDirective,
+            inputs: ['tuiHintDirection'],
         },
     ],
 })
@@ -58,7 +72,7 @@ export class TuiHintDirective<C>
         this.toggle(false);
     }
 
-    public getClientRect(): ClientRect {
+    public getClientRect(): DOMRect {
         return this.el.getBoundingClientRect();
     }
 

@@ -3,7 +3,7 @@ import {TuiDriverDirective} from '@taiga-ui/core/classes';
 
 @Directive({
     standalone: true,
-    selector: '[tuiHint]:not(ng-container):not(ng-template)',
+    selector: '[tuiHint]:is(never)',
 })
 export class TuiHintDriverDirective extends TuiDriverDirective {
     public readonly type = 'hint';

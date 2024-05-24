@@ -28,7 +28,7 @@ import {TuiHintDirective} from './hint.directive';
     animations: [tuiParentAnimation],
     host: {'[@tuiParentAnimation]': ''},
 })
-export class TuiHintUnstyledComponent {
+class TuiHintUnstyledComponent {
     protected readonly context = inject<TuiContext<TuiPortalItem>>(POLYMORPHEUS_CONTEXT);
 }
 
