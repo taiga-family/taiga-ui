@@ -2850,6 +2850,9 @@ const tuiIconVisaMono =
 const tuiIconVisaMonoOutline =
     '<svg preserveAspectRatio="xMidYMid meet" style="width:inherit;height:inherit;max-width:2rem;max-height:2rem" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg x="50%" y="50%" overflow="visible" preserveAspectRatio="xMidYMid meet" style="width:inherit;height:inherit;max-width:2rem;max-height:2rem" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><svg x="-16" y="-16"><path fill="currentColor" fill-rule="evenodd" d="M23.226 11.384A6.91 6.91 0 0 0 20.908 11c-2.557 0-4.358 1.24-4.373 3.017-.014 1.314 1.286 2.047 2.267 2.485 1.007.448 1.346.733 1.34 1.134-.006.613-.803.893-1.547.893-1.035 0-1.586-.139-2.435-.48l-.334-.146-.363 2.047c.604.255 1.722.477 2.882.488 2.72 0 4.485-1.226 4.505-3.124.01-1.04-.68-1.831-2.172-2.484-.904-.423-1.458-.705-1.452-1.134 0-.38.469-.786 1.481-.786a4.933 4.933 0 0 1 1.937.35l.232.106zm-11.969 8.918 1.618-9.143h2.587l-1.619 9.143zm16.604-9.134h2l2.093 9.137h-2.4s-.238-1.05-.315-1.37l-1.816-.002h-.004l-1.493-.002c-.1.247-.545 1.374-.545 1.374h-2.717l3.842-8.38c.272-.594.736-.757 1.355-.757m-.16 3.337-1.03 2.556h2.147l-.6-2.64-.174-.789c-.069.18-.164.418-.236.6a5.326 5.326 0 0 0-.107.273m-18.614-3.34-2.533 6.236-.27-1.267v-.001l-.907-4.201c-.156-.58-.61-.752-1.172-.772H.033L0 11.35a11.11 11.11 0 0 1 2.718 1.003l2.3 7.941 2.737-.003 4.073-9.125z" clip-rule="evenodd" vector-effect="non-scaling-stroke"/></svg></svg></g></svg>';
 
+const tuiIconVisaOutline =
+    '<svg width="2em" height="2em" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="2em" height="2em" x="50%" y="50%" overflow="visible" viewBox="0 0 32 32"><svg x="-16" y="-16"><g fill="#1a1f71"><path d="m11.257 21.302 1.618-9.143h2.587l-1.619 9.143zM23.226 12.384A6.909 6.909 0 0 0 20.907 12c-2.556 0-4.357 1.24-4.372 3.017-.014 1.314 1.286 2.047 2.267 2.485 1.007.448 1.346.734 1.34 1.134-.006.613-.803.893-1.547.893-1.036 0-1.586-.139-2.435-.48l-.334-.146-.363 2.047c.605.255 1.722.477 2.882.488 2.72 0 4.485-1.226 4.505-3.124.01-1.04-.68-1.832-2.172-2.484-.904-.423-1.458-.705-1.452-1.134 0-.38.469-.786 1.481-.786a4.93 4.93 0 0 1 1.937.35l.231.106zM29.86 12.168h-1.999c-.62 0-1.083.162-1.355.758l-3.842 8.38h2.717s.444-1.127.545-1.375l3.313.004c.077.32.315 1.37.315 1.37h2.4zm-3.19 5.893c.214-.527 1.03-2.556 1.03-2.556-.014.024.213-.53.344-.873l.175.789.599 2.64zM9.087 12.166 6.554 18.4l-.27-1.267c-.471-1.461-1.94-3.044-3.582-3.836l2.316 7.996 2.737-.003 4.073-9.125z"/><path d="M4.205 12.16H.033L0 12.35c3.246.757 5.393 2.586 6.285 4.784l-.908-4.202c-.156-.58-.61-.752-1.172-.772"/></g></svg></svg></g></svg>';
+
 const tuiIconVoicemail =
     '<svg width="1em" height="1em" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1em" height="1em" x="50%" y="50%" overflow="visible" viewBox="0 0 16 16"><svg x="-8" y="-8"><svg width="16" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="5.5" cy="11.5" r="4.5"/><circle cx="18.5" cy="11.5" r="4.5"/><path d="M5.5 16h13"/></svg></svg></svg></g></svg>';
 
@@ -3970,6 +3973,7 @@ export {
     tuiIconVisa,
     tuiIconVisaMono,
     tuiIconVisaMonoOutline,
+    tuiIconVisaOutline,
     tuiIconVoicemail,
     tuiIconVoicemailLarge,
     tuiIconVoicemailOutline,
