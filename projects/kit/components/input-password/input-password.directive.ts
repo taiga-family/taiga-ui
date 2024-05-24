@@ -1,7 +1,9 @@
-import type {DoCheck} from '@angular/core';
+import type {AfterViewInit} from '@angular/core';
 import {Directive} from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {tuiIsInput} from '@taiga-ui/cdk';
 import {AbstractTuiTextfieldHost, tuiAsTextfieldHost} from '@taiga-ui/core';
+import {startWith} from 'rxjs';
 
 import type {TuiInputPasswordComponent} from './input-password.component';
 
@@ -11,9 +13,14 @@ import type {TuiInputPasswordComponent} from './input-password.component';
 })
 export class TuiInputPasswordDirective
     extends AbstractTuiTextfieldHost<TuiInputPasswordComponent>
-    implements DoCheck
+    implements AfterViewInit
 {
     protected input?: HTMLInputElement;
+
+    protected readonly isPasswordHidden$ = this.host.passwordHidden.pipe(
+        startWith(this.host.inputType),
+        takeUntilDestroyed(),
+    );
 
     public onValueChange(value: string): void {
         this.host.onValueChange(value);
@@ -23,12 +30,14 @@ export class TuiInputPasswordDirective
         this.input = input;
     }
 
-    public ngDoCheck(): void {
-        if (
-            this.host.nativeFocusableElement &&
-            tuiIsInput(this.host.nativeFocusableElement)
-        ) {
-            this.host.nativeFocusableElement.type = this.host.inputType;
-        }
+    public ngAfterViewInit(): void {
+        this.isPasswordHidden$.subscribe(() => {
+            if (
+                this.host.nativeFocusableElement &&
+                tuiIsInput(this.host.nativeFocusableElement)
+            ) {
+                this.host.nativeFocusableElement.type = this.host.inputType;
+            }
+        });
     }
 }
