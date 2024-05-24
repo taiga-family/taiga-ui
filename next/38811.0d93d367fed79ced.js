@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[38811],{38811:e=>{e.exports="tui-island {\n    overflow: hidden;\n}\n"}}]);
