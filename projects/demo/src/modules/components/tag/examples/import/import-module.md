@@ -1,5 +1,5 @@
 ```ts
-import {TuiTagModule} from '@taiga-ui/kit';
+import {TuiTagModule} from '@taiga-ui/legacy';
 // ...
 
 @Component({

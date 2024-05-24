@@ -5,11 +5,8 @@ import {
     TuiButtonDirective,
     TuiLabelDirective,
 } from '@taiga-ui/core';
-import {
-    TuiCheckboxComponent,
-    tuiCheckboxOptionsProvider,
-    TuiInputModule,
-} from '@taiga-ui/kit';
+import {TuiCheckboxComponent, tuiCheckboxOptionsProvider} from '@taiga-ui/kit';
+import {TuiInputModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,

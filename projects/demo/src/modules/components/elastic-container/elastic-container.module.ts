@@ -6,11 +6,8 @@ import {TuiSetupComponent} from '@demo/utils';
 import {TuiAddonDoc, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiRepeatTimesDirective} from '@taiga-ui/cdk';
 import {TuiButtonDirective, TuiExpand, TuiLinkDirective} from '@taiga-ui/core';
-import {
-    TuiChevronDirective,
-    TuiElasticContainerModule,
-    TuiInputModule,
-} from '@taiga-ui/kit';
+import {TuiChevronDirective, TuiElasticContainerModule} from '@taiga-ui/kit';
+import {TuiInputModule} from '@taiga-ui/legacy';
 
 import {ExampleTuiElasticContainerComponent} from './elastic-container.component';
 import {TuiElasticContainerExample1} from './examples/1';

@@ -11,11 +11,8 @@ import {
 } from '@taiga-ui/addon-commerce';
 import {TUI_DEFAULT_MATCHER, tuiControlValue, TuiLetDirective} from '@taiga-ui/cdk';
 import {TuiDataList, TuiInitialsPipe, TuiTextfieldControllerModule} from '@taiga-ui/core';
-import {
-    TuiAvatarComponent,
-    TuiDataListWrapperModule,
-    TuiInputModule,
-} from '@taiga-ui/kit';
+import {TuiAvatarComponent, TuiDataListWrapperModule} from '@taiga-ui/kit';
+import {TuiInputModule} from '@taiga-ui/legacy';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {map} from 'rxjs';
 

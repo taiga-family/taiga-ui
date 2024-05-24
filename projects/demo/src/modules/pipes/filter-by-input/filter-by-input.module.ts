@@ -5,13 +5,11 @@ import {RouterModule} from '@angular/router';
 import {TuiAddonDoc, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiDataList, TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {
-    TuiComboBoxModule,
     TuiDataListWrapperModule,
     TuiFilterByInputPipeModule,
-    TuiInputModule,
-    TuiMultiSelectModule,
     TuiStringifyContentPipeModule,
 } from '@taiga-ui/kit';
+import {TuiComboBoxModule, TuiInputModule, TuiMultiSelectModule} from '@taiga-ui/legacy';
 
 import {TuiFilterByInputExample1} from './examples/1';
 import {TuiFilterByInputExample2} from './examples/2';

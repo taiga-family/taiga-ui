@@ -4,7 +4,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import {tuiProvide} from '@taiga-ui/cdk';
 import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
-import {TUI_ALL_COUNTRIES_ISO_CODES} from '@taiga-ui/kit';
+import {TUI_ALL_COUNTRIES_ISO_CODES} from '@taiga-ui/legacy';
 
 import {AbstractExampleTuiControl} from '../abstract/control';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';

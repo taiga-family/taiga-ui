@@ -25,11 +25,9 @@ import {
 import {
     TuiAvatarComponent,
     TuiDataListWrapperModule,
-    TuiMultiSelectModule,
     TuiRadioListComponent,
-    TuiSelectModule,
-    TuiTextareaModule,
 } from '@taiga-ui/kit';
+import {TuiMultiSelectModule, TuiSelectModule, TuiTextareaModule} from '@taiga-ui/legacy';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';

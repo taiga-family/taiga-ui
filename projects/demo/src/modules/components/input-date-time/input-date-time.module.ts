@@ -10,7 +10,7 @@ import {
     TuiNotificationComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiInputDateTimeModule} from '@taiga-ui/kit';
+import {TuiInputDateTimeModule} from '@taiga-ui/legacy';
 
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
 import {TuiInputDateTimeExample1} from './examples/1';

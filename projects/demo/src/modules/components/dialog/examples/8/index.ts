@@ -3,7 +3,8 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButtonDirective, TuiDialogService} from '@taiga-ui/core';
-import {TuiDialogFormService, TuiInputModule} from '@taiga-ui/kit';
+import {TuiDialogFormService} from '@taiga-ui/kit';
+import {TuiInputModule} from '@taiga-ui/legacy';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 @Component({

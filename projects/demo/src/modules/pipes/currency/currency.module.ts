@@ -5,7 +5,7 @@ import {RouterModule} from '@angular/router';
 import {TuiCurrencyPipe} from '@taiga-ui/addon-commerce';
 import {TuiAddonDoc, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiLinkDirective, TuiTextfieldControllerModule} from '@taiga-ui/core';
-import {TuiInputNumberModule} from '@taiga-ui/kit';
+import {TuiInputNumberModule} from '@taiga-ui/legacy';
 
 import {ExampleTuiCurrencyComponent} from './currency.component';
 import {TuiCurrencyExample1} from './examples/1/component';

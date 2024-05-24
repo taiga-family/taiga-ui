@@ -17,15 +17,17 @@ import {
 import {
     TuiBadgeDirective,
     TuiBlockDirective,
-    TuiComboBoxModule,
     TuiDataListWrapperModule,
     TuiFieldErrorPipeModule,
+    TuiRadioComponent,
+} from '@taiga-ui/kit';
+import {
+    TuiComboBoxModule,
     TuiInputModule,
     TuiInputNumberModule,
     TuiMultiSelectModule,
-    TuiRadioComponent,
     TuiSelectModule,
-} from '@taiga-ui/kit';
+} from '@taiga-ui/legacy';
 
 import {TuiGroupExample1} from './examples/1';
 import {TuiGroupExample2} from './examples/2';

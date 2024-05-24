@@ -6,12 +6,11 @@ import {TuiSetupComponent} from '@demo/utils';
 import {TuiAddonDoc, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {
-    TuiComboBoxModule,
     TuiDataListWrapperModule,
     TuiFilterByInputPipeModule,
-    TuiInputModule,
     TuiStringifyContentPipeModule,
 } from '@taiga-ui/kit';
+import {TuiComboBoxModule, TuiInputModule} from '@taiga-ui/legacy';
 
 import {ExampleTuiDataListWrapperComponent} from './data-list-wrapper.component';
 import {TuiDataListWrapperExample1} from './examples/1';

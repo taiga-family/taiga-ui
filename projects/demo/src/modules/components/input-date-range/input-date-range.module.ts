@@ -11,7 +11,8 @@ import {
     TuiNotificationComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiInputDateRangeModule, TuiUnfinishedValidatorModule} from '@taiga-ui/kit';
+import {TuiUnfinishedValidatorModule} from '@taiga-ui/kit';
+import {TuiInputDateRangeModule} from '@taiga-ui/legacy';
 
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
 import {TuiInputDateRangeExample1} from './examples/1';

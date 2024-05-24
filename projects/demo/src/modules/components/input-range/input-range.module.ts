@@ -12,11 +12,8 @@ import {
     TuiSvgComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {
-    TuiInputRangeModule,
-    TuiInputSliderModule,
-    TuiRadioListComponent,
-} from '@taiga-ui/kit';
+import {TuiRadioListComponent} from '@taiga-ui/kit';
+import {TuiInputRangeModule, TuiInputSliderModule} from '@taiga-ui/legacy';
 
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
 import {NumberFormatDocumentationModule} from '../abstract/number-format-documentation/number-format-documentation.module';

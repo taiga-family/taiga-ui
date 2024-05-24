@@ -12,10 +12,10 @@ import {
 import {
     TuiAvatarComponent,
     TuiFieldErrorPipeModule,
-    TuiInputPhoneModule,
     TuiIslandModule,
 } from '@taiga-ui/kit';
 import {TuiCardLargeDirective} from '@taiga-ui/layout';
+import {TuiInputPhoneModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,

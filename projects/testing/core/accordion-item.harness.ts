@@ -1,8 +1,6 @@
 import {TestKey} from '@angular/cdk/testing';
 import {TuiContentContainerComponentHarness} from '@taiga-ui/testing/utils';
 
-import {TuiSvgHarness} from './svg.harness';
-
 export class TuiAccordionItemHarness extends TuiContentContainerComponentHarness {
     public static hostSelector = 'tui-accordion-item';
 
@@ -25,11 +23,7 @@ export class TuiAccordionItemHarness extends TuiContentContainerComponentHarness
     }
 
     public async hasArrow(): Promise<boolean> {
-        return (
-            !!(await this.locatorForOptional(
-                TuiSvgHarness.with({selector: '.t-icon'}),
-            )()) ?? false
-        );
+        return !!(await this.locatorForOptional('.t-icon')()) ?? false;
     }
 
     public async focus(): Promise<void> {

@@ -12,7 +12,8 @@ import {
     TuiNotificationComponent,
     TuiScrollbarComponent,
 } from '@taiga-ui/core';
-import {TuiChevronDirective, TuiInputNumberModule, TuiTabsModule} from '@taiga-ui/kit';
+import {TuiChevronDirective, TuiTabsModule} from '@taiga-ui/kit';
+import {TuiInputNumberModule} from '@taiga-ui/legacy';
 
 import {TuiTabsExample1} from './examples/1';
 import {TuiTabsExample2} from './examples/2';

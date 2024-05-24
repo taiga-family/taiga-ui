@@ -3,7 +3,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
-import {TUI_ALL_COUNTRIES_ISO_CODES} from '@taiga-ui/kit';
+import {TUI_ALL_COUNTRIES_ISO_CODES} from '@taiga-ui/legacy';
 
 @Component({
     selector: 'tui-input-phone-international-example-2',

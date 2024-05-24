@@ -19,7 +19,8 @@ import {
     TuiTextfieldControllerModule,
     type TuiValueContentContext,
 } from '@taiga-ui/core';
-import {TuiComboBoxModule, TuiDataListWrapperModule} from '@taiga-ui/kit';
+import {TuiDataListWrapperModule} from '@taiga-ui/kit';
+import {TuiComboBoxModule} from '@taiga-ui/legacy';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import {AbstractExampleTuiControl} from '../abstract/control';

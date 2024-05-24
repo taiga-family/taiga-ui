@@ -6,7 +6,7 @@ import {
     TuiTextfieldOptionsDirective,
 } from '@taiga-ui/core';
 import {tuiKitIcons} from '@taiga-ui/icons';
-import {TuiInputDateRangeModule} from '@taiga-ui/kit';
+import {TuiInputDateRangeModule} from '@taiga-ui/legacy';
 
 const MAPPER: Record<string, string> = {
     ...tuiKitIcons,

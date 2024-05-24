@@ -26,7 +26,8 @@ import {
     TuiLoaderComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiChevronDirective, TuiInputModule, TuiInputNumberModule} from '@taiga-ui/kit';
+import {TuiChevronDirective} from '@taiga-ui/kit';
+import {TuiInputModule, TuiInputNumberModule} from '@taiga-ui/legacy';
 import type {Observable} from 'rxjs';
 import {
     BehaviorSubject,

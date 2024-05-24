@@ -14,12 +14,8 @@ import {
     TuiLinkDirective,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {
-    TuiDataListWrapperModule,
-    TuiFieldErrorPipeModule,
-    TuiInputModule,
-    TuiInputTagModule,
-} from '@taiga-ui/kit';
+import {TuiDataListWrapperModule, TuiFieldErrorPipeModule} from '@taiga-ui/kit';
+import {TuiInputModule, TuiInputTagModule} from '@taiga-ui/legacy';
 
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
 import {TuiInputTagExample1} from './examples/1';

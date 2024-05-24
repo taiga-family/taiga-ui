@@ -19,12 +19,9 @@
             <ng-content />
         </span>
         <ng-container *ngIf="showArrow">
-            <tui-svg
-                *polymorpheusOutlet="options.iconLarge as src"
-                automation-id="tui-accordion__item-arrow"
+            <tui-icon
                 class="t-icon"
-                [class.t-icon_open]="open"
-                [src]="src"
+                [tuiChevron]="open"
             />
         </ng-container>
     </button>

@@ -43,14 +43,16 @@ import {
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_COMMON_ICONS,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
+    TuiAppearanceDirective,
     tuiAsDataListHost,
     TuiDataListComponent,
     TuiDataListDirective,
     TuiDropdownModule,
+    TuiIconComponent,
     TuiSvgComponent,
     TuiWrapperModule,
 } from '@taiga-ui/core';
-import {TUI_ARROW_OPTIONS} from '@taiga-ui/kit';
+import {TuiChevronDirective} from '@taiga-ui/kit';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
@@ -78,6 +80,9 @@ const EXPIRE_COMPLETE_LENGTH = 5; // MM/YY
         ResizeObserverModule,
         TuiSvgComponent,
         PolymorpheusModule,
+        TuiIconComponent,
+        TuiAppearanceDirective,
+        TuiChevronDirective,
     ],
     templateUrl: './input-card-grouped.template.html',
     styleUrls: ['./input-card-grouped.style.less'],
@@ -154,7 +159,6 @@ export class TuiInputCardGroupedComponent
     protected readonly cardGroupedTexts$ = inject(TUI_INPUT_CARD_GROUPED_TEXTS);
     protected readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
     protected readonly icons = inject(TUI_COMMON_ICONS);
-    protected readonly arrowOptions = inject(TUI_ARROW_OPTIONS);
 
     constructor() {
         super(inject(TUI_INPUT_CARD_GROUPED_OPTIONS));

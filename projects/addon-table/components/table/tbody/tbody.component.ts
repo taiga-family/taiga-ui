@@ -12,8 +12,8 @@ import {
     Output,
 } from '@angular/core';
 import {EMPTY_QUERY, TuiMapperPipe} from '@taiga-ui/cdk';
-import {TuiSvgComponent} from '@taiga-ui/core';
-import {TUI_ARROW_OPTIONS} from '@taiga-ui/kit';
+import {TuiIconComponent} from '@taiga-ui/core';
+import {TuiChevronDirective} from '@taiga-ui/kit';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
@@ -31,9 +31,10 @@ import {TuiTrComponent} from '../tr/tr.component';
         NgForOf,
         NgIf,
         NgTemplateOutlet,
-        TuiSvgComponent,
         TuiMapperPipe,
         PolymorpheusModule,
+        TuiIconComponent,
+        TuiChevronDirective,
     ],
     templateUrl: './tbody.template.html',
     styleUrls: ['./tbody.style.less'],
@@ -62,7 +63,6 @@ export class TuiTbodyComponent<T extends Partial<Record<keyof T, any>>> {
     @ContentChild(forwardRef(() => TuiRowDirective))
     protected readonly row?: TuiRowDirective<T>;
 
-    protected readonly arrowOptions = inject(TUI_ARROW_OPTIONS);
     protected readonly table = inject<TuiTableDirective<T>>(
         forwardRef(() => TuiTableDirective),
     );

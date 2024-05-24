@@ -43,10 +43,9 @@ import {
 import {
     TuiBadgeDirective,
     TuiDataListWrapperModule,
-    TuiInputNumberModule,
-    TuiSelectModule,
     TuiSwitchComponent,
 } from '@taiga-ui/kit';
+import {TuiInputNumberModule, TuiSelectModule} from '@taiga-ui/legacy';
 import {merge, switchMap} from 'rxjs';
 
 import {TuiInputOpacityDirective} from '../internal/input-opacity';

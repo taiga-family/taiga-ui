@@ -13,7 +13,8 @@ import {
     TuiTextfieldControllerModule,
     TuiTooltipModule,
 } from '@taiga-ui/core';
-import {TuiAvatarComponent, TuiInputModule} from '@taiga-ui/kit';
+import {TuiAvatarComponent} from '@taiga-ui/kit';
+import {TuiInputModule} from '@taiga-ui/legacy';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiTooltipExample1} from './examples/1';

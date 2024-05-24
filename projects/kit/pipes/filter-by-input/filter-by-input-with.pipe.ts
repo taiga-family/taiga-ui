@@ -2,7 +2,6 @@ import type {PipeTransform} from '@angular/core';
 import {inject, Pipe} from '@angular/core';
 import type {TuiStringHandler} from '@taiga-ui/cdk';
 import {TUI_DEFAULT_MATCHER, TUI_FOCUSABLE_ITEM_ACCESSOR} from '@taiga-ui/cdk';
-import {TuiMultiSelectDirective} from '@taiga-ui/kit/components/multi-select';
 
 import type {TuiArrayElement} from './filter-by-input.base';
 import {AbstractTuiFilterByInput} from './filter-by-input.base';
@@ -18,7 +17,8 @@ export class TuiFilterByInputWithPipe
     extends AbstractTuiFilterByInput
     implements PipeTransform
 {
-    protected readonly multiSelect = inject(TuiMultiSelectDirective, {optional: true});
+    // protected readonly multiSelect = inject(TuiMultiSelectDirective, {optional: true});
+    protected readonly multiSelect = null;
     protected readonly accessor = inject(TUI_FOCUSABLE_ITEM_ACCESSOR);
 
     public transform<T>(items: T, matcher?: TuiStringHandler<TuiArrayElement<T>>): T;

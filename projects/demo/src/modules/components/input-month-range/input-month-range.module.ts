@@ -10,7 +10,7 @@ import {
     TuiNotificationComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiInputMonthRangeModule} from '@taiga-ui/kit';
+import {TuiInputMonthRangeModule} from '@taiga-ui/legacy';
 
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
 import {TuiInputMonthRangeExample1} from './examples/1';

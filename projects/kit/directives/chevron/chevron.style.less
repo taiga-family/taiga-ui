@@ -1,10 +1,12 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
-[tuiChevron][tuiIcons]:after {
+[tuiChevron][tuiIcons]:after,
+tui-icon[tuiChevron]:after {
     display: inline-block;
     .transition(transform);
 }
 
-[tuiChevron][tuiIcons]._chevron-rotated:after {
+[tuiChevron][tuiIcons]._chevron-rotated:after,
+tui-icon[tuiChevron]._chevron-rotated:after {
     transform: rotate(180deg);
 }

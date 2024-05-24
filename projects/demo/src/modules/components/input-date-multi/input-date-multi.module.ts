@@ -9,7 +9,7 @@ import {
     TuiLinkDirective,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiInputDateMultiModule} from '@taiga-ui/kit';
+import {TuiInputDateMultiModule} from '@taiga-ui/legacy';
 
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
 import {TuiInputDateMultiExample1} from './examples/1';

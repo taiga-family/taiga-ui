@@ -13,7 +13,8 @@ import {
     TuiSvgComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiInputNumberModule, TuiRadioListComponent} from '@taiga-ui/kit';
+import {TuiRadioListComponent} from '@taiga-ui/kit';
+import {TuiInputNumberModule} from '@taiga-ui/legacy';
 
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
 import {TuiInputNumberExample1} from './examples/1';

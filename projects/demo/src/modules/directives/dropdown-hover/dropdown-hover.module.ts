@@ -13,10 +13,10 @@ import {
 import {
     TuiChevronDirective,
     TuiDataListWrapperModule,
-    TuiSelectModule,
     TuiSwitchComponent,
     TuiTabsModule,
 } from '@taiga-ui/kit';
+import {TuiSelectModule} from '@taiga-ui/legacy';
 
 import {DropdownDocumentationModule} from '../../components/abstract/dropdown-documentation/dropdown-documentation.module';
 import {ExampleTuiDropdownHoverComponent} from './dropdown-hover.component';

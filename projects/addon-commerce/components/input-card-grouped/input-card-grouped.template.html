@@ -152,23 +152,19 @@
                 [src]="text"
             />
         </div>
-        <tui-svg
+        <tui-icon
             *ngIf="hasCleaner"
-            appearance="icon"
             automation-id="tui-input-card-grouped__cleaner"
-            tuiWrapper
+            tuiAppearance="icon"
             class="t-icon"
-            [src]="icons.close"
+            [icon]="icons.close"
             (click)="clear()"
         />
-        <tui-svg
+        <tui-icon
             *ngIf="hasDropdown"
-            appearance="icon"
             automation-id="tui-input-card-grouped__dropdown"
-            tuiWrapper
-            class="t-icon"
-            [class.t-icon_rotated]="open"
-            [src]="arrowOptions.iconLarge"
+            tuiAppearance="icon"
+            tuiChevron
             (click)="toggle()"
         />
     </div>

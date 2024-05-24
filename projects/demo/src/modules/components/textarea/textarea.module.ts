@@ -13,11 +13,8 @@ import {
     TuiSvgComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {
-    TuiFieldErrorPipeModule,
-    TuiRadioListComponent,
-    TuiTextareaModule,
-} from '@taiga-ui/kit';
+import {TuiFieldErrorPipeModule, TuiRadioListComponent} from '@taiga-ui/kit';
+import {TuiTextareaModule} from '@taiga-ui/legacy';
 
 import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
 import {TuiTextareaExample1} from './examples/1';

@@ -7,7 +7,7 @@ import {TuiAxesComponent, TuiLineDaysChartComponent} from '@taiga-ui/addon-chart
 import type {TuiDayLike, TuiStringHandler} from '@taiga-ui/cdk';
 import {TUI_IS_E2E, TuiDay, TuiDayRange, TuiMonth, tuiPure} from '@taiga-ui/cdk';
 import {TUI_MONTHS} from '@taiga-ui/core';
-import {TuiInputDateRangeModule} from '@taiga-ui/kit';
+import {TuiInputDateRangeModule} from '@taiga-ui/legacy';
 import type {Observable} from 'rxjs';
 import {map} from 'rxjs';
 

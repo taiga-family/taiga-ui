@@ -4,7 +4,6 @@ import {discardPeriodicTasks, fakeAsync, TestBed, tick} from '@angular/core/test
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiHint, TuiRootComponent} from '@taiga-ui/core';
-import {TuiInputModule} from '@taiga-ui/kit/components';
 import {TuiFieldErrorPipeModule} from '@taiga-ui/kit/pipes';
 import {TUI_VALIDATION_ERRORS} from '@taiga-ui/kit/tokens';
 import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
@@ -16,15 +15,13 @@ describe('TuiFieldErrorContentPipe', () => {
     @Component({
         template: `
             <tui-root>
-                <tui-input
+                <input
                     id="hint-host"
                     tuiHintDirection="top"
                     class="host"
                     [formControl]="control"
                     [tuiHint]="[] | tuiFieldErrorContent"
-                >
-                    Tooltip host
-                </tui-input>
+                />
             </tui-root>
         `,
         styles: [
@@ -61,7 +58,6 @@ describe('TuiFieldErrorContentPipe', () => {
                 TuiHint,
                 TuiRootComponent,
                 ReactiveFormsModule,
-                TuiInputModule,
                 TuiFieldErrorPipeModule,
             ],
             providers: [NG_EVENT_PLUGINS],

@@ -6,8 +6,8 @@ import {
     TuiBadgedContentComponent,
     TuiBadgeDirective,
     TuiBadgeNotificationComponent,
-    TuiInputModule,
 } from '@taiga-ui/kit';
+import {TuiInputModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,

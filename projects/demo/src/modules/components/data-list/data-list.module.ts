@@ -21,12 +21,14 @@ import {
     TuiCheckboxComponent,
     TuiChevronDirective,
     TuiDataListDropdownManagerModule,
+    TuiSwitchComponent,
+} from '@taiga-ui/kit';
+import {
     TuiInputDateRangeModule,
     TuiInputModule,
     TuiMultiSelectModule,
     TuiSelectModule,
-    TuiSwitchComponent,
-} from '@taiga-ui/kit';
+} from '@taiga-ui/legacy';
 
 import {ExampleTuiDataListComponent} from './data-list.component';
 import {TuiDataListExample1} from './examples/1';

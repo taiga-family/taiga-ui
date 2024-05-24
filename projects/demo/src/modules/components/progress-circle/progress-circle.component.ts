@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import type {TuiSizeS, TuiSizeXL} from '@taiga-ui/core';
-import {tuiInputNumberOptionsProvider} from '@taiga-ui/kit';
+import {tuiInputNumberOptionsProvider} from '@taiga-ui/legacy';
 
 @Component({
     selector: 'example-tui-progress-circle',

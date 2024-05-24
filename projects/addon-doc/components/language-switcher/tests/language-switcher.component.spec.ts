@@ -4,7 +4,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {TuiLanguageSwitcherComponent} from '@taiga-ui/addon-doc';
 import {TuiDataList, TuiFlagPipe} from '@taiga-ui/core';
 import {TuiLanguageSwitcher} from '@taiga-ui/i18n';
-import {TuiSelectModule} from '@taiga-ui/kit';
+import {TuiSelectModule} from '@taiga-ui/legacy';
 
 describe('TuiLanguageSwitcherComponent', () => {
     let component: TuiLanguageSwitcherComponent;

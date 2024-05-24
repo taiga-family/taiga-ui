@@ -14,13 +14,12 @@ import {
     TuiLinkDirective,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
+import {TuiCheckboxComponent, TuiFieldErrorPipeModule} from '@taiga-ui/kit';
 import {
-    TuiCheckboxComponent,
-    TuiFieldErrorPipeModule,
     TuiInputModule,
     TuiInputNumberModule,
     TuiInputPhoneModule,
-} from '@taiga-ui/kit';
+} from '@taiga-ui/legacy';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiFieldErrorPipeExample1} from './examples/1';
@@ -44,7 +43,6 @@ import {ExampleTuiFieldErrorPipeComponent} from './field-error.component';
         TuiInputModule,
         TuiButtonDirective,
         TuiInputPhoneModule,
-        TuiInputNumberModule,
         TuiLinkDirective,
         TuiTable,
         TuiInputNumberModule,

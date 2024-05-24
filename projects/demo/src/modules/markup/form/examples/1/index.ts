@@ -16,6 +16,10 @@ import {
     TuiCheckboxComponent,
     TuiDataListWrapperModule,
     TuiFieldErrorPipeModule,
+    TuiRadioComponent,
+    TuiStepperModule,
+} from '@taiga-ui/kit';
+import {
     TuiInputDateModule,
     TuiInputModule,
     TuiInputNumberModule,
@@ -23,10 +27,8 @@ import {
     TuiInputPhoneModule,
     TuiInputSliderModule,
     TuiInputTimeModule,
-    TuiRadioComponent,
     TuiSelectModule,
-    TuiStepperModule,
-} from '@taiga-ui/kit';
+} from '@taiga-ui/legacy';
 
 class User {
     constructor(

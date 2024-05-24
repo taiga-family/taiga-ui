@@ -11,13 +11,8 @@ import {
     TuiIconComponent,
     TuiLinkDirective,
 } from '@taiga-ui/core';
-import {
-    TuiChevronDirective,
-    TuiDataListWrapperModule,
-    TuiInputModule,
-    TuiMultiSelectModule,
-    TuiSelectModule,
-} from '@taiga-ui/kit';
+import {TuiChevronDirective, TuiDataListWrapperModule} from '@taiga-ui/kit';
+import {TuiInputModule, TuiMultiSelectModule, TuiSelectModule} from '@taiga-ui/legacy';
 
 import {DropdownDocumentationModule} from '../../components/abstract/dropdown-documentation/dropdown-documentation.module';
 import {ExampleTuiDropdownOpenComponent} from './dropdown-open.component';
