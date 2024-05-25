@@ -10,7 +10,8 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import {TuiExpand, TuiIconComponent, TuiSizeS} from '@taiga-ui/core';
+import type {TuiSizeS} from '@taiga-ui/core';
+import {TuiExpand, TuiIconComponent} from '@taiga-ui/core';
 import {TuiChevronDirective} from '@taiga-ui/kit/directives';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
@@ -20,16 +21,10 @@ import {TuiAccordionItemEagerContentDirective} from './accordion-item-eager-cont
 @Component({
     standalone: true,
     selector: 'tui-accordion-item',
+    imports: [NgIf, PolymorpheusModule, TuiIconComponent, TuiChevronDirective, TuiExpand],
     templateUrl: './accordion-item.template.html',
     styleUrls: ['./accordion-item.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-        NgIf,
-        PolymorpheusModule,
-        TuiIconComponent,
-        TuiChevronDirective,
-        TuiExpand,
-    ]
 })
 export class TuiAccordionItemComponent {
     private readonly cdr = inject(ChangeDetectorRef);

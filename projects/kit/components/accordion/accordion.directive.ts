@@ -1,5 +1,5 @@
-import {AfterContentInit, Directive, QueryList} from '@angular/core';
-import {ContentChildren, DestroyRef, inject, Input} from '@angular/core';
+import type {AfterContentInit, QueryList} from '@angular/core';
+import {ContentChildren, DestroyRef, Directive, inject, Input} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {EMPTY_QUERY, tuiIsPresent, tuiQueryListChanges} from '@taiga-ui/cdk';
 import {TuiGroupDirective, tuiGroupOptionsProvider} from '@taiga-ui/core';

@@ -7,7 +7,13 @@ import {TuiCarouselComponent, TuiIslandModule, TuiPaginationModule} from '@taiga
 
 @Component({
     standalone: true,
-    imports: [TuiCarouselComponent, NgFor, TuiIslandModule, TuiPaginationModule, TuiItemDirective],
+    imports: [
+        TuiCarouselComponent,
+        NgFor,
+        TuiIslandModule,
+        TuiPaginationModule,
+        TuiItemDirective,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

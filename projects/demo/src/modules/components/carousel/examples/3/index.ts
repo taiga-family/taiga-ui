@@ -5,7 +5,12 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiItemDirective} from '@taiga-ui/cdk';
 import {TuiButtonDirective, TuiLoaderComponent} from '@taiga-ui/core';
-import {TuiAvatarComponent, TuiCarouselButtonsDirective, TuiCarouselComponent, TuiIslandModule} from '@taiga-ui/kit';
+import {
+    TuiAvatarComponent,
+    TuiCarouselButtonsDirective,
+    TuiCarouselComponent,
+    TuiIslandModule,
+} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,

@@ -14,14 +14,16 @@ import {
     TemplateRef,
 } from '@angular/core';
 import {IntersectionObserverModule} from '@ng-web-apis/intersection-observer';
-import {TuiPanDirective, TuiSwipeDirection, TuiSwipeDirective} from '@taiga-ui/cdk';
+import type {TuiSwipeDirection} from '@taiga-ui/cdk';
 import {
     EMPTY_QUERY,
     TUI_IS_MOBILE,
     tuiClamp,
     tuiInjectElement,
     TuiItemDirective,
+    TuiPanDirective,
     tuiPure,
+    TuiSwipeDirective,
 } from '@taiga-ui/cdk';
 import {
     TuiCarouselAutoscrollDirective,

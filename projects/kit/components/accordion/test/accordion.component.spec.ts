@@ -9,9 +9,9 @@ import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiDataList, TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {
+    TuiAccordion,
     TuiAccordionDirective,
     TuiAccordionItemComponent,
-    TuiAccordion,
 } from '@taiga-ui/kit';
 import {TuiDataListWrapperModule} from '@taiga-ui/kit/components';
 import {
