@@ -131,7 +131,7 @@
         "glob": "10.4.1",
         "husky": "9.0.11",
         "kill-port": "2.0.1",
-        "lint-staged": "15.2.4",
+        "lint-staged": "15.2.5",
         "local-web-server": "5.3.3",
         "ng-packagr": "16.2.3",
         "nx": "18.3.4",
