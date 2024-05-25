@@ -11,7 +11,14 @@
             "options": {
                 "tsConfig": "tsconfig.build.json",
                 "project": "{projectRoot}/ng-package.json"
-            }
+            },
+            "dependsOn": [
+                {
+                    "target": "build",
+                    "params": "forward",
+                    "dependencies": true
+                }
+            ]
         },
         "test": {
             "executor": "@nx/jest:jest",
