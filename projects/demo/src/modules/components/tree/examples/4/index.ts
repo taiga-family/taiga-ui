@@ -3,6 +3,8 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiHandler} from '@taiga-ui/cdk';
 import {EMPTY_ARRAY} from '@taiga-ui/cdk';
+import {TuiButtonDirective} from '@taiga-ui/core';
+import {TuiTreeModule} from '@taiga-ui/kit';
 
 interface TreeNode {
     readonly children?: readonly TreeNode[];
@@ -10,12 +12,13 @@ interface TreeNode {
 }
 
 @Component({
-    selector: 'tui-tree-example-4',
+    standalone: true,
+    imports: [TuiTreeModule, TuiButtonDirective],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class TuiTreeExample4 {
+export default class ExampleComponent {
     protected readonly data: TreeNode = {
         text: 'Topmost',
         children: [

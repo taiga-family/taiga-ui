@@ -1,7 +1,13 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {
+    TuiDataListWrapperModule,
+    TuiFilterByInputPipeModule,
+    TuiStringifyContentPipeModule,
+} from '@taiga-ui/kit';
+import {TuiComboBoxModule} from '@taiga-ui/legacy';
 
 interface User {
     readonly id: number;
@@ -9,12 +15,19 @@ interface User {
 }
 
 @Component({
-    selector: 'tui-filter-by-input-example-2',
+    standalone: true,
+    imports: [
+        ReactiveFormsModule,
+        TuiComboBoxModule,
+        TuiDataListWrapperModule,
+        TuiFilterByInputPipeModule,
+        TuiStringifyContentPipeModule,
+    ],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class TuiFilterByInputExample2 {
+export default class ExampleComponent {
     protected readonly items = [
         'John Cleese',
         'Eric Idle',

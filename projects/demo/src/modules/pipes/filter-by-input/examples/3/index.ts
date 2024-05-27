@@ -1,15 +1,25 @@
 import {Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiTextfieldControllerModule} from '@taiga-ui/core';
+import {TuiDataListWrapperModule, TuiFilterByInputPipeModule} from '@taiga-ui/kit';
+import {TuiMultiSelectModule} from '@taiga-ui/legacy';
 
 @Component({
-    selector: 'tui-filter-by-input-example-3',
+    standalone: true,
+    imports: [
+        TuiMultiSelectModule,
+        ReactiveFormsModule,
+        TuiTextfieldControllerModule,
+        TuiDataListWrapperModule,
+        TuiFilterByInputPipeModule,
+    ],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class TuiFilterByInputExample3 {
+export default class ExampleComponent {
     protected readonly items = [
         'Luke Skywalker',
         'Leia Organa Solo',

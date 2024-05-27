@@ -1,15 +1,18 @@
+import {NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiTilesModule} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-tiles-example-2',
+    standalone: true,
+    imports: [TuiTilesModule, NgForOf],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiTilesExample2 {
+export default class ExampleComponent {
     protected items: readonly string[] = [
         'John Cleese',
         'Eric Idle',

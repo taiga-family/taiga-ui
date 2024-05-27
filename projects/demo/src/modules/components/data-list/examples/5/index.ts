@@ -1,17 +1,53 @@
+import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiDay, TuiDayRange} from '@taiga-ui/cdk';
+import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
+import {TuiActiveZoneDirective, TuiDay, TuiDayRange} from '@taiga-ui/cdk';
+import {
+    TuiButtonDirective,
+    TuiCalendarComponent,
+    TuiDataListComponent,
+    TuiDropdownDirective,
+    TuiDropdownManualDirective,
+    TuiDropdownOpenDirective,
+    TuiDropdownOptionsDirective,
+    TuiDropdownPositionSidedDirective,
+    TuiGroupDirective,
+    TuiOptionComponent,
+} from '@taiga-ui/core';
+import {TuiDataListDropdownManagerModule} from '@taiga-ui/kit';
+import {TuiInputDateRangeModule, TuiInputModule} from '@taiga-ui/legacy';
 
 @Component({
-    selector: 'tui-data-list-example-5',
+    standalone: true,
+    imports: [
+        TuiButtonDirective,
+        TuiDropdownOptionsDirective,
+        TuiDropdownDirective,
+        TuiDropdownOpenDirective,
+        TuiDataListComponent,
+        TuiDataListDropdownManagerModule,
+        TuiActiveZoneDirective,
+        TuiDropdownPositionSidedDirective,
+        TuiOptionComponent,
+        TuiDropdownManualDirective,
+        ReactiveFormsModule,
+        TuiInputModule,
+        TuiCalendarComponent,
+        TuiGroupDirective,
+        FormsModule,
+        TuiAmountPipe,
+        AsyncPipe,
+        TuiInputDateRangeModule,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiDataListExample5 {
+export default class ExampleComponent {
     protected dropdownOpen = false;
     protected dateValue: TuiDay = new TuiDay(2020, 0, 1);
     protected euro = 87; // 1 euro = 87 rub

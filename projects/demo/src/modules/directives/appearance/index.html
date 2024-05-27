@@ -1,0 +1,83 @@
+<tui-doc-page
+    header="Appearance"
+    package="CORE"
+    type="directives"
+>
+    <ng-template pageTab>
+        <p>A directive for visual presets of interactive components</p>
+
+        <tui-doc-example
+            id="basic"
+            description="Interactive elements react to pointer natively but you can override state with inputs"
+            heading="Basic"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample"
+        />
+
+        <tui-doc-example
+            id="custom"
+            description="Use LESS or SCSS mixins to create your own appearances in global styles"
+            heading="Custom"
+            [component]="2 | tuiComponent"
+            [content]="2 | tuiExample"
+        />
+
+        <tui-doc-example
+            id="checkbox"
+            description="You can use it on input[type='checkbox'] to create a custom toggle component easily"
+            heading="Checkbox"
+            [component]="3 | tuiComponent"
+            [content]="3 | tuiExample"
+        />
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <button
+                tuiButton
+                [appearance]="appearance"
+                [tuiAppearanceFocus]="focus"
+                [tuiAppearanceState]="state"
+            >
+                Appearance
+            </button>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="tuiAppearance"
+                documentationPropertyType="string"
+                [documentationPropertyValues]="appearances"
+                [(documentationPropertyValue)]="appearance"
+            >
+                Appearance (use
+                <code>appearance</code>
+                selector instead of
+                <code>tuiAppearance</code>
+                when used on a component that has such input due to
+                <code>hostDirectives</code>
+                )
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="tuiAppearanceFocus"
+                documentationPropertyType="boolean | null"
+                [documentationPropertyValues]="[true, false]"
+                [(documentationPropertyValue)]="focus"
+            >
+                Manual override of focused state
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="tuiAppearanceState"
+                documentationPropertyType="TuiInteractiveState | null"
+                [documentationPropertyValues]="states"
+                [(documentationPropertyValue)]="state"
+            >
+                Manual override of interactive state
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <tui-setup *pageTab />
+</tui-doc-page>

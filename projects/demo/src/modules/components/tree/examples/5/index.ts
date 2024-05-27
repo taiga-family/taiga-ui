@@ -1,9 +1,10 @@
+import {NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiHandler} from '@taiga-ui/cdk';
 import {EMPTY_ARRAY} from '@taiga-ui/cdk';
-import {TUI_TREE_CONTENT} from '@taiga-ui/kit';
+import {TUI_TREE_CONTENT, TuiTreeModule} from '@taiga-ui/kit';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 
 import {FoldersComponent} from './content';
@@ -14,7 +15,8 @@ interface TreeNode {
 }
 
 @Component({
-    selector: 'tui-tree-example-5',
+    standalone: true,
+    imports: [TuiTreeModule, NgForOf],
     templateUrl: './index.html',
     styleUrls: ['index.less'],
     encapsulation,
@@ -26,7 +28,7 @@ interface TreeNode {
         },
     ],
 })
-export class TuiTreeExample5 {
+export default class ExampleComponent {
     protected readonly data: TreeNode = {
         text: 'Topmost',
         children: [

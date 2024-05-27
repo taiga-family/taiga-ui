@@ -5,11 +5,10 @@ import {TuiCommentDirective} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    selector: 'tui-comment-example-2',
     imports: [TuiCommentDirective],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiCommentExample2 {}
+export default class ExampleComponent {}

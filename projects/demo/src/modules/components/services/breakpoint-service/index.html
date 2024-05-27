@@ -1,0 +1,32 @@
+<tui-doc-page
+    header="BreakpointService"
+    package="CORE"
+    path="core/services/breakpoint.service.ts"
+    type="components/services"
+>
+    <ng-template pageTab>
+        <p>Service to observe changes in the current breakpoint.</p>
+        <tui-doc-example
+            id="basic"
+            heading="Basic"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample"
+        />
+    </ng-template>
+    <ng-template pageTab="Setup">
+        <ol class="tui-list tui-list_ordered">
+            <li class="tui-list__item">
+                <p>
+                    Inject
+                    <code>TuiBreakpointService</code>
+                    into your component:
+                </p>
+
+                <tui-doc-code
+                    filename="my.component.ts"
+                    [code]="injectService"
+                />
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

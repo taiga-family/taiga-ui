@@ -1,16 +1,43 @@
+import {NgForOf} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiActiveZoneDirective, TuiLetDirective} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {TuiDialogService} from '@taiga-ui/core';
+import {
+    TuiButtonDirective,
+    TuiDataListComponent,
+    TuiDialogService,
+    TuiDropdownDirective,
+    TuiDropdownManualDirective,
+    TuiDropdownOpenDirective,
+    TuiDropdownOptionsDirective,
+    TuiDropdownPositionSidedDirective,
+    TuiOptionComponent,
+} from '@taiga-ui/core';
+import {TuiDataListDropdownManagerModule} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-data-list-example-2',
+    standalone: true,
+    imports: [
+        TuiButtonDirective,
+        TuiDropdownDirective,
+        TuiDropdownOpenDirective,
+        TuiDataListDropdownManagerModule,
+        TuiActiveZoneDirective,
+        TuiOptionComponent,
+        TuiDataListComponent,
+        TuiLetDirective,
+        TuiDropdownPositionSidedDirective,
+        TuiDropdownOptionsDirective,
+        TuiDropdownManualDirective,
+        NgForOf,
+    ],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class TuiDataListExample2 {
+export default class ExampleComponent {
     private readonly dialogs = inject(TuiDialogService);
 
     protected dropdownOpen = false;
