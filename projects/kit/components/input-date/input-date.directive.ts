@@ -5,7 +5,7 @@ import {AbstractTuiTextfieldHost, tuiAsTextfieldHost} from '@taiga-ui/core';
 import {TuiInputDateComponent} from './input-date.component';
 
 @Directive({
-    selector: 'tui-input-date',
+    selector: 'tui-input-date:not([multiple])',
     providers: [tuiAsTextfieldHost(TuiInputDateDirective)],
 })
 export class TuiInputDateDirective extends AbstractTuiTextfieldHost<TuiInputDateComponent> {
