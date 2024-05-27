@@ -56,6 +56,11 @@ export class ExampleTuiAvatarComponent {
         LESS: import('./examples/7/index.less?raw'),
     };
 
+    readonly example8: TuiDocExample = {
+        TypeScript: import('./examples/8/index.ts?raw'),
+        HTML: import('./examples/8/index.html?raw'),
+    };
+
     readonly sizes: ReadonlyArray<TuiSizeXS | TuiSizeXXL> = [
         'xs',
         's',

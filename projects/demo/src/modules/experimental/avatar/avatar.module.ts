@@ -10,6 +10,7 @@ import {
     TuiAvatarStackModule,
     TuiFadeModule,
     TuiFallbackSrcModule,
+    TuiIconModule,
     TuiInitialsModule,
 } from '@taiga-ui/experimental';
 
@@ -21,6 +22,7 @@ import {TuiAvatarExample4} from './examples/4';
 import {TuiAvatarExample5} from './examples/5';
 import {TuiAvatarExample6} from './examples/6';
 import {TuiAvatarExample7} from './examples/7';
+import {TuiAvatarExample8} from './examples/8';
 
 @NgModule({
     imports: [
@@ -34,6 +36,7 @@ import {TuiAvatarExample7} from './examples/7';
         TuiNotificationModule,
         TuiFallbackSrcModule,
         TuiFadeModule,
+        TuiIconModule,
         tuiGetDocModules(ExampleTuiAvatarComponent),
     ],
     declarations: [
@@ -45,6 +48,7 @@ import {TuiAvatarExample7} from './examples/7';
         TuiAvatarExample5,
         TuiAvatarExample6,
         TuiAvatarExample7,
+        TuiAvatarExample8,
     ],
     exports: [ExampleTuiAvatarComponent],
 })
