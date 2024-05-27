@@ -1,7 +1,6 @@
 <tui-doc-page
     header="TableBarsService"
-    package="ADDON-TABLEBARS"
-    path="addon-tablebars/services/table-bars.service.ts"
+    package="KIT"
     type="components/services"
 >
     <ng-template pageTab>
@@ -15,6 +14,13 @@
             heading="Basic"
             [component]="1 | tuiComponent"
             [content]="1 | tuiExample"
+        />
+
+        <tui-doc-example
+            id="directive"
+            heading="With directive"
+            [component]="2 | tuiComponent"
+            [content]="2 | tuiExample"
         />
     </ng-template>
 
@@ -58,12 +64,12 @@
                 Enable close button
             </ng-template>
             <ng-template
-                documentationPropertyName="mode"
-                documentationPropertyType="TuiBrightness"
-                [documentationPropertyValues]="modeVariants"
-                [(documentationPropertyValue)]="mode"
+                documentationPropertyName="appearance"
+                documentationPropertyType="'light' | 'dark'"
+                [documentationPropertyValues]="appearanceVariants"
+                [(documentationPropertyValue)]="appearance"
             >
-                Light / dark mode
+                Appearance
             </ng-template>
         </tui-doc-documentation>
     </ng-template>

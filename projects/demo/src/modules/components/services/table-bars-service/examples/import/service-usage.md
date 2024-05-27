@@ -1,5 +1,5 @@
 ```ts
-import {TuiTableBarsService} from '@taiga-ui/addon-tablebars';
+import {TuiTableBarsService} from '@taiga-ui/kit';
 // ...
 
 @Component({
@@ -16,7 +16,7 @@ export class AppComponent {
     // ...
     this.tableBarsService
       .showTableBar(this.tableBarTemplate, {
-        mode: 'onLight',
+        appearance: 'light',
         hasCloseButton: true,
       })
       .subscribe();

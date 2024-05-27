@@ -56,7 +56,6 @@
             "@taiga-ui/addon-charts",
             "@taiga-ui/addon-commerce",
             "@taiga-ui/icons",
-            "@taiga-ui/addon-tablebars",
             "@taiga-ui/addon-table",
             "@taiga-ui/addon-mobile",
             "@taiga-ui/layout",

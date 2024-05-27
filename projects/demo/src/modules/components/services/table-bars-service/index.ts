@@ -2,8 +2,8 @@ import type {OnDestroy} from '@angular/core';
 import {Component, inject, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {TuiTableBarsService} from '@taiga-ui/addon-tablebars';
 import {TuiButtonDirective} from '@taiga-ui/core';
+import {TuiTableBarsService} from '@taiga-ui/kit';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {Subscription} from 'rxjs';
 
@@ -32,9 +32,9 @@ export default class PageComponent implements OnDestroy {
     protected readonly exampleModule = import('./examples/import/import.md?raw');
     protected readonly exampleHtml = import('./examples/import/template.md?raw');
 
-    protected readonly modeVariants = ['onLight', 'onDark'] as const;
+    protected readonly appearanceVariants = ['light', 'dark'] as const;
 
-    protected mode: 'onDark' | 'onLight' = this.modeVariants[0];
+    protected appearance: 'dark' | 'light' = this.appearanceVariants[0];
 
     protected adaptive = false;
 
@@ -51,7 +51,7 @@ export default class PageComponent implements OnDestroy {
         this.subscription = this.tableBarsService
             .open(this.tableBarTemplate || '', {
                 adaptive: this.adaptive,
-                mode: this.mode,
+                appearance: this.appearance,
                 hasCloseButton: this.hasCloseButton,
             })
             .subscribe();

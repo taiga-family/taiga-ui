@@ -2,14 +2,14 @@
     size="m"
     tuiButton
     type="button"
-    (click)="showTableBar()"
+    (click)="open()"
 >
     Show TableBar
 </button>
 
 <ng-template
     #tableBarTemplate
-    let-close
+    let-bar
 >
     <div class="content">
         <button
@@ -25,7 +25,7 @@
             tuiButton
             type="button"
             class="tui-space_left-3"
-            (click)="close()"
+            (click)="bar.complete()"
         >
             Cancel
         </button>

@@ -32,8 +32,6 @@
             "@taiga-ui/addon-mobile/*": ["projects/addon-mobile/*"],
             "@taiga-ui/addon-table": ["projects/addon-table/index"],
             "@taiga-ui/addon-table/*": ["projects/addon-table/*"],
-            "@taiga-ui/addon-tablebars": ["projects/addon-tablebars/index"],
-            "@taiga-ui/addon-tablebars/*": ["projects/addon-tablebars/*"],
             "@taiga-ui/cdk": ["projects/cdk/index"],
             "@taiga-ui/cdk/*": ["projects/cdk/*"],
             "@taiga-ui/core": ["projects/core/index"],

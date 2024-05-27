@@ -1,7 +1,7 @@
 ```ts
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
-import {TuiTableBarsService} from '@taiga-ui/addon-tablebars';
-// ...
+import {TuiTableBarsService} from '@taiga-ui/kit';
+
 import {CustomTableBarsComponent} from './custom-table-bars.component';
 
 @Component({

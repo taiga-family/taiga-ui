@@ -1,5 +1,5 @@
 ```ts
-import {TuiTableBarsHostComponent} from '@taiga-ui/addon-tablebars';
+import {TuiTableBarsHostComponent} from '@taiga-ui/kit';
 import {TuiRootComponent} from '@taiga-ui/core';
 // ...
 
