@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[67011],{67011:n=>{n.exports="```ts\nimport {TuiCalendarMonthModule} from '@taiga-ui/kit';\n\n// ...\n\n@Component({\n  standalone: true,\n  imports: [\n    // ...\n    TuiCalendarMonthModule,\n  ],\n  // ...\n})\nexport class MyComponent {}\n```\n"}}]);
