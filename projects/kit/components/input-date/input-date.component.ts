@@ -63,7 +63,7 @@ import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 @Component({
-    selector: 'tui-input-date',
+    selector: 'tui-input-date:not([multiple])',
     templateUrl: './input-date.template.html',
     styleUrls: ['./input-date.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
