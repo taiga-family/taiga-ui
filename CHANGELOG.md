@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.81.0](https://github.com/taiga-family/taiga-ui/compare/v3.80.0...v3.81.0) (2024-05-27)
+
+### Features
+
+- **experimental:** add padding when use nested colored icons in`TuiAvatar` ng-content
+  ([#7534](https://github.com/taiga-family/taiga-ui/issues/7534))
+  ([098cf05](https://github.com/taiga-family/taiga-ui/commit/098cf058d0281f35e4e0c8597b0b474b795c3a3e))
+
+### Bug Fixes
+
+- **cdk:** rendering svg in samsung browser ([#7553](https://github.com/taiga-family/taiga-ui/issues/7553))
+  ([70df178](https://github.com/taiga-family/taiga-ui/commit/70df1783363cf3bfe00bb0648f32c79765f5cc6d))
+- **kit:** collision with input-date-multi ([#7554](https://github.com/taiga-family/taiga-ui/issues/7554))
+  ([911ae28](https://github.com/taiga-family/taiga-ui/commit/911ae28bc31aea265aa3997fbfa5c9faafcb9583))
+
 ## [3.80.0](https://github.com/taiga-family/taiga-ui/compare/v3.79.0...v3.80.0) (2024-05-22)
 
 ### Features
