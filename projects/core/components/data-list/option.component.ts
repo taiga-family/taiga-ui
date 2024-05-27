@@ -9,7 +9,6 @@ import {
 import {TUI_IS_MOBILE, tuiInjectElement, tuiIsNativeFocused} from '@taiga-ui/cdk';
 import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
 import {TuiIconsDirective} from '@taiga-ui/core/directives/icons';
-import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiDataListComponent} from './data-list.component';
@@ -66,12 +65,6 @@ export class TuiOptionComponent<T = unknown> implements OnDestroy {
         self: true,
         optional: true,
     });
-
-    constructor() {
-        const icons = inject(TuiIconsDirective);
-
-        icons.iconRight = this.dropdown ? inject(TUI_COMMON_ICONS).more : icons.iconRight;
-    }
 
     // Preventing focus loss upon focused option removal
     public ngOnDestroy(): void {

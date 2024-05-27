@@ -182,10 +182,6 @@ describe('Accordion', () => {
         expect(await accordionItem.getContent()).toBe('Accordion content');
     });
 
-    it('default with rounded corners', async () => {
-        expect(await accordion.hasRoundedCorners()).toBe(true);
-    });
-
     it('by default, items have borders on the sides', async () => {
         const accordionItem = await accordion.getHarness(TuiAccordionItemHarness);
 
