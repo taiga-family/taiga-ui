@@ -63,7 +63,6 @@ export const TUI_USED_ICONS = [
     'tuiIconGrid',
     'tuiIconHome',
     'tuiIconSettings',
-    'tuiIconChevronRight',
     'tuiIconGitlab',
     'tuiIconUser',
     'tuiIconInfo',
