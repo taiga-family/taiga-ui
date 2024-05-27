@@ -25,12 +25,10 @@ import {
     tuiPure,
     TuiSwipeDirective,
 } from '@taiga-ui/cdk';
-import {
-    TuiCarouselAutoscrollDirective,
-    TuiCarouselScrollDirective,
-} from '@taiga-ui/kit/components';
 
 import {TuiCarouselDirective} from './carousel.directive';
+import {TuiCarouselAutoscrollDirective} from './carousel-autoscroll.directive';
+import {TuiCarouselScrollDirective} from './carousel-scroll.directive';
 
 @Component({
     standalone: true,
