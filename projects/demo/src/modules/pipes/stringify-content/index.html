@@ -1,0 +1,33 @@
+<tui-doc-page
+    header="StringifyContent"
+    package="KIT"
+    type="pipes"
+>
+    <ng-template pageTab>
+        Pipe that turns
+        <code>TuiStringHandler</code>
+        into content that works with
+        <code>$implicit</code>
+        .
+
+        <tui-doc-example
+            id="base"
+            heading="Basic"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample: 'html,ts'"
+        >
+            <tui-notification class="tui-space_top-4">
+                With
+                <a
+                    routerLink="/pipes/filter-by-input"
+                    tuiLink
+                >
+                    <code>FilterByInput</code>
+                </a>
+                pipe.
+            </tui-notification>
+        </tui-doc-example>
+    </ng-template>
+
+    <tui-setup *pageTab />
+</tui-doc-page>

@@ -1,10 +1,32 @@
+import {NgForOf} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
+import {
+    TuiButtonDirective,
+    TuiDataListComponent,
+    TuiDropdownDirective,
+    TuiDropdownOpenDirective,
+    TuiDropdownOptionsDirective,
+    TuiOptGroupDirective,
+    TuiOptionComponent,
+} from '@taiga-ui/core';
+import {TuiChevronDirective} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-data-list-example-6',
+    standalone: true,
+    imports: [
+        TuiChevronDirective,
+        TuiButtonDirective,
+        TuiDropdownDirective,
+        TuiDropdownOptionsDirective,
+        TuiDropdownOpenDirective,
+        TuiDataListComponent,
+        TuiOptGroupDirective,
+        NgForOf,
+        TuiOptionComponent,
+    ],
     templateUrl: './index.html',
     styles: [
         `
@@ -16,7 +38,7 @@ import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
     encapsulation,
     changeDetection,
 })
-export class TuiDataListExample6 {
+export default class ExampleComponent {
     protected open = false;
 
     protected readonly groups = [

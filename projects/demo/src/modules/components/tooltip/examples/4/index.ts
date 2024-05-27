@@ -1,10 +1,11 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {tuiHintOptionsProvider} from '@taiga-ui/core';
+import {tuiHintOptionsProvider, TuiTooltipModule} from '@taiga-ui/core';
 
 @Component({
-    selector: 'tui-tooltip-example-4',
+    standalone: true,
+    imports: [TuiTooltipModule],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
@@ -14,4 +15,4 @@ import {tuiHintOptionsProvider} from '@taiga-ui/core';
         }),
     ],
 })
-export class TuiTooltipExample4 {}
+export default class ExampleComponent {}

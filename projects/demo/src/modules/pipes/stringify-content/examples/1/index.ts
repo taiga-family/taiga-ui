@@ -1,6 +1,13 @@
 import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {
+    TuiDataListWrapperModule,
+    TuiFilterByInputPipeModule,
+    TuiStringifyContentPipeModule,
+} from '@taiga-ui/kit';
+import {TuiComboBoxModule} from '@taiga-ui/legacy';
 
 interface User {
     readonly name: string;
@@ -8,12 +15,19 @@ interface User {
 }
 
 @Component({
-    selector: 'tui-stringify-content-example1',
+    standalone: true,
+    imports: [
+        TuiComboBoxModule,
+        FormsModule,
+        TuiDataListWrapperModule,
+        TuiStringifyContentPipeModule,
+        TuiFilterByInputPipeModule,
+    ],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class TuiStringifyContentExample1 {
+export default class ExampleComponent {
     protected value = null;
 
     protected readonly items = [

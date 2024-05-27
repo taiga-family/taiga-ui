@@ -1,15 +1,30 @@
 import {Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiTextfieldControllerModule} from '@taiga-ui/core';
+import {
+    TuiDataListWrapperModule,
+    TuiFilterByInputPipeModule,
+    TuiStringifyContentPipeModule,
+} from '@taiga-ui/kit';
+import {TuiComboBoxModule} from '@taiga-ui/legacy';
 
 @Component({
-    selector: 'tui-data-list-wrapper-example-2',
+    standalone: true,
+    imports: [
+        TuiComboBoxModule,
+        ReactiveFormsModule,
+        TuiTextfieldControllerModule,
+        TuiDataListWrapperModule,
+        TuiStringifyContentPipeModule,
+        TuiFilterByInputPipeModule,
+    ],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class TuiDataListWrapperExample2 {
+export default class ExampleComponent {
     protected readonly control = new FormControl<{name: string; surname: string} | null>(
         null,
     );

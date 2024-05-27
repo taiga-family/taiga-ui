@@ -1,8 +1,12 @@
+import {NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiHandler} from '@taiga-ui/cdk';
-import {EMPTY_ARRAY} from '@taiga-ui/cdk';
+import {EMPTY_ARRAY, TuiMapperPipe} from '@taiga-ui/cdk';
+import {TuiLabelDirective} from '@taiga-ui/core';
+import {TuiCheckboxComponent, TuiTreeModule} from '@taiga-ui/kit';
 
 interface TreeNode {
     readonly children?: readonly TreeNode[];
@@ -16,12 +20,20 @@ function flatten(item: TreeNode): readonly TreeNode[] {
 }
 
 @Component({
-    selector: 'tui-tree-example-6',
+    standalone: true,
+    imports: [
+        TuiTreeModule,
+        NgForOf,
+        TuiCheckboxComponent,
+        TuiLabelDirective,
+        FormsModule,
+        TuiMapperPipe,
+    ],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class TuiTreeExample6 {
+export default class ExampleComponent {
     protected map = new Map<TreeNode, boolean>();
 
     protected readonly data: TreeNode = {

@@ -1,15 +1,19 @@
+import {NgForOf, NgIf} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiSvgComponent} from '@taiga-ui/core';
+import {TuiTilesModule} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-tiles-example-1',
+    standalone: true,
+    imports: [TuiTilesModule, NgForOf, NgIf, TuiSvgComponent],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiTilesExample1 {
+export default class ExampleComponent {
     protected items = [
         {w: 1, h: 1, content: 'Item 1'},
         {w: 1, h: 1, content: 'Item 2'},

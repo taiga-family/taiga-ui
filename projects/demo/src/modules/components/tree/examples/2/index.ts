@@ -1,15 +1,17 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiTreeModule} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-tree-example-2',
+    standalone: true,
+    imports: [TuiTreeModule],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiTreeExample2 {
+export default class ExampleComponent {
     protected readonly data = [
         'Top level 1',
         ['Second level item', ['Third level 1', 'Third level 2', 'Third level 3']],

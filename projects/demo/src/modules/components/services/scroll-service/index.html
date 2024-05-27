@@ -1,0 +1,77 @@
+<tui-doc-page
+    header="ScrollService"
+    package="CDK"
+    path="cdk/services/scroll.service.ts"
+    type="components/services"
+>
+    <ng-template pageTab>
+        <p>A service for smooth scroll</p>
+
+        <tui-doc-example
+            id="interactive"
+            heading="Interactive sample"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample"
+        />
+    </ng-template>
+
+    <ng-template pageTab>
+        <p>
+            Method
+            <strong>
+                <code tuiText="scroll$: Observable<[number, number]>"></code>
+            </strong>
+            <em>
+                (emits a tuple tuple
+                <code>[scrollTop, scrollLeft]</code>
+                )
+            </em>
+        </p>
+        <tui-doc-documentation [showValues]="false">
+            <ng-template
+                documentationPropertyName="element"
+                documentationPropertyType="Element"
+            >
+                Element to be scrolled
+            </ng-template>
+            <ng-template
+                documentationPropertyName="scrollTop"
+                documentationPropertyType="number"
+            >
+                Target position from top
+            </ng-template>
+            <ng-template
+                documentationPropertyName="scrollLeft"
+                documentationPropertyType="number"
+            >
+                <strong>Optional</strong>
+                . Target position from left
+            </ng-template>
+            <ng-template
+                documentationPropertyName="duration"
+                documentationPropertyType="number"
+            >
+                <strong>Optional</strong>
+                . Duration time in ms (0 for an instant scroll).
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+    <ng-template pageTab>
+        <ol class="tui-list tui-list_ordered">
+            <li class="tui-list__item">
+                <p>
+                    Call
+                    <code>scroll$</code>
+                    method and subscribe to returned
+                    <code>Observable</code>
+                    :
+                </p>
+
+                <tui-doc-code
+                    filename="my.component.ts"
+                    [code]="service"
+                />
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

@@ -1,12 +1,14 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiIconComponent, TuiIconPipe} from '@taiga-ui/core';
 
 @Component({
-    selector: 'tui-icon-example-1',
+    standalone: true,
+    imports: [TuiIconComponent, TuiIconPipe],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiIconExample1 {}
+export default class ExampleComponent {}

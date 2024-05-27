@@ -5,11 +5,10 @@ import {TuiBadgeNotificationComponent} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    selector: 'tui-badge-notification-example-2',
     imports: [TuiBadgeNotificationComponent],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiBadgeNotificationExample2 {}
+export default class ExampleComponent {}

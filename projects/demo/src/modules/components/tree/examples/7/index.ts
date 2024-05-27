@@ -1,23 +1,45 @@
-import {Component, inject} from '@angular/core';
+import {AsyncPipe, NgIf} from '@angular/common';
+import {Component, inject, Injectable} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiHandler} from '@taiga-ui/cdk';
+import {TuiLoaderComponent} from '@taiga-ui/core';
 import {
     TUI_TREE_LOADER,
     TUI_TREE_LOADING,
     TUI_TREE_START,
+    type TuiTreeLoader,
+    TuiTreeModule,
     TuiTreeService,
 } from '@taiga-ui/kit';
+import type {Observable} from 'rxjs';
+import {map, timer} from 'rxjs';
 
-import {TreeLoader} from './service';
-
-export interface Item {
+interface Item {
     readonly children?: boolean;
     readonly text: string;
 }
 
+@Injectable()
+class TreeLoader implements TuiTreeLoader<Item> {
+    public loadChildren({text}: Item): Observable<Item[]> {
+        return timer(3000).pipe(
+            map(() => [
+                {text: `${text} 1`, children: Math.random() > 0.5},
+                {text: `${text} 2`, children: Math.random() > 0.5},
+                {text: `${text} 3`, children: Math.random() > 0.5},
+            ]),
+        );
+    }
+
+    public hasChildren({children}: Item): boolean {
+        return !!children;
+    }
+}
+
 @Component({
-    selector: 'tui-tree-example-7',
+    standalone: true,
+    imports: [TuiTreeModule, TuiLoaderComponent, NgIf, AsyncPipe],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
@@ -34,7 +56,7 @@ export interface Item {
         },
     ],
 })
-export class TuiTreeExample7 {
+export default class ExampleComponent {
     protected readonly loading = inject(TUI_TREE_LOADING);
     protected readonly service = inject(TuiTreeService<Item>);
 

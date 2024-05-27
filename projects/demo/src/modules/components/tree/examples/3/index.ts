@@ -1,8 +1,11 @@
+import {NgIf} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiHandler} from '@taiga-ui/cdk';
 import {EMPTY_ARRAY} from '@taiga-ui/cdk';
+import {TuiSvgComponent} from '@taiga-ui/core';
+import {TuiTreeModule} from '@taiga-ui/kit';
 
 interface TreeNode {
     readonly children?: readonly TreeNode[];
@@ -11,13 +14,14 @@ interface TreeNode {
 }
 
 @Component({
-    selector: 'tui-tree-example-3',
+    standalone: true,
+    imports: [TuiTreeModule, TuiSvgComponent, NgIf],
     templateUrl: './index.html',
     styleUrls: ['index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiTreeExample3 {
+export default class ExampleComponent {
     protected readonly data: TreeNode = {
         text: 'Topmost',
         children: [

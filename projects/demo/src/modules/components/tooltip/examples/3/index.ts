@@ -1,12 +1,24 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {
+    TuiTextfieldControllerModule,
+    TuiTextfieldOptionsDirective,
+    TuiTooltipModule,
+} from '@taiga-ui/core';
+import {TuiInputModule} from '@taiga-ui/legacy';
 
 @Component({
-    selector: 'tui-tooltip-example-3',
+    standalone: true,
+    imports: [
+        TuiInputModule,
+        TuiTextfieldOptionsDirective,
+        TuiTextfieldControllerModule,
+        TuiTooltipModule,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiTooltipExample3 {}
+export default class ExampleComponent {}
