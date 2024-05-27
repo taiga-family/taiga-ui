@@ -1,14 +1,33 @@
+import {AsyncPipe, NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {
+    TuiFileComponent,
+    TuiFileRejectedPipe,
+    TuiFilesComponent,
+    TuiInputFilesComponent,
+    TuiInputFilesDirective,
+} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-input-files-example-7',
+    standalone: true,
+    imports: [
+        TuiInputFilesComponent,
+        TuiInputFilesDirective,
+        FormsModule,
+        TuiFilesComponent,
+        TuiFileComponent,
+        NgForOf,
+        TuiFileRejectedPipe,
+        AsyncPipe,
+    ],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class TuiInputFilesExample7 {
+export default class ExampleComponent {
     protected files: File[] = [];
     protected rejected: File[] = [];
 

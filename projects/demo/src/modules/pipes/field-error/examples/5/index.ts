@@ -1,9 +1,13 @@
+import {AsyncPipe} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import type {AbstractControl, AsyncValidatorFn, FormGroup} from '@angular/forms';
-import {UntypedFormBuilder, Validators} from '@angular/forms';
+import {ReactiveFormsModule, UntypedFormBuilder, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_IS_E2E, TuiValidationError} from '@taiga-ui/cdk';
+import {TuiErrorComponent} from '@taiga-ui/core';
+import {TuiFieldErrorPipeModule} from '@taiga-ui/kit';
+import {TuiInputModule} from '@taiga-ui/legacy';
 import {delay, of} from 'rxjs';
 
 const latinChars = /^[a-zA-Z]+$/;
@@ -18,13 +22,20 @@ function asyncValidatorFn(isE2E: boolean): AsyncValidatorFn {
 }
 
 @Component({
-    selector: 'tui-field-error-pipe-example-5',
+    standalone: true,
+    imports: [
+        ReactiveFormsModule,
+        TuiInputModule,
+        TuiErrorComponent,
+        TuiFieldErrorPipeModule,
+        AsyncPipe,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiFieldErrorPipeExample5 {
+export default class ExampleComponent {
     private readonly fb = inject(UntypedFormBuilder);
 
     protected readonly form: FormGroup;

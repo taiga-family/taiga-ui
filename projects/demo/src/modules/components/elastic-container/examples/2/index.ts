@@ -1,12 +1,14 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiElasticContainerModule} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-elastic-container-example-2',
+    standalone: true,
+    imports: [TuiElasticContainerModule],
     templateUrl: './index.html',
     styleUrls: ['index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiElasticContainerExample2 {}
+export default class ExampleComponent {}

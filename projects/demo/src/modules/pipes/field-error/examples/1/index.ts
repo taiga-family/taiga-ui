@@ -1,8 +1,18 @@
+import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import type {AbstractControl} from '@angular/forms';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {
+    TuiErrorComponent,
+    TuiLabelDirective,
+    TuiLinkDirective,
+    TuiTextfieldControllerModule,
+} from '@taiga-ui/core';
+import {TuiFieldErrorPipeModule} from '@taiga-ui/kit';
+import {TuiInputModule} from '@taiga-ui/legacy';
 import {distinctUntilChanged} from 'rxjs';
 
 const latinChars = /^[a-zA-Z]+$/;
@@ -24,12 +34,23 @@ export function superComputerValidator(field: AbstractControl): Validators | nul
 }
 
 @Component({
-    selector: 'tui-field-error-pipe-example-1',
+    standalone: true,
+    imports: [
+        ReactiveFormsModule,
+        TuiLabelDirective,
+        TuiInputModule,
+        TuiTextfieldControllerModule,
+        TuiErrorComponent,
+        TuiFieldErrorPipeModule,
+        AsyncPipe,
+        RouterLink,
+        TuiLinkDirective,
+    ],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class TuiFieldErrorPipeExample1 {
+export default class ExampleComponent {
     protected readonly testValue1 = new FormControl('', [
         Validators.required,
         passwordValidator,

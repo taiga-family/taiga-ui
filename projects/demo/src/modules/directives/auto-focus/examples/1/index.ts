@@ -1,14 +1,26 @@
+import {NgIf} from '@angular/common';
 import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiAutoFocusDirective} from '@taiga-ui/cdk';
+import {TuiButtonDirective} from '@taiga-ui/core';
+import {TuiInputModule} from '@taiga-ui/legacy';
 
 @Component({
-    selector: 'tui-auto-focus-example-1',
+    standalone: true,
+    imports: [
+        TuiButtonDirective,
+        TuiInputModule,
+        NgIf,
+        TuiAutoFocusDirective,
+        FormsModule,
+    ],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class TuiAutoFocusExample1 {
+export default class ExampleComponent {
     protected showInput = false;
     protected model = 'Focused after its appearance';
 

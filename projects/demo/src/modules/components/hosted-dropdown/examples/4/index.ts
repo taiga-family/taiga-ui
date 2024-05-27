@@ -1,15 +1,25 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiButtonDirective, TuiHostedDropdownModule} from '@taiga-ui/core';
+import {TuiDataListWrapperModule} from '@taiga-ui/kit';
+import {TuiMultiSelectModule} from '@taiga-ui/legacy';
 
 @Component({
-    selector: 'tui-hosted-dropdown-example-4',
+    standalone: true,
+    imports: [
+        TuiHostedDropdownModule,
+        ReactiveFormsModule,
+        TuiButtonDirective,
+        TuiDataListWrapperModule,
+        TuiMultiSelectModule,
+    ],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class TuiHostedDropdownExample4 {
+export default class ExampleComponent {
     protected readonly form = new FormGroup({
         control: new FormControl<string[]>([]),
     });

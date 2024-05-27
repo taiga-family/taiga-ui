@@ -1,13 +1,32 @@
+import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiIsFalsy} from '@taiga-ui/cdk';
-import {TUI_VALIDATION_ERRORS} from '@taiga-ui/kit';
+import {
+    TuiErrorComponent,
+    TuiLabelDirective,
+    TuiTextfieldControllerModule,
+    TuiTextfieldOptionsDirective,
+} from '@taiga-ui/core';
+import {TUI_VALIDATION_ERRORS, TuiFieldErrorPipeModule} from '@taiga-ui/kit';
+import {TuiInputModule, TuiInputNumberModule} from '@taiga-ui/legacy';
 import {interval, map, of, scan, startWith} from 'rxjs';
 
 @Component({
-    selector: 'tui-field-error-pipe-example-2',
+    standalone: true,
+    imports: [
+        ReactiveFormsModule,
+        TuiLabelDirective,
+        TuiInputModule,
+        TuiTextfieldOptionsDirective,
+        TuiTextfieldControllerModule,
+        TuiErrorComponent,
+        TuiFieldErrorPipeModule,
+        AsyncPipe,
+        TuiInputNumberModule,
+    ],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
@@ -30,7 +49,7 @@ import {interval, map, of, scan, startWith} from 'rxjs';
         },
     ],
 })
-export class TuiFieldErrorPipeExample2 {
+export default class ExampleComponent {
     protected readonly testValue1 = new FormControl('', [
         Validators.minLength(4),
         Validators.maxLength(4),

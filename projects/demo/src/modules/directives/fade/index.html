@@ -1,0 +1,81 @@
+<tui-doc-page
+    header="Fade"
+    package="KIT"
+    type="directives"
+>
+    <ng-template pageTab>
+        <p>Directive that uses masking to fade out overflown content</p>
+
+        <tui-doc-example
+            id="basic"
+            heading="Basic"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample"
+        />
+
+        <tui-doc-example
+            id="multiline"
+            heading="Multiline"
+            [component]="2 | tuiComponent"
+            [content]="2 | tuiExample"
+        />
+
+        <tui-doc-example
+            id="vertical"
+            heading="Vertical"
+            [component]="3 | tuiComponent"
+            [content]="3 | tuiExample"
+        />
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <div
+                tuiFade
+                class="fade"
+                [tuiFadeHeight]="lineHeight"
+                [tuiFadeOffset]="offset"
+                [tuiFadeSize]="size"
+            >
+                I am a very long text with
+                <code>white-space: nowrap</code>
+                that fades
+            </div>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="tuiFade"
+                documentationPropertyType="TuiOrientation"
+            >
+                Orientation of the fade
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="tuiFadeHeight"
+                documentationPropertyType="string"
+                [(documentationPropertyValue)]="lineHeight"
+            >
+                Line height (required for multiline text fade)
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="tuiFadeOffset"
+                documentationPropertyType="string"
+                [(documentationPropertyValue)]="offset"
+            >
+                Offset from the edge for the fade to start
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="tuiFadeSize"
+                documentationPropertyType="string"
+                [(documentationPropertyValue)]="size"
+            >
+                Size of the fade
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <tui-setup *pageTab />
+</tui-doc-page>

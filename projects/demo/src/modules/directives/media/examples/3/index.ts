@@ -1,14 +1,25 @@
 import {Component, ViewEncapsulation} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiMediaDirective} from '@taiga-ui/cdk';
+import {TuiButtonDirective, TuiLinkDirective} from '@taiga-ui/core';
+import {TuiSliderModule} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-media-example-3',
+    standalone: true,
+    imports: [
+        TuiMediaDirective,
+        TuiButtonDirective,
+        TuiLinkDirective,
+        TuiSliderModule,
+        FormsModule,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection,
 })
-export class TuiMediaExample3 {
+export default class ExampleComponent {
     protected currentTime = 0;
     protected paused = true;
 

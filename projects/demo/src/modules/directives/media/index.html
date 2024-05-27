@@ -1,0 +1,79 @@
+<tui-doc-page
+    header="Media"
+    package="CDK"
+    type="directives"
+>
+    <ng-template pageTab>
+        <p>Directive for declarative work with HTML5 video and audio</p>
+
+        <tui-doc-example
+            id="native"
+            heading="Native controls"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample"
+        />
+
+        <tui-doc-example
+            id="video"
+            heading="Video"
+            [component]="2 | tuiComponent"
+            [content]="2 | tuiExample"
+        />
+
+        <tui-doc-example
+            id="audio"
+            heading="Audio"
+            [component]="3 | tuiComponent"
+            [content]="3 | tuiExample"
+        />
+    </ng-template>
+
+    <ng-template pageTab>
+        <audio
+            controls
+            src="assets/media/strays.mp3"
+            tuiMedia
+            [playbackRate]="playbackRate"
+            [(currentTime)]="currentTime"
+            [(paused)]="paused"
+            [(volume)]="volume"
+        ></audio>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyMode="input-output"
+                documentationPropertyName="currentTime"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="currentTime"
+            >
+                Current time
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input-output"
+                documentationPropertyName="paused"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="paused"
+            >
+                Paused state
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="playbackRate"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="playbackRate"
+            >
+                Playback speed
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input-output"
+                documentationPropertyName="volume"
+                documentationPropertyType="number"
+                [documentationPropertyValues]="volumeVariants"
+                [(documentationPropertyValue)]="volume"
+            >
+                Volume
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <tui-setup *pageTab />
+</tui-doc-page>

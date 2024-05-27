@@ -1,0 +1,21 @@
+<tui-doc-page
+    header="Validator"
+    package="CDK"
+    type="directives"
+>
+    <ng-template pageTab>
+        <p>
+            <code>tuiValidator</code>
+            allows set validators for form control on the fly
+        </p>
+
+        <tui-doc-example
+            id="base"
+            heading="Basic"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample: 'html,ts'"
+        />
+    </ng-template>
+
+    <tui-setup *pageTab="'Setup'" />
+</tui-doc-page>

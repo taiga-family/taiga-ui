@@ -1,16 +1,20 @@
 import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {SECONDS_IN_MINUTE} from '@taiga-ui/cdk';
+import {SECONDS_IN_MINUTE, TuiMediaDirective} from '@taiga-ui/cdk';
+import {TuiButtonDirective} from '@taiga-ui/core';
+import {TuiSliderModule} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-media-example-2',
+    standalone: true,
+    imports: [TuiMediaDirective, TuiButtonDirective, TuiSliderModule, FormsModule],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiMediaExample2 {
+export default class ExampleComponent {
     protected currentTime = 0;
     protected paused = true;
 

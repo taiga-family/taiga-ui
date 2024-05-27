@@ -1,15 +1,40 @@
+import {NgForOf, NgIf} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {
+    TuiDataListComponent,
+    TuiDropdownDirective,
+    TuiDropdownOpenDirective,
+    TuiDropdownOptionsDirective,
+    TuiIconComponent,
+    TuiLinkDirective,
+    TuiOptGroupDirective,
+    TuiOptionComponent,
+} from '@taiga-ui/core';
+import {TuiChevronDirective} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-dropdown-open-example-3',
+    standalone: true,
+    imports: [
+        TuiChevronDirective,
+        TuiDropdownOptionsDirective,
+        TuiLinkDirective,
+        TuiDropdownDirective,
+        TuiDropdownOpenDirective,
+        TuiDataListComponent,
+        TuiOptGroupDirective,
+        NgForOf,
+        TuiOptionComponent,
+        TuiIconComponent,
+        NgIf,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiDropdownOpenExample3 {
+export default class ExampleComponent {
     protected open = false;
 
     protected readonly items = [

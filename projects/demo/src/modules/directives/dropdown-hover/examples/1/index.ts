@@ -1,11 +1,13 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiDropdownDirective, TuiDropdownHoverDirective} from '@taiga-ui/core';
 
 @Component({
-    selector: 'tui-dropdown-hover-example-1',
+    standalone: true,
+    imports: [TuiDropdownDirective, TuiDropdownHoverDirective],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class TuiDropdownHoverExample1 {}
+export default class ExampleComponent {}

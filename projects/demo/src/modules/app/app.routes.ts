@@ -296,42 +296,32 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.Expand,
-        loadChildren: async () =>
-            (await import('../components/expand/expand.module')).ExampleTuiExpandModule,
+        loadComponent: async () => import('../components/expand'),
         title: 'Expand',
     }),
     route({
         path: DemoRoute.ElasticContainer,
-        loadChildren: async () =>
-            (await import('../components/elastic-container/elastic-container.module'))
-                .ExampleTuiElasticContainerModule,
+        loadComponent: async () => import('../components/elastic-container'),
         title: 'ElasticContainer',
     }),
     route({
         path: DemoRoute.FieldError,
-        loadChildren: async () =>
-            (await import('../pipes/field-error/field-error.module'))
-                .ExampleTuiFieldErrorModule,
+        loadComponent: async () => import('../pipes/field-error'),
         title: 'FieldError',
     }),
     route({
         path: DemoRoute.InputFiles,
-        loadChildren: async () =>
-            (await import('../components/input-files/input-files.module'))
-                .ExampleTuiFilesModule,
+        loadComponent: async () => import('../components/input-files'),
         title: 'InputFiles',
     }),
     route({
         path: DemoRoute.Group,
-        loadChildren: async () =>
-            (await import('../components/group/group.module')).ExampleTuiGroupModule,
+        loadComponent: async () => import('../components/group'),
         title: 'Group',
     }),
     route({
         path: DemoRoute.HostedDropdown,
-        loadChildren: async () =>
-            (await import('../components/hosted-dropdown/hosted-dropdown.module'))
-                .ExampleTuiHostedDropdownModule,
+        loadComponent: async () => import('../components/hosted-dropdown'),
         title: 'HostedDropdown',
     }),
     route({
@@ -341,36 +331,27 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.DropdownOpen,
-        loadChildren: async () =>
-            (await import('../directives/dropdown-open/dropdown-open.module'))
-                .ExampleTuiDropdownOpenModule,
+        loadComponent: async () => import('../directives/dropdown-open'),
         title: 'DropdownOpen',
     }),
     route({
         path: DemoRoute.DropdownContext,
-        loadChildren: async () =>
-            (await import('../directives/dropdown-context/dropdown-context.module'))
-                .ExampleTuiDropdownContextModule,
+        loadComponent: async () => import('../directives/dropdown-context'),
         title: 'DropdownContext',
     }),
     route({
         path: DemoRoute.DropdownHover,
-        loadChildren: async () =>
-            (await import('../directives/dropdown-hover/dropdown-hover.module'))
-                .ExampleTuiDropdownHoverModule,
+        loadComponent: async () => import('../directives/dropdown-hover'),
         title: 'DropdownHover',
     }),
     route({
         path: DemoRoute.DropdownSelection,
-        loadChildren: async () =>
-            (await import('../directives/dropdown-selection/dropdown-selection.module'))
-                .ExampleTuiDropdownSelectionModule,
+        loadComponent: async () => import('../directives/dropdown-selection'),
         title: 'DropdownSelection',
     }),
     route({
         path: DemoRoute.Fade,
-        loadChildren: async () =>
-            (await import('../directives/fade/fade.module')).ExampleTuiFadeDirective,
+        loadComponent: async () => import('../directives/fade'),
         title: 'Fade',
     }),
     route({
@@ -930,16 +911,12 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.HintPointer,
-        loadChildren: async () =>
-            (await import('../directives/hint-pointer/hint-pointer.module'))
-                .ExampleTuiHintPointerModule,
+        loadComponent: async () => import('../directives/hint-pointer'),
         title: 'HintPointer',
     }),
     route({
         path: DemoRoute.LazyLoading,
-        loadChildren: async () =>
-            (await import('../directives/lazy-loading/lazy-loading.module'))
-                .ExampleTuiLazyLoadingModule,
+        loadComponent: async () => import('../directives/lazy-loading'),
         title: 'LazyLoading',
     }),
     route({
@@ -969,9 +946,7 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.Present,
-        loadChildren: async () =>
-            (await import('../directives/present/present.module'))
-                .ExampleTuiPresentDirective,
+        loadComponent: async () => import('../directives/present'),
         title: 'Present',
     }),
     route({
@@ -1016,9 +991,7 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.Validator,
-        loadChildren: async () =>
-            (await import('../directives/validator/validator.module'))
-                .ExampleTuiValidatorModule,
+        loadComponent: async () => import('../directives/validator'),
         title: 'Validator',
     }),
     route({
@@ -1028,8 +1001,7 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.Media,
-        loadChildren: async () =>
-            (await import('../directives/media/media.module')).ExampleTuiMediaModule,
+        loadComponent: async () => import('../directives/media'),
         title: 'Media',
     }),
     route({
@@ -1039,16 +1011,13 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.AutoFocus,
-        loadChildren: async () =>
-            (await import('../directives/auto-focus/auto-focus.module'))
-                .ExampleTuiAutoFocusModule,
+        loadComponent: async () => import('../directives/auto-focus'),
         title: 'AutoFocus',
     }),
     // PIPES
     route({
         path: DemoRoute.Currency,
-        loadChildren: async () =>
-            (await import('../pipes/currency/currency.module')).ExampleTuiCurrencyModule,
+        loadComponent: async () => import('../pipes/currency'),
         title: 'Currency',
     }),
     route({

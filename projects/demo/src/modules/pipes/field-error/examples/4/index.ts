@@ -1,19 +1,47 @@
+import {AsyncPipe, NgForOf} from '@angular/common';
 import {Component, ViewChild} from '@angular/core';
 import type {AbstractControl, ValidationErrors, ValidatorFn} from '@angular/forms';
-import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
+import {
+    FormArray,
+    FormControl,
+    FormGroup,
+    ReactiveFormsModule,
+    Validators,
+} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiValidationError} from '@taiga-ui/cdk';
+import {
+    TuiButtonDirective,
+    TuiErrorComponent,
+    TuiLabelDirective,
+    TuiTextfieldControllerModule,
+    TuiTextfieldOptionsDirective,
+} from '@taiga-ui/core';
+import {TuiFieldErrorPipeModule} from '@taiga-ui/kit';
+import {TuiInputPhoneModule} from '@taiga-ui/legacy';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 @Component({
-    selector: 'tui-field-error-pipe-example-4',
+    standalone: true,
+    imports: [
+        ReactiveFormsModule,
+        NgForOf,
+        TuiLabelDirective,
+        TuiInputPhoneModule,
+        TuiTextfieldOptionsDirective,
+        TuiTextfieldControllerModule,
+        TuiButtonDirective,
+        TuiErrorComponent,
+        TuiFieldErrorPipeModule,
+        AsyncPipe,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiFieldErrorPipeExample4 {
+export default class ExampleComponent {
     @ViewChild('phoneErrorContent')
     protected phoneErrorContent: PolymorpheusContent;
 

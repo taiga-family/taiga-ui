@@ -1,12 +1,14 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiButtonDirective, TuiGroupDirective} from '@taiga-ui/core';
 
 @Component({
-    selector: 'tui-group-example-2',
+    standalone: true,
+    imports: [TuiGroupDirective, TuiButtonDirective],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiGroupExample2 {}
+export default class ExampleComponent {}
