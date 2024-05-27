@@ -2,19 +2,48 @@ import type {PipeTransform} from '@angular/core';
 import {inject, Pipe} from '@angular/core';
 import {CHAR_PLUS} from '@taiga-ui/cdk';
 import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
-import {TUI_COUNTRIES_MASKS} from '@taiga-ui/kit/tokens';
 import {
+    TUI_COUNTRIES_MASKS,
     tuiGetMaxAllowedPhoneLength,
-    tuiIsoToCountryCode,
     tuiNotKzRegion,
-} from '@taiga-ui/kit/utils';
+} from '@taiga-ui/kit';
+import {tuiIsoToCountryCode} from '@taiga-ui/legacy/utils';
 
+/**
+ * @deprecated use `maskitoGetCountryFromNumber` from `@maskito/phone` instead
+ * ```
+ * npm i @maskito/phone
+ * ```
+ *
+ * ```ts
+ * import {maskitoGetCountryFromNumber} from '@maskito/phone';
+ * import metadata from 'libphonenumber-js/min/metadata';
+ *
+ * maskitoGetCountryFromNumber('+1 (212) 555-2368', metadata); // 'US'
+ * maskitoGetCountryFromNumber('+12125552368', metadata); // 'US'
+ * ```
+ */
 @Pipe({
+    standalone: true,
     name: 'tuiToCountryCode',
 })
 export class TuiToCountryCodePipe implements PipeTransform {
     private readonly countriesMasks = inject(TUI_COUNTRIES_MASKS);
 
+    /**
+     * @deprecated use `maskitoGetCountryFromNumber` from `@maskito/phone` instead
+     * ```
+     * npm i @maskito/phone
+     * ```
+     *
+     * ```ts
+     * import {maskitoGetCountryFromNumber} from '@maskito/phone';
+     * import metadata from 'libphonenumber-js/min/metadata';
+     *
+     * maskitoGetCountryFromNumber('+1 (212) 555-2368', metadata); // 'US'
+     * maskitoGetCountryFromNumber('+12125552368', metadata); // 'US'
+     * ```
+     */
     public transform(
         value: string,
         countries: readonly TuiCountryIsoCode[],

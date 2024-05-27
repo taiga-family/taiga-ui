@@ -98,6 +98,18 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {name: 'tuiFormatPhone', moduleSpecifier: '@taiga-ui/legacy'},
     },
     {
+        from: {name: 'TuiExtractCountryCodeModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiToCountryCodePipe', moduleSpecifier: '@taiga-ui/legacy'},
+    },
+    {
+        from: {name: 'TuiIsoToCountryCodeModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiIsoToCountryCodePipe', moduleSpecifier: '@taiga-ui/legacy'},
+    },
+    {
+        from: {name: 'tuiIsoToCountryCode', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'tuiIsoToCountryCode', moduleSpecifier: '@taiga-ui/legacy'},
+    },
+    {
         from: {name: 'TuiMonthPipeModule', moduleSpecifier: '@taiga-ui/core'},
         to: {name: 'TuiMonthPipe', moduleSpecifier: '@taiga-ui/core'},
     },

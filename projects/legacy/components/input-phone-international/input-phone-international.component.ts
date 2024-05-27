@@ -40,15 +40,14 @@ import {
     TUI_COUNTRIES,
     TUI_COUNTRIES_MASKS,
     tuiGetMaxAllowedPhoneLength,
-    tuiIsoToCountryCode,
-    TuiIsoToCountryCodePipe,
-    TuiToCountryCodePipe,
 } from '@taiga-ui/kit';
 import {TUI_ARROW, TuiArrowComponent} from '@taiga-ui/legacy/components/arrow';
 import {
     TuiInputPhoneComponent,
     TuiInputPhoneModule,
 } from '@taiga-ui/legacy/components/input-phone';
+import {TuiIsoToCountryCodePipe, TuiToCountryCodePipe} from '@taiga-ui/legacy/pipes';
+import {tuiIsoToCountryCode} from '@taiga-ui/legacy/utils';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
