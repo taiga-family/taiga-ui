@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[11533],{11533:e=>{e.exports="```ts\nexport class MyComponent {\n  private tuiScrollService = inject(TuiScrollService);\n}\n```\n"}}]);

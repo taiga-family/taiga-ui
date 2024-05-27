@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[84056],{84056:n=>{n.exports='<tui-input [(ngModel)]="value">Type something</tui-input>\n<p>\n    <button\n        tuiButton\n        (mousedown.prevent.silent)="keyboard.toggle()"\n    >\n        Toggle\n    </button>\n</p>\n'}}]);
