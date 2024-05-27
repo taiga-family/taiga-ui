@@ -1,3 +1,4 @@
+import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -13,18 +14,38 @@ import {
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
     TuiDay,
+    TuiHoveredDirective,
+    TuiLetDirective,
     TuiMonth,
     TuiMonthRange,
     tuiNullableSame,
     tuiPure,
 } from '@taiga-ui/cdk';
 import type {TuiRangeState, TuiWithOptionalMinMax} from '@taiga-ui/core';
+import {
+    TuiCalendarYearComponent,
+    TuiLinkDirective,
+    TuiScrollbarComponent,
+    TuiSpinButtonComponent,
+} from '@taiga-ui/core';
 import {TUI_CALENDAR_MONTHS} from '@taiga-ui/kit/tokens';
 
 const TODAY = TuiDay.currentLocal();
 
 @Component({
+    standalone: true,
     selector: 'tui-calendar-month',
+    imports: [
+        AsyncPipe,
+        NgIf,
+        NgForOf,
+        TuiCalendarYearComponent,
+        TuiSpinButtonComponent,
+        TuiScrollbarComponent,
+        TuiLinkDirective,
+        TuiLetDirective,
+        TuiHoveredDirective,
+    ],
     templateUrl: './calendar-month.template.html',
     styleUrls: ['./calendar-month.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

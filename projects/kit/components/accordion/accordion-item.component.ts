@@ -1,3 +1,4 @@
+import {NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -10,12 +11,17 @@ import {
     Output,
 } from '@angular/core';
 import type {TuiSizeS} from '@taiga-ui/core';
+import {TuiExpand, TuiIconComponent} from '@taiga-ui/core';
+import {TuiChevronDirective} from '@taiga-ui/kit/directives';
+import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiAccordionItemContentDirective} from './accordion-item-content.directive';
 import {TuiAccordionItemEagerContentDirective} from './accordion-item-eager-content.directive';
 
 @Component({
+    standalone: true,
     selector: 'tui-accordion-item',
+    imports: [NgIf, PolymorpheusModule, TuiIconComponent, TuiChevronDirective, TuiExpand],
     templateUrl: './accordion-item.template.html',
     styleUrls: ['./accordion-item.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

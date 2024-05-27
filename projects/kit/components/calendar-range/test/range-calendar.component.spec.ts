@@ -16,7 +16,6 @@ import {TuiRootComponent} from '@taiga-ui/core';
 import {
     TUI_CALENDAR_DATE_STREAM,
     TuiCalendarRangeComponent,
-    TuiCalendarRangeModule,
     tuiCreateDefaultDayRangePeriods,
     TuiDayRangePeriod,
 } from '@taiga-ui/kit';
@@ -75,7 +74,7 @@ describe('rangeCalendarComponent', () => {
     beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [
-                TuiCalendarRangeModule,
+                TuiCalendarRangeComponent,
                 TuiRootComponent,
                 ReactiveFormsModule,
                 NoopAnimationsModule,

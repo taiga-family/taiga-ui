@@ -1,32 +1,34 @@
 import type {AfterContentInit, QueryList} from '@angular/core';
-import {
-    ChangeDetectionStrategy,
-    Component,
-    ContentChildren,
-    DestroyRef,
-    inject,
-    Input,
-} from '@angular/core';
+import {ContentChildren, DestroyRef, Directive, inject, Input} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {EMPTY_QUERY, tuiIsPresent, tuiQueryListChanges} from '@taiga-ui/cdk';
+import {TuiGroupDirective, tuiGroupOptionsProvider} from '@taiga-ui/core';
 import {filter, identity, map, merge, pairwise, switchMap} from 'rxjs';
 
-import {TuiAccordionItemComponent} from './accordion-item/accordion-item.component';
+import {TuiAccordionItemComponent} from './accordion-item.component';
 
-@Component({
+@Directive({
+    standalone: true,
     selector: 'tui-accordion',
-    templateUrl: './accordion.template.html',
-    styleUrls: ['./accordion.style.less'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
+    hostDirectives: [
+        {
+            directive: TuiGroupDirective,
+            inputs: ['rounded'],
+        },
+    ],
+    providers: [
+        tuiGroupOptionsProvider({
+            orientation: 'vertical',
+            size: 'l',
+            collapsed: true,
+        }),
+    ],
 })
-export class TuiAccordionComponent implements AfterContentInit {
+export class TuiAccordionDirective implements AfterContentInit {
     private readonly destroyRef = inject(DestroyRef);
 
     @Input()
     public closeOthers = true;
-
-    @Input()
-    public rounded = true;
 
     @ContentChildren(TuiAccordionItemComponent)
     protected readonly accordionItems: QueryList<TuiAccordionItemComponent> = EMPTY_QUERY;

@@ -1,5 +1,5 @@
 ```ts
-import {TuiAccordionModule} from '@taiga-ui/kit';
+import {TuiAccordion} from '@taiga-ui/kit';
 
 // ...
 
@@ -7,7 +7,7 @@ import {TuiAccordionModule} from '@taiga-ui/kit';
   standalone: true,
   imports: [
     // ...
-    TuiAccordionModule,
+    TuiAccordion,
   ],
   // ...
 })

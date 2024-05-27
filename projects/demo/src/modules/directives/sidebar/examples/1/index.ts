@@ -5,7 +5,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiSidebarDirective} from '@taiga-ui/addon-mobile';
 import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
 import {TuiButtonDirective, TuiLinkDirective} from '@taiga-ui/core';
-import {TuiAccordionModule} from '@taiga-ui/kit';
+import {TuiAccordion} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
@@ -13,7 +13,7 @@ import {TuiAccordionModule} from '@taiga-ui/kit';
         TuiButtonDirective,
         TuiActiveZoneDirective,
         TuiSidebarDirective,
-        TuiAccordionModule,
+        TuiAccordion,
         NgForOf,
         TuiLinkDirective,
     ],

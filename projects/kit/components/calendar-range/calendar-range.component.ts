@@ -1,3 +1,4 @@
+import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -16,20 +17,38 @@ import {
     TUI_LAST_DAY,
     TuiDayRange,
     tuiIsString,
+    TuiMapperPipe,
     TuiMonth,
     tuiNullableSame,
     tuiPure,
     tuiWatch,
 } from '@taiga-ui/cdk';
 import type {TuiMarkerHandler, TuiWithOptionalMinMax} from '@taiga-ui/core';
-import {TUI_COMMON_ICONS} from '@taiga-ui/core';
+import {
+    TUI_COMMON_ICONS,
+    TuiCalendarComponent,
+    TuiDataList,
+    TuiIconComponent,
+} from '@taiga-ui/core';
 import type {TuiDayRangePeriod} from '@taiga-ui/kit/classes';
 import {MAX_DAY_RANGE_LENGTH_MAPPER} from '@taiga-ui/kit/constants';
+import {TuiPrimitiveCalendarRangeModule} from '@taiga-ui/kit/internal';
 import {TUI_CALENDAR_DATE_STREAM, TUI_OTHER_DATE_TEXT} from '@taiga-ui/kit/tokens';
 import type {Observable} from 'rxjs';
 
 @Component({
+    standalone: true,
     selector: 'tui-calendar-range',
+    imports: [
+        AsyncPipe,
+        NgIf,
+        NgForOf,
+        TuiMapperPipe,
+        TuiCalendarComponent,
+        TuiDataList,
+        TuiPrimitiveCalendarRangeModule,
+        TuiIconComponent,
+    ],
     templateUrl: './calendar-range.template.html',
     styleUrls: ['./calendar-range.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -150,11 +169,6 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
         const {activePeriod} = this;
 
         return (tuiIsString(item) && activePeriod === null) || activePeriod === item;
-    }
-
-    // TODO: investigate if it is used anywhere and (if not) delete it in v4.0
-    protected onRangeChange(dayRange: TuiDayRange): void {
-        this.updateValue(dayRange);
     }
 
     protected onDayClick(day: TuiDay): void {

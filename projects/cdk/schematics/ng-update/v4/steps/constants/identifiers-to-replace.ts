@@ -130,6 +130,36 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {name: 'TuiLoaderComponent', moduleSpecifier: '@taiga-ui/core'},
     },
     {
+        from: {name: 'TuiAccordionComponent', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiAccordionDirective', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {name: 'TuiAccordionModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiAccordion', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {name: 'TuiBreadcrumbsModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: [
+            {name: 'TuiBreadcrumbsComponent', moduleSpecifier: '@taiga-ui/kit'},
+            {name: 'TuiItemDirective', moduleSpecifier: '@taiga-ui/cdk'},
+        ],
+    },
+    {
+        from: {name: 'TuiCalendarMonthModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiCalendarMonthComponent', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {name: 'TuiCalendarRangeModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiCalendarRangeComponent', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {name: 'TuiCarouselModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: [
+            {name: 'TuiCarouselComponent', moduleSpecifier: '@taiga-ui/kit'},
+            {name: 'TuiItemDirective', moduleSpecifier: '@taiga-ui/cdk'},
+        ],
+    },
+    {
         from: {name: 'TuiThumbnailCardModule', moduleSpecifier: '@taiga-ui/experimental'},
         to: {
             name: 'TuiThumbnailCardComponent',

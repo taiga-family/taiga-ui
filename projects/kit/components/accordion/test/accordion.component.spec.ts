@@ -9,9 +9,9 @@ import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiDataList, TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {
-    TuiAccordionComponent,
+    TuiAccordion,
+    TuiAccordionDirective,
     TuiAccordionItemComponent,
-    TuiAccordionModule,
 } from '@taiga-ui/kit';
 import {TuiDataListWrapperModule} from '@taiga-ui/kit/components';
 import {
@@ -110,8 +110,8 @@ describe('Accordion', () => {
         `,
     })
     class TestComponent {
-        @ViewChild(TuiAccordionComponent, {static: true})
-        public component!: TuiAccordionComponent;
+        @ViewChild(TuiAccordionDirective, {static: true})
+        public component!: TuiAccordionDirective;
 
         @ViewChildren(TuiAccordionItemComponent)
         public items!: QueryList<TuiAccordionItemComponent>;
@@ -138,7 +138,7 @@ describe('Accordion', () => {
             imports: [
                 // TuiInputModule,
                 // TuiSelectModule,
-                TuiAccordionModule,
+                TuiAccordion,
                 ReactiveFormsModule,
                 NoopAnimationsModule,
                 TuiTextfieldControllerModule,
@@ -180,10 +180,6 @@ describe('Accordion', () => {
 
         await accordionItem.clickHeader();
         expect(await accordionItem.getContent()).toBe('Accordion content');
-    });
-
-    it('default with rounded corners', async () => {
-        expect(await accordion.hasRoundedCorners()).toBe(true);
     });
 
     it('by default, items have borders on the sides', async () => {
