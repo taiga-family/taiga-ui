@@ -55,6 +55,7 @@ export const TUI_USED_ICONS = [
     'tuiIconPlus',
     'tuiIconCreditCardLarge',
     'tuiIconMoreVertical',
+    'tuiIconChevronRight',
     'tuiIconChevronDownLarge',
     'tuiIconVisa',
     'tuiIconMaestro',
