@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[267,54550],{267:(e,n,r)=>{r.d(n,{i:()=>t});var a=r(85973),u=r(35548);let t=(()=>{var e;class n{transform(e){return(0,a.BP)(e)}}return(e=n).ɵfac=function(n){return new(n||e)},e.ɵpipe=u.Yjl({name:"tuiCurrency",type:e,pure:!0,standalone:!0}),n})()}}]);
