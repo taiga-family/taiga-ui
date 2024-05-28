@@ -9,7 +9,6 @@ import {
     TuiAvatarComponent,
     TuiCarouselButtonsDirective,
     TuiCarouselComponent,
-    TuiIslandModule,
 } from '@taiga-ui/kit';
 
 @Component({
@@ -17,7 +16,6 @@ import {
     imports: [
         TuiButtonDirective,
         TuiCarouselComponent,
-        TuiIslandModule,
         TuiLoaderComponent,
         TuiAvatarComponent,
         TuiAmountPipe,

@@ -1,3 +1,4 @@
+import {NgForOf, NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -6,6 +7,7 @@ import {
     Input,
     Output,
 } from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import type {TuiBooleanHandler, TuiHandler, TuiIdentityMatcher} from '@taiga-ui/cdk';
 import {
     AbstractTuiMultipleControl,
@@ -15,7 +17,8 @@ import {
     tuiIsNativeFocusedIn,
 } from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS, TuiSizeXL, TuiSizeXS} from '@taiga-ui/core';
-import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {TuiBadgeDirective, TuiBlockDirective} from '@taiga-ui/kit/components';
+import {PolymorpheusContent, PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 const badgeSizeMap: Record<TuiSizeL | TuiSizeXS, TuiSizeS | TuiSizeXL> = {
     xs: 's',
@@ -24,12 +27,20 @@ const badgeSizeMap: Record<TuiSizeL | TuiSizeXS, TuiSizeS | TuiSizeXL> = {
     l: 'xl',
 };
 
-// @bad TODO: Add active zone to track focus
 @Component({
+    standalone: true,
     selector: 'tui-filter',
     templateUrl: './filter.template.html',
     styleUrls: ['./filter.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        NgForOf,
+        NgIf,
+        FormsModule,
+        PolymorpheusModule,
+        TuiBlockDirective,
+        TuiBadgeDirective,
+    ],
 })
 export class TuiFilterComponent<T> extends AbstractTuiMultipleControl<T> {
     private readonly el = tuiInjectElement();

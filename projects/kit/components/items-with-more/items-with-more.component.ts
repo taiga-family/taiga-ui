@@ -1,3 +1,4 @@
+import {AsyncPipe, NgForOf, NgIf, NgTemplateOutlet} from '@angular/common';
 import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
@@ -12,7 +13,7 @@ import {
     MutationObserverService,
 } from '@ng-web-apis/mutation-observer';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
-import type {TuiContext} from '@taiga-ui/cdk';
+import {TuiContext, TuiLetDirective} from '@taiga-ui/cdk';
 import {EMPTY_QUERY, TuiItemDirective} from '@taiga-ui/cdk';
 
 import {TuiItemsWithMoreDirective} from './items-with-more.directive';
@@ -20,6 +21,7 @@ import {TuiItemsWithMoreService} from './items-with-more.service';
 import {TuiMoreDirective} from './more.directive';
 
 @Component({
+    standalone: true,
     selector: 'tui-items-with-more',
     templateUrl: './items-with-more.template.html',
     styleUrls: ['./items-with-more.style.less'],
@@ -37,6 +39,13 @@ import {TuiMoreDirective} from './more.directive';
             },
         },
     ],
+    hostDirectives: [
+        {
+            directive: TuiItemsWithMoreDirective,
+            inputs: ['itemsLimit', 'required'],
+        },
+    ],
+    imports: [NgIf, NgForOf, AsyncPipe, NgTemplateOutlet, TuiLetDirective],
 })
 export class TuiItemsWithMoreComponent {
     @ContentChildren(TuiItemDirective, {read: TemplateRef, descendants: true})

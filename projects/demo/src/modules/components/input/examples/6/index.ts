@@ -4,7 +4,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTable} from '@taiga-ui/addon-table';
 import {TuiTextfieldControllerModule, TuiTextfieldOptionsDirective} from '@taiga-ui/core';
-import {TuiDataListWrapperModule} from '@taiga-ui/kit';
+import {TuiDataListWrapper} from '@taiga-ui/kit';
 import {
     TuiInputDateModule,
     TuiInputModule,
@@ -22,7 +22,7 @@ import {
         TuiTable,
         TuiInputDateModule,
         TuiSelectModule,
-        TuiDataListWrapperModule,
+        TuiDataListWrapper,
         TuiInputNumberModule,
     ],
     templateUrl: './index.html',

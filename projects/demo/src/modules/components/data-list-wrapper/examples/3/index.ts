@@ -2,12 +2,12 @@ import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiDataListWrapperModule} from '@taiga-ui/kit';
+import {TuiDataListWrapper} from '@taiga-ui/kit';
 import {TuiInputModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
-    imports: [TuiInputModule, TuiDataListWrapperModule, ReactiveFormsModule],
+    imports: [TuiInputModule, TuiDataListWrapper, ReactiveFormsModule],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

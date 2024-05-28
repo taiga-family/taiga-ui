@@ -7,7 +7,6 @@ import {TuiRootComponent} from '@taiga-ui/core';
 import {TuiPageObject} from '@taiga-ui/testing';
 import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
-import {TuiPushModule} from '../push.module';
 import {tuiPushOptionsProvider} from '../push.options';
 import {TuiPushService} from '../push.service';
 
@@ -31,7 +30,7 @@ describe('Push with TUI_PUSH_OPTIONS', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [NoopAnimationsModule, TuiRootComponent, TuiPushModule],
+            imports: [NoopAnimationsModule, TuiRootComponent],
             declarations: [TestComponent],
             providers: [tuiPushOptionsProvider({heading}), NG_EVENT_PLUGINS],
         });

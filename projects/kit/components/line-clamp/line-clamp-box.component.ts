@@ -1,8 +1,9 @@
 import {ChangeDetectionStrategy, Component, HostBinding} from '@angular/core';
 import {TUI_HINT_PROVIDERS, tuiFadeIn, TuiHintComponent} from '@taiga-ui/core';
+import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 @Component({
-    selector: 'tui-line-clamp-box',
+    standalone: true,
     template: `
         <ng-container *polymorpheusOutlet="content as text">{{ text }}</ng-container>
     `,
@@ -10,6 +11,7 @@ import {TUI_HINT_PROVIDERS, tuiFadeIn, TuiHintComponent} from '@taiga-ui/core';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: TUI_HINT_PROVIDERS,
     animations: [tuiFadeIn],
+    imports: [PolymorpheusModule],
 })
 export class TuiLineClampBoxComponent extends TuiHintComponent {
     @HostBinding('style.min-width.px')

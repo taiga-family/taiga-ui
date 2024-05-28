@@ -4,7 +4,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiStringHandler} from '@taiga-ui/cdk';
 import {TuiTextfieldControllerModule} from '@taiga-ui/core';
-import {TuiDataListWrapperModule, tuiItemsHandlersProvider} from '@taiga-ui/kit';
+import {TuiDataListWrapper, tuiItemsHandlersProvider} from '@taiga-ui/kit';
 import {TuiComboBoxModule} from '@taiga-ui/legacy';
 
 interface Employee {
@@ -24,7 +24,7 @@ const STRINGIFY_EMPLOYEE: TuiStringHandler<Employee> = (item: Employee) =>
     imports: [
         ReactiveFormsModule,
         TuiComboBoxModule,
-        TuiDataListWrapperModule,
+        TuiDataListWrapper,
         TuiTextfieldControllerModule,
     ],
     templateUrl: './index.html',

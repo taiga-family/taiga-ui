@@ -5,7 +5,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiButtonDirective, TuiSvgComponent} from '@taiga-ui/core';
-import {TuiAccordion, TuiDataListWrapperModule} from '@taiga-ui/kit';
+import {TuiAccordion, TuiDataListWrapper} from '@taiga-ui/kit';
 import {TuiInputModule, TuiSelectModule} from '@taiga-ui/legacy';
 
 class Account {
@@ -31,7 +31,7 @@ class Account {
         ReactiveFormsModule,
         TuiInputModule,
         TuiSelectModule,
-        TuiDataListWrapperModule,
+        TuiDataListWrapper,
         TuiButtonDirective,
     ],
     templateUrl: './index.html',

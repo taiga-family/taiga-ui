@@ -14,10 +14,10 @@ import {
 import {
     TuiBlockDirective,
     TuiCheckboxComponent,
-    TuiDataListWrapperModule,
+    TuiDataListWrapper,
     TuiFieldErrorPipeModule,
     TuiRadioComponent,
-    TuiStepperModule,
+    TuiStepper,
 } from '@taiga-ui/kit';
 import {
     TuiInputDateModule,
@@ -54,7 +54,7 @@ class Account {
 @Component({
     standalone: true,
     imports: [
-        TuiStepperModule,
+        TuiStepper,
         ReactiveFormsModule,
         TuiInputModule,
         TuiErrorComponent,
@@ -67,7 +67,7 @@ class Account {
         TuiCurrencyPipe,
         TuiInputSliderModule,
         TuiSelectModule,
-        TuiDataListWrapperModule,
+        TuiDataListWrapper,
         TuiInputPhoneModule,
         TuiGroupDirective,
         TuiBlockDirective,

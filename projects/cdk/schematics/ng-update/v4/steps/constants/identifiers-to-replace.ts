@@ -118,6 +118,10 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {name: 'TuiDataList', moduleSpecifier: '@taiga-ui/core'},
     },
     {
+        from: {name: 'TuiDataListWrapperModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiDataListWrapper', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
         from: {name: 'TuiErrorModule', moduleSpecifier: '@taiga-ui/core'},
         to: {name: 'TuiErrorComponent', moduleSpecifier: '@taiga-ui/core'},
     },
@@ -158,6 +162,65 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             {name: 'TuiCarouselComponent', moduleSpecifier: '@taiga-ui/kit'},
             {name: 'TuiItemDirective', moduleSpecifier: '@taiga-ui/cdk'},
         ],
+    },
+    {
+        from: {name: 'TuiPushModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: [
+            {name: 'TuiPushComponent', moduleSpecifier: '@taiga-ui/kit'},
+            {name: 'TuiPushDirective', moduleSpecifier: '@taiga-ui/kit'},
+        ],
+    },
+    {
+        from: {name: 'TuiElasticContainerModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiElasticContainerComponent', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {name: 'TuiFilesModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiFiles', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {name: 'TuiFilterModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiFilterComponent', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {name: 'TuiInputInlineModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiInputInlineComponent', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {name: 'TuiIslandComponent', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiIslandDirective', moduleSpecifier: '@taiga-ui/legacy'},
+    },
+    {
+        from: {name: 'TuiIslandModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiIslandDirective', moduleSpecifier: '@taiga-ui/legacy'},
+    },
+    {
+        from: {name: 'TuiItemsWithMoreModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiItemsWithMore', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {name: 'TuiLineClampModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiLineClampComponent', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {name: 'TuiRangeModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiRangeComponent', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {name: 'TuiSliderModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiSlider', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {name: 'TuiTilesModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiTiles', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {name: 'TuiStepperModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiStepper', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {name: 'TuiTreeModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiTree', moduleSpecifier: '@taiga-ui/kit'},
     },
     {
         from: {name: 'TuiThumbnailCardModule', moduleSpecifier: '@taiga-ui/experimental'},

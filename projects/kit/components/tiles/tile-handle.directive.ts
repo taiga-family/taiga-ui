@@ -13,6 +13,7 @@ function isDragging(this: TuiTileHandleDirective): boolean {
 }
 
 @Directive({
+    standalone: true,
     selector: '[tuiTileHandle]',
     host: {
         '[style.touchAction]': '"none"',

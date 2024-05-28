@@ -1,3 +1,4 @@
+import {AsyncPipe, NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -7,14 +8,22 @@ import {
     Output,
 } from '@angular/core';
 import {tuiIsString} from '@taiga-ui/cdk';
-import {TUI_CLOSE_WORD, TUI_COMMON_ICONS, tuiButtonOptionsProvider} from '@taiga-ui/core';
+import {
+    TUI_CLOSE_WORD,
+    TUI_COMMON_ICONS,
+    TuiButtonDirective,
+    tuiButtonOptionsProvider,
+    TuiFormatDatePipe,
+} from '@taiga-ui/core';
 
 @Component({
+    standalone: true,
     selector: 'tui-push',
     templateUrl: './push.template.html',
     styleUrls: ['./push.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiButtonOptionsProvider({size: 's', appearance: 'secondary'})],
+    imports: [NgIf, AsyncPipe, TuiButtonDirective, TuiFormatDatePipe],
 })
 export class TuiPushComponent {
     @Input()

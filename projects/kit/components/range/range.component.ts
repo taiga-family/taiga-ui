@@ -8,6 +8,7 @@ import {
     Input,
     ViewChildren,
 } from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import type {TuiFocusableElementAccessor, TuiNativeFocusableElement} from '@taiga-ui/cdk';
 import {
     AbstractTuiControl,
@@ -19,22 +20,32 @@ import {
     tuiQuantize,
 } from '@taiga-ui/cdk';
 import type {TuiSizeS, TuiWithOptionalMinMax} from '@taiga-ui/core';
-import {TuiSliderComponent} from '@taiga-ui/kit/components/slider';
+import {TuiSliderComponent, TuiSlider} from '@taiga-ui/kit/components/slider';
 import type {TuiKeySteps} from '@taiga-ui/kit/types';
 import {
     tuiKeyStepValueToPercentage,
     tuiPercentageToKeyStepValue,
 } from '@taiga-ui/kit/utils';
 
+import {TuiRangeChangeDirective} from './range-change.directive';
+
 @Component({
+    standalone: true,
     selector: 'tui-range',
     templateUrl: './range.template.html',
     styleUrls: ['./range.style.less'],
+    hostDirectives: [
+        {
+            directive: TuiRangeChangeDirective,
+            outputs: ['activeThumbChange'],
+        },
+    ],
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '[attr.tabindex]': '-1',
         '[attr.aria-disabled]': 'computedDisabled',
     },
+    imports: [TuiSlider, FormsModule],
 })
 export class TuiRangeComponent
     extends AbstractTuiControl<[number, number]>

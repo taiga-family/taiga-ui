@@ -37,7 +37,7 @@ import {
 } from '@taiga-ui/core';
 import {
     TuiChevronDirective,
-    TuiDataListWrapperModule,
+    TuiDataListWrapper,
     TuiSwitchComponent,
 } from '@taiga-ui/kit';
 import {TuiSelectModule} from '@taiga-ui/legacy';
@@ -62,7 +62,7 @@ const MIN_WIDTH = 160;
         TuiSelectModule,
         TuiGroupDirective,
         TuiTextfieldControllerModule,
-        TuiDataListWrapperModule,
+        TuiDataListWrapper,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

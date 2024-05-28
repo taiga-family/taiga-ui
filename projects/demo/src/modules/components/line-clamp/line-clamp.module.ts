@@ -15,8 +15,7 @@ import {
 import {
     TuiChevronDirective,
     TuiDataListDropdownManagerModule,
-    TuiIslandModule,
-    TuiLineClampModule,
+    TuiLineClampComponent,
 } from '@taiga-ui/kit';
 
 import {TuiLineClampExample1} from './examples/1';
@@ -30,11 +29,10 @@ import {ExampleTuiLineClampComponent} from './line-clamp.component';
     imports: [
         CommonModule,
         TuiNotificationComponent,
-        TuiLineClampModule,
+        TuiLineClampComponent,
         TuiAddonDoc,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiLineClampComponent)),
         TuiButtonDirective,
-        TuiIslandModule,
         TuiDropdownModule,
         TuiLinkDirective,
         TuiDataListDropdownManagerModule,

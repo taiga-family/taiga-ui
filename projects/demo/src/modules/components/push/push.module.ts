@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDoc, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiButtonDirective, TuiLinkDirective, TuiSvgComponent} from '@taiga-ui/core';
-import {TuiPushModule} from '@taiga-ui/kit';
+import {TuiPushComponent, TuiPushDirective} from '@taiga-ui/kit';
 
 import {TuiPushExample1} from './examples/1';
 import {TuiPushExample2} from './examples/2';
@@ -13,7 +13,8 @@ import {ExampleTuiPushComponent} from './push.component';
 @NgModule({
     imports: [
         CommonModule,
-        TuiPushModule,
+        TuiPushComponent,
+        TuiPushDirective,
         TuiButtonDirective,
         TuiLinkDirective,
         TuiSvgComponent,

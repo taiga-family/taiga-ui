@@ -7,7 +7,7 @@ import {
     TuiLoaderComponent,
     TuiNotificationComponent,
 } from '@taiga-ui/core';
-import {TuiPdfViewerModule} from '@taiga-ui/kit';
+import {TuiPdfViewerDirective} from '@taiga-ui/kit';
 
 import {TuiPdfViewerExample1} from './examples/1';
 import {TuiPdfViewerExample2} from './examples/2';
@@ -19,7 +19,7 @@ import {ExampleTuiPdfViewerComponent} from './pdf-viewer.component';
 @NgModule({
     imports: [
         CommonModule,
-        TuiPdfViewerModule,
+        TuiPdfViewerDirective,
         TuiLoaderComponent,
         TuiButtonDirective,
         TuiNotificationComponent,

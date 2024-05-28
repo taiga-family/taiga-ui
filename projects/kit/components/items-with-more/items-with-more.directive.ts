@@ -2,7 +2,8 @@ import {Directive, Input} from '@angular/core';
 import {AbstractTuiController} from '@taiga-ui/cdk';
 
 @Directive({
-    selector: 'tui-items-with-more',
+    standalone: true,
+    selector: 'tui-items-with-more:is(never)',
 })
 export class TuiItemsWithMoreDirective extends AbstractTuiController {
     @Input()

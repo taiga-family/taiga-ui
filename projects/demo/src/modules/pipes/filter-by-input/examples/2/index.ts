@@ -3,7 +3,7 @@ import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {
-    TuiDataListWrapperModule,
+    TuiDataListWrapper,
     TuiFilterByInputPipeModule,
     TuiStringifyContentPipeModule,
 } from '@taiga-ui/kit';
@@ -19,7 +19,7 @@ interface User {
     imports: [
         ReactiveFormsModule,
         TuiComboBoxModule,
-        TuiDataListWrapperModule,
+        TuiDataListWrapper,
         TuiFilterByInputPipeModule,
         TuiStringifyContentPipeModule,
     ],

@@ -2,11 +2,11 @@ import {NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiTilesModule} from '@taiga-ui/kit';
+import {TuiTiles} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiTilesModule, NgForOf],
+    imports: [TuiTiles, NgForOf],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

@@ -4,7 +4,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {
-    TuiDataListWrapperModule,
+    TuiDataListWrapper,
     TuiFilterByInputPipeModule,
     TuiStringifyContentPipeModule,
 } from '@taiga-ui/kit';
@@ -16,7 +16,7 @@ import {TuiComboBoxModule} from '@taiga-ui/legacy';
         TuiComboBoxModule,
         ReactiveFormsModule,
         TuiTextfieldControllerModule,
-        TuiDataListWrapperModule,
+        TuiDataListWrapper,
         TuiStringifyContentPipeModule,
         TuiFilterByInputPipeModule,
     ],

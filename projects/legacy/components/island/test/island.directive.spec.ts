@@ -3,7 +3,7 @@ import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
-import {TuiIslandComponent, TuiIslandModule} from '@taiga-ui/kit';
+import {TuiIslandDirective} from '@taiga-ui/legacy';
 import {TuiIslandHarness} from '@taiga-ui/testing';
 import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
@@ -24,7 +24,7 @@ describe('Island', () => {
             </tui-island>
             <tui-island
                 id="hoverable"
-                hoverable="true"
+                [hoverable]="true"
             >
                 Контент
             </tui-island>
@@ -38,8 +38,8 @@ describe('Island', () => {
         `,
     })
     class TestComponent {
-        @ViewChild(TuiIslandComponent, {static: true})
-        public component!: TuiIslandComponent;
+        @ViewChild(TuiIslandDirective, {static: true})
+        public component!: TuiIslandDirective;
     }
 
     let fixture: ComponentFixture<TestComponent>;
@@ -47,7 +47,7 @@ describe('Island', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TuiIslandModule],
+            imports: [TuiIslandDirective],
             declarations: [TestComponent],
             providers: [NG_EVENT_PLUGINS],
         });

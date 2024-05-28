@@ -18,7 +18,7 @@ import {
 } from '@taiga-ui/core';
 import {
     TuiAvatarComponent,
-    TuiDataListWrapperModule,
+    TuiDataListWrapper,
     TuiRadioListComponent,
 } from '@taiga-ui/kit';
 import {TuiMultiSelectModule, TuiTagModule} from '@taiga-ui/legacy';
@@ -51,7 +51,7 @@ import {ExampleTuiMultiSelectComponent} from './multi-select.component';
         TuiLinkDirective,
         TuiAvatarComponent,
         TuiDataList,
-        TuiDataListWrapperModule,
+        TuiDataListWrapper,
         TuiLetDirective,
         TuiDropdownModule,
         TuiHint,

@@ -42,7 +42,7 @@ import {
 } from '@taiga-ui/core';
 import {
     TuiBadgeDirective,
-    TuiDataListWrapperModule,
+    TuiDataListWrapper,
     TuiSwitchComponent,
 } from '@taiga-ui/kit';
 import {TuiInputNumberModule, TuiSelectModule} from '@taiga-ui/legacy';
@@ -79,7 +79,7 @@ import {TuiDocTypeReferencePipe} from './pipes/type-reference.pipe';
         TuiDropdownOptionsDirective,
         TuiTextfieldControllerModule,
         TuiShowCleanerPipe,
-        TuiDataListWrapperModule,
+        TuiDataListWrapper,
         TuiInspectPipe,
         NgSwitch,
         NgSwitchCase,

@@ -17,6 +17,7 @@ export * from '@taiga-ui/legacy/components/input-slider';
 export * from '@taiga-ui/legacy/components/input-tag';
 export * from '@taiga-ui/legacy/components/input-time';
 export * from '@taiga-ui/legacy/components/input-year';
+export * from '@taiga-ui/legacy/components/island';
 export * from '@taiga-ui/legacy/components/multi-select';
 export * from '@taiga-ui/legacy/components/multi-select-option';
 export * from '@taiga-ui/legacy/components/select';

@@ -10,7 +10,7 @@ import {
     TuiRootComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiDataListWrapperModule} from '@taiga-ui/kit/components';
+import {TuiDataListWrapper} from '@taiga-ui/kit/components';
 import {
     TUI_ARROW_MODE,
     TuiMultiSelectComponent,
@@ -79,7 +79,7 @@ describe('MultiSelect', () => {
                     TuiMultiSelectModule,
                     TuiRootComponent,
                     TuiDataList,
-                    TuiDataListWrapperModule,
+                    TuiDataListWrapper,
                     TuiTextfieldControllerModule,
                     TuiHint,
                 ],
@@ -295,7 +295,7 @@ describe('MultiSelect', () => {
                     TuiMultiSelectModule,
                     TuiRootComponent,
                     TuiDataList,
-                    TuiDataListWrapperModule,
+                    TuiDataListWrapper,
                     TuiTextfieldControllerModule,
                     TuiHint,
                 ],

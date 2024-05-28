@@ -16,6 +16,7 @@ import {tuiInjectElement} from '@taiga-ui/cdk';
 import {BehaviorSubject, debounce, filter, map, Subject, timer} from 'rxjs';
 
 @Component({
+    standalone: true,
     selector: 'tui-tiles',
     template: '<ng-content></ng-content>',
     styleUrls: ['./tiles.style.less'],

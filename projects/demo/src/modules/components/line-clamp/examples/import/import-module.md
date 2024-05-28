@@ -1,5 +1,5 @@
 ```ts
-import {TuiLineClampModule} from '@taiga-ui/kit';
+import {TuiLineClampComponent} from '@taiga-ui/kit';
 
 // ...
 
@@ -7,7 +7,7 @@ import {TuiLineClampModule} from '@taiga-ui/kit';
   standalone: true,
   imports: [
     // ...
-    TuiLineClampModule,
+    TuiLineClampComponent,
   ],
   // ...
 })

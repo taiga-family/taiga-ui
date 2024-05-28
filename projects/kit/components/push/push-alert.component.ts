@@ -1,19 +1,24 @@
+import {NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import type {TuiPopover} from '@taiga-ui/cdk';
 import {
     TUI_ANIMATIONS_SPEED,
+    TuiButtonDirective,
     tuiFadeIn,
     tuiHeightCollapse,
+    TuiIconComponent,
+    TuiLinkDirective,
     tuiSlideInRight,
     tuiToAnimationOptions,
 } from '@taiga-ui/core';
-import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
+import {POLYMORPHEUS_CONTEXT, PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
+import {TuiPushComponent} from './push.component';
+import {TuiPushDirective} from './push.directive';
 import type {TuiPushOptions} from './push.options';
-import {TuiPushAlertDirective} from './push-alert.directive';
 
 @Component({
-    selector: 'tui-push-alert',
+    standalone: true,
     templateUrl: './push-alert.template.html',
     styleUrls: ['./push-alert.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -24,6 +29,14 @@ import {TuiPushAlertDirective} from './push-alert.directive';
         '[@tuiSlideInRight]': 'options',
         '[@tuiHeightCollapse]': 'options',
     },
+    imports: [
+        NgIf,
+        PolymorpheusModule,
+        TuiPushComponent,
+        TuiIconComponent,
+        TuiButtonDirective,
+        TuiLinkDirective,
+    ],
 })
 export class TuiPushAlertComponent {
     protected readonly options = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
@@ -33,6 +46,6 @@ export class TuiPushAlertComponent {
     >;
 
     protected get isDirective(): boolean {
-        return this.context.content instanceof TuiPushAlertDirective;
+        return this.context.content instanceof TuiPushDirective;
     }
 }

@@ -1,22 +1,24 @@
-<tui-island class="island">
+<div class="island">
     <tui-line-clamp
         [content]="daenerys"
         [lineHeight]="20"
         [linesLimit]="2"
     />
-</tui-island>
-<tui-notification class="island">
+</div>
+
+<tui-notification class="tui-space_bottom-4">
     Use
     <code>white-space: nowrap</code>
     to expand to the right
 </tui-notification>
-<tui-island class="island">
+
+<div class="island">
     <tui-line-clamp
         [content]="mormont"
         [lineHeight]="20"
         [linesLimit]="1"
     />
-</tui-island>
+</div>
 <ng-template #daenerys>
     <div class="hint">
         Daenerys of the House Targaryen, the First of Her Name, The Unburnt, Queen of the Andals, the Rhoynar and the

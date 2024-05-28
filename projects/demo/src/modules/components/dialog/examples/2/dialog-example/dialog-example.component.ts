@@ -12,7 +12,7 @@ import {
     TuiTextfieldControllerModule,
     TuiTextfieldOptionsDirective,
 } from '@taiga-ui/core';
-import {TuiDataListWrapperModule, TuiSliderModule} from '@taiga-ui/kit';
+import {TuiDataListWrapper, TuiSlider} from '@taiga-ui/kit';
 import {TuiInputModule, TuiSelectModule} from '@taiga-ui/legacy';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 
@@ -27,8 +27,8 @@ import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
         FormsModule,
         TuiSelectModule,
         TuiTextfieldControllerModule,
-        TuiDataListWrapperModule,
-        TuiSliderModule,
+        TuiDataListWrapper,
+        TuiSlider,
         TuiButtonDirective,
     ],
     templateUrl: './dialog-example.template.html',

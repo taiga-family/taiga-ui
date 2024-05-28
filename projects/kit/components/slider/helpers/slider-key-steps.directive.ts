@@ -15,6 +15,7 @@ import {
 import {TuiSliderComponent} from '../slider.component';
 
 @Directive({
+    standalone: true,
     selector: 'input[tuiSlider][keySteps]',
     host: {
         '[attr.aria-valuenow]': 'safeCurrentValue',
