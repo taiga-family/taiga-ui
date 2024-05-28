@@ -19,7 +19,7 @@ export const TUI_TABLE_BAR_DEFAULT_OPTIONS: TuiTableBarOptions = {
 };
 
 /**
- * Default parameters for table bars dialog component
+ * Default parameters for table bars component
  */
 export const TUI_TABLE_BAR_OPTIONS = tuiCreateToken(TUI_TABLE_BAR_DEFAULT_OPTIONS);
 
