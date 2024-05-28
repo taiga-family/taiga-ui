@@ -58,12 +58,12 @@
         />
     </ng-template>
     <ng-template #svg>
-        <tui-svg
+        <tui-icon
             *polymorpheusOutlet="icon as src; context: {$implicit: size}"
             class="t-icon"
             [class.t-icon_blank]="isBig || isDeleted"
             [class.t-icon_error]="isError"
-            [src]="src"
+            [icon]="src.toString()"
         />
     </ng-template>
 </ng-template>

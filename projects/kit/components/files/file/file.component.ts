@@ -19,8 +19,8 @@ import {
     TuiAppearanceDirective,
     tuiAppearanceOptionsProvider,
     TuiButtonDirective,
+    TuiIconComponent,
     TuiLoaderComponent,
-    TuiSvgComponent,
 } from '@taiga-ui/core';
 import type {TuiLanguage} from '@taiga-ui/i18n';
 import {TUI_DIGITAL_INFORMATION_UNITS, TUI_FILE_TEXTS} from '@taiga-ui/kit/tokens';
@@ -39,8 +39,8 @@ import {TUI_FILE_OPTIONS} from './file.options';
         CommonModule,
         PolymorpheusModule,
         TuiLoaderComponent,
-        TuiSvgComponent,
         TuiButtonDirective,
+        TuiIconComponent,
     ],
     templateUrl: './file.template.html',
     styleUrls: ['./file.style.less'],
