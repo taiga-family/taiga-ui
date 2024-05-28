@@ -12,7 +12,10 @@ describe('InputInline', () => {
     @Component({
         template: `
             <tui-input-inline>
-                <input [formControl]="control" />
+                <input
+                    automation-id="tui-input-inline__native"
+                    [formControl]="control"
+                />
             </tui-input-inline>
         `,
     })

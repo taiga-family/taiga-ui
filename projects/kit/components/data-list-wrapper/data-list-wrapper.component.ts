@@ -1,14 +1,13 @@
 import {NgForOf, NgIf} from '@angular/common';
+import type {ElementRef, QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
-    ElementRef,
     EventEmitter,
     forwardRef,
     inject,
     Input,
     Output,
-    QueryList,
     ViewChildren,
 } from '@angular/core';
 import {
@@ -17,6 +16,7 @@ import {
     tuiIsNativeFocused,
     tuiIsPresent,
 } from '@taiga-ui/cdk';
+import type {TuiValueContentContext} from '@taiga-ui/core';
 import {
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
@@ -24,21 +24,14 @@ import {
     TuiDataList,
     TuiLoaderComponent,
     TuiOptionComponent,
-    TuiValueContentContext,
 } from '@taiga-ui/core';
-import {TUI_ITEMS_HANDLERS, TuiItemsHandlers} from '@taiga-ui/kit/tokens';
+import type {TuiItemsHandlers} from '@taiga-ui/kit/tokens';
+import {TUI_ITEMS_HANDLERS} from '@taiga-ui/kit/tokens';
 import {type PolymorpheusContent, PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 @Component({
     standalone: true,
     selector: 'tui-data-list-wrapper:not([labels])',
-    templateUrl: './data-list-wrapper.template.html',
-    styleUrls: ['./data-list-wrapper.style.less'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        tuiAsDataListAccessor(TuiDataListWrapperComponent),
-        TEXTFIELD_CONTROLLER_PROVIDER,
-    ],
     imports: [
         NgIf,
         NgForOf,
@@ -47,9 +40,16 @@ import {type PolymorpheusContent, PolymorpheusModule} from '@tinkoff/ng-polymorp
         TuiElementDirective,
         TuiLoaderComponent,
     ],
+    templateUrl: './data-list-wrapper.template.html',
+    styleUrls: ['./data-list-wrapper.style.less'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        tuiAsDataListAccessor(TuiDataListWrapperComponent),
+        TEXTFIELD_CONTROLLER_PROVIDER,
+    ],
 })
 export class TuiDataListWrapperComponent<T> {
-    public readonly itemsHandlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
+    private readonly itemsHandlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
 
     @Input()
     public items: readonly T[] | null = [];
