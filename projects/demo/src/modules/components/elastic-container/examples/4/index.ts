@@ -5,14 +5,14 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiArrayRemove} from '@taiga-ui/cdk';
 import {TuiButtonDirective, TuiExpand} from '@taiga-ui/core';
-import {TuiChevronDirective, TuiElasticContainerModule} from '@taiga-ui/kit';
+import {TuiChevronDirective, TuiElasticContainerComponent} from '@taiga-ui/kit';
 import {TuiInputModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
     imports: [
         TuiButtonDirective,
-        TuiElasticContainerModule,
+        TuiElasticContainerComponent,
         NgForOf,
         TuiChevronDirective,
         TuiExpand,

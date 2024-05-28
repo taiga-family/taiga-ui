@@ -17,8 +17,10 @@ import {
     tuiIsNativeFocusedIn,
 } from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS, TuiSizeXL, TuiSizeXS} from '@taiga-ui/core';
-import {TuiBadgeDirective, TuiBlockDirective} from '@taiga-ui/kit/components';
-import {PolymorpheusContent, PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import {TuiBadgeDirective} from '@taiga-ui/kit/components/badge';
+import {TuiBlockDirective} from '@taiga-ui/kit/components/block';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 const badgeSizeMap: Record<TuiSizeL | TuiSizeXS, TuiSizeS | TuiSizeXL> = {
     xs: 's',
@@ -30,9 +32,6 @@ const badgeSizeMap: Record<TuiSizeL | TuiSizeXS, TuiSizeS | TuiSizeXL> = {
 @Component({
     standalone: true,
     selector: 'tui-filter',
-    templateUrl: './filter.template.html',
-    styleUrls: ['./filter.style.less'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         NgForOf,
         NgIf,
@@ -41,6 +40,9 @@ const badgeSizeMap: Record<TuiSizeL | TuiSizeXS, TuiSizeS | TuiSizeXL> = {
         TuiBlockDirective,
         TuiBadgeDirective,
     ],
+    templateUrl: './filter.template.html',
+    styleUrls: ['./filter.style.less'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiFilterComponent<T> extends AbstractTuiMultipleControl<T> {
     private readonly el = tuiInjectElement();

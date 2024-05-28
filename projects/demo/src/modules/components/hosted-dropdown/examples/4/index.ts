@@ -3,7 +3,7 @@ import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButtonDirective, TuiHostedDropdownModule} from '@taiga-ui/core';
-import {TuiDataListWrapperModule} from '@taiga-ui/kit';
+import {TuiDataListWrapper} from '@taiga-ui/kit';
 import {TuiMultiSelectModule} from '@taiga-ui/legacy';
 
 @Component({
@@ -12,7 +12,7 @@ import {TuiMultiSelectModule} from '@taiga-ui/legacy';
         TuiHostedDropdownModule,
         ReactiveFormsModule,
         TuiButtonDirective,
-        TuiDataListWrapperModule,
+        TuiDataListWrapper,
         TuiMultiSelectModule,
     ],
     templateUrl: './index.html',

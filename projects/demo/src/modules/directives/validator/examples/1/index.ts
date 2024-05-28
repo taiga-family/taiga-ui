@@ -10,7 +10,7 @@ import {
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiValidatorDirective} from '@taiga-ui/cdk';
-import {TuiDataListWrapperModule} from '@taiga-ui/kit';
+import {TuiDataListWrapper} from '@taiga-ui/kit';
 import {TuiInputModule, TuiInputPhoneModule, TuiSelectModule} from '@taiga-ui/legacy';
 
 @Component({
@@ -20,7 +20,7 @@ import {TuiInputModule, TuiInputPhoneModule, TuiSelectModule} from '@taiga-ui/le
         TuiInputModule,
         TuiSelectModule,
         FormsModule,
-        TuiDataListWrapperModule,
+        TuiDataListWrapper,
         NgIf,
         TuiValidatorDirective,
         TuiInputPhoneModule,

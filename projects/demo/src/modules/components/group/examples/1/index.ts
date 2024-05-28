@@ -9,7 +9,7 @@ import {
     TuiHintOptionsDirective,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiDataListWrapperModule, TuiFieldErrorPipeModule} from '@taiga-ui/kit';
+import {TuiDataListWrapper, TuiFieldErrorPipeModule} from '@taiga-ui/kit';
 import {TuiInputModule, TuiMultiSelectModule} from '@taiga-ui/legacy';
 
 @Component({
@@ -24,7 +24,7 @@ import {TuiInputModule, TuiMultiSelectModule} from '@taiga-ui/legacy';
         AsyncPipe,
         TuiMultiSelectModule,
         TuiTextfieldControllerModule,
-        TuiDataListWrapperModule,
+        TuiDataListWrapper,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
