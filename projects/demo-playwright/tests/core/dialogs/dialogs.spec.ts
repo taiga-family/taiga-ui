@@ -182,5 +182,17 @@ test.describe('Dialogs', () => {
 
             await expect(page).toHaveScreenshot('09-dialog.png');
         });
+
+        test('dismissible = true, fullscreen, desktop', async ({page}) => {
+            await page.setViewportSize({width: 1024, height: 900});
+            await tuiGoto(page, 'components/dialog/API?size=fullscreen&dismissible=true');
+
+            await page.locator('tui-doc-page button[data-appearance="primary"]').click();
+            await page.mouse.click(100, 100);
+
+            await expect(page.locator('tui-dialog')).toHaveCount(1);
+
+            await expect(page).toHaveScreenshot('10-dialog.png');
+        });
     });
 });

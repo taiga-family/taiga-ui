@@ -10,10 +10,10 @@
 
 @keyframes tuiFadeIn {
     from {
-        opacity: 0;
+        opacity: var(--tui-fade-start, 0);
     }
 
     to {
-        opacity: 1;
+        opacity: var(--tui-fade-end, 1);
     }
 }
