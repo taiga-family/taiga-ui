@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[81280],{81280:n=>{n.exports='```html\n<img\n  src="myImage.jpg"\n  height="200"\n  width="300"\n  loading="lazy"\n/>\n```\n'}}]);
