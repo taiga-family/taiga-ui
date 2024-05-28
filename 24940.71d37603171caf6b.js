@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[24940],{24940:e=>{e.exports="```html\n<div tuiFade>\n  \x3c!-- long text here --\x3e\n</div>\n```\n"}}]);

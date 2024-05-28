@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[80179],{80179:u=>{u.exports='```html\n<tui-input-number [postfix]="826 | tuiCurrency">Type a sum</tui-input-number>\n```\n'}}]);

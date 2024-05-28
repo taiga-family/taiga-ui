@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[26312],{26312:e=>{e.exports='```html\n<label tuiInputFiles>\n  <input\n    tuiInputFiles\n    accept="image/*"\n    [multiple]="true"\n    [formControl]="control"\n    (reject)="onReject($event)"\n  />\n</label>\n\n<tui-files>\n  <tui-file\n    tuiItem\n    [file]="file"\n  ></tui-file>\n</tui-files>\n```\n'}}]);
