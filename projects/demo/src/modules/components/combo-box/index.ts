@@ -23,9 +23,9 @@ import {TuiDataListWrapper} from '@taiga-ui/kit';
 import {TuiComboBoxModule} from '@taiga-ui/legacy';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
+import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
 import {AbstractExampleTuiControl} from '../abstract/control';
-import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
-import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
+import {InheritedDocumentationComponent} from '../abstract/inherited-documentation';
 
 class Account {
     constructor(
@@ -50,7 +50,7 @@ class Account {
         TuiHint,
         TuiTextfieldControllerModule,
         TuiSvgComponent,
-        InheritedDocumentationModule,
+        InheritedDocumentationComponent,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

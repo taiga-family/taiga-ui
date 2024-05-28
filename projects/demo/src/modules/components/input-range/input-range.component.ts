@@ -8,7 +8,7 @@ import {tuiProvide} from '@taiga-ui/cdk';
 import type {TuiSizeL} from '@taiga-ui/core';
 import type {TuiKeySteps} from '@taiga-ui/kit';
 
-import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
+import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
 import {AbstractExampleTuiNumberFormat} from '../abstract/number-format';
 
 @Component({

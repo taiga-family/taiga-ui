@@ -13,7 +13,7 @@ import {
 import {TuiSortCountriesPipeModule} from '@taiga-ui/kit';
 import {TuiInputPhoneInternationalComponent} from '@taiga-ui/legacy';
 
-import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
+import {InheritedDocumentationComponent} from '../abstract/inherited-documentation';
 import {TuiInputPhoneExample1} from './examples/1';
 import {TuiInputPhoneExample2} from './examples/2';
 import {ExampleTuiInputPhoneInternationalComponent} from './input-phone-international.component';
@@ -24,7 +24,7 @@ import {ExampleTuiInputPhoneInternationalComponent} from './input-phone-internat
         FormsModule,
         ReactiveFormsModule,
         TuiInputPhoneInternationalComponent,
-        InheritedDocumentationModule,
+        InheritedDocumentationComponent,
         TuiTextfieldControllerModule,
         TuiDropdownModule,
         TuiHint,

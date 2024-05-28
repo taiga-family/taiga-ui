@@ -1,7 +1,10 @@
+import {JsonPipe} from '@angular/common';
 import {Component} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiSvgComponent} from '@taiga-ui/core';
+import {TuiFilterComponent} from '@taiga-ui/kit';
 
 const getIcon: Record<string, string> = {
     Calendar: 'tuiIconCalendarLarge',
@@ -12,13 +15,14 @@ const getIcon: Record<string, string> = {
 };
 
 @Component({
-    selector: 'tui-filter-example-3',
+    standalone: true,
+    imports: [ReactiveFormsModule, TuiFilterComponent, TuiSvgComponent, JsonPipe],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiFilterExample3 {
+export default class ExampleComponent {
     protected items = ['Calendar', 'Favorite', 'Messages', 'FAQ', 'Settings'];
 
     protected form = new FormGroup({

@@ -5,8 +5,8 @@ import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk';
 import {TUI_FALSE_HANDLER, TUI_FIRST_DAY, TUI_LAST_DAY, tuiProvide} from '@taiga-ui/cdk';
 
+import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
 import {AbstractExampleTuiControl} from '../abstract/control';
-import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
 
 @Component({
     selector: 'example-input-year',

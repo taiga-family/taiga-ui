@@ -19,9 +19,9 @@ import {
 import {TuiInputModule} from '@taiga-ui/legacy';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
+import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
 import {AbstractExampleTuiControl} from '../abstract/control';
-import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
-import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
+import {InheritedDocumentationComponent} from '../abstract/inherited-documentation';
 
 const LONG_TEXT_TEMPLATE = '<span>LongTextContent</span>';
 
@@ -40,7 +40,7 @@ const LONG_TEXT_TEMPLATE = '<span>LongTextContent</span>';
         TuiTextfieldOptionsDirective,
         TuiTextfieldControllerModule,
         TuiAmountPipe,
-        InheritedDocumentationModule,
+        InheritedDocumentationComponent,
         TuiTextCodeDirective,
     ],
     templateUrl: './index.html',

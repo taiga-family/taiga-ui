@@ -6,8 +6,8 @@ import {tuiProvide} from '@taiga-ui/cdk';
 import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
 import {TUI_ALL_COUNTRIES_ISO_CODES} from '@taiga-ui/legacy';
 
+import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
 import {AbstractExampleTuiControl} from '../abstract/control';
-import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
 
 @Component({
     selector: 'example-tui-input-phone-international',

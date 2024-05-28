@@ -1,0 +1,49 @@
+<tui-doc-page
+    header="HintDescribe"
+    package="CORE"
+    path="core/directives/hint"
+    type="directives"
+>
+    <ng-template pageTab>
+        <p>Directive to show a hint in accessible way upon keyboard focus</p>
+
+        <tui-doc-example
+            id="base"
+            heading="Basic"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample: 'html,ts'"
+        />
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <input
+                placeholder="My id is 'qwerty'"
+                tuiHint="I will be visible upon keyboard focus"
+                tuiHintDescribe="qwerty"
+                [tuiHintAppearance]="appearance"
+                [tuiHintDirection]="direction"
+            />
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="tuiHint"
+                documentationPropertyType="PolymorpheusContent"
+            >
+                Content
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="tuiHintDescribe"
+                documentationPropertyType="string"
+                [(documentationPropertyValue)]="id"
+            >
+                Id of the element
+            </ng-template>
+        </tui-doc-documentation>
+        <inherited-documentation />
+    </ng-template>
+
+    <tui-setup *pageTab />
+</tui-doc-page>

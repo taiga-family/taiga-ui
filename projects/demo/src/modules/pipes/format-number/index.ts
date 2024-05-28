@@ -11,9 +11,9 @@ import {
 } from '@taiga-ui/core';
 import {TuiInputNumberModule} from '@taiga-ui/legacy';
 
-import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/inherited-documentation/abstract-props-accessor';
+import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/abstract-props-accessor';
 import {AbstractExampleTuiNumberFormat} from '../../components/abstract/number-format';
-import {NumberFormatDocumentationModule} from '../../components/abstract/number-format-documentation/number-format-documentation.module';
+import {NumberFormatDocumentationComponent} from '../../components/abstract/number-format-documentation';
 
 @Component({
     standalone: true,
@@ -23,7 +23,7 @@ import {NumberFormatDocumentationModule} from '../../components/abstract/number-
         TuiInputNumberModule,
         TuiTextfieldControllerModule,
         ReactiveFormsModule,
-        NumberFormatDocumentationModule,
+        NumberFormatDocumentationComponent,
         RouterLink,
         TuiLinkDirective,
     ],

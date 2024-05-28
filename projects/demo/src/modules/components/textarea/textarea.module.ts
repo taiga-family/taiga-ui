@@ -16,7 +16,7 @@ import {
 import {TuiFieldErrorPipeModule, TuiRadioListComponent} from '@taiga-ui/kit';
 import {TuiTextareaModule} from '@taiga-ui/legacy';
 
-import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
+import {InheritedDocumentationComponent} from '../abstract/inherited-documentation';
 import {TuiTextareaExample1} from './examples/1';
 import {TuiTextareaExample2} from './examples/2';
 import {TuiTextareaExample3} from './examples/3';
@@ -29,7 +29,7 @@ import {ExampleTuiTextareaComponent} from './textarea.component';
     imports: [
         TuiTextareaModule,
         TuiAddonDoc,
-        InheritedDocumentationModule,
+        InheritedDocumentationComponent,
         ReactiveFormsModule,
         FormsModule,
         TuiSvgComponent,

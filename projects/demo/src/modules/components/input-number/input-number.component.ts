@@ -5,7 +5,7 @@ import {DemoRoute} from '@demo/routes';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import {tuiProvide} from '@taiga-ui/cdk';
 
-import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
+import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
 import {AbstractExampleTuiNumberFormat} from '../abstract/number-format';
 
 @Component({

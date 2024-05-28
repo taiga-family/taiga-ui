@@ -659,8 +659,7 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.Tag,
-        loadChildren: async () =>
-            (await import('../components/tag/tag.module')).ExampleTuiTagModule,
+        loadComponent: async () => import('../components/tag'),
         title: 'Tag',
     }),
     route({
@@ -672,16 +671,12 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.PrimitiveTextfield,
-        loadChildren: async () =>
-            (await import('../components/primitive-textfield/primitive-textfield.module'))
-                .ExampleTuiPrimitiveTextfieldModule,
+        loadComponent: async () => import('../components/primitive-textfield'),
         title: 'PrimitiveTextfield',
     }),
     route({
         path: DemoRoute.PdfViewer,
-        loadChildren: async () =>
-            (await import('../components/pdf-viewer/pdf-viewer.module'))
-                .ExampleTuiPdfViewerModule,
+        loadComponent: async () => import('../components/pdf-viewer'),
         title: 'PdfViewer',
     }),
     route({
@@ -696,16 +691,12 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.ProgressBar,
-        loadChildren: async () =>
-            (await import('../components/progress-bar/progress-bar.module'))
-                .ExampleTuiProgressBarModule,
+        loadComponent: async () => import('../components/progress-bar'),
         title: 'ProgressBar',
     }),
     route({
         path: DemoRoute.ProgressCircle,
-        loadChildren: async () =>
-            (await import('../components/progress-circle/progress-circle.module'))
-                .ExampleTuiProgressCircleModule,
+        loadComponent: async () => import('../components/progress-circle'),
         title: 'ProgressCircle',
     }),
     route({
@@ -762,8 +753,7 @@ export const ROUTES: Routes = [
     // FILTER
     route({
         path: DemoRoute.Filter,
-        loadChildren: async () =>
-            (await import('../components/filter/filter.module')).ExampleTuiFilterModule,
+        loadComponent: async () => import('../components/filter'),
         title: 'Filter',
     }),
     // CHARTS
@@ -861,9 +851,7 @@ export const ROUTES: Routes = [
     // DIRECTIVES
     route({
         path: DemoRoute.ActiveZone,
-        loadChildren: async () =>
-            (await import('../directives/active-zone/active-zone.module'))
-                .ExampleTuiActiveZoneModule,
+        loadComponent: async () => import('../directives/active-zone'),
         title: 'ActiveZone',
     }),
     route({
@@ -883,9 +871,7 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.Highlight,
-        loadChildren: async () =>
-            (await import('../directives/highlight/highlight.module'))
-                .ExampleTuiHighlightModule,
+        loadComponent: async () => import('../directives/highlight'),
         title: 'Highlight',
     }),
     route({
@@ -895,16 +881,12 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.HintDescribe,
-        loadChildren: async () =>
-            (await import('../directives/hint-describe/hint-describe.module'))
-                .ExampleTuiHintDescribeModule,
+        loadComponent: async () => import('../directives/hint-describe'),
         title: 'HintDescribe',
     }),
     route({
         path: DemoRoute.HintManual,
-        loadChildren: async () =>
-            (await import('../directives/hint-manual/hint-manual.module'))
-                .ExampleTuiHintManualModule,
+        loadComponent: async () => import('../directives/hint-manual'),
         title: 'HintManual',
     }),
     route({

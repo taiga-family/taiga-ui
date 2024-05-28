@@ -7,7 +7,7 @@ import {TuiNotificationComponent, TuiTextfieldControllerModule} from '@taiga-ui/
 import {TuiInputCopyModule} from '@taiga-ui/legacy';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
-import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
+import {InheritedDocumentationComponent} from '../abstract/inherited-documentation';
 import {TuiInputCopyExample1} from './examples/1';
 import {ExampleTuiInputCopyComponent} from './input-copy.component';
 
@@ -16,7 +16,7 @@ import {ExampleTuiInputCopyComponent} from './input-copy.component';
         CommonModule,
         ReactiveFormsModule,
         TuiInputCopyModule,
-        InheritedDocumentationModule,
+        InheritedDocumentationComponent,
         PolymorpheusModule,
         TuiTextfieldControllerModule,
         TuiNotificationComponent,

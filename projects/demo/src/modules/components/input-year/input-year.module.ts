@@ -6,7 +6,7 @@ import {TuiAddonDoc, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiNotificationComponent, TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {TuiInputYearModule} from '@taiga-ui/legacy';
 
-import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
+import {InheritedDocumentationComponent} from '../abstract/inherited-documentation';
 import {InputYearExample1} from './examples/1';
 import {InputYearExample2} from './examples/2';
 import {ExampleInputYearComponent} from './input-year.component';
@@ -16,7 +16,7 @@ import {ExampleInputYearComponent} from './input-year.component';
         CommonModule,
         ReactiveFormsModule,
         TuiAddonDoc,
-        InheritedDocumentationModule,
+        InheritedDocumentationComponent,
         RouterModule.forChild(tuiGenerateRoutes(ExampleInputYearComponent)),
         TuiInputYearModule,
         TuiTextfieldControllerModule,

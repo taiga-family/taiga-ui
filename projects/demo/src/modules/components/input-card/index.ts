@@ -15,9 +15,9 @@ import type {TuiHintOptions} from '@taiga-ui/core';
 import {TuiErrorComponent, TuiHint, TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {TuiAccordion, TuiFieldErrorPipeModule} from '@taiga-ui/kit';
 
+import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
 import {AbstractExampleTuiControl} from '../abstract/control';
-import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
-import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
+import {InheritedDocumentationComponent} from '../abstract/inherited-documentation';
 
 @Component({
     standalone: true,
@@ -32,7 +32,7 @@ import {InheritedDocumentationModule} from '../abstract/inherited-documentation/
         TuiErrorComponent,
         TuiFieldErrorPipeModule,
         TuiAccordion,
-        InheritedDocumentationModule,
+        InheritedDocumentationComponent,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

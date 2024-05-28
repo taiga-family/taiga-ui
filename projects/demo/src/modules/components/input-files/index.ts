@@ -15,8 +15,8 @@ import {
 } from '@taiga-ui/kit';
 import {map} from 'rxjs';
 
+import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
 import {AbstractExampleTuiControl} from '../abstract/control';
-import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
 
 @Component({
     standalone: true,

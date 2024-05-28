@@ -14,7 +14,7 @@ import {
 import {TuiUnfinishedValidatorModule} from '@taiga-ui/kit';
 import {TuiInputDateRangeModule} from '@taiga-ui/legacy';
 
-import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
+import {InheritedDocumentationComponent} from '../abstract/inherited-documentation';
 import {TuiInputDateRangeExample1} from './examples/1';
 import {TuiInputDateRangeExample2} from './examples/2';
 import {TuiInputDateRangeExample3} from './examples/3';
@@ -27,7 +27,7 @@ import {ExampleTuiInputDateRangeComponent} from './input-date-range.component';
         CommonModule,
         TuiInputDateRangeModule,
         ReactiveFormsModule,
-        InheritedDocumentationModule,
+        InheritedDocumentationComponent,
         TuiButtonDirective,
         TuiLinkDirective,
         TuiTextfieldControllerModule,

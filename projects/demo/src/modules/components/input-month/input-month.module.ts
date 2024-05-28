@@ -6,7 +6,7 @@ import {TuiAddonDoc, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiNotificationComponent, TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {TuiInputMonthModule} from '@taiga-ui/legacy';
 
-import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
+import {InheritedDocumentationComponent} from '../abstract/inherited-documentation';
 import {InputMonthExample1} from './examples/1';
 import {InputMonthExample2} from './examples/2';
 import {InputMonthExample3} from './examples/3';
@@ -17,7 +17,7 @@ import {ExampleInputMonthComponent} from './input-month.component';
         CommonModule,
         ReactiveFormsModule,
         TuiAddonDoc,
-        InheritedDocumentationModule,
+        InheritedDocumentationComponent,
         TuiInputMonthModule,
         TuiTextfieldControllerModule,
         TuiNotificationComponent,

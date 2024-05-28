@@ -1,7 +1,11 @@
+import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiPure} from '@taiga-ui/cdk';
+import {TuiButtonDirective} from '@taiga-ui/core';
+import {TuiFilterComponent} from '@taiga-ui/kit';
 import type {Observable} from 'rxjs';
 import {BehaviorSubject, map} from 'rxjs';
 
@@ -21,13 +25,14 @@ const Department = {
 } as const;
 
 @Component({
-    selector: 'tui-filter-example-4',
+    standalone: true,
+    imports: [TuiButtonDirective, AsyncPipe, TuiFilterComponent, FormsModule],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiFilterExample4 {
+export default class ExampleComponent {
     protected readonly items = Object.values(Department);
 
     protected readonly filters$ = new BehaviorSubject<readonly string[]>([]);

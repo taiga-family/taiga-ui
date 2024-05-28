@@ -1,15 +1,18 @@
+import {NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiTagModule} from '@taiga-ui/legacy';
 
 @Component({
-    selector: 'tui-tag-example-4',
+    standalone: true,
+    imports: [TuiTagModule, NgForOf],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiTagExample4 {
+export default class ExampleComponent {
     protected tags: readonly string[] = [
         'Taiga UI',
         'is an open-source library',

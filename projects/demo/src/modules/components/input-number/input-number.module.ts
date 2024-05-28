@@ -16,7 +16,7 @@ import {
 import {TuiRadioListComponent} from '@taiga-ui/kit';
 import {TuiInputNumberModule} from '@taiga-ui/legacy';
 
-import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
+import {InheritedDocumentationComponent} from '../abstract/inherited-documentation';
 import {TuiInputNumberExample1} from './examples/1';
 import {TuiInputNumberExample2} from './examples/2';
 import {TuiInputNumberExample3} from './examples/3';
@@ -40,7 +40,7 @@ import {ExampleTuiInputNumberComponent} from './input-number.component';
         TuiTextfieldControllerModule,
         TuiNotificationComponent,
         TuiAddonDoc,
-        InheritedDocumentationModule,
+        InheritedDocumentationComponent,
         TuiHint,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiInputNumberComponent)),
         TuiNumberFormatDirective,

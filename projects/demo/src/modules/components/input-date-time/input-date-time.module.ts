@@ -12,7 +12,7 @@ import {
 } from '@taiga-ui/core';
 import {TuiInputDateTimeModule} from '@taiga-ui/legacy';
 
-import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
+import {InheritedDocumentationComponent} from '../abstract/inherited-documentation';
 import {TuiInputDateTimeExample1} from './examples/1';
 import {TuiInputDateTimeExample2} from './examples/2';
 import {TuiInputDateTimeExample3} from './examples/3';
@@ -23,7 +23,7 @@ import {ExampleTuiInputDateTimeComponent} from './input-date-time.component';
 @NgModule({
     imports: [
         TuiAddonDoc,
-        InheritedDocumentationModule,
+        InheritedDocumentationComponent,
         ReactiveFormsModule,
         FormsModule,
         CommonModule,

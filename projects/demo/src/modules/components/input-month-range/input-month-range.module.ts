@@ -12,7 +12,7 @@ import {
 } from '@taiga-ui/core';
 import {TuiInputMonthRangeModule} from '@taiga-ui/legacy';
 
-import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
+import {InheritedDocumentationComponent} from '../abstract/inherited-documentation';
 import {TuiInputMonthRangeExample1} from './examples/1';
 import {TuiInputMonthRangeExample2} from './examples/2';
 import {TuiInputMonthRangeExample3} from './examples/3';
@@ -21,7 +21,7 @@ import {ExampleTuiInputMonthRangeComponent} from './input-month-range.component'
 @NgModule({
     imports: [
         TuiAddonDoc,
-        InheritedDocumentationModule,
+        InheritedDocumentationComponent,
         ReactiveFormsModule,
         FormsModule,
         CommonModule,

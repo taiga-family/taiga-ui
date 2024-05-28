@@ -1,12 +1,14 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiProgressModule} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-progress-bar-example-5',
+    standalone: true,
+    imports: [TuiProgressModule],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiProgressBarExample5 {}
+export default class ExampleComponent {}

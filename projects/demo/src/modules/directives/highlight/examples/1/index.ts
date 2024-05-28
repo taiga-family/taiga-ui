@@ -1,15 +1,27 @@
+import {NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiTextfieldControllerModule} from '@taiga-ui/core';
+import {TuiHighlightModule} from '@taiga-ui/kit';
+import {TuiInputModule} from '@taiga-ui/legacy';
 
 @Component({
-    selector: 'tui-highlight-example-1',
+    standalone: true,
+    imports: [
+        TuiInputModule,
+        TuiTextfieldControllerModule,
+        FormsModule,
+        NgForOf,
+        TuiHighlightModule,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiHighlightExample1 {
+export default class ExampleComponent {
     protected search = '';
 
     protected readonly rows = [

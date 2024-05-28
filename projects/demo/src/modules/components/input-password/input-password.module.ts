@@ -12,7 +12,7 @@ import {
 } from '@taiga-ui/core';
 import {TuiInputPasswordModule} from '@taiga-ui/legacy';
 
-import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
+import {InheritedDocumentationComponent} from '../abstract/inherited-documentation';
 import {TuiInputPasswordExample1} from './examples/1';
 import {TuiInputPasswordExample2} from './examples/2';
 import {ExampleTuiInputPasswordComponent} from './input-password.component';
@@ -24,7 +24,7 @@ import {ExampleTuiInputPasswordComponent} from './input-password.component';
         ReactiveFormsModule,
         TuiInputPasswordModule,
         TuiLinkDirective,
-        InheritedDocumentationModule,
+        InheritedDocumentationComponent,
         TuiAddonDoc,
         TuiButtonDirective,
         TuiTextfieldControllerModule,
