@@ -1,0 +1,22 @@
+<tui-doc-page
+    header="LazyLoading"
+    package="KIT"
+    type="directives"
+>
+    <ng-template pageTab>
+        <p>
+            Directive can be used for image lazy loading. It is the same as
+            <code>loading="lazy"</code>
+            but supports also old browsers
+        </p>
+
+        <tui-doc-example
+            id="usage"
+            heading="Usage"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample: 'html,ts'"
+        />
+    </ng-template>
+
+    <tui-setup *pageTab="'Setup'" />
+</tui-doc-page>

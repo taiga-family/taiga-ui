@@ -1,15 +1,34 @@
+import {NgForOf, NgIf} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {
+    TuiDataListComponent,
+    TuiHostedDropdownModule,
+    TuiLinkDirective,
+    TuiOptGroupDirective,
+    TuiOptionComponent,
+    TuiSvgComponent,
+} from '@taiga-ui/core';
 
 @Component({
-    selector: 'tui-hosted-dropdown-example-3',
+    standalone: true,
+    imports: [
+        TuiHostedDropdownModule,
+        TuiSvgComponent,
+        TuiLinkDirective,
+        TuiDataListComponent,
+        TuiOptGroupDirective,
+        NgForOf,
+        TuiOptionComponent,
+        NgIf,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiHostedDropdownExample3 {
+export default class ExampleComponent {
     protected open = false;
 
     protected readonly items = [

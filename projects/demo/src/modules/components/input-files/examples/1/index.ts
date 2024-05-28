@@ -1,18 +1,36 @@
+import {AsyncPipe, NgIf} from '@angular/common';
 import {Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiFileLike} from '@taiga-ui/kit';
+import {
+    TuiFileComponent,
+    TuiFileRejectedPipe,
+    TuiFilesComponent,
+    TuiInputFilesComponent,
+    TuiInputFilesDirective,
+} from '@taiga-ui/kit';
 import type {Observable} from 'rxjs';
 import {finalize, map, of, Subject, switchMap, timer} from 'rxjs';
 
 @Component({
-    selector: 'tui-input-files-example-1',
+    standalone: true,
+    imports: [
+        NgIf,
+        TuiInputFilesComponent,
+        ReactiveFormsModule,
+        TuiInputFilesDirective,
+        TuiFilesComponent,
+        TuiFileComponent,
+        TuiFileRejectedPipe,
+        AsyncPipe,
+    ],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class TuiInputFilesExample1 {
+export default class ExampleComponent {
     protected readonly control = new FormControl<TuiFileLike | null>(null);
     protected readonly failedFiles$ = new Subject<TuiFileLike | null>();
     protected readonly loadingFiles$ = new Subject<TuiFileLike | null>();

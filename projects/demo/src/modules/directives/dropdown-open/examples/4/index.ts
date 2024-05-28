@@ -1,15 +1,31 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {
+    TuiButtonDirective,
+    TuiDropdownDirective,
+    TuiDropdownOpenDirective,
+} from '@taiga-ui/core';
+import {TuiChevronDirective, TuiDataListWrapperModule} from '@taiga-ui/kit';
+import {TuiMultiSelectModule} from '@taiga-ui/legacy';
 
 @Component({
-    selector: 'tui-dropdown-open-example-4',
+    standalone: true,
+    imports: [
+        ReactiveFormsModule,
+        TuiButtonDirective,
+        TuiDropdownDirective,
+        TuiDropdownOpenDirective,
+        TuiChevronDirective,
+        TuiDataListWrapperModule,
+        TuiMultiSelectModule,
+    ],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class TuiDropdownOpenExample4 {
+export default class ExampleComponent {
     protected readonly form = new FormGroup({
         control: new FormControl<string[]>([]),
     });

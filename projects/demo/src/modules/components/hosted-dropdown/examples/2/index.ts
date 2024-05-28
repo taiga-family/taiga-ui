@@ -1,16 +1,42 @@
+import {NgForOf} from '@angular/common';
 import {Component, ViewChild} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiHostedDropdownComponent} from '@taiga-ui/core';
+import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
+import {
+    TuiButtonDirective,
+    TuiDataListComponent,
+    TuiGroupDirective,
+    TuiHostedDropdownComponent,
+    TuiHostedDropdownModule,
+    TuiOptionComponent,
+    TuiSvgComponent,
+} from '@taiga-ui/core';
+import {TuiDataListWrapperModule} from '@taiga-ui/kit';
+import {TuiSelectModule} from '@taiga-ui/legacy';
 
 @Component({
-    selector: 'tui-hosted-dropdown-example-2',
+    standalone: true,
+    imports: [
+        TuiHostedDropdownModule,
+        TuiGroupDirective,
+        TuiButtonDirective,
+        TuiSvgComponent,
+        TuiSelectModule,
+        TuiActiveZoneDirective,
+        FormsModule,
+        TuiDataListWrapperModule,
+        TuiDataListComponent,
+        TuiOptionComponent,
+        NgForOf,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiHostedDropdownExample2 {
+export default class ExampleComponent {
     @ViewChild(TuiHostedDropdownComponent)
     protected component?: TuiHostedDropdownComponent;
 

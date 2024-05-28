@@ -1,15 +1,17 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiHighDpiDirective, TuiMediaDirective} from '@taiga-ui/cdk';
 
 @Component({
-    selector: 'tui-media-example-1',
+    standalone: true,
+    imports: [TuiMediaDirective, TuiHighDpiDirective],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiMediaExample1 {
+export default class ExampleComponent {
     protected currentTime = 0;
     protected volume = 1;
     protected paused = true;

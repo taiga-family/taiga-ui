@@ -1,0 +1,54 @@
+<tui-doc-page
+    header="Currency"
+    package="ADDON-COMMERCE"
+    path="addon-commerce/pipes/currency.pipe.ts"
+    type="pipes"
+>
+    <ng-template pageTab>
+        Pipe for transforming number into money. It is usually used with
+        <a
+            routerLink="/components/input-number"
+            tuiLink
+        >
+            <code>InputNumber</code>
+        </a>
+        <tui-doc-example
+            id="base"
+            heading="Basic"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample: 'html,ts'"
+        />
+        <tui-doc-example
+            id="with-input"
+            heading="With Input"
+            [component]="2 | tuiComponent"
+            [content]="2 | tuiExample: 'html,ts'"
+        />
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-documentation>
+            <tui-doc-demo [control]="control">
+                <ng-template>
+                    <tui-input-number
+                        [formControl]="control"
+                        [tuiTextfieldPostfix]="currency | tuiCurrency"
+                    >
+                        Type a sum
+                    </tui-input-number>
+                </ng-template>
+            </tui-doc-demo>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="currency"
+                documentationPropertyType="TuiCurrencyVariants"
+                [documentationPropertyValues]="currencyVariants"
+                [(documentationPropertyValue)]="currency"
+            >
+                Currency symbol
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <tui-setup *pageTab />
+</tui-doc-page>

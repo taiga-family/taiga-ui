@@ -1,19 +1,41 @@
+import {AsyncPipe, NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
 import type {AbstractControl, ValidatorFn} from '@angular/forms';
-import {FormControl} from '@angular/forms';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiValidationError} from '@taiga-ui/cdk';
-import {tuiFilesAccepted} from '@taiga-ui/kit';
+import {TuiErrorComponent} from '@taiga-ui/core';
+import {
+    TuiFieldErrorPipeModule,
+    TuiFileComponent,
+    TuiFileRejectedPipe,
+    tuiFilesAccepted,
+    TuiFilesComponent,
+    TuiInputFilesComponent,
+    TuiInputFilesDirective,
+} from '@taiga-ui/kit';
 import {map} from 'rxjs';
 
 @Component({
-    selector: 'tui-input-files-example-2',
+    standalone: true,
+    imports: [
+        TuiInputFilesComponent,
+        TuiInputFilesDirective,
+        ReactiveFormsModule,
+        TuiFilesComponent,
+        TuiFileComponent,
+        NgForOf,
+        AsyncPipe,
+        TuiErrorComponent,
+        TuiFieldErrorPipeModule,
+        TuiFileRejectedPipe,
+    ],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class TuiInputFilesExample2 {
+export default class ExampleComponent {
     protected readonly control = new FormControl<File[]>([], [maxFilesLength(5)]);
     protected readonly accepted$ = this.control.valueChanges.pipe(
         map(() => tuiFilesAccepted(this.control)),

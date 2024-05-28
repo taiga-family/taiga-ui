@@ -1,16 +1,29 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {
+    TuiButtonDirective,
+    TuiDropdownContextDirective,
+    TuiDropdownDirective,
+} from '@taiga-ui/core';
+import {TuiTextareaModule} from '@taiga-ui/legacy';
 
 @Component({
-    selector: 'tui-dropdown-context-example-3',
+    standalone: true,
+    imports: [
+        TuiDropdownContextDirective,
+        TuiDropdownDirective,
+        ReactiveFormsModule,
+        TuiTextareaModule,
+        TuiButtonDirective,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiDropdownContextExample3 {
+export default class ExampleComponent {
     protected testForm = new FormGroup({
         reportText: new FormControl('Misspell HERE!'),
     });

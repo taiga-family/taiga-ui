@@ -1,17 +1,29 @@
+import {NgForOf, NgIf} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TUI_IS_E2E} from '@taiga-ui/cdk';
+import {TUI_IS_E2E, TuiItemDirective} from '@taiga-ui/cdk';
+import {TuiLinkDirective, TuiSvgComponent} from '@taiga-ui/core';
 import type {TuiFileLike} from '@taiga-ui/kit';
+import {TuiFileComponent, TuiFilesComponent} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-input-files-example-3',
+    standalone: true,
+    imports: [
+        TuiFilesComponent,
+        TuiFileComponent,
+        NgForOf,
+        NgIf,
+        TuiItemDirective,
+        TuiLinkDirective,
+        TuiSvgComponent,
+    ],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class TuiInputFilesExample3 {
+export default class ExampleComponent {
     protected readonly isE2E = inject(TUI_IS_E2E);
 
     protected readonly control = new FormControl<TuiFileLike | null>(null);

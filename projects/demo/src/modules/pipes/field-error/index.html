@@ -1,0 +1,73 @@
+<tui-doc-page
+    header="FieldError"
+    package="KIT"
+    type="pipes"
+>
+    <ng-template pageTab>
+        <p>
+            FieldErrorPipe takes order of errors as array and transform it to
+            <code>TuiValidationError</code>
+            . Can be used with
+            <code>TuiError</code>
+        </p>
+        <p>
+            You can also use
+            <code>tuiFieldErrorContentPipe</code>
+            with
+            <code>TuiHint</code>
+            (see
+            <a
+                fragment="content"
+                routerLink="."
+                tuiLink
+            >
+                tuiFieldErrorContentPipe example
+            </a>
+            ). It returns a content of the TuiValidationError.
+        </p>
+
+        <tui-doc-example
+            id="base"
+            heading="Basic"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample: 'html,ts'"
+        />
+
+        <tui-doc-example
+            id="custom-messages"
+            heading="With custom messages for validators"
+            [component]="2 | tuiComponent"
+            [content]="2 | tuiExample: 'html,ts'"
+        />
+
+        <tui-doc-example
+            id="patterns"
+            heading="with a template"
+            [component]="3 | tuiComponent"
+            [content]="3 | tuiExample"
+        />
+
+        <tui-doc-example
+            id="form-array"
+            heading="With adding new controls (FormArray)"
+            [component]="4 | tuiComponent"
+            [content]="4 | tuiExample"
+        />
+
+        <tui-doc-example
+            id="async"
+            heading="async validator"
+            [component]="5 | tuiComponent"
+            [content]="5 | tuiExample"
+        />
+
+        <tui-doc-example
+            id="content"
+            heading="tuiFieldErrorContentPipe"
+            [component]="6 | tuiComponent"
+            [content]="6 | tuiExample"
+        />
+    </ng-template>
+
+    <tui-setup *pageTab="'Setup'" />
+</tui-doc-page>

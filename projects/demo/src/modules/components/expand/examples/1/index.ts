@@ -1,14 +1,17 @@
+import {NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiButtonDirective, TuiExpand} from '@taiga-ui/core';
 
 @Component({
-    selector: 'tui-expand-example-1',
+    standalone: true,
+    imports: [TuiButtonDirective, TuiExpand, NgForOf],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class TuiExpandExample1 {
+export default class ExampleComponent {
     protected expanded = false;
 
     protected subpages = ['page1', 'page2', 'page3'];

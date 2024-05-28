@@ -1,16 +1,30 @@
+import {NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiArrayRemove} from '@taiga-ui/cdk';
+import {TuiButtonDirective, TuiExpand} from '@taiga-ui/core';
+import {TuiChevronDirective, TuiElasticContainerModule} from '@taiga-ui/kit';
+import {TuiInputModule} from '@taiga-ui/legacy';
 
 @Component({
-    selector: 'tui-elastic-container-example-4',
+    standalone: true,
+    imports: [
+        TuiButtonDirective,
+        TuiElasticContainerModule,
+        NgForOf,
+        TuiChevronDirective,
+        TuiExpand,
+        TuiInputModule,
+        FormsModule,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiElasticContainerExample4 {
+export default class ExampleComponent {
     protected items = [
         {
             expanded: false,

@@ -1,23 +1,43 @@
+import {AsyncPipe} from '@angular/common';
 import type {OnInit} from '@angular/core';
 import {Component, ViewChild} from '@angular/core';
 import type {AbstractControl, ValidationErrors} from '@angular/forms';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiMarkControlAsTouchedAndValidate, TuiValidationError} from '@taiga-ui/cdk';
+import {
+    TuiButtonDirective,
+    TuiErrorComponent,
+    TuiLabelDirective,
+    TuiTextfieldControllerModule,
+} from '@taiga-ui/core';
+import {TuiCheckboxComponent, TuiFieldErrorPipeModule} from '@taiga-ui/kit';
+import {TuiInputModule} from '@taiga-ui/legacy';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 const secretRegexTen = /^\d{10}$/;
 const secretRegexTwelve = /^\d{12}$/;
 
 @Component({
-    selector: 'tui-field-error-pipe-example-3',
+    standalone: true,
+    imports: [
+        ReactiveFormsModule,
+        TuiLabelDirective,
+        TuiInputModule,
+        TuiTextfieldControllerModule,
+        TuiErrorComponent,
+        TuiFieldErrorPipeModule,
+        AsyncPipe,
+        TuiCheckboxComponent,
+        TuiButtonDirective,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiFieldErrorPipeExample3 implements OnInit {
+export default class ExampleComponent implements OnInit {
     @ViewChild('errorContent')
     protected errorContent: PolymorpheusContent;
 

@@ -4,7 +4,7 @@ import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiButtonDirective, TuiExpandComponent, TuiLinkDirective} from '@taiga-ui/core';
+import {TuiButtonDirective, TuiExpand, TuiLinkDirective} from '@taiga-ui/core';
 import {tuiKitIcons} from '@taiga-ui/icons';
 
 @Component({
@@ -14,7 +14,7 @@ import {tuiKitIcons} from '@taiga-ui/icons';
         TuiLinkDirective,
         RouterLink,
         TuiButtonDirective,
-        TuiExpandComponent,
+        TuiExpand,
         ClipboardModule,
     ],
     templateUrl: './index.html',

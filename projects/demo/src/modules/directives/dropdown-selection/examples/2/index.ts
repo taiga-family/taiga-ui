@@ -1,11 +1,23 @@
+import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
 import type {QueryList} from '@angular/core';
 import {Component, ElementRef, ViewChild, ViewChildren} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {assets} from '@demo/utils';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk';
 import {EMPTY_QUERY, tuiPure} from '@taiga-ui/cdk';
-import {TuiDriver, tuiGetWordRange, TuiOptionComponent} from '@taiga-ui/core';
+import {
+    TuiDataListComponent,
+    TuiDriver,
+    TuiDropdownDirective,
+    TuiDropdownSelectionDirective,
+    tuiGetWordRange,
+    TuiInitialsPipe,
+    TuiOptionComponent,
+} from '@taiga-ui/core';
+import {TuiAvatarComponent} from '@taiga-ui/kit';
+import {TuiTextareaModule} from '@taiga-ui/legacy';
 import type {Observable} from 'rxjs';
 
 export interface User {
@@ -15,13 +27,26 @@ export interface User {
 }
 
 @Component({
-    selector: 'tui-dropdown-selection-example-2',
+    standalone: true,
+    imports: [
+        TuiTextareaModule,
+        TuiDropdownSelectionDirective,
+        TuiDropdownDirective,
+        FormsModule,
+        AsyncPipe,
+        TuiDataListComponent,
+        NgIf,
+        NgForOf,
+        TuiOptionComponent,
+        TuiAvatarComponent,
+        TuiInitialsPipe,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiDropdownSelectionExample2 {
+export default class ExampleComponent {
     @ViewChildren(TuiOptionComponent, {read: ElementRef})
     private readonly options: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 

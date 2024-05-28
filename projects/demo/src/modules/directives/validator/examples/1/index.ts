@@ -1,15 +1,35 @@
+import {NgIf} from '@angular/common';
 import {Component} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {
+    FormControl,
+    FormGroup,
+    FormsModule,
+    ReactiveFormsModule,
+    Validators,
+} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiValidatorDirective} from '@taiga-ui/cdk';
+import {TuiDataListWrapperModule} from '@taiga-ui/kit';
+import {TuiInputModule, TuiInputPhoneModule, TuiSelectModule} from '@taiga-ui/legacy';
 
 @Component({
-    selector: 'tui-validator-example-1',
+    standalone: true,
+    imports: [
+        ReactiveFormsModule,
+        TuiInputModule,
+        TuiSelectModule,
+        FormsModule,
+        TuiDataListWrapperModule,
+        NgIf,
+        TuiValidatorDirective,
+        TuiInputPhoneModule,
+    ],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class TuiValidatorExample1 {
+export default class ExampleComponent {
     protected readonly items = ['Email', 'Phone'];
 
     protected type = this.items[0];

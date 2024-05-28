@@ -1,11 +1,40 @@
+import {NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TUI_VALIDATION_ERRORS} from '@taiga-ui/kit';
+import {TuiCurrencyPipe} from '@taiga-ui/addon-commerce';
+import {
+    TuiCellDirective,
+    TuiTableDirective,
+    TuiTbodyComponent,
+    TuiTdComponent,
+    TuiThComponent,
+    TuiThGroupComponent,
+    TuiTrComponent,
+} from '@taiga-ui/addon-table';
+import {TuiHintDirective, TuiTextfieldControllerModule} from '@taiga-ui/core';
+import {TUI_VALIDATION_ERRORS, TuiFieldErrorPipeModule} from '@taiga-ui/kit';
+import {TuiInputNumberModule} from '@taiga-ui/legacy';
 
 @Component({
-    selector: 'tui-field-error-content-pipe-example-6',
+    standalone: true,
+    imports: [
+        TuiTableDirective,
+        TuiThGroupComponent,
+        TuiThComponent,
+        TuiTbodyComponent,
+        NgForOf,
+        TuiTrComponent,
+        TuiCellDirective,
+        TuiTdComponent,
+        TuiInputNumberModule,
+        TuiHintDirective,
+        ReactiveFormsModule,
+        TuiTextfieldControllerModule,
+        TuiFieldErrorPipeModule,
+        TuiCurrencyPipe,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
@@ -21,7 +50,7 @@ import {TUI_VALIDATION_ERRORS} from '@taiga-ui/kit';
         },
     ],
 })
-export class TuiFieldErrorContentPipeExample6 {
+export default class ExampleComponent {
     protected readonly data = [{name: 'Latte'}, {name: 'Cappuccino'}] as const;
 
     protected latteControl = new FormControl<number | null>(null, [

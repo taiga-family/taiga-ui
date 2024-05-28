@@ -1,15 +1,19 @@
+import {NgIf} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiHoveredDirective} from '@taiga-ui/cdk';
+import {TuiBadgeDirective, TuiPresentDirective} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-present-example-1',
+    standalone: true,
+    imports: [TuiHoveredDirective, TuiPresentDirective, NgIf, TuiBadgeDirective],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiPresentExample1 {
+export default class ExampleComponent {
     protected counterCSS = 0;
 
     protected counterIf = 0;
