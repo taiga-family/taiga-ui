@@ -3,7 +3,10 @@
     [(index)]="index"
 >
     <ng-container *ngFor="let item of items">
-        <div *tuiItem class="item">
+        <div
+            *tuiItem
+            class="item"
+        >
             <h2 class="title">{{ item }}</h2>
             <!-- TODO: update documentation here -->
             <a
