@@ -17,6 +17,7 @@ import type {TuiPdfViewerOptions} from './pdf-viewer.options';
 @Component({
     standalone: true,
     selector: 'tui-pdf-viewer',
+    imports: [PolymorpheusModule, TuiButtonDirective, AsyncPipe],
     templateUrl: './pdf-viewer.template.html',
     styleUrls: ['./pdf-viewer.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -25,7 +26,6 @@ import type {TuiPdfViewerOptions} from './pdf-viewer.options';
         '[@tuiFadeIn]': 'options',
         '[@tuiSlideInTop]': 'options',
     },
-    imports: [PolymorpheusModule, TuiButtonDirective, AsyncPipe],
 })
 export class TuiPdfViewerComponent<I, O> {
     protected readonly options = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));

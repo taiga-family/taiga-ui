@@ -13,11 +13,11 @@ import {defer} from 'rxjs';
 @Component({
     standalone: true,
     selector: 'tui-input-inline',
+    imports: [NgIf, TuiLetDirective, AsyncPipe],
     templateUrl: './input-inline.template.html',
     styleUrls: ['./input-inline.style.less'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
-    imports: [NgIf, TuiLetDirective, AsyncPipe],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiInputInlineComponent {
     @ContentChild(NgControl)

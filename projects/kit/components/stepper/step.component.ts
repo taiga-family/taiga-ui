@@ -19,10 +19,10 @@ import {TuiStepperComponent} from './stepper.component';
     standalone: true,
     selector:
         'button[tuiStep], a[tuiStep]:not([routerLink]), a[tuiStep][routerLink][routerLinkActive]',
+    imports: [NgIf, TuiIconComponent],
     templateUrl: './step.template.html',
     styleUrls: ['./step.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [NgIf, TuiIconComponent],
 })
 export class TuiStepComponent {
     private readonly stepper = inject(TuiStepperComponent);

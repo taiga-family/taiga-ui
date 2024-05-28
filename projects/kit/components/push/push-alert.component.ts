@@ -19,6 +19,14 @@ import type {TuiPushOptions} from './push.options';
 
 @Component({
     standalone: true,
+    imports: [
+        NgIf,
+        PolymorpheusModule,
+        TuiPushComponent,
+        TuiIconComponent,
+        TuiButtonDirective,
+        TuiLinkDirective,
+    ],
     templateUrl: './push-alert.template.html',
     styleUrls: ['./push-alert.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -29,14 +37,6 @@ import type {TuiPushOptions} from './push.options';
         '[@tuiSlideInRight]': 'options',
         '[@tuiHeightCollapse]': 'options',
     },
-    imports: [
-        NgIf,
-        PolymorpheusModule,
-        TuiPushComponent,
-        TuiIconComponent,
-        TuiButtonDirective,
-        TuiLinkDirective,
-    ],
 })
 export class TuiPushAlertComponent {
     protected readonly options = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));

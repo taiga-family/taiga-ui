@@ -8,8 +8,8 @@ import {
     TUI_TREE_LOADER,
     TUI_TREE_LOADING,
     TUI_TREE_START,
-    type TuiTreeLoader,
     TuiTree,
+    type TuiTreeLoader,
     TuiTreeService,
 } from '@taiga-ui/kit';
 import type {Observable} from 'rxjs';

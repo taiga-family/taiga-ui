@@ -23,7 +23,8 @@ import {
     tuiZonefree,
 } from '@taiga-ui/cdk';
 import {TUI_HINT_COMPONENT, TuiHint, TuiHintDirective} from '@taiga-ui/core';
-import {PolymorpheusContent, PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import type {Observable} from 'rxjs';
 import {
     BehaviorSubject,

@@ -37,11 +37,11 @@ import {TuiStepComponent} from './step.component';
 @Component({
     standalone: true,
     selector: 'tui-stepper, nav[tuiStepper]',
+    imports: [AsyncPipe, NgIf],
     templateUrl: './stepper.template.html',
     styleUrls: ['./stepper.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [ResizeObserverService],
-    imports: [AsyncPipe, NgIf],
 })
 export class TuiStepperComponent {
     @ContentChildren(forwardRef(() => TuiStepComponent), {read: ElementRef})

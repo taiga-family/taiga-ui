@@ -5,7 +5,7 @@ import {TuiRippleDirective} from '@taiga-ui/addon-mobile';
 
 @Component({
     standalone: true,
-    imports: [ TuiRippleDirective],
+    imports: [TuiRippleDirective],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

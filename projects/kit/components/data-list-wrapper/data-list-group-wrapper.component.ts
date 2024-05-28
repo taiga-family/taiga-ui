@@ -9,10 +9,6 @@ import {TuiDataListWrapperComponent} from './data-list-wrapper.component';
 @Component({
     standalone: true,
     selector: 'tui-data-list-wrapper[labels]',
-    templateUrl: './data-list-group-wrapper.template.html',
-    styleUrls: ['./data-list-wrapper.style.less'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [tuiAsDataListAccessor(TuiDataListGroupWrapperComponent)],
     imports: [
         NgIf,
         NgForOf,
@@ -21,6 +17,10 @@ import {TuiDataListWrapperComponent} from './data-list-wrapper.component';
         TuiElementDirective,
         TuiLoaderComponent,
     ],
+    templateUrl: './data-list-group-wrapper.template.html',
+    styleUrls: ['./data-list-wrapper.style.less'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [tuiAsDataListAccessor(TuiDataListGroupWrapperComponent)],
 })
 export class TuiDataListGroupWrapperComponent<T> extends TuiDataListWrapperComponent<T> {
     @Input()

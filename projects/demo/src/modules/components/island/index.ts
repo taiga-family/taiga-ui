@@ -2,13 +2,12 @@ import {Component} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
+import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {
+    TuiButtonDirective,
     TuiLinkDirective,
     TuiNotificationComponent,
-    TuiSizeL,
-    TuiSizeS,
 } from '@taiga-ui/core';
-import {TuiButtonDirective} from '@taiga-ui/core';
 import {TuiIslandDirective} from '@taiga-ui/legacy';
 
 import {StylesInfoComponent} from '../../app/styles-info';

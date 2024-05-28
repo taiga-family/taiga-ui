@@ -4,6 +4,7 @@ import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 @Component({
     standalone: true,
+    imports: [PolymorpheusModule],
     template: `
         <ng-container *polymorpheusOutlet="content as text">{{ text }}</ng-container>
     `,
@@ -11,7 +12,6 @@ import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: TUI_HINT_PROVIDERS,
     animations: [tuiFadeIn],
-    imports: [PolymorpheusModule],
 })
 export class TuiLineClampBoxComponent extends TuiHintComponent {
     @HostBinding('style.min-width.px')

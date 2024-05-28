@@ -28,7 +28,7 @@ import {TuiTreeItemComponent} from '../tree-item/tree-item.component';
 export class TuiTreeComponent<T> implements DoCheck {
     private readonly check$ = new Subject<void>();
 
-    @Input({ required: true })
+    @Input({required: true})
     public value!: T;
 
     @ViewChild(forwardRef(() => TuiTreeItemComponent))

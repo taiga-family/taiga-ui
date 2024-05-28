@@ -19,11 +19,11 @@ import {
 @Component({
     standalone: true,
     selector: 'tui-push',
+    imports: [NgIf, AsyncPipe, TuiButtonDirective, TuiFormatDatePipe],
     templateUrl: './push.template.html',
     styleUrls: ['./push.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiButtonOptionsProvider({size: 's', appearance: 'secondary'})],
-    imports: [NgIf, AsyncPipe, TuiButtonDirective, TuiFormatDatePipe],
 })
 export class TuiPushComponent {
     @Input()

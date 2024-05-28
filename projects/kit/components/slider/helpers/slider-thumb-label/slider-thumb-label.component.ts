@@ -10,10 +10,10 @@ import {TuiSliderComponent} from '../../slider.component';
 @Component({
     standalone: true,
     selector: '[tuiSliderThumbLabel]',
+    imports: [AsyncPipe, NgIf],
     templateUrl: './slider-thumb-label.template.html',
     styleUrls: ['./slider-thumb-label.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [AsyncPipe, NgIf],
 })
 export class TuiSliderThumbLabelComponent implements AfterContentInit {
     @ContentChild(TuiSliderComponent)

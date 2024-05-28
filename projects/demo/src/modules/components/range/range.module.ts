@@ -5,7 +5,8 @@ import {RouterModule} from '@angular/router';
 import {TuiAddonDoc, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {
     TuiLinkDirective,
-    TuiNotificationComponent, TuiSurfaceDirective,
+    TuiNotificationComponent,
+    TuiSurfaceDirective,
     TuiSvgComponent,
 } from '@taiga-ui/core';
 import {TuiRadioListComponent, TuiRangeComponent} from '@taiga-ui/kit';
