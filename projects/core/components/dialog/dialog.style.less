@@ -74,12 +74,6 @@
         }
     }
 
-    &[data-size='page'] {
-        .t-content {
-            padding: 0;
-        }
-    }
-
     &._centered {
         text-align: center;
     }
@@ -101,6 +95,13 @@
                 margin-bottom: 0.5rem;
                 font: var(--tui-font-heading-5);
             }
+        }
+    }
+
+    &[data-size='page'],
+    :host-context(tui-root._mobile) &[data-size='page'] {
+        .t-content {
+            padding: 0;
         }
     }
 }
@@ -157,7 +158,6 @@
     top: 1.5rem;
     right: 1.5rem;
     display: none;
-    color: var(--tui-base-01);
 
     :host-context(.t-dialog:last-of-type) & {
         display: inline-flex;
@@ -166,6 +166,7 @@
     :host:not([data-size='fullscreen']):not([data-size='page']) & {
         animation: tuiFadeIn var(--tui-duration);
         background: rgba(104, 104, 104, 0.96);
+        color: var(--tui-base-01);
 
         &:hover {
             background: rgba(159, 159, 159, 0.86);
@@ -177,12 +178,16 @@
     }
 
     :host-context(tui-root._mobile) & {
-        position: absolute;
-        top: 0;
-        right: 0;
-        background: transparent !important;
-        color: var(--tui-text-01);
-        opacity: 0.5;
+        &[data-size] {
+            --tui-fade-end: 0.5;
+
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: transparent !important;
+            color: var(--tui-text-01);
+            opacity: 0.5;
+        }
     }
 }
 
