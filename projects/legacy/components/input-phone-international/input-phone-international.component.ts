@@ -2,7 +2,6 @@ import {CommonModule} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
-    HostBinding,
     inject,
     Input,
     Output,
@@ -83,6 +82,9 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
         tuiAsFocusableItemAccessor(TuiInputPhoneInternationalComponent),
         tuiAsControl(TuiInputPhoneInternationalComponent),
     ],
+    host: {
+        '[attr.data-size]': 'textfieldSize',
+    },
     viewProviders: [FIXED_DROPDOWN_CONTROLLER_PROVIDER],
 })
 export class TuiInputPhoneInternationalComponent
@@ -94,6 +96,7 @@ export class TuiInputPhoneInternationalComponent
     protected readonly countryIsoCode$ = new BehaviorSubject(this.options.countryIsoCode);
     protected readonly mask$ = new BehaviorSubject<MaskitoOptions | null>(null);
     protected readonly countriesNames$ = inject(TUI_COUNTRIES);
+    protected readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
     protected readonly arrow: PolymorpheusContent<
         TuiContext<TuiSizeL | TuiSizeM | TuiSizeS>
     > = TUI_ARROW;
@@ -106,8 +109,6 @@ export class TuiInputPhoneInternationalComponent
 
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly countrySelect?: TuiPrimitiveTextfieldComponent;
-
-    private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
 
     @Input()
     public countries = this.options.countries;
@@ -130,10 +131,7 @@ export class TuiInputPhoneInternationalComponent
     }
 
     public get focused(): boolean {
-        return (
-            (!!this.countrySelect && this.countrySelect.focused) ||
-            (!!this.inputPhone && this.inputPhone.focused)
-        );
+        return Boolean(this.countrySelect?.focused || this.inputPhone?.focused);
     }
 
     public onPaste(event: Event, phonesMetadata: MetadataJson | null): void {
@@ -165,10 +163,7 @@ export class TuiInputPhoneInternationalComponent
     public onItemClick(isoCode: TuiCountryIsoCode): void {
         this.open = false;
         this.countryIsoCode$.next(isoCode);
-
-        if (this.nativeFocusableElement) {
-            this.nativeFocusableElement.focus();
-        }
+        this.nativeFocusableElement?.focus();
     }
 
     constructor() {
@@ -194,11 +189,6 @@ export class TuiInputPhoneInternationalComponent
         this.textfieldValue = maskOptions
             ? maskitoTransform(unmaskedValue, maskOptions)
             : unmaskedValue; // it will be calibrated later when mask is ready (by maskitoInitialCalibrationPlugin)
-    }
-
-    @HostBinding('attr.data-size')
-    protected get size(): TuiSizeL | TuiSizeS {
-        return this.textfieldSize.size;
     }
 
     protected onActiveZone(active: boolean): void {
