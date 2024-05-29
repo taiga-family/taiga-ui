@@ -39,7 +39,6 @@ import {
     FIXED_DROPDOWN_CONTROLLER_PROVIDER,
     TUI_COUNTRIES,
     TUI_COUNTRIES_MASKS,
-    tuiGetMaxAllowedPhoneLength,
 } from '@taiga-ui/kit';
 import {TUI_ARROW, TuiArrowComponent} from '@taiga-ui/legacy/components/arrow';
 import {
@@ -47,7 +46,7 @@ import {
     TuiInputPhoneModule,
 } from '@taiga-ui/legacy/components/input-phone';
 import {TuiIsoToCountryCodePipe, TuiToCountryCodePipe} from '@taiga-ui/legacy/pipes';
-import {tuiIsoToCountryCode} from '@taiga-ui/legacy/utils';
+import {tuiGetMaxAllowedPhoneLength, tuiIsoToCountryCode} from '@taiga-ui/legacy/utils';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 

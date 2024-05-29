@@ -110,6 +110,14 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {name: 'tuiIsoToCountryCode', moduleSpecifier: '@taiga-ui/legacy'},
     },
     {
+        from: {name: 'tuiNotKzRegion', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'tuiNotKzRegion', moduleSpecifier: '@taiga-ui/legacy'},
+    },
+    {
+        from: {name: 'tuiGetMaxAllowedPhoneLength', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'tuiGetMaxAllowedPhoneLength', moduleSpecifier: '@taiga-ui/legacy'},
+    },
+    {
         from: {name: 'TuiMonthPipeModule', moduleSpecifier: '@taiga-ui/core'},
         to: {name: 'TuiMonthPipe', moduleSpecifier: '@taiga-ui/core'},
     },
