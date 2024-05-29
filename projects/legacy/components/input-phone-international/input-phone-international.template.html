@@ -25,7 +25,7 @@
                 class="t-input-phone tui-group__auto-width-item"
                 [disabled]="disabled"
                 [focusable]="focusable"
-                [maskito]="phoneMetadata && calculateMask(countryIsoCode, phoneMetadata)"
+                [maskito]="mask$ | async"
                 [pseudoFocus]="pseudoFocus"
                 [pseudoHover]="pseudoHover"
                 [pseudoInvalid]="computedInvalid"
@@ -67,6 +67,7 @@
 
         <ng-template #flag>
             <img
+                *ngIf="countryIsoCode$ | async as countryIsoCode"
                 class="t-flag"
                 [alt]="countriesNames[countryIsoCode]"
                 [src]="countryIsoCode | tuiFlag"

@@ -20,9 +20,9 @@ describe('InputPhoneInternational', () => {
             <tui-root>
                 <tui-input-phone-international
                     [countries]="countries"
-                    [countryIsoCode]="countryIsoCode"
                     [formControl]="control"
                     [readOnly]="readOnly"
+                    [(countryIsoCode)]="countryIsoCode"
                 ></tui-input-phone-international>
             </tui-root>
         `,
@@ -110,13 +110,13 @@ describe('InputPhoneInternational', () => {
         it('should set correct country code on paste event', async () => {
             await paste('+380123456789');
 
-            expect(component.countryIsoCode).toBe('UA');
+            expect(testComponent.countryIsoCode).toBe('UA');
         });
 
         it('should set country code on paste event', async () => {
             await paste('88005553535');
 
-            expect(component.countryIsoCode).toBe('RU');
+            expect(testComponent.countryIsoCode).toBe('RU');
         });
 
         describe('should set KZ country code on paste event', () => {
@@ -124,7 +124,7 @@ describe('InputPhoneInternational', () => {
                 it(`${phone}`, async () => {
                     await paste(phone);
 
-                    expect(component.countryIsoCode).toBe('KZ');
+                    expect(testComponent.countryIsoCode).toBe('KZ');
                 });
             });
         });
@@ -153,13 +153,13 @@ describe('InputPhoneInternational', () => {
         it('should set country code on paste event 8(863)', async () => {
             await paste('88635553535');
 
-            expect(component.countryIsoCode).toBe('RU');
+            expect(testComponent.countryIsoCode).toBe('RU');
         });
 
         it('should set country code on paste event +886', async () => {
             await paste('+886355535353');
 
-            expect(component.countryIsoCode).toBe('TW');
+            expect(testComponent.countryIsoCode).toBe('TW');
         });
     });
 
