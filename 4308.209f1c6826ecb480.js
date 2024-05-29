@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[4308],{4308:e=>{e.exports="```html\n<div tuiRipple>...</div>\n```\n"}}]);

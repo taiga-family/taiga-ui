@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[85578],{85578:n=>{n.exports=":host {\n    display: block;\n}\n\n.pagination {\n    margin: 1rem auto 0;\n}\n"}}]);
