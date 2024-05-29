@@ -3,6 +3,7 @@ import {Component, Optional, Self, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, NgControl, ReactiveFormsModule} from '@angular/forms';
+import {By} from '@angular/platform-browser';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {
     TUI_LAST_DAY,
@@ -90,8 +91,9 @@ describe('rangeCalendarComponent', () => {
 
     it('showing two calendars if items is an empty array', () => {
         testComponent.items = [];
+        fixture.detectChanges();
 
-        expect(getCalendars()).not.toBeNull();
+        expect(fixture.debugElement.queryAll(By.css('tui-calendar')).length).toBe(2);
     });
 
     describe('points', () => {
@@ -174,10 +176,6 @@ describe('rangeCalendarComponent', () => {
 
     function getCalendar(): DebugElement | null {
         return pageObject.getByAutomationId('tui-calendar-range__calendar');
-    }
-
-    function getCalendars(): DebugElement | null {
-        return pageObject.getByAutomationId('tui-calendar-range__calendars');
     }
 
     function getCheckmark(): HTMLElement {
