@@ -28,6 +28,14 @@ export class TuiDay extends TuiMonth {
         ngDevMode && tuiAssert.assert(TuiDay.isValidDay(year, month, day));
     }
 
+    static yesterday(): TuiDay {
+        return TuiDay.currentLocal().append({day: -1});
+    }
+
+    static tomorrow(): TuiDay {
+        return TuiDay.currentLocal().append({day: 1});
+    }
+
     /**
      * Creates {@link TuiDay} from native {@link Date} based on local time zone
      */

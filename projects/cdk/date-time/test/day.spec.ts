@@ -977,4 +977,24 @@ describe('TuiDay', () => {
             });
         });
     });
+
+    it('currentLocal is yesterday', () => {
+        tuiMockDateInside(Date.UTC(2000, 0, 15, 10), () => {
+            const currentDate = TuiDay.yesterday();
+
+            expect(currentDate.year).toBe(2000);
+            expect(currentDate.month).toBe(0);
+            expect(currentDate.day).toBe(14);
+        });
+    });
+
+    it('currentLocal is tomorrow', () => {
+        tuiMockDateInside(Date.UTC(2000, 0, 15, 23), () => {
+            const currentDate = TuiDay.tomorrow();
+
+            expect(currentDate.year).toBe(2000);
+            expect(currentDate.month).toBe(0);
+            expect(currentDate.day).toBe(17);
+        });
+    });
 });
