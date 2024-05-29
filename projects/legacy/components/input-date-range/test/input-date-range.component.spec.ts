@@ -3,6 +3,7 @@ import {Component, Optional, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {By} from '@angular/platform-browser';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {
     RANGE_SEPARATOR_CHAR,
@@ -437,7 +438,7 @@ describe('InputDateRangeComponent', () => {
     }
 
     function getCalendarsWrapper(): DebugElement | null {
-        return pageObject.getByAutomationId('tui-calendar-range__calendars');
+        return fixture.debugElement.query(By.css('tui-calendar-range'));
     }
 
     function getTextfield(): DebugElement | null {
@@ -445,16 +446,7 @@ describe('InputDateRangeComponent', () => {
     }
 
     function getCalendars(): DebugElement[] {
-        const calendarsWrapper = getCalendarsWrapper();
-
-        if (!calendarsWrapper) {
-            return [];
-        }
-
-        return pageObject.getAllByAutomationId(
-            'tui-calendar__calendar',
-            calendarsWrapper,
-        );
+        return getCalendarsWrapper()?.queryAll(By.css('tui-calendar')) || [];
     }
 
     function getCalendarCell(

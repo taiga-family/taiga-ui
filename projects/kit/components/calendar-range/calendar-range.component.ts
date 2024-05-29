@@ -1,5 +1,5 @@
 import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
-import type {OnInit} from '@angular/core';
+import type {OnChanges} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -53,7 +53,9 @@ import type {TuiDayRangePeriod} from './day-range-period';
     styleUrls: ['./calendar-range.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiCalendarRangeComponent implements OnInit, TuiWithOptionalMinMax<TuiDay> {
+export class TuiCalendarRangeComponent
+    implements OnChanges, TuiWithOptionalMinMax<TuiDay>
+{
     @Input()
     public defaultViewedMonth: TuiMonth = TuiMonth.currentLocal();
 
@@ -98,7 +100,7 @@ export class TuiCalendarRangeComponent implements OnInit, TuiWithOptionalMinMax<
             });
     }
 
-    public ngOnInit(): void {
+    public ngOnChanges(): void {
         this.defaultViewedMonth = this.value?.from || this.defaultViewedMonth;
     }
 
