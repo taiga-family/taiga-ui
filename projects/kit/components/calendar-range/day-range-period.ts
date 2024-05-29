@@ -1,5 +1,18 @@
+import type {TuiContext} from '@taiga-ui/cdk';
 import {TUI_FIRST_DAY, TuiDay, TuiDayRange} from '@taiga-ui/cdk';
-import {TuiDayRangePeriod} from '@taiga-ui/kit/classes';
+import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+
+export class TuiDayRangePeriod {
+    constructor(
+        public readonly range: TuiDayRange,
+        private readonly name: string,
+        public readonly content?: PolymorpheusContent<TuiContext<TuiDayRange>>,
+    ) {}
+
+    public toString(): string {
+        return this.name;
+    }
+}
 
 export function tuiCreateDefaultDayRangePeriods(
     periodTitles: [string, string, string, string, string, string] = [

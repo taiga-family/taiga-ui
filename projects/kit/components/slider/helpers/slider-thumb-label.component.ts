@@ -5,7 +5,7 @@ import {ChangeDetectionStrategy, Component, ContentChild} from '@angular/core';
 import {NgControl} from '@angular/forms';
 import type {TuiSizeS} from '@taiga-ui/core';
 
-import {TuiSliderComponent} from '../../slider.component';
+import {TuiSliderComponent} from '../slider.component';
 
 @Component({
     standalone: true,

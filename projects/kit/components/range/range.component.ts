@@ -20,12 +20,13 @@ import {
     tuiQuantize,
 } from '@taiga-ui/cdk';
 import type {TuiSizeS, TuiWithOptionalMinMax} from '@taiga-ui/core';
-import {TuiSlider, TuiSliderComponent} from '@taiga-ui/kit/components/slider';
-import type {TuiKeySteps} from '@taiga-ui/kit/types';
+import type {TuiKeySteps} from '@taiga-ui/kit/components/slider';
 import {
     tuiKeyStepValueToPercentage,
     tuiPercentageToKeyStepValue,
-} from '@taiga-ui/kit/utils';
+    TuiSlider,
+    TuiSliderComponent,
+} from '@taiga-ui/kit/components/slider';
 
 import {TuiRangeChangeDirective} from './range-change.directive';
 

@@ -1,4 +1,5 @@
 import {Directive, HostBinding, HostListener, inject, Input} from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {SafeResourceUrl} from '@angular/platform-browser';
 import {IntersectionObserverService} from '@ng-web-apis/intersection-observer';
 import {tuiInjectElement} from '@taiga-ui/cdk';
@@ -6,6 +7,7 @@ import {tuiInjectElement} from '@taiga-ui/cdk';
 import {TuiLazyLoadingService} from './lazy-loading.service';
 
 @Directive({
+    standalone: true,
     selector: 'img[loading="lazy"]',
     providers: [TuiLazyLoadingService, IntersectionObserverService],
 })
@@ -24,7 +26,7 @@ export class TuiLazyLoadingDirective {
 
     constructor() {
         if (!this.supported) {
-            this.src$.subscribe(src => {
+            this.src$.pipe(takeUntilDestroyed()).subscribe(src => {
                 this.src = src;
             });
         }

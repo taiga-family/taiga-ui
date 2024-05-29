@@ -12,7 +12,6 @@ import {
     TuiMonth,
     TuiYear,
 } from '@taiga-ui/cdk';
-import {TuiRootComponent} from '@taiga-ui/core';
 import {
     TUI_CALENDAR_DATE_STREAM,
     TuiCalendarRangeComponent,
@@ -27,14 +26,12 @@ import {of} from 'rxjs';
 describe('rangeCalendarComponent', () => {
     @Component({
         template: `
-            <tui-root>
-                <tui-calendar-range
-                    [items]="items"
-                    [max]="max"
-                    [min]="min"
-                    (valueChange)="onRangeChange($event)"
-                ></tui-calendar-range>
-            </tui-root>
+            <tui-calendar-range
+                [items]="items"
+                [max]="max"
+                [min]="min"
+                (valueChange)="onRangeChange($event)"
+            />
         `,
         providers: [
             {
@@ -75,7 +72,6 @@ describe('rangeCalendarComponent', () => {
         TestBed.configureTestingModule({
             imports: [
                 TuiCalendarRangeComponent,
-                TuiRootComponent,
                 ReactiveFormsModule,
                 NoopAnimationsModule,
             ],
@@ -130,7 +126,7 @@ describe('rangeCalendarComponent', () => {
 
             testComponent.min = min;
             fixture.detectChanges();
-            component.onItemSelect(component.items[5]);
+            component['onItemSelect'](component.items[5]);
             fixture.detectChanges();
 
             expect(

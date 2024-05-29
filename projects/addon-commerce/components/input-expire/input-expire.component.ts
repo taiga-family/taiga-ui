@@ -20,12 +20,11 @@ import {
     TuiPrimitiveTextfieldComponent,
     TuiPrimitiveTextfieldModule,
 } from '@taiga-ui/core';
-import {TuiValueAccessorModule} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
     selector: 'tui-input-expire',
-    imports: [TuiPrimitiveTextfieldModule, TuiValueAccessorModule, MaskitoDirective],
+    imports: [TuiPrimitiveTextfieldModule, MaskitoDirective],
     templateUrl: './input-expire.template.html',
     styleUrls: ['./input-expire.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

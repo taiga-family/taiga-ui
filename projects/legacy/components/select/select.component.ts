@@ -37,10 +37,11 @@ import {
     TuiPrimitiveTextfieldComponent,
 } from '@taiga-ui/core';
 import type {TuiItemsHandlers} from '@taiga-ui/kit';
-import {FIXED_DROPDOWN_CONTROLLER_PROVIDER, TUI_ITEMS_HANDLERS} from '@taiga-ui/kit';
-import {AbstractTuiNativeSelect} from '@taiga-ui/legacy/abstract';
+import {TUI_ITEMS_HANDLERS} from '@taiga-ui/kit';
+import {AbstractTuiNativeSelect} from '@taiga-ui/legacy/classes';
 import {TUI_ARROW_MODE} from '@taiga-ui/legacy/components/arrow';
 import {TUI_SELECT_OPTION} from '@taiga-ui/legacy/components/select-option';
+import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/legacy/utils';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 import type {TuiSelectOptions} from './select.options';

@@ -35,18 +35,18 @@ import {
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
-import {
-    FIXED_DROPDOWN_CONTROLLER_PROVIDER,
-    TUI_COUNTRIES,
-    TUI_COUNTRIES_MASKS,
-} from '@taiga-ui/kit';
+import {TUI_COUNTRIES, TUI_COUNTRIES_MASKS} from '@taiga-ui/kit';
 import {TUI_ARROW, TuiArrowComponent} from '@taiga-ui/legacy/components/arrow';
 import {
     TuiInputPhoneComponent,
     TuiInputPhoneModule,
 } from '@taiga-ui/legacy/components/input-phone';
 import {TuiIsoToCountryCodePipe, TuiToCountryCodePipe} from '@taiga-ui/legacy/pipes';
-import {tuiGetMaxAllowedPhoneLength, tuiIsoToCountryCode} from '@taiga-ui/legacy/utils';
+import {
+    FIXED_DROPDOWN_CONTROLLER_PROVIDER,
+    tuiGetMaxAllowedPhoneLength,
+    tuiIsoToCountryCode,
+} from '@taiga-ui/legacy/utils';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 

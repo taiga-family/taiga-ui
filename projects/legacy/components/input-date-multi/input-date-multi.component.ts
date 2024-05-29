@@ -50,9 +50,9 @@ import {
     TUI_MOBILE_CALENDAR,
     TUI_MOBILE_CALENDAR_PROVIDER,
     tuiDateStreamWithTransformer,
-    tuiImmutableUpdateInputDateMulti,
-    TuiStringifiableItem,
+    tuiToggleDay,
 } from '@taiga-ui/kit';
+import {TuiStringifiableItem} from '@taiga-ui/legacy/classes';
 import {TuiInputTagComponent} from '@taiga-ui/legacy/components/input-tag';
 import type {Observable} from 'rxjs';
 import {map} from 'rxjs';
@@ -237,10 +237,7 @@ export class TuiInputDateMultiComponent
             return;
         }
 
-        this.value = tuiImmutableUpdateInputDateMulti(
-            this.value,
-            TuiDay.normalizeParse(search),
-        );
+        this.value = tuiToggleDay(this.value, TuiDay.normalizeParse(search));
 
         if (this.inputTag) {
             this.inputTag.search = '';
@@ -260,7 +257,7 @@ export class TuiInputDateMultiComponent
     }
 
     protected onDayClick(value: TuiDay): void {
-        this.value = tuiImmutableUpdateInputDateMulti(this.value, value);
+        this.value = tuiToggleDay(this.value, value);
     }
 
     protected done(): void {

@@ -37,8 +37,9 @@ import {
     tuiAsOptionContent,
     TuiPrimitiveTextfieldComponent,
 } from '@taiga-ui/core';
-import {FIXED_DROPDOWN_CONTROLLER_PROVIDER, TUI_TIME_TEXTS} from '@taiga-ui/kit';
+import {TUI_TIME_TEXTS} from '@taiga-ui/kit';
 import {TUI_SELECT_OPTION} from '@taiga-ui/legacy/components/select-option';
+import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/legacy/utils';
 import type {Observable} from 'rxjs';
 import {map, timer} from 'rxjs';
 

@@ -12,7 +12,7 @@ import {
     tuiProvide,
     TuiTime,
 } from '@taiga-ui/cdk';
-import {TuiNamedDay} from '@taiga-ui/kit';
+import {TuiNamedDay} from '@taiga-ui/legacy';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
 import {AbstractExampleTuiControl} from '../abstract/control';

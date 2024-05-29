@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {TestBed} from '@angular/core/testing';
-import {TuiHighlightModule} from '@taiga-ui/kit';
+import {TuiHighlightDirective} from '@taiga-ui/kit';
 import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('TuiHighlight directive', () => {
@@ -31,7 +31,7 @@ describe('TuiHighlight directive', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TuiHighlightModule],
+            imports: [TuiHighlightDirective],
             declarations: [TestComponent],
             providers: [NG_EVENT_PLUGINS],
         });

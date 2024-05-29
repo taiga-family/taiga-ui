@@ -14,7 +14,7 @@ import {
 } from '@taiga-ui/core';
 import {
     TuiChevronDirective,
-    TuiDataListDropdownManagerModule,
+    TuiDataListDropdownManagerDirective,
     TuiLineClampComponent,
 } from '@taiga-ui/kit';
 
@@ -35,7 +35,7 @@ import {ExampleTuiLineClampComponent} from './line-clamp.component';
         TuiButtonDirective,
         TuiDropdownModule,
         TuiLinkDirective,
-        TuiDataListDropdownManagerModule,
+        TuiDataListDropdownManagerDirective,
         TuiActiveZoneDirective,
         TuiDataList,
         TuiHint,

@@ -20,8 +20,7 @@ import {
     TuiLinkDirective,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiNamedDay} from '@taiga-ui/kit';
-import {TuiInputDateModule} from '@taiga-ui/legacy';
+import {TuiInputDateModule, TuiNamedDay} from '@taiga-ui/legacy';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
 import {AbstractExampleTuiControl} from '../abstract/control';

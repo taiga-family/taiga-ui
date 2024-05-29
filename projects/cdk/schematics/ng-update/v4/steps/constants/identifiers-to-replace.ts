@@ -231,6 +231,32 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {name: 'TuiTree', moduleSpecifier: '@taiga-ui/kit'},
     },
     {
+        from: {
+            name: 'TuiDataListDropdownManagerModule',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TuiDataListDropdownManagerDirective',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {name: 'TuiHighlightModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiHighlightDirective', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {name: 'TuiLazyLoadingModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiLazyLoadingDirective', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {name: 'TuiUnfinishedValidatorModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiUnfinishedValidatorDirective', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {name: 'TuiUnmaskHandlerModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiUnmaskHandlerDirective', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
         from: {name: 'TuiThumbnailCardModule', moduleSpecifier: '@taiga-ui/experimental'},
         to: {
             name: 'TuiThumbnailCardComponent',
