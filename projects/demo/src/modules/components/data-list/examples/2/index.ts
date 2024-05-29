@@ -15,7 +15,7 @@ import {
     TuiDropdownPositionSidedDirective,
     TuiOptionComponent,
 } from '@taiga-ui/core';
-import {TuiDataListDropdownManagerModule} from '@taiga-ui/kit';
+import {TuiDataListDropdownManagerDirective} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
@@ -23,7 +23,7 @@ import {TuiDataListDropdownManagerModule} from '@taiga-ui/kit';
         TuiButtonDirective,
         TuiDropdownDirective,
         TuiDropdownOpenDirective,
-        TuiDataListDropdownManagerModule,
+        TuiDataListDropdownManagerDirective,
         TuiActiveZoneDirective,
         TuiOptionComponent,
         TuiDataListComponent,

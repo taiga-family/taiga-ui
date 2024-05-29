@@ -2,7 +2,6 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import type {TuiOrientation} from '@taiga-ui/core';
-import type {TuiStepState} from '@taiga-ui/kit';
 import {TuiStepper} from '@taiga-ui/kit';
 
 @Component({
@@ -27,7 +26,7 @@ export default class PageComponent {
 
     protected icon = this.iconVariants[0];
 
-    protected readonly stateVariants: TuiStepState[] = ['normal', 'pass', 'error'];
+    protected readonly stateVariants = ['normal', 'pass', 'error'] as const;
 
-    protected state: TuiStepState = this.stateVariants[0];
+    protected state: 'error' | 'normal' | 'pass' = this.stateVariants[0];
 }

@@ -4,7 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTextfieldControllerModule} from '@taiga-ui/core';
-import {TuiHighlightModule} from '@taiga-ui/kit';
+import {TuiHighlightDirective} from '@taiga-ui/kit';
 import {TuiInputModule} from '@taiga-ui/legacy';
 
 @Component({
@@ -14,7 +14,7 @@ import {TuiInputModule} from '@taiga-ui/legacy';
         TuiTextfieldControllerModule,
         FormsModule,
         NgForOf,
-        TuiHighlightModule,
+        TuiHighlightDirective,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

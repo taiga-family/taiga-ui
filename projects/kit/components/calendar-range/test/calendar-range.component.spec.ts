@@ -3,6 +3,7 @@ import {Component, Optional, Self, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, NgControl, ReactiveFormsModule} from '@angular/forms';
+import {By} from '@angular/platform-browser';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {
     TUI_LAST_DAY,
@@ -12,7 +13,6 @@ import {
     TuiMonth,
     TuiYear,
 } from '@taiga-ui/cdk';
-import {TuiRootComponent} from '@taiga-ui/core';
 import {
     TUI_CALENDAR_DATE_STREAM,
     TuiCalendarRangeComponent,
@@ -27,14 +27,12 @@ import {of} from 'rxjs';
 describe('rangeCalendarComponent', () => {
     @Component({
         template: `
-            <tui-root>
-                <tui-calendar-range
-                    [items]="items"
-                    [max]="max"
-                    [min]="min"
-                    (valueChange)="onRangeChange($event)"
-                ></tui-calendar-range>
-            </tui-root>
+            <tui-calendar-range
+                [items]="items"
+                [max]="max"
+                [min]="min"
+                (valueChange)="onRangeChange($event)"
+            />
         `,
         providers: [
             {
@@ -75,7 +73,6 @@ describe('rangeCalendarComponent', () => {
         TestBed.configureTestingModule({
             imports: [
                 TuiCalendarRangeComponent,
-                TuiRootComponent,
                 ReactiveFormsModule,
                 NoopAnimationsModule,
             ],
@@ -94,8 +91,9 @@ describe('rangeCalendarComponent', () => {
 
     it('showing two calendars if items is an empty array', () => {
         testComponent.items = [];
+        fixture.detectChanges();
 
-        expect(getCalendars()).not.toBeNull();
+        expect(fixture.debugElement.queryAll(By.css('tui-calendar')).length).toBe(2);
     });
 
     describe('points', () => {
@@ -130,7 +128,7 @@ describe('rangeCalendarComponent', () => {
 
             testComponent.min = min;
             fixture.detectChanges();
-            component.onItemSelect(component.items[5]);
+            component['onItemSelect'](component.items[5]);
             fixture.detectChanges();
 
             expect(
@@ -178,10 +176,6 @@ describe('rangeCalendarComponent', () => {
 
     function getCalendar(): DebugElement | null {
         return pageObject.getByAutomationId('tui-calendar-range__calendar');
-    }
-
-    function getCalendars(): DebugElement | null {
-        return pageObject.getByAutomationId('tui-calendar-range__calendars');
     }
 
     function getCheckmark(): HTMLElement {

@@ -17,7 +17,7 @@ import {
     TuiGroupDirective,
     TuiOptionComponent,
 } from '@taiga-ui/core';
-import {TuiDataListDropdownManagerModule} from '@taiga-ui/kit';
+import {TuiDataListDropdownManagerDirective} from '@taiga-ui/kit';
 import {TuiInputDateRangeModule, TuiInputModule} from '@taiga-ui/legacy';
 
 @Component({
@@ -28,7 +28,7 @@ import {TuiInputDateRangeModule, TuiInputModule} from '@taiga-ui/legacy';
         TuiDropdownDirective,
         TuiDropdownOpenDirective,
         TuiDataListComponent,
-        TuiDataListDropdownManagerModule,
+        TuiDataListDropdownManagerDirective,
         TuiActiveZoneDirective,
         TuiDropdownPositionSidedDirective,
         TuiOptionComponent,

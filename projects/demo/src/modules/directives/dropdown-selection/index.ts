@@ -7,7 +7,6 @@ import {
     TuiDropdownOptionsDirective,
     TuiDropdownSelectionDirective,
 } from '@taiga-ui/core';
-import type {TuiDropdownPosition} from '@taiga-ui/kit';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/abstract-props-accessor';
 import {AbstractExampleTuiDropdown} from '../../components/abstract/dropdown';
@@ -34,7 +33,7 @@ import {DropdownDocumentationComponent} from '../../components/abstract/dropdown
     ],
 })
 export default class PageComponent extends AbstractExampleTuiDropdown {
-    protected positionVariants: TuiDropdownPosition[] = ['selection', 'word', 'tag'];
+    protected positionVariants = ['selection', 'word', 'tag'] as const;
 
-    protected position = this.positionVariants[0];
+    protected position: 'selection' | 'tag' | 'word' = this.positionVariants[0];
 }

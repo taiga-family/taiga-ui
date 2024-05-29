@@ -26,10 +26,8 @@ import {
     TuiHostedDropdownComponent,
     TuiPrimitiveTextfieldComponent,
 } from '@taiga-ui/core';
-import {
-    FIXED_DROPDOWN_CONTROLLER_PROVIDER,
-    TUI_VALUE_ACCESSOR_PROVIDER,
-} from '@taiga-ui/kit';
+import {TUI_VALUE_ACCESSOR_PROVIDER} from '@taiga-ui/legacy/directives';
+import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/legacy/utils';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 @Component({

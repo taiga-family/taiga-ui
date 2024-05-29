@@ -52,7 +52,7 @@ import {
     TUI_CANCEL_WORD,
     TUI_CHOOSE_DAY_OR_RANGE_TEXTS,
     TUI_DONE_WORD,
-    tuiImmutableUpdateInputDateMulti,
+    tuiToggleDay,
 } from '@taiga-ui/kit';
 import type {MonoTypeOperatorFunction} from 'rxjs';
 import {
@@ -219,7 +219,7 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
         if (this.single) {
             this.value = day;
         } else if (this.isMultiValue(this.value)) {
-            this.value = tuiImmutableUpdateInputDateMulti(this.value, day);
+            this.value = tuiToggleDay(this.value, day);
         } else if (this.isSingleValue(this.value)) {
             this.value = new TuiDayRange(day, day);
         } else if (this.value instanceof TuiDayRange) {

@@ -19,7 +19,6 @@ import {
     TuiSvgComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiValueAccessorModule} from '@taiga-ui/kit';
 
 import {AbstractTuiInputCard} from './abstract-input-card';
 import {TUI_INPUT_CARD_OPTIONS} from './input-card.options';
@@ -30,7 +29,6 @@ import {TUI_INPUT_CARD_OPTIONS} from './input-card.options';
     imports: [
         TuiPrimitiveTextfieldModule,
         TuiTextfieldControllerModule,
-        TuiValueAccessorModule,
         MaskitoDirective,
         MaskitoPipe,
         TuiSvgComponent,

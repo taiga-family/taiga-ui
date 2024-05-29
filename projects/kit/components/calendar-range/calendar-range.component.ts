@@ -1,4 +1,5 @@
 import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
+import type {OnChanges} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -30,11 +31,11 @@ import {
     TuiDataList,
     TuiIconComponent,
 } from '@taiga-ui/core';
-import type {TuiDayRangePeriod} from '@taiga-ui/kit/classes';
 import {MAX_DAY_RANGE_LENGTH_MAPPER} from '@taiga-ui/kit/constants';
-import {TuiPrimitiveCalendarRangeModule} from '@taiga-ui/kit/internal';
 import {TUI_CALENDAR_DATE_STREAM, TUI_OTHER_DATE_TEXT} from '@taiga-ui/kit/tokens';
 import type {Observable} from 'rxjs';
+
+import type {TuiDayRangePeriod} from './day-range-period';
 
 @Component({
     standalone: true,
@@ -46,19 +47,15 @@ import type {Observable} from 'rxjs';
         TuiMapperPipe,
         TuiCalendarComponent,
         TuiDataList,
-        TuiPrimitiveCalendarRangeModule,
         TuiIconComponent,
     ],
     templateUrl: './calendar-range.template.html',
     styleUrls: ['./calendar-range.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> {
-    private readonly valueChanges = inject<Observable<TuiDayRange | null>>(
-        TUI_CALENDAR_DATE_STREAM,
-        {optional: true},
-    );
-
+export class TuiCalendarRangeComponent
+    implements OnChanges, TuiWithOptionalMinMax<TuiDay>
+{
     @Input()
     public defaultViewedMonth: TuiMonth = TuiMonth.currentLocal();
 
@@ -92,35 +89,19 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
     protected readonly otherDateText$ = inject(TUI_OTHER_DATE_TEXT);
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected previousValue: TuiDayRange | null = null;
-
+    protected hoveredItem: TuiDay | null = null;
     protected readonly maxLengthMapper = MAX_DAY_RANGE_LENGTH_MAPPER;
 
     constructor() {
-        this.valueChanges
+        inject<Observable<TuiDayRange | null>>(TUI_CALENDAR_DATE_STREAM, {optional: true})
             ?.pipe(tuiWatch(inject(ChangeDetectorRef)), takeUntilDestroyed())
             .subscribe(value => {
                 this.value = value;
             });
     }
 
-    public onItemSelect(item: TuiDayRangePeriod | string): void {
-        if (typeof item !== 'string') {
-            this.updateValue(item.range.dayLimit(this.min, this.max));
-
-            return;
-        }
-
-        if (this.activePeriod !== null) {
-            this.updateValue(null);
-        }
-    }
-
-    protected get computedMin(): TuiDay {
-        return this.min ?? TUI_FIRST_DAY;
-    }
-
-    protected get computedMax(): TuiDay {
-        return this.max ?? TUI_LAST_DAY;
+    public ngOnChanges(): void {
+        this.defaultViewedMonth = this.value?.from || this.defaultViewedMonth;
     }
 
     protected get calculatedDisabledItemHandler(): TuiBooleanHandler<TuiDay> {
@@ -129,10 +110,6 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
             this.value,
             this.minLength,
         );
-    }
-
-    protected get computedMonth(): TuiMonth {
-        return this.value ? this.value.to : this.defaultViewedMonth;
     }
 
     @HostListener('document:keydown.capture', ['$event'])
@@ -144,6 +121,11 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
         event.stopPropagation();
         this.value = this.previousValue;
     }
+
+    protected readonly monthOffset: TuiMapper<[TuiMonth, number], TuiMonth> = (
+        value,
+        month,
+    ) => value.append({month});
 
     protected readonly mapper: TuiMapper<
         [
@@ -171,18 +153,26 @@ export class TuiCalendarRangeComponent implements TuiWithOptionalMinMax<TuiDay> 
         return (tuiIsString(item) && activePeriod === null) || activePeriod === item;
     }
 
-    protected onDayClick(day: TuiDay): void {
-        const {value} = this;
-
-        this.previousValue = value;
-
-        if (!value?.isSingleDay) {
-            this.value = new TuiDayRange(day, day);
-
-            return;
+    protected onItemSelect(item: TuiDayRangePeriod | string): void {
+        if (typeof item !== 'string') {
+            this.updateValue(item.range.dayLimit(this.min, this.max));
+        } else if (this.activePeriod !== null) {
+            this.updateValue(null);
         }
+    }
 
-        this.updateValue(TuiDayRange.sort(value.from, day));
+    protected onMonthChange(month: TuiMonth): void {
+        this.defaultViewedMonth = month;
+    }
+
+    protected onDayClick(day: TuiDay): void {
+        this.previousValue = this.value;
+
+        if (!this.value?.isSingleDay) {
+            this.value = new TuiDayRange(day, day);
+        } else {
+            this.updateValue(TuiDayRange.sort(this.value.from, day));
+        }
     }
 
     protected updateValue(value: TuiDayRange | null): void {

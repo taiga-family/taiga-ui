@@ -1,5 +1,6 @@
 import {Directive} from '@angular/core';
-import {TUI_VALUE_ACCESSOR_PROVIDER} from '@taiga-ui/kit/providers';
+
+import {TUI_VALUE_ACCESSOR_PROVIDER} from './value-accessor.provider';
 
 @Directive({
     selector: '[tuiValueAccessor]',

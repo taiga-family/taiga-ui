@@ -11,7 +11,7 @@ import {
     TuiNotificationComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiSwitchComponent, TuiUnfinishedValidatorModule} from '@taiga-ui/kit';
+import {TuiSwitchComponent, TuiUnfinishedValidatorDirective} from '@taiga-ui/kit';
 import {TuiInputTimeModule} from '@taiga-ui/legacy';
 
 import {InheritedDocumentationComponent} from '../abstract/inherited-documentation';
@@ -39,7 +39,7 @@ import {ExampleTuiInputTimeComponent} from './input-time.component';
         TuiSwitchComponent,
         TuiAddonDoc,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiInputTimeComponent)),
-        TuiUnfinishedValidatorModule,
+        TuiUnfinishedValidatorDirective,
     ],
     declarations: [
         ExampleTuiInputTimeComponent,

@@ -1,52 +1,56 @@
-<tui-primitive-calendar-range
-    *ngIf="!items.length; else presets"
-    automation-id="tui-calendar-range__calendars"
-    [defaultViewedMonthFirst]="defaultViewedMonth"
+<tui-calendar
+    automation-id="tui-calendar-range__calendar"
+    class="t-calendar"
     [disabledItemHandler]="calculatedDisabledItemHandler"
     [markerHandler]="markerHandler"
-    [max]="computedMax | tuiMapper: maxLengthMapper : value : maxLength : false"
-    [min]="computedMin | tuiMapper: maxLengthMapper : value : maxLength : true"
+    [max]="max | tuiMapper: maxLengthMapper : value : maxLength : false"
+    [maxViewedMonth]="items.length ? null : (defaultViewedMonth | tuiMapper: monthOffset : -1)"
+    [min]="min | tuiMapper: maxLengthMapper : value : maxLength : true"
+    [month]="defaultViewedMonth"
+    [showAdjacent]="!!items.length"
     [value]="value"
+    [(hoveredItem)]="hoveredItem"
     (dayClick)="onDayClick($event)"
+    (monthChange)="onMonthChange($event)"
+    (mousedown.prevent.silent)="(0)"
+/>
+<tui-calendar
+    *ngIf="!items.length; else presets"
+    [disabledItemHandler]="calculatedDisabledItemHandler"
+    [markerHandler]="markerHandler"
+    [max]="max | tuiMapper: maxLengthMapper : value : maxLength : false"
+    [min]="min | tuiMapper: maxLengthMapper : value : maxLength : true"
+    [minViewedMonth]="defaultViewedMonth | tuiMapper: monthOffset : 1"
+    [month]="defaultViewedMonth | tuiMapper: monthOffset : 1"
+    [showAdjacent]="false"
+    [value]="value"
+    [(hoveredItem)]="hoveredItem"
+    (dayClick)="onDayClick($event)"
+    (monthChange)="onMonthChange($event.append({month: -1}))"
     (mousedown.prevent.silent)="(0)"
 />
 <ng-template #presets>
-    <div class="t-wrapper">
-        <tui-calendar
-            automation-id="tui-calendar-range__calendar"
-            [disabledItemHandler]="calculatedDisabledItemHandler"
-            [markerHandler]="markerHandler"
-            [max]="computedMax | tuiMapper: maxLengthMapper : value : maxLength : false"
-            [min]="computedMin | tuiMapper: maxLengthMapper : value : maxLength : true"
-            [month]="computedMonth"
-            [value]="value"
-            (dayClick)="onDayClick($event)"
+    <tui-data-list
+        automation-id="tui-calendar-range__menu"
+        role="menu"
+        [style.flex]="1"
+    >
+        <button
+            *ngFor="let item of items | tuiMapper: mapper : min : max : minLength : (otherDateText$ | async)"
+            automation-id="tui-calendar-range__menu__item"
+            role="menuitemradio"
+            tuiOption
+            [attr.aria-checked]="isItemActive(item)"
+            (click)="onItemSelect(item)"
             (mousedown.prevent.silent)="(0)"
-        />
-        <tui-data-list
-            automation-id="tui-calendar-range__menu"
-            role="menu"
-            class="t-menu"
         >
-            <button
-                *ngFor="let item of items | tuiMapper: mapper : min : max : minLength : (otherDateText$ | async)"
-                automation-id="tui-calendar-range__menu__item"
-                role="menuitemradio"
-                tuiOption
-                [attr.aria-checked]="isItemActive(item)"
-                (click)="onItemSelect(item)"
-                (keydown.enter.prevent)="onItemSelect(item)"
-                (keydown.space.prevent)="onItemSelect(item)"
-                (mousedown.prevent.silent)="(0)"
-            >
-                {{ item }}
-                <tui-icon
-                    *ngIf="isItemActive(item)"
-                    automation-id="tui-calendar-range__checkmark"
-                    class="t-checkmark"
-                    [icon]="icons.check"
-                />
-            </button>
-        </tui-data-list>
-    </div>
+            {{ item }}
+            <tui-icon
+                *ngIf="isItemActive(item)"
+                automation-id="tui-calendar-range__checkmark"
+                [icon]="icons.check"
+                [style.font-size.rem]="1"
+            />
+        </button>
+    </tui-data-list>
 </ng-template>

@@ -1,6 +1,6 @@
 import type {TuiDay} from '@taiga-ui/cdk';
 
-export function tuiImmutableUpdateInputDateMulti(
+export function tuiToggleDay(
     days: readonly TuiDay[] | null = [],
     day: TuiDay,
 ): readonly TuiDay[] {

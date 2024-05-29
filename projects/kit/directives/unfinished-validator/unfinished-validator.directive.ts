@@ -6,6 +6,7 @@ import {TUI_FOCUSABLE_ITEM_ACCESSOR, tuiInjectElement, tuiProvide} from '@taiga-
 import {tuiCreateUnfinishedValidator} from './unfinished.validator';
 
 @Directive({
+    standalone: true,
     selector: '[tuiUnfinishedValidator]',
     providers: [tuiProvide(NG_VALIDATORS, TuiUnfinishedValidatorDirective, true)],
 })
