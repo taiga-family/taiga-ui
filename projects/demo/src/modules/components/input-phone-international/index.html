@@ -9,24 +9,24 @@
         <tui-doc-example
             id="base"
             heading="Basic"
-            [content]="example1"
-        >
-            <tui-input-phone-international-example-1 />
-        </tui-doc-example>
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample"
+        />
 
         <tui-doc-example
             id="all-countries"
             heading="All available countries"
-            [content]="example2"
+            [component]="2 | tuiComponent"
+            [content]="2 | tuiExample"
+            [description]="sortPipeDescription"
         >
-            <tui-notification class="tui-space_bottom-3">
+            <ng-template #sortPipeDescription>
                 Use
-                <code>SortCountries</code>
+                <code>tuiSortCountries</code>
                 pipe from
                 <code>TuiSortCountriesPipeModule</code>
                 to sort countries according to your current language.
-            </tui-notification>
-            <tui-input-phone-international-example-2 />
+            </ng-template>
         </tui-doc-example>
     </ng-template>
 
