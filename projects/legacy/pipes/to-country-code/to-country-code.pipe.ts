@@ -2,12 +2,12 @@ import type {PipeTransform} from '@angular/core';
 import {inject, Pipe} from '@angular/core';
 import {CHAR_PLUS} from '@taiga-ui/cdk';
 import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
+import {TUI_COUNTRIES_MASKS} from '@taiga-ui/kit';
 import {
-    TUI_COUNTRIES_MASKS,
     tuiGetMaxAllowedPhoneLength,
+    tuiIsoToCountryCode,
     tuiNotKzRegion,
-} from '@taiga-ui/kit';
-import {tuiIsoToCountryCode} from '@taiga-ui/legacy/utils';
+} from '@taiga-ui/legacy/utils';
 
 /**
  * @deprecated use `maskitoGetCountryFromNumber` from `@maskito/phone` instead

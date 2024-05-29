@@ -1,5 +1,5 @@
 import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
-import {tuiGetMaxAllowedPhoneLength} from '@taiga-ui/kit';
+import {tuiGetMaxAllowedPhoneLength} from '@taiga-ui/legacy';
 
 describe('tuiGetMaxAllowedPhoneLength', () => {
     let fn: (isoCode: TuiCountryIsoCode) => number;
