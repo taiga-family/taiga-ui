@@ -1,11 +1,6 @@
 import {isPlatformBrowser, LocationStrategy, PathLocationStrategy} from '@angular/common';
 import type {ApplicationConfig} from '@angular/core';
-import {
-    importProvidersFrom,
-    inject,
-    PLATFORM_ID,
-    provideZoneChangeDetection,
-} from '@angular/core';
+import {inject, PLATFORM_ID, provideZoneChangeDetection} from '@angular/core';
 import {Title} from '@angular/platform-browser';
 import {provideAnimations} from '@angular/platform-browser/animations';
 import {provideRouter, type UrlTree, withInMemoryScrolling} from '@angular/router';
@@ -33,10 +28,8 @@ import {
     TUI_HINT_DEFAULT_OPTIONS,
     TUI_HINT_OPTIONS,
     TUI_SANITIZER,
-    TuiDialogModule,
 } from '@taiga-ui/core';
 import {type TuiLanguageName, tuiLanguageSwitcher} from '@taiga-ui/i18n';
-import {TuiPushModule} from '@taiga-ui/kit';
 import {NgDompurifySanitizer} from '@tinkoff/ng-dompurify';
 import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 import {HIGHLIGHT_OPTIONS} from 'ngx-highlightjs';
@@ -53,7 +46,6 @@ import {exampleContentProcessor} from './utils';
 export const config: ApplicationConfig = {
     providers: [
         provideAnimations(),
-        importProvidersFrom(TuiDialogModule, TuiPushModule),
         provideRouter(
             ROUTES,
             withInMemoryScrolling({

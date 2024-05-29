@@ -15,7 +15,7 @@ import {
     TuiBadgeDirective,
     TuiBlockDirective,
     TuiChipDirective,
-    TuiItemsWithMoreModule,
+    TuiItemsWithMore,
 } from '@taiga-ui/kit';
 
 import {TuiItemsWithMoreExample1} from './examples/1';
@@ -29,7 +29,7 @@ import {ExampleTuiItemsWithMoreComponent} from './items-with-more.component';
         TuiGroupDirective,
         TuiChipDirective,
         TuiNotificationComponent,
-        TuiItemsWithMoreModule,
+        TuiItemsWithMore,
         TuiBadgeDirective,
         TuiDropdownModule,
         TuiButtonDirective,

@@ -6,7 +6,7 @@ import {TuiDropdownModule, TuiIconComponent, TuiTextfieldModule} from '@taiga-ui
 import {TuiTooltipModule} from '@taiga-ui/experimental';
 import {
     TuiChevronDirective,
-    TuiDataListWrapperModule,
+    TuiDataListWrapper,
     TuiFilterByInputPipeModule,
 } from '@taiga-ui/kit';
 
@@ -19,7 +19,7 @@ import {
         TuiIconComponent,
         TuiTooltipModule,
         TuiChevronDirective,
-        TuiDataListWrapperModule,
+        TuiDataListWrapper,
         TuiFilterByInputPipeModule,
     ],
     templateUrl: './index.html',

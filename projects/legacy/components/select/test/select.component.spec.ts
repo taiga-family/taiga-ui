@@ -11,7 +11,7 @@ import {
     TuiRootComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiDataListWrapperModule} from '@taiga-ui/kit';
+import {TuiDataListWrapper} from '@taiga-ui/kit';
 import {TuiSelectComponent, TuiSelectModule} from '@taiga-ui/legacy';
 import {TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
@@ -80,7 +80,7 @@ describe('Select', () => {
                 TuiTextfieldControllerModule,
                 TuiHint,
                 TuiDataList,
-                TuiDataListWrapperModule,
+                TuiDataListWrapper,
             ],
             declarations: [TestComponent],
             providers: [NG_EVENT_PLUGINS],

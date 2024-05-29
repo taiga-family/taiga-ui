@@ -14,9 +14,10 @@ import {Subject} from 'rxjs';
 import {TuiPushService} from './push.service';
 
 @Directive({
-    selector: '[tuiPush]',
+    standalone: true,
+    selector: 'ng-template[tuiPush]',
 })
-export class TuiPushAlertDirective extends PolymorpheusTemplate {
+export class TuiPushDirective extends PolymorpheusTemplate {
     private readonly push: TuiPushService = inject(forwardRef(() => TuiPushService));
     private readonly show$ = new Subject<boolean>();
 

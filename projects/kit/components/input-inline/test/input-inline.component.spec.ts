@@ -7,12 +7,16 @@ import {TuiPageObject} from '@taiga-ui/testing';
 import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 import {TuiInputInlineComponent} from '../input-inline.component';
-import {TuiInputInlineModule} from '../input-inline.module';
 
 describe('InputInline', () => {
     @Component({
         template: `
-            <tui-input-inline [formControl]="control"></tui-input-inline>
+            <tui-input-inline>
+                <input
+                    automation-id="tui-input-inline__native"
+                    [formControl]="control"
+                />
+            </tui-input-inline>
         `,
     })
     class TestComponent {
@@ -33,7 +37,7 @@ describe('InputInline', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [ReactiveFormsModule, TuiInputInlineModule],
+            imports: [ReactiveFormsModule, TuiInputInlineComponent],
             declarations: [TestComponent],
             providers: [NG_EVENT_PLUGINS],
         });

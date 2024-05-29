@@ -14,7 +14,7 @@ import {
     TuiRootComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiDataListWrapperModule} from '@taiga-ui/kit/components';
+import {TuiDataListWrapper} from '@taiga-ui/kit/components';
 import {
     TUI_ARROW,
     TUI_ARROW_MODE,
@@ -108,7 +108,7 @@ describe('ComboBox', () => {
                 TuiTextfieldControllerModule,
                 TuiHint,
                 TuiDataList,
-                TuiDataListWrapperModule,
+                TuiDataListWrapper,
             ],
             declarations: [TestComponent],
             providers: [

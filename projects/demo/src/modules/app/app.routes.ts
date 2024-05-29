@@ -370,9 +370,7 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.InputInline,
-        loadChildren: async () =>
-            (await import('../components/input-inline/input-inline.module'))
-                .ExampleTuiInputInlineModule,
+        loadComponent: async () => import('../components/input-inline'),
         title: 'InputInline',
     }),
     route({

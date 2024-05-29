@@ -3,8 +3,11 @@
     [(index)]="index"
 >
     <ng-container *ngFor="let item of items">
-        <tui-island *tuiItem>
-            <h2 class="tui-island__title">{{ item }}</h2>
+        <div
+            *tuiItem
+            class="item"
+        >
+            <h2 class="title">{{ item }}</h2>
             <!-- TODO: update documentation here -->
             <a
                 href="https://en.wikipedia.org/wiki/{{ item }}"
@@ -12,7 +15,7 @@
             >
                 Wiki
             </a>
-        </tui-island>
+        </div>
     </ng-container>
 </tui-carousel>
 <tui-pagination

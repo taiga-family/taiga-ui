@@ -11,7 +11,7 @@ import {
     TuiRootComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiDataListWrapperModule} from '@taiga-ui/kit/components';
+import {TuiDataListWrapper} from '@taiga-ui/kit/components';
 import {TuiInputComponent, TuiInputModule} from '@taiga-ui/legacy';
 import {
     tuiActiveText,
@@ -116,7 +116,7 @@ describe('Input', () => {
                 TuiTextfieldControllerModule,
                 TuiHint,
                 TuiDataList,
-                TuiDataListWrapperModule,
+                TuiDataListWrapper,
             ],
             declarations: [TestComponent],
             providers: [NG_EVENT_PLUGINS],

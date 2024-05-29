@@ -9,7 +9,7 @@ import {
     TuiLinkDirective,
     TuiNotificationComponent,
 } from '@taiga-ui/core';
-import {TuiSliderModule} from '@taiga-ui/kit';
+import {TuiSlider} from '@taiga-ui/kit';
 
 import {TuiSliderExample1} from './examples/1';
 import {TuiSliderExample2} from './examples/2';
@@ -23,7 +23,7 @@ import {ExampleTuiSliderComponent} from './slider.component';
     imports: [
         CommonModule,
         TuiAddonDoc,
-        TuiSliderModule,
+        TuiSlider,
         FormsModule,
         ReactiveFormsModule,
         TuiLinkDirective,

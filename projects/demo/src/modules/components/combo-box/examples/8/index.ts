@@ -4,7 +4,7 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {
-    TuiDataListWrapperModule,
+    TuiDataListWrapper,
     TuiFilterByInputPipeModule,
     TuiStringifyContentPipeModule,
 } from '@taiga-ui/kit';
@@ -30,7 +30,7 @@ const DICTIONARY: Dictionary[] = [
         JsonPipe,
         ReactiveFormsModule,
         TuiComboBoxModule,
-        TuiDataListWrapperModule,
+        TuiDataListWrapper,
         TuiStringifyContentPipeModule,
         TuiFilterByInputPipeModule,
     ],

@@ -14,8 +14,11 @@
         #carousel
         class="carousel"
     >
-        <tui-island *tuiItem>
-            <h2 class="tui-island__title">Monty Python and the Holy Grail</h2>
+        <div
+            *tuiItem
+            class="item"
+        >
+            <h2 class="title">Monty Python and the Holy Grail</h2>
             <p>
                 King Arthur and his Knights of the Round Table embark on a surreal, low-budget search for the Holy
                 Grail, encountering many, very silly obstacles.
@@ -36,22 +39,26 @@
                     Rent ${{ 4.99 | tuiAmount: 'RUB' | async }}
                 </button>
             </div>
-        </tui-island>
-        <tui-island *tuiItem>
-            <tui-loader />
-        </tui-island>
-        <tui-island
+        </div>
+        <div
             *tuiItem
-            class="tui-island_text-align_center"
+            class="item"
         >
-            <h2 class="tui-island__title">Failed to load</h2>
+            <tui-loader />
+        </div>
+        <div
+            *tuiItem
+            class="item"
+            [style.text-align]="'center'"
+        >
+            <h2 class="title">Failed to load</h2>
             <p>
                 <tui-avatar
                     appearance="error"
                     src="tuiIconClose"
                 />
             </p>
-        </tui-island>
+        </div>
     </tui-carousel>
     <button
         iconLeft="tuiIconChevronRightLarge"

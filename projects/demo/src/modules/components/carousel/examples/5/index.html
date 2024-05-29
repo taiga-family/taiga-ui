@@ -3,13 +3,13 @@
     [(index)]="index"
 >
     <ng-container *ngFor="let item of items">
-        <tui-island
+        <div
             *tuiItem
             class="item"
         >
-            <h2 class="tui-island__title">{{ item.title }}</h2>
-            <div class="tui-island__content">{{ item.content }}</div>
-        </tui-island>
+            <h2 class="title">{{ item.title }}</h2>
+            {{ item.content }}
+        </div>
     </ng-container>
 </tui-carousel>
 <tui-pagination

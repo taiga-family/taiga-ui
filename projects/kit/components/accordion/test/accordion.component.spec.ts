@@ -13,7 +13,7 @@ import {
     TuiAccordionDirective,
     TuiAccordionItemComponent,
 } from '@taiga-ui/kit';
-import {TuiDataListWrapperModule} from '@taiga-ui/kit/components';
+import {TuiDataListWrapper} from '@taiga-ui/kit/components';
 import {
     TuiAccordionHarness,
     TuiAccordionItemHarness,
@@ -143,7 +143,7 @@ describe('Accordion', () => {
                 NoopAnimationsModule,
                 TuiTextfieldControllerModule,
                 TuiDataList,
-                TuiDataListWrapperModule,
+                TuiDataListWrapper,
             ],
             providers: [NG_EVENT_PLUGINS],
             declarations: [TestComponent],

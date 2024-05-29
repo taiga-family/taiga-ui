@@ -1,5 +1,5 @@
 ```ts
-import {TuiDataListWrapperModule} from '@taiga-ui/kit';
+import {TuiDataListWrapper} from '@taiga-ui/kit';
 
 // ...
 
@@ -7,7 +7,7 @@ import {TuiDataListWrapperModule} from '@taiga-ui/kit';
   standalone: true,
   imports: [
     // ...
-    TuiDataListWrapperModule,
+    TuiDataListWrapper,
   ],
   // ...
 })

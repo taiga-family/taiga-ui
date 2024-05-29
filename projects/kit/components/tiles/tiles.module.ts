@@ -5,7 +5,7 @@ import {TuiTileHandleDirective} from './tile-handle.directive';
 import {TuiTilesComponent} from './tiles.component';
 
 @NgModule({
-    declarations: [TuiTilesComponent, TuiTileComponent, TuiTileHandleDirective],
+    imports: [TuiTilesComponent, TuiTileComponent, TuiTileHandleDirective],
     exports: [TuiTilesComponent, TuiTileComponent, TuiTileHandleDirective],
 })
-export class TuiTilesModule {}
+export class TuiTiles {}

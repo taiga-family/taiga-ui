@@ -4,7 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiComponentPipe, TuiExamplePipe} from '@demo/utils';
 import {TuiAddonDoc} from '@taiga-ui/addon-doc';
-import {TuiSliderModule} from '@taiga-ui/kit';
+import {TuiSlider} from '@taiga-ui/kit';
 
 import {AnimationState} from './state';
 
@@ -12,7 +12,7 @@ import {AnimationState} from './state';
     standalone: true,
     imports: [
         TuiAddonDoc,
-        TuiSliderModule,
+        TuiSlider,
         FormsModule,
         NgForOf,
         TuiExamplePipe,

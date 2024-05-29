@@ -1,5 +1,5 @@
 ```ts
-import {TuiFilterModule} from '@taiga-ui/kit';
+import {TuiFilterComponent} from '@taiga-ui/kit';
 
 // ...
 
@@ -7,7 +7,7 @@ import {TuiFilterModule} from '@taiga-ui/kit';
   standalone: true,
   imports: [
     // ...
-    TuiFilterModule,
+    TuiFilterComponent,
   ],
   // ...
 })

@@ -25,4 +25,4 @@ import {TuiFileRejectedPipe} from './pipes/file-rejected.pipe';
         TuiInputFilesDirective,
     ],
 })
-export class TuiFilesModule {}
+export class TuiFiles {}

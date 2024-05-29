@@ -40,11 +40,7 @@ import {
     TuiTextfieldControllerModule,
     TuiTextfieldOptionsDirective,
 } from '@taiga-ui/core';
-import {
-    TuiBadgeDirective,
-    TuiDataListWrapperModule,
-    TuiSwitchComponent,
-} from '@taiga-ui/kit';
+import {TuiBadgeDirective, TuiDataListWrapper, TuiSwitchComponent} from '@taiga-ui/kit';
 import {TuiInputNumberModule, TuiSelectModule} from '@taiga-ui/legacy';
 import {merge, switchMap} from 'rxjs';
 
@@ -79,7 +75,7 @@ import {TuiDocTypeReferencePipe} from './pipes/type-reference.pipe';
         TuiDropdownOptionsDirective,
         TuiTextfieldControllerModule,
         TuiShowCleanerPipe,
-        TuiDataListWrapperModule,
+        TuiDataListWrapper,
         TuiInspectPipe,
         NgSwitch,
         NgSwitchCase,

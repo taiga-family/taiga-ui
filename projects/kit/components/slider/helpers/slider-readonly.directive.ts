@@ -27,6 +27,7 @@ const SLIDER_INTERACTION_KEYS = new Set([
  * This directive imitates this native behaviour.
  */
 @Directive({
+    standalone: true,
     selector: 'input[tuiSlider][readonly]',
 })
 export class TuiSliderReadonlyDirective {

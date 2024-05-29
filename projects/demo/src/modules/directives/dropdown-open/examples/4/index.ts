@@ -7,7 +7,7 @@ import {
     TuiDropdownDirective,
     TuiDropdownOpenDirective,
 } from '@taiga-ui/core';
-import {TuiChevronDirective, TuiDataListWrapperModule} from '@taiga-ui/kit';
+import {TuiChevronDirective, TuiDataListWrapper} from '@taiga-ui/kit';
 import {TuiMultiSelectModule} from '@taiga-ui/legacy';
 
 @Component({
@@ -18,7 +18,7 @@ import {TuiMultiSelectModule} from '@taiga-ui/legacy';
         TuiDropdownDirective,
         TuiDropdownOpenDirective,
         TuiChevronDirective,
-        TuiDataListWrapperModule,
+        TuiDataListWrapper,
         TuiMultiSelectModule,
     ],
     templateUrl: './index.html',

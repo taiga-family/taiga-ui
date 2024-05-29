@@ -19,7 +19,7 @@ import {
     TuiTextfieldControllerModule,
     type TuiValueContentContext,
 } from '@taiga-ui/core';
-import {TuiDataListWrapperModule} from '@taiga-ui/kit';
+import {TuiDataListWrapper} from '@taiga-ui/kit';
 import {TuiComboBoxModule} from '@taiga-ui/legacy';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
@@ -44,7 +44,7 @@ class Account {
         TuiDemo,
         ReactiveFormsModule,
         TuiComboBoxModule,
-        TuiDataListWrapperModule,
+        TuiDataListWrapper,
         TuiNotificationComponent,
         TuiDropdownModule,
         TuiHint,

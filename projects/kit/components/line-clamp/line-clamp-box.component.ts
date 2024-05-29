@@ -1,8 +1,10 @@
 import {ChangeDetectionStrategy, Component, HostBinding} from '@angular/core';
 import {TUI_HINT_PROVIDERS, tuiFadeIn, TuiHintComponent} from '@taiga-ui/core';
+import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 @Component({
-    selector: 'tui-line-clamp-box',
+    standalone: true,
+    imports: [PolymorpheusModule],
     template: `
         <ng-container *polymorpheusOutlet="content as text">{{ text }}</ng-container>
     `,

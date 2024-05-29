@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiDataListWrapperModule, TuiFilterByInputPipeModule} from '@taiga-ui/kit';
+import {TuiDataListWrapper, TuiFilterByInputPipeModule} from '@taiga-ui/kit';
 import {TuiInputModule} from '@taiga-ui/legacy';
 
 @Component({
@@ -10,7 +10,7 @@ import {TuiInputModule} from '@taiga-ui/legacy';
     imports: [
         ReactiveFormsModule,
         TuiInputModule,
-        TuiDataListWrapperModule,
+        TuiDataListWrapper,
         TuiFilterByInputPipeModule,
     ],
     templateUrl: './index.html',

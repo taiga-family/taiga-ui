@@ -24,7 +24,7 @@ import {
 } from '@taiga-ui/core';
 import {
     TuiAvatarComponent,
-    TuiDataListWrapperModule,
+    TuiDataListWrapper,
     TuiRadioListComponent,
 } from '@taiga-ui/kit';
 import {TuiMultiSelectModule, TuiSelectModule, TuiTextareaModule} from '@taiga-ui/legacy';
@@ -68,7 +68,7 @@ import {ExampleTuiSelectComponent} from './select.component';
         TuiAutoFocusDirective,
         TuiLetDirective,
         TuiLoaderComponent,
-        TuiDataListWrapperModule,
+        TuiDataListWrapper,
         TuiMultiSelectModule,
         TuiNotificationComponent,
         InheritedDocumentationModule,

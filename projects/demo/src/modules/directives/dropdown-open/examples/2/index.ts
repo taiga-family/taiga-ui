@@ -14,7 +14,7 @@ import {
     TuiHostedDropdownComponent,
     TuiOptionComponent,
 } from '@taiga-ui/core';
-import {TuiChevronDirective, TuiDataListWrapperModule} from '@taiga-ui/kit';
+import {TuiChevronDirective, TuiDataListWrapper} from '@taiga-ui/kit';
 import {TuiSelectModule} from '@taiga-ui/legacy';
 
 @Component({
@@ -29,7 +29,7 @@ import {TuiSelectModule} from '@taiga-ui/legacy';
         TuiSelectModule,
         TuiActiveZoneDirective,
         FormsModule,
-        TuiDataListWrapperModule,
+        TuiDataListWrapper,
         TuiDataListComponent,
         NgForOf,
         TuiOptionComponent,

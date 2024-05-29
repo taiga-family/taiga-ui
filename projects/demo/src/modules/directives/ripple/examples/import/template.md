@@ -1,3 +1,3 @@
 ```html
-<tui-island tuiRipple>...</tui-island>
+<div tuiRipple>...</div>
 ```

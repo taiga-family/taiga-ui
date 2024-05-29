@@ -1,16 +1,14 @@
-import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/core';
+import {Directive, HostBinding, Input} from '@angular/core';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 
-@Component({
+@Directive({
+    standalone: true,
     selector: 'tui-island, a[tuiIsland]',
-    templateUrl: './island.template.html',
-    styleUrls: ['./island.style.less'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         class: 'tui-island',
     },
 })
-export class TuiIslandComponent {
+export class TuiIslandDirective {
     @Input()
     public size: TuiSizeL | TuiSizeS = 'm';
 

@@ -5,7 +5,7 @@ import {RouterModule} from '@angular/router';
 import {TuiSetupComponent} from '@demo/utils';
 import {TuiAddonDoc, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiButtonDirective, TuiSvgComponent} from '@taiga-ui/core';
-import {TuiFilterModule} from '@taiga-ui/kit';
+import {TuiFilterComponent} from '@taiga-ui/kit';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiFilterExample1} from './examples/1';
@@ -17,7 +17,7 @@ import {ExampleTuiFilterComponent} from './filter.component';
 @NgModule({
     imports: [
         PolymorpheusModule,
-        TuiFilterModule,
+        TuiFilterComponent,
         TuiButtonDirective,
         TuiSvgComponent,
         CommonModule,

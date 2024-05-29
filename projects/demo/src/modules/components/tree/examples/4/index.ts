@@ -4,7 +4,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiHandler} from '@taiga-ui/cdk';
 import {EMPTY_ARRAY} from '@taiga-ui/cdk';
 import {TuiButtonDirective} from '@taiga-ui/core';
-import {TuiTreeModule} from '@taiga-ui/kit';
+import {TuiTree} from '@taiga-ui/kit';
 
 interface TreeNode {
     readonly children?: readonly TreeNode[];
@@ -13,7 +13,7 @@ interface TreeNode {
 
 @Component({
     standalone: true,
-    imports: [TuiTreeModule, TuiButtonDirective],
+    imports: [TuiTree, TuiButtonDirective],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

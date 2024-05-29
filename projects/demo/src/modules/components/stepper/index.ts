@@ -3,11 +3,11 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import type {TuiOrientation} from '@taiga-ui/core';
 import type {TuiStepState} from '@taiga-ui/kit';
-import {TuiStepperModule} from '@taiga-ui/kit';
+import {TuiStepper} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiStepperModule],
+    imports: [TuiDemo, TuiStepper],
     templateUrl: './index.html',
     changeDetection,
 })

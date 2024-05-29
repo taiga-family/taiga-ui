@@ -8,7 +8,8 @@ import {filter, map, merge, repeat, startWith, switchMap, takeUntil, tap} from '
 import {TuiRangeComponent} from './range.component';
 
 @Directive({
-    selector: 'tui-range',
+    standalone: true,
+    selector: 'tui-range:is(never)',
 })
 export class TuiRangeChangeDirective {
     private readonly doc = inject(DOCUMENT);

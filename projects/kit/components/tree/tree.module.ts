@@ -37,4 +37,4 @@ import {TuiTreeNodeDirective} from './directives/tree-node.directive';
         TuiTreeControllerDirective,
     ],
 })
-export class TuiTreeModule {}
+export class TuiTree {}

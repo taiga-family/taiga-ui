@@ -1,6 +1,6 @@
 ```ts
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {TuiRangeModule} from '@taiga-ui/kit';
+import {TuiRangeComponent} from '@taiga-ui/kit';
 
 // ...
 
@@ -10,7 +10,7 @@ import {TuiRangeModule} from '@taiga-ui/kit';
     // ...
     FormsModule,
     ReactiveFormsModule,
-    TuiRangeModule,
+    TuiRangeComponent,
   ],
 })
 class ExampleModule {}

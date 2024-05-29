@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {
-    TuiDataListWrapperModule,
+    TuiDataListWrapper,
     TuiFilterByInputPipeModule,
     TuiStringifyContentPipeModule,
 } from '@taiga-ui/kit';
@@ -13,7 +13,7 @@ import {TuiComboBoxModule} from '@taiga-ui/legacy';
     imports: [
         FormsModule,
         TuiComboBoxModule,
-        TuiDataListWrapperModule,
+        TuiDataListWrapper,
         TuiFilterByInputPipeModule,
         TuiStringifyContentPipeModule,
     ],

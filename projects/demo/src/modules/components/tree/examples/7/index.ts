@@ -8,8 +8,8 @@ import {
     TUI_TREE_LOADER,
     TUI_TREE_LOADING,
     TUI_TREE_START,
+    TuiTree,
     type TuiTreeLoader,
-    TuiTreeModule,
     TuiTreeService,
 } from '@taiga-ui/kit';
 import type {Observable} from 'rxjs';
@@ -39,7 +39,7 @@ class TreeLoader implements TuiTreeLoader<Item> {
 
 @Component({
     standalone: true,
-    imports: [TuiTreeModule, TuiLoaderComponent, NgIf, AsyncPipe],
+    imports: [TuiTree, TuiLoaderComponent, NgIf, AsyncPipe],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

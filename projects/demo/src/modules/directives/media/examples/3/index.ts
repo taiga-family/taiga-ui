@@ -3,7 +3,7 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiMediaDirective} from '@taiga-ui/cdk';
 import {TuiButtonDirective, TuiLinkDirective} from '@taiga-ui/core';
-import {TuiSliderModule} from '@taiga-ui/kit';
+import {TuiSlider} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
@@ -11,7 +11,7 @@ import {TuiSliderModule} from '@taiga-ui/kit';
         TuiMediaDirective,
         TuiButtonDirective,
         TuiLinkDirective,
-        TuiSliderModule,
+        TuiSlider,
         FormsModule,
     ],
     templateUrl: './index.html',
