@@ -2,7 +2,7 @@
     class="t-textfield"
     [disabled]="computedDisabled"
     [invalid]="computedInvalid"
-    [maskito]="getMaskOptions(computedMin, computedMax)"
+    [maskito]="getMaskOptions(min, max)"
     [nativeId]="nativeId"
     [pseudoFocus]="pseudoFocus"
     [pseudoHover]="pseudoHover"
@@ -29,10 +29,10 @@
         <tui-scrollbar class="t-scrollbar">
             <tui-calendar-year
                 [disabledItemHandler]="disabledItemHandler"
-                [initialItem]="value || initialItem | tuiToYear"
-                [max]="computedMax | tuiToYear"
-                [min]="computedMin | tuiToYear"
-                [value]="value === null ? null : (value | tuiToYear)"
+                [initialItem]="value || initialItem"
+                [max]="max"
+                [min]="min"
+                [value]="value === null ? null : value"
                 (mousedown.prevent.silent)="(0)"
                 (yearClick)="onYearClick($event)"
             />

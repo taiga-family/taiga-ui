@@ -15,7 +15,7 @@ import {
     TuiBlockDirective,
     TuiCheckboxComponent,
     TuiDataListWrapper,
-    TuiFieldErrorPipeModule,
+    TuiFieldErrorPipe,
     TuiRadioComponent,
     TuiStepper,
 } from '@taiga-ui/kit';
@@ -58,7 +58,7 @@ class Account {
         ReactiveFormsModule,
         TuiInputModule,
         TuiErrorComponent,
-        TuiFieldErrorPipeModule,
+        TuiFieldErrorPipe,
         AsyncPipe,
         TuiInputDateModule,
         TuiInputPasswordModule,

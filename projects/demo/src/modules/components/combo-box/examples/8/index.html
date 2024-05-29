@@ -6,7 +6,7 @@
     <tui-data-list-wrapper
         *tuiDataList
         [itemContent]="stringify | tuiStringifyContent"
-        [items]="items | tuiFilterByInputWith: stringify"
+        [items]="items | tuiFilterByInput"
     />
 </tui-combo-box>
 <p class="tui-space_top-2">Selected value: {{ control.value | json }}</p>

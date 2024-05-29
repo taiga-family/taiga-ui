@@ -7,7 +7,7 @@ import type {Observable} from 'rxjs';
 import {defer, of} from 'rxjs';
 
 @Injectable()
-export class TuiDialogFormService {
+export class TuiConfirmService {
     private readonly dialogs = inject(TuiDialogService);
     private dirty = false;
 

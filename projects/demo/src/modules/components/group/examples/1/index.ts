@@ -9,7 +9,7 @@ import {
     TuiHintOptionsDirective,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiDataListWrapper, TuiFieldErrorPipeModule} from '@taiga-ui/kit';
+import {TuiDataListWrapper, TuiFieldErrorPipe} from '@taiga-ui/kit';
 import {TuiInputModule, TuiMultiSelectModule} from '@taiga-ui/legacy';
 
 @Component({
@@ -20,7 +20,7 @@ import {TuiInputModule, TuiMultiSelectModule} from '@taiga-ui/legacy';
         TuiInputModule,
         TuiHintOptionsDirective,
         TuiErrorComponent,
-        TuiFieldErrorPipeModule,
+        TuiFieldErrorPipe,
         AsyncPipe,
         TuiMultiSelectModule,
         TuiTextfieldControllerModule,

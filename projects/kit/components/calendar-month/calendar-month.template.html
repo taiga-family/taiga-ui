@@ -3,9 +3,9 @@
     class="t-scrollbar"
 >
     <tui-calendar-year
-        [initialItem]="year"
-        [max]="computedMax"
-        [min]="computedMin"
+        [initialItem]="year.year"
+        [max]="computedMax.year"
+        [min]="computedMin.year"
         [value]="value"
         (yearClick)="onPickerYearClick($event)"
     />

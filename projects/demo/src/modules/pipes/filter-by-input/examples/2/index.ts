@@ -4,8 +4,8 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {
     TuiDataListWrapper,
-    TuiFilterByInputPipeModule,
-    TuiStringifyContentPipeModule,
+    TuiFilterByInputPipe,
+    TuiStringifyContentPipe,
 } from '@taiga-ui/kit';
 import {TuiComboBoxModule} from '@taiga-ui/legacy';
 
@@ -20,8 +20,8 @@ interface User {
         ReactiveFormsModule,
         TuiComboBoxModule,
         TuiDataListWrapper,
-        TuiFilterByInputPipeModule,
-        TuiStringifyContentPipeModule,
+        TuiFilterByInputPipe,
+        TuiStringifyContentPipe,
     ],
     templateUrl: './index.html',
     encapsulation,

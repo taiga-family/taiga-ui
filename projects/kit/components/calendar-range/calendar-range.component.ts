@@ -31,10 +31,10 @@ import {
     TuiDataList,
     TuiIconComponent,
 } from '@taiga-ui/core';
-import {MAX_DAY_RANGE_LENGTH_MAPPER} from '@taiga-ui/kit/constants';
 import {TUI_CALENDAR_DATE_STREAM, TUI_OTHER_DATE_TEXT} from '@taiga-ui/kit/tokens';
 import type {Observable} from 'rxjs';
 
+import {TUI_DAY_CAPS_MAPPER} from './day-caps-mapper';
 import type {TuiDayRangePeriod} from './day-range-period';
 
 @Component({
@@ -90,7 +90,7 @@ export class TuiCalendarRangeComponent
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected previousValue: TuiDayRange | null = null;
     protected hoveredItem: TuiDay | null = null;
-    protected readonly maxLengthMapper = MAX_DAY_RANGE_LENGTH_MAPPER;
+    protected readonly capsMapper = TUI_DAY_CAPS_MAPPER;
 
     constructor() {
         inject<Observable<TuiDayRange | null>>(TUI_CALENDAR_DATE_STREAM, {optional: true})

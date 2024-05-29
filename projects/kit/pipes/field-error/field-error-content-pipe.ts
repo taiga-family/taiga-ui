@@ -6,6 +6,7 @@ import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {TuiFieldErrorPipe} from './field-error-pipe';
 
 @Pipe({
+    standalone: true,
     name: 'tuiFieldErrorContent',
     pure: false,
 })

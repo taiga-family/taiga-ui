@@ -8,11 +8,12 @@ import {
 } from '@angular/core';
 import type {TuiBooleanHandler, TuiDay, TuiDayRange} from '@taiga-ui/cdk';
 import {
+    MAX_YEAR,
+    MIN_YEAR,
     TUI_FALSE_HANDLER,
-    TUI_FIRST_DAY,
-    TUI_LAST_DAY,
     TuiHoveredDirective,
     tuiInRange,
+    tuiIsNumber,
     TuiLetDirective,
     TuiMonth,
     TuiMonthRange,
@@ -43,27 +44,33 @@ export class TuiCalendarYearComponent {
     private readonly currentYear = TuiMonth.currentLocal().year;
 
     @Input()
-    public value: TuiDayRange | TuiMonthRange | TuiYear | readonly TuiDay[] | null = null;
+    public value:
+        | TuiDayRange
+        | TuiMonthRange
+        | TuiYear
+        | number
+        | readonly TuiDay[]
+        | null = null;
 
     @Input()
-    public initialItem: TuiYear = TuiMonth.currentLocal();
+    public initialItem: number = this.currentYear;
 
     @Input()
-    public min: TuiYear | null = TUI_FIRST_DAY;
+    public min: number | null = MIN_YEAR;
 
     @Input()
-    public max: TuiYear | null = TUI_LAST_DAY;
+    public max: number | null = MAX_YEAR;
 
     @Input()
     public disabledItemHandler: TuiBooleanHandler<number> = TUI_FALSE_HANDLER;
 
     @Output()
-    public readonly yearClick = new EventEmitter<TuiYear>();
+    public readonly yearClick = new EventEmitter<number>();
 
     public isDisabled(item: number): boolean {
         return (
-            this.computedMax.year < item ||
-            this.computedMin.year > item ||
+            (this.max && this.max < item) ||
+            (this.min && this.min > item) ||
             this.disabledItemHandler(item)
         );
     }
@@ -77,6 +84,10 @@ export class TuiCalendarYearComponent {
 
         if (value instanceof TuiYear) {
             return value.year === item ? 'single' : null;
+        }
+
+        if (tuiIsNumber(value)) {
+            return value === item ? 'single' : null;
         }
 
         if (!(value instanceof TuiMonthRange)) {
@@ -119,7 +130,7 @@ export class TuiCalendarYearComponent {
     public itemIsInterval(item: number): boolean {
         const {value, hoveredItem} = this;
 
-        if (value === null || !this.isRange(value)) {
+        if (!this.isRange(value)) {
             return false;
         }
 
@@ -142,49 +153,23 @@ export class TuiCalendarYearComponent {
         this.updateHoveredItem(hovered, item);
     }
 
-    public onItemClick(item: number): void {
-        this.yearClick.emit(new TuiYear(item));
-    }
-
     @HostBinding('class._single')
     protected get isSingle(): boolean {
         return this.isRange(this.value) && this.value.from.yearSame(this.value.to);
-    }
-
-    protected get computedMin(): TuiYear {
-        return this.min ?? TUI_FIRST_DAY;
-    }
-
-    protected get computedMax(): TuiYear {
-        return this.max ?? TUI_LAST_DAY;
     }
 
     protected get rows(): number {
         return Math.ceil((this.calculatedMax - this.calculatedMin) / ITEMS_IN_ROW);
     }
 
-    protected get calculatedMin(): number {
-        const initial = this.initialItem.year - LIMIT;
-        const min = this.computedMin;
-
-        return min.year > initial ? min.year : initial;
-    }
-
-    protected get calculatedMax(): number {
-        const initial = this.initialItem.year + LIMIT;
-        const max = this.computedMax;
-
-        return max.year < initial ? max.year + 1 : initial;
-    }
-
     protected isRange(
-        item: TuiMonthRange | TuiYear | readonly TuiDay[] | null,
+        item: TuiMonthRange | TuiYear | number | readonly TuiDay[] | null,
     ): item is TuiMonthRange {
         return item instanceof TuiMonthRange;
     }
 
     protected scrollItemIntoView(item: number): boolean {
-        return this.initialItem.year === item;
+        return this.initialItem === item;
     }
 
     protected getItem(rowIndex: number, colIndex: number): number {
@@ -193,6 +178,20 @@ export class TuiCalendarYearComponent {
 
     protected itemIsToday(item: number): boolean {
         return this.currentYear === item;
+    }
+
+    private get calculatedMin(): number {
+        const initial = this.initialItem - LIMIT;
+        const min = this.min ?? MIN_YEAR;
+
+        return min > initial ? min : initial;
+    }
+
+    private get calculatedMax(): number {
+        const initial = this.initialItem + LIMIT;
+        const max = this.max ?? MAX_YEAR;
+
+        return max < initial ? max + 1 : initial;
     }
 
     private updateHoveredItem(hovered: boolean, item: number): void {

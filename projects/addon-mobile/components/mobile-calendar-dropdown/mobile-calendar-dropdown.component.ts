@@ -15,7 +15,7 @@ import {
     TuiHostedDropdownComponent,
     tuiSlideInTop,
 } from '@taiga-ui/core';
-import {TUI_MOBILE_CALENDAR} from '@taiga-ui/kit';
+import {TUI_DAY_CAPS_MAPPER, TUI_MOBILE_CALENDAR} from '@taiga-ui/kit';
 import {
     TuiInputDateComponent,
     TuiInputDateMultiComponent,
@@ -53,23 +53,25 @@ export class TuiMobileCalendarDropdownComponent {
     protected readonly min =
         this.single?.min ||
         this.multi?.min ||
-        this.range?.maxLengthMapper(
-            this.range.computedMin,
-            this.range.value,
-            this.range.maxLength,
-            true,
-        ) ||
+        (this.range &&
+            TUI_DAY_CAPS_MAPPER(
+                this.range.min,
+                this.range.value,
+                this.range.maxLength,
+                true,
+            )) ||
         TUI_FIRST_DAY;
 
     protected readonly max =
         this.single?.max ||
         this.multi?.max ||
-        this.range?.maxLengthMapper(
-            this.range.computedMax,
-            this.range.value,
-            this.range.maxLength,
-            false,
-        ) ||
+        (this.range &&
+            TUI_DAY_CAPS_MAPPER(
+                this.range.max,
+                this.range.value,
+                this.range.maxLength,
+                false,
+            )) ||
         TUI_LAST_DAY;
 
     protected readonly disabledItemHandler =
