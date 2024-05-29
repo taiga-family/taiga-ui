@@ -1,17 +1,25 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiButtonDirective, TuiTextfieldControllerModule} from '@taiga-ui/core';
 import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
+import {TuiInputPhoneInternationalComponent} from '@taiga-ui/legacy';
 
 @Component({
-    selector: 'tui-input-phone-international-example-1',
+    standalone: true,
+    imports: [
+        TuiButtonDirective,
+        TuiInputPhoneInternationalComponent,
+        TuiTextfieldControllerModule,
+        ReactiveFormsModule,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiInputPhoneExample1 {
+export default class ExampleComponent {
     protected readonly testForm = new FormGroup({
         testValue: new FormControl('+79777777777', Validators.required),
     });

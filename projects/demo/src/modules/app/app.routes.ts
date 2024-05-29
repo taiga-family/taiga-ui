@@ -486,12 +486,7 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.InputPhoneInternational,
-        loadChildren: async () =>
-            (
-                await import(
-                    '../components/input-phone-international/input-phone-international.module'
-                )
-            ).ExampleTuiInputPhoneInternationalModule,
+        loadComponent: async () => import('../components/input-phone-international'),
         title: 'InputPhoneInternational',
     }),
     route({

@@ -1,18 +1,29 @@
+import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
-import {TUI_ALL_COUNTRIES_ISO_CODES} from '@taiga-ui/legacy';
+import {TuiSortCountriesPipeModule} from '@taiga-ui/kit';
+import {
+    TUI_ALL_COUNTRIES_ISO_CODES,
+    TuiInputPhoneInternationalComponent,
+} from '@taiga-ui/legacy';
 
 @Component({
-    selector: 'tui-input-phone-international-example-2',
+    standalone: true,
+    imports: [
+        AsyncPipe,
+        TuiInputPhoneInternationalComponent,
+        TuiSortCountriesPipeModule,
+        ReactiveFormsModule,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiInputPhoneExample2 {
+export default class ExampleComponent {
     protected readonly testForm = new FormGroup({
         testValue: new FormControl('', Validators.minLength(12)),
     });
