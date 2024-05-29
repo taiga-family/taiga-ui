@@ -8,8 +8,8 @@ import {TUI_FALSE_HANDLER, tuiProvide} from '@taiga-ui/cdk';
 import type {TuiValueContentContext} from '@taiga-ui/core';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
+import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
 import {AbstractExampleTuiControl} from '../abstract/control';
-import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
 
 class Account {
     constructor(

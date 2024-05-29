@@ -11,7 +11,7 @@ import {
 } from '@taiga-ui/core';
 import {TuiInputDateMultiModule} from '@taiga-ui/legacy';
 
-import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
+import {InheritedDocumentationComponent} from '../abstract/inherited-documentation';
 import {TuiInputDateMultiExample1} from './examples/1';
 import {ExampleTuiInputDateMultiComponent} from './input-date-multi.component';
 
@@ -25,7 +25,7 @@ import {ExampleTuiInputDateMultiComponent} from './input-date-multi.component';
         ReactiveFormsModule,
         TuiInputDateMultiModule,
         TuiTextfieldControllerModule,
-        InheritedDocumentationModule,
+        InheritedDocumentationComponent,
         tuiGetDocModules(ExampleTuiInputDateMultiComponent),
     ],
     declarations: [ExampleTuiInputDateMultiComponent, TuiInputDateMultiExample1],

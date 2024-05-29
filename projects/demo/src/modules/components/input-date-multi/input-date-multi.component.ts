@@ -12,8 +12,8 @@ import {
 } from '@taiga-ui/cdk';
 import type {TuiMarkerHandler} from '@taiga-ui/core';
 
+import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
 import {AbstractExampleTuiControl} from '../abstract/control';
-import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
 
 @Component({
     selector: 'example-tui-input-date-multi',

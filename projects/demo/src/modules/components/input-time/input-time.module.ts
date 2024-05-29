@@ -14,7 +14,7 @@ import {
 import {TuiSwitchComponent, TuiUnfinishedValidatorModule} from '@taiga-ui/kit';
 import {TuiInputTimeModule} from '@taiga-ui/legacy';
 
-import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
+import {InheritedDocumentationComponent} from '../abstract/inherited-documentation';
 import {TuiInputTimeExample1} from './examples/1';
 import {TuiInputTimeExample2} from './examples/2';
 import {TuiInputTimeExample3} from './examples/3';
@@ -30,7 +30,7 @@ import {ExampleTuiInputTimeComponent} from './input-time.component';
         ReactiveFormsModule,
         TuiInputTimeModule,
         TuiLinkDirective,
-        InheritedDocumentationModule,
+        InheritedDocumentationComponent,
         TuiButtonDirective,
         TuiDropdownModule,
         TuiTextfieldControllerModule,

@@ -4,9 +4,9 @@ import {TuiDemo} from '@demo/utils';
 import {tuiProvide} from '@taiga-ui/cdk';
 import {TuiHintDirective, TuiHintPointerDirective} from '@taiga-ui/core';
 
+import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/abstract-props-accessor';
 import {AbstractExampleTuiHint} from '../../components/abstract/hint';
-import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/inherited-documentation/abstract-props-accessor';
-import {InheritedDocumentationModule} from '../../components/abstract/inherited-documentation/inherited-documentation.module';
+import {InheritedDocumentationComponent} from '../../components/abstract/inherited-documentation';
 
 @Component({
     standalone: true,
@@ -14,7 +14,7 @@ import {InheritedDocumentationModule} from '../../components/abstract/inherited-
         TuiDemo,
         TuiHintPointerDirective,
         TuiHintDirective,
-        InheritedDocumentationModule,
+        InheritedDocumentationComponent,
     ],
     templateUrl: './index.html',
     changeDetection,

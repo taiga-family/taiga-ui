@@ -23,9 +23,9 @@ import {
 import {TuiNamedDay} from '@taiga-ui/kit';
 import {TuiInputDateModule} from '@taiga-ui/legacy';
 
+import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
 import {AbstractExampleTuiControl} from '../abstract/control';
-import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
-import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
+import {InheritedDocumentationComponent} from '../abstract/inherited-documentation';
 
 const TWO_DOTS: [string, string] = ['var(--tui-primary)', 'var(--tui-info-fill)'];
 const ONE_DOT: [string] = ['var(--tui-success-fill)'];
@@ -40,7 +40,7 @@ const ONE_DOT: [string] = ['var(--tui-success-fill)'];
         TuiHint,
         TuiLinkDirective,
         ReactiveFormsModule,
-        InheritedDocumentationModule,
+        InheritedDocumentationComponent,
         RouterLink,
     ],
     templateUrl: './index.html',

@@ -2,14 +2,14 @@ import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiPopover} from '@taiga-ui/cdk';
-import {TuiAlertService} from '@taiga-ui/core';
+import {TuiAlertService, TuiButtonDirective} from '@taiga-ui/core';
 import type {TuiPdfViewerOptions} from '@taiga-ui/kit';
 import {TuiPdfViewerService} from '@taiga-ui/kit';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import {switchMap} from 'rxjs';
 
-import {ActionsContentComponent} from './actions-content.component';
-import {PdfContentComponent} from './pdf-content.component';
+import {ActionsContentComponent} from './actions-content';
+import {PdfContentComponent} from './pdf-content';
 
 export type Buttons = ReadonlyArray<
     Readonly<{
@@ -19,12 +19,13 @@ export type Buttons = ReadonlyArray<
 >;
 
 @Component({
-    selector: 'tui-pdf-viewer-example-2',
+    standalone: true,
+    imports: [TuiButtonDirective],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class TuiPdfViewerExample2 {
+export default class ExampleComponent {
     private readonly alerts = inject(TuiAlertService);
     private readonly pdfService = inject(TuiPdfViewerService);
 

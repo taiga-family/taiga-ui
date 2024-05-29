@@ -1,0 +1,53 @@
+<tui-doc-page
+    header="PdfViewer"
+    package="KIT"
+    type="components"
+>
+    <ng-template pageTab>
+        <p>Custom dialog to preview PDF</p>
+
+        <tui-notification status="warning">
+            Keep in mind mobile devices do not support displaying PDFs in iframe, so you need to rely on
+            <code>TUI_IS_MOBILE</code>
+            token to provide suitable alternative behavior. For example, you can use third-party service
+            <code>https://drive.google.com/viewerng/viewer?embedded=true&url=$YOUR_PUBLIC_PATH_TO_PDF</code>
+            or your own service to render PDF in mobile iframe with
+            <code>pdf.js</code>
+            .
+        </tui-notification>
+
+        <tui-doc-example
+            id="base"
+            heading="Basic"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample: 'html,ts'"
+        />
+
+        <tui-doc-example
+            id="component"
+            heading="Component"
+            [component]="2 | tuiComponent"
+            [content]="example2"
+        />
+
+        <tui-doc-example
+            id="directive"
+            heading="Directive"
+            [component]="3 | tuiComponent"
+            [content]="3 | tuiExample"
+        />
+    </ng-template>
+
+    <ng-template pageTab="Setup">
+        <ol class="tui-list tui-list_ordered">
+            <li class="tui-list__item">
+                Inject service and show dialog:
+
+                <tui-doc-code
+                    filename="my.component.ts"
+                    [code]="exampleService"
+                />
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

@@ -7,9 +7,9 @@ import {
     TuiDropdownOptionsDirective,
 } from '@taiga-ui/core';
 
+import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/abstract-props-accessor';
 import {AbstractExampleTuiDropdown} from '../../components/abstract/dropdown';
-import {DropdownDocumentationModule} from '../../components/abstract/dropdown-documentation/dropdown-documentation.module';
-import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/inherited-documentation/abstract-props-accessor';
+import {DropdownDocumentationComponent} from '../../components/abstract/dropdown-documentation';
 
 @Component({
     standalone: true,
@@ -18,7 +18,7 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/inherited-docum
         TuiDropdownContextDirective,
         TuiDropdownDirective,
         TuiDropdownOptionsDirective,
-        DropdownDocumentationModule,
+        DropdownDocumentationComponent,
     ],
     templateUrl: './index.html',
     changeDetection,

@@ -15,8 +15,8 @@ import type {TuiMarkerHandler} from '@taiga-ui/core';
 import type {TuiDayRangePeriod} from '@taiga-ui/kit';
 import {tuiCreateDefaultDayRangePeriods} from '@taiga-ui/kit';
 
+import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
 import {AbstractExampleTuiControl} from '../abstract/control';
-import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
 
 const TWO_DOTS: [string, string] = ['var(--tui-primary)', 'var(--tui-info-fill)'];
 const ONE_DOT: [string] = ['var(--tui-success-fill)'];

@@ -5,9 +5,9 @@ import {TuiDemo} from '@demo/utils';
 import {TuiButtonDirective, TuiHostedDropdownModule} from '@taiga-ui/core';
 import {TuiInputModule} from '@taiga-ui/legacy';
 
+import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
 import {AbstractExampleTuiDropdown} from '../abstract/dropdown';
-import {DropdownDocumentationModule} from '../abstract/dropdown-documentation/dropdown-documentation.module';
-import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
+import {DropdownDocumentationComponent} from '../abstract/dropdown-documentation';
 
 @Component({
     standalone: true,
@@ -17,7 +17,7 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstr
         TuiInputModule,
         FormsModule,
         TuiButtonDirective,
-        DropdownDocumentationModule,
+        DropdownDocumentationComponent,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

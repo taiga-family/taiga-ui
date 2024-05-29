@@ -8,8 +8,8 @@ import {TUI_FALSE_HANDLER, tuiProvide, TuiTime} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {tuiCreateTimePeriods} from '@taiga-ui/kit';
 
+import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
 import {AbstractExampleTuiControl} from '../abstract/control';
-import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
 
 @Component({
     selector: 'example-tui-input-time',

@@ -24,7 +24,7 @@ import {
 import {TuiMultiSelectModule, TuiTagModule} from '@taiga-ui/legacy';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
-import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
+import {InheritedDocumentationComponent} from '../abstract/inherited-documentation';
 import {TuiMultiSelectExample1} from './examples/1';
 import {TuiMultiSelectExample2} from './examples/2';
 import {TuiMultiSelectExample3} from './examples/3';
@@ -57,7 +57,7 @@ import {ExampleTuiMultiSelectComponent} from './multi-select.component';
         TuiHint,
         TuiTagModule,
         TuiTextfieldControllerModule,
-        InheritedDocumentationModule,
+        InheritedDocumentationComponent,
         TuiAddonDoc,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiMultiSelectComponent)),
         PolymorpheusModule,

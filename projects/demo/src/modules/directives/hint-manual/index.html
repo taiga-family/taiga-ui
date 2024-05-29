@@ -1,0 +1,53 @@
+<tui-doc-page
+    header="HintManual"
+    package="CORE"
+    path="core/directives/hint"
+    type="directives"
+>
+    <ng-template pageTab>
+        <p>Directive to show a hint manually</p>
+
+        <tui-doc-example
+            id="base"
+            heading="Basic"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample"
+        />
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <button
+                tuiButton
+                tuiHint="It says 'Hi all!' into console"
+                type="button"
+                [tuiHintAppearance]="appearance"
+                [tuiHintDirection]="direction"
+                [tuiHintManual]="show"
+                (click)="sayHi()"
+            >
+                A strange button
+            </button>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="tuiHint"
+                documentationPropertyType="PolymorpheusContent"
+            >
+                Content
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="tuiHintManual"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="show"
+            >
+                Show/hide hint
+            </ng-template>
+        </tui-doc-documentation>
+        <inherited-documentation />
+    </ng-template>
+
+    <tui-setup *pageTab />
+</tui-doc-page>

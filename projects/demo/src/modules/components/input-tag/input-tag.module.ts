@@ -17,7 +17,7 @@ import {
 import {TuiDataListWrapper, TuiFieldErrorPipeModule} from '@taiga-ui/kit';
 import {TuiInputModule, TuiInputTagModule} from '@taiga-ui/legacy';
 
-import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
+import {InheritedDocumentationComponent} from '../abstract/inherited-documentation';
 import {TuiInputTagExample1} from './examples/1';
 import {TuiInputTagExample2} from './examples/2';
 import {TuiInputTagExample3} from './examples/3';
@@ -34,7 +34,7 @@ import {ExampleTuiInputTagComponent} from './input-tag.component';
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
-        InheritedDocumentationModule,
+        InheritedDocumentationComponent,
         TuiDataList,
         TuiDataListWrapper,
         TuiLinkDirective,

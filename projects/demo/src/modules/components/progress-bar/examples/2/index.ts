@@ -1,18 +1,21 @@
-import {isPlatformServer} from '@angular/common';
+import {AsyncPipe, isPlatformServer} from '@angular/common';
 import {Component, inject, PLATFORM_ID} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiTextCodeDirective} from '@taiga-ui/addon-doc';
 import {TUI_IS_E2E} from '@taiga-ui/cdk';
+import {TuiProgressModule} from '@taiga-ui/kit';
 import {of, timer} from 'rxjs';
 
 @Component({
-    selector: 'tui-progress-bar-example-2',
+    standalone: true,
+    imports: [TuiTextCodeDirective, TuiProgressModule, AsyncPipe],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiProgressBarExample2 {
+export default class ExampleComponent {
     private readonly animationDisabled =
         inject(TUI_IS_E2E) || isPlatformServer(inject(PLATFORM_ID));
 
