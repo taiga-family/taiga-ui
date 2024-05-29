@@ -440,13 +440,17 @@ describe('InputRange', () => {
 
         inputPOLeft = new TuiNativeInputPO(
             fixture,
-            testContext.nativeInputAutoId,
-            leftInputWrapper,
+            pageObject.getByAutomationId(
+                testContext.nativeInputAutoId,
+                leftInputWrapper,
+            )!,
         );
         inputPORight = new TuiNativeInputPO(
             fixture,
-            testContext.nativeInputAutoId,
-            rightInputWrapper,
+            pageObject.getByAutomationId(
+                testContext.nativeInputAutoId,
+                rightInputWrapper,
+            )!,
         );
     }
 });
