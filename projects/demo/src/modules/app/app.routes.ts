@@ -648,8 +648,7 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.Tabs,
-        loadChildren: async () =>
-            (await import('../components/tabs/tabs.module')).ExampleTuiTabsModule,
+        loadComponent: async () => import('../components/tabs'),
         title: 'Tabs',
     }),
     route({
@@ -659,9 +658,7 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.Textarea,
-        loadChildren: async () =>
-            (await import('../components/textarea/textarea.module'))
-                .ExampleTuiTextareaModule,
+        loadComponent: async () => import('../components/textarea'),
         title: 'Textarea',
     }),
     route({
