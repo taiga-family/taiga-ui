@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[51470],{51470:n=>{n.exports="```ts\nimport {tuiTagOptionsProvider} from '@taiga-ui/legacy';\n// ...\n\n@Component({\n  standalone: true,\n  providers: [\n    tuiTagOptionsProvider({\n      size: 'l',\n      status: 'success',\n    }),\n  ],\n})\nexport class MyComponent {}\n```\n"}}]);
