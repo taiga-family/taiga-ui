@@ -1,15 +1,25 @@
 import {Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiDataListDirective, TuiTextfieldControllerModule} from '@taiga-ui/core';
+import {TuiDataListWrapperComponent} from '@taiga-ui/kit';
+import {TuiSelectModule} from '@taiga-ui/legacy';
 
 @Component({
-    selector: 'tui-select-example-1',
+    standalone: true,
+    imports: [
+        TuiSelectModule,
+        TuiTextfieldControllerModule,
+        ReactiveFormsModule,
+        TuiDataListWrapperComponent,
+        TuiDataListDirective,
+    ],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class TuiSelectExample1 {
+export default class ExampleComponent {
     protected items = [
         'Luke Skywalker',
         'Leia Organa Solo',

@@ -1,17 +1,18 @@
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAlertService} from '@taiga-ui/core';
+import {TuiAlertService, TuiButtonDirective} from '@taiga-ui/core';
 import {TuiPushService} from '@taiga-ui/kit';
 import {switchMap, take} from 'rxjs';
 
 @Component({
-    selector: 'tui-push-example-2',
+    standalone: true,
+    imports: [TuiButtonDirective],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class TuiPushExample2 {
+export default class ExampleComponent {
     protected readonly push = inject(TuiPushService);
     protected readonly alert = inject(TuiAlertService);
 

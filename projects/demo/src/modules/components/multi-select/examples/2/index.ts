@@ -1,9 +1,17 @@
+import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {assets} from '@demo/utils';
-import {TUI_DEFAULT_MATCHER} from '@taiga-ui/cdk';
+import {TUI_DEFAULT_MATCHER, TuiLetDirective} from '@taiga-ui/cdk';
+import {
+    TuiDataListDirective,
+    TuiInitialsPipe,
+    TuiTextfieldControllerModule,
+} from '@taiga-ui/core';
+import {TuiAvatarComponent, TuiDataListWrapperComponent} from '@taiga-ui/kit';
+import {TuiMultiSelectModule} from '@taiga-ui/legacy';
 import type {Observable} from 'rxjs';
 import {delay, filter, of, startWith, Subject, switchMap} from 'rxjs';
 
@@ -30,13 +38,24 @@ const databaseMockData: readonly User[] = [
 ];
 
 @Component({
-    selector: 'tui-multi-select-example-2',
+    standalone: true,
+    imports: [
+        TuiMultiSelectModule,
+        TuiLetDirective,
+        AsyncPipe,
+        ReactiveFormsModule,
+        TuiTextfieldControllerModule,
+        TuiDataListWrapperComponent,
+        TuiDataListDirective,
+        TuiAvatarComponent,
+        TuiInitialsPipe,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiMultiSelectExample2 {
+export default class ExampleComponent {
     protected readonly search$ = new Subject<string | null>();
 
     protected readonly items$: Observable<readonly User[] | null> = this.search$.pipe(

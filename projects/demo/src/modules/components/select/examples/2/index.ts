@@ -1,8 +1,16 @@
+import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiCurrency} from '@taiga-ui/addon-commerce';
+import {
+    TuiAmountPipe,
+    TuiCurrency,
+    TuiThumbnailCardComponent,
+} from '@taiga-ui/addon-commerce';
+import {TuiDataListDirective, TuiTextfieldControllerModule} from '@taiga-ui/core';
+import {TuiDataListWrapperComponent} from '@taiga-ui/kit';
+import {TuiSelectModule} from '@taiga-ui/legacy';
 
 class Card {
     constructor(
@@ -21,13 +29,23 @@ class Account {
 }
 
 @Component({
-    selector: 'tui-select-example-2',
+    standalone: true,
+    imports: [
+        ReactiveFormsModule,
+        TuiSelectModule,
+        TuiDataListWrapperComponent,
+        TuiDataListDirective,
+        TuiTextfieldControllerModule,
+        TuiThumbnailCardComponent,
+        TuiAmountPipe,
+        AsyncPipe,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiSelectExample2 {
+export default class ExampleComponent {
     protected cards = [
         new Card('Bitcoin', '*6713'),
         new Card('Money', '*4562'),

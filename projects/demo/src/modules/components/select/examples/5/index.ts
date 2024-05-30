@@ -1,8 +1,18 @@
+import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
 import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiContext, TuiStringHandler} from '@taiga-ui/cdk';
-import {tuiPure} from '@taiga-ui/cdk';
+import {TuiLetDirective, tuiPure} from '@taiga-ui/cdk';
+import {
+    TuiDataListComponent,
+    TuiDataListDirective,
+    TuiLoaderComponent,
+    TuiOptionComponent,
+    TuiTextfieldControllerModule,
+} from '@taiga-ui/core';
+import {TuiSelectModule} from '@taiga-ui/legacy';
 import {delay, of} from 'rxjs';
 
 interface Python {
@@ -20,13 +30,26 @@ const ITEMS: readonly Python[] = [
 ];
 
 @Component({
-    selector: 'tui-select-example-5',
+    standalone: true,
+    imports: [
+        TuiSelectModule,
+        TuiLetDirective,
+        TuiTextfieldControllerModule,
+        FormsModule,
+        AsyncPipe,
+        TuiDataListDirective,
+        TuiDataListComponent,
+        NgIf,
+        TuiOptionComponent,
+        NgForOf,
+        TuiLoaderComponent,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiSelectExample5 {
+export default class ExampleComponent {
     protected value = 42;
 
     // Server request for items imitation

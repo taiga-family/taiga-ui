@@ -1,16 +1,41 @@
+import {NgForOf, NgIf} from '@angular/common';
 import {Component} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiAutoFocusDirective} from '@taiga-ui/cdk';
+import {
+    TuiButtonDirective,
+    TuiDataListComponent,
+    TuiDataListDirective,
+    TuiOptionComponent,
+    TuiSvgComponent,
+    TuiTextfieldControllerModule,
+} from '@taiga-ui/core';
+import {TuiSelectModule, TuiTextareaModule} from '@taiga-ui/legacy';
 
 @Component({
-    selector: 'tui-select-example-3',
+    standalone: true,
+    imports: [
+        ReactiveFormsModule,
+        TuiSelectModule,
+        TuiTextfieldControllerModule,
+        TuiDataListComponent,
+        TuiDataListDirective,
+        NgIf,
+        TuiOptionComponent,
+        TuiSvgComponent,
+        NgForOf,
+        TuiTextareaModule,
+        TuiAutoFocusDirective,
+        TuiButtonDirective,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiSelectExample3 {
+export default class ExampleComponent {
     protected readonly items = [
         'https://twitter.com/marsibarsi',
         'https://twitter.com/waterplea',

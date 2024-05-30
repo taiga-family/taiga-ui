@@ -21,7 +21,7 @@
     "ignoreRegExpList": ["\\(https?://.*?\\)", "\\/{1}.+\\/{1}", "\\%2F.+", "\\%2C.+", "\\ɵ.+", "\\ыва.+"],
     "overrides": [
         {
-            "filename": ["**/components/loader/loader.template.html"],
+            "filename": ["**/components/loader/index.html"],
             "ignoreWords": ["protestin", "spittin", "callin", "yellin"]
         },
         {

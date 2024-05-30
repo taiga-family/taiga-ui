@@ -1,16 +1,20 @@
+import {JsonPipe, NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiKeySteps} from '@taiga-ui/kit';
+import {TuiRangeComponent} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-range-example-4',
+    standalone: true,
+    imports: [TuiRangeComponent, FormsModule, NgForOf, JsonPipe],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiRangeExample4 {
+export default class ExampleComponent {
     protected readonly ticksLabels = ['0', '10K', '100K', '500k', '1000K'];
     protected readonly segments = this.ticksLabels.length - 1;
 

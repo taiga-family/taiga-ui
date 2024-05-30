@@ -1,19 +1,38 @@
+import {NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiCurrency} from '@taiga-ui/addon-commerce';
+import {
+    TuiDataListComponent,
+    TuiDataListDirective,
+    TuiOptionComponent,
+    TuiTextfieldControllerModule,
+} from '@taiga-ui/core';
+import {TuiSelectModule} from '@taiga-ui/legacy';
 
-import type {MyAccount} from './account/my-account.component';
+import type {MyAccount} from './account';
+import {ExampleMyAccountComponent} from './account';
 
 @Component({
-    selector: 'tui-select-example-9',
+    standalone: true,
+    imports: [
+        TuiSelectModule,
+        TuiTextfieldControllerModule,
+        ReactiveFormsModule,
+        TuiDataListDirective,
+        TuiDataListComponent,
+        NgForOf,
+        TuiOptionComponent,
+        ExampleMyAccountComponent,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiSelectExample9 {
+export default class ExampleComponent {
     protected readonly accounts: MyAccount[] = [
         {
             name: 'Dollar deposit',

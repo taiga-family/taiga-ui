@@ -1,0 +1,107 @@
+<tui-doc-page
+    header="InputDateMulti"
+    package="KIT"
+    type="components"
+>
+    <ng-template pageTab>
+        <tui-doc-example
+            id="base"
+            heading="Basic"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample: 'html,ts'"
+        />
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo [control]="control">
+            <ng-template>
+                <tui-input-date
+                    multiple
+                    [disabledItemHandler]="disabledItemHandler"
+                    [focusable]="focusable"
+                    [formControl]="control"
+                    [markerHandler]="markerHandler"
+                    [max]="max"
+                    [min]="min"
+                    [pseudoFocus]="pseudoFocused"
+                    [pseudoHover]="pseudoHovered"
+                    [pseudoInvalid]="pseudoInvalid"
+                    [readOnly]="readOnly"
+                    [rows]="rows"
+                    [tuiDropdownOpen]="!!(dropdownOpen | async)"
+                    [tuiHintAppearance]="hintAppearance"
+                    [tuiHintContent]="hintContent"
+                    [tuiHintDirection]="hintDirection"
+                    [tuiTextfieldCleaner]="cleaner"
+                    [tuiTextfieldIconLeft]="iconLeft"
+                    [tuiTextfieldLabelOutside]="labelOutside"
+                    [tuiTextfieldSize]="size"
+                    (tuiDropdownOpenChange)="dropdownOpen.next($event)"
+                >
+                    Choose a date
+                </tui-input-date>
+            </ng-template>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="disabled"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="disabled"
+            >
+                Disabled state (use
+                <code>formControl.disable()</code>
+                )
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="disabledItemHandler"
+                documentationPropertyType="TuiBooleanHandler<TuiDay>"
+                [documentationPropertyValues]="disabledItemHandlerVariants"
+                [(documentationPropertyValue)]="disabledItemHandler"
+            >
+                <div>A handler that gets a date and returns true if it is disabled.</div>
+
+                <strong>Must be a pure function</strong>
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="markerHandler"
+                documentationPropertyType="TuiMarkerHandler | null"
+                [documentationPropertyValues]="markerHandlerVariants"
+                [(documentationPropertyValue)]="markerHandler"
+            >
+                A handler that gets date and returns null or a tuple with circled marker colors
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="min"
+                documentationPropertyType="TuiDay | null"
+                [documentationPropertyValues]="minVariants"
+                [(documentationPropertyValue)]="min"
+            >
+                Minimum date
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="max"
+                documentationPropertyType="TuiDay | null"
+                [documentationPropertyValues]="maxVariants"
+                [(documentationPropertyValue)]="max"
+            >
+                Maximum date
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="rows"
+                documentationPropertyType="number"
+                [documentationPropertyValues]="rowsVariants"
+                [(documentationPropertyValue)]="rows"
+            >
+                A number of visible rows
+            </ng-template>
+        </tui-doc-documentation>
+        <inherited-documentation [dropdown]="true" />
+    </ng-template>
+
+    <tui-setup *pageTab />
+</tui-doc-page>

@@ -1,14 +1,16 @@
 import {Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiRangeComponent} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-range-example-1',
+    standalone: true,
+    imports: [TuiRangeComponent, ReactiveFormsModule],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class TuiRangeExample1 {
+export default class ExampleComponent {
     protected readonly control = new FormControl([4, 6]);
 }
