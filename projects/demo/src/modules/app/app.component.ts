@@ -32,7 +32,7 @@ import {TUI_VERSION_MANAGER_PROVIDERS} from './version-manager/version-manager.p
         TuiLanguageSwitcherComponent,
         VersionManagerComponent,
         CustomHostComponent,
-        TuiTableBarsComponent,
+        TuiTableBarsHostComponent,
         TuiTextfieldControllerModule,
         TuiSheetModule,
     ],

@@ -1,9 +1,14 @@
 import {AsyncPipe, NgForOf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {tuiParentAnimation} from '@taiga-ui/core';
+import {
+    TUI_ANIMATIONS_SPEED,
+    tuiParentAnimation,
+    tuiSlideInTop,
+    tuiToAnimationOptions,
+} from '@taiga-ui/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
-import {TUI_TABLE_BARS} from './table-bar.options';
+import {TUI_TABLE_BARS} from './table-bars.token';
 
 @Component({
     standalone: true,
@@ -14,14 +19,16 @@ import {TUI_TABLE_BARS} from './table-bar.options';
             *ngFor="let item of bars$ | async"
             class="t-wrapper"
             @tuiParentAnimation
+            [@tuiSlideInTop]="animation"
         >
             <ng-container *polymorpheusOutlet="item.component; context: item" />
         </div>
     `,
-    styleUrls: ['./table-bars.style.less'],
+    styleUrls: ['./table-bars-host.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    animations: [tuiParentAnimation],
+    animations: [tuiParentAnimation, tuiSlideInTop],
 })
-export class TuiTableBarsComponent {
+export class TuiTableBarsHostComponent {
     protected bars$ = inject(TUI_TABLE_BARS);
+    protected readonly animation = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
 }

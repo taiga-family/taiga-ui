@@ -1,28 +1,16 @@
 <div
-    automation-id="tui-table-bar__bar"
-    class="t-container"
-    [attr.tuiTheme]="getTheme(context.appearance || 'dark')"
-    [class.t-container_adaptive]="context.adaptive"
+    *ngIf="expanded"
+    class="t-menu"
+    [@tuiFadeIn]="animation"
+    [@tuiHeightCollapse]="animation"
 >
-    <div class="t-inner">
-        <div class="t-content">
-            <ng-container *polymorpheusOutlet="context.content as text; context: context">
-                {{ text }}
-            </ng-container>
-        </div>
+    <ng-content select="tui-data-list,[tuiMenu]" />
+</div>
 
-        <button
-            *ngIf="context.hasCloseButton"
-            appearance="icon"
-            automation-id="tui-table-bar__close-button"
-            size="xs"
-            tuiIconButton
-            type="button"
-            class="t-close-button"
-            [iconLeft]="icons.close"
-            (click)="close()"
-        >
-            {{ closeWord$ | async }}
-        </button>
+<div class="t-content">
+    <ng-content />
+
+    <div class="t-actions">
+        <ng-content select="a,button,[tuiAction]" />
     </div>
 </div>

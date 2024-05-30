@@ -1,17 +1,11 @@
-import {inject, Injectable} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {TuiPopoverService} from '@taiga-ui/cdk';
 
-import {TuiTableBarComponent} from './table-bar.component';
-import type {TuiTableBarOptions} from './table-bar.options';
-import {TUI_TABLE_BAR_OPTIONS, TUI_TABLE_BARS} from './table-bar.options';
+import {TuiTableBarDialogComponent} from './table-bar-dialog.component';
+import {TUI_TABLE_BARS} from './table-bars.token';
 
 @Injectable({
     providedIn: 'root',
-    useFactory: () =>
-        new TuiTableBarsService(
-            TUI_TABLE_BARS,
-            TuiTableBarComponent,
-            inject(TUI_TABLE_BAR_OPTIONS),
-        ),
+    useFactory: () => new TuiTableBarsService(TUI_TABLE_BARS, TuiTableBarDialogComponent),
 })
-export class TuiTableBarsService extends TuiPopoverService<TuiTableBarOptions> {}
+export class TuiTableBarsService extends TuiPopoverService<void> {}

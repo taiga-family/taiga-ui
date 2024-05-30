@@ -2,25 +2,26 @@
     size="m"
     tuiButton
     type="button"
-    (click)="open = !open"
+    (click)="open()"
 >
     Show TableBar
 </button>
 
 <ng-template
+    #tableBarTemplate
     let-bar
-    [tuiTableBarOptions]="{appearance: 'light', hasCloseButton: false}"
-    [(tuiTableBar)]="open"
 >
-    <div class="content">
+    <tui-table-bar tuiTheme="light">
         <span>Table bar opened</span>
+
         <button
+            appearance="glass"
             size="m"
             tuiButton
             type="button"
             (click)="bar.complete()"
         >
-            Great
+            Close
         </button>
-    </div>
+    </tui-table-bar>
 </ng-template>

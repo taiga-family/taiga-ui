@@ -14,12 +14,7 @@ export class AppComponent {
 
   constructor() {
     // ...
-    this.tableBarsService
-      .showTableBar(this.tableBarTemplate, {
-        appearance: 'light',
-        hasCloseButton: true,
-      })
-      .subscribe();
+    this.tableBarsService.open(this.tableBarTemplate).subscribe();
     // ...
   }
 }

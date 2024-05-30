@@ -198,7 +198,7 @@ export const DemoRoute = {
     BreakpointService: '/services/breakpoint-service',
     KeyboardService: '/services/keyboard-service',
     ScrollService: '/services/scroll-service',
-    TableBarService: '/services/table-bars-service',
+    TableBar: '/components/table-bar',
     TextfieldController: '/directives/textfield-controller',
     NumberFormat: '/directives/number-format',
     DateFormat: '/directives/date-format',

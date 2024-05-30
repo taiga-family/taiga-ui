@@ -1,0 +1,107 @@
+<tui-filter
+    size="s"
+    [formControl]="control"
+    [items]="items"
+/>
+
+<ng-template
+    let-bar
+    [tuiTableBar]="open"
+    (tuiTableBarChange)="close()"
+>
+    <tui-table-bar
+        *tuiLet="isMobileRes$ | async as isMobile"
+        [expanded]="!!isMobile && expanded"
+    >
+        <tui-data-list role="menu">
+            <tui-opt-group>
+                <button
+                    role="menuitem"
+                    tuiOption
+                >
+                    Send
+                </button>
+                <button
+                    role="menuitem"
+                    tuiOption
+                >
+                    Delete
+                </button>
+            </tui-opt-group>
+            <tui-opt-group>
+                <button
+                    role="menuitem"
+                    tuiOption
+                    (click)="control.setValue(items)"
+                >
+                    Select all
+                </button>
+                <button
+                    role="menuitem"
+                    tuiOption
+                    (click)="close()"
+                >
+                    Select none and close
+                </button>
+            </tui-opt-group>
+        </tui-data-list>
+
+        <div>
+            Selected: {{ selected }} of {{ items.length }}
+
+            <button
+                *ngIf="!isMobile"
+                appearance="icon"
+                tuiLink
+                class="tui-space_left-3"
+                [pseudo]="true"
+                (click)="toggleSelect()"
+            >
+                {{ selected < items.length ? 'Select all' : 'Select none' }}
+            </button>
+        </div>
+
+        <button
+            appearance="glass"
+            iconLeft="tuiIconSendLarge"
+            size="m"
+            tuiButton
+            [disabled]="expanded"
+        >
+            {{ isMobile ? '' : 'Send' }}
+        </button>
+        <button
+            *ngIf="!isMobile"
+            appearance="glass"
+            iconLeft="tuiIconTrashLarge"
+            size="m"
+            tuiButton
+            [disabled]="expanded"
+            (click)="bar.complete()"
+        >
+            Delete
+        </button>
+
+        <button
+            *ngIf="isMobile"
+            appearance="glass"
+            iconLeft="tuiIconMoreHorizontalLarge"
+            size="m"
+            tuiIconButton
+            (click)="expanded = !expanded"
+        >
+            More
+        </button>
+
+        <button
+            *ngIf="!isMobile"
+            appearance="icon"
+            iconLeft="tuiIconCloseLarge"
+            size="m"
+            tuiIconButton
+            (click)="bar.complete()"
+        >
+            Close
+        </button>
+    </tui-table-bar>
+</ng-template>

@@ -1,16 +1,19 @@
 import {Component, inject, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButtonDirective} from '@taiga-ui/core';
-import {TuiTableBarsService} from '@taiga-ui/kit';
+import {
+    TuiTableBarComponent,
+    TuiTableBarDirective,
+    TuiTableBarsService,
+} from '@taiga-ui/kit';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import type {Subscription} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [TuiButtonDirective],
+    imports: [TuiButtonDirective, TuiTableBarDirective, TuiTableBarComponent],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    encapsulation,
     changeDetection,
 })
 export default class ExampleComponent {
@@ -19,9 +22,11 @@ export default class ExampleComponent {
     @ViewChild('tableBarTemplate')
     protected tableBarTemplate: PolymorpheusContent;
 
+    protected subscription?: Subscription;
+
     protected open(): void {
-        this.tableBarsService
-            .open(this.tableBarTemplate, {hasCloseButton: true, adaptive: true})
-            .subscribe();
+        this.subscription?.unsubscribe();
+
+        this.subscription = this.tableBarsService.open(this.tableBarTemplate).subscribe();
     }
 }

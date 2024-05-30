@@ -1,0 +1,74 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+:host {
+    display: block;
+    width: 100%;
+    box-shadow: var(--tui-shadow);
+    flex: 0 0 100%;
+
+    &[data-appearance='onLight'] {
+        background: var(--tui-base-01);
+        color: var(--tui-text-01);
+    }
+
+    &[data-appearance='onDark'] {
+        background: var(--tui-base-07);
+        color: var(--tui-base-01);
+    }
+}
+
+.t-wrapper {
+    display: flex;
+    width: 100%;
+}
+
+.t-container {
+    position: relative;
+    margin: 0 auto;
+
+    &.t-container_adaptive {
+        @media @tui-desktop-lg-min {
+            width: 69rem;
+        }
+
+        @media @tui-desktop {
+            width: 51.5rem;
+        }
+
+        @media @tui-mobile {
+            width: 100%;
+            padding: 0 1rem;
+            box-sizing: border-box;
+        }
+    }
+
+    @media @tui-desktop-lg-min {
+        width: 69rem;
+    }
+
+    @media @tui-desktop {
+        width: 51.5rem;
+        padding: 0 3rem;
+    }
+}
+
+.t-inner {
+    display: flex;
+    align-items: center;
+    height: 4.5rem;
+    width: 100%;
+    overflow: hidden;
+
+    :host-context(tui-root._mobile) & {
+        height: 5.75rem;
+    }
+}
+
+.t-close-button {
+    margin-left: 1.5rem;
+}
+
+.t-content {
+    width: 100%;
+    flex: 1 1 0;
+}
