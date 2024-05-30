@@ -1,8 +1,12 @@
+import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiContext, TuiHandler} from '@taiga-ui/cdk';
-import {TUI_DEFAULT_MATCHER, tuiIsNumber} from '@taiga-ui/cdk';
+import {TUI_DEFAULT_MATCHER, tuiIsNumber, TuiLetDirective} from '@taiga-ui/cdk';
+import {TuiDataListDirective, TuiTextfieldControllerModule} from '@taiga-ui/core';
+import {TuiDataListWrapperComponent} from '@taiga-ui/kit';
+import {TuiMultiSelectModule} from '@taiga-ui/legacy';
 import type {Observable} from 'rxjs';
 import {map, shareReplay, startWith, Subject, switchMap, timer} from 'rxjs';
 
@@ -16,11 +20,20 @@ const DICTIONARY = [
 ];
 
 @Component({
-    selector: 'tui-multi-select-example-4',
+    standalone: true,
+    imports: [
+        TuiMultiSelectModule,
+        TuiLetDirective,
+        AsyncPipe,
+        ReactiveFormsModule,
+        TuiTextfieldControllerModule,
+        TuiDataListWrapperComponent,
+        TuiDataListDirective,
+    ],
     templateUrl: './index.html',
     changeDetection,
 })
-export class TuiMultiSelectExample4 {
+export default class ExampleComponent {
     // Server request emulation
     private readonly server$ = timer(5000).pipe(
         map(() => DICTIONARY),

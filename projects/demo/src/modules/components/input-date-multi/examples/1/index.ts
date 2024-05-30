@@ -1,16 +1,19 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDay} from '@taiga-ui/cdk';
+import {TuiTextfieldControllerModule} from '@taiga-ui/core';
+import {TuiInputDateMultiModule} from '@taiga-ui/legacy';
 
 @Component({
-    selector: 'tui-input-date-multi-example-1',
+    standalone: true,
+    imports: [ReactiveFormsModule, TuiInputDateMultiModule, TuiTextfieldControllerModule],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class TuiInputDateMultiExample1 {
+export default class ExampleComponent {
     protected readonly testForm = new FormGroup({
         testValue: new FormControl([
             new TuiDay(2017, 0, 7),

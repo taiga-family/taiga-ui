@@ -1,0 +1,228 @@
+<tui-doc-page
+    header="Select"
+    package="KIT"
+    type="components"
+>
+    <ng-template pageTab>
+        <div class="tui-space_bottom-3">
+            <code>Select</code>
+            is a field with dropdown to choose one item.
+        </div>
+
+        <tui-doc-example
+            id="base"
+            heading="String array"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample: 'html,ts'"
+        >
+            <tui-notification class="tui-space_bottom-4">
+                If you need to set some attributes or listen to events on native
+                <code>input</code>
+                , you can put it inside with
+                <code>Textfield</code>
+                directive as shown below
+            </tui-notification>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="template"
+            heading="Custom template"
+            [component]="2 | tuiComponent"
+            [content]="2 | tuiExample"
+        />
+
+        <tui-doc-example
+            id="delegate"
+            heading="Item delegate"
+            [component]="3 | tuiComponent"
+            [content]="3 | tuiExample"
+        />
+
+        <tui-doc-example
+            id="datalist"
+            heading="DataList"
+            [component]="4 | tuiComponent"
+            [content]="4 | tuiExample"
+        />
+
+        <tui-doc-example
+            id="id"
+            heading="ID only"
+            [component]="5 | tuiComponent"
+            [content]="5 | tuiExample"
+        />
+
+        <tui-doc-example
+            id="wrapper"
+            heading="DataListWrapper"
+            [component]="6 | tuiComponent"
+            [content]="6 | tuiExample"
+        />
+
+        <tui-doc-example
+            id="complex"
+            heading="Complex dropdown"
+            [component]="7 | tuiComponent"
+            [content]="7 | tuiExample"
+        />
+
+        <tui-doc-example
+            id="virtual"
+            heading="Virtual scroll"
+            [component]="8 | tuiComponent"
+            [content]="8 | tuiExample"
+            [description]="cdkVirtualScrollDescription"
+        >
+            <ng-template #cdkVirtualScrollDescription>
+                You can use
+                <code>Select</code>
+                with
+                <code>ScrollingModule</code>
+                from
+                <a
+                    href="https://material.angular.io/cdk/scrolling/overview"
+                    rel="noreferrer"
+                    target="_blank"
+                    tuiLink
+                >
+                    &#64;angular/cdk/scrolling
+                </a>
+                .
+            </ng-template>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="accounts"
+            heading="Accounts list"
+            [component]="9 | tuiComponent"
+            [content]="example9"
+        />
+
+        <tui-doc-example
+            id="options-stringify"
+            heading="Options (stringify)"
+            [component]="10 | tuiComponent"
+            [content]="10 | tuiExample: 'html,ts'"
+        />
+
+        <tui-doc-example
+            id="native-select"
+            heading="Native select"
+            [component]="11 | tuiComponent"
+            [content]="11 | tuiExample: 'html,ts'"
+        >
+            <tui-notification class="tui-space_bottom-4">
+                You can enable native select on mobile devices by putting
+                <code>select</code>
+                inside with
+                <code>tuiSelect</code>
+                directive as shown below
+            </tui-notification>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo [control]="control">
+            <ng-template>
+                <tui-select
+                    [focusable]="focusable"
+                    [formControl]="control"
+                    [identityMatcher]="identityMatcher"
+                    [pseudoActive]="pseudoPressed"
+                    [pseudoFocus]="pseudoFocused"
+                    [pseudoHover]="pseudoHovered"
+                    [pseudoInvalid]="pseudoInvalid"
+                    [readOnly]="readOnly"
+                    [tuiDropdownAlign]="dropdownAlign"
+                    [tuiDropdownDirection]="dropdownDirection"
+                    [tuiDropdownLimitWidth]="dropdownLimitWidth"
+                    [tuiDropdownMaxHeight]="dropdownMaxHeight"
+                    [tuiDropdownMinHeight]="dropdownMinHeight"
+                    [tuiDropdownOffset]="dropdownOffset"
+                    [tuiDropdownOpen]="!!(dropdownOpen | async)"
+                    [tuiHintAppearance]="hintAppearance"
+                    [tuiHintContent]="hintContent"
+                    [tuiHintDirection]="hintDirection"
+                    [tuiTextfieldCleaner]="cleaner"
+                    [tuiTextfieldCustomContent]="customContent"
+                    [tuiTextfieldFiller]="filler"
+                    [tuiTextfieldIconLeft]="iconLeft"
+                    [tuiTextfieldLabelOutside]="labelOutside"
+                    [tuiTextfieldSize]="size"
+                    [valueContent]="valueContent"
+                    (tuiDropdownOpenChange)="dropdownOpen.next($event)"
+                >
+                    Choose an account
+                    <tui-data-list-wrapper
+                        *tuiDataList
+                        [items]="items"
+                    />
+                </tui-select>
+            </ng-template>
+        </tui-doc-demo>
+
+        <ng-template
+            #valueTemplateContent
+            let-item
+        >
+            <tui-svg
+                src="tuiIconCheck"
+                class="icon"
+            />
+            <div class="text-overflow">{{ item }}</div>
+        </ng-template>
+        <div>
+            <p>
+                Set a value with copied object from items to check
+                <code>identityMatcher</code>
+                :
+            </p>
+
+            <button
+                size="m"
+                tuiButton
+                type="button"
+                (click)="setValue()"
+            >
+                Set
+            </button>
+        </div>
+
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="disabled"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="disabled"
+            >
+                Disabled state (use
+                <code>formControl.disable()</code>
+                )
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="identityMatcher"
+                documentationPropertyType="TuiIdentityMatcher"
+                [documentationPropertyValues]="identityMatcherVariants"
+                [(documentationPropertyValue)]="identityMatcher"
+            >
+                Function that matches value and items, e.g. if objects are copied. Uses
+                <code>===</code>
+                by default.
+
+                <strong>Must be a pure function</strong>
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="valueContent"
+                documentationPropertyType="PolymorpheusContent<TuiValueContentContext<T>>"
+                [documentationPropertyValues]="valueTemplateVariants"
+                [(documentationPropertyValue)]="selectedValueTemplate"
+            >
+                A template for custom view of selected value
+            </ng-template>
+        </tui-doc-documentation>
+        <inherited-documentation [dropdown]="true" />
+    </ng-template>
+
+    <tui-setup *pageTab />
+</tui-doc-page>

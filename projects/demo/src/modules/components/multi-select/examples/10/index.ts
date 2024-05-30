@@ -1,20 +1,28 @@
 import {Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiBooleanHandler, TuiStringHandler} from '@taiga-ui/cdk';
+import {TuiHintOptionsDirective, TuiTextfieldControllerModule} from '@taiga-ui/core';
+import {TuiMultiSelectModule} from '@taiga-ui/legacy';
 
 interface Item {
     readonly id: number;
     readonly name: string;
 }
 @Component({
-    selector: 'tui-multi-select-example-10',
+    standalone: true,
+    imports: [
+        TuiMultiSelectModule,
+        ReactiveFormsModule,
+        TuiHintOptionsDirective,
+        TuiTextfieldControllerModule,
+    ],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class TuiMultiSelectExample10 {
+export default class ExampleComponent {
     protected itemStringControl = new FormControl<string[]>([]);
     protected itemControl = new FormControl<Item[]>([]);
     protected itemStringGroupControl = new FormControl<string[]>([]);

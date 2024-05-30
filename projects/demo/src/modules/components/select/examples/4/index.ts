@@ -1,17 +1,37 @@
+import {NgForOf} from '@angular/common';
 import {Component, inject} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAlertService} from '@taiga-ui/core';
+import {
+    TuiAlertService,
+    TuiDataListComponent,
+    TuiDataListDirective,
+    TuiOptGroupDirective,
+    TuiOptionComponent,
+    TuiSvgComponent,
+} from '@taiga-ui/core';
 import type {TuiSelectComponent} from '@taiga-ui/legacy';
+import {TuiSelectModule} from '@taiga-ui/legacy';
 
 @Component({
-    selector: 'tui-select-example-4',
+    standalone: true,
+    imports: [
+        TuiSelectModule,
+        FormsModule,
+        TuiDataListComponent,
+        TuiDataListDirective,
+        TuiOptGroupDirective,
+        NgForOf,
+        TuiOptionComponent,
+        TuiSvgComponent,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiSelectExample4 {
+export default class ExampleComponent {
     private readonly alerts = inject(TuiAlertService);
 
     protected readonly pythons = [

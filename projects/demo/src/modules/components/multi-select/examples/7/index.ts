@@ -1,15 +1,39 @@
+import {
+    CdkFixedSizeVirtualScroll,
+    CdkVirtualForOf,
+    CdkVirtualScrollViewport,
+} from '@angular/cdk/scrolling';
 import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {
+    TuiDataListComponent,
+    TuiDataListDirective,
+    TuiOptionComponent,
+    TuiScrollableDirective,
+} from '@taiga-ui/core';
+import {TuiMultiSelectModule} from '@taiga-ui/legacy';
 
 @Component({
-    selector: 'tui-multi-select-example-7',
+    standalone: true,
+    imports: [
+        TuiMultiSelectModule,
+        FormsModule,
+        CdkVirtualScrollViewport,
+        TuiDataListDirective,
+        TuiScrollableDirective,
+        CdkFixedSizeVirtualScroll,
+        TuiDataListComponent,
+        CdkVirtualForOf,
+        TuiOptionComponent,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiMultiSelectExample7 {
+export default class ExampleComponent {
     protected value: readonly string[] = [];
 
     protected readonly countries = [

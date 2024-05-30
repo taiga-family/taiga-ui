@@ -1,10 +1,15 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {tuiLoaderOptionsProvider} from '@taiga-ui/core';
+import {
+    TuiButtonDirective,
+    TuiLoaderComponent,
+    tuiLoaderOptionsProvider,
+} from '@taiga-ui/core';
 
 @Component({
-    selector: 'tui-loader-example-4',
+    standalone: true,
+    imports: [TuiLoaderComponent, TuiButtonDirective],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
@@ -17,4 +22,4 @@ import {tuiLoaderOptionsProvider} from '@taiga-ui/core';
         }),
     ],
 })
-export class TuiLoaderExample4 {}
+export default class ExampleComponent {}

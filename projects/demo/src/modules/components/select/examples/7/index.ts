@@ -1,9 +1,19 @@
+import {NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiStringHandler} from '@taiga-ui/cdk';
 import {EMPTY_ARRAY} from '@taiga-ui/cdk';
 import type {TuiValueContentContext} from '@taiga-ui/core';
+import {
+    TuiDataListComponent,
+    TuiDataListDirective,
+    TuiOptGroupDirective,
+    TuiOptionComponent,
+    TuiTitleDirective,
+} from '@taiga-ui/core';
+import {TuiMultiSelectModule, TuiSelectModule} from '@taiga-ui/legacy';
 
 interface Account {
     readonly account: string;
@@ -42,13 +52,24 @@ const CASH: Account = {
 };
 
 @Component({
-    selector: 'tui-select-example-7',
+    standalone: true,
+    imports: [
+        TuiSelectModule,
+        FormsModule,
+        TuiDataListDirective,
+        TuiDataListComponent,
+        TuiOptGroupDirective,
+        TuiOptionComponent,
+        TuiMultiSelectModule,
+        NgForOf,
+        TuiTitleDirective,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiSelectExample7 {
+export default class ExampleComponent {
     protected value = EMPTY_ARRAY;
 
     protected readonly all = EMPTY_ARRAY;

@@ -356,16 +356,12 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.Sensitive,
-        loadChildren: async () =>
-            (await import('../directives/sensitive/sensitive.module'))
-                .ExampleTuiSensitiveModule,
+        loadComponent: async () => import('../directives/sensitive'),
         title: 'Sensitive',
     }),
     route({
         path: DemoRoute.Skeleton,
-        loadChildren: async () =>
-            (await import('../directives/skeleton/skeleton.module'))
-                .ExampleTuiSkeletonModule,
+        loadComponent: async () => import('../directives/skeleton'),
         title: 'Skeleton',
     }),
     route({
@@ -385,9 +381,7 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.InputDateMulti,
-        loadChildren: async () =>
-            (await import('../components/input-date-multi/input-date-multi.module'))
-                .ExampleTuiInputDateMultiModule,
+        loadComponent: async () => import('../components/input-date-multi'),
         title: 'InputDateMulti',
     }),
     route({
@@ -402,9 +396,7 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.InputCopy,
-        loadChildren: async () =>
-            (await import('../components/input-copy/input-copy.module'))
-                .ExampleTuiInputCopyModule,
+        loadComponent: async () => import('../components/input-copy'),
         title: 'InputCopy',
     }),
     route({
@@ -522,8 +514,7 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.Loader,
-        loadChildren: async () =>
-            (await import('../components/loader/loader.module')).ExampleTuiLoaderModule,
+        loadComponent: async () => import('../components/loader'),
         title: 'Loader',
     }),
     route({
@@ -533,8 +524,7 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.Push,
-        loadChildren: async () =>
-            (await import('../components/push/push.module')).ExampleTuiPushModule,
+        loadComponent: async () => import('../components/push'),
         title: 'Push',
     }),
     route({
@@ -559,16 +549,12 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.MultiSelect,
-        loadChildren: async () =>
-            (await import('../components/multi-select/multi-select.module'))
-                .ExampleTuiMultiSelectModule,
+        loadComponent: async () => import('../components/multi-select'),
         title: 'MultiSelect',
     }),
     route({
         path: DemoRoute.Pagination,
-        loadChildren: async () =>
-            (await import('../components/pagination/pagination.module'))
-                .ExampleTuiPaginationModule,
+        loadComponent: async () => import('../components/pagination'),
         title: 'Pagination',
     }),
     route({
@@ -588,8 +574,7 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.Range,
-        loadChildren: async () =>
-            (await import('../components/range/range.module')).ExampleTuiRangeModule,
+        loadComponent: async () => import('../components/range'),
         title: 'Range',
     }),
     route({
@@ -599,15 +584,12 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.Select,
-        loadChildren: async () =>
-            (await import('../components/select/select.module')).ExampleTuiSelectModule,
+        loadComponent: async () => import('../components/select'),
         title: 'Select',
     }),
     route({
         path: DemoRoute.Scrollbar,
-        loadChildren: async () =>
-            (await import('../components/scrollbar/scrollbar.module'))
-                .ExampleTuiScrollbarModule,
+        loadComponent: async () => import('../components/scrollbar'),
         title: 'Scrollbar',
     }),
     route({
@@ -622,8 +604,7 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.Slider,
-        loadChildren: async () =>
-            (await import('../components/slider/slider.module')).ExampleTuiSliderModule,
+        loadComponent: async () => import('../components/slider'),
         title: 'Slider',
     }),
     route({

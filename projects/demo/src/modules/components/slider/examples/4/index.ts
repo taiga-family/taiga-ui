@@ -1,11 +1,13 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiSliderComponent} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-slider-example-4',
+    standalone: true,
+    imports: [TuiSliderComponent],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class TuiSliderExample4 {}
+export default class ExampleComponent {}

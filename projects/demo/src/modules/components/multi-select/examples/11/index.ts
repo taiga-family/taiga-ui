@@ -1,17 +1,31 @@
+import {NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiContext} from '@taiga-ui/cdk';
+import {TuiDataListDirective, TuiTextfieldControllerModule} from '@taiga-ui/core';
+import {TuiDataListWrapperComponent} from '@taiga-ui/kit';
+import {TuiMultiSelectModule, TuiTagModule} from '@taiga-ui/legacy';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 @Component({
-    selector: 'tui-multi-select-example-11',
+    standalone: true,
+    imports: [
+        TuiMultiSelectModule,
+        TuiTextfieldControllerModule,
+        FormsModule,
+        TuiDataListWrapperComponent,
+        TuiDataListDirective,
+        NgForOf,
+        TuiTagModule,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiMultiSelectExample11 {
+export default class ExampleComponent {
     protected readonly items = [
         'Luke Skywalker',
         'Leia Organa Solo',

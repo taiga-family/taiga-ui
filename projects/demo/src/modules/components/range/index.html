@@ -1,0 +1,168 @@
+<tui-doc-page
+    header="Range"
+    package="KIT"
+    type="components"
+>
+    <ng-template pageTab>
+        <p>Component allows to choose a part of a range</p>
+
+        <tui-doc-example
+            id="base"
+            heading="Basic"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample: 'html,ts'"
+        />
+
+        <tui-doc-example
+            id="sizes"
+            heading="Sizes"
+            [component]="2 | tuiComponent"
+            [content]="2 | tuiExample"
+            [fullsize]="true"
+        />
+
+        <tui-doc-example
+            id="segments"
+            heading="Visual segments + labels for ticks"
+            [component]="3 | tuiComponent"
+            [content]="3 | tuiExample"
+        >
+            <tui-notification class="tui-space_bottom-8">
+                <p class="tui-space_top-0">
+                    Use mixin
+                    <code>tui-slider-ticks-labels</code>
+                    to arrange ticks' labels (it places them strictly below ticks).
+                </p>
+                <p>
+                    The mixin accepts only a single argument – size of the slider (
+                    <code>m</code>
+                    or
+                    <code>s</code>
+                    ).
+                </p>
+            </tui-notification>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="key-steps"
+            heading="KeySteps"
+            [component]="4 | tuiComponent"
+            [content]="4 | tuiExample"
+        />
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo [control]="control">
+            <ng-template>
+                <tui-range
+                    [formControl]="control"
+                    [keySteps]="keySteps"
+                    [max]="max"
+                    [min]="min"
+                    [segments]="segments"
+                    [size]="size"
+                    [step]="step"
+                />
+            </ng-template>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="disabled"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="disabled"
+            >
+                Disabled state (use
+                <code>formControl.disable()</code>
+                )
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="min"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="min"
+            >
+                The lowest value in the range of permitted values.
+
+                <p>
+                    The default is
+                    <code>0</code>
+                    .
+                </p>
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="max"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="max"
+            >
+                The greatest value in the range of permitted values.
+
+                <p>
+                    The default is
+                    <code>100</code>
+                    .
+                </p>
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="step"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="step"
+            >
+                A number that specifies the granularity that the value must adhere.
+
+                <p>
+                    The default is
+                    <code>1</code>
+                    .
+                </p>
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="size"
+                documentationPropertyType="TuiSizeS"
+                [documentationPropertyValues]="sizeVariants"
+                [(documentationPropertyValue)]="size"
+            >
+                Size
+
+                <p>
+                    The default is
+                    <code>m</code>
+                    .
+                </p>
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="segments"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="segments"
+            >
+                A number of visual segments.
+
+                <p>
+                    The default is
+                    <code>1</code>
+                    (no ticks).
+                </p>
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="keySteps"
+                documentationPropertyType="TuiKeySteps | null"
+                [documentationPropertyValues]="keyStepsVariants"
+                [(documentationPropertyValue)]="keySteps"
+            >
+                Anchor points of non-uniform format between value and position.
+
+                <p>
+                    The default is
+                    <code>null</code>
+                    .
+                </p>
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <tui-setup *pageTab />
+</tui-doc-page>
