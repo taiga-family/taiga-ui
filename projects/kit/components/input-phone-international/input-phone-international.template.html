@@ -1,0 +1,74 @@
+<ng-container *tuiLet="options.metadata | async as phoneMetadata">
+    <div
+        *ngIf="countriesNames$ | async as countriesNames"
+        tuiGroup
+        [tuiDropdown]="dropdown"
+        [tuiDropdownEnabled]="!readOnly"
+        [(tuiDropdownOpen)]="open"
+        (tuiActiveZoneChange)="onActiveZone($event)"
+    >
+        <tui-textfield
+            tuiChevron
+            class="t-country-select tui-group__auto-width-item"
+            [content]="flag"
+        >
+            <select
+                tuiTextfield
+                [disabled]="disabled"
+                [readOnly]="readOnly"
+            ></select>
+
+            <ng-template #flag>
+                <img
+                    *ngIf="countryIsoCode$ | async as countryIsoCode"
+                    class="t-flag"
+                    [alt]="countriesNames[countryIsoCode]"
+                    [src]="countryIsoCode | tuiFlag"
+                />
+            </ng-template>
+        </tui-textfield>
+
+        <tui-primitive-textfield
+            class="t-input-phone tui-group__auto-width-item"
+            [disabled]="disabled"
+            [focusable]="focusable"
+            [invalid]="computedInvalid"
+            [maskito]="mask$ | async"
+            [pseudoFocus]="pseudoFocus"
+            [pseudoHover]="pseudoHover"
+            [readOnly]="readOnly"
+            [(value)]="textfieldValue"
+            (beforeinput.capture)="onPaste($event, phoneMetadata)"
+            (focusedChange)="$event && phoneMetadata && !readOnly && onFocus(phoneMetadata)"
+            (valueChange)="onValueChange($event, phoneMetadata)"
+        >
+            <ng-content />
+            <input
+                autocomplete="new-password"
+                tuiTextfieldLegacy
+            />
+        </tui-primitive-textfield>
+
+        <ng-template #dropdown>
+            <tui-data-list>
+                <button
+                    *ngFor="let item of countries"
+                    tuiOption
+                    (click)="onItemClick(item)"
+                >
+                    <img
+                        alt=""
+                        class="t-country-item-flag"
+                        [src]="item | tuiFlag"
+                    />
+                    <span class="t-country-item-name">
+                        {{ countriesNames[item] }}
+                    </span>
+                    <span class="t-country-item-code">
+                        {{ item | tuiGetCountryCallingCode: phoneMetadata }}
+                    </span>
+                </button>
+            </tui-data-list>
+        </ng-template>
+    </div>
+</ng-container>

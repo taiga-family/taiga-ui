@@ -20,6 +20,7 @@
         "@maskito/angular": "^2.4.0",
         "@maskito/core": "^2.4.0",
         "@maskito/kit": "^2.4.0",
+        "@maskito/phone": "^2.4.0",
         "@ng-web-apis/common": "^3.0.6",
         "@ng-web-apis/intersection-observer": "^3.2.0",
         "@ng-web-apis/mutation-observer": "^3.1.0",

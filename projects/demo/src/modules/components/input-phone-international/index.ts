@@ -5,10 +5,8 @@ import {TuiDemo} from '@demo/utils';
 import {tuiProvide} from '@taiga-ui/cdk';
 import {TuiDropdownModule, TuiHint, TuiTextfieldControllerModule} from '@taiga-ui/core';
 import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
-import {
-    TUI_ALL_COUNTRIES_ISO_CODES,
-    TuiInputPhoneInternationalComponent,
-} from '@taiga-ui/legacy';
+import {TuiInputPhoneInternationalComponent} from '@taiga-ui/kit';
+import {TUI_ALL_COUNTRIES_ISO_CODES} from '@taiga-ui/legacy';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
 import {AbstractExampleTuiControl} from '../abstract/control';

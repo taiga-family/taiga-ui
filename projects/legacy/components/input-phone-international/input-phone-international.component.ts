@@ -35,13 +35,14 @@ import {
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
-import {TUI_COUNTRIES, TUI_COUNTRIES_MASKS} from '@taiga-ui/kit';
+import {TUI_COUNTRIES} from '@taiga-ui/kit';
 import {TUI_ARROW, TuiArrowComponent} from '@taiga-ui/legacy/components/arrow';
 import {
     TuiInputPhoneComponent,
     TuiInputPhoneModule,
 } from '@taiga-ui/legacy/components/input-phone';
 import {TuiIsoToCountryCodePipe, TuiToCountryCodePipe} from '@taiga-ui/legacy/pipes';
+import {TUI_COUNTRIES_MASKS} from '@taiga-ui/legacy/tokens';
 import {
     FIXED_DROPDOWN_CONTROLLER_PROVIDER,
     tuiGetMaxAllowedPhoneLength,

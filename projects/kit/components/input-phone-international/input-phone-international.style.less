@@ -1,0 +1,60 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+@flag-width: 1.75rem;
+@flag-height: 1.25rem;
+
+:host {
+    display: block;
+
+    &._disabled {
+        pointer-events: none;
+    }
+}
+
+.t-country-select {
+    width: 3.625rem;
+
+    & select:not(:disabled):not(._readonly) {
+        cursor: pointer;
+    }
+
+    &[data-size='m'] {
+        width: 5.5rem;
+    }
+
+    &[data-size='s'] {
+        width: 2rem;
+
+        .t-flag {
+            margin-left: -@space * 4;
+        }
+    }
+}
+
+.t-input-phone {
+    flex: 1;
+}
+
+.t-flag {
+    .fullsize(absolute, inset);
+
+    left: 0.5rem;
+    width: @flag-width;
+    height: @flag-height;
+    margin: auto;
+}
+
+.t-country-item-flag {
+    width: @flag-width;
+    height: @flag-height;
+}
+
+.t-country-item-name {
+    margin-left: @space * 3;
+    margin-right: auto;
+}
+
+.t-country-item-code {
+    color: var(--tui-text-02);
+    margin-right: @space;
+}
