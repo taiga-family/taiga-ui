@@ -19,29 +19,54 @@
                     role="menuitem"
                     tuiOption
                 >
-                    Send
+                    <span>
+                        <tui-icon
+                            icon="tuiIconSendLarge"
+                            class="tui-space_right-3"
+                        />
+                        Send
+                    </span>
                 </button>
                 <button
                     role="menuitem"
                     tuiOption
                 >
-                    Delete
+                    <span>
+                        <tui-icon
+                            icon="tuiIconTrashLarge"
+                            class="tui-space_right-3"
+                        />
+                        Delete
+                    </span>
                 </button>
             </tui-opt-group>
             <tui-opt-group>
                 <button
                     role="menuitem"
                     tuiOption
+                    [disabled]="selected === items.length"
                     (click)="control.setValue(items)"
                 >
-                    Select all
+                    <span>
+                        <tui-icon
+                            icon="tuiIconGridLarge"
+                            class="tui-space_right-3"
+                        />
+                        Select all
+                    </span>
                 </button>
                 <button
                     role="menuitem"
                     tuiOption
                     (click)="close()"
                 >
-                    Select none and close
+                    <span>
+                        <tui-icon
+                            icon="tuiIconCloseLarge"
+                            class="tui-space_right-3"
+                        />
+                        Select none and close
+                    </span>
                 </button>
             </tui-opt-group>
         </tui-data-list>
