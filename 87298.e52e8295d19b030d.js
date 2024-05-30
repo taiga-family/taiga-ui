@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[87298],{87298:n=>{n.exports="```ts\nimport {tuiLoaderOptionsProvider} from '@taiga-ui/core';\n// ...\n\n@Component({\n  standalone: true,\n  providers: [\n    tuiLoaderOptionsProvider({\n      size: 'l',\n      inheritColor: false,\n      overlay: true,\n    }),\n  ],\n})\nexport class MyComponent {}\n```\n"}}]);

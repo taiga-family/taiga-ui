@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[77601],{77601:e=>{e.exports=".box {\n    width: 16rem;\n    height: 16rem;\n    border: 1px solid var(--tui-base-09);\n}\n\n.line {\n    padding: 0 0.6875rem;\n    white-space: nowrap;\n}\n"}}]);

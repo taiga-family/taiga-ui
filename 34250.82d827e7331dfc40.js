@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[34250],{34250:l=>{l.exports="```html\n<tui-scrollbar>\n  <ul>\n    <li>Item 1</li>\n    <li>Item 2</li>\n    <li>Item 3</li>\n  </ul>\n</tui-scrollbar>\n```\n"}}]);
