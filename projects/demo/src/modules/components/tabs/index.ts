@@ -1,19 +1,27 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiDemo} from '@demo/utils';
 import {tuiDocExampleOptionsProvider} from '@taiga-ui/addon-doc';
+import {TuiItemDirective} from '@taiga-ui/cdk';
 import type {TuiSizeL} from '@taiga-ui/core';
+import {TuiNotificationComponent} from '@taiga-ui/core';
+import {TuiTabDirective, TuiTabsWithMoreComponent} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'example-tui-tabs',
-    templateUrl: './tabs.template.html',
+    standalone: true,
+    imports: [
+        TuiDemo,
+        TuiNotificationComponent,
+        TuiTabsWithMoreComponent,
+        TuiItemDirective,
+        TuiTabDirective,
+    ],
+    templateUrl: './index.html',
     changeDetection,
     providers: [tuiDocExampleOptionsProvider({fullsize: true})],
 })
-export class ExampleTuiTabsComponent {
+export default class PageComponent {
     protected buttons = ['Button 1', 'Button 2', 'Button 3', 'Button 4'];
-
-    protected readonly import = import('./examples/import/import.md?raw');
-    protected readonly template = import('./examples/import/template.md?raw');
 
     protected readonly moreContentVariants = ['', 'And more'];
 

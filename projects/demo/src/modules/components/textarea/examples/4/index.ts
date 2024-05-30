@@ -1,10 +1,18 @@
+import {AsyncPipe} from '@angular/common';
 import type {AfterViewInit} from '@angular/core';
 import {Component} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiMarkControlAsTouchedAndValidate} from '@taiga-ui/cdk';
-import {TUI_VALIDATION_ERRORS} from '@taiga-ui/kit';
+import {
+    TuiErrorComponent,
+    TuiHintOptionsDirective,
+    TuiLabelDirective,
+    TuiTextfieldControllerModule,
+} from '@taiga-ui/core';
+import {TUI_VALIDATION_ERRORS, TuiFieldErrorPipeModule} from '@taiga-ui/kit';
+import {TuiTextareaModule} from '@taiga-ui/legacy';
 
 const LONG_TEXT_EXAMPLE = `
 In Java: everything is an object.
@@ -17,7 +25,17 @@ export function maxLengthMessageFactory(context: {requiredLength: string}): stri
 }
 
 @Component({
-    selector: 'tui-textarea-example-4',
+    standalone: true,
+    imports: [
+        ReactiveFormsModule,
+        TuiLabelDirective,
+        TuiTextareaModule,
+        TuiHintOptionsDirective,
+        TuiTextfieldControllerModule,
+        TuiErrorComponent,
+        TuiFieldErrorPipeModule,
+        AsyncPipe,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
@@ -32,7 +50,7 @@ export function maxLengthMessageFactory(context: {requiredLength: string}): stri
         },
     ],
 })
-export class TuiTextareaExample4 implements AfterViewInit {
+export default class ExampleComponent implements AfterViewInit {
     protected readonly maxLength = 97;
 
     protected readonly testForm = new FormGroup({

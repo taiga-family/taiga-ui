@@ -1,16 +1,29 @@
+import {NgForOf, NgIf} from '@angular/common';
 import {Component, inject} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAlertService} from '@taiga-ui/core';
+import {TuiAlertService, TuiIconComponent} from '@taiga-ui/core';
+import {TuiTabDirective, TuiTabsHorizontalDirective} from '@taiga-ui/kit';
+import {TuiInputNumberModule} from '@taiga-ui/legacy';
 
 @Component({
-    selector: 'tui-tabs-example-4',
+    standalone: true,
+    imports: [
+        TuiTabsHorizontalDirective,
+        TuiTabDirective,
+        TuiIconComponent,
+        NgIf,
+        NgForOf,
+        TuiInputNumberModule,
+        FormsModule,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiTabsExample4 {
+export default class ExampleComponent {
     private readonly alerts = inject(TuiAlertService);
 
     protected activeItemIndex = 0;
