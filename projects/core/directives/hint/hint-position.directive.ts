@@ -95,10 +95,10 @@ export class TuiHintPositionDirective extends TuiPositionAccessor {
         const viewport = this.viewport.getClientRect();
 
         return (
-            top > OFFSET &&
-            left > OFFSET &&
-            top + height < viewport.bottom - OFFSET &&
-            left + width < viewport.right - OFFSET
+            top > OFFSET / 4 &&
+            left > OFFSET / 4 &&
+            top + height < viewport.bottom - OFFSET / 4 &&
+            left + width < viewport.right - OFFSET / 4
         );
     }
 }

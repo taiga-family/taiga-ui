@@ -1,6 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {TuiScrollableDirective, TuiScrollbarComponent} from '@taiga-ui/core';
+import {TuiHintAsideDirective} from '@taiga-ui/experimental/components/navigation/hint-aside.directive';
 import {TuiFadeDirective} from '@taiga-ui/kit';
 
 import {TuiAsideComponent} from './aside.component';
@@ -22,6 +23,7 @@ import {TuiNavComponent} from './nav.component';
         TuiMainComponent,
         TuiAsideComponent,
         TuiNavComponent,
+        TuiHintAsideDirective,
     ],
     exports: [
         TuiHeaderComponent,
@@ -29,6 +31,7 @@ import {TuiNavComponent} from './nav.component';
         TuiMainComponent,
         TuiAsideComponent,
         TuiNavComponent,
+        TuiHintAsideDirective,
     ],
 })
 export class TuiNavigationModule {}

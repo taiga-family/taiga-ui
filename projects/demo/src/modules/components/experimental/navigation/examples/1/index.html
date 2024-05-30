@@ -65,6 +65,7 @@
             <button
                 iconLeft="tuiIconHome"
                 tuiButton
+                tuiHintAside
             >
                 <span tuiFade>A very very long product name</span>
             </button>
@@ -72,6 +73,7 @@
         <button
             iconLeft="tuiIconSearch"
             tuiButton
+            tuiHintAside
         >
             Search
         </button>
@@ -81,6 +83,7 @@
             routerLinkActive="active"
             tuiAppearance="flat"
             tuiButton
+            tuiHintAside
         >
             Groups
         </a>
@@ -113,6 +116,7 @@
         <button
             iconLeft="tuiIconHeart"
             tuiButton
+            tuiHintAside
         >
             <span tuiFade>By default ellipsis is used but you can use fade too</span>
         </button>
@@ -120,6 +124,7 @@
         <button
             iconLeft="tuiIconPlus"
             tuiButton
+            tuiHintAside
         >
             Add
         </button>
@@ -127,15 +132,17 @@
             <button
                 iconLeft="tuiIconStar"
                 tuiButton
+                tuiHintAside
             >
                 Favorites
             </button>
             <button
                 tuiButton
+                tuiHintAside
                 [iconLeft]="expanded ? 'tuiIconChevronLeft' : 'tuiIconChevronRight'"
                 (click)="expanded = !expanded"
             >
-                Collapse
+                {{ expanded ? 'Collapse' : 'Expand' }}
             </button>
         </footer>
     </aside>
