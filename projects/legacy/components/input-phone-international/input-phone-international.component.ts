@@ -144,10 +144,9 @@ export class TuiInputPhoneInternationalComponent
         }
 
         const newValue = event.data || '';
-        const prefixedValue =
-            newValue.startsWith(CHAR_PLUS) || newValue.startsWith('8')
-                ? newValue
-                : CHAR_PLUS + newValue;
+        const prefixedValue = newValue.startsWith(CHAR_PLUS)
+            ? newValue
+            : CHAR_PLUS + newValue;
 
         if (validatePhoneNumberLength(prefixedValue) === 'TOO_SHORT') {
             return;

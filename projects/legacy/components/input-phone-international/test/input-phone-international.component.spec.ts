@@ -114,9 +114,9 @@ describe('InputPhoneInternational', () => {
         });
 
         it('should set country code on paste event', async () => {
-            await paste('88005553535');
+            await paste('+77777777777');
 
-            expect(testComponent.countryIsoCode).toBe('RU');
+            expect(testComponent.countryIsoCode).toBe('KZ');
         });
 
         describe('should set KZ country code on paste event', () => {
@@ -130,12 +130,12 @@ describe('InputPhoneInternational', () => {
         });
 
         it('should replace code 8 on paste event', async () => {
-            await paste('88005553535');
+            await paste('87777777777');
 
             fixture.detectChanges();
             await fixture.whenStable();
 
-            expect(inputPO.value).toBe('+7 800 555-35-35');
+            expect(inputPO.value).toBe('+7 777 777-7777');
         });
 
         it('should update value on paste', async () => {
@@ -148,12 +148,6 @@ describe('InputPhoneInternational', () => {
             await paste('380 (98) 765-4321');
 
             expect(inputPO.value).toBe('+380 98 765-4321');
-        });
-
-        it('should set country code on paste event 8(863)', async () => {
-            await paste('88635553535');
-
-            expect(testComponent.countryIsoCode).toBe('RU');
         });
 
         it('should set country code on paste event +886', async () => {
