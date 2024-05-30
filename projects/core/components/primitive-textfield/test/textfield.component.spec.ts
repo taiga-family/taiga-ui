@@ -10,16 +10,16 @@ describe('Textfield', () => {
         template: `
             <input
                 #auto
-                tuiTextfield
+                tuiTextfieldLegacy
             />
             <input
                 #attr
                 id="attr"
-                tuiTextfield
+                tuiTextfieldLegacy
             />
             <input
                 #bind
-                tuiTextfield
+                tuiTextfieldLegacy
                 [id]="value"
             />
         `,

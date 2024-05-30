@@ -2,7 +2,7 @@
 <form [formGroup]="testForm">
   <tui-input formControlName="testValue">
     Type a text
-    <input tuiTextfield />
+    <input tuiTextfieldLegacy />
   </tui-input>
 </form>
 ```

@@ -2,7 +2,7 @@
 <form [formGroup]="testForm">
   <tui-input-date formControlName="testValue">
     Choose a date
-    <input tuiTextfield />
+    <input tuiTextfieldLegacy />
   </tui-input-date>
 </form>
 ```

@@ -39,7 +39,7 @@ describe('PrimitiveTextfield', () => {
                 [value]="''"
             >
                 <input
-                    tuiTextfield
+                    tuiTextfieldLegacy
                     [attr.placeholder]="'placeholder'"
                 />
             </tui-primitive-textfield>
