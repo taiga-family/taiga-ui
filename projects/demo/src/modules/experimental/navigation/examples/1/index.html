@@ -72,6 +72,8 @@
         <button
             iconLeft="tuiIconSearch"
             tuiButton
+            tuiHint
+            tuiHintAside
         >
             Search
         </button>
@@ -116,6 +118,8 @@
         <button
             iconLeft="tuiIconHeart"
             tuiButton
+            tuiHint
+            tuiHintAside
         >
             <span tuiFade>By default ellipsis is used but you can use fade too</span>
         </button>
@@ -123,6 +127,8 @@
         <button
             iconLeft="tuiIconPlus"
             tuiButton
+            tuiHint
+            tuiHintAside
         >
             Add
         </button>
@@ -130,15 +136,19 @@
             <button
                 iconLeft="tuiIconStar"
                 tuiButton
+                tuiHint
+                tuiHintAside
             >
                 Favorites
             </button>
             <button
                 tuiButton
+                tuiHint
+                tuiHintAside
                 [iconLeft]="expanded ? 'tuiIconChevronLeft' : 'tuiIconChevronRight'"
                 (click)="expanded = !expanded"
             >
-                Collapse
+                {{ expanded ? 'Collapse' : 'Expand' }}
             </button>
         </footer>
     </aside>
