@@ -4,7 +4,7 @@ import {POLYMORPHEUS_CONTEXT, PolymorpheusModule} from '@tinkoff/ng-polymorpheus
 
 @Component({
     standalone: true,
-    selector: 'tui-table-bar-dialog',
+    selector: 'tui-actions-bar-dialog',
     imports: [PolymorpheusModule],
     template: `
         <ng-container *polymorpheusOutlet="context.content; context: context" />
@@ -20,6 +20,6 @@ import {POLYMORPHEUS_CONTEXT, PolymorpheusModule} from '@tinkoff/ng-polymorpheus
     ],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiTableBarDialogComponent {
+export class TuiActionsBarDialogComponent {
     protected readonly context = inject<TuiPopover<void, void>>(POLYMORPHEUS_CONTEXT);
 }

@@ -13,7 +13,7 @@ import {POLYMORPHEUS_CONTEXT, PolymorpheusModule} from '@tinkoff/ng-polymorpheus
 
 @Component({
     standalone: true,
-    selector: 'tui-table-bar',
+    selector: 'tui-actions-bar',
     imports: [
         PolymorpheusModule,
         TuiButtonDirective,
@@ -21,15 +21,15 @@ import {POLYMORPHEUS_CONTEXT, PolymorpheusModule} from '@tinkoff/ng-polymorpheus
         NgIf,
         TuiDataListComponent,
     ],
-    templateUrl: './table-bar.template.html',
-    styleUrls: ['./table-bar.style.less'],
+    templateUrl: './actions-bar.template.html',
+    styleUrls: ['./actions-bar.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [tuiFadeIn, tuiHeightCollapse],
     host: {
         tuiTheme: 'dark',
     },
 })
-export class TuiTableBarComponent {
+export class TuiActionsBarComponent {
     @Input()
     public expanded = false;
 

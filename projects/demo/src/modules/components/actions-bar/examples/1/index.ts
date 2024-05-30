@@ -12,10 +12,10 @@ import {
     TuiLinkDirective,
 } from '@taiga-ui/core';
 import {
+    TuiActionsBarComponent,
+    TuiActionsBarDirective,
     TuiChipDirective,
     TuiFilterComponent,
-    TuiTableBarComponent,
-    TuiTableBarDirective,
 } from '@taiga-ui/kit';
 import {map} from 'rxjs';
 
@@ -23,7 +23,7 @@ import {map} from 'rxjs';
     standalone: true,
     imports: [
         TuiButtonDirective,
-        TuiTableBarComponent,
+        TuiActionsBarComponent,
         TuiDataList,
         NgIf,
         AsyncPipe,
@@ -31,7 +31,7 @@ import {map} from 'rxjs';
         TuiChipDirective,
         FormsModule,
         TuiRepeatTimesDirective,
-        TuiTableBarDirective,
+        TuiActionsBarDirective,
         TuiLinkDirective,
         ReactiveFormsModule,
         KeyValuePipe,

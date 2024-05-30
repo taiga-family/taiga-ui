@@ -7,7 +7,7 @@ import {
     TUI_PLAYWRIGHT_MOBILE_VIEWPORT_WIDTH,
 } from '../../../playwright.options';
 
-test.describe('TableBars', () => {
+test.describe('ActionsBar', () => {
     test.use({
         viewport: {
             width: TUI_PLAYWRIGHT_MOBILE_VIEWPORT_WIDTH,
@@ -17,20 +17,20 @@ test.describe('TableBars', () => {
     });
 
     test('works', async ({page}) => {
-        await tuiGoto(page, '/components/table-bar');
+        await tuiGoto(page, '/components/actions-bar');
         const example = page.locator('#base');
-        const showTableBarButton = example.locator('input').first();
+        const showActionsBarButton = example.locator('input').first();
 
-        await showTableBarButton.click();
-        const tableBarExample = page.locator('tui-table-bar');
+        await showActionsBarButton.click();
+        const actionsBarExample = page.locator('tui-actions-bar');
 
-        await expect(tableBarExample).toHaveScreenshot('01-table-bars-mobile.png');
+        await expect(actionsBarExample).toHaveScreenshot('01-actions-bar-mobile.png');
 
-        const more = tableBarExample.locator('button:has-text("More")');
+        const more = actionsBarExample.locator('button:has-text("More")');
 
         await more.click();
-        await expect(tableBarExample).toHaveScreenshot(
-            '02-table-bars-mobile-expanded.png',
+        await expect(actionsBarExample).toHaveScreenshot(
+            '02-actions-bar-mobile-expanded.png',
         );
     });
 });

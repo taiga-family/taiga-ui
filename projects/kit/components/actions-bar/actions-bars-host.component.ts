@@ -11,11 +11,11 @@ import {
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import type {BehaviorSubject} from 'rxjs';
 
-import {TUI_TABLE_BARS} from './table-bars.token';
+import {TUI_ACTIONS_BARS} from './actions-bars.token';
 
 @Component({
     standalone: true,
-    selector: 'tui-table-bars-host',
+    selector: 'tui-actions-bars-host',
     imports: [AsyncPipe, PolymorpheusModule, NgForOf],
     template: `
         <div
@@ -28,13 +28,13 @@ import {TUI_TABLE_BARS} from './table-bars.token';
             <ng-container *polymorpheusOutlet="item.component; context: item" />
         </div>
     `,
-    styleUrls: ['./table-bars-host.style.less'],
+    styleUrls: ['./actions-bars-host.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [tuiParentAnimation, tuiSlideInTop, tuiFadeIn],
 })
-export class TuiTableBarsHostComponent {
+export class TuiActionsBarsHostComponent {
     protected bars$: BehaviorSubject<ReadonlyArray<TuiPopover<void, void>>> =
-        inject(TUI_TABLE_BARS);
+        inject(TUI_ACTIONS_BARS);
 
     protected readonly animation = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
 }

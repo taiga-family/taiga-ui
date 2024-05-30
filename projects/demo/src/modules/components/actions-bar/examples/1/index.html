@@ -6,10 +6,10 @@
 
 <ng-template
     let-bar
-    [tuiTableBar]="open"
-    (tuiTableBarChange)="close()"
+    [tuiActionsBar]="open"
+    (tuiActionsBarChange)="close()"
 >
-    <tui-table-bar
+    <tui-actions-bar
         *tuiLet="isMobileRes$ | async as isMobile"
         [expanded]="!!isMobile && expanded"
     >
@@ -128,5 +128,5 @@
         >
             Close
         </button>
-    </tui-table-bar>
+    </tui-actions-bar>
 </ng-template>

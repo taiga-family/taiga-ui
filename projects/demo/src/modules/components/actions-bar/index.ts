@@ -1,7 +1,6 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 @Component({
     standalone: true,
@@ -11,9 +10,6 @@ import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
     changeDetection,
 })
 export default class PageComponent {
-    @ViewChild('tableBarTemplate')
-    protected readonly tableBarTemplate: PolymorpheusContent;
-
     protected readonly exampleServiceUsage = import(
         './examples/import/service-usage.md?raw'
     );
