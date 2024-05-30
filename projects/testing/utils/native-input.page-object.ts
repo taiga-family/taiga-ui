@@ -10,17 +10,15 @@ export class TuiNativeInputPO {
 
     constructor(
         private readonly fixture: ComponentFixture<unknown>,
-        private readonly automationId: string,
-        private readonly hostDebugElement?: DebugElement,
+        private readonly automationIdOrElement: DebugElement | string,
     ) {
         this.pageObject = new TuiPageObject(fixture);
     }
 
     public get nativeElement(): HTMLInputElement | HTMLTextAreaElement | null {
-        return (
-            this.pageObject.getByAutomationId(this.automationId, this.hostDebugElement)
-                ?.nativeElement ?? null
-        );
+        return typeof this.automationIdOrElement === 'string'
+            ? this.pageObject.getByAutomationId(this.automationIdOrElement)?.nativeElement
+            : this.automationIdOrElement.nativeElement;
     }
 
     public get value(): string {
