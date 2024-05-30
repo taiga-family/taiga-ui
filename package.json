@@ -34,6 +34,7 @@
         "prerender": "nx run demo:prerender",
         "test": "nx run-many --target test --all --output-style=stream --parallel=1",
         "test:e2e": "nx e2e-ui demo-playwright",
+        "cypress:open": "cypress open --browser chrome --project ./projects/demo-cypress",
         "*** Workflow ***": "",
         "stylelint": "stylelint '**/*.{less,css}' --config package.json",
         "lint": "eslint .",
