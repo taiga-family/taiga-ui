@@ -4,11 +4,7 @@ import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {assets} from '@demo/utils';
-import {
-    TuiAmountPipe,
-    TuiCurrency,
-    TuiInputCardComponent,
-} from '@taiga-ui/addon-commerce';
+import {TuiAmountPipe, TuiCurrency, TuiInputCard} from '@taiga-ui/addon-commerce';
 import {TUI_DEFAULT_MATCHER, tuiControlValue, TuiLetDirective} from '@taiga-ui/cdk';
 import {TuiDataList, TuiInitialsPipe, TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {TuiAvatarComponent, TuiDataListWrapper} from '@taiga-ui/kit';
@@ -112,7 +108,7 @@ const USERS = [
         TuiInitialsPipe,
         TuiDataListWrapper,
         TuiAmountPipe,
-        TuiInputCardComponent,
+        TuiInputCard,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

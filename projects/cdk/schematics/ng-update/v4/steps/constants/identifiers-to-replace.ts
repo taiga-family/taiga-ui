@@ -1349,7 +1349,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/addon-commerce',
         },
         to: {
-            name: 'TuiInputCardComponent',
+            name: 'TuiInputCard',
             moduleSpecifier: '@taiga-ui/addon-mobile',
         },
     },
@@ -1369,7 +1369,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/addon-commerce',
         },
         to: {
-            name: 'TuiInputCVCComponent',
+            name: 'TuiInputCVC',
             moduleSpecifier: '@taiga-ui/addon-mobile',
         },
     },
@@ -1379,7 +1379,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
             moduleSpecifier: '@taiga-ui/addon-commerce',
         },
         to: {
-            name: 'TuiInputExpireComponent',
+            name: 'TuiInputExpire',
             moduleSpecifier: '@taiga-ui/addon-mobile',
         },
     },

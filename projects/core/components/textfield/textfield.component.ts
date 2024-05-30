@@ -42,14 +42,12 @@ export interface TuiTextfieldContext<T> extends TuiContext<T> {
     readonly active: boolean;
 }
 
-// TODO: Move to legacy package before 4.0
 @Component({
     standalone: true,
     selector: 'tui-textfield',
     imports: [
         CommonModule,
         ResizeObserverModule,
-        TuiTextfieldDirective,
         TuiButtonDirective,
         PolymorpheusModule,
     ],

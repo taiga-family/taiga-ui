@@ -4,9 +4,9 @@ import {tuiCreateToken} from '@taiga-ui/cdk';
 
 export const TUI_PAYMENT_SYSTEM_ICONS: InjectionToken<Record<TuiPaymentSystem, string>> =
     tuiCreateToken({
-        mir: 'tuiIconMirMono',
-        visa: 'tuiIconVisaMono',
-        electron: 'tuiIconElectronMono',
+        mir: 'tuiIconMir',
+        visa: 'tuiIconVisa',
+        electron: 'tuiIconElectron',
         mastercard: 'tuiIconMastercard',
         maestro: 'tuiIconMaestro',
         amex: 'tuiIconAmex',

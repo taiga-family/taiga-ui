@@ -5,7 +5,7 @@ import type {TuiFocusableElementAccessor, TuiNativeFocusableElement} from '@taig
 import {AbstractTuiNullableControl, tuiPure} from '@taiga-ui/cdk';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-import type {TuiInputCardOptions} from './input-card.options';
+import type {TuiInputCardOptions} from '../input-card/input-card.options';
 
 @Directive()
 export abstract class AbstractTuiInputCard<
@@ -23,7 +23,7 @@ export abstract class AbstractTuiInputCard<
     public cardSrc: PolymorpheusContent;
 
     @Input()
-    public autocompleteEnabled = this.options.autocompleteEnabled;
+    public autocompleteEnabled = this.options.autocomplete;
 
     @Output()
     public readonly binChange = new EventEmitter<string | null>();
