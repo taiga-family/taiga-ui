@@ -6,6 +6,7 @@ import type {Observable} from 'rxjs';
 import {map} from 'rxjs';
 
 @Pipe({
+    standalone: true,
     name: 'tuiSortCountries',
 })
 export class TuiSortCountriesPipe implements PipeTransform {

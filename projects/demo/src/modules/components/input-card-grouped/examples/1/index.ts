@@ -9,13 +9,13 @@ import {
     TuiInputCardGroupedComponent,
 } from '@taiga-ui/addon-commerce';
 import {TuiErrorComponent} from '@taiga-ui/core';
-import {TuiFieldErrorPipeModule} from '@taiga-ui/kit';
+import {TuiFieldErrorPipe} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
     imports: [
         TuiInputCardGroupedComponent,
-        TuiFieldErrorPipeModule,
+        TuiFieldErrorPipe,
         AsyncPipe,
         ReactiveFormsModule,
         TuiErrorComponent,

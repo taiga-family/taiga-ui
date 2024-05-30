@@ -44,13 +44,13 @@ import {
 } from '@taiga-ui/core';
 import type {TuiInputDateOptions} from '@taiga-ui/kit';
 import {
-    TUI_DATE_MODE_MASKITO_ADAPTER,
     TUI_DATE_TEXTS,
     TUI_DATE_TIME_VALUE_TRANSFORMER,
     TUI_INPUT_DATE_OPTIONS,
     TUI_TIME_TEXTS,
     tuiDateStreamWithTransformer,
 } from '@taiga-ui/kit';
+import {TUI_DATE_MODE_MASKITO_ADAPTER} from '@taiga-ui/legacy/utils';
 import type {Observable} from 'rxjs';
 import {BehaviorSubject, combineLatest, map, timer} from 'rxjs';
 

@@ -13,7 +13,7 @@
             [class.t-cell_interval]="itemIsInterval(item)"
             [class.t-cell_today]="itemIsToday(item)"
             [tuiScrollIntoView]="scrollItemIntoView(item)"
-            (click)="onItemClick(item)"
+            (click)="yearClick.emit(item)"
             (tuiHoveredChange)="onItemHovered($event, item)"
         >
             <div class="t-item">{{ item }}</div>

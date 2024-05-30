@@ -17,7 +17,6 @@ import type {
     TuiDay,
     TuiDayLike,
     TuiFocusableElementAccessor,
-    TuiMapper,
 } from '@taiga-ui/cdk';
 import {
     AbstractTuiNullableControl,
@@ -52,8 +51,6 @@ import {
 } from '@taiga-ui/core';
 import type {TuiDayRangePeriod, TuiInputDateOptions} from '@taiga-ui/kit';
 import {
-    MAX_DAY_RANGE_LENGTH_MAPPER,
-    TUI_DATE_MODE_MASKITO_ADAPTER,
     TUI_DATE_RANGE_VALUE_TRANSFORMER,
     TUI_DATE_TEXTS,
     TUI_INPUT_DATE_OPTIONS,
@@ -61,6 +58,7 @@ import {
     TUI_MOBILE_CALENDAR_PROVIDER,
     tuiDateStreamWithTransformer,
 } from '@taiga-ui/kit';
+import {TUI_DATE_MODE_MASKITO_ADAPTER} from '@taiga-ui/legacy/utils';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {map} from 'rxjs';
 
@@ -114,11 +112,6 @@ export class TuiInputDateRangeComponent
 
     public open = false;
 
-    public readonly maxLengthMapper: TuiMapper<
-        [TuiDay, TuiDayRange | null, TuiDayLike | null, boolean],
-        TuiDay
-    > = MAX_DAY_RANGE_LENGTH_MAPPER;
-
     protected readonly dateTexts$ = inject(TUI_DATE_TEXTS);
     protected override readonly valueTransformer = inject(
         TUI_DATE_RANGE_VALUE_TRANSFORMER,
@@ -165,14 +158,6 @@ export class TuiInputDateRangeComponent
         return value
             ? value.getFormattedDayRange(this.dateFormat.mode, this.dateFormat.separator)
             : nativeValue;
-    }
-
-    public get computedMin(): TuiDay {
-        return this.min ?? TUI_FIRST_DAY;
-    }
-
-    public get computedMax(): TuiDay {
-        return this.max ?? TUI_LAST_DAY;
     }
 
     @HostListener('click')
@@ -232,8 +217,8 @@ export class TuiInputDateRangeComponent
             : this.calculateMask(
                   this.dateFormat.mode,
                   this.dateFormat.separator,
-                  this.computedMin,
-                  this.computedMax,
+                  this.min,
+                  this.max,
                   this.minLength,
                   this.maxLength,
               );
@@ -329,16 +314,16 @@ export class TuiInputDateRangeComponent
     private calculateMask(
         dateFormat: TuiDateMode,
         dateSeparator: string,
-        min: TuiDay,
-        max: TuiDay,
+        min: TuiDay | null,
+        max: TuiDay | null,
         minLength: TuiDayLike | null,
         maxLength: TuiDayLike | null,
     ): MaskitoOptions {
         return maskitoDateRangeOptionsGenerator({
             dateSeparator,
             mode: TUI_DATE_MODE_MASKITO_ADAPTER[dateFormat],
-            min: min.toLocalNativeDate(),
-            max: max.toLocalNativeDate(),
+            min: (min || TUI_FIRST_DAY).toLocalNativeDate(),
+            max: (max || TUI_LAST_DAY).toLocalNativeDate(),
             minLength: minLength || {},
             maxLength: maxLength || {},
         });

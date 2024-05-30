@@ -7,7 +7,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiValidationError} from '@taiga-ui/cdk';
 import {TuiErrorComponent} from '@taiga-ui/core';
 import {
-    TuiFieldErrorPipeModule,
+    TuiFieldErrorPipe,
     TuiFileComponent,
     TuiFileRejectedPipe,
     tuiFilesAccepted,
@@ -28,7 +28,7 @@ import {map} from 'rxjs';
         NgForOf,
         AsyncPipe,
         TuiErrorComponent,
-        TuiFieldErrorPipeModule,
+        TuiFieldErrorPipe,
         TuiFileRejectedPipe,
     ],
     templateUrl: './index.html',

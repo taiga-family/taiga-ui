@@ -14,7 +14,7 @@ import {
     TuiTrComponent,
 } from '@taiga-ui/addon-table';
 import {TuiHintDirective, TuiTextfieldControllerModule} from '@taiga-ui/core';
-import {TUI_VALIDATION_ERRORS, TuiFieldErrorPipeModule} from '@taiga-ui/kit';
+import {TUI_VALIDATION_ERRORS, TuiFieldErrorContentPipe} from '@taiga-ui/kit';
 import {TuiInputNumberModule} from '@taiga-ui/legacy';
 
 @Component({
@@ -32,7 +32,7 @@ import {TuiInputNumberModule} from '@taiga-ui/legacy';
         TuiHintDirective,
         ReactiveFormsModule,
         TuiTextfieldControllerModule,
-        TuiFieldErrorPipeModule,
+        TuiFieldErrorContentPipe,
         TuiCurrencyPipe,
     ],
     templateUrl: './index.html',

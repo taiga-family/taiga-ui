@@ -6,7 +6,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiMarkControlAsTouchedAndValidate} from '@taiga-ui/cdk';
 import {TuiErrorComponent} from '@taiga-ui/core';
-import {TuiFieldErrorPipeModule} from '@taiga-ui/kit';
+import {TuiFieldErrorPipe} from '@taiga-ui/kit';
 import {TuiInputModule} from '@taiga-ui/legacy';
 
 @Component({
@@ -15,7 +15,7 @@ import {TuiInputModule} from '@taiga-ui/legacy';
         ReactiveFormsModule,
         TuiInputModule,
         TuiErrorComponent,
-        TuiFieldErrorPipeModule,
+        TuiFieldErrorPipe,
         AsyncPipe,
     ],
     templateUrl: './index.html',

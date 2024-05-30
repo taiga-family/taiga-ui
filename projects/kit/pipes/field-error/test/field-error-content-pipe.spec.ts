@@ -4,7 +4,7 @@ import {discardPeriodicTasks, fakeAsync, TestBed, tick} from '@angular/core/test
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiHint, TuiRootComponent} from '@taiga-ui/core';
-import {TuiFieldErrorPipeModule} from '@taiga-ui/kit/pipes';
+import {TuiFieldErrorContentPipe} from '@taiga-ui/kit/pipes';
 import {TUI_VALIDATION_ERRORS} from '@taiga-ui/kit/tokens';
 import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
@@ -58,7 +58,7 @@ describe('TuiFieldErrorContentPipe', () => {
                 TuiHint,
                 TuiRootComponent,
                 ReactiveFormsModule,
-                TuiFieldErrorPipeModule,
+                TuiFieldErrorContentPipe,
             ],
             providers: [NG_EVENT_PLUGINS],
             declarations: [TestComponent],

@@ -10,7 +10,7 @@ import {
     TuiTextfieldControllerModule,
     TuiTextfieldOptionsDirective,
 } from '@taiga-ui/core';
-import {TUI_VALIDATION_ERRORS, TuiFieldErrorPipeModule} from '@taiga-ui/kit';
+import {TUI_VALIDATION_ERRORS, TuiFieldErrorPipe} from '@taiga-ui/kit';
 import {TuiInputModule, TuiInputNumberModule} from '@taiga-ui/legacy';
 import {interval, map, of, scan, startWith} from 'rxjs';
 
@@ -23,7 +23,7 @@ import {interval, map, of, scan, startWith} from 'rxjs';
         TuiTextfieldOptionsDirective,
         TuiTextfieldControllerModule,
         TuiErrorComponent,
-        TuiFieldErrorPipeModule,
+        TuiFieldErrorPipe,
         AsyncPipe,
         TuiInputNumberModule,
     ],

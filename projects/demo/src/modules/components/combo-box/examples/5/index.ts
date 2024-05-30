@@ -5,7 +5,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiLetDirective} from '@taiga-ui/cdk';
 import {TuiDataList, TuiScrollableDirective} from '@taiga-ui/core';
-import {TuiFilterByInputPipeModule} from '@taiga-ui/kit';
+import {TuiFilterByInputPipe} from '@taiga-ui/kit';
 import {TuiComboBoxModule} from '@taiga-ui/legacy';
 
 import {IndexChangeDirective} from './index-change.directive';
@@ -18,7 +18,7 @@ import {IndexChangeDirective} from './index-change.directive';
         TuiLetDirective,
         TuiComboBoxModule,
         TuiDataList,
-        TuiFilterByInputPipeModule,
+        TuiFilterByInputPipe,
         ScrollingModule,
         TuiScrollableDirective,
         IndexChangeDirective,

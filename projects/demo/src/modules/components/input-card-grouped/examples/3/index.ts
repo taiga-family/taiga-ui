@@ -9,7 +9,7 @@ import {
     TuiInputCardGroupedComponent,
 } from '@taiga-ui/addon-commerce';
 import {TuiErrorComponent} from '@taiga-ui/core';
-import {TuiFieldErrorPipeModule} from '@taiga-ui/kit';
+import {TuiFieldErrorPipe} from '@taiga-ui/kit';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 @Component({
@@ -19,7 +19,7 @@ import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
         ReactiveFormsModule,
         PolymorpheusModule,
         TuiErrorComponent,
-        TuiFieldErrorPipeModule,
+        TuiFieldErrorPipe,
         AsyncPipe,
     ],
     templateUrl: './index.html',

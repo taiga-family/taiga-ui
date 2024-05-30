@@ -6,7 +6,7 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import type {TuiBooleanHandler, TuiDayRange, TuiMapper, TuiYear} from '@taiga-ui/cdk';
+import type {TuiBooleanHandler, TuiDayRange, TuiMapper} from '@taiga-ui/cdk';
 import {
     TUI_FALSE_HANDLER,
     TUI_FIRST_DAY,
@@ -148,7 +148,7 @@ export class TuiCalendarComponent implements TuiWithOptionalMinMax<TuiDay> {
         this.view = 'year';
     }
 
-    protected onPickerYearClick({year}: TuiYear): void {
+    protected onPickerYearClick(year: number): void {
         this.view = 'month';
         this.updateViewedMonth(new TuiMonth(year, this.month.month));
     }

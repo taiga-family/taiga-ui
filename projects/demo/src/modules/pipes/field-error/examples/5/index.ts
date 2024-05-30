@@ -6,7 +6,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_IS_E2E, TuiValidationError} from '@taiga-ui/cdk';
 import {TuiErrorComponent} from '@taiga-ui/core';
-import {TuiFieldErrorPipeModule} from '@taiga-ui/kit';
+import {TuiFieldErrorPipe} from '@taiga-ui/kit';
 import {TuiInputModule} from '@taiga-ui/legacy';
 import {delay, of} from 'rxjs';
 
@@ -27,7 +27,7 @@ function asyncValidatorFn(isE2E: boolean): AsyncValidatorFn {
         ReactiveFormsModule,
         TuiInputModule,
         TuiErrorComponent,
-        TuiFieldErrorPipeModule,
+        TuiFieldErrorPipe,
         AsyncPipe,
     ],
     templateUrl: './index.html',

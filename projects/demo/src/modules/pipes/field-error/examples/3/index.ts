@@ -12,7 +12,7 @@ import {
     TuiLabelDirective,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiCheckboxComponent, TuiFieldErrorPipeModule} from '@taiga-ui/kit';
+import {TuiCheckboxComponent, TuiFieldErrorPipe} from '@taiga-ui/kit';
 import {TuiInputModule} from '@taiga-ui/legacy';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
@@ -27,7 +27,7 @@ const secretRegexTwelve = /^\d{12}$/;
         TuiInputModule,
         TuiTextfieldControllerModule,
         TuiErrorComponent,
-        TuiFieldErrorPipeModule,
+        TuiFieldErrorPipe,
         AsyncPipe,
         TuiCheckboxComponent,
         TuiButtonDirective,

@@ -10,7 +10,7 @@
     <ng-container *tuiDataList>
         <tui-data-list>
             <button
-                *ngFor="let item of items | tuiFilterByInputWith: stringify"
+                *ngFor="let item of items | tuiFilterByInput"
                 tuiOption
                 [disabled]="item.disabled"
                 [value]="item"
