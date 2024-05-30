@@ -93,7 +93,7 @@ describe('InputPhoneInternational', () => {
 
         describe('basic keyboard typing', () => {
             it('Type 212 => form control emits 3 events', () => {
-                cy.get('@textfield').type('212').should('have.value', '+1 (212');
+                cy.get('@textfield').type('212').should('have.value', '+1 212');
 
                 cy.get('@valueChange')
                     .should('have.callCount', 3)
@@ -103,7 +103,7 @@ describe('InputPhoneInternational', () => {
             });
 
             it('+1 212| => Type 5 => +1 212 5 (space and 5 were added) => only one form control event', () => {
-                cy.get('@textfield').type('2125').should('have.value', '+1 (212) 5');
+                cy.get('@textfield').type('2125').should('have.value', '+1 212 5');
 
                 cy.get('@valueChange')
                     .should('have.callCount', 4)
@@ -113,11 +113,11 @@ describe('InputPhoneInternational', () => {
             });
 
             it('+1 212 555| => Type 2 => +1 212 555-2 (hyphen and 2 were added) => only one form control event', () => {
-                cy.get('@textfield').type('212555').should('have.value', '+1 (212) 555');
+                cy.get('@textfield').type('212555').should('have.value', '+1 212 555');
 
                 cy.get('@valueChange').should('have.callCount', 6);
 
-                cy.get('@textfield').type('2').should('have.value', '+1 (212) 555-2');
+                cy.get('@textfield').type('2').should('have.value', '+1 212 555-2');
 
                 cy.get('@valueChange')
                     .should('have.callCount', 7)
@@ -145,7 +145,7 @@ describe('InputPhoneInternational', () => {
             it('Textfield contains +1 212 555-2368 => select new country => form control emits once and contains new value', () => {
                 cy.get('@textfield')
                     .type('2125552368')
-                    .should('have.value', '+1 (212) 555-2368');
+                    .should('have.value', '+1 212 555-2368');
 
                 cy.get('@valueChange')
                     .should('have.callCount', 10)
@@ -159,7 +159,7 @@ describe('InputPhoneInternational', () => {
 
                 cy.get('@textfield')
                     .should('be.focused')
-                    .should('have.value', '+7 (212) 555-2368');
+                    .should('have.value', '+7 2125552368');
 
                 cy.get('@valueChange')
                     .should('have.callCount', 11)
@@ -193,7 +193,7 @@ describe('InputPhoneInternational', () => {
             });
 
             it('textfield value is formatted', () => {
-                cy.get('@textfield').should('have.value', '+1 (212) 555-2368');
+                cy.get('@textfield').should('have.value', '+1 212 555-2368');
             });
         });
 
@@ -228,7 +228,7 @@ describe('InputPhoneInternational', () => {
                 control.patchValue('+77777777777');
                 cy.wait(1);
 
-                cy.get('@textfield').should('have.value', '+7 (777) 777-77-77');
+                cy.get('@textfield').should('have.value', '+7 777 777-7777');
             });
         });
     });
