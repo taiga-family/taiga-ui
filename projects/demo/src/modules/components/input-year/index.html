@@ -1,0 +1,114 @@
+<tui-doc-page
+    header="InputYear"
+    package="KIT"
+    type="components"
+>
+    <ng-template pageTab>
+        <p>Component to input a single year</p>
+
+        <tui-doc-example
+            id="base"
+            heading="Basic"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample: 'html,ts'"
+        >
+            <tui-notification class="tui-space_bottom-4">
+                If you need to set some attributes or listen to events on native
+                <code>input</code>
+                , you can put it inside with
+                <code>Textfield</code>
+                directive as shown below
+            </tui-notification>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="sizes"
+            heading="sizes"
+            [component]="2 | tuiComponent"
+            [content]="2 | tuiExample: 'html,ts'"
+        />
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo [control]="control">
+            <ng-template>
+                <tui-input-year
+                    [disabledItemHandler]="disabledItemHandler"
+                    [focusable]="focusable"
+                    [formControl]="control"
+                    [max]="max"
+                    [min]="min"
+                    [pseudoActive]="pseudoPressed"
+                    [pseudoFocus]="pseudoFocused"
+                    [pseudoHover]="pseudoHovered"
+                    [pseudoInvalid]="pseudoInvalid"
+                    [readOnly]="readOnly"
+                    [style.text-align]="textAlign"
+                    [tuiTextfieldCleaner]="cleaner"
+                    [tuiTextfieldFiller]="filler"
+                    [tuiTextfieldIconLeft]="iconLeft"
+                    [tuiTextfieldLabelOutside]="labelOutside"
+                    [tuiTextfieldPostfix]="postfix"
+                    [tuiTextfieldPrefix]="prefix"
+                    [tuiTextfieldSize]="size"
+                >
+                    Year
+                </tui-input-year>
+            </ng-template>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="disabled"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="disabled"
+            >
+                Disabled state (use
+                <code>formControl.disable()</code>
+                )
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="disabledItemHandler"
+                documentationPropertyType="TuiBooleanHandler<number>"
+                [documentationPropertyValues]="disabledItemHandlerVariants"
+                [(documentationPropertyValue)]="disabledItemHandler"
+            >
+                <div>A handler that gets a year and returns true if it is disabled.</div>
+
+                <strong>Must be a pure function</strong>
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="min"
+                documentationPropertyType="number | null"
+                [documentationPropertyValues]="minVariants"
+                [(documentationPropertyValue)]="min"
+            >
+                Minimum year
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="max"
+                documentationPropertyType="number | null"
+                [documentationPropertyValues]="maxVariants"
+                [(documentationPropertyValue)]="max"
+            >
+                Maximum year
+            </ng-template>
+        </tui-doc-documentation>
+        <inherited-documentation />
+        <tui-doc-documentation heading="CSS customization">
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="style.text-align"
+                documentationPropertyType="string"
+                [documentationPropertyValues]="textAlignVariants"
+                [(documentationPropertyValue)]="textAlign"
+            >
+                Custom align content by text-align
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <tui-setup *pageTab />
+</tui-doc-page>

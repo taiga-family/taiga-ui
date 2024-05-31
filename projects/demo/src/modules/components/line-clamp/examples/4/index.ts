@@ -1,6 +1,21 @@
+import {NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
+import {
+    TuiDropdownDirective,
+    TuiDropdownOpenDirective,
+    TuiDropdownOptionsDirective,
+    TuiLinkDirective,
+    TuiOptGroupDirective,
+    TuiOptionComponent,
+} from '@taiga-ui/core';
+import {
+    TuiChevronDirective,
+    TuiDataListDropdownManagerDirective,
+    TuiLineClampComponent,
+} from '@taiga-ui/kit';
 
 function randomString(len: number): string {
     const charSet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -17,13 +32,26 @@ function randomString(len: number): string {
 }
 
 @Component({
-    selector: 'tui-line-clamp-example-4',
+    standalone: true,
+    imports: [
+        TuiChevronDirective,
+        TuiLinkDirective,
+        TuiDropdownOptionsDirective,
+        TuiDropdownDirective,
+        TuiDropdownOpenDirective,
+        TuiDataListDropdownManagerDirective,
+        TuiActiveZoneDirective,
+        TuiOptGroupDirective,
+        NgForOf,
+        TuiOptionComponent,
+        TuiLineClampComponent,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiLineClampExample4 {
+export default class ExampleComponent {
     protected open = false;
     protected texts = [
         randomString(100),

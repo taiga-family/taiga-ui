@@ -401,79 +401,57 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.InputDateTime,
-        loadChildren: async () =>
-            (await import('../components/input-date-time/input-date-time.module'))
-                .ExampleTuiInputDateTimeModule,
+        loadComponent: async () => import('../components/input-date-time'),
         title: 'InputDateTime',
     }),
     route({
         path: DemoRoute.InputMonth,
-        loadChildren: async () =>
-            (await import('../components/input-month/input-month.module'))
-                .ExampleInputMonthModule,
+        loadComponent: async () => import('../components/input-month'),
         title: 'InputMonth',
     }),
     route({
         path: DemoRoute.InputMonthRange,
-        loadChildren: async () =>
-            (await import('../components/input-month-range/input-month-range.module'))
-                .ExampleTuiInputMonthRangeModule,
+        loadComponent: async () => import('../components/input-month-range'),
         title: 'InputMonthRange',
     }),
     route({
         path: DemoRoute.InputNumber,
-        loadChildren: async () =>
-            (await import('../components/input-number/input-number.module'))
-                .ExampleTuiInputNumberModule,
+        loadComponent: async () => import('../components/input-number'),
         title: 'InputNumber',
     }),
     route({
         path: DemoRoute.InputPassword,
-        loadChildren: async () =>
-            (await import('../components/input-password/input-password.module'))
-                .ExampleTuiInputPasswordModule,
+        loadComponent: async () => import('../components/input-password'),
         title: 'InputPassword',
     }),
     route({
         path: DemoRoute.InputPhone,
-        loadChildren: async () =>
-            (await import('../components/input-phone/input-phone.module'))
-                .ExampleTuiInputPhoneModule,
+        loadComponent: async () => import('../components/input-phone'),
         title: 'InputPhone',
     }),
     route({
         path: DemoRoute.InputRange,
-        loadChildren: async () =>
-            (await import('../components/input-range/input-range.module'))
-                .ExampleTuiInputRangeModule,
+        loadComponent: async () => import('../components/input-range'),
         title: 'InputRange',
     }),
     route({
         path: DemoRoute.InputDateRange,
-        loadChildren: async () =>
-            (await import('../components/input-date-range/input-date-range.module'))
-                .ExampleTuiInputDateRangeModule,
+        loadComponent: async () => import('../components/input-date-range'),
         title: 'InputDateRange',
     }),
     route({
         path: DemoRoute.InputSlider,
-        loadChildren: async () =>
-            (await import('../components/input-slider/input-slider.module'))
-                .ExampleTuiInputSliderModule,
+        loadComponent: async () => import('../components/input-slider'),
         title: 'InputSlider',
     }),
     route({
         path: DemoRoute.InputTag,
-        loadChildren: async () =>
-            (await import('../components/input-tag/input-tag.module'))
-                .ExampleTuiInputTagModule,
+        loadComponent: async () => import('../components/input-tag'),
         title: 'InputTag',
     }),
     route({
         path: DemoRoute.InputTime,
-        loadChildren: async () =>
-            (await import('../components/input-time/input-time.module'))
-                .ExampleTuiInputTimeModule,
+        loadComponent: async () => import('../components/input-time'),
         title: 'InputTime',
     }),
     route({
@@ -483,9 +461,7 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.InputYear,
-        loadChildren: async () =>
-            (await import('../components/input-year/input-year.module'))
-                .ExampleInputYearModule,
+        loadComponent: async () => import('../components/input-year'),
         title: 'InputYear',
     }),
     route({
@@ -495,16 +471,12 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.ItemsWithMore,
-        loadChildren: async () =>
-            (await import('../components/items-with-more/items-with-more.module'))
-                .ExampleTuiItemsWithMoreModule,
+        loadComponent: async () => import('../components/items-with-more'),
         title: 'ItemsWithMore',
     }),
     route({
         path: DemoRoute.LineClamp,
-        loadChildren: async () =>
-            (await import('../components/line-clamp/line-clamp.module'))
-                .ExampleTuiLineClampModule,
+        loadComponent: async () => import('../components/line-clamp'),
         title: 'LineClamp',
     }),
     route({
