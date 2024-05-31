@@ -57,11 +57,15 @@ export class TuiScrollbarDirective {
         )
             .pipe(tuiZonefree(zone), takeUntil(destroy$))
             .subscribe(([scrollTop, scrollLeft]) => {
+                this.element.style.scrollBehavior = 'auto';
+
                 if (this.tuiScrollbar === 'vertical') {
                     this.element.scrollTop = scrollTop;
                 } else {
                     this.element.scrollLeft = scrollLeft;
                 }
+
+                this.element.style.scrollBehavior = '';
             });
 
         merge(
@@ -130,7 +134,7 @@ export class TuiScrollbarDirective {
             : Math.ceil((clientWidth / scrollWidth) * 100) / 100;
     }
 
-    private get element(): Element {
+    private get element(): HTMLElement {
         return this.container.nativeElement;
     }
 
