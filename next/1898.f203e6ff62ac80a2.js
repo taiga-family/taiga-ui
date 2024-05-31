@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[1898],{1898:n=>{n.exports='```html\n<tui-items-with-more>\n  <ng-container *ngFor="let item of items">\n    <span *tuiItem>{{ item }}</span>\n  </ng-container>\n  <ng-template\n    tuiMore\n    let-index\n  >\n    and {{ items.length - index - 1 }} more\n  </ng-template>\n</tui-items-with-more>\n```\n'}}]);
