@@ -77,6 +77,12 @@ export class TuiDropdownComponent {
                 takeUntil(destroy$),
             )
             .subscribe(([top, left]) => {
+                if (!this.directive.el.nativeElement.isConnected) {
+                    this.directive.toggle(false);
+
+                    return;
+                }
+
                 this.update(top, left);
             });
 
