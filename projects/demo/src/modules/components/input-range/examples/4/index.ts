@@ -1,16 +1,19 @@
 import {Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiSvgComponent} from '@taiga-ui/core';
+import {TuiInputRangeModule} from '@taiga-ui/legacy';
 
 @Component({
-    selector: 'tui-input-range-example-4',
+    standalone: true,
+    imports: [TuiInputRangeModule, ReactiveFormsModule, TuiSvgComponent],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiInputRangeExample4 {
+export default class ExampleComponent {
     protected readonly control = new FormControl([20, 40]);
 
     // See https://angular.io/api/common/I18nPluralPipe

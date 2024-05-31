@@ -2,15 +2,17 @@ import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {WINDOW} from '@ng-web-apis/common';
+import {TuiLineClampComponent} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-line-clamp-example-3',
+    standalone: true,
+    imports: [TuiLineClampComponent],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiLineClampExample3 {
+export default class ExampleComponent {
     private readonly win = inject(WINDOW);
 
     protected getDynamicLineHeight(element: HTMLDivElement): number {

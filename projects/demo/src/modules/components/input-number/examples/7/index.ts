@@ -1,14 +1,21 @@
 import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TUI_DEFAULT_NUMBER_FORMAT, TUI_NUMBER_FORMAT} from '@taiga-ui/core';
+import {
+    TUI_DEFAULT_NUMBER_FORMAT,
+    TUI_NUMBER_FORMAT,
+    TuiTextfieldControllerModule,
+} from '@taiga-ui/core';
 import type {TuiLanguage} from '@taiga-ui/i18n';
 import {TUI_LANGUAGE} from '@taiga-ui/i18n';
+import {TuiInputNumberModule} from '@taiga-ui/legacy';
 import type {BehaviorSubject, Observable} from 'rxjs';
 import {map, switchMap} from 'rxjs';
 
 @Component({
-    selector: 'tui-input-number-example-7',
+    standalone: true,
+    imports: [TuiInputNumberModule, TuiTextfieldControllerModule, FormsModule],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
@@ -28,6 +35,6 @@ import {map, switchMap} from 'rxjs';
         },
     ],
 })
-export class TuiInputNumberExample7 {
+export default class ExampleComponent {
     protected value = 1234.56;
 }
