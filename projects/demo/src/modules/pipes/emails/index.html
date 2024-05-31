@@ -1,0 +1,19 @@
+<tui-doc-page
+    header="Emails"
+    package="KIT"
+    type="pipes"
+>
+    <ng-template pageTab>
+        Pipe for creating autocomplete when entering email addresses
+
+        <tui-doc-example
+            id="basic"
+            description="Standard and custom addresses"
+            heading="Example"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample: 'html,ts'"
+        />
+    </ng-template>
+
+    <tui-setup *pageTab="'Setup'" />
+</tui-doc-page>

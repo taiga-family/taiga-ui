@@ -2,7 +2,6 @@
     "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/master/cspell.schema.json",
     "import": ["@taiga-ui/cspell-config/cspell.config.js"],
     "files": ["*/*.*"],
-    "ignoreWords": ["iisnode", "docstrings", "sweepai", "cardnumber", "Acpekt", "timecode"],
     "ignorePaths": [
         ".git",
         "CHANGELOG.md",
@@ -41,19 +40,6 @@
             "ignoreWords": ["looooooooooooooooooooooooong"]
         },
         {
-            "filename": "**/test/dropdown.directive.spec.ts",
-            "ignoreWords": ["Hosty", "Droppy"]
-        },
-        {
-            "filename": [
-                "**/test/format-currency.spec.ts",
-                "**/test/money.component.spec.ts",
-                "**/test/get-currency-symbol.spec.ts",
-                "**/test/input-card-grouped.component.spec.ts"
-            ],
-            "ignoreWords": ["CSTM", "CVCPO"]
-        },
-        {
             "filename": ["**/tests/schematic-replace-consts.spec.ts", "**/constants/constants.ts"],
             "ignoreWords": ["Comands"]
         },
@@ -71,12 +57,6 @@
             "languageId": "ts",
             "filename": ["**/textarea.spec.ts"],
             "ignoreWords": ["qwertypgj_"]
-        },
-
-        {
-            "languageId": "ts",
-            "filename": ["**/migrate-prevent-default.ts"],
-            "ignoreWords": ["tuipreventdefault"]
         }
     ]
 }

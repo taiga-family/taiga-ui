@@ -23,6 +23,7 @@ export const DemoRoute = {
     Block: '/components/block',
     BlockStatus: '/layout/block-status',
     Amount: '/pipes/amount',
+    Emails: '/pipes/emails',
     Appearance: '/components/appearance',
     Chip: '/components/chip',
     Title: '/components/title',
