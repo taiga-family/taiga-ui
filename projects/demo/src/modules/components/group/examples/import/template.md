@@ -11,7 +11,7 @@
     >
       House
       <input
-        tuiTextfield
+        tuiTextfieldLegacy
         placeholder="House"
       />
     </tui-input>
@@ -28,7 +28,7 @@
     >
       House building
       <input
-        tuiTextfield
+        tuiTextfieldLegacy
         placeholder="House building"
       />
     </tui-input>
@@ -45,7 +45,7 @@
     >
       Apartment
       <input
-        tuiTextfield
+        tuiTextfieldLegacy
         placeholder="Apartment number"
       />
     </tui-input>

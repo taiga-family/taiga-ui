@@ -57,7 +57,7 @@ test.describe('Input', () => {
         );
 
         const example = new TuiDocumentationPagePO(page).apiPageExample;
-        const input = example.locator('input[tuiTextfield]');
+        const input = example.locator('input[tuiTextfieldLegacy]');
 
         await input.focus();
         await expect(new TuiDocumentationPagePO(page).apiPageExample).toHaveScreenshot(
@@ -77,7 +77,7 @@ test.describe('Input', () => {
         );
 
         const example = new TuiDocumentationPagePO(page).apiPageExample;
-        const input = example.locator('input[tuiTextfield]');
+        const input = example.locator('input[tuiTextfieldLegacy]');
 
         await input.clear();
         await expect(example).toHaveScreenshot('07-character-descenders.png');
@@ -94,7 +94,7 @@ test.describe('Input', () => {
         await tuiGoto(page, '/components/input/API?sandboxWidth=300');
 
         const example = new TuiDocumentationPagePO(page).apiPageExample;
-        const input = example.locator('input[tuiTextfield]');
+        const input = example.locator('input[tuiTextfieldLegacy]');
 
         await expect(input).toHaveCSS('text-overflow', 'clip');
         await input.fill(
@@ -105,7 +105,7 @@ test.describe('Input', () => {
         await input.focus();
         await expect(example).toHaveScreenshot('10-horizontally-scrolled.png');
         await page.evaluate(() => {
-            const input = document.querySelector('input[tuiTextfield]');
+            const input = document.querySelector('input[tuiTextfieldLegacy]');
 
             if (input) {
                 input.scrollLeft = input.clientWidth / 2;
@@ -118,7 +118,7 @@ test.describe('Input', () => {
         await tuiGoto(page, '/components/input');
 
         const example = new TuiDocumentationPagePO(page).getExample('#mask');
-        const inputs = example.locator('tui-input input[tuiTextfield]');
+        const inputs = example.locator('tui-input input[tuiTextfieldLegacy]');
 
         await example.scrollIntoViewIfNeeded();
         await inputs.first().fill('111111111111');
