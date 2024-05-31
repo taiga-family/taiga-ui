@@ -1,5 +1,5 @@
 import {Directive, inject, Input, OnInit, Output} from '@angular/core';
-import {NgControl} from '@angular/forms';
+import {DefaultValueAccessor, NgControl} from '@angular/forms';
 import {MaskitoDirective} from '@maskito/angular';
 import {TUI_CARD_MASK} from '@taiga-ui/addon-commerce/constants';
 import type {TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
@@ -27,6 +27,10 @@ export class TuiInputCard implements OnInit {
     private readonly resolver = inject(TUI_ICON_RESOLVER);
     private readonly control = inject(NgControl);
     private readonly mask = inject(MaskitoDirective);
+    private readonly accessor = inject(DefaultValueAccessor, {
+        self: true,
+        optional: true,
+    });
 
     @Input()
     public autocomplete = this.options.autocomplete;
@@ -37,7 +41,7 @@ export class TuiInputCard implements OnInit {
     @Output()
     public readonly binChange = timer(0).pipe(
         switchMap(() => tuiControlValue<string>(this.control)),
-        map(value => (value.length < 7 ? null : value.replace(' ', '').slice(0, 6))),
+        map(value => (value.length < 6 ? null : value.replace(' ', '').slice(0, 6))),
         startWith(null),
         distinctUntilChanged(),
         skip(1),
@@ -46,6 +50,14 @@ export class TuiInputCard implements OnInit {
     public ngOnInit(): void {
         this.mask.options = {mask: TUI_CARD_MASK};
         this.mask.ngOnChanges();
+
+        if (!this.accessor) {
+            return;
+        }
+
+        const onChanges = this.accessor.onChange.bind(this.accessor);
+
+        this.accessor.onChange = (value: string) => onChanges(value.replaceAll(' ', ''));
     }
 
     protected get backgroundImage(): string | null {
