@@ -6,6 +6,7 @@ import {TuiRepeatTimesModule} from '@taiga-ui/cdk';
 import {
     TuiDataListModule,
     TuiExpandModule,
+    TuiHintModule,
     TuiHostedDropdownModule,
     TuiLinkModule,
     TuiNotificationModule,
@@ -58,6 +59,7 @@ import {ExampleTuiNavigationComponent} from './navigation.component';
         TuiToggleModule,
         TuiBreadcrumbsModule,
         TuiLinkModule,
+        TuiHintModule,
     ],
     declarations: [
         ExampleTuiNavigationComponent,

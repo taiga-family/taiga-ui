@@ -474,6 +474,9 @@ const tuiIconCheckCircle =
 const tuiIconCheckCircleLarge =
     '<svg width="1.5em" height="1.5em" focusable="false" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1.5em" height="1.5em" x="50%" y="50%" fill="none" overflow="visible" viewBox="0 0 24 24"><svg x="-12" y="-12" xmlns="http://www.w3.org/2000/svg"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10" vector-effect="non-scaling-stroke"/><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m15.5 9.5-4.5 5-2.5-2.273" vector-effect="non-scaling-stroke"/></svg></svg></g></svg>';
 
+const tuiIconCheckCircleOutline =
+    '<svg width="1em" height="1em" focusable="false" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1em" height="1em" x="50%" y="50%" fill="none" overflow="visible" viewBox="0 0 16 16"><svg width="16" height="16" x="-8" y="-8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10" vector-effect="non-scaling-stroke"/><path d="m15.5 9.5-4.5 5-2.5-2.273" vector-effect="non-scaling-stroke"/></svg></svg></g></svg>';
+
 const tuiIconCheckLarge =
     '<svg width="1.5em" height="1.5em" xmlns="http://www.w3.org/2000/svg"><g xmlns="http://www.w3.org/2000/svg"><svg width="1.5em" height="1.5em" x="50%" y="50%" overflow="visible" viewBox="0 0 24 24"><svg x="-12" y="-12"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 6 9 17l-5-5" vector-effect="non-scaling-stroke"/></svg></svg></svg></g></svg>';
 
@@ -3181,6 +3184,7 @@ export {
     tuiIconCheck,
     tuiIconCheckCircle,
     tuiIconCheckCircleLarge,
+    tuiIconCheckCircleOutline,
     tuiIconCheckLarge,
     tuiIconCheckList,
     tuiIconCheckOutline,

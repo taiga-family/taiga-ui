@@ -4,7 +4,6 @@ import {
     Inject,
     INJECTOR,
     Input,
-    OnChanges,
     OnDestroy,
     Optional,
 } from '@angular/core';
@@ -35,16 +34,24 @@ import {TUI_HINT_OPTIONS, TuiHintOptions} from './hint-options.directive';
     ],
 })
 export class TuiHintDirective<C>
-    implements OnDestroy, OnChanges, TuiPortalItem<C>, TuiRectAccessor, TuiVehicle
+    implements OnDestroy, TuiPortalItem<C>, TuiRectAccessor, TuiVehicle
 {
-    @Input('tuiHint')
-    content: PolymorpheusContent<C>;
+    @Input()
+    set tuiHint(content: PolymorpheusContent<C>) {
+        this.content = content;
+
+        if (!content) {
+            this.toggle(false);
+        }
+    }
 
     @Input('tuiHintContext')
     context?: C;
 
     @Input()
     tuiHintAppearance: string | null = null;
+
+    content: PolymorpheusContent<C>;
 
     readonly type = 'hint';
 
@@ -60,12 +67,6 @@ export class TuiHintDirective<C>
 
     get appearance(): string {
         return this.tuiHintAppearance ?? this.options.appearance;
-    }
-
-    ngOnChanges(): void {
-        if (!this.content) {
-            this.toggle(false);
-        }
     }
 
     ngOnDestroy(): void {
