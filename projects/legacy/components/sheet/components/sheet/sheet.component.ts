@@ -58,17 +58,15 @@ export class TuiSheetComponent<T> implements TuiSheetRequiredProps<T>, AfterView
     private readonly el = tuiInjectElement();
     private readonly zone = inject(NgZone);
 
-    @Input()
-    public item!: TuiSheet<T>;
-
     protected id = '';
-
     protected readonly isIos = inject(TUI_IS_IOS);
     protected readonly moreWord$ = inject(TUI_MORE_WORD);
-
     protected readonly stuck$ = this.scroll$.pipe(
         map(y => Math.floor(y) > this.contentTop),
     );
+
+    @Input()
+    public item!: TuiSheet<T>;
 
     @tuiPure
     public get context(): TuiSheet<T> {

@@ -41,12 +41,6 @@ import {NumberFormatDocumentationComponent} from '../abstract/number-format-docu
     ],
 })
 export default class PageComponent extends AbstractExampleTuiNumberFormat {
-    public control = new FormControl([0, 10]);
-
-    public override sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
-
-    public override size = this.sizeVariants[1];
-
     protected minVariants: readonly number[] = [0, 5, 7.77, -10];
 
     protected min = this.minVariants[0];
@@ -93,4 +87,10 @@ export default class PageComponent extends AbstractExampleTuiNumberFormat {
 
     protected leftValueContent = this.valueContentVariants[0];
     protected rightValueContent = this.valueContentVariants[0];
+
+    public control = new FormControl([0, 10]);
+
+    public override sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
+
+    public override size = this.sizeVariants[1];
 }

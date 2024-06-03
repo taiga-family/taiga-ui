@@ -36,6 +36,9 @@ export class TuiPaginationComponent {
 
     private readonly el = tuiInjectElement();
 
+    protected readonly texts$ = inject(TUI_PAGINATION_TEXTS);
+    protected readonly icons = inject(TUI_SPIN_ICONS);
+
     @Input()
     public length = 1;
 
@@ -74,9 +77,6 @@ export class TuiPaginationComponent {
 
     @Output()
     public readonly indexChange = new EventEmitter<number>();
-
-    protected readonly texts$ = inject(TUI_PAGINATION_TEXTS);
-    protected readonly icons = inject(TUI_SPIN_ICONS);
 
     public get nativeFocusableElement(): TuiNativeFocusableElement | null {
         if (this.disabled) {

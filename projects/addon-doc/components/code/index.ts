@@ -26,9 +26,6 @@ import {BehaviorSubject, map, startWith, Subject, switchMap, timer} from 'rxjs';
 export class TuiDocCodeComponent {
     private readonly rawLoader$$ = new BehaviorSubject<TuiRawLoaderContent>('');
 
-    @Input()
-    public filename = '';
-
     protected readonly markdownCodeProcessor = inject<TuiHandler<string, string[]>>(
         TUI_DOC_EXAMPLE_MARKDOWN_CODE_PROCESSOR,
     );
@@ -48,6 +45,9 @@ export class TuiDocCodeComponent {
         switchMap(tuiRawLoad),
         map((value: string): string[] => this.markdownCodeProcessor(value)),
     );
+
+    @Input()
+    public filename = '';
 
     @Input()
     public set code(code: TuiRawLoaderContent) {

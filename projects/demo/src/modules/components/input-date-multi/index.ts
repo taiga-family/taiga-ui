@@ -47,8 +47,6 @@ import {InheritedDocumentationComponent} from '../abstract/inherited-documentati
     ],
 })
 export default class PageComponent extends AbstractExampleTuiControl {
-    public control = new FormControl<TuiDay[]>([], Validators.required);
-
     protected minVariants = [
         TUI_FIRST_DAY,
         new TuiDay(2017, 2, 5),
@@ -85,4 +83,6 @@ export default class PageComponent extends AbstractExampleTuiControl {
     ];
 
     protected markerHandler: TuiMarkerHandler | null = null;
+
+    public control = new FormControl<TuiDay[]>([], Validators.required);
 }

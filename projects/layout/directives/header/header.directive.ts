@@ -36,8 +36,8 @@ class TuiHeaderStyles {}
     },
 })
 export class TuiHeaderDirective {
+    protected readonly nothing = tuiWithStyles(TuiHeaderStyles);
+
     @Input('tuiHeader')
     public size: TuiSizeXXL | TuiSizeXXS | '' = 's';
-
-    protected readonly nothing = tuiWithStyles(TuiHeaderStyles);
 }

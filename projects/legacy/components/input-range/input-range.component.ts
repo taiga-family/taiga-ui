@@ -64,6 +64,11 @@ export class TuiInputRangeComponent
     private readonly isMobile = inject(TUI_IS_MOBILE);
     private readonly el = tuiInjectElement();
 
+    protected leftTextfieldValue = this.safeCurrentValue[0];
+    protected rightTextfieldValue = this.safeCurrentValue[1];
+    protected lastActiveSide: 'left' | 'right' = 'left';
+    protected readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
+
     @Input()
     public min = 0;
 
@@ -90,12 +95,6 @@ export class TuiInputRangeComponent
 
     @Input()
     public pluralize: Record<string, string> | null = null;
-
-    protected leftTextfieldValue = this.safeCurrentValue[0];
-    protected rightTextfieldValue = this.safeCurrentValue[1];
-    protected lastActiveSide: 'left' | 'right' = 'left';
-
-    protected readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
 
     public get nativeFocusableElement(): TuiNativeFocusableElement | null {
         return this.disabled

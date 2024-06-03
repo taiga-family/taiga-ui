@@ -42,6 +42,10 @@ import {TuiDocPageTabConnectorDirective} from './page-tab.directive';
     providers: PAGE_PROVIDERS,
 })
 export class TuiDocPageComponent {
+    protected readonly defaultTabs = inject(TUI_DOC_DEFAULT_TABS);
+    protected readonly from = / /g;
+    protected readonly to = '_';
+
     @Input()
     public header = '';
 
@@ -63,11 +67,6 @@ export class TuiDocPageComponent {
 
     public activeItemIndex = 0;
     public readonly seeAlso = inject(PAGE_SEE_ALSO);
-
-    protected readonly from = / /g;
-    protected readonly to = '_';
-
-    protected readonly defaultTabs = inject(TUI_DOC_DEFAULT_TABS);
 
     public get showSeeAlso(): boolean {
         return !!this.seeAlso.length && this.activeItemIndex === 0;

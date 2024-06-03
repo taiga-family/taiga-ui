@@ -64,6 +64,32 @@ export class TuiDocExampleComponent {
         1,
     );
 
+    protected readonly options = inject(TUI_DOC_EXAMPLE_OPTIONS);
+    protected readonly texts = inject(TUI_DOC_EXAMPLE_TEXTS);
+    protected readonly codeEditor = inject(TUI_DOC_CODE_EDITOR, {optional: true});
+    protected readonly isE2E = inject(TUI_IS_E2E);
+    protected readonly codeActions =
+        inject<ReadonlyArray<PolymorpheusContent<TuiContext<string>>>>(
+            TUI_DOC_CODE_ACTIONS,
+        );
+
+    protected readonly defaultTabIndex = 0;
+    protected readonly defaultTab = this.texts[this.defaultTabIndex];
+    protected activeItemIndex = this.defaultTabIndex;
+    protected readonly copy$ = this.copyTexts$.pipe(map(([copy]) => copy));
+    protected readonly loading$ = new Subject<boolean>();
+
+    protected readonly processor$: Observable<Record<string, string>> =
+        this.rawLoader$$.pipe(
+            switchMap(tuiRawLoadRecord),
+            map(value => this.processContent(value)),
+        );
+
+    protected readonly lazyComponent$ = this.lazyLoader$$.pipe(
+        switchAll(),
+        map(module => new PolymorpheusComponent(module.default)),
+    );
+
     @Input()
     @HostBinding('attr.id')
     public id: string | null = null;
@@ -80,36 +106,6 @@ export class TuiDocExampleComponent {
 
     @Input()
     public componentName: string = this.location.pathname.slice(1);
-
-    protected readonly options = inject(TUI_DOC_EXAMPLE_OPTIONS);
-    protected readonly texts = inject(TUI_DOC_EXAMPLE_TEXTS);
-    protected readonly codeEditor = inject(TUI_DOC_CODE_EDITOR, {optional: true});
-    protected readonly isE2E = inject(TUI_IS_E2E);
-    protected readonly codeActions =
-        inject<ReadonlyArray<PolymorpheusContent<TuiContext<string>>>>(
-            TUI_DOC_CODE_ACTIONS,
-        );
-
-    protected readonly defaultTabIndex = 0;
-
-    protected readonly defaultTab = this.texts[this.defaultTabIndex];
-
-    protected activeItemIndex = this.defaultTabIndex;
-
-    protected readonly copy$ = this.copyTexts$.pipe(map(([copy]) => copy));
-
-    protected readonly processor$: Observable<Record<string, string>> =
-        this.rawLoader$$.pipe(
-            switchMap(tuiRawLoadRecord),
-            map(value => this.processContent(value)),
-        );
-
-    protected readonly lazyComponent$ = this.lazyLoader$$.pipe(
-        switchAll(),
-        map(module => new PolymorpheusComponent(module.default)),
-    );
-
-    protected readonly loading$ = new Subject<boolean>();
 
     @Input()
     public set content(content: TuiDocExample) {

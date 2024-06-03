@@ -32,6 +32,13 @@ import {TUI_HIDE_TEXT, TUI_SHOW_ALL_TEXT} from '@taiga-ui/kit/tokens';
     hostDirectives: [TuiGroupDirective],
 })
 export class TuiFilesComponent {
+    @ContentChildren(TuiItemDirective, {read: TemplateRef})
+    protected readonly items: QueryList<TemplateRef<Record<string, unknown>>> =
+        EMPTY_QUERY;
+
+    protected readonly hideText$ = inject(TUI_HIDE_TEXT);
+    protected readonly showAllText$ = inject(TUI_SHOW_ALL_TEXT);
+
     @Input()
     public max = 0;
 
@@ -40,13 +47,6 @@ export class TuiFilesComponent {
 
     @Output()
     public readonly expandedChange = new EventEmitter<boolean>();
-
-    @ContentChildren(TuiItemDirective, {read: TemplateRef})
-    protected readonly items: QueryList<TemplateRef<Record<string, unknown>>> =
-        EMPTY_QUERY;
-
-    protected readonly hideText$ = inject(TUI_HIDE_TEXT);
-    protected readonly showAllText$ = inject(TUI_SHOW_ALL_TEXT);
 
     protected get hasExtraItems(): boolean {
         return !!this.max && this.items.length > this.max;

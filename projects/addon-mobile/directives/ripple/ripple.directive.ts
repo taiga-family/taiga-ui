@@ -60,13 +60,13 @@ export class TuiRippleDirective {
         duration: tuiGetDuration(inject(TUI_ANIMATIONS_SPEED)),
     };
 
+    protected readonly nothing = tuiWithStyles(TuiRippleStyles);
+
     @Input({
         alias: 'tuiRipple',
         transform: selectorScopeFallback,
     })
     public selector = DEFAULT_SELECTOR;
-
-    protected readonly nothing = tuiWithStyles(TuiRippleStyles);
 
     @HostListener('pointerdown.silent', [
         '$event.clientX',

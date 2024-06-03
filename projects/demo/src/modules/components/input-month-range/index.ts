@@ -38,11 +38,6 @@ import {InheritedDocumentationComponent} from '../abstract/inherited-documentati
     providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, PageComponent)],
 })
 export default class PageComponent extends AbstractExampleTuiControl {
-    public override cleaner = false;
-    public override maxLength = 0;
-
-    public control = new FormControl<TuiMonthRange | null>(null, Validators.required);
-
     protected readonly minVariants = [
         TUI_FIRST_DAY,
         new TuiMonth(2019, 2),
@@ -66,4 +61,9 @@ export default class PageComponent extends AbstractExampleTuiControl {
     > = [TUI_FALSE_HANDLER, ({month}) => month % 3 === 0];
 
     protected disabledItemHandler = this.disabledItemHandlerVariants[0];
+
+    public override cleaner = false;
+    public override maxLength = 0;
+
+    public control = new FormControl<TuiMonthRange | null>(null, Validators.required);
 }

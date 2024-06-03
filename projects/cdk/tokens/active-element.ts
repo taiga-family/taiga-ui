@@ -67,7 +67,6 @@ export const TUI_ACTIVE_ELEMENT = tuiCreateTokenFromFactory<
 
     return merge(
         focusout$.pipe(
-            // eslint-disable-next-line rxjs/no-unsafe-takeuntil
             takeUntil(mousedown$),
             repeat({delay: () => mouseup$}),
             withLatestFrom(removedElement$),

@@ -24,7 +24,6 @@ import type {TemplateResource} from '../../interfaces/template-resource';
 const PROPERTY_FOR_DEPRECATED_PIPES = '[color]';
 
 export const DEPRECATED_PROGRESS_PIPES_REG =
-    // eslint-disable-next-line unicorn/no-unsafe-regex
     /\s*\|\s*tuiProgressColorSegments(Async\s*\|\s*async)?/gi;
 
 export function replaceProgressColorSegmentsPipe(

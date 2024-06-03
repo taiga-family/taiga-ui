@@ -54,12 +54,6 @@ export class IconsGroupComponent implements OnInit {
     private readonly router = inject(Router);
     private readonly destroyRef = inject(DestroyRef);
 
-    @Input()
-    public icons: Record<string, readonly string[]> = {};
-
-    @Input()
-    public color: string | null = null;
-
     @ContentChild(IconsGroupDirective)
     protected readonly iconGroup?: IconsGroupDirective;
 
@@ -71,6 +65,12 @@ export class IconsGroupComponent implements OnInit {
         map(queryParams => queryParams['search'] ?? ''),
         distinctUntilChanged(),
     );
+
+    @Input()
+    public icons: Record<string, readonly string[]> = {};
+
+    @Input()
+    public color: string | null = null;
 
     public ngOnInit(): void {
         this.control.patchValue(this.route.snapshot.queryParams['search'] ?? '');

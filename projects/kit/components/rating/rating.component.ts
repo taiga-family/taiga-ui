@@ -45,14 +45,14 @@ export class TuiRatingComponent
 
     private readonly options = inject(TUI_RATING_OPTIONS);
 
+    @HostBinding('class._active')
+    protected active = 0;
+
     @Input()
     public icon = this.options.icon;
 
     @Input()
     public max = this.options.max;
-
-    @HostBinding('class._active')
-    protected active = 0;
 
     public get nativeFocusableElement(): HTMLInputElement | null {
         return this.computedDisabled ? null : this.input?.nativeElement || null;

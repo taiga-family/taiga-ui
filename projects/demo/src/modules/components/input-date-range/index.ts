@@ -56,17 +56,6 @@ const ONE_DOT: [string] = ['var(--tui-success-fill)'];
     ],
 })
 export default class PageComponent extends AbstractExampleTuiControl {
-    public override cleaner = false;
-    public control = new FormControl<TuiDayRange | null>(null, Validators.required);
-
-    public override readonly maxLengthVariants: readonly TuiDayLike[] = [
-        {day: 5},
-        {month: 1},
-        {year: 1},
-    ];
-
-    public override maxLength: TuiDayLike | null = null;
-
     protected readonly dayVariants = [
         TUI_FIRST_DAY,
         new TuiDay(2021, 2, 5),
@@ -111,4 +100,15 @@ export default class PageComponent extends AbstractExampleTuiControl {
     ];
 
     protected defaultViewedMonth = this.defaultViewedMonthVariants[0];
+
+    public override cleaner = false;
+    public control = new FormControl<TuiDayRange | null>(null, Validators.required);
+
+    public override readonly maxLengthVariants: readonly TuiDayLike[] = [
+        {day: 5},
+        {month: 1},
+        {year: 1},
+    ];
+
+    public override maxLength: TuiDayLike | null = null;
 }

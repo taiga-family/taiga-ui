@@ -106,6 +106,18 @@ export class TuiInputTagComponent
     private readonly el = tuiInjectElement();
     private readonly options = inject(TUI_INPUT_TAG_OPTIONS);
 
+    @ContentChild(TuiDataListDirective, {read: TemplateRef})
+    protected readonly datalist?: TemplateRef<TuiContext<TuiActiveZoneDirective>>;
+
+    @ViewChild('errorIcon')
+    protected readonly errorIconTemplate?: TemplateRef<Record<string, unknown>>;
+
+    protected readonly hintOptions = inject(TuiHintOptionsDirective, {optional: true});
+    protected readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
+    protected readonly icons = inject(TUI_COMMON_ICONS);
+    protected status: TuiStatus = this.options.tagStatus;
+    protected open = false;
+
     @Input()
     public separator: RegExp | string = this.options.separator;
 
@@ -144,18 +156,6 @@ export class TuiInputTagComponent
 
     @Output()
     public readonly searchChange = new EventEmitter<string>();
-
-    @ContentChild(TuiDataListDirective, {read: TemplateRef})
-    protected readonly datalist?: TemplateRef<TuiContext<TuiActiveZoneDirective>>;
-
-    @ViewChild('errorIcon')
-    protected readonly errorIconTemplate?: TemplateRef<Record<string, unknown>>;
-
-    protected readonly hintOptions = inject(TuiHintOptionsDirective, {optional: true});
-    protected readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
-    protected readonly icons = inject(TUI_COMMON_ICONS);
-    protected status: TuiStatus = this.options.tagStatus;
-    protected open = false;
 
     @Input('pseudoFocused')
     public set pseudoFocusedSetter(value: boolean | null) {

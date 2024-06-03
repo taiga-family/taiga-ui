@@ -75,6 +75,11 @@ export class TuiInputPhoneComponent
     private readonly options = inject(TUI_INPUT_PHONE_OPTIONS);
     private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
 
+    @ContentChild(TuiDataListDirective, {read: TemplateRef})
+    protected readonly datalist?: TemplateRef<TuiContext<TuiActiveZoneDirective>>;
+
+    protected open = false;
+
     @Input()
     public phoneMaskAfterCountryCode = this.options.phoneMaskAfterCountryCode;
 
@@ -88,11 +93,6 @@ export class TuiInputPhoneComponent
     public readonly searchChange = new EventEmitter<string>();
 
     public countryCode = this.options.countryCode;
-
-    @ContentChild(TuiDataListDirective, {read: TemplateRef})
-    protected readonly datalist?: TemplateRef<TuiContext<TuiActiveZoneDirective>>;
-
-    protected open = false;
 
     @Input('countryCode')
     public set countryCodeSetter(newCountryCode: string) {

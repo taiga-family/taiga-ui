@@ -14,11 +14,10 @@ import {TuiLinkDirective} from '@taiga-ui/core';
 })
 export class TuiDocSeeAlsoComponent {
     private readonly pages = inject(TUI_DOC_MAP_PAGES);
+    protected readonly text = inject(TUI_DOC_SEE_ALSO_TEXT);
 
     @Input()
     public seeAlso: readonly string[] = [];
-
-    protected readonly text = inject(TUI_DOC_SEE_ALSO_TEXT);
 
     protected getRouterLink(pageTitle: string): string {
         return this.pages.get(pageTitle)?.route ?? '';

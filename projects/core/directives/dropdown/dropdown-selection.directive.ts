@@ -38,11 +38,6 @@ export class TuiDropdownSelectionDirective
 {
     private ghost?: HTMLElement;
 
-    @Input('tuiDropdownSelectionPosition')
-    public position: 'selection' | 'tag' | 'word' = 'selection';
-
-    public readonly type = 'dropdown';
-
     protected readonly doc = inject(DOCUMENT);
     protected readonly vcr = inject(ViewContainerRef);
     protected readonly dropdown = inject(TuiDropdownDirective);
@@ -73,6 +68,11 @@ export class TuiDropdownSelectionDirective
     );
 
     protected range = inject(TUI_RANGE);
+
+    @Input('tuiDropdownSelectionPosition')
+    public position: 'selection' | 'tag' | 'word' = 'selection';
+
+    public readonly type = 'dropdown';
 
     constructor() {
         super(subscriber => this.stream$.subscribe(subscriber));

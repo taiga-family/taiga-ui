@@ -52,7 +52,11 @@ export default class PageComponent extends AbstractExampleTuiControl {
     @ViewChild('justLongText', {static: true})
     private readonly longTextRef!: TemplateRef<HTMLElement>;
 
+    protected placeholder = 'Field placeholder';
+
     public readonly iconVariants = ['', 'tuiIconSearchLarge', 'tuiIconCalendarLarge'];
+
+    public icon = this.iconVariants[0];
 
     public override iconLeft = this.iconVariants[0];
 
@@ -66,10 +70,6 @@ export default class PageComponent extends AbstractExampleTuiControl {
         'tuiIconMastercardMono',
         LONG_TEXT_TEMPLATE,
     ];
-
-    protected icon = this.iconVariants[0];
-
-    protected placeholder = 'Field placeholder';
 
     public override get customContent(): PolymorpheusContent {
         return this.customContentSelected === LONG_TEXT_TEMPLATE

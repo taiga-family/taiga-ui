@@ -53,11 +53,11 @@ class TuiBadgeStyles {}
 export class TuiBadgeDirective {
     private readonly options = inject(TUI_BADGE_OPTIONS);
 
+    protected readonly nothing = tuiWithStyles(TuiBadgeStyles);
+
     @Input()
     public size = this.options.size;
 
     @Input()
     public dot = this.options.dot;
-
-    protected readonly nothing = tuiWithStyles(TuiBadgeStyles);
 }

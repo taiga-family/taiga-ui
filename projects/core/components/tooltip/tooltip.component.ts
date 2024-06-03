@@ -20,14 +20,14 @@ import {TuiHintHoverDirective, TuiHintOptionsDirective} from '@taiga-ui/core/dir
 export class TuiTooltipComponent<C = any> extends TuiHintOptionsDirective {
     private readonly isMobile = inject(TUI_IS_MOBILE);
 
+    @ViewChild(TuiHintHoverDirective)
+    protected readonly driver$?: TuiHintHoverDirective;
+
     @Input()
     public describeId = '';
 
     @Input()
     public context?: C;
-
-    @ViewChild(TuiHintHoverDirective)
-    protected readonly driver$?: TuiHintHoverDirective;
 
     @HostBinding('attr.data-appearance')
     protected get computedAppearance(): string {

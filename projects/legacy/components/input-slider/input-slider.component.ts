@@ -61,6 +61,9 @@ export class TuiInputSliderComponent
     @ViewChild(TuiSliderComponent, {read: ElementRef})
     private readonly sliderRef?: ElementRef<HTMLInputElement>;
 
+    protected textfieldValue = this.safeCurrentValue;
+    protected readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
+
     @Input()
     public min = 0;
 
@@ -81,10 +84,6 @@ export class TuiInputSliderComponent
 
     @Input()
     public valueContent: PolymorpheusContent<TuiContext<number>>;
-
-    protected textfieldValue = this.safeCurrentValue;
-
-    protected readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
 
     public get nativeFocusableElement(): TuiNativeFocusableElement | null {
         return !this.inputNumberRef?.nativeFocusableElement || this.computedDisabled

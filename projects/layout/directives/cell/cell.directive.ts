@@ -35,8 +35,8 @@ class TuiCellStyles {}
     },
 })
 export class TuiCellDirective {
+    protected readonly nothing = tuiWithStyles(TuiCellStyles);
+
     @Input('tuiCell')
     public size: TuiSizeL | TuiSizeS | '' = 'l';
-
-    protected readonly nothing = tuiWithStyles(TuiCellStyles);
 }

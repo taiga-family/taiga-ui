@@ -67,6 +67,13 @@ export class TuiTabsWithMoreComponent implements AfterViewChecked, AfterViewInit
     private readonly cdr = inject(ChangeDetectorRef);
     private maxIndex = Infinity;
 
+    @ContentChildren(TuiItemDirective, {read: TemplateRef})
+    protected readonly items: QueryList<TemplateRef<Record<string, unknown>>> =
+        EMPTY_QUERY;
+
+    protected readonly moreWord$ = inject(TUI_MORE_WORD);
+    protected open = false;
+
     @Input()
     public size: TuiSizeL = this.options.size;
 
@@ -86,13 +93,6 @@ export class TuiTabsWithMoreComponent implements AfterViewChecked, AfterViewInit
     public readonly activeItemIndexChange = new EventEmitter<number>();
 
     public activeItemIndex = 0;
-
-    @ContentChildren(TuiItemDirective, {read: TemplateRef})
-    protected readonly items: QueryList<TemplateRef<Record<string, unknown>>> =
-        EMPTY_QUERY;
-
-    protected readonly moreWord$ = inject(TUI_MORE_WORD);
-    protected open = false;
 
     @Input('activeItemIndex')
     public set itemIndex(activeItemIndex: number) {

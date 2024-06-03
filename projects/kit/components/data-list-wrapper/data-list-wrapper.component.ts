@@ -51,6 +51,9 @@ import {type PolymorpheusContent, PolymorpheusModule} from '@tinkoff/ng-polymorp
 export class TuiDataListWrapperComponent<T> {
     private readonly itemsHandlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
 
+    @ViewChildren(forwardRef(() => TuiOptionComponent))
+    protected readonly optionsQuery: QueryList<TuiOptionComponent<T>> = EMPTY_QUERY;
+
     @Input()
     public items: readonly T[] | null = [];
 
@@ -66,9 +69,6 @@ export class TuiDataListWrapperComponent<T> {
 
     @Output()
     public readonly itemClick = new EventEmitter<T>();
-
-    @ViewChildren(forwardRef(() => TuiOptionComponent))
-    protected readonly optionsQuery: QueryList<TuiOptionComponent<T>> = EMPTY_QUERY;
 
     @Input()
     public itemContent: PolymorpheusContent<TuiValueContentContext<T>> = ({$implicit}) =>

@@ -29,6 +29,12 @@ import {TuiAccordionItemEagerContentDirective} from './accordion-item-eager-cont
 export class TuiAccordionItemComponent {
     private readonly cdr = inject(ChangeDetectorRef);
 
+    @ContentChild(TuiAccordionItemEagerContentDirective)
+    protected readonly eagerContent?: TuiAccordionItemEagerContentDirective;
+
+    @ContentChild(TuiAccordionItemContentDirective)
+    protected readonly lazyContent?: TuiAccordionItemContentDirective;
+
     @Input()
     @HostBinding('class._no-padding')
     public noPadding = false;
@@ -60,12 +66,6 @@ export class TuiAccordionItemComponent {
 
     @Output()
     public readonly openChange = new EventEmitter<boolean>();
-
-    @ContentChild(TuiAccordionItemEagerContentDirective)
-    protected readonly eagerContent?: TuiAccordionItemEagerContentDirective;
-
-    @ContentChild(TuiAccordionItemContentDirective)
-    protected readonly lazyContent?: TuiAccordionItemContentDirective;
 
     public close(): void {
         this.updateOpen(false);

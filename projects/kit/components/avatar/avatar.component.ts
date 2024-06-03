@@ -38,6 +38,8 @@ import {TUI_AVATAR_OPTIONS} from './avatar.options';
 export class TuiAvatarComponent {
     private readonly options = inject(TUI_AVATAR_OPTIONS);
 
+    protected readonly resolver = inject(TUI_ICON_RESOLVER);
+
     @Input()
     public size = this.options.size;
 
@@ -46,8 +48,6 @@ export class TuiAvatarComponent {
 
     @Input()
     public src?: SafeResourceUrl | string | null;
-
-    protected readonly resolver = inject(TUI_ICON_RESOLVER);
 
     protected get safeSrc(): string {
         return this.src?.toString() ?? '';

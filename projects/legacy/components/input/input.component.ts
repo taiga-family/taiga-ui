@@ -55,10 +55,10 @@ export class TuiInputComponent
 
     private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
 
-    public open = false;
-
     @ContentChild(TuiDataListDirective, {read: TemplateRef})
     protected readonly datalist: PolymorpheusContent<TuiContext<TuiActiveZoneDirective>>;
+
+    public open = false;
 
     public get nativeFocusableElement(): HTMLInputElement | null {
         return this.computedDisabled || !this.textfield

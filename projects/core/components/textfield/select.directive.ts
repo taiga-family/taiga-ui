@@ -25,7 +25,6 @@ import {TuiTextfieldDirective} from './textfield.directive';
     },
     hostDirectives: [TuiNativeValidatorDirective, TuiAppearanceDirective],
 })
-// eslint-disable-next-line @angular-eslint/component-class-suffix
 export class TuiSelectDirective extends TuiTextfieldDirective {
     private readonly nav = inject(NAVIGATOR);
     private readonly control = inject(NgControl);

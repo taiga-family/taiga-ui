@@ -54,6 +54,8 @@ export class TuiRangeComponent
 {
     private readonly el = tuiInjectElement();
 
+    protected lastActiveThumb: 'left' | 'right' = 'right';
+
     @Input()
     public min = 0;
 
@@ -75,8 +77,6 @@ export class TuiRangeComponent
 
     @ViewChildren(TuiSliderComponent, {read: ElementRef})
     public slidersRefs: QueryList<ElementRef<HTMLInputElement>> = EMPTY_QUERY;
-
-    protected lastActiveThumb: 'left' | 'right' = 'right';
 
     @HostBinding('style.--left.%')
     public get left(): number {

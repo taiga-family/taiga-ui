@@ -26,8 +26,8 @@ class TuiProgressSegmentedStyles {}
     },
 })
 export class TuiProgressSegmentedDirective {
+    protected readonly nothing = tuiWithStyles(TuiProgressSegmentedStyles);
+
     @Input()
     public segments = 1;
-
-    protected readonly nothing = tuiWithStyles(TuiProgressSegmentedStyles);
 }

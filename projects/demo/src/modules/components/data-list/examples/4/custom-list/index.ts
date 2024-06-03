@@ -41,14 +41,12 @@ interface Items<T> {
     changeDetection,
 })
 export class CustomListComponent<T> {
+    protected value = '';
+    protected readonly all = EMPTY_ARRAY;
+    protected readonly filter: (item: T, value: string) => boolean = TUI_DEFAULT_MATCHER;
+
     @Input()
     public items: ReadonlyArray<Items<T>> = [];
-
-    protected value = '';
-
-    protected readonly all = EMPTY_ARRAY;
-
-    protected readonly filter: (item: T, value: string) => boolean = TUI_DEFAULT_MATCHER;
 
     protected onKeyDown(key: string, element: HTMLElement | null): void {
         if (element && tuiIsEditingKey(key)) {

@@ -29,17 +29,17 @@ export class TuiTooltipComponent<C = any> extends TuiHintOptionsDirective {
     private readonly textfield = inject(TuiTextfieldComponent, {optional: true});
     private readonly platform = inject(TUI_PLATFORM);
 
-    @Input()
-    public describeId = '';
-
-    @Input()
-    public context?: C;
-
     @ViewChild(TuiHintHoverDirective)
     protected readonly driver$?: TuiHintHoverDirective;
 
     protected readonly tooltipOptions = inject(TUI_TOOLTIP_OPTIONS);
     protected readonly iconAppearance = inject(TuiAppearanceDirective, {optional: true});
+
+    @Input()
+    public describeId = '';
+
+    @Input()
+    public context?: C;
 
     protected get id(): string {
         return this.describeId || this.textfield?.id || '';

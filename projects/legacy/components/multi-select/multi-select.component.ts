@@ -91,6 +91,13 @@ export class TuiMultiSelectComponent<T>
     private readonly itemsHandlers = inject<TuiItemsHandlers<T>>(TUI_ITEMS_HANDLERS);
     private readonly options = inject<TuiMultiSelectOptions<T>>(TUI_MULTI_SELECT_OPTIONS);
 
+    @ContentChild(TuiDataListDirective, {read: TemplateRef})
+    protected readonly datalist: PolymorpheusContent<TuiContext<TuiActiveZoneDirective>>;
+
+    protected open = false;
+    protected readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
+    protected readonly isMobile: boolean = inject(TUI_IS_MOBILE);
+
     @Input()
     public stringify: TuiItemsHandlers<T>['stringify'] = this.itemsHandlers.stringify;
 
@@ -124,13 +131,6 @@ export class TuiMultiSelectComponent<T>
 
     @Output()
     public readonly searchChange = new EventEmitter<string | null>();
-
-    @ContentChild(TuiDataListDirective, {read: TemplateRef})
-    protected readonly datalist: PolymorpheusContent<TuiContext<TuiActiveZoneDirective>>;
-
-    protected open = false;
-    protected readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
-    protected readonly isMobile: boolean = inject(TUI_IS_MOBILE);
 
     public get nativeFocusableElement(): HTMLInputElement | null {
         return this.input?.nativeFocusableElement ?? null;

@@ -35,10 +35,6 @@ import {InheritedDocumentationComponent} from '../abstract/inherited-documentati
     providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, PageComponent)],
 })
 export default class PageComponent extends AbstractExampleTuiControl {
-    public override cleaner = false;
-
-    public control = new FormControl('', [Validators.required, Validators.minLength(12)]);
-
     protected countryCodes = ['+7', '+850', '+1', '+52'];
 
     protected countryCode = this.countryCodes[0];
@@ -50,4 +46,8 @@ export default class PageComponent extends AbstractExampleTuiControl {
     ];
 
     protected phoneMaskAfterCountryCode = this.phoneMasksAfterCountryCode[0];
+
+    public override cleaner = false;
+
+    public control = new FormControl('', [Validators.required, Validators.minLength(12)]);
 }

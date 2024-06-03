@@ -122,17 +122,6 @@ export class TuiInputCardGroupedComponent
     private readonly el = tuiInjectElement();
     private expireInert = false;
 
-    @Input()
-    public exampleText = this.options.exampleText;
-
-    @Input()
-    public cardValidator = this.options.cardValidator;
-
-    @Output()
-    public readonly autofilledChange = new EventEmitter<boolean>();
-
-    public open = false;
-
     @ContentChild(TuiDataListDirective, {read: TemplateRef})
     protected readonly dropdown: PolymorpheusContent;
 
@@ -159,6 +148,17 @@ export class TuiInputCardGroupedComponent
     protected readonly cardGroupedTexts$ = inject(TUI_INPUT_CARD_GROUPED_TEXTS);
     protected readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
     protected readonly icons = inject(TUI_COMMON_ICONS);
+
+    @Input()
+    public exampleText = this.options.exampleText;
+
+    @Input()
+    public cardValidator = this.options.cardValidator;
+
+    @Output()
+    public readonly autofilledChange = new EventEmitter<boolean>();
+
+    public open = false;
 
     constructor() {
         super(inject(TUI_INPUT_CARD_GROUPED_OPTIONS));

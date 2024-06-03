@@ -33,6 +33,11 @@ export class TuiTableDirective<T extends Partial<Record<keyof T, any>>>
     private readonly options = inject(TUI_TABLE_OPTIONS);
     private readonly cdr = inject(ChangeDetectorRef);
 
+    protected readonly stuck$ = inject(TUI_STUCK);
+    protected readonly entries$ = inject<Observable<IntersectionObserverEntry[]>>(
+        IntersectionObserverService,
+    );
+
     @Input()
     public columns: ReadonlyArray<string | keyof T> = [];
 
@@ -48,11 +53,6 @@ export class TuiTableDirective<T extends Partial<Record<keyof T, any>>>
 
     @Output()
     public readonly sorterChange = new EventEmitter<TuiComparator<T> | null>();
-
-    protected readonly stuck$ = inject(TUI_STUCK);
-    protected readonly entries$ = inject<Observable<IntersectionObserverEntry[]>>(
-        IntersectionObserverService,
-    );
 
     @Input()
     public sorter: TuiComparator<T> = () => 0;

@@ -26,6 +26,10 @@ import {
     providers: [tuiButtonOptionsProvider({size: 's', appearance: 'secondary'})],
 })
 export class TuiPushComponent {
+    protected readonly isString = tuiIsString;
+    protected readonly closeWord$ = inject(TUI_CLOSE_WORD);
+    protected readonly icons = inject(TUI_COMMON_ICONS);
+
     @Input()
     public heading = '';
 
@@ -37,9 +41,4 @@ export class TuiPushComponent {
 
     @Output()
     public readonly close = new EventEmitter<void>();
-
-    protected readonly isString = tuiIsString;
-
-    protected readonly closeWord$ = inject(TUI_CLOSE_WORD);
-    protected readonly icons = inject(TUI_COMMON_ICONS);
 }

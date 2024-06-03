@@ -31,6 +31,10 @@ import {TuiSegmentedDirective} from './segmented.directive';
 export class TuiSegmentedComponent implements OnChanges {
     private readonly el = tuiInjectElement();
 
+    protected readonly sub = inject(ResizeObserverService)
+        .pipe(tuiZonefree(inject(NgZone)), takeUntilDestroyed())
+        .subscribe(() => this.refresh());
+
     @Input()
     @HostBinding('attr.data-size')
     public size: TuiSizeL | TuiSizeS = 's';
@@ -40,10 +44,6 @@ export class TuiSegmentedComponent implements OnChanges {
 
     @Output()
     public readonly activeItemIndexChange = new EventEmitter<number>();
-
-    protected readonly sub = inject(ResizeObserverService)
-        .pipe(tuiZonefree(inject(NgZone)), takeUntilDestroyed())
-        .subscribe(() => this.refresh());
 
     public ngOnChanges(): void {
         this.refresh();

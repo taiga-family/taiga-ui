@@ -61,14 +61,14 @@ export class TuiDataListComponent<T> implements TuiDataListAccessor<T> {
         optional: true,
     });
 
+    protected readonly defaultEmptyContent$ = inject(TUI_NOTHING_FOUND_MESSAGE);
+
     @Input()
     public emptyContent: PolymorpheusContent;
 
     @Input()
     @HostBinding('attr.data-size')
     public size = this.controller?.size || 'm';
-
-    protected readonly defaultEmptyContent$ = inject(TUI_NOTHING_FOUND_MESSAGE);
 
     @HostListener('keydown.arrowDown.prevent', ['$event.target', '1'])
     @HostListener('keydown.arrowUp.prevent', ['$event.target', '-1'])

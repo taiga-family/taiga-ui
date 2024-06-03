@@ -12,7 +12,6 @@ export function tuiTakeUntilDestroyed<T>(
     return pipe(
         takeUntil(
             NEVER.pipe(
-                // eslint-disable-next-line rxjs/no-unsafe-takeuntil
                 takeUntilDestroyed(destroyRef),
                 catchError(() => EMPTY),
                 defaultIfEmpty(null),

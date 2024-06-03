@@ -41,12 +41,11 @@ export const TUI_SCROLLABLE = 'tui-scrollable';
 export class TuiScrollbarComponent {
     private readonly el = tuiInjectElement();
 
+    protected readonly isIOS = inject(TUI_IS_IOS);
+    protected readonly browserScrollRef = new ElementRef(this.el);
+
     @Input()
     public hidden = false;
-
-    protected readonly isIOS = inject(TUI_IS_IOS);
-
-    protected readonly browserScrollRef = new ElementRef(this.el);
 
     protected get delegated(): boolean {
         return this.browserScrollRef.nativeElement !== this.el;

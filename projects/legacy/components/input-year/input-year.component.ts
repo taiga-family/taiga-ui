@@ -45,6 +45,9 @@ export class TuiInputYearComponent
     private readonly options = inject(TUI_INPUT_DATE_OPTIONS);
     private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
 
+    protected open = false;
+    protected readonly initialItem = new Date().getFullYear();
+
     @Input()
     public min: number | null = this.options.min.year;
 
@@ -55,9 +58,6 @@ export class TuiInputYearComponent
     public disabledItemHandler: TuiBooleanHandler<number> = TUI_FALSE_HANDLER;
 
     public nativeValue = '';
-
-    protected open = false;
-    protected readonly initialItem = new Date().getFullYear();
 
     public get nativeFocusableElement(): HTMLInputElement | null {
         return this.textfield?.nativeFocusableElement || null;

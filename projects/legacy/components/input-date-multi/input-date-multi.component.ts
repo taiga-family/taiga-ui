@@ -84,6 +84,31 @@ export class TuiInputDateMultiComponent
     private readonly options = inject(TUI_INPUT_DATE_OPTIONS);
     private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
 
+    protected readonly dateTexts$ = inject(TUI_DATE_TEXTS);
+    protected override readonly valueTransformer = inject<
+        TuiValueTransformer<readonly TuiDay[]>
+    >(TUI_DATE_VALUE_TRANSFORMER, {optional: true});
+
+    protected open = false;
+
+    protected dateFormat = TUI_DEFAULT_DATE_FORMAT;
+    protected readonly isMobile = inject(TUI_IS_MOBILE);
+    protected readonly doneWord$ = inject(TUI_DONE_WORD);
+    protected readonly filler$: Observable<string> = this.dateTexts$.pipe(
+        map(dateTexts =>
+            changeDateSeparator(
+                dateTexts[this.dateFormat.mode],
+                this.dateFormat.separator,
+            ),
+        ),
+    );
+
+    protected readonly dateFormat$ = inject(TUI_DATE_FORMAT)
+        .pipe(tuiWatch(this.cdr), takeUntilDestroyed())
+        .subscribe(format => {
+            this.dateFormat = format;
+        });
+
     @Input()
     public min: TuiDay | null = this.options.min;
 
@@ -115,37 +140,12 @@ export class TuiInputDateMultiComponent
     @Input()
     public rows = 1;
 
-    protected readonly dateTexts$ = inject(TUI_DATE_TEXTS);
-    protected override readonly valueTransformer = inject<
-        TuiValueTransformer<readonly TuiDay[]>
-    >(TUI_DATE_VALUE_TRANSFORMER, {optional: true});
-
-    protected maskitoOptions: MaskitoOptions = maskitoDateOptionsGenerator({
+    public readonly maskitoOptions: MaskitoOptions = maskitoDateOptionsGenerator({
         mode: 'dd/mm/yyyy',
         separator: '.',
         min: this.min?.toLocalNativeDate(),
         max: this.max?.toLocalNativeDate(),
     });
-
-    protected open = false;
-
-    protected dateFormat = TUI_DEFAULT_DATE_FORMAT;
-    protected readonly isMobile = inject(TUI_IS_MOBILE);
-    protected readonly doneWord$ = inject(TUI_DONE_WORD);
-    protected readonly filler$: Observable<string> = this.dateTexts$.pipe(
-        map(dateTexts =>
-            changeDateSeparator(
-                dateTexts[this.dateFormat.mode],
-                this.dateFormat.separator,
-            ),
-        ),
-    );
-
-    protected readonly dateFormat$ = inject(TUI_DATE_FORMAT)
-        .pipe(tuiWatch(this.cdr), takeUntilDestroyed())
-        .subscribe(format => {
-            this.dateFormat = format;
-        });
 
     public get nativeFocusableElement(): HTMLInputElement | null {
         return this.textfield?.nativeFocusableElement || null;

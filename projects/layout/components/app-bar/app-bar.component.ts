@@ -32,10 +32,6 @@ export class TuiAppBarComponent {
     @ViewChildren('side')
     private readonly side: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
-    @Input()
-    @HostBinding('attr.data-size')
-    public size: TuiSizeL = 'm';
-
     protected readonly width$ = merge(
         inject(ResizeObserverService),
         inject(MutationObserverService),
@@ -49,4 +45,8 @@ export class TuiAppBarComponent {
                 ),
         ),
     );
+
+    @Input()
+    @HostBinding('attr.data-size')
+    public size: TuiSizeL = 'm';
 }

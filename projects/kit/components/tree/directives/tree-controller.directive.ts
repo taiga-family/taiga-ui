@@ -16,6 +16,8 @@ import {TUI_TREE_ACCESSOR, TUI_TREE_CONTROLLER} from '../misc/tree.tokens';
 export class TuiTreeControllerDirective<T>
     implements TuiTreeController, TuiTreeAccessor<T>
 {
+    protected readonly items = new Map<TuiTreeItemComponent, T>();
+
     @Input('tuiTreeController')
     public fallback = true;
 
@@ -24,8 +26,6 @@ export class TuiTreeControllerDirective<T>
 
     @Output()
     public readonly toggled = new EventEmitter<T>();
-
-    protected readonly items = new Map<TuiTreeItemComponent, T>();
 
     public register(item: TuiTreeItemComponent, value: T): void {
         this.items.set(item, value);

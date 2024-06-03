@@ -51,8 +51,8 @@ class TuiLinkStyles {}
     },
 })
 export class TuiLinkDirective {
+    protected readonly nothing = tuiWithStyles(TuiLinkStyles);
+
     @Input()
     public pseudo = inject(TUI_LINK_OPTIONS).pseudo;
-
-    protected readonly nothing = tuiWithStyles(TuiLinkStyles);
 }

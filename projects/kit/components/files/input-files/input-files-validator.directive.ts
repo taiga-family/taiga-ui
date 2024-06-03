@@ -40,7 +40,6 @@ export class TuiInputFilesValidatorDirective implements OnChanges, OnInit {
                 tuiCreateFileFormatValidator(this.accept),
                 tuiCreateFileSizeValidator(this.maxFileSize),
             ]) || Validators.nullValidator;
-        // eslint-disable-next-line @angular-eslint/no-lifecycle-call
         this.validator.ngOnChanges();
     }
 }

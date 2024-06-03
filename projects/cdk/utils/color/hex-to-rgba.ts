@@ -23,7 +23,6 @@ export function tuiHexToRGBA(hex: string, alpha?: number): string {
 }
 
 export function tuiIsValidHex(hex: string): boolean {
-    // eslint-disable-next-line unicorn/no-unsafe-regex
     return /^#([A-Fa-f0-9]{3,4}){1,2}$/.test(hex);
 }
 

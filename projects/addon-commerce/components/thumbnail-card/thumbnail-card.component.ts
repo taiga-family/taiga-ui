@@ -21,6 +21,9 @@ import {TUI_ICON_RESOLVER, TuiIconComponent} from '@taiga-ui/core';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiThumbnailCardComponent {
+    protected readonly paymentIcons = inject(TUI_PAYMENT_SYSTEM_ICONS);
+    protected readonly resolver = inject<TuiStringHandler<string>>(TUI_ICON_RESOLVER);
+
     @Input()
     @HostBinding('attr.data-size')
     public size: TuiSizeL | TuiSizeS = 'm';
@@ -33,9 +36,6 @@ export class TuiThumbnailCardComponent {
 
     @Input()
     public iconRight = '';
-
-    protected readonly paymentIcons = inject(TUI_PAYMENT_SYSTEM_ICONS);
-    protected readonly resolver = inject<TuiStringHandler<string>>(TUI_ICON_RESOLVER);
 
     // TODO: Revisit this approach in 4.0 when icons are moved away from InputCard options
     protected get isMono(): boolean {

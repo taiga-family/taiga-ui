@@ -52,6 +52,9 @@ const TODAY = TuiDay.currentLocal();
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth> {
+    protected isYearPickerShown = false;
+    protected readonly months$ = inject(TUI_CALENDAR_MONTHS);
+
     @Input()
     public value: TuiMonth | TuiMonthRange | null = null;
 
@@ -83,9 +86,6 @@ export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth
     public readonly yearChange = new EventEmitter<TuiYear>();
 
     public hoveredItem: TuiMonth | null = null;
-
-    protected isYearPickerShown = false;
-    protected readonly months$ = inject(TUI_CALENDAR_MONTHS);
 
     @HostBinding('class._single')
     public get isSingle(): boolean {

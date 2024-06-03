@@ -28,10 +28,10 @@ class TuiAvatarOutlineStyles {}
     },
 })
 export class TuiAvatarOutlineDirective {
+    protected readonly nothing = tuiWithStyles(TuiAvatarOutlineStyles);
+
     @Input()
     public tuiAvatarOutline: string | null = '';
-
-    protected readonly nothing = tuiWithStyles(TuiAvatarOutlineStyles);
 
     protected get value(): string | null {
         return this.tuiAvatarOutline === ''

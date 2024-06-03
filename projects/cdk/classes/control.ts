@@ -39,13 +39,6 @@ export abstract class AbstractTuiControl<T>
     private previousInternalValue?: T | null;
     private readonly refresh$ = new Subject<void>();
 
-    @Input()
-    @HostBinding('class._readonly')
-    public readOnly = false;
-
-    @Input()
-    public pseudoInvalid: boolean | null = null;
-
     protected onTouched = EMPTY_FUNCTION;
     protected onChange = EMPTY_FUNCTION;
     protected readonly fallbackValue = this.getFallbackValue();
@@ -55,6 +48,13 @@ export abstract class AbstractTuiControl<T>
         TuiValueTransformer,
         {optional: true},
     );
+
+    @Input()
+    @HostBinding('class._readonly')
+    public readOnly = false;
+
+    @Input()
+    public pseudoInvalid: boolean | null = null;
 
     constructor() {
         super();

@@ -40,19 +40,6 @@ import {InheritedDocumentationComponent} from '../abstract/inherited-documentati
     providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, PageComponent)],
 })
 export default class PageComponent extends AbstractExampleTuiControl {
-    public control = new FormGroup({
-        card: new FormControl('', [
-            Validators.required,
-            tuiCreateLuhnValidator('Invalid card number'),
-        ]),
-        expire: new FormControl('', Validators.required),
-        cvc: new FormControl('', Validators.required),
-    });
-
-    public override cleaner = false;
-
-    public override exampleText = '0000 0000 0000 0000';
-
     @ViewChild('documentationPropertyBinChange', {
         read: TuiDocDocumentationPropertyConnectorDirective,
     })
@@ -88,6 +75,19 @@ export default class PageComponent extends AbstractExampleTuiControl {
     protected autocompleteEnabledCVC = false;
 
     protected autocompleteEnabledExpire = false;
+
+    public control = new FormGroup({
+        card: new FormControl('', [
+            Validators.required,
+            tuiCreateLuhnValidator('Invalid card number'),
+        ]),
+        expire: new FormControl('', Validators.required),
+        cvc: new FormControl('', Validators.required),
+    });
+
+    public override cleaner = false;
+
+    public override exampleText = '0000 0000 0000 0000';
 
     protected get cardSrc(): string | null {
         return this.cardSrcSelected === null ? null : this.cards[this.cardSrcSelected];

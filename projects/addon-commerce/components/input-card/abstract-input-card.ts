@@ -15,6 +15,10 @@ export abstract class AbstractTuiInputCard<
     extends AbstractTuiNullableControl<T>
     implements TuiFocusableElementAccessor
 {
+    protected paymentIcons: Record<TuiPaymentSystem, string> = inject(
+        TUI_PAYMENT_SYSTEM_ICONS,
+    );
+
     @Input()
     public cardSrc: PolymorpheusContent;
 
@@ -23,10 +27,6 @@ export abstract class AbstractTuiInputCard<
 
     @Output()
     public readonly binChange = new EventEmitter<string | null>();
-
-    protected paymentIcons: Record<TuiPaymentSystem, string> = inject(
-        TUI_PAYMENT_SYSTEM_ICONS,
-    );
 
     protected constructor(protected readonly options: Options) {
         super();

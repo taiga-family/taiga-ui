@@ -36,14 +36,6 @@ import {AbstractExampleTuiControl} from '../abstract/control';
     providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, PageComponent)],
 })
 export default class PageComponent extends AbstractExampleTuiControl {
-    public override readonly sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
-    public override size = this.sizeVariants[0];
-    public readonly control = new FormControl<File[] | null>(null);
-
-    protected readonly files$ = this.control.valueChanges.pipe(
-        map(() => tuiFilesAccepted(this.control)),
-    );
-
     protected multiple = true;
     protected showSize = true;
     protected showDelete: boolean | 'always' = true;
@@ -67,6 +59,13 @@ export default class PageComponent extends AbstractExampleTuiControl {
 
     protected rejected: readonly File[] = [];
     protected maxFileSize = this.maxFileSizeVariants[2];
+
+    public override readonly sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
+    public override size = this.sizeVariants[0];
+    public readonly control = new FormControl<File[] | null>(null);
+    public readonly files$ = this.control.valueChanges.pipe(
+        map(() => tuiFilesAccepted(this.control)),
+    );
 
     protected removeFile(file: File): void {
         this.rejected = this.rejected.filter(current => current !== file);

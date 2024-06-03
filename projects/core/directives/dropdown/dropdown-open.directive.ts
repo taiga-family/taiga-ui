@@ -76,15 +76,6 @@ export class TuiDropdownOpenDirective implements OnChanges {
     private readonly driver = inject(TuiDropdownDriver);
     private readonly obscured = inject(TuiObscuredDirective);
 
-    @Input()
-    public tuiDropdownEnabled = true;
-
-    @Input()
-    public tuiDropdownOpen: boolean | '' = false;
-
-    @Output()
-    public readonly tuiDropdownOpenChange = new EventEmitter<boolean>();
-
     protected readonly sub = merge(
         this.obscured.tuiObscured.pipe(filter(Boolean)),
         inject(TuiActiveZoneDirective).tuiActiveZoneChange.pipe(filter(a => !a)),
@@ -95,6 +86,15 @@ export class TuiDropdownOpenDirective implements OnChanges {
     )
         .pipe(tuiWatch(inject(ChangeDetectorRef)), takeUntilDestroyed())
         .subscribe(() => this.toggle(false));
+
+    @Input()
+    public tuiDropdownEnabled = true;
+
+    @Input()
+    public tuiDropdownOpen: boolean | '' = false;
+
+    @Output()
+    public readonly tuiDropdownOpenChange = new EventEmitter<boolean>();
 
     public get dropdown(): HTMLElement | undefined {
         return this.directive?.dropdownBoxRef?.location.nativeElement;

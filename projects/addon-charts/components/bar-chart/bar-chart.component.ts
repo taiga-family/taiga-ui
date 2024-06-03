@@ -33,6 +33,9 @@ export class TuiBarChartComponent {
     private readonly hintOptions = inject(TuiHintOptionsDirective, {optional: true});
     private readonly autoIdString = inject(TuiIdService).generate();
 
+    @ViewChildren(TuiHintHoverDirective)
+    protected readonly drivers: QueryList<Observable<boolean>> = EMPTY_QUERY;
+
     @Input()
     public value: ReadonlyArray<readonly number[]> = [];
 
@@ -44,9 +47,6 @@ export class TuiBarChartComponent {
 
     @Input()
     public collapsed = false;
-
-    @ViewChildren(TuiHintHoverDirective)
-    protected readonly drivers: QueryList<Observable<boolean>> = EMPTY_QUERY;
 
     public get transposed(): ReadonlyArray<readonly number[]> {
         return this.transpose(this.value);

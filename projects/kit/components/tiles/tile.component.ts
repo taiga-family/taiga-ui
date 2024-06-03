@@ -27,6 +27,9 @@ export class TuiTileComponent implements OnDestroy, AfterViewInit {
     private readonly service = inject(TuiTileService);
     private readonly tiles = inject(TuiTilesComponent);
 
+    @HostBinding('class._dragged')
+    protected dragged = false;
+
     @Input()
     public width = 1;
 
@@ -34,9 +37,6 @@ export class TuiTileComponent implements OnDestroy, AfterViewInit {
     public height = 1;
 
     public readonly element = tuiInjectElement();
-
-    @HostBinding('class._dragged')
-    protected dragged = false;
 
     public onDrag(offset: readonly [number, number]): void {
         const dragged = !Number.isNaN(offset[0]);

@@ -42,13 +42,13 @@ export class TuiInputExpireComponent
 
     private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
 
-    @Input()
-    public autocompleteEnabled = false;
-
     protected readonly maskOptions = maskitoDateOptionsGenerator({
         mode: 'mm/yy',
         separator: '/',
     });
+
+    @Input()
+    public autocompleteEnabled = false;
 
     public get nativeFocusableElement(): HTMLInputElement | null {
         return this.input?.nativeFocusableElement ?? null;

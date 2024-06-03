@@ -28,8 +28,8 @@ class TuiSurfaceStyles {}
     },
 })
 export class TuiSurfaceDirective {
+    protected readonly nothing = tuiWithStyles(TuiSurfaceStyles);
+
     @Input()
     public tuiSurface = '';
-
-    protected readonly nothing = tuiWithStyles(TuiSurfaceStyles);
 }

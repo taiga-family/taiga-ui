@@ -28,8 +28,8 @@ class TuiCommentStyles {}
     },
 })
 export class TuiCommentDirective {
+    protected readonly nothing = tuiWithStyles(TuiCommentStyles);
+
     @Input()
     public tuiComment: TuiHorizontalDirection | TuiVerticalDirection | '' = 'top';
-
-    protected readonly nothing = tuiWithStyles(TuiCommentStyles);
 }

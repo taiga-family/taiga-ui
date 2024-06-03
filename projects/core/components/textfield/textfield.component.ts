@@ -87,18 +87,6 @@ export class TuiTextfieldComponent<T>
         self: true,
     });
 
-    @Input()
-    public filler = '';
-
-    @Input()
-    public stringify: TuiStringHandler<T> = String;
-
-    @Input()
-    public content: PolymorpheusContent<TuiTextfieldContext<T>>;
-
-    // TODO: Refactor
-    public readonly focusedChange = EMPTY;
-
     @ContentChild(TuiTextfieldDirective)
     protected readonly directive?: TuiTextfieldDirective;
 
@@ -111,6 +99,18 @@ export class TuiTextfieldComponent<T>
 
     protected readonly options = inject(TUI_TEXTFIELD_OPTIONS);
     protected readonly control = inject(NgControl, {optional: true});
+
+    @Input()
+    public filler = '';
+
+    @Input()
+    public stringify: TuiStringHandler<T> = String;
+
+    @Input()
+    public content: PolymorpheusContent<TuiTextfieldContext<T>>;
+
+    // TODO: Refactor
+    public readonly focusedChange = EMPTY;
 
     public get nativeFocusableElement(): HTMLInputElement {
         return this.input;

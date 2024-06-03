@@ -39,10 +39,6 @@ import {InheritedDocumentationComponent} from '../abstract/inherited-documentati
     ],
 })
 export default class PageComponent extends AbstractExampleTuiControl {
-    public override cleaner = false;
-
-    public control = new FormControl(TuiTime.currentLocal(), Validators.required);
-
     protected readonly disabledItemHandlerVariants: ReadonlyArray<
         TuiBooleanHandler<TuiTime>
     > = [
@@ -76,4 +72,8 @@ export default class PageComponent extends AbstractExampleTuiControl {
     ];
 
     protected mode = this.modeVariants[0];
+
+    public override cleaner = false;
+
+    public control = new FormControl(TuiTime.currentLocal(), Validators.required);
 }

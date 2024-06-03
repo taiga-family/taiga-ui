@@ -47,13 +47,6 @@ import {InheritedDocumentationComponent} from '../abstract/inherited-documentati
 export default class PageComponent extends AbstractExampleTuiControl {
     private readonly today = TuiDay.currentLocal();
 
-    public override cleaner = false;
-
-    public readonly control = new FormControl<[TuiDay | null, TuiTime | null] | null>(
-        null,
-        Validators.required,
-    );
-
     protected readonly minVariants: ReadonlyArray<TuiDay | [TuiDay, TuiTime]> = [
         TUI_FIRST_DAY,
         new TuiDay(2017, 2, 5),
@@ -102,4 +95,11 @@ export default class PageComponent extends AbstractExampleTuiControl {
     ];
 
     protected mode = this.modeVariants[0];
+
+    public override cleaner = false;
+
+    public readonly control = new FormControl<[TuiDay | null, TuiTime | null] | null>(
+        null,
+        Validators.required,
+    );
 }
