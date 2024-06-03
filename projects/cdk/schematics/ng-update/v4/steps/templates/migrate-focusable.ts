@@ -31,7 +31,7 @@ export function migrateFocusable({
         }
 
         const focusableAttr = attrs.find(attr => attr.name === LEGACY_ATTRIBUTE_NAME);
-        const attributeLocation = sourceCodeLocation.attrs[LEGACY_ATTRIBUTE_NAME];
+        const attributeLocation = sourceCodeLocation.attrs?.[LEGACY_ATTRIBUTE_NAME];
 
         if (!focusableAttr || !attributeLocation) {
             return;
