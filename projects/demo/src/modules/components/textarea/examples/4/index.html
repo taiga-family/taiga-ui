@@ -15,20 +15,16 @@
 </div>
 
 <form [formGroup]="testForm">
-    <label tuiLabel>
-        Write a wise thought
-        <tui-textarea
-            formControlName="testValue1"
-            tuiHintContent="it's just a joke"
-            [expandable]="true"
-            [maxLength]="maxLength"
-            [tuiTextfieldLabelOutside]="true"
-        >
-            Type it
-        </tui-textarea>
-        <tui-error
-            formControlName="testValue1"
-            [error]="[] | tuiFieldError | async"
-        />
-    </label>
+    <tui-textarea
+        formControlName="testValue1"
+        tuiHintContent="it's just a joke"
+        [expandable]="true"
+        [maxLength]="maxLength"
+    >
+        This is an example with very long label text
+    </tui-textarea>
+    <tui-error
+        formControlName="testValue1"
+        [error]="[] | tuiFieldError | async"
+    />
 </form>
