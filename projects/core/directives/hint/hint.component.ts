@@ -93,11 +93,7 @@ export class TuiHintComponent<C = any> {
                 takeUntil(destroy$),
             )
             .subscribe(([top, left]) => {
-                if (this.hover.el.nativeElement.isConnected) {
-                    this.update(top, left);
-                } else {
-                    this.hover.toggle(false);
-                }
+                this.update(top, left);
             });
 
         hovered$.pipe(takeUntil(destroy$)).subscribe(hover => this.hover.toggle(hover));
@@ -124,6 +120,12 @@ export class TuiHintComponent<C = any> {
 
     @tuiPure
     private update(top: number, left: number): void {
+        if (!this.hover.el.nativeElement.isConnected) {
+            this.hover.toggle(false);
+
+            return;
+        }
+
         const {height, width} = this.el.nativeElement.getBoundingClientRect();
         const {style} = this.el.nativeElement;
         const rect = this.accessor.getClientRect();
