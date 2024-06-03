@@ -21,7 +21,6 @@ export class TuiSelectExample11 {
     itemControl = new FormControl();
 
     items = [
-        'Please choose option',
         'Luke Skywalker',
         'Leia Organa Solo',
         'Darth Vader',
@@ -36,7 +35,6 @@ export class TuiSelectExample11 {
     ];
 
     customItems: readonly Item[] = [
-        {name: 'Please choose option', id: 0},
         {name: 'Luke Skywalker', id: 1},
         {name: 'Leia Organa Solo', id: 2},
         {name: 'Darth Vader', id: 3},

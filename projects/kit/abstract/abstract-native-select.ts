@@ -14,6 +14,9 @@ import {TUI_ITEMS_HANDLERS, TuiItemsHandlers} from '@taiga-ui/kit/tokens';
 @Directive()
 export abstract class AbstractTuiNativeSelect<H = TuiTextfieldHost, T = string> {
     @Input()
+    placeholder = '';
+
+    @Input()
     disabledItemHandler: TuiBooleanHandler<T> | null = null;
 
     @ViewChild(TuiDataListDirective, {read: TemplateRef, static: true})
@@ -32,5 +35,9 @@ export abstract class AbstractTuiNativeSelect<H = TuiTextfieldHost, T = string> 
     @HostBinding('id')
     get id(): string {
         return this.el.nativeElement.id || this.idService.generate();
+    }
+
+    get emptyOption(): boolean {
+        return !!this.placeholder && !this.control.value;
     }
 }
