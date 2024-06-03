@@ -217,6 +217,10 @@
     ::ng-deep select._empty {
         color: var(--tui-text-02);
     }
+
+    ::ng-deep select:not(._readonly) {
+        cursor: pointer;
+    }
 }
 
 .t-content {
