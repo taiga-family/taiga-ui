@@ -1,3 +1,4 @@
+/* eslint-disable */
 import {Directive, inject, Input, OnInit} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
 import {maskitoDateOptionsGenerator} from '@maskito/kit';

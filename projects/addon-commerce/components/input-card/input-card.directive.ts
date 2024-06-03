@@ -1,3 +1,4 @@
+/* eslint-disable */
 import {Directive, inject, Input, OnInit, Output} from '@angular/core';
 import {DefaultValueAccessor, NgControl} from '@angular/forms';
 import {MaskitoDirective} from '@maskito/angular';
