@@ -28,26 +28,25 @@
             </ng-template>
         </tui-textfield>
 
-        <tui-primitive-textfield
-            class="t-input-phone tui-group__auto-width-item"
-            [disabled]="disabled"
-            [focusable]="focusable"
-            [invalid]="computedInvalid"
-            [maskito]="mask$ | async"
-            [pseudoFocus]="pseudoFocus"
-            [pseudoHover]="pseudoHover"
-            [readOnly]="readOnly"
-            [(value)]="textfieldValue"
-            (beforeinput.capture)="onPaste($event, phoneMetadata)"
-            (focusedChange)="$event && phoneMetadata && !readOnly && onFocus(phoneMetadata)"
-            (valueChange)="onValueChange($event, phoneMetadata)"
-        >
-            <ng-content />
+        <tui-textfield class="t-input-phone tui-group__auto-width-item">
             <input
                 autocomplete="new-password"
-                tuiTextfieldLegacy
+                tuiTextfield
+                [disabled]="disabled"
+                [focused]="pseudoFocus"
+                [invalid]="computedInvalid"
+                [maskito]="mask$ | async"
+                [readOnly]="readOnly"
+                [state]="pseudoHover ? 'hover' : null"
+                [tabIndex]="focusable ? 0 : -1"
+                [(ngModel)]="textfieldValue"
+                (beforeinput.capture)="onPaste($event, phoneMetadata)"
+                (focus)="phoneMetadata && !readOnly && onFocus(phoneMetadata)"
+                (ngModelChange)="onValueChange($event, phoneMetadata)"
             />
-        </tui-primitive-textfield>
+
+            <label tuiLabel><ng-content /></label>
+        </tui-textfield>
 
         <ng-template #dropdown>
             <tui-data-list>
