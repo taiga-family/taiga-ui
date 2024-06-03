@@ -5,9 +5,9 @@
  * Array of icons used in taiga-ui components
  */
 export const TUI_USED_ICONS = [
-    'tuiIconMirMono',
-    'tuiIconVisaMono',
-    'tuiIconElectronMono',
+    'tuiIconMir',
+    'tuiIconVisa',
+    'tuiIconElectron',
     'tuiIconMastercard',
     'tuiIconMaestro',
     'tuiIconAmex',
