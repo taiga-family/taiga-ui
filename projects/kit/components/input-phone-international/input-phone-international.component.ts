@@ -182,7 +182,6 @@ export class TuiInputPhoneInternationalComponent
 
     public override setDisabledState(): void {
         super.setDisabledState();
-        this.close();
     }
 
     public override writeValue(unmaskedValue: string): void {
@@ -223,10 +222,6 @@ export class TuiInputPhoneInternationalComponent
 
     protected getFallbackValue(): string {
         return '';
-    }
-
-    private close(): void {
-        this.open = false;
     }
 
     private computeMask(

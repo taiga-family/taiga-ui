@@ -4,7 +4,7 @@
         tuiGroup
         [tuiDropdown]="dropdown"
         [tuiDropdownEnabled]="!readOnly"
-        [(tuiDropdownOpen)]="open"
+        [(tuiDropdownOpen)]="!computedDisabled && open"
         (tuiActiveZoneChange)="onActiveZone($event)"
     >
         <tui-textfield
