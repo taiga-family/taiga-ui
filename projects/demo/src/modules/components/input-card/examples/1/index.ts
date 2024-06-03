@@ -75,7 +75,7 @@ export default class ExampleComponent {
         }
     }
 
-    onBinChange(bin: string | null): void {
+    protected onBinChange(bin: string | null): void {
         this.alerts.open(String(bin), {label: '(binChange)'}).subscribe();
     }
 }

@@ -22,5 +22,5 @@ import {TuiCheckboxComponent} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class ExampleComponent {
-    card = '1234123412341234';
+    protected card = '1234123412341234';
 }

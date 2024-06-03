@@ -45,12 +45,7 @@ export interface TuiTextfieldContext<T> extends TuiContext<T> {
 @Component({
     standalone: true,
     selector: 'tui-textfield',
-    imports: [
-        CommonModule,
-        ResizeObserverModule,
-        TuiButtonDirective,
-        PolymorpheusModule,
-    ],
+    imports: [CommonModule, ResizeObserverModule, TuiButtonDirective, PolymorpheusModule],
     templateUrl: './textfield.template.html',
     styleUrls: ['./textfield.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
