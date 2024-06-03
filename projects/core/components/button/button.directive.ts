@@ -52,8 +52,8 @@ class TuiButtonStyles {}
 export class TuiButtonDirective {
     private readonly options = inject(TUI_BUTTON_OPTIONS);
 
+    protected readonly nothing = tuiWithStyles(TuiButtonStyles);
+
     @Input()
     public size = this.options.size;
-
-    protected readonly nothing = tuiWithStyles(TuiButtonStyles);
 }

@@ -132,6 +132,12 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
         )
         .pipe(map(([visible, hovered]) => visible && hovered));
 
+    @ViewChild(TuiActiveZoneDirective)
+    protected readonly activeZone!: TuiActiveZoneDirective;
+
+    protected readonly focus$ = new BehaviorSubject(false);
+    protected readonly context!: TuiContext<TuiActiveZoneDirective>;
+
     @Input()
     public content: PolymorpheusContent<TuiHostedDropdownContext>;
 
@@ -154,12 +160,6 @@ export class TuiHostedDropdownComponent implements TuiFocusableElementAccessor {
 
     /** TODO: rename in 4.0 */
     public readonly openChange = this.openChange$;
-
-    @ViewChild(TuiActiveZoneDirective)
-    protected readonly activeZone!: TuiActiveZoneDirective;
-
-    protected readonly focus$ = new BehaviorSubject(false);
-    protected readonly context!: TuiContext<TuiActiveZoneDirective>;
 
     @Input()
     public set open(open: boolean) {

@@ -30,12 +30,6 @@ import {InheritedDocumentationComponent} from '../abstract/inherited-documentati
     ],
 })
 export default class PageComponent extends AbstractExampleTuiControl {
-    public readonly control = new FormControl('', Validators.required);
-
-    public override readonly maxLengthVariants: readonly number[] = [10];
-
-    public override readonly maxLength = null;
-
     @ViewChild('customTemplate')
     protected customTemplate: PolymorpheusContent;
 
@@ -45,6 +39,12 @@ export default class PageComponent extends AbstractExampleTuiControl {
 
     protected messageDirection = this.hintDirectionVariants[0];
     protected messageMode = this.hintAppearanceVariants[0];
+
+    public readonly control = new FormControl('', Validators.required);
+
+    public override readonly maxLengthVariants: readonly number[] = [10];
+
+    public override readonly maxLength = null;
 
     protected get notificationTemplate(): PolymorpheusContent {
         return this.successMessage === 'Template'

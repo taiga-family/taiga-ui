@@ -78,6 +78,9 @@ export class TuiComboBoxComponent<T>
     private readonly itemsHandlers = inject<TuiItemsHandlers<T>>(TUI_ITEMS_HANDLERS);
     private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
 
+    @ContentChild(TuiDataListDirective, {read: TemplateRef})
+    protected readonly datalist: PolymorpheusContent<TuiContext<TuiActiveZoneDirective>>;
+
     @Input()
     public stringify: TuiItemsHandlers<T>['stringify'] = this.itemsHandlers.stringify;
 
@@ -101,9 +104,6 @@ export class TuiComboBoxComponent<T>
     public readonly searchChange = new EventEmitter<string | null>();
 
     public open = false;
-
-    @ContentChild(TuiDataListDirective, {read: TemplateRef})
-    protected readonly datalist: PolymorpheusContent<TuiContext<TuiActiveZoneDirective>>;
 
     public get nativeFocusableElement(): HTMLInputElement | null {
         return this.textfield?.nativeFocusableElement ?? null;

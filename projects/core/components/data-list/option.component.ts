@@ -54,17 +54,17 @@ export class TuiOptionComponent<T = unknown> implements OnDestroy {
         optional: true,
     });
 
-    @Input()
-    public disabled = false;
-
-    @Input()
-    public value?: T;
-
     protected readonly content = inject(TUI_OPTION_CONTENT, {optional: true});
     protected readonly dropdown = inject(TuiDropdownDirective, {
         self: true,
         optional: true,
     });
+
+    @Input()
+    public disabled = false;
+
+    @Input()
+    public value?: T;
 
     // Preventing focus loss upon focused option removal
     public ngOnDestroy(): void {

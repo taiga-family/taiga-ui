@@ -66,12 +66,6 @@ export default class ExampleComponent extends AbstractExampleTuiControl {
         TuiValueContentContext<Account>
     >;
 
-    public readonly control = new FormControl<Account | null>(null, Validators.required);
-
-    public readonly iconVariants = ['', 'tuiIconPieChartLarge', 'tuiIconCreditCardLarge'];
-
-    public override iconLeft = this.iconVariants[0];
-
     protected readonly exampleForm = import('./examples/import/form.md?raw');
 
     protected readonly exampleModule = import('./examples/import/import.md?raw');
@@ -132,6 +126,12 @@ export default class ExampleComponent extends AbstractExampleTuiControl {
     ];
 
     protected identityMatcher = this.identityMatcherVariants[0];
+
+    public readonly control = new FormControl<Account | null>(null, Validators.required);
+
+    public readonly iconVariants = ['', 'tuiIconPieChartLarge', 'tuiIconCreditCardLarge'];
+
+    public override iconLeft = this.iconVariants[0];
 
     protected get valueContent(): PolymorpheusContent<TuiValueContentContext<Account>> {
         return this.valueTemplateRef && this.selectedValueTemplate

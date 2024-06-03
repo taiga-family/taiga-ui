@@ -65,6 +65,13 @@ export class TuiPrimitiveTextfieldComponent
     private readonly options = inject(TUI_TEXTFIELD_OPTIONS_LEGACY);
     private readonly el = tuiInjectElement();
 
+    @ContentChildren(PolymorpheusOutletDirective, {descendants: true})
+    protected readonly content?: QueryList<unknown>;
+
+    protected readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
+    protected readonly hintOptions = inject(TuiHintOptionsDirective, {optional: true});
+    protected autofilled = false;
+
     @Input()
     public editable = true;
 
@@ -90,14 +97,6 @@ export class TuiPrimitiveTextfieldComponent
 
     @Output()
     public readonly valueChange = new EventEmitter<string>();
-
-    @ContentChildren(PolymorpheusOutletDirective, {descendants: true})
-    protected readonly content?: QueryList<unknown>;
-
-    protected readonly hintOptions = inject(TuiHintOptionsDirective, {optional: true});
-    protected autofilled = false;
-
-    protected readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
 
     public get prefix(): string {
         return this.controller.prefix;

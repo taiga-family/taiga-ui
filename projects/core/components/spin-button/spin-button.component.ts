@@ -23,6 +23,9 @@ import {TUI_SPIN_ICONS, TUI_SPIN_TEXTS} from '@taiga-ui/core/tokens';
     },
 })
 export class TuiSpinButtonComponent {
+    protected readonly icons = inject(TUI_SPIN_ICONS);
+    protected readonly spinTexts$ = inject(TUI_SPIN_TEXTS);
+
     @Input()
     public focusable = true;
 
@@ -40,9 +43,6 @@ export class TuiSpinButtonComponent {
 
     @Output()
     public readonly rightClick = new EventEmitter<void>();
-
-    protected readonly icons = inject(TUI_SPIN_ICONS);
-    protected readonly spinTexts$ = inject(TUI_SPIN_TEXTS);
 
     @HostListener('keydown.arrowLeft.prevent')
     public onLeftClick(): void {

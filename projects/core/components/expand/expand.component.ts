@@ -54,15 +54,15 @@ export class TuiExpandComponent {
     private readonly destroyRef = inject(DestroyRef);
     private state: TuiValuesOf<typeof State> = State.Idle;
 
-    @Input()
-    public async = false;
-
     @ContentChild(TuiExpandContentDirective, {read: TemplateRef})
     protected content: TemplateRef<NgIfContext<boolean>> | null = null;
 
     @HostBinding('class._expanded')
     @HostBinding('attr.aria-expanded')
     protected expanded: boolean | null = null;
+
+    @Input()
+    public async = false;
 
     @Input('expanded')
     public set expandedSetter(expanded: boolean | null) {

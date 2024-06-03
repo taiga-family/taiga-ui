@@ -17,13 +17,13 @@ import {
     animations: [tuiScaleIn],
 })
 export class TuiTabBarItemComponent {
+    protected readonly options = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
+
     @Input()
     public icon = '';
 
     @Input()
     public badge?: number | null = null;
-
-    protected readonly options = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
 
     protected format(value: number): string {
         return value > 999 ? '999+' : String(value);

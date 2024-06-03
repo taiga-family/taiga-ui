@@ -34,6 +34,14 @@ export class TuiThComponent<T extends Partial<Record<keyof T, any>>> {
         optional: true,
     });
 
+    @HostBinding('style.width.px')
+    protected width: number | null = null;
+
+    protected readonly table = inject<TuiTableDirective<T>>(
+        forwardRef(() => TuiTableDirective),
+        {optional: true},
+    );
+
     @Input()
     public sorter: TuiComparator<T> | null = this.head
         ? (a, b) => tuiDefaultSort(a[this.key], b[this.key])
@@ -45,14 +53,6 @@ export class TuiThComponent<T extends Partial<Record<keyof T, any>>> {
     @Input()
     @HostBinding('class._sticky')
     public sticky = this.options.sticky;
-
-    @HostBinding('style.width.px')
-    protected width: number | null = null;
-
-    protected readonly table = inject<TuiTableDirective<T>>(
-        forwardRef(() => TuiTableDirective),
-        {optional: true},
-    );
 
     public get key(): keyof T {
         if (!this.head) {

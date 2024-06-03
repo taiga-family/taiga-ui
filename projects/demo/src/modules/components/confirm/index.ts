@@ -29,6 +29,9 @@ export default class ExampleComponent implements TuiConfirmData {
     private readonly dialogs = inject(TuiDialogService);
     private readonly alerts = inject(TuiAlertService);
 
+    protected readonly examples = ['Basic'];
+    protected readonly exampleService = import('./examples/import/service.md?raw');
+
     public readonly appearances = ['primary', 'accent', 'secondary'];
     public appearance = this.appearances[0];
     public no = 'No';
@@ -36,10 +39,6 @@ export default class ExampleComponent implements TuiConfirmData {
 
     public readonly content =
         'This is <code>PolymorpheusContent</code>, so it can be anything you like!';
-
-    protected readonly examples = ['Basic'];
-
-    protected readonly exampleService = import('./examples/import/service.md?raw');
 
     protected onClick(): void {
         this.dialogs

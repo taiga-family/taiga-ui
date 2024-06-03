@@ -99,6 +99,13 @@ export class TuiInputPhoneInternationalComponent
     private readonly extractCountryCodePipe = inject(TuiToCountryCodePipe);
     private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
 
+    protected open = false;
+    protected readonly countriesNames$ = inject(TUI_COUNTRIES);
+    protected readonly countriesMasks = inject(TUI_COUNTRIES_MASKS);
+    protected readonly arrow: PolymorpheusContent<
+        TuiContext<TuiSizeL | TuiSizeM | TuiSizeS>
+    > = TUI_ARROW;
+
     @Input()
     public countries = this.options.countries;
 
@@ -106,14 +113,6 @@ export class TuiInputPhoneInternationalComponent
     public readonly countryIsoCodeChange = new EventEmitter<TuiCountryIsoCode>();
 
     public countryIsoCode = this.options.countryIsoCode;
-
-    protected open = false;
-
-    protected readonly countriesNames$ = inject(TUI_COUNTRIES);
-    protected readonly countriesMasks = inject(TUI_COUNTRIES_MASKS);
-    protected readonly arrow: PolymorpheusContent<
-        TuiContext<TuiSizeL | TuiSizeM | TuiSizeS>
-    > = TUI_ARROW;
 
     @Input('countryIsoCode')
     public set isoCode(code: TuiCountryIsoCode) {

@@ -69,25 +69,6 @@ class Account {
     ],
 })
 export default class PageComponent extends AbstractExampleTuiControl {
-    public control = new FormControl<Account[] | null>(null);
-
-    public override iconLeft = '';
-
-    public override readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = [
-        's',
-        'm',
-        'l',
-    ];
-
-    public override size: TuiSizeL | TuiSizeS =
-        this.sizeVariants[this.sizeVariants.length - 1];
-
-    public override readonly maxLengthVariants: readonly number[] = [10];
-
-    public override maxLength = null;
-
-    public override labelOutside = true;
-
     protected readonly items = [
         new Account('Ruble', 500),
         new Account('Dollar', 500),
@@ -142,6 +123,25 @@ export default class PageComponent extends AbstractExampleTuiControl {
     > = [TUI_FALSE_HANDLER, (item: Account) => item.balance < 300];
 
     protected disabledItemHandler = this.disabledItemHandlerVariants[0];
+
+    public control = new FormControl<Account[] | null>(null);
+
+    public override iconLeft = '';
+
+    public override readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = [
+        's',
+        'm',
+        'l',
+    ];
+
+    public override size: TuiSizeL | TuiSizeS =
+        this.sizeVariants[this.sizeVariants.length - 1];
+
+    public override readonly maxLengthVariants: readonly number[] = [10];
+
+    public override maxLength = null;
+
+    public override labelOutside = true;
 
     protected setValue(): void {
         this.control.setValue([new Account('Dollar', 237)]);

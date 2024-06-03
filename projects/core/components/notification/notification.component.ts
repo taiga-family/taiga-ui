@@ -29,6 +29,9 @@ import {TUI_NOTIFICATION_OPTIONS} from './notification.options';
 export class TuiNotificationComponent {
     private readonly options = inject(TUI_NOTIFICATION_OPTIONS);
 
+    protected readonly closeWord$ = inject(TUI_CLOSE_WORD);
+    protected readonly icons = inject(TUI_COMMON_ICONS);
+
     @Input()
     public icon: PolymorpheusContent<TuiContext<TuiNotification>> = this.options.icon;
 
@@ -45,9 +48,6 @@ export class TuiNotificationComponent {
 
     @Output()
     public readonly close = new EventEmitter<void>();
-
-    protected readonly closeWord$ = inject(TUI_CLOSE_WORD);
-    protected readonly icons = inject(TUI_COMMON_ICONS);
 
     protected get hasClose(): boolean {
         return !this.hideClose && this.close.observed;

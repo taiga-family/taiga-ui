@@ -49,6 +49,12 @@ export class TuiLineChartComponent {
     private readonly hover$ = new Subject<number>();
     private readonly autoIdString = inject(TuiIdService).generate();
 
+    protected readonly hintDirective = inject(TuiLineChartHintDirective, {
+        optional: true,
+    });
+
+    protected readonly hintOptions = inject(TuiHintOptionsDirective, {optional: true});
+
     @ViewChildren(TuiHintHoverDirective)
     public readonly drivers: QueryList<Observable<boolean>> = EMPTY_QUERY;
 
@@ -80,12 +86,6 @@ export class TuiLineChartComponent {
     public dots = this.options.dots;
 
     public value: readonly TuiPoint[] = [];
-
-    protected readonly hintDirective = inject(TuiLineChartHintDirective, {
-        optional: true,
-    });
-
-    protected readonly hintOptions = inject(TuiHintOptionsDirective, {optional: true});
 
     @Input('value')
     public set valueSetter(value: readonly TuiPoint[]) {

@@ -34,13 +34,12 @@ class TuiIconsStyles {}
     },
 })
 export class TuiIconsDirective {
+    protected readonly nothing = tuiWithStyles(TuiIconsStyles);
+    protected readonly resolver = inject<TuiStringHandler<string>>(TUI_ICON_RESOLVER);
+
     @Input()
     public iconLeft = '';
 
     @Input()
     public iconRight = '';
-
-    protected readonly nothing = tuiWithStyles(TuiIconsStyles);
-
-    protected readonly resolver = inject<TuiStringHandler<string>>(TUI_ICON_RESOLVER);
 }

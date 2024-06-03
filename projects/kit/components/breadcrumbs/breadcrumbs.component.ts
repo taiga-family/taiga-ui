@@ -14,7 +14,6 @@ import {TuiIconComponent, tuiLinkOptionsProvider} from '@taiga-ui/core';
 
 import {TUI_BREADCRUMBS_OPTIONS} from './breadcrumbs.options';
 
-/* eslint-disable @typescript-eslint/member-ordering */
 @Component({
     standalone: true,
     selector: 'tui-breadcrumbs',
@@ -25,13 +24,13 @@ import {TUI_BREADCRUMBS_OPTIONS} from './breadcrumbs.options';
     providers: [tuiLinkOptionsProvider({appearance: 'icon'})],
 })
 export class TuiBreadcrumbsComponent {
+    @ContentChildren(TuiItemDirective, {read: TemplateRef})
+    protected readonly items: QueryList<TemplateRef<Record<string, unknown>>> =
+        EMPTY_QUERY;
+
     protected readonly options = inject(TUI_BREADCRUMBS_OPTIONS);
 
     @Input()
     @HostBinding('attr.data-size')
     public size = this.options.size;
-
-    @ContentChildren(TuiItemDirective, {read: TemplateRef})
-    protected readonly items: QueryList<TemplateRef<Record<string, unknown>>> =
-        EMPTY_QUERY;
 }

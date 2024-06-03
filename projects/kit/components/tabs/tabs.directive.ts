@@ -41,6 +41,8 @@ export class TuiTabsDirective implements AfterViewChecked {
     private readonly el = tuiInjectElement();
     private readonly injector = inject(INJECTOR);
 
+    protected readonly nothing = tuiWithStyles(TuiTabsStyles);
+
     @Input()
     public size: TuiSizeL = inject(TUI_TABS_OPTIONS).size;
 
@@ -49,8 +51,6 @@ export class TuiTabsDirective implements AfterViewChecked {
 
     @Output()
     public readonly activeItemIndexChange = new EventEmitter<number>();
-
-    protected readonly nothing = tuiWithStyles(TuiTabsStyles);
 
     public get tabs(): readonly HTMLElement[] {
         return Array.from(this.el.querySelectorAll<HTMLElement>('[tuiTab]'));

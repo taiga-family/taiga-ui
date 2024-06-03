@@ -50,15 +50,15 @@ export class TuiTabsHorizontalDirective implements AfterViewChecked {
     private readonly options = inject(TUI_TABS_OPTIONS);
     private readonly tabs = inject(TuiTabsDirective);
 
-    @Input()
-    public underline = this.options.underline;
-
     @ContentChildren(forwardRef(() => TuiTabDirective))
     protected readonly children: QueryList<unknown> = EMPTY_QUERY;
 
     protected readonly sub = inject(MutationObserverService)
         .pipe(tuiZonefree(inject(NgZone)), takeUntilDestroyed())
         .subscribe(() => this.refresh());
+
+    @Input()
+    public underline = this.options.underline;
 
     public ngAfterViewChecked(): void {
         this.scrollTo(this.tabs.activeItemIndex);

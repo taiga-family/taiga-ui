@@ -28,6 +28,12 @@ export class TuiTagComponent {
     private readonly el = tuiInjectElement();
     private readonly options = inject(TUI_TAG_OPTIONS);
 
+    @HostBinding('class._editing')
+    protected editing = false;
+
+    protected readonly icons = inject(TUI_COMMON_ICONS);
+    protected editedText: string | null = null;
+
     // TODO: Possibly implement standard focus mechanisms and outline
     @Input()
     public value = '';
@@ -72,13 +78,6 @@ export class TuiTagComponent {
 
     @Output()
     public readonly edited = new EventEmitter<string>();
-
-    @HostBinding('class._editing')
-    protected editing = false;
-
-    protected readonly icons = inject(TUI_COMMON_ICONS);
-
-    protected editedText: string | null = null;
 
     @ViewChild('input', {read: ElementRef})
     protected set input(input: ElementRef<HTMLInputElement>) {

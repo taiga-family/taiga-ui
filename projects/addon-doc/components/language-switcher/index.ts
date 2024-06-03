@@ -22,6 +22,9 @@ import {TuiSelectModule} from '@taiga-ui/legacy';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiLanguageSwitcherComponent {
+    protected readonly switcher = inject(TuiLanguageSwitcher);
+    protected readonly language = new FormControl(capitalize(this.switcher.language));
+
     public readonly flags = new Map<TuiLanguageName, TuiCountryIsoCode>([
         ['belarusian', 'BY'],
         ['chinese', 'CN'],
@@ -41,11 +44,7 @@ export class TuiLanguageSwitcherComponent {
         ['vietnamese', 'VN'],
     ]);
 
-    protected readonly switcher = inject(TuiLanguageSwitcher);
-
-    protected readonly language = new FormControl(capitalize(this.switcher.language));
-
-    protected readonly names: TuiLanguageName[] = Array.from(this.flags.keys());
+    public readonly names: TuiLanguageName[] = Array.from(this.flags.keys());
 }
 
 function capitalize(value: string): string {

@@ -54,14 +54,14 @@ export class TuiStepperComponent {
     private readonly speed = inject(TUI_ANIMATIONS_SPEED);
     private readonly destroyRef = inject(DestroyRef);
 
+    protected activeItemIndex = 0;
+
     @Input()
     @HostBinding('attr.data-orientation')
     public orientation: TuiOrientation = 'horizontal';
 
     @Output()
     public readonly activeItemIndexChange = new EventEmitter<number>();
-
-    protected activeItemIndex = 0;
 
     constructor() {
         this.resize$

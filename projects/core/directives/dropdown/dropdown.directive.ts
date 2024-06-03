@@ -46,6 +46,13 @@ export class TuiDropdownDirective
     private readonly service = inject(TuiDropdownService);
     private readonly cdr = inject(ChangeDetectorRef);
 
+    protected readonly sub = this.refresh$
+        .pipe(throttleTime(0), takeUntilDestroyed())
+        .subscribe(() => {
+            this.dropdownBoxRef?.changeDetectorRef.detectChanges();
+            this.dropdownBoxRef?.changeDetectorRef.markForCheck();
+        });
+
     public readonly el = tuiInjectElement();
     public readonly type = 'dropdown';
     public readonly component = new PolymorpheusComponent(
@@ -55,13 +62,6 @@ export class TuiDropdownDirective
 
     public dropdownBoxRef: ComponentRef<unknown> | null = null;
     public content: PolymorpheusContent<TuiContext<TuiActiveZoneDirective>>;
-
-    protected readonly sub = this.refresh$
-        .pipe(throttleTime(0), takeUntilDestroyed())
-        .subscribe(() => {
-            this.dropdownBoxRef?.changeDetectorRef.detectChanges();
-            this.dropdownBoxRef?.changeDetectorRef.markForCheck();
-        });
 
     @Input()
     public set tuiDropdown(

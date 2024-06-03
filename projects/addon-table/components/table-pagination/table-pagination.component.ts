@@ -51,6 +51,12 @@ export interface TuiTablePagination {
 export class TuiTablePaginationComponent {
     private readonly options = inject(TUI_TABLE_PAGINATION_OPTIONS);
 
+    protected open = false;
+    protected readonly icons = inject(TUI_SPIN_ICONS);
+    protected readonly spinTexts$ = inject(TUI_SPIN_TEXTS);
+    protected readonly texts$ = inject(TUI_TABLE_PAGINATION_TEXTS);
+    protected readonly commonIcons = inject(TUI_COMMON_ICONS);
+
     @Input()
     public items: readonly number[] = this.options.items;
 
@@ -65,13 +71,6 @@ export class TuiTablePaginationComponent {
 
     @Output()
     public readonly paginationChange = new EventEmitter<TuiTablePagination>();
-
-    protected open = false;
-
-    protected readonly icons = inject(TUI_SPIN_ICONS);
-    protected readonly spinTexts$ = inject(TUI_SPIN_TEXTS);
-    protected readonly texts$ = inject(TUI_TABLE_PAGINATION_TEXTS);
-    protected readonly commonIcons = inject(TUI_COMMON_ICONS);
 
     public onItem(size: number): void {
         const {start} = this;

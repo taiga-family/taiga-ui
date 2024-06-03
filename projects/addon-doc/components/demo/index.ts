@@ -79,13 +79,6 @@ export class TuiDocDemoComponent implements OnInit {
     private readonly urlSerializer = inject(UrlSerializer);
     private readonly urlStateHandler = inject(TUI_DOC_URL_STATE_HANDLER);
 
-    @Input()
-    public control: AbstractControl | null = null;
-
-    @Input()
-    @HostBinding('class._sticky')
-    public sticky = true;
-
     @ContentChild(TemplateRef)
     protected readonly template: TemplateRef<Record<string, unknown>> | null = null;
 
@@ -104,6 +97,13 @@ export class TuiDocDemoComponent implements OnInit {
     protected expanded = tuiCoerceValueIsTrue(this.params.sandboxExpanded ?? false);
     protected sandboxWidth = tuiToInteger(this.params.sandboxWidth);
     protected readonly texts = inject(TUI_DOC_DEMO_TEXTS);
+
+    @Input()
+    public control: AbstractControl | null = null;
+
+    @Input()
+    @HostBinding('class._sticky')
+    public sticky = true;
 
     public ngOnInit(): void {
         this.createForm();

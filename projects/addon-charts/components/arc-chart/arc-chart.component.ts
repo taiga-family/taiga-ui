@@ -58,6 +58,8 @@ export class TuiArcChartComponent {
     private readonly sanitizer = inject(DomSanitizer);
     private readonly arcs$ = new ReplaySubject<QueryList<ElementRef<SVGElement>>>(1);
 
+    protected initialized = false;
+
     @Input()
     public value: readonly number[] = [];
 
@@ -89,8 +91,6 @@ export class TuiArcChartComponent {
             this.activeItemIndex = index;
         }),
     );
-
-    protected initialized = false;
 
     constructor() {
         timer(0)

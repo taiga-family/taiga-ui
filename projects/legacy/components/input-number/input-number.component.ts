@@ -78,15 +78,6 @@ export class TuiInputNumberComponent
     private readonly options = inject(TUI_INPUT_NUMBER_OPTIONS);
     private unfinishedValue: string | null = '';
 
-    @Input()
-    public min: number | null = this.options.min;
-
-    @Input()
-    public max: number | null = this.options.max;
-
-    @Input()
-    public step = this.options.step;
-
     @ContentChildren(PolymorpheusOutletDirective, {descendants: true})
     protected readonly polymorpheusValueContent: QueryList<unknown> = EMPTY_QUERY;
 
@@ -101,6 +92,15 @@ export class TuiInputNumberComponent
         .subscribe(format => {
             this.numberFormat = format;
         });
+
+    @Input()
+    public min: number | null = this.options.min;
+
+    @Input()
+    public max: number | null = this.options.max;
+
+    @Input()
+    public step = this.options.step;
 
     public get nativeFocusableElement(): HTMLInputElement | null {
         return !this.textfield || this.computedDisabled

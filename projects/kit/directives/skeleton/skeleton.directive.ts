@@ -44,10 +44,10 @@ export class TuiSkeletonDirective implements OnChanges {
     private readonly duration =
         inject(TUI_ANIMATIONS_SPEED) * TUI_ANIMATIONS_DEFAULT_DURATION * 2;
 
+    protected readonly nothing = tuiWithStyles(TuiSkeletonStyles);
+
     @Input()
     public tuiSkeleton: boolean | number | string = false;
-
-    protected readonly nothing = tuiWithStyles(TuiSkeletonStyles);
 
     public ngOnChanges({tuiSkeleton}: SimpleChanges): void {
         this.animation?.cancel();

@@ -64,8 +64,8 @@ class TuiChipStyles {}
 export class TuiChipDirective {
     private readonly options = inject(TUI_CHIP_OPTIONS);
 
+    protected readonly nothing = tuiWithStyles(TuiChipStyles);
+
     @Input()
     public size: TuiSizeXXS = this.options.size;
-
-    protected readonly nothing = tuiWithStyles(TuiChipStyles);
 }

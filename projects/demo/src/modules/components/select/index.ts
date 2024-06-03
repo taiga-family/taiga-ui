@@ -69,12 +69,6 @@ export default class PageComponent extends AbstractExampleTuiControl {
         TuiValueContentContext<Account>
     >;
 
-    public readonly iconVariants = ['', 'tuiIconPieChartLarge', 'tuiIconCreditCardLarge'];
-
-    public override iconLeft = this.iconVariants[0];
-
-    public control = new FormControl<Account | null>(null, Validators.required);
-
     protected readonly example9: TuiDocExample = {
         TypeScript: import('./examples/9/index.ts?raw'),
         HTML: import('./examples/9/index.html?raw'),
@@ -102,6 +96,12 @@ export default class PageComponent extends AbstractExampleTuiControl {
     protected readonly disabledItemHandlerVariants: ReadonlyArray<
         TuiBooleanHandler<Account>
     > = [TUI_FALSE_HANDLER, (item: Account) => item.balance < 300];
+
+    public readonly iconVariants = ['', 'tuiIconPieChartLarge', 'tuiIconCreditCardLarge'];
+
+    public override iconLeft = this.iconVariants[0];
+
+    public control = new FormControl<Account | null>(null, Validators.required);
 
     protected get valueContent(): PolymorpheusContent<TuiValueContentContext<Account>> {
         return this.valueTemplateRef && this.selectedValueTemplate

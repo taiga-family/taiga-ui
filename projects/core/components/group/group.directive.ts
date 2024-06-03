@@ -38,6 +38,8 @@ class TuiGroupStyles {}
 export class TuiGroupDirective {
     private readonly options = inject(TUI_GROUP_OPTIONS);
 
+    protected readonly nothing = tuiWithStyles(TuiGroupStyles);
+
     @Input()
     public orientation: TuiOrientation = this.options.orientation;
 
@@ -51,6 +53,4 @@ export class TuiGroupDirective {
 
     @Input()
     public size: TuiSizeL = this.options.size;
-
-    protected readonly nothing = tuiWithStyles(TuiGroupStyles);
 }

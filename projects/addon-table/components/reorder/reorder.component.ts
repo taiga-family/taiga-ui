@@ -35,6 +35,11 @@ import {TUI_REORDER_OPTIONS} from './reorder.options';
 export class TuiReorderComponent<T> {
     private dragging = false;
 
+    protected order = new Map<number, number>();
+    protected unsortedItems: readonly T[] = [];
+    protected readonly options = inject(TUI_REORDER_OPTIONS);
+    protected readonly showHideText$ = inject(TUI_TABLE_SHOW_HIDE_MESSAGE);
+
     @Input()
     public enabled: readonly T[] = [];
 
@@ -43,11 +48,6 @@ export class TuiReorderComponent<T> {
 
     @Output()
     public readonly enabledChange = new EventEmitter<T[]>();
-
-    protected order = new Map<number, number>();
-    protected unsortedItems: readonly T[] = [];
-    protected readonly options = inject(TUI_REORDER_OPTIONS);
-    protected readonly showHideText$ = inject(TUI_TABLE_SHOW_HIDE_MESSAGE);
 
     @Input()
     public set items(items: readonly T[]) {

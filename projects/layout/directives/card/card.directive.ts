@@ -39,8 +39,8 @@ export class TuiCardMediumDirective {
     },
 })
 export class TuiCardLargeDirective {
+    protected readonly nothing = tuiWithStyles(TuiCardStyles);
+
     @Input('tuiCardLarge')
     public space: '' | 'compact' | 'normal' = 'normal';
-
-    protected readonly nothing = tuiWithStyles(TuiCardStyles);
 }

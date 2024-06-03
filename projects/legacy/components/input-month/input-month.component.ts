@@ -54,6 +54,9 @@ export class TuiInputMonthComponent
     private readonly options = inject(TUI_INPUT_DATE_OPTIONS);
     private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
 
+    protected readonly formatter = inject(TUI_MONTH_FORMATTER);
+    protected activeYear?: TuiYear;
+
     @Input()
     public min: TuiMonth | null = this.options.min;
 
@@ -67,9 +70,6 @@ export class TuiInputMonthComponent
     public defaultActiveYear: TuiYear = TuiDay.currentLocal();
 
     public open = false;
-
-    protected readonly formatter = inject(TUI_MONTH_FORMATTER);
-    protected activeYear?: TuiYear;
 
     public get nativeFocusableElement(): HTMLInputElement | null {
         return this.textfield?.nativeFocusableElement || null;

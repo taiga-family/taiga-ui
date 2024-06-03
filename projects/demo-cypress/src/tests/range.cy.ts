@@ -22,6 +22,9 @@ describe('TuiRange', () => {
         `,
     })
     class TestComponent {
+        @ViewChild(TuiRangeComponent, {static: true})
+        protected component!: TuiRangeComponent;
+
         @ViewChild(TuiRangeComponent, {static: true, read: ElementRef})
         public el!: ElementRef<HTMLElement>;
 
@@ -31,9 +34,6 @@ describe('TuiRange', () => {
         public segments = 10;
         public step = 1;
         public keySteps: TuiKeySteps | null = null;
-
-        @ViewChild(TuiRangeComponent, {static: true})
-        protected component!: TuiRangeComponent;
     }
 
     beforeEach(() => {

@@ -56,6 +56,10 @@ export class TuiTextareaComponent
     @ContentChild(TuiTextfieldLegacyComponent, {read: ElementRef})
     private readonly textfield?: ElementRef<HTMLTextAreaElement>;
 
+    protected readonly isIOS = inject(TUI_IS_IOS);
+    protected readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
+    protected readonly hintOptions = inject(TuiHintOptionsDirective, {optional: true});
+
     @Input()
     public rows = DEFAULT_ROWS;
 
@@ -65,10 +69,6 @@ export class TuiTextareaComponent
     @Input()
     @HostBinding('class._expandable')
     public expandable = false;
-
-    protected readonly isIOS = inject(TUI_IS_IOS);
-    protected readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
-    protected readonly hintOptions = inject(TuiHintOptionsDirective, {optional: true});
 
     public get nativeFocusableElement(): HTMLTextAreaElement | null {
         if (this.computedDisabled) {

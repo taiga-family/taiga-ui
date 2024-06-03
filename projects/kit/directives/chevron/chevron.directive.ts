@@ -39,10 +39,10 @@ export class TuiChevronDirective implements DoCheck {
     private readonly icon = inject(TuiIconComponent, {optional: true});
     private readonly handler = inject(TuiChevronService).getHandler(inject(INJECTOR));
 
+    protected readonly nothing = tuiWithStyles(TuiChevronStyles);
+
     @Input()
     public tuiChevron: boolean | '' = '';
-
-    protected readonly nothing = tuiWithStyles(TuiChevronStyles);
 
     public ngDoCheck(): void {
         this.set(this.handler());

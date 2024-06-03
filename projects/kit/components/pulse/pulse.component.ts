@@ -20,8 +20,8 @@ import {
     },
 })
 export class TuiPulseComponent {
+    protected readonly animation = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
+
     @Input()
     public playing = true;
-
-    protected readonly animation = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
 }

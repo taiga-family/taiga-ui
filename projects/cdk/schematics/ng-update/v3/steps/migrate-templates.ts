@@ -253,7 +253,6 @@ function addEditorProviders({
     }
 }
 
-// eslint-disable-next-line unicorn/no-unsafe-regex
 const HIDE_SELECTED_PIPE_WITH_ARGS_REG = /\|\s*tuiHideSelected(\s*:\s*[^|'"]*)?/gi;
 
 function migrateTuiHideSelectedPipe({

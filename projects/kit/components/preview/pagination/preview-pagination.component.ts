@@ -23,6 +23,9 @@ import {TuiPreviewActionDirective} from '../preview-action/preview-action.direct
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiPreviewPaginationComponent {
+    protected readonly icons = inject(TUI_PREVIEW_ICONS);
+    protected readonly texts$ = inject(TUI_PAGINATION_TEXTS);
+
     @Input()
     public length = 1;
 
@@ -31,9 +34,6 @@ export class TuiPreviewPaginationComponent {
 
     @Output()
     public readonly indexChange = new EventEmitter<number>();
-
-    protected readonly icons = inject(TUI_PREVIEW_ICONS);
-    protected readonly texts$ = inject(TUI_PAGINATION_TEXTS);
 
     @HostListener('document:keydown.arrowRight.prevent', ['1'])
     @HostListener('document:keydown.arrowLeft.prevent', ['-1'])

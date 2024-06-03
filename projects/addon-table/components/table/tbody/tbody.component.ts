@@ -45,6 +45,13 @@ export class TuiTbodyComponent<T extends Partial<Record<keyof T, any>>> {
     private readonly pipe = inject(TuiTableSortPipe<T>);
     private readonly options = inject(TUI_TABLE_OPTIONS);
 
+    @ContentChild(forwardRef(() => TuiRowDirective))
+    protected readonly row?: TuiRowDirective<T>;
+
+    protected readonly table = inject<TuiTableDirective<T>>(
+        forwardRef(() => TuiTableDirective),
+    );
+
     @ContentChildren(forwardRef(() => TuiTrComponent))
     public readonly rows: QueryList<TuiTrComponent<T>> = EMPTY_QUERY;
 
@@ -59,13 +66,6 @@ export class TuiTbodyComponent<T extends Partial<Record<keyof T, any>>> {
 
     @Output()
     public readonly openChange = new EventEmitter<boolean>();
-
-    @ContentChild(forwardRef(() => TuiRowDirective))
-    protected readonly row?: TuiRowDirective<T>;
-
-    protected readonly table = inject<TuiTableDirective<T>>(
-        forwardRef(() => TuiTableDirective),
-    );
 
     public get sorted(): readonly T[] {
         return this.pipe.transform(this.data);

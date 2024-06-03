@@ -9,6 +9,8 @@ import {delay, of} from 'rxjs';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiProgressCircleComponent {
+    protected readonly animationDelay$ = of(true).pipe(delay(0));
+
     @Input()
     public value = 0;
 
@@ -22,8 +24,6 @@ export class TuiProgressCircleComponent {
     @Input()
     @HostBinding('attr.data-size')
     public size: TuiSizeXXL | TuiSizeXXS = 'm';
-
-    protected readonly animationDelay$ = of(true).pipe(delay(0));
 
     @HostBinding('style.--progress-ratio')
     protected get progressRatio(): number {

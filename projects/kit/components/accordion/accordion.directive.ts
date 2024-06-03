@@ -27,11 +27,11 @@ import {TuiAccordionItemComponent} from './accordion-item.component';
 export class TuiAccordionDirective implements AfterContentInit {
     private readonly destroyRef = inject(DestroyRef);
 
-    @Input()
-    public closeOthers = true;
-
     @ContentChildren(TuiAccordionItemComponent)
     protected readonly accordionItems: QueryList<TuiAccordionItemComponent> = EMPTY_QUERY;
+
+    @Input()
+    public closeOthers = true;
 
     public ngAfterContentInit(): void {
         const {accordionItems} = this;

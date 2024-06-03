@@ -86,6 +86,28 @@ export class TuiInputDateRangeComponent
     private readonly options = inject(TUI_INPUT_DATE_OPTIONS);
     private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
 
+    protected readonly dateTexts$ = inject(TUI_DATE_TEXTS);
+    protected override readonly valueTransformer = inject(
+        TUI_DATE_RANGE_VALUE_TRANSFORMER,
+        {optional: true},
+    );
+
+    protected readonly dateFiller$ = this.dateTexts$.pipe(
+        map(dateTexts =>
+            changeDateSeparator(
+                dateTexts[this.dateFormat.mode],
+                this.dateFormat.separator,
+            ),
+        ),
+    );
+
+    protected dateFormat = TUI_DEFAULT_DATE_FORMAT;
+    protected readonly dateFormat$ = inject(TUI_DATE_FORMAT)
+        .pipe(tuiWatch(this.cdr), takeUntilDestroyed())
+        .subscribe(format => {
+            this.dateFormat = format;
+        });
+
     @Input()
     public disabledItemHandler: TuiBooleanHandler<TuiDay> = TUI_FALSE_HANDLER;
 
@@ -111,28 +133,6 @@ export class TuiInputDateRangeComponent
     public maxLength: TuiDayLike | null = null;
 
     public open = false;
-
-    protected readonly dateTexts$ = inject(TUI_DATE_TEXTS);
-    protected override readonly valueTransformer = inject(
-        TUI_DATE_RANGE_VALUE_TRANSFORMER,
-        {optional: true},
-    );
-
-    protected readonly dateFiller$ = this.dateTexts$.pipe(
-        map(dateTexts =>
-            changeDateSeparator(
-                dateTexts[this.dateFormat.mode],
-                this.dateFormat.separator,
-            ),
-        ),
-    );
-
-    protected dateFormat = TUI_DEFAULT_DATE_FORMAT;
-    protected readonly dateFormat$ = inject(TUI_DATE_FORMAT)
-        .pipe(tuiWatch(this.cdr), takeUntilDestroyed())
-        .subscribe(format => {
-            this.dateFormat = format;
-        });
 
     public get nativeFocusableElement(): HTMLInputElement | null {
         return this.textfield?.nativeFocusableElement ?? null;

@@ -27,9 +27,9 @@ export class TuiDropdownContextDirective extends TuiRectAccessor {
     private readonly driver = inject(TuiDropdownDriver);
     private currentRect = EMPTY_CLIENT_RECT;
 
-    public readonly type = 'dropdown';
-
     protected readonly activeZone = inject(TuiActiveZoneDirective);
+
+    public readonly type = 'dropdown';
 
     public getClientRect(): DOMRect {
         return this.currentRect;

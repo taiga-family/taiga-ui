@@ -62,6 +62,15 @@ export class TuiCarouselComponent {
     private readonly directive = inject(TuiCarouselDirective);
     private translate = 0;
 
+    @ContentChildren(TuiItemDirective, {read: TemplateRef})
+    protected readonly items: QueryList<TemplateRef<Record<string, unknown>>> =
+        EMPTY_QUERY;
+
+    @HostBinding('class._transitioned')
+    protected transitioned = true;
+
+    protected index = 0;
+
     @Input()
     @HostBinding('class._draggable')
     public draggable = false;
@@ -71,15 +80,6 @@ export class TuiCarouselComponent {
 
     @Output()
     public readonly indexChange = new EventEmitter<number>();
-
-    @ContentChildren(TuiItemDirective, {read: TemplateRef})
-    protected readonly items: QueryList<TemplateRef<Record<string, unknown>>> =
-        EMPTY_QUERY;
-
-    @HostBinding('class._transitioned')
-    protected transitioned = true;
-
-    protected index = 0;
 
     @Input('index')
     public set indexSetter(index: number) {

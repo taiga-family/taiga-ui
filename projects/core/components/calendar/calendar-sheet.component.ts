@@ -45,6 +45,9 @@ export type TuiMarkerHandler = TuiHandler<TuiDay, [] | [string, string] | [strin
 export class TuiCalendarSheetComponent {
     private readonly today = TuiDay.currentLocal();
 
+    protected readonly unorderedWeekDays$ = inject(TUI_SHORT_WEEK_DAYS);
+    protected readonly dayTypeHandler = inject(TUI_DAY_TYPE_HANDLER);
+
     @Input()
     public month: TuiMonth = TuiMonth.currentLocal();
 
@@ -68,9 +71,6 @@ export class TuiCalendarSheetComponent {
 
     @Output()
     public readonly dayClick = new EventEmitter<TuiDay>();
-
-    protected readonly unorderedWeekDays$ = inject(TUI_SHORT_WEEK_DAYS);
-    protected readonly dayTypeHandler = inject(TUI_DAY_TYPE_HANDLER);
 
     public itemIsInterval(day: TuiDay): boolean {
         const {value, hoveredItem} = this;

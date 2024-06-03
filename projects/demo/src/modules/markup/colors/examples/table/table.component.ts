@@ -22,14 +22,14 @@ export class TableComponent {
     private readonly win = inject(WINDOW);
     private readonly styles = this.win.getComputedStyle(this.doc.documentElement);
 
+    protected readonly theme$ = this.themeService.pipe(delay(1));
+
     @Input()
     public colors: readonly Color[] = [];
 
     @Input()
     @HostBinding('class._dark')
     public dark = false;
-
-    protected readonly theme$ = this.themeService.pipe(delay(1));
 
     protected getValue(variable: string): string {
         return this.styles.getPropertyValue(variable);

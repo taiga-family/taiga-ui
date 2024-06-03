@@ -39,15 +39,14 @@ import {TuiInputFilesDirective} from './input-files.directive';
     },
 })
 export class TuiInputFilesComponent {
-    @ContentChild(TuiInputFilesDirective)
-    public readonly input?: TuiInputFilesDirective;
-
     @ContentChild(TemplateRef)
     protected readonly template?: TemplateRef<TuiContext<boolean>>;
 
     protected files?: FileList | null;
-
     protected readonly content = new PolymorpheusComponent(TuiInputFilesContent);
+
+    @ContentChild(TuiInputFilesDirective)
+    public readonly input?: TuiInputFilesDirective;
 
     protected get fileDragged(): boolean {
         return !!this.files && !this.input?.computedDisabled;

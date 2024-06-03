@@ -47,24 +47,6 @@ import {InheritedDocumentationComponent} from '../abstract/inherited-documentati
     ],
 })
 export default class PageComponent extends AbstractExampleTuiControl {
-    public override readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = [
-        's',
-        'm',
-        'l',
-    ];
-
-    public override size: TuiSizeL | TuiSizeS =
-        this.sizeVariants[this.sizeVariants.length - 1];
-
-    public readonly control = new FormControl(
-        ['John Cleese', 'Eric Idle', 'Michael Palin'],
-        Validators.required,
-    );
-
-    public override maxLengthVariants: number[] = [10, 20];
-
-    public override maxLength: number | null = null;
-
     protected editable = true;
 
     protected uniqueTags = true;
@@ -96,4 +78,22 @@ export default class PageComponent extends AbstractExampleTuiControl {
     > = [TUI_FALSE_HANDLER, item => String(item).startsWith('T')];
 
     protected disabledItemHandler = this.disabledItemHandlerVariants[0];
+
+    public override readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = [
+        's',
+        'm',
+        'l',
+    ];
+
+    public override size: TuiSizeL | TuiSizeS =
+        this.sizeVariants[this.sizeVariants.length - 1];
+
+    public readonly control = new FormControl(
+        ['John Cleese', 'Eric Idle', 'Michael Palin'],
+        Validators.required,
+    );
+
+    public override maxLengthVariants: number[] = [10, 20];
+
+    public override maxLength: number | null = null;
 }

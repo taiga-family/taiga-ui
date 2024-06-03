@@ -36,16 +36,16 @@ describe('Mobile calendar', () => {
         ],
     })
     class TestComponent {
+        protected min = TUI_FIRST_DAY;
+        protected max = TUI_LAST_DAY;
+        protected disabledItemHandler = TUI_FALSE_HANDLER;
+
         @ViewChild(TuiMobileCalendarComponent, {static: true})
         public calendar!: TuiMobileCalendarComponent;
 
         public single = true;
         public onCancel = new EventEmitter<boolean>();
         public onConfirm = new EventEmitter<TuiDay | TuiDayRange | readonly TuiDay[]>();
-
-        protected min = TUI_FIRST_DAY;
-        protected max = TUI_LAST_DAY;
-        protected disabledItemHandler = TUI_FALSE_HANDLER;
     }
 
     it('the back button emits a cancel event', () => {

@@ -31,10 +31,10 @@ import {TuiTableBarsService} from '../../services/table-bars.service';
 export class TuiTableBarsHostComponent {
     private readonly media = inject(TUI_MEDIA);
     private readonly win = inject(WINDOW);
-    public readonly service = inject(TuiTableBarsService);
     protected readonly closeWord$ = inject(TUI_CLOSE_WORD);
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly options = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
+    public readonly service = inject(TuiTableBarsService);
 
     protected get isMobile(): boolean {
         return tuiGetViewportWidth(this.win) < this.media.mobile;

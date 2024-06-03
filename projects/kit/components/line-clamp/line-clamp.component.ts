@@ -77,16 +77,6 @@ export class TuiLineClampComponent implements DoCheck, AfterViewInit {
     private readonly isOverflown$ = new Subject<boolean>();
     private initialized = false;
 
-    @Input()
-    public lineHeight = 24;
-
-    @Input()
-    public content: PolymorpheusContent;
-
-    @Output()
-    public readonly overflownChange: Observable<boolean> =
-        this.isOverflown$.pipe(distinctUntilChanged());
-
     protected lineClamp$ = this.linesLimit$.pipe(
         startWith(1),
         pairwise(),
@@ -99,6 +89,16 @@ export class TuiLineClampComponent implements DoCheck, AfterViewInit {
                   ),
         ),
     );
+
+    @Input()
+    public lineHeight = 24;
+
+    @Input()
+    public content: PolymorpheusContent;
+
+    @Output()
+    public readonly overflownChange: Observable<boolean> =
+        this.isOverflown$.pipe(distinctUntilChanged());
 
     constructor() {
         this.skipInitialTransition();

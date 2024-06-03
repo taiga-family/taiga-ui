@@ -17,6 +17,7 @@ export class TuiTableFilterDirective<T> implements OnInit, OnDestroy, TuiTableFi
     private readonly head = inject(TuiHeadDirective<T>, {optional: true});
     private readonly delegate = inject(AbstractTuiTableFilter<TuiValuesOf<T>, any>);
     private readonly control = inject(NgControl);
+    protected readonly filters = inject(TuiTableFiltersDirective<T>);
 
     @Input()
     public tuiTableFilter?: keyof T;
@@ -27,8 +28,6 @@ export class TuiTableFilterDirective<T> implements OnInit, OnDestroy, TuiTableFi
             this.control.statusChanges?.pipe(distinctUntilChanged()) || EMPTY,
         ),
     );
-
-    protected readonly filters = inject(TuiTableFiltersDirective<T>);
 
     public ngOnInit(): void {
         this.filters.register(this);

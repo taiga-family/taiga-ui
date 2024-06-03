@@ -15,7 +15,6 @@ import fileWithBreakpoints from '@taiga-ui/core/styles/variables/media.less?raw'
  * // code comment
  * ```
  */
-// eslint-disable-next-line unicorn/no-unsafe-regex
 const CODE_COMMENTS = /(\/\*([^*]|(\*+[^*/]))*\*+\/)|(\/\/.*)/g;
 
 function parseBreakpoints(file: string): Array<{name: string; value: string}> {

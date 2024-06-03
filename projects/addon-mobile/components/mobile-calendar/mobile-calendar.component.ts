@@ -124,6 +124,26 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
     private readonly speed = inject(TUI_ANIMATIONS_SPEED);
     private readonly ngZone = inject(NgZone);
 
+    protected initialized = false;
+    protected value: TuiDay | TuiDayRange | readonly TuiDay[] | null = null;
+    protected readonly isIOS = inject(TUI_IS_IOS);
+    protected readonly isE2E = inject(TUI_IS_E2E);
+    protected readonly icons = inject(TUI_COMMON_ICONS);
+    protected readonly closeWord$ = inject(TUI_CLOSE_WORD);
+    protected readonly cancelWord$ = inject(TUI_CANCEL_WORD);
+    protected readonly doneWord$ = inject(TUI_DONE_WORD);
+    protected readonly unorderedWeekDays$ = inject(TUI_SHORT_WEEK_DAYS);
+    protected readonly chooseDayOrRangeTexts$ = inject(TUI_CHOOSE_DAY_OR_RANGE_TEXTS);
+    protected readonly years = Array.from({length: RANGE}, (_, i) => i + STARTING_YEAR);
+    protected readonly months = Array.from(
+        {length: RANGE * 12},
+        (_, i) =>
+            new TuiMonth(
+                Math.floor(i / MONTHS_IN_YEAR) + STARTING_YEAR,
+                i % MONTHS_IN_YEAR,
+            ),
+    );
+
     @Input()
     public single = true;
 
@@ -146,28 +166,6 @@ export class TuiMobileCalendarComponent implements AfterViewInit {
     public readonly confirm = new EventEmitter<
         TuiDay | TuiDayRange | readonly TuiDay[]
     >();
-
-    protected value: TuiDay | TuiDayRange | readonly TuiDay[] | null = null;
-
-    protected readonly isIOS = inject(TUI_IS_IOS);
-    protected readonly isE2E = inject(TUI_IS_E2E);
-    protected readonly icons = inject(TUI_COMMON_ICONS);
-    protected readonly closeWord$ = inject(TUI_CLOSE_WORD);
-    protected readonly cancelWord$ = inject(TUI_CANCEL_WORD);
-    protected readonly doneWord$ = inject(TUI_DONE_WORD);
-    protected readonly unorderedWeekDays$ = inject(TUI_SHORT_WEEK_DAYS);
-    protected readonly chooseDayOrRangeTexts$ = inject(TUI_CHOOSE_DAY_OR_RANGE_TEXTS);
-    protected readonly years = Array.from({length: RANGE}, (_, i) => i + STARTING_YEAR);
-    protected readonly months = Array.from(
-        {length: RANGE * 12},
-        (_, i) =>
-            new TuiMonth(
-                Math.floor(i / MONTHS_IN_YEAR) + STARTING_YEAR,
-                i % MONTHS_IN_YEAR,
-            ),
-    );
-
-    protected initialized = false;
 
     constructor() {
         inject(TUI_VALUE_STREAM)

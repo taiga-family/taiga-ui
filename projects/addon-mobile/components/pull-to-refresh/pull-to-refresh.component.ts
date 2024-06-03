@@ -35,6 +35,16 @@ export class TuiPullToRefreshComponent {
     private readonly isIOS = inject(TUI_IS_IOS);
     private readonly threshold = inject(TUI_PULL_TO_REFRESH_THRESHOLD);
 
+    protected readonly pulling$ = inject(TuiPullToRefreshService);
+    protected readonly component = inject<PolymorpheusContent<TuiContext<number>>>(
+        TUI_PULL_TO_REFRESH_COMPONENT,
+    );
+
+    protected readonly dropped$: Observable<boolean> = this.pulling$.pipe(
+        map(distance => distance <= MICRO_OFFSET || distance === this.threshold),
+        distinctUntilChanged(),
+    );
+
     @Input()
     public styleHandler: TuiHandler<number, Record<string, any> | null> = this.isIOS
         ? distance => ({top: tuiPx(distance / 2)})
@@ -43,17 +53,6 @@ export class TuiPullToRefreshComponent {
     @Output()
     public readonly pulled: Observable<unknown> = inject(TuiPullToRefreshService).pipe(
         filter(distance => distance === this.threshold),
-    );
-
-    protected readonly pulling$ = inject(TuiPullToRefreshService);
-
-    protected readonly component = inject<PolymorpheusContent<TuiContext<number>>>(
-        TUI_PULL_TO_REFRESH_COMPONENT,
-    );
-
-    protected readonly dropped$: Observable<boolean> = this.pulling$.pipe(
-        map(distance => distance <= MICRO_OFFSET || distance === this.threshold),
-        distinctUntilChanged(),
     );
 
     constructor() {

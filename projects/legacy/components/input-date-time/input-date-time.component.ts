@@ -81,20 +81,6 @@ export class TuiInputDateTimeComponent
     private month: TuiMonth | null = null;
     private readonly timeMode$ = new BehaviorSubject<TuiTimeMode>('HH:MM');
 
-    @Input()
-    public min: TuiDay | [TuiDay | null, TuiTime | null] | null = this.options.min;
-
-    @Input()
-    public max: TuiDay | [TuiDay | null, TuiTime | null] | null = this.options.max;
-
-    @Input()
-    public disabledItemHandler: TuiBooleanHandler<TuiDay> = TUI_FALSE_HANDLER;
-
-    @Input()
-    public defaultActiveYearMonth = TuiMonth.currentLocal();
-
-    public open = false;
-
     protected readonly timeTexts$ = inject(TUI_TIME_TEXTS);
     protected readonly dateTexts$ = inject(TUI_DATE_TEXTS);
     protected override readonly valueTransformer = inject(
@@ -128,6 +114,20 @@ export class TuiInputDateTimeComponent
         .subscribe(format => {
             this.dateFormat = format;
         });
+
+    @Input()
+    public min: TuiDay | [TuiDay | null, TuiTime | null] | null = this.options.min;
+
+    @Input()
+    public max: TuiDay | [TuiDay | null, TuiTime | null] | null = this.options.max;
+
+    @Input()
+    public disabledItemHandler: TuiBooleanHandler<TuiDay> = TUI_FALSE_HANDLER;
+
+    @Input()
+    public defaultActiveYearMonth = TuiMonth.currentLocal();
+
+    public open = false;
 
     @Input()
     public set timeMode(value: TuiTimeMode) {

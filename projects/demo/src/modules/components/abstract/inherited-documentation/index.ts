@@ -34,6 +34,11 @@ import {TextfieldControllerDocumentationComponent} from '../textfield-controller
     changeDetection,
 })
 export class InheritedDocumentationComponent {
+    protected readonly booleanVariants: readonly boolean[] = [false, true];
+    protected readonly directionVariants = TUI_HINT_DIRECTIONS;
+    protected readonly appearanceVariants = ['', 'error', 'dark'];
+    protected readonly documentedComponent = inject(ABSTRACT_PROPS_ACCESSOR);
+
     @Input()
     public dropdown = false;
 
@@ -42,14 +47,6 @@ export class InheritedDocumentationComponent {
 
     @Input()
     public withTextFieldController = true;
-
-    protected readonly booleanVariants: readonly boolean[] = [false, true];
-
-    protected readonly directionVariants = TUI_HINT_DIRECTIONS;
-
-    protected readonly appearanceVariants = ['', 'error', 'dark'];
-
-    protected readonly documentedComponent = inject(ABSTRACT_PROPS_ACCESSOR);
 
     protected isTuiReactiveControl(
         documentedComponent: TuiSupportingDocumentationComponent,

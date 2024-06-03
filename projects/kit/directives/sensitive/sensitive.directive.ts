@@ -36,9 +36,6 @@ class TuiSensitiveStyles {}
     },
 })
 export class TuiSensitiveDirective {
-    @Input()
-    public tuiSensitive: boolean | null = false;
-
     protected readonly nothing = tuiWithStyles(TuiSensitiveStyles);
     protected readonly offset = Math.round(Math.random() * 10) * 10;
     protected readonly height$ = inject(ResizeObserverService).pipe(
@@ -48,4 +45,7 @@ export class TuiSensitiveDirective {
         ]),
         map(([rows, height]) => height * (rowsInSvg / rows)),
     );
+
+    @Input()
+    public tuiSensitive: boolean | null = false;
 }

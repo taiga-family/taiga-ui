@@ -29,8 +29,8 @@ class TuiTitleStyles {}
     },
 })
 export class TuiTitleDirective {
+    protected readonly nothing = tuiWithStyles(TuiTitleStyles);
+
     @Input('tuiTitle')
     public size: TuiSizeL | TuiSizeS | '' = '';
-
-    protected readonly nothing = tuiWithStyles(TuiTitleStyles);
 }

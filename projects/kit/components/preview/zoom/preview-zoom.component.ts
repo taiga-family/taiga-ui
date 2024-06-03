@@ -36,6 +36,9 @@ const STEP = 0.5;
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiPreviewZoomComponent {
+    protected readonly icons = inject(TUI_PREVIEW_ICONS);
+    protected readonly zoomTexts$ = inject(TUI_PREVIEW_ZOOM_TEXTS);
+
     @Input()
     public min = 0.5;
 
@@ -51,10 +54,7 @@ export class TuiPreviewZoomComponent {
     @Output()
     public readonly reset = new EventEmitter<void>();
 
-    protected readonly icons = inject(TUI_PREVIEW_ICONS);
-    protected readonly zoomTexts$ = inject(TUI_PREVIEW_ZOOM_TEXTS);
-
-    protected readonly hintShow$ = this.valueChange.pipe(
+    public readonly hintShow$ = this.valueChange.pipe(
         switchMap(() => merge(of(true), timer(1000).pipe(map(TUI_FALSE_HANDLER)))),
         startWith(false),
     );

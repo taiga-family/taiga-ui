@@ -72,6 +72,8 @@ export class TuiInputTimeComponent
     private readonly isIOS: boolean = inject(TUI_IS_IOS);
     private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
 
+    protected open = false;
+
     @Input()
     public disabledItemHandler: TuiBooleanHandler<TuiTime> = TUI_FALSE_HANDLER;
 
@@ -86,8 +88,6 @@ export class TuiInputTimeComponent
 
     @Input()
     public mode: TuiInputTimeOptions['mode'] = this.options.mode;
-
-    protected open = false;
 
     public get nativeFocusableElement(): HTMLInputElement | null {
         return this.textfield?.nativeFocusableElement ?? null;

@@ -56,6 +56,12 @@ import type {TuiDayRangePeriod} from './day-range-period';
 export class TuiCalendarRangeComponent
     implements OnChanges, TuiWithOptionalMinMax<TuiDay>
 {
+    protected readonly otherDateText$ = inject(TUI_OTHER_DATE_TEXT);
+    protected readonly icons = inject(TUI_COMMON_ICONS);
+    protected previousValue: TuiDayRange | null = null;
+    protected hoveredItem: TuiDay | null = null;
+    protected readonly capsMapper = TUI_DAY_CAPS_MAPPER;
+
     @Input()
     public defaultViewedMonth: TuiMonth = TuiMonth.currentLocal();
 
@@ -85,12 +91,6 @@ export class TuiCalendarRangeComponent
 
     @Output()
     public readonly valueChange = new EventEmitter<TuiDayRange | null>();
-
-    protected readonly otherDateText$ = inject(TUI_OTHER_DATE_TEXT);
-    protected readonly icons = inject(TUI_COMMON_ICONS);
-    protected previousValue: TuiDayRange | null = null;
-    protected hoveredItem: TuiDay | null = null;
-    protected readonly capsMapper = TUI_DAY_CAPS_MAPPER;
 
     constructor() {
         inject<Observable<TuiDayRange | null>>(TUI_CALENDAR_DATE_STREAM, {optional: true})

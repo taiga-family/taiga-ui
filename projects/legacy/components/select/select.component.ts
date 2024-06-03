@@ -79,6 +79,11 @@ export class TuiSelectComponent<T>
     private readonly arrowMode = inject(TUI_ARROW_MODE);
     private readonly options = inject(TUI_SELECT_OPTIONS);
 
+    @ContentChild(TuiDataListDirective, {read: TemplateRef})
+    protected readonly datalist: PolymorpheusContent<TuiContext<TuiActiveZoneDirective>>;
+
+    protected readonly isMobile = inject(TUI_IS_MOBILE);
+
     @Input()
     public stringify: TuiItemsHandlers<T>['stringify'] = this.itemsHandlers.stringify;
 
@@ -88,11 +93,6 @@ export class TuiSelectComponent<T>
 
     @Input()
     public valueContent: TuiSelectOptions<T>['valueContent'] = this.options.valueContent;
-
-    @ContentChild(TuiDataListDirective, {read: TemplateRef})
-    protected readonly datalist: PolymorpheusContent<TuiContext<TuiActiveZoneDirective>>;
-
-    protected readonly isMobile = inject(TUI_IS_MOBILE);
 
     public get nativeFocusableElement(): HTMLInputElement | null {
         return this.textfield?.nativeFocusableElement ?? null;
