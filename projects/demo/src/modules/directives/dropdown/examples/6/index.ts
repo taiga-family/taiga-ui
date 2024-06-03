@@ -15,7 +15,7 @@ import {
 import {
     TuiAvatarComponent,
     TuiDataListWrapper,
-    TuiFilterByInputPipeModule,
+    TuiFilterByInputPipe,
 } from '@taiga-ui/kit';
 import {TuiCellDirective} from '@taiga-ui/layout';
 import {
@@ -41,7 +41,7 @@ interface User {
         TuiDropdownMobileDirective,
         TuiTextfieldControllerModule,
         TuiDataListWrapper,
-        TuiFilterByInputPipeModule,
+        TuiFilterByInputPipe,
         TuiSelectModule,
         TuiMultiSelectModule,
         TuiButtonDirective,

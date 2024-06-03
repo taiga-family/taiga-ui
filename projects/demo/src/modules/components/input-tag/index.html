@@ -1,0 +1,260 @@
+<tui-doc-page
+    header="InputTag"
+    package="KIT"
+    type="components"
+>
+    <ng-template pageTab>
+        <div class="tui-space_bottom-3">
+            <code>InputTag</code>
+            allows to input several tags with autocomplete and list in dropdown.
+        </div>
+
+        <tui-doc-example
+            id="base"
+            heading="Basic"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample: 'html,ts'"
+        />
+
+        <tui-doc-example
+            id="async"
+            heading="Async items loading"
+            [component]="2 | tuiComponent"
+            [content]="2 | tuiExample: 'html,ts'"
+        />
+
+        <tui-doc-example
+            id="sizes"
+            heading="sizes"
+            [component]="3 | tuiComponent"
+            [content]="3 | tuiExample: 'html,ts'"
+        />
+
+        <tui-doc-example
+            id="validation"
+            heading="Custom validation"
+            [component]="4 | tuiComponent"
+            [content]="4 | tuiExample: 'html,ts'"
+        />
+
+        <tui-doc-example
+            id="rtl"
+            heading="Direction: RTL"
+            [component]="5 | tuiComponent"
+            [content]="5 | tuiExample"
+        />
+
+        <tui-doc-example
+            id="separator"
+            heading="Custom separator"
+            [component]="6 | tuiComponent"
+            [content]="6 | tuiExample"
+        />
+
+        <tui-doc-example
+            id="no-spaces-inside-tags"
+            heading="No spaces inside tags"
+            [component]="7 | tuiComponent"
+            [content]="7 | tuiExample: 'html,ts'"
+            [description]="forbidSpacesDescription"
+        >
+            <ng-template #forbidSpacesDescription>
+                Use power of RegExp to forbid spaces inside tags via property
+                <code>[separator]</code>
+                .
+            </ng-template>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="expandable"
+            heading="expandable"
+            [component]="8 | tuiComponent"
+            [content]="8 | tuiExample"
+        >
+            <div class="tui-space_bottom-3">
+                You can limit the number of visible rows with
+                <code>rows</code>
+                input. Set
+                <code>rows</code>
+                to 1 if you want single-line input with horizontal scrolling.
+            </div>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="mask"
+            heading="Mask"
+            [component]="9 | tuiComponent"
+            [content]="9 | tuiExample: 'html,ts'"
+        />
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo [control]="control">
+            <ng-template>
+                <tui-input-tag
+                    [disabledItemHandler]="disabledItemHandler"
+                    [editable]="editable"
+                    [focusable]="focusable"
+                    [formControl]="control"
+                    [inputHidden]="inputHidden"
+                    [maxLength]="maxLength"
+                    [placeholder]="exampleText"
+                    [pseudoActive]="pseudoPressed"
+                    [pseudoFocus]="pseudoFocused"
+                    [pseudoHover]="pseudoHovered"
+                    [pseudoInvalid]="pseudoInvalid"
+                    [readOnly]="readOnly"
+                    [rows]="rows"
+                    [separator]="separator"
+                    [style.text-align]="textAlign"
+                    [tagValidator]="tagValidator"
+                    [tuiDropdownAlign]="dropdownAlign"
+                    [tuiDropdownDirection]="dropdownDirection"
+                    [tuiDropdownLimitWidth]="dropdownLimitWidth"
+                    [tuiDropdownMaxHeight]="dropdownMaxHeight"
+                    [tuiDropdownMinHeight]="dropdownMinHeight"
+                    [tuiDropdownOffset]="dropdownOffset"
+                    [tuiDropdownOpen]="!!(dropdownOpen | async)"
+                    [tuiHintAppearance]="hintAppearance"
+                    [tuiHintContent]="hintContent"
+                    [tuiHintDirection]="hintDirection"
+                    [tuiTextfieldCleaner]="cleaner"
+                    [tuiTextfieldIcon]="icon"
+                    [tuiTextfieldIconLeft]="iconLeft"
+                    [tuiTextfieldLabelOutside]="labelOutside"
+                    [tuiTextfieldSize]="size"
+                    [uniqueTags]="uniqueTags"
+                    [(search)]="search"
+                    (tuiDropdownOpenChange)="dropdownOpen.next($event)"
+                >
+                    Please enter Pythons' names
+                </tui-input-tag>
+            </ng-template>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="disabled"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="disabled"
+            >
+                Disabled state (use
+                <code>formControl.disable()</code>
+                )
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input-output"
+                documentationPropertyName="search"
+                documentationPropertyType="string | null"
+                [(documentationPropertyValue)]="search"
+            >
+                Textfield value to subscribe on input or setting it from the outside (emits
+                <code>null</code>
+                when item from list selected)
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="maxLength"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="maxLength"
+            >
+                Max length of tag
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="disabledItemHandler"
+                documentationPropertyType="TuiBooleanHandler<string>"
+                [documentationPropertyValues]="disabledItemHandlerVariants"
+                [(documentationPropertyValue)]="disabledItemHandler"
+            >
+                Handler for deactivation some tags
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="placeholder"
+                documentationPropertyType="string"
+                [(documentationPropertyValue)]="exampleText"
+            >
+                Placeholder
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="uniqueTags"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="uniqueTags"
+            >
+                Ability to enter unique or non-unique tags
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="editable"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="editable"
+            >
+                Tags are editable
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="separator"
+                documentationPropertyType="string | RegExp"
+                [documentationPropertyValues]="separatorVariants"
+                [(documentationPropertyValue)]="separator"
+            >
+                String or RegExp to separate tags
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="rows"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="rows"
+            >
+                A number of visible rows
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="inputHidden"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="inputHidden"
+            >
+                Hide input field. For example, to prevent adding new tags
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="tagValidator"
+                documentationPropertyType="TuiBooleanHandler<string>"
+                [documentationPropertyValues]="tagValidatorVariants"
+                [(documentationPropertyValue)]="tagValidator"
+            >
+                A function that checks that tag is valid
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="tuiTextfieldIcon"
+                documentationPropertyType="PolymorpheusContent"
+                [documentationPropertyValues]="iconVariants"
+                [(documentationPropertyValue)]="icon"
+            >
+                Icon content. If content is a string, it is used as stringified svg or a name of icon registered in
+                <a
+                    routerLink="/services/svg-service"
+                    tuiLink
+                >
+                    <code>SvgService</code>
+                </a>
+            </ng-template>
+        </tui-doc-documentation>
+        <inherited-documentation [dropdown]="true" />
+        <tui-doc-documentation heading="CSS customization">
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="style.text-align"
+                documentationPropertyType="string"
+                [documentationPropertyValues]="textAlignVariants"
+                [(documentationPropertyValue)]="textAlign"
+            >
+                Custom align content by text-align
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <tui-setup *pageTab />
+</tui-doc-page>

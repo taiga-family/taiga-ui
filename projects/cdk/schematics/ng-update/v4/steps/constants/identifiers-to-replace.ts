@@ -257,6 +257,26 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {name: 'TuiUnmaskHandlerDirective', moduleSpecifier: '@taiga-ui/kit'},
     },
     {
+        from: {name: 'TuiDialogFormService', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiConfirmService', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {name: 'TuiSortCountriesPipeModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiSortCountriesPipe', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {name: 'TuiStringifyContentPipeModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiStringifyContentPipe', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {name: 'TuiFilterByInputPipeModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiFilterByInputPipe', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {name: 'TuiFieldErrorPipeModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiFieldErrorPipe', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
         from: {name: 'TuiThumbnailCardModule', moduleSpecifier: '@taiga-ui/experimental'},
         to: {
             name: 'TuiThumbnailCardComponent',

@@ -11,7 +11,7 @@ import {
     TuiLinkDirective,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiFieldErrorPipeModule} from '@taiga-ui/kit';
+import {TuiFieldErrorPipe} from '@taiga-ui/kit';
 import {TuiInputModule} from '@taiga-ui/legacy';
 import {distinctUntilChanged} from 'rxjs';
 
@@ -41,7 +41,7 @@ export function superComputerValidator(field: AbstractControl): Validators | nul
         TuiInputModule,
         TuiTextfieldControllerModule,
         TuiErrorComponent,
-        TuiFieldErrorPipeModule,
+        TuiFieldErrorPipe,
         AsyncPipe,
         RouterLink,
         TuiLinkDirective,

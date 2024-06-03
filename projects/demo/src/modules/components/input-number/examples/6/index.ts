@@ -1,11 +1,13 @@
 import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiNumberFormatProvider} from '@taiga-ui/core';
-import {tuiInputNumberOptionsProvider} from '@taiga-ui/legacy';
+import {TuiInputNumberModule, tuiInputNumberOptionsProvider} from '@taiga-ui/legacy';
 
 @Component({
-    selector: 'tui-input-number-example-6',
+    standalone: true,
+    imports: [TuiInputNumberModule, FormsModule],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
@@ -18,6 +20,6 @@ import {tuiInputNumberOptionsProvider} from '@taiga-ui/legacy';
         }),
     ],
 })
-export class TuiInputNumberExample6 {
+export default class ExampleComponent {
     protected value = 237;
 }

@@ -1,15 +1,18 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiButtonDirective} from '@taiga-ui/core';
+import {TuiLineClampComponent} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-line-clamp-example-2',
+    standalone: true,
+    imports: [TuiLineClampComponent, TuiButtonDirective],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiLineClampExample2 {
+export default class ExampleComponent {
     protected linesLimit = 2;
 
     protected toggle(): void {

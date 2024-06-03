@@ -5,8 +5,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {
     TuiDataListWrapper,
-    TuiFilterByInputPipeModule,
-    TuiStringifyContentPipeModule,
+    TuiFilterByInputPipe,
+    TuiStringifyContentPipe,
 } from '@taiga-ui/kit';
 import {TuiComboBoxModule} from '@taiga-ui/legacy';
 
@@ -17,8 +17,8 @@ import {TuiComboBoxModule} from '@taiga-ui/legacy';
         ReactiveFormsModule,
         TuiTextfieldControllerModule,
         TuiDataListWrapper,
-        TuiStringifyContentPipeModule,
-        TuiFilterByInputPipeModule,
+        TuiStringifyContentPipe,
+        TuiFilterByInputPipe,
     ],
     templateUrl: './index.html',
     encapsulation,

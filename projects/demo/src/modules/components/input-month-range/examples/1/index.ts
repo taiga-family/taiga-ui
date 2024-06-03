@@ -1,15 +1,22 @@
 import {Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiMonthRange} from '@taiga-ui/cdk';
+import {TuiTextfieldControllerModule} from '@taiga-ui/core';
+import {TuiInputMonthRangeModule} from '@taiga-ui/legacy';
 
 @Component({
-    selector: 'tui-input-month-range-example-1',
+    standalone: true,
+    imports: [
+        TuiInputMonthRangeModule,
+        ReactiveFormsModule,
+        TuiTextfieldControllerModule,
+    ],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class TuiInputMonthRangeExample1 {
+export default class ExampleComponent {
     protected readonly control = new FormControl<TuiMonthRange | null>(null);
 }

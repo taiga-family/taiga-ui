@@ -11,7 +11,7 @@ import {
     TuiLabelDirective,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TUI_VALIDATION_ERRORS, TuiFieldErrorPipeModule} from '@taiga-ui/kit';
+import {TUI_VALIDATION_ERRORS, TuiFieldErrorPipe} from '@taiga-ui/kit';
 import {TuiTextareaModule} from '@taiga-ui/legacy';
 
 const LONG_TEXT_EXAMPLE = `
@@ -33,7 +33,7 @@ export function maxLengthMessageFactory(context: {requiredLength: string}): stri
         TuiHintOptionsDirective,
         TuiTextfieldControllerModule,
         TuiErrorComponent,
-        TuiFieldErrorPipeModule,
+        TuiFieldErrorPipe,
         AsyncPipe,
     ],
     templateUrl: './index.html',

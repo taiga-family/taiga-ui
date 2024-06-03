@@ -1,9 +1,12 @@
 import {Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk';
 import {TUI_DEFAULT_MATCHER, tuiPure} from '@taiga-ui/cdk';
+import {TuiDataListDirective, TuiTextfieldControllerModule} from '@taiga-ui/core';
+import {TuiDataListWrapperComponent} from '@taiga-ui/kit';
+import {TuiMultiSelectModule} from '@taiga-ui/legacy';
 
 const ITEMS: readonly string[] = [
     'Luke Skywalker',
@@ -15,12 +18,19 @@ const ITEMS: readonly string[] = [
 ];
 
 @Component({
-    selector: 'tui-multi-select-example-1',
+    standalone: true,
+    imports: [
+        TuiMultiSelectModule,
+        ReactiveFormsModule,
+        TuiTextfieldControllerModule,
+        TuiDataListWrapperComponent,
+        TuiDataListDirective,
+    ],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class TuiMultiSelectExample1 {
+export default class ExampleComponent {
     protected search: string | null = '';
 
     protected readonly control = new FormControl([ITEMS[0]]);

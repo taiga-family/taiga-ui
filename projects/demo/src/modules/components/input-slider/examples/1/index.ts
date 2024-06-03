@@ -1,15 +1,18 @@
 import {Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiHintOptionsDirective} from '@taiga-ui/core';
+import {TuiInputSliderModule} from '@taiga-ui/legacy';
 
 @Component({
-    selector: 'tui-input-slider-example-1',
+    standalone: true,
+    imports: [TuiInputSliderModule, ReactiveFormsModule, TuiHintOptionsDirective],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class TuiInputSliderExample1 {
+export default class ExampleComponent {
     protected readonly min = 5;
     protected readonly max = 20;
     protected readonly sliderStep = 1;

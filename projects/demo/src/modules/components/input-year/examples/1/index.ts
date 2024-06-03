@@ -1,14 +1,17 @@
 import {Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiTextfieldControllerModule} from '@taiga-ui/core';
+import {TuiInputYearModule} from '@taiga-ui/legacy';
 
 @Component({
-    selector: 'input-year-example-1',
+    standalone: true,
+    imports: [TuiInputYearModule, ReactiveFormsModule, TuiTextfieldControllerModule],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class InputYearExample1 {
+export default class ExampleComponent {
     protected readonly control = new FormControl<number | null>(null);
 }

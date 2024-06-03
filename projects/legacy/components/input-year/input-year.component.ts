@@ -8,13 +8,11 @@ import {
 } from '@angular/core';
 import type {MaskitoOptions} from '@maskito/core';
 import {maskitoNumberOptionsGenerator} from '@maskito/kit';
-import type {
-    TuiBooleanHandler,
-    TuiFocusableElementAccessor,
-    TuiYear,
-} from '@taiga-ui/cdk';
+import type {TuiBooleanHandler, TuiFocusableElementAccessor} from '@taiga-ui/cdk';
 import {
     AbstractTuiNullableControl,
+    MAX_YEAR,
+    MIN_YEAR,
     TUI_FALSE_HANDLER,
     tuiAsControl,
     tuiAsFocusableItemAccessor,
@@ -83,31 +81,23 @@ export class TuiInputYearComponent
         return this.textfieldSize.size;
     }
 
-    protected get computedMin(): number {
-        return this.min ?? this.options.min.year;
-    }
-
-    protected get computedMax(): number {
-        return this.max ?? this.options.max.year;
-    }
-
     protected get calendarIcon(): TuiInputDateOptions['icon'] {
         return this.options.icon;
     }
 
     @tuiPure
-    protected getMaskOptions(min: number, max: number): MaskitoOptions {
+    protected getMaskOptions(min: number | null, max: number | null): MaskitoOptions {
         return {
             ...maskitoNumberOptionsGenerator({
-                min,
-                max,
+                min: min ?? MIN_YEAR,
+                max: max ?? MAX_YEAR,
                 thousandSeparator: '',
             }),
             mask: UP_TO_4_DIGITS_REG,
         };
     }
 
-    protected onYearClick({year}: TuiYear): void {
+    protected onYearClick(year: number): void {
         this.value = year;
         this.updateNativeValue(year);
         this.onOpenChange(false);

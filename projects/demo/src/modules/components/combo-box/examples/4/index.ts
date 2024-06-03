@@ -3,8 +3,8 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {
     TuiDataListWrapper,
-    TuiFilterByInputPipeModule,
-    TuiStringifyContentPipeModule,
+    TuiFilterByInputPipe,
+    TuiStringifyContentPipe,
 } from '@taiga-ui/kit';
 import {TuiComboBoxModule} from '@taiga-ui/legacy';
 
@@ -14,8 +14,8 @@ import {TuiComboBoxModule} from '@taiga-ui/legacy';
         FormsModule,
         TuiComboBoxModule,
         TuiDataListWrapper,
-        TuiFilterByInputPipeModule,
-        TuiStringifyContentPipeModule,
+        TuiFilterByInputPipe,
+        TuiStringifyContentPipe,
     ],
     templateUrl: './index.html',
     changeDetection,

@@ -1,14 +1,28 @@
+import {NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiItemDirective} from '@taiga-ui/cdk';
+import {
+    TuiChipDirective,
+    TuiItemsWithMoreComponent,
+    TuiMoreDirective,
+} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-items-with-more-example-1',
+    standalone: true,
+    imports: [
+        TuiItemsWithMoreComponent,
+        TuiChipDirective,
+        TuiItemDirective,
+        TuiMoreDirective,
+        NgForOf,
+    ],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class TuiItemsWithMoreExample1 {
+export default class PageComponent {
     protected readonly items = [
         'John Cleese',
         'Eric Idle',

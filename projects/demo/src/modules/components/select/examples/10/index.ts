@@ -1,8 +1,10 @@
 import {Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {tuiItemsHandlersProvider} from '@taiga-ui/kit';
+import {TuiDataListDirective, TuiTextfieldControllerModule} from '@taiga-ui/core';
+import {TuiDataListWrapperComponent, tuiItemsHandlersProvider} from '@taiga-ui/kit';
+import {TuiSelectModule} from '@taiga-ui/legacy';
 
 interface Employee {
     readonly dept: {
@@ -14,7 +16,14 @@ interface Employee {
 }
 
 @Component({
-    selector: 'tui-select-example-10',
+    standalone: true,
+    imports: [
+        TuiSelectModule,
+        TuiTextfieldControllerModule,
+        ReactiveFormsModule,
+        TuiDataListWrapperComponent,
+        TuiDataListDirective,
+    ],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
@@ -24,7 +33,7 @@ interface Employee {
         }),
     ],
 })
-export class TuiSelectExample10 {
+export default class ExampleComponent {
     protected readonly testValue = new FormControl<Employee | null>(null);
 
     protected readonly items: readonly Employee[] = [

@@ -9,4 +9,8 @@ export const MODULES_TO_REMOVE: RemovedModule[] = [
         name: 'TuiProgressSegmentedModule',
         moduleSpecifier: '@taiga-ui/experimental',
     },
+    {
+        name: 'TuiFocusableModule',
+        moduleSpecifier: '@taiga-ui/cdk',
+    },
 ];

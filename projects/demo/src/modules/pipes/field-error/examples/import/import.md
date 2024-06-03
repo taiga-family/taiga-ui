@@ -1,5 +1,5 @@
 ```ts
-import {TuiFieldErrorPipeModule} from '@taiga-ui/kit';
+import {TuiFieldErrorPipe} from '@taiga-ui/kit';
 
 // ...
 
@@ -7,7 +7,7 @@ import {TuiFieldErrorPipeModule} from '@taiga-ui/kit';
   standalone: true,
   imports: [
     // ...
-    TuiFieldErrorPipeModule,
+    TuiFieldErrorPipe,
   ],
 })
 export class MyComponent {}

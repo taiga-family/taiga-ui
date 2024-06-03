@@ -1,8 +1,14 @@
+import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {assets} from '@demo/utils';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk';
+import {TuiLetDirective} from '@taiga-ui/cdk';
+import {TuiDataListDirective, TuiInitialsPipe} from '@taiga-ui/core';
+import {TuiAvatarComponent, TuiDataListWrapperComponent} from '@taiga-ui/kit';
+import {TuiSelectModule} from '@taiga-ui/legacy';
 import {delay, of} from 'rxjs';
 
 class User {
@@ -28,13 +34,23 @@ const databaseMockData: readonly User[] = [
 ];
 
 @Component({
-    selector: 'tui-select-example-6',
+    standalone: true,
+    imports: [
+        TuiSelectModule,
+        TuiLetDirective,
+        AsyncPipe,
+        FormsModule,
+        TuiDataListWrapperComponent,
+        TuiDataListDirective,
+        TuiAvatarComponent,
+        TuiInitialsPipe,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiSelectExample6 {
+export default class ExampleComponent {
     protected value = null;
 
     protected readonly items$ = of(databaseMockData).pipe(delay(5000));

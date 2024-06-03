@@ -18,7 +18,7 @@ import {
     TuiTextfieldControllerModule,
     TuiTextfieldOptionsDirective,
 } from '@taiga-ui/core';
-import {TuiFieldErrorPipeModule} from '@taiga-ui/kit';
+import {TuiFieldErrorPipe} from '@taiga-ui/kit';
 import {TuiInputPhoneModule} from '@taiga-ui/legacy';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
@@ -33,7 +33,7 @@ import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
         TuiTextfieldControllerModule,
         TuiButtonDirective,
         TuiErrorComponent,
-        TuiFieldErrorPipeModule,
+        TuiFieldErrorPipe,
         AsyncPipe,
     ],
     templateUrl: './index.html',

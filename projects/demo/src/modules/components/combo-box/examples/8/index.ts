@@ -5,8 +5,8 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {
     TuiDataListWrapper,
-    TuiFilterByInputPipeModule,
-    TuiStringifyContentPipeModule,
+    TuiFilterByInputPipe,
+    TuiStringifyContentPipe,
 } from '@taiga-ui/kit';
 import {TuiComboBoxModule} from '@taiga-ui/legacy';
 
@@ -31,8 +31,8 @@ const DICTIONARY: Dictionary[] = [
         ReactiveFormsModule,
         TuiComboBoxModule,
         TuiDataListWrapper,
-        TuiStringifyContentPipeModule,
-        TuiFilterByInputPipeModule,
+        TuiStringifyContentPipe,
+        TuiFilterByInputPipe,
     ],
     templateUrl: './index.html',
     encapsulation,

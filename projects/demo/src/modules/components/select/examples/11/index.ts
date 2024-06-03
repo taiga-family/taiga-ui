@@ -1,8 +1,10 @@
 import {Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiBooleanHandler, TuiStringHandler} from '@taiga-ui/cdk';
+import {TuiTextfieldControllerModule} from '@taiga-ui/core';
+import {TuiSelectModule} from '@taiga-ui/legacy';
 
 interface Item {
     id: number;
@@ -10,12 +12,13 @@ interface Item {
 }
 
 @Component({
-    selector: 'tui-select-example-11',
+    standalone: true,
+    imports: [TuiSelectModule, ReactiveFormsModule, TuiTextfieldControllerModule],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class TuiSelectExample11 {
+export default class ExampleComponent {
     protected itemStringControl = new FormControl<string | null>(null);
     protected itemGroupControl = new FormControl<string | null>(null);
     protected itemControl = new FormControl<Item | null>(null);

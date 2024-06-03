@@ -13,7 +13,7 @@ import {TuiDocDocumentationPropertyConnectorDirective} from '@taiga-ui/addon-doc
 import {tuiProvide} from '@taiga-ui/cdk';
 import type {TuiHintOptions} from '@taiga-ui/core';
 import {TuiErrorComponent, TuiHint, TuiTextfieldControllerModule} from '@taiga-ui/core';
-import {TuiAccordion, TuiFieldErrorPipeModule} from '@taiga-ui/kit';
+import {TuiAccordion, TuiFieldErrorPipe} from '@taiga-ui/kit';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
 import {AbstractExampleTuiControl} from '../abstract/control';
@@ -30,7 +30,7 @@ import {InheritedDocumentationComponent} from '../abstract/inherited-documentati
         TuiTextfieldControllerModule,
         TuiInputCVCComponent,
         TuiErrorComponent,
-        TuiFieldErrorPipeModule,
+        TuiFieldErrorPipe,
         TuiAccordion,
         InheritedDocumentationComponent,
     ],

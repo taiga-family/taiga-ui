@@ -1,0 +1,140 @@
+<tui-doc-page
+    header="Push"
+    package="KIT"
+    type="components"
+>
+    <ng-template pageTab>
+        <p>Notifications in style of native browser push</p>
+
+        <tui-doc-example
+            id="base"
+            heading="basic"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample"
+        />
+
+        <tui-doc-example
+            id="service"
+            heading="with service"
+            [component]="2 | tuiComponent"
+            [content]="2 | tuiExample: 'html,ts'"
+        />
+
+        <tui-doc-example
+            id="directive"
+            heading="with directive"
+            [component]="3 | tuiComponent"
+            [content]="3 | tuiExample: 'html,ts'"
+        />
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-push
+                [heading]="heading"
+                [timestamp]="timestamp"
+                [type]="type"
+                (close)="documentationPropertyClose.emitEvent($event)"
+            >
+                <img
+                    alt=""
+                    src="assets/images/roy.jpg"
+                />
+                <tui-svg src="tuiIconSettingsLarge" />
+                I’ve seen things you people wouldn't believe. Attack ships on fire off The Shoulder Of Orion. I watched
+                C-Beams glitter in the dark near The Tannhauser Gate. All those moments will be lost in time, like tears
+                in rain.
+                <button
+                    tuiButton
+                    type="button"
+                >
+                    I want more life
+                </button>
+                <button
+                    tuiLink
+                    type="button"
+                >
+                    Time to die
+                </button>
+            </tui-push>
+        </tui-doc-demo>
+
+        <tui-doc-documentation heading="Inputs/Outputs">
+            <ng-template
+                documentationPropertyName="heading"
+                documentationPropertyType="string"
+                [(documentationPropertyValue)]="heading"
+            >
+                Heading of the push
+            </ng-template>
+            <ng-template
+                documentationPropertyName="type"
+                documentationPropertyType="string"
+                [(documentationPropertyValue)]="type"
+            >
+                Small text near icon, typically, category of the message
+            </ng-template>
+            <ng-template
+                documentationPropertyName="timestamp"
+                documentationPropertyType="number | string"
+                [documentationPropertyValues]="timestampVars"
+                [(documentationPropertyValue)]="timestamp"
+            >
+                Timestamp of the arrival. Formatted with
+                <a
+                    routerLink="/pipes/format-date"
+                    tuiLink
+                >
+                    <code>FormatDate</code>
+                </a>
+                pipe if the number is passed.
+            </ng-template>
+            <ng-template
+                #documentationPropertyClose="documentationProperty"
+                documentationPropertyMode="output"
+                documentationPropertyName="close"
+                documentationPropertyType="void"
+            >
+                Output for close button clicks. If you do not listen to this output, close button is hidden.
+            </ng-template>
+        </tui-doc-documentation>
+
+        <tui-doc-documentation
+            heading="Content slots"
+            [showValues]="false"
+        >
+            <ng-template
+                documentationPropertyName="tui-svg"
+                documentationPropertyType="Icon"
+            >
+                Icon in the corner
+            </ng-template>
+            <ng-template
+                documentationPropertyName="img"
+                documentationPropertyType="Image"
+            >
+                Image at the top (360×170px)
+            </ng-template>
+            <ng-template
+                documentationPropertyName="tuiLink"
+                documentationPropertyType="Link/Button"
+            >
+                Single button
+            </ng-template>
+            <ng-template
+                documentationPropertyName="tuiButton"
+                documentationPropertyType="Link/Button"
+            >
+                Additional button when it requires two
+            </ng-template>
+            <ng-template
+                documentationPropertyName="ng-content"
+                documentationPropertyType="Arbitrary"
+            >
+                The rest of the content is that push body.
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <tui-setup *pageTab />
+</tui-doc-page>

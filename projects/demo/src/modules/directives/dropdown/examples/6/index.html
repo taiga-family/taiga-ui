@@ -38,7 +38,7 @@
         <tui-data-list-wrapper
             tuiMultiSelectGroup
             [itemContent]="template"
-            [items]="users | tuiFilterByInputWith: stringify"
+            [items]="users | tuiFilterByInput"
         />
         <button
             appearance="accent"
@@ -57,7 +57,7 @@
     [(ngModel)]="sum"
 >
     Sum
-    <input tuiTextfield />
+    <input tuiTextfieldLegacy />
 </tui-input-number>
 
 <ng-template

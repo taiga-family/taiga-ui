@@ -8,7 +8,7 @@ test.describe('ComboBox', () => {
 
         const documentationPage = new TuiDocumentationPagePO(page);
         const example = documentationPage.getExample('#ignore-disabled');
-        const input = example.locator('tui-combo-box input[tuiTextfield]');
+        const input = example.locator('tui-combo-box input[tuiTextfieldLegacy]');
 
         await example.scrollIntoViewIfNeeded();
         await input.click();

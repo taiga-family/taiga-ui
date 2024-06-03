@@ -1,8 +1,18 @@
+import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
 import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {assets} from '@demo/utils';
-import {TUI_DEFAULT_MATCHER, tuiPure} from '@taiga-ui/cdk';
+import {TUI_DEFAULT_MATCHER, TuiLetDirective, tuiPure} from '@taiga-ui/cdk';
+import {
+    TuiDataListComponent,
+    TuiDataListDirective,
+    TuiOptionComponent,
+    TuiTextfieldControllerModule,
+} from '@taiga-ui/core';
+import {TuiAvatarComponent} from '@taiga-ui/kit';
+import {TuiInputPhoneModule} from '@taiga-ui/legacy';
 import type {Observable} from 'rxjs';
 import {
     combineLatest,
@@ -41,13 +51,26 @@ const DATA: readonly User[] = [
 ];
 
 @Component({
-    selector: 'tui-input-phone-example-3',
+    standalone: true,
+    imports: [
+        TuiInputPhoneModule,
+        TuiLetDirective,
+        AsyncPipe,
+        TuiTextfieldControllerModule,
+        FormsModule,
+        NgIf,
+        TuiDataListComponent,
+        TuiDataListDirective,
+        NgForOf,
+        TuiOptionComponent,
+        TuiAvatarComponent,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiInputPhoneExample3 {
+export default class ExampleComponent {
     private readonly search$ = new Subject<string>();
 
     private readonly selected$ = new Subject<User>();

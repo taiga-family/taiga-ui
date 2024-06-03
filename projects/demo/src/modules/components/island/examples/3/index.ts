@@ -9,7 +9,7 @@ import {
     TuiLinkDirective,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiAvatarComponent, TuiFieldErrorPipeModule} from '@taiga-ui/kit';
+import {TuiAvatarComponent, TuiFieldErrorPipe} from '@taiga-ui/kit';
 import {TuiCardLargeDirective} from '@taiga-ui/layout';
 import {TuiInputPhoneModule, TuiIslandDirective} from '@taiga-ui/legacy';
 
@@ -21,7 +21,7 @@ import {TuiInputPhoneModule, TuiIslandDirective} from '@taiga-ui/legacy';
         TuiInputPhoneModule,
         TuiErrorComponent,
         TuiTextfieldControllerModule,
-        TuiFieldErrorPipeModule,
+        TuiFieldErrorPipe,
         AsyncPipe,
         TuiCardLargeDirective,
         TuiAvatarComponent,

@@ -8,7 +8,7 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import type {TuiBooleanHandler, TuiYear} from '@taiga-ui/cdk';
+import type {TuiBooleanHandler} from '@taiga-ui/cdk';
 import {
     TUI_FALSE_HANDLER,
     TUI_FIRST_DAY,
@@ -20,6 +20,7 @@ import {
     TuiMonthRange,
     tuiNullableSame,
     tuiPure,
+    TuiYear,
 } from '@taiga-ui/cdk';
 import type {TuiRangeState, TuiWithOptionalMinMax} from '@taiga-ui/core';
 import {
@@ -199,11 +200,11 @@ export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth
         return TODAY.monthSame(item);
     }
 
-    protected onPickerYearClick(year: TuiYear): void {
+    protected onPickerYearClick(year: number): void {
         this.isYearPickerShown = false;
 
-        if (!this.year.yearSame(year)) {
-            this.updateActiveYear(year);
+        if (this.year.year !== year) {
+            this.updateActiveYear(new TuiYear(year));
         }
     }
 

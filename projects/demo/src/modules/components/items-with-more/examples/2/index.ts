@@ -1,16 +1,52 @@
+import {NgForOf, NgIf} from '@angular/common';
 import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk';
+import {TUI_FALSE_HANDLER, TuiItemDirective} from '@taiga-ui/cdk';
+import {
+    TuiButtonDirective,
+    TuiDataListComponent,
+    TuiDropdownDirective,
+    TuiDropdownOpenDirective,
+    TuiDropdownOptionsDirective,
+    TuiGroupDirective,
+    TuiOptionComponent,
+    TuiSvgComponent,
+} from '@taiga-ui/core';
+import {
+    TuiBadgeDirective,
+    TuiBlockDirective,
+    TuiItemsWithMoreComponent,
+    TuiMoreDirective,
+} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-items-with-more-example-2',
+    standalone: true,
+    imports: [
+        TuiGroupDirective,
+        TuiItemsWithMoreComponent,
+        TuiItemDirective,
+        TuiBlockDirective,
+        NgForOf,
+        FormsModule,
+        TuiMoreDirective,
+        TuiDropdownOpenDirective,
+        TuiDropdownOptionsDirective,
+        TuiButtonDirective,
+        TuiDropdownDirective,
+        TuiBadgeDirective,
+        TuiDataListComponent,
+        NgIf,
+        TuiOptionComponent,
+        TuiSvgComponent,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiItemsWithMoreExample2 {
+export default class PageComponent {
     protected readonly items = [
         'John Cleese',
         'Eric Idle',

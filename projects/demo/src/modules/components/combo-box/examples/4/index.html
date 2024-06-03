@@ -5,11 +5,11 @@
     Find the best employees
     <input
         placeholder="Type a name"
-        tuiTextfield
+        tuiTextfieldLegacy
     />
     <tui-data-list-wrapper
         *tuiDataList
         [itemContent]="stringify | tuiStringifyContent"
-        [items]="items | tuiFilterByInputWith: stringify"
+        [items]="items | tuiFilterByInput"
     />
 </tui-combo-box>

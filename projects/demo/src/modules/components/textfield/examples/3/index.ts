@@ -7,7 +7,7 @@ import {TuiTooltipModule} from '@taiga-ui/experimental';
 import {
     TuiChevronDirective,
     TuiDataListWrapper,
-    TuiFilterByInputPipeModule,
+    TuiFilterByInputPipe,
 } from '@taiga-ui/kit';
 
 @Component({
@@ -20,7 +20,7 @@ import {
         TuiTooltipModule,
         TuiChevronDirective,
         TuiDataListWrapper,
-        TuiFilterByInputPipeModule,
+        TuiFilterByInputPipe,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

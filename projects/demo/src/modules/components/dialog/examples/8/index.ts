@@ -3,7 +3,7 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButtonDirective, TuiDialogService} from '@taiga-ui/core';
-import {TuiDialogFormService} from '@taiga-ui/kit';
+import {TuiConfirmService} from '@taiga-ui/kit';
 import {TuiInputModule} from '@taiga-ui/legacy';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
@@ -13,21 +13,21 @@ import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
-    providers: [TuiDialogFormService],
+    providers: [TuiConfirmService],
 })
 export default class ExampleComponent {
-    private readonly dialogForm = inject(TuiDialogFormService);
+    private readonly confirm = inject(TuiConfirmService);
     private readonly dialogs = inject(TuiDialogService);
 
     protected value = '';
 
     protected onModelChange(value: string): void {
         this.value = value;
-        this.dialogForm.markAsDirty();
+        this.confirm.markAsDirty();
     }
 
     protected onClick(content: PolymorpheusContent): void {
-        const closeable = this.dialogForm.withConfirm({
+        const closeable = this.confirm.withConfirm({
             label: 'Are you sure?',
             data: {
                 content: 'Your data will be <strong>lost</strong>',
@@ -37,7 +37,7 @@ export default class ExampleComponent {
         this.dialogs.open(content, {closeable, dismissible: closeable}).subscribe({
             complete: () => {
                 this.value = '';
-                this.dialogForm.markAsPristine();
+                this.confirm.markAsPristine();
             },
         });
     }

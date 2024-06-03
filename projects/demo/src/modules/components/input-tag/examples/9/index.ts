@@ -1,19 +1,28 @@
 import {Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {MaskitoDirective} from '@maskito/angular';
 import type {MaskitoOptions} from '@maskito/core';
 import {maskitoDateOptionsGenerator} from '@maskito/kit';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk';
 import {TuiDay} from '@taiga-ui/cdk';
+import {TuiTextfieldControllerModule} from '@taiga-ui/core';
+import {TuiInputTagModule} from '@taiga-ui/legacy';
 
 @Component({
-    selector: 'tui-input-tag-example-9',
+    standalone: true,
+    imports: [
+        TuiInputTagModule,
+        TuiTextfieldControllerModule,
+        ReactiveFormsModule,
+        MaskitoDirective,
+    ],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class TuiInputTagExample9 {
+export default class ExampleComponent {
     protected readonly control = new FormControl<string[]>([]);
     protected readonly min = new Date(2000, 0, 1);
     protected readonly max = new Date(2025, 4, 10);
