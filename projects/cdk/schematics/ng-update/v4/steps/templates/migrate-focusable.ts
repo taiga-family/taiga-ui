@@ -9,7 +9,7 @@ import {
 } from '../../../../utils/templates/template-resource';
 import type {TemplateResource} from '../../../interfaces';
 
-const LEGACY_ATTRIBUTE_NAME = '[tuifocusable]';
+const LEGACY_ATTRIBUTE_NAME = '[tuiFocusable]'.toLowerCase();
 
 export function migrateFocusable({
     resource,
