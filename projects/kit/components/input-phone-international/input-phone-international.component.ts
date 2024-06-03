@@ -134,7 +134,9 @@ export class TuiInputPhoneInternationalComponent
     }
 
     public get focused(): boolean {
-        return Boolean(this.countrySelect?.focused || this.inputPhone?.focused);
+        return Boolean(
+            this.countrySelect?.focused || this.inputPhone?.focused || this.open,
+        );
     }
 
     public onPaste(event: Event, phonesMetadata: MetadataJson | null): void {
