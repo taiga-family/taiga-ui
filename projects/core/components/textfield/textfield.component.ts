@@ -65,7 +65,7 @@ export interface TuiTextfieldContext<T> extends TuiContext<T> {
     host: {
         '[style.--t-side.px]': 'side',
         '[attr.data-size]': 'options.size',
-        '[class._with-label]': 'label',
+        '[class._with-label]': 'hasLabel',
         '[class._disabled]': 'input.disabled',
     },
     hostDirectives: [
@@ -102,8 +102,8 @@ export class TuiTextfieldComponent<T>
     @ContentChild(TuiTextfieldDirective)
     protected readonly directive?: TuiTextfieldDirective;
 
-    @ContentChild(TuiLabelDirective)
-    protected readonly label?: unknown;
+    @ContentChild(TuiLabelDirective, {read: ElementRef})
+    protected readonly label?: ElementRef<HTMLElement>;
 
     protected side = 0;
     protected readonly change$ = inject(TuiTextfieldOptionsDirective, {optional: true})
@@ -151,5 +151,9 @@ export class TuiTextfieldComponent<T>
             !!this.computedFiller &&
             (!!this.input.value || !this.input.placeholder)
         );
+    }
+
+    protected get hasLabel(): boolean {
+        return Boolean(this.label?.nativeElement?.textContent?.trim());
     }
 }
