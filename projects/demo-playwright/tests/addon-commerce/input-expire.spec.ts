@@ -6,7 +6,7 @@ test.describe('InputExpire', () => {
     let expiryTextfield: Locator;
 
     test.beforeEach(async ({page}) => {
-        await tuiGoto(page, 'components/input-card/API');
+        await tuiGoto(page, 'components/input-card');
 
         const {apiPageExample} = new TuiDocumentationPagePO(page);
 
