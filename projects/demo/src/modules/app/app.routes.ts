@@ -135,6 +135,11 @@ export const ROUTES: Routes = [
         title: 'Amount',
     }),
     route({
+        path: DemoRoute.Emails,
+        loadComponent: async () => import('../pipes/emails'),
+        title: 'Emails',
+    }),
+    route({
         path: DemoRoute.Appearance,
         loadComponent: async () => import('../directives/appearance'),
         title: 'Appearance',

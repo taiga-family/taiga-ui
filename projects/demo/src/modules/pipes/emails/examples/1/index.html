@@ -1,0 +1,28 @@
+<p>
+    <tui-input
+        *ngIf="default | tuiEmails as emails"
+        [(ngModel)]="default"
+    >
+        Standard addresses
+        <ng-template
+            *ngIf="emails.length"
+            tuiDataList
+        >
+            <tui-data-list-wrapper [items]="emails" />
+        </ng-template>
+    </tui-input>
+</p>
+<p>
+    <tui-input
+        *ngIf="custom | tuiEmails: emails as emails"
+        [(ngModel)]="custom"
+    >
+        Custom addresses
+        <ng-template
+            *ngIf="emails.length"
+            tuiDataList
+        >
+            <tui-data-list-wrapper [items]="emails" />
+        </ng-template>
+    </tui-input>
+</p>

@@ -1400,6 +1400,12 @@ export const pages: TuiDocPages = [
                     'amount, money, деньги, сумма, количество, cash, копейки, рубли, доллары, евро',
                 route: DemoRoute.Amount,
             },
+            {
+                section: 'Tools',
+                title: 'Emails',
+                keywords: 'dadata, ввод, email, подсказка',
+                route: DemoRoute.Emails,
+            },
         ],
     },
     {
