@@ -6,7 +6,7 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import type {TuiBooleanHandler, TuiHandler} from '@taiga-ui/cdk';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk';
 import type {TuiSizeS} from '@taiga-ui/core';
-import {TuiFilterComponent, TuiFilterModule} from '@taiga-ui/kit';
+import {TuiFilterComponent} from '@taiga-ui/kit';
 import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 const BADGE_VALUE = 10;
@@ -65,7 +65,7 @@ describe('Filter', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [ReactiveFormsModule, NoopAnimationsModule, TuiFilterModule],
+            imports: [ReactiveFormsModule, NoopAnimationsModule, TuiFilterComponent],
             declarations: [TestComponent],
             providers: [NG_EVENT_PLUGINS],
         });

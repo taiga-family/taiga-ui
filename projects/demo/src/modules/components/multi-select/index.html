@@ -1,0 +1,269 @@
+<tui-doc-page
+    header="MultiSelect"
+    package="KIT"
+    type="components"
+>
+    <ng-template pageTab>
+        <div class="tui-space_bottom-3">
+            <code>MultiSelect</code>
+            is a textfield with a dropdown for choosing several items
+        </div>
+
+        <tui-doc-example
+            id="string-array"
+            heading="String array"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample: 'html,ts'"
+        />
+
+        <tui-doc-example
+            id="object-array"
+            heading="Custom template, async items loading"
+            [component]="2 | tuiComponent"
+            [content]="2 | tuiExample"
+        />
+
+        <tui-doc-example
+            id="sizes"
+            heading="sizes"
+            [component]="3 | tuiComponent"
+            [content]="3 | tuiExample: 'html,ts'"
+        />
+
+        <tui-doc-example
+            id="ids"
+            heading="With IDs"
+            [component]="4 | tuiComponent"
+            [content]="4 | tuiExample: 'html,ts'"
+        />
+
+        <tui-doc-example
+            id="datalist"
+            heading="DataList"
+            [component]="5 | tuiComponent"
+            [content]="5 | tuiExample: 'html,ts'"
+        />
+
+        <tui-doc-example
+            id="rtl"
+            heading="Direction: RTL"
+            [component]="6 | tuiComponent"
+            [content]="6 | tuiExample"
+        />
+
+        <tui-doc-example
+            id="virtual"
+            heading="Virtual scroll"
+            [component]="7 | tuiComponent"
+            [content]="7 | tuiExample"
+            [description]="cdkVirtualScrollDescription"
+        >
+            <ng-template #cdkVirtualScrollDescription>
+                You can use
+                <code>MultiSelect</code>
+                with
+                <code>ScrollingModule</code>
+                from
+                <a
+                    href="https://material.angular.io/cdk/scrolling/overview"
+                    rel="noreferrer"
+                    target="_blank"
+                    tuiLink
+                >
+                    &#64;angular/cdk/scrolling
+                </a>
+                .
+            </ng-template>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="options-stringify"
+            heading="Options (stringify)"
+            [component]="8 | tuiComponent"
+            [content]="8 | tuiExample: 'html,ts'"
+        />
+
+        <tui-doc-example
+            id="multiselect-inside-dialog-with-different-size"
+            heading="Multiselect inside dialog with different textfield sizes"
+            [component]="9 | tuiComponent"
+            [content]="9 | tuiExample: 'html,ts'"
+        />
+
+        <tui-doc-example
+            id="native-select"
+            heading="Native select"
+            [component]="10 | tuiComponent"
+            [content]="10 | tuiExample: 'html,ts'"
+        />
+
+        <tui-doc-example
+            id="value-content"
+            heading="Value content"
+            [component]="11 | tuiComponent"
+            [content]="11 | tuiExample"
+        />
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo [control]="control">
+            <ng-template>
+                <tui-multi-select
+                    [disabledItemHandler]="disabledItemHandler"
+                    [editable]="editable"
+                    [focusable]="focusable"
+                    [formControl]="control"
+                    [identityMatcher]="identityMatcher"
+                    [placeholder]="exampleText"
+                    [pseudoActive]="pseudoPressed"
+                    [pseudoFocus]="pseudoFocused"
+                    [pseudoHover]="pseudoHovered"
+                    [pseudoInvalid]="pseudoInvalid"
+                    [readOnly]="readOnly"
+                    [rows]="rows"
+                    [stringify]="stringify"
+                    [tagValidator]="tagValidator"
+                    [tuiDropdownAlign]="dropdownAlign"
+                    [tuiDropdownDirection]="dropdownDirection"
+                    [tuiDropdownLimitWidth]="dropdownLimitWidth"
+                    [tuiDropdownMaxHeight]="dropdownMaxHeight"
+                    [tuiDropdownMinHeight]="dropdownMinHeight"
+                    [tuiDropdownOffset]="dropdownOffset"
+                    [tuiDropdownOpen]="!!(dropdownOpen | async)"
+                    [tuiHintAppearance]="hintAppearance"
+                    [tuiHintContent]="hintContent"
+                    [tuiHintDirection]="hintDirection"
+                    [tuiTextfieldCleaner]="cleaner"
+                    [tuiTextfieldIconLeft]="iconLeft"
+                    [tuiTextfieldLabelOutside]="labelOutside"
+                    [tuiTextfieldSize]="size"
+                    [valueContent]="valueContent"
+                    [(search)]="search"
+                    (tuiDropdownOpenChange)="dropdownOpen.next($event)"
+                >
+                    Choose an account
+                    <tui-data-list-wrapper
+                        *tuiDataList
+                        tuiMultiSelectGroup
+                        [disabledItemHandler]="disabledItemHandler"
+                        [items]="items"
+                    />
+                </tui-multi-select>
+            </ng-template>
+        </tui-doc-demo>
+        <div>
+            <p>
+                Set a value with copied object from items to check
+                <code>identityMatcher</code>
+                :
+            </p>
+
+            <button
+                size="m"
+                tuiButton
+                type="button"
+                (click)="setValue()"
+            >
+                Set
+            </button>
+        </div>
+
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="disabled"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="disabled"
+            >
+                Disabled state (use
+                <code>formControl.disable()</code>
+                )
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input-output"
+                documentationPropertyName="search"
+                documentationPropertyType="string | null"
+                [(documentationPropertyValue)]="search"
+            >
+                Textfield value to subscribe on input or setting it from the outside (emits
+                <code>null</code>
+                when item from list selected)
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="disabledItemHandler"
+                documentationPropertyType="TuiBooleanHandler<T>"
+                [documentationPropertyValues]="disabledItemHandlerVariants"
+                [(documentationPropertyValue)]="disabledItemHandler"
+            >
+                Handler for deactivation some items
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="editable"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="editable"
+            >
+                Textfield can be use for typing
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="rows"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="rows"
+            >
+                A number of visible rows
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="identityMatcher"
+                documentationPropertyType="TuiIdentityMatcher"
+                [documentationPropertyValues]="identityMatcherVariants"
+                [(documentationPropertyValue)]="identityMatcher"
+            >
+                A function that compares search and value to define a match between them.
+                <strong>Must be a pure function</strong>
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="stringify"
+                documentationPropertyType="TuiStringHandler"
+                [documentationPropertyValues]="stringifyVariants"
+                [(documentationPropertyValue)]="stringify"
+            >
+                A function that transforms object into a string.
+                <code>String(value)</code>
+                by default.
+                <strong>Should be a pure function</strong>
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="valueContent"
+                documentationPropertyType="PolymorpheusContent"
+                [documentationPropertyValues]="valueContentVariants"
+                [(documentationPropertyValue)]="valueContent"
+            >
+                A template for custom view of selected value
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="tagValidator"
+                documentationPropertyType="TuiBooleanHandler<T>"
+                [documentationPropertyValues]="tagValidatorVariants"
+                [(documentationPropertyValue)]="tagValidator"
+            >
+                A function that checks that tag is valid
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="placeholder"
+                documentationPropertyType="string"
+                [(documentationPropertyValue)]="exampleText"
+            >
+                Placeholder
+            </ng-template>
+        </tui-doc-documentation>
+        <inherited-documentation [dropdown]="true" />
+    </ng-template>
+
+    <tui-setup *pageTab />
+</tui-doc-page>

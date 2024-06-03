@@ -1,0 +1,81 @@
+<tui-doc-page
+    header="DropdownSelection"
+    package="CORE"
+    type="directives"
+>
+    <ng-template pageTab>
+        <p>
+            <code>DropdownSelection</code>
+            shows dropdown with custom template on selected text
+        </p>
+
+        <tui-doc-example
+            id="selection"
+            heading="Sample"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample: 'html,ts'"
+        />
+
+        <tui-doc-example
+            id="textarea"
+            heading="textarea"
+            [component]="2 | tuiComponent"
+            [content]="2 | tuiExample"
+        />
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <p
+                tuiDropdownSelection
+                [tuiDropdown]="dropdownContent"
+                [tuiDropdownAlign]="dropdownAlign"
+                [tuiDropdownDirection]="dropdownDirection"
+                [tuiDropdownLimitWidth]="dropdownLimitWidth"
+                [tuiDropdownMaxHeight]="dropdownMaxHeight"
+                [tuiDropdownMinHeight]="dropdownMinHeight"
+                [tuiDropdownOffset]="dropdownOffset"
+                [tuiDropdownSelectionPosition]="position"
+            >
+                Select a text to
+                <strong>see a dropdown</strong>
+            </p>
+            <ng-template #dropdownContent>
+                <div class="dropdown">
+                    Here you can have any content
+                    <p>You can select a text inside a dropdown and it will not close a dropdown</p>
+                    <button
+                        tuiButton
+                        type="button"
+                    >
+                        Button
+                    </button>
+                </div>
+            </ng-template>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="tuiDropdownSelection"
+                documentationPropertyType="TuiBooleanHandler<Range>"
+            >
+                <strong>Directive selector</strong>
+                . Optional: you can also set a handler that gets
+                <code>Range</code>
+                and returns show/close dropdown
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="tuiDropdownSelectionPosition"
+                documentationPropertyType="'selection' | 'word' | 'tag'"
+                [documentationPropertyValues]="positionVariants"
+                [(documentationPropertyValue)]="position"
+            >
+                Position of dropdown near text selection
+            </ng-template>
+            <dropdown-documentation />
+        </tui-doc-documentation>
+    </ng-template>
+
+    <tui-setup *pageTab />
+</tui-doc-page>

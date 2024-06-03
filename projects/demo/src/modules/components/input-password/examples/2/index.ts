@@ -1,13 +1,15 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiHintOptionsDirective} from '@taiga-ui/core';
 import {TUI_PASSWORD_TEXTS} from '@taiga-ui/kit';
-import {tuiInputPasswordOptionsProvider} from '@taiga-ui/legacy';
+import {TuiInputPasswordModule, tuiInputPasswordOptionsProvider} from '@taiga-ui/legacy';
 import {of} from 'rxjs';
 
 @Component({
-    selector: 'tui-input-password-example-2',
+    standalone: true,
+    imports: [ReactiveFormsModule, TuiInputPasswordModule, TuiHintOptionsDirective],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
@@ -24,7 +26,7 @@ import {of} from 'rxjs';
         },
     ],
 })
-export class TuiInputPasswordExample2 {
+export default class ExampleComponent {
     protected testForm = new FormGroup({
         testValue: new FormControl('password', Validators.required),
     });

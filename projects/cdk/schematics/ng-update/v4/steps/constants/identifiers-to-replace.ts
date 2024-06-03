@@ -98,12 +98,36 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {name: 'tuiFormatPhone', moduleSpecifier: '@taiga-ui/legacy'},
     },
     {
+        from: {name: 'TuiExtractCountryCodeModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiToCountryCodePipe', moduleSpecifier: '@taiga-ui/legacy'},
+    },
+    {
+        from: {name: 'TuiIsoToCountryCodeModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiIsoToCountryCodePipe', moduleSpecifier: '@taiga-ui/legacy'},
+    },
+    {
+        from: {name: 'tuiIsoToCountryCode', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'tuiIsoToCountryCode', moduleSpecifier: '@taiga-ui/legacy'},
+    },
+    {
+        from: {name: 'tuiNotKzRegion', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'tuiNotKzRegion', moduleSpecifier: '@taiga-ui/legacy'},
+    },
+    {
+        from: {name: 'tuiGetMaxAllowedPhoneLength', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'tuiGetMaxAllowedPhoneLength', moduleSpecifier: '@taiga-ui/legacy'},
+    },
+    {
         from: {name: 'TuiMonthPipeModule', moduleSpecifier: '@taiga-ui/core'},
         to: {name: 'TuiMonthPipe', moduleSpecifier: '@taiga-ui/core'},
     },
     {
         from: {name: 'TuiDataListModule', moduleSpecifier: '@taiga-ui/core'},
         to: {name: 'TuiDataList', moduleSpecifier: '@taiga-ui/core'},
+    },
+    {
+        from: {name: 'TuiDataListWrapperModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiDataListWrapper', moduleSpecifier: '@taiga-ui/kit'},
     },
     {
         from: {name: 'TuiErrorModule', moduleSpecifier: '@taiga-ui/core'},
@@ -116,6 +140,141 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     {
         from: {name: 'TuiLoaderModule', moduleSpecifier: '@taiga-ui/core'},
         to: {name: 'TuiLoaderComponent', moduleSpecifier: '@taiga-ui/core'},
+    },
+    {
+        from: {name: 'TuiAccordionComponent', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiAccordionDirective', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {name: 'TuiAccordionModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiAccordion', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {name: 'TuiBreadcrumbsModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: [
+            {name: 'TuiBreadcrumbsComponent', moduleSpecifier: '@taiga-ui/kit'},
+            {name: 'TuiItemDirective', moduleSpecifier: '@taiga-ui/cdk'},
+        ],
+    },
+    {
+        from: {name: 'TuiCalendarMonthModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiCalendarMonthComponent', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {name: 'TuiCalendarRangeModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiCalendarRangeComponent', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {name: 'TuiCarouselModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: [
+            {name: 'TuiCarouselComponent', moduleSpecifier: '@taiga-ui/kit'},
+            {name: 'TuiItemDirective', moduleSpecifier: '@taiga-ui/cdk'},
+        ],
+    },
+    {
+        from: {name: 'TuiPushModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: [
+            {name: 'TuiPushComponent', moduleSpecifier: '@taiga-ui/kit'},
+            {name: 'TuiPushDirective', moduleSpecifier: '@taiga-ui/kit'},
+        ],
+    },
+    {
+        from: {name: 'TuiElasticContainerModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiElasticContainerComponent', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {name: 'TuiFilesModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiFiles', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {name: 'TuiFilterModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiFilterComponent', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {name: 'TuiInputInlineModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiInputInlineComponent', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {name: 'TuiIslandComponent', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiIslandDirective', moduleSpecifier: '@taiga-ui/legacy'},
+    },
+    {
+        from: {name: 'TuiIslandModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiIslandDirective', moduleSpecifier: '@taiga-ui/legacy'},
+    },
+    {
+        from: {name: 'TuiItemsWithMoreModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiItemsWithMore', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {name: 'TuiLineClampModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiLineClampComponent', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {name: 'TuiRangeModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiRangeComponent', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {name: 'TuiSliderModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiSlider', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {name: 'TuiTilesModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiTiles', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {name: 'TuiStepperModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiStepper', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {name: 'TuiTreeModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiTree', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {
+            name: 'TuiDataListDropdownManagerModule',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+        to: {
+            name: 'TuiDataListDropdownManagerDirective',
+            moduleSpecifier: '@taiga-ui/kit',
+        },
+    },
+    {
+        from: {name: 'TuiHighlightModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiHighlightDirective', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {name: 'TuiLazyLoadingModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiLazyLoadingDirective', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {name: 'TuiUnfinishedValidatorModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiUnfinishedValidatorDirective', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {name: 'TuiUnmaskHandlerModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiUnmaskHandlerDirective', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {name: 'TuiDialogFormService', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiConfirmService', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {name: 'TuiSortCountriesPipeModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiSortCountriesPipe', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {name: 'TuiStringifyContentPipeModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiStringifyContentPipe', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {name: 'TuiFilterByInputPipeModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiFilterByInputPipe', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: {name: 'TuiFieldErrorPipeModule', moduleSpecifier: '@taiga-ui/kit'},
+        to: {name: 'TuiFieldErrorPipe', moduleSpecifier: '@taiga-ui/kit'},
     },
     {
         from: {name: 'TuiThumbnailCardModule', moduleSpecifier: '@taiga-ui/experimental'},

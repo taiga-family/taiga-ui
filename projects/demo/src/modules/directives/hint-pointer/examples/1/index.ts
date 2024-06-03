@@ -1,10 +1,12 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiHint} from '@taiga-ui/core';
 
 @Component({
-    selector: 'tui-hint-pointer-example-1',
+    standalone: true,
+    imports: [TuiHint],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,
 })
-export class TuiHintPointerExample1 {}
+export default class ExampleComponent {}

@@ -2,18 +2,25 @@ import {Component} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiItemDirective} from '@taiga-ui/cdk';
 import {TuiButtonDirective, TuiDialogModule, TuiLinkDirective} from '@taiga-ui/core';
-import {TuiCarouselModule, TuiPaginationModule} from '@taiga-ui/kit';
+import {
+    TuiCarouselButtonsDirective,
+    TuiCarouselComponent,
+    TuiPaginationModule,
+} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
     imports: [
         TuiButtonDirective,
         TuiDialogModule,
-        TuiCarouselModule,
+        TuiCarouselComponent,
         TuiLinkDirective,
         RouterLink,
         TuiPaginationModule,
+        TuiCarouselButtonsDirective,
+        TuiItemDirective,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

@@ -4,7 +4,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiSetupComponent} from '@demo/utils';
 import {TuiAddonDoc, type TuiDocExample} from '@taiga-ui/addon-doc';
 import {TUI_EXPAND_LOADED, type TuiSizeS} from '@taiga-ui/core';
-import {TuiAccordionModule} from '@taiga-ui/kit';
+import {TuiAccordion} from '@taiga-ui/kit';
 import {timer} from 'rxjs';
 
 import {TuiAccordionExample1} from './examples/1';
@@ -17,7 +17,7 @@ import {TuiAccordionExample5} from './examples/5';
     standalone: true,
     imports: [
         TuiAddonDoc,
-        TuiAccordionModule,
+        TuiAccordion,
         TuiAccordionExample1,
         TuiAccordionExample2,
         TuiAccordionExample3,

@@ -1,24 +1,32 @@
-import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
-import {tuiAsDataListAccessor, TuiTextfieldSizeDirective} from '@taiga-ui/core';
-import {TUI_ITEMS_HANDLERS} from '@taiga-ui/kit/tokens';
+import {NgForOf, NgIf} from '@angular/common';
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import {TuiElementDirective} from '@taiga-ui/cdk';
+import {tuiAsDataListAccessor, TuiDataList, TuiLoaderComponent} from '@taiga-ui/core';
+import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
-import {AbstractTuiDataListWrapper} from './data-list-wrapper';
+import {TuiDataListWrapperComponent} from './data-list-wrapper.component';
 
 @Component({
+    standalone: true,
     selector: 'tui-data-list-wrapper[labels]',
+    imports: [
+        NgIf,
+        NgForOf,
+        PolymorpheusModule,
+        TuiDataList,
+        TuiElementDirective,
+        TuiLoaderComponent,
+    ],
     templateUrl: './data-list-group-wrapper.template.html',
     styleUrls: ['./data-list-wrapper.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiAsDataListAccessor(TuiDataListGroupWrapperComponent)],
 })
-export class TuiDataListGroupWrapperComponent<T> extends AbstractTuiDataListWrapper<T> {
+export class TuiDataListGroupWrapperComponent<T> extends TuiDataListWrapperComponent<T> {
     @Input()
-    public items: readonly T[][] | null = [];
+    // @ts-ignore
+    public override items: readonly T[][] | null = [];
 
     @Input()
     public labels: readonly string[] = [];
-
-    constructor() {
-        super(inject(TUI_ITEMS_HANDLERS), inject(TuiTextfieldSizeDirective)?.size || 'm');
-    }
 }

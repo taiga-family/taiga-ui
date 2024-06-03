@@ -2,13 +2,14 @@ import {DOCUMENT} from '@angular/common';
 import {Directive, EventEmitter, inject, Output} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {tuiClamp, tuiInjectElement, tuiRound, tuiTypedFromEvent} from '@taiga-ui/cdk';
-import {TUI_FLOATING_PRECISION} from '@taiga-ui/kit/constants';
+import {TUI_FLOATING_PRECISION} from '@taiga-ui/kit/components/slider';
 import {filter, map, merge, repeat, startWith, switchMap, takeUntil, tap} from 'rxjs';
 
 import {TuiRangeComponent} from './range.component';
 
 @Directive({
-    selector: 'tui-range',
+    standalone: true,
+    selector: 'tui-range:is(never)',
 })
 export class TuiRangeChangeDirective {
     private readonly doc = inject(DOCUMENT);

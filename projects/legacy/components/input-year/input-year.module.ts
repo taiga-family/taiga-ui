@@ -9,7 +9,6 @@ import {
     TuiTextfieldControllerModule,
     TuiTextfieldLegacyComponent,
 } from '@taiga-ui/core';
-import {TuiToYearPipeModule} from '@taiga-ui/kit';
 
 import {TuiInputYearComponent} from './input-year.component';
 import {TuiInputYearDirective} from './input-year.directive';
@@ -23,7 +22,6 @@ import {TuiInputYearDirective} from './input-year.directive';
         TuiScrollbarComponent,
         TuiCalendarYearComponent,
         TuiTextfieldControllerModule,
-        TuiToYearPipeModule,
     ],
     declarations: [TuiInputYearComponent, TuiInputYearDirective],
     exports: [TuiInputYearComponent, TuiInputYearDirective, TuiTextfieldLegacyComponent],

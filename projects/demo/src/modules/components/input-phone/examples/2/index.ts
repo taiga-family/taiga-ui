@@ -1,14 +1,17 @@
+import {JsonPipe} from '@angular/common';
 import {Component} from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiInputPhoneModule} from '@taiga-ui/legacy';
 
 @Component({
-    selector: 'tui-input-phone-example-2',
+    standalone: true,
+    imports: [TuiInputPhoneModule, ReactiveFormsModule, JsonPipe],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class TuiInputPhoneExample2 {
+export default class ExampleComponent {
     protected readonly control = new FormControl('', Validators.minLength(12));
 }

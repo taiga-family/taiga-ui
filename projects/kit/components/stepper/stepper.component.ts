@@ -1,3 +1,4 @@
+import {AsyncPipe, NgIf} from '@angular/common';
 import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
@@ -31,10 +32,12 @@ import {TUI_ANIMATIONS_SPEED, tuiGetDuration} from '@taiga-ui/core';
 import type {Observable} from 'rxjs';
 import {delay} from 'rxjs';
 
-import {TuiStepComponent} from './step/step.component';
+import {TuiStepComponent} from './step.component';
 
 @Component({
+    standalone: true,
     selector: 'tui-stepper, nav[tuiStepper]',
+    imports: [AsyncPipe, NgIf],
     templateUrl: './stepper.template.html',
     styleUrls: ['./stepper.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

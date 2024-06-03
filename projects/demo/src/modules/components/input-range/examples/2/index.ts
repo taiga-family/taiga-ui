@@ -1,11 +1,13 @@
 import {Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {tuiNumberFormatProvider} from '@taiga-ui/core';
+import {tuiNumberFormatProvider, TuiTextfieldControllerModule} from '@taiga-ui/core';
+import {TuiInputRangeModule} from '@taiga-ui/legacy';
 
 @Component({
-    selector: 'tui-input-range-example-2',
+    standalone: true,
+    imports: [TuiInputRangeModule, ReactiveFormsModule, TuiTextfieldControllerModule],
     templateUrl: './index.html',
     styles: [
         `
@@ -24,7 +26,7 @@ import {tuiNumberFormatProvider} from '@taiga-ui/core';
         }),
     ],
 })
-export class TuiInputRangeExample2 {
+export default class ExampleComponent {
     protected readonly max = 50_000_001;
     protected readonly min = 5_001;
 

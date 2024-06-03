@@ -24,6 +24,7 @@ import {
 } from 'rxjs';
 
 @Directive({
+    standalone: true,
     selector: 'tui-data-list[tuiDataListDropdownManager]',
 })
 export class TuiDataListDropdownManagerDirective implements AfterViewInit {

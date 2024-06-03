@@ -2,8 +2,4 @@ import {TuiContentContainerComponentHarness} from '@taiga-ui/testing/utils';
 
 export class TuiAccordionHarness extends TuiContentContainerComponentHarness {
     public static hostSelector = 'tui-accordion';
-
-    public async hasRoundedCorners(): Promise<boolean> {
-        return (await this.locatorFor('.t-group')()).hasClass('tui-group_rounded');
-    }
 }

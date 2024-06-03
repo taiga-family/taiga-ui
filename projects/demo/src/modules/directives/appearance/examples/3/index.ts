@@ -1,12 +1,14 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiAppearanceDirective} from '@taiga-ui/core';
 
 @Component({
-    selector: 'tui-appearance-example-3',
+    standalone: true,
+    imports: [TuiAppearanceDirective],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiAppearanceExample3 {}
+export default class ExampleComponent {}

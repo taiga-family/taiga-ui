@@ -1,15 +1,24 @@
 import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiHintOptionsDirective, TuiTextfieldControllerModule} from '@taiga-ui/core';
+import {TuiTextareaModule} from '@taiga-ui/legacy';
 
 @Component({
-    selector: 'tui-textarea-example-6',
+    standalone: true,
+    imports: [
+        TuiTextareaModule,
+        TuiHintOptionsDirective,
+        FormsModule,
+        TuiTextfieldControllerModule,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiTextareaExample6 {
+export default class ExampleComponent {
     protected value =
         'مونتى پايثون و ساعات معروفين انهم ذى پايثونز كانو مجموعة كوميديا سرياليه من بريطانيا';
 }

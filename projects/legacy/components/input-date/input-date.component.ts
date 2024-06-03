@@ -45,9 +45,8 @@ import {
     TUI_TEXTFIELD_SIZE,
     TuiPrimitiveTextfieldComponent,
 } from '@taiga-ui/core';
-import type {TuiInputDateOptions, TuiNamedDay} from '@taiga-ui/kit';
+import type {TuiInputDateOptions} from '@taiga-ui/kit';
 import {
-    TUI_DATE_MODE_MASKITO_ADAPTER,
     TUI_DATE_TEXTS,
     TUI_DATE_VALUE_TRANSFORMER,
     TUI_INPUT_DATE_OPTIONS,
@@ -55,6 +54,8 @@ import {
     TUI_MOBILE_CALENDAR_PROVIDER,
     tuiDateStreamWithTransformer,
 } from '@taiga-ui/kit';
+import type {TuiNamedDay} from '@taiga-ui/legacy/classes';
+import {TUI_DATE_MODE_MASKITO_ADAPTER} from '@taiga-ui/legacy/utils';
 import type {Observable} from 'rxjs';
 import {map} from 'rxjs';
 

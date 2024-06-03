@@ -1,19 +1,23 @@
+import {AsyncPipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component, HostListener, inject} from '@angular/core';
 import type {TuiPopover} from '@taiga-ui/cdk';
 import {
     TUI_ANIMATIONS_SPEED,
     TUI_CLOSE_WORD,
     TUI_COMMON_ICONS,
+    TuiButtonDirective,
     tuiFadeIn,
     tuiSlideInTop,
     tuiToAnimationOptions,
 } from '@taiga-ui/core';
-import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
+import {POLYMORPHEUS_CONTEXT, PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import type {TuiPdfViewerOptions} from './pdf-viewer.options';
 
 @Component({
+    standalone: true,
     selector: 'tui-pdf-viewer',
+    imports: [PolymorpheusModule, TuiButtonDirective, AsyncPipe],
     templateUrl: './pdf-viewer.template.html',
     styleUrls: ['./pdf-viewer.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

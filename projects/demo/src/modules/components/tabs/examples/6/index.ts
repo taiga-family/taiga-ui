@@ -1,12 +1,15 @@
 import {Component} from '@angular/core';
+import {RouterLink, RouterLinkActive} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiTabDirective, TuiTabsVerticalDirective} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-tabs-example-6',
+    standalone: true,
+    imports: [TuiTabsVerticalDirective, RouterLink, RouterLinkActive, TuiTabDirective],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiTabsExample6 {}
+export default class ExampleComponent {}

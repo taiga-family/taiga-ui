@@ -1,15 +1,26 @@
 import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiDataListDirective, TuiTextfieldControllerModule} from '@taiga-ui/core';
+import {TuiDataListWrapperComponent} from '@taiga-ui/kit';
+import {TuiMultiSelectModule} from '@taiga-ui/legacy';
 
 @Component({
-    selector: 'tui-multi-select-example-6',
+    standalone: true,
+    imports: [
+        TuiMultiSelectModule,
+        TuiTextfieldControllerModule,
+        FormsModule,
+        TuiDataListWrapperComponent,
+        TuiDataListDirective,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiMultiSelectExample6 {
+export default class ExampleComponent {
     protected readonly items: readonly string[] = [
         'گراهام چپمن',
         'جان کلیز',

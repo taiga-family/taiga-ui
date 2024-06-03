@@ -5,7 +5,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAxesComponent, TuiBarChartComponent} from '@taiga-ui/addon-charts';
 import type {TuiContext} from '@taiga-ui/cdk';
 import {tuiFormatNumber, TuiHint} from '@taiga-ui/core';
-import {TuiDataListWrapperModule} from '@taiga-ui/kit';
+import {TuiDataListWrapper} from '@taiga-ui/kit';
 import {TuiSelectModule} from '@taiga-ui/legacy';
 
 @Component({
@@ -15,7 +15,7 @@ import {TuiSelectModule} from '@taiga-ui/legacy';
         TuiBarChartComponent,
         TuiSelectModule,
         FormsModule,
-        TuiDataListWrapperModule,
+        TuiDataListWrapper,
         TuiHint,
         TuiAxesComponent,
     ],

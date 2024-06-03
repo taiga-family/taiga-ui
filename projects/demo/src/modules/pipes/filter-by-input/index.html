@@ -1,0 +1,32 @@
+<tui-doc-page
+    header="FilterByInput"
+    package="KIT"
+    type="pipes"
+>
+    <ng-template pageTab>
+        Pipe for filtering an array by value entered in a textfield
+
+        <tui-doc-example
+            id="base"
+            heading="Basic"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample: 'html,ts'"
+        />
+
+        <tui-doc-example
+            id="matcher"
+            heading="Custom matcher"
+            [component]="2 | tuiComponent"
+            [content]="2 | tuiExample: 'html,ts'"
+        />
+
+        <tui-doc-example
+            id="multi"
+            heading="Multiselect"
+            [component]="3 | tuiComponent"
+            [content]="3 | tuiExample: 'html,ts'"
+        />
+    </ng-template>
+
+    <tui-setup *pageTab="'Setup'" />
+</tui-doc-page>

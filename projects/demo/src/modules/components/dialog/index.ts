@@ -12,7 +12,7 @@ import {
     TuiLinkDirective,
     TuiNotificationComponent,
 } from '@taiga-ui/core';
-import {TuiAccordionModule} from '@taiga-ui/kit';
+import {TuiAccordion} from '@taiga-ui/kit';
 import {switchMap} from 'rxjs';
 
 @Component({
@@ -23,7 +23,7 @@ import {switchMap} from 'rxjs';
         RouterLink,
         TuiNotificationComponent,
         TuiButtonDirective,
-        TuiAccordionModule,
+        TuiAccordion,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

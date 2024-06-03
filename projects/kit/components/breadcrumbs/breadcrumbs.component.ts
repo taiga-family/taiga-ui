@@ -1,3 +1,4 @@
+import {AsyncPipe, NgForOf, NgIf, NgTemplateOutlet} from '@angular/common';
 import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
@@ -9,19 +10,22 @@ import {
     TemplateRef,
 } from '@angular/core';
 import {EMPTY_QUERY, TuiItemDirective} from '@taiga-ui/cdk';
-import {tuiLinkOptionsProvider} from '@taiga-ui/core';
+import {TuiIconComponent, tuiLinkOptionsProvider} from '@taiga-ui/core';
 
 import {TUI_BREADCRUMBS_OPTIONS} from './breadcrumbs.options';
 
+/* eslint-disable @typescript-eslint/member-ordering */
 @Component({
+    standalone: true,
     selector: 'tui-breadcrumbs',
+    imports: [NgIf, NgForOf, AsyncPipe, NgTemplateOutlet, TuiIconComponent],
     templateUrl: './breadcrumbs.template.html',
     styleUrls: ['./breadcrumbs.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiLinkOptionsProvider({appearance: 'icon'})],
 })
 export class TuiBreadcrumbsComponent {
-    private readonly options = inject(TUI_BREADCRUMBS_OPTIONS);
+    protected readonly options = inject(TUI_BREADCRUMBS_OPTIONS);
 
     @Input()
     @HostBinding('attr.data-size')
@@ -30,8 +34,4 @@ export class TuiBreadcrumbsComponent {
     @ContentChildren(TuiItemDirective, {read: TemplateRef})
     protected readonly items: QueryList<TemplateRef<Record<string, unknown>>> =
         EMPTY_QUERY;
-
-    public get icon(): string {
-        return this.options.icon;
-    }
 }

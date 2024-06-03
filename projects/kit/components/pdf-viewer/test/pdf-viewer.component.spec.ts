@@ -8,7 +8,6 @@ import {TuiRootComponent} from '@taiga-ui/core';
 import {TuiPageObject} from '@taiga-ui/testing';
 import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
-import {TuiPdfViewerModule} from '../pdf-viewer.module';
 import {tuiPdfViewerOptionsProvider} from '../pdf-viewer.options';
 import {TuiPdfViewerService} from '../pdf-viewer.service';
 
@@ -33,7 +32,7 @@ describe('Pdf Viewer with TUI_PDF_VIEWER_OPTIONS', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [NoopAnimationsModule, TuiRootComponent, TuiPdfViewerModule],
+            imports: [NoopAnimationsModule, TuiRootComponent],
             declarations: [TestComponent],
             providers: [tuiPdfViewerOptionsProvider({label}), NG_EVENT_PLUGINS],
         });

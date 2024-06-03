@@ -1,17 +1,26 @@
 import {Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
+import {TuiButtonDirective} from '@taiga-ui/core';
 import type {TuiInputComponent} from '@taiga-ui/legacy';
+import {TuiInputModule} from '@taiga-ui/legacy';
 
 @Component({
-    selector: 'tui-active-zone-example-1',
+    standalone: true,
+    imports: [
+        TuiActiveZoneDirective,
+        TuiInputModule,
+        ReactiveFormsModule,
+        TuiButtonDirective,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiActiveZoneExample1 {
+export default class ExampleComponent {
     protected readonly control = new FormControl('');
 
     protected childActive = false;

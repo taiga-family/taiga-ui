@@ -1,0 +1,167 @@
+<tui-doc-page
+    header="InputTime"
+    package="KIT"
+    type="components"
+>
+    <ng-template pageTab>
+        <p>
+            <code>InputTime</code>
+            allows input time in HH:MM format
+        </p>
+
+        <tui-doc-example
+            id="base"
+            heading="Basic"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample: 'html,ts'"
+        />
+
+        <tui-doc-example
+            id="dropdown"
+            description="You can set items for dropdown"
+            heading="Dropdown"
+            [component]="2 | tuiComponent"
+            [content]="2 | tuiExample: 'html,ts'"
+        />
+
+        <tui-doc-example
+            id="options"
+            heading="Options (icon)"
+            [component]="3 | tuiComponent"
+            [content]="3 | tuiExample: 'html,ts'"
+        />
+
+        <tui-doc-example
+            id="options-max"
+            heading="Options (max values)"
+            [component]="4 | tuiComponent"
+            [content]="4 | tuiExample: 'html,ts'"
+        />
+
+        <tui-doc-example
+            id="options-max-and-postfix"
+            heading="Options (max values and postfix)"
+            [component]="5 | tuiComponent"
+            [content]="5 | tuiExample: 'html,ts'"
+        />
+
+        <tui-doc-example
+            id="native"
+            heading="Native input time"
+            [component]="6 | tuiComponent"
+            [content]="6 | tuiExample: 'html,ts'"
+        >
+            <tui-notification class="tui-space_bottom-5">
+                Please note that iOS Safari doesn't support native picker in modes other than HH:MM
+            </tui-notification>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo [control]="control">
+            <ng-template>
+                <tui-input-time
+                    [disabledItemHandler]="disabledItemHandler"
+                    [focusable]="focusable"
+                    [formControl]="control"
+                    [items]="items"
+                    [itemSize]="itemSize"
+                    [mode]="mode"
+                    [pseudoFocus]="pseudoFocused"
+                    [pseudoHover]="pseudoHovered"
+                    [pseudoInvalid]="pseudoInvalid"
+                    [readOnly]="readOnly"
+                    [strict]="strict"
+                    [style.text-align]="textAlign"
+                    [tuiDropdownAlign]="dropdownAlign"
+                    [tuiDropdownDirection]="dropdownDirection"
+                    [tuiDropdownLimitWidth]="dropdownLimitWidth"
+                    [tuiDropdownMaxHeight]="dropdownMaxHeight"
+                    [tuiDropdownMinHeight]="dropdownMinHeight"
+                    [tuiDropdownOffset]="dropdownOffset"
+                    [tuiHintAppearance]="hintAppearance"
+                    [tuiHintContent]="hintContent"
+                    [tuiHintDirection]="hintDirection"
+                    [tuiTextfieldCleaner]="cleaner"
+                    [tuiTextfieldLabelOutside]="labelOutside"
+                    [tuiTextfieldPostfix]="postfix"
+                    [tuiTextfieldPrefix]="prefix"
+                    [tuiTextfieldSize]="size"
+                >
+                    Input time
+                </tui-input-time>
+            </ng-template>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="disabled"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="disabled"
+            >
+                Disabled state (use
+                <code>formControl.disable()</code>
+                )
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="disabledItemHandler"
+                documentationPropertyType="TuiBooleanHandler<TuiTime>"
+                [documentationPropertyValues]="disabledItemHandlerVariants"
+                [(documentationPropertyValue)]="disabledItemHandler"
+            >
+                Handler to disable some items
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="items"
+                documentationPropertyType="ReadonlyArray<TuiTime>"
+                [documentationPropertyValues]="itemsVariants"
+                [(documentationPropertyValue)]="items"
+            >
+                Items to choose
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="itemSize"
+                documentationPropertyType="TuiSizeS | TuiSizeL"
+                [documentationPropertyValues]="itemSizeVariants"
+                [(documentationPropertyValue)]="itemSize"
+            >
+                Item size
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="strict"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="strict"
+            >
+                Only
+                <code>items</code>
+                are allowed
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="mode"
+                documentationPropertyType="TuiTimeMode"
+                [documentationPropertyValues]="modeVariants"
+                [(documentationPropertyValue)]="mode"
+            >
+                Modes for seconds and ms support
+            </ng-template>
+        </tui-doc-documentation>
+        <inherited-documentation />
+        <tui-doc-documentation heading="CSS customization">
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="style.text-align"
+                documentationPropertyType="string"
+                [documentationPropertyValues]="textAlignVariants"
+                [(documentationPropertyValue)]="textAlign"
+            >
+                Custom align content by text-align
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <tui-setup *pageTab />
+</tui-doc-page>

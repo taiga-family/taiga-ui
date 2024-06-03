@@ -7,6 +7,7 @@ import {
 } from '@taiga-ui/core';
 
 @Directive({
+    standalone: true,
     selector: '[tuiLineClampPosition]',
     providers: [tuiAsPositionAccessor(TuiLineClampPositionDirective)],
 })

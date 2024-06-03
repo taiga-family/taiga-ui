@@ -1,14 +1,46 @@
+import {NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {
+    TuiButtonDirective,
+    TuiDataListComponent,
+    TuiDropdownDirective,
+    TuiDropdownOpenDirective,
+    TuiDropdownOptionsDirective,
+    TuiOptGroupDirective,
+    TuiOptionComponent,
+} from '@taiga-ui/core';
+import {
+    TuiCheckboxComponent,
+    TuiChevronDirective,
+    TuiSwitchComponent,
+} from '@taiga-ui/kit';
+import {TuiMultiSelectModule} from '@taiga-ui/legacy';
 
 @Component({
-    selector: 'tui-data-list-example-3',
+    standalone: true,
+    imports: [
+        TuiButtonDirective,
+        TuiChevronDirective,
+        TuiDropdownDirective,
+        TuiDropdownOptionsDirective,
+        TuiDropdownOpenDirective,
+        TuiDataListComponent,
+        TuiOptGroupDirective,
+        TuiMultiSelectModule,
+        FormsModule,
+        NgForOf,
+        TuiOptionComponent,
+        TuiCheckboxComponent,
+        TuiSwitchComponent,
+    ],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class TuiDataListExample3 {
+export default class ExampleComponent {
     protected first = false;
     protected second = true;
     protected control = false;

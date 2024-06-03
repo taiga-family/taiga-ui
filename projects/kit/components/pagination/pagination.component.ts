@@ -19,7 +19,6 @@ import {
 import type {TuiHorizontalDirection, TuiSizeL, TuiSizeS, TuiSizeXS} from '@taiga-ui/core';
 import {TUI_SPIN_ICONS} from '@taiga-ui/core';
 import {TUI_PAGINATION_TEXTS} from '@taiga-ui/kit/tokens';
-import {tuiHorizontalDirectionToNumber} from '@taiga-ui/kit/utils/math';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 const DOTS_LENGTH = 1;
@@ -281,5 +280,14 @@ export class TuiPaginationComponent {
 
         this.index = index;
         this.indexChange.emit(index);
+    }
+}
+
+function tuiHorizontalDirectionToNumber(direction: TuiHorizontalDirection): -1 | 1 {
+    switch (direction) {
+        case 'left':
+            return -1;
+        case 'right':
+            return 1;
     }
 }

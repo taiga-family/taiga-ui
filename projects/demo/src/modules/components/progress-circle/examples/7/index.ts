@@ -1,12 +1,15 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiRepeatTimesDirective} from '@taiga-ui/cdk';
+import {TuiProgressModule} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-progress-circle-example-7',
+    standalone: true,
+    imports: [TuiProgressModule, TuiRepeatTimesDirective],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiProgressCircleExample7 {}
+export default class ExampleComponent {}

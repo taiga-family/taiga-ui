@@ -1,16 +1,43 @@
+import {NgForOf, NgIf} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {tuiIsString} from '@taiga-ui/cdk';
+import {TuiActiveZoneDirective, tuiIsString, TuiItemDirective} from '@taiga-ui/cdk';
+import {
+    TuiDataListComponent,
+    TuiDropdownDirective,
+    TuiDropdownOpenDirective,
+    TuiIconComponent,
+    TuiOptionComponent,
+} from '@taiga-ui/core';
+import {
+    TuiChevronDirective,
+    TuiTabDirective,
+    TuiTabsWithMoreComponent,
+} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-tabs-example-3',
+    standalone: true,
+    imports: [
+        TuiTabsWithMoreComponent,
+        TuiItemDirective,
+        NgForOf,
+        NgIf,
+        TuiTabDirective,
+        TuiChevronDirective,
+        TuiDropdownDirective,
+        TuiDropdownOpenDirective,
+        TuiDataListComponent,
+        TuiActiveZoneDirective,
+        TuiOptionComponent,
+        TuiIconComponent,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiTabsExample3 {
+export default class ExampleComponent {
     protected open = false;
     protected readonly collaborators = ['Carol Cleveland', 'Neil Innes'];
 

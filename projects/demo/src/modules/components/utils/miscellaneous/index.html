@@ -1,0 +1,62 @@
+<tui-doc-page
+    header="Miscellaneous"
+    package="CDK"
+    type="components/utils"
+>
+    <ng-template pageTab>
+        <p>Some utils to simplify the development process</p>
+
+        <tui-doc-example
+            id="assert"
+            description="Logs assert into console in dev mode"
+            heading="assert"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample: 'html,ts'"
+        />
+
+        <tui-doc-example
+            id="flat-length"
+            description="Calculates a length of elements of two dimensional array"
+            heading="flatLength"
+            [component]="2 | tuiComponent"
+            [content]="2 | tuiExample: 'html,ts'"
+        />
+
+        <tui-doc-example
+            id="get-payment-system"
+            description="Card number to its payment system"
+            heading="getPaymentSystem"
+            [component]="3 | tuiComponent"
+            [content]="3 | tuiExample"
+        />
+
+        <tui-doc-example
+            id="is-present"
+            description="Checks value not to be null or undefined"
+            heading="isPresent"
+            [component]="4 | tuiComponent"
+            [content]="4 | tuiExample"
+        />
+
+        <tui-doc-example
+            id="mark-control-as-touched-and-validate"
+            description="Recursively marks form control as touched and triggers validation"
+            heading="markControlAsTouchedAndValidate"
+            [component]="5 | tuiComponent"
+            [content]="5 | tuiExample: 'html,ts'"
+        />
+    </ng-template>
+
+    <ng-template pageTab="Setup">
+        <ol class="tui-list tui-list_ordered">
+            <li class="tui-list__item">
+                <p>Import into component and use:</p>
+
+                <tui-doc-code
+                    filename="my.component.ts"
+                    [code]="component"
+                />
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

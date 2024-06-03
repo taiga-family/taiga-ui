@@ -13,11 +13,11 @@ import {TuiDocDocumentationPropertyConnectorDirective} from '@taiga-ui/addon-doc
 import {tuiProvide} from '@taiga-ui/cdk';
 import type {TuiHintOptions} from '@taiga-ui/core';
 import {TuiErrorComponent, TuiHint, TuiTextfieldControllerModule} from '@taiga-ui/core';
-import {TuiAccordionModule, TuiFieldErrorPipeModule} from '@taiga-ui/kit';
+import {TuiAccordion, TuiFieldErrorPipe} from '@taiga-ui/kit';
 
+import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
 import {AbstractExampleTuiControl} from '../abstract/control';
-import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
-import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
+import {InheritedDocumentationComponent} from '../abstract/inherited-documentation';
 
 @Component({
     standalone: true,
@@ -30,9 +30,9 @@ import {InheritedDocumentationModule} from '../abstract/inherited-documentation/
         TuiTextfieldControllerModule,
         TuiInputCVCComponent,
         TuiErrorComponent,
-        TuiFieldErrorPipeModule,
-        TuiAccordionModule,
-        InheritedDocumentationModule,
+        TuiFieldErrorPipe,
+        TuiAccordion,
+        InheritedDocumentationComponent,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

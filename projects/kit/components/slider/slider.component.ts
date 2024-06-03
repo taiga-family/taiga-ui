@@ -16,6 +16,7 @@ import {TuiSliderKeyStepsDirective} from './helpers/slider-key-steps.directive';
 import {TUI_SLIDER_OPTIONS} from './slider.options';
 
 @Component({
+    standalone: true,
     /**
      * We have to call our component as `<input tuiSlider type="range" ... />`
      * because otherwise built-in angular

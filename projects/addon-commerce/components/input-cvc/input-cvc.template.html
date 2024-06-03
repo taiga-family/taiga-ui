@@ -1,5 +1,4 @@
 <tui-primitive-textfield
-    tuiValueAccessor
     class="t-input"
     [disabled]="disabled"
     [focusable]="focusable"
@@ -17,7 +16,7 @@
     <ng-content />
     <input
         inputmode="numeric"
-        tuiTextfield
+        tuiTextfieldLegacy
         [autocomplete]="autocomplete"
         [class.t-input_hidden]="hidden"
         [placeholder]="computedPlaceholder"

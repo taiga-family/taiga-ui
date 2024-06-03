@@ -3,16 +3,31 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiNativeFocusableElement} from '@taiga-ui/cdk';
 import {AbstractTuiControl} from '@taiga-ui/cdk';
-import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/core';
+import {
+    TuiHintDirective,
+    TuiPrimitiveTextfieldComponent,
+    TuiPrimitiveTextfieldModule,
+    TuiSvgComponent,
+    TuiTextfieldControllerModule,
+    TuiWrapperModule,
+} from '@taiga-ui/core';
 
 @Component({
+    standalone: true,
     selector: 'tui-primitive-textfield-example-1',
+    imports: [
+        TuiPrimitiveTextfieldModule,
+        TuiTextfieldControllerModule,
+        TuiSvgComponent,
+        TuiWrapperModule,
+        TuiHintDirective,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiPrimitiveTextfieldExample1 extends AbstractTuiControl<string> {
+export default class ExampleComponent extends AbstractTuiControl<string> {
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
 

@@ -18,7 +18,7 @@ import {TUI_TREE_NODE} from '../../misc/tree.tokens';
 import {TuiTreeItemComponent} from '../tree-item/tree-item.component';
 
 @Component({
-    selector: 'tui-tree[value]',
+    selector: 'tui-tree',
     templateUrl: './tree.template.html',
     styleUrls: ['./tree.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -28,7 +28,7 @@ import {TuiTreeItemComponent} from '../tree-item/tree-item.component';
 export class TuiTreeComponent<T> implements DoCheck {
     private readonly check$ = new Subject<void>();
 
-    @Input()
+    @Input({required: true})
     public value!: T;
 
     @ViewChild(forwardRef(() => TuiTreeItemComponent))

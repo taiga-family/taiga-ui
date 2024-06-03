@@ -1,0 +1,164 @@
+<tui-doc-page
+    header="Textarea"
+    package="KIT"
+    type="components"
+>
+    <ng-template pageTab>
+        <p>Textfield for multiline input. It can grow with its content.</p>
+
+        <tui-doc-example
+            id="base"
+            heading="A simple field and expandable"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample: 'html,ts'"
+        />
+
+        <tui-doc-example
+            id="large"
+            heading="Custom size"
+            [component]="2 | tuiComponent"
+            [content]="2 | tuiExample"
+        />
+
+        <tui-doc-example
+            id="label-outside"
+            heading="With label outside"
+            [component]="3 | tuiComponent"
+            [content]="3 | tuiExample: 'html,ts'"
+        />
+
+        <tui-doc-example
+            id="extra-chars-highlight"
+            heading="With extra characters highlight"
+            [component]="4 | tuiComponent"
+            [content]="4 | tuiExample"
+        />
+
+        <tui-doc-example
+            id="native"
+            heading="Native attributes"
+            [component]="5 | tuiComponent"
+            [content]="5 | tuiExample: 'html,ts'"
+        >
+            <tui-notification class="tui-space_bottom-4">
+                If you need to set some attributes or listen to events on native
+                <code>textarea</code>
+                , you can put it inside with
+                <code>Textfield</code>
+                directive as shown below
+            </tui-notification>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="rtl"
+            heading="Direction: RTL"
+            [component]="6 | tuiComponent"
+            [content]="6 | tuiExample"
+        />
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-textarea
+                [expandable]="expandable"
+                [focusable]="focusable"
+                [formControl]="control"
+                [maxLength]="maxLength"
+                [pseudoFocus]="pseudoFocused"
+                [pseudoHover]="pseudoHovered"
+                [pseudoInvalid]="pseudoInvalid"
+                [readOnly]="readOnly"
+                [rows]="rows"
+                [style.max-width.rem]="20"
+                [tuiHintAppearance]="hintAppearance"
+                [tuiHintContent]="hintContent"
+                [tuiHintDirection]="hintDirection"
+                [tuiTextfieldCleaner]="cleaner"
+                [tuiTextfieldCustomContent]="customContent"
+                [tuiTextfieldIcon]="icon"
+                [tuiTextfieldIconLeft]="iconLeft"
+                [tuiTextfieldLabelOutside]="labelOutside"
+                [tuiTextfieldSize]="size"
+            >
+                Textfield for multiline input. It can grow with its content.
+                <textarea
+                    tuiTextfieldLegacy
+                    [placeholder]="placeholder"
+                ></textarea>
+            </tui-textarea>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="disabled"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="disabled"
+            >
+                Disabled state (formControl.disable())
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="expandable"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="expandable"
+            >
+                Control height can be expanded to show all content
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="maxLength"
+                documentationPropertyType="number"
+                [documentationPropertyValues]="maxLengthVariants"
+                [(documentationPropertyValue)]="maxLength"
+            >
+                Use maxLength for highlighting extra characters. If you want to limit the number of characters, add
+                <code tuiText="<textarea tuiTextfieldLegacy></textarea>"></code>
+                with native maxlength attribute.
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="rows"
+                documentationPropertyType="number"
+                [documentationPropertyValues]="rowsVariants"
+                [(documentationPropertyValue)]="rows"
+            >
+                A number of visible rows in
+                <code>expandable</code>
+                mode
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="tuiTextfieldIcon"
+                documentationPropertyType="PolymorpheusContent"
+                [documentationPropertyValues]="iconVariants"
+                [(documentationPropertyValue)]="icon"
+            >
+                Icon content. If content is a string, it is used as stringified svg or a name of an icon
+            </ng-template>
+        </tui-doc-documentation>
+        <inherited-documentation />
+        <tui-doc-documentation heading="Native <textarea> inside TuiTextarea">
+            <p>
+                Learn more how to set some attributes or listen to events on native textarea in this
+                <a
+                    fragment="native"
+                    routerLink="/components/textarea"
+                    tuiLink
+                >
+                    example
+                </a>
+            </p>
+
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="placeholder"
+                documentationPropertyType="string"
+                [(documentationPropertyValue)]="placeholder"
+            >
+                Text displayed in a text field when the it has no value
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <tui-setup *pageTab />
+</tui-doc-page>

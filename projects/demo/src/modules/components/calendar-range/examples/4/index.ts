@@ -3,11 +3,11 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDayOfWeek} from '@taiga-ui/cdk';
 import {TUI_FIRST_DAY_OF_WEEK} from '@taiga-ui/core';
-import {TuiCalendarRangeModule} from '@taiga-ui/kit';
+import {TuiCalendarRangeComponent} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiCalendarRangeModule],
+    imports: [TuiCalendarRangeComponent],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

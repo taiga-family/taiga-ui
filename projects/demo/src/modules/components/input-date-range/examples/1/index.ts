@@ -1,16 +1,23 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDay, TuiDayRange} from '@taiga-ui/cdk';
+import {TuiUnfinishedValidatorDirective} from '@taiga-ui/kit';
+import {TuiInputDateRangeModule} from '@taiga-ui/legacy';
 
 @Component({
-    selector: 'tui-input-date-range-example-1',
+    standalone: true,
+    imports: [
+        ReactiveFormsModule,
+        TuiInputDateRangeModule,
+        TuiUnfinishedValidatorDirective,
+    ],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class TuiInputDateRangeExample1 {
+export default class ExampleComponent {
     protected readonly testForm = new FormGroup({
         testValue: new FormControl(
             new TuiDayRange(new TuiDay(2018, 2, 10), new TuiDay(2018, 3, 20)),

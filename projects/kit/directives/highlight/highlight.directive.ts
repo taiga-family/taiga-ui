@@ -6,6 +6,7 @@ import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {svgNodeFilter, tuiInjectElement, tuiPx} from '@taiga-ui/cdk';
 
 @Directive({
+    standalone: true,
     selector: '[tuiHighlight]',
     providers: [ResizeObserverService],
     host: {

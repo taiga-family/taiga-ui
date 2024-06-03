@@ -1,0 +1,115 @@
+<tui-doc-page
+    header="LineClamp"
+    package="KIT"
+    type="components"
+>
+    <ng-template pageTab>
+        <p>Component cuts overflown text with "..." and shows it by hover</p>
+
+        <tui-doc-example
+            id="basic"
+            heading="Styles change"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample"
+        />
+
+        <tui-doc-example
+            id="expand"
+            heading="Expanding"
+            [component]="2 | tuiComponent"
+            [content]="2 | tuiExample"
+        />
+
+        <tui-doc-example
+            id="resize"
+            heading="Resize parent container"
+            [component]="3 | tuiComponent"
+            [content]="3 | tuiExample"
+        />
+
+        <tui-doc-example
+            id="clamp-dropdown"
+            heading="Clamp inside dropdown"
+            [component]="4 | tuiComponent"
+            [content]="4 | tuiExample"
+        />
+
+        <tui-doc-example
+            id="custom-content-workaround"
+            heading="Custom content workaround"
+            [component]="5 | tuiComponent"
+            [content]="5 | tuiExample"
+        />
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-line-clamp
+                [content]="content || defaultExampleContent"
+                [lineHeight]="lineHeight"
+                [linesLimit]="linesLimit"
+                [style.maxWidth.px]="maxWidth"
+                (overflownChange)="documentationPropertyOverflownChange.emitEvent($event)"
+            />
+            <ng-template #defaultExampleContent>
+                Lorem ipsum
+                <br />
+                Gaudeamus igitur
+                <br />
+                <strong>Carpe diem</strong>
+                <br />
+                Veni, vidi, vici
+            </ng-template>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="content"
+                documentationPropertyType="PolymorpheusContent"
+                [(documentationPropertyValue)]="content"
+            >
+                Content
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="lineHeight"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="lineHeight"
+            >
+                Height of single line. It used to limit component's height.
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="linesLimit"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="linesLimit"
+            >
+                Number of visible lines
+            </ng-template>
+            <ng-template
+                #documentationPropertyOverflownChange="documentationProperty"
+                documentationPropertyMode="output"
+                documentationPropertyName="overflownChange"
+                documentationPropertyType="boolean"
+            >
+                Emits
+                <code>true</code>
+                if there's extra content which isn't visible otherwise
+                <code>false</code>
+                when all content is visible.
+            </ng-template>
+        </tui-doc-documentation>
+        <tui-doc-documentation heading="CSS customization">
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="style.maxWidth.px"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="maxWidth"
+            >
+                Value of max-width
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <tui-setup *pageTab />
+</tui-doc-page>

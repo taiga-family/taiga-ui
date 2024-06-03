@@ -1,0 +1,72 @@
+<tui-doc-page
+    header="Scrollbar"
+    package="CORE"
+    type="components"
+>
+    <ng-template pageTab>
+        <div class="tui-space_bottom-3">
+            <code>Scrollbar</code>
+            implements a custom scrollbar in Taiga UI style.
+        </div>
+
+        <p>Native scrollbar is hidden to keep native platform scroll experience</p>
+
+        <tui-notification class="tui-space_vertical-3">
+            Use
+            <code>TUI_SCROLL_REF</code>
+            token to get a scrollable container. For example, when working with virtual scroll.
+        </tui-notification>
+
+        <tui-doc-example
+            id="vertical"
+            heading="Vertical"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample"
+        />
+
+        <tui-doc-example
+            id="horizontal"
+            heading="horizontal"
+            [component]="2 | tuiComponent"
+            [content]="2 | tuiExample"
+        />
+
+        <tui-doc-example
+            id="all"
+            heading="All"
+            [component]="3 | tuiComponent"
+            [content]="3 | tuiExample"
+        />
+
+        <tui-doc-example
+            id="hidden"
+            heading="Hidden"
+            [component]="4 | tuiComponent"
+            [content]="4 | tuiExample"
+        />
+
+        <tui-doc-example
+            id="light"
+            heading="Light scrollbar"
+            [component]="5 | tuiComponent"
+            [content]="5 | tuiExample"
+        />
+
+        <tui-doc-example
+            id="virtual"
+            heading="Virtual scroll"
+            [component]="6 | tuiComponent"
+            [content]="6 | tuiExample"
+        >
+            <p>
+                Use
+                <code>tuiScrollable</code>
+                directive as an element for scroll. In this sample, we use virtual scroll from
+                <code>&#64;angular/cdk</code>
+                .
+            </p>
+        </tui-doc-example>
+    </ng-template>
+
+    <tui-setup *pageTab="'Setup'" />
+</tui-doc-page>

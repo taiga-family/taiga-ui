@@ -10,8 +10,8 @@ import {
 import {tuiIsString, tuiProvide} from '@taiga-ui/cdk';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
-import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/inherited-documentation/abstract-props-accessor';
-import {InheritedDocumentationModule} from '../abstract/inherited-documentation/inherited-documentation.module';
+import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
+import {InheritedDocumentationComponent} from '../abstract/inherited-documentation';
 import {AbstractExampleTuiInteractive} from '../abstract/interactive';
 
 @Component({
@@ -21,7 +21,7 @@ import {AbstractExampleTuiInteractive} from '../abstract/interactive';
         TuiInputCardGroupedComponent,
         ReactiveFormsModule,
         TuiThumbnailCardComponent,
-        InheritedDocumentationModule,
+        InheritedDocumentationComponent,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

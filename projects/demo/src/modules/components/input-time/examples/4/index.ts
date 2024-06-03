@@ -1,12 +1,14 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiTime} from '@taiga-ui/cdk';
-import {tuiInputTimeOptionsProvider} from '@taiga-ui/legacy';
+import {TuiTextfieldControllerModule} from '@taiga-ui/core';
+import {TuiInputTimeModule, tuiInputTimeOptionsProvider} from '@taiga-ui/legacy';
 
 @Component({
-    selector: 'tui-input-time-example-4',
+    standalone: true,
+    imports: [TuiTextfieldControllerModule, ReactiveFormsModule, TuiInputTimeModule],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
@@ -17,7 +19,7 @@ import {tuiInputTimeOptionsProvider} from '@taiga-ui/legacy';
         }),
     ],
 })
-export class TuiInputTimeExample4 {
+export default class ExampleComponent {
     protected readonly testForm = new FormGroup({
         testValue: new FormControl<TuiTime | null>(null),
     });

@@ -42,7 +42,7 @@ import {
     TuiTextfieldControllerModule,
     TuiTextfieldOptionsDirective,
 } from '@taiga-ui/core';
-import {TuiAccordionModule} from '@taiga-ui/kit';
+import {TuiAccordion} from '@taiga-ui/kit';
 import type {TuiInputComponent} from '@taiga-ui/legacy';
 import {TuiInputModule} from '@taiga-ui/legacy';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
@@ -72,7 +72,7 @@ import {
         PolymorpheusModule,
         RouterLink,
         TuiScrollbarComponent,
-        TuiAccordionModule,
+        TuiAccordion,
         NgTemplateOutlet,
         TuiLinkDirective,
         TuiScrollIntoViewLinkDirective,

@@ -3,15 +3,18 @@ import {DomSanitizer} from '@angular/platform-browser';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
+import {TuiButtonDirective} from '@taiga-ui/core';
+import {TuiPdfViewerDirective} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-pdf-viewer-example-3',
-    templateUrl: 'index.html',
-    styleUrls: ['index.less'],
+    standalone: true,
+    imports: [TuiButtonDirective, TuiPdfViewerDirective],
+    templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiPdfViewerExample3 {
+export default class ExampleComponent {
     private readonly isMobile = inject(TUI_IS_MOBILE);
     private readonly sanitizer = inject(DomSanitizer);
     private readonly pdf = 'assets/media/taiga.pdf';

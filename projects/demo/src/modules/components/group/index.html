@@ -1,0 +1,153 @@
+<tui-doc-page
+    header="Group"
+    package="CORE"
+    type="components"
+>
+    <ng-template pageTab>
+        <div class="tui-space_bottom-3">
+            A directive for grouping other components. For example,
+            <a
+                routerLink="/components/input"
+                tuiLink
+            >
+                textfields
+            </a>
+            and
+            <a
+                routerLink="/components/button"
+                tuiLink
+            >
+                buttons
+            </a>
+            .
+        </div>
+        <div class="tui-space_bottom-3">
+            Items take all available width. If you want to prevent it, use
+            <code>
+                class="
+                <strong>tui-group__auto-width-item</strong>
+                "
+            </code>
+            .
+        </div>
+
+        <p>
+            If you want item to inherit border radius, use class
+            <code>
+                class="
+                <strong>tui-group__inherit-item</strong>
+                "
+            </code>
+        </p>
+
+        <tui-doc-example
+            id="inputs"
+            heading="Inputs"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample"
+            [fullsize]="true"
+        />
+
+        <tui-doc-example
+            id="buttons"
+            heading="ButtonGroup"
+            [component]="2 | tuiComponent"
+            [content]="2 | tuiExample"
+        />
+
+        <tui-doc-example
+            id="vertical"
+            heading="Vertical group"
+            [component]="3 | tuiComponent"
+            [content]="3 | tuiExample: 'html,ts'"
+        />
+
+        <tui-doc-example
+            id="directive"
+            heading="Directive"
+            [component]="4 | tuiComponent"
+            [content]="4 | tuiExample"
+        />
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <div
+                tuiGroup
+                class="group"
+                [collapsed]="collapsed"
+                [orientation]="orientation"
+                [rounded]="rounded"
+                [size]="size"
+            >
+                <button
+                    appearance="outline"
+                    size="l"
+                    tuiButton
+                    type="button"
+                >
+                    Button 1
+                </button>
+                <button
+                    appearance="outline"
+                    size="l"
+                    tuiButton
+                    type="button"
+                >
+                    Button 2
+                </button>
+                <button
+                    appearance="outline"
+                    size="l"
+                    tuiButton
+                    type="button"
+                >
+                    Button 3
+                </button>
+            </div>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="collapsed"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="collapsed"
+            >
+                Remove margin between items (
+                <code>2px</code>
+                by default)
+            </ng-template>
+
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="rounded"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="rounded"
+            >
+                The first and the last items are rounded
+            </ng-template>
+
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="orientation"
+                documentationPropertyType="TuiOrientation"
+                [documentationPropertyValues]="orientationVariants"
+                [(documentationPropertyValue)]="orientation"
+            >
+                Horizontal or vertical direction of group
+            </ng-template>
+
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="size"
+                documentationPropertyType="TuiSizeL"
+                [documentationPropertyValues]="sizeVariants"
+                [(documentationPropertyValue)]="size"
+            >
+                Size of rounding
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <tui-setup *pageTab />
+</tui-doc-page>

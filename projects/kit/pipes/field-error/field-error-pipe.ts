@@ -24,6 +24,7 @@ function defaultError(
 }
 
 @Pipe({
+    standalone: true,
     name: 'tuiFieldError',
     pure: false,
 })

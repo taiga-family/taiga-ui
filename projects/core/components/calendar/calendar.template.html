@@ -5,9 +5,9 @@
 >
     <tui-calendar-year
         automation-id="tui-calendar__year"
-        [initialItem]="month"
-        [max]="computedMax"
-        [min]="computedMin"
+        [initialItem]="month.year"
+        [max]="computedMax.year"
+        [min]="computedMin.year"
         [value]="value"
         (yearClick)="onPickerYearClick($event)"
     />

@@ -6,15 +6,13 @@ import {
     tuiInjectElement,
     tuiIsNativeFocused,
 } from '@taiga-ui/cdk';
-import type {TuiKeySteps} from '@taiga-ui/kit/types';
-import {
-    tuiKeyStepValueToPercentage,
-    tuiPercentageToKeyStepValue,
-} from '@taiga-ui/kit/utils';
 
 import {TuiSliderComponent} from '../slider.component';
+import type {TuiKeySteps} from './key-steps';
+import {tuiKeyStepValueToPercentage, tuiPercentageToKeyStepValue} from './key-steps';
 
 @Directive({
+    standalone: true,
     selector: 'input[tuiSlider][keySteps]',
     host: {
         '[attr.aria-valuenow]': 'safeCurrentValue',

@@ -1,0 +1,15 @@
+<tui-icon
+    *ngIf="icon"
+    class="t-marker t-marker_custom"
+    [icon]="icon"
+/>
+<tui-icon
+    class="t-marker t-marker_error"
+    [icon]="icons.error"
+/>
+<tui-icon
+    class="t-marker t-marker_pass"
+    [icon]="icons.check"
+/>
+<div class="t-marker t-marker_index"></div>
+<ng-content />

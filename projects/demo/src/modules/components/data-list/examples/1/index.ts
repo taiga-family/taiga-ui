@@ -1,14 +1,40 @@
+import {NgForOf, NgIf} from '@angular/common';
 import {Component} from '@angular/core';
+import {RouterLink, RouterLinkActive} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {
+    TuiButtonDirective,
+    TuiDataListComponent,
+    TuiDropdownDirective,
+    TuiDropdownOpenDirective,
+    TuiOptGroupDirective,
+    TuiOptionComponent,
+    TuiSvgComponent,
+} from '@taiga-ui/core';
+import {TuiChevronDirective} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-data-list-example-1',
+    standalone: true,
+    imports: [
+        TuiButtonDirective,
+        TuiChevronDirective,
+        TuiDropdownOpenDirective,
+        TuiDropdownDirective,
+        TuiDataListComponent,
+        TuiOptGroupDirective,
+        NgForOf,
+        TuiOptionComponent,
+        RouterLinkActive,
+        RouterLink,
+        TuiSvgComponent,
+        NgIf,
+    ],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class TuiDataListExample1 {
+export default class ExampleComponent {
     protected readonly groups = [
         {
             label: 'Components',

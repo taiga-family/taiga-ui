@@ -1,7 +1,12 @@
 import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiContext, TuiIdentityMatcher, TuiStringHandler} from '@taiga-ui/cdk';
+import {TuiDataListDirective} from '@taiga-ui/core';
+import {TuiSelectModule} from '@taiga-ui/legacy';
+
+import {CustomListComponent} from './custom-list';
 
 const INCOME = {
     name: 'Income',
@@ -29,7 +34,8 @@ const EXPENSES = {
 };
 
 @Component({
-    selector: 'tui-data-list-example-4',
+    standalone: true,
+    imports: [TuiSelectModule, FormsModule, CustomListComponent, TuiDataListDirective],
     templateUrl: './index.html',
     styles: [
         `
@@ -41,7 +47,7 @@ const EXPENSES = {
     encapsulation,
     changeDetection,
 })
-export class TuiDataListExample4 {
+export default class ExampleComponent {
     protected value = [];
 
     protected readonly items = [INCOME, EXPENSES];

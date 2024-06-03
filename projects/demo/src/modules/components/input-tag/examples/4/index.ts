@@ -1,6 +1,7 @@
+import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
 import {Component} from '@angular/core';
 import type {AbstractControl, ValidatorFn} from '@angular/forms';
-import {FormControl} from '@angular/forms';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk';
@@ -10,6 +11,15 @@ import {
     tuiPure,
     TuiValidationError,
 } from '@taiga-ui/cdk';
+import {
+    TuiDataListComponent,
+    TuiDataListDirective,
+    TuiErrorComponent,
+    TuiOptionComponent,
+    TuiTextfieldControllerModule,
+} from '@taiga-ui/core';
+import {TuiFieldErrorPipe} from '@taiga-ui/kit';
+import {TuiInputTagModule} from '@taiga-ui/legacy';
 
 function createControlValidator(handler: TuiBooleanHandler<string>): ValidatorFn {
     return ({value}: AbstractControl) => {
@@ -30,12 +40,25 @@ function tagValidator(tag: string): boolean {
 }
 
 @Component({
-    selector: 'tui-input-tag-example-4',
+    standalone: true,
+    imports: [
+        TuiInputTagModule,
+        ReactiveFormsModule,
+        TuiTextfieldControllerModule,
+        TuiDataListComponent,
+        NgIf,
+        NgForOf,
+        TuiOptionComponent,
+        TuiDataListDirective,
+        TuiErrorComponent,
+        TuiFieldErrorPipe,
+        AsyncPipe,
+    ],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class TuiInputTagExample4 {
+export default class ExampleComponent {
     protected search = '';
 
     protected readonly tagValidator = tagValidator;

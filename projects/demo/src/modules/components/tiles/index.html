@@ -1,0 +1,30 @@
+<tui-doc-page
+    header="Tiles"
+    package="KIT"
+    type="components"
+>
+    <ng-template pageTab>
+        <p>
+            <code>Tiles</code>
+            is a light-weight touch-friendly tiles grid drag and drop component with no predefined styles.
+        </p>
+
+        <tui-doc-example
+            id="base"
+            heading="Basic"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample"
+            [fullsize]="true"
+        />
+
+        <tui-doc-example
+            id="vertical"
+            description="With media query width control"
+            heading="Vertical"
+            [component]="2 | tuiComponent"
+            [content]="2 | tuiExample"
+        />
+    </ng-template>
+
+    <tui-setup *pageTab />
+</tui-doc-page>

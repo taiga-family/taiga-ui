@@ -35,7 +35,7 @@ import {
     TuiHostedDropdownComponent,
     TuiPrimitiveTextfieldComponent,
 } from '@taiga-ui/core';
-import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit';
+import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/legacy/utils';
 
 import {TUI_INPUT_PHONE_OPTIONS} from './input-phone.options';
 import {

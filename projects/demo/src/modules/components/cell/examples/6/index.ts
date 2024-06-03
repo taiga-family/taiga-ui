@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButtonDirective, TuiDropdownModule, TuiGroupDirective} from '@taiga-ui/core';
-import {TuiDataListWrapperModule} from '@taiga-ui/kit';
+import {TuiDataListWrapper} from '@taiga-ui/kit';
 import {TuiCellDirective} from '@taiga-ui/layout';
 
 @Component({
@@ -13,7 +13,7 @@ import {TuiCellDirective} from '@taiga-ui/layout';
         TuiDropdownModule,
         TuiGroupDirective,
         TuiButtonDirective,
-        TuiDataListWrapperModule,
+        TuiDataListWrapper,
         NgFor,
     ],
     templateUrl: './index.html',

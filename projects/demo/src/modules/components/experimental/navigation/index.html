@@ -1,0 +1,44 @@
+<tui-doc-page
+    header="Navigation"
+    package="EXPERIMENTAL"
+    type="components/experimental"
+>
+    <ng-template pageTab>
+        <tui-notification status="warning">
+            This code is
+            <strong>experimental</strong>
+            and is a subject to change. Expect final solution to be shipped in the next major version
+        </tui-notification>
+
+        <p>A set of basic layout components for global navigation</p>
+
+        <tui-doc-example
+            id="full"
+            heading="Full"
+            class="sticky-example"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample: 'html,ts'"
+            [fullsize]="true"
+        />
+
+        <tui-doc-example
+            id="expansive"
+            heading="Expansive heading"
+            class="sticky-example"
+            [component]="2 | tuiComponent"
+            [content]="2 | tuiExample: 'html,ts'"
+            [fullsize]="true"
+        />
+
+        <tui-doc-example
+            id="card"
+            heading="Card heading"
+            class="sticky-example"
+            [component]="3 | tuiComponent"
+            [content]="3 | tuiExample: 'html,ts'"
+            [fullsize]="true"
+        />
+    </ng-template>
+
+    <tui-setup *pageTab="'Setup'" />
+</tui-doc-page>

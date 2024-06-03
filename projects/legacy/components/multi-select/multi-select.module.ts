@@ -10,7 +10,7 @@ import {
     TuiTextfieldControllerModule,
     TuiWrapperModule,
 } from '@taiga-ui/core';
-import {TuiDataListWrapperModule, TuiStringifyContentPipeModule} from '@taiga-ui/kit';
+import {TuiDataListWrapper, TuiStringifyContentPipe} from '@taiga-ui/kit';
 import {TuiArrowComponent} from '@taiga-ui/legacy/components/arrow';
 import {TuiInputTagModule} from '@taiga-ui/legacy/components/input-tag';
 import {TuiMultiSelectOptionModule} from '@taiga-ui/legacy/components/multi-select-option';
@@ -38,12 +38,12 @@ import {TuiNativeMultiSelectGroupComponent} from './native-multi-select/native-m
         TuiHostedDropdownModule,
         TuiInputTagModule,
         TuiMultiSelectOptionModule,
-        TuiDataListWrapperModule,
+        TuiDataListWrapper,
         TuiMapperPipe,
         TuiLinkDirective,
         TuiDataList,
         TuiTextfieldControllerModule,
-        TuiStringifyContentPipeModule,
+        TuiStringifyContentPipe,
     ],
     declarations: [
         TuiMultiSelectComponent,

@@ -1,9 +1,10 @@
 import type {Provider} from '@angular/core';
 import {InjectionToken, Optional, Self} from '@angular/core';
 import {NgControl} from '@angular/forms';
-import type {TuiDay, TuiDayRange, TuiValueTransformer} from '@taiga-ui/cdk';
-import {tuiControlValueFactory} from '@taiga-ui/kit/utils';
+import type {TuiDay, TuiDayRange, TuiTime, TuiValueTransformer} from '@taiga-ui/cdk';
+import {tuiControlValue} from '@taiga-ui/cdk';
 import type {Observable} from 'rxjs';
+import {map, of} from 'rxjs';
 
 /**
  * Stream that emits calendar data change
@@ -23,4 +24,19 @@ export function tuiDateStreamWithTransformer(
         ],
         useFactory: tuiControlValueFactory,
     };
+}
+
+function tuiControlValueFactory<
+    T extends TuiDay | TuiDayRange | [TuiDay | null, TuiTime | null],
+>(
+    control: NgControl | null,
+    transformer?: TuiValueTransformer<T> | null,
+): Observable<T | null> | null {
+    return control
+        ? tuiControlValue(control).pipe(
+              map(value =>
+                  transformer ? transformer?.fromControlValue(value) : (value as T),
+              ),
+          )
+        : of(null);
 }

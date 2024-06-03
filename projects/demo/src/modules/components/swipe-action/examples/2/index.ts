@@ -1,14 +1,27 @@
 import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiSwipeActionsComponent} from '@taiga-ui/addon-mobile';
+import {TuiButtonDirective, TuiSurfaceDirective, TuiTitleDirective} from '@taiga-ui/core';
+import {TuiAvatarComponent, TuiSwitchComponent} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-swipe-action-example-2',
+    standalone: true,
+    imports: [
+        TuiSwipeActionsComponent,
+        TuiSurfaceDirective,
+        TuiAvatarComponent,
+        TuiTitleDirective,
+        TuiButtonDirective,
+        TuiSwitchComponent,
+        FormsModule,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiSwipeActionExample2 {
+export default class ExampleComponent {
     protected checkbox = false;
 }

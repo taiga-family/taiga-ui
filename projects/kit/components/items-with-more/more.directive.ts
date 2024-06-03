@@ -2,6 +2,7 @@ import {Directive} from '@angular/core';
 import type {TuiContext} from '@taiga-ui/cdk';
 
 @Directive({
+    standalone: true,
     selector: '[tuiMore]',
 })
 export class TuiMoreDirective {

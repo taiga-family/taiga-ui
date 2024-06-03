@@ -12,4 +12,3 @@ export * from '@taiga-ui/kit/directives/sensitive';
 export * from '@taiga-ui/kit/directives/skeleton';
 export * from '@taiga-ui/kit/directives/unfinished-validator';
 export * from '@taiga-ui/kit/directives/unmask-handler';
-export * from '@taiga-ui/kit/directives/value-accessor';

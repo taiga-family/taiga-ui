@@ -1,17 +1,20 @@
+import {NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiKeySteps} from '@taiga-ui/kit';
+import {TuiInputSliderModule} from '@taiga-ui/legacy';
 
 @Component({
-    selector: 'tui-input-slider-example-3',
+    standalone: true,
+    imports: [TuiInputSliderModule, ReactiveFormsModule, NgForOf],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiInputSliderExample3 {
+export default class ExampleComponent {
     protected readonly control = new FormControl(10_000);
     protected readonly max = 1_000_000;
     protected readonly min = 0;

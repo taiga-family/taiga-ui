@@ -1,3 +1,4 @@
+import {AsyncPipe} from '@angular/common';
 import type {AfterViewInit, DoCheck} from '@angular/core';
 import {
     ChangeDetectionStrategy,
@@ -12,15 +13,18 @@ import {
     Renderer2,
     ViewChild,
 } from '@angular/core';
+import {ResizeObserverModule} from '@ng-web-apis/resize-observer';
 import {
     tuiInjectElement,
     tuiIsCurrentTarget,
+    TuiLetDirective,
     tuiPx,
     tuiTypedFromEvent,
     tuiZonefree,
 } from '@taiga-ui/cdk';
-import {TUI_HINT_COMPONENT, TuiHintDirective} from '@taiga-ui/core';
+import {TUI_HINT_COMPONENT, TuiHint, TuiHintDirective} from '@taiga-ui/core';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import type {Observable} from 'rxjs';
 import {
     BehaviorSubject,
@@ -37,9 +41,19 @@ import {
 
 import {TUI_LINE_CLAMP_OPTIONS} from './line-clamp.options';
 import {TuiLineClampBoxComponent} from './line-clamp-box.component';
+import {TuiLineClampPositionDirective} from './line-clamp-position.directive';
 
 @Component({
+    standalone: true,
     selector: 'tui-line-clamp',
+    imports: [
+        ResizeObserverModule,
+        PolymorpheusModule,
+        TuiHint,
+        TuiLetDirective,
+        AsyncPipe,
+        TuiLineClampPositionDirective,
+    ],
     templateUrl: './line-clamp.template.html',
     styleUrls: ['./line-clamp.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

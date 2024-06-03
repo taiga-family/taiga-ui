@@ -1,8 +1,11 @@
+import {NgTemplateOutlet} from '@angular/common';
 import {Component} from '@angular/core';
+import {TuiSvgComponent} from '@taiga-ui/core';
 import {TuiTreeItemContentComponent} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'folders',
+    standalone: true,
+    imports: [TuiSvgComponent, NgTemplateOutlet],
     template: `
         <tui-svg
             class="tui-space_right-2"

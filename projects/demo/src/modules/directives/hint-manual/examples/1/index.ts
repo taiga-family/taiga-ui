@@ -1,13 +1,27 @@
 import {Component} from '@angular/core';
+import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {
+    TuiButtonDirective,
+    TuiHintDirective,
+    TuiHintManualDirective,
+    TuiLinkDirective,
+} from '@taiga-ui/core';
 
 @Component({
-    selector: 'tui-hint-manual-example-1',
+    standalone: true,
+    imports: [
+        TuiButtonDirective,
+        TuiHintDirective,
+        TuiHintManualDirective,
+        RouterLink,
+        TuiLinkDirective,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,
 })
-export class TuiHintManualExample1 {
+export default class ExampleComponent {
     protected hintShown = false;
 
     protected toggleHint(): void {

@@ -1,10 +1,20 @@
+import {I18nPluralPipe, NgSwitch, NgSwitchCase, NgSwitchDefault} from '@angular/common';
 import {Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiInputRangeModule} from '@taiga-ui/legacy';
 
 @Component({
-    selector: 'tui-input-range-example-3',
+    standalone: true,
+    imports: [
+        TuiInputRangeModule,
+        ReactiveFormsModule,
+        NgSwitch,
+        NgSwitchCase,
+        NgSwitchDefault,
+        I18nPluralPipe,
+    ],
     templateUrl: './index.html',
     styles: [
         `
@@ -16,7 +26,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
     encapsulation,
     changeDetection,
 })
-export class TuiInputRangeExample3 {
+export default class ExampleComponent {
     protected readonly control = new FormControl([0, 7]);
 
     // See https://angular.io/api/common/I18nPluralPipe

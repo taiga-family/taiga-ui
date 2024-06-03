@@ -5,7 +5,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {MaskitoDirective} from '@maskito/angular';
 import type {MaskitoOptions} from '@maskito/core';
-import {TuiUnmaskHandlerModule} from '@taiga-ui/kit';
+import {TuiUnmaskHandlerDirective} from '@taiga-ui/kit';
 import {TuiInputModule} from '@taiga-ui/legacy';
 
 @Component({
@@ -14,7 +14,7 @@ import {TuiInputModule} from '@taiga-ui/legacy';
         ReactiveFormsModule,
         TuiInputModule,
         MaskitoDirective,
-        TuiUnmaskHandlerModule,
+        TuiUnmaskHandlerDirective,
         JsonPipe,
     ],
     templateUrl: './index.html',

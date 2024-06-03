@@ -8,7 +8,7 @@ import {TUI_TEXTFIELD_HOST} from '@taiga-ui/core/tokens';
 import type {TuiTextfieldHost} from '@taiga-ui/core/types';
 
 @Component({
-    selector: 'input[tuiTextfield], textarea[tuiTextfield]',
+    selector: 'input[tuiTextfieldLegacy], textarea[tuiTextfieldLegacy]',
     template: '',
     styleUrls: ['./textfield.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

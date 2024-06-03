@@ -1,16 +1,41 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {
+    TuiDataListComponent,
+    TuiDropdownDirective,
+    TuiDropdownHoverDirective,
+    TuiDropdownOpenDirective,
+    TuiOptionComponent,
+} from '@taiga-ui/core';
+import {
+    TuiChevronDirective,
+    TuiSwitchComponent,
+    TuiTabDirective,
+    TuiTabsHorizontalDirective,
+} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-dropdown-hover-example-2',
+    standalone: true,
+    imports: [
+        TuiTabsHorizontalDirective,
+        TuiTabDirective,
+        TuiChevronDirective,
+        TuiDropdownHoverDirective,
+        TuiDropdownDirective,
+        TuiDropdownOpenDirective,
+        TuiDataListComponent,
+        TuiOptionComponent,
+        ReactiveFormsModule,
+        TuiSwitchComponent,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiDropdownHoverExample2 {
+export default class ExampleComponent {
     protected readonly testForm = new FormGroup({
         option: new FormControl(false),
     });

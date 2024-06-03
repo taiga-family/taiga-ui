@@ -1,15 +1,45 @@
-import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
+import {NgForOf, NgIf} from '@angular/common';
+import type {ElementRef, QueryList} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    EventEmitter,
+    forwardRef,
+    inject,
+    Input,
+    Output,
+    ViewChildren,
+} from '@angular/core';
+import {
+    EMPTY_QUERY,
+    TuiElementDirective,
+    tuiIsNativeFocused,
+    tuiIsPresent,
+} from '@taiga-ui/cdk';
+import type {TuiValueContentContext} from '@taiga-ui/core';
 import {
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
     tuiAsDataListAccessor,
+    TuiDataList,
+    TuiLoaderComponent,
+    TuiOptionComponent,
 } from '@taiga-ui/core';
+import type {TuiItemsHandlers} from '@taiga-ui/kit/tokens';
 import {TUI_ITEMS_HANDLERS} from '@taiga-ui/kit/tokens';
-
-import {AbstractTuiDataListWrapper} from './data-list-wrapper';
+import {type PolymorpheusContent, PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 @Component({
+    standalone: true,
     selector: 'tui-data-list-wrapper:not([labels])',
+    imports: [
+        NgIf,
+        NgForOf,
+        PolymorpheusModule,
+        TuiDataList,
+        TuiElementDirective,
+        TuiLoaderComponent,
+    ],
     templateUrl: './data-list-wrapper.template.html',
     styleUrls: ['./data-list-wrapper.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -18,14 +48,43 @@ import {AbstractTuiDataListWrapper} from './data-list-wrapper';
         TEXTFIELD_CONTROLLER_PROVIDER,
     ],
 })
-export class TuiDataListWrapperComponent<T> extends AbstractTuiDataListWrapper<T> {
+export class TuiDataListWrapperComponent<T> {
+    private readonly itemsHandlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
+
     @Input()
     public items: readonly T[] | null = [];
 
-    constructor() {
-        super(
-            inject(TUI_ITEMS_HANDLERS),
-            inject(TUI_TEXTFIELD_WATCHED_CONTROLLER, {optional: true})?.size || 'm',
-        );
+    @Input()
+    public disabledItemHandler: TuiItemsHandlers<T>['disabledItemHandler'] =
+        this.itemsHandlers.disabledItemHandler;
+
+    @Input()
+    public emptyContent: PolymorpheusContent;
+
+    @Input()
+    public size = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER, {optional: true})?.size || 'm';
+
+    @Output()
+    public readonly itemClick = new EventEmitter<T>();
+
+    @ViewChildren(forwardRef(() => TuiOptionComponent))
+    protected readonly optionsQuery: QueryList<TuiOptionComponent<T>> = EMPTY_QUERY;
+
+    @Input()
+    public itemContent: PolymorpheusContent<TuiValueContentContext<T>> = ({$implicit}) =>
+        this.itemsHandlers.stringify($implicit);
+
+    public getContext(
+        $implicit: T,
+        {nativeElement}: ElementRef<HTMLElement>,
+    ): TuiValueContentContext<T> {
+        return {$implicit, active: tuiIsNativeFocused(nativeElement)};
+    }
+
+    public getOptions(includeDisabled = false): readonly T[] {
+        return this.optionsQuery
+            .filter(({disabled}) => includeDisabled || !disabled)
+            .map(({value}) => value)
+            .filter(tuiIsPresent);
     }
 }

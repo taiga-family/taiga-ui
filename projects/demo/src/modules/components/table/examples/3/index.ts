@@ -18,7 +18,7 @@ import {
     TuiScrollbarComponent,
     TuiSvgComponent,
 } from '@taiga-ui/core';
-import {TuiDataListWrapperModule} from '@taiga-ui/kit';
+import {TuiDataListWrapper} from '@taiga-ui/kit';
 import {
     TuiInputDateModule,
     TuiInputNumberModule,
@@ -45,7 +45,7 @@ interface Item {
         NgIf,
         TuiValidatorDirective,
         TuiInputDateModule,
-        TuiDataListWrapperModule,
+        TuiDataListWrapper,
         TuiSelectModule,
         NgForOf,
         TuiLetDirective,

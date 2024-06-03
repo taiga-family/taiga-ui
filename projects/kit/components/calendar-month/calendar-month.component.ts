@@ -1,3 +1,4 @@
+import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -7,24 +8,45 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import type {TuiBooleanHandler, TuiYear} from '@taiga-ui/cdk';
+import type {TuiBooleanHandler} from '@taiga-ui/cdk';
 import {
     TUI_FALSE_HANDLER,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
     TuiDay,
+    TuiHoveredDirective,
+    TuiLetDirective,
     TuiMonth,
     TuiMonthRange,
     tuiNullableSame,
     tuiPure,
+    TuiYear,
 } from '@taiga-ui/cdk';
 import type {TuiRangeState, TuiWithOptionalMinMax} from '@taiga-ui/core';
+import {
+    TuiCalendarYearComponent,
+    TuiLinkDirective,
+    TuiScrollbarComponent,
+    TuiSpinButtonComponent,
+} from '@taiga-ui/core';
 import {TUI_CALENDAR_MONTHS} from '@taiga-ui/kit/tokens';
 
 const TODAY = TuiDay.currentLocal();
 
 @Component({
+    standalone: true,
     selector: 'tui-calendar-month',
+    imports: [
+        AsyncPipe,
+        NgIf,
+        NgForOf,
+        TuiCalendarYearComponent,
+        TuiSpinButtonComponent,
+        TuiScrollbarComponent,
+        TuiLinkDirective,
+        TuiLetDirective,
+        TuiHoveredDirective,
+    ],
     templateUrl: './calendar-month.template.html',
     styleUrls: ['./calendar-month.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -178,11 +200,11 @@ export class TuiCalendarMonthComponent implements TuiWithOptionalMinMax<TuiMonth
         return TODAY.monthSame(item);
     }
 
-    protected onPickerYearClick(year: TuiYear): void {
+    protected onPickerYearClick(year: number): void {
         this.isYearPickerShown = false;
 
-        if (!this.year.yearSame(year)) {
-            this.updateActiveYear(year);
+        if (this.year.year !== year) {
+            this.updateActiveYear(new TuiYear(year));
         }
     }
 

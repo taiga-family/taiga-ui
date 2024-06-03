@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
-import {TUI_FIRST_DAY, TuiDay, TuiDayRange, TuiYear} from '@taiga-ui/cdk';
+import {TuiDay, TuiDayRange} from '@taiga-ui/cdk';
 import {TuiCalendarYearComponent} from '@taiga-ui/core';
 import {TuiPageObject} from '@taiga-ui/testing';
 
@@ -22,10 +22,10 @@ describe('TuiCalendarYearComponent', () => {
         @ViewChild(TuiCalendarYearComponent, {static: true})
         public component!: TuiCalendarYearComponent;
 
-        public min = TUI_FIRST_DAY;
-        public max = TuiDay.currentLocal().append({year: 200});
+        public min = 0;
+        public max = TuiDay.currentLocal().year + 200;
         public value = TuiDay.currentLocal();
-        public initialItem = TuiDay.currentLocal();
+        public initialItem = TuiDay.currentLocal().year;
         public disabledItemHandler = (day: number): boolean => day === 10;
     }
 
@@ -129,18 +129,5 @@ describe('TuiCalendarYearComponent', () => {
 
             expect(component.itemIsInterval(2018)).toBe(true);
         });
-    });
-
-    it('emits year by click on item', () => {
-        let result: TuiYear | undefined;
-        const item = 2019;
-
-        component.yearClick.subscribe((year: TuiYear) => {
-            result = year;
-        });
-
-        component.onItemClick(item);
-
-        expect(result?.yearSame(new TuiYear(item))).toBe(true);
     });
 });

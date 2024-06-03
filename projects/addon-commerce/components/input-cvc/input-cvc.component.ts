@@ -23,12 +23,11 @@ import {
     TuiPrimitiveTextfieldComponent,
     TuiPrimitiveTextfieldModule,
 } from '@taiga-ui/core';
-import {TuiValueAccessorModule} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
     selector: 'tui-input-cvc',
-    imports: [TuiPrimitiveTextfieldModule, TuiValueAccessorModule, MaskitoDirective],
+    imports: [TuiPrimitiveTextfieldModule, MaskitoDirective],
     templateUrl: './input-cvc.template.html',
     styleUrls: ['./input-cvc.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

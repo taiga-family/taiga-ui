@@ -9,8 +9,8 @@ import {
     TuiTextfieldControllerModule,
     TuiWrapperModule,
 } from '@taiga-ui/core';
-import {TuiValueAccessorModule} from '@taiga-ui/kit';
 import {TuiSelectOptionModule} from '@taiga-ui/legacy/components/select-option';
+import {TuiValueAccessorModule} from '@taiga-ui/legacy/directives';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiInputTimeComponent} from './input-time.component';

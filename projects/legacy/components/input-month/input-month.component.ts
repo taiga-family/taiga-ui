@@ -28,11 +28,8 @@ import {
     TuiPrimitiveTextfieldComponent,
 } from '@taiga-ui/core';
 import type {TuiInputDateOptions} from '@taiga-ui/kit';
-import {
-    TUI_INPUT_DATE_OPTIONS,
-    TUI_MONTH_FORMATTER,
-    TUI_MONTH_FORMATTER_PROVIDER,
-} from '@taiga-ui/kit';
+import {TUI_INPUT_DATE_OPTIONS} from '@taiga-ui/kit';
+import {TUI_MONTH_FORMATTER, TUI_MONTH_FORMATTER_PROVIDER} from '@taiga-ui/legacy/utils';
 
 @Component({
     selector: 'tui-input-month',

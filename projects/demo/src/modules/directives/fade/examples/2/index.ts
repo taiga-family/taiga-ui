@@ -1,17 +1,20 @@
+import {NgIf} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {tuiFadeIn} from '@taiga-ui/core';
+import {tuiFadeIn, TuiLinkDirective} from '@taiga-ui/core';
+import {TuiFadeDirective} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'tui-fade-example-2',
+    standalone: true,
+    imports: [TuiFadeDirective, NgIf, TuiLinkDirective],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
     animations: [tuiFadeIn],
 })
-export class TuiFadeExample2 {
+export default class ExampleComponent {
     protected expanded = false;
 
     protected toggle(): void {

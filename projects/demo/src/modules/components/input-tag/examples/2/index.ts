@@ -1,6 +1,11 @@
+import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiDataListDirective, TuiTextfieldControllerModule} from '@taiga-ui/core';
+import {TuiDataListWrapperComponent} from '@taiga-ui/kit';
+import {TuiInputTagModule} from '@taiga-ui/legacy';
 import type {Observable} from 'rxjs';
 import {delay, of, startWith, Subject, switchMap} from 'rxjs';
 
@@ -14,12 +19,20 @@ const databaseMockData: readonly string[] = [
 ];
 
 @Component({
-    selector: 'tui-input-tag-example-2',
+    standalone: true,
+    imports: [
+        TuiInputTagModule,
+        TuiTextfieldControllerModule,
+        FormsModule,
+        TuiDataListWrapperComponent,
+        TuiDataListDirective,
+        AsyncPipe,
+    ],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
-export class TuiInputTagExample2 {
+export default class ExampleComponent {
     private readonly search$ = new Subject<string>();
 
     protected value = [];

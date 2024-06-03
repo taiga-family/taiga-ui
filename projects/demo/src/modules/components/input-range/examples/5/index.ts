@@ -1,17 +1,20 @@
+import {JsonPipe, NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiKeySteps} from '@taiga-ui/kit';
+import {TuiInputRangeModule} from '@taiga-ui/legacy';
 
 @Component({
-    selector: 'tui-input-range-example-5',
+    standalone: true,
+    imports: [TuiInputRangeModule, ReactiveFormsModule, NgForOf, JsonPipe],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiInputRangeExample5 {
+export default class ExampleComponent {
     protected readonly control = new FormControl([100_000, 500_000]);
     protected readonly max = 1_000_000;
     protected readonly min = 0;

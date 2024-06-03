@@ -1,5 +1,6 @@
 ```ts
-import {TuiBreadcrumbsModule} from '@taiga-ui/kit';
+import {TuiItemDirective} from '@taiga-ui/cdk';
+import {TuiBreadcrumbsComponent} from '@taiga-ui/kit';
 
 // ...
 
@@ -7,7 +8,8 @@ import {TuiBreadcrumbsModule} from '@taiga-ui/kit';
   standalone: true,
   imports: [
     // ...
-    TuiBreadcrumbsModule,
+    TuiItemDirective,
+    TuiBreadcrumbsComponent,
   ],
   // ...
 })

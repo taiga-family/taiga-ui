@@ -1,5 +1,5 @@
 ```html
-<tui-island tuiTouchable="transform">...</tui-island>
+<div tuiTouchable="transform">...</div>
 <a
   tuiLink
   tuiTouchable="opacity"

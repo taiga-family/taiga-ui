@@ -1,22 +1,22 @@
 <p>1. Display only the first line, in a popup display remaining lines.</p>
 
-<tui-island class="island">
+<div class="island">
     <tui-line-clamp
         [content]="userAdditionalInfo"
         [linesLimit]="1"
     />
-</tui-island>
+</div>
 
 <p>2. Do not use `tui-line-clamp`, use `text-overflow: ellipsis` instead.</p>
 
-<tui-island class="island">
+<div class="island">
     <p
         class="email"
         [tuiHint]="userAdditionalInfo"
     >
         {{ user.email }}
     </p>
-</tui-island>
+</div>
 
 <ng-template #userAdditionalInfo>
     <span>{{ user.email }}</span>

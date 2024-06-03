@@ -1,8 +1,10 @@
+import {JsonPipe} from '@angular/common';
 import {Component} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiHandler, TuiIdentityMatcher} from '@taiga-ui/cdk';
+import {TuiFilterComponent} from '@taiga-ui/kit';
 
 interface Operations {
     operations: readonly Operation[];
@@ -26,13 +28,14 @@ const COMPLETED = {
 };
 
 @Component({
-    selector: 'tui-filter-example-2',
+    standalone: true,
+    imports: [ReactiveFormsModule, TuiFilterComponent, JsonPipe],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export class TuiFilterExample2 {
+export default class ExampleComponent {
     protected readonly form = new FormGroup({
         filters: new FormControl([
             {

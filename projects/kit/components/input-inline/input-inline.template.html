@@ -1,32 +1,16 @@
-<span
-    #text
-    class="t-before"
-    [style.text-indent.px]="indent"
-    [textContent]="value"
-></span>
+<ng-container *tuiLet="value$ | async as value">
+    <span
+        class="t-before"
+        [style.text-indent.px]="indent"
+        [textContent]="value"
+    ></span>
 
-<span
-    *ngIf="!hasValue"
-    automation-id="tui-input-inline__placeholder"
-    class="t-placeholder"
->
-    <ng-content />
-</span>
-
-<input
-    #native
-    automation-id="tui-input-inline__native"
-    tuiMaskAccessor
-    type="text"
-    class="t-native"
-    [attr.maxLength]="maxLength"
-    [disabled]="computedDisabled"
-    [id]="id"
-    [ngModel]="value"
-    [readOnly]="readOnly"
-    [tabIndex]="focusable ? 0 : -1"
-    (blur)="onFocused(false)"
-    (focus)="onFocused(true)"
-    (ngModelChange)="onValueChange($event)"
-    (scroll)="onScroll()"
-/>
+    <span
+        *ngIf="!value"
+        automation-id="tui-input-inline__placeholder"
+        class="t-placeholder"
+    >
+        <ng-content />
+    </span>
+</ng-container>
+<ng-content select="input" />

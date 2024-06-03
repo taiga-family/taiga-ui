@@ -4,12 +4,23 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiNativeFocusableElement} from '@taiga-ui/cdk';
 import {AbstractTuiControl} from '@taiga-ui/cdk';
 import {
+    TuiHintOptionsDirective,
     TuiPrimitiveTextfieldComponent,
+    TuiPrimitiveTextfieldModule,
+    TuiTextfieldControllerModule,
+    TuiTextfieldOptionsDirective,
     tuiTextfieldOptionsProviderLegacy,
 } from '@taiga-ui/core';
 
 @Component({
+    standalone: true,
     selector: 'tui-primitive-textfield-example-2',
+    imports: [
+        TuiTextfieldOptionsDirective,
+        TuiTextfieldControllerModule,
+        TuiPrimitiveTextfieldModule,
+        TuiHintOptionsDirective,
+    ],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
@@ -20,7 +31,7 @@ import {
         }),
     ],
 })
-export class TuiPrimitiveTextfieldExample2 extends AbstractTuiControl<string> {
+export default class ExampleComponent extends AbstractTuiControl<string> {
     @ViewChild(TuiPrimitiveTextfieldComponent)
     private readonly textfield?: TuiPrimitiveTextfieldComponent;
 
