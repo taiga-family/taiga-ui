@@ -31,6 +31,7 @@ const COMPONENT_AFTER = `
 @Component({
     standalone: true,
     templateUrl: './test.template.html',
+    imports: []
 })
 export class TestComponent {
     focusable = true;
