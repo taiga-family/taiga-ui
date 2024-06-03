@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.82.0](https://github.com/taiga-family/taiga-ui/compare/v3.81.0...v3.82.0) (2024-06-03)
+
+### Features
+
+- **experimental:** `HintAside` add automatic hint directive for navigation
+  ([#7578](https://github.com/taiga-family/taiga-ui/issues/7578))
+  ([de88842](https://github.com/taiga-family/taiga-ui/commit/de8884278fb6fd127f26b8bae55f890f57238146))
+
+### Bug Fixes
+
+- **cdk:** `Scrollbar` fix scroll behaviour ([#7594](https://github.com/taiga-family/taiga-ui/issues/7594))
+  ([10fe5a3](https://github.com/taiga-family/taiga-ui/commit/10fe5a3f251624418b82e0a269151326d0780afa))
+- **core:** close `Hint` and `Dropdown` when host is detached from dom
+  ([#7593](https://github.com/taiga-family/taiga-ui/issues/7593))
+  ([cf6d9f8](https://github.com/taiga-family/taiga-ui/commit/cf6d9f8002111a60f09c2c9de316f3f52a25ed05))
+- **kit:** set nullish border in `tui-textarea` ([#7588](https://github.com/taiga-family/taiga-ui/issues/7588))
+  ([8b9b10c](https://github.com/taiga-family/taiga-ui/commit/8b9b10ca8629193ff369a300eb4d27b5a44b0450))
+- **kit:** set nullish border in `tui-textarea` and add example
+  ([#7605](https://github.com/taiga-family/taiga-ui/issues/7605))
+  ([1bc1b76](https://github.com/taiga-family/taiga-ui/commit/1bc1b76e6928e3f7b2b982c5f3388a8670b9cd8a))
+
 ## [3.81.0](https://github.com/taiga-family/taiga-ui/compare/v3.80.0...v3.81.0) (2024-05-27)
 
 ### Features
