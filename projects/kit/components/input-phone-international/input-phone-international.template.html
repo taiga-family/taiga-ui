@@ -21,7 +21,7 @@
             <ng-template #flag>
                 <img
                     *ngIf="countryIsoCode$ | async as countryIsoCode"
-                    class="t-flag"
+                    class="t-flag t-flag_select"
                     [alt]="countriesNames[countryIsoCode]"
                     [src]="countryIsoCode | tuiFlag"
                 />
@@ -58,7 +58,7 @@
                 >
                     <img
                         alt=""
-                        class="t-country-item-flag"
+                        class="t-flag"
                         [src]="item | tuiFlag"
                     />
                     <span class="t-country-item-name">

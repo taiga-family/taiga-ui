@@ -1,8 +1,5 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
-@flag-width: 1.75rem;
-@flag-height: 1.25rem;
-
 :host {
     display: block;
 
@@ -36,17 +33,15 @@
 }
 
 .t-flag {
-    .fullsize(absolute, inset);
+    width: 1.75rem;
+    height: 1.25rem;
 
-    left: 0.5rem;
-    width: @flag-width;
-    height: @flag-height;
-    margin: auto;
-}
+    &_select {
+        .fullsize(absolute, inset);
 
-.t-country-item-flag {
-    width: @flag-width;
-    height: @flag-height;
+        left: 0.5rem;
+        margin: auto;
+    }
 }
 
 .t-country-item-name {
