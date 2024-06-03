@@ -1,4 +1,4 @@
-import type {OnChanges, OnDestroy} from '@angular/core';
+import type {OnDestroy} from '@angular/core';
 import {Directive, inject, INJECTOR, Input} from '@angular/core';
 import {TuiActiveZoneDirective, tuiInjectElement} from '@taiga-ui/cdk';
 import type {TuiRectAccessor, TuiVehicle} from '@taiga-ui/core/classes';
@@ -39,13 +39,10 @@ import {TuiHintPositionDirective} from './hint-position.directive';
     ],
 })
 export class TuiHintDirective<C>
-    implements OnDestroy, OnChanges, TuiPortalItem<C>, TuiRectAccessor, TuiVehicle
+    implements OnDestroy, TuiPortalItem<C>, TuiRectAccessor, TuiVehicle
 {
     private readonly service = inject(TuiHintService);
     private readonly options = inject(TUI_HINT_OPTIONS);
-
-    @Input('tuiHint')
-    public content: PolymorpheusContent<C>;
 
     @Input('tuiHintContext')
     public context?: C;
@@ -53,19 +50,23 @@ export class TuiHintDirective<C>
     @Input()
     public tuiHintAppearance: string | null = null;
 
+    public content: PolymorpheusContent<C>;
     public component = inject(PolymorpheusComponent<unknown>);
     public readonly el = tuiInjectElement();
     public readonly activeZone? = inject(TuiActiveZoneDirective, {optional: true});
     public readonly type = 'hint';
 
-    public get appearance(): string {
-        return this.tuiHintAppearance ?? this.options.appearance;
-    }
+    @Input()
+    public set tuiHint(content: PolymorpheusContent<C>) {
+        this.content = content;
 
-    public ngOnChanges(): void {
-        if (!this.content) {
+        if (!content) {
             this.toggle(false);
         }
+    }
+
+    public get appearance(): string {
+        return this.tuiHintAppearance ?? this.options.appearance;
     }
 
     public ngOnDestroy(): void {

@@ -31,6 +31,7 @@ import {TUI_SWITCH_OPTIONS} from './switch.options';
         TuiNativeValidatorDirective,
     ],
     host: {
+        role: 'switch',
         '[disabled]': '!control || control.disabled',
         '[attr.data-size]': 'size',
         '[class._readonly]': '!control',
