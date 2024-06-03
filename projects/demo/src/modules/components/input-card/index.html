@@ -28,6 +28,19 @@
                 tag is used for better autocomplete support
             </p>
         </tui-doc-example>
+
+        <tui-doc-example
+            id="card"
+            heading="Card"
+            [component]="2 | tuiComponent"
+            [content]="2 | tuiExample: 'html,ts'"
+        >
+            <p>
+                Pass empty string to disable
+                <code>icon</code>
+                if you want to use custom content instead.
+            </p>
+        </tui-doc-example>
     </ng-template>
 
     <tui-setup *pageTab="'Setup'" />
