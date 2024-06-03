@@ -93,7 +93,11 @@ export class TuiHintComponent<C = any> {
                 takeUntil(destroy$),
             )
             .subscribe(([top, left]) => {
-                this.update(top, left);
+                if (this.hover.el.nativeElement.isConnected) {
+                    this.update(top, left);
+                } else {
+                    this.hover.toggle(false);
+                }
             });
 
         hovered$.pipe(takeUntil(destroy$)).subscribe(hover => this.hover.toggle(hover));
