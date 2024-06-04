@@ -56,7 +56,10 @@ export class TuiDropdownSelectionDirective
         this.selection$.pipe(
             map(() => this.getRange()),
             distinctUntilChanged(
-                (x, y) => x.startOffset === y.startOffset && x.endOffset === y.endOffset,
+                (x, y) =>
+                    x.startOffset === y.startOffset &&
+                    x.endOffset === y.endOffset &&
+                    x.commonAncestorContainer === y.commonAncestorContainer,
             ),
         ),
     ]).pipe(
