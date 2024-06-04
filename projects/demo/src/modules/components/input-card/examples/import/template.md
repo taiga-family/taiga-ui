@@ -1,7 +1,28 @@
 ```html
 <form [formGroup]="form">
-  <tui-input-card formControlName="card">Card number</tui-input-card>
-  <tui-input-expire formControlName="expire">Expire date</tui-input-expire>
-  <tui-input-cvc formControlName="cvc">CVC/CVV</tui-input-cvc>
+  <tui-textfield>
+    <label tuiLabel>Card number</label>
+    <input
+      formControlName="card"
+      tuiInputCard
+      tuiTextfield
+    />
+  </tui-textfield>
+  <tui-textfield>
+    <label tuiLabel>Expire date</label>
+    <input
+      formControlName="expire"
+      tuiInputExpire
+      tuiTextfield
+    />
+  </tui-textfield>
+  <tui-textfield>
+    <label tuiLabel>CVC/CVV</label>
+    <input
+      formControlName="cvc"
+      tuiInputCVC
+      tuiTextfield
+    />
+  </tui-textfield>
 </form>
 ```

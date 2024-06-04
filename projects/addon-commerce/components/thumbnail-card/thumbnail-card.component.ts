@@ -37,7 +37,6 @@ export class TuiThumbnailCardComponent {
     @Input()
     public iconRight = '';
 
-    // TODO: Revisit this approach in 4.0 when icons are moved away from InputCard options
     protected get isMono(): boolean {
         switch (this.paymentSystem) {
             case 'mir':

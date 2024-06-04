@@ -6,7 +6,7 @@ import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export interface TuiInputCardOptions {
-    readonly autocompleteEnabled: boolean;
+    readonly autocomplete: boolean;
     cardSrc: PolymorpheusContent;
     readonly paymentSystemHandler: TuiHandler<
         string | null | undefined,
@@ -17,7 +17,7 @@ export interface TuiInputCardOptions {
 export const TUI_INPUT_CARD_DEFAULT_OPTIONS: TuiInputCardOptions = {
     cardSrc: '',
     paymentSystemHandler: tuiGetPaymentSystem,
-    autocompleteEnabled: false,
+    autocomplete: false,
 };
 
 export const TUI_INPUT_CARD_OPTIONS = tuiCreateToken(TUI_INPUT_CARD_DEFAULT_OPTIONS);

@@ -17,7 +17,6 @@ import {MaskitoDirective} from '@maskito/angular';
 import type {MaskitoOptions} from '@maskito/core';
 import {maskitoDateOptionsGenerator} from '@maskito/kit';
 import {ResizeObserverModule} from '@ng-web-apis/resize-observer';
-import {AbstractTuiInputCard} from '@taiga-ui/addon-commerce/components/input-card';
 import {TUI_CARD_MASK} from '@taiga-ui/addon-commerce/constants';
 import {TuiFormatCardPipe} from '@taiga-ui/addon-commerce/pipes';
 import type {TuiCard, TuiCodeCVCLength} from '@taiga-ui/addon-commerce/types';
@@ -56,6 +55,7 @@ import {TuiChevronDirective} from '@taiga-ui/kit';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
+import {AbstractTuiInputCard} from './abstract-input-card';
 import type {TuiInputCardGroupedOptions} from './input-card-grouped.options';
 import {TUI_INPUT_CARD_GROUPED_OPTIONS} from './input-card-grouped.options';
 import {TUI_INPUT_CARD_GROUPED_TEXTS} from './input-card-grouped.providers';
