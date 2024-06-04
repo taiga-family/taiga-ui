@@ -32,7 +32,7 @@ import {
     TuiGroupDirective,
     TuiHint,
     TuiSelectDirective,
-    TuiTextfieldModule,
+    TuiTextfield,
     TuiTextfieldOptionsDirective,
     tuiTextfieldOptionsProvider,
 } from '@taiga-ui/core';
@@ -66,7 +66,7 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
         TuiGroupDirective,
         TuiHint,
         TuiLetDirective,
-        TuiTextfieldModule,
+        TuiTextfield,
     ],
     templateUrl: './input-phone-international.template.html',
     styleUrls: ['./input-phone-international.style.less'],
