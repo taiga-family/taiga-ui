@@ -73,7 +73,7 @@ describe('InputPhoneInternational', () => {
             fixture.detectChanges();
             inputPO = new TuiNativeInputPO(
                 fixture,
-                fixture.debugElement.query(By.css('tui-primitive-textfield input')),
+                fixture.debugElement.query(By.css('input')),
             );
         });
     };
