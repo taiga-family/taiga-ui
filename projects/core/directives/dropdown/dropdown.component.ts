@@ -67,7 +67,11 @@ export class TuiDropdownComponent implements OnInit {
             takeUntilDestroyed(),
         )
         .subscribe(([top, left]) => {
-            this.update(top, left);
+            if (this.directive.el.isConnected) {
+                this.update(top, left);
+            } else {
+                this.directive.toggle(false);
+            }
         });
 
     public ngOnInit(): void {

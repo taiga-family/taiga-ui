@@ -117,6 +117,12 @@ export class TuiHintComponent<C = any> {
 
     @tuiPure
     private update(top: number, left: number): void {
+        if (!this.hover.el.isConnected) {
+            this.hover.toggle(false);
+
+            return;
+        }
+
         const {height, width} = this.el.getBoundingClientRect();
         const rect = this.accessor.getClientRect();
         const viewport = this.viewport.getClientRect();
