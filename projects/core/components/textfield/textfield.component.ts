@@ -147,6 +147,6 @@ export class TuiTextfieldComponent<T>
     }
 
     protected get hasLabel(): boolean {
-        return Boolean(this.label?.nativeElement?.textContent?.trim());
+        return Boolean(this.label?.nativeElement?.childNodes.length);
     }
 }
