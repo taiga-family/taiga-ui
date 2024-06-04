@@ -177,17 +177,17 @@
                 transform: translateY(-0.7em);
             }
 
-            &:not(:disabled):not(._readonly)[data-invalid='true'] ~ label,
-            &:invalid:not(:disabled):not(._readonly):not([data-invalid='false']) ~ label {
+            &:not(:disabled):not([data-mode='readonly'])[data-invalid='true'] ~ label,
+            &:invalid:not(:disabled):not([data-mode='readonly']):not([data-invalid='false']) ~ label {
                 color: var(--tui-negative);
             }
 
-            &:not(:disabled):not(._readonly) ~ .t-content .t-clear {
+            &:not(:disabled):not([data-mode='readonly']) ~ .t-content .t-clear {
                 display: flex;
             }
         }
 
-        &:not(._readonly) {
+        &:not([data-mode='readonly']) {
             .appearance-focus({
                 &::placeholder,
                 &._empty {
@@ -219,7 +219,7 @@
         color: var(--tui-text-02);
     }
 
-    ::ng-deep select:not(._readonly) {
+    ::ng-deep select:not([data-mode='readonly']) {
         cursor: pointer;
     }
 }
