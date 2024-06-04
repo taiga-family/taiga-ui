@@ -10,6 +10,8 @@ import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('Calendar', () => {
     @Component({
+        standalone: true,
+        imports: [TuiCalendarComponent],
         template: `
             <tui-calendar
                 [value]="value"
@@ -58,8 +60,7 @@ describe('Calendar', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TuiCalendarComponent],
-            declarations: [TestComponent],
+            imports: [TestComponent],
             providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();

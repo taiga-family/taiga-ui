@@ -7,6 +7,8 @@ import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('Let', () => {
     @Component({
+        standalone: true,
+        imports: [TuiLetDirective],
         template: `
             <div
                 *tuiLet="getter as value"
@@ -35,8 +37,7 @@ describe('Let', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TuiLetDirective],
-            declarations: [TestComponent],
+            imports: [TestComponent],
             providers: [NG_EVENT_PLUGINS],
         });
 

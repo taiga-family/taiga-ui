@@ -1,7 +1,7 @@
+import {NgIf} from '@angular/common';
 import {Component, Input} from '@angular/core';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {TuiSwipeDirective} from '@taiga-ui/cdk';
-import {TuiHint, TuiRootComponent} from '@taiga-ui/core';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {TuiHintDirective, TuiRootComponent} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 import type {MountResponse} from 'cypress/angular';
 
@@ -10,7 +10,9 @@ describe('TuiHint', () => {
     let wrapper: MountResponse<TestComponent>;
 
     @Component({
+        standalone: true,
         selector: 'my-host',
+        imports: [NgIf],
         template: `
             <ng-container *ngIf="!hideElement">
                 <ng-content></ng-content>
@@ -23,6 +25,8 @@ describe('TuiHint', () => {
     }
 
     @Component({
+        standalone: true,
+        imports: [TuiRootComponent, HostComponent, TuiHintDirective],
         template: `
             <tui-root>
                 <my-host [hideElement]="hide">
@@ -38,13 +42,7 @@ describe('TuiHint', () => {
     beforeEach(() =>
         cy
             .mount(TestComponent, {
-                imports: [
-                    BrowserAnimationsModule,
-                    TuiRootComponent,
-                    TuiSwipeDirective,
-                    TuiHint,
-                ],
-                declarations: [HostComponent],
+                imports: [NoopAnimationsModule, HostComponent],
                 providers: [NG_EVENT_PLUGINS],
             })
             .then(wrap => {

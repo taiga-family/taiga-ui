@@ -2,8 +2,7 @@ import {Component} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {discardPeriodicTasks, fakeAsync, TestBed, tick} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {TuiHint, TuiRootComponent} from '@taiga-ui/core';
+import {TuiHintDirective, TuiRootComponent} from '@taiga-ui/core';
 import {TuiFieldErrorContentPipe} from '@taiga-ui/kit/pipes';
 import {TUI_VALIDATION_ERRORS} from '@taiga-ui/kit/tokens';
 import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
@@ -13,6 +12,13 @@ describe('TuiFieldErrorContentPipe', () => {
     const max = 15;
 
     @Component({
+        standalone: true,
+        imports: [
+            TuiRootComponent,
+            TuiHintDirective,
+            ReactiveFormsModule,
+            TuiFieldErrorContentPipe,
+        ],
         template: `
             <tui-root>
                 <input
@@ -53,15 +59,8 @@ describe('TuiFieldErrorContentPipe', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [
-                NoopAnimationsModule,
-                TuiHint,
-                TuiRootComponent,
-                ReactiveFormsModule,
-                TuiFieldErrorContentPipe,
-            ],
+            imports: [TestComponent],
             providers: [NG_EVENT_PLUGINS],
-            declarations: [TestComponent],
         });
         await TestBed.compileComponents();
         document.body.style.margin = '0';

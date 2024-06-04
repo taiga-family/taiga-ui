@@ -9,6 +9,8 @@ describe('TablePagination', () => {
     let testComponent: TestComponent;
 
     @Component({
+        standalone: true,
+        imports: [TuiTablePaginationComponent],
         template: `
             <tui-table-pagination
                 [page]="page"
@@ -33,8 +35,7 @@ describe('TablePagination', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TuiTablePaginationComponent],
-            declarations: [TestComponent],
+            imports: [TestComponent],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);

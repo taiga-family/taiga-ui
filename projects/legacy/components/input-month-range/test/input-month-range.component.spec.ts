@@ -2,13 +2,14 @@ import {Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiMonth, TuiMonthRange} from '@taiga-ui/cdk';
 import {TuiInputMonthRangeComponent, TuiInputMonthRangeModule} from '@taiga-ui/legacy';
 import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('InputMonthRange', () => {
     @Component({
+        standalone: true,
+        imports: [TuiInputMonthRangeModule, ReactiveFormsModule],
         template: `
             <tui-input-month-range [formControl]="control"></tui-input-month-range>
         `,
@@ -26,13 +27,8 @@ describe('InputMonthRange', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [
-                ReactiveFormsModule,
-                NoopAnimationsModule,
-                TuiInputMonthRangeModule,
-            ],
+            imports: [TestComponent],
             providers: [NG_EVENT_PLUGINS],
-            declarations: [TestComponent],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);

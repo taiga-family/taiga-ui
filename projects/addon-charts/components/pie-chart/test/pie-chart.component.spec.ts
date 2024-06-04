@@ -7,6 +7,8 @@ import {TuiPageObject} from '@taiga-ui/testing';
 
 describe('PieChart', () => {
     @Component({
+        standalone: true,
+        imports: [TuiPieChartComponent],
         template: `
             <tui-pie-chart [value]="value"></tui-pie-chart>
         `,
@@ -20,8 +22,7 @@ describe('PieChart', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TuiPieChartComponent],
-            declarations: [TestComponent],
+            imports: [TestComponent],
             providers: [
                 {
                     provide: Location,

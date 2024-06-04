@@ -2,14 +2,15 @@ import {Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {TuiHint, TuiRootComponent, TuiTextfieldControllerModule} from '@taiga-ui/core';
+import {TuiRootComponent} from '@taiga-ui/core';
 import {TuiInputPhoneComponent, TuiInputPhoneModule} from '@taiga-ui/legacy';
 import {TuiNativeInputPO} from '@taiga-ui/testing';
 import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('InputPhone', () => {
     @Component({
+        standalone: true,
+        imports: [TuiRootComponent, TuiInputPhoneModule, ReactiveFormsModule],
         template: `
             <tui-root>
                 <tui-input-phone
@@ -40,15 +41,7 @@ describe('InputPhone', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [
-                TuiRootComponent,
-                TuiInputPhoneModule,
-                ReactiveFormsModule,
-                NoopAnimationsModule,
-                TuiTextfieldControllerModule,
-                TuiHint,
-            ],
-            declarations: [TestComponent],
+            imports: [TestComponent],
             providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();

@@ -1,4 +1,4 @@
-import {CommonModule} from '@angular/common';
+import {AsyncPipe, NgFor} from '@angular/common';
 import {Component} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
@@ -8,6 +8,8 @@ import {Subject} from 'rxjs';
 
 describe('TuiFor directive', () => {
     @Component({
+        standalone: true,
+        imports: [TuiForDirective, NgFor, AsyncPipe],
         template: `
             <div *ngFor="let item of items$ | async; else: loading; empty: blank">
                 {{ item }}
@@ -27,8 +29,7 @@ describe('TuiFor directive', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [CommonModule, TuiForDirective],
-            declarations: [TestComponent],
+            imports: [TestComponent],
             providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();

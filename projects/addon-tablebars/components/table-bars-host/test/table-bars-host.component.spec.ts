@@ -2,7 +2,6 @@ import type {DebugElement} from '@angular/core';
 import {Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {fakeAsync, TestBed, tick} from '@angular/core/testing';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiTableBarsHostComponent, TuiTableBarsService} from '@taiga-ui/addon-tablebars';
 import {TuiPageObject} from '@taiga-ui/testing';
 import type {Subscription} from 'rxjs';
@@ -10,6 +9,8 @@ import {skip, take, takeUntil, timer} from 'rxjs';
 
 describe('TableBarsHost', () => {
     @Component({
+        standalone: true,
+        imports: [TuiTableBarsHostComponent],
         template: `
             <tui-table-bars-host></tui-table-bars-host>
         `,
@@ -35,8 +36,7 @@ describe('TableBarsHost', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TuiTableBarsHostComponent, NoopAnimationsModule],
-            declarations: [TestComponent],
+            imports: [TestComponent],
             providers: [TuiTableBarsService],
         });
         await TestBed.compileComponents();

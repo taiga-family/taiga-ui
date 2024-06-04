@@ -9,6 +9,8 @@ import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('Island', () => {
     @Component({
+        standalone: true,
+        imports: [TuiIslandDirective],
         template: `
             <tui-island
                 id="size-m"
@@ -47,8 +49,7 @@ describe('Island', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TuiIslandDirective],
-            declarations: [TestComponent],
+            imports: [TestComponent],
             providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();

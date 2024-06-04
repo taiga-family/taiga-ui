@@ -14,6 +14,8 @@ import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('SVG options', () => {
     @Component({
+        standalone: true,
+        imports: [TuiSvgComponent],
         template: `
             <tui-svg [src]="icon"></tui-svg>
         `,
@@ -37,8 +39,7 @@ describe('SVG options', () => {
     describe('Default behaviour', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
-                imports: [TuiSvgComponent],
-                declarations: [TestComponent],
+                imports: [TestComponent],
                 providers: [NG_EVENT_PLUGINS],
             });
             await TestBed.compileComponents();
@@ -60,8 +61,7 @@ describe('SVG options', () => {
     describe('path', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
-                imports: [TuiSvgComponent],
-                declarations: [TestComponent],
+                imports: [TestComponent],
                 providers: [
                     NG_EVENT_PLUGINS,
                     tuiSvgOptionsProvider({
@@ -88,8 +88,7 @@ describe('SVG options', () => {
     describe('path uses baseUrl', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
-                imports: [TuiSvgComponent],
-                declarations: [TestComponent],
+                imports: [TestComponent],
                 providers: [
                     NG_EVENT_PLUGINS,
                     {
@@ -121,8 +120,7 @@ describe('SVG options', () => {
     describe('srcProcessor', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
-                imports: [TuiSvgComponent],
-                declarations: [TestComponent],
+                imports: [TestComponent],
                 providers: [
                     NG_EVENT_PLUGINS,
                     tuiSvgOptionsProvider({
@@ -164,8 +162,7 @@ describe('SVG options', () => {
             const path = 'assets/hello-world/icons';
 
             TestBed.configureTestingModule({
-                imports: [TuiSvgComponent],
-                declarations: [TestComponent],
+                imports: [TestComponent],
                 providers: [
                     NG_EVENT_PLUGINS,
                     tuiSvgOptionsProvider({
@@ -206,8 +203,7 @@ describe('SVG options', () => {
     describe('TUI_SVG_SRC_PROCESSOR + tuiSvgOptionsProvider -> srcProcessor', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
-                imports: [TuiSvgComponent],
-                declarations: [TestComponent],
+                imports: [TestComponent],
                 providers: [
                     NG_EVENT_PLUGINS,
                     tuiSvgOptionsProvider({
@@ -249,8 +245,7 @@ describe('SVG options', () => {
     describe('srcProcessor -> https prefix', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
-                imports: [TuiSvgComponent],
-                declarations: [TestComponent],
+                imports: [TestComponent],
                 providers: [
                     NG_EVENT_PLUGINS,
                     tuiSvgOptionsProvider({
@@ -274,8 +269,7 @@ describe('SVG options', () => {
     describe('TUI_SVG_SRC_PROCESSOR + tuiSvgOptionsProvider', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
-                imports: [TuiSvgComponent],
-                declarations: [TestComponent],
+                imports: [TestComponent],
                 providers: [
                     NG_EVENT_PLUGINS,
                     tuiSvgOptionsProvider({
@@ -300,8 +294,7 @@ describe('SVG options', () => {
     describe('multiple source processors', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
-                imports: [TuiSvgComponent],
-                declarations: [TestComponent],
+                imports: [TestComponent],
                 providers: [
                     NG_EVENT_PLUGINS,
                     tuiSvgOptionsProvider({path: 'assets/default-path-to-icons/'}),

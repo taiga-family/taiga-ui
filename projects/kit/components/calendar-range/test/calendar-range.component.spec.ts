@@ -2,9 +2,8 @@ import type {DebugElement} from '@angular/core';
 import {Component, Optional, Self, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
-import {FormControl, NgControl, ReactiveFormsModule} from '@angular/forms';
+import {FormControl, NgControl} from '@angular/forms';
 import {By} from '@angular/platform-browser';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {
     TUI_LAST_DAY,
     tuiControlValue,
@@ -26,6 +25,8 @@ import {of} from 'rxjs';
 
 describe('rangeCalendarComponent', () => {
     @Component({
+        standalone: true,
+        imports: [TuiCalendarRangeComponent],
         template: `
             <tui-calendar-range
                 [items]="items"
@@ -71,13 +72,8 @@ describe('rangeCalendarComponent', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [
-                TuiCalendarRangeComponent,
-                ReactiveFormsModule,
-                NoopAnimationsModule,
-            ],
+            imports: [TestComponent],
             providers: [NG_EVENT_PLUGINS],
-            declarations: [TestComponent],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);

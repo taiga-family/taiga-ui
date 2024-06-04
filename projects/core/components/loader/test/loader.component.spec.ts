@@ -1,5 +1,6 @@
 import type {HarnessLoader} from '@angular/cdk/testing';
 import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
+import {NgIf} from '@angular/common';
 import {Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
@@ -10,6 +11,8 @@ import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 describe('Loader', () => {
     @Component({
+        standalone: true,
+        imports: [TuiLoaderComponent, NgIf],
         template: `
             <tui-loader
                 *ngIf="custom; else def"
@@ -40,8 +43,7 @@ describe('Loader', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TuiLoaderComponent],
-            declarations: [TestComponent],
+            imports: [TestComponent],
             providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();

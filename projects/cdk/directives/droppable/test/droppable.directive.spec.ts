@@ -8,6 +8,8 @@ import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('TuiDroppable Directive', () => {
     @Component({
+        standalone: true,
+        imports: [TuiDroppableDirective],
         template: `
             <div
                 (tuiDroppableDragOverChange)="onDragOver($event)"
@@ -28,8 +30,7 @@ describe('TuiDroppable Directive', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TuiDroppableDirective],
-            declarations: [TestComponent],
+            imports: [TestComponent],
             providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();

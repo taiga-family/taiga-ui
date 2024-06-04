@@ -1,8 +1,8 @@
+import {NgIf} from '@angular/common';
 import type {DebugElement} from '@angular/core';
 import {Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import type {TuiNotification} from '@taiga-ui/core';
 import {
     TUI_NOTIFICATION_DEFAULT_OPTIONS,
@@ -16,6 +16,8 @@ import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 describe('Notification', () => {
     describe('Without options', () => {
         @Component({
+            standalone: true,
+            imports: [TuiNotificationComponent, NgIf],
             template: `
                 <tui-notification
                     *ngIf="hasCloseButton; else noClose"
@@ -55,8 +57,7 @@ describe('Notification', () => {
 
         beforeEach(async () => {
             TestBed.configureTestingModule({
-                imports: [NoopAnimationsModule, TuiNotificationComponent],
-                declarations: [TestComponent],
+                imports: [TestComponent],
                 providers: [TuiSvgService, NG_EVENT_PLUGINS],
             });
             await TestBed.compileComponents();
@@ -88,6 +89,8 @@ describe('Notification', () => {
 
     describe('With options', () => {
         @Component({
+            standalone: true,
+            imports: [TuiNotificationComponent],
             template: `
                 <tui-notification>Short simple informational message</tui-notification>
             `,
@@ -108,8 +111,7 @@ describe('Notification', () => {
 
         beforeEach(async () => {
             TestBed.configureTestingModule({
-                imports: [NoopAnimationsModule, TuiNotificationComponent],
-                declarations: [TestComponent],
+                imports: [TestComponent],
                 providers: [
                     TuiSvgService,
                     {

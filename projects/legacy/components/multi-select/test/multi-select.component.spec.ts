@@ -3,14 +3,8 @@ import {Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {
-    TuiDataList,
-    TuiHint,
-    TuiRootComponent,
-    TuiTextfieldControllerModule,
-} from '@taiga-ui/core';
-import {TuiDataListWrapper} from '@taiga-ui/kit/components';
+import {TuiDataListDirective, TuiRootComponent} from '@taiga-ui/core';
+import {TuiDataListWrapperComponent} from '@taiga-ui/kit/components';
 import {
     TUI_ARROW_MODE,
     TuiMultiSelectComponent,
@@ -45,6 +39,14 @@ describe('MultiSelect', () => {
         ];
 
         @Component({
+            standalone: true,
+            imports: [
+                TuiRootComponent,
+                TuiMultiSelectModule,
+                ReactiveFormsModule,
+                TuiDataListWrapperComponent,
+                TuiDataListDirective,
+            ],
             template: `
                 <tui-root>
                     <tui-multi-select
@@ -73,17 +75,7 @@ describe('MultiSelect', () => {
 
         beforeEach(async () => {
             TestBed.configureTestingModule({
-                imports: [
-                    ReactiveFormsModule,
-                    NoopAnimationsModule,
-                    TuiMultiSelectModule,
-                    TuiRootComponent,
-                    TuiDataList,
-                    TuiDataListWrapper,
-                    TuiTextfieldControllerModule,
-                    TuiHint,
-                ],
-                declarations: [TestComponent],
+                imports: [TestComponent],
                 providers: [TUI_SANITIZER_MOCK, NG_EVENT_PLUGINS],
             });
             await TestBed.compileComponents();
@@ -261,6 +253,14 @@ describe('MultiSelect', () => {
         const items = [new User('Alexander', 'Inkin', '1')];
 
         @Component({
+            standalone: true,
+            imports: [
+                TuiRootComponent,
+                TuiMultiSelectModule,
+                ReactiveFormsModule,
+                TuiDataListWrapperComponent,
+                TuiDataListDirective,
+            ],
             template: `
                 <tui-root>
                     <tui-multi-select
@@ -289,17 +289,7 @@ describe('MultiSelect', () => {
 
         beforeEach(async () => {
             TestBed.configureTestingModule({
-                imports: [
-                    ReactiveFormsModule,
-                    NoopAnimationsModule,
-                    TuiMultiSelectModule,
-                    TuiRootComponent,
-                    TuiDataList,
-                    TuiDataListWrapper,
-                    TuiTextfieldControllerModule,
-                    TuiHint,
-                ],
-                declarations: [TestComponent],
+                imports: [TestComponent],
                 providers: [
                     NG_EVENT_PLUGINS,
                     {

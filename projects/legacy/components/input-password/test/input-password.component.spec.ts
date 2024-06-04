@@ -3,7 +3,6 @@ import {Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {TuiPageObject} from '@taiga-ui/testing';
@@ -14,6 +13,12 @@ import {TuiInputPasswordModule} from '../input-password.module';
 
 describe('InputPassword', () => {
     @Component({
+        standalone: true,
+        imports: [
+            TuiInputPasswordModule,
+            ReactiveFormsModule,
+            TuiTextfieldControllerModule,
+        ],
         template: `
             <tui-input-password
                 [formControl]="control"
@@ -42,14 +47,8 @@ describe('InputPassword', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [
-                ReactiveFormsModule,
-                NoopAnimationsModule,
-                TuiInputPasswordModule,
-                TuiTextfieldControllerModule,
-            ],
+            imports: [TestComponent],
             providers: [NG_EVENT_PLUGINS],
-            declarations: [TestComponent],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);

@@ -2,12 +2,13 @@ import {Component, ElementRef, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import type {TuiSliderComponent} from '@taiga-ui/kit';
-import {TuiSlider} from '@taiga-ui/kit';
+import {TuiSliderComponent} from '@taiga-ui/kit';
 import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('Slider', () => {
     @Component({
+        standalone: true,
+        imports: [TuiSliderComponent, ReactiveFormsModule, FormsModule],
         template: `
             <input
                 #nativeUsageAllDefaults
@@ -60,8 +61,7 @@ describe('Slider', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [FormsModule, ReactiveFormsModule, TuiSlider],
-            declarations: [TestComponent],
+            imports: [TestComponent],
             providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();

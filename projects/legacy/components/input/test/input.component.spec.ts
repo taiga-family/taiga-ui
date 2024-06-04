@@ -3,15 +3,14 @@ import {Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {
-    TuiDataList,
+    TuiDataListDirective,
     TuiHint,
     TuiRootComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiDataListWrapper} from '@taiga-ui/kit/components';
+import {TuiDataListWrapperComponent} from '@taiga-ui/kit/components';
 import {TuiInputComponent, TuiInputModule} from '@taiga-ui/legacy';
 import {
     tuiActiveText,
@@ -43,6 +42,16 @@ const ITEMS = [
 
 describe('Input', () => {
     @Component({
+        standalone: true,
+        imports: [
+            TuiRootComponent,
+            ReactiveFormsModule,
+            TuiInputModule,
+            TuiHint,
+            TuiTextfieldControllerModule,
+            TuiDataListWrapperComponent,
+            TuiDataListDirective,
+        ],
         template: `
             <tui-root>
                 <form [formGroup]="group">
@@ -108,17 +117,7 @@ describe('Input', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [
-                TuiRootComponent,
-                NoopAnimationsModule,
-                ReactiveFormsModule,
-                TuiInputModule,
-                TuiTextfieldControllerModule,
-                TuiHint,
-                TuiDataList,
-                TuiDataListWrapper,
-            ],
-            declarations: [TestComponent],
+            imports: [TestComponent],
             providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();

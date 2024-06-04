@@ -3,7 +3,6 @@ import {Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiDay, TuiValueTransformer} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {
@@ -20,6 +19,14 @@ import {of} from 'rxjs';
 
 describe('InputDate', () => {
     @Component({
+        standalone: true,
+        imports: [
+            TuiRootComponent,
+            TuiInputDateModule,
+            ReactiveFormsModule,
+            TuiHint,
+            TuiTextfieldControllerModule,
+        ],
         template: `
             <tui-root>
                 <tui-input-date
@@ -78,18 +85,6 @@ describe('InputDate', () => {
         },
     };
 
-    const meta = {
-        imports: [
-            TuiRootComponent,
-            NoopAnimationsModule,
-            TuiInputDateModule,
-            ReactiveFormsModule,
-            TuiHint,
-            TuiTextfieldControllerModule,
-        ],
-        declarations: [TestComponent],
-    };
-
     const initializeEnvironment = async (
         component: Type<TestComponent> = TestComponent,
     ): Promise<void> => {
@@ -105,7 +100,7 @@ describe('InputDate', () => {
 
     describe('InputDate (base cases when TUI_DATE_FORMAT = DMY)', () => {
         beforeEach(async () => {
-            TestBed.configureTestingModule(meta);
+            TestBed.configureTestingModule({imports: [TestComponent]});
             await TestBed.compileComponents();
             await initializeEnvironment();
         });
@@ -187,7 +182,7 @@ describe('InputDate', () => {
     describe('InputDate + TUI_DATE_FORMAT = YMD integration', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
-                ...meta,
+                imports: [TestComponent],
                 providers: [
                     NG_EVENT_PLUGINS,
                     {provide: TUI_DATE_FORMAT, useValue: of({mode: 'YMD'})},
@@ -237,7 +232,7 @@ describe('InputDate', () => {
     describe('InputDate + TUI_DATE_FORMAT = MDY integration', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
-                ...meta,
+                imports: [TestComponent],
                 providers: [
                     NG_EVENT_PLUGINS,
                     {provide: TUI_DATE_FORMAT, useValue: of({mode: 'MDY'})},
@@ -287,7 +282,7 @@ describe('InputDate', () => {
     describe('InputDate + TUI_DATE_FORMAT="MDY" + TUI_DATE_SEPARATOR ="/" (USA format)', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
-                ...meta,
+                imports: [TestComponent],
                 providers: [
                     NG_EVENT_PLUGINS,
                     {
@@ -335,6 +330,14 @@ describe('InputDate', () => {
         }
 
         @Component({
+            standalone: true,
+            imports: [
+                TuiRootComponent,
+                TuiInputDateModule,
+                ReactiveFormsModule,
+                TuiHint,
+                TuiTextfieldControllerModule,
+            ],
             template: `
                 <tui-root>
                     <tui-input-date
@@ -357,8 +360,7 @@ describe('InputDate', () => {
 
         beforeEach(async () => {
             TestBed.configureTestingModule({
-                ...meta,
-                declarations: [TransformerTestComponent],
+                imports: [TestComponent, TransformerTestComponent],
                 providers: [
                     NG_EVENT_PLUGINS,
                     {

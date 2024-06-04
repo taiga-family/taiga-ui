@@ -8,6 +8,8 @@ import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('TuiValueChangesDirective', () => {
     @Component({
+        standalone: true,
+        imports: [ReactiveFormsModule, TuiValueChangesDirective],
         template: `
             <form
                 [formGroup]="form"
@@ -35,8 +37,7 @@ describe('TuiValueChangesDirective', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [ReactiveFormsModule, TuiValueChangesDirective],
-            declarations: [TestComponent],
+            imports: [TestComponent],
             providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();

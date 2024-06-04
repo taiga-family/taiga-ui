@@ -6,6 +6,8 @@ import {TuiBarSetComponent} from '@taiga-ui/addon-charts';
 
 describe('BarSet', () => {
     @Component({
+        standalone: true,
+        imports: [TuiBarSetComponent],
         template: `
             <tui-bar-set
                 [collapsed]="collapsed"
@@ -25,10 +27,7 @@ describe('BarSet', () => {
     let testComponent: TestComponent;
 
     beforeEach(async () => {
-        TestBed.configureTestingModule({
-            imports: [TuiBarSetComponent],
-            declarations: [TestComponent],
-        });
+        TestBed.configureTestingModule({imports: [TestComponent]});
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         testComponent = fixture.componentInstance;

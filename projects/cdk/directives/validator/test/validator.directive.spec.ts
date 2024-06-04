@@ -1,4 +1,4 @@
-import {CommonModule} from '@angular/common';
+import {NgIf} from '@angular/common';
 import {Component} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
@@ -8,6 +8,8 @@ import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('TuiValidator directive', () => {
     @Component({
+        standalone: true,
+        imports: [NgIf, ReactiveFormsModule, TuiValidatorDirective],
         template: `
             <input
                 *ngIf="show"
@@ -29,8 +31,7 @@ describe('TuiValidator directive', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [ReactiveFormsModule, CommonModule, TuiValidatorDirective],
-            declarations: [TestComponent],
+            imports: [TestComponent],
             providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();

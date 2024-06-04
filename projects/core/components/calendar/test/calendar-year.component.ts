@@ -7,6 +7,8 @@ import {TuiPageObject} from '@taiga-ui/testing';
 
 describe('TuiCalendarYearComponent', () => {
     @Component({
+        standalone: true,
+        imports: [TuiCalendarYearComponent],
         template: `
             <tui-calendar-year
                 [disabledItemHandler]="disabledItemHandler"
@@ -40,10 +42,7 @@ describe('TuiCalendarYearComponent', () => {
     };
 
     beforeEach(async () => {
-        TestBed.configureTestingModule({
-            imports: [TuiCalendarYearComponent],
-            declarations: [TestComponent],
-        });
+        TestBed.configureTestingModule({imports: [TestComponent]});
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         testComponent = fixture.componentInstance;

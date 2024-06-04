@@ -6,14 +6,12 @@ import {Component, ViewChild, ViewChildren} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {TuiDataList, TuiTextfieldControllerModule} from '@taiga-ui/core';
+import {TuiDataList} from '@taiga-ui/core';
 import {
     TuiAccordion,
     TuiAccordionDirective,
     TuiAccordionItemComponent,
 } from '@taiga-ui/kit';
-import {TuiDataListWrapper} from '@taiga-ui/kit/components';
 import {
     TuiAccordionHarness,
     TuiAccordionItemHarness,
@@ -40,6 +38,8 @@ describe('Accordion', () => {
     let testComponent: TestComponent;
 
     @Component({
+        standalone: true,
+        imports: [TuiAccordion, ReactiveFormsModule, TuiDataList],
         template: `
             <tui-accordion
                 id="single-select"
@@ -75,28 +75,7 @@ describe('Accordion', () => {
                     Accordion header
                     <ng-template tuiAccordionItemContent>
                         <div>
-                            <form [formGroup]="testForm">
-                                <!--                                <tui-input-->
-                                <!--                                    formControlName="name"-->
-                                <!--                                    tuiTextfieldSize="l"-->
-                                <!--                                >-->
-                                <!--                                    Enter your full name-->
-                                <!--                                    <input-->
-                                <!--                                        placeholder="Ivanov Ivan Ivanovich"-->
-                                <!--                                        tuiTextfield-->
-                                <!--                                    />-->
-                                <!--                                </tui-input>-->
-                                <!--                                <tui-select-->
-                                <!--                                    formControlName="accounts"-->
-                                <!--                                    tuiTextfieldSize="l"-->
-                                <!--                                >-->
-                                <!--                                    Select account-->
-                                <!--                                    <tui-data-list-wrapper-->
-                                <!--                                        *tuiDataList-->
-                                <!--                                        [items]="accounts"-->
-                                <!--                                    ></tui-data-list-wrapper>-->
-                                <!--                                </tui-select>-->
-                            </form>
+                            <form [formGroup]="testForm"></form>
                         </div>
                     </ng-template>
                 </tui-accordion-item>
@@ -116,9 +95,6 @@ describe('Accordion', () => {
         @ViewChildren(TuiAccordionItemComponent)
         public items!: QueryList<TuiAccordionItemComponent>;
 
-        // @ViewChild(TuiSelectComponent, {static: true})
-        // public selectComponent!: TuiSelectComponent<unknown>;
-
         public closeOthers = true;
 
         public accounts = [
@@ -135,18 +111,8 @@ describe('Accordion', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [
-                // TuiInputModule,
-                // TuiSelectModule,
-                TuiAccordion,
-                ReactiveFormsModule,
-                NoopAnimationsModule,
-                TuiTextfieldControllerModule,
-                TuiDataList,
-                TuiDataListWrapper,
-            ],
+            imports: [TestComponent],
             providers: [NG_EVENT_PLUGINS],
-            declarations: [TestComponent],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);

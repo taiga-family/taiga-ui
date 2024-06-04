@@ -2,16 +2,14 @@ import {Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import type {TuiIdentityMatcher} from '@taiga-ui/cdk';
 import {TUI_DEFAULT_IDENTITY_MATCHER} from '@taiga-ui/cdk';
 import {
-    TuiDataList,
-    TuiHint,
+    TuiDataListDirective,
     TuiRootComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiDataListWrapper} from '@taiga-ui/kit';
+import {TuiDataListWrapperComponent} from '@taiga-ui/kit';
 import {TuiSelectComponent, TuiSelectModule} from '@taiga-ui/legacy';
 import {TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
@@ -39,6 +37,15 @@ const MATCHER: TuiIdentityMatcher<Beast> = (item1, item2) => item1.id === item2.
 
 describe('Select', () => {
     @Component({
+        standalone: true,
+        imports: [
+            TuiRootComponent,
+            TuiSelectModule,
+            ReactiveFormsModule,
+            TuiTextfieldControllerModule,
+            TuiDataListWrapperComponent,
+            TuiDataListDirective,
+        ],
         template: `
             <tui-root>
                 <tui-select
@@ -72,17 +79,7 @@ describe('Select', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [
-                ReactiveFormsModule,
-                NoopAnimationsModule,
-                TuiSelectModule,
-                TuiRootComponent,
-                TuiTextfieldControllerModule,
-                TuiHint,
-                TuiDataList,
-                TuiDataListWrapper,
-            ],
-            declarations: [TestComponent],
+            imports: [TestComponent],
             providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();

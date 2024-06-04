@@ -5,6 +5,8 @@ import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('TuiHighlight directive', () => {
     @Component({
+        standalone: true,
+        imports: [TuiHighlightDirective],
         template: `
             <div
                 id="ica"
@@ -31,8 +33,7 @@ describe('TuiHighlight directive', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TuiHighlightDirective],
-            declarations: [TestComponent],
+            imports: [TestComponent],
             providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();

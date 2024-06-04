@@ -11,6 +11,13 @@ import {TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 @Component({
+    standalone: true,
+    imports: [
+        TuiRootComponent,
+        TuiInputSliderModule,
+        ReactiveFormsModule,
+        TuiTextfieldControllerModule,
+    ],
     template: `
         <tui-root>
             <tui-input-slider
@@ -74,13 +81,7 @@ let inputPO: TuiNativeInputPO;
 describe('InputSlider', () => {
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [
-                TuiRootComponent,
-                TuiTextfieldControllerModule,
-                TuiInputSliderModule,
-                ReactiveFormsModule,
-            ],
-            declarations: [TestComponent],
+            imports: [TestComponent],
             providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();

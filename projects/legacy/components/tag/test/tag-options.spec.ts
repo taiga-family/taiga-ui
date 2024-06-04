@@ -9,6 +9,8 @@ describe('Tag component options', () => {
     let testComponent: TestComponent;
 
     @Component({
+        standalone: true,
+        imports: [TuiTagModule],
         template: `
             <tui-tag></tui-tag>
         `,
@@ -20,8 +22,7 @@ describe('Tag component options', () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            imports: [TuiTagModule],
-            declarations: [TestComponent],
+            imports: [TuiTagModule, TestComponent],
             providers: [
                 NG_EVENT_PLUGINS,
                 tuiTagOptionsProvider({

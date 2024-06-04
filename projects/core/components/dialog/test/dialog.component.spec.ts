@@ -3,9 +3,7 @@ import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {Component} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {
-    TuiDialogModule,
     tuiDialogOptionsProvider,
     TuiDialogService,
     TuiRootComponent,
@@ -15,6 +13,8 @@ import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('Dialog with TUI_DIALOG_OPTIONS', () => {
     @Component({
+        standalone: true,
+        imports: [TuiRootComponent],
         template: `
             <tui-root></tui-root>
         `,
@@ -29,8 +29,7 @@ describe('Dialog with TUI_DIALOG_OPTIONS', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [NoopAnimationsModule, TuiRootComponent, TuiDialogModule],
-            declarations: [TestComponent],
+            imports: [TestComponent],
             providers: [tuiDialogOptionsProvider({closeable}), NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();

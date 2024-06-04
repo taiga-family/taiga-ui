@@ -7,6 +7,8 @@ import {TuiPrimitiveTextfieldModule} from '../primitive-textfield.module';
 
 describe('Textfield', () => {
     @Component({
+        standalone: true,
+        imports: [TuiPrimitiveTextfieldModule],
         template: `
             <input
                 #auto
@@ -42,8 +44,7 @@ describe('Textfield', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TuiPrimitiveTextfieldModule],
-            declarations: [TestComponent],
+            imports: [TestComponent],
             providers: [
                 {
                     provide: TUI_TEXTFIELD_HOST,

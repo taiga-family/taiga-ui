@@ -3,17 +3,13 @@ import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {Component} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {
-    TuiHint,
-    TuiPrimitiveTextfieldModule,
-    TuiTextfieldControllerModule,
-} from '@taiga-ui/core';
-import {TuiRootComponent} from '@taiga-ui/core/components/root';
+import {TuiPrimitiveTextfieldModule, TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {TuiPrimitiveTextfieldHarness} from '@taiga-ui/testing';
 
 describe('PrimitiveTextfield', () => {
     @Component({
+        standalone: true,
+        imports: [TuiPrimitiveTextfieldModule, TuiTextfieldControllerModule],
         template: `
             <tui-primitive-textfield id="test1"></tui-primitive-textfield>
             <tui-primitive-textfield
@@ -54,14 +50,7 @@ describe('PrimitiveTextfield', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [
-                NoopAnimationsModule,
-                TuiPrimitiveTextfieldModule,
-                TuiTextfieldControllerModule,
-                TuiHint,
-                TuiRootComponent,
-            ],
-            declarations: [TestComponent],
+            imports: [TestComponent],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);

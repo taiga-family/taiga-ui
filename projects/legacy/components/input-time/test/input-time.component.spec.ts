@@ -4,7 +4,6 @@ import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiTime} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {TuiHint, TuiRootComponent, TuiTextfieldControllerModule} from '@taiga-ui/core';
@@ -24,6 +23,14 @@ const TIMES = [
 
 describe('InputTime', () => {
     @Component({
+        standalone: true,
+        imports: [
+            TuiRootComponent,
+            TuiInputTimeModule,
+            ReactiveFormsModule,
+            TuiHint,
+            TuiTextfieldControllerModule,
+        ],
         template: `
             <tui-root>
                 <tui-input-time
@@ -66,15 +73,7 @@ describe('InputTime', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [
-                TuiRootComponent,
-                TuiInputTimeModule,
-                ReactiveFormsModule,
-                NoopAnimationsModule,
-                TuiTextfieldControllerModule,
-                TuiHint,
-            ],
-            declarations: [TestComponent],
+            imports: [TestComponent],
             providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();

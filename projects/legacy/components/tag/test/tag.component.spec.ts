@@ -10,6 +10,8 @@ import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('Tag', () => {
     @Component({
+        standalone: true,
+        imports: [TuiTagModule],
         template: `
             <tui-tag id="default"></tui-tag>
             <tui-tag
@@ -35,8 +37,7 @@ describe('Tag', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TuiTagModule],
-            declarations: [TestComponent],
+            imports: [TestComponent],
             providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();

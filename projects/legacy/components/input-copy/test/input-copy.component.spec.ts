@@ -3,7 +3,6 @@ import {Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {TuiInputCopyComponent, TuiInputCopyModule} from '@taiga-ui/legacy';
@@ -12,6 +11,8 @@ import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('InputCopy', () => {
     @Component({
+        standalone: true,
+        imports: [TuiInputCopyModule, ReactiveFormsModule, TuiTextfieldControllerModule],
         template: `
             <tui-input-copy
                 [formControl]="control"
@@ -39,13 +40,7 @@ describe('InputCopy', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [
-                ReactiveFormsModule,
-                NoopAnimationsModule,
-                TuiInputCopyModule,
-                TuiTextfieldControllerModule,
-            ],
-            declarations: [TestComponent],
+            imports: [TestComponent],
             providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
