@@ -18,6 +18,6 @@
         "@angular/core": ">=16.0.0",
         "@ng-web-apis/common": "^3.0.6",
         "rxjs": ">=7.0.0",
-        "tslib": "^2.6.2"
+        "tslib": "^2.6.3"
     }
 }

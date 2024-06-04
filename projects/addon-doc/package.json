@@ -33,6 +33,6 @@
         "@taiga-ui/core": "^3.59.0",
         "@taiga-ui/kit": "^3.59.0",
         "@tinkoff/ng-polymorpheus": "^4.3.0",
-        "tslib": "^2.6.2"
+        "tslib": "^2.6.3"
     }
 }
