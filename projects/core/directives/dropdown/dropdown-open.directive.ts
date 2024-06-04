@@ -49,7 +49,14 @@ function shouldClose(
 @Directive({
     standalone: true,
     selector: '[tuiDropdownOpen],[tuiDropdownOpenChange]',
-    hostDirectives: [TuiObscuredDirective, TuiActiveZoneDirective],
+    hostDirectives: [
+        TuiObscuredDirective,
+        {
+            directive: TuiActiveZoneDirective,
+            inputs: ['tuiActiveZoneParent'],
+            outputs: ['tuiActiveZoneChange'],
+        },
+    ],
     providers: [
         TuiDropdownDriver,
         tuiAsDriver(TuiDropdownDriver),
