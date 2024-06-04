@@ -100,20 +100,6 @@ describe('InputPhone', () => {
             await fixture.whenStable();
             expect(inputPO.value).toBe('');
         });
-
-        // TODO: check why enable of this successful test causes failure of another test
-        xit('When blurring from a field in which only "+7" is entered, the value is cleared', async () => {
-            testComponent.control.reset();
-            inputPO.focus();
-            await fixture.whenStable();
-
-            expect(inputPO.value).toBe('+7 ');
-
-            inputPO.blur();
-            await fixture.whenStable();
-
-            expect(inputPO.value).toBe('');
-        });
     });
 
     describe('Using different codes and masks', () => {
