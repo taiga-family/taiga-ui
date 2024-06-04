@@ -15,6 +15,7 @@ export class TuiHintAsideDirective implements DoCheck {
     private readonly aside = inject(TuiAsideComponent);
     private readonly hint = inject(TuiHintDirective);
 
+    // TODO: switch to `tuiDirectiveBinding` when tuiNavigationAside is switched to signal
     public ngDoCheck(): void {
         this.hint.tuiHint = this.aside.tuiNavigationAside
             ? ''

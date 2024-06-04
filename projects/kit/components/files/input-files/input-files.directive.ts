@@ -51,7 +51,7 @@ export class TuiInputFilesDirective
     public readonly reject = timer(0).pipe(
         switchMap(() => tuiControlValue(this.control)),
         map(() => tuiFilesRejected(this.control)),
-        filter(rejected => !!rejected.length),
+        filter(({length}) => !!length),
     );
 
     public readonly appearance = 'file';
