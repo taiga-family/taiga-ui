@@ -8,7 +8,7 @@
     box-shadow: inset 0 0 0 1px var(--t-bs);
 
     &:checked,
-    &._checked {
+    &[data-mode='checked'] {
         --t-bs: var(--tui-primary);
 
         box-shadow: inset 0 0 0 2px var(--t-bs);
@@ -27,7 +27,7 @@
     }
 
     &:checked:invalid,
-    &._checked:invalid {
+    &[data-mode='checked']:invalid {
         box-shadow: inset 0 0 0 2px var(--tui-error-fill);
     }
 

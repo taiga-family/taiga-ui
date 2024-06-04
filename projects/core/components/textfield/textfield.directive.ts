@@ -13,8 +13,8 @@ import {TUI_TEXTFIELD_OPTIONS} from './textfield.options';
     host: {
         '[id]': 'el.id || id',
         '[readOnly]': 'readOnly',
-        '[class._readonly]': 'readOnly',
         '[class._empty]': 'el.value === ""',
+        '[attr.data-mode]': 'readOnly ? "readonly" : null',
         '[attr.data-invalid]': 'invalid',
         '(input)': '0',
         '(focusin)': '0',
