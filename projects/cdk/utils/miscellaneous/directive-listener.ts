@@ -14,7 +14,7 @@ export function tuiDirectiveListener<T, K extends OutputKeysOf<T>>(
     token: ProviderToken<T>,
     key: K,
 ): Signal<OutputTypeOf<T[K]>> {
-    const prop: any = inject(token)[key];
+    const prop: any = inject(token, {self: true})[key];
 
     return isSignal(prop) ? prop : toSignal<any>(prop);
 }
