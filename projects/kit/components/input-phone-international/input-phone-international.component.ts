@@ -2,6 +2,7 @@ import {CommonModule} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
+    ElementRef,
     inject,
     Input,
     Output,
@@ -20,6 +21,7 @@ import {
     tuiAsControl,
     tuiAsFocusableItemAccessor,
     tuiIsInputEvent,
+    tuiIsNativeFocused,
     TuiLetDirective,
 } from '@taiga-ui/cdk';
 import {
@@ -29,8 +31,7 @@ import {
     TuiFlagPipe,
     TuiGroupDirective,
     TuiHint,
-    TuiPrimitiveTextfieldComponent,
-    TuiTextfieldComponent,
+    TuiSelectDirective,
     TuiTextfieldModule,
     TuiTextfieldOptionsDirective,
     tuiTextfieldOptionsProvider,
@@ -101,11 +102,11 @@ export class TuiInputPhoneInternationalComponent
     protected open = false;
     protected textfieldValue = '';
 
-    @ViewChild(TuiPrimitiveTextfieldComponent)
-    private readonly inputPhone?: TuiPrimitiveTextfieldComponent;
+    @ViewChild(MaskitoDirective, {read: ElementRef})
+    private readonly inputPhone?: ElementRef<HTMLInputElement>;
 
-    @ViewChild(TuiTextfieldComponent)
-    private readonly countrySelect?: TuiTextfieldComponent<unknown>;
+    @ViewChild(TuiSelectDirective, {read: ElementRef})
+    private readonly countrySelect?: ElementRef<HTMLSelectElement>;
 
     @Input()
     public countries = this.options.countries;
@@ -123,13 +124,15 @@ export class TuiInputPhoneInternationalComponent
 
     public get nativeFocusableElement(): HTMLElement | null {
         return this.inputPhone && !this.computedDisabled
-            ? this.inputPhone.nativeFocusableElement
+            ? this.inputPhone.nativeElement
             : null;
     }
 
     public get focused(): boolean {
         return Boolean(
-            this.countrySelect?.focused || this.inputPhone?.focused || this.open,
+            tuiIsNativeFocused(this.countrySelect?.nativeElement) ||
+                tuiIsNativeFocused(this.inputPhone?.nativeElement) ||
+                this.open,
         );
     }
 
