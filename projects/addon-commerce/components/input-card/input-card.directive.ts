@@ -1,5 +1,5 @@
-/* eslint-disable */
-import {Directive, inject, Input, OnInit, Output} from '@angular/core';
+import type {OnInit} from '@angular/core';
+import {Directive, inject, Input, Output} from '@angular/core';
 import {DefaultValueAccessor, NgControl} from '@angular/forms';
 import {MaskitoDirective} from '@maskito/angular';
 import {TUI_CARD_MASK} from '@taiga-ui/addon-commerce/constants';

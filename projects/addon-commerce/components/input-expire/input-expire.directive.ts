@@ -1,5 +1,5 @@
-/* eslint-disable */
-import {Directive, inject, Input, OnInit} from '@angular/core';
+import type {OnInit} from '@angular/core';
+import {Directive, inject, Input} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
 import {maskitoDateOptionsGenerator} from '@maskito/kit';
 import {TUI_INPUT_CARD_OPTIONS} from '@taiga-ui/addon-commerce/components/input-card';
