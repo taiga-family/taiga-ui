@@ -4,8 +4,11 @@ import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
-import {TuiInputPhoneInternationalComponent, TuiSortCountriesPipe} from '@taiga-ui/kit';
-import {TUI_ALL_COUNTRIES_ISO_CODES} from '@taiga-ui/legacy';
+import {
+    TUI_ALL_COUNTRIES_ISO_CODES,
+    TuiInputPhoneInternationalComponent,
+    TuiSortCountriesPipe,
+} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
