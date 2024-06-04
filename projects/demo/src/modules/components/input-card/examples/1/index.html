@@ -1,31 +1,35 @@
-<p>
-    <code>form</code>
-    tag is used for better autocomplete
-</p>
-<form
-    tuiGroup
-    [formGroup]="form"
->
-    <tui-input-card
-        formControlName="card"
-        [cardSrc]="card"
-    >
-        Card number
+<form [formGroup]="form">
+    <tui-textfield>
+        <label tuiLabel>Card number</label>
         <input
-            autocomplete="cc-number"
-            tuiTextfieldLegacy
+            formControlName="card"
+            tuiInputCard
+            tuiTextfield
+            [icon]="card"
+            (binChange)="onBinChange($event)"
         />
-    </tui-input-card>
-    <tui-input-expire
-        formControlName="expire"
-        [autocompleteEnabled]="true"
-    >
-        Expire date
-    </tui-input-expire>
-    <tui-input-cvc
-        formControlName="cvc"
-        [autocompleteEnabled]="true"
-    >
-        CVC/CVV
-    </tui-input-cvc>
+    </tui-textfield>
+    <section>
+        <tui-textfield>
+            <label tuiLabel>Expire date</label>
+            <input
+                formControlName="expire"
+                tuiInputExpire
+                tuiTextfield
+            />
+        </tui-textfield>
+        <tui-textfield>
+            <label tuiLabel>CVC/CVV</label>
+            <input
+                formControlName="cvc"
+                tuiInputCVC
+                tuiTextfield
+            />
+        </tui-textfield>
+    </section>
+    <tui-error
+        formControlName="card"
+        [error]="[] | tuiFieldError | async"
+    />
 </form>
+<p>{{ form.value | json }}</p>

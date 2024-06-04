@@ -23,4 +23,4 @@ import {TuiTextfieldOptionsDirective} from './textfield.options';
         TuiTextfieldOptionsDirective,
     ],
 })
-export class TuiTextfieldModule {}
+export class TuiTextfield {}

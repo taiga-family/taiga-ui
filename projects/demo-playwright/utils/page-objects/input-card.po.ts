@@ -1,10 +1,7 @@
-import type {Locator} from '@playwright/test';
+import type {Page} from '@playwright/test';
 
 export class TuiInputCardPO {
-    public readonly expiryTextfield = this.host
-        .locator('tui-input-expire')
-        .locator('input')
-        .first();
+    public readonly expiryTextfield = this.page.locator('input[tuiInputExpire]').first();
 
-    constructor(private readonly host: Locator) {}
+    constructor(private readonly page: Page) {}
 }

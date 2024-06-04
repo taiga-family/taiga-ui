@@ -154,6 +154,7 @@
     ::ng-deep input,
     ::ng-deep select {
         pointer-events: auto;
+        background: padding-box transparent no-repeat center right 1rem / 2rem;
 
         &:read-only ~ .t-filler {
             display: none;
@@ -225,6 +226,7 @@
 
 .t-content {
     display: flex;
+    align-items: center;
     gap: 0.25rem;
     margin-inline-start: auto;
 }

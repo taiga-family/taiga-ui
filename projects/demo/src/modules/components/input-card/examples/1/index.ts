@@ -1,31 +1,50 @@
-import {Component} from '@angular/core';
+import {AsyncPipe, JsonPipe} from '@angular/common';
+import {Component, inject} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {
-    TuiInputCardComponent,
-    TuiInputCVCComponent,
-    TuiInputExpireComponent,
+    tuiCreateLuhnValidator,
+    TuiInputCard,
+    tuiInputCardOptionsProvider,
+    TuiInputCVC,
+    TuiInputExpire,
 } from '@taiga-ui/addon-commerce';
-import {TuiGroupDirective, TuiPrimitiveTextfieldModule} from '@taiga-ui/core';
+import {
+    TuiAlertService,
+    TuiErrorComponent,
+    TuiTextfield,
+    tuiTextfieldOptionsProvider,
+} from '@taiga-ui/core';
+import {TuiFieldErrorPipe} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
     imports: [
-        TuiGroupDirective,
         ReactiveFormsModule,
-        TuiInputCardComponent,
-        TuiInputExpireComponent,
-        TuiInputCVCComponent,
-        TuiPrimitiveTextfieldModule,
+        TuiTextfield,
+        TuiInputCVC,
+        TuiInputExpire,
+        TuiInputCard,
+        TuiErrorComponent,
+        TuiFieldErrorPipe,
+        AsyncPipe,
+        JsonPipe,
     ],
     templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
+    providers: [
+        tuiInputCardOptionsProvider({autocomplete: true}),
+        tuiTextfieldOptionsProvider({cleaner: false}),
+    ],
 })
 export default class ExampleComponent {
+    private readonly alerts = inject(TuiAlertService);
+
     protected readonly form = new FormGroup({
-        card: new FormControl(''),
+        card: new FormControl('', tuiCreateLuhnValidator('Card number is invalid')),
         expire: new FormControl(''),
         cvc: new FormControl(''),
     });
@@ -54,5 +73,9 @@ export default class ExampleComponent {
             default:
                 return 'https://ng-web-apis.github.io/dist/assets/images/payment-request.svg';
         }
+    }
+
+    protected onBinChange(bin: string | null): void {
+        this.alerts.open(String(bin), {label: '(binChange)'}).subscribe();
     }
 }

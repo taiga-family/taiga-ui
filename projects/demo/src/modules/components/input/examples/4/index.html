@@ -60,11 +60,13 @@
             </div>
         </ng-template>
     </tui-input>
-    <tui-input-card
-        formControlName="card"
-        [cardSrc]="card"
-        [tuiTextfieldCleaner]="true"
-    >
-        Card number
-    </tui-input-card>
+    <tui-textfield>
+        <label tuiLabel>Card number</label>
+        <input
+            formControlName="card"
+            tuiInputCard
+            tuiTextfield
+            [icon]="card"
+        />
+    </tui-textfield>
 </form>

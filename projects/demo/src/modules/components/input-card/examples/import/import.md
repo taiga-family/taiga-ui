@@ -1,5 +1,5 @@
 ```ts
-import {TuiInputCardComponent, TuiInputCVCComponent, TuiInputExpireComponent} from '@taiga-ui/addon-commerce';
+import {TuiInputCard, TuiInputCVC, TuiInputExpire} from '@taiga-ui/addon-commerce';
 
 // ...
 
@@ -7,9 +7,9 @@ import {TuiInputCardComponent, TuiInputCVCComponent, TuiInputExpireComponent} fr
   standalone: true,
   imports: [
     // ...
-    TuiInputCardComponent,
-    TuiInputCVCComponent,
-    TuiInputExpireComponent,
+    TuiInputCard,
+    TuiInputCVC,
+    TuiInputExpire,
   ],
   // ...
 })

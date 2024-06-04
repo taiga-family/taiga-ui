@@ -42,17 +42,10 @@ export interface TuiTextfieldContext<T> extends TuiContext<T> {
     readonly active: boolean;
 }
 
-// TODO: Move to legacy package before 4.0
 @Component({
     standalone: true,
     selector: 'tui-textfield',
-    imports: [
-        CommonModule,
-        ResizeObserverModule,
-        TuiTextfieldDirective,
-        TuiButtonDirective,
-        PolymorpheusModule,
-    ],
+    imports: [CommonModule, ResizeObserverModule, TuiButtonDirective, PolymorpheusModule],
     templateUrl: './textfield.template.html',
     styleUrls: ['./textfield.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -154,6 +147,6 @@ export class TuiTextfieldComponent<T>
     }
 
     protected get hasLabel(): boolean {
-        return Boolean(this.label?.nativeElement?.textContent?.trim());
+        return Boolean(this.label?.nativeElement?.childNodes.length);
     }
 }

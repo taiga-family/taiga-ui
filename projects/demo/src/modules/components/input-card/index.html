@@ -10,192 +10,38 @@
             <code>InputExpire</code>
             and
             <code>InputCVC</code>
-            to input a card
+            to input a card. Use
+            <code>tuiCreateLuhnValidator(message)</code>
+            to create a
+            <code>Validator</code>
+            that uses Luhn algorithm
         </p>
 
         <tui-doc-example
-            id="group"
-            heading="tui-group"
+            id="form"
+            heading="Form"
             [component]="1 | tuiComponent"
-            [content]="1 | tuiExample: 'html,ts'"
-            [fullsize]="true"
-        />
-    </ng-template>
-
-    <ng-template pageTab>
-        <tui-doc-demo [control]="control">
-            <ng-template>
-                <form
-                    class="form"
-                    [formGroup]="control"
-                >
-                    <tui-input-card
-                        formControlName="card"
-                        class="control"
-                        [cardSrc]="cardSrc"
-                        [focusable]="focusable"
-                        [pseudoActive]="pseudoPressed"
-                        [pseudoFocus]="pseudoFocused"
-                        [pseudoHover]="pseudoHovered"
-                        [pseudoInvalid]="pseudoInvalid"
-                        [readOnly]="readOnly"
-                        [tuiHintAppearance]="hintAppearance"
-                        [tuiHintContent]="hintContent"
-                        [tuiHintDirection]="hintDirection"
-                        [tuiTextfieldCleaner]="cleaner"
-                        [tuiTextfieldLabelOutside]="labelOutside"
-                        [tuiTextfieldSize]="size"
-                        (binChange)="binChangeProperty?.emitEvent($event)"
-                    >
-                        Card number
-                    </tui-input-card>
-                    <tui-input-expire
-                        formControlName="expire"
-                        class="control"
-                        [autocompleteEnabled]="autocompleteEnabledExpire"
-                        [focusable]="focusable"
-                        [pseudoActive]="pseudoPressed"
-                        [pseudoFocus]="pseudoFocused"
-                        [pseudoHover]="pseudoHovered"
-                        [pseudoInvalid]="pseudoInvalid"
-                        [readOnly]="readOnly"
-                        [tuiTextfieldLabelOutside]="labelOutside"
-                        [tuiTextfieldSize]="size"
-                    >
-                        Expire date
-                    </tui-input-expire>
-                    <tui-input-cvc
-                        formControlName="cvc"
-                        class="control"
-                        [autocompleteEnabled]="autocompleteEnabledCVC"
-                        [focusable]="focusable"
-                        [length]="length"
-                        [pseudoActive]="pseudoPressed"
-                        [pseudoFocus]="pseudoFocused"
-                        [pseudoHover]="pseudoHovered"
-                        [pseudoInvalid]="pseudoInvalid"
-                        [readOnly]="readOnly"
-                        [tuiHintAppearance]="hintAppearanceCVC"
-                        [tuiHintContent]="hintContentCVC"
-                        [tuiHintDirection]="hintDirectionCVC"
-                        [tuiTextfieldLabelOutside]="labelOutside"
-                        [tuiTextfieldSize]="size"
-                    >
-                        CVC/CVV
-                    </tui-input-cvc>
-                    <tui-error
-                        formControlName="card"
-                        class="error"
-                        [error]="[] | tuiFieldError | async"
-                    />
-                </form>
-            </ng-template>
-        </tui-doc-demo>
-        <div class="tui-space_bottom-6">
+            [content]="1 | tuiExample"
+        >
             <p>
-                Add
-                <code>tuiCreateLuhnValidator(customMessage?)</code>
-                to control validators to validate it with Luhn algorithm
+                <code>form</code>
+                tag is used for better autocomplete support
             </p>
-        </div>
-        <tui-accordion [closeOthers]="false">
-            <tui-accordion-item [open]="true">
-                TuiInputCardComponent
-                <ng-template tuiAccordionItemContent>
-                    <tui-doc-documentation>
-                        <ng-template
-                            documentationPropertyName="disabled"
-                            documentationPropertyType="boolean"
-                            [(documentationPropertyValue)]="disabledCard"
-                        >
-                            Disabled state (use
-                            <code>formControl.disable()</code>
-                            )
-                        </ng-template>
-                        <ng-template
-                            documentationPropertyMode="input"
-                            documentationPropertyName="cardSrc"
-                            documentationPropertyType="PolymorpheusContent"
-                            [documentationPropertyValues]="cardSrcVariants"
-                            [(documentationPropertyValue)]="cardSrcSelected"
-                        >
-                            SVG card icon
-                        </ng-template>
-                        <ng-template
-                            #documentationPropertyBinChange
-                            documentationPropertyMode="output"
-                            documentationPropertyName="binChange"
-                            documentationPropertyType="string | null"
-                        >
-                            BIN value (card first 6 symbols)
-                        </ng-template>
-                    </tui-doc-documentation>
-                    <inherited-documentation />
-                </ng-template>
-            </tui-accordion-item>
+        </tui-doc-example>
 
-            <tui-accordion-item [open]="false">
-                TuiInputExpireComponent
-                <ng-template tuiAccordionItemContent>
-                    <tui-doc-documentation>
-                        <ng-template
-                            documentationPropertyName="disabled"
-                            documentationPropertyType="boolean"
-                            [(documentationPropertyValue)]="disabledExpire"
-                        >
-                            Disabled state (use
-                            <code>formControl.disable()</code>
-                            )
-                        </ng-template>
-                        <ng-template
-                            documentationPropertyMode="input"
-                            documentationPropertyName="autocompleteEnabled"
-                            documentationPropertyType="boolean"
-                            [(documentationPropertyValue)]="autocompleteEnabledExpire"
-                        >
-                            Browser autocomplete of card
-                        </ng-template>
-                    </tui-doc-documentation>
-                    <inherited-documentation />
-                </ng-template>
-            </tui-accordion-item>
-
-            <tui-accordion-item [open]="false">
-                TuiInputCVCComponent
-                <ng-template tuiAccordionItemContent>
-                    <tui-doc-documentation>
-                        <ng-template
-                            documentationPropertyName="disabled"
-                            documentationPropertyType="boolean"
-                            [(documentationPropertyValue)]="disabledCVC"
-                        >
-                            Disabled state (use
-                            <code>formControl.disable()</code>
-                            )
-                        </ng-template>
-                        <ng-template
-                            documentationPropertyMode="input"
-                            documentationPropertyName="autocompleteEnabled"
-                            documentationPropertyType="boolean"
-                            [(documentationPropertyValue)]="autocompleteEnabledCVC"
-                        >
-                            Browser autocomplete of card
-                        </ng-template>
-                        <ng-template
-                            documentationPropertyMode="input"
-                            documentationPropertyName="length"
-                            documentationPropertyType="3 | 4"
-                            [documentationPropertyValues]="lengthVariants"
-                            [(documentationPropertyValue)]="length"
-                        >
-                            Code length
-                        </ng-template>
-                    </tui-doc-documentation>
-                    <inherited-documentation />
-                </ng-template>
-            </tui-accordion-item>
-        </tui-accordion>
+        <tui-doc-example
+            id="card"
+            heading="Card"
+            [component]="2 | tuiComponent"
+            [content]="2 | tuiExample: 'html,ts'"
+        >
+            <p>
+                Pass empty string to disable
+                <code>icon</code>
+                if you want to use custom content instead.
+            </p>
+        </tui-doc-example>
     </ng-template>
 
-    <tui-setup *pageTab />
+    <tui-setup *pageTab="'Setup'" />
 </tui-doc-page>
