@@ -15,6 +15,6 @@ import {TUI_SHEET_DIALOG_OPTIONS} from './sheet-dialog.options';
             inject(TUI_SHEET_DIALOG_OPTIONS),
         ),
 })
-export class TuiSheetDialogService extends TuiPopoverService<
-    TuiSheetDialogOptions<any>
+export class TuiSheetDialogService<T = any> extends TuiPopoverService<
+    TuiSheetDialogOptions<T>
 > {}

@@ -23,7 +23,9 @@ type Content<G> = PolymorpheusContent<
             inject(TUI_PDF_VIEWER_OPTIONS),
         ),
 })
-export class TuiPdfViewerService extends TuiPopoverService<TuiPdfViewerOptions<unknown>> {
+export class TuiPdfViewerService<T = unknown> extends TuiPopoverService<
+    TuiPdfViewerOptions<T>
+> {
     public override open<G>(
         content: Content<G> | SafeResourceUrl,
         options: Partial<TuiPdfViewerOptions<any>> = {},

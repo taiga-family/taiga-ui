@@ -9,7 +9,7 @@ import {TUI_CONFIRM} from './confirm.component';
 
 @Injectable()
 export class TuiConfirmService {
-    private readonly dialogs = inject(TuiDialogService);
+    private readonly dialogs = inject(TuiDialogService<TuiConfirmData>);
     private dirty = false;
 
     public markAsDirty(): void {

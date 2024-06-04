@@ -36,9 +36,9 @@ export abstract class TuiPopoverService<T, K = void> {
         this.items$ = inject(items);
     }
 
-    public open<G = void>(
+    public open<G = void, V extends T = T>(
         content: PolymorpheusContent<T & TuiPopoverContext<K extends void ? G : K>>,
-        options: Partial<T> = {},
+        options: Partial<V> = {},
     ): Observable<K extends void ? G : K> {
         return new Observable(observer => {
             const item = {
@@ -64,6 +64,6 @@ export abstract class TuiPopoverService<T, K = void> {
     }
 }
 
-export function tuiAsPopover(popover: Type<TuiPopoverService<any>>): Provider {
+export function tuiAsPopover<T>(popover: Type<TuiPopoverService<T>>): Provider {
     return tuiProvide(TuiPopoverService, popover);
 }

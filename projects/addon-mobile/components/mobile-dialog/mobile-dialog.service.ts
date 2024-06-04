@@ -18,13 +18,13 @@ import {TUI_MOBILE_DIALOG_OPTIONS} from './mobile-dialog.options';
             inject(TUI_MOBILE_DIALOG_OPTIONS),
         ),
 })
-export class TuiMobileDialogService extends TuiPopoverService<
-    TuiMobileDialogOptions<any>,
+export class TuiMobileDialogService<T = any> extends TuiPopoverService<
+    TuiMobileDialogOptions<T>,
     number
 > {
-    public override open(
+    public override open<T = any>(
         content: PolymorpheusContent<
-            TuiMobileDialogOptions<any> & TuiPopoverContext<number>
+            TuiMobileDialogOptions<T> & TuiPopoverContext<number>
         >,
         options: Partial<TuiMobileDialogOptions<any>> = {},
     ): Observable<number> {
