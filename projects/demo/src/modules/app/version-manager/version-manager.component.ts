@@ -1,14 +1,35 @@
+import {NgForOf, NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {Router} from '@angular/router';
 import {LOCATION} from '@ng-web-apis/common';
 import {tuiPure} from '@taiga-ui/cdk';
+import {
+    TuiDataListComponent,
+    TuiDataListDirective,
+    TuiOptionComponent,
+} from '@taiga-ui/core';
+import {TuiStringifyContentPipe, TuiStringifyPipe} from '@taiga-ui/kit';
+import {TuiSelectModule} from '@taiga-ui/legacy';
 
 import {TUI_SELECTED_VERSION_META} from './version-manager.providers';
 import type {TuiVersionMeta} from './versions.constants';
 import {TUI_VERSIONS_META_OPTIONS} from './versions.constants';
 
 @Component({
+    standalone: true,
     selector: 'version-manager',
+    imports: [
+        TuiSelectModule,
+        NgIf,
+        FormsModule,
+        TuiStringifyPipe,
+        TuiStringifyContentPipe,
+        TuiDataListComponent,
+        TuiDataListDirective,
+        NgForOf,
+        TuiOptionComponent,
+    ],
     templateUrl: './version-manager.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })

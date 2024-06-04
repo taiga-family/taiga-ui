@@ -1,12 +1,14 @@
 ```ts
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import {TuiTableBarsService} from '@taiga-ui/addon-tablebars';
-
+// ...
 import {CustomTableBarsComponent} from './custom-table-bars.component';
 
-// ...
-
-export class LazyModule {
+@Component({
+  standalone: true,
+  // ...
+})
+export class MyComponent {
   constructor() {
     // ...
     inject(TuiTableBarsService)

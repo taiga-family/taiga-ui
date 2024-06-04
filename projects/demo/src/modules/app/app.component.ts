@@ -15,7 +15,7 @@ import {distinctUntilChanged, filter, map} from 'rxjs';
 import {CustomHostComponent} from '../customization/portals/examples/1/portal/custom-host.component';
 import {AbstractDemoComponent, DEMO_PAGE_LOADED_PROVIDER} from './abstract.app';
 import {YaMetrikaService} from './metrika/metrika.service';
-import {VersionManagerModule} from './version-manager/version-manager.module';
+import {VersionManagerComponent} from './version-manager/version-manager.component';
 import {TUI_VERSION_MANAGER_PROVIDERS} from './version-manager/version-manager.providers';
 
 @Component({
@@ -29,7 +29,7 @@ import {TUI_VERSION_MANAGER_PROVIDERS} from './version-manager/version-manager.p
         TuiLinkDirective,
         RouterLink,
         TuiLanguageSwitcherComponent,
-        VersionManagerModule,
+        VersionManagerComponent,
         CustomHostComponent,
         TuiTableBarsHostComponent,
         TuiTextfieldControllerModule,
