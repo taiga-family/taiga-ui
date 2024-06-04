@@ -3,7 +3,6 @@ import {NgModule} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
 import {TuiActiveZoneDirective, TuiLetDirective} from '@taiga-ui/cdk';
 import {
-    TuiHostedDropdownModule,
     TuiPrimitiveTextfieldModule,
     TuiSvgComponent,
     TuiTextfieldControllerModule,
@@ -11,6 +10,7 @@ import {
     TuiWrapperModule,
 } from '@taiga-ui/core';
 import {TuiCalendarRangeComponent} from '@taiga-ui/kit';
+import {TuiHostedDropdownModule} from '@taiga-ui/legacy/components/hosted-dropdown';
 import {TuiValueAccessorModule} from '@taiga-ui/legacy/directives';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 

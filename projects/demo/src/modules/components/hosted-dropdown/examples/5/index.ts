@@ -5,10 +5,10 @@ import {tuiInjectElement} from '@taiga-ui/cdk';
 import {
     tuiAsPositionAccessor,
     TuiButtonDirective,
-    TuiHostedDropdownModule,
     type TuiPoint,
     TuiPositionAccessor,
 } from '@taiga-ui/core';
+import {TuiHostedDropdownModule} from '@taiga-ui/legacy';
 
 @Directive({
     standalone: true,

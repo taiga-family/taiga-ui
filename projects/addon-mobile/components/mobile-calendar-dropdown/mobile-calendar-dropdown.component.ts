@@ -12,11 +12,11 @@ import {
     TUI_ANIMATIONS_SPEED,
     tuiFadeIn,
     tuiGetDuration,
-    TuiHostedDropdownComponent,
     tuiSlideInTop,
 } from '@taiga-ui/core';
 import {TUI_DAY_CAPS_MAPPER, TUI_MOBILE_CALENDAR} from '@taiga-ui/kit';
 import {
+    TuiHostedDropdownComponent,
     TuiInputDateComponent,
     TuiInputDateMultiComponent,
     TuiInputDateRangeComponent,

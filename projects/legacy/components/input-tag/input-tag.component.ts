@@ -44,10 +44,10 @@ import {
     tuiAsDataListHost,
     TuiDataListDirective,
     TuiHintOptionsDirective,
-    TuiHostedDropdownComponent,
     TuiScrollbarComponent,
 } from '@taiga-ui/core';
 import type {TuiStringifiableItem} from '@taiga-ui/legacy/classes';
+import {TuiHostedDropdownComponent} from '@taiga-ui/legacy/components/hosted-dropdown';
 import type {TuiStatus} from '@taiga-ui/legacy/utils';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/legacy/utils';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';

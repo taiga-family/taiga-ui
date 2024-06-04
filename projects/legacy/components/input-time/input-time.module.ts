@@ -3,12 +3,12 @@ import {NgModule} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
 import {
     TuiDataList,
-    TuiHostedDropdownModule,
     TuiPrimitiveTextfieldModule,
     TuiSvgComponent,
     TuiTextfieldControllerModule,
     TuiWrapperModule,
 } from '@taiga-ui/core';
+import {TuiHostedDropdownModule} from '@taiga-ui/legacy/components/hosted-dropdown';
 import {TuiSelectOptionModule} from '@taiga-ui/legacy/components/select-option';
 import {TuiValueAccessorModule} from '@taiga-ui/legacy/directives';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';

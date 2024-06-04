@@ -4,7 +4,6 @@ import {MaskitoDirective} from '@maskito/angular';
 import {TuiLetDirective} from '@taiga-ui/cdk';
 import {
     TuiCalendarComponent,
-    TuiHostedDropdownModule,
     TuiLinkDirective,
     TuiPrimitiveTextfieldModule,
     TuiSvgComponent,
@@ -12,6 +11,7 @@ import {
     TuiTextfieldLegacyComponent,
     TuiWrapperModule,
 } from '@taiga-ui/core';
+import {TuiHostedDropdownModule} from '@taiga-ui/legacy/components/hosted-dropdown';
 import {TuiValueAccessorModule} from '@taiga-ui/legacy/directives';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 

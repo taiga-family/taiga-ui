@@ -1,6 +1,6 @@
 import {Directive, Optional, SkipSelf} from '@angular/core';
-import {TuiPositionAccessor} from '@taiga-ui/core/classes';
-import type {TuiPoint} from '@taiga-ui/core/types';
+import type {TuiPoint} from '@taiga-ui/core';
+import {TuiPositionAccessor} from '@taiga-ui/core';
 
 @Directive({
     selector: '[tuiAccessorProxy]',

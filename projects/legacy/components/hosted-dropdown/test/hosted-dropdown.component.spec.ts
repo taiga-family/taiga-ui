@@ -6,12 +6,12 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {
     TuiButtonDirective,
     TuiDataList,
-    TuiHostedDropdownModule,
     TuiPrimitiveTextfieldComponent,
     TuiPrimitiveTextfieldModule,
     TuiRootComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
+import {TuiHostedDropdownModule} from '@taiga-ui/legacy';
 import {tuiDispatchOnActive, TuiPageObject} from '@taiga-ui/testing';
 import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 

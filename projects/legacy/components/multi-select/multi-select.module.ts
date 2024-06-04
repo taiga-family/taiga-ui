@@ -4,7 +4,6 @@ import {FormsModule} from '@angular/forms';
 import {TuiActiveZoneDirective, TuiLetDirective, TuiMapperPipe} from '@taiga-ui/cdk';
 import {
     TuiDataList,
-    TuiHostedDropdownModule,
     TuiLinkDirective,
     TuiSvgComponent,
     TuiTextfieldControllerModule,
@@ -12,6 +11,7 @@ import {
 } from '@taiga-ui/core';
 import {TuiDataListWrapper, TuiStringifyContentPipe} from '@taiga-ui/kit';
 import {TuiArrowComponent} from '@taiga-ui/legacy/components/arrow';
+import {TuiHostedDropdownModule} from '@taiga-ui/legacy/components/hosted-dropdown';
 import {TuiInputTagModule} from '@taiga-ui/legacy/components/input-tag';
 import {TuiMultiSelectOptionModule} from '@taiga-ui/legacy/components/multi-select-option';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';

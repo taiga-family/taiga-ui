@@ -3,7 +3,6 @@ import {NgModule} from '@angular/core';
 import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
 import {
     TuiDataList,
-    TuiHostedDropdownModule,
     TuiPrimitiveTextfieldModule,
     TuiTextfieldControllerModule,
     TuiTextfieldLegacyComponent,
@@ -11,6 +10,7 @@ import {
 } from '@taiga-ui/core';
 import {TuiDataListWrapper, TuiStringifyContentPipe} from '@taiga-ui/kit';
 import {TuiArrowComponent} from '@taiga-ui/legacy/components/arrow';
+import {TuiHostedDropdownModule} from '@taiga-ui/legacy/components/hosted-dropdown';
 import {TuiSelectOptionModule} from '@taiga-ui/legacy/components/select-option';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 

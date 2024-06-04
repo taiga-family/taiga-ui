@@ -11,11 +11,10 @@ import {
     TuiDropdownOpenDirective,
     TuiDropdownOptionsDirective,
     TuiGroupDirective,
-    TuiHostedDropdownComponent,
     TuiOptionComponent,
 } from '@taiga-ui/core';
 import {TuiChevronDirective, TuiDataListWrapper} from '@taiga-ui/kit';
-import {TuiSelectModule} from '@taiga-ui/legacy';
+import {TuiHostedDropdownComponent, TuiSelectModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,

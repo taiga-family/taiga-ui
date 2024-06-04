@@ -3,10 +3,10 @@ import {ChangeDetectionStrategy, Component, HostBinding, inject} from '@angular/
 import {
     TUI_TEXTFIELD_SIZE,
     TuiDropdownOpenDirective,
-    TuiHostedDropdownComponent,
     tuiSizeBigger,
     TuiSvgComponent,
 } from '@taiga-ui/core';
+import {TuiHostedDropdownComponent} from '@taiga-ui/legacy/components/hosted-dropdown';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {PolymorpheusComponent, PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 

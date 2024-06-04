@@ -5,10 +5,7 @@ import {
     TuiLetDirective,
     TuiObscuredDirective,
 } from '@taiga-ui/cdk';
-import {
-    TuiDropdownModule,
-    TuiDropdownOptionsDirective,
-} from '@taiga-ui/core/directives/dropdown';
+import {TuiDropdownModule, TuiDropdownOptionsDirective} from '@taiga-ui/core';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiAccessorProxyDirective} from './accessor-proxy.directive';

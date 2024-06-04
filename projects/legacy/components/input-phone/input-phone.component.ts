@@ -32,9 +32,9 @@ import {
     TUI_TEXTFIELD_SIZE,
     tuiAsDataListHost,
     TuiDataListDirective,
-    TuiHostedDropdownComponent,
     TuiPrimitiveTextfieldComponent,
 } from '@taiga-ui/core';
+import {TuiHostedDropdownComponent} from '@taiga-ui/legacy/components/hosted-dropdown';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/legacy/utils';
 
 import {TUI_INPUT_PHONE_OPTIONS} from './input-phone.options';

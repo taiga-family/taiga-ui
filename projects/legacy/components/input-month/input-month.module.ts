@@ -3,13 +3,13 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {TuiMapperPipe} from '@taiga-ui/cdk';
 import {
-    TuiHostedDropdownModule,
     TuiPrimitiveTextfieldModule,
     TuiSvgComponent,
     TuiTextfieldControllerModule,
     TuiTextfieldLegacyComponent,
 } from '@taiga-ui/core';
 import {TuiCalendarMonthComponent} from '@taiga-ui/kit';
+import {TuiHostedDropdownModule} from '@taiga-ui/legacy/components/hosted-dropdown';
 
 import {TuiInputMonthComponent} from './input-month.component';
 import {TuiInputMonthDirective} from './input-month.directive';

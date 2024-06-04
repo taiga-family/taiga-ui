@@ -5,13 +5,13 @@ import {MaskitoDirective} from '@maskito/angular';
 import {TuiMapperPipe} from '@taiga-ui/cdk';
 import {
     TuiCalendarComponent,
-    TuiHostedDropdownModule,
     TuiLinkDirective,
     TuiPrimitiveTextfieldModule,
     TuiSvgComponent,
     TuiTextfieldControllerModule,
     TuiWrapperModule,
 } from '@taiga-ui/core';
+import {TuiHostedDropdownModule} from '@taiga-ui/legacy/components/hosted-dropdown';
 import {TuiInputTagModule} from '@taiga-ui/legacy/components/input-tag';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 

@@ -31,12 +31,12 @@ import {
     tuiIsPresent,
     tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
-import {TuiPositionAccessor} from '@taiga-ui/core/classes';
 import {
     TuiDropdownDirective,
     TuiDropdownHoverDirective,
-} from '@taiga-ui/core/directives/dropdown';
-import {tuiIsEditingKey} from '@taiga-ui/core/utils/miscellaneous';
+    tuiIsEditingKey,
+    TuiPositionAccessor,
+} from '@taiga-ui/core';
 import {shouldCall} from '@tinkoff/ng-event-plugins';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import type {Observable} from 'rxjs';
