@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiButtonDirective, TuiTextfieldControllerModule} from '@taiga-ui/core';
+import {TuiButtonDirective} from '@taiga-ui/core';
 import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
 import {TuiInputPhoneInternationalComponent} from '@taiga-ui/kit';
 
@@ -11,7 +11,6 @@ import {TuiInputPhoneInternationalComponent} from '@taiga-ui/kit';
     imports: [
         TuiButtonDirective,
         TuiInputPhoneInternationalComponent,
-        TuiTextfieldControllerModule,
         ReactiveFormsModule,
     ],
     templateUrl: './index.html',

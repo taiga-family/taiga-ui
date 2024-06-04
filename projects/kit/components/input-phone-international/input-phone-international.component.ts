@@ -23,7 +23,6 @@ import {
     TuiLetDirective,
 } from '@taiga-ui/cdk';
 import {
-    TUI_TEXTFIELD_SIZE,
     TuiDataList,
     TuiDropdownModule,
     tuiDropdownOptionsProvider,
@@ -33,6 +32,7 @@ import {
     TuiPrimitiveTextfieldComponent,
     TuiTextfieldComponent,
     TuiTextfieldModule,
+    TuiTextfieldOptionsDirective,
     tuiTextfieldOptionsProvider,
 } from '@taiga-ui/core';
 import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
@@ -76,7 +76,7 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
         tuiTextfieldOptionsProvider({cleaner: false}),
     ],
     host: {
-        '[attr.data-size]': 'textfieldSize.size',
+        '[attr.data-size]': 'textfieldOptions?.size',
     },
     viewProviders: [
         tuiDropdownOptionsProvider({
@@ -94,7 +94,9 @@ export class TuiInputPhoneInternationalComponent
     protected readonly countryIsoCode$ = new BehaviorSubject(this.options.countryIsoCode);
     protected readonly mask$ = new BehaviorSubject<MaskitoOptions | null>(null);
     protected readonly countriesNames$ = inject(TUI_COUNTRIES);
-    protected readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
+    protected readonly textfieldOptions = inject(TuiTextfieldOptionsDirective, {
+        optional: true,
+    });
 
     protected open = false;
     protected textfieldValue = '';
