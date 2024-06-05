@@ -13,7 +13,7 @@ import {TuiRangeComponent} from '@taiga-ui/kit';
     TuiRangeComponent,
   ],
 })
-class ExampleModule {
+class MyComponent {
   testForm = new FormGroup({
     testValue: new FormControl(0),
   });
