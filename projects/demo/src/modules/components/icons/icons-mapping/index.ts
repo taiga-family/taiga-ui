@@ -2,6 +2,7 @@ import {ClipboardModule} from '@angular/cdk/clipboard';
 import {Component} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiButtonDirective, TuiExpand, TuiLinkDirective} from '@taiga-ui/core';
@@ -22,6 +23,7 @@ import {tuiKitIcons} from '@taiga-ui/icons';
     changeDetection,
 })
 export default class PageComponent {
+    protected readonly docRoutes = DemoRoute;
     protected readonly options = import('./examples/4/app.module.md?raw');
 
     protected readonly example1: TuiDocExample = {

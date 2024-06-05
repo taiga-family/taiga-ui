@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk';
 import {
@@ -91,4 +92,5 @@ export default class ExampleComponent {
     protected month = TuiMonth.currentLocal();
 
     protected hoveredItem: TuiDay | null = null;
+    protected readonly docRoutes = DemoRoute;
 }

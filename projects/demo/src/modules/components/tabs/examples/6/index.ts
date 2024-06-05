@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {RouterLink, RouterLinkActive} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {DemoRoute} from '@demo/routes';
 import {TuiTabDirective, TuiTabsVerticalDirective} from '@taiga-ui/kit';
 
 @Component({
@@ -12,4 +13,6 @@ import {TuiTabDirective, TuiTabsVerticalDirective} from '@taiga-ui/kit';
     encapsulation,
     changeDetection,
 })
-export default class ExampleComponent {}
+export default class ExampleComponent {
+    protected readonly docRoutes = DemoRoute;
+}

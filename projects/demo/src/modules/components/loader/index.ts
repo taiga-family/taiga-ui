@@ -1,6 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import type {TuiSizeXS, TuiSizeXXL} from '@taiga-ui/core';
 import {TuiLinkDirective, TuiLoaderComponent} from '@taiga-ui/core';
@@ -16,6 +17,8 @@ import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 export default class PageComponent {
     @ViewChild('textTemplate')
     protected readonly textTemplate: PolymorpheusContent;
+
+    protected readonly docRoutes = DemoRoute;
 
     protected showLoader = true;
 

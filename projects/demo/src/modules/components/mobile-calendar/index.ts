@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
 import {TuiComponentPipe, TuiExamplePipe, TuiSetupComponent} from '@demo/utils';
 import {TuiAddonDoc} from '@taiga-ui/addon-doc';
 import {TuiMobileCalendarComponent} from '@taiga-ui/addon-mobile';
@@ -68,4 +69,5 @@ export default class PageComponent {
     protected control = new FormControl<TuiDay | TuiDayRange | null>(null);
 
     protected stream = tuiControlValue<TuiDay>(this.control);
+    protected readonly docRoutes = DemoRoute;
 }

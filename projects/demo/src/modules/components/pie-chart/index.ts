@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TuiPieChartComponent} from '@taiga-ui/addon-charts';
 import {TuiCurrency, tuiGetCurrencySymbol} from '@taiga-ui/addon-commerce';
@@ -28,6 +29,7 @@ import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
     changeDetection,
 })
 export default class PageComponent {
+    protected readonly docRoutes = DemoRoute;
     protected readonly valueVariants = [
         [0, 30, 20, 10],
         [40, 30, 20, 10],

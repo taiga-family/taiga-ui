@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import type {TuiOrientation, TuiSizeL} from '@taiga-ui/core';
 import {TuiButtonDirective, TuiGroupDirective, TuiLinkDirective} from '@taiga-ui/core';
@@ -32,4 +33,5 @@ export default class PageComponent {
     protected readonly sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
 
     protected size: TuiSizeL = this.sizeVariants[0];
+    protected readonly docRoutes = DemoRoute;
 }

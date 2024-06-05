@@ -1,6 +1,7 @@
 import {Component, inject, INJECTOR} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TuiTextCodeDirective} from '@taiga-ui/addon-doc';
 import type {TuiPopoverContext} from '@taiga-ui/cdk';
@@ -34,6 +35,7 @@ export default class PageComponent {
 
     private readonly defaultIcon = inject(TUI_NOTIFICATION_OPTIONS).icon;
 
+    protected readonly docRoutes = DemoRoute;
     protected readonly examples = [
         'Text',
         'Template',

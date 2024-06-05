@@ -3,6 +3,7 @@ import {KeyValuePipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {type TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiLinkDirective} from '@taiga-ui/core';
@@ -45,4 +46,6 @@ export default class PageComponent {
         '--tui-disabled-opacity': 'amount of transparency for disabled elements',
         '--tui-autofill': 'color for native browser autofill',
     };
+
+    protected readonly docRoutes = DemoRoute;
 }

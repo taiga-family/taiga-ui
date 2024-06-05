@@ -21,8 +21,8 @@
         <p>
             These icons can be used by name in
             <a
-                routerLink="/icons/overview"
                 tuiLink
+                [routerLink]="docRoutes.IconsOverview"
             >
                 Svg
             </a>
@@ -30,8 +30,8 @@
             linear gradient you need to provide
             <a
                 fragment="sanitizer"
-                routerLink="/icons/bundled"
                 tuiLink
+                [routerLink]="docRoutes.IconsBundled"
             >
                 TUI_SANITIZER
             </a>

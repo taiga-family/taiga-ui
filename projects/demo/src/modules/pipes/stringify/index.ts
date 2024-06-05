@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TuiLinkDirective, TuiNotificationComponent} from '@taiga-ui/core';
 
@@ -10,4 +11,6 @@ import {TuiLinkDirective, TuiNotificationComponent} from '@taiga-ui/core';
     templateUrl: './index.html',
     changeDetection,
 })
-export default class PageComponent {}
+export default class PageComponent {
+    protected readonly docRoutes = DemoRoute;
+}

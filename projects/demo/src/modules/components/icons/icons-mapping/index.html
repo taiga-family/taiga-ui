@@ -5,8 +5,8 @@
     <p>
         Taiga UI uses
         <a
-            routerLink="/icons/overview"
             tuiLink
+            [routerLink]="docRoutes.IconsOverview"
         >
             <code>tui-svg</code>
         </a>
@@ -70,8 +70,8 @@
 
         By default all icons from the
         <a
-            routerLink="/icons/overview"
             tuiLink
+            [routerLink]="docRoutes.IconsOverview"
         >
             icons pack
         </a>
@@ -120,8 +120,8 @@
 
         <p>
             <a
-                routerLink="/icons/bundled"
                 tuiLink
+                [routerLink]="docRoutes.IconsBundled"
             >
                 If you want to embed icons in a js bundle use
                 <code>SvgService</code>

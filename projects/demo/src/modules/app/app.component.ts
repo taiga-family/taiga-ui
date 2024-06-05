@@ -4,6 +4,7 @@ import {Component, DestroyRef, inject, ViewEncapsulation} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {NavigationEnd, Router, RouterLink, RouterOutlet} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
 import {LOCAL_STORAGE} from '@ng-web-apis/common';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {TuiAddonDoc, TuiLanguageSwitcherComponent} from '@taiga-ui/addon-doc';
@@ -50,6 +51,7 @@ export class AppComponent extends AbstractDemoComponent implements OnInit {
     private readonly ym = inject(YaMetrikaService);
     protected readonly router = inject(Router);
     protected readonly storage = inject(LOCAL_STORAGE);
+    protected readonly docRoutes = DemoRoute;
 
     protected readonly isLanding$ = this.router.events.pipe(
         map(() => this.router.routerState.snapshot.url === '/'),

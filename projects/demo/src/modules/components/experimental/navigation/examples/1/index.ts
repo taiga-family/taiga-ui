@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {RouterLink, RouterLinkActive} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {DemoRoute} from '@demo/routes';
 import {TuiRepeatTimesDirective} from '@taiga-ui/cdk';
 import {
     TuiAppearanceDirective,
@@ -64,4 +65,5 @@ export default class ExampleComponent {
     protected open = false;
     protected expanded = false;
     protected submenu = false;
+    protected readonly docRoutes = DemoRoute;
 }

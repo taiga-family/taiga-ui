@@ -46,8 +46,8 @@
             Number formatting can be customized with
             <a
                 fragment="number-format"
-                routerLink="/utils/tokens"
                 tuiLink
+                [routerLink]="docRoutes.Tokens"
             >
                 TUI_NUMBER_FORMAT
             </a>
@@ -69,8 +69,8 @@
                     <code>[prefix]</code>
                     . To get currency symbol use pipe
                     <a
-                        routerLink="/pipes/currency"
                         tuiLink
+                        [routerLink]="docRoutes.Currency"
                     >
                         tuiCurrency
                     </a>
@@ -89,8 +89,8 @@
             <ng-template #textFieldControllerDescription>
                 Customize input via
                 <a
-                    routerLink="/directives/textfield-controller"
                     tuiLink
+                    [routerLink]="docRoutes.TextfieldController"
                 >
                     TextfieldControllers
                 </a>

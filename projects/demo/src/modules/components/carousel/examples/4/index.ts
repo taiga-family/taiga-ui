@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {DemoRoute} from '@demo/routes';
 import {TuiItemDirective} from '@taiga-ui/cdk';
 import {TuiButtonDirective, TuiDialogModule, TuiLinkDirective} from '@taiga-ui/core';
 import {
@@ -28,6 +29,7 @@ import {
     changeDetection,
 })
 export default class ExampleComponent {
+    protected readonly docRoutes = DemoRoute;
     protected open = false;
 
     protected index = 0;

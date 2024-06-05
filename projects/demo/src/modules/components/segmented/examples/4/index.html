@@ -8,22 +8,22 @@
 <strong>Links</strong>
 <tui-segmented>
     <a
-        routerLink="/components/link"
         routerLinkActive
+        [routerLink]="docRoutes.Link"
     >
         Use routerLink
     </a>
     <a
-        routerLink="/navigation/segmented"
         routerLinkActive
+        [routerLink]="docRoutes.Segmented"
         [routerLinkActiveOptions]="options"
     >
         And routerLinkActive
     </a>
     <a
         fragment="content"
-        routerLink="/navigation/segmented"
         routerLinkActive
+        [routerLink]="docRoutes.Segmented"
         [routerLinkActiveOptions]="options"
     >
         To work with links

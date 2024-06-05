@@ -4,6 +4,7 @@ import type {IsActiveMatchOptions} from '@angular/router';
 import {RouterLink, RouterLinkActive} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {DemoRoute} from '@demo/routes';
 import {TuiIconComponent} from '@taiga-ui/core';
 import {TuiSegmentedComponent} from '@taiga-ui/kit';
 
@@ -30,4 +31,6 @@ export default class ExampleComponent {
         paths: 'exact',
         fragment: 'exact',
     };
+
+    protected readonly docRoutes = DemoRoute;
 }

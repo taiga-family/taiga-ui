@@ -1,9 +1,9 @@
 <h6 class="tui-text_h6">
     Can be expanded with
     <a
-        routerLink="/directives/textfield-controller"
         target="_blank"
         tuiLink
+        [routerLink]="docRoutes.TextfieldController"
     >
         TuiTextfieldController
     </a>
@@ -34,8 +34,8 @@
         <code>src</code>
         or as icon name into
         <a
-            routerLink="/icons/overview"
             tuiLink
+            [routerLink]="docRoutes.IconsOverview"
         >
             tui-svg
         </a>
@@ -48,8 +48,8 @@
     >
         Label is outside a component and made with
         <a
-            routerLink="/components/label"
             tuiLink
+            [routerLink]="docRoutes.Label"
         >
             <code>Label</code>
         </a>
@@ -77,13 +77,7 @@
         [documentationPropertyValues]="documentedComponent.iconLeftVariants"
         [(documentationPropertyValue)]="documentedComponent.iconLeft"
     >
-        A left icon. It can be stringified svg or a name of icon registered in
-        <a
-            routerLink="/services/svg-service"
-            tuiLink
-        >
-            <code>SvgService</code>
-        </a>
+        A left icon. It can be stringified svg.
     </ng-template>
     <ng-template
         documentationPropertyMode="input"

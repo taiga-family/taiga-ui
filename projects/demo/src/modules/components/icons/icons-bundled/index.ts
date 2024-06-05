@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TuiLinkDirective} from '@taiga-ui/core';
 
@@ -13,4 +14,5 @@ import {TuiLinkDirective} from '@taiga-ui/core';
 })
 export default class PageComponent {
     protected injectService = import('./examples/1/inject-service.md?raw');
+    protected readonly docRoutes = DemoRoute;
 }

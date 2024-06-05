@@ -2,6 +2,7 @@ import type {TemplateRef} from '@angular/core';
 import {Component, inject} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import type {TuiDialogContext, TuiDialogSize} from '@taiga-ui/core';
@@ -33,6 +34,7 @@ export default class PageComponent {
     private readonly alerts = inject(TuiAlertService);
     private readonly dialogs = inject(TuiDialogService);
 
+    protected readonly docRoutes = DemoRoute;
     protected readonly method = import('./method.md?raw');
 
     protected readonly dialogsCloseToken = import(

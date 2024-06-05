@@ -2,6 +2,7 @@ import {AsyncPipe} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
 import {
     TuiDocDocumentationComponent,
     TuiDocDocumentationPropertyConnectorDirective,
@@ -28,4 +29,6 @@ export class DropdownDocumentationComponent {
     protected readonly documentedComponent = inject<AbstractExampleTuiDropdown>(
         ABSTRACT_PROPS_ACCESSOR,
     );
+
+    protected readonly docRoutes = DemoRoute;
 }

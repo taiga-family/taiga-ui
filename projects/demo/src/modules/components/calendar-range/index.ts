@@ -1,5 +1,7 @@
 import {Component} from '@angular/core';
+import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import type {TuiBooleanHandler, TuiDayLike} from '@taiga-ui/cdk';
 import {
@@ -19,7 +21,7 @@ const ONE_DOT: [string] = ['var(--tui-success-fill)'];
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiCalendarRangeComponent, TuiLinkDirective],
+    imports: [TuiDemo, TuiCalendarRangeComponent, TuiLinkDirective, RouterLink],
     templateUrl: './index.html',
     changeDetection,
 })
@@ -75,4 +77,5 @@ export default class ExampleComponent {
     protected defaultViewedMonth = this.defaultViewedMonthVariants[0];
     protected minLength: TuiDayLike | null = null;
     protected maxLength: TuiDayLike | null = null;
+    protected readonly docRoutes = DemoRoute;
 }

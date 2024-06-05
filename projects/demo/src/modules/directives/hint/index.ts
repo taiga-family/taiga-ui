@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {tuiProvide} from '@taiga-ui/cdk';
 import {TuiHint, TuiLinkDirective, TuiNotificationComponent} from '@taiga-ui/core';
@@ -26,4 +27,5 @@ import {InheritedDocumentationComponent} from '../../components/abstract/inherit
 export default class PageComponent extends AbstractExampleTuiHint {
     protected showDelay = 500;
     protected hideDelay = 200;
+    protected readonly docRoutes = DemoRoute;
 }

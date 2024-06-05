@@ -1,6 +1,7 @@
 import {Component, forwardRef} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TuiActiveZoneDirective, TuiObscuredDirective} from '@taiga-ui/cdk';
 import {
@@ -37,6 +38,7 @@ import {DropdownDocumentationComponent} from '../../components/abstract/dropdown
     ],
 })
 export default class PageComponent extends AbstractExampleTuiDropdown {
+    protected readonly docRoutes = DemoRoute;
     protected readonly examples = [
         'Basic',
         'Interesting',

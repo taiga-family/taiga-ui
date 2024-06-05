@@ -1,6 +1,7 @@
 import {Component, inject, ViewChild} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
 import {
@@ -32,6 +33,7 @@ export default class PageComponent {
     @ViewChild('template')
     protected readonly templateRef: PolymorpheusContent<TuiSheet<unknown>>;
 
+    protected readonly docRoutes = DemoRoute;
     protected closeable = TUI_SHEET_DEFAULT_OPTIONS.closeable;
     protected image = TUI_SHEET_DEFAULT_OPTIONS.image;
     protected imageSlide = TUI_SHEET_DEFAULT_OPTIONS.imageSlide;

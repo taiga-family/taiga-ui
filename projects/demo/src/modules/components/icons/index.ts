@@ -1,6 +1,7 @@
 import {Component, inject} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
 import {assets, TuiDemo} from '@demo/utils';
 import {IntersectionObserverModule} from '@ng-web-apis/intersection-observer';
 import {
@@ -30,6 +31,7 @@ import {IconsGroupDirective} from './icons-group/icons-group.directive';
     changeDetection,
 })
 export default class PageComponent {
+    protected readonly docRoutes = DemoRoute;
     protected readonly icons = inject(TUI_DEMO_ICONS);
     protected readonly keys = Object.keys(this.icons);
     protected readonly exampleModule = import('./examples/import/import.md?raw');

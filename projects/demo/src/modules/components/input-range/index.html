@@ -53,8 +53,8 @@
                     Number formatting can be customized by using
                     <a
                         fragment="number-format"
-                        routerLink="/utils/tokens"
                         tuiLink
+                        [routerLink]="docRoutes.Tokens"
                     >
                         TUI_NUMBER_FORMAT
                     </a>
@@ -242,9 +242,9 @@
         <h6 class="tui-text_h6">
             Can be expanded with
             <a
-                routerLink="/directives/textfield-controller"
                 target="_blank"
                 tuiLink
+                [routerLink]="docRoutes.TextfieldController"
             >
                 TuiTextfieldController
             </a>
@@ -264,8 +264,8 @@
             >
                 Label is outside a component and made with
                 <a
-                    routerLink="/components/label"
                     tuiLink
+                    [routerLink]="docRoutes.Label"
                 >
                     <code>Label</code>
                 </a>

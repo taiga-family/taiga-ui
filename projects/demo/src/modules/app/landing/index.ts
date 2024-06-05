@@ -9,6 +9,7 @@ import {
     ViewChildren,
 } from '@angular/core';
 import {ActivatedRoute, Router, RouterLink} from '@angular/router';
+import {DemoRoute} from '@demo/routes';
 import {LOCAL_STORAGE} from '@ng-web-apis/common';
 import {
     INTERSECTION_ROOT,
@@ -48,6 +49,7 @@ export default class PageComponent implements OnInit {
     private readonly router = inject(Router);
     private readonly activatedRoute = inject(ActivatedRoute);
     protected readonly storage = inject(LOCAL_STORAGE);
+    protected readonly docRoutes = DemoRoute;
 
     protected current = 0;
 

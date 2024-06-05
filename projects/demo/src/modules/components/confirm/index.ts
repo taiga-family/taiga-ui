@@ -1,6 +1,7 @@
 import {Component, inject} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {
     TuiAlertService,
@@ -29,6 +30,7 @@ export default class ExampleComponent implements TuiConfirmData {
     private readonly dialogs = inject(TuiDialogService);
     private readonly alerts = inject(TuiAlertService);
 
+    protected readonly docRoutes = DemoRoute;
     protected readonly examples = ['Basic'];
     protected readonly exampleService = import('./examples/import/service.md?raw');
 
