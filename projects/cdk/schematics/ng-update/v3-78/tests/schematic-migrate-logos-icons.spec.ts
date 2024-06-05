@@ -61,10 +61,7 @@ describe('ng-update', () => {
         const tree = await runner
             .runSchematicAsync(
                 'updateToV3_78',
-                {
-                    experimental: true,
-                    'skip-logs': process.env['TUI_CI'] === 'true',
-                } as Partial<TuiSchema>,
+                {'skip-logs': process.env['TUI_CI'] === 'true'} as Partial<TuiSchema>,
                 host,
             )
             .toPromise();
@@ -83,6 +80,6 @@ function createMainFiles(): void {
     createAngularJson();
     createSourceFile(
         'package.json',
-        '{"dependencies": {"@angular/core": "~13.0.0", "@taiga-ui/proprietary-icons": "~3.78.0"}}',
+        '{"dependencies": {"@angular/core": "~13.0.0", "@taiga-ui/proprietary-core": "~3.78.0"}}',
     );
 }

@@ -14,12 +14,7 @@ export class TuiSidebarExample1 {
 
     readonly webApis = ['Common', 'Audio', 'Canvas', 'Geolocation', 'MIDI', 'Workers'];
 
-    readonly tinkoff = [
-        'Taiga-UI',
-        'ng-event-plugins',
-        'ng-polymorpheus',
-        'ng-dompurify',
-    ];
+    readonly links = ['Taiga-UI', 'ng-event-plugins', 'ng-polymorpheus', 'ng-dompurify'];
 
     toggle(open: boolean): void {
         this.open = open;
