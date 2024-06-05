@@ -159,14 +159,4 @@ describe('Tag', () => {
             expect(testComponent.editedSpy).toHaveBeenCalledWith('');
         });
     });
-
-    // TODO: remake stringHashToHsl to stringHashToRgb and include test
-    xdescribe('Tag color', () => {
-        it('when autoColor is enabled, the color will be rgb(241, 188, 229)', async () => {
-            const tag = await loader.getHarness(TuiTagHarness);
-            const backgroundColor = await tag.getBackgroundColor();
-
-            expect(backgroundColor).toBe('rgb(241, 188, 229)');
-        });
-    });
 });

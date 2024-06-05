@@ -34,7 +34,6 @@ export class TuiTagComponent {
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected editedText: string | null = null;
 
-    // TODO: Possibly implement standard focus mechanisms and outline
     @Input()
     public value = '';
 
