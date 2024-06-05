@@ -44,13 +44,11 @@ const GAP = 4;
 @Component({
     selector: 'tui-hint',
     template: `
-        <div>
-            <ng-content></ng-content>
-            <span
-                *polymorpheusOutlet="content as text; context: context"
-                [innerHTML]="text"
-            ></span>
-        </div>
+        <ng-content></ng-content>
+        <span
+            *polymorpheusOutlet="content as text; context: context"
+            [innerHTML]="text"
+        ></span>
     `,
     styleUrls: ['./hint.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
