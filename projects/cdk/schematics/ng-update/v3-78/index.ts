@@ -13,13 +13,13 @@ import {getFileSystem} from '../utils/get-file-system';
 import {replaceText} from '../utils/replace-text';
 import {ICONS} from './constants/icons';
 
-function hasProprietaryIcons(tree: Tree): boolean {
-    return !!getPackageJsonDependency(tree, '@taiga-ui/proprietary-icons');
+function hasProprietaryCore(tree: Tree): boolean {
+    return !!getPackageJsonDependency(tree, '@taiga-ui/proprietary-core');
 }
 
 export function updateToV3_78(options: TuiSchema): Rule {
     return (tree: Tree, _: SchematicContext) => {
-        if (!hasProprietaryIcons(tree)) {
+        if (!hasProprietaryCore(tree)) {
             !options['skip-logs'] &&
                 titleLog(`${FINISH_SYMBOL} No migrations required\n`);
 
@@ -28,13 +28,9 @@ export function updateToV3_78(options: TuiSchema): Rule {
 
         const fileSystem = getFileSystem(tree);
 
-        if (options.experimental) {
-            !options['skip-logs'] &&
-                infoLog(
-                    `${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} replacing deprecated logos...`,
-                );
-            replaceText(ICONS);
-        }
+        !options['skip-logs'] &&
+            infoLog(`${SMALL_TAB_SYMBOL}${REPLACE_SYMBOL} replacing deprecated logos...`);
+        replaceText(ICONS);
 
         fileSystem.commitEdits();
         saveActiveProject();
