@@ -1,7 +1,7 @@
 {
     "name": "@taiga-ui/components",
     "version": "3.59.0",
-    "description": "Taiga UI by Tinkoff is a set of components, services, directives and other tools to build high quality UI using modern Angular framework",
+    "description": "Taiga UI by TBank is a set of components, services, directives and other tools to build high quality UI using modern Angular framework",
     "keywords": [
         "angular",
         "kit",
