@@ -205,11 +205,6 @@ export class TuiComboBoxComponent<T>
         this.close();
     }
 
-    /** @deprecated use 'value' setter */
-    protected override updateValue(value: T | null): void {
-        super.updateValue(value);
-    }
-
     private isStrictMatch(item: T): boolean {
         return !!this.search && !!this.strictMatcher?.(item, this.search, this.stringify);
     }
