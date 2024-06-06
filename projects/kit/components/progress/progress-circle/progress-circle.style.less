@@ -1,13 +1,15 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
+/* Safari doesn't support rem units inside svg (but supports em units) */
+// TODO: replace all `em` with `rem` after bumping browser support of Safari to 16+
 @diameter: {
-    xxs: 2rem;
-    xs: 2.5rem;
-    s: 3.5rem;
-    m: 4rem;
-    l: 5rem;
-    xl: 6rem;
-    xxl: 8rem;
+    xxs: 2em;
+    xs: 2.5em;
+    s: 3.5em;
+    m: 4em;
+    l: 5em;
+    xl: 6em;
+    xxl: 8em;
 };
 
 :host {
@@ -19,6 +21,8 @@
     color: var(--tui-primary);
     transform: rotate(-90deg);
     transform-origin: center;
+    // TODO: delete this line after bumping browser support of Safari to 16+
+    font-size: 1rem; // to use em units inside svg (Safari doesn't support rem units inside svg)
     width: var(--t-diameter);
     height: var(--t-diameter);
 
