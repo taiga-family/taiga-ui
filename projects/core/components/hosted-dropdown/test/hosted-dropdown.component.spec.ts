@@ -1,22 +1,33 @@
+import {NgForOf, NgIf} from '@angular/common';
 import type {DebugElement} from '@angular/core';
 import {Component, ElementRef, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {
     TuiButtonDirective,
-    TuiDataList,
+    TuiDataListComponent,
     TuiHostedDropdownModule,
+    TuiOptionComponent,
     TuiPrimitiveTextfieldComponent,
     TuiPrimitiveTextfieldModule,
     TuiRootComponent,
-    TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {tuiDispatchOnActive, TuiPageObject} from '@taiga-ui/testing';
 import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('TuiHostedDropdown', () => {
     @Component({
+        standalone: true,
+        imports: [
+            TuiRootComponent,
+            TuiHostedDropdownModule,
+            NgIf,
+            TuiPrimitiveTextfieldModule,
+            TuiButtonDirective,
+            TuiDataListComponent,
+            NgForOf,
+            TuiOptionComponent,
+        ],
         template: `
             <tui-root (keydown.escape)="onEsc()">
                 <tui-hosted-dropdown
@@ -117,16 +128,7 @@ describe('TuiHostedDropdown', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [
-                NoopAnimationsModule,
-                TuiHostedDropdownModule,
-                TuiButtonDirective,
-                TuiPrimitiveTextfieldModule,
-                TuiTextfieldControllerModule,
-                TuiDataList,
-                TuiRootComponent,
-            ],
-            declarations: [TestComponent],
+            imports: [TestComponent],
             providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();

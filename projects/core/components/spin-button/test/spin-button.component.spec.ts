@@ -5,6 +5,8 @@ import {TuiSpinButtonComponent} from '@taiga-ui/core';
 
 describe('primitiveSpinButton', () => {
     @Component({
+        standalone: true,
+        imports: [TuiSpinButtonComponent],
         template: `
             <tui-spin-button>My button</tui-spin-button>
         `,
@@ -20,8 +22,7 @@ describe('primitiveSpinButton', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TuiSpinButtonComponent],
-            declarations: [TestComponent],
+            imports: [TestComponent],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);

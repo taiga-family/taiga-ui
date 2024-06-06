@@ -29,6 +29,8 @@ const STATIC_REQUEST_MOCK = {
 
 describe('Svg', () => {
     @Component({
+        standalone: true,
+        imports: [TuiSvgComponent],
         template: `
             <tui-svg [src]="icon"></tui-svg>
         `,
@@ -50,8 +52,7 @@ describe('Svg', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TuiSvgComponent],
-            declarations: [TestComponent],
+            imports: [TestComponent],
             providers: [
                 NG_EVENT_PLUGINS,
                 {

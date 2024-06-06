@@ -1,3 +1,4 @@
+import {NgIf} from '@angular/common';
 import type {DebugElement} from '@angular/core';
 import {Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
@@ -10,6 +11,8 @@ import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('InputRange', () => {
     @Component({
+        standalone: true,
+        imports: [TuiInputRangeModule, NgIf, ReactiveFormsModule],
         template: `
             <tui-input-range
                 *ngIf="default"
@@ -68,8 +71,7 @@ describe('InputRange', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TuiInputRangeModule, ReactiveFormsModule],
-            declarations: [TestComponent],
+            imports: [TestComponent],
             providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();

@@ -6,6 +6,8 @@ import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
 
 describe('Axes', () => {
     @Component({
+        standalone: true,
+        imports: [TuiAxesComponent],
         template: `
             <tui-axes #defaultValues></tui-axes>
             <tui-axes
@@ -40,10 +42,7 @@ describe('Axes', () => {
     let testComponent: TestComponent;
 
     beforeEach(async () => {
-        TestBed.configureTestingModule({
-            imports: [TuiAxesComponent],
-            declarations: [TestComponent],
-        });
+        TestBed.configureTestingModule({imports: [TestComponent]});
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         testComponent = fixture.componentInstance;

@@ -3,7 +3,6 @@ import {Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
@@ -20,6 +19,8 @@ import {of} from 'rxjs';
 
 describe('InputDateTime', () => {
     @Component({
+        standalone: true,
+        imports: [TuiRootComponent, TuiInputDateTimeModule, ReactiveFormsModule],
         template: `
             <tui-root>
                 <tui-input-date-time
@@ -59,16 +60,6 @@ describe('InputDateTime', () => {
         },
     };
 
-    const defaultTestingModuleMeta = {
-        imports: [
-            TuiRootComponent,
-            ReactiveFormsModule,
-            NoopAnimationsModule,
-            TuiInputDateTimeModule,
-        ],
-        declarations: [TestComponent],
-    };
-
     function initializeEnvironment(
         componentClass: Type<TestComponent> = TestComponent,
     ): void {
@@ -81,7 +72,7 @@ describe('InputDateTime', () => {
 
     describe('Default', () => {
         beforeEach(async () => {
-            TestBed.configureTestingModule(defaultTestingModuleMeta);
+            TestBed.configureTestingModule({imports: [TestComponent]});
             await TestBed.compileComponents();
             initializeEnvironment();
         });
@@ -237,7 +228,7 @@ describe('InputDateTime', () => {
     describe('InputDateTime + TUI_DATE_FORMAT="DMY" + TUI_DATE_SEPARATOR="/"', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
-                ...defaultTestingModuleMeta,
+                imports: [TestComponent],
                 providers: [
                     NG_EVENT_PLUGINS,
                     {
@@ -278,7 +269,7 @@ describe('InputDateTime', () => {
     describe('InputDateTime + TUI_DATE_FORMAT="YMD" + TUI_DATE_SEPARATOR="-"', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
-                ...defaultTestingModuleMeta,
+                imports: [TestComponent],
                 providers: [
                     NG_EVENT_PLUGINS,
                     {
@@ -350,6 +341,8 @@ describe('InputDateTime', () => {
         }
 
         @Component({
+            standalone: true,
+            imports: [TuiRootComponent, TuiInputDateTimeModule, ReactiveFormsModule],
             template: `
                 <tui-root>
                     <tui-input-date-time
@@ -370,8 +363,7 @@ describe('InputDateTime', () => {
 
         beforeEach(async () => {
             TestBed.configureTestingModule({
-                ...defaultTestingModuleMeta,
-                declarations: [TransformerTestComponent],
+                imports: [TestComponent, TransformerTestComponent],
                 providers: [
                     NG_EVENT_PLUGINS,
                     {

@@ -17,7 +17,7 @@ describe('TuiDocCodeComponent', () => {
                     useValue: {
                         coreLibraryLoader: async () => import('highlight.js/lib/core'),
                         lineNumbersLoader: async () =>
-                            import('highlightjs-line-numbers.js'),
+                            import('ngx-highlightjs/line-numbers'),
                         languages: {
                             typescript: async () =>
                                 import('highlight.js/lib/languages/typescript'),

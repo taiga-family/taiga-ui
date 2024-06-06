@@ -2,13 +2,14 @@ import type {TemplateRef} from '@angular/core';
 import {Component} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {discardPeriodicTasks, fakeAsync, TestBed, tick} from '@angular/core/testing';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiHint, TuiRootComponent} from '@taiga-ui/core';
 
 type Hint = TemplateRef<Record<string, unknown>> | string | null | undefined;
 
 describe('Hint', () => {
     @Component({
+        standalone: true,
+        imports: [TuiRootComponent, TuiHint],
         template: `
             <tui-root>
                 <div
@@ -41,13 +42,7 @@ describe('Hint', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [
-                NoopAnimationsModule,
-                TuiHint,
-                TuiRootComponent,
-                NoopAnimationsModule,
-            ],
-            declarations: [TestComponent],
+            imports: [TestComponent],
         });
         await TestBed.compileComponents();
         document.body.style.margin = '0';

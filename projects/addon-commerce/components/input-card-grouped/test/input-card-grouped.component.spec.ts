@@ -24,6 +24,8 @@ import {firstValueFrom, timer} from 'rxjs';
 
 describe('InputCardGrouped', () => {
     @Component({
+        standalone: true,
+        imports: [TuiInputCardGroupedComponent, ReactiveFormsModule, TuiSvgComponent],
         template: `
             <tui-input-card-grouped
                 [formControl]="control"
@@ -60,10 +62,7 @@ describe('InputCardGrouped', () => {
                 el: ElementRef<HTMLElement>,
             ) => new TuiSynchronousAutofocusHandler(focusable, el),
             deps: [[new Optional(), new Self(), TUI_FOCUSABLE_ITEM_ACCESSOR], ElementRef],
-        }).configureTestingModule({
-            imports: [ReactiveFormsModule, TuiInputCardGroupedComponent, TuiSvgComponent],
-            declarations: [TestComponent],
-        });
+        }).configureTestingModule({imports: [TestComponent]});
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         testComponent = fixture.componentInstance;

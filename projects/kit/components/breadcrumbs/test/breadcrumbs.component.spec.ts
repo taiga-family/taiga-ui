@@ -1,3 +1,4 @@
+import {NgFor} from '@angular/common';
 import type {DebugElement} from '@angular/core';
 import {Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
@@ -6,6 +7,7 @@ import {By} from '@angular/platform-browser';
 import {RouterTestingModule} from '@angular/router/testing';
 import {TuiItemDirective} from '@taiga-ui/cdk';
 import type {TuiSizeL} from '@taiga-ui/core';
+import {TuiLinkDirective} from '@taiga-ui/core';
 import {TuiBreadcrumbsComponent} from '@taiga-ui/kit';
 import {TuiPageObject} from '@taiga-ui/testing';
 import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
@@ -27,6 +29,14 @@ const ITEMS = [
 
 describe('Breadcrumbs Wrapper', () => {
     @Component({
+        standalone: true,
+        imports: [
+            TuiBreadcrumbsComponent,
+            NgFor,
+            TuiItemDirective,
+            TuiLinkDirective,
+            RouterTestingModule,
+        ],
         template: `
             <tui-breadcrumbs
                 automation-id="tui-breadcrumbs-wrapper__component"
@@ -68,8 +78,7 @@ describe('Breadcrumbs Wrapper', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TuiBreadcrumbsComponent, TuiItemDirective, RouterTestingModule],
-            declarations: [TestComponent],
+            imports: [TestComponent],
             providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();

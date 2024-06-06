@@ -4,17 +4,16 @@ import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import type {TuiIdentityMatcher, TuiStringHandler} from '@taiga-ui/cdk';
 import {TUI_DEFAULT_IDENTITY_MATCHER} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {
-    TuiDataList,
+    TuiDataListDirective,
     TuiHint,
     TuiRootComponent,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiDataListWrapper} from '@taiga-ui/kit/components';
+import {TuiDataListWrapperComponent} from '@taiga-ui/kit';
 import {
     TUI_ARROW,
     TUI_ARROW_MODE,
@@ -52,6 +51,16 @@ function identityMatcher(item1: Beast, item2: Beast): boolean {
 
 describe('ComboBox', () => {
     @Component({
+        standalone: true,
+        imports: [
+            TuiRootComponent,
+            TuiComboBoxModule,
+            ReactiveFormsModule,
+            TuiHint,
+            TuiTextfieldControllerModule,
+            TuiDataListWrapperComponent,
+            TuiDataListDirective,
+        ],
         template: `
             <tui-root>
                 <tui-combo-box
@@ -100,17 +109,7 @@ describe('ComboBox', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [
-                NoopAnimationsModule,
-                ReactiveFormsModule,
-                TuiComboBoxModule,
-                TuiRootComponent,
-                TuiTextfieldControllerModule,
-                TuiHint,
-                TuiDataList,
-                TuiDataListWrapper,
-            ],
-            declarations: [TestComponent],
+            imports: [TestComponent],
             providers: [
                 NG_EVENT_PLUGINS,
                 {

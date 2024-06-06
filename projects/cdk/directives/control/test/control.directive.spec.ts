@@ -8,6 +8,8 @@ import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('TuiControlDirective', () => {
     @Component({
+        standalone: true,
+        imports: [ReactiveFormsModule, TuiControlDirective],
         template: `
             <form [formGroup]="form">
                 <input
@@ -30,8 +32,7 @@ describe('TuiControlDirective', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [ReactiveFormsModule, TuiControlDirective],
-            declarations: [TestComponent],
+            imports: [TestComponent],
             providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();

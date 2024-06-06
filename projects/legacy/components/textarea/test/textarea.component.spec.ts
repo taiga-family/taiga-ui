@@ -3,9 +3,8 @@ import {Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {tuiPx} from '@taiga-ui/cdk';
-import {TuiHint, TuiTextfieldControllerModule} from '@taiga-ui/core';
+import {TuiHint} from '@taiga-ui/core';
 import {
     DEFAULT_ROWS,
     LINE_HEIGHT_L,
@@ -23,6 +22,8 @@ const DEFAULT_HEIGHT = 108;
 
 describe('Textarea', () => {
     @Component({
+        standalone: true,
+        imports: [TuiTextareaModule, ReactiveFormsModule, TuiHint],
         template: `
             <tui-textarea
                 [expandable]="expandable"
@@ -94,15 +95,8 @@ describe('Textarea', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [
-                NoopAnimationsModule,
-                ReactiveFormsModule,
-                TuiTextareaModule,
-                TuiTextfieldControllerModule,
-                TuiHint,
-            ],
+            imports: [TestComponent],
             providers: [NG_EVENT_PLUGINS],
-            declarations: [TestComponent],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);

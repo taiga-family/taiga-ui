@@ -1,8 +1,8 @@
+import {NgIf} from '@angular/common';
 import {Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk';
 import {CHAR_NO_BREAK_SPACE, TUI_TRUE_HANDLER} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
@@ -22,6 +22,15 @@ const TAG = 'Tag';
 
 describe('InputTag', () => {
     @Component({
+        standalone: true,
+        imports: [
+            TuiRootComponent,
+            TuiInputTagModule,
+            NgIf,
+            ReactiveFormsModule,
+            TuiHint,
+            TuiTextfieldControllerModule,
+        ],
         template: `
             <tui-root>
                 <button>Focus stealer</button>
@@ -89,15 +98,7 @@ describe('InputTag', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [
-                ReactiveFormsModule,
-                NoopAnimationsModule,
-                TuiInputTagModule,
-                TuiRootComponent,
-                TuiHint,
-                TuiTextfieldControllerModule,
-            ],
-            declarations: [TestComponent],
+            imports: [TestComponent],
             providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();

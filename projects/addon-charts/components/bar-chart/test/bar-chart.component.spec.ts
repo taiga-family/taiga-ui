@@ -5,6 +5,8 @@ import {TuiBarChartComponent} from '@taiga-ui/addon-charts';
 
 describe('BarChart', () => {
     @Component({
+        standalone: true,
+        imports: [TuiBarChartComponent],
         template: `
             <tui-bar-chart
                 [max]="max"
@@ -28,10 +30,7 @@ describe('BarChart', () => {
     let testComponent: TestComponent;
 
     beforeEach(async () => {
-        TestBed.configureTestingModule({
-            imports: [TuiBarChartComponent],
-            declarations: [TestComponent],
-        });
+        TestBed.configureTestingModule({imports: [TestComponent]});
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         testComponent = fixture.componentInstance;

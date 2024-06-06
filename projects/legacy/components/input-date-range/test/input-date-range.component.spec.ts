@@ -4,7 +4,6 @@ import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {
     RANGE_SEPARATOR_CHAR,
     TUI_LAST_DAY,
@@ -29,6 +28,13 @@ import {of} from 'rxjs';
 
 describe('InputDateRangeComponent', () => {
     @Component({
+        standalone: true,
+        imports: [
+            TuiRootComponent,
+            TuiInputDateRangeModule,
+            ReactiveFormsModule,
+            TuiTextfieldControllerModule,
+        ],
         template: `
             <tui-root>
                 <tui-input-date-range
@@ -70,17 +76,6 @@ describe('InputDateRangeComponent', () => {
     let component: TuiInputDateRangeComponent;
     let inputPO: TuiNativeInputPO;
 
-    const defaultTestingModuleMeta = {
-        imports: [
-            TuiInputDateRangeModule,
-            TuiRootComponent,
-            ReactiveFormsModule,
-            NoopAnimationsModule,
-            TuiTextfieldControllerModule,
-        ],
-        declarations: [TestComponent],
-    };
-
     function initializeEnvironment(type: Type<TestComponent> = TestComponent): void {
         fixture = TestBed.createComponent(type);
         pageObject = new TuiPageObject(fixture);
@@ -93,7 +88,7 @@ describe('InputDateRangeComponent', () => {
 
     describe('Default', () => {
         beforeEach(async () => {
-            TestBed.configureTestingModule(defaultTestingModuleMeta);
+            TestBed.configureTestingModule({imports: [TestComponent]});
             await TestBed.compileComponents();
             initializeEnvironment();
         });
@@ -187,7 +182,7 @@ describe('InputDateRangeComponent', () => {
     describe('InputDateRangeComponent + TUI_DATE_FORMAT="MDY" + TUI_DATE_SEPARATOR="/"', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
-                ...defaultTestingModuleMeta,
+                imports: [TestComponent],
                 providers: [
                     NG_EVENT_PLUGINS,
                     {
@@ -229,7 +224,7 @@ describe('InputDateRangeComponent', () => {
     describe('InputDateRangeComponent + TUI_DATE_FORMAT="YMD" + TUI_DATE_SEPARATOR="-"', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
-                ...defaultTestingModuleMeta,
+                imports: [TestComponent],
                 providers: [
                     NG_EVENT_PLUGINS,
                     {
@@ -329,6 +324,13 @@ describe('InputDateRangeComponent', () => {
         }
 
         @Component({
+            standalone: true,
+            imports: [
+                TuiRootComponent,
+                TuiInputDateRangeModule,
+                ReactiveFormsModule,
+                TuiTextfieldControllerModule,
+            ],
             template: `
                 <tui-root>
                     <tui-input-date-range
@@ -351,8 +353,7 @@ describe('InputDateRangeComponent', () => {
 
         beforeEach(async () => {
             TestBed.configureTestingModule({
-                ...defaultTestingModuleMeta,
-                declarations: [TransformerTestComponent],
+                imports: [TestComponent, TransformerTestComponent],
                 providers: [
                     NG_EVENT_PLUGINS,
                     {

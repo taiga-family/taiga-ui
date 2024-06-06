@@ -9,6 +9,8 @@ describe('Loader component options', () => {
     let testComponent: TestComponent;
 
     @Component({
+        standalone: true,
+        imports: [TuiLoaderComponent],
         template: `
             <tui-loader></tui-loader>
         `,
@@ -20,8 +22,7 @@ describe('Loader component options', () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            imports: [TuiLoaderComponent],
-            declarations: [TestComponent],
+            imports: [TestComponent],
             providers: [
                 NG_EVENT_PLUGINS,
                 tuiLoaderOptionsProvider({

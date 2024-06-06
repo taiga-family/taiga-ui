@@ -9,6 +9,8 @@ describe('PreviewPagination', () => {
     let testComponent: TestComponent;
 
     @Component({
+        standalone: true,
+        imports: [TuiPreview],
         template: `
             <tui-preview-pagination
                 [length]="length"
@@ -26,8 +28,7 @@ describe('PreviewPagination', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TuiPreview],
-            declarations: [TestComponent],
+            imports: [TestComponent],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);

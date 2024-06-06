@@ -2,13 +2,23 @@ import type {ElementRef} from '@angular/core';
 import {Component} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {TuiDropdownModule, TuiRootComponent} from '@taiga-ui/core';
+import {
+    TuiDropdownDirective,
+    TuiDropdownManualDirective,
+    TuiRootComponent,
+} from '@taiga-ui/core';
 import {TuiPageObject} from '@taiga-ui/testing';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 describe('TuiDropdownDirective', () => {
     @Component({
+        standalone: true,
+        imports: [
+            TuiRootComponent,
+            TuiDropdownDirective,
+            TuiDropdownManualDirective,
+            PolymorpheusModule,
+        ],
         template: `
             <tui-root>
                 <button automation-id="tui-dropdown-directive__button"></button>
@@ -46,13 +56,7 @@ describe('TuiDropdownDirective', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [
-                TuiDropdownModule,
-                NoopAnimationsModule,
-                TuiRootComponent,
-                PolymorpheusModule,
-            ],
-            declarations: [TestComponent],
+            imports: [TestComponent],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);

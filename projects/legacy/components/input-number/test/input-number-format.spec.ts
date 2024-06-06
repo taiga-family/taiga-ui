@@ -2,7 +2,6 @@ import {Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
 import type {TuiDecimalMode} from '@taiga-ui/core';
 import {TuiNumberFormatDirective, tuiNumberFormatProvider} from '@taiga-ui/core';
@@ -12,6 +11,8 @@ import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('InputNumber - backward compatibility for separators', () => {
     @Component({
+        standalone: true,
+        imports: [ReactiveFormsModule, TuiInputNumberModule, TuiNumberFormatDirective],
         template: `
             <ng-container [formGroup]="form">
                 <tui-input-number
@@ -40,14 +41,8 @@ describe('InputNumber - backward compatibility for separators', () => {
     describe('Format - {d d d,d}', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
-                imports: [
-                    NoopAnimationsModule,
-                    TuiNumberFormatDirective,
-                    TuiInputNumberModule,
-                    ReactiveFormsModule,
-                ],
+                imports: [TestComponent],
                 providers: [NG_EVENT_PLUGINS],
-                declarations: [TestComponent],
             });
             await TestBed.compileComponents();
             fixture = TestBed.createComponent(TestComponent);
@@ -80,13 +75,7 @@ describe('InputNumber - backward compatibility for separators', () => {
     describe('Format - {d,d,d.d}', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
-                imports: [
-                    NoopAnimationsModule,
-                    TuiInputNumberModule,
-                    TuiNumberFormatDirective,
-                    ReactiveFormsModule,
-                ],
-                declarations: [TestComponent],
+                imports: [TestComponent],
                 providers: [
                     NG_EVENT_PLUGINS,
                     tuiNumberFormatProvider({

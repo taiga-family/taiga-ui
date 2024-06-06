@@ -2,7 +2,6 @@ import {Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import type {TuiBooleanHandler, TuiHandler} from '@taiga-ui/cdk';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk';
 import type {TuiSizeS} from '@taiga-ui/core';
@@ -34,6 +33,8 @@ const ARR_OBJECT_WITH_ZERO_BADGE = [new ItemWithBadge('Focused Zone', 0)];
 
 describe('Filter', () => {
     @Component({
+        standalone: true,
+        imports: [TuiFilterComponent, ReactiveFormsModule],
         template: `
             <tui-filter
                 [badgeHandler]="badgeHandler"
@@ -65,8 +66,7 @@ describe('Filter', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [ReactiveFormsModule, NoopAnimationsModule, TuiFilterComponent],
-            declarations: [TestComponent],
+            imports: [TestComponent],
             providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();

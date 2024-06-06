@@ -19,6 +19,8 @@ describe('CalendarSheet', () => {
     const today = 23;
 
     @Component({
+        standalone: true,
+        imports: [TuiCalendarSheetComponent],
         template: `
             <tui-calendar-sheet
                 [disabledItemHandler]="disabledItemHandler"
@@ -48,8 +50,7 @@ describe('CalendarSheet', () => {
     describe('main case', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
-                imports: [TuiCalendarSheetComponent],
-                declarations: [TestComponent],
+                imports: [TestComponent],
             });
             await TestBed.compileComponents();
             tuiMockCurrentDate(new Date(2018, 1, today));
@@ -222,8 +223,7 @@ describe('CalendarSheet', () => {
         describe('Week starts with Sunday if TUI_FIRST_DAY_OF_WEEK was set as TuiDayOfWeek.Sunday', () => {
             beforeEach(async () => {
                 TestBed.configureTestingModule({
-                    imports: [TuiCalendarSheetComponent],
-                    declarations: [TestComponent],
+                    imports: [TestComponent],
                     providers: [
                         {
                             provide: TUI_FIRST_DAY_OF_WEEK,
@@ -259,8 +259,7 @@ describe('CalendarSheet', () => {
         describe('Week starts with Monday if TUI_FIRST_DAY_OF_WEEK was set as TuiDayOfWeek.Monday', () => {
             beforeEach(async () => {
                 TestBed.configureTestingModule({
-                    imports: [TuiCalendarSheetComponent],
-                    declarations: [TestComponent],
+                    imports: [TestComponent],
                     providers: [
                         {
                             provide: TUI_FIRST_DAY_OF_WEEK,
@@ -296,8 +295,7 @@ describe('CalendarSheet', () => {
         describe('Week starts with Wednesday if TUI_FIRST_DAY_OF_WEEK was set as TuiDayOfWeek.Wednesday', () => {
             beforeEach(async () => {
                 TestBed.configureTestingModule({
-                    imports: [TuiCalendarSheetComponent],
-                    declarations: [TestComponent],
+                    imports: [TestComponent],
                     providers: [
                         {
                             provide: TUI_FIRST_DAY_OF_WEEK,

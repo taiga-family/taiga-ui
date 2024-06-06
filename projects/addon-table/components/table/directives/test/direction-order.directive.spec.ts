@@ -5,6 +5,8 @@ import {TuiTable, TuiTableDirective} from '@taiga-ui/addon-table';
 
 describe('TuiDirectionOrder directive', () => {
     @Component({
+        standalone: true,
+        imports: [TuiTable],
         template: `
             <table
                 tuiDirectionOrder
@@ -19,7 +21,7 @@ describe('TuiDirectionOrder directive', () => {
         @ViewChild(TuiTableDirective)
         public readonly table!: TuiTableDirective<any>;
 
-        public directionOrder = 'asc';
+        public directionOrder: 'asc' | 'desc' = 'asc';
         public directionOrderChange = jest.fn();
     }
 
@@ -28,8 +30,7 @@ describe('TuiDirectionOrder directive', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TuiTable],
-            declarations: [TestComponent],
+            imports: [TestComponent],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);

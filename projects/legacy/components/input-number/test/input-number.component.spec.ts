@@ -1,9 +1,9 @@
+import {NgIf} from '@angular/common';
 import type {DebugElement} from '@angular/core';
 import {Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {CHAR_MINUS, CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
 import type {TuiDecimalMode, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {
@@ -17,6 +17,15 @@ import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('InputNumber', () => {
     @Component({
+        standalone: true,
+        imports: [
+            ReactiveFormsModule,
+            TuiInputNumberModule,
+            NgIf,
+            TuiHint,
+            TuiNumberFormatDirective,
+            TuiTextfieldControllerModule,
+        ],
         template: `
             <ng-container [formGroup]="form">
                 <tui-input-number
@@ -63,16 +72,8 @@ describe('InputNumber', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [
-                NoopAnimationsModule,
-                TuiInputNumberModule,
-                TuiNumberFormatDirective,
-                ReactiveFormsModule,
-                TuiTextfieldControllerModule,
-                TuiHint,
-            ],
+            imports: [TestComponent],
             providers: [NG_EVENT_PLUGINS],
-            declarations: [TestComponent],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);

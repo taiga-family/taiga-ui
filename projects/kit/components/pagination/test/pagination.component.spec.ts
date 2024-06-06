@@ -18,6 +18,8 @@ interface TuiPaginationParams {
 
 describe('TuiPaginationComponent', () => {
     @Component({
+        standalone: true,
+        imports: [TuiPaginationModule],
         template: `
             <tui-pagination
                 [activePadding]="activePadding"
@@ -87,8 +89,7 @@ describe('TuiPaginationComponent', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TuiPaginationModule],
-            declarations: [TestComponent],
+            imports: [TestComponent],
             providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();

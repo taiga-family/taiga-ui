@@ -19,8 +19,10 @@ describe('Highlight Directive', () => {
     const testHtmlCode = '<div class=&quot;my-class&quot;></div>';
 
     @Component({
+        standalone: true,
+        imports: [Highlight],
         template: `
-            <code [highlight]="code"></code>
+            <code [highlight]="code || ''"></code>
         `,
     })
     class TestHighlightComponent {
@@ -30,7 +32,7 @@ describe('Highlight Directive', () => {
 
     beforeEach(waitForAsync(async () => {
         await TestBed.configureTestingModule({
-            declarations: [Highlight, TestHighlightComponent],
+            imports: [TestHighlightComponent],
             providers: [
                 {
                     provide: HighlightLoader,

@@ -10,6 +10,8 @@ const DEFAULT_TEST_COUNT = 3;
 
 describe('TuiRepeatTimes directive', () => {
     @Component({
+        standalone: true,
+        imports: [TuiRepeatTimesDirective],
         template: `
             <div
                 *tuiRepeatTimes="let index of count"
@@ -30,8 +32,7 @@ describe('TuiRepeatTimes directive', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TuiRepeatTimesDirective],
-            declarations: [TestComponent],
+            imports: [TestComponent],
             providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();

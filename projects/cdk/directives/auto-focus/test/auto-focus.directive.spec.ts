@@ -26,6 +26,8 @@ import {EMPTY} from 'rxjs';
 describe('TuiAutoFocus directive', () => {
     describe('works for focusable HTML element', () => {
         @Component({
+            standalone: true,
+            imports: [TuiAutoFocusDirective],
             template: `
                 <div
                     tabindex="0"
@@ -44,8 +46,7 @@ describe('TuiAutoFocus directive', () => {
 
         beforeEach(async () => {
             TestBed.configureTestingModule({
-                imports: [TuiAutoFocusDirective],
-                declarations: [TestComponentWithDiv],
+                imports: [TestComponentWithDiv],
                 providers: [NG_EVENT_PLUGINS],
             });
             await TestBed.compileComponents();
@@ -62,6 +63,7 @@ describe('TuiAutoFocus directive', () => {
 
     describe('works for TUI_FOCUSABLE_ITEM_ACCESSOR', () => {
         @Component({
+            standalone: true,
             selector: 'focusable-component',
             template: `
                 <p>
@@ -92,6 +94,8 @@ describe('TuiAutoFocus directive', () => {
         }
 
         @Component({
+            standalone: true,
+            imports: [TestFocusableComponent, TuiAutoFocusDirective],
             template: `
                 <focusable-component tuiAutoFocus></focusable-component>
             `,
@@ -107,8 +111,7 @@ describe('TuiAutoFocus directive', () => {
 
         beforeEach(() => {
             TestBed.configureTestingModule({
-                imports: [TuiAutoFocusDirective],
-                declarations: [TestComponentWithTuiButton, TestFocusableComponent],
+                imports: [TestComponentWithTuiButton, TestFocusableComponent],
                 providers: [NG_EVENT_PLUGINS],
             });
 
@@ -128,6 +131,8 @@ describe('TuiAutoFocus directive', () => {
 
     describe('works for iOS decoy method', () => {
         @Component({
+            standalone: true,
+            imports: [TuiAutoFocusDirective],
             template: `
                 <input tuiAutoFocus />
             `,
@@ -143,8 +148,7 @@ describe('TuiAutoFocus directive', () => {
 
         beforeEach(async () => {
             TestBed.configureTestingModule({
-                imports: [TuiAutoFocusDirective],
-                declarations: [TestComponentIos],
+                imports: [TestComponentIos],
                 providers: [
                     NG_EVENT_PLUGINS,
                     {
@@ -188,6 +192,8 @@ describe('TuiAutoFocus directive', () => {
 
     describe('autoFocus flag is false', () => {
         @Component({
+            standalone: true,
+            imports: [TuiAutoFocusDirective],
             template: `
                 <div
                     tabindex="0"
@@ -208,8 +214,7 @@ describe('TuiAutoFocus directive', () => {
 
         beforeEach(() => {
             TestBed.configureTestingModule({
-                imports: [TuiAutoFocusDirective],
-                declarations: [TestComponentWithFocusFlag],
+                imports: [TestComponentWithFocusFlag],
                 providers: [NG_EVENT_PLUGINS],
             });
 

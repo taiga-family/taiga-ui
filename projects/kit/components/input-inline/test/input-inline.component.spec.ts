@@ -10,6 +10,8 @@ import {TuiInputInlineComponent} from '../input-inline.component';
 
 describe('InputInline', () => {
     @Component({
+        standalone: true,
+        imports: [TuiInputInlineComponent, ReactiveFormsModule],
         template: `
             <tui-input-inline>
                 <input
@@ -37,8 +39,7 @@ describe('InputInline', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [ReactiveFormsModule, TuiInputInlineComponent],
-            declarations: [TestComponent],
+            imports: [TestComponent],
             providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();

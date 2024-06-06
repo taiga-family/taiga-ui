@@ -1,4 +1,3 @@
-import {CommonModule} from '@angular/common';
 import {Component} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
@@ -8,6 +7,8 @@ import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 describe('TuiActiveZoneDirective', () => {
     @Component({
+        standalone: true,
+        imports: [TuiActiveZoneDirective, ReactiveFormsModule],
         template: `
             <p id="parent-info">Parent zone: {{ parentActive }}</p>
             <p id="child-info">Child zone: {{ childActive }}</p>
@@ -101,8 +102,7 @@ describe('TuiActiveZoneDirective', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [CommonModule, TuiActiveZoneDirective, ReactiveFormsModule],
-            declarations: [TestComponent],
+            imports: [TestComponent],
             providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();

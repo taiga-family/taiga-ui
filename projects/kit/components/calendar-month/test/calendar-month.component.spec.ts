@@ -9,6 +9,8 @@ const TODAY = TuiDay.currentLocal();
 
 describe('CalendarMonth', () => {
     @Component({
+        standalone: true,
+        imports: [TuiCalendarMonthComponent],
         template: `
             <tui-calendar-month
                 [disabledItemHandler]="disabledItemHandler"
@@ -38,8 +40,7 @@ describe('CalendarMonth', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [TuiCalendarMonthComponent],
-            declarations: [TestComponent],
+            imports: [TestComponent],
             providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();

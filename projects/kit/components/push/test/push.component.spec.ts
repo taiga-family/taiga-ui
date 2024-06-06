@@ -2,7 +2,6 @@ import type {DebugElement} from '@angular/core';
 import {Component} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiRootComponent} from '@taiga-ui/core';
 import {TuiPageObject} from '@taiga-ui/testing';
 import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
@@ -12,6 +11,8 @@ import {TuiPushService} from '../push.service';
 
 describe('Push with TUI_PUSH_OPTIONS', () => {
     @Component({
+        standalone: true,
+        imports: [TuiRootComponent],
         template: `
             <tui-root></tui-root>
         `,
@@ -30,8 +31,7 @@ describe('Push with TUI_PUSH_OPTIONS', () => {
 
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [NoopAnimationsModule, TuiRootComponent],
-            declarations: [TestComponent],
+            imports: [TestComponent],
             providers: [tuiPushOptionsProvider({heading}), NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
