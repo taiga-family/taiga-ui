@@ -32,10 +32,10 @@ import {
     tuiTypedFromEvent,
 } from '@taiga-ui/cdk';
 import {
-    TuiPositionAccessor,
     TuiDropdownDirective,
     TuiDropdownHoverDirective,
     tuiIsEditingKey,
+    TuiPositionAccessor,
 } from '@taiga-ui/core';
 import {shouldCall} from '@tinkoff/ng-event-plugins';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
