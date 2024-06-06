@@ -25,6 +25,7 @@ import {
     TuiLetDirective,
 } from '@taiga-ui/cdk';
 import {
+    TUI_TEXTFIELD_OPTIONS,
     TuiDataList,
     TuiDropdownModule,
     tuiDropdownOptionsProvider,
@@ -33,7 +34,6 @@ import {
     TuiHint,
     TuiSelectDirective,
     TuiTextfield,
-    TuiTextfieldOptionsDirective,
     tuiTextfieldOptionsProvider,
 } from '@taiga-ui/core';
 import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
@@ -95,9 +95,7 @@ export class TuiInputPhoneInternationalComponent
     protected readonly countryIsoCode$ = new BehaviorSubject(this.options.countryIsoCode);
     protected readonly mask$ = new BehaviorSubject<MaskitoOptions | null>(null);
     protected readonly countriesNames$ = inject(TUI_COUNTRIES);
-    protected readonly textfieldOptions = inject(TuiTextfieldOptionsDirective, {
-        optional: true,
-    });
+    protected readonly textfieldOptions = inject(TUI_TEXTFIELD_OPTIONS);
 
     protected open = false;
     protected textfieldValue = '';
