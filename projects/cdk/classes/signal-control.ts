@@ -64,7 +64,7 @@ export abstract class TuiControl<T> implements ControlValueAccessor {
 
     public readonly mode = computed(() =>
         // eslint-disable-next-line no-nested-ternary
-        this.readOnly() ? 'readonly' : this.invalid() ? 'invalid' : null,
+        this.readOnly() ? 'readonly' : this.invalid() ? 'invalid' : 'valid',
     );
 
     constructor() {

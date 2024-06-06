@@ -177,8 +177,8 @@
                 transform: translateY(-0.7em);
             }
 
-            &:not(:disabled):not([data-mode='readonly'])[data-invalid='true'] ~ label,
-            &:invalid:not(:disabled):not([data-mode='readonly']):not([data-invalid='false']) ~ label {
+            &:not(:disabled)[data-mode='invalid'] ~ label,
+            &:invalid:not(:disabled):not([data-mode]) ~ label {
                 color: var(--tui-negative);
             }
 
