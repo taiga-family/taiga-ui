@@ -175,10 +175,6 @@ export class TuiInputPhoneInternationalComponent
             .subscribe(this.mask$);
     }
 
-    public override setDisabledState(): void {
-        super.setDisabledState();
-    }
-
     public override writeValue(unmaskedValue: string): void {
         super.writeValue(unmaskedValue);
 
