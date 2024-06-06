@@ -8,7 +8,10 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiRootComponent, tuiSvgOptionsProvider} from '@taiga-ui/core';
 import type {TuiCountryIsoCode, TuiLanguage} from '@taiga-ui/i18n';
 import {TUI_ENGLISH_LANGUAGE, TUI_LANGUAGE, TUI_RUSSIAN_LANGUAGE} from '@taiga-ui/i18n';
-import {TuiInputPhoneInternationalComponent} from '@taiga-ui/kit';
+import {
+    TuiInputPhoneInternationalComponent,
+    tuiInputPhoneInternationalOptionsProvider,
+} from '@taiga-ui/kit';
 import {TuiNativeInputPO} from '@taiga-ui/testing';
 import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 import metadata from 'libphonenumber-js/max/metadata';
@@ -26,6 +29,11 @@ describe('InputPhoneInternational', () => {
                 ></tui-input-phone-international>
             </tui-root>
         `,
+        providers: [
+            tuiInputPhoneInternationalOptionsProvider({
+                metadata: of(metadata),
+            }),
+        ],
     })
     class TestComponent {
         @ViewChild(TuiInputPhoneInternationalComponent, {static: true})
@@ -100,7 +108,7 @@ describe('InputPhoneInternational', () => {
                 data,
             });
 
-            component.onPaste(event, metadata);
+            component.onPaste(event);
             fixture.detectChanges();
 
             inputPO.sendText(data);
