@@ -21,5 +21,5 @@ import {StylesInfoComponent} from '../../app/styles-info';
     changeDetection,
 })
 export default class PageComponent {
-    protected readonly docRoutes = DemoRoute;
+    protected readonly routes = DemoRoute;
 }

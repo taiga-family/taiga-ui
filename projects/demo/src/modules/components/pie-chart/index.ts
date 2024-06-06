@@ -29,7 +29,7 @@ import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
     changeDetection,
 })
 export default class PageComponent {
-    protected readonly docRoutes = DemoRoute;
+    protected readonly routes = DemoRoute;
     protected readonly valueVariants = [
         [0, 30, 20, 10],
         [40, 30, 20, 10],

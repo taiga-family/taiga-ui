@@ -30,7 +30,7 @@ export default class ExampleComponent implements TuiConfirmData {
     private readonly dialogs = inject(TuiDialogService);
     private readonly alerts = inject(TuiAlertService);
 
-    protected readonly docRoutes = DemoRoute;
+    protected readonly routes = DemoRoute;
     protected readonly examples = ['Basic'];
     protected readonly exampleService = import('./examples/import/service.md?raw');
 

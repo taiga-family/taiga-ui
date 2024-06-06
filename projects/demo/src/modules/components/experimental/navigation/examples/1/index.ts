@@ -65,5 +65,5 @@ export default class ExampleComponent {
     protected open = false;
     protected expanded = false;
     protected submenu = false;
-    protected readonly docRoutes = DemoRoute;
+    protected readonly routes = DemoRoute;
 }

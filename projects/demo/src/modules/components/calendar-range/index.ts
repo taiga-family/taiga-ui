@@ -77,5 +77,5 @@ export default class ExampleComponent {
     protected defaultViewedMonth = this.defaultViewedMonthVariants[0];
     protected minLength: TuiDayLike | null = null;
     protected maxLength: TuiDayLike | null = null;
-    protected readonly docRoutes = DemoRoute;
+    protected readonly routes = DemoRoute;
 }

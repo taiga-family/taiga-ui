@@ -34,7 +34,7 @@ export default class PageComponent {
     private readonly alerts = inject(TuiAlertService);
     private readonly dialogs = inject(TuiDialogService);
 
-    protected readonly docRoutes = DemoRoute;
+    protected readonly routes = DemoRoute;
     protected readonly method = import('./method.md?raw');
 
     protected readonly dialogsCloseToken = import(

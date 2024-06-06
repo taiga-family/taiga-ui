@@ -29,6 +29,6 @@ import {NumberFormatDocumentationComponent} from '../../components/abstract/numb
     providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, PageComponent)],
 })
 export default class PageComponent extends AbstractExampleTuiNumberFormat {
-    protected readonly docRoutes = DemoRoute;
+    protected readonly routes = DemoRoute;
     public readonly control = new FormControl(100);
 }

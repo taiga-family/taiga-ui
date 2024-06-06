@@ -12,5 +12,5 @@ import {TuiLinkDirective, TuiNotificationComponent} from '@taiga-ui/core';
     changeDetection,
 })
 export default class PageComponent {
-    protected readonly docRoutes = DemoRoute;
+    protected readonly routes = DemoRoute;
 }

@@ -35,7 +35,7 @@ export default class PageComponent {
 
     private readonly defaultIcon = inject(TUI_NOTIFICATION_OPTIONS).icon;
 
-    protected readonly docRoutes = DemoRoute;
+    protected readonly routes = DemoRoute;
     protected readonly examples = [
         'Text',
         'Template',

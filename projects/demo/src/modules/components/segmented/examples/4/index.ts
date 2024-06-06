@@ -32,5 +32,5 @@ export default class ExampleComponent {
         fragment: 'exact',
     };
 
-    protected readonly docRoutes = DemoRoute;
+    protected readonly routes = DemoRoute;
 }

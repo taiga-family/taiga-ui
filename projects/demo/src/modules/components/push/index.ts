@@ -20,5 +20,5 @@ export default class PageComponent {
 
     protected readonly timestampVars = ['', 'A moment ago', 123456789];
     protected timestamp = this.timestampVars[0];
-    protected readonly docRoutes = DemoRoute;
+    protected readonly routes = DemoRoute;
 }

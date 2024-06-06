@@ -47,5 +47,5 @@ export default class PageComponent {
         '--tui-autofill': 'color for native browser autofill',
     };
 
-    protected readonly docRoutes = DemoRoute;
+    protected readonly routes = DemoRoute;
 }

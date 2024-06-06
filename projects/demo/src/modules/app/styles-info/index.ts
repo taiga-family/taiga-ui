@@ -11,5 +11,5 @@ import {TuiLinkDirective, TuiNotificationComponent} from '@taiga-ui/core';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StylesInfoComponent {
-    protected readonly docRoutes = DemoRoute;
+    protected readonly routes = DemoRoute;
 }

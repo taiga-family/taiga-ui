@@ -29,7 +29,7 @@ import {
     changeDetection,
 })
 export default class ExampleComponent {
-    protected readonly docRoutes = DemoRoute;
+    protected readonly routes = DemoRoute;
     protected open = false;
 
     protected index = 0;

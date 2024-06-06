@@ -92,5 +92,5 @@ export default class ExampleComponent {
     protected month = TuiMonth.currentLocal();
 
     protected hoveredItem: TuiDay | null = null;
-    protected readonly docRoutes = DemoRoute;
+    protected readonly routes = DemoRoute;
 }

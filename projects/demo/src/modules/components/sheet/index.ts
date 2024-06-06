@@ -33,7 +33,7 @@ export default class PageComponent {
     @ViewChild('template')
     protected readonly templateRef: PolymorpheusContent<TuiSheet<unknown>>;
 
-    protected readonly docRoutes = DemoRoute;
+    protected readonly routes = DemoRoute;
     protected closeable = TUI_SHEET_DEFAULT_OPTIONS.closeable;
     protected image = TUI_SHEET_DEFAULT_OPTIONS.image;
     protected imageSlide = TUI_SHEET_DEFAULT_OPTIONS.imageSlide;

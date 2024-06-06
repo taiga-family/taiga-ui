@@ -9,5 +9,5 @@ import {TuiLinkDirective, TuiSvgComponent} from '@taiga-ui/core';
     templateUrl: './index.html',
 })
 export default class ExampleComponent {
-    protected readonly docRoutes = DemoRoute;
+    protected readonly routes = DemoRoute;
 }

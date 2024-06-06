@@ -42,5 +42,5 @@ export default class PageComponent {
     ];
 
     protected value = this.valueVariants[0];
-    protected readonly docRoutes = DemoRoute;
+    protected readonly routes = DemoRoute;
 }

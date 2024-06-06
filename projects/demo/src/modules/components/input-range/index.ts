@@ -41,7 +41,7 @@ import {NumberFormatDocumentationComponent} from '../abstract/number-format-docu
     ],
 })
 export default class PageComponent extends AbstractExampleTuiNumberFormat {
-    protected readonly docRoutes = DemoRoute;
+    protected readonly routes = DemoRoute;
     protected minVariants: readonly number[] = [0, 5, 7.77, -10];
 
     protected min = this.minVariants[0];

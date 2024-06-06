@@ -14,5 +14,5 @@ import {TuiTabDirective, TuiTabsVerticalDirective} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class ExampleComponent {
-    protected readonly docRoutes = DemoRoute;
+    protected readonly routes = DemoRoute;
 }

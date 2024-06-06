@@ -52,7 +52,7 @@ export default class PageComponent extends AbstractExampleTuiControl {
     @ViewChild('justLongText', {static: true})
     private readonly longTextRef!: TemplateRef<HTMLElement>;
 
-    protected readonly docRoutes = DemoRoute;
+    protected readonly routes = DemoRoute;
     protected placeholder = 'Field placeholder';
 
     public readonly iconVariants = ['', 'tuiIconSearchLarge', 'tuiIconCalendarLarge'];

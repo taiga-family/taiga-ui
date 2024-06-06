@@ -28,5 +28,5 @@ export default class ExampleComponent {
         LESS: import('./examples/7/index.less?raw'),
     };
 
-    protected readonly docRoutes = DemoRoute;
+    protected readonly routes = DemoRoute;
 }

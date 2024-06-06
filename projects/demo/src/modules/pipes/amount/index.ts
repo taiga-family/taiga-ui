@@ -13,5 +13,5 @@ import {TuiLinkDirective} from '@taiga-ui/core';
 })
 export default class PageComponent {
     protected readonly examples = ['base', 'format', 'options'];
-    protected readonly docRoutes = DemoRoute;
+    protected readonly routes = DemoRoute;
 }

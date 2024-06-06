@@ -51,7 +51,7 @@ import {InheritedDocumentationComponent} from '../abstract/inherited-documentati
 export default class PageComponent extends AbstractExampleTuiControl {
     private readonly today = TuiDay.currentLocal();
 
-    protected readonly docRoutes = DemoRoute;
+    protected readonly routes = DemoRoute;
     protected readonly minVariants: ReadonlyArray<TuiDay | [TuiDay, TuiTime]> = [
         TUI_FIRST_DAY,
         new TuiDay(2017, 2, 5),

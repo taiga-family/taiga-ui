@@ -73,5 +73,5 @@ export default class ExampleComponent {
     ];
 
     protected year = this.yearVariants[0];
-    protected readonly docRoutes = DemoRoute;
+    protected readonly routes = DemoRoute;
 }

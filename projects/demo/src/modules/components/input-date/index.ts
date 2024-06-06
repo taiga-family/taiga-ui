@@ -50,7 +50,7 @@ const ONE_DOT: [string] = ['var(--tui-success-fill)'];
     ],
 })
 export default class ExampleComponent extends AbstractExampleTuiControl {
-    protected readonly docRoutes = DemoRoute;
+    protected readonly routes = DemoRoute;
     protected readonly example5: TuiDocExample = {
         TypeScript: import('./examples/5/index.ts?raw'),
         HTML: import('./examples/5/index.html?raw'),

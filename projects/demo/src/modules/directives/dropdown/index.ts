@@ -38,7 +38,7 @@ import {DropdownDocumentationComponent} from '../../components/abstract/dropdown
     ],
 })
 export default class PageComponent extends AbstractExampleTuiDropdown {
-    protected readonly docRoutes = DemoRoute;
+    protected readonly routes = DemoRoute;
     protected readonly examples = [
         'Basic',
         'Interesting',

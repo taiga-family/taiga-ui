@@ -14,5 +14,5 @@ import {TuiLinkDirective} from '@taiga-ui/core';
 })
 export default class PageComponent {
     protected injectService = import('./examples/1/inject-service.md?raw');
-    protected readonly docRoutes = DemoRoute;
+    protected readonly routes = DemoRoute;
 }

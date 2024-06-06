@@ -23,7 +23,7 @@ import {tuiKitIcons} from '@taiga-ui/icons';
     changeDetection,
 })
 export default class PageComponent {
-    protected readonly docRoutes = DemoRoute;
+    protected readonly routes = DemoRoute;
     protected readonly options = import('./examples/4/app.module.md?raw');
 
     protected readonly example1: TuiDocExample = {

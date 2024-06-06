@@ -69,5 +69,5 @@ export default class PageComponent {
     protected control = new FormControl<TuiDay | TuiDayRange | null>(null);
 
     protected stream = tuiControlValue<TuiDay>(this.control);
-    protected readonly docRoutes = DemoRoute;
+    protected readonly routes = DemoRoute;
 }

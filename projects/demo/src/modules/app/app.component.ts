@@ -51,7 +51,7 @@ export class AppComponent extends AbstractDemoComponent implements OnInit {
     private readonly ym = inject(YaMetrikaService);
     protected readonly router = inject(Router);
     protected readonly storage = inject(LOCAL_STORAGE);
-    protected readonly docRoutes = DemoRoute;
+    protected readonly routes = DemoRoute;
 
     protected readonly isLanding$ = this.router.events.pipe(
         map(() => this.router.routerState.snapshot.url === '/'),

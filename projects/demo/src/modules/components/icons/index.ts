@@ -31,7 +31,7 @@ import {IconsGroupDirective} from './icons-group/icons-group.directive';
     changeDetection,
 })
 export default class PageComponent {
-    protected readonly docRoutes = DemoRoute;
+    protected readonly routes = DemoRoute;
     protected readonly icons = inject(TUI_DEMO_ICONS);
     protected readonly keys = Object.keys(this.icons);
     protected readonly exampleModule = import('./examples/import/import.md?raw');

@@ -18,7 +18,7 @@ export default class PageComponent {
     @ViewChild('textTemplate')
     protected readonly textTemplate: PolymorpheusContent;
 
-    protected readonly docRoutes = DemoRoute;
+    protected readonly routes = DemoRoute;
 
     protected showLoader = true;
 

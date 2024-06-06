@@ -27,5 +27,5 @@ import {InheritedDocumentationComponent} from '../../components/abstract/inherit
 export default class PageComponent extends AbstractExampleTuiHint {
     protected showDelay = 500;
     protected hideDelay = 200;
-    protected readonly docRoutes = DemoRoute;
+    protected readonly routes = DemoRoute;
 }

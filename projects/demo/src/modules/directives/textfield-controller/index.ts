@@ -52,5 +52,5 @@ export default class PageComponent {
     protected maxLength: number | null = null;
 
     protected readonly control = new FormControl('111', Validators.required);
-    protected readonly docRoutes = DemoRoute;
+    protected readonly routes = DemoRoute;
 }

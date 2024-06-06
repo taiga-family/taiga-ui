@@ -33,5 +33,5 @@ export default class PageComponent {
     protected readonly sizeVariants: readonly TuiSizeL[] = ['m', 'l'];
 
     protected size: TuiSizeL = this.sizeVariants[0];
-    protected readonly docRoutes = DemoRoute;
+    protected readonly routes = DemoRoute;
 }

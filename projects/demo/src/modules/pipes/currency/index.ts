@@ -27,5 +27,5 @@ export default class PageComponent {
     protected currency = this.currencyVariants[0];
 
     protected readonly control = new FormControl(6432, Validators.required);
-    protected readonly docRoutes = DemoRoute;
+    protected readonly routes = DemoRoute;
 }

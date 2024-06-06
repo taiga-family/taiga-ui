@@ -12,5 +12,5 @@ import {DemoRoute} from '@demo/routes';
     changeDetection,
 })
 export default class ExampleComponent {
-    protected readonly docRoutes = DemoRoute;
+    protected readonly routes = DemoRoute;
 }

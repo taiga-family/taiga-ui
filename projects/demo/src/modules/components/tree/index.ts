@@ -21,5 +21,5 @@ export default class PageComponent {
         'content.less': import('./examples/5/content.less?raw'),
     };
 
-    protected readonly docRoutes = DemoRoute;
+    protected readonly routes = DemoRoute;
 }

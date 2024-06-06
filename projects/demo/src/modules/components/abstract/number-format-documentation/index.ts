@@ -28,5 +28,5 @@ export class NumberFormatDocumentationComponent {
         ABSTRACT_PROPS_ACCESSOR,
     );
 
-    protected readonly docRoutes = DemoRoute;
+    protected readonly routes = DemoRoute;
 }

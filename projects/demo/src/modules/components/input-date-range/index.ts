@@ -56,7 +56,7 @@ const ONE_DOT: [string] = ['var(--tui-success-fill)'];
     ],
 })
 export default class PageComponent extends AbstractExampleTuiControl {
-    protected readonly docRoutes = DemoRoute;
+    protected readonly routes = DemoRoute;
     protected readonly dayVariants = [
         TUI_FIRST_DAY,
         new TuiDay(2021, 2, 5),

@@ -13,5 +13,5 @@ import {TuiTabBar} from '@taiga-ui/addon-mobile';
     changeDetection,
 })
 export default class ExampleComponent {
-    protected readonly docRoutes = DemoRoute;
+    protected readonly routes = DemoRoute;
 }
