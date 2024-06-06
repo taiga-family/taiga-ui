@@ -302,10 +302,6 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {name: 'TuiWrapperModule', moduleSpecifier: '@taiga-ui/legacy'},
     },
     {
-        from: {name: 'TuiHostedDropdownModule', moduleSpecifier: '@taiga-ui/core'},
-        to: {name: 'TuiHostedDropdownModule', moduleSpecifier: '@taiga-ui/legacy'},
-    },
-    {
         from: {name: 'TuiPrimitiveTextfieldModule', moduleSpecifier: '@taiga-ui/core'},
         to: {name: 'TuiPrimitiveTextfieldModule', moduleSpecifier: '@taiga-ui/legacy'},
     },

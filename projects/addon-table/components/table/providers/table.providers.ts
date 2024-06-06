@@ -1,3 +1,4 @@
+import {forwardRef} from '@angular/core';
 import {
     INTERSECTION_ROOT_MARGIN,
     INTERSECTION_THRESHOLD,
@@ -18,7 +19,10 @@ export const TUI_TABLE_PROVIDERS = [
         provide: INTERSECTION_THRESHOLD,
         useValue: [0, 1],
     },
-    tuiProvide(TUI_TEXTFIELD_OPTIONS, TuiTableDirective),
+    tuiProvide(
+        TUI_TEXTFIELD_OPTIONS,
+        forwardRef(() => TuiTableDirective),
+    ),
     IntersectionObserverService,
     TUI_STUCK_PROVIDER,
 ];
