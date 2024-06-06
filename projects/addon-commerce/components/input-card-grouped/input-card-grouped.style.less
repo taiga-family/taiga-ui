@@ -8,12 +8,10 @@
 @wrapper-offset-small: 4.125rem;
 
 :host {
-    position: relative;
     display: block;
     height: var(--tui-height-l);
     width: @width-full;
-    border-radius: var(--tui-radius-l);
-    overflow: clip;
+    border-radius: var(--tui-radius-m);
 
     :host-context(tui-root._mobile) {
         width: @width-mobile;
@@ -23,6 +21,13 @@
 .t-outline {
     height: 100%;
     width: 100%;
+}
+
+.t-common-wrapper {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
 }
 
 .t-wrapper {
@@ -57,6 +62,9 @@
 .t-card {
     width: 2rem;
     height: 2rem;
+    margin-right: 0.5rem;
+    // Visa logo color
+    color: #1434cb;
 }
 
 .t-collapsed {
@@ -142,15 +150,13 @@
 
 .t-icon-outlet {
     display: flex;
-    margin-right: 0.25rem;
 }
 
 .t-icon {
-    cursor: pointer;
     border: 0.25rem solid transparent;
 }
 
-.t-label {
+.t-placeholder {
     .textfield-label();
 
     margin: 1.125rem 1rem;

@@ -1,8 +1,13 @@
 import type {OnInit} from '@angular/core';
 import {Directive, inject, Input} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
+import {maskitoDateOptionsGenerator} from '@maskito/kit';
 import {TUI_INPUT_CARD_OPTIONS} from '@taiga-ui/addon-commerce/components/input-card';
-import {TUI_MASK_EXPIRE} from '@taiga-ui/addon-commerce/constants';
+
+const MASK = maskitoDateOptionsGenerator({
+    mode: 'mm/yy',
+    separator: '/',
+});
 
 @Directive({
     standalone: true,
@@ -22,7 +27,7 @@ export class TuiInputExpire implements OnInit {
     public autocomplete = inject(TUI_INPUT_CARD_OPTIONS).autocomplete;
 
     public ngOnInit(): void {
-        this.mask.options = TUI_MASK_EXPIRE;
+        this.mask.options = MASK;
         this.mask.ngOnChanges();
     }
 }
