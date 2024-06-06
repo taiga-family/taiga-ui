@@ -235,7 +235,7 @@ describe('InputPhoneInternational', () => {
 });
 
 function initAliases(wrapperSelector: string): void {
-    cy.get(`${wrapperSelector} .t-input-phone input`).first().as('textfield');
+    cy.get(`${wrapperSelector} input`).first().as('textfield');
 }
 
 function selectCountry(countryName: string): void {
