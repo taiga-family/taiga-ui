@@ -18,6 +18,7 @@ export * from '@taiga-ui/kit/components/elastic-container';
 export * from '@taiga-ui/kit/components/files';
 export * from '@taiga-ui/kit/components/filter';
 export * from '@taiga-ui/kit/components/input-inline';
+export * from '@taiga-ui/kit/components/input-phone-international';
 export * from '@taiga-ui/kit/components/items-with-more';
 export * from '@taiga-ui/kit/components/line-clamp';
 export * from '@taiga-ui/kit/components/pagination';

@@ -3,12 +3,12 @@ import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {tuiProvide} from '@taiga-ui/cdk';
-import {TuiDropdownModule, TuiHint, TuiTextfieldControllerModule} from '@taiga-ui/core';
+import {TuiDropdownModule, TuiHint, TuiTextfieldOptionsDirective} from '@taiga-ui/core';
 import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
 import {
     TUI_ALL_COUNTRIES_ISO_CODES,
     TuiInputPhoneInternationalComponent,
-} from '@taiga-ui/legacy';
+} from '@taiga-ui/kit';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
 import {AbstractExampleTuiControl} from '../abstract/control';
@@ -22,7 +22,7 @@ import {InheritedDocumentationComponent} from '../abstract/inherited-documentati
         TuiDropdownModule,
         TuiHint,
         TuiInputPhoneInternationalComponent,
-        TuiTextfieldControllerModule,
+        TuiTextfieldOptionsDirective,
         ReactiveFormsModule,
     ],
     templateUrl: './index.html',
@@ -51,6 +51,5 @@ export default class PageComponent extends AbstractExampleTuiControl {
     protected countryIsoCode = this.countryIsoCodeVariants[0];
 
     public override cleaner = false;
-    public override labelOutside = true;
     public control = new FormControl('', [Validators.required, Validators.minLength(9)]);
 }

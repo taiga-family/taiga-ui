@@ -1,0 +1,48 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+:host {
+    display: block;
+
+    &._disabled {
+        pointer-events: none;
+    }
+}
+
+.t-country-select {
+    width: 3.625rem;
+    flex: none;
+
+    &[data-size='m'] {
+        width: 3.5rem;
+    }
+
+    &[data-size='s'] {
+        width: 2.75rem;
+    }
+}
+
+.t-flag {
+    width: 1.75rem;
+    height: 1.25rem;
+
+    &_select {
+        .fullsize(absolute, inset);
+
+        left: 0.5rem;
+        margin: auto;
+    }
+
+    :host(._disabled) & {
+        opacity: var(--tui-disabled-opacity);
+    }
+}
+
+.t-country-item-name {
+    margin-inline-start: 0.75rem;
+    margin-inline-end: auto;
+}
+
+.t-country-item-code {
+    color: var(--tui-text-02);
+    margin-inline-end: 0.25rem;
+}

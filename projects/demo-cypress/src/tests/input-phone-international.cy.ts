@@ -5,7 +5,7 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {provideAnimations} from '@angular/platform-browser/animations';
 import {TuiRootComponent} from '@taiga-ui/core';
 import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
-import {TuiInputPhoneInternationalComponent} from '@taiga-ui/legacy';
+import {TuiInputPhoneInternationalComponent} from '@taiga-ui/kit';
 import {createOutputSpy} from 'cypress/angular';
 
 @Component({
@@ -93,7 +93,7 @@ describe('InputPhoneInternational', () => {
 
         describe('basic keyboard typing', () => {
             it('Type 212 => form control emits 3 events', () => {
-                cy.get('@textfield').type('212').should('have.value', '+1 (212');
+                cy.get('@textfield').type('212').should('have.value', '+1 212');
 
                 cy.get('@valueChange')
                     .should('have.callCount', 3)
@@ -103,7 +103,7 @@ describe('InputPhoneInternational', () => {
             });
 
             it('+1 212| => Type 5 => +1 212 5 (space and 5 were added) => only one form control event', () => {
-                cy.get('@textfield').type('2125').should('have.value', '+1 (212) 5');
+                cy.get('@textfield').type('2125').should('have.value', '+1 212 5');
 
                 cy.get('@valueChange')
                     .should('have.callCount', 4)
@@ -113,11 +113,11 @@ describe('InputPhoneInternational', () => {
             });
 
             it('+1 212 555| => Type 2 => +1 212 555-2 (hyphen and 2 were added) => only one form control event', () => {
-                cy.get('@textfield').type('212555').should('have.value', '+1 (212) 555');
+                cy.get('@textfield').type('212555').should('have.value', '+1 212 555');
 
                 cy.get('@valueChange').should('have.callCount', 6);
 
-                cy.get('@textfield').type('2').should('have.value', '+1 (212) 555-2');
+                cy.get('@textfield').type('2').should('have.value', '+1 212 555-2');
 
                 cy.get('@valueChange')
                     .should('have.callCount', 7)
@@ -129,7 +129,7 @@ describe('InputPhoneInternational', () => {
 
         describe('select new country from dropdown', () => {
             it('Initially empty textfield => select new country => no form control emits', () => {
-                cy.get('@countrySelect').click();
+                cy.get('tui-input-phone-international').click('left');
 
                 selectCountry('Kazakhstan');
 
@@ -145,7 +145,7 @@ describe('InputPhoneInternational', () => {
             it('Textfield contains +1 212 555-2368 => select new country => form control emits once and contains new value', () => {
                 cy.get('@textfield')
                     .type('2125552368')
-                    .should('have.value', '+1 (212) 555-2368');
+                    .should('have.value', '+1 212 555-2368');
 
                 cy.get('@valueChange')
                     .should('have.callCount', 10)
@@ -153,13 +153,13 @@ describe('InputPhoneInternational', () => {
                         expect(control.value).equal('+12125552368');
                     });
 
-                cy.get('@countrySelect').click();
+                cy.get('tui-input-phone-international').click('left');
 
                 selectCountry('Russia');
 
                 cy.get('@textfield')
                     .should('be.focused')
-                    .should('have.value', '+7 (212) 555-2368');
+                    .should('have.value', '+7 2125552368');
 
                 cy.get('@valueChange')
                     .should('have.callCount', 11)
@@ -193,7 +193,7 @@ describe('InputPhoneInternational', () => {
             });
 
             it('textfield value is formatted', () => {
-                cy.get('@textfield').should('have.value', '+1 (212) 555-2368');
+                cy.get('@textfield').should('have.value', '+1 212 555-2368');
             });
         });
 
@@ -228,15 +228,14 @@ describe('InputPhoneInternational', () => {
                 control.patchValue('+77777777777');
                 cy.wait(1);
 
-                cy.get('@textfield').should('have.value', '+7 (777) 777-77-77');
+                cy.get('@textfield').should('have.value', '+7 777 777-7777');
             });
         });
     });
 });
 
 function initAliases(wrapperSelector: string): void {
-    cy.get(`${wrapperSelector} .t-country-select`).as('countrySelect');
-    cy.get(`${wrapperSelector} .t-input-phone input`).first().as('textfield');
+    cy.get(`${wrapperSelector} input`).first().as('textfield');
 }
 
 function selectCountry(countryName: string): void {
