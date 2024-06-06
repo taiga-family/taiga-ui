@@ -1,10 +1,11 @@
 import type {OnDestroy} from '@angular/core';
 import {Directive, inject, Input, NgZone, Output} from '@angular/core';
+import {NgControl} from '@angular/forms';
 import {tuiZoneOptimized} from '@taiga-ui/cdk/observables';
 import {TUI_ACTIVE_ELEMENT} from '@taiga-ui/cdk/tokens';
 import {tuiArrayRemove, tuiInjectElement, tuiPure} from '@taiga-ui/cdk/utils';
 import type {Observable} from 'rxjs';
-import {distinctUntilChanged, map, skip, startWith} from 'rxjs';
+import {distinctUntilChanged, map, skip, startWith, tap} from 'rxjs';
 
 @Directive({
     standalone: true,
@@ -16,6 +17,7 @@ import {distinctUntilChanged, map, skip, startWith} from 'rxjs';
     },
 })
 export class TuiActiveZoneDirective implements OnDestroy {
+    private readonly control = inject(NgControl, {optional: true, self: true});
     private readonly active$ = inject<Observable<Element | null>>(TUI_ACTIVE_ELEMENT);
     private readonly zone = inject(NgZone);
     private readonly el = tuiInjectElement();
@@ -32,6 +34,11 @@ export class TuiActiveZoneDirective implements OnDestroy {
         startWith(false),
         distinctUntilChanged(),
         skip(1),
+        tap(active => {
+            if (!active && this.control) {
+                this.control.control?.markAsTouched();
+            }
+        }),
         tuiZoneOptimized(this.zone),
     );
 

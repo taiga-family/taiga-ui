@@ -14,8 +14,7 @@ import {TUI_TEXTFIELD_OPTIONS} from './textfield.options';
         '[id]': 'el.id || id',
         '[readOnly]': 'readOnly',
         '[class._empty]': 'el.value === ""',
-        '[attr.data-mode]': 'readOnly ? "readonly" : null',
-        '[attr.data-invalid]': 'invalid',
+        '[attr.data-mode]': 'mode',
         '(input)': '0',
         '(focusin)': '0',
         '(focusout)': '0',
@@ -41,6 +40,22 @@ export class TuiTextfieldDirective implements DoCheck {
 
     @Input()
     public state: TuiInteractiveState | null = null;
+
+    public get mode(): string | null {
+        if (this.readOnly) {
+            return 'readonly';
+        }
+
+        if (this.invalid === false) {
+            return 'valid';
+        }
+
+        if (this.invalid) {
+            return 'invalid';
+        }
+
+        return null;
+    }
 
     public ngDoCheck(): void {
         this.appearance.tuiAppearance = this.options.appearance;

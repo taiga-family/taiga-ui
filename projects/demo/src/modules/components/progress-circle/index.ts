@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import type {TuiSizeS, TuiSizeXL} from '@taiga-ui/core';
+import type {TuiSizeXXL, TuiSizeXXS} from '@taiga-ui/core';
 import {TuiLinkDirective} from '@taiga-ui/core';
 import {TuiProgressModule} from '@taiga-ui/kit';
 import {tuiInputNumberOptionsProvider} from '@taiga-ui/legacy';
@@ -18,14 +18,17 @@ export default class PageComponent {
     protected value = 6;
     protected max = 10;
 
-    protected readonly sizeVariants: ReadonlyArray<TuiSizeS | TuiSizeXL> = [
+    protected readonly sizeVariants: ReadonlyArray<TuiSizeXXL | TuiSizeXXS> = [
+        'xxs',
+        'xs',
         's',
         'm',
         'l',
         'xl',
+        'xxl',
     ];
 
-    protected size: TuiSizeS | TuiSizeXL = this.sizeVariants[1];
+    protected size: TuiSizeXXL | TuiSizeXXS = 'm';
 
     protected readonly colorVariants: readonly string[] = [
         'var(--tui-primary)',

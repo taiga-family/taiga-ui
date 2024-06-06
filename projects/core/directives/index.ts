@@ -3,7 +3,6 @@ export * from '@taiga-ui/core/directives/date-format';
 export * from '@taiga-ui/core/directives/dropdown';
 export * from '@taiga-ui/core/directives/hint';
 export * from '@taiga-ui/core/directives/icons';
-export * from '@taiga-ui/core/directives/mask-accessor';
 export * from '@taiga-ui/core/directives/number-format';
 export * from '@taiga-ui/core/directives/surface';
 export * from '@taiga-ui/core/directives/textfield-controller';

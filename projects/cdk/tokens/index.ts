@@ -1,6 +1,7 @@
 export * from './active-element';
 export * from './base-href';
 export * from './ensure-base-href';
+export * from './fallback-value';
 export * from './focusable-item-accessor';
 export * from './fonts-ready';
 export * from './is-android';

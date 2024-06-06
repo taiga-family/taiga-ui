@@ -1,104 +1,56 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
 /* Safari doesn't support rem units inside svg (but supports em units) */
+// TODO: replace all `em` with `rem` after bumping browser support of Safari to 16+
 @diameter: {
-    xxs: 2rem;
-    xs: 2.5rem;
-    s: 3.5rem;
-    m: 4rem;
-    l: 5rem;
-    xl: 6rem;
-    xxl: 8rem;
-};
-
-// TODO: delete in v4.0
-@legacy-width: {
-    @s: 2em;
-    @m: 3em;
-    @l: 4em;
-    @xl: 7em;
-};
-
-// TODO: delete in v4.0
-@legacy-track-stroke: {
-    @s: 0.5em;
-    @m: 0.375em;
-    @l: 0.375em;
-    @xl: 0.375em;
-};
-
-// TODO: delete in v4.0
-@legacy-progress-stroke: {
-    @s: 0.5em;
-    @m: 0.375em;
-    @l: 0.375em;
-    @xl: 0.375em;
+    xxs: 2em;
+    xs: 2.5em;
+    s: 3.5em;
+    m: 4em;
+    l: 5em;
+    xl: 6em;
+    xxl: 8em;
 };
 
 :host {
+    --t-track-stroke: var(--tui-thickness, 0.375em);
+    --t-progress-stroke: var(--tui-thickness, 0.375em);
+
     position: relative;
     display: block;
     color: var(--tui-primary);
     transform: rotate(-90deg);
     transform-origin: center;
+    // TODO: delete this line after bumping browser support of Safari to 16+
     font-size: 1rem; // to use em units inside svg (Safari doesn't support rem units inside svg)
     width: var(--t-diameter);
     height: var(--t-diameter);
 
-    &[data-size='s'] {
-        --t-diameter: @legacy-width[@s];
-        --t-track-stroke: @legacy-track-stroke[@s];
-        --t-progress-stroke: @legacy-progress-stroke[@s];
-    }
-
-    &[data-size='m'] {
-        --t-diameter: @legacy-width[@m];
-        --t-track-stroke: @legacy-track-stroke[@m];
-        --t-progress-stroke: @legacy-progress-stroke[@m];
-    }
-
-    &[data-size='l'] {
-        --t-diameter: @legacy-width[@l];
-        --t-track-stroke: @legacy-track-stroke[@l];
-        --t-progress-stroke: @legacy-progress-stroke[@l];
-    }
-
-    &[data-size='xl'] {
-        --t-diameter: @legacy-width[@xl];
-        --t-track-stroke: @legacy-track-stroke[@xl];
-        --t-progress-stroke: @legacy-progress-stroke[@xl];
-    }
-
-    &[new] {
-        --t-track-stroke: var(--tui-thickness, 0.375em);
-        --t-progress-stroke: var(--tui-thickness, 0.375em);
-    }
-
-    &[new][data-size='xxs'] {
+    &[data-size='xxs'] {
         --t-diameter: @diameter[xxs];
     }
 
-    &[new][data-size='xs'] {
+    &[data-size='xs'] {
         --t-diameter: @diameter[xs];
     }
 
-    &[new][data-size='s'] {
+    &[data-size='s'] {
         --t-diameter: @diameter[s];
     }
 
-    &[new][data-size='m'] {
+    &[data-size='m'] {
         --t-diameter: @diameter[m];
     }
 
-    &[new][data-size='l'] {
+    &[data-size='l'] {
         --t-diameter: @diameter[l];
     }
 
-    &[new][data-size='xl'] {
+    &[data-size='xl'] {
         --t-diameter: @diameter[xl];
     }
 
-    &[new][data-size='xxl'] {
+    &[data-size='xxl'] {
         --t-diameter: @diameter[xxl];
     }
 }
