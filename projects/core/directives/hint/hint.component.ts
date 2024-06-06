@@ -110,7 +110,7 @@ export class TuiHintComponent<C = any> {
     @HostListener('document:click', ['$event.target'])
     onClick(target: HTMLElement): void {
         if (
-            (!this.el.nativeElement.contains(target) &&
+            (!target.closest('tui-hint') &&
                 !this.hover.el.nativeElement.contains(target)) ||
             tuiIsObscured(this.hover.el.nativeElement)
         ) {
