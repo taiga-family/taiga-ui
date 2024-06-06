@@ -305,7 +305,7 @@ export class TuiInputDateTimeComponent
         if (
             this.value[0] === null ||
             this.value[1] !== null ||
-            this.nativeValue.length <= this.fillerLength + DATE_TIME_SEPARATOR.length ||
+            this.nativeValue.length === this.fillerLength ||
             this.timeMode === 'HH:MM'
         ) {
             return;
