@@ -1,0 +1,362 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TuiHighlight directive in multi occurrences mode with one regExp variant Highlight should shown properly 1`] = `
+<ng-component
+  isMulti={[Function Boolean]}
+  value={[Function RegExp]}
+>
+  <div>
+    <p>
+      <b>
+        <mark
+          tuihighlightmark=""
+        >
+          Kin
+        </mark>
+        g
+      </b>
+       Arthur 
+    </p>
+    <p>
+      <mark
+        tuihighlightmark=""
+      >
+        Kin
+      </mark>
+      g Arthur
+    </p>
+    <p>
+      <mark
+        tuihighlightmark=""
+      >
+        Kin
+      </mark>
+      g Arthur
+    </p>
+    <p>
+      <b>
+        <mark
+          tuihighlightmark=""
+        >
+          Kin
+        </mark>
+        g
+      </b>
+       Arthur 
+    </p>
+  </div>
+</ng-component>
+`;
+
+exports[`TuiHighlight directive in multi occurrences mode with one string variant Highlight should shown properly 1`] = `
+<ng-component
+  isMulti={[Function Boolean]}
+  value={[Function String]}
+>
+  <div>
+    <p>
+      <b>
+        King
+      </b>
+       Arthur 
+    </p>
+    <p>
+      Ki
+      <mark
+        tuihighlightmark=""
+      >
+        ng Ar
+      </mark>
+      thur
+    </p>
+    <p>
+      Ki
+      <mark
+        tuihighlightmark=""
+      >
+        ng Ar
+      </mark>
+      thur
+    </p>
+    <p>
+      <b>
+        King
+      </b>
+       Arthur 
+    </p>
+  </div>
+</ng-component>
+`;
+
+exports[`TuiHighlight directive in multi occurrences mode with several regExp variants Highlight should shown properly 1`] = `
+<ng-component
+  isMulti={[Function Boolean]}
+  value={[Function Array]}
+>
+  <div>
+    <p>
+      <b>
+        <mark
+          tuihighlightmark=""
+        >
+          Kin
+        </mark>
+        g
+      </b>
+      <mark
+        tuihighlightmark=""
+      >
+        A
+      </mark>
+      rthur 
+    </p>
+    <p>
+      <mark
+        tuihighlightmark=""
+      >
+        Kin
+      </mark>
+      g 
+      <mark
+        tuihighlightmark=""
+      >
+        A
+      </mark>
+      rthur
+    </p>
+    <p>
+      <mark
+        tuihighlightmark=""
+      >
+        Kin
+      </mark>
+      g 
+      <mark
+        tuihighlightmark=""
+      >
+        A
+      </mark>
+      rthur
+    </p>
+    <p>
+      <b>
+        <mark
+          tuihighlightmark=""
+        >
+          Kin
+        </mark>
+        g
+      </b>
+      <mark
+        tuihighlightmark=""
+      >
+        A
+      </mark>
+      rthur 
+    </p>
+  </div>
+</ng-component>
+`;
+
+exports[`TuiHighlight directive in multi occurrences mode with several string variants Highlight should shown properly 1`] = `
+<ng-component
+  isMulti={[Function Boolean]}
+  value={[Function Array]}
+>
+  <div>
+    <p>
+      <b>
+        Ki
+        <mark
+          tuihighlightmark=""
+        >
+          ng
+        </mark>
+      </b>
+      <mark
+        tuihighlightmark=""
+      >
+        Ar
+      </mark>
+      thur 
+    </p>
+    <p>
+      Ki
+      <mark
+        tuihighlightmark=""
+      >
+        ng
+      </mark>
+      <mark
+        tuihighlightmark=""
+      >
+        Ar
+      </mark>
+      thur
+    </p>
+    <p>
+      Ki
+      <mark
+        tuihighlightmark=""
+      >
+        ng
+      </mark>
+      <mark
+        tuihighlightmark=""
+      >
+        Ar
+      </mark>
+      thur
+    </p>
+    <p>
+      <b>
+        Ki
+        <mark
+          tuihighlightmark=""
+        >
+          ng
+        </mark>
+      </b>
+      <mark
+        tuihighlightmark=""
+      >
+        Ar
+      </mark>
+      thur 
+    </p>
+  </div>
+</ng-component>
+`;
+
+exports[`TuiHighlight directive in single occurrence mode with one regExp variant Highlight should shown properly 1`] = `
+<ng-component
+  isMulti="false"
+  value={[Function RegExp]}
+>
+  <div>
+    <p>
+      <b>
+        <mark
+          tuihighlightmark=""
+        >
+          Kin
+        </mark>
+        g
+      </b>
+       Arthur 
+    </p>
+    <p>
+      King Arthur
+    </p>
+    <p>
+      King Arthur
+    </p>
+    <p>
+      <b>
+        King
+      </b>
+       Arthur 
+    </p>
+  </div>
+</ng-component>
+`;
+
+exports[`TuiHighlight directive in single occurrence mode with one string variant Highlight should shown properly 1`] = `
+<ng-component
+  isMulti="false"
+  value={[Function String]}
+>
+  <div>
+    <p>
+      <b>
+        King
+      </b>
+       Arthur 
+    </p>
+    <p>
+      Ki
+      <mark
+        tuihighlightmark=""
+      >
+        ng Ar
+      </mark>
+      thur
+    </p>
+    <p>
+      King Arthur
+    </p>
+    <p>
+      <b>
+        King
+      </b>
+       Arthur 
+    </p>
+  </div>
+</ng-component>
+`;
+
+exports[`TuiHighlight directive in single occurrence mode with several regExp variants Highlight should shown properly 1`] = `
+<ng-component
+  isMulti="false"
+  value={[Function Array]}
+>
+  <div>
+    <p>
+      <b>
+        <mark
+          tuihighlightmark=""
+        >
+          Kin
+        </mark>
+        g
+      </b>
+       Arthur 
+    </p>
+    <p>
+      King Arthur
+    </p>
+    <p>
+      King Arthur
+    </p>
+    <p>
+      <b>
+        King
+      </b>
+       Arthur 
+    </p>
+  </div>
+</ng-component>
+`;
+
+exports[`TuiHighlight directive in single occurrence mode with several string variants Highlight should shown properly 1`] = `
+<ng-component
+  isMulti="false"
+  value={[Function Array]}
+>
+  <div>
+    <p>
+      <b>
+        Ki
+        <mark
+          tuihighlightmark=""
+        >
+          ng
+        </mark>
+      </b>
+       Arthur 
+    </p>
+    <p>
+      King Arthur
+    </p>
+    <p>
+      King Arthur
+    </p>
+    <p>
+      <b>
+        King
+      </b>
+       Arthur 
+    </p>
+  </div>
+</ng-component>
+`;

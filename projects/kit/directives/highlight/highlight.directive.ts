@@ -1,101 +1,151 @@
-import {DOCUMENT} from '@angular/common';
+import {DOCUMENT, isPlatformBrowser} from '@angular/common';
 import type {OnChanges} from '@angular/core';
-import {Directive, inject, Input, Renderer2} from '@angular/core';
+import {
+    booleanAttribute,
+    Directive,
+    ElementRef,
+    EnvironmentInjector,
+    inject,
+    Input,
+    PLATFORM_ID,
+} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {ResizeObserverService} from '@ng-web-apis/resize-observer';
-import {svgNodeFilter, tuiInjectElement, tuiPx} from '@taiga-ui/cdk';
+import type {TuiArrayOrValue} from '@taiga-ui/cdk';
+import {svgNodeFilter, tuiIsNumber, tuiToArray} from '@taiga-ui/cdk';
+import {TuiToRegexpPipe} from '@taiga-ui/kit/pipes';
+import {mergeAll, Subject, switchMap, tap} from 'rxjs';
+
+import {TuiHighlight} from './highlight';
+import type {TuiHighlightOccurrence} from './highlight-occurrence';
 
 @Directive({
     standalone: true,
     selector: '[tuiHighlight]',
-    providers: [ResizeObserverService],
-    host: {
-        '[style.position]': '"relative"',
-        '[style.zIndex]': '0',
-    },
 })
 export class TuiHighlightDirective implements OnChanges {
-    private readonly el = tuiInjectElement();
-    private readonly renderer = inject(Renderer2);
+    private patterns: readonly RegExp[] = [];
+    private readonly highlight$ = new Subject<TuiHighlight>();
+    private readonly resetHighlights$ = new Subject<void>();
+    private readonly toRegexpPipe = inject(TuiToRegexpPipe);
+    private readonly environmentInjector = inject(EnvironmentInjector);
     private readonly doc = inject(DOCUMENT);
-    private readonly highlight: HTMLElement = this.setUpHighlight();
+    private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
     private readonly treeWalker = this.doc.createTreeWalker(
-        this.el,
+        inject(ElementRef).nativeElement,
         NodeFilter.SHOW_TEXT,
         svgNodeFilter,
     );
 
-    @Input()
-    public tuiHighlight = '';
-
-    @Input()
-    public tuiHighlightColor = 'var(--tui-selection)';
+    @Input({
+        transform: booleanAttribute,
+    })
+    public tuiHighlightMultiOccurrences = false;
 
     constructor() {
-        inject(ResizeObserverService)
-            .pipe(takeUntilDestroyed())
-            .subscribe(() => this.updateStyles());
+        this.resetHighlights$
+            .pipe(
+                switchMap(() =>
+                    this.highlight$.pipe(
+                        mergeAll(),
+                        tap(node => {
+                            this.treeWalker.currentNode = node;
+                        }),
+                    ),
+                ),
+                takeUntilDestroyed(),
+            )
+            .subscribe();
+    }
+
+    @Input()
+    public set tuiHighlight(value: TuiArrayOrValue<RegExp | string>) {
+        this.patterns = tuiToArray(value).map(item => {
+            if (item instanceof RegExp) {
+                // Only global regexp's can be used in String.prototype.mathAll method
+                if (!item.global) {
+                    return new RegExp(item.source, `${item.flags}g`);
+                }
+
+                return item;
+            }
+
+            return this.toRegexpPipe.transform(item, 'gi');
+        });
+    }
+
+    public get tuiHighlight(): readonly RegExp[] {
+        return this.patterns;
     }
 
     public ngOnChanges(): void {
-        this.updateStyles();
-    }
-
-    protected get match(): boolean {
-        return this.indexOf(this.el.textContent) !== -1;
-    }
-
-    private updateStyles(): void {
-        this.highlight.style.display = 'none';
-
-        if (!this.match) {
+        if (!this.isBrowser) {
             return;
         }
 
-        this.treeWalker.currentNode = this.el;
+        queueMicrotask(() => this.createHighlights());
+    }
 
-        do {
-            const index = this.indexOf(this.treeWalker.currentNode.nodeValue);
+    private createHighlights(): void {
+        this.resetHighlights$.next();
 
-            if (index === -1) {
-                continue;
+        for (const node of this.getNodes()) {
+            const occurrence = this.getFirstOccurrence(node.nodeValue);
+
+            if (occurrence) {
+                this.highlight$.next(
+                    new TuiHighlight(
+                        this.environmentInjector,
+                        this.createRange(node, occurrence),
+                    ),
+                );
+
+                if (!this.tuiHighlightMultiOccurrences) {
+                    return;
+                }
             }
-
-            const range = this.doc.createRange();
-
-            range.setStart(this.treeWalker.currentNode, index);
-            range.setEnd(this.treeWalker.currentNode, index + this.tuiHighlight.length);
-
-            const hostRect = this.el.getBoundingClientRect();
-            const {left, top, width, height} = range.getBoundingClientRect();
-            const {style} = this.highlight;
-
-            style.background = this.tuiHighlightColor;
-            style.left = tuiPx(left - hostRect.left);
-            style.top = tuiPx(top - hostRect.top);
-            style.width = tuiPx(width);
-            style.height = tuiPx(height);
-            style.display = 'block';
-
-            return;
-        } while (this.treeWalker.nextNode());
+        }
     }
 
-    private indexOf(source: string | null): number {
-        return !source || !this.tuiHighlight
-            ? -1
-            : source.toLowerCase().indexOf(this.tuiHighlight.toLowerCase());
+    private createRange(node: Node, {index, length}: TuiHighlightOccurrence): Range {
+        const range = this.doc.createRange();
+
+        range.setStart(node, index);
+        range.setEnd(node, index + length);
+
+        return range;
     }
 
-    private setUpHighlight(): HTMLElement {
-        const highlight = this.renderer.createElement('div');
-        const {style} = highlight;
+    private getFirstOccurrence(source: string | null): TuiHighlightOccurrence | null {
+        if (!source) {
+            return null;
+        }
 
-        style.background = this.tuiHighlightColor;
-        style.zIndex = '-1';
-        style.position = 'absolute';
-        this.renderer.appendChild(this.el, highlight);
+        let lastApprovedOccurrence: TuiHighlightOccurrence | null = null;
 
-        return highlight;
+        for (const item of this.tuiHighlight) {
+            const [match] = source.matchAll(item);
+
+            if (
+                match &&
+                tuiIsNumber(match.index) &&
+                match[0].length &&
+                (!lastApprovedOccurrence || lastApprovedOccurrence.index > match.index)
+            ) {
+                lastApprovedOccurrence = {
+                    index: match.index,
+                    length: match[0].length,
+                };
+            }
+        }
+
+        return lastApprovedOccurrence;
+    }
+
+    private *getNodes(): Generator<Node> {
+        this.treeWalker.currentNode = this.treeWalker.root;
+
+        while (this.treeWalker.nextNode()) {
+            yield this.treeWalker.currentNode;
+        }
     }
 }
