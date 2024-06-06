@@ -178,4 +178,11 @@ export const ATTRS_TO_REPLACE: ReplacementAttribute[] = [
         },
         to: {attrName: 'iconLeft'},
     },
+    {
+        from: {
+            attrName: 'new',
+            withTagNames: ['tui-progress-circle'],
+        },
+        to: {attrName: ''},
+    },
 ];
