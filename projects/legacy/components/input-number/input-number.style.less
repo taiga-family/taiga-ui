@@ -48,22 +48,22 @@
     [data-size='l'] + & .t-button {
         width: calc(var(--tui-height-l) * 0.75);
     }
-}
 
-.t-button {
-    display: flex;
-    flex: 1;
-    height: auto;
-    align-items: center;
-    justify-content: center;
-    border-radius: 0;
+    & .t-button {
+        display: flex;
+        flex: 1;
+        height: auto;
+        align-items: center;
+        justify-content: center;
+        border-radius: 0;
 
-    &:first-child {
-        margin-bottom: 0.125rem;
-        border-top-right-radius: inherit;
-    }
+        &:first-child {
+            margin-bottom: 0.125rem;
+            border-top-right-radius: inherit;
+        }
 
-    &:last-child {
-        border-bottom-right-radius: inherit;
+        &:last-child {
+            border-bottom-right-radius: inherit;
+        }
     }
 }
