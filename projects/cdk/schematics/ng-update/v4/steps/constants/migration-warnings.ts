@@ -139,6 +139,12 @@ export const MIGRATION_WARNINGS: MigrationWarning[] = [
             'Use Date mask (with [mode]="mm/yyyy") from Maskito instead https://maskito.dev/kit/date/API?mode=mm%2Fyyyy',
     },
     {
+        name: 'TuiMaskAccessorModule',
+        moduleSpecifier: '@taiga-ui/core',
+        message:
+            'Use Maskito instead (this MaskAccessor is not required for it) https://maskito.dev/frameworks/angular#custom-input',
+    },
+    {
         name: 'TUI_INPUT_NUMBER_OPTIONS',
         moduleSpecifier: '@taiga-ui/kit',
         message:
