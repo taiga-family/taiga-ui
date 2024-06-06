@@ -28,7 +28,7 @@ export default class PageComponent {
         'xxl',
     ];
 
-    protected size: TuiSizeXXL | TuiSizeXXS = this.sizeVariants[1];
+    protected size: TuiSizeXXL | TuiSizeXXS = 'm';
 
     protected readonly colorVariants: readonly string[] = [
         'var(--tui-primary)',
