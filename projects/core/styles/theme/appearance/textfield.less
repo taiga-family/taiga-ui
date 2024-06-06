@@ -25,8 +25,8 @@
         box-shadow: none;
     });
 
-    &:valid[data-invalid='true'],
-    &:invalid:not([data-invalid='false']) {
+    &[data-mode='invalid'],
+    &:invalid:not([data-mode]) {
         outline-color: var(--tui-negative);
     }
 
