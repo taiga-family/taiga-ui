@@ -3,7 +3,7 @@ import {tuiIsValidUrl} from '@taiga-ui/cdk';
 describe('tuiIsValidUrl', () => {
     it('valid url', () => {
         expect(tuiIsValidUrl('https://taiga-ui.dev')).toBe(true);
-        expect(tuiIsValidUrl('https://tinkoff-group.com/')).toBe(true);
+        expect(tuiIsValidUrl('https://tbank-group.com/')).toBe(true);
         expect(tuiIsValidUrl('www.jsowl.com')).toBe(true);
         expect(tuiIsValidUrl('https://burgers.example.com/?burger=%s')).toBe(true);
         expect(tuiIsValidUrl('taiga-ui.dev')).toBe(true);

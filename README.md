@@ -4,7 +4,7 @@
 
 [![CodeFactor](https://www.codefactor.io/repository/github/taiga-family/taiga-ui/badge)](https://www.codefactor.io/repository/github/taiga-family/taiga-ui)
 [![npm version](https://img.shields.io/npm/v/@taiga-ui/cdk.svg)](https://npmjs.com/package/@taiga-ui/cdk)
-[![codecov](https://codecov.io/gh/tinkoff/taiga-ui/branch/main/graphs/badge.svg)](https://app.codecov.io/gh/Tinkoff/taiga-ui/tree/main/projects)
+[![codecov](https://codecov.io/gh/taiga-family/taiga-ui/branch/main/graphs/badge.svg)](https://app.codecov.io/gh/taiga-family/taiga-ui/tree/main/projects)
 [![All packages CI](https://github.com/taiga-family/taiga-ui/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/taiga-family/taiga-ui/actions/workflows/build.yml)
 [![Deploy](https://github.com/taiga-family/taiga-ui/actions/workflows/deploy-gh-pages.yml/badge.svg?branch=main)](https://github.com/taiga-family/taiga-ui/actions/workflows/deploy-gh-pages.yml)
 [![Downloads per month](https://img.shields.io/npm/dm/@taiga-ui/cdk?color=dark-green)](https://www.npmjs.com/package/@taiga-ui/cdk)
