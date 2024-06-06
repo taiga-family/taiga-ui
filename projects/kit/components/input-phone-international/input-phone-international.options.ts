@@ -8,7 +8,7 @@ import {defer} from 'rxjs';
 export interface TuiInputPhoneInternationalOptions {
     readonly countries: readonly TuiCountryIsoCode[];
     readonly countryIsoCode: TuiCountryIsoCode;
-    readonly metadata: Observable<MetadataJson>;
+    readonly metadata: Observable<MetadataJson> | Promise<MetadataJson>;
 }
 
 export const TUI_INPUT_PHONE_INTERNATIONAL_DEFAULT_OPTIONS: TuiInputPhoneInternationalOptions =

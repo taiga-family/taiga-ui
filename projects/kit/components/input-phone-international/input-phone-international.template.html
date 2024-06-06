@@ -1,75 +1,74 @@
-<ng-container *tuiLet="options.metadata | async as phoneMetadata">
-    <!-- TODO: move tuiGroup & tuiDropdown to host directive and get rid of nesting -->
-    <div
-        *ngIf="countriesNames$ | async as countriesNames"
-        tuiGroup
-        [tuiDropdown]="dropdown"
-        [tuiDropdownEnabled]="!readOnly"
-        [(tuiDropdownOpen)]="!computedDisabled && open"
-        (tuiActiveZoneChange)="onActiveZone($event)"
+<!-- TODO: move tuiGroup & tuiDropdown to host directive and get rid of nesting -->
+<div
+    *ngIf="countriesNames$ | async as countriesNames"
+    tuiGroup
+    [tuiDropdown]="dropdown"
+    [tuiDropdownEnabled]="!readOnly"
+    [(tuiDropdownOpen)]="!computedDisabled && open"
+    (tuiActiveZoneChange)="updateFocused($event)"
+>
+    <tui-textfield
+        tuiChevron
+        class="t-country-select"
+        [content]="flag"
     >
-        <tui-textfield
-            tuiChevron
-            class="t-country-select"
-            [content]="flag"
-        >
-            <select
-                ngModel=""
-                tuiTextfield
-                [disabled]="disabled"
-                [readOnly]="readOnly"
-            ></select>
+        <select
+            ngModel=""
+            tuiTextfield
+            [disabled]="disabled"
+            [readOnly]="readOnly"
+        ></select>
 
-            <ng-template #flag>
-                <img
-                    *ngIf="countryIsoCode$ | async as countryIsoCode"
-                    class="t-flag t-flag_select"
-                    [alt]="countriesNames[countryIsoCode]"
-                    [src]="countryIsoCode | tuiFlag"
-                />
-            </ng-template>
-        </tui-textfield>
-
-        <tui-textfield>
-            <input
-                autocomplete="new-password"
-                tuiTextfield
-                [disabled]="disabled"
-                [focused]="pseudoFocus"
-                [invalid]="computedInvalid"
-                [maskito]="mask$ | async"
-                [readOnly]="readOnly"
-                [state]="pseudoHover ? 'hover' : null"
-                [tabIndex]="focusable ? 0 : -1"
-                [(ngModel)]="textfieldValue"
-                (beforeinput.capture)="onPaste($event, phoneMetadata)"
-                (focus)="phoneMetadata && !readOnly && onFocus(phoneMetadata)"
-                (ngModelChange)="onValueChange($event, phoneMetadata)"
+        <ng-template #flag>
+            <img
+                class="t-flag t-flag_select"
+                [alt]="countriesNames[countryIsoCode()]"
+                [src]="countryIsoCode() | tuiFlag"
             />
-
-            <label tuiLabel><ng-content /></label>
-        </tui-textfield>
-
-        <ng-template #dropdown>
-            <tui-data-list>
-                <button
-                    *ngFor="let item of countries"
-                    tuiOption
-                    (click)="onItemClick(item)"
-                >
-                    <img
-                        alt=""
-                        class="t-flag"
-                        [src]="item | tuiFlag"
-                    />
-                    <span class="t-country-item-name">
-                        {{ countriesNames[item] }}
-                    </span>
-                    <span class="t-country-item-code">
-                        {{ item | tuiGetCountryCallingCode: phoneMetadata }}
-                    </span>
-                </button>
-            </tui-data-list>
         </ng-template>
-    </div>
-</ng-container>
+    </tui-textfield>
+
+    <tui-textfield>
+        <input
+            autocomplete="new-password"
+            tuiTextfield
+            [disabled]="disabled"
+            [focused]="pseudoFocus"
+            [invalid]="computedInvalid"
+            [maskito]="mask()"
+            [readOnly]="readOnly"
+            [state]="pseudoHover ? 'hover' : null"
+            [tabIndex]="focusable ? 0 : -1"
+            [(ngModel)]="textfieldValue"
+            (beforeinput.capture)="onPaste($event)"
+            (focus)="!readOnly && onFocus()"
+            (ngModelChange)="onValueChange($event)"
+        />
+
+        <label tuiLabel>
+            <ng-content />
+        </label>
+    </tui-textfield>
+
+    <ng-template #dropdown>
+        <tui-data-list>
+            <button
+                *ngFor="let item of countries"
+                tuiOption
+                (click)="onItemClick(item)"
+            >
+                <img
+                    alt=""
+                    class="t-flag"
+                    [src]="item | tuiFlag"
+                />
+                <span class="t-country-item-name">
+                    {{ countriesNames[item] }}
+                </span>
+                <span class="t-country-item-code">
+                    {{ item | tuiGetCountryCallingCode: metadata() }}
+                </span>
+            </button>
+        </tui-data-list>
+    </ng-template>
+</div>
