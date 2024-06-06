@@ -1,5 +1,5 @@
 import {NgForOf} from '@angular/common';
-import {Component, ViewChild} from '@angular/core';
+import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -11,7 +11,6 @@ import {
     TuiDropdownOpenDirective,
     TuiDropdownOptionsDirective,
     TuiGroupDirective,
-    TuiHostedDropdownComponent,
     TuiOptionComponent,
 } from '@taiga-ui/core';
 import {TuiChevronDirective, TuiDataListWrapper} from '@taiga-ui/kit';
@@ -40,9 +39,6 @@ import {TuiSelectModule} from '@taiga-ui/legacy';
     changeDetection,
 })
 export default class ExampleComponent {
-    @ViewChild(TuiHostedDropdownComponent)
-    protected component?: TuiHostedDropdownComponent;
-
     protected readonly items = ['Edit', 'Download', 'Rename', 'Delete'];
 
     protected readonly selectItems = ['Item 1', 'Item 2'];
@@ -53,6 +49,5 @@ export default class ExampleComponent {
 
     protected onClick(): void {
         this.open = false;
-        this.component?.nativeFocusableElement?.focus();
     }
 }

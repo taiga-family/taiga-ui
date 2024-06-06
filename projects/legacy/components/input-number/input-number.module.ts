@@ -1,13 +1,15 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
+import {TuiButtonDirective} from '@taiga-ui/core';
 import {
-    TuiButtonDirective,
     TuiPrimitiveTextfieldModule,
-    TuiTextfieldControllerModule,
     TuiTextfieldLegacyComponent,
-} from '@taiga-ui/core';
-import {TuiValueAccessorModule} from '@taiga-ui/legacy/directives';
+} from '@taiga-ui/legacy/components/primitive-textfield';
+import {
+    TuiTextfieldControllerModule,
+    TuiValueAccessorModule,
+} from '@taiga-ui/legacy/directives';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiInputNumberComponent} from './input-number.component';

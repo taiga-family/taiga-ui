@@ -4,9 +4,9 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import type {TuiContext, TuiHandler} from '@taiga-ui/cdk';
 import {TUI_DEFAULT_MATCHER, tuiIsNumber, TuiLetDirective} from '@taiga-ui/cdk';
-import {TuiDataListDirective, TuiTextfieldControllerModule} from '@taiga-ui/core';
+import {TuiDataListDirective} from '@taiga-ui/core';
 import {TuiDataListWrapperComponent} from '@taiga-ui/kit';
-import {TuiMultiSelectModule} from '@taiga-ui/legacy';
+import {TuiMultiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import type {Observable} from 'rxjs';
 import {map, shareReplay, startWith, Subject, switchMap, timer} from 'rxjs';
 

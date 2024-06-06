@@ -38,18 +38,20 @@ import type {
     TuiSizeS,
 } from '@taiga-ui/core';
 import {
-    TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_DATA_LIST_ACCESSOR,
-    TUI_TEXTFIELD_WATCHED_CONTROLLER,
     tuiAsDataListHost,
     TuiDataListDirective,
-    TuiHostedDropdownComponent,
 } from '@taiga-ui/core';
 import type {TuiItemsHandlers} from '@taiga-ui/kit';
 import {TUI_ITEMS_HANDLERS} from '@taiga-ui/kit';
 import {TuiStringifiableItem} from '@taiga-ui/legacy/classes';
 import {TUI_ARROW_MODE} from '@taiga-ui/legacy/components/arrow';
+import {TuiHostedDropdownComponent} from '@taiga-ui/legacy/components/hosted-dropdown';
 import {TuiInputTagComponent} from '@taiga-ui/legacy/components/input-tag';
+import {
+    TEXTFIELD_CONTROLLER_PROVIDER,
+    TUI_TEXTFIELD_WATCHED_CONTROLLER,
+} from '@taiga-ui/legacy/directives';
 import {FIXED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/legacy/utils';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 

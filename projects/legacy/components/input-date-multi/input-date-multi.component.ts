@@ -35,12 +35,7 @@ import type {
     TuiSizeS,
     TuiWithOptionalMinMax,
 } from '@taiga-ui/core';
-import {
-    TUI_DATE_FORMAT,
-    TUI_DEFAULT_DATE_FORMAT,
-    TUI_TEXTFIELD_SIZE,
-    TuiPrimitiveTextfieldComponent,
-} from '@taiga-ui/core';
+import {TUI_DATE_FORMAT, TUI_DEFAULT_DATE_FORMAT} from '@taiga-ui/core';
 import type {TuiInputDateOptions} from '@taiga-ui/kit';
 import {
     TUI_DATE_TEXTS,
@@ -54,6 +49,8 @@ import {
 } from '@taiga-ui/kit';
 import {TuiStringifiableItem} from '@taiga-ui/legacy/classes';
 import {TuiInputTagComponent} from '@taiga-ui/legacy/components/input-tag';
+import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/legacy/components/primitive-textfield';
+import {TUI_TEXTFIELD_SIZE} from '@taiga-ui/legacy/directives';
 import type {Observable} from 'rxjs';
 import {map} from 'rxjs';
 

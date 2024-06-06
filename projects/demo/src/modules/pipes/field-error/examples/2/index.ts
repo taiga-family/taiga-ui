@@ -7,11 +7,14 @@ import {tuiIsFalsy} from '@taiga-ui/cdk';
 import {
     TuiErrorComponent,
     TuiLabelDirective,
-    TuiTextfieldControllerModule,
     TuiTextfieldOptionsDirective,
 } from '@taiga-ui/core';
 import {TUI_VALIDATION_ERRORS, TuiFieldErrorPipe} from '@taiga-ui/kit';
-import {TuiInputModule, TuiInputNumberModule} from '@taiga-ui/legacy';
+import {
+    TuiInputModule,
+    TuiInputNumberModule,
+    TuiTextfieldControllerModule,
+} from '@taiga-ui/legacy';
 import {interval, map, of, scan, startWith} from 'rxjs';
 
 @Component({

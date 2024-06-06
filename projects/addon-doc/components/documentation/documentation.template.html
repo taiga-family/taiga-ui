@@ -38,16 +38,18 @@
                     </code>
                     <tui-badge
                         *ngIf="propertyConnector.attrName | tuiIsOptionalPipe"
+                        appearance="neutral"
                         size="s"
-                        status="neutral"
-                        value="Optional"
-                    />
+                    >
+                        Optional
+                    </tui-badge>
                     <tui-badge
                         *ngIf="propertyConnector.documentationPropertyDeprecated"
+                        appearance="error"
                         size="s"
-                        status="error"
-                        value="Deprecated"
-                    />
+                    >
+                        Deprecated
+                    </tui-badge>
                 </div>
                 <ng-container [ngTemplateOutlet]="propertyConnector.template" />
             </td>
@@ -119,44 +121,17 @@
                                 (ngModelChange)="propertyConnector.onValueChange($event)"
                             />
 
-                            <tui-primitive-textfield
+                            <tui-textfield
                                 *ngSwitchCase="'string'"
                                 tuiTextfieldSize="m"
-                                [nativeId]="propertyConnector.attrName"
-                                [tuiTextfieldCleaner]="true"
-                                [tuiTextfieldLabelOutside]="true"
-                                [value]="propertyConnector.documentationPropertyValue || ''"
-                                (valueChange)="propertyConnector.onValueChange($event)"
-                            />
-
-                            <div
-                                *ngSwitchCase="'color'"
-                                tuiGroup
                             >
-                                <tui-primitive-textfield
-                                    tuiTextfieldSize="m"
-                                    [attr.id]="propertyConnector.attrName"
-                                    [tuiInputOpacity]="propertyConnector.documentationPropertyValue | tuiGetOpacity"
-                                    [tuiTextfieldLabelOutside]="true"
-                                    [value]="propertyConnector.documentationPropertyValue | tuiGetColorPipe"
-                                    (valueChange)="onColorChange(propertyConnector, $event)"
-                                >
-                                    <input
-                                        tuiTextfieldLegacy
-                                        type="text"
-                                    />
-                                </tui-primitive-textfield>
-                                <tui-input-number
-                                    tuiTextfieldSize="m"
-                                    [max]="100"
-                                    [min]="0"
-                                    [ngModel]="propertyConnector.documentationPropertyValue | tuiGetOpacity"
-                                    [step]="1"
-                                    (ngModelChange)="onOpacityChange(propertyConnector, $event)"
-                                >
-                                    Opacity
-                                </tui-input-number>
-                            </div>
+                                <input
+                                    tuiTextfield
+                                    [id]="propertyConnector.attrName"
+                                    [ngModel]="propertyConnector.documentationPropertyValue || ''"
+                                    (ngModelChange)="propertyConnector.onValueChange($event)"
+                                />
+                            </tui-textfield>
 
                             <tui-input-number
                                 *ngSwitchCase="'number'"
@@ -168,22 +143,22 @@
                                 (ngModelChange)="propertyConnector.onValueChange($event || 0)"
                             />
 
-                            <ng-container *ngSwitchCase="'PolymorpheusContent'">
-                                <tui-primitive-textfield
-                                    *ngIf="
-                                        propertyConnector.documentationPropertyValue
-                                            | tuiIsPrimitivePolymorpheusContentPipe
-                                    "
-                                    tuiTextfieldSize="m"
-                                    [nativeId]="propertyConnector.attrName"
-                                    [tuiTextfieldCleaner]="true"
-                                    [tuiTextfieldLabelOutside]="true"
-                                    [value]="propertyConnector.documentationPropertyValue.toString()"
-                                    (valueChange)="propertyConnector.onValueChange($event)"
-                                >
-                                    Default content
-                                </tui-primitive-textfield>
-                            </ng-container>
+                            <!--                            <ng-container *ngSwitchCase="'PolymorpheusContent'">-->
+                            <!--                                <tui-primitive-textfield-->
+                            <!--                                    *ngIf="-->
+                            <!--                                        propertyConnector.documentationPropertyValue-->
+                            <!--                                            | tuiIsPrimitivePolymorpheusContentPipe-->
+                            <!--                                    "-->
+                            <!--                                    tuiTextfieldSize="m"-->
+                            <!--                                    [nativeId]="propertyConnector.attrName"-->
+                            <!--                                    [tuiTextfieldCleaner]="true"-->
+                            <!--                                    [tuiTextfieldLabelOutside]="true"-->
+                            <!--                                    [value]="propertyConnector.documentationPropertyValue.toString()"-->
+                            <!--                                    (valueChange)="propertyConnector.onValueChange($event)"-->
+                            <!--                                >-->
+                            <!--                                    Default content-->
+                            <!--                                </tui-primitive-textfield>-->
+                            <!--                            </ng-container>-->
                         </ng-container>
                     </ng-template>
                 </ng-container>

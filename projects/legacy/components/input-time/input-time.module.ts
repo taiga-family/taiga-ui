@@ -1,16 +1,15 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
-import {
-    TuiDataList,
-    TuiHostedDropdownModule,
-    TuiPrimitiveTextfieldModule,
-    TuiSvgComponent,
-    TuiTextfieldControllerModule,
-    TuiWrapperModule,
-} from '@taiga-ui/core';
+import {TuiDataList, TuiSvgComponent} from '@taiga-ui/core';
+import {TuiHostedDropdownModule} from '@taiga-ui/legacy/components/hosted-dropdown';
+import {TuiPrimitiveTextfieldModule} from '@taiga-ui/legacy/components/primitive-textfield';
 import {TuiSelectOptionModule} from '@taiga-ui/legacy/components/select-option';
-import {TuiValueAccessorModule} from '@taiga-ui/legacy/directives';
+import {
+    TuiTextfieldControllerModule,
+    TuiValueAccessorModule,
+    TuiWrapperModule,
+} from '@taiga-ui/legacy/directives';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiInputTimeComponent} from './input-time.component';

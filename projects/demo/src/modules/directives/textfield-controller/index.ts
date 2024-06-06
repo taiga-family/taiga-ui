@@ -5,12 +5,8 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import type {TuiInputMode, TuiInputType} from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {
-    TuiLinkDirective,
-    TuiTextfieldControllerModule,
-    TuiTextfieldOptionsDirective,
-} from '@taiga-ui/core';
-import {TuiInputModule} from '@taiga-ui/legacy';
+import {TuiLinkDirective, TuiTextfieldOptionsDirective} from '@taiga-ui/core';
+import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,

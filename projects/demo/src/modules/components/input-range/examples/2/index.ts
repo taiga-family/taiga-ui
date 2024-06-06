@@ -2,8 +2,8 @@ import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {tuiNumberFormatProvider, TuiTextfieldControllerModule} from '@taiga-ui/core';
-import {TuiInputRangeModule} from '@taiga-ui/legacy';
+import {tuiNumberFormatProvider} from '@taiga-ui/core';
+import {TuiInputRangeModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,

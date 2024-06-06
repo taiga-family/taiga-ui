@@ -4,12 +4,8 @@ import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {tuiProvide} from '@taiga-ui/cdk';
-import {
-    TuiFormatNumberPipe,
-    TuiLinkDirective,
-    TuiTextfieldControllerModule,
-} from '@taiga-ui/core';
-import {TuiInputNumberModule} from '@taiga-ui/legacy';
+import {TuiFormatNumberPipe, TuiLinkDirective} from '@taiga-ui/core';
+import {TuiInputNumberModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/abstract-props-accessor';
 import {AbstractExampleTuiNumberFormat} from '../../components/abstract/number-format';

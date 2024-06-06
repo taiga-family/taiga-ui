@@ -7,10 +7,13 @@ import {
     TuiErrorComponent,
     TuiGroupDirective,
     TuiHintOptionsDirective,
-    TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {TuiDataListWrapper, TuiFieldErrorPipe} from '@taiga-ui/kit';
-import {TuiInputModule, TuiMultiSelectModule} from '@taiga-ui/legacy';
+import {
+    TuiInputModule,
+    TuiMultiSelectModule,
+    TuiTextfieldControllerModule,
+} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,

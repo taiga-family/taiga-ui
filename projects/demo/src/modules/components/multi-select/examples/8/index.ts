@@ -3,9 +3,9 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiContext} from '@taiga-ui/cdk';
-import {TuiDataListDirective, TuiTextfieldControllerModule} from '@taiga-ui/core';
+import {TuiDataListDirective} from '@taiga-ui/core';
 import {TuiDataListWrapperComponent, tuiItemsHandlersProvider} from '@taiga-ui/kit';
-import {TuiMultiSelectModule} from '@taiga-ui/legacy';
+import {TuiMultiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 interface Employee {
     readonly dept: {

@@ -9,11 +9,14 @@ import type {TuiDialogContext} from '@taiga-ui/core';
 import {
     TuiButtonDirective,
     TuiDialogService,
-    TuiTextfieldControllerModule,
     TuiTextfieldOptionsDirective,
 } from '@taiga-ui/core';
 import {TuiDataListWrapper, TuiSlider} from '@taiga-ui/kit';
-import {TuiInputModule, TuiSelectModule} from '@taiga-ui/legacy';
+import {
+    TuiInputModule,
+    TuiSelectModule,
+    TuiTextfieldControllerModule,
+} from '@taiga-ui/legacy';
 import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus';
 
 @Component({

@@ -4,8 +4,8 @@ import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TuiCurrencyPipe} from '@taiga-ui/addon-commerce';
-import {TuiLinkDirective, TuiTextfieldControllerModule} from '@taiga-ui/core';
-import {TuiInputNumberModule} from '@taiga-ui/legacy';
+import {TuiLinkDirective} from '@taiga-ui/core';
+import {TuiInputNumberModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,

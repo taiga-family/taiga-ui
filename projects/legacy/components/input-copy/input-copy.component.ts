@@ -15,9 +15,12 @@ import {
     tuiPure,
 } from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {TUI_TEXTFIELD_SIZE, TuiPrimitiveTextfieldComponent} from '@taiga-ui/core';
 import {TUI_COPY_TEXTS} from '@taiga-ui/kit';
-import {TUI_VALUE_ACCESSOR_PROVIDER} from '@taiga-ui/legacy/directives';
+import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/legacy/components/primitive-textfield';
+import {
+    TUI_TEXTFIELD_SIZE,
+    TUI_VALUE_ACCESSOR_PROVIDER,
+} from '@taiga-ui/legacy/directives';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import type {Observable} from 'rxjs';
 import {map, merge, of, startWith, Subject, switchMap, timer} from 'rxjs';

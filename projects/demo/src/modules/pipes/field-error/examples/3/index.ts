@@ -6,14 +6,9 @@ import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiMarkControlAsTouchedAndValidate, TuiValidationError} from '@taiga-ui/cdk';
-import {
-    TuiButtonDirective,
-    TuiErrorComponent,
-    TuiLabelDirective,
-    TuiTextfieldControllerModule,
-} from '@taiga-ui/core';
+import {TuiButtonDirective, TuiErrorComponent, TuiLabelDirective} from '@taiga-ui/core';
 import {TuiCheckboxComponent, TuiFieldErrorPipe} from '@taiga-ui/kit';
-import {TuiInputModule} from '@taiga-ui/legacy';
+import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 const secretRegexTen = /^\d{10}$/;

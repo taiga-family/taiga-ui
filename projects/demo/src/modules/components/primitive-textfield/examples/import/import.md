@@ -1,5 +1,5 @@
 ```ts
-import {TuiPrimitiveTextfieldModule} from '@taiga-ui/core';
+import {TuiPrimitiveTextfieldModule} from '@taiga-ui/legacy';
 
 @Component({
   standalone: true,

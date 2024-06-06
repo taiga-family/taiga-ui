@@ -12,10 +12,9 @@ import {
     TuiDropdownOptionsDirective,
     TuiHintOptionsDirective,
     TuiLinkDirective,
-    TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import type {TuiStringifiableItem} from '@taiga-ui/legacy';
-import {TuiInputTagModule} from '@taiga-ui/legacy';
+import {TuiInputTagModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
 import {AbstractExampleTuiControl} from '../abstract/control';

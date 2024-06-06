@@ -10,9 +10,8 @@ import {
     TuiLinkDirective,
     TuiNotificationComponent,
     TuiNumberFormatDirective,
-    TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiInputNumberModule} from '@taiga-ui/legacy';
+import {TuiInputNumberModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
 import {InheritedDocumentationComponent} from '../abstract/inherited-documentation';

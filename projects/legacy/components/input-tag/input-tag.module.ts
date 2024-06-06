@@ -6,14 +6,10 @@ import {
     TuiHoveredDirective,
     TuiScrollService,
 } from '@taiga-ui/cdk';
-import {
-    TuiHostedDropdownModule,
-    TuiScrollbarComponent,
-    TuiSvgComponent,
-    TuiTooltipModule,
-    TuiWrapperModule,
-} from '@taiga-ui/core';
+import {TuiScrollbarComponent, TuiSvgComponent, TuiTooltipModule} from '@taiga-ui/core';
+import {TuiHostedDropdownModule} from '@taiga-ui/legacy/components/hosted-dropdown';
 import {TuiTagModule} from '@taiga-ui/legacy/components/tag';
+import {TuiWrapperModule} from '@taiga-ui/legacy/directives';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiInputTagComponent} from './input-tag.component';

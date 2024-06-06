@@ -2,8 +2,8 @@ import {Component, forwardRef} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {TuiButtonDirective, TuiHostedDropdownModule} from '@taiga-ui/core';
-import {TuiInputModule} from '@taiga-ui/legacy';
+import {TuiButtonDirective, TuiNotificationComponent} from '@taiga-ui/core';
+import {TuiHostedDropdownModule, TuiInputModule} from '@taiga-ui/legacy';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
 import {AbstractExampleTuiDropdown} from '../abstract/dropdown';
@@ -18,6 +18,7 @@ import {DropdownDocumentationComponent} from '../abstract/dropdown-documentation
         FormsModule,
         TuiButtonDirective,
         DropdownDocumentationComponent,
+        TuiNotificationComponent,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

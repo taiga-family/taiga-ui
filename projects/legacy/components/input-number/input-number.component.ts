@@ -36,14 +36,16 @@ import {
 } from '@taiga-ui/cdk';
 import type {TuiDecimalMode, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {
-    TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_DEFAULT_NUMBER_FORMAT,
     TUI_NUMBER_FORMAT,
+    tuiFormatNumber,
+} from '@taiga-ui/core';
+import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/legacy/components/primitive-textfield';
+import {
+    TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_TEXTFIELD_SIZE,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
-    tuiFormatNumber,
-    TuiPrimitiveTextfieldComponent,
-} from '@taiga-ui/core';
+} from '@taiga-ui/legacy/directives';
 import {PolymorpheusOutletDirective} from '@tinkoff/ng-polymorpheus';
 
 import type {TuiInputNumberOptions} from './input-number.options';

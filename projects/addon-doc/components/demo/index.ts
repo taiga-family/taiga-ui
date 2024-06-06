@@ -29,14 +29,9 @@ import {
     TuiResizerDirective,
     tuiToInteger,
 } from '@taiga-ui/cdk';
-import {
-    TuiButtonDirective,
-    TuiExpand,
-    TuiGroupDirective,
-    TuiTextfieldControllerModule,
-} from '@taiga-ui/core';
+import {TuiButtonDirective, TuiExpand, TuiGroupDirective} from '@taiga-ui/core';
 import {TuiChevronDirective, TuiDataListWrapper, TuiSwitchComponent} from '@taiga-ui/kit';
-import {TuiSelectModule} from '@taiga-ui/legacy';
+import {TuiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 const MIN_WIDTH = 160;
 

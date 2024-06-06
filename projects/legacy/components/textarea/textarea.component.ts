@@ -18,14 +18,15 @@ import {
     tuiIsNativeFocused,
 } from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import {tuiGetBorder, TuiHintOptionsDirective} from '@taiga-ui/core';
+import {
+    TUI_ICON_PADDINGS,
+    TuiTextfieldLegacyComponent,
+} from '@taiga-ui/legacy/components/primitive-textfield';
 import {
     TEXTFIELD_CONTROLLER_PROVIDER,
-    TUI_ICON_PADDINGS,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
-    tuiGetBorder,
-    TuiHintOptionsDirective,
-    TuiTextfieldLegacyComponent,
-} from '@taiga-ui/core';
+} from '@taiga-ui/legacy/directives';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 export const DEFAULT_ROWS = 20;

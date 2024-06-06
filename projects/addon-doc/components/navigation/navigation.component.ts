@@ -39,12 +39,11 @@ import {
     TuiLinkDirective,
     TuiScrollbarComponent,
     TuiSvgComponent,
-    TuiTextfieldControllerModule,
     TuiTextfieldOptionsDirective,
 } from '@taiga-ui/core';
 import {TuiAccordion} from '@taiga-ui/kit';
 import type {TuiInputComponent} from '@taiga-ui/legacy';
-import {TuiInputModule} from '@taiga-ui/legacy';
+import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import {combineLatest, filter, map, switchMap, take} from 'rxjs';
 
@@ -63,7 +62,6 @@ import {
         TuiTextfieldOptionsDirective,
         ReactiveFormsModule,
         TuiAutoFocusDirective,
-        TuiTextfieldControllerModule,
         TuiDataList,
         AsyncPipe,
         NgForOf,
@@ -78,6 +76,7 @@ import {
         TuiScrollIntoViewLinkDirective,
         RouterLinkActive,
         TuiExpand,
+        TuiTextfieldControllerModule,
     ],
     templateUrl: './navigation.template.html',
     styleUrls: ['./navigation.style.less'],

@@ -5,14 +5,9 @@ import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/
 import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {
-    TuiErrorComponent,
-    TuiLabelDirective,
-    TuiLinkDirective,
-    TuiTextfieldControllerModule,
-} from '@taiga-ui/core';
+import {TuiErrorComponent, TuiLabelDirective, TuiLinkDirective} from '@taiga-ui/core';
 import {TuiFieldErrorPipe} from '@taiga-ui/kit';
-import {TuiInputModule} from '@taiga-ui/legacy';
+import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import {distinctUntilChanged} from 'rxjs';
 
 const latinChars = /^[a-zA-Z]+$/;

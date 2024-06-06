@@ -10,10 +10,9 @@ import {
     TuiDropdownOptionsDirective,
     TuiHintOptionsDirective,
     TuiNotificationComponent,
-    TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {tuiCreateTimePeriods} from '@taiga-ui/kit';
-import {TuiInputTimeModule} from '@taiga-ui/legacy';
+import {TuiInputTimeModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
 import {AbstractExampleTuiControl} from '../abstract/control';

@@ -1,12 +1,8 @@
 import {Component, ViewEncapsulation} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {
-    TUI_TEXTFIELD_APPEARANCE_DIRECTIVE,
-    TuiButtonDirective,
-    TuiLabelDirective,
-} from '@taiga-ui/core';
+import {TuiButtonDirective, TuiLabelDirective} from '@taiga-ui/core';
 import {TuiCheckboxComponent, tuiCheckboxOptionsProvider} from '@taiga-ui/kit';
-import {TuiInputModule} from '@taiga-ui/legacy';
+import {TUI_TEXTFIELD_APPEARANCE_DIRECTIVE, TuiInputModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,

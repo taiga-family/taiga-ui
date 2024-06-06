@@ -5,13 +5,9 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {assets} from '@demo/utils';
 import {TUI_DEFAULT_MATCHER, TuiLetDirective} from '@taiga-ui/cdk';
-import {
-    TuiDataListDirective,
-    TuiInitialsPipe,
-    TuiTextfieldControllerModule,
-} from '@taiga-ui/core';
+import {TuiDataListDirective, TuiInitialsPipe} from '@taiga-ui/core';
 import {TuiAvatarComponent, TuiDataListWrapperComponent} from '@taiga-ui/kit';
-import {TuiMultiSelectModule} from '@taiga-ui/legacy';
+import {TuiMultiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import type {Observable} from 'rxjs';
 import {delay, filter, of, startWith, Subject, switchMap} from 'rxjs';
 

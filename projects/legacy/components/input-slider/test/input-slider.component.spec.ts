@@ -5,8 +5,12 @@ import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import type {TuiContext} from '@taiga-ui/cdk';
 import {CHAR_MINUS} from '@taiga-ui/cdk';
-import {TuiRootComponent, TuiTextfieldControllerModule} from '@taiga-ui/core';
-import {TuiInputSliderComponent, TuiInputSliderModule} from '@taiga-ui/legacy';
+import {TuiRootComponent} from '@taiga-ui/core';
+import {
+    TuiInputSliderComponent,
+    TuiInputSliderModule,
+    TuiTextfieldControllerModule,
+} from '@taiga-ui/legacy';
 import {TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 

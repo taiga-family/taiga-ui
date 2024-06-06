@@ -8,9 +8,9 @@ import {
     TuiCurrency,
     TuiThumbnailCardComponent,
 } from '@taiga-ui/addon-commerce';
-import {TuiDataListDirective, TuiTextfieldControllerModule} from '@taiga-ui/core';
+import {TuiDataListDirective} from '@taiga-ui/core';
 import {TuiDataListWrapperComponent} from '@taiga-ui/kit';
-import {TuiSelectModule} from '@taiga-ui/legacy';
+import {TuiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 class Card {
     constructor(

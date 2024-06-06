@@ -4,7 +4,10 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButtonDirective} from '@taiga-ui/core';
 import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
-import {TuiInputPhoneInternationalComponent} from '@taiga-ui/kit';
+import {
+    TuiInputPhoneInternationalComponent,
+    TuiTextfieldControllerModule,
+} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,

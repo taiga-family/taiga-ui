@@ -16,10 +16,9 @@ import {
     TuiDataListDirective,
     TuiErrorComponent,
     TuiOptionComponent,
-    TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {TuiFieldErrorPipe} from '@taiga-ui/kit';
-import {TuiInputTagModule} from '@taiga-ui/legacy';
+import {TuiInputTagModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 function createControlValidator(handler: TuiBooleanHandler<string>): ValidatorFn {
     return ({value}: AbstractControl) => {

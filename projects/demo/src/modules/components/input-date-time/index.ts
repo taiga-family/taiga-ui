@@ -18,9 +18,12 @@ import {
     TuiHintOptionsDirective,
     TuiLinkDirective,
     TuiNotificationComponent,
-    TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiInputDateTimeModule, TuiNamedDay} from '@taiga-ui/legacy';
+import {
+    TuiInputDateTimeModule,
+    TuiNamedDay,
+    TuiTextfieldControllerModule,
+} from '@taiga-ui/legacy';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
 import {AbstractExampleTuiControl} from '../abstract/control';

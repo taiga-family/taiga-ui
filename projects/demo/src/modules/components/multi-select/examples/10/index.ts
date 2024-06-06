@@ -3,8 +3,8 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiBooleanHandler, TuiStringHandler} from '@taiga-ui/cdk';
-import {TuiHintOptionsDirective, TuiTextfieldControllerModule} from '@taiga-ui/core';
-import {TuiMultiSelectModule} from '@taiga-ui/legacy';
+import {TuiHintOptionsDirective} from '@taiga-ui/core';
+import {TuiMultiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 interface Item {
     readonly id: number;

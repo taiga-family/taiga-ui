@@ -9,7 +9,6 @@ import {
     TuiErrorComponent,
     TuiGroupDirective,
     TuiLabelDirective,
-    TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {
     TuiBlockDirective,
@@ -28,6 +27,7 @@ import {
     TuiInputSliderModule,
     TuiInputTimeModule,
     TuiSelectModule,
+    TuiTextfieldControllerModule,
 } from '@taiga-ui/legacy';
 
 class User {

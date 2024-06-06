@@ -3,14 +3,9 @@ import {Component, inject} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiLetDirective} from '@taiga-ui/cdk';
-import {
-    TuiDataList,
-    TuiInitialsPipe,
-    TuiLoaderComponent,
-    TuiTextfieldControllerModule,
-} from '@taiga-ui/core';
+import {TuiDataList, TuiInitialsPipe, TuiLoaderComponent} from '@taiga-ui/core';
 import {TuiAvatarComponent} from '@taiga-ui/kit';
-import {TuiComboBoxModule} from '@taiga-ui/legacy';
+import {TuiComboBoxModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 import {databaseMockData} from './database-mock-data';
 import {RequestService} from './request.service';

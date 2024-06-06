@@ -9,10 +9,9 @@ import {
     TuiDataListComponent,
     TuiDataListDirective,
     TuiOptionComponent,
-    TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {TuiAvatarComponent} from '@taiga-ui/kit';
-import {TuiInputPhoneModule} from '@taiga-ui/legacy';
+import {TuiInputPhoneModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import type {Observable} from 'rxjs';
 import {
     combineLatest,

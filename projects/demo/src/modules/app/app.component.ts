@@ -8,8 +8,8 @@ import {LOCAL_STORAGE} from '@ng-web-apis/common';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {TuiAddonDoc, TuiLanguageSwitcherComponent} from '@taiga-ui/addon-doc';
 import {TuiTableBarsHostComponent} from '@taiga-ui/addon-tablebars';
-import {TuiLinkDirective, TuiTextfieldControllerModule} from '@taiga-ui/core';
-import {TuiSheetModule} from '@taiga-ui/legacy';
+import {TuiLinkDirective} from '@taiga-ui/core';
+import {TuiSheetModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import {distinctUntilChanged, filter, map} from 'rxjs';
 
 import {CustomHostComponent} from '../customization/portals/examples/1/portal/custom-host.component';

@@ -1,14 +1,12 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
+import {TuiScrollbarComponent, TuiSvgComponent, TuiTooltipModule} from '@taiga-ui/core';
 import {
     TuiPrimitiveTextfieldModule,
-    TuiScrollbarComponent,
-    TuiSvgComponent,
     TuiTextfieldLegacyComponent,
-    TuiTooltipModule,
-    TuiWrapperModule,
-} from '@taiga-ui/core';
+} from '@taiga-ui/legacy/components/primitive-textfield';
+import {TuiWrapperModule} from '@taiga-ui/legacy/directives';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiTextareaComponent} from './textarea.component';

@@ -4,9 +4,13 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiContext} from '@taiga-ui/cdk';
-import {TuiDataListDirective, TuiTextfieldControllerModule} from '@taiga-ui/core';
+import {TuiDataListDirective} from '@taiga-ui/core';
 import {TuiDataListWrapperComponent} from '@taiga-ui/kit';
-import {TuiMultiSelectModule, TuiTagModule} from '@taiga-ui/legacy';
+import {
+    TuiMultiSelectModule,
+    TuiTagModule,
+    TuiTextfieldControllerModule,
+} from '@taiga-ui/legacy';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 @Component({

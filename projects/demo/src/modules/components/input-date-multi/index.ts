@@ -15,12 +15,8 @@ import {
     tuiProvide,
 } from '@taiga-ui/cdk';
 import type {TuiMarkerHandler} from '@taiga-ui/core';
-import {
-    TuiDropdownOpenDirective,
-    TuiHintOptionsDirective,
-    TuiTextfieldControllerModule,
-} from '@taiga-ui/core';
-import {TuiInputDateMultiModule} from '@taiga-ui/legacy';
+import {TuiDropdownOpenDirective, TuiHintOptionsDirective} from '@taiga-ui/core';
+import {TuiInputDateMultiModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
 import {AbstractExampleTuiControl} from '../abstract/control';

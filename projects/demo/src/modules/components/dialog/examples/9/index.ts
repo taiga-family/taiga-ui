@@ -8,10 +8,9 @@ import {
     TuiDialogService,
     TuiHintOptionsDirective,
     TuiSvgComponent,
-    TuiTextfieldControllerModule,
     TuiTextfieldOptionsDirective,
 } from '@taiga-ui/core';
-import {TuiInputNumberModule} from '@taiga-ui/legacy';
+import {TuiInputNumberModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 
 import {PayModalComponent} from './pay-modal/pay-modal.component';

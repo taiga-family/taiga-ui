@@ -1,5 +1,6 @@
 export * from '@taiga-ui/legacy/components/arrow';
 export * from '@taiga-ui/legacy/components/combo-box';
+export * from '@taiga-ui/legacy/components/hosted-dropdown';
 export * from '@taiga-ui/legacy/components/input';
 export * from '@taiga-ui/legacy/components/input-copy';
 export * from '@taiga-ui/legacy/components/input-date';
@@ -20,6 +21,7 @@ export * from '@taiga-ui/legacy/components/input-year';
 export * from '@taiga-ui/legacy/components/island';
 export * from '@taiga-ui/legacy/components/multi-select';
 export * from '@taiga-ui/legacy/components/multi-select-option';
+export * from '@taiga-ui/legacy/components/primitive-textfield';
 export * from '@taiga-ui/legacy/components/select';
 export * from '@taiga-ui/legacy/components/select-option';
 export * from '@taiga-ui/legacy/components/sheet';

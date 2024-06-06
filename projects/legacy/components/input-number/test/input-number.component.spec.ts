@@ -6,12 +6,12 @@ import {TestBed} from '@angular/core/testing';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {CHAR_MINUS, CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
 import type {TuiDecimalMode, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import {TuiHint, TuiNumberFormatDirective} from '@taiga-ui/core';
 import {
-    TuiHint,
-    TuiNumberFormatDirective,
+    TuiInputNumberComponent,
+    TuiInputNumberModule,
     TuiTextfieldControllerModule,
-} from '@taiga-ui/core';
-import {TuiInputNumberComponent, TuiInputNumberModule} from '@taiga-ui/legacy';
+} from '@taiga-ui/legacy';
 import {TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 

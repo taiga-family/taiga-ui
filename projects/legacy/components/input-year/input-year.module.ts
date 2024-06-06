@@ -4,11 +4,13 @@ import {
     TuiCalendarYearComponent,
     TuiDropdownModule,
     TuiDropdownOpenDirective,
-    TuiPrimitiveTextfieldModule,
     TuiScrollbarComponent,
-    TuiTextfieldControllerModule,
-    TuiTextfieldLegacyComponent,
 } from '@taiga-ui/core';
+import {
+    TuiPrimitiveTextfieldModule,
+    TuiTextfieldLegacyComponent,
+} from '@taiga-ui/legacy/components/primitive-textfield';
+import {TuiTextfieldControllerModule} from '@taiga-ui/legacy/directives';
 
 import {TuiInputYearComponent} from './input-year.component';
 import {TuiInputYearDirective} from './input-year.directive';

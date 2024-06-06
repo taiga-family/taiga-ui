@@ -21,11 +21,7 @@ import {
     tuiRound,
 } from '@taiga-ui/cdk';
 import type {TuiWithOptionalMinMax} from '@taiga-ui/core';
-import {
-    TEXTFIELD_CONTROLLER_PROVIDER,
-    TUI_TEXTFIELD_WATCHED_CONTROLLER,
-    tuiGetFractionPartPadded,
-} from '@taiga-ui/core';
+import {tuiGetFractionPartPadded} from '@taiga-ui/core';
 import type {TuiKeySteps} from '@taiga-ui/kit';
 import {
     TUI_FLOATING_PRECISION,
@@ -33,6 +29,10 @@ import {
     tuiSliderOptionsProvider,
 } from '@taiga-ui/kit';
 import {TuiInputNumberComponent} from '@taiga-ui/legacy/components/input-number';
+import {
+    TEXTFIELD_CONTROLLER_PROVIDER,
+    TUI_TEXTFIELD_WATCHED_CONTROLLER,
+} from '@taiga-ui/legacy/directives';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 @Component({

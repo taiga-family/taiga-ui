@@ -21,11 +21,10 @@ import {
     TuiHintOptionsDirective,
     TuiLinkDirective,
     TuiNotificationComponent,
-    TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import type {TuiDayRangePeriod} from '@taiga-ui/kit';
 import {tuiCreateDefaultDayRangePeriods} from '@taiga-ui/kit';
-import {TuiInputDateRangeModule} from '@taiga-ui/legacy';
+import {TuiInputDateRangeModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
 import {AbstractExampleTuiControl} from '../abstract/control';

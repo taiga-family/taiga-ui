@@ -20,18 +20,14 @@ import {
     tuiPure,
     tuiQueryListChanges,
 } from '@taiga-ui/cdk';
-import {
-    TEXTFIELD_CONTROLLER_PROVIDER,
-    TUI_TEXTFIELD_WATCHED_CONTROLLER,
-} from '@taiga-ui/core/directives';
-import {TUI_NOTHING_FOUND_MESSAGE} from '@taiga-ui/core/tokens';
+import {TUI_TEXTFIELD_OPTIONS} from '@taiga-ui/core/components/textfield';
+import type {TuiDataListAccessor} from '@taiga-ui/core/tokens';
+import {TUI_NOTHING_FOUND_MESSAGE, tuiAsDataListAccessor} from '@taiga-ui/core/tokens';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import type {Observable} from 'rxjs';
 import {map} from 'rxjs';
 
-import {tuiAsDataListAccessor} from './data-list.tokens';
-import type {TuiDataListAccessor} from './data-list.types';
 import {TuiOptionComponent} from './option.component';
 
 // TODO: Consider aria-activedescendant for proper accessibility implementation
@@ -43,10 +39,7 @@ import {TuiOptionComponent} from './option.component';
     styleUrls: ['./data-list.style.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        tuiAsDataListAccessor(TuiDataListComponent),
-        TEXTFIELD_CONTROLLER_PROVIDER,
-    ],
+    providers: [tuiAsDataListAccessor(TuiDataListComponent)],
     host: {
         role: 'listbox',
     },
@@ -57,9 +50,6 @@ export class TuiDataListComponent<T> implements TuiDataListAccessor<T> {
 
     private origin?: HTMLElement;
     private readonly el = tuiInjectElement();
-    private readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER, {
-        optional: true,
-    });
 
     protected readonly defaultEmptyContent$ = inject(TUI_NOTHING_FOUND_MESSAGE);
 
@@ -68,7 +58,7 @@ export class TuiDataListComponent<T> implements TuiDataListAccessor<T> {
 
     @Input()
     @HostBinding('attr.data-size')
-    public size = this.controller?.size || 'm';
+    public size = inject(TUI_TEXTFIELD_OPTIONS).size || 'm';
 
     @HostListener('keydown.arrowDown.prevent', ['$event.target', '1'])
     @HostListener('keydown.arrowUp.prevent', ['$event.target', '-1'])

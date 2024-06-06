@@ -1,18 +1,12 @@
-import {forwardRef} from '@angular/core';
 import {
     INTERSECTION_ROOT_MARGIN,
     INTERSECTION_THRESHOLD,
     IntersectionObserverService,
 } from '@ng-web-apis/intersection-observer';
+import {TuiTableDirective} from '@taiga-ui/addon-table/components';
 import {tuiProvide} from '@taiga-ui/cdk';
-import {
-    TUI_TEXTFIELD_APPEARANCE_DIRECTIVE,
-    TUI_TEXTFIELD_LABEL_OUTSIDE,
-    TUI_TEXTFIELD_SIZE,
-    TuiTextfieldAppearanceDirective,
-} from '@taiga-ui/core';
+import {TUI_TEXTFIELD_OPTIONS} from '@taiga-ui/core';
 
-import {TuiTableDirective} from '../directives/table.directive';
 import {TUI_STUCK_PROVIDER} from './stuck.provider';
 
 export const TUI_TABLE_PROVIDERS = [
@@ -24,26 +18,7 @@ export const TUI_TABLE_PROVIDERS = [
         provide: INTERSECTION_THRESHOLD,
         useValue: [0, 1],
     },
-    {
-        provide: TUI_TEXTFIELD_APPEARANCE_DIRECTIVE,
-        useFactory: (): TuiTextfieldAppearanceDirective => {
-            const directive = new TuiTextfieldAppearanceDirective();
-
-            directive.appearance = 'table';
-
-            return directive;
-        },
-    },
-    {
-        provide: TUI_TEXTFIELD_LABEL_OUTSIDE,
-        useValue: {
-            labelOutside: true,
-        },
-    },
-    tuiProvide(
-        TUI_TEXTFIELD_SIZE,
-        forwardRef(() => TuiTableDirective),
-    ),
+    tuiProvide(TUI_TEXTFIELD_OPTIONS, TuiTableDirective),
     IntersectionObserverService,
     TUI_STUCK_PROVIDER,
 ];
