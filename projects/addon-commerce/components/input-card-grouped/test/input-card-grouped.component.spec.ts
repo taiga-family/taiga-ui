@@ -1,22 +1,9 @@
-import {
-    Component,
-    ElementRef,
-    Optional,
-    Self,
-    TemplateRef,
-    ViewChild,
-} from '@angular/core';
+import {Component, TemplateRef, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import type {TuiCard} from '@taiga-ui/addon-commerce';
 import {TuiInputCardGroupedComponent} from '@taiga-ui/addon-commerce';
-import type {TuiFocusableElementAccessor} from '@taiga-ui/cdk';
-import {
-    TUI_AUTOFOCUS_HANDLER,
-    TUI_FOCUSABLE_ITEM_ACCESSOR,
-    TuiSynchronousAutofocusHandler,
-} from '@taiga-ui/cdk';
 import {TuiSvgComponent} from '@taiga-ui/core';
 import {TuiNativeInputPO} from '@taiga-ui/testing';
 import type {Mock} from 'jest-mock';
@@ -30,10 +17,10 @@ describe('InputCardGrouped', () => {
             <tui-input-card-grouped
                 [formControl]="control"
                 (binChange)="onBinChange($event)"
-            ></tui-input-card-grouped>
+            />
 
             <ng-template #customIconTemplate>
-                <tui-svg src="tuiIconVisa"></tui-svg>
+                <tui-svg src="tuiIconVisa" />
             </ng-template>
         `,
     })
@@ -56,13 +43,7 @@ describe('InputCardGrouped', () => {
     let inputCVCPO: TuiNativeInputPO;
 
     beforeEach(async () => {
-        TestBed.overrideProvider(TUI_AUTOFOCUS_HANDLER, {
-            useFactory: (
-                focusable: TuiFocusableElementAccessor | null,
-                el: ElementRef<HTMLElement>,
-            ) => new TuiSynchronousAutofocusHandler(focusable, el),
-            deps: [[new Optional(), new Self(), TUI_FOCUSABLE_ITEM_ACCESSOR], ElementRef],
-        }).configureTestingModule({imports: [TestComponent]});
+        TestBed.configureTestingModule({imports: [TestComponent]});
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(TestComponent);
         testComponent = fixture.componentInstance;
@@ -125,32 +106,32 @@ describe('InputCardGrouped', () => {
         });
 
         describe('Formatting', () => {
-            it('13', async () => {
-                await testFormat('4000000000000', '4000 0000 0000 0');
+            it('13', () => {
+                testFormat('4000000000000', '4000 0000 0000 0');
             });
 
-            it('14', async () => {
-                await testFormat('40000000000000', '4000 0000 0000 00');
+            it('14', () => {
+                testFormat('40000000000000', '4000 0000 0000 00');
             });
 
-            it('15', async () => {
-                await testFormat('400000000000000', '4000 0000 0000 000');
+            it('15', () => {
+                testFormat('400000000000000', '4000 0000 0000 000');
             });
 
-            it('16', async () => {
-                await testFormat('4000000000000000', '4000 0000 0000 0000');
+            it('16', () => {
+                testFormat('4000000000000000', '4000 0000 0000 0000');
             });
 
-            it('17', async () => {
-                await testFormat('40000000000000000', '4000 0000 0000 0000 0');
+            it('17', () => {
+                testFormat('40000000000000000', '4000 0000 0000 0000 0');
             });
 
-            it('18', async () => {
-                await testFormat('400000000000000000', '4000 0000 0000 0000 00');
+            it('18', () => {
+                testFormat('400000000000000000', '4000 0000 0000 0000 00');
             });
 
-            it('19', async () => {
-                await testFormat('4000000000000000000', '4000 0000 0000 0000 000');
+            it('19', () => {
+                testFormat('4000000000000000000', '4000 0000 0000 0000 000');
             });
         });
     });
@@ -200,64 +181,39 @@ describe('InputCardGrouped', () => {
         });
     });
 
-    describe('iconSrc', () => {
+    describe('icon with value', () => {
         beforeEach(() => setCard('4111 1111 1111 1111'));
 
         it('input-card-grouped have a default icon', () => {
             expect(testComponent.control.valid).toBe(true);
-            expect(testComponent.component.defaultIcon).toBe('tuiIconVisa');
-            expect(testComponent.component.icon).toBe('tuiIconVisa');
-            expect(testComponent.control.value).toEqual({card: '4111 1111 1111 1111'});
-
-            expect(expectCardOutlet()).toBeFalsy();
-            fixture.detectChanges();
+            expect(testComponent.component['content']).toBe('tuiIconVisa');
+            expect(testComponent.control.value?.card).toBe('4111111111111111');
             expect(expectCardOutlet()).toBeTruthy();
         });
 
         it('input-card-grouped have tuiIconMastercard icon', () => {
-            testComponent.component.cardSrc = 'tuiIconMastercard';
+            testComponent.component.icon = 'tuiIconMastercard';
 
             expect(testComponent.control.valid).toBe(true);
-            expect(testComponent.component.defaultIcon).toBe('tuiIconVisa');
-            expect(testComponent.component.icon).toBe('tuiIconMastercard');
-            expect(testComponent.control.value).toEqual({card: '4111 1111 1111 1111'});
-
-            expect(expectCardOutlet()).toBeFalsy();
-            fixture.detectChanges();
+            expect(testComponent.component['content']).toBe('tuiIconMastercard');
+            expect(testComponent.control.value?.card).toBe('4111111111111111');
             expect(expectCardOutlet()).toBeTruthy();
         });
 
         it('input-card-grouped have TemplateRef', () => {
-            testComponent.component.cardSrc =
-                fixture.componentInstance.customIconTemplate;
+            testComponent.component.icon = fixture.componentInstance.customIconTemplate;
 
             expect(testComponent.control.valid).toBe(true);
-            expect(testComponent.component.defaultIcon).toBe('tuiIconVisa');
-            expect(testComponent.component.icon).toBeInstanceOf(TemplateRef);
-            expect(testComponent.control.value).toEqual({card: '4111 1111 1111 1111'});
-
-            expect(expectCardOutlet()).toBeFalsy();
-            fixture.detectChanges();
+            expect(testComponent.component['content']).toBeInstanceOf(TemplateRef);
+            expect(testComponent.control.value?.card).toBe('4111111111111111');
             expect(expectCardOutlet()).toBeTruthy();
         });
     });
 
-    async function testFormat(value: string, formatted: string): Promise<void> {
+    function testFormat(value: string, formatted: string): void {
         setCard(value);
         fixture.detectChanges();
-
-        await fixture.whenStable();
-
-        fixture.detectChanges();
-
-        await fixture.whenStable();
-
-        fixture.detectChanges();
-        expect(getCard()).toBe(formatted);
-    }
-
-    function getCard(): string {
-        return testComponent.component.nativeFocusableElement?.value || '';
+        expect(inputCardPO.value).toBe(formatted);
     }
 
     function expectCardOutlet(): boolean {
@@ -269,7 +225,7 @@ describe('InputCardGrouped', () => {
     }
 
     function setCard(card: string): void {
-        testComponent.control.setValue({card});
+        inputCardPO.sendText(card);
     }
 
     function getExpire(): string {

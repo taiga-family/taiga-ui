@@ -18,7 +18,7 @@ import {of} from 'rxjs';
             provide: TUI_INPUT_CARD_GROUPED_TEXTS,
             useValue: of({
                 cardNumberText: 'Number',
-                expiryText: 'mm/yy',
+                expiryText: 'MM/YY',
                 cvcText: 'Code',
             }),
         },

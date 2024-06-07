@@ -1,4 +1,4 @@
-import {NgForOf} from '@angular/common';
+import {NgForOf, NgIf} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -6,7 +6,12 @@ import {
     TuiInputCardGroupedComponent,
     TuiThumbnailCardComponent,
 } from '@taiga-ui/addon-commerce';
-import {TuiDataList, TuiSvgComponent, TuiTitleDirective} from '@taiga-ui/core';
+import {
+    TuiButtonDirective,
+    TuiDataList,
+    TuiSvgComponent,
+    TuiTitleDirective,
+} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
@@ -18,6 +23,8 @@ import {TuiDataList, TuiSvgComponent, TuiTitleDirective} from '@taiga-ui/core';
         NgForOf,
         TuiThumbnailCardComponent,
         TuiTitleDirective,
+        NgIf,
+        TuiButtonDirective,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
@@ -37,14 +44,5 @@ export default class ExampleComponent {
     ];
 
     protected readonly card = new FormGroup({meta: new FormControl(this.items[0])});
-
-    protected onClick(component: TuiInputCardGroupedComponent): void {
-        this.card.get('meta')?.setValue(null);
-        this.onEsc(component);
-    }
-
-    protected onEsc(component: TuiInputCardGroupedComponent): void {
-        component.nativeFocusableElement?.focus();
-        component.open = false;
-    }
+    protected open = false;
 }

@@ -44,11 +44,11 @@ export default class PageComponent extends AbstractExampleTuiInteractive {
             'https://ng-web-apis.github.io/dist/assets/images/mutation-observer.svg',
     };
 
-    protected cardSrcVariants: readonly string[] = Object.keys(this.cards);
+    protected iconVariants: readonly string[] = Object.keys(this.cards);
 
-    protected cardSrcSelected: PolymorpheusContent = '';
+    protected iconSelected: PolymorpheusContent = null;
 
-    protected autocompleteEnabled = false;
+    protected autocomplete = false;
 
     protected exampleText = '0000 0000 0000 0000';
 
@@ -62,10 +62,10 @@ export default class PageComponent extends AbstractExampleTuiInteractive {
 
     protected control = new FormControl<TuiCard | null>(null);
 
-    protected get cardSrc(): PolymorpheusContent {
-        return tuiIsString(this.cardSrcSelected)
-            ? this.cards[this.cardSrcSelected]
-            : this.cardSrcSelected;
+    protected get icon(): PolymorpheusContent {
+        return tuiIsString(this.iconSelected)
+            ? this.cards[this.iconSelected]
+            : this.iconSelected;
     }
 
     protected get disabled(): boolean {
@@ -83,6 +83,6 @@ export default class PageComponent extends AbstractExampleTuiInteractive {
     protected getContentVariants(
         template: PolymorpheusContent,
     ): readonly PolymorpheusContent[] | null {
-        return [...this.cardSrcVariants, template];
+        return [...this.iconVariants, template];
     }
 }
