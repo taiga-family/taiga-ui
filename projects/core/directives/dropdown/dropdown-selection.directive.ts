@@ -51,7 +51,10 @@ export class TuiDropdownSelectionDirective
         inject(TUI_SELECTION_STREAM).pipe(
             map(() => this.getRange()),
             distinctUntilChanged(
-                (x, y) => x.startOffset === y.startOffset && x.endOffset === y.endOffset,
+                (x, y) =>
+                    x.startOffset === y.startOffset &&
+                    x.endOffset === y.endOffset &&
+                    x.commonAncestorContainer === y.commonAncestorContainer,
             ),
         ),
     ]).pipe(
