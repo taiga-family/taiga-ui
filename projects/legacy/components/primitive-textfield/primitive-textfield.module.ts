@@ -7,7 +7,7 @@ import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import {TuiPrimitiveTextfieldComponent} from './primitive-textfield.component';
 import {TuiPrimitiveTextfieldDirective} from './primitive-textfield.directive';
-import {TuiTextfieldLegacyComponent} from './textfield/textfield.component';
+import {TuiTextfieldComponent} from './textfield/textfield.component';
 import {TuiValueDecorationComponent} from './value-decoration/value-decoration.component';
 
 @NgModule({
@@ -22,13 +22,13 @@ import {TuiValueDecorationComponent} from './value-decoration/value-decoration.c
     declarations: [
         TuiPrimitiveTextfieldComponent,
         TuiPrimitiveTextfieldDirective,
-        TuiTextfieldLegacyComponent,
+        TuiTextfieldComponent,
         TuiValueDecorationComponent,
     ],
     exports: [
         TuiPrimitiveTextfieldComponent,
         TuiPrimitiveTextfieldDirective,
-        TuiTextfieldLegacyComponent,
+        TuiTextfieldComponent,
     ],
 })
 export class TuiPrimitiveTextfieldModule {}

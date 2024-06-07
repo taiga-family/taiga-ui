@@ -4,7 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {TuiHint, TuiSvgComponent} from '@taiga-ui/core';
 import {
     TuiPrimitiveTextfieldModule,
-    TuiTextfieldLegacyComponent,
+    TuiTextfieldComponent,
 } from '@taiga-ui/legacy/components/primitive-textfield';
 import {
     TuiTextfieldControllerModule,
@@ -30,7 +30,7 @@ import {TuiInputPasswordDirective} from './input-password.directive';
     exports: [
         TuiInputPasswordComponent,
         TuiInputPasswordDirective,
-        TuiTextfieldLegacyComponent,
+        TuiTextfieldComponent,
     ],
 })
 export class TuiInputPasswordModule {}

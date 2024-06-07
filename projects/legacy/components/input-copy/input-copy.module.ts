@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {TuiHint, TuiSvgComponent} from '@taiga-ui/core';
 import {
     TuiPrimitiveTextfieldModule,
-    TuiTextfieldLegacyComponent,
+    TuiTextfieldComponent,
 } from '@taiga-ui/legacy/components/primitive-textfield';
 import {
     TuiTextfieldControllerModule,
@@ -25,6 +25,6 @@ import {TuiInputCopyDirective} from './input-copy.directive';
         TuiTextfieldControllerModule,
     ],
     declarations: [TuiInputCopyComponent, TuiInputCopyDirective],
-    exports: [TuiInputCopyComponent, TuiInputCopyDirective, TuiTextfieldLegacyComponent],
+    exports: [TuiInputCopyComponent, TuiInputCopyDirective, TuiTextfieldComponent],
 })
 export class TuiInputCopyModule {}

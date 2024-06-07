@@ -7,7 +7,7 @@ import {TuiCalendarRangeComponent} from '@taiga-ui/kit';
 import {TuiHostedDropdownModule} from '@taiga-ui/legacy/components/hosted-dropdown';
 import {
     TuiPrimitiveTextfieldModule,
-    TuiTextfieldLegacyComponent,
+    TuiTextfieldComponent,
 } from '@taiga-ui/legacy/components/primitive-textfield';
 import {
     TuiTextfieldControllerModule,
@@ -38,7 +38,7 @@ import {TuiInputDateRangeDirective} from './input-date-range.directive';
     exports: [
         TuiInputDateRangeComponent,
         TuiInputDateRangeDirective,
-        TuiTextfieldLegacyComponent,
+        TuiTextfieldComponent,
     ],
 })
 export class TuiInputDateRangeModule {}

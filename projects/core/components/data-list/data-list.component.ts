@@ -38,9 +38,9 @@ import {TuiOptionComponent} from './option.component';
 /**
  * @deprecated replace with inject(TUI_TEXTFIELD_OPTIONS).size || 'm'; when legacy is dropped
  */
-export function tuiGetDataListSize(): TuiSizeL | TuiSizeS {
+export function tuiInjectDataListSize(): TuiSizeL | TuiSizeS {
     const sizes = ['s', 'm', 'l'] as const;
-    const size = inject<any>(TUI_TEXTFIELD_HOST).size;
+    const size = inject<any>(TUI_TEXTFIELD_HOST, {optional: true})?.size;
 
     return sizes.includes(size) ? size : inject(TUI_TEXTFIELD_OPTIONS).size;
 }
@@ -73,7 +73,7 @@ export class TuiDataListComponent<T> implements TuiDataListAccessor<T> {
 
     @Input()
     @HostBinding('attr.data-size')
-    public size = tuiGetDataListSize();
+    public size = tuiInjectDataListSize();
 
     @HostListener('keydown.arrowDown.prevent', ['$event.target', '1'])
     @HostListener('keydown.arrowUp.prevent', ['$event.target', '-1'])

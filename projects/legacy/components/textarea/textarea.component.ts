@@ -21,7 +21,7 @@ import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 import {tuiGetBorder, TuiHintOptionsDirective} from '@taiga-ui/core';
 import {
     TUI_ICON_PADDINGS,
-    TuiTextfieldLegacyComponent,
+    TuiTextfieldComponent,
 } from '@taiga-ui/legacy/components/primitive-textfield';
 import {
     TEXTFIELD_CONTROLLER_PROVIDER,
@@ -54,7 +54,7 @@ export class TuiTextareaComponent
     @ViewChild('focusableElement')
     private readonly focusableElement?: ElementRef<HTMLTextAreaElement>;
 
-    @ContentChild(TuiTextfieldLegacyComponent, {read: ElementRef})
+    @ContentChild(TuiTextfieldComponent, {read: ElementRef})
     private readonly textfield?: ElementRef<HTMLTextAreaElement>;
 
     protected readonly isIOS = inject(TUI_IS_IOS);

@@ -25,7 +25,7 @@ import {
         '(input)': 'host.onValueChange($event.target.value)',
     },
 })
-export class TuiTextfieldLegacyComponent {
+export class TuiTextfieldComponent {
     private readonly el = tuiInjectElement<HTMLInputElement>();
     private readonly idService = inject(TuiIdService);
     protected readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);

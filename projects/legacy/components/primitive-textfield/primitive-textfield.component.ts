@@ -21,10 +21,14 @@ import {
     tuiRetargetedBoundaryCrossing,
 } from '@taiga-ui/cdk';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {tuiGetBorder, TuiHintOptionsDirective} from '@taiga-ui/core';
+import {
+    TUI_TEXTFIELD_OPTIONS as OPTIONS,
+    tuiGetBorder,
+    TuiHintOptionsDirective,
+} from '@taiga-ui/core';
 import {
     TEXTFIELD_CONTROLLER_PROVIDER,
-    TUI_TEXTFIELD_OPTIONS_LEGACY,
+    TUI_TEXTFIELD_OPTIONS as LEGACY_OPTIONS,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
 } from '@taiga-ui/legacy/directives';
 import type {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
@@ -61,7 +65,8 @@ export class TuiPrimitiveTextfieldComponent
     @ViewChild('focusableElement')
     private readonly focusableElement?: ElementRef<HTMLInputElement>;
 
-    private readonly options = inject(TUI_TEXTFIELD_OPTIONS_LEGACY);
+    private readonly legacyOptions = inject(LEGACY_OPTIONS);
+    private readonly options = inject(OPTIONS);
     private readonly el = tuiInjectElement();
 
     @ContentChildren(PolymorpheusOutletDirective, {descendants: true})
@@ -79,7 +84,7 @@ export class TuiPrimitiveTextfieldComponent
      * use `tuiTextfieldOptionsProvider({iconCleaner: `tuiIconChevronUp`})`
      */
     @Input()
-    public iconCleaner = this.options.iconCleaner;
+    public iconCleaner = this.legacyOptions.iconCleaner;
 
     @Input()
     @HostBinding('class._readonly')
@@ -125,7 +130,7 @@ export class TuiPrimitiveTextfieldComponent
     }
 
     public get appearance(): string {
-        return this.controller.appearance;
+        return this.options.appearance === 'table' ? 'table' : this.controller.appearance;
     }
 
     public onModelChange(value: string): void {
@@ -219,7 +224,7 @@ export class TuiPrimitiveTextfieldComponent
     protected get showHint(): boolean {
         return (
             !!this.hintOptions?.content &&
-            (this.options.hintOnDisabled || !this.computedDisabled)
+            (this.legacyOptions.hintOnDisabled || !this.computedDisabled)
         );
     }
 

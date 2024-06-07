@@ -311,7 +311,7 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {name: 'TuiTextfieldComponent', moduleSpecifier: '@taiga-ui/core'},
-        to: {name: 'TuiTextfieldLegacyComponent', moduleSpecifier: '@taiga-ui/legacy'},
+        to: {name: 'TuiTextfieldComponent', moduleSpecifier: '@taiga-ui/legacy'},
     },
     {
         from: {name: 'TuiBadgeModule', moduleSpecifier: '@taiga-ui/experimental'},

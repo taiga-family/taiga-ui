@@ -20,7 +20,7 @@ import type {TuiValueContentContext} from '@taiga-ui/core';
 import {
     tuiAsDataListAccessor,
     TuiDataList,
-    tuiGetDataListSize,
+    tuiInjectDataListSize,
     TuiLoaderComponent,
     TuiOptionComponent,
 } from '@taiga-ui/core';
@@ -61,7 +61,7 @@ export class TuiDataListWrapperComponent<T> {
     public emptyContent: PolymorpheusContent;
 
     @Input()
-    public size = tuiGetDataListSize();
+    public size = tuiInjectDataListSize();
 
     @Output()
     public readonly itemClick = new EventEmitter<T>();

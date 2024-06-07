@@ -5,7 +5,7 @@ import {TuiCalendarComponent, TuiLinkDirective, TuiSvgComponent} from '@taiga-ui
 import {TuiHostedDropdownModule} from '@taiga-ui/legacy/components/hosted-dropdown';
 import {
     TuiPrimitiveTextfieldModule,
-    TuiTextfieldLegacyComponent,
+    TuiTextfieldComponent,
 } from '@taiga-ui/legacy/components/primitive-textfield';
 import {
     TuiTextfieldControllerModule,
@@ -40,7 +40,7 @@ import {TuiNativeDateTimeDirective} from './native-date-time/native-date-time.di
     exports: [
         TuiInputDateTimeComponent,
         TuiInputDateTimeDirective,
-        TuiTextfieldLegacyComponent,
+        TuiTextfieldComponent,
     ],
 })
 export class TuiInputDateTimeModule {}

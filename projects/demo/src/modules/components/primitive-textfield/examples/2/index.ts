@@ -8,7 +8,7 @@ import {
     TuiPrimitiveTextfieldComponent,
     TuiPrimitiveTextfieldModule,
     TuiTextfieldControllerModule,
-    tuiTextfieldOptionsProviderLegacy,
+    tuiTextfieldOptionsProvider,
 } from '@taiga-ui/legacy';
 
 @Component({
@@ -23,7 +23,7 @@ import {
     encapsulation,
     changeDetection,
     providers: [
-        tuiTextfieldOptionsProviderLegacy({
+        tuiTextfieldOptionsProvider({
             iconCleaner: 'tuiIconEdit2',
             hintOnDisabled: true,
         }),

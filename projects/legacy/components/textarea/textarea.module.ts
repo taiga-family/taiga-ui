@@ -4,7 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {TuiScrollbarComponent, TuiSvgComponent, TuiTooltipModule} from '@taiga-ui/core';
 import {
     TuiPrimitiveTextfieldModule,
-    TuiTextfieldLegacyComponent,
+    TuiTextfieldComponent,
 } from '@taiga-ui/legacy/components/primitive-textfield';
 import {TuiWrapperModule} from '@taiga-ui/legacy/directives';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
@@ -24,6 +24,6 @@ import {TuiTextareaDirective} from './textarea.directive';
         PolymorpheusModule,
     ],
     declarations: [TuiTextareaComponent, TuiTextareaDirective],
-    exports: [TuiTextareaComponent, TuiTextareaDirective, TuiTextfieldLegacyComponent],
+    exports: [TuiTextareaComponent, TuiTextareaDirective, TuiTextfieldComponent],
 })
 export class TuiTextareaModule {}

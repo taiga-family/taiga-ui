@@ -4,7 +4,7 @@ import {MaskitoDirective} from '@maskito/angular';
 import {TuiButtonDirective} from '@taiga-ui/core';
 import {
     TuiPrimitiveTextfieldModule,
-    TuiTextfieldLegacyComponent,
+    TuiTextfieldComponent,
 } from '@taiga-ui/legacy/components/primitive-textfield';
 import {
     TuiTextfieldControllerModule,
@@ -26,10 +26,6 @@ import {TuiInputNumberDirective} from './input-number.directive';
         TuiButtonDirective,
     ],
     declarations: [TuiInputNumberComponent, TuiInputNumberDirective],
-    exports: [
-        TuiInputNumberComponent,
-        TuiInputNumberDirective,
-        TuiTextfieldLegacyComponent,
-    ],
+    exports: [TuiInputNumberComponent, TuiInputNumberDirective, TuiTextfieldComponent],
 })
 export class TuiInputNumberModule {}

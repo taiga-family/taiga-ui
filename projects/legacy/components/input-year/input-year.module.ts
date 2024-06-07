@@ -8,7 +8,7 @@ import {
 } from '@taiga-ui/core';
 import {
     TuiPrimitiveTextfieldModule,
-    TuiTextfieldLegacyComponent,
+    TuiTextfieldComponent,
 } from '@taiga-ui/legacy/components/primitive-textfield';
 import {TuiTextfieldControllerModule} from '@taiga-ui/legacy/directives';
 
@@ -26,6 +26,6 @@ import {TuiInputYearDirective} from './input-year.directive';
         TuiTextfieldControllerModule,
     ],
     declarations: [TuiInputYearComponent, TuiInputYearDirective],
-    exports: [TuiInputYearComponent, TuiInputYearDirective, TuiTextfieldLegacyComponent],
+    exports: [TuiInputYearComponent, TuiInputYearDirective, TuiTextfieldComponent],
 })
 export class TuiInputYearModule {}

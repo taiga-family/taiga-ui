@@ -5,7 +5,7 @@ import {TuiArrowComponent} from '@taiga-ui/legacy/components/arrow';
 import {TuiHostedDropdownModule} from '@taiga-ui/legacy/components/hosted-dropdown';
 import {
     TuiPrimitiveTextfieldModule,
-    TuiTextfieldLegacyComponent,
+    TuiTextfieldComponent,
 } from '@taiga-ui/legacy/components/primitive-textfield';
 import {TuiSelectOptionModule} from '@taiga-ui/legacy/components/select-option';
 import {
@@ -39,7 +39,7 @@ import {TuiComboBoxStrictDirective} from './combo-box-strict.directive';
         TuiComboBoxComponent,
         TuiComboBoxStrictDirective,
         TuiComboBoxDirective,
-        TuiTextfieldLegacyComponent,
+        TuiTextfieldComponent,
     ],
 })
 export class TuiComboBoxModule {}
