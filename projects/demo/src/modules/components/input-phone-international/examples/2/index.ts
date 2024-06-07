@@ -4,11 +4,8 @@ import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
-import {
-    TUI_ALL_COUNTRIES_ISO_CODES,
-    TuiInputPhoneInternationalComponent,
-    TuiSortCountriesPipe,
-} from '@taiga-ui/kit';
+import {TuiInputPhoneInternationalComponent, TuiSortCountriesPipe} from '@taiga-ui/kit';
+import {getCountries} from 'libphonenumber-js';
 
 @Component({
     standalone: true,
@@ -28,7 +25,7 @@ export default class ExampleComponent {
         testValue: new FormControl('', Validators.minLength(12)),
     });
 
-    protected readonly countries = TUI_ALL_COUNTRIES_ISO_CODES;
+    protected readonly countries = getCountries();
 
     protected countryIsoCode: TuiCountryIsoCode = 'US';
 }
